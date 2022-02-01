@@ -1,51 +1,84 @@
 package com.tencent.mm.plugin.appbrand.x;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ay;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.w;
-import com.tencent.mm.n.b;
-import com.tencent.mm.plugin.appbrand.service.f;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bh.a;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public final class a
-  implements bh.a
 {
-  public final void a(am paramam, bh parambh)
+  public final Map<String, List<c>> kBk;
+  
+  private a()
   {
-    AppMethodBeat.i(48310);
-    if ((paramam != null) && (!bt.isNullOrNil(paramam.field_username)))
+    AppMethodBeat.i(140790);
+    this.kBk = new HashMap();
+    AppMethodBeat.o(140790);
+  }
+  
+  private void a(String paramString, b paramb)
+  {
+    AppMethodBeat.i(140793);
+    paramString = (List)this.kBk.get(paramString);
+    if (paramString == null)
     {
-      parambh = paramam.field_username;
-      af localaf = ((k)g.ab(k.class)).apM().aHY(parambh);
-      if ((localaf == null) || ((int)localaf.fId == 0))
-      {
-        ad.e("MicroMsg.AppBrandConversionExtension", "contact is null or contactId is 0 for %s", new Object[] { parambh });
-        AppMethodBeat.o(48310);
-        return;
-      }
-      if ((af.rz(parambh)) && (!w.sQ(parambh)))
-      {
-        ad.i("MicroMsg.AppBrandConversionExtension", "this conversation is a app brand contact!");
-        paramam.nN("appbrandcustomerservicemsg");
-        ((f)g.ab(f.class)).c(paramam);
-        AppMethodBeat.o(48310);
-        return;
-      }
-      if (w.tm(parambh))
-      {
-        ad.i("MicroMsg.AppBrandConversionExtension", "appBrandSuperConv is created");
-        paramam.nN(null);
-      }
+      AppMethodBeat.o(140793);
+      return;
     }
-    AppMethodBeat.o(48310);
+    int i = 0;
+    while (i < paramString.size())
+    {
+      paramb.a((c)paramString.get(i));
+      i += 1;
+    }
+    AppMethodBeat.o(140793);
+  }
+  
+  public final void K(String paramString1, final String paramString2, final String paramString3)
+  {
+    AppMethodBeat.i(140792);
+    a(paramString1, new b()
+    {
+      public final void a(c paramAnonymousc)
+      {
+        AppMethodBeat.i(140788);
+        paramAnonymousc.ed(paramString2, paramString3);
+        AppMethodBeat.o(140788);
+      }
+    });
+    AppMethodBeat.o(140792);
+  }
+  
+  public final void a(String paramString1, final String paramString2, final b.b paramb)
+  {
+    AppMethodBeat.i(140791);
+    a(paramString1, new b()
+    {
+      public final void a(c paramAnonymousc)
+      {
+        AppMethodBeat.i(140787);
+        paramAnonymousc.a(paramString2, paramb, this.lfR);
+        AppMethodBeat.o(140787);
+      }
+    });
+    AppMethodBeat.o(140791);
+  }
+  
+  public static final class a
+  {
+    private static final a lXj;
+    
+    static
+    {
+      AppMethodBeat.i(140789);
+      lXj = new a((byte)0);
+      AppMethodBeat.o(140789);
+    }
+  }
+  
+  static abstract interface b
+  {
+    public abstract void a(c paramc);
   }
 }
 

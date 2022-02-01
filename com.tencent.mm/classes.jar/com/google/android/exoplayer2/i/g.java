@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public final int bia;
-  public final int byN;
-  public final int byO;
-  public final int byP;
-  public final int byQ;
-  public final long byR;
+  public final int biF;
+  public final int bwv;
+  public final int bww;
+  public final int bwx;
+  public final int bwy;
+  public final long bwz;
   public final int channels;
   public final int sampleRate;
   
@@ -18,15 +18,15 @@ public final class g
     AppMethodBeat.i(93135);
     paramArrayOfByte = new l(paramArrayOfByte);
     paramArrayOfByte.setPosition(136);
-    this.byN = paramArrayOfByte.eo(16);
-    this.byO = paramArrayOfByte.eo(16);
-    this.byP = paramArrayOfByte.eo(24);
-    this.byQ = paramArrayOfByte.eo(24);
+    this.bwv = paramArrayOfByte.eo(16);
+    this.bww = paramArrayOfByte.eo(16);
+    this.bwx = paramArrayOfByte.eo(24);
+    this.bwy = paramArrayOfByte.eo(24);
     this.sampleRate = paramArrayOfByte.eo(20);
     this.channels = (paramArrayOfByte.eo(3) + 1);
-    this.bia = (paramArrayOfByte.eo(5) + 1);
+    this.biF = (paramArrayOfByte.eo(5) + 1);
     long l = paramArrayOfByte.eo(4);
-    this.byR = (paramArrayOfByte.eo(32) & 0xFFFFFFFF | (l & 0xF) << 32);
+    this.bwz = (paramArrayOfByte.eo(32) & 0xFFFFFFFF | (l & 0xF) << 32);
     AppMethodBeat.o(93135);
   }
 }

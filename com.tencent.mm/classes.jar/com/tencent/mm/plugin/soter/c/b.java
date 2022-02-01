@@ -19,8 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.soter.d.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.soter.a.b.e;
 import com.tencent.soter.a.g.b.a;
@@ -29,125 +29,125 @@ import java.lang.ref.WeakReference;
 public final class b
   extends c
 {
-  TextView kXs;
+  TextView lzc;
   Handler mMainHandler;
-  com.tencent.soter.a.d.a rcc;
-  boolean yaj;
-  d yak;
-  ImageView yal;
-  private final int yam;
-  private int yan;
-  private final long yao;
-  Animation yap;
-  Animation yaq;
-  Runnable yar;
+  com.tencent.soter.a.d.a skw;
+  boolean znj;
+  d znk;
+  ImageView znl;
+  private final int znm;
+  private int znn;
+  private final long zno;
+  Animation znp;
+  Animation znq;
+  Runnable znr;
   
   public b(WeakReference<Activity> paramWeakReference, com.tencent.mm.plugin.soter.d.j paramj, k paramk, Handler paramHandler)
   {
     super(paramWeakReference, paramj, paramk, paramHandler);
     AppMethodBeat.i(145958);
-    this.yaj = false;
-    this.rcc = null;
-    this.yak = null;
-    this.yal = null;
-    this.kXs = null;
-    this.yam = 3;
-    this.yan = 0;
-    this.yao = 500L;
-    this.yap = null;
-    this.yaq = null;
+    this.znj = false;
+    this.skw = null;
+    this.znk = null;
+    this.znl = null;
+    this.lzc = null;
+    this.znm = 3;
+    this.znn = 0;
+    this.zno = 500L;
+    this.znp = null;
+    this.znq = null;
     this.mMainHandler = new Handler(Looper.getMainLooper());
-    this.yar = new Runnable()
+    this.znr = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(145957);
-        b.this.kXs.setTextColor(b.this.kXs.getResources().getColor(2131100488));
-        b.this.kXs.setText(b.this.kXs.getResources().getString(2131764093));
-        b.this.yal.setImageResource(2131232387);
+        b.this.lzc.setTextColor(b.this.lzc.getResources().getColor(2131100488));
+        b.this.lzc.setText(b.this.lzc.getResources().getString(2131764093));
+        b.this.znl.setImageResource(2131232387);
         AppMethodBeat.o(145957);
       }
     };
     AppMethodBeat.o(145958);
   }
   
-  private boolean dEG()
+  private boolean dTf()
   {
     AppMethodBeat.i(145960);
-    dEI();
-    ad.i("MicroMsg.SoterControllerFingerprint", "hy: auth key not valid or auth key not valid");
+    dTh();
+    ac.i("MicroMsg.SoterControllerFingerprint", "hy: auth key not valid or auth key not valid");
     com.tencent.soter.a.b.b local1 = new com.tencent.soter.a.b.b() {};
-    ad.i("MicroMsg.SoterControllerFingerprint", "hy:mscene:" + this.mScene);
-    com.tencent.soter.a.a.a(local1, false, this.mScene, this.yaA, this.yaB);
+    ac.i("MicroMsg.SoterControllerFingerprint", "hy:mscene:" + this.mScene);
+    com.tencent.soter.a.a.a(local1, false, this.mScene, this.znz, this.znA);
     AppMethodBeat.o(145960);
     return false;
   }
   
-  private void dEH()
+  private void dTg()
   {
     AppMethodBeat.i(145962);
-    this.rcc = new com.tencent.soter.a.d.a();
+    this.skw = new com.tencent.soter.a.d.a();
     com.tencent.soter.a.b.b local3 = new com.tencent.soter.a.b.b() {};
     com.tencent.soter.a.d.b local4 = new com.tencent.soter.a.d.b()
     {
-      public final void dED()
+      public final void dTc()
       {
         AppMethodBeat.i(145946);
-        ad.v("MicroMsg.SoterControllerFingerprint", "alvinluo mp onStartAuthencation");
-        b.this.yaj = true;
+        ac.v("MicroMsg.SoterControllerFingerprint", "alvinluo mp onStartAuthencation");
+        b.this.znj = true;
         AppMethodBeat.o(145946);
       }
       
-      public final void dEE()
+      public final void dTd()
       {
         AppMethodBeat.i(145948);
-        ad.i("MicroMsg.SoterControllerFingerprint", "hy: mp on authen success");
-        b.this.yaj = false;
-        b.this.rcc = null;
+        ac.i("MicroMsg.SoterControllerFingerprint", "hy: mp on authen success");
+        b.this.znj = false;
+        b.this.skw = null;
         b localb = b.this;
-        localb.kXs.removeCallbacks(localb.yar);
-        localb.yal.setImageResource(2131232389);
-        localb.kXs.setTextColor(localb.kXs.getResources().getColor(2131101000));
-        localb.kXs.setText(localb.kXs.getResources().getString(2131764094));
+        localb.lzc.removeCallbacks(localb.znr);
+        localb.znl.setImageResource(2131232389);
+        localb.lzc.setTextColor(localb.lzc.getResources().getColor(2131101000));
+        localb.lzc.setText(localb.lzc.getResources().getString(2131764094));
         AppMethodBeat.o(145948);
       }
       
       public final void onAuthenticationCancelled()
       {
         AppMethodBeat.i(145950);
-        ad.v("MicroMsg.SoterControllerFingerprint", "alvinluo mp onAuthenticationCancelled");
-        b.this.rcc = null;
+        ac.v("MicroMsg.SoterControllerFingerprint", "alvinluo mp onAuthenticationCancelled");
+        b.this.skw = null;
         AppMethodBeat.o(145950);
       }
       
       public final void onAuthenticationError(int paramAnonymousInt, CharSequence paramAnonymousCharSequence)
       {
         AppMethodBeat.i(145951);
-        ad.e("MicroMsg.SoterControllerFingerprint", "hy: on mp authen error errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousCharSequence });
+        ac.e("MicroMsg.SoterControllerFingerprint", "hy: on mp authen error errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousCharSequence });
         AppMethodBeat.o(145951);
       }
       
       public final void onAuthenticationFailed()
       {
         AppMethodBeat.i(145949);
-        ad.w("MicroMsg.SoterControllerFingerprint", "hy: mp user trying failed");
+        ac.w("MicroMsg.SoterControllerFingerprint", "hy: mp user trying failed");
         b localb = b.this;
-        String str = aj.getContext().getString(2131764090);
-        if (localb.yap == null) {
-          localb.yap = b.fZ(localb.yal.getContext());
+        String str = ai.getContext().getString(2131764090);
+        if (localb.znp == null) {
+          localb.znp = b.gl(localb.znl.getContext());
         }
-        if (localb.yaq == null) {
-          localb.yaq = b.fZ(localb.yal.getContext());
+        if (localb.znq == null) {
+          localb.znq = b.gl(localb.znl.getContext());
         }
-        localb.yap.setAnimationListener(new b.8(localb, str));
-        localb.kXs.startAnimation(localb.yap);
-        localb.yal.startAnimation(localb.yaq);
+        localb.znp.setAnimationListener(new b.8(localb, str));
+        localb.lzc.startAnimation(localb.znp);
+        localb.znl.startAnimation(localb.znq);
         b.this.mMainHandler.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(145945);
-            b.this.yaj = false;
+            b.this.znj = false;
             b.a(b.this, true);
             AppMethodBeat.o(145945);
           }
@@ -158,26 +158,26 @@ public final class b
       public final void onAuthenticationHelp(int paramAnonymousInt, CharSequence paramAnonymousCharSequence)
       {
         AppMethodBeat.i(145947);
-        ad.i("MicroMsg.SoterControllerFingerprint", "hy: mp on authen help errCode: %d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousCharSequence });
+        ac.i("MicroMsg.SoterControllerFingerprint", "hy: mp on authen help errCode: %d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousCharSequence });
         AppMethodBeat.o(145947);
       }
     };
-    b.a locala = new b.a().abW(this.mScene).kH(aj.getContext());
-    com.tencent.soter.a.d.a locala1 = this.rcc;
-    locala.IvW.rcc = locala1;
-    locala = locala.aNV(this.yay.rcj);
-    locala.IvW.IvR = null;
-    locala.IvW.IvT = local4;
-    com.tencent.soter.a.a.a(local3, locala.IvW);
+    b.a locala = new b.a().aep(this.mScene).kT(ai.getContext());
+    com.tencent.soter.a.d.a locala1 = this.skw;
+    locala.JXF.skw = locala1;
+    locala = locala.aTy(this.znx.skD);
+    locala.JXF.JXA = null;
+    locala.JXF.JXC = local4;
+    com.tencent.soter.a.a.a(local3, locala.JXF);
     AppMethodBeat.o(145962);
   }
   
-  public static Animation fZ(Context paramContext)
+  public static Animation gl(Context paramContext)
   {
     AppMethodBeat.i(145965);
     if (paramContext == null)
     {
-      ad.e("MicroMsg.SoterControllerFingerprint", "hy: context is null.");
+      ac.e("MicroMsg.SoterControllerFingerprint", "hy: context is null.");
       AppMethodBeat.o(145965);
       return null;
     }
@@ -191,34 +191,34 @@ public final class b
   }
   
   @TargetApi(23)
-  public final void fT()
+  public final void gb()
   {
     AppMethodBeat.i(145959);
-    if (!com.tencent.soter.core.a.kD(aj.getContext()))
+    if (!com.tencent.soter.core.a.kP(ai.getContext()))
     {
-      this.yaz.errCode = 90011;
-      this.yaz.errMsg = "no fingerprint enrolled";
-      dEM();
+      this.zny.errCode = 90011;
+      this.zny.errMsg = "no fingerprint enrolled";
+      dTl();
     }
     try
     {
-      if (aj.getContext().checkSelfPermission("android.permission.USE_FINGERPRINT") != 0)
+      if (ai.getContext().checkSelfPermission("android.permission.USE_FINGERPRINT") != 0)
       {
-        com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a()).bd(new String[] { "android.permission.USE_FINGERPRINT" });
-        com.tencent.mm.hellhoundlib.a.a.a(this, locala.adn(), "com/tencent/mm/plugin/soter/controller/SoterControllerFingerprint", "onPostCreate", "(Landroid/os/Bundle;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-        requestPermissions((String[])locala.lS(0), ((Integer)locala.lS(1)).intValue());
+        com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a()).ba(new String[] { "android.permission.USE_FINGERPRINT" });
+        com.tencent.mm.hellhoundlib.a.a.a(this, locala.aeD(), "com/tencent/mm/plugin/soter/controller/SoterControllerFingerprint", "onPostCreate", "(Landroid/os/Bundle;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
+        requestPermissions((String[])locala.lR(0), ((Integer)locala.lR(1)).intValue());
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/soter/controller/SoterControllerFingerprint", "onPostCreate", "(Landroid/os/Bundle;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
         AppMethodBeat.o(145959);
         return;
       }
-      this.yaj = true;
+      this.znj = true;
       AppMethodBeat.o(145959);
       return;
     }
     catch (NoSuchMethodError localNoSuchMethodError)
     {
-      ad.i("MicroMsg.SoterControllerFingerprint", "hy: not implements the checkSelfPermission. permission already given");
-      this.yaj = true;
+      ac.i("MicroMsg.SoterControllerFingerprint", "hy: not implements the checkSelfPermission. permission already given");
+      this.znj = true;
       AppMethodBeat.o(145959);
     }
   }
@@ -227,11 +227,11 @@ public final class b
   public final void onPause()
   {
     AppMethodBeat.i(145964);
-    if ((this.yaj) && (this.rcc != null)) {
-      this.rcc.xw(true);
+    if ((this.znj) && (this.skw != null)) {
+      this.skw.yG(true);
     }
-    if ((this.yak != null) && (this.yak.isShowing())) {
-      this.yak.dismiss();
+    if ((this.znk != null) && (this.znk.isShowing())) {
+      this.znk.dismiss();
     }
     AppMethodBeat.o(145964);
   }
@@ -243,16 +243,16 @@ public final class b
     {
       if ((paramArrayOfString.length > 0) && (paramArrayOfInt.length > 0) && ("android.permission.USE_FINGERPRINT".equals(paramArrayOfString[0])) && (paramArrayOfInt[0] == 0))
       {
-        ad.i("MicroMsg.SoterControllerFingerprint", "hy: permission granted");
-        dEG();
-        this.yaj = true;
+        ac.i("MicroMsg.SoterControllerFingerprint", "hy: permission granted");
+        dTf();
+        this.znj = true;
         AppMethodBeat.o(145961);
         return;
       }
-      ad.w("MicroMsg.SoterControllerFingerprint", "hy: permission not granted");
-      this.yaz.errCode = 90002;
-      this.yaz.errMsg = "user not grant to use fingerprint";
-      dEM();
+      ac.w("MicroMsg.SoterControllerFingerprint", "hy: permission not granted");
+      this.zny.errCode = 90002;
+      this.zny.errMsg = "user not grant to use fingerprint";
+      dTl();
     }
     AppMethodBeat.o(145961);
   }
@@ -260,8 +260,8 @@ public final class b
   public final void onResume()
   {
     AppMethodBeat.i(145963);
-    if (this.yaj) {
-      dEG();
+    if (this.znj) {
+      dTf();
     }
     AppMethodBeat.o(145963);
   }

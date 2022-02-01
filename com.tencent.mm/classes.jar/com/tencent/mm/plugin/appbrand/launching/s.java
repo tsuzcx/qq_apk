@@ -7,23 +7,23 @@ import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.luggage.wxa.storage.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.Locale;
 
 public final class s
 {
   private static final Uri CONTENT_URI;
-  private static final s kIH;
+  private static final s lkd;
   
   static
   {
     AppMethodBeat.i(146066);
-    kIH = new s();
+    lkd = new s();
     CONTENT_URI = Uri.parse("content://" + a.AUTHORITY + "/DevPkgLaunchExtInfo");
     AppMethodBeat.o(146066);
   }
   
-  public static String bG(String paramString, int paramInt)
+  public static String bK(String paramString, int paramInt)
   {
     Object localObject = null;
     AppMethodBeat.i(146065);
@@ -32,7 +32,7 @@ public final class s
       AppMethodBeat.o(146065);
       return null;
     }
-    Cursor localCursor = aj.getContext().getContentResolver().query(CONTENT_URI, null, String.format(Locale.US, "%s=? And %s=?", new Object[] { "appId", "versionType" }), new String[] { paramString, String.valueOf(paramInt) }, null, null);
+    Cursor localCursor = ai.getContext().getContentResolver().query(CONTENT_URI, null, String.format(Locale.US, "%s=? And %s=?", new Object[] { "appId", "versionType" }), new String[] { paramString, String.valueOf(paramInt) }, null, null);
     if (localCursor == null)
     {
       AppMethodBeat.o(146065);
@@ -59,9 +59,9 @@ public final class s
     return "";
   }
   
-  public static s bgx()
+  public static s bnr()
   {
-    return kIH;
+    return lkd;
   }
 }
 

@@ -7,34 +7,34 @@ public final class a$af
   extends e
 {
   public int roomId = 0;
-  public long sAY = 0L;
+  public long tIG = 0L;
   
   public a$af()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
     if (this.roomId != 0) {
-      paramb.by(1, this.roomId);
+      paramb.bv(1, this.roomId);
     }
-    if (this.sAY != 0L) {
-      paramb.o(2, this.sAY);
+    if (this.tIG != 0L) {
+      paramb.n(2, this.tIG);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (this.roomId != 0) {
-      i = j + b.bA(1, this.roomId);
+      i = j + b.bx(1, this.roomId);
     }
     j = i;
-    if (this.sAY != 0L) {
-      j = i + b.q(2, this.sAY);
+    if (this.tIG != 0L) {
+      j = i + b.p(2, this.tIG);
     }
     return j;
   }

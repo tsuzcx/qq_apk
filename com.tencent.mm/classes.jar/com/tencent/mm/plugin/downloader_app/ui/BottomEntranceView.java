@@ -16,17 +16,17 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader.c.a.a.f;
 import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.plugin.downloader_app.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.ap;
 
 public class BottomEntranceView
   extends RelativeLayout
 {
-  private f oiO;
-  private TextView oiP;
-  private int oiQ;
-  private int oiR;
+  private f oMo;
+  private TextView oMp;
+  private int oMq;
+  private int oMr;
   
   public BottomEntranceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,7 +36,7 @@ public class BottomEntranceView
   private int getDisplayHeight()
   {
     AppMethodBeat.i(8975);
-    int i = ap.cf(getContext()).y;
+    int i = ap.cl(getContext()).y;
     AppMethodBeat.o(8975);
     return i;
   }
@@ -45,10 +45,10 @@ public class BottomEntranceView
   {
     AppMethodBeat.i(8973);
     super.onFinishInflate();
-    this.oiP = ((TextView)findViewById(2131299510));
-    this.oiR = (getDisplayHeight() - ap.dL(getContext()) - ap.iX(getContext()) - ap.eb(getContext()));
-    this.oiQ = getResources().getDimensionPixelSize(2131165922);
-    ad.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.oiR) });
+    this.oMp = ((TextView)findViewById(2131299510));
+    this.oMr = (getDisplayHeight() - ap.dT(getContext()) - ap.ji(getContext()) - ap.ej(getContext()));
+    this.oMq = getResources().getDimensionPixelSize(2131165922);
+    ac.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.oMr) });
     getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
@@ -63,10 +63,10 @@ public class BottomEntranceView
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(8972);
-        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!bt.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).ntj)))
+        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!bs.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).nWj)))
         {
           paramAnonymousView = new Bundle();
-          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).ntj);
+          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).nWj);
           ((c)g.ab(c.class)).e(BottomEntranceView.this.getContext(), paramAnonymousView);
           a.a(10, 1005, 1, 40, "", "", "");
         }
@@ -79,15 +79,15 @@ public class BottomEntranceView
   public void setData(f paramf)
   {
     AppMethodBeat.i(8974);
-    if ((paramf == null) || (bt.isNullOrNil(paramf.desc)) || (bt.isNullOrNil(paramf.ntj)))
+    if ((paramf == null) || (bs.isNullOrNil(paramf.desc)) || (bs.isNullOrNil(paramf.nWj)))
     {
       setVisibility(8);
       AppMethodBeat.o(8974);
       return;
     }
-    this.oiO = paramf;
+    this.oMo = paramf;
     setVisibility(0);
-    this.oiP.setText(this.oiO.desc);
+    this.oMp.setText(this.oMo.desc);
     AppMethodBeat.o(8974);
   }
 }

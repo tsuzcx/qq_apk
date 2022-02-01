@@ -1,41 +1,41 @@
 package com.google.android.exoplayer2.g;
 
-import com.google.android.exoplayer2.source.p;
+import com.google.android.exoplayer2.source.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
   extends b
 {
-  private final int bvJ;
   private final Object data;
+  private final int reason;
   
-  public d(p paramp, int paramInt)
+  public d(o paramo, int paramInt)
   {
-    this(paramp, paramInt, (byte)0);
+    this(paramo, paramInt, (byte)0);
   }
   
-  private d(p paramp, int paramInt, byte paramByte)
+  private d(o paramo, int paramInt, byte paramByte)
   {
-    super(paramp, new int[] { paramInt });
+    super(paramo, new int[] { paramInt });
     AppMethodBeat.i(92947);
-    this.bvJ = 0;
+    this.reason = 0;
     this.data = null;
     AppMethodBeat.o(92947);
   }
   
-  public final void aj(long paramLong) {}
+  public final void af(long paramLong) {}
   
   public final int getSelectedIndex()
   {
     return 0;
   }
   
-  public final int up()
+  public final int ul()
   {
-    return this.bvJ;
+    return this.reason;
   }
   
-  public final Object uq()
+  public final Object um()
   {
     return this.data;
   }

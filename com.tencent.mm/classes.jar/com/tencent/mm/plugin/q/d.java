@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.q;
 
 public final class d
 {
-  private static c tMv;
-  public static boolean tMw = false;
+  private static c uUZ;
+  public static boolean uVa = false;
   
   public static void a(c paramc)
   {
-    tMv = paramc;
+    uUZ = paramc;
   }
   
-  public static c cRq()
+  public static c dfa()
   {
-    return tMv;
+    return uUZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.q.d
  * JD-Core Version:    0.7.0.1
  */

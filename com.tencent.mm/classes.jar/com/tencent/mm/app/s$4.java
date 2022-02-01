@@ -11,17 +11,17 @@ final class s$4
     // Byte code:
     //   0: aload_1
     //   1: ifnull +93 -> 94
-    //   4: invokestatic 22	com/tencent/mm/app/s:HO	()[J
+    //   4: invokestatic 22	com/tencent/mm/app/s:Hz	()[J
     //   7: iconst_0
     //   8: aload_1
     //   9: getfield 28	android/content/pm/PackageStats:cacheSize	J
     //   12: lastore
-    //   13: invokestatic 22	com/tencent/mm/app/s:HO	()[J
+    //   13: invokestatic 22	com/tencent/mm/app/s:Hz	()[J
     //   16: iconst_1
     //   17: aload_1
     //   18: getfield 31	android/content/pm/PackageStats:dataSize	J
     //   21: lastore
-    //   22: invokestatic 22	com/tencent/mm/app/s:HO	()[J
+    //   22: invokestatic 22	com/tencent/mm/app/s:Hz	()[J
     //   25: iconst_2
     //   26: aload_1
     //   27: getfield 34	android/content/pm/PackageStats:codeSize	J
@@ -53,12 +53,12 @@ final class s$4
     //   69: getfield 34	android/content/pm/PackageStats:codeSize	J
     //   72: invokestatic 51	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   75: aastore
-    //   76: invokestatic 57	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   79: invokestatic 22	com/tencent/mm/app/s:HO	()[J
+    //   76: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   79: invokestatic 22	com/tencent/mm/app/s:Hz	()[J
     //   82: astore_1
     //   83: aload_1
     //   84: monitorenter
-    //   85: invokestatic 22	com/tencent/mm/app/s:HO	()[J
+    //   85: invokestatic 22	com/tencent/mm/app/s:Hz	()[J
     //   88: invokevirtual 60	java/lang/Object:notify	()V
     //   91: aload_1
     //   92: monitorexit
@@ -72,7 +72,7 @@ final class s$4
     //   104: iload_2
     //   105: invokestatic 46	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   108: aastore
-    //   109: invokestatic 57	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   109: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   112: goto -33 -> 79
     //   115: astore_1
     //   116: ldc 36
@@ -80,7 +80,7 @@ final class s$4
     //   119: ldc 63
     //   121: iconst_0
     //   122: anewarray 40	java/lang/Object
-    //   125: invokestatic 67	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   125: invokestatic 67	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   128: return
     //   129: astore_3
     //   130: aload_1
@@ -104,7 +104,7 @@ final class s$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.app.s.4
  * JD-Core Version:    0.7.0.1
  */

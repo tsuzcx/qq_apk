@@ -8,12 +8,12 @@ final class j$e
   extends l
   implements b<Class<?>, Boolean>
 {
-  public static final e Jwh;
+  public static final e LjA;
   
   static
   {
     AppMethodBeat.i(57438);
-    Jwh = new e();
+    LjA = new e();
     AppMethodBeat.o(57438);
   }
   

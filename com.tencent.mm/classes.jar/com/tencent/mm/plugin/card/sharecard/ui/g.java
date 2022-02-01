@@ -13,13 +13,13 @@ public final class g
   extends BaseAdapter
 {
   Context mContext;
-  c nwE;
-  List<b> nwP;
+  c nZE;
+  List<b> nZP;
   
   public final int getCount()
   {
     AppMethodBeat.i(113092);
-    int i = this.nwP.size();
+    int i = this.nZP.size();
     AppMethodBeat.o(113092);
     return i;
   }
@@ -32,16 +32,16 @@ public final class g
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113094);
-    paramViewGroup = yN(paramInt);
-    paramView = this.nwE.a(paramInt, paramView, paramViewGroup);
+    paramViewGroup = zD(paramInt);
+    paramView = this.nZE.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113094);
     return paramView;
   }
   
-  public final b yN(int paramInt)
+  public final b zD(int paramInt)
   {
     AppMethodBeat.i(113093);
-    b localb = (b)this.nwP.get(paramInt);
+    b localb = (b)this.nZP.get(paramInt);
     AppMethodBeat.o(113093);
     return localb;
   }

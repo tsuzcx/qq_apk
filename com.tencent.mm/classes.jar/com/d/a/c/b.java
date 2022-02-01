@@ -4,10 +4,10 @@ public abstract class b
   implements Cloneable
 {
   private transient int _size;
-  private transient int bXI;
-  private transient int bXJ;
-  private float bXK = 0.8F;
-  private int bXL;
+  private transient int bVq;
+  private transient int bVr;
+  private float bVs = 0.8F;
+  private int bVt;
   
   public b()
   {
@@ -16,48 +16,48 @@ public abstract class b
   
   private b(byte paramByte)
   {
-    gx(6);
+    gi(6);
   }
   
-  private void gz(int paramInt)
+  private void gk(int paramInt)
   {
-    this.bXL = Math.min(paramInt - 1, (int)(paramInt * this.bXK));
-    this.bXI = (paramInt - this._size);
-    this.bXJ = 0;
+    this.bVt = Math.min(paramInt - 1, (int)(paramInt * this.bVs));
+    this.bVq = (paramInt - this._size);
+    this.bVr = 0;
   }
   
-  public final void Ao()
+  public final void Ab()
   {
-    if (this.bXJ < 0) {
+    if (this.bVr < 0) {
       throw new IllegalStateException("Unpaired stop/startCompactingOnRemove");
     }
-    this.bXJ -= capacity();
+    this.bVr -= capacity();
   }
   
-  public final void Ap()
+  public final void Ac()
   {
-    if (this.bXJ >= 0) {
+    if (this.bVr >= 0) {
       throw new IllegalStateException("Unpaired stop/startCompactingOnRemove");
     }
-    this.bXJ += capacity();
+    this.bVr += capacity();
   }
   
-  protected final void bo(boolean paramBoolean)
+  protected final void bn(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.bXI -= 1;
+      this.bVq -= 1;
     }
     for (;;)
     {
       int i = this._size + 1;
       this._size = i;
-      if ((i > this.bXL) || (this.bXI == 0))
+      if ((i > this.bVt) || (this.bVq == 0))
       {
-        gy(a.gw(capacity() << 1));
-        gz(capacity());
+        gj(a.gh(capacity() << 1));
+        gk(capacity());
       }
       return;
-      this.bXJ -= 1;
+      this.bVr -= 1;
     }
   }
   
@@ -66,8 +66,8 @@ public abstract class b
   public void clear()
   {
     this._size = 0;
-    this.bXI = capacity();
-    this.bXJ = 0;
+    this.bVq = capacity();
+    this.bVr = 0;
   }
   
   public Object clone()
@@ -83,21 +83,21 @@ public abstract class b
   
   public final void ensureCapacity(int paramInt)
   {
-    if (paramInt > this.bXL - size())
+    if (paramInt > this.bVt - size())
     {
-      gy(a.gw((int)(paramInt + size() / this.bXK) + 2));
-      gz(capacity());
+      gj(a.gh((int)(paramInt + size() / this.bVs) + 2));
+      gk(capacity());
     }
   }
   
-  protected int gx(int paramInt)
+  protected int gi(int paramInt)
   {
-    paramInt = a.gw(paramInt);
-    gz(paramInt);
+    paramInt = a.gh(paramInt);
+    gk(paramInt);
     return paramInt;
   }
   
-  protected abstract void gy(int paramInt);
+  protected abstract void gj(int paramInt);
   
   public boolean isEmpty()
   {
@@ -107,11 +107,11 @@ public abstract class b
   protected void removeAt(int paramInt)
   {
     this._size -= 1;
-    this.bXJ += 1;
-    if ((this.bXJ > this._size) && (capacity() > 42))
+    this.bVr += 1;
+    if ((this.bVr > this._size) && (capacity() > 42))
     {
-      gy(a.gw((int)(size() / this.bXK) + 2));
-      gz(capacity());
+      gj(a.gh((int)(size() / this.bVs) + 2));
+      gk(capacity());
     }
   }
   

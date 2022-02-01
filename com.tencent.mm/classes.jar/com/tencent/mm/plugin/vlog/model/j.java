@@ -1,104 +1,64 @@
 package com.tencent.mm.plugin.vlog.model;
 
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.vlog.model.cgi.c;
-import com.tencent.mm.protocal.protobuf.kh;
-import com.tencent.mm.sdk.platformtools.ad;
 import d.g.b.k;
 import d.l;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/model/VlogReporter;", "", "()V", "TAG", "", "behaviorList", "", "Lcom/tencent/mm/protocal/protobuf/BehaviorReportItem;", "businessId", "", "lastPlayTime", "lastVlogScriptModel", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "requestId", "uin", "configure", "", "recordCancel", "recordSelect", "vLogScriptModel", "recordSend", "recordWatch", "sendResult", "plugin-vlog_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"scaleRect", "", "origin", "Landroid/graphics/Rect;", "target", "getScale", "", "Landroid/graphics/Matrix;", "scaleBy", "scale", "setRectToRectCenterCrop", "src", "Landroid/graphics/RectF;", "dst", "srcLeft", "srcTop", "srcRight", "srcBottom", "dstLeft", "dstTop", "dstRight", "dstBottom", "plugin-vlog_release"})
 public final class j
 {
-  public static final String TAG = "MicroMsg.VlogReporter";
-  private static long uMU;
-  private static long uin;
-  private static long xWc;
-  private static long yZA;
-  public static final List<kh> yZB;
-  public static h yZC;
-  public static final j yZD;
-  
-  static
+  public static final void a(Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    AppMethodBeat.i(110954);
-    yZD = new j();
-    TAG = "MicroMsg.VlogReporter";
-    yZB = (List)new ArrayList();
-    xWc = -1L;
-    AppMethodBeat.o(110954);
+    AppMethodBeat.i(207516);
+    k.h(paramMatrix, "$this$setRectToRectCenterCrop");
+    a(paramMatrix, new RectF(0.0F, 0.0F, paramFloat1, paramFloat2), new RectF(paramFloat3, paramFloat4, paramFloat5, paramFloat6));
+    AppMethodBeat.o(207516);
   }
   
-  public static void a(h paramh)
+  public static final void a(Matrix paramMatrix, RectF paramRectF1, RectF paramRectF2)
   {
-    AppMethodBeat.i(110952);
-    long l = System.currentTimeMillis();
-    if (xWc != -1L)
-    {
-      h localh = yZC;
-      if (localh != null)
-      {
-        kh localkh = new kh();
-        localkh.CFc = localh.yZr;
-        localkh.CFd = 1L;
-        localkh.CFe = (l - xWc);
-        localkh.CFf = System.currentTimeMillis();
-        localkh.dlI = localh.dQV();
-        localkh.wVR = localh.dQU();
-        localkh.CFg = localh.dQW();
-        yZB.add(localkh);
-        ad.i(TAG, "record watch: vlogscriptModel = " + localh + ", watch time = " + localkh.CFe + "ms");
-      }
-    }
-    xWc = l;
-    yZC = paramh;
-    AppMethodBeat.o(110952);
+    AppMethodBeat.i(207515);
+    k.h(paramMatrix, "$this$setRectToRectCenterCrop");
+    k.h(paramRectF1, "src");
+    k.h(paramRectF2, "dst");
+    paramMatrix.reset();
+    float f = Math.max(paramRectF2.height() / paramRectF1.height(), paramRectF2.width() / paramRectF1.width());
+    paramMatrix.postTranslate(-paramRectF1.centerX(), -paramRectF1.centerY());
+    paramMatrix.postScale(f, f);
+    paramMatrix.postTranslate(paramRectF2.centerX(), paramRectF2.centerY());
+    AppMethodBeat.o(207515);
   }
   
-  public static void aq(long paramLong1, long paramLong2)
+  public static final void b(Rect paramRect, float paramFloat)
   {
-    AppMethodBeat.i(110951);
-    uMU = paramLong1;
-    uin = paramLong2;
-    yZA = 1L;
-    ad.i(TAG, "configure vlogreporter: requestId = " + paramLong1 + ", uin = " + paramLong2 + ", businessId = 1");
-    AppMethodBeat.o(110951);
+    AppMethodBeat.i(207517);
+    k.h(paramRect, "$this$scaleBy");
+    paramRect.left = Math.round(paramRect.left * paramFloat);
+    paramRect.top = Math.round(paramRect.top * paramFloat);
+    paramRect.right = Math.round(paramRect.right * paramFloat);
+    paramRect.bottom = Math.round(paramRect.bottom * paramFloat);
+    AppMethodBeat.o(207517);
   }
   
-  public static void dhV()
+  public static final float e(Matrix paramMatrix)
   {
-    AppMethodBeat.i(110953);
-    if (!((Collection)yZB).isEmpty()) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        ad.i(TAG, "do send result: behavior size = " + yZB.size());
-        b localb = g.afA();
-        k.g(localb, "network()");
-        localb.aeS().b((n)new c(uMU, uin, yZA, yZB));
-        yZB.clear();
-      }
-      uMU = 0L;
-      uin = 0L;
-      yZA = 0L;
-      xWc = -1L;
-      yZC = null;
-      AppMethodBeat.o(110953);
-      return;
-    }
+    AppMethodBeat.i(207514);
+    k.h(paramMatrix, "$this$getScale");
+    float[] arrayOfFloat = new float[9];
+    paramMatrix.getValues(arrayOfFloat);
+    float f1 = arrayOfFloat[0];
+    float f2 = arrayOfFloat[3];
+    f1 = (float)Math.sqrt(f2 * f2 + f1 * f1);
+    AppMethodBeat.o(207514);
+    return f1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.j
  * JD-Core Version:    0.7.0.1
  */

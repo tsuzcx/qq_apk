@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class a
 {
-  public int duc;
-  public int dud;
+  public int drN;
+  public int drO;
   public String iconUrl;
-  public LinkedList<a> kGU;
+  public LinkedList<a> lio;
   public String title;
   public int type;
-  public int vNS;
-  public String vNT;
-  public boolean vNU;
+  public int wYo;
+  public String wYp;
+  public boolean wYq;
   
   public a()
   {
     AppMethodBeat.i(51609);
     this.type = 1;
-    this.kGU = new LinkedList();
+    this.lio = new LinkedList();
     AppMethodBeat.o(51609);
   }
   
@@ -45,15 +45,15 @@ public final class a
       {
         localObject1 = Integer.valueOf(j);
         localObject2 = localObject1;
-        if (!bt.isNullOrNil((String)paramMap.get((String)localObject2 + ".$type"))) {
-          locala.type = bt.getInt((String)paramMap.get((String)localObject2 + ".$type"), 0);
+        if (!bs.isNullOrNil((String)paramMap.get((String)localObject2 + ".$type"))) {
+          locala.type = bs.getInt((String)paramMap.get((String)localObject2 + ".$type"), 0);
         }
-        locala.title = bt.nullAsNil((String)paramMap.get((String)localObject2 + ".$title"));
-        locala.iconUrl = bt.nullAsNil((String)paramMap.get((String)localObject2 + ".$iconurl"));
-        locala.duc = bt.getInt((String)paramMap.get((String)localObject2 + ".$iconwidth"), 34);
-        locala.dud = bt.getInt((String)paramMap.get((String)localObject2 + ".$iconheight"), 34);
-        locala.vNT = bt.nullAsNil((String)paramMap.get((String)localObject2 + ".$referkey"));
-        locala.vNS = bt.getInt((String)paramMap.get((String)localObject2 + ".$listshowtype"), 0);
+        locala.title = bs.nullAsNil((String)paramMap.get((String)localObject2 + ".$title"));
+        locala.iconUrl = bs.nullAsNil((String)paramMap.get((String)localObject2 + ".$iconurl"));
+        locala.drN = bs.getInt((String)paramMap.get((String)localObject2 + ".$iconwidth"), 34);
+        locala.drO = bs.getInt((String)paramMap.get((String)localObject2 + ".$iconheight"), 34);
+        locala.wYp = bs.nullAsNil((String)paramMap.get((String)localObject2 + ".$referkey"));
+        locala.wYo = bs.getInt((String)paramMap.get((String)localObject2 + ".$listshowtype"), 0);
         bool = false;
         localLinkedList2 = new LinkedList();
         k = 0;
@@ -69,7 +69,7 @@ public final class a
       for (localObject1 = Integer.valueOf(k);; localObject1 = "")
       {
         localObject1 = localObject1;
-        if (!bt.isNullOrNil((String)paramMap.get((String)localObject1 + ".$type"))) {
+        if (!bs.isNullOrNil((String)paramMap.get((String)localObject1 + ".$type"))) {
           break label532;
         }
         if (i == 0) {
@@ -82,13 +82,13 @@ public final class a
       }
       label501:
       i = 1;
-      locala.kGU = localLinkedList2;
+      locala.lio = localLinkedList2;
     }
     label532:
     label586:
     for (;;)
     {
-      locala.vNU = bool;
+      locala.wYq = bool;
       localLinkedList1.add(locala);
       j += 1;
       break;
@@ -114,20 +114,20 @@ public final class a
   public static a n(Map<String, String> paramMap, String paramString)
   {
     AppMethodBeat.i(51611);
-    int i = bt.getInt((String)paramMap.get(paramString + ".$type"), 0);
+    int i = bs.getInt((String)paramMap.get(paramString + ".$type"), 0);
     a locala = new a(i);
     locala.type = i;
-    locala.vNZ = bt.nullAsNil((String)paramMap.get(paramString + ".statid"));
-    locala.name = bt.nullAsNil((String)paramMap.get(paramString + ".name"));
-    locala.desc = bt.nullAsNil((String)paramMap.get(paramString + ".desc"));
-    locala.gKF = bt.nullAsNil((String)paramMap.get(paramString + ".digest"));
-    locala.dcz = bt.getInt((String)paramMap.get(paramString + ".showtype"), 0);
-    locala.image = bt.nullAsNil((String)paramMap.get(paramString + ".image"));
-    locala.key = bt.nullAsNil((String)paramMap.get(paramString + ".$key"));
-    locala.iconUrl = bt.nullAsNil((String)paramMap.get(paramString + ".iconurl"));
+    locala.wYv = bs.nullAsNil((String)paramMap.get(paramString + ".statid"));
+    locala.name = bs.nullAsNil((String)paramMap.get(paramString + ".name"));
+    locala.desc = bs.nullAsNil((String)paramMap.get(paramString + ".desc"));
+    locala.hlf = bs.nullAsNil((String)paramMap.get(paramString + ".digest"));
+    locala.cZX = bs.getInt((String)paramMap.get(paramString + ".showtype"), 0);
+    locala.image = bs.nullAsNil((String)paramMap.get(paramString + ".image"));
+    locala.key = bs.nullAsNil((String)paramMap.get(paramString + ".$key"));
+    locala.iconUrl = bs.nullAsNil((String)paramMap.get(paramString + ".iconurl"));
     if (i == 1)
     {
-      locala.link = bt.nullAsNil((String)paramMap.get(paramString + ".link"));
+      locala.link = bs.nullAsNil((String)paramMap.get(paramString + ".link"));
       paramMap = locala;
     }
     for (;;)
@@ -136,33 +136,33 @@ public final class a
       return paramMap;
       if (i == 2)
       {
-        locala.username = bt.nullAsNil((String)paramMap.get(paramString + ".username"));
-        locala.nickname = bt.nullAsNil((String)paramMap.get(paramString + ".nickname"));
-        locala.vOd = bt.nullAsNil((String)paramMap.get(paramString + ".strbeforefollow"));
-        locala.vOe = bt.nullAsNil((String)paramMap.get(paramString + ".strafterfollow"));
+        locala.username = bs.nullAsNil((String)paramMap.get(paramString + ".username"));
+        locala.nickname = bs.nullAsNil((String)paramMap.get(paramString + ".nickname"));
+        locala.wYz = bs.nullAsNil((String)paramMap.get(paramString + ".strbeforefollow"));
+        locala.wYA = bs.nullAsNil((String)paramMap.get(paramString + ".strafterfollow"));
         paramMap = locala;
       }
       else if (i == 3)
       {
-        locala.thumburl = bt.nullAsNil((String)paramMap.get(paramString + ".thumburl"));
-        locala.link = bt.nullAsNil((String)paramMap.get(paramString + ".link"));
+        locala.thumburl = bs.nullAsNil((String)paramMap.get(paramString + ".thumburl"));
+        locala.link = bs.nullAsNil((String)paramMap.get(paramString + ".link"));
         paramMap = locala;
       }
       else if (i == 4)
       {
-        locala.thumburl = bt.nullAsNil((String)paramMap.get(paramString + ".thumburl"));
-        locala.username = bt.nullAsNil((String)paramMap.get(paramString + ".username"));
-        locala.nickname = bt.nullAsNil((String)paramMap.get(paramString + ".nickname"));
+        locala.thumburl = bs.nullAsNil((String)paramMap.get(paramString + ".thumburl"));
+        locala.username = bs.nullAsNil((String)paramMap.get(paramString + ".username"));
+        locala.nickname = bs.nullAsNil((String)paramMap.get(paramString + ".nickname"));
         paramMap = locala;
       }
       else
       {
         if (i == 5)
         {
-          locala.vNW = bt.nullAsNil((String)paramMap.get(paramString + ".wifiurl"));
-          locala.vNX = bt.nullAsNil((String)paramMap.get(paramString + ".wapurl"));
-          locala.vNY = bt.nullAsNil((String)paramMap.get(paramString + ".weburl"));
-          if ((bt.isNullOrNil(locala.vNW)) && (bt.isNullOrNil(locala.vNX)) && (bt.isNullOrNil(locala.vNY))) {
+          locala.wYs = bs.nullAsNil((String)paramMap.get(paramString + ".wifiurl"));
+          locala.wYt = bs.nullAsNil((String)paramMap.get(paramString + ".wapurl"));
+          locala.wYu = bs.nullAsNil((String)paramMap.get(paramString + ".weburl"));
+          if ((bs.isNullOrNil(locala.wYs)) && (bs.isNullOrNil(locala.wYt)) && (bs.isNullOrNil(locala.wYu))) {
             paramMap = null;
           }
         }
@@ -170,53 +170,53 @@ public final class a
         {
           if (i == 7)
           {
-            locala.thumburl = bt.nullAsNil((String)paramMap.get(paramString + ".thumburl"));
-            locala.vNV = bt.nullAsNil((String)paramMap.get(paramString + ".playurl"));
+            locala.thumburl = bs.nullAsNil((String)paramMap.get(paramString + ".thumburl"));
+            locala.wYr = bs.nullAsNil((String)paramMap.get(paramString + ".playurl"));
             paramMap = locala;
             continue;
           }
           if (i == 9)
           {
-            locala.vOa = bt.nullAsNil((String)paramMap.get(paramString + ".productid"));
+            locala.wYw = bs.nullAsNil((String)paramMap.get(paramString + ".productid"));
             paramMap = locala;
             continue;
           }
           if (i == 8)
           {
-            locala.vOb = bt.nullAsNil((String)paramMap.get(paramString + ".cardext"));
-            locala.vOc = bt.nullAsNil((String)paramMap.get(paramString + ".cardid"));
+            locala.wYx = bs.nullAsNil((String)paramMap.get(paramString + ".cardext"));
+            locala.wYy = bs.nullAsNil((String)paramMap.get(paramString + ".cardid"));
             paramMap = locala;
             continue;
           }
           if (i == 10)
           {
-            locala.vOa = bt.nullAsNil((String)paramMap.get(paramString + ".id"));
+            locala.wYw = bs.nullAsNil((String)paramMap.get(paramString + ".id"));
             paramMap = locala;
             continue;
           }
           if (i == 12)
           {
-            locala.thumburl = bt.nullAsNil((String)paramMap.get(paramString + ".image"));
-            locala.link = bt.nullAsNil((String)paramMap.get(paramString + ".link"));
+            locala.thumburl = bs.nullAsNil((String)paramMap.get(paramString + ".image"));
+            locala.link = bs.nullAsNil((String)paramMap.get(paramString + ".link"));
             paramMap = locala;
             continue;
           }
           if (i == 22)
           {
-            locala.content = bt.nullAsNil((String)paramMap.get(paramString + ".content"));
-            locala.link = bt.nullAsNil((String)paramMap.get(paramString + ".link"));
-            locala.nickname = bt.nullAsNil((String)paramMap.get(paramString + ".nickname"));
-            locala.thumburl = bt.nullAsNil((String)paramMap.get(paramString + ".image"));
+            locala.content = bs.nullAsNil((String)paramMap.get(paramString + ".content"));
+            locala.link = bs.nullAsNil((String)paramMap.get(paramString + ".link"));
+            locala.nickname = bs.nullAsNil((String)paramMap.get(paramString + ".nickname"));
+            locala.thumburl = bs.nullAsNil((String)paramMap.get(paramString + ".image"));
             paramMap = locala;
             continue;
           }
           if (i == 21)
           {
-            locala.vNT = bt.nullAsNil((String)paramMap.get(paramString + ".referkey"));
+            locala.wYp = bs.nullAsNil((String)paramMap.get(paramString + ".referkey"));
             paramMap = locala;
             continue;
           }
-          locala.link = bt.nullAsNil((String)paramMap.get(paramString + ".link"));
+          locala.link = bs.nullAsNil((String)paramMap.get(paramString + ".link"));
         }
         paramMap = locala;
       }
@@ -225,10 +225,10 @@ public final class a
   
   public static final class a
   {
+    public int cZX;
     public String content;
-    public int dcz;
     public String desc = "";
-    public String gKF = "";
+    public String hlf = "";
     public String iconUrl = "";
     public String image = "";
     public String key;
@@ -238,17 +238,17 @@ public final class a
     public String thumburl = "";
     public int type;
     public String username = "";
-    public String vNT;
-    public String vNV = "";
-    public String vNW = "";
-    public String vNX = "";
-    public String vNY = "";
-    public String vNZ = "";
-    public String vOa = "";
-    public String vOb = "";
-    public String vOc = "";
-    public String vOd;
-    public String vOe;
+    public String wYA;
+    public String wYp;
+    public String wYr = "";
+    public String wYs = "";
+    public String wYt = "";
+    public String wYu = "";
+    public String wYv = "";
+    public String wYw = "";
+    public String wYx = "";
+    public String wYy = "";
+    public String wYz;
     
     public a() {}
     
@@ -260,7 +260,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.a
  * JD-Core Version:    0.7.0.1
  */

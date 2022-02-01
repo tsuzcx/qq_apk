@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.j.a;
-import com.tencent.mm.protocal.protobuf.beq;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.protocal.protobuf.dj;
-import com.tencent.mm.protocal.protobuf.gg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.sns.i.a;
+import com.tencent.mm.protocal.protobuf.bii;
+import com.tencent.mm.protocal.protobuf.btz;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.protocal.protobuf.gk;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,82 +16,82 @@ import java.util.List;
 import java.util.Map;
 
 public final class g
-  extends d<bpi>
+  extends d<btz>
 {
-  private List<bpi> list;
+  private List<btz> list;
   private String path;
-  private String sOz;
-  private int xjP;
-  private int xjQ;
-  private gg xkh;
-  private dj xki;
-  private a xkj;
+  private String tWM;
+  private int ywI;
+  private int ywJ;
+  private gk yxa;
+  private dl yxb;
+  private a yxc;
   
   public g(a parama)
   {
     AppMethodBeat.i(97712);
     this.list = new ArrayList();
-    this.xjP = 0;
-    this.xjQ = 0;
-    this.sOz = "";
+    this.ywI = 0;
+    this.ywJ = 0;
+    this.tWM = "";
     this.path = "";
-    this.xkj = parama;
+    this.yxc = parama;
     AppMethodBeat.o(97712);
   }
   
-  public final List<bpi> VZ()
+  public final List<btz> WX()
   {
     AppMethodBeat.i(97714);
     ArrayList localArrayList = new ArrayList();
     try
     {
       localArrayList.clear();
-      this.xki = null;
-      Object localObject1 = this.path + this.sOz + "_ARTISTF.mm";
+      this.yxb = null;
+      Object localObject1 = this.path + this.tWM + "_ARTISTF.mm";
       Object localObject2;
-      if (i.eK((String)localObject1))
+      if (i.eA((String)localObject1))
       {
-        localObject2 = i.aR((String)localObject1, 0, -1);
-        this.xki = ((dj)new dj().parseFrom((byte[])localObject2));
+        localObject2 = i.aU((String)localObject1, 0, -1);
+        this.yxb = ((dl)new dl().parseFrom((byte[])localObject2));
       }
-      if (this.xki == null)
+      if (this.yxb == null)
       {
-        localObject2 = this.path + this.sOz + "_ARTIST.mm";
-        this.xki = a.apj(new String(i.aR((String)localObject2, 0, (int)i.aMN((String)localObject2))));
-        if (this.xki == null)
+        localObject2 = this.path + this.tWM + "_ARTIST.mm";
+        this.yxb = a.auv(new String(i.aU((String)localObject2, 0, (int)i.aSp((String)localObject2))));
+        if (this.yxb == null)
         {
           i.deleteFile((String)localObject2);
           AppMethodBeat.o(97714);
           return null;
         }
         i.deleteFile((String)localObject1);
-        localObject2 = this.xki.toByteArray();
+        localObject2 = this.yxb.toByteArray();
         i.f((String)localObject1, (byte[])localObject2, localObject2.length);
       }
-      localObject1 = this.xki;
+      localObject1 = this.yxb;
       if (localObject1 == null)
       {
         AppMethodBeat.o(97714);
         return null;
       }
-      localObject1 = this.xki.GroupList.iterator();
+      localObject1 = this.yxb.GroupList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        Object localObject3 = (beq)((Iterator)localObject1).next();
-        localObject2 = ((beq)localObject3).Name;
-        localObject3 = ((beq)localObject3).DaC.iterator();
+        Object localObject3 = (bii)((Iterator)localObject1).next();
+        localObject2 = ((bii)localObject3).Name;
+        localObject3 = ((bii)localObject3).Etz.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          bpi localbpi = (bpi)((Iterator)localObject3).next();
-          localbpi.Desc = ((String)localObject2);
-          localArrayList.add(localbpi);
+          btz localbtz = (btz)((Iterator)localObject3).next();
+          localbtz.Desc = ((String)localObject2);
+          localArrayList.add(localbtz);
         }
       }
-      this.xkh = this.xki.Cyd;
+      this.yxa = this.yxb.DQz;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.ArtistAdapterHelper", localException, "loadData failed.", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.ArtistAdapterHelper", localException, "loadData failed.", new Object[0]);
       AppMethodBeat.o(97714);
       return null;
     }
@@ -99,10 +99,10 @@ public final class g
     return localException;
   }
   
-  public final void fB(List<bpi> paramList)
+  public final void fJ(List<btz> paramList)
   {
     AppMethodBeat.i(97713);
-    if (this.xkj != null)
+    if (this.yxc != null)
     {
       if (paramList != null)
       {
@@ -111,17 +111,17 @@ public final class g
         localHashMap1.clear();
         localHashMap2.clear();
         int n = paramList.size();
-        ad.d("MicroMsg.ArtistAdapterHelper", "initFixType ".concat(String.valueOf(n)));
+        ac.d("MicroMsg.ArtistAdapterHelper", "initFixType ".concat(String.valueOf(n)));
         int j = 0;
         int k = 0;
         int m = 0;
         if (j < n)
         {
-          String str = ((bpi)paramList.get(j)).Desc;
+          String str = ((btz)paramList.get(j)).Desc;
           int i;
           if (j + 1 < n)
           {
-            if (str.equals(((bpi)paramList.get(j + 1)).Desc)) {
+            if (str.equals(((btz)paramList.get(j + 1)).Desc)) {
               break label192;
             }
             i = 1;
@@ -139,7 +139,7 @@ public final class g
             label192:
             if (j + 2 < n)
             {
-              if (!str.equals(((bpi)paramList.get(j + 2)).Desc)) {
+              if (!str.equals(((btz)paramList.get(j + 2)).Desc)) {
                 i = 2;
               }
             }
@@ -151,33 +151,33 @@ public final class g
             i = 3;
           }
         }
-        this.xjP = (k + 1);
-        this.xjQ = paramList.size();
-        ad.d("MicroMsg.ArtistAdapterHelper", "icount " + this.xjP);
+        this.ywI = (k + 1);
+        this.ywJ = paramList.size();
+        ac.d("MicroMsg.ArtistAdapterHelper", "icount " + this.ywI);
         this.list = paramList;
-        this.xkj.a(this.list, localHashMap1, localHashMap2, this.xjQ, this.xjP, this.xkh);
+        this.yxc.a(this.list, localHashMap1, localHashMap2, this.ywJ, this.ywI, this.yxa);
         AppMethodBeat.o(97713);
         return;
       }
-      this.xkj.dyE();
+      this.yxc.dNb();
     }
     AppMethodBeat.o(97713);
   }
   
-  public final void ji(String paramString1, String paramString2)
+  public final void jG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97715);
-    this.sOz = paramString1;
+    this.tWM = paramString1;
     this.path = paramString2;
-    lQ(true);
+    mJ(true);
     AppMethodBeat.o(97715);
   }
   
   public static abstract interface a
   {
-    public abstract void a(List<bpi> paramList, Map<Integer, Integer> paramMap1, Map<Integer, Integer> paramMap2, int paramInt1, int paramInt2, gg paramgg);
+    public abstract void a(List<btz> paramList, Map<Integer, Integer> paramMap1, Map<Integer, Integer> paramMap2, int paramInt1, int paramInt2, gk paramgk);
     
-    public abstract void dyE();
+    public abstract void dNb();
   }
 }
 

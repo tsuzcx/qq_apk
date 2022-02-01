@@ -11,7 +11,7 @@ public class DownloadReceiver
   extends ResultReceiver
 {
   private static final String TAG;
-  private s.c Fj;
+  private s.c Gh;
   
   static
   {
@@ -27,20 +27,20 @@ public class DownloadReceiver
     if (paramInt == 4657)
     {
       paramInt = paramBundle.getInt("progress");
-      if (c.ugT == null)
+      if (c.vpR == null)
       {
         AppMethodBeat.o(88886);
         return;
       }
       if (paramInt < 100)
       {
-        this.Fj.b(100, paramInt, false).g("Download in progress:".concat(String.valueOf(paramInt)));
-        c.ugT.notify(4657, this.Fj.build());
+        this.Gh.b(100, paramInt, false).g("Download in progress:".concat(String.valueOf(paramInt)));
+        c.vpR.notify(4657, this.Gh.build());
         AppMethodBeat.o(88886);
         return;
       }
-      this.Fj.b(0, 0, false).g("Download Complete");
-      c.ugT.notify(4658, this.Fj.build());
+      this.Gh.b(0, 0, false).g("Download Complete");
+      c.vpR.notify(4658, this.Gh.build());
     }
     AppMethodBeat.o(88886);
   }

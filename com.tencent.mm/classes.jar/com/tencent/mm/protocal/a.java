@@ -5,12 +5,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class a
 {
-  public static int eBB()
+  public static int eQV()
   {
     if (b.foreground) {
       return 1;
@@ -40,7 +40,7 @@ public class a
       }
       catch (Exception paramContext)
       {
-        ad.e("MicroMsg.BgFgBase", "getNetType: %s", new Object[] { bt.m(paramContext) });
+        ac.e("MicroMsg.BgFgBase", "getNetType: %s", new Object[] { bs.m(paramContext) });
         int i = 1;
         continue;
       }
@@ -60,7 +60,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.a
  * JD-Core Version:    0.7.0.1
  */

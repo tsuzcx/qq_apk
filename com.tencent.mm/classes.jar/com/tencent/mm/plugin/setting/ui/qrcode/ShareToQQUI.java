@@ -15,17 +15,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.model.u;
 import com.tencent.mm.modelsimple.x;
 import com.tencent.mm.plugin.account.model.j;
 import com.tencent.mm.plugin.account.ui.FacebookAuthUI;
 import com.tencent.mm.plugin.setting.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.g.a.c;
@@ -33,13 +33,13 @@ import com.tencent.mm.ui.widget.MMEditText.c;
 
 public class ShareToQQUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private ProgressDialog fpP = null;
-  private EditText lmq;
-  private TextView wdU;
-  private int wdV;
-  private boolean wdW = false;
+  private ProgressDialog fts = null;
+  private EditText lMg;
+  private TextView xpi;
+  private int xpj;
+  private boolean xpk = false;
   
   public int getLayoutId()
   {
@@ -50,12 +50,12 @@ public class ShareToQQUI
   {
     AppMethodBeat.i(73857);
     setMMTitle(2131763067);
-    this.lmq = ((EditText)findViewById(2131298739));
-    this.wdU = ((TextView)findViewById(2131307005));
-    this.lmq.addTextChangedListener(new MMEditText.c(this.lmq, this.wdU, 280));
-    this.wdV = getIntent().getIntExtra("show_to", 2);
-    if (this.wdV == 4) {
-      this.lmq.setText(2131763040);
+    this.lMg = ((EditText)findViewById(2131298739));
+    this.xpi = ((TextView)findViewById(2131307005));
+    this.lMg.addTextChangedListener(new MMEditText.c(this.lMg, this.xpi, 280));
+    this.xpj = getIntent().getIntExtra("show_to", 2);
+    if (this.xpj == 4) {
+      this.lMg.setText(2131763040);
     }
     for (;;)
     {
@@ -93,7 +93,7 @@ public class ShareToQQUI
           label75:
           for (paramAnonymousMenuItem = new x(paramAnonymousMenuItem, bool1, bool2);; paramAnonymousMenuItem = new x(ShareToQQUI.c(ShareToQQUI.this).getText().toString()))
           {
-            com.tencent.mm.kernel.g.aeS().a(paramAnonymousMenuItem, 0);
+            com.tencent.mm.kernel.g.agi().a(paramAnonymousMenuItem, 0);
             Object localObject = ShareToQQUI.this;
             AppCompatActivity localAppCompatActivity = ShareToQQUI.this.getContext();
             ShareToQQUI.this.getString(2131755906);
@@ -102,7 +102,7 @@ public class ShareToQQUI
               public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
               {
                 AppMethodBeat.i(73848);
-                com.tencent.mm.kernel.g.aeS().a(paramAnonymousMenuItem);
+                com.tencent.mm.kernel.g.agi().a(paramAnonymousMenuItem);
                 AppMethodBeat.o(73848);
               }
             }));
@@ -115,12 +115,12 @@ public class ShareToQQUI
             if (ShareToQQUI.b(ShareToQQUI.this) != 4) {
               break label304;
             }
-            long l = bt.f((Long)com.tencent.mm.kernel.g.afB().afk().get(65831, null));
-            paramAnonymousMenuItem = bt.nullAsNil((String)com.tencent.mm.kernel.g.afB().afk().get(65830, null));
-            if ((bt.vM(l) > 86400000L) && (paramAnonymousMenuItem.length() > 0))
+            long l = bs.g((Long)com.tencent.mm.kernel.g.agR().agA().get(65831, null));
+            paramAnonymousMenuItem = bs.nullAsNil((String)com.tencent.mm.kernel.g.agR().agA().get(65830, null));
+            if ((bs.Ap(l) > 86400000L) && (paramAnonymousMenuItem.length() > 0))
             {
               localObject = new c(ShareToQQUI.this.getString(2131758773));
-              ((c)localObject).aLA(paramAnonymousMenuItem);
+              ((c)localObject).aRc(paramAnonymousMenuItem);
               new j((c)localObject, new com.tencent.mm.plugin.account.model.k()
               {
                 public final void onError(int paramAnonymous2Int, String paramAnonymous2String)
@@ -136,19 +136,19 @@ public class ShareToQQUI
                   super.w(paramAnonymous2Bundle);
                   AppMethodBeat.o(73846);
                 }
-              }).aIh();
+              }).aOY();
             }
           }
           label162:
           label304:
-          h.j(ShareToQQUI.this.getContext(), 2131763643, 2131755906);
+          h.l(ShareToQQUI.this.getContext(), 2131763643, 2131755906);
           AppMethodBeat.o(73849);
           return true;
         }
       });
       AppMethodBeat.o(73857);
       return;
-      this.lmq.setText(2131763042);
+      this.lMg.setText(2131763042);
     }
   }
   
@@ -156,12 +156,12 @@ public class ShareToQQUI
   {
     AppMethodBeat.i(73855);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.aeS().a(26, this);
+    com.tencent.mm.kernel.g.agi().a(26, this);
     initView();
-    if (u.arj())
+    if (u.axZ())
     {
       paramBundle = new c(getString(2131758773));
-      paramBundle.aLA(bt.nullAsNil((String)com.tencent.mm.kernel.g.afB().afk().get(65830, null)));
+      paramBundle.aRc(bs.nullAsNil((String)com.tencent.mm.kernel.g.agR().agA().get(65830, null)));
       new j(paramBundle, new com.tencent.mm.plugin.account.model.k()
       {
         public final void onError(int paramAnonymousInt, String paramAnonymousString)
@@ -180,7 +180,7 @@ public class ShareToQQUI
           super.w(paramAnonymousBundle);
           AppMethodBeat.o(73852);
         }
-      }).aIh();
+      }).aOY();
     }
     AppMethodBeat.o(73855);
   }
@@ -188,7 +188,7 @@ public class ShareToQQUI
   public void onDestroy()
   {
     AppMethodBeat.i(73856);
-    com.tencent.mm.kernel.g.aeS().b(26, this);
+    com.tencent.mm.kernel.g.agi().b(26, this);
     super.onDestroy();
     AppMethodBeat.o(73856);
   }
@@ -196,21 +196,21 @@ public class ShareToQQUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(73858);
-    ad.i("MicroMsg.ShareToQQUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ac.i("MicroMsg.ShareToQQUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (paramn.getType() != 26)
     {
       AppMethodBeat.o(73858);
       return;
     }
-    if (this.fpP != null)
+    if (this.fts != null)
     {
-      this.fpP.dismiss();
-      this.fpP = null;
+      this.fts.dismiss();
+      this.fts = null;
     }
     if ((paramInt1 == 4) && (paramInt2 == -68))
     {
       paramn = paramString;
-      if (bt.isNullOrNil(paramString)) {
+      if (bs.isNullOrNil(paramString)) {
         paramn = "error";
       }
       h.a(this, paramn, getString(2131755906), new DialogInterface.OnClickListener()
@@ -221,9 +221,9 @@ public class ShareToQQUI
           Object localObject = new Intent(ShareToQQUI.this.getContext(), FacebookAuthUI.class);
           ((Intent)localObject).putExtra("is_force_unbind", true);
           paramAnonymousDialogInterface = ShareToQQUI.this.getContext();
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareToQQUI$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareToQQUI$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/setting/ui/qrcode/ShareToQQUI$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           ShareToQQUI.this.hideVKB();
           ShareToQQUI.this.finish();
@@ -246,12 +246,12 @@ public class ShareToQQUI
           AppMethodBeat.o(73851);
         }
       };
-      h.cf(this, paramString);
+      h.cg(this, paramString);
       AppMethodBeat.o(73858);
       return;
     }
-    this.wdW = false;
-    if (b.hYu.a(getContext(), paramInt1, paramInt2, paramString))
+    this.xpk = false;
+    if (b.iyy.a(getContext(), paramInt1, paramInt2, paramString))
     {
       AppMethodBeat.o(73858);
       return;
@@ -268,7 +268,7 @@ public class ShareToQQUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.qrcode.ShareToQQUI
  * JD-Core Version:    0.7.0.1
  */

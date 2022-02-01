@@ -13,9 +13,9 @@ public final class JsApiNavigateToDevMiniProgram
   private static final int CTRL_INDEX = 351;
   private static final String NAME = "navigateToDevMiniProgram";
   
-  protected final c aZJ()
+  protected final c bgB()
   {
-    return l.jZs;
+    return l.kAf;
   }
   
   static final class DevPkgInfo
@@ -23,9 +23,9 @@ public final class JsApiNavigateToDevMiniProgram
   {
     public static final Parcelable.Creator<DevPkgInfo> CREATOR;
     String appId;
-    String dzL;
-    String dzM;
-    String jZe;
+    String dxx;
+    String dxy;
+    String kzR;
     
     static
     {
@@ -40,9 +40,9 @@ public final class JsApiNavigateToDevMiniProgram
     {
       AppMethodBeat.i(46625);
       this.appId = paramParcel.readString();
-      this.dzL = paramParcel.readString();
-      this.dzM = paramParcel.readString();
-      this.jZe = paramParcel.readString();
+      this.dxx = paramParcel.readString();
+      this.dxy = paramParcel.readString();
+      this.kzR = paramParcel.readString();
       AppMethodBeat.o(46625);
     }
     
@@ -55,9 +55,9 @@ public final class JsApiNavigateToDevMiniProgram
     {
       AppMethodBeat.i(46624);
       paramParcel.writeString(this.appId);
-      paramParcel.writeString(this.dzL);
-      paramParcel.writeString(this.dzM);
-      paramParcel.writeString(this.jZe);
+      paramParcel.writeString(this.dxx);
+      paramParcel.writeString(this.dxy);
+      paramParcel.writeString(this.kzR);
       AppMethodBeat.o(46624);
     }
   }
@@ -68,7 +68,7 @@ public final class JsApiNavigateToDevMiniProgram
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.JsApiNavigateToDevMiniProgram
  * JD-Core Version:    0.7.0.1
  */

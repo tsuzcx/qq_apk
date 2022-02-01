@@ -4,46 +4,46 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.l;
 import com.tencent.mm.plugin.backup.i.v;
 import com.tencent.mm.plugin.backup.i.w;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
   extends com.tencent.mm.plugin.backup.g.b
 {
   final byte[] key;
-  final int mqf;
-  private v mwr;
-  private w mws;
-  final String mzv;
-  final String mzw;
-  private boolean mzx;
+  final int mSg;
+  private v mYs;
+  private w mYt;
+  final String nbw;
+  final String nbx;
+  private boolean nby;
   
   public a(String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3)
   {
     AppMethodBeat.i(21936);
-    this.mwr = new v();
-    this.mws = new w();
-    this.mzx = false;
-    ad.i("MicroMsg.BakOldAuthScene", "summerbak init id:%s,  hello:%s, ok:%s, stack[%s]", new Object[] { paramString3, paramString1, paramString2, bt.eGN() });
-    this.mwr.mAx = new com.tencent.mm.bx.b(l.e(paramString1.getBytes(), paramArrayOfByte));
-    this.mwr.mBG = 0;
-    this.mwr.ID = paramString3;
-    this.mwr.Version = 0;
-    this.mzv = paramString2;
-    this.mzw = paramString3;
+    this.mYs = new v();
+    this.mYt = new w();
+    this.nby = false;
+    ac.i("MicroMsg.BakOldAuthScene", "summerbak init id:%s,  hello:%s, ok:%s, stack[%s]", new Object[] { paramString3, paramString1, paramString2, bs.eWi() });
+    this.mYs.ncy = new com.tencent.mm.bw.b(l.e(paramString1.getBytes(), paramArrayOfByte));
+    this.mYs.ndH = 0;
+    this.mYs.ID = paramString3;
+    this.mYs.Version = 0;
+    this.nbw = paramString2;
+    this.nbx = paramString3;
     this.key = paramArrayOfByte;
-    this.mqf = -1;
+    this.mSg = -1;
     AppMethodBeat.o(21936);
   }
   
-  public final com.tencent.mm.bx.a bxu()
+  public final com.tencent.mm.bw.a bEq()
   {
-    return this.mws;
+    return this.mYt;
   }
   
-  public final com.tencent.mm.bx.a bxv()
+  public final com.tencent.mm.bw.a bEr()
   {
-    return this.mwr;
+    return this.mYs;
   }
   
   public final int getType()
@@ -51,52 +51,52 @@ public final class a
     return 1;
   }
   
-  public final void wf(int paramInt)
+  public final void wW(int paramInt)
   {
     AppMethodBeat.i(21937);
-    if (this.mws.mBi == 0)
+    if (this.mYt.ndj == 0)
     {
-      if (this.mzw.equals(this.mws.ID))
+      if (this.nbx.equals(this.mYt.ID))
       {
-        String str = new String(l.d(this.mws.mAx.wA, this.key));
-        if (str.length() != this.mzv.length()) {}
-        for (boolean bool = false;; bool = str.equals(this.mzv))
+        String str = new String(l.d(this.mYt.ncy.xy, this.key));
+        if (str.length() != this.nbw.length()) {}
+        for (boolean bool = false;; bool = str.equals(this.nbw))
         {
-          this.mzx = bool;
-          ad.i("MicroMsg.BakOldAuthScene", "check ok result:%b", new Object[] { Boolean.valueOf(this.mzx) });
-          if (!this.mzx) {
+          this.nby = bool;
+          ac.i("MicroMsg.BakOldAuthScene", "check ok result:%b", new Object[] { Boolean.valueOf(this.nby) });
+          if (!this.nby) {
             break;
           }
           q(0, 0, "auth ok");
-          this.mwr.mAx = new com.tencent.mm.bx.b(l.e(this.mzv.getBytes(), this.key));
-          this.mwr.mBG = 1;
-          this.mwr.ID = this.mzw;
+          this.mYs.ncy = new com.tencent.mm.bw.b(l.e(this.nbw.getBytes(), this.key));
+          this.mYs.ndH = 1;
+          this.mYs.ID = this.nbx;
           try
           {
-            ad.i("MicroMsg.BakOldAuthScene", "directSendAuthOk");
-            com.tencent.mm.plugin.backup.g.b.u(this.mwr.toByteArray(), getType(), paramInt);
+            ac.i("MicroMsg.BakOldAuthScene", "directSendAuthOk");
+            com.tencent.mm.plugin.backup.g.b.t(this.mYs.toByteArray(), getType(), paramInt);
             AppMethodBeat.o(21937);
             return;
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("MicroMsg.BakOldAuthScene", localException, "directSendAuthOk req to bur err.", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.BakOldAuthScene", localException, "directSendAuthOk req to bur err.", new Object[0]);
             AppMethodBeat.o(21937);
             return;
           }
         }
-        ad.e("MicroMsg.BakOldAuthScene", "check ok failed");
+        ac.e("MicroMsg.BakOldAuthScene", "check ok failed");
         q(4, 1, "not ok packet");
         AppMethodBeat.o(21937);
         return;
       }
-      ad.e("MicroMsg.BakOldAuthScene", "not the same id");
+      ac.e("MicroMsg.BakOldAuthScene", "not the same id");
       q(4, -1, "not the same id");
       AppMethodBeat.o(21937);
       return;
     }
-    ad.e("MicroMsg.BakOldAuthScene", "errType %d", new Object[] { Integer.valueOf(this.mws.mBi) });
-    q(4, this.mws.mBi, "not not success");
+    ac.e("MicroMsg.BakOldAuthScene", "errType %d", new Object[] { Integer.valueOf(this.mYt.ndj) });
+    q(4, this.mYt.ndj, "not not success");
     AppMethodBeat.o(21937);
   }
 }

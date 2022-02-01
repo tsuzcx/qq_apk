@@ -1,82 +1,76 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.plugin.finder.report.b;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.ak.b.a;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.ahx;
-import com.tencent.mm.protocal.protobuf.ahy;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aja;
+import com.tencent.mm.protocal.protobuf.ajb;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.aot;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.sdk.platformtools.ac;
+import d.a.j;
 import d.l;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/cgi/CgiDeleteFinderComment;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentResponse;", "commentId", "", "feedId", "objectNonceId", "", "scene", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JJLjava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/CgiCollectUnreadItem;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderCollectUnreadResponse;", "unreadList", "", "Lcom/tencent/mm/protocal/protobuf/FinderUnreadItem;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/util/List;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class a
-  extends an<ahy>
+  extends com.tencent.mm.ak.a<ajb>
 {
-  public static final a qol;
-  private long commentId;
-  private long feedId;
+  public static final a.a qWH;
+  private final List<aot> qWG;
   
   static
   {
-    AppMethodBeat.i(165160);
-    qol = new a((byte)0);
-    AppMethodBeat.o(165160);
+    AppMethodBeat.i(201098);
+    qWH = new a.a((byte)0);
+    AppMethodBeat.o(201098);
   }
   
-  public a(long paramLong1, long paramLong2, String paramString, int paramInt, dzp paramdzp)
+  public a(List<? extends aot> paramList, anm paramanm)
   {
-    super(paramdzp);
-    AppMethodBeat.i(197246);
-    Object localObject2 = new ahx();
-    Object localObject1 = new b.a();
-    ((b.a)localObject1).c((com.tencent.mm.bx.a)localObject2);
-    localObject2 = new ahy();
-    ((ahy)localObject2).setBaseResponse(new BaseResponse());
-    ((b.a)localObject1).d((com.tencent.mm.bx.a)localObject2);
-    ((b.a)localObject1).nC(2000);
-    ((b.a)localObject1).wg("/cgi-bin/micromsg-bin/findercomment");
-    ((b.a)localObject1).nB(3906);
-    c(((b.a)localObject1).atI());
-    ad.i("MicroMsg.Finder.CgiDeleteFinderComment", "CgiReplyFinderComment init");
-    this.commentId = paramLong1;
-    this.feedId = paramLong2;
-    ad.i("MicroMsg.Finder.CgiDeleteFinderComment", "[CgiDeleteFinderComment] commentId=" + paramLong1 + ')');
-    localObject1 = new ahx();
-    ((ahx)localObject1).commentId = paramLong1;
-    ((ahx)localObject1).opType = 1;
-    ((ahx)localObject1).objectId = paramLong2;
-    ((ahx)localObject1).objectNonceId = paramString;
-    ((ahx)localObject1).scene = paramInt;
-    paramString = am.KJy;
-    ((ahx)localObject1).Dkw = am.a(paramdzp);
-    paramString = b.qFq;
-    if (paramdzp != null) {}
-    for (paramInt = paramdzp.qqE;; paramInt = 0)
+    AppMethodBeat.i(201097);
+    this.qWG = paramList;
+    paramList = new b.a();
+    Object localObject1 = new aja();
+    Object localObject2 = q.qXH;
+    ((aja)localObject1).EDu = q.a(paramanm);
+    ((aja)localObject1).EDJ.addAll((Collection)this.qWG);
+    paramList.c((com.tencent.mm.bw.a)localObject1);
+    paramanm = new ajb();
+    paramanm.setBaseResponse(new BaseResponse());
+    paramanm.getBaseResponse().ErrMsg = new crm();
+    paramList.d((com.tencent.mm.bw.a)paramanm);
+    paramList.Am("/cgi-bin/micromsg-bin/findercollectunread");
+    paramList.op(3980);
+    c(paramList.aAz());
+    paramList = new StringBuilder("unreadList=");
+    localObject1 = (Iterable)this.qWG;
+    paramanm = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
+    localObject1 = ((Iterable)localObject1).iterator();
+    if (((Iterator)localObject1).hasNext())
     {
-      ((ahx)localObject1).sessionBuffer = b.am(paramLong2, paramInt);
-      paramString = new b.a();
-      paramString.c((com.tencent.mm.bx.a)localObject1);
-      paramdzp = new ahy();
-      paramdzp.setBaseResponse(new BaseResponse());
-      paramString.d((com.tencent.mm.bx.a)paramdzp);
-      paramString.nC(2000);
-      paramString.wg("/cgi-bin/micromsg-bin/findercomment");
-      paramString.nB(3906);
-      c(paramString.atI());
-      ad.i("MicroMsg.Finder.CgiDeleteFinderComment", "CgiReplyFinderComment init");
-      AppMethodBeat.o(197246);
-      return;
+      localObject2 = (aot)((Iterator)localObject1).next();
+      StringBuilder localStringBuilder = new StringBuilder().append(c.pb(((aot)localObject2).qXP)).append(" sessionBuff=");
+      if (((aot)localObject2).sessionBuffer != null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramanm.add(bool);
+        break;
+      }
     }
+    ac.i("CgiCollectUnreadItem", (List)paramanm);
+    AppMethodBeat.o(201097);
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/cgi/CgiDeleteFinderComment$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.a
  * JD-Core Version:    0.7.0.1
  */

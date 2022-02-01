@@ -25,7 +25,7 @@ public class RecoveryTinkerResultService
     localRecoveryHandleItem.clientVersion = localCommonOptions.getClientVersion();
     localRecoveryHandleItem.timestamp = System.currentTimeMillis();
     localRecoveryHandleItem.key = "KeyPatchResultTotalCount";
-    if (parama.dhg)
+    if (parama.deB)
     {
       RecoveryLog.i("Recovery.RecoveryTinkerResultService", "patch success", new Object[0]);
       localRecoveryHandleItem.key = "KeyPatchResultSuccessCount";

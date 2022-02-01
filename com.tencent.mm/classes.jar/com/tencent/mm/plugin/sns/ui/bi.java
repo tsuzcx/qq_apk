@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.sns.ui;
 
 public final class bi
 {
-  public String xLh;
-  public String xLi;
+  public String yXW;
+  public String yXX;
   
   public bi(String paramString1, String paramString2)
   {
-    this.xLi = paramString2;
-    this.xLh = paramString1;
+    this.yXX = paramString2;
+    this.yXW = paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.bi
  * JD-Core Version:    0.7.0.1
  */

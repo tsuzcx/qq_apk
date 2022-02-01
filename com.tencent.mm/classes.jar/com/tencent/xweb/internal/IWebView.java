@@ -11,15 +11,15 @@ import android.webkit.WebBackForwardList;
 import android.webkit.WebView.FindListener;
 import com.tencent.xweb.WebView.a;
 import com.tencent.xweb.WebView.b;
-import com.tencent.xweb.aa;
 import com.tencent.xweb.ab;
 import com.tencent.xweb.ac;
+import com.tencent.xweb.ae;
 import com.tencent.xweb.i;
-import com.tencent.xweb.t;
 import com.tencent.xweb.u;
-import com.tencent.xweb.w;
+import com.tencent.xweb.v;
+import com.tencent.xweb.x;
 import com.tencent.xweb.x5.export.external.extension.proxy.a;
-import com.tencent.xweb.y;
+import com.tencent.xweb.z;
 import java.util.Map;
 
 public abstract interface IWebView
@@ -56,9 +56,9 @@ public abstract interface IWebView
   
   public abstract int getContentHeight();
   
-  public abstract w getCurWebChromeClient();
+  public abstract x getCurWebChromeClient();
   
-  public abstract ab getCurWebviewClient();
+  public abstract ac getCurWebviewClient();
   
   public abstract e getDefalutOpProvider();
   
@@ -66,13 +66,15 @@ public abstract interface IWebView
   
   public abstract WebView.b getHitTestResult();
   
+  public abstract String[] getHttpAuthUsernamePassword(String paramString1, String paramString2);
+  
   public abstract boolean getImageBitmapToFile(String paramString1, String paramString2, String paramString3, i parami);
   
   public abstract float getScale();
   
   public abstract int getScrollHeight();
   
-  public abstract y getSettings();
+  public abstract z getSettings();
   
   public abstract String getTitle();
   
@@ -141,17 +143,19 @@ public abstract interface IWebView
   
   public abstract void setHorizontalScrollBarEnabled(boolean paramBoolean);
   
-  public abstract void setJSExceptionListener(ac paramac);
+  public abstract void setHttpAuthUsernamePassword(String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract void setJSExceptionListener(ae paramae);
   
   public abstract void setVerticalScrollBarEnabled(boolean paramBoolean);
   
-  public abstract t setVideoJsCallback(u paramu);
+  public abstract u setVideoJsCallback(v paramv);
   
-  public abstract void setWebChromeClient(w paramw);
+  public abstract void setWebChromeClient(x paramx);
   
-  public abstract void setWebViewCallbackClient(aa paramaa);
+  public abstract void setWebViewCallbackClient(ab paramab);
   
-  public abstract void setWebViewClient(ab paramab);
+  public abstract void setWebViewClient(ac paramac);
   
   public abstract void setWebViewClientExtension(a parama);
   

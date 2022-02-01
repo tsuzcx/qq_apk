@@ -100,6 +100,16 @@ public abstract class SQLiteProgram
     }
   }
   
+  public void bindAllArgs(Object[] paramArrayOfObject)
+  {
+    int i = paramArrayOfObject.length;
+    while (i != 0)
+    {
+      bind(i, paramArrayOfObject[(i - 1)]);
+      i -= 1;
+    }
+  }
+  
   public void bindAllArgsAsStrings(String[] paramArrayOfString)
   {
     if (paramArrayOfString != null)
@@ -181,10 +191,10 @@ public abstract class SQLiteProgram
     //   9: aload_0
     //   10: getfield 119	com/tencent/wcdb/database/SQLiteProgram:mPreparedStatement	Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
     //   13: ifnull +18 -> 31
-    //   16: new 201	com/tencent/wcdb/database/SQLiteMisuseException
+    //   16: new 202	com/tencent/wcdb/database/SQLiteMisuseException
     //   19: dup
-    //   20: ldc 203
-    //   22: invokespecial 204	com/tencent/wcdb/database/SQLiteMisuseException:<init>	(Ljava/lang/String;)V
+    //   20: ldc 204
+    //   22: invokespecial 205	com/tencent/wcdb/database/SQLiteMisuseException:<init>	(Ljava/lang/String;)V
     //   25: athrow
     //   26: astore_1
     //   27: aload_0
@@ -194,7 +204,7 @@ public abstract class SQLiteProgram
     //   31: aload_0
     //   32: monitorexit
     //   33: aload_0
-    //   34: invokespecial 206	java/lang/Object:finalize	()V
+    //   34: invokespecial 207	java/lang/Object:finalize	()V
     //   37: return
     // Local variable table:
     //   start	length	slot	name	signature

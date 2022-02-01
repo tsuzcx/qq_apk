@@ -1,78 +1,140 @@
 package com.tencent.mm.storage;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fd;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
-public class bu
-  extends fd
+public final class bu
 {
-  protected static Field[] EYt;
-  public static c.a info;
+  public a GZM;
+  private int GZN;
+  int drx;
+  public String name;
+  int status;
   
-  static
+  public bu()
   {
-    AppMethodBeat.i(43301);
-    EYt = fd.getValidFields(bu.class);
-    c.a locala = new c.a();
-    locala.EYt = new Field[11];
-    locala.columns = new String[12];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "svrid";
-    locala.EYv.put("svrid", "LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.EYu = "svrid";
-    locala.columns[1] = "status";
-    locala.EYv.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "type";
-    locala.EYv.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "scene";
-    locala.EYv.put("scene", "INTEGER");
-    localStringBuilder.append(" scene INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "createtime";
-    locala.EYv.put("createtime", "LONG");
-    localStringBuilder.append(" createtime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "talker";
-    locala.EYv.put("talker", "TEXT");
-    localStringBuilder.append(" talker TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "content";
-    locala.EYv.put("content", "TEXT");
-    localStringBuilder.append(" content TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "sayhiuser";
-    locala.EYv.put("sayhiuser", "TEXT");
-    localStringBuilder.append(" sayhiuser TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "sayhicontent";
-    locala.EYv.put("sayhicontent", "TEXT");
-    localStringBuilder.append(" sayhicontent TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "imgpath";
-    locala.EYv.put("imgpath", "TEXT");
-    localStringBuilder.append(" imgpath TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "isSend";
-    locala.EYv.put("isSend", "INTEGER");
-    localStringBuilder.append(" isSend INTEGER");
-    locala.columns[11] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(43301);
+    this.drx = 135;
+    this.name = "";
+    this.GZM = null;
+    this.GZM = null;
+    this.name = "";
+    this.status = 0;
+    this.GZN = 0;
   }
   
-  public c.a getDBInfo()
+  public bu(String paramString, boolean paramBoolean, int paramInt)
   {
-    return info;
+    AppMethodBeat.i(43298);
+    this.drx = 135;
+    this.name = "";
+    this.GZM = null;
+    this.GZM = new a(paramString);
+    this.name = paramString;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      this.status = (i | 0x2);
+      this.GZN = paramInt;
+      AppMethodBeat.o(43298);
+      return;
+    }
+  }
+  
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(43299);
+    if ((this.drx & 0x2) != 0)
+    {
+      this.name = paramCursor.getString(1);
+      if (this.GZM == null) {
+        this.GZM = new a(this.name);
+      }
+    }
+    if ((this.drx & 0x4) != 0) {
+      this.status = paramCursor.getInt(2);
+    }
+    if ((this.drx & 0x80) != 0) {
+      this.GZN = paramCursor.getInt(7);
+    }
+    AppMethodBeat.o(43299);
+  }
+  
+  public final ContentValues convertTo()
+  {
+    AppMethodBeat.i(43300);
+    ContentValues localContentValues = new ContentValues();
+    if ((this.drx & 0x2) != 0) {
+      localContentValues.put("name", this.name);
+    }
+    if ((this.drx & 0x4) != 0) {
+      localContentValues.put("status", Integer.valueOf(this.status));
+    }
+    if ((this.drx & 0x80) != 0) {
+      localContentValues.put("int_reserved1", Integer.valueOf(this.GZN));
+    }
+    AppMethodBeat.o(43300);
+    return localContentValues;
+  }
+  
+  public final boolean fcv()
+  {
+    return (this.status & 0x2) != 0;
+  }
+  
+  public final boolean fcw()
+  {
+    return this.GZN == 1;
+  }
+  
+  public final boolean isEnable()
+  {
+    return (this.status & 0x1) != 0;
+  }
+  
+  public final void setEnable(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      int j = this.status;
+      if (paramBoolean) {}
+      for (int i = 1;; i = 0)
+      {
+        this.status = (i | j);
+        return;
+      }
+    }
+    this.status &= 0xFFFFFFFE;
+  }
+  
+  public static final class a
+  {
+    private String DbG;
+    private String drG;
+    
+    public a(String paramString)
+    {
+      AppMethodBeat.i(43297);
+      int i = paramString.indexOf("@");
+      if (i >= 0)
+      {
+        this.drG = paramString.substring(0, i);
+        this.DbG = paramString.substring(i);
+        AppMethodBeat.o(43297);
+        return;
+      }
+      this.drG = paramString;
+      this.DbG = "";
+      AppMethodBeat.o(43297);
+    }
+    
+    public final String aOB(String paramString)
+    {
+      if (this.DbG != null) {
+        paramString = this.DbG;
+      }
+      return paramString;
+    }
   }
 }
 

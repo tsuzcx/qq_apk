@@ -1,33 +1,64 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.ui.chatting.d.a;
 
-final class bc$d
-  extends c.a
+public final class bc$d
+  extends bc.a
 {
-  TextView GOh;
-  
-  public final c.a ge(View paramView)
+  public final View a(LayoutInflater paramLayoutInflater, View paramView)
   {
-    AppMethodBeat.i(37548);
-    super.fK(paramView);
-    this.fwS = ((TextView)paramView.findViewById(2131298178));
-    this.GOh = ((TextView)paramView.findViewById(2131298211));
-    this.naN = paramView.findViewById(2131298069);
-    this.GHZ = ((ImageView)paramView.findViewById(2131298174));
-    this.hIS = ((CheckBox)paramView.findViewById(2131298068));
-    this.lRB = paramView.findViewById(2131298147);
-    AppMethodBeat.o(37548);
-    return this;
+    AppMethodBeat.i(37521);
+    Object localObject;
+    if (paramView != null)
+    {
+      localObject = paramView;
+      if (paramView.getTag() != null) {}
+    }
+    else
+    {
+      localObject = new ag(paramLayoutInflater, 2131493463);
+      ((View)localObject).setTag(new bc.i().gr((View)localObject));
+    }
+    AppMethodBeat.o(37521);
+    return localObject;
+  }
+  
+  public final void a(c.a parama, int paramInt, a parama1, bo parambo, String paramString)
+  {
+    AppMethodBeat.i(37522);
+    bc.i.a((bc.i)parama, parambo, true, paramInt, parama1, o(parama1), c(parama1));
+    AppMethodBeat.o(37522);
+  }
+  
+  public final boolean a(ContextMenu paramContextMenu, View paramView, bo parambo)
+  {
+    return false;
+  }
+  
+  public final boolean a(MenuItem paramMenuItem, a parama, bo parambo)
+  {
+    return false;
+  }
+  
+  public final boolean b(View paramView, a parama, bo parambo)
+  {
+    return false;
+  }
+  
+  public final boolean bb(int paramInt, boolean paramBoolean)
+  {
+    return (!paramBoolean) && (paramInt == 53);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bc.d
  * JD-Core Version:    0.7.0.1
  */

@@ -10,37 +10,37 @@ public final class d
     super(paramString);
   }
   
-  static d xX()
+  static d xK()
   {
     return new d("While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.");
   }
   
-  static d xY()
+  static d xL()
   {
     return new d("CodedInputStream encountered an embedded string or message which claimed to have negative size.");
   }
   
-  static d xZ()
+  static d xM()
   {
     return new d("CodedInputStream encountered a malformed varint.");
   }
   
-  static d ya()
+  static d xN()
   {
     return new d("Protocol message contained an invalid tag (zero).");
   }
   
-  static d yb()
+  static d xO()
   {
     return new d("Protocol message end-group tag did not match expected tag.");
   }
   
-  static d yc()
+  static d xP()
   {
     return new d("Protocol message tag had invalid wire type.");
   }
   
-  static d yd()
+  static d xQ()
   {
     return new d("Protocol message had too many levels of nesting.  May be malicious.  Use CodedInputStream.setRecursionLimit() to increase the depth limit.");
   }

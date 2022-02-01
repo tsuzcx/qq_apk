@@ -10,11 +10,11 @@ import com.tencent.pb.common.c.c;
 
 public final class g
 {
-  private WifiInfo Ikp = null;
-  private NetworkInfo fiM = null;
+  private WifiInfo JMa = null;
+  private NetworkInfo fmg = null;
   private int lastNetType = 1;
   
-  public final boolean Tv()
+  public final boolean Up()
   {
     Object localObject1 = null;
     int i;
@@ -22,14 +22,14 @@ public final class g
     {
       try
       {
-        localObject3 = (ConnectivityManager)c.ztG.getSystemService("connectivity");
+        localObject3 = (ConnectivityManager)c.AMx.getSystemService("connectivity");
         if (localObject3 != null) {
           continue;
         }
         b.w("NetworkChangeMgr", new Object[] { "can't get ConnectivityManager" });
         this.lastNetType = 1;
-        this.Ikp = null;
-        this.fiM = null;
+        this.JMa = null;
+        this.fmg = null;
         bool = true;
       }
       catch (Exception localException)
@@ -38,33 +38,33 @@ public final class g
         label122:
         b.w("NetworkChangeMgr", new Object[] { localException });
         this.lastNetType = 1;
-        this.Ikp = null;
-        this.fiM = null;
+        this.JMa = null;
+        this.fmg = null;
         bool = true;
         continue;
         if (((NetworkInfo)localObject3).getType() != 1) {
           break label456;
         }
-        localWifiInfo = ((WifiManager)c.ztG.getSystemService("wifi")).getConnectionInfo();
+        localWifiInfo = ((WifiManager)c.AMx.getSystemService("wifi")).getConnectionInfo();
         i = 2;
         continue;
         if (i != 2) {
           continue;
         }
-        if ((localWifiInfo == null) || (this.Ikp == null) || (!this.Ikp.getBSSID().equals(localWifiInfo.getBSSID())) || (!this.Ikp.getSSID().equals(localWifiInfo.getSSID())) || (this.Ikp.getNetworkId() != localWifiInfo.getNetworkId())) {
+        if ((localWifiInfo == null) || (this.JMa == null) || (!this.JMa.getBSSID().equals(localWifiInfo.getBSSID())) || (!this.JMa.getSSID().equals(localWifiInfo.getSSID())) || (this.JMa.getNetworkId() != localWifiInfo.getNetworkId())) {
           break label461;
         }
         bool = false;
         continue;
-        if ((this.fiM == null) || (this.fiM.getExtraInfo() == null) || (((NetworkInfo)localObject3).getExtraInfo() == null) || (!this.fiM.getExtraInfo().equals(((NetworkInfo)localObject3).getExtraInfo())) || (this.fiM.getSubtype() != ((NetworkInfo)localObject3).getSubtype()) || (this.fiM.getType() != ((NetworkInfo)localObject3).getType())) {
+        if ((this.fmg == null) || (this.fmg.getExtraInfo() == null) || (((NetworkInfo)localObject3).getExtraInfo() == null) || (!this.fmg.getExtraInfo().equals(((NetworkInfo)localObject3).getExtraInfo())) || (this.fmg.getSubtype() != ((NetworkInfo)localObject3).getSubtype()) || (this.fmg.getType() != ((NetworkInfo)localObject3).getType())) {
           continue;
         }
         bool = false;
         continue;
-        if ((this.fiM == null) || (this.fiM.getExtraInfo() != null) || (((NetworkInfo)localObject3).getExtraInfo() != null) || (this.fiM.getSubtype() != ((NetworkInfo)localObject3).getSubtype())) {
+        if ((this.fmg == null) || (this.fmg.getExtraInfo() != null) || (((NetworkInfo)localObject3).getExtraInfo() != null) || (this.fmg.getSubtype() != ((NetworkInfo)localObject3).getSubtype())) {
           continue;
         }
-        j = this.fiM.getType();
+        j = this.fmg.getType();
         k = ((NetworkInfo)localObject3).getType();
         if (j != k) {
           continue;
@@ -80,8 +80,8 @@ public final class g
       if (localObject3 == null)
       {
         this.lastNetType = 1;
-        this.Ikp = null;
-        this.fiM = null;
+        this.JMa = null;
+        this.fmg = null;
         bool = true;
       }
       else
@@ -104,8 +104,8 @@ public final class g
     for (boolean bool = false;; bool = true)
     {
       this.lastNetType = i;
-      this.Ikp = localObject1;
-      this.fiM = ((NetworkInfo)localObject3);
+      this.JMa = localObject1;
+      this.fmg = ((NetworkInfo)localObject3);
       break;
       WifiInfo localWifiInfo;
       int j;
@@ -117,7 +117,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.pb.common.b.g
  * JD-Core Version:    0.7.0.1
  */

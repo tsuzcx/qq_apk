@@ -11,12 +11,13 @@ import com.tencent.smtt.utils.TbsLogClient;
 import com.tencent.xweb.JsRuntime.JsRuntimeType;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.WebView.PreInitCallback;
-import com.tencent.xweb.af;
+import com.tencent.xweb.ah;
 import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
 import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
 import com.tencent.xweb.internal.IJsRuntime;
 import com.tencent.xweb.internal.IWebStorage;
 import com.tencent.xweb.internal.IWebView;
+import com.tencent.xweb.internal.IWebViewDatabase;
 import com.tencent.xweb.internal.j.a;
 import com.tencent.xweb.x5.sdk.g;
 import com.tencent.xweb.x5.sdk.i;
@@ -34,7 +35,7 @@ public class X5WebFactory
     AppMethodBeat.i(153884);
     if (sInstance == null)
     {
-      af.frp();
+      ah.fJR();
       sInstance = new X5WebFactory();
     }
     X5WebFactory localX5WebFactory = sInstance;
@@ -109,7 +110,7 @@ public class X5WebFactory
   {
     AppMethodBeat.i(153889);
     Object localObject = null;
-    switch (1.ISl[paramJsRuntimeType.ordinal()])
+    switch (1.KEI[paramJsRuntimeType.ordinal()])
     {
     default: 
       paramJsRuntimeType = localObject;
@@ -129,6 +130,14 @@ public class X5WebFactory
       paramJsRuntimeType.init(0);
       break;
     }
+  }
+  
+  public IWebViewDatabase getWebViewDatabase()
+  {
+    AppMethodBeat.i(208891);
+    n localn = new n();
+    AppMethodBeat.o(208891);
+    return localn;
   }
   
   public boolean hasInited()
@@ -165,7 +174,7 @@ public class X5WebFactory
   public boolean initWebviewCore(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
   {
     AppMethodBeat.i(153890);
-    af.frp();
+    ah.fJR();
     com.tencent.xweb.x5.sdk.d.disableAutoCreateX5Webview();
     b.a(paramContext, paramPreInitCallback);
     AppMethodBeat.o(153890);
@@ -259,32 +268,32 @@ public class X5WebFactory
   
   static final class b
   {
-    private static boolean ISn = false;
-    private static boolean peC = false;
+    private static boolean KEK = false;
+    private static boolean pHN = false;
     
     public static void a(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
     {
       AppMethodBeat.i(153883);
-      if (peC)
+      if (pHN)
       {
         AppMethodBeat.o(153883);
         return;
       }
       Log.i("X5WebFactory.preIniter", "preInit");
-      peC = true;
+      pHN = true;
       QbSdk.preInit(paramContext, new QbSdk.PreInitCallback()
       {
-        private boolean ISo = false;
-        private boolean ISp = false;
+        private boolean KEL = false;
+        private boolean KEM = false;
         
         public final void onCoreInitFinished()
         {
           AppMethodBeat.i(153881);
-          this.ISo = true;
-          if ((this.ISo) && (this.ISp) && (this.AKm != null))
+          this.KEL = true;
+          if ((this.KEL) && (this.KEM) && (this.CcD != null))
           {
-            this.AKm.onCoreInitFinished();
-            X5WebFactory.b.acT();
+            this.CcD.onCoreInitFinished();
+            X5WebFactory.b.adZ();
           }
           AppMethodBeat.o(153881);
         }
@@ -292,11 +301,11 @@ public class X5WebFactory
         public final void onViewInitFinished(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(153882);
-          this.ISp = true;
-          if ((this.ISo) && (this.ISp) && (this.AKm != null))
+          this.KEM = true;
+          if ((this.KEL) && (this.KEM) && (this.CcD != null))
           {
-            this.AKm.onCoreInitFinished();
-            X5WebFactory.b.acT();
+            this.CcD.onCoreInitFinished();
+            X5WebFactory.b.adZ();
           }
           AppMethodBeat.o(153882);
         }
@@ -306,12 +315,12 @@ public class X5WebFactory
     
     public static boolean hasInited()
     {
-      return peC;
+      return pHN;
     }
     
     public static boolean isCoreReady()
     {
-      return ISn;
+      return KEK;
     }
   }
 }

@@ -5,30 +5,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
 {
-  public static boolean ETC;
+  public static boolean GqP;
   
   static
   {
     AppMethodBeat.i(185116);
-    ETC = true;
-    ETC = true;
-    uR(true);
+    GqP = true;
+    GqP = true;
+    vT(true);
     AppMethodBeat.o(185116);
   }
   
-  public static void eFg() {}
+  public static void eUA() {}
   
-  public static int eFh()
+  public static int eUB()
   {
-    return r.a.ETL.ETH;
+    return r.a.GqX.GqU;
   }
   
-  public static boolean iW(int paramInt1, int paramInt2)
+  public static boolean jj(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(157544);
-    r localr = r.a.ETL;
-    ad.d("MicroMsg.GPU_TAG", "canUseHardwareAcceleration maxTextureSize %s w %s h %s.", new Object[] { Integer.valueOf(localr.ETH), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if ((paramInt1 < localr.ETH) && (paramInt2 < localr.ETH))
+    r localr = r.a.GqX;
+    ac.d("MicroMsg.GPU_TAG", "canUseHardwareAcceleration maxTextureSize %s w %s h %s.", new Object[] { Integer.valueOf(localr.GqU), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if ((paramInt1 < localr.GqU) && (paramInt2 < localr.GqU))
     {
       AppMethodBeat.o(157544);
       return true;
@@ -38,7 +38,7 @@ public final class p
   }
   
   /* Error */
-  public static void uR(boolean paramBoolean)
+  public static void vT(boolean paramBoolean)
   {
     // Byte code:
     //   0: ldc 62
@@ -54,15 +54,15 @@ public final class p
     //   19: aastore
     //   20: dup
     //   21: iconst_1
-    //   22: getstatic 17	com/tencent/mm/sdk/platformtools/p:ETC	Z
+    //   22: getstatic 17	com/tencent/mm/sdk/platformtools/p:GqP	Z
     //   25: invokestatic 71	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   28: aastore
-    //   29: invokestatic 73	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   29: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   32: iload_0
     //   33: ifeq +471 -> 504
-    //   36: getstatic 17	com/tencent/mm/sdk/platformtools/p:ETC	Z
+    //   36: getstatic 17	com/tencent/mm/sdk/platformtools/p:GqP	Z
     //   39: ifeq +465 -> 504
-    //   42: getstatic 34	com/tencent/mm/sdk/platformtools/r$a:ETL	Lcom/tencent/mm/sdk/platformtools/r;
+    //   42: getstatic 34	com/tencent/mm/sdk/platformtools/r$a:GqX	Lcom/tencent/mm/sdk/platformtools/r;
     //   45: astore_2
     //   46: ldc 45
     //   48: ldc 75
@@ -71,21 +71,21 @@ public final class p
     //   54: dup
     //   55: iconst_0
     //   56: aload_2
-    //   57: getfield 40	com/tencent/mm/sdk/platformtools/r:ETH	I
+    //   57: getfield 40	com/tencent/mm/sdk/platformtools/r:GqU	I
     //   60: invokestatic 53	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   63: aastore
-    //   64: invokestatic 73	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   64: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   67: aload_2
     //   68: iconst_0
     //   69: invokestatic 81	android/opengl/EGL14:eglGetDisplay	(I)Landroid/opengl/EGLDisplay;
-    //   72: putfield 85	com/tencent/mm/sdk/platformtools/r:ETI	Landroid/opengl/EGLDisplay;
+    //   72: putfield 85	com/tencent/mm/sdk/platformtools/r:fZZ	Landroid/opengl/EGLDisplay;
     //   75: aload_2
-    //   76: getfield 85	com/tencent/mm/sdk/platformtools/r:ETI	Landroid/opengl/EGLDisplay;
+    //   76: getfield 85	com/tencent/mm/sdk/platformtools/r:fZZ	Landroid/opengl/EGLDisplay;
     //   79: getstatic 88	android/opengl/EGL14:EGL_NO_DISPLAY	Landroid/opengl/EGLDisplay;
     //   82: if_acmpne +84 -> 166
     //   85: ldc 45
     //   87: ldc 89
-    //   89: invokestatic 93	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: invokestatic 93	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   92: iconst_1
     //   93: newarray int
     //   95: astore_3
@@ -104,7 +104,7 @@ public final class p
     //   116: istore_1
     //   117: aload_2
     //   118: iload_1
-    //   119: putfield 40	com/tencent/mm/sdk/platformtools/r:ETH	I
+    //   119: putfield 40	com/tencent/mm/sdk/platformtools/r:GqU	I
     //   122: ldc 45
     //   124: ldc 101
     //   126: iconst_2
@@ -119,12 +119,12 @@ public final class p
     //   139: dup
     //   140: iconst_1
     //   141: aload_2
-    //   142: getfield 40	com/tencent/mm/sdk/platformtools/r:ETH	I
+    //   142: getfield 40	com/tencent/mm/sdk/platformtools/r:GqU	I
     //   145: invokestatic 53	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   148: aastore
-    //   149: invokestatic 73	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   149: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   152: iconst_0
-    //   153: putstatic 17	com/tencent/mm/sdk/platformtools/p:ETC	Z
+    //   153: putstatic 17	com/tencent/mm/sdk/platformtools/p:GqP	Z
     //   156: aload_2
     //   157: invokevirtual 104	com/tencent/mm/sdk/platformtools/r:release	()V
     //   160: ldc 62
@@ -134,7 +134,7 @@ public final class p
     //   167: newarray int
     //   169: astore_3
     //   170: aload_2
-    //   171: getfield 85	com/tencent/mm/sdk/platformtools/r:ETI	Landroid/opengl/EGLDisplay;
+    //   171: getfield 85	com/tencent/mm/sdk/platformtools/r:fZZ	Landroid/opengl/EGLDisplay;
     //   174: aload_3
     //   175: iconst_0
     //   176: aload_3
@@ -143,7 +143,7 @@ public final class p
     //   181: ifne +47 -> 228
     //   184: ldc 45
     //   186: ldc 109
-    //   188: invokestatic 93	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   188: invokestatic 93	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   191: goto -99 -> 92
     //   194: astore_3
     //   195: ldc 45
@@ -156,9 +156,9 @@ public final class p
     //   206: aload_3
     //   207: invokevirtual 115	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   210: aastore
-    //   211: invokestatic 119	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   211: invokestatic 119	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   214: iconst_0
-    //   215: putstatic 17	com/tencent/mm/sdk/platformtools/p:ETC	Z
+    //   215: putstatic 17	com/tencent/mm/sdk/platformtools/p:GqP	Z
     //   218: aload_2
     //   219: invokevirtual 104	com/tencent/mm/sdk/platformtools/r:release	()V
     //   222: ldc 62
@@ -171,7 +171,7 @@ public final class p
     //   234: newarray int
     //   236: astore 4
     //   238: aload_2
-    //   239: getfield 85	com/tencent/mm/sdk/platformtools/r:ETI	Landroid/opengl/EGLDisplay;
+    //   239: getfield 85	com/tencent/mm/sdk/platformtools/r:fZZ	Landroid/opengl/EGLDisplay;
     //   242: bipush 11
     //   244: newarray int
     //   246: dup
@@ -228,7 +228,7 @@ public final class p
     //   321: pop
     //   322: aload_2
     //   323: aload_2
-    //   324: getfield 85	com/tencent/mm/sdk/platformtools/r:ETI	Landroid/opengl/EGLDisplay;
+    //   324: getfield 85	com/tencent/mm/sdk/platformtools/r:fZZ	Landroid/opengl/EGLDisplay;
     //   327: aload_3
     //   328: iconst_0
     //   329: aaload
@@ -249,10 +249,10 @@ public final class p
     //   351: iastore
     //   352: iconst_0
     //   353: invokestatic 133	android/opengl/EGL14:eglCreateContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;Landroid/opengl/EGLContext;[II)Landroid/opengl/EGLContext;
-    //   356: putfield 136	com/tencent/mm/sdk/platformtools/r:ETK	Landroid/opengl/EGLContext;
+    //   356: putfield 136	com/tencent/mm/sdk/platformtools/r:GqW	Landroid/opengl/EGLContext;
     //   359: aload_2
     //   360: aload_2
-    //   361: getfield 85	com/tencent/mm/sdk/platformtools/r:ETI	Landroid/opengl/EGLDisplay;
+    //   361: getfield 85	com/tencent/mm/sdk/platformtools/r:fZZ	Landroid/opengl/EGLDisplay;
     //   364: aload_3
     //   365: iconst_0
     //   366: aaload
@@ -264,21 +264,21 @@ public final class p
     //   375: iastore
     //   376: iconst_0
     //   377: invokestatic 140	android/opengl/EGL14:eglCreatePbufferSurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;[II)Landroid/opengl/EGLSurface;
-    //   380: putfield 144	com/tencent/mm/sdk/platformtools/r:ETJ	Landroid/opengl/EGLSurface;
+    //   380: putfield 144	com/tencent/mm/sdk/platformtools/r:GqV	Landroid/opengl/EGLSurface;
     //   383: aload_2
-    //   384: getfield 85	com/tencent/mm/sdk/platformtools/r:ETI	Landroid/opengl/EGLDisplay;
+    //   384: getfield 85	com/tencent/mm/sdk/platformtools/r:fZZ	Landroid/opengl/EGLDisplay;
     //   387: aload_2
-    //   388: getfield 144	com/tencent/mm/sdk/platformtools/r:ETJ	Landroid/opengl/EGLSurface;
+    //   388: getfield 144	com/tencent/mm/sdk/platformtools/r:GqV	Landroid/opengl/EGLSurface;
     //   391: aload_2
-    //   392: getfield 144	com/tencent/mm/sdk/platformtools/r:ETJ	Landroid/opengl/EGLSurface;
+    //   392: getfield 144	com/tencent/mm/sdk/platformtools/r:GqV	Landroid/opengl/EGLSurface;
     //   395: aload_2
-    //   396: getfield 136	com/tencent/mm/sdk/platformtools/r:ETK	Landroid/opengl/EGLContext;
+    //   396: getfield 136	com/tencent/mm/sdk/platformtools/r:GqW	Landroid/opengl/EGLContext;
     //   399: invokestatic 148	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
     //   402: pop
     //   403: goto -311 -> 92
     //   406: astore_3
     //   407: iconst_0
-    //   408: putstatic 17	com/tencent/mm/sdk/platformtools/p:ETC	Z
+    //   408: putstatic 17	com/tencent/mm/sdk/platformtools/p:GqP	Z
     //   411: aload_2
     //   412: invokevirtual 104	com/tencent/mm/sdk/platformtools/r:release	()V
     //   415: ldc 62
@@ -299,7 +299,7 @@ public final class p
     //   441: aload_2
     //   442: invokevirtual 115	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   445: aastore
-    //   446: invokestatic 119	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   446: invokestatic 119	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   449: ldc 62
     //   451: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   454: return
@@ -314,7 +314,7 @@ public final class p
     //   467: aload_2
     //   468: invokevirtual 115	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   471: aastore
-    //   472: invokestatic 119	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   472: invokestatic 119	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   475: ldc 62
     //   477: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   480: return
@@ -329,7 +329,7 @@ public final class p
     //   493: aload_2
     //   494: invokevirtual 115	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   497: aastore
-    //   498: invokestatic 119	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   498: invokestatic 119	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   501: goto -86 -> 415
     //   504: ldc 62
     //   506: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -374,12 +374,12 @@ public final class p
       AppMethodBeat.o(157543);
       return;
     }
-    r localr = r.a.ETL;
-    ad.d("MicroMsg.GPU_TAG", "decideLayerType maxTextureSize %s.", new Object[] { Integer.valueOf(localr.ETH) });
-    if (paramInt1 < localr.ETH)
+    r localr = r.a.GqX;
+    ac.d("MicroMsg.GPU_TAG", "decideLayerType maxTextureSize %s.", new Object[] { Integer.valueOf(localr.GqU) });
+    if (paramInt1 < localr.GqU)
     {
       paramInt1 = i;
-      if (paramInt2 < localr.ETH) {}
+      if (paramInt2 < localr.GqU) {}
     }
     else
     {

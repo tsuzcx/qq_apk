@@ -6,14 +6,14 @@ import com.eclipsesource.v8.V8;
 import com.eclipsesource.v8.V8.JavaTaskScheduler;
 import com.eclipsesource.v8.V8Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class h
   extends a
 {
-  private MultiContextNodeJS cPk;
-  public volatile m cPl;
-  private i cPm;
+  private MultiContextNodeJS cMF;
+  public volatile m cMG;
+  private i cMH;
   
   static
   {
@@ -35,32 +35,32 @@ public final class h
     return paramConfig;
   }
   
-  final MultiContextV8 LF()
+  final MultiContextV8 LD()
   {
     AppMethodBeat.i(144023);
     try
     {
-      this.cPk = MultiContextNodeJS.createMultiContextNodeJS(1, this.cOM, this.cON, this.cOO);
-      this.cPk.getRuntime().getV8().setNativeJavaCallback(new Runnable()
+      this.cMF = MultiContextNodeJS.createMultiContextNodeJS(1, this.cMh, this.cMi, this.cMj);
+      this.cMF.getRuntime().getV8().setNativeJavaCallback(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(193482);
-          h.a(h.this).LP();
-          AppMethodBeat.o(193482);
+          AppMethodBeat.i(200808);
+          h.a(h.this).LN();
+          AppMethodBeat.o(200808);
         }
       });
-      this.cPk.getRuntime().getV8().setJavaTaskScheduler(new V8.JavaTaskScheduler()
+      this.cMF.getRuntime().getV8().setJavaTaskScheduler(new V8.JavaTaskScheduler()
       {
         public final void Schedule(Runnable paramAnonymousRunnable)
         {
-          AppMethodBeat.i(193483);
-          h.a(h.this).t(paramAnonymousRunnable);
-          AppMethodBeat.o(193483);
+          AppMethodBeat.i(200809);
+          h.a(h.this).u(paramAnonymousRunnable);
+          AppMethodBeat.o(200809);
         }
       });
-      this.cON = null;
-      MultiContextV8 localMultiContextV8 = this.cPk.getRuntime();
+      this.cMi = null;
+      MultiContextV8 localMultiContextV8 = this.cMF.getRuntime();
       AppMethodBeat.o(144023);
       return localMultiContextV8;
     }
@@ -70,63 +70,63 @@ public final class h
     }
   }
   
-  final c LG()
+  final c LE()
   {
     AppMethodBeat.i(144024);
-    this.cPm = i.a(new i.a()
+    this.cMH = i.a(new i.a()
     {
-      public final boolean LN()
+      public final boolean LL()
       {
-        AppMethodBeat.i(193484);
+        AppMethodBeat.i(200810);
         boolean bool = h.b(h.this).handleMessage();
-        AppMethodBeat.o(193484);
+        AppMethodBeat.o(200810);
         return bool;
       }
       
       public final void closeUVLoop()
       {
-        AppMethodBeat.i(193486);
+        AppMethodBeat.i(200812);
         if (h.b(h.this) != null) {
           h.b(h.this).closeUVLoop();
         }
-        AppMethodBeat.o(193486);
+        AppMethodBeat.o(200812);
       }
       
       public final void wakeUpUVLoop()
       {
-        AppMethodBeat.i(193485);
+        AppMethodBeat.i(200811);
         if (h.b(h.this) != null) {
           h.b(h.this).wakeUpUVLoop();
         }
-        AppMethodBeat.o(193485);
+        AppMethodBeat.o(200811);
       }
-    }, this.cOT.cPd);
-    i locali = this.cPm;
+    }, this.cMo.cMy);
+    i locali = this.cMH;
     AppMethodBeat.o(144024);
     return locali;
   }
   
-  final void LH()
+  final void LF()
   {
     AppMethodBeat.i(144025);
-    ad.i("MicroMsg.NodeJSRuntime", "cleanUpRuntimeWhenThreadEnd");
+    ac.i("MicroMsg.NodeJSRuntime", "cleanUpRuntimeWhenThreadEnd");
     try
     {
-      this.cPk.release();
-      ad.i("MicroMsg.NodeJSRuntime", "cleanUpRuntimeWhenThreadEnd done");
+      this.cMF.release();
+      ac.i("MicroMsg.NodeJSRuntime", "cleanUpRuntimeWhenThreadEnd done");
       AppMethodBeat.o(144025);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.NodeJSRuntime", "cleanUpWhenThreadEnd exp = %s", new Object[] { localException });
+      ac.e("MicroMsg.NodeJSRuntime", "cleanUpWhenThreadEnd exp = %s", new Object[] { localException });
       AppMethodBeat.o(144025);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.h
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,17 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.plugin.brandservice.b.i;
-import com.tencent.mm.plugin.brandservice.b.p;
-import com.tencent.mm.protocal.protobuf.bnl;
-import com.tencent.mm.protocal.protobuf.bnn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.plugin.brandservice.b.o;
+import com.tencent.mm.protocal.protobuf.bsb;
+import com.tencent.mm.protocal.protobuf.bsd;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -35,15 +33,15 @@ import java.util.LinkedList;
 
 public class ReceiveTemplateMsgMgrUI
   extends MMPreference
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private static LinkedList<bnl> mVn;
-  private ProgressDialog fpP;
-  protected f lxI;
-  private String mVm;
-  private boolean mVo = false;
+  private static LinkedList<bsb> nxN;
+  private ProgressDialog fts;
+  protected f lZC;
+  private String nxM;
+  private boolean nxO = false;
   
-  private void gZ(boolean paramBoolean)
+  private void hw(boolean paramBoolean)
   {
     AppMethodBeat.i(5768);
     View localView1 = findViewById(2131303805);
@@ -88,11 +86,11 @@ public class ReceiveTemplateMsgMgrUI
   {
     AppMethodBeat.i(5765);
     setMMTitle(2131757784);
-    this.lxI = getPreferenceScreen();
-    this.mVm = getIntent().getStringExtra("enterprise_biz_name");
-    if (bt.isNullOrNil(this.mVm))
+    this.lZC = getPreferenceScreen();
+    this.nxM = getIntent().getStringExtra("enterprise_biz_name");
+    if (bs.isNullOrNil(this.nxM))
     {
-      ad.e("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "bizName is null");
+      ac.e("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "bizName is null");
       finish();
       AppMethodBeat.o(5765);
       return;
@@ -107,15 +105,15 @@ public class ReceiveTemplateMsgMgrUI
         return true;
       }
     });
-    final i locali = new i(this.mVm);
-    com.tencent.mm.kernel.g.aeS().a(locali, 0);
+    final com.tencent.mm.plugin.brandservice.b.h localh = new com.tencent.mm.plugin.brandservice.b.h(this.nxM);
+    com.tencent.mm.kernel.g.agi().a(localh, 0);
     getString(2131755906);
-    this.fpP = h.b(this, getString(2131762213), true, new DialogInterface.OnCancelListener()
+    this.fts = com.tencent.mm.ui.base.h.b(this, getString(2131762213), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(5760);
-        com.tencent.mm.kernel.g.aeS().a(locali);
+        com.tencent.mm.kernel.g.agi().a(localh);
         AppMethodBeat.o(5760);
       }
     });
@@ -126,8 +124,8 @@ public class ReceiveTemplateMsgMgrUI
   {
     AppMethodBeat.i(5762);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.aeS().a(1031, this);
-    com.tencent.mm.kernel.g.aeS().a(1030, this);
+    com.tencent.mm.kernel.g.agi().a(1031, this);
+    com.tencent.mm.kernel.g.agi().a(1030, this);
     initView();
     AppMethodBeat.o(5762);
   }
@@ -135,8 +133,8 @@ public class ReceiveTemplateMsgMgrUI
   public void onDestroy()
   {
     AppMethodBeat.i(5764);
-    com.tencent.mm.kernel.g.aeS().b(1031, this);
-    com.tencent.mm.kernel.g.aeS().b(1030, this);
+    com.tencent.mm.kernel.g.agi().b(1031, this);
+    com.tencent.mm.kernel.g.agi().b(1030, this);
     super.onDestroy();
     AppMethodBeat.o(5764);
   }
@@ -144,12 +142,12 @@ public class ReceiveTemplateMsgMgrUI
   public void onPause()
   {
     AppMethodBeat.i(5763);
-    if (this.mVo)
+    if (this.nxO)
     {
-      ad.d("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "onPause option change");
-      this.mVo = false;
-      p localp = new p(this.mVm, mVn);
-      com.tencent.mm.kernel.g.aeS().a(localp, 0);
+      ac.d("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "onPause option change");
+      this.nxO = false;
+      o localo = new o(this.nxM, nxN);
+      com.tencent.mm.kernel.g.agi().a(localo, 0);
     }
     super.onPause();
     AppMethodBeat.o(5763);
@@ -158,39 +156,39 @@ public class ReceiveTemplateMsgMgrUI
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(5766);
-    if (mVn == null)
+    if (nxN == null)
     {
-      ad.w("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "mRecvOptions == null");
+      ac.w("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "mRecvOptions == null");
       AppMethodBeat.o(5766);
       return false;
     }
     paramf = paramPreference.mKey;
-    if (bt.isNullOrNil(paramf))
+    if (bs.isNullOrNil(paramf))
     {
-      ad.e("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "key is null");
+      ac.e("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "key is null");
       AppMethodBeat.o(5766);
       return false;
     }
-    Iterator localIterator = mVn.iterator();
-    bnl localbnl;
+    Iterator localIterator = nxN.iterator();
+    bsb localbsb;
     while (localIterator.hasNext())
     {
-      localbnl = (bnl)localIterator.next();
-      if (paramf.equals(bt.nullAsNil(localbnl.DKS)))
+      localbsb = (bsb)localIterator.next();
+      if (paramf.equals(bs.nullAsNil(localbsb.Fhh)))
       {
-        this.mVo = true;
+        this.nxO = true;
         if (!((CheckBoxPreference)paramPreference).isChecked()) {
           break label153;
         }
       }
     }
     label153:
-    for (localbnl.Cxm = 0;; localbnl.Cxm = 1)
+    for (localbsb.DPI = 0;; localbsb.DPI = 1)
     {
-      if (this.mVo)
+      if (this.nxO)
       {
-        ad.d("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "option change, do scene");
-        aq.n(new Runnable()
+        ac.d("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "option change, do scene");
+        ap.n(new Runnable()
         {
           public final void run()
           {
@@ -198,8 +196,8 @@ public class ReceiveTemplateMsgMgrUI
             if (ReceiveTemplateMsgMgrUI.a(ReceiveTemplateMsgMgrUI.this))
             {
               ReceiveTemplateMsgMgrUI.b(ReceiveTemplateMsgMgrUI.this);
-              p localp = new p(ReceiveTemplateMsgMgrUI.c(ReceiveTemplateMsgMgrUI.this), ReceiveTemplateMsgMgrUI.bCC());
-              com.tencent.mm.kernel.g.aeS().a(localp, 0);
+              o localo = new o(ReceiveTemplateMsgMgrUI.c(ReceiveTemplateMsgMgrUI.this), ReceiveTemplateMsgMgrUI.bJK());
+              com.tencent.mm.kernel.g.agi().a(localo, 0);
             }
             AppMethodBeat.o(5761);
           }
@@ -215,66 +213,66 @@ public class ReceiveTemplateMsgMgrUI
     AppMethodBeat.i(5767);
     if (paramn == null)
     {
-      ad.e("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "onSceneEnd: [%d], [%d], [%s], scene is null", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ac.e("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "onSceneEnd: [%d], [%d], [%s], scene is null", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       AppMethodBeat.o(5767);
       return;
     }
-    ad.i("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "onSceneEnd: [%d], [%d], [%s], sceneType[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
+    ac.i("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "onSceneEnd: [%d], [%d], [%s], sceneType[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
     if (paramn.getType() == 1031)
     {
-      if ((this.fpP != null) && (this.fpP.isShowing()))
+      if ((this.fts != null) && (this.fts.isShowing()))
       {
-        this.fpP.dismiss();
-        this.fpP = null;
+        this.fts.dismiss();
+        this.fts = null;
       }
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        Toast.makeText(aj.getContext(), aj.getContext().getString(2131762210), 1).show();
-        gZ(true);
+        Toast.makeText(ai.getContext(), ai.getContext().getString(2131762210), 1).show();
+        hw(true);
         AppMethodBeat.o(5767);
         return;
       }
-      paramString = (i)paramn;
-      if ((paramString.rr != null) && (paramString.rr.gUT.gUX != null)) {}
-      for (paramString = (bnn)paramString.rr.gUT.gUX;; paramString = null)
+      paramString = (com.tencent.mm.plugin.brandservice.b.h)paramn;
+      if ((paramString.rr != null) && (paramString.rr.hvs.hvw != null)) {}
+      for (paramString = (bsd)paramString.rr.hvs.hvw;; paramString = null)
       {
-        mVn = paramString.DKT;
-        paramString = mVn;
-        this.lxI.removeAll();
+        nxN = paramString.Fhi;
+        paramString = nxN;
+        this.lZC.removeAll();
         if ((paramString != null) && (paramString.size() > 0)) {
           break;
         }
-        ad.e("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "recvOption is empty");
-        gZ(true);
+        ac.e("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "recvOption is empty");
+        hw(true);
         AppMethodBeat.o(5767);
         return;
       }
-      gZ(false);
-      ad.d("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "initBody options.size = %d", new Object[] { Integer.valueOf(paramString.size()) });
+      hw(false);
+      ac.d("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "initBody options.size = %d", new Object[] { Integer.valueOf(paramString.size()) });
       paramString = paramString.iterator();
       if (paramString.hasNext())
       {
-        paramn = (bnl)paramString.next();
+        paramn = (bsb)paramString.next();
         CheckBoxPreference localCheckBoxPreference = new CheckBoxPreference(this);
-        localCheckBoxPreference.GfV = false;
-        localCheckBoxPreference.setKey(paramn.DKS);
+        localCheckBoxPreference.HFK = false;
+        localCheckBoxPreference.setKey(paramn.Fhh);
         localCheckBoxPreference.setTitle(paramn.Title);
-        if (paramn.Cxm == 0) {}
+        if (paramn.DPI == 0) {}
         for (boolean bool = true;; bool = false)
         {
-          localCheckBoxPreference.lG = bool;
-          this.lxI.b(localCheckBoxPreference);
+          localCheckBoxPreference.mF = bool;
+          this.lZC.b(localCheckBoxPreference);
           break;
         }
       }
-      this.lxI.notifyDataSetChanged();
-      ad.d("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "initBodyView finish");
+      this.lZC.notifyDataSetChanged();
+      ac.d("MicroMsg.brandservice.ReceiveTemplateMsgMgrUI", "initBodyView finish");
       AppMethodBeat.o(5767);
       return;
     }
     if ((paramn.getType() == 1030) && ((paramInt1 != 0) || (paramInt2 != 0)))
     {
-      Toast.makeText(aj.getContext(), aj.getContext().getString(2131762211), 0).show();
+      Toast.makeText(ai.getContext(), ai.getContext().getString(2131762211), 0).show();
       AppMethodBeat.o(5767);
       return;
     }
@@ -289,7 +287,7 @@ public class ReceiveTemplateMsgMgrUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.ReceiveTemplateMsgMgrUI
  * JD-Core Version:    0.7.0.1
  */

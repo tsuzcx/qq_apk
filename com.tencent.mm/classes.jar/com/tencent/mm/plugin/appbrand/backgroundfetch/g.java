@@ -3,29 +3,29 @@ package com.tencent.mm.plugin.appbrand.backgroundfetch;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class g
   extends j<f>
 {
-  public static final String[] gLs;
+  public static final String[] hlS;
   
   static
   {
     AppMethodBeat.i(44743);
-    gLs = new String[] { j.getCreateSQLs(f.gLr, "AppBrandBackgroundFetchDataToken") };
+    hlS = new String[] { j.getCreateSQLs(f.hlR, "AppBrandBackgroundFetchDataToken") };
     AppMethodBeat.o(44743);
   }
   
   public g(e parame)
   {
-    super(parame, f.gLr, "AppBrandBackgroundFetchDataToken", null);
+    super(parame, f.hlR, "AppBrandBackgroundFetchDataToken", null);
   }
   
-  public final AppBrandBackgroundFetchDataTokenParcel Fm(String paramString)
+  public final AppBrandBackgroundFetchDataTokenParcel Jq(String paramString)
   {
     AppMethodBeat.i(44741);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44741);
       return null;
@@ -44,10 +44,10 @@ public class g
     return null;
   }
   
-  public final boolean cl(String paramString1, String paramString2)
+  public final boolean cv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44740);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(44740);
       return true;
@@ -55,7 +55,7 @@ public class g
     f localf = new f();
     localf.field_username = paramString1;
     localf.field_token = paramString2;
-    if (!bt.isNullOrNil(paramString1))
+    if (!bs.isNullOrNil(paramString1))
     {
       paramString2 = new f();
       paramString2.field_username = paramString1;
@@ -72,10 +72,10 @@ public class g
     return bool;
   }
   
-  public final boolean vv(String paramString)
+  public final boolean zB(String paramString)
   {
     AppMethodBeat.i(44742);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44742);
       return true;
@@ -89,7 +89,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.g
  * JD-Core Version:    0.7.0.1
  */

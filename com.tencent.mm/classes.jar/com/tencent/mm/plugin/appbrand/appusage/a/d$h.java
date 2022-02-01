@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import java.util.LinkedList;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
 final class d$h
   extends d.g.b.l
   implements a<LinkedList<Integer>>
 {
-  public static final h iWM;
+  public static final h jxc;
   
   static
   {
     AppMethodBeat.i(50316);
-    iWM = new h();
+    jxc = new h();
     AppMethodBeat.o(50316);
   }
   

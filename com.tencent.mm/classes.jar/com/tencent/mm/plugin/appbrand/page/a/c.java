@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable;
 public abstract interface c
   extends e
 {
-  public static final a lgA = new a()
+  public static final a lGu = new a()
   {
     public final void dismiss() {}
     
@@ -15,10 +15,10 @@ public abstract interface c
     
     public final void setStatus(int paramAnonymousInt) {}
     
-    public final void tC(int paramAnonymousInt) {}
+    public final void us(int paramAnonymousInt) {}
   };
   
-  public abstract a bkL();
+  public abstract a brA();
   
   public static abstract interface a
   {
@@ -30,12 +30,12 @@ public abstract interface c
     
     public abstract void setStatus(int paramInt);
     
-    public abstract void tC(int paramInt);
+    public abstract void us(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.c
  * JD-Core Version:    0.7.0.1
  */

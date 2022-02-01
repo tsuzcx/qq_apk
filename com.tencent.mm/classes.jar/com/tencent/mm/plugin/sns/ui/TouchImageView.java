@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import junit.framework.Assert;
 
 public class TouchImageView
@@ -22,17 +22,17 @@ public class TouchImageView
   private boolean enable;
   private int g;
   private int r;
-  private RectF xMd;
-  private Paint xMe;
-  ap xkC;
-  Runnable xkD;
+  private RectF yYS;
+  private Paint yYT;
+  ao yxu;
+  Runnable yxv;
   
   public TouchImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(99770);
-    this.xMd = new RectF();
-    this.xMe = new Paint();
+    this.yYS = new RectF();
+    this.yYT = new Paint();
     this.a = 90;
     this.r = 0;
     this.g = 0;
@@ -46,8 +46,8 @@ public class TouchImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(99771);
-    this.xMd = new RectF();
-    this.xMe = new Paint();
+    this.yYS = new RectF();
+    this.yYT = new Paint();
     this.a = 90;
     this.r = 0;
     this.g = 0;
@@ -60,8 +60,8 @@ public class TouchImageView
   private void init()
   {
     AppMethodBeat.i(99772);
-    this.xkC = new ap();
-    this.xkD = new Runnable()
+    this.yxu = new ao();
+    this.yxv = new Runnable()
     {
       public final void run()
       {
@@ -91,9 +91,9 @@ public class TouchImageView
           return true;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          localTouchImageView.xkC.removeCallbacks(localTouchImageView.xkD);
+          localTouchImageView.yxu.removeCallbacks(localTouchImageView.yxv);
           continue;
-          localTouchImageView.xkC.post(localTouchImageView.xkD);
+          localTouchImageView.yxu.post(localTouchImageView.yxv);
         }
         AppMethodBeat.o(99769);
         return false;
@@ -106,7 +106,7 @@ public class TouchImageView
   {
     AppMethodBeat.i(99775);
     super.onAttachedToWindow();
-    ad.d("MicroMsg.MaskImageView", "onAttachedToWindow");
+    ac.d("MicroMsg.MaskImageView", "onAttachedToWindow");
     AppMethodBeat.o(99775);
   }
   
@@ -114,7 +114,7 @@ public class TouchImageView
   {
     AppMethodBeat.i(99776);
     super.onDetachedFromWindow();
-    ad.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
+    ac.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
     AppMethodBeat.o(99776);
   }
   
@@ -124,12 +124,12 @@ public class TouchImageView
     super.onDraw(paramCanvas);
     if (isPressed())
     {
-      this.xMd.left = getPaddingLeft();
-      this.xMd.top = getPaddingTop();
-      this.xMd.right = (getWidth() - getPaddingRight());
-      this.xMd.bottom = (getHeight() - getPaddingBottom());
-      this.xMe.setARGB(this.a, this.r, this.g, this.b);
-      paramCanvas.drawRoundRect(this.xMd, getWidth() / 10, getHeight() / 10, this.xMe);
+      this.yYS.left = getPaddingLeft();
+      this.yYS.top = getPaddingTop();
+      this.yYS.right = (getWidth() - getPaddingRight());
+      this.yYS.bottom = (getHeight() - getPaddingBottom());
+      this.yYT.setARGB(this.a, this.r, this.g, this.b);
+      paramCanvas.drawRoundRect(this.yYS, getWidth() / 10, getHeight() / 10, this.yYT);
     }
     AppMethodBeat.o(99773);
   }

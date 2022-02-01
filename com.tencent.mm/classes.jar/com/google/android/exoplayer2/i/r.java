@@ -6,31 +6,31 @@ import java.util.Comparator;
 
 public final class r
 {
-  public static final Comparator<a> bzh;
-  public static final Comparator<a> bzi;
-  public final int bzj;
-  public final ArrayList<a> bzk;
-  public final a[] bzl;
-  public int bzm;
-  public int bzn;
-  public int bzo;
-  public int bzp;
+  public static final Comparator<a> bwP;
+  public static final Comparator<a> bwQ;
+  public final int bwR;
+  public final ArrayList<a> bwS;
+  public final a[] bwT;
+  public int bwU;
+  public int bwV;
+  public int bwW;
+  public int bwX;
   
   static
   {
     AppMethodBeat.i(93197);
-    bzh = new Comparator() {};
-    bzi = new Comparator() {};
+    bwP = new Comparator() {};
+    bwQ = new Comparator() {};
     AppMethodBeat.o(93197);
   }
   
   public r()
   {
     AppMethodBeat.i(93196);
-    this.bzj = 2000;
-    this.bzl = new a[5];
-    this.bzk = new ArrayList();
-    this.bzm = -1;
+    this.bwR = 2000;
+    this.bwT = new a[5];
+    this.bwS = new ArrayList();
+    this.bwU = -1;
     AppMethodBeat.o(93196);
   }
   

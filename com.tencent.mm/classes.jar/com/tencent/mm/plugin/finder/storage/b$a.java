@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.finder.storage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
 final class b$a
   extends d.g.b.l
   implements a<Integer>
 {
-  public static final a qJB;
+  public static final a rCV;
   
   static
   {
     AppMethodBeat.i(166898);
-    qJB = new a();
+    rCV = new a();
     AppMethodBeat.o(166898);
   }
   

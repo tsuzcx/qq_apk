@@ -6,8 +6,8 @@ import android.media.MediaFormat;
 import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 
 @TargetApi(16)
 public final class t
@@ -15,17 +15,17 @@ public final class t
 {
   public String path;
   public int position;
-  public MediaFormat rCs;
-  public MediaFormat rCt;
-  public GalleryItem.VideoMediaItem rCu;
-  public a rCv;
+  public MediaFormat sLm;
+  public MediaFormat sLn;
+  public GalleryItem.VideoMediaItem sLo;
+  public a sLp;
   
   public t(String paramString, int paramInt, GalleryItem.VideoMediaItem paramVideoMediaItem, a parama)
   {
     this.path = paramString;
     this.position = paramInt;
-    this.rCu = paramVideoMediaItem;
-    this.rCv = parama;
+    this.sLo = paramVideoMediaItem;
+    this.sLp = parama;
   }
   
   public final boolean equals(Object paramObject)
@@ -54,40 +54,40 @@ public final class t
       int i;
       try
       {
-        localc.px(this.path);
-        int j = localc.fGK.getTrackCount();
+        localc.sI(this.path);
+        int j = localc.fKr.getTrackCount();
         i = 0;
         if (i < j)
         {
           localObject1 = localc.getTrackFormat(i);
           if (!((MediaFormat)localObject1).containsKey("mime"))
           {
-            ad.d("VideoAnalysisTask", "find video mime : not found.");
+            ac.d("VideoAnalysisTask", "find video mime : not found.");
             break label602;
           }
           localObject3 = ((MediaFormat)localObject1).getString("mime");
-          ad.d("VideoAnalysisTask", "find video mime : %s", new Object[] { localObject3 });
+          ac.d("VideoAnalysisTask", "find video mime : %s", new Object[] { localObject3 });
           if (localObject3 == null) {
             break label602;
           }
           if (!((String)localObject3).startsWith("video/")) {
             continue;
           }
-          if (this.rCs == null) {
-            this.rCs = ((MediaFormat)localObject1);
+          if (this.sLm == null) {
+            this.sLm = ((MediaFormat)localObject1);
           }
-          if ((this.rCt == null) || (this.rCs == null)) {
+          if ((this.sLn == null) || (this.sLm == null)) {
             break label602;
           }
         }
-        if (this.rCu == null) {
+        if (this.sLo == null) {
           continue;
         }
-        if (this.rCs == null) {
+        if (this.sLm == null) {
           continue;
         }
-        localObject1 = this.rCu;
-        if (this.rCs.containsKey("durationUs")) {
+        localObject1 = this.sLo;
+        if (this.sLm.containsKey("durationUs")) {
           continue;
         }
         i = 0;
@@ -96,96 +96,96 @@ public final class t
       {
         Object localObject1;
         Object localObject3;
-        ad.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
-        localc.fGK.release();
+        ac.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
+        localc.fKr.release();
         continue;
-        i = (int)(this.rCs.getLong("durationUs") / 1000L);
+        i = (int)(this.sLm.getLong("durationUs") / 1000L);
         continue;
-        i = this.rCs.getInteger("height");
+        i = this.sLm.getInteger("height");
         continue;
-        i = this.rCs.getInteger("width");
+        i = this.sLm.getInteger("width");
         continue;
-        String str = this.rCs.getString("mime");
+        String str = this.sLm.getString("mime");
         continue;
-        i = this.rCs.getInteger("bitrate");
+        i = this.sLm.getInteger("bitrate");
         continue;
-        i = this.rCs.getInteger("i-frame-interval");
+        i = this.sLm.getInteger("i-frame-interval");
         continue;
-        i = this.rCs.getInteger("frame-rate");
+        i = this.sLm.getInteger("frame-rate");
         continue;
-        str = this.rCt.getString("mime");
+        str = this.sLn.getString("mime");
         continue;
       }
       finally
       {
-        localc.fGK.release();
+        localc.fKr.release();
         AppMethodBeat.o(111378);
       }
-      ((GalleryItem.VideoMediaItem)localObject1).hsU = i;
-      localObject1 = this.rCu;
-      if (!this.rCs.containsKey("height"))
+      ((GalleryItem.VideoMediaItem)localObject1).hTw = i;
+      localObject1 = this.sLo;
+      if (!this.sLm.containsKey("height"))
       {
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoHeight = i;
-        localObject1 = this.rCu;
-        if (this.rCs.containsKey("width")) {
+        localObject1 = this.sLo;
+        if (this.sLm.containsKey("width")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoWidth = i;
-        localObject3 = this.rCu;
-        if (this.rCs.containsKey("mime")) {
+        localObject3 = this.sLo;
+        if (this.sLm.containsKey("mime")) {
           continue;
         }
         localObject1 = "";
-        ((GalleryItem.VideoMediaItem)localObject3).hsS = ((String)localObject1);
-        localObject1 = this.rCu;
-        if (this.rCs.containsKey("bitrate")) {
+        ((GalleryItem.VideoMediaItem)localObject3).hTu = ((String)localObject1);
+        localObject1 = this.sLo;
+        if (this.sLm.containsKey("bitrate")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoBitRate = i;
-        localObject1 = this.rCu;
-        if (this.rCs.containsKey("i-frame-interval")) {
+        localObject1 = this.sLo;
+        if (this.sLm.containsKey("i-frame-interval")) {
           continue;
         }
         i = 0;
-        ((GalleryItem.VideoMediaItem)localObject1).hsV = i;
-        localObject1 = this.rCu;
-        if (this.rCs.containsKey("frame-rate")) {
+        ((GalleryItem.VideoMediaItem)localObject1).hTx = i;
+        localObject1 = this.sLo;
+        if (this.sLm.containsKey("frame-rate")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoFrameRate = i;
-        if (this.rCt != null)
+        if (this.sLn != null)
         {
-          localObject3 = this.rCu;
-          if (this.rCt.containsKey("mime")) {
+          localObject3 = this.sLo;
+          if (this.sLn.containsKey("mime")) {
             continue;
           }
           localObject1 = "";
-          ((GalleryItem.VideoMediaItem)localObject3).hsT = ((String)localObject1);
+          ((GalleryItem.VideoMediaItem)localObject3).hTv = ((String)localObject1);
         }
-        localc.fGK.release();
-        if (this.rCv != null) {
+        localc.fKr.release();
+        if (this.sLp != null) {
           break label585;
         }
-        ad.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.rCu });
+        ac.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.sLo });
         AppMethodBeat.o(111378);
         return;
-        if ((!((String)localObject3).startsWith("audio/")) || (this.rCt != null)) {
+        if ((!((String)localObject3).startsWith("audio/")) || (this.sLn != null)) {
           continue;
         }
-        this.rCt = ((MediaFormat)localObject1);
+        this.sLn = ((MediaFormat)localObject1);
       }
       label585:
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(111377);
-          if (t.this.rCv != null) {
-            t.this.rCv.a(t.this);
+          if (t.this.sLp != null) {
+            t.this.sLp.a(t.this);
           }
           AppMethodBeat.o(111377);
         }

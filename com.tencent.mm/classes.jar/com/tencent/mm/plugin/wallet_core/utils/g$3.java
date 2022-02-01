@@ -12,15 +12,15 @@ public final class g$3
   public final void onStatusChange(boolean paramBoolean)
   {
     AppMethodBeat.i(71653);
-    if (this.Avv != null) {
-      this.Avv.setEnabled(paramBoolean);
+    if (this.BNP != null) {
+      this.BNP.setEnabled(paramBoolean);
     }
     AppMethodBeat.o(71653);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.g.3
  * JD-Core Version:    0.7.0.1
  */

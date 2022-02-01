@@ -6,20 +6,20 @@ import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.fts.ui.FTSMainUI;
 import com.tencent.mm.plugin.fts.ui.j;
 import com.tencent.mm.plugin.fts.ui.k;
 import com.tencent.mm.plugin.fts.ui.webview.PardusWebView;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.am;
-import com.tencent.mm.plugin.websearch.api.w;
-import com.tencent.mm.protocal.protobuf.byh;
-import com.tencent.mm.protocal.protobuf.ckd;
+import com.tencent.mm.plugin.websearch.api.ak;
+import com.tencent.mm.plugin.websearch.api.v;
+import com.tencent.mm.plugin.websearch.api.z;
+import com.tencent.mm.protocal.protobuf.cdd;
+import com.tencent.mm.protocal.protobuf.cpk;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.h;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,90 +30,90 @@ import org.json.JSONObject;
 public final class e
 {
   private static final int maxHeight;
-  private boolean dcq;
-  String dsh;
-  private FrameLayout mRF;
-  d ruf;
-  private boolean ryT;
-  public PardusWebView rzs;
-  private FrameLayout rzt;
-  boolean rzu;
+  private boolean cZP;
+  String dpS;
+  private FrameLayout ntV;
+  d sCY;
+  private boolean sHL;
+  public PardusWebView sIk;
+  private FrameLayout sIl;
+  boolean sIm;
   
   static
   {
     AppMethodBeat.i(176953);
-    maxHeight = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 163);
+    maxHeight = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 163);
     AppMethodBeat.o(176953);
   }
   
   public e(d paramd, FrameLayout paramFrameLayout)
   {
     AppMethodBeat.i(176944);
-    this.dsh = "";
-    this.mRF = paramFrameLayout;
-    this.ruf = paramd;
+    this.dpS = "";
+    this.ntV = paramFrameLayout;
+    this.sCY = paramd;
     paramd = new com.tencent.mm.plugin.fts.ui.webview.b();
     Object localObject = new com.tencent.mm.plugin.fts.ui.webview.a();
-    this.rzs = new PardusWebView(aj.getContext());
-    this.rzs.a((com.tencent.mm.plugin.fts.ui.webview.a)localObject, paramd);
-    this.rzs.addJavascriptInterface(this, "pardusJSApi");
-    int i = com.tencent.mm.cd.a.hV(aj.getContext());
-    this.rzt = new FrameLayout(aj.getContext());
-    this.rzt.addView(this.rzs, new FrameLayout.LayoutParams(i, maxHeight));
-    paramFrameLayout.addView(this.rzt, new FrameLayout.LayoutParams(i, maxHeight));
+    this.sIk = new PardusWebView(ai.getContext());
+    this.sIk.a((com.tencent.mm.plugin.fts.ui.webview.a)localObject, paramd);
+    this.sIk.addJavascriptInterface(this, "pardusJSApi");
+    int i = com.tencent.mm.cc.a.ig(ai.getContext());
+    this.sIl = new FrameLayout(ai.getContext());
+    this.sIl.addView(this.sIk, new FrameLayout.LayoutParams(i, maxHeight));
+    paramFrameLayout.addView(this.sIl, new FrameLayout.LayoutParams(i, maxHeight));
     paramFrameLayout.measure(i, -2);
     paramFrameLayout.requestLayout();
-    ad.i("MicroMsg.FTS.PardusWebViewLogic", "containerWidth: %s webviewWidth: %s", new Object[] { Integer.valueOf(paramFrameLayout.getMeasuredWidth()), Integer.valueOf(this.rzs.getMeasuredWidth()) });
-    paramd = this.rzs;
+    ac.i("MicroMsg.FTS.PardusWebViewLogic", "containerWidth: %s webviewWidth: %s", new Object[] { Integer.valueOf(paramFrameLayout.getMeasuredWidth()), Integer.valueOf(this.sIk.getMeasuredWidth()) });
+    paramd = this.sIk;
     paramFrameLayout = new HashMap();
     paramFrameLayout.put("scene", "1");
-    paramFrameLayout.put("lang", ac.ir(aj.getContext()));
+    paramFrameLayout.put("lang", ab.iC(ai.getContext()));
     paramFrameLayout.put("platform", "android");
-    paramFrameLayout.put("version", String.valueOf(aa.RZ(5).axp()));
-    paramFrameLayout.put("netType", aa.cWN());
-    paramFrameLayout.put("wechatVersion", h.glW);
+    paramFrameLayout.put("version", String.valueOf(z.Uj(5).aEh()));
+    paramFrameLayout.put("netType", z.dkv());
+    paramFrameLayout.put("wechatVersion", h.gMJ);
     localObject = new StringBuffer();
     ((StringBuffer)localObject).append("file://");
-    ((StringBuffer)localObject).append(aa.RZ(5).eil());
+    ((StringBuffer)localObject).append(z.Uj(5).exF());
     ((StringBuffer)localObject).append("/");
     ((StringBuffer)localObject).append("app.html");
     ((StringBuffer)localObject).append("?");
-    ((StringBuffer)localObject).append(aa.aS(paramFrameLayout));
+    ((StringBuffer)localObject).append(z.aW(paramFrameLayout));
     paramd.loadUrl(((StringBuffer)localObject).toString());
     AppMethodBeat.o(176944);
   }
   
-  public final void clearData()
-  {
-    this.ryT = false;
-    this.dcq = false;
-    this.dsh = "";
-  }
-  
-  public final void cyM()
+  public final void cLY()
   {
     AppMethodBeat.i(176945);
-    if (this.mRF != null) {
-      this.mRF.setVisibility(8);
+    if (this.ntV != null) {
+      this.ntV.setVisibility(8);
     }
     AppMethodBeat.o(176945);
   }
   
-  final void gm(final String paramString1, String paramString2)
+  public final void clearData()
+  {
+    this.sHL = false;
+    this.cZP = false;
+    this.dpS = "";
+  }
+  
+  final void gD(final String paramString1, String paramString2)
   {
     AppMethodBeat.i(176946);
     try
     {
-      boolean bool = bt.isNullOrNil(paramString1);
+      boolean bool = bs.isNullOrNil(paramString1);
       if (bool)
       {
         AppMethodBeat.o(176946);
         return;
       }
-      paramString2 = bt.nullAsNil(paramString2);
-      ad.i("MicroMsg.FTS.PardusWebViewLogic", "notifyJsEvent %s %s", new Object[] { paramString1, paramString2 });
+      paramString2 = bs.nullAsNil(paramString2);
+      ac.i("MicroMsg.FTS.PardusWebViewLogic", "notifyJsEvent %s %s", new Object[] { paramString1, paramString2 });
       paramString1 = String.format("javascript:window['%s'] && %s(%s)", new Object[] { paramString1, paramString1, paramString2 });
-      this.ruf.ryk.runOnUiThread(new Runnable()
+      this.sCY.sHc.runOnUiThread(new Runnable()
       {
         public final void run()
         {
@@ -127,7 +127,7 @@ public final class e
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.FTS.PardusWebViewLogic", paramString1, "notifyJsEvent", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.FTS.PardusWebViewLogic", paramString1, "notifyJsEvent", new Object[0]);
       AppMethodBeat.o(176946);
     }
   }
@@ -136,7 +136,7 @@ public final class e
   public final void pardusAction(String paramString)
   {
     AppMethodBeat.i(176950);
-    ad.i("MicroMsg.FTS.PardusWebViewLogic", "pardusAction %s", new Object[] { paramString });
+    ac.i("MicroMsg.FTS.PardusWebViewLogic", "pardusAction %s", new Object[] { paramString });
     try
     {
       localObject1 = new JSONObject(paramString);
@@ -163,11 +163,11 @@ public final class e
       localObject4 = (String)((Iterator)localObject3).next();
       ((HashMap)localObject2).put(localObject4, ((JSONObject)localObject1).optString((String)localObject4));
     }
-    this.ruf.k((Map)localObject2, paramString);
-    this.ruf.ryk.ruy.rue.DN(28);
-    this.ruf.ryk.ruy.rtZ = true;
-    this.ruf.DR(6);
-    k.a(this.dsh, 1, 1, this.ruf.ryk.kme, this.ruf.ryk.ruy.rue, 28, "", "", "");
+    this.sCY.k((Map)localObject2, paramString);
+    this.sCY.sHc.sDq.sCX.FJ(28);
+    this.sCY.sHc.sDq.sCS = true;
+    this.sCY.FN(6);
+    k.a(this.dpS, 1, 1, this.sCY.sHc.kNw, this.sCY.sHc.sDq.sCX, 28, "", "", "");
     AppMethodBeat.o(176950);
     return;
     localObject1 = ((JSONObject)localObject1).optJSONObject("actionInfo");
@@ -180,42 +180,42 @@ public final class e
       String str = (String)((Iterator)localObject4).next();
       ((HashMap)localObject3).put(str, ((JSONObject)localObject2).optString(str));
     }
-    ((com.tencent.mm.plugin.websearch.api.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.g.class)).a(this.ruf.ryk, 3, paramString, String.valueOf(com.tencent.mm.plugin.fts.a.e.rob), (Map)localObject3);
-    this.ruf.ryk.ruy.rue.DN(27);
-    this.ruf.ryk.ruy.rtZ = true;
-    this.ruf.DR(5);
-    if (this.ryT) {}
+    ((com.tencent.mm.plugin.websearch.api.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.g.class)).a(this.sCY.sHc, 3, paramString, String.valueOf(com.tencent.mm.plugin.fts.a.e.swV), (Map)localObject3);
+    this.sCY.sHc.sDq.sCX.FJ(27);
+    this.sCY.sHc.sDq.sCS = true;
+    this.sCY.FN(5);
+    if (this.sHL) {}
     for (int i = 2;; i = 1)
     {
       localObject2 = ((JSONObject)localObject1).optString("nickname");
       localObject3 = ((JSONObject)localObject1).optString("docId");
       localObject1 = ((JSONObject)localObject1).optString("appId");
-      k.a(paramString, i, 2, this.ruf.ryk.kme, this.ruf.ryk.ruy.rue, 27, "3$".concat(String.valueOf(localObject2)), (String)localObject3, (String)localObject1);
+      k.a(paramString, i, 2, this.sCY.sHc.kNw, this.sCY.sHc.sDq.sCX, 27, "3$".concat(String.valueOf(localObject2)), (String)localObject3, (String)localObject1);
       AppMethodBeat.o(176950);
       return;
-      localObject2 = new byh();
-      ((byh)localObject2).CKO = ((JSONObject)localObject1).optInt("actionType");
+      localObject2 = new cdd();
+      ((cdd)localObject2).Edq = ((JSONObject)localObject1).optInt("actionType");
       paramString = ((JSONObject)localObject1).optJSONObject("actionInfo");
-      ((byh)localObject2).mAQ = paramString.optString("userName");
-      ((byh)localObject2).DcB = paramString.optString("relativeURL");
-      ((byh)localObject2).DcC = paramString.optInt("appVersion");
-      this.ruf.a((byh)localObject2);
+      ((cdd)localObject2).ncR = paramString.optString("userName");
+      ((cdd)localObject2).EvI = paramString.optString("relativeURL");
+      ((cdd)localObject2).EvJ = paramString.optInt("appVersion");
+      this.sCY.a((cdd)localObject2);
       localObject2 = new JSONObject();
       ((JSONObject)localObject1).put("type", "pardusAction");
       ((JSONObject)localObject1).put("actionId", "1");
       ((JSONObject)localObject1).put("params", localObject1);
-      gm("pardusActionCallBack", ((JSONObject)localObject2).toString());
-      this.ruf.DR(4);
-      this.ruf.ryk.ruy.rue.DN(27);
-      this.ruf.ryk.ruy.rtZ = true;
-      if (this.ryT) {}
+      gD("pardusActionCallBack", ((JSONObject)localObject2).toString());
+      this.sCY.FN(4);
+      this.sCY.sHc.sDq.sCX.FJ(27);
+      this.sCY.sHc.sDq.sCS = true;
+      if (this.sHL) {}
       for (i = 2;; i = 1)
       {
         localObject1 = paramString.optString("query");
         localObject2 = paramString.optString("nickname");
         localObject3 = paramString.optString("docId");
         paramString = paramString.optString("appId");
-        k.a((String)localObject1, i, 1, this.ruf.ryk.kme, this.ruf.ryk.ruy.rue, 27, "3$".concat(String.valueOf(localObject2)), (String)localObject3, paramString);
+        k.a((String)localObject1, i, 1, this.sCY.sHc.kNw, this.sCY.sHc.sDq.sCX, 27, "3$".concat(String.valueOf(localObject2)), (String)localObject3, paramString);
         break;
       }
     }
@@ -225,7 +225,7 @@ public final class e
   public final void pardusCommCgi(String paramString)
   {
     AppMethodBeat.i(176949);
-    ad.i("MicroMsg.FTS.PardusWebViewLogic", "pardusCommCgi %s", new Object[] { paramString });
+    ac.i("MicroMsg.FTS.PardusWebViewLogic", "pardusCommCgi %s", new Object[] { paramString });
     AppMethodBeat.o(176949);
   }
   
@@ -233,16 +233,16 @@ public final class e
   public final void pardusReport(String paramString)
   {
     AppMethodBeat.i(176951);
-    ad.i("MicroMsg.FTS.PardusWebViewLogic", "pardusReport %s", new Object[] { paramString });
+    ac.i("MicroMsg.FTS.PardusWebViewLogic", "pardusReport %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString).optString("logStr", "");
-      if (!bt.isNullOrNil(paramString))
+      if (!bs.isNullOrNil(paramString))
       {
-        ckd localckd = new ckd();
-        localckd.Eff = paramString;
-        paramString = new w(localckd);
-        com.tencent.mm.kernel.g.aeS().a(paramString, 0);
+        cpk localcpk = new cpk();
+        localcpk.FCf = paramString;
+        paramString = new v(localcpk);
+        com.tencent.mm.kernel.g.agi().a(paramString, 0);
       }
       AppMethodBeat.o(176951);
       return;
@@ -258,7 +258,7 @@ public final class e
   {
     boolean bool2 = true;
     AppMethodBeat.i(176948);
-    ad.i("MicroMsg.FTS.PardusWebViewLogic", "renderFinish %s", new Object[] { paramString });
+    ac.i("MicroMsg.FTS.PardusWebViewLogic", "renderFinish %s", new Object[] { paramString });
     for (;;)
     {
       try
@@ -272,20 +272,20 @@ public final class e
         {
           i = paramString.length();
           break label153;
-          this.ryT = bool1;
-          if (!bt.isNullOrNil((String)localObject))
+          this.sHL = bool1;
+          if (!bs.isNullOrNil((String)localObject))
           {
             bool1 = bool2;
-            this.dcq = bool1;
-            this.ruf.ryk.runOnUiThread(new Runnable()
+            this.cZP = bool1;
+            this.sCY.sHc.runOnUiThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(184536);
                 if (e.a(e.this).isXWalkKernel()) {}
-                for (int i = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), j);; i = Math.round(com.tencent.mm.ce.a.eCY() * j))
+                for (int i = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), j);; i = Math.round(com.tencent.mm.cd.a.eSs() * j))
                 {
-                  ad.i("MicroMsg.FTS.PardusWebViewLogic", "start to update webview %d", new Object[] { Integer.valueOf(i) });
+                  ac.i("MicroMsg.FTS.PardusWebViewLogic", "start to update webview %d", new Object[] { Integer.valueOf(i) });
                   e.a(e.this).getLayoutParams().height = i;
                   e.a(e.this).requestLayout();
                   e.b(e.this).getLayoutParams().height = 0;
@@ -297,14 +297,14 @@ public final class e
                     {
                       AppMethodBeat.i(184534);
                       int i = ((Integer)paramAnonymous2ValueAnimator.getAnimatedValue()).intValue();
-                      ad.i("MicroMsg.FTS.PardusWebViewLogic", "webview onAnimationUpdate %d", new Object[] { Integer.valueOf(i) });
+                      ac.i("MicroMsg.FTS.PardusWebViewLogic", "webview onAnimationUpdate %d", new Object[] { Integer.valueOf(i) });
                       e.b(e.this).getLayoutParams().height = i;
                       e.b(e.this).requestLayout();
                       AppMethodBeat.o(184534);
                     }
                   });
                   d locald = e.c(e.this);
-                  localValueAnimator.addListener(new d.a(locald, locald.rxi));
+                  localValueAnimator.addListener(new d.a(locald, locald.sGa));
                   localValueAnimator.setDuration(400L);
                   localValueAnimator.start();
                   e.d(e.this).setVisibility(0);
@@ -314,21 +314,21 @@ public final class e
                     {
                       int j = 0;
                       AppMethodBeat.i(184535);
-                      ad.i("MicroMsg.FTS.PardusWebViewLogic", "update footer view");
+                      ac.i("MicroMsg.FTS.PardusWebViewLogic", "update footer view");
                       Object localObject = e.c(e.this);
                       boolean bool1 = e.e(e.this);
                       boolean bool2 = e.f(e.this);
-                      ((d)localObject).ryT = bool1;
-                      ((d)localObject).dcq = bool2;
-                      ((d)localObject).bWe();
-                      localObject = e.c(e.this).ryk.ruy.rue;
-                      int k = e.3.this.rzy;
+                      ((d)localObject).sHL = bool1;
+                      ((d)localObject).cZP = bool2;
+                      ((d)localObject).cdr();
+                      localObject = e.c(e.this).sHc.sDq.sCX;
+                      int k = e.3.this.sIq;
                       if (e.f(e.this)) {}
                       for (int i = 2;; i = 0)
                       {
-                        ((com.tencent.mm.plugin.fts.ui.c.b)localObject).fJ(k, i);
+                        ((com.tencent.mm.plugin.fts.ui.c.b)localObject).fQ(k, i);
                         if (e.e(e.this)) {
-                          e.c(e.this).ryk.ruy.rue.q(System.currentTimeMillis(), "PardusSug");
+                          e.c(e.this).sHc.sDq.sCX.o(System.currentTimeMillis(), "PardusSug");
                         }
                         if (e.f(e.this))
                         {
@@ -336,8 +336,8 @@ public final class e
                           if (e.e(e.this)) {
                             i = 1;
                           }
-                          e.c(e.this).ryk.ruy.rue.a(i, System.currentTimeMillis(), "PardusMore", 3, e.3.this.rzz);
-                          e.c(e.this).ryk.ruy.rue.a(i + 1, System.currentTimeMillis(), e.3.this.rzz, 3, e.3.this.rzz);
+                          e.c(e.this).sHc.sDq.sCX.a(i, System.currentTimeMillis(), "PardusMore", 3, e.3.this.sIr);
+                          e.c(e.this).sHc.sDq.sCX.a(i + 1, System.currentTimeMillis(), e.3.this.sIr, 3, e.3.this.sIr);
                         }
                         AppMethodBeat.o(184535);
                         return;
@@ -379,13 +379,13 @@ public final class e
   public final void reportKV(String paramString)
   {
     AppMethodBeat.i(176952);
-    ad.i("MicroMsg.FTS.PardusWebViewLogic", "pardusReport %s", new Object[] { paramString });
+    ac.i("MicroMsg.FTS.PardusWebViewLogic", "pardusReport %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
       int i = paramString.optInt("logid");
       paramString = paramString.optString("msg", "");
-      com.tencent.mm.plugin.report.e.vIY.kvStat(i, paramString);
+      com.tencent.mm.plugin.report.e.wTc.kvStat(i, paramString);
       AppMethodBeat.o(176952);
       return;
     }
@@ -399,14 +399,14 @@ public final class e
   public final void webViewReady(String paramString)
   {
     AppMethodBeat.i(176947);
-    ad.i("MicroMsg.FTS.PardusWebViewLogic", "webViewReady %s", new Object[] { paramString });
-    this.rzu = true;
+    ac.i("MicroMsg.FTS.PardusWebViewLogic", "webViewReady %s", new Object[] { paramString });
+    this.sIm = true;
     AppMethodBeat.o(176947);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.e
  * JD-Core Version:    0.7.0.1
  */

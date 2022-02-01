@@ -12,13 +12,13 @@ import org.json.JSONObject;
 
 public final class d
 {
-  public static JSONArray M(List<?> paramList)
+  public static JSONArray D(List<?> paramList)
   {
-    AppMethodBeat.i(194786);
+    AppMethodBeat.i(200924);
     JSONArray localJSONArray = new JSONArray();
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(194786);
+      AppMethodBeat.o(200924);
       return localJSONArray;
     }
     int i = 0;
@@ -27,16 +27,16 @@ public final class d
       localJSONArray.put(paramList.get(i));
       i += 1;
     }
-    AppMethodBeat.o(194786);
+    AppMethodBeat.o(200924);
     return localJSONArray;
   }
   
   public static JSONObject a(PersistableBundle paramPersistableBundle)
   {
-    AppMethodBeat.i(194789);
+    AppMethodBeat.i(200927);
     if (paramPersistableBundle == null)
     {
-      AppMethodBeat.o(194789);
+      AppMethodBeat.o(200927);
       return null;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -51,17 +51,17 @@ public final class d
         localJSONObject.put(str, localObject);
       }
     }
-    AppMethodBeat.o(194789);
+    AppMethodBeat.o(200927);
     return localJSONObject;
   }
   
-  public static Boolean aE(Object paramObject)
+  public static Boolean aB(Object paramObject)
   {
-    AppMethodBeat.i(194788);
+    AppMethodBeat.i(200926);
     if ((paramObject instanceof Boolean))
     {
       paramObject = (Boolean)paramObject;
-      AppMethodBeat.o(194788);
+      AppMethodBeat.o(200926);
       return paramObject;
     }
     if ((paramObject instanceof String))
@@ -70,23 +70,23 @@ public final class d
       if ("true".equalsIgnoreCase(paramObject))
       {
         paramObject = Boolean.TRUE;
-        AppMethodBeat.o(194788);
+        AppMethodBeat.o(200926);
         return paramObject;
       }
       if ("false".equalsIgnoreCase(paramObject))
       {
         paramObject = Boolean.FALSE;
-        AppMethodBeat.o(194788);
+        AppMethodBeat.o(200926);
         return paramObject;
       }
     }
-    AppMethodBeat.o(194788);
+    AppMethodBeat.o(200926);
     return null;
   }
   
-  public static void e(Map paramMap)
+  public static void d(Map paramMap)
   {
-    AppMethodBeat.i(194787);
+    AppMethodBeat.i(200925);
     Iterator localIterator = paramMap.entrySet().iterator();
     while (localIterator.hasNext())
     {
@@ -95,11 +95,11 @@ public final class d
       localObject2 = ((Map.Entry)localObject2).getValue();
       if (((localObject1 instanceof String)) && ((localObject2 instanceof Map)))
       {
-        e((Map)localObject2);
+        d((Map)localObject2);
         paramMap.put(localObject1, new JSONObject((Map)localObject2));
       }
     }
-    AppMethodBeat.o(194787);
+    AppMethodBeat.o(200925);
   }
 }
 

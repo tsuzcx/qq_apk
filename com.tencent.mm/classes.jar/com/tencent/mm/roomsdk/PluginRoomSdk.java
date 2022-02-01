@@ -5,7 +5,7 @@ import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class PluginRoomSdk
   extends f
@@ -18,14 +18,14 @@ public class PluginRoomSdk
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(152753);
-    ad.i("MicroMsg.PluginRoomSdk", "onAccountInitialized");
+    ac.i("MicroMsg.PluginRoomSdk", "onAccountInitialized");
     AppMethodBeat.o(152753);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(152754);
-    ad.i("MicroMsg.PluginRoomSdk", "onAccountRelease");
+    ac.i("MicroMsg.PluginRoomSdk", "onAccountRelease");
     AppMethodBeat.o(152754);
   }
 }

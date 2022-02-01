@@ -8,10 +8,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public int aVY;
-  public int aVZ;
-  public final MediaCodec.CryptoInfo aWa;
-  private final a aWb;
+  public int aWL;
+  public int aWM;
+  public final MediaCodec.CryptoInfo aWN;
+  private final a aWO;
   public byte[] iv;
   public byte[] key;
   public int mode;
@@ -25,12 +25,12 @@ public final class b
     if (x.SDK_INT >= 16) {}
     for (Object localObject1 = new MediaCodec.CryptoInfo();; localObject1 = null)
     {
-      this.aWa = ((MediaCodec.CryptoInfo)localObject1);
+      this.aWN = ((MediaCodec.CryptoInfo)localObject1);
       localObject1 = localObject2;
       if (x.SDK_INT >= 24) {
-        localObject1 = new a(this.aWa, (byte)0);
+        localObject1 = new a(this.aWN, (byte)0);
       }
-      this.aWb = ((a)localObject1);
+      this.aWO = ((a)localObject1);
       AppMethodBeat.o(91848);
       return;
     }
@@ -45,23 +45,23 @@ public final class b
     this.key = paramArrayOfByte1;
     this.iv = paramArrayOfByte2;
     this.mode = paramInt2;
-    this.aVY = paramInt3;
-    this.aVZ = paramInt4;
+    this.aWL = paramInt3;
+    this.aWM = paramInt4;
     if (x.SDK_INT >= 16)
     {
-      this.aWa.numSubSamples = this.numSubSamples;
-      this.aWa.numBytesOfClearData = this.numBytesOfClearData;
-      this.aWa.numBytesOfEncryptedData = this.numBytesOfEncryptedData;
-      this.aWa.key = this.key;
-      this.aWa.iv = this.iv;
-      this.aWa.mode = this.mode;
+      this.aWN.numSubSamples = this.numSubSamples;
+      this.aWN.numBytesOfClearData = this.numBytesOfClearData;
+      this.aWN.numBytesOfEncryptedData = this.numBytesOfEncryptedData;
+      this.aWN.key = this.key;
+      this.aWN.iv = this.iv;
+      this.aWN.mode = this.mode;
       if (x.SDK_INT >= 24)
       {
-        paramArrayOfInt1 = this.aWb;
-        paramInt1 = this.aVY;
-        paramInt2 = this.aVZ;
-        paramArrayOfInt1.aWc.set(paramInt1, paramInt2);
-        paramArrayOfInt1.aWa.setPattern(paramArrayOfInt1.aWc);
+        paramArrayOfInt1 = this.aWO;
+        paramInt1 = this.aWL;
+        paramInt2 = this.aWM;
+        paramArrayOfInt1.aWP.set(paramInt1, paramInt2);
+        paramArrayOfInt1.aWN.setPattern(paramArrayOfInt1.aWP);
       }
     }
     AppMethodBeat.o(91849);
@@ -70,14 +70,14 @@ public final class b
   @TargetApi(24)
   static final class a
   {
-    final MediaCodec.CryptoInfo aWa;
-    final MediaCodec.CryptoInfo.Pattern aWc;
+    final MediaCodec.CryptoInfo aWN;
+    final MediaCodec.CryptoInfo.Pattern aWP;
     
     private a(MediaCodec.CryptoInfo paramCryptoInfo)
     {
       AppMethodBeat.i(91847);
-      this.aWa = paramCryptoInfo;
-      this.aWc = new MediaCodec.CryptoInfo.Pattern(0, 0);
+      this.aWN = paramCryptoInfo;
+      this.aWP = new MediaCodec.CryptoInfo.Pattern(0, 0);
       AppMethodBeat.o(91847);
     }
   }

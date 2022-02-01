@@ -6,13 +6,13 @@ import java.util.NoSuchElementException;
 
 final class v$a
 {
-  private static final Iterator<Object> JNE;
-  private static final Iterable<Object> JNF;
+  private static final Iterator<Object> LAY;
+  private static final Iterable<Object> LAZ;
   
   static
   {
     AppMethodBeat.i(59575);
-    JNE = new Iterator()
+    LAY = new Iterator()
     {
       public final boolean hasNext()
       {
@@ -35,12 +35,12 @@ final class v$a
         throw localUnsupportedOperationException;
       }
     };
-    JNF = new Iterable()
+    LAZ = new Iterable()
     {
       public final Iterator<Object> iterator()
       {
         AppMethodBeat.i(59574);
-        Iterator localIterator = v.a.fIi();
+        Iterator localIterator = v.a.gaL();
         AppMethodBeat.o(59574);
         return localIterator;
       }
@@ -48,14 +48,14 @@ final class v$a
     AppMethodBeat.o(59575);
   }
   
-  static <T> Iterable<T> fIh()
+  static <T> Iterable<T> gaK()
   {
-    return JNF;
+    return LAZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.h.v.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.soter.core.d;
 
 public abstract interface e
 {
-  public abstract void dFb();
+  public abstract void dTC();
   
-  public abstract void dFc();
+  public abstract void dTD();
   
-  public abstract void dFd();
+  public abstract void dTE();
   
-  public abstract void dFe();
+  public abstract void dTF();
   
   public abstract void onServiceConnected();
 }

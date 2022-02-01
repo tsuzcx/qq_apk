@@ -5,91 +5,91 @@ import com.tencent.tinker.a.a.j;
 public final class f
   extends e
 {
-  private final h ICj;
-  private final c ICk;
-  private final boolean ICl;
+  private final h Kos;
+  private final c Kot;
+  private final boolean Kou;
   
   public f(h paramh, c paramc)
   {
     super(null);
-    this.ICj = paramh;
-    this.ICk = paramc;
-    this.ICl = true;
+    this.Kos = paramh;
+    this.Kot = paramc;
+    this.Kou = true;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong)
   {
     paramInt1 = paramInt5;
-    if (this.ICl) {
-      paramInt1 = this.ICk.act(paramInt5);
+    if (this.Kou) {
+      paramInt1 = this.Kot.afp(paramInt5);
     }
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.acw(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.afs(paramInt2));
     case -1: 
     case 0: 
     case 14: 
       s1 = (short)paramInt2;
-      this.ICj.c(s1);
+      this.Kos.c(s1);
       return;
     case 40: 
-      if (this.ICl)
+      if (this.Kou)
       {
-        paramInt1 -= this.ICj.amn;
+        paramInt1 -= this.Kos.anh;
         if (paramInt1 != (byte)paramInt1)
         {
           if (paramInt1 != (short)paramInt1)
           {
-            this.ICj.a((short)42, (short)paramInt1, (short)(paramInt1 >> 16));
+            this.Kos.a((short)42, (short)paramInt1, (short)(paramInt1 >> 16));
             return;
           }
           s1 = (short)paramInt1;
-          this.ICj.b((short)41, s1);
+          this.Kos.b((short)41, s1);
           return;
         }
-        this.ICj.c(b.kv(paramInt2, paramInt1 & 0xFF));
+        this.Kos.c(b.kM(paramInt2, paramInt1 & 0xFF));
         return;
       }
-      paramInt1 -= this.ICj.amn;
+      paramInt1 -= this.Kos.anh;
       if (paramInt1 != (byte)paramInt1) {
-        throw new j("Target out of range: " + com.tencent.tinker.a.b.b.a.acx(paramInt1) + ", perhaps you need to enable force jumbo mode.");
+        throw new j("Target out of range: " + com.tencent.tinker.a.b.b.a.aft(paramInt1) + ", perhaps you need to enable force jumbo mode.");
       }
-      this.ICj.c(b.kv(paramInt2, paramInt1 & 0xFF));
+      this.Kos.c(b.kM(paramInt2, paramInt1 & 0xFF));
       return;
     case 41: 
-      if (this.ICl)
+      if (this.Kou)
       {
-        paramInt1 -= this.ICj.amn;
+        paramInt1 -= this.Kos.anh;
         if (paramInt1 != (short)paramInt1)
         {
-          this.ICj.a((short)42, (short)paramInt1, (short)(paramInt1 >> 16));
+          this.Kos.a((short)42, (short)paramInt1, (short)(paramInt1 >> 16));
           return;
         }
         s1 = (short)paramInt1;
         s2 = (short)paramInt2;
-        this.ICj.b(s2, s1);
+        this.Kos.b(s2, s1);
         return;
       }
-      s1 = b.kx(paramInt1, this.ICj.amn);
+      s1 = b.kO(paramInt1, this.Kos.anh);
       short s2 = (short)paramInt2;
-      this.ICj.b(s2, s1);
+      this.Kos.b(s2, s1);
       return;
     case 42: 
-      paramInt1 -= this.ICj.amn;
+      paramInt1 -= this.Kos.anh;
       s1 = (short)paramInt2;
-      this.ICj.a(s1, (short)paramInt1, (short)(paramInt1 >> 16));
+      this.Kos.a(s1, (short)paramInt1, (short)(paramInt1 >> 16));
       return;
     }
     short s1 = (short)paramInt3;
-    this.ICj.a(b.kv(paramInt2, b.kw(0, 0)), s1, b.V(0, 0, 0, 0));
+    this.Kos.a(b.kM(paramInt2, b.kN(0, 0)), s1, b.X(0, 0, 0, 0));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6)
   {
     paramInt1 = paramInt5;
-    if (this.ICl) {
-      paramInt1 = this.ICk.act(paramInt5);
+    if (this.Kou) {
+      paramInt1 = this.Kot.afp(paramInt5);
     }
     h localh;
     switch (paramInt2)
@@ -148,14 +148,14 @@ public final class f
     case 94: 
     case 95: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.acw(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.afs(paramInt2));
     case 18: 
       paramInt1 = (short)paramInt2;
-      localh = this.ICj;
+      localh = this.Kos;
       if ((paramLong < -8L) || (paramLong > 7L)) {
-        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.xo(paramLong));
+        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.Ca(paramLong));
       }
-      localh.c(b.kv(paramInt1, b.kw(paramInt6, (int)paramLong & 0xF)));
+      localh.c(b.kM(paramInt1, b.kN(paramInt6, (int)paramLong & 0xF)));
       return;
     case 10: 
     case 11: 
@@ -167,7 +167,7 @@ public final class f
     case 29: 
     case 30: 
     case 39: 
-      this.ICj.c(b.kv(paramInt2, paramInt6));
+      this.Kos.c(b.kM(paramInt2, paramInt6));
       return;
     case 56: 
     case 57: 
@@ -175,12 +175,12 @@ public final class f
     case 59: 
     case 60: 
     case 61: 
-      s1 = b.kx(paramInt1, this.ICj.amn);
-      this.ICj.b(b.kv(paramInt2, paramInt6), s1);
+      s1 = b.kO(paramInt1, this.Kos.anh);
+      this.Kos.b(b.kM(paramInt2, paramInt6), s1);
       return;
     case 19: 
     case 22: 
-      this.ICj.b(b.kv(paramInt2, paramInt6), b.xn(paramLong));
+      this.Kos.b(b.kM(paramInt2, paramInt6), b.BZ(paramLong));
       return;
     case 21: 
     case 25: 
@@ -188,26 +188,26 @@ public final class f
       for (paramInt1 = 16;; paramInt1 = 48)
       {
         s1 = (short)(int)(paramLong >> paramInt1);
-        this.ICj.b(b.kv(paramInt2, paramInt6), s1);
+        this.Kos.b(b.kM(paramInt2, paramInt6), s1);
         return;
       }
     case 26: 
-      if (this.ICl)
+      if (this.Kou)
       {
         if (paramInt3 > 65535)
         {
-          this.ICj.a(b.kv(27, paramInt6), (short)paramInt3, (short)(paramInt3 >> 16));
+          this.Kos.a(b.kM(27, paramInt6), (short)paramInt3, (short)(paramInt3 >> 16));
           return;
         }
         s1 = (short)paramInt3;
-        this.ICj.b(b.kv(paramInt2, paramInt6), s1);
+        this.Kos.b(b.kM(paramInt2, paramInt6), s1);
         return;
       }
       if (paramInt3 > 65535) {
-        throw new j("string index out of bound: " + com.tencent.tinker.a.b.b.a.acu(paramInt3) + ", perhaps you need to enable force jumbo mode.");
+        throw new j("string index out of bound: " + com.tencent.tinker.a.b.b.a.afq(paramInt3) + ", perhaps you need to enable force jumbo mode.");
       }
       s1 = (short)paramInt3;
-      this.ICj.b(b.kv(paramInt2, paramInt6), s1);
+      this.Kos.b(b.kM(paramInt2, paramInt6), s1);
       return;
     case 28: 
     case 31: 
@@ -227,15 +227,15 @@ public final class f
     case 108: 
     case 109: 
       s1 = (short)paramInt3;
-      this.ICj.b(b.kv(paramInt2, paramInt6), s1);
+      this.Kos.b(b.kM(paramInt2, paramInt6), s1);
       return;
     case 20: 
     case 23: 
       if (paramLong != (int)paramLong) {
-        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.xo(paramLong));
+        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.Ca(paramLong));
       }
       paramInt1 = (int)paramLong;
-      this.ICj.a(b.kv(paramInt2, paramInt6), (short)paramInt1, (short)(paramInt1 >> 16));
+      this.Kos.a(b.kM(paramInt2, paramInt6), (short)paramInt1, (short)(paramInt1 >> 16));
       return;
     case 38: 
     case 43: 
@@ -245,18 +245,18 @@ public final class f
       }
       for (;;)
       {
-        paramInt1 -= this.ICj.amn;
-        this.ICj.a(b.kv(paramInt2, paramInt6), (short)paramInt1, (short)(paramInt1 >> 16));
+        paramInt1 -= this.Kos.anh;
+        this.Kos.a(b.kM(paramInt2, paramInt6), (short)paramInt1, (short)(paramInt1 >> 16));
         return;
-        localh = this.ICj;
-        localh.ku(paramInt1, localh.amn);
+        localh = this.Kos;
+        localh.kL(paramInt1, localh.anh);
       }
     case 27: 
-      this.ICj.a(b.kv(paramInt2, paramInt6), (short)paramInt3, (short)(paramInt3 >> 16));
+      this.Kos.a(b.kM(paramInt2, paramInt6), (short)paramInt3, (short)(paramInt3 >> 16));
       return;
     case 24: 
-      localh = this.ICj;
-      s1 = b.kv(paramInt2, paramInt6);
+      localh = this.Kos;
+      s1 = b.kM(paramInt2, paramInt6);
       short s2 = (short)(int)paramLong;
       short s3 = (short)(int)(paramLong >> 16);
       short s4 = (short)(int)(paramLong >> 32);
@@ -269,14 +269,14 @@ public final class f
       return;
     }
     short s1 = (short)paramInt3;
-    this.ICj.a(b.kv(paramInt2, b.kw(0, 1)), s1, b.V(paramInt6, 0, 0, 0));
+    this.Kos.a(b.kM(paramInt2, b.kN(0, 1)), s1, b.X(paramInt6, 0, 0, 0));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
   {
     paramInt1 = paramInt5;
-    if (this.ICl) {
-      paramInt1 = this.ICk.act(paramInt5);
+    if (this.Kou) {
+      paramInt1 = this.Kot.afp(paramInt5);
     }
     switch (paramInt2)
     {
@@ -397,7 +397,7 @@ public final class f
     case 174: 
     case 175: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.acw(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.afs(paramInt2));
     case 1: 
     case 4: 
     case 7: 
@@ -456,12 +456,12 @@ public final class f
     case 206: 
     case 207: 
       paramInt1 = (short)paramInt2;
-      this.ICj.c(b.kv(paramInt1, b.kw(paramInt6, paramInt7)));
+      this.Kos.c(b.kM(paramInt1, b.kN(paramInt6, paramInt7)));
       return;
     case 2: 
     case 5: 
     case 8: 
-      this.ICj.b(b.kv(paramInt2, paramInt6), b.acq(paramInt7));
+      this.Kos.b(b.kM(paramInt2, paramInt6), b.afm(paramInt7));
       return;
     case 216: 
     case 217: 
@@ -474,12 +474,12 @@ public final class f
     case 224: 
     case 225: 
     case 226: 
-      h localh = this.ICj;
-      s = b.kv(paramInt2, paramInt6);
+      h localh = this.Kos;
+      s = b.kM(paramInt2, paramInt6);
       if (paramLong != (byte)(int)paramLong) {
-        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.xo(paramLong));
+        throw new j("Literal out of range: " + com.tencent.tinker.a.b.b.a.Ca(paramLong));
       }
-      localh.b(s, b.kv(paramInt7, (int)paramLong & 0xFF));
+      localh.b(s, b.kM(paramInt7, (int)paramLong & 0xFF));
       return;
     case 50: 
     case 51: 
@@ -487,8 +487,8 @@ public final class f
     case 53: 
     case 54: 
     case 55: 
-      s = b.kx(paramInt1, this.ICj.amn);
-      this.ICj.b(b.kv(paramInt2, b.kw(paramInt6, paramInt7)), s);
+      s = b.kO(paramInt1, this.Kos.anh);
+      this.Kos.b(b.kM(paramInt2, b.kN(paramInt6, paramInt7)), s);
       return;
     case 208: 
     case 209: 
@@ -498,7 +498,7 @@ public final class f
     case 213: 
     case 214: 
     case 215: 
-      this.ICj.b(b.kv(paramInt2, b.kw(paramInt6, paramInt7)), b.xn(paramLong));
+      this.Kos.b(b.kM(paramInt2, b.kN(paramInt6, paramInt7)), b.BZ(paramLong));
       return;
     case 32: 
     case 35: 
@@ -517,17 +517,17 @@ public final class f
     case 94: 
     case 95: 
       s = (short)paramInt3;
-      this.ICj.b(b.kv(paramInt2, b.kw(paramInt6, paramInt7)), s);
+      this.Kos.b(b.kM(paramInt2, b.kN(paramInt6, paramInt7)), s);
       return;
     case 3: 
     case 6: 
     case 9: 
       s = (short)paramInt2;
-      this.ICj.a(s, b.acp(paramInt6), b.acq(paramInt7));
+      this.Kos.a(s, b.afl(paramInt6), b.afm(paramInt7));
       return;
     }
     short s = (short)paramInt3;
-    this.ICj.a(b.kv(paramInt2, b.kw(0, 2)), s, b.V(paramInt6, paramInt7, 0, 0));
+    this.Kos.a(b.kM(paramInt2, b.kN(0, 2)), s, b.X(paramInt6, paramInt7, 0, 0));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8)
@@ -618,7 +618,7 @@ public final class f
     case 142: 
     case 143: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.acw(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.afs(paramInt2));
     case 45: 
     case 46: 
     case 47: 
@@ -670,11 +670,11 @@ public final class f
     case 173: 
     case 174: 
     case 175: 
-      this.ICj.b(b.kv(paramInt2, paramInt6), b.kv(paramInt7, paramInt8));
+      this.Kos.b(b.kM(paramInt2, paramInt6), b.kM(paramInt7, paramInt8));
       return;
     }
     short s = (short)paramInt3;
-    this.ICj.a(b.kv(paramInt2, b.kw(0, 3)), s, b.V(paramInt6, paramInt7, paramInt8, 0));
+    this.Kos.a(b.kM(paramInt2, b.kN(0, 3)), s, b.X(paramInt6, paramInt7, paramInt8, 0));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
@@ -682,10 +682,10 @@ public final class f
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.acw(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.afs(paramInt2));
     }
     short s = (short)paramInt3;
-    this.ICj.a(b.kv(paramInt2, b.kw(0, 4)), s, b.V(paramInt6, paramInt7, paramInt8, paramInt9));
+    this.Kos.a(b.kM(paramInt2, b.kN(0, 4)), s, b.X(paramInt6, paramInt7, paramInt8, paramInt9));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
@@ -693,29 +693,29 @@ public final class f
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.acw(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.afs(paramInt2));
     }
     short s = (short)paramInt3;
-    this.ICj.a(b.kv(paramInt2, b.kw(paramInt10, 5)), s, b.V(paramInt6, paramInt7, paramInt8, paramInt9));
+    this.Kos.a(b.kM(paramInt2, b.kN(paramInt10, 5)), s, b.X(paramInt6, paramInt7, paramInt8, paramInt9));
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
   {
     int i = 0;
     paramInt1 = 0;
-    int j = this.ICj.foW();
+    int j = this.Kos.fHe();
     short s = (short)paramInt2;
-    this.ICj.c(s);
-    this.ICj.c(b.acn(paramArrayOfInt.length));
-    this.ICj.writeInt(paramInt3);
-    if (this.ICl)
+    this.Kos.c(s);
+    this.Kos.c(b.afj(paramArrayOfInt.length));
+    this.Kos.writeInt(paramInt3);
+    if (this.Kou)
     {
       paramInt2 = paramArrayOfInt.length;
       while (paramInt1 < paramInt2)
       {
         paramInt3 = paramArrayOfInt[paramInt1];
-        paramInt3 = this.ICk.act(paramInt3);
-        this.ICj.writeInt(paramInt3 - j);
+        paramInt3 = this.Kot.afp(paramInt3);
+        this.Kos.writeInt(paramInt3 - j);
         paramInt1 += 1;
       }
     }
@@ -724,7 +724,7 @@ public final class f
     while (paramInt1 < paramInt2)
     {
       paramInt3 = paramArrayOfInt[paramInt1];
-      this.ICj.writeInt(paramInt3 - j);
+      this.Kos.writeInt(paramInt3 - j);
       paramInt1 += 1;
     }
   }
@@ -735,10 +735,10 @@ public final class f
     int j = 0;
     paramInt1 = 0;
     short s = (short)paramInt2;
-    this.ICj.c(s);
+    this.Kos.c(s);
     s = (short)paramInt4;
-    this.ICj.c(s);
-    this.ICj.writeInt(paramInt3);
+    this.Kos.c(s);
+    this.Kos.writeInt(paramInt3);
     h localh;
     switch (paramInt4)
     {
@@ -747,9 +747,9 @@ public final class f
     case 6: 
     case 7: 
     default: 
-      throw new j("bogus element_width: " + com.tencent.tinker.a.b.b.a.acv(paramInt4));
+      throw new j("bogus element_width: " + com.tencent.tinker.a.b.b.a.afr(paramInt4));
     case 1: 
-      localh = this.ICj;
+      localh = this.Kos;
       paramObject = (byte[])paramObject;
       paramInt4 = paramObject.length;
       paramInt3 = 0;
@@ -777,7 +777,7 @@ public final class f
     for (;;)
     {
       return;
-      localh = this.ICj;
+      localh = this.Kos;
       paramObject = (short[])paramObject;
       paramInt2 = paramObject.length;
       while (paramInt1 < paramInt2)
@@ -786,7 +786,7 @@ public final class f
         paramInt1 += 1;
       }
       continue;
-      localh = this.ICj;
+      localh = this.Kos;
       paramObject = (int[])paramObject;
       paramInt2 = paramObject.length;
       paramInt1 = i;
@@ -796,7 +796,7 @@ public final class f
         paramInt1 += 1;
       }
       continue;
-      localh = this.ICj;
+      localh = this.Kos;
       paramObject = (long[])paramObject;
       paramInt2 = paramObject.length;
       paramInt1 = j;
@@ -816,27 +816,27 @@ public final class f
   {
     int j = 0;
     int i = 0;
-    int k = this.ICj.foW();
+    int k = this.Kos.fHe();
     short s = (short)paramInt2;
-    this.ICj.c(s);
-    this.ICj.c(b.acn(paramArrayOfInt2.length));
+    this.Kos.c(s);
+    this.Kos.c(b.afj(paramArrayOfInt2.length));
     paramInt2 = paramArrayOfInt1.length;
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
     {
       int m = paramArrayOfInt1[paramInt1];
-      this.ICj.writeInt(m);
+      this.Kos.writeInt(m);
       paramInt1 += 1;
     }
-    if (this.ICl)
+    if (this.Kou)
     {
       paramInt2 = paramArrayOfInt2.length;
       paramInt1 = i;
       while (paramInt1 < paramInt2)
       {
         i = paramArrayOfInt2[paramInt1];
-        i = this.ICk.act(i);
-        this.ICj.writeInt(i - k);
+        i = this.Kot.afp(i);
+        this.Kos.writeInt(i - k);
         paramInt1 += 1;
       }
     }
@@ -845,7 +845,7 @@ public final class f
     while (paramInt1 < paramInt2)
     {
       i = paramArrayOfInt2[paramInt1];
-      this.ICj.writeInt(i - k);
+      this.Kos.writeInt(i - k);
       paramInt1 += 1;
     }
   }
@@ -855,10 +855,10 @@ public final class f
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.acw(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + com.tencent.tinker.a.b.b.a.afs(paramInt2));
     }
     short s = (short)paramInt3;
-    this.ICj.a(b.kv(paramInt2, paramInt7), s, b.acp(paramInt6));
+    this.Kos.a(b.kM(paramInt2, paramInt7), s, b.afl(paramInt6));
   }
 }
 

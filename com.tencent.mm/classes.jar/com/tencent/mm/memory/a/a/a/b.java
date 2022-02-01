@@ -6,32 +6,32 @@ import com.tencent.mm.b.f;
 import com.tencent.mm.b.f.b;
 import com.tencent.mm.b.f.c;
 import com.tencent.mm.b.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class b<T, V>
 {
-  private ConcurrentLinkedQueue<Pair<T, f<T, V>>> gEL;
-  private a gEM;
-  a<T, V> gEN;
-  b<T, V> gEO;
+  private ConcurrentLinkedQueue<Pair<T, f<T, V>>> hfm;
+  private a hfn;
+  a<T, V> hfo;
+  b<T, V> hfp;
   
   public b(a parama, a<T, V> parama1, b<T, V> paramb)
   {
     AppMethodBeat.i(156510);
-    this.gEL = new ConcurrentLinkedQueue();
-    this.gEM = null;
-    this.gEM = parama;
-    this.gEN = parama1;
-    this.gEO = paramb;
+    this.hfm = new ConcurrentLinkedQueue();
+    this.hfn = null;
+    this.hfn = parama;
+    this.hfo = parama1;
+    this.hfp = paramb;
     AppMethodBeat.o(156510);
   }
   
-  final f<T, V> bS(final T paramT)
+  final f<T, V> bQ(final T paramT)
   {
     AppMethodBeat.i(156512);
-    Object localObject = this.gEL.iterator();
+    Object localObject = this.hfm.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -42,23 +42,23 @@ public final class b<T, V>
         return paramT;
       }
     }
-    if (this.gEL.size() >= this.gEM.gEK)
+    if (this.hfm.size() >= this.hfn.hfl)
     {
-      localObject = (Pair)this.gEL.poll();
+      localObject = (Pair)this.hfm.poll();
       if ((localObject != null) && (((Pair)localObject).second != null)) {
         ((f)((Pair)localObject).second).trimToSize(-1);
       }
     }
-    localObject = this.gEM;
-    int i = (int)(((a)localObject).gEJ * ((a)localObject).gEG * 1.0D / ((a)localObject).gEK);
-    ad.i("MicroMsg.ExtraLruMap", "handlerMap %s %s", new Object[] { paramT, Integer.valueOf(i) });
+    localObject = this.hfn;
+    int i = (int)(((a)localObject).hfk * ((a)localObject).hfh * 1.0D / ((a)localObject).hfl);
+    ac.i("MicroMsg.ExtraLruMap", "handlerMap %s %s", new Object[] { paramT, Integer.valueOf(i) });
     paramT = new Pair(paramT, new h(i, new f.b()new f.c
     {
       public final void c(T paramAnonymousT, V paramAnonymousV1, V paramAnonymousV2)
       {
         AppMethodBeat.i(156508);
-        if (b.this.gEN != null) {
-          b.this.gEN.u(paramT, paramAnonymousT);
+        if (b.this.hfo != null) {
+          b.this.hfo.u(paramT, paramAnonymousT);
         }
         AppMethodBeat.o(156508);
       }
@@ -67,9 +67,9 @@ public final class b<T, V>
       public final int p(T paramAnonymousT, V paramAnonymousV)
       {
         AppMethodBeat.i(156509);
-        if (b.this.gEO != null)
+        if (b.this.hfp != null)
         {
-          int i = b.this.gEO.e(paramT, paramAnonymousT, paramAnonymousV);
+          int i = b.this.hfp.e(paramT, paramAnonymousT, paramAnonymousV);
           AppMethodBeat.o(156509);
           return i;
         }
@@ -77,7 +77,7 @@ public final class b<T, V>
         return 0;
       }
     }));
-    this.gEL.add(paramT);
+    this.hfm.add(paramT);
     paramT = (f)paramT.second;
     AppMethodBeat.o(156512);
     return paramT;
@@ -86,7 +86,7 @@ public final class b<T, V>
   public final boolean t(T paramT1, T paramT2)
   {
     AppMethodBeat.i(156511);
-    Iterator localIterator = this.gEL.iterator();
+    Iterator localIterator = this.hfm.iterator();
     Pair localPair;
     do
     {
@@ -97,7 +97,7 @@ public final class b<T, V>
     } while ((localPair == null) || (localPair.first == null) || (!localPair.first.equals(paramT1)));
     for (paramT1 = (f)localPair.second; paramT1 != null; paramT1 = null)
     {
-      boolean bool = paramT1.aN(paramT2);
+      boolean bool = paramT1.aK(paramT2);
       AppMethodBeat.o(156511);
       return bool;
     }

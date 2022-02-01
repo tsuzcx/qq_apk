@@ -4,17 +4,17 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nm;
-import com.tencent.mm.g.a.nm.a;
-import com.tencent.mm.g.a.nm.b;
+import com.tencent.mm.g.a.nv;
+import com.tencent.mm.g.a.nv.a;
+import com.tencent.mm.g.a.nv.b;
 import com.tencent.mm.plugin.fingerprint.b.a.b;
 import com.tencent.mm.plugin.fingerprint.b.a.f;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.soter.core.c.j;
 import java.util.Map;
 import org.json.JSONException;
@@ -23,33 +23,33 @@ import org.json.JSONObject;
 public final class k
   extends a
 {
-  private com.tencent.soter.a.d.a rcc = null;
+  private com.tencent.soter.a.d.a skw = null;
   
   public final int a(final com.tencent.mm.plugin.fingerprint.d.c paramc)
   {
     AppMethodBeat.i(64353);
-    ad.i("MicroMsg.SoterAuthMgrImp", "start face auth: %s", new Object[] { Integer.valueOf(3000) });
-    final av localav = new av(new av.a()
+    ac.i("MicroMsg.SoterAuthMgrImp", "start face auth: %s", new Object[] { Integer.valueOf(3000) });
+    final au localau = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(64345);
-        ad.i("MicroMsg.SoterAuthMgrImp", "timeout: %s", new Object[] { Integer.valueOf(this.kUY) });
+        ac.i("MicroMsg.SoterAuthMgrImp", "timeout: %s", new Object[] { Integer.valueOf(this.lwI) });
         k.a(k.this).cancel();
-        paramc.fE(2000, -1);
+        paramc.fL(2000, -1);
         AppMethodBeat.o(64345);
         return false;
       }
     }, false);
-    localav.av(3000L, 3000L);
-    f localf = new f(p.rcp.rcj);
-    this.rbB.b(aj.getContext(), localf, new b()
+    localau.au(3000L, 3000L);
+    f localf = new f(p.skJ.skD);
+    this.sjV.b(ai.getContext(), localf, new b()
     {
       public final void a(com.tencent.mm.plugin.fingerprint.b.a.c paramAnonymousc)
       {
         AppMethodBeat.i(64346);
-        localav.stopTimer();
-        paramc.fE(paramAnonymousc.errCode, -1);
+        localau.stopTimer();
+        paramc.fL(paramAnonymousc.errCode, -1);
         AppMethodBeat.o(64346);
       }
     });
@@ -63,17 +63,17 @@ public final class k
     AppMethodBeat.i(64352);
     if (paramBoolean)
     {
-      ad.i("MicroMsg.SoterAuthMgrImp", "hy: req restart after fail, but no need");
+      ac.i("MicroMsg.SoterAuthMgrImp", "hy: req restart after fail, but no need");
       AppMethodBeat.o(64352);
       return 0;
     }
-    f localf = new f(p.rcp.rcj);
-    this.rbB.a(aj.getContext(), localf, new b()
+    f localf = new f(p.skJ.skD);
+    this.sjV.a(ai.getContext(), localf, new b()
     {
       public final void a(com.tencent.mm.plugin.fingerprint.b.a.c paramAnonymousc)
       {
         AppMethodBeat.i(64344);
-        paramc.fE(paramAnonymousc.errCode, -1);
+        paramc.fL(paramAnonymousc.errCode, -1);
         AppMethodBeat.o(64344);
       }
     });
@@ -81,21 +81,21 @@ public final class k
     return 0;
   }
   
-  public final void a(nm paramnm, int paramInt)
+  public final void a(nv paramnv, int paramInt)
   {
     AppMethodBeat.i(64354);
-    ad.i("MicroMsg.SoterAuthMgrImp", "hy: soter onOpenFingerprintAuthSuccess");
-    paramnm.dsA.dsE = ctR();
-    nm.b localb = paramnm.dsA;
-    if (!bt.isNullOrNil(paramnm.dsA.dsE)) {}
+    ac.i("MicroMsg.SoterAuthMgrImp", "hy: soter onOpenFingerprintAuthSuccess");
+    paramnv.dqk.dqo = cHd();
+    nv.b localb = paramnv.dqk;
+    if (!bs.isNullOrNil(paramnv.dqk.dqo)) {}
     for (paramInt = 0;; paramInt = 1)
     {
       localb.errCode = paramInt;
-      paramnm.dsA.dsF = 2;
-      paramnm.dsA.dlK = "";
-      paramnm.dsA.dlL = "";
-      if (paramnm.dsz.dsD != null) {
-        paramnm.dsz.dsD.run();
+      paramnv.dqk.dqp = 2;
+      paramnv.dqk.djs = "";
+      paramnv.dqk.djt = "";
+      if (paramnv.dqj.dqn != null) {
+        paramnv.dqj.dqn.run();
       }
       AppMethodBeat.o(64354);
       return;
@@ -105,37 +105,37 @@ public final class k
   public final boolean a(boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle)
   {
     AppMethodBeat.i(64359);
-    ad.i("MicroMsg.SoterAuthMgrImp", "hy: post pay. is fingerprint pay: %b, is pay ok: %b, extInfo: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramBundle });
-    this.rbB.a(paramBoolean1, paramBoolean2, p.rcp.rcr, paramBundle);
+    ac.i("MicroMsg.SoterAuthMgrImp", "hy: post pay. is fingerprint pay: %b, is pay ok: %b, extInfo: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramBundle });
+    this.sjV.a(paramBoolean1, paramBoolean2, p.skJ.skL, paramBundle);
     AppMethodBeat.o(64359);
     return false;
   }
   
-  public final boolean ctO()
+  public final boolean cHa()
   {
     AppMethodBeat.i(64360);
-    boolean bool = this.rbB.cus();
+    boolean bool = this.sjV.cHE();
     AppMethodBeat.o(64360);
     return bool;
   }
   
-  public final boolean ctP()
+  public final boolean cHb()
   {
     AppMethodBeat.i(64364);
-    boolean bool = this.rbB.ctP();
+    boolean bool = this.sjV.cHb();
     AppMethodBeat.o(64364);
     return bool;
   }
   
-  public final String ctR()
+  public final String cHd()
   {
     AppMethodBeat.i(64355);
-    Object localObject = p.rcp.rct;
+    Object localObject = p.skJ.skN;
     if (localObject != null) {
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("json", ((j)localObject).Iva);
+        localJSONObject.put("json", ((j)localObject).JWJ);
         localJSONObject.put("signature", ((j)localObject).signature);
         localObject = localJSONObject.toString();
         AppMethodBeat.o(64355);
@@ -143,99 +143,99 @@ public final class k
       }
       catch (JSONException localJSONException)
       {
-        ad.e("MicroMsg.SoterAuthMgrImp", "hy: error when convert to json: %s", new Object[] { localJSONException.toString() });
-        ad.printErrStackTrace("MicroMsg.SoterAuthMgrImp", localJSONException, "", new Object[0]);
+        ac.e("MicroMsg.SoterAuthMgrImp", "hy: error when convert to json: %s", new Object[] { localJSONException.toString() });
+        ac.printErrStackTrace("MicroMsg.SoterAuthMgrImp", localJSONException, "", new Object[0]);
         AppMethodBeat.o(64355);
         return "";
       }
     }
-    ad.e("MicroMsg.SoterAuthMgrImp", "hy: signature result is null");
+    ac.e("MicroMsg.SoterAuthMgrImp", "hy: signature result is null");
     AppMethodBeat.o(64355);
     return "";
   }
   
-  public final boolean ctS()
+  public final boolean cHe()
   {
     AppMethodBeat.i(64347);
-    boolean bool = this.rbB.eO(aj.getContext());
+    boolean bool = this.sjV.fb(ai.getContext());
     AppMethodBeat.o(64347);
     return bool;
   }
   
-  public final boolean ctT()
+  public final boolean cHf()
   {
     AppMethodBeat.i(64348);
-    boolean bool = this.rbB.cuq();
+    boolean bool = this.sjV.cHC();
     AppMethodBeat.o(64348);
     return bool;
   }
   
-  public final void ctU()
+  public final void cHg()
   {
     AppMethodBeat.i(64349);
-    ad.i("MicroMsg.SoterAuthMgrImp", "hy: soter init fp. Do nothing?? Prepare ASK??");
-    this.rbB.prepare();
+    ac.i("MicroMsg.SoterAuthMgrImp", "hy: soter init fp. Do nothing?? Prepare ASK??");
+    this.sjV.prepare();
     AppMethodBeat.o(64349);
   }
   
-  public final boolean ctV()
+  public final boolean cHh()
   {
     return false;
   }
   
-  public final boolean ctW()
+  public final boolean cHi()
   {
     AppMethodBeat.i(64351);
-    boolean bool = this.rbB.cup();
+    boolean bool = this.sjV.cHB();
     AppMethodBeat.o(64351);
     return bool;
   }
   
-  public final Map<String, String> ctX()
+  public final Map<String, String> cHj()
   {
     AppMethodBeat.i(64356);
-    Map localMap = this.rbB.ctX();
+    Map localMap = this.sjV.cHj();
     AppMethodBeat.o(64356);
     return localMap;
   }
   
-  public final Map<String, String> ctY()
+  public final Map<String, String> cHk()
   {
     AppMethodBeat.i(64357);
-    Map localMap = ctX();
+    Map localMap = cHj();
     AppMethodBeat.o(64357);
     return localMap;
   }
   
-  public final boolean ctZ()
+  public final boolean cHl()
   {
     AppMethodBeat.i(64358);
-    boolean bool = this.rbB.cuv();
-    ad.i("MicroMsg.SoterAuthMgrImp", "py: hasAuthKey: %b", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = this.sjV.cHH();
+    ac.i("MicroMsg.SoterAuthMgrImp", "py: hasAuthKey: %b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(64358);
     return bool;
   }
   
-  public final boolean cua()
+  public final boolean cHm()
   {
     AppMethodBeat.i(64362);
-    boolean bool = this.rbB.eP(aj.getContext());
+    boolean bool = this.sjV.fc(ai.getContext());
     AppMethodBeat.o(64362);
     return bool;
   }
   
-  public final boolean cub()
+  public final boolean cHn()
   {
     AppMethodBeat.i(64363);
-    boolean bool = this.rbB.cur();
+    boolean bool = this.sjV.cHD();
     AppMethodBeat.o(64363);
     return bool;
   }
   
-  public final void eL(Context paramContext)
+  public final void eY(Context paramContext)
   {
     AppMethodBeat.i(64350);
-    ad.i("MicroMsg.SoterAuthMgrImp", "hy: start startRigesterSysFP");
+    ac.i("MicroMsg.SoterAuthMgrImp", "hy: start startRigesterSysFP");
     AppMethodBeat.o(64350);
   }
   
@@ -247,7 +247,7 @@ public final class k
   public final void userCancel()
   {
     AppMethodBeat.i(64361);
-    this.rbB.cancel();
+    this.sjV.cancel();
     AppMethodBeat.o(64361);
   }
 }

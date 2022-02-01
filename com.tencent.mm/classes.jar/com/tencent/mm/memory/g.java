@@ -6,21 +6,21 @@ import java.util.Arrays;
 public final class g
   extends a<byte[]>
 {
-  public static final g gDT;
+  public static final g heu;
   
   static
   {
     AppMethodBeat.i(156423);
-    gDT = new g();
+    heu = new g();
     AppMethodBeat.o(156423);
   }
   
-  protected final long aoQ()
+  protected final long avH()
   {
     return 5242880L;
   }
   
-  protected final long aoR()
+  protected final long avI()
   {
     return 1048576L;
   }
@@ -31,7 +31,7 @@ public final class g
     {
       AppMethodBeat.i(156418);
       Arrays.fill(paramArrayOfByte, (byte)0);
-      super.bL(paramArrayOfByte);
+      super.bJ(paramArrayOfByte);
       AppMethodBeat.o(156418);
       return;
     }

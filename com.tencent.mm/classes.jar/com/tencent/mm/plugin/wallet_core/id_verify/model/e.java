@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.wallet_core.id_verify.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aze;
-import com.tencent.mm.protocal.protobuf.azf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.bcw;
+import com.tencent.mm.protocal.protobuf.bcx;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.c.m;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -21,36 +21,36 @@ public final class e
   extends n
   implements com.tencent.mm.network.k
 {
-  private com.tencent.mm.al.g callback;
+  public boolean Bov;
+  private long Bsp;
+  public bcx Bsq;
+  private com.tencent.mm.ak.g callback;
   public m jumpRemind;
   private b rr;
-  public boolean zWb;
-  private long zZV;
-  public azf zZW;
   
   public e(String paramString)
   {
     AppMethodBeat.i(70140);
-    this.zZV = 10L;
-    this.zWb = false;
-    ad.i("MicroMsg.NetSceneGetRealnameWording", "NetSceneGetRealnameWording call: %s", new Object[] { paramString });
+    this.Bsp = 10L;
+    this.Bov = false;
+    ac.i("MicroMsg.NetSceneGetRealnameWording", "NetSceneGetRealnameWording call: %s", new Object[] { paramString });
     b.a locala = new b.a();
-    aze localaze = new aze();
-    localaze.CPi = com.tencent.mm.plugin.wallet_core.model.k.ebS();
-    localaze.session_id = paramString;
-    if (!com.tencent.mm.pluginsdk.wallet.e.eBc()) {
-      localaze.CUX = com.tencent.mm.pluginsdk.wallet.e.eBd();
+    bcw localbcw = new bcw();
+    localbcw.EhT = com.tencent.mm.plugin.wallet_core.model.k.ero();
+    localbcw.session_id = paramString;
+    if (!com.tencent.mm.pluginsdk.wallet.e.eQw()) {
+      localbcw.EnH = com.tencent.mm.pluginsdk.wallet.e.eQx();
     }
-    locala.gUU = localaze;
-    locala.gUV = new azf();
+    locala.hvt = localbcw;
+    locala.hvu = new bcx();
     locala.uri = "/cgi-bin/mmpay-bin/getrealnamewording";
     locala.funcId = getType();
-    this.rr = locala.atI();
+    this.rr = locala.aAz();
     this.rr.setIsUserCmd(true);
     AppMethodBeat.o(70140);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(70141);
     this.callback = paramg;
@@ -67,44 +67,44 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(70142);
-    ad.i("MicroMsg.NetSceneGetRealnameWording", "onGYNetEnd,errType=" + paramInt2 + "errCode=" + paramInt3);
+    ac.i("MicroMsg.NetSceneGetRealnameWording", "onGYNetEnd,errType=" + paramInt2 + "errCode=" + paramInt3);
     long l;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (azf)((b)paramq).gUT.gUX;
-      this.zZW = paramq;
-      if (paramq.DxC <= 0L) {
-        l = this.zZV;
+      paramq = (bcx)((b)paramq).hvs.hvw;
+      this.Bsq = paramq;
+      if (paramq.ESY <= 0L) {
+        l = this.Bsp;
       }
     }
     for (;;)
     {
-      this.zWb = paramq.zWb;
-      ad.i("MicroMsg.NetSceneGetRealnameWording", "need_agree_duty %s", new Object[] { Boolean.valueOf(this.zWb) });
+      this.Bov = paramq.Bov;
+      ac.i("MicroMsg.NetSceneGetRealnameWording", "need_agree_duty %s", new Object[] { Boolean.valueOf(this.Bov) });
       paramArrayOfByte = new JSONObject();
       try
       {
-        paramArrayOfByte.put("bindcardTitle", paramq.Dxv);
-        paramArrayOfByte.put("bindcardSubTitle", paramq.Dxw);
-        paramArrayOfByte.put("bindIdTitle", paramq.Dxx);
-        paramArrayOfByte.put("bindIdSubTitle", paramq.Dxy);
-        paramArrayOfByte.put("extral_wording", paramq.Dxz);
-        paramArrayOfByte.put("question_answer_switch", paramq.DxA);
-        paramArrayOfByte.put("question_answer_url", paramq.DxB);
+        paramArrayOfByte.put("bindcardTitle", paramq.ESR);
+        paramArrayOfByte.put("bindcardSubTitle", paramq.ESS);
+        paramArrayOfByte.put("bindIdTitle", paramq.EST);
+        paramArrayOfByte.put("bindIdSubTitle", paramq.ESU);
+        paramArrayOfByte.put("extral_wording", paramq.ESV);
+        paramArrayOfByte.put("question_answer_switch", paramq.ESW);
+        paramArrayOfByte.put("question_answer_url", paramq.ESX);
         paramArrayOfByte.put("cache_time", l);
         paramArrayOfByte.put("timestamp", Long.valueOf(System.currentTimeMillis() / 1000L));
-        paramArrayOfByte.put("isShowBindCard", paramq.DxD);
-        paramArrayOfByte.put("isShowBindCardVerify", paramq.DxF);
-        paramArrayOfByte.put("isShowBindId", paramq.DxE);
-        paramArrayOfByte.put("bindCardVerifyTitle", paramq.DxG);
-        paramArrayOfByte.put("bindCardVerifySubtitle", paramq.DxH);
-        paramArrayOfByte.put("bindCardVerifyAlertViewRightBtnTxt", paramq.DxI);
-        paramArrayOfByte.put("bindCardVerifyAlertViewContent", paramq.DxJ);
-        paramArrayOfByte.put("isShowBindCardVerifyAlertView", paramq.DxK);
-        if ((paramq.DxL != null) && (paramq.DxL.size() > 0))
+        paramArrayOfByte.put("isShowBindCard", paramq.ESZ);
+        paramArrayOfByte.put("isShowBindCardVerify", paramq.ETb);
+        paramArrayOfByte.put("isShowBindId", paramq.ETa);
+        paramArrayOfByte.put("bindCardVerifyTitle", paramq.ETc);
+        paramArrayOfByte.put("bindCardVerifySubtitle", paramq.ETd);
+        paramArrayOfByte.put("bindCardVerifyAlertViewRightBtnTxt", paramq.ETe);
+        paramArrayOfByte.put("bindCardVerifyAlertViewContent", paramq.ETf);
+        paramArrayOfByte.put("isShowBindCardVerifyAlertView", paramq.ETg);
+        if ((paramq.ETh != null) && (paramq.ETh.size() > 0))
         {
           StringBuffer localStringBuffer = new StringBuffer();
-          Iterator localIterator = paramq.DxL.iterator();
+          Iterator localIterator = paramq.ETh.iterator();
           paramInt1 = 0;
           for (;;)
           {
@@ -117,22 +117,22 @@ public final class e
               localStringBuffer.append(str);
               paramInt1 = 1;
               continue;
-              l = paramq.DxC;
+              l = paramq.ESY;
               break;
             }
           }
           paramArrayOfByte.put("cache_header_titles", localStringBuffer.toString());
         }
-        paramArrayOfByte.put("isShowCapitalSecurity", paramq.DxN);
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afB().afk().set(ae.a.FkK, paramArrayOfByte.toString());
-        this.jumpRemind = m.a(paramq.DxM);
+        paramArrayOfByte.put("isShowCapitalSecurity", paramq.ETj);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GIz, paramArrayOfByte.toString());
+        this.jumpRemind = m.a(paramq.ETi);
       }
       catch (JSONException paramq)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.NetSceneGetRealnameWording", paramq, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.NetSceneGetRealnameWording", paramq, "", new Object[0]);
         }
       }
     }

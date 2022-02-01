@@ -3,130 +3,130 @@ package com.tencent.mm.media.c;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
 import com.tencent.mm.compatible.deviceinfo.z;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.a.m;
 import d.g.b.k;
 import d.l;
 import d.y;
 import java.nio.ByteBuffer;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/decoder/IAudioDecoder;", "", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "audioId", "", "startTimeMs", "", "endTimeMs", "frameDecodeCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "pcmData", "pts", "", "frameDecodeEndCallback", "Lkotlin/Function0;", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V", "aacSampleRate", "", "getAacSampleRate", "()I", "setAacSampleRate", "(I)V", "audioChannelCount", "getAudioChannelCount", "setAudioChannelCount", "getAudioId", "()Ljava/lang/String;", "setAudioId", "(Ljava/lang/String;)V", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "getBufferInfo", "()Landroid/media/MediaCodec$BufferInfo;", "setBufferInfo", "(Landroid/media/MediaCodec$BufferInfo;)V", "decodeFrame", "", "getDecodeFrame", "()Z", "setDecodeFrame", "(Z)V", "decodeStartTick", "getDecodeStartTick", "()J", "setDecodeStartTick", "(J)V", "decoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "getDecoder", "()Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "setDecoder", "(Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;)V", "decoderStop", "getDecoderStop", "setDecoderStop", "getEndTimeMs", "setEndTimeMs", "getFrameDecodeCallback", "()Lkotlin/jvm/functions/Function2;", "setFrameDecodeCallback", "(Lkotlin/jvm/functions/Function2;)V", "getFrameDecodeEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFrameDecodeEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "mMediaFormat", "Landroid/media/MediaFormat;", "getMMediaFormat", "()Landroid/media/MediaFormat;", "setMMediaFormat", "(Landroid/media/MediaFormat;)V", "getMediaExtractorWrapper", "()Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "setMediaExtractorWrapper", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;)V", "mime", "getMime", "setMime", "getStartTimeMs", "setStartTimeMs", "stopLock", "Ljava/lang/Object;", "getStopLock", "()Ljava/lang/Object;", "totalDecodeTime", "getTotalDecodeTime", "setTotalDecodeTime", "getChannelCount", "getMediaFormat", "getSampleRate", "processDecodeBuffer", "byteBuffer", "Ljava/nio/ByteBuffer;", "setOnDecodeEndCallback", "callback", "setOnFrameDecodeCallback", "startDecoder", "stopDecoder", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/decoder/IAudioDecoder;", "", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "audioId", "", "startTimeMs", "", "endTimeMs", "frameDecodeCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "pcmData", "pts", "", "frameDecodeEndCallback", "Lkotlin/Function0;", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V", "aacSampleRate", "", "getAacSampleRate", "()I", "setAacSampleRate", "(I)V", "audioChannelCount", "getAudioChannelCount", "setAudioChannelCount", "getAudioId", "()Ljava/lang/String;", "setAudioId", "(Ljava/lang/String;)V", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "getBufferInfo", "()Landroid/media/MediaCodec$BufferInfo;", "setBufferInfo", "(Landroid/media/MediaCodec$BufferInfo;)V", "decodeFrame", "", "getDecodeFrame", "()Z", "setDecodeFrame", "(Z)V", "decodeStartTick", "getDecodeStartTick", "()J", "setDecodeStartTick", "(J)V", "decoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "getDecoder", "()Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "setDecoder", "(Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;)V", "decoderStop", "getDecoderStop", "setDecoderStop", "getEndTimeMs", "setEndTimeMs", "getFrameDecodeCallback", "()Lkotlin/jvm/functions/Function2;", "setFrameDecodeCallback", "(Lkotlin/jvm/functions/Function2;)V", "getFrameDecodeEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFrameDecodeEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "mMediaFormat", "Landroid/media/MediaFormat;", "getMMediaFormat", "()Landroid/media/MediaFormat;", "setMMediaFormat", "(Landroid/media/MediaFormat;)V", "getMediaExtractorWrapper", "()Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "setMediaExtractorWrapper", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;)V", "mime", "getMime", "setMime", "getStartTimeMs", "setStartTimeMs", "stopLock", "Ljava/lang/Object;", "getStopLock", "()Ljava/lang/Object;", "totalDecodeTime", "getTotalDecodeTime", "setTotalDecodeTime", "getChannelCount", "getMediaFormat", "getSampleRate", "processDecodeBuffer", "byteBuffer", "Ljava/nio/ByteBuffer;", "setOnDecodeEndCallback", "callback", "setOnFrameDecodeCallback", "startDecoder", "stopDecoder", "Companion", "plugin-mediaeditor_release"})
 public abstract class e
 {
-  private static final int gnR = 2048;
-  private static final int gnS = 4096;
-  public static final e.a gnT = new e.a((byte)0);
+  private static final int gOC = 2048;
+  private static final int gOD = 4096;
+  public static final e.a gOE = new e.a((byte)0);
   MediaCodec.BufferInfo bufferInfo;
-  long bxw;
-  String cTr;
-  MediaFormat gmG;
-  z gnF;
-  protected volatile boolean gnG;
-  private int gnH;
-  int gnI;
-  long gnJ;
-  private long gnK;
-  private boolean gnL;
-  com.tencent.mm.media.e.a gnN;
-  long gnO;
-  public m<? super byte[], ? super Long, y> gnP;
-  public d.g.a.a<y> gnQ;
+  long bvf;
+  String cQO;
+  MediaFormat gNt;
+  public m<? super byte[], ? super Long, y> gOA;
+  public d.g.a.a<y> gOB;
+  z gOr;
+  protected volatile boolean gOs;
+  private int gOt;
+  int gOu;
+  long gOv;
+  private long gOw;
+  private boolean gOx;
+  com.tencent.mm.media.e.a gOy;
+  long gOz;
   private String mime;
   final Object stopLock;
   
   public e(com.tencent.mm.media.e.a parama, String paramString, long paramLong1, long paramLong2, m<? super byte[], ? super Long, y> paramm, d.g.a.a<y> parama1)
   {
-    this.gnN = parama;
-    this.cTr = paramString;
-    this.bxw = paramLong1;
-    this.gnO = paramLong2;
-    this.gnP = paramm;
-    this.gnQ = parama1;
+    this.gOy = parama;
+    this.cQO = paramString;
+    this.bvf = paramLong1;
+    this.gOz = paramLong2;
+    this.gOA = paramm;
+    this.gOB = parama1;
     this.stopLock = new Object();
     this.bufferInfo = new MediaCodec.BufferInfo();
     this.mime = "";
-    parama = this.gnN;
+    parama = this.gOy;
     if (parama != null)
     {
-      this.gmG = parama.grb;
-      ad.i("MicroMsg.IAudioDecoder", "create MediaCodecAACDecoder, audioId:" + this.cTr + ", startTimeMs:" + this.bxw + ", endTimeMs:" + this.gnO + ", mediaFormat:" + this.gmG);
-      if (this.gmG != null)
+      this.gNt = parama.gRJ;
+      ac.i("MicroMsg.IAudioDecoder", "create MediaCodecAACDecoder, audioId:" + this.cQO + ", startTimeMs:" + this.bvf + ", endTimeMs:" + this.gOz + ", mediaFormat:" + this.gNt);
+      if (this.gNt != null)
       {
-        paramString = this.gmG;
+        paramString = this.gNt;
         if (paramString == null) {
-          k.fvU();
+          k.fOy();
         }
-        this.gnH = paramString.getInteger("channel-count");
-        paramString = this.gmG;
+        this.gOt = paramString.getInteger("channel-count");
+        paramString = this.gNt;
         if (paramString != null) {
-          paramString.setInteger("max-input-size", this.gnH * 16384);
+          paramString.setInteger("max-input-size", this.gOt * 16384);
         }
-        paramString = this.gmG;
+        paramString = this.gNt;
         if (paramString == null) {
-          k.fvU();
+          k.fOy();
         }
-        this.gnI = paramString.getInteger("sample-rate");
-        paramString = this.gmG;
+        this.gOu = paramString.getInteger("sample-rate");
+        paramString = this.gNt;
         if (paramString == null) {
-          k.fvU();
+          k.fOy();
         }
         paramString = paramString.getString("mime");
         k.g(paramString, "mMediaFormat!!.getString(MediaFormat.KEY_MIME)");
         this.mime = paramString;
-        paramString = this.gmG;
+        paramString = this.gNt;
         if ((paramString != null) && (paramString.containsKey("encoder-delay") == true))
         {
-          paramString = this.gmG;
+          paramString = this.gNt;
           if (paramString != null) {
             paramString.setInteger("encoder-delay", 0);
           }
         }
-        paramString = this.gmG;
+        paramString = this.gNt;
         if ((paramString != null) && (paramString.containsKey("encoder-padding") == true))
         {
-          paramString = this.gmG;
+          paramString = this.gNt;
           if (paramString != null) {
             paramString.setInteger("encoder-padding", 0);
           }
         }
-        parama.ajN();
-        if (this.bxw >= 0L) {
-          parama.seek(this.bxw * 1000L);
+        parama.aqM();
+        if (this.bvf >= 0L) {
+          parama.seek(this.bvf * 1000L);
         }
-        this.gnF = z.pl(this.mime);
-        parama = this.gnF;
+        this.gOr = z.sx(this.mime);
+        parama = this.gOr;
         if (parama != null) {
-          parama.a(this.gmG, null, 0);
+          parama.a(this.gNt, null, 0);
         }
       }
     }
   }
   
-  public void ajs()
+  public void aqr()
   {
-    ad.l("MicroMsg.IAudioDecoder", "stop decoder", new Object[0]);
+    ac.l("MicroMsg.IAudioDecoder", "stop decoder", new Object[0]);
     synchronized (this.stopLock)
     {
-      ad.i("MicroMsg.IAudioDecoder", "stopDecoder in lock");
+      ac.i("MicroMsg.IAudioDecoder", "stopDecoder in lock");
       try
       {
-        if (!this.gnG)
+        if (!this.gOs)
         {
-          this.gnG = true;
-          localObject2 = this.gnF;
+          this.gOs = true;
+          localObject2 = this.gOr;
           if (localObject2 != null) {
             ((z)localObject2).stop();
           }
-          localObject2 = this.gnF;
+          localObject2 = this.gOr;
           if (localObject2 != null) {
             ((z)localObject2).release();
           }
-          localObject2 = this.gnQ;
+          localObject2 = this.gOB;
           if (localObject2 != null) {
             ((d.g.a.a)localObject2).invoke();
           }
-          ad.i("MicroMsg.IAudioDecoder", hashCode() + " total decode used " + this.gnK);
+          ac.i("MicroMsg.IAudioDecoder", hashCode() + " total decode used " + this.gOw);
         }
       }
       catch (Exception localException)
@@ -134,10 +134,10 @@ public abstract class e
         for (;;)
         {
           Object localObject2;
-          ad.printErrStackTrace("MicroMsg.IAudioDecoder", (Throwable)localException, "stopDecoder error", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.IAudioDecoder", (Throwable)localException, "stopDecoder error", new Object[0]);
         }
       }
-      localObject2 = y.JfV;
+      localObject2 = y.KTp;
       return;
     }
   }
@@ -162,15 +162,15 @@ public abstract class e
         if (i != 0) {
           return;
         }
-        ad.i("MicroMsg.IAudioDecoder", "decoder pcmData size:" + arrayOfByte.length + ", pts:" + paramBufferInfo.presentationTimeUs + ", audioId:" + this.cTr);
-        long l = bt.aS(this.gnJ);
-        this.gnK += l;
-        ad.i("MicroMsg.IAudioDecoder", hashCode() + " decode frame cost " + l);
-        this.gnL = true;
-        if (this.gnH != 1) {
+        ac.i("MicroMsg.IAudioDecoder", "decoder pcmData size:" + arrayOfByte.length + ", pts:" + paramBufferInfo.presentationTimeUs + ", audioId:" + this.cQO);
+        long l = bs.aO(this.gOv);
+        this.gOw += l;
+        ac.i("MicroMsg.IAudioDecoder", hashCode() + " decode frame cost " + l);
+        this.gOx = true;
+        if (this.gOt != 1) {
           break label363;
         }
-        i = gnR;
+        i = gOC;
         if (arrayOfByte.length <= i) {
           break label377;
         }
@@ -192,8 +192,8 @@ public abstract class e
         System.arraycopy(arrayOfByte, k, paramByteBuffer, 0, m);
         int n = j - m;
         int i1 = k + m;
-        ad.i("MicroMsg.IAudioDecoder", "split ret pcmData, leftSize:" + n + ", sizeOffset:" + i1 + ", maxBufferSize:" + i + ", copySize:" + m + ", data.size:" + paramByteBuffer.length);
-        m localm = this.gnP;
+        ac.i("MicroMsg.IAudioDecoder", "split ret pcmData, leftSize:" + n + ", sizeOffset:" + i1 + ", maxBufferSize:" + i + ", copySize:" + m + ", data.size:" + paramByteBuffer.length);
+        m localm = this.gOA;
         j = n;
         k = i1;
         if (localm == null) {
@@ -205,11 +205,11 @@ public abstract class e
         break label202;
         i = 0;
         break;
-        i = gnS;
+        i = gOD;
         break label187;
       }
       label377:
-      paramByteBuffer = this.gnP;
+      paramByteBuffer = this.gOA;
       if (paramByteBuffer != null) {
         paramByteBuffer.n(arrayOfByte, Long.valueOf(paramBufferInfo.presentationTimeUs));
       }
@@ -218,12 +218,12 @@ public abstract class e
   
   public int getChannelCount()
   {
-    return this.gnH;
+    return this.gOt;
   }
   
   public int getSampleRate()
   {
-    return this.gnI;
+    return this.gOu;
   }
   
   public abstract void startDecoder();

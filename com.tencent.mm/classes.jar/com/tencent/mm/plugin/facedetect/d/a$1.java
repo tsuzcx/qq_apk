@@ -10,34 +10,34 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final void ch(int paramInt1, int paramInt2)
+  public final void cf(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(103803);
-    if (a.i(this.pPX) != null)
+    if (a.i(this.qyF) != null)
     {
-      Iterator localIterator = a.i(this.pPX).iterator();
+      Iterator localIterator = a.i(this.qyF).iterator();
       while (localIterator.hasNext())
       {
         c.a locala = (c.a)localIterator.next();
         if (locala != null) {
-          locala.ch(paramInt1, paramInt2);
+          locala.cf(paramInt1, paramInt2);
         }
       }
     }
     AppMethodBeat.o(103803);
   }
   
-  public final void w(byte[] paramArrayOfByte, int paramInt)
+  public final void u(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(103802);
-    if (a.i(this.pPX) != null)
+    if (a.i(this.qyF) != null)
     {
-      Iterator localIterator = a.i(this.pPX).iterator();
+      Iterator localIterator = a.i(this.qyF).iterator();
       while (localIterator.hasNext())
       {
         c.a locala = (c.a)localIterator.next();
         if (locala != null) {
-          locala.w(paramArrayOfByte, paramInt);
+          locala.u(paramArrayOfByte, paramInt);
         }
       }
     }

@@ -1,108 +1,108 @@
 package com.tencent.mm.plugin.talkroom.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class f
 {
-  private long fXv;
+  private long gcc;
   int roomId;
-  long sAY;
-  private int yIG;
-  private long yIH;
-  int yII = 0;
-  private int yIJ;
-  long yIK;
-  int yIL;
-  int yIM;
-  private int yIN;
-  private int yIO;
-  private int yIP;
-  int yIQ;
-  int yIR;
-  public int yIS = 0;
-  private int yIT;
-  private int yIU;
-  private int yIV;
-  private int yIW;
-  private int yIX;
-  private int yIY;
-  private int yIZ;
-  private int yJa;
-  private int yJb;
-  String yJc;
-  int yJd;
-  int yJe;
-  long yJf;
-  int yJg;
-  long yJh;
-  long yJi;
-  boolean yJj;
-  boolean yJk;
+  long tIG;
+  private int zVT;
+  private long zVU;
+  int zVV = 0;
+  private int zVW;
+  long zVX;
+  int zVY;
+  int zVZ;
+  private int zWa;
+  private int zWb;
+  private int zWc;
+  int zWd;
+  int zWe;
+  public int zWf = 0;
+  private int zWg;
+  private int zWh;
+  private int zWi;
+  private int zWj;
+  private int zWk;
+  private int zWl;
+  private int zWm;
+  private int zWn;
+  private int zWo;
+  String zWp;
+  int zWq;
+  int zWr;
+  long zWs;
+  int zWt;
+  long zWu;
+  long zWv;
+  boolean zWw;
+  boolean zWx;
   
-  public final void OW(int paramInt)
+  public final void Rc(int paramInt)
   {
     AppMethodBeat.i(29477);
-    if (this.yJf == 0L)
+    if (this.zWs == 0L)
     {
       AppMethodBeat.o(29477);
       return;
     }
-    this.yIG = paramInt;
-    this.yIH = bt.aS(this.yJf);
+    this.zVT = paramInt;
+    this.zVU = bs.aO(this.zWs);
     AppMethodBeat.o(29477);
   }
   
-  public final void dMU()
+  public final void ebu()
   {
     AppMethodBeat.i(29478);
-    if (this.yJf == 0L)
+    if (this.zWs == 0L)
     {
       AppMethodBeat.o(29478);
       return;
     }
-    this.fXv = bt.aS(this.yJf);
+    this.gcc = bs.aO(this.zWs);
     AppMethodBeat.o(29478);
   }
   
-  public final void dMV()
+  public final void ebv()
   {
-    this.yIP += 1;
+    this.zWc += 1;
   }
   
-  public final void dMW()
+  public final void ebw()
   {
     AppMethodBeat.i(29480);
-    if (this.yJi == 0L)
+    if (this.zWv == 0L)
     {
       AppMethodBeat.o(29480);
       return;
     }
-    long l = bt.aS(this.yJi) / 1000L;
+    long l = bs.aO(this.zWv) / 1000L;
     if (l < 2L) {
-      this.yIT += 1;
+      this.zWg += 1;
     }
     for (;;)
     {
-      this.yJi = 0L;
+      this.zWv = 0L;
       AppMethodBeat.o(29480);
       return;
       if (l < 6L) {
-        this.yIU += 1;
+        this.zWh += 1;
       } else if (l < 11L) {
-        this.yIV += 1;
+        this.zWi += 1;
       } else if (l < 21L) {
-        this.yIW += 1;
+        this.zWj += 1;
       } else if (l < 31L) {
-        this.yIX += 1;
+        this.zWk += 1;
       } else if (l < 41L) {
-        this.yIY += 1;
+        this.zWl += 1;
       } else if (l < 51L) {
-        this.yIZ += 1;
+        this.zWm += 1;
       } else if (l < 61L) {
-        this.yJa += 1;
+        this.zWn += 1;
       } else {
-        this.yJb += 1;
+        this.zWo += 1;
       }
     }
   }
@@ -110,19 +110,19 @@ public final class f
   public final void exitRoom()
   {
     AppMethodBeat.i(29479);
-    if (this.yJf == 0L)
+    if (this.zWs == 0L)
     {
       AppMethodBeat.o(29479);
       return;
     }
-    this.yIJ = ((int)(bt.aS(this.yJf) / 1000L));
+    this.zVW = ((int)(bs.aO(this.zWs) / 1000L));
     AppMethodBeat.o(29479);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(29481);
-    String str = this.yIG + "," + this.yIH + "," + this.fXv + "," + this.yII + "," + this.yIJ + "," + this.yIK + "," + this.yIL + "," + this.yIM + "," + this.yIN + "," + this.yIO + "," + this.yIP + "," + this.yIQ + "," + this.yIR + "," + this.yIS + "," + this.yIT + "," + this.yIU + "," + this.yIV + "," + this.yIW + "," + this.yIX + "," + this.yIY + "," + this.yIZ + "," + this.yJa + "," + this.yJb + "," + this.yJc + "," + this.roomId + "," + this.sAY + "," + this.yJd + "," + this.yJe;
+    String str = this.zVT + "," + this.zVU + "," + this.gcc + "," + this.zVV + "," + this.zVW + "," + this.zVX + "," + this.zVY + "," + this.zVZ + "," + this.zWa + "," + this.zWb + "," + this.zWc + "," + this.zWd + "," + this.zWe + "," + this.zWf + "," + this.zWg + "," + this.zWh + "," + this.zWi + "," + this.zWj + "," + this.zWk + "," + this.zWl + "," + this.zWm + "," + this.zWn + "," + this.zWo + "," + this.zWp + "," + this.roomId + "," + this.tIG + "," + this.zWq + "," + this.zWr;
     AppMethodBeat.o(29481);
     return str;
   }

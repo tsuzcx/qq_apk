@@ -8,20 +8,20 @@ import android.util.DisplayMetrics;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ce.a;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.ui.z;
 
 public final class p
   extends ContextThemeWrapper
 {
-  private Resources ciU;
-  private LayoutInflater ciV;
+  private Resources cfQ;
+  private LayoutInflater cfR;
   
   public p(Context paramContext)
   {
     AppMethodBeat.i(48882);
     super.attachBaseContext(paramContext);
-    dH(paramContext);
+    dP(paramContext);
     AppMethodBeat.o(48882);
   }
   
@@ -29,17 +29,17 @@ public final class p
   {
     super(paramContext, paramInt);
     AppMethodBeat.i(177764);
-    dH(paramContext);
+    dP(paramContext);
     AppMethodBeat.o(177764);
   }
   
-  private void dH(Context paramContext)
+  private void dP(Context paramContext)
   {
     AppMethodBeat.i(48884);
     DisplayMetrics localDisplayMetrics = a.c(paramContext.getResources().getDisplayMetrics());
-    this.ciU = new p.a(paramContext.getResources(), localDisplayMetrics);
+    this.cfQ = new p.a(paramContext.getResources(), localDisplayMetrics);
     if (Build.VERSION.SDK_INT >= 21) {
-      getTheme().getResources().getDisplayMetrics().setTo(this.ciU.getDisplayMetrics());
+      getTheme().getResources().getDisplayMetrics().setTo(this.cfQ.getDisplayMetrics());
     }
     AppMethodBeat.o(48884);
   }
@@ -47,9 +47,9 @@ public final class p
   public final Resources getResources()
   {
     AppMethodBeat.i(48886);
-    if ((getAssets() != null) && (this.ciU != null))
+    if ((getAssets() != null) && (this.cfQ != null))
     {
-      localResources = this.ciU;
+      localResources = this.cfQ;
       AppMethodBeat.o(48886);
       return localResources;
     }
@@ -63,14 +63,14 @@ public final class p
     AppMethodBeat.i(48885);
     if ("layout_inflater".equals(paramString))
     {
-      if (this.ciV != null)
+      if (this.cfR != null)
       {
-        paramString = this.ciV;
+        paramString = this.cfR;
         AppMethodBeat.o(48885);
         return paramString;
       }
-      paramString = y.b((LayoutInflater)super.getSystemService("layout_inflater"));
-      this.ciV = paramString;
+      paramString = z.b((LayoutInflater)super.getSystemService("layout_inflater"));
+      this.cfR = paramString;
       AppMethodBeat.o(48885);
       return paramString;
     }
@@ -81,7 +81,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.p
  * JD-Core Version:    0.7.0.1
  */

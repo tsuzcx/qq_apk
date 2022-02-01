@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +14,7 @@ public final class o
   public static boolean a(a.a parama)
   {
     AppMethodBeat.i(51640);
-    if (!bt.isNullOrNil(parama.key))
+    if (!bs.isNullOrNil(parama.key))
     {
       AppMethodBeat.o(51640);
       return true;
@@ -38,7 +38,7 @@ public final class o
       bool2 = bool1;
       if (paramList.get(i) != null)
       {
-        LinkedList localLinkedList = ((a)paramList.get(i)).kGU;
+        LinkedList localLinkedList = ((a)paramList.get(i)).lio;
         int j = 0;
         bool2 = false;
         if (j < localLinkedList.size())
@@ -49,7 +49,7 @@ public final class o
             a.a locala2 = (a.a)paramMap.get(locala1.key);
             if (locala2 != null)
             {
-              ad.i("MicroMsg.ProductUpdateLogic", "Updating action , info: key=" + locala1.key);
+              ac.i("MicroMsg.ProductUpdateLogic", "Updating action , info: key=" + locala1.key);
               localLinkedList.remove(j);
               localLinkedList.add(j, locala2);
               bool2 = true;
@@ -63,7 +63,7 @@ public final class o
             bool2 = true;
           }
         }
-        ((a)paramList.get(i)).vNU = bool2;
+        ((a)paramList.get(i)).wYq = bool2;
         bool2 = bool1;
       }
       i += 1;
@@ -72,14 +72,14 @@ public final class o
     return bool1;
   }
   
-  public static LinkedList<String> fa(List<a> paramList)
+  public static LinkedList<String> fh(List<a> paramList)
   {
     AppMethodBeat.i(51637);
     LinkedList localLinkedList1 = new LinkedList();
     int i = 0;
     while (i < paramList.size())
     {
-      LinkedList localLinkedList2 = ((a)paramList.get(i)).kGU;
+      LinkedList localLinkedList2 = ((a)paramList.get(i)).lio;
       int j = 0;
       while (j < localLinkedList2.size())
       {
@@ -95,7 +95,7 @@ public final class o
     return localLinkedList1;
   }
   
-  public static Map<String, a.a> fb(List<String> paramList)
+  public static Map<String, a.a> fi(List<String> paramList)
   {
     AppMethodBeat.i(51638);
     HashMap localHashMap = new HashMap();
@@ -103,9 +103,9 @@ public final class o
     while (i < paramList.size())
     {
       Object localObject = (String)paramList.get(i);
-      ad.d("MicroMsg.ProductUpdateLogic", "toUpdateXmlList info: i=" + i + ";" + bt.nullAsNil((String)localObject));
-      localObject = a.n(bw.K((String)localObject, "action"), ".action");
-      if ((localObject != null) && (((a.a)localObject).dcz != 2)) {
+      ac.d("MicroMsg.ProductUpdateLogic", "toUpdateXmlList info: i=" + i + ";" + bs.nullAsNil((String)localObject));
+      localObject = a.n(bv.L((String)localObject, "action"), ".action");
+      if ((localObject != null) && (((a.a)localObject).cZX != 2)) {
         localHashMap.put(((a.a)localObject).key, localObject);
       }
       i += 1;
@@ -116,7 +116,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.o
  * JD-Core Version:    0.7.0.1
  */

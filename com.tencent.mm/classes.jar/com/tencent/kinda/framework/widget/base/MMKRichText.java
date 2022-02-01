@@ -16,7 +16,7 @@ import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class MMKRichText
   implements KText
@@ -48,7 +48,7 @@ public class MMKRichText
   {
     AppMethodBeat.i(19110);
     if (paramString != null) {
-      this.spanText.append(k.c(aj.getContext(), paramString));
+      this.spanText.append(k.c(ai.getContext(), paramString));
     }
     AppMethodBeat.o(19110);
   }

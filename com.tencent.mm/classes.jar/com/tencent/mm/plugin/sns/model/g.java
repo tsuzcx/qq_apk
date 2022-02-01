@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.concurrent.ExecutorService;
 import junit.framework.Assert;
 
 public abstract class g<Params, Progress, Result>
 {
-  ap handler = af.czA();
+  ao handler = af.cMM();
   private boolean isStart = false;
   
-  public abstract Result dQ();
+  public abstract ExecutorService dBu();
   
-  public abstract ExecutorService dnm();
+  public abstract Result dX();
   
   public void onPostExecute(Result paramResult) {}
   
-  public final boolean v(final Params... paramVarArgs)
+  public final boolean x(final Params... paramVarArgs)
   {
     if (this.isStart) {
       Assert.assertTrue("MicroMsg.MMAsyncTask Should construct a new Task", false);
     }
     this.isStart = true;
-    ExecutorService localExecutorService = dnm();
+    ExecutorService localExecutorService = dBu();
     if (localExecutorService == null) {
       return false;
     }
@@ -31,7 +31,7 @@ public abstract class g<Params, Progress, Result>
       public final void run()
       {
         AppMethodBeat.i(95555);
-        final Object localObject = g.this.dQ();
+        final Object localObject = g.this.dX();
         g.this.handler.post(new Runnable()
         {
           public final void run()

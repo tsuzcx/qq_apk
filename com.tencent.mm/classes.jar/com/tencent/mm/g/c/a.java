@@ -8,15 +8,15 @@ public abstract class a
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ejI = "payMsgId".hashCode();
-  private static final int ejJ = "insertmsg".hashCode();
-  private static final int ejK = "chatroom".hashCode();
-  private static final int ejL = "msgId".hashCode();
+  private static final int elM = "payMsgId".hashCode();
+  private static final int elN = "insertmsg".hashCode();
+  private static final int elO = "chatroom".hashCode();
+  private static final int elP = "msgId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ejE = true;
-  private boolean ejF = true;
-  private boolean ejG = true;
-  private boolean ejH = true;
+  private boolean elI = true;
+  private boolean elJ = true;
+  private boolean elK = true;
+  private boolean elL = true;
   public String field_chatroom;
   public boolean field_insertmsg;
   public long field_msgId;
@@ -35,11 +35,11 @@ public abstract class a
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ejI != k) {
+      if (elM != k) {
         break label65;
       }
       this.field_payMsgId = paramCursor.getString(i);
-      this.ejE = true;
+      this.elI = true;
     }
     for (;;)
     {
@@ -47,7 +47,7 @@ public abstract class a
       break label20;
       break;
       label65:
-      if (ejJ == k)
+      if (elN == k)
       {
         if (paramCursor.getInt(i) != 0) {}
         for (boolean bool = true;; bool = false)
@@ -56,9 +56,9 @@ public abstract class a
           break;
         }
       }
-      if (ejK == k) {
+      if (elO == k) {
         this.field_chatroom = paramCursor.getString(i);
-      } else if (ejL == k) {
+      } else if (elP == k) {
         this.field_msgId = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -69,16 +69,16 @@ public abstract class a
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ejE) {
+    if (this.elI) {
       localContentValues.put("payMsgId", this.field_payMsgId);
     }
-    if (this.ejF) {
+    if (this.elJ) {
       localContentValues.put("insertmsg", Boolean.valueOf(this.field_insertmsg));
     }
-    if (this.ejG) {
+    if (this.elK) {
       localContentValues.put("chatroom", this.field_chatroom);
     }
-    if (this.ejH) {
+    if (this.elL) {
       localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
     if (this.systemRowid > 0L) {

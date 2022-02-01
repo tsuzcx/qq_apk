@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class np
   extends b
 {
-  public a dsI;
+  public a dpX;
   
   public np()
   {
@@ -15,21 +15,27 @@ public final class np
   
   private np(byte paramByte)
   {
-    AppMethodBeat.i(149876);
-    this.dsI = new a();
-    this.ESR = false;
+    AppMethodBeat.i(126680);
+    this.dpX = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(149876);
+    AppMethodBeat.o(126680);
   }
   
   public static final class a
   {
-    public String dsJ;
+    public int dgL;
+    public long dpY;
+    public boolean dpZ = false;
+    public int length;
+    public String mediaId;
+    public int offset;
+    public int retCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.np
  * JD-Core Version:    0.7.0.1
  */

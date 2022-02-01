@@ -18,13 +18,13 @@ public abstract interface b
   
   public abstract void pause();
   
-  public abstract boolean pp();
+  public abstract boolean pz();
   
   public abstract void recycle();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.f.b
  * JD-Core Version:    0.7.0.1
  */

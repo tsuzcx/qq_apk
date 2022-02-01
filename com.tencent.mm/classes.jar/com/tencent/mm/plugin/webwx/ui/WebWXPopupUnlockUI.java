@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.webwx.a.b;
 import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMBaseActivity;
 
 public class WebWXPopupUnlockUI
@@ -39,10 +39,10 @@ public class WebWXPopupUnlockUI
           {
             AppMethodBeat.i(30241);
             paramAnonymousView = new b(2);
-            az.aeS().a(paramAnonymousView, 0);
-            ad.d("MicroMsg.WebWxPopUnlockUI", "doScene netSceneExtDeviceControl : UNLOCK");
-            com.tencent.mm.plugin.webwx.a.hYu.hD(1);
-            ad.d("MicroMsg.WebWxPopUnlockUI", "trigger netSceneSync notify");
+            az.agi().a(paramAnonymousView, 0);
+            ac.d("MicroMsg.WebWxPopUnlockUI", "doScene netSceneExtDeviceControl : UNLOCK");
+            com.tencent.mm.plugin.webwx.a.iyy.hn(1);
+            ac.d("MicroMsg.WebWxPopUnlockUI", "trigger netSceneSync notify");
             locala.dismiss();
             AppMethodBeat.o(30241);
           }
@@ -62,7 +62,7 @@ public class WebWXPopupUnlockUI
         AppMethodBeat.o(30243);
         return;
       }
-      ad.w("MicroMsg.WebWxPopUnlockUI", "Mac WeChat request to unlock,the deviceName is null");
+      ac.w("MicroMsg.WebWxPopUnlockUI", "Mac WeChat request to unlock,the deviceName is null");
     }
     AppMethodBeat.o(30243);
   }

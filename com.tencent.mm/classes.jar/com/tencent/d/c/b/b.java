@@ -9,45 +9,45 @@ import java.util.ArrayList;
 public final class b
   extends JceStruct
 {
-  static byte[] IqU;
-  static byte[] IqV;
-  static ArrayList<Integer> IqW;
-  static ArrayList<byte[]> IqX;
-  public int IqB = 0;
-  public byte[] IqC = null;
-  public String IqD = "";
-  public byte[] IqE = null;
-  public long IqF = 0L;
-  public String IqG = "";
-  public int IqH = 0;
-  public String IqI = "";
-  public int IqJ = 0;
-  public String IqK = "";
-  public int IqL = 0;
-  public int IqM = 0;
-  public int IqN = 0;
-  public ArrayList<Integer> IqO = null;
-  public int IqP = 0;
-  public boolean IqQ = false;
-  public int IqR = 0;
-  public int IqS = 0;
-  public ArrayList<byte[]> IqT = null;
+  static byte[] JSE;
+  static byte[] JSF;
+  static ArrayList<Integer> JSG;
+  static ArrayList<byte[]> JSH;
+  public boolean JSA = false;
+  public int JSB = 0;
+  public int JSC = 0;
+  public ArrayList<byte[]> JSD = null;
+  public int JSl = 0;
+  public byte[] JSm = null;
+  public String JSn = "";
+  public byte[] JSo = null;
+  public long JSp = 0L;
+  public String JSq = "";
+  public int JSr = 0;
+  public String JSs = "";
+  public int JSt = 0;
+  public String JSu = "";
+  public int JSv = 0;
+  public int JSw = 0;
+  public int JSx = 0;
+  public ArrayList<Integer> JSy = null;
+  public int JSz = 0;
   
   static
   {
     AppMethodBeat.i(138335);
     byte[] arrayOfByte = (byte[])new byte[1];
-    IqU = arrayOfByte;
+    JSE = arrayOfByte;
     ((byte[])arrayOfByte)[0] = 0;
     arrayOfByte = (byte[])new byte[1];
-    IqV = arrayOfByte;
+    JSF = arrayOfByte;
     ((byte[])arrayOfByte)[0] = 0;
-    IqW = new ArrayList();
-    IqW.add(Integer.valueOf(0));
-    IqX = new ArrayList();
+    JSG = new ArrayList();
+    JSG.add(Integer.valueOf(0));
+    JSH = new ArrayList();
     arrayOfByte = (byte[])new byte[1];
     ((byte[])arrayOfByte)[0] = 0;
-    IqX.add(arrayOfByte);
+    JSH.add(arrayOfByte);
     AppMethodBeat.o(138335);
   }
   
@@ -62,86 +62,86 @@ public final class b
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138334);
-    this.IqB = paramJceInputStream.read(this.IqB, 0, true);
-    this.IqC = ((byte[])paramJceInputStream.read(IqU, 1, false));
-    this.IqD = paramJceInputStream.readString(2, false);
-    this.IqE = ((byte[])paramJceInputStream.read(IqV, 3, false));
-    this.IqF = paramJceInputStream.read(this.IqF, 4, false);
-    this.IqG = paramJceInputStream.readString(5, false);
-    this.IqH = paramJceInputStream.read(this.IqH, 6, false);
-    this.IqI = paramJceInputStream.readString(7, false);
-    this.IqJ = paramJceInputStream.read(this.IqJ, 8, false);
-    this.IqK = paramJceInputStream.readString(9, false);
-    this.IqL = paramJceInputStream.read(this.IqL, 10, false);
-    this.IqM = paramJceInputStream.read(this.IqM, 11, false);
-    this.IqN = paramJceInputStream.read(this.IqN, 12, false);
-    this.IqO = ((ArrayList)paramJceInputStream.read(IqW, 13, false));
-    this.IqP = paramJceInputStream.read(this.IqP, 14, false);
-    this.IqQ = paramJceInputStream.read(this.IqQ, 15, false);
-    this.IqR = paramJceInputStream.read(this.IqR, 16, false);
-    this.IqS = paramJceInputStream.read(this.IqS, 17, false);
-    this.IqT = ((ArrayList)paramJceInputStream.read(IqX, 18, false));
+    this.JSl = paramJceInputStream.read(this.JSl, 0, true);
+    this.JSm = ((byte[])paramJceInputStream.read(JSE, 1, false));
+    this.JSn = paramJceInputStream.readString(2, false);
+    this.JSo = ((byte[])paramJceInputStream.read(JSF, 3, false));
+    this.JSp = paramJceInputStream.read(this.JSp, 4, false);
+    this.JSq = paramJceInputStream.readString(5, false);
+    this.JSr = paramJceInputStream.read(this.JSr, 6, false);
+    this.JSs = paramJceInputStream.readString(7, false);
+    this.JSt = paramJceInputStream.read(this.JSt, 8, false);
+    this.JSu = paramJceInputStream.readString(9, false);
+    this.JSv = paramJceInputStream.read(this.JSv, 10, false);
+    this.JSw = paramJceInputStream.read(this.JSw, 11, false);
+    this.JSx = paramJceInputStream.read(this.JSx, 12, false);
+    this.JSy = ((ArrayList)paramJceInputStream.read(JSG, 13, false));
+    this.JSz = paramJceInputStream.read(this.JSz, 14, false);
+    this.JSA = paramJceInputStream.read(this.JSA, 15, false);
+    this.JSB = paramJceInputStream.read(this.JSB, 16, false);
+    this.JSC = paramJceInputStream.read(this.JSC, 17, false);
+    this.JSD = ((ArrayList)paramJceInputStream.read(JSH, 18, false));
     AppMethodBeat.o(138334);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     AppMethodBeat.i(138333);
-    paramJceOutputStream.write(this.IqB, 0);
-    if (this.IqC != null) {
-      paramJceOutputStream.write(this.IqC, 1);
+    paramJceOutputStream.write(this.JSl, 0);
+    if (this.JSm != null) {
+      paramJceOutputStream.write(this.JSm, 1);
     }
-    if (this.IqD != null) {
-      paramJceOutputStream.write(this.IqD, 2);
+    if (this.JSn != null) {
+      paramJceOutputStream.write(this.JSn, 2);
     }
-    if (this.IqE != null) {
-      paramJceOutputStream.write(this.IqE, 3);
+    if (this.JSo != null) {
+      paramJceOutputStream.write(this.JSo, 3);
     }
-    if (this.IqF != 0L) {
-      paramJceOutputStream.write(this.IqF, 4);
+    if (this.JSp != 0L) {
+      paramJceOutputStream.write(this.JSp, 4);
     }
-    if (this.IqG != null) {
-      paramJceOutputStream.write(this.IqG, 5);
+    if (this.JSq != null) {
+      paramJceOutputStream.write(this.JSq, 5);
     }
-    if (this.IqH != 0) {
-      paramJceOutputStream.write(this.IqH, 6);
+    if (this.JSr != 0) {
+      paramJceOutputStream.write(this.JSr, 6);
     }
-    if (this.IqI != null) {
-      paramJceOutputStream.write(this.IqI, 7);
+    if (this.JSs != null) {
+      paramJceOutputStream.write(this.JSs, 7);
     }
-    if (this.IqJ != 0) {
-      paramJceOutputStream.write(this.IqJ, 8);
+    if (this.JSt != 0) {
+      paramJceOutputStream.write(this.JSt, 8);
     }
-    if (this.IqK != null) {
-      paramJceOutputStream.write(this.IqK, 9);
+    if (this.JSu != null) {
+      paramJceOutputStream.write(this.JSu, 9);
     }
-    paramJceOutputStream.write(this.IqL, 10);
-    if (this.IqM != 0) {
-      paramJceOutputStream.write(this.IqM, 11);
+    paramJceOutputStream.write(this.JSv, 10);
+    if (this.JSw != 0) {
+      paramJceOutputStream.write(this.JSw, 11);
     }
-    if (this.IqN != 0) {
-      paramJceOutputStream.write(this.IqN, 12);
+    if (this.JSx != 0) {
+      paramJceOutputStream.write(this.JSx, 12);
     }
-    if (this.IqO != null) {
-      paramJceOutputStream.write(this.IqO, 13);
+    if (this.JSy != null) {
+      paramJceOutputStream.write(this.JSy, 13);
     }
-    if (this.IqP != 0) {
-      paramJceOutputStream.write(this.IqP, 14);
+    if (this.JSz != 0) {
+      paramJceOutputStream.write(this.JSz, 14);
     }
-    paramJceOutputStream.write(this.IqQ, 15);
-    if (this.IqR != 0) {
-      paramJceOutputStream.write(this.IqR, 16);
+    paramJceOutputStream.write(this.JSA, 15);
+    if (this.JSB != 0) {
+      paramJceOutputStream.write(this.JSB, 16);
     }
-    paramJceOutputStream.write(this.IqS, 17);
-    if (this.IqT != null) {
-      paramJceOutputStream.write(this.IqT, 18);
+    paramJceOutputStream.write(this.JSC, 17);
+    if (this.JSD != null) {
+      paramJceOutputStream.write(this.JSD, 18);
     }
     AppMethodBeat.o(138333);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.c.b.b
  * JD-Core Version:    0.7.0.1
  */

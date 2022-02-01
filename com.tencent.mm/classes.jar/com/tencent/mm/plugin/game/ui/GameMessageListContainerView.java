@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
 import com.tencent.mm.plugin.game.model.o;
 import com.tencent.mm.plugin.game.model.o.i;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public class GameMessageListContainerView
@@ -27,7 +27,7 @@ public class GameMessageListContainerView
   public final void a(o paramo, LinkedList<o.i> paramLinkedList, int paramInt1, int paramInt2, f<String, Bitmap> paramf)
   {
     AppMethodBeat.i(42284);
-    if ((paramo == null) || (bt.gL(paramLinkedList)))
+    if ((paramo == null) || (bs.gY(paramLinkedList)))
     {
       setVisibility(8);
       AppMethodBeat.o(42284);

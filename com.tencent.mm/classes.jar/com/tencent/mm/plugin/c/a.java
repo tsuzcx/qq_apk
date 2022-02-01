@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.c;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.c;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -14,8 +14,8 @@ public final class a
   implements com.tencent.mm.kernel.api.a, com.tencent.mm.kernel.api.e, c
 {
   private static final HashMap<Integer, h.b> baseDBFactories;
-  private static a iBc;
-  private com.tencent.mm.storage.g iBd;
+  private static a jbd;
+  private com.tencent.mm.storage.g jbe;
   
   static
   {
@@ -32,15 +32,15 @@ public final class a
     AppMethodBeat.o(151424);
   }
   
-  public static a aLf()
+  public static a aRW()
   {
     try
     {
       AppMethodBeat.i(151420);
-      if (iBc == null) {
-        iBc = new a();
+      if (jbd == null) {
+        jbd = new a();
       }
-      a locala = iBc;
+      a locala = jbd;
       AppMethodBeat.o(151420);
       return locala;
     }
@@ -50,18 +50,18 @@ public final class a
   public static boolean z(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(151422);
-    if ((bt.ai(paramCharSequence)) || (!com.tencent.mm.kernel.g.afz().gcn))
+    if ((bs.aj(paramCharSequence)) || (!com.tencent.mm.kernel.g.agP().ggT))
     {
       AppMethodBeat.o(151422);
       return false;
     }
     try
     {
-      String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getValue("ClipProtectPattern");
-      if (!bt.isNullOrNil(str))
+      String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).ZY().getValue("ClipProtectPattern");
+      if (!bs.isNullOrNil(str))
       {
         str = new String(Base64.decode(str, 0));
-        if (!bt.isNullOrNil(str))
+        if (!bs.isNullOrNil(str))
         {
           boolean bool = Pattern.compile(str).matcher(paramCharSequence).matches();
           if (bool)
@@ -79,11 +79,11 @@ public final class a
     return false;
   }
   
-  public final com.tencent.mm.storage.g aqn()
+  public final com.tencent.mm.storage.g axc()
   {
     AppMethodBeat.i(151421);
-    com.tencent.mm.kernel.g.afz().aeD();
-    com.tencent.mm.storage.g localg = this.iBd;
+    com.tencent.mm.kernel.g.agP().afT();
+    com.tencent.mm.storage.g localg = this.jbe;
     AppMethodBeat.o(151421);
     return localg;
   }
@@ -98,7 +98,7 @@ public final class a
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(151423);
-    this.iBd = new com.tencent.mm.storage.g(paramh1);
+    this.jbe = new com.tencent.mm.storage.g(paramh1);
     AppMethodBeat.o(151423);
   }
 }

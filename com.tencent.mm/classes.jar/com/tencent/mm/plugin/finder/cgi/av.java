@@ -1,154 +1,210 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.b;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.dyz;
-import com.tencent.mm.protocal.protobuf.dza;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.protocal.protobuf.dzq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aou;
+import com.tencent.mm.protocal.protobuf.aov;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.vfs.i;
 import d.l;
 import d.v;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetRelatedList;", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderBase;", "tabType", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "relScene", "lng", "", "lat", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(ILcom/tencent/mm/protobuf/ByteString;IFFLcom/tencent/mm/protocal/protobuf/FinderSectionInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "category", "getCategory", "()Ljava/lang/String;", "setCategory", "(Ljava/lang/String;)V", "feedId", "", "getFeedId", "()J", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "getLat", "()F", "setLat", "(F)V", "getLng", "setLng", "nonceId", "getNonceId", "pullType", "getPullType", "()I", "setPullType", "(I)V", "getRelScene", "setRelScene", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getSectionInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "setSectionInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;)V", "getTabType", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getFeedRelList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "getRequestBuffer", "getResponseBuffer", "getType", "hasContinue", "", "isFetchFeedCgi", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "realInit", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderUploadHeadImg;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "filePath", "", "scene", "", "(Ljava/lang/String;I)V", "ERRCODE_REACH_RETRY_LIMIT", "getERRCODE_REACH_RETRY_LIMIT", "()I", "IMG_SLICE_LEN", "MAX_DO_SCENE_LIMIT", "TAG", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "fileMD5", "getFilePath", "()Ljava/lang/String;", "imgUrl", "readBuf", "", "getScene", "startPos", "totalLen", "doNextUpload", "doScene", "getImgUrl", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "securityLimitCount", "securityVerificationChecked", "Lcom/tencent/mm/modelbase/NetSceneBase$SecurityCheckStatus;", "Companion", "plugin-finder_release"})
 public final class av
-  extends ap
+  extends n
+  implements com.tencent.mm.network.k
 {
-  private final int IoU;
-  private int KJI;
-  private dzq KJJ;
-  private final String KJv;
+  private static final int qYL = 1;
+  private static final int qYM = 2;
+  public static final a qYN;
   private final String TAG;
+  private int cUq;
   private g callback;
-  private String category;
-  private final long feedId;
-  private float heb;
-  private float hec;
-  private final com.tencent.mm.bx.b lastBuffer;
-  public int pullType;
-  public com.tencent.mm.al.b rr;
+  private e dispatcher;
+  private final String filePath;
+  private int hux;
+  private String qYF;
+  private byte[] qYG;
+  public String qYH;
+  private final int qYI;
+  private final int qYJ;
+  private final int qYK;
+  private final int scene;
   
-  public av(int paramInt, com.tencent.mm.bx.b paramb, float paramFloat1, float paramFloat2, dzq paramdzq, dzp paramdzp)
+  static
   {
-    super(paramdzp);
-    AppMethodBeat.i(197321);
-    this.TAG = "Finder.NetSceneFinderGetRelatedList";
-    this.KJv = "";
-    this.category = "";
-    this.KJI = -1;
-    this.IoU = paramInt;
-    this.lastBuffer = paramb;
-    this.KJI = 2;
-    this.hec = paramFloat1;
-    this.heb = paramFloat2;
-    this.KJJ = paramdzq;
-    paramb = new b.a();
-    paramb.nB(getType());
-    paramdzq = new dyz();
-    paramdzq.objectId = this.feedId;
-    paramdzq.IoU = this.IoU;
-    paramdzq.dqQ = this.hec;
-    paramdzq.dpb = this.heb;
-    paramdzq.lastBuffer = this.lastBuffer;
-    paramdzp = am.KJy;
-    paramdzq.DlF = am.a(this.contextObj);
-    paramdzq.scene = this.KJI;
-    paramdzq.KJJ = this.KJJ;
-    paramb.c((a)paramdzq);
-    paramb.d((a)new dza());
-    paramb.wg("/cgi-bin/micromsg-bin/findergetrelatedlist");
-    paramb = paramb.atI();
-    d.g.b.k.g(paramb, "builder.buildInstance()");
-    this.rr = paramb;
-    ad.i(this.TAG, "NetSceneFinderGetRelatedList feedId " + this.feedId + " tabType " + this.IoU + " category " + this.category + " lastBuffer " + this.lastBuffer);
-    AppMethodBeat.o(197321);
+    AppMethodBeat.i(165287);
+    qYN = new a((byte)0);
+    qYL = 1;
+    qYM = 2;
+    AppMethodBeat.o(165287);
+  }
+  
+  public av(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(165286);
+    this.filePath = paramString;
+    this.scene = paramInt;
+    this.TAG = "Finder.NetSceneFinderUploadHeadImg";
+    this.qYI = 51200;
+    this.qYJ = 20;
+    this.qYK = -40000;
+    ac.i(this.TAG, "filePath " + this.filePath + " and size: " + bs.qz(i.aSp(this.filePath)) + " total:" + i.aSp(this.filePath));
+    AppMethodBeat.o(165286);
+  }
+  
+  private final int csR()
+  {
+    AppMethodBeat.i(165284);
+    b.a locala = new b.a();
+    locala.Am("/cgi-bin/micromsg-bin/finderuploadheadimg");
+    locala.op(getType());
+    aou localaou = new aou();
+    localaou.scene = this.scene;
+    localaou.cUq = this.cUq;
+    localaou.hux = this.hux;
+    localaou.EHL = this.qYF;
+    this.qYG = i.aU(this.filePath, this.cUq, this.qYI);
+    Object localObject1 = this.qYG;
+    Object localObject2 = this.qYG;
+    int i;
+    StringBuilder localStringBuilder;
+    if (localObject2 != null)
+    {
+      i = localObject2.length;
+      localaou.Ewb = com.tencent.mm.bw.b.E((byte[])localObject1, 0, i);
+      localObject2 = this.TAG;
+      localStringBuilder = new StringBuilder("next upload start:").append(this.cUq).append(", len:");
+      localObject1 = this.qYG;
+      if (localObject1 == null) {
+        break label279;
+      }
+    }
+    label279:
+    for (localObject1 = Integer.valueOf(localObject1.length);; localObject1 = null)
+    {
+      ac.i((String)localObject2, localObject1);
+      localObject1 = q.qXH;
+      localaou.EDL = q.csi();
+      locala.c((a)localaou);
+      locala.d((a)new aov());
+      i = dispatch(this.dispatcher, (com.tencent.mm.network.q)locala.aAz(), (com.tencent.mm.network.k)this);
+      if (i == -1)
+      {
+        localObject1 = this.callback;
+        if (localObject1 != null) {
+          ((g)localObject1).onSceneEnd(3, this.qYK, "", (n)this);
+        }
+      }
+      AppMethodBeat.o(165284);
+      return i;
+      i = 0;
+      break;
+    }
   }
   
   public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(197318);
-    this.callback = paramg;
-    paramg = this.rr;
-    if (paramg == null) {
-      d.g.b.k.aPZ("rr");
-    }
-    int i = dispatch(parame, (q)paramg, (com.tencent.mm.network.k)this);
-    AppMethodBeat.o(197318);
-    return i;
-  }
-  
-  public final boolean fRR()
-  {
-    return true;
-  }
-  
-  public final LinkedList<FinderObject> fRV()
-  {
-    AppMethodBeat.i(197320);
-    Object localObject = this.rr;
-    if (localObject == null) {
-      d.g.b.k.aPZ("rr");
-    }
-    localObject = ((com.tencent.mm.al.b)localObject).auM();
-    if (localObject == null)
+    AppMethodBeat.i(165283);
+    if (bs.isNullOrNil(this.qYF))
     {
-      localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetRelatedListResp");
-      AppMethodBeat.o(197320);
-      throw ((Throwable)localObject);
+      this.qYF = i.aKe(this.filePath);
+      this.hux = ((int)i.aSp(this.filePath));
+      ac.i(this.TAG, "upload img file path:" + this.filePath + " totalLen:" + this.hux + " md5:" + this.qYF);
     }
-    LinkedList localLinkedList = ((dza)localObject).object;
-    localObject = localLinkedList;
-    if (localLinkedList == null) {
-      localObject = new LinkedList();
-    }
-    AppMethodBeat.o(197320);
-    return localObject;
+    this.callback = paramg;
+    this.dispatcher = parame;
+    int i = csR();
+    AppMethodBeat.o(165283);
+    return i;
   }
   
   public final int getType()
   {
-    return 3688;
+    return 3759;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(197319);
-    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
-    ad.i(this.TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    AppMethodBeat.i(165285);
+    ac.i(this.TAG, "errType " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = this.TAG;
-      paramArrayOfByte = new StringBuilder("feedId ").append(this.feedId).append(" tabType=").append(this.IoU).append(", ");
-      i locali = i.qoK;
-      ad.i(paramq, i.du((List)fRV()));
-      paramq = ((Iterable)fRV()).iterator();
-      while (paramq.hasNext()) {
-        k((FinderObject)paramq.next());
+      if (paramq == null)
+      {
+        paramString = new v("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
+        AppMethodBeat.o(165285);
+        throw paramString;
       }
+      paramq = ((com.tencent.mm.ak.b)paramq).aBD();
+      if (paramq == null)
+      {
+        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderUploadHeadImgResponse");
+        AppMethodBeat.o(165285);
+        throw paramString;
+      }
+      paramq = (aov)paramq;
+      if (paramq.completed)
+      {
+        this.qYH = paramq.qYH;
+        ac.i(this.TAG, "upload completed " + this.qYH);
+        paramq = this.callback;
+        if (paramq != null)
+        {
+          paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
+          AppMethodBeat.o(165285);
+          return;
+        }
+        AppMethodBeat.o(165285);
+        return;
+      }
+      this.cUq = paramq.cUq;
+      csR();
+      AppMethodBeat.o(165285);
+      return;
     }
-    if (this.callback != null)
+    paramq = this.callback;
+    if (paramq != null)
     {
-      paramq = this.callback;
-      if (paramq == null) {
-        d.g.b.k.fvU();
-      }
       paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
+      AppMethodBeat.o(165285);
+      return;
     }
-    AppMethodBeat.o(197319);
+    AppMethodBeat.o(165285);
   }
+  
+  public final int securityLimitCount()
+  {
+    return this.qYJ;
+  }
+  
+  public final n.b securityVerificationChecked(com.tencent.mm.network.q paramq)
+  {
+    AppMethodBeat.i(165282);
+    d.g.b.k.h(paramq, "rr");
+    if (bs.isNullOrNil(this.filePath))
+    {
+      paramq = n.b.hwb;
+      AppMethodBeat.o(165282);
+      return paramq;
+    }
+    paramq = n.b.hwa;
+    AppMethodBeat.o(165282);
+    return paramq;
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderUploadHeadImg$Companion;", "", "()V", "UPLOAD_FINDER_HEAD_IMG_SCENE_CREATE_CONTACT", "", "getUPLOAD_FINDER_HEAD_IMG_SCENE_CREATE_CONTACT", "()I", "UPLOAD_FINDER_HEAD_IMG_SCENE_UPDATE_CONTACT", "getUPLOAD_FINDER_HEAD_IMG_SCENE_UPDATE_CONTACT", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.av
  * JD-Core Version:    0.7.0.1
  */

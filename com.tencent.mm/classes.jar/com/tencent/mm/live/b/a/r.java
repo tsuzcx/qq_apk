@@ -1,138 +1,126 @@
 package com.tencent.mm.live.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.model.u;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ebl;
-import com.tencent.mm.protocal.protobuf.ebm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cbb;
+import com.tencent.mm.protocal.protobuf.cbc;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/cgi/NetSceneLivePostLiveMessage;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "content", "", "msgType", "", "liveId", "", "liveCookies", "", "wechatRoomId", "(Ljava/lang/String;IJ[BLjava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/PostLiveMessageRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/PostLiveMessageResponse;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "Companion", "plugin-logic_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveOpenReplay;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "wechatRoomId", "", "enableOpenReplay", "", "(JLjava/lang/String;Z)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/OpenLiveReplayRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/OpenLiveReplayResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
 public final class r
   extends n
   implements com.tencent.mm.network.k
 {
-  public static final a Agw;
-  private ebm Agv;
+  public static final a gwI;
   private g callback;
-  private com.tencent.mm.al.b iaa;
-  private ebl zcX;
+  private b gvE;
+  private cbb gwG;
+  private cbc gwH;
   
   static
   {
-    AppMethodBeat.i(202759);
-    Agw = new a((byte)0);
-    AppMethodBeat.o(202759);
+    AppMethodBeat.i(189950);
+    gwI = new a((byte)0);
+    AppMethodBeat.o(189950);
   }
   
-  public r(String paramString1, int paramInt, long paramLong, byte[] paramArrayOfByte, String paramString2)
+  public r(long paramLong, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(202758);
+    AppMethodBeat.i(189949);
     Object localObject = new b.a();
-    ((b.a)localObject).c((a)new ebl());
-    ((b.a)localObject).d((a)new ebm());
-    ((b.a)localObject).nB(904);
-    ((b.a)localObject).wg("/cgi-bin/micromsg-bin/postlivemessage");
-    ((b.a)localObject).nD(0);
-    ((b.a)localObject).nE(0);
-    localObject = ((b.a)localObject).atI();
+    ((b.a)localObject).c((a)new cbb());
+    ((b.a)localObject).d((a)new cbc());
+    ((b.a)localObject).op(3712);
+    ((b.a)localObject).Am("/cgi-bin/micromsg-bin/openlivereplay");
+    ((b.a)localObject).or(0);
+    ((b.a)localObject).os(0);
+    localObject = ((b.a)localObject).aAz();
     d.g.b.k.g(localObject, "builder.buildInstance()");
-    this.iaa = ((com.tencent.mm.al.b)localObject);
-    localObject = this.iaa.auL();
+    this.gvE = ((b)localObject);
+    localObject = this.gvE.aBC();
     if (localObject == null)
     {
-      paramString1 = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.PostLiveMessageRequest");
-      AppMethodBeat.o(202758);
-      throw paramString1;
+      paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.OpenLiveReplayRequest");
+      AppMethodBeat.o(189949);
+      throw paramString;
     }
-    this.zcX = ((ebl)localObject);
-    localObject = this.zcX;
+    this.gwG = ((cbb)localObject);
+    localObject = this.gwG;
     if (localObject != null) {
-      ((ebl)localObject).content = paramString1;
+      ((cbb)localObject).DMV = paramLong;
     }
-    localObject = this.zcX;
+    localObject = this.gwG;
     if (localObject != null) {
-      ((ebl)localObject).CJZ = paramInt;
+      ((cbb)localObject).DMW = paramString;
     }
-    localObject = this.zcX;
+    localObject = this.gwG;
     if (localObject != null) {
-      ((ebl)localObject).LyM = com.tencent.mm.bx.b.cd(paramArrayOfByte);
+      ((cbb)localObject).Ffd = paramBoolean;
     }
-    paramArrayOfByte = this.zcX;
-    if (paramArrayOfByte != null) {
-      paramArrayOfByte.LwA = paramLong;
-    }
-    paramArrayOfByte = this.zcX;
-    if (paramArrayOfByte != null) {
-      paramArrayOfByte.EEF = paramString2;
-    }
-    paramArrayOfByte = this.zcX;
-    if (paramArrayOfByte != null) {
-      paramArrayOfByte.LwB = (u.aqG() + System.currentTimeMillis());
-    }
-    ad.i("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "post msg content:" + paramString1 + ", msgType:" + paramInt + ", liveId:" + paramLong + ", roomId:" + paramString2);
-    AppMethodBeat.o(202758);
+    ac.i("MicroMsg.LiveNetScene.NetSceneLiveOpenReplay", "open live replay liveId:" + paramLong + " roomId:" + paramString + " enableLiveReplay:" + paramBoolean);
+    AppMethodBeat.o(189949);
   }
   
   public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(202756);
-    ad.i("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "doScene");
+    AppMethodBeat.i(189947);
+    ac.i("MicroMsg.LiveNetScene.NetSceneLiveOpenReplay", "doScene");
     this.callback = paramg;
-    int i = dispatch(parame, (q)this.iaa, (com.tencent.mm.network.k)this);
-    AppMethodBeat.o(202756);
+    int i = dispatch(parame, (q)this.gvE, (com.tencent.mm.network.k)this);
+    AppMethodBeat.o(189947);
     return i;
   }
   
   public final int getType()
   {
-    return 904;
+    return 3712;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(202757);
-    ad.i("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(189948);
+    ac.i("MicroMsg.LiveNetScene.NetSceneLiveOpenReplay", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (paramq == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-      AppMethodBeat.o(202757);
+      AppMethodBeat.o(189948);
       throw paramString;
     }
-    paramq = ((com.tencent.mm.al.b)paramq).auM();
+    paramq = ((b)paramq).aBD();
     if (paramq == null)
     {
-      paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.PostLiveMessageResponse");
-      AppMethodBeat.o(202757);
+      paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.OpenLiveReplayResponse");
+      AppMethodBeat.o(189948);
       throw paramString;
     }
-    this.Agv = ((ebm)paramq);
+    this.gwH = ((cbc)paramq);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ad.e("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "onGYNetEnd error");
+      ac.e("MicroMsg.LiveNetScene.NetSceneLiveOpenReplay", "onGYNetEnd error");
     }
     paramq = this.callback;
     if (paramq != null)
     {
       paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(202757);
+      AppMethodBeat.o(189948);
       return;
     }
-    AppMethodBeat.o(202757);
+    AppMethodBeat.o(189948);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/cgi/NetSceneLivePostLiveMessage$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveOpenReplay$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.b.a.r
  * JD-Core Version:    0.7.0.1
  */

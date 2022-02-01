@@ -10,39 +10,8 @@ import java.util.NoSuchElementException;
 
 public final class h
 {
-  private static r<Object> bVP = new r()
-  {
-    public final boolean hasNext()
-    {
-      return false;
-    }
-    
-    public final boolean hasPrevious()
-    {
-      return false;
-    }
-    
-    public final Object next()
-    {
-      throw new NoSuchElementException();
-    }
-    
-    public final int nextIndex()
-    {
-      return 0;
-    }
-    
-    public final Object previous()
-    {
-      throw new NoSuchElementException();
-    }
-    
-    public final int previousIndex()
-    {
-      return -1;
-    }
-  };
-  private static final Iterator<Object> bVQ = new Iterator()
+  private static r<Object> bTx = new h.1();
+  private static final Iterator<Object> bTy = new Iterator()
   {
     public final boolean hasNext()
     {
@@ -56,7 +25,7 @@ public final class h
     
     public final void remove()
     {
-      a.bn(false);
+      a.bm(false);
     }
   };
   
@@ -97,9 +66,9 @@ public final class h
     return bool;
   }
   
-  static <T> Iterator<T> zS()
+  static <T> Iterator<T> zF()
   {
-    return bVQ;
+    return bTy;
   }
 }
 

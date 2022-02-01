@@ -22,7 +22,7 @@ public final class j
     this.db = parame;
   }
   
-  public final i Qu(String paramString)
+  public final i UG(String paramString)
   {
     AppMethodBeat.i(112782);
     i locali = new i();
@@ -38,7 +38,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.j
  * JD-Core Version:    0.7.0.1
  */

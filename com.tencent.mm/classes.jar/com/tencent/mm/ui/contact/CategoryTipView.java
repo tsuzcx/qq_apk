@@ -10,14 +10,14 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.g.b.a.dl;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.g.b.a.ez;
 import com.tencent.mm.plugin.story.api.b;
 import com.tencent.mm.plugin.story.api.c;
 import com.tencent.mm.plugin.story.api.o;
 import com.tencent.mm.plugin.story.h.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.am;
 import java.lang.ref.WeakReference;
 
@@ -25,19 +25,19 @@ public class CategoryTipView
   extends RelativeLayout
   implements c
 {
-  private TextView GTW;
+  private TextView Iuh;
   private int mStatus;
-  private String tBg;
-  private long wvn;
+  private String uJD;
+  private long xGD;
   
   public CategoryTipView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(37670);
-    this.GTW = null;
+    this.Iuh = null;
     this.mStatus = 0;
-    this.wvn = 0L;
-    this.tBg = "";
+    this.xGD = 0L;
+    this.uJD = "";
     init();
     AppMethodBeat.o(37670);
   }
@@ -46,22 +46,22 @@ public class CategoryTipView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(37671);
-    this.GTW = null;
+    this.Iuh = null;
     this.mStatus = 0;
-    this.wvn = 0L;
-    this.tBg = "";
+    this.xGD = 0L;
+    this.uJD = "";
     init();
     AppMethodBeat.o(37671);
   }
   
-  private boolean fbf()
+  private boolean fqW()
   {
     AppMethodBeat.i(37675);
     Object localObject = getTag();
     if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 32)) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.CategoryTipView", "%s isFavourHeader=%s", new Object[] { this, Boolean.valueOf(bool) });
+      ac.d("MicroMsg.CategoryTipView", "%s isFavourHeader=%s", new Object[] { this, Boolean.valueOf(bool) });
       AppMethodBeat.o(37675);
       return bool;
     }
@@ -71,25 +71,25 @@ public class CategoryTipView
   {
     AppMethodBeat.i(37673);
     LayoutInflater.from(getContext()).inflate(2131492948, this, true);
-    this.GTW = ((TextView)findViewById(2131298727));
+    this.Iuh = ((TextView)findViewById(2131298727));
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(37668);
-        if (bt.aS(CategoryTipView.a(CategoryTipView.this)) < 1000L)
+        if (bs.aO(CategoryTipView.a(CategoryTipView.this)) < 1000L)
         {
           AppMethodBeat.o(37668);
           return;
         }
-        CategoryTipView.a(CategoryTipView.this, bt.GC());
+        CategoryTipView.a(CategoryTipView.this, bs.Gn());
         if (CategoryTipView.b(CategoryTipView.this))
         {
-          paramAnonymousView = h.ynv;
-          h.dJj().jN(CategoryTipView.c(CategoryTipView.this));
-          paramAnonymousView = h.ynv;
-          h.dJj().dTd = 6L;
-          o.a(CategoryTipView.this.getContext(), ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getFavourUserChecker().dGe(), null, null);
+          paramAnonymousView = h.zAU;
+          h.dXK().mD(CategoryTipView.c(CategoryTipView.this));
+          paramAnonymousView = h.zAU;
+          h.dXK().dUP = 6L;
+          o.a(CategoryTipView.this.getContext(), ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getFavourUserChecker().dUF(), null, null);
         }
         AppMethodBeat.o(37668);
       }
@@ -98,11 +98,11 @@ public class CategoryTipView
     AppMethodBeat.o(37673);
   }
   
-  public final void Ol(final int paramInt)
+  public final void Qr(final int paramInt)
   {
     AppMethodBeat.i(37676);
-    ad.d("MicroMsg.CategoryTipView", "%s mStatus=%s newStatus=%s", new Object[] { this, Integer.valueOf(this.mStatus), Integer.valueOf(paramInt) });
-    if ((getVisibility() == 0) && (fbf()) && (this.mStatus != paramInt)) {
+    ac.d("MicroMsg.CategoryTipView", "%s mStatus=%s newStatus=%s", new Object[] { this, Integer.valueOf(this.mStatus), Integer.valueOf(paramInt) });
+    if ((getVisibility() == 0) && (fqW()) && (this.mStatus != paramInt)) {
       post(new Runnable()
       {
         public final void run()
@@ -116,45 +116,45 @@ public class CategoryTipView
     AppMethodBeat.o(37676);
   }
   
-  public final void ZB(int paramInt)
+  public final void abP(int paramInt)
   {
     AppMethodBeat.i(37674);
     this.mStatus = paramInt;
-    if (fbf())
+    if (fqW())
     {
-      int i = com.tencent.mm.m.g.Zd().getInt("StoryShouldShowEntraceInFavorFriend", 1);
+      int i = com.tencent.mm.m.g.ZY().getInt("StoryShouldShowEntraceInFavorFriend", 1);
       Drawable localDrawable;
       if ((i == 1) && ((paramInt & 0x1) != 0))
       {
-        ad.i("MicroMsg.CategoryTipView", "%s showStoryCategory has new story %s", new Object[] { this, Integer.valueOf(i) });
+        ac.i("MicroMsg.CategoryTipView", "%s showStoryCategory has new story %s", new Object[] { this, Integer.valueOf(i) });
         setVisibility(0);
-        this.GTW.setVisibility(0);
+        this.Iuh.setVisibility(0);
         localDrawable = getContext().getResources().getDrawable(2131690332);
         localDrawable.setBounds(0, 0, a.fromDPToPix(getContext(), 20), a.fromDPToPix(getContext(), 20));
-        this.GTW.setCompoundDrawables(null, null, localDrawable, null);
-        this.GTW.invalidate();
+        this.Iuh.setCompoundDrawables(null, null, localDrawable, null);
+        this.Iuh.invalidate();
         AppMethodBeat.o(37674);
         return;
       }
       if ((i == 1) && ((paramInt & 0x2) != 0))
       {
-        ad.i("MicroMsg.CategoryTipView", "%s showStoryCategory has story %s", new Object[] { this, Integer.valueOf(i) });
+        ac.i("MicroMsg.CategoryTipView", "%s showStoryCategory has story %s", new Object[] { this, Integer.valueOf(i) });
         setVisibility(0);
-        this.GTW.setVisibility(0);
-        localDrawable = am.i(getContext(), 2131690614, getContext().getResources().getColor(2131100018));
+        this.Iuh.setVisibility(0);
+        localDrawable = am.k(getContext(), 2131690614, getContext().getResources().getColor(2131100018));
         localDrawable.setBounds(0, 0, a.fromDPToPix(getContext(), 20), a.fromDPToPix(getContext(), 20));
-        this.GTW.setCompoundDrawables(null, null, localDrawable, null);
-        this.GTW.invalidate();
+        this.Iuh.setCompoundDrawables(null, null, localDrawable, null);
+        this.Iuh.invalidate();
         AppMethodBeat.o(37674);
         return;
       }
       setVisibility(8);
-      this.GTW.setVisibility(8);
+      this.Iuh.setVisibility(8);
       AppMethodBeat.o(37674);
       return;
     }
     setVisibility(8);
-    this.GTW.setVisibility(8);
+    this.Iuh.setVisibility(8);
     AppMethodBeat.o(37674);
   }
   
@@ -166,9 +166,9 @@ public class CategoryTipView
     if (paramInt == 0) {}
     for (;;)
     {
-      ad.d("MicroMsg.CategoryTipView", "visibility == View.VISIBLE : %s", new Object[] { Boolean.valueOf(bool) });
+      ac.d("MicroMsg.CategoryTipView", "visibility == View.VISIBLE : %s", new Object[] { Boolean.valueOf(bool) });
       if (paramInt == 0) {
-        this.tBg = com.tencent.mm.ui.e.aJX("6");
+        this.uJD = com.tencent.mm.ui.e.aPv("6");
       }
       AppMethodBeat.o(37672);
       return;
@@ -178,7 +178,7 @@ public class CategoryTipView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.CategoryTipView
  * JD-Core Version:    0.7.0.1
  */

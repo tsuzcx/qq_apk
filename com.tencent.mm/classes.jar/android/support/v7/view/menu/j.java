@@ -24,47 +24,47 @@ import java.util.ArrayList;
 public final class j
   implements android.support.v4.a.a.b
 {
-  private int CW = 16;
-  private CharSequence Eo;
-  h XT;
-  private final int abG;
-  private final int abH;
-  final int abI;
-  private CharSequence abJ;
-  private char abK;
-  int abL = 4096;
-  private char abM;
-  int abN = 4096;
-  private Drawable abO;
-  private int abP = 0;
-  private MenuItem.OnMenuItemClickListener abQ;
-  private CharSequence abR;
-  private CharSequence abS;
-  private ColorStateList abT = null;
-  private PorterDuff.Mode abU = null;
-  private boolean abV = false;
-  private boolean abW = false;
-  private u adP;
-  private Runnable adQ;
-  private boolean adR = false;
-  private int adS = 0;
-  private View adT;
-  public android.support.v4.view.b adU;
-  private MenuItem.OnActionExpandListener adV;
-  private boolean adW = false;
-  ContextMenu.ContextMenuInfo adX;
+  private int DU = 16;
+  private CharSequence Fm;
+  h YO;
+  private final int acA;
+  private final int acB;
+  final int acC;
+  private CharSequence acD;
+  private char acE;
+  int acF = 4096;
+  private char acG;
+  int acH = 4096;
+  private Drawable acI;
+  private int acJ = 0;
+  private MenuItem.OnMenuItemClickListener acK;
+  private CharSequence acL;
+  private CharSequence acM;
+  private ColorStateList acN = null;
+  private PorterDuff.Mode acO = null;
+  private boolean acP = false;
+  private boolean acQ = false;
+  private u aeJ;
+  private Runnable aeK;
+  private boolean aeL = false;
+  private int aeM = 0;
+  private View aeN;
+  public android.support.v4.view.b aeO;
+  private MenuItem.OnActionExpandListener aeP;
+  private boolean aeQ = false;
+  ContextMenu.ContextMenuInfo aeR;
   private final int mId;
   private Intent mIntent;
   
   j(h paramh, int paramInt1, int paramInt2, int paramInt3, int paramInt4, CharSequence paramCharSequence, int paramInt5)
   {
-    this.XT = paramh;
+    this.YO = paramh;
     this.mId = paramInt2;
-    this.abG = paramInt1;
-    this.abH = paramInt3;
-    this.abI = paramInt4;
-    this.Eo = paramCharSequence;
-    this.adS = paramInt5;
+    this.acA = paramInt1;
+    this.acB = paramInt3;
+    this.acC = paramInt4;
+    this.Fm = paramCharSequence;
+    this.aeM = paramInt5;
   }
   
   static void a(StringBuilder paramStringBuilder, int paramInt1, int paramInt2, String paramString)
@@ -76,14 +76,14 @@ public final class j
   
   private void ad(boolean paramBoolean)
   {
-    int j = this.CW;
-    int k = this.CW;
+    int j = this.DU;
+    int k = this.DU;
     if (paramBoolean) {}
     for (int i = 2;; i = 0)
     {
-      this.CW = (i | k & 0xFFFFFFFD);
-      if (j != this.CW) {
-        this.XT.r(false);
+      this.DU = (i | k & 0xFFFFFFFD);
+      if (j != this.DU) {
+        this.YO.r(false);
       }
       return;
     }
@@ -91,12 +91,12 @@ public final class j
   
   private android.support.v4.a.a.b bb(View paramView)
   {
-    this.adT = paramView;
-    this.adU = null;
+    this.aeN = paramView;
+    this.aeO = null;
     if ((paramView != null) && (paramView.getId() == -1) && (this.mId > 0)) {
       paramView.setId(this.mId);
     }
-    this.XT.hw();
+    this.YO.hE();
     return this;
   }
   
@@ -106,22 +106,22 @@ public final class j
     if (paramDrawable != null)
     {
       localDrawable = paramDrawable;
-      if (this.adR) {
-        if (!this.abV)
+      if (this.aeL) {
+        if (!this.acP)
         {
           localDrawable = paramDrawable;
-          if (!this.abW) {}
+          if (!this.acQ) {}
         }
         else
         {
           localDrawable = android.support.v4.graphics.drawable.a.i(paramDrawable).mutate();
-          if (this.abV) {
-            android.support.v4.graphics.drawable.a.a(localDrawable, this.abT);
+          if (this.acP) {
+            android.support.v4.graphics.drawable.a.a(localDrawable, this.acN);
           }
-          if (this.abW) {
-            android.support.v4.graphics.drawable.a.a(localDrawable, this.abU);
+          if (this.acQ) {
+            android.support.v4.graphics.drawable.a.a(localDrawable, this.acO);
           }
-          this.adR = false;
+          this.aeL = false;
         }
       }
     }
@@ -130,21 +130,21 @@ public final class j
   
   public final android.support.v4.a.a.b a(android.support.v4.view.b paramb)
   {
-    if (this.adU != null)
+    if (this.aeO != null)
     {
-      android.support.v4.view.b localb = this.adU;
-      localb.Mp = null;
-      localb.Mo = null;
+      android.support.v4.view.b localb = this.aeO;
+      localb.Nm = null;
+      localb.Nl = null;
     }
-    this.adT = null;
-    this.adU = paramb;
-    this.XT.r(true);
-    if (this.adU != null) {
-      this.adU.a(new b.b()
+    this.aeN = null;
+    this.aeO = paramb;
+    this.YO.r(true);
+    if (this.aeO != null) {
+      this.aeO.a(new b.b()
       {
-        public final void eU()
+        public final void fc()
         {
-          j.this.XT.hv();
+          j.this.YO.hD();
         }
       });
     }
@@ -153,7 +153,7 @@ public final class j
   
   final CharSequence a(p.a parama)
   {
-    if (parama.be()) {
+    if (parama.bl()) {
       return getTitleCondensed();
     }
     return getTitle();
@@ -161,11 +161,11 @@ public final class j
   
   public final void ac(boolean paramBoolean)
   {
-    int j = this.CW;
+    int j = this.DU;
     if (paramBoolean) {}
     for (int i = 4;; i = 0)
     {
-      this.CW = (i | j & 0xFFFFFFFB);
+      this.DU = (i | j & 0xFFFFFFFB);
       return;
     }
   }
@@ -173,14 +173,14 @@ public final class j
   final boolean ae(boolean paramBoolean)
   {
     boolean bool = false;
-    int j = this.CW;
-    int k = this.CW;
+    int j = this.DU;
+    int k = this.DU;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
-      this.CW = (i | k & 0xFFFFFFF7);
+      this.DU = (i | k & 0xFFFFFFF7);
       paramBoolean = bool;
-      if (j != this.CW) {
+      if (j != this.DU) {
         paramBoolean = true;
       }
       return paramBoolean;
@@ -191,49 +191,49 @@ public final class j
   {
     if (paramBoolean)
     {
-      this.CW |= 0x20;
+      this.DU |= 0x20;
       return;
     }
-    this.CW &= 0xFFFFFFDF;
+    this.DU &= 0xFFFFFFDF;
   }
   
   public final void ag(boolean paramBoolean)
   {
-    this.adW = paramBoolean;
-    this.XT.r(false);
+    this.aeQ = paramBoolean;
+    this.YO.r(false);
   }
   
   public final void b(u paramu)
   {
-    this.adP = paramu;
+    this.aeJ = paramu;
     paramu.setHeaderTitle(getTitle());
   }
   
   public final boolean collapseActionView()
   {
-    if ((this.adS & 0x8) == 0) {}
+    if ((this.aeM & 0x8) == 0) {}
     do
     {
       return false;
-      if (this.adT == null) {
+      if (this.aeN == null) {
         return true;
       }
-    } while ((this.adV != null) && (!this.adV.onMenuItemActionCollapse(this)));
-    return this.XT.h(this);
+    } while ((this.aeP != null) && (!this.aeP.onMenuItemActionCollapse(this)));
+    return this.YO.h(this);
   }
   
-  public final android.support.v4.view.b eg()
+  public final android.support.v4.view.b eo()
   {
-    return this.adU;
+    return this.aeO;
   }
   
   public final boolean expandActionView()
   {
-    if (!hK()) {}
-    while ((this.adV != null) && (!this.adV.onMenuItemActionExpand(this))) {
+    if (!hS()) {}
+    while ((this.aeP != null) && (!this.aeP.onMenuItemActionExpand(this))) {
       return false;
     }
-    return this.XT.g(this);
+    return this.YO.g(this);
   }
   
   public final ActionProvider getActionProvider()
@@ -243,47 +243,47 @@ public final class j
   
   public final View getActionView()
   {
-    if (this.adT != null) {
-      return this.adT;
+    if (this.aeN != null) {
+      return this.aeN;
     }
-    if (this.adU != null)
+    if (this.aeO != null)
     {
-      this.adT = this.adU.onCreateActionView(this);
-      return this.adT;
+      this.aeN = this.aeO.onCreateActionView(this);
+      return this.aeN;
     }
     return null;
   }
   
   public final int getAlphabeticModifiers()
   {
-    return this.abN;
+    return this.acH;
   }
   
   public final char getAlphabeticShortcut()
   {
-    return this.abM;
+    return this.acG;
   }
   
   public final CharSequence getContentDescription()
   {
-    return this.abR;
+    return this.acL;
   }
   
   public final int getGroupId()
   {
-    return this.abG;
+    return this.acA;
   }
   
   public final Drawable getIcon()
   {
-    if (this.abO != null) {
-      return o(this.abO);
+    if (this.acI != null) {
+      return o(this.acI);
     }
-    if (this.abP != 0)
+    if (this.acJ != 0)
     {
-      Drawable localDrawable = android.support.v7.c.a.a.l(this.XT.mContext, this.abP);
-      this.abP = 0;
-      this.abO = localDrawable;
+      Drawable localDrawable = android.support.v7.c.a.a.l(this.YO.mContext, this.acJ);
+      this.acJ = 0;
+      this.acI = localDrawable;
       return o(localDrawable);
     }
     return null;
@@ -291,12 +291,12 @@ public final class j
   
   public final ColorStateList getIconTintList()
   {
-    return this.abT;
+    return this.acN;
   }
   
   public final PorterDuff.Mode getIconTintMode()
   {
-    return this.abU;
+    return this.acO;
   }
   
   public final Intent getIntent()
@@ -312,39 +312,39 @@ public final class j
   
   public final ContextMenu.ContextMenuInfo getMenuInfo()
   {
-    return this.adX;
+    return this.aeR;
   }
   
   public final int getNumericModifiers()
   {
-    return this.abL;
+    return this.acF;
   }
   
   public final char getNumericShortcut()
   {
-    return this.abK;
+    return this.acE;
   }
   
   public final int getOrder()
   {
-    return this.abH;
+    return this.acB;
   }
   
   public final SubMenu getSubMenu()
   {
-    return this.adP;
+    return this.aeJ;
   }
   
   @ViewDebug.CapturedViewProperty
   public final CharSequence getTitle()
   {
-    return this.Eo;
+    return this.Fm;
   }
   
   public final CharSequence getTitleCondensed()
   {
-    if (this.abJ != null) {}
-    for (CharSequence localCharSequence = this.abJ;; localCharSequence = this.Eo)
+    if (this.acD != null) {}
+    for (CharSequence localCharSequence = this.acD;; localCharSequence = this.Fm)
     {
       Object localObject = localCharSequence;
       if (Build.VERSION.SDK_INT < 18)
@@ -364,61 +364,61 @@ public final class j
   
   public final CharSequence getTooltipText()
   {
-    return this.abS;
+    return this.acM;
   }
   
-  public final boolean hB()
+  public final boolean hJ()
   {
-    if ((this.abQ != null) && (this.abQ.onMenuItemClick(this))) {
+    if ((this.acK != null) && (this.acK.onMenuItemClick(this))) {
       return true;
     }
-    if (this.XT.d(this.XT, this)) {
+    if (this.YO.d(this.YO, this)) {
       return true;
     }
-    if (this.adQ != null)
+    if (this.aeK != null)
     {
-      this.adQ.run();
+      this.aeK.run();
       return true;
     }
     if (this.mIntent != null) {
       try
       {
-        Context localContext = this.XT.mContext;
+        Context localContext = this.YO.mContext;
         Object localObject = this.mIntent;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "android/support/v7/view/menu/MenuItemImpl", "invoke", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "android/support/v7/view/menu/MenuItemImpl", "invoke", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(localContext, "android/support/v7/view/menu/MenuItemImpl", "invoke", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         return true;
       }
       catch (ActivityNotFoundException localActivityNotFoundException) {}
     }
-    return (this.adU != null) && (this.adU.onPerformDefaultAction());
+    return (this.aeO != null) && (this.aeO.onPerformDefaultAction());
   }
   
-  final char hC()
+  final char hK()
   {
-    if (this.XT.hr()) {
-      return this.abM;
+    if (this.YO.hz()) {
+      return this.acG;
     }
-    return this.abK;
+    return this.acE;
   }
   
-  final String hD()
+  final String hL()
   {
-    char c = hC();
+    char c = hK();
     if (c == 0) {
       return "";
     }
-    Resources localResources = this.XT.mContext.getResources();
+    Resources localResources = this.YO.mContext.getResources();
     StringBuilder localStringBuilder = new StringBuilder();
-    if (ViewConfiguration.get(this.XT.mContext).hasPermanentMenuKey()) {
+    if (ViewConfiguration.get(this.YO.mContext).hasPermanentMenuKey()) {
       localStringBuilder.append(localResources.getString(2131755102));
     }
     int i;
-    if (this.XT.hr())
+    if (this.YO.hz())
     {
-      i = this.abN;
+      i = this.acH;
       a(localStringBuilder, i, 65536, localResources.getString(2131755098));
       a(localStringBuilder, i, 4096, localResources.getString(2131755094));
       a(localStringBuilder, i, 2, localResources.getString(2131755093));
@@ -434,7 +434,7 @@ public final class j
     for (;;)
     {
       return localStringBuilder.toString();
-      i = this.abL;
+      i = this.acF;
       break;
       localStringBuilder.append(localResources.getString(2131755096));
       continue;
@@ -444,47 +444,47 @@ public final class j
     }
   }
   
-  final boolean hE()
+  final boolean hM()
   {
-    return (this.XT.hs()) && (hC() != 0);
+    return (this.YO.hA()) && (hK() != 0);
   }
   
-  public final boolean hF()
+  public final boolean hN()
   {
-    return (this.CW & 0x4) != 0;
+    return (this.DU & 0x4) != 0;
   }
   
-  public final boolean hG()
+  public final boolean hO()
   {
-    return (this.CW & 0x20) == 32;
+    return (this.DU & 0x20) == 32;
   }
   
-  public final boolean hH()
+  public final boolean hP()
   {
-    return (this.adS & 0x1) == 1;
+    return (this.aeM & 0x1) == 1;
   }
   
-  public final boolean hI()
+  public final boolean hQ()
   {
-    return (this.adS & 0x2) == 2;
+    return (this.aeM & 0x2) == 2;
   }
   
-  public final boolean hJ()
+  public final boolean hR()
   {
-    return (this.adS & 0x4) == 4;
+    return (this.aeM & 0x4) == 4;
   }
   
-  public final boolean hK()
+  public final boolean hS()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((this.adS & 0x8) != 0)
+    if ((this.aeM & 0x8) != 0)
     {
-      if ((this.adT == null) && (this.adU != null)) {
-        this.adT = this.adU.onCreateActionView(this);
+      if ((this.aeN == null) && (this.aeO != null)) {
+        this.aeN = this.aeO.onCreateActionView(this);
       }
       bool1 = bool2;
-      if (this.adT != null) {
+      if (this.aeN != null) {
         bool1 = true;
       }
     }
@@ -493,35 +493,35 @@ public final class j
   
   public final boolean hasSubMenu()
   {
-    return this.adP != null;
+    return this.aeJ != null;
   }
   
   public final boolean isActionViewExpanded()
   {
-    return this.adW;
+    return this.aeQ;
   }
   
   public final boolean isCheckable()
   {
-    return (this.CW & 0x1) == 1;
+    return (this.DU & 0x1) == 1;
   }
   
   public final boolean isChecked()
   {
-    return (this.CW & 0x2) == 2;
+    return (this.DU & 0x2) == 2;
   }
   
   public final boolean isEnabled()
   {
-    return (this.CW & 0x10) != 0;
+    return (this.DU & 0x10) != 0;
   }
   
   public final boolean isVisible()
   {
-    if ((this.adU != null) && (this.adU.overridesItemVisibility())) {
-      if (((this.CW & 0x8) != 0) || (!this.adU.isVisible())) {}
+    if ((this.aeO != null) && (this.aeO.overridesItemVisibility())) {
+      if (((this.DU & 0x8) != 0) || (!this.aeO.isVisible())) {}
     }
-    while ((this.CW & 0x8) == 0)
+    while ((this.DU & 0x8) == 0)
     {
       return true;
       return false;
@@ -531,15 +531,15 @@ public final class j
   
   public final android.support.v4.a.a.b k(CharSequence paramCharSequence)
   {
-    this.abR = paramCharSequence;
-    this.XT.r(false);
+    this.acL = paramCharSequence;
+    this.YO.r(false);
     return this;
   }
   
   public final android.support.v4.a.a.b l(CharSequence paramCharSequence)
   {
-    this.abS = paramCharSequence;
-    this.XT.r(false);
+    this.acM = paramCharSequence;
+    this.YO.r(false);
     return this;
   }
   
@@ -550,35 +550,35 @@ public final class j
   
   public final MenuItem setAlphabeticShortcut(char paramChar)
   {
-    if (this.abM == paramChar) {
+    if (this.acG == paramChar) {
       return this;
     }
-    this.abM = Character.toLowerCase(paramChar);
-    this.XT.r(false);
+    this.acG = Character.toLowerCase(paramChar);
+    this.YO.r(false);
     return this;
   }
   
   public final MenuItem setAlphabeticShortcut(char paramChar, int paramInt)
   {
-    if ((this.abM == paramChar) && (this.abN == paramInt)) {
+    if ((this.acG == paramChar) && (this.acH == paramInt)) {
       return this;
     }
-    this.abM = Character.toLowerCase(paramChar);
-    this.abN = KeyEvent.normalizeMetaState(paramInt);
-    this.XT.r(false);
+    this.acG = Character.toLowerCase(paramChar);
+    this.acH = KeyEvent.normalizeMetaState(paramInt);
+    this.YO.r(false);
     return this;
   }
   
   public final MenuItem setCheckable(boolean paramBoolean)
   {
-    int j = this.CW;
-    int k = this.CW;
+    int j = this.DU;
+    int k = this.DU;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      this.CW = (i | k & 0xFFFFFFFE);
-      if (j != this.CW) {
-        this.XT.r(false);
+      this.DU = (i | k & 0xFFFFFFFE);
+      if (j != this.DU) {
+        this.YO.r(false);
       }
       return this;
     }
@@ -586,17 +586,17 @@ public final class j
   
   public final MenuItem setChecked(boolean paramBoolean)
   {
-    if ((this.CW & 0x4) != 0)
+    if ((this.DU & 0x4) != 0)
     {
-      h localh = this.XT;
+      h localh = this.YO;
       int j = getGroupId();
       int k = localh.mItems.size();
-      localh.ht();
+      localh.hB();
       int i = 0;
       if (i < k)
       {
         j localj = (j)localh.mItems.get(i);
-        if ((localj.getGroupId() == j) && (localj.hF()) && (localj.isCheckable())) {
+        if ((localj.getGroupId() == j) && (localj.hN()) && (localj.isCheckable())) {
           if (localj != this) {
             break label105;
           }
@@ -609,7 +609,7 @@ public final class j
           break;
         }
       }
-      localh.hu();
+      localh.hC();
       return this;
     }
     ad(paramBoolean);
@@ -619,46 +619,46 @@ public final class j
   public final MenuItem setEnabled(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (this.CW |= 0x10;; this.CW &= 0xFFFFFFEF)
+    for (this.DU |= 0x10;; this.DU &= 0xFFFFFFEF)
     {
-      this.XT.r(false);
+      this.YO.r(false);
       return this;
     }
   }
   
   public final MenuItem setIcon(int paramInt)
   {
-    this.abO = null;
-    this.abP = paramInt;
-    this.adR = true;
-    this.XT.r(false);
+    this.acI = null;
+    this.acJ = paramInt;
+    this.aeL = true;
+    this.YO.r(false);
     return this;
   }
   
   public final MenuItem setIcon(Drawable paramDrawable)
   {
-    this.abP = 0;
-    this.abO = paramDrawable;
-    this.adR = true;
-    this.XT.r(false);
+    this.acJ = 0;
+    this.acI = paramDrawable;
+    this.aeL = true;
+    this.YO.r(false);
     return this;
   }
   
   public final MenuItem setIconTintList(ColorStateList paramColorStateList)
   {
-    this.abT = paramColorStateList;
-    this.abV = true;
-    this.adR = true;
-    this.XT.r(false);
+    this.acN = paramColorStateList;
+    this.acP = true;
+    this.aeL = true;
+    this.YO.r(false);
     return this;
   }
   
   public final MenuItem setIconTintMode(PorterDuff.Mode paramMode)
   {
-    this.abU = paramMode;
-    this.abW = true;
-    this.adR = true;
-    this.XT.r(false);
+    this.acO = paramMode;
+    this.acQ = true;
+    this.aeL = true;
+    this.YO.r(false);
     return this;
   }
   
@@ -670,52 +670,52 @@ public final class j
   
   public final MenuItem setNumericShortcut(char paramChar)
   {
-    if (this.abK == paramChar) {
+    if (this.acE == paramChar) {
       return this;
     }
-    this.abK = paramChar;
-    this.XT.r(false);
+    this.acE = paramChar;
+    this.YO.r(false);
     return this;
   }
   
   public final MenuItem setNumericShortcut(char paramChar, int paramInt)
   {
-    if ((this.abK == paramChar) && (this.abL == paramInt)) {
+    if ((this.acE == paramChar) && (this.acF == paramInt)) {
       return this;
     }
-    this.abK = paramChar;
-    this.abL = KeyEvent.normalizeMetaState(paramInt);
-    this.XT.r(false);
+    this.acE = paramChar;
+    this.acF = KeyEvent.normalizeMetaState(paramInt);
+    this.YO.r(false);
     return this;
   }
   
   public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
   {
-    this.adV = paramOnActionExpandListener;
+    this.aeP = paramOnActionExpandListener;
     return this;
   }
   
   public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.abQ = paramOnMenuItemClickListener;
+    this.acK = paramOnMenuItemClickListener;
     return this;
   }
   
   public final MenuItem setShortcut(char paramChar1, char paramChar2)
   {
-    this.abK = paramChar1;
-    this.abM = Character.toLowerCase(paramChar2);
-    this.XT.r(false);
+    this.acE = paramChar1;
+    this.acG = Character.toLowerCase(paramChar2);
+    this.YO.r(false);
     return this;
   }
   
   public final MenuItem setShortcut(char paramChar1, char paramChar2, int paramInt1, int paramInt2)
   {
-    this.abK = paramChar1;
-    this.abL = KeyEvent.normalizeMetaState(paramInt1);
-    this.abM = Character.toLowerCase(paramChar2);
-    this.abN = KeyEvent.normalizeMetaState(paramInt2);
-    this.XT.r(false);
+    this.acE = paramChar1;
+    this.acF = KeyEvent.normalizeMetaState(paramInt1);
+    this.acG = Character.toLowerCase(paramChar2);
+    this.acH = KeyEvent.normalizeMetaState(paramInt2);
+    this.YO.r(false);
     return this;
   }
   
@@ -726,44 +726,44 @@ public final class j
     default: 
       throw new IllegalArgumentException("SHOW_AS_ACTION_ALWAYS, SHOW_AS_ACTION_IF_ROOM, and SHOW_AS_ACTION_NEVER are mutually exclusive.");
     }
-    this.adS = paramInt;
-    this.XT.hw();
+    this.aeM = paramInt;
+    this.YO.hE();
   }
   
   public final MenuItem setTitle(int paramInt)
   {
-    return setTitle(this.XT.mContext.getString(paramInt));
+    return setTitle(this.YO.mContext.getString(paramInt));
   }
   
   public final MenuItem setTitle(CharSequence paramCharSequence)
   {
-    this.Eo = paramCharSequence;
-    this.XT.r(false);
-    if (this.adP != null) {
-      this.adP.setHeaderTitle(paramCharSequence);
+    this.Fm = paramCharSequence;
+    this.YO.r(false);
+    if (this.aeJ != null) {
+      this.aeJ.setHeaderTitle(paramCharSequence);
     }
     return this;
   }
   
   public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
   {
-    this.abJ = paramCharSequence;
-    this.XT.r(false);
+    this.acD = paramCharSequence;
+    this.YO.r(false);
     return this;
   }
   
   public final MenuItem setVisible(boolean paramBoolean)
   {
     if (ae(paramBoolean)) {
-      this.XT.hv();
+      this.YO.hD();
     }
     return this;
   }
   
   public final String toString()
   {
-    if (this.Eo != null) {
-      return this.Eo.toString();
+    if (this.Fm != null) {
+      return this.Fm.toString();
     }
     return null;
   }

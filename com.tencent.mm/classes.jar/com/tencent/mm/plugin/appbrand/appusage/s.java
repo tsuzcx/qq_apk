@@ -6,9 +6,9 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.al;
 import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.util.Locale;
 
 public final class s
@@ -19,11 +19,11 @@ public final class s
     return "MicroMsg.AppBrandPluginCodeTransfer";
   }
   
-  public final boolean nb(int paramInt)
+  public final boolean nP(int paramInt)
   {
     AppMethodBeat.i(44548);
-    boolean bool = g.afB().afk().getBoolean(ae.a.FlF, false);
-    ad.d("MicroMsg.AppBrandPluginCodeTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = g.agR().agA().getBoolean(ah.a.GJu, false);
+    ac.d("MicroMsg.AppBrandPluginCodeTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
       AppMethodBeat.o(44548);
@@ -40,21 +40,21 @@ public final class s
     {
       String str = String.format(Locale.US, "where %s like '%%$%s' or %s like '%%$%s'", new Object[] { "appId", "__WITHOUT_CODELIB__", "appId", "__CODELIB__" });
       str = String.format(Locale.US, "delete from %s %s", new Object[] { "AppBrandWxaPkgManifestRecord", str });
-      j.aOz().aOA().execSQL("AppBrandWxaPkgManifestRecord", str);
-      g.afB().afk().set(ae.a.FlF, Boolean.TRUE);
+      j.aVr().aVs().execSQL("AppBrandWxaPkgManifestRecord", str);
+      g.agR().agA().set(ah.a.GJu, Boolean.TRUE);
       AppMethodBeat.o(44547);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandPluginCodeTransfer", localException, "transfer failed", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AppBrandPluginCodeTransfer", localException, "transfer failed", new Object[0]);
       AppMethodBeat.o(44547);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.s
  * JD-Core Version:    0.7.0.1
  */

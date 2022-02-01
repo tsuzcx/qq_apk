@@ -14,35 +14,35 @@ public final class e
   extends b
   implements h.a
 {
-  private h XT;
-  private b.a XU;
-  private WeakReference<View> XV;
-  private ActionBarContextView Xx;
-  private boolean aaI;
+  private h YO;
+  private b.a YP;
+  private WeakReference<View> YQ;
+  private ActionBarContextView Ys;
+  private boolean abD;
   private Context mContext;
   private boolean mFinished;
   
   public e(Context paramContext, ActionBarContextView paramActionBarContextView, b.a parama, boolean paramBoolean)
   {
     this.mContext = paramContext;
-    this.Xx = paramActionBarContextView;
-    this.XU = parama;
+    this.Ys = paramActionBarContextView;
+    this.YP = parama;
     paramContext = new h(paramActionBarContextView.getContext());
-    paramContext.ady = 1;
-    this.XT = paramContext;
-    this.XT.a(this);
-    this.aaI = paramBoolean;
+    paramContext.aes = 1;
+    this.YO = paramContext;
+    this.YO.a(this);
+    this.abD = paramBoolean;
   }
   
   public final boolean a(h paramh, MenuItem paramMenuItem)
   {
-    return this.XU.a(this, paramMenuItem);
+    return this.YP.a(this, paramMenuItem);
   }
   
   public final void b(h paramh)
   {
     invalidate();
-    this.Xx.showOverflowMenu();
+    this.Ys.showOverflowMenu();
   }
   
   public final void finish()
@@ -51,55 +51,55 @@ public final class e
       return;
     }
     this.mFinished = true;
-    this.Xx.sendAccessibilityEvent(32);
-    this.XU.a(this);
+    this.Ys.sendAccessibilityEvent(32);
+    this.YP.a(this);
   }
   
   public final View getCustomView()
   {
-    if (this.XV != null) {
-      return (View)this.XV.get();
+    if (this.YQ != null) {
+      return (View)this.YQ.get();
     }
     return null;
   }
   
   public final Menu getMenu()
   {
-    return this.XT;
+    return this.YO;
   }
   
   public final MenuInflater getMenuInflater()
   {
-    return new g(this.Xx.getContext());
+    return new g(this.Ys.getContext());
   }
   
   public final CharSequence getSubtitle()
   {
-    return this.Xx.getSubtitle();
+    return this.Ys.getSubtitle();
   }
   
   public final CharSequence getTitle()
   {
-    return this.Xx.getTitle();
+    return this.Ys.getTitle();
   }
   
   public final void invalidate()
   {
-    this.XU.b(this, this.XT);
+    this.YP.b(this, this.YO);
   }
   
   public final boolean isTitleOptional()
   {
-    return this.Xx.aeQ;
+    return this.Ys.afK;
   }
   
   public final void setCustomView(View paramView)
   {
-    this.Xx.setCustomView(paramView);
+    this.Ys.setCustomView(paramView);
     if (paramView != null) {}
     for (paramView = new WeakReference(paramView);; paramView = null)
     {
-      this.XV = paramView;
+      this.YQ = paramView;
       return;
     }
   }
@@ -111,7 +111,7 @@ public final class e
   
   public final void setSubtitle(CharSequence paramCharSequence)
   {
-    this.Xx.setSubtitle(paramCharSequence);
+    this.Ys.setSubtitle(paramCharSequence);
   }
   
   public final void setTitle(int paramInt)
@@ -121,13 +121,13 @@ public final class e
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    this.Xx.setTitle(paramCharSequence);
+    this.Ys.setTitle(paramCharSequence);
   }
   
   public final void setTitleOptionalHint(boolean paramBoolean)
   {
     super.setTitleOptionalHint(paramBoolean);
-    this.Xx.setTitleOptional(paramBoolean);
+    this.Ys.setTitleOptional(paramBoolean);
   }
 }
 

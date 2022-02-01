@@ -1,11 +1,11 @@
 package com.tencent.mm.openim;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.iu;
-import com.tencent.mm.g.a.no;
-import com.tencent.mm.g.a.np;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.jb;
+import com.tencent.mm.g.a.nx;
+import com.tencent.mm.g.a.ny;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.model.ak;
@@ -14,7 +14,7 @@ import com.tencent.mm.openim.b.j;
 import com.tencent.mm.openim.b.t;
 import com.tencent.mm.openim.d.p;
 import com.tencent.mm.openim.e.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.h.b;
 import com.tencent.mm.vfs.o;
 import java.util.HashMap;
@@ -24,12 +24,12 @@ public class PluginOpenIM
   implements com.tencent.mm.kernel.api.a, com.tencent.mm.kernel.api.bucket.c
 {
   public static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.al.g gWw;
-  private com.tencent.mm.sdk.b.c hNu;
-  private com.tencent.mm.sdk.b.c hNv;
-  private d hNw;
-  private com.tencent.mm.openim.e.b hNx;
-  private com.tencent.mm.openim.e.f hNy;
+  private com.tencent.mm.ak.g hwV;
+  private com.tencent.mm.sdk.b.c inQ;
+  private com.tencent.mm.sdk.b.c inR;
+  private d inS;
+  private com.tencent.mm.openim.e.b inT;
+  private com.tencent.mm.openim.e.f inU;
   
   static
   {
@@ -63,9 +63,9 @@ public class PluginOpenIM
   public PluginOpenIM()
   {
     AppMethodBeat.i(151168);
-    this.hNu = new com.tencent.mm.sdk.b.c() {};
-    this.hNv = new com.tencent.mm.sdk.b.c() {};
-    this.gWw = new com.tencent.mm.al.g()
+    this.inQ = new com.tencent.mm.sdk.b.c() {};
+    this.inR = new com.tencent.mm.sdk.b.c() {};
+    this.hwV = new com.tencent.mm.ak.g()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
@@ -73,9 +73,9 @@ public class PluginOpenIM
         if ((paramAnonymousn instanceof j))
         {
           paramAnonymousString = (j)paramAnonymousn;
-          paramAnonymousn = new np();
-          paramAnonymousn.dsI.dsJ = paramAnonymousString.dsJ;
-          com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousn);
+          paramAnonymousn = new ny();
+          paramAnonymousn.dqs.dqt = paramAnonymousString.dqt;
+          com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousn);
         }
         AppMethodBeat.o(151167);
       }
@@ -91,8 +91,8 @@ public class PluginOpenIM
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(151174);
-    if (paramg.agu()) {
-      o.a("openim", "openim", 536870912L, 3, true);
+    if (paramg.ahL()) {
+      o.a("openim", "openim", 536870912L, 3);
     }
     AppMethodBeat.o(151174);
   }
@@ -102,13 +102,13 @@ public class PluginOpenIM
   public com.tencent.mm.openim.e.b getAccTypeInfoStg()
   {
     AppMethodBeat.i(151170);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (this.hNx == null)
+    com.tencent.mm.kernel.g.agP().afT();
+    if (this.inT == null)
     {
-      com.tencent.mm.kernel.g.afC();
-      this.hNx = new com.tencent.mm.openim.e.b(com.tencent.mm.kernel.g.afB().gda);
+      com.tencent.mm.kernel.g.agS();
+      this.inT = new com.tencent.mm.openim.e.b(com.tencent.mm.kernel.g.agR().ghG);
     }
-    com.tencent.mm.openim.e.b localb = this.hNx;
+    com.tencent.mm.openim.e.b localb = this.inT;
     AppMethodBeat.o(151170);
     return localb;
   }
@@ -116,13 +116,13 @@ public class PluginOpenIM
   public d getAppIdInfoStg()
   {
     AppMethodBeat.i(151169);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (this.hNx == null)
+    com.tencent.mm.kernel.g.agP().afT();
+    if (this.inT == null)
     {
-      com.tencent.mm.kernel.g.afC();
-      this.hNw = new d(com.tencent.mm.kernel.g.afB().gda);
+      com.tencent.mm.kernel.g.agS();
+      this.inS = new d(com.tencent.mm.kernel.g.agR().ghG);
     }
-    d locald = this.hNw;
+    d locald = this.inS;
     AppMethodBeat.o(151169);
     return locald;
   }
@@ -130,13 +130,13 @@ public class PluginOpenIM
   public com.tencent.mm.openim.e.f getWordingInfoStg()
   {
     AppMethodBeat.i(151171);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (this.hNy == null)
+    com.tencent.mm.kernel.g.agP().afT();
+    if (this.inU == null)
     {
-      com.tencent.mm.kernel.g.afC();
-      this.hNy = new com.tencent.mm.openim.e.f(com.tencent.mm.kernel.g.afB().gda);
+      com.tencent.mm.kernel.g.agS();
+      this.inU = new com.tencent.mm.openim.e.f(com.tencent.mm.kernel.g.agR().ghG);
     }
-    com.tencent.mm.openim.e.f localf = this.hNy;
+    com.tencent.mm.openim.e.f localf = this.inU;
     AppMethodBeat.o(151171);
     return localf;
   }
@@ -144,37 +144,37 @@ public class PluginOpenIM
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(151172);
-    ad.i("MicroMsg.PluginOpenIM", "onAccountInitialized");
-    com.tencent.mm.sdk.b.a.ESL.b(this.hNu);
-    this.hNv.alive();
-    com.tencent.mm.kernel.g.afC();
+    ac.i("MicroMsg.PluginOpenIM", "onAccountInitialized");
+    com.tencent.mm.sdk.b.a.GpY.b(this.inQ);
+    this.inR.alive();
+    com.tencent.mm.kernel.g.agS();
     com.tencent.mm.kernel.g.b(com.tencent.mm.openim.a.b.class, new t());
-    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.agS();
     com.tencent.mm.kernel.g.b(com.tencent.mm.openim.a.a.class, new p());
     w.a((ak)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.a.class));
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(453, (com.tencent.mm.al.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class));
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(913, this.gWw);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(453, (com.tencent.mm.ak.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class));
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(913, this.hwV);
     AppMethodBeat.o(151172);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(151173);
-    ad.i("MicroMsg.PluginOpenIM", "onAccountRelease");
-    com.tencent.mm.sdk.b.a.ESL.d(this.hNu);
-    this.hNv.dead();
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(453, (com.tencent.mm.al.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class));
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(913, this.gWw);
+    ac.i("MicroMsg.PluginOpenIM", "onAccountRelease");
+    com.tencent.mm.sdk.b.a.GpY.d(this.inQ);
+    this.inR.dead();
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(453, (com.tencent.mm.ak.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class));
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(913, this.hwV);
     AppMethodBeat.o(151173);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.openim.PluginOpenIM
  * JD-Core Version:    0.7.0.1
  */

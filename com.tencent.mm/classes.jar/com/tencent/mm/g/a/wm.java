@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class wm
   extends b
 {
-  public a dBX;
-  public b dBY;
+  public a dzo;
   
   public wm()
   {
@@ -16,29 +15,21 @@ public final class wm
   
   private wm(byte paramByte)
   {
-    AppMethodBeat.i(121052);
-    this.dBX = new a();
-    this.dBY = new b();
-    this.ESR = false;
+    AppMethodBeat.i(19843);
+    this.dzo = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(121052);
+    AppMethodBeat.o(19843);
   }
   
   public static final class a
   {
-    public int action;
-    public String dbj;
-    public int option;
-  }
-  
-  public static final class b
-  {
-    public boolean dBZ;
+    public String countryCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.wm
  * JD-Core Version:    0.7.0.1
  */

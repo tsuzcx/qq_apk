@@ -8,27 +8,28 @@ public abstract class w
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandWxaPkgManifestRecordPkgPathIndex ON AppBrandWxaPkgManifestRecord(pkgPath)" };
-  private static final int ekU;
-  private static final int ekd = "startTime".hashCode();
-  private static final int eke = "endTime".hashCode();
-  private static final int elJ = "appId".hashCode();
-  private static final int emP;
-  private static final int emV = "version".hashCode();
-  private static final int emW;
-  private static final int emX;
   private static final int emY;
-  private static final int emZ;
+  private static final int emh = "startTime".hashCode();
+  private static final int emi = "endTime".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int eoV;
+  private static final int epb = "version".hashCode();
+  private static final int epc;
+  private static final int epd;
+  private static final int epe;
+  private static final int epf;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ejW = true;
-  private boolean ejX = true;
-  private boolean ekx = true;
-  private boolean els = true;
-  private boolean emO = true;
-  private boolean emQ = true;
-  private boolean emR = true;
-  private boolean emS = true;
-  private boolean emT = true;
-  private boolean emU = true;
+  private boolean emB = true;
+  private boolean ema = true;
+  private boolean emb = true;
+  private boolean enx = true;
+  private boolean eoU = true;
+  private boolean eoW = true;
+  private boolean eoX = true;
+  private boolean eoY = true;
+  private boolean eoZ = true;
+  private boolean epa = true;
+  public String field_NewMd5;
   public String field_appId;
   public long field_createTime;
   public int field_debugType;
@@ -38,16 +39,15 @@ public abstract class w
   public long field_startTime;
   public int field_version;
   public String field_versionMd5;
-  public int field_versionState;
   
   static
   {
-    emP = "versionMd5".hashCode();
-    emW = "versionState".hashCode();
-    emX = "pkgPath".hashCode();
-    ekU = "createTime".hashCode();
-    emY = "debugType".hashCode();
-    emZ = "downloadURL".hashCode();
+    eoV = "versionMd5".hashCode();
+    epc = "NewMd5".hashCode();
+    epd = "pkgPath".hashCode();
+    emY = "createTime".hashCode();
+    epe = "debugType".hashCode();
+    epf = "downloadURL".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -63,7 +63,7 @@ public abstract class w
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
+      if (enO != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -74,23 +74,23 @@ public abstract class w
       break label20;
       break;
       label60:
-      if (emV == k) {
+      if (epb == k) {
         this.field_version = paramCursor.getInt(i);
-      } else if (emP == k) {
+      } else if (eoV == k) {
         this.field_versionMd5 = paramCursor.getString(i);
-      } else if (emW == k) {
-        this.field_versionState = paramCursor.getInt(i);
-      } else if (emX == k) {
+      } else if (epc == k) {
+        this.field_NewMd5 = paramCursor.getString(i);
+      } else if (epd == k) {
         this.field_pkgPath = paramCursor.getString(i);
-      } else if (ekU == k) {
-        this.field_createTime = paramCursor.getLong(i);
       } else if (emY == k) {
+        this.field_createTime = paramCursor.getLong(i);
+      } else if (epe == k) {
         this.field_debugType = paramCursor.getInt(i);
-      } else if (emZ == k) {
+      } else if (epf == k) {
         this.field_downloadURL = paramCursor.getString(i);
-      } else if (ekd == k) {
+      } else if (emh == k) {
         this.field_startTime = paramCursor.getLong(i);
-      } else if (eke == k) {
+      } else if (emi == k) {
         this.field_endTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -101,34 +101,34 @@ public abstract class w
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.emQ) {
+    if (this.eoW) {
       localContentValues.put("version", Integer.valueOf(this.field_version));
     }
-    if (this.emO) {
+    if (this.eoU) {
       localContentValues.put("versionMd5", this.field_versionMd5);
     }
-    if (this.emR) {
-      localContentValues.put("versionState", Integer.valueOf(this.field_versionState));
+    if (this.eoX) {
+      localContentValues.put("NewMd5", this.field_NewMd5);
     }
-    if (this.emS) {
+    if (this.eoY) {
       localContentValues.put("pkgPath", this.field_pkgPath);
     }
-    if (this.ekx) {
+    if (this.emB) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.emT) {
+    if (this.eoZ) {
       localContentValues.put("debugType", Integer.valueOf(this.field_debugType));
     }
-    if (this.emU) {
+    if (this.epa) {
       localContentValues.put("downloadURL", this.field_downloadURL);
     }
-    if (this.ejW) {
+    if (this.ema) {
       localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.ejX) {
+    if (this.emb) {
       localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
     if (this.systemRowid > 0L) {

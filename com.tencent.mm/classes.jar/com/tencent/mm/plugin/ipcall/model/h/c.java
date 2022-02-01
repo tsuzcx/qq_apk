@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.ipcall.model.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dc;
+import com.tencent.mm.g.c.de;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Map;
 
 public final class c
-  extends dc
+  extends de
 {
   public static c.a info;
-  public ArrayList<String> sDX;
+  public ArrayList<String> tLE;
   
   static
   {
     AppMethodBeat.i(25537);
     c.a locala = new c.a();
-    locala.EYt = new Field[4];
+    locala.GvF = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "wechatUsername";
-    locala.EYv.put("wechatUsername", "TEXT");
+    locala.GvH.put("wechatUsername", "TEXT");
     localStringBuilder.append(" wechatUsername TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "systemAddressBookUsername";
-    locala.EYv.put("systemAddressBookUsername", "TEXT");
+    locala.GvH.put("systemAddressBookUsername", "TEXT");
     localStringBuilder.append(" systemAddressBookUsername TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "contactId";
-    locala.EYv.put("contactId", "TEXT");
+    locala.GvH.put("contactId", "TEXT");
     localStringBuilder.append(" contactId TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "sortKey";
-    locala.EYv.put("sortKey", "TEXT");
+    locala.GvH.put("sortKey", "TEXT");
     localStringBuilder.append(" sortKey TEXT");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -41,7 +41,7 @@ public final class c
     AppMethodBeat.o(25537);
   }
   
-  public static boolean gS(String paramString1, String paramString2)
+  public static boolean hj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(25536);
     if ((paramString1 == null) && (paramString2 != null))
@@ -65,7 +65,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.c
  * JD-Core Version:    0.7.0.1
  */

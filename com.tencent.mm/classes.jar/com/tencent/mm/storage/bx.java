@@ -1,94 +1,83 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.c.fh;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-public final class bx
-  extends j<bw>
-  implements m
+public class bx
+  extends fh
 {
-  public static final String[] SQL_CREATE;
-  private final l<m.a, bw> Feu;
-  private e db;
+  protected static Field[] GvF;
+  public static c.a info;
   
   static
   {
-    AppMethodBeat.i(117352);
-    SQL_CREATE = new String[] { j.getCreateSQLs(bw.info, "Stranger") };
-    AppMethodBeat.o(117352);
+    AppMethodBeat.i(43301);
+    GvF = fh.getValidFields(bx.class);
+    c.a locala = new c.a();
+    locala.GvF = new Field[11];
+    locala.columns = new String[12];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "svrid";
+    locala.GvH.put("svrid", "LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.GvG = "svrid";
+    locala.columns[1] = "status";
+    locala.GvH.put("status", "INTEGER");
+    localStringBuilder.append(" status INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "type";
+    locala.GvH.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "scene";
+    locala.GvH.put("scene", "INTEGER");
+    localStringBuilder.append(" scene INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "createtime";
+    locala.GvH.put("createtime", "LONG");
+    localStringBuilder.append(" createtime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "talker";
+    locala.GvH.put("talker", "TEXT");
+    localStringBuilder.append(" talker TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "content";
+    locala.GvH.put("content", "TEXT");
+    localStringBuilder.append(" content TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "sayhiuser";
+    locala.GvH.put("sayhiuser", "TEXT");
+    localStringBuilder.append(" sayhiuser TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "sayhicontent";
+    locala.GvH.put("sayhicontent", "TEXT");
+    localStringBuilder.append(" sayhicontent TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "imgpath";
+    locala.GvH.put("imgpath", "TEXT");
+    localStringBuilder.append(" imgpath TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "isSend";
+    locala.GvH.put("isSend", "INTEGER");
+    localStringBuilder.append(" isSend INTEGER");
+    locala.columns[11] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(43301);
   }
   
-  public bx(e parame)
+  public c.a getDBInfo()
   {
-    super(parame, bw.info, "Stranger", null);
-    AppMethodBeat.i(117347);
-    this.Feu = new l() {};
-    this.db = parame;
-    AppMethodBeat.o(117347);
-  }
-  
-  private void b(bw parambw)
-  {
-    AppMethodBeat.i(117344);
-    if (this.Feu.dR(parambw)) {
-      this.Feu.doNotify();
-    }
-    AppMethodBeat.o(117344);
-  }
-  
-  public final void a(m.a parama)
-  {
-    AppMethodBeat.i(117345);
-    this.Feu.a(parama, null);
-    AppMethodBeat.o(117345);
-  }
-  
-  public final bw agQ(String paramString)
-  {
-    AppMethodBeat.i(117348);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(117348);
-      return null;
-    }
-    bw localbw = new bw();
-    paramString = this.db.a("Stranger", null, "encryptUsername = ?", new String[] { paramString }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localbw.convertFrom(paramString);
-    }
-    paramString.close();
-    AppMethodBeat.o(117348);
-    return localbw;
-  }
-  
-  public final int agR(String paramString)
-  {
-    AppMethodBeat.i(117349);
-    int i = this.db.delete("Stranger", "(encryptUsername=?)", new String[] { String.valueOf(paramString) });
-    if (i > 0) {
-      doNotify();
-    }
-    ad.i("MicroMsg.StrangerStorage", "delByEncryptUsername:" + paramString + " result:" + i);
-    AppMethodBeat.o(117349);
-    return i;
-  }
-  
-  public final void b(m.a parama)
-  {
-    AppMethodBeat.i(117346);
-    this.Feu.remove(parama);
-    AppMethodBeat.o(117346);
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.bx
  * JD-Core Version:    0.7.0.1
  */

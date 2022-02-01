@@ -9,13 +9,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
+import android.support.v7.widget.RecyclerView.l;
 import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.text.TextPaint;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
@@ -26,16 +29,16 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.remittance.mobile.cgi.NetSceneMobileRemitGetRecord;
 import com.tencent.mm.plugin.remittance.mobile.cgi.NetSceneMobileRemitGetRecvInfo;
 import com.tencent.mm.plugin.remittance.mobile.cgi.c;
-import com.tencent.mm.protocal.protobuf.bgf;
-import com.tencent.mm.protocal.protobuf.ddz;
-import com.tencent.mm.protocal.protobuf.deb;
-import com.tencent.mm.protocal.protobuf.ded;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bjx;
+import com.tencent.mm.protocal.protobuf.djo;
+import com.tencent.mm.protocal.protobuf.djq;
+import com.tencent.mm.protocal.protobuf.djs;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.t;
@@ -49,36 +52,36 @@ import java.util.List;
 public class MobileRemitHistoryRecodUI
   extends MobileRemitBaseUI
 {
-  private LinearLayoutManager fsR;
-  private int[] qdJ;
-  private RecyclerView vxP;
-  private TextView vxQ;
-  private String vxR;
-  private String vxS;
-  private boolean vxT;
-  private List<bgf> vxU;
-  private b vxV;
-  private MobileRemitHistoryRecodUI.c vxW;
-  private int vxX;
-  private Runnable vxY;
+  private LinearLayoutManager fwy;
+  private int[] qMm;
+  private RecyclerView wHU;
+  private TextView wHV;
+  private String wHW;
+  private String wHX;
+  private boolean wHY;
+  private List<bjx> wHZ;
+  private b wIa;
+  private MobileRemitHistoryRecodUI.c wIb;
+  private int wIc;
+  private Runnable wId;
   
   public MobileRemitHistoryRecodUI()
   {
     AppMethodBeat.i(67706);
-    this.vxR = null;
-    this.vxS = null;
-    this.vxT = false;
-    this.vxU = new ArrayList();
-    this.vxX = 0;
-    this.qdJ = new int[2];
-    this.vxY = new Runnable()
+    this.wHW = null;
+    this.wHX = null;
+    this.wHY = false;
+    this.wHZ = new ArrayList();
+    this.wIc = 0;
+    this.qMm = new int[2];
+    this.wId = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(67689);
-        if ((MobileRemitHistoryRecodUI.h(MobileRemitHistoryRecodUI.this).getScrollState() == 0) && (!MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).cHI) && (MobileRemitHistoryRecodUI.g(MobileRemitHistoryRecodUI.this).jQ() + 1 == MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).getItemCount()))
+        if ((MobileRemitHistoryRecodUI.h(MobileRemitHistoryRecodUI.this).getScrollState() == 0) && (!MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).cEQ) && (MobileRemitHistoryRecodUI.g(MobileRemitHistoryRecodUI.this).jY() + 1 == MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).getItemCount()))
         {
-          ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "first screen refresh data!");
+          ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "first screen refresh data!");
           MobileRemitHistoryRecodUI.f(MobileRemitHistoryRecodUI.this);
         }
         AppMethodBeat.o(67689);
@@ -97,34 +100,43 @@ public class MobileRemitHistoryRecodUI
     AppMethodBeat.i(67708);
     super.initView();
     setMMTitle(getString(2131761276));
-    setBackBtn(new MobileRemitHistoryRecodUI.1(this));
-    this.vxP = ((RecyclerView)findViewById(2131302379));
-    this.vxQ = ((TextView)findViewById(2131302378));
-    if (this.vxU.isEmpty())
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      this.vxP.setVisibility(8);
-      this.vxQ.setVisibility(0);
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(67681);
+        MobileRemitHistoryRecodUI.this.finish();
+        AppMethodBeat.o(67681);
+        return true;
+      }
+    });
+    this.wHU = ((RecyclerView)findViewById(2131302379));
+    this.wHV = ((TextView)findViewById(2131302378));
+    if (this.wHZ.isEmpty())
+    {
+      this.wHU.setVisibility(8);
+      this.wHV.setVisibility(0);
       AppMethodBeat.o(67708);
       return;
     }
-    this.fsR = new LinearLayoutManager();
-    this.fsR.setOrientation(1);
-    this.vxP.setLayoutManager(this.fsR);
-    this.vxW = new MobileRemitHistoryRecodUI.c(getContext());
-    this.vxP.a(this.vxW);
-    this.vxV = new b(getContext(), this.vxT, this.vxU, new d()
+    this.fwy = new LinearLayoutManager();
+    this.fwy.setOrientation(1);
+    this.wHU.setLayoutManager(this.fwy);
+    this.wIb = new MobileRemitHistoryRecodUI.c(getContext());
+    this.wHU.a(this.wIb);
+    this.wIa = new b(getContext(), this.wHY, this.wHZ, new d()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67684);
-        ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "mHistroyRecordRv click!");
-        paramAnonymousView = (bgf)paramAnonymousView.getTag();
-        if (paramAnonymousView.vxr != 0) {
+        ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "mHistroyRecordRv click!");
+        paramAnonymousView = (bjx)paramAnonymousView.getTag();
+        if (paramAnonymousView.wHw != 0) {
           h.a(MobileRemitHistoryRecodUI.this.getContext(), MobileRemitHistoryRecodUI.this.getResources().getString(2131761274), "", MobileRemitHistoryRecodUI.this.getResources().getString(2131761269), false, null).show();
         }
         for (;;)
         {
-          MobileRemitHistoryRecodUI.Kz(13);
+          MobileRemitHistoryRecodUI.My(13);
           AppMethodBeat.o(67684);
           return;
           paramAnonymousView = new NetSceneMobileRemitGetRecvInfo("", paramAnonymousView.id, MobileRemitHistoryRecodUI.a(MobileRemitHistoryRecodUI.this), 2);
@@ -135,8 +147,8 @@ public class MobileRemitHistoryRecodUI
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67685);
-        ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "mHistroyRecordRv longclick!");
-        final bgf localbgf = (bgf)paramAnonymousView.getTag();
+        ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "mHistroyRecordRv longclick!");
+        final bjx localbjx = (bjx)paramAnonymousView.getTag();
         new com.tencent.mm.ui.widget.b.a(MobileRemitHistoryRecodUI.this, paramAnonymousView).a(paramAnonymousView, new View.OnCreateContextMenuListener()new n.d
         {
           public final void onCreateContextMenu(ContextMenu paramAnonymous2ContextMenu, View paramAnonymous2View, ContextMenu.ContextMenuInfo paramAnonymous2ContextMenuInfo)
@@ -157,12 +169,12 @@ public class MobileRemitHistoryRecodUI
             }
             if (paramAnonymous2MenuItem.getItemId() == 0)
             {
-              ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "delete HisRcvr id:%s", new Object[] { localbgf.id });
-              paramAnonymous2MenuItem = new c(localbgf.id);
+              ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "delete HisRcvr id:%s", new Object[] { localbjx.id });
+              paramAnonymous2MenuItem = new c(localbjx.id);
               MobileRemitHistoryRecodUI.this.doSceneProgress(paramAnonymous2MenuItem, false);
-              MobileRemitHistoryRecodUI.b(MobileRemitHistoryRecodUI.this).remove(localbgf);
-              MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).aql.notifyChanged();
-              MobileRemitHistoryRecodUI.Kz(14);
+              MobileRemitHistoryRecodUI.b(MobileRemitHistoryRecodUI.this).remove(localbjx);
+              MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).arg.notifyChanged();
+              MobileRemitHistoryRecodUI.My(14);
             }
             AppMethodBeat.o(67683);
           }
@@ -171,19 +183,19 @@ public class MobileRemitHistoryRecodUI
         return true;
       }
     });
-    this.vxP.setAdapter(this.vxV);
-    this.vxP.a(new RecyclerView.m()
+    this.wHU.setAdapter(this.wIa);
+    this.wHU.a(new RecyclerView.m()
     {
       public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(67687);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.be(paramAnonymousRecyclerView);
-        localb.lT(paramAnonymousInt1);
-        localb.lT(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$3", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ado());
+        localb.bb(paramAnonymousRecyclerView);
+        localb.lS(paramAnonymousInt1);
+        localb.lS(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$3", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
         super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-        MobileRemitHistoryRecodUI.a(MobileRemitHistoryRecodUI.this, MobileRemitHistoryRecodUI.g(MobileRemitHistoryRecodUI.this).jQ());
+        MobileRemitHistoryRecodUI.a(MobileRemitHistoryRecodUI.this, MobileRemitHistoryRecodUI.g(MobileRemitHistoryRecodUI.this).jY());
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$3", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
         AppMethodBeat.o(67687);
       }
@@ -192,23 +204,38 @@ public class MobileRemitHistoryRecodUI
       {
         AppMethodBeat.i(67686);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.be(paramAnonymousRecyclerView);
-        localb.lT(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$3", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ado());
+        localb.bb(paramAnonymousRecyclerView);
+        localb.lS(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$3", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
         super.b(paramAnonymousRecyclerView, paramAnonymousInt);
-        ad.d("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "mHistroyRecordRv onScrollStateChanged() newState:%s mLastVisibleItem:%s isFinish:%s itemCount:%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(MobileRemitHistoryRecodUI.e(MobileRemitHistoryRecodUI.this)), Boolean.valueOf(MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).cHI), Integer.valueOf(MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).getItemCount()) });
-        if ((paramAnonymousInt == 0) && (!MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).cHI) && (MobileRemitHistoryRecodUI.e(MobileRemitHistoryRecodUI.this) + 1 == MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).getItemCount())) {
+        ac.d("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "mHistroyRecordRv onScrollStateChanged() newState:%s mLastVisibleItem:%s isFinish:%s itemCount:%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(MobileRemitHistoryRecodUI.e(MobileRemitHistoryRecodUI.this)), Boolean.valueOf(MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).cEQ), Integer.valueOf(MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).getItemCount()) });
+        if ((paramAnonymousInt == 0) && (!MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).cEQ) && (MobileRemitHistoryRecodUI.e(MobileRemitHistoryRecodUI.this) + 1 == MobileRemitHistoryRecodUI.c(MobileRemitHistoryRecodUI.this).getItemCount())) {
           MobileRemitHistoryRecodUI.f(MobileRemitHistoryRecodUI.this);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$3", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
         AppMethodBeat.o(67686);
       }
     });
-    this.vxV.aql.notifyChanged();
-    this.vxP.post(this.vxY);
-    this.vxP.a(new MobileRemitHistoryRecodUI.4(this));
-    this.vxP.setVisibility(0);
-    this.vxQ.setVisibility(8);
+    this.wIa.arg.notifyChanged();
+    this.wHU.post(this.wId);
+    this.wHU.a(new RecyclerView.l()
+    {
+      public final boolean a(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(207133);
+        MobileRemitHistoryRecodUI.d(MobileRemitHistoryRecodUI.this)[0] = ((int)paramAnonymousMotionEvent.getRawX());
+        MobileRemitHistoryRecodUI.d(MobileRemitHistoryRecodUI.this)[1] = ((int)paramAnonymousMotionEvent.getRawY());
+        ac.d("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "onTouchEvent() (%s, %s)", new Object[] { Integer.valueOf(MobileRemitHistoryRecodUI.d(MobileRemitHistoryRecodUI.this)[0]), Integer.valueOf(MobileRemitHistoryRecodUI.d(MobileRemitHistoryRecodUI.this)[1]) });
+        AppMethodBeat.o(207133);
+        return false;
+      }
+      
+      public final void ai(boolean paramAnonymousBoolean) {}
+      
+      public final void b(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent) {}
+    });
+    this.wHU.setVisibility(0);
+    this.wHV.setVisibility(8);
     AppMethodBeat.o(67708);
   }
   
@@ -216,14 +243,14 @@ public class MobileRemitHistoryRecodUI
   {
     AppMethodBeat.i(67707);
     super.onCreate(paramBundle);
-    this.vxR = getIntent().getStringExtra("key_homepage_ext");
-    this.vxT = getIntent().getBooleanExtra("key_finish", true);
-    this.vxS = getIntent().getStringExtra("key_last_id");
+    this.wHW = getIntent().getStringExtra("key_homepage_ext");
+    this.wHY = getIntent().getBooleanExtra("key_finish", true);
+    this.wHX = getIntent().getStringExtra("key_last_id");
     paramBundle = getIntent().getParcelableArrayListExtra("key_history_record");
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
-      this.vxU.addAll(NetSceneMobileRemitGetRecord.eT(paramBundle));
+      this.wHZ.addAll(NetSceneMobileRemitGetRecord.eZ(paramBundle));
     }
-    ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "initData() mFinish:%s mLastId:%s mHisRecord.size:%s", new Object[] { Boolean.valueOf(this.vxT), this.vxS, Integer.valueOf(this.vxU.size()) });
+    ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "initData() mFinish:%s mLastId:%s mHisRecord.size:%s", new Object[] { Boolean.valueOf(this.wHY), this.wHX, Integer.valueOf(this.wHZ.size()) });
     initView();
     addSceneEndListener(2993);
     addSceneEndListener(1495);
@@ -244,28 +271,28 @@ public class MobileRemitHistoryRecodUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
   {
     AppMethodBeat.i(67710);
-    ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scenetype:" + paramn.getType());
+    ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scenetype:" + paramn.getType());
     Object localObject;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if ((paramn instanceof NetSceneMobileRemitGetRecord))
       {
-        paramString = ((NetSceneMobileRemitGetRecord)paramn).djB();
-        if ((paramString != null) && (paramString.ntx == 0))
+        paramString = ((NetSceneMobileRemitGetRecord)paramn).dxD();
+        if ((paramString != null) && (paramString.nWx == 0))
         {
-          this.vxS = paramString.EvD;
-          this.vxT = paramString.bOX;
-          this.vxV.cHI = this.vxT;
-          if (!paramString.EvF.isEmpty()) {
-            this.vxU.addAll(paramString.EvF);
+          this.wHX = paramString.FSG;
+          this.wHY = paramString.bMF;
+          this.wIa.cEQ = this.wHY;
+          if (!paramString.FSI.isEmpty()) {
+            this.wHZ.addAll(paramString.FSI);
           }
-          this.vxV.aql.notifyChanged();
+          this.wIa.arg.notifyChanged();
           AppMethodBeat.o(67710);
           return true;
         }
         paramn = getContext();
-        if ((paramString == null) || (bt.isNullOrNil(paramString.nty))) {}
-        for (paramString = getString(2131765224);; paramString = paramString.nty)
+        if ((paramString == null) || (bs.isNullOrNil(paramString.nWy))) {}
+        for (paramString = getString(2131765224);; paramString = paramString.nWy)
         {
           t.makeText(paramn, paramString, 0).show();
           break;
@@ -273,56 +300,56 @@ public class MobileRemitHistoryRecodUI
       }
       if ((paramn instanceof NetSceneMobileRemitGetRecvInfo))
       {
-        paramString = ((NetSceneMobileRemitGetRecvInfo)paramn).djC();
+        paramString = ((NetSceneMobileRemitGetRecvInfo)paramn).dxE();
         if (paramString == null)
         {
-          ad.e("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "NetSceneMobileRemitGetRecvInfo rcvrResp is null");
+          ac.e("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "NetSceneMobileRemitGetRecvInfo rcvrResp is null");
           AppMethodBeat.o(67710);
           return true;
         }
-        paramn = ((NetSceneMobileRemitGetRecvInfo)paramn).vxs;
-        ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "NetSceneMobileRemitGetRecvInfo rcvrId:%s ret_code:%s ret_msg:%s", new Object[] { paramn, Integer.valueOf(paramString.ntx), paramString.nty });
-        if (paramString.ntx != 0)
+        paramn = ((NetSceneMobileRemitGetRecvInfo)paramn).wHx;
+        ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "NetSceneMobileRemitGetRecvInfo rcvrId:%s ret_code:%s ret_msg:%s", new Object[] { paramn, Integer.valueOf(paramString.nWx), paramString.nWy });
+        if (paramString.nWx != 0)
         {
-          if (paramString.vxr == 1)
+          if (paramString.wHw == 1)
           {
-            localObject = this.vxU.iterator();
+            localObject = this.wHZ.iterator();
             while (((Iterator)localObject).hasNext())
             {
-              bgf localbgf = (bgf)((Iterator)localObject).next();
-              if (bt.kU(localbgf.id, paramn)) {
-                localbgf.vxr = 1;
+              bjx localbjx = (bjx)((Iterator)localObject).next();
+              if (bs.lr(localbjx.id, paramn)) {
+                localbjx.wHw = 1;
               }
             }
-            this.vxV.aql.notifyChanged();
+            this.wIa.arg.notifyChanged();
           }
           paramn = getContext();
-          if (bt.isNullOrNil(paramString.nty)) {}
-          for (paramString = getString(2131765224);; paramString = paramString.nty)
+          if (bs.isNullOrNil(paramString.nWy)) {}
+          for (paramString = getString(2131765224);; paramString = paramString.nWy)
           {
             h.a(paramn, paramString, "", getResources().getString(2131761269), false, null).show();
             AppMethodBeat.o(67710);
             return true;
           }
         }
-        if (paramString.EvG != null)
+        if (paramString.FSJ != null)
         {
-          ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "show remark or nickname change dialog!");
-          l.a(this, paramString.EvG, null, new com.tencent.mm.plugin.remittance.mobile.a.a()
+          ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "show remark or nickname change dialog!");
+          l.a(this, paramString.FSJ, null, new com.tencent.mm.plugin.remittance.mobile.a.a()
           {
-            public final void dB(Object paramAnonymousObject)
+            public final void dC(Object paramAnonymousObject)
             {
               AppMethodBeat.i(67691);
-              ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "wxname_chg_win dialog click jumpItem.action:continue");
+              ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "wxname_chg_win dialog click jumpItem.action:continue");
               com.tencent.mm.plugin.remittance.mobile.a.b.a(MobileRemitHistoryRecodUI.this.getContext(), paramString);
               AppMethodBeat.o(67691);
             }
             
-            public final void djL()
+            public final void dxN()
             {
               AppMethodBeat.i(67690);
-              ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "wxname_chg_win dialog click jumpItem.action:exit");
-              MobileRemitHistoryRecodUI.this.djK();
+              ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "wxname_chg_win dialog click jumpItem.action:exit");
+              MobileRemitHistoryRecodUI.this.dxM();
               AppMethodBeat.o(67690);
             }
           });
@@ -331,24 +358,24 @@ public class MobileRemitHistoryRecodUI
         {
           AppMethodBeat.o(67710);
           return true;
-          if (paramString.Evv != null)
+          if (paramString.FSy != null)
           {
-            ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "show free oneself from dialog!");
-            l.a(this, paramString.Evv, null, new com.tencent.mm.plugin.remittance.mobile.a.a()
+            ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "show free oneself from dialog!");
+            l.a(this, paramString.FSy, null, new com.tencent.mm.plugin.remittance.mobile.a.a()
             {
-              public final void dB(Object paramAnonymousObject)
+              public final void dC(Object paramAnonymousObject)
               {
                 AppMethodBeat.i(67693);
-                ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "jump_win dialog click jumpItem.action:continue");
+                ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "jump_win dialog click jumpItem.action:continue");
                 com.tencent.mm.plugin.remittance.mobile.a.b.a(MobileRemitHistoryRecodUI.this.getContext(), paramString);
                 AppMethodBeat.o(67693);
               }
               
-              public final void djL()
+              public final void dxN()
               {
                 AppMethodBeat.i(67692);
-                ad.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "jump_win dialog click jumpItem.action:exit");
-                MobileRemitHistoryRecodUI.this.djK();
+                ac.i("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "jump_win dialog click jumpItem.action:exit");
+                MobileRemitHistoryRecodUI.this.dxM();
                 AppMethodBeat.o(67692);
               }
             });
@@ -362,24 +389,24 @@ public class MobileRemitHistoryRecodUI
       if ((paramn instanceof c))
       {
         paramString = (c)paramn;
-        if (paramString.vxm == null)
+        if (paramString.wHr == null)
         {
           paramString = null;
-          if ((paramString == null) || (paramString.ntx != 0))
+          if ((paramString == null) || (paramString.nWx != 0))
           {
             paramn = getContext();
-            if ((paramString != null) && (!bt.isNullOrNil(paramString.nty))) {
+            if ((paramString != null) && (!bs.isNullOrNil(paramString.nWy))) {
               break label614;
             }
           }
         }
         label614:
-        for (paramString = getString(2131765224);; paramString = paramString.nty)
+        for (paramString = getString(2131765224);; paramString = paramString.nWy)
         {
           t.makeText(paramn, paramString, 0).show();
           AppMethodBeat.o(67710);
           return true;
-          paramString = paramString.vxm;
+          paramString = paramString.wHr;
           break;
         }
       }
@@ -388,7 +415,7 @@ public class MobileRemitHistoryRecodUI
     {
       localObject = getContext();
       paramn = paramString;
-      if (bt.isNullOrNil(paramString)) {
+      if (bs.isNullOrNil(paramString)) {
         paramn = getString(2131761270);
       }
       t.makeText((Context)localObject, paramn, 0).show();
@@ -404,42 +431,42 @@ public class MobileRemitHistoryRecodUI
   }
   
   public static final class a
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
-    View frN;
+    View fvu;
     
     public a(View paramView)
     {
       super();
-      this.frN = paramView;
+      this.fvu = paramView;
     }
   }
   
   public static final class b
     extends RecyclerView.a
   {
-    boolean cHI;
+    boolean cEQ;
     private Context context;
-    private List<bgf> vyd;
-    private int vye;
-    private int vyf;
-    private int vyg;
-    private MobileRemitHistoryRecodUI.d vyh;
+    private List<bjx> wIi;
+    private int wIj;
+    private int wIk;
+    private int wIl;
+    private MobileRemitHistoryRecodUI.d wIm;
     
-    public b(Context paramContext, boolean paramBoolean, List<bgf> paramList, MobileRemitHistoryRecodUI.d paramd)
+    public b(Context paramContext, boolean paramBoolean, List<bjx> paramList, MobileRemitHistoryRecodUI.d paramd)
     {
       AppMethodBeat.i(67697);
       this.context = paramContext;
-      this.cHI = paramBoolean;
-      this.vyd = paramList;
-      this.vyh = paramd;
-      this.vye = paramContext.getResources().getColor(2131100021);
-      this.vyf = paramContext.getResources().getColor(2131099662);
-      this.vyg = paramContext.getResources().getColor(2131099660);
+      this.cEQ = paramBoolean;
+      this.wIi = paramList;
+      this.wIm = paramd;
+      this.wIj = paramContext.getResources().getColor(2131100021);
+      this.wIk = paramContext.getResources().getColor(2131099662);
+      this.wIl = paramContext.getResources().getColor(2131099660);
       AppMethodBeat.o(67697);
     }
     
-    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
     {
       AppMethodBeat.i(67698);
       if (paramInt == 0)
@@ -453,52 +480,52 @@ public class MobileRemitHistoryRecodUI
       return paramViewGroup;
     }
     
-    public final void a(final RecyclerView.v paramv, int paramInt)
+    public final void a(final RecyclerView.w paramw, int paramInt)
     {
       AppMethodBeat.i(67699);
-      if ((paramv instanceof MobileRemitHistoryRecodUI.e))
+      if ((paramw instanceof MobileRemitHistoryRecodUI.e))
       {
-        if ((this.vyd != null) && (paramInt >= 0) && (paramInt < this.vyd.size()))
+        if ((this.wIi != null) && (paramInt >= 0) && (paramInt < this.wIi.size()))
         {
-          paramv = (MobileRemitHistoryRecodUI.e)paramv;
-          final bgf localbgf = (bgf)this.vyd.get(paramInt);
-          ad.d("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "onBindViewHolder() i:%s invalid:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localbgf.vxr) });
-          paramv.frN.setVisibility(0);
-          paramv.vyk.post(new Runnable()
+          paramw = (MobileRemitHistoryRecodUI.e)paramw;
+          final bjx localbjx = (bjx)this.wIi.get(paramInt);
+          ac.d("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "onBindViewHolder() i:%s invalid:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localbjx.wHw) });
+          paramw.fvu.setVisibility(0);
+          paramw.wIp.post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(67694);
-              int i = paramv.vyk.getMeasuredWidth();
+              int i = paramw.wIp.getMeasuredWidth();
               if (i != 0)
               {
-                float f1 = paramv.iiN.getPaint().measureText(localbgf.vxp);
-                float f2 = paramv.vyl.getPaint().measureText(localbgf.vxq);
-                int j = com.tencent.mm.cd.a.fromDPToPix(MobileRemitHistoryRecodUI.b.a(MobileRemitHistoryRecodUI.b.this), 14);
+                float f1 = paramw.iIU.getPaint().measureText(localbjx.wHu);
+                float f2 = paramw.wIq.getPaint().measureText(localbjx.wHv);
+                int j = com.tencent.mm.cc.a.fromDPToPix(MobileRemitHistoryRecodUI.b.a(MobileRemitHistoryRecodUI.b.this), 14);
                 if (f1 + f2 + j > i)
                 {
-                  LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramv.iiN.getLayoutParams();
+                  LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramw.iIU.getLayoutParams();
                   localLayoutParams.width = ((int)(i - f2 - j));
-                  paramv.iiN.setLayoutParams(localLayoutParams);
+                  paramw.iIU.setLayoutParams(localLayoutParams);
                 }
               }
-              paramv.iiN.setText(localbgf.vxp);
-              paramv.vyl.setText(localbgf.vxq);
+              paramw.iIU.setText(localbjx.wHu);
+              paramw.wIq.setText(localbjx.wHv);
               AppMethodBeat.o(67694);
             }
           });
-          paramv.ljT.setText(localbgf.nrG);
-          if (localbgf.vxr == 0)
+          paramw.lJL.setText(localbjx.nUG);
+          if (localbjx.wHw == 0)
           {
-            paramv.iiN.setTextColor(this.vye);
-            paramv.vyl.setTextColor(this.vye);
-            paramv.ljT.setTextColor(this.vyf);
-            paramv.vwl.setVisibility(8);
+            paramw.iIU.setTextColor(this.wIj);
+            paramw.wIq.setTextColor(this.wIj);
+            paramw.lJL.setTextColor(this.wIk);
+            paramw.wGq.setVisibility(8);
           }
           for (;;)
           {
-            paramv.frN.setTag(localbgf);
-            paramv.frN.setOnClickListener(new View.OnClickListener()
+            paramw.fvu.setTag(localbjx);
+            paramw.fvu.setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
@@ -509,7 +536,7 @@ public class MobileRemitHistoryRecodUI
                 AppMethodBeat.o(67695);
               }
             });
-            paramv.frN.setOnLongClickListener(new View.OnLongClickListener()
+            paramw.fvu.setOnLongClickListener(new View.OnLongClickListener()
             {
               public final boolean onLongClick(View paramAnonymousView)
               {
@@ -526,23 +553,23 @@ public class MobileRemitHistoryRecodUI
             });
             AppMethodBeat.o(67699);
             return;
-            paramv.iiN.setTextColor(this.vyg);
-            paramv.vyl.setTextColor(this.vyg);
-            paramv.ljT.setTextColor(this.vyg);
-            paramv.vwl.setVisibility(0);
+            paramw.iIU.setTextColor(this.wIl);
+            paramw.wIq.setTextColor(this.wIl);
+            paramw.lJL.setTextColor(this.wIl);
+            paramw.wGq.setVisibility(0);
           }
         }
       }
       else
       {
-        paramv = (MobileRemitHistoryRecodUI.a)paramv;
-        if (this.cHI)
+        paramw = (MobileRemitHistoryRecodUI.a)paramw;
+        if (this.cEQ)
         {
-          paramv.frN.setVisibility(8);
+          paramw.fvu.setVisibility(8);
           AppMethodBeat.o(67699);
           return;
         }
-        paramv.frN.setVisibility(0);
+        paramw.fvu.setVisibility(0);
       }
       AppMethodBeat.o(67699);
     }
@@ -550,13 +577,13 @@ public class MobileRemitHistoryRecodUI
     public final int getItemCount()
     {
       AppMethodBeat.i(67701);
-      if (this.cHI)
+      if (this.cEQ)
       {
-        i = this.vyd.size();
+        i = this.wIi.size();
         AppMethodBeat.o(67701);
         return i;
       }
-      int i = this.vyd.size();
+      int i = this.wIi.size();
       AppMethodBeat.o(67701);
       return i + 1;
     }
@@ -564,7 +591,7 @@ public class MobileRemitHistoryRecodUI
     public final int getItemViewType(int paramInt)
     {
       AppMethodBeat.i(67700);
-      if (this.cHI)
+      if (this.cEQ)
       {
         AppMethodBeat.o(67700);
         return 0;
@@ -587,25 +614,25 @@ public class MobileRemitHistoryRecodUI
   }
   
   public static final class e
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
-    View frN;
-    TextView iiN;
-    TextView ljT;
-    TextView vwl;
-    LinearLayout vyk;
-    TextView vyl;
+    View fvu;
+    TextView iIU;
+    TextView lJL;
+    TextView wGq;
+    LinearLayout wIp;
+    TextView wIq;
     
     public e(View paramView)
     {
       super();
       AppMethodBeat.i(67705);
-      this.frN = paramView;
-      this.vyk = ((LinearLayout)paramView.findViewById(2131302660));
-      this.iiN = ((TextView)paramView.findViewById(2131302867));
-      this.vyl = ((TextView)paramView.findViewById(2131303802));
-      this.ljT = ((TextView)paramView.findViewById(2131303236));
-      this.vwl = ((TextView)paramView.findViewById(2131305192));
+      this.fvu = paramView;
+      this.wIp = ((LinearLayout)paramView.findViewById(2131302660));
+      this.iIU = ((TextView)paramView.findViewById(2131302867));
+      this.wIq = ((TextView)paramView.findViewById(2131303802));
+      this.lJL = ((TextView)paramView.findViewById(2131303236));
+      this.wGq = ((TextView)paramView.findViewById(2131305192));
       AppMethodBeat.o(67705);
     }
   }

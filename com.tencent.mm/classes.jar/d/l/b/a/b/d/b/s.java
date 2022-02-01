@@ -11,13 +11,13 @@ import d.m;
 
 public final class s
 {
-  public static final a JEO;
+  public static final a Lsh;
   final String signature;
   
   static
   {
     AppMethodBeat.i(58237);
-    JEO = new a((byte)0);
+    Lsh = new a((byte)0);
     AppMethodBeat.o(58237);
   }
   
@@ -84,7 +84,7 @@ public final class s
       AppMethodBeat.i(58232);
       k.h(paramc, "nameResolver");
       k.h(paramb, "signature");
-      paramc = mu(paramc.getString(paramb.JHm), paramc.getString(paramb.JKX));
+      paramc = mV(paramc.getString(paramb.LuF), paramc.getString(paramb.Lyq));
       AppMethodBeat.o(58232);
       return paramc;
     }
@@ -95,13 +95,13 @@ public final class s
       k.h(parame, "signature");
       if ((parame instanceof e.b))
       {
-        parame = mu(parame.getName(), parame.getDesc());
+        parame = mV(parame.getName(), parame.getDesc());
         AppMethodBeat.o(58235);
         return parame;
       }
       if ((parame instanceof e.a))
       {
-        parame = mv(parame.getName(), parame.getDesc());
+        parame = mW(parame.getName(), parame.getDesc());
         AppMethodBeat.o(58235);
         return parame;
       }
@@ -110,7 +110,7 @@ public final class s
       throw parame;
     }
     
-    public static s mu(String paramString1, String paramString2)
+    public static s mV(String paramString1, String paramString2)
     {
       AppMethodBeat.i(58233);
       k.h(paramString1, "name");
@@ -120,7 +120,7 @@ public final class s
       return paramString1;
     }
     
-    public static s mv(String paramString1, String paramString2)
+    public static s mW(String paramString1, String paramString2)
     {
       AppMethodBeat.i(58234);
       k.h(paramString1, "name");
@@ -133,7 +133,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.s
  * JD-Core Version:    0.7.0.1
  */

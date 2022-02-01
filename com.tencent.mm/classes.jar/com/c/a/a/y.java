@@ -2,27 +2,44 @@ package com.c.a.a;
 
 final class y
 {
-  protected static String MODE = "f";
-  protected static String PROTOCOL = "V2.7.2";
-  protected static boolean bUG = false;
-  protected static int bUH = 2;
-  protected static int bUI = 0;
-  protected static String bUJ = "5";
-  protected static byte[] bUK = { 16, -79, 80, 54, 42, 66, -57, -25 };
-  protected static String bUL = "tencent";
-  protected static boolean bUM = false;
-  protected static boolean bUN = false;
-  protected static String bUO = "SensewhereLocationSdkLogs";
-  protected static float bUP = 80.0F;
-  protected static float bUQ = 20.0F;
-  protected static boolean bUR = false;
-  protected static boolean bUS = false;
-  protected static String bUT = "";
-  protected static float bUU = 50.0F;
-  protected static float bUV = 1.2F;
-  protected static float bUW = 1.6F;
-  protected static float bUX = 30.0F;
-  protected static String bUY = null;
+  protected static String MODE;
+  protected static String PROTOCOL;
+  protected static boolean bSA = false;
+  protected static String bSB = "";
+  protected static float bSC = 50.0F;
+  protected static float bSD = 1.2F;
+  protected static float bSE = 1.6F;
+  protected static float bSF = 30.0F;
+  protected static String bSG = null;
+  protected static boolean bSo = false;
+  protected static int bSp;
+  protected static int bSq;
+  protected static String bSr;
+  protected static byte[] bSs;
+  protected static String bSt;
+  protected static boolean bSu;
+  protected static boolean bSv;
+  protected static String bSw;
+  protected static float bSx;
+  protected static float bSy;
+  protected static boolean bSz;
+  
+  static
+  {
+    MODE = "f";
+    PROTOCOL = "V2.7.2";
+    bSp = 2;
+    bSq = 0;
+    bSr = "5";
+    bSs = new byte[] { 16, -79, 80, 54, 42, 66, -57, -25 };
+    bSt = "tencent";
+    bSu = false;
+    bSv = false;
+    bSw = "SensewhereLocationSdkLogs";
+    bSx = 80.0F;
+    bSy = 20.0F;
+    bSz = false;
+  }
 }
 
 

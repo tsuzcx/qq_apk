@@ -15,8 +15,8 @@ public class e
   extends TextView
   implements com.tencent.mm.plugin.appbrand.jsapi.base.e
 {
-  private boolean kPn;
-  private a lQh;
+  private boolean lqM;
+  private a msk;
   
   public e(Context paramContext)
   {
@@ -40,23 +40,23 @@ public class e
     AppMethodBeat.o(137936);
   }
   
-  public final boolean aYz()
+  public final boolean bfw()
   {
-    return this.kPn;
+    return this.lqM;
   }
   
   public void setInterceptEvent(boolean paramBoolean)
   {
-    this.kPn = paramBoolean;
+    this.lqM = paramBoolean;
   }
   
   public void setLineHeight(int paramInt)
   {
     AppMethodBeat.i(137937);
-    if (this.lQh == null) {
-      this.lQh = new a(paramInt);
+    if (this.msk == null) {
+      this.msk = new a(paramInt);
     }
-    if (!this.lQh.aI(paramInt))
+    if (!this.msk.aM(paramInt))
     {
       AppMethodBeat.o(137937);
       return;
@@ -78,7 +78,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.e
  * JD-Core Version:    0.7.0.1
  */

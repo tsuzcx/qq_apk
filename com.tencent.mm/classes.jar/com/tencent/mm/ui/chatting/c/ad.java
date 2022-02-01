@@ -3,9 +3,9 @@ package com.tencent.mm.ui.chatting.c;
 public abstract interface ad
   extends ab
 {
-  public abstract boolean wB(long paramLong);
+  public abstract boolean Be(long paramLong);
   
-  public abstract void wC(long paramLong);
+  public abstract void Bf(long paramLong);
 }
 
 

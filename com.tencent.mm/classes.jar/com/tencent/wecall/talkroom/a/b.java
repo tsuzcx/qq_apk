@@ -10,9 +10,9 @@ import com.tencent.wecall.talkroom.model.c;
 public final class b
   extends d
 {
-  public int sHe;
-  public String seB;
-  public long ztl;
+  public long AMc;
+  public int tOL;
+  public String tmu;
   
   public b(String paramString, int paramInt, long paramLong, String[] paramArrayOfString)
   {
@@ -22,15 +22,15 @@ public final class b
     try
     {
       locala.groupId = paramString;
-      this.seB = paramString;
-      locala.zkT = paramInt;
-      this.sHe = paramInt;
-      locala.zkU = paramLong;
-      this.ztl = paramLong;
-      locala.IkA = paramArrayOfString;
-      locala.zkT = paramInt;
+      this.tmu = paramString;
+      locala.ADE = paramInt;
+      this.tOL = paramInt;
+      locala.ADF = paramLong;
+      this.AMc = paramLong;
+      locala.JMl = paramArrayOfString;
+      locala.ADE = paramInt;
       this.mNetType = 3;
-      this.IjW = c.fpJ().aOs(paramString);
+      this.JLH = c.fIe().aUe(paramString);
       c(145, locala);
       AppMethodBeat.o(62533);
       return;
@@ -44,7 +44,7 @@ public final class b
     }
   }
   
-  public final Object cC(byte[] paramArrayOfByte)
+  public final Object cB(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62534);
     if (paramArrayOfByte != null) {}
@@ -66,7 +66,7 @@ public final class b
     }
   }
   
-  public final String flk()
+  public final String fBB()
   {
     return "CsCmd.Cmd_V_CSAddVoiceGroupMemberReq";
   }

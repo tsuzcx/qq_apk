@@ -7,9 +7,9 @@ import com.tencent.mm.storagebase.h;
 public abstract interface c
   extends a
 {
-  public abstract boolean RF(String paramString);
+  public abstract boolean VR(String paramString);
   
-  public abstract aj apV();
+  public abstract aj awK();
   
   public abstract aj c(h paramh);
   

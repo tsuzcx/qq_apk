@@ -11,7 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.normsg.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class NormsgDataProvider
   extends ContentProvider
@@ -25,7 +25,7 @@ public final class NormsgDataProvider
     AppMethodBeat.o(148937);
   }
   
-  private String ajo(String paramString)
+  private String aom(String paramString)
   {
     AppMethodBeat.i(148935);
     try
@@ -42,18 +42,18 @@ public final class NormsgDataProvider
     return "";
   }
   
-  private static boolean cWM()
+  private static boolean dku()
   {
-    AppMethodBeat.i(190941);
+    AppMethodBeat.i(206472);
     try
     {
-      boolean bool = b.ufs.cWY();
-      AppMethodBeat.o(190941);
+      boolean bool = b.vor.dkG();
+      AppMethodBeat.o(206472);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(190941);
+      AppMethodBeat.o(206472);
     }
     return false;
   }
@@ -74,37 +74,37 @@ public final class NormsgDataProvider
   
   public static boolean getPhoneState(Context paramContext)
   {
-    AppMethodBeat.i(190940);
+    AppMethodBeat.i(206471);
     paramContext = paramContext.getContentResolver().call(CONTENT_URI, "m1", null, null);
     if (paramContext != null)
     {
       boolean bool = paramContext.getBoolean("result", false);
-      AppMethodBeat.o(190940);
+      AppMethodBeat.o(206471);
       return bool;
     }
-    AppMethodBeat.o(190940);
+    AppMethodBeat.o(206471);
     return false;
   }
   
   public final Bundle call(String paramString1, String paramString2, Bundle paramBundle)
   {
     AppMethodBeat.i(148936);
-    ad.i("MicroMsg.NormsgDP", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
+    ac.i("MicroMsg.NormsgDP", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
     if ("m0".equals(paramString1))
     {
       paramString1 = new Bundle();
-      paramString1.putString("result", ajo(paramString2));
+      paramString1.putString("result", aom(paramString2));
       AppMethodBeat.o(148936);
       return paramString1;
     }
     if ("m1".equals(paramString1))
     {
       paramString1 = new Bundle();
-      paramString1.putBoolean("result", cWM());
+      paramString1.putBoolean("result", dku());
       AppMethodBeat.o(148936);
       return paramString1;
     }
-    ad.w("MicroMsg.NormsgDP", "unknown method: %s", new Object[] { paramString1 });
+    ac.w("MicroMsg.NormsgDP", "unknown method: %s", new Object[] { paramString1 });
     AppMethodBeat.o(148936);
     return null;
   }
@@ -141,7 +141,7 @@ public final class NormsgDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.NormsgDataProvider
  * JD-Core Version:    0.7.0.1
  */

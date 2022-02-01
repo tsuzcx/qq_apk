@@ -3,7 +3,7 @@ package com.tencent.mm.ui.chatting.gallery;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 import java.util.Iterator;
 import java.util.List;
 
@@ -18,21 +18,21 @@ final class b$1
     boolean bool1;
     int i;
     label33:
-    bl localbl;
+    bo localbo;
     boolean bool2;
-    if (this.GAn.size() <= 1)
+    if (this.Iai.size() <= 1)
     {
       bool1 = true;
-      Iterator localIterator = this.GAn.iterator();
+      Iterator localIterator = this.Iai.iterator();
       i = 0;
       if (!localIterator.hasNext()) {
         break label106;
       }
-      localbl = (bl)localIterator.next();
-      if (!b.m(localbl)) {
+      localbo = (bo)localIterator.next();
+      if (!b.m(localbo)) {
         break label92;
       }
-      bool2 = b.b(this.val$context, localbl, bool1);
+      bool2 = b.b(this.val$context, localbo, bool1);
       label74:
       if ((i != 0) || (!bool2)) {
         break label184;
@@ -46,7 +46,7 @@ final class b$1
       bool1 = false;
       break;
       label92:
-      bool2 = b.d(this.val$context, localbl, bool1);
+      bool2 = b.d(this.val$context, localbo, bool1);
       break label74;
       label106:
       if ((i == 0) && (!bool1))
@@ -56,7 +56,7 @@ final class b$1
         return;
       }
       if ((i != 0) && (!bool1)) {
-        Toast.makeText(this.val$context, this.val$context.getString(2131758631, new Object[] { com.tencent.mm.loader.j.b.ais() }), 1).show();
+        Toast.makeText(this.val$context, this.val$context.getString(2131758631, new Object[] { com.tencent.mm.loader.j.b.aps() }), 1).show();
       }
       AppMethodBeat.o(35876);
       return;
@@ -65,7 +65,7 @@ final class b$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.b.1
  * JD-Core Version:    0.7.0.1
  */

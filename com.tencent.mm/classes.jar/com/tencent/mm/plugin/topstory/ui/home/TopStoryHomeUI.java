@@ -6,20 +6,20 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 
 public class TopStoryHomeUI
   extends MMActivity
 {
-  private b yME;
+  private b Aav;
   
   public TopStoryHomeUI()
   {
     AppMethodBeat.i(125906);
-    this.yME = new b(this, true);
+    this.Aav = new b(this, true);
     AppMethodBeat.o(125906);
   }
   
@@ -30,12 +30,12 @@ public class TopStoryHomeUI
     if (!getController().hideVKB()) {
       i = 0;
     }
-    aq.n(new Runnable()
+    ap.n(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(125905);
-        ad.i("MicroMsg.TopStory.TopStoryHomeUI", " finish");
+        ac.i("MicroMsg.TopStory.TopStoryHomeUI", " finish");
         TopStoryHomeUI.a(TopStoryHomeUI.this);
         AppMethodBeat.o(125905);
       }
@@ -51,16 +51,16 @@ public class TopStoryHomeUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(125917);
-    this.yME.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.Aav.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(125917);
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(125914);
-    b localb = this.yME;
-    if (localb.yMR) {
-      localb.dOs();
+    b localb = this.Aav;
+    if (localb.AaI) {
+      localb.ecT();
     }
     for (int i = 0;; i = 1)
     {
@@ -84,15 +84,15 @@ public class TopStoryHomeUI
     AppMethodBeat.i(125907);
     fixStatusbar(true);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
-    this.yME.onCreate(paramBundle);
+    ac.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
+    this.Aav.onCreate(paramBundle);
     AppMethodBeat.o(125907);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(125911);
-    this.yME.onDestroy();
+    this.Aav.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(125911);
   }
@@ -100,7 +100,7 @@ public class TopStoryHomeUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(125908);
-    if (this.yME.Pf(paramInt))
+    if (this.Aav.Rl(paramInt))
     {
       AppMethodBeat.o(125908);
       return true;
@@ -113,7 +113,7 @@ public class TopStoryHomeUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(125912);
-    this.yME.onNewIntent(paramIntent);
+    this.Aav.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(125912);
   }
@@ -121,7 +121,7 @@ public class TopStoryHomeUI
   public void onPause()
   {
     AppMethodBeat.i(125910);
-    this.yME.onPause();
+    this.Aav.onPause();
     super.onPause();
     AppMethodBeat.o(125910);
   }
@@ -130,7 +130,7 @@ public class TopStoryHomeUI
   {
     AppMethodBeat.i(125909);
     super.onResume();
-    this.yME.onResume();
+    this.Aav.onResume();
     AppMethodBeat.o(125909);
   }
   
@@ -138,7 +138,7 @@ public class TopStoryHomeUI
   {
     AppMethodBeat.i(125913);
     super.onSaveInstanceState(paramBundle);
-    this.yME.onSaveInstanceState(paramBundle);
+    this.Aav.onSaveInstanceState(paramBundle);
     AppMethodBeat.o(125913);
   }
   
@@ -150,7 +150,7 @@ public class TopStoryHomeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.TopStoryHomeUI
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
@@ -25,72 +25,72 @@ import com.tencent.mm.plugin.downloader.model.g.a;
 import com.tencent.mm.pluginsdk.model.app.q;
 import com.tencent.mm.pluginsdk.ui.tools.m;
 import com.tencent.mm.pluginsdk.ui.tools.m.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class t
 {
-  public ChatFooterCustom Gom;
-  public FrameLayout Gon;
-  public FrameLayout Goo;
-  public TextView Gop;
-  public ImageView Goq;
-  a Gor;
-  public int Gos;
-  public boolean Got;
-  String Gou;
-  public String Gov;
-  public View.OnClickListener Gow;
-  public View.OnClickListener Gox;
-  private m.a Goy;
+  public ChatFooterCustom HOd;
+  public FrameLayout HOe;
+  public FrameLayout HOf;
+  public TextView HOg;
+  public ImageView HOh;
+  a HOi;
+  public int HOj;
+  public boolean HOk;
+  String HOl;
+  public String HOm;
+  public View.OnClickListener HOn;
+  public View.OnClickListener HOo;
+  private m.a HOp;
   Context mContext;
-  public LinearLayout oIh;
-  long oYP;
+  long pCa;
+  public LinearLayout plH;
   SharedPreferences sp;
-  public String uQR;
-  String uQS;
-  String uQT;
+  public String vZG;
+  String vZH;
+  String vZI;
   
   public t(ChatFooterCustom paramChatFooterCustom)
   {
     AppMethodBeat.i(34622);
-    this.oIh = null;
-    this.Gor = a.GoC;
-    this.Gos = -1;
-    this.Gou = null;
-    this.oYP = -1L;
-    this.Gow = new View.OnClickListener()
+    this.plH = null;
+    this.HOi = a.HOt;
+    this.HOj = -1;
+    this.HOl = null;
+    this.pCa = -1L;
+    this.HOn = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(34609);
         new Intent().putExtra("composeType", 1);
-        d.O(t.this.mContext, "qqmail", ".ui.ComposeUI");
+        d.N(t.this.mContext, "qqmail", ".ui.ComposeUI");
         AppMethodBeat.o(34609);
       }
     };
-    this.Gox = new View.OnClickListener()
+    this.HOo = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(34610);
-        switch (t.8.GoB[t.this.Gor.ordinal()])
+        switch (t.8.HOs[t.this.HOi.ordinal()])
         {
         }
         for (;;)
         {
           AppMethodBeat.o(34610);
           return;
-          com.tencent.mm.plugin.report.service.h.vKh.f(11288, new Object[] { Integer.valueOf(6) });
+          com.tencent.mm.plugin.report.service.h.wUl.f(11288, new Object[] { Integer.valueOf(6) });
           paramAnonymousView = t.this;
-          if (!ay.isConnected(paramAnonymousView.mContext))
+          if (!ax.isConnected(paramAnonymousView.mContext))
           {
-            com.tencent.mm.ui.base.h.a(paramAnonymousView.mContext, com.tencent.mm.cd.a.aq(paramAnonymousView.mContext, 2131757089), "", com.tencent.mm.cd.a.aq(paramAnonymousView.mContext, 2131757084), null);
+            com.tencent.mm.ui.base.h.a(paramAnonymousView.mContext, com.tencent.mm.cc.a.aw(paramAnonymousView.mContext, 2131757089), "", com.tencent.mm.cc.a.aw(paramAnonymousView.mContext, 2131757084), null);
             AppMethodBeat.o(34610);
             return;
           }
-          if (!ay.isWifi(paramAnonymousView.mContext))
+          if (!ax.isWifi(paramAnonymousView.mContext))
           {
             com.tencent.mm.ui.base.h.b(paramAnonymousView.mContext, 2131757086, 0, 2131757082, 2131757081, new t.3(paramAnonymousView), null);
             AppMethodBeat.o(34610);
@@ -100,167 +100,167 @@ public final class t
           AppMethodBeat.o(34610);
           return;
           paramAnonymousView = t.this;
-          ad.i("MicroMsg.ChattingQQMailFooterHandler", "dz[cancelDownload]");
-          f.bQt().og(paramAnonymousView.oYP);
-          paramAnonymousView.eVJ();
+          ac.i("MicroMsg.ChattingQQMailFooterHandler", "dz[cancelDownload]");
+          f.bXJ().rS(paramAnonymousView.pCa);
+          paramAnonymousView.flv();
           AppMethodBeat.o(34610);
           return;
-          com.tencent.mm.plugin.report.service.h.vKh.f(11288, new Object[] { Integer.valueOf(7) });
+          com.tencent.mm.plugin.report.service.h.wUl.f(11288, new Object[] { Integer.valueOf(7) });
           paramAnonymousView = t.this;
-          ad.i("MicroMsg.ChattingQQMailFooterHandler", "dz[installQQMail]");
-          com.tencent.mm.pluginsdk.g.i.aG(paramAnonymousView.mContext, paramAnonymousView.Gou);
+          ac.i("MicroMsg.ChattingQQMailFooterHandler", "dz[installQQMail]");
+          com.tencent.mm.pluginsdk.g.i.aH(paramAnonymousView.mContext, paramAnonymousView.HOl);
           AppMethodBeat.o(34610);
           return;
-          com.tencent.mm.plugin.report.service.h.vKh.f(11288, new Object[] { Integer.valueOf(5) });
+          com.tencent.mm.plugin.report.service.h.wUl.f(11288, new Object[] { Integer.valueOf(5) });
           t localt = t.this;
-          ad.i("MicroMsg.ChattingQQMailFooterHandler", "dz[openQQMail]");
-          ad.i("MicroMsg.ChattingQQMailFooterHandler", "mQQMailScheme = %s", new Object[] { localt.Gov });
-          if (bt.isNullOrNil(localt.Gov)) {
+          ac.i("MicroMsg.ChattingQQMailFooterHandler", "dz[openQQMail]");
+          ac.i("MicroMsg.ChattingQQMailFooterHandler", "mQQMailScheme = %s", new Object[] { localt.HOm });
+          if (bs.isNullOrNil(localt.HOm)) {
             paramAnonymousView = localt.mContext.getPackageManager().getLaunchIntentForPackage("com.tencent.androidqqmail");
           }
           for (;;)
           {
-            ad.i("MicroMsg.ChattingQQMailFooterHandler", "intent = %s", new Object[] { paramAnonymousView });
-            com.tencent.mm.cj.a.post(new t.5(localt, paramAnonymousView));
+            ac.i("MicroMsg.ChattingQQMailFooterHandler", "intent = %s", new Object[] { paramAnonymousView });
+            com.tencent.mm.ci.a.post(new t.5(localt, paramAnonymousView));
             AppMethodBeat.o(34610);
             return;
             Intent localIntent = new Intent();
-            localIntent.setData(Uri.parse(localt.Gov));
+            localIntent.setData(Uri.parse(localt.HOm));
             localIntent.addFlags(268435456);
             if (Build.VERSION.SDK_INT >= 11) {
               localIntent.addFlags(32768);
             }
             paramAnonymousView = localIntent;
-            if (!bt.T(localt.mContext, localIntent)) {
+            if (!bs.ah(localt.mContext, localIntent)) {
               paramAnonymousView = localt.mContext.getPackageManager().getLaunchIntentForPackage("com.tencent.androidqqmail");
             }
           }
-          if (t.this.Got) {
+          if (t.this.HOk) {
             t.a(t.this);
           }
         }
       }
     };
-    this.Goy = new m.a()
+    this.HOp = new m.a()
     {
-      public final void dej()
+      public final void drR()
       {
         AppMethodBeat.i(34617);
-        t.this.Gop.setText(2131757092);
+        t.this.HOg.setText(2131757092);
         AppMethodBeat.o(34617);
       }
       
       public final void onSuccess(int paramAnonymousInt)
       {
         AppMethodBeat.i(34616);
-        t.this.Gos = paramAnonymousInt;
-        t.this.eVK();
+        t.this.HOj = paramAnonymousInt;
+        t.this.flw();
         AppMethodBeat.o(34616);
       }
     };
     this.mContext = paramChatFooterCustom.getContext();
-    this.Gom = paramChatFooterCustom;
+    this.HOd = paramChatFooterCustom;
     AppMethodBeat.o(34622);
   }
   
-  public final void eVI()
+  public final void flu()
   {
     AppMethodBeat.i(34623);
-    if (this.Gor == a.GoG)
+    if (this.HOi == a.HOx)
     {
-      this.Goq.setImageResource(2131691054);
+      this.HOh.setImageResource(2131691054);
       AppMethodBeat.o(34623);
       return;
     }
-    this.Goq.setImageResource(2131691055);
+    this.HOh.setImageResource(2131691055);
     AppMethodBeat.o(34623);
   }
   
-  public final void eVJ()
+  public final void flv()
   {
     AppMethodBeat.i(34624);
     Object localObject;
     if (q.t(this.mContext, "com.tencent.androidqqmail")) {
-      localObject = a.GoG;
+      localObject = a.HOx;
     }
     for (;;)
     {
-      this.Gor = ((a)localObject);
-      eVI();
-      ad.i("MicroMsg.ChattingQQMailFooterHandler", "dz[initRightBtnTv: status:%s]", new Object[] { this.Gor.toString() });
-      switch (8.GoB[this.Gor.ordinal()])
+      this.HOi = ((a)localObject);
+      flu();
+      ac.i("MicroMsg.ChattingQQMailFooterHandler", "dz[initRightBtnTv: status:%s]", new Object[] { this.HOi.toString() });
+      switch (8.HOs[this.HOi.ordinal()])
       {
       default: 
-        m.a(this.Goy);
+        m.a(this.HOp);
         AppMethodBeat.o(34624);
         return;
-        this.sp = this.mContext.getSharedPreferences("QQMAIL", g.XN());
-        this.oYP = this.sp.getLong("qqmail_downloadid", -1L);
-        if (this.oYP < 0L)
+        this.sp = this.mContext.getSharedPreferences("QQMAIL", g.YK());
+        this.pCa = this.sp.getLong("qqmail_downloadid", -1L);
+        if (this.pCa < 0L)
         {
-          if (bt.isNullOrNil(this.uQR)) {
-            localObject = a.GoH;
+          if (bs.isNullOrNil(this.vZG)) {
+            localObject = a.HOy;
           } else {
-            localObject = a.GoD;
+            localObject = a.HOu;
           }
         }
         else
         {
-          localObject = f.bQt().oh(this.oYP);
+          localObject = f.bXJ().rT(this.pCa);
           int i = ((FileDownloadTaskInfo)localObject).status;
-          this.Gou = ((FileDownloadTaskInfo)localObject).path;
+          this.HOl = ((FileDownloadTaskInfo)localObject).path;
           switch (i)
           {
           case 2: 
           default: 
-            if (bt.isNullOrNil(this.uQR)) {
-              localObject = a.GoH;
+            if (bs.isNullOrNil(this.vZG)) {
+              localObject = a.HOy;
             }
             break;
           case 3: 
-            if (com.tencent.mm.vfs.i.eK(this.Gou)) {
-              localObject = a.GoF;
-            } else if (bt.isNullOrNil(this.uQR)) {
-              localObject = a.GoH;
+            if (com.tencent.mm.vfs.i.eA(this.HOl)) {
+              localObject = a.HOw;
+            } else if (bs.isNullOrNil(this.vZG)) {
+              localObject = a.HOy;
             } else {
-              localObject = a.GoD;
+              localObject = a.HOu;
             }
             break;
           case 1: 
-            localObject = a.GoE;
+            localObject = a.HOv;
             continue;
-            localObject = a.GoD;
+            localObject = a.HOu;
           }
         }
         break;
       }
     }
-    this.Gop.setText(2131757085);
+    this.HOg.setText(2131757085);
     AppMethodBeat.o(34624);
     return;
-    this.Gop.setText(2131757083);
+    this.HOg.setText(2131757083);
     AppMethodBeat.o(34624);
     return;
-    m.a(this.Goy);
+    m.a(this.HOp);
     AppMethodBeat.o(34624);
   }
   
-  public final void eVK()
+  public final void flw()
   {
     AppMethodBeat.i(34625);
-    if (this.Gos == 0)
+    if (this.HOj == 0)
     {
-      this.Gop.setText(2131757092);
+      this.HOg.setText(2131757092);
       AppMethodBeat.o(34625);
       return;
     }
-    if (this.Gos > 99)
+    if (this.HOj > 99)
     {
-      this.Gop.setText(2131757091);
+      this.HOg.setText(2131757091);
       AppMethodBeat.o(34625);
       return;
     }
-    this.Gop.setText(String.format(com.tencent.mm.cd.a.aq(this.mContext, 2131757090), new Object[] { Integer.valueOf(this.Gos) }));
+    this.HOg.setText(String.format(com.tencent.mm.cc.a.aw(this.mContext, 2131757090), new Object[] { Integer.valueOf(this.HOj) }));
     AppMethodBeat.o(34625);
   }
   
@@ -269,13 +269,13 @@ public final class t
     static
     {
       AppMethodBeat.i(34621);
-      GoC = new a("DEFAULT", 0);
-      GoD = new a("NEED_DOWNLOAD", 1);
-      GoE = new a("DOWNLOADING", 2);
-      GoF = new a("NEED_INSTALL", 3);
-      GoG = new a("INSTALLED", 4);
-      GoH = new a("NO_URL", 5);
-      GoI = new a[] { GoC, GoD, GoE, GoF, GoG, GoH };
+      HOt = new a("DEFAULT", 0);
+      HOu = new a("NEED_DOWNLOAD", 1);
+      HOv = new a("DOWNLOADING", 2);
+      HOw = new a("NEED_INSTALL", 3);
+      HOx = new a("INSTALLED", 4);
+      HOy = new a("NO_URL", 5);
+      HOz = new a[] { HOt, HOu, HOv, HOw, HOx, HOy };
       AppMethodBeat.o(34621);
     }
     
@@ -284,7 +284,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.t
  * JD-Core Version:    0.7.0.1
  */

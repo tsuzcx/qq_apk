@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
 final class FinderTimelineUI$i
   extends d.g.b.l
   implements a<y>
 {
-  public static final i qBC;
+  public static final i rsD;
   
   static
   {
     AppMethodBeat.i(166243);
-    qBC = new i();
+    rsD = new i();
     AppMethodBeat.o(166243);
   }
   
@@ -25,7 +25,7 @@ final class FinderTimelineUI$i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderTimelineUI.i
  * JD-Core Version:    0.7.0.1
  */

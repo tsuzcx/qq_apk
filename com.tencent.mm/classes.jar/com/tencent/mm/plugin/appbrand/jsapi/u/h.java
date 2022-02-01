@@ -1,107 +1,123 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
-import android.content.res.Configuration;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.provider.Settings.SettingNotFoundException;
+import android.provider.Settings.System;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.utils.z.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class h
+  extends a
 {
-  private static String kjv;
-  private static String kjw;
-  private static g kjx;
-  private static z.a kjy;
-  private static z.a kjz;
-  private static boolean mEnable;
+  public static final int CTRL_INDEX = 232;
+  public static final String NAME = "getScreenBrightness";
   
-  static
+  private static int biU()
   {
-    AppMethodBeat.i(137644);
-    mEnable = false;
-    kjv = "";
-    kjw = "";
-    kjx = new g();
-    kjy = z.a.lMO;
-    kjz = z.a.lMO;
-    AppMethodBeat.o(137644);
-  }
-  
-  public static void A(c paramc)
-  {
-    AppMethodBeat.i(137641);
-    if (paramc.getAppId().equalsIgnoreCase(kjv))
+    AppMethodBeat.i(137669);
+    j = 255;
+    try
     {
-      ad.i("MicroMsg.OrientationConfigListenerHelper", "unInit mAppid:" + kjv);
-      kjv = "";
-      mEnable = false;
-      kjz = z.a.lMO;
-    }
-    AppMethodBeat.o(137641);
-  }
-  
-  public static void a(Configuration paramConfiguration, String paramString)
-  {
-    AppMethodBeat.i(137642);
-    if (paramConfiguration.orientation == 2) {
-      if (kjy == z.a.lMS) {
-        kjz = z.a.lMS;
+      Resources localResources = Resources.getSystem();
+      int k = localResources.getIdentifier("config_screenBrightnessSettingMaximum", "integer", "android");
+      i = j;
+      if (k != 0) {
+        i = localResources.getInteger(k);
       }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      ad.i("MicroMsg.OrientationConfigListenerHelper", "onConfigurationChanged mAppid:" + kjv + "; appid:" + paramString + "; mOrientation:" + kjz.name());
-      if ((kjv.equalsIgnoreCase("")) || (!kjv.equalsIgnoreCase(paramString)) || (!mEnable)) {
-        break;
+      for (;;)
+      {
+        ac.i("MicroMsg.JsApiGetScreenBrightness", "get max brightness fail, fallback to 255");
+        int i = j;
       }
-      kjx.b(kjz);
-      AppMethodBeat.o(137642);
+    }
+    AppMethodBeat.o(137669);
+    return i;
+  }
+  
+  private static float dw(Context paramContext)
+  {
+    AppMethodBeat.i(137668);
+    paramContext = paramContext.getContentResolver();
+    float f1 = 0.0F;
+    try
+    {
+      float f2 = Settings.System.getInt(paramContext, "screen_brightness");
+      int i = biU();
+      f1 = f2 / i;
+    }
+    catch (Settings.SettingNotFoundException paramContext)
+    {
+      for (;;)
+      {
+        ac.e("MicroMsg.JsApiGetScreenBrightness", "getSystemBrightnessPercent err %s", new Object[] { paramContext.getMessage() });
+      }
+    }
+    catch (IllegalArgumentException paramContext)
+    {
+      for (;;)
+      {
+        ac.e("MicroMsg.JsApiGetScreenBrightness", "getSystemBrightnessPercent IllegalArgumentException: %s", new Object[] { paramContext.getMessage() });
+      }
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        ac.e("MicroMsg.JsApiGetScreenBrightness", "getSystemBrightnessPercent err %s", new Object[] { paramContext.getMessage() });
+      }
+    }
+    AppMethodBeat.o(137668);
+    return f1;
+  }
+  
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  {
+    AppMethodBeat.i(137667);
+    ac.d("MicroMsg.JsApiGetScreenBrightness", "JsApiGetScreenBrightness!");
+    paramJSONObject = paramc.getContext();
+    if (paramJSONObject == null)
+    {
+      paramc.h(paramInt, e("fail", null));
+      ac.e("MicroMsg.JsApiGetScreenBrightness", "context is null, invoke fail!");
+      AppMethodBeat.o(137667);
       return;
-      kjz = z.a.lMQ;
-      continue;
-      if (paramConfiguration.orientation == 1) {
-        kjz = z.a.lMP;
-      } else {
-        kjz = z.a.lMO;
-      }
     }
-    kjw = paramString;
-    AppMethodBeat.o(137642);
-  }
-  
-  public static void c(z.a parama)
-  {
-    AppMethodBeat.i(137643);
-    kjy = parama;
-    if ((mEnable) && (kjz == z.a.lMQ) && ((parama == z.a.lMS) || (parama == z.a.lMQ)))
+    if (!(paramJSONObject instanceof Activity))
     {
-      kjx.b(parama);
-      ad.i("MicroMsg.OrientationConfigListenerHelper", "onFourOrientationsChange mAppid:" + kjv + "; mOrientation:" + parama.name());
-    }
-    AppMethodBeat.o(137643);
-  }
-  
-  public static void z(c paramc)
-  {
-    AppMethodBeat.i(137640);
-    kjv = paramc.getAppId();
-    mEnable = true;
-    kjx.h(paramc);
-    if ((kjz != z.a.lMO) && (kjw.equalsIgnoreCase(kjv))) {
-      kjx.b(kjz);
-    }
-    for (;;)
-    {
-      ad.i("MicroMsg.OrientationConfigListenerHelper", "init mJsAppid:" + kjv + "; mEnable:" + mEnable);
-      AppMethodBeat.o(137640);
+      paramc.h(paramInt, e("fail", null));
+      ac.e("MicroMsg.JsApiGetScreenBrightness", "context is not Activity, invoke fail!");
+      AppMethodBeat.o(137667);
       return;
-      kjz = z.a.lMO;
     }
+    WindowManager.LayoutParams localLayoutParams = ((Activity)paramJSONObject).getWindow().getAttributes();
+    float f2 = localLayoutParams.screenBrightness;
+    float f1 = f2;
+    if (f2 < 0.0F) {
+      f1 = dw(paramJSONObject);
+    }
+    ac.i("MicroMsg.JsApiGetScreenBrightness", "JsApiGetScreenBrightness %f/%f", new Object[] { Float.valueOf(f1), Float.valueOf(localLayoutParams.screenBrightness) });
+    paramJSONObject = new HashMap();
+    paramJSONObject.put("value", Float.valueOf(f1));
+    paramc.h(paramInt, k("ok", paramJSONObject));
+    AppMethodBeat.o(137667);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.h
  * JD-Core Version:    0.7.0.1
  */

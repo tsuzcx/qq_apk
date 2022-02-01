@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
   extends a
 {
-  int Kjn = 0;
+  int LWW = 0;
   
   public k()
   {
-    this.Kik = 265;
+    this.LVT = 265;
   }
   
   public final byte[] de(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88141);
-    this.Kjn = paramArrayOfByte.length;
-    byte[] arrayOfByte = new byte[this.Kjn];
+    this.LWW = paramArrayOfByte.length;
+    byte[] arrayOfByte = new byte[this.LWW];
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
-    super.agp(this.Kik);
-    super.af(arrayOfByte, this.Kjn);
-    super.fMH();
-    paramArrayOfByte = super.fMD();
+    super.ajl(this.LVT);
+    super.ae(arrayOfByte, this.LWW);
+    super.gfx();
+    paramArrayOfByte = super.gft();
     AppMethodBeat.o(88141);
     return paramArrayOfByte;
   }

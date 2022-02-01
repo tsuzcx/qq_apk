@@ -5,7 +5,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class ReportStorageSizeTask
   extends MainProcessTask
@@ -20,32 +20,32 @@ public class ReportStorageSizeTask
     AppMethodBeat.o(43984);
   }
   
-  public final void aEz()
+  public final void aLq()
   {
     AppMethodBeat.i(43981);
-    com.tencent.e.h.Iye.aP(new com.tencent.e.i.h()
+    com.tencent.e.h.JZN.aS(new com.tencent.e.i.h()
     {
       public final String getKey()
       {
-        AppMethodBeat.i(195576);
+        AppMethodBeat.i(186276);
         String str = "MicroMsg.AppBrand.ReportStorageSizeTask#" + ReportStorageSizeTask.b(ReportStorageSizeTask.this);
-        AppMethodBeat.o(195576);
+        AppMethodBeat.o(186276);
         return str;
       }
       
       public final void run()
       {
-        AppMethodBeat.i(195575);
+        AppMethodBeat.i(186275);
         try
         {
           ReportStorageSizeTask.a(ReportStorageSizeTask.this);
-          AppMethodBeat.o(195575);
+          AppMethodBeat.o(186275);
           return;
         }
         catch (Throwable localThrowable)
         {
-          ad.e("MicroMsg.AppBrand.ReportStorageSizeTask", "doReport appId:%s, e:%s", new Object[] { ReportStorageSizeTask.b(ReportStorageSizeTask.this), localThrowable });
-          AppMethodBeat.o(195575);
+          ac.e("MicroMsg.AppBrand.ReportStorageSizeTask", "doReport appId:%s, e:%s", new Object[] { ReportStorageSizeTask.b(ReportStorageSizeTask.this), localThrowable });
+          AppMethodBeat.o(186275);
         }
       }
     });
@@ -68,7 +68,7 @@ public class ReportStorageSizeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ReportStorageSizeTask
  * JD-Core Version:    0.7.0.1
  */

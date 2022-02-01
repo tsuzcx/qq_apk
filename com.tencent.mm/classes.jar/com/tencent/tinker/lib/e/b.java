@@ -2,12 +2,12 @@ package com.tencent.tinker.lib.e;
 
 import android.content.Intent;
 import com.tencent.tinker.entry.ApplicationLike;
-import com.tencent.tinker.lib.f.a;
 import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.SharePatchInfo;
 import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.io.File;
 
 public final class b
@@ -54,7 +54,7 @@ public final class b
     }
     File localFile = SharePatchFileUtil.getPatchDirectory(paramApplicationLike.getApplication());
     if (!localFile.exists()) {
-      a.w("Tinker.TinkerApplicationHelper", "try to clean patch while there're not any applied patches.", new Object[0]);
+      ShareTinkerLog.w("Tinker.TinkerApplicationHelper", "try to clean patch while there're not any applied patches.", new Object[0]);
     }
     SharePatchInfo localSharePatchInfo;
     do
@@ -63,7 +63,7 @@ public final class b
       paramApplicationLike = SharePatchFileUtil.getPatchInfoFile(localFile.getAbsolutePath());
       if (!paramApplicationLike.exists())
       {
-        a.w("Tinker.TinkerApplicationHelper", "try to clean patch while patch info file does not exist.", new Object[0]);
+        ShareTinkerLog.w("Tinker.TinkerApplicationHelper", "try to clean patch while patch info file does not exist.", new Object[0]);
         return;
       }
       localFile = SharePatchFileUtil.getPatchInfoLockFile(localFile.getAbsolutePath());

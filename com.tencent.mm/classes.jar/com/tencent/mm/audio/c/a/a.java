@@ -2,22 +2,22 @@ package com.tencent.mm.audio.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/audio/utils/player/AudioPlayerReportUtil;", "", "()V", "mIsReportStart", "", "mRMSInOnePlayerProcess", "", "", "[Ljava/lang/Integer;", "mSystemVolumProcess", "byteArray2ShortArray", "", "data", "", "items", "calcDecibelLevel", "", "buffer", "readSize", "checkPCMAmplitude", "", "length", "checkSystemVolume", "type", "volume", "doAudioRecordKVReport", "audioType", "scenes", "featureKey", "", "pcmSilent", "pcmLow", "pcmMiddle", "pcmHigh", "systemSilent", "systemLow", "systemMiddle", "systemHigh", "audioSource", "doAudioVolumeRecordKVReport", "streamType", "doPCMPlayerChecker", "doPCMPlayerPercentReport", "index", "result", "", "doPCMPlayerResultReport", "doPcmPlayerReport", "doSystemVolumePercentReport", "doSystemVolumePlayerChecker", "doSystemVolumeResultReport", "getRMSInOnePlayerProcessReportSum", "getSystemVolumePercentReportSum", "Companion", "plugin-audiosdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/audio/utils/player/AudioPlayerReportUtil;", "", "()V", "mIsReportStart", "", "mRMSInOnePlayerProcess", "", "", "[Ljava/lang/Integer;", "mSystemVolumProcess", "byteArray2ShortArray", "", "data", "", "items", "calcDecibelLevel", "", "buffer", "readSize", "checkPCMAmplitude", "", "length", "checkSystemVolume", "type", "volume", "doAudioRecordKVReport", "audioType", "scenes", "featureKey", "", "pcmSilent", "pcmLow", "pcmMiddle", "pcmHigh", "systemSilent", "systemLow", "systemMiddle", "systemHigh", "audioSource", "doAudioVolumeRecordKVReport", "streamType", "doPCMPlayerChecker", "doPCMPlayerPercentReport", "index", "result", "", "doPCMPlayerResultReport", "doPcmPlayerReport", "doSystemVolumePercentReport", "doSystemVolumePlayerChecker", "doSystemVolumeResultReport", "getRMSInOnePlayerProcessReportSum", "getSystemVolumePercentReportSum", "Companion", "plugin-audiosdk_release"})
 public final class a
 {
-  public static final a.a cZW;
-  private boolean cZT;
-  private Integer[] cZU;
-  private Integer[] cZV;
+  public static final a.a cXs;
+  private boolean cXp;
+  private Integer[] cXq;
+  private Integer[] cXr;
   
   static
   {
     AppMethodBeat.i(130117);
-    cZW = new a.a((byte)0);
+    cXs = new a.a((byte)0);
     AppMethodBeat.o(130117);
   }
   
@@ -31,7 +31,7 @@ public final class a
       arrayOfInteger[i] = Integer.valueOf(0);
       i += 1;
     }
-    this.cZU = arrayOfInteger;
+    this.cXq = arrayOfInteger;
     arrayOfInteger = new Integer[4];
     i = 0;
     while (i < 4)
@@ -39,14 +39,14 @@ public final class a
       arrayOfInteger[i] = Integer.valueOf(0);
       i += 1;
     }
-    this.cZV = arrayOfInteger;
+    this.cXr = arrayOfInteger;
     AppMethodBeat.o(130116);
   }
   
-  private final int OA()
+  private final int Ow()
   {
     AppMethodBeat.i(130113);
-    Integer[] arrayOfInteger = this.cZU;
+    Integer[] arrayOfInteger = this.cXq;
     int k = arrayOfInteger.length;
     int i = 0;
     int j = 0;
@@ -63,27 +63,27 @@ public final class a
   {
     AppMethodBeat.i(130109);
     k.h(paramString, "featureKey");
-    int i3 = OA();
+    int i3 = Ow();
     if (i3 != 0)
     {
-      int i = this.cZU[0].intValue() * 100 / i3;
-      int j = this.cZU[1].intValue() * 100 / i3;
-      int k = this.cZU[2].intValue() * 100 / i3;
-      int m = this.cZU[3].intValue() * 100 / i3;
-      int n = this.cZV[0].intValue() * 100 / i3;
-      int i1 = this.cZV[1].intValue() * 100 / i3;
-      int i2 = this.cZV[2].intValue() * 100 / i3;
-      i3 = this.cZV[3].intValue() * 100 / i3;
-      ad.i("MicroMsg.AudioPlayerReportUtil", "audioType = 1 ,scenes = " + paramInt1 + ",featureKey=" + paramString + ",pcmSilent=" + i + ", pcmLow=" + j + ",pcmMiddle=" + k + ",pcmHigh=" + m + ",systemSilent=" + n + ",systemLow=" + i1 + ",systemMiddle=" + i2 + ",systemHigh=" + i3 + ",streamType=" + paramInt2 + '}');
-      h.vKh.a(18554, true, true, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), paramString, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt2) });
+      int i = this.cXq[0].intValue() * 100 / i3;
+      int j = this.cXq[1].intValue() * 100 / i3;
+      int k = this.cXq[2].intValue() * 100 / i3;
+      int m = this.cXq[3].intValue() * 100 / i3;
+      int n = this.cXr[0].intValue() * 100 / i3;
+      int i1 = this.cXr[1].intValue() * 100 / i3;
+      int i2 = this.cXr[2].intValue() * 100 / i3;
+      i3 = this.cXr[3].intValue() * 100 / i3;
+      ac.i("MicroMsg.AudioPlayerReportUtil", "audioType = 1 ,scenes = " + paramInt1 + ",featureKey=" + paramString + ",pcmSilent=" + i + ", pcmLow=" + j + ",pcmMiddle=" + k + ",pcmHigh=" + m + ",systemSilent=" + n + ",systemLow=" + i1 + ",systemMiddle=" + i2 + ",systemHigh=" + i3 + ",streamType=" + paramInt2 + '}');
+      h.wUl.a(18554, true, true, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), paramString, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt2) });
     }
     AppMethodBeat.o(130109);
   }
   
-  public final void ci(int paramInt1, int paramInt2)
+  public final void cg(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130114);
-    if (!this.cZT)
+    if (!this.cXp)
     {
       AppMethodBeat.o(130114);
       return;
@@ -98,56 +98,56 @@ public final class a
       Integer[] arrayOfInteger;
       if (paramInt2 < 10)
       {
-        arrayOfInteger = this.cZV;
+        arrayOfInteger = this.cXr;
         arrayOfInteger[0] = Integer.valueOf(arrayOfInteger[0].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 < 40)
       {
-        arrayOfInteger = this.cZV;
+        arrayOfInteger = this.cXr;
         arrayOfInteger[1] = Integer.valueOf(arrayOfInteger[1].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 < 80)
       {
-        arrayOfInteger = this.cZV;
+        arrayOfInteger = this.cXr;
         arrayOfInteger[2] = Integer.valueOf(arrayOfInteger[2].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 <= 100)
       {
-        arrayOfInteger = this.cZV;
+        arrayOfInteger = this.cXr;
         arrayOfInteger[3] = Integer.valueOf(arrayOfInteger[3].intValue() + 1);
       }
       AppMethodBeat.o(130114);
       return;
       if (paramInt2 < 10)
       {
-        arrayOfInteger = this.cZV;
+        arrayOfInteger = this.cXr;
         arrayOfInteger[0] = Integer.valueOf(arrayOfInteger[0].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 < 40)
       {
-        arrayOfInteger = this.cZV;
+        arrayOfInteger = this.cXr;
         arrayOfInteger[1] = Integer.valueOf(arrayOfInteger[1].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 < 80)
       {
-        arrayOfInteger = this.cZV;
+        arrayOfInteger = this.cXr;
         arrayOfInteger[2] = Integer.valueOf(arrayOfInteger[2].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 <= 100)
       {
-        arrayOfInteger = this.cZV;
+        arrayOfInteger = this.cXr;
         arrayOfInteger[3] = Integer.valueOf(arrayOfInteger[3].intValue() + 1);
       }
     }
@@ -157,7 +157,7 @@ public final class a
   {
     AppMethodBeat.i(130115);
     k.h(paramArrayOfByte, "data");
-    if (!this.cZT)
+    if (!this.cXp)
     {
       AppMethodBeat.o(130115);
       return;
@@ -185,35 +185,35 @@ public final class a
       d = Math.sqrt(d / i);
       if (d < 50.0D)
       {
-        paramArrayOfByte = this.cZU;
+        paramArrayOfByte = this.cXq;
         paramArrayOfByte[0] = Integer.valueOf(paramArrayOfByte[0].intValue() + 1);
         AppMethodBeat.o(130115);
         return;
       }
       if (d < 300.0D)
       {
-        paramArrayOfByte = this.cZU;
+        paramArrayOfByte = this.cXq;
         paramArrayOfByte[1] = Integer.valueOf(paramArrayOfByte[1].intValue() + 1);
         AppMethodBeat.o(130115);
         return;
       }
       if (d < 2000.0D)
       {
-        paramArrayOfByte = this.cZU;
+        paramArrayOfByte = this.cXq;
         paramArrayOfByte[2] = Integer.valueOf(paramArrayOfByte[2].intValue() + 1);
         AppMethodBeat.o(130115);
         return;
       }
-      paramArrayOfByte = this.cZU;
+      paramArrayOfByte = this.cXq;
       paramArrayOfByte[3] = Integer.valueOf(paramArrayOfByte[3].intValue() + 1);
     }
     AppMethodBeat.o(130115);
   }
   
-  public final void hZ(int paramInt)
+  public final void hJ(int paramInt)
   {
     AppMethodBeat.i(130110);
-    this.cZT = true;
+    this.cXp = true;
     switch (paramInt)
     {
     }
@@ -221,25 +221,25 @@ public final class a
     {
       AppMethodBeat.o(130110);
       return;
-      c.OB();
+      c.Ox();
       AppMethodBeat.o(130110);
       return;
-      b.OB();
+      b.Ox();
     }
   }
   
-  public final void ia(int paramInt)
+  public final void hK(int paramInt)
   {
     AppMethodBeat.i(130111);
-    if (!this.cZT)
+    if (!this.cXp)
     {
       AppMethodBeat.o(130111);
       return;
     }
-    int k = OA();
+    int k = Ow();
     if (k != 0)
     {
-      Integer[] arrayOfInteger = this.cZU;
+      Integer[] arrayOfInteger = this.cXq;
       int i = 0;
       int m = arrayOfInteger.length;
       int j = 0;
@@ -247,12 +247,12 @@ public final class a
       {
         int n = ((Number)arrayOfInteger[j]).intValue();
         long l = n * 100 / k;
-        if (this.cZT) {}
+        if (this.cXp) {}
         switch (paramInt)
         {
         default: 
           n = n * 100 / k;
-          if (this.cZT) {
+          if (this.cXp) {
             switch (paramInt)
             {
             }
@@ -269,32 +269,32 @@ public final class a
           default: 
             break;
           case 0: 
-            c.bi(l);
+            c.bf(l);
             break;
           case 1: 
-            c.bj(l);
+            c.bg(l);
             break;
           case 2: 
-            c.bk(l);
+            c.bh(l);
             break;
           case 3: 
-            c.bl(l);
+            c.bi(l);
             break;
             switch (i)
             {
             default: 
               break;
             case 0: 
-              b.bi(l);
+              b.bf(l);
               break;
             case 1: 
-              b.bj(l);
+              b.bg(l);
               break;
             case 2: 
-              b.bk(l);
+              b.bh(l);
               break;
             case 3: 
-              b.bl(l);
+              b.bi(l);
               break;
               switch (i)
               {
@@ -302,73 +302,73 @@ public final class a
                 break;
               case 0: 
                 if (n == 0) {
-                  c.OC();
+                  c.Oy();
                 } else if (n <= 20) {
-                  c.OD();
+                  c.Oz();
                 } else if (n <= 40) {
-                  c.OE();
+                  c.OA();
                 } else if (n <= 60) {
-                  c.OF();
+                  c.OB();
                 } else if (n <= 80) {
-                  c.OG();
+                  c.OC();
                 } else if (n == 100) {
-                  c.OH();
+                  c.OD();
                 }
                 break;
               case 1: 
                 if (n == 0) {
-                  c.OI();
+                  c.OE();
                 } else if (n <= 20) {
-                  c.OJ();
+                  c.OF();
                 } else if (n <= 40) {
-                  c.OK();
+                  c.OG();
                 } else if (n <= 60) {
-                  c.OL();
+                  c.OH();
                 } else if (n <= 80) {
-                  c.OM();
+                  c.OI();
                 } else if (n == 100) {
-                  c.ON();
+                  c.OJ();
                 }
                 break;
               case 2: 
                 if (n == 0) {
-                  c.OO();
+                  c.OK();
                 } else if (n <= 20) {
-                  c.OP();
+                  c.OL();
                 } else if (n <= 40) {
-                  c.OQ();
+                  c.OM();
                 } else if (n <= 60) {
-                  c.OR();
+                  c.ON();
                 } else if (n <= 80) {
-                  c.OS();
+                  c.OO();
                 } else if (n == 100) {
-                  c.OT();
+                  c.OP();
                 }
                 break;
               case 3: 
                 if (n == 0)
                 {
-                  c.OU();
+                  c.OQ();
                 }
                 else if (n <= 20)
                 {
-                  c.OV();
+                  c.OR();
                 }
                 else if (n <= 40)
                 {
-                  c.OW();
+                  c.OS();
                 }
                 else if (n <= 60)
                 {
-                  c.OX();
+                  c.OT();
                 }
                 else if (n <= 80)
                 {
-                  c.OY();
+                  c.OU();
                 }
                 else if (n == 100)
                 {
-                  c.OZ();
+                  c.OV();
                   continue;
                   switch (i)
                   {
@@ -376,62 +376,62 @@ public final class a
                     break;
                   case 0: 
                     if (n == 0) {
-                      b.OC();
+                      b.Oy();
                     } else if (n <= 20) {
-                      b.OD();
+                      b.Oz();
                     } else if (n <= 40) {
-                      b.OE();
+                      b.OA();
                     } else if (n <= 60) {
-                      b.OF();
+                      b.OB();
                     } else if (n <= 80) {
-                      b.OG();
+                      b.OC();
                     } else if (n <= 100) {
-                      b.OH();
+                      b.OD();
                     }
                     break;
                   case 1: 
                     if (n == 0) {
-                      b.OI();
+                      b.OE();
                     } else if (n <= 20) {
-                      b.OJ();
+                      b.OF();
                     } else if (n <= 40) {
-                      b.OK();
+                      b.OG();
                     } else if (n <= 60) {
-                      b.OL();
+                      b.OH();
                     } else if (n <= 80) {
-                      b.OM();
+                      b.OI();
                     } else if (n <= 100) {
-                      b.ON();
+                      b.OJ();
                     }
                     break;
                   case 2: 
                     if (n == 0) {
-                      b.OO();
+                      b.OK();
                     } else if (n <= 20) {
-                      b.OP();
+                      b.OL();
                     } else if (n <= 40) {
-                      b.OQ();
+                      b.OM();
                     } else if (n <= 60) {
-                      b.OR();
+                      b.ON();
                     } else if (n <= 80) {
-                      b.OS();
+                      b.OO();
                     } else if (n <= 100) {
-                      b.OT();
+                      b.OP();
                     }
                     break;
                   case 3: 
                     if (n == 0) {
-                      b.OU();
+                      b.OQ();
                     } else if (n <= 20) {
-                      b.OV();
+                      b.OR();
                     } else if (n <= 40) {
-                      b.OW();
+                      b.OS();
                     } else if (n <= 60) {
-                      b.OX();
+                      b.OT();
                     } else if (n <= 80) {
-                      b.OY();
+                      b.OU();
                     } else if (n <= 100) {
-                      b.OZ();
+                      b.OV();
                     }
                     break;
                   }
@@ -451,20 +451,20 @@ public final class a
         arrayOfInteger[paramInt] = Integer.valueOf(0);
         paramInt += 1;
       }
-      this.cZU = arrayOfInteger;
+      this.cXq = arrayOfInteger;
     }
     AppMethodBeat.o(130111);
   }
   
-  public final void ib(int paramInt)
+  public final void hL(int paramInt)
   {
     AppMethodBeat.i(130112);
-    if (!this.cZT)
+    if (!this.cXp)
     {
       AppMethodBeat.o(130112);
       return;
     }
-    Integer[] arrayOfInteger = this.cZV;
+    Integer[] arrayOfInteger = this.cXr;
     int k = arrayOfInteger.length;
     int j = 0;
     int i = 0;
@@ -477,7 +477,7 @@ public final class a
     }
     if (i != 0)
     {
-      arrayOfInteger = this.cZV;
+      arrayOfInteger = this.cXr;
       j = 0;
       m = arrayOfInteger.length;
       k = 0;
@@ -485,12 +485,12 @@ public final class a
       {
         int n = ((Number)arrayOfInteger[k]).intValue();
         long l = n * 100 / i;
-        if (this.cZT) {}
+        if (this.cXp) {}
         switch (paramInt)
         {
         default: 
           n = n * 100 / i;
-          if (this.cZT) {
+          if (this.cXp) {
             switch (paramInt)
             {
             }
@@ -507,32 +507,32 @@ public final class a
           default: 
             break;
           case 0: 
-            c.bm(l);
+            c.bj(l);
             break;
           case 1: 
-            c.bn(l);
+            c.bk(l);
             break;
           case 2: 
-            c.bo(l);
+            c.bl(l);
             break;
           case 3: 
-            c.bp(l);
+            c.bm(l);
             break;
             switch (j)
             {
             default: 
               break;
             case 0: 
-              b.bm(l);
+              b.bj(l);
               break;
             case 1: 
-              b.bn(l);
+              b.bk(l);
               break;
             case 2: 
-              b.bo(l);
+              b.bl(l);
               break;
             case 3: 
-              b.bp(l);
+              b.bm(l);
               break;
               switch (j)
               {
@@ -540,73 +540,73 @@ public final class a
                 break;
               case 0: 
                 if (n == 0) {
-                  c.Pa();
+                  c.OW();
                 } else if (n <= 20) {
-                  c.Pb();
+                  c.OX();
                 } else if (n <= 40) {
-                  c.Pc();
+                  c.OY();
                 } else if (n <= 60) {
-                  c.Pd();
+                  c.OZ();
                 } else if (n <= 80) {
-                  c.Pe();
+                  c.Pa();
                 } else if (n == 100) {
-                  c.Pf();
+                  c.Pb();
                 }
                 break;
               case 1: 
                 if (n == 0) {
-                  c.Pg();
+                  c.Pc();
                 } else if (n <= 20) {
-                  c.Ph();
+                  c.Pd();
                 } else if (n <= 40) {
-                  c.Pi();
+                  c.Pe();
                 } else if (n <= 60) {
-                  c.Pj();
+                  c.Pf();
                 } else if (n <= 80) {
-                  c.Pk();
+                  c.Pg();
                 } else if (n == 100) {
-                  c.Pl();
+                  c.Ph();
                 }
                 break;
               case 2: 
                 if (n == 0) {
-                  c.Pm();
+                  c.Pi();
                 } else if (n <= 20) {
-                  c.Pn();
+                  c.Pj();
                 } else if (n <= 40) {
-                  c.Po();
+                  c.Pk();
                 } else if (n <= 60) {
-                  c.Pp();
+                  c.Pl();
                 } else if (n <= 80) {
-                  c.Pq();
+                  c.Pm();
                 } else if (n == 100) {
-                  c.Pr();
+                  c.Pn();
                 }
                 break;
               case 3: 
                 if (n == 0)
                 {
-                  c.Ps();
+                  c.Po();
                 }
                 else if (n <= 20)
                 {
-                  c.Pt();
+                  c.Pp();
                 }
                 else if (n <= 40)
                 {
-                  c.Pu();
+                  c.Pq();
                 }
                 else if (n <= 60)
                 {
-                  c.Pv();
+                  c.Pr();
                 }
                 else if (n <= 80)
                 {
-                  c.Pw();
+                  c.Ps();
                 }
                 else if (n == 100)
                 {
-                  c.Px();
+                  c.Pt();
                   continue;
                   switch (j)
                   {
@@ -614,62 +614,62 @@ public final class a
                     break;
                   case 0: 
                     if (n == 0) {
-                      b.Pa();
+                      b.OW();
                     } else if (n <= 20) {
-                      b.Pb();
+                      b.OX();
                     } else if (n <= 40) {
-                      b.Pc();
+                      b.OY();
                     } else if (n <= 60) {
-                      b.Pd();
+                      b.OZ();
                     } else if (n <= 80) {
-                      b.Pe();
+                      b.Pa();
                     } else if (n <= 100) {
-                      b.Pf();
+                      b.Pb();
                     }
                     break;
                   case 1: 
                     if (n == 0) {
-                      b.Pg();
+                      b.Pc();
                     } else if (n <= 20) {
-                      b.Ph();
+                      b.Pd();
                     } else if (n <= 40) {
-                      b.Pi();
+                      b.Pe();
                     } else if (n <= 60) {
-                      b.Pj();
+                      b.Pf();
                     } else if (n <= 80) {
-                      b.Pk();
+                      b.Pg();
                     } else if (n <= 100) {
-                      b.Pl();
+                      b.Ph();
                     }
                     break;
                   case 2: 
                     if (n == 0) {
-                      b.Pm();
+                      b.Pi();
                     } else if (n <= 20) {
-                      b.Pn();
+                      b.Pj();
                     } else if (n <= 40) {
-                      b.Po();
+                      b.Pk();
                     } else if (n <= 60) {
-                      b.Pp();
+                      b.Pl();
                     } else if (n <= 80) {
-                      b.Pq();
+                      b.Pm();
                     } else if (n <= 100) {
-                      b.Pr();
+                      b.Pn();
                     }
                     break;
                   case 3: 
                     if (n == 0) {
-                      b.Ps();
+                      b.Po();
                     } else if (n <= 20) {
-                      b.Pt();
+                      b.Pp();
                     } else if (n <= 40) {
-                      b.Pu();
+                      b.Pq();
                     } else if (n <= 60) {
-                      b.Pv();
+                      b.Pr();
                     } else if (n <= 80) {
-                      b.Pw();
+                      b.Ps();
                     } else if (n <= 100) {
-                      b.Px();
+                      b.Pt();
                     }
                     break;
                   }
@@ -689,7 +689,7 @@ public final class a
         arrayOfInteger[paramInt] = Integer.valueOf(0);
         paramInt += 1;
       }
-      this.cZV = arrayOfInteger;
+      this.cXr = arrayOfInteger;
     }
     AppMethodBeat.o(130112);
   }

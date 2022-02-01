@@ -7,8 +7,8 @@ import android.content.pm.Signature;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.vfs.e;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -43,8 +43,8 @@ public final class af
               break;
             }
             localc = (c)localIterator.next();
-          } while (TextUtils.isEmpty(localc.dvP));
-          localObject2 = localc.dvP;
+          } while (TextUtils.isEmpty(localc.dtC));
+          localObject2 = localc.dtC;
           localObject1 = new ArrayList();
           localObject3 = paramContext.getPackageResourcePath();
           if (Build.VERSION.SDK_INT < 21) {
@@ -88,35 +88,35 @@ public final class af
         long l = System.currentTimeMillis();
         if (paramBoolean)
         {
-          localObject2 = paramContext.getPackageManager().getPackageInfo(localc.dvP, 64);
+          localObject2 = paramContext.getPackageManager().getPackageInfo(localc.dtC, 64);
           if (((PackageInfo)localObject2).signatures.length <= 0) {
             break label829;
           }
-          paramArrayList = ai.du(localObject2.signatures[(localObject2.signatures.length - 1)].toCharsString());
+          paramArrayList = ah.dg(localObject2.signatures[(localObject2.signatures.length - 1)].toCharsString());
           break label829;
-          localObject2 = localc.dvP;
-          localObject3 = localc.hWR;
-          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.hWR))) {
+          localObject2 = localc.dtC;
+          localObject3 = localc.iwV;
+          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.iwV))) {
             break label832;
           }
           bool = true;
-          ad.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infoMD5[%s], sigMD5[%s], equal[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), localObject2, localObject3, paramArrayList, Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
-          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.hWR))) {
+          ac.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infoMD5[%s], sigMD5[%s], equal[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), localObject2, localObject3, paramArrayList, Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
+          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.iwV))) {
             break label256;
           }
           l = System.currentTimeMillis();
           if (!paramBoolean) {
             continue;
           }
-          i = paramContext.getPackageManager().getPackageInfo(localc.dvP, 0).versionCode;
-          paramArrayList = localc.dvP;
-          int j = localc.hWQ;
-          if (i > localc.hWQ) {
+          i = paramContext.getPackageManager().getPackageInfo(localc.dtC, 0).versionCode;
+          paramArrayList = localc.dtC;
+          int j = localc.iwU;
+          if (i > localc.iwU) {
             continue;
           }
           bool = true;
-          ad.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infovc[%d], versionCode[%d], less[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), paramArrayList, Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
-          j = localc.hWQ;
+          ac.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infovc[%d], versionCode[%d], less[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), paramArrayList, Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
+          j = localc.iwU;
           if (i > j) {
             break label256;
           }
@@ -153,16 +153,16 @@ public final class af
           ((List)localObject1).add(paramArrayList);
           break label237;
         }
-        paramArrayList = af.b.n(((e)localObject2).fhV());
+        paramArrayList = af.b.n(((e)localObject2).fxW());
         continue;
-        i = af.a.M(paramContext, localc.dvP);
+        i = af.a.N(paramContext, localc.dtC);
         continue;
         bool = false;
         continue;
       }
       catch (Exception paramArrayList)
       {
-        ad.printErrStackTrace("MicroMsg.YYBMarketVerify", paramArrayList, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.YYBMarketVerify", paramArrayList, "", new Object[0]);
       }
       AppMethodBeat.o(20754);
       return false;
@@ -178,15 +178,15 @@ public final class af
   
   public static final class c
   {
-    public final String dvP;
-    public final int hWQ;
-    public final String hWR;
+    public final String dtC;
+    public final int iwU;
+    public final String iwV;
     
     public c(String paramString1, int paramInt, String paramString2)
     {
-      this.dvP = paramString1;
-      this.hWQ = paramInt;
-      this.hWR = paramString2;
+      this.dtC = paramString1;
+      this.iwU = paramInt;
+      this.iwV = paramString2;
     }
   }
 }

@@ -8,11 +8,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.y;
+import com.tencent.xweb.z;
 import java.io.File;
 import java.lang.reflect.Field;
 
@@ -48,7 +48,7 @@ public class BoxWebView
     AppMethodBeat.o(76346);
   }
   
-  private void bBO()
+  private void bIM()
   {
     AppMethodBeat.i(76348);
     if (getIsX5Kernel())
@@ -56,7 +56,7 @@ public class BoxWebView
       AppMethodBeat.o(76348);
       return;
     }
-    if (d.lf(19))
+    if (d.kZ(19))
     {
       AppMethodBeat.o(76348);
       return;
@@ -64,21 +64,21 @@ public class BoxWebView
     try
     {
       Object localObject = new com.tencent.mm.compatible.loader.c(this, "mSysWebView", null).get();
-      ad.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { localObject });
+      ac.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { localObject });
       localObject = new com.tencent.mm.compatible.loader.c(localObject, "mProvider", null).get();
-      ad.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { localObject });
+      ac.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { localObject });
       localObject = new com.tencent.mm.compatible.loader.c(localObject, "mWebViewCore", null).get();
-      ad.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { localObject });
+      ac.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { localObject });
       localObject = new com.tencent.mm.compatible.loader.c(localObject, "sWebCoreHandler", null).get();
-      ad.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { localObject });
+      ac.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { localObject });
       localObject = new com.tencent.mm.compatible.loader.c(localObject, "mLooper", null).get();
-      ad.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { localObject });
+      ac.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { localObject });
       localObject = new com.tencent.mm.compatible.loader.c(localObject, "mThread", null).get();
-      ad.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { localObject });
+      ac.d("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { localObject });
       if ((localObject instanceof Thread))
       {
         localObject = (Thread)localObject;
-        ad.i("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, webCoreThread.getState = %s", new Object[] { ((Thread)localObject).getState() });
+        ac.i("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, webCoreThread.getState = %s", new Object[] { ((Thread)localObject).getState() });
         if (((Thread)localObject).getState() == Thread.State.WAITING) {
           ((Thread)localObject).interrupt();
         }
@@ -88,7 +88,7 @@ public class BoxWebView
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { localException });
+      ac.e("MicroMsg.Flight.FlightWebView", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { localException });
       AppMethodBeat.o(76348);
     }
   }
@@ -96,45 +96,45 @@ public class BoxWebView
   private void init()
   {
     AppMethodBeat.i(76347);
-    ad.i("MicroMsg.Flight.FlightWebView", "init FlightWebView");
-    this.fFP = true;
-    ki(this.context);
-    bBO();
+    ac.i("MicroMsg.Flight.FlightWebView", "init FlightWebView");
+    this.fJw = true;
+    kt(this.context);
+    bIM();
     AppMethodBeat.o(76347);
   }
   
   public final void a(a parama, c paramc)
   {
     AppMethodBeat.i(76349);
-    getSettings().frg();
+    getSettings().fJH();
     getSettings().setJavaScriptEnabled(true);
     getSettings().setPluginsEnabled(true);
     getSettings().setBuiltInZoomControls(false);
     getSettings().setMediaPlaybackRequiresUserGesture(true);
-    getSettings().fri();
-    getSettings().setUserAgentString(x.bR(getContext(), getSettings().getUserAgentString()));
+    getSettings().fJJ();
+    getSettings().setUserAgentString(x.bS(getContext(), getSettings().getUserAgentString()));
     getSettings().setUseWideViewPort(true);
     getSettings().setLoadWithOverviewMode(true);
-    getSettings().fqZ();
-    getSettings().fqY();
+    getSettings().fJA();
+    getSettings().fJz();
     getSettings().setGeolocationEnabled(true);
     getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-    getSettings().fri();
-    getSettings().fre();
+    getSettings().fJJ();
+    getSettings().fJF();
     getSettings().setAppCachePath(this.context.getDir("webviewcache", 0).getAbsolutePath());
-    getSettings().frd();
-    getSettings().frf();
-    getSettings().setDatabasePath(b.ahY() + "databases/");
-    com.tencent.xweb.c.fqC().fqD();
-    com.tencent.xweb.c.fqC().e(this);
+    getSettings().fJE();
+    getSettings().fJG();
+    getSettings().setDatabasePath(b.aoY() + "databases/");
+    com.tencent.xweb.c.fJa().fJb();
+    com.tencent.xweb.c.fJa().e(this);
     getView().setHorizontalScrollBarEnabled(false);
     getView().setVerticalScrollBarEnabled(true);
-    setConfigCallback((WindowManager)aj.getContext().getSystemService("window"));
+    setConfigCallback((WindowManager)ai.getContext().getSystemService("window"));
     super.setWebChromeClient(parama);
     super.setWebViewClient(paramc);
-    ad.i("MicroMsg.Flight.FlightWebView", "Is the current broswer kernel X5, " + getIsX5Kernel());
+    ac.i("MicroMsg.Flight.FlightWebView", "Is the current broswer kernel X5, " + getIsX5Kernel());
     setBackgroundColor(-1);
-    feR();
+    fuM();
     AppMethodBeat.o(76349);
   }
   

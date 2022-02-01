@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.bo;
 
 public final class rn
   extends b
 {
-  public a dxb;
+  public a dux;
   
   public rn()
   {
@@ -16,17 +16,20 @@ public final class rn
   
   private rn(byte paramByte)
   {
-    AppMethodBeat.i(146076);
-    this.dxb = new a();
-    this.ESR = false;
+    AppMethodBeat.i(94799);
+    this.dux = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(146076);
+    AppMethodBeat.o(94799);
   }
   
   public static final class a
   {
-    public String cardId;
-    public Bitmap dxc;
+    public bo dpq;
+    public long duA = 0L;
+    public String duy;
+    public bo duz;
+    public long msgId = 0L;
   }
 }
 

@@ -65,24 +65,34 @@ public class ServiceBinderInterceptor
     //   64: monitorexit
     //   65: return
     //   66: astore_0
-    //   67: ldc 2
-    //   69: monitorexit
-    //   70: aload_0
-    //   71: athrow
-    //   72: astore_0
-    //   73: goto -11 -> 62
+    //   67: ldc 20
+    //   69: ldc 68
+    //   71: iconst_1
+    //   72: anewarray 70	java/lang/Object
+    //   75: dup
+    //   76: iconst_0
+    //   77: aload_0
+    //   78: aastore
+    //   79: invokestatic 76	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   82: goto -20 -> 62
+    //   85: astore_0
+    //   86: ldc 2
+    //   88: monitorexit
+    //   89: aload_0
+    //   90: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   18	16	0	localClass	Class
-    //   66	5	0	localObject	Object
-    //   72	1	0	localThrowable	Throwable
+    //   66	12	0	localThrowable	Throwable
+    //   85	5	0	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   15	19	66	finally
-    //   23	62	66	finally
-    //   62	65	66	finally
-    //   67	70	66	finally
-    //   23	62	72	java/lang/Throwable
+    //   23	62	66	java/lang/Throwable
+    //   15	19	85	finally
+    //   23	62	85	finally
+    //   62	65	85	finally
+    //   67	82	85	finally
+    //   86	89	85	finally
   }
   
   public ServiceBinderInterceptor(Context paramContext, String paramString, BinderInvocationHandler paramBinderInvocationHandler)

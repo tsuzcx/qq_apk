@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="@dimen/bv"
+<android.support.constraint.ConstraintLayout android:paddingTop="@dimen/c_" android:paddingBottom="@dimen/c_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/hof" android:background="@drawable/c5a" android:layout_width="fill_parent" android:layout_height="@dimen/ce" app:layout_constraintTop_toTopOf="ea8" />
-    <View android:id="@id/hog" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="@dimen/ce" app:layout_constraintTop_toBottomOf="@id/hof" />
-    <LinearLayout android:orientation="horizontal" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/finder_down_arrow" app:iconColor="@color/FG_0" />
-        <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_0" android:layout_gravity="center_vertical" android:id="@id/hd_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hij" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+        <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_0" android:layout_gravity="center_vertical" android:id="@id/hf5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hiv" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

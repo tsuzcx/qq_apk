@@ -1,279 +1,237 @@
 package com.tencent.mm.ca;
 
-import android.support.v4.e.l.c;
-import android.util.Log;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.text.SimpleDateFormat;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.av.e;
+import com.tencent.mm.av.f;
+import com.tencent.mm.av.l;
+import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.modelvideo.u;
+import com.tencent.mm.protocal.protobuf.cou;
+import com.tencent.mm.protocal.protobuf.cpa;
+import com.tencent.mm.protocal.protobuf.cpq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
+  implements com.tencent.mm.ak.g, com.tencent.mm.api.t
 {
-  static void w(String paramString1, String paramString2, Throwable paramThrowable)
+  public static final a Gjl;
+  public ConcurrentHashMap<String, cpa> vDn;
+  
+  static
   {
-    AppMethodBeat.i(189826);
-    a.log(5, paramString1, paramString2 + " : " + Log.getStackTraceString(paramThrowable));
-    AppMethodBeat.o(189826);
+    AppMethodBeat.i(9329);
+    Gjl = new a();
+    AppMethodBeat.o(9329);
   }
   
-  public static class a
+  public a()
   {
-    private static final List<a.b> ELh;
-    
-    static
+    AppMethodBeat.i(9324);
+    this.vDn = new ConcurrentHashMap();
+    AppMethodBeat.o(9324);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final n paramn)
+  {
+    AppMethodBeat.i(9327);
+    if ((paramn.getType() != 110) && (paramn.getType() != 149))
     {
-      AppMethodBeat.i(189823);
-      ELh = new LinkedList();
-      AppMethodBeat.o(189823);
+      AppMethodBeat.o(9327);
+      return;
     }
-    
-    /* Error */
-    public static void F(java.io.File paramFile)
+    if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      // Byte code:
-      //   0: ldc 36
-      //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   5: aload_0
-      //   6: invokevirtual 42	java/io/File:exists	()Z
-      //   9: ifne +7 -> 16
-      //   12: aload_0
-      //   13: invokestatic 47	com/tencent/mm/ca/k$b:I	(Ljava/io/File;)V
-      //   16: ldc 2
-      //   18: monitorenter
-      //   19: new 21	java/util/LinkedList
-      //   22: dup
-      //   23: getstatic 26	com/tencent/mm/ca/a$a:ELh	Ljava/util/List;
-      //   26: invokespecial 50	java/util/LinkedList:<init>	(Ljava/util/Collection;)V
-      //   29: astore_1
-      //   30: getstatic 26	com/tencent/mm/ca/a$a:ELh	Ljava/util/List;
-      //   33: invokeinterface 55 1 0
-      //   38: ldc 2
-      //   40: monitorexit
-      //   41: new 57	java/io/PrintWriter
-      //   44: dup
-      //   45: new 59	java/io/OutputStreamWriter
-      //   48: dup
-      //   49: new 61	java/io/FileOutputStream
-      //   52: dup
-      //   53: aload_0
-      //   54: iconst_1
-      //   55: invokespecial 64	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-      //   58: ldc 66
-      //   60: invokespecial 69	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
-      //   63: invokespecial 72	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
-      //   66: astore_2
-      //   67: aload_2
-      //   68: astore_0
-      //   69: aload_1
-      //   70: invokeinterface 76 1 0
-      //   75: astore_3
-      //   76: aload_2
-      //   77: astore_0
-      //   78: aload_3
-      //   79: invokeinterface 81 1 0
-      //   84: ifeq +200 -> 284
-      //   87: aload_2
-      //   88: astore_0
-      //   89: aload_3
-      //   90: invokeinterface 85 1 0
-      //   95: checkcast 87	com/tencent/mm/ca/a$b
-      //   98: astore 4
-      //   100: aload_2
-      //   101: astore_0
-      //   102: new 89	java/lang/StringBuilder
-      //   105: dup
-      //   106: invokespecial 90	java/lang/StringBuilder:<init>	()V
-      //   109: getstatic 94	com/tencent/mm/ca/a$b:ELj	Ljava/text/SimpleDateFormat;
-      //   112: aload 4
-      //   114: getfield 98	com/tencent/mm/ca/a$b:time	J
-      //   117: invokestatic 104	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-      //   120: invokevirtual 110	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
-      //   123: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   126: ldc 116
-      //   128: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   131: astore 5
-      //   133: aload_2
-      //   134: astore_0
-      //   135: aload 4
-      //   137: getfield 119	com/tencent/mm/ca/a$b:priority	I
-      //   140: tableswitch	default:+178 -> 318, 4:+132->272, 5:+138->278
-      //   165: astore_0
-      //   166: aload_2
-      //   167: aload 5
-      //   169: aload_1
-      //   170: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   173: ldc 121
-      //   175: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   178: aload 4
-      //   180: getfield 125	com/tencent/mm/ca/a$b:tag	Ljava/lang/String;
-      //   183: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   186: ldc 127
-      //   188: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   191: aload 4
-      //   193: getfield 130	com/tencent/mm/ca/a$b:ELk	Ljava/lang/String;
-      //   196: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   199: ldc 132
-      //   201: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   204: aload 4
-      //   206: getfield 135	com/tencent/mm/ca/a$b:bLg	Ljava/lang/String;
-      //   209: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   212: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   215: invokevirtual 143	java/io/PrintWriter:println	(Ljava/lang/String;)V
-      //   218: goto -142 -> 76
-      //   221: astore_0
-      //   222: aload_2
-      //   223: astore_1
-      //   224: aload_0
-      //   225: astore_2
-      //   226: aload_1
-      //   227: astore_0
-      //   228: ldc 145
-      //   230: ldc 147
-      //   232: aload_2
-      //   233: invokestatic 151	com/tencent/mm/ca/a:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-      //   236: aload_1
-      //   237: invokestatic 155	com/tencent/mm/ca/k$b:closeQuietly	(Ljava/lang/Object;)V
-      //   240: ldc 36
-      //   242: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   245: return
-      //   246: astore_0
-      //   247: ldc 145
-      //   249: ldc 157
-      //   251: aload_0
-      //   252: invokestatic 151	com/tencent/mm/ca/a:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-      //   255: ldc 36
-      //   257: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   260: return
-      //   261: astore_0
-      //   262: ldc 2
-      //   264: monitorexit
-      //   265: ldc 36
-      //   267: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   270: aload_0
-      //   271: athrow
-      //   272: ldc 159
-      //   274: astore_1
-      //   275: goto -111 -> 164
-      //   278: ldc 161
-      //   280: astore_1
-      //   281: goto -117 -> 164
-      //   284: aload_2
-      //   285: invokestatic 155	com/tencent/mm/ca/k$b:closeQuietly	(Ljava/lang/Object;)V
-      //   288: ldc 36
-      //   290: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   293: return
-      //   294: astore_1
-      //   295: aconst_null
-      //   296: astore_0
-      //   297: aload_0
-      //   298: invokestatic 155	com/tencent/mm/ca/k$b:closeQuietly	(Ljava/lang/Object;)V
-      //   301: ldc 36
-      //   303: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   306: aload_1
-      //   307: athrow
-      //   308: astore_1
-      //   309: goto -12 -> 297
-      //   312: astore_2
-      //   313: aconst_null
-      //   314: astore_1
-      //   315: goto -89 -> 226
-      //   318: ldc 163
-      //   320: astore_1
-      //   321: goto -157 -> 164
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	324	0	paramFile	java.io.File
-      //   29	252	1	localObject1	Object
-      //   294	13	1	localObject2	Object
-      //   308	1	1	localObject3	Object
-      //   314	7	1	str	String
-      //   66	219	2	localObject4	Object
-      //   312	1	2	localIOException	java.io.IOException
-      //   75	15	3	localIterator	java.util.Iterator
-      //   98	107	4	localb	a.b
-      //   131	37	5	localStringBuilder	java.lang.StringBuilder
-      // Exception table:
-      //   from	to	target	type
-      //   69	76	221	java/io/IOException
-      //   78	87	221	java/io/IOException
-      //   89	100	221	java/io/IOException
-      //   102	133	221	java/io/IOException
-      //   135	164	221	java/io/IOException
-      //   166	218	221	java/io/IOException
-      //   12	16	246	java/io/IOException
-      //   19	41	261	finally
-      //   262	265	261	finally
-      //   41	67	294	finally
-      //   69	76	308	finally
-      //   78	87	308	finally
-      //   89	100	308	finally
-      //   102	133	308	finally
-      //   135	164	308	finally
-      //   166	218	308	finally
-      //   228	236	308	finally
-      //   41	67	312	java/io/IOException
-    }
-    
-    public static void log(int paramInt, String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(189821);
-      a.b localb = a.b.eCs();
-      long l = System.currentTimeMillis();
-      String str = Thread.currentThread().getName();
-      localb.priority = paramInt;
-      localb.time = l;
-      localb.tag = paramString1;
-      localb.ELk = str;
-      localb.bLg = paramString2;
-      try
+      Object localObject1;
+      Object localObject2;
+      if ((paramn instanceof l))
       {
-        ELh.add(localb);
+        paramString = (l)paramn;
+        if ((paramString != null) && (paramString.hIN))
+        {
+          localObject1 = paramString.hIM;
+          paramn = (cpa)this.vDn.remove(paramString.hIR);
+          if ((localObject1 != null) && (paramn != null))
+          {
+            localObject1 = bv.L((String)localObject1, "msg");
+            if (localObject1 == null)
+            {
+              ac.w("MicroMsg.MediaSecurityReport", "attrs == null!");
+              AppMethodBeat.o(9327);
+              return;
+            }
+            localObject2 = paramn.FBO;
+            ((cou)localObject2).EBF = ((String)((Map)localObject1).get(".msg.img.$cdnmidimgurl"));
+            ((cou)localObject2).AesKey = ((String)((Map)localObject1).get(".msg.img.$aeskey"));
+            ((cou)localObject2).MD5 = "";
+            ac.i("MicroMsg.MediaSecurityReport", "report! OrigImgPath:%s", new Object[] { paramString.hIR });
+            new b(paramn).doScene(com.tencent.mm.kernel.g.agi().hwg, new com.tencent.mm.ak.g()
+            {
+              public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+              {
+                AppMethodBeat.i(9322);
+                paramAnonymousn.setHasCallbackToQueue(true);
+                if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+                {
+                  ac.e("MicroMsg.MediaSecurityReport", "report error![%s:%s] %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), a.a(paramn) });
+                  AppMethodBeat.o(9322);
+                  return;
+                }
+                ac.i("MicroMsg.MediaSecurityReport", "report successfully! %s", new Object[] { a.a(paramn) });
+                AppMethodBeat.o(9322);
+              }
+            });
+          }
+        }
+        AppMethodBeat.o(9327);
         return;
       }
-      finally
+      if ((paramn instanceof com.tencent.mm.modelvideo.g))
       {
-        AppMethodBeat.o(189821);
+        paramn = (com.tencent.mm.modelvideo.g)paramn;
+        if (paramn != null)
+        {
+          localObject1 = (cpa)this.vDn.remove(paramn.fileName);
+          if (paramn.hYO == null) {
+            paramString = "";
+          }
+          while ((paramString != null) && (localObject1 != null))
+          {
+            localObject2 = bv.L(paramString, "msg");
+            if (localObject2 == null)
+            {
+              ac.w("MicroMsg.MediaSecurityReport", "attrs == null!");
+              AppMethodBeat.o(9327);
+              return;
+              paramString = paramn.hYO.aJK();
+            }
+            else
+            {
+              paramString = ((cpa)localObject1).FBP;
+              paramString.AesKey = ((String)((Map)localObject2).get(".msg.videomsg.$aeskey"));
+              paramString.EBF = ((String)((Map)localObject2).get(".msg.videomsg.$cdnvideourll"));
+              localObject2 = paramn.hYO;
+              paramString.MD5 = ((s)localObject2).dwi;
+              paramString.FCC = "";
+              paramString.FCD = ((s)localObject2).hpy;
+              paramString.FCE = paramString.EBF;
+              paramString.FCF = paramString.AesKey;
+              com.tencent.mm.modelvideo.o.aJy();
+              paramString.FCG = f.Ck(com.tencent.mm.modelvideo.t.DW(((s)localObject2).getFileName()));
+              ac.i("MicroMsg.MediaSecurityReport", "report! OrigVideoPath:%s", new Object[] { paramn.fileName });
+              new b((cpa)localObject1).doScene(com.tencent.mm.kernel.g.agi().hwg, new com.tencent.mm.ak.g()
+              {
+                public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+                {
+                  AppMethodBeat.i(9323);
+                  paramAnonymousn.setHasCallbackToQueue(true);
+                  if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+                  {
+                    ac.e("MicroMsg.MediaSecurityReport", "report error![%s:%s] %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), a.a(this.Gjm) });
+                    AppMethodBeat.o(9323);
+                    return;
+                  }
+                  ac.i("MicroMsg.MediaSecurityReport", "report successfully! %s", new Object[] { a.a(this.Gjm) });
+                  AppMethodBeat.o(9323);
+                }
+              });
+            }
+          }
+        }
       }
     }
+    AppMethodBeat.o(9327);
   }
   
-  public static final class b
+  public final void recordImage(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
   {
-    private static final l.c<b> ELi;
-    static final SimpleDateFormat ELj;
-    public String ELk;
-    public String bLg;
-    public int priority;
-    public String tag;
-    public long time;
-    
-    static
+    AppMethodBeat.i(9326);
+    Object localObject1;
+    if (paramLong <= 0L)
     {
-      AppMethodBeat.i(189825);
-      ELi = new l.c(20);
-      ELj = new SimpleDateFormat("MM-dd HH:mm:ss.SSS", Locale.US);
-      AppMethodBeat.o(189825);
-    }
-    
-    public static b eCs()
-    {
-      AppMethodBeat.i(189824);
-      b localb = (b)ELi.acquire();
-      if (localb != null)
-      {
-        AppMethodBeat.o(189824);
-        return localb;
+      Object localObject2 = com.tencent.mm.av.o.aFx();
+      String str = f.Ck(paramString1);
+      localObject1 = new e();
+      localObject2 = ((com.tencent.mm.av.g)localObject2).a("ImgInfo2", null, "origImgMD5=?", new String[] { String.valueOf(str) });
+      if (((Cursor)localObject2).moveToFirst()) {
+        ((e)localObject1).convertFrom((Cursor)localObject2);
       }
-      localb = new b();
-      AppMethodBeat.o(189824);
-      return localb;
+      ((Cursor)localObject2).close();
     }
+    while (((e)localObject1).dcd > 0L)
+    {
+      localObject1 = bv.L(((e)localObject1).hGY, "msg");
+      if (localObject1 == null)
+      {
+        ac.w("MicroMsg.MediaSecurityReport", "attrs == null! %s %s", new Object[] { paramString1, Long.valueOf(paramLong) });
+        AppMethodBeat.o(9326);
+        return;
+        localObject1 = com.tencent.mm.av.o.aFx().c(Long.valueOf(paramLong));
+      }
+      else
+      {
+        paramString1 = new cpa();
+        paramString1.ndI = 1;
+        paramString1.Ebg = paramString4;
+        paramString1.EmotionList = new LinkedList(bs.S(paramString3.split(",")));
+        paramString3 = new cou();
+        paramString3.FBF = ((String)((Map)localObject1).get(".msg.img.$cdnmidimgurl"));
+        paramString3.FBG = ((String)((Map)localObject1).get(".msg.img.$aeskey"));
+        paramString3.FBH = "";
+        paramString1.FBO = paramString3;
+        this.vDn.put(paramString2, paramString1);
+        AppMethodBeat.o(9326);
+        return;
+      }
+    }
+    ac.w("MicroMsg.MediaSecurityReport", "[recordImage] imgInfo is null! %s %s", new Object[] { paramString1, Long.valueOf(paramLong) });
+    AppMethodBeat.o(9326);
+  }
+  
+  public final void recordVideo(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(9325);
+    s locals = u.Ej(paramString1);
+    if ((locals != null) && (locals.iaJ > 0))
+    {
+      Map localMap = bv.L(locals.aJK(), "msg");
+      if (localMap == null)
+      {
+        ac.w("MicroMsg.MediaSecurityReport", "attrs == null! %s", new Object[] { paramString1 });
+        AppMethodBeat.o(9325);
+        return;
+      }
+      cpa localcpa = new cpa();
+      localcpa.ndI = 2;
+      localcpa.Ebg = paramString4;
+      localcpa.EmotionList = new LinkedList(bs.S(paramString3.split(",")));
+      paramString3 = new cpq();
+      paramString3.FBH = locals.dwi;
+      paramString3.FCH = "";
+      paramString3.FCL = locals.hpy;
+      com.tencent.mm.modelvideo.o.aJy();
+      paramString3.FCK = f.Ck(com.tencent.mm.modelvideo.t.DW(paramString1));
+      paramString3.FCI = ((String)localMap.get(".msg.videomsg.$cdnvideourl"));
+      paramString3.FCJ = ((String)localMap.get(".msg.videomsg.$aeskey"));
+      localcpa.FBP = paramString3;
+      this.vDn.put(paramString2, localcpa);
+      AppMethodBeat.o(9325);
+      return;
+    }
+    ac.w("MicroMsg.MediaSecurityReport", "[recordVideo] imgInfo is null! %s", new Object[] { paramString1 });
+    AppMethodBeat.o(9325);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ca.a
  * JD-Core Version:    0.7.0.1
  */

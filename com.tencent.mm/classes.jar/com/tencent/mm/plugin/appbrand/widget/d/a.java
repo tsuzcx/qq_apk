@@ -8,52 +8,52 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class a
   extends Drawable
 {
+  private final RectF bYy;
   private Paint borderPaint;
   float borderRadius;
   private int borderWidth;
-  private final RectF cbB;
-  private Path mhf;
-  private Path mhg;
-  private int mhh;
-  private int mhi;
+  private Path mJg;
+  private Path mJh;
+  private int mJi;
+  private int mJj;
   private Paint paint;
   
   public a()
   {
     AppMethodBeat.i(146565);
-    this.cbB = new RectF();
+    this.bYy = new RectF();
     this.borderRadius = 0.0F;
     this.borderWidth = 0;
-    this.mhh = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 3);
-    this.mhi = this.mhh;
+    this.mJi = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 3);
+    this.mJj = this.mJi;
     this.paint = new Paint(1);
     this.paint.setStyle(Paint.Style.FILL);
     this.borderPaint = new Paint(1);
     this.borderPaint.setStyle(Paint.Style.FILL);
-    this.mhf = new Path();
-    this.mhg = new Path();
+    this.mJg = new Path();
+    this.mJh = new Path();
     AppMethodBeat.o(146565);
   }
   
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(146566);
-    float f5 = this.cbB.width();
-    float f6 = this.cbB.height();
-    float f1 = this.cbB.left;
-    float f2 = this.cbB.top;
-    float f3 = this.cbB.right;
-    float f4 = this.cbB.bottom;
+    float f5 = this.bYy.width();
+    float f6 = this.bYy.height();
+    float f1 = this.bYy.left;
+    float f2 = this.bYy.top;
+    float f3 = this.bYy.right;
+    float f4 = this.bYy.bottom;
     f5 = Math.min(this.borderRadius, Math.min(f5, f6) * 0.5F);
-    paramCanvas.drawRoundRect(new RectF(this.mhi + f1, this.mhi + f2, f3 - this.mhi, f4 - this.mhi), f5, f5, this.borderPaint);
-    paramCanvas.drawPath(this.mhg, this.borderPaint);
-    paramCanvas.drawRoundRect(new RectF(f1 + this.mhi + this.borderWidth, f2 + this.mhi + this.borderWidth, f3 - this.mhi - this.borderWidth, f4 - this.mhi - this.borderWidth), f5, f5, this.paint);
-    paramCanvas.drawPath(this.mhf, this.paint);
+    paramCanvas.drawRoundRect(new RectF(this.mJj + f1, this.mJj + f2, f3 - this.mJj, f4 - this.mJj), f5, f5, this.borderPaint);
+    paramCanvas.drawPath(this.mJh, this.borderPaint);
+    paramCanvas.drawRoundRect(new RectF(f1 + this.mJj + this.borderWidth, f2 + this.mJj + this.borderWidth, f3 - this.mJj - this.borderWidth, f4 - this.mJj - this.borderWidth), f5, f5, this.paint);
+    paramCanvas.drawPath(this.mJg, this.paint);
     AppMethodBeat.o(146566);
   }
   
@@ -74,16 +74,16 @@ public final class a
   {
     AppMethodBeat.i(146567);
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.cbB.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.bYy.set(paramInt1, paramInt2, paramInt3, paramInt4);
     float f = (paramInt1 + paramInt3) / 2.0F;
-    this.mhg.moveTo(f, paramInt4);
-    this.mhg.lineTo(f - this.mhi, paramInt4 - this.mhi);
-    this.mhg.lineTo(this.mhi + f, paramInt4 - this.mhi);
-    this.mhg.close();
-    this.mhf.moveTo(f, paramInt4 - this.borderWidth);
-    this.mhf.lineTo(f - this.mhi, paramInt4 - this.mhi - this.borderWidth);
-    this.mhf.lineTo(f + this.mhi, paramInt4 - this.mhi - this.borderWidth);
-    this.mhf.close();
+    this.mJh.moveTo(f, paramInt4);
+    this.mJh.lineTo(f - this.mJj, paramInt4 - this.mJj);
+    this.mJh.lineTo(this.mJj + f, paramInt4 - this.mJj);
+    this.mJh.close();
+    this.mJg.moveTo(f, paramInt4 - this.borderWidth);
+    this.mJg.lineTo(f - this.mJj, paramInt4 - this.mJj - this.borderWidth);
+    this.mJg.lineTo(f + this.mJj, paramInt4 - this.mJj - this.borderWidth);
+    this.mJg.close();
     AppMethodBeat.o(146567);
   }
   
@@ -106,14 +106,14 @@ public final class a
   {
     AppMethodBeat.i(146571);
     this.borderWidth = paramInt1;
-    this.mhi = (paramInt1 / 3 + this.mhh);
+    this.mJj = (paramInt1 / 3 + this.mJi);
     this.borderPaint.setColor(paramInt2);
     AppMethodBeat.o(146571);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.d.a
  * JD-Core Version:    0.7.0.1
  */

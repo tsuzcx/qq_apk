@@ -7,29 +7,29 @@ import android.media.MediaCodec.CodecException;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.z;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.a.m;
 import d.g.b.k;
 import d.l;
 import d.y;
 import java.nio.ByteBuffer;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/decoder/MediaCodecAACDecoderAsync;", "Lcom/tencent/mm/media/decoder/IAudioDecoder;", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "audioId", "", "startTimeMs", "", "endTimeMs", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJ)V", "frameDecodeCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "pcmData", "pts", "", "frameDecodeEndCallback", "Lkotlin/Function0;", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V", "aacCallback", "Landroid/media/MediaCodec$Callback;", "endTimeMsChanged", "sawInputEOS", "", "zeroCount", "", "startDecoder", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/decoder/MediaCodecAACDecoderAsync;", "Lcom/tencent/mm/media/decoder/IAudioDecoder;", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "audioId", "", "startTimeMs", "", "endTimeMs", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJ)V", "frameDecodeCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "pcmData", "pts", "", "frameDecodeEndCallback", "Lkotlin/Function0;", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V", "aacCallback", "Landroid/media/MediaCodec$Callback;", "endTimeMsChanged", "sawInputEOS", "", "zeroCount", "", "startDecoder", "Companion", "plugin-mediaeditor_release"})
 public final class h
   extends e
 {
   private static final String TAG = "MicroMsg.MediaCodecAACDecoderAsync";
-  public static final h.a gor;
-  private int gom;
-  private long gon;
-  private boolean goo;
-  private MediaCodec.Callback goq;
+  public static final h.a gPa;
+  private int gOW;
+  private long gOX;
+  private boolean gOY;
+  private MediaCodec.Callback gOZ;
   
   static
   {
     AppMethodBeat.i(93543);
-    gor = new h.a((byte)0);
+    gPa = new h.a((byte)0);
     TAG = "MicroMsg.MediaCodecAACDecoderAsync";
     AppMethodBeat.o(93543);
   }
@@ -45,12 +45,12 @@ public final class h
   {
     super(parama, paramString, paramLong1, paramLong2, paramm, parama1);
     AppMethodBeat.i(93541);
-    this.gon = paramLong2;
-    this.goq = ((MediaCodec.Callback)new b(this, paramString, paramLong1, parama));
-    parama = this.gnF;
+    this.gOX = paramLong2;
+    this.gOZ = ((MediaCodec.Callback)new b(this, paramString, paramLong1, parama));
+    parama = this.gOr;
     if (parama != null)
     {
-      parama.setCallback(this.goq);
+      parama.setCallback(this.gOZ);
       AppMethodBeat.o(93541);
       return;
     }
@@ -62,22 +62,22 @@ public final class h
     AppMethodBeat.i(93540);
     try
     {
-      z localz = this.gnF;
+      z localz = this.gOr;
       if (localz != null) {
         localz.start();
       }
-      ad.i(TAG, "startDecoder " + this.cTr);
+      ac.i(TAG, "startDecoder " + this.cQO);
       AppMethodBeat.o(93540);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(TAG, (Throwable)localException, "startDecoder error", new Object[0]);
+      ac.printErrStackTrace(TAG, (Throwable)localException, "startDecoder error", new Object[0]);
       AppMethodBeat.o(93540);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/media/decoder/MediaCodecAACDecoderAsync$aacCallback$1", "Landroid/media/MediaCodec$Callback;", "onError", "", "codec", "Landroid/media/MediaCodec;", "e", "Landroid/media/MediaCodec$CodecException;", "onInputBufferAvailable", "index", "", "onOutputBufferAvailable", "decoderOutputBufferIndex", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "onOutputFormatChanged", "format", "Landroid/media/MediaFormat;", "plugin-mediaeditor_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/media/decoder/MediaCodecAACDecoderAsync$aacCallback$1", "Landroid/media/MediaCodec$Callback;", "onError", "", "codec", "Landroid/media/MediaCodec;", "e", "Landroid/media/MediaCodec$CodecException;", "onInputBufferAvailable", "index", "", "onOutputBufferAvailable", "decoderOutputBufferIndex", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "onOutputFormatChanged", "format", "Landroid/media/MediaFormat;", "plugin-mediaeditor_release"})
   public static final class b
     extends MediaCodec.Callback
   {
@@ -92,14 +92,14 @@ public final class h
       {
         try
         {
-          ad.i(h.access$getTAG$cp(), "onInputBufferAvailable, index:" + paramInt + ", audioId:" + paramString);
-          this.gos.gnJ = bt.GC();
+          ac.i(h.access$getTAG$cp(), "onInputBufferAvailable, index:" + paramInt + ", audioId:" + paramString);
+          this.gPb.gOv = bs.Gn();
           if (paramInt < 0)
           {
             AppMethodBeat.o(93538);
             return;
           }
-          paramMediaCodec = this.gos.gnF;
+          paramMediaCodec = this.gPb.gOr;
           if (paramMediaCodec != null)
           {
             paramMediaCodec = paramMediaCodec.getInputBuffer(paramInt);
@@ -115,45 +115,45 @@ public final class h
         }
         catch (Exception paramMediaCodec)
         {
-          ad.printErrStackTrace(h.access$getTAG$cp(), (Throwable)paramMediaCodec, "", new Object[0]);
+          ac.printErrStackTrace(h.access$getTAG$cp(), (Throwable)paramMediaCodec, "", new Object[0]);
           AppMethodBeat.o(93538);
           return;
         }
         paramMediaCodec = null;
       }
-      h.a(this.gos, false);
-      if (!this.gov.k(paramMediaCodec))
+      h.a(this.gPb, false);
+      if (!this.gPe.k(paramMediaCodec))
       {
-        ad.i(h.access$getTAG$cp(), "read sample end");
-        h.a(this.gos, true);
+        ac.i(h.access$getTAG$cp(), "read sample end");
+        h.a(this.gPb, true);
       }
       long l1 = 0L;
       int j;
-      if (!h.c(this.gos))
+      if (!h.c(this.gPb))
       {
-        j = this.gov.sampleSize;
+        j = this.gPe.sampleSize;
         paramMediaCodec.position(0);
-        long l2 = this.gov.getSampleTime();
-        ad.i(h.access$getTAG$cp(), "sampleTime : " + l2 + ", sampleSize:" + j + ", audioId:" + paramString);
+        long l2 = this.gPe.getSampleTime();
+        ac.i(h.access$getTAG$cp(), "sampleTime : " + l2 + ", sampleSize:" + j + ", audioId:" + paramString);
         if (j >= 0)
         {
           i = j;
           l1 = l2;
-          if (l2 < h.b(this.gos) * 1000L) {}
+          if (l2 < h.b(this.gPb) * 1000L) {}
         }
         else
         {
-          h.a(this.gos, true);
-          ad.i(h.access$getTAG$cp(), "sawInputEOS, audioId:" + paramString);
+          h.a(this.gPb, true);
+          ac.i(h.access$getTAG$cp(), "sawInputEOS, audioId:" + paramString);
           l1 = l2;
         }
       }
       for (int i = j;; i = 0)
       {
-        paramMediaCodec = this.gos.gnF;
+        paramMediaCodec = this.gPb.gOr;
         if (paramMediaCodec != null)
         {
-          if (h.c(this.gos)) {}
+          if (h.c(this.gPb)) {}
           for (j = 4;; j = 0)
           {
             paramMediaCodec.a(paramInt, i, l1, j);
@@ -173,29 +173,29 @@ public final class h
       long l;
       try
       {
-        ad.i(h.access$getTAG$cp(), "onOutputBufferAvailable, index:" + paramInt + ", bufferInfo:" + paramBufferInfo + " size:" + paramBufferInfo.size + ", audioId:" + paramString);
+        ac.i(h.access$getTAG$cp(), "onOutputBufferAvailable, index:" + paramInt + ", bufferInfo:" + paramBufferInfo + " size:" + paramBufferInfo.size + ", audioId:" + paramString);
         if (paramInt < 0) {
           break label478;
         }
         l = paramBufferInfo.presentationTimeUs;
-        ad.i(h.access$getTAG$cp(), "presentationTimeUs : ".concat(String.valueOf(l)));
+        ac.i(h.access$getTAG$cp(), "presentationTimeUs : ".concat(String.valueOf(l)));
         if ((l < paramLong1 * 1000L) && ((paramBufferInfo.flags & 0x4) == 0))
         {
-          paramMediaCodec = this.gos.gnF;
+          paramMediaCodec = this.gPb.gOr;
           if (paramMediaCodec != null) {
             paramMediaCodec.releaseOutputBuffer(paramInt, false);
           }
-          ad.i(h.access$getTAG$cp(), "decoder pts: " + l + ", not reach start: " + paramLong1 * 1000L + ", audioId:" + paramString);
+          ac.i(h.access$getTAG$cp(), "decoder pts: " + l + ", not reach start: " + paramLong1 * 1000L + ", audioId:" + paramString);
           AppMethodBeat.o(93537);
           return;
         }
         if (paramBufferInfo.size != 0) {
           break label305;
         }
-        ad.i(h.access$getTAG$cp(), "decode zero size:" + paramString + ", zeroCount:" + h.a(this.gos));
-        paramMediaCodec = this.gos;
+        ac.i(h.access$getTAG$cp(), "decode zero size:" + paramString + ", zeroCount:" + h.a(this.gPb));
+        paramMediaCodec = this.gPb;
         h.a(paramMediaCodec, h.a(paramMediaCodec) + 1);
-        paramMediaCodec = this.gos.gnF;
+        paramMediaCodec = this.gPb.gOr;
         if (paramMediaCodec == null) {
           break label299;
         }
@@ -205,7 +205,7 @@ public final class h
       }
       catch (Exception paramMediaCodec)
       {
-        ad.printErrStackTrace(h.access$getTAG$cp(), (Throwable)paramMediaCodec, "", new Object[0]);
+        ac.printErrStackTrace(h.access$getTAG$cp(), (Throwable)paramMediaCodec, "", new Object[0]);
       }
       AppMethodBeat.o(93537);
       return;
@@ -213,31 +213,31 @@ public final class h
       AppMethodBeat.o(93537);
       return;
       label305:
-      paramMediaCodec = this.gos.gnF;
+      paramMediaCodec = this.gPb.gOr;
       if (paramMediaCodec != null) {}
       for (paramMediaCodec = paramMediaCodec.getOutputBuffer(paramInt);; paramMediaCodec = null)
       {
-        this.gos.e(paramMediaCodec, paramBufferInfo);
-        paramMediaCodec = this.gos.gnF;
+        this.gPb.e(paramMediaCodec, paramBufferInfo);
+        paramMediaCodec = this.gPb.gOr;
         if (paramMediaCodec != null) {
           paramMediaCodec.releaseOutputBuffer(paramInt, false);
         }
-        if ((h.b(this.gos) * 1000L != 1L) && (l >= h.b(this.gos) * 1000L))
+        if ((h.b(this.gPb) * 1000L != 1L) && (l >= h.b(this.gPb) * 1000L))
         {
-          ad.e(h.access$getTAG$cp(), "exceed endTimeMs, audioId:" + paramString);
-          this.gos.ajs();
+          ac.e(h.access$getTAG$cp(), "exceed endTimeMs, audioId:" + paramString);
+          this.gPb.aqr();
           AppMethodBeat.o(93537);
           return;
         }
-        if (((paramBufferInfo.flags & 0x4) == 0) && (!h.c(this.gos))) {
+        if (((paramBufferInfo.flags & 0x4) == 0) && (!h.c(this.gPb))) {
           break;
         }
-        ad.i(h.access$getTAG$cp(), "receive eos! audioId:" + paramString);
-        this.gos.ajs();
+        ac.i(h.access$getTAG$cp(), "receive eos! audioId:" + paramString);
+        this.gPb.aqr();
         AppMethodBeat.o(93537);
         return;
         label478:
-        paramMediaCodec = this.gos.gnF;
+        paramMediaCodec = this.gPb.gOr;
         if (paramMediaCodec != null)
         {
           paramMediaCodec.releaseOutputBuffer(paramInt, false);
@@ -252,11 +252,11 @@ public final class h
     public final void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
     {
       AppMethodBeat.i(93539);
-      this.gos.gmG = paramMediaFormat;
-      paramMediaCodec = this.gos.gmG;
+      this.gPb.gNt = paramMediaFormat;
+      paramMediaCodec = this.gPb.gNt;
       if ((paramMediaCodec != null) && (paramMediaCodec.containsKey("sample-rate") == true))
       {
-        paramMediaCodec = this.gos.gmG;
+        paramMediaCodec = this.gPb.gNt;
         if (paramMediaCodec == null) {
           break label133;
         }
@@ -265,9 +265,9 @@ public final class h
       for (int i = paramMediaCodec.getInteger("sample-rate");; i = 0)
       {
         if (i > 0) {
-          this.gos.gnI = i;
+          this.gPb.gOu = i;
         }
-        ad.i(h.access$getTAG$cp(), "onOutputFormatChanged:" + this.gos.gmG + ", aacSampleRate:" + this.gos.gnI + ", audioId:" + paramString);
+        ac.i(h.access$getTAG$cp(), "onOutputFormatChanged:" + this.gPb.gNt + ", aacSampleRate:" + this.gPb.gOu + ", audioId:" + paramString);
         AppMethodBeat.o(93539);
         return;
       }

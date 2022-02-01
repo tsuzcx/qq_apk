@@ -32,29 +32,29 @@ import java.util.Map;
 
 public final class ad
 {
-  private final String JSR;
-  final n JUS;
-  private final d.g.a.b<Integer, e> JVo;
-  private final d.g.a.b<Integer, h> JVp;
-  private final Map<Integer, as> JVq;
-  private final ad JVr;
-  private final String JVs;
-  boolean JVt;
+  private final String LGk;
+  private final d.g.a.b<Integer, e> LIH;
+  private final d.g.a.b<Integer, h> LII;
+  private final Map<Integer, as> LIJ;
+  private final ad LIK;
+  private final String LIL;
+  boolean LIM;
+  final n LIl;
   
   private ad(n paramn, ad paramad, List<a.r> paramList, String paramString1, String paramString2)
   {
     AppMethodBeat.i(60383);
-    this.JUS = paramn;
-    this.JVr = paramad;
-    this.JSR = paramString1;
-    this.JVs = paramString2;
-    this.JVt = false;
-    this.JVo = ((d.g.a.b)this.JUS.JEr.JlL.B((d.g.a.b)new a(this)));
-    this.JVp = ((d.g.a.b)this.JUS.JEr.JlL.B((d.g.a.b)new d(this)));
+    this.LIl = paramn;
+    this.LIK = paramad;
+    this.LGk = paramString1;
+    this.LIL = paramString2;
+    this.LIM = false;
+    this.LIH = ((d.g.a.b)this.LIl.LrK.KZf.J((d.g.a.b)new a(this)));
+    this.LII = ((d.g.a.b)this.LIl.LrK.KZf.J((d.g.a.b)new d(this)));
     if (paramList.isEmpty()) {}
     for (paramn = ae.emptyMap();; paramn = (Map)paramn)
     {
-      this.JVq = paramn;
+      this.LIJ = paramn;
       AppMethodBeat.o(60383);
       return;
       paramn = new LinkedHashMap();
@@ -63,7 +63,7 @@ public final class ad
       while (paramad.hasNext())
       {
         paramList = (a.r)paramad.next();
-        ((Map)paramn).put(Integer.valueOf(paramList.JFL), new m(this.JUS, paramList, i));
+        ((Map)paramn).put(Integer.valueOf(paramList.Lte), new m(this.LIl, paramList, i));
         i += 1;
       }
     }
@@ -81,7 +81,7 @@ public final class ad
       paramg = (d.l.b.a.b.b.a.g)localObject;
       if (localObject == null)
       {
-        paramg = u.M("Bad suspend function in metadata with constructor: ".concat(String.valueOf(paramat)), paramList);
+        paramg = u.I("Bad suspend function in metadata with constructor: ".concat(String.valueOf(paramat)), paramList);
         d.g.b.k.g(paramg, "ErrorUtils.createErrorTy…      arguments\n        )");
       }
       AppMethodBeat.o(60375);
@@ -91,9 +91,9 @@ public final class ad
       int i = paramList.size() - 1;
       if (i >= 0)
       {
-        localObject = paramat.fza().adS(i);
+        localObject = paramat.fRE().agO(i);
         d.g.b.k.g(localObject, "functionTypeConstructor.…getSuspendFunction(arity)");
-        localObject = ((e)localObject).fxs();
+        localObject = ((e)localObject).fPW();
         d.g.b.k.g(localObject, "functionTypeConstructor.…on(arity).typeConstructor");
         localObject = d.l.b.a.b.m.ac.c(paramg, (at)localObject, paramList, paramBoolean);
       }
@@ -104,15 +104,15 @@ public final class ad
   {
     AppMethodBeat.i(60378);
     d.l.b.a.b.a.g localg = d.l.b.a.b.m.d.a.aN(paramab1);
-    d.l.b.a.b.b.a.g localg1 = paramab1.fxF();
+    d.l.b.a.b.b.a.g localg1 = paramab1.fQj();
     ab localab = d.l.b.a.b.a.f.h(paramab1);
-    Object localObject = (Iterable)d.a.j.iE(d.l.b.a.b.a.f.j(paramab1));
+    Object localObject = (Iterable)d.a.j.iU(d.l.b.a.b.a.f.j(paramab1));
     Collection localCollection = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      localCollection.add(((av)((Iterator)localObject).next()).fzr());
+      localCollection.add(((av)((Iterator)localObject).next()).fRV());
     }
-    paramab1 = d.l.b.a.b.a.f.a(localg, localg1, localab, (List)localCollection, paramab2, true).xW(paramab1.fBT());
+    paramab1 = d.l.b.a.b.a.f.a(localg, localg1, localab, (List)localCollection, paramab2, true).zo(paramab1.fUx());
     AppMethodBeat.o(60378);
     return paramab1;
   }
@@ -120,11 +120,11 @@ public final class ad
   private final av a(as paramas, a.p.a parama)
   {
     AppMethodBeat.i(60381);
-    if (parama.JIz == a.p.a.b.JIF)
+    if (parama.LvS == a.p.a.b.LvY)
     {
       if (paramas == null)
       {
-        paramas = (av)new an(this.JUS.JEr.Jpd.fza());
+        paramas = (av)new an(this.LIl.LrK.Lcw.fRE());
         AppMethodBeat.o(60381);
         return paramas;
       }
@@ -132,14 +132,14 @@ public final class ad
       AppMethodBeat.o(60381);
       return paramas;
     }
-    paramas = aa.JVi;
-    paramas = parama.JIz;
+    paramas = aa.LIB;
+    paramas = parama.LvS;
     d.g.b.k.g(paramas, "typeArgumentProto.projection");
     paramas = aa.b(paramas);
-    parama = d.l.b.a.b.e.b.g.a(parama, this.JUS.Jiv);
+    parama = d.l.b.a.b.e.b.g.a(parama, this.LIl.KVP);
     if (parama == null)
     {
-      paramas = (av)new ax((ab)u.aQS("No type recorded"));
+      paramas = (av)new ax((ab)u.aWR("No type recorded"));
       AppMethodBeat.o(60381);
       return paramas;
     }
@@ -148,22 +148,22 @@ public final class ad
     return paramas;
   }
   
-  private final at afS(int paramInt)
+  private final at aiO(int paramInt)
   {
     AppMethodBeat.i(60379);
     Object localObject1 = this;
     do
     {
-      localObject2 = (as)((ad)localObject1).JVq.get(Integer.valueOf(paramInt));
+      localObject2 = (as)((ad)localObject1).LIJ.get(Integer.valueOf(paramInt));
       if (localObject2 != null)
       {
-        at localat = ((as)localObject2).fxs();
+        at localat = ((as)localObject2).fPW();
         localObject2 = localat;
         if (localat != null) {
           break;
         }
       }
-      localObject2 = ((ad)localObject1).JVr;
+      localObject2 = ((ad)localObject1).LIK;
       localObject1 = localObject2;
     } while (localObject2 != null);
     Object localObject2 = null;
@@ -171,10 +171,10 @@ public final class ad
     return localObject2;
   }
   
-  private final aj afT(int paramInt)
+  private final aj aiP(int paramInt)
   {
     AppMethodBeat.i(60380);
-    if (x.a(this.JUS.Jiu, paramInt).BOl)
+    if (x.a(this.LIl.KVO, paramInt).Dgz)
     {
       AppMethodBeat.o(60380);
       return null;
@@ -187,10 +187,10 @@ public final class ad
   {
     Object localObject2 = null;
     AppMethodBeat.i(60377);
-    Object localObject1 = (av)d.a.j.iB(d.l.b.a.b.a.f.j(paramab));
+    Object localObject1 = (av)d.a.j.iR(d.l.b.a.b.a.f.j(paramab));
     if (localObject1 != null)
     {
-      localObject3 = ((av)localObject1).fzr();
+      localObject3 = ((av)localObject1).fRV();
       if (localObject3 != null) {}
     }
     else
@@ -199,17 +199,17 @@ public final class ad
       return null;
     }
     d.g.b.k.g(localObject3, "funType.getValueParamete…ll()?.type ?: return null");
-    localObject1 = ((ab)localObject3).fIW().fxM();
+    localObject1 = ((ab)localObject3).gbz().fQq();
     if (localObject1 != null) {}
-    for (localObject1 = d.l.b.a.b.j.d.a.o((d.l.b.a.b.b.l)localObject1); (((ab)localObject3).fIT().size() != 1) || ((!d.l.b.a.b.a.k.a((d.l.b.a.b.f.b)localObject1, true)) && (!d.l.b.a.b.a.k.a((d.l.b.a.b.f.b)localObject1, false))); localObject1 = null)
+    for (localObject1 = d.l.b.a.b.j.d.a.o((d.l.b.a.b.b.l)localObject1); (((ab)localObject3).gbw().size() != 1) || ((!d.l.b.a.b.a.k.a((d.l.b.a.b.f.b)localObject1, true)) && (!d.l.b.a.b.a.k.a((d.l.b.a.b.f.b)localObject1, false))); localObject1 = null)
     {
       paramab = (aj)paramab;
       AppMethodBeat.o(60377);
       return paramab;
     }
-    ab localab = ((av)d.a.j.iC(((ab)localObject3).fIT())).fzr();
+    ab localab = ((av)d.a.j.iS(((ab)localObject3).gbw())).fRV();
     d.g.b.k.g(localab, "continuationArgumentType.arguments.single().type");
-    Object localObject3 = this.JUS.Jtl;
+    Object localObject3 = this.LIl.LgE;
     localObject1 = localObject3;
     if (!(localObject3 instanceof d.l.b.a.b.b.a)) {
       localObject1 = null;
@@ -219,16 +219,16 @@ public final class ad
     if (localObject3 != null) {
       localObject1 = d.l.b.a.b.j.d.a.I((d.l.b.a.b.b.l)localObject3);
     }
-    if (d.g.b.k.g(localObject1, ac.JVn))
+    if (d.g.b.k.g(localObject1, ac.LIG))
     {
       paramab = a(paramab, localab);
       AppMethodBeat.o(60377);
       return paramab;
     }
-    if (this.JVt) {}
+    if (this.LIM) {}
     for (boolean bool = true;; bool = false)
     {
-      this.JVt = bool;
+      this.LIM = bool;
       paramab = a(paramab, localab);
       AppMethodBeat.o(60377);
       return paramab;
@@ -255,25 +255,25 @@ public final class ad
     Object localObject3 = new e(this, paramp);
     Object localObject2;
     Object localObject1;
-    if (paramp.fEV())
+    if (paramp.fXz())
     {
-      localObject2 = (e)this.JVo.aA(Integer.valueOf(paramp.JIq));
+      localObject2 = (e)this.LIH.ay(Integer.valueOf(paramp.LvJ));
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = ((e)localObject3).afU(paramp.JIq);
+        localObject1 = ((e)localObject3).aiQ(paramp.LvJ);
       }
-      paramp = ((e)localObject1).fxs();
+      paramp = ((e)localObject1).fPW();
       d.g.b.k.g(paramp, "(classDescriptors(proto.…assName)).typeConstructor");
       AppMethodBeat.o(60374);
       return paramp;
     }
-    if (paramp.fEW())
+    if (paramp.fXA())
     {
-      localObject2 = afS(paramp.JIr);
+      localObject2 = aiO(paramp.LvK);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        paramp = u.aQU("Unknown type parameter " + paramp.JIr + ". Please try recompiling module containing \"" + this.JVs + '"');
+        paramp = u.aWT("Unknown type parameter " + paramp.LvK + ". Please try recompiling module containing \"" + this.LIL + '"');
         d.g.b.k.g(paramp, "ErrorUtils.createErrorTy…\\\"\"\n                    )");
         AppMethodBeat.o(60374);
         return paramp;
@@ -281,59 +281,59 @@ public final class ad
     }
     else
     {
-      if (paramp.fEX())
+      if (paramp.fXB())
       {
-        localObject2 = this.JUS.Jtl;
-        localObject3 = this.JUS.Jiu.getString(paramp.JIs);
-        localObject1 = ((Iterable)fJz()).iterator();
+        localObject2 = this.LIl.LgE;
+        localObject3 = this.LIl.KVO.getString(paramp.LvL);
+        localObject1 = ((Iterable)gcc()).iterator();
         do
         {
           if (!((Iterator)localObject1).hasNext()) {
             break;
           }
           paramp = ((Iterator)localObject1).next();
-        } while (!d.g.b.k.g(((as)paramp).fyB().qV(), localObject3));
+        } while (!d.g.b.k.g(((as)paramp).fRf().rf(), localObject3));
         for (;;)
         {
           paramp = (as)paramp;
           if (paramp != null)
           {
-            paramp = paramp.fxs();
+            paramp = paramp.fPW();
             localObject1 = paramp;
             if (paramp != null) {
               break;
             }
           }
-          paramp = u.aQU("Deserialized type parameter " + (String)localObject3 + " in " + localObject2);
+          paramp = u.aWT("Deserialized type parameter " + (String)localObject3 + " in " + localObject2);
           d.g.b.k.g(paramp, "ErrorUtils.createErrorTy…ter $name in $container\")");
           AppMethodBeat.o(60374);
           return paramp;
           paramp = null;
         }
       }
-      if (paramp.fEY())
+      if (paramp.fXC())
       {
-        localObject2 = (h)this.JVp.aA(Integer.valueOf(paramp.JIt));
+        localObject2 = (h)this.LII.ay(Integer.valueOf(paramp.LvM));
         localObject1 = localObject2;
         if (localObject2 == null) {
-          localObject1 = (h)((e)localObject3).afU(paramp.JIt);
+          localObject1 = (h)((e)localObject3).aiQ(paramp.LvM);
         }
-        paramp = ((h)localObject1).fxs();
+        paramp = ((h)localObject1).fPW();
         d.g.b.k.g(paramp, "(typeAliasDescriptors(pr…iasName)).typeConstructor");
         AppMethodBeat.o(60374);
         return paramp;
       }
-      localObject1 = u.aQU("Unknown type");
+      localObject1 = u.aWT("Unknown type");
       d.g.b.k.g(localObject1, "ErrorUtils.createErrorTy…nstructor(\"Unknown type\")");
     }
     AppMethodBeat.o(60374);
     return localObject1;
   }
   
-  public final List<as> fJz()
+  public final List<as> gcc()
   {
     AppMethodBeat.i(60371);
-    List localList = d.a.j.m((Iterable)this.JVq.values());
+    List localList = d.a.j.l((Iterable)this.LIJ.values());
     AppMethodBeat.o(60371);
     return localList;
   }
@@ -342,16 +342,16 @@ public final class ad
   {
     AppMethodBeat.i(60372);
     d.g.b.k.h(paramp, "proto");
-    if (paramp.fES())
+    if (paramp.fXw())
     {
-      String str = this.JUS.Jiu.getString(paramp.JIn);
+      String str = this.LIl.KVO.getString(paramp.LvG);
       aj localaj = s(paramp);
-      Object localObject = d.l.b.a.b.e.b.g.a(paramp, this.JUS.Jiv);
+      Object localObject = d.l.b.a.b.e.b.g.a(paramp, this.LIl.KVP);
       if (localObject == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
       localObject = s((a.p)localObject);
-      paramp = this.JUS.JEr.JUx.a(paramp, str, localaj, (aj)localObject);
+      paramp = this.LIl.LrK.LHQ.a(paramp, str, localaj, (aj)localObject);
       AppMethodBeat.o(60372);
       return paramp;
     }
@@ -364,24 +364,24 @@ public final class ad
   {
     AppMethodBeat.i(60373);
     d.g.b.k.h(paramp, "proto");
-    if (paramp.fEV()) {
-      afT(paramp.JIq);
+    if (paramp.fXz()) {
+      aiP(paramp.LvJ);
     }
     for (;;)
     {
       localObject1 = t(paramp);
-      if (!u.L((d.l.b.a.b.b.l)((at)localObject1).fxM())) {
+      if (!u.L((d.l.b.a.b.b.l)((at)localObject1).fQq())) {
         break;
       }
       paramp = u.a(localObject1.toString(), (at)localObject1);
       d.g.b.k.g(paramp, "ErrorUtils.createErrorTy….toString(), constructor)");
       AppMethodBeat.o(60373);
       return paramp;
-      if (paramp.fEY()) {
-        afT(paramp.JIt);
+      if (paramp.fXC()) {
+        aiP(paramp.LvM);
       }
     }
-    d.l.b.a.b.k.a.b.b localb = new d.l.b.a.b.k.a.b.b(this.JUS.JEr.JlL, (d.g.a.a)new c(this, paramp));
+    d.l.b.a.b.k.a.b.b localb = new d.l.b.a.b.k.a.b.b(this.LIl.LrK.KZf, (d.g.a.a)new c(this, paramp));
     Object localObject3 = (Iterable)new b(this).u(paramp);
     Object localObject2 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject3, 10));
     int i = 0;
@@ -390,7 +390,7 @@ public final class ad
     {
       Object localObject4 = ((Iterator)localObject3).next();
       if (i < 0) {
-        d.a.j.fvx();
+        d.a.j.fOc();
       }
       localObject4 = (a.p.a)localObject4;
       List localList = ((at)localObject1).getParameters();
@@ -398,13 +398,13 @@ public final class ad
       ((Collection)localObject2).add(a((as)d.a.j.C(localList, i), (a.p.a)localObject4));
       i += 1;
     }
-    localObject2 = d.a.j.m((Iterable)localObject2);
-    localObject3 = d.l.b.a.b.e.b.b.JJU.afn(paramp.JGd);
+    localObject2 = d.a.j.l((Iterable)localObject2);
+    localObject3 = d.l.b.a.b.e.b.b.Lxn.aij(paramp.Ltw);
     d.g.b.k.g(localObject3, "Flags.SUSPEND_TYPE.get(proto.flags)");
     if (((Boolean)localObject3).booleanValue()) {}
-    for (Object localObject1 = a((d.l.b.a.b.b.a.g)localb, (at)localObject1, (List)localObject2, paramp.JIm);; localObject1 = d.l.b.a.b.m.ac.c((d.l.b.a.b.b.a.g)localb, (at)localObject1, (List)localObject2, paramp.JIm))
+    for (Object localObject1 = a((d.l.b.a.b.b.a.g)localb, (at)localObject1, (List)localObject2, paramp.LvF);; localObject1 = d.l.b.a.b.m.ac.c((d.l.b.a.b.b.a.g)localb, (at)localObject1, (List)localObject2, paramp.LvF))
     {
-      paramp = d.l.b.a.b.e.b.g.c(paramp, this.JUS.Jiv);
+      paramp = d.l.b.a.b.e.b.g.c(paramp, this.LIl.KVP);
       if (paramp != null) {
         break;
       }
@@ -419,9 +419,9 @@ public final class ad
   public final String toString()
   {
     AppMethodBeat.i(60382);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.JSR);
-    if (this.JVr == null) {}
-    for (String str = "";; str = ". Child of " + this.JVr.JSR)
+    StringBuilder localStringBuilder = new StringBuilder().append(this.LGk);
+    if (this.LIK == null) {}
+    for (String str = "";; str = ". Child of " + this.LIK.LGk)
     {
       str = str;
       AppMethodBeat.o(60382);
@@ -452,16 +452,16 @@ public final class ad
     {
       AppMethodBeat.i(60360);
       d.g.b.k.h(paramp, "$this$collectAllArguments");
-      Object localObject = paramp.JFM;
+      Object localObject = paramp.Ltf;
       d.g.b.k.g(localObject, "argumentList");
       Collection localCollection = (Collection)localObject;
-      paramp = d.l.b.a.b.e.b.g.b(paramp, this.JVu.JUS.Jiv);
+      paramp = d.l.b.a.b.e.b.g.b(paramp, this.LIN.LIl.KVP);
       if (paramp != null) {}
       for (paramp = u(paramp);; paramp = null)
       {
         localObject = paramp;
         if (paramp == null) {
-          localObject = (List)v.Jgl;
+          localObject = (List)v.KTF;
         }
         paramp = d.a.j.b(localCollection, (Iterable)localObject);
         AppMethodBeat.o(60360);
@@ -499,16 +499,16 @@ public final class ad
       super();
     }
     
-    public final e afU(int paramInt)
+    public final e aiQ(int paramInt)
     {
       AppMethodBeat.i(60370);
-      Object localObject = x.a(this.JVu.JUS.Jiu, paramInt);
-      List localList = d.m.i.d(d.m.i.d(d.m.i.b(paramp, (d.g.a.b)new b(this)), (d.g.a.b)c.JVy));
-      paramInt = d.m.i.e(d.m.i.b(localObject, (d.g.a.b)a.JVw));
+      Object localObject = x.a(this.LIN.LIl.KVO, paramInt);
+      List localList = d.m.i.d(d.m.i.d(d.m.i.b(paramp, (d.g.a.b)new b(this)), (d.g.a.b)c.LIR));
+      paramInt = d.m.i.e(d.m.i.b(localObject, (d.g.a.b)a.LIP));
       while (localList.size() < paramInt) {
         localList.add(Integer.valueOf(0));
       }
-      localObject = this.JVu.JUS.JEr.JnP.a((d.l.b.a.b.f.a)localObject, localList);
+      localObject = this.LIN.LIl.LrK.Lbj.a((d.l.b.a.b.f.a)localObject, localList);
       AppMethodBeat.o(60370);
       return localObject;
     }
@@ -527,12 +527,12 @@ public final class ad
       extends d.g.b.l
       implements d.g.a.b<a.p, Integer>
     {
-      public static final c JVy;
+      public static final c LIR;
       
       static
       {
         AppMethodBeat.i(60368);
-        JVy = new c();
+        LIR = new c();
         AppMethodBeat.o(60368);
       }
       
@@ -545,7 +545,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.ad
  * JD-Core Version:    0.7.0.1
  */

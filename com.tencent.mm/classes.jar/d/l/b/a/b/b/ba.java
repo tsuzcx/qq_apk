@@ -5,13 +5,13 @@ import d.l.b.a.b.j.f.a.e;
 
 public abstract class ba
 {
-  public final boolean Jrf;
+  public final boolean Ley;
   private final String name;
   
   protected ba(String paramString, boolean paramBoolean)
   {
     this.name = paramString;
-    this.Jrf = paramBoolean;
+    this.Ley = paramBoolean;
   }
   
   public abstract boolean b(e parame, p paramp, l paraml);
@@ -22,24 +22,24 @@ public abstract class ba
     return az.a(this, paramba);
   }
   
-  public String fzF()
+  public String fSj()
   {
     return this.name;
   }
   
-  public ba fzG()
+  public ba fSk()
   {
     return this;
   }
   
   public final String toString()
   {
-    return fzF();
+    return fSj();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.ba
  * JD-Core Version:    0.7.0.1
  */

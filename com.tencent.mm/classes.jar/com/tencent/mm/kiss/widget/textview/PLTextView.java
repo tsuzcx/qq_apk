@@ -5,28 +5,22 @@ import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class PLTextView
   extends StaticTextView
 {
-  private static int fIT = 0;
-  private static long ggA;
-  private static long ggB;
-  private static long ggC = -2147483648L;
-  private static boolean ggD = false;
-  private static long ggv = 0L;
-  private static int ggw = 0;
-  private static long ggx = -2147483648L;
-  private static long ggy = 0L;
-  private static int ggz = 0;
-  
-  static
-  {
-    ggA = -2147483648L;
-    ggB = 0L;
-  }
+  private static int fMz = 0;
+  private static long glb = 0L;
+  private static int glc = 0;
+  private static long gld = -2147483648L;
+  private static long gle = 0L;
+  private static int glf = 0;
+  private static long glg = -2147483648L;
+  private static long glh = 0L;
+  private static long gli = -2147483648L;
+  private static boolean glj = false;
   
   public PLTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,7 +37,7 @@ public class PLTextView
     AppMethodBeat.i(141026);
     super.onConfigurationChanged(paramConfiguration);
     if (getLayoutWrapper() != null) {
-      getLayoutWrapper().ggU = false;
+      getLayoutWrapper().glA = false;
     }
     AppMethodBeat.o(141026);
   }
@@ -52,17 +46,17 @@ public class PLTextView
   {
     AppMethodBeat.i(141024);
     long l = 0L;
-    if (ggD) {
+    if (glj) {
       l = System.currentTimeMillis();
     }
     super.onDraw(paramCanvas);
-    if (ggD)
+    if (glj)
     {
       l = System.currentTimeMillis() - l;
-      ggB += l;
-      fIT += 1;
-      if (l > ggC) {
-        ggC = l;
+      glh += l;
+      fMz += 1;
+      if (l > gli) {
+        gli = l;
       }
     }
     AppMethodBeat.o(141024);
@@ -72,17 +66,17 @@ public class PLTextView
   {
     AppMethodBeat.i(141023);
     long l = 0L;
-    if (ggD) {
+    if (glj) {
       l = System.currentTimeMillis();
     }
     super.onMeasure(paramInt1, paramInt2);
-    if (ggD)
+    if (glj)
     {
       l = System.currentTimeMillis() - l;
-      ggy += l;
-      ggz += 1;
-      if (l > ggA) {
-        ggA = l;
+      gle += l;
+      glf += 1;
+      if (l > glg) {
+        glg = l;
       }
     }
     AppMethodBeat.o(141023);
@@ -91,10 +85,10 @@ public class PLTextView
   public void setText(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141022);
-    if (bt.ai(paramCharSequence))
+    if (bs.aj(paramCharSequence))
     {
       if (h.DEBUG) {
-        ad.d("MicroMsg.PLTextView", "set null text");
+        ac.d("MicroMsg.PLTextView", "set null text");
       }
       AppMethodBeat.o(141022);
       return;
@@ -104,10 +98,10 @@ public class PLTextView
     if (h.DEBUG) {
       l1 = System.currentTimeMillis();
     }
-    if ((getLayoutWrapper() != null) && (getLayoutWrapper().ggU)) {
-      c.ggt.a(getConfig(), getLayoutWrapper());
+    if ((getLayoutWrapper() != null) && (getLayoutWrapper().glA)) {
+      c.gkZ.a(getConfig(), getLayoutWrapper());
     }
-    f localf = c.ggt.a(getConfig(), paramCharSequence);
+    f localf = c.gkZ.a(getConfig(), paramCharSequence);
     boolean bool;
     if (localf != null)
     {
@@ -120,15 +114,15 @@ public class PLTextView
       if (h.DEBUG)
       {
         l2 = System.currentTimeMillis();
-        ad.d("MicroMsg.PLTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s hitCache %s", new Object[] { Double.valueOf((l2 - l1) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence, Boolean.valueOf(bool) });
+        ac.d("MicroMsg.PLTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s hitCache %s", new Object[] { Double.valueOf((l2 - l1) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence, Boolean.valueOf(bool) });
       }
-      if (ggD)
+      if (glj)
       {
         l1 = l2 - l1;
-        ggv += l1;
-        ggw += 1;
-        if (l1 > ggx) {
-          ggx = l1;
+        glb += l1;
+        glc += 1;
+        if (l1 > gld) {
+          gld = l1;
         }
       }
       AppMethodBeat.o(141022);

@@ -2,16 +2,16 @@ package com.tencent.mm.pluginsdk;
 
 import android.content.Intent;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.cnl;
+import com.tencent.mm.protocal.protobuf.css;
 
 public abstract interface j
   extends a
 {
-  public abstract void a(Intent paramIntent, cnl paramcnl, int paramInt);
+  public abstract void a(Intent paramIntent, css paramcss, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j
  * JD-Core Version:    0.7.0.1
  */

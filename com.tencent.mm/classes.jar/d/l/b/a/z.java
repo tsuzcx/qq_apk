@@ -6,7 +6,7 @@ import java.lang.ref.SoftReference;
 
 public final class z
 {
-  public static <T> b<T> F(a<T> parama)
+  public static <T> b<T> M(a<T> parama)
   {
     AppMethodBeat.i(56518);
     parama = new b(parama);
@@ -14,11 +14,11 @@ public final class z
     return parama;
   }
   
-  public static <T> a<T> G(a<T> parama)
+  public static <T> a<T> N(a<T> parama)
   {
     AppMethodBeat.i(56520);
     if (parama == null) {
-      adP(2);
+      agL(2);
     }
     parama = a(null, parama);
     AppMethodBeat.o(56520);
@@ -29,7 +29,7 @@ public final class z
   {
     AppMethodBeat.i(56519);
     if (parama == null) {
-      adP(1);
+      agL(1);
     }
     paramT = new a(paramT, parama);
     AppMethodBeat.o(56519);
@@ -39,16 +39,16 @@ public final class z
   public static final class a<T>
     extends z.c<T>
   {
-    private final a<T> JfO;
-    private SoftReference<Object> Jky;
+    private final a<T> KTi;
+    private SoftReference<Object> KXS;
     
     public a(T paramT, a<T> parama)
     {
       AppMethodBeat.i(56514);
-      this.Jky = null;
-      this.JfO = parama;
+      this.KXS = null;
+      this.KTi = parama;
       if (paramT != null) {
-        this.Jky = new SoftReference(eS(paramT));
+        this.KXS = new SoftReference(eV(paramT));
       }
       AppMethodBeat.o(56514);
     }
@@ -56,19 +56,19 @@ public final class z
     public final T invoke()
     {
       AppMethodBeat.i(56515);
-      Object localObject = this.Jky;
+      Object localObject = this.KXS;
       if (localObject != null)
       {
         localObject = ((SoftReference)localObject).get();
         if (localObject != null)
         {
-          localObject = eT(localObject);
+          localObject = eW(localObject);
           AppMethodBeat.o(56515);
           return localObject;
         }
       }
-      localObject = this.JfO.invoke();
-      this.Jky = new SoftReference(eS(localObject));
+      localObject = this.KTi.invoke();
+      this.KXS = new SoftReference(eV(localObject));
       AppMethodBeat.o(56515);
       return localObject;
     }
@@ -77,14 +77,14 @@ public final class z
   public static final class b<T>
     extends z.c<T>
   {
-    private final a<T> JfO;
+    private final a<T> KTi;
     private Object value;
     
     public b(a<T> parama)
     {
       AppMethodBeat.i(56516);
       this.value = null;
-      this.JfO = parama;
+      this.KTi = parama;
       AppMethodBeat.o(56516);
     }
     
@@ -94,12 +94,12 @@ public final class z
       Object localObject = this.value;
       if (localObject != null)
       {
-        localObject = eT(localObject);
+        localObject = eW(localObject);
         AppMethodBeat.o(56517);
         return localObject;
       }
-      localObject = this.JfO.invoke();
-      this.value = eS(localObject);
+      localObject = this.KTi.invoke();
+      this.value = eV(localObject);
       AppMethodBeat.o(56517);
       return localObject;
     }
@@ -107,21 +107,21 @@ public final class z
   
   public static abstract class c<T>
   {
-    private static final Object Jkz = new Object() {};
+    private static final Object KXT = new Object() {};
     
-    protected static Object eS(T paramT)
+    protected static Object eV(T paramT)
     {
       Object localObject = paramT;
       if (paramT == null) {
-        localObject = Jkz;
+        localObject = KXT;
       }
       return localObject;
     }
     
-    protected static T eT(Object paramObject)
+    protected static T eW(Object paramObject)
     {
       Object localObject = paramObject;
-      if (paramObject == Jkz) {
+      if (paramObject == KXT) {
         localObject = null;
       }
       return localObject;
@@ -132,7 +132,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.z
  * JD-Core Version:    0.7.0.1
  */

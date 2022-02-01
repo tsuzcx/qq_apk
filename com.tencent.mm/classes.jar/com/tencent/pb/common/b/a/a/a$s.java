@@ -6,21 +6,21 @@ import com.google.b.a.e;
 public final class a$s
   extends e
 {
-  public a.ap[] Ils = a.ap.flv();
+  public a.ap[] JNd = a.ap.fBM();
   
   public a$s()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    if ((this.Ils != null) && (this.Ils.length > 0))
+    if ((this.JNd != null) && (this.JNd.length > 0))
     {
       int i = 0;
-      while (i < this.Ils.length)
+      while (i < this.JNd.length)
       {
-        a.ap localap = this.Ils[i];
+        a.ap localap = this.JNd[i];
         if (localap != null) {
           paramb.a(1, localap);
         }
@@ -30,23 +30,23 @@ public final class a$s
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int i = super.yg();
+    int i = super.xT();
     int k = i;
-    if (this.Ils != null)
+    if (this.JNd != null)
     {
       k = i;
-      if (this.Ils.length > 0)
+      if (this.JNd.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.Ils.length) {
+          if (j >= this.JNd.length) {
             break;
           }
-          a.ap localap = this.Ils[j];
+          a.ap localap = this.JNd[j];
           k = i;
           if (localap != null) {
             k = i + b.b(1, localap);

@@ -8,11 +8,12 @@ import android.bluetooth.BluetoothGattServerCallback;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.AdvertiseCallback;
+import android.bluetooth.le.AdvertiseSettings;
 import android.bluetooth.le.BluetoothLeAdvertiser;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.l;
 import d.o;
@@ -24,40 +25,42 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer;", "", "()V", "advertiseCallback", "Landroid/bluetooth/le/AdvertiseCallback;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "getComponent", "()Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "setComponent", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "gattServer", "Landroid/bluetooth/BluetoothGattServer;", "getGattServer", "()Landroid/bluetooth/BluetoothGattServer;", "setGattServer", "(Landroid/bluetooth/BluetoothGattServer;)V", "gattServerCallback", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/GattServerCallbackImpl;", "jsCallbacks", "", "Ljava/util/UUID;", "Lkotlin/Pair;", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsCallback;", "Ljava/util/Timer;", "getJsCallbacks", "()Ljava/util/Map;", "serverId", "", "getServerId", "()I", "setServerId", "(I)V", "status", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerStatus;", "getStatus", "()Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerStatus;", "setStatus", "(Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerStatus;)V", "addService", "service", "Landroid/bluetooth/BluetoothGattService;", "callback", "checkBleIsWork", "handleCharacteristicWriteAction", "serviceId", "characteristicId", "needNotify", "callbackId", "base64Value", "", "onCreate", "onDestroy", "startBLEPeripheralAdvertising", "settings", "Landroid/bluetooth/le/AdvertiseSettings;", "advertiseData", "Landroid/bluetooth/le/AdvertiseData;", "scanResponse", "deviceName", "adapter", "Landroid/bluetooth/BluetoothAdapter;", "stopBLEPeripheralAdvertising", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer;", "", "()V", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "getComponent", "()Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "setComponent", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "gattServer", "Landroid/bluetooth/BluetoothGattServer;", "getGattServer", "()Landroid/bluetooth/BluetoothGattServer;", "setGattServer", "(Landroid/bluetooth/BluetoothGattServer;)V", "gattServerCallback", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/GattServerCallbackImpl;", "jsCallbacks", "", "Ljava/util/UUID;", "Lkotlin/Pair;", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsCallback;", "Ljava/util/Timer;", "getJsCallbacks", "()Ljava/util/Map;", "realAdvertiseCallback", "Landroid/bluetooth/le/AdvertiseCallback;", "serverId", "", "getServerId", "()I", "setServerId", "(I)V", "status", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerStatus;", "getStatus", "()Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerStatus;", "setStatus", "(Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServerStatus;)V", "userCallbackLock", "addService", "service", "Landroid/bluetooth/BluetoothGattService;", "callback", "checkBleIsWork", "handleCharacteristicWriteAction", "serviceId", "characteristicId", "needNotify", "callbackId", "base64Value", "", "onCreate", "onDestroy", "startBLEPeripheralAdvertising", "settings", "Landroid/bluetooth/le/AdvertiseSettings;", "advertiseData", "Landroid/bluetooth/le/AdvertiseData;", "scanResponse", "deviceName", "adapter", "Landroid/bluetooth/BluetoothAdapter;", "userCallback", "stopBLEPeripheralAdvertising", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class n
 {
-  public static final a jIC;
-  int iyW;
-  AdvertiseCallback jIA;
-  private b jIB;
-  p jIx;
-  public BluetoothGattServer jIy;
-  final Map<UUID, o<d.g.a.b<Boolean, y>, Timer>> jIz;
-  public com.tencent.mm.plugin.appbrand.jsapi.c joJ;
+  public static final a kjc;
+  int iYZ;
+  public com.tencent.mm.plugin.appbrand.jsapi.c jOV;
+  p kiW;
+  public BluetoothGattServer kiX;
+  final Map<UUID, o<d.g.a.b<Boolean, y>, Timer>> kiY;
+  final AdvertiseCallback kiZ;
+  AdvertiseCallback kja;
+  private b kjb;
   
   static
   {
     AppMethodBeat.i(144781);
-    jIC = new a((byte)0);
+    kjc = new a((byte)0);
     AppMethodBeat.o(144781);
   }
   
   public n()
   {
     AppMethodBeat.i(144780);
-    this.jIx = p.jIH;
-    this.iyW = -1;
-    this.jIz = ((Map)new HashMap());
+    this.kiW = p.kji;
+    this.iYZ = -1;
+    this.kiY = ((Map)new HashMap());
+    this.kiZ = ((AdvertiseCallback)new c(this));
     AppMethodBeat.o(144780);
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.c Dj()
+  public final com.tencent.mm.plugin.appbrand.jsapi.c CM()
   {
     AppMethodBeat.i(144776);
-    com.tencent.mm.plugin.appbrand.jsapi.c localc = this.joJ;
+    com.tencent.mm.plugin.appbrand.jsapi.c localc = this.jOV;
     if (localc == null) {
-      k.aPZ("component");
+      k.aVY("component");
     }
     AppMethodBeat.o(144776);
     return localc;
@@ -73,11 +76,8 @@ public final class n
       AppMethodBeat.o(183549);
       return;
     }
-    if (this.jIA != null)
-    {
-      paramBluetoothAdapter.stopAdvertising(this.jIA);
-      this.jIA = null;
-    }
+    paramBluetoothAdapter.stopAdvertising(this.kiZ);
+    this.kja = null;
     AppMethodBeat.o(183549);
   }
   
@@ -85,7 +85,7 @@ public final class n
   {
     AppMethodBeat.i(144774);
     k.h(paramp, "<set-?>");
-    this.jIx = paramp;
+    this.kiW = paramp;
     AppMethodBeat.o(144774);
   }
   
@@ -95,89 +95,89 @@ public final class n
     k.h(paramUUID1, "serviceId");
     k.h(paramUUID2, "characteristicId");
     k.h(paramString, "base64Value");
-    BluetoothGattServer localBluetoothGattServer = this.jIy;
+    BluetoothGattServer localBluetoothGattServer = this.kiX;
     if (localBluetoothGattServer == null) {
-      k.aPZ("gattServer");
+      k.aVY("gattServer");
     }
     paramUUID1 = localBluetoothGattServer.getService(paramUUID1);
     if (paramUUID1 == null)
     {
-      ad.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: server == null");
+      ac.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: server == null");
       AppMethodBeat.o(144779);
       return;
     }
     paramUUID1 = paramUUID1.getCharacteristic(paramUUID2);
     if (paramUUID1 == null)
     {
-      ad.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: characteristic == null");
+      ac.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: characteristic == null");
       AppMethodBeat.o(144779);
       return;
     }
-    paramUUID1.setValue(com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.au(Base64.decode(paramString, 2)));
+    paramUUID1.setValue(com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.at(Base64.decode(paramString, 2)));
     if (paramBoolean)
     {
-      paramUUID2 = this.jIB;
+      paramUUID2 = this.kjb;
       if (paramUUID2 == null) {
-        k.fvU();
+        k.fOy();
       }
-      paramUUID2 = ((Iterable)paramUUID2.jIc).iterator();
+      paramUUID2 = ((Iterable)paramUUID2.kiB).iterator();
       while (paramUUID2.hasNext())
       {
         paramString = (BluetoothDevice)paramUUID2.next();
-        localBluetoothGattServer = this.jIy;
+        localBluetoothGattServer = this.kiX;
         if (localBluetoothGattServer == null) {
-          k.aPZ("gattServer");
+          k.aVY("gattServer");
         }
-        ad.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: notifyCharacteristicChanged res = %s", new Object[] { String.valueOf(localBluetoothGattServer.notifyCharacteristicChanged(paramString, paramUUID1, false)) });
+        ac.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: notifyCharacteristicChanged res = %s", new Object[] { String.valueOf(localBluetoothGattServer.notifyCharacteristicChanged(paramString, paramUUID1, false)) });
       }
     }
-    paramUUID2 = this.jIB;
+    paramUUID2 = this.kjb;
     if (paramUUID2 == null) {
-      k.fvU();
+      k.fOy();
     }
-    paramUUID2 = ((Iterable)paramUUID2.jIc).iterator();
+    paramUUID2 = ((Iterable)paramUUID2.kiB).iterator();
     while (paramUUID2.hasNext())
     {
       paramString = (BluetoothDevice)paramUUID2.next();
-      localBluetoothGattServer = this.jIy;
+      localBluetoothGattServer = this.kiX;
       if (localBluetoothGattServer == null) {
-        k.aPZ("gattServer");
+        k.aVY("gattServer");
       }
-      ad.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: notifyCharacteristicChanged res = %s", new Object[] { String.valueOf(localBluetoothGattServer.notifyCharacteristicChanged(paramString, paramUUID1, true)) });
+      ac.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: notifyCharacteristicChanged res = %s", new Object[] { String.valueOf(localBluetoothGattServer.notifyCharacteristicChanged(paramString, paramUUID1, true)) });
     }
-    paramUUID2 = this.jIB;
+    paramUUID2 = this.kjb;
     if (paramUUID2 == null) {
-      k.fvU();
+      k.fOy();
     }
-    paramUUID2 = (m)paramUUID2.jId.get(Integer.valueOf(paramInt));
+    paramUUID2 = (m)paramUUID2.kiC.get(Integer.valueOf(paramInt));
     if (paramUUID2 == null)
     {
-      ad.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: #" + paramInt + " callbackId -> pendingResp is null");
+      ac.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: #" + paramInt + " callbackId -> pendingResp is null");
       AppMethodBeat.o(144779);
       return;
     }
-    ad.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: device = %s, requestId = %s", new Object[] { paramUUID2.jIw.toString(), String.valueOf(paramUUID2.requestId) });
-    paramString = this.jIy;
+    ac.i("MicroMsg.BLE.PeripheralBleServer", "handleCharacteristicWriteAction: device = %s, requestId = %s", new Object[] { paramUUID2.kiV.toString(), String.valueOf(paramUUID2.requestId) });
+    paramString = this.kiX;
     if (paramString == null) {
-      k.aPZ("gattServer");
+      k.aVY("gattServer");
     }
-    if (!paramString.sendResponse(paramUUID2.jIw, paramUUID2.requestId, 0, paramUUID2.offset, paramUUID1.getValue())) {
-      ad.e("MicroMsg.BLE.PeripheralBleServer", "sendPendingRespFail");
+    if (!paramString.sendResponse(paramUUID2.kiV, paramUUID2.requestId, 0, paramUUID2.offset, paramUUID1.getValue())) {
+      ac.e("MicroMsg.BLE.PeripheralBleServer", "sendPendingRespFail");
     }
-    paramUUID1 = this.jIB;
+    paramUUID1 = this.kjb;
     if (paramUUID1 == null) {
-      k.fvU();
+      k.fOy();
     }
-    paramUUID1.jId.remove(Integer.valueOf(paramInt));
+    paramUUID1.kiC.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(144779);
   }
   
-  public final BluetoothGattServer aYK()
+  public final BluetoothGattServer bfG()
   {
     AppMethodBeat.i(144775);
-    BluetoothGattServer localBluetoothGattServer = this.jIy;
+    BluetoothGattServer localBluetoothGattServer = this.kiX;
     if (localBluetoothGattServer == null) {
-      k.aPZ("gattServer");
+      k.aVY("gattServer");
     }
     AppMethodBeat.o(144775);
     return localBluetoothGattServer;
@@ -187,62 +187,62 @@ public final class n
   {
     AppMethodBeat.i(144777);
     k.h(paramc, "component");
-    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aZa();
-    if (((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aZc() & true & com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.aYY() & com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aZd())) && (localObject != null))
+    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bfS();
+    if (((com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bfU() & true & com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.bfQ() & com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bfV())) && (localObject != null))
     {
-      this.jIx = p.jII;
-      this.joJ = paramc;
-      this.iyW = paramInt;
-      this.jIB = new b();
-      paramc = ((BluetoothManager)localObject).openGattServer(aj.getContext(), (BluetoothGattServerCallback)this.jIB);
+      this.kiW = p.kjj;
+      this.jOV = paramc;
+      this.iYZ = paramInt;
+      this.kjb = new b();
+      paramc = ((BluetoothManager)localObject).openGattServer(ai.getContext(), (BluetoothGattServerCallback)this.kjb);
       k.g(paramc, "bluetoothManager.openGat…xt(), gattServerCallback)");
-      this.jIy = paramc;
-      paramc = this.jIB;
+      this.kiX = paramc;
+      paramc = this.kjb;
       if (paramc == null) {
-        k.fvU();
+        k.fOy();
       }
       localObject = (n)this;
       k.h(localObject, "<set-?>");
-      paramc.jIe = ((n)localObject);
+      paramc.kiD = ((n)localObject);
       AppMethodBeat.o(144777);
       return;
     }
-    paramc = p.jIL;
+    paramc = p.kjm;
     AppMethodBeat.o(144777);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(144778);
-    this.jIz.clear();
-    Object localObject = this.jIy;
+    this.kiY.clear();
+    Object localObject = this.kiX;
     if (localObject == null) {
-      k.aPZ("gattServer");
+      k.aVY("gattServer");
     }
     ((BluetoothGattServer)localObject).close();
-    localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aZb();
+    localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bfT();
     if (localObject != null)
     {
       k.g(localObject, "it");
       a((BluetoothAdapter)localObject);
     }
-    localObject = this.jIB;
+    localObject = this.kjb;
     if (localObject != null)
     {
-      localObject = ((b)localObject).jId;
+      localObject = ((b)localObject).kiC;
       if (localObject != null) {
         ((Map)localObject).clear();
       }
     }
-    this.jIB = null;
-    this.jIx = p.jIK;
+    this.kjb = null;
+    this.kiW = p.kjl;
     AppMethodBeat.o(144778);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer$Companion;", "", "()V", "TAG", "", "luggage-commons-jsapi-connectivity-ext_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer$Companion;", "", "()V", "TAG", "", "luggage-commons-jsapi-connectivity-ext_release"})
   public static final class a {}
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"kotlin/concurrent/TimersKt$timerTask$1", "Ljava/util/TimerTask;", "run", "", "kotlin-stdlib"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlin/concurrent/TimersKt$timerTask$1", "Ljava/util/TimerTask;", "run", "", "kotlin-stdlib"})
   public static final class b
     extends TimerTask
   {
@@ -252,9 +252,42 @@ public final class n
     {
       AppMethodBeat.i(144773);
       TimerTask localTimerTask = (TimerTask)this;
-      this.gAW.aA(Boolean.FALSE);
+      this.hbs.ay(Boolean.FALSE);
       localTimerTask.cancel();
       AppMethodBeat.o(144773);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer$realAdvertiseCallback$1", "Landroid/bluetooth/le/AdvertiseCallback;", "onStartFailure", "", "errorCode", "", "onStartSuccess", "settingsInEffect", "Landroid/bluetooth/le/AdvertiseSettings;", "luggage-commons-jsapi-connectivity-ext_release"})
+  public static final class c
+    extends AdvertiseCallback
+  {
+    public final void onStartFailure(int paramInt)
+    {
+      AppMethodBeat.i(204992);
+      super.onStartFailure(paramInt);
+      AdvertiseCallback localAdvertiseCallback = n.a(this.kjd);
+      if (localAdvertiseCallback == null) {
+        k.fOy();
+      }
+      localAdvertiseCallback.onStartFailure(paramInt);
+      n.b(this.kjd);
+      AppMethodBeat.o(204992);
+    }
+    
+    public final void onStartSuccess(AdvertiseSettings paramAdvertiseSettings)
+    {
+      AppMethodBeat.i(204991);
+      super.onStartSuccess(paramAdvertiseSettings);
+      if (n.a(this.kjd) != null)
+      {
+        AdvertiseCallback localAdvertiseCallback = n.a(this.kjd);
+        if (localAdvertiseCallback == null) {
+          k.fOy();
+        }
+        localAdvertiseCallback.onStartSuccess(paramAdvertiseSettings);
+      }
+      AppMethodBeat.o(204991);
     }
   }
 }

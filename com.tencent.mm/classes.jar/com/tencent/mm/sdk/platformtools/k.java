@@ -4,66 +4,66 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
 {
-  public static String muL = "]]>";
-  public String ETA;
-  public StringBuffer muN;
+  public static String mWM = "]]>";
+  public String GqN;
+  public StringBuffer mWO;
   
   public k()
   {
     AppMethodBeat.i(157525);
-    this.ETA = "";
-    this.muN = new StringBuffer();
+    this.GqN = "";
+    this.mWO = new StringBuffer();
     AppMethodBeat.o(157525);
   }
   
   public k(String paramString)
   {
     AppMethodBeat.i(157526);
-    this.ETA = "";
-    this.muN = new StringBuffer();
-    this.ETA = paramString;
-    Oq(this.ETA);
+    this.GqN = "";
+    this.mWO = new StringBuffer();
+    this.GqN = paramString;
+    SA(this.GqN);
     AppMethodBeat.o(157526);
   }
   
-  private void Oq(String paramString)
+  private void SA(String paramString)
   {
     AppMethodBeat.i(157527);
-    this.muN.append("<" + paramString + ">");
+    this.mWO.append("<" + paramString + ">");
     AppMethodBeat.o(157527);
   }
   
   private void setText(String paramString)
   {
     AppMethodBeat.i(157529);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(157529);
       return;
     }
-    if (paramString.contains(muL))
+    if (paramString.contains(mWM))
     {
-      this.muN.append("<![CDATA[" + bt.aGf(paramString) + "]]>");
+      this.mWO.append("<![CDATA[" + bs.aLw(paramString) + "]]>");
       AppMethodBeat.o(157529);
       return;
     }
-    this.muN.append("<![CDATA[" + paramString + "]]>");
+    this.mWO.append("<![CDATA[" + paramString + "]]>");
     AppMethodBeat.o(157529);
   }
   
-  public final void Or(String paramString)
+  public final void SB(String paramString)
   {
     AppMethodBeat.i(157528);
-    this.muN.append("</" + paramString + ">");
+    this.mWO.append("</" + paramString + ">");
     AppMethodBeat.o(157528);
   }
   
-  public final void eb(String paramString1, String paramString2)
+  public final void en(String paramString1, String paramString2)
   {
     AppMethodBeat.i(157530);
-    Oq(paramString1);
+    SA(paramString1);
     setText(paramString2);
-    Or(paramString1);
+    SB(paramString1);
     AppMethodBeat.o(157530);
   }
 }

@@ -15,27 +15,27 @@ import java.io.InputStream;
 public final class f<Data>
   implements n<File, Data>
 {
-  private final d<Data> aHp;
+  private final d<Data> aIf;
   
   public f(d<Data> paramd)
   {
-    this.aHp = paramd;
+    this.aIf = paramd;
   }
   
   public static class a<Data>
     implements o<File, Data>
   {
-    private final f.d<Data> aHq;
+    private final f.d<Data> aIg;
     
     public a(f.d<Data> paramd)
     {
-      this.aHq = paramd;
+      this.aIg = paramd;
     }
     
     public final n<File, Data> a(r paramr)
     {
       AppMethodBeat.i(77226);
-      paramr = new f(this.aHq);
+      paramr = new f(this.aIg);
       AppMethodBeat.o(77226);
       return paramr;
     }
@@ -48,7 +48,7 @@ public final class f<Data>
     {
       super()
       {
-        public final Class<ParcelFileDescriptor> nK()
+        public final Class<ParcelFileDescriptor> nU()
         {
           return ParcelFileDescriptor.class;
         }
@@ -61,14 +61,14 @@ public final class f<Data>
   static final class c<Data>
     implements d<Data>
   {
-    private final f.d<Data> aHq;
+    private final f.d<Data> aIg;
     private Data data;
     private final File file;
     
     c(File paramFile, f.d<Data> paramd)
     {
       this.file = paramFile;
-      this.aHq = paramd;
+      this.aIg = paramd;
     }
     
     public final void a(g paramg, d.a<? super Data> parama)
@@ -76,8 +76,8 @@ public final class f<Data>
       AppMethodBeat.i(77230);
       try
       {
-        this.data = this.aHq.u(this.file);
-        parama.P(this.data);
+        this.data = this.aIg.u(this.file);
+        parama.R(this.data);
         AppMethodBeat.o(77230);
         return;
       }
@@ -97,7 +97,7 @@ public final class f<Data>
       if (this.data != null) {
         try
         {
-          this.aHq.O(this.data);
+          this.aIg.Q(this.data);
           AppMethodBeat.o(77231);
           return;
         }
@@ -106,25 +106,25 @@ public final class f<Data>
       AppMethodBeat.o(77231);
     }
     
-    public final Class<Data> nK()
+    public final Class<Data> nU()
     {
       AppMethodBeat.i(77232);
-      Class localClass = this.aHq.nK();
+      Class localClass = this.aIg.nU();
       AppMethodBeat.o(77232);
       return localClass;
     }
     
-    public final a nL()
+    public final a nV()
     {
-      return a.aBX;
+      return a.aCP;
     }
   }
   
   public static abstract interface d<Data>
   {
-    public abstract void O(Data paramData);
+    public abstract void Q(Data paramData);
     
-    public abstract Class<Data> nK();
+    public abstract Class<Data> nU();
     
     public abstract Data u(File paramFile);
   }
@@ -136,7 +136,7 @@ public final class f<Data>
     {
       super()
       {
-        public final Class<InputStream> nK()
+        public final Class<InputStream> nU()
         {
           return InputStream.class;
         }
@@ -148,7 +148,7 @@ public final class f<Data>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.f
  * JD-Core Version:    0.7.0.1
  */

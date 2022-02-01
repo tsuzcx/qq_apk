@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class aj
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String name;
   public String path;
   public long size;
   public int state;
-  public String stn;
-  public long uMU;
+  public String tBd;
+  public long vVK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -37,11 +37,11 @@ public final class aj
       if (this.name != null) {
         paramVarArgs.d(2, this.name);
       }
-      paramVarArgs.aG(3, this.size);
+      paramVarArgs.aO(3, this.size);
       paramVarArgs.aR(4, this.state);
-      paramVarArgs.aG(5, this.uMU);
-      if (this.stn != null) {
-        paramVarArgs.d(6, this.stn);
+      paramVarArgs.aO(5, this.vVK);
+      if (this.tBd != null) {
+        paramVarArgs.d(6, this.tBd);
       }
       AppMethodBeat.o(122801);
       return 0;
@@ -58,19 +58,19 @@ public final class aj
       if (this.name != null) {
         i = paramInt + f.a.a.b.b.a.e(2, this.name);
       }
-      i = i + f.a.a.b.b.a.q(3, this.size) + f.a.a.b.b.a.bA(4, this.state) + f.a.a.b.b.a.q(5, this.uMU);
+      i = i + f.a.a.b.b.a.p(3, this.size) + f.a.a.b.b.a.bx(4, this.state) + f.a.a.b.b.a.p(5, this.vVK);
       paramInt = i;
-      if (this.stn != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.stn);
+      if (this.tBd != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.tBd);
       }
       AppMethodBeat.o(122801);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.path == null)
@@ -98,27 +98,27 @@ public final class aj
           AppMethodBeat.o(122801);
           return -1;
         case 1: 
-          localaj.path = locala.KhF.readString();
+          localaj.path = locala.LVo.readString();
           AppMethodBeat.o(122801);
           return 0;
         case 2: 
-          localaj.name = locala.KhF.readString();
+          localaj.name = locala.LVo.readString();
           AppMethodBeat.o(122801);
           return 0;
         case 3: 
-          localaj.size = locala.KhF.xT();
+          localaj.size = locala.LVo.xG();
           AppMethodBeat.o(122801);
           return 0;
         case 4: 
-          localaj.state = locala.KhF.xS();
+          localaj.state = locala.LVo.xF();
           AppMethodBeat.o(122801);
           return 0;
         case 5: 
-          localaj.uMU = locala.KhF.xT();
+          localaj.vVK = locala.LVo.xG();
           AppMethodBeat.o(122801);
           return 0;
         }
-        localaj.stn = locala.KhF.readString();
+        localaj.tBd = locala.LVo.readString();
         AppMethodBeat.o(122801);
         return 0;
       }
@@ -129,7 +129,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.aj
  * JD-Core Version:    0.7.0.1
  */

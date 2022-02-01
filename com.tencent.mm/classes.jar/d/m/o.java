@@ -7,18 +7,18 @@ import d.l;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/sequences/TakeWhileSequence;", "T", "Lkotlin/sequences/Sequence;", "sequence", "predicate", "Lkotlin/Function1;", "", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/sequences/TakeWhileSequence;", "T", "Lkotlin/sequences/Sequence;", "sequence", "predicate", "Lkotlin/Function1;", "", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
 public final class o<T>
   implements h<T>
 {
-  final h<T> Kcd;
-  final b<T, Boolean> Kch;
+  final b<T, Boolean> LPC;
+  final h<T> LPy;
   
   public o(h<? extends T> paramh, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(129542);
-    this.Kcd = paramh;
-    this.Kch = paramb;
+    this.LPy = paramh;
+    this.LPC = paramb;
     AppMethodBeat.o(129542);
   }
   
@@ -30,47 +30,47 @@ public final class o<T>
     return localIterator;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"kotlin/sequences/TakeWhileSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlin/sequences/TakeWhileSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
   public static final class a
     implements a, Iterator<T>
   {
-    private final Iterator<T> Jgp;
-    private int Kci;
-    private T Kcj;
+    private final Iterator<T> KTJ;
+    private int LPD;
+    private T LPE;
     
     a()
     {
       AppMethodBeat.i(129523);
-      this.Jgp = localObject.Kcd.iterator();
-      this.Kci = -1;
+      this.KTJ = localObject.LPy.iterator();
+      this.LPD = -1;
       AppMethodBeat.o(129523);
     }
     
-    private final void fKw()
+    private final void gcZ()
     {
       AppMethodBeat.i(129520);
-      if (this.Jgp.hasNext())
+      if (this.KTJ.hasNext())
       {
-        Object localObject = this.Jgp.next();
-        if (((Boolean)this.KcA.Kch.aA(localObject)).booleanValue())
+        Object localObject = this.KTJ.next();
+        if (((Boolean)this.LPV.LPC.ay(localObject)).booleanValue())
         {
-          this.Kci = 1;
-          this.Kcj = localObject;
+          this.LPD = 1;
+          this.LPE = localObject;
           AppMethodBeat.o(129520);
           return;
         }
       }
-      this.Kci = 0;
+      this.LPD = 0;
       AppMethodBeat.o(129520);
     }
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(129522);
-      if (this.Kci == -1) {
-        fKw();
+      if (this.LPD == -1) {
+        gcZ();
       }
-      if (this.Kci == 1)
+      if (this.LPD == 1)
       {
         AppMethodBeat.o(129522);
         return true;
@@ -82,18 +82,18 @@ public final class o<T>
     public final T next()
     {
       AppMethodBeat.i(129521);
-      if (this.Kci == -1) {
-        fKw();
+      if (this.LPD == -1) {
+        gcZ();
       }
-      if (this.Kci == 0)
+      if (this.LPD == 0)
       {
         localObject = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129521);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.Kcj;
-      this.Kcj = null;
-      this.Kci = -1;
+      Object localObject = this.LPE;
+      this.LPE = null;
+      this.LPD = -1;
       AppMethodBeat.o(129521);
       return localObject;
     }
@@ -109,7 +109,7 @@ public final class o<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.m.o
  * JD-Core Version:    0.7.0.1
  */

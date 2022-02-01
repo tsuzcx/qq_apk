@@ -8,18 +8,18 @@ import d.v;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/sequences/GeneratorSequence;", "T", "", "Lkotlin/sequences/Sequence;", "getInitialValue", "Lkotlin/Function0;", "getNextValue", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/sequences/GeneratorSequence;", "T", "", "Lkotlin/sequences/Sequence;", "getInitialValue", "Lkotlin/Function0;", "getNextValue", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
 final class g<T>
   implements h<T>
 {
-  final d.g.a.a<T> Kcp;
-  final b<T, T> Kcq;
+  final d.g.a.a<T> LPK;
+  final b<T, T> LPL;
   
   public g(d.g.a.a<? extends T> parama, b<? super T, ? extends T> paramb)
   {
     AppMethodBeat.i(129487);
-    this.Kcp = parama;
-    this.Kcq = paramb;
+    this.LPK = parama;
+    this.LPL = paramb;
     AppMethodBeat.o(129487);
   }
   
@@ -31,37 +31,37 @@ final class g<T>
     return localIterator;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"kotlin/sequences/GeneratorSequence$iterator$1", "", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlin/sequences/GeneratorSequence$iterator$1", "", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
   public static final class a
     implements d.g.b.a.a, Iterator<T>
   {
-    private int Kci = -2;
-    private T Kcj;
+    private int LPD = -2;
+    private T LPE;
     
-    private final void fKw()
+    private final void gcZ()
     {
       AppMethodBeat.i(129501);
       Object localObject1;
-      if (this.Kci == -2)
+      if (this.LPD == -2)
       {
-        localObject1 = this.Kcr.Kcp.invoke();
-        this.Kcj = localObject1;
-        if (this.Kcj != null) {
+        localObject1 = this.LPM.LPK.invoke();
+        this.LPE = localObject1;
+        if (this.LPE != null) {
           break label83;
         }
       }
       label83:
       for (int i = 0;; i = 1)
       {
-        this.Kci = i;
+        this.LPD = i;
         AppMethodBeat.o(129501);
         return;
-        localObject1 = this.Kcr.Kcq;
-        Object localObject2 = this.Kcj;
+        localObject1 = this.LPM.LPL;
+        Object localObject2 = this.LPE;
         if (localObject2 == null) {
-          k.fvU();
+          k.fOy();
         }
-        localObject1 = ((b)localObject1).aA(localObject2);
+        localObject1 = ((b)localObject1).ay(localObject2);
         break;
       }
     }
@@ -69,10 +69,10 @@ final class g<T>
     public final boolean hasNext()
     {
       AppMethodBeat.i(129503);
-      if (this.Kci < 0) {
-        fKw();
+      if (this.LPD < 0) {
+        gcZ();
       }
-      if (this.Kci == 1)
+      if (this.LPD == 1)
       {
         AppMethodBeat.o(129503);
         return true;
@@ -84,23 +84,23 @@ final class g<T>
     public final T next()
     {
       AppMethodBeat.i(129502);
-      if (this.Kci < 0) {
-        fKw();
+      if (this.LPD < 0) {
+        gcZ();
       }
-      if (this.Kci == 0)
+      if (this.LPD == 0)
       {
         localObject = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129502);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.Kcj;
+      Object localObject = this.LPE;
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type T");
         AppMethodBeat.o(129502);
         throw ((Throwable)localObject);
       }
-      this.Kci = -1;
+      this.LPD = -1;
       AppMethodBeat.o(129502);
       return localObject;
     }

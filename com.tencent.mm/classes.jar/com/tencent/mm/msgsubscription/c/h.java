@@ -10,8 +10,8 @@ import com.tencent.mm.msgsubscription.a.b.a.a;
 import com.tencent.mm.msgsubscription.a.b.c;
 import com.tencent.mm.msgsubscription.storage.d;
 import com.tencent.mm.msgsubscription.storage.e.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import d.g.b.k;
 import d.l;
 import d.v;
@@ -19,24 +19,24 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/msgsubscription/task/UpdateSubscribeMsgListTask;", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "username", "", "subscribeMsgList", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "isOpened", "", "isForRequestDialog", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "callback", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;", "buffer", "", "uiData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "(Ljava/lang/String;Ljava/util/List;ZZLcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;[BLcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;)V", "bizUsername", "(Ljava/lang/String;)V", "mCallback", "netScene", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg;", "cancel", "", "getKey", "getType", "", "run", "Companion", "plugin-comm_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/task/UpdateSubscribeMsgListTask;", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "username", "", "subscribeMsgList", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "isOpened", "", "isForRequestDialog", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "callback", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;", "buffer", "", "uiData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "(Ljava/lang/String;Ljava/util/List;ZZLcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;[BLcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;)V", "bizUsername", "(Ljava/lang/String;)V", "mCallback", "netScene", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg;", "cancel", "", "getKey", "getType", "", "run", "Companion", "plugin-comm_release"})
 public final class h
   extends a
 {
-  public static final h.a hID;
+  public static final a ijf;
   private byte[] buffer;
-  private boolean hGj;
-  private SubscribeMsgRequestDialogUiData hHD;
-  private List<SubscribeMsgTmpItem> hHO;
-  private boolean hIB;
-  private b hIC;
-  private e.b hIf;
-  private d hIg;
+  private boolean igL;
+  private e.b iiH;
+  private d iiI;
+  private SubscribeMsgRequestDialogUiData iif;
+  private List<SubscribeMsgTmpItem> iiq;
+  private boolean ijd;
+  private b ije;
   
   static
   {
     AppMethodBeat.i(149701);
-    hID = new h.a((byte)0);
+    ijf = new a((byte)0);
     AppMethodBeat.o(149701);
   }
   
@@ -44,7 +44,7 @@ public final class h
   {
     super(paramString);
     AppMethodBeat.i(149698);
-    this.hHO = ((List)new ArrayList());
+    this.iiq = ((List)new ArrayList());
     this.buffer = new byte[] { 0 };
     AppMethodBeat.o(149698);
   }
@@ -53,13 +53,13 @@ public final class h
   {
     this(paramString);
     AppMethodBeat.i(149699);
-    this.hIg = paramd;
-    this.hIf = paramb;
-    this.hHO.addAll((Collection)paramList);
-    this.hGj = paramBoolean1;
-    this.hIB = paramBoolean2;
+    this.iiI = paramd;
+    this.iiH = paramb;
+    this.iiq.addAll((Collection)paramList);
+    this.igL = paramBoolean1;
+    this.ijd = paramBoolean2;
     this.buffer = paramArrayOfByte;
-    this.hHD = paramSubscribeMsgRequestDialogUiData;
+    this.iif = paramSubscribeMsgRequestDialogUiData;
     AppMethodBeat.o(149699);
   }
   
@@ -67,13 +67,13 @@ public final class h
   {
     AppMethodBeat.i(149696);
     super.cancel();
-    Object localObject = this.hIC;
+    Object localObject = this.ije;
     if (localObject != null) {}
     for (localObject = Integer.valueOf(((b)localObject).hashCode());; localObject = null)
     {
-      ad.i("MicroMsg.UpdateSubscribeMsgListTask", "alvinluo updateSubscribeMsgList cancel task: %s", new Object[] { localObject });
-      localObject = com.tencent.mm.msgsubscription.a.a.hGP;
-      com.tencent.mm.msgsubscription.a.a.a((com.tencent.mm.msgsubscription.util.a)this.hIC);
+      ac.i("MicroMsg.UpdateSubscribeMsgListTask", "alvinluo updateSubscribeMsgList cancel task: %s", new Object[] { localObject });
+      localObject = com.tencent.mm.msgsubscription.a.a.ihr;
+      com.tencent.mm.msgsubscription.a.a.a((com.tencent.mm.msgsubscription.util.a)this.ije);
       AppMethodBeat.o(149696);
       return;
     }
@@ -82,7 +82,7 @@ public final class h
   public final String getKey()
   {
     AppMethodBeat.i(149697);
-    String str = this.dta + ",1";
+    String str = this.dqK + ",1";
     AppMethodBeat.o(149697);
     return str;
   }
@@ -90,18 +90,18 @@ public final class h
   public final void run()
   {
     AppMethodBeat.i(149695);
-    ad.i("MicroMsg.UpdateSubscribeMsgListTask", "alvinluo updateSubscribeMsgList %s, isOpened: %b", new Object[] { this.dta, Boolean.valueOf(this.hGj) });
+    ac.i("MicroMsg.UpdateSubscribeMsgListTask", "alvinluo updateSubscribeMsgList %s, isOpened: %b", new Object[] { this.dqK, Boolean.valueOf(this.igL) });
     Object localObject = new b(this);
     b.a.a locala;
-    if (this.hIB) {
-      locala = b.a.hHa;
+    if (this.ijd) {
+      locala = b.a.ihC;
     }
-    for (localObject = b.a.a.a(this.dta, this.hHO, (b.c)localObject, this.hGj, this.buffer, this.hHD);; localObject = b.a.a.a(this.dta, this.hHO, (b.c)localObject, this.hGj))
+    for (localObject = b.a.a.a(this.dqK, this.iiq, (b.c)localObject, this.igL, this.buffer, this.iif);; localObject = b.a.a.a(this.dqK, this.iiq, (b.c)localObject, this.igL))
     {
-      this.hIC = ((b)localObject);
-      localObject = this.hIC;
+      this.ije = ((b)localObject);
+      localObject = this.ije;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       if (localObject != null) {
         break;
@@ -109,13 +109,16 @@ public final class h
       localObject = new v("null cannot be cast to non-null type com.tencent.mm.msgsubscription.cgi.NetSceneSubscribeMsg");
       AppMethodBeat.o(149695);
       throw ((Throwable)localObject);
-      locala = b.a.hHa;
+      locala = b.a.ihC;
     }
     b((b)localObject);
     AppMethodBeat.o(149695);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/msgsubscription/task/UpdateSubscribeMsgListTask$run$netSceneEndCallback$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/task/UpdateSubscribeMsgListTask$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
+  public static final class a {}
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/msgsubscription/task/UpdateSubscribeMsgListTask$run$netSceneEndCallback$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
   public static final class b
     implements b.c
   {
@@ -123,18 +126,18 @@ public final class h
     {
       AppMethodBeat.i(149694);
       k.h(paramString, "errMsg");
-      int i = this.hIE.hashCode();
+      int i = this.ijg.hashCode();
       Object localObject1;
       if (paramSubscribeMsgRequestResult != null)
       {
-        localObject1 = paramSubscribeMsgRequestResult.hGg;
+        localObject1 = paramSubscribeMsgRequestResult.igI;
         if (localObject1 != null)
         {
           localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
-          ad.i("MicroMsg.UpdateSubscribeMsgListTask", "alvinluo updateSubscribeMsgList end errType: %d, errCode: %d, errMsg: %s, hashCode: %s, tmpSize: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i), localObject1 });
-          if ((paramInt1 == 0) && (paramInt2 == 0) && (!h.a(this.hIE)))
+          ac.i("MicroMsg.UpdateSubscribeMsgListTask", "alvinluo updateSubscribeMsgList end errType: %d, errCode: %d, errMsg: %s, hashCode: %s, tmpSize: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i), localObject1 });
+          if ((paramInt1 == 0) && (paramInt2 == 0) && (!h.a(this.ijg)))
           {
-            if (((Collection)h.b(this.hIE)).isEmpty()) {
+            if (((Collection)h.b(this.ijg)).isEmpty()) {
               break label280;
             }
             i = 1;
@@ -145,7 +148,7 @@ public final class h
             if (paramSubscribeMsgRequestResult == null) {
               break label292;
             }
-            localObject1 = paramSubscribeMsgRequestResult.hGg;
+            localObject1 = paramSubscribeMsgRequestResult.igI;
             if (localObject1 == null) {
               break label292;
             }
@@ -157,7 +160,7 @@ public final class h
             if (i != 1) {
               break label360;
             }
-            ad.d("MicroMsg.UpdateSubscribeMsgListTask", "alvinluo updateSubscribeMsgList end and save to local");
+            ac.d("MicroMsg.UpdateSubscribeMsgListTask", "alvinluo updateSubscribeMsgList end and save to local");
             i = 1;
           }
         }
@@ -167,19 +170,19 @@ public final class h
         label182:
         if (i != 0)
         {
-          localObject2 = h.c(this.hIE);
+          localObject2 = h.c(this.ijg);
           if (localObject2 != null)
           {
-            String str = this.hIE.dta;
+            String str = this.ijg.dqK;
             if (paramSubscribeMsgRequestResult == null) {
               break label298;
             }
-            localObject1 = paramSubscribeMsgRequestResult.hGg;
+            localObject1 = paramSubscribeMsgRequestResult.igI;
             label222:
             if (localObject1 == null) {
-              k.fvU();
+              k.fOy();
             }
-            ((d)localObject2).b(str, (List)localObject1, paramSubscribeMsgRequestResult.hGj);
+            ((d)localObject2).b(str, (List)localObject1, paramSubscribeMsgRequestResult.igL);
           }
         }
         label280:
@@ -188,7 +191,7 @@ public final class h
         label298:
         do
         {
-          aq.f((Runnable)new a(this, paramInt1, paramInt2, paramSubscribeMsgRequestResult, paramString));
+          ap.f((Runnable)new a(this, paramInt1, paramInt2, paramSubscribeMsgRequestResult, paramString));
           AppMethodBeat.o(149694);
           return;
           localObject1 = null;
@@ -201,11 +204,11 @@ public final class h
           break label182;
           localObject1 = null;
           break label222;
-          localObject1 = h.c(this.hIE);
+          localObject1 = h.c(this.ijg);
         } while (localObject1 == null);
-        Object localObject2 = this.hIE.dta;
+        Object localObject2 = this.ijg.dqK;
         if (paramSubscribeMsgRequestResult != null) {}
-        for (boolean bool = paramSubscribeMsgRequestResult.hGj;; bool = false)
+        for (boolean bool = paramSubscribeMsgRequestResult.igL;; bool = false)
         {
           ((d)localObject1).b((String)localObject2, null, bool);
           break;
@@ -215,7 +218,7 @@ public final class h
       }
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -226,13 +229,13 @@ public final class h
         AppMethodBeat.i(149693);
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          localb = h.d(this.hIF.hIE);
+          localb = h.d(this.ijh.ijg);
           if (localb != null)
           {
-            String str = this.hIF.hIE.dta;
+            String str = this.ijh.ijg.dqK;
             SubscribeMsgRequestResult localSubscribeMsgRequestResult = paramSubscribeMsgRequestResult;
             if (localSubscribeMsgRequestResult == null) {
-              k.fvU();
+              k.fOy();
             }
             localb.a(str, localSubscribeMsgRequestResult);
             AppMethodBeat.o(149693);
@@ -241,8 +244,8 @@ public final class h
           AppMethodBeat.o(149693);
           return;
         }
-        ad.e("MicroMsg.UpdateSubscribeMsgListTask", "alvinluo updateSubscribeMsgList failed");
-        e.b localb = h.d(this.hIF.hIE);
+        ac.e("MicroMsg.UpdateSubscribeMsgListTask", "alvinluo updateSubscribeMsgList failed");
+        e.b localb = h.d(this.ijh.ijg);
         if (localb != null)
         {
           localb.i(paramInt1, paramInt2, paramString);
@@ -256,7 +259,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.c.h
  * JD-Core Version:    0.7.0.1
  */

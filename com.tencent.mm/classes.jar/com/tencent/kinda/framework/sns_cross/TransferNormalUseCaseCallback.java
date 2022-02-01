@@ -3,8 +3,8 @@ package com.tencent.kinda.framework.sns_cross;
 import android.content.Context;
 import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ap;
-import com.tencent.mm.g.a.gf;
+import com.tencent.mm.g.a.aq;
+import com.tencent.mm.g.a.gg;
 import com.tencent.mm.plugin.remittance.ui.RemittanceF2fDynamicCodeUI;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.b.a;
@@ -37,46 +37,46 @@ public class TransferNormalUseCaseCallback
     int j = paramITransmitKvData.getInt("retcode");
     long l = paramITransmitKvData.getLong("total_fee");
     int k = paramITransmitKvData.getInt("action");
-    Object localObject2 = new gf();
-    ((gf)localObject2).djn.dcE = paramITransmitKvData.getString("req_key");
+    Object localObject2 = new gg();
+    ((gg)localObject2).dgI.dac = paramITransmitKvData.getString("req_key");
     if (i == 31)
     {
-      ((gf)localObject2).djn.type = 0;
+      ((gg)localObject2).dgI.type = 0;
       if (i != 31) {
         break label349;
       }
       if ((j != 1) || (k != 1)) {
         break label326;
       }
-      ((gf)localObject2).djn.dcG = 1;
+      ((gg)localObject2).dgI.dae = 1;
     }
     for (;;)
     {
-      ((gf)localObject2).djn.dcF = ((String)localObject1);
-      ((gf)localObject2).djn.isKinda = true;
-      a.ESL.l((b)localObject2);
-      localObject2 = new ap();
-      ((ap)localObject2).dcD.dcE = paramITransmitKvData.getString("req_key");
-      ((ap)localObject2).dcD.dcF = ((String)localObject1);
-      ((ap)localObject2).dcD.dcG = j;
-      ((ap)localObject2).dcD.dcH = (l / 100.0D);
-      ((ap)localObject2).dcD.isKinda = true;
-      ((ap)localObject2).dcD.dcI = paramITransmitKvData.getInt("pay_fail_reason");
-      a.ESL.l((b)localObject2);
+      ((gg)localObject2).dgI.dad = ((String)localObject1);
+      ((gg)localObject2).dgI.isKinda = true;
+      a.GpY.l((b)localObject2);
+      localObject2 = new aq();
+      ((aq)localObject2).dab.dac = paramITransmitKvData.getString("req_key");
+      ((aq)localObject2).dab.dad = ((String)localObject1);
+      ((aq)localObject2).dab.dae = j;
+      ((aq)localObject2).dab.daf = (l / 100.0D);
+      ((aq)localObject2).dab.isKinda = true;
+      ((aq)localObject2).dab.dag = paramITransmitKvData.getInt("pay_fail_reason");
+      a.GpY.l((b)localObject2);
       AppMethodBeat.o(18723);
       return;
       if ((i != 32) && (i != 33)) {
         break;
       }
-      ((gf)localObject2).djn.type = 1;
+      ((gg)localObject2).dgI.type = 1;
       break;
       label326:
       if ((j == 1) && (k == 2))
       {
-        ((gf)localObject2).djn.dcG = 2;
+        ((gg)localObject2).dgI.dae = 2;
         continue;
         label349:
-        ((gf)localObject2).djn.dcG = j;
+        ((gg)localObject2).dgI.dae = j;
       }
     }
   }

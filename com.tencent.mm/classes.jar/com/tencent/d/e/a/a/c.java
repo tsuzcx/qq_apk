@@ -3,26 +3,26 @@ package com.tencent.d.e.a.a;
 public abstract class c
   implements Runnable
 {
-  public abstract void aJr();
+  public abstract void aQi();
   
-  public abstract void fml();
+  public abstract void fCC();
   
   public void run()
   {
     try
     {
-      aJr();
+      aQi();
       return;
     }
     catch (Throwable localThrowable)
     {
-      fml();
+      fCC();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.e.a.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -22,11 +22,10 @@ import com.tencent.mm.compatible.h.d;
 import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.media.h.d.b;
-import com.tencent.mm.plugin.appbrand.aa.l;
-import com.tencent.mm.plugin.appbrand.aa.l.a;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObject;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalVideoObject;
+import com.tencent.mm.plugin.appbrand.g.c;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
@@ -35,17 +34,19 @@ import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.n;
 import com.tencent.mm.plugin.appbrand.permission.o;
 import com.tencent.mm.plugin.appbrand.utils.b.a.b;
+import com.tencent.mm.plugin.appbrand.z.l;
+import com.tencent.mm.plugin.appbrand.z.l.a;
 import com.tencent.mm.plugin.mmsight.SightCaptureResult;
 import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.pluginsdk.ui.tools.q;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper.LatLongData;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -69,10 +70,10 @@ public final class JsApiChooseMultiMedia
   public static final int CTRL_INDEX = 549;
   public static final String NAME = "chooseMultiMedia";
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46542);
-    if (n.Do(paramc.getAppId()).iFT)
+    if (n.Hr(paramc.getAppId()).jfV)
     {
       paramc.h(paramInt, e("cancel", null));
       AppMethodBeat.o(46542);
@@ -87,21 +88,21 @@ public final class JsApiChooseMultiMedia
     }
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiChooseMultiMedia", "chooseMedia fail, data is null");
+      ac.e("MicroMsg.JsApiChooseMultiMedia", "chooseMedia fail, data is null");
       paramc.h(paramInt, e("fail:data is null", null));
       AppMethodBeat.o(46542);
       return;
     }
     int i = paramJSONObject.optInt("maxDuration", 10);
-    ad.i("MicroMsg.JsApiChooseMultiMedia", "videoMaxDuration: %d.", new Object[] { Integer.valueOf(i) });
+    ac.i("MicroMsg.JsApiChooseMultiMedia", "videoMaxDuration: %d.", new Object[] { Integer.valueOf(i) });
     if ((i <= 0) || (i > 1800))
     {
-      ad.e("MicroMsg.JsApiChooseMultiMedia", "chooseMedia fail, invalid maxDuration parameter");
+      ac.e("MicroMsg.JsApiChooseMultiMedia", "chooseMedia fail, invalid maxDuration parameter");
       paramc.h(paramInt, e("fail:invalid maxDuration parameter", null));
       AppMethodBeat.o(46542);
       return;
     }
-    localContext.getSharedPreferences(aj.eFD() + "_locCache", 0).edit().putString("locStr", null).apply();
+    localContext.getSharedPreferences(ai.eUX() + "_locCache", 0).edit().putString("locStr", null).apply();
     Object localObject1 = new a.b()
     {
       public final void a(int paramAnonymousInt, String paramAnonymousString, com.tencent.mm.plugin.appbrand.utils.b.a.a paramAnonymousa)
@@ -115,13 +116,13 @@ public final class JsApiChooseMultiMedia
           paramAnonymousString.append(paramAnonymousInt);
           paramAnonymousString.append(",");
           paramAnonymousString.append(i);
-          localContext.getSharedPreferences(aj.eFD() + "_locCache", 0).edit().putString("locStr", paramAnonymousString.toString()).apply();
-          ad.d("MicroMsg.JsApiChooseMultiMedia", "onLocationChange latitude %f, longitude: %f, locStr: %s.", new Object[] { Double.valueOf(paramAnonymousa.latitude), Double.valueOf(paramAnonymousa.longitude), paramAnonymousString });
+          localContext.getSharedPreferences(ai.eUX() + "_locCache", 0).edit().putString("locStr", paramAnonymousString.toString()).apply();
+          ac.d("MicroMsg.JsApiChooseMultiMedia", "onLocationChange latitude %f, longitude: %f, locStr: %s.", new Object[] { Double.valueOf(paramAnonymousa.latitude), Double.valueOf(paramAnonymousa.longitude), paramAnonymousString });
           ((com.tencent.mm.plugin.appbrand.utils.b.a)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.utils.b.a.class)).c("wgs84", this, null);
           AppMethodBeat.o(46493);
           return;
         }
-        ad.e("MicroMsg.JsApiChooseMultiMedia", "onLocationChange error, errCode: %d.", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ac.e("MicroMsg.JsApiChooseMultiMedia", "onLocationChange error, errCode: %d.", new Object[] { Integer.valueOf(paramAnonymousInt) });
         AppMethodBeat.o(46493);
       }
     };
@@ -173,7 +174,26 @@ public final class JsApiChooseMultiMedia
           if (!bool2) {
             break label623;
           }
-          o.b(paramc.getAppId(), new JsApiChooseMultiMedia.4(this, paramc, paramJSONObject, paramInt));
+          o.b(paramc.getAppId(), new android.support.v4.app.a.a()
+          {
+            public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
+            {
+              AppMethodBeat.i(46496);
+              if (paramAnonymousInt != 113)
+              {
+                AppMethodBeat.o(46496);
+                return;
+              }
+              if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
+              {
+                JsApiChooseMultiMedia.this.a(paramc, paramJSONObject, paramInt);
+                AppMethodBeat.o(46496);
+                return;
+              }
+              paramc.h(paramInt, JsApiChooseMultiMedia.this.e("fail:system permission denied", null));
+              AppMethodBeat.o(46496);
+            }
+          });
           paramJSONObject = paramc.getContext();
           if ((paramJSONObject instanceof Activity)) {
             break label578;
@@ -202,28 +222,37 @@ public final class JsApiChooseMultiMedia
           m = bool6;
           if (bool6)
           {
-            o.Mi(paramc.getAppId());
+            o.Qo(paramc.getAppId());
             m = bool6;
           }
         }
         label623:
-        n.Dp(paramc.getAppId()).iFT = true;
-        com.tencent.mm.plugin.appbrand.g.a(paramc.getAppId(), new JsApiChooseMultiMedia.2(this, paramc));
+        n.Hs(paramc.getAppId()).jfV = true;
+        com.tencent.mm.plugin.appbrand.g.a(paramc.getAppId(), new g.c()
+        {
+          public final void onResume()
+          {
+            AppMethodBeat.i(46494);
+            n.Hs(paramc.getAppId()).jfV = false;
+            com.tencent.mm.plugin.appbrand.g.b(paramc.getAppId(), this);
+            AppMethodBeat.o(46494);
+          }
+        });
         paramJSONObject = new ChooseRequest();
         paramJSONObject.appId = paramc.getAppId();
         paramJSONObject.count = j;
         localObject2 = com.tencent.mm.modelgeo.a.a.c(d2, d1);
         paramJSONObject.longitude = localObject2[0];
         paramJSONObject.latitude = localObject2[1];
-        paramJSONObject.goQ = ((String)localObject1);
-        paramJSONObject.hqY = d3;
-        paramJSONObject.jWw = bool2;
-        paramJSONObject.jWx = bool3;
-        paramJSONObject.iBF = i;
-        paramJSONObject.jXp = bool4;
-        paramJSONObject.jXq = bool5;
-        paramJSONObject.jXr = k;
-        paramJSONObject.jXs = bool1;
+        paramJSONObject.gPy = ((String)localObject1);
+        paramJSONObject.hRA = d3;
+        paramJSONObject.kxi = bool2;
+        paramJSONObject.kxj = bool3;
+        paramJSONObject.jbG = i;
+        paramJSONObject.kyb = bool4;
+        paramJSONObject.kyc = bool5;
+        paramJSONObject.kyd = k;
+        paramJSONObject.kye = bool1;
         com.tencent.mm.plugin.appbrand.ipc.a.a(localContext, paramJSONObject, new AppBrandProxyUIProcessTask.b() {});
         AppMethodBeat.o(46542);
         return;
@@ -239,15 +268,15 @@ public final class JsApiChooseMultiMedia
     public static final Parcelable.Creator<ChooseRequest> CREATOR;
     String appId;
     int count;
-    String goQ;
-    double hqY;
-    int iBF;
-    boolean jWw;
-    boolean jWx;
-    boolean jXp;
-    boolean jXq;
-    int jXr;
-    boolean jXs;
+    String gPy;
+    double hRA;
+    int jbG;
+    boolean kxi;
+    boolean kxj;
+    boolean kyb;
+    boolean kyc;
+    int kyd;
+    boolean kye;
     double latitude;
     double longitude;
     
@@ -267,17 +296,17 @@ public final class JsApiChooseMultiMedia
       AppMethodBeat.o(46500);
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> aWl()
+    public final Class<? extends AppBrandProxyUIProcessTask> bdj()
     {
       return JsApiChooseMultiMedia.a.class;
     }
     
-    public final boolean aXq()
+    public final boolean ben()
     {
       return true;
     }
     
-    public final String aXr()
+    public final String beo()
     {
       return "GalleryChooseMultiMedia";
     }
@@ -295,32 +324,32 @@ public final class JsApiChooseMultiMedia
       this.count = paramParcel.readInt();
       this.longitude = paramParcel.readDouble();
       this.latitude = paramParcel.readDouble();
-      this.goQ = paramParcel.readString();
-      this.hqY = paramParcel.readDouble();
+      this.gPy = paramParcel.readString();
+      this.hRA = paramParcel.readDouble();
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.jWw = bool1;
+        this.kxi = bool1;
         if (paramParcel.readByte() == 0) {
           break label152;
         }
         bool1 = true;
         label78:
-        this.jWx = bool1;
-        this.iBF = paramParcel.readInt();
+        this.kxj = bool1;
+        this.jbG = paramParcel.readInt();
         if (paramParcel.readByte() == 0) {
           break label157;
         }
         bool1 = true;
         label100:
-        this.jXp = bool1;
+        this.kyb = bool1;
         if (paramParcel.readByte() == 0) {
           break label162;
         }
         bool1 = true;
         label114:
-        this.jXq = bool1;
-        this.jXr = paramParcel.readInt();
+        this.kyc = bool1;
+        this.kyd = paramParcel.readInt();
         if (paramParcel.readByte() == 0) {
           break label167;
         }
@@ -331,7 +360,7 @@ public final class JsApiChooseMultiMedia
       label167:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.jXs = bool1;
+        this.kye = bool1;
         AppMethodBeat.o(46499);
         return;
         bool1 = false;
@@ -353,33 +382,33 @@ public final class JsApiChooseMultiMedia
       paramParcel.writeInt(this.count);
       paramParcel.writeDouble(this.longitude);
       paramParcel.writeDouble(this.latitude);
-      paramParcel.writeString(this.goQ);
-      paramParcel.writeDouble(this.hqY);
-      if (this.jWw)
+      paramParcel.writeString(this.gPy);
+      paramParcel.writeDouble(this.hRA);
+      if (this.kxi)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
-        if (!this.jWx) {
+        if (!this.kxj) {
           break label154;
         }
         b1 = 1;
         label79:
         paramParcel.writeByte(b1);
-        paramParcel.writeInt(this.iBF);
-        if (!this.jXp) {
+        paramParcel.writeInt(this.jbG);
+        if (!this.kyb) {
           break label159;
         }
         b1 = 1;
         label101:
         paramParcel.writeByte(b1);
-        if (!this.jXq) {
+        if (!this.kyc) {
           break label164;
         }
         b1 = 1;
         label115:
         paramParcel.writeByte(b1);
-        paramParcel.writeInt(this.jXr);
-        if (!this.jXs) {
+        paramParcel.writeInt(this.kyd);
+        if (!this.kye) {
           break label169;
         }
       }
@@ -408,8 +437,8 @@ public final class JsApiChooseMultiMedia
     extends AppBrandProxyUIProcessTask.ProcessResult
   {
     public static final Parcelable.Creator<ChooseResult> CREATOR;
-    int bRZ;
-    String jXt;
+    int bPH;
+    String kyf;
     
     static
     {
@@ -433,16 +462,16 @@ public final class JsApiChooseMultiMedia
     public final void j(Parcel paramParcel)
     {
       AppMethodBeat.i(46503);
-      this.bRZ = paramParcel.readInt();
-      this.jXt = paramParcel.readString();
+      this.bPH = paramParcel.readInt();
+      this.kyf = paramParcel.readString();
       AppMethodBeat.o(46503);
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(46504);
-      paramParcel.writeInt(this.bRZ);
-      paramParcel.writeString(this.jXt);
+      paramParcel.writeInt(this.bPH);
+      paramParcel.writeString(this.kyf);
       AppMethodBeat.o(46504);
     }
   }
@@ -450,21 +479,21 @@ public final class JsApiChooseMultiMedia
   static final class a
     extends AppBrandProxyUIProcessTask
   {
-    private p ftP;
-    int jWF;
-    private DialogInterface.OnCancelListener jWJ;
-    JsApiChooseMultiMedia.ChooseRequest jXu;
-    JsApiChooseMultiMedia.ChooseResult jXv;
+    private p fxw;
+    int kxr;
+    private DialogInterface.OnCancelListener kxv;
+    JsApiChooseMultiMedia.ChooseRequest kyg;
+    JsApiChooseMultiMedia.ChooseResult kyh;
     
     private a()
     {
       AppMethodBeat.i(46511);
-      this.jXv = new JsApiChooseMultiMedia.ChooseResult();
-      this.jWF = 7;
+      this.kyh = new JsApiChooseMultiMedia.ChooseResult();
+      this.kxr = 7;
       AppMethodBeat.o(46511);
     }
     
-    private static String Iq(String paramString)
+    private static String MA(String paramString)
     {
       AppMethodBeat.i(46524);
       int i = Exif.fromFile(paramString).getOrientationInDegree();
@@ -475,13 +504,13 @@ public final class JsApiChooseMultiMedia
           Object localObject1 = MMBitmapFactory.decodeFile(paramString, localOptions);
           if (localObject1 == null)
           {
-            ad.e("MicroMsg.JsApiChooseMultiMedia", "rotate image, get null bmp");
+            ac.e("MicroMsg.JsApiChooseMultiMedia", "rotate image, get null bmp");
             AppMethodBeat.o(46524);
             return paramString;
           }
           float f = i % 360;
           Bitmap localBitmap = f.a((Bitmap)localObject1, f);
-          Object localObject2 = new StringBuilder().append(com.tencent.mm.loader.j.b.ais()).append("microMsg.tmp.").append(System.currentTimeMillis());
+          Object localObject2 = new StringBuilder().append(com.tencent.mm.loader.j.b.aps()).append("microMsg.tmp.").append(System.currentTimeMillis());
           if (com.tencent.mm.plugin.appbrand.utils.c.d(localOptions))
           {
             localObject1 = ".jpg";
@@ -496,7 +525,7 @@ public final class JsApiChooseMultiMedia
             {
               f.a(localBitmap, 80, (Bitmap.CompressFormat)localObject1, (String)localObject2, true);
               if (com.tencent.mm.plugin.appbrand.utils.c.d(localOptions)) {
-                com.tencent.mm.plugin.appbrand.m.b.cH(paramString, (String)localObject2);
+                com.tencent.mm.plugin.appbrand.m.b.cR(paramString, (String)localObject2);
               }
               AppMethodBeat.o(46524);
               return localObject2;
@@ -504,7 +533,7 @@ public final class JsApiChooseMultiMedia
             catch (Exception localException)
             {
               label165:
-              ad.e("MicroMsg.JsApiChooseMultiMedia", "rotate image, exception occurred when saving | %s", new Object[] { localException });
+              ac.e("MicroMsg.JsApiChooseMultiMedia", "rotate image, exception occurred when saving | %s", new Object[] { localException });
               i.deleteFile((String)localObject2);
               AppMethodBeat.o(46524);
               return paramString;
@@ -528,103 +557,33 @@ public final class JsApiChooseMultiMedia
       return paramString;
     }
     
-    private static String Ir(String paramString)
-    {
-      AppMethodBeat.i(46523);
-      String str = i.k(com.tencent.mm.loader.j.b.ais() + "microMsg." + System.currentTimeMillis() + ".jpg", true);
-      try
-      {
-        Bitmap localBitmap1 = MMBitmapFactory.decodeFile(paramString);
-        if (localBitmap1 == null)
-        {
-          ad.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp return null");
-          AppMethodBeat.o(46523);
-          return null;
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        for (;;)
-        {
-          ad.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp oom");
-          try
-          {
-            Bitmap localBitmap2 = f.decodeFile(paramString, null);
-          }
-          catch (OutOfMemoryError localOutOfMemoryError2)
-          {
-            ad.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp oom retry, oom again");
-            Object localObject1 = null;
-          }
-          catch (Exception localException1)
-          {
-            ad.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp oom retry, e ".concat(String.valueOf(localException1)));
-            Object localObject2 = null;
-          }
-        }
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        for (;;)
-        {
-          try
-          {
-            Bitmap localBitmap3 = f.decodeFile(paramString, null);
-          }
-          catch (Exception localException2)
-          {
-            ad.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp npe retry, e ".concat(String.valueOf(localException2)));
-            Object localObject3 = null;
-          }
-        }
-      }
-      catch (Exception localException3)
-      {
-        for (;;)
-        {
-          ad.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp e ".concat(String.valueOf(localException3)));
-          Object localObject4 = null;
-        }
-        long l = bt.eGO();
-        boolean bool = com.tencent.mm.plugin.appbrand.utils.c.dX(str, paramString);
-        ad.i("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, ret = %b, cost = %d, %s (%d) -> %s (%d)", new Object[] { Boolean.valueOf(bool), Long.valueOf(bt.eGO() - l), paramString, Long.valueOf(i.aMN(paramString)), str, Long.valueOf(i.aMN(str)) });
-        if (bool)
-        {
-          AppMethodBeat.o(46523);
-          return str;
-        }
-        AppMethodBeat.o(46523);
-      }
-      return paramString;
-    }
-    
     /* Error */
-    private static String Iy(String paramString)
+    private static String Mx(String paramString)
     {
       // Byte code:
-      //   0: ldc 236
+      //   0: ldc 177
       //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: iconst_2
       //   6: newarray int
       //   8: astore 13
-      //   10: new 238	com/tencent/mm/compatible/h/d
+      //   10: new 179	com/tencent/mm/compatible/h/d
       //   13: dup
-      //   14: invokespecial 239	com/tencent/mm/compatible/h/d:<init>	()V
+      //   14: invokespecial 180	com/tencent/mm/compatible/h/d:<init>	()V
       //   17: astore 12
       //   19: aload 12
       //   21: aload_0
-      //   22: invokevirtual 245	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+      //   22: invokevirtual 186	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
       //   25: aload 12
       //   27: bipush 18
-      //   29: invokevirtual 249	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+      //   29: invokevirtual 190	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
       //   32: iconst_0
-      //   33: invokestatic 253	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+      //   33: invokestatic 196	com/tencent/mm/sdk/platformtools/bs:getInt	(Ljava/lang/String;I)I
       //   36: istore 6
       //   38: aload 12
       //   40: bipush 19
-      //   42: invokevirtual 249	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+      //   42: invokevirtual 190	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
       //   45: iconst_0
-      //   46: invokestatic 253	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+      //   46: invokestatic 196	com/tencent/mm/sdk/platformtools/bs:getInt	(Ljava/lang/String;I)I
       //   49: istore 7
       //   51: aload 13
       //   53: iconst_0
@@ -634,439 +593,439 @@ public final class JsApiChooseMultiMedia
       //   59: iconst_1
       //   60: iload 7
       //   62: iastore
-      //   63: invokestatic 259	com/tencent/mm/modelcontrol/d:awT	()Lcom/tencent/mm/modelcontrol/d;
-      //   66: invokevirtual 263	com/tencent/mm/modelcontrol/d:axa	()Lcom/tencent/mm/modelcontrol/VideoTransPara;
+      //   63: invokestatic 202	com/tencent/mm/modelcontrol/d:aDL	()Lcom/tencent/mm/modelcontrol/d;
+      //   66: invokevirtual 206	com/tencent/mm/modelcontrol/d:aDS	()Lcom/tencent/mm/modelcontrol/VideoTransPara;
       //   69: astore 14
       //   71: aload 14
-      //   73: getfield 268	com/tencent/mm/modelcontrol/VideoTransPara:width	I
+      //   73: getfield 211	com/tencent/mm/modelcontrol/VideoTransPara:width	I
       //   76: istore_3
       //   77: aload 14
-      //   79: getfield 271	com/tencent/mm/modelcontrol/VideoTransPara:height	I
+      //   79: getfield 214	com/tencent/mm/modelcontrol/VideoTransPara:height	I
       //   82: istore 4
-      //   84: ldc 93
-      //   86: new 108	java/lang/StringBuilder
+      //   84: ldc 79
+      //   86: new 94	java/lang/StringBuilder
       //   89: dup
-      //   90: ldc_w 273
-      //   93: invokespecial 275	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   96: iload 6
-      //   98: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   101: ldc_w 280
-      //   104: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   107: iload 7
-      //   109: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   112: ldc_w 282
-      //   115: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   118: iload_3
-      //   119: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   122: ldc_w 284
-      //   125: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   128: iload 4
-      //   130: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   133: ldc_w 286
-      //   136: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   139: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   142: invokestatic 288	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
-      //   145: iload 6
-      //   147: iload_3
-      //   148: if_icmpgt +275 -> 423
-      //   151: iload 7
-      //   153: iload 4
-      //   155: if_icmpgt +268 -> 423
-      //   158: ldc 93
-      //   160: ldc_w 290
-      //   163: invokestatic 292	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   166: aconst_null
-      //   167: astore 11
-      //   169: aload 11
-      //   171: ifnull +21 -> 192
-      //   174: aload 13
-      //   176: iconst_0
-      //   177: aload 11
-      //   179: getfield 297	android/graphics/Point:x	I
-      //   182: iastore
-      //   183: aload 13
-      //   185: iconst_1
-      //   186: aload 11
-      //   188: getfield 300	android/graphics/Point:y	I
-      //   191: iastore
-      //   192: ldc 93
-      //   194: ldc_w 302
-      //   197: bipush 6
-      //   199: anewarray 164	java/lang/Object
-      //   202: dup
-      //   203: iconst_0
-      //   204: iload 6
-      //   206: invokestatic 307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   209: aastore
-      //   210: dup
-      //   211: iconst_1
-      //   212: iload 7
-      //   214: invokestatic 307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   217: aastore
-      //   218: dup
-      //   219: iconst_2
-      //   220: aload 14
-      //   222: getfield 268	com/tencent/mm/modelcontrol/VideoTransPara:width	I
-      //   225: invokestatic 307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   228: aastore
-      //   229: dup
-      //   230: iconst_3
-      //   231: aload 14
-      //   233: getfield 271	com/tencent/mm/modelcontrol/VideoTransPara:height	I
-      //   236: invokestatic 307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   239: aastore
-      //   240: dup
-      //   241: iconst_4
-      //   242: aload 13
-      //   244: iconst_0
-      //   245: iaload
-      //   246: invokestatic 307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   249: aastore
-      //   250: dup
-      //   251: iconst_5
-      //   252: aload 13
-      //   254: iconst_1
-      //   255: iaload
-      //   256: invokestatic 307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   259: aastore
-      //   260: invokestatic 309	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   263: aload 12
-      //   265: invokevirtual 312	android/media/MediaMetadataRetriever:release	()V
-      //   268: aload 13
-      //   270: iconst_0
-      //   271: iaload
-      //   272: istore_3
-      //   273: aload 13
-      //   275: iconst_1
-      //   276: iaload
-      //   277: istore 4
-      //   279: new 108	java/lang/StringBuilder
-      //   282: dup
-      //   283: invokespecial 109	java/lang/StringBuilder:<init>	()V
-      //   286: invokestatic 115	com/tencent/mm/loader/j/b:ais	()Ljava/lang/String;
-      //   289: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   292: ldc 176
-      //   294: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   297: invokestatic 127	java/lang/System:currentTimeMillis	()J
-      //   300: invokevirtual 130	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-      //   303: ldc_w 314
-      //   306: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   309: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   312: astore 11
-      //   314: invokestatic 259	com/tencent/mm/modelcontrol/d:awT	()Lcom/tencent/mm/modelcontrol/d;
-      //   317: invokevirtual 263	com/tencent/mm/modelcontrol/d:axa	()Lcom/tencent/mm/modelcontrol/VideoTransPara;
-      //   320: astore 12
-      //   322: ldc 93
-      //   324: ldc_w 316
-      //   327: iconst_1
-      //   328: anewarray 164	java/lang/Object
-      //   331: dup
-      //   332: iconst_0
-      //   333: aload 12
-      //   335: getfield 319	com/tencent/mm/modelcontrol/VideoTransPara:videoBitrate	I
-      //   338: invokestatic 307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   341: aastore
-      //   342: invokestatic 309	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   345: new 321	java/util/concurrent/CountDownLatch
-      //   348: dup
-      //   349: iconst_1
-      //   350: invokespecial 323	java/util/concurrent/CountDownLatch:<init>	(I)V
-      //   353: astore 13
-      //   355: getstatic 329	com/tencent/mm/media/h/d:gsN	Lcom/tencent/mm/media/h/d$a;
-      //   358: aload_0
-      //   359: aload 11
-      //   361: iload_3
-      //   362: iload 4
-      //   364: aload 12
-      //   366: getfield 319	com/tencent/mm/modelcontrol/VideoTransPara:videoBitrate	I
-      //   369: aload 12
-      //   371: getfield 332	com/tencent/mm/modelcontrol/VideoTransPara:fps	I
-      //   374: aload 12
-      //   376: getfield 335	com/tencent/mm/modelcontrol/VideoTransPara:gnp	I
-      //   379: aload 12
-      //   381: getfield 338	com/tencent/mm/modelcontrol/VideoTransPara:gnq	I
-      //   384: new 17	com/tencent/mm/plugin/appbrand/jsapi/media/JsApiChooseMultiMedia$a$5
-      //   387: dup
-      //   388: aload 13
-      //   390: invokespecial 341	com/tencent/mm/plugin/appbrand/jsapi/media/JsApiChooseMultiMedia$a$5:<init>	(Ljava/util/concurrent/CountDownLatch;)V
-      //   393: invokeinterface 346 10 0
-      //   398: invokevirtual 349	com/tencent/mm/media/h/d:akd	()I
-      //   401: pop
-      //   402: ldc 93
-      //   404: ldc_w 351
-      //   407: invokestatic 288	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
-      //   410: aload 13
-      //   412: invokevirtual 354	java/util/concurrent/CountDownLatch:await	()V
-      //   415: ldc 236
-      //   417: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   420: aload 11
-      //   422: areturn
-      //   423: iload 6
-      //   425: iload 7
-      //   427: invokestatic 360	java/lang/Math:max	(II)I
-      //   430: istore 10
-      //   432: iload 6
-      //   434: iload 7
-      //   436: invokestatic 363	java/lang/Math:min	(II)I
-      //   439: istore 9
-      //   441: iload_3
-      //   442: iload 4
-      //   444: invokestatic 360	java/lang/Math:max	(II)I
-      //   447: istore 5
-      //   449: iload_3
-      //   450: iload 4
-      //   452: invokestatic 363	java/lang/Math:min	(II)I
-      //   455: istore 8
-      //   457: iload 10
-      //   459: bipush 16
-      //   461: irem
-      //   462: ifne +51 -> 513
-      //   465: iload 10
-      //   467: iload 5
-      //   469: isub
-      //   470: invokestatic 367	java/lang/Math:abs	(I)I
-      //   473: bipush 16
-      //   475: if_icmpge +38 -> 513
-      //   478: iload 9
-      //   480: bipush 16
-      //   482: irem
-      //   483: ifne +30 -> 513
-      //   486: iload 9
-      //   488: iload 8
-      //   490: isub
-      //   491: invokestatic 367	java/lang/Math:abs	(I)I
-      //   494: bipush 16
-      //   496: if_icmpge +17 -> 513
-      //   499: ldc 93
-      //   501: ldc_w 369
-      //   504: invokestatic 292	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   507: aconst_null
-      //   508: astore 11
-      //   510: goto -341 -> 169
-      //   513: iload 10
+      //   90: ldc 216
+      //   92: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   95: iload 6
+      //   97: invokevirtual 221	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+      //   100: ldc 223
+      //   102: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   105: iload 7
+      //   107: invokevirtual 221	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+      //   110: ldc 225
+      //   112: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   115: iload_3
+      //   116: invokevirtual 221	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+      //   119: ldc 227
+      //   121: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   124: iload 4
+      //   126: invokevirtual 221	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+      //   129: ldc 229
+      //   131: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   134: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   137: invokestatic 231	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+      //   140: iload 6
+      //   142: iload_3
+      //   143: if_icmpgt +274 -> 417
+      //   146: iload 7
+      //   148: iload 4
+      //   150: if_icmpgt +267 -> 417
+      //   153: ldc 79
+      //   155: ldc 233
+      //   157: invokestatic 235	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   160: aconst_null
+      //   161: astore 11
+      //   163: aload 11
+      //   165: ifnull +21 -> 186
+      //   168: aload 13
+      //   170: iconst_0
+      //   171: aload 11
+      //   173: getfield 240	android/graphics/Point:x	I
+      //   176: iastore
+      //   177: aload 13
+      //   179: iconst_1
+      //   180: aload 11
+      //   182: getfield 243	android/graphics/Point:y	I
+      //   185: iastore
+      //   186: ldc 79
+      //   188: ldc 245
+      //   190: bipush 6
+      //   192: anewarray 150	java/lang/Object
+      //   195: dup
+      //   196: iconst_0
+      //   197: iload 6
+      //   199: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   202: aastore
+      //   203: dup
+      //   204: iconst_1
+      //   205: iload 7
+      //   207: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   210: aastore
+      //   211: dup
+      //   212: iconst_2
+      //   213: aload 14
+      //   215: getfield 211	com/tencent/mm/modelcontrol/VideoTransPara:width	I
+      //   218: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   221: aastore
+      //   222: dup
+      //   223: iconst_3
+      //   224: aload 14
+      //   226: getfield 214	com/tencent/mm/modelcontrol/VideoTransPara:height	I
+      //   229: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   232: aastore
+      //   233: dup
+      //   234: iconst_4
+      //   235: aload 13
+      //   237: iconst_0
+      //   238: iaload
+      //   239: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   242: aastore
+      //   243: dup
+      //   244: iconst_5
+      //   245: aload 13
+      //   247: iconst_1
+      //   248: iaload
+      //   249: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   252: aastore
+      //   253: invokestatic 253	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   256: aload 12
+      //   258: invokevirtual 256	android/media/MediaMetadataRetriever:release	()V
+      //   261: aload 13
+      //   263: iconst_0
+      //   264: iaload
+      //   265: istore_3
+      //   266: aload 13
+      //   268: iconst_1
+      //   269: iaload
+      //   270: istore 4
+      //   272: new 94	java/lang/StringBuilder
+      //   275: dup
+      //   276: invokespecial 95	java/lang/StringBuilder:<init>	()V
+      //   279: invokestatic 101	com/tencent/mm/loader/j/b:aps	()Ljava/lang/String;
+      //   282: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   285: ldc_w 258
+      //   288: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   291: invokestatic 113	java/lang/System:currentTimeMillis	()J
+      //   294: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+      //   297: ldc_w 260
+      //   300: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   303: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   306: astore 11
+      //   308: invokestatic 202	com/tencent/mm/modelcontrol/d:aDL	()Lcom/tencent/mm/modelcontrol/d;
+      //   311: invokevirtual 206	com/tencent/mm/modelcontrol/d:aDS	()Lcom/tencent/mm/modelcontrol/VideoTransPara;
+      //   314: astore 12
+      //   316: ldc 79
+      //   318: ldc_w 262
+      //   321: iconst_1
+      //   322: anewarray 150	java/lang/Object
+      //   325: dup
+      //   326: iconst_0
+      //   327: aload 12
+      //   329: getfield 265	com/tencent/mm/modelcontrol/VideoTransPara:videoBitrate	I
+      //   332: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   335: aastore
+      //   336: invokestatic 253	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   339: new 267	java/util/concurrent/CountDownLatch
+      //   342: dup
+      //   343: iconst_1
+      //   344: invokespecial 269	java/util/concurrent/CountDownLatch:<init>	(I)V
+      //   347: astore 13
+      //   349: getstatic 275	com/tencent/mm/media/h/d:gTv	Lcom/tencent/mm/media/h/d$a;
+      //   352: aload_0
+      //   353: aload 11
+      //   355: iload_3
+      //   356: iload 4
+      //   358: aload 12
+      //   360: getfield 265	com/tencent/mm/modelcontrol/VideoTransPara:videoBitrate	I
+      //   363: aload 12
+      //   365: getfield 278	com/tencent/mm/modelcontrol/VideoTransPara:fps	I
+      //   368: aload 12
+      //   370: getfield 281	com/tencent/mm/modelcontrol/VideoTransPara:gOb	I
+      //   373: aload 12
+      //   375: getfield 284	com/tencent/mm/modelcontrol/VideoTransPara:gOc	I
+      //   378: new 17	com/tencent/mm/plugin/appbrand/jsapi/media/JsApiChooseMultiMedia$a$5
+      //   381: dup
+      //   382: aload 13
+      //   384: invokespecial 287	com/tencent/mm/plugin/appbrand/jsapi/media/JsApiChooseMultiMedia$a$5:<init>	(Ljava/util/concurrent/CountDownLatch;)V
+      //   387: invokeinterface 292 10 0
+      //   392: invokevirtual 295	com/tencent/mm/media/h/d:arc	()I
+      //   395: pop
+      //   396: ldc 79
+      //   398: ldc_w 297
+      //   401: invokestatic 231	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+      //   404: aload 13
+      //   406: invokevirtual 300	java/util/concurrent/CountDownLatch:await	()V
+      //   409: ldc 177
+      //   411: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   414: aload 11
+      //   416: areturn
+      //   417: iload 6
+      //   419: iload 7
+      //   421: invokestatic 306	java/lang/Math:max	(II)I
+      //   424: istore 10
+      //   426: iload 6
+      //   428: iload 7
+      //   430: invokestatic 309	java/lang/Math:min	(II)I
+      //   433: istore 9
+      //   435: iload_3
+      //   436: iload 4
+      //   438: invokestatic 306	java/lang/Math:max	(II)I
+      //   441: istore 5
+      //   443: iload_3
+      //   444: iload 4
+      //   446: invokestatic 309	java/lang/Math:min	(II)I
+      //   449: istore 8
+      //   451: iload 10
+      //   453: bipush 16
+      //   455: irem
+      //   456: ifne +51 -> 507
+      //   459: iload 10
+      //   461: iload 5
+      //   463: isub
+      //   464: invokestatic 313	java/lang/Math:abs	(I)I
+      //   467: bipush 16
+      //   469: if_icmpge +38 -> 507
+      //   472: iload 9
+      //   474: bipush 16
+      //   476: irem
+      //   477: ifne +30 -> 507
+      //   480: iload 9
+      //   482: iload 8
+      //   484: isub
+      //   485: invokestatic 313	java/lang/Math:abs	(I)I
+      //   488: bipush 16
+      //   490: if_icmpge +17 -> 507
+      //   493: ldc 79
+      //   495: ldc_w 315
+      //   498: invokestatic 235	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   501: aconst_null
+      //   502: astore 11
+      //   504: goto -341 -> 163
+      //   507: iload 10
+      //   509: iconst_2
+      //   510: idiv
+      //   511: istore 10
+      //   513: iload 9
       //   515: iconst_2
       //   516: idiv
-      //   517: istore 10
-      //   519: iload 9
-      //   521: iconst_2
-      //   522: idiv
-      //   523: istore 9
-      //   525: iload 10
-      //   527: bipush 16
-      //   529: irem
-      //   530: ifne +106 -> 636
-      //   533: iload 10
-      //   535: iload 5
-      //   537: isub
-      //   538: invokestatic 367	java/lang/Math:abs	(I)I
-      //   541: bipush 16
-      //   543: if_icmpge +93 -> 636
-      //   546: iload 9
-      //   548: bipush 16
-      //   550: irem
-      //   551: ifne +85 -> 636
-      //   554: iload 9
-      //   556: iload 8
-      //   558: isub
-      //   559: invokestatic 367	java/lang/Math:abs	(I)I
-      //   562: bipush 16
-      //   564: if_icmpge +72 -> 636
-      //   567: ldc 93
-      //   569: ldc_w 371
-      //   572: invokestatic 292	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   575: iload 6
-      //   577: iconst_2
-      //   578: idiv
-      //   579: istore_3
-      //   580: iload 7
-      //   582: iconst_2
-      //   583: idiv
-      //   584: istore 4
+      //   517: istore 9
+      //   519: iload 10
+      //   521: bipush 16
+      //   523: irem
+      //   524: ifne +106 -> 630
+      //   527: iload 10
+      //   529: iload 5
+      //   531: isub
+      //   532: invokestatic 313	java/lang/Math:abs	(I)I
+      //   535: bipush 16
+      //   537: if_icmpge +93 -> 630
+      //   540: iload 9
+      //   542: bipush 16
+      //   544: irem
+      //   545: ifne +85 -> 630
+      //   548: iload 9
+      //   550: iload 8
+      //   552: isub
+      //   553: invokestatic 313	java/lang/Math:abs	(I)I
+      //   556: bipush 16
+      //   558: if_icmpge +72 -> 630
+      //   561: ldc 79
+      //   563: ldc_w 317
+      //   566: invokestatic 235	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   569: iload 6
+      //   571: iconst_2
+      //   572: idiv
+      //   573: istore_3
+      //   574: iload 7
+      //   576: iconst_2
+      //   577: idiv
+      //   578: istore 4
+      //   580: iload_3
+      //   581: iconst_2
+      //   582: irem
+      //   583: ifeq +196 -> 779
       //   586: iload_3
-      //   587: iconst_2
-      //   588: irem
-      //   589: ifeq +196 -> 785
-      //   592: iload_3
-      //   593: iconst_1
-      //   594: iadd
-      //   595: istore_3
-      //   596: goto +189 -> 785
-      //   599: new 294	android/graphics/Point
-      //   602: dup
-      //   603: iload_3
-      //   604: iload 4
-      //   606: invokespecial 374	android/graphics/Point:<init>	(II)V
-      //   609: astore 11
-      //   611: goto -442 -> 169
-      //   614: astore_0
-      //   615: aload 12
-      //   617: astore 11
-      //   619: aload 11
-      //   621: ifnull +8 -> 629
-      //   624: aload 11
-      //   626: invokevirtual 312	android/media/MediaMetadataRetriever:release	()V
-      //   629: ldc 236
-      //   631: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   634: aload_0
-      //   635: athrow
-      //   636: new 294	android/graphics/Point
-      //   639: dup
-      //   640: invokespecial 375	android/graphics/Point:<init>	()V
-      //   643: astore 11
-      //   645: iload 6
-      //   647: iload 7
-      //   649: if_icmpge +75 -> 724
-      //   652: iload_3
-      //   653: iload 4
-      //   655: invokestatic 363	java/lang/Math:min	(II)I
-      //   658: istore_3
-      //   659: dconst_1
-      //   660: iload 6
-      //   662: i2d
-      //   663: dmul
-      //   664: iload_3
-      //   665: i2d
+      //   587: iconst_1
+      //   588: iadd
+      //   589: istore_3
+      //   590: goto +189 -> 779
+      //   593: new 237	android/graphics/Point
+      //   596: dup
+      //   597: iload_3
+      //   598: iload 4
+      //   600: invokespecial 320	android/graphics/Point:<init>	(II)V
+      //   603: astore 11
+      //   605: goto -442 -> 163
+      //   608: astore_0
+      //   609: aload 12
+      //   611: astore 11
+      //   613: aload 11
+      //   615: ifnull +8 -> 623
+      //   618: aload 11
+      //   620: invokevirtual 256	android/media/MediaMetadataRetriever:release	()V
+      //   623: ldc 177
+      //   625: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   628: aload_0
+      //   629: athrow
+      //   630: new 237	android/graphics/Point
+      //   633: dup
+      //   634: invokespecial 321	android/graphics/Point:<init>	()V
+      //   637: astore 11
+      //   639: iload 6
+      //   641: iload 7
+      //   643: if_icmpge +75 -> 718
+      //   646: iload_3
+      //   647: iload 4
+      //   649: invokestatic 309	java/lang/Math:min	(II)I
+      //   652: istore_3
+      //   653: dconst_1
+      //   654: iload 6
+      //   656: i2d
+      //   657: dmul
+      //   658: iload_3
+      //   659: i2d
+      //   660: ddiv
+      //   661: dstore_1
+      //   662: iload 7
+      //   664: i2d
+      //   665: dload_1
       //   666: ddiv
-      //   667: dstore_1
-      //   668: iload 7
-      //   670: i2d
-      //   671: dload_1
-      //   672: ddiv
-      //   673: d2i
-      //   674: istore 4
-      //   676: goto +125 -> 801
-      //   679: ldc 93
-      //   681: ldc_w 377
-      //   684: iconst_2
-      //   685: anewarray 164	java/lang/Object
-      //   688: dup
-      //   689: iconst_0
-      //   690: iload 4
-      //   692: invokestatic 307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   695: aastore
-      //   696: dup
-      //   697: iconst_1
-      //   698: iload 5
-      //   700: invokestatic 307	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   703: aastore
-      //   704: invokestatic 232	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   707: aload 11
-      //   709: iload 4
-      //   711: putfield 297	android/graphics/Point:x	I
-      //   714: aload 11
-      //   716: iload 5
-      //   718: putfield 300	android/graphics/Point:y	I
-      //   721: goto -552 -> 169
-      //   724: iload_3
-      //   725: iload 4
-      //   727: invokestatic 363	java/lang/Math:min	(II)I
-      //   730: istore 4
-      //   732: dconst_1
-      //   733: iload 7
-      //   735: i2d
-      //   736: dmul
-      //   737: iload 4
-      //   739: i2d
+      //   667: d2i
+      //   668: istore 4
+      //   670: goto +125 -> 795
+      //   673: ldc 79
+      //   675: ldc_w 323
+      //   678: iconst_2
+      //   679: anewarray 150	java/lang/Object
+      //   682: dup
+      //   683: iconst_0
+      //   684: iload 4
+      //   686: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   689: aastore
+      //   690: dup
+      //   691: iconst_1
+      //   692: iload 5
+      //   694: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   697: aastore
+      //   698: invokestatic 325	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   701: aload 11
+      //   703: iload 4
+      //   705: putfield 240	android/graphics/Point:x	I
+      //   708: aload 11
+      //   710: iload 5
+      //   712: putfield 243	android/graphics/Point:y	I
+      //   715: goto -552 -> 163
+      //   718: iload_3
+      //   719: iload 4
+      //   721: invokestatic 309	java/lang/Math:min	(II)I
+      //   724: istore 4
+      //   726: dconst_1
+      //   727: iload 7
+      //   729: i2d
+      //   730: dmul
+      //   731: iload 4
+      //   733: i2d
+      //   734: ddiv
+      //   735: dstore_1
+      //   736: iload 6
+      //   738: i2d
+      //   739: dload_1
       //   740: ddiv
-      //   741: dstore_1
-      //   742: iload 6
-      //   744: i2d
-      //   745: dload_1
-      //   746: ddiv
-      //   747: d2i
-      //   748: istore_3
-      //   749: goto +52 -> 801
-      //   752: astore_0
-      //   753: ldc 93
-      //   755: ldc_w 379
-      //   758: iconst_1
-      //   759: anewarray 164	java/lang/Object
-      //   762: dup
-      //   763: iconst_0
-      //   764: aload_0
-      //   765: invokevirtual 382	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
-      //   768: aastore
-      //   769: invokestatic 167	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   772: goto -357 -> 415
-      //   775: astore_0
-      //   776: aconst_null
-      //   777: astore 11
-      //   779: goto -160 -> 619
-      //   782: goto -183 -> 599
-      //   785: iload 4
-      //   787: iconst_2
-      //   788: irem
-      //   789: ifeq -7 -> 782
-      //   792: iload 4
-      //   794: iconst_1
-      //   795: iadd
-      //   796: istore 4
-      //   798: goto -199 -> 599
-      //   801: iload 4
-      //   803: istore 5
-      //   805: iload 4
-      //   807: iconst_2
-      //   808: irem
-      //   809: ifeq +9 -> 818
-      //   812: iload 4
-      //   814: iconst_1
-      //   815: iadd
-      //   816: istore 5
-      //   818: iload_3
-      //   819: istore 4
+      //   741: d2i
+      //   742: istore_3
+      //   743: goto +52 -> 795
+      //   746: astore_0
+      //   747: ldc 79
+      //   749: ldc_w 327
+      //   752: iconst_1
+      //   753: anewarray 150	java/lang/Object
+      //   756: dup
+      //   757: iconst_0
+      //   758: aload_0
+      //   759: invokevirtual 330	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
+      //   762: aastore
+      //   763: invokestatic 153	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   766: goto -357 -> 409
+      //   769: astore_0
+      //   770: aconst_null
+      //   771: astore 11
+      //   773: goto -160 -> 613
+      //   776: goto -183 -> 593
+      //   779: iload 4
+      //   781: iconst_2
+      //   782: irem
+      //   783: ifeq -7 -> 776
+      //   786: iload 4
+      //   788: iconst_1
+      //   789: iadd
+      //   790: istore 4
+      //   792: goto -199 -> 593
+      //   795: iload 4
+      //   797: istore 5
+      //   799: iload 4
+      //   801: iconst_2
+      //   802: irem
+      //   803: ifeq +9 -> 812
+      //   806: iload 4
+      //   808: iconst_1
+      //   809: iadd
+      //   810: istore 5
+      //   812: iload_3
+      //   813: istore 4
+      //   815: iload_3
+      //   816: iconst_2
+      //   817: irem
+      //   818: ifeq -145 -> 673
       //   821: iload_3
-      //   822: iconst_2
-      //   823: irem
-      //   824: ifeq -145 -> 679
-      //   827: iload_3
-      //   828: iconst_1
-      //   829: iadd
-      //   830: istore 4
-      //   832: goto -153 -> 679
+      //   822: iconst_1
+      //   823: iadd
+      //   824: istore 4
+      //   826: goto -153 -> 673
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	835	0	paramString	String
-      //   667	79	1	d	double
-      //   76	754	3	i	int
-      //   82	749	4	j	int
-      //   447	370	5	k	int
-      //   36	707	6	m	int
-      //   49	685	7	n	int
-      //   455	104	8	i1	int
-      //   439	120	9	i2	int
-      //   430	108	10	i3	int
-      //   167	611	11	localObject1	Object
-      //   17	599	12	localObject2	Object
-      //   8	403	13	localObject3	Object
-      //   69	163	14	localVideoTransPara	com.tencent.mm.modelcontrol.VideoTransPara
+      //   0	829	0	paramString	String
+      //   661	79	1	d	double
+      //   76	748	3	i	int
+      //   82	743	4	j	int
+      //   441	370	5	k	int
+      //   36	701	6	m	int
+      //   49	679	7	n	int
+      //   449	104	8	i1	int
+      //   433	120	9	i2	int
+      //   424	108	10	i3	int
+      //   161	611	11	localObject1	Object
+      //   17	593	12	localObject2	Object
+      //   8	397	13	localObject3	Object
+      //   69	156	14	localVideoTransPara	com.tencent.mm.modelcontrol.VideoTransPara
       // Exception table:
       //   from	to	target	type
-      //   19	51	614	finally
-      //   63	145	614	finally
-      //   158	166	614	finally
-      //   174	192	614	finally
-      //   192	263	614	finally
-      //   423	457	614	finally
-      //   465	478	614	finally
-      //   486	507	614	finally
-      //   513	525	614	finally
-      //   533	546	614	finally
-      //   554	586	614	finally
-      //   599	611	614	finally
-      //   636	645	614	finally
-      //   652	676	614	finally
-      //   679	721	614	finally
-      //   724	732	614	finally
-      //   402	415	752	java/lang/InterruptedException
-      //   10	19	775	finally
+      //   19	51	608	finally
+      //   63	140	608	finally
+      //   153	160	608	finally
+      //   168	186	608	finally
+      //   186	256	608	finally
+      //   417	451	608	finally
+      //   459	472	608	finally
+      //   480	501	608	finally
+      //   507	519	608	finally
+      //   527	540	608	finally
+      //   548	580	608	finally
+      //   593	605	608	finally
+      //   630	639	608	finally
+      //   646	670	608	finally
+      //   673	715	608	finally
+      //   718	726	608	finally
+      //   396	409	746	java/lang/InterruptedException
+      //   10	19	769	finally
     }
     
-    private static String Iz(String paramString)
+    private static String My(String paramString)
     {
       AppMethodBeat.i(46520);
       String str2 = "";
       String str1 = str2;
-      if (!bt.isNullOrNil(paramString))
+      if (!bs.isNullOrNil(paramString))
       {
         Object localObject = new com.tencent.mm.vfs.e(paramString);
         str1 = str2;
@@ -1083,8 +1042,8 @@ public final class JsApiChooseMultiMedia
             }
           }
           if (!TextUtils.isEmpty(str1)) {
-            if ((com.tencent.mm.loader.j.b.ais() != null) && (com.tencent.mm.loader.j.b.ais().endsWith("/"))) {
-              str1 = com.tencent.mm.loader.j.b.ais() + str1 + System.currentTimeMillis() + ".jpeg";
+            if ((com.tencent.mm.loader.j.b.aps() != null) && (com.tencent.mm.loader.j.b.aps().endsWith("/"))) {
+              str1 = com.tencent.mm.loader.j.b.aps() + str1 + System.currentTimeMillis() + ".jpeg";
             }
           }
           for (;;)
@@ -1092,18 +1051,18 @@ public final class JsApiChooseMultiMedia
             if (new com.tencent.mm.vfs.e(str1).exists()) {
               break label343;
             }
-            ad.i("MicroMsg.JsApiChooseMultiMedia", "file not exist for path:%s! create it!", new Object[] { str1 });
+            ac.i("MicroMsg.JsApiChooseMultiMedia", "file not exist for path:%s! create it!", new Object[] { str1 });
             paramString = f.createVideoThumbnail(paramString, 2);
             if (paramString != null) {
               break;
             }
-            ad.e("MicroMsg.JsApiChooseMultiMedia", "createVideoThumbnail bitmap fail for path:%s!", new Object[] { str1 });
+            ac.e("MicroMsg.JsApiChooseMultiMedia", "createVideoThumbnail bitmap fail for path:%s!", new Object[] { str1 });
             AppMethodBeat.o(46520);
             return "";
-            str1 = com.tencent.mm.loader.j.b.ais() + "/" + str1 + System.currentTimeMillis() + ".jpeg";
+            str1 = com.tencent.mm.loader.j.b.aps() + "/" + str1 + System.currentTimeMillis() + ".jpeg";
             continue;
             str1 = "microMsg_" + System.currentTimeMillis();
-            str1 = com.tencent.mm.loader.j.b.ais() + str1 + ".jpeg";
+            str1 = com.tencent.mm.loader.j.b.aps() + str1 + ".jpeg";
           }
         }
       }
@@ -1117,18 +1076,88 @@ public final class JsApiChooseMultiMedia
         }
         catch (IOException paramString)
         {
-          ad.e("MicroMsg.JsApiChooseMultiMedia", "saveBitmapToImage exist IOException:" + paramString.getMessage());
+          ac.e("MicroMsg.JsApiChooseMultiMedia", "saveBitmapToImage exist IOException:" + paramString.getMessage());
           continue;
         }
         label343:
-        ad.i("MicroMsg.JsApiChooseMultiMedia", "file is exist for path:%s!", new Object[] { str1 });
+        ac.i("MicroMsg.JsApiChooseMultiMedia", "file is exist for path:%s!", new Object[] { str1 });
       }
+    }
+    
+    private static String Mz(String paramString)
+    {
+      AppMethodBeat.i(46523);
+      String str = i.k(com.tencent.mm.loader.j.b.aps() + "microMsg." + System.currentTimeMillis() + ".jpg", true);
+      try
+      {
+        Bitmap localBitmap1 = MMBitmapFactory.decodeFile(paramString);
+        if (localBitmap1 == null)
+        {
+          ac.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp return null");
+          AppMethodBeat.o(46523);
+          return null;
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError1)
+      {
+        for (;;)
+        {
+          ac.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp oom");
+          try
+          {
+            Bitmap localBitmap2 = f.decodeFile(paramString, null);
+          }
+          catch (OutOfMemoryError localOutOfMemoryError2)
+          {
+            ac.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp oom retry, oom again");
+            Object localObject1 = null;
+          }
+          catch (Exception localException1)
+          {
+            ac.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp oom retry, e ".concat(String.valueOf(localException1)));
+            Object localObject2 = null;
+          }
+        }
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        for (;;)
+        {
+          try
+          {
+            Bitmap localBitmap3 = f.decodeFile(paramString, null);
+          }
+          catch (Exception localException2)
+          {
+            ac.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp npe retry, e ".concat(String.valueOf(localException2)));
+            Object localObject3 = null;
+          }
+        }
+      }
+      catch (Exception localException3)
+      {
+        for (;;)
+        {
+          ac.e("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, decode bmp e ".concat(String.valueOf(localException3)));
+          Object localObject4 = null;
+        }
+        long l = bs.eWj();
+        boolean bool = com.tencent.mm.plugin.appbrand.utils.c.ej(str, paramString);
+        ac.i("MicroMsg.JsApiChooseMultiMedia", "doCompressImage, ret = %b, cost = %d, %s (%d) -> %s (%d)", new Object[] { Boolean.valueOf(bool), Long.valueOf(bs.eWj() - l), paramString, Long.valueOf(i.aSp(paramString)), str, Long.valueOf(i.aSp(str)) });
+        if (bool)
+        {
+          AppMethodBeat.o(46523);
+          return str;
+        }
+        AppMethodBeat.o(46523);
+      }
+      return paramString;
     }
     
     private static String a(String paramString1, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3)
     {
       AppMethodBeat.i(46522);
-      ad.i("MicroMsg.JsApiChooseMultiMedia", "parseImageItemToJson()");
+      ac.i("MicroMsg.JsApiChooseMultiMedia", "parseImageItemToJson()");
       JSONArray localJSONArray = new JSONArray();
       try
       {
@@ -1149,7 +1178,7 @@ public final class JsApiChooseMultiMedia
       }
       catch (Exception paramString1)
       {
-        ad.printErrStackTrace("MicroMsg.JsApiChooseMultiMedia", paramString1, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.JsApiChooseMultiMedia", paramString1, "", new Object[0]);
         AppMethodBeat.o(46522);
       }
       return "";
@@ -1172,19 +1201,19 @@ public final class JsApiChooseMultiMedia
         localJSONObject.put("scene", "camera");
         localJSONArray.put(localJSONObject);
         paramString1 = localJSONArray.toString();
-        ad.i("MicroMsg.JsApiChooseMultiMedia", "parseImageItemToJson, res: %s.", new Object[] { paramString1 });
+        ac.i("MicroMsg.JsApiChooseMultiMedia", "parseImageItemToJson, res: %s.", new Object[] { paramString1 });
         AppMethodBeat.o(46521);
         return paramString1;
       }
       catch (Exception paramString1)
       {
-        ad.printErrStackTrace("MicroMsg.JsApiChooseMultiMedia", paramString1, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.JsApiChooseMultiMedia", paramString1, "", new Object[0]);
         AppMethodBeat.o(46521);
       }
       return "";
     }
     
-    private AppBrandLocalVideoObject ao(String paramString, boolean paramBoolean)
+    private AppBrandLocalVideoObject ap(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(46519);
       String str1 = paramString;
@@ -1195,7 +1224,7 @@ public final class JsApiChooseMultiMedia
       int m;
       try
       {
-        str1 = Iy(paramString);
+        str1 = Mx(paramString);
       }
       catch (Exception localException)
       {
@@ -1208,11 +1237,11 @@ public final class JsApiChooseMultiMedia
             if (paramString != null) {
               break;
             }
-            ad.e("MicroMsg.JsApiChooseMultiMedia", "addVideoItem, null meta data");
+            ac.e("MicroMsg.JsApiChooseMultiMedia", "addVideoItem, null meta data");
             AppMethodBeat.o(46519);
             return null;
             localException = localException;
-            ad.e("MicroMsg.JsApiChooseMultiMedia", "addVideoItem, remux failed, exp = %s", new Object[] { bt.m(localException) });
+            ac.e("MicroMsg.JsApiChooseMultiMedia", "addVideoItem, remux failed, exp = %s", new Object[] { bs.m(localException) });
             str2 = paramString;
           }
         }
@@ -1220,12 +1249,12 @@ public final class JsApiChooseMultiMedia
         {
           for (;;)
           {
-            ad.e("MicroMsg.JsApiChooseMultiMedia", "addVideoItem, MetaDataRetriever setDataSource failed, e = %s", new Object[] { paramString });
+            ac.e("MicroMsg.JsApiChooseMultiMedia", "addVideoItem, MetaDataRetriever setDataSource failed, e = %s", new Object[] { paramString });
             paramString = null;
           }
-          i = bt.getInt(paramString.extractMetadata(18), 0);
-          j = bt.getInt(paramString.extractMetadata(19), 0);
-          m = bt.getInt(paramString.extractMetadata(9), 0);
+          i = bs.getInt(paramString.extractMetadata(18), 0);
+          j = bs.getInt(paramString.extractMetadata(19), 0);
+          m = bs.getInt(paramString.extractMetadata(9), 0);
           if (!"90".equals(paramString.extractMetadata(24))) {
             break label255;
           }
@@ -1235,18 +1264,18 @@ public final class JsApiChooseMultiMedia
       for (;;)
       {
         paramString.release();
-        paramString = AppBrandLocalMediaObjectManager.fT(this.jXu.appId, str2);
+        paramString = AppBrandLocalMediaObjectManager.cj(this.kyg.appId, str2);
         if (paramString == null)
         {
-          ad.e("MicroMsg.JsApiChooseMultiMedia", "attachVideo error, return null");
+          ac.e("MicroMsg.JsApiChooseMultiMedia", "attachVideo error, return null");
           AppMethodBeat.o(46519);
           return null;
         }
         paramString.duration = ((m + 500) / 1000);
         paramString.width = j;
         paramString.height = i;
-        paramString.size = ((int)i.aMN(str2));
-        ad.i("MicroMsg.JsApiChooseMultiMedia", "addVideoItem, return %s", new Object[] { paramString });
+        paramString.size = ((int)i.aSp(str2));
+        ac.i("MicroMsg.JsApiChooseMultiMedia", "addVideoItem, return %s", new Object[] { paramString });
         AppMethodBeat.o(46519);
         return paramString;
         label255:
@@ -1256,63 +1285,43 @@ public final class JsApiChooseMultiMedia
       }
     }
     
-    private void baM()
-    {
-      AppMethodBeat.i(46516);
-      this.jWJ = new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(46509);
-          ad.e("MicroMsg.JsApiChooseMultiMedia", "cancel show the progress dialog and finish progress");
-          JsApiChooseMultiMedia.a.this.jXv.bRZ = 0;
-          JsApiChooseMultiMedia.a.h(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.jXv);
-          AppMethodBeat.o(46509);
-        }
-      };
-      MMActivity localMMActivity = aXi();
-      aj.getResources().getString(2131755906);
-      this.ftP = h.b(localMMActivity, aj.getResources().getString(2131755360), true, this.jWJ);
-      AppMethodBeat.o(46516);
-    }
-    
-    private Intent baN()
+    private Intent bhF()
     {
       AppMethodBeat.i(46513);
       Intent localIntent = new Intent();
       localIntent.putExtra("album_business_tag", "album_business_bubble_media_by_coordinate");
-      localIntent.putExtra("album_video_max_duration", this.jXu.iBF);
-      localIntent.putExtra("album_business_bubble_media_by_coordinate_distance", this.jXu.hqY);
-      localIntent.putExtra("album_business_bubble_media_by_coordinate_latitude", this.jXu.latitude);
-      localIntent.putExtra("album_business_bubble_media_by_coordinate_longitude", this.jXu.longitude);
-      localIntent.putExtra("album_business_bubble_media_by_coordinate_posname", this.jXu.goQ);
+      localIntent.putExtra("album_video_max_duration", this.kyg.jbG);
+      localIntent.putExtra("album_business_bubble_media_by_coordinate_distance", this.kyg.hRA);
+      localIntent.putExtra("album_business_bubble_media_by_coordinate_latitude", this.kyg.latitude);
+      localIntent.putExtra("album_business_bubble_media_by_coordinate_longitude", this.kyg.longitude);
+      localIntent.putExtra("album_business_bubble_media_by_coordinate_posname", this.kyg.gPy);
       localIntent.putExtra("query_media_type", 3);
-      localIntent.putExtra("send_btn_string", aj.getResources().getString(2131755830));
+      localIntent.putExtra("send_btn_string", ai.getResources().getString(2131755830));
       localIntent.putExtra("gallery_report_tag", 18);
       AppMethodBeat.o(46513);
       return localIntent;
     }
     
-    private static BackwardSupportUtil.ExifHelper.LatLongData baO()
+    private static BackwardSupportUtil.ExifHelper.LatLongData bhG()
     {
       AppMethodBeat.i(46515);
-      Object localObject = aj.getContext().getSharedPreferences(aj.eFD() + "_locCache", 0).getString("locStr", null);
+      Object localObject = ai.getContext().getSharedPreferences(ai.eUX() + "_locCache", 0).getString("locStr", null);
       String[] arrayOfString;
       float f1;
       float f2;
       if (localObject != null)
       {
         arrayOfString = ((String)localObject).split(",");
-        f1 = bt.getInt(arrayOfString[0], 0) / 1000000.0F;
-        f2 = bt.getInt(arrayOfString[1], 0) / 1000000.0F;
-        ad.d("MicroMsg.JsApiChooseMultiMedia", "locStr: %s, latitude: %f, longitude: %f", new Object[] { localObject, Float.valueOf(f1), Float.valueOf(f2) });
+        f1 = bs.getInt(arrayOfString[0], 0) / 1000000.0F;
+        f2 = bs.getInt(arrayOfString[1], 0) / 1000000.0F;
+        ac.d("MicroMsg.JsApiChooseMultiMedia", "locStr: %s, latitude: %f, longitude: %f", new Object[] { localObject, Float.valueOf(f1), Float.valueOf(f2) });
         localObject = new BackwardSupportUtil.ExifHelper.LatLongData(f1, f2);
       }
       for (;;)
       {
         AppMethodBeat.o(46515);
         return localObject;
-        localObject = (String)com.tencent.mm.kernel.g.afB().afk().get(67591, null);
+        localObject = (String)com.tencent.mm.kernel.g.agR().agA().get(67591, null);
         if (localObject != null) {
           for (;;)
           {
@@ -1326,12 +1335,12 @@ public final class JsApiChooseMultiMedia
               localObject = "network";
               f1 = Integer.valueOf(arrayOfString[2]).intValue() / 1000000.0F;
               f2 = Integer.valueOf(arrayOfString[3]).intValue() / 1000000.0F;
-              ad.d("MicroMsg.JsApiChooseMultiMedia", "cached gps coordinate, precision: %d source: %s latitude: %f longitude: %f", new Object[] { Integer.valueOf(i), localObject, Float.valueOf(f1), Float.valueOf(f2) });
+              ac.d("MicroMsg.JsApiChooseMultiMedia", "cached gps coordinate, precision: %d source: %s latitude: %f longitude: %f", new Object[] { Integer.valueOf(i), localObject, Float.valueOf(f1), Float.valueOf(f2) });
               localObject = new BackwardSupportUtil.ExifHelper.LatLongData(f1, f2);
             }
             catch (Exception localException)
             {
-              ad.e("MicroMsg.JsApiChooseMultiMedia", "getCurrentGPSData parse value error.", new Object[] { localException });
+              ac.e("MicroMsg.JsApiChooseMultiMedia", "getCurrentGPSData parse value error.", new Object[] { localException });
               str = null;
             }
             break;
@@ -1339,10 +1348,30 @@ public final class JsApiChooseMultiMedia
             str = "gps";
           }
         }
-        ad.i("MicroMsg.JsApiChooseMultiMedia", "lbs location is null, no cached data!");
-        ad.e("MicroMsg.JsApiChooseMultiMedia", "location get error!");
+        ac.i("MicroMsg.JsApiChooseMultiMedia", "lbs location is null, no cached data!");
+        ac.e("MicroMsg.JsApiChooseMultiMedia", "location get error!");
         String str = null;
       }
+    }
+    
+    private void bhH()
+    {
+      AppMethodBeat.i(46516);
+      this.kxv = new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(46509);
+          ac.e("MicroMsg.JsApiChooseMultiMedia", "cancel show the progress dialog and finish progress");
+          JsApiChooseMultiMedia.a.this.kyh.bPH = 0;
+          JsApiChooseMultiMedia.a.h(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.kyh);
+          AppMethodBeat.o(46509);
+        }
+      };
+      MMActivity localMMActivity = bef();
+      ai.getResources().getString(2131755906);
+      this.fxw = h.b(localMMActivity, ai.getResources().getString(2131755360), true, this.kxv);
+      AppMethodBeat.o(46516);
     }
     
     public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
@@ -1350,17 +1379,17 @@ public final class JsApiChooseMultiMedia
       int k = 3;
       int j = 0;
       AppMethodBeat.i(46512);
-      this.jXu = ((JsApiChooseMultiMedia.ChooseRequest)paramProcessRequest);
+      this.kyg = ((JsApiChooseMultiMedia.ChooseRequest)paramProcessRequest);
       int i;
       boolean bool;
-      if (bt.iJ(aXi()) > 200L)
+      if (bs.iU(bef()) > 200L)
       {
         i = 1;
         if (i == 0) {
-          t.makeText(aXi(), aj.getResources().getString(2131755358), 1).show();
+          t.makeText(bef(), ai.getResources().getString(2131755358), 1).show();
         }
-        aXi().mmSetOnActivityResultCallback(this);
-        if (this.jXu.jXr != 1) {
+        bef().mmSetOnActivityResultCallback(this);
+        if (this.kyg.kyd != 1) {
           break label160;
         }
         bool = true;
@@ -1368,70 +1397,70 @@ public final class JsApiChooseMultiMedia
       }
       for (;;)
       {
-        if ((this.jXu.jWw) && (this.jXu.jWx))
+        if ((this.kyg.kxi) && (this.kyg.kxj))
         {
-          paramProcessRequest = baN();
+          paramProcessRequest = bhF();
           paramProcessRequest.putExtra("query_media_type", i);
           paramProcessRequest.putExtra("key_can_select_video_and_pic", bool);
-          q.a(aXi(), 1, this.jXu.count, this.jWF, paramProcessRequest);
+          q.a(bef(), 1, this.kyg.count, this.kxr, paramProcessRequest);
           AppMethodBeat.o(46512);
           return;
           i = 0;
           break;
           label160:
-          if (this.jXu.jXr == 2)
+          if (this.kyg.kyd == 2)
           {
             i = 1;
             bool = false;
             continue;
           }
-          if (this.jXu.jXr != 3) {
+          if (this.kyg.kyd != 3) {
             break label462;
           }
           i = 2;
           bool = false;
           continue;
         }
-        if (this.jXu.jWx)
+        if (this.kyg.kxj)
         {
-          paramProcessRequest = baN();
+          paramProcessRequest = bhF();
           paramProcessRequest.putExtra("show_header_view", false);
           paramProcessRequest.putExtra("query_media_type", i);
           paramProcessRequest.putExtra("key_can_select_video_and_pic", bool);
-          q.a(aXi(), 1, this.jXu.count, this.jWF, paramProcessRequest);
+          q.a(bef(), 1, this.kyg.count, this.kxr, paramProcessRequest);
           AppMethodBeat.o(46512);
           return;
         }
-        if (this.jXu.jWw)
+        if (this.kyg.kxi)
         {
           paramProcessRequest = new Intent();
-          paramProcessRequest.putExtra("album_business_bubble_media_by_coordinate_latitude", this.jXu.latitude);
-          paramProcessRequest.putExtra("album_business_bubble_media_by_coordinate_longitude", this.jXu.longitude);
-          if ((this.jXu.jXp) && (!this.jXu.jXq)) {
+          paramProcessRequest.putExtra("album_business_bubble_media_by_coordinate_latitude", this.kyg.latitude);
+          paramProcessRequest.putExtra("album_business_bubble_media_by_coordinate_longitude", this.kyg.longitude);
+          if ((this.kyg.kyb) && (!this.kyg.kyc)) {
             i = 1;
           }
           for (;;)
           {
             SightParams localSightParams = new SightParams(7, 1);
             localSightParams.mode = i;
-            localSightParams.gCB.duration = this.jXu.iBF;
+            localSightParams.hcZ.duration = this.kyg.jbG;
             paramProcessRequest.putExtra("KEY_SIGHT_PARAMS", localSightParams);
-            q.a(aXi(), 2, paramProcessRequest, 7, i);
+            q.a(bef(), 2, paramProcessRequest, 7, i);
             AppMethodBeat.o(46512);
             return;
             i = j;
-            if (this.jXu.jXq)
+            if (this.kyg.kyc)
             {
               i = j;
-              if (!this.jXu.jXp) {
+              if (!this.kyg.kyb) {
                 i = 2;
               }
             }
           }
         }
-        ad.e("MicroMsg.JsApiChooseMultiMedia", "unknown scene, ignore this request");
-        this.jXv.bRZ = -2;
-        b(this.jXv);
+        ac.e("MicroMsg.JsApiChooseMultiMedia", "unknown scene, ignore this request");
+        this.kyh.bPH = -2;
+        b(this.kyh);
         AppMethodBeat.o(46512);
         return;
         label462:
@@ -1440,14 +1469,14 @@ public final class JsApiChooseMultiMedia
       }
     }
     
-    public final void aXp()
+    public final void bem()
     {
       AppMethodBeat.i(46517);
-      super.aXp();
-      if (this.ftP != null)
+      super.bem();
+      if (this.fxw != null)
       {
-        this.ftP.dismiss();
-        this.ftP = null;
+        this.fxw.dismiss();
+        this.fxw = null;
       }
       AppMethodBeat.o(46517);
     }
@@ -1459,8 +1488,8 @@ public final class JsApiChooseMultiMedia
       AppMethodBeat.i(46514);
       if (paramInt2 == 0)
       {
-        this.jXv.bRZ = 0;
-        b(this.jXv);
+        this.kyh.bPH = 0;
+        b(this.kyh);
         AppMethodBeat.o(46514);
         return;
       }
@@ -1470,31 +1499,31 @@ public final class JsApiChooseMultiMedia
         if (paramIntent != null) {
           d2 = paramIntent.getDoubleExtra("latitude", 91.0D);
         }
-        ad.d("MicroMsg.JsApiChooseMultiMedia", "longitude: %f, latitude: %f.", new Object[] { Double.valueOf(d1), Double.valueOf(d2) });
-        ad.i("MicroMsg.JsApiChooseMultiMedia", "requestCode: %d.", new Object[] { Integer.valueOf(paramInt1) });
+        ac.d("MicroMsg.JsApiChooseMultiMedia", "longitude: %f, latitude: %f.", new Object[] { Double.valueOf(d1), Double.valueOf(d2) });
+        ac.i("MicroMsg.JsApiChooseMultiMedia", "requestCode: %d.", new Object[] { Integer.valueOf(paramInt1) });
         switch (paramInt1)
         {
         default: 
-          this.jXv.bRZ = -2;
-          b(this.jXv);
+          this.kyh.bPH = -2;
+          b(this.kyh);
           AppMethodBeat.o(46514);
           return;
         }
       }
-      ad.i("MicroMsg.JsApiChooseMultiMedia", "REQUEST_CODE_GALLERY");
+      ac.i("MicroMsg.JsApiChooseMultiMedia", "REQUEST_CODE_GALLERY");
       if (paramIntent == null)
       {
-        this.jXv.bRZ = 0;
-        b(this.jXv);
+        this.kyh.bPH = 0;
+        b(this.kyh);
         AppMethodBeat.o(46514);
         return;
       }
       Object localObject = paramIntent.getStringArrayListExtra("CropImage_OutputPath_List");
       final ArrayList localArrayList = paramIntent.getStringArrayListExtra("key_select_video_list");
       final boolean bool2 = paramIntent.getBooleanExtra("CropImage_Compress_Img", false);
-      baM();
+      bhH();
       if (!bool2) {
-        if (!bt.gL((List)localObject))
+        if (!bs.gY((List)localObject))
         {
           paramIntent = ((List)localObject).iterator();
           while (paramIntent.hasNext()) {
@@ -1510,7 +1539,7 @@ public final class JsApiChooseMultiMedia
       }
       for (;;)
       {
-        l.bqm().postToWorker(new Runnable()
+        l.bxj().postToWorker(new Runnable()
         {
           public final void run()
           {
@@ -1524,26 +1553,26 @@ public final class JsApiChooseMultiMedia
             double d;
             Object localObject5;
             boolean bool;
-            if ((this.jXw != null) && (this.jXw.size() > 0))
+            if ((this.kyi != null) && (this.kyi.size() > 0))
             {
-              localObject4 = this.jXw.iterator();
+              localObject4 = this.kyi.iterator();
               for (;;)
               {
                 if (((Iterator)localObject4).hasNext())
                 {
                   localObject3 = (String)((Iterator)localObject4).next();
-                  if ((!bt.isNullOrNil((String)localObject3)) && (new com.tencent.mm.vfs.e((String)localObject3).exists()))
+                  if ((!bs.isNullOrNil((String)localObject3)) && (new com.tencent.mm.vfs.e((String)localObject3).exists()))
                   {
-                    ad.i("MicroMsg.JsApiChooseMultiMedia", "local img file exist, success");
+                    ac.i("MicroMsg.JsApiChooseMultiMedia", "local img file exist, success");
                     l2 = 0L;
                     l1 = l2;
                     try
                     {
-                      if (!bt.isNullOrNil((String)localObject3)) {
+                      if (!bs.isNullOrNil((String)localObject3)) {
                         break;
                       }
                       l1 = l2;
-                      ad.d("MicroMsg.SDK.BackwardSupportUtil", "filepath is null or nil");
+                      ac.d("MicroMsg.SDK.BackwardSupportUtil", "filepath is null or nil");
                       localObject1 = null;
                       l1 = l2;
                       if (localObject1 != null)
@@ -1551,7 +1580,7 @@ public final class JsApiChooseMultiMedia
                         l1 = l2;
                         l2 = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss").parse((String)localObject1).getTime() / 1000L;
                         l1 = l2;
-                        ad.d("MicroMsg.JsApiChooseMultiMedia", "parse result time: %d, imgPath: %s.", new Object[] { Long.valueOf(l2), localObject3 });
+                        ac.d("MicroMsg.JsApiChooseMultiMedia", "parse result time: %d, imgPath: %s.", new Object[] { Long.valueOf(l2), localObject3 });
                         l1 = l2;
                       }
                     }
@@ -1560,25 +1589,25 @@ public final class JsApiChooseMultiMedia
                       for (;;)
                       {
                         Object localObject1;
-                        ad.e("MicroMsg.JsApiChooseMultiMedia", "parse from Date String error, imgPath: %s.", new Object[] { localObject3 });
+                        ac.e("MicroMsg.JsApiChooseMultiMedia", "parse from Date String error, imgPath: %s.", new Object[] { localObject3 });
                         continue;
-                        ad.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, locData is null. imgPath: %s.", new Object[] { localObject3 });
+                        ac.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, locData is null. imgPath: %s.", new Object[] { localObject3 });
                         continue;
-                        ad.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, lat/long is invalid. imgPath: %s.", new Object[] { localObject3 });
+                        ac.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, lat/long is invalid. imgPath: %s.", new Object[] { localObject3 });
                       }
                     }
                     d = -1.0D;
                     if ((com.tencent.mm.modelgeo.a.m(d2)) && (com.tencent.mm.modelgeo.a.l(bool2)))
                     {
-                      localObject1 = BackwardSupportUtil.ExifHelper.aFd((String)localObject3);
+                      localObject1 = BackwardSupportUtil.ExifHelper.aKu((String)localObject3);
                       if (localObject1 != null)
                       {
-                        d = TencentLocationUtils.distanceBetween(((BackwardSupportUtil.ExifHelper.LatLongData)localObject1).dpb, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject1).hil, d2, bool2);
+                        d = TencentLocationUtils.distanceBetween(((BackwardSupportUtil.ExifHelper.LatLongData)localObject1).dmL, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject1).hIO, d2, bool2);
                         localObject5 = JsApiChooseMultiMedia.a.a(JsApiChooseMultiMedia.a.this, l1, d);
                         if (!localArrayList) {
                           break label564;
                         }
-                        localObject1 = JsApiChooseMultiMedia.a.IA((String)localObject3);
+                        localObject1 = JsApiChooseMultiMedia.a.MB((String)localObject3);
                         bool = true;
                       }
                     }
@@ -1591,8 +1620,8 @@ public final class JsApiChooseMultiMedia
               Object localObject6;
               for (;;)
               {
-                localObject3 = JsApiChooseMultiMedia.Ix((String)localObject1);
-                localObject6 = AppBrandLocalMediaObjectManager.h(JsApiChooseMultiMedia.a.this.jXu.appId, (String)localObject1, bool);
+                localObject3 = JsApiChooseMultiMedia.Mw((String)localObject1);
+                localObject6 = AppBrandLocalMediaObjectManager.h(JsApiChooseMultiMedia.a.this.kyg.appId, (String)localObject1, bool);
                 if (localObject6 == null) {
                   break label594;
                 }
@@ -1600,26 +1629,26 @@ public final class JsApiChooseMultiMedia
                 {
                   localObject1 = new JSONObject();
                   ((JSONObject)localObject1).put("type", "image");
-                  ((JSONObject)localObject1).put("tempFilePath", ((AppBrandLocalMediaObject)localObject6).diQ);
-                  ((JSONObject)localObject1).put("size", ((AppBrandLocalMediaObject)localObject6).hWY);
+                  ((JSONObject)localObject1).put("tempFilePath", ((AppBrandLocalMediaObject)localObject6).dgl);
+                  ((JSONObject)localObject1).put("size", ((AppBrandLocalMediaObject)localObject6).ixc);
                   ((JSONObject)localObject1).put("width", ((JsApiChooseMultiMedia.b)localObject3).width);
                   ((JSONObject)localObject1).put("height", ((JsApiChooseMultiMedia.b)localObject3).height);
-                  ((JSONObject)localObject1).put("orientation", ((JsApiChooseMultiMedia.b)localObject3).jbC);
+                  ((JSONObject)localObject1).put("orientation", ((JsApiChooseMultiMedia.b)localObject3).jBP);
                   ((JSONObject)localObject1).put("mark", localObject5);
                   ((JSONObject)localObject1).put("scene", "album");
                   localJSONArray.put(localObject1);
                 }
                 catch (Exception localException1)
                 {
-                  ad.printErrStackTrace("MicroMsg.JsApiChooseMultiMedia", localException1, "", new Object[0]);
+                  ac.printErrStackTrace("MicroMsg.JsApiChooseMultiMedia", localException1, "", new Object[0]);
                 }
               }
               break;
               l1 = l2;
-              if (!i.eK((String)localObject3))
+              if (!i.eA((String)localObject3))
               {
                 l1 = l2;
-                ad.d("MicroMsg.SDK.BackwardSupportUtil", "file not exist:[%s]", new Object[] { localObject3 });
+                ac.d("MicroMsg.SDK.BackwardSupportUtil", "file not exist:[%s]", new Object[] { localObject3 });
                 str1 = null;
                 break label125;
               }
@@ -1627,30 +1656,30 @@ public final class JsApiChooseMultiMedia
               String str1 = Exif.fromFile((String)localObject3).dateTime;
               break label125;
               label564:
-              if (this.jWO)
+              if (this.kxA)
               {
-                String str2 = JsApiChooseMultiMedia.a.IB((String)localObject3);
+                String str2 = JsApiChooseMultiMedia.a.MC((String)localObject3);
                 if (!str2.equals(localObject3))
                 {
                   bool = true;
                   continue;
                   label594:
-                  ad.e("MicroMsg.JsApiChooseMultiMedia", "handle chosen list from gallery, get null obj from path: %s", new Object[] { str2 });
+                  ac.e("MicroMsg.JsApiChooseMultiMedia", "handle chosen list from gallery, get null obj from path: %s", new Object[] { str2 });
                   break;
-                  if ((this.jXx != null) && (this.jXx.size() > 0))
+                  if ((this.kyj != null) && (this.kyj.size() > 0))
                   {
-                    localObject3 = this.jXx.iterator();
+                    localObject3 = this.kyj.iterator();
                     while (((Iterator)localObject3).hasNext())
                     {
                       str2 = (String)((Iterator)localObject3).next();
-                      if ((!bt.isNullOrNil(str2)) && (new com.tencent.mm.vfs.e(str2).exists()))
+                      if ((!bs.isNullOrNil(str2)) && (new com.tencent.mm.vfs.e(str2).exists()))
                       {
-                        ad.i("MicroMsg.JsApiChooseMultiMedia", "local video file exist, success");
+                        ac.i("MicroMsg.JsApiChooseMultiMedia", "local video file exist, success");
                         l2 = 0L;
                         l1 = l2;
                         try
                         {
-                          localObject4 = BackwardSupportUtil.aFc(str2);
+                          localObject4 = BackwardSupportUtil.aKt(str2);
                           l1 = l2;
                           if (localObject4 != null)
                           {
@@ -1671,24 +1700,24 @@ public final class JsApiChooseMultiMedia
                             l1 = l2;
                             l2 = ((Calendar)localObject4).getTimeInMillis() / 1000L;
                             l1 = l2;
-                            ad.d("MicroMsg.JsApiChooseMultiMedia", "parse result time: %d, videoPath: %s.", new Object[] { Long.valueOf(l2), str2 });
+                            ac.d("MicroMsg.JsApiChooseMultiMedia", "parse result time: %d, videoPath: %s.", new Object[] { Long.valueOf(l2), str2 });
                             l1 = l2;
                           }
                           d = -1.0D;
                           if ((com.tencent.mm.modelgeo.a.m(d2)) && (com.tencent.mm.modelgeo.a.l(bool2)))
                           {
-                            localObject4 = BackwardSupportUtil.aFb(str2);
+                            localObject4 = BackwardSupportUtil.aKs(str2);
                             if (localObject4 != null)
                             {
-                              d = TencentLocationUtils.distanceBetween(((BackwardSupportUtil.ExifHelper.LatLongData)localObject4).dpb, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject4).hil, d2, bool2);
+                              d = TencentLocationUtils.distanceBetween(((BackwardSupportUtil.ExifHelper.LatLongData)localObject4).dmL, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject4).hIO, d2, bool2);
                               localObject4 = JsApiChooseMultiMedia.a.a(JsApiChooseMultiMedia.a.this, l1, d);
                               localObject5 = JsApiChooseMultiMedia.a.a(JsApiChooseMultiMedia.a.this, str2, true);
                               if (localObject5 != null) {
                                 break label1064;
                               }
-                              ad.e("MicroMsg.JsApiChooseMultiMedia", "addVideoItem fail, mVideoFilePath is %s", new Object[] { str2 });
-                              JsApiChooseMultiMedia.a.this.jXv.bRZ = -2;
-                              JsApiChooseMultiMedia.a.a(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.jXv);
+                              ac.e("MicroMsg.JsApiChooseMultiMedia", "addVideoItem fail, mVideoFilePath is %s", new Object[] { str2 });
+                              JsApiChooseMultiMedia.a.this.kyh.bPH = -2;
+                              JsApiChooseMultiMedia.a.a(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.kyh);
                               AppMethodBeat.o(46506);
                               return;
                             }
@@ -1698,22 +1727,22 @@ public final class JsApiChooseMultiMedia
                         {
                           for (;;)
                           {
-                            ad.e("MicroMsg.JsApiChooseMultiMedia", "parse from Date String error, videoPath: %s.", new Object[] { str2 });
+                            ac.e("MicroMsg.JsApiChooseMultiMedia", "parse from Date String error, videoPath: %s.", new Object[] { str2 });
                             continue;
-                            ad.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, locData is null. videoPath: %s.", new Object[] { str2 });
+                            ac.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, locData is null. videoPath: %s.", new Object[] { str2 });
                             continue;
-                            ad.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, lat/long is invalid. videoPath: %s.", new Object[] { str2 });
+                            ac.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, lat/long is invalid. videoPath: %s.", new Object[] { str2 });
                           }
-                          localObject6 = JsApiChooseMultiMedia.a.IC(str2);
+                          localObject6 = JsApiChooseMultiMedia.a.MD(str2);
                           str2 = "";
-                          if (!bt.isNullOrNil((String)localObject6)) {
+                          if (!bs.isNullOrNil((String)localObject6)) {
                             str2 = JsApiChooseMultiMedia.a.a(JsApiChooseMultiMedia.a.this, (String)localObject6);
                           }
                           try
                           {
                             localObject6 = new JSONObject();
                             ((JSONObject)localObject6).put("type", "video");
-                            ((JSONObject)localObject6).put("tempFilePath", ((AppBrandLocalVideoObject)localObject5).diQ);
+                            ((JSONObject)localObject6).put("tempFilePath", ((AppBrandLocalVideoObject)localObject5).dgl);
                             ((JSONObject)localObject6).put("size", ((AppBrandLocalVideoObject)localObject5).size);
                             ((JSONObject)localObject6).put("width", ((AppBrandLocalVideoObject)localObject5).width);
                             ((JSONObject)localObject6).put("height", ((AppBrandLocalVideoObject)localObject5).height);
@@ -1725,15 +1754,15 @@ public final class JsApiChooseMultiMedia
                           }
                           catch (Exception localException3)
                           {
-                            ad.printErrStackTrace("MicroMsg.JsApiChooseMultiMedia", localException3, "", new Object[0]);
+                            ac.printErrStackTrace("MicroMsg.JsApiChooseMultiMedia", localException3, "", new Object[0]);
                           }
                         }
                       }
                     }
                   }
-                  JsApiChooseMultiMedia.a.this.jXv.bRZ = -1;
-                  JsApiChooseMultiMedia.a.this.jXv.jXt = localJSONArray.toString();
-                  JsApiChooseMultiMedia.a.b(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.jXv);
+                  JsApiChooseMultiMedia.a.this.kyh.bPH = -1;
+                  JsApiChooseMultiMedia.a.this.kyh.kyf = localJSONArray.toString();
+                  JsApiChooseMultiMedia.a.b(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.kyh);
                   AppMethodBeat.o(46506);
                   return;
                 }
@@ -1751,39 +1780,39 @@ public final class JsApiChooseMultiMedia
         label336:
         bool1 = false;
       }
-      ad.i("MicroMsg.JsApiChooseMultiMedia", "REQUEST_CODE_TAKE_MEDIA_CAMERA");
+      ac.i("MicroMsg.JsApiChooseMultiMedia", "REQUEST_CODE_TAKE_MEDIA_CAMERA");
       if (paramIntent == null)
       {
-        this.jXv.bRZ = 0;
-        b(this.jXv);
+        this.kyh.bPH = 0;
+        b(this.kyh);
         AppMethodBeat.o(46514);
         return;
       }
-      ad.i("MicroMsg.JsApiChooseMultiMedia", "data is valid!");
+      ac.i("MicroMsg.JsApiChooseMultiMedia", "data is valid!");
       localObject = (SightCaptureResult)paramIntent.getParcelableExtra("key_req_result");
       if (localObject == null)
       {
-        ad.e("MicroMsg.JsApiChooseMultiMedia", "sight capture result is null!");
-        this.jXv.bRZ = -2;
-        b(this.jXv);
+        ac.e("MicroMsg.JsApiChooseMultiMedia", "sight capture result is null!");
+        this.kyh.bPH = -2;
+        b(this.kyh);
         AppMethodBeat.o(46514);
         return;
       }
-      if (((SightCaptureResult)localObject).tAP)
+      if (((SightCaptureResult)localObject).uJm)
       {
-        localObject = ((SightCaptureResult)localObject).tAX;
-        if ((bt.isNullOrNil((String)localObject)) || (!i.eK((String)localObject)))
+        localObject = ((SightCaptureResult)localObject).uJu;
+        if ((bs.isNullOrNil((String)localObject)) || (!i.eA((String)localObject)))
         {
-          ad.e("MicroMsg.JsApiChooseMultiMedia", "picture_picturePath file is not exist! path:%s", new Object[] { localObject });
-          this.jXv.bRZ = -2;
-          b(this.jXv);
+          ac.e("MicroMsg.JsApiChooseMultiMedia", "picture_picturePath file is not exist! path:%s", new Object[] { localObject });
+          this.kyh.bPH = -2;
+          b(this.kyh);
           AppMethodBeat.o(46514);
           return;
         }
-        ad.i("MicroMsg.JsApiChooseMultiMedia", "filePath:%s", new Object[] { localObject });
+        ac.i("MicroMsg.JsApiChooseMultiMedia", "filePath:%s", new Object[] { localObject });
         bool1 = paramIntent.getBooleanExtra("CropImage_Compress_Img", false);
-        baM();
-        l.bqm().postToWorker(new Runnable()
+        bhH();
+        l.bxj().postToWorker(new Runnable()
         {
           public final void run()
           {
@@ -1795,62 +1824,62 @@ public final class JsApiChooseMultiMedia
             Object localObject2;
             if (bool1)
             {
-              localObject1 = JsApiChooseMultiMedia.a.IA(this.val$filePath);
-              localb = JsApiChooseMultiMedia.Ix((String)localObject1);
-              localObject1 = AppBrandLocalMediaObjectManager.h(JsApiChooseMultiMedia.a.this.jXu.appId, (String)localObject1, bool1 | true);
+              localObject1 = JsApiChooseMultiMedia.a.MB(this.val$filePath);
+              localb = JsApiChooseMultiMedia.Mw((String)localObject1);
+              localObject1 = AppBrandLocalMediaObjectManager.h(JsApiChooseMultiMedia.a.this.kyg.appId, (String)localObject1, bool1 | true);
               if (localObject1 == null) {
                 break label265;
               }
               l = Calendar.getInstance().getTimeInMillis() / 1000L;
               d = -1.0D;
-              if ((!com.tencent.mm.modelgeo.a.m(d2)) || (!com.tencent.mm.modelgeo.a.l(this.heH))) {
+              if ((!com.tencent.mm.modelgeo.a.m(d2)) || (!com.tencent.mm.modelgeo.a.l(this.hFk))) {
                 break label244;
               }
-              localObject2 = JsApiChooseMultiMedia.a.baP();
+              localObject2 = JsApiChooseMultiMedia.a.bhI();
               if (localObject2 == null) {
                 break label223;
               }
-              d = TencentLocationUtils.distanceBetween(((BackwardSupportUtil.ExifHelper.LatLongData)localObject2).dpb, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject2).hil, d2, this.heH);
+              d = TencentLocationUtils.distanceBetween(((BackwardSupportUtil.ExifHelper.LatLongData)localObject2).dmL, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject2).hIO, d2, this.hFk);
             }
             for (;;)
             {
               localObject2 = JsApiChooseMultiMedia.a.a(JsApiChooseMultiMedia.a.this, l, d);
-              ad.i("MicroMsg.JsApiChooseMultiMedia", "handle image from mm-sight is done.");
-              JsApiChooseMultiMedia.a.this.jXv.bRZ = -1;
-              JsApiChooseMultiMedia.a.this.jXv.jXt = JsApiChooseMultiMedia.a.b(((AppBrandLocalMediaObject)localObject1).diQ, ((AppBrandLocalMediaObject)localObject1).hWY, localb.width, localb.height, localb.jbC, (String)localObject2);
-              JsApiChooseMultiMedia.a.c(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.jXv);
+              ac.i("MicroMsg.JsApiChooseMultiMedia", "handle image from mm-sight is done.");
+              JsApiChooseMultiMedia.a.this.kyh.bPH = -1;
+              JsApiChooseMultiMedia.a.this.kyh.kyf = JsApiChooseMultiMedia.a.b(((AppBrandLocalMediaObject)localObject1).dgl, ((AppBrandLocalMediaObject)localObject1).ixc, localb.width, localb.height, localb.jBP, (String)localObject2);
+              JsApiChooseMultiMedia.a.c(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.kyh);
               AppMethodBeat.o(46507);
               return;
               localObject1 = this.val$filePath;
               break;
               label223:
-              ad.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, locData is null. pic_Path: %s.", new Object[] { this.val$filePath });
+              ac.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, locData is null. pic_Path: %s.", new Object[] { this.val$filePath });
               continue;
               label244:
-              ad.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, lat/long is invalid. pic_Path: %s.", new Object[] { this.val$filePath });
+              ac.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, lat/long is invalid. pic_Path: %s.", new Object[] { this.val$filePath });
             }
             label265:
-            ad.e("MicroMsg.JsApiChooseMultiMedia", "handle image from mm-sight camera, get null obj from path: %s", new Object[] { this.val$filePath });
-            JsApiChooseMultiMedia.a.this.jXv.bRZ = -2;
-            JsApiChooseMultiMedia.a.d(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.jXv);
+            ac.e("MicroMsg.JsApiChooseMultiMedia", "handle image from mm-sight camera, get null obj from path: %s", new Object[] { this.val$filePath });
+            JsApiChooseMultiMedia.a.this.kyh.bPH = -2;
+            JsApiChooseMultiMedia.a.d(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.kyh);
             AppMethodBeat.o(46507);
           }
         });
         AppMethodBeat.o(46514);
         return;
       }
-      paramIntent = ((SightCaptureResult)localObject).tAR;
-      if (bt.isNullOrNil(paramIntent))
+      paramIntent = ((SightCaptureResult)localObject).uJo;
+      if (bs.isNullOrNil(paramIntent))
       {
-        ad.e("MicroMsg.JsApiChooseMultiMedia", "mVideoFilePath is null");
-        this.jXv.bRZ = -2;
-        b(this.jXv);
+        ac.e("MicroMsg.JsApiChooseMultiMedia", "mVideoFilePath is null");
+        this.kyh.bPH = -2;
+        b(this.kyh);
         AppMethodBeat.o(46514);
         return;
       }
-      ad.i("MicroMsg.JsApiChooseMultiMedia", "mVideoFilePath:%s", new Object[] { paramIntent });
-      baM();
-      l.bqm().postToWorker(new Runnable()
+      ac.i("MicroMsg.JsApiChooseMultiMedia", "mVideoFilePath:%s", new Object[] { paramIntent });
+      bhH();
+      l.bxj().postToWorker(new Runnable()
       {
         public final void run()
         {
@@ -1858,19 +1887,19 @@ public final class JsApiChooseMultiMedia
           AppBrandLocalVideoObject localAppBrandLocalVideoObject;
           if (new com.tencent.mm.vfs.e(paramIntent).exists())
           {
-            ad.i("MicroMsg.JsApiChooseMultiMedia", "take media camera, the mVideoFilePath file exist, success");
-            JsApiChooseMultiMedia.a.this.jXv.bRZ = -1;
+            ac.i("MicroMsg.JsApiChooseMultiMedia", "take media camera, the mVideoFilePath file exist, success");
+            JsApiChooseMultiMedia.a.this.kyh.bPH = -1;
             localAppBrandLocalVideoObject = JsApiChooseMultiMedia.a.a(JsApiChooseMultiMedia.a.this, paramIntent, false);
             if (localAppBrandLocalVideoObject == null)
             {
-              ad.e("MicroMsg.JsApiChooseMultiMedia", "addVideoItem fail ,mVideoFilePath is %s", new Object[] { paramIntent });
-              JsApiChooseMultiMedia.a.this.jXv.bRZ = -2;
-              JsApiChooseMultiMedia.a.e(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.jXv);
+              ac.e("MicroMsg.JsApiChooseMultiMedia", "addVideoItem fail ,mVideoFilePath is %s", new Object[] { paramIntent });
+              JsApiChooseMultiMedia.a.this.kyh.bPH = -2;
+              JsApiChooseMultiMedia.a.e(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.kyh);
               AppMethodBeat.o(46508);
               return;
             }
-            str = JsApiChooseMultiMedia.a.IC(paramIntent);
-            if (bt.isNullOrNil(str)) {
+            str = JsApiChooseMultiMedia.a.MD(paramIntent);
+            if (bs.isNullOrNil(str)) {
               break label372;
             }
           }
@@ -1880,27 +1909,27 @@ public final class JsApiChooseMultiMedia
             long l = Calendar.getInstance().getTimeInMillis() / 1000L;
             double d = -1.0D;
             Object localObject;
-            if ((com.tencent.mm.modelgeo.a.m(d2)) && (com.tencent.mm.modelgeo.a.l(this.heH)))
+            if ((com.tencent.mm.modelgeo.a.m(d2)) && (com.tencent.mm.modelgeo.a.l(this.hFk)))
             {
-              localObject = JsApiChooseMultiMedia.a.baP();
+              localObject = JsApiChooseMultiMedia.a.bhI();
               if (localObject != null) {
-                d = TencentLocationUtils.distanceBetween(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).dpb, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).hil, d2, this.heH);
+                d = TencentLocationUtils.distanceBetween(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).dmL, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).hIO, d2, this.hFk);
               }
             }
             for (;;)
             {
               localObject = JsApiChooseMultiMedia.a.a(JsApiChooseMultiMedia.a.this, l, d);
-              JsApiChooseMultiMedia.a.this.jXv.jXt = JsApiChooseMultiMedia.a.b(localAppBrandLocalVideoObject.diQ, localAppBrandLocalVideoObject.size, localAppBrandLocalVideoObject.width, localAppBrandLocalVideoObject.height, localAppBrandLocalVideoObject.duration, str, (String)localObject);
-              JsApiChooseMultiMedia.a.f(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.jXv);
+              JsApiChooseMultiMedia.a.this.kyh.kyf = JsApiChooseMultiMedia.a.b(localAppBrandLocalVideoObject.dgl, localAppBrandLocalVideoObject.size, localAppBrandLocalVideoObject.width, localAppBrandLocalVideoObject.height, localAppBrandLocalVideoObject.duration, str, (String)localObject);
+              JsApiChooseMultiMedia.a.f(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.kyh);
               AppMethodBeat.o(46508);
               return;
-              ad.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, locData is null. video_Path: %s.", new Object[] { paramIntent });
+              ac.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, locData is null. video_Path: %s.", new Object[] { paramIntent });
               continue;
-              ad.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, lat/long is invalid. video_Path: %s.", new Object[] { paramIntent });
+              ac.w("MicroMsg.JsApiChooseMultiMedia", "calculate X fail, lat/long is invalid. video_Path: %s.", new Object[] { paramIntent });
             }
-            ad.e("MicroMsg.JsApiChooseMultiMedia", "take media camera, mVideoFilePath is %s, the file not exist, fail", new Object[] { paramIntent });
-            JsApiChooseMultiMedia.a.this.jXv.bRZ = -2;
-            JsApiChooseMultiMedia.a.g(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.jXv);
+            ac.e("MicroMsg.JsApiChooseMultiMedia", "take media camera, mVideoFilePath is %s, the file not exist, fail", new Object[] { paramIntent });
+            JsApiChooseMultiMedia.a.this.kyh.bPH = -2;
+            JsApiChooseMultiMedia.a.g(JsApiChooseMultiMedia.a.this, JsApiChooseMultiMedia.a.this.kyh);
             AppMethodBeat.o(46508);
             return;
           }
@@ -1913,13 +1942,13 @@ public final class JsApiChooseMultiMedia
   static final class b
   {
     public int height;
-    public String jbC;
+    public String jBP;
     public int width;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.JsApiChooseMultiMedia
  * JD-Core Version:    0.7.0.1
  */

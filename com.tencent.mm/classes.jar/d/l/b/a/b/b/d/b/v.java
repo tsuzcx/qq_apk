@@ -10,33 +10,33 @@ public final class v
   extends w
   implements u
 {
-  private final Class<?> Jwq;
+  private final Class<?> LjJ;
   
   public v(Class<?> paramClass)
   {
     AppMethodBeat.i(57503);
-    this.Jwq = paramClass;
+    this.LjJ = paramClass;
     AppMethodBeat.o(57503);
   }
   
-  public final h fBa()
+  public final h fTE()
   {
     AppMethodBeat.i(57502);
-    if (k.g(this.Jwq, Void.TYPE))
+    if (k.g(this.LjJ, Void.TYPE))
     {
       AppMethodBeat.o(57502);
       return null;
     }
-    Object localObject = d.aQP(this.Jwq.getName());
+    Object localObject = d.aWO(this.LjJ.getName());
     k.g(localObject, "JvmPrimitiveType.get(reflectType.name)");
-    localObject = ((d)localObject).fJc();
+    localObject = ((d)localObject).gbF();
     AppMethodBeat.o(57502);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.v
  * JD-Core Version:    0.7.0.1
  */

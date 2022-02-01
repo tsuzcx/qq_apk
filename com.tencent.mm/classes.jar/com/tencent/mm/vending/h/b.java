@@ -21,7 +21,7 @@ public final class b
     AppMethodBeat.o(74912);
   }
   
-  public final void fm()
+  public final void fu()
   {
     AppMethodBeat.i(74914);
     this.mHandler.removeCallbacksAndMessages(null);

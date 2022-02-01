@@ -1,85 +1,84 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.plugin.voip.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.plugin.voip.model.l;
 import com.tencent.mm.plugin.voip.model.v2protocal;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dmh;
-import com.tencent.mm.protocal.protobuf.dmi;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dry;
+import com.tencent.mm.protocal.protobuf.drz;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class d
-  extends n<dmh, dmi>
+  extends n<dry, drz>
 {
   public d(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte, int paramInt7)
   {
     AppMethodBeat.i(115226);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new dmh();
-    ((b.a)localObject).gUV = new dmi();
+    ((b.a)localObject).hvt = new dry();
+    ((b.a)localObject).hvu = new drz();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipDoubleLinkSwitch";
     ((b.a)localObject).funcId = 249;
     ((b.a)localObject).reqCmdId = 249;
     ((b.a)localObject).respCmdId = 1000000249;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (dmh)this.rr.gUS.gUX;
-    ((dmh)localObject).DdZ = paramInt1;
-    ((dmh)localObject).Dea = paramLong;
-    ((dmh)localObject).DZg = paramInt2;
-    ((dmh)localObject).EBX = paramInt3;
-    ((dmh)localObject).EBY = paramInt4;
-    ((dmh)localObject).EBZ = paramInt5;
-    ((dmh)localObject).ECa = paramInt6;
-    ((dmh)localObject).ECb = 1;
-    ((dmh)localObject).CCV = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte, 0, paramInt7);
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (dry)this.rr.hvr.hvw;
+    ((dry)localObject).Exf = paramInt1;
+    ((dry)localObject).Exg = paramLong;
+    ((dry)localObject).Fwc = paramInt2;
+    ((dry)localObject).FZk = paramInt3;
+    ((dry)localObject).FZl = paramInt4;
+    ((dry)localObject).FZm = paramInt5;
+    ((dry)localObject).FZn = paramInt6;
+    ((dry)localObject).FZo = 1;
+    ((dry)localObject).DVs = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte, 0, paramInt7);
     AppMethodBeat.o(115226);
   }
   
-  public final g dVg()
+  public final g eks()
   {
     AppMethodBeat.i(115228);
     g local1 = new g()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
       {
         AppMethodBeat.i(115225);
-        c.Logi("MicroMsg.Voip.DoubleLinkSwitch", "double link switch response:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " status:" + d.this.zjH.mStatus);
+        com.tencent.mm.plugin.voip.b.d.Logi("MicroMsg.Voip.DoubleLinkSwitch", "double link switch response:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " status:" + d.this.ACr.mStatus);
         if (paramAnonymousInt2 != 0)
         {
-          c.Loge("MicroMsg.Voip.DoubleLinkSwitch", " double link switch  response with error code:".concat(String.valueOf(paramAnonymousInt2)));
+          com.tencent.mm.plugin.voip.b.d.Loge("MicroMsg.Voip.DoubleLinkSwitch", " double link switch  response with error code:".concat(String.valueOf(paramAnonymousInt2)));
           AppMethodBeat.o(115225);
           return;
         }
-        paramAnonymousString = (dmi)d.this.dVk();
-        d.this.zjH.ziM = paramAnonymousString.DQN;
-        if (d.this.zjH.ziM == 0)
+        paramAnonymousString = (drz)d.this.ekw();
+        d.this.ACr.ABw = paramAnonymousString.Fnf;
+        if (d.this.ACr.ABw == 0)
         {
           AppMethodBeat.o(115225);
           return;
         }
-        if (d.this.zjH.ziZ.doubleLinkSwitch(paramAnonymousString.ECc) == 0)
+        if (d.this.ACr.ABJ.doubleLinkSwitch(paramAnonymousString.FZp) == 0)
         {
-          if (1 != paramAnonymousString.ECc) {
+          if (1 != paramAnonymousString.FZp) {
             break label311;
           }
-          paramAnonymousn = d.this.zjH.ziZ;
-          paramAnonymousn.zoC += 1;
+          paramAnonymousn = d.this.ACr.ABJ;
+          paramAnonymousn.AHr += 1;
         }
         for (;;)
         {
-          c.Logi("MicroMsg.Voip.DoubleLinkSwitch", "zhengxue[DOUBLELINK]room " + paramAnonymousString.DdZ + " member " + paramAnonymousString.DZg + " key " + paramAnonymousString.Dea + "report flag " + paramAnonymousString.DQN + "switch to link type " + paramAnonymousString.ECc + "doubleLinkSwitchReportStatus " + d.this.zjH.ziM + "mDoubleLinkSwitchSucToDirectCnt" + d.this.zjH.ziZ.zoC + "mDoubleLinkSwitchSucToRelayCnt" + d.this.zjH.ziZ.zoD);
+          com.tencent.mm.plugin.voip.b.d.Logi("MicroMsg.Voip.DoubleLinkSwitch", "zhengxue[DOUBLELINK]room " + paramAnonymousString.Exf + " member " + paramAnonymousString.Fwc + " key " + paramAnonymousString.Exg + "report flag " + paramAnonymousString.Fnf + "switch to link type " + paramAnonymousString.FZp + "doubleLinkSwitchReportStatus " + d.this.ACr.ABw + "mDoubleLinkSwitchSucToDirectCnt" + d.this.ACr.ABJ.AHr + "mDoubleLinkSwitchSucToRelayCnt" + d.this.ACr.ABJ.AHs);
           AppMethodBeat.o(115225);
           return;
           label311:
-          if (2 == paramAnonymousString.ECc)
+          if (2 == paramAnonymousString.FZp)
           {
-            paramAnonymousn = d.this.zjH.ziZ;
-            paramAnonymousn.zoD += 1;
+            paramAnonymousn = d.this.ACr.ABJ;
+            paramAnonymousn.AHs += 1;
           }
         }
       }
@@ -93,19 +92,19 @@ public final class d
     return 249;
   }
   
-  public final void hR(int paramInt1, int paramInt2)
+  public final void ig(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115227);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      dmi localdmi = (dmi)dVk();
-      if (localdmi != null) {
-        ad.i("MicroMsg.Voip.DoubleLinkSwitch", "roomId:%d, roomKey:%s, member:%d", new Object[] { Integer.valueOf(localdmi.DdZ), Long.valueOf(localdmi.Dea), Integer.valueOf(localdmi.DZg) });
+      drz localdrz = (drz)ekw();
+      if (localdrz != null) {
+        ac.i("MicroMsg.Voip.DoubleLinkSwitch", "roomId:%d, roomKey:%s, member:%d", new Object[] { Integer.valueOf(localdrz.Exf), Long.valueOf(localdrz.Exg), Integer.valueOf(localdrz.Fwc) });
       }
       AppMethodBeat.o(115227);
       return;
     }
-    ad.i("MicroMsg.Voip.DoubleLinkSwitch", "double link switch error");
+    ac.i("MicroMsg.Voip.DoubleLinkSwitch", "double link switch error");
     AppMethodBeat.o(115227);
   }
 }

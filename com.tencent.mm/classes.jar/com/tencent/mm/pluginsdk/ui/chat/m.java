@@ -6,61 +6,66 @@ import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
+import android.support.v7.widget.RecyclerView.b;
 import android.support.v7.widget.RecyclerView.l;
 import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.b.f.b;
-import com.tencent.mm.emoji.a.b.h;
+import com.tencent.mm.emoji.a.b.d;
+import com.tencent.mm.emoji.a.b.j.b;
+import com.tencent.mm.emoji.a.b.l;
 import com.tencent.mm.emoji.view.EmojiStatusView;
-import com.tencent.mm.g.b.a.du;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.g.b.a.fj;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.f;
 import com.tencent.mm.ui.base.o;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class m
 {
-  a CcC;
-  View CgA;
-  j CgB;
-  public boolean CgC;
-  RecyclerView CgD;
-  public final ArrayList<h> CgE;
-  c CgF;
-  public com.tencent.mm.vending.e.c<com.tencent.mm.vending.e.a> CgG;
-  public du CgH;
-  public int CgI;
-  b CgJ;
-  private RecyclerView.l CgK;
-  int Cgy;
-  int Cgz;
-  private RecyclerView.m akH;
+  a DuU;
+  int DyP;
+  int DyQ;
+  View DyR;
+  j DyS;
+  public boolean DyT;
+  RecyclerView DyU;
+  public final ArrayList<l> DyV;
+  c DyW;
+  public com.tencent.mm.vending.e.c<com.tencent.mm.vending.e.a> DyX;
+  public fj DyY;
+  public int DyZ;
+  b Dza;
+  private RecyclerView.l Dzb;
+  private RecyclerView.m alB;
   private View mContentView;
   Context mContext;
-  public ap mHandler;
-  o ssc;
-  public String ssg;
+  public ao mHandler;
+  o tzS;
+  public String tzW;
   
   public m(Context paramContext)
   {
     AppMethodBeat.i(104700);
-    this.ssg = "";
-    this.CgC = true;
-    this.CgE = new ArrayList();
-    this.CgH = new du();
-    this.CgI = 0;
-    this.mHandler = new ap()
+    this.tzW = "";
+    this.DyT = true;
+    this.DyV = new ArrayList();
+    this.DyY = new fj();
+    this.DyZ = 0;
+    this.mHandler = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -73,62 +78,66 @@ public final class m
           AppMethodBeat.o(104690);
           return;
           paramAnonymousMessage = m.this;
-          ad.i("MicroMsg.emoji.SuggestEmoticonBubble", "show: %s", new Object[] { Boolean.valueOf(paramAnonymousMessage.CgC) });
+          ac.i("MicroMsg.emoji.SuggestEmoticonBubble", "show: %s", new Object[] { Boolean.valueOf(paramAnonymousMessage.DyT) });
           paramAnonymousMessage.mHandler.removeMessages(20001);
-          Object localObject;
+          Object localObject1;
           int i;
-          if (paramAnonymousMessage.CgC)
+          if (paramAnonymousMessage.DyT)
           {
-            paramAnonymousMessage.CgF.ad(paramAnonymousMessage.CgE);
-            localObject = paramAnonymousMessage.CgD;
-            com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-            com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.adn(), "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
-            ((RecyclerView)localObject).ca(((Integer)locala.lS(0)).intValue());
-            com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
-            if (paramAnonymousMessage.CgE.size() <= 2) {
-              break label289;
+            localObject1 = paramAnonymousMessage.DyW;
+            Object localObject2 = paramAnonymousMessage.DyV;
+            ((m.c)localObject1).pjZ.clear();
+            ((m.c)localObject1).pjZ.addAll((Collection)localObject2);
+            ((RecyclerView.a)localObject1).arg.notifyChanged();
+            localObject1 = paramAnonymousMessage.DyU;
+            localObject2 = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
+            com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
+            ((RecyclerView)localObject1).ca(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0)).intValue());
+            com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
+            if (paramAnonymousMessage.DyV.size() <= 2) {
+              break label317;
             }
-            i = (int)(paramAnonymousMessage.Cgy * 2.5F) + paramAnonymousMessage.Cgz * 2;
-            if (!paramAnonymousMessage.ssc.isShowing()) {
-              break label332;
+            i = (int)(paramAnonymousMessage.DyP * 2.5F) + paramAnonymousMessage.DyQ * 2;
+            if (!paramAnonymousMessage.tzS.isShowing()) {
+              break label360;
             }
-            paramAnonymousMessage.ssc.update(i, -2);
-            label219:
-            if (paramAnonymousMessage.CgE.size() < 3) {
-              break label422;
+            paramAnonymousMessage.tzS.update(i, -2);
+            label247:
+            if (paramAnonymousMessage.DyV.size() < 3) {
+              break label450;
             }
             paramAnonymousMessage.mHandler.sendEmptyMessageDelayed(20001, 5000L);
           }
           for (;;)
           {
-            paramAnonymousMessage.x(paramAnonymousMessage.CgE, paramAnonymousMessage.CgI);
-            paramAnonymousMessage.CgH.dHq = 0L;
-            paramAnonymousMessage.CgH.aBj();
-            paramAnonymousMessage.CgI = paramAnonymousMessage.CgE.size();
+            paramAnonymousMessage.x(paramAnonymousMessage.DyV, paramAnonymousMessage.DyZ);
+            paramAnonymousMessage.DyY.dFd = 0L;
+            paramAnonymousMessage.DyY.aHZ();
+            paramAnonymousMessage.DyZ = paramAnonymousMessage.DyV.size();
             AppMethodBeat.o(104690);
             return;
-            label289:
-            if (paramAnonymousMessage.CgE.size() == 2)
+            label317:
+            if (paramAnonymousMessage.DyV.size() == 2)
             {
-              i = paramAnonymousMessage.Cgy * 2 + paramAnonymousMessage.Cgz * 2;
+              i = paramAnonymousMessage.DyP * 2 + paramAnonymousMessage.DyQ * 2;
               break;
             }
-            i = paramAnonymousMessage.Cgy + paramAnonymousMessage.Cgz * 2;
+            i = paramAnonymousMessage.DyP + paramAnonymousMessage.DyQ * 2;
             break;
-            label332:
-            paramAnonymousMessage.ssc.setWidth(i);
-            if (paramAnonymousMessage.CgA == null) {
-              break label219;
+            label360:
+            paramAnonymousMessage.tzS.setWidth(i);
+            if (paramAnonymousMessage.DyR == null) {
+              break label247;
             }
-            localObject = new int[2];
-            paramAnonymousMessage.CgA.getLocationInWindow((int[])localObject);
-            i = localObject[0];
-            int j = (paramAnonymousMessage.ssc.getWidth() - paramAnonymousMessage.CgA.getWidth()) / 2;
-            int k = localObject[1];
-            int m = paramAnonymousMessage.ssc.getHeight();
-            paramAnonymousMessage.ssc.showAtLocation(paramAnonymousMessage.CgA, 0, i - j, k - m);
-            break label219;
-            label422:
+            localObject1 = new int[2];
+            paramAnonymousMessage.DyR.getLocationInWindow((int[])localObject1);
+            i = localObject1[0];
+            int j = (paramAnonymousMessage.tzS.getWidth() - paramAnonymousMessage.DyR.getWidth()) / 2;
+            int k = localObject1[1];
+            int m = paramAnonymousMessage.tzS.getHeight();
+            paramAnonymousMessage.tzS.showAtLocation(paramAnonymousMessage.DyR, 0, i - j, k - m);
+            break label247;
+            label450:
             paramAnonymousMessage.mHandler.sendEmptyMessageDelayed(20001, 3000L);
           }
           m.this.hide();
@@ -138,40 +147,40 @@ public final class m
         }
       }
     };
-    this.CgJ = new b()
+    this.Dza = new b()
     {
-      public final void a(int paramAnonymousInt, h paramAnonymoush)
+      public final void a(int paramAnonymousInt, l paramAnonymousl)
       {
-        AppMethodBeat.i(193422);
-        if ((paramAnonymoush != null) && (m.this.CgB != null) && (m.this.CcC != null))
+        AppMethodBeat.i(209785);
+        if ((paramAnonymousl != null) && (m.this.DyS != null) && (m.this.DuU != null))
         {
-          EmojiInfo localEmojiInfo = paramAnonymoush.fLP;
-          if (aw.eLx().FyY.aJx(localEmojiInfo.field_md5) == null) {
-            aw.eLx().FyY.K(localEmojiInfo);
+          EmojiInfo localEmojiInfo = paramAnonymousl.fPB;
+          if (az.faZ().GXZ.aOT(localEmojiInfo.field_md5) == null) {
+            az.faZ().GXZ.K(localEmojiInfo);
           }
-          m.this.CgB.B(localEmojiInfo);
-          m.this.CcC.clear();
-          m.this.x(Collections.singletonList(paramAnonymoush), 0);
-          m.this.CgH.dMe = paramAnonymousInt;
-          m.this.CgH.dHq = 1L;
-          m.this.CgH.aBj();
-          m.this.CgH.dMe = 0L;
+          m.this.DyS.B(localEmojiInfo);
+          m.this.DuU.clear();
+          m.this.x(Collections.singletonList(paramAnonymousl), 0);
+          m.this.DyY.dMy = paramAnonymousInt;
+          m.this.DyY.dFd = 1L;
+          m.this.DyY.aHZ();
+          m.this.DyY.dMy = 0L;
         }
-        m.this.ssc.dismiss();
-        AppMethodBeat.o(193422);
+        m.this.tzS.dismiss();
+        AppMethodBeat.o(209785);
       }
     };
-    this.CgK = new RecyclerView.l()
+    this.Dzb = new RecyclerView.l()
     {
       public final boolean a(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(202412);
+        AppMethodBeat.i(209786);
         switch (paramAnonymousMotionEvent.getAction())
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(202412);
+          AppMethodBeat.o(209786);
           return false;
           m.this.mHandler.sendEmptyMessage(20002);
           continue;
@@ -183,84 +192,82 @@ public final class m
       
       public final void b(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent) {}
     };
-    this.akH = new RecyclerView.m()
+    this.alB = new RecyclerView.m()
     {
       public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(202413);
-        b localb = new b();
-        localb.be(paramAnonymousRecyclerView);
-        localb.lT(paramAnonymousInt1);
-        localb.lT(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ado());
+        AppMethodBeat.i(209788);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bb(paramAnonymousRecyclerView);
+        localb.lS(paramAnonymousInt1);
+        localb.lS(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
         super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(202413);
+        AppMethodBeat.o(209788);
       }
       
       public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(193424);
-        b localb = new b();
-        localb.be(paramAnonymousRecyclerView);
-        localb.lT(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ado());
+        AppMethodBeat.i(209787);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bb(paramAnonymousRecyclerView);
+        localb.lS(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
         super.b(paramAnonymousRecyclerView, paramAnonymousInt);
         if (paramAnonymousInt == 0)
         {
           m.this.x(null, 0);
-          m.this.CgH.dHq = 2L;
-          m.this.CgH.aBj();
+          m.this.DyY.dFd = 2L;
+          m.this.DyY.aHZ();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-        AppMethodBeat.o(193424);
+        AppMethodBeat.o(209787);
       }
     };
     this.mContext = paramContext;
-    this.CgG = new com.tencent.mm.vending.e.c();
+    this.DyX = new com.tencent.mm.vending.e.c();
     this.mContentView = View.inflate(this.mContext, 2131493403, null);
-    this.CgD = ((RecyclerView)this.mContentView.findViewById(2131305540));
-    this.CgD.setLayoutManager(new LinearLayoutManager(0));
-    this.CgF = new c();
-    this.CgD.setAdapter(this.CgF);
-    this.CgD.a(this.CgK);
-    this.CgD.a(this.akH);
-    this.Cgy = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 102);
-    this.Cgz = com.tencent.mm.cd.a.ao(this.mContext, 2131165284);
-    this.ssc = new o(this.mContentView, this.Cgy + this.Cgz * 2, this.Cgy + this.Cgz * 2, true);
-    this.ssc.setBackgroundDrawable(new ColorDrawable(0));
-    this.ssc.setOutsideTouchable(true);
-    this.ssc.setFocusable(false);
-    this.ssc.setAnimationStyle(2131821219);
+    this.DyU = ((RecyclerView)this.mContentView.findViewById(2131305540));
+    this.DyU.setLayoutManager(new LinearLayoutManager(0));
+    this.DyW = new c();
+    this.DyU.setAdapter(this.DyW);
+    this.DyU.a(this.Dzb);
+    this.DyU.a(this.alB);
+    this.DyP = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 102);
+    this.DyQ = com.tencent.mm.cc.a.au(this.mContext, 2131165284);
+    this.tzS = new o(this.mContentView, this.DyP + this.DyQ * 2, this.DyP + this.DyQ * 2, true);
+    this.tzS.setBackgroundDrawable(new ColorDrawable(0));
+    this.tzS.setOutsideTouchable(true);
+    this.tzS.setFocusable(false);
+    this.tzS.setAnimationStyle(2131821219);
     AppMethodBeat.o(104700);
   }
   
   public final void hide()
   {
     AppMethodBeat.i(104701);
-    ad.i("MicroMsg.emoji.SuggestEmoticonBubble", "hide: ");
-    if (this.ssc == null)
+    ac.i("MicroMsg.emoji.SuggestEmoticonBubble", "hide: ");
+    if (this.tzS == null)
     {
       AppMethodBeat.o(104701);
       return;
     }
-    if (this.ssc.isShowing()) {
-      this.ssc.dismiss();
+    if (this.tzS.isShowing()) {
+      this.tzS.dismiss();
     }
     this.mHandler.removeCallbacksAndMessages(null);
-    this.CgE.clear();
-    this.CgF.ad(this.CgE);
-    if (this.CgG != null)
+    if (this.DyX != null)
     {
-      this.CgG.dead();
-      this.CgG = null;
+      this.DyX.dead();
+      this.DyX = null;
     }
     AppMethodBeat.o(104701);
   }
   
-  final void x(List<h> paramList, int paramInt)
+  final void x(List<l> paramList, int paramInt)
   {
-    AppMethodBeat.i(193432);
+    AppMethodBeat.i(209795);
     StringBuilder localStringBuilder3 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
     StringBuilder localStringBuilder1 = new StringBuilder();
@@ -269,28 +276,28 @@ public final class m
       int i = paramInt;
       while (i < paramList.size())
       {
-        h localh = (h)paramList.get(i);
+        l locall = (l)paramList.get(i);
         if (i != paramInt)
         {
           localStringBuilder3.append("#");
           localStringBuilder2.append("#");
           localStringBuilder1.append("#");
         }
-        localStringBuilder3.append(localh.fLP.field_md5);
-        localStringBuilder2.append(localh.type);
-        localStringBuilder1.append(localh.fPc);
+        localStringBuilder3.append(locall.fPB.field_md5);
+        localStringBuilder2.append(locall.type);
+        localStringBuilder1.append(locall.fSV);
         i += 1;
       }
     }
-    paramList = this.CgH;
-    paramList.dNE = paramList.t("md5", localStringBuilder3.toString(), true);
-    paramList = this.CgH;
-    paramList.dVF = paramList.t("IsLocalSearch", localStringBuilder2.toString(), true);
-    paramList = this.CgH;
-    paramList.dVD = paramList.t("Index", localStringBuilder1.toString(), true);
-    paramList = this.CgH;
-    paramList.dVB = paramList.t("Word", this.ssg.replace(",", ""), true);
-    AppMethodBeat.o(193432);
+    paramList = this.DyY;
+    paramList.dPg = paramList.t("md5", localStringBuilder3.toString(), true);
+    paramList = this.DyY;
+    paramList.dXv = paramList.t("IsLocalSearch", localStringBuilder2.toString(), true);
+    paramList = this.DyY;
+    paramList.dXt = paramList.t("Index", localStringBuilder1.toString(), true);
+    paramList = this.DyY;
+    paramList.dXr = paramList.t("Word", this.tzW.replace(",", ""), true);
+    AppMethodBeat.o(209795);
   }
   
   public static abstract interface a
@@ -300,72 +307,53 @@ public final class m
   
   static abstract interface b
   {
-    public abstract void a(int paramInt, h paramh);
+    public abstract void a(int paramInt, l paraml);
   }
   
   final class c
     extends RecyclerView.a<m.d>
   {
-    private LinkedList<h> oGz;
+    LinkedList<l> pjZ;
     
     c()
     {
-      AppMethodBeat.i(193426);
-      this.oGz = new LinkedList();
-      AppMethodBeat.o(193426);
-    }
-    
-    public final void ad(List<h> paramList)
-    {
-      AppMethodBeat.i(193427);
-      int i = this.oGz.size();
-      this.oGz.clear();
-      this.oGz.addAll(paramList);
-      int j = this.oGz.size();
-      if (j > i)
-      {
-        aq(i, j - i);
-        AppMethodBeat.o(193427);
-        return;
-      }
-      if (j < i) {
-        ar(j, i - j);
-      }
-      AppMethodBeat.o(193427);
+      AppMethodBeat.i(209790);
+      this.pjZ = new LinkedList();
+      AppMethodBeat.o(209790);
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(193428);
-      if (this.oGz == null)
+      AppMethodBeat.i(209791);
+      if (this.pjZ == null)
       {
-        AppMethodBeat.o(193428);
+        AppMethodBeat.o(209791);
         return 0;
       }
-      int i = this.oGz.size();
-      AppMethodBeat.o(193428);
+      int i = this.pjZ.size();
+      AppMethodBeat.o(209791);
       return i;
     }
   }
   
   final class d
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
-    h CgM;
-    EmojiStatusView xBI;
+    l Dzd;
+    EmojiStatusView yOw;
     
     d(View paramView)
     {
       super();
       AppMethodBeat.i(104699);
-      this.xBI = ((EmojiStatusView)paramView.findViewById(2131305539));
-      this.xBI.setOnClickListener(new View.OnClickListener()
+      this.yOw = ((EmojiStatusView)paramView.findViewById(2131305539));
+      this.yOw.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(193431);
-          m.this.CgJ.a(m.d.this.ln(), m.d.this.CgM);
-          AppMethodBeat.o(193431);
+          AppMethodBeat.i(209794);
+          m.this.Dza.a(m.d.this.lv(), m.d.this.Dzd);
+          AppMethodBeat.o(209794);
         }
       });
       AppMethodBeat.o(104699);

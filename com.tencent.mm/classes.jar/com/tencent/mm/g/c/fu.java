@@ -11,50 +11,57 @@ public abstract class fu
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDq = "totalSize".hashCode();
-  private static final int eEG = "cacheSize".hashCode();
-  private static final int eYs = "storyId".hashCode();
-  private static final int eoZ = "url".hashCode();
-  private static final int etB = "filePath".hashCode();
+  private static final int fbG = "storyId".hashCode();
+  private static final int fbH = "readCommentId".hashCode();
+  private static final int fbI = "syncCommentId".hashCode();
+  private static final int fbJ = "readCommentTime".hashCode();
+  private static final int fbK = "syncCommentTime".hashCode();
+  private static final int fbL = "commentFlag".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCN = true;
-  private boolean eED = true;
-  private boolean eYm = true;
-  private boolean eoV = true;
-  private boolean ett = true;
-  public int field_cacheSize;
-  public String field_filePath;
+  private boolean fbA = true;
+  private boolean fbB = true;
+  private boolean fbC = true;
+  private boolean fbD = true;
+  private boolean fbE = true;
+  private boolean fbF = true;
+  public int field_commentFlag;
+  public int field_readCommentId;
+  public int field_readCommentTime;
   public long field_storyId;
-  public int field_totalSize;
-  public String field_url;
+  public int field_syncCommentId;
+  public int field_syncCommentTime;
   
-  public static c.a So()
+  public static c.a Th()
   {
     c.a locala = new c.a();
-    locala.EYt = new Field[5];
-    locala.columns = new String[6];
+    locala.GvF = new Field[6];
+    locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "storyId";
-    locala.EYv.put("storyId", "LONG PRIMARY KEY ");
+    locala.GvH.put("storyId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" storyId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "storyId";
-    locala.columns[1] = "url";
-    locala.EYv.put("url", "TEXT");
-    localStringBuilder.append(" url TEXT");
+    locala.GvG = "storyId";
+    locala.columns[1] = "readCommentId";
+    locala.GvH.put("readCommentId", "INTEGER");
+    localStringBuilder.append(" readCommentId INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "filePath";
-    locala.EYv.put("filePath", "TEXT");
-    localStringBuilder.append(" filePath TEXT");
+    locala.columns[2] = "syncCommentId";
+    locala.GvH.put("syncCommentId", "INTEGER");
+    localStringBuilder.append(" syncCommentId INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[3] = "totalSize";
-    locala.EYv.put("totalSize", "INTEGER");
-    localStringBuilder.append(" totalSize INTEGER");
+    locala.columns[3] = "readCommentTime";
+    locala.GvH.put("readCommentTime", "INTEGER");
+    localStringBuilder.append(" readCommentTime INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "cacheSize";
-    locala.EYv.put("cacheSize", "INTEGER");
-    localStringBuilder.append(" cacheSize INTEGER");
-    locala.columns[5] = "rowid";
+    locala.columns[4] = "syncCommentTime";
+    locala.GvH.put("syncCommentTime", "INTEGER");
+    localStringBuilder.append(" syncCommentTime INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "commentFlag";
+    locala.GvH.put("commentFlag", "INTEGER");
+    localStringBuilder.append(" commentFlag INTEGER");
+    locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();
     return locala;
   }
@@ -72,11 +79,11 @@ public abstract class fu
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eYs != k) {
+      if (fbG != k) {
         break label65;
       }
       this.field_storyId = paramCursor.getLong(i);
-      this.eYm = true;
+      this.fbA = true;
     }
     for (;;)
     {
@@ -84,14 +91,16 @@ public abstract class fu
       break label20;
       break;
       label65:
-      if (eoZ == k) {
-        this.field_url = paramCursor.getString(i);
-      } else if (etB == k) {
-        this.field_filePath = paramCursor.getString(i);
-      } else if (eDq == k) {
-        this.field_totalSize = paramCursor.getInt(i);
-      } else if (eEG == k) {
-        this.field_cacheSize = paramCursor.getInt(i);
+      if (fbH == k) {
+        this.field_readCommentId = paramCursor.getInt(i);
+      } else if (fbI == k) {
+        this.field_syncCommentId = paramCursor.getInt(i);
+      } else if (fbJ == k) {
+        this.field_readCommentTime = paramCursor.getInt(i);
+      } else if (fbK == k) {
+        this.field_syncCommentTime = paramCursor.getInt(i);
+      } else if (fbL == k) {
+        this.field_commentFlag = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -101,20 +110,23 @@ public abstract class fu
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eYm) {
+    if (this.fbA) {
       localContentValues.put("storyId", Long.valueOf(this.field_storyId));
     }
-    if (this.eoV) {
-      localContentValues.put("url", this.field_url);
+    if (this.fbB) {
+      localContentValues.put("readCommentId", Integer.valueOf(this.field_readCommentId));
     }
-    if (this.ett) {
-      localContentValues.put("filePath", this.field_filePath);
+    if (this.fbC) {
+      localContentValues.put("syncCommentId", Integer.valueOf(this.field_syncCommentId));
     }
-    if (this.eCN) {
-      localContentValues.put("totalSize", Integer.valueOf(this.field_totalSize));
+    if (this.fbD) {
+      localContentValues.put("readCommentTime", Integer.valueOf(this.field_readCommentTime));
     }
-    if (this.eED) {
-      localContentValues.put("cacheSize", Integer.valueOf(this.field_cacheSize));
+    if (this.fbE) {
+      localContentValues.put("syncCommentTime", Integer.valueOf(this.field_syncCommentTime));
+    }
+    if (this.fbF) {
+      localContentValues.put("commentFlag", Integer.valueOf(this.field_commentFlag));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

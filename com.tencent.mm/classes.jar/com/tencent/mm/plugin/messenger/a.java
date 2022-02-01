@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.messenger;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.messenger.a.b;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.ai;
 
 public final class a
   implements b
 {
-  public final String b(af paramaf)
+  public final String b(ai paramai)
   {
     AppMethodBeat.i(90704);
-    paramaf = v.b(paramaf);
+    paramai = v.b(paramai);
     AppMethodBeat.o(90704);
-    return paramaf;
+    return paramai;
   }
   
-  public final String b(af paramaf, String paramString)
+  public final String b(ai paramai, String paramString)
   {
     AppMethodBeat.i(90702);
-    paramaf = v.b(paramaf, paramString);
+    paramai = v.b(paramai, paramString);
     AppMethodBeat.o(90702);
-    return paramaf;
+    return paramai;
   }
   
   public final String getDisplayName(String paramString1, String paramString2)
@@ -32,33 +32,33 @@ public final class a
     return paramString1;
   }
   
-  public final String sg(String paramString)
+  public final String wj(String paramString)
   {
     AppMethodBeat.i(90703);
-    paramString = v.sg(paramString);
+    paramString = v.wj(paramString);
     AppMethodBeat.o(90703);
     return paramString;
   }
   
-  public final String sh(String paramString)
+  public final String wk(String paramString)
   {
     AppMethodBeat.i(90701);
-    paramString = v.sh(paramString);
+    paramString = v.wk(paramString);
     AppMethodBeat.o(90701);
     return paramString;
   }
   
-  public final String sj(String paramString)
+  public final String wm(String paramString)
   {
     AppMethodBeat.i(168685);
-    paramString = v.sj(paramString);
+    paramString = v.wm(paramString);
     AppMethodBeat.o(168685);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.a
  * JD-Core Version:    0.7.0.1
  */

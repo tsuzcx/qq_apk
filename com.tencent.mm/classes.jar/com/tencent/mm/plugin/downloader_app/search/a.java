@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -17,7 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,23 +25,23 @@ import java.util.List;
 public final class a
   extends RecyclerView.a<a>
 {
-  ArrayList<b> hIH;
+  ArrayList<b> ijj;
   private Context mContext;
-  private DownloadSearchListView oik;
+  private DownloadSearchListView oLK;
   
   a(Context paramContext, DownloadSearchListView paramDownloadSearchListView)
   {
     AppMethodBeat.i(8929);
-    this.hIH = new ArrayList();
+    this.ijj = new ArrayList();
     this.mContext = paramContext;
-    this.oik = paramDownloadSearchListView;
+    this.oLK = paramDownloadSearchListView;
     AppMethodBeat.o(8929);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(8931);
-    int i = this.hIH.size();
+    int i = this.ijj.size();
     AppMethodBeat.o(8931);
     return i;
   }
@@ -49,96 +49,96 @@ public final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(8930);
-    paramInt = ((b)this.hIH.get(paramInt)).type;
+    paramInt = ((b)this.ijj.get(paramInt)).type;
     AppMethodBeat.o(8930);
     return paramInt;
   }
   
   public final class a
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
     public View contentView;
-    public TextView hJd;
-    public View oil;
-    public TextView oim;
-    public View oin;
-    public TextView oio;
-    public ImageView oip;
-    public View oiq;
-    public ImageView oir;
-    public Button ois;
-    public LinearLayout oit;
-    public TextView oiu;
+    public TextView ijD;
+    public View oLL;
+    public TextView oLM;
+    public View oLN;
+    public TextView oLO;
+    public ImageView oLP;
+    public View oLQ;
+    public ImageView oLR;
+    public Button oLS;
+    public LinearLayout oLT;
+    public TextView oLU;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(8927);
       this.contentView = paramView;
-      this.oil = this.contentView.findViewById(2131304419);
-      this.oim = ((TextView)this.contentView.findViewById(2131300748));
-      this.oim.setOnClickListener(new View.OnClickListener()
+      this.oLL = this.contentView.findViewById(2131304419);
+      this.oLM = ((TextView)this.contentView.findViewById(2131300748));
+      this.oLM.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(8924);
           paramAnonymousView = a.a(a.this);
           paramAnonymousView.mContext.getSharedPreferences("search_history_href", 0).edit().putString("search_history_list", "").commit();
-          if (paramAnonymousView.oiz != null) {
-            paramAnonymousView.oiz.clear();
+          if (paramAnonymousView.oLZ != null) {
+            paramAnonymousView.oLZ.clear();
           }
           paramAnonymousView.setData(null);
           com.tencent.mm.plugin.downloader_app.b.a.a(13, 1302, 21, 81, "", "", "");
           AppMethodBeat.o(8924);
         }
       });
-      this.oin = this.contentView.findViewById(2131304421);
-      this.oio = ((TextView)this.contentView.findViewById(2131304429));
-      this.oip = ((ImageView)this.contentView.findViewById(2131304409));
-      this.oip.setOnClickListener(new View.OnClickListener()
+      this.oLN = this.contentView.findViewById(2131304421);
+      this.oLO = ((TextView)this.contentView.findViewById(2131304429));
+      this.oLP = ((ImageView)this.contentView.findViewById(2131304409));
+      this.oLP.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(8925);
           paramAnonymousView = (b)paramAnonymousView.getTag();
           DownloadSearchListView localDownloadSearchListView = a.a(a.this);
-          String str = paramAnonymousView.oiJ;
-          if (!bt.isNullOrNil(str))
+          String str = paramAnonymousView.oMj;
+          if (!bs.isNullOrNil(str))
           {
-            b.ak(localDownloadSearchListView.mContext, str);
-            localDownloadSearchListView.oiz = b.eq(localDownloadSearchListView.mContext);
-            localDownloadSearchListView.setData(localDownloadSearchListView.oiz);
+            b.al(localDownloadSearchListView.mContext, str);
+            localDownloadSearchListView.oLZ = b.ey(localDownloadSearchListView.mContext);
+            localDownloadSearchListView.setData(localDownloadSearchListView.oLZ);
           }
           com.tencent.mm.plugin.downloader_app.b.a.a(13, 1302, paramAnonymousView.position, 81, "", "", "");
           AppMethodBeat.o(8925);
         }
       });
-      this.oiq = this.contentView.findViewById(2131304444);
-      this.oir = ((ImageView)this.contentView.findViewById(2131296852));
-      this.ois = ((Button)this.contentView.findViewById(2131301141));
-      this.ois.setOnClickListener(new View.OnClickListener()
+      this.oLQ = this.contentView.findViewById(2131304444);
+      this.oLR = ((ImageView)this.contentView.findViewById(2131296852));
+      this.oLS = ((Button)this.contentView.findViewById(2131301141));
+      this.oLS.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(8926);
           paramAnonymousView = (b)paramAnonymousView.getTag();
-          a.a(a.this).SM(paramAnonymousView.oiJ);
-          if (a.b(a.this).getResources().getString(2131760670).equals(a.a.this.ois.getText().toString()))
+          a.a(a.this).WY(paramAnonymousView.oMj);
+          if (a.b(a.this).getResources().getString(2131760670).equals(a.a.this.oLS.getText().toString()))
           {
             com.tencent.mm.plugin.downloader.i.a.a(a.b(a.this), paramAnonymousView.appId, null);
             com.tencent.mm.plugin.downloader_app.b.a.a(13, 1303, paramAnonymousView.position, 22, paramAnonymousView.appId, "", "");
             AppMethodBeat.o(8926);
             return;
           }
-          if (a.b(a.this).getResources().getString(2131760341).equals(a.a.this.ois.getText().toString()))
+          if (a.b(a.this).getResources().getString(2131760341).equals(a.a.this.oLS.getText().toString()))
           {
-            localObject = d.Sk(paramAnonymousView.appId);
+            localObject = d.Ww(paramAnonymousView.appId);
             if (localObject == null)
             {
               AppMethodBeat.o(8926);
               return;
             }
-            if (i.eK(((com.tencent.mm.plugin.downloader.g.a)localObject).field_filePath))
+            if (i.eA(((com.tencent.mm.plugin.downloader.g.a)localObject).field_filePath))
             {
               com.tencent.mm.plugin.downloader.i.a.a(((com.tencent.mm.plugin.downloader.g.a)localObject).field_downloadId, false, null);
               com.tencent.mm.plugin.downloader_app.b.a.a(13, 1303, paramAnonymousView.position, 44, paramAnonymousView.appId, "", "");
@@ -154,13 +154,13 @@ public final class a
           AppMethodBeat.o(8926);
         }
       });
-      this.hJd = ((TextView)this.contentView.findViewById(2131296866));
-      this.oit = ((LinearLayout)this.contentView.findViewById(2131296877));
-      this.oiu = ((TextView)this.contentView.findViewById(2131296873));
+      this.ijD = ((TextView)this.contentView.findViewById(2131296866));
+      this.oLT = ((LinearLayout)this.contentView.findViewById(2131296877));
+      this.oLU = ((TextView)this.contentView.findViewById(2131296873));
       AppMethodBeat.o(8927);
     }
     
-    static String oE(long paramLong)
+    static String sq(long paramLong)
     {
       AppMethodBeat.i(8928);
       if (paramLong >= 1073741824L)
@@ -185,23 +185,23 @@ public final class a
       AppMethodBeat.i(183809);
       if (paramInt == 2131760341)
       {
-        this.ois.setBackgroundColor(android.support.v4.content.b.n(a.b(a.this), 2131099699));
-        this.ois.setTextColor(android.support.v4.content.b.n(a.b(a.this), 2131101179));
+        this.oLS.setBackgroundColor(android.support.v4.content.b.n(a.b(a.this), 2131099699));
+        this.oLS.setTextColor(android.support.v4.content.b.n(a.b(a.this), 2131101179));
       }
       for (;;)
       {
-        this.ois.setText(paramInt);
+        this.oLS.setText(paramInt);
         AppMethodBeat.o(183809);
         return;
-        this.ois.setBackgroundColor(android.support.v4.content.b.n(a.b(a.this), 2131099655));
-        this.ois.setTextColor(android.support.v4.content.b.n(a.b(a.this), 2131099703));
+        this.oLS.setBackgroundColor(android.support.v4.content.b.n(a.b(a.this), 2131099655));
+        this.oLS.setTextColor(android.support.v4.content.b.n(a.b(a.this), 2131099703));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.search.a
  * JD-Core Version:    0.7.0.1
  */

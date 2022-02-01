@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ccx;
-import com.tencent.mm.protocal.protobuf.ccy;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cia;
+import com.tencent.mm.protocal.protobuf.cib;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class k
   extends n
@@ -19,28 +19,28 @@ public final class k
 {
   private g callback;
   private b rr;
-  public ccx sDa;
-  public ccy sDb;
+  public cia tKI;
+  public cib tKJ;
   
   public k(int paramInt, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(25481);
     this.rr = null;
-    this.sDa = null;
-    this.sDb = null;
+    this.tKI = null;
+    this.tKJ = null;
     this.callback = null;
     b.a locala = new b.a();
-    locala.gUU = new ccx();
-    locala.gUV = new ccy();
+    locala.hvt = new cia();
+    locala.hvu = new cib();
     locala.funcId = 726;
     locala.uri = "/cgi-bin/micromsg-bin/pstnredirect";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    this.sDa = ((ccx)this.rr.gUS.gUX);
-    this.sDa.DdZ = paramInt;
-    this.sDa.Dea = paramLong1;
-    this.sDa.DYX = paramLong2;
+    this.rr = locala.aAz();
+    this.tKI = ((cia)this.rr.hvr.hvw);
+    this.tKI.Exf = paramInt;
+    this.tKI.Exg = paramLong1;
+    this.tKI.FvT = paramLong2;
     AppMethodBeat.o(25481);
   }
   
@@ -61,8 +61,8 @@ public final class k
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25483);
-    ad.i("MicroMsg.NetSceneIPCallRedirect", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.sDb = ((ccy)((b)paramq).gUT.gUX);
+    ac.i("MicroMsg.NetSceneIPCallRedirect", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.tKJ = ((cib)((b)paramq).hvs.hvw);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
@@ -71,7 +71,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.e.k
  * JD-Core Version:    0.7.0.1
  */

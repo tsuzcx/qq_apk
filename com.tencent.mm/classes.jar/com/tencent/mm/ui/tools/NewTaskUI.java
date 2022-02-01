@@ -9,78 +9,78 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.compatible.util.f;
 import com.tencent.mm.model.az;
 import com.tencent.mm.modelsimple.s;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.x;
+import com.tencent.mm.ui.y;
 
 public class NewTaskUI
   extends MMBaseActivity
   implements g
 {
-  static NewTaskUI HsN;
-  private i HsO;
-  private ProgressDialog fpP;
-  private SecurityImage ijd;
-  private c iqt;
+  static NewTaskUI ITk;
+  private i ITl;
+  private ProgressDialog fts;
+  private SecurityImage iJk;
+  private c iQA;
   
   public NewTaskUI()
   {
     AppMethodBeat.i(39115);
-    this.ijd = null;
-    this.HsO = new i();
-    this.fpP = null;
-    this.iqt = new NewTaskUI.1(this);
+    this.iJk = null;
+    this.ITl = new i();
+    this.fts = null;
+    this.iQA = new NewTaskUI.1(this);
     AppMethodBeat.o(39115);
   }
   
-  public static NewTaskUI fdV()
+  public static NewTaskUI ftQ()
   {
-    return HsN;
+    return ITk;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(39116);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.NewTaskUI", "onCreate :%d", new Object[] { Integer.valueOf(hashCode()) });
+    ac.i("MicroMsg.NewTaskUI", "onCreate :%d", new Object[] { Integer.valueOf(hashCode()) });
     setContentView(2131493128);
-    az.aeS().a(701, this);
-    az.aeS().a(252, this);
-    HsN = this;
+    az.agi().a(701, this);
+    az.agi().a(252, this);
+    ITk = this;
     paramBundle = new s(0, "", "", "");
-    az.aeS().a(paramBundle, 0);
+    az.agi().a(paramBundle, 0);
     getString(2131755906);
-    this.fpP = h.b(this, getString(2131760781), true, new NewTaskUI.2(this, paramBundle));
+    this.fts = h.b(this, getString(2131760781), true, new NewTaskUI.2(this, paramBundle));
     AppMethodBeat.o(39116);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(39119);
-    ad.i("MicroMsg.NewTaskUI", "onDestroy :%d", new Object[] { Integer.valueOf(hashCode()) });
-    if (equals(HsN)) {
-      HsN = null;
+    ac.i("MicroMsg.NewTaskUI", "onDestroy :%d", new Object[] { Integer.valueOf(hashCode()) });
+    if (equals(ITk)) {
+      ITk = null;
     }
-    if ((this.fpP != null) && (this.fpP.isShowing())) {
-      this.fpP.dismiss();
+    if ((this.fts != null) && (this.fts.isShowing())) {
+      this.fts.dismiss();
     }
-    if (this.ijd != null) {
-      this.ijd.dismiss();
+    if (this.iJk != null) {
+      this.iJk.dismiss();
     }
-    az.aeS().b(701, this);
-    az.aeS().b(252, this);
+    az.agi().b(701, this);
+    az.agi().b(252, this);
     super.onDestroy();
     AppMethodBeat.o(39119);
   }
@@ -89,14 +89,14 @@ public class NewTaskUI
   {
     AppMethodBeat.i(39118);
     super.onPause();
-    a.ESL.d(this.iqt);
+    a.GpY.d(this.iQA);
     AppMethodBeat.o(39118);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(39117);
-    a.ESL.c(this.iqt);
+    a.GpY.c(this.iQA);
     super.onResume();
     AppMethodBeat.o(39117);
   }
@@ -104,14 +104,14 @@ public class NewTaskUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(39120);
-    ad.i("MicroMsg.NewTaskUI", "onSceneEnd :%d  [%d,%d,%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((this.fpP != null) && (this.fpP.isShowing())) {
-      this.fpP.dismiss();
+    ac.i("MicroMsg.NewTaskUI", "onSceneEnd :%d  [%d,%d,%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if ((this.fts != null) && (this.fts.isShowing())) {
+      this.fts.dismiss();
     }
     if ((paramInt1 == 4) && (paramInt2 == -3))
     {
-      ad.i("MicroMsg.NewTaskUI", "summerauth MM_ERR_PASSWORD need kick out acc ready[%b]", new Object[] { Boolean.valueOf(az.afw()) });
-      if (x.a(HsN, paramInt1, paramInt2, new Intent().setClass(HsN, LauncherUI.class).putExtra("Intro_Switch", true).putExtra("animation_pop_in", true).addFlags(67108864), paramString))
+      ac.i("MicroMsg.NewTaskUI", "summerauth MM_ERR_PASSWORD need kick out acc ready[%b]", new Object[] { Boolean.valueOf(az.agM()) });
+      if (y.a(ITk, paramInt1, paramInt2, new Intent().setClass(ITk, LauncherUI.class).putExtra("Intro_Switch", true).putExtra("animation_pop_in", true).addFlags(67108864), paramString))
       {
         AppMethodBeat.o(39120);
         return;
@@ -119,7 +119,7 @@ public class NewTaskUI
     }
     if ((paramInt1 != 4) || ((paramInt2 != -6) && (paramInt2 != -311) && (paramInt2 != -310)))
     {
-      HsN = null;
+      ITk = null;
       finish();
       AppMethodBeat.o(39120);
       return;
@@ -127,28 +127,28 @@ public class NewTaskUI
     if ((paramn instanceof s))
     {
       paramString = (s)paramn;
-      this.HsO.iss = paramString.getSecCodeType();
-      this.HsO.ijf = paramString.aAL();
-      this.HsO.ijg = paramString.aAK();
-      this.HsO.ijh = paramString.aAM();
-      ad.i("MicroMsg.NewTaskUI", "onSceneEnd dkwt imgSid:" + this.HsO.ijg + " img len" + this.HsO.ijf.length + " " + f.XJ());
+      this.ITl.iSx = paramString.getSecCodeType();
+      this.ITl.iJm = paramString.aHB();
+      this.ITl.iJn = paramString.aHA();
+      this.ITl.iJo = paramString.aHC();
+      ac.i("MicroMsg.NewTaskUI", "onSceneEnd dkwt imgSid:" + this.ITl.iJn + " img len" + this.ITl.iJm.length + " " + f.YG());
     }
-    if (this.ijd == null)
+    if (this.iJk == null)
     {
-      this.ijd = SecurityImage.a.a(this, this.HsO.iss, this.HsO.ijf, this.HsO.ijg, this.HsO.ijh, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
+      this.iJk = SecurityImage.a.a(this, this.ITl.iSx, this.ITl.iJm, this.ITl.iJn, this.ITl.iJo, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
       {
         public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(39112);
-          ad.i("MicroMsg.NewTaskUI", "dkwt dlg imgSid:" + NewTaskUI.a(NewTaskUI.this).ijg + " img len" + NewTaskUI.a(NewTaskUI.this).ijf.length + " " + f.XJ());
+          ac.i("MicroMsg.NewTaskUI", "dkwt dlg imgSid:" + NewTaskUI.a(NewTaskUI.this).iJn + " img len" + NewTaskUI.a(NewTaskUI.this).iJm.length + " " + f.YG());
           if (NewTaskUI.b(NewTaskUI.this) == null)
           {
-            ad.d("MicroMsg.NewTaskUI", "[arthurdan.SecurityImageCrash] fatal error!!! secimg is null!");
+            ac.d("MicroMsg.NewTaskUI", "[arthurdan.SecurityImageCrash] fatal error!!! secimg is null!");
             AppMethodBeat.o(39112);
             return;
           }
-          paramAnonymousDialogInterface = new s(NewTaskUI.a(NewTaskUI.this).iss, NewTaskUI.b(NewTaskUI.this).getSecImgCode(), NewTaskUI.b(NewTaskUI.this).getSecImgSid(), NewTaskUI.b(NewTaskUI.this).getSecImgEncryptKey());
-          az.aeS().a(paramAnonymousDialogInterface, 0);
+          paramAnonymousDialogInterface = new s(NewTaskUI.a(NewTaskUI.this).iSx, NewTaskUI.b(NewTaskUI.this).getSecImgCode(), NewTaskUI.b(NewTaskUI.this).getSecImgSid(), NewTaskUI.b(NewTaskUI.this).getSecImgEncryptKey());
+          az.agi().a(paramAnonymousDialogInterface, 0);
           NewTaskUI localNewTaskUI1 = NewTaskUI.this;
           NewTaskUI localNewTaskUI2 = NewTaskUI.this;
           NewTaskUI.this.getString(2131755906);
@@ -157,7 +157,7 @@ public class NewTaskUI
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(39111);
-              az.aeS().a(paramAnonymousDialogInterface);
+              az.agi().a(paramAnonymousDialogInterface);
               AppMethodBeat.o(39111);
             }
           }));
@@ -168,9 +168,9 @@ public class NewTaskUI
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(39113);
-          if (NewTaskUI.HsN != null)
+          if (NewTaskUI.ITk != null)
           {
-            NewTaskUI.HsN = null;
+            NewTaskUI.ITk = null;
             NewTaskUI.this.finish();
           }
           AppMethodBeat.o(39113);
@@ -183,12 +183,12 @@ public class NewTaskUI
           NewTaskUI.c(NewTaskUI.this);
           AppMethodBeat.o(39114);
         }
-      }, this.HsO);
+      }, this.ITl);
       AppMethodBeat.o(39120);
       return;
     }
-    ad.d("MicroMsg.NewTaskUI", "imgSid:" + this.HsO.ijg + " img len" + this.HsO.ijf.length + " " + f.XJ());
-    this.ijd.b(this.HsO.iss, this.HsO.ijf, this.HsO.ijg, this.HsO.ijh);
+    ac.d("MicroMsg.NewTaskUI", "imgSid:" + this.ITl.iJn + " img len" + this.ITl.iJm.length + " " + f.YG());
+    this.iJk.b(this.ITl.iSx, this.ITl.iJm, this.ITl.iJn, this.ITl.iJo);
     AppMethodBeat.o(39120);
   }
   
@@ -200,7 +200,7 @@ public class NewTaskUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.tools.NewTaskUI
  * JD-Core Version:    0.7.0.1
  */

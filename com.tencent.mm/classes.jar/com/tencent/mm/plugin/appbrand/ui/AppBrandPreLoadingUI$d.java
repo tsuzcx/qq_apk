@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.ui;
 import d.g.a.a;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
 final class AppBrandPreLoadingUI$d
   extends d.g.b.l
   implements a<y>

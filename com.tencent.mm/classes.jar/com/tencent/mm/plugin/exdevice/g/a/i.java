@@ -3,14 +3,16 @@ package com.tencent.mm.plugin.exdevice.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.u;
-import com.tencent.mm.protocal.protobuf.amf;
-import com.tencent.mm.protocal.protobuf.bca;
-import com.tencent.mm.protocal.protobuf.bcb;
-import com.tencent.mm.protocal.protobuf.cxr;
-import com.tencent.mm.protocal.protobuf.dxc;
-import com.tencent.mm.protocal.protobuf.dxd;
-import com.tencent.mm.protocal.protobuf.pq;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.protocal.protobuf.api;
+import com.tencent.mm.protocal.protobuf.bfs;
+import com.tencent.mm.protocal.protobuf.bft;
+import com.tencent.mm.protocal.protobuf.ddd;
+import com.tencent.mm.protocal.protobuf.ect;
+import com.tencent.mm.protocal.protobuf.ecu;
+import com.tencent.mm.protocal.protobuf.px;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.bj;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,34 +20,34 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class i
-  extends com.tencent.mm.plugin.exdevice.b.a<bca, bcb>
+  extends com.tencent.mm.plugin.exdevice.b.a<bfs, bft>
 {
   public String appName;
   public String coverUrl;
-  private final WeakReference<com.tencent.mm.plugin.exdevice.b.b<i>> oTz;
-  public String oXY;
-  public String oXZ;
-  public String oYa;
-  public String oYb;
-  public List<cxr> oYc;
-  public List<dxd> oYd;
-  public dxc oYe;
-  public ArrayList<String> oYf;
-  public List<amf> oYg;
-  public List<pq> oYh;
-  public boolean oYi;
-  public int oYj;
-  public boolean oYk;
+  public String pBj;
+  public String pBk;
+  public String pBl;
+  public String pBm;
+  public List<ddd> pBn;
+  public List<ecu> pBo;
+  public ect pBp;
+  public ArrayList<String> pBq;
+  public List<api> pBr;
+  public List<px> pBs;
+  public boolean pBt;
+  public int pBu;
+  public boolean pBv;
+  private final WeakReference<com.tencent.mm.plugin.exdevice.b.b<i>> pwK;
   public String source;
   public String username;
   
   public i(String paramString1, String paramString2, com.tencent.mm.plugin.exdevice.b.b<i> paramb)
   {
     AppMethodBeat.i(23522);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneGetProfileDetail", "appusername: %s, username: %s", new Object[] { paramString2, paramString1 });
+    ac.d("MicroMsg.NetSceneGetProfileDetail", "appusername: %s, username: %s", new Object[] { paramString2, paramString1 });
     this.username = paramString1;
     this.appName = paramString2;
-    this.oTz = new WeakReference(paramb);
+    this.pwK = new WeakReference(paramb);
     AppMethodBeat.o(23522);
   }
   
@@ -63,62 +65,62 @@ public final class i
   {
     AppMethodBeat.i(23523);
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneGetProfileDetail", "hy: getdetail scene gy end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.d("MicroMsg.NetSceneGetProfileDetail", "hy: getdetail scene gy end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bcb)bxu();
-      this.coverUrl = paramq.DzA;
-      this.oXZ = paramq.oXZ;
-      this.oYd = paramq.DzD;
-      this.oYe = paramq.DzB;
-      this.oYa = paramq.DzF;
+      paramq = (bft)bEq();
+      this.coverUrl = paramq.EUW;
+      this.pBk = paramq.pBk;
+      this.pBo = paramq.EUZ;
+      this.pBp = paramq.EUX;
+      this.pBl = paramq.EVb;
       this.source = paramq.source;
-      this.oYb = paramq.DzG;
-      this.oYc = paramq.Cyc;
-      this.oYi = paramq.oYi;
-      this.oYg = paramq.Cxt;
-      this.oYh = paramq.DzH;
-      this.oYf = new ArrayList();
-      this.oYj = paramq.peJ;
-      this.oYk = paramq.DzI;
-      this.oXY = paramq.oXY;
-      if (paramq.DzE != null) {
-        this.oYf.addAll(paramq.DzE);
+      this.pBm = paramq.EVc;
+      this.pBn = paramq.DQy;
+      this.pBt = paramq.pBt;
+      this.pBr = paramq.DPP;
+      this.pBs = paramq.EVd;
+      this.pBq = new ArrayList();
+      this.pBu = paramq.pHU;
+      this.pBv = paramq.EVe;
+      this.pBj = paramq.pBj;
+      if (paramq.EVa != null) {
+        this.pBq.addAll(paramq.EVa);
       }
-      this.oYc = new LinkedList();
-      if (paramq.Cyc != null) {
-        this.oYc.addAll(paramq.Cyc);
+      this.pBn = new LinkedList();
+      if (paramq.DQy != null) {
+        this.pBn.addAll(paramq.DQy);
       }
       Object localObject1;
-      if ((this.username != null) && (!this.username.equalsIgnoreCase(u.aqG())))
+      if ((this.username != null) && (!this.username.equalsIgnoreCase(u.axw())))
       {
-        if (!this.oYi) {
-          com.tencent.mm.plugin.exdevice.model.ad.bZI().UM(this.username);
+        if (!this.pBt) {
+          ad.cgR().YY(this.username);
         }
       }
       else
       {
-        if (paramq.Cxt == null) {
+        if (paramq.DPP == null) {
           break label564;
         }
         paramArrayOfByte = new ArrayList();
-        localObject1 = paramq.Cxt.iterator();
+        localObject1 = paramq.DPP.iterator();
       }
       for (;;)
       {
         if (!((Iterator)localObject1).hasNext()) {
           break label512;
         }
-        Object localObject2 = (amf)((Iterator)localObject1).next();
-        az.arV();
-        if (com.tencent.mm.model.c.apM().aHT(((amf)localObject2).username))
+        Object localObject2 = (api)((Iterator)localObject1).next();
+        az.ayM();
+        if (com.tencent.mm.model.c.awB().aNo(((api)localObject2).username))
         {
           com.tencent.mm.plugin.exdevice.g.b.a.c localc = new com.tencent.mm.plugin.exdevice.g.b.a.c();
-          localc.field_username = ((amf)localObject2).username;
-          localc.field_step = ((amf)localObject2).jzV;
+          localc.field_username = ((api)localObject2).username;
+          localc.field_step = ((api)localObject2).kar;
           paramArrayOfByte.add(localc);
           continue;
-          paramArrayOfByte = com.tencent.mm.plugin.exdevice.model.ad.bZI();
+          paramArrayOfByte = ad.cgR();
           localObject1 = this.username;
           if (paramArrayOfByte.a(new com.tencent.mm.plugin.exdevice.g.b.b("hardcode_rank_id", "hardcode_app_name", (String)localObject1)) != null) {
             break;
@@ -131,26 +133,26 @@ public final class i
           paramArrayOfByte.insert((com.tencent.mm.sdk.e.c)localObject2);
           break;
         }
-        az.aeS().a(new h(((amf)localObject2).username, null), 0);
+        az.agi().a(new h(((api)localObject2).username, null), 0);
       }
       label512:
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneGetProfileDetail", "follows %d %s", new Object[] { Integer.valueOf(paramArrayOfByte.size()), paramArrayOfByte.toString() });
-      if (u.aqG().equalsIgnoreCase(this.username)) {
-        com.tencent.mm.plugin.exdevice.model.ad.bZI().cT(paramArrayOfByte);
+      ac.d("MicroMsg.NetSceneGetProfileDetail", "follows %d %s", new Object[] { Integer.valueOf(paramArrayOfByte.size()), paramArrayOfByte.toString() });
+      if (u.axw().equalsIgnoreCase(this.username)) {
+        ad.cgR().cV(paramArrayOfByte);
       }
       label564:
-      this.oYh = new ArrayList();
-      if (paramq.DzH != null) {
-        this.oYh.addAll(paramq.DzH);
+      this.pBs = new ArrayList();
+      if (paramq.EVd != null) {
+        this.pBs.addAll(paramq.EVd);
       }
-      this.oYi = paramq.oYi;
+      this.pBt = paramq.pBt;
       paramq = new com.tencent.mm.plugin.exdevice.g.b.a.a();
-      paramq.field_championMotto = this.oXZ;
+      paramq.field_championMotto = this.pBk;
       paramq.field_championUrl = this.coverUrl;
       paramq.field_username = this.username;
-      com.tencent.mm.plugin.exdevice.model.ad.bZK().a(paramq);
+      ad.cgT().a(paramq);
     }
-    paramq = (com.tencent.mm.plugin.exdevice.b.b)this.oTz.get();
+    paramq = (com.tencent.mm.plugin.exdevice.b.b)this.pwK.get();
     if (paramq != null) {
       paramq.a(paramInt2, paramInt3, paramString, this);
     }

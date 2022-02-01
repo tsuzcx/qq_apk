@@ -3,7 +3,7 @@ package com.tencent.e.i;
 public abstract interface j
   extends h
 {
-  public abstract boolean adf();
+  public abstract boolean aev();
 }
 
 

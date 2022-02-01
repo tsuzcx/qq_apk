@@ -5,27 +5,27 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.config.u;
 import com.tencent.mm.plugin.appbrand.task.f;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 @Deprecated
 public final class n
   extends com.tencent.mm.sdk.e.j<m>
 {
-  public static final String[] gLs;
-  private final e iMV;
+  public static final String[] hlS;
+  private final e jnc;
   
   static
   {
     AppMethodBeat.i(44511);
-    gLs = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(m.iMP, "AppBrandLocalUsageRecord") };
+    hlS = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(m.jmW, "AppBrandLocalUsageRecord") };
     AppMethodBeat.o(44511);
   }
   
   public n(e parame)
   {
-    super(parame, m.iMP, "AppBrandLocalUsageRecord", m.INDEX_CREATE);
-    this.iMV = parame;
+    super(parame, m.jmW, "AppBrandLocalUsageRecord", m.INDEX_CREATE);
+    this.jnc = parame;
   }
   
   private boolean a(m paramm, boolean paramBoolean, String... paramVarArgs)
@@ -52,11 +52,11 @@ public final class n
     return false;
   }
   
-  public final boolean a(String paramString, int paramInt, a parama)
+  public final boolean a(String paramString, int paramInt, n.a parama)
   {
     AppMethodBeat.i(44507);
-    ad.i("MicroMsg.AppBrandLocalUsageStorage", "addUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
-    if (bt.isNullOrNil(paramString))
+    ac.i("MicroMsg.AppBrandLocalUsageStorage", "addUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44507);
       return false;
@@ -64,9 +64,9 @@ public final class n
     parama = new m();
     parama.field_username = paramString;
     parama.field_versionType = paramInt;
-    if (super.get(parama, m.iLd))
+    if (super.get(parama, m.jlk))
     {
-      parama.field_updateTime = bt.aGK();
+      parama.field_updateTime = bs.aNx();
       bool = super.update(parama.systemRowid, parama, false);
       if (bool) {
         doNotify("single", 3, null);
@@ -74,25 +74,25 @@ public final class n
       AppMethodBeat.o(44507);
       return bool;
     }
-    parama.field_updateTime = bt.aGK();
+    parama.field_updateTime = bs.aNx();
     super.insertNotify(parama, false);
-    boolean bool = super.get(parama, m.iLd);
+    boolean bool = super.get(parama, m.jlk);
     if (bool)
     {
-      paramInt = AppBrandGlobalSystemConfig.aTv().jcu;
+      paramInt = AppBrandGlobalSystemConfig.bat().jCH;
       paramString = "delete from AppBrandLocalUsageRecord where rowid not in ( select rowid from AppBrandLocalUsageRecord order by updateTime desc  limit " + paramInt + " offset 0)";
-      this.iMV.execSQL("AppBrandLocalUsageRecord", paramString);
+      this.jnc.execSQL("AppBrandLocalUsageRecord", paramString);
       doNotify("single", 2, null);
     }
     AppMethodBeat.o(44507);
     return bool;
   }
   
-  final boolean b(String paramString, int paramInt, a parama)
+  final boolean b(String paramString, int paramInt, n.a parama)
   {
     AppMethodBeat.i(44508);
-    ad.i("MicroMsg.AppBrandLocalUsageStorage", "removeUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
-    if (bt.isNullOrNil(paramString))
+    ac.i("MicroMsg.AppBrandLocalUsageStorage", "removeUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44508);
       return false;
@@ -100,37 +100,23 @@ public final class n
     m localm = new m();
     localm.field_username = paramString;
     localm.field_versionType = paramInt;
-    boolean bool = a(localm, false, m.iLd);
+    boolean bool = a(localm, false, m.jlk);
     if (bool) {
       doNotify("single", 5, null);
     }
-    if ((bool) && (a.iUA == parama)) {
-      com.tencent.mm.plugin.appbrand.app.j.aOI().bb(paramString, paramInt);
+    if ((bool) && (n.a.juQ == parama)) {
+      com.tencent.mm.plugin.appbrand.app.j.aVA().bf(paramString, paramInt);
     }
-    if ((bool) && (a.iUA == parama)) {
-      f.bQ(u.Gh(paramString), paramInt);
+    if ((bool) && (n.a.juQ == parama)) {
+      f.bV(u.Kl(paramString), paramInt);
     }
     AppMethodBeat.o(44508);
     return bool;
   }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(44506);
-      iUA = new a("CHATTING", 0);
-      iUB = new a("USAGE_LIST", 1);
-      iUC = new a[] { iUA, iUB };
-      AppMethodBeat.o(44506);
-    }
-    
-    private a() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.n
  * JD-Core Version:    0.7.0.1
  */

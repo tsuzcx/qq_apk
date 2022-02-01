@@ -11,22 +11,22 @@ import com.tencent.mm.plugin.appbrand.debugger.n;
 import com.tencent.mm.plugin.appbrand.debugger.u;
 import com.tencent.mm.plugin.appbrand.debugger.v;
 import com.tencent.mm.plugin.appbrand.jsapi.cg;
-import com.tencent.mm.protocal.protobuf.dnz;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dtq;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public class h<SERVICE extends c>
   extends e<SERVICE>
   implements com.tencent.mm.plugin.appbrand.debugger.i
 {
-  public static final b.a chL;
-  private n ccI;
-  private l chM;
+  public static final b.a ceG;
+  private n bZF;
+  private l ceH;
   
   static
   {
     AppMethodBeat.i(146863);
-    chL = new a((byte)0);
+    ceG = new a((byte)0);
     AppMethodBeat.o(146863);
   }
   
@@ -38,79 +38,79 @@ public class h<SERVICE extends c>
     AppMethodBeat.o(146856);
   }
   
-  public final String BF()
+  protected final void BE()
+  {
+    AppMethodBeat.i(146860);
+    Dj();
+    AppMethodBeat.o(146860);
+  }
+  
+  protected final void BF() {}
+  
+  public final String Bj()
   {
     AppMethodBeat.i(146855);
-    Object localObject = ((c)Dj()).DL();
-    String str = ((c)Dj()).Dl().getAppConfig().jbB;
+    Object localObject = ((c)CM()).Do();
+    String str = ((c)CM()).CO().getAppConfig().jBO;
     localObject = String.format("var __wxConfig = %s;\nvar __wxIndexPage = \"%s\"", new Object[] { ((JSONObject)localObject).toString(), str });
     AppMethodBeat.o(146855);
     return localObject;
   }
   
-  public final boolean BH()
+  public final boolean Bl()
   {
     return false;
   }
   
-  protected final com.tencent.mm.plugin.appbrand.jsruntime.i BI()
+  protected final com.tencent.mm.plugin.appbrand.jsruntime.i Bm()
   {
     AppMethodBeat.i(146857);
-    this.ccI = new n();
-    n localn = this.ccI;
+    this.bZF = new n();
+    n localn = this.bZF;
     AppMethodBeat.o(146857);
     return localn;
   }
   
-  public final void BU()
+  public final void By()
   {
     AppMethodBeat.i(146859);
-    super.BU();
-    this.ccI.jgW.bringToFront();
+    super.By();
+    this.bZF.jHl.bringToFront();
     AppMethodBeat.o(146859);
   }
   
-  protected final void Ca()
+  public final void bX(String paramString)
   {
-    AppMethodBeat.i(146860);
-    DG();
-    AppMethodBeat.o(146860);
+    AppMethodBeat.i(146854);
+    ac.d("Luggage.MPRemoteDebugServiceLogic", "RemoteDebugInfo %s", new Object[] { paramString });
+    dtq localdtq = new dtq();
+    localdtq.GbL = ((c)CM()).Dn().aUT();
+    localdtq.GbK = paramString;
+    paramString = u.a(localdtq, this.ceH, "domEvent");
+    this.bZF.a(paramString);
+    AppMethodBeat.o(146854);
   }
   
-  protected final void Cb() {}
+  protected final void bY(String paramString) {}
   
   protected final void c(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(146858);
-    ((c)Dj()).aXB();
-    if (u.jhw != null)
+    ((c)CM()).bey();
+    if (u.jHL != null)
     {
-      this.chM = u.jhw;
-      u.jhw = null;
+      this.ceH = u.jHL;
+      u.jHL = null;
     }
     for (;;)
     {
-      this.chM.a((c)Dj(), ((c)Dj()).Dl().DZ().extInfo);
-      this.ccI.a(this.chM);
+      this.ceH.a((c)CM(), ((c)CM()).CO().DC().extInfo);
+      this.bZF.a(this.ceH);
       AppMethodBeat.o(146858);
       return;
-      this.chM = new l();
+      this.ceH = new l();
     }
   }
-  
-  public final void ch(String paramString)
-  {
-    AppMethodBeat.i(146854);
-    ad.d("Luggage.MPRemoteDebugServiceLogic", "RemoteDebugInfo %s", new Object[] { paramString });
-    dnz localdnz = new dnz();
-    localdnz.EEy = ((c)Dj()).DK().aOd();
-    localdnz.EEx = paramString;
-    paramString = u.a(localdnz, this.chM, "domEvent");
-    this.ccI.a(paramString);
-    AppMethodBeat.o(146854);
-  }
-  
-  protected final void ci(String paramString) {}
   
   public final boolean d(String paramString1, String paramString2, int paramInt)
   {
@@ -119,9 +119,9 @@ public class h<SERVICE extends c>
     if (TextUtils.isEmpty(paramString2)) {
       str = "{}";
     }
-    ad.d("Luggage.MPRemoteDebugServiceLogic", "dispatch, event: %s, data size: %s, srcId: %d", new Object[] { paramString1, Integer.valueOf(str.length()), Integer.valueOf(paramInt) });
-    this.ccI.jgR = paramString1;
-    n localn = this.ccI;
+    ac.d("Luggage.MPRemoteDebugServiceLogic", "dispatch, event: %s, data size: %s, srcId: %d", new Object[] { paramString1, Integer.valueOf(str.length()), Integer.valueOf(paramInt) });
+    this.bZF.jHg = paramString1;
+    n localn = this.bZF;
     paramString2 = str;
     if (TextUtils.isEmpty(str)) {
       paramString2 = "{}";
@@ -129,7 +129,7 @@ public class h<SERVICE extends c>
     if (paramInt == 0) {}
     for (str = "undefined";; str = String.valueOf(paramInt))
     {
-      localn.evaluateJavascript(String.format("typeof %s !== 'undefined' && %s.subscribeHandler(\"%s\", %s, %s, %s)", new Object[] { "WeixinJSBridge", "WeixinJSBridge", paramString1, paramString2, str, cg.aek() }), null);
+      localn.evaluateJavascript(String.format("typeof %s !== 'undefined' && %s.subscribeHandler(\"%s\", %s, %s, %s)", new Object[] { "WeixinJSBridge", "WeixinJSBridge", paramString1, paramString2, str, cg.afA() }), null);
       AppMethodBeat.o(146862);
       return true;
     }
@@ -142,7 +142,7 @@ public class h<SERVICE extends c>
     if (TextUtils.isEmpty(paramString)) {
       str = "{}";
     }
-    this.ccI.W(paramInt, str);
+    this.bZF.X(paramInt, str);
     AppMethodBeat.o(146861);
     return true;
   }
@@ -153,7 +153,7 @@ public class h<SERVICE extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.h
  * JD-Core Version:    0.7.0.1
  */

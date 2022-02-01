@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class em
   extends b
 {
-  public a dgT;
-  public b dgU;
+  public a den;
   
   public em()
   {
@@ -16,24 +15,16 @@ public final class em
   
   private em(byte paramByte)
   {
-    AppMethodBeat.i(116004);
-    this.dgT = new a();
-    this.dgU = new b();
-    this.ESR = false;
+    AppMethodBeat.i(116003);
+    this.den = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116004);
+    AppMethodBeat.o(116003);
   }
   
   public static final class a
   {
-    public String dfM;
-    public boolean dfN = false;
-    public int dgV = -1;
-  }
-  
-  public static final class b
-  {
-    public boolean dfO;
+    public boolean ddi = false;
   }
 }
 

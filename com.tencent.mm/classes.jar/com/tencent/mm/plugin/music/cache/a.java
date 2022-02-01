@@ -1,60 +1,43 @@
 package com.tencent.mm.plugin.music.cache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
 {
-  public int LZ;
+  public int MW;
   private byte[] buffer;
   public int mSize;
-  public com.tencent.mm.plugin.music.g.a.a tVk;
-  public d tVl;
-  public h tVm;
-  public int tVn;
-  public int tVo;
+  public com.tencent.mm.plugin.music.g.a.a vdS;
+  public d vdT;
+  public h vdU;
+  public int vdV;
+  public int vdW;
   
   public a(com.tencent.mm.plugin.music.g.a.a parama)
   {
     AppMethodBeat.i(137148);
     this.buffer = new byte[81920];
-    this.LZ = -1;
+    this.MW = -1;
     this.mSize = 0;
-    this.tVn = -1;
-    this.tVo = 0;
-    this.tVk = parama;
+    this.vdV = -1;
+    this.vdW = 0;
+    this.vdS = parama;
     AppMethodBeat.o(137148);
   }
   
-  public final void HA(int paramInt)
-  {
-    try
-    {
-      this.tVn = this.LZ;
-      this.tVo = this.mSize;
-      this.LZ = paramInt;
-      this.mSize = 0;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   /* Error */
-  public final boolean Hy(int paramInt)
+  public final boolean Jx(int paramInt)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:LZ	I
+    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:MW	I
     //   6: iload_1
     //   7: if_icmpgt +22 -> 29
     //   10: aload_0
-    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:LZ	I
+    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:MW	I
     //   14: istore_2
     //   15: iload_1
     //   16: iload_2
@@ -88,17 +71,17 @@ public final class a
   }
   
   /* Error */
-  public final boolean Hz(int paramInt)
+  public final boolean Jy(int paramInt)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:LZ	I
+    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:MW	I
     //   6: iload_1
     //   7: if_icmpgt +28 -> 35
     //   10: aload_0
-    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:LZ	I
+    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:MW	I
     //   14: istore_2
     //   15: aload_0
     //   16: getfield 36	com/tencent/mm/plugin/music/cache/a:mSize	I
@@ -135,7 +118,24 @@ public final class a
     //   2	20	41	finally
   }
   
-  public final boolean cUA()
+  public final void Jz(int paramInt)
+  {
+    try
+    {
+      this.vdV = this.MW;
+      this.vdW = this.mSize;
+      this.MW = paramInt;
+      this.mSize = 0;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean dig()
   {
     int j = 0;
     boolean bool = false;
@@ -152,27 +152,27 @@ public final class a
       try
       {
         AppMethodBeat.i(137149);
-        if ((this.LZ < 0) || (this.mSize <= 0))
+        if ((this.MW < 0) || (this.mSize <= 0))
         {
-          ad.e("MicroMsg.Music.FileBytesCacheMgr", "flushBufferAll(), mOffset:%d, mSize:%d", new Object[] { Integer.valueOf(this.LZ), Integer.valueOf(this.mSize) });
+          ac.e("MicroMsg.Music.FileBytesCacheMgr", "flushBufferAll(), mOffset:%d, mSize:%d", new Object[] { Integer.valueOf(this.MW), Integer.valueOf(this.mSize) });
           AppMethodBeat.o(137149);
           return bool;
         }
         byte[] arrayOfByte = new byte[this.mSize];
         System.arraycopy(this.buffer, 0, arrayOfByte, 0, this.mSize);
-        this.tVm.a(arrayOfByte, this.LZ, this.mSize);
-        locald = this.tVl;
-        m = this.LZ;
+        this.vdU.a(arrayOfByte, this.MW, this.mSize);
+        locald = this.vdT;
+        m = this.MW;
         i = this.mSize;
-        if ((m < 0) || (i < 0) || (m > locald.hWY) || (m + i > locald.hWY))
+        if ((m < 0) || (i < 0) || (m > locald.ixc) || (m + i > locald.ixc))
         {
-          ad.i("MicroMsg.Music.IndexBitMgr", "getWriteBuffIndexRange offset %d, size %d, fileLength %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Long.valueOf(locald.hWY) });
-          ad.e("MicroMsg.Music.IndexBitMgr", "getWriteBuffRange invalid parameter!");
+          ac.i("MicroMsg.Music.IndexBitMgr", "getWriteBuffIndexRange offset %d, size %d, fileLength %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Long.valueOf(locald.ixc) });
+          ac.e("MicroMsg.Music.IndexBitMgr", "getWriteBuffRange invalid parameter!");
           arrayOfByte = null;
           if (arrayOfByte != null) {
             break label617;
           }
-          ad.e("MicroMsg.Music.FileBytesCacheMgr", "flushBufferAll, range is null");
+          ac.e("MicroMsg.Music.FileBytesCacheMgr", "flushBufferAll, range is null");
           AppMethodBeat.o(137149);
           continue;
         }
@@ -187,26 +187,26 @@ public final class a
       i = k;
       break;
       label278:
-      if (n != locald.hWY) {
+      if (n != locald.ixc) {
         break label614;
       }
       if ((i1 != 0) || (m != 0)) {
         break label595;
       }
       label303:
-      ad.i("MicroMsg.Music.IndexBitMgr", "write to file end!");
+      ac.i("MicroMsg.Music.IndexBitMgr", "write to file end!");
       arrayOfInt[0] = k;
       arrayOfInt[1] = i1;
       break label614;
       label324:
-      ad.d("MicroMsg.Music.FileBytesCacheMgr", "flushBufferAll range[0]:%d, range[1]:%d", new Object[] { Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]) });
+      ac.d("MicroMsg.Music.FileBytesCacheMgr", "flushBufferAll range[0]:%d, range[1]:%d", new Object[] { Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]) });
       AppMethodBeat.o(137149);
     }
     for (;;)
     {
       if (i <= arrayOfInt[1])
       {
-        this.tVl.HD(i);
+        this.vdT.JC(i);
         i += 1;
       }
       else
@@ -217,18 +217,18 @@ public final class a
         {
           k -= 1;
           i = j;
-          if (!this.tVl.HC(k))
+          if (!this.vdT.JB(k))
           {
             i = j;
-            if (this.tVn + this.tVo == this.LZ)
+            if (this.vdV + this.vdW == this.MW)
             {
               i = j;
               if (this.mSize > 0)
               {
                 i = j;
-                if (this.tVo >= 8192)
+                if (this.vdW >= 8192)
                 {
-                  ad.i("MicroMsg.Music.FileBytesCacheMgr", "isCanSavePreviousIndex, save index :%d", new Object[] { Integer.valueOf(k) });
+                  ac.i("MicroMsg.Music.FileBytesCacheMgr", "isCanSavePreviousIndex, save index :%d", new Object[] { Integer.valueOf(k) });
                   i = 1;
                 }
               }
@@ -236,9 +236,9 @@ public final class a
           }
         }
         if (i != 0) {
-          this.tVl.HD(arrayOfInt[0] - 1);
+          this.vdT.JC(arrayOfInt[0] - 1);
         }
-        this.tVl.cUH();
+        this.vdT.din();
         AppMethodBeat.o(137149);
         bool = true;
         break;
@@ -277,12 +277,12 @@ public final class a
     }
   }
   
-  public final void f(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public final void g(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     try
     {
       AppMethodBeat.i(137151);
-      paramInt2 -= this.LZ;
+      paramInt2 -= this.MW;
       this.mSize = (paramInt2 + paramInt3);
       System.arraycopy(paramArrayOfByte, paramInt1, this.buffer, paramInt2, paramInt3);
       AppMethodBeat.o(137151);
@@ -295,12 +295,12 @@ public final class a
     }
   }
   
-  public final void y(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void x(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     try
     {
       AppMethodBeat.i(137150);
-      paramInt1 -= this.LZ;
+      paramInt1 -= this.MW;
       this.mSize = (paramInt1 + paramInt2);
       System.arraycopy(paramArrayOfByte, 0, this.buffer, paramInt1, paramInt2);
       AppMethodBeat.o(137150);
@@ -315,7 +315,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.cache.a
  * JD-Core Version:    0.7.0.1
  */

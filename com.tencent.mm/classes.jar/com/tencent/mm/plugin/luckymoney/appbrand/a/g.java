@@ -2,47 +2,47 @@ package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.LinkedList;
 import java.util.List;
 
 public enum g
 {
-  public int sYe;
-  public double sYf;
-  public double sYg;
-  public double sYh;
-  public double sYi;
-  public String sYj;
-  public String sYk;
-  private List<Object> sYl;
+  public int ugs;
+  public double ugt;
+  public double ugu;
+  public double ugv;
+  public double ugw;
+  public String ugx;
+  public String ugy;
+  private List<Object> ugz;
   
   static
   {
     AppMethodBeat.i(64886);
-    sYd = new g("GLOBAL");
-    sYm = new g[] { sYd };
+    ugr = new g("GLOBAL");
+    ugA = new g[] { ugr };
     AppMethodBeat.o(64886);
   }
   
   private g()
   {
     AppMethodBeat.i(64884);
-    this.sYe = 100;
-    this.sYf = 200.0D;
-    this.sYg = 0.01D;
-    this.sYh = 2000.0D;
-    this.sYi = 200.0D;
-    this.sYj = "¥";
-    this.sYk = aj.getContext().getString(2131760830);
-    this.sYl = new LinkedList();
+    this.ugs = 100;
+    this.ugt = 200.0D;
+    this.ugu = 0.01D;
+    this.ugv = 2000.0D;
+    this.ugw = 200.0D;
+    this.ugx = "¥";
+    this.ugy = ai.getContext().getString(2131760830);
+    this.ugz = new LinkedList();
     AppMethodBeat.o(64884);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(64885);
-    String str = "WxaLuckyMoneyConfig{maxTotalNum=" + this.sYe + ", perPersonMaxValue=" + this.sYf + ", perMinValue=" + this.sYg + ", maxTotalAmount=" + this.sYh + ", mListener=" + this.sYl + '}';
+    String str = "WxaLuckyMoneyConfig{maxTotalNum=" + this.ugs + ", perPersonMaxValue=" + this.ugt + ", perMinValue=" + this.ugu + ", maxTotalAmount=" + this.ugv + ", mListener=" + this.ugz + '}';
     AppMethodBeat.o(64885);
     return str;
   }

@@ -5,14 +5,14 @@ import java.util.Arrays;
 
 public final class g
 {
-  private int aFj;
-  public final f[] bwn;
+  private int aFZ;
+  public final f[] bum;
   public final int length;
   
   public g(f... paramVarArgs)
   {
     AppMethodBeat.i(92949);
-    this.bwn = paramVarArgs;
+    this.bum = paramVarArgs;
     this.length = paramVarArgs.length;
     AppMethodBeat.o(92949);
   }
@@ -31,7 +31,7 @@ public final class g
       return false;
     }
     paramObject = (g)paramObject;
-    boolean bool = Arrays.equals(this.bwn, paramObject.bwn);
+    boolean bool = Arrays.equals(this.bum, paramObject.bum);
     AppMethodBeat.o(92952);
     return bool;
   }
@@ -39,18 +39,18 @@ public final class g
   public final int hashCode()
   {
     AppMethodBeat.i(92951);
-    if (this.aFj == 0) {
-      this.aFj = (Arrays.hashCode(this.bwn) + 527);
+    if (this.aFZ == 0) {
+      this.aFZ = (Arrays.hashCode(this.bum) + 527);
     }
-    int i = this.aFj;
+    int i = this.aFZ;
     AppMethodBeat.o(92951);
     return i;
   }
   
-  public final f[] vd()
+  public final f[] uX()
   {
     AppMethodBeat.i(92950);
-    f[] arrayOff = (f[])this.bwn.clone();
+    f[] arrayOff = (f[])this.bum.clone();
     AppMethodBeat.o(92950);
     return arrayOff;
   }

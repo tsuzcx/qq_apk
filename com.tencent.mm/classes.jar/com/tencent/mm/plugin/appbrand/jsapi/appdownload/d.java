@@ -18,7 +18,7 @@ public final class d
   public static void l(q paramq)
   {
     AppMethodBeat.i(45742);
-    if (jAv.containsKey(paramq.getAppId()))
+    if (kaR.containsKey(paramq.getAppId()))
     {
       AppMethodBeat.o(45742);
       return;

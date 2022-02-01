@@ -74,6 +74,10 @@ if (typeof wx !== 'undefined') {
         _onMethod('onUpdateChannelFeeds', callback);
       };
 
+      var _onGetRecentUsageListResult = function (callback) {
+         _onMethod('onGetRecentUsageListResult', callback);
+      };
+
       var _saveSplashScreenshot = function(args) {
         _invokeMethod("saveSplashScreenshot", args)
       }
@@ -83,6 +87,14 @@ if (typeof wx !== 'undefined') {
 
       var _removeSplashScreenshot = function(args) {
         _invokeMethod("removeSplashScreenshot", args)
+      }
+
+      var _getRecentUsageList = function(args) {
+         _invokeMethod("getRecentUsageList", args)
+      }
+
+      var _operateRecentUsageList = function(args) {
+         _invokeMethod("operateRecentUsageList", args)
       }
 
       /**** Add JsApi Here ****/
@@ -100,13 +112,17 @@ if (typeof wx !== 'undefined') {
         hideSplashScreenshot : _hideSplashScreenshot,
         removeSplashScreenshot : _removeSplashScreenshot,
         handleMPChannelAction : _handleMPChannelAction,
-        openWebViewUseFastLoad : _openWebViewUseFastLoad
+        openWebViewUseFastLoad : _openWebViewUseFastLoad,
+        getRecentUsageList: _getRecentUsageList,
+        operateRecentUsageList: _operateRecentUsageList
+
       };
       /**** Add JsApiEvent Here ****/
 
       var eventList = {
         onWxNativeEvent: _onWxNativeEvent,
-        onUpdateChannelFeedsEvent: _onUpdateChannelFeedsEvent
+        onUpdateChannelFeedsEvent: _onUpdateChannelFeedsEvent,
+        onGetRecentUsageListResult: _onGetRecentUsageListResult
       };
       /**** canIUse ****/
 

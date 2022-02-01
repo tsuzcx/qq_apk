@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: 微信-7.0.15-1680-3454.apk
+apkFileName: 微信-7.0.16-1700-3454.apk
 compressionType: false
 doNotCompress:
 - png
@@ -19,7 +19,7 @@ doNotCompress:
 - jpg
 - assets/fts/feature/version.info
 - mp3
-- assets/tencentmap/tms_ps/tms_module/6ac3e2c317b4f594a262802327da5b6f
+- assets/tencentmap/tms_ps/tms_module/cbcdc3e1ae93dd03306cadacd828682c
 - assets/wxa_library/develop/DEVELOP
 - assets/wxa_library/local/LOCAL
 - assets/xlab/version.txt
@@ -40,5 +40,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1680'
-  versionName: 7.0.15
+  versionCode: '1700'
+  versionName: 7.0.16

@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.chm;
+import com.tencent.mm.protocal.protobuf.cmp;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "", "()V", "fakeRecommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getFakeRecommendCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "setFakeRecommendCard", "(Lcom/tencent/mm/protocal/protobuf/RecommendCard;)V", "copyMockData", "", "mockData", "mock", "Ljava/util/LinkedList;", "pageNum", "", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "", "()V", "fakeRecommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getFakeRecommendCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "setFakeRecommendCard", "(Lcom/tencent/mm/protocal/protobuf/RecommendCard;)V", "copyMockData", "", "mockData", "mock", "Ljava/util/LinkedList;", "pageNum", "", "plugin-appbrand-integration_release"})
 public final class k
 {
-  chm iXh;
+  cmp jxx;
   
   public k()
   {
     AppMethodBeat.i(50332);
-    this.iXh = new chm();
+    this.jxx = new cmp();
     AppMethodBeat.o(50332);
   }
   
-  final void a(chm paramchm)
+  final void a(cmp paramcmp)
   {
-    paramchm.DHP = this.iXh.DHP;
-    paramchm.lpv = this.iXh.lpv;
-    paramchm.lpx = this.iXh.lpx;
-    paramchm.EcW = this.iXh.EcW;
-    paramchm.odv = "####客户端mock数据####商品";
-    paramchm.lpy = this.iXh.lpy;
-    paramchm.EcY = this.iXh.EcY;
-    paramchm.EcX = this.iXh.EcX;
-    paramchm.EcU = this.iXh.EcU;
-    paramchm.score = this.iXh.score;
-    paramchm.lpz = this.iXh.lpz;
-    paramchm.EcZ = this.iXh.EcZ;
+    paramcmp.Fdk = this.jxx.Fdk;
+    paramcmp.lRr = this.jxx.lRr;
+    paramcmp.lRt = this.jxx.lRt;
+    paramcmp.FzR = this.jxx.FzR;
+    paramcmp.oGU = "####客户端mock数据####商品";
+    paramcmp.lRu = this.jxx.lRu;
+    paramcmp.FzT = this.jxx.FzT;
+    paramcmp.FzS = this.jxx.FzS;
+    paramcmp.FzP = this.jxx.FzP;
+    paramcmp.score = this.jxx.score;
+    paramcmp.lRv = this.jxx.lRv;
+    paramcmp.FzU = this.jxx.FzU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.k
  * JD-Core Version:    0.7.0.1
  */

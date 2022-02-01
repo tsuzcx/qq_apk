@@ -14,11 +14,11 @@ public class IPCSetCurrentPaySpeech
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCSetCurrentPaySpeechParam> CREATOR;
-    private boolean kdA;
-    private String kdB;
-    private String kdx;
-    private String kdy;
-    private String kdz;
+    private String kEk;
+    private String kEl;
+    private String kEm;
+    private boolean kEn;
+    private String kEo;
     
     static
     {
@@ -32,14 +32,14 @@ public class IPCSetCurrentPaySpeech
     protected IPCSetCurrentPaySpeechParam(Parcel paramParcel)
     {
       AppMethodBeat.i(46654);
-      this.kdx = paramParcel.readString();
-      this.kdy = paramParcel.readString();
-      this.kdz = paramParcel.readString();
+      this.kEk = paramParcel.readString();
+      this.kEl = paramParcel.readString();
+      this.kEm = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.kdA = bool;
-        this.kdB = paramParcel.readString();
+        this.kEn = bool;
+        this.kEo = paramParcel.readString();
         AppMethodBeat.o(46654);
         return;
       }
@@ -47,11 +47,11 @@ public class IPCSetCurrentPaySpeech
     
     public IPCSetCurrentPaySpeechParam(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
     {
-      this.kdx = paramString1;
-      this.kdy = paramString2;
-      this.kdz = paramString3;
-      this.kdA = paramBoolean;
-      this.kdB = paramString4;
+      this.kEk = paramString1;
+      this.kEl = paramString2;
+      this.kEm = paramString3;
+      this.kEn = paramBoolean;
+      this.kEo = paramString4;
     }
     
     public final int describeContents()
@@ -62,14 +62,14 @@ public class IPCSetCurrentPaySpeech
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(46653);
-      paramParcel.writeString(this.kdx);
-      paramParcel.writeString(this.kdy);
-      paramParcel.writeString(this.kdz);
-      if (this.kdA) {}
+      paramParcel.writeString(this.kEk);
+      paramParcel.writeString(this.kEl);
+      paramParcel.writeString(this.kEm);
+      if (this.kEn) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeString(this.kdB);
+        paramParcel.writeString(this.kEo);
         AppMethodBeat.o(46653);
         return;
       }

@@ -8,19 +8,19 @@ import com.tencent.mm.plugin.game.model.w;
 public abstract interface e
   extends a
 {
-  public abstract s cBd();
+  public abstract s cOm();
   
-  public abstract w cBe();
+  public abstract w cOn();
   
-  public abstract com.tencent.mm.plugin.game.model.a.g cBf();
+  public abstract com.tencent.mm.plugin.game.model.a.g cOo();
   
-  public abstract com.tencent.mm.plugin.game.media.g cBg();
+  public abstract com.tencent.mm.plugin.game.media.g cOp();
   
-  public abstract d cBh();
+  public abstract d cOq();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.api.e
  * JD-Core Version:    0.7.0.1
  */

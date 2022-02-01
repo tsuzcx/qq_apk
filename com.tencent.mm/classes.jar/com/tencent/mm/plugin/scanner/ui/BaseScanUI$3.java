@@ -27,10 +27,10 @@ final class BaseScanUI$3
       return;
       paramMenuItem = new Intent();
       paramMenuItem.putExtra("preview_ui_title", 2131762877);
-      q.c(this.vRt, 4660, paramMenuItem);
+      q.c(this.xce, 4660, paramMenuItem);
       AppMethodBeat.o(169961);
       return;
-      paramMenuItem = this.vRt;
+      paramMenuItem = this.xce;
       Intent localIntent1 = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
       localIntent1.putExtra("android.intent.extra.shortcut.NAME", paramMenuItem.getString(2131759095));
       localIntent1.putExtra("duplicate", false);
@@ -42,13 +42,13 @@ final class BaseScanUI$3
       localIntent1.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(paramMenuItem, 2131233901));
       localIntent1.putExtra("shortcut_icon_resource_id", 2131233901);
       b.o(paramMenuItem, localIntent1);
-      h.vKh.f(11410, new Object[0]);
+      h.wUl.f(11410, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.BaseScanUI.3
  * JD-Core Version:    0.7.0.1
  */

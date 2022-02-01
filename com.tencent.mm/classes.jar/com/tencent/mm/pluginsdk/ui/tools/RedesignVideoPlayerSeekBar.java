@@ -11,10 +11,10 @@ import com.tencent.mm.ui.am;
 public class RedesignVideoPlayerSeekBar
   extends VideoPlayerSeekBar
 {
-  long Cnt = 0L;
-  long cTt = 0L;
-  long hep = 0L;
-  private ImageView ktw;
+  long DFM = 0L;
+  long cQQ = 0L;
+  long hES = 0L;
+  private ImageView kUL;
   
   public RedesignVideoPlayerSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,16 +26,16 @@ public class RedesignVideoPlayerSeekBar
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean Vr(int paramInt)
+  public final boolean XA(int paramInt)
   {
     AppMethodBeat.i(134012);
     int j = getVideoTotalTime();
-    if ((paramInt == this.hep) && (j == this.cTt))
+    if ((paramInt == this.hES) && (j == this.cQQ))
     {
       AppMethodBeat.o(134012);
       return false;
     }
-    if (System.currentTimeMillis() - this.Cnt < 300L)
+    if (System.currentTimeMillis() - this.DFM < 300L)
     {
       AppMethodBeat.o(134012);
       return false;
@@ -58,14 +58,21 @@ public class RedesignVideoPlayerSeekBar
     if (j == 0) {}
     for (paramInt = 0;; paramInt = (int)(paramInt * (i * 1.0D / j)))
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.ktw.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kUL.getLayoutParams();
       localLayoutParams.width = paramInt;
-      this.ktw.setLayoutParams(localLayoutParams);
-      this.hep = i;
-      this.cTt = j;
+      this.kUL.setLayoutParams(localLayoutParams);
+      this.hES = i;
+      this.cQQ = j;
       AppMethodBeat.o(134012);
       return true;
     }
+  }
+  
+  public final void gL(boolean paramBoolean)
+  {
+    AppMethodBeat.i(134010);
+    setIsPlay(paramBoolean);
+    AppMethodBeat.o(134010);
   }
   
   public int getLayoutId()
@@ -73,32 +80,25 @@ public class RedesignVideoPlayerSeekBar
     return 2131495232;
   }
   
-  public final void gp(boolean paramBoolean)
-  {
-    AppMethodBeat.i(134010);
-    setIsPlay(paramBoolean);
-    AppMethodBeat.o(134010);
-  }
-  
   public final void init()
   {
     AppMethodBeat.i(134009);
     super.init();
-    this.ktw = ((ImageView)this.contentView.findViewById(2131303303));
+    this.kUL = ((ImageView)this.contentView.findViewById(2131303303));
     AppMethodBeat.o(134009);
   }
   
   public void setIsPlay(boolean paramBoolean)
   {
     AppMethodBeat.i(134011);
-    this.dkr = paramBoolean;
+    this.dhM = paramBoolean;
     if (paramBoolean)
     {
-      this.kth.setImageDrawable(am.i(getContext(), 2131690445, -1));
+      this.kUw.setImageDrawable(am.k(getContext(), 2131690445, -1));
       AppMethodBeat.o(134011);
       return;
     }
-    this.kth.setImageDrawable(am.i(getContext(), 2131690459, -1));
+    this.kUw.setImageDrawable(am.k(getContext(), 2131690459, -1));
     AppMethodBeat.o(134011);
   }
 }

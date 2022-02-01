@@ -2,16 +2,16 @@ package com.tencent.luggage.f.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.a;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.f;
+import com.tencent.mm.plugin.appbrand.jsapi.f.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.f.a.f;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public class b
-  implements com.tencent.mm.plugin.appbrand.jsapi.g.a.c
+  implements com.tencent.mm.plugin.appbrand.jsapi.f.a.c
 {
-  public com.tencent.mm.plugin.appbrand.jsapi.g.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
+  public com.tencent.mm.plugin.appbrand.jsapi.f.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
   {
     AppMethodBeat.i(146457);
     if (paramContext == null)
@@ -24,7 +24,7 @@ public class b
     return paramContext;
   }
   
-  public com.tencent.mm.plugin.appbrand.jsapi.g.a.b b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
+  public com.tencent.mm.plugin.appbrand.jsapi.f.a.b b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(146456);
     if ((paramc == null) || (paramJSONObject == null))
@@ -54,7 +54,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.f.a.b
  * JD-Core Version:    0.7.0.1
  */

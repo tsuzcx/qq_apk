@@ -11,7 +11,7 @@ public class SetFontFamilyActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFontFamilyActionArg> CREATOR;
-  public String iE;
+  public String jD;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetFontFamilyActionArg
       return false;
     }
     paramObject = (SetFontFamilyActionArg)paramObject;
-    boolean bool = Objects.equals(this.iE, paramObject.iE);
+    boolean bool = Objects.equals(this.jD, paramObject.jD);
     AppMethodBeat.o(145151);
     return bool;
   }
@@ -60,14 +60,14 @@ public class SetFontFamilyActionArg
   {
     AppMethodBeat.i(145148);
     super.h(paramParcel);
-    this.iE = paramParcel.readString();
+    this.jD = paramParcel.readString();
     AppMethodBeat.o(145148);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145152);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.iE });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jD });
     AppMethodBeat.o(145152);
     return i;
   }
@@ -76,7 +76,7 @@ public class SetFontFamilyActionArg
   {
     AppMethodBeat.i(145149);
     super.parse(paramJSONObject);
-    this.iE = paramJSONObject.optJSONArray("data").optString(0);
+    this.jD = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145149);
   }
   
@@ -84,13 +84,13 @@ public class SetFontFamilyActionArg
   {
     AppMethodBeat.i(145150);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.iE);
+    paramParcel.writeString(this.jD);
     AppMethodBeat.o(145150);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontFamilyActionArg
  * JD-Core Version:    0.7.0.1
  */

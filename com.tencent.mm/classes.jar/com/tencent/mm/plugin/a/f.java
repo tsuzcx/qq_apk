@@ -1,183 +1,28 @@
 package com.tencent.mm.plugin.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.io.RandomAccessFile;
+import android.annotation.TargetApi;
+import com.tencent.mm.pointers.PInt;
 
-public final class f
-  extends a
+public abstract interface f
 {
-  public static final int hXp;
-  public static final int hXq;
-  public static final int hXr;
-  public long duration = 0L;
-  public long hXs = 0L;
-  public long hXt = 0L;
-  long hXu = 0L;
+  public abstract boolean F(String paramString, long paramLong);
   
-  static
-  {
-    AppMethodBeat.i(133867);
-    hXp = c.aY("vide");
-    hXq = c.aY("soun");
-    hXr = c.aY("hint");
-    AppMethodBeat.o(133867);
-  }
+  public abstract boolean a(int paramInt1, int paramInt2, PInt paramPInt1, PInt paramPInt2);
   
-  public f(int paramInt1, long paramLong, int paramInt2)
-  {
-    super(paramInt1, paramLong, paramInt2, 0L);
-  }
+  public abstract int aNC();
   
-  public final boolean a(RandomAccessFile paramRandomAccessFile, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(133866);
-    int m = 0;
-    int k = 0;
-    int j = 0;
-    int n = paramRandomAccessFile.read(paramArrayOfByte);
-    while (n >= 8)
-    {
-      i1 = c.readInt(paramArrayOfByte, 0);
-      int i = c.readInt(paramArrayOfByte, 4);
-      long l;
-      if (i == a.bay)
-      {
-        byte[] arrayOfByte = new byte[4];
-        i = paramRandomAccessFile.read(arrayOfByte);
-        if (i < 4) {
-          i = -1;
-        }
-        while (i <= 0)
-        {
-          ad.w("MicroMsg.MdiaAtom", "handle mdhd atom error.");
-          AppMethodBeat.o(133866);
-          return false;
-          i += 0;
-          if (arrayOfByte[0] == 0)
-          {
-            if (!c.a(paramRandomAccessFile, 8L))
-            {
-              i = -1;
-            }
-            else
-            {
-              m = paramRandomAccessFile.read(paramArrayOfByte);
-              if (m < 8)
-              {
-                i = -1;
-              }
-              else
-              {
-                i = i + 8 + m;
-                this.hXs = c.D(paramArrayOfByte, 0);
-                this.duration = c.D(paramArrayOfByte, 4);
-              }
-            }
-          }
-          else if (!c.a(paramRandomAccessFile, 16L))
-          {
-            i = -1;
-          }
-          else
-          {
-            m = paramRandomAccessFile.read(arrayOfByte);
-            if (m < 4)
-            {
-              i = -1;
-            }
-            else
-            {
-              this.hXs = c.D(arrayOfByte, 0);
-              int i2 = paramRandomAccessFile.read(paramArrayOfByte);
-              if (i2 < 8)
-              {
-                i = -1;
-              }
-              else
-              {
-                i = i2 + (i + 16 + m);
-                this.duration = c.ao(paramArrayOfByte);
-              }
-            }
-          }
-        }
-        m = 1;
-        l = i1 - n - i;
-        i = j;
-      }
-      for (;;)
-      {
-        if ((m != 0) && (k != 0))
-        {
-          i1 = i;
-          n = k;
-          j = m;
-          if (i != 0) {
-            break label464;
-          }
-        }
-        if (c.a(paramRandomAccessFile, l)) {
-          break;
-        }
-        AppMethodBeat.o(133866);
-        return false;
-        if (i == a.baz)
-        {
-          if (!c.a(paramRandomAccessFile, 8L)) {
-            i = -1;
-          }
-          while (i <= 0)
-          {
-            ad.w("MicroMsg.MdiaAtom", "handle hdlr atom error.");
-            AppMethodBeat.o(133866);
-            return false;
-            i = paramRandomAccessFile.read(paramArrayOfByte, 0, 4);
-            if (i < 4)
-            {
-              i = -1;
-            }
-            else
-            {
-              this.hXt = c.readInt(paramArrayOfByte, 0);
-              i += 8;
-            }
-          }
-          k = 1;
-          l = i1 - n - i;
-          i = j;
-        }
-        else if (i == a.bam)
-        {
-          this.hXu = (paramRandomAccessFile.getFilePointer() - n);
-          l = i1 - n;
-          i = 1;
-        }
-        else
-        {
-          l = i1 - 8;
-          i = j;
-        }
-      }
-      n = paramRandomAccessFile.read(paramArrayOfByte);
-      j = i;
-    }
-    int i1 = j;
-    j = m;
-    n = k;
-    label464:
-    if ((j != 0) && (n != 0) && (i1 != 0))
-    {
-      AppMethodBeat.o(133866);
-      return true;
-    }
-    AppMethodBeat.o(133866);
-    return false;
-  }
+  public abstract int aND();
+  
+  @TargetApi(5)
+  public abstract boolean b(int paramInt, PInt paramPInt1, PInt paramPInt2);
+  
+  public abstract int dw(int paramInt1, int paramInt2);
+  
+  public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class da
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String IconUrl;
-  public String rZo;
-  public String sdF;
+  public String thh;
+  public String tlz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,42 +15,42 @@ public final class da
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.sdF != null) {
-        paramVarArgs.d(1, this.sdF);
+      if (this.tlz != null) {
+        paramVarArgs.d(1, this.tlz);
       }
       if (this.IconUrl != null) {
         paramVarArgs.d(2, this.IconUrl);
       }
-      if (this.rZo != null) {
-        paramVarArgs.d(3, this.rZo);
+      if (this.thh != null) {
+        paramVarArgs.d(3, this.thh);
       }
       AppMethodBeat.o(41832);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.sdF == null) {
+      if (this.tlz == null) {
         break label334;
       }
     }
     label334:
-    for (int i = f.a.a.b.b.a.e(1, this.sdF) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.tlz) + 0;; i = 0)
     {
       paramInt = i;
       if (this.IconUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.IconUrl);
       }
       i = paramInt;
-      if (this.rZo != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.rZo);
+      if (this.thh != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.thh);
       }
       AppMethodBeat.o(41832);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(41832);
@@ -66,15 +66,15 @@ public final class da
           AppMethodBeat.o(41832);
           return -1;
         case 1: 
-          localda.sdF = locala.KhF.readString();
+          localda.tlz = locala.LVo.readString();
           AppMethodBeat.o(41832);
           return 0;
         case 2: 
-          localda.IconUrl = locala.KhF.readString();
+          localda.IconUrl = locala.LVo.readString();
           AppMethodBeat.o(41832);
           return 0;
         }
-        localda.rZo = locala.KhF.readString();
+        localda.thh = locala.LVo.readString();
         AppMethodBeat.o(41832);
         return 0;
       }
@@ -85,7 +85,7 @@ public final class da
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.da
  * JD-Core Version:    0.7.0.1
  */

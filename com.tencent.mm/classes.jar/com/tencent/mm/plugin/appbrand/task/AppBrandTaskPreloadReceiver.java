@@ -7,8 +7,8 @@ import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.app.c;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class AppBrandTaskPreloadReceiver
   extends BroadcastReceiver
@@ -18,13 +18,13 @@ public class AppBrandTaskPreloadReceiver
     AppMethodBeat.i(48473);
     if (paramIntent == null)
     {
-      ad.e("MicroMsg.AppBrandTaskPreloadReceiver", "[PreloadProfile][%s] Receiver get NULL intent", new Object[] { paramString });
+      ac.e("MicroMsg.AppBrandTaskPreloadReceiver", "[PreloadProfile][%s] Receiver get NULL intent", new Object[] { paramString });
       AppMethodBeat.o(48473);
       return;
     }
     paramIntent.setExtrasClassLoader(AppBrandPreloadProfiler.class.getClassLoader());
     int i = paramIntent.getIntExtra("EXTRA_KEY_LEVEL", 2);
-    boolean bool2 = bt.nullAsNil(paramIntent.getStringExtra("EXTRA_KEY_UI_CLASS")).endsWith(AppBrandPluginUI.class.getSimpleName());
+    boolean bool2 = bs.nullAsNil(paramIntent.getStringExtra("EXTRA_KEY_UI_CLASS")).endsWith(AppBrandPluginUI.class.getSimpleName());
     long l1 = SystemClock.elapsedRealtime();
     long l2 = paramIntent.getLongExtra("EXTRA_KEY_TRIGGER_TIME", -1L);
     AppBrandPreloadProfiler localAppBrandPreloadProfiler = (AppBrandPreloadProfiler)paramIntent.getParcelableExtra("preloadProfiler");
@@ -32,7 +32,7 @@ public class AppBrandTaskPreloadReceiver
     for (boolean bool1 = true;; bool1 = false)
     {
       c.a(e.J(paramIntent), localAppBrandPreloadProfiler, bool1, bool2, i);
-      ad.i("MicroMsg.AppBrandTaskPreloadReceiver", "[PreloadProfile][%s] Trigger cost [%d]ms Receiver cost [%d]ms, at [%d], level [%d]", new Object[] { paramString, Long.valueOf(SystemClock.elapsedRealtime() - l2), Long.valueOf(SystemClock.elapsedRealtime() - l1), Long.valueOf(l1), Integer.valueOf(i) });
+      ac.i("MicroMsg.AppBrandTaskPreloadReceiver", "[PreloadProfile][%s] Trigger cost [%d]ms Receiver cost [%d]ms, at [%d], level [%d]", new Object[] { paramString, Long.valueOf(SystemClock.elapsedRealtime() - l2), Long.valueOf(SystemClock.elapsedRealtime() - l1), Long.valueOf(l1), Integer.valueOf(i) });
       AppMethodBeat.o(48473);
       return;
     }
@@ -47,7 +47,7 @@ public class AppBrandTaskPreloadReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.AppBrandTaskPreloadReceiver
  * JD-Core Version:    0.7.0.1
  */

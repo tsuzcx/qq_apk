@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.m.a.b;
 
 public abstract interface a$a
 {
-  public abstract void q(boolean paramBoolean, String paramString);
+  public abstract void r(boolean paramBoolean, String paramString);
 }
 
 

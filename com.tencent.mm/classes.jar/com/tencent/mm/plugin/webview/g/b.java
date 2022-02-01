@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.webview.c.c.a;
 import com.tencent.mm.plugin.webview.c.d;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.l;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public final class b
@@ -15,31 +15,31 @@ public final class b
 {
   public final boolean a(d paramd, l paraml)
   {
-    AppMethodBeat.i(187938);
-    Object localObject = paraml.ASh;
+    AppMethodBeat.i(188366);
+    Object localObject = paraml.Cku;
     if (localObject == null)
     {
-      AppMethodBeat.o(187938);
+      AppMethodBeat.o(188366);
       return false;
     }
     localObject = ((IAppBrandBatchPreloadController)g.ab(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
-    if (!bt.isNullOrNil((String)localObject)) {
-      paramd.ARd.h(paraml.ASg, paraml.kbU + ":" + (String)localObject, null);
+    if (!bs.isNullOrNil((String)localObject)) {
+      paramd.Cjq.j(paraml.Ckt, paraml.kCH + ":" + (String)localObject, null);
     }
     for (;;)
     {
-      AppMethodBeat.o(187938);
+      AppMethodBeat.o(188366);
       return true;
-      paramd.ARd.h(paraml.ASg, paraml.kbU + ":error", null);
+      paramd.Cjq.j(paraml.Ckt, paraml.kCH + ":error", null);
     }
   }
   
-  public final int ekB()
+  public final int ezX()
   {
     return 366;
   }
   
-  public final String ekC()
+  public final String ezY()
   {
     return "batchPreloadMiniProgram";
   }

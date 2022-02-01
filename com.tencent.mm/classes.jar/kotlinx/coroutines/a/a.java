@@ -1,77 +1,60 @@
 package kotlinx.coroutines.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.e;
+import d.d.a.b;
+import d.d.d;
+import d.g.a.m;
 import d.l;
-import d.v;
+import d.p;
+import d.p.a;
+import d.q;
+import d.y;
+import kotlinx.coroutines.au;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/internal/ArrayQueue;", "T", "", "()V", "elements", "", "[Ljava/lang/Object;", "head", "", "isEmpty", "", "()Z", "tail", "addLast", "", "element", "(Ljava/lang/Object;)V", "clear", "ensureCapacity", "removeFirstOrNull", "()Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public final class a<T>
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"runSafely", "", "completion", "Lkotlin/coroutines/Continuation;", "block", "Lkotlin/Function0;", "startCoroutineCancellable", "fatalCompletion", "T", "Lkotlin/Function1;", "", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "kotlinx-coroutines-core"})
+public final class a
 {
-  private Object[] KeX;
-  private int KeY;
-  private int KeZ;
-  
-  public a()
+  public static final void a(d<? super y> paramd, d<?> paramd1)
   {
-    AppMethodBeat.i(118120);
-    this.KeX = new Object[16];
-    AppMethodBeat.o(118120);
-  }
-  
-  private final void fLK()
-  {
-    AppMethodBeat.i(118119);
-    int i = this.KeX.length;
-    Object[] arrayOfObject = new Object[i << 1];
-    e.a(this.KeX, arrayOfObject, 0, this.KeY, 0, 10);
-    e.a(this.KeX, arrayOfObject, this.KeX.length - this.KeY, 0, this.KeY, 4);
-    this.KeX = arrayOfObject;
-    this.KeY = 0;
-    this.KeZ = i;
-    AppMethodBeat.o(118119);
-  }
-  
-  public final void addLast(T paramT)
-  {
-    AppMethodBeat.i(118117);
-    this.KeX[this.KeZ] = paramT;
-    this.KeZ = (this.KeZ + 1 & this.KeX.length - 1);
-    if (this.KeZ == this.KeY) {
-      fLK();
-    }
-    AppMethodBeat.o(118117);
-  }
-  
-  public final T fLJ()
-  {
-    AppMethodBeat.i(118118);
-    if (this.KeY == this.KeZ)
+    AppMethodBeat.i(191152);
+    try
     {
-      AppMethodBeat.o(118118);
-      return null;
+      paramd = b.d(paramd);
+      locala = p.KTg;
+      au.a(paramd, p.eI(y.KTp));
+      AppMethodBeat.o(191152);
+      return;
     }
-    Object localObject = this.KeX[this.KeY];
-    this.KeX[this.KeY] = null;
-    this.KeY = (this.KeY + 1 & this.KeX.length - 1);
-    if (localObject == null)
+    catch (Throwable paramd)
     {
-      localObject = new v("null cannot be cast to non-null type T");
-      AppMethodBeat.o(118118);
-      throw ((Throwable)localObject);
+      p.a locala = p.KTg;
+      paramd1.eK(p.eI(q.n(paramd)));
+      AppMethodBeat.o(191152);
     }
-    AppMethodBeat.o(118118);
-    return localObject;
   }
   
-  public final boolean isEmpty()
+  public static final <R, T> void b(m<? super R, ? super d<? super T>, ? extends Object> paramm, R paramR, d<? super T> paramd)
   {
-    return this.KeY == this.KeZ;
+    AppMethodBeat.i(118134);
+    try
+    {
+      paramm = b.d(b.a(paramm, paramR, paramd));
+      paramR = p.KTg;
+      au.a(paramm, p.eI(y.KTp));
+      AppMethodBeat.o(118134);
+      return;
+    }
+    catch (Throwable paramm)
+    {
+      paramR = p.KTg;
+      paramd.eK(p.eI(q.n(paramm)));
+      AppMethodBeat.o(118134);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.a.a
  * JD-Core Version:    0.7.0.1
  */

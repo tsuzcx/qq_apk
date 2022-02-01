@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/hrl" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <FrameLayout android:id="@id/hvd" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <View android:id="@id/ev_" android:background="@drawable/a8n" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/ge3" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
         <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/ge2" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginTop="144.0dip" android:indeterminateDrawable="@drawable/a7e" />

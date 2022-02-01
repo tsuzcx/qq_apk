@@ -6,13 +6,13 @@ import d.l.b.a.b.b.a.g;
 
 final class c<T>
 {
-  final g JCG;
+  final g LpZ;
   final T result;
   
   public c(T paramT, g paramg)
   {
     this.result = paramT;
-    this.JCG = paramg;
+    this.LpZ = paramg;
   }
   
   public final boolean equals(Object paramObject)
@@ -23,7 +23,7 @@ final class c<T>
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        if ((!k.g(this.result, paramObject.result)) || (!k.g(this.JCG, paramObject.JCG))) {}
+        if ((!k.g(this.result, paramObject.result)) || (!k.g(this.LpZ, paramObject.LpZ))) {}
       }
     }
     else
@@ -43,7 +43,7 @@ final class c<T>
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.JCG;
+      localObject = this.LpZ;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -55,14 +55,14 @@ final class c<T>
   public final String toString()
   {
     AppMethodBeat.i(58021);
-    String str = "EnhancementResult(result=" + this.result + ", enhancementAnnotations=" + this.JCG + ")";
+    String str = "EnhancementResult(result=" + this.result + ", enhancementAnnotations=" + this.LpZ + ")";
     AppMethodBeat.o(58021);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.c
  * JD-Core Version:    0.7.0.1
  */

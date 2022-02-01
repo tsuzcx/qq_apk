@@ -74,23 +74,23 @@ public abstract class i
     return parame.a(paramInt, paramf);
   }
   
-  public s<? extends q> fCl()
+  public s<? extends q> fUP()
   {
     throw new UnsupportedOperationException("This is supposed to be overridden by subclasses.");
   }
   
-  protected void fHL() {}
+  protected void gao() {}
   
   public static abstract class a<MessageType extends i, BuilderType extends a>
     extends a.a<BuilderType>
   {
-    public d JFI = d.JMs;
+    public d Ltb = d.LzL;
     
     public abstract BuilderType a(MessageType paramMessageType);
     
-    public abstract MessageType fCw();
+    public abstract MessageType fVa();
     
-    public BuilderType fCx()
+    public BuilderType fVb()
     {
       throw new UnsupportedOperationException("This is supposed to be overridden by subclasses.");
     }
@@ -100,31 +100,31 @@ public abstract class i
     extends i.a<MessageType, BuilderType>
     implements i.d<MessageType>
   {
-    protected h<i.e> JMK = h.fHE();
-    private boolean JML;
+    protected h<i.e> LAd = h.gah();
+    private boolean LAe;
     
     protected final void a(MessageType paramMessageType)
     {
-      if (!this.JML)
+      if (!this.LAe)
       {
-        this.JMK = this.JMK.fHG();
-        this.JML = true;
+        this.LAd = this.LAd.gaj();
+        this.LAe = true;
       }
-      h localh = this.JMK;
+      h localh = this.LAd;
       paramMessageType = i.c.b(paramMessageType);
       int i = 0;
-      while (i < paramMessageType.JME.fIc())
+      while (i < paramMessageType.LzX.gaF())
       {
-        localh.f(paramMessageType.JME.afM(i));
+        localh.f(paramMessageType.LzX.aiI(i));
         i += 1;
       }
-      paramMessageType = paramMessageType.JME.fId().iterator();
+      paramMessageType = paramMessageType.LzX.gaG().iterator();
       while (paramMessageType.hasNext()) {
         localh.f((Map.Entry)paramMessageType.next());
       }
     }
     
-    public BuilderType fDm()
+    public BuilderType fVQ()
     {
       throw new UnsupportedOperationException("This is supposed to be overridden by subclasses.");
     }
@@ -134,21 +134,21 @@ public abstract class i
     extends i
     implements i.d<MessageType>
   {
-    protected final h<i.e> JMK;
+    protected final h<i.e> LAd;
     
     protected c()
     {
-      this.JMK = h.fHD();
+      this.LAd = h.gag();
     }
     
     protected c(i.b<MessageType, ?> paramb)
     {
-      this.JMK = i.b.a(paramb);
+      this.LAd = i.b.a(paramb);
     }
     
     private void b(i.f<MessageType, ?> paramf)
     {
-      if (paramf.JMU != fCr()) {
+      if (paramf.LAn != fUV()) {
         throw new IllegalArgumentException("This extension is for a different message type.  Please make sure that you are not suppressing any generics type warnings.");
       }
     }
@@ -156,27 +156,27 @@ public abstract class i
     public final <Type> Type a(i.f<MessageType, List<Type>> paramf, int paramInt)
     {
       b(paramf);
-      Object localObject = this.JMK;
-      i.e locale = paramf.JMW;
-      if (!locale.fHJ()) {
+      Object localObject = this.LAd;
+      i.e locale = paramf.LAp;
+      if (!locale.gam()) {
         throw new IllegalArgumentException("getRepeatedField() can only be called on repeated fields.");
       }
       localObject = ((h)localObject).a(locale);
       if (localObject == null) {
         throw new IndexOutOfBoundsException();
       }
-      return paramf.fk(((List)localObject).get(paramInt));
+      return paramf.fn(((List)localObject).get(paramInt));
     }
     
     protected final boolean a(e parame, f paramf, g paramg, int paramInt)
     {
-      h localh = this.JMK;
-      Object localObject = fCr();
-      int i = z.gb(paramInt);
-      int j = z.gc(paramInt);
-      i.f localf = (i.f)paramg.JMC.get(new g.a(localObject, j));
+      h localh = this.LAd;
+      Object localObject = fUV();
+      int i = z.fN(paramInt);
+      int j = z.fO(paramInt);
+      i.f localf = (i.f)paramg.LzV.get(new g.a(localObject, j));
       if (localf != null) {
-        if (i == h.a(localf.JMW.JMR, false))
+        if (i == h.a(localf.LAp.LAk, false))
         {
           i = 0;
           j = 0;
@@ -185,7 +185,7 @@ public abstract class i
       while (j != 0)
       {
         return parame.a(paramInt, paramf);
-        if ((localf.JMW.JMS) && (localf.JMW.JMR.fIk()) && (i == h.a(localf.JMW.JMR, true)))
+        if ((localf.LAp.LAl) && (localf.LAp.LAk.gaN()) && (i == h.a(localf.LAp.LAk, true)))
         {
           i = 1;
           j = 0;
@@ -198,88 +198,88 @@ public abstract class i
       }
       if (i != 0)
       {
-        paramInt = parame.fR(parame.xS());
-        if (localf.JMW.JMR == z.a.JOf) {
-          while (parame.xV() > 0)
+        paramInt = parame.fD(parame.xF());
+        if (localf.LAp.LAk == z.a.LBz) {
+          while (parame.xI() > 0)
           {
-            i = parame.xS();
-            paramf = localf.JMW.JMQ.aed(i);
+            i = parame.xF();
+            paramf = localf.LAp.LAj.agZ(i);
             if (paramf == null) {
               break label273;
             }
-            localh.b(localf.JMW, localf.fl(paramf));
+            localh.b(localf.LAp, localf.fo(paramf));
           }
         }
-        while (parame.xV() > 0)
+        while (parame.xI() > 0)
         {
-          paramf = h.a(parame, localf.JMW.JMR);
-          localh.b(localf.JMW, paramf);
+          paramf = h.a(parame, localf.LAp.LAk);
+          localh.b(localf.LAp, paramf);
         }
-        parame.fS(paramInt);
+        parame.fE(paramInt);
       }
       for (;;)
       {
         label273:
         return true;
-        switch (i.1.JMI[localf.JMW.JMR.JOk.ordinal()])
+        switch (i.1.LAb[localf.LAp.LAk.LBE.ordinal()])
         {
         default: 
-          parame = h.a(parame, localf.JMW.JMR);
+          parame = h.a(parame, localf.LAp.LAk);
           label329:
-          if (!localf.JMW.JMS) {
+          if (!localf.LAp.LAl) {
             break label620;
           }
-          localh.b(localf.JMW, localf.fl(parame));
+          localh.b(localf.LAp, localf.fo(parame));
         }
       }
-      if (!localf.JMW.JMS)
+      if (!localf.LAp.LAl)
       {
-        paramf = (q)localh.a(localf.JMW);
+        paramf = (q)localh.a(localf.LAp);
         if (paramf == null) {}
       }
-      for (paramf = paramf.fCp();; paramf = null)
+      for (paramf = paramf.fUT();; paramf = null)
       {
         localObject = paramf;
         if (paramf == null) {
-          localObject = localf.JMV.fCq();
+          localObject = localf.LAo.fUU();
         }
-        if (localf.JMW.JMR == z.a.JOb)
+        if (localf.LAp.LAk == z.a.LBv)
         {
-          paramInt = localf.JMW.number;
-          if (parame.bIO >= parame.bIP) {
-            throw k.fHT();
+          paramInt = localf.LAp.number;
+          if (parame.bGw >= parame.bGx) {
+            throw k.gaw();
           }
-          parame.bIO += 1;
+          parame.bGw += 1;
           ((q.a)localObject).d(parame, paramg);
-          parame.fP(z.bD(paramInt, 4));
-          parame.bIO -= 1;
+          parame.fB(z.bA(paramInt, 4));
+          parame.bGw -= 1;
         }
         for (;;)
         {
-          parame = ((q.a)localObject).fCz();
+          parame = ((q.a)localObject).fVd();
           break;
-          paramInt = parame.xS();
-          if (parame.bIO >= parame.bIP) {
-            throw k.fHT();
+          paramInt = parame.xF();
+          if (parame.bGw >= parame.bGx) {
+            throw k.gaw();
           }
-          paramInt = parame.fR(paramInt);
-          parame.bIO += 1;
+          paramInt = parame.fD(paramInt);
+          parame.bGw += 1;
           ((q.a)localObject).d(parame, paramg);
-          parame.fP(0);
-          parame.bIO -= 1;
-          parame.fS(paramInt);
+          parame.fB(0);
+          parame.bGw -= 1;
+          parame.fE(paramInt);
         }
-        i = parame.xS();
-        paramg = localf.JMW.JMQ.aed(i);
+        i = parame.xF();
+        paramg = localf.LAp.LAj.agZ(i);
         parame = paramg;
         if (paramg != null) {
           break label329;
         }
-        paramf.fZ(paramInt);
-        paramf.fZ(i);
+        paramf.fL(paramInt);
+        paramf.fL(i);
         break;
         label620:
-        localh.a(localf.JMW, localf.fl(parame));
+        localh.a(localf.LAp, localf.fo(parame));
         break;
       }
     }
@@ -287,20 +287,20 @@ public abstract class i
     public final <Type> boolean c(i.f<MessageType, Type> paramf)
     {
       b(paramf);
-      h localh = this.JMK;
-      paramf = paramf.JMW;
-      if (paramf.fHJ()) {
+      h localh = this.LAd;
+      paramf = paramf.LAp;
+      if (paramf.gam()) {
         throw new IllegalArgumentException("hasField() can only be called on non-repeated fields.");
       }
-      return localh.JME.get(paramf) != null;
+      return localh.LzX.get(paramf) != null;
     }
     
     public final <Type> int d(i.f<MessageType, List<Type>> paramf)
     {
       b(paramf);
-      h localh = this.JMK;
-      paramf = paramf.JMW;
-      if (!paramf.fHJ()) {
+      h localh = this.LAd;
+      paramf = paramf.LAp;
+      if (!paramf.gam()) {
         throw new IllegalArgumentException("getRepeatedField() can only be called on repeated fields.");
       }
       paramf = localh.a(paramf);
@@ -313,55 +313,55 @@ public abstract class i
     public final <Type> Type e(i.f<MessageType, Type> paramf)
     {
       b(paramf);
-      Object localObject2 = this.JMK.a(paramf.JMW);
+      Object localObject2 = this.LAd.a(paramf.LAp);
       if (localObject2 == null) {
-        localObject1 = paramf.aCy;
+        localObject1 = paramf.aDq;
       }
       do
       {
         return localObject1;
-        if (!paramf.JMW.JMS) {
+        if (!paramf.LAp.LAl) {
           break;
         }
         localObject1 = localObject2;
-      } while (paramf.JMW.JMR.JOk != z.b.JOu);
+      } while (paramf.LAp.LAk.LBE != z.b.LBO);
       Object localObject1 = new ArrayList();
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((List)localObject1).add(paramf.fk(((Iterator)localObject2).next()));
+        ((List)localObject1).add(paramf.fn(((Iterator)localObject2).next()));
       }
       return localObject1;
-      return paramf.fk(localObject2);
+      return paramf.fn(localObject2);
     }
     
-    protected final void fHL()
+    protected final void gao()
     {
-      this.JMK.fHF();
+      this.LAd.gai();
     }
     
-    protected final c<MessageType>.a fHM()
+    protected final c<MessageType>.a gap()
     {
       return new a((byte)0);
     }
     
     public final class a
     {
-      private final Iterator<Map.Entry<i.e, Object>> JMM;
-      private Map.Entry<i.e, Object> JMN;
-      private final boolean JMO;
+      private final Iterator<Map.Entry<i.e, Object>> LAf;
+      private Map.Entry<i.e, Object> LAg;
+      private final boolean LAh;
       
       private a()
       {
         AppMethodBeat.i(59472);
         this$1 = i.c.b(i.c.this);
-        if (i.c.this.JMG) {}
-        for (this$1 = new l.b(i.c.this.JME.entrySet().iterator());; this$1 = i.c.this.JME.entrySet().iterator())
+        if (i.c.this.LzZ) {}
+        for (this$1 = new l.b(i.c.this.LzX.entrySet().iterator());; this$1 = i.c.this.LzX.entrySet().iterator())
         {
-          this.JMM = i.c.this;
-          if (this.JMM.hasNext()) {
-            this.JMN = ((Map.Entry)this.JMM.next());
+          this.LAf = i.c.this;
+          if (this.LAf.hasNext()) {
+            this.LAg = ((Map.Entry)this.LAf.next());
           }
-          this.JMO = false;
+          this.LAh = false;
           AppMethodBeat.o(59472);
           return;
         }
@@ -370,23 +370,23 @@ public abstract class i
       public final void b(int paramInt, f paramf)
       {
         AppMethodBeat.i(59473);
-        while ((this.JMN != null) && (((i.e)this.JMN.getKey()).number < paramInt))
+        while ((this.LAg != null) && (((i.e)this.LAg.getKey()).number < paramInt))
         {
-          i.e locale = (i.e)this.JMN.getKey();
-          if ((this.JMO) && (locale.JMR.JOk == z.b.JOv) && (!locale.JMS)) {
-            paramf.b(locale.number, (q)this.JMN.getValue());
+          i.e locale = (i.e)this.LAg.getKey();
+          if ((this.LAh) && (locale.LAk.LBE == z.b.LBP) && (!locale.LAl)) {
+            paramf.b(locale.number, (q)this.LAg.getValue());
           }
           for (;;)
           {
-            if (!this.JMM.hasNext()) {
+            if (!this.LAf.hasNext()) {
               break label139;
             }
-            this.JMN = ((Map.Entry)this.JMM.next());
+            this.LAg = ((Map.Entry)this.LAf.next());
             break;
-            h.a(locale, this.JMN.getValue(), paramf);
+            h.a(locale, this.LAg.getValue(), paramf);
           }
           label139:
-          this.JMN = null;
+          this.LAg = null;
         }
         AppMethodBeat.o(59473);
       }
@@ -400,18 +400,18 @@ public abstract class i
   static final class e
     implements h.a<e>
   {
-    final j.b<?> JMQ = null;
-    final z.a JMR;
-    final boolean JMS;
-    final boolean JMT;
+    final j.b<?> LAj = null;
+    final z.a LAk;
+    final boolean LAl;
+    final boolean LAm;
     final int number;
     
     e(int paramInt, z.a parama, boolean paramBoolean)
     {
       this.number = paramInt;
-      this.JMR = parama;
-      this.JMS = paramBoolean;
-      this.JMT = false;
+      this.LAk = parama;
+      this.LAl = paramBoolean;
+      this.LAm = false;
     }
     
     public final q.a a(q.a parama, q paramq)
@@ -422,24 +422,24 @@ public abstract class i
       return parama;
     }
     
-    public final z.a fHH()
+    public final z.a gak()
     {
-      return this.JMR;
+      return this.LAk;
     }
     
-    public final z.b fHI()
+    public final z.b gal()
     {
-      return this.JMR.JOk;
+      return this.LAk.LBE;
     }
     
-    public final boolean fHJ()
+    public final boolean gam()
     {
-      return this.JMS;
+      return this.LAl;
     }
     
-    public final boolean fHK()
+    public final boolean gan()
     {
-      return this.JMT;
+      return this.LAm;
     }
     
     public final int getNumber()
@@ -450,12 +450,12 @@ public abstract class i
   
   public static final class f<ContainingType extends q, Type>
   {
-    final ContainingType JMU;
-    final q JMV;
-    final i.e JMW;
-    final Class JMX;
-    final Method JMY;
-    final Type aCy;
+    final ContainingType LAn;
+    final q LAo;
+    final i.e LAp;
+    final Class LAq;
+    final Method LAr;
+    final Type aDq;
     
     f(ContainingType paramContainingType, Type paramType, q paramq, i.e parame, Class paramClass)
     {
@@ -466,33 +466,33 @@ public abstract class i
         AppMethodBeat.o(59475);
         throw paramContainingType;
       }
-      if ((parame.JMR == z.a.JOc) && (paramq == null))
+      if ((parame.LAk == z.a.LBw) && (paramq == null))
       {
         paramContainingType = new IllegalArgumentException("Null messageDefaultInstance");
         AppMethodBeat.o(59475);
         throw paramContainingType;
       }
-      this.JMU = paramContainingType;
-      this.aCy = paramType;
-      this.JMV = paramq;
-      this.JMW = parame;
-      this.JMX = paramClass;
+      this.LAn = paramContainingType;
+      this.aDq = paramType;
+      this.LAo = paramq;
+      this.LAp = parame;
+      this.LAq = paramClass;
       if (j.a.class.isAssignableFrom(paramClass))
       {
-        this.JMY = i.d(paramClass, "valueOf", new Class[] { Integer.TYPE });
+        this.LAr = i.d(paramClass, "valueOf", new Class[] { Integer.TYPE });
         AppMethodBeat.o(59475);
         return;
       }
-      this.JMY = null;
+      this.LAr = null;
       AppMethodBeat.o(59475);
     }
     
-    final Object fk(Object paramObject)
+    final Object fn(Object paramObject)
     {
       AppMethodBeat.i(59476);
-      if (this.JMW.JMR.JOk == z.b.JOu)
+      if (this.LAp.LAk.LBE == z.b.LBO)
       {
-        paramObject = i.c(this.JMY, new Object[] { (Integer)paramObject });
+        paramObject = i.c(this.LAr, new Object[] { (Integer)paramObject });
         AppMethodBeat.o(59476);
         return paramObject;
       }
@@ -500,10 +500,10 @@ public abstract class i
       return paramObject;
     }
     
-    final Object fl(Object paramObject)
+    final Object fo(Object paramObject)
     {
       AppMethodBeat.i(59477);
-      if (this.JMW.JMR.JOk == z.b.JOu)
+      if (this.LAp.LAk.LBE == z.b.LBO)
       {
         int i = ((j.a)paramObject).getNumber();
         AppMethodBeat.o(59477);

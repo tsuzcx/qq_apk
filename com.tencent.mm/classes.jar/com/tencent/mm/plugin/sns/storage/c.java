@@ -15,20 +15,20 @@ public final class c
   {
     AppMethodBeat.i(96280);
     c.a locala = new c.a();
-    locala.EYt = new Field[3];
+    locala.GvF = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "canvasId";
-    locala.EYv.put("canvasId", "LONG PRIMARY KEY ");
+    locala.GvH.put("canvasId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" canvasId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "canvasId";
+    locala.GvG = "canvasId";
     locala.columns[1] = "canvasXml";
-    locala.EYv.put("canvasXml", "TEXT");
+    locala.GvH.put("canvasXml", "TEXT");
     localStringBuilder.append(" canvasXml TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "createTime";
-    locala.EYv.put("createTime", "LONG");
+    locala.GvH.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

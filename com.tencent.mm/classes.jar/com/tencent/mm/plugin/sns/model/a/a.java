@@ -6,67 +6,67 @@ import com.tencent.mm.plugin.sns.data.m;
 import com.tencent.mm.plugin.sns.data.q;
 import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.model.an;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bc;
+import com.tencent.mm.protocal.protobuf.btz;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bf;
 
 public final class a
 {
-  public String dpC;
+  public String dnn;
   public String md5 = "";
   public String mediaId = "";
   public int mediaType = 0;
   public int size;
   public String url = "";
-  public m wAv = null;
-  public SparseArray<m> wAw;
-  public String wBe = "";
-  public String wBf = "";
-  public SparseArray<bpi> wBh;
-  public String wEY = "";
-  public String wFc = "";
-  public bpi wFd;
-  public boolean wLs = false;
-  public boolean wLt = false;
-  public int wLu = 0;
-  public bc wLv;
-  public float wLw = 0.0F;
+  public m xMO = null;
+  public SparseArray<m> xMP;
+  public String xNA = "";
+  public SparseArray<btz> xNC;
+  public String xNz = "";
+  public String xRt = "";
+  public String xRx = "";
+  public btz xRy;
+  public boolean xXY = false;
+  public boolean xXZ = false;
+  public int xYa = 0;
+  public bf xYb;
+  public float xYc = 0.0F;
   
   public a(String paramString)
   {
     this.mediaId = paramString;
   }
   
-  public a(String paramString, SparseArray<bpi> paramSparseArray, SparseArray<m> paramSparseArray1, int paramInt)
+  public a(String paramString, SparseArray<btz> paramSparseArray, SparseArray<m> paramSparseArray1, int paramInt)
   {
-    this.dpC = paramString;
-    this.wBh = paramSparseArray;
-    this.wAw = paramSparseArray1;
+    this.dnn = paramString;
+    this.xNC = paramSparseArray;
+    this.xMP = paramSparseArray1;
     this.size = paramInt;
   }
   
-  public final String dut()
+  public final String dIT()
   {
     AppMethodBeat.i(96064);
-    if (this.wLu == 4)
+    if (this.xYa == 4)
     {
-      str = q.o(this.wFd);
+      str = q.o(this.xRy);
       AppMethodBeat.o(96064);
       return str;
     }
-    if (this.wLu == 6)
+    if (this.xYa == 6)
     {
-      str = q.p(this.wFd);
+      str = q.p(this.xRy);
       AppMethodBeat.o(96064);
       return str;
     }
-    if (this.wLs)
+    if (this.xXY)
     {
-      str = q.m(this.wFd);
+      str = q.m(this.xRy);
       AppMethodBeat.o(96064);
       return str;
     }
-    String str = q.l(this.wFd);
+    String str = q.l(this.xRy);
     AppMethodBeat.o(96064);
     return str;
   }
@@ -74,33 +74,33 @@ public final class a
   public final String getPath()
   {
     AppMethodBeat.i(96065);
-    if (!bt.isNullOrNil(this.wBe))
+    if (!bs.isNullOrNil(this.xNz))
     {
-      str = this.wBe;
+      str = this.xNz;
       AppMethodBeat.o(96065);
       return str;
     }
-    if (bt.isNullOrNil(this.wEY)) {
+    if (bs.isNullOrNil(this.xRt)) {
       init();
     }
-    String str = this.wEY;
+    String str = this.xRt;
     AppMethodBeat.o(96065);
     return str;
-  }
-  
-  public final a iL(String paramString1, String paramString2)
-  {
-    this.wBe = paramString1;
-    this.wBf = paramString2;
-    return this;
   }
   
   public final boolean init()
   {
     AppMethodBeat.i(96063);
-    this.wEY = an.iF(af.getAccSnsPath(), this.mediaId);
+    this.xRt = an.jc(af.getAccSnsPath(), this.mediaId);
     AppMethodBeat.o(96063);
     return true;
+  }
+  
+  public final a ji(String paramString1, String paramString2)
+  {
+    this.xNz = paramString1;
+    this.xNA = paramString2;
+    return this;
   }
 }
 

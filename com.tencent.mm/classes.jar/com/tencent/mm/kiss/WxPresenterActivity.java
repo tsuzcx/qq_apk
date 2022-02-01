@@ -10,45 +10,45 @@ import com.tencent.mm.vending.c.b;
 public abstract class WxPresenterActivity
   extends MMActivity
 {
-  protected c gfW = new c();
+  protected c gkC = new c();
   
-  public final com.tencent.mm.vending.app.a agy()
+  public final com.tencent.mm.vending.app.a ahP()
   {
-    return this.gfW.agy();
+    return this.gkC.ahP();
   }
   
   public final <T extends b<? extends com.tencent.mm.vending.app.a>> T am(Class<? extends b<? extends com.tencent.mm.vending.app.a>> paramClass)
   {
-    return this.gfW.a(this, paramClass);
+    return this.gkC.a(this, paramClass);
   }
   
   public void keep(com.tencent.mm.vending.e.a parama)
   {
-    this.gfW.keep(parama);
+    this.gkC.keep(parama);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.gfW.B(getIntent(), this);
+    this.gkC.B(getIntent(), this);
   }
   
   public void onDestroy()
   {
-    this.gfW.onDestroy();
+    this.gkC.onDestroy();
     super.onDestroy();
   }
   
   public void onPause()
   {
-    this.gfW.abd(3);
+    this.gkC.adp(3);
     super.onPause();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.gfW.abd(2);
+    this.gkC.adp(2);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

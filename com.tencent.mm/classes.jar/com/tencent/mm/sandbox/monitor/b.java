@@ -7,34 +7,34 @@ import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sandbox.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class b
 {
-  private static a ENA = null;
-  public static int ENB = 0;
-  public static long glk = 0L;
-  private long ENC;
-  private ap ENE;
-  private Runnable ENF;
-  private long ENG;
+  private static a GkO = null;
+  public static int GkP = 0;
+  public static long gLX = 0L;
+  private long GkQ;
+  private ao GkR;
+  private Runnable GkS;
+  private long GkT;
   
   public b()
   {
     AppMethodBeat.i(32596);
-    this.ENC = 300000L;
-    this.ENE = new ap();
-    this.ENF = new Runnable()
+    this.GkQ = 300000L;
+    this.GkR = new ao();
+    this.GkS = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(32594);
-        ad.d("MicroMsg.ExceptionMonitor", "stopSelf");
-        if (b.eDw() != null) {
-          b.eDw().stopSelf();
+        ac.d("MicroMsg.ExceptionMonitor", "stopSelf");
+        if (b.eSQ() != null) {
+          b.eSQ().stopSelf();
         }
         AppMethodBeat.o(32594);
       }
@@ -42,16 +42,16 @@ public final class b
     AppMethodBeat.o(32596);
   }
   
-  public static void hY(Context paramContext)
+  public static void ij(Context paramContext)
   {
     AppMethodBeat.i(32600);
     Intent localIntent = new Intent(paramContext, CrashUploadAlarmReceiver.class);
     PendingIntent localPendingIntent = com.tencent.mm.a.a.b(paramContext, 108, localIntent);
     if (localPendingIntent == null)
     {
-      long l = bt.eGO() + 1800000L;
+      long l = bs.eWj() + 1800000L;
       com.tencent.mm.a.a.set(paramContext, 108, 0, l, localIntent, 0);
-      ad.i("MicroMsg.ExceptionMonitor", "dkcrash startAlarmMgr pendingIntent:%d %d", new Object[] { Integer.valueOf(localPendingIntent.hashCode()), Long.valueOf(l) });
+      ac.i("MicroMsg.ExceptionMonitor", "dkcrash startAlarmMgr pendingIntent:%d %d", new Object[] { Integer.valueOf(localPendingIntent.hashCode()), Long.valueOf(l) });
     }
     AppMethodBeat.o(32600);
   }
@@ -59,25 +59,25 @@ public final class b
   public final void a(a parama)
   {
     AppMethodBeat.i(32597);
-    ENA = parama;
+    GkO = parama;
     c.o(hashCode(), this);
-    this.ENE.postDelayed(this.ENF, this.ENC);
+    this.GkR.postDelayed(this.GkS, this.GkQ);
     AppMethodBeat.o(32597);
   }
   
   public final void o(Intent paramIntent)
   {
     AppMethodBeat.i(32599);
-    ad.i("MicroMsg.ExceptionMonitor", "handleCommand()");
+    ac.i("MicroMsg.ExceptionMonitor", "handleCommand()");
     if (paramIntent == null)
     {
       AppMethodBeat.o(32599);
       return;
     }
-    this.ENE.removeCallbacks(this.ENF);
-    this.ENE.postDelayed(this.ENF, this.ENC);
+    this.GkR.removeCallbacks(this.GkS);
+    this.GkR.postDelayed(this.GkS, this.GkQ);
     String str3 = paramIntent.getAction();
-    ad.d("MicroMsg.ExceptionMonitor", "dkcrash handleCommand action:".concat(String.valueOf(str3)));
+    ac.d("MicroMsg.ExceptionMonitor", "dkcrash handleCommand action:".concat(String.valueOf(str3)));
     String str1;
     String str4;
     String str5;
@@ -94,20 +94,20 @@ public final class b
           str1 = "exception";
         }
         str2 = paramIntent.getStringExtra("exceptionProcess");
-        if (bt.kU(str2, "mm"))
+        if (bs.lr(str2, "mm"))
         {
-          h.vKh.idkeyStat(1185L, 11L, 1L, true);
+          h.wUl.idkeyStat(1185L, 11L, 1L, true);
           int i = paramIntent.getIntExtra("exceptionPid", 0);
           str1.equals("exception");
-          ENB = i;
-          glk = paramIntent.getLongExtra("exceptionTime", SystemClock.elapsedRealtime());
+          GkP = i;
+          gLX = paramIntent.getLongExtra("exceptionTime", SystemClock.elapsedRealtime());
           str4 = paramIntent.getStringExtra("exceptionMsg");
           str5 = paramIntent.getStringExtra("userName");
           str6 = paramIntent.getStringExtra("exceptionPreventPath");
           bool = paramIntent.getBooleanExtra("exceptionWriteSdcard", true);
-          ad.d("MicroMsg.ExceptionMonitor", "dkcrash handleCommand. action=" + str3 + " pid:" + i + " tag=" + str1 + ", userName=" + str5 + ", crashPreventPath=" + bt.by(str6, "null") + ", message" + str4);
-          ad.i("MicroMsg.ExceptionMonitor", "processName:%s crashPreventPath:%s", new Object[] { str2, str6 });
-          if (!bt.isNullOrNil(str4)) {
+          ac.d("MicroMsg.ExceptionMonitor", "dkcrash handleCommand. action=" + str3 + " pid:" + i + " tag=" + str1 + ", userName=" + str5 + ", crashPreventPath=" + bs.bG(str6, "null") + ", message" + str4);
+          ac.i("MicroMsg.ExceptionMonitor", "processName:%s crashPreventPath:%s", new Object[] { str2, str6 });
+          if (!bs.isNullOrNil(str4)) {
             break;
           }
           AppMethodBeat.o(32599);
@@ -116,23 +116,31 @@ public final class b
       }
       catch (Exception paramIntent)
       {
-        ad.printErrStackTrace("MicroMsg.ExceptionMonitor", paramIntent, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.ExceptionMonitor", paramIntent, "", new Object[0]);
         AppMethodBeat.o(32599);
         return;
       }
-      if (bt.kU(str2, "push")) {
-        h.vKh.idkeyStat(1185L, 12L, 1L, true);
-      } else if (bt.kU(str2, "other")) {
-        h.vKh.idkeyStat(1185L, 13L, 1L, true);
+      if (bs.lr(str2, "push")) {
+        h.wUl.idkeyStat(1185L, 12L, 1L, true);
+      } else if (bs.lr(str2, "other")) {
+        h.wUl.idkeyStat(1185L, 13L, 1L, true);
       }
     }
-    if (a.a(str5, str1, new ErrLog.Error(str5, str1, bt.aGK(), str4, bool), str6, false) == 0) {
-      hY(aj.getContext());
+    if (a.a(str5, str1, new ErrLog.Error(str5, str1, bs.aNx(), str4, bool), str6, false) == 0) {
+      ij(ai.getContext());
     }
-    if (System.currentTimeMillis() - this.ENG > 600000L)
+    if (System.currentTimeMillis() - this.GkT > 600000L)
     {
-      this.ENG = System.currentTimeMillis();
-      com.tencent.mm.sdk.g.b.c(new b.2(this), "RecoveryWriteLogThread");
+      this.GkT = System.currentTimeMillis();
+      com.tencent.mm.sdk.g.b.c(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(32595);
+          com.tencent.mm.modelrecovery.b.aGQ();
+          AppMethodBeat.o(32595);
+        }
+      }, "RecoveryWriteLogThread");
     }
     AppMethodBeat.o(32599);
   }
@@ -141,8 +149,8 @@ public final class b
   {
     AppMethodBeat.i(32598);
     c.p(hashCode(), this);
-    this.ENE.removeCallbacks(this.ENF);
-    ENA = null;
+    this.GkR.removeCallbacks(this.GkS);
+    GkO = null;
     AppMethodBeat.o(32598);
   }
   
@@ -153,7 +161,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.b
  * JD-Core Version:    0.7.0.1
  */

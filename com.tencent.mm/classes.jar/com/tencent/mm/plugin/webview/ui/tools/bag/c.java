@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -12,20 +12,20 @@ import org.json.JSONObject;
 
 public final class c
 {
-  private static final HashSet<String> BjD;
+  private static final HashSet<String> CBQ;
   
   static
   {
     AppMethodBeat.i(80438);
     HashSet localHashSet = new HashSet();
-    BjD = localHashSet;
+    CBQ = localHashSet;
     localHashSet.add("title");
-    BjD.add("webpageTitle");
-    BjD.add("srcUsername");
-    BjD.add("srcDisplayname");
-    BjD.add("mode");
-    BjD.add("KTemplateId");
-    BjD.add("KPublisherId");
+    CBQ.add("webpageTitle");
+    CBQ.add("srcUsername");
+    CBQ.add("srcDisplayname");
+    CBQ.add("mode");
+    CBQ.add("KTemplateId");
+    CBQ.add("KPublisherId");
     AppMethodBeat.o(80438);
   }
   
@@ -57,7 +57,7 @@ public final class c
     AppMethodBeat.o(80437);
   }
   
-  public static JSONObject aH(Bundle paramBundle)
+  public static JSONObject aM(Bundle paramBundle)
   {
     AppMethodBeat.i(80436);
     localJSONObject = new JSONObject();
@@ -78,7 +78,7 @@ public final class c
     }
     catch (JSONException paramBundle)
     {
-      ad.e("MicroMsg.WebViewBagIntentLogic", "save exp:%s", new Object[] { paramBundle });
+      ac.e("MicroMsg.WebViewBagIntentLogic", "save exp:%s", new Object[] { paramBundle });
       AppMethodBeat.o(80436);
     }
   }
@@ -117,7 +117,7 @@ public final class c
         AppMethodBeat.o(80434);
         return;
       }
-      ad.w("MicroMsg.WebViewBagIntentLogic", "put not support type;class:%s", new Object[] { paramObject.getClass() });
+      ac.w("MicroMsg.WebViewBagIntentLogic", "put not support type;class:%s", new Object[] { paramObject.getClass() });
       put("type", 0);
       put("val", paramObject);
       AppMethodBeat.o(80434);
@@ -131,18 +131,18 @@ public final class c
         try
         {
           int i = paramJSONObject.getInt("type");
-          ad.i("MicroMsg.WebViewBagIntentLogic", "restoreToBundle key:%s type：%d", new Object[] { paramString, Integer.valueOf(i) });
+          ac.i("MicroMsg.WebViewBagIntentLogic", "restoreToBundle key:%s type：%d", new Object[] { paramString, Integer.valueOf(i) });
           switch (i)
           {
           case 1: 
-            ad.w("MicroMsg.WebViewBagIntentLogic", "not support type");
+            ac.w("MicroMsg.WebViewBagIntentLogic", "not support type");
             AppMethodBeat.o(80435);
             return;
           }
         }
         catch (JSONException paramBundle)
         {
-          ad.e("MicroMsg.WebViewBagIntentLogic", "restoreToBundle e:%s", new Object[] { paramBundle });
+          ac.e("MicroMsg.WebViewBagIntentLogic", "restoreToBundle e:%s", new Object[] { paramBundle });
           AppMethodBeat.o(80435);
           return;
         }

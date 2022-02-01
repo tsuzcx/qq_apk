@@ -20,7 +20,7 @@ public final class e
   public final void parallelsDependency()
   {
     AppMethodBeat.i(22354);
-    com.tencent.mm.kernel.a.b.a.a(this, c.class).bB(g.ad(n.class));
+    com.tencent.mm.kernel.a.b.a.a(this, c.class).by(g.ad(n.class));
     AppMethodBeat.o(22354);
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mm.platformtools;
 
 import android.app.Activity;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.g;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +9,7 @@ public abstract class c
   implements g
 {
   public Activity activity;
-  Set<Integer> hTN = new HashSet();
+  Set<Integer> itS = new HashSet();
   
   public c(Activity paramActivity)
   {
@@ -46,7 +46,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.platformtools.c
  * JD-Core Version:    0.7.0.1
  */

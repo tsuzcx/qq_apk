@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.nearby.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.modelstat.o;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.blb;
-import com.tencent.mm.protocal.protobuf.blf;
-import com.tencent.mm.protocal.protobuf.blg;
-import com.tencent.mm.protocal.protobuf.dow;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.box;
+import com.tencent.mm.protocal.protobuf.bpb;
+import com.tencent.mm.protocal.protobuf.bpc;
+import com.tencent.mm.protocal.protobuf.dun;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,38 +27,38 @@ public final class c
   extends n
   implements k
 {
-  private com.tencent.mm.al.g callback;
-  private final com.tencent.mm.al.b rr;
+  private com.tencent.mm.ak.g callback;
+  private final com.tencent.mm.ak.b rr;
   
   public c(int paramInt1, float paramFloat1, float paramFloat2, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
     AppMethodBeat.i(89765);
     if ((paramInt1 != 1) && (paramInt1 != 2) && (paramInt1 != 3) && (paramInt1 != 4)) {
-      ad.e("MicroMsg.NetSceneLbsP", "OpCode Error :".concat(String.valueOf(paramInt1)));
+      ac.e("MicroMsg.NetSceneLbsP", "OpCode Error :".concat(String.valueOf(paramInt1)));
     }
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new blf();
-    ((b.a)localObject).gUV = new blg();
+    ((b.a)localObject).hvt = new bpb();
+    ((b.a)localObject).hvu = new bpc();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/lbsfind";
     ((b.a)localObject).funcId = 148;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (blf)this.rr.gUS.gUX;
-    ((blf)localObject).OpCode = paramInt1;
-    ((blf)localObject).COI = paramFloat1;
-    ((blf)localObject).COJ = paramFloat2;
-    ((blf)localObject).DfE = paramInt2;
-    ((blf)localObject).DfF = paramString1;
-    ((blf)localObject).DfG = paramString2;
-    ((blf)localObject).DfH = paramInt3;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (bpb)this.rr.hvr.hvw;
+    ((bpb)localObject).OpCode = paramInt1;
+    ((bpb)localObject).Eht = paramFloat1;
+    ((bpb)localObject).Ehu = paramFloat2;
+    ((bpb)localObject).EyK = paramInt2;
+    ((bpb)localObject).EyL = paramString1;
+    ((bpb)localObject).EyM = paramString2;
+    ((bpb)localObject).EyN = paramInt3;
     try
     {
-      dow localdow = new dow();
-      localdow.EFc = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.ufs.cWU());
-      ((blf)localObject).CBU = new SKBuiltinBuffer_t().setBuffer(localdow.toByteArray());
+      dun localdun = new dun();
+      localdun.Gco = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.vor.dkC());
+      ((bpb)localObject).DUr = new SKBuiltinBuffer_t().setBuffer(localdun.toByteArray());
       label223:
-      ad.d("MicroMsg.NetSceneLbsP", "Req: opcode:" + paramInt1 + " lon:" + paramFloat1 + " lat:" + paramFloat2 + " pre:" + paramInt2 + " gpsSource:" + paramInt3 + " mac" + paramString1 + " cell:" + paramString2);
+      ac.d("MicroMsg.NetSceneLbsP", "Req: opcode:" + paramInt1 + " lon:" + paramFloat1 + " lat:" + paramFloat2 + " pre:" + paramInt2 + " gpsSource:" + paramInt3 + " mac" + paramString1 + " cell:" + paramString2);
       o.a(2001, paramFloat1, paramFloat2, paramInt2);
       AppMethodBeat.o(89765);
       return;
@@ -69,40 +69,40 @@ public final class c
     }
   }
   
-  public final int JJ()
+  public final int Js()
   {
-    return ((blf)this.rr.gUS.gUX).OpCode;
+    return ((bpb)this.rr.hvr.hvw).OpCode;
   }
   
-  public final boolean cVZ()
+  public final boolean djH()
   {
-    return ((blg)this.rr.gUT.gUX).DJj == 1;
+    return ((bpc)this.rr.hvs.hvw).FeE == 1;
   }
   
-  public final int cWa()
+  public final int djI()
   {
-    return ((blg)this.rr.gUT.gUX).DJk;
+    return ((bpc)this.rr.hvs.hvw).FeF;
   }
   
-  public final List<blb> cWb()
+  public final List<box> djJ()
   {
     AppMethodBeat.i(89768);
-    LinkedList localLinkedList = ((blg)this.rr.gUT.gUX).DsN;
+    LinkedList localLinkedList = ((bpc)this.rr.hvs.hvw).ENR;
     if (localLinkedList != null)
     {
-      com.tencent.mm.kernel.g.afz().aeD();
+      com.tencent.mm.kernel.g.agP().afT();
       Iterator localIterator = localLinkedList.iterator();
       while (localIterator.hasNext())
       {
-        blb localblb = (blb)localIterator.next();
-        com.tencent.mm.plugin.c.a.aLf().aqn().kY(localblb.mAQ, localblb.Dqd);
+        box localbox = (box)localIterator.next();
+        com.tencent.mm.plugin.c.a.aRW().axc().lv(localbox.ncR, localbox.ELg);
       }
     }
     AppMethodBeat.o(89768);
     return localLinkedList;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(89766);
     this.callback = paramg;
@@ -119,40 +119,40 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(89767);
-    ad.d("MicroMsg.NetSceneLbsP", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramq = (blg)((com.tencent.mm.al.b)paramq).gUT.gUX;
+    ac.d("MicroMsg.NetSceneLbsP", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramq = (bpc)((com.tencent.mm.ak.b)paramq).hvs.hvw;
     paramArrayOfByte = new ArrayList();
     paramInt1 = 0;
-    while (paramInt1 < paramq.DsN.size())
+    while (paramInt1 < paramq.ENR.size())
     {
       i locali = new i();
-      locali.username = ((blb)paramq.DsN.get(paramInt1)).mAQ;
-      locali.evo = ((blb)paramq.DsN.get(paramInt1)).CxA;
-      locali.gUg = ((blb)paramq.DsN.get(paramInt1)).CVv;
-      locali.gUf = ((blb)paramq.DsN.get(paramInt1)).CVw;
-      locali.ee(true);
+      locali.username = ((box)paramq.ENR.get(paramInt1)).ncR;
+      locali.exK = ((box)paramq.ENR.get(paramInt1)).DPW;
+      locali.huF = ((box)paramq.ENR.get(paramInt1)).Eof;
+      locali.huE = ((box)paramq.ENR.get(paramInt1)).Eog;
+      locali.ez(true);
       paramArrayOfByte.add(locali);
       paramInt1 += 1;
     }
-    p.auF().ao(paramArrayOfByte);
-    if ((JJ() == 1) || (JJ() == 3) || (JJ() == 4))
+    p.aBw().al(paramArrayOfByte);
+    if ((Js() == 1) || (Js() == 3) || (Js() == 4))
     {
       if ((paramInt2 != 0) && (paramInt3 == -2001))
       {
-        com.tencent.mm.kernel.g.afB().afk().set(8210, Long.valueOf(0L));
+        com.tencent.mm.kernel.g.agR().agA().set(8210, Long.valueOf(0L));
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         AppMethodBeat.o(89767);
         return;
       }
-      com.tencent.mm.kernel.g.afB().afk().set(8210, Long.valueOf(System.currentTimeMillis() + paramq.DJi * 1000));
+      com.tencent.mm.kernel.g.agR().agA().set(8210, Long.valueOf(System.currentTimeMillis() + paramq.FeD * 1000));
     }
     for (;;)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(89767);
       return;
-      if (JJ() == 2) {
-        com.tencent.mm.kernel.g.afB().afk().set(8210, Long.valueOf(0L));
+      if (Js() == 2) {
+        com.tencent.mm.kernel.g.agR().agA().set(8210, Long.valueOf(0L));
       }
     }
   }

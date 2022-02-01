@@ -12,16 +12,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.pluginsdk.ui.tools.j;
-import com.tencent.mm.protocal.protobuf.bvm;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.protocal.protobuf.cae;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.widget.a.d;
@@ -31,64 +31,64 @@ import java.util.Map;
 import junit.framework.Assert;
 
 public final class aa
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private LinkedList<String> BXt;
-  String BXu;
-  boolean BXz;
-  a BZA;
-  LinkedList<String> BZB;
-  public Map<String, Integer> BZC;
-  private boolean BZD;
-  private com.tencent.mm.pluginsdk.model.o BZE;
-  private boolean BZF;
+  private LinkedList<String> DpK;
+  String DpL;
+  boolean DpQ;
+  a DrQ;
+  LinkedList<String> DrR;
+  public Map<String, Integer> DrS;
+  private boolean DrT;
+  private com.tencent.mm.pluginsdk.model.o DrU;
+  private boolean DrV;
   public String chatroomName;
   public String content;
   Context context;
-  View ija;
-  d ijc;
-  EditText lmq;
+  View iJh;
+  d iJj;
+  EditText lMg;
   p tipDialog;
-  private LinkedList<Integer> uRO;
-  TextView uTo;
-  private String xLh;
-  private String xLi;
+  private LinkedList<Integer> waD;
+  TextView wcd;
+  private String yXW;
+  private String yXX;
   
   public aa(Context paramContext, a parama)
   {
     AppMethodBeat.i(152244);
-    this.ijc = null;
+    this.iJj = null;
     this.content = "";
-    this.BXz = true;
-    this.BZD = true;
-    this.BZF = false;
+    this.DpQ = true;
+    this.DrT = true;
+    this.DrV = false;
     this.context = paramContext;
-    this.BZA = parama;
+    this.DrQ = parama;
     AppMethodBeat.o(152244);
   }
   
   private void onStart()
   {
     AppMethodBeat.i(152245);
-    com.tencent.mm.kernel.g.afA().gcy.a(30, this);
-    com.tencent.mm.kernel.g.afA().gcy.a(243, this);
+    com.tencent.mm.kernel.g.agQ().ghe.a(30, this);
+    com.tencent.mm.kernel.g.agQ().ghe.a(243, this);
     AppMethodBeat.o(152245);
   }
   
-  public final void D(List<String> paramList, List<Integer> paramList1)
+  public final void C(List<String> paramList, List<Integer> paramList1)
   {
     AppMethodBeat.i(152249);
-    this.BZD = false;
+    this.DrT = false;
     onStart();
-    this.BZB = new LinkedList(paramList);
-    this.uRO = new LinkedList(paramList1);
-    if ((paramList.size() == 1) && (af.aHH((String)this.BZB.getFirst())))
+    this.DrR = new LinkedList(paramList);
+    this.waD = new LinkedList(paramList1);
+    if ((paramList.size() == 1) && (ai.aNc((String)this.DrR.getFirst())))
     {
-      eyt();
+      eNN();
       AppMethodBeat.o(152249);
       return;
     }
-    exP();
+    eNj();
     AppMethodBeat.o(152249);
   }
   
@@ -107,35 +107,35 @@ public final class aa
       label30:
       Assert.assertTrue(bool);
       onStart();
-      this.BZB = paramLinkedList1;
-      this.uRO = paramLinkedList;
-      this.BXt = paramLinkedList2;
-      this.ija = View.inflate(this.context, 2131495371, null);
-      if (this.BXu != null) {
+      this.DrR = paramLinkedList1;
+      this.waD = paramLinkedList;
+      this.DpK = paramLinkedList2;
+      this.iJh = View.inflate(this.context, 2131495371, null);
+      if (this.DpL != null) {
         break label322;
       }
       bool = true;
       label78:
-      if (this.BXu != null) {
+      if (this.DpL != null) {
         break label328;
       }
     }
     label316:
     label322:
     label328:
-    for (int i = 0;; i = this.BXu.length())
+    for (int i = 0;; i = this.DpL.length())
     {
-      ad.i("MicroMsg.SendVerifyRequest", "verifyTip is null: %b, length : %d, value : [%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), this.BXu });
-      if (!bt.isNullOrNil(this.BXu)) {
-        ((TextView)this.ija.findViewById(2131304591)).setText(this.BXu);
+      ac.i("MicroMsg.SendVerifyRequest", "verifyTip is null: %b, length : %d, value : [%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), this.DpL });
+      if (!bs.isNullOrNil(this.DpL)) {
+        ((TextView)this.iJh.findViewById(2131304591)).setText(this.DpL);
       }
-      this.lmq = ((EditText)this.ija.findViewById(2131304590));
-      this.uTo = ((TextView)this.ija.findViewById(2131307005));
-      this.uTo.setVisibility(0);
-      this.lmq.setText(null);
-      this.uTo.setText("50");
-      this.lmq.setFilters(j.CmX);
-      this.lmq.addTextChangedListener(new TextWatcher()
+      this.lMg = ((EditText)this.iJh.findViewById(2131304590));
+      this.wcd = ((TextView)this.iJh.findViewById(2131307005));
+      this.wcd.setVisibility(0);
+      this.lMg.setText(null);
+      this.wcd.setText("50");
+      this.lMg.setFilters(j.DFp);
+      this.lMg.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -145,8 +145,8 @@ public final class aa
           if (j < 0) {
             i = 0;
           }
-          if (aa.this.uTo != null) {
-            aa.this.uTo.setText(String.valueOf(i));
+          if (aa.this.wcd != null) {
+            aa.this.wcd.setText(String.valueOf(i));
           }
           AppMethodBeat.o(152237);
         }
@@ -160,39 +160,39 @@ public final class aa
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(152239);
-          if (aa.this.ijc != null)
+          if (aa.this.iJj != null)
           {
-            aa.this.ijc.dismiss();
-            aa.this.ijc = null;
+            aa.this.iJj.dismiss();
+            aa.this.iJj = null;
           }
-          new av(new av.a()
+          new au(new au.a()
           {
             public final boolean onTimerExpired()
             {
               AppMethodBeat.i(152238);
               aa localaa;
-              if (aa.this.ija != null)
+              if (aa.this.iJh != null)
               {
                 localaa = aa.this;
-                String str = aa.this.lmq.getText().toString().trim();
+                String str = aa.this.lMg.getText().toString().trim();
                 Context localContext = localaa.context;
                 localaa.context.getString(2131755906);
                 localaa.tipDialog = com.tencent.mm.ui.base.h.b(localContext, localaa.context.getString(2131763077), true, new aa.5(localaa));
                 localaa.content = str;
-                if ((localaa.BZB.size() != 1) || (!af.aHH((String)localaa.BZB.getFirst()))) {
+                if ((localaa.DrR.size() != 1) || (!ai.aNc((String)localaa.DrR.getFirst()))) {
                   break label130;
                 }
-                localaa.eyt();
+                localaa.eNN();
               }
               for (;;)
               {
                 AppMethodBeat.o(152238);
                 return false;
                 label130:
-                localaa.exP();
+                localaa.eNj();
               }
             }
-          }, false).av(500L, 500L);
+          }, false).au(500L, 500L);
           AppMethodBeat.o(152239);
         }
       };
@@ -201,23 +201,23 @@ public final class aa
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(152240);
-          if (aa.this.ijc != null)
+          if (aa.this.iJj != null)
           {
-            aa.this.ijc.dismiss();
-            aa.this.ijc = null;
+            aa.this.iJj.dismiss();
+            aa.this.iJj = null;
           }
           aa.this.onStop();
-          if (aa.this.BZA != null) {
-            aa.this.BZA.cE(false);
+          if (aa.this.DrQ != null) {
+            aa.this.DrQ.cD(false);
           }
           AppMethodBeat.o(152240);
         }
       };
-      this.ijc = com.tencent.mm.ui.base.h.a(this.context, this.context.getString(2131763081), this.ija, paramLinkedList1, paramLinkedList);
-      if (this.ijc == null) {
+      this.iJj = com.tencent.mm.ui.base.h.a(this.context, this.context.getString(2131763081), this.iJh, paramLinkedList1, paramLinkedList);
+      if (this.iJj == null) {
         onStop();
       }
-      this.lmq.post(new Runnable()
+      this.lMg.post(new Runnable()
       {
         public final void run()
         {
@@ -239,44 +239,44 @@ public final class aa
     }
   }
   
-  final void exP()
-  {
-    AppMethodBeat.i(152250);
-    this.BZE = new com.tencent.mm.pluginsdk.model.o(this.BZB, this.uRO, this.content, "", this.BZC, this.chatroomName);
-    this.BZE.tS(this.BXz);
-    this.BZE.kx(this.xLh, this.xLi);
-    com.tencent.mm.kernel.g.afA().gcy.a(this.BZE, 0);
-    AppMethodBeat.o(152250);
-  }
-  
-  public final void eys()
+  public final void eNM()
   {
     AppMethodBeat.i(152247);
-    if (this.BZE != null) {
-      com.tencent.mm.kernel.g.aeS().a(this.BZE);
+    if (this.DrU != null) {
+      com.tencent.mm.kernel.g.agi().a(this.DrU);
     }
     AppMethodBeat.o(152247);
   }
   
-  final void eyt()
+  final void eNN()
   {
     AppMethodBeat.i(152251);
-    if ((this.BXt == null) || (this.BXt.isEmpty()))
+    if ((this.DpK == null) || (this.DpK.isEmpty()))
     {
-      this.BZF = true;
-      com.tencent.mm.kernel.g.afA().gcy.a(881, this);
-      com.tencent.mm.kernel.g.afA().gcy.a(new com.tencent.mm.openim.b.h((String)this.BZB.getFirst(), "", ""), 0);
+      this.DrV = true;
+      com.tencent.mm.kernel.g.agQ().ghe.a(881, this);
+      com.tencent.mm.kernel.g.agQ().ghe.a(new com.tencent.mm.openim.b.h((String)this.DrR.getFirst(), "", ""), 0);
       AppMethodBeat.o(152251);
       return;
     }
-    com.tencent.mm.kernel.g.afA().gcy.a(new com.tencent.mm.openim.b.o((String)this.BZB.getFirst(), this.content, (String)this.BXt.getFirst()), 0);
+    com.tencent.mm.kernel.g.agQ().ghe.a(new com.tencent.mm.openim.b.o((String)this.DrR.getFirst(), this.content, (String)this.DpK.getFirst()), 0);
     AppMethodBeat.o(152251);
   }
   
-  public final void kx(String paramString1, String paramString2)
+  final void eNj()
   {
-    this.xLh = paramString1;
-    this.xLi = paramString2;
+    AppMethodBeat.i(152250);
+    this.DrU = new com.tencent.mm.pluginsdk.model.o(this.DrR, this.waD, this.content, "", this.DrS, this.chatroomName);
+    this.DrU.uT(this.DpQ);
+    this.DrU.kU(this.yXW, this.yXX);
+    com.tencent.mm.kernel.g.agQ().ghe.a(this.DrU, 0);
+    AppMethodBeat.o(152250);
+  }
+  
+  public final void kU(String paramString1, String paramString2)
+  {
+    this.yXW = paramString1;
+    this.yXX = paramString2;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -284,17 +284,17 @@ public final class aa
     AppMethodBeat.i(152252);
     if (paramn.getType() == 881)
     {
-      com.tencent.mm.kernel.g.afA().gcy.b(881, this);
+      com.tencent.mm.kernel.g.agQ().ghe.b(881, this);
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        if (this.BZF)
+        if (this.DrV)
         {
-          paramString = ((com.tencent.mm.openim.b.h)paramn).hNJ.CxM;
-          com.tencent.mm.kernel.g.afA().gcy.a(new com.tencent.mm.openim.b.o((String)this.BZB.getFirst(), this.content, paramString), 0);
+          paramString = ((com.tencent.mm.openim.b.h)paramn).iof.DQi;
+          com.tencent.mm.kernel.g.agQ().ghe.a(new com.tencent.mm.openim.b.o((String)this.DrR.getFirst(), this.content, paramString), 0);
         }
       }
       for (;;)
       {
-        this.BZF = false;
+        this.DrV = false;
         AppMethodBeat.o(152252);
         return;
         Toast.makeText(this.context, this.context.getString(2131763075), 1).show();
@@ -302,17 +302,17 @@ public final class aa
     }
     if ((paramn.getType() != 30) && (paramn.getType() != 243))
     {
-      ad.w("MicroMsg.SendVerifyRequest", "not expected scene,  type = " + paramn.getType());
+      ac.w("MicroMsg.SendVerifyRequest", "not expected scene,  type = " + paramn.getType());
       AppMethodBeat.o(152252);
       return;
     }
-    if (((paramn instanceof com.tencent.mm.pluginsdk.model.o)) && (((com.tencent.mm.pluginsdk.model.o)paramn).djq != 2))
+    if (((paramn instanceof com.tencent.mm.pluginsdk.model.o)) && (((com.tencent.mm.pluginsdk.model.o)paramn).dgL != 2))
     {
-      ad.e("MicroMsg.SendVerifyRequest", "not opcode sendrequest!");
+      ac.e("MicroMsg.SendVerifyRequest", "not opcode sendrequest!");
       AppMethodBeat.o(152252);
       return;
     }
-    ad.d("MicroMsg.SendVerifyRequest", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    ac.d("MicroMsg.SendVerifyRequest", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
@@ -321,12 +321,12 @@ public final class aa
     onStop();
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (this.BZD) {
-        com.tencent.mm.ui.base.h.cf(this.context, this.context.getString(2131763076));
+      if (this.DrT) {
+        com.tencent.mm.ui.base.h.cg(this.context, this.context.getString(2131763076));
       }
-      if (this.BZA != null)
+      if (this.DrQ != null)
       {
-        this.BZA.cE(true);
+        this.DrQ.cD(true);
         AppMethodBeat.o(152252);
       }
     }
@@ -339,11 +339,11 @@ public final class aa
     }
     for (;;)
     {
-      if ((this.BZD) && (!bt.isNullOrNil(paramn))) {
+      if ((this.DrT) && (!bs.isNullOrNil(paramn))) {
         Toast.makeText(this.context, paramn, 1).show();
       }
-      if (this.BZA != null) {
-        this.BZA.cE(false);
+      if (this.DrQ != null) {
+        this.DrQ.cD(false);
       }
       AppMethodBeat.o(152252);
       return;
@@ -355,21 +355,21 @@ public final class aa
       else if ((paramInt1 == 4) && (paramInt2 == -24))
       {
         paramn = paramString;
-        if (!bt.isNullOrNil(paramString)) {}
+        if (!bs.isNullOrNil(paramString)) {}
       }
       else
       {
         if (paramInt2 == -160)
         {
-          if (!bt.isNullOrNil(paramString))
+          if (!bs.isNullOrNil(paramString))
           {
             com.tencent.mm.ui.base.h.d(this.context, paramString, "", this.context.getResources().getString(2131755700), this.context.getResources().getString(2131755691), new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(152243);
-                aa.this.BXz = false;
-                aa.this.exP();
+                aa.this.DpQ = false;
+                aa.this.eNj();
                 AppMethodBeat.o(152243);
               }
             }, null);
@@ -381,7 +381,7 @@ public final class aa
           if (paramInt1 == 4)
           {
             paramn = paramString;
-            if (!bt.isNullOrNil(paramString)) {
+            if (!bs.isNullOrNil(paramString)) {
               continue;
             }
           }
@@ -396,24 +396,24 @@ public final class aa
   final void onStop()
   {
     AppMethodBeat.i(152246);
-    com.tencent.mm.kernel.g.afA().gcy.b(30, this);
-    com.tencent.mm.kernel.g.afA().gcy.b(243, this);
-    if (this.ijc != null)
+    com.tencent.mm.kernel.g.agQ().ghe.b(30, this);
+    com.tencent.mm.kernel.g.agQ().ghe.b(243, this);
+    if (this.iJj != null)
     {
-      this.ijc.dismiss();
-      this.ijc = null;
+      this.iJj.dismiss();
+      this.iJj = null;
     }
     AppMethodBeat.o(152246);
   }
   
   public static abstract interface a
   {
-    public abstract void cE(boolean paramBoolean);
+    public abstract void cD(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.aa
  * JD-Core Version:    0.7.0.1
  */

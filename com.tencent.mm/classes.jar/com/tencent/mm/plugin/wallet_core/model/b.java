@@ -8,29 +8,29 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public String AbA;
-  public String AbB;
-  public a AbC;
-  public String Aby;
-  public LinkedList<b.b> Abz;
-  public double vAJ = 0.0D;
-  public int zGt = 0;
-  public int zGu = 0;
-  public int zGv = 0;
-  public double zGw = 0.0D;
+  public int AYG = 0;
+  public int AYH = 0;
+  public int AYI = 0;
+  public double AYJ = 0.0D;
+  public String BtS;
+  public LinkedList<b.b> BtT;
+  public String BtU;
+  public String BtV;
+  public a BtW;
+  public double wKO = 0.0D;
   
-  public static a aQ(JSONObject paramJSONObject)
+  public static a aR(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70212);
     a locala = new a();
     if (paramJSONObject != null) {
       try
       {
-        locala.AbD = paramJSONObject.optString("sector_title", "");
+        locala.BtX = paramJSONObject.optString("sector_title", "");
         paramJSONObject = paramJSONObject.optJSONArray("label");
         if (paramJSONObject != null)
         {
-          locala.AbE = new c[paramJSONObject.length()];
+          locala.BtY = new c[paramJSONObject.length()];
           int i = 0;
           while (i < paramJSONObject.length())
           {
@@ -38,12 +38,12 @@ public final class b
             c localc = new c();
             localc.title = localJSONObject.optString("title", "");
             localc.desc = localJSONObject.optString("desc", "");
-            localc.gGR = localJSONObject.optString("logo_url", "");
-            localc.uaQ = localJSONObject.optInt("jump_type");
-            localc.ntj = localJSONObject.optString("jump_url", "");
+            localc.hhs = localJSONObject.optString("logo_url", "");
+            localc.vjP = localJSONObject.optInt("jump_type");
+            localc.nWj = localJSONObject.optString("jump_url", "");
             localc.username = localJSONObject.optString("username", "");
             localc.path = localJSONObject.optString("path", "");
-            locala.AbE[i] = localc;
+            locala.BtY[i] = localc;
             i += 1;
           }
         }
@@ -56,14 +56,14 @@ public final class b
   
   public static final class a
   {
-    public String AbD;
-    public b.c[] AbE;
+    public String BtX;
+    public b.c[] BtY;
     
     public a()
     {
       AppMethodBeat.i(70211);
-      this.AbD = "";
-      this.AbE = new b.c[0];
+      this.BtX = "";
+      this.BtY = new b.c[0];
       AppMethodBeat.o(70211);
     }
   }
@@ -71,12 +71,12 @@ public final class b
   public static final class c
   {
     public String desc;
-    public String gGR;
-    public String ntj;
+    public String hhs;
+    public String nWj;
     public String path;
     public String title;
-    public int uaQ;
     public String username;
+    public int vjP;
   }
 }
 

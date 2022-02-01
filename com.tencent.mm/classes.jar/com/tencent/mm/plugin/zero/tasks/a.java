@@ -4,8 +4,8 @@ import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ad.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ac.a;
 import com.tencent.wcdb.support.Log;
 import com.tencent.wcdb.support.Log.LogCallback;
 import java.util.HashSet;
@@ -16,19 +16,19 @@ public final class a
   public final void execute(g paramg)
   {
     AppMethodBeat.i(133029);
-    if (!j.pr("wcdb"))
+    if (!j.sD("wcdb"))
     {
       getClass().getClassLoader();
-      j.pq("wcdb");
+      j.sC("wcdb");
     }
     Log.setLogger(new Log.LogCallback()
     {
-      private final HashSet<String> BML;
+      private final HashSet<String> DeV;
       
       public final void println(int paramAnonymousInt, String arg2, String paramAnonymousString2)
       {
         AppMethodBeat.i(133028);
-        ad.a locala = ad.eFv();
+        ac.a locala = ac.eUP();
         int i = Process.myPid();
         int j = Process.myTid();
         switch (paramAnonymousInt)
@@ -53,9 +53,9 @@ public final class a
           if ((???.equals("WCDB.SQLite")) && (paramAnonymousString2.startsWith("[SQLite ErrCode: 284] automatic index on ")))
           {
             paramAnonymousString2 = paramAnonymousString2.substring(41);
-            synchronized (this.BML)
+            synchronized (this.DeV)
             {
-              boolean bool = this.BML.add(paramAnonymousString2);
+              boolean bool = this.DeV.add(paramAnonymousString2);
               if (bool) {}
             }
           }
@@ -80,7 +80,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.tasks.a
  * JD-Core Version:    0.7.0.1
  */

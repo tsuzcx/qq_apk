@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.fav.a.ab;
 import com.tencent.mm.plugin.fav.a.g;
@@ -17,14 +17,6 @@ import com.tencent.mm.pluginsdk.ui.tools.a;
 public final class e
   implements ab
 {
-  public final int Yn(String paramString)
-  {
-    AppMethodBeat.i(24607);
-    int i = q.aAJ(paramString);
-    AppMethodBeat.o(24607);
-    return i;
-  }
-  
   public final int a(k.b paramb, WXMediaMessage paramWXMediaMessage, String paramString)
   {
     AppMethodBeat.i(24604);
@@ -45,11 +37,19 @@ public final class e
   {
     AppMethodBeat.i(24608);
     o.a locala = new o.a(paramContext);
-    locala.dL(paramString);
+    locala.dM(paramString);
     d.a(locala, paramContext, paramg);
     d.b(locala, paramContext, paramg);
-    locala.i(Boolean.valueOf(paramBoolean)).UL(2131755884).a(parama).ijc.show();
+    locala.i(Boolean.valueOf(paramBoolean)).WV(2131755884).a(parama).iJj.show();
     AppMethodBeat.o(24608);
+  }
+  
+  public final int acJ(String paramString)
+  {
+    AppMethodBeat.i(24607);
+    int i = q.aGb(paramString);
+    AppMethodBeat.o(24607);
+    return i;
   }
   
   public final void b(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
@@ -68,7 +68,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.favorite.e
  * JD-Core Version:    0.7.0.1
  */

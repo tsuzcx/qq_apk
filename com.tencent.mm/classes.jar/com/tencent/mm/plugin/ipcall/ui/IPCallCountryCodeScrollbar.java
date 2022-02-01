@@ -11,42 +11,42 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
 import com.tencent.mm.ui.base.o;
 
 public class IPCallCountryCodeScrollbar
   extends View
 {
-  public static final String[] sGo = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-  private int boX;
-  private float fPm;
+  public static final String[] tNV = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+  private int bns;
+  private float fTh;
   private Paint paint;
-  protected float sGp;
-  protected int sGq;
-  protected String[] sGr;
-  private float sGs;
-  private o sGt;
-  private TextView sGu;
-  private int sGv;
-  private a sGw;
+  protected float tNW;
+  protected int tNX;
+  protected String[] tNY;
+  private float tNZ;
+  private o tOa;
+  private TextView tOb;
+  private int tOc;
+  private a tOd;
   private float textSize;
   
   public IPCallCountryCodeScrollbar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25725);
-    this.sGs = 0.0F;
-    this.sGr = new String[] { "↑" };
-    this.sGp = 1.3F;
-    this.sGq = 79;
+    this.tNZ = 0.0F;
+    this.tNY = new String[] { "↑" };
+    this.tNW = 1.3F;
+    this.tNX = 79;
     setFocusable(true);
     setFocusableInTouchMode(true);
-    this.sGv = BackwardSupportUtil.b.g(paramContext, 3.0F);
+    this.tOc = BackwardSupportUtil.b.g(paramContext, 3.0F);
     paramAttributeSet = inflate(paramContext, getToastLayoutId(), null);
-    int i = BackwardSupportUtil.b.g(paramContext, this.sGq);
-    this.sGt = new o(paramAttributeSet, i, i);
-    this.sGu = ((TextView)paramAttributeSet.findViewById(2131304779));
+    int i = BackwardSupportUtil.b.g(paramContext, this.tNX);
+    this.tOa = new o(paramAttributeSet, i, i);
+    this.tOb = ((TextView)paramAttributeSet.findViewById(2131304779));
     this.paint = new Paint();
     this.paint.setAntiAlias(true);
     this.paint.setColor(-11119018);
@@ -54,10 +54,10 @@ public class IPCallCountryCodeScrollbar
     AppMethodBeat.o(25725);
   }
   
-  public final void aej(String paramString)
+  public final void ajb(String paramString)
   {
     AppMethodBeat.i(25724);
-    String[] arrayOfString1 = sGo;
+    String[] arrayOfString1 = tNV;
     int k = arrayOfString1.length;
     int i = 0;
     int j = 0;
@@ -71,9 +71,9 @@ public class IPCallCountryCodeScrollbar
     if (j == 0) {
       paramString = "#";
     }
-    k = this.sGr.length + 1;
+    k = this.tNY.length + 1;
     arrayOfString1 = new String[k];
-    String[] arrayOfString2 = this.sGr;
+    String[] arrayOfString2 = this.tNY;
     int m = arrayOfString2.length;
     j = 0;
     i = 0;
@@ -90,7 +90,7 @@ public class IPCallCountryCodeScrollbar
       i += 1;
     }
     arrayOfString1[(k - 1)] = paramString;
-    this.sGr = arrayOfString1;
+    this.tNY = arrayOfString1;
     AppMethodBeat.o(25724);
   }
   
@@ -107,26 +107,26 @@ public class IPCallCountryCodeScrollbar
     super.onDraw(paramCanvas);
     final int m = getMeasuredHeight();
     final int k = getMeasuredWidth();
-    this.textSize = (m / (this.sGr.length * this.sGp));
+    this.textSize = (m / (this.tNY.length * this.tNW));
     int n = getResources().getDimensionPixelSize(2131165517);
     if (this.textSize > n) {
       this.textSize = n;
     }
     this.paint.setTextSize(this.textSize);
-    if (this.sGs != this.textSize)
+    if (this.tNZ != this.textSize)
     {
-      this.sGs = this.textSize;
+      this.tNZ = this.textSize;
       post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(25723);
-          if (IPCallCountryCodeScrollbar.this.sGr.length <= 0)
+          if (IPCallCountryCodeScrollbar.this.tNY.length <= 0)
           {
             AppMethodBeat.o(25723);
             return;
           }
-          int i = (int)IPCallCountryCodeScrollbar.a(IPCallCountryCodeScrollbar.this).measureText(IPCallCountryCodeScrollbar.this.sGr[(IPCallCountryCodeScrollbar.this.sGr.length - 1)]) + a.fromDPToPix(IPCallCountryCodeScrollbar.this.getContext(), 8);
+          int i = (int)IPCallCountryCodeScrollbar.a(IPCallCountryCodeScrollbar.this).measureText(IPCallCountryCodeScrollbar.this.tNY[(IPCallCountryCodeScrollbar.this.tNY.length - 1)]) + a.fromDPToPix(IPCallCountryCodeScrollbar.this.getContext(), 8);
           if (i > k)
           {
             ViewGroup.LayoutParams localLayoutParams = IPCallCountryCodeScrollbar.this.getLayoutParams();
@@ -140,19 +140,19 @@ public class IPCallCountryCodeScrollbar
     }
     if (this.textSize == n)
     {
-      float f = (m - this.sGr.length * this.textSize * this.sGp) / 2.0F;
+      float f = (m - this.tNY.length * this.textSize * this.tNW) / 2.0F;
       i = j;
-      while (i < this.sGr.length)
+      while (i < this.tNY.length)
       {
-        paramCanvas.drawText(this.sGr[i], k / 2.0F, this.textSize + f + i * this.textSize * this.sGp, this.paint);
+        paramCanvas.drawText(this.tNY[i], k / 2.0F, this.textSize + f + i * this.textSize * this.tNW, this.paint);
         i += 1;
       }
       AppMethodBeat.o(25726);
       return;
     }
-    while (i < this.sGr.length)
+    while (i < this.tNY.length)
     {
-      paramCanvas.drawText(this.sGr[i], k / 2.0F, this.textSize + i * this.textSize * this.sGp, this.paint);
+      paramCanvas.drawText(this.tNY[i], k / 2.0F, this.textSize + i * this.textSize * this.tNW, this.paint);
       i += 1;
     }
     AppMethodBeat.o(25726);
@@ -163,37 +163,37 @@ public class IPCallCountryCodeScrollbar
     AppMethodBeat.i(25727);
     if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2))
     {
-      this.fPm = paramMotionEvent.getY();
-      if (this.fPm < 0.0F) {
-        this.fPm = 0.0F;
+      this.fTh = paramMotionEvent.getY();
+      if (this.fTh < 0.0F) {
+        this.fTh = 0.0F;
       }
-      if (this.fPm > getMeasuredHeight()) {
-        this.fPm = getMeasuredHeight();
+      if (this.fTh > getMeasuredHeight()) {
+        this.fTh = getMeasuredHeight();
       }
       setBackgroundDrawable(a.l(getContext(), 2131233914));
-      float f1 = this.fPm;
-      float f2 = this.textSize * this.sGp;
-      int j = (int)((f1 - (getMeasuredHeight() - this.sGr.length * f2) / 2.0F) / f2);
+      float f1 = this.fTh;
+      float f2 = this.textSize * this.tNW;
+      int j = (int)((f1 - (getMeasuredHeight() - this.tNY.length * f2) / 2.0F) / f2);
       int i = j;
       if (j < 0) {
         i = 0;
       }
       j = i;
-      if (i >= this.sGr.length) {
-        j = this.sGr.length - 1;
+      if (i >= this.tNY.length) {
+        j = this.tNY.length - 1;
       }
-      this.boX = j;
-      if (this.boX != -1) {
+      this.bns = j;
+      if (this.bns != -1) {
         break label259;
       }
-      this.sGu.setText(2131762893);
-      this.sGt.showAtLocation(this, 17, 0, 0);
-      if (this.sGw != null)
+      this.tOb.setText(2131762893);
+      this.tOa.showAtLocation(this, 17, 0, 0);
+      if (this.tOd != null)
       {
-        if (this.boX != -1) {
+        if (this.bns != -1) {
           break label278;
         }
-        this.sGw.pb(a.aq(getContext(), 2131762893));
+        this.tOd.sn(a.aw(getContext(), 2131762893));
       }
     }
     for (;;)
@@ -202,31 +202,31 @@ public class IPCallCountryCodeScrollbar
       if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
       {
         setBackgroundResource(0);
-        this.sGt.dismiss();
+        this.tOa.dismiss();
       }
       AppMethodBeat.o(25727);
       return true;
       label259:
-      this.sGu.setText(this.sGr[this.boX]);
+      this.tOb.setText(this.tNY[this.bns]);
       break;
       label278:
-      this.sGw.pb(this.sGr[this.boX]);
+      this.tOd.sn(this.tNY[this.bns]);
     }
   }
   
   public void setOnScrollBarTouchListener(a parama)
   {
-    this.sGw = parama;
+    this.tOd = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void pb(String paramString);
+    public abstract void sn(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallCountryCodeScrollbar
  * JD-Core Version:    0.7.0.1
  */

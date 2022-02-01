@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.h.c.b;
 public final class d
   extends f
 {
-  public String jjQ;
+  public String jKd;
 }
 
 

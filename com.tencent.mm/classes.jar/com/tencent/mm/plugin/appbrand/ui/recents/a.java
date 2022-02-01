@@ -5,40 +5,40 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public abstract class a
 {
-  a lGO;
+  a miJ;
   
   protected void a(WeImageView paramWeImageView) {}
   
-  public abstract void bpt();
+  public abstract void bwo();
   
-  public abstract View bpu();
+  public abstract View bwp();
   
-  protected final boolean bpv()
+  protected final boolean bwq()
   {
-    if (bpu() == null) {}
-    while (bpu().getVisibility() != 0) {
+    if (bwp() == null) {}
+    while (bwp().getVisibility() != 0) {
       return false;
     }
     return true;
   }
   
-  protected final void he(boolean paramBoolean)
+  protected final void hB(boolean paramBoolean)
   {
-    if (bpu() == null) {}
+    if (bwp() == null) {}
     for (;;)
     {
       return;
       if (paramBoolean) {
-        if (bpu().getVisibility() != 0) {
-          bpu().setVisibility(0);
+        if (bwp().getVisibility() != 0) {
+          bwp().setVisibility(0);
         }
       }
-      while (this.lGO != null)
+      while (this.miJ != null)
       {
-        this.lGO.a(this, bpu(), paramBoolean);
+        this.miJ.a(this, bwp(), paramBoolean);
         return;
-        if (bpu().getVisibility() != 8) {
-          bpu().setVisibility(8);
+        if (bwp().getVisibility() != 8) {
+          bwp().setVisibility(8);
         }
       }
     }
@@ -50,9 +50,9 @@ public abstract class a
   
   public abstract void onResume();
   
-  public abstract void ud(int paramInt);
+  public abstract void uV(int paramInt);
   
-  public abstract void ue(int paramInt);
+  public abstract void uW(int paramInt);
   
   static abstract interface a
   {
@@ -61,7 +61,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.a
  * JD-Core Version:    0.7.0.1
  */

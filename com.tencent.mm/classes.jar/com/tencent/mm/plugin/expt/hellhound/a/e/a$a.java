@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.expt.hellhound.a.e;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/expt/hellhound/ext/permission/PermissionMonitor$Companion;", "", "()V", "TAG", "", "isOnPauseEvent", "", "isOnPauseEvent$annotations", "()Z", "setOnPauseEvent", "(Z)V", "isRequestPermission", "isRequestPermission$annotations", "setRequestPermission", "mListener", "Lcom/tencent/mm/plugin/expt/hellhound/ext/permission/PermissionMonitor$PermissionListener;", "permissionRequestCode", "", "permissionRequestCode$annotations", "getPermissionRequestCode", "()I", "setPermissionRequestCode", "(I)V", "monitor", "", "plugin-expt_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/permission/PermissionMonitor$Companion;", "", "()V", "TAG", "", "isOnPauseEvent", "", "isOnPauseEvent$annotations", "()Z", "setOnPauseEvent", "(Z)V", "isRequestPermission", "isRequestPermission$annotations", "setRequestPermission", "mListener", "Lcom/tencent/mm/plugin/expt/hellhound/ext/permission/PermissionMonitor$PermissionListener;", "permissionRequestCode", "", "permissionRequestCode$annotations", "getPermissionRequestCode", "()I", "setPermissionRequestCode", "(I)V", "monitor", "", "plugin-expt_release"})
 public final class a$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.e.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,128 +13,128 @@ import java.util.Set;
 
 public final class a
 {
-  public int rzJ;
-  public int rzK;
-  public int rzL;
-  private int rzM;
-  private int rzN;
-  private int rzO;
-  private int rzP;
-  private int rzQ;
-  public List<String> rzR;
-  public List<String> rzS;
-  public List<String> rzT;
-  public List<String> rzU;
-  public List<String> rzV;
-  public HashMap<String, Integer> rzW;
+  public int sIB;
+  public int sIC;
+  public int sID;
+  private int sIE;
+  private int sIF;
+  private int sIG;
+  private int sIH;
+  private int sII;
+  public List<String> sIJ;
+  public List<String> sIK;
+  public List<String> sIL;
+  public List<String> sIM;
+  public List<String> sIN;
+  public HashMap<String, Integer> sIO;
   private int scene;
   
   private a()
   {
     AppMethodBeat.i(111226);
-    this.rzR = new ArrayList(9);
-    this.rzS = new ArrayList(9);
-    this.rzT = new ArrayList(9);
-    this.rzU = new ArrayList(9);
-    this.rzV = new ArrayList(9);
-    this.rzW = new HashMap(9);
+    this.sIJ = new ArrayList(9);
+    this.sIK = new ArrayList(9);
+    this.sIL = new ArrayList(9);
+    this.sIM = new ArrayList(9);
+    this.sIN = new ArrayList(9);
+    this.sIO = new HashMap(9);
     AppMethodBeat.o(111226);
   }
   
-  public final void af(String paramString, int paramInt1, int paramInt2)
+  public final void ae(String paramString, int paramInt1, int paramInt2)
   {
     int i = 1;
     AppMethodBeat.i(173726);
     if ((paramInt1 < 0) || (paramInt1 > 4))
     {
-      ad.e("MicroMsg.GalleryReporter", "type error, %d.", new Object[] { Integer.valueOf(paramInt1) });
+      ac.e("MicroMsg.GalleryReporter", "type error, %d.", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(173726);
       return;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.GalleryReporter", "path is invalid!");
+      ac.e("MicroMsg.GalleryReporter", "path is invalid!");
       AppMethodBeat.o(173726);
       return;
     }
-    ad.i("MicroMsg.GalleryReporter", "type: %d, path: %s.", new Object[] { Integer.valueOf(paramInt1), paramString });
-    if (this.rzR.contains(paramString))
+    ac.i("MicroMsg.GalleryReporter", "type: %d, path: %s.", new Object[] { Integer.valueOf(paramInt1), paramString });
+    if (this.sIJ.contains(paramString))
     {
-      this.rzR.remove(paramString);
-      ad.i("MicroMsg.GalleryReporter", "sendCountFromSearchUnOCRList, remove.");
+      this.sIJ.remove(paramString);
+      ac.i("MicroMsg.GalleryReporter", "sendCountFromSearchUnOCRList, remove.");
       paramInt1 = i;
     }
     for (;;)
     {
       if (paramInt1 != 0) {
-        this.rzW.remove(paramString);
+        this.sIO.remove(paramString);
       }
       AppMethodBeat.o(173726);
       return;
-      if (this.rzS.contains(paramString))
+      if (this.sIK.contains(paramString))
       {
-        this.rzS.remove(paramString);
-        ad.i("MicroMsg.GalleryReporter", "sendCountFromSearchOCRList, remove.");
+        this.sIK.remove(paramString);
+        ac.i("MicroMsg.GalleryReporter", "sendCountFromSearchOCRList, remove.");
         paramInt1 = i;
       }
-      else if (this.rzT.contains(paramString))
+      else if (this.sIL.contains(paramString))
       {
-        this.rzT.remove(paramString);
-        ad.i("MicroMsg.GalleryReporter", "sendCountFromClassifyList, remove.");
+        this.sIL.remove(paramString);
+        ac.i("MicroMsg.GalleryReporter", "sendCountFromClassifyList, remove.");
         paramInt1 = i;
       }
-      else if (this.rzU.contains(paramString))
+      else if (this.sIM.contains(paramString))
       {
-        this.rzU.remove(paramString);
-        ad.i("MicroMsg.GalleryReporter", "sendCountFromDefaultList, remove.");
+        this.sIM.remove(paramString);
+        ac.i("MicroMsg.GalleryReporter", "sendCountFromDefaultList, remove.");
         paramInt1 = i;
       }
       else
       {
-        if (!this.rzV.contains(paramString)) {
+        if (!this.sIN.contains(paramString)) {
           break;
         }
-        this.rzV.remove(paramString);
-        ad.i("MicroMsg.GalleryReporter", "sendCountFromOtherList, remove.");
+        this.sIN.remove(paramString);
+        ac.i("MicroMsg.GalleryReporter", "sendCountFromOtherList, remove.");
         paramInt1 = i;
       }
     }
-    ad.i("MicroMsg.GalleryReporter", "add!!!");
+    ac.i("MicroMsg.GalleryReporter", "add!!!");
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      this.rzW.put(paramString, Integer.valueOf(paramInt2));
+      this.sIO.put(paramString, Integer.valueOf(paramInt2));
       paramInt1 = 0;
       break;
-      this.rzR.add(paramString);
+      this.sIJ.add(paramString);
       continue;
-      this.rzS.add(paramString);
+      this.sIK.add(paramString);
       continue;
-      this.rzT.add(paramString);
+      this.sIL.add(paramString);
       continue;
-      this.rzU.add(paramString);
+      this.sIM.add(paramString);
       continue;
-      this.rzV.add(paramString);
+      this.sIN.add(paramString);
     }
   }
   
   public final void report()
   {
     AppMethodBeat.i(173728);
-    this.rzM = this.rzR.size();
-    this.rzN = this.rzS.size();
-    this.rzO = this.rzT.size();
-    this.rzP = this.rzU.size();
-    this.rzQ = this.rzV.size();
+    this.sIE = this.sIJ.size();
+    this.sIF = this.sIK.size();
+    this.sIG = this.sIL.size();
+    this.sIH = this.sIM.size();
+    this.sII = this.sIN.size();
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.rzW.entrySet().iterator();
+    Iterator localIterator = this.sIO.entrySet().iterator();
     while (localIterator.hasNext()) {
       localStringBuilder.append(((Map.Entry)localIterator.next()).getValue()).append("|");
     }
-    ad.d("MicroMsg.GalleryReporter", "poiStr: %s.", new Object[] { localStringBuilder });
-    h.vKh.f(18077, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.rzJ), Integer.valueOf(this.rzK), Integer.valueOf(this.rzL), Integer.valueOf(this.rzM), Integer.valueOf(this.rzN), Integer.valueOf(this.rzO), Integer.valueOf(this.rzP), Integer.valueOf(this.rzQ), localStringBuilder });
+    ac.d("MicroMsg.GalleryReporter", "poiStr: %s.", new Object[] { localStringBuilder });
+    h.wUl.f(18077, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.sIB), Integer.valueOf(this.sIC), Integer.valueOf(this.sID), Integer.valueOf(this.sIE), Integer.valueOf(this.sIF), Integer.valueOf(this.sIG), Integer.valueOf(this.sIH), Integer.valueOf(this.sII), localStringBuilder });
     reset();
     AppMethodBeat.o(173728);
   }
@@ -143,20 +143,20 @@ public final class a
   {
     AppMethodBeat.i(173727);
     this.scene = 0;
-    this.rzJ = 0;
-    this.rzK = 0;
-    this.rzL = 0;
-    this.rzM = 0;
-    this.rzN = 0;
-    this.rzO = 0;
-    this.rzP = 0;
-    this.rzQ = 0;
-    this.rzR.clear();
-    this.rzS.clear();
-    this.rzT.clear();
-    this.rzU.clear();
-    this.rzV.clear();
-    this.rzW.clear();
+    this.sIB = 0;
+    this.sIC = 0;
+    this.sID = 0;
+    this.sIE = 0;
+    this.sIF = 0;
+    this.sIG = 0;
+    this.sIH = 0;
+    this.sII = 0;
+    this.sIJ.clear();
+    this.sIK.clear();
+    this.sIL.clear();
+    this.sIM.clear();
+    this.sIN.clear();
+    this.sIO.clear();
     AppMethodBeat.o(173727);
   }
   
@@ -214,22 +214,10 @@ public final class a
     }
     this.scene = 16;
   }
-  
-  public static final class a
-  {
-    public static a rzX;
-    
-    static
-    {
-      AppMethodBeat.i(111225);
-      rzX = new a((byte)0);
-      AppMethodBeat.o(111225);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.a
  * JD-Core Version:    0.7.0.1
  */

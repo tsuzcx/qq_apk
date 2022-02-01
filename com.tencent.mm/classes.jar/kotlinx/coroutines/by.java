@@ -1,20 +1,38 @@
 package kotlinx.coroutines;
 
-import d.d.f;
-import d.d.f.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/ThreadContextElement;", "S", "Lkotlin/coroutines/CoroutineContext$Element;", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;)V", "updateThreadContext", "(Lkotlin/coroutines/CoroutineContext;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public abstract interface by<S>
-  extends f.b
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/NonDisposableHandle;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/ChildHandle;", "()V", "childCancelled", "", "cause", "", "dispose", "", "toString", "", "kotlinx-coroutines-core"})
+public final class by
+  implements az, p
 {
-  public abstract S b(f paramf);
+  public static final by LSi;
   
-  public abstract void fC(S paramS);
+  static
+  {
+    AppMethodBeat.i(118190);
+    LSi = new by();
+    AppMethodBeat.o(118190);
+  }
+  
+  public final void dispose() {}
+  
+  public final String toString()
+  {
+    return "NonDisposableHandle";
+  }
+  
+  public final boolean y(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(118189);
+    AppMethodBeat.o(118189);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.by
  * JD-Core Version:    0.7.0.1
  */

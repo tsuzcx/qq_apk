@@ -2,13 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
 
 public final class rk
   extends b
 {
-  public a dwU;
-  public b dwV;
+  public a dus;
   
   public rk()
   {
@@ -17,27 +15,21 @@ public final class rk
   
   private rk(byte paramByte)
   {
-    AppMethodBeat.i(91218);
-    this.dwU = new a();
-    this.dwV = new b();
-    this.ESR = false;
+    AppMethodBeat.i(55665);
+    this.dus = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91218);
+    AppMethodBeat.o(55665);
   }
   
   public static final class a
   {
-    public LinkedList dwW;
-  }
-  
-  public static final class b
-  {
-    public int ret = 0;
+    public boolean active;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.rk
  * JD-Core Version:    0.7.0.1
  */

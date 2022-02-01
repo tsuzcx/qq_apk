@@ -12,13 +12,13 @@ final class o$7
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(191280);
+    AppMethodBeat.i(196118);
     if ((this.val$bmp == null) || (this.val$bmp.isRecycled()))
     {
-      AppMethodBeat.o(191280);
+      AppMethodBeat.o(196118);
       return;
     }
-    AppMethodBeat.o(191280);
+    AppMethodBeat.o(196118);
   }
 }
 

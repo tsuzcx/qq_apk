@@ -6,11 +6,11 @@ import com.tencent.mm.plugin.choosemsgfile.b.d.a;
 
 public abstract interface c
 {
-  public abstract void A(boolean paramBoolean, int paramInt);
+  public abstract void B(boolean paramBoolean, int paramInt);
   
-  public abstract void bNP();
+  public abstract a bUH();
   
-  public abstract a bNw();
+  public abstract void bVa();
   
   public abstract View getChildAt(int paramInt);
   
@@ -18,11 +18,11 @@ public abstract interface c
   
   public abstract String getUserName();
   
-  public abstract void iP(boolean paramBoolean);
+  public abstract void js(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.ui.c
  * JD-Core Version:    0.7.0.1
  */

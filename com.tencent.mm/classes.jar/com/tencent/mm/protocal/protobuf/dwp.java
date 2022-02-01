@@ -1,104 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class dwp
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String EKB;
-  public String EKC;
-  public String dlB;
-  public int lrW;
-  public int lty;
-  public int type;
+  public LinkedList<dwi> ENR;
+  public boolean ERy;
+  public int EfV;
+  
+  public dwp()
+  {
+    AppMethodBeat.i(32525);
+    this.ENR = new LinkedList();
+    AppMethodBeat.o(32525);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123710);
+    AppMethodBeat.i(32526);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.type);
-      if (this.dlB != null) {
-        paramVarArgs.d(2, this.dlB);
-      }
-      if (this.EKB != null) {
-        paramVarArgs.d(3, this.EKB);
-      }
-      if (this.EKC != null) {
-        paramVarArgs.d(4, this.EKC);
-      }
-      paramVarArgs.aR(5, this.lrW);
-      paramVarArgs.aR(6, this.lty);
-      AppMethodBeat.o(123710);
+      paramVarArgs.e(1, 8, this.ENR);
+      paramVarArgs.aR(2, this.EfV);
+      paramVarArgs.bl(3, this.ERy);
+      AppMethodBeat.o(32526);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.type) + 0;
-      paramInt = i;
-      if (this.dlB != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dlB);
-      }
-      i = paramInt;
-      if (this.EKB != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.EKB);
-      }
-      paramInt = i;
-      if (this.EKC != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.EKC);
-      }
-      i = f.a.a.b.b.a.bA(5, this.lrW);
-      int j = f.a.a.b.b.a.bA(6, this.lty);
-      AppMethodBeat.o(123710);
-      return paramInt + i + j;
+      paramInt = f.a.a.a.c(1, 8, this.ENR);
+      i = f.a.a.b.b.a.bx(2, this.EfV);
+      int j = f.a.a.b.b.a.fK(3);
+      AppMethodBeat.o(32526);
+      return paramInt + 0 + i + (j + 1);
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.ENR.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(123710);
+      AppMethodBeat.o(32526);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       dwp localdwp = (dwp)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(123710);
+        AppMethodBeat.o(32526);
         return -1;
       case 1: 
-        localdwp.type = locala.KhF.xS();
-        AppMethodBeat.o(123710);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new dwi();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((dwi)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localdwp.ENR.add(localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(32526);
         return 0;
       case 2: 
-        localdwp.dlB = locala.KhF.readString();
-        AppMethodBeat.o(123710);
-        return 0;
-      case 3: 
-        localdwp.EKB = locala.KhF.readString();
-        AppMethodBeat.o(123710);
-        return 0;
-      case 4: 
-        localdwp.EKC = locala.KhF.readString();
-        AppMethodBeat.o(123710);
-        return 0;
-      case 5: 
-        localdwp.lrW = locala.KhF.xS();
-        AppMethodBeat.o(123710);
+        localdwp.EfV = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(32526);
         return 0;
       }
-      localdwp.lty = locala.KhF.xS();
-      AppMethodBeat.o(123710);
+      localdwp.ERy = ((f.a.a.a.a)localObject1).LVo.fZX();
+      AppMethodBeat.o(32526);
       return 0;
     }
-    AppMethodBeat.o(123710);
+    AppMethodBeat.o(32526);
     return -1;
   }
 }

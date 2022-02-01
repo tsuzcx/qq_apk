@@ -19,21 +19,21 @@ import java.util.Set;
 
 public final class h
 {
-  private static final j<h> IrB;
+  private static final j<h> JTl;
   public Context mContext;
   public boolean mInit = false;
   
   static
   {
     AppMethodBeat.i(138409);
-    IrB = new j() {};
+    JTl = new j() {};
     AppMethodBeat.o(138409);
   }
   
-  public static h fmr()
+  public static h fCI()
   {
     AppMethodBeat.i(138404);
-    h localh = (h)IrB.get();
+    h localh = (h)JTl.get();
     AppMethodBeat.o(138404);
     return localh;
   }
@@ -59,15 +59,15 @@ public final class h
         if (localObject == null) {
           localObject = locala;
         } else {
-          localObject.Iso.addAll(locala.Iso);
+          localObject.JTY.addAll(locala.JTY);
         }
       }
     }
     if (localObject != null)
     {
       paramMap = new a((byte)0);
-      paramMap.Ise = localObject;
-      paramMap.Isf = localArrayList;
+      paramMap.JTO = localObject;
+      paramMap.JTP = localArrayList;
       AppMethodBeat.o(138407);
       return paramMap;
     }
@@ -75,7 +75,7 @@ public final class h
     return null;
   }
   
-  public static String kl(int paramInt1, int paramInt2)
+  public static String ky(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138408);
     String str = paramInt1 + "00" + paramInt2;
@@ -83,7 +83,7 @@ public final class h
     return str;
   }
   
-  public final Map<String, a> fms()
+  public final Map<String, a> fCJ()
   {
     AppMethodBeat.i(138406);
     HashMap localHashMap = new HashMap();
@@ -106,7 +106,7 @@ public final class h
       File localFile = arrayOfFile[i];
       try
       {
-        localObject = c.o(f.U(new File(localFile.getAbsolutePath())), c.fmu());
+        localObject = c.o(f.X(new File(localFile.getAbsolutePath())), c.fCL());
         if (localObject == null)
         {
           localObject = null;
@@ -127,7 +127,7 @@ public final class h
       {
         i += 1;
         break;
-        byte[] arrayOfByte = b.cI(localThrowable);
+        byte[] arrayOfByte = b.cH(localThrowable);
         if (arrayOfByte == null)
         {
           locala = null;
@@ -150,10 +150,10 @@ public final class h
     this.mInit = true;
   }
   
-  public final String kk(int paramInt1, int paramInt2)
+  public final String kx(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138405);
-    String str = kl(paramInt1, paramInt2);
+    String str = ky(paramInt1, paramInt2);
     File localFile = this.mContext.getDir("turingmm", 0);
     if (localFile == null)
     {
@@ -205,13 +205,13 @@ public final class h
   
   public static final class a
   {
-    public a Ise;
-    public List<String> Isf;
+    public a JTO;
+    public List<String> JTP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.e.a.a.h
  * JD-Core Version:    0.7.0.1
  */

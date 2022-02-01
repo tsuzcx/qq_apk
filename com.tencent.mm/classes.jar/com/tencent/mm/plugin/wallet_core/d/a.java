@@ -25,7 +25,7 @@ public final class a
     this.db = parame;
   }
   
-  public final boolean aIG()
+  public final boolean aPx()
   {
     AppMethodBeat.i(70580);
     boolean bool = this.db.execSQL("LoanEntryInfo", "delete from LoanEntryInfo");
@@ -33,7 +33,7 @@ public final class a
     return bool;
   }
   
-  public final n edy()
+  public final n esT()
   {
     n localn = null;
     AppMethodBeat.i(70579);

@@ -5,11 +5,11 @@ import android.os.IInterface;
 public abstract interface ab
   extends IInterface
 {
-  public abstract int R(byte[] paramArrayOfByte);
+  public abstract int P(byte[] paramArrayOfByte);
   
-  public abstract byte[] aeU();
+  public abstract byte[] agk();
   
-  public abstract byte[] aeV();
+  public abstract byte[] agl();
 }
 
 

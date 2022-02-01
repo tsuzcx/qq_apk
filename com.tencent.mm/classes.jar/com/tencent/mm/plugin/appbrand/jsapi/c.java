@@ -9,15 +9,15 @@ import java.util.Map;
 
 public abstract interface c
 {
-  public abstract i DI();
+  public abstract p DH();
   
-  public abstract Map<String, m> DJ();
+  public abstract i Dl();
   
-  public abstract p Ee();
+  public abstract Map<String, m> Dm();
   
   public abstract <T extends com.tencent.luggage.a.b> T K(Class<T> paramClass);
   
-  public abstract void L(Runnable paramRunnable);
+  public abstract void N(Runnable paramRunnable);
   
   public abstract void a(ar paramar);
   
@@ -25,17 +25,17 @@ public abstract interface c
   
   public abstract boolean a(k paramk);
   
-  public abstract com.tencent.mm.plugin.appbrand.b.b aLA();
+  public abstract com.tencent.mm.plugin.appbrand.b.b aSr();
   
-  public abstract com.tencent.mm.plugin.appbrand.widget.dialog.m aLB();
+  public abstract com.tencent.mm.plugin.appbrand.widget.dialog.m aSs();
   
-  public abstract boolean aNu();
+  public abstract int aUT();
   
-  public abstract int aOd();
+  public abstract Handler aUU();
   
-  public abstract Handler aOe();
+  public abstract i aUV();
   
-  public abstract i aOf();
+  public abstract boolean aUk();
   
   public abstract <T extends j> T ar(Class<T> paramClass);
   
@@ -45,7 +45,7 @@ public abstract interface c
   
   public abstract void b(String paramString1, String paramString2, int[] paramArrayOfInt);
   
-  public abstract void bR(String paramString1, String paramString2);
+  public abstract void bZ(String paramString1, String paramString2);
   
   public abstract String getAppId();
   
@@ -53,18 +53,20 @@ public abstract interface c
   
   public abstract void h(int paramInt, String paramString);
   
+  public abstract void i(Runnable paramRunnable, long paramLong);
+  
   public abstract boolean isRunning();
   
   public static abstract interface a
   {
-    public abstract void HF(String paramString);
+    public abstract void LJ(String paramString);
     
     public abstract void proceed();
   }
   
   public static abstract interface b
   {
-    public abstract void P(int paramInt, String paramString);
+    public abstract void Q(int paramInt, String paramString);
     
     public abstract void a(ar paramar, c.a parama);
     
@@ -75,7 +77,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.c
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import com.tencent.xweb.x5.a.e;
 import com.tencent.xweb.x5.export.external.extension.proxy.IProxySuperWrapper;
 import com.tencent.xweb.x5.g;
 import com.tencent.xweb.x5.g.b;
-import com.tencent.xweb.x5.g.f;
+import com.tencent.xweb.x5.g.g;
 
 public class ProxyWebViewSuperWrapper
   extends ProxyWebViewClientExtension
@@ -93,7 +93,7 @@ public class ProxyWebViewSuperWrapper
   public boolean notifyAutoAudioPlay(String paramString, com.tencent.smtt.export.external.interfaces.JsResult paramJsResult)
   {
     AppMethodBeat.i(154061);
-    boolean bool = this.mXWebProxyImp.notifyAutoAudioPlay(paramString, new g.f(paramJsResult));
+    boolean bool = this.mXWebProxyImp.notifyAutoAudioPlay(paramString, new g.g(paramJsResult));
     AppMethodBeat.o(154061);
     return bool;
   }

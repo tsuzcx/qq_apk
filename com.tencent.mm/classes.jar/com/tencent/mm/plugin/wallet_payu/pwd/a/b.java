@@ -19,7 +19,7 @@ public final class b
     AppMethodBeat.o(72144);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 2;
   }

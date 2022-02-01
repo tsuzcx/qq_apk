@@ -10,43 +10,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends LinearLayout
 {
-  private final TextView HCY;
-  private final ImageView jFL;
-  private final TextView kEu;
+  private final TextView Jdu;
+  private final ImageView kgj;
+  private final TextView lfN;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(143518);
     LayoutInflater.from(paramContext).inflate(2131493236, this);
-    this.jFL = ((ImageView)findViewById(2131300874));
-    this.HCY = ((TextView)findViewById(2131305529));
-    this.kEu = ((TextView)findViewById(2131305902));
+    this.kgj = ((ImageView)findViewById(2131300874));
+    this.Jdu = ((TextView)findViewById(2131305529));
+    this.lfN = ((TextView)findViewById(2131305902));
     AppMethodBeat.o(143518);
   }
   
   public final ImageView getIcon()
   {
-    return this.jFL;
+    return this.kgj;
   }
   
   public final void setSubtitle(String paramString)
   {
     AppMethodBeat.i(143519);
-    this.HCY.setText(paramString);
+    this.Jdu.setText(paramString);
     AppMethodBeat.o(143519);
   }
   
   public final void setTitle(String paramString)
   {
     AppMethodBeat.i(143520);
-    this.kEu.setText(paramString);
+    this.lfN.setText(paramString);
     AppMethodBeat.o(143520);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.widget.bottomsheet.b
  * JD-Core Version:    0.7.0.1
  */

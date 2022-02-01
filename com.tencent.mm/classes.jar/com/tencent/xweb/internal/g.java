@@ -1,11 +1,11 @@
 package com.tencent.xweb.internal;
 
 import android.view.View;
-import com.tencent.xweb.p;
+import com.tencent.xweb.q;
 
 public abstract interface g
 {
-  public abstract void a(View paramView, boolean paramBoolean, p paramp);
+  public abstract void a(View paramView, boolean paramBoolean, q paramq);
 }
 
 

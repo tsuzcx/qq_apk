@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.IOException;
 
 public final class w
@@ -25,15 +25,15 @@ public final class w
     super(parame, v.info, "GamePBCache", null);
   }
   
-  public final byte[] abW(String paramString)
+  public final byte[] agO(String paramString)
   {
     AppMethodBeat.i(41519);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(41519);
       return null;
     }
-    if (!ac.eFu().equals(e.cCR()))
+    if (!ab.eUO().equals(e.cQb()))
     {
       AppMethodBeat.o(41519);
       return null;
@@ -53,7 +53,7 @@ public final class w
   public final boolean b(String paramString, a parama)
   {
     AppMethodBeat.i(41520);
-    if ((bt.isNullOrNil(paramString)) || (parama == null))
+    if ((bs.isNullOrNil(paramString)) || (parama == null))
     {
       AppMethodBeat.o(41520);
       return false;
@@ -67,7 +67,7 @@ public final class w
     }
     catch (IOException paramString)
     {
-      ad.e("MicroMsg.GamePBCacheStorage", "Saving Failed: %s", new Object[] { paramString.getMessage() });
+      ac.e("MicroMsg.GamePBCacheStorage", "Saving Failed: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(41520);
     }
     return false;
@@ -89,7 +89,7 @@ public final class w
     for (boolean bool = super.update(localv, new String[0]);; bool = super.insert(localv))
     {
       if (!bool) {
-        ad.e("MicroMsg.GamePBCacheStorage", "Saving cache failed (update or insert)");
+        ac.e("MicroMsg.GamePBCacheStorage", "Saving cache failed (update or insert)");
       }
       AppMethodBeat.o(41521);
       return bool;

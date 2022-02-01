@@ -16,21 +16,21 @@ import java.util.List;
 public final class a
   extends com.google.android.exoplayer2.f.b
 {
-  private static final int buR;
-  private static final int buS;
-  private final m buT;
-  private boolean buU;
-  private int buV;
-  private int buW;
-  private String buX;
-  private float buY;
-  private int buZ;
+  private static final int bsQ;
+  private static final int bsR;
+  private final m bsS;
+  private boolean bsT;
+  private int bsU;
+  private int bsV;
+  private String bsW;
+  private float bsX;
+  private int bsY;
   
   static
   {
     AppMethodBeat.i(92870);
-    buR = x.aY("styl");
-    buS = x.aY("tbox");
+    bsQ = x.aQ("styl");
+    bsR = x.aQ("tbox");
     AppMethodBeat.o(92870);
   }
   
@@ -38,17 +38,17 @@ public final class a
   {
     super("Tx3gDecoder");
     AppMethodBeat.i(92865);
-    this.buT = new m();
+    this.bsS = new m();
     if ((paramList != null) && (paramList.size() == 1) && ((((byte[])paramList.get(0)).length == 48) || (((byte[])paramList.get(0)).length == 53)))
     {
       byte[] arrayOfByte = (byte[])paramList.get(0);
-      this.buV = arrayOfByte[24];
-      this.buW = ((arrayOfByte[26] & 0xFF) << 24 | (arrayOfByte[27] & 0xFF) << 16 | (arrayOfByte[28] & 0xFF) << 8 | arrayOfByte[29] & 0xFF);
+      this.bsU = arrayOfByte[24];
+      this.bsV = ((arrayOfByte[26] & 0xFF) << 24 | (arrayOfByte[27] & 0xFF) << 16 | (arrayOfByte[28] & 0xFF) << 8 | arrayOfByte[29] & 0xFF);
       if ("Serif".equals(new String(arrayOfByte, 43, arrayOfByte.length - 43)))
       {
         paramList = "serif";
-        this.buX = paramList;
-        this.buZ = (arrayOfByte[25] * 20);
+        this.bsW = paramList;
+        this.bsY = (arrayOfByte[25] * 20);
         if ((arrayOfByte[0] & 0x20) == 0) {
           break label271;
         }
@@ -56,28 +56,28 @@ public final class a
       label271:
       for (boolean bool = true;; bool = false)
       {
-        this.buU = bool;
-        if (!this.buU) {
+        this.bsT = bool;
+        if (!this.bsT) {
           break label276;
         }
         int i = arrayOfByte[10];
-        this.buY = ((arrayOfByte[11] & 0xFF | (i & 0xFF) << 8) / this.buZ);
-        this.buY = x.j(this.buY, 0.0F, 0.95F);
+        this.bsX = ((arrayOfByte[11] & 0xFF | (i & 0xFF) << 8) / this.bsY);
+        this.bsX = x.i(this.bsX, 0.0F, 0.95F);
         AppMethodBeat.o(92865);
         return;
         paramList = "sans-serif";
         break;
       }
       label276:
-      this.buY = 0.85F;
+      this.bsX = 0.85F;
       AppMethodBeat.o(92865);
       return;
     }
-    this.buV = 0;
-    this.buW = -1;
-    this.buX = "sans-serif";
-    this.buU = false;
-    this.buY = 0.85F;
+    this.bsU = 0;
+    this.bsV = -1;
+    this.bsW = "sans-serif";
+    this.bsT = false;
+    this.bsX = 0.85F;
     AppMethodBeat.o(92865);
   }
   
@@ -163,9 +163,9 @@ public final class a
   public final d b(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(92866);
-    this.buT.q(paramArrayOfByte, paramInt);
-    paramArrayOfByte = this.buT;
-    if (paramArrayOfByte.vJ() >= 2)
+    this.bsS.n(paramArrayOfByte, paramInt);
+    paramArrayOfByte = this.bsS;
+    if (paramArrayOfByte.vy() >= 2)
     {
       paramBoolean = true;
       assertTrue(paramBoolean);
@@ -182,12 +182,12 @@ public final class a
       if (!paramArrayOfByte.isEmpty()) {
         break label153;
       }
-      paramArrayOfByte = b.bva;
+      paramArrayOfByte = b.bsZ;
       AppMethodBeat.o(92866);
       return paramArrayOfByte;
       paramBoolean = false;
       break;
-      if (paramArrayOfByte.vJ() >= 2)
+      if (paramArrayOfByte.vy() >= 2)
       {
         i = (char)((paramArrayOfByte.data[paramArrayOfByte.position] & 0xFF) << 8 | paramArrayOfByte.data[(paramArrayOfByte.position + 1)] & 0xFF);
         if ((i == 65279) || (i == 65534))
@@ -200,34 +200,34 @@ public final class a
     }
     label153:
     paramArrayOfByte = new SpannableStringBuilder(paramArrayOfByte);
-    a(paramArrayOfByte, this.buV, 0, 0, paramArrayOfByte.length(), 16711680);
-    b(paramArrayOfByte, this.buW, -1, 0, paramArrayOfByte.length(), 16711680);
-    Object localObject = this.buX;
+    a(paramArrayOfByte, this.bsU, 0, 0, paramArrayOfByte.length(), 16711680);
+    b(paramArrayOfByte, this.bsV, -1, 0, paramArrayOfByte.length(), 16711680);
+    Object localObject = this.bsW;
     paramInt = paramArrayOfByte.length();
     if (localObject != "sans-serif") {
       paramArrayOfByte.setSpan(new TypefaceSpan((String)localObject), 0, paramInt, 16711713);
     }
-    float f = this.buY;
+    float f = this.bsX;
     int j;
-    if (this.buT.vJ() >= 8)
+    if (this.bsS.vy() >= 8)
     {
-      i = this.buT.position;
-      j = this.buT.readInt();
-      paramInt = this.buT.readInt();
-      if (paramInt == buR)
+      i = this.bsS.position;
+      j = this.bsS.readInt();
+      paramInt = this.bsS.readInt();
+      if (paramInt == bsQ)
       {
-        if (this.buT.vJ() >= 2)
+        if (this.bsS.vy() >= 2)
         {
           paramBoolean = true;
           assertTrue(paramBoolean);
-          int k = this.buT.readUnsignedShort();
+          int k = this.bsS.readUnsignedShort();
           paramInt = 0;
           label308:
           if (paramInt >= k) {
             break label423;
           }
-          localObject = this.buT;
-          if (((m)localObject).vJ() < 12) {
+          localObject = this.bsS;
+          if (((m)localObject).vy() < 12) {
             break label418;
           }
         }
@@ -237,12 +237,12 @@ public final class a
           assertTrue(paramBoolean);
           int m = ((m)localObject).readUnsignedShort();
           int n = ((m)localObject).readUnsignedShort();
-          ((m)localObject).fl(2);
+          ((m)localObject).eX(2);
           int i1 = ((m)localObject).readUnsignedByte();
-          ((m)localObject).fl(1);
+          ((m)localObject).eX(1);
           int i2 = ((m)localObject).readInt();
-          a(paramArrayOfByte, i1, this.buV, m, n, 0);
-          b(paramArrayOfByte, i2, this.buW, m, n, 0);
+          a(paramArrayOfByte, i1, this.bsU, m, n, 0);
+          b(paramArrayOfByte, i2, this.bsV, m, n, 0);
           paramInt += 1;
           break label308;
           paramBoolean = false;
@@ -253,15 +253,15 @@ public final class a
     for (;;)
     {
       label423:
-      this.buT.setPosition(i + j);
+      this.bsS.setPosition(i + j);
       break;
-      if ((paramInt == buS) && (this.buU))
+      if ((paramInt == bsR) && (this.bsT))
       {
-        if (this.buT.vJ() >= 2) {}
+        if (this.bsS.vy() >= 2) {}
         for (paramBoolean = true;; paramBoolean = false)
         {
           assertTrue(paramBoolean);
-          f = x.j(this.buT.readUnsignedShort() / this.buZ, 0.0F, 0.95F);
+          f = x.i(this.bsS.readUnsignedShort() / this.bsY, 0.0F, 0.95F);
           break;
         }
         paramArrayOfByte = new b(new com.google.android.exoplayer2.f.a(paramArrayOfByte, null, f, 0, 0, 1.4E-45F, -2147483648, 1.4E-45F));

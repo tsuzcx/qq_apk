@@ -11,9 +11,9 @@ final class m$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(187395);
-    this.xar.dwl();
-    AppMethodBeat.o(187395);
+    AppMethodBeat.i(200195);
+    this.yng.dKK();
+    AppMethodBeat.o(200195);
   }
 }
 

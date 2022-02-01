@@ -1,140 +1,165 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class aix
-  extends ckq
+  extends com.tencent.mm.bw.a
 {
-  public aht Dkw;
-  public long Dlp;
-  public String finderUsername;
-  public b qHz;
+  public String EDD;
+  public int EDE;
+  public LinkedList<ajp> EDF;
+  public LinkedList<String> EDG;
+  public String deviceBrand;
+  public String deviceModel;
+  public int netType;
+  public String osName;
+  public String osVersion;
+  
+  public aix()
+  {
+    AppMethodBeat.i(184195);
+    this.EDF = new LinkedList();
+    this.EDG = new LinkedList();
+    AppMethodBeat.o(184195);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(168976);
+    AppMethodBeat.i(184196);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.kX(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs.aR(1, this.netType);
+      if (this.EDD != null) {
+        paramVarArgs.d(2, this.EDD);
       }
-      if (this.finderUsername != null) {
-        paramVarArgs.d(2, this.finderUsername);
+      paramVarArgs.aR(3, this.EDE);
+      paramVarArgs.e(4, 8, this.EDF);
+      if (this.deviceModel != null) {
+        paramVarArgs.d(5, this.deviceModel);
       }
-      paramVarArgs.aG(3, this.Dlp);
-      if (this.qHz != null) {
-        paramVarArgs.c(4, this.qHz);
+      if (this.deviceBrand != null) {
+        paramVarArgs.d(6, this.deviceBrand);
       }
-      if (this.Dkw != null)
-      {
-        paramVarArgs.kX(5, this.Dkw.computeSize());
-        this.Dkw.writeFields(paramVarArgs);
+      if (this.osName != null) {
+        paramVarArgs.d(7, this.osName);
       }
-      AppMethodBeat.o(168976);
+      if (this.osVersion != null) {
+        paramVarArgs.d(8, this.osVersion);
+      }
+      paramVarArgs.e(9, 1, this.EDG);
+      AppMethodBeat.o(184196);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label630;
-      }
-    }
-    label630:
-    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.finderUsername != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.finderUsername);
-      }
-      i += f.a.a.b.b.a.q(3, this.Dlp);
+      i = f.a.a.b.b.a.bx(1, this.netType) + 0;
       paramInt = i;
-      if (this.qHz != null) {
-        paramInt = i + f.a.a.b.b.a.b(4, this.qHz);
+      if (this.EDD != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.EDD);
+      }
+      i = paramInt + f.a.a.b.b.a.bx(3, this.EDE) + f.a.a.a.c(4, 8, this.EDF);
+      paramInt = i;
+      if (this.deviceModel != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.deviceModel);
       }
       i = paramInt;
-      if (this.Dkw != null) {
-        i = paramInt + f.a.a.a.kW(5, this.Dkw.computeSize());
+      if (this.deviceBrand != null) {
+        i = paramInt + f.a.a.b.b.a.e(6, this.deviceBrand);
       }
-      AppMethodBeat.o(168976);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
-          }
+      paramInt = i;
+      if (this.osName != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.osName);
+      }
+      i = paramInt;
+      if (this.osVersion != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.osVersion);
+      }
+      paramInt = f.a.a.a.c(9, 1, this.EDG);
+      AppMethodBeat.o(184196);
+      return i + paramInt;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.EDF.clear();
+      this.EDG.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gfg();
         }
-        AppMethodBeat.o(168976);
+      }
+      AppMethodBeat.o(184196);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      aix localaix = (aix)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(184196);
+        return -1;
+      case 1: 
+        localaix.netType = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(184196);
         return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        aix localaix = (aix)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(168976);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ip();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localaix.BaseRequest = ((ip)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(168976);
-          return 0;
-        case 2: 
-          localaix.finderUsername = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(168976);
-          return 0;
-        case 3: 
-          localaix.Dlp = ((f.a.a.a.a)localObject1).KhF.xT();
-          AppMethodBeat.o(168976);
-          return 0;
-        case 4: 
-          localaix.qHz = ((f.a.a.a.a)localObject1).KhF.fMu();
-          AppMethodBeat.o(168976);
-          return 0;
-        }
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+      case 2: 
+        localaix.EDD = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 3: 
+        localaix.EDE = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 4: 
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new aht();
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new ajp();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((aht)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localaix.Dkw = ((aht)localObject1);
+          for (boolean bool = true; bool; bool = ((ajp)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localaix.EDF.add(localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(168976);
+        AppMethodBeat.o(184196);
+        return 0;
+      case 5: 
+        localaix.deviceModel = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 6: 
+        localaix.deviceBrand = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 7: 
+        localaix.osName = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 8: 
+        localaix.osVersion = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(184196);
         return 0;
       }
-      AppMethodBeat.o(168976);
-      return -1;
+      localaix.EDG.add(((f.a.a.a.a)localObject1).LVo.readString());
+      AppMethodBeat.o(184196);
+      return 0;
     }
+    AppMethodBeat.o(184196);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aix
  * JD-Core Version:    0.7.0.1
  */

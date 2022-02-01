@@ -12,157 +12,157 @@ public class LiveConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<LiveConfig> CREATOR;
-  public static int qsE;
-  public static int qsG;
-  public static int qsH;
-  public static int qsJ;
-  public static int qsK;
-  public static int qsL;
-  public static int qsM;
-  public static int qsN;
-  public static int qsw;
-  private static boolean qvm;
-  private long DlB;
+  public static int gmF;
+  public static int gmG;
+  public static int gmH;
+  public static int gmI;
+  public static int gmJ;
+  public static int gmK;
+  public static int gmL;
+  public static int gmM;
+  public static int gmN;
+  private static boolean gmU;
   private int fromScene;
-  private int qsO;
-  private String qsP;
-  private String qud;
-  private String quk;
+  private int gmO;
+  private long gmP;
+  private String gmQ;
+  private String gmR;
+  public HashMap gmS;
+  private String gmT;
   private int scene;
   private String thumbUrl;
-  public HashMap vie;
   
   static
   {
-    AppMethodBeat.i(203914);
-    qsw = 0;
-    qsE = 1;
-    qsG = 2;
-    qsH = 0;
-    qsJ = 1;
-    qsK = 2;
-    qsL = 1;
-    qsM = 2;
-    qsN = 0;
-    qvm = false;
+    AppMethodBeat.i(192910);
+    gmF = 0;
+    gmG = 1;
+    gmH = 2;
+    gmI = 0;
+    gmJ = 1;
+    gmK = 2;
+    gmL = 1;
+    gmM = 2;
+    gmN = 0;
+    gmU = false;
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(203914);
+    AppMethodBeat.o(192910);
   }
   
   private LiveConfig()
   {
-    AppMethodBeat.i(203908);
-    this.qsO = qsH;
-    this.DlB = 0L;
-    this.qsP = "";
-    this.qud = "";
-    this.vie = new HashMap();
+    AppMethodBeat.i(192904);
+    this.gmO = gmI;
+    this.gmP = 0L;
+    this.gmQ = "";
+    this.gmR = "";
+    this.gmS = new HashMap();
     this.thumbUrl = "";
-    this.quk = "";
-    this.scene = qsw;
-    this.fromScene = qsN;
-    AppMethodBeat.o(203908);
+    this.gmT = "";
+    this.scene = gmF;
+    this.fromScene = gmN;
+    AppMethodBeat.o(192904);
   }
   
   protected LiveConfig(Parcel paramParcel)
   {
-    AppMethodBeat.i(203913);
-    this.qsO = qsH;
-    this.DlB = 0L;
-    this.qsP = "";
-    this.qud = "";
-    this.vie = new HashMap();
+    AppMethodBeat.i(192909);
+    this.gmO = gmI;
+    this.gmP = 0L;
+    this.gmQ = "";
+    this.gmR = "";
+    this.gmS = new HashMap();
     this.thumbUrl = "";
-    this.quk = "";
-    this.scene = qsw;
-    this.fromScene = qsN;
-    this.qsO = paramParcel.readInt();
-    this.vie = ((HashMap)paramParcel.readSerializable());
-    this.qsP = paramParcel.readString();
-    this.DlB = paramParcel.readLong();
-    this.qud = paramParcel.readString();
-    this.quk = paramParcel.readString();
+    this.gmT = "";
+    this.scene = gmF;
+    this.fromScene = gmN;
+    this.gmO = paramParcel.readInt();
+    this.gmS = ((HashMap)paramParcel.readSerializable());
+    this.gmQ = paramParcel.readString();
+    this.gmP = paramParcel.readLong();
+    this.gmR = paramParcel.readString();
+    this.gmT = paramParcel.readString();
     this.scene = paramParcel.readInt();
     this.fromScene = paramParcel.readInt();
-    AppMethodBeat.o(203913);
+    AppMethodBeat.o(192909);
   }
   
-  public static boolean ckK()
+  public static LiveConfig P(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(192905);
+    a locala = new a();
+    locala.gmO = gmI;
+    locala.gmQ = paramString;
+    locala.gmT = u.axw();
+    locala.scene = paramInt;
+    paramString = locala.aip();
+    AppMethodBeat.o(192905);
+    return paramString;
+  }
+  
+  public static boolean aio()
   {
     if (h.DEBUG) {
       return false;
     }
-    return qvm;
+    return gmU;
   }
   
-  public static LiveConfig db(String paramString, int paramInt)
+  public static LiveConfig c(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(203909);
+    AppMethodBeat.i(192906);
     a locala = new a();
-    locala.qsO = qsH;
-    locala.qsP = paramString;
-    locala.quk = u.aqG();
-    locala.scene = paramInt;
-    paramString = locala.cld();
-    AppMethodBeat.o(203909);
-    return paramString;
-  }
-  
-  public static void hy(boolean paramBoolean)
-  {
-    qvm = paramBoolean;
-  }
-  
-  public static LiveConfig z(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(203910);
-    a locala = new a();
-    locala.qsO = qsJ;
+    locala.gmO = gmJ;
     locala.thumbUrl = paramString2;
-    locala.qsP = paramString3;
-    locala.DlB = 0L;
-    locala.qud = paramString1;
-    locala.quk = paramString4;
-    paramString1 = locala.cld();
-    AppMethodBeat.o(203910);
+    locala.gmQ = paramString3;
+    locala.gmP = 0L;
+    locala.gmR = paramString1;
+    locala.gmT = paramString4;
+    paramString1 = locala.aip();
+    AppMethodBeat.o(192906);
     return paramString1;
   }
   
-  public final void bx(int paramInt, String paramString)
+  public static void dB(boolean paramBoolean)
   {
-    AppMethodBeat.i(203911);
-    this.vie.put(Integer.valueOf(paramInt), paramString);
-    AppMethodBeat.o(203911);
+    gmU = paramBoolean;
   }
   
-  public final String ckA()
+  public final void D(int paramInt, String paramString)
   {
-    return this.qsP;
+    AppMethodBeat.i(192907);
+    this.gmS.put(Integer.valueOf(paramInt), paramString);
+    AppMethodBeat.o(192907);
   }
   
-  public final long ckB()
+  public final int aii()
   {
-    return this.DlB;
+    return this.gmO;
   }
   
-  public final String ckC()
+  public final String aij()
   {
-    return this.qud;
+    return this.gmQ;
   }
   
-  public final String ckD()
-  {
-    return this.quk;
-  }
-  
-  public final int ckz()
-  {
-    return this.qsO;
-  }
-  
-  public final String cmT()
+  public final String aik()
   {
     return this.thumbUrl;
+  }
+  
+  public final long ail()
+  {
+    return this.gmP;
+  }
+  
+  public final String aim()
+  {
+    return this.gmR;
+  }
+  
+  public final String ain()
+  {
+    return this.gmT;
   }
   
   public int describeContents()
@@ -182,49 +182,79 @@ public class LiveConfig
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(203912);
-    paramParcel.writeInt(this.qsO);
-    paramParcel.writeSerializable(this.vie);
-    paramParcel.writeString(this.qsP);
-    paramParcel.writeLong(this.DlB);
-    paramParcel.writeString(this.qud);
-    paramParcel.writeString(this.quk);
+    AppMethodBeat.i(192908);
+    paramParcel.writeInt(this.gmO);
+    paramParcel.writeSerializable(this.gmS);
+    paramParcel.writeString(this.gmQ);
+    paramParcel.writeLong(this.gmP);
+    paramParcel.writeString(this.gmR);
+    paramParcel.writeString(this.gmT);
     paramParcel.writeInt(this.scene);
     paramParcel.writeInt(this.fromScene);
-    AppMethodBeat.o(203912);
+    AppMethodBeat.o(192908);
   }
   
   public static final class a
   {
-    public long DlB = 0L;
-    public int fromScene = LiveConfig.qsN;
-    public int qsO = LiveConfig.qsH;
-    public String qsP = "";
-    public String qud = "";
-    public String quk = "";
-    public int scene = LiveConfig.qsw;
+    public int fromScene = LiveConfig.gmN;
+    public int gmO = LiveConfig.gmI;
+    public long gmP = 0L;
+    public String gmQ = "";
+    public String gmR = "";
+    public String gmT = "";
+    public int scene = LiveConfig.gmF;
     public String thumbUrl = "";
     
-    public final LiveConfig cld()
+    public final LiveConfig aip()
     {
-      AppMethodBeat.i(203907);
+      AppMethodBeat.i(192903);
       LiveConfig localLiveConfig = new LiveConfig((byte)0);
-      LiveConfig.a(localLiveConfig, this.qsO);
-      LiveConfig.a(localLiveConfig, this.qsP);
-      LiveConfig.a(localLiveConfig, this.DlB);
-      LiveConfig.b(localLiveConfig, this.qud);
+      LiveConfig.a(localLiveConfig, this.gmO);
+      LiveConfig.a(localLiveConfig, this.gmQ);
+      LiveConfig.a(localLiveConfig, this.gmP);
+      LiveConfig.b(localLiveConfig, this.gmR);
       LiveConfig.c(localLiveConfig, this.thumbUrl);
-      LiveConfig.d(localLiveConfig, this.quk);
+      LiveConfig.d(localLiveConfig, this.gmT);
       LiveConfig.b(localLiveConfig, this.scene);
       LiveConfig.c(localLiveConfig, this.fromScene);
-      AppMethodBeat.o(203907);
+      AppMethodBeat.o(192903);
       return localLiveConfig;
+    }
+    
+    public final a my(int paramInt)
+    {
+      this.gmO = paramInt;
+      return this;
+    }
+    
+    public final a pc(long paramLong)
+    {
+      this.gmP = paramLong;
+      return this;
+    }
+    
+    public final a us(String paramString)
+    {
+      this.gmQ = paramString;
+      return this;
+    }
+    
+    public final a ut(String paramString)
+    {
+      this.gmR = paramString;
+      return this;
+    }
+    
+    public final a uu(String paramString)
+    {
+      this.gmT = paramString;
+      return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.api.LiveConfig
  * JD-Core Version:    0.7.0.1
  */

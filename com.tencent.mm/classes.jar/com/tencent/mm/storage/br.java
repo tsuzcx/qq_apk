@@ -1,145 +1,74 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class br
+  extends com.tencent.mm.bw.a
 {
-  public a FAK;
-  private int FAL;
-  int dtM;
-  public String name;
-  int status;
+  public long cSx;
+  public long kby;
+  public long msgId;
   
-  public br()
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    this.dtM = 135;
-    this.name = "";
-    this.FAK = null;
-    this.FAK = null;
-    this.name = "";
-    this.status = 0;
-    this.FAL = 0;
-  }
-  
-  public br(String paramString, boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(43298);
-    this.dtM = 135;
-    this.name = "";
-    this.FAK = null;
-    this.FAK = new a(paramString);
-    this.name = paramString;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(43276);
+    if (paramInt == 0)
     {
-      this.status = (i | 0x2);
-      this.FAL = paramInt;
-      AppMethodBeat.o(43298);
-      return;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aO(1, this.msgId);
+      paramVarArgs.aO(2, this.kby);
+      paramVarArgs.aO(3, this.cSx);
+      AppMethodBeat.o(43276);
+      return 0;
     }
-  }
-  
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(43299);
-    if ((this.dtM & 0x2) != 0)
+    if (paramInt == 1)
     {
-      this.name = paramCursor.getString(1);
-      if (this.FAK == null) {
-        this.FAK = new a(this.name);
+      paramInt = f.a.a.b.b.a.p(1, this.msgId);
+      int i = f.a.a.b.b.a.p(2, this.kby);
+      int j = f.a.a.b.b.a.p(3, this.cSx);
+      AppMethodBeat.o(43276);
+      return paramInt + 0 + i + j;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gfg();
+        }
       }
+      AppMethodBeat.o(43276);
+      return 0;
     }
-    if ((this.dtM & 0x4) != 0) {
-      this.status = paramCursor.getInt(2);
-    }
-    if ((this.dtM & 0x80) != 0) {
-      this.FAL = paramCursor.getInt(7);
-    }
-    AppMethodBeat.o(43299);
-  }
-  
-  public final ContentValues convertTo()
-  {
-    AppMethodBeat.i(43300);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.dtM & 0x2) != 0) {
-      localContentValues.put("name", this.name);
-    }
-    if ((this.dtM & 0x4) != 0) {
-      localContentValues.put("status", Integer.valueOf(this.status));
-    }
-    if ((this.dtM & 0x80) != 0) {
-      localContentValues.put("int_reserved1", Integer.valueOf(this.FAL));
-    }
-    AppMethodBeat.o(43300);
-    return localContentValues;
-  }
-  
-  public final boolean eMR()
-  {
-    return (this.status & 0x2) != 0;
-  }
-  
-  public final boolean eMS()
-  {
-    return this.FAL == 1;
-  }
-  
-  public final boolean isEnable()
-  {
-    return (this.status & 0x1) != 0;
-  }
-  
-  public final void setEnable(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (paramInt == 3)
     {
-      int j = this.status;
-      if (paramBoolean) {}
-      for (int i = 1;; i = 0)
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      br localbr = (br)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
-        this.status = (i | j);
-        return;
+      default: 
+        AppMethodBeat.o(43276);
+        return -1;
+      case 1: 
+        localbr.msgId = locala.LVo.xG();
+        AppMethodBeat.o(43276);
+        return 0;
+      case 2: 
+        localbr.kby = locala.LVo.xG();
+        AppMethodBeat.o(43276);
+        return 0;
       }
+      localbr.cSx = locala.LVo.xG();
+      AppMethodBeat.o(43276);
+      return 0;
     }
-    this.status &= 0xFFFFFFFE;
-  }
-  
-  public static final class a
-  {
-    private String BJx;
-    private String dtV;
-    
-    public a(String paramString)
-    {
-      AppMethodBeat.i(43297);
-      int i = paramString.indexOf("@");
-      if (i >= 0)
-      {
-        this.dtV = paramString.substring(0, i);
-        this.BJx = paramString.substring(i);
-        AppMethodBeat.o(43297);
-        return;
-      }
-      this.dtV = paramString;
-      this.BJx = "";
-      AppMethodBeat.o(43297);
-    }
-    
-    public final String aJf(String paramString)
-    {
-      if (this.BJx != null) {
-        paramString = this.BJx;
-      }
-      return paramString;
-    }
+    AppMethodBeat.o(43276);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.br
  * JD-Core Version:    0.7.0.1
  */

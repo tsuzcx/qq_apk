@@ -24,43 +24,53 @@ public class GLTextureView
   extends TextureView
   implements TextureView.SurfaceTextureListener, View.OnLayoutChangeListener
 {
+  private static final j ANv;
   private static final String TAG;
-  private static final j zuD;
+  private g ANA;
+  private k ANB;
+  public i ANw;
+  private m ANx;
+  private e ANy;
+  private f ANz;
   private boolean detached;
-  private final WeakReference<GLTextureView> fJj;
-  private int xfP;
-  private int xfQ;
-  private boolean xfR;
-  private List<TextureView.SurfaceTextureListener> xfS;
-  public i zuE;
-  private m zuF;
-  private e zuG;
-  private f zuH;
-  private g zuI;
-  private k zuJ;
+  private final WeakReference<GLTextureView> fMP;
+  private int ysD;
+  private int ysE;
+  private boolean ysF;
+  private List<TextureView.SurfaceTextureListener> ysG;
   
   static
   {
     AppMethodBeat.i(115636);
     TAG = GLTextureView.class.getSimpleName();
-    zuD = new j((byte)0);
+    ANv = new j((byte)0);
     AppMethodBeat.o(115636);
+  }
+  
+  public GLTextureView(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(208490);
+    this.fMP = new WeakReference(this);
+    this.ysG = new ArrayList();
+    setSurfaceTextureListener(this);
+    AppMethodBeat.o(208490);
   }
   
   public GLTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(115614);
-    this.fJj = new WeakReference(this);
-    this.xfS = new ArrayList();
+    this.fMP = new WeakReference(this);
+    this.ysG = new ArrayList();
     setSurfaceTextureListener(this);
     AppMethodBeat.o(115614);
   }
   
-  private void aaB()
+  private void abA()
   {
     AppMethodBeat.i(115635);
-    if (this.zuE != null)
+    if (this.ANw != null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("setRenderer has already been called for this instance.");
       AppMethodBeat.o(115635);
@@ -72,23 +82,23 @@ public class GLTextureView
   public void a(SurfaceTexture arg1, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(115626);
-    i locali = this.zuE;
+    i locali = this.ANw;
     for (;;)
     {
-      synchronized (zuD)
+      synchronized (ANv)
       {
         locali.width = paramInt2;
         locali.height = paramInt3;
-        locali.xgn = true;
-        locali.xgl = true;
-        locali.xgm = false;
-        zuD.notifyAll();
-        if ((locali.xgc) || (locali.qM) || (locali.xgm)) {
+        locali.ytb = true;
+        locali.ysZ = true;
+        locali.yta = false;
+        ANv.notifyAll();
+        if ((locali.ysQ) || (locali.rM) || (locali.yta)) {
           break;
         }
-        if ((locali.xgh) && (locali.xgi))
+        if ((locali.ysV) && (locali.ysW))
         {
-          boolean bool = locali.aaI();
+          boolean bool = locali.abH();
           if (bool)
           {
             paramInt1 = 1;
@@ -97,7 +107,7 @@ public class GLTextureView
             }
             try
             {
-              zuD.wait();
+              ANv.wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -116,8 +126,8 @@ public class GLTextureView
     AppMethodBeat.i(115615);
     try
     {
-      if (this.zuE != null) {
-        this.zuE.dxe();
+      if (this.ANw != null) {
+        this.ANw.dLD();
       }
       return;
     }
@@ -130,18 +140,18 @@ public class GLTextureView
   
   public int getDebugFlags()
   {
-    return this.xfP;
+    return this.ysD;
   }
   
   public boolean getPreserveEGLContextOnPause()
   {
-    return this.xfR;
+    return this.ysF;
   }
   
   public int getRenderMode()
   {
     AppMethodBeat.i(115623);
-    int i = this.zuE.getRenderMode();
+    int i = this.ANw.getRenderMode();
     AppMethodBeat.o(115623);
     return i;
   }
@@ -149,21 +159,21 @@ public class GLTextureView
   public void m(SurfaceTexture arg1)
   {
     AppMethodBeat.i(115624);
-    i locali = this.zuE;
-    synchronized (zuD)
+    i locali = this.ANw;
+    synchronized (ANv)
     {
       new StringBuilder("surfaceCreated tid=").append(locali.getId());
-      locali.xge = true;
-      zuD.notifyAll();
+      locali.ysS = true;
+      ANv.notifyAll();
       for (;;)
       {
-        if (locali.xgg)
+        if (locali.ysU)
         {
-          boolean bool = locali.xgc;
+          boolean bool = locali.ysQ;
           if (!bool) {
             try
             {
-              zuD.wait();
+              ANv.wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -179,21 +189,21 @@ public class GLTextureView
   public void n(SurfaceTexture arg1)
   {
     AppMethodBeat.i(115625);
-    i locali = this.zuE;
-    synchronized (zuD)
+    i locali = this.ANw;
+    synchronized (ANv)
     {
       new StringBuilder("surfaceDestroyed tid=").append(locali.getId());
-      locali.xge = false;
-      zuD.notifyAll();
+      locali.ysS = false;
+      ANv.notifyAll();
       for (;;)
       {
-        if (!locali.xgg)
+        if (!locali.ysU)
         {
-          boolean bool = locali.xgc;
+          boolean bool = locali.ysQ;
           if (!bool) {
             try
             {
-              zuD.wait();
+              ANv.wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -210,19 +220,19 @@ public class GLTextureView
   {
     AppMethodBeat.i(115628);
     super.onAttachedToWindow();
-    if ((this.detached) && (this.zuF != null)) {
-      if (this.zuE == null) {
-        break label84;
+    if ((this.detached) && (this.ANx != null)) {
+      if (this.ANw == null) {
+        break label86;
       }
     }
-    label84:
-    for (int i = this.zuE.getRenderMode();; i = 1)
+    label86:
+    for (int i = this.ANw.getRenderMode();; i = 1)
     {
-      this.zuE = new i(this.fJj);
+      this.ANw = new i(this.fMP);
       if (i != 1) {
-        this.zuE.setRenderMode(i);
+        this.ANw.setRenderMode(i);
       }
-      this.zuE.start();
+      this.ANw.start();
       this.detached = false;
       AppMethodBeat.o(115628);
       return;
@@ -233,8 +243,8 @@ public class GLTextureView
   {
     AppMethodBeat.i(115629);
     n(getSurfaceTexture());
-    if (this.zuE != null) {
-      this.zuE.dxe();
+    if (this.ANw != null) {
+      this.ANw.dLD();
     }
     this.detached = true;
     super.onDetachedFromWindow();
@@ -253,7 +263,7 @@ public class GLTextureView
     AppMethodBeat.i(115631);
     m(paramSurfaceTexture);
     a(paramSurfaceTexture, 0, paramInt1, paramInt2);
-    Iterator localIterator = this.xfS.iterator();
+    Iterator localIterator = this.ysG.iterator();
     while (localIterator.hasNext()) {
       ((TextureView.SurfaceTextureListener)localIterator.next()).onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
     }
@@ -263,7 +273,7 @@ public class GLTextureView
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(115633);
-    Iterator localIterator = this.xfS.iterator();
+    Iterator localIterator = this.ysG.iterator();
     while (localIterator.hasNext()) {
       ((TextureView.SurfaceTextureListener)localIterator.next()).onSurfaceTextureDestroyed(paramSurfaceTexture);
     }
@@ -275,7 +285,7 @@ public class GLTextureView
   {
     AppMethodBeat.i(115632);
     a(paramSurfaceTexture, 0, paramInt1, paramInt2);
-    Iterator localIterator = this.xfS.iterator();
+    Iterator localIterator = this.ysG.iterator();
     while (localIterator.hasNext()) {
       ((TextureView.SurfaceTextureListener)localIterator.next()).onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
     }
@@ -285,7 +295,7 @@ public class GLTextureView
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(115634);
-    Iterator localIterator = this.xfS.iterator();
+    Iterator localIterator = this.ysG.iterator();
     while (localIterator.hasNext()) {
       ((TextureView.SurfaceTextureListener)localIterator.next()).onSurfaceTextureUpdated(paramSurfaceTexture);
     }
@@ -295,11 +305,11 @@ public class GLTextureView
   public final void queueEvent(Runnable paramRunnable)
   {
     AppMethodBeat.i(115627);
-    i locali = this.zuE;
-    synchronized (zuD)
+    i locali = this.ANw;
+    synchronized (ANv)
     {
-      locali.reb.add(paramRunnable);
-      zuD.notifyAll();
+      locali.smW.add(paramRunnable);
+      ANv.notifyAll();
       AppMethodBeat.o(115627);
       return;
     }
@@ -307,14 +317,14 @@ public class GLTextureView
   
   public void setDebugFlags(int paramInt)
   {
-    this.xfP = paramInt;
+    this.ysD = paramInt;
   }
   
   public void setEGLConfigChooser(e parame)
   {
     AppMethodBeat.i(115619);
-    aaB();
-    this.zuG = parame;
+    abA();
+    this.ANy = parame;
     AppMethodBeat.o(115619);
   }
   
@@ -328,74 +338,74 @@ public class GLTextureView
   public void setEGLContextClientVersion(int paramInt)
   {
     AppMethodBeat.i(115621);
-    aaB();
-    this.xfQ = paramInt;
+    abA();
+    this.ysE = paramInt;
     AppMethodBeat.o(115621);
   }
   
   public void setEGLContextFactory(f paramf)
   {
     AppMethodBeat.i(115617);
-    aaB();
-    this.zuH = paramf;
+    abA();
+    this.ANz = paramf;
     AppMethodBeat.o(115617);
   }
   
   public void setEGLWindowSurfaceFactory(g paramg)
   {
     AppMethodBeat.i(115618);
-    aaB();
-    this.zuI = paramg;
+    abA();
+    this.ANA = paramg;
     AppMethodBeat.o(115618);
   }
   
   public void setGLWrapper(k paramk)
   {
-    this.zuJ = paramk;
+    this.ANB = paramk;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
   {
-    this.xfR = paramBoolean;
+    this.ysF = paramBoolean;
   }
   
   public void setRenderMode(int paramInt)
   {
     AppMethodBeat.i(115622);
-    this.zuE.setRenderMode(paramInt);
+    this.ANw.setRenderMode(paramInt);
     AppMethodBeat.o(115622);
   }
   
   public void setRenderer(m paramm)
   {
     AppMethodBeat.i(115616);
-    aaB();
-    if (this.zuG == null) {
-      this.zuG = new n(true);
+    abA();
+    if (this.ANy == null) {
+      this.ANy = new n(true);
     }
-    if (this.zuH == null) {
-      this.zuH = new c((byte)0);
+    if (this.ANz == null) {
+      this.ANz = new c((byte)0);
     }
-    if (this.zuI == null) {
-      this.zuI = new d((byte)0);
+    if (this.ANA == null) {
+      this.ANA = new d((byte)0);
     }
-    this.zuF = paramm;
-    this.zuE = new i(this.fJj);
-    this.zuE.start();
+    this.ANx = paramm;
+    this.ANw = new i(this.fMP);
+    this.ANw.start();
     AppMethodBeat.o(115616);
   }
   
   abstract class a
     implements GLTextureView.e
   {
-    protected int[] fJu;
+    protected int[] fNa;
     
     public a(int[] paramArrayOfInt)
     {
       if (GLTextureView.a(GLTextureView.this) != 2) {}
       for (;;)
       {
-        this.fJu = paramArrayOfInt;
+        this.fNa = paramArrayOfInt;
         return;
         this$1 = new int[15];
         System.arraycopy(paramArrayOfInt, 0, GLTextureView.this, 0, 12);
@@ -411,7 +421,7 @@ public class GLTextureView
     public final EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
     {
       int[] arrayOfInt = new int[1];
-      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.fJu, null, 0, arrayOfInt)) {
+      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.fNa, null, 0, arrayOfInt)) {
         throw new IllegalArgumentException("eglChooseConfig failed");
       }
       int i = arrayOfInt[0];
@@ -419,7 +429,7 @@ public class GLTextureView
         throw new IllegalArgumentException("No configs match configSpec");
       }
       EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.fJu, arrayOfEGLConfig, i, arrayOfInt)) {
+      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.fNa, arrayOfEGLConfig, i, arrayOfInt)) {
         throw new IllegalArgumentException("eglChooseConfig#2 failed");
       }
       paramEGL10 = b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
@@ -434,24 +444,24 @@ public class GLTextureView
     extends GLTextureView.a
   {
     private int[] value;
-    protected int xfU;
-    protected int xfV;
-    protected int xfW;
-    protected int xfX;
-    protected int xfY;
-    protected int xfZ;
+    protected int ysI;
+    protected int ysJ;
+    protected int ysK;
+    protected int ysL;
+    protected int ysM;
+    protected int ysN;
     
     public b(int paramInt)
     {
       super(new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 0, 12325, paramInt, 12326, 0, 12344 });
       AppMethodBeat.i(115584);
       this.value = new int[1];
-      this.xfU = 8;
-      this.xfV = 8;
-      this.xfW = 8;
-      this.xfX = 0;
-      this.xfY = paramInt;
-      this.xfZ = 0;
+      this.ysI = 8;
+      this.ysJ = 8;
+      this.ysK = 8;
+      this.ysL = 0;
+      this.ysM = paramInt;
+      this.ysN = 0;
       AppMethodBeat.o(115584);
     }
     
@@ -478,13 +488,13 @@ public class GLTextureView
         EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
         int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
         int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
-        if ((k >= this.xfY) && (m >= this.xfZ))
+        if ((k >= this.ysM) && (m >= this.ysN))
         {
           k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
           m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
           int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
           int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
-          if ((k == this.xfU) && (m == this.xfV) && (n == this.xfW) && (i1 == this.xfX))
+          if ((k == this.ysI) && (m == this.ysJ) && (n == this.ysK) && (i1 == this.ysL))
           {
             AppMethodBeat.o(115585);
             return localEGLConfig;
@@ -590,11 +600,11 @@ public class GLTextureView
     EGLContext eglContext;
     EGLDisplay eglDisplay;
     EGLSurface eglSurface;
-    WeakReference<GLTextureView> xga;
+    WeakReference<GLTextureView> ysO;
     
     public h(WeakReference<GLTextureView> paramWeakReference)
     {
-      this.xga = paramWeakReference;
+      this.ysO = paramWeakReference;
     }
     
     public static String L(String paramString, int paramInt)
@@ -605,7 +615,7 @@ public class GLTextureView
       return paramString;
     }
     
-    final void aaD()
+    final void abC()
     {
       AppMethodBeat.i(115591);
       if ((this.eglSurface != null) && (this.eglSurface != EGL10.EGL_NO_SURFACE))
@@ -614,7 +624,7 @@ public class GLTextureView
         EGLDisplay localEGLDisplay = this.eglDisplay;
         EGLSurface localEGLSurface = EGL10.EGL_NO_SURFACE;
         ((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, EGL10.EGL_NO_CONTEXT);
-        localObject = (GLTextureView)this.xga.get();
+        localObject = (GLTextureView)this.ysO.get();
         if (localObject != null) {
           GLTextureView.d((GLTextureView)localObject).destroySurface(this.egl, this.eglDisplay, this.eglSurface);
         }
@@ -628,7 +638,7 @@ public class GLTextureView
       AppMethodBeat.i(115592);
       if (this.eglContext != null)
       {
-        GLTextureView localGLTextureView = (GLTextureView)this.xga.get();
+        GLTextureView localGLTextureView = (GLTextureView)this.ysO.get();
         if (localGLTextureView != null) {
           GLTextureView.c(localGLTextureView).destroyContext(this.egl, this.eglDisplay, this.eglContext);
         }
@@ -646,64 +656,64 @@ public class GLTextureView
   public static final class i
     extends Thread
   {
+    private GLTextureView.h AND;
     int height;
-    boolean qM;
-    ArrayList<Runnable> reb;
+    boolean rM;
+    ArrayList<Runnable> smW;
     int width;
-    private WeakReference<GLTextureView> xga;
-    private boolean xgb;
-    boolean xgc;
-    private boolean xgd;
-    boolean xge;
-    private boolean xgf;
-    boolean xgg;
-    boolean xgh;
-    boolean xgi;
-    private boolean xgj;
-    private int xgk;
-    boolean xgl;
-    boolean xgm;
-    boolean xgn;
-    private GLTextureView.h zuL;
+    private WeakReference<GLTextureView> ysO;
+    private boolean ysP;
+    boolean ysQ;
+    private boolean ysR;
+    boolean ysS;
+    private boolean ysT;
+    boolean ysU;
+    boolean ysV;
+    boolean ysW;
+    private boolean ysX;
+    private int ysY;
+    boolean ysZ;
+    boolean yta;
+    boolean ytb;
     
     i(WeakReference<GLTextureView> paramWeakReference)
     {
       AppMethodBeat.i(115595);
-      this.reb = new ArrayList();
-      this.xgn = true;
+      this.smW = new ArrayList();
+      this.ytb = true;
       this.width = 0;
       this.height = 0;
-      this.xgl = true;
-      this.xgk = 1;
-      this.xga = paramWeakReference;
+      this.ysZ = true;
+      this.ysY = 1;
+      this.ysO = paramWeakReference;
       AppMethodBeat.o(115595);
     }
     
-    private void aaE()
+    private void abD()
     {
       AppMethodBeat.i(115597);
-      if (this.xgi)
+      if (this.ysW)
       {
-        this.xgi = false;
-        this.zuL.aaD();
+        this.ysW = false;
+        this.AND.abC();
       }
       AppMethodBeat.o(115597);
     }
     
-    private void aaF()
+    private void abE()
     {
       AppMethodBeat.i(115598);
-      if (this.xgh)
+      if (this.ysV)
       {
-        this.zuL.finish();
-        this.xgh = false;
-        GLTextureView.dXa().c(this);
+        this.AND.finish();
+        this.ysV = false;
+        GLTextureView.emu().c(this);
       }
       AppMethodBeat.o(115598);
     }
     
     /* Error */
-    private void aaG()
+    private void abF()
     {
       // Byte code:
       //   0: ldc 103
@@ -712,15 +722,15 @@ public class GLTextureView
       //   6: new 79	com/tencent/mm/plugin/voip/video/GLTextureView$h
       //   9: dup
       //   10: aload_0
-      //   11: getfield 61	com/tencent/mm/plugin/voip/video/GLTextureView$i:xga	Ljava/lang/ref/WeakReference;
+      //   11: getfield 61	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysO	Ljava/lang/ref/WeakReference;
       //   14: invokespecial 105	com/tencent/mm/plugin/voip/video/GLTextureView$h:<init>	(Ljava/lang/ref/WeakReference;)V
-      //   17: putfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:zuL	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
+      //   17: putfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:AND	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
       //   20: aload_0
       //   21: iconst_0
-      //   22: putfield 86	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgh	Z
+      //   22: putfield 86	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysV	Z
       //   25: aload_0
       //   26: iconst_0
-      //   27: putfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgi	Z
+      //   27: putfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysW	Z
       //   30: iconst_0
       //   31: istore_1
       //   32: iconst_0
@@ -745,7 +755,7 @@ public class GLTextureView
       //   58: astore 22
       //   60: aconst_null
       //   61: astore 21
-      //   63: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   63: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   66: astore 24
       //   68: aload 24
       //   70: monitorenter
@@ -758,18 +768,18 @@ public class GLTextureView
       //   82: iload 11
       //   84: istore_1
       //   85: aload_0
-      //   86: getfield 107	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgb	Z
+      //   86: getfield 107	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysP	Z
       //   89: ifeq +44 -> 133
       //   92: aload 24
       //   94: monitorexit
-      //   95: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   95: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   98: astore 21
       //   100: aload 21
       //   102: monitorenter
       //   103: aload_0
-      //   104: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaE	()V
+      //   104: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:abD	()V
       //   107: aload_0
-      //   108: invokespecial 111	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaF	()V
+      //   108: invokespecial 111	com/tencent/mm/plugin/voip/video/GLTextureView$i:abE	()V
       //   111: aload 21
       //   113: monitorexit
       //   114: ldc 103
@@ -783,11 +793,11 @@ public class GLTextureView
       //   130: aload 22
       //   132: athrow
       //   133: aload_0
-      //   134: getfield 49	com/tencent/mm/plugin/voip/video/GLTextureView$i:reb	Ljava/util/ArrayList;
+      //   134: getfield 49	com/tencent/mm/plugin/voip/video/GLTextureView$i:smW	Ljava/util/ArrayList;
       //   137: invokevirtual 115	java/util/ArrayList:isEmpty	()Z
       //   140: ifne +71 -> 211
       //   143: aload_0
-      //   144: getfield 49	com/tencent/mm/plugin/voip/video/GLTextureView$i:reb	Ljava/util/ArrayList;
+      //   144: getfield 49	com/tencent/mm/plugin/voip/video/GLTextureView$i:smW	Ljava/util/ArrayList;
       //   147: iconst_0
       //   148: invokevirtual 119	java/util/ArrayList:remove	(I)Ljava/lang/Object;
       //   151: checkcast 121	java/lang/Runnable
@@ -824,29 +834,29 @@ public class GLTextureView
       //   207: istore_3
       //   208: goto -145 -> 63
       //   211: aload_0
-      //   212: getfield 126	com/tencent/mm/plugin/voip/video/GLTextureView$i:qM	Z
+      //   212: getfield 126	com/tencent/mm/plugin/voip/video/GLTextureView$i:rM	Z
       //   215: aload_0
-      //   216: getfield 128	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgd	Z
+      //   216: getfield 128	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysR	Z
       //   219: if_icmpeq +1691 -> 1910
       //   222: aload_0
-      //   223: getfield 128	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgd	Z
+      //   223: getfield 128	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysR	Z
       //   226: istore 19
       //   228: aload_0
       //   229: aload_0
-      //   230: getfield 128	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgd	Z
-      //   233: putfield 126	com/tencent/mm/plugin/voip/video/GLTextureView$i:qM	Z
-      //   236: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   230: getfield 128	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysR	Z
+      //   233: putfield 126	com/tencent/mm/plugin/voip/video/GLTextureView$i:rM	Z
+      //   236: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   239: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   242: aload_0
-      //   243: getfield 135	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgj	Z
+      //   243: getfield 135	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysX	Z
       //   246: ifeq +1658 -> 1904
       //   249: aload_0
-      //   250: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaE	()V
+      //   250: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:abD	()V
       //   253: aload_0
-      //   254: invokespecial 111	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaF	()V
+      //   254: invokespecial 111	com/tencent/mm/plugin/voip/video/GLTextureView$i:abE	()V
       //   257: aload_0
       //   258: iconst_0
-      //   259: putfield 135	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgj	Z
+      //   259: putfield 135	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysX	Z
       //   262: iconst_1
       //   263: istore 7
       //   265: iload 12
@@ -854,25 +864,25 @@ public class GLTextureView
       //   269: iload 12
       //   271: ifeq +14 -> 285
       //   274: aload_0
-      //   275: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaE	()V
+      //   275: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:abD	()V
       //   278: aload_0
-      //   279: invokespecial 111	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaF	()V
+      //   279: invokespecial 111	com/tencent/mm/plugin/voip/video/GLTextureView$i:abE	()V
       //   282: iconst_0
       //   283: istore 11
       //   285: iload 19
       //   287: ifeq +14 -> 301
       //   290: aload_0
-      //   291: getfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgi	Z
+      //   291: getfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysW	Z
       //   294: ifeq +7 -> 301
       //   297: aload_0
-      //   298: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaE	()V
+      //   298: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:abD	()V
       //   301: iload 19
       //   303: ifeq +48 -> 351
       //   306: aload_0
-      //   307: getfield 86	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgh	Z
+      //   307: getfield 86	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysV	Z
       //   310: ifeq +41 -> 351
       //   313: aload_0
-      //   314: getfield 61	com/tencent/mm/plugin/voip/video/GLTextureView$i:xga	Ljava/lang/ref/WeakReference;
+      //   314: getfield 61	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysO	Ljava/lang/ref/WeakReference;
       //   317: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   320: checkcast 6	com/tencent/mm/plugin/voip/video/GLTextureView
       //   323: astore 23
@@ -882,48 +892,48 @@ public class GLTextureView
       //   331: istore 20
       //   333: iload 20
       //   335: ifeq +12 -> 347
-      //   338: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
-      //   341: invokevirtual 144	com/tencent/mm/plugin/voip/video/GLTextureView$j:dxf	()Z
+      //   338: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   341: invokevirtual 144	com/tencent/mm/plugin/voip/video/GLTextureView$j:dLE	()Z
       //   344: ifeq +7 -> 351
       //   347: aload_0
-      //   348: invokespecial 111	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaF	()V
+      //   348: invokespecial 111	com/tencent/mm/plugin/voip/video/GLTextureView$i:abE	()V
       //   351: iload 19
       //   353: ifeq +19 -> 372
-      //   356: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
-      //   359: invokevirtual 147	com/tencent/mm/plugin/voip/video/GLTextureView$j:dxg	()Z
+      //   356: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   359: invokevirtual 147	com/tencent/mm/plugin/voip/video/GLTextureView$j:dLF	()Z
       //   362: ifeq +10 -> 372
       //   365: aload_0
-      //   366: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:zuL	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
+      //   366: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:AND	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
       //   369: invokevirtual 89	com/tencent/mm/plugin/voip/video/GLTextureView$h:finish	()V
       //   372: aload_0
-      //   373: getfield 149	com/tencent/mm/plugin/voip/video/GLTextureView$i:xge	Z
+      //   373: getfield 149	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysS	Z
       //   376: ifne +37 -> 413
       //   379: aload_0
-      //   380: getfield 151	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgg	Z
+      //   380: getfield 151	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysU	Z
       //   383: ifne +30 -> 413
       //   386: aload_0
-      //   387: getfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgi	Z
+      //   387: getfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysW	Z
       //   390: ifeq +7 -> 397
       //   393: aload_0
-      //   394: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaE	()V
+      //   394: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:abD	()V
       //   397: aload_0
       //   398: iconst_1
-      //   399: putfield 151	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgg	Z
+      //   399: putfield 151	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysU	Z
       //   402: aload_0
       //   403: iconst_0
-      //   404: putfield 153	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgf	Z
-      //   407: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   404: putfield 153	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysT	Z
+      //   407: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   410: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   413: aload_0
-      //   414: getfield 149	com/tencent/mm/plugin/voip/video/GLTextureView$i:xge	Z
+      //   414: getfield 149	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysS	Z
       //   417: ifeq +21 -> 438
       //   420: aload_0
-      //   421: getfield 151	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgg	Z
+      //   421: getfield 151	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysU	Z
       //   424: ifeq +14 -> 438
       //   427: aload_0
       //   428: iconst_0
-      //   429: putfield 151	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgg	Z
-      //   432: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   429: putfield 151	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysU	Z
+      //   432: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   435: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   438: iload 5
       //   440: istore 12
@@ -937,8 +947,8 @@ public class GLTextureView
       //   455: istore 12
       //   457: aload_0
       //   458: iconst_1
-      //   459: putfield 155	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgm	Z
-      //   462: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   459: putfield 155	com/tencent/mm/plugin/voip/video/GLTextureView$i:yta	Z
+      //   462: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   465: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   468: iload_2
       //   469: istore 18
@@ -951,14 +961,14 @@ public class GLTextureView
       //   482: iload 6
       //   484: istore 16
       //   486: aload_0
-      //   487: invokevirtual 158	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaI	()Z
+      //   487: invokevirtual 158	com/tencent/mm/plugin/voip/video/GLTextureView$i:abH	()Z
       //   490: ifeq +653 -> 1143
       //   493: iload 7
       //   495: istore 5
       //   497: iload 6
       //   499: istore_1
       //   500: aload_0
-      //   501: getfield 86	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgh	Z
+      //   501: getfield 86	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysV	Z
       //   504: ifne +14 -> 518
       //   507: iload 7
       //   509: ifeq +166 -> 675
@@ -973,7 +983,7 @@ public class GLTextureView
       //   525: iload_3
       //   526: istore 6
       //   528: aload_0
-      //   529: getfield 86	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgh	Z
+      //   529: getfield 86	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysV	Z
       //   532: ifeq +34 -> 566
       //   535: iload_2
       //   536: istore 8
@@ -982,11 +992,11 @@ public class GLTextureView
       //   542: iload_3
       //   543: istore 6
       //   545: aload_0
-      //   546: getfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgi	Z
+      //   546: getfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysW	Z
       //   549: ifne +17 -> 566
       //   552: aload_0
       //   553: iconst_1
-      //   554: putfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgi	Z
+      //   554: putfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysW	Z
       //   557: iconst_1
       //   558: istore 8
       //   560: iconst_1
@@ -1004,10 +1014,10 @@ public class GLTextureView
       //   582: iload_1
       //   583: istore 16
       //   585: aload_0
-      //   586: getfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgi	Z
+      //   586: getfield 75	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysW	Z
       //   589: ifeq +554 -> 1143
       //   592: aload_0
-      //   593: getfield 51	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgn	Z
+      //   593: getfield 51	com/tencent/mm/plugin/voip/video/GLTextureView$i:ytb	Z
       //   596: ifeq +1287 -> 1883
       //   599: iconst_1
       //   600: istore 4
@@ -1023,11 +1033,11 @@ public class GLTextureView
       //   617: istore_3
       //   618: aload_0
       //   619: iconst_0
-      //   620: putfield 51	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgn	Z
+      //   620: putfield 51	com/tencent/mm/plugin/voip/video/GLTextureView$i:ytb	Z
       //   623: aload_0
       //   624: iconst_0
-      //   625: putfield 57	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgl	Z
-      //   628: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   625: putfield 57	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysZ	Z
+      //   628: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   631: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   634: iload_2
       //   635: istore 13
@@ -1050,18 +1060,18 @@ public class GLTextureView
       //   667: invokestatic 162	com/tencent/mm/plugin/voip/video/GLTextureView:g	(Lcom/tencent/mm/plugin/voip/video/GLTextureView;)Z
       //   670: istore 20
       //   672: goto -339 -> 333
-      //   675: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   675: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   678: astore 23
       //   680: aload 23
-      //   682: getfield 166	com/tencent/mm/plugin/voip/video/GLTextureView$j:zuM	Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;
+      //   682: getfield 166	com/tencent/mm/plugin/voip/video/GLTextureView$j:ANE	Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;
       //   685: aload_0
       //   686: if_acmpeq +11 -> 697
       //   689: aload 23
-      //   691: getfield 166	com/tencent/mm/plugin/voip/video/GLTextureView$j:zuM	Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;
+      //   691: getfield 166	com/tencent/mm/plugin/voip/video/GLTextureView$j:ANE	Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;
       //   694: ifnonnull +153 -> 847
       //   697: aload 23
       //   699: aload_0
-      //   700: putfield 166	com/tencent/mm/plugin/voip/video/GLTextureView$j:zuM	Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;
+      //   700: putfield 166	com/tencent/mm/plugin/voip/video/GLTextureView$j:ANE	Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;
       //   703: aload 23
       //   705: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   708: iconst_1
@@ -1073,7 +1083,7 @@ public class GLTextureView
       //   718: iload 8
       //   720: ifeq -202 -> 518
       //   723: aload_0
-      //   724: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:zuL	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
+      //   724: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:AND	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
       //   727: astore 23
       //   729: aload 23
       //   731: invokestatic 172	javax/microedition/khronos/egl/EGLContext:getEGL	()Ljavax/microedition/khronos/egl/EGL;
@@ -1099,7 +1109,7 @@ public class GLTextureView
       //   785: aload 21
       //   787: athrow
       //   788: astore 21
-      //   790: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   790: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   793: aload_0
       //   794: invokevirtual 99	com/tencent/mm/plugin/voip/video/GLTextureView$j:c	(Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;)V
       //   797: ldc 103
@@ -1114,14 +1124,14 @@ public class GLTextureView
       //   815: aload 21
       //   817: athrow
       //   818: astore 22
-      //   820: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   820: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   823: astore 21
       //   825: aload 21
       //   827: monitorenter
       //   828: aload_0
-      //   829: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaE	()V
+      //   829: invokespecial 109	com/tencent/mm/plugin/voip/video/GLTextureView$i:abD	()V
       //   832: aload_0
-      //   833: invokespecial 111	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaF	()V
+      //   833: invokespecial 111	com/tencent/mm/plugin/voip/video/GLTextureView$i:abE	()V
       //   836: aload 21
       //   838: monitorexit
       //   839: ldc 103
@@ -1129,21 +1139,21 @@ public class GLTextureView
       //   844: aload 22
       //   846: athrow
       //   847: aload 23
-      //   849: invokevirtual 201	com/tencent/mm/plugin/voip/video/GLTextureView$j:dxh	()V
+      //   849: invokevirtual 201	com/tencent/mm/plugin/voip/video/GLTextureView$j:dLG	()V
       //   852: aload 23
-      //   854: getfield 204	com/tencent/mm/plugin/voip/video/GLTextureView$j:xgs	Z
+      //   854: getfield 204	com/tencent/mm/plugin/voip/video/GLTextureView$j:ytg	Z
       //   857: ifeq +9 -> 866
       //   860: iconst_1
       //   861: istore 8
       //   863: goto -152 -> 711
       //   866: aload 23
-      //   868: getfield 166	com/tencent/mm/plugin/voip/video/GLTextureView$j:zuM	Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;
+      //   868: getfield 166	com/tencent/mm/plugin/voip/video/GLTextureView$j:ANE	Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;
       //   871: ifnull +18 -> 889
       //   874: aload 23
-      //   876: getfield 166	com/tencent/mm/plugin/voip/video/GLTextureView$j:zuM	Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;
+      //   876: getfield 166	com/tencent/mm/plugin/voip/video/GLTextureView$j:ANE	Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;
       //   879: iconst_1
-      //   880: putfield 135	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgj	Z
-      //   883: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   880: putfield 135	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysX	Z
+      //   883: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   886: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   889: iconst_0
       //   890: istore 8
@@ -1168,7 +1178,7 @@ public class GLTextureView
       //   936: aload 21
       //   938: athrow
       //   939: aload 23
-      //   941: getfield 211	com/tencent/mm/plugin/voip/video/GLTextureView$h:xga	Ljava/lang/ref/WeakReference;
+      //   941: getfield 211	com/tencent/mm/plugin/voip/video/GLTextureView$h:ysO	Ljava/lang/ref/WeakReference;
       //   944: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   947: checkcast 6	com/tencent/mm/plugin/voip/video/GLTextureView
       //   950: astore 25
@@ -1243,15 +1253,15 @@ public class GLTextureView
       //   1120: putfield 276	com/tencent/mm/plugin/voip/video/GLTextureView$h:eglSurface	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1123: aload_0
       //   1124: iconst_1
-      //   1125: putfield 86	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgh	Z
+      //   1125: putfield 86	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysV	Z
       //   1128: iconst_1
       //   1129: istore_1
-      //   1130: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   1130: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   1133: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   1136: iload 7
       //   1138: istore 5
       //   1140: goto -622 -> 518
-      //   1143: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   1143: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   1146: invokevirtual 279	java/lang/Object:wait	()V
       //   1149: iload 14
       //   1151: istore_1
@@ -1273,7 +1283,7 @@ public class GLTextureView
       //   1181: iload 7
       //   1183: ifeq +693 -> 1876
       //   1186: aload_0
-      //   1187: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:zuL	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
+      //   1187: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:AND	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
       //   1190: astore 22
       //   1192: aload 22
       //   1194: getfield 178	com/tencent/mm/plugin/voip/video/GLTextureView$h:egl	Ljavax/microedition/khronos/egl/EGL10;
@@ -1312,9 +1322,9 @@ public class GLTextureView
       //   1273: aload 21
       //   1275: athrow
       //   1276: aload 22
-      //   1278: invokevirtual 82	com/tencent/mm/plugin/voip/video/GLTextureView$h:aaD	()V
+      //   1278: invokevirtual 82	com/tencent/mm/plugin/voip/video/GLTextureView$h:abC	()V
       //   1281: aload 22
-      //   1283: getfield 211	com/tencent/mm/plugin/voip/video/GLTextureView$h:xga	Ljava/lang/ref/WeakReference;
+      //   1283: getfield 211	com/tencent/mm/plugin/voip/video/GLTextureView$h:ysO	Ljava/lang/ref/WeakReference;
       //   1286: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1289: checkcast 6	com/tencent/mm/plugin/voip/video/GLTextureView
       //   1292: astore 24
@@ -1351,14 +1361,14 @@ public class GLTextureView
       //   1373: istore 5
       //   1375: iload 5
       //   1377: ifne +554 -> 1931
-      //   1380: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   1380: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   1383: astore 22
       //   1385: aload 22
       //   1387: monitorenter
       //   1388: aload_0
       //   1389: iconst_1
-      //   1390: putfield 153	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgf	Z
-      //   1393: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   1390: putfield 153	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysT	Z
+      //   1393: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   1396: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   1399: aload 22
       //   1401: monitorexit
@@ -1408,14 +1418,14 @@ public class GLTextureView
       //   1499: iload 6
       //   1501: ifeq +372 -> 1873
       //   1504: aload_0
-      //   1505: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:zuL	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
+      //   1505: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:AND	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
       //   1508: astore 22
       //   1510: aload 22
       //   1512: getfield 219	com/tencent/mm/plugin/voip/video/GLTextureView$h:eglContext	Ljavax/microedition/khronos/egl/EGLContext;
       //   1515: invokevirtual 311	javax/microedition/khronos/egl/EGLContext:getGL	()Ljavax/microedition/khronos/opengles/GL;
       //   1518: astore 21
       //   1520: aload 22
-      //   1522: getfield 211	com/tencent/mm/plugin/voip/video/GLTextureView$h:xga	Ljava/lang/ref/WeakReference;
+      //   1522: getfield 211	com/tencent/mm/plugin/voip/video/GLTextureView$h:ysO	Ljava/lang/ref/WeakReference;
       //   1525: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1528: checkcast 6	com/tencent/mm/plugin/voip/video/GLTextureView
       //   1531: astore 24
@@ -1463,7 +1473,7 @@ public class GLTextureView
       //   1622: aload 21
       //   1624: checkcast 335	javax/microedition/khronos/opengles/GL10
       //   1627: astore 21
-      //   1629: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   1629: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   1632: aload 21
       //   1634: invokevirtual 338	com/tencent/mm/plugin/voip/video/GLTextureView$j:b	(Ljavax/microedition/khronos/opengles/GL10;)V
       //   1637: iconst_0
@@ -1473,7 +1483,7 @@ public class GLTextureView
       //   1643: iload_1
       //   1644: ifeq +42 -> 1686
       //   1647: aload_0
-      //   1648: getfield 61	com/tencent/mm/plugin/voip/video/GLTextureView$i:xga	Ljava/lang/ref/WeakReference;
+      //   1648: getfield 61	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysO	Ljava/lang/ref/WeakReference;
       //   1651: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1654: checkcast 6	com/tencent/mm/plugin/voip/video/GLTextureView
       //   1657: astore 22
@@ -1483,7 +1493,7 @@ public class GLTextureView
       //   1666: invokestatic 342	com/tencent/mm/plugin/voip/video/GLTextureView:h	(Lcom/tencent/mm/plugin/voip/video/GLTextureView;)Lcom/tencent/mm/plugin/voip/video/GLTextureView$m;
       //   1669: aload 21
       //   1671: aload_0
-      //   1672: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:zuL	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
+      //   1672: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:AND	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
       //   1675: getfield 215	com/tencent/mm/plugin/voip/video/GLTextureView$h:eglConfig	Ljavax/microedition/khronos/egl/EGLConfig;
       //   1678: invokeinterface 348 3 0
       //   1683: goto +254 -> 1937
@@ -1492,7 +1502,7 @@ public class GLTextureView
       //   1689: iload 4
       //   1691: ifeq +39 -> 1730
       //   1694: aload_0
-      //   1695: getfield 61	com/tencent/mm/plugin/voip/video/GLTextureView$i:xga	Ljava/lang/ref/WeakReference;
+      //   1695: getfield 61	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysO	Ljava/lang/ref/WeakReference;
       //   1698: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1701: checkcast 6	com/tencent/mm/plugin/voip/video/GLTextureView
       //   1704: astore 22
@@ -1506,7 +1516,7 @@ public class GLTextureView
       //   1722: invokeinterface 352 4 0
       //   1727: goto +216 -> 1943
       //   1730: aload_0
-      //   1731: getfield 61	com/tencent/mm/plugin/voip/video/GLTextureView$i:xga	Ljava/lang/ref/WeakReference;
+      //   1731: getfield 61	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysO	Ljava/lang/ref/WeakReference;
       //   1734: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1737: checkcast 6	com/tencent/mm/plugin/voip/video/GLTextureView
       //   1740: astore 22
@@ -1517,7 +1527,7 @@ public class GLTextureView
       //   1752: aload 21
       //   1754: invokeinterface 355 2 0
       //   1759: aload_0
-      //   1760: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:zuL	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
+      //   1760: getfield 77	com/tencent/mm/plugin/voip/video/GLTextureView$i:AND	Lcom/tencent/mm/plugin/voip/video/GLTextureView$h;
       //   1763: astore 22
       //   1765: aload 22
       //   1767: getfield 178	com/tencent/mm/plugin/voip/video/GLTextureView$h:egl	Ljavax/microedition/khronos/egl/EGL10;
@@ -1536,14 +1546,14 @@ public class GLTextureView
       //   1806: iload 4
       //   1808: invokestatic 232	com/tencent/mm/plugin/voip/video/GLTextureView$h:L	(Ljava/lang/String;I)Ljava/lang/String;
       //   1811: pop
-      //   1812: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   1812: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   1815: astore 22
       //   1817: aload 22
       //   1819: monitorenter
       //   1820: aload_0
       //   1821: iconst_1
-      //   1822: putfield 153	com/tencent/mm/plugin/voip/video/GLTextureView$i:xgf	Z
-      //   1825: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   1822: putfield 153	com/tencent/mm/plugin/voip/video/GLTextureView$i:ysT	Z
+      //   1825: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   1828: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   1831: aload 22
       //   1833: monitorexit
@@ -1764,25 +1774,25 @@ public class GLTextureView
       //   1855	1858	1853	finally
     }
     
-    final boolean aaI()
+    final boolean abH()
     {
-      return (!this.qM) && (this.xge) && (!this.xgf) && (this.width > 0) && (this.height > 0) && ((this.xgl) || (this.xgk == 1));
+      return (!this.rM) && (this.ysS) && (!this.ysT) && (this.width > 0) && (this.height > 0) && ((this.ysZ) || (this.ysY == 1));
     }
     
-    public final void dxe()
+    public final void dLD()
     {
       AppMethodBeat.i(115603);
-      synchronized (GLTextureView.dXa())
+      synchronized (GLTextureView.emu())
       {
-        this.xgb = true;
-        GLTextureView.dXa().notifyAll();
+        this.ysP = true;
+        GLTextureView.emu().notifyAll();
         for (;;)
         {
-          boolean bool = this.xgc;
+          boolean bool = this.ysQ;
           if (!bool) {
             try
             {
-              GLTextureView.dXa().wait();
+              GLTextureView.emu().wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -1797,9 +1807,9 @@ public class GLTextureView
     public final int getRenderMode()
     {
       AppMethodBeat.i(115601);
-      synchronized (GLTextureView.dXa())
+      synchronized (GLTextureView.emu())
       {
-        int i = this.xgk;
+        int i = this.ysY;
         AppMethodBeat.o(115601);
         return i;
       }
@@ -1808,10 +1818,10 @@ public class GLTextureView
     public final void requestRender()
     {
       AppMethodBeat.i(115602);
-      synchronized (GLTextureView.dXa())
+      synchronized (GLTextureView.emu())
       {
-        this.xgl = true;
-        GLTextureView.dXa().notifyAll();
+        this.ysZ = true;
+        GLTextureView.emu().notifyAll();
         AppMethodBeat.o(115602);
         return;
       }
@@ -1842,22 +1852,22 @@ public class GLTextureView
       //   44: invokevirtual 249	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
       //   47: pop
       //   48: aload_0
-      //   49: invokespecial 386	com/tencent/mm/plugin/voip/video/GLTextureView$i:aaG	()V
-      //   52: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   49: invokespecial 386	com/tencent/mm/plugin/voip/video/GLTextureView$i:abF	()V
+      //   52: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   55: aload_0
       //   56: invokevirtual 388	com/tencent/mm/plugin/voip/video/GLTextureView$j:b	(Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;)V
       //   59: ldc_w 372
       //   62: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   65: return
       //   66: astore_1
-      //   67: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   67: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   70: aload_0
       //   71: invokevirtual 388	com/tencent/mm/plugin/voip/video/GLTextureView$j:b	(Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;)V
       //   74: ldc_w 372
       //   77: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   80: return
       //   81: astore_1
-      //   82: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:dXa	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
+      //   82: invokestatic 93	com/tencent/mm/plugin/voip/video/GLTextureView:emu	()Lcom/tencent/mm/plugin/voip/video/GLTextureView$j;
       //   85: aload_0
       //   86: invokevirtual 388	com/tencent/mm/plugin/voip/video/GLTextureView$j:b	(Lcom/tencent/mm/plugin/voip/video/GLTextureView$i;)V
       //   89: ldc_w 372
@@ -1888,10 +1898,10 @@ public class GLTextureView
         AppMethodBeat.o(115600);
         throw ((Throwable)???);
       }
-      synchronized (GLTextureView.dXa())
+      synchronized (GLTextureView.emu())
       {
-        this.xgk = paramInt;
-        GLTextureView.dXa().notifyAll();
+        this.ysY = paramInt;
+        GLTextureView.emu().notifyAll();
         AppMethodBeat.o(115600);
         return;
       }
@@ -1901,12 +1911,12 @@ public class GLTextureView
   static final class j
   {
     private static String TAG = "GLThreadManager";
-    private boolean xgp;
-    private int xgq;
-    private boolean xgr;
-    boolean xgs;
-    private boolean xgt;
-    GLTextureView.i zuM;
+    GLTextureView.i ANE;
+    private boolean ytd;
+    private int yte;
+    private boolean ytf;
+    boolean ytg;
+    private boolean yth;
     
     public final void b(GLTextureView.i parami)
     {
@@ -1915,8 +1925,8 @@ public class GLTextureView
         AppMethodBeat.i(115604);
         new StringBuilder("exiting tid=").append(parami.getId());
         GLTextureView.i.a(parami);
-        if (this.zuM == parami) {
-          this.zuM = null;
+        if (this.ANE == parami) {
+          this.ANE = null;
         }
         notifyAll();
         AppMethodBeat.o(115604);
@@ -1936,16 +1946,16 @@ public class GLTextureView
       //   4: ldc 70
       //   6: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   9: aload_0
-      //   10: getfield 72	com/tencent/mm/plugin/voip/video/GLTextureView$j:xgr	Z
+      //   10: getfield 72	com/tencent/mm/plugin/voip/video/GLTextureView$j:ytf	Z
       //   13: ifne +65 -> 78
       //   16: aload_0
-      //   17: invokevirtual 75	com/tencent/mm/plugin/voip/video/GLTextureView$j:dxh	()V
+      //   17: invokevirtual 75	com/tencent/mm/plugin/voip/video/GLTextureView$j:dLG	()V
       //   20: aload_1
       //   21: sipush 7937
       //   24: invokeinterface 81 2 0
       //   29: astore_1
       //   30: aload_0
-      //   31: getfield 83	com/tencent/mm/plugin/voip/video/GLTextureView$j:xgq	I
+      //   31: getfield 83	com/tencent/mm/plugin/voip/video/GLTextureView$j:yte	I
       //   34: ldc 84
       //   36: if_icmpge +23 -> 59
       //   39: aload_1
@@ -1956,20 +1966,20 @@ public class GLTextureView
       //   49: istore_2
       //   50: aload_0
       //   51: iload_2
-      //   52: putfield 94	com/tencent/mm/plugin/voip/video/GLTextureView$j:xgs	Z
+      //   52: putfield 94	com/tencent/mm/plugin/voip/video/GLTextureView$j:ytg	Z
       //   55: aload_0
       //   56: invokevirtual 65	java/lang/Object:notifyAll	()V
       //   59: aload_0
-      //   60: getfield 94	com/tencent/mm/plugin/voip/video/GLTextureView$j:xgs	Z
+      //   60: getfield 94	com/tencent/mm/plugin/voip/video/GLTextureView$j:ytg	Z
       //   63: ifne +28 -> 91
       //   66: iload_3
       //   67: istore_2
       //   68: aload_0
       //   69: iload_2
-      //   70: putfield 96	com/tencent/mm/plugin/voip/video/GLTextureView$j:xgt	Z
+      //   70: putfield 96	com/tencent/mm/plugin/voip/video/GLTextureView$j:yth	Z
       //   73: aload_0
       //   74: iconst_1
-      //   75: putfield 72	com/tencent/mm/plugin/voip/video/GLTextureView$j:xgr	Z
+      //   75: putfield 72	com/tencent/mm/plugin/voip/video/GLTextureView$j:ytf	Z
       //   78: ldc 70
       //   80: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   83: aload_0
@@ -2004,18 +2014,18 @@ public class GLTextureView
     public final void c(GLTextureView.i parami)
     {
       AppMethodBeat.i(115605);
-      if (this.zuM == parami) {
-        this.zuM = null;
+      if (this.ANE == parami) {
+        this.ANE = null;
       }
       notifyAll();
       AppMethodBeat.o(115605);
     }
     
-    public final boolean dxf()
+    public final boolean dLE()
     {
       try
       {
-        boolean bool = this.xgt;
+        boolean bool = this.yth;
         return bool;
       }
       finally
@@ -2026,7 +2036,7 @@ public class GLTextureView
     }
     
     /* Error */
-    public final boolean dxg()
+    public final boolean dLF()
     {
       // Byte code:
       //   0: aload_0
@@ -2034,9 +2044,9 @@ public class GLTextureView
       //   2: ldc 102
       //   4: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: invokevirtual 75	com/tencent/mm/plugin/voip/video/GLTextureView$j:dxh	()V
+      //   8: invokevirtual 75	com/tencent/mm/plugin/voip/video/GLTextureView$j:dLG	()V
       //   11: aload_0
-      //   12: getfield 94	com/tencent/mm/plugin/voip/video/GLTextureView$j:xgs	Z
+      //   12: getfield 94	com/tencent/mm/plugin/voip/video/GLTextureView$j:ytg	Z
       //   15: ifne +14 -> 29
       //   18: iconst_1
       //   19: istore_1
@@ -2068,17 +2078,17 @@ public class GLTextureView
       //   31	36	39	finally
     }
     
-    final void dxh()
+    final void dLG()
     {
-      if (!this.xgp) {
-        this.xgp = true;
+      if (!this.ytd) {
+        this.ytd = true;
       }
     }
   }
   
   public static abstract interface k
   {
-    public abstract GL aaL();
+    public abstract GL abK();
   }
   
   public static abstract interface m

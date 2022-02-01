@@ -12,80 +12,78 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.plugin.finder.feed.l.a;
-import com.tencent.mm.plugin.finder.feed.l.b;
-import com.tencent.mm.plugin.finder.feed.m;
-import com.tencent.mm.plugin.finder.feed.m.a;
-import com.tencent.mm.plugin.finder.feed.m.a.a;
-import com.tencent.mm.plugin.finder.feed.model.i.f;
-import com.tencent.mm.plugin.finder.report.b;
+import com.tencent.mm.ah.f;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.plugin.finder.feed.ai.a;
+import com.tencent.mm.plugin.finder.feed.ai.b;
+import com.tencent.mm.plugin.finder.feed.aj;
+import com.tencent.mm.plugin.finder.feed.aj.a;
+import com.tencent.mm.plugin.finder.feed.aj.a.a;
+import com.tencent.mm.plugin.finder.feed.model.n.f;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.plugin.finder.utils.g;
-import com.tencent.mm.plugin.finder.utils.g.a;
-import com.tencent.mm.plugin.finder.utils.g.a.d;
-import com.tencent.mm.plugin.finder.utils.g.a.e;
-import com.tencent.mm.protocal.protobuf.aji;
-import com.tencent.mm.protocal.protobuf.ajq;
-import com.tencent.mm.protocal.protobuf.ale;
-import com.tencent.mm.protocal.protobuf.dzq;
-import com.tencent.mm.protocal.protobuf.ebk;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.finder.utils.k.a;
+import com.tencent.mm.plugin.finder.utils.k.a.d;
+import com.tencent.mm.plugin.finder.utils.k.a.e;
+import com.tencent.mm.protocal.protobuf.alj;
+import com.tencent.mm.protocal.protobuf.alt;
+import com.tencent.mm.protocal.protobuf.anu;
+import com.tencent.mm.protocal.protobuf.any;
+import com.tencent.mm.protocal.protobuf.cfx;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.e.b;
-import d.g.b.k;
 import d.y;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderTopicFeedUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "MENU_ID_MORE", "", "MENU_ID_SHARE_TO_CHAT", "MENU_ID_SHARE_TO_TIMELINE", "TAB_TYPE", "TAG", "", "cacheId", "", "firstRsp", "Lcom/tencent/mm/protocal/protobuf/FinderGetTopicListResponse;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicFeedUIContract$TopicFeedPresenter;", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "viewCallback", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicFeedUIContract$TopicFeedViewCallback;", "getCommentScene", "getLayoutId", "getReportType", "goBack", "", "notShare", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "onStop", "setIconMenu", "Companion", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderTopicFeedUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "MENU_ID_MORE", "", "MENU_ID_SHARE_TO_CHAT", "MENU_ID_SHARE_TO_TIMELINE", "TAB_TYPE", "TAG", "", "cacheId", "", "firstRsp", "Lcom/tencent/mm/protocal/protobuf/FinderGetTopicListResponse;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicFeedUIContract$TopicFeedPresenter;", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "viewCallback", "Lcom/tencent/mm/plugin/finder/feed/FinderTopicFeedUIContract$TopicFeedViewCallback;", "getCommentScene", "getLayoutId", "getReportType", "goBack", "", "notShare", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "onStop", "setIconMenu", "Companion", "plugin-finder_release"})
 public final class FinderTopicFeedUI
   extends MMFinderUI
 {
-  private static ConcurrentHashMap<Long, FinderItem> qBG;
-  public static final a qBH;
-  private dzq KJJ;
-  private int KPs;
-  private aji KTd;
+  private static ConcurrentHashMap<Long, FinderItem> roF;
+  public static final FinderTopicFeedUI.a rsI;
   private final String TAG = "Finder.FinderTopicFeedUI";
   private HashMap _$_findViewCache;
-  private final int nmj = 10003;
-  private final int qBF = 10001;
-  private final int qtU = 10002;
-  private l.b qxA;
-  private l.a qxF;
-  private long qxT;
+  private final int nPj = 10003;
+  private anu qYj;
+  private final int rfH = 10002;
+  private long rhr;
+  private ai.b rlJ;
+  private int rlK;
+  private ai.a rlS;
+  private final int rsG = 10001;
+  private alj rsH;
   
   static
   {
     AppMethodBeat.i(178306);
-    qBH = new a((byte)0);
-    qBG = new ConcurrentHashMap();
+    rsI = new FinderTopicFeedUI.a((byte)0);
+    roF = new ConcurrentHashMap();
     AppMethodBeat.o(178306);
   }
   
-  private final void cmP()
+  private final void cwi()
   {
     AppMethodBeat.i(166277);
-    com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e((Context)this, 0, false);
+    e locale = new e((Context)this, 0, false);
     locale.a((n.c)new d(this));
     locale.a((n.d)new e(this));
-    locale.b((e.b)f.qBJ);
-    addIconOptionMenu(this.qBF, 2131230845, (MenuItem.OnMenuItemClickListener)new g(locale));
+    locale.b((e.b)f.rsK);
+    addIconOptionMenu(this.rsG, 2131230845, (MenuItem.OnMenuItemClickListener)new g(locale));
     AppMethodBeat.o(166277);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(198594);
+    AppMethodBeat.i(202518);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -96,25 +94,25 @@ public final class FinderTopicFeedUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(198594);
+    AppMethodBeat.o(202518);
     return localView1;
   }
   
-  public final int fTB()
+  public final int cuI()
   {
-    return 3;
-  }
-  
-  public final int getCommentScene()
-  {
-    AppMethodBeat.i(198593);
+    AppMethodBeat.i(202517);
     if (getIntent().getIntExtra("key_topic_type", 1) == 1)
     {
-      AppMethodBeat.o(198593);
+      AppMethodBeat.o(202517);
       return 22;
     }
-    AppMethodBeat.o(198593);
+    AppMethodBeat.o(202517);
     return 26;
+  }
+  
+  public final int cvJ()
+  {
+    return 3;
   }
   
   public final int getLayoutId()
@@ -129,44 +127,44 @@ public final class FinderTopicFeedUI
     overridePendingTransition(2130772144, 2130771986);
     setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
     setActionbarColor(getResources().getColor(2131099650));
-    qBG.clear();
+    roF.clear();
     int i = getIntent().getIntExtra("key_topic_type", 1);
     String str = getIntent().getStringExtra("key_topic_title");
-    this.KPs = getIntent().getIntExtra("KEY_TAB_TYPE", 0);
-    ad.i(this.TAG, "type:" + i + ", topic:" + str);
+    this.rlK = getIntent().getIntExtra("KEY_TAB_TYPE", 0);
+    ac.i(this.TAG, "type:" + i + ", topic:" + str);
     setMMTitle("");
     paramBundle = (MMActivity)this;
-    k.g(str, "topic");
-    this.qxF = new l.a(paramBundle, i, str, (d.g.a.a)new c(this));
-    paramBundle = this.qxF;
+    d.g.b.k.g(str, "topic");
+    this.rlS = new ai.a(paramBundle, i, str, (d.g.a.a)new c(this));
+    paramBundle = this.rlS;
     if (paramBundle == null) {
-      k.aPZ("presenter");
+      d.g.b.k.aVY("presenter");
     }
-    paramBundle.KPs = this.KPs;
+    paramBundle.rlK = this.rlK;
     paramBundle = (MMActivity)this;
     Object localObject = (MMActivity)this;
-    l.a locala = this.qxF;
+    ai.a locala = this.rlS;
     if (locala == null) {
-      k.aPZ("presenter");
+      d.g.b.k.aVY("presenter");
     }
-    this.qxA = new l.b(paramBundle, i, str, (MMActivity)localObject, locala);
-    paramBundle = this.qxF;
+    this.rlJ = new ai.b(paramBundle, i, str, (MMActivity)localObject, locala);
+    paramBundle = this.rlS;
     if (paramBundle == null) {
-      k.aPZ("presenter");
+      d.g.b.k.aVY("presenter");
     }
-    localObject = this.qxA;
+    localObject = this.rlJ;
     if (localObject == null) {
-      k.aPZ("viewCallback");
+      d.g.b.k.aVY("viewCallback");
     }
-    paramBundle.a((l.b)localObject);
-    this.qxT = getIntent().getLongExtra("KEY_CACHE_ID", 0L);
-    paramBundle = (com.tencent.mm.bx.a)new dzq();
+    paramBundle.a((ai.b)localObject);
+    this.rhr = getIntent().getLongExtra("KEY_CACHE_ID", 0L);
+    paramBundle = (com.tencent.mm.bw.a)new anu();
     localObject = getIntent().getByteArrayExtra("KEY_SECTION_INFO");
     try
     {
       paramBundle.parseFrom((byte[])localObject);
-      this.KJJ = ((dzq)paramBundle);
-      paramBundle = (com.tencent.mm.bx.a)new aji();
+      this.qYj = ((anu)paramBundle);
+      paramBundle = (com.tencent.mm.bw.a)new alj();
       localObject = getIntent().getByteArrayExtra("KEY_TOPIC_RSP");
     }
     catch (Exception paramBundle)
@@ -174,15 +172,15 @@ public final class FinderTopicFeedUI
       try
       {
         paramBundle.parseFrom((byte[])localObject);
-        this.KTd = ((aji)paramBundle);
-        if ((this.qxT == 0L) || (this.KTd == null))
+        this.rsH = ((alj)paramBundle);
+        if ((this.rhr == 0L) || (this.rsH == null))
         {
-          paramBundle = this.qxF;
+          paramBundle = this.rlS;
           if (paramBundle == null) {
-            k.aPZ("presenter");
+            d.g.b.k.aVY("presenter");
           }
           paramBundle.requestRefresh();
-          cmP();
+          cwi();
           int j = getIntent().getIntExtra("key_report_scene", 0);
           if (j != 0)
           {
@@ -191,13 +189,13 @@ public final class FinderTopicFeedUI
             if (localObject == null) {
               paramBundle = "";
             }
-            localObject = b.qFq;
-            b.e(j, paramBundle, str, i);
+            localObject = com.tencent.mm.plugin.finder.report.d.rxr;
+            com.tencent.mm.plugin.finder.report.d.e(j, paramBundle, str, i);
           }
           AppMethodBeat.o(166276);
           return;
           paramBundle = paramBundle;
-          ad.l("safeParser", "", new Object[] { paramBundle });
+          ac.l("safeParser", "", new Object[] { paramBundle });
           paramBundle = null;
         }
       }
@@ -205,35 +203,35 @@ public final class FinderTopicFeedUI
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { paramBundle });
+          ac.l("safeParser", "", new Object[] { paramBundle });
           paramBundle = null;
           continue;
-          if (this.KTd != null)
+          if (this.rsH != null)
           {
-            paramBundle = m.qxS;
-            paramBundle = m.a.qb(this.qxT);
-            locala = this.qxF;
+            paramBundle = aj.rmg;
+            paramBundle = aj.a.uj(this.rhr);
+            locala = this.rlS;
             if (locala == null) {
-              k.aPZ("presenter");
+              d.g.b.k.aVY("presenter");
             }
-            localObject = this.KTd;
+            localObject = this.rsH;
             if (localObject == null) {
-              k.fvU();
+              d.g.b.k.fOy();
             }
-            dzq localdzq = this.KJJ;
-            k.h(paramBundle, "cache");
-            k.h(localObject, "rsp");
-            i.f localf = new i.f(0, 0, null);
+            anu localanu = this.qYj;
+            d.g.b.k.h(paramBundle, "cache");
+            d.g.b.k.h(localObject, "rsp");
+            n.f localf = new n.f(0, 0, null);
             localf.setLastBuffer(paramBundle.lastBuffer);
-            localf.qxB = ((aji)localObject).qxB;
+            localf.rfD = ((alj)localObject).rfD;
             localf.setIncrementList(paramBundle.dataList);
             localf.setHasMore(true);
-            localf.KQr = ((aji)localObject).KPE;
+            localf.rnr = ((alj)localObject).rmj;
             localf.setPullType(1);
-            paramBundle = ((aji)localObject).LxD;
+            paramBundle = ((alj)localObject).EFe;
             if (paramBundle != null)
             {
-              localObject = paramBundle.LAj;
+              localObject = paramBundle.Fug;
               paramBundle = (Bundle)localObject;
               if (localObject != null) {}
             }
@@ -241,8 +239,8 @@ public final class FinderTopicFeedUI
             {
               paramBundle = "";
             }
-            localf.lZG = paramBundle;
-            locala.qxz.KJJ = localdzq;
+            localf.mBH = paramBundle;
+            locala.rlI.qYj = localanu;
             locala.a(localf);
           }
         }
@@ -253,62 +251,62 @@ public final class FinderTopicFeedUI
   public final void onDestroy()
   {
     AppMethodBeat.i(166278);
-    Object localObject = m.qxS;
-    m.a.BI(this.qxT);
-    localObject = this.qxF;
+    Object localObject = aj.rmg;
+    aj.a.ui(this.rhr);
+    localObject = this.rlS;
     if (localObject == null) {
-      k.aPZ("presenter");
+      d.g.b.k.aVY("presenter");
     }
-    ((l.a)localObject).onDetach();
-    qBG.clear();
+    ((ai.a)localObject).onDetach();
+    roF.clear();
     super.onDestroy();
     AppMethodBeat.o(166278);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(198591);
+    AppMethodBeat.i(202515);
     super.onResume();
-    Object localObject = this.qxF;
+    Object localObject = this.rlS;
     if (localObject == null) {
-      k.aPZ("presenter");
+      d.g.b.k.aVY("presenter");
     }
     if (localObject != null)
     {
-      localObject = ((l.a)localObject).qxz;
+      localObject = ((ai.a)localObject).rlI;
       if (localObject != null)
       {
-        ((com.tencent.mm.plugin.finder.feed.model.i)localObject).onAlive();
-        AppMethodBeat.o(198591);
+        ((com.tencent.mm.plugin.finder.feed.model.n)localObject).onAlive();
+        AppMethodBeat.o(202515);
         return;
       }
-      AppMethodBeat.o(198591);
+      AppMethodBeat.o(202515);
       return;
     }
-    AppMethodBeat.o(198591);
+    AppMethodBeat.o(202515);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(198592);
+    AppMethodBeat.i(202516);
     super.onStop();
-    Object localObject = this.qxF;
+    Object localObject = this.rlS;
     if (localObject == null) {
-      k.aPZ("presenter");
+      d.g.b.k.aVY("presenter");
     }
     if (localObject != null)
     {
-      localObject = ((l.a)localObject).qxz;
+      localObject = ((ai.a)localObject).rlI;
       if (localObject != null)
       {
-        ((com.tencent.mm.plugin.finder.feed.model.i)localObject).onDead();
-        AppMethodBeat.o(198592);
+        ((com.tencent.mm.plugin.finder.feed.model.n)localObject).onDead();
+        AppMethodBeat.o(202516);
         return;
       }
-      AppMethodBeat.o(198592);
+      AppMethodBeat.o(202516);
       return;
     }
-    AppMethodBeat.o(198592);
+    AppMethodBeat.o(202516);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -317,10 +315,7 @@ public final class FinderTopicFeedUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderTopicFeedUI$Companion;", "", "()V", "finderFeedCacheMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFinderFeedCacheMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "setFinderFeedCacheMap", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -329,13 +324,13 @@ public final class FinderTopicFeedUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(166270);
-      FinderTopicFeedUI.a(this.qBI);
+      FinderTopicFeedUI.a(this.rsJ);
       AppMethodBeat.o(166270);
       return true;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -346,7 +341,7 @@ public final class FinderTopicFeedUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class d
     implements n.c
   {
@@ -355,31 +350,31 @@ public final class FinderTopicFeedUI
     public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
     {
       AppMethodBeat.i(166272);
-      k.g(paraml, "menu");
+      d.g.b.k.g(paraml, "menu");
       Object localObject2;
       Object localObject1;
       boolean bool2;
-      if (paraml.eSQ())
+      if (paraml.fiA())
       {
-        localObject2 = this.qBI.getContext().getString(2131755893);
-        localObject1 = this.qBI.getContext().getString(2131755892);
-        if (!FinderTopicFeedUI.c(this.qBI)) {
+        localObject2 = this.rsJ.getContext().getString(2131755893);
+        localObject1 = this.rsJ.getContext().getString(2131755892);
+        if (!FinderTopicFeedUI.c(this.rsJ)) {
           break label169;
         }
-        localObject1 = com.tencent.mm.plugin.finder.utils.i.qTa;
-        localObject2 = com.tencent.mm.plugin.finder.utils.i.dc("", 2131759344);
-        localObject1 = com.tencent.mm.plugin.finder.utils.i.qTa;
-        localObject1 = com.tencent.mm.plugin.finder.utils.i.dc("", 2131759345);
+        localObject1 = com.tencent.mm.plugin.finder.utils.n.rPN;
+        localObject2 = com.tencent.mm.plugin.finder.utils.n.dh("", 2131759344);
+        localObject1 = com.tencent.mm.plugin.finder.utils.n.rPN;
+        localObject1 = com.tencent.mm.plugin.finder.utils.n.dh("", 2131759345);
         bool2 = true;
       }
       for (boolean bool1 = true;; bool1 = false)
       {
-        int i = FinderTopicFeedUI.d(this.qBI);
+        int i = FinderTopicFeedUI.d(this.rsJ);
         localObject2 = (CharSequence)localObject2;
-        AppCompatActivity localAppCompatActivity = this.qBI.getContext();
-        k.g(localAppCompatActivity, "context");
+        AppCompatActivity localAppCompatActivity = this.rsJ.getContext();
+        d.g.b.k.g(localAppCompatActivity, "context");
         paraml.a(i, (CharSequence)localObject2, 2131690478, localAppCompatActivity.getResources().getColor(2131099699), bool1);
-        paraml.a(FinderTopicFeedUI.e(this.qBI), (CharSequence)localObject1, 2131689817, 0, bool2);
+        paraml.a(FinderTopicFeedUI.e(this.rsJ), (CharSequence)localObject1, 2131689817, 0, bool2);
         AppMethodBeat.o(166272);
         return;
         label169:
@@ -388,7 +383,7 @@ public final class FinderTopicFeedUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
   static final class e
     implements n.d
   {
@@ -397,7 +392,7 @@ public final class FinderTopicFeedUI
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
       AppMethodBeat.i(166273);
-      k.g(paramMenuItem, "menuItem");
+      d.g.b.k.g(paramMenuItem, "menuItem");
       paramInt = paramMenuItem.getItemId();
       Object localObject1;
       String str;
@@ -406,106 +401,106 @@ public final class FinderTopicFeedUI
       Object localObject4;
       Object localObject5;
       Object localObject2;
-      if (paramInt == FinderTopicFeedUI.d(this.qBI))
+      if (paramInt == FinderTopicFeedUI.d(this.rsJ))
       {
-        if (FinderTopicFeedUI.c(this.qBI))
+        if (FinderTopicFeedUI.c(this.rsJ))
         {
-          t.makeText((Context)this.qBI, 2131759344, 0).show();
+          t.makeText((Context)this.rsJ, 2131759344, 0).show();
           AppMethodBeat.o(166273);
           return;
         }
-        paramMenuItem = g.qSw;
-        localObject1 = (MMActivity)this.qBI;
-        str = FinderTopicFeedUI.f(this.qBI).dqA;
-        paramInt = FinderTopicFeedUI.f(this.qBI).type;
-        l = FinderTopicFeedUI.f(this.qBI).qxB;
-        localObject3 = FinderTopicFeedUI.f(this.qBI).cmt();
-        localObject4 = this.qBI.getString(2131759381, new Object[] { com.tencent.mm.plugin.finder.utils.e.qN(FinderTopicFeedUI.f(this.qBI).qxB) });
-        localObject5 = FinderTopicFeedUI.f(this.qBI).qxz.qyK;
-        k.h(localObject1, "context");
-        localObject2 = com.tencent.mm.plugin.finder.spam.a.qIC;
-        if (!com.tencent.mm.plugin.finder.spam.a.Zv("share"))
+        paramMenuItem = com.tencent.mm.plugin.finder.utils.k.rPa;
+        localObject1 = (MMActivity)this.rsJ;
+        str = FinderTopicFeedUI.f(this.rsJ).dol;
+        paramInt = FinderTopicFeedUI.f(this.rsJ).type;
+        l = FinderTopicFeedUI.f(this.rsJ).rfD;
+        localObject3 = FinderTopicFeedUI.f(this.rsJ).cvw();
+        localObject4 = this.rsJ.getString(2131759381, new Object[] { g.vk(FinderTopicFeedUI.f(this.rsJ).rfD) });
+        localObject5 = FinderTopicFeedUI.f(this.rsJ).rlI.rnp;
+        d.g.b.k.h(localObject1, "context");
+        localObject2 = com.tencent.mm.plugin.finder.spam.a.rBD;
+        if (!com.tencent.mm.plugin.finder.spam.a.aed("share"))
         {
           localObject2 = new k.b();
           com.tencent.mm.plugin.i.a.c localc = new com.tencent.mm.plugin.i.a.c();
-          localObject3 = g.a.a(str, paramInt, (String)localObject3, (String)localObject4, (ajq)localObject5);
-          k.h(localObject3, "<set-?>");
-          localc.hth = ((ale)localObject3);
+          localObject3 = k.a.a(str, paramInt, (String)localObject3, (String)localObject4, (alt)localObject5);
+          d.g.b.k.h(localObject3, "<set-?>");
+          localc.hTJ = ((any)localObject3);
           ((k.b)localObject2).a((f)localc);
           ((k.b)localObject2).type = 59;
-          ((k.b)localObject2).title = aj.getContext().getString(2131760809);
-          ((k.b)localObject2).url = aj.getContext().getString(2131760810);
+          ((k.b)localObject2).title = ai.getContext().getString(2131760809);
+          ((k.b)localObject2).url = ai.getContext().getString(2131760810);
           localObject3 = new Intent();
           ((Intent)localObject3).putExtra("Retr_Msg_Type", 21);
           ((Intent)localObject3).putExtra("Multi_Retr", true);
           ((Intent)localObject3).putExtra("Retr_Msg_content", k.b.a((k.b)localObject2, null, null));
           ((Intent)localObject3).putExtra("Retr_go_to_chattingUI", false);
           ((Intent)localObject3).putExtra("Retr_show_success_tips", true);
-          d.a((MMActivity)localObject1, ".ui.transmit.MsgRetransmitUI", (Intent)localObject3, g.a.qSx, (MMActivity.a)new g.a.d(paramMenuItem, str, paramInt, l));
+          com.tencent.mm.br.d.a((MMActivity)localObject1, ".ui.transmit.MsgRetransmitUI", (Intent)localObject3, k.a.rPb, (MMActivity.a)new k.a.d(paramMenuItem, str, paramInt, l));
         }
         AppMethodBeat.o(166273);
         return;
       }
-      if (paramInt == FinderTopicFeedUI.e(this.qBI))
+      if (paramInt == FinderTopicFeedUI.e(this.rsJ))
       {
-        if (FinderTopicFeedUI.c(this.qBI))
+        if (FinderTopicFeedUI.c(this.rsJ))
         {
-          t.makeText((Context)this.qBI, 2131759345, 0).show();
+          t.makeText((Context)this.rsJ, 2131759345, 0).show();
           AppMethodBeat.o(166273);
           return;
         }
-        paramMenuItem = g.qSw;
-        paramMenuItem = (MMActivity)this.qBI;
-        localObject1 = FinderTopicFeedUI.f(this.qBI).dqA;
-        paramInt = FinderTopicFeedUI.f(this.qBI).type;
-        l = FinderTopicFeedUI.f(this.qBI).qxB;
-        str = FinderTopicFeedUI.f(this.qBI).cmt();
-        localObject2 = this.qBI.getString(2131759381, new Object[] { com.tencent.mm.plugin.finder.utils.e.qN(FinderTopicFeedUI.f(this.qBI).qxB) });
-        localObject3 = FinderTopicFeedUI.f(this.qBI).qxz.qyK;
-        k.h(paramMenuItem, "context");
-        localObject4 = com.tencent.mm.plugin.finder.spam.a.qIC;
-        if (!com.tencent.mm.plugin.finder.spam.a.Zv("share"))
+        paramMenuItem = com.tencent.mm.plugin.finder.utils.k.rPa;
+        paramMenuItem = (MMActivity)this.rsJ;
+        localObject1 = FinderTopicFeedUI.f(this.rsJ).dol;
+        paramInt = FinderTopicFeedUI.f(this.rsJ).type;
+        l = FinderTopicFeedUI.f(this.rsJ).rfD;
+        str = FinderTopicFeedUI.f(this.rsJ).cvw();
+        localObject2 = this.rsJ.getString(2131759381, new Object[] { g.vk(FinderTopicFeedUI.f(this.rsJ).rfD) });
+        localObject3 = FinderTopicFeedUI.f(this.rsJ).rlI.rnp;
+        d.g.b.k.h(paramMenuItem, "context");
+        localObject4 = com.tencent.mm.plugin.finder.spam.a.rBD;
+        if (!com.tencent.mm.plugin.finder.spam.a.aed("share"))
         {
-          ad.i(g.a.TAG, "share topic %s to sns", new Object[] { localObject1 });
+          ac.i(k.a.TAG, "share topic %s to sns", new Object[] { localObject1 });
           localObject4 = new Intent();
           localObject5 = new com.tencent.mm.modelsns.c();
-          ((com.tencent.mm.modelsns.c)localObject5).hth = g.a.a((String)localObject1, paramInt, str, (String)localObject2, (ajq)localObject3);
-          ((Intent)localObject4).putExtra("ksnsupload_finder_topic_xml", ((com.tencent.mm.modelsns.c)localObject5).aBe());
+          ((com.tencent.mm.modelsns.c)localObject5).hTJ = k.a.a((String)localObject1, paramInt, str, (String)localObject2, (alt)localObject3);
+          ((Intent)localObject4).putExtra("ksnsupload_finder_topic_xml", ((com.tencent.mm.modelsns.c)localObject5).aHU());
           ((Intent)localObject4).putExtra("Ksnsupload_type", 18);
           ((Intent)localObject4).putExtra("need_result", true);
-          d.a(paramMenuItem, ".plugin.sns.ui.SnsUploadUI", (Intent)localObject4, g.a.qSy, (MMActivity.a)new g.a.e(paramMenuItem, (String)localObject1, paramInt, l));
+          com.tencent.mm.br.d.a(paramMenuItem, ".plugin.sns.ui.SnsUploadUI", (Intent)localObject4, k.a.rPc, (MMActivity.a)new k.a.e(paramMenuItem, (String)localObject1, paramInt, l));
         }
       }
       AppMethodBeat.o(166273);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "onDismiss"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onDismiss"})
   static final class f
     implements e.b
   {
-    public static final f qBJ;
+    public static final f rsK;
     
     static
     {
       AppMethodBeat.i(166274);
-      qBJ = new f();
+      rsK = new f();
       AppMethodBeat.o(166274);
     }
     
     public final void onDismiss() {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class g
     implements MenuItem.OnMenuItemClickListener
   {
-    g(com.tencent.mm.ui.widget.a.e parame) {}
+    g(e parame) {}
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(166275);
-      this.qBK.csG();
+      this.rsL.cED();
       AppMethodBeat.o(166275);
       return true;
     }
@@ -513,7 +508,7 @@ public final class FinderTopicFeedUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderTopicFeedUI
  * JD-Core Version:    0.7.0.1
  */

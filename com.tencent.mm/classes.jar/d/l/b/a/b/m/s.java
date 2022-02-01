@@ -9,14 +9,14 @@ public final class s
   {
     AppMethodBeat.i(60654);
     k.h(paramab, "$this$isDynamic");
-    boolean bool = paramab.fJW() instanceof r;
+    boolean bool = paramab.gcz() instanceof r;
     AppMethodBeat.o(60654);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.s
  * JD-Core Version:    0.7.0.1
  */

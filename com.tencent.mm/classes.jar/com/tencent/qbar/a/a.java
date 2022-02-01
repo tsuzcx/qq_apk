@@ -3,7 +3,7 @@ package com.tencent.qbar.a;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.qbar.a.a;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +14,7 @@ public final class a
   {
     AppMethodBeat.i(91184);
     com.tencent.scanlib.b.a locala = new com.tencent.scanlib.b.a("MicroMsg.ScanImageUtil");
-    locala.a(1, com.tencent.scanlib.a.kB(aj.getContext()));
+    locala.a(1, com.tencent.scanlib.a.kN(ai.getContext()));
     if (locala.hasInited()) {
       locala.L(paramArrayOfInt);
     }

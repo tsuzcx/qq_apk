@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.sns.data;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.a;
 import com.tencent.mm.plugin.sns.storage.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.net.URLEncoder;
 
 public final class h
@@ -12,7 +12,7 @@ public final class h
   public static void a(int paramInt, long paramLong, a parama, b paramb)
   {
     int i = 4;
-    AppMethodBeat.i(187250);
+    AppMethodBeat.i(200035);
     switch (paramInt)
     {
     default: 
@@ -25,22 +25,22 @@ public final class h
       if (parama != null) {}
       try
       {
-        str1 = any(parama.dvK);
+        str1 = asK(parama.dtx);
         parama = str2;
         if (paramb != null) {
-          parama = bt.nullAsNil(paramb.wBR);
+          parama = bs.nullAsNil(paramb.xOm);
         }
-        ad.i("SnsAdReportAnalyseUtils", "reportAdDel: snsId = " + paramLong + ", uxInfo = " + str1 + ", adExtInfo = " + parama + ", reportType = " + i + ", extInfo = " + "");
-        com.tencent.mm.plugin.report.service.h.vKh.f(19553, new Object[] { Long.valueOf(paramLong), str1, parama, Integer.valueOf(i), "" });
-        AppMethodBeat.o(187250);
+        ac.i("SnsAdReportAnalyseUtils", "reportAdDel: snsId = " + paramLong + ", uxInfo = " + str1 + ", adExtInfo = " + parama + ", reportType = " + i + ", extInfo = " + "");
+        com.tencent.mm.plugin.report.service.h.wUl.f(19553, new Object[] { Long.valueOf(paramLong), str1, parama, Integer.valueOf(i), "" });
+        AppMethodBeat.o(200035);
         return;
       }
       catch (Throwable parama)
       {
-        ad.e("SnsAdReportAnalyseUtils", parama.toString());
-        AppMethodBeat.o(187250);
+        ac.e("SnsAdReportAnalyseUtils", parama.toString());
+        AppMethodBeat.o(200035);
       }
-      AppMethodBeat.o(187250);
+      AppMethodBeat.o(200035);
       return;
       i = 2;
       continue;
@@ -52,29 +52,29 @@ public final class h
     }
   }
   
-  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4)
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, int paramInt3)
   {
-    AppMethodBeat.i(187251);
+    AppMethodBeat.i(210252);
     try
     {
-      ad.i("SnsAdReportAnalyseUtils", "snsId = " + paramString1 + ", uxInfo = " + paramString3 + ", adExtInfo = " + paramString4 + ", appId = " + paramString2 + ", reportType = " + paramInt1 + ", reportScene = " + paramInt2);
-      com.tencent.mm.plugin.report.service.h.vKh.f(19693, new Object[] { Long.valueOf(System.currentTimeMillis()), paramString1, any(paramString3), paramString4, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(187251);
+      ac.i("SnsAdReportAnalyseUtils", "snsId = " + paramString1 + ", uxInfo = " + paramString3 + ", adExtInfo = " + paramString4 + ", appId = " + paramString2 + ", reportType = " + paramInt1 + ", reportScene = " + paramInt2 + ", reportOrigin = " + paramInt3);
+      com.tencent.mm.plugin.report.service.h.wUl.f(19693, new Object[] { Long.valueOf(System.currentTimeMillis()), paramString1, asK(paramString3), paramString4, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      AppMethodBeat.o(210252);
       return;
     }
     catch (Throwable paramString1)
     {
-      ad.e("SnsAdReportAnalyseUtils", paramString1.toString());
-      AppMethodBeat.o(187251);
+      ac.e("SnsAdReportAnalyseUtils", paramString1.toString());
+      AppMethodBeat.o(210252);
     }
   }
   
-  public static String any(String paramString)
+  public static String asK(String paramString)
   {
-    AppMethodBeat.i(187252);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(200037);
+    if (bs.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(187252);
+      AppMethodBeat.o(200037);
       return "";
     }
     try
@@ -86,31 +86,31 @@ public final class h
     {
       for (;;)
       {
-        ad.e("SnsAdReportAnalyseUtils", localException.toString());
+        ac.e("SnsAdReportAnalyseUtils", localException.toString());
       }
     }
-    AppMethodBeat.o(187252);
+    AppMethodBeat.o(200037);
     return paramString;
   }
   
-  public static void c(long paramLong, String paramString1, String paramString2)
+  public static void d(long paramLong, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(187249);
+    AppMethodBeat.i(200034);
     try
     {
       paramString1 = new a(paramString1);
       paramString2 = new b(paramString2);
-      paramString1 = any(paramString1.dvK);
-      paramString2 = bt.nullAsNil(paramString2.wBR);
-      ad.i("SnsAdReportAnalyseUtils", "reportAdPull: snsId = " + paramLong + ", uxInfo = " + paramString1 + ", adExtInfo = " + paramString2 + ", reportType = 1, extInfo = " + "");
-      com.tencent.mm.plugin.report.service.h.vKh.f(19553, new Object[] { Long.valueOf(paramLong), paramString1, paramString2, Integer.valueOf(1), "" });
-      AppMethodBeat.o(187249);
+      paramString1 = asK(paramString1.dtx);
+      paramString2 = bs.nullAsNil(paramString2.xOm);
+      ac.i("SnsAdReportAnalyseUtils", "reportAdPull: snsId = " + paramLong + ", uxInfo = " + paramString1 + ", adExtInfo = " + paramString2 + ", reportType = 1, extInfo = " + "");
+      com.tencent.mm.plugin.report.service.h.wUl.f(19553, new Object[] { Long.valueOf(paramLong), paramString1, paramString2, Integer.valueOf(1), "" });
+      AppMethodBeat.o(200034);
       return;
     }
     catch (Throwable paramString1)
     {
-      ad.e("SnsAdReportAnalyseUtils", paramString1.toString());
-      AppMethodBeat.o(187249);
+      ac.e("SnsAdReportAnalyseUtils", paramString1.toString());
+      AppMethodBeat.o(200034);
     }
   }
 }

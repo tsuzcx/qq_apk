@@ -25,28 +25,28 @@ import java.util.concurrent.locks.ReentrantLock;
 public class b
   extends AbstractExecutorService
 {
-  public static ConcurrentLinkedQueue<WeakReference<b>> IxC;
-  private static final e IxN;
-  public final AtomicInteger IxB;
-  private final BlockingQueue<Runnable> IxD;
-  private final HashSet<b> IxE;
-  private final LinkedList<b> IxF;
-  private final Condition IxG;
-  private int IxH;
-  private long IxI;
-  private volatile ThreadFactory IxJ;
-  private volatile e IxK;
-  private volatile long IxL;
-  private volatile int IxM;
-  private volatile int cUZ;
+  public static ConcurrentLinkedQueue<WeakReference<b>> JZl;
+  private static final e JZw;
+  public final AtomicInteger JZk;
+  private final BlockingQueue<Runnable> JZm;
+  private final HashSet<b> JZn;
+  private final LinkedList<b> JZo;
+  private final Condition JZp;
+  private int JZq;
+  private long JZr;
+  private volatile ThreadFactory JZs;
+  private volatile e JZt;
+  private volatile long JZu;
+  private volatile int JZv;
+  private volatile int cSv;
   private volatile String name;
-  private final ReentrantLock qEi;
+  private final ReentrantLock rwa;
   
   static
   {
     AppMethodBeat.i(183133);
-    IxC = new ConcurrentLinkedQueue();
-    IxN = new a();
+    JZl = new ConcurrentLinkedQueue();
+    JZw = new a();
     AppMethodBeat.o(183133);
   }
   
@@ -68,11 +68,11 @@ public class b
   private b(String paramString, int paramInt1, int paramInt2, TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue, ThreadFactory paramThreadFactory, e parame)
   {
     AppMethodBeat.i(183121);
-    this.IxB = new AtomicInteger(-536870912);
-    this.qEi = new ReentrantLock();
-    this.IxE = new HashSet();
-    this.IxF = new LinkedList();
-    this.IxG = this.qEi.newCondition();
+    this.JZk = new AtomicInteger(-536870912);
+    this.rwa = new ReentrantLock();
+    this.JZn = new HashSet();
+    this.JZo = new LinkedList();
+    this.JZp = this.rwa.newCondition();
     if ((paramInt1 < 0) || (paramInt2 <= 0) || (paramInt2 < paramInt1) || (9223372036854775807L < 0L))
     {
       paramString = new IllegalArgumentException();
@@ -85,12 +85,12 @@ public class b
       AppMethodBeat.o(183121);
       throw paramString;
     }
-    this.cUZ = paramInt1;
-    this.IxM = paramInt2;
-    this.IxD = paramBlockingQueue;
-    this.IxL = paramTimeUnit.toNanos(9223372036854775807L);
-    this.IxJ = paramThreadFactory;
-    this.IxK = parame;
+    this.cSv = paramInt1;
+    this.JZv = paramInt2;
+    this.JZm = paramBlockingQueue;
+    this.JZu = paramTimeUnit.toNanos(9223372036854775807L);
+    this.JZs = paramThreadFactory;
+    this.JZt = parame;
     this.name = paramString;
     AppMethodBeat.o(183121);
   }
@@ -98,14 +98,14 @@ public class b
   private void a(b paramb)
   {
     AppMethodBeat.i(183115);
-    ReentrantLock localReentrantLock = this.qEi;
+    ReentrantLock localReentrantLock = this.rwa;
     localReentrantLock.lock();
     if (paramb != null) {}
     try
     {
-      this.IxE.remove(paramb);
-      fnH();
-      fnI();
+      this.JZn.remove(paramb);
+      fDX();
+      fDY();
       return;
     }
     finally
@@ -120,62 +120,62 @@ public class b
     AppMethodBeat.i(183116);
     paramb.release(1);
     if (paramBoolean) {
-      fnH();
+      fDX();
     }
-    localReentrantLock = this.qEi;
+    localReentrantLock = this.rwa;
     localReentrantLock.lock();
     if (paramBoolean) {}
     for (;;)
     {
       try
       {
-        this.IxI += paramb.IxP.get();
-        this.IxE.remove(paramb);
-        paramb.IxO = null;
-        paramb.daz = null;
+        this.JZr += paramb.JZy.get();
+        this.JZn.remove(paramb);
+        paramb.JZx = null;
+        paramb.cXV = null;
         return;
       }
       finally
       {
         localReentrantLock.unlock();
-        fnI();
+        fDY();
         AppMethodBeat.o(183116);
       }
-      if (paramb.IxQ.compareAndSet(false, true))
+      if (paramb.JZz.compareAndSet(false, true))
       {
-        this.IxF.add(paramb);
-        paramb = fnJ();
+        this.JZo.add(paramb);
+        paramb = fDZ();
         if (paramb != null) {
-          aL(paramb);
+          aO(paramb);
         }
       }
     }
   }
   
-  private void aK(Runnable paramRunnable)
+  private void aN(Runnable paramRunnable)
   {
     AppMethodBeat.i(183113);
-    this.IxK.a(paramRunnable, this);
+    this.JZt.a(paramRunnable, this);
     AppMethodBeat.o(183113);
   }
   
-  private boolean aL(Runnable paramRunnable)
+  private boolean aO(Runnable paramRunnable)
   {
     AppMethodBeat.i(183123);
-    if ((this.IxB.get() & 0xE0000000) >= 0)
+    if ((this.JZk.get() & 0xE0000000) >= 0)
     {
       AppMethodBeat.o(183123);
       return false;
     }
-    ReentrantLock localReentrantLock = this.qEi;
+    ReentrantLock localReentrantLock = this.rwa;
     localReentrantLock.lock();
     try
     {
-      if (this.IxF.isEmpty()) {}
-      for (b localb = null; localb != null; localb = (b)this.IxF.remove())
+      if (this.JZo.isEmpty()) {}
+      for (b localb = null; localb != null; localb = (b)this.JZo.remove())
       {
-        localb.IxQ.compareAndSet(true, false);
-        localb.aM(paramRunnable);
+        localb.JZz.compareAndSet(true, false);
+        localb.aP(paramRunnable);
         localb.start();
         return true;
       }
@@ -188,19 +188,19 @@ public class b
     }
   }
   
-  public static boolean aca(int paramInt)
+  public static boolean aet(int paramInt)
   {
     return paramInt < 0;
   }
   
-  private void acb(int paramInt)
+  private void aeu(int paramInt)
   {
     AppMethodBeat.i(183110);
     int i;
     do
     {
-      i = this.IxB.get();
-    } while ((!kp(i, paramInt)) && (!this.IxB.compareAndSet(i, 0x1FFFFFFF & i | paramInt)));
+      i = this.JZk.get();
+    } while ((!kC(i, paramInt)) && (!this.JZk.compareAndSet(i, 0x1FFFFFFF & i | paramInt)));
     AppMethodBeat.o(183110);
   }
   
@@ -212,22 +212,22 @@ public class b
     int k;
     do
     {
-      i = this.IxB.get();
+      i = this.JZk.get();
       k = i & 0xE0000000;
-      if (h.Iye.isShutdown())
+      if (h.JZN.isShutdown())
       {
         AppMethodBeat.o(183114);
         return false;
       }
-      if ((k < 0) || ((k == 0) && (paramRunnable == null) && (!this.IxD.isEmpty()))) {
+      if ((k < 0) || ((k == 0) && (paramRunnable == null) && (!this.JZm.isEmpty()))) {
         break label303;
       }
       AppMethodBeat.o(183114);
       return false;
-      if (this.IxB.compareAndSet(i, i + 1)) {
+      if (this.JZk.compareAndSet(i, i + 1)) {
         break;
       }
-      i = this.IxB.get();
+      i = this.JZk.get();
     } while ((i & 0xE0000000) != k);
     label141:
     label303:
@@ -239,7 +239,7 @@ public class b
           break label141;
         }
       }
-      for (int j = this.cUZ; m >= j; j = this.IxM)
+      for (int j = this.cSv; m >= j; j = this.JZv)
       {
         AppMethodBeat.o(183114);
         return false;
@@ -260,18 +260,18 @@ public class b
         }
         try
         {
-          localReentrantLock = this.qEi;
+          localReentrantLock = this.rwa;
           localReentrantLock.lock();
           try
           {
-            i = this.IxB.get() & 0xE0000000;
+            i = this.JZk.get() & 0xE0000000;
             if ((i >= 0) && ((i != 0) || (paramRunnable != null))) {
               continue;
             }
-            this.IxE.add(localb);
-            i = this.IxE.size();
-            if (i > this.IxH) {
-              this.IxH = i;
+            this.JZn.add(localb);
+            i = this.JZn.size();
+            if (i > this.JZq) {
+              this.JZq = i;
             }
             i = 1;
             localReentrantLock.unlock();
@@ -300,53 +300,53 @@ public class b
     }
   }
   
-  private void fnH()
+  private void fDX()
   {
     AppMethodBeat.i(183109);
     int i;
     do
     {
-      i = this.IxB.get();
-    } while (!this.IxB.compareAndSet(i, i - 1));
+      i = this.JZk.get();
+    } while (!this.JZk.compareAndSet(i, i - 1));
     AppMethodBeat.o(183109);
   }
   
-  private void fnI()
+  private void fDY()
   {
     AppMethodBeat.i(183111);
     ReentrantLock localReentrantLock;
     for (;;)
     {
-      int j = this.IxB.get();
+      int j = this.JZk.get();
       if (j < 0) {}
-      for (int i = 1; (i != 0) || (kp(j, 1073741824)) || (((0xE0000000 & j) == 0) && (!this.IxD.isEmpty())); i = 0)
+      for (int i = 1; (i != 0) || (kC(j, 1073741824)) || (((0xE0000000 & j) == 0) && (!this.JZm.isEmpty())); i = 0)
       {
         AppMethodBeat.o(183111);
         return;
       }
       if ((0x1FFFFFFF & j) != 0)
       {
-        xx(true);
+        yH(true);
         AppMethodBeat.o(183111);
         return;
       }
-      localReentrantLock = this.qEi;
+      localReentrantLock = this.rwa;
       localReentrantLock.lock();
       try
       {
-        boolean bool = this.IxB.compareAndSet(j, 1073741824);
+        boolean bool = this.JZk.compareAndSet(j, 1073741824);
         if (bool) {
           try
           {
             terminated();
-            this.IxB.set(1610612736);
-            this.IxG.signalAll();
+            this.JZk.set(1610612736);
+            this.JZp.signalAll();
             return;
           }
           finally
           {
-            this.IxB.set(1610612736);
-            this.IxG.signalAll();
+            this.JZk.set(1610612736);
+            this.JZp.signalAll();
             AppMethodBeat.o(183111);
           }
         }
@@ -360,45 +360,45 @@ public class b
     }
   }
   
-  private Runnable fnJ()
+  private Runnable fDZ()
   {
     AppMethodBeat.i(183117);
-    int i = this.IxB.get() & 0xE0000000;
-    if ((i >= 0) && ((i >= 536870912) || (this.IxD.isEmpty())))
+    int i = this.JZk.get() & 0xE0000000;
+    if ((i >= 0) && ((i >= 536870912) || (this.JZm.isEmpty())))
     {
-      fnH();
+      fDX();
       AppMethodBeat.o(183117);
       return null;
     }
-    Runnable localRunnable = (Runnable)this.IxD.poll();
+    Runnable localRunnable = (Runnable)this.JZm.poll();
     AppMethodBeat.o(183117);
     return localRunnable;
   }
   
-  public static boolean ko(int paramInt1, int paramInt2)
+  public static boolean kB(int paramInt1, int paramInt2)
   {
     return paramInt1 < paramInt2;
   }
   
-  private static boolean kp(int paramInt1, int paramInt2)
+  private static boolean kC(int paramInt1, int paramInt2)
   {
     return paramInt1 >= paramInt2;
   }
   
-  private void xx(boolean paramBoolean)
+  private void yH(boolean paramBoolean)
   {
     AppMethodBeat.i(183112);
-    ReentrantLock localReentrantLock = this.qEi;
+    ReentrantLock localReentrantLock = this.rwa;
     localReentrantLock.lock();
     try
     {
-      Iterator localIterator = this.IxE.iterator();
+      Iterator localIterator = this.JZn.iterator();
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        ((b)localIterator.next()).fnK();
+        ((b)localIterator.next()).fEa();
       } while (!paramBoolean);
       return;
     }
@@ -415,20 +415,20 @@ public class b
   {
     AppMethodBeat.i(183128);
     paramLong = paramTimeUnit.toNanos(paramLong);
-    paramTimeUnit = this.qEi;
+    paramTimeUnit = this.rwa;
     paramTimeUnit.lock();
     try
     {
       for (;;)
       {
-        boolean bool = kp(this.IxB.get(), 1610612736);
+        boolean bool = kC(this.JZk.get(), 1610612736);
         if (bool) {
           break;
         }
         if (paramLong <= 0L) {
           return false;
         }
-        paramLong = this.IxG.awaitNanos(paramLong);
+        paramLong = this.JZp.awaitNanos(paramLong);
       }
       return true;
     }
@@ -452,11 +452,11 @@ public class b
     //   11: invokestatic 344	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   14: astore 7
     //   16: aload_1
-    //   17: getfield 193	com/tencent/e/b$b:IxO	Ljava/lang/Runnable;
+    //   17: getfield 193	com/tencent/e/b$b:JZx	Ljava/lang/Runnable;
     //   20: astore 6
     //   22: aload_1
     //   23: aconst_null
-    //   24: putfield 193	com/tencent/e/b$b:IxO	Ljava/lang/Runnable;
+    //   24: putfield 193	com/tencent/e/b$b:JZx	Ljava/lang/Runnable;
     //   27: aload_1
     //   28: iconst_1
     //   29: invokevirtual 177	com/tencent/e/b$b:release	(I)Z
@@ -466,7 +466,7 @@ public class b
     //   37: aload 6
     //   39: ifnonnull +14 -> 53
     //   42: aload_0
-    //   43: invokespecial 214	com/tencent/e/b:fnJ	()Ljava/lang/Runnable;
+    //   43: invokespecial 214	com/tencent/e/b:fDZ	()Ljava/lang/Runnable;
     //   46: astore 5
     //   48: aload 5
     //   50: ifnull +119 -> 169
@@ -474,16 +474,16 @@ public class b
     //   54: iconst_1
     //   55: invokevirtual 347	com/tencent/e/b$b:acquire	(I)V
     //   58: aload_0
-    //   59: getfield 104	com/tencent/e/b:IxB	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   59: getfield 104	com/tencent/e/b:JZk	Ljava/util/concurrent/atomic/AtomicInteger;
     //   62: invokevirtual 230	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   65: ldc_w 301
-    //   68: invokestatic 250	com/tencent/e/b:kp	(II)Z
+    //   68: invokestatic 250	com/tencent/e/b:kC	(II)Z
     //   71: ifeq +28 -> 99
     //   74: aload 7
     //   76: invokevirtual 350	java/lang/Thread:isInterrupted	()Z
     //   79: ifne +20 -> 99
     //   82: aload_1
-    //   83: invokevirtual 323	com/tencent/e/b$b:fnK	()V
+    //   83: invokevirtual 323	com/tencent/e/b$b:fEa	()V
     //   86: aload_0
     //   87: aload_1
     //   88: iconst_1
@@ -502,22 +502,22 @@ public class b
     //   117: aconst_null
     //   118: invokevirtual 361	com/tencent/e/b:afterExecute	(Ljava/lang/Runnable;Ljava/lang/Throwable;)V
     //   121: aload_1
-    //   122: getfield 183	com/tencent/e/b$b:IxP	Ljava/util/concurrent/atomic/AtomicLong;
+    //   122: getfield 183	com/tencent/e/b$b:JZy	Ljava/util/concurrent/atomic/AtomicLong;
     //   125: invokevirtual 364	java/util/concurrent/atomic/AtomicLong:getAndIncrement	()J
     //   128: pop2
     //   129: aload_0
-    //   130: invokespecial 214	com/tencent/e/b:fnJ	()Ljava/lang/Runnable;
+    //   130: invokespecial 214	com/tencent/e/b:fDZ	()Ljava/lang/Runnable;
     //   133: astore 4
     //   135: aload 4
     //   137: ifnull +250 -> 387
     //   140: aload_1
     //   141: aload 4
-    //   143: invokevirtual 237	com/tencent/e/b$b:aM	(Ljava/lang/Runnable;)V
+    //   143: invokevirtual 237	com/tencent/e/b$b:aP	(Ljava/lang/Runnable;)V
     //   146: aload_1
-    //   147: getstatic 261	com/tencent/e/h:Iye	Lcom/tencent/e/i;
+    //   147: getstatic 261	com/tencent/e/h:JZN	Lcom/tencent/e/i;
     //   150: aload_1
     //   151: invokeinterface 368 2 0
-    //   156: putfield 197	com/tencent/e/b$b:daz	Ljava/util/concurrent/Future;
+    //   156: putfield 197	com/tencent/e/b$b:cXV	Ljava/util/concurrent/Future;
     //   159: iconst_0
     //   160: istore_2
     //   161: iload_2
@@ -555,22 +555,22 @@ public class b
     //   223: athrow
     //   224: astore 4
     //   226: aload_1
-    //   227: getfield 183	com/tencent/e/b$b:IxP	Ljava/util/concurrent/atomic/AtomicLong;
+    //   227: getfield 183	com/tencent/e/b$b:JZy	Ljava/util/concurrent/atomic/AtomicLong;
     //   230: invokevirtual 364	java/util/concurrent/atomic/AtomicLong:getAndIncrement	()J
     //   233: pop2
     //   234: aload_0
-    //   235: invokespecial 214	com/tencent/e/b:fnJ	()Ljava/lang/Runnable;
+    //   235: invokespecial 214	com/tencent/e/b:fDZ	()Ljava/lang/Runnable;
     //   238: astore 5
     //   240: aload 5
     //   242: ifnull +140 -> 382
     //   245: aload_1
     //   246: aload 5
-    //   248: invokevirtual 237	com/tencent/e/b$b:aM	(Ljava/lang/Runnable;)V
+    //   248: invokevirtual 237	com/tencent/e/b$b:aP	(Ljava/lang/Runnable;)V
     //   251: aload_1
-    //   252: getstatic 261	com/tencent/e/h:Iye	Lcom/tencent/e/i;
+    //   252: getstatic 261	com/tencent/e/h:JZN	Lcom/tencent/e/i;
     //   255: aload_1
     //   256: invokeinterface 368 2 0
-    //   261: putfield 197	com/tencent/e/b$b:daz	Ljava/util/concurrent/Future;
+    //   261: putfield 197	com/tencent/e/b$b:cXV	Ljava/util/concurrent/Future;
     //   264: iconst_0
     //   265: istore_2
     //   266: iload_2
@@ -699,24 +699,24 @@ public class b
       AppMethodBeat.o(183122);
       throw paramRunnable;
     }
-    int k = this.IxB.get();
+    int k = this.JZk.get();
     int i = k;
-    if ((k & 0x1FFFFFFF) < this.cUZ)
+    if ((k & 0x1FFFFFFF) < this.cSv)
     {
       if (b(paramRunnable, true))
       {
         AppMethodBeat.o(183122);
         return;
       }
-      i = this.IxB.get();
+      i = this.JZk.get();
     }
     if (i < 0)
     {
       i = 1;
-      if ((i == 0) || (!this.IxD.offer(paramRunnable))) {
+      if ((i == 0) || (!this.JZm.offer(paramRunnable))) {
         break label197;
       }
-      k = this.IxB.get();
+      k = this.JZk.get();
       if (k >= 0) {
         break label157;
       }
@@ -727,12 +727,12 @@ public class b
       if (i != 0) {
         break label162;
       }
-      boolean bool = this.IxD.remove(paramRunnable);
-      fnI();
+      boolean bool = this.JZm.remove(paramRunnable);
+      fDY();
       if (!bool) {
         break label162;
       }
-      aK(paramRunnable);
+      aN(paramRunnable);
       AppMethodBeat.o(183122);
       return;
       i = 0;
@@ -745,12 +745,12 @@ public class b
       AppMethodBeat.o(183122);
       return;
     }
-    aL(null);
+    aO(null);
     AppMethodBeat.o(183122);
     return;
     label197:
     if (!b(paramRunnable, false)) {
-      aK(paramRunnable);
+      aN(paramRunnable);
     }
     AppMethodBeat.o(183122);
   }
@@ -765,15 +765,15 @@ public class b
   public final long getCompletedTaskCount()
   {
     AppMethodBeat.i(183130);
-    ReentrantLock localReentrantLock = this.qEi;
+    ReentrantLock localReentrantLock = this.rwa;
     localReentrantLock.lock();
     try
     {
-      long l1 = this.IxI;
-      Iterator localIterator = this.IxE.iterator();
+      long l1 = this.JZr;
+      Iterator localIterator = this.JZn.iterator();
       while (localIterator.hasNext())
       {
-        long l2 = ((b)localIterator.next()).IxP.get();
+        long l2 = ((b)localIterator.next()).JZy.get();
         l1 = l2 + l1;
       }
       return l1;
@@ -792,13 +792,13 @@ public class b
   
   public final BlockingQueue<Runnable> getQueue()
   {
-    return this.IxD;
+    return this.JZm;
   }
   
   public boolean isShutdown()
   {
     AppMethodBeat.i(183126);
-    if (this.IxB.get() < 0) {}
+    if (this.JZk.get() < 0) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(183126);
@@ -811,7 +811,7 @@ public class b
   public boolean isTerminated()
   {
     AppMethodBeat.i(183127);
-    boolean bool = kp(this.IxB.get(), 1610612736);
+    boolean bool = kC(this.JZk.get(), 1610612736);
     AppMethodBeat.o(183127);
     return bool;
   }
@@ -819,14 +819,14 @@ public class b
   public void shutdown()
   {
     AppMethodBeat.i(183124);
-    ReentrantLock localReentrantLock = this.qEi;
+    ReentrantLock localReentrantLock = this.rwa;
     localReentrantLock.lock();
     try
     {
-      acb(0);
-      xx(false);
+      aeu(0);
+      yH(false);
       localReentrantLock.unlock();
-      fnI();
+      fDY();
       AppMethodBeat.o(183124);
       return;
     }
@@ -841,19 +841,19 @@ public class b
   {
     int i = 0;
     AppMethodBeat.i(183125);
-    ReentrantLock localReentrantLock1 = this.qEi;
+    ReentrantLock localReentrantLock1 = this.rwa;
     localReentrantLock1.lock();
     try
     {
-      acb(536870912);
-      ReentrantLock localReentrantLock2 = this.qEi;
+      aeu(536870912);
+      ReentrantLock localReentrantLock2 = this.rwa;
       localReentrantLock2.lock();
       try
       {
-        Iterator localIterator = this.IxE.iterator();
+        Iterator localIterator = this.JZn.iterator();
         while (localIterator.hasNext())
         {
-          ((b)localIterator.next()).fnK();
+          ((b)localIterator.next()).fEa();
           continue;
           localObject1 = finally;
         }
@@ -866,7 +866,7 @@ public class b
       localReentrantLock1.unlock();
       AppMethodBeat.o(183125);
     }
-    BlockingQueue localBlockingQueue = this.IxD;
+    BlockingQueue localBlockingQueue = this.JZm;
     ArrayList localArrayList = new ArrayList();
     localBlockingQueue.drainTo(localArrayList);
     if (!localBlockingQueue.isEmpty())
@@ -883,7 +883,7 @@ public class b
       }
     }
     localReentrantLock1.unlock();
-    fnI();
+    fDY();
     AppMethodBeat.o(183125);
     return localArrayList;
   }
@@ -891,7 +891,7 @@ public class b
   protected void terminated()
   {
     AppMethodBeat.i(183132);
-    Iterator localIterator = IxC.iterator();
+    Iterator localIterator = JZl.iterator();
     while (localIterator.hasNext()) {
       if (this == (b)((WeakReference)localIterator.next()).get()) {
         localIterator.remove();
@@ -903,7 +903,7 @@ public class b
   public String toString()
   {
     AppMethodBeat.i(183131);
-    Object localObject1 = this.qEi;
+    Object localObject1 = this.rwa;
     StringBuilder localStringBuilder = new StringBuilder();
     ((ReentrantLock)localObject1).lock();
     for (;;)
@@ -911,29 +911,29 @@ public class b
       int j;
       try
       {
-        long l = this.IxI;
-        int k = this.IxE.size();
-        Iterator localIterator = this.IxE.iterator();
+        long l = this.JZr;
+        int k = this.JZn.size();
+        Iterator localIterator = this.JZn.iterator();
         int i = 0;
         if (localIterator.hasNext())
         {
           b localb = (b)localIterator.next();
-          l += localb.IxP.get();
+          l += localb.JZy.get();
           j = i;
           if (localb.isLocked())
           {
             j = i + 1;
-            localStringBuilder.append(localb.fMp);
+            localStringBuilder.append(localb.fQb);
           }
           i = j;
           continue;
         }
         ((ReentrantLock)localObject1).unlock();
-        j = this.IxB.get();
-        if (ko(j, 0))
+        j = this.JZk.get();
+        if (kB(j, 0))
         {
           localObject1 = "Running";
-          localObject1 = super.toString() + "[" + (String)localObject1 + ", pool size = " + k + ", active threads = " + i + ", queued tasks = " + this.IxD.size() + ", completed tasks = " + l + ", running tasks = " + localStringBuilder + "]";
+          localObject1 = super.toString() + "[" + (String)localObject1 + ", pool size = " + k + ", active threads = " + i + ", queued tasks = " + this.JZm.size() + ", completed tasks = " + l + ", running tasks = " + localStringBuilder + "]";
           AppMethodBeat.o(183131);
           return localObject1;
         }
@@ -943,7 +943,7 @@ public class b
         ((ReentrantLock)localObject1).unlock();
         AppMethodBeat.o(183131);
       }
-      if (kp(j, 1610612736)) {
+      if (kC(j, 1610612736)) {
         localObject1 = "Terminated";
       } else {
         localObject1 = "Shutting down";
@@ -967,55 +967,55 @@ public class b
     extends AbstractQueuedSynchronizer
     implements com.tencent.e.i.h
   {
-    Runnable IxO;
-    AtomicLong IxP;
-    AtomicBoolean IxQ;
-    Future daz;
-    String fMp;
+    Runnable JZx;
+    AtomicLong JZy;
+    AtomicBoolean JZz;
+    Future cXV;
+    String fQb;
     
     b(Runnable paramRunnable)
     {
       AppMethodBeat.i(183100);
-      this.IxP = new AtomicLong(0L);
-      this.IxQ = new AtomicBoolean(false);
+      this.JZy = new AtomicLong(0L);
+      this.JZz = new AtomicBoolean(false);
       setState(-1);
-      aM(paramRunnable);
+      aP(paramRunnable);
       AppMethodBeat.o(183100);
     }
     
-    final void aM(Runnable paramRunnable)
+    final void aP(Runnable paramRunnable)
     {
       AppMethodBeat.i(183101);
-      this.IxO = paramRunnable;
+      this.JZx = paramRunnable;
       if (paramRunnable == null)
       {
-        this.fMp = (b.a(b.this) + "#Worker");
+        this.fQb = (b.a(b.this) + "#Worker");
         AppMethodBeat.o(183101);
         return;
       }
       if ((paramRunnable instanceof com.tencent.e.i.h))
       {
-        this.fMp = ((com.tencent.e.i.h)paramRunnable).getKey();
+        this.fQb = ((com.tencent.e.i.h)paramRunnable).getKey();
         AppMethodBeat.o(183101);
         return;
       }
-      this.fMp = (b.a(b.this) + "#" + paramRunnable.getClass().getName());
+      this.fQb = (b.a(b.this) + "#" + paramRunnable.getClass().getName());
       AppMethodBeat.o(183101);
     }
     
-    final void fnK()
+    final void fEa()
     {
       AppMethodBeat.i(183103);
-      d.IxU.i("ForkThreadPoolExecutor", "[releaseWork] name=" + b.a(b.this), new Object[0]);
-      if ((this.daz != null) && (!this.daz.isDone())) {
-        this.daz.cancel(true);
+      d.JZD.i("ForkThreadPoolExecutor", "[releaseWork] name=" + b.a(b.this), new Object[0]);
+      if ((this.cXV != null) && (!this.cXV.isDone())) {
+        this.cXV.cancel(true);
       }
       AppMethodBeat.o(183103);
     }
     
     public final String getKey()
     {
-      return this.fMp;
+      return this.fQb;
     }
     
     protected final boolean isHeldExclusively()
@@ -1048,7 +1048,7 @@ public class b
     final void start()
     {
       AppMethodBeat.i(183102);
-      this.daz = h.Iye.aP(this);
+      this.cXV = h.JZN.aS(this);
       AppMethodBeat.o(183102);
     }
     

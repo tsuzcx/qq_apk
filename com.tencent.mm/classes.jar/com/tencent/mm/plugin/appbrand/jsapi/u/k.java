@@ -1,135 +1,69 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
+import android.app.Activity;
+import android.content.Context;
+import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.l;
-import com.tencent.mm.plugin.appbrand.aa.l.a;
-import com.tencent.mm.plugin.appbrand.jsapi.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.utils.n;
-import com.tencent.mm.plugin.appbrand.utils.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class k
+  extends a
 {
-  static int kjD;
-  private n kiY;
-  final List<ar> kjE;
-  Runnable kjF;
+  public static final int CTRL_INDEX = 535;
+  public static final String NAME = "getVolume";
   
-  private k()
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(137654);
-    this.kjE = new LinkedList();
-    kjD = i.kjA.bbP();
-    this.kjF = new Runnable()
+    AppMethodBeat.i(137672);
+    ac.i("MicroMsg.JsApiGetVolume", "invoke JsApiGetVolume!");
+    if (paramc == null)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(137651);
-        synchronized (k.this.kjE)
-        {
-          if (k.this.kjE.isEmpty())
-          {
-            AppMethodBeat.o(137651);
-            return;
-          }
-          ar localar = (ar)k.this.kjE.remove(0);
-          int i = k.this.kjE.size();
-          localar.aXQ();
-          ad.v("MicroMsg.SensorJsEventPublisher", "publish next event(event : %s), list size is : %d.", new Object[] { localar.getName(), Integer.valueOf(i) });
-        }
-        synchronized (k.this.kjE)
-        {
-          boolean bool = k.this.kjE.isEmpty();
-          if (!bool) {
-            l.bqm().j(this, k.kjD);
-          }
-          AppMethodBeat.o(137651);
-          return;
-          localObject1 = finally;
-          AppMethodBeat.o(137651);
-          throw localObject1;
-        }
-      }
-    };
-    this.kiY = new n(kjD, new n.a()
-    {
-      public final boolean j(Object... arg1)
-      {
-        AppMethodBeat.i(137652);
-        synchronized (k.this.kjE)
-        {
-          if (k.this.kjE.isEmpty())
-          {
-            AppMethodBeat.o(137652);
-            return false;
-          }
-          k.this.kjF.run();
-          AppMethodBeat.o(137652);
-          return true;
-        }
-      }
-    });
-    AppMethodBeat.o(137654);
-  }
-  
-  public final boolean a(ar paramar, c arg2)
-  {
-    AppMethodBeat.i(137655);
-    if (paramar == null)
-    {
-      AppMethodBeat.o(137655);
-      return false;
+      ac.e("MicroMsg.JsApiGetVolume", "component is null");
+      AppMethodBeat.o(137672);
+      return;
     }
-    if (!i.kjA.a(???, paramar))
+    paramJSONObject = paramc.getContext();
+    if (paramJSONObject == null)
     {
-      AppMethodBeat.o(137655);
-      return false;
+      ac.e("MicroMsg.JsApiGetVolume", "fail:context is null");
+      paramc.h(paramInt, e("fail:context is null", null));
+      AppMethodBeat.o(137672);
+      return;
     }
-    for (;;)
+    if (!(paramJSONObject instanceof Activity))
     {
-      synchronized (this.kjE)
-      {
-        boolean bool = this.kjE.isEmpty();
-        if (!this.kjE.isEmpty())
-        {
-          if (((ar)this.kjE.get(0)).equals(paramar))
-          {
-            this.kjE.add(0, paramar);
-            this.kjE.remove(1);
-            if ((bool) && (!this.kiY.l(new Object[0])))
-            {
-              ad.v("MicroMsg.SensorJsEventPublisher", "post delay publish event(event : %s).", new Object[] { paramar.getName() });
-              l.bqm().j(this.kjF, kjD);
-            }
-            AppMethodBeat.o(137655);
-            return true;
-          }
-          this.kjE.remove(paramar);
-          this.kjE.add(paramar);
-        }
-      }
-      this.kjE.add(paramar);
+      ac.e("MicroMsg.JsApiGetVolume", "fail:context is not Activity");
+      paramc.h(paramInt, e("fail:context is not Activity", null));
+      AppMethodBeat.o(137672);
+      return;
     }
-  }
-  
-  static final class a
-  {
-    static k kjH;
-    
-    static
+    paramJSONObject = (AudioManager)paramJSONObject.getSystemService("audio");
+    if (paramJSONObject == null)
     {
-      AppMethodBeat.i(137653);
-      kjH = new k((byte)0);
-      AppMethodBeat.o(137653);
+      ac.e("MicroMsg.JsApiGetVolume", "fail:manager is null");
+      paramc.h(paramInt, e("fail:manager is null", null));
+      AppMethodBeat.o(137672);
+      return;
     }
+    int i = paramJSONObject.getStreamVolume(3);
+    int j = paramJSONObject.getStreamMaxVolume(3);
+    ac.i("MicroMsg.JsApiGetVolume", "JsApiGetVolume %d/%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    paramJSONObject = new HashMap();
+    paramJSONObject.put("currentVolume", Integer.valueOf(i));
+    paramJSONObject.put("maxVolume", Integer.valueOf(j));
+    paramc.h(paramInt, k("ok", paramJSONObject));
+    AppMethodBeat.o(137672);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.k
  * JD-Core Version:    0.7.0.1
  */

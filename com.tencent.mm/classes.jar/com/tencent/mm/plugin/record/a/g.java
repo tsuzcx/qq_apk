@@ -8,11 +8,11 @@ public abstract interface g
 {
   public static final String[] SQL_CREATE = { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "RecordMessageInfo") };
   
-  public abstract void Kb(int paramInt);
+  public abstract void Ma(int paramInt);
   
-  public abstract j Kc(int paramInt);
+  public abstract j Mb(int paramInt);
   
-  public abstract List<j> dgd();
+  public abstract List<j> dtK();
 }
 
 

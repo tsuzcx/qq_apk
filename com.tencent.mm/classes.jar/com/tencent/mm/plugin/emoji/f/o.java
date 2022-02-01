@@ -2,65 +2,62 @@ package com.tencent.mm.plugin.emoji.f;
 
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.plugin.emoji.e.i;
 import com.tencent.mm.protocal.protobuf.GetEmotionRewardRequest;
 import com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse;
-import com.tencent.mm.protocal.protobuf.adf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.aw;
-import com.tencent.mm.storage.emotion.m;
-import com.tencent.mm.storage.emotion.p;
+import com.tencent.mm.protocal.protobuf.aee;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.az;
 import java.io.IOException;
 
 public class o
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements com.tencent.mm.network.k
 {
-  public static int oyW = 0;
-  public static int oyX = 1;
-  public static int oyY = 1;
-  public static int oyZ = 2;
-  public static int oza = 256;
+  public static int pcA = 256;
+  public static int pcw = 0;
+  public static int pcx = 1;
+  public static int pcy = 1;
+  public static int pcz = 2;
   private g callback;
-  private String oyj;
-  private int ozb;
+  private String pbJ;
+  private int pcB;
   private final b rr;
   
   public o(String paramString, int paramInt)
   {
     AppMethodBeat.i(108712);
     b.a locala = new b.a();
-    locala.gUU = new GetEmotionRewardRequest();
-    locala.gUV = new GetEmotionRewardResponse();
+    locala.hvt = new GetEmotionRewardRequest();
+    locala.hvu = new GetEmotionRewardResponse();
     locala.uri = "/cgi-bin/micromsg-bin/mmgetemotionreward";
     locala.funcId = 822;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    this.oyj = paramString;
-    this.ozb = paramInt;
+    this.rr = locala.aAz();
+    this.pbJ = paramString;
+    this.pcB = paramInt;
     AppMethodBeat.o(108712);
   }
   
-  public final GetEmotionRewardResponse bVu()
+  public final GetEmotionRewardResponse ccH()
   {
-    return (GetEmotionRewardResponse)this.rr.gUT.gUX;
+    return (GetEmotionRewardResponse)this.rr.hvs.hvw;
   }
   
   public int doScene(com.tencent.mm.network.e parame, g paramg)
   {
     AppMethodBeat.i(108714);
     this.callback = paramg;
-    paramg = (GetEmotionRewardRequest)this.rr.gUS.gUX;
-    paramg.ProductID = this.oyj;
-    paramg.OpCode = this.ozb;
+    paramg = (GetEmotionRewardRequest)this.rr.hvr.hvw;
+    paramg.ProductID = this.pbJ;
+    paramg.OpCode = this.pcB;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(108714);
     return i;
@@ -71,28 +68,28 @@ public class o
     return 822;
   }
   
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(108713);
-    ad.i("MicroMsg.emoji.NetSceneGetEmotionReward", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ac.i("MicroMsg.emoji.NetSceneGetEmotionReward", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     Object localObject;
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      if (this.ozb == oyW)
+      if (this.pcB == pcw)
       {
-        paramq = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().Fzd;
-        paramArrayOfByte = this.oyj;
-        localObject = bVu();
-        if ((bt.isNullOrNil(paramArrayOfByte)) || (localObject == null)) {
-          ad.w("MicroMsg.emoji.EmotionRewardInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
+        paramq = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().GYe;
+        paramArrayOfByte = this.pbJ;
+        localObject = ccH();
+        if ((bs.isNullOrNil(paramArrayOfByte)) || (localObject == null)) {
+          ac.w("MicroMsg.emoji.EmotionRewardInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
         }
       }
       else
       {
-        if ((bVu() == null) || (bVu().Reward == null)) {
+        if ((ccH() == null) || (ccH().Reward == null)) {
           break label285;
         }
-        com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().Fzf.fR(this.oyj, bVu().Reward.Cxm);
-        com.tencent.mm.plugin.emoji.model.k.bVd().cO(this.oyj, bVu().Reward.Cxm);
+        com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().GYg.fV(this.pbJ, ccH().Reward.DPI);
+        com.tencent.mm.plugin.emoji.model.k.ccq().cT(this.pbJ, ccH().Reward.DPI);
       }
     }
     for (;;)
@@ -104,33 +101,33 @@ public class o
         return;
         try
         {
-          m localm = new m();
-          localm.field_productID = paramArrayOfByte;
-          localm.field_content = ((GetEmotionRewardResponse)localObject).toByteArray();
-          localObject = localm.convertTo();
+          com.tencent.mm.storage.emotion.n localn = new com.tencent.mm.storage.emotion.n();
+          localn.field_productID = paramArrayOfByte;
+          localn.field_content = ((GetEmotionRewardResponse)localObject).toByteArray();
+          localObject = localn.convertTo();
           if (paramq.db.replace("EmotionRewardInfo", "productID", (ContentValues)localObject) <= 0L) {
             break label266;
           }
-          ad.i("MicroMsg.emoji.EmotionRewardInfoStorage", "saveEmotionRewardResponseWithPID success. ProductId:%s", new Object[] { paramArrayOfByte });
+          ac.i("MicroMsg.emoji.EmotionRewardInfoStorage", "saveEmotionRewardResponseWithPID success. ProductId:%s", new Object[] { paramArrayOfByte });
         }
         catch (IOException paramq)
         {
-          ad.e("MicroMsg.emoji.EmotionRewardInfoStorage", "saveEmotionRewardResponseWithPID exception:%s", new Object[] { bt.m(paramq) });
+          ac.e("MicroMsg.emoji.EmotionRewardInfoStorage", "saveEmotionRewardResponseWithPID exception:%s", new Object[] { bs.m(paramq) });
         }
       }
       break;
       label266:
-      ad.i("MicroMsg.emoji.EmotionRewardInfoStorage", "saveEmotionRewardResponseWithPID failed. ProductId:%s", new Object[] { paramArrayOfByte });
+      ac.i("MicroMsg.emoji.EmotionRewardInfoStorage", "saveEmotionRewardResponseWithPID failed. ProductId:%s", new Object[] { paramArrayOfByte });
       break;
       label285:
-      ad.i("MicroMsg.emoji.NetSceneGetEmotionReward", "getEmotionRewardRespone is null. so i think no such product reward information");
-      com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().Fzf.fR(this.oyj, oza);
-      com.tencent.mm.plugin.emoji.model.k.bVd().cO(this.oyj, oza);
+      ac.i("MicroMsg.emoji.NetSceneGetEmotionReward", "getEmotionRewardRespone is null. so i think no such product reward information");
+      com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().GYg.fV(this.pbJ, pcA);
+      com.tencent.mm.plugin.emoji.model.k.ccq().cT(this.pbJ, pcA);
       continue;
       if (paramInt3 == 1)
       {
-        com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().Fzf.fR(this.oyj, oza);
-        com.tencent.mm.plugin.emoji.model.k.bVd().cO(this.oyj, oza);
+        com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().GYg.fV(this.pbJ, pcA);
+        com.tencent.mm.plugin.emoji.model.k.ccq().cT(this.pbJ, pcA);
       }
     }
   }

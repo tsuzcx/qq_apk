@@ -56,10 +56,10 @@ public final class b
     AppMethodBeat.o(159900);
   }
   
-  private static boolean aG(View paramView, int paramInt)
+  private static boolean aI(View paramView, int paramInt)
   {
     AppMethodBeat.i(159898);
-    if ((paramInt > 0) && (aI(paramView, paramInt) == aI(paramView, paramInt - 1) + 1))
+    if ((paramInt > 0) && (aK(paramView, paramInt) == aK(paramView, paramInt - 1) + 1))
     {
       AppMethodBeat.o(159898);
       return true;
@@ -68,7 +68,7 @@ public final class b
     return false;
   }
   
-  public static int aH(View paramView, int paramInt)
+  public static int aJ(View paramView, int paramInt)
   {
     AppMethodBeat.i(159902);
     if ((paramView instanceof NeatTextView))
@@ -95,7 +95,7 @@ public final class b
     return 0;
   }
   
-  public static int aI(View paramView, int paramInt)
+  public static int aK(View paramView, int paramInt)
   {
     AppMethodBeat.i(159903);
     if ((paramView instanceof NeatTextView))
@@ -122,7 +122,7 @@ public final class b
     return 0;
   }
   
-  public static float aJ(View paramView, int paramInt)
+  public static float aL(View paramView, int paramInt)
   {
     AppMethodBeat.i(159904);
     float f;
@@ -150,7 +150,7 @@ public final class b
     return 0.0F;
   }
   
-  public static int aK(View paramView, int paramInt)
+  public static int aM(View paramView, int paramInt)
   {
     AppMethodBeat.i(159906);
     if ((paramView instanceof NeatTextView))
@@ -177,7 +177,7 @@ public final class b
     return 0;
   }
   
-  private static int aL(View paramView, int paramInt)
+  private static int aN(View paramView, int paramInt)
   {
     AppMethodBeat.i(159907);
     if ((paramView instanceof NeatTextView))
@@ -204,7 +204,7 @@ public final class b
     return 0;
   }
   
-  public static float aM(View paramView, int paramInt)
+  public static float aO(View paramView, int paramInt)
   {
     AppMethodBeat.i(159908);
     float f;
@@ -232,7 +232,7 @@ public final class b
     return 0.0F;
   }
   
-  public static int aN(View paramView, int paramInt)
+  public static int aP(View paramView, int paramInt)
   {
     AppMethodBeat.i(159909);
     if ((paramView instanceof NeatTextView))
@@ -267,7 +267,7 @@ public final class b
     }
   }
   
-  private static int aO(View paramView, int paramInt)
+  private static int aQ(View paramView, int paramInt)
   {
     AppMethodBeat.i(159910);
     if ((paramView instanceof NeatTextView))
@@ -294,7 +294,7 @@ public final class b
     return 0;
   }
   
-  private static float aP(View paramView, int paramInt)
+  private static float aR(View paramView, int paramInt)
   {
     AppMethodBeat.i(159911);
     float f;
@@ -325,20 +325,20 @@ public final class b
   public static int f(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159897);
-    int j = aO(paramView, paramInt2);
+    int j = aQ(paramView, paramInt2);
     int i = paramInt3;
-    if (aG(paramView, paramInt3))
+    if (aI(paramView, paramInt3))
     {
-      k = (int)aJ(paramView, paramInt3 - 1);
-      m = (int)aP(paramView, j);
+      k = (int)aL(paramView, paramInt3 - 1);
+      m = (int)aR(paramView, j);
       i = paramInt3;
       if (paramInt1 > m - (m - k) / 2) {
         i = paramInt3 - 1;
       }
     }
-    i = aI(paramView, i);
-    int k = aK(paramView, i);
-    int m = aL(paramView, i);
+    i = aK(paramView, i);
+    int k = aM(paramView, i);
+    int m = aN(paramView, i);
     int n = (m - k) / 2;
     if (j == i + 1)
     {
@@ -355,10 +355,10 @@ public final class b
     for (paramInt3 = i;; paramInt3 = j)
     {
       paramInt2 = a(paramView, paramInt3, paramInt1);
-      if ((paramInt2 < gA(paramView).length() - 1) && (aG(paramView, paramInt2 + 1)))
+      if ((paramInt2 < gQ(paramView).length() - 1) && (aI(paramView, paramInt2 + 1)))
       {
-        i = (int)aJ(paramView, paramInt2);
-        paramInt3 = (int)aP(paramView, paramInt3);
+        i = (int)aL(paramView, paramInt2);
+        paramInt3 = (int)aR(paramView, paramInt3);
         if (paramInt1 <= paramInt3 - (paramInt3 - i) / 2) {}
       }
       for (paramInt1 = paramInt2 + 1;; paramInt1 = paramInt2)
@@ -369,12 +369,12 @@ public final class b
     }
   }
   
-  public static CharSequence gA(View paramView)
+  public static CharSequence gQ(View paramView)
   {
     AppMethodBeat.i(159899);
     if ((paramView instanceof NeatTextView))
     {
-      paramView = ((NeatTextView)paramView).fli();
+      paramView = ((NeatTextView)paramView).fBz();
       AppMethodBeat.o(159899);
       return paramView;
     }
@@ -388,7 +388,7 @@ public final class b
     return "";
   }
   
-  public static TextPaint gB(View paramView)
+  public static TextPaint gR(View paramView)
   {
     AppMethodBeat.i(159901);
     if ((paramView instanceof NeatTextView))
@@ -417,7 +417,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.textview.b
  * JD-Core Version:    0.7.0.1
  */

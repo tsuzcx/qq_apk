@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.exdevice.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.da;
+import com.tencent.mm.g.c.dc;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends da
+  extends dc
 {
   public static c.a info;
   
@@ -15,35 +15,35 @@ public final class d
   {
     AppMethodBeat.i(23556);
     c.a locala = new c.a();
-    locala.EYt = new Field[7];
+    locala.GvF = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "rankID";
-    locala.EYv.put("rankID", "TEXT");
+    locala.GvH.put("rankID", "TEXT");
     localStringBuilder.append(" rankID TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "appusername";
-    locala.EYv.put("appusername", "TEXT");
+    locala.GvH.put("appusername", "TEXT");
     localStringBuilder.append(" appusername TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "username";
-    locala.EYv.put("username", "TEXT");
+    locala.GvH.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "ranknum";
-    locala.EYv.put("ranknum", "INTEGER");
+    locala.GvH.put("ranknum", "INTEGER");
     localStringBuilder.append(" ranknum INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "score";
-    locala.EYv.put("score", "INTEGER");
+    locala.GvH.put("score", "INTEGER");
     localStringBuilder.append(" score INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "likecount";
-    locala.EYv.put("likecount", "INTEGER default '0' ");
+    locala.GvH.put("likecount", "INTEGER default '0' ");
     localStringBuilder.append(" likecount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "selfLikeState";
-    locala.EYv.put("selfLikeState", "INTEGER default '3' ");
+    locala.GvH.put("selfLikeState", "INTEGER default '3' ");
     localStringBuilder.append(" selfLikeState INTEGER default '3' ");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();

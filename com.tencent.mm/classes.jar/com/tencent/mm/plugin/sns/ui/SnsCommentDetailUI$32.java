@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.d.a;
+import com.tencent.mm.plugin.sns.c.a;
 import com.tencent.mm.pluginsdk.l;
 
 final class SnsCommentDetailUI$32
@@ -20,7 +20,7 @@ final class SnsCommentDetailUI$32
       int i = ((Integer)paramView.getTag()).intValue();
       paramView = new Intent();
       paramView.putExtra("sns_label_sns_info", i);
-      a.hYt.u(paramView, this.xxA);
+      a.iyx.u(paramView, this.yKq);
       AppMethodBeat.o(98572);
       return;
     }
@@ -32,7 +32,7 @@ final class SnsCommentDetailUI$32
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.32
  * JD-Core Version:    0.7.0.1
  */

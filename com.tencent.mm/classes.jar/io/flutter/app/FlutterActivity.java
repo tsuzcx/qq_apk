@@ -6,41 +6,41 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import io.flutter.a.a.m;
-import io.flutter.a.a.m.c;
+import io.flutter.plugin.a.m;
+import io.flutter.plugin.a.m.c;
 import io.flutter.view.FlutterView.b;
 
 public class FlutterActivity
   extends HellActivity
-  implements m, a.a, FlutterView.b
+  implements a.a, m, FlutterView.b
 {
-  private final a IWF;
-  private final b IWG;
-  private final FlutterView.b IWH;
-  private final m IWI;
+  private final a KJQ;
+  private final b KJR;
+  private final FlutterView.b KJS;
+  private final m KJT;
   
   public FlutterActivity()
   {
     AppMethodBeat.i(9605);
-    this.IWF = new a(this, this);
-    this.IWG = this.IWF;
-    this.IWH = this.IWF;
-    this.IWI = this.IWF;
+    this.KJQ = new a(this, this);
+    this.KJR = this.KJQ;
+    this.KJS = this.KJQ;
+    this.KJT = this.KJQ;
     AppMethodBeat.o(9605);
   }
   
-  public final boolean aPH(String paramString)
+  public final boolean aVE(String paramString)
   {
     AppMethodBeat.i(9606);
-    boolean bool = this.IWI.aPH(paramString);
+    boolean bool = this.KJT.aVE(paramString);
     AppMethodBeat.o(9606);
     return bool;
   }
   
-  public final m.c dB(String paramString)
+  public final m.c dq(String paramString)
   {
     AppMethodBeat.i(9607);
-    paramString = this.IWI.dB(paramString);
+    paramString = this.KJT.dq(paramString);
     AppMethodBeat.o(9607);
     return paramString;
   }
@@ -48,7 +48,7 @@ public class FlutterActivity
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(9617);
-    if (!this.IWG.onActivityResult(paramInt1, paramInt2, paramIntent)) {
+    if (!this.KJR.onActivityResult(paramInt1, paramInt2, paramIntent)) {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
     AppMethodBeat.o(9617);
@@ -57,7 +57,7 @@ public class FlutterActivity
   public void onBackPressed()
   {
     AppMethodBeat.i(9612);
-    if (!this.IWG.onBackPressed()) {
+    if (!this.KJR.onBackPressed()) {
       super.onBackPressed();
     }
     AppMethodBeat.o(9612);
@@ -67,7 +67,7 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9622);
     super.onConfigurationChanged(paramConfiguration);
-    this.IWG.onConfigurationChanged(paramConfiguration);
+    this.KJR.onConfigurationChanged(paramConfiguration);
     AppMethodBeat.o(9622);
   }
   
@@ -75,14 +75,14 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9608);
     super.onCreate(paramBundle);
-    this.IWG.ftX();
+    this.KJR.fMJ();
     AppMethodBeat.o(9608);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(9611);
-    this.IWG.onDestroy();
+    this.KJR.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(9611);
   }
@@ -90,14 +90,14 @@ public class FlutterActivity
   public void onLowMemory()
   {
     AppMethodBeat.i(9621);
-    this.IWG.onLowMemory();
+    this.KJR.onLowMemory();
     AppMethodBeat.o(9621);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(9618);
-    this.IWG.onNewIntent(paramIntent);
+    this.KJR.onNewIntent(paramIntent);
     AppMethodBeat.o(9618);
   }
   
@@ -105,7 +105,7 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9614);
     super.onPause();
-    this.IWG.onPause();
+    this.KJR.onPause();
     AppMethodBeat.o(9614);
   }
   
@@ -113,14 +113,14 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9615);
     super.onPostResume();
-    this.IWG.onPostResume();
+    this.KJR.onPostResume();
     AppMethodBeat.o(9615);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(9616);
-    this.IWG.a(paramInt, paramArrayOfString, paramArrayOfInt);
+    this.KJR.a(paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(9616);
   }
   
@@ -128,7 +128,7 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9610);
     super.onResume();
-    this.IWG.onResume();
+    this.KJR.onResume();
     AppMethodBeat.o(9610);
   }
   
@@ -136,14 +136,14 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9609);
     super.onStart();
-    this.IWG.onStart();
+    this.KJR.onStart();
     AppMethodBeat.o(9609);
   }
   
   public void onStop()
   {
     AppMethodBeat.i(9613);
-    this.IWG.onStop();
+    this.KJR.onStop();
     super.onStop();
     AppMethodBeat.o(9613);
   }
@@ -151,14 +151,14 @@ public class FlutterActivity
   public void onTrimMemory(int paramInt)
   {
     AppMethodBeat.i(9620);
-    this.IWG.onTrimMemory(paramInt);
+    this.KJR.onTrimMemory(paramInt);
     AppMethodBeat.o(9620);
   }
   
   public void onUserLeaveHint()
   {
     AppMethodBeat.i(9619);
-    this.IWG.onUserLeaveHint();
+    this.KJR.onUserLeaveHint();
     AppMethodBeat.o(9619);
   }
   
@@ -170,7 +170,7 @@ public class FlutterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.app.FlutterActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -10,30 +10,30 @@ import java.util.LinkedList;
 
 abstract class d
 {
-  private Context FZ;
-  boolean bOR;
-  private Collection<WeakReference<m>> bOS;
-  private a bOT;
+  private Context GX;
+  private Collection<WeakReference<m>> bMA;
+  private a bMB;
+  boolean bMz;
   boolean isRunning;
   private Handler mHandler;
   
   private void b(Context paramContext, m... paramVarArgs)
   {
-    this.FZ = paramContext;
+    this.GX = paramContext;
     if (paramVarArgs == null) {
-      this.bOS = null;
+      this.bMA = null;
     }
     for (;;)
     {
-      ar(paramContext);
+      as(paramContext);
       return;
-      this.bOS = new LinkedList();
+      this.bMA = new LinkedList();
       int j = paramVarArgs.length;
       int i = 0;
       while (i < j)
       {
         m localm = paramVarArgs[i];
-        this.bOS.add(new WeakReference(localm));
+        this.bMA.add(new WeakReference(localm));
         i += 1;
       }
     }
@@ -50,9 +50,9 @@ abstract class d
       }
       finally {}
     }
-    yU();
+    yH();
     b(paramContext.getApplicationContext(), paramVarArgs);
-    this.bOR = true;
+    this.bMz = true;
   }
   
   void a(Handler paramHandler, a parama)
@@ -61,8 +61,8 @@ abstract class d
     {
       stop();
       this.mHandler = paramHandler;
-      this.bOT = parama;
-      a(this.FZ, this.mHandler, this.bOT);
+      this.bMB = parama;
+      a(this.GX, this.mHandler, this.bMB);
       this.isRunning = true;
       return;
     }
@@ -73,9 +73,9 @@ abstract class d
     }
   }
   
-  abstract void ar(Context paramContext);
-  
   abstract void as(Context paramContext);
+  
+  abstract void at(Context paramContext);
   
   final void c(p paramp)
   {
@@ -83,9 +83,9 @@ abstract class d
     for (;;)
     {
       return;
-      if (this.bOS != null)
+      if (this.bMA != null)
       {
-        Iterator localIterator = this.bOS.iterator();
+        Iterator localIterator = this.bMA.iterator();
         while (localIterator.hasNext())
         {
           m localm = (m)((WeakReference)localIterator.next()).get();
@@ -103,9 +103,9 @@ abstract class d
     {
       if (this.isRunning)
       {
-        as(this.FZ);
+        at(this.GX);
         this.mHandler = null;
-        this.bOT = null;
+        this.bMB = null;
         this.isRunning = false;
       }
       return;
@@ -117,17 +117,17 @@ abstract class d
     }
   }
   
-  abstract void yR();
+  abstract void yE();
   
-  final void yU()
+  final void yH()
   {
     try
     {
-      if (this.bOR)
+      if (this.bMz)
       {
         stop();
-        yR();
-        this.bOR = false;
+        yE();
+        this.bMz = false;
       }
       return;
     }
@@ -140,12 +140,12 @@ abstract class d
   
   static class a
   {
-    final long bOU;
+    final long bMC;
     
     a(long paramLong)
     {
       AppMethodBeat.i(87918);
-      this.bOU = Math.max(paramLong, 0L);
+      this.bMC = Math.max(paramLong, 0L);
       AppMethodBeat.o(87918);
     }
   }

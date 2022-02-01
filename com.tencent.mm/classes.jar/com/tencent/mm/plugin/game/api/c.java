@@ -8,7 +8,7 @@ public abstract interface c
 {
   public abstract String a(int paramInt1, int paramInt2, JSONArray paramJSONArray, String paramString, boolean paramBoolean);
   
-  public abstract String abV(String paramString);
+  public abstract String agN(String paramString);
   
   public abstract JSONArray b(JSONArray paramJSONArray, boolean paramBoolean);
   

@@ -8,25 +8,25 @@ import java.util.List;
 
 final class s
 {
-  private long bSc;
-  float bSd;
-  private ArrayList<String> bSe;
-  private ArrayList<float[]> bSf;
-  private ArrayList<double[]> bSg;
-  final d bSh;
-  Handler bSi;
+  private long bPK;
+  float bPL;
+  private ArrayList<String> bPM;
+  private ArrayList<float[]> bPN;
+  private ArrayList<double[]> bPO;
+  final d bPP;
+  Handler bPQ;
   
   public s(d paramd)
   {
     AppMethodBeat.i(88004);
-    this.bSe = new ArrayList();
-    this.bSf = new ArrayList();
-    this.bSg = new ArrayList();
-    this.bSh = paramd;
+    this.bPM = new ArrayList();
+    this.bPN = new ArrayList();
+    this.bPO = new ArrayList();
+    this.bPP = paramd;
     AppMethodBeat.o(88004);
   }
   
-  private void bm(boolean paramBoolean)
+  private void bl(boolean paramBoolean)
   {
     label144:
     label1562:
@@ -71,13 +71,13 @@ final class s
         try
         {
           AppMethodBeat.i(88013);
-          if ((!this.bSf.isEmpty()) && (!this.bSg.isEmpty()))
+          if ((!this.bPN.isEmpty()) && (!this.bPO.isEmpty()))
           {
             if (!paramBoolean) {
               break label144;
             }
-            k = this.bSg.size();
-            i3 = this.bSf.size();
+            k = this.bPO.size();
+            i3 = this.bPN.size();
             if (k > 1)
             {
               i = 0;
@@ -85,20 +85,20 @@ final class s
               if (m < k) {
                 break label158;
               }
-              this.bSe.subList(0, i).clear();
-              this.bSe.trimToSize();
-              this.bSf.subList(0, i).clear();
-              this.bSf.trimToSize();
-              this.bSg.subList(0, k - 1).clear();
-              this.bSg.trimToSize();
+              this.bPM.subList(0, i).clear();
+              this.bPM.trimToSize();
+              this.bPN.subList(0, i).clear();
+              this.bPN.trimToSize();
+              this.bPO.subList(0, k - 1).clear();
+              this.bPO.trimToSize();
             }
           }
           AppMethodBeat.o(88013);
           return;
-          k = this.bSg.size() - 1;
+          k = this.bPO.size() - 1;
           break;
-          arrayOfDouble1 = (double[])this.bSg.get(m - 1);
-          arrayOfDouble2 = (double[])this.bSg.get(m);
+          arrayOfDouble1 = (double[])this.bPO.get(m - 1);
+          arrayOfDouble2 = (double[])this.bPO.get(m);
           localObject1 = new float[1];
           d2 = arrayOfDouble1[0];
           d3 = arrayOfDouble1[1];
@@ -131,7 +131,7 @@ final class s
           d6 = arrayOfDouble2[4] - arrayOfDouble1[4];
           d7 = arrayOfDouble2[5] - arrayOfDouble1[5];
           d2 = Math.sqrt((d1 * d1 + d5 * d5) / (d6 * d6 + d7 * d7));
-          if ((d2 < 1.0F / y.bUW) || (d2 > y.bUW)) {
+          if ((d2 < 1.0F / y.bSE) || (d2 > y.bSE)) {
             break label1455;
           }
           d5 = Math.atan2(d5, d1) - Math.atan2(d7, d6);
@@ -152,26 +152,26 @@ final class s
             f4 = 0.0F;
             f3 = 0.0F;
             j = 1;
-            if (!y.bUM) {
+            if (!y.bSu) {
               break label1446;
             }
             writeLog("ref_point," + arrayOfDouble1[0] + ',' + arrayOfDouble1[1] + ',' + arrayOfDouble1[2] + ',' + arrayOfDouble1[8]);
             f1 = 0.0F;
             f2 = 0.0F;
             break label1458;
-            if (y.bUM) {
+            if (y.bSu) {
               writeLog("ref_point," + arrayOfDouble2[0] + ',' + arrayOfDouble2[1] + ',' + arrayOfDouble2[2] + ',' + arrayOfDouble2[8]);
             }
-            if (i1 > y.bUU) {
+            if (i1 > y.bSC) {
               break label1438;
             }
             f2 -= f4;
-            if ((f2 <= 0.0F) || ((f1 - f3) * d2 / f2 > y.bUV)) {
+            if ((f2 <= 0.0F) || ((f1 - f3) * d2 / f2 > y.bSD)) {
               break label1438;
             }
-            r.zc().bB(localStringBuilder.toString());
+            r.yP().bs(localStringBuilder.toString());
             paramBoolean = true;
-            if (y.bUM)
+            if (y.bSu)
             {
               if (paramBoolean)
               {
@@ -189,7 +189,7 @@ final class s
           {
             d1 = 1.0D / d2;
             break label510;
-            arrayOfFloat = (float[])this.bSf.get(i);
+            arrayOfFloat = (float[])this.bPN.get(i);
             if (arrayOfFloat[2] > arrayOfDouble2[6]) {
               break label620;
             }
@@ -213,10 +213,10 @@ final class s
             {
               arrayOfDouble4[0] = (180.0D - arrayOfDouble4[0]);
               break label1513;
-              if (y.bUM) {
+              if (y.bSu) {
                 writeLog("scan_point," + arrayOfDouble4[0] + ',' + arrayOfDouble4[1] + ',' + arrayOfFloat[3]);
               }
-              localObject1 = (String)this.bSe.get(i);
+              localObject1 = (String)this.bPM.get(i);
               i2 = Math.round(arrayOfFloat[3]);
               n = i1;
               if (i2 > i1) {
@@ -273,7 +273,7 @@ final class s
       label1456:
       for (;;)
       {
-        d1 = ((float[])this.bSf.get(i))[2];
+        d1 = ((float[])this.bPN.get(i))[2];
         d2 = arrayOfDouble2[6];
         if (d1 <= d2) {
           i += 1;
@@ -332,8 +332,8 @@ final class s
   private void d(p paramp)
   {
     AppMethodBeat.i(88005);
-    if (this.bSi != null) {
-      this.bSi.post(new d(paramp, (byte)0));
+    if (this.bPQ != null) {
+      this.bPQ.post(new d(paramp, (byte)0));
     }
     AppMethodBeat.o(88005);
   }
@@ -341,16 +341,16 @@ final class s
   private static void writeLog(String paramString)
   {
     AppMethodBeat.i(88006);
-    o.s("post_processing_log_" + y.bUT, paramString);
+    o.t("post_processing_log_" + y.bSB, paramString);
     AppMethodBeat.o(88006);
   }
   
-  private void zn()
+  private void za()
   {
     try
     {
       AppMethodBeat.i(88011);
-      this.bSg.clear();
+      this.bPO.clear();
       AppMethodBeat.o(88011);
       return;
     }
@@ -361,13 +361,13 @@ final class s
     }
   }
   
-  private void zo()
+  private void zb()
   {
     try
     {
       AppMethodBeat.i(88012);
-      this.bSe.clear();
-      this.bSf.clear();
+      this.bPM.clear();
+      this.bPN.clear();
       AppMethodBeat.o(88012);
       return;
     }
@@ -385,24 +385,24 @@ final class s
       try
       {
         AppMethodBeat.i(88016);
-        int j = this.bSg.size();
-        int i = this.bSe.size();
+        int j = this.bPO.size();
+        int i = this.bPM.size();
         if (j <= 0)
         {
-          this.bSg.add(new double[] { paramDouble1, paramDouble2, paramDouble3, paramDouble4, paramDouble5, paramDouble6, paramDouble7, i, paramDouble8 });
+          this.bPO.add(new double[] { paramDouble1, paramDouble2, paramDouble3, paramDouble4, paramDouble5, paramDouble6, paramDouble7, i, paramDouble8 });
           i = 1;
           if (i != 0)
           {
-            i = this.bSg.size();
+            i = this.bPO.size();
             d(new e(i));
             if (i == 1) {
-              zo();
+              zb();
             }
           }
           AppMethodBeat.o(88016);
           return;
         }
-        double[] arrayOfDouble1 = (double[])this.bSg.get(j - 1);
+        double[] arrayOfDouble1 = (double[])this.bPO.get(j - 1);
         float[] arrayOfFloat;
         if (paramDouble8 - arrayOfDouble1[8] < 30000.0D)
         {
@@ -412,7 +412,7 @@ final class s
             arrayOfFloat[0] = 30.0F;
             if (j > 1)
             {
-              double[] arrayOfDouble2 = (double[])this.bSg.get(j - 2);
+              double[] arrayOfDouble2 = (double[])this.bPO.get(j - 2);
               Location.distanceBetween(arrayOfDouble2[0], arrayOfDouble2[1], paramDouble1, paramDouble2, arrayOfFloat);
             }
             if (arrayOfFloat[0] >= 30.0F)
@@ -430,16 +430,16 @@ final class s
           Location.distanceBetween(arrayOfDouble1[0], arrayOfDouble1[1], paramDouble1, paramDouble2, arrayOfFloat);
           if (arrayOfFloat[0] >= 30.0F)
           {
-            this.bSg.add(new double[] { paramDouble1, paramDouble2, paramDouble3, paramDouble4, paramDouble5, paramDouble6, paramDouble7, i, paramDouble8 });
+            this.bPO.add(new double[] { paramDouble1, paramDouble2, paramDouble3, paramDouble4, paramDouble5, paramDouble6, paramDouble7, i, paramDouble8 });
             i = 1;
             if (j >= 8)
             {
-              this.bSg.subList(0, 1).clear();
-              this.bSg.trimToSize();
+              this.bPO.subList(0, 1).clear();
+              this.bPO.trimToSize();
             }
             try
             {
-              bm(false);
+              bl(false);
             }
             catch (Exception localException) {}
             continue;
@@ -456,16 +456,16 @@ final class s
     try
     {
       AppMethodBeat.i(88014);
-      this.bSe.add(paramString);
-      this.bSf.add(new float[] { paramFloat1, paramFloat2, paramFloat3, 0.0F, paramInt, paramFloat4 });
-      if (this.bSe.size() > 256)
+      this.bPM.add(paramString);
+      this.bPN.add(new float[] { paramFloat1, paramFloat2, paramFloat3, 0.0F, paramInt, paramFloat4 });
+      if (this.bPM.size() > 256)
       {
-        this.bSe.subList(0, 1).clear();
-        this.bSe.trimToSize();
-        if (this.bSf.size() > 256)
+        this.bPM.subList(0, 1).clear();
+        this.bPM.trimToSize();
+        if (this.bPN.size() > 256)
         {
-          this.bSf.subList(0, 1).clear();
-          this.bSf.trimToSize();
+          this.bPN.subList(0, 1).clear();
+          this.bPN.trimToSize();
         }
       }
       AppMethodBeat.o(88014);
@@ -477,19 +477,19 @@ final class s
   final boolean a(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat, double paramDouble4, double paramDouble5, double paramDouble6, long paramLong)
   {
     AppMethodBeat.i(88015);
-    if (paramFloat < y.bUX)
+    if (paramFloat < y.bSF)
     {
       AppMethodBeat.o(88015);
       return false;
     }
-    if ((paramLong - this.bSc < 1000L) && (paramFloat <= this.bSd))
+    if ((paramLong - this.bPK < 1000L) && (paramFloat <= this.bPL))
     {
       AppMethodBeat.o(88015);
       return false;
     }
-    z.b(null).execute(new s.b(this, paramDouble1, paramDouble2, paramDouble3, paramFloat, paramDouble4, paramDouble5, paramDouble6, paramLong, (byte)0));
-    this.bSc = paramLong;
-    this.bSd = paramFloat;
+    z.b(null).execute(new b(paramDouble1, paramDouble2, paramDouble3, paramFloat, paramDouble4, paramDouble5, paramDouble6, paramLong, (byte)0));
+    this.bPK = paramLong;
+    this.bPL = paramFloat;
     AppMethodBeat.o(88015);
     return true;
   }
@@ -499,8 +499,8 @@ final class s
     try
     {
       AppMethodBeat.i(88010);
-      zn();
-      zo();
+      za();
+      zb();
       AppMethodBeat.o(88010);
       return;
     }
@@ -511,21 +511,21 @@ final class s
     }
   }
   
-  final void zk()
+  final void yX()
   {
     AppMethodBeat.i(88007);
     z.b(null).execute(new c((byte)0));
     AppMethodBeat.o(88007);
   }
   
-  final void zl()
+  final void yY()
   {
     try
     {
       AppMethodBeat.i(88008);
       try
       {
-        bm(true);
+        bl(true);
         AppMethodBeat.o(88008);
       }
       catch (Exception localException)
@@ -540,11 +540,11 @@ final class s
     finally {}
   }
   
-  final void zm()
+  final void yZ()
   {
     AppMethodBeat.i(88009);
-    this.bSc = 0L;
-    this.bSd = 0.0F;
+    this.bPK = 0L;
+    this.bPL = 0.0F;
     z.b(null).execute(new f((byte)0));
     AppMethodBeat.o(88009);
   }
@@ -552,10 +552,10 @@ final class s
   final class a
     implements Runnable
   {
-    final int bRp;
-    final float bSj;
-    final float bSk;
-    final String bSl;
+    final int bOX;
+    final float bPR;
+    final float bPS;
+    final String bPT;
     final float x;
     final float y;
     
@@ -563,17 +563,49 @@ final class s
     {
       this.x = paramFloat1;
       this.y = paramFloat2;
-      this.bSj = paramFloat3;
-      this.bSk = paramFloat4;
-      this.bRp = paramInt;
-      this.bSl = paramString;
+      this.bPR = paramFloat3;
+      this.bPS = paramFloat4;
+      this.bOX = paramInt;
+      this.bPT = paramString;
     }
     
     public final void run()
     {
       AppMethodBeat.i(87999);
-      s.this.a(this.x, this.y, this.bSj, this.bSk, this.bRp, this.bSl);
+      s.this.a(this.x, this.y, this.bPR, this.bPS, this.bOX, this.bPT);
       AppMethodBeat.o(87999);
+    }
+  }
+  
+  final class b
+    implements Runnable
+  {
+    final double bPV;
+    final double bPW;
+    final double bPX;
+    final double bPY;
+    final double bPZ;
+    final double bQa;
+    final double lat;
+    final double lng;
+    
+    private b(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6, double paramDouble7, double paramDouble8)
+    {
+      this.lat = paramDouble1;
+      this.lng = paramDouble2;
+      this.bPV = paramDouble3;
+      this.bPW = paramDouble4;
+      this.bPX = paramDouble5;
+      this.bPY = paramDouble6;
+      this.bPZ = paramDouble7;
+      this.bQa = paramDouble8;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(88000);
+      s.this.a(this.lat, this.lng, this.bPV, this.bPW, this.bPX, this.bPY, this.bPZ, this.bQa);
+      AppMethodBeat.o(88000);
     }
   }
   
@@ -585,7 +617,7 @@ final class s
     public final void run()
     {
       AppMethodBeat.i(88001);
-      s.this.zl();
+      s.this.yY();
       AppMethodBeat.o(88001);
     }
   }
@@ -593,17 +625,17 @@ final class s
   final class d
     implements Runnable
   {
-    private final p bOP;
+    private final p bMx;
     
     private d(p paramp)
     {
-      this.bOP = paramp;
+      this.bMx = paramp;
     }
     
     public final void run()
     {
       AppMethodBeat.i(88002);
-      s.this.bSh.c(this.bOP);
+      s.this.bPP.c(this.bMx);
       AppMethodBeat.o(88002);
     }
   }
@@ -611,12 +643,12 @@ final class s
   static final class e
     extends p
   {
-    final int bSt;
+    final int bQb;
     
     e(int paramInt)
     {
       super();
-      this.bSt = paramInt;
+      this.bQb = paramInt;
     }
   }
   
@@ -636,12 +668,12 @@ final class s
   static final class g
     extends p
   {
-    final boolean bSu;
+    final boolean bQc;
     
     g(boolean paramBoolean)
     {
       super();
-      this.bSu = paramBoolean;
+      this.bQc = paramBoolean;
     }
   }
 }

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.modelvoice.p;
 import com.tencent.mm.modelvoice.w;
 import com.tencent.mm.plugin.backup.bakoldlogic.a.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.d.d;
 import com.tencent.mm.plugin.backup.i.u;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.hu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.hy;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.vfs.e;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -26,26 +26,26 @@ import org.xmlpull.v1.XmlSerializer;
 public final class h
   implements j
 {
-  byte[] muQ;
-  byte[] muR;
+  byte[] mWR;
+  byte[] mWS;
   
   public h()
   {
     AppMethodBeat.i(21853);
-    this.muQ = new byte[] { 35, 33, 65, 77, 82, 10, 2, 35, 33 };
-    this.muR = new byte[] { 35, 33, 65, 77, 82, 10, 35, 33 };
+    this.mWR = new byte[] { 35, 33, 65, 77, 82, 10, 2, 35, 33 };
+    this.mWS = new byte[] { 35, 33, 65, 77, 82, 10, 35, 33 };
     AppMethodBeat.o(21853);
   }
   
-  private static String e(bl parambl, int paramInt)
+  private static String e(bo parambo, int paramInt)
   {
     AppMethodBeat.i(21857);
-    if (bt.isNullOrNil(parambl.field_content))
+    if (bs.isNullOrNil(parambo.field_content))
     {
       AppMethodBeat.o(21857);
       return null;
     }
-    p localp = new p(parambl.field_content);
+    p localp = new p(parambo.field_content);
     Object localObject2 = new StringWriter();
     try
     {
@@ -57,10 +57,10 @@ public final class h
       localXmlSerializer.attribute(null, "endflag", "1");
       localXmlSerializer.attribute(null, "cancelflag", "0");
       localXmlSerializer.attribute(null, "voicelength", localp.time);
-      if (!bt.isNullOrNil(localp.hAb)) {
-        localXmlSerializer.attribute(null, "fromusername", localp.hAb);
+      if (!bs.isNullOrNil(localp.iaC)) {
+        localXmlSerializer.attribute(null, "fromusername", localp.iaC);
       }
-      if (localp.hAc) {}
+      if (localp.iaD) {}
       for (Object localObject1 = "1";; localObject1 = "0")
       {
         localXmlSerializer.attribute(null, "isPlayed", (String)localObject1);
@@ -71,18 +71,18 @@ public final class h
         ((StringWriter)localObject2).close();
         localObject2 = ((StringWriter)localObject2).getBuffer().toString();
         localObject1 = localObject2;
-        if (d.pF(parambl.field_talker)) {
-          localObject1 = localp.hAb + ":\n" + (String)localObject2;
+        if (d.sQ(parambo.field_talker)) {
+          localObject1 = localp.iaC + ":\n" + (String)localObject2;
         }
-        ad.i("MicroMsg.BakOldItemVoice", "parseContent xml:".concat(String.valueOf(localObject1)));
+        ac.i("MicroMsg.BakOldItemVoice", "parseContent xml:".concat(String.valueOf(localObject1)));
         AppMethodBeat.o(21857);
         return localObject1;
       }
       return null;
     }
-    catch (Exception parambl)
+    catch (Exception parambo)
     {
-      ad.e("MicroMsg.BakOldItemVoice", "packetVoice xml error: " + parambl.toString());
+      ac.e("MicroMsg.BakOldItemVoice", "packetVoice xml error: " + parambo.toString());
       AppMethodBeat.o(21857);
     }
   }
@@ -90,7 +90,7 @@ public final class h
   private static boolean h(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(21856);
-    if (bt.cw(paramArrayOfByte2))
+    if (bs.cv(paramArrayOfByte2))
     {
       AppMethodBeat.o(21856);
       return false;
@@ -109,11 +109,11 @@ public final class h
     return true;
   }
   
-  public final int a(hu paramhu, bl parambl, LinkedList<u> paramLinkedList)
+  public final int a(hy paramhy, bo parambo, LinkedList<u> paramLinkedList)
   {
     AppMethodBeat.i(21854);
-    String str = d.Ov(parambl.field_imgPath);
-    if (bt.isNullOrNil(str))
+    String str = d.SF(parambo.field_imgPath);
+    if (bs.isNullOrNil(str))
     {
       AppMethodBeat.o(21854);
       return 0;
@@ -125,15 +125,15 @@ public final class h
       return 0;
     }
     int i = (int)locale.length();
-    int j = i.a(new i.a(str, paramhu, paramLinkedList, 9, false, null));
-    parambl = e(parambl, i);
-    if (parambl == null)
+    int j = i.a(new i.a(str, paramhy, paramLinkedList, 9, false, null));
+    parambo = e(parambo, i);
+    if (parambo == null)
     {
       AppMethodBeat.o(21854);
       return 0;
     }
-    paramhu.Cxz = new cmf().aEE(parambl);
-    j += parambl.length();
+    paramhy.DPV = new crm().aJV(parambo);
+    j += parambo.length();
     if (i == 0)
     {
       AppMethodBeat.o(21854);
@@ -143,38 +143,38 @@ public final class h
     return j;
   }
   
-  public final int a(String paramString, hu paramhu, bl parambl)
+  public final int a(String paramString, hy paramhy, bo parambo)
   {
     AppMethodBeat.i(21855);
-    Object localObject = paramhu.Cxz.Ehn;
+    Object localObject = paramhy.DPV.FEm;
     paramString = (String)localObject;
     int i;
-    if (d.pF(paramhu.Cxx.Ehn))
+    if (d.sQ(paramhy.DPT.FEm))
     {
-      i = d.ue((String)localObject);
+      i = d.yk((String)localObject);
       if (i == -1)
       {
         paramString = (String)localObject;
-        ad.v("MicroMsg.BakOldItemVoice", "chatroom voicemsg, new content=".concat(String.valueOf(paramString)));
+        ac.v("MicroMsg.BakOldItemVoice", "chatroom voicemsg, new content=".concat(String.valueOf(paramString)));
       }
     }
     else
     {
-      paramString = bw.K(paramString, "msg");
+      paramString = bv.L(paramString, "msg");
       if (paramString == null) {
         break label317;
       }
     }
     try
     {
-      i = a.cb((String)paramString.get(".msg.voicemsg.$voicelength"), 0);
+      i = a.cg((String)paramString.get(".msg.voicemsg.$voicelength"), 0);
       localObject = (String)paramString.get(".msg.voicemsg.$fromusername");
-      if (a.cb((String)paramString.get(".msg.voicemsg.$isPlayed"), 1) != 1) {
+      if (a.cg((String)paramString.get(".msg.voicemsg.$isPlayed"), 1) != 1) {
         break label286;
       }
       bool = true;
       label127:
-      parambl.setContent(p.b((String)localObject, i, bool));
+      parambo.setContent(p.b((String)localObject, i, bool));
     }
     catch (Exception paramString)
     {
@@ -182,23 +182,23 @@ public final class h
       {
         boolean bool;
         label141:
-        ad.e("MicroMsg.BakOldItemVoice", "parsing voice msg xml failed");
-        ad.printErrStackTrace("MicroMsg.BakOldItemVoice", paramString, "", new Object[0]);
+        ac.e("MicroMsg.BakOldItemVoice", "parsing voice msg xml failed");
+        ac.printErrStackTrace("MicroMsg.BakOldItemVoice", paramString, "", new Object[0]);
       }
     }
-    paramString = w.AI(paramhu.Cxx.Ehn);
-    parambl.nZ(paramString);
-    d.u(parambl);
-    paramString = d.Ov(paramString);
-    if (paramhu.CCX == 9)
+    paramString = w.EN(paramhy.DPT.FEm);
+    parambo.rf(paramString);
+    d.u(parambo);
+    paramString = d.SF(paramString);
+    if (paramhy.DVu == 9)
     {
-      parambl = paramhu.CCV.getBuffer().wA;
-      if (h(this.muQ, parambl))
+      parambo = paramhy.DVs.getBuffer().xy;
+      if (h(this.mWR, parambo))
       {
-        localObject = new byte[parambl.length - 6];
-        System.arraycopy(parambl, 6, localObject, 0, parambl.length - 6);
-        paramhu.CCW = (parambl.length - 6);
-        paramhu.CCV = new SKBuiltinBuffer_t().setBuffer((byte[])localObject);
+        localObject = new byte[parambo.length - 6];
+        System.arraycopy(parambo, 6, localObject, 0, parambo.length - 6);
+        paramhy.DVt = (parambo.length - 6);
+        paramhy.DVs = new SKBuiltinBuffer_t().setBuffer((byte[])localObject);
       }
     }
     for (;;)
@@ -218,53 +218,53 @@ public final class h
       bool = false;
       break label127;
       label317:
-      ad.e("MicroMsg.BakOldItemVoice", "voicemsg paseXml failed:%s", new Object[] { paramhu.Cxz.Ehn });
-      parambl.setContent(paramhu.Cxz.Ehn);
+      ac.e("MicroMsg.BakOldItemVoice", "voicemsg paseXml failed:%s", new Object[] { paramhy.DPV.FEm });
+      parambo.setContent(paramhy.DPV.FEm);
       break label141;
-      if (h(this.muR, parambl))
+      if (h(this.mWS, parambo))
       {
-        localObject = new byte[parambl.length - 6];
-        System.arraycopy(parambl, 6, localObject, 0, parambl.length - 6);
-        paramhu.CCW = (parambl.length - 6);
-        paramhu.CCV = new SKBuiltinBuffer_t().setBuffer((byte[])localObject);
+        localObject = new byte[parambo.length - 6];
+        System.arraycopy(parambo, 6, localObject, 0, parambo.length - 6);
+        paramhy.DVt = (parambo.length - 6);
+        paramhy.DVs = new SKBuiltinBuffer_t().setBuffer((byte[])localObject);
       }
       else
       {
-        parambl = a.a(paramhu, 9);
-        if (!bt.isNullOrNil(parambl))
+        parambo = a.a(paramhy, 9);
+        if (!bs.isNullOrNil(parambo))
         {
-          parambl = a.Oy(parambl);
-          if (com.tencent.mm.vfs.i.eK(parambl))
+          parambo = a.SI(parambo);
+          if (com.tencent.mm.vfs.i.eA(parambo))
           {
-            localObject = com.tencent.mm.vfs.i.aR(parambl, 0, 9);
-            if (h(this.muQ, (byte[])localObject))
+            localObject = com.tencent.mm.vfs.i.aU(parambo, 0, 9);
+            if (h(this.mWR, (byte[])localObject))
             {
-              localObject = com.tencent.mm.vfs.i.aR(parambl, 6, -1);
-              com.tencent.mm.vfs.i.deleteFile(parambl);
-              com.tencent.mm.vfs.i.f(parambl, (byte[])localObject, localObject.length);
+              localObject = com.tencent.mm.vfs.i.aU(parambo, 6, -1);
+              com.tencent.mm.vfs.i.deleteFile(parambo);
+              com.tencent.mm.vfs.i.f(parambo, (byte[])localObject, localObject.length);
             }
-            else if (h(this.muR, (byte[])localObject))
+            else if (h(this.mWS, (byte[])localObject))
             {
-              localObject = com.tencent.mm.vfs.i.aR(parambl, 6, -1);
-              com.tencent.mm.vfs.i.deleteFile(parambl);
-              com.tencent.mm.vfs.i.f(parambl, (byte[])localObject, localObject.length);
+              localObject = com.tencent.mm.vfs.i.aU(parambo, 6, -1);
+              com.tencent.mm.vfs.i.deleteFile(parambo);
+              com.tencent.mm.vfs.i.f(parambo, (byte[])localObject, localObject.length);
             }
           }
         }
       }
     }
     label528:
-    if (a.b(paramhu, 9, paramString))
+    if (a.b(paramhy, 9, paramString))
     {
       AppMethodBeat.o(21855);
       return 0;
     }
-    paramhu = a.a(paramhu, 9);
-    if (paramhu != null)
+    paramhy = a.a(paramhy, 9);
+    if (paramhy != null)
     {
-      paramhu = a.Oy(paramhu);
-      ad.d("MicroMsg.BakOldItemVoice", "recover Frome Sdcard".concat(String.valueOf(paramhu)));
-      com.tencent.mm.vfs.i.lC(paramhu, paramString);
+      paramhy = a.SI(paramhy);
+      ac.d("MicroMsg.BakOldItemVoice", "recover Frome Sdcard".concat(String.valueOf(paramhy)));
+      com.tencent.mm.vfs.i.lZ(paramhy, paramString);
     }
     AppMethodBeat.o(21855);
     return 0;

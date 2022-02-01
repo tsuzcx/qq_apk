@@ -12,7 +12,7 @@ final class AppBrandDesktopView$4
   public final void run()
   {
     AppMethodBeat.i(49570);
-    ((DynamicBackgroundGLSurfaceView)this.lVm).setShowGradientView(false);
+    ((DynamicBackgroundGLSurfaceView)this.mxo).setShowGradientView(false);
     AppMethodBeat.o(49570);
   }
 }

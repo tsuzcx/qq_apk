@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.luckymoney.model;
 
 public final class w
 {
-  public int teD;
-  public String teE;
+  public int umS;
+  public String umT;
 }
 
 

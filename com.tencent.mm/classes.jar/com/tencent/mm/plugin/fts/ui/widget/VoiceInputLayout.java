@@ -12,18 +12,18 @@ import com.tencent.mm.modelvoiceaddr.SceneVoiceInputAddrProxy;
 import com.tencent.mm.modelvoiceaddr.g;
 import com.tencent.mm.modelvoiceaddr.g.b;
 import com.tencent.mm.r.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 import java.util.List;
 
 public abstract class VoiceInputLayout
   extends LinearLayout
 {
   protected int currentState = 1;
-  public final av hFy = new av(new av.a()
+  public final au iga = new au(new au.a()
   {
     public final boolean onTimerExpired()
     {
@@ -35,13 +35,13 @@ public abstract class VoiceInputLayout
       }
       int i = VoiceInputLayout.b(VoiceInputLayout.this).getMaxAmplitudeRate();
       if (VoiceInputLayout.this.currentState == 2) {
-        VoiceInputLayout.this.DQ(i);
+        VoiceInputLayout.this.FM(i);
       }
       AppMethodBeat.o(112379);
       return true;
     }
   }, true);
-  public ap kQO = new ap()
+  public ao lso = new ao()
   {
     public final void handleMessage(Message paramAnonymousMessage)
     {
@@ -49,12 +49,12 @@ public abstract class VoiceInputLayout
       if (paramAnonymousMessage.what != 0)
       {
         if (paramAnonymousMessage.what == 1) {
-          ad.w("MicroMsg.VoiceInputLayout", "Recognized revealTime force finished %s", new Object[] { Integer.valueOf(VoiceInputLayout.this.currentState) });
+          ac.w("MicroMsg.VoiceInputLayout", "Recognized revealTime force finished %s", new Object[] { Integer.valueOf(VoiceInputLayout.this.currentState) });
         }
       }
       else
       {
-        ad.d("MicroMsg.VoiceInputLayout", "Recognized force finished %s", new Object[] { Integer.valueOf(VoiceInputLayout.this.currentState) });
+        ac.d("MicroMsg.VoiceInputLayout", "Recognized force finished %s", new Object[] { Integer.valueOf(VoiceInputLayout.this.currentState) });
         if (VoiceInputLayout.this.currentState == 3) {
           break label91;
         }
@@ -73,13 +73,13 @@ public abstract class VoiceInputLayout
       AppMethodBeat.o(112373);
     }
   };
-  protected a rxV;
-  protected b rzB = null;
-  private com.tencent.mm.modelvoiceaddr.b rzC;
-  protected boolean rzD = false;
-  private int rzE = 3000;
-  private int rzF = 10000;
-  public ap rzG = new ap()
+  protected VoiceInputLayout.a sGN;
+  protected b sIt = null;
+  private com.tencent.mm.modelvoiceaddr.b sIu;
+  protected boolean sIv = false;
+  private int sIw = 3000;
+  private int sIx = 10000;
+  public ao sIy = new ao()
   {
     public final void handleMessage(Message paramAnonymousMessage)
     {
@@ -91,11 +91,11 @@ public abstract class VoiceInputLayout
       {
         AppMethodBeat.o(112378);
         return;
-        VoiceInputLayout.this.cyP();
+        VoiceInputLayout.this.cMb();
         AppMethodBeat.o(112378);
         return;
         paramAnonymousMessage = paramAnonymousMessage.getData();
-        VoiceInputLayout.this.ac(paramAnonymousMessage.getInt("localCode"), paramAnonymousMessage.getInt("errType"), paramAnonymousMessage.getInt("errCode"));
+        VoiceInputLayout.this.ad(paramAnonymousMessage.getInt("localCode"), paramAnonymousMessage.getInt("errType"), paramAnonymousMessage.getInt("errCode"));
       }
     }
   };
@@ -111,43 +111,43 @@ public abstract class VoiceInputLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected abstract void DQ(int paramInt);
+  protected abstract void FM(int paramInt);
   
-  public final void aDZ()
+  public final void aKQ()
   {
-    ad.d("MicroMsg.VoiceInputLayout", "doCancel. state = %s", new Object[] { Integer.valueOf(this.currentState) });
+    ac.d("MicroMsg.VoiceInputLayout", "doCancel. state = %s", new Object[] { Integer.valueOf(this.currentState) });
     if (this.currentState == 1) {
       return;
     }
     this.currentState = 1;
-    if (this.rzB != null) {
-      this.rzB.cyx();
+    if (this.sIt != null) {
+      this.sIt.cLJ();
     }
-    if (this.rzC != null) {
-      this.rzC.cancel(true);
+    if (this.sIu != null) {
+      this.sIu.cancel(true);
     }
     onReset();
   }
   
-  public final void ac(int paramInt1, int paramInt2, int paramInt3)
+  public final void ad(int paramInt1, int paramInt2, int paramInt3)
   {
-    ad.d("MicroMsg.VoiceInputLayout", "doNetworkError localerrorType:%s,errorType:%s,errCode:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ac.d("MicroMsg.VoiceInputLayout", "doNetworkError localerrorType:%s,errorType:%s,errCode:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     this.currentState = 1;
     onReset();
-    if (this.rzB != null) {
-      this.rzB.DP(paramInt1);
+    if (this.sIt != null) {
+      this.sIt.FL(paramInt1);
     }
   }
   
-  protected abstract void cyG();
+  protected abstract void cLS();
   
-  protected abstract void cyH();
+  protected abstract void cLT();
   
-  public final void cyN()
+  public final void cLZ()
   {
-    if ((a.ce(getContext())) || (a.cc(getContext())))
+    if ((a.ci(getContext())) || (a.cf(getContext())) || (a.ck(getContext())))
     {
-      ad.d("MicroMsg.VoiceInputLayout", "voip is running, cann't record voice");
+      ac.d("MicroMsg.VoiceInputLayout", "voip is running, cann't record voice");
       onReset();
     }
     do
@@ -156,27 +156,27 @@ public abstract class VoiceInputLayout
       {
         return;
         boolean bool = com.tencent.mm.pluginsdk.permission.b.o(getContext(), "android.permission.RECORD_AUDIO");
-        ad.d("MicroMsg.VoiceInputLayout", "summerper checkPermission checkMicrophone[%s]", new Object[] { Boolean.valueOf(bool) });
+        ac.d("MicroMsg.VoiceInputLayout", "summerper checkPermission checkMicrophone[%s]", new Object[] { Boolean.valueOf(bool) });
         if (!bool) {
           break;
         }
-        ad.d("MicroMsg.VoiceInputLayout", "doStart currentState = %s", new Object[] { Integer.valueOf(this.currentState) });
+        ac.d("MicroMsg.VoiceInputLayout", "doStart currentState = %s", new Object[] { Integer.valueOf(this.currentState) });
       } while (this.currentState != 1);
       this.currentState = 2;
-      if (this.rzB != null) {
-        this.rzB.cyt();
+      if (this.sIt != null) {
+        this.sIt.cLF();
       }
-      this.hFy.av(50L, 50L);
-      cyG();
-      if (aj.cbv()) {}
-      for (this.rzC = new g();; this.rzC = SceneVoiceInputAddrProxy.getInstance())
+      this.iga.au(50L, 50L);
+      cLS();
+      if (ai.ciE()) {}
+      for (this.sIu = new g();; this.sIu = SceneVoiceInputAddrProxy.getInstance())
       {
-        this.rzC.init(g.hEm, 8, new g.b()
+        this.sIu.init(g.ieO, 8, new g.b()
         {
-          public final void aDQ()
+          public final void aKH()
           {
             AppMethodBeat.i(112374);
-            ad.d("MicroMsg.VoiceInputLayout", "onRecordFin() onRecordFin currentState = %s", new Object[] { Integer.valueOf(VoiceInputLayout.this.currentState) });
+            ac.d("MicroMsg.VoiceInputLayout", "onRecordFin() onRecordFin currentState = %s", new Object[] { Integer.valueOf(VoiceInputLayout.this.currentState) });
             if (VoiceInputLayout.c(VoiceInputLayout.this) != null) {
               VoiceInputLayout.c(VoiceInputLayout.this).stopTimer();
             }
@@ -184,13 +184,13 @@ public abstract class VoiceInputLayout
             AppMethodBeat.o(112374);
           }
           
-          public final void aDU()
+          public final void aKL()
           {
             AppMethodBeat.i(112375);
-            ad.d("MicroMsg.VoiceInputLayout", "onRecognize Finish");
+            ac.d("MicroMsg.VoiceInputLayout", "onRecognize Finish");
             VoiceInputLayout.a(VoiceInputLayout.this).removeMessages(0);
             VoiceInputLayout.a(VoiceInputLayout.this).removeMessages(1);
-            VoiceInputLayout.this.rzB.cyz();
+            VoiceInputLayout.this.sIt.cLL();
             VoiceInputLayout.this.reset(false);
             AppMethodBeat.o(112375);
           }
@@ -198,7 +198,7 @@ public abstract class VoiceInputLayout
           public final void b(String[] paramAnonymousArrayOfString, List<String> paramAnonymousList)
           {
             AppMethodBeat.i(112376);
-            VoiceInputLayout.this.rzB.c(paramAnonymousArrayOfString, paramAnonymousList);
+            VoiceInputLayout.this.sIt.c(paramAnonymousArrayOfString, paramAnonymousList);
             VoiceInputLayout.a(VoiceInputLayout.this).removeMessages(0);
             VoiceInputLayout.a(VoiceInputLayout.this).sendEmptyMessageDelayed(0, VoiceInputLayout.e(VoiceInputLayout.this));
             AppMethodBeat.o(112376);
@@ -220,51 +220,51 @@ public abstract class VoiceInputLayout
             AppMethodBeat.o(112377);
           }
         });
-        this.rzC.start();
+        this.sIu.start();
         return;
       }
     } while (!(getContext() instanceof Activity));
     com.tencent.mm.pluginsdk.permission.b.b((Activity)getContext(), "android.permission.RECORD_AUDIO", 80);
   }
   
-  public final void cyO()
+  public final void cMa()
   {
-    ad.d("MicroMsg.VoiceInputLayout", "do Stop. currentState = %s", new Object[] { Integer.valueOf(this.currentState) });
+    ac.d("MicroMsg.VoiceInputLayout", "do Stop. currentState = %s", new Object[] { Integer.valueOf(this.currentState) });
     if ((this.currentState == 1) || (this.currentState != 2)) {}
     do
     {
       return;
       this.currentState = 3;
-      if (this.rzB != null) {
-        this.rzB.cyw();
+      if (this.sIt != null) {
+        this.sIt.cLI();
       }
-      if (this.hFy != null) {
-        this.hFy.stopTimer();
+      if (this.iga != null) {
+        this.iga.stopTimer();
       }
-      this.kQO.removeMessages(0);
-      this.kQO.sendEmptyMessageDelayed(0, this.rzE);
-      this.kQO.sendEmptyMessageDelayed(1, this.rzF);
-      cyH();
-    } while (this.rzC == null);
-    this.rzC.stop(true);
+      this.lso.removeMessages(0);
+      this.lso.sendEmptyMessageDelayed(0, this.sIw);
+      this.lso.sendEmptyMessageDelayed(1, this.sIx);
+      cLT();
+    } while (this.sIu == null);
+    this.sIu.stop(true);
   }
   
-  public final void cyP()
+  public final void cMb()
   {
-    ad.d("MicroMsg.VoiceInputLayout", "doWaiting currentState = %s", new Object[] { Integer.valueOf(this.currentState) });
+    ac.d("MicroMsg.VoiceInputLayout", "doWaiting currentState = %s", new Object[] { Integer.valueOf(this.currentState) });
     if (this.currentState != 2) {
       return;
     }
     this.currentState = 3;
-    this.kQO.removeMessages(0);
-    this.kQO.sendEmptyMessageDelayed(0, this.rzE);
-    this.kQO.sendEmptyMessageDelayed(1, this.rzF);
-    cyH();
+    this.lso.removeMessages(0);
+    this.lso.sendEmptyMessageDelayed(0, this.sIw);
+    this.lso.sendEmptyMessageDelayed(1, this.sIx);
+    cLT();
   }
   
-  public final void cyQ()
+  public final void cMc()
   {
-    ac(12, -1, -1);
+    ad(12, -1, -1);
   }
   
   public int getCurrentState()
@@ -276,57 +276,52 @@ public abstract class VoiceInputLayout
   
   protected final void reset(boolean paramBoolean)
   {
-    ad.d("MicroMsg.VoiceInputLayout", "reset currentState %s", new Object[] { Integer.valueOf(this.currentState) });
+    ac.d("MicroMsg.VoiceInputLayout", "reset currentState %s", new Object[] { Integer.valueOf(this.currentState) });
     if (this.currentState == 1) {}
     do
     {
       return;
       this.currentState = 1;
       onReset();
-    } while ((!paramBoolean) || (this.rzB == null));
-    this.rzB.cyy();
+    } while ((!paramBoolean) || (this.sIt == null));
+    this.sIt.cLK();
   }
   
   public void setFromFullScreen(boolean paramBoolean)
   {
-    this.rzD = paramBoolean;
+    this.sIv = paramBoolean;
   }
   
-  public void setLongClickLisnter(a parama)
+  public void setLongClickLisnter(VoiceInputLayout.a parama)
   {
-    this.rxV = parama;
+    this.sGN = parama;
   }
   
   public void setVoiceDetectListener(b paramb)
   {
-    this.rzB = paramb;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void cyC();
+    this.sIt = paramb;
   }
   
   public static abstract interface b
   {
-    public abstract void DP(int paramInt);
+    public abstract void FL(int paramInt);
     
     public abstract void c(String[] paramArrayOfString, List<String> paramList);
     
-    public abstract void cyt();
+    public abstract void cLF();
     
-    public abstract void cyw();
+    public abstract void cLI();
     
-    public abstract void cyx();
+    public abstract void cLJ();
     
-    public abstract void cyy();
+    public abstract void cLK();
     
-    public abstract void cyz();
+    public abstract void cLL();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.VoiceInputLayout
  * JD-Core Version:    0.7.0.1
  */

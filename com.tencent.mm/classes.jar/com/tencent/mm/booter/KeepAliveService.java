@@ -13,42 +13,44 @@ import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.g.a.oq;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.g.a.oz;
+import com.tencent.mm.network.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class KeepAliveService
   extends JobService
 {
-  public static long fiE;
+  public static long flY;
   
   static
   {
     AppMethodBeat.i(131881);
-    if (d.lf(23))
+    if (d.kZ(23))
     {
-      fiE = 590000L;
+      flY = 590000L;
       AppMethodBeat.o(131881);
       return;
     }
-    fiE = 50000L;
+    flY = 50000L;
     AppMethodBeat.o(131881);
   }
   
-  public static boolean Tu()
+  public static boolean Uo()
   {
     AppMethodBeat.i(131880);
-    if (com.tencent.mm.kernel.a.Yf().getBoolean("keepaliveserviceswitch", false))
+    if (com.tencent.mm.kernel.a.Zc().getBoolean("keepaliveserviceswitch", false))
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.KeepAliveService", "scheduleCoreScheduleJob(), time = %d", new Object[] { Long.valueOf(fiE) });
+      ac.i("MicroMsg.KeepAliveService", "scheduleCoreScheduleJob(), time = %d", new Object[] { Long.valueOf(flY) });
       try
       {
-        JobInfo.Builder localBuilder = new JobInfo.Builder(1, new ComponentName(aj.getContext(), KeepAliveService.class));
+        JobInfo.Builder localBuilder = new JobInfo.Builder(1, new ComponentName(ai.getContext(), KeepAliveService.class));
         localBuilder.setMinimumLatency(0L);
         localBuilder.setOverrideDeadline(10L);
         localBuilder.setRequiredNetworkType(1);
         localBuilder.setRequiresDeviceIdle(false);
         localBuilder.setRequiresCharging(false);
-        ((JobScheduler)aj.getContext().getSystemService("jobscheduler")).schedule(localBuilder.build());
+        ((JobScheduler)ai.getContext().getSystemService("jobscheduler")).schedule(localBuilder.build());
         AppMethodBeat.o(131880);
         return true;
       }
@@ -56,7 +58,7 @@ public class KeepAliveService
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.KeepAliveService", "scheduleKeepAliveJob() Exception:%s" + localException.getMessage());
+          ac.e("MicroMsg.KeepAliveService", "scheduleKeepAliveJob() Exception:%s" + localException.getMessage());
         }
       }
     }
@@ -67,19 +69,19 @@ public class KeepAliveService
   public boolean onStartJob(final JobParameters paramJobParameters)
   {
     AppMethodBeat.i(131878);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.KeepAliveService", "onStartJob()");
-    if (com.tencent.mm.network.ad.aFo() == null)
+    ac.i("MicroMsg.KeepAliveService", "onStartJob()");
+    if (ad.aMf() == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.KeepAliveService", "onStarJob() MMPushCore.getAutoAuth() == null");
-      b.c(aj.getContext(), "jobservice", true);
+      ac.i("MicroMsg.KeepAliveService", "onStarJob() MMPushCore.getAutoAuth() == null");
+      b.c(ai.getContext(), "jobservice", true);
     }
     new Handler().postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(131876);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.KeepAliveService", "onStartJob() delay");
-        KeepAliveService.Tu();
+        ac.i("MicroMsg.KeepAliveService", "onStartJob() delay");
+        KeepAliveService.Uo();
         try
         {
           KeepAliveService.this.jobFinished(paramJobParameters, false);
@@ -88,20 +90,20 @@ public class KeepAliveService
         }
         catch (Exception localException)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.KeepAliveService", "onStartJob() jobFinished() Exception=%s", new Object[] { localException.getMessage() });
+          ac.e("MicroMsg.KeepAliveService", "onStartJob() jobFinished() Exception=%s", new Object[] { localException.getMessage() });
           AppMethodBeat.o(131876);
         }
       }
-    }, fiE);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.KeepAliveService", "onReceive() delay publish PushKeepAliveEvent");
-    h.Iye.p(new Runnable()
+    }, flY);
+    ac.i("MicroMsg.KeepAliveService", "onReceive() delay publish PushKeepAliveEvent");
+    h.JZN.p(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(131877);
-        oq localoq = new oq();
-        com.tencent.mm.sdk.b.a.ESL.a(localoq, Looper.getMainLooper());
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.KeepAliveService", "onReceive() publish PushKeepAliveEvent");
+        oz localoz = new oz();
+        com.tencent.mm.sdk.b.a.GpY.a(localoz, Looper.getMainLooper());
+        ac.i("MicroMsg.KeepAliveService", "onReceive() publish PushKeepAliveEvent");
         AppMethodBeat.o(131877);
       }
     }, 60000L);
@@ -112,7 +114,7 @@ public class KeepAliveService
   public boolean onStopJob(JobParameters paramJobParameters)
   {
     AppMethodBeat.i(131879);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.KeepAliveService", "onStopJob()");
+    ac.i("MicroMsg.KeepAliveService", "onStopJob()");
     AppMethodBeat.o(131879);
     return false;
   }

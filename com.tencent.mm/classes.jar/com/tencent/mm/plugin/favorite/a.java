@@ -14,7 +14,7 @@ public final class a
 {
   public a()
   {
-    super(com.tencent.mm.bs.c.aCX("favorite"));
+    super(com.tencent.mm.br.c.aIo("favorite"));
     AppMethodBeat.i(24569);
     AppMethodBeat.o(24569);
   }
@@ -22,14 +22,14 @@ public final class a
   public final void parallelsDependency()
   {
     AppMethodBeat.i(24570);
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bB(g.ad(n.class));
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bB(g.ad(af.class));
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).by(g.ad(n.class));
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).by(g.ad(af.class));
     AppMethodBeat.o(24570);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.favorite.a
  * JD-Core Version:    0.7.0.1
  */

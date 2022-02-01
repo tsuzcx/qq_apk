@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 import android.text.Spanned;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.tools.b.c.a;
 import com.tencent.mm.ui.tools.f;
@@ -37,45 +37,45 @@ public final class p
   public static abstract class a
     implements c.a
   {
-    public final void CH(String paramString) {}
+    public final void GK(String paramString) {}
     
-    public final void aKr() {}
+    public final void aRi() {}
     
-    public void ck(String paramString) {}
+    public void ca(String paramString) {}
   }
   
   final class b
     extends f
   {
-    private final int mce;
-    private final f.a mcf;
+    private final int mEc;
+    private final f.a mEd;
     
     b(int paramInt, f.a parama)
     {
       super(parama);
-      this.mce = paramInt;
-      this.mcf = parama;
+      this.mEc = paramInt;
+      this.mEd = parama;
     }
     
     public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, final Spanned paramSpanned, int paramInt3, int paramInt4)
     {
       int i = 0;
       AppMethodBeat.i(136429);
-      if (a(paramSpanned.subSequence(0, paramInt3).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString(), this.mcf) + a(paramCharSequence.subSequence(paramInt1, paramInt2).toString(), this.mcf) > this.mce) {
+      if (a(paramSpanned.subSequence(0, paramInt3).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString(), this.mEd) + a(paramCharSequence.subSequence(paramInt1, paramInt2).toString(), this.mEd) > this.mEc) {
         i = 1;
       }
       CharSequence localCharSequence = paramCharSequence;
       if (i != 0) {
-        localCharSequence = paramCharSequence.subSequence(paramInt1, Math.max(paramInt1, Math.min(this.mce - (paramSpanned.length() - (paramInt4 - paramInt3)), paramInt2)));
+        localCharSequence = paramCharSequence.subSequence(paramInt1, Math.max(paramInt1, Math.min(this.mEc - (paramSpanned.length() - (paramInt4 - paramInt3)), paramInt2)));
       }
       final c.a locala;
-      if ((i != 0) && (bt.ai(localCharSequence)))
+      if ((i != 0) && (bs.aj(localCharSequence)))
       {
-        if (p.this.HuN != null) {
+        if (p.this.IVk != null) {
           break label225;
         }
         paramCharSequence = null;
-        locala = p.this.HuR;
+        locala = p.this.IVo;
         if ((paramCharSequence != null) && (locala != null)) {
           if (paramCharSequence.getText() == null) {
             break label242;
@@ -91,13 +91,13 @@ public final class p
           public final void run()
           {
             AppMethodBeat.i(136428);
-            locala.ck(paramSpanned);
+            locala.ca(paramSpanned);
             AppMethodBeat.o(136428);
           }
         });
         AppMethodBeat.o(136429);
         return localCharSequence;
-        paramCharSequence = (EditText)p.this.HuN.get();
+        paramCharSequence = (EditText)p.this.IVk.get();
         break;
       }
     }
@@ -105,7 +105,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.p
  * JD-Core Version:    0.7.0.1
  */

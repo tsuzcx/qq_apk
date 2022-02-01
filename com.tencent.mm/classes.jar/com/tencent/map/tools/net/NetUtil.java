@@ -6,10 +6,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.OutputStream;
 
 @SuppressLint({"MissingPermission"})
 public class NetUtil
 {
+  private static final int BUF_SIZE = 4096;
   private static final String CMWAP = "cmwap";
   private static final String CTWAP = "ctwap";
   public static final int DEFAULT_TIME_OUT = 10000;
@@ -245,10 +249,132 @@ public class NetUtil
     AppMethodBeat.o(172935);
     return false;
   }
+  
+  public static final void safeClose(Closeable paramCloseable)
+  {
+    AppMethodBeat.i(191288);
+    if (paramCloseable != null) {
+      try
+      {
+        paramCloseable.close();
+        AppMethodBeat.o(191288);
+        return;
+      }
+      catch (IOException paramCloseable) {}
+    }
+    AppMethodBeat.o(191288);
+  }
+  
+  /* Error */
+  public static byte[] toBytes(java.io.InputStream paramInputStream)
+  {
+    // Byte code:
+    //   0: ldc 168
+    //   2: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: ifnonnull +10 -> 16
+    //   9: ldc 168
+    //   11: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   14: aconst_null
+    //   15: areturn
+    //   16: new 170	java/io/ByteArrayOutputStream
+    //   19: dup
+    //   20: invokespecial 171	java/io/ByteArrayOutputStream:<init>	()V
+    //   23: astore_2
+    //   24: sipush 4096
+    //   27: newarray byte
+    //   29: astore_3
+    //   30: aload_0
+    //   31: aload_3
+    //   32: iconst_0
+    //   33: sipush 4096
+    //   36: invokevirtual 177	java/io/InputStream:read	([BII)I
+    //   39: istore_1
+    //   40: iload_1
+    //   41: iconst_m1
+    //   42: if_icmpeq +25 -> 67
+    //   45: aload_2
+    //   46: aload_3
+    //   47: iconst_0
+    //   48: iload_1
+    //   49: invokevirtual 181	java/io/ByteArrayOutputStream:write	([BII)V
+    //   52: goto -22 -> 30
+    //   55: astore_0
+    //   56: aload_2
+    //   57: invokestatic 183	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   60: ldc 168
+    //   62: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: aconst_null
+    //   66: areturn
+    //   67: aload_2
+    //   68: invokevirtual 186	java/io/ByteArrayOutputStream:flush	()V
+    //   71: aload_2
+    //   72: invokevirtual 190	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   75: astore_0
+    //   76: aload_2
+    //   77: invokestatic 183	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   80: ldc 168
+    //   82: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: aload_0
+    //   86: areturn
+    //   87: astore_0
+    //   88: aconst_null
+    //   89: astore_2
+    //   90: aload_2
+    //   91: invokestatic 183	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   94: ldc 168
+    //   96: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   99: aload_0
+    //   100: athrow
+    //   101: astore_0
+    //   102: goto -12 -> 90
+    //   105: astore_0
+    //   106: aconst_null
+    //   107: astore_2
+    //   108: goto -52 -> 56
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	111	0	paramInputStream	java.io.InputStream
+    //   39	10	1	i	int
+    //   23	85	2	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   29	18	3	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   24	30	55	java/lang/Throwable
+    //   30	40	55	java/lang/Throwable
+    //   45	52	55	java/lang/Throwable
+    //   67	76	55	java/lang/Throwable
+    //   16	24	87	finally
+    //   24	30	101	finally
+    //   30	40	101	finally
+    //   45	52	101	finally
+    //   67	76	101	finally
+    //   16	24	105	java/lang/Throwable
+  }
+  
+  public static void writeBytesWithoutClose(byte[] paramArrayOfByte, OutputStream paramOutputStream)
+  {
+    AppMethodBeat.i(191290);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (paramOutputStream == null))
+    {
+      AppMethodBeat.o(191290);
+      return;
+    }
+    try
+    {
+      paramOutputStream.write(paramArrayOfByte);
+      AppMethodBeat.o(191290);
+      return;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      AppMethodBeat.o(191290);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.net.NetUtil
  * JD-Core Version:    0.7.0.1
  */

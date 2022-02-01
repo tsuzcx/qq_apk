@@ -8,10 +8,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.av.o;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,30 +19,30 @@ public class f
   extends com.tencent.mm.plugin.emoji.a.a.a
 {
   private final String TAG;
-  public boolean otS;
-  public boolean otT;
-  public boolean otU;
-  public boolean otV;
-  private List<String> otW;
+  public boolean oXt;
+  public boolean oXu;
+  public boolean oXv;
+  public boolean oXw;
+  private List<String> oXx;
   
   public f(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(179051);
     this.TAG = "MicroMsg.emoji.EmojiStoreMainAdapter";
-    this.otS = false;
-    this.otT = true;
-    this.otU = false;
-    this.otV = true;
-    this.otW = new LinkedList();
+    this.oXt = false;
+    this.oXu = true;
+    this.oXv = false;
+    this.oXw = true;
+    this.oXx = new LinkedList();
     AppMethodBeat.o(179051);
   }
   
-  public void Ap(int paramInt) {}
+  public void Bh(int paramInt) {}
   
-  public void Aq(int paramInt) {}
+  public void Bi(int paramInt) {}
   
-  public void Ar(int paramInt) {}
+  public void Bj(int paramInt) {}
   
   public View b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
@@ -50,52 +50,52 @@ public class f
     int i = 0;
     AppMethodBeat.i(108325);
     a locala = (a)paramView.getTag();
-    paramViewGroup = As(paramInt);
-    if (this.otU)
+    paramViewGroup = Bk(paramInt);
+    if (this.oXv)
     {
-      paramViewGroup.ouR = true;
-      paramViewGroup.ouP = false;
-      paramViewGroup.ouQ = false;
+      paramViewGroup.oYr = true;
+      paramViewGroup.oYp = false;
+      paramViewGroup.oYq = false;
     }
     Object localObject;
     label131:
     boolean bool;
     if ((locala != null) && (paramViewGroup != null))
     {
-      paramViewGroup.ouQ = this.otV;
-      localObject = paramViewGroup.ouM;
+      paramViewGroup.oYq = this.oXw;
+      localObject = paramViewGroup.oYm;
       if (localObject != null) {
         break label278;
       }
-      locala.Ao(0);
+      locala.Bg(0);
       paramInt = 0;
       if (paramInt == 0)
       {
-        paramViewGroup = paramViewGroup.ouL;
+        paramViewGroup = paramViewGroup.oYl;
         if (paramViewGroup != null)
         {
           locala.setTitle(paramViewGroup.PackName);
           if (!com.tencent.mm.plugin.emoji.h.a.g(paramViewGroup)) {
             break label401;
           }
-          o.ayJ().loadImage("", locala.bUd());
-          locala.bUe();
-          bool = com.tencent.mm.plugin.emoji.a.a.e.fd(paramViewGroup.PackType, 2);
+          o.aFB().loadImage("", locala.cbr());
+          locala.cbs();
+          bool = com.tencent.mm.plugin.emoji.a.a.e.fg(paramViewGroup.PackType, 2);
           if (TextUtils.isEmpty(paramViewGroup.TagUri)) {
             break label430;
           }
-          locala.bUf().setImageDrawable(null);
-          locala.bUf().setVisibility(0);
-          o.ayJ().a(paramViewGroup.TagUri, locala.bUf(), com.tencent.mm.plugin.emoji.e.e.eX("", paramViewGroup.TagUri));
+          locala.cbt().setImageDrawable(null);
+          locala.cbt().setVisibility(0);
+          o.aFB().a(paramViewGroup.TagUri, locala.cbt(), com.tencent.mm.plugin.emoji.e.e.fk("", paramViewGroup.TagUri));
           label193:
-          localObject = locala.otn;
-          if (!this.otW.contains(paramViewGroup.ProductID)) {
+          localObject = locala.oWO;
+          if (!this.oXx.contains(paramViewGroup.ProductID)) {
             break label459;
           }
           paramInt = i;
           label219:
           ((View)localObject).setVisibility(paramInt);
-          if (bt.isNullOrNil(paramViewGroup.ExptDesc)) {
+          if (bs.isNullOrNil(paramViewGroup.ExptDesc)) {
             break label465;
           }
         }
@@ -107,67 +107,67 @@ public class f
     label465:
     for (paramViewGroup = paramViewGroup.ExptDesc;; paramViewGroup = paramViewGroup.Introduce)
     {
-      locala.Tn(paramViewGroup);
-      if ((this.otS) && (locala.otk != null)) {
-        locala.otk.setBackgroundResource(2131231820);
+      locala.Xz(paramViewGroup);
+      if ((this.oXt) && (locala.oWL != null)) {
+        locala.oWL.setBackgroundResource(2131231820);
       }
       AppMethodBeat.o(108325);
       return paramView;
       locala.setTitle(((EmotionBannerSet)localObject).Title);
-      locala.Tn(((EmotionBannerSet)localObject).Desc);
-      if (!bt.isNullOrNil(((EmotionBannerSet)localObject).IconUrl)) {
-        o.ayJ().a(((EmotionBannerSet)localObject).IconUrl, locala.bUd(), com.tencent.mm.plugin.emoji.e.e.eX("", ((EmotionBannerSet)localObject).IconUrl));
+      locala.Xz(((EmotionBannerSet)localObject).Desc);
+      if (!bs.isNullOrNil(((EmotionBannerSet)localObject).IconUrl)) {
+        o.aFB().a(((EmotionBannerSet)localObject).IconUrl, locala.cbr(), com.tencent.mm.plugin.emoji.e.e.fk("", ((EmotionBannerSet)localObject).IconUrl));
       }
-      if (!bt.isNullOrNil(((EmotionBannerSet)localObject).TagUrl))
+      if (!bs.isNullOrNil(((EmotionBannerSet)localObject).TagUrl))
       {
-        o.ayJ().a(((EmotionBannerSet)localObject).TagUrl, locala.bUf(), com.tencent.mm.plugin.emoji.e.e.eX("", ((EmotionBannerSet)localObject).TagUrl));
-        locala.An(0);
+        o.aFB().a(((EmotionBannerSet)localObject).TagUrl, locala.cbt(), com.tencent.mm.plugin.emoji.e.e.fk("", ((EmotionBannerSet)localObject).TagUrl));
+        locala.Bf(0);
       }
       for (;;)
       {
-        locala.Ao(8);
+        locala.Bg(8);
         paramInt = j;
         break;
-        locala.An(8);
+        locala.Bf(8);
       }
-      o.ayJ().a(paramViewGroup.IconUrl, locala.bUd(), com.tencent.mm.plugin.emoji.e.e.eX(paramViewGroup.ProductID, paramViewGroup.IconUrl));
+      o.aFB().a(paramViewGroup.IconUrl, locala.cbr(), com.tencent.mm.plugin.emoji.e.e.fk(paramViewGroup.ProductID, paramViewGroup.IconUrl));
       break label131;
       if (bool)
       {
-        locala.An(0);
-        locala.bUg();
+        locala.Bf(0);
+        locala.cbu();
         break label193;
       }
-      locala.An(8);
+      locala.Bf(8);
       break label193;
       paramInt = 8;
       break label219;
     }
   }
   
-  public int bUr()
-  {
-    return 0;
-  }
-  
-  public int bUs()
-  {
-    return 0;
-  }
-  
-  public int bUt()
-  {
-    return 0;
-  }
-  
-  public final void cK(List<String> paramList)
+  public final void cM(List<String> paramList)
   {
     AppMethodBeat.i(179052);
-    this.otW.clear();
+    this.oXx.clear();
     if (paramList != null) {
-      this.otW.addAll(paramList);
+      this.oXx.addAll(paramList);
     }
     AppMethodBeat.o(179052);
+  }
+  
+  public int cbE()
+  {
+    return 0;
+  }
+  
+  public int cbF()
+  {
+    return 0;
+  }
+  
+  public int cbG()
+  {
+    return 0;
   }
   
   public final void clear()
@@ -181,7 +181,7 @@ public class f
   {
     AppMethodBeat.i(108323);
     paramContext = new a(paramContext, paramView);
-    paramContext.a(this.ouA);
+    paramContext.a(this.oYa);
     AppMethodBeat.o(108323);
     return paramContext;
   }
@@ -194,39 +194,39 @@ public class f
       super(paramView);
     }
     
-    protected final void bTZ()
+    protected final void cbn()
     {
       AppMethodBeat.i(108319);
-      this.otm.setVisibility(8);
-      bUh();
-      this.otq.setVisibility(8);
-      this.otu.setVisibility(8);
-      this.otv.setVisibility(8);
-      this.otl.setVisibility(0);
-      this.kEu.setVisibility(0);
-      this.ots.setVisibility(0);
-      this.otr.setVisibility(0);
-      this.ott.setVisibility(0);
+      this.oWN.setVisibility(8);
+      cbv();
+      this.oWR.setVisibility(8);
+      this.oWV.setVisibility(8);
+      this.oWW.setVisibility(8);
+      this.oWM.setVisibility(0);
+      this.lfN.setVisibility(0);
+      this.oWT.setVisibility(0);
+      this.oWS.setVisibility(0);
+      this.oWU.setVisibility(0);
       AppMethodBeat.o(108319);
     }
     
-    protected final int[] bUa()
+    protected final int[] cbo()
     {
       AppMethodBeat.i(108320);
-      int i = com.tencent.mm.cd.a.ao(this.mContext, 2131166234);
+      int i = com.tencent.mm.cc.a.au(this.mContext, 2131166234);
       AppMethodBeat.o(108320);
       return new int[] { i, i };
     }
     
-    protected final int bUb()
+    protected final int cbp()
     {
       AppMethodBeat.i(108321);
-      int i = com.tencent.mm.cd.a.ao(this.mContext, 2131166233);
+      int i = com.tencent.mm.cc.a.au(this.mContext, 2131166233);
       AppMethodBeat.o(108321);
       return i;
     }
     
-    protected final boolean bUk()
+    protected final boolean cby()
     {
       AppMethodBeat.i(108322);
       boolean bool = f.a(f.this);
@@ -237,7 +237,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.f
  * JD-Core Version:    0.7.0.1
  */

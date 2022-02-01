@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.transvoice.ui.a;
 
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -13,51 +13,51 @@ import java.util.List;
 public final class a
   extends RecyclerView.a<b>
 {
-  public List<a> fvw;
-  public int yYJ;
-  private ImageView yYK;
+  public int Amy;
+  private ImageView Amz;
+  public List<a> fzd;
   
   public a()
   {
     AppMethodBeat.i(185311);
-    this.fvw = new ArrayList();
-    this.yYJ = -1;
-    this.yYK = null;
+    this.fzd = new ArrayList();
+    this.Amy = -1;
+    this.Amz = null;
     AppMethodBeat.o(185311);
-  }
-  
-  public final void ga(List<a> paramList)
-  {
-    AppMethodBeat.i(185313);
-    this.fvw.clear();
-    this.fvw.addAll(paramList);
-    AppMethodBeat.o(185313);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(185312);
-    int i = this.fvw.size();
+    int i = this.fzd.size();
     AppMethodBeat.o(185312);
     return i;
   }
   
+  public final void gh(List<a> paramList)
+  {
+    AppMethodBeat.i(185313);
+    this.fzd.clear();
+    this.fzd.addAll(paramList);
+    AppMethodBeat.o(185313);
+  }
+  
   public static final class a
   {
-    public String yYN = "";
-    public int yYO = -1;
+    public String AmC = "";
+    public int AmD = -1;
     
     public a(String paramString, int paramInt)
     {
-      this.yYN = paramString;
-      this.yYO = paramInt;
+      this.AmC = paramString;
+      this.AmD = paramInt;
     }
   }
   
   final class b
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
-    public ImageView fxT;
+    public ImageView fBA;
     public TextView titleTv;
     
     public b(View paramView)
@@ -65,9 +65,9 @@ public final class a
       super();
       AppMethodBeat.i(185310);
       this.titleTv = null;
-      this.fxT = null;
+      this.fBA = null;
       this.titleTv = ((TextView)paramView.findViewById(2131302831));
-      this.fxT = ((ImageView)paramView.findViewById(2131302826));
+      this.fBA = ((ImageView)paramView.findViewById(2131302826));
       AppMethodBeat.o(185310);
     }
   }

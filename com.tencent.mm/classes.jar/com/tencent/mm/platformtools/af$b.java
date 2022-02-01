@@ -2,7 +2,7 @@ package com.tencent.mm.platformtools;
 
 public final class af$b
 {
-  private static char[] an(byte[] paramArrayOfByte)
+  private static char[] am(byte[] paramArrayOfByte)
   {
     int k = paramArrayOfByte.length;
     char[] arrayOfChar = new char[k * 2];
@@ -45,7 +45,7 @@ public final class af$b
     //   5: new 25	java/util/jar/JarFile
     //   8: dup
     //   9: aload_0
-    //   10: invokevirtual 31	com/tencent/mm/vfs/e:fhU	()Landroid/net/Uri;
+    //   10: invokevirtual 31	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
     //   13: invokestatic 37	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   16: invokespecial 41	java/util/jar/JarFile:<init>	(Ljava/lang/String;)V
     //   19: astore 6
@@ -137,7 +137,7 @@ public final class af$b
     //   180: aload 8
     //   182: invokestatic 99	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   185: invokevirtual 103	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   188: invokestatic 109	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   188: invokestatic 109	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   191: aload_0
     //   192: astore 4
     //   194: aload_0
@@ -160,7 +160,7 @@ public final class af$b
     //   224: lsub
     //   225: invokevirtual 122	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   228: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   231: invokestatic 109	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   231: invokestatic 109	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   234: aload_0
     //   235: ifnull +31 -> 266
     //   238: aload_0
@@ -234,7 +234,7 @@ public final class af$b
     //   357: ldc 154
     //   359: iconst_0
     //   360: anewarray 4	java/lang/Object
-    //   363: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   363: invokestatic 158	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   366: ldc 17
     //   368: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   371: aload_3
@@ -286,10 +286,10 @@ public final class af$b
     //   457: dup
     //   458: aload 7
     //   460: invokevirtual 165	java/security/cert/X509Certificate:getEncoded	()[B
-    //   463: invokestatic 167	com/tencent/mm/platformtools/af$b:an	([B)[C
+    //   463: invokestatic 167	com/tencent/mm/platformtools/af$b:am	([B)[C
     //   466: invokespecial 170	java/lang/String:<init>	([C)V
     //   469: invokevirtual 173	java/lang/String:getBytes	()[B
-    //   472: invokestatic 179	com/tencent/mm/sdk/platformtools/ai:D	([B)Ljava/lang/String;
+    //   472: invokestatic 178	com/tencent/mm/sdk/platformtools/ah:B	([B)Ljava/lang/String;
     //   475: astore_0
     //   476: aload 5
     //   478: ifnull +8 -> 486
@@ -307,7 +307,7 @@ public final class af$b
     //   502: ldc 154
     //   504: iconst_0
     //   505: anewarray 4	java/lang/Object
-    //   508: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   508: invokestatic 158	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   511: goto -25 -> 486
     //   514: astore_3
     //   515: ldc 152
@@ -315,7 +315,7 @@ public final class af$b
     //   518: ldc 154
     //   520: iconst_0
     //   521: anewarray 4	java/lang/Object
-    //   524: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   524: invokestatic 158	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   527: goto -36 -> 491
     //   530: aload 5
     //   532: ifnull +8 -> 540
@@ -333,7 +333,7 @@ public final class af$b
     //   557: ldc 154
     //   559: iconst_0
     //   560: anewarray 4	java/lang/Object
-    //   563: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   563: invokestatic 158	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   566: goto -26 -> 540
     //   569: astore_0
     //   570: ldc 152
@@ -341,7 +341,7 @@ public final class af$b
     //   573: ldc 154
     //   575: iconst_0
     //   576: anewarray 4	java/lang/Object
-    //   579: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   579: invokestatic 158	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   582: goto -37 -> 545
     //   585: astore_3
     //   586: ldc 152
@@ -349,7 +349,7 @@ public final class af$b
     //   589: ldc 154
     //   591: iconst_0
     //   592: anewarray 4	java/lang/Object
-    //   595: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   595: invokestatic 158	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   598: goto -210 -> 388
     //   601: astore_3
     //   602: ldc 152
@@ -357,7 +357,7 @@ public final class af$b
     //   605: ldc 154
     //   607: iconst_0
     //   608: anewarray 4	java/lang/Object
-    //   611: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   611: invokestatic 158	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   614: goto -216 -> 398
     //   617: astore_0
     //   618: aconst_null

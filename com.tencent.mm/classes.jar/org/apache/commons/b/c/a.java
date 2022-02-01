@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements Cloneable
 {
-  private String KmY;
-  protected char[] aOM;
+  private String MaH;
+  protected char[] aPC;
   protected int size;
   
   public a()
@@ -21,41 +21,41 @@ public final class a
     if (paramInt <= 0) {
       i = 32;
     }
-    this.aOM = new char[i];
+    this.aPC = new char[i];
     AppMethodBeat.o(40757);
   }
   
-  private a ags(int paramInt)
+  private a ajo(int paramInt)
   {
     AppMethodBeat.i(40759);
-    if (paramInt > this.aOM.length)
+    if (paramInt > this.aPC.length)
     {
-      char[] arrayOfChar = this.aOM;
-      this.aOM = new char[paramInt * 2];
-      System.arraycopy(arrayOfChar, 0, this.aOM, 0, this.size);
+      char[] arrayOfChar = this.aPC;
+      this.aPC = new char[paramInt * 2];
+      System.arraycopy(arrayOfChar, 0, this.aPC, 0, this.size);
     }
     AppMethodBeat.o(40759);
     return this;
   }
   
-  private a fMW()
+  private a gfM()
   {
     AppMethodBeat.i(40760);
-    if (this.KmY == null)
+    if (this.MaH == null)
     {
       AppMethodBeat.o(40760);
       return this;
     }
-    a locala = aRA(this.KmY);
+    a locala = aXA(this.MaH);
     AppMethodBeat.o(40760);
     return locala;
   }
   
-  public final a I(char paramChar)
+  public final a G(char paramChar)
   {
     AppMethodBeat.i(40763);
-    ags(this.size + 1);
-    char[] arrayOfChar = this.aOM;
+    ajo(this.size + 1);
+    char[] arrayOfChar = this.aPC;
     int i = this.size;
     this.size = (i + 1);
     arrayOfChar[i] = paramChar;
@@ -63,12 +63,12 @@ public final class a
     return this;
   }
   
-  public final a aRA(String paramString)
+  public final a aXA(String paramString)
   {
     AppMethodBeat.i(40762);
     if (paramString == null)
     {
-      paramString = fMW();
+      paramString = gfM();
       AppMethodBeat.o(40762);
       return paramString;
     }
@@ -76,8 +76,8 @@ public final class a
     if (i > 0)
     {
       int j = this.size;
-      ags(j + i);
-      paramString.getChars(0, i, this.aOM, j);
+      ajo(j + i);
+      paramString.getChars(0, i, this.aPC, j);
       this.size = (i + this.size);
     }
     AppMethodBeat.o(40762);
@@ -88,8 +88,8 @@ public final class a
   {
     AppMethodBeat.i(40765);
     a locala = (a)super.clone();
-    locala.aOM = new char[this.aOM.length];
-    System.arraycopy(this.aOM, 0, locala.aOM, 0, this.aOM.length);
+    locala.aPC = new char[this.aPC.length];
+    System.arraycopy(this.aPC, 0, locala.aPC, 0, this.aPC.length);
     AppMethodBeat.o(40765);
     return locala;
   }
@@ -108,8 +108,8 @@ public final class a
     {
       return false;
     }
-    paramObject = this.aOM;
-    Object localObject = ((a)localObject).aOM;
+    paramObject = this.aPC;
+    Object localObject = ((a)localObject).aPC;
     int i = this.size - 1;
     for (;;)
     {
@@ -125,7 +125,21 @@ public final class a
     return true;
   }
   
-  public final a fMV()
+  public final a gb(Object paramObject)
+  {
+    AppMethodBeat.i(40761);
+    if (paramObject == null)
+    {
+      paramObject = gfM();
+      AppMethodBeat.o(40761);
+      return paramObject;
+    }
+    paramObject = aXA(paramObject.toString());
+    AppMethodBeat.o(40761);
+    return paramObject;
+  }
+  
+  public final a gfL()
   {
     AppMethodBeat.i(40758);
     if (this.size > 0) {
@@ -137,35 +151,21 @@ public final class a
       return this;
       if (this.size < 0)
       {
-        ags(0);
+        ajo(0);
         int i = this.size;
         this.size = 0;
         while (i < 0)
         {
-          this.aOM[i] = '\000';
+          this.aPC[i] = '\000';
           i += 1;
         }
       }
     }
   }
   
-  public final a fT(Object paramObject)
-  {
-    AppMethodBeat.i(40761);
-    if (paramObject == null)
-    {
-      paramObject = fMW();
-      AppMethodBeat.o(40761);
-      return paramObject;
-    }
-    paramObject = aRA(paramObject.toString());
-    AppMethodBeat.o(40761);
-    return paramObject;
-  }
-  
   public final int hashCode()
   {
-    char[] arrayOfChar = this.aOM;
+    char[] arrayOfChar = this.aPC;
     int j = 0;
     int i = this.size - 1;
     while (i >= 0)
@@ -184,14 +184,14 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(40764);
-    String str = new String(this.aOM, 0, this.size);
+    String str = new String(this.aPC, 0, this.size);
     AppMethodBeat.o(40764);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.apache.commons.b.c.a
  * JD-Core Version:    0.7.0.1
  */

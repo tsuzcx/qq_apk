@@ -11,56 +11,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private IBinder.DeathRecipient bNA;
-  private c bNu;
-  private b bNv;
-  a bNw;
-  private int bNx;
-  b bNy;
-  int bNz;
+  private c bLc;
+  private b bLd;
+  a bLe;
+  private int bLf;
+  b bLg;
+  int bLh;
+  private IBinder.DeathRecipient bLi;
   
   private a(c paramc, Looper paramLooper)
   {
     AppMethodBeat.i(88756);
-    this.bNz = -1;
-    this.bNA = new IBinder.DeathRecipient()
+    this.bLh = -1;
+    this.bLi = new IBinder.DeathRecipient()
     {
       public final void binderDied()
       {
         AppMethodBeat.i(88781);
-        if (a.this.bNy != null) {
-          a.this.bNy.D(2101, -1, a.this.bNz);
+        if (a.this.bLg != null) {
+          a.this.bLg.D(2101, -1, a.this.bLh);
         }
         AppMethodBeat.o(88781);
       }
     };
-    this.bNu = paramc;
+    this.bLc = paramc;
     paramLooper = new a(paramLooper);
-    this.bNx = 1;
-    this.bNv = new b.a()
+    this.bLf = 1;
+    this.bLd = new b.a()
     {
       public final void a(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(88780);
-        a.this.bNw.sendMessage(a.this.bNw.obtainMessage(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousArrayOfByte));
+        a.this.bLe.sendMessage(a.this.bLe.obtainMessage(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousArrayOfByte));
         AppMethodBeat.o(88780);
       }
     };
-    if (!this.bNu.a(this.bNv, 1))
+    if (!this.bLc.a(this.bLd, 1))
     {
       paramc = new RuntimeException();
       AppMethodBeat.o(88756);
       throw paramc;
     }
-    this.bNw = paramLooper;
-    paramc.asBinder().linkToDeath(this.bNA, 0);
+    this.bLe = paramLooper;
+    paramc.asBinder().linkToDeath(this.bLi, 0);
     AppMethodBeat.o(88756);
   }
   
-  public static a yC()
+  public static a yp()
   {
     AppMethodBeat.i(88755);
-    Object localObject = yF();
+    Object localObject = ys();
     if (localObject == null)
     {
       AppMethodBeat.o(88755);
@@ -80,10 +80,10 @@ public final class a
     return null;
   }
   
-  public static int[] yE()
+  public static int[] yr()
   {
     AppMethodBeat.i(88761);
-    Object localObject = yF();
+    Object localObject = ys();
     if (localObject == null)
     {
       AppMethodBeat.o(88761);
@@ -91,7 +91,7 @@ public final class a
     }
     try
     {
-      localObject = ((c)localObject).yG();
+      localObject = ((c)localObject).yt();
       AppMethodBeat.o(88761);
       return localObject;
     }
@@ -102,7 +102,7 @@ public final class a
     return new int[0];
   }
   
-  private static c yF()
+  private static c ys()
   {
     AppMethodBeat.i(88762);
     c localc = c.a.i(ServiceManager.getService("authentication_service"));
@@ -118,11 +118,11 @@ public final class a
       AppMethodBeat.o(88759);
       return -1;
     }
-    this.bNy = paramb;
-    this.bNz = 0;
+    this.bLg = paramb;
+    this.bLh = 0;
     try
     {
-      int i = this.bNu.a(this.bNv, paramArrayOfInt, null);
+      int i = this.bLc.a(this.bLd, paramArrayOfInt, null);
       AppMethodBeat.o(88759);
       return i;
     }
@@ -136,12 +136,12 @@ public final class a
   public final void abort()
   {
     AppMethodBeat.i(88760);
-    if (this.bNw != null) {
-      this.bNw.removeMessages(8);
+    if (this.bLe != null) {
+      this.bLe.removeMessages(8);
     }
     try
     {
-      this.bNu.a(this.bNv);
+      this.bLc.a(this.bLd);
       AppMethodBeat.o(88760);
       return;
     }
@@ -154,13 +154,13 @@ public final class a
   public final void release()
   {
     AppMethodBeat.i(88757);
-    if (this.bNw != null) {
-      this.bNw.removeMessages(8);
+    if (this.bLe != null) {
+      this.bLe.removeMessages(8);
     }
     try
     {
-      this.bNu.b(this.bNv);
-      this.bNu.asBinder().unlinkToDeath(this.bNA, 0);
+      this.bLc.b(this.bLd);
+      this.bLc.asBinder().unlinkToDeath(this.bLi, 0);
       AppMethodBeat.o(88757);
       return;
     }
@@ -170,12 +170,12 @@ public final class a
     }
   }
   
-  public final int[] yD()
+  public final int[] yq()
   {
     AppMethodBeat.i(88758);
     try
     {
-      int[] arrayOfInt = this.bNu.c(this.bNv);
+      int[] arrayOfInt = this.bLc.c(this.bLd);
       AppMethodBeat.o(88758);
       return arrayOfInt;
     }
@@ -189,12 +189,12 @@ public final class a
   final class a
     extends Handler
   {
-    private final int bNC = 2001;
-    private final int bND = 2002;
-    private final int bNE = 2003;
-    private final int bNF = 2004;
-    private final int bNG = 2005;
-    private final int bNH = 2006;
+    private final int bLk = 2001;
+    private final int bLl = 2002;
+    private final int bLm = 2003;
+    private final int bLn = 2004;
+    private final int bLo = 2005;
+    private final int bLp = 2006;
     
     public a(Looper paramLooper)
     {
@@ -213,28 +213,28 @@ public final class a
       {
         AppMethodBeat.o(88782);
         return;
-        if (a.this.bNy != null)
+        if (a.this.bLg != null)
         {
-          a.this.bNy.bR(1, a.this.bNz);
+          a.this.bLg.bO(1, a.this.bLh);
           AppMethodBeat.o(88782);
           return;
-          if (a.this.bNy != null)
+          if (a.this.bLg != null)
           {
-            a.this.bNy.bR(2, a.this.bNz);
+            a.this.bLg.bO(2, a.this.bLh);
             AppMethodBeat.o(88782);
             return;
-            if (a.this.bNy != null)
+            if (a.this.bLg != null)
             {
-              a.this.bNy.bR(3, a.this.bNz);
+              a.this.bLg.bO(3, a.this.bLh);
               AppMethodBeat.o(88782);
               return;
-              if (a.this.bNy != null) {
-                a.this.bNy.D(0, paramMessage.arg1, a.this.bNz);
+              if (a.this.bLg != null) {
+                a.this.bLg.D(0, paramMessage.arg1, a.this.bLh);
               }
               removeMessages(8);
               AppMethodBeat.o(88782);
               return;
-              if (a.this.bNy != null) {
+              if (a.this.bLg != null) {
                 switch (paramMessage.arg1)
                 {
                 default: 
@@ -243,7 +243,7 @@ public final class a
               }
               for (;;)
               {
-                a.this.bNy.D(i, -1, a.this.bNz);
+                a.this.bLg.D(i, -1, a.this.bLh);
                 removeMessages(8);
                 AppMethodBeat.o(88782);
                 return;
@@ -255,8 +255,8 @@ public final class a
                 continue;
                 i = 2006;
               }
-              if (a.this.bNy != null) {
-                a.this.bNy.D(2001, -1, a.this.bNz);
+              if (a.this.bLg != null) {
+                a.this.bLg.D(2001, -1, a.this.bLh);
               }
               removeMessages(8);
               a.this.abort();
@@ -271,7 +271,7 @@ public final class a
   {
     public abstract void D(int paramInt1, int paramInt2, int paramInt3);
     
-    public abstract void bR(int paramInt1, int paramInt2);
+    public abstract void bO(int paramInt1, int paramInt2);
   }
 }
 

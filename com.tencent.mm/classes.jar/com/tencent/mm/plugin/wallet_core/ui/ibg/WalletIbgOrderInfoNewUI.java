@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.jx;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.kf;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoNewUI;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.c.t;
 import java.util.Iterator;
 import java.util.Set;
@@ -20,21 +20,21 @@ import java.util.Set;
 public class WalletIbgOrderInfoNewUI
   extends WalletOrderInfoNewUI
 {
-  private Orders zPF;
+  private Orders BhZ;
   
   public final void done()
   {
     AppMethodBeat.i(71445);
-    ad.i("MicroMsg.WalletIbgOrderInfoNewUI", "hy: result is not set manly. set to OK");
-    Iterator localIterator = this.AnM.iterator();
+    ac.i("MicroMsg.WalletIbgOrderInfoNewUI", "hy: result is not set manly. set to OK");
+    Iterator localIterator = this.BGg.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (!bt.isNullOrNil(str))
+      if (!bs.isNullOrNil(str))
       {
-        ad.d("MicroMsg.WalletIbgOrderInfoNewUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str });
-        g.afC();
-        g.afA().gcy.a(new t(str), 0);
+        ac.d("MicroMsg.WalletIbgOrderInfoNewUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str });
+        g.agS();
+        g.agQ().ghe.a(new t(str), 0);
       }
     }
     setResult(-1);
@@ -42,23 +42,23 @@ public class WalletIbgOrderInfoNewUI
     AppMethodBeat.o(71445);
   }
   
-  public final void edQ() {}
+  public final void etl() {}
   
-  public final Orders eee()
+  public final Orders etz()
   {
-    return this.zPF;
+    return this.BhZ;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(71444);
-    this.zPF = WalletIbgOrderInfoUI.zPF;
+    this.BhZ = WalletIbgOrderInfoUI.BhZ;
     super.onCreate(paramBundle);
-    paramBundle = new jx();
-    paramBundle.dob.requestCode = 25;
-    paramBundle.dob.bRZ = -1;
-    paramBundle.dob.doc = new Intent();
-    a.ESL.l(paramBundle);
+    paramBundle = new kf();
+    paramBundle.dlK.requestCode = 25;
+    paramBundle.dlK.bPH = -1;
+    paramBundle.dlK.dlL = new Intent();
+    a.GpY.l(paramBundle);
     AppMethodBeat.o(71444);
   }
   

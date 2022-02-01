@@ -48,7 +48,16 @@ public class d
     d = 0;
     e = 0L;
     f = false;
-    g = new a(new d.1());
+    g = new a(new a.a()
+    {
+      public final b b()
+      {
+        AppMethodBeat.i(14739);
+        b localb = new b();
+        AppMethodBeat.o(14739);
+        return localb;
+      }
+    });
     h = new Object();
     i = false;
     j = new int[] { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350 };
@@ -349,7 +358,7 @@ public class d
   {
     // Byte code:
     //   0: sipush 14762
-    //   3: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: ifnull +7 -> 14
     //   10: aload_1

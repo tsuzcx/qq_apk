@@ -6,28 +6,28 @@ import java.util.Set;
 
 final class e
 {
-  c[] bOa;
-  private final f bOb;
-  final ArrayList<d> bOp;
-  Set<Character> bOq;
+  c[] bLI;
+  private final f bLJ;
+  final ArrayList<d> bLX;
+  Set<Character> bLY;
   
   e(f paramf)
   {
     AppMethodBeat.i(39849);
-    this.bOp = new ArrayList();
-    this.bOb = paramf;
+    this.bLX = new ArrayList();
+    this.bLJ = paramf;
     AppMethodBeat.o(39849);
   }
   
-  private char[] yL()
+  private char[] yy()
   {
     AppMethodBeat.i(39855);
-    int j = this.bOp.size();
+    int j = this.bLX.size();
     char[] arrayOfChar = new char[j];
     int i = 0;
     while (i < j)
     {
-      arrayOfChar[i] = ((d)this.bOp.get(i)).bOc;
+      arrayOfChar[i] = ((d)this.bLX.get(i)).bLK;
       i += 1;
     }
     AppMethodBeat.o(39855);
@@ -37,21 +37,21 @@ final class e
   final void b(char[] paramArrayOfChar)
   {
     AppMethodBeat.i(39850);
-    if (this.bOa == null)
+    if (this.bLI == null)
     {
       paramArrayOfChar = new IllegalStateException("Need to call #setCharacterLists first.");
       AppMethodBeat.o(39850);
       throw paramArrayOfChar;
     }
     int i = 0;
-    while (i < this.bOp.size()) {
-      if (((d)this.bOp.get(i)).yI() > 0.0F) {
+    while (i < this.bLX.size()) {
+      if (((d)this.bLX.get(i)).yv() > 0.0F) {
         i += 1;
       } else {
-        this.bOp.remove(i);
+        this.bLX.remove(i);
       }
     }
-    int[] arrayOfInt = a.a(yL(), paramArrayOfChar, this.bOq);
+    int[] arrayOfInt = a.a(yy(), paramArrayOfChar, this.bLY);
     int j = 0;
     int k = 0;
     i = 0;
@@ -64,9 +64,9 @@ final class e
         AppMethodBeat.o(39850);
         throw paramArrayOfChar;
       case 1: 
-        this.bOp.add(i, new d(this.bOa, this.bOb));
+        this.bLX.add(i, new d(this.bLI, this.bLJ));
       case 0: 
-        ((d)this.bOp.get(i)).o(paramArrayOfChar[k]);
+        ((d)this.bLX.get(i)).o(paramArrayOfChar[k]);
         i += 1;
         k += 1;
       }
@@ -74,7 +74,7 @@ final class e
       {
         j += 1;
         break;
-        ((d)this.bOp.get(i)).o('\000');
+        ((d)this.bLX.get(i)).o('\000');
         i += 1;
       }
     }
@@ -84,13 +84,13 @@ final class e
   final void onAnimationEnd()
   {
     AppMethodBeat.i(39851);
-    int j = this.bOp.size();
+    int j = this.bLX.size();
     int i = 0;
     while (i < j)
     {
-      d locald = (d)this.bOp.get(i);
-      locald.yJ();
-      locald.bOl = locald.bOj;
+      d locald = (d)this.bLX.get(i);
+      locald.yw();
+      locald.bLT = locald.bLR;
       i += 1;
     }
     AppMethodBeat.o(39851);
@@ -99,57 +99,57 @@ final class e
   final void setAnimationProgress(float paramFloat)
   {
     AppMethodBeat.i(39852);
-    int j = this.bOp.size();
+    int j = this.bLX.size();
     int i = 0;
     while (i < j)
     {
-      d locald = (d)this.bOp.get(i);
+      d locald = (d)this.bLX.get(i);
       if (paramFloat == 1.0F)
       {
-        locald.bOc = locald.bOd;
-        locald.bOm = 0.0F;
-        locald.bOn = 0.0F;
+        locald.bLK = locald.bLL;
+        locald.bLU = 0.0F;
+        locald.bLV = 0.0F;
       }
-      float f1 = locald.bOb.bOh;
+      float f1 = locald.bLJ.bLP;
       float f2 = Math.abs(locald.endIndex - locald.startIndex) * f1 * paramFloat / f1;
       float f3 = (int)f2;
-      float f4 = locald.bOn;
-      locald.bOg = ((f2 - f3) * f1 * locald.bOo + f4 * (1.0F - paramFloat));
+      float f4 = locald.bLV;
+      locald.bLO = ((f2 - f3) * f1 * locald.bLW + f4 * (1.0F - paramFloat));
       int k = locald.startIndex;
-      locald.bOf = ((int)f2 * locald.bOo + k);
-      locald.bOh = f1;
-      locald.bOj = (locald.bOi + (locald.bOk - locald.bOi) * paramFloat);
+      locald.bLN = ((int)f2 * locald.bLW + k);
+      locald.bLP = f1;
+      locald.bLR = (locald.bLQ + (locald.bLS - locald.bLQ) * paramFloat);
       i += 1;
     }
     AppMethodBeat.o(39852);
   }
   
-  final float yI()
+  final float yv()
   {
     AppMethodBeat.i(39854);
     float f = 0.0F;
-    int j = this.bOp.size();
+    int j = this.bLX.size();
     int i = 0;
     while (i < j)
     {
-      f += ((d)this.bOp.get(i)).yI();
+      f += ((d)this.bLX.get(i)).yv();
       i += 1;
     }
     AppMethodBeat.o(39854);
     return f;
   }
   
-  final float yK()
+  final float yx()
   {
     AppMethodBeat.i(39853);
     float f = 0.0F;
-    int j = this.bOp.size();
+    int j = this.bLX.size();
     int i = 0;
     while (i < j)
     {
-      d locald = (d)this.bOp.get(i);
-      locald.yJ();
-      f += locald.bOl;
+      d locald = (d)this.bLX.get(i);
+      locald.yw();
+      f += locald.bLT;
       i += 1;
     }
     AppMethodBeat.o(39853);
@@ -158,7 +158,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.robinhood.ticker.e
  * JD-Core Version:    0.7.0.1
  */

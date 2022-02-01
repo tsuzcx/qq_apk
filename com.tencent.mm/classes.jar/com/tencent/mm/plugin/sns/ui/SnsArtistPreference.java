@@ -7,26 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class SnsArtistPreference
   extends Preference
 {
-  private MMActivity imP;
+  private MMActivity iMV;
   private String mTitle;
-  private String uCA;
-  private int wey;
-  private int wez;
-  private TextView xvE;
-  String xvF;
+  private String vLt;
+  private int xpM;
+  private int xpN;
+  private TextView yIu;
+  String yIv;
   
   public SnsArtistPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(98475);
-    this.imP = ((MMActivity)paramContext);
+    this.iMV = ((MMActivity)paramContext);
     AppMethodBeat.o(98475);
   }
   
@@ -34,24 +34,24 @@ public final class SnsArtistPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98476);
-    this.uCA = "";
+    this.vLt = "";
     this.mTitle = "";
-    this.wey = -1;
-    this.wez = 8;
-    this.xvE = null;
-    this.xvF = "";
-    this.imP = ((MMActivity)paramContext);
+    this.xpM = -1;
+    this.xpN = 8;
+    this.yIu = null;
+    this.yIv = "";
+    this.iMV = ((MMActivity)paramContext);
     setLayoutResource(2131494804);
     AppMethodBeat.o(98476);
   }
   
-  public final void dAK()
+  public final void dPh()
   {
     AppMethodBeat.i(98477);
-    if ((this.xvE != null) && (this.xvF != null) && (!this.xvF.equals("")) && (this.imP != null))
+    if ((this.yIu != null) && (this.yIv != null) && (!this.yIv.equals("")) && (this.iMV != null))
     {
-      String str = this.imP.getString(2131763415, new Object[] { this.xvF });
-      this.xvE.setText(str);
+      String str = this.iMV.getString(2131763415, new Object[] { this.yIv });
+      this.yIu.setText(str);
     }
     AppMethodBeat.o(98477);
   }
@@ -60,18 +60,18 @@ public final class SnsArtistPreference
   {
     AppMethodBeat.i(98479);
     super.onBindView(paramView);
-    this.xvE = ((TextView)paramView.findViewById(2131296948));
+    this.yIu = ((TextView)paramView.findViewById(2131296948));
     ((TextView)paramView.findViewById(2131296626)).setText(this.mTitle);
     paramView = (TextView)paramView.findViewById(2131305745);
     if (paramView != null)
     {
-      paramView.setVisibility(this.wez);
-      paramView.setText(this.uCA);
-      if (this.wey != -1) {
-        paramView.setBackgroundDrawable(a.l(this.imP, this.wey));
+      paramView.setVisibility(this.xpN);
+      paramView.setText(this.vLt);
+      if (this.xpM != -1) {
+        paramView.setBackgroundDrawable(a.l(this.iMV, this.xpM));
       }
     }
-    dAK();
+    dPh();
     AppMethodBeat.o(98479);
   }
   
@@ -82,7 +82,7 @@ public final class SnsArtistPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    this.mTitle = this.imP.getString(2131763416);
+    this.mTitle = this.iMV.getString(2131763416);
     localLayoutInflater.inflate(2131494806, localViewGroup);
     AppMethodBeat.o(98478);
     return paramViewGroup;
@@ -90,7 +90,7 @@ public final class SnsArtistPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsArtistPreference
  * JD-Core Version:    0.7.0.1
  */

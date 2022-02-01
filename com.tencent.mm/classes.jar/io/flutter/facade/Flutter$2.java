@@ -5,9 +5,11 @@ import android.arch.lifecycle.Lifecycle.Event;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.b.a;
+import io.flutter.a.a;
+import io.flutter.embedding.engine.c.c;
 import io.flutter.view.FlutterMain;
 import io.flutter.view.FlutterView;
+import io.flutter.view.b;
 
 final class Flutter$2
   implements LifecycleObserver
@@ -18,11 +20,11 @@ final class Flutter$2
   public final void onCreate()
   {
     AppMethodBeat.i(159071);
-    io.flutter.view.c localc = new io.flutter.view.c();
-    localc.Jfc = FlutterMain.findAppBundlePath(this.val$activity.getApplicationContext());
-    localc.Jfd = "main";
-    this.Jbf.a(localc);
-    a.registerWith(this.Jbf.getPluginRegistry());
+    b localb = new b();
+    localb.KSw = FlutterMain.findAppBundlePath(this.val$activity.getApplicationContext());
+    localb.KSx = "main";
+    this.KOJ.a(localb);
+    a.registerWith(this.KOJ.getPluginRegistry());
     AppMethodBeat.o(159071);
   }
   
@@ -30,7 +32,7 @@ final class Flutter$2
   public final void onDestroy()
   {
     AppMethodBeat.i(159076);
-    this.Jbf.destroy();
+    this.KOJ.destroy();
     AppMethodBeat.o(159076);
   }
   
@@ -38,7 +40,7 @@ final class Flutter$2
   public final void onPause()
   {
     AppMethodBeat.i(159074);
-    this.Jbf.IYi.fuV();
+    this.KOJ.KLn.fNz();
     AppMethodBeat.o(159074);
   }
   
@@ -46,7 +48,7 @@ final class Flutter$2
   public final void onResume()
   {
     AppMethodBeat.i(159073);
-    this.Jbf.onPostResume();
+    this.KOJ.onPostResume();
     AppMethodBeat.o(159073);
   }
   
@@ -54,7 +56,7 @@ final class Flutter$2
   public final void onStart()
   {
     AppMethodBeat.i(159072);
-    this.Jbf.IYi.fuV();
+    this.KOJ.KLn.fNz();
     AppMethodBeat.o(159072);
   }
   
@@ -62,13 +64,13 @@ final class Flutter$2
   public final void onStop()
   {
     AppMethodBeat.i(159075);
-    this.Jbf.IYi.fuX();
+    this.KOJ.KLn.fNB();
     AppMethodBeat.o(159075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.facade.Flutter.2
  * JD-Core Version:    0.7.0.1
  */

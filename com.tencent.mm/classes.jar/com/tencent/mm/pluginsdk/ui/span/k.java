@@ -9,23 +9,23 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.a;
 import java.util.LinkedList;
 
 public final class k
 {
-  static LinkedList<h> Ckd;
-  private static boolean Cke;
+  static LinkedList<h> DCu;
+  private static boolean DCv;
   
   static
   {
     AppMethodBeat.i(152309);
-    Ckd = new LinkedList();
-    Cke = bt.iP(aj.getContext());
+    DCu = new LinkedList();
+    DCv = bs.ja(ai.getContext());
     AppMethodBeat.o(152309);
   }
   
@@ -33,20 +33,20 @@ public final class k
   {
     AppMethodBeat.i(152286);
     paramContext = new q(paramContext);
-    paramContext.CkJ = true;
-    paramContext.CkF = true;
-    paramContext.CkG = true;
-    paramContext.CkP = true;
-    paramContext.CkR = true;
-    paramContext.CkV = 1;
-    paramContext.CkK = true;
-    paramContext.CkN = false;
-    paramContext.CkX = true;
+    paramContext.DDa = true;
+    paramContext.DCW = true;
+    paramContext.DCX = true;
+    paramContext.DDg = true;
+    paramContext.DDi = true;
+    paramContext.DDm = 1;
+    paramContext.DDb = true;
+    paramContext.DDe = false;
+    paramContext.DDo = true;
     paramContext = paramContext.w(paramTextView);
-    paramContext.CkL = true;
-    paramContext.CkO = true;
+    paramContext.DDc = true;
+    paramContext.DDf = true;
     if (paramObject != null) {
-      paramContext.CkY = paramObject;
+      paramContext.DDp = paramObject;
     }
     paramContext = paramContext.b(paramTextView.getText(), paramInt, paramBoolean);
     AppMethodBeat.o(152286);
@@ -57,19 +57,19 @@ public final class k
   {
     AppMethodBeat.i(152284);
     paramContext = new q(paramContext);
-    paramContext.CkJ = true;
-    paramContext.CkF = true;
-    paramContext.CkG = true;
-    paramContext.CkI = Cke;
-    paramContext.CkV = 1;
-    paramContext.CkK = true;
-    paramContext.CkN = false;
-    paramContext.CkX = false;
+    paramContext.DDa = true;
+    paramContext.DCW = true;
+    paramContext.DCX = true;
+    paramContext.DCZ = DCv;
+    paramContext.DDm = 1;
+    paramContext.DDb = true;
+    paramContext.DDe = false;
+    paramContext.DDo = false;
     paramContext = paramContext.w(null);
-    paramContext.CkY = null;
+    paramContext.DDp = null;
     paramContext.mSessionId = null;
-    paramContext.CkL = true;
-    paramContext.CkO = true;
+    paramContext.DDc = true;
+    paramContext.DDf = true;
     paramContext = paramContext.b(paramCharSequence, paramInt, true);
     AppMethodBeat.o(152284);
     return paramContext;
@@ -95,21 +95,21 @@ public final class k
   {
     AppMethodBeat.i(162013);
     paramContext = new q(paramContext);
-    paramContext.CkJ = true;
-    paramContext.CkF = true;
-    paramContext.CkG = true;
-    paramContext.CkI = Cke;
-    paramContext.CkR = true;
-    paramContext.CkV = paramInt2;
-    paramContext.CkK = true;
-    paramContext.CkN = false;
-    paramContext.CkX = true;
-    paramContext.CkY = paramObject;
-    paramContext.CkU = paramBoolean;
+    paramContext.DDa = true;
+    paramContext.DCW = true;
+    paramContext.DCX = true;
+    paramContext.DCZ = DCv;
+    paramContext.DDi = true;
+    paramContext.DDm = paramInt2;
+    paramContext.DDb = true;
+    paramContext.DDe = false;
+    paramContext.DDo = true;
+    paramContext.DDp = paramObject;
+    paramContext.DDl = paramBoolean;
     if (paramInt2 == 1)
     {
-      paramContext.CkL = true;
-      paramContext.CkO = true;
+      paramContext.DDc = true;
+      paramContext.DDf = true;
     }
     for (;;)
     {
@@ -118,8 +118,8 @@ public final class k
       return paramContext;
       if (paramInt2 == 2)
       {
-        paramContext.CkL = false;
-        paramContext.CkO = false;
+        paramContext.DDc = false;
+        paramContext.DDf = false;
       }
     }
   }
@@ -128,18 +128,18 @@ public final class k
   {
     AppMethodBeat.i(152294);
     paramContext = new q(paramContext);
-    paramContext.CkJ = true;
-    paramContext.CkF = true;
-    paramContext.CkG = true;
-    paramContext.CkI = Cke;
-    paramContext.CkV = paramInt2;
-    paramContext.CkK = true;
-    paramContext.CkN = false;
-    paramContext.CkX = true;
+    paramContext.DDa = true;
+    paramContext.DCW = true;
+    paramContext.DCX = true;
+    paramContext.DCZ = DCv;
+    paramContext.DDm = paramInt2;
+    paramContext.DDb = true;
+    paramContext.DDe = false;
+    paramContext.DDo = true;
     if (paramInt2 == 1)
     {
-      paramContext.CkL = true;
-      paramContext.CkO = true;
+      paramContext.DDc = true;
+      paramContext.DDf = true;
     }
     for (;;)
     {
@@ -148,9 +148,9 @@ public final class k
       return paramContext;
       if (paramInt2 == 2)
       {
-        paramContext.CkL = false;
-        paramContext.CkO = false;
-        paramContext.CkT = paramBoolean;
+        paramContext.DDc = false;
+        paramContext.DDf = false;
+        paramContext.DDk = paramBoolean;
       }
     }
   }
@@ -167,7 +167,7 @@ public final class k
   {
     AppMethodBeat.i(152283);
     paramContext = a(paramContext, 1, paramObject, paramString);
-    paramContext.CkF = false;
+    paramContext.DCW = false;
     paramContext = paramContext.b(paramCharSequence, paramInt, true);
     AppMethodBeat.o(152283);
     return paramContext;
@@ -177,15 +177,15 @@ public final class k
   {
     AppMethodBeat.i(152293);
     paramContext = new q(paramContext);
-    paramContext.CkK = false;
-    paramContext.CkL = false;
-    paramContext.CkF = false;
-    paramContext.CkG = false;
-    paramContext.CkN = false;
-    paramContext.CkJ = false;
-    paramContext.CkX = false;
+    paramContext.DDb = false;
+    paramContext.DDc = false;
+    paramContext.DCW = false;
+    paramContext.DCX = false;
+    paramContext.DDe = false;
+    paramContext.DDa = false;
+    paramContext.DDo = false;
     paramContext = paramContext.b(paramCharSequence, paramInt, paramBoolean);
-    d(paramContext);
+    e(paramContext);
     AppMethodBeat.o(152293);
     return paramContext;
   }
@@ -194,17 +194,17 @@ public final class k
   {
     AppMethodBeat.i(152277);
     paramContext = new q(paramContext);
-    paramContext.CkP = true;
-    paramContext.CkF = true;
-    paramContext.CkR = true;
-    paramContext.CkV = 1;
-    paramContext.CkN = false;
-    paramContext.CkX = true;
+    paramContext.DDg = true;
+    paramContext.DCW = true;
+    paramContext.DDi = true;
+    paramContext.DDm = 1;
+    paramContext.DDe = false;
+    paramContext.DDo = true;
     paramContext = paramContext.w(null);
-    paramContext.CkL = true;
-    paramContext.CkO = true;
+    paramContext.DDc = true;
+    paramContext.DDf = true;
     if (paramObject != null) {
-      paramContext.CkY = paramObject;
+      paramContext.DDp = paramObject;
     }
     paramContext = paramContext.b(paramCharSequence, paramInt, paramBoolean);
     AppMethodBeat.o(152277);
@@ -224,7 +224,7 @@ public final class k
     AppMethodBeat.i(152279);
     if (paramTextView == null)
     {
-      ad.e("MicroMsg.MMSpanManager", "spanForTextView, textView cannot be null!");
+      ac.e("MicroMsg.MMSpanManager", "spanForTextView, textView cannot be null!");
       paramTextView = new SpannableString("");
       AppMethodBeat.o(152279);
       return paramTextView;
@@ -238,33 +238,33 @@ public final class k
   {
     AppMethodBeat.i(152285);
     paramContext = new q(paramContext);
-    paramContext.CkJ = true;
-    paramContext.CkF = true;
-    paramContext.CkG = true;
-    paramContext.CkI = Cke;
-    paramContext.CkV = paramInt;
-    paramContext.CkK = true;
-    paramContext.CkN = false;
-    paramContext.CkX = true;
+    paramContext.DDa = true;
+    paramContext.DCW = true;
+    paramContext.DCX = true;
+    paramContext.DCZ = DCv;
+    paramContext.DDm = paramInt;
+    paramContext.DDb = true;
+    paramContext.DDe = false;
+    paramContext.DDo = true;
     paramContext = paramContext.w(null);
-    paramContext.CkY = paramObject;
+    paramContext.DDp = paramObject;
     paramContext.mSessionId = paramString;
     if ((paramInt == 1) || (paramInt == 4))
     {
-      paramContext.CkL = true;
-      paramContext.CkO = true;
+      paramContext.DDc = true;
+      paramContext.DDf = true;
     }
     for (;;)
     {
-      if ("zh_CN".equals(ac.ir(aj.getContext()))) {
-        paramContext.CkM = true;
+      if ("zh_CN".equals(ab.iC(ai.getContext()))) {
+        paramContext.DDd = true;
       }
       AppMethodBeat.o(152285);
       return paramContext;
       if (paramInt == 2)
       {
-        paramContext.CkL = false;
-        paramContext.CkO = false;
+        paramContext.DDc = false;
+        paramContext.DDf = false;
       }
     }
   }
@@ -272,32 +272,32 @@ public final class k
   public static void a(h paramh)
   {
     AppMethodBeat.i(152275);
-    Ckd.add(paramh);
+    DCu.add(paramh);
     AppMethodBeat.o(152275);
   }
   
-  public static String aCn(String paramString)
+  public static String aHF(String paramString)
   {
     AppMethodBeat.i(152302);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(152302);
       return paramString;
     }
-    q localq = new q(aj.getContext());
-    localq.CkJ = false;
-    localq.CkF = true;
-    localq.CkG = true;
-    localq.CkP = true;
-    localq.CkQ = true;
-    localq.CkR = true;
-    localq.CkV = 1;
-    localq.CkK = false;
-    localq.CkN = false;
-    localq.CkL = false;
-    localq.CkO = false;
-    localq.CkS = false;
-    localq.CkX = false;
+    q localq = new q(ai.getContext());
+    localq.DDa = false;
+    localq.DCW = true;
+    localq.DCX = true;
+    localq.DDg = true;
+    localq.DDh = true;
+    localq.DDi = true;
+    localq.DDm = 1;
+    localq.DDb = false;
+    localq.DDe = false;
+    localq.DDc = false;
+    localq.DDf = false;
+    localq.DDj = false;
+    localq.DDo = false;
     paramString = localq.b(paramString, 0, false).toString();
     AppMethodBeat.o(152302);
     return paramString;
@@ -323,18 +323,18 @@ public final class k
   {
     AppMethodBeat.i(152301);
     paramContext = new q(paramContext);
-    paramContext.CkJ = false;
-    paramContext.CkF = true;
-    paramContext.CkG = true;
-    paramContext.CkP = true;
-    paramContext.CkQ = paramBoolean;
-    paramContext.CkR = true;
-    paramContext.CkV = 1;
-    paramContext.CkK = false;
-    paramContext.CkN = false;
-    paramContext.CkL = false;
-    paramContext.CkO = false;
-    paramContext.CkX = false;
+    paramContext.DDa = false;
+    paramContext.DCW = true;
+    paramContext.DCX = true;
+    paramContext.DDg = true;
+    paramContext.DDh = paramBoolean;
+    paramContext.DDi = true;
+    paramContext.DDm = 1;
+    paramContext.DDb = false;
+    paramContext.DDe = false;
+    paramContext.DDc = false;
+    paramContext.DDf = false;
+    paramContext.DDo = false;
     paramContext = paramContext.b(paramCharSequence, paramInt, true);
     AppMethodBeat.o(152301);
     return paramContext;
@@ -345,7 +345,7 @@ public final class k
     AppMethodBeat.i(152281);
     if (paramTextView == null)
     {
-      ad.e("MicroMsg.MMSpanManager", "spanForTextView, textView cannot be null!");
+      ac.e("MicroMsg.MMSpanManager", "spanForTextView, textView cannot be null!");
       paramTextView = new SpannableString("");
       AppMethodBeat.o(152281);
       return paramTextView;
@@ -353,19 +353,19 @@ public final class k
     Object localObject = paramTextView.getContext();
     int i = (int)paramTextView.getTextSize();
     localObject = new q((Context)localObject);
-    ((q)localObject).CkJ = true;
-    ((q)localObject).CkF = true;
-    ((q)localObject).CkG = true;
-    ((q)localObject).CkI = Cke;
-    ((q)localObject).CkV = 1;
-    ((q)localObject).CkK = true;
-    ((q)localObject).CkN = false;
-    ((q)localObject).CkX = true;
+    ((q)localObject).DDa = true;
+    ((q)localObject).DCW = true;
+    ((q)localObject).DCX = true;
+    ((q)localObject).DCZ = DCv;
+    ((q)localObject).DDm = 1;
+    ((q)localObject).DDb = true;
+    ((q)localObject).DDe = false;
+    ((q)localObject).DDo = true;
     localObject = ((q)localObject).w(paramTextView);
-    ((q)localObject).CkY = paramObject;
+    ((q)localObject).DDp = paramObject;
     ((q)localObject).mSessionId = null;
-    ((q)localObject).CkL = true;
-    ((q)localObject).CkO = true;
+    ((q)localObject).DDc = true;
+    ((q)localObject).DDf = true;
     paramTextView = ((q)localObject).b(paramTextView.getText(), i, true);
     AppMethodBeat.o(152281);
     return paramTextView;
@@ -374,7 +374,7 @@ public final class k
   public static void b(h paramh)
   {
     AppMethodBeat.i(152276);
-    Ckd.remove(paramh);
+    DCu.remove(paramh);
     AppMethodBeat.o(152276);
   }
   
@@ -390,16 +390,16 @@ public final class k
   {
     AppMethodBeat.i(152290);
     paramContext = new q(paramContext);
-    paramContext.CkK = false;
-    paramContext.CkL = false;
-    paramContext.CkF = false;
-    paramContext.CkG = false;
-    paramContext.CkN = false;
-    paramContext.CkV = paramInt;
-    paramContext.CkJ = false;
-    paramContext.CkX = false;
+    paramContext.DDb = false;
+    paramContext.DDc = false;
+    paramContext.DCW = false;
+    paramContext.DCX = false;
+    paramContext.DDe = false;
+    paramContext.DDm = paramInt;
+    paramContext.DDa = false;
+    paramContext.DDo = false;
     paramContext = paramContext.b(paramCharSequence, 0, true);
-    d(paramContext);
+    e(paramContext);
     AppMethodBeat.o(152290);
     return paramContext;
   }
@@ -407,7 +407,7 @@ public final class k
   public static void clearCache()
   {
     AppMethodBeat.i(152303);
-    ad.i("MicroMsg.MMSpanManager", "clear MMSpanManager cache");
+    ac.i("MicroMsg.MMSpanManager", "clear MMSpanManager cache");
     q.clearCache();
     AppMethodBeat.o(152303);
   }
@@ -424,18 +424,18 @@ public final class k
   {
     AppMethodBeat.i(152296);
     paramContext = new q(paramContext);
-    paramContext.CkJ = true;
-    paramContext.CkF = true;
-    paramContext.CkG = true;
-    paramContext.CkI = Cke;
-    paramContext.CkR = true;
-    paramContext.CkV = 1;
-    paramContext.CkK = true;
-    paramContext.CkN = false;
-    paramContext.CkX = true;
-    paramContext.CkY = null;
-    paramContext.CkL = true;
-    paramContext.CkO = true;
+    paramContext.DDa = true;
+    paramContext.DCW = true;
+    paramContext.DCX = true;
+    paramContext.DCZ = DCv;
+    paramContext.DDi = true;
+    paramContext.DDm = 1;
+    paramContext.DDb = true;
+    paramContext.DDe = false;
+    paramContext.DDo = true;
+    paramContext.DDp = null;
+    paramContext.DDc = true;
+    paramContext.DDf = true;
     paramContext = paramContext.b(paramCharSequence, paramInt, true);
     AppMethodBeat.o(152296);
     return paramContext;
@@ -455,19 +455,6 @@ public final class k
     return localSpannableStringBuilder;
   }
   
-  private static void d(Spannable paramSpannable)
-  {
-    int i = 0;
-    AppMethodBeat.i(152291);
-    ClickableSpan[] arrayOfClickableSpan = (ClickableSpan[])paramSpannable.getSpans(0, paramSpannable.length(), ClickableSpan.class);
-    while (i < arrayOfClickableSpan.length)
-    {
-      paramSpannable.removeSpan(arrayOfClickableSpan[i]);
-      i += 1;
-    }
-    AppMethodBeat.o(152291);
-  }
-  
   public static SpannableString e(Context paramContext, CharSequence paramCharSequence, float paramFloat)
   {
     AppMethodBeat.i(152300);
@@ -478,9 +465,21 @@ public final class k
   
   public static SpannableString e(Context paramContext, CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(152299);
-    paramContext = b(paramContext, paramCharSequence, paramInt, true);
-    AppMethodBeat.o(152299);
+    AppMethodBeat.i(192697);
+    paramContext = new q(paramContext);
+    paramContext.DDa = false;
+    paramContext.DCW = true;
+    paramContext.DCX = false;
+    paramContext.DCZ = DCv;
+    paramContext.DDi = false;
+    paramContext.DDm = 1;
+    paramContext.DDb = true;
+    paramContext.DDe = false;
+    paramContext.DDo = true;
+    paramContext.DDc = false;
+    paramContext.DDf = false;
+    paramContext = paramContext.b(paramCharSequence, paramInt, true);
+    AppMethodBeat.o(192697);
     return paramContext;
   }
   
@@ -498,45 +497,46 @@ public final class k
     return localSpannableStringBuilder;
   }
   
+  private static void e(Spannable paramSpannable)
+  {
+    int i = 0;
+    AppMethodBeat.i(152291);
+    ClickableSpan[] arrayOfClickableSpan = (ClickableSpan[])paramSpannable.getSpans(0, paramSpannable.length(), ClickableSpan.class);
+    while (i < arrayOfClickableSpan.length)
+    {
+      paramSpannable.removeSpan(arrayOfClickableSpan[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(152291);
+  }
+  
   public static SpannableString f(Context paramContext, CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(152307);
-    paramContext = new q(paramContext);
-    paramContext.CkJ = false;
-    paramContext.CkF = true;
-    paramContext.CkG = true;
-    paramContext.CkH = false;
-    paramContext.CkP = false;
-    paramContext.CkQ = false;
-    paramContext.CkR = false;
-    paramContext.CkV = 1;
-    paramContext.CkK = false;
-    paramContext.CkN = false;
-    paramContext.CkL = false;
-    paramContext.CkO = false;
-    paramContext.CkX = true;
-    paramContext = paramContext.b(paramCharSequence, paramInt, true);
-    AppMethodBeat.o(152307);
+    AppMethodBeat.i(152299);
+    paramContext = b(paramContext, paramCharSequence, paramInt, true);
+    AppMethodBeat.o(152299);
     return paramContext;
   }
   
-  public static SpannableString h(Context paramContext, CharSequence paramCharSequence, int paramInt)
+  public static SpannableString g(Context paramContext, CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(203578);
+    AppMethodBeat.i(152307);
     paramContext = new q(paramContext);
-    paramContext.CkJ = false;
-    paramContext.CkF = true;
-    paramContext.CkG = false;
-    paramContext.CkI = Cke;
-    paramContext.CkR = false;
-    paramContext.CkV = 1;
-    paramContext.CkK = true;
-    paramContext.CkN = false;
-    paramContext.CkX = true;
-    paramContext.CkL = false;
-    paramContext.CkO = false;
+    paramContext.DDa = false;
+    paramContext.DCW = true;
+    paramContext.DCX = true;
+    paramContext.DCY = false;
+    paramContext.DDg = false;
+    paramContext.DDh = false;
+    paramContext.DDi = false;
+    paramContext.DDm = 1;
+    paramContext.DDb = false;
+    paramContext.DDe = false;
+    paramContext.DDc = false;
+    paramContext.DDf = false;
+    paramContext.DDo = true;
     paramContext = paramContext.b(paramCharSequence, paramInt, true);
-    AppMethodBeat.o(203578);
+    AppMethodBeat.o(152307);
     return paramContext;
   }
   
@@ -545,7 +545,7 @@ public final class k
     AppMethodBeat.i(152280);
     if (paramTextView == null)
     {
-      ad.e("MicroMsg.MMSpanManager", "spanForTextView, textView cannot be null!");
+      ac.e("MicroMsg.MMSpanManager", "spanForTextView, textView cannot be null!");
       paramTextView = new SpannableString("");
       AppMethodBeat.o(152280);
       return paramTextView;
@@ -553,19 +553,19 @@ public final class k
     Object localObject = paramTextView.getContext();
     int i = (int)paramTextView.getTextSize();
     localObject = new q((Context)localObject);
-    ((q)localObject).CkJ = true;
-    ((q)localObject).CkF = true;
-    ((q)localObject).CkG = true;
-    ((q)localObject).CkI = Cke;
-    ((q)localObject).CkV = paramInt;
-    ((q)localObject).CkK = true;
-    ((q)localObject).CkN = false;
-    ((q)localObject).CkX = true;
+    ((q)localObject).DDa = true;
+    ((q)localObject).DCW = true;
+    ((q)localObject).DCX = true;
+    ((q)localObject).DCZ = DCv;
+    ((q)localObject).DDm = paramInt;
+    ((q)localObject).DDb = true;
+    ((q)localObject).DDe = false;
+    ((q)localObject).DDo = true;
     localObject = ((q)localObject).w(paramTextView);
     if (paramInt == 1)
     {
-      ((q)localObject).CkL = true;
-      ((q)localObject).CkO = true;
+      ((q)localObject).DDc = true;
+      ((q)localObject).DDf = true;
     }
     for (;;)
     {
@@ -574,8 +574,8 @@ public final class k
       return paramTextView;
       if (paramInt == 2)
       {
-        ((q)localObject).CkL = false;
-        ((q)localObject).CkO = false;
+        ((q)localObject).DDc = false;
+        ((q)localObject).DDf = false;
       }
     }
   }
@@ -585,7 +585,7 @@ public final class k
     AppMethodBeat.i(152304);
     if (paramTextView == null)
     {
-      ad.e("MicroMsg.MMSpanManager", "spanForTextView, textView cannot be null!");
+      ac.e("MicroMsg.MMSpanManager", "spanForTextView, textView cannot be null!");
       paramTextView = new SpannableString("");
       AppMethodBeat.o(152304);
       return paramTextView;
@@ -593,16 +593,16 @@ public final class k
     Object localObject = paramTextView.getContext();
     int i = (int)paramTextView.getTextSize();
     localObject = new q((Context)localObject);
-    ((q)localObject).CkJ = false;
-    ((q)localObject).CkF = false;
-    ((q)localObject).CkG = false;
-    ((q)localObject).CkI = false;
-    ((q)localObject).CkK = false;
-    ((q)localObject).CkN = false;
-    ((q)localObject).CkX = true;
+    ((q)localObject).DDa = false;
+    ((q)localObject).DCW = false;
+    ((q)localObject).DCX = false;
+    ((q)localObject).DCZ = false;
+    ((q)localObject).DDb = false;
+    ((q)localObject).DDe = false;
+    ((q)localObject).DDo = true;
     localObject = ((q)localObject).w(paramTextView);
-    ((q)localObject).CkL = false;
-    ((q)localObject).CkO = false;
+    ((q)localObject).DDc = false;
+    ((q)localObject).DDf = false;
     paramTextView = ((q)localObject).b(paramTextView.getText(), i, false);
     AppMethodBeat.o(152304);
     return paramTextView;
@@ -610,7 +610,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.k
  * JD-Core Version:    0.7.0.1
  */

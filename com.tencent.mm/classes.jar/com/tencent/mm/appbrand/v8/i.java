@@ -1,48 +1,48 @@
 package com.tencent.mm.appbrand.v8;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class i
   extends z
 {
-  private static final ThreadLocal<i> cPq;
-  private final a cPo;
-  private boolean cPp;
+  private static final ThreadLocal<i> cML;
+  private final a cMJ;
+  private boolean cMK;
   
   static
   {
     AppMethodBeat.i(144034);
-    cPq = new ThreadLocal();
+    cML = new ThreadLocal();
     AppMethodBeat.o(144034);
   }
   
   private i(a parama, boolean paramBoolean)
   {
     super(paramBoolean);
-    this.cPo = parama;
-    this.cPp = true;
+    this.cMJ = parama;
+    this.cMK = true;
   }
   
   public static i a(a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(193488);
-    if (cPq.get() != null)
+    AppMethodBeat.i(200814);
+    if (cML.get() != null)
     {
       parama = new RuntimeException("Only one Looper may be created per thread");
-      AppMethodBeat.o(193488);
+      AppMethodBeat.o(200814);
       throw parama;
     }
     parama = new i(parama, paramBoolean);
-    cPq.set(parama);
-    AppMethodBeat.o(193488);
+    cML.set(parama);
+    AppMethodBeat.o(200814);
     return parama;
   }
   
-  protected final boolean LO()
+  protected final boolean LM()
   {
     AppMethodBeat.i(144028);
-    if ((!this.cPp) && (super.LO()))
+    if ((!this.cMK) && (super.LM()))
     {
       AppMethodBeat.o(144028);
       return true;
@@ -51,40 +51,40 @@ final class i
     return false;
   }
   
-  protected final void LP()
+  protected final void LN()
   {
     AppMethodBeat.i(144029);
-    super.LP();
-    this.cPp = this.cPo.LN();
+    super.LN();
+    this.cMK = this.cMJ.LL();
     AppMethodBeat.o(144029);
   }
   
-  protected final void LQ()
+  protected final void LO()
   {
     AppMethodBeat.i(144030);
-    super.LQ();
-    if (this.cPo != null) {
-      this.cPo.closeUVLoop();
+    super.LO();
+    if (this.cMJ != null) {
+      this.cMJ.closeUVLoop();
     }
     AppMethodBeat.o(144030);
   }
   
-  protected final void LR()
+  protected final void LP()
   {
     AppMethodBeat.i(144031);
-    if ((this.cPo != null) && (!isPaused())) {
-      this.cPo.wakeUpUVLoop();
+    if ((this.cMJ != null) && (!isPaused())) {
+      this.cMJ.wakeUpUVLoop();
     }
     AppMethodBeat.o(144031);
   }
   
-  protected final void LS()
+  protected final void LQ()
   {
     AppMethodBeat.i(144033);
-    if (this.cPo != null)
+    if (this.cMJ != null)
     {
-      ad.i("MicroMsg.NodeJSRuntimeLooper", "onQuit wakeUpUVLoop");
-      this.cPo.wakeUpUVLoop();
+      ac.i("MicroMsg.NodeJSRuntimeLooper", "onQuit wakeUpUVLoop");
+      this.cMJ.wakeUpUVLoop();
     }
     AppMethodBeat.o(144033);
   }
@@ -92,15 +92,15 @@ final class i
   protected final void onResume()
   {
     AppMethodBeat.i(144032);
-    if (this.cPo != null) {
-      this.cPo.wakeUpUVLoop();
+    if (this.cMJ != null) {
+      this.cMJ.wakeUpUVLoop();
     }
     AppMethodBeat.o(144032);
   }
   
   static abstract interface a
   {
-    public abstract boolean LN();
+    public abstract boolean LL();
     
     public abstract void closeUVLoop();
     
@@ -109,7 +109,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.i
  * JD-Core Version:    0.7.0.1
  */

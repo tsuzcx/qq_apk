@@ -8,12 +8,12 @@ import java.util.Set;
 
 public final class ac
 {
-  private static final Set<b> iMO;
+  private static final Set<b> jmV;
   
   static
   {
     AppMethodBeat.i(90557);
-    iMO = new HashSet();
+    jmV = new HashSet();
     AppMethodBeat.o(90557);
   }
   
@@ -23,9 +23,9 @@ public final class ac
     for (;;)
     {
       int i;
-      synchronized (iMO)
+      synchronized (jmV)
       {
-        Object[] arrayOfObject = iMO.toArray();
+        Object[] arrayOfObject = jmV.toArray();
         int j = arrayOfObject.length;
         i = 0;
         if (i >= j) {
@@ -47,9 +47,9 @@ public final class ac
   public static void a(b paramb)
   {
     AppMethodBeat.i(90555);
-    synchronized (iMO)
+    synchronized (jmV)
     {
-      iMO.add(paramb);
+      jmV.add(paramb);
       AppMethodBeat.o(90555);
       return;
     }
@@ -59,25 +59,25 @@ public final class ac
   {
     public abstract void a(m paramm);
     
-    public abstract void aPi();
+    public abstract void aWa();
     
-    public abstract void aPj();
+    public abstract void aWb();
     
-    public abstract void aPk();
+    public abstract void aWc();
     
-    public abstract void aPl();
+    public abstract void aWd();
     
-    public abstract void aPm();
+    public abstract void aWe();
     
-    public abstract void aPn();
+    public abstract void aWf();
     
-    public abstract void aPo();
+    public abstract void aWg();
     
-    public abstract void fj(boolean paramBoolean);
+    public abstract void fF(boolean paramBoolean);
     
-    public abstract void fk(boolean paramBoolean);
+    public abstract void fG(boolean paramBoolean);
     
-    public abstract void qE(int paramInt);
+    public abstract void rr(int paramInt);
   }
   
   public static abstract interface b
@@ -87,7 +87,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ac
  * JD-Core Version:    0.7.0.1
  */

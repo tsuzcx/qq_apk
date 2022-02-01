@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.HashMap;
 
 public final class ke
   extends b
 {
-  public a doz;
+  public a dlH;
   
   public ke()
   {
@@ -16,22 +16,24 @@ public final class ke
   
   private ke(byte paramByte)
   {
-    AppMethodBeat.i(128846);
-    this.doz = new a();
-    this.ESR = false;
+    AppMethodBeat.i(63289);
+    this.dlH = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(128846);
+    AppMethodBeat.o(63289);
   }
   
   public static final class a
   {
-    public HashMap doA;
-    public String key;
+    public Context context;
+    public String dlI;
+    public Long dlJ;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ke
  * JD-Core Version:    0.7.0.1
  */

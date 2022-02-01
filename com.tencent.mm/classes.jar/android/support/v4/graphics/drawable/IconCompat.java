@@ -13,16 +13,16 @@ import java.lang.reflect.Method;
 public class IconCompat
   extends CustomVersionedParcelable
 {
-  static final PorterDuff.Mode um = PorterDuff.Mode.SRC_IN;
-  public Object Hn;
-  public Parcelable Ho;
-  public int Hp;
-  public int Hq;
-  public ColorStateList Hr = null;
-  public String Hs;
+  static final PorterDuff.Mode vl = PorterDuff.Mode.SRC_IN;
+  public Object Il;
+  public Parcelable Im;
+  public int In;
+  public int Io;
+  public ColorStateList Ip = null;
+  public String Iq;
   public byte[] mData;
   public int mType;
-  public PorterDuff.Mode vo = um;
+  public PorterDuff.Mode wn = vl;
   
   private static String a(Icon paramIcon)
   {
@@ -71,7 +71,7 @@ public class IconCompat
   public String toString()
   {
     if (this.mType == -1) {
-      return String.valueOf(this.Hn);
+      return String.valueOf(this.Il);
     }
     StringBuilder localStringBuilder1 = new StringBuilder("Icon(typ=");
     Object localObject;
@@ -87,13 +87,13 @@ public class IconCompat
     }
     for (;;)
     {
-      if (this.Hr != null)
+      if (this.Ip != null)
       {
         localStringBuilder1.append(" tint=");
-        localStringBuilder1.append(this.Hr);
+        localStringBuilder1.append(this.Ip);
       }
-      if (this.vo != um) {
-        localStringBuilder1.append(" mode=").append(this.vo);
+      if (this.wn != vl) {
+        localStringBuilder1.append(" mode=").append(this.wn);
       }
       localStringBuilder1.append(")");
       return localStringBuilder1.toString();
@@ -107,45 +107,45 @@ public class IconCompat
       break;
       localObject = "URI";
       break;
-      localStringBuilder1.append(" size=").append(((Bitmap)this.Hn).getWidth()).append("x").append(((Bitmap)this.Hn).getHeight());
+      localStringBuilder1.append(" size=").append(((Bitmap)this.Il).getWidth()).append("x").append(((Bitmap)this.Il).getHeight());
       continue;
       StringBuilder localStringBuilder2 = localStringBuilder1.append(" pkg=");
       if ((this.mType == -1) && (Build.VERSION.SDK_INT >= 23))
       {
-        localObject = a((Icon)this.Hn);
+        localObject = a((Icon)this.Il);
         label277:
         localObject = localStringBuilder2.append((String)localObject).append(" id=");
         if ((this.mType != -1) || (Build.VERSION.SDK_INT < 23)) {
           break label384;
         }
       }
-      for (int i = b((Icon)this.Hn);; i = this.Hp)
+      for (int i = b((Icon)this.Il);; i = this.In)
       {
         ((StringBuilder)localObject).append(String.format("0x%08x", new Object[] { Integer.valueOf(i) }));
         break;
         if (this.mType != 2) {
           throw new IllegalStateException("called getResPackage() on ".concat(String.valueOf(this)));
         }
-        localObject = ((String)this.Hn).split(":", -1)[0];
+        localObject = ((String)this.Il).split(":", -1)[0];
         break label277;
         label384:
         if (this.mType != 2) {
           throw new IllegalStateException("called getResId() on ".concat(String.valueOf(this)));
         }
       }
-      localStringBuilder1.append(" len=").append(this.Hp);
-      if (this.Hq != 0)
+      localStringBuilder1.append(" len=").append(this.In);
+      if (this.Io != 0)
       {
-        localStringBuilder1.append(" off=").append(this.Hq);
+        localStringBuilder1.append(" off=").append(this.Io);
         continue;
-        localStringBuilder1.append(" uri=").append(this.Hn);
+        localStringBuilder1.append(" uri=").append(this.Il);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v4.graphics.drawable.IconCompat
  * JD-Core Version:    0.7.0.1
  */

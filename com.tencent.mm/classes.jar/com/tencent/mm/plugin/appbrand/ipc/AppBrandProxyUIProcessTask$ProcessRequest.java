@@ -13,24 +13,24 @@ public abstract class AppBrandProxyUIProcessTask$ProcessRequest
     j(paramParcel);
   }
   
-  protected abstract Class<? extends AppBrandProxyUIProcessTask> aWl();
+  protected abstract Class<? extends AppBrandProxyUIProcessTask> bdj();
   
-  protected boolean aXq()
+  protected boolean ben()
   {
     return false;
   }
   
-  protected String aXr()
+  protected String beo()
   {
     return null;
   }
   
-  protected int aXs()
+  protected int bep()
   {
     return -1;
   }
   
-  protected boolean aXt()
+  protected boolean beq()
   {
     return false;
   }

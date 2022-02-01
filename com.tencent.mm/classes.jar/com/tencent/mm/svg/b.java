@@ -8,20 +8,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  private static a<Paint> FDq;
-  private static a<float[]> FDr;
-  private static a<Matrix> FDs;
-  private static a<Path> FDt;
-  private static final float[] FDu;
+  private static a<Paint> Hct;
+  private static a<float[]> Hcu;
+  private static a<Matrix> Hcv;
+  private static a<Path> Hcw;
+  private static final float[] Hcx;
   
   static
   {
     AppMethodBeat.i(148689);
-    FDq = new a();
-    FDr = new a();
-    FDs = new a();
-    FDt = new a();
-    FDu = new float[9];
+    Hct = new a();
+    Hcu = new a();
+    Hcv = new a();
+    Hcw = new a();
+    Hcx = new float[9];
     AppMethodBeat.o(148689);
   }
   
@@ -33,8 +33,8 @@ final class b
     //   2: monitorenter
     //   3: ldc 46
     //   5: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 31	com/tencent/mm/svg/b:FDq	Lcom/tencent/mm/svg/a;
-    //   11: invokevirtual 50	com/tencent/mm/svg/a:eOm	()Ljava/lang/Object;
+    //   8: getstatic 31	com/tencent/mm/svg/b:Hct	Lcom/tencent/mm/svg/a;
+    //   11: invokevirtual 50	com/tencent/mm/svg/a:fdQ	()Ljava/lang/Object;
     //   14: checkcast 52	android/graphics/Paint
     //   17: astore_2
     //   18: aload_2
@@ -48,7 +48,7 @@ final class b
     //   34: aload_2
     //   35: aload_1
     //   36: invokevirtual 57	android/graphics/Paint:set	(Landroid/graphics/Paint;)V
-    //   39: getstatic 31	com/tencent/mm/svg/b:FDq	Lcom/tencent/mm/svg/a;
+    //   39: getstatic 31	com/tencent/mm/svg/b:Hct	Lcom/tencent/mm/svg/a;
     //   42: aload_0
     //   43: aload_2
     //   44: invokevirtual 60	com/tencent/mm/svg/a:a	(Landroid/os/Looper;Ljava/lang/Object;)V
@@ -85,10 +85,10 @@ final class b
     try
     {
       AppMethodBeat.i(148684);
-      FDq.g(paramLooper);
-      FDr.g(paramLooper);
-      FDs.g(paramLooper);
-      FDt.g(paramLooper);
+      Hct.g(paramLooper);
+      Hcu.g(paramLooper);
+      Hcv.g(paramLooper);
+      Hcw.g(paramLooper);
       AppMethodBeat.o(148684);
       return;
     }
@@ -107,8 +107,8 @@ final class b
     //   2: monitorenter
     //   3: ldc 71
     //   5: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 33	com/tencent/mm/svg/b:FDr	Lcom/tencent/mm/svg/a;
-    //   11: invokevirtual 50	com/tencent/mm/svg/a:eOm	()Ljava/lang/Object;
+    //   8: getstatic 33	com/tencent/mm/svg/b:Hcu	Lcom/tencent/mm/svg/a;
+    //   11: invokevirtual 50	com/tencent/mm/svg/a:fdQ	()Ljava/lang/Object;
     //   14: checkcast 72	[F
     //   17: astore_1
     //   18: aload_1
@@ -116,7 +116,7 @@ final class b
     //   22: bipush 9
     //   24: newarray float
     //   26: astore_1
-    //   27: getstatic 33	com/tencent/mm/svg/b:FDr	Lcom/tencent/mm/svg/a;
+    //   27: getstatic 33	com/tencent/mm/svg/b:Hcu	Lcom/tencent/mm/svg/a;
     //   30: aload_0
     //   31: aload_1
     //   32: invokevirtual 60	com/tencent/mm/svg/a:a	(Landroid/os/Looper;Ljava/lang/Object;)V
@@ -126,7 +126,7 @@ final class b
     //   42: monitorexit
     //   43: aload_1
     //   44: areturn
-    //   45: getstatic 39	com/tencent/mm/svg/b:FDu	[F
+    //   45: getstatic 39	com/tencent/mm/svg/b:Hcx	[F
     //   48: iconst_0
     //   49: aload_1
     //   50: iconst_0
@@ -158,8 +158,8 @@ final class b
     //   2: monitorenter
     //   3: ldc 81
     //   5: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 35	com/tencent/mm/svg/b:FDs	Lcom/tencent/mm/svg/a;
-    //   11: invokevirtual 50	com/tencent/mm/svg/a:eOm	()Ljava/lang/Object;
+    //   8: getstatic 35	com/tencent/mm/svg/b:Hcv	Lcom/tencent/mm/svg/a;
+    //   11: invokevirtual 50	com/tencent/mm/svg/a:fdQ	()Ljava/lang/Object;
     //   14: checkcast 83	android/graphics/Matrix
     //   17: astore_1
     //   18: aload_1
@@ -168,7 +168,7 @@ final class b
     //   25: dup
     //   26: invokespecial 84	android/graphics/Matrix:<init>	()V
     //   29: astore_1
-    //   30: getstatic 35	com/tencent/mm/svg/b:FDs	Lcom/tencent/mm/svg/a;
+    //   30: getstatic 35	com/tencent/mm/svg/b:Hcv	Lcom/tencent/mm/svg/a;
     //   33: aload_0
     //   34: aload_1
     //   35: invokevirtual 60	com/tencent/mm/svg/a:a	(Landroid/os/Looper;Ljava/lang/Object;)V
@@ -206,8 +206,8 @@ final class b
     //   2: monitorenter
     //   3: ldc 88
     //   5: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 37	com/tencent/mm/svg/b:FDt	Lcom/tencent/mm/svg/a;
-    //   11: invokevirtual 50	com/tencent/mm/svg/a:eOm	()Ljava/lang/Object;
+    //   8: getstatic 37	com/tencent/mm/svg/b:Hcw	Lcom/tencent/mm/svg/a;
+    //   11: invokevirtual 50	com/tencent/mm/svg/a:fdQ	()Ljava/lang/Object;
     //   14: checkcast 90	android/graphics/Path
     //   17: astore_1
     //   18: aload_1
@@ -216,7 +216,7 @@ final class b
     //   25: dup
     //   26: invokespecial 91	android/graphics/Path:<init>	()V
     //   29: astore_1
-    //   30: getstatic 37	com/tencent/mm/svg/b:FDt	Lcom/tencent/mm/svg/a;
+    //   30: getstatic 37	com/tencent/mm/svg/b:Hcw	Lcom/tencent/mm/svg/a;
     //   33: aload_0
     //   34: aload_1
     //   35: invokevirtual 60	com/tencent/mm/svg/a:a	(Landroid/os/Looper;Ljava/lang/Object;)V

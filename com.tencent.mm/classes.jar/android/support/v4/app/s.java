@@ -32,11 +32,11 @@ public final class s
   
   public static final class a
   {
-    final x[] Ei;
-    final x[] Ej;
-    boolean Ek;
-    boolean El = true;
-    final int Em;
+    final x[] Fg;
+    final x[] Fh;
+    boolean Fi;
+    boolean Fj = true;
+    final int Fk;
     public PendingIntent actionIntent;
     public int icon;
     final Bundle mExtras;
@@ -56,11 +56,11 @@ public final class s
       for (;;)
       {
         this.mExtras = paramBundle;
-        this.Ei = paramArrayOfx1;
-        this.Ej = paramArrayOfx2;
-        this.Ek = paramBoolean1;
-        this.Em = paramInt2;
-        this.El = paramBoolean2;
+        this.Fg = paramArrayOfx1;
+        this.Fh = paramArrayOfx2;
+        this.Fi = paramBoolean1;
+        this.Fk = paramInt2;
+        this.Fj = paramBoolean2;
         return;
         paramBundle = new Bundle();
       }
@@ -70,7 +70,7 @@ public final class s
   public static final class b
     extends s.f
   {
-    private CharSequence Er;
+    private CharSequence Fp;
     
     public b() {}
     
@@ -83,57 +83,57 @@ public final class s
     {
       if (Build.VERSION.SDK_INT >= 16)
       {
-        paramr = new Notification.BigTextStyle(paramr.dL()).setBigContentTitle(this.Fk).bigText(this.Er);
-        if (this.Fm) {
-          paramr.setSummaryText(this.Fl);
+        paramr = new Notification.BigTextStyle(paramr.dS()).setBigContentTitle(this.Gi).bigText(this.Fp);
+        if (this.Gk) {
+          paramr.setSummaryText(this.Gj);
         }
       }
     }
     
     public final b e(CharSequence paramCharSequence)
     {
-      this.Er = s.c.j(paramCharSequence);
+      this.Fp = s.c.j(paramCharSequence);
       return this;
     }
   }
   
   public static final class c
   {
-    CharSequence EA;
-    int EB;
-    boolean EC = true;
-    boolean ED;
-    s.f EE;
-    CharSequence EF;
-    CharSequence[] EG;
-    int EH;
-    int EI;
-    boolean EJ;
-    String EK;
-    boolean EL;
-    String EM;
-    public boolean EN = false;
-    boolean EO;
-    boolean EP;
-    public String EQ;
-    Notification ER;
-    RemoteViews ES;
-    RemoteViews ET;
-    RemoteViews EU;
-    int EV = 0;
-    String EW;
-    int EX = 0;
-    public Notification EY = new Notification();
+    boolean FA = true;
+    boolean FB;
+    s.f FC;
+    CharSequence FD;
+    CharSequence[] FE;
+    int FF;
+    int FG;
+    boolean FH;
+    String FI;
+    boolean FJ;
+    String FK;
+    public boolean FL = false;
+    boolean FM;
+    boolean FN;
+    public String FO;
+    Notification FP;
+    RemoteViews FQ;
+    RemoteViews FR;
+    RemoteViews FS;
+    int FT = 0;
+    String FU;
+    int FV = 0;
+    public Notification FW = new Notification();
     @Deprecated
-    public ArrayList<String> EZ;
-    public ArrayList<s.a> Es = new ArrayList();
-    ArrayList<s.a> Et = new ArrayList();
-    CharSequence Eu;
-    CharSequence Ev;
-    public PendingIntent Ew;
-    PendingIntent Ex;
-    RemoteViews Ey;
-    Bitmap Ez;
+    public ArrayList<String> FX;
+    public ArrayList<s.a> Fq = new ArrayList();
+    ArrayList<s.a> Fr = new ArrayList();
+    CharSequence Fs;
+    CharSequence Ft;
+    public PendingIntent Fu;
+    PendingIntent Fv;
+    RemoteViews Fw;
+    Bitmap Fx;
+    CharSequence Fy;
+    int Fz;
     public String mChannelId;
     public int mColor = 0;
     public Context mContext;
@@ -152,10 +152,10 @@ public final class s
     {
       this.mContext = paramContext;
       this.mChannelId = paramString;
-      this.EY.when = System.currentTimeMillis();
-      this.EY.audioStreamType = -1;
+      this.FW.when = System.currentTimeMillis();
+      this.FW.audioStreamType = -1;
       this.mPriority = 0;
-      this.EZ = new ArrayList();
+      this.FX = new ArrayList();
     }
     
     protected static CharSequence j(CharSequence paramCharSequence)
@@ -175,29 +175,29 @@ public final class s
     
     public final c a(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent)
     {
-      this.Es.add(new s.a(paramInt, paramCharSequence, paramPendingIntent));
+      this.Fq.add(new s.a(paramInt, paramCharSequence, paramPendingIntent));
       return this;
     }
     
     public final c a(PendingIntent paramPendingIntent)
     {
-      this.Ew = paramPendingIntent;
+      this.Fu = paramPendingIntent;
       return this;
     }
     
     public final c a(s.a parama)
     {
-      this.Es.add(parama);
+      this.Fq.add(parama);
       return this;
     }
     
     public final c a(s.f paramf)
     {
-      if (this.EE != paramf)
+      if (this.FC != paramf)
       {
-        this.EE = paramf;
-        if (this.EE != null) {
-          this.EE.b(this);
+        this.FC = paramf;
+        if (this.FC != null) {
+          this.FC.b(this);
         }
       }
       return this;
@@ -205,27 +205,27 @@ public final class s
     
     public final c a(RemoteViews paramRemoteViews)
     {
-      this.EY.contentView = paramRemoteViews;
+      this.FW.contentView = paramRemoteViews;
       return this;
     }
     
     public final c as(int paramInt)
     {
-      this.EY.icon = paramInt;
+      this.FW.icon = paramInt;
       return this;
     }
     
     public final c b(int paramInt1, int paramInt2, boolean paramBoolean)
     {
-      this.EH = paramInt1;
-      this.EI = paramInt2;
-      this.EJ = paramBoolean;
+      this.FF = paramInt1;
+      this.FG = paramInt2;
+      this.FH = paramBoolean;
       return this;
     }
     
     public final c b(PendingIntent paramPendingIntent)
     {
-      this.EY.deleteIntent = paramPendingIntent;
+      this.FW.deleteIntent = paramPendingIntent;
       return this;
     }
     
@@ -241,7 +241,7 @@ public final class s
       }
       for (;;)
       {
-        this.Ez = ((Bitmap)localObject);
+        this.Fx = ((Bitmap)localObject);
         return this;
         label26:
         localObject = this.mContext.getResources();
@@ -262,24 +262,24 @@ public final class s
     
     public final c b(Uri paramUri)
     {
-      this.EY.sound = paramUri;
-      this.EY.audioStreamType = -1;
+      this.FW.sound = paramUri;
+      this.FW.audioStreamType = -1;
       if (Build.VERSION.SDK_INT >= 21) {
-        this.EY.audioAttributes = new AudioAttributes.Builder().setContentType(4).setUsage(5).build();
+        this.FW.audioAttributes = new AudioAttributes.Builder().setContentType(4).setUsage(5).build();
       }
       return this;
     }
     
     public final c b(RemoteViews paramRemoteViews)
     {
-      this.ES = paramRemoteViews;
+      this.FQ = paramRemoteViews;
       return this;
     }
     
     public final Notification build()
     {
       t localt = new t(this);
-      s.f localf = localt.Fn.EE;
+      s.f localf = localt.Gl.FC;
       if (localf != null) {
         localf.a(localt);
       }
@@ -289,8 +289,8 @@ public final class s
       }
       for (;;)
       {
-        if (localt.Fn.ES != null) {
-          ((Notification)localObject1).contentView = localt.Fn.ES;
+        if (localt.Gl.FQ != null) {
+          ((Notification)localObject1).contentView = localt.Gl.FQ;
         }
         int i = Build.VERSION.SDK_INT;
         i = Build.VERSION.SDK_INT;
@@ -303,9 +303,9 @@ public final class s
         {
           localObject2 = localt.mBuilder.build();
           localObject1 = localObject2;
-          if (localt.EX != 0)
+          if (localt.FV != 0)
           {
-            if ((((Notification)localObject2).getGroup() != null) && ((((Notification)localObject2).flags & 0x200) != 0) && (localt.EX == 2)) {
+            if ((((Notification)localObject2).getGroup() != null) && ((((Notification)localObject2).flags & 0x200) != 0) && (localt.FV == 2)) {
               t.b((Notification)localObject2);
             }
             localObject1 = localObject2;
@@ -315,7 +315,7 @@ public final class s
               if ((((Notification)localObject2).flags & 0x200) == 0)
               {
                 localObject1 = localObject2;
-                if (localt.EX == 1)
+                if (localt.FV == 1)
                 {
                   t.b((Notification)localObject2);
                   localObject1 = localObject2;
@@ -328,19 +328,19 @@ public final class s
         {
           localt.mBuilder.setExtras(localt.mExtras);
           localObject2 = localt.mBuilder.build();
-          if (localt.ES != null) {
-            ((Notification)localObject2).contentView = localt.ES;
+          if (localt.FQ != null) {
+            ((Notification)localObject2).contentView = localt.FQ;
           }
-          if (localt.ET != null) {
-            ((Notification)localObject2).bigContentView = localt.ET;
+          if (localt.FR != null) {
+            ((Notification)localObject2).bigContentView = localt.FR;
           }
-          if (localt.EU != null) {
-            ((Notification)localObject2).headsUpContentView = localt.EU;
+          if (localt.FS != null) {
+            ((Notification)localObject2).headsUpContentView = localt.FS;
           }
           localObject1 = localObject2;
-          if (localt.EX != 0)
+          if (localt.FV != 0)
           {
-            if ((((Notification)localObject2).getGroup() != null) && ((((Notification)localObject2).flags & 0x200) != 0) && (localt.EX == 2)) {
+            if ((((Notification)localObject2).getGroup() != null) && ((((Notification)localObject2).flags & 0x200) != 0) && (localt.FV == 2)) {
               t.b((Notification)localObject2);
             }
             localObject1 = localObject2;
@@ -350,7 +350,7 @@ public final class s
               if ((((Notification)localObject2).flags & 0x200) == 0)
               {
                 localObject1 = localObject2;
-                if (localt.EX == 1)
+                if (localt.FV == 1)
                 {
                   t.b((Notification)localObject2);
                   localObject1 = localObject2;
@@ -363,16 +363,16 @@ public final class s
         {
           localt.mBuilder.setExtras(localt.mExtras);
           localObject2 = localt.mBuilder.build();
-          if (localt.ES != null) {
-            ((Notification)localObject2).contentView = localt.ES;
+          if (localt.FQ != null) {
+            ((Notification)localObject2).contentView = localt.FQ;
           }
-          if (localt.ET != null) {
-            ((Notification)localObject2).bigContentView = localt.ET;
+          if (localt.FR != null) {
+            ((Notification)localObject2).bigContentView = localt.FR;
           }
           localObject1 = localObject2;
-          if (localt.EX != 0)
+          if (localt.FV != 0)
           {
-            if ((((Notification)localObject2).getGroup() != null) && ((((Notification)localObject2).flags & 0x200) != 0) && (localt.EX == 2)) {
+            if ((((Notification)localObject2).getGroup() != null) && ((((Notification)localObject2).flags & 0x200) != 0) && (localt.FV == 2)) {
               t.b((Notification)localObject2);
             }
             localObject1 = localObject2;
@@ -382,7 +382,7 @@ public final class s
               if ((((Notification)localObject2).flags & 0x200) == 0)
               {
                 localObject1 = localObject2;
-                if (localt.EX == 1)
+                if (localt.FV == 1)
                 {
                   t.b((Notification)localObject2);
                   localObject1 = localObject2;
@@ -393,19 +393,19 @@ public final class s
         }
         else if (Build.VERSION.SDK_INT >= 19)
         {
-          localObject1 = u.i(localt.Fo);
+          localObject1 = u.h(localt.Gm);
           if (localObject1 != null) {
             localt.mExtras.putSparseParcelableArray("android.support.actionExtras", (SparseArray)localObject1);
           }
           localt.mBuilder.setExtras(localt.mExtras);
           localObject2 = localt.mBuilder.build();
-          if (localt.ES != null) {
-            ((Notification)localObject2).contentView = localt.ES;
+          if (localt.FQ != null) {
+            ((Notification)localObject2).contentView = localt.FQ;
           }
           localObject1 = localObject2;
-          if (localt.ET != null)
+          if (localt.FR != null)
           {
-            ((Notification)localObject2).bigContentView = localt.ET;
+            ((Notification)localObject2).bigContentView = localt.FR;
             localObject1 = localObject2;
           }
         }
@@ -423,15 +423,15 @@ public final class s
             }
           }
           ((Bundle)localObject2).putAll(localBundle);
-          localObject2 = u.i(localt.Fo);
+          localObject2 = u.h(localt.Gm);
           if (localObject2 != null) {
             s.a((Notification)localObject1).putSparseParcelableArray("android.support.actionExtras", (SparseArray)localObject2);
           }
-          if (localt.ES != null) {
-            ((Notification)localObject1).contentView = localt.ES;
+          if (localt.FQ != null) {
+            ((Notification)localObject1).contentView = localt.FQ;
           }
-          if (localt.ET != null) {
-            ((Notification)localObject1).bigContentView = localt.ET;
+          if (localt.FR != null) {
+            ((Notification)localObject1).bigContentView = localt.FR;
           }
         }
         else
@@ -443,30 +443,30 @@ public final class s
     
     public final c c(PendingIntent paramPendingIntent)
     {
-      this.Ex = paramPendingIntent;
+      this.Fv = paramPendingIntent;
       f(128, true);
       return this;
     }
     
     public final c c(RemoteViews paramRemoteViews)
     {
-      this.ET = paramRemoteViews;
+      this.FR = paramRemoteViews;
       return this;
     }
     
     public final c d(RemoteViews paramRemoteViews)
     {
-      this.EU = paramRemoteViews;
+      this.FS = paramRemoteViews;
       return this;
     }
     
-    public final c dN()
+    public final c dU()
     {
       f(2, true);
       return this;
     }
     
-    public final c dO()
+    public final c dV()
     {
       this.mPriority = 1;
       return this;
@@ -474,7 +474,7 @@ public final class s
     
     public final c f(CharSequence paramCharSequence)
     {
-      this.Eu = j(paramCharSequence);
+      this.Fs = j(paramCharSequence);
       return this;
     }
     
@@ -482,23 +482,17 @@ public final class s
     {
       if (paramBoolean)
       {
-        localNotification = this.EY;
+        localNotification = this.FW;
         localNotification.flags |= paramInt;
         return;
       }
-      Notification localNotification = this.EY;
+      Notification localNotification = this.FW;
       localNotification.flags &= (paramInt ^ 0xFFFFFFFF);
-    }
-    
-    public final c g(long paramLong)
-    {
-      this.EY.when = paramLong;
-      return this;
     }
     
     public final c g(CharSequence paramCharSequence)
     {
-      this.Ev = j(paramCharSequence);
+      this.Ft = j(paramCharSequence);
       return this;
     }
     
@@ -512,39 +506,45 @@ public final class s
     
     public final c h(CharSequence paramCharSequence)
     {
-      this.EF = j(paramCharSequence);
+      this.FD = j(paramCharSequence);
+      return this;
+    }
+    
+    public final c i(long paramLong)
+    {
+      this.FW.when = paramLong;
       return this;
     }
     
     public final c i(CharSequence paramCharSequence)
     {
-      this.EY.tickerText = j(paramCharSequence);
+      this.FW.tickerText = j(paramCharSequence);
       return this;
     }
     
-    public final c t(String paramString)
+    public final c u(String paramString)
     {
-      this.EQ = paramString;
+      this.FO = paramString;
       return this;
     }
   }
   
   public static abstract class f
   {
-    protected s.c Fj;
-    CharSequence Fk;
-    CharSequence Fl;
-    boolean Fm = false;
+    protected s.c Gh;
+    CharSequence Gi;
+    CharSequence Gj;
+    boolean Gk = false;
     
     public void a(r paramr) {}
     
     public final void b(s.c paramc)
     {
-      if (this.Fj != paramc)
+      if (this.Gh != paramc)
       {
-        this.Fj = paramc;
-        if (this.Fj != null) {
-          this.Fj.a(this);
+        this.Gh = paramc;
+        if (this.Gh != null) {
+          this.Gh.a(this);
         }
       }
     }
@@ -552,8 +552,8 @@ public final class s
     public final Notification build()
     {
       Notification localNotification = null;
-      if (this.Fj != null) {
-        localNotification = this.Fj.build();
+      if (this.Gh != null) {
+        localNotification = this.Gh.build();
       }
       return localNotification;
     }

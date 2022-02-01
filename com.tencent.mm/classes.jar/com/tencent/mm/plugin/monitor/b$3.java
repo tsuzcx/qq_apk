@@ -6,7 +6,7 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.report.kvdata.BDStatusInfo;
 import com.tencent.mm.plugin.report.kvdata.TableInfo;
 import com.tencent.mm.plugin.report.kvdata.log_14375;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -30,29 +30,29 @@ final class b$3
       locallog_14375.type_ = 1;
       localObject3 = new BDStatusInfo();
       locallog_14375.dbStatusInfo_ = ((BDStatusInfo)localObject3);
-      g.afC();
-      l1 = new com.tencent.mm.vfs.e(g.afB().afi()).length();
+      g.agS();
+      l1 = new com.tencent.mm.vfs.e(g.agR().agy()).length();
       ((BDStatusInfo)localObject3).mmDBSize_ = l1;
       Object localObject1 = new StringBuilder();
-      g.afC();
-      l2 = new com.tencent.mm.vfs.e(g.afB().cachePath + "SnsMicroMsg.db").length();
+      g.agS();
+      l2 = new com.tencent.mm.vfs.e(g.agR().cachePath + "SnsMicroMsg.db").length();
       ((BDStatusInfo)localObject3).snsDBSize_ = l2;
       localObject1 = new StringBuilder();
-      g.afC();
-      l3 = new com.tencent.mm.vfs.e(g.afB().cachePath + "enFavorite.db").length();
+      g.agS();
+      l3 = new com.tencent.mm.vfs.e(g.agR().cachePath + "enFavorite.db").length();
       ((BDStatusInfo)localObject3).favDBSize_ = l3;
-      b.a(this.tMX, 4, l1, this.tMZ);
-      b.a(this.tMX, 128, l3, this.tNa);
+      b.a(this.uVA, 4, l1, this.uVC);
+      b.a(this.uVA, 128, l3, this.uVD);
       localObject1 = l1 + ";" + l2 + ";" + l3;
-      g.afC();
-      localh = g.afB().gdb;
+      g.agS();
+      localh = g.agR().ghH;
       if ((localh == null) || (!localh.isOpen()))
       {
-        ad.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo db is not open!");
-        com.tencent.mm.plugin.report.service.h.vKh.a(13778, false, false, true, new Object[] { Integer.valueOf(1), Integer.valueOf(1), localObject1 });
-        com.tencent.mm.plugin.report.service.h.vKh.c(14375, locallog_14375);
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(418L, 3L, 1L, true);
-        ad.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo result[%s]", new Object[] { localObject1 });
+        ac.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo db is not open!");
+        com.tencent.mm.plugin.report.service.h.wUl.a(13778, false, false, true, new Object[] { Integer.valueOf(1), Integer.valueOf(1), localObject1 });
+        com.tencent.mm.plugin.report.service.h.wUl.c(14375, locallog_14375);
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(418L, 3L, 1L, true);
+        ac.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo result[%s]", new Object[] { localObject1 });
         AppMethodBeat.o(51502);
         return;
       }
@@ -70,8 +70,8 @@ final class b$3
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SubCoreBaseMonitor", localException, "reportDBInfo err!", new Object[0]);
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(418L, 4L, 1L, true);
+      ac.printErrStackTrace("MicroMsg.SubCoreBaseMonitor", localException, "reportDBInfo err!", new Object[0]);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(418L, 4L, 1L, true);
       AppMethodBeat.o(51502);
       return;
     }
@@ -102,18 +102,18 @@ final class b$3
         ((TableInfo)localObject4).count_ = l2;
         ((LinkedList)localObject2).add(localObject4);
         if ("message".equals(str2)) {
-          b.a(this.tMX, 8, l2, this.tNb);
+          b.a(this.uVA, 8, l2, this.uVE);
         } else if ("rconversation".equals(str2)) {
-          b.a(this.tMX, 16, l2, this.tNc);
+          b.a(this.uVA, 16, l2, this.uVF);
         } else if ("rcontact".equals(str2)) {
-          b.a(this.tMX, 32, l2, this.tNd);
+          b.a(this.uVA, 32, l2, this.uVG);
         } else if ("chatroom".equals(str2)) {
-          b.a(this.tMX, 64, l2, this.tNe);
+          b.a(this.uVA, 64, l2, this.uVH);
         }
       }
       else
       {
-        ad.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo dump all table count %d last %d", new Object[] { Integer.valueOf(localArrayList.size()), Long.valueOf(System.currentTimeMillis() - l3) });
+        ac.i("MicroMsg.SubCoreBaseMonitor", "summerreportDBInfo dump all table count %d last %d", new Object[] { Integer.valueOf(localArrayList.size()), Long.valueOf(System.currentTimeMillis() - l3) });
         break;
       }
     }
@@ -121,7 +121,7 @@ final class b$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.monitor.b.3
  * JD-Core Version:    0.7.0.1
  */

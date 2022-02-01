@@ -62,7 +62,7 @@ public class SuccUnbindQQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.SuccUnbindQQ
  * JD-Core Version:    0.7.0.1
  */

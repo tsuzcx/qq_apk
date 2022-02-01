@@ -18,13 +18,13 @@ import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.model.b.c;
 import com.tencent.mm.plugin.sns.model.f;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.protocal.protobuf.bpk;
-import com.tencent.mm.protocal.protobuf.yk;
+import com.tencent.mm.protocal.protobuf.btz;
+import com.tencent.mm.protocal.protobuf.bub;
+import com.tencent.mm.protocal.protobuf.zf;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.storage.bc;
+import com.tencent.mm.storage.bf;
 import com.tencent.mm.ui.widget.QFadeImageView;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -32,25 +32,25 @@ import java.util.List;
 
 public final class ay
 {
-  public static int[] xBJ = { 0, 0, 1, 3, 6, 9 };
-  public static int[] xBK = { 2131296575 };
-  public static int[] xBL = { 2131296575, 2131296576, 2131296577 };
-  public static int[] xBM = { 2131296575, 2131296576, 2131296577, 2131296578, 2131296579, 2131296580 };
-  public static int[] xBN = { 2131296575, 2131296576, 2131296577, 2131296578, 2131296579, 2131296580, 2131296581, 2131296582, 2131296583 };
-  static double xBO = -1.0D;
-  static double xBP = -1.0D;
-  static double xBQ = -1.0D;
-  static double xBR = -1.0D;
-  static double xBS = -1.0D;
-  private static boolean xBU;
-  public static int xBV = -1;
+  public static int[] yOA = { 2131296575, 2131296576, 2131296577, 2131296578, 2131296579, 2131296580 };
+  public static int[] yOB = { 2131296575, 2131296576, 2131296577, 2131296578, 2131296579, 2131296580, 2131296581, 2131296582, 2131296583 };
+  static double yOC = -1.0D;
+  static double yOD = -1.0D;
+  static double yOE = -1.0D;
+  static double yOF = -1.0D;
+  static double yOG = -1.0D;
+  private static boolean yOI;
+  public static int yOJ = -1;
+  public static int[] yOx = { 0, 0, 1, 3, 6, 9 };
+  public static int[] yOy = { 2131296575 };
+  public static int[] yOz = { 2131296575, 2131296576, 2131296577 };
   private Context context;
-  private LinkedList<LinearLayout> xBT;
+  private LinkedList<LinearLayout> yOH;
   
   public ay(Context paramContext)
   {
     AppMethodBeat.i(98907);
-    this.xBT = new LinkedList();
+    this.yOH = new LinkedList();
     this.context = paramContext;
     if ((this.context instanceof Activity))
     {
@@ -59,50 +59,50 @@ public final class ay
       Point localPoint = new Point();
       localPoint.x = paramContext.widthPixels;
       localPoint.y = paramContext.heightPixels;
-      af.f(localPoint);
+      af.h(localPoint);
     }
-    if (1 == ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pwF, 0)) {}
+    if (1 == ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.qaU, 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      xBU = bool;
+      yOI = bool;
       if ((h.IS_FLAVOR_RED) || (h.DEBUG)) {
-        xBU = true;
+        yOI = true;
       }
       AppMethodBeat.o(98907);
       return;
     }
   }
   
-  private static void a(bpi parambpi, QFadeImageView paramQFadeImageView, int paramInt, bc parambc)
+  private static void a(btz parambtz, QFadeImageView paramQFadeImageView, int paramInt, bf parambf)
   {
     AppMethodBeat.i(98911);
-    af.dtr().b(parambpi, paramQFadeImageView, paramInt, parambc);
+    af.dHO().b(parambtz, paramQFadeImageView, paramInt, parambf);
     AppMethodBeat.o(98911);
   }
   
-  private static void a(bpi parambpi, QFadeImageView paramQFadeImageView, String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, bc parambc, int paramInt3, boolean paramBoolean2)
+  private static void a(btz parambtz, QFadeImageView paramQFadeImageView, String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, bf parambf, int paramInt3, boolean paramBoolean2)
   {
     AppMethodBeat.i(98914);
-    a(parambpi, paramQFadeImageView, paramString, paramInt1, paramInt2, paramBoolean1, parambc, paramInt3, paramBoolean2, new bpk());
+    a(parambtz, paramQFadeImageView, paramString, paramInt1, paramInt2, paramBoolean1, parambf, paramInt3, paramBoolean2, new bub());
     AppMethodBeat.o(98914);
   }
   
-  private static void a(bpi parambpi, QFadeImageView paramQFadeImageView, String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, bc parambc, int paramInt3, boolean paramBoolean2, bpk parambpk)
+  private static void a(btz parambtz, QFadeImageView paramQFadeImageView, String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, bf parambf, int paramInt3, boolean paramBoolean2, bub parambub)
   {
     AppMethodBeat.i(98913);
     if (paramQFadeImageView == null)
     {
-      ad.e("MicroMsg.SnsMultiLineImageLineMgr", "");
+      ac.e("MicroMsg.SnsMultiLineImageLineMgr", "");
       AppMethodBeat.o(98913);
       return;
     }
     aw localaw = new aw();
-    localaw.diQ = paramString;
+    localaw.dgl = paramString;
     localaw.index = 0;
     paramString = new ArrayList();
     paramString.add(paramQFadeImageView);
-    localaw.xzo = paramString;
-    localaw.xvU = paramBoolean1;
+    localaw.yMc = paramString;
+    localaw.yIK = paramBoolean1;
     localaw.position = paramInt2;
     paramQFadeImageView.setTag(localaw);
     double d2 = 0.0D;
@@ -110,41 +110,41 @@ public final class ay
     double d3;
     if ((paramInt3 == 10) && (paramBoolean2))
     {
-      af.dtr().c(parambpi, paramQFadeImageView, paramInt1, parambc);
-      if (parambpi.DMT != null)
+      af.dHO().c(parambtz, paramQFadeImageView, paramInt1, parambf);
+      if (parambtz.Fjk != null)
       {
-        d2 = parambpi.DMT.DNH;
-        d1 = parambpi.DMT.DNI;
+        d2 = parambtz.Fjk.FjY;
+        d1 = parambtz.Fjk.FjZ;
       }
       if ((d2 <= 0.0D) || (d1 <= 0.0D)) {
         break label437;
       }
-      double d4 = Math.min(xBP / d2, xBP / d1);
+      double d4 = Math.min(yOD / d2, yOD / d1);
       d3 = d2 * d4;
       d4 = d1 * d4;
       d1 = d4;
       d2 = d3;
-      if (d3 < xBQ)
+      if (d3 < yOE)
       {
-        d1 = 1.0D * xBQ / d3;
+        d1 = 1.0D * yOE / d3;
         d2 = d3 * d1;
         d1 = d4 * d1;
       }
       d3 = d1;
       d4 = d2;
-      if (d1 < xBQ)
+      if (d1 < yOE)
       {
-        d3 = 1.0D * xBQ / d1;
+        d3 = 1.0D * yOE / d1;
         d4 = d2 * d3;
         d3 = d1 * d3;
       }
       d1 = d4;
-      if (d4 > xBP) {
-        d1 = xBP;
+      if (d4 > yOD) {
+        d1 = yOD;
       }
       d2 = d3;
-      if (d3 > xBP) {
-        d2 = xBP;
+      if (d3 > yOD) {
+        d2 = yOD;
       }
       d3 = d1;
       label308:
@@ -156,26 +156,26 @@ public final class ay
       if (d2 < 1.0D) {
         d3 = 1.0D;
       }
-      if ((parambpk == null) || (parambpk.DNH <= 0.0F) || (parambpk.DNI <= 0.0F)) {
+      if ((parambub == null) || (parambub.FjY <= 0.0F) || (parambub.FjZ <= 0.0F)) {
         break label473;
       }
-      d1 = parambpk.DNH;
+      d1 = parambub.FjY;
     }
     label437:
     label473:
-    for (d2 = parambpk.DNI;; d2 = d3)
+    for (d2 = parambub.FjZ;; d2 = d3)
     {
       if ((paramQFadeImageView.getLayoutParams() instanceof FrameLayout.LayoutParams))
       {
-        parambpi = (FrameLayout.LayoutParams)paramQFadeImageView.getLayoutParams();
-        if ((parambpi.width == d1) && (parambpi.height == d2))
+        parambtz = (FrameLayout.LayoutParams)paramQFadeImageView.getLayoutParams();
+        if ((parambtz.width == d1) && (parambtz.height == d2))
         {
           AppMethodBeat.o(98913);
           return;
-          af.dtr().a(parambpi, paramQFadeImageView, paramInt1, parambc);
+          af.dHO().a(parambtz, paramQFadeImageView, paramInt1, parambf);
           break;
-          d3 = xBO;
-          d2 = xBO;
+          d3 = yOC;
+          d2 = yOC;
           break label308;
         }
         paramQFadeImageView.setLayoutParams(new FrameLayout.LayoutParams((int)d1, (int)d2));
@@ -185,62 +185,62 @@ public final class ay
     }
   }
   
-  private static void a(String paramString, SparseArray<bpi> paramSparseArray, SparseArray<View> paramSparseArray1, int paramInt1, bc parambc, int paramInt2)
+  private static void a(String paramString, SparseArray<btz> paramSparseArray, SparseArray<View> paramSparseArray1, int paramInt1, bf parambf, int paramInt2)
   {
     AppMethodBeat.i(98912);
-    af.dtr().a(paramString, paramSparseArray, paramSparseArray1, paramInt1, parambc, paramInt2);
+    af.dHO().a(paramString, paramSparseArray, paramSparseArray1, paramInt1, parambf, paramInt2);
     AppMethodBeat.o(98912);
   }
   
-  public static boolean dBA()
+  public static boolean dPX()
   {
     AppMethodBeat.i(98910);
-    ad.d("MicroMsg.SnsMultiLineImageLineMgr", "enableGroupDownload_cmd: %d.", new Object[] { Integer.valueOf(xBV) });
-    switch (xBV)
+    ac.d("MicroMsg.SnsMultiLineImageLineMgr", "enableGroupDownload_cmd: %d.", new Object[] { Integer.valueOf(yOJ) });
+    switch (yOJ)
     {
     default: 
       boolean bool = CdnLogic.allowBatchImageDownload();
-      ad.d("MicroMsg.SnsMultiLineImageLineMgr", "allowGroupDownload: %s, enableGroupDownload: %s.", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(xBU) });
-      if ((bool) && (xBU))
+      ac.d("MicroMsg.SnsMultiLineImageLineMgr", "allowGroupDownload: %s, enableGroupDownload: %s.", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(yOI) });
+      if ((bool) && (yOI))
       {
         AppMethodBeat.o(98910);
         return true;
       }
       break;
     case 1: 
-      ad.d("MicroMsg.SnsMultiLineImageLineMgr", "enforce group download.");
+      ac.d("MicroMsg.SnsMultiLineImageLineMgr", "enforce group download.");
       CdnLogic.setSnsImagePrivateProtocolAvalible(true);
       CdnLogic.setSnsImageStreamProtocolAvalible(true);
       AppMethodBeat.o(98910);
       return true;
     case 2: 
-      ad.d("MicroMsg.SnsMultiLineImageLineMgr", "enforce single download.");
+      ac.d("MicroMsg.SnsMultiLineImageLineMgr", "enforce single download.");
       AppMethodBeat.o(98910);
       return false;
     }
-    ad.i("MicroMsg.SnsMultiLineImageLineMgr", "groupDownloadDisable!!!");
+    ac.i("MicroMsg.SnsMultiLineImageLineMgr", "groupDownloadDisable!!!");
     AppMethodBeat.o(98910);
     return false;
   }
   
-  public final void a(PhotosContent paramPhotosContent, TimeLineObject paramTimeLineObject, String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bc parambc, boolean paramBoolean2)
+  public final void a(PhotosContent paramPhotosContent, TimeLineObject paramTimeLineObject, String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bf parambf, boolean paramBoolean2)
   {
     AppMethodBeat.i(98908);
-    int[] arrayOfInt = xBN;
+    int[] arrayOfInt = yOB;
     if ((paramInt2 == 2) || (paramInt2 == 10)) {
-      arrayOfInt = xBK;
+      arrayOfInt = yOy;
     }
     int i;
     for (;;)
     {
-      paramTimeLineObject = paramTimeLineObject.Etm.DaC;
-      if (xBO < 0.0D)
+      paramTimeLineObject = paramTimeLineObject.FQo.Etz;
+      if (yOC < 0.0D)
       {
-        xBO = BackwardSupportUtil.b.g(this.context, 160.0F);
-        xBP = BackwardSupportUtil.b.g(this.context, 200.0F);
-        xBQ = BackwardSupportUtil.b.g(this.context, 44.0F);
-        xBR = BackwardSupportUtil.b.g(this.context, 66.0F);
-        xBS = BackwardSupportUtil.b.g(this.context, 300.0F);
+        yOC = BackwardSupportUtil.b.g(this.context, 160.0F);
+        yOD = BackwardSupportUtil.b.g(this.context, 200.0F);
+        yOE = BackwardSupportUtil.b.g(this.context, 44.0F);
+        yOF = BackwardSupportUtil.b.g(this.context, 66.0F);
+        yOG = BackwardSupportUtil.b.g(this.context, 300.0F);
       }
       i = paramTimeLineObject.size();
       if (i != 0) {
@@ -249,16 +249,16 @@ public final class ay
       paramInt1 = 0;
       while (paramInt1 < arrayOfInt.length)
       {
-        af.dtr().eo(paramPhotosContent.No(paramInt1));
-        paramPhotosContent.No(paramInt1).setPosition(paramInt3);
+        af.dHO().eB(paramPhotosContent.Pr(paramInt1));
+        paramPhotosContent.Pr(paramInt1).setPosition(paramInt3);
         paramInt1 += 1;
       }
       if (paramInt2 == 3) {
-        arrayOfInt = xBL;
+        arrayOfInt = yOz;
       } else if (paramInt2 == 4) {
-        arrayOfInt = xBM;
+        arrayOfInt = yOA;
       } else if (paramInt2 == 5) {
-        arrayOfInt = xBN;
+        arrayOfInt = yOB;
       }
     }
     paramPhotosContent.setVisibility(8);
@@ -271,39 +271,39 @@ public final class ay
       i = 1;
       while (i < arrayOfInt.length)
       {
-        TagImageView localTagImageView = paramPhotosContent.No(i);
+        TagImageView localTagImageView = paramPhotosContent.Pr(i);
         localTagImageView.setVisibility(8);
-        af.dtr().eo(localTagImageView);
-        paramPhotosContent.No(i).setPosition(paramInt3);
+        af.dHO().eB(localTagImageView);
+        paramPhotosContent.Pr(i).setPosition(paramInt3);
         i += 1;
       }
-      paramPhotosContent.No(0).setVisibility(0);
-      a((bpi)paramTimeLineObject.get(0), paramPhotosContent.No(0), paramString, paramInt1, paramInt3, paramBoolean1, parambc, paramInt2, paramBoolean2);
+      paramPhotosContent.Pr(0).setVisibility(0);
+      a((btz)paramTimeLineObject.get(0), paramPhotosContent.Pr(0), paramString, paramInt1, paramInt3, paramBoolean1, parambf, paramInt2, paramBoolean2);
       AppMethodBeat.o(98908);
       return;
     }
     AppMethodBeat.o(98908);
   }
   
-  public final void a(PhotosContent paramPhotosContent, TimeLineObject paramTimeLineObject, String paramString1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, bc parambc, List<bpk> paramList, String paramString2)
+  public final void a(PhotosContent paramPhotosContent, TimeLineObject paramTimeLineObject, String paramString1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, bf parambf, List<bub> paramList, String paramString2)
   {
     AppMethodBeat.i(98909);
-    Object localObject = xBN;
+    Object localObject = yOB;
     if ((paramInt2 == 2) || (paramInt2 == 10) || (paramInt2 == 13)) {
-      localObject = xBK;
+      localObject = yOy;
     }
     LinkedList localLinkedList;
     int j;
     for (;;)
     {
-      localLinkedList = paramTimeLineObject.Etm.DaC;
-      if (xBO < 0.0D)
+      localLinkedList = paramTimeLineObject.FQo.Etz;
+      if (yOC < 0.0D)
       {
-        xBO = BackwardSupportUtil.b.g(this.context, 160.0F);
-        xBP = BackwardSupportUtil.b.g(this.context, 200.0F);
-        xBQ = BackwardSupportUtil.b.g(this.context, 44.0F);
-        xBR = BackwardSupportUtil.b.g(this.context, 66.0F);
-        xBS = BackwardSupportUtil.b.g(this.context, 300.0F);
+        yOC = BackwardSupportUtil.b.g(this.context, 160.0F);
+        yOD = BackwardSupportUtil.b.g(this.context, 200.0F);
+        yOE = BackwardSupportUtil.b.g(this.context, 44.0F);
+        yOF = BackwardSupportUtil.b.g(this.context, 66.0F);
+        yOG = BackwardSupportUtil.b.g(this.context, 300.0F);
       }
       j = localLinkedList.size();
       if (j != 0) {
@@ -312,23 +312,23 @@ public final class ay
       paramInt1 = 0;
       while (paramInt1 < localObject.length)
       {
-        af.dtr().eo(paramPhotosContent.No(paramInt1));
-        paramPhotosContent.No(paramInt1).setPosition(paramInt3);
+        af.dHO().eB(paramPhotosContent.Pr(paramInt1));
+        paramPhotosContent.Pr(paramInt1).setPosition(paramInt3);
         paramInt1 += 1;
       }
       if (paramInt2 == 3) {
-        localObject = xBL;
+        localObject = yOz;
       } else if (paramInt2 == 4) {
-        localObject = xBM;
+        localObject = yOA;
       } else if (paramInt2 == 5) {
-        localObject = xBN;
+        localObject = yOB;
       }
     }
     paramPhotosContent.setVisibility(8);
     AppMethodBeat.o(98909);
     return;
     label235:
-    paramPhotosContent.setImageViewWidth(af.dtE());
+    paramPhotosContent.setImageViewWidth(af.dIc());
     paramPhotosContent.setVisibility(0);
     int i;
     if (j == 1)
@@ -336,28 +336,28 @@ public final class ay
       i = 1;
       while (i < localObject.length)
       {
-        paramTimeLineObject = paramPhotosContent.No(i);
+        paramTimeLineObject = paramPhotosContent.Pr(i);
         paramTimeLineObject.setVisibility(8);
-        af.dtr().eo(paramTimeLineObject);
-        paramPhotosContent.No(i).setPosition(paramInt3);
+        af.dHO().eB(paramTimeLineObject);
+        paramPhotosContent.Pr(i).setPosition(paramInt3);
         i += 1;
       }
-      paramPhotosContent.No(0).setVisibility(0);
+      paramPhotosContent.Pr(0).setVisibility(0);
       if ((paramList != null) && (paramList.size() > 0))
       {
-        a((bpi)localLinkedList.get(0), paramPhotosContent.No(0), paramString1, paramInt1, paramInt3, paramBoolean2, parambc, paramInt2, false, (bpk)paramList.get(0));
+        a((btz)localLinkedList.get(0), paramPhotosContent.Pr(0), paramString1, paramInt1, paramInt3, paramBoolean2, parambf, paramInt2, false, (bub)paramList.get(0));
         AppMethodBeat.o(98909);
         return;
       }
-      a((bpi)localLinkedList.get(0), paramPhotosContent.No(0), paramString1, paramInt1, paramInt3, paramBoolean2, parambc, paramInt2, false);
+      a((btz)localLinkedList.get(0), paramPhotosContent.Pr(0), paramString1, paramInt1, paramInt3, paramBoolean2, parambf, paramInt2, false);
       AppMethodBeat.o(98909);
       return;
     }
-    if (!dBA()) {}
+    if (!dPX()) {}
     for (paramTimeLineObject = new b.c(paramString2, j);; paramTimeLineObject = null)
     {
       aw localaw;
-      bpi localbpi;
+      btz localbtz;
       if (j == 4)
       {
         paramList = new ArrayList();
@@ -367,25 +367,25 @@ public final class ay
         i = 3;
         if (paramInt2 >= 0)
         {
-          localObject = paramPhotosContent.No(paramInt2);
+          localObject = paramPhotosContent.Pr(paramInt2);
           ((TagImageView)localObject).setPosition(paramInt3);
           if ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 3) || (paramInt2 == 4))
           {
             ((TagImageView)localObject).setVisibility(0);
             paramList.add(localObject);
             localaw = new aw();
-            localaw.diQ = paramString1;
+            localaw.dgl = paramString1;
             localaw.index = i;
-            localaw.xzo = paramList;
-            localaw.xvU = paramBoolean2;
+            localaw.yMc = paramList;
+            localaw.yIK = paramBoolean2;
             localaw.position = paramInt3;
             ((TagImageView)localObject).setTag(localaw);
-            if ((paramBoolean1) || (!dBA()))
+            if ((paramBoolean1) || (!dPX()))
             {
-              localbpi = (bpi)localLinkedList.get(localaw.index);
-              af.dtp().a(localbpi.Id, paramTimeLineObject);
-              af.dtp().aop(localbpi.Id);
-              a(localbpi, (QFadeImageView)localObject, paramInt1, parambc);
+              localbtz = (btz)localLinkedList.get(localaw.index);
+              af.dHM().a(localbtz.Id, paramTimeLineObject);
+              af.dHM().atB(localbtz.Id);
+              a(localbtz, (QFadeImageView)localObject, paramInt1, parambf);
             }
             localSparseArray1.put(localaw.index, localLinkedList.get(localaw.index));
             localSparseArray2.put(localaw.index, localObject);
@@ -396,11 +396,11 @@ public final class ay
             paramInt2 -= 1;
             break;
             ((TagImageView)localObject).setVisibility(8);
-            af.dtr().eo((View)localObject);
+            af.dHO().eB((View)localObject);
           }
         }
-        if ((!paramBoolean1) && (dBA()) && (localSparseArray1.size() > 0)) {
-          a(paramString2, localSparseArray1, localSparseArray2, paramInt1, parambc, j);
+        if ((!paramBoolean1) && (dPX()) && (localSparseArray1.size() > 0)) {
+          a(paramString2, localSparseArray1, localSparseArray2, paramInt1, parambf, j);
         }
         AppMethodBeat.o(98909);
         return;
@@ -411,25 +411,25 @@ public final class ay
       paramInt2 = localObject.length - 1;
       if (paramInt2 >= 0)
       {
-        localObject = paramPhotosContent.No(paramInt2);
+        localObject = paramPhotosContent.Pr(paramInt2);
         ((TagImageView)localObject).setPosition(paramInt3);
         if (paramInt2 < localLinkedList.size())
         {
           ((TagImageView)localObject).setVisibility(0);
           paramList.add(localObject);
           localaw = new aw();
-          localaw.diQ = paramString1;
+          localaw.dgl = paramString1;
           localaw.index = paramInt2;
-          localaw.xzo = paramList;
-          localaw.xvU = paramBoolean2;
+          localaw.yMc = paramList;
+          localaw.yIK = paramBoolean2;
           localaw.position = paramInt3;
           ((TagImageView)localObject).setTag(localaw);
-          if ((paramBoolean1) || (!dBA()))
+          if ((paramBoolean1) || (!dPX()))
           {
-            localbpi = (bpi)localLinkedList.get(localaw.index);
-            af.dtp().a(localbpi.Id, paramTimeLineObject);
-            af.dtp().aop(localbpi.Id);
-            a(localbpi, (QFadeImageView)localObject, paramInt1, parambc);
+            localbtz = (btz)localLinkedList.get(localaw.index);
+            af.dHM().a(localbtz.Id, paramTimeLineObject);
+            af.dHM().atB(localbtz.Id);
+            a(localbtz, (QFadeImageView)localObject, paramInt1, parambf);
           }
           localSparseArray1.put(localaw.index, localLinkedList.get(localaw.index));
           localSparseArray2.put(localaw.index, localObject);
@@ -439,11 +439,11 @@ public final class ay
           paramInt2 -= 1;
           break;
           ((TagImageView)localObject).setVisibility(8);
-          af.dtr().eo((View)localObject);
+          af.dHO().eB((View)localObject);
         }
       }
-      if ((!paramBoolean1) && (dBA()) && (localSparseArray1.size() > 0)) {
-        a(paramString2, localSparseArray1, localSparseArray2, paramInt1, parambc, j);
+      if ((!paramBoolean1) && (dPX()) && (localSparseArray1.size() > 0)) {
+        a(paramString2, localSparseArray1, localSparseArray2, paramInt1, parambf, j);
       }
       AppMethodBeat.o(98909);
       return;

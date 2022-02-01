@@ -1,63 +1,127 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.widget.TextView.BufferType;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.b;
-import com.tencent.mm.bc.t;
-import com.tencent.mm.g.c.du;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.c;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.pluginsdk.ui.span.g;
+import com.tencent.mm.pluginsdk.ui.span.n;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.ui.widget.MMNeat7extView;
 import com.tencent.neattextview.textview.view.NeatTextView;
 
-final class at
-  implements as.a
+public final class at
+  extends c
 {
-  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.d.a parama1, bl parambl)
+  private au Iph;
+  private ar Ipi;
+  private av Ipj;
+  private be Ipk;
+  
+  public at()
   {
-    AppMethodBeat.i(37379);
-    parama = (as.b)parama;
-    parama.GPj.aq(parambl.field_content);
-    parama.GPj.setTag(new bi(parambl, parama1.eZb(), paramInt, null, '\000'));
-    Bundle localBundle = new Bundle();
-    localBundle.putString("chatroom_name", parama1.getTalkerUserName());
-    localBundle.putLong("msg_id", parambl.field_msgId);
-    if ((parambl.field_flag & 0x8) != 0)
+    AppMethodBeat.i(37376);
+    this.Iph = new au();
+    this.Ipi = new ar();
+    this.Ipj = new av();
+    this.Ipk = new be();
+    AppMethodBeat.o(37376);
+  }
+  
+  public final View a(LayoutInflater paramLayoutInflater, View paramView)
+  {
+    AppMethodBeat.i(37377);
+    View localView;
+    if (paramView != null)
     {
-      parama.GPj.a(k.a(parama1.GzJ.getContext(), parambl.field_content, (int)parama.GPj.getTextSize(), false, localBundle), TextView.BufferType.SPANNABLE);
-      parama.GPj.setClickable(true);
-      parambl = t.azZ().yR(parama1.getTalkerUserName());
-      az.arV();
-      paramInt = ((Integer)c.afk().get(12311, Integer.valueOf(-2))).intValue();
-      if (((parambl == null) || (parambl.hoW == -2)) && ((parambl != null) || (paramInt == -2))) {
-        break label291;
-      }
-      parama.GPj.setTextColor(parama1.GzJ.getContext().getResources().getColor(2131100151));
-      parama.GPj.setBackground(parama1.GzJ.getContext().getResources().getDrawable(2131231583));
+      localView = paramView;
+      if (paramView.getTag() != null) {}
+    }
+    else
+    {
+      localView = paramLayoutInflater.inflate(2131493474, null);
+      paramLayoutInflater = new b();
+      paramLayoutInflater.sSS = localView;
+      paramLayoutInflater.fAz = ((TextView)localView.findViewById(2131298178));
+      paramLayoutInflater.Ipl = ((MMNeat7extView)localView.findViewById(2131298073));
+      paramLayoutInflater.Ipl.setOnTouchListener(new g(paramLayoutInflater.Ipl, new n(paramLayoutInflater.Ipl.getContext())));
+      localView.setTag(paramLayoutInflater);
+    }
+    AppMethodBeat.o(37377);
+    return localView;
+  }
+  
+  public final void a(c.a parama, int paramInt, a parama1, bo parambo, String paramString)
+  {
+    AppMethodBeat.i(37378);
+    if (parambo.getType() == 10002) {
+      paramString = this.Ipi;
     }
     for (;;)
     {
-      parama.GPj.invalidate();
-      AppMethodBeat.o(37379);
+      paramString.b(parama, paramInt, parama1, parambo);
+      AppMethodBeat.o(37378);
       return;
-      parama.GPj.a(k.a(parama1.GzJ.getContext(), parambl.field_content, (int)parama.GPj.getTextSize(), true, localBundle), TextView.BufferType.SPANNABLE);
-      break;
-      label291:
-      parama.GPj.setTextColor(ao.aD(parama1.GzJ.getContext(), 2130968586));
-      parama.GPj.setBackground(parama1.GzJ.getContext().getResources().getDrawable(2131231582));
+      if (parambo.getType() == 570425393) {
+        paramString = this.Ipj;
+      } else if (parambo.getType() == 603979825) {
+        paramString = this.Ipk;
+      } else {
+        paramString = this.Iph;
+      }
     }
+  }
+  
+  public final boolean a(ContextMenu paramContextMenu, View paramView, bo parambo)
+  {
+    return false;
+  }
+  
+  public final boolean a(MenuItem paramMenuItem, a parama, bo parambo)
+  {
+    return false;
+  }
+  
+  public final boolean b(View paramView, a parama, bo parambo)
+  {
+    return false;
+  }
+  
+  public final boolean bb(int paramInt, boolean paramBoolean)
+  {
+    return (paramInt == 10000) || (paramInt == 10002) || (paramInt == 570425393) || (paramInt == 64) || (paramInt == 603979825);
+  }
+  
+  protected final boolean fqt()
+  {
+    return false;
+  }
+  
+  public final boolean fqu()
+  {
+    return false;
+  }
+  
+  static abstract interface a
+  {
+    public abstract void b(c.a parama, int paramInt, a parama1, bo parambo);
+  }
+  
+  final class b
+    extends c.a
+  {
+    NeatTextView Ipl;
+    View sSS;
+    
+    b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.at
  * JD-Core Version:    0.7.0.1
  */

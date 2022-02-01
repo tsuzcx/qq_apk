@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.appbrand.appcache;
 import android.text.TextUtils;
 import com.tencent.luggage.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.d;
 import com.tencent.mm.plugin.appbrand.appstorage.FileStructStat;
 import com.tencent.mm.plugin.appbrand.appstorage.IWxaFileSystemWithModularizing;
 import com.tencent.mm.plugin.appbrand.appstorage.j;
 import com.tencent.mm.plugin.appbrand.appstorage.l;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.d;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,38 +27,38 @@ public final class az
   extends com.tencent.mm.plugin.appbrand.appstorage.i
   implements IWxaFileSystemWithModularizing
 {
-  private final r iNZ;
-  private Map<String, Long> iOa;
+  private final r joh;
+  private Map<String, Long> joi;
   
   public az(q paramq)
   {
     AppMethodBeat.i(178529);
-    this.iOa = new HashMap();
+    this.joi = new HashMap();
     Assert.assertTrue(paramq instanceof r);
-    this.iNZ = ((r)paramq);
+    this.joh = ((r)paramq);
     AppMethodBeat.o(178529);
   }
   
-  private l Ed(String paramString)
+  private l Ig(String paramString)
   {
     AppMethodBeat.i(178533);
-    if (!this.iNZ.DR(paramString))
+    if (!this.joh.HU(paramString))
     {
-      paramString = l.iSw;
+      paramString = l.jsH;
       AppMethodBeat.o(178533);
       return paramString;
     }
-    paramString = l.iSq;
+    paramString = l.jsB;
     AppMethodBeat.o(178533);
     return paramString;
   }
   
-  public final boolean Eb(String paramString)
+  public final boolean Ie(String paramString)
   {
     AppMethodBeat.i(178531);
     try
     {
-      this.iNZ.DS(paramString);
+      this.joh.HV(paramString);
       AppMethodBeat.o(178531);
       return true;
     }
@@ -69,19 +69,19 @@ public final class az
     return false;
   }
   
-  public final l Ec(String paramString)
+  public final l If(String paramString)
   {
     AppMethodBeat.i(178532);
-    l locall = Ed(paramString);
-    if (locall == l.iSw)
+    l locall = Ig(paramString);
+    if (locall == l.jsH)
     {
       if (paramString.length() == 0)
       {
-        paramString = l.iSw;
+        paramString = l.jsH;
         AppMethodBeat.o(178532);
         return paramString;
       }
-      paramString = m.EV(paramString);
+      paramString = m.IY(paramString);
       if (paramString.substring(paramString.length() - 1).equals("/")) {
         break label138;
       }
@@ -90,14 +90,14 @@ public final class az
     label138:
     for (;;)
     {
-      Iterator localIterator = this.iNZ.aPA().iterator();
+      Iterator localIterator = this.joh.aWs().iterator();
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-      } while (!bt.nullAsNil((String)localIterator.next()).startsWith(paramString));
-      for (paramString = l.iSq;; paramString = locall)
+      } while (!bs.nullAsNil((String)localIterator.next()).startsWith(paramString));
+      for (paramString = l.jsB;; paramString = locall)
       {
         AppMethodBeat.o(178532);
         return paramString;
@@ -105,21 +105,21 @@ public final class az
     }
   }
   
-  public final l Ee(String paramString)
+  public final l Ih(String paramString)
   {
     AppMethodBeat.i(178535);
-    paramString = a(paramString, new com.tencent.mm.plugin.appbrand.aa.i());
+    paramString = a(paramString, new com.tencent.mm.plugin.appbrand.z.i());
     AppMethodBeat.o(178535);
     return paramString;
   }
   
-  public final l a(String paramString, long paramLong1, long paramLong2, com.tencent.mm.plugin.appbrand.aa.i<ByteBuffer> parami)
+  public final l a(String paramString, long paramLong1, long paramLong2, com.tencent.mm.plugin.appbrand.z.i<ByteBuffer> parami)
   {
     AppMethodBeat.i(178536);
-    InputStream localInputStream = this.iNZ.DP(paramString);
+    InputStream localInputStream = this.joh.HS(paramString);
     if (localInputStream == null)
     {
-      paramString = l.iSw;
+      paramString = l.jsH;
       AppMethodBeat.o(178536);
       return paramString;
     }
@@ -129,8 +129,8 @@ public final class az
     {
       try
       {
-        localObject = f(paramLong1, paramLong2, localInputStream.available());
-        l locall = l.iSq;
+        localObject = g(paramLong1, paramLong2, localInputStream.available());
+        l locall = l.jsB;
         if (localObject != locall) {
           return localObject;
         }
@@ -146,7 +146,7 @@ public final class az
         if ((i == 0) || (!(localInputStream instanceof a))) {
           continue;
         }
-        ((ByteBuffer)localObject).put(((a)localInputStream).cjb);
+        ((ByteBuffer)localObject).put(((a)localInputStream).cfX);
         ((ByteBuffer)localObject).rewind();
         parami.value = localObject;
         if (paramString.startsWith("/")) {
@@ -160,16 +160,16 @@ public final class az
             continue;
           }
         }
-        ad.e("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", "updateDirAccessTimeRecord: path = [%s] is illegal", new Object[] { paramString });
+        ac.e("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", "updateDirAccessTimeRecord: path = [%s] is illegal", new Object[] { paramString });
       }
       catch (Exception paramString)
       {
         Object localObject;
         long l;
         int i;
-        ad.printErrStackTrace("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", paramString, "readFile", new Object[0]);
-        bt.d(localInputStream);
-        paramString = l.iSr;
+        ac.printErrStackTrace("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", paramString, "readFile", new Object[0]);
+        bs.d(localInputStream);
+        paramString = l.jsC;
         AppMethodBeat.o(178536);
         return paramString;
         if (parami.equals("")) {
@@ -182,16 +182,16 @@ public final class az
         if (!parami.equals("")) {
           break label376;
         }
-        this.iOa.put("/", Long.valueOf(System.currentTimeMillis() / 1000L));
+        this.joi.put("/", Long.valueOf(System.currentTimeMillis() / 1000L));
         continue;
       }
       finally
       {
-        bt.d(localInputStream);
+        bs.d(localInputStream);
         AppMethodBeat.o(178536);
       }
-      paramString = l.iSq;
-      bt.d(localInputStream);
+      paramString = l.jsB;
+      bs.d(localInputStream);
       AppMethodBeat.o(178536);
       return paramString;
       i = 0;
@@ -199,29 +199,76 @@ public final class az
       ((ByteBuffer)localObject).put(ByteBuffer.wrap(d.a(localInputStream, paramLong1, l)));
       continue;
       label376:
-      this.iOa.put(parami + "/", Long.valueOf(System.currentTimeMillis() / 1000L));
+      this.joi.put(parami + "/", Long.valueOf(System.currentTimeMillis() / 1000L));
       continue;
-      ad.e("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", "updateDirAccessTimeRecord: path = [%s] is illegal", new Object[] { parami });
+      ac.e("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", "updateDirAccessTimeRecord: path = [%s] is illegal", new Object[] { parami });
     }
   }
   
-  public final l a(String paramString, com.tencent.mm.plugin.appbrand.aa.i<List<j>> parami)
+  public final l a(String paramString, FileStructStat paramFileStructStat)
+  {
+    AppMethodBeat.i(178538);
+    Object localObject = this.joh.HT(paramString);
+    if (localObject == null)
+    {
+      if (paramString.endsWith("/")) {
+        if (!paramString.startsWith("/")) {
+          break label143;
+        }
+      }
+      for (;;)
+      {
+        if (Ig(paramString) != l.jsH) {
+          break label156;
+        }
+        localObject = this.joh.HR(paramString);
+        if (localObject == null) {
+          break label156;
+        }
+        ((WxaPkg)localObject).aWW().fillAnother(paramFileStructStat);
+        paramFileStructStat.makeItIsDir();
+        paramFileStructStat.st_size = 0L;
+        paramString = (Long)this.joi.get(paramString);
+        if (paramString != null) {
+          paramFileStructStat.st_atime = paramString.longValue();
+        }
+        paramString = l.jsB;
+        AppMethodBeat.o(178538);
+        return paramString;
+        paramString = paramString + "/";
+        break;
+        label143:
+        paramString = "/".concat(String.valueOf(paramString));
+      }
+      label156:
+      paramString = l.jsH;
+      AppMethodBeat.o(178538);
+      return paramString;
+    }
+    ((q.a)localObject).jlW.aWW().fillAnother(paramFileStructStat);
+    paramFileStructStat.st_size = ((q.a)localObject).jlZ;
+    paramString = l.jsB;
+    AppMethodBeat.o(178538);
+    return paramString;
+  }
+  
+  public final l a(String paramString, com.tencent.mm.plugin.appbrand.z.i<List<j>> parami)
   {
     AppMethodBeat.i(178534);
-    if (Ed(paramString) == l.iSq)
+    if (Ig(paramString) == l.jsB)
     {
-      paramString = l.iSy;
+      paramString = l.jsJ;
       AppMethodBeat.o(178534);
       return paramString;
     }
-    String str1 = m.EV(paramString);
-    paramString = this.iNZ.aPA();
+    String str1 = m.IY(paramString);
+    paramString = this.joh.aWs();
     String str2 = Pattern.quote(str1);
     Iterator localIterator = paramString.iterator();
     while (localIterator.hasNext())
     {
       paramString = (String)localIterator.next();
-      if (bt.nullAsNil(paramString).startsWith(str1))
+      if (bs.nullAsNil(paramString).startsWith(str1))
       {
         paramString = paramString.replaceFirst(str2, "");
         if (paramString.split("/").length <= 1)
@@ -240,81 +287,34 @@ public final class az
     }
     if (parami.value == null)
     {
-      paramString = l.iSw;
+      paramString = l.jsH;
       AppMethodBeat.o(178534);
       return paramString;
     }
-    paramString = l.iSq;
+    paramString = l.jsB;
     AppMethodBeat.o(178534);
     return paramString;
   }
   
-  public final l a(String paramString, FileStructStat paramFileStructStat)
-  {
-    AppMethodBeat.i(178538);
-    Object localObject = this.iNZ.DQ(paramString);
-    if (localObject == null)
-    {
-      if (paramString.endsWith("/")) {
-        if (!paramString.startsWith("/")) {
-          break label143;
-        }
-      }
-      for (;;)
-      {
-        if (Ed(paramString) != l.iSw) {
-          break label156;
-        }
-        localObject = this.iNZ.DO(paramString);
-        if (localObject == null) {
-          break label156;
-        }
-        ((WxaPkg)localObject).aQe().fillAnother(paramFileStructStat);
-        paramFileStructStat.makeItIsDir();
-        paramFileStructStat.st_size = 0L;
-        paramString = (Long)this.iOa.get(paramString);
-        if (paramString != null) {
-          paramFileStructStat.st_atime = paramString.longValue();
-        }
-        paramString = l.iSq;
-        AppMethodBeat.o(178538);
-        return paramString;
-        paramString = paramString + "/";
-        break;
-        label143:
-        paramString = "/".concat(String.valueOf(paramString));
-      }
-      label156:
-      paramString = l.iSw;
-      AppMethodBeat.o(178538);
-      return paramString;
-    }
-    ((q.a)localObject).iLP.aQe().fillAnother(paramFileStructStat);
-    paramFileStructStat.st_size = ((q.a)localObject).iLS;
-    paramString = l.iSq;
-    AppMethodBeat.o(178538);
-    return paramString;
-  }
-  
-  public final e ad(String paramString, boolean paramBoolean)
+  public final e ae(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(178539);
     if (!paramBoolean)
     {
-      if (Ee(paramString) == l.iSq) {}
+      if (Ih(paramString) == l.jsB) {}
       for (int i = 1; i != 0; i = 0)
       {
         AppMethodBeat.o(178539);
         return null;
       }
     }
-    paramString = this.iNZ.DQ(paramString);
+    paramString = this.joh.HT(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(178539);
       return null;
     }
-    paramString = z.a(paramString.iLP, paramString.fileName);
+    paramString = z.a(paramString.jlW, paramString.fileName);
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = new e(paramString);
@@ -325,33 +325,33 @@ public final class az
     return null;
   }
   
-  public final l b(String paramString, com.tencent.mm.plugin.appbrand.aa.i<ByteBuffer> parami)
+  public final l b(String paramString, com.tencent.mm.plugin.appbrand.z.i<ByteBuffer> parami)
   {
     AppMethodBeat.i(178537);
-    InputStream localInputStream = this.iNZ.DP(paramString);
+    InputStream localInputStream = this.joh.HS(paramString);
     if (localInputStream == null)
     {
-      paramString = l.iSw;
+      paramString = l.jsH;
       AppMethodBeat.o(178537);
       return paramString;
     }
     try
     {
       int i = localInputStream.available();
-      bt.d(localInputStream);
+      bs.d(localInputStream);
       paramString = a(paramString, 0L, i, parami);
       AppMethodBeat.o(178537);
       return paramString;
     }
     catch (IOException paramString)
     {
-      ad.printErrStackTrace("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", paramString, "readFile", new Object[0]);
-      paramString = l.iSr;
+      ac.printErrStackTrace("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", paramString, "readFile", new Object[0]);
+      paramString = l.jsC;
       return paramString;
     }
     finally
     {
-      bt.d(localInputStream);
+      bs.d(localInputStream);
       AppMethodBeat.o(178537);
     }
   }
@@ -361,10 +361,10 @@ public final class az
   public final WxaPkg.Info openReadPartialInfo(String paramString)
   {
     AppMethodBeat.i(178530);
-    paramString = this.iNZ.DQ(paramString);
+    paramString = this.joh.HT(paramString);
     if (paramString != null)
     {
-      paramString = paramString.aPB();
+      paramString = paramString.aWt();
       AppMethodBeat.o(178530);
       return paramString;
     }
@@ -375,13 +375,13 @@ public final class az
   public final void release()
   {
     AppMethodBeat.i(178540);
-    this.iNZ.close();
+    this.joh.close();
     AppMethodBeat.o(178540);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.az
  * JD-Core Version:    0.7.0.1
  */

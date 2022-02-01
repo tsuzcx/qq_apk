@@ -11,8 +11,8 @@ public final class a
   {
     super(paramActivity);
     AppMethodBeat.i(8785);
-    this.cad = b.class;
-    this.cag.J(com.tencent.mm.plugin.downloader_app.detail.a.d.bQW());
+    this.bXa = b.class;
+    this.bXd.A(com.tencent.mm.plugin.downloader_app.detail.a.d.bYl());
     AppMethodBeat.o(8785);
   }
 }

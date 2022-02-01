@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a
   implements b.a
 {
-  private final long aSz;
+  private final long aTs;
   private final int bitrate;
   private final long firstFramePosition;
   
@@ -16,30 +16,30 @@ final class a
     this.firstFramePosition = paramLong1;
     this.bitrate = paramInt;
     if (paramLong2 == -1L) {}
-    for (paramLong1 = -9223372036854775807L;; paramLong1 = M(paramLong2))
+    for (paramLong1 = -9223372036854775807L;; paramLong1 = N(paramLong2))
     {
-      this.aSz = paramLong1;
+      this.aTs = paramLong1;
       AppMethodBeat.o(92034);
       return;
     }
   }
   
-  public final long K(long paramLong)
+  public final long L(long paramLong)
   {
     AppMethodBeat.i(92035);
-    if (this.aSz == -9223372036854775807L)
+    if (this.aTs == -9223372036854775807L)
     {
       AppMethodBeat.o(92035);
       return 0L;
     }
-    long l = x.o(paramLong, this.aSz);
+    long l = x.l(paramLong, this.aTs);
     paramLong = this.firstFramePosition;
     l = l * this.bitrate / 8000000L;
     AppMethodBeat.o(92035);
     return l + paramLong;
   }
   
-  public final long M(long paramLong)
+  public final long N(long paramLong)
   {
     AppMethodBeat.i(92036);
     paramLong = Math.max(0L, paramLong - this.firstFramePosition) * 1000000L * 8L / this.bitrate;
@@ -49,12 +49,12 @@ final class a
   
   public final long getDurationUs()
   {
-    return this.aSz;
+    return this.aTs;
   }
   
-  public final boolean sH()
+  public final boolean sQ()
   {
-    return this.aSz != -9223372036854775807L;
+    return this.aTs != -9223372036854775807L;
   }
 }
 

@@ -10,30 +10,30 @@ import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.List;
 
 public final class c
   extends LinearLayout
 {
-  private View qlN;
-  public View qlO;
-  public View qlP;
-  private a qlQ;
-  private boolean qlR;
-  private boolean qlS;
-  private int qlT;
+  private View qUp;
+  public View qUq;
+  public View qUr;
+  private a qUs;
+  private boolean qUt;
+  private boolean qUu;
+  private int qUv;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(107522);
-    this.qlR = false;
-    this.qlS = false;
+    this.qUt = false;
+    this.qUu = false;
     setOrientation(1);
     paramContext = new LinearLayout.LayoutParams(-1, -2);
-    this.qlN = View.inflate(getContext(), 2131493972, null);
+    this.qUp = View.inflate(getContext(), 2131493972, null);
     View localView = View.inflate(getContext(), 2131493949, null);
     localView.findViewById(2131303002).setOnClickListener(new View.OnClickListener()
     {
@@ -42,23 +42,23 @@ public final class c
         AppMethodBeat.i(107520);
         if ((c.a(c.this) == 1) || (c.a(c.this) == 3))
         {
-          ad.i("MicroMsg.FavHeaderView", "click clear fav item");
+          ac.i("MicroMsg.FavHeaderView", "click clear fav item");
           if (c.b(c.this) != null) {
-            c.b(c.this).cjh();
+            c.b(c.this).cqO();
           }
         }
         AppMethodBeat.o(107520);
       }
     });
-    this.qlO = localView;
+    this.qUq = localView;
     localView = View.inflate(getContext(), 2131493970, null);
     localView.findViewById(2131299857).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(107521);
-        ad.i("MicroMsg.FavHeaderView", "click retry item");
-        paramAnonymousView = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cie();
+        ac.i("MicroMsg.FavHeaderView", "click retry item");
+        paramAnonymousView = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cpL();
         if ((paramAnonymousView == null) || (paramAnonymousView.isEmpty()))
         {
           AppMethodBeat.o(107521);
@@ -69,7 +69,7 @@ public final class c
         {
           com.tencent.mm.plugin.fav.a.g localg = (com.tencent.mm.plugin.fav.a.g)paramAnonymousView.next();
           if (!localg.isUploadFailed()) {
-            ad.w("MicroMsg.FavHeaderView", "item id is %d, status is not upload fail", new Object[] { Integer.valueOf(localg.field_id) });
+            ac.w("MicroMsg.FavHeaderView", "item id is %d, status is not upload fail", new Object[] { Integer.valueOf(localg.field_id) });
           } else {
             b.l(localg);
           }
@@ -79,63 +79,63 @@ public final class c
         AppMethodBeat.o(107521);
       }
     });
-    this.qlP = localView;
-    addView(this.qlN, new LinearLayout.LayoutParams(paramContext));
-    addView(this.qlO, new LinearLayout.LayoutParams(paramContext));
-    addView(this.qlP, new LinearLayout.LayoutParams(paramContext));
+    this.qUr = localView;
+    addView(this.qUp, new LinearLayout.LayoutParams(paramContext));
+    addView(this.qUq, new LinearLayout.LayoutParams(paramContext));
+    addView(this.qUr, new LinearLayout.LayoutParams(paramContext));
     AppMethodBeat.o(107522);
   }
   
-  private void Cv(int paramInt)
+  private void Dq(int paramInt)
   {
     AppMethodBeat.i(107524);
-    this.qlT = paramInt;
-    ad.i("MicroMsg.FavHeaderView", "showStatusBar status:".concat(String.valueOf(paramInt)));
+    this.qUv = paramInt;
+    ac.i("MicroMsg.FavHeaderView", "showStatusBar status:".concat(String.valueOf(paramInt)));
     if (paramInt == 0)
     {
-      this.qlP.setVisibility(8);
-      this.qlO.setVisibility(8);
+      this.qUr.setVisibility(8);
+      this.qUq.setVisibility(8);
       AppMethodBeat.o(107524);
       return;
     }
     if (paramInt == 1)
     {
-      if (!this.qlR) {
-        h.vKh.f(14109, new Object[] { Integer.valueOf(1) });
+      if (!this.qUt) {
+        h.wUl.f(14109, new Object[] { Integer.valueOf(1) });
       }
-      this.qlR = true;
-      this.qlP.setVisibility(8);
-      this.qlO.setVisibility(0);
-      this.qlO.findViewById(2131303006).setVisibility(0);
-      this.qlO.findViewById(2131303007).setVisibility(8);
+      this.qUt = true;
+      this.qUr.setVisibility(8);
+      this.qUq.setVisibility(0);
+      this.qUq.findViewById(2131303006).setVisibility(0);
+      this.qUq.findViewById(2131303007).setVisibility(8);
       AppMethodBeat.o(107524);
       return;
     }
     if (paramInt == 2)
     {
-      this.qlP.setVisibility(0);
-      this.qlO.setVisibility(8);
+      this.qUr.setVisibility(0);
+      this.qUq.setVisibility(8);
       AppMethodBeat.o(107524);
       return;
     }
     if (paramInt == 3)
     {
-      if (!this.qlS) {
-        h.vKh.f(14109, new Object[] { Integer.valueOf(0) });
+      if (!this.qUu) {
+        h.wUl.f(14109, new Object[] { Integer.valueOf(0) });
       }
-      this.qlS = true;
-      this.qlP.setVisibility(8);
-      this.qlO.setVisibility(0);
-      this.qlO.findViewById(2131303006).setVisibility(8);
-      this.qlO.findViewById(2131303007).setVisibility(0);
+      this.qUu = true;
+      this.qUr.setVisibility(8);
+      this.qUq.setVisibility(0);
+      this.qUq.findViewById(2131303006).setVisibility(8);
+      this.qUq.findViewById(2131303007).setVisibility(0);
     }
     AppMethodBeat.o(107524);
   }
   
-  public final void cjU()
+  public final void crB()
   {
     AppMethodBeat.i(107525);
-    List localList = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cie();
+    List localList = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cpL();
     long l;
     int i;
     if (localList != null)
@@ -145,29 +145,29 @@ public final class c
       for (i = 0; localIterator.hasNext(); i = 1) {
         l = b.a((com.tencent.mm.plugin.fav.a.g)localIterator.next()) + l;
       }
-      ad.i("MicroMsg.FavHeaderView", "triggerStatusBar uploadFailedItemList size:%d,totalSize:%d", new Object[] { Integer.valueOf(localList.size()), Long.valueOf(l) });
+      ac.i("MicroMsg.FavHeaderView", "triggerStatusBar uploadFailedItemList size:%d,totalSize:%d", new Object[] { Integer.valueOf(localList.size()), Long.valueOf(l) });
     }
     for (;;)
     {
       if (i != 0)
       {
-        if (l > b.chr())
+        if (l > b.coY())
         {
-          Cv(1);
+          Dq(1);
           AppMethodBeat.o(107525);
           return;
         }
-        Cv(2);
+        Dq(2);
         AppMethodBeat.o(107525);
         return;
       }
-      if (b.chu())
+      if (b.cpb())
       {
-        Cv(3);
+        Dq(3);
         AppMethodBeat.o(107525);
         return;
       }
-      Cv(0);
+      Dq(0);
       AppMethodBeat.o(107525);
       return;
       l = 0L;
@@ -175,10 +175,10 @@ public final class c
     }
   }
   
-  public final void kK(boolean paramBoolean)
+  public final void lo(boolean paramBoolean)
   {
     AppMethodBeat.i(107523);
-    View localView = this.qlN;
+    View localView = this.qUp;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -190,17 +190,17 @@ public final class c
   
   public final void setCleanFavSpace(a parama)
   {
-    this.qlQ = parama;
+    this.qUs = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cjh();
+    public abstract void cqO();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.c
  * JD-Core Version:    0.7.0.1
  */

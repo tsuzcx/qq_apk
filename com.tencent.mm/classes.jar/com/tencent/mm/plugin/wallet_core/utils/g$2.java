@@ -13,8 +13,8 @@ public final class g$2
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(71652);
-    if (this.sol.isShowing()) {
-      this.sol.dismiss();
+    if (this.twe.isShowing()) {
+      this.twe.dismiss();
     }
     AppMethodBeat.o(71652);
   }

@@ -2,29 +2,29 @@ package com.tencent.xweb.x5;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
-import com.tencent.xweb.q;
+import com.tencent.xweb.r;
 
 public final class g$a
-  implements q
+  implements r
 {
-  SslErrorHandler IRW;
+  SslErrorHandler KEs;
   
   public g$a(SslErrorHandler paramSslErrorHandler)
   {
-    this.IRW = paramSslErrorHandler;
+    this.KEs = paramSslErrorHandler;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153847);
-    this.IRW.cancel();
+    this.KEs.cancel();
     AppMethodBeat.o(153847);
   }
   
   public final void proceed()
   {
     AppMethodBeat.i(153846);
-    this.IRW.proceed();
+    this.KEs.proceed();
     AppMethodBeat.o(153846);
   }
 }

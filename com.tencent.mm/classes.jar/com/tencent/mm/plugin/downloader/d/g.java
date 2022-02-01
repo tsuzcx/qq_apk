@@ -4,23 +4,23 @@ import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.d.k;
 import com.tencent.mm.d.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.io.RandomAccessFile;
 
 public final class g
 {
-  private static final k cKc;
+  private static final k cHj;
   
   static
   {
     AppMethodBeat.i(88881);
-    cKc = new k(101010256L);
+    cHj = new k(101010256L);
     AppMethodBeat.o(88881);
   }
   
-  public static byte[] Sj(String paramString)
+  public static byte[] Wv(String paramString)
   {
     AppMethodBeat.i(88880);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -28,11 +28,11 @@ public final class g
       AppMethodBeat.o(88880);
       return null;
     }
-    RandomAccessFile localRandomAccessFile1 = i.cS(paramString, false);
+    RandomAccessFile localRandomAccessFile1 = i.cY(paramString, false);
     if (localRandomAccessFile1.length() == 0L)
     {
       localRandomAccessFile1.close();
-      ad.i("MicroMsg.Channel.ZipEocdCommentTool", "apk file length is zero");
+      ac.i("MicroMsg.Channel.ZipEocdCommentTool", "apk file length is zero");
       AppMethodBeat.o(88880);
       return null;
     }
@@ -41,8 +41,8 @@ public final class g
       try
       {
         paramString = new com.tencent.mm.vfs.e(paramString);
-        localRandomAccessFile2 = i.cS(q.B(paramString.mUri), false);
-        localRandomAccessFile2.seek(((Long)e.I(paramString).second).longValue() + 22L - 2L);
+        localRandomAccessFile2 = i.cY(q.B(paramString.mUri), false);
+        localRandomAccessFile2.seek(((Long)e.H(paramString).second).longValue() + 22L - 2L);
         paramString = new byte[2];
         localRandomAccessFile2.readFully(paramString);
         i = new l(paramString).value;
@@ -56,7 +56,7 @@ public final class g
       {
         RandomAccessFile localRandomAccessFile2;
         int i;
-        ad.e("MicroMsg.Channel.ZipEocdCommentTool", "readComment, error: %s", new Object[] { paramString.getMessage() });
+        ac.e("MicroMsg.Channel.ZipEocdCommentTool", "readComment, error: %s", new Object[] { paramString.getMessage() });
         paramString = null;
         continue;
       }
@@ -71,7 +71,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.g
  * JD-Core Version:    0.7.0.1
  */

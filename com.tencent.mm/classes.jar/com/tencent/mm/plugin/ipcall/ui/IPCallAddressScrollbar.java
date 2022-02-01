@@ -12,11 +12,11 @@ public class IPCallAddressScrollbar
     super(paramContext, paramAttributeSet);
   }
   
-  public final void Wa()
+  public final void WY()
   {
-    this.sGr = new String[] { "↑", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    this.sGp = 1.3F;
-    this.sGq = 66;
+    this.tNY = new String[] { "↑", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    this.tNW = 1.3F;
+    this.tNX = 66;
   }
   
   public int getToastLayoutId()
@@ -26,7 +26,7 @@ public class IPCallAddressScrollbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallAddressScrollbar
  * JD-Core Version:    0.7.0.1
  */

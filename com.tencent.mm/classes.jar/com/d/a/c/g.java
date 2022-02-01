@@ -6,14 +6,14 @@ public final class g<V>
   extends b
   implements f
 {
-  public transient V[] bXN;
-  private transient int[] bXU;
-  protected final f bXV = this;
+  private transient int[] bVC;
+  protected final f bVD = this;
+  public transient V[] bVv;
   
   private boolean a(h<V> paramh)
   {
-    int[] arrayOfInt = this.bXU;
-    Object[] arrayOfObject = this.bXN;
+    int[] arrayOfInt = this.bVC;
+    Object[] arrayOfObject = this.bVv;
     int j;
     for (int i = arrayOfInt.length;; i = j)
     {
@@ -33,7 +33,7 @@ public final class g<V>
   public static <V> V au(V paramV)
   {
     V ? = paramV;
-    if (paramV == n.bYi) {
+    if (paramV == n.bVQ) {
       ? = null;
     }
     return ?;
@@ -42,12 +42,12 @@ public final class g<V>
   public static boolean b(Object[] paramArrayOfObject, int paramInt)
   {
     paramArrayOfObject = paramArrayOfObject[paramInt];
-    return (paramArrayOfObject != null) && (paramArrayOfObject != n.bYh);
+    return (paramArrayOfObject != null) && (paramArrayOfObject != n.bVP);
   }
   
   private static boolean c(Object[] paramArrayOfObject, int paramInt)
   {
-    return paramArrayOfObject[paramInt] == n.bYh;
+    return paramArrayOfObject[paramInt] == n.bVP;
   }
   
   private static boolean d(Object[] paramArrayOfObject, int paramInt)
@@ -55,12 +55,12 @@ public final class g<V>
     return paramArrayOfObject[paramInt] == null;
   }
   
-  private int gD(int paramInt)
+  private int go(int paramInt)
   {
-    Object[] arrayOfObject = this.bXN;
-    int[] arrayOfInt = this.bXU;
+    Object[] arrayOfObject = this.bVv;
+    int[] arrayOfInt = this.bVC;
     int n = arrayOfInt.length;
-    int j = this.bXV.gB(paramInt) & 0x7FFFFFFF;
+    int j = this.bVD.gm(paramInt) & 0x7FFFFFFF;
     int i = j % n;
     if (d(arrayOfObject, i)) {}
     int k;
@@ -135,11 +135,11 @@ public final class g<V>
     return k;
   }
   
-  public final int[] As()
+  public final int[] Af()
   {
     int[] arrayOfInt1 = new int[size()];
-    int[] arrayOfInt2 = this.bXU;
-    Object[] arrayOfObject = this.bXN;
+    int[] arrayOfInt2 = this.bVC;
+    Object[] arrayOfObject = this.bVv;
     int i = arrayOfInt2.length;
     int j = 0;
     for (;;)
@@ -163,14 +163,14 @@ public final class g<V>
   
   protected final int capacity()
   {
-    return this.bXN.length;
+    return this.bVv.length;
   }
   
   public final void clear()
   {
     super.clear();
-    int[] arrayOfInt = this.bXU;
-    Object[] arrayOfObject = this.bXN;
+    int[] arrayOfInt = this.bVC;
+    Object[] arrayOfObject = this.bVv;
     int j;
     for (int i = arrayOfInt.length;; i = j)
     {
@@ -186,20 +186,20 @@ public final class g<V>
   public final V d(int paramInt, V paramV)
   {
     Object localObject = null;
-    int j = gD(paramInt);
+    int j = go(paramInt);
     int i = 1;
     if (j < 0)
     {
       j = -j - 1;
-      localObject = au(this.bXN[j]);
+      localObject = au(this.bVv[j]);
       i = 0;
     }
-    for (boolean bool = false;; bool = d(this.bXN, j))
+    for (boolean bool = false;; bool = d(this.bVv, j))
     {
-      this.bXU[j] = paramInt;
-      this.bXN[j] = paramV;
+      this.bVC[j] = paramInt;
+      this.bVv[j] = paramV;
       if (i != 0) {
-        bo(bool);
+        bn(bool);
       }
       return localObject;
     }
@@ -216,17 +216,63 @@ public final class g<V>
     return a(new a(paramObject));
   }
   
-  public final int gB(int paramInt)
+  public final V get(int paramInt)
+  {
+    paramInt = gn(paramInt);
+    if (paramInt < 0) {
+      return null;
+    }
+    return au(this.bVv[paramInt]);
+  }
+  
+  protected final int gi(int paramInt)
+  {
+    paramInt = super.gi(paramInt);
+    this.bVv = ((Object[])new Object[paramInt]);
+    this.bVC = new int[paramInt];
+    return paramInt;
+  }
+  
+  protected final void gj(int paramInt)
+  {
+    int i = this.bVC.length;
+    int[] arrayOfInt = this.bVC;
+    Object[] arrayOfObject = this.bVv;
+    this.bVC = new int[paramInt];
+    this.bVv = ((Object[])new Object[paramInt]);
+    paramInt = i;
+    for (;;)
+    {
+      i = paramInt - 1;
+      if (paramInt > 0)
+      {
+        if (b(arrayOfObject, i))
+        {
+          paramInt = arrayOfInt[i];
+          int j = go(paramInt);
+          this.bVC[j] = paramInt;
+          this.bVv[j] = arrayOfObject[i];
+          paramInt = i;
+        }
+      }
+      else {
+        return;
+      }
+      paramInt = i;
+    }
+  }
+  
+  public final int gm(int paramInt)
   {
     return paramInt;
   }
   
-  protected final int gC(int paramInt)
+  protected final int gn(int paramInt)
   {
-    int[] arrayOfInt = this.bXU;
-    Object[] arrayOfObject = this.bXN;
+    int[] arrayOfInt = this.bVC;
+    Object[] arrayOfObject = this.bVv;
     int k = arrayOfInt.length;
-    int m = 0x7FFFFFFF & this.bXV.gB(paramInt);
+    int m = 0x7FFFFFFF & this.bVD.gm(paramInt);
     int i = m % k;
     int j = i;
     if (!d(arrayOfObject, i)) {
@@ -265,52 +311,6 @@ public final class g<V>
     return paramInt;
   }
   
-  public final V get(int paramInt)
-  {
-    paramInt = gC(paramInt);
-    if (paramInt < 0) {
-      return null;
-    }
-    return au(this.bXN[paramInt]);
-  }
-  
-  protected final int gx(int paramInt)
-  {
-    paramInt = super.gx(paramInt);
-    this.bXN = ((Object[])new Object[paramInt]);
-    this.bXU = new int[paramInt];
-    return paramInt;
-  }
-  
-  protected final void gy(int paramInt)
-  {
-    int i = this.bXU.length;
-    int[] arrayOfInt = this.bXU;
-    Object[] arrayOfObject = this.bXN;
-    this.bXU = new int[paramInt];
-    this.bXN = ((Object[])new Object[paramInt]);
-    paramInt = i;
-    for (;;)
-    {
-      i = paramInt - 1;
-      if (paramInt > 0)
-      {
-        if (b(arrayOfObject, i))
-        {
-          paramInt = arrayOfInt[i];
-          int j = gD(paramInt);
-          this.bXU[j] = paramInt;
-          this.bXN[j] = arrayOfObject[i];
-          paramInt = i;
-        }
-      }
-      else {
-        return;
-      }
-      paramInt = i;
-    }
-  }
-  
   public final int hashCode()
   {
     b localb = new b();
@@ -320,25 +320,25 @@ public final class g<V>
   
   protected final void removeAt(int paramInt)
   {
-    this.bXN[paramInt] = n.bYh;
+    this.bVv[paramInt] = n.bVP;
     super.removeAt(paramInt);
   }
   
   static final class a<V>
     implements h<V>
   {
-    private final g<V> bXW;
+    private final g<V> bVE;
     
     a(g<V> paramg)
     {
-      this.bXW = paramg;
+      this.bVE = paramg;
     }
     
     public final boolean e(int paramInt, V paramV)
     {
-      if (this.bXW.gC(paramInt) >= 0)
+      if (this.bVE.gn(paramInt) >= 0)
       {
-        Object localObject = this.bXW.get(paramInt);
+        Object localObject = this.bVE.get(paramInt);
         if ((paramV == localObject) || ((paramV != null) && (paramV.equals(localObject)))) {}
         for (paramInt = 1; paramInt != 0; paramInt = 0) {
           return true;
@@ -357,7 +357,7 @@ public final class g<V>
     
     public final boolean e(int paramInt, V paramV)
     {
-      this.h += (g.this.bXV.gB(paramInt) ^ a.al(paramV));
+      this.h += (g.this.bVD.gm(paramInt) ^ a.al(paramV));
       return true;
     }
   }

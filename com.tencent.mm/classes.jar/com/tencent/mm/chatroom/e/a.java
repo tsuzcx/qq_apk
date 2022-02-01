@@ -1,19 +1,19 @@
 package com.tencent.mm.chatroom.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.c;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.c;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.model.cc.a;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
 
 public final class a
   implements cc.a
@@ -21,47 +21,47 @@ public final class a
   public final void a(f.a parama)
   {
     AppMethodBeat.i(12501);
-    cs localcs = parama.fTo;
+    cu localcu = parama.fXi;
     String str1;
     String str2;
-    bl localbl;
-    if (localcs.saz == 10002)
+    bo localbo;
+    if (localcu.tit == 10002)
     {
-      str1 = z.a(localcs.Cxz);
-      if (bt.isNullOrNil(str1))
+      str1 = z.a(localcu.DPV);
+      if (bs.isNullOrNil(str1))
       {
-        ad.w("MicroMsg.ChatroomAccessVerifySysCmdMsgListener", "msg content is null");
+        ac.w("MicroMsg.ChatroomAccessVerifySysCmdMsgListener", "msg content is null");
         AppMethodBeat.o(12501);
         return;
       }
-      str2 = z.a(localcs.Cxx);
-      localbl = ((k)g.ab(k.class)).cOI().aD(str2, localcs.uKZ);
-      if (localbl.field_msgId <= 0L) {
+      str2 = z.a(localcu.DPT);
+      localbo = ((k)g.ab(k.class)).dcr().aF(str2, localcu.vTQ);
+      if (localbo.field_msgId <= 0L) {
         break label247;
       }
     }
     label247:
     for (int i = 1;; i = 0)
     {
-      localbl.kX(localcs.uKZ);
-      localbl.kY(bi.y(str2, localcs.CreateTime));
-      localbl.setType(10002);
-      localbl.setContent(str1);
-      localbl.jV(0);
-      localbl.nY(str2);
-      localbl.mZ(localcs.CxC);
-      localbl.eMy();
-      bi.a(localbl, parama);
+      localbo.oz(localcu.vTQ);
+      localbo.oA(bi.z(str2, localcu.CreateTime));
+      localbo.setType(10002);
+      localbo.setContent(str1);
+      localbo.jT(0);
+      localbo.re(str2);
+      localbo.qf(localcu.DPY);
+      localbo.fcd();
+      bi.a(localbo, parama);
       if (i == 0)
       {
-        bi.u(localbl);
+        bi.u(localbo);
         AppMethodBeat.o(12501);
         return;
       }
-      ((k)g.ab(k.class)).cOI().b(localcs.uKZ, localbl);
+      ((k)g.ab(k.class)).dcr().b(localcu.vTQ, localbo);
       AppMethodBeat.o(12501);
       return;
-      ad.i("MicroMsg.ChatroomAccessVerifySysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(localcs.saz) });
+      ac.i("MicroMsg.ChatroomAccessVerifySysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(localcu.tit) });
       AppMethodBeat.o(12501);
       return;
     }
@@ -71,7 +71,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.e.a
  * JD-Core Version:    0.7.0.1
  */

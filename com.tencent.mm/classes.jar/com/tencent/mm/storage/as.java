@@ -1,250 +1,182 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import com.tencent.mm.storage.emotion.c;
-import com.tencent.mm.storage.emotion.e;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.vfs.i;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class as
+final class as
 {
-  public Comparator FyA;
-  public String Fyt;
-  private int Fyu;
-  public int Fyv;
-  HashMap<String, String> Fyw;
-  public HashMap<String, ArrayList<String>> Fyx;
-  public HashMap<String, String> Fyy;
-  public HashMap<String, ArrayList<a>> Fyz;
-  public boolean mInit;
+  protected final long GXp;
+  private ar GXq;
   
   public as()
   {
-    AppMethodBeat.i(104958);
-    this.mInit = false;
-    this.Fyu = 2;
-    this.Fyv = 32;
-    this.Fyw = new HashMap();
-    this.Fyx = new HashMap();
-    this.Fyy = new HashMap();
-    this.Fyz = new HashMap();
-    this.FyA = new Comparator() {};
-    AppMethodBeat.o(104958);
-  }
-  
-  public final String TD(String paramString)
-  {
-    AppMethodBeat.i(104961);
-    if ((this.Fyw != null) && (this.Fyw.containsKey(paramString)))
-    {
-      ad.i("MicroMsg.emoji.EmojiDescNewMgr", "getCurLangDesc: from map");
-      paramString = (String)this.Fyw.get(paramString);
-      AppMethodBeat.o(104961);
-      return paramString;
-    }
-    ad.i("MicroMsg.emoji.EmojiDescNewMgr", "getCurLangDesc: from db");
-    paramString = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().Fza.TD(paramString);
-    AppMethodBeat.o(104961);
-    return paramString;
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(104959);
-    if (this.Fyw != null) {
-      this.Fyw.clear();
-    }
-    if (this.Fyx != null) {
-      this.Fyx.clear();
-    }
-    if (this.Fyy != null) {
-      this.Fyy.clear();
-    }
-    if (this.Fyz != null) {
-      this.Fyz.clear();
-    }
-    AppMethodBeat.o(104959);
-  }
-  
-  public final void eLu()
-  {
-    AppMethodBeat.i(104960);
-    com.tencent.e.h.Iye.f(new Runnable()
-    {
-      public final void run()
+    AppMethodBeat.i(117134);
+    this.GXp = 86400L;
+    this.GXq = new ar();
+    Object localObject = new StringBuilder();
+    g.agS();
+    localObject = i.aU(g.agR().cachePath + "checkmsgid.ini", 0, -1);
+    if (!bs.cv((byte[])localObject)) {
+      try
       {
-        AppMethodBeat.i(104956);
-        long l = System.currentTimeMillis();
-        as localas = as.this;
-        localas.clear();
-        Object localObject3 = null;
-        Object localObject1 = null;
-        int i;
-        try
-        {
-          localObject4 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().Fzi.getAll();
-          if (localObject4 != null)
-          {
-            localObject1 = localObject4;
-            localObject3 = localObject4;
-            if (((Cursor)localObject4).moveToFirst())
-            {
-              localObject1 = localObject4;
-              localObject3 = localObject4;
-              int j = ((Cursor)localObject4).getCount();
-              i = 0;
-              while (i < j)
-              {
-                localObject1 = localObject4;
-                localObject3 = localObject4;
-                localObject7 = new com.tencent.mm.storage.emotion.g();
-                localObject1 = localObject4;
-                localObject3 = localObject4;
-                ((com.tencent.mm.storage.emotion.g)localObject7).convertFrom((Cursor)localObject4);
-                localObject1 = localObject4;
-                localObject3 = localObject4;
-                localObject5 = ((com.tencent.mm.storage.emotion.g)localObject7).field_desc;
-                localObject1 = localObject4;
-                localObject3 = localObject4;
-                if (!bt.isNullOrNil((String)localObject5))
-                {
-                  localObject1 = localObject4;
-                  localObject3 = localObject4;
-                  localObject5 = ((String)localObject5).toLowerCase();
-                  localObject1 = localObject4;
-                  localObject3 = localObject4;
-                  localas.Fyy.put(localObject5, ((com.tencent.mm.storage.emotion.g)localObject7).field_groupID);
-                  localObject1 = localObject4;
-                  localObject3 = localObject4;
-                  localObject6 = (ArrayList)localas.Fyx.get(((com.tencent.mm.storage.emotion.g)localObject7).field_groupID);
-                  localObject5 = localObject6;
-                  if (localObject6 == null)
-                  {
-                    localObject1 = localObject4;
-                    localObject3 = localObject4;
-                    localObject5 = new ArrayList();
-                  }
-                  localObject1 = localObject4;
-                  localObject3 = localObject4;
-                  ((ArrayList)localObject5).add(((com.tencent.mm.storage.emotion.g)localObject7).field_desc);
-                  localObject1 = localObject4;
-                  localObject3 = localObject4;
-                  localas.Fyx.put(((com.tencent.mm.storage.emotion.g)localObject7).field_groupID, localObject5);
-                }
-                localObject1 = localObject4;
-                localObject3 = localObject4;
-                ((Cursor)localObject4).moveToNext();
-                i += 1;
-              }
-            }
-          }
-          if (localObject4 != null) {
-            ((Cursor)localObject4).close();
-          }
+        this.GXq.parseFrom((byte[])localObject);
+        if (faU()) {
+          faT();
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            Object localObject4;
-            Object localObject7;
-            Object localObject5;
-            Object localObject6;
-            localObject3 = localObject1;
-            ad.e("MicroMsg.emoji.EmojiDescNewMgr", bt.m(localException));
-            if (localObject1 != null) {
-              ((Cursor)localObject1).close();
-            }
-          }
-        }
-        finally
-        {
-          if (localObject3 == null) {
-            break label602;
-          }
-          ((Cursor)localObject3).close();
-          AppMethodBeat.o(104956);
-        }
-        localObject4 = ac.eFu().toLowerCase();
-        localas.Fyt = ((String)localObject4);
-        localObject5 = aw.eLx().FyZ.eNi().iterator();
-        while (((Iterator)localObject5).hasNext())
-        {
-          localObject6 = (EmojiGroupInfo)((Iterator)localObject5).next();
-          localObject7 = aw.eLx().Fza.aJw(((EmojiGroupInfo)localObject6).field_productID).iterator();
-          while (((Iterator)localObject7).hasNext())
-          {
-            localObject3 = (com.tencent.mm.storage.emotion.d)((Iterator)localObject7).next();
-            localObject1 = ((com.tencent.mm.storage.emotion.d)localObject3).field_desc;
-            String str1 = ((com.tencent.mm.storage.emotion.d)localObject3).field_md5;
-            String str2 = ((com.tencent.mm.storage.emotion.d)localObject3).field_lang;
-            i = ((EmojiGroupInfo)localObject6).field_idx;
-            if ((!bt.isNullOrNil((String)localObject1)) && (!bt.isNullOrNil(str2)))
-            {
-              String str3 = ((String)localObject1).toLowerCase();
-              if (localas.Fyz.containsKey(str3))
-              {
-                localObject3 = (ArrayList)localas.Fyz.get(str3);
-                localObject1 = localObject3;
-                if (localObject3 == null) {
-                  localObject1 = new ArrayList();
-                }
-                ((ArrayList)localObject1).add(new as.a(localas, str1, i));
-              }
-              for (;;)
-              {
-                if (!str2.equals(localObject4)) {
-                  break label653;
-                }
-                localas.Fyw.put(str1, str3);
-                break;
-                label602:
-                ArrayList localArrayList = new ArrayList();
-                localArrayList.add(new as.a(localas, str1, i));
-                localas.Fyz.put(str3, localArrayList);
-              }
-              label653:
-              if ((str2.equals("default")) && (!localas.Fyw.containsKey(str1))) {
-                localas.Fyw.put(str1, str3);
-              }
-            }
-          }
-        }
-        ad.i("MicroMsg.emoji.EmojiDescNewMgr", "tryInit: %s, %s", new Object[] { Integer.valueOf(localas.Fyz.size()), Integer.valueOf(localas.Fyw.size()) });
-        as.this.mInit = true;
-        ad.i("MicroMsg.emoji.EmojiDescNewMgr", "cpan[newinit] all use time:%s", new Object[] { System.currentTimeMillis() - l });
-        AppMethodBeat.o(104956);
+        AppMethodBeat.o(117134);
+        return;
       }
-      
-      public final String toString()
+      catch (Exception localException)
       {
-        AppMethodBeat.i(104957);
-        String str = super.toString() + "|newinit";
-        AppMethodBeat.o(104957);
-        return str;
+        ac.w("MicroMsg.DelSvrIdMgr", "DelSvrIDs parse Error");
+        ac.e("MicroMsg.DelSvrIdMgr", "exception:%s", new Object[] { bs.m(localException) });
       }
-    }, "MicroMsg.emoji.EmojiDescNewMgr|newinit");
-    AppMethodBeat.o(104960);
+    }
+    AppMethodBeat.o(117134);
   }
   
-  public final class a
+  private void faT()
   {
-    int index;
-    public String md5;
-    
-    a(String paramString, int paramInt)
+    AppMethodBeat.i(117135);
+    ac.i("MicroMsg.DelSvrIdMgr", "summerdel toFile tid[%d] [%d, %d ,%d] stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.GXq.GXm.size()), Integer.valueOf(this.GXq.GXn.size()), Integer.valueOf(this.GXq.GXo.size()), bs.eWi() });
+    try
     {
-      this.md5 = paramString;
-      this.index = paramInt;
+      this.GXq.GXl.clear();
+      this.GXq.GXk.clear();
+      this.GXq.GXj.clear();
+      ar localar = new ar();
+      localar.GXm.addAll(this.GXq.GXm);
+      localar.GXn.addAll(this.GXq.GXn);
+      localar.GXo.addAll(this.GXq.GXo);
+      byte[] arrayOfByte = localar.toByteArray();
+      StringBuilder localStringBuilder = new StringBuilder();
+      g.agS();
+      i.f(g.agR().cachePath + "checkmsgid.ini", arrayOfByte, arrayOfByte.length);
+      int j = localar.GXm.size();
+      int k = localar.GXn.size();
+      int m = localar.GXo.size();
+      if (arrayOfByte == null) {}
+      for (int i = -1;; i = arrayOfByte.length)
+      {
+        ac.i("MicroMsg.DelSvrIdMgr", "summerdel toFile done [%d, %d, %d] data len[%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i) });
+        AppMethodBeat.o(117135);
+        return;
+      }
+      return;
     }
+    catch (Exception localException)
+    {
+      com.tencent.mm.plugin.report.e.wTc.idkeyStat(111L, 168L, 1L, false);
+      ac.printErrStackTrace("MicroMsg.DelSvrIdMgr", localException, "summerdel ", new Object[0]);
+      AppMethodBeat.o(117135);
+    }
+  }
+  
+  private boolean faU()
+  {
+    AppMethodBeat.i(117140);
+    ac.v("MicroMsg.DelSvrIdMgr", "checkOldData todayIndex:%d, t0Size:%d, t1Size:%d, t2Size:%d", new Object[] { Integer.valueOf(this.GXq.GXi), Integer.valueOf(this.GXq.GXm.size()), Integer.valueOf(this.GXq.GXn.size()), Integer.valueOf(this.GXq.GXo.size()) });
+    int i = (int)(bs.aNx() / 86400L);
+    int j = this.GXq.GXi;
+    this.GXq.GXi = i;
+    switch (i - j)
+    {
+    default: 
+      this.GXq.GXo.clear();
+      this.GXq.GXn.clear();
+      this.GXq.GXm.clear();
+      AppMethodBeat.o(117140);
+      return true;
+    case 0: 
+      AppMethodBeat.o(117140);
+      return false;
+    case 1: 
+      this.GXq.GXo = this.GXq.GXn;
+      this.GXq.GXn = this.GXq.GXm;
+      this.GXq.GXm.clear();
+      AppMethodBeat.o(117140);
+      return true;
+    }
+    this.GXq.GXo = this.GXq.GXm;
+    this.GXq.GXn.clear();
+    this.GXq.GXm.clear();
+    AppMethodBeat.o(117140);
+    return true;
+  }
+  
+  protected final boolean AP(long paramLong)
+  {
+    AppMethodBeat.i(117136);
+    if (faU()) {
+      faT();
+    }
+    if ((this.GXq.GXm.contains(Long.valueOf(paramLong))) || (this.GXq.GXn.contains(Long.valueOf(paramLong))) || (this.GXq.GXo.contains(Long.valueOf(paramLong))))
+    {
+      AppMethodBeat.o(117136);
+      return true;
+    }
+    AppMethodBeat.o(117136);
+    return false;
+  }
+  
+  protected final void E(List<Integer> paramList, List<Long> paramList1)
+  {
+    AppMethodBeat.i(117139);
+    ac.i("MicroMsg.DelSvrIdMgr", "add size:%d", new Object[] { Integer.valueOf(paramList.size()) });
+    faU();
+    int j = (int)(bs.aNx() / 86400L);
+    int i = 0;
+    while (i < paramList.size())
+    {
+      b(j, ((Integer)paramList.get(i)).intValue(), ((Long)paramList1.get(i)).longValue(), false);
+      i += 1;
+    }
+    faT();
+    AppMethodBeat.o(117139);
+  }
+  
+  protected final void b(int paramInt, long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(117138);
+    if (paramLong1 == 0L)
+    {
+      AppMethodBeat.o(117138);
+      return;
+    }
+    if (paramBoolean) {
+      faU();
+    }
+    paramInt -= (int)(paramLong2 / 86400L);
+    switch (paramInt)
+    {
+    default: 
+      ac.e("MicroMsg.DelSvrIdMgr", "should not add to thease lists, dayIndex:%d", new Object[] { Integer.valueOf(paramInt) });
+    }
+    for (;;)
+    {
+      if (paramBoolean) {
+        faT();
+      }
+      AppMethodBeat.o(117138);
+      return;
+      this.GXq.GXm.add(Long.valueOf(paramLong1));
+      continue;
+      this.GXq.GXn.add(Long.valueOf(paramLong1));
+      continue;
+      this.GXq.GXo.add(Long.valueOf(paramLong1));
+    }
+  }
+  
+  protected final void m(int paramInt, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(117137);
+    b(paramInt, paramLong1, paramLong2, true);
+    AppMethodBeat.o(117137);
   }
 }
 

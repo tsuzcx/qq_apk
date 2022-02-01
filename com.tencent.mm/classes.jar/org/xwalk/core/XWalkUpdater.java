@@ -13,14 +13,13 @@ import android.os.AsyncTask;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.XWebCoreContentProvider;
 import com.tencent.xweb.a;
-import com.tencent.xweb.r;
+import com.tencent.xweb.ai;
+import com.tencent.xweb.s;
 import com.tencent.xweb.util.BSpatch;
-import com.tencent.xweb.util.c;
 import com.tencent.xweb.util.d;
-import com.tencent.xweb.util.g;
 import com.tencent.xweb.util.h;
-import com.tencent.xweb.xwalk.o;
-import com.tencent.xweb.xwalk.updater.Scheduler.SchedulerConfig;
+import com.tencent.xweb.xwalk.p;
+import com.tencent.xweb.xwalk.updater.SchedulerConfig;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -86,18 +85,18 @@ public class XWalkUpdater
   public static boolean checkExtractResFileLengtgAndMd5(String paramString1, String paramString2, int paramInt)
   {
     // Byte code:
-    //   0: ldc 141
-    //   2: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 143	java/io/File
+    //   0: ldc 145
+    //   2: invokestatic 125	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 147	java/io/File
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 146	java/io/File:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 150	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore_3
     //   14: aload_3
-    //   15: invokevirtual 150	java/io/File:exists	()Z
+    //   15: invokevirtual 154	java/io/File:exists	()Z
     //   18: ifne +106 -> 124
     //   21: iload_2
-    //   22: invokestatic 156	org/xwalk/core/XWalkEnvironment:isTestVersion	(I)Z
+    //   22: invokestatic 160	org/xwalk/core/XWalkEnvironment:isTestVersion	(I)Z
     //   25: ifne +750 -> 775
     //   28: iload_2
     //   29: sipush 362
@@ -105,58 +104,58 @@ public class XWalkUpdater
     //   35: goto +740 -> 775
     //   38: iload_2
     //   39: ifeq +29 -> 68
-    //   42: ldc 81
-    //   44: ldc 158
+    //   42: ldc 85
+    //   44: ldc 162
     //   46: aload_0
-    //   47: invokestatic 164	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   50: invokevirtual 168	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   53: invokestatic 174	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
-    //   56: ldc 141
-    //   58: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   47: invokestatic 168	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   50: invokevirtual 172	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   53: invokestatic 178	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+    //   56: ldc 145
+    //   58: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: iconst_1
     //   62: ireturn
     //   63: iconst_0
     //   64: istore_2
     //   65: goto -27 -> 38
-    //   68: ldc2_w 175
-    //   71: invokestatic 182	com/tencent/xweb/util/g:xs	(J)V
-    //   74: ldc 81
-    //   76: ldc 184
+    //   68: ldc2_w 179
+    //   71: invokestatic 186	com/tencent/xweb/util/g:Cf	(J)V
+    //   74: ldc 85
+    //   76: ldc 188
     //   78: aload_0
-    //   79: invokestatic 164	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   82: invokevirtual 168	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   85: invokestatic 174	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
-    //   88: ldc 186
-    //   90: ldc 188
-    //   92: ldc 190
-    //   94: invokestatic 196	com/tencent/xweb/a:lW	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   97: invokevirtual 200	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   79: invokestatic 168	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   82: invokevirtual 172	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   85: invokestatic 178	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+    //   88: ldc 190
+    //   90: ldc 192
+    //   92: ldc 194
+    //   94: invokestatic 200	com/tencent/xweb/a:mx	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   97: invokevirtual 204	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   100: ifeq +17 -> 117
-    //   103: ldc 81
-    //   105: ldc 202
-    //   107: invokestatic 174	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
-    //   110: ldc 141
-    //   112: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   103: ldc 85
+    //   105: ldc 206
+    //   107: invokestatic 178	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+    //   110: ldc 145
+    //   112: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   115: iconst_1
     //   116: ireturn
-    //   117: ldc 141
-    //   119: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: ldc 145
+    //   119: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   122: iconst_0
     //   123: ireturn
-    //   124: new 204	java/io/FileInputStream
+    //   124: new 208	java/io/FileInputStream
     //   127: dup
     //   128: aload_3
-    //   129: invokespecial 207	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   129: invokespecial 211	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   132: astore 4
-    //   134: new 209	java/io/InputStreamReader
+    //   134: new 213	java/io/InputStreamReader
     //   137: dup
     //   138: aload 4
-    //   140: invokespecial 212	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   140: invokespecial 216	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   143: astore_3
-    //   144: new 214	java/io/BufferedReader
+    //   144: new 218	java/io/BufferedReader
     //   147: dup
     //   148: aload_3
-    //   149: invokespecial 217	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   149: invokespecial 221	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   152: astore_0
     //   153: aload_0
     //   154: astore 7
@@ -165,7 +164,7 @@ public class XWalkUpdater
     //   159: aload 4
     //   161: astore 5
     //   163: aload_0
-    //   164: invokevirtual 221	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   164: invokevirtual 225	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   167: astore 8
     //   169: aload 8
     //   171: ifnull +312 -> 483
@@ -178,7 +177,7 @@ public class XWalkUpdater
     //   185: aload 4
     //   187: astore 5
     //   189: aload 8
-    //   191: invokevirtual 224	java/lang/String:isEmpty	()Z
+    //   191: invokevirtual 228	java/lang/String:isEmpty	()Z
     //   194: ifne -41 -> 153
     //   197: aload_0
     //   198: astore 7
@@ -187,8 +186,8 @@ public class XWalkUpdater
     //   203: aload 4
     //   205: astore 5
     //   207: aload 8
-    //   209: ldc 226
-    //   211: invokevirtual 230	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   209: ldc 230
+    //   211: invokevirtual 234	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   214: astore 8
     //   216: aload 8
     //   218: ifnull -65 -> 153
@@ -215,7 +214,7 @@ public class XWalkUpdater
     //   255: aload 8
     //   257: iconst_0
     //   258: aaload
-    //   259: invokevirtual 224	java/lang/String:isEmpty	()Z
+    //   259: invokevirtual 228	java/lang/String:isEmpty	()Z
     //   262: ifne -109 -> 153
     //   265: aload 8
     //   267: iconst_1
@@ -230,7 +229,7 @@ public class XWalkUpdater
     //   282: aload 8
     //   284: iconst_1
     //   285: aaload
-    //   286: invokevirtual 224	java/lang/String:isEmpty	()Z
+    //   286: invokevirtual 228	java/lang/String:isEmpty	()Z
     //   289: ifne -136 -> 153
     //   292: aload_0
     //   293: astore 7
@@ -238,13 +237,13 @@ public class XWalkUpdater
     //   296: astore 6
     //   298: aload 4
     //   300: astore 5
-    //   302: new 143	java/io/File
+    //   302: new 147	java/io/File
     //   305: dup
     //   306: aload_1
     //   307: aload 8
     //   309: iconst_0
     //   310: aaload
-    //   311: invokespecial 232	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   311: invokespecial 236	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   314: astore 9
     //   316: aload_0
     //   317: astore 7
@@ -253,7 +252,7 @@ public class XWalkUpdater
     //   322: aload 4
     //   324: astore 5
     //   326: aload 9
-    //   328: invokestatic 238	com/tencent/xweb/util/d:C	(Ljava/io/File;)Ljava/lang/String;
+    //   328: invokestatic 242	com/tencent/xweb/util/d:C	(Ljava/io/File;)Ljava/lang/String;
     //   331: astore 10
     //   333: aload_0
     //   334: astore 7
@@ -265,7 +264,7 @@ public class XWalkUpdater
     //   345: aload 8
     //   347: iconst_1
     //   348: aaload
-    //   349: invokevirtual 200	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   349: invokevirtual 204	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   352: ifne -199 -> 153
     //   355: aload_0
     //   356: astore 7
@@ -273,27 +272,27 @@ public class XWalkUpdater
     //   359: astore 6
     //   361: aload 4
     //   363: astore 5
-    //   365: ldc 81
-    //   367: new 240	java/lang/StringBuilder
+    //   365: ldc 85
+    //   367: new 244	java/lang/StringBuilder
     //   370: dup
-    //   371: ldc 242
-    //   373: invokespecial 243	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   371: ldc 246
+    //   373: invokespecial 247	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   376: aload 8
     //   378: iconst_0
     //   379: aaload
-    //   380: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   383: ldc 249
-    //   385: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   380: invokevirtual 251	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   383: ldc 253
+    //   385: invokevirtual 251	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   388: aload 8
     //   390: iconst_1
     //   391: aaload
-    //   392: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   395: ldc 251
-    //   397: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: invokevirtual 251	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   395: ldc 255
+    //   397: invokevirtual 251	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   400: aload 10
-    //   402: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   405: invokevirtual 254	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   408: invokestatic 174	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+    //   402: invokevirtual 251	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   405: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   408: invokestatic 178	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
     //   411: aload_0
     //   412: astore 7
     //   414: aload_3
@@ -301,57 +300,57 @@ public class XWalkUpdater
     //   417: aload 4
     //   419: astore 5
     //   421: aload 9
-    //   423: invokevirtual 257	java/io/File:delete	()Z
+    //   423: invokevirtual 261	java/io/File:delete	()Z
     //   426: pop
     //   427: aload 4
-    //   429: invokevirtual 260	java/io/FileInputStream:close	()V
+    //   429: invokevirtual 264	java/io/FileInputStream:close	()V
     //   432: aload_3
-    //   433: invokevirtual 261	java/io/InputStreamReader:close	()V
+    //   433: invokevirtual 265	java/io/InputStreamReader:close	()V
     //   436: aload_0
-    //   437: invokevirtual 262	java/io/BufferedReader:close	()V
-    //   440: ldc 141
-    //   442: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   437: invokevirtual 266	java/io/BufferedReader:close	()V
+    //   440: ldc 145
+    //   442: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   445: iconst_0
     //   446: ireturn
     //   447: astore_1
-    //   448: ldc 81
-    //   450: ldc_w 264
-    //   453: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   448: ldc 85
+    //   450: ldc_w 268
+    //   453: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   456: goto -24 -> 432
     //   459: astore_1
-    //   460: ldc 81
-    //   462: ldc_w 271
-    //   465: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   460: ldc 85
+    //   462: ldc_w 275
+    //   465: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   468: goto -32 -> 436
     //   471: astore_0
-    //   472: ldc 81
-    //   474: ldc_w 273
-    //   477: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   472: ldc 85
+    //   474: ldc_w 277
+    //   477: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   480: goto -40 -> 440
     //   483: aload 4
-    //   485: invokevirtual 260	java/io/FileInputStream:close	()V
+    //   485: invokevirtual 264	java/io/FileInputStream:close	()V
     //   488: aload_3
-    //   489: invokevirtual 261	java/io/InputStreamReader:close	()V
+    //   489: invokevirtual 265	java/io/InputStreamReader:close	()V
     //   492: aload_0
-    //   493: invokevirtual 262	java/io/BufferedReader:close	()V
-    //   496: ldc 141
-    //   498: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   493: invokevirtual 266	java/io/BufferedReader:close	()V
+    //   496: ldc 145
+    //   498: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   501: iconst_1
     //   502: ireturn
     //   503: astore_1
-    //   504: ldc 81
-    //   506: ldc_w 264
-    //   509: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   504: ldc 85
+    //   506: ldc_w 268
+    //   509: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   512: goto -24 -> 488
     //   515: astore_1
-    //   516: ldc 81
-    //   518: ldc_w 271
-    //   521: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   516: ldc 85
+    //   518: ldc_w 275
+    //   521: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   524: goto -32 -> 492
     //   527: astore_0
-    //   528: ldc 81
-    //   530: ldc_w 273
-    //   533: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   528: ldc 85
+    //   530: ldc_w 277
+    //   533: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   536: goto -40 -> 496
     //   539: astore_1
     //   540: aconst_null
@@ -366,46 +365,46 @@ public class XWalkUpdater
     //   551: astore 6
     //   553: aload 4
     //   555: astore 5
-    //   557: ldc 81
-    //   559: new 240	java/lang/StringBuilder
+    //   557: ldc 85
+    //   559: new 244	java/lang/StringBuilder
     //   562: dup
-    //   563: ldc_w 275
-    //   566: invokespecial 243	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   563: ldc_w 279
+    //   566: invokespecial 247	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   569: aload_1
-    //   570: invokevirtual 278	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   573: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   576: invokevirtual 254	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   579: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   570: invokevirtual 282	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   573: invokevirtual 251	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   576: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   579: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   582: aload 4
     //   584: ifnull +8 -> 592
     //   587: aload 4
-    //   589: invokevirtual 260	java/io/FileInputStream:close	()V
+    //   589: invokevirtual 264	java/io/FileInputStream:close	()V
     //   592: aload_3
     //   593: ifnull +7 -> 600
     //   596: aload_3
-    //   597: invokevirtual 261	java/io/InputStreamReader:close	()V
+    //   597: invokevirtual 265	java/io/InputStreamReader:close	()V
     //   600: aload_0
     //   601: ifnull +7 -> 608
     //   604: aload_0
-    //   605: invokevirtual 262	java/io/BufferedReader:close	()V
-    //   608: ldc 141
-    //   610: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   605: invokevirtual 266	java/io/BufferedReader:close	()V
+    //   608: ldc 145
+    //   610: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   613: iconst_0
     //   614: ireturn
     //   615: astore_1
-    //   616: ldc 81
-    //   618: ldc_w 264
-    //   621: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   616: ldc 85
+    //   618: ldc_w 268
+    //   621: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   624: goto -32 -> 592
     //   627: astore_1
-    //   628: ldc 81
-    //   630: ldc_w 271
-    //   633: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   628: ldc 85
+    //   630: ldc_w 275
+    //   633: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   636: goto -36 -> 600
     //   639: astore_0
-    //   640: ldc 81
-    //   642: ldc_w 273
-    //   645: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   640: ldc 85
+    //   642: ldc_w 277
+    //   645: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   648: goto -40 -> 608
     //   651: astore_0
     //   652: aconst_null
@@ -417,33 +416,33 @@ public class XWalkUpdater
     //   659: aload 4
     //   661: ifnull +8 -> 669
     //   664: aload 4
-    //   666: invokevirtual 260	java/io/FileInputStream:close	()V
+    //   666: invokevirtual 264	java/io/FileInputStream:close	()V
     //   669: aload_3
     //   670: ifnull +7 -> 677
     //   673: aload_3
-    //   674: invokevirtual 261	java/io/InputStreamReader:close	()V
+    //   674: invokevirtual 265	java/io/InputStreamReader:close	()V
     //   677: aload_1
     //   678: ifnull +7 -> 685
     //   681: aload_1
-    //   682: invokevirtual 262	java/io/BufferedReader:close	()V
-    //   685: ldc 141
-    //   687: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   682: invokevirtual 266	java/io/BufferedReader:close	()V
+    //   685: ldc 145
+    //   687: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   690: aload_0
     //   691: athrow
     //   692: astore 4
-    //   694: ldc 81
-    //   696: ldc_w 264
-    //   699: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   694: ldc 85
+    //   696: ldc_w 268
+    //   699: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   702: goto -33 -> 669
     //   705: astore_3
-    //   706: ldc 81
-    //   708: ldc_w 271
-    //   711: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   706: ldc 85
+    //   708: ldc_w 275
+    //   711: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   714: goto -37 -> 677
     //   717: astore_1
-    //   718: ldc 81
-    //   720: ldc_w 273
-    //   723: invokestatic 269	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   718: ldc 85
+    //   720: ldc_w 277
+    //   723: invokestatic 273	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   726: goto -41 -> 685
     //   729: astore_0
     //   730: aconst_null
@@ -548,17 +547,17 @@ public class XWalkUpdater
   
   public static void clearLastTryEmebedVersion()
   {
-    AppMethodBeat.i(194732);
+    AppMethodBeat.i(208982);
     getSpForEmbedInstall("armeabi-v7a").edit().putInt("INSTALLED_EMBED_VERSION", -1).commit();
     getSpForEmbedInstall("arm64-v8a").edit().putInt("INSTALLED_EMBED_VERSION", -1).commit();
     XWalkEnvironment.addXWalkInitializeLog("EMBED_INSTALLER", "do clearLastTryEmebedVersion");
-    AppMethodBeat.o(194732);
+    AppMethodBeat.o(208982);
   }
   
   public static void doInstallFromEmebed()
   {
     i = -1;
-    AppMethodBeat.i(194735);
+    AppMethodBeat.i(208985);
     int j = getLastTryInstallVer(XWalkEnvironment.getRuntimeAbi());
     SharedPreferences localSharedPreferences = getSpForEmbedInstall(XWalkEnvironment.getRuntimeAbi());
     for (;;)
@@ -569,7 +568,7 @@ public class XWalkUpdater
       }
       catch (Exception localException2)
       {
-        XWalkUpdater.LibUpdateConfig localLibUpdateConfig;
+        LibUpdateConfig localLibUpdateConfig;
         continue;
         switch (i)
         {
@@ -582,13 +581,13 @@ public class XWalkUpdater
         if (XWalkEnvironment.getInstalledNewstVersion(XWalkEnvironment.getRuntimeAbi()) >= 0)
         {
           XWalkEnvironment.addXWalkInitializeLog("EMBED_INSTALLER", "install stopped this version too old ");
-          AppMethodBeat.o(194735);
+          AppMethodBeat.o(208985);
           return;
         }
         if (j == 0)
         {
           XWalkEnvironment.addXWalkInitializeLog("EMBED_INSTALLER", "install skip ,this version was tried");
-          AppMethodBeat.o(194735);
+          AppMethodBeat.o(208985);
           return;
         }
         XWalkEnvironment.addXWalkInitializeLog("EMBED_INSTALLER", "type:LIBabi:LIBversion:0verstion des:" + "1.0.0_from_lib" + "filename:" + "libxwebfullpack.so");
@@ -599,17 +598,17 @@ public class XWalkUpdater
             continue;
           }
           XWalkEnvironment.addXWalkInitializeLog("EMBED_INSTALLER", "not recongniezed install type");
-          AppMethodBeat.o(194735);
+          AppMethodBeat.o(208985);
           return;
         }
       }
       catch (Exception localException1)
       {
         i = 0;
-        g.r(903L, 128L, 1L);
+        com.tencent.xweb.util.g.r(903L, 128L, 1L);
         XWalkEnvironment.addXWalkInitializeLog("EMBEDED_INSTALLER", "install failed " + localException1.getMessage());
         localSharedPreferences.edit().putInt("INSTALLED_EMBED_VERSION", i).commit();
-        AppMethodBeat.o(194735);
+        AppMethodBeat.o(208985);
         return;
       }
       if (!"LIB".equals("LIB")) {
@@ -627,19 +626,19 @@ public class XWalkUpdater
       }
       i = 2;
       continue;
-      localLibUpdateConfig = new XWalkUpdater.LibUpdateConfig(0, "libxwebfullpack.so", "1");
+      localLibUpdateConfig = new LibUpdateConfig(0, "libxwebfullpack.so", "1");
     }
     for (;;)
     {
-      Object localObject1 = new XWalkUpdater.AssetsUpdateConfig(0, "libxwebfullpack.so", "1");
+      Object localObject1 = new AssetsUpdateConfig(0, "libxwebfullpack.so", "1");
       break;
-      localObject1 = new XWalkUpdater.HybridUpdateConfig(0, "libxwebfullpack.so", "1");
+      localObject1 = new HybridUpdateConfig(0, "libxwebfullpack.so", "1");
       break;
       if (!((EmbededUpdateConfig)localObject1).copySuc())
       {
-        g.r(903L, 126L, 1L);
+        com.tencent.xweb.util.g.r(903L, 126L, 1L);
         XWalkEnvironment.addXWalkInitializeLog("EMBED_INSTALLER", "copy failed");
-        AppMethodBeat.o(194735);
+        AppMethodBeat.o(208985);
         return;
       }
       ((EmbededUpdateConfig)localObject1).getDownloadPath();
@@ -647,9 +646,9 @@ public class XWalkUpdater
       localObject1 = onHandleFile((UpdateConfig)localObject1);
       if (((Integer)localObject1).intValue() == 0)
       {
-        g.r(903L, 127L, 1L);
-        r.init();
-        o.gG("finished", 0);
+        com.tencent.xweb.util.g.r(903L, 127L, 1L);
+        s.init();
+        p.gM("finished", 0);
         XWalkEnvironment.refreshAvailableVersion();
       }
       XWalkEnvironment.addXWalkInitializeLog("EMBEDED_INSTALLER", "install from embed ret code =  ".concat(String.valueOf(localObject1)));
@@ -675,8 +674,8 @@ public class XWalkUpdater
         if (generateOptDex(paramUpdateConfig.apkVer)) {
           break label180;
         }
-        g.xs(251L);
-        if (!"true".equalsIgnoreCase(a.lW("update_need_check_dex", "tools"))) {
+        com.tencent.xweb.util.g.Cf(251L);
+        if (!"true".equalsIgnoreCase(a.mx("update_need_check_dex", "tools"))) {
           break label180;
         }
         AppMethodBeat.o(155031);
@@ -694,7 +693,8 @@ public class XWalkUpdater
     label180:
     boolean bool = XWebCoreInfo.setVersionForAbi(paramUpdateConfig.apkVer, paramUpdateConfig.versionDetail, paramUpdateConfig.abi);
     XWalkInitializer.addXWalkInitializeLog("XWalkLib", "do update sucsess");
-    g.fsd();
+    com.tencent.xweb.util.g.fKG();
+    com.tencent.xweb.internal.c.aXL("CHECK_FILES_MD5_TIME_KEY");
     if (!bool)
     {
       XWalkInitializer.addXWalkInitializeLog("XWalkLib", "set version failed");
@@ -711,7 +711,7 @@ public class XWalkUpdater
     try
     {
       String str = XWalkEnvironment.getExtractedCoreDir(paramInt);
-      h.ba(XWalkEnvironment.getClassDexFilePath(paramInt), XWalkEnvironment.getOptimizedDexDir(paramInt), str);
+      h.bf(XWalkEnvironment.getClassDexFilePath(paramInt), XWalkEnvironment.getOptimizedDexDir(paramInt), str);
       AppMethodBeat.o(155032);
       return true;
     }
@@ -725,17 +725,17 @@ public class XWalkUpdater
   
   public static int getLastTryInstallVer(String paramString)
   {
-    AppMethodBeat.i(194734);
+    AppMethodBeat.i(208984);
     int i = getSpForEmbedInstall(paramString).getInt("INSTALLED_EMBED_VERSION", -1);
-    AppMethodBeat.o(194734);
+    AppMethodBeat.o(208984);
     return i;
   }
   
   static SharedPreferences getSpForEmbedInstall(String paramString)
   {
-    AppMethodBeat.i(194733);
+    AppMethodBeat.i(208983);
     paramString = XWalkEnvironment.getMMKVSharedPreferences("XWEB_EMBED_INSTALL_".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(194733);
+    AppMethodBeat.o(208983);
     return paramString;
   }
   
@@ -745,46 +745,46 @@ public class XWalkUpdater
     // Byte code:
     //   0: iconst_1
     //   1: istore_2
-    //   2: ldc_w 501
-    //   5: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 512
+    //   5: invokestatic 125	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: ifnull +14 -> 23
     //   12: aload_1
     //   13: ifnull +10 -> 23
     //   16: aload_1
-    //   17: invokevirtual 224	java/lang/String:isEmpty	()Z
+    //   17: invokevirtual 228	java/lang/String:isEmpty	()Z
     //   20: ifeq +11 -> 31
-    //   23: ldc_w 501
-    //   26: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   23: ldc_w 512
+    //   26: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: iconst_0
     //   30: ireturn
     //   31: aload_0
     //   32: aload_1
-    //   33: invokestatic 504	org/xwalk/core/XWalkEnvironment:getPackageName	()Ljava/lang/String;
+    //   33: invokestatic 515	org/xwalk/core/XWalkEnvironment:getPackageName	()Ljava/lang/String;
     //   36: iconst_1
     //   37: iconst_0
-    //   38: ldc_w 506
-    //   41: invokestatic 512	com/tencent/xweb/XWebCoreContentProvider:d	(Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;)Landroid/net/Uri;
-    //   44: ldc_w 506
-    //   47: invokevirtual 518	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   38: ldc_w 517
+    //   41: invokestatic 523	com/tencent/xweb/XWebCoreContentProvider:d	(Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;)Landroid/net/Uri;
+    //   44: ldc_w 517
+    //   47: invokevirtual 529	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
     //   50: astore_0
     //   51: aload_0
-    //   52: invokestatic 524	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
-    //   55: ldc_w 501
-    //   58: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   52: invokestatic 535	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
+    //   55: ldc_w 512
+    //   58: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: iload_2
     //   62: ireturn
     //   63: astore_0
     //   64: aconst_null
-    //   65: invokestatic 524	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
+    //   65: invokestatic 535	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
     //   68: iconst_0
     //   69: istore_2
     //   70: goto -15 -> 55
     //   73: astore_0
     //   74: aconst_null
-    //   75: invokestatic 524	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
-    //   78: ldc_w 501
-    //   81: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: invokestatic 535	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
+    //   78: ldc_w 512
+    //   81: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   84: aload_0
     //   85: athrow
     // Local variable table:
@@ -811,7 +811,7 @@ public class XWalkUpdater
     if (!XWalkDecompressor.decompressDownloadPatchZip(paramString, XWalkEnvironment.getPatchZipTempDecompressPath(paramInt2)))
     {
       Log.e("XWalkLib", "onDoPatch decompress zip error");
-      g.xs(37L);
+      com.tencent.xweb.util.g.Cf(37L);
       AppMethodBeat.o(155034);
       return false;
     }
@@ -819,14 +819,14 @@ public class XWalkUpdater
     if (paramString == null)
     {
       Log.e("XWalkLib", "onDoPatch patchFileConfigList = null");
-      g.xs(38L);
+      com.tencent.xweb.util.g.Cf(38L);
       AppMethodBeat.o(155034);
       return false;
     }
-    if (!c.mg(XWalkEnvironment.getExtractedCoreDir(paramInt1), XWalkEnvironment.getExtractedCoreDir(paramInt2)))
+    if (!com.tencent.xweb.util.c.mH(XWalkEnvironment.getExtractedCoreDir(paramInt1), XWalkEnvironment.getExtractedCoreDir(paramInt2)))
     {
       Log.e("XWalkLib", "onDoPatch copy all extraced file error");
-      g.xs(39L);
+      com.tencent.xweb.util.g.Cf(39L);
       AppMethodBeat.o(155034);
       return false;
     }
@@ -845,10 +845,10 @@ public class XWalkUpdater
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (PatchFileConfig)((Iterator)localObject1).next();
-      if (!c.kP(XWalkEnvironment.getPatchZipTempDecompressFilePath(paramInt2, ((PatchFileConfig)localObject2).originalFileName), XWalkEnvironment.getExtractedCoreFile(paramInt2, ((PatchFileConfig)localObject2).originalFileName)))
+      if (!com.tencent.xweb.util.c.lm(XWalkEnvironment.getPatchZipTempDecompressFilePath(paramInt2, ((PatchFileConfig)localObject2).originalFileName), XWalkEnvironment.getExtractedCoreFile(paramInt2, ((PatchFileConfig)localObject2).originalFileName)))
       {
         Log.e("XWalkLib", "onDoPatch add file error:".concat(String.valueOf(localObject2)));
-        g.xs(40L);
+        com.tencent.xweb.util.g.Cf(40L);
         AppMethodBeat.o(155034);
         return false;
       }
@@ -868,10 +868,10 @@ public class XWalkUpdater
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (PatchFileConfig)((Iterator)localObject1).next();
-      if (!c.deleteFile(XWalkEnvironment.getExtractedCoreFile(paramInt2, ((PatchFileConfig)localObject2).originalFileName)))
+      if (!com.tencent.xweb.util.c.deleteFile(XWalkEnvironment.getExtractedCoreFile(paramInt2, ((PatchFileConfig)localObject2).originalFileName)))
       {
         Log.e("XWalkLib", "onDoPatch delete file error:".concat(String.valueOf(localObject2)));
-        g.xs(41L);
+        com.tencent.xweb.util.g.Cf(41L);
       }
       else
       {
@@ -894,7 +894,7 @@ public class XWalkUpdater
       localObject2 = (PatchFileConfig)paramString.next();
       if (((PatchFileConfig)localObject2).isExtractedFile())
       {
-        if (BSpatch.aY(XWalkEnvironment.getExtractedCoreFile(paramInt2, ((PatchFileConfig)localObject2).originalFileName), XWalkEnvironment.getPatchZipTempDecompressFilePath(paramInt2, ((PatchFileConfig)localObject2).patchFileName), XWalkEnvironment.getExtractedCoreFile(paramInt2, ((PatchFileConfig)localObject2).originalFileName)) < 0)
+        if (BSpatch.bd(XWalkEnvironment.getExtractedCoreFile(paramInt2, ((PatchFileConfig)localObject2).originalFileName), XWalkEnvironment.getPatchZipTempDecompressFilePath(paramInt2, ((PatchFileConfig)localObject2).patchFileName), XWalkEnvironment.getExtractedCoreFile(paramInt2, ((PatchFileConfig)localObject2).originalFileName)) < 0)
         {
           Log.e("XWalkLib", "onDoPatch patch error file:".concat(String.valueOf(localObject2)));
           AppMethodBeat.o(155034);
@@ -909,7 +909,7 @@ public class XWalkUpdater
     {
       localObject1 = (PatchFileConfig)paramString.next();
       if (((PatchFileConfig)localObject1).isOriginalFileTypeApk()) {
-        if (BSpatch.aY(XWalkEnvironment.getDownloadApkPath(paramInt1), XWalkEnvironment.getPatchZipTempDecompressFilePath(paramInt2, ((PatchFileConfig)localObject1).patchFileName), XWalkEnvironment.getDownloadApkPath(paramInt2)) < 0)
+        if (BSpatch.bd(XWalkEnvironment.getDownloadApkPath(paramInt1), XWalkEnvironment.getPatchZipTempDecompressFilePath(paramInt2, ((PatchFileConfig)localObject1).patchFileName), XWalkEnvironment.getDownloadApkPath(paramInt2)) < 0)
         {
           Log.e("XWalkLib", "onDoPatch apk patch error file:".concat(String.valueOf(localObject1)));
           AppMethodBeat.o(155034);
@@ -927,7 +927,7 @@ public class XWalkUpdater
     AppMethodBeat.i(155030);
     String str = paramUpdateConfig.getDownloadPath();
     Log.d("XWalkLib", "Download mode extract dir: ".concat(String.valueOf(XWalkEnvironment.getExtractedCoreDir(paramUpdateConfig.apkVer))));
-    if ((paramUpdateConfig.isMatchMd5) && (!d.mi(str, paramUpdateConfig.downloadFileMd5)))
+    if ((paramUpdateConfig.isMatchMd5) && (!d.mJ(str, paramUpdateConfig.downloadFileMd5)))
     {
       XWalkInitializer.addXWalkInitializeLog("XWalkLib", "downloaded apk md5 check failed");
       AppMethodBeat.o(155030);
@@ -941,10 +941,10 @@ public class XWalkUpdater
         AppMethodBeat.o(155030);
         return Integer.valueOf(-3);
       }
-      if ((paramUpdateConfig.isMatchMd5) && (!XWalkUpdater.FileListMD5Checker.checkFileListMd5(paramUpdateConfig.apkVer, XWalkEnvironment.getPatchFileListConfig(paramUpdateConfig.apkVer))))
+      if ((paramUpdateConfig.isMatchMd5) && (!FileListMD5Checker.checkFileListMd5(paramUpdateConfig.apkVer, XWalkEnvironment.getPatchFileListConfig(paramUpdateConfig.apkVer))))
       {
         XWalkInitializer.addXWalkInitializeLog("XWalkLib", "patch update mode, but md5 not match");
-        g.xs(36L);
+        com.tencent.xweb.util.g.Cf(36L);
         AppMethodBeat.o(155030);
         return Integer.valueOf(-4);
       }
@@ -957,13 +957,13 @@ public class XWalkUpdater
       return paramUpdateConfig;
       if (!XWalkDecompressor.decompressDownloadFullZip(str, paramUpdateConfig.apkVer))
       {
-        g.xs(32L);
+        com.tencent.xweb.util.g.Cf(32L);
         AppMethodBeat.o(155030);
         return Integer.valueOf(-5);
       }
-    } while ((!paramUpdateConfig.isMatchMd5) || (XWalkUpdater.FileListMD5Checker.checkFileListMd5(paramUpdateConfig.apkVer, XWalkEnvironment.getDownloadZipFileListConfig(paramUpdateConfig.apkVer))));
+    } while ((!paramUpdateConfig.isMatchMd5) || (FileListMD5Checker.checkFileListMd5(paramUpdateConfig.apkVer, XWalkEnvironment.getDownloadZipFileListConfig(paramUpdateConfig.apkVer))));
     XWalkInitializer.addXWalkInitializeLog("XWalkLib", "patch update mode, but md5 not match");
-    g.xs(33L);
+    com.tencent.xweb.util.g.Cf(33L);
     AppMethodBeat.o(155030);
     return Integer.valueOf(-4);
   }
@@ -993,14 +993,14 @@ public class XWalkUpdater
           return false;
         }
         if ("base.apk".equals(str1)) {}
-        for (paramMap = new File(XWalkEnvironment.getDownloadApkPath(paramInt)); !c.a(localAssetFileDescriptor, paramMap); paramMap = new File(XWalkEnvironment.getExtractedCoreFile(paramInt, str1)))
+        for (paramMap = new File(XWalkEnvironment.getDownloadApkPath(paramInt)); !com.tencent.xweb.util.c.a(localAssetFileDescriptor, paramMap); paramMap = new File(XWalkEnvironment.getExtractedCoreFile(paramInt, str1)))
         {
           paramErrorInfo.copyFailedCount += 1;
           XWalkInitializer.addXWalkInitializeLog("tryCopyVersion copy error");
           AppMethodBeat.o(155025);
           return false;
         }
-      } while (d.mi(paramMap.getAbsolutePath(), str2));
+      } while (d.mJ(paramMap.getAbsolutePath(), str2));
     }
     catch (Exception paramContentResolver)
     {
@@ -1024,62 +1024,62 @@ public class XWalkUpdater
   private static Map<String, String> tryGetFileList(ContentResolver paramContentResolver, String paramString, int paramInt)
   {
     // Byte code:
-    //   0: ldc_w 749
-    //   3: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 751	java/util/HashMap
+    //   0: ldc_w 760
+    //   3: invokestatic 125	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 762	java/util/HashMap
     //   9: dup
-    //   10: invokespecial 752	java/util/HashMap:<init>	()V
+    //   10: invokespecial 763	java/util/HashMap:<init>	()V
     //   13: astore_3
     //   14: aload_0
     //   15: aload_1
-    //   16: invokestatic 504	org/xwalk/core/XWalkEnvironment:getPackageName	()Ljava/lang/String;
+    //   16: invokestatic 515	org/xwalk/core/XWalkEnvironment:getPackageName	()Ljava/lang/String;
     //   19: iconst_2
     //   20: iload_2
-    //   21: ldc_w 754
-    //   24: invokestatic 512	com/tencent/xweb/XWebCoreContentProvider:d	(Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;)Landroid/net/Uri;
-    //   27: ldc_w 506
-    //   30: invokevirtual 518	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   21: ldc_w 765
+    //   24: invokestatic 523	com/tencent/xweb/XWebCoreContentProvider:d	(Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;)Landroid/net/Uri;
+    //   27: ldc_w 517
+    //   30: invokevirtual 529	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
     //   33: astore_1
     //   34: aload_1
     //   35: ifnonnull +29 -> 64
-    //   38: ldc_w 756
-    //   41: invokestatic 727	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   38: ldc_w 767
+    //   41: invokestatic 738	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   44: aconst_null
-    //   45: invokestatic 760	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   45: invokestatic 771	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   48: aconst_null
-    //   49: invokestatic 760	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   49: invokestatic 771	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   52: aload_1
-    //   53: invokestatic 524	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
-    //   56: ldc_w 749
-    //   59: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   53: invokestatic 535	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
+    //   56: ldc_w 760
+    //   59: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   62: aload_3
     //   63: areturn
-    //   64: new 143	java/io/File
+    //   64: new 147	java/io/File
     //   67: dup
     //   68: iload_2
-    //   69: ldc_w 754
-    //   72: invokestatic 596	org/xwalk/core/XWalkEnvironment:getExtractedCoreFile	(ILjava/lang/String;)Ljava/lang/String;
-    //   75: invokespecial 146	java/io/File:<init>	(Ljava/lang/String;)V
+    //   69: ldc_w 765
+    //   72: invokestatic 607	org/xwalk/core/XWalkEnvironment:getExtractedCoreFile	(ILjava/lang/String;)Ljava/lang/String;
+    //   75: invokespecial 150	java/io/File:<init>	(Ljava/lang/String;)V
     //   78: astore_0
     //   79: aload_0
-    //   80: invokevirtual 150	java/io/File:exists	()Z
+    //   80: invokevirtual 154	java/io/File:exists	()Z
     //   83: ifeq +8 -> 91
     //   86: aload_0
-    //   87: invokevirtual 257	java/io/File:delete	()Z
+    //   87: invokevirtual 261	java/io/File:delete	()Z
     //   90: pop
-    //   91: new 762	java/io/PrintWriter
+    //   91: new 773	java/io/PrintWriter
     //   94: dup
     //   95: aload_0
-    //   96: invokespecial 763	java/io/PrintWriter:<init>	(Ljava/io/File;)V
+    //   96: invokespecial 774	java/io/PrintWriter:<init>	(Ljava/io/File;)V
     //   99: astore 4
-    //   101: new 214	java/io/BufferedReader
+    //   101: new 218	java/io/BufferedReader
     //   104: dup
-    //   105: new 209	java/io/InputStreamReader
+    //   105: new 213	java/io/InputStreamReader
     //   108: dup
     //   109: aload_1
-    //   110: invokevirtual 769	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
-    //   113: invokespecial 212	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   116: invokespecial 217	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   110: invokevirtual 780	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
+    //   113: invokespecial 216	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   116: invokespecial 221	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   119: astore_0
     //   120: aload 4
     //   122: astore 7
@@ -1088,7 +1088,7 @@ public class XWalkUpdater
     //   127: aload_1
     //   128: astore 5
     //   130: aload_0
-    //   131: invokevirtual 221	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   131: invokevirtual 225	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   134: astore 8
     //   136: aload 8
     //   138: ifnull +211 -> 349
@@ -1100,7 +1100,7 @@ public class XWalkUpdater
     //   149: astore 5
     //   151: aload 4
     //   153: aload 8
-    //   155: invokevirtual 772	java/io/PrintWriter:println	(Ljava/lang/String;)V
+    //   155: invokevirtual 783	java/io/PrintWriter:println	(Ljava/lang/String;)V
     //   158: aload 4
     //   160: astore 7
     //   162: aload_0
@@ -1108,7 +1108,7 @@ public class XWalkUpdater
     //   165: aload_1
     //   166: astore 5
     //   168: aload 8
-    //   170: invokevirtual 224	java/lang/String:isEmpty	()Z
+    //   170: invokevirtual 228	java/lang/String:isEmpty	()Z
     //   173: ifne -53 -> 120
     //   176: aload 4
     //   178: astore 7
@@ -1117,8 +1117,8 @@ public class XWalkUpdater
     //   183: aload_1
     //   184: astore 5
     //   186: aload 8
-    //   188: ldc 226
-    //   190: invokevirtual 230	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   188: ldc 230
+    //   190: invokevirtual 234	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   193: astore 8
     //   195: aload 4
     //   197: astore 7
@@ -1143,7 +1143,7 @@ public class XWalkUpdater
     //   229: aload 8
     //   231: iconst_0
     //   232: aaload
-    //   233: invokevirtual 224	java/lang/String:isEmpty	()Z
+    //   233: invokevirtual 228	java/lang/String:isEmpty	()Z
     //   236: ifne -116 -> 120
     //   239: aload 8
     //   241: iconst_1
@@ -1158,7 +1158,7 @@ public class XWalkUpdater
     //   256: aload 8
     //   258: iconst_1
     //   259: aaload
-    //   260: invokevirtual 224	java/lang/String:isEmpty	()Z
+    //   260: invokevirtual 228	java/lang/String:isEmpty	()Z
     //   263: ifne -143 -> 120
     //   266: aload 4
     //   268: astore 7
@@ -1173,7 +1173,7 @@ public class XWalkUpdater
     //   281: aload 8
     //   283: iconst_1
     //   284: aaload
-    //   285: invokeinterface 776 3 0
+    //   285: invokeinterface 787 3 0
     //   290: pop
     //   291: goto -171 -> 120
     //   294: astore_3
@@ -1183,23 +1183,23 @@ public class XWalkUpdater
     //   300: astore 6
     //   302: aload_1
     //   303: astore 5
-    //   305: new 240	java/lang/StringBuilder
+    //   305: new 244	java/lang/StringBuilder
     //   308: dup
-    //   309: ldc_w 778
-    //   312: invokespecial 243	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   309: ldc_w 789
+    //   312: invokespecial 247	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   315: aload_3
-    //   316: invokevirtual 278	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   319: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: invokevirtual 254	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   325: invokestatic 727	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   316: invokevirtual 282	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   319: invokevirtual 251	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   325: invokestatic 738	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   328: aload 4
-    //   330: invokestatic 760	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   330: invokestatic 771	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   333: aload_0
-    //   334: invokestatic 760	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   334: invokestatic 771	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   337: aload_1
-    //   338: invokestatic 524	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
-    //   341: ldc_w 749
-    //   344: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   338: invokestatic 535	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
+    //   341: ldc_w 760
+    //   344: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   347: aconst_null
     //   348: areturn
     //   349: aload 4
@@ -1209,15 +1209,15 @@ public class XWalkUpdater
     //   356: aload_1
     //   357: astore 5
     //   359: aload 4
-    //   361: invokevirtual 781	java/io/PrintWriter:flush	()V
+    //   361: invokevirtual 792	java/io/PrintWriter:flush	()V
     //   364: aload 4
-    //   366: invokestatic 760	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   366: invokestatic 771	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   369: aload_0
-    //   370: invokestatic 760	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   370: invokestatic 771	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   373: aload_1
-    //   374: invokestatic 524	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
-    //   377: ldc_w 749
-    //   380: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   374: invokestatic 535	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
+    //   377: ldc_w 760
+    //   380: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   383: aload_3
     //   384: areturn
     //   385: astore_0
@@ -1228,13 +1228,13 @@ public class XWalkUpdater
     //   391: aconst_null
     //   392: astore_1
     //   393: aload_3
-    //   394: invokestatic 760	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   394: invokestatic 771	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   397: aload 4
-    //   399: invokestatic 760	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
+    //   399: invokestatic 771	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   402: aload_1
-    //   403: invokestatic 524	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
-    //   406: ldc_w 749
-    //   409: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   403: invokestatic 535	com/tencent/xweb/util/c:a	(Landroid/content/res/AssetFileDescriptor;)V
+    //   406: ldc_w 760
+    //   409: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   412: aload_0
     //   413: athrow
     //   414: astore_0
@@ -1416,7 +1416,7 @@ public class XWalkUpdater
     return true;
   }
   
-  public ErrorInfo updateRuntimeFromProvider(Scheduler.SchedulerConfig paramSchedulerConfig)
+  public ErrorInfo updateRuntimeFromProvider(SchedulerConfig paramSchedulerConfig)
   {
     for (;;)
     {
@@ -1429,22 +1429,22 @@ public class XWalkUpdater
       Map localMap;
       try
       {
-        AppMethodBeat.i(155022);
-        XWalkInitializer.addXWalkInitializeLog("updateFromProvider target ver " + paramSchedulerConfig.IVy);
+        AppMethodBeat.i(208981);
+        XWalkInitializer.addXWalkInitializeLog("updateFromProvider target ver " + paramSchedulerConfig.version);
         localErrorInfo = new ErrorInfo();
-        localErrorInfo.targetVer = paramSchedulerConfig.IVy;
+        localErrorInfo.targetVer = paramSchedulerConfig.version;
         if (!paramSchedulerConfig.bTryUseSharedCore)
         {
           XWalkInitializer.addXWalkInitializeLog("updateFromProvider force download");
           localErrorInfo.errorCode = -6;
-          AppMethodBeat.o(155022);
+          AppMethodBeat.o(208981);
           return localErrorInfo;
         }
-        if (paramSchedulerConfig.IVQ >= 2)
+        if (paramSchedulerConfig.KIu >= 2)
         {
           XWalkInitializer.addXWalkInitializeLog("updateFromProvider exceed max count");
           localErrorInfo.errorCode = -7;
-          AppMethodBeat.o(155022);
+          AppMethodBeat.o(208981);
           continue;
         }
         localContentResolver = XWalkEnvironment.getContentResolver();
@@ -1452,10 +1452,10 @@ public class XWalkUpdater
         {
           XWalkInitializer.addXWalkInitializeLog("updateFromProvider content resolver null");
           localErrorInfo.errorCode = -8;
-          AppMethodBeat.o(155022);
+          AppMethodBeat.o(208981);
           continue;
         }
-        localUpdateConfig = paramSchedulerConfig.ftG();
+        localUpdateConfig = com.tencent.xweb.xwalk.updater.g.g(paramSchedulerConfig);
         String[] arrayOfString = XWalkEnvironment.XWALK_CORE_PROVIDER_LIST;
         int m = arrayOfString.length;
         i = 0;
@@ -1491,7 +1491,7 @@ public class XWalkUpdater
         if (n == 0)
         {
           localErrorInfo.errorCode = 0;
-          AppMethodBeat.o(155022);
+          AppMethodBeat.o(208981);
           continue;
         }
         if (n == -5)
@@ -1517,15 +1517,15 @@ public class XWalkUpdater
             {
               XWalkInitializer.addXWalkInitializeLog("updateFromProvider no provider");
               localErrorInfo.errorCode = -9;
-              AppMethodBeat.o(155022);
+              AppMethodBeat.o(208981);
               continue;
             }
-            if ((XWalkEnvironment.hasAvailableVersion()) && (paramSchedulerConfig.IVQ + 1 < 2)) {
+            if ((XWalkEnvironment.hasAvailableVersion()) && (paramSchedulerConfig.KIu + 1 < 2)) {
               XWalkInitializer.addXWalkInitializeLog("updateFromProvider failed, can try again");
             }
             for (localErrorInfo.errorCode = -10;; localErrorInfo.errorCode = -11)
             {
-              AppMethodBeat.o(155022);
+              AppMethodBeat.o(208981);
               break;
               XWalkInitializer.addXWalkInitializeLog("updateFromProvider failed, do not try again");
             }
@@ -1551,7 +1551,7 @@ public class XWalkUpdater
       if ((paramUpdateConfig == null) || (!paramUpdateConfig.checkValid()))
       {
         XWalkInitializer.addXWalkInitializeLog("XWalkLib", "royle:XWalkUpdater updateXWalkRuntime updateConfig is not valid");
-        g.fsv();
+        com.tencent.xweb.util.g.fKY();
         AppMethodBeat.o(155021);
         return false;
       }
@@ -1563,6 +1563,187 @@ public class XWalkUpdater
     XWalkInitializer.addXWalkInitializeLog("XWalkLib", "Update listener is null");
     AppMethodBeat.o(155021);
     return false;
+  }
+  
+  public static class AssetsUpdateConfig
+    extends XWalkUpdater.EmbededUpdateConfig
+  {
+    public AssetsUpdateConfig(int paramInt, String paramString1, String paramString2)
+    {
+      super(paramString1, paramString2);
+    }
+    
+    /* Error */
+    public boolean copyPackageToLocal(String paramString1, String paramString2)
+    {
+      // Byte code:
+      //   0: ldc 19
+      //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: invokestatic 31	org/xwalk/core/XWalkEnvironment:getApplicationContext	()Landroid/content/Context;
+      //   8: invokevirtual 37	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+      //   11: astore_2
+      //   12: aload_2
+      //   13: aload_1
+      //   14: invokevirtual 43	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+      //   17: astore_1
+      //   18: new 45	java/io/FileOutputStream
+      //   21: dup
+      //   22: aload_0
+      //   23: invokevirtual 49	org/xwalk/core/XWalkUpdater$AssetsUpdateConfig:getDownloadPath	()Ljava/lang/String;
+      //   26: invokespecial 52	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+      //   29: astore_2
+      //   30: aload_2
+      //   31: astore 5
+      //   33: aload_1
+      //   34: astore 4
+      //   36: ldc 53
+      //   38: newarray byte
+      //   40: astore 6
+      //   42: aload_2
+      //   43: astore 5
+      //   45: aload_1
+      //   46: astore 4
+      //   48: aload_1
+      //   49: aload 6
+      //   51: invokevirtual 59	java/io/InputStream:read	([B)I
+      //   54: istore_3
+      //   55: iload_3
+      //   56: iconst_m1
+      //   57: if_icmpeq +76 -> 133
+      //   60: aload_2
+      //   61: astore 5
+      //   63: aload_1
+      //   64: astore 4
+      //   66: aload_2
+      //   67: aload 6
+      //   69: iconst_0
+      //   70: iload_3
+      //   71: invokevirtual 65	java/io/OutputStream:write	([BII)V
+      //   74: goto -32 -> 42
+      //   77: astore 6
+      //   79: aload_2
+      //   80: astore 5
+      //   82: aload_1
+      //   83: astore 4
+      //   85: ldc 67
+      //   87: new 69	java/lang/StringBuilder
+      //   90: dup
+      //   91: ldc 71
+      //   93: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   96: aload 6
+      //   98: invokevirtual 75	java/lang/Exception:getMessage	()Ljava/lang/String;
+      //   101: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   104: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   107: invokestatic 86	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+      //   110: aload_1
+      //   111: ifnull +7 -> 118
+      //   114: aload_1
+      //   115: invokevirtual 90	java/io/InputStream:close	()V
+      //   118: aload_2
+      //   119: ifnull +7 -> 126
+      //   122: aload_2
+      //   123: invokevirtual 91	java/io/OutputStream:close	()V
+      //   126: ldc 19
+      //   128: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   131: iconst_0
+      //   132: ireturn
+      //   133: aload_2
+      //   134: astore 5
+      //   136: aload_1
+      //   137: astore 4
+      //   139: aload_2
+      //   140: invokevirtual 97	java/io/OutputStream:flush	()V
+      //   143: aload_1
+      //   144: ifnull +7 -> 151
+      //   147: aload_1
+      //   148: invokevirtual 90	java/io/InputStream:close	()V
+      //   151: aload_2
+      //   152: invokevirtual 91	java/io/OutputStream:close	()V
+      //   155: ldc 19
+      //   157: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   160: iconst_1
+      //   161: ireturn
+      //   162: astore_2
+      //   163: aconst_null
+      //   164: astore 5
+      //   166: aconst_null
+      //   167: astore_1
+      //   168: aload_1
+      //   169: ifnull +7 -> 176
+      //   172: aload_1
+      //   173: invokevirtual 90	java/io/InputStream:close	()V
+      //   176: aload 5
+      //   178: ifnull +8 -> 186
+      //   181: aload 5
+      //   183: invokevirtual 91	java/io/OutputStream:close	()V
+      //   186: ldc 19
+      //   188: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   191: aload_2
+      //   192: athrow
+      //   193: astore_1
+      //   194: goto -43 -> 151
+      //   197: astore_1
+      //   198: goto -43 -> 155
+      //   201: astore_1
+      //   202: goto -84 -> 118
+      //   205: astore_1
+      //   206: goto -80 -> 126
+      //   209: astore_1
+      //   210: goto -34 -> 176
+      //   213: astore_1
+      //   214: goto -28 -> 186
+      //   217: astore_2
+      //   218: aconst_null
+      //   219: astore 5
+      //   221: goto -53 -> 168
+      //   224: astore_2
+      //   225: aload 4
+      //   227: astore_1
+      //   228: goto -60 -> 168
+      //   231: astore 6
+      //   233: aconst_null
+      //   234: astore_2
+      //   235: aconst_null
+      //   236: astore_1
+      //   237: goto -158 -> 79
+      //   240: astore 6
+      //   242: aconst_null
+      //   243: astore_2
+      //   244: goto -165 -> 79
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	247	0	this	AssetsUpdateConfig
+      //   0	247	1	paramString1	String
+      //   0	247	2	paramString2	String
+      //   54	17	3	i	int
+      //   34	192	4	str1	String
+      //   31	189	5	str2	String
+      //   40	28	6	arrayOfByte	byte[]
+      //   77	20	6	localException1	Exception
+      //   231	1	6	localException2	Exception
+      //   240	1	6	localException3	Exception
+      // Exception table:
+      //   from	to	target	type
+      //   36	42	77	java/lang/Exception
+      //   48	55	77	java/lang/Exception
+      //   66	74	77	java/lang/Exception
+      //   139	143	77	java/lang/Exception
+      //   12	18	162	finally
+      //   147	151	193	java/lang/Exception
+      //   151	155	197	java/io/IOException
+      //   114	118	201	java/lang/Exception
+      //   122	126	205	java/io/IOException
+      //   172	176	209	java/lang/Exception
+      //   181	186	213	java/io/IOException
+      //   18	30	217	finally
+      //   36	42	224	finally
+      //   48	55	224	finally
+      //   66	74	224	finally
+      //   85	110	224	finally
+      //   139	143	224	finally
+      //   12	18	231	java/lang/Exception
+      //   18	30	240	java/lang/Exception
+    }
   }
   
   class BackgroundListener
@@ -1597,7 +1778,7 @@ public class XWalkUpdater
       }
       for (;;)
       {
-        g.cR(15124, i + "," + k + "," + m + ",200502," + paramDownloadInfo.mErrorCode + "," + paramDownloadInfo.mNetWorkType + "," + paramDownloadInfo.mRetryTimes + "," + (l1 - l2) + "," + paramDownloadInfo.mFileTotalSize + "," + paramDownloadInfo.mDownloadType + "," + j);
+        com.tencent.xweb.util.g.cU(15124, i + "," + k + "," + m + ",200601," + paramDownloadInfo.mErrorCode + "," + paramDownloadInfo.mNetWorkType + "," + paramDownloadInfo.mRetryTimes + "," + (l1 - l2) + "," + paramDownloadInfo.mFileTotalSize + "," + paramDownloadInfo.mDownloadType + "," + j);
         AppMethodBeat.o(155009);
         return;
         i = 1;
@@ -1619,7 +1800,7 @@ public class XWalkUpdater
       AppMethodBeat.i(155008);
       XWalkInitializer.addXWalkInitializeLog("XWalkLib", "download apk completed, apkver = " + this.mConfig.apkVer);
       if (this.mConfig.isPatchUpdate) {
-        g.xy(System.currentTimeMillis() - paramDownloadInfo.mStartTimestamp);
+        com.tencent.xweb.util.g.Cl(System.currentTimeMillis() - paramDownloadInfo.mStartTimestamp);
       }
       for (;;)
       {
@@ -1649,7 +1830,7 @@ public class XWalkUpdater
         }.execute(new Void[0]);
         AppMethodBeat.o(155008);
         return;
-        g.xw(System.currentTimeMillis() - paramDownloadInfo.mStartTimestamp);
+        com.tencent.xweb.util.g.Cj(System.currentTimeMillis() - paramDownloadInfo.mStartTimestamp);
       }
     }
     
@@ -1658,7 +1839,7 @@ public class XWalkUpdater
       AppMethodBeat.i(155007);
       XWalkInitializer.addXWalkInitializeLog("XWalkLib", "download apk failed");
       if (this.mConfig.isPatchUpdate) {
-        g.fsy();
+        com.tencent.xweb.util.g.fLb();
       }
       for (;;)
       {
@@ -1666,7 +1847,7 @@ public class XWalkUpdater
         XWalkUpdater.this.mBackgroundUpdateListener.onXWalkUpdateFailed(-1);
         AppMethodBeat.o(155007);
         return;
-        g.fsu();
+        com.tencent.xweb.util.g.fKX();
       }
     }
     
@@ -1675,14 +1856,14 @@ public class XWalkUpdater
       AppMethodBeat.i(155004);
       Log.d("XWalkLib", "DownloadTask started, type:" + paramInt + " config:" + this.mConfig.getLogSelf());
       if (this.mConfig.isPatchUpdate) {
-        g.bgD();
+        com.tencent.xweb.util.g.bnx();
       }
       for (;;)
       {
         XWalkUpdater.this.mBackgroundUpdateListener.onXWalkUpdateStarted();
         AppMethodBeat.o(155004);
         return;
-        g.fst();
+        com.tencent.xweb.util.g.fKW();
       }
     }
     
@@ -1733,6 +1914,845 @@ public class XWalkUpdater
     public int readFileListFailedCount = 0;
     public int setVersionFailedCount = 0;
     public int targetVer = -1;
+  }
+  
+  public static class FileListMD5Checker
+  {
+    /* Error */
+    public static boolean checkFileListMd5(int paramInt, File paramFile)
+    {
+      // Byte code:
+      //   0: ldc 17
+      //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: aload_1
+      //   6: ifnonnull +10 -> 16
+      //   9: ldc 17
+      //   11: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   14: iconst_0
+      //   15: ireturn
+      //   16: new 28	java/io/FileInputStream
+      //   19: dup
+      //   20: aload_1
+      //   21: invokespecial 31	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+      //   24: astore 4
+      //   26: new 33	java/io/InputStreamReader
+      //   29: dup
+      //   30: aload 4
+      //   32: invokespecial 36	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+      //   35: astore_3
+      //   36: new 38	java/io/BufferedReader
+      //   39: dup
+      //   40: aload_3
+      //   41: invokespecial 41	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+      //   44: astore_1
+      //   45: aload_1
+      //   46: astore 7
+      //   48: aload_3
+      //   49: astore 6
+      //   51: aload 4
+      //   53: astore 5
+      //   55: aload_1
+      //   56: invokevirtual 45	java/io/BufferedReader:readLine	()Ljava/lang/String;
+      //   59: astore_2
+      //   60: aload_2
+      //   61: ifnull +231 -> 292
+      //   64: aload_2
+      //   65: ifnull -20 -> 45
+      //   68: aload_1
+      //   69: astore 7
+      //   71: aload_3
+      //   72: astore 6
+      //   74: aload 4
+      //   76: astore 5
+      //   78: aload_2
+      //   79: invokevirtual 51	java/lang/String:isEmpty	()Z
+      //   82: ifne -37 -> 45
+      //   85: aload_1
+      //   86: astore 7
+      //   88: aload_3
+      //   89: astore 6
+      //   91: aload 4
+      //   93: astore 5
+      //   95: aload_2
+      //   96: ldc 53
+      //   98: invokevirtual 57	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+      //   101: astore_2
+      //   102: aload_2
+      //   103: ifnull -58 -> 45
+      //   106: aload_1
+      //   107: astore 7
+      //   109: aload_3
+      //   110: astore 6
+      //   112: aload 4
+      //   114: astore 5
+      //   116: aload_2
+      //   117: arraylength
+      //   118: iconst_2
+      //   119: if_icmpne -74 -> 45
+      //   122: aload_2
+      //   123: iconst_0
+      //   124: aaload
+      //   125: ifnull -80 -> 45
+      //   128: aload_1
+      //   129: astore 7
+      //   131: aload_3
+      //   132: astore 6
+      //   134: aload 4
+      //   136: astore 5
+      //   138: aload_2
+      //   139: iconst_0
+      //   140: aaload
+      //   141: invokevirtual 51	java/lang/String:isEmpty	()Z
+      //   144: ifne -99 -> 45
+      //   147: aload_2
+      //   148: iconst_1
+      //   149: aaload
+      //   150: ifnull -105 -> 45
+      //   153: aload_1
+      //   154: astore 7
+      //   156: aload_3
+      //   157: astore 6
+      //   159: aload 4
+      //   161: astore 5
+      //   163: aload_2
+      //   164: iconst_1
+      //   165: aaload
+      //   166: invokevirtual 51	java/lang/String:isEmpty	()Z
+      //   169: ifne -124 -> 45
+      //   172: aload_1
+      //   173: astore 7
+      //   175: aload_3
+      //   176: astore 6
+      //   178: aload 4
+      //   180: astore 5
+      //   182: iload_0
+      //   183: aload_2
+      //   184: iconst_0
+      //   185: aaload
+      //   186: aload_2
+      //   187: iconst_1
+      //   188: aaload
+      //   189: invokestatic 61	org/xwalk/core/XWalkUpdater$FileListMD5Checker:checkFileMd5	(ILjava/lang/String;Ljava/lang/String;)Z
+      //   192: ifne -147 -> 45
+      //   195: aload_1
+      //   196: astore 7
+      //   198: aload_3
+      //   199: astore 6
+      //   201: aload 4
+      //   203: astore 5
+      //   205: ldc 63
+      //   207: new 65	java/lang/StringBuilder
+      //   210: dup
+      //   211: ldc 67
+      //   213: invokespecial 70	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   216: aload_2
+      //   217: iconst_0
+      //   218: aaload
+      //   219: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   222: ldc 76
+      //   224: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   227: aload_2
+      //   228: iconst_1
+      //   229: aaload
+      //   230: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   233: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   236: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   239: aload 4
+      //   241: invokevirtual 88	java/io/FileInputStream:close	()V
+      //   244: aload_3
+      //   245: invokevirtual 89	java/io/InputStreamReader:close	()V
+      //   248: aload_1
+      //   249: invokevirtual 90	java/io/BufferedReader:close	()V
+      //   252: ldc 17
+      //   254: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   257: iconst_0
+      //   258: ireturn
+      //   259: astore_2
+      //   260: ldc 63
+      //   262: ldc 92
+      //   264: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   267: goto -23 -> 244
+      //   270: astore_2
+      //   271: ldc 63
+      //   273: ldc 94
+      //   275: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   278: goto -30 -> 248
+      //   281: astore_1
+      //   282: ldc 63
+      //   284: ldc 96
+      //   286: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   289: goto -37 -> 252
+      //   292: aload 4
+      //   294: invokevirtual 88	java/io/FileInputStream:close	()V
+      //   297: aload_3
+      //   298: invokevirtual 89	java/io/InputStreamReader:close	()V
+      //   301: aload_1
+      //   302: invokevirtual 90	java/io/BufferedReader:close	()V
+      //   305: ldc 17
+      //   307: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   310: iconst_1
+      //   311: ireturn
+      //   312: astore_2
+      //   313: ldc 63
+      //   315: ldc 92
+      //   317: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   320: goto -23 -> 297
+      //   323: astore_2
+      //   324: ldc 63
+      //   326: ldc 94
+      //   328: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   331: goto -30 -> 301
+      //   334: astore_1
+      //   335: ldc 63
+      //   337: ldc 96
+      //   339: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   342: goto -37 -> 305
+      //   345: astore_2
+      //   346: aconst_null
+      //   347: astore_1
+      //   348: aconst_null
+      //   349: astore_3
+      //   350: aconst_null
+      //   351: astore 4
+      //   353: aload_1
+      //   354: astore 7
+      //   356: aload_3
+      //   357: astore 6
+      //   359: aload 4
+      //   361: astore 5
+      //   363: ldc 63
+      //   365: new 65	java/lang/StringBuilder
+      //   368: dup
+      //   369: ldc 98
+      //   371: invokespecial 70	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   374: aload_2
+      //   375: invokevirtual 101	java/lang/Exception:getMessage	()Ljava/lang/String;
+      //   378: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   381: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   384: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   387: aload 4
+      //   389: ifnull +8 -> 397
+      //   392: aload 4
+      //   394: invokevirtual 88	java/io/FileInputStream:close	()V
+      //   397: aload_3
+      //   398: ifnull +7 -> 405
+      //   401: aload_3
+      //   402: invokevirtual 89	java/io/InputStreamReader:close	()V
+      //   405: aload_1
+      //   406: ifnull +7 -> 413
+      //   409: aload_1
+      //   410: invokevirtual 90	java/io/BufferedReader:close	()V
+      //   413: ldc 17
+      //   415: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   418: iconst_0
+      //   419: ireturn
+      //   420: astore_2
+      //   421: ldc 63
+      //   423: ldc 92
+      //   425: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   428: goto -31 -> 397
+      //   431: astore_2
+      //   432: ldc 63
+      //   434: ldc 94
+      //   436: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   439: goto -34 -> 405
+      //   442: astore_1
+      //   443: ldc 63
+      //   445: ldc 96
+      //   447: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   450: goto -37 -> 413
+      //   453: astore_1
+      //   454: aconst_null
+      //   455: astore_2
+      //   456: aconst_null
+      //   457: astore_3
+      //   458: aconst_null
+      //   459: astore 4
+      //   461: aload 4
+      //   463: ifnull +8 -> 471
+      //   466: aload 4
+      //   468: invokevirtual 88	java/io/FileInputStream:close	()V
+      //   471: aload_3
+      //   472: ifnull +7 -> 479
+      //   475: aload_3
+      //   476: invokevirtual 89	java/io/InputStreamReader:close	()V
+      //   479: aload_2
+      //   480: ifnull +7 -> 487
+      //   483: aload_2
+      //   484: invokevirtual 90	java/io/BufferedReader:close	()V
+      //   487: ldc 17
+      //   489: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   492: aload_1
+      //   493: athrow
+      //   494: astore 4
+      //   496: ldc 63
+      //   498: ldc 92
+      //   500: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   503: goto -32 -> 471
+      //   506: astore_3
+      //   507: ldc 63
+      //   509: ldc 94
+      //   511: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   514: goto -35 -> 479
+      //   517: astore_2
+      //   518: ldc 63
+      //   520: ldc 96
+      //   522: invokestatic 85	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   525: goto -38 -> 487
+      //   528: astore_1
+      //   529: aconst_null
+      //   530: astore_2
+      //   531: aconst_null
+      //   532: astore_3
+      //   533: goto -72 -> 461
+      //   536: astore_1
+      //   537: aconst_null
+      //   538: astore_2
+      //   539: goto -78 -> 461
+      //   542: astore_1
+      //   543: aload 7
+      //   545: astore_2
+      //   546: aload 6
+      //   548: astore_3
+      //   549: aload 5
+      //   551: astore 4
+      //   553: goto -92 -> 461
+      //   556: astore_2
+      //   557: aconst_null
+      //   558: astore_1
+      //   559: aconst_null
+      //   560: astore_3
+      //   561: goto -208 -> 353
+      //   564: astore_2
+      //   565: aconst_null
+      //   566: astore_1
+      //   567: goto -214 -> 353
+      //   570: astore_2
+      //   571: goto -218 -> 353
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	574	0	paramInt	int
+      //   0	574	1	paramFile	File
+      //   59	169	2	localObject1	Object
+      //   259	1	2	localException1	Exception
+      //   270	1	2	localException2	Exception
+      //   312	1	2	localException3	Exception
+      //   323	1	2	localException4	Exception
+      //   345	30	2	localException5	Exception
+      //   420	1	2	localException6	Exception
+      //   431	1	2	localException7	Exception
+      //   455	29	2	localObject2	Object
+      //   517	1	2	localException8	Exception
+      //   530	16	2	localFile1	File
+      //   556	1	2	localException9	Exception
+      //   564	1	2	localException10	Exception
+      //   570	1	2	localException11	Exception
+      //   35	441	3	localInputStreamReader1	java.io.InputStreamReader
+      //   506	1	3	localException12	Exception
+      //   532	29	3	localObject3	Object
+      //   24	443	4	localFileInputStream1	java.io.FileInputStream
+      //   494	1	4	localException13	Exception
+      //   551	1	4	localObject4	Object
+      //   53	497	5	localFileInputStream2	java.io.FileInputStream
+      //   49	498	6	localInputStreamReader2	java.io.InputStreamReader
+      //   46	498	7	localFile2	File
+      // Exception table:
+      //   from	to	target	type
+      //   239	244	259	java/lang/Exception
+      //   244	248	270	java/lang/Exception
+      //   248	252	281	java/lang/Exception
+      //   292	297	312	java/lang/Exception
+      //   297	301	323	java/lang/Exception
+      //   301	305	334	java/lang/Exception
+      //   16	26	345	java/lang/Exception
+      //   392	397	420	java/lang/Exception
+      //   401	405	431	java/lang/Exception
+      //   409	413	442	java/lang/Exception
+      //   16	26	453	finally
+      //   466	471	494	java/lang/Exception
+      //   475	479	506	java/lang/Exception
+      //   483	487	517	java/lang/Exception
+      //   26	36	528	finally
+      //   36	45	536	finally
+      //   55	60	542	finally
+      //   78	85	542	finally
+      //   95	102	542	finally
+      //   116	122	542	finally
+      //   138	147	542	finally
+      //   163	172	542	finally
+      //   182	195	542	finally
+      //   205	239	542	finally
+      //   363	387	542	finally
+      //   26	36	556	java/lang/Exception
+      //   36	45	564	java/lang/Exception
+      //   55	60	570	java/lang/Exception
+      //   78	85	570	java/lang/Exception
+      //   95	102	570	java/lang/Exception
+      //   116	122	570	java/lang/Exception
+      //   138	147	570	java/lang/Exception
+      //   163	172	570	java/lang/Exception
+      //   182	195	570	java/lang/Exception
+      //   205	239	570	java/lang/Exception
+    }
+    
+    public static boolean checkFileListMd5(int paramInt, String paramString)
+    {
+      AppMethodBeat.i(155011);
+      try
+      {
+        boolean bool = checkFileListMd5(paramInt, new File(paramString));
+        AppMethodBeat.o(155011);
+        return bool;
+      }
+      catch (Exception paramString)
+      {
+        Log.e("XWalkLib", "checkFileListMd5 error:" + paramString.getMessage());
+        AppMethodBeat.o(155011);
+      }
+      return false;
+    }
+    
+    private static boolean checkFileMd5(int paramInt, String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(155012);
+      if ("base.apk".equals(paramString1)) {}
+      for (paramString1 = XWalkEnvironment.getDownloadApkPath(paramInt); d.mJ(paramString1, paramString2); paramString1 = XWalkEnvironment.getExtractedCoreFile(paramInt, paramString1))
+      {
+        Log.i("XWalkLib", "checkFileMd5 successful path:".concat(String.valueOf(paramString1)));
+        AppMethodBeat.o(155012);
+        return true;
+      }
+      Log.e("XWalkLib", "checkFileMd5 error path:".concat(String.valueOf(paramString1)));
+      AppMethodBeat.o(155012);
+      return false;
+    }
+  }
+  
+  public static class HybridUpdateConfig
+    extends XWalkUpdater.EmbededUpdateConfig
+  {
+    public HybridUpdateConfig(int paramInt, String paramString1, String paramString2)
+    {
+      super(paramString1, paramString2);
+      this.alreadyUnZiped = true;
+    }
+    
+    /* Error */
+    public boolean copyPackageToLocal(String paramString1, String paramString2)
+    {
+      // Byte code:
+      //   0: ldc 23
+      //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: invokestatic 35	org/xwalk/core/XWalkEnvironment:getApplicationContext	()Landroid/content/Context;
+      //   8: invokevirtual 41	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+      //   11: astore 4
+      //   13: aconst_null
+      //   14: astore 5
+      //   16: aload 4
+      //   18: aload_1
+      //   19: invokevirtual 47	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+      //   22: astore_1
+      //   23: new 49	java/lang/StringBuilder
+      //   26: dup
+      //   27: invokespecial 52	java/lang/StringBuilder:<init>	()V
+      //   30: aload_0
+      //   31: invokevirtual 56	org/xwalk/core/XWalkUpdater$HybridUpdateConfig:getDownloadPath	()Ljava/lang/String;
+      //   34: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   37: ldc 62
+      //   39: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   42: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   45: astore 6
+      //   47: new 67	java/io/FileOutputStream
+      //   50: dup
+      //   51: aload 6
+      //   53: invokespecial 70	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+      //   56: astore 4
+      //   58: ldc 71
+      //   60: newarray byte
+      //   62: astore 5
+      //   64: aload_1
+      //   65: aload 5
+      //   67: invokevirtual 77	java/io/InputStream:read	([B)I
+      //   70: istore_3
+      //   71: iload_3
+      //   72: iconst_m1
+      //   73: if_icmpeq +74 -> 147
+      //   76: aload 4
+      //   78: aload 5
+      //   80: iconst_0
+      //   81: iload_3
+      //   82: invokevirtual 83	java/io/OutputStream:write	([BII)V
+      //   85: goto -21 -> 64
+      //   88: astore 5
+      //   90: aload_1
+      //   91: astore_2
+      //   92: aload 4
+      //   94: astore_1
+      //   95: aload 5
+      //   97: astore 4
+      //   99: ldc 84
+      //   101: new 49	java/lang/StringBuilder
+      //   104: dup
+      //   105: ldc 86
+      //   107: invokespecial 87	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   110: aload 4
+      //   112: invokevirtual 90	java/lang/Exception:getMessage	()Ljava/lang/String;
+      //   115: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   118: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   121: invokestatic 94	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+      //   124: aload_2
+      //   125: ifnull +7 -> 132
+      //   128: aload_2
+      //   129: invokevirtual 97	java/io/InputStream:close	()V
+      //   132: aload_1
+      //   133: ifnull +7 -> 140
+      //   136: aload_1
+      //   137: invokevirtual 98	java/io/OutputStream:close	()V
+      //   140: ldc 23
+      //   142: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   145: iconst_0
+      //   146: ireturn
+      //   147: aload 4
+      //   149: invokevirtual 104	java/io/OutputStream:flush	()V
+      //   152: aload_1
+      //   153: ifnull +7 -> 160
+      //   156: aload_1
+      //   157: invokevirtual 97	java/io/InputStream:close	()V
+      //   160: aload 4
+      //   162: invokevirtual 98	java/io/OutputStream:close	()V
+      //   165: new 106	java/io/File
+      //   168: dup
+      //   169: aload 6
+      //   171: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
+      //   174: astore 4
+      //   176: aload 4
+      //   178: invokevirtual 110	java/io/File:getParent	()Ljava/lang/String;
+      //   181: astore_1
+      //   182: aload 4
+      //   184: invokevirtual 113	java/io/File:getName	()Ljava/lang/String;
+      //   187: astore 4
+      //   189: new 49	java/lang/StringBuilder
+      //   192: dup
+      //   193: invokespecial 52	java/lang/StringBuilder:<init>	()V
+      //   196: aload 4
+      //   198: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   201: ldc 115
+      //   203: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   206: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   209: astore 4
+      //   211: new 49	java/lang/StringBuilder
+      //   214: dup
+      //   215: invokespecial 52	java/lang/StringBuilder:<init>	()V
+      //   218: aload_1
+      //   219: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   222: getstatic 119	java/io/File:separator	Ljava/lang/String;
+      //   225: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   228: aload 4
+      //   230: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   233: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   236: astore_1
+      //   237: aload_1
+      //   238: invokestatic 125	com/tencent/xweb/util/c:aVj	(Ljava/lang/String;)Z
+      //   241: pop
+      //   242: aload_1
+      //   243: aload 6
+      //   245: invokestatic 130	com/tencent/xweb/xwalk/u:mL	(Ljava/lang/String;Ljava/lang/String;)Z
+      //   248: ifne +59 -> 307
+      //   251: ldc2_w 131
+      //   254: ldc2_w 133
+      //   257: lconst_1
+      //   258: invokestatic 140	com/tencent/xweb/util/g:r	(JJJ)V
+      //   261: ldc 142
+      //   263: ldc 144
+      //   265: invokestatic 94	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+      //   268: ldc 23
+      //   270: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   273: iconst_0
+      //   274: ireturn
+      //   275: astore_2
+      //   276: aconst_null
+      //   277: astore_1
+      //   278: aload 5
+      //   280: astore 4
+      //   282: aload_1
+      //   283: ifnull +7 -> 290
+      //   286: aload_1
+      //   287: invokevirtual 97	java/io/InputStream:close	()V
+      //   290: aload 4
+      //   292: ifnull +8 -> 300
+      //   295: aload 4
+      //   297: invokevirtual 98	java/io/OutputStream:close	()V
+      //   300: ldc 23
+      //   302: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   305: aload_2
+      //   306: athrow
+      //   307: aload 6
+      //   309: invokestatic 125	com/tencent/xweb/util/c:aVj	(Ljava/lang/String;)Z
+      //   312: pop
+      //   313: new 106	java/io/File
+      //   316: dup
+      //   317: new 49	java/lang/StringBuilder
+      //   320: dup
+      //   321: invokespecial 52	java/lang/StringBuilder:<init>	()V
+      //   324: invokestatic 35	org/xwalk/core/XWalkEnvironment:getApplicationContext	()Landroid/content/Context;
+      //   327: invokestatic 148	com/tencent/xweb/util/c:lm	(Landroid/content/Context;)Ljava/lang/String;
+      //   330: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   333: getstatic 119	java/io/File:separator	Ljava/lang/String;
+      //   336: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   339: ldc 150
+      //   341: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   344: getstatic 119	java/io/File:separator	Ljava/lang/String;
+      //   347: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   350: ldc 152
+      //   352: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   355: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   358: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
+      //   361: astore 4
+      //   363: new 106	java/io/File
+      //   366: dup
+      //   367: new 49	java/lang/StringBuilder
+      //   370: dup
+      //   371: invokespecial 52	java/lang/StringBuilder:<init>	()V
+      //   374: aload_1
+      //   375: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   378: getstatic 119	java/io/File:separator	Ljava/lang/String;
+      //   381: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   384: ldc 152
+      //   386: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   389: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   392: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
+      //   395: astore 5
+      //   397: aload 5
+      //   399: invokevirtual 156	java/io/File:exists	()Z
+      //   402: ifeq +42 -> 444
+      //   405: aload 5
+      //   407: invokevirtual 159	java/io/File:getAbsolutePath	()Ljava/lang/String;
+      //   410: aload_2
+      //   411: invokestatic 164	com/tencent/xweb/util/d:mJ	(Ljava/lang/String;Ljava/lang/String;)Z
+      //   414: ifeq +17 -> 431
+      //   417: ldc 84
+      //   419: ldc 166
+      //   421: invokestatic 94	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+      //   424: ldc 23
+      //   426: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   429: iconst_1
+      //   430: ireturn
+      //   431: ldc 84
+      //   433: ldc 168
+      //   435: invokestatic 94	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+      //   438: aload 5
+      //   440: invokevirtual 171	java/io/File:delete	()Z
+      //   443: pop
+      //   444: aload 4
+      //   446: invokevirtual 156	java/io/File:exists	()Z
+      //   449: ifne +27 -> 476
+      //   452: ldc2_w 131
+      //   455: ldc2_w 172
+      //   458: lconst_1
+      //   459: invokestatic 140	com/tencent/xweb/util/g:r	(JJJ)V
+      //   462: ldc 142
+      //   464: ldc 175
+      //   466: invokestatic 94	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+      //   469: ldc 23
+      //   471: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   474: iconst_0
+      //   475: ireturn
+      //   476: aload 4
+      //   478: invokevirtual 159	java/io/File:getAbsolutePath	()Ljava/lang/String;
+      //   481: aload_2
+      //   482: invokestatic 164	com/tencent/xweb/util/d:mJ	(Ljava/lang/String;Ljava/lang/String;)Z
+      //   485: ifne +25 -> 510
+      //   488: ldc 142
+      //   490: ldc 177
+      //   492: invokestatic 94	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+      //   495: ldc2_w 131
+      //   498: ldc2_w 178
+      //   501: lconst_1
+      //   502: invokestatic 140	com/tencent/xweb/util/g:r	(JJJ)V
+      //   505: aload_0
+      //   506: iconst_0
+      //   507: putfield 182	org/xwalk/core/XWalkUpdater$HybridUpdateConfig:isMatchMd5	Z
+      //   510: aload 4
+      //   512: aload 5
+      //   514: invokestatic 186	com/tencent/xweb/util/c:g	(Ljava/io/File;Ljava/io/File;)Z
+      //   517: ifne +27 -> 544
+      //   520: ldc 142
+      //   522: ldc 188
+      //   524: invokestatic 94	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+      //   527: ldc2_w 131
+      //   530: ldc2_w 189
+      //   533: lconst_1
+      //   534: invokestatic 140	com/tencent/xweb/util/g:r	(JJJ)V
+      //   537: ldc 23
+      //   539: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   542: iconst_0
+      //   543: ireturn
+      //   544: new 106	java/io/File
+      //   547: dup
+      //   548: aload_1
+      //   549: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
+      //   552: astore_1
+      //   553: aload_1
+      //   554: invokevirtual 193	java/io/File:isDirectory	()Z
+      //   557: ifne +17 -> 574
+      //   560: ldc 142
+      //   562: ldc 195
+      //   564: invokestatic 94	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+      //   567: ldc 23
+      //   569: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   572: iconst_0
+      //   573: ireturn
+      //   574: aload_1
+      //   575: invokevirtual 199	java/io/File:listFiles	()[Ljava/io/File;
+      //   578: aload_0
+      //   579: invokevirtual 56	org/xwalk/core/XWalkUpdater$HybridUpdateConfig:getDownloadPath	()Ljava/lang/String;
+      //   582: iconst_0
+      //   583: invokestatic 203	com/tencent/xweb/xwalk/u:a	([Ljava/io/File;Ljava/lang/String;I)Z
+      //   586: ifne +27 -> 613
+      //   589: ldc2_w 131
+      //   592: ldc2_w 204
+      //   595: lconst_1
+      //   596: invokestatic 140	com/tencent/xweb/util/g:r	(JJJ)V
+      //   599: ldc 142
+      //   601: ldc 207
+      //   603: invokestatic 94	org/xwalk/core/XWalkEnvironment:addXWalkInitializeLog	(Ljava/lang/String;Ljava/lang/String;)V
+      //   606: ldc 23
+      //   608: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   611: iconst_0
+      //   612: ireturn
+      //   613: ldc 23
+      //   615: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   618: iconst_1
+      //   619: ireturn
+      //   620: astore_1
+      //   621: goto -461 -> 160
+      //   624: astore_1
+      //   625: goto -460 -> 165
+      //   628: astore_2
+      //   629: goto -497 -> 132
+      //   632: astore_1
+      //   633: goto -493 -> 140
+      //   636: astore_1
+      //   637: goto -347 -> 290
+      //   640: astore_1
+      //   641: goto -341 -> 300
+      //   644: astore_2
+      //   645: aload 5
+      //   647: astore 4
+      //   649: goto -367 -> 282
+      //   652: astore_2
+      //   653: goto -371 -> 282
+      //   656: astore 4
+      //   658: aload_2
+      //   659: astore 5
+      //   661: aload 4
+      //   663: astore_2
+      //   664: aload_1
+      //   665: astore 4
+      //   667: aload 5
+      //   669: astore_1
+      //   670: goto -388 -> 282
+      //   673: astore 4
+      //   675: aconst_null
+      //   676: astore_1
+      //   677: aconst_null
+      //   678: astore_2
+      //   679: goto -580 -> 99
+      //   682: astore 4
+      //   684: aconst_null
+      //   685: astore 5
+      //   687: aload_1
+      //   688: astore_2
+      //   689: aload 5
+      //   691: astore_1
+      //   692: goto -593 -> 99
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	695	0	this	HybridUpdateConfig
+      //   0	695	1	paramString1	String
+      //   0	695	2	paramString2	String
+      //   70	12	3	i	int
+      //   11	637	4	localObject1	Object
+      //   656	6	4	localObject2	Object
+      //   665	1	4	str1	String
+      //   673	1	4	localException1	Exception
+      //   682	1	4	localException2	Exception
+      //   14	65	5	arrayOfByte	byte[]
+      //   88	191	5	localException3	Exception
+      //   395	295	5	localObject3	Object
+      //   45	263	6	str2	String
+      // Exception table:
+      //   from	to	target	type
+      //   58	64	88	java/lang/Exception
+      //   64	71	88	java/lang/Exception
+      //   76	85	88	java/lang/Exception
+      //   147	152	88	java/lang/Exception
+      //   16	23	275	finally
+      //   156	160	620	java/lang/Exception
+      //   160	165	624	java/io/IOException
+      //   128	132	628	java/lang/Exception
+      //   136	140	632	java/io/IOException
+      //   286	290	636	java/lang/Exception
+      //   295	300	640	java/io/IOException
+      //   23	58	644	finally
+      //   58	64	652	finally
+      //   64	71	652	finally
+      //   76	85	652	finally
+      //   147	152	652	finally
+      //   99	124	656	finally
+      //   16	23	673	java/lang/Exception
+      //   23	58	682	java/lang/Exception
+    }
+  }
+  
+  public static class LibUpdateConfig
+    extends XWalkUpdater.EmbededUpdateConfig
+  {
+    public LibUpdateConfig(int paramInt, String paramString1, String paramString2)
+    {
+      super(paramString1, paramString2);
+    }
+    
+    public boolean copyPackageToLocal(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(208978);
+      Object localObject = ai.fJU();
+      paramString1 = (String)localObject + File.separator + paramString1;
+      localObject = new File(paramString1);
+      File localFile = new File(getDownloadPath());
+      if (localFile.exists())
+      {
+        if (d.mJ(localFile.getAbsolutePath(), paramString2))
+        {
+          XWalkEnvironment.addXWalkInitializeLog("lib_installer", " already have file and md5 matched");
+          AppMethodBeat.o(208978);
+          return true;
+        }
+        XWalkEnvironment.addXWalkInitializeLog("lib_installer", " already have file but md5 not matched");
+        localFile.delete();
+      }
+      if (!((File)localObject).exists())
+      {
+        com.tencent.xweb.util.g.r(903L, 129L, 1L);
+        XWalkEnvironment.addXWalkInitializeLog("lib_installer", " src file not find:".concat(String.valueOf(paramString1)));
+        AppMethodBeat.o(208978);
+        return false;
+      }
+      if (!d.mJ(((File)localObject).getAbsolutePath(), paramString2))
+      {
+        com.tencent.xweb.util.g.r(903L, 130L, 1L);
+        XWalkEnvironment.addXWalkInitializeLog("lib_installer", " src file MD5 not match");
+      }
+      if (!com.tencent.xweb.util.c.g((File)localObject, localFile))
+      {
+        com.tencent.xweb.util.g.r(903L, 131L, 1L);
+        XWalkEnvironment.addXWalkInitializeLog("lib_installer", " copy file failed");
+        AppMethodBeat.o(208978);
+        return false;
+      }
+      AppMethodBeat.o(208978);
+      return true;
+    }
   }
   
   public static class PatchFileConfig
@@ -2259,7 +3279,7 @@ public class XWalkUpdater
     
     public UpdateConfig(String paramString1, boolean paramBoolean, int paramInt1, String paramString2, int paramInt2)
     {
-      AppMethodBeat.i(194730);
+      AppMethodBeat.i(208979);
       this.apkVer = -1;
       this.isMatchMd5 = false;
       this.isPatchUpdate = paramBoolean;
@@ -2270,15 +3290,15 @@ public class XWalkUpdater
       if (!checkValid())
       {
         paramString1 = new RuntimeException("royle:UpdateConfig is not valid");
-        AppMethodBeat.o(194730);
+        AppMethodBeat.o(208979);
         throw paramString1;
       }
-      AppMethodBeat.o(194730);
+      AppMethodBeat.o(208979);
     }
     
     public UpdateConfig(String paramString1, boolean paramBoolean, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2)
     {
-      AppMethodBeat.i(194731);
+      AppMethodBeat.i(208980);
       this.apkVer = -1;
       this.isMatchMd5 = true;
       this.downloadFileMd5 = paramString1;
@@ -2291,10 +3311,10 @@ public class XWalkUpdater
       if (!checkValid())
       {
         paramString1 = new RuntimeException("royle:UpdateConfig is not valid");
-        AppMethodBeat.o(194731);
+        AppMethodBeat.o(208980);
         throw paramString1;
       }
-      AppMethodBeat.o(194731);
+      AppMethodBeat.o(208980);
     }
     
     public boolean checkValid()

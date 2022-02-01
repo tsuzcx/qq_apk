@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/INFCTechExecParams;", "", "luggage-commons-jsapi-nfc-ext_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/INFCTechExecParams;", "", "luggage-commons-jsapi-nfc-ext_release"})
 public abstract interface a {}
 
 

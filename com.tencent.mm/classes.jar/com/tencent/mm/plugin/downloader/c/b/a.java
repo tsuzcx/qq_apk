@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long ocW;
-  public long ocX;
-  public String ocY;
+  public long oGv;
+  public long oGw;
+  public String oGx;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,20 +15,20 @@ public final class a
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aG(1, this.ocW);
-      paramVarArgs.aG(2, this.ocX);
-      if (this.ocY != null) {
-        paramVarArgs.d(3, this.ocY);
+      paramVarArgs.aO(1, this.oGv);
+      paramVarArgs.aO(2, this.oGw);
+      if (this.oGx != null) {
+        paramVarArgs.d(3, this.oGx);
       }
       AppMethodBeat.o(153058);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.q(1, this.ocW) + 0 + f.a.a.b.b.a.q(2, this.ocX);
+      int i = f.a.a.b.b.a.p(1, this.oGv) + 0 + f.a.a.b.b.a.p(2, this.oGw);
       paramInt = i;
-      if (this.ocY != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.ocY);
+      if (this.oGx != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.oGx);
       }
       AppMethodBeat.o(153058);
       return paramInt;
@@ -36,9 +36,9 @@ public final class a
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(153058);
@@ -54,15 +54,15 @@ public final class a
         AppMethodBeat.o(153058);
         return -1;
       case 1: 
-        locala1.ocW = locala.KhF.xT();
+        locala1.oGv = locala.LVo.xG();
         AppMethodBeat.o(153058);
         return 0;
       case 2: 
-        locala1.ocX = locala.KhF.xT();
+        locala1.oGw = locala.LVo.xG();
         AppMethodBeat.o(153058);
         return 0;
       }
-      locala1.ocY = locala.KhF.readString();
+      locala1.oGx = locala.LVo.readString();
       AppMethodBeat.o(153058);
       return 0;
     }
@@ -72,7 +72,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.b.a
  * JD-Core Version:    0.7.0.1
  */

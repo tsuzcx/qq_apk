@@ -4,112 +4,109 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class das
-  extends com.tencent.mm.bx.a
+  extends cpx
 {
-  public String CIt;
-  public int Dxp;
-  public String Esp;
-  public long Esq;
-  public LinkedList<String> Esw;
-  public String Esx;
+  public int FJJ;
+  public LinkedList<dap> FJK;
   
   public das()
   {
-    AppMethodBeat.i(124560);
-    this.Esw = new LinkedList();
-    AppMethodBeat.o(124560);
+    AppMethodBeat.i(125798);
+    this.FJK = new LinkedList();
+    AppMethodBeat.o(125798);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124561);
+    AppMethodBeat.i(125799);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aG(1, this.Esq);
-      if (this.CIt != null) {
-        paramVarArgs.d(2, this.CIt);
-      }
-      paramVarArgs.e(3, 1, this.Esw);
-      if (this.Esp != null) {
-        paramVarArgs.d(4, this.Esp);
-      }
-      if (this.Esx != null) {
-        paramVarArgs.d(5, this.Esx);
-      }
-      paramVarArgs.aR(6, this.Dxp);
-      AppMethodBeat.o(124561);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.q(1, this.Esq) + 0;
-      paramInt = i;
-      if (this.CIt != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.CIt);
-      }
-      i = paramInt + f.a.a.a.c(3, 1, this.Esw);
-      paramInt = i;
-      if (this.Esp != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Esp);
-      }
-      i = paramInt;
-      if (this.Esx != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.Esx);
-      }
-      paramInt = f.a.a.b.b.a.bA(6, this.Dxp);
-      AppMethodBeat.o(124561);
-      return i + paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.Esw.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
-        }
-      }
-      AppMethodBeat.o(124561);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      das localdas = (das)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(124561);
-        return -1;
-      case 1: 
-        localdas.Esq = locala.KhF.xT();
-        AppMethodBeat.o(124561);
-        return 0;
-      case 2: 
-        localdas.CIt = locala.KhF.readString();
-        AppMethodBeat.o(124561);
-        return 0;
-      case 3: 
-        localdas.Esw.add(locala.KhF.readString());
-        AppMethodBeat.o(124561);
-        return 0;
-      case 4: 
-        localdas.Esp = locala.KhF.readString();
-        AppMethodBeat.o(124561);
-        return 0;
-      case 5: 
-        localdas.Esx = locala.KhF.readString();
-        AppMethodBeat.o(124561);
-        return 0;
+        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      localdas.Dxp = locala.KhF.xS();
-      AppMethodBeat.o(124561);
+      paramVarArgs.aR(2, this.FJJ);
+      paramVarArgs.e(3, 8, this.FJK);
+      AppMethodBeat.o(125799);
       return 0;
     }
-    AppMethodBeat.o(124561);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label498;
+      }
+    }
+    label498:
+    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = f.a.a.b.b.a.bx(2, this.FJJ);
+      int j = f.a.a.a.c(3, 8, this.FJK);
+      AppMethodBeat.o(125799);
+      return paramInt + i + j;
+      if (paramInt == 2)
+      {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.FJK.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
+        }
+        AppMethodBeat.o(125799);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        das localdas = (das)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(125799);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new iv();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdas.BaseRequest = ((iv)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(125799);
+          return 0;
+        case 2: 
+          localdas.FJJ = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(125799);
+          return 0;
+        }
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new dap();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((dap)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localdas.FJK.add(localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(125799);
+        return 0;
+      }
+      AppMethodBeat.o(125799);
+      return -1;
+    }
   }
 }
 

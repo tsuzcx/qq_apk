@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.music.f;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class d$2$2
   implements Runnable
@@ -13,13 +13,13 @@ final class d$2$2
   public final void run()
   {
     AppMethodBeat.i(137333);
-    Toast.makeText(aj.getContext(), aj.getContext().getString(2131761480), 1).show();
+    Toast.makeText(ai.getContext(), ai.getContext().getString(2131761480), 1).show();
     AppMethodBeat.o(137333);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.d.2.2
  * JD-Core Version:    0.7.0.1
  */

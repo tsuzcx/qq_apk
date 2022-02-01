@@ -8,20 +8,20 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  public static c ggt;
-  public ConcurrentHashMap<Integer, b> ggu;
+  public static c gkZ;
+  public ConcurrentHashMap<Integer, b> gla;
   
   static
   {
     AppMethodBeat.i(141017);
-    ggt = new c();
+    gkZ = new c();
     AppMethodBeat.o(141017);
   }
   
   public c()
   {
     AppMethodBeat.i(141012);
-    this.ggu = new ConcurrentHashMap();
+    this.gla = new ConcurrentHashMap();
     AppMethodBeat.o(141012);
   }
   
@@ -38,7 +38,7 @@ public final class c
     AppMethodBeat.i(141014);
     if (parama != null)
     {
-      parama = (b)this.ggu.get(Integer.valueOf(parama.hashCode()));
+      parama = (b)this.gla.get(Integer.valueOf(parama.hashCode()));
       if (parama != null)
       {
         parama = parama.w(paramCharSequence);
@@ -58,28 +58,28 @@ public final class c
       AppMethodBeat.o(141013);
       return;
     }
-    b localb = (b)this.ggu.get(Integer.valueOf(parama.hashCode()));
+    b localb = (b)this.gla.get(Integer.valueOf(parama.hashCode()));
     if (localb != null)
     {
       localb.a(paramf);
-      this.ggu.put(Integer.valueOf(parama.hashCode()), localb);
+      this.gla.put(Integer.valueOf(parama.hashCode()), localb);
       AppMethodBeat.o(141013);
       return;
     }
     localb = new b();
     localb.a(paramf);
-    this.ggu.put(Integer.valueOf(parama.hashCode()), localb);
+    this.gla.put(Integer.valueOf(parama.hashCode()), localb);
     AppMethodBeat.o(141013);
   }
   
-  public final void agC()
+  public final void ahT()
   {
     AppMethodBeat.i(141015);
-    Iterator localIterator = this.ggu.values().iterator();
+    Iterator localIterator = this.gla.values().iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).ggs.clear();
+      ((b)localIterator.next()).gkY.clear();
     }
-    this.ggu.clear();
+    this.gla.clear();
     AppMethodBeat.o(141015);
   }
 }

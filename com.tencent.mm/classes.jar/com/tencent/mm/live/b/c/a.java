@@ -1,65 +1,189 @@
 package com.tencent.mm.live.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hg;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ce;
+import com.tencent.mm.protocal.protobuf.bqa;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.vfs.i;
+import d.g.b.k;
+import d.l;
 
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/storage/LiveAnchorStorage;", "", "()V", "EXPIRATION_TIME", "", "FILE_NAME", "", "PATH", "TAG", "cleanCache", "", "getLiveAnchorInfo", "Lcom/tencent/mm/protocal/protobuf/LiveAnchorInfo;", "hasLiveAnchorInfo", "", "liveFinish", "liveId", "", "liveStart", "roomId", "rotation", "liveName", "createTimeS", "anchorName", "plugin-logic_release"})
 public final class a
-  extends hg
 {
-  protected static c.a info;
+  private static final String FILE_NAME = "anchor.proto";
+  private static final String PATH;
+  private static final String TAG = "MicroMsg.LiveAnchorStorage";
+  private static final int gxo = 86400;
+  public static final a gxp;
   
   static
   {
-    AppMethodBeat.i(203915);
-    c.a locala = new c.a();
-    locala.EYt = new Field[7];
-    locala.columns = new String[8];
+    AppMethodBeat.i(189988);
+    gxp = new a();
+    TAG = "MicroMsg.LiveAnchorStorage";
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "liveId";
-    locala.EYv.put("liveId", "LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(" liveId LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.EYu = "liveId";
-    locala.columns[1] = "hostRoomId";
-    locala.EYv.put("hostRoomId", "TEXT default '' ");
-    localStringBuilder.append(" hostRoomId TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "liveName";
-    locala.EYv.put("liveName", "TEXT default '' ");
-    localStringBuilder.append(" liveName TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "thumbUrl";
-    locala.EYv.put("thumbUrl", "TEXT default '' ");
-    localStringBuilder.append(" thumbUrl TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "anchorUsername";
-    locala.EYv.put("anchorUsername", "TEXT default '' ");
-    localStringBuilder.append(" anchorUsername TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "isSender";
-    locala.EYv.put("isSender", "INTEGER default 'false' ");
-    localStringBuilder.append(" isSender INTEGER default 'false' ");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "timeStamp";
-    locala.EYv.put("timeStamp", "LONG default '0' ");
-    localStringBuilder.append(" timeStamp LONG default '0' ");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(203915);
+    e locale = g.agR();
+    k.g(locale, "MMKernel.storage()");
+    PATH = locale.getAccPath() + "live/";
+    FILE_NAME = "anchor.proto";
+    gxo = 86400;
+    AppMethodBeat.o(189988);
   }
   
-  public final c.a getDBInfo()
+  public static void a(long paramLong, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3)
   {
-    return info;
+    AppMethodBeat.i(189984);
+    k.h(paramString1, "roomId");
+    k.h(paramString2, "liveName");
+    k.h(paramString3, "anchorName");
+    ac.i(TAG, "liveStart liveId:" + paramLong + ", roomId:" + paramString1 + ", rotation:" + paramInt1 + ", liveName:" + paramString2 + ", createTime:" + paramInt2);
+    if (!i.eA(PATH)) {
+      i.aSh(PATH);
+    }
+    bqa localbqa = new bqa();
+    localbqa.DMV = paramLong;
+    localbqa.FeV = paramString1;
+    localbqa.rotation = paramInt1;
+    localbqa.Eud = paramString2;
+    localbqa.EbF = paramInt2;
+    localbqa.FeW = paramString3;
+    paramString1 = localbqa.toByteArray();
+    i.B(PATH + FILE_NAME, paramString1);
+    AppMethodBeat.o(189984);
+  }
+  
+  public static bqa alJ()
+  {
+    AppMethodBeat.i(189986);
+    bqa localbqa = new bqa();
+    byte[] arrayOfByte = i.aU(PATH + FILE_NAME, 0, -1);
+    int i;
+    if (arrayOfByte != null)
+    {
+      if (arrayOfByte.length != 0) {
+        break label191;
+      }
+      i = 1;
+    }
+    for (;;)
+    {
+      com.tencent.mm.bw.a locala;
+      if (i == 0)
+      {
+        i = 1;
+        if (i != 0) {
+          locala = (com.tencent.mm.bw.a)localbqa;
+        }
+      }
+      try
+      {
+        locala.parseFrom(arrayOfByte);
+        if ((localbqa.EbF > 0) && (ce.azK() - localbqa.EbF >= gxo))
+        {
+          ac.i(TAG, "liveAnchorInfo expirated, liveId:" + localbqa.DMV);
+          localbqa.DMV = 0L;
+          localbqa.FeV = "";
+          localbqa.rotation = -1;
+          localbqa.Eud = "";
+          localbqa.EbF = 0;
+          localbqa.FeW = "";
+          arrayOfByte = localbqa.toByteArray();
+          i.B(PATH + FILE_NAME, arrayOfByte);
+        }
+        AppMethodBeat.o(189986);
+        return localbqa;
+        label191:
+        i = 0;
+        continue;
+        i = 0;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ac.l("safeParser", "", new Object[] { localException });
+        }
+      }
+    }
+  }
+  
+  public static void alK()
+  {
+    AppMethodBeat.i(189987);
+    ac.i(TAG, "liveAnchorInfo cleanCache");
+    Object localObject = new bqa();
+    ((bqa)localObject).DMV = 0L;
+    ((bqa)localObject).FeV = "";
+    ((bqa)localObject).rotation = -1;
+    ((bqa)localObject).Eud = "";
+    ((bqa)localObject).EbF = 0;
+    ((bqa)localObject).FeW = "";
+    localObject = ((bqa)localObject).toByteArray();
+    i.B(PATH + FILE_NAME, (byte[])localObject);
+    AppMethodBeat.o(189987);
+  }
+  
+  public static void pl(long paramLong)
+  {
+    AppMethodBeat.i(189985);
+    ac.i(TAG, "liveFinish liveId:".concat(String.valueOf(paramLong)));
+    Object localObject = new bqa();
+    byte[] arrayOfByte = i.aU(PATH + FILE_NAME, 0, -1);
+    int i;
+    if (arrayOfByte != null)
+    {
+      if (arrayOfByte.length != 0) {
+        break label174;
+      }
+      i = 1;
+    }
+    for (;;)
+    {
+      com.tencent.mm.bw.a locala;
+      if (i == 0)
+      {
+        i = 1;
+        if (i != 0) {
+          locala = (com.tencent.mm.bw.a)localObject;
+        }
+      }
+      try
+      {
+        locala.parseFrom(arrayOfByte);
+        if (((bqa)localObject).DMV == paramLong)
+        {
+          ((bqa)localObject).DMV = 0L;
+          ((bqa)localObject).FeV = "";
+          ((bqa)localObject).rotation = -1;
+          ((bqa)localObject).Eud = "";
+          ((bqa)localObject).EbF = 0;
+          ((bqa)localObject).FeW = "";
+          localObject = ((bqa)localObject).toByteArray();
+          i.B(PATH + FILE_NAME, (byte[])localObject);
+        }
+        AppMethodBeat.o(189985);
+        return;
+        label174:
+        i = 0;
+        continue;
+        i = 0;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ac.l("safeParser", "", new Object[] { localException });
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.b.c.a
  * JD-Core Version:    0.7.0.1
  */

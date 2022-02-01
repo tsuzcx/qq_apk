@@ -3,7 +3,6 @@ package com.tencent.mm.plugin.appbrand.widget.recentview;
 import android.content.Context;
 import android.view.View;
 import android.widget.ListView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.plugin.appbrand.widget.header.HeaderContainer;
@@ -14,37 +13,23 @@ public abstract interface d
 {
   public abstract com.tencent.mm.plugin.appbrand.widget.header.c a(Context paramContext, ListView paramListView, HeaderContainer paramHeaderContainer);
   
-  public abstract AppBrandRecentView a(Context paramContext, b paramb, d.a parama);
+  public abstract AppBrandRecentView a(Context paramContext, d.b paramb, d.a parama);
   
-  public abstract void bqV();
+  public abstract void bxV();
   
-  public abstract b bqW();
+  public abstract b bxW();
   
-  public abstract void bqX();
+  public abstract void bxX();
   
-  public abstract boolean bqY();
+  public abstract boolean bxY();
   
-  public abstract HeaderContainer dM(Context paramContext);
+  public abstract HeaderContainer dU(Context paramContext);
   
-  public abstract View dN(Context paramContext);
-  
-  public static enum b
-  {
-    static
-    {
-      AppMethodBeat.i(153259);
-      mlW = new b("TYPE_MENU", 0);
-      mlX = new b("TYPE_CONVERSATION", 1);
-      mlY = new b[] { mlW, mlX };
-      AppMethodBeat.o(153259);
-    }
-    
-    private b() {}
-  }
+  public abstract View dV(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recentview.d
  * JD-Core Version:    0.7.0.1
  */

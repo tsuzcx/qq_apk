@@ -13,6 +13,7 @@ public class RepairKit
   implements CancellationSignal.OnCancelListener
 {
   public static final int FLAG_ALL_TABLES = 2;
+  public static final int FLAG_CHECK_TABLE_COLUMNS = 4;
   public static final int FLAG_NO_CREATE_TABLES = 1;
   private static final int INTEGRITY_DATA = 2;
   private static final int INTEGRITY_HEADER = 1;
@@ -402,7 +403,7 @@ public class RepairKit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.repair.RepairKit
  * JD-Core Version:    0.7.0.1
  */

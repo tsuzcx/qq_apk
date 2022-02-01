@@ -28,12 +28,12 @@ public final class b
   extends RecyclerView.a<a>
   implements View.OnClickListener
 {
-  public ArrayList<g> IFW;
-  public LinkedList<g> IFX;
-  public HashMap<g, Integer> IFY;
-  private SparseArray<g> IFZ;
-  private com.tencent.toybrick.e.b IGa;
-  public a.a IGb;
+  public ArrayList<g> Ksh;
+  public LinkedList<g> Ksi;
+  public HashMap<g, Integer> Ksj;
+  private SparseArray<g> Ksk;
+  private com.tencent.toybrick.e.b Ksl;
+  public a.a Ksm;
   private Context mContext;
   
   public b(Context paramContext, a.a parama)
@@ -41,30 +41,30 @@ public final class b
     AppMethodBeat.i(159919);
     a(new a((byte)0));
     this.mContext = paramContext;
-    this.IGb = parama;
-    paramContext = parama.IGX;
+    this.Ksm = parama;
+    paramContext = parama.Kti;
     parama = paramContext.iterator();
     int i = 0;
     while (parama.hasNext())
     {
-      ((g)parama.next()).bBv = i;
+      ((g)parama.next()).bzd = i;
       i += 1;
     }
-    this.IFX = paramContext;
-    this.IFZ = new SparseArray();
-    this.IFY = new HashMap();
-    this.IFW = new ArrayList();
-    this.IGa = new com.tencent.toybrick.e.b(this);
-    paramContext = this.IGa;
-    paramContext.mMainHandler.removeCallbacks(paramContext.IHf);
+    this.Ksi = paramContext;
+    this.Ksk = new SparseArray();
+    this.Ksj = new HashMap();
+    this.Ksh = new ArrayList();
+    this.Ksl = new com.tencent.toybrick.e.b(this);
+    paramContext = this.Ksl;
+    paramContext.mMainHandler.removeCallbacks(paramContext.Ktq);
     parama = paramContext.mMainHandler;
     b.1 local1 = new b.1(paramContext);
-    paramContext.IHf = local1;
+    paramContext.Ktq = local1;
     parama.post(local1);
     AppMethodBeat.o(159919);
   }
   
-  private a acQ(int paramInt)
+  private a afM(int paramInt)
   {
     AppMethodBeat.i(159921);
     long l = System.currentTimeMillis();
@@ -73,22 +73,22 @@ public final class b
       Object localObject1 = LayoutInflater.from(this.mContext).inflate(paramInt, null);
       ((View)localObject1).setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
       ((View)localObject1).setOnClickListener(this);
-      localObject1 = ((g)this.IFZ.get(paramInt)).gG((View)localObject1);
+      localObject1 = ((g)this.Ksk.get(paramInt)).gY((View)localObject1);
       return localObject1;
     }
     finally
     {
-      an.d("VerticalToyAdapter", "[onCreateViewHolder] cost:%sms toyBrick:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), ((g)this.IFZ.get(paramInt)).IGJ });
+      an.d("VerticalToyAdapter", "[onCreateViewHolder] cost:%sms toyBrick:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), ((g)this.Ksk.get(paramInt)).KsU });
       AppMethodBeat.o(159921);
     }
   }
   
-  public final g acR(int paramInt)
+  public final g afN(int paramInt)
   {
     AppMethodBeat.i(159924);
-    if (this.IFW.size() > paramInt)
+    if (this.Ksh.size() > paramInt)
     {
-      g localg = (g)this.IFW.get(paramInt);
+      g localg = (g)this.Ksh.get(paramInt);
       AppMethodBeat.o(159924);
       return localg;
     }
@@ -99,7 +99,7 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(159922);
-    int i = this.IFW.size();
+    int i = this.Ksh.size();
     AppMethodBeat.o(159922);
     return i;
   }
@@ -107,9 +107,9 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(159920);
-    g localg = acR(paramInt);
+    g localg = afN(paramInt);
     paramInt = localg.getLayoutResource();
-    this.IFZ.put(paramInt, localg);
+    this.Ksk.put(paramInt, localg);
     AppMethodBeat.o(159920);
     return paramInt;
   }
@@ -117,7 +117,7 @@ public final class b
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(159923);
-    acR(((a)paramView.getTag()).ln());
+    afN(((a)paramView.getTag()).lv());
     AppMethodBeat.o(159923);
   }
   
@@ -131,9 +131,9 @@ public final class b
       AppMethodBeat.i(159918);
       super.as(paramInt1, paramInt2);
       an.d("NotifyObserver", "[onItemRangeChanged] positionStart:%d, itemCount:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      g localg = b.this.acR(paramInt1);
-      if ((localg != null) && (localg.IGK != null)) {
-        c.execute(new c.d(c.IHo, localg, localg.IGK, new c.b() {}));
+      g localg = b.this.afN(paramInt1);
+      if ((localg != null) && (localg.KsV != null)) {
+        c.execute(new c.d(c.Ktz, localg, localg.KsV, new c.b() {}));
       }
       AppMethodBeat.o(159918);
     }

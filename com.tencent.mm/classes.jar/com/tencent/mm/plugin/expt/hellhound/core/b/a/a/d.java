@@ -7,29 +7,29 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
 import com.tencent.mm.plugin.expt.hellhound.core.b.b.g;
-import com.tencent.mm.protocal.protobuf.be;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bg;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class d
   extends a
 {
-  private static void a(be parambe)
+  private static void a(bg parambg)
   {
     AppMethodBeat.i(121981);
     try
     {
-      b.o("hell_aty_action_mmkv_key", parambe.toByteArray());
+      b.o("hell_aty_action_mmkv_key", parambg.toByteArray());
       AppMethodBeat.o(121981);
       return;
     }
-    catch (Exception parambe)
+    catch (Exception parambg)
     {
-      ad.printErrStackTrace("ActivityDao_MMKV", parambe, "habbyge-mali, HellhoundDao writeBack", new Object[0]);
+      ac.printErrStackTrace("ActivityDao_MMKV", parambg, "habbyge-mali, HellhoundDao writeBack", new Object[0]);
       AppMethodBeat.o(121981);
     }
   }
   
-  private static be cbT()
+  private static bg cje()
   {
     AppMethodBeat.i(121982);
     byte[] arrayOfByte = b.getBytes("hell_aty_action_mmkv_key");
@@ -38,119 +38,146 @@ final class d
       AppMethodBeat.o(121982);
       return null;
     }
-    be localbe = new be();
+    bg localbg = new bg();
     try
     {
-      localbe.parseFrom(arrayOfByte);
+      localbg.parseFrom(arrayOfByte);
       AppMethodBeat.o(121982);
-      return localbe;
+      return localbg;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.printErrStackTrace("ActivityDao_MMKV", localException, "habbyge-mali, HellhoundDao _doRead parse", new Object[0]);
+        ac.printErrStackTrace("ActivityDao_MMKV", localException, "habbyge-mali, HellhoundDao _doRead parse", new Object[0]);
         Object localObject = null;
       }
     }
   }
   
-  final void Bp(int paramInt)
+  final void Ch(int paramInt)
   {
     AppMethodBeat.i(121975);
-    be localbe2 = cbT();
-    be localbe1 = localbe2;
-    if (localbe2 == null) {
-      localbe1 = new be();
+    bg localbg2 = cje();
+    bg localbg1 = localbg2;
+    if (localbg2 == null) {
+      localbg1 = new bg();
     }
-    localbe1.CvB = paramInt;
-    a(localbe1);
+    localbg1.DNW = paramInt;
+    a(localbg1);
     AppMethodBeat.o(121975);
   }
   
-  final void VR(String paramString)
+  final void aa(Activity paramActivity)
+  {
+    AppMethodBeat.i(121977);
+    Object localObject1 = cje();
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = new bg();
+    }
+    Object localObject3 = null;
+    localObject1 = localObject3;
+    if ((paramActivity instanceof FragmentActivity))
+    {
+      Fragment localFragment = g.ab(paramActivity);
+      localObject1 = localObject3;
+      if (localFragment != null) {
+        localObject1 = localFragment.getClass().getCanonicalName();
+      }
+    }
+    localObject3 = localObject1;
+    if (localObject1 == null) {
+      localObject3 = paramActivity.getClass().getCanonicalName();
+    }
+    ((bg)localObject2).qqh = ((String)localObject3);
+    a((bg)localObject2);
+    AppMethodBeat.o(121977);
+  }
+  
+  final void aag(String paramString)
   {
     AppMethodBeat.i(121967);
-    Object localObject2 = cbT();
+    Object localObject2 = cje();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = new be();
+      localObject1 = new bg();
     }
-    ((be)localObject1).Cvt = true;
+    ((bg)localObject1).DNO = true;
     localObject2 = paramString;
     if (paramString == null) {
       localObject2 = "";
     }
-    ((be)localObject1).Cvx = ((String)localObject2);
-    a((be)localObject1);
+    ((bg)localObject1).DNS = ((String)localObject2);
+    a((bg)localObject1);
     AppMethodBeat.o(121967);
   }
   
-  final void VS(String paramString)
+  final void aah(String paramString)
   {
     AppMethodBeat.i(121969);
-    Object localObject2 = cbT();
+    Object localObject2 = cje();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = new be();
+      localObject1 = new bg();
     }
-    ((be)localObject1).Cvu = true;
+    ((bg)localObject1).DNP = true;
     localObject2 = paramString;
     if (paramString == null) {
       localObject2 = "";
     }
-    ((be)localObject1).Cvy = ((String)localObject2);
-    a((be)localObject1);
+    ((bg)localObject1).DNT = ((String)localObject2);
+    a((bg)localObject1);
     AppMethodBeat.o(121969);
   }
   
-  final void VT(String paramString)
+  final void aai(String paramString)
   {
     AppMethodBeat.i(121971);
-    Object localObject2 = cbT();
+    Object localObject2 = cje();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = new be();
+      localObject1 = new bg();
     }
-    ((be)localObject1).Cvv = true;
+    ((bg)localObject1).DNQ = true;
     localObject2 = paramString;
     if (paramString == null) {
       localObject2 = "";
     }
-    ((be)localObject1).Cvz = ((String)localObject2);
-    a((be)localObject1);
+    ((bg)localObject1).DNU = ((String)localObject2);
+    a((bg)localObject1);
     AppMethodBeat.o(121971);
   }
   
-  final void VU(String paramString)
+  final void aaj(String paramString)
   {
     AppMethodBeat.i(121973);
-    Object localObject2 = cbT();
+    Object localObject2 = cje();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = new be();
+      localObject1 = new bg();
     }
-    ((be)localObject1).Cvw = true;
+    ((bg)localObject1).DNR = true;
     localObject2 = paramString;
     if (paramString == null) {
       localObject2 = "";
     }
-    ((be)localObject1).CvA = ((String)localObject2);
-    a((be)localObject1);
+    ((bg)localObject1).DNV = ((String)localObject2);
+    a((bg)localObject1);
     AppMethodBeat.o(121973);
   }
   
-  final boolean VV(String paramString)
+  final boolean aak(String paramString)
   {
     AppMethodBeat.i(121968);
-    be localbe = cbT();
-    if (localbe == null)
+    bg localbg = cje();
+    if (localbg == null)
     {
       AppMethodBeat.o(121968);
       return false;
     }
-    boolean bool2 = localbe.Cvt;
-    String str = localbe.Cvx;
+    boolean bool2 = localbg.DNO;
+    String str = localbg.DNS;
     boolean bool1 = bool2;
     if (bool2)
     {
@@ -162,25 +189,25 @@ final class d
           bool1 = false;
         }
       }
-      localbe.Cvt = false;
-      localbe.Cvx = "";
-      a(localbe);
+      localbg.DNO = false;
+      localbg.DNS = "";
+      a(localbg);
     }
     AppMethodBeat.o(121968);
     return bool1;
   }
   
-  final boolean VW(String paramString)
+  final boolean aal(String paramString)
   {
     AppMethodBeat.i(121974);
-    be localbe = cbT();
-    if (localbe == null)
+    bg localbg = cje();
+    if (localbg == null)
     {
       AppMethodBeat.o(121974);
       return false;
     }
-    boolean bool2 = localbe.Cvw;
-    String str = localbe.CvA;
+    boolean bool2 = localbg.DNR;
+    String str = localbg.DNV;
     boolean bool1 = bool2;
     if (bool2)
     {
@@ -190,65 +217,38 @@ final class d
         bool1 = bool2;
         if (!str.equals(paramString))
         {
-          ad.i("ActivityDao_MMKV", "HABBYGE-MALI, isFinishAction_pause, finishActivityName: %s, pActivityName: %s", new Object[] { str, paramString });
+          ac.i("ActivityDao_MMKV", "HABBYGE-MALI, isFinishAction_pause, finishActivityName: %s, pActivityName: %s", new Object[] { str, paramString });
           bool1 = false;
         }
       }
-      localbe.Cvw = false;
-      localbe.CvA = "";
-      a(localbe);
+      localbg.DNR = false;
+      localbg.DNV = "";
+      a(localbg);
     }
-    ad.i("ActivityDao_MMKV", "HABBYGE-MALI, isFinishAction_pause, isFinishAction: %s", new Object[] { Boolean.valueOf(bool1) });
+    ac.i("ActivityDao_MMKV", "HABBYGE-MALI, isFinishAction_pause, isFinishAction: %s", new Object[] { Boolean.valueOf(bool1) });
     AppMethodBeat.o(121974);
     return bool1;
   }
   
-  final void VX(String paramString)
+  final void aam(String paramString)
   {
     AppMethodBeat.i(121979);
-    be localbe2 = cbT();
-    be localbe1 = localbe2;
-    if (localbe2 == null) {
-      localbe1 = new be();
+    bg localbg2 = cje();
+    bg localbg1 = localbg2;
+    if (localbg2 == null) {
+      localbg1 = new bg();
     }
-    localbe1.pHA = paramString;
-    a(localbe1);
+    localbg1.qqh = paramString;
+    a(localbg1);
     AppMethodBeat.o(121979);
-  }
-  
-  final void Z(Activity paramActivity)
-  {
-    AppMethodBeat.i(121977);
-    Object localObject1 = cbT();
-    Object localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = new be();
-    }
-    Object localObject3 = null;
-    localObject1 = localObject3;
-    if ((paramActivity instanceof FragmentActivity))
-    {
-      Fragment localFragment = g.aa(paramActivity);
-      localObject1 = localObject3;
-      if (localFragment != null) {
-        localObject1 = localFragment.getClass().getCanonicalName();
-      }
-    }
-    localObject3 = localObject1;
-    if (localObject1 == null) {
-      localObject3 = paramActivity.getClass().getCanonicalName();
-    }
-    ((be)localObject2).pHA = ((String)localObject3);
-    a((be)localObject2);
-    AppMethodBeat.o(121977);
   }
   
   final void b(String paramString1, boolean paramBoolean, String paramString2)
   {
     AppMethodBeat.i(121978);
-    be localbe = cbT();
-    if (localbe == null) {
-      localbe = new be();
+    bg localbg = cje();
+    if (localbg == null) {
+      localbg = new bg();
     }
     for (;;)
     {
@@ -260,82 +260,82 @@ final class d
       if (str == null) {
         paramString2 = paramString1.getClass().getCanonicalName();
       }
-      localbe.pHA = paramString2;
-      a(localbe);
+      localbg.qqh = paramString2;
+      a(localbg);
       AppMethodBeat.o(121978);
       return;
     }
   }
   
-  final int cbN()
+  final int ciY()
   {
     AppMethodBeat.i(121976);
-    be localbe = cbT();
-    if (localbe == null)
+    bg localbg = cje();
+    if (localbg == null)
     {
       AppMethodBeat.o(121976);
       return -1;
     }
-    int i = localbe.CvB;
+    int i = localbg.DNW;
     AppMethodBeat.o(121976);
     return i;
   }
   
-  final boolean cbO()
+  final boolean ciZ()
   {
     AppMethodBeat.i(121970);
-    be localbe = cbT();
-    if (localbe == null)
+    bg localbg = cje();
+    if (localbg == null)
     {
       AppMethodBeat.o(121970);
       return false;
     }
-    boolean bool = localbe.Cvu;
+    boolean bool = localbg.DNP;
     if (bool)
     {
-      localbe.Cvu = false;
-      localbe.Cvy = "";
-      a(localbe);
+      localbg.DNP = false;
+      localbg.DNT = "";
+      a(localbg);
     }
     AppMethodBeat.o(121970);
     return bool;
   }
   
-  final boolean cbP()
+  final boolean cja()
   {
     AppMethodBeat.i(121972);
-    be localbe = cbT();
-    if (localbe == null)
+    bg localbg = cje();
+    if (localbg == null)
     {
       AppMethodBeat.o(121972);
       return false;
     }
-    boolean bool = localbe.Cvv;
+    boolean bool = localbg.DNQ;
     if (bool)
     {
-      localbe.Cvv = false;
-      localbe.Cvz = "";
-      a(localbe);
+      localbg.DNQ = false;
+      localbg.DNU = "";
+      a(localbg);
     }
     AppMethodBeat.o(121972);
     return bool;
   }
   
-  final String cbQ()
+  final String cjb()
   {
     AppMethodBeat.i(121980);
-    Object localObject = cbT();
+    Object localObject = cje();
     if (localObject == null)
     {
       AppMethodBeat.o(121980);
       return null;
     }
-    if (((be)localObject).pHA.equals(""))
+    if (((bg)localObject).qqh.equals(""))
     {
       AppMethodBeat.o(121980);
       return null;
     }
-    localObject = ((be)localObject).pHA;
+    localObject = ((bg)localObject).qqh;
     AppMethodBeat.o(121980);
     return localObject;
   }
@@ -343,14 +343,14 @@ final class d
   final void reset()
   {
     AppMethodBeat.i(121966);
-    ad.i("ActivityDao_MMKV", "habbyge-mali, ActivityDao_MMKV reset");
+    ac.i("ActivityDao_MMKV", "habbyge-mali, ActivityDao_MMKV reset");
     b.o("hell_aty_action_mmkv_key", new byte[0]);
     AppMethodBeat.o(121966);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.a.a.d
  * JD-Core Version:    0.7.0.1
  */

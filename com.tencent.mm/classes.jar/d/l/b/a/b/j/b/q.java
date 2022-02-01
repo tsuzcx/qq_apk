@@ -14,31 +14,31 @@ import java.util.List;
 public final class q
   implements at
 {
-  public final ArrayList<ab> JSp;
-  private final y Jon;
+  public final ArrayList<ab> LFI;
+  private final y LbH;
   private final long value;
   
-  public final boolean fxO()
+  public final boolean fQs()
   {
     return false;
   }
   
-  public final Collection<ab> fzP()
-  {
-    return (Collection)this.JSp;
-  }
-  
-  public final g fza()
+  public final g fRE()
   {
     AppMethodBeat.i(60090);
-    g localg = this.Jon.fza();
+    g localg = this.LbH.fRE();
     AppMethodBeat.o(60090);
     return localg;
   }
   
+  public final Collection<ab> fSt()
+  {
+    return (Collection)this.LFI;
+  }
+  
   public final List<as> getParameters()
   {
-    return (List)v.Jgl;
+    return (List)v.KTF;
   }
   
   public final String toString()
@@ -51,7 +51,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.q
  * JD-Core Version:    0.7.0.1
  */

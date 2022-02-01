@@ -15,12 +15,12 @@ import java.util.Set;
 public final class d
   implements d.l.b.a.b.d.a.j
 {
-  private final ClassLoader JvF;
+  private final ClassLoader LiY;
   
   public d(ClassLoader paramClassLoader)
   {
     AppMethodBeat.i(57362);
-    this.JvF = paramClassLoader;
+    this.LiY = paramClassLoader;
     AppMethodBeat.o(57362);
   }
   
@@ -28,23 +28,23 @@ public final class d
   {
     AppMethodBeat.i(57359);
     k.h(parama, "request");
-    parama = parama.Joh;
-    b localb = parama.fGW();
+    parama = parama.LbB;
+    b localb = parama.fZA();
     k.g(localb, "classId.packageFqName");
-    parama = parama.fGX().qV();
+    parama = parama.fZB().rf();
     k.g(parama, "classId.relativeClassName.asString()");
     parama = n.a(parama, '.', '$');
-    if (localb.JLQ.JLV.isEmpty()) {}
+    if (localb.Lzj.Lzo.isEmpty()) {}
     for (;;)
     {
-      parama = e.a(this.JvF, parama);
+      parama = e.a(this.LiY, parama);
       if (parama == null) {
         break;
       }
       parama = (g)new d.l.b.a.b.b.d.b.j(parama);
       AppMethodBeat.o(57359);
       return parama;
-      parama = localb.qV() + "." + parama;
+      parama = localb.rf() + "." + parama;
     }
     AppMethodBeat.o(57359);
     return null;
@@ -69,7 +69,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.d
  * JD-Core Version:    0.7.0.1
  */

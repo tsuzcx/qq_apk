@@ -11,7 +11,7 @@ import d.l;
 import d.y;
 import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"value", "", "showFooter", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "getShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;)Z", "setShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;Z)V", "show", "showThreeDots", "getShowThreeDots", "setShowThreeDots", "configFooterWording", "", "runOnUiThread", "action", "Lkotlin/Function0;", "setWordingText", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "wording", "", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"value", "", "showFooter", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "getShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;)Z", "setShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;Z)V", "show", "showThreeDots", "getShowThreeDots", "setShowThreeDots", "configFooterWording", "", "runOnUiThread", "action", "Lkotlin/Function0;", "setWordingText", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "wording", "", "plugin-appbrand-integration_release"})
 public final class i
 {
   private static void a(g paramg, String paramString)
@@ -19,7 +19,7 @@ public final class i
     AppMethodBeat.i(51382);
     k.h(paramg, "$this$setWordingText");
     k.h(paramString, "wording");
-    paramg = paramg.arI.findViewById(2131306108);
+    paramg = paramg.asD.findViewById(2131306108);
     k.g(paramg, "this.itemView.findViewBy…ents_list_footer_wording)");
     ((TextView)paramg).setText((CharSequence)paramString);
     AppMethodBeat.o(51382);
@@ -30,7 +30,7 @@ public final class i
     AppMethodBeat.i(51383);
     k.h(paramAppBrandRecommendUILogic, "$this$runOnUiThread");
     k.h(parama, "action");
-    paramAppBrandRecommendUILogic.lLc.runOnUiThread((Runnable)new i.a(parama));
+    paramAppBrandRecommendUILogic.mmZ.runOnUiThread((Runnable)new i.a(parama));
     AppMethodBeat.o(51383);
   }
   
@@ -38,7 +38,7 @@ public final class i
   {
     AppMethodBeat.i(51379);
     k.h(paramAppBrandRecommendUILogic, "$this$showFooter");
-    paramAppBrandRecommendUILogic.bqc().showLoading(paramBoolean);
+    paramAppBrandRecommendUILogic.bwZ().showLoading(paramBoolean);
     AppMethodBeat.o(51379);
   }
   
@@ -49,7 +49,7 @@ public final class i
     if (!paramBoolean) {
       h(paramAppBrandRecommendUILogic);
     }
-    paramAppBrandRecommendUILogic.bqe().hh(paramBoolean);
+    paramAppBrandRecommendUILogic.bxb().hE(paramBoolean);
     AppMethodBeat.o(51380);
   }
   
@@ -57,17 +57,17 @@ public final class i
   {
     AppMethodBeat.i(51381);
     k.h(paramAppBrandRecommendUILogic, "$this$configFooterWording");
-    if (paramAppBrandRecommendUILogic.lKO.bpS().isEmpty())
+    if (paramAppBrandRecommendUILogic.mmL.bwP().isEmpty())
     {
-      localg = paramAppBrandRecommendUILogic.bqe();
-      paramAppBrandRecommendUILogic = com.tencent.mm.cd.a.aq(paramAppBrandRecommendUILogic.context, 2131755623);
+      localg = paramAppBrandRecommendUILogic.bxb();
+      paramAppBrandRecommendUILogic = com.tencent.mm.cc.a.aw(paramAppBrandRecommendUILogic.context, 2131755623);
       k.g(paramAppBrandRecommendUILogic, "ResourceHelper.getString…ommend_null_list_wording)");
       a(localg, paramAppBrandRecommendUILogic);
       AppMethodBeat.o(51381);
       return;
     }
-    g localg = paramAppBrandRecommendUILogic.bqe();
-    paramAppBrandRecommendUILogic = com.tencent.mm.cd.a.aq(paramAppBrandRecommendUILogic.context, 2131755500);
+    g localg = paramAppBrandRecommendUILogic.bxb();
+    paramAppBrandRecommendUILogic = com.tencent.mm.cc.a.aw(paramAppBrandRecommendUILogic.context, 2131755500);
     k.g(paramAppBrandRecommendUILogic, "ResourceHelper.getString…ents_list_footer_no_more)");
     a(localg, paramAppBrandRecommendUILogic);
     AppMethodBeat.o(51381);
@@ -75,7 +75,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.i
  * JD-Core Version:    0.7.0.1
  */

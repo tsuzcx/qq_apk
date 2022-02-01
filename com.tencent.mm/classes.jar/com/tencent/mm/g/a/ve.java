@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ve
   extends b
 {
-  public a dAF;
+  public a dye;
   
   public ve()
   {
@@ -15,21 +15,22 @@ public final class ve
   
   private ve(byte paramByte)
   {
-    AppMethodBeat.i(131795);
-    this.dAF = new a();
-    this.ESR = false;
+    AppMethodBeat.i(118479);
+    this.dye = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(131795);
+    AppMethodBeat.o(118479);
   }
   
   public static final class a
   {
-    public int status = 0;
+    public boolean dyf = false;
+    public long dyg = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ve
  * JD-Core Version:    0.7.0.1
  */

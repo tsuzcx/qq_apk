@@ -8,15 +8,15 @@ import java.io.RandomAccessFile;
 
 public final class a
 {
-  public a.a cJN;
-  public b cJO = null;
+  public a.a cGU;
+  public b cGV = null;
   
   public a(b paramb)
   {
-    this.cJO = paramb;
+    this.cGV = paramb;
   }
   
-  public static a el(String paramString)
+  public static a ea(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(962);
@@ -42,25 +42,25 @@ public final class a
         AppMethodBeat.o(962);
       }
     }
-    localObject = a.a.I(i(paramString, i - 8, 8));
+    localObject = a.a.G(i(paramString, i - 8, 8));
     if (localObject == null)
     {
       AppMethodBeat.o(962);
       return null;
     }
-    if (((a.a)localObject).cJQ >= 0)
+    if (((a.a)localObject).cGX >= 0)
     {
       localb = new b();
-      localb.parseFrom(i(paramString, i - ((a.a)localObject).cJQ - 8, ((a.a)localObject).cJQ));
+      localb.parseFrom(i(paramString, i - ((a.a)localObject).cGX - 8, ((a.a)localObject).cGX));
       paramString = new a(localb);
-      paramString.cJN = ((a.a)localObject);
+      paramString.cGU = ((a.a)localObject);
       AppMethodBeat.o(962);
       return paramString;
     }
     return null;
   }
   
-  public static boolean em(String paramString)
+  public static boolean eb(String paramString)
   {
     AppMethodBeat.i(963);
     if (paramString == null)
@@ -74,14 +74,14 @@ public final class a
       AppMethodBeat.o(963);
       return false;
     }
-    a locala = el(paramString);
-    if ((locala != null) && (locala.cJO != null)) {
+    a locala = ea(paramString);
+    if ((locala != null) && (locala.cGV != null)) {
       try
       {
         paramString = new File(paramString);
         if (paramString.exists())
         {
-          boolean bool = locala.cJO.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.cJN.cJQ + 8) - 2L), new byte[] { 0, 0 }));
+          boolean bool = locala.cGV.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.cGU.cGX + 8) - 2L), new byte[] { 0, 0 }));
           AppMethodBeat.o(963);
           return bool;
         }
@@ -162,15 +162,15 @@ public final class a
     AppMethodBeat.i(961);
     try
     {
-      if (el(paramFile.getAbsolutePath()) != null)
+      if (ea(paramFile.getAbsolutePath()) != null)
       {
         System.out.println("Error: duplicate append apk external info!");
         AppMethodBeat.o(961);
         return -1;
       }
-      byte[] arrayOfByte = this.cJO.toByteArray();
+      byte[] arrayOfByte = this.cGV.toByteArray();
       Object localObject = new a.a(arrayOfByte.length);
-      localObject = a.a.bh(a.a.cJP << 32 | ((a.a)localObject).cJQ);
+      localObject = a.a.be(a.a.cGW << 32 | ((a.a)localObject).cGX);
       int i = (byte)((arrayOfByte.length + 8) % 256);
       int j = (byte)((arrayOfByte.length + 8) / 256);
       RandomAccessFile localRandomAccessFile = new RandomAccessFile(paramFile, "rw");
@@ -194,7 +194,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.d.a
  * JD-Core Version:    0.7.0.1
  */

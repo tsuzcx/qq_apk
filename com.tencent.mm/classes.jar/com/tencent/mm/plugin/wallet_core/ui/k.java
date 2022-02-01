@@ -26,9 +26,9 @@ import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.s;
 import com.tencent.mm.plugin.wallet_core.ui.view.FavourLayout;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.c.ah;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.ArrayList;
@@ -38,32 +38,32 @@ import java.util.LinkedList;
 public class k
   extends BaseAdapter
 {
-  private int Amt;
-  public String Amu;
-  public boolean Amv;
-  private boolean Amw;
+  protected ArrayList<Bankcard> AYt;
+  private int BEO;
+  public String BEP;
+  public boolean BEQ;
+  private boolean BER;
+  private com.tencent.mm.plugin.wallet_core.utils.a Bfa;
+  private int Biu;
   private Context mContext;
-  private Orders vIq;
-  protected ArrayList<Bankcard> zGg;
-  private com.tencent.mm.plugin.wallet_core.utils.a zMG;
-  private int zQa;
+  private Orders wSu;
   
   public k(Context paramContext, ArrayList<Bankcard> paramArrayList, int paramInt, Orders paramOrders)
   {
     AppMethodBeat.i(70876);
-    this.vIq = null;
-    this.Amt = -1;
-    this.Amu = "";
-    this.Amv = true;
-    this.Amw = false;
+    this.wSu = null;
+    this.BEO = -1;
+    this.BEP = "";
+    this.BEQ = true;
+    this.BER = false;
     this.mContext = paramContext;
-    this.zGg = paramArrayList;
-    this.zQa = paramInt;
-    this.vIq = paramOrders;
-    this.zMG = new com.tencent.mm.plugin.wallet_core.utils.a();
-    this.zMG.b(this.mContext, this.zGg);
-    if ((paramOrders != null) && (paramOrders.AfF == 1)) {
-      this.Amw = true;
+    this.AYt = paramArrayList;
+    this.Biu = paramInt;
+    this.wSu = paramOrders;
+    this.Bfa = new com.tencent.mm.plugin.wallet_core.utils.a();
+    this.Bfa.b(this.mContext, this.AYt);
+    if ((paramOrders != null) && (paramOrders.BxZ == 1)) {
+      this.BER = true;
     }
     AppMethodBeat.o(70876);
   }
@@ -72,17 +72,17 @@ public class k
   {
     AppMethodBeat.i(70881);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.vIq != null) && (this.vIq.Afy != null) && (this.vIq.Afy.zOC != null))
+    if ((this.wSu != null) && (this.wSu.BxS != null) && (this.wSu.BxS.BgW != null))
     {
-      Iterator localIterator = this.vIq.Afy.zOC.zNX.iterator();
+      Iterator localIterator = this.wSu.BxS.BgW.Bgr.iterator();
       while (localIterator.hasNext())
       {
         c localc = (c)localIterator.next();
-        if (localc.uns.equals(paramBankcard.field_bindSerial))
+        if (localc.vwo.equals(paramBankcard.field_bindSerial))
         {
-          paramBankcard = localc.zOi.iterator();
+          paramBankcard = localc.BgC.iterator();
           while (paramBankcard.hasNext()) {
-            localLinkedList.add(((d)paramBankcard.next()).vzN);
+            localLinkedList.add(((d)paramBankcard.next()).wJS);
           }
           AppMethodBeat.o(70881);
           return localLinkedList;
@@ -93,22 +93,22 @@ public class k
     return localLinkedList;
   }
   
-  public Bankcard Rk(int paramInt)
+  public Bankcard Tt(int paramInt)
   {
     AppMethodBeat.i(70878);
     Bankcard localBankcard;
-    if (this.Amw)
+    if (this.BER)
     {
-      localBankcard = (Bankcard)this.zGg.get(paramInt);
+      localBankcard = (Bankcard)this.AYt.get(paramInt);
       AppMethodBeat.o(70878);
       return localBankcard;
     }
     int j = getCount();
     int i;
-    if (this.vIq != null)
+    if (this.wSu != null)
     {
       i = j;
-      if (this.vIq.Afs.equals("CFT")) {}
+      if (this.wSu.BxM.equals("CFT")) {}
     }
     else
     {
@@ -116,7 +116,7 @@ public class k
     }
     if (paramInt < i)
     {
-      localBankcard = (Bankcard)this.zGg.get(paramInt);
+      localBankcard = (Bankcard)this.AYt.get(paramInt);
       AppMethodBeat.o(70878);
       return localBankcard;
     }
@@ -128,11 +128,11 @@ public class k
   {
     AppMethodBeat.i(70882);
     if (paramArrayList == null) {}
-    for (this.zGg = new ArrayList();; this.zGg = paramArrayList)
+    for (this.AYt = new ArrayList();; this.AYt = paramArrayList)
     {
-      this.Amv = paramBoolean;
-      if (this.zGg.size() > 0) {
-        this.zMG.b(this.mContext, this.zGg);
+      this.BEQ = paramBoolean;
+      if (this.AYt.size() > 0) {
+        this.Bfa.b(this.mContext, this.AYt);
       }
       notifyDataSetChanged();
       AppMethodBeat.o(70882);
@@ -144,23 +144,23 @@ public class k
   {
     int i = 0;
     AppMethodBeat.i(70877);
-    if (this.Amw)
+    if (this.BER)
     {
-      if (this.zGg == null)
+      if (this.AYt == null)
       {
         AppMethodBeat.o(70877);
         return 0;
       }
-      i = this.zGg.size();
+      i = this.AYt.size();
       AppMethodBeat.o(70877);
       return i;
     }
-    if ((this.vIq != null) && (this.vIq.Afs.equals("CFT"))) {}
+    if ((this.wSu != null) && (this.wSu.BxM.equals("CFT"))) {}
     for (;;)
     {
-      if (this.zGg != null)
+      if (this.AYt != null)
       {
-        int j = this.zGg.size();
+        int j = this.AYt.size();
         AppMethodBeat.o(70877);
         return i + j;
       }
@@ -183,46 +183,46 @@ public class k
       paramView = View.inflate(this.mContext, 2131495934, null);
       paramViewGroup = new a();
       paramViewGroup.titleTv = ((TextView)paramView.findViewById(2131305902));
-      paramViewGroup.uCm = ((TextView)paramView.findViewById(2131305546));
-      paramViewGroup.Amz = ((CheckedTextView)paramView.findViewById(2131298214));
-      paramViewGroup.AmA = ((CdnImageView)paramView.findViewById(2131297121));
-      paramViewGroup.Amy = ((FavourLayout)paramView.findViewById(2131299869));
-      paramViewGroup.uCm.setText("");
+      paramViewGroup.vLf = ((TextView)paramView.findViewById(2131305546));
+      paramViewGroup.BEU = ((CheckedTextView)paramView.findViewById(2131298214));
+      paramViewGroup.BEV = ((CdnImageView)paramView.findViewById(2131297121));
+      paramViewGroup.BET = ((FavourLayout)paramView.findViewById(2131299869));
+      paramViewGroup.vLf.setText("");
       paramView.setTag(paramViewGroup);
     }
     Object localObject1;
     Object localObject2;
     for (;;)
     {
-      paramViewGroup.uCm.setTextColor(aj.getResources().getColor(2131100490));
-      paramViewGroup.Amy.setVisibility(8);
-      localObject1 = Rk(paramInt);
+      paramViewGroup.vLf.setTextColor(ai.getResources().getColor(2131100490));
+      paramViewGroup.BET.setVisibility(8);
+      localObject1 = Tt(paramInt);
       if (localObject1 != null) {
         break label343;
       }
-      paramViewGroup.Amz.setVisibility(4);
-      paramViewGroup.uCm.setVisibility(8);
+      paramViewGroup.BEU.setVisibility(4);
+      paramViewGroup.vLf.setVisibility(8);
       paramViewGroup.titleTv.setText(2131765660);
-      paramViewGroup.AmA.setVisibility(8);
+      paramViewGroup.BEV.setVisibility(8);
       localObject1 = new LinkedList();
-      if ((this.vIq == null) || (this.vIq.Afy == null) || (this.vIq.Afy.zOC == null)) {
+      if ((this.wSu == null) || (this.wSu.BxS == null) || (this.wSu.BxS.BgW == null)) {
         break label340;
       }
-      localObject2 = this.vIq.Afy.zOC.zNY;
+      localObject2 = this.wSu.BxS.BgW.Bgs;
       if (localObject2 == null) {
         break label340;
       }
-      localObject2 = ((n)localObject2).zOO.iterator();
+      localObject2 = ((n)localObject2).Bhi.iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((LinkedList)localObject1).add(((o)((Iterator)localObject2).next()).vzN);
+        ((LinkedList)localObject1).add(((o)((Iterator)localObject2).next()).wJS);
       }
       paramViewGroup = (a)paramView.getTag();
     }
-    if ((this.Amv) && (((LinkedList)localObject1).size() > 0))
+    if ((this.BEQ) && (((LinkedList)localObject1).size() > 0))
     {
-      paramViewGroup.Amy.setVisibility(0);
-      paramViewGroup.uCm.setVisibility(8);
-      paramViewGroup.Amy.setWording((LinkedList)localObject1);
+      paramViewGroup.BET.setVisibility(0);
+      paramViewGroup.vLf.setVisibility(8);
+      paramViewGroup.BET.setWording((LinkedList)localObject1);
     }
     for (;;)
     {
@@ -231,59 +231,59 @@ public class k
       label340:
       break;
       label343:
-      paramViewGroup.AmA.setVisibility(0);
-      paramViewGroup.Amz.setVisibility(0);
-      paramViewGroup.uCm.setVisibility(0);
-      paramViewGroup.uCm.setText("");
-      if (((Bankcard)localObject1).ebz())
+      paramViewGroup.BEV.setVisibility(0);
+      paramViewGroup.BEU.setVisibility(0);
+      paramViewGroup.vLf.setVisibility(0);
+      paramViewGroup.vLf.setText("");
+      if (((Bankcard)localObject1).eqV())
       {
         paramViewGroup.titleTv.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, ((Bankcard)localObject1).field_desc, paramViewGroup.titleTv.getTextSize()));
         label410:
-        if (!((Bankcard)localObject1).ebv()) {
+        if (!((Bankcard)localObject1).eqR()) {
           break label902;
         }
-        localObject2 = s.ecc().zHd;
-        if (bt.isNullOrNil(((Bankcard)localObject2).AbV)) {
+        localObject2 = s.ery().AZp;
+        if (bs.isNullOrNil(((Bankcard)localObject2).Bup)) {
           break label837;
         }
-        paramViewGroup.titleTv.setText(((Bankcard)localObject2).AbV);
+        paramViewGroup.titleTv.setText(((Bankcard)localObject2).Bup);
         label449:
-        paramViewGroup.uCm.setVisibility(0);
-        switch (((Bankcard)localObject1).a(this.zQa, this.vIq))
+        paramViewGroup.vLf.setVisibility(0);
+        switch (((Bankcard)localObject1).a(this.Biu, this.wSu))
         {
         default: 
-          if (!bt.isNullOrNil(((Bankcard)localObject1).field_tips))
+          if (!bs.isNullOrNil(((Bankcard)localObject1).field_tips))
           {
-            paramViewGroup.uCm.setText(((Bankcard)localObject1).field_tips);
+            paramViewGroup.vLf.setText(((Bankcard)localObject1).field_tips);
             label539:
-            localObject2 = paramViewGroup.uCm.getText().toString();
+            localObject2 = paramViewGroup.vLf.getText().toString();
             paramViewGroup.titleTv.setTextColor(this.mContext.getResources().getColor(2131100711));
-            if (!this.Amu.equalsIgnoreCase(((Bankcard)localObject1).field_bindSerial)) {
+            if (!this.BEP.equalsIgnoreCase(((Bankcard)localObject1).field_bindSerial)) {
               break label1119;
             }
-            paramViewGroup.Amz.setChecked(true);
-            paramViewGroup.Amz.setEnabled(true);
+            paramViewGroup.BEU.setChecked(true);
+            paramViewGroup.BEU.setEnabled(true);
             label604:
-            paramViewGroup.AmA.setTag(2131306720, null);
-            paramViewGroup.AmA.setTag(null);
-            paramViewGroup.AmA.setImageDrawable(null);
-            paramViewGroup.uCm.setOnClickListener(null);
-            if (!((Bankcard)localObject1).ebv()) {
+            paramViewGroup.BEV.setTag(2131306720, null);
+            paramViewGroup.BEV.setTag(null);
+            paramViewGroup.BEV.setImageDrawable(null);
+            paramViewGroup.vLf.setOnClickListener(null);
+            if (!((Bankcard)localObject1).eqR()) {
               break label1184;
             }
-            com.tencent.mm.plugin.wallet_core.utils.a.j(paramViewGroup.AmA);
+            com.tencent.mm.plugin.wallet_core.utils.a.k(paramViewGroup.BEV);
           }
           break;
         }
       }
       for (;;)
       {
-        if ((bt.isNullOrNil(((Bankcard)localObject1).field_forbid_title)) || (bt.isNullOrNil(((Bankcard)localObject1).field_forbid_url))) {
+        if ((bs.isNullOrNil(((Bankcard)localObject1).field_forbid_title)) || (bs.isNullOrNil(((Bankcard)localObject1).field_forbid_url))) {
           break label1299;
         }
         localObject2 = (String)localObject2 + "  ";
         SpannableString localSpannableString = new SpannableString((String)localObject2 + ((Bankcard)localObject1).field_forbid_title);
-        paramViewGroup.uCm.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.vLf.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -292,11 +292,11 @@ public class k
             {
               Intent localIntent = new Intent();
               paramAnonymousView = (String)paramAnonymousView.getTag();
-              ad.i("MicroMsg.WalletChangeBankcardAdapter", "go to url %s", new Object[] { paramAnonymousView });
+              ac.i("MicroMsg.WalletChangeBankcardAdapter", "go to url %s", new Object[] { paramAnonymousView });
               localIntent.putExtra("rawUrl", paramAnonymousView);
-              localIntent.putExtra("geta8key_username", u.aqG());
+              localIntent.putExtra("geta8key_username", u.axw());
               localIntent.putExtra("pay_channel", 1);
-              e.b(k.a(k.this), localIntent, WalletChangeBankcardUI.zPX);
+              e.b(k.a(k.this), localIntent, WalletChangeBankcardUI.Bir);
             }
             AppMethodBeat.o(70875);
           }
@@ -304,94 +304,94 @@ public class k
         paramInt = ((String)localObject2).length();
         int i = ((String)localObject2).length();
         int j = ((Bankcard)localObject1).field_forbid_title.length();
-        localSpannableString.setSpan(new ForegroundColorSpan(aj.getResources().getColor(2131101107)), paramInt, i + j, 34);
-        paramViewGroup.uCm.setText(localSpannableString);
-        paramViewGroup.uCm.setTag(((Bankcard)localObject1).field_forbid_url);
+        localSpannableString.setSpan(new ForegroundColorSpan(ai.getResources().getColor(2131101107)), paramInt, i + j, 34);
+        paramViewGroup.vLf.setText(localSpannableString);
+        paramViewGroup.vLf.setTag(((Bankcard)localObject1).field_forbid_url);
         break;
         paramViewGroup.titleTv.setText(((Bankcard)localObject1).field_desc);
         break label410;
         label837:
-        if (((Bankcard)localObject2).AbU >= 0.0D)
+        if (((Bankcard)localObject2).Buo >= 0.0D)
         {
-          paramViewGroup.titleTv.setText(this.mContext.getString(ah.fkl(), new Object[] { e.E(((Bankcard)localObject2).AbU) }));
+          paramViewGroup.titleTv.setText(this.mContext.getString(ah.fAB(), new Object[] { e.D(((Bankcard)localObject2).Buo) }));
           break label449;
         }
         paramViewGroup.titleTv.setText(this.mContext.getText(2131765303));
         break label449;
         label902:
-        if (!((Bankcard)localObject1).ebw()) {
+        if (!((Bankcard)localObject1).eqS()) {
           break label449;
         }
-        if (!bt.isNullOrNil(((Bankcard)localObject1).AbV))
+        if (!bs.isNullOrNil(((Bankcard)localObject1).Bup))
         {
-          paramViewGroup.titleTv.setText(((Bankcard)localObject1).AbV);
+          paramViewGroup.titleTv.setText(((Bankcard)localObject1).Bup);
           break label449;
         }
-        if (((Bankcard)localObject1).AbU >= 0.0D)
+        if (((Bankcard)localObject1).Buo >= 0.0D)
         {
-          paramViewGroup.titleTv.setText(this.mContext.getString(2131765386, new Object[] { e.E(((Bankcard)localObject1).AbU) }));
+          paramViewGroup.titleTv.setText(this.mContext.getString(2131765386, new Object[] { e.D(((Bankcard)localObject1).Buo) }));
           break label449;
         }
         paramViewGroup.titleTv.setText(this.mContext.getText(2131765303));
         break label449;
-        paramViewGroup.uCm.setText(((Bankcard)localObject1).field_forbidWord);
+        paramViewGroup.vLf.setText(((Bankcard)localObject1).field_forbidWord);
         break label539;
-        paramViewGroup.uCm.setText(2131765666);
+        paramViewGroup.vLf.setText(2131765666);
         break label539;
-        paramViewGroup.uCm.setText(2131765677);
+        paramViewGroup.vLf.setText(2131765677);
         break label539;
-        paramViewGroup.uCm.setText(2131765672);
+        paramViewGroup.vLf.setText(2131765672);
         break label539;
-        paramViewGroup.uCm.setText(2131765668);
+        paramViewGroup.vLf.setText(2131765668);
         break label539;
-        paramViewGroup.uCm.setText(2131765664);
+        paramViewGroup.vLf.setText(2131765664);
         break label539;
-        paramViewGroup.uCm.setText(2131765670);
+        paramViewGroup.vLf.setText(2131765670);
         break label539;
-        paramViewGroup.uCm.setText(2131765675);
+        paramViewGroup.vLf.setText(2131765675);
         break label539;
-        paramViewGroup.uCm.setVisibility(8);
+        paramViewGroup.vLf.setVisibility(8);
         break label539;
         label1119:
         if (isEnabled(paramInt))
         {
-          paramViewGroup.Amz.setChecked(false);
-          paramViewGroup.Amz.setEnabled(true);
+          paramViewGroup.BEU.setChecked(false);
+          paramViewGroup.BEU.setEnabled(true);
           break label604;
         }
-        paramViewGroup.Amz.setEnabled(false);
-        paramViewGroup.Amz.setChecked(false);
+        paramViewGroup.BEU.setEnabled(false);
+        paramViewGroup.BEU.setChecked(false);
         paramViewGroup.titleTv.setTextColor(this.mContext.getResources().getColor(2131100490));
         break label604;
         label1184:
-        if (((Bankcard)localObject1).ebw())
+        if (((Bankcard)localObject1).eqS())
         {
-          this.zMG.a((Bankcard)localObject1, paramViewGroup.AmA);
+          this.Bfa.a((Bankcard)localObject1, paramViewGroup.BEV);
         }
-        else if (((Bankcard)localObject1).ebz())
+        else if (((Bankcard)localObject1).eqV())
         {
-          paramViewGroup.AmA.setImageDrawable(com.tencent.mm.svg.a.a.g(aj.getResources(), 2131690298));
-          if (!bt.isNullOrNil(((Bankcard)localObject1).Acn))
+          paramViewGroup.BEV.setImageDrawable(com.tencent.mm.svg.a.a.g(ai.getResources(), 2131690298));
+          if (!bs.isNullOrNil(((Bankcard)localObject1).BuH))
           {
-            paramViewGroup.AmA.setUseSdcardCache(true);
-            paramViewGroup.AmA.setImgSavedPath(b.edz());
-            paramViewGroup.AmA.fz(((Bankcard)localObject1).Acn, 2131690298);
+            paramViewGroup.BEV.setUseSdcardCache(true);
+            paramViewGroup.BEV.setImgSavedPath(b.esU());
+            paramViewGroup.BEV.fE(((Bankcard)localObject1).BuH, 2131690298);
           }
         }
         else
         {
-          this.zMG.a(this.mContext, (Bankcard)localObject1, paramViewGroup.AmA);
+          this.Bfa.a(this.mContext, (Bankcard)localObject1, paramViewGroup.BEV);
         }
       }
       label1299:
-      if ((this.Amv) && (bt.isNullOrNil(((Bankcard)localObject1).field_forbidWord)) && (bt.isNullOrNil((String)localObject2)))
+      if ((this.BEQ) && (bs.isNullOrNil(((Bankcard)localObject1).field_forbidWord)) && (bs.isNullOrNil((String)localObject2)))
       {
         localObject1 = g((Bankcard)localObject1);
         if (((LinkedList)localObject1).size() > 0)
         {
-          paramViewGroup.Amy.setVisibility(0);
-          paramViewGroup.uCm.setVisibility(8);
-          paramViewGroup.Amy.setWording((LinkedList)localObject1);
+          paramViewGroup.BET.setVisibility(0);
+          paramViewGroup.vLf.setVisibility(8);
+          paramViewGroup.BET.setWording((LinkedList)localObject1);
         }
       }
     }
@@ -400,13 +400,13 @@ public class k
   public boolean isEnabled(int paramInt)
   {
     AppMethodBeat.i(70879);
-    Bankcard localBankcard = Rk(paramInt);
+    Bankcard localBankcard = Tt(paramInt);
     if (localBankcard == null)
     {
       AppMethodBeat.o(70879);
       return true;
     }
-    if (localBankcard.a(this.zQa, this.vIq) != 0)
+    if (localBankcard.a(this.Biu, this.wSu) != 0)
     {
       AppMethodBeat.o(70879);
       return false;
@@ -417,11 +417,11 @@ public class k
   
   final class a
   {
-    public CdnImageView AmA;
-    public FavourLayout Amy;
-    public CheckedTextView Amz;
+    public FavourLayout BET;
+    public CheckedTextView BEU;
+    public CdnImageView BEV;
     public TextView titleTv;
-    public TextView uCm;
+    public TextView vLf;
     
     a() {}
   }

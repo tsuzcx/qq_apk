@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.appbrand.game.c;
 import android.graphics.drawable.Drawable;
 import com.tencent.magicbrush.MBRuntime;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.b;
-import com.tencent.mm.cg.c;
+import com.tencent.mm.cf.b;
+import com.tencent.mm.cf.c;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.aa.i;
+import com.tencent.mm.plugin.appbrand.z.i;
 
 public final class a
   extends com.tencent.luggage.game.b.a
 {
-  public static final a jqx;
+  public static final a jQP;
   
   static
   {
     AppMethodBeat.i(45104);
-    jqx = new a();
+    jQP = new a();
     AppMethodBeat.o(45104);
   }
   
@@ -41,7 +41,7 @@ public final class a
         return 0;
       }
       int k = paramString.codePointAt(paramInt);
-      c localc = b.eHL().Wo(k);
+      c localc = b.eXh().Yx(k);
       if (localc != null)
       {
         if (parami != null) {
@@ -55,14 +55,14 @@ public final class a
       if (j < paramString.length()) {}
       for (int i = paramString.codePointAt(j);; i = 0)
       {
-        paramString = b.eHL().iZ(k, i);
+        paramString = b.eXh().jm(k, i);
         if (paramString != null) {
           break;
         }
         AppMethodBeat.o(45101);
         return 0;
       }
-      if (paramString.mfw != 0) {}
+      if (paramString.mHv != 0) {}
       for (i = Character.charCount(i) + j;; i = j)
       {
         if (parami != null) {
@@ -86,7 +86,7 @@ public final class a
       AppMethodBeat.i(45100);
       i locali = new i();
       a(paramString, paramInt, locali);
-      paramString = b.eHL().a((c)locali.value, true);
+      paramString = b.eXh().a((c)locali.value, true);
       AppMethodBeat.o(45100);
       return paramString;
     }
@@ -94,7 +94,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.c.a
  * JD-Core Version:    0.7.0.1
  */

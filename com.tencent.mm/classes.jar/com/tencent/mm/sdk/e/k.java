@@ -11,7 +11,7 @@ public abstract class k
   
   private void processEvent(a parama, m paramm)
   {
-    parama.a(paramm.dcx, paramm);
+    parama.a(paramm.cZV, paramm);
   }
   
   private void processLoaded(b paramb, String paramString) {}
@@ -33,7 +33,7 @@ public abstract class k
   
   public void add(String paramString, a parama)
   {
-    this.defaults.a(parama, a.aOc(paramString));
+    this.defaults.a(parama, a.aTF(paramString));
   }
   
   public void addLoadedListener(b paramb)
@@ -44,25 +44,25 @@ public abstract class k
   public void doNotify()
   {
     m localm = new m("*");
-    this.defaults.dR(localm);
+    this.defaults.dS(localm);
     this.defaults.doNotify();
   }
   
   public void doNotify(String paramString)
   {
     paramString = new m(paramString);
-    this.defaults.dR(paramString);
+    this.defaults.dS(paramString);
     this.defaults.doNotify();
   }
   
   public void doNotify(String paramString, int paramInt, Object paramObject)
   {
     m localm = new m();
-    localm.dcx = paramString;
-    localm.jqR = paramInt;
+    localm.cZV = paramString;
+    localm.jRj = paramInt;
     localm.obj = paramObject;
-    localm.EYF = this;
-    this.defaults.dR(localm);
+    localm.GvR = this;
+    this.defaults.dS(localm);
     this.defaults.doNotify();
   }
   
@@ -73,7 +73,7 @@ public abstract class k
   
   public int lockCount()
   {
-    return this.defaults.EYx;
+    return this.defaults.GvJ;
   }
   
   public void remove(a parama)

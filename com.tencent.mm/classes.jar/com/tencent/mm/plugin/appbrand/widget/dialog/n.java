@@ -16,16 +16,39 @@ import d.g.b.k;
 import d.v;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/RequestDialogRotationHelper;", "", "()V", "applyStyleByRotation", "", "context", "Landroid/content/Context;", "rootView", "Landroid/view/View;", "buttonGroup", "rotation", "", "shouldInLargeScreenCompatMode", "", "getAppropriateLargeScreenRequestDialogWidth", "dialogMeasuredWidth", "dp2Px", "dp", "isLargeScreenEnv", "onPreDrawOnce", "block", "Lkotlin/Function0;", "postRequestLayout", "wrapScreenAdaptiveContextForRequestDialogIfNeed", "luggage-wechat-full-sdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/RequestDialogRotationHelper;", "", "()V", "applyStyleByRotation", "", "context", "Landroid/content/Context;", "rootView", "Landroid/view/View;", "buttonGroup", "rotation", "", "shouldInLargeScreenCompatMode", "", "getAppropriateLargeScreenRequestDialogWidth", "dialogMeasuredWidth", "dp2Px", "dp", "isLargeScreenEnv", "onPreDrawOnce", "block", "Lkotlin/Function0;", "postRequestLayout", "wrapScreenAdaptiveContextForRequestDialogIfNeed", "luggage-wechat-full-sdk_release"})
 public final class n
 {
-  public static final n KDx;
+  public static final n mCn;
   
   static
   {
     AppMethodBeat.i(148269);
-    KDx = new n();
+    mCn = new n();
     AppMethodBeat.o(148269);
+  }
+  
+  public static final int J(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(169666);
+    k.h(paramContext, "context");
+    int i = paramContext.getResources().getDimensionPixelSize(2131165885);
+    Resources localResources = paramContext.getResources();
+    k.g(localResources, "context.resources");
+    int j = Math.max(i, localResources.getDisplayMetrics().widthPixels / 2);
+    if (paramInt < i) {}
+    for (;;)
+    {
+      paramContext = paramContext.getResources();
+      k.g(paramContext, "context.resources");
+      paramInt = Math.min(i, paramContext.getDisplayMetrics().widthPixels);
+      AppMethodBeat.o(169666);
+      return paramInt;
+      i = paramInt;
+      if (paramInt > j) {
+        i = j;
+      }
+    }
   }
   
   public static void a(final Context paramContext, View paramView1, View paramView2, int paramInt, boolean paramBoolean)
@@ -67,13 +90,13 @@ public final class n
         }
         ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(2131165883);
       }
-      if ((!paramBoolean) && (cH(paramContext)))
+      if ((!paramBoolean) && (cQ(paramContext)))
       {
-        d.g.a.a locala = (d.g.a.a)new a(paramView1, paramContext);
+        final d.g.a.a locala = (d.g.a.a)new a(paramView1, paramContext);
         ViewTreeObserver localViewTreeObserver = paramView1.getViewTreeObserver();
         k.g(localViewTreeObserver, "this.viewTreeObserver");
         if (localViewTreeObserver.isAlive()) {
-          paramView1.getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new n.b(paramView1, locala));
+          paramView1.getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new b(paramView1, locala));
         }
         if ((paramView2.getParent() instanceof RelativeLayout))
         {
@@ -97,30 +120,7 @@ public final class n
     AppMethodBeat.o(183080);
   }
   
-  public static final int aR(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(169666);
-    k.h(paramContext, "context");
-    int i = paramContext.getResources().getDimensionPixelSize(2131165885);
-    Resources localResources = paramContext.getResources();
-    k.g(localResources, "context.resources");
-    int j = Math.max(i, localResources.getDisplayMetrics().widthPixels / 2);
-    if (paramInt < i) {}
-    for (;;)
-    {
-      paramContext = paramContext.getResources();
-      k.g(paramContext, "context.resources");
-      paramInt = Math.min(i, paramContext.getDisplayMetrics().widthPixels);
-      AppMethodBeat.o(169666);
-      return paramInt;
-      i = paramInt;
-      if (paramInt > j) {
-        i = j;
-      }
-    }
-  }
-  
-  private static boolean cH(Context paramContext)
+  private static boolean cQ(Context paramContext)
   {
     AppMethodBeat.i(183081);
     paramContext = paramContext.getResources();
@@ -134,21 +134,21 @@ public final class n
     return false;
   }
   
-  public static final Context kP(Context paramContext)
+  public static final Context ed(Context paramContext)
   {
     AppMethodBeat.i(169667);
     k.h(paramContext, "$this$wrapScreenAdaptiveContextForRequestDialogIfNeed");
-    if (!cH(paramContext))
+    if (!cQ(paramContext))
     {
       AppMethodBeat.o(169667);
       return paramContext;
     }
-    paramContext = (Context)new com.tencent.luggage.g.a(paramContext, (a.b)d.lZE);
+    paramContext = (Context)new com.tencent.luggage.g.a(paramContext, (a.b)d.mBF);
     AppMethodBeat.o(169667);
     return paramContext;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class a
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -159,16 +159,36 @@ public final class n
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Landroid/util/DisplayMetrics;", "originalMetrics", "<anonymous parameter 1>", "Landroid/content/res/Configuration;", "applyScreenAdaptiveDensity"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/widget/dialog/RequestDialogRotationHelper$onPreDrawOnce$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "luggage-wechat-full-sdk_release"})
+  public static final class b
+    implements ViewTreeObserver.OnPreDrawListener
+  {
+    b(View paramView, d.g.a.a parama) {}
+    
+    public final boolean onPreDraw()
+    {
+      AppMethodBeat.i(169661);
+      ViewTreeObserver localViewTreeObserver = this.ikv.getViewTreeObserver();
+      k.g(localViewTreeObserver, "this@onPreDrawOnce.viewTreeObserver");
+      if (localViewTreeObserver.isAlive()) {
+        this.ikv.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
+      }
+      locala.invoke();
+      AppMethodBeat.o(169661);
+      return false;
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/util/DisplayMetrics;", "originalMetrics", "<anonymous parameter 1>", "Landroid/content/res/Configuration;", "applyScreenAdaptiveDensity"})
   static final class d
     implements a.b
   {
-    public static final d lZE;
+    public static final d mBF;
     
     static
     {
       AppMethodBeat.i(169664);
-      lZE = new d();
+      mBF = new d();
       AppMethodBeat.o(169664);
     }
     
@@ -205,7 +225,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.n
  * JD-Core Version:    0.7.0.1
  */

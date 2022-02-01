@@ -14,9 +14,9 @@ public abstract interface ITenpaySave
     implements Parcelable
   {
     public static final Parcelable.Creator<RetryPayInfo> CREATOR;
-    public int EgF;
-    public int Iew;
-    public String Iex;
+    public int FDE;
+    public int JFY;
+    public String JFZ;
     
     static
     {
@@ -27,21 +27,21 @@ public abstract interface ITenpaySave
     
     public RetryPayInfo()
     {
-      this.Iew = -1;
-      this.EgF = -1;
-      this.Iex = "";
+      this.JFY = -1;
+      this.FDE = -1;
+      this.JFZ = "";
     }
     
     protected RetryPayInfo(Parcel paramParcel)
     {
       AppMethodBeat.i(72887);
-      this.Iew = paramParcel.readInt();
-      this.EgF = paramParcel.readInt();
-      this.Iex = paramParcel.readString();
+      this.JFY = paramParcel.readInt();
+      this.FDE = paramParcel.readInt();
+      this.JFZ = paramParcel.readString();
       AppMethodBeat.o(72887);
     }
     
-    public final void ba(JSONObject paramJSONObject)
+    public final void bb(JSONObject paramJSONObject)
     {
       AppMethodBeat.i(72889);
       if (paramJSONObject == null)
@@ -55,15 +55,10 @@ public abstract interface ITenpaySave
         AppMethodBeat.o(72889);
         return;
       }
-      this.Iew = paramJSONObject.optInt("retry_interval", -1);
-      this.EgF = paramJSONObject.optInt("max_retry_count", -1);
-      this.Iex = paramJSONObject.optString("retry_fail_wording", "");
+      this.JFY = paramJSONObject.optInt("retry_interval", -1);
+      this.FDE = paramJSONObject.optInt("max_retry_count", -1);
+      this.JFZ = paramJSONObject.optString("retry_fail_wording", "");
       AppMethodBeat.o(72889);
-    }
-    
-    public final boolean cWD()
-    {
-      return (this.Iew != -1) && (this.EgF != -1);
     }
     
     public int describeContents()
@@ -71,12 +66,17 @@ public abstract interface ITenpaySave
       return 0;
     }
     
+    public final boolean dkl()
+    {
+      return (this.JFY != -1) && (this.FDE != -1);
+    }
+    
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(72888);
-      paramParcel.writeInt(this.Iew);
-      paramParcel.writeInt(this.EgF);
-      paramParcel.writeString(this.Iex);
+      paramParcel.writeInt(this.JFY);
+      paramParcel.writeInt(this.FDE);
+      paramParcel.writeString(this.JFZ);
       AppMethodBeat.o(72888);
     }
   }

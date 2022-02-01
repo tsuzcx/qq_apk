@@ -4,25 +4,25 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.e.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class GameBaseActivity
   extends MMActivity
 {
   private long mStartTime = 0L;
-  private int seT = 1;
-  private long seU = 0L;
-  private long seV = 0L;
+  private int tmM = 1;
+  private long tmN = 0L;
+  private long tmO = 0L;
   
-  protected boolean cDZ()
+  protected boolean cRj()
   {
     return true;
   }
   
-  public abstract int cEa();
+  public abstract int cRk();
   
-  public abstract int cEb();
+  public abstract int cRl();
   
   public abstract int getScene();
   
@@ -36,9 +36,9 @@ public abstract class GameBaseActivity
     if (this.mStartTime != 0L)
     {
       long l = System.currentTimeMillis() - this.mStartTime;
-      ad.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.seU) });
-      if (cDZ()) {
-        a.a(this.seT, getScene(), cEa(), cEb(), "", "", l / 1000L, this.seU / 1000L);
+      ac.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.tmN) });
+      if (cRj()) {
+        a.a(this.tmM, getScene(), cRk(), cRl(), "", "", l / 1000L, this.tmN / 1000L);
       }
     }
     super.onDestroy();
@@ -47,7 +47,7 @@ public abstract class GameBaseActivity
   public void onPause()
   {
     super.onPause();
-    this.seU += System.currentTimeMillis() - this.seV;
+    this.tmN += System.currentTimeMillis() - this.tmO;
   }
   
   public void onResume()
@@ -55,7 +55,7 @@ public abstract class GameBaseActivity
     if (this.mStartTime == 0L) {
       this.mStartTime = System.currentTimeMillis();
     }
-    this.seV = System.currentTimeMillis();
+    this.tmO = System.currentTimeMillis();
     super.onResume();
   }
   

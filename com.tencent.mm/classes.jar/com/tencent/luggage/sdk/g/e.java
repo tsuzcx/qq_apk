@@ -8,15 +8,15 @@ import d.g.b.k;
 import d.l;
 import d.m;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/sdk/wxa_ktx/WebkitUtils;", "", "()V", "println", "", "Landroid/webkit/ConsoleMessage;", "tag", "", "luggage-wxa-app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/wxa_ktx/WebkitUtils;", "", "()V", "println", "", "Landroid/webkit/ConsoleMessage;", "tag", "", "luggage-wxa-app_release"})
 public final class e
 {
-  public static final e ciD;
+  public static final e cfz;
   
   static
   {
     AppMethodBeat.i(176453);
-    ciD = new e();
+    cfz = new e();
     AppMethodBeat.o(176453);
   }
   
@@ -31,7 +31,7 @@ public final class e
       return;
     }
     int i;
-    switch (f.ciE[localMessageLevel.ordinal()])
+    switch (f.cfA[localMessageLevel.ordinal()])
     {
     default: 
       paramConsoleMessage = new m();

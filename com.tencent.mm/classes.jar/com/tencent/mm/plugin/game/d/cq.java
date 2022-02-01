@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class cq
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String scL;
-  public LinkedList<cr> sdr;
-  public String sds;
+  public String tkF;
+  public LinkedList<cr> tll;
+  public String tlm;
   
   public cq()
   {
     AppMethodBeat.i(41819);
-    this.sdr = new LinkedList();
+    this.tll = new LinkedList();
     AppMethodBeat.o(41819);
   }
   
@@ -23,12 +23,12 @@ public final class cq
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 8, this.sdr);
-      if (this.scL != null) {
-        paramVarArgs.d(2, this.scL);
+      paramVarArgs.e(1, 8, this.tll);
+      if (this.tkF != null) {
+        paramVarArgs.d(2, this.tkF);
       }
-      if (this.sds != null) {
-        paramVarArgs.d(3, this.sds);
+      if (this.tlm != null) {
+        paramVarArgs.d(3, this.tlm);
       }
       AppMethodBeat.o(41820);
       return 0;
@@ -36,14 +36,14 @@ public final class cq
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.a.c(1, 8, this.sdr) + 0;
+      i = f.a.a.a.c(1, 8, this.tll) + 0;
       paramInt = i;
-      if (this.scL != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.scL);
+      if (this.tkF != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.tkF);
       }
       i = paramInt;
-      if (this.sds != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.sds);
+      if (this.tlm != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.tlm);
       }
       AppMethodBeat.o(41820);
       return i;
@@ -51,11 +51,11 @@ public final class cq
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.sdr.clear();
+      this.tll.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(41820);
@@ -72,7 +72,7 @@ public final class cq
         AppMethodBeat.o(41820);
         return -1;
       case 1: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -80,18 +80,18 @@ public final class cq
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new cr();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((cr)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localcq.sdr.add(localObject1);
+          for (boolean bool = true; bool; bool = ((cr)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localcq.tll.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(41820);
         return 0;
       case 2: 
-        localcq.scL = ((f.a.a.a.a)localObject1).KhF.readString();
+        localcq.tkF = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(41820);
         return 0;
       }
-      localcq.sds = ((f.a.a.a.a)localObject1).KhF.readString();
+      localcq.tlm = ((f.a.a.a.a)localObject1).LVo.readString();
       AppMethodBeat.o(41820);
       return 0;
     }
@@ -101,7 +101,7 @@ public final class cq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.cq
  * JD-Core Version:    0.7.0.1
  */

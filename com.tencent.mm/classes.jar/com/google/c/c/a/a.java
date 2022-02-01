@@ -8,7 +8,7 @@ final class a
   public final void a(h paramh)
   {
     AppMethodBeat.i(12271);
-    String str = paramh.bLg;
+    String str = paramh.bIO;
     int j = paramh.pos;
     int n = str.length();
     if (j < n)
@@ -40,8 +40,8 @@ final class a
     int k = 0;
     if (k >= 2)
     {
-      c1 = paramh.bLg.charAt(paramh.pos);
-      char c2 = paramh.bLg.charAt(paramh.pos + 1);
+      c1 = paramh.bIO.charAt(paramh.pos);
+      char c2 = paramh.bIO.charAt(paramh.pos + 1);
       if ((j.isDigit(c1)) && (j.isDigit(c2)))
       {
         paramh.e((char)((c1 - '0') * 10 + (c2 - '0') + 130));
@@ -53,8 +53,8 @@ final class a
       AppMethodBeat.o(12271);
       throw paramh;
     }
-    char c1 = paramh.ym();
-    int i = j.b(paramh.bLg, paramh.pos, 0);
+    char c1 = paramh.xZ();
+    int i = j.b(paramh.bIO, paramh.pos, 0);
     if (i != 0)
     {
       switch (i)
@@ -65,27 +65,27 @@ final class a
         throw paramh;
       case 5: 
         paramh.e('ç');
-        paramh.bLl = 5;
+        paramh.bIT = 5;
         AppMethodBeat.o(12271);
         return;
       case 1: 
         paramh.e('æ');
-        paramh.bLl = 1;
+        paramh.bIT = 1;
         AppMethodBeat.o(12271);
         return;
       case 3: 
         paramh.e('î');
-        paramh.bLl = 3;
+        paramh.bIT = 3;
         AppMethodBeat.o(12271);
         return;
       case 2: 
         paramh.e('ï');
-        paramh.bLl = 2;
+        paramh.bIT = 2;
         AppMethodBeat.o(12271);
         return;
       }
       paramh.e('ð');
-      paramh.bLl = 4;
+      paramh.bIT = 4;
       AppMethodBeat.o(12271);
       return;
     }

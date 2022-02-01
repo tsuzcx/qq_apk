@@ -186,9 +186,9 @@ public abstract interface IFragmentWrapper
         paramParcel2.writeNoException();
         continue;
         paramParcel1 = (Intent)zzc.zza(paramParcel1, Intent.CREATOR);
-        paramParcel1 = new com.tencent.mm.hellhoundlib.b.a().bd(paramParcel1);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramParcel1.adn(), "com/google/android/gms/dynamic/IFragmentWrapper$Stub", "dispatchTransaction", "(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramParcel1.lS(0));
+        paramParcel1 = new com.tencent.mm.hellhoundlib.b.a().ba(paramParcel1);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramParcel1.aeD(), "com/google/android/gms/dynamic/IFragmentWrapper$Stub", "dispatchTransaction", "(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramParcel1.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/google/android/gms/dynamic/IFragmentWrapper$Stub", "dispatchTransaction", "(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         paramParcel2.writeNoException();
         continue;
@@ -466,7 +466,7 @@ public abstract interface IFragmentWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.dynamic.IFragmentWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -57,6 +57,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.media.JsApiUploadEncryptedFileToCDN;
 import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.JsApiNavigateToDevMiniProgram;
 import com.tencent.mm.plugin.appbrand.jsapi.msgsubscription.JsApiRequestSubscribeMessage;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.HCEService;
+import com.tencent.mm.plugin.appbrand.jsapi.rencentusage.JsApiGetRecentUsageList;
+import com.tencent.mm.plugin.appbrand.jsapi.rencentusage.JsApiOperateRecentUsageList;
 import com.tencent.mm.plugin.appbrand.jsapi.scanner.JsApiScanCode;
 import com.tencent.mm.plugin.appbrand.jsapi.share.JsApiShowUpdatableMessageSubscribeButton;
 import com.tencent.mm.plugin.appbrand.widget.input.panel.e.b;
@@ -69,40 +71,40 @@ import java.util.Map;
 
 public final class q
 {
-  private static final boolean jwb;
-  private long jwc;
-  private long jwd;
-  private final Map<String, m> jwe;
-  private final Map<String, m> jwf;
+  private static final boolean jWx;
+  private final Map<String, m> jWA;
+  private final Map<String, m> jWB;
+  private long jWy;
+  private long jWz;
   
   static
   {
     AppMethodBeat.i(45430);
-    com.tencent.mm.plugin.appbrand.v.a.blY();
+    com.tencent.mm.plugin.appbrand.u.a.bsU();
     com.tencent.mm.plugin.appbrand.jsapi.video.b.init();
-    AppBrandCameraView.aZi();
-    SameLayerCameraView.aZi();
-    ck.aXX();
-    com.tencent.mm.plugin.appbrand.app.g.DE("com.tencent.mm.plugin.soter.PluginSoter");
-    com.tencent.mm.plugin.appbrand.app.g.DE("com.tencent.mm.plugin.facedetect.PluginFace");
-    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.q.o.class, new com.tencent.mm.plugin.appbrand.luggage.d.c());
-    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.utils.b.a.class, new com.tencent.mm.plugin.appbrand.jsapi.e.s());
+    AppBrandCameraView.bga();
+    SameLayerCameraView.bga();
+    ck.beU();
+    com.tencent.mm.plugin.appbrand.app.g.HI("com.tencent.mm.plugin.soter.PluginSoter");
+    com.tencent.mm.plugin.appbrand.app.g.HI("com.tencent.mm.plugin.facedetect.PluginFace");
+    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.p.o.class, new com.tencent.mm.plugin.appbrand.luggage.d.c());
+    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.utils.b.a.class, new com.tencent.mm.plugin.appbrand.jsapi.d.s());
     com.tencent.luggage.a.e.a(com.tencent.luggage.c.a.a.class, new com.tencent.mm.plugin.appbrand.luggage.b.g());
-    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.widget.input.a.b.class, com.tencent.mm.plugin.appbrand.luggage.b.d.kPg);
+    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.widget.input.a.b.class, com.tencent.mm.plugin.appbrand.luggage.b.d.lqF);
     com.tencent.luggage.a.e.a(e.b.class, new com.tencent.mm.plugin.appbrand.luggage.b.e());
-    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.u.a.class, new com.tencent.mm.plugin.appbrand.jsapi.u.j());
+    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.t.a.class, new com.tencent.mm.plugin.appbrand.jsapi.t.j());
     com.tencent.luggage.a.e.a(ac.class, new com.tencent.mm.plugin.appbrand.luggage.b.a());
-    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.b.class, new com.tencent.mm.plugin.appbrand.utils.y());
-    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.g.a.c.class, new com.tencent.mm.plugin.appbrand.luggage.b.n());
+    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.z.e.a.b.class, new com.tencent.mm.plugin.appbrand.utils.z());
+    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.f.a.c.class, new com.tencent.mm.plugin.appbrand.luggage.b.n());
     com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.widget.b.b.class, new com.tencent.mm.plugin.appbrand.luggage.b.m());
-    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.c.class, new com.tencent.mm.plugin.appbrand.report.m());
-    com.tencent.luggage.a.e.a(ad.class, new com.tencent.mm.plugin.appbrand.utils.ae());
-    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.q.a.class, com.tencent.mm.plugin.appbrand.utils.ad.lMV);
-    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.camera.e.class, new com.tencent.mm.plugin.appbrand.jsapi.aa.a.b());
-    if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE) || (!com.tencent.mm.protocal.d.CpL) || (com.tencent.mm.sdk.platformtools.bu.eGT())) {}
+    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.z.e.a.c.class, new com.tencent.mm.plugin.appbrand.report.l());
+    com.tencent.luggage.a.e.a(ad.class, new com.tencent.mm.plugin.appbrand.utils.af());
+    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.p.a.class, com.tencent.mm.plugin.appbrand.utils.ae.moV);
+    com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.jsapi.camera.e.class, new com.tencent.mm.plugin.appbrand.jsapi.z.a.b());
+    if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE) || (!com.tencent.mm.protocal.d.DId) || (com.tencent.mm.sdk.platformtools.bt.eWo())) {}
     for (boolean bool = true;; bool = false)
     {
-      jwb = bool;
+      jWx = bool;
       AppMethodBeat.o(45430);
       return;
     }
@@ -111,7 +113,7 @@ public final class q
   private q()
   {
     AppMethodBeat.i(45422);
-    this.jwe = new HashMap()
+    this.jWA = new HashMap()
     {
       public final String toString()
       {
@@ -121,7 +123,7 @@ public final class q
         return str;
       }
     };
-    this.jwf = new HashMap()
+    this.jWB = new HashMap()
     {
       public final String toString()
       {
@@ -137,26 +139,44 @@ public final class q
   private void a(m paramm)
   {
     AppMethodBeat.i(45428);
-    long l = com.tencent.mm.sdk.platformtools.bt.GC() - this.jwd;
+    long l = com.tencent.mm.sdk.platformtools.bs.Gn() - this.jWz;
     if (l > 1L) {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrandJsApiPool", "addToPagePool api[%s] use[%dms]", new Object[] { paramm.getName(), Long.valueOf(l) });
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.AppBrandJsApiPool", "addToPagePool api[%s] use[%dms]", new Object[] { paramm.getName(), Long.valueOf(l) });
     }
-    if ((m)this.jwf.put(paramm.getName(), paramm) != null)
+    if ((m)this.jWB.put(paramm.getName(), paramm) != null)
     {
       paramm = new IllegalAccessError("Duplicated api instance " + c(paramm));
       AppMethodBeat.o(45428);
       throw paramm;
     }
-    paramm.jvW = jwb;
-    this.jwd = com.tencent.mm.sdk.platformtools.bt.GC();
+    paramm.jWs = jWx;
+    this.jWz = com.tencent.mm.sdk.platformtools.bs.Gn();
     AppMethodBeat.o(45428);
   }
   
-  public static Map<String, m> aXK()
+  private void b(m paramm)
+  {
+    AppMethodBeat.i(45426);
+    long l = com.tencent.mm.sdk.platformtools.bs.Gn() - this.jWy;
+    if (l > 1L) {
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.AppBrandJsApiPool", "addToServicePool api[%s] use[%dms]", new Object[] { paramm.getName(), Long.valueOf(l) });
+    }
+    if ((m)this.jWA.put(paramm.getName(), paramm) != null)
+    {
+      paramm = new IllegalAccessError("Duplicated api instance " + c(paramm));
+      AppMethodBeat.o(45426);
+      throw paramm;
+    }
+    paramm.jWs = jWx;
+    this.jWy = com.tencent.mm.sdk.platformtools.bs.Gn();
+    AppMethodBeat.o(45426);
+  }
+  
+  public static Map<String, m> beH()
   {
     AppMethodBeat.i(45423);
     Object localObject = new q();
-    ((q)localObject).jwc = com.tencent.mm.sdk.platformtools.bt.GC();
+    ((q)localObject).jWy = com.tencent.mm.sdk.platformtools.bs.Gn();
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.ad.a.h());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.ad.a.g());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.ad.a.a());
@@ -171,11 +191,11 @@ public final class q
     ((q)localObject).b(new JsApiLogin());
     ((q)localObject).b(new JsApiAuthorize());
     ((q)localObject).b(new JsApiOperateWXData());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.v());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.h());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.m());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.n());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.g());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.v());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.h());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.m());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.n());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.g());
     ((q)localObject).b(new br());
     ((q)localObject).b(new JsApiChooseImage());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.media.k());
@@ -189,9 +209,9 @@ public final class q
     ((q)localObject).b(new JsApiStartPlayVoice());
     ((q)localObject).b(new JsApiPausePlayVoice());
     ((q)localObject).b(new JsApiStopPlayVoice());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.e.m());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.e.o());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.f());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.d.m());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.d.o());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.g());
     ((q)localObject).b(new JsApiGetMusicPlayerState());
     ((q)localObject).b(new JsApiOperateMusicPlayer());
     ((q)localObject).b(new JsApiScanCode());
@@ -199,56 +219,57 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.n());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.l());
     ((q)localObject).b(new be());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.s.d());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.r.d());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.s());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.b());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.contact.c());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.contact.g());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.af());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.af());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.e());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.h());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.ac());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.d());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.ab());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.c());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.b.f());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.ac());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.d());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.ab());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.a.f());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.d());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.i());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.s.e());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.s.g());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.s.f());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.j());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.r.e());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.r.g());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.r.f());
     ((q)localObject).b(new cb());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.d.g());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.c.g());
     ((q)localObject).b(new az());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.d.c());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.b());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.c());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.f());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.d());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.e());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.c.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.t.b());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.t.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.t.f());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.t.d());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.t.e());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.storage.k());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.storage.l());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.b.b.f());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.b.e());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.p.c());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.p.b());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.p.d());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.p.a());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.b.b.f());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.a.e());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.o.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.o.b());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.o.d());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.o.a());
     ((q)localObject).b(new at());
     ((q)localObject).b(new bb());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.storage.g());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.storage.h());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.e.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.d.c());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.media.i());
     ((q)localObject).b(new JsApiRefreshSession());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.ag());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.ag());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.o());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.k());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.ac.h());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.ab.h());
     ((q)localObject).b(new ah());
     ((q)localObject).b(new bf());
     ((q)localObject).b(new JsApiMakeVoIPCall());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.d());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.e());
     ((q)localObject).b(new JsApiSetClipboardDataWC());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.l());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.b());
@@ -275,7 +296,7 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b.h());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b.i());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.e());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.l());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.l());
     ((q)localObject).b(new bx());
     ((q)localObject).b(new as());
     ((q)localObject).b(new JsApiChooseWeChatContact());
@@ -295,24 +316,24 @@ public final class q
     ((q)localObject).b(new JsApiOpenWeRunSetting());
     ((q)localObject).b(new JsApiUploadWeRunData());
     ((q)localObject).b(new ai());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.g());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.m());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.o());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.p());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.h());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.n());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.p());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.q());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.o());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.n());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.q());
     ((q)localObject).b(new JsApiShowUpdatableMessageSubscribeButton());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.c.b());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.c.c());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.c.d());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.b.b());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.b.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.b.d());
     ((q)localObject).b(new JsApiCheckIsSupportFaceDetect());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.bio.face.e());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.bio.face.d());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.bio.face.f());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.bio.face.b());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.bio.face.c());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.f());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.f());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.video.d.c());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.live.d());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.live.c());
@@ -324,29 +345,29 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.i());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.ui.b());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.g());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.l());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.m());
     ((q)localObject).b(new an());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.b.i());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.a.i());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.h());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.fakenative.c());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.fakenative.d());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.fakenative.b());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.op_report.b());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.u());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.ai());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.u());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.ai());
     ((q)localObject).b(new ca());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.x());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.x());
     ((q)localObject).b(new cc());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.t());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.t());
     ((q)localObject).b(new JsApiCheckIsSupportSoterAuthentication());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.bio.soter.c());
     ((q)localObject).b(new ap());
     ((q)localObject).b(new ao());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.b.b(com.tencent.mm.plugin.appbrand.jsapi.j.b.a.kao, com.tencent.mm.plugin.appbrand.aq.aNP()));
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.b.c(com.tencent.mm.plugin.appbrand.jsapi.j.b.a.kao, com.tencent.mm.plugin.appbrand.aq.aNP()));
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.b.b(com.tencent.mm.plugin.appbrand.jsapi.j.b.a.kBb, com.tencent.mm.plugin.appbrand.aq.aUF()));
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.b.c(com.tencent.mm.plugin.appbrand.jsapi.j.b.a.kBb, com.tencent.mm.plugin.appbrand.aq.aUF()));
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.b.d());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.a.b(com.tencent.mm.plugin.appbrand.aq.aNQ()));
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.a.c(com.tencent.mm.plugin.appbrand.aq.aNQ()));
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.a.b(com.tencent.mm.plugin.appbrand.aq.aUG()));
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.a.c(com.tencent.mm.plugin.appbrand.aq.aUG()));
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.a.d());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.c.b());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.c.c());
@@ -354,9 +375,9 @@ public final class q
     ((q)localObject).b(new cf());
     ((q)localObject).b(new aj());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.camera.n());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.ae());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.ae());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.audio.j());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.y.a.d());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.x.a.d());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.audio.d());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.audio.e());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.audio.l());
@@ -365,9 +386,9 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.audio.f());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.audio.m());
     ((q)localObject).b(new JsApiNavigateBackApplication());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.e.j());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.e.h());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.e.e());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.d.j());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.d.h());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.d.e());
     ((q)localObject).b(new JsApiCheckBioEnrollment());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.wifi.d());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.wifi.e());
@@ -392,22 +413,22 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.nfc.a.g());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.nfc.a.j());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.nfc.a.h());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.y());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.aa());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.z());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.e());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.ad());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.y());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.aa());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.z());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.e());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.ad());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.ui.e());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.ui.c());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.ui.f());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.ui.d());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.j());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.n());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.ah());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.g(com.tencent.mm.plugin.appbrand.jsapi.j.g.kao, com.tencent.mm.plugin.appbrand.aq.aNN()));
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.i(com.tencent.mm.plugin.appbrand.aq.aNN()));
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.k());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.o());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.ah());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.g(com.tencent.mm.plugin.appbrand.jsapi.j.g.kBb, com.tencent.mm.plugin.appbrand.aq.aUD()));
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.i(com.tencent.mm.plugin.appbrand.aq.aUD()));
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.q());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.r());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.r());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.f());
     ((q)localObject).b(new ak());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.file.al());
@@ -443,9 +464,9 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.file.m());
     ((q)localObject).b(new JsApiGetLabInfo());
     ((q)localObject).b(new JsApiSetLabInfo());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.w.a());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.b.b());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.b.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.a());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.a.b());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.a.c());
     ((q)localObject).b(new bk());
     ((q)localObject).b(new bg());
     ((q)localObject).b(new bh());
@@ -454,7 +475,7 @@ public final class q
     ((q)localObject).b(new bp());
     ((q)localObject).b(new bq());
     ((q)localObject).b(new bs());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.v.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.u.d());
     ((q)localObject).b(new JsApiLaunchApplication());
     ((q)localObject).b(new JsApiLaunchApplicationDirectly());
     ((q)localObject).b(new JsApiAddNativeDownloadTask());
@@ -469,34 +490,35 @@ public final class q
     ((q)localObject).b(new JsApiCancelDownloadTask());
     ((q)localObject).b(new JsApiWriteCommData());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.ui.a());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.p());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.q());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.f.a());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.f.b());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.p());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.q());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.e.a());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.e.b());
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.c());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.ab());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.g());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.w());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.f());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.v());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.d());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.h());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.j());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.s());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.z());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.r());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.n());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.l());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.m());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.o());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.k());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.y());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.i());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.x());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.e());
-    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.g.u());
-    ((q)localObject).bh(localArrayList);
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.c());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.ac());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.g());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.w());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.f());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.v());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.d());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.h());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.j());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.s());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.aa());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.r());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.n());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.l());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.m());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.o());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.k());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.y());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.i());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.x());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.e());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.u());
+    localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.f.z());
+    ((q)localObject).bf(localArrayList);
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.h5_interact.b());
     ((q)localObject).b(new JsApiOpenAdCanvas());
     ((q)localObject).b(new aq());
@@ -504,7 +526,7 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.profile.c());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.profile.a());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.profile.b());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.h.a());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.g.a());
     ((q)localObject).b(new aw());
     ((q)localObject).b(new ax());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.offlinevoice.b());
@@ -515,19 +537,21 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.c());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.p());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.g());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.a());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.f());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.c());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.b());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.e());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.d());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.h());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.a());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.f());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.b());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.e());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.d());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.g());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.i());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.j());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.j());
     ((q)localObject).b(new JsApiGetABTestConfig());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.j.h());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.t.c());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.t.d());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.t.a());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.s.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.s.d());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.s.a());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.coverview.g());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.coverview.o());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.coverview.k());
@@ -542,19 +566,19 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.video.d.e());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.video.d.d());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.video.d.b());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.e());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.i());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.h());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.g());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.a.a.e());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.a.a.i());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.a.a.f());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.a.a.h());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.a.a.g());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.b.a.b());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.b.a.e());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.b.a.c());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.b.a.d());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.e());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.i());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.h());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.g());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.c.a.a.e());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.c.a.a.i());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.c.a.a.f());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.c.a.a.h());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.c.a.a.g());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.c.b.a.b());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.c.b.a.e());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.c.b.a.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.z.c.b.a.d());
     ((q)localObject).b(new bu());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.file.aa());
     ((q)localObject).b(new JsApiPrivateAddContact());
@@ -563,8 +587,8 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.coverview.l());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.coverview.h());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.media.e());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.aj());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.w());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.aj());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.w());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.f());
     ((q)localObject).b(new JsApiChooseMultiMedia());
     ((q)localObject).b(new JsApiRequestSubscribeMessage());
@@ -584,9 +608,9 @@ public final class q
     ((q)localObject).b(new JsApiJumpDownloaderWidgetForNative());
     ((q)localObject).b(new ci());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.i.a());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.s.c());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.r.c());
     ((q)localObject).b(new ce());
-    ((q)localObject).bh(com.tencent.mm.plugin.appbrand.jsapi.ui.launcher.d.bcb());
+    ((q)localObject).bf(com.tencent.mm.plugin.appbrand.jsapi.ui.launcher.d.biW());
     ((q)localObject).b(new bt());
     ((q)localObject).b(new al());
     ((q)localObject).b(new JsApiGetFinderAccount());
@@ -606,11 +630,14 @@ public final class q
     ((q)localObject).b(new av());
     ((q)localObject).b(new bz());
     ((q)localObject).b(new bd());
-    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.l.s());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.k.s());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.h());
     ((q)localObject).b(new by());
     ((q)localObject).b(new JsApiHandleMpChannelAction());
     ((q)localObject).b(new JsApiOpenWebViewUseFastLoad());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.camera.l());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.camera.p());
+    ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.camera.o());
     ((q)localObject).b(new JsApiAddToFavorites());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.j());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.share.m());
@@ -620,37 +647,40 @@ public final class q
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.fakenative.a());
     ((q)localObject).b(new JsApiRemoveSplashScreenshot());
     ((q)localObject).b(new com.tencent.mm.plugin.appbrand.jsapi.pay.i());
-    localObject = ((q)localObject).jwe;
+    ((q)localObject).b(new JsApiOnWebPageUrlExposed());
+    ((q)localObject).b(new JsApiGetRecentUsageList());
+    ((q)localObject).b(new JsApiOperateRecentUsageList());
+    localObject = ((q)localObject).jWA;
     AppMethodBeat.o(45423);
     return localObject;
   }
   
-  public static Map<String, m> aXL()
+  public static Map<String, m> beI()
   {
     AppMethodBeat.i(45424);
     Object localObject = new q();
-    ((q)localObject).jwd = com.tencent.mm.sdk.platformtools.bt.GC();
+    ((q)localObject).jWz = com.tencent.mm.sdk.platformtools.bs.Gn();
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.profile.c());
     ((q)localObject).a(new bj());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.v.i());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.d.h());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.d.c());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.d.b());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.d.i());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.d.d());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.d.j());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.d.e());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.d.f());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.k());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.s.d());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.s.e());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.s.g());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.s.f());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.u.j());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.c.h());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.c.c());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.c.b());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.c.i());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.c.d());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.c.j());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.c.e());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.c.f());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.k());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.r.d());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.r.e());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.r.g());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.r.f());
     ((q)localObject).a(new bw());
     ((q)localObject).a(new cb());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.n.f());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.n.h());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.b());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.m.f());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.m.h());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.b());
     ((q)localObject).a(new az());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.video.d.a());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.video.d.e());
@@ -665,41 +695,41 @@ public final class q
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.live.g());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.live.e());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.live.c());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.e());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.i());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.f());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.h());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.a.a.e());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.a.a.i());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.a.a.f());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.a.a.h());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.b.a.b());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.b.a.e());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.b.a.c());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.c.b.a.d());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.b.f());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.b.g());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.b.j());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.b.l());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.e());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.i());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.f());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.h());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.c.a.a.e());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.c.a.a.i());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.c.a.a.f());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.c.a.a.h());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.c.b.a.b());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.c.b.a.e());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.c.b.a.c());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.c.b.a.d());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.f());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.g());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.j());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.l());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.contact.e());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.contact.f());
     ((q)localObject).a(new JsApiPrivateAddContact());
     ((q)localObject).a(new bv());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.a());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.d());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.g());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.b());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.f());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.a());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.autofill.e());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.autofill.h());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.autofill.b());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.autofill.g());
     ((q)localObject).a(new cd());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.v.p());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.u.q());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.container.a());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.container.c());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.container.b());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.c());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.e());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.n.g());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.n.d());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.n.i());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.autofill.d());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.autofill.f());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.m.g());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.m.d());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.m.i());
     ((q)localObject).a(new cc());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.coverview.g());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.coverview.o());
@@ -710,41 +740,41 @@ public final class q
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.camera.l());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.camera.p());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.camera.o());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.b());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.e());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.d());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.b());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.e());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.openvoice.d());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.debugger.e());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.coverview.c());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.g());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.i());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.h());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.y.g());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.y.i());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.y.h());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.coverview.d());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.coverview.l());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.coverview.h());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.b.h());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.b.m());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.b.k());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.b.a.a.b());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.b.a.a.d());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.b.a.a.c());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.o());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.h());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.m());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.k());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.a.a.b());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.a.a.d());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.a.a.a.c());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.o());
     ((q)localObject).a(new bu());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.file.aa());
     ((q)localObject).a(new ag());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.coverview.f());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.coverview.n());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.coverview.j());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.v());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.t());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.ac());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.d());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.q());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.p());
-    ((q)localObject).bi(com.tencent.mm.plugin.appbrand.jsapi.g.ac.ban());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.v());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.t());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.ac());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.d());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.q());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.p());
+    ((q)localObject).bg(com.tencent.mm.plugin.appbrand.jsapi.f.ad.bhg());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.ui.e());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.ui.c());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.ab());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.c());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.ab());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.c());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.ui.f());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.ui.d());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.ui.b());
@@ -752,66 +782,49 @@ public final class q
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.f());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.pay.n());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.pay.l());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.u());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.ac.h());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.u());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.ab.h());
     ((q)localObject).a(new JsApiOperateWXData());
     ((q)localObject).a(new JsApiLogin());
     ((q)localObject).a(new JsApiAuthorize());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.v.g());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.v.m());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.v.j());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.v.n());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.ah());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.u.h());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.u.n());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.u.k());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.u.o());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.ah());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.storage.d());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.storage.j());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.storage.m());
     ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.storage.e());
     ((q)localObject).a(new be());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.d.a.b());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.d.a.d());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.d.a.c());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.d.a.b());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.d.a.d());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.d.a.c());
     ((q)localObject).a(new JsApiShowImageOperateSheet());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.a.a.b());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.a.a.d());
-    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.aa.a.a.c());
-    if (!com.tencent.mm.plugin.appbrand.xweb_ext.c.buR()) {}
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.a.a.b());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.a.a.d());
+    ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.z.a.a.c());
+    if (!com.tencent.mm.plugin.appbrand.xweb_ext.c.bBO()) {}
     for (boolean bool = true;; bool = false)
     {
-      ((q)localObject).bi(com.tencent.mm.plugin.appbrand.jsapi.aa.b.c.gs(bool));
-      ((q)localObject).bi(com.tencent.mm.plugin.appbrand.jsapi.ui.launcher.d.bcb());
-      ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.r.b());
+      ((q)localObject).bg(com.tencent.mm.plugin.appbrand.jsapi.z.b.c.gO(bool));
+      ((q)localObject).bg(com.tencent.mm.plugin.appbrand.jsapi.ui.launcher.d.biW());
+      ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.q.b());
       ((q)localObject).a(new bt());
       ((q)localObject).a(new av());
       ((q)localObject).a(new bz());
       ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.file.w());
-      ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.aj());
-      ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.l.w());
-      ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.t.a());
-      localObject = ((q)localObject).jwf;
+      ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.aj());
+      ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.k.w());
+      ((q)localObject).a(new com.tencent.mm.plugin.appbrand.jsapi.s.a());
+      ((q)localObject).a(new JsApiOnWebPageUrlExposed());
+      localObject = ((q)localObject).jWB;
       AppMethodBeat.o(45424);
       return localObject;
     }
   }
   
-  private void b(m paramm)
-  {
-    AppMethodBeat.i(45426);
-    long l = com.tencent.mm.sdk.platformtools.bt.GC() - this.jwc;
-    if (l > 1L) {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrandJsApiPool", "addToServicePool api[%s] use[%dms]", new Object[] { paramm.getName(), Long.valueOf(l) });
-    }
-    if ((m)this.jwe.put(paramm.getName(), paramm) != null)
-    {
-      paramm = new IllegalAccessError("Duplicated api instance " + c(paramm));
-      AppMethodBeat.o(45426);
-      throw paramm;
-    }
-    paramm.jvW = jwb;
-    this.jwc = com.tencent.mm.sdk.platformtools.bt.GC();
-    AppMethodBeat.o(45426);
-  }
-  
-  private void bh(List<m> paramList)
+  private void bf(List<m> paramList)
   {
     AppMethodBeat.i(45425);
     if ((paramList == null) || (paramList.size() <= 0))
@@ -826,7 +839,7 @@ public final class q
     AppMethodBeat.o(45425);
   }
   
-  private void bi(List<m> paramList)
+  private void bg(List<m> paramList)
   {
     AppMethodBeat.i(45427);
     if ((paramList == null) || (paramList.size() <= 0))
@@ -851,7 +864,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.q
  * JD-Core Version:    0.7.0.1
  */

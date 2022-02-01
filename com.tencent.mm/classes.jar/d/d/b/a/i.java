@@ -1,34 +1,41 @@
 package d.d.b.a;
 
 import d.d.d;
-import d.d.f;
-import d.d.g;
+import d.g.b.k;
+import d.g.b.w;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/coroutines/jvm/internal/RestrictedContinuationImpl;", "Lkotlin/coroutines/jvm/internal/BaseContinuationImpl;", "completion", "Lkotlin/coroutines/Continuation;", "", "(Lkotlin/coroutines/Continuation;)V", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/jvm/internal/SuspendLambda;", "Lkotlin/coroutines/jvm/internal/ContinuationImpl;", "Lkotlin/jvm/internal/FunctionBase;", "", "Lkotlin/coroutines/jvm/internal/SuspendFunction;", "arity", "", "(I)V", "completion", "Lkotlin/coroutines/Continuation;", "(ILkotlin/coroutines/Continuation;)V", "getArity", "()I", "toString", "", "kotlin-stdlib"})
 public abstract class i
-  extends a
+  extends c
+  implements d.g.b.i<Object>
 {
+  private final int arity = 2;
+  
   public i(d<Object> paramd)
   {
     super(paramd);
-    if (paramd != null)
-    {
-      if (paramd.fvA() == g.JgF) {}
-      for (int i = 1; i == 0; i = 0) {
-        throw ((Throwable)new IllegalArgumentException("Coroutines with restricted suspension must have EmptyCoroutineContext".toString()));
-      }
-    }
   }
   
-  public final f fvA()
+  public int getArity()
   {
-    return (f)g.JgF;
+    return this.arity;
+  }
+  
+  public String toString()
+  {
+    if (this.KUl == null)
+    {
+      String str = w.a((d.g.b.i)this);
+      k.g(str, "Reflection.renderLambdaToString(this)");
+      return str;
+    }
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.d.b.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import java.lang.reflect.Method;
 
 public final class u
 {
-  public static boolean Et()
+  public static boolean DW()
   {
-    AppMethodBeat.i(192564);
+    AppMethodBeat.i(205659);
     Class localClass = Class.forName("com.huawei.android.os.SystemPropertiesEx");
     boolean bool = ((Boolean)localClass.getMethod("getBoolean", new Class[] { String.class, Boolean.TYPE }).invoke(localClass.newInstance(), new Object[] { "ro.config.hw_magic_window_enable", Boolean.FALSE })).booleanValue();
-    AppMethodBeat.o(192564);
+    AppMethodBeat.o(205659);
     return bool;
   }
 }

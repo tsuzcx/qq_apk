@@ -1,13 +1,13 @@
 package com.tencent.mm.wallet_core.c;
 
 import android.os.Bundle;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
 
 public abstract class w
   extends n
@@ -43,7 +43,7 @@ public abstract class w
         localObject1 = str2;
       }
     }
-    h.vKh.f(11170, new Object[] { Integer.valueOf(getType()), Integer.valueOf(this.mCmdId), Long.valueOf(l1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(ay.getNetType(aj.getContext())), this.mProcessName, localObject2, localObject1, Long.valueOf(this.sessionId), Long.valueOf(l2) });
+    h.wUl.f(11170, new Object[] { Integer.valueOf(getType()), Integer.valueOf(this.mCmdId), Long.valueOf(l1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(ax.getNetType(ai.getContext())), this.mProcessName, localObject2, localObject1, Long.valueOf(this.sessionId), Long.valueOf(l2) });
     ab.a(getType(), getCgicmdForKV(), paramInt1, paramInt2, l1, this.mScene, this.mProcessName);
     return l1;
   }
@@ -93,7 +93,7 @@ public abstract class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.w
  * JD-Core Version:    0.7.0.1
  */

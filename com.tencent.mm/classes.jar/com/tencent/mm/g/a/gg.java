@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gg
   extends b
 {
-  public a djo;
-  public b djp;
+  public a dgI;
   
   public gg()
   {
@@ -16,29 +15,25 @@ public final class gg
   
   private gg(byte paramByte)
   {
-    AppMethodBeat.i(127288);
-    this.djo = new a();
-    this.djp = new b();
-    this.ESR = false;
+    AppMethodBeat.i(91204);
+    this.dgI = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(127288);
+    AppMethodBeat.o(91204);
   }
   
   public static final class a
   {
-    public int djq = 0;
-    public int state = -1;
-    public String talker;
-  }
-  
-  public static final class b
-  {
-    public int state = -1;
+    public String dac;
+    public String dad;
+    public int dae;
+    public boolean isKinda = false;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.gg
  * JD-Core Version:    0.7.0.1
  */

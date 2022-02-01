@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static int bn(int paramInt1, int paramInt2)
+  public static int bl(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(93109);
     if ((paramInt1 < 0) || (paramInt1 >= paramInt2))

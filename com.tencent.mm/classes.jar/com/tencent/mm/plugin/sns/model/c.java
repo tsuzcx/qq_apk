@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.sns.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.protobuf.afv;
-import com.tencent.mm.protocal.protobuf.amw;
-import com.tencent.mm.protocal.protobuf.dbt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.agu;
+import com.tencent.mm.protocal.protobuf.aqa;
+import com.tencent.mm.protocal.protobuf.dhf;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -15,28 +15,28 @@ public final class c
   public static int a(long paramLong1, long paramLong2, String paramString)
   {
     AppMethodBeat.i(95454);
-    paramString = af.dty().apN(paramString);
-    Object localObject = paramString.DnX;
-    ad.i("MicroMsg.FaultLogic", "getLastReqTimeByMinId fault.count %s", new Object[] { Integer.valueOf(paramString.DnX.size()) });
+    paramString = af.dHV().auW(paramString);
+    Object localObject = paramString.EIX;
+    ac.i("MicroMsg.FaultLogic", "getLastReqTimeByMinId fault.count %s", new Object[] { Integer.valueOf(paramString.EIX.size()) });
     if (((LinkedList)localObject).isEmpty())
     {
       AppMethodBeat.o(95454);
       return 0;
     }
-    paramString = (afv)((LinkedList)localObject).getFirst();
-    if ((paramLong1 == 0L) || (al(paramString.DfN, paramLong1) > 0L))
+    paramString = (agu)((LinkedList)localObject).getFirst();
+    if ((paramLong1 == 0L) || (ai(paramString.EyT, paramLong1) > 0L))
     {
-      ad.e("MicroMsg.FaultLogic", "has a fault  minId:" + paramLong2 + " fault.min:" + paramString.DfN);
+      ac.e("MicroMsg.FaultLogic", "has a fault  minId:" + paramLong2 + " fault.min:" + paramString.EyT);
       AppMethodBeat.o(95454);
       return 0;
     }
-    if ((paramLong2 != 0L) && (al(paramString.DfM, paramLong2) < 0L))
+    if ((paramLong2 != 0L) && (ai(paramString.EyS, paramLong2) < 0L))
     {
-      ad.e("MicroMsg.FaultLogic", ":" + paramLong2 + " fault.max:" + paramString.DfM);
+      ac.e("MicroMsg.FaultLogic", ":" + paramLong2 + " fault.max:" + paramString.EyS);
       AppMethodBeat.o(95454);
       return 0;
     }
-    paramString = paramString.DfO;
+    paramString = paramString.EyU;
     if (paramString.isEmpty())
     {
       AppMethodBeat.o(95454);
@@ -46,15 +46,15 @@ public final class c
     int i = 2147483647;
     while (paramString.hasNext())
     {
-      localObject = (dbt)paramString.next();
-      if ((paramLong2 == 0L) || (al(paramLong2, ((dbt)localObject).Etv) >= 0L))
+      localObject = (dhf)paramString.next();
+      if ((paramLong2 == 0L) || (ai(paramLong2, ((dhf)localObject).FQx) >= 0L))
       {
         int j = i;
-        if (((dbt)localObject).Etw < i) {
-          j = ((dbt)localObject).Etw;
+        if (((dhf)localObject).FQy < i) {
+          j = ((dhf)localObject).FQy;
         }
         i = j;
-        if (al(paramLong1, ((dbt)localObject).Etv) >= 0L)
+        if (ai(paramLong1, ((dhf)localObject).FQx) >= 0L)
         {
           if (j == 2147483647)
           {
@@ -66,58 +66,58 @@ public final class c
         }
       }
     }
-    ad.i("MicroMsg.FaultLogic", "should not to hear  minId:".concat(String.valueOf(paramLong1)));
+    ac.i("MicroMsg.FaultLogic", "should not to hear  minId:".concat(String.valueOf(paramLong1)));
     AppMethodBeat.o(95454);
     return 0;
   }
   
-  private static afv a(afv paramafv1, afv paramafv2)
+  private static agu a(agu paramagu1, agu paramagu2)
   {
     AppMethodBeat.i(95453);
-    afv localafv = new afv();
-    if (al(paramafv1.DfM, paramafv2.DfM) > 0L)
+    agu localagu = new agu();
+    if (ai(paramagu1.EyS, paramagu2.EyS) > 0L)
     {
-      localafv.DfM = paramafv1.DfM;
-      if (al(paramafv1.DfN, paramafv2.DfN) >= 0L) {
+      localagu.EyS = paramagu1.EyS;
+      if (ai(paramagu1.EyT, paramagu2.EyT) >= 0L) {
         break label132;
       }
-      localafv.DfN = paramafv1.DfN;
+      localagu.EyT = paramagu1.EyT;
       label64:
-      paramafv1 = paramafv1.DfO;
-      paramafv2 = paramafv2.DfO.iterator();
+      paramagu1 = paramagu1.EyU;
+      paramagu2 = paramagu2.EyU.iterator();
     }
     for (;;)
     {
-      if (!paramafv2.hasNext()) {
+      if (!paramagu2.hasNext()) {
         break label639;
       }
-      dbt localdbt1 = (dbt)paramafv2.next();
-      if (paramafv1.isEmpty())
+      dhf localdhf1 = (dhf)paramagu2.next();
+      if (paramagu1.isEmpty())
       {
-        ad.e("MicroMsg.FaultLogic", "fault's segments should not empty!!");
-        paramafv1.addFirst(localdbt1);
+        ac.e("MicroMsg.FaultLogic", "fault's segments should not empty!!");
+        paramagu1.addFirst(localdhf1);
         continue;
-        localafv.DfM = paramafv2.DfM;
+        localagu.EyS = paramagu2.EyS;
         break;
         label132:
-        localafv.DfN = paramafv2.DfN;
+        localagu.EyT = paramagu2.EyT;
         break label64;
       }
-      long l1 = localdbt1.Etv;
-      int i = paramafv1.size() - 1;
+      long l1 = localdhf1.FQx;
+      int i = paramagu1.size() - 1;
       label158:
       label183:
       int j;
       if (i >= 0) {
-        if (al(l1, ((dbt)paramafv1.get(i)).Etu) <= 0L)
+        if (ai(l1, ((dhf)paramagu1.get(i)).FQw) <= 0L)
         {
-          l1 = localdbt1.Etu;
+          l1 = localdhf1.FQw;
           j = 0;
           label192:
-          if (j >= paramafv1.size()) {
+          if (j >= paramagu1.size()) {
             break label254;
           }
-          if (al(l1, ((dbt)paramafv1.get(j)).Etv) < 0L) {
+          if (ai(l1, ((dhf)paramagu1.get(j)).FQx) < 0L) {
             break label247;
           }
         }
@@ -127,7 +127,7 @@ public final class c
         if (i != -1) {
           break label262;
         }
-        paramafv1.addFirst(localdbt1);
+        paramagu1.addFirst(localdhf1);
         break;
         i -= 1;
         break label158;
@@ -137,24 +137,24 @@ public final class c
         j += 1;
         break label192;
         label254:
-        j = paramafv1.size();
+        j = paramagu1.size();
       }
       label262:
-      if (j == paramafv1.size())
+      if (j == paramagu1.size())
       {
-        paramafv1.addLast(localdbt1);
+        paramagu1.addLast(localdhf1);
       }
       else
       {
-        dbt localdbt2 = (dbt)paramafv1.get(j);
+        dhf localdhf2 = (dhf)paramagu1.get(j);
         int k = i;
         int m = j;
-        dbt localdbt3;
-        if (al(localdbt1.Etu, localdbt2.Etu) < 0L)
+        dhf localdhf3;
+        if (ai(localdhf1.FQw, localdhf2.FQw) < 0L)
         {
-          localdbt3 = new dbt();
-          localdbt3.Etu = localdbt2.Etu;
-          l1 = localdbt1.Etu;
+          localdhf3 = new dhf();
+          localdhf3.FQw = localdhf2.FQw;
+          l1 = localdhf1.FQw;
           if (l1 != 9223372036854775807L) {
             break label493;
           }
@@ -162,57 +162,57 @@ public final class c
         label493:
         for (l1 = -9223372036854775808L;; l1 += 1L)
         {
-          localdbt3.Etv = l1;
-          localdbt3.Etw = localdbt2.Etw;
-          paramafv1.add(j, localdbt3);
+          localdhf3.FQx = l1;
+          localdhf3.FQy = localdhf2.FQy;
+          paramagu1.add(j, localdhf3);
           k = i + 1;
           m = j + 1;
-          localdbt2 = (dbt)paramafv1.get(k);
+          localdhf2 = (dhf)paramagu1.get(k);
           i = k;
-          if (al(localdbt1.Etv, localdbt2.Etv) > 0L)
+          if (ai(localdhf1.FQx, localdhf2.FQx) > 0L)
           {
-            localdbt3 = new dbt();
-            localdbt3.Etv = localdbt2.Etv;
-            localdbt3.Etu = sz(localdbt1.Etv);
-            localdbt3.Etw = localdbt2.Etw;
-            paramafv1.add(k + 1, localdbt3);
+            localdhf3 = new dhf();
+            localdhf3.FQx = localdhf2.FQx;
+            localdhf3.FQw = xc(localdhf1.FQx);
+            localdhf3.FQy = localdhf2.FQy;
+            paramagu1.add(k + 1, localdhf3);
             i = k;
           }
           while (i >= m)
           {
-            paramafv1.remove(i);
+            paramagu1.remove(i);
             i -= 1;
           }
         }
-        paramafv1.add(m, localdbt1);
-        if (paramafv1.size() > 100)
+        paramagu1.add(m, localdhf1);
+        if (paramagu1.size() > 100)
         {
-          long l2 = ((dbt)paramafv1.getLast()).Etv;
-          l1 = ((dbt)paramafv1.getLast()).Etu;
-          for (i = ((dbt)paramafv1.getLast()).Etw; paramafv1.size() >= 100; i = j)
+          long l2 = ((dhf)paramagu1.getLast()).FQx;
+          l1 = ((dhf)paramagu1.getLast()).FQw;
+          for (i = ((dhf)paramagu1.getLast()).FQy; paramagu1.size() >= 100; i = j)
           {
-            localdbt1 = (dbt)paramafv1.removeLast();
-            l1 = localdbt1.Etu;
+            localdhf1 = (dhf)paramagu1.removeLast();
+            l1 = localdhf1.FQw;
             j = i;
-            if (localdbt1.Etw < i) {
-              j = localdbt1.Etw;
+            if (localdhf1.FQy < i) {
+              j = localdhf1.FQy;
             }
           }
-          localdbt1 = new dbt();
-          localdbt1.Etu = l1;
-          localdbt1.Etv = l2;
-          localdbt1.Etw = i;
-          paramafv1.addLast(localdbt1);
+          localdhf1 = new dhf();
+          localdhf1.FQw = l1;
+          localdhf1.FQx = l2;
+          localdhf1.FQy = i;
+          paramagu1.addLast(localdhf1);
         }
       }
     }
     label639:
-    localafv.DfO = paramafv1;
+    localagu.EyU = paramagu1;
     AppMethodBeat.o(95453);
-    return localafv;
+    return localagu;
   }
   
-  private static long al(long paramLong1, long paramLong2)
+  private static long ai(long paramLong1, long paramLong2)
   {
     if (((paramLong1 > 0L) && (paramLong2 > 0L)) || ((paramLong1 < 0L) && (paramLong2 < 0L))) {
       return paramLong1 - paramLong2;
@@ -223,7 +223,7 @@ public final class c
     return -1L;
   }
   
-  public static void e(String paramString, long paramLong1, long paramLong2, int paramInt)
+  public static void f(String paramString, long paramLong1, long paramLong2, int paramInt)
   {
     AppMethodBeat.i(95452);
     if (paramLong2 == 0L)
@@ -231,66 +231,66 @@ public final class c
       AppMethodBeat.o(95452);
       return;
     }
-    Object localObject1 = af.dty().apN(paramString);
+    Object localObject1 = af.dHV().auW(paramString);
     if (localObject1 == null) {
-      localObject1 = new amw();
+      localObject1 = new aqa();
     }
     for (;;)
     {
-      if ((paramLong1 == 0L) && (((amw)localObject1).DnX.isEmpty()))
+      if ((paramLong1 == 0L) && (((aqa)localObject1).EIX.isEmpty()))
       {
         AppMethodBeat.o(95452);
         return;
       }
       long l = paramLong1;
       if (paramLong1 == 0L) {
-        l = ((afv)((amw)localObject1).DnX.getFirst()).DfM;
+        l = ((agu)((aqa)localObject1).EIX.getFirst()).EyS;
       }
-      Object localObject2 = new afv();
-      ((afv)localObject2).DfM = l;
-      ((afv)localObject2).DfN = paramLong2;
-      Object localObject3 = new dbt();
-      ((dbt)localObject3).Etu = l;
-      ((dbt)localObject3).Etv = paramLong2;
-      ((dbt)localObject3).Etw = paramInt;
-      ((afv)localObject2).DfO.add(localObject3);
+      Object localObject2 = new agu();
+      ((agu)localObject2).EyS = l;
+      ((agu)localObject2).EyT = paramLong2;
+      Object localObject3 = new dhf();
+      ((dhf)localObject3).FQw = l;
+      ((dhf)localObject3).FQx = paramLong2;
+      ((dhf)localObject3).FQy = paramInt;
+      ((agu)localObject2).EyU.add(localObject3);
       for (;;)
       {
-        if (!((amw)localObject1).DnX.isEmpty())
+        if (!((aqa)localObject1).EIX.isEmpty())
         {
-          localObject3 = (afv)((amw)localObject1).DnX.getFirst();
-          if (al(((afv)localObject2).DfN, ((afv)localObject3).DfM) > 0L) {
-            ad.e("MicroMsg.FaultLogic", "has a fault: newerMin:" + ((afv)localObject2).DfN + " fault.Max" + ((afv)localObject3).DfM);
+          localObject3 = (agu)((aqa)localObject1).EIX.getFirst();
+          if (ai(((agu)localObject2).EyT, ((agu)localObject3).EyS) > 0L) {
+            ac.e("MicroMsg.FaultLogic", "has a fault: newerMin:" + ((agu)localObject2).EyT + " fault.Max" + ((agu)localObject3).EyS);
           }
         }
         else
         {
-          ((amw)localObject1).DnX.addFirst(localObject2);
-          while (((amw)localObject1).DnX.size() > 100) {
-            ((amw)localObject1).DnX.removeLast();
+          ((aqa)localObject1).EIX.addFirst(localObject2);
+          while (((aqa)localObject1).EIX.size() > 100) {
+            ((aqa)localObject1).EIX.removeLast();
           }
         }
-        ((amw)localObject1).DnX.removeFirst();
-        localObject2 = a((afv)localObject3, (afv)localObject2);
+        ((aqa)localObject1).EIX.removeFirst();
+        localObject2 = a((agu)localObject3, (agu)localObject2);
       }
-      if (((amw)localObject1).DnX.size() > 0) {
-        ad.d("MicroMsg.FaultLogic", "min " + ((afv)((amw)localObject1).DnX.get(0)).DfN + " max " + ((afv)((amw)localObject1).DnX.get(0)).DfM);
+      if (((aqa)localObject1).EIX.size() > 0) {
+        ac.d("MicroMsg.FaultLogic", "min " + ((agu)((aqa)localObject1).EIX.get(0)).EyT + " max " + ((agu)((aqa)localObject1).EIX.get(0)).EyS);
       }
-      localObject2 = af.dty().apP(paramString);
+      localObject2 = af.dHV().auY(paramString);
       try
       {
         ((n)localObject2).field_userName = paramString;
-        ((n)localObject2).field_faultS = ((amw)localObject1).toByteArray();
-        af.dty().c((n)localObject2);
+        ((n)localObject2).field_faultS = ((aqa)localObject1).toByteArray();
+        af.dHV().c((n)localObject2);
         label389:
-        if (((amw)localObject1).DnX.size() > 1)
+        if (((aqa)localObject1).EIX.size() > 1)
         {
-          ad.d("MicroMsg.FaultLogic", "fault size : " + ((amw)localObject1).DnX.size());
-          paramString = ((amw)localObject1).DnX.iterator();
+          ac.d("MicroMsg.FaultLogic", "fault size : " + ((aqa)localObject1).EIX.size());
+          paramString = ((aqa)localObject1).EIX.iterator();
           while (paramString.hasNext())
           {
-            localObject1 = (afv)paramString.next();
-            ad.d("MicroMsg.FaultLogic", "min - max " + ((afv)localObject1).DfN + " " + ((afv)localObject1).DfM);
+            localObject1 = (agu)paramString.next();
+            ac.d("MicroMsg.FaultLogic", "min - max " + ((agu)localObject1).EyT + " " + ((agu)localObject1).EyS);
           }
         }
         AppMethodBeat.o(95452);
@@ -303,7 +303,7 @@ public final class c
     }
   }
   
-  public static long sz(long paramLong)
+  public static long xc(long paramLong)
   {
     if (paramLong == -9223372036854775808L) {
       return 9223372036854775807L;
@@ -313,7 +313,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.c
  * JD-Core Version:    0.7.0.1
  */

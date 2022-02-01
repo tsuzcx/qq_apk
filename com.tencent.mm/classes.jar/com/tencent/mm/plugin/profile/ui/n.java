@@ -7,7 +7,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.u;
@@ -18,16 +18,16 @@ import com.tencent.mm.plugin.profile.b;
 import com.tencent.mm.pluginsdk.b.a;
 import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
-import com.tencent.mm.protocal.protobuf.cau;
+import com.tencent.mm.protocal.protobuf.cft;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.q;
+import com.tencent.mm.ui.r;
 import java.util.Timer;
 import java.util.TimerTask;
 import junit.framework.Assert;
@@ -35,7 +35,7 @@ import junit.framework.Assert;
 public final class n
   implements a, n.b
 {
-  private af contact;
+  private ai contact;
   Context context;
   private f screen;
   
@@ -44,19 +44,19 @@ public final class n
     this.context = paramContext;
   }
   
-  private void bRv()
+  private void bYK()
   {
     boolean bool1 = true;
     AppMethodBeat.i(27222);
-    boolean bool2 = dcB();
-    Object localObject = (HelperHeaderPreference)this.screen.aKk("contact_info_header_helper");
-    ((HelperHeaderPreference)localObject).aO(this.contact.field_username, this.contact.ZX(), this.context.getString(2131757898));
+    boolean bool2 = dqj();
+    Object localObject = (HelperHeaderPreference)this.screen.aPN("contact_info_header_helper");
+    ((HelperHeaderPreference)localObject).aR(this.contact.field_username, this.contact.aaS(), this.context.getString(2131757898));
     int i;
     if (bool2)
     {
       i = 1;
       ((HelperHeaderPreference)localObject).updateStatus(i);
-      this.screen.cE("contact_info_voiceinput_install", bool2);
+      this.screen.cK("contact_info_voiceinput_install", bool2);
       localObject = this.screen;
       if (bool2) {
         break label114;
@@ -64,7 +64,7 @@ public final class n
     }
     for (;;)
     {
-      ((f)localObject).cE("contact_info_voiceinput_uninstall", bool1);
+      ((f)localObject).cK("contact_info_voiceinput_uninstall", bool1);
       AppMethodBeat.o(27222);
       return;
       i = 0;
@@ -74,10 +74,10 @@ public final class n
     }
   }
   
-  private static boolean dcB()
+  private static boolean dqj()
   {
     AppMethodBeat.i(27219);
-    if ((u.aqS() & 0x2000000) == 0)
+    if ((u.axI() & 0x2000000) == 0)
     {
       AppMethodBeat.o(27219);
       return true;
@@ -86,7 +86,7 @@ public final class n
     return false;
   }
   
-  public static void w(Context paramContext, boolean paramBoolean)
+  public static void x(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(27223);
     if (paramBoolean) {}
@@ -94,31 +94,31 @@ public final class n
     {
       paramContext.getString(2131755906);
       paramContext = h.b(paramContext, (String)localObject, true, null);
-      localObject = new ap()
+      localObject = new ao()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
           AppMethodBeat.i(27217);
-          int i = u.aqS();
-          if (this.okp)
+          int i = u.axI();
+          if (this.oNP)
           {
             i &= 0xFDFFFFFF;
-            az.arV();
-            c.afk().set(34, Integer.valueOf(i));
-            paramAnonymousMessage = new cau();
-            paramAnonymousMessage.CuI = 33554432;
-            if (!this.okp) {
+            az.ayM();
+            c.agA().set(34, Integer.valueOf(i));
+            paramAnonymousMessage = new cft();
+            paramAnonymousMessage.DNd = 33554432;
+            if (!this.oNP) {
               break label119;
             }
           }
           label119:
           for (i = 0;; i = 1)
           {
-            paramAnonymousMessage.DXj = i;
-            az.arV();
-            c.apL().c(new j.a(39, paramAnonymousMessage));
-            if (this.tvY != null) {
-              this.tvY.a(null, null);
+            paramAnonymousMessage.Fuc = i;
+            az.ayM();
+            c.awA().c(new j.a(39, paramAnonymousMessage));
+            if (this.uEr != null) {
+              this.uEr.a(null, null);
             }
             AppMethodBeat.o(27217);
             return;
@@ -132,10 +132,10 @@ public final class n
         public final void run()
         {
           AppMethodBeat.i(27218);
-          if (this.nZT != null)
+          if (this.oDo != null)
           {
-            this.nZT.dismiss();
-            this.ssV.sendEmptyMessage(0);
+            this.oDo.dismiss();
+            this.tAL.sendEmptyMessage(0);
           }
           AppMethodBeat.o(27218);
         }
@@ -145,18 +145,18 @@ public final class n
     }
   }
   
-  public final boolean SN(String paramString)
+  public final boolean WZ(String paramString)
   {
     AppMethodBeat.i(27220);
-    ad.d("MicroMsg.ContactWidgetVoiceInput", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bt.nullAsNil(paramString).length() <= 0)
+    ac.d("MicroMsg.ContactWidgetVoiceInput", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    if (bs.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(27220);
       return false;
     }
     if (paramString.equals("contact_info_voiceinput_install"))
     {
-      w(this.context, true);
+      x(this.context, true);
       AppMethodBeat.o(27220);
       return true;
     }
@@ -167,14 +167,14 @@ public final class n
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(27216);
-          n.w(n.this.context, false);
+          n.x(n.this.context, false);
           AppMethodBeat.o(27216);
         }
       }, null);
       AppMethodBeat.o(27220);
       return true;
     }
-    ad.e("MicroMsg.ContactWidgetVoiceInput", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    ac.e("MicroMsg.ContactWidgetVoiceInput", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(27220);
     return false;
   }
@@ -182,12 +182,12 @@ public final class n
   public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
   {
     AppMethodBeat.i(27225);
-    int i = bt.i(paramObject, 0);
-    ad.d("MicroMsg.ContactWidgetVoiceInput", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    az.arV();
-    if ((paramn != c.afk()) || (i <= 0))
+    int i = bs.l(paramObject, 0);
+    ac.d("MicroMsg.ContactWidgetVoiceInput", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
+    az.ayM();
+    if ((paramn != c.agA()) || (i <= 0))
     {
-      ad.e("MicroMsg.ContactWidgetVoiceInput", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
+      ac.e("MicroMsg.ContactWidgetVoiceInput", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
       AppMethodBeat.o(27225);
       return;
     }
@@ -196,11 +196,11 @@ public final class n
       AppMethodBeat.o(27225);
       return;
     }
-    bRv();
+    bYK();
     AppMethodBeat.o(27225);
   }
   
-  public final boolean a(f paramf, af paramaf, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, ai paramai, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(27221);
@@ -209,28 +209,28 @@ public final class n
     {
       Assert.assertTrue(paramBoolean);
       paramBoolean = bool;
-      if (paramaf != null) {
+      if (paramai != null) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(w.sY(paramaf.field_username));
-      az.arV();
-      c.afk().a(this);
-      this.contact = paramaf;
+      Assert.assertTrue(w.xb(paramai.field_username));
+      az.ayM();
+      c.agA().a(this);
+      this.contact = paramai;
       this.screen = paramf;
       paramf.addPreferencesFromResource(2131951660);
-      bRv();
+      bYK();
       AppMethodBeat.o(27221);
       return true;
     }
   }
   
-  public final boolean bRu()
+  public final boolean bYJ()
   {
     AppMethodBeat.i(27224);
-    az.arV();
-    c.afk().b(this);
-    b.hYu.Ll();
+    az.ayM();
+    c.agA().b(this);
+    b.iyy.Lj();
     AppMethodBeat.o(27224);
     return true;
   }
@@ -239,7 +239,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.n
  * JD-Core Version:    0.7.0.1
  */

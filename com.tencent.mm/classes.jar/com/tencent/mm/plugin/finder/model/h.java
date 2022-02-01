@@ -1,94 +1,57 @@
 package com.tencent.mm.plugin.finder.model;
 
-import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.ahs;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.view.recyclerview.a;
+import com.tencent.mm.protocal.protobuf.cnx;
+import com.tencent.mm.view.recyclerview.d.b;
+import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "commentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;)V", "blink", "", "getBlink", "()Z", "setBlink", "(Z)V", "getCommentObj", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "setCommentObj", "contentCollapse", "getContentCollapse", "setContentCollapse", "hasBlink", "getHasBlink", "setHasBlink", "isAutoExpand", "setAutoExpand", "isFriendComment", "setFriendComment", "remainLevel2Comment", "", "getRemainLevel2Comment", "()I", "setRemainLevel2Comment", "(I)V", "replyContentCollapse", "getReplyContentCollapse", "setReplyContentCollapse", "replyText", "Landroid/text/SpannableString;", "getReplyText", "()Landroid/text/SpannableString;", "setReplyText", "(Landroid/text/SpannableString;)V", "compare", "obj", "getItemId", "", "getItemType", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/FeedHeaderTagsData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "tags", "Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "(Lcom/tencent/mm/protocal/protobuf/RelatedTopic;)V", "getTags", "()Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "setTags", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
 public final class h
-  implements com.tencent.mm.plugin.finder.feed.model.internal.i, a
+  extends d.b
+  implements com.tencent.mm.plugin.finder.feed.model.internal.h
 {
-  private static final int qDB = 1;
-  private static final int qDC = 2;
-  public static final a qDD;
-  public boolean KTp;
-  public int KTq;
-  public boolean KTr;
-  public com.tencent.mm.plugin.finder.storage.k qDA;
-  public SpannableString qDv;
-  public boolean qDw;
-  public boolean qDx;
-  public boolean qDy;
-  public boolean qDz;
+  public cnx ruC;
   
-  static
+  public h(cnx paramcnx)
   {
-    AppMethodBeat.i(178313);
-    qDD = new a((byte)0);
-    qDB = 1;
-    qDC = 2;
-    AppMethodBeat.o(178313);
+    AppMethodBeat.i(202555);
+    this.ruC = paramcnx;
+    AppMethodBeat.o(202555);
   }
   
-  public h(com.tencent.mm.plugin.finder.storage.k paramk)
+  public final int a(com.tencent.mm.plugin.finder.feed.model.internal.h paramh)
   {
-    AppMethodBeat.i(166383);
-    this.qDA = paramk;
-    if (!bt.isNullOrNil(this.qDA.getUsername()))
-    {
-      paramk = com.tencent.mm.plugin.finder.utils.i.qTa;
-      if ((!com.tencent.mm.plugin.finder.utils.i.ZS(this.qDA.getUsername())) && (!((PluginFinder)g.ad(PluginFinder.class)).isFriend(this.qDA.getUsername()))) {}
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.KTp = bool;
-      this.qDw = true;
-      this.qDx = true;
-      this.KTq = this.qDA.field_actionInfo.Dkk.expandCommentCount;
-      AppMethodBeat.o(166383);
-      return;
-    }
+    AppMethodBeat.i(202553);
+    k.h(paramh, "obj");
+    AppMethodBeat.o(202553);
+    return 2147483646;
   }
   
-  public final int a(com.tencent.mm.plugin.finder.feed.model.internal.i parami)
+  public final void a(cnx paramcnx)
   {
-    AppMethodBeat.i(166382);
-    d.g.b.k.h(parami, "obj");
-    AppMethodBeat.o(166382);
-    return 0;
+    AppMethodBeat.i(202554);
+    k.h(paramcnx, "<set-?>");
+    this.ruC = paramcnx;
+    AppMethodBeat.o(202554);
   }
   
-  public final long bMs()
+  public final int bTF()
   {
-    return this.qDA.field_actionInfo.Dkk.commentId;
+    return -6;
   }
   
-  public final int bMt()
+  public final long lx()
   {
-    AppMethodBeat.i(166381);
-    if (this.qDA.field_actionInfo.qoB == 0L)
-    {
-      i = qDB;
-      AppMethodBeat.o(166381);
-      return i;
-    }
-    int i = qDC;
-    AppMethodBeat.o(166381);
-    return i;
+    AppMethodBeat.i(210189);
+    long l = hashCode();
+    AppMethodBeat.o(210189);
+    return l;
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/model/FinderFeedComment$Companion;", "", "()V", "ITEM_TYPE_LEVEL1", "", "getITEM_TYPE_LEVEL1", "()I", "ITEM_TYPE_LEVEL2", "getITEM_TYPE_LEVEL2", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.h
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.fav.PluginFav;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class f
   implements a
@@ -43,12 +43,12 @@ public class f
       str1 = paramBundle.getString("key_detail_fav_query", "");
       str2 = paramBundle.getString("key_detail_fav_sessionid", "");
       paramBundle = paramBundle.getString("key_detail_fav_tags", "");
-      ad.d("MicroMsg.FavWebRptCallback", "FavWebRptCallback uiBrowseTime[%d] isScrollBottom[%b] sendToFriendCount[%d] shareSnsCount[%d]  isDelFav[%b] clickEditFavTagCount[%d] favId[%s]", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(j), Integer.valueOf(i4), Integer.valueOf(k) });
-      localg = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pT(k);
+      ac.d("MicroMsg.FavWebRptCallback", "FavWebRptCallback uiBrowseTime[%d] isScrollBottom[%b] sendToFriendCount[%d] shareSnsCount[%d]  isDelFav[%b] clickEditFavTagCount[%d] favId[%s]", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(j), Integer.valueOf(i4), Integer.valueOf(k) });
+      localg = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tI(k);
       if (localg != null) {
         break label263;
       }
-      ad.w("MicroMsg.FavWebRptCallback", "fav web rpt but favitem info is null favid[%d]", new Object[] { Integer.valueOf(k) });
+      ac.w("MicroMsg.FavWebRptCallback", "fav web rpt but favitem info is null favid[%d]", new Object[] { Integer.valueOf(k) });
       AppMethodBeat.o(30939);
       return;
       i = 0;
@@ -78,13 +78,13 @@ public class f
       localStringBuffer.append(i).append(",");
       localStringBuffer.append(n).append(",");
       localStringBuffer.append(str2).append(",");
-      i = ((PluginFav)com.tencent.mm.kernel.g.ad(PluginFav.class)).getFavItemInfoStorage().Cm(k) + 1;
+      i = ((PluginFav)com.tencent.mm.kernel.g.ad(PluginFav.class)).getFavItemInfoStorage().Dh(k) + 1;
       localStringBuffer.append(i).append(",");
       localStringBuffer.append(str1).append(",");
       localStringBuffer.append(paramBundle);
-      ad.d("MicroMsg.FavWebRptCallback", String.format("lxl, 15098, sid:%s, sourcepos:%s, query:%s, tag:%s", new Object[] { str2, Integer.valueOf(i), str1, paramBundle }));
-      ad.v("MicroMsg.FavWebRptCallback", "FavWebRptCallback rpt id[%d] [%s]", new Object[] { Integer.valueOf(15098), localStringBuffer.toString() });
-      e.vIY.kvStat(15098, localStringBuffer.toString());
+      ac.d("MicroMsg.FavWebRptCallback", String.format("lxl, 15098, sid:%s, sourcepos:%s, query:%s, tag:%s", new Object[] { str2, Integer.valueOf(i), str1, paramBundle }));
+      ac.v("MicroMsg.FavWebRptCallback", "FavWebRptCallback rpt id[%d] [%s]", new Object[] { Integer.valueOf(15098), localStringBuffer.toString() });
+      e.wTc.kvStat(15098, localStringBuffer.toString());
       AppMethodBeat.o(30939);
       return;
     }
@@ -92,7 +92,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.f
  * JD-Core Version:    0.7.0.1
  */

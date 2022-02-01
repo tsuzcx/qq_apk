@@ -11,14 +11,14 @@ import java.util.List;
 public final class d
   implements b
 {
-  private final HashSet<Integer> Irp;
-  private final List<d.a> Irq;
+  private final HashSet<Integer> JSZ;
+  private final List<d.a> JTa;
   
   public d()
   {
     AppMethodBeat.i(138347);
-    this.Irp = new HashSet();
-    this.Irq = new ArrayList();
+    this.JSZ = new HashSet();
+    this.JTa = new ArrayList();
     AppMethodBeat.o(138347);
   }
   
@@ -30,34 +30,34 @@ public final class d
       AppMethodBeat.o(138348);
       return;
     }
-    if ((parama.Irv == 1) && (!"/sbin/adbd".equals(parama.name)))
+    if ((parama.JTf == 1) && (!"/sbin/adbd".equals(parama.name)))
     {
       new StringBuilder("ProcessRelationAnalyzer parent : ").append(parama.toString());
-      h.eOC();
-      this.Irp.add(Integer.valueOf(parama.pid));
+      h.feg();
+      this.JSZ.add(Integer.valueOf(parama.pid));
       AppMethodBeat.o(138348);
       return;
     }
-    if ((parama.Irv > 1) && ("sh".equals(parama.name)) && ("/system/bin/sh".equals(parama.name)))
+    if ((parama.JTf > 1) && ("sh".equals(parama.name)) && ("/system/bin/sh".equals(parama.name)))
     {
       new StringBuilder("ProcessRelationAnalyzer child : ").append(parama.toString());
-      h.eOC();
-      this.Irq.add(parama);
+      h.feg();
+      this.JTa.add(parama);
     }
     AppMethodBeat.o(138348);
   }
   
-  public final boolean fmd()
+  public final boolean fCu()
   {
     AppMethodBeat.i(138349);
-    Iterator localIterator = this.Irq.iterator();
+    Iterator localIterator = this.JTa.iterator();
     while (localIterator.hasNext())
     {
       d.a locala = (d.a)localIterator.next();
-      if (this.Irp.contains(Integer.valueOf(locala.Irv)))
+      if (this.JSZ.contains(Integer.valueOf(locala.JTf)))
       {
         new StringBuilder("ProcessRelationAnalyzer match : ").append(locala.toString());
-        h.fmy();
+        h.fCO();
         AppMethodBeat.o(138349);
         return true;
       }
@@ -68,7 +68,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.a.d
  * JD-Core Version:    0.7.0.1
  */

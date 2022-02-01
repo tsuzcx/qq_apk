@@ -14,13 +14,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class InputPreference
   extends Preference
 {
-  private String GeX;
-  private EditText GeY;
-  private Button GeZ;
-  private a Gfa;
-  private View.OnClickListener Gfb;
-  private TextView.OnEditorActionListener Gfc;
-  private String yFK;
+  private String HEM;
+  private EditText HEN;
+  private Button HEO;
+  private a HEP;
+  private View.OnClickListener HEQ;
+  private TextView.OnEditorActionListener HER;
+  private String zSY;
   
   public InputPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,7 +31,7 @@ public class InputPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142574);
-    this.Gfb = new View.OnClickListener()
+    this.HEQ = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -50,7 +50,7 @@ public class InputPreference
         AppMethodBeat.o(142572);
       }
     };
-    this.Gfc = new TextView.OnEditorActionListener()
+    this.HER = new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -79,12 +79,12 @@ public class InputPreference
   {
     AppMethodBeat.i(142575);
     super.onBindView(paramView);
-    this.GeY = ((EditText)paramView.findViewById(2131299306));
-    this.GeY.setHint(this.yFK);
-    this.GeY.setOnEditorActionListener(this.Gfc);
-    this.GeZ = ((Button)paramView.findViewById(2131297631));
-    this.GeZ.setText(this.GeX);
-    this.GeZ.setOnClickListener(this.Gfb);
+    this.HEN = ((EditText)paramView.findViewById(2131299306));
+    this.HEN.setHint(this.zSY);
+    this.HEN.setOnEditorActionListener(this.HER);
+    this.HEO = ((Button)paramView.findViewById(2131297631));
+    this.HEO.setText(this.HEM);
+    this.HEO.setOnClickListener(this.HEQ);
     AppMethodBeat.o(142575);
   }
   

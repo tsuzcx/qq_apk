@@ -4,14 +4,14 @@ import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  private static final Map<String, Class<? extends AppBrandTaskProxyUI>> jtW;
+  private static final Map<String, Class<? extends AppBrandTaskProxyUI>> jUr;
   
   static
   {
@@ -22,7 +22,7 @@ public final class a
     localHashMap.put(":appbrand2", AppBrandTaskProxyUI2.class);
     localHashMap.put(":appbrand3", AppBrandTaskProxyUI3.class);
     localHashMap.put(":appbrand4", AppBrandTaskProxyUI4.class);
-    jtW = Collections.unmodifiableMap(localHashMap);
+    jUr = Collections.unmodifiableMap(localHashMap);
     AppMethodBeat.o(45384);
   }
   
@@ -36,7 +36,7 @@ public final class a
   public static <_Req extends AppBrandProxyUIProcessTask.ProcessRequest, _Result extends AppBrandProxyUIProcessTask.ProcessResult> void a(Context paramContext, _Req param_Req, AppBrandProxyUIProcessTask.b<_Result> paramb, Intent paramIntent)
   {
     AppMethodBeat.i(45382);
-    if (param_Req.aXt()) {}
+    if (param_Req.beq()) {}
     for (Object localObject = AppBrandProcessLandscapeProxyUI.class;; localObject = AppBrandProcessProxyUI.class)
     {
       AppBrandProcessProxyUI.a(paramContext, (Class)localObject, param_Req, paramb, paramIntent);
@@ -48,8 +48,8 @@ public final class a
   public static <_Req extends AppBrandProxyUIProcessTask.ProcessRequest, _Result extends AppBrandProxyUIProcessTask.ProcessResult> void a(Context paramContext, _Req param_Req, String paramString)
   {
     AppMethodBeat.i(174742);
-    Object localObject = aj.getPackageName();
-    localObject = (Class)jtW.get(paramString.replaceFirst((String)localObject, ""));
+    Object localObject = ai.getPackageName();
+    localObject = (Class)jUr.get(paramString.replaceFirst((String)localObject, ""));
     paramString = (String)localObject;
     if (localObject == null) {
       paramString = AppBrandProcessProxyUI.class;
@@ -68,9 +68,9 @@ public final class a
   public static <_Req extends AppBrandProxyUIProcessTask.ProcessRequest, _Result extends AppBrandProxyUIProcessTask.ProcessResult> void b(Context paramContext, _Req param_Req, AppBrandProxyUIProcessTask.b<_Result> paramb)
   {
     AppMethodBeat.i(45383);
-    Object localObject1 = aj.getProcessName();
-    Object localObject2 = aj.getPackageName();
-    localObject2 = (Class)jtW.get(((String)localObject1).replaceFirst((String)localObject2, ""));
+    Object localObject1 = ai.getProcessName();
+    Object localObject2 = ai.getPackageName();
+    localObject2 = (Class)jUr.get(((String)localObject1).replaceFirst((String)localObject2, ""));
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = AppBrandProcessProxyUI.class;
@@ -81,7 +81,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.a
  * JD-Core Version:    0.7.0.1
  */

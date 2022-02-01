@@ -6,39 +6,39 @@ public final class a
 {
   public static void checkArgument(boolean paramBoolean)
   {
-    AppMethodBeat.i(193977);
+    AppMethodBeat.i(194324);
     if (!paramBoolean)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException();
-      AppMethodBeat.o(193977);
+      AppMethodBeat.o(194324);
       throw localIllegalArgumentException;
     }
-    AppMethodBeat.o(193977);
+    AppMethodBeat.o(194324);
   }
   
   public static <T> T checkNotNull(T paramT)
   {
-    AppMethodBeat.i(193979);
+    AppMethodBeat.i(194326);
     if (paramT == null)
     {
       paramT = new NullPointerException();
-      AppMethodBeat.o(193979);
+      AppMethodBeat.o(194326);
       throw paramT;
     }
-    AppMethodBeat.o(193979);
+    AppMethodBeat.o(194326);
     return paramT;
   }
   
   public static void checkState(boolean paramBoolean)
   {
-    AppMethodBeat.i(193978);
+    AppMethodBeat.i(194325);
     if (!paramBoolean)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException();
-      AppMethodBeat.o(193978);
+      AppMethodBeat.o(194325);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(193978);
+    AppMethodBeat.o(194325);
   }
 }
 

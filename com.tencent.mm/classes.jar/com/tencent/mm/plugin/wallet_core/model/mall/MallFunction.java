@@ -10,18 +10,18 @@ public class MallFunction
   implements Parcelable
 {
   public static final Parcelable.Creator<MallFunction> CREATOR;
-  public String AiA;
-  public ArrayList<String> AiB;
-  public MallNews AiC;
-  public String AiD;
-  public int AiE;
-  public String dAn;
-  public String dDM;
-  public String smD;
-  public String ttl;
-  public String ttm;
+  public String BAV;
+  public ArrayList<String> BAW;
+  public MallNews BAX;
+  public String BAY;
+  public int BAZ;
+  public String dBy;
+  public String dxZ;
+  public String tuw;
   public int type;
-  public String uWF;
+  public String uBE;
+  public String uBF;
+  public String wfu;
   
   static
   {
@@ -32,26 +32,26 @@ public class MallFunction
   
   public MallFunction()
   {
-    this.AiE = 0;
+    this.BAZ = 0;
   }
   
   public MallFunction(Parcel paramParcel)
   {
     AppMethodBeat.i(70536);
-    this.AiE = 0;
-    this.uWF = paramParcel.readString();
-    this.dAn = paramParcel.readString();
-    this.AiA = paramParcel.readString();
-    this.ttl = paramParcel.readString();
-    this.ttm = paramParcel.readString();
-    this.dDM = paramParcel.readString();
-    this.smD = paramParcel.readString();
-    this.AiB = new ArrayList();
-    paramParcel.readStringList(this.AiB);
-    this.AiC = ((MallNews)paramParcel.readParcelable(MallNews.class.getClassLoader()));
+    this.BAZ = 0;
+    this.wfu = paramParcel.readString();
+    this.dxZ = paramParcel.readString();
+    this.BAV = paramParcel.readString();
+    this.uBE = paramParcel.readString();
+    this.uBF = paramParcel.readString();
+    this.dBy = paramParcel.readString();
+    this.tuw = paramParcel.readString();
+    this.BAW = new ArrayList();
+    paramParcel.readStringList(this.BAW);
+    this.BAX = ((MallNews)paramParcel.readParcelable(MallNews.class.getClassLoader()));
     this.type = paramParcel.readInt();
-    this.AiD = paramParcel.readString();
-    this.AiE = paramParcel.readInt();
+    this.BAY = paramParcel.readString();
+    this.BAZ = paramParcel.readInt();
     AppMethodBeat.o(70536);
   }
   
@@ -63,24 +63,24 @@ public class MallFunction
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70537);
-    paramParcel.writeString(this.uWF);
-    paramParcel.writeString(this.dAn);
-    paramParcel.writeString(this.AiA);
-    paramParcel.writeString(this.ttl);
-    paramParcel.writeString(this.ttm);
-    paramParcel.writeString(this.dDM);
-    paramParcel.writeString(this.smD);
-    paramParcel.writeStringList(this.AiB);
-    paramParcel.writeParcelable(this.AiC, paramInt);
+    paramParcel.writeString(this.wfu);
+    paramParcel.writeString(this.dxZ);
+    paramParcel.writeString(this.BAV);
+    paramParcel.writeString(this.uBE);
+    paramParcel.writeString(this.uBF);
+    paramParcel.writeString(this.dBy);
+    paramParcel.writeString(this.tuw);
+    paramParcel.writeStringList(this.BAW);
+    paramParcel.writeParcelable(this.BAX, paramInt);
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.AiD);
-    paramParcel.writeInt(this.AiE);
+    paramParcel.writeString(this.BAY);
+    paramParcel.writeInt(this.BAZ);
     AppMethodBeat.o(70537);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.mall.MallFunction
  * JD-Core Version:    0.7.0.1
  */

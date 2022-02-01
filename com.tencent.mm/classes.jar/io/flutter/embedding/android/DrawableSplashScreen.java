@@ -1,5 +1,7 @@
 package io.flutter.embedding.android;
 
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -10,11 +12,11 @@ import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class DrawableSplashScreen
-  implements f
+  implements g
 {
-  private final ImageView.ScaleType IXe;
-  private final long IXf;
-  private DrawableSplashScreenView IXg;
+  private final ImageView.ScaleType KKp;
+  private final long KKq;
+  private DrawableSplashScreenView KKr;
   private final Drawable drawable;
   
   public DrawableSplashScreen(Drawable paramDrawable)
@@ -25,29 +27,48 @@ public final class DrawableSplashScreen
   private DrawableSplashScreen(Drawable paramDrawable, ImageView.ScaleType paramScaleType)
   {
     this.drawable = paramDrawable;
-    this.IXe = paramScaleType;
-    this.IXf = 500L;
+    this.KKp = paramScaleType;
+    this.KKq = 500L;
   }
   
-  public final void aT(Runnable paramRunnable)
+  public final void aW(final Runnable paramRunnable)
   {
     AppMethodBeat.i(10068);
-    if (this.IXg == null)
+    if (this.KKr == null)
     {
       paramRunnable.run();
       AppMethodBeat.o(10068);
       return;
     }
-    this.IXg.animate().alpha(0.0F).setDuration(this.IXf).setListener(new DrawableSplashScreen.1(this, paramRunnable));
+    this.KKr.animate().alpha(0.0F).setDuration(this.KKq).setListener(new Animator.AnimatorListener()
+    {
+      public final void onAnimationCancel(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(10027);
+        paramRunnable.run();
+        AppMethodBeat.o(10027);
+      }
+      
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(10026);
+        paramRunnable.run();
+        AppMethodBeat.o(10026);
+      }
+      
+      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
+      
+      public final void onAnimationStart(Animator paramAnonymousAnimator) {}
+    });
     AppMethodBeat.o(10068);
   }
   
-  public final View lh(Context paramContext)
+  public final View lv(Context paramContext)
   {
     AppMethodBeat.i(10067);
-    this.IXg = new DrawableSplashScreenView(paramContext);
-    this.IXg.a(this.drawable, this.IXe);
-    paramContext = this.IXg;
+    this.KKr = new DrawableSplashScreenView(paramContext);
+    this.KKr.a(this.drawable, this.KKp);
+    paramContext = this.KKr;
     AppMethodBeat.o(10067);
     return paramContext;
   }

@@ -5,28 +5,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aa
 {
-  public static a cJM;
+  public static a cGT;
   
-  public static z Kf()
+  public static z JP()
   {
     AppMethodBeat.i(131335);
-    z localz = cJM.Kg();
+    z localz = cGT.JQ();
     AppMethodBeat.o(131335);
     return localz;
   }
   
-  public static SmileyPanel bg(Context paramContext)
+  public static SmileyPanel bh(Context paramContext)
   {
     AppMethodBeat.i(131332);
-    paramContext = cJM.bi(paramContext);
+    paramContext = cGT.bj(paramContext);
     AppMethodBeat.o(131332);
     return paramContext;
   }
   
-  public static int bh(Context paramContext)
+  public static int bi(Context paramContext)
   {
     AppMethodBeat.i(131334);
-    int i = cJM.bh(paramContext);
+    int i = cGT.bi(paramContext);
     AppMethodBeat.o(131334);
     return i;
   }
@@ -34,25 +34,25 @@ public final class aa
   public static SmileyPanel k(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(131333);
-    paramContext = cJM.l(paramContext, paramBoolean);
+    paramContext = cGT.l(paramContext, paramBoolean);
     AppMethodBeat.o(131333);
     return paramContext;
   }
   
   public static abstract interface a
   {
-    public abstract z Kg();
+    public abstract z JQ();
     
-    public abstract int bh(Context paramContext);
+    public abstract int bi(Context paramContext);
     
-    public abstract SmileyPanel bi(Context paramContext);
+    public abstract SmileyPanel bj(Context paramContext);
     
     public abstract SmileyPanel l(Context paramContext, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.api.aa
  * JD-Core Version:    0.7.0.1
  */

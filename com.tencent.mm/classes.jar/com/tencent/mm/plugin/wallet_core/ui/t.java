@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public final class t
   extends BaseAdapter
 {
-  ac AqQ = null;
+  ac BJk = null;
   private Context mContext;
   ArrayList<ac> mData = null;
   
@@ -23,7 +23,7 @@ public final class t
     this.mData = paramArrayList;
   }
   
-  public final ac RH(int paramInt)
+  public final ac TQ(int paramInt)
   {
     AppMethodBeat.i(71254);
     if ((this.mData != null) && (getCount() > paramInt))
@@ -61,18 +61,18 @@ public final class t
     {
       paramView = View.inflate(this.mContext, 2131496037, null);
       paramViewGroup = new a((byte)0);
-      paramViewGroup.fQp = ((TextView)paramView.findViewById(2131305902));
-      paramViewGroup.AqR = ((ImageView)paramView.findViewById(2131304542));
+      paramViewGroup.fUk = ((TextView)paramView.findViewById(2131305902));
+      paramViewGroup.BJl = ((ImageView)paramView.findViewById(2131304542));
       paramView.setTag(paramViewGroup);
-      ac localac = RH(paramInt);
+      ac localac = TQ(paramInt);
       if (localac != null)
       {
-        paramViewGroup.fQp.setText(localac.field_wallet_name);
+        paramViewGroup.fUk.setText(localac.field_wallet_name);
         if (localac.field_wallet_selected != 1) {
           break label127;
         }
-        this.AqQ = localac;
-        paramViewGroup.AqR.setImageResource(2131691078);
+        this.BJk = localac;
+        paramViewGroup.BJl.setImageResource(2131691078);
       }
     }
     for (;;)
@@ -82,21 +82,21 @@ public final class t
       paramViewGroup = (a)paramView.getTag();
       break;
       label127:
-      paramViewGroup.AqR.setImageResource(2131691077);
+      paramViewGroup.BJl.setImageResource(2131691077);
     }
   }
   
   final class a
   {
-    ImageView AqR;
-    TextView fQp;
+    ImageView BJl;
+    TextView fUk;
     
     private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.t
  * JD-Core Version:    0.7.0.1
  */

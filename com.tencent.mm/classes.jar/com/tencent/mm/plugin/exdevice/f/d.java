@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.exdevice.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String oXu;
+  public String pAF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -13,28 +13,28 @@ public final class d
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.oXu != null) {
-        paramVarArgs.d(1, this.oXu);
+      if (this.pAF != null) {
+        paramVarArgs.d(1, this.pAF);
       }
       AppMethodBeat.o(23488);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.oXu == null) {
+      if (this.pAF == null) {
         break label220;
       }
     }
     label220:
-    for (paramInt = f.a.a.b.b.a.e(1, this.oXu) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.pAF) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(23488);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(23488);
@@ -50,7 +50,7 @@ public final class d
           AppMethodBeat.o(23488);
           return -1;
         }
-        locald.oXu = locala.KhF.readString();
+        locald.pAF = locala.LVo.readString();
         AppMethodBeat.o(23488);
         return 0;
       }
@@ -61,7 +61,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.d
  * JD-Core Version:    0.7.0.1
  */

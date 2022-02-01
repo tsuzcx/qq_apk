@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.storage.b;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$12", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$12", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
 public final class FinderSettingsUI$c
-  implements k
+  implements j
 {
   public final void onClick()
   {
-    AppMethodBeat.i(199393);
-    b localb = b.qJA;
-    b.cpK();
-    AppMethodBeat.o(199393);
+    AppMethodBeat.i(203366);
+    b localb = b.rCU;
+    b.czk();
+    AppMethodBeat.o(203366);
   }
 }
 

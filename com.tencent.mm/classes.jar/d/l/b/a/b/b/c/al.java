@@ -7,8 +7,8 @@ import d.l.b.a.b.f.f;
 public abstract class al
   extends ak
 {
-  protected d.l.b.a.b.l.g<d.l.b.a.b.j.b.g<?>> JvA;
-  protected final boolean Jvz;
+  protected final boolean LiS;
+  protected d.l.b.a.b.l.g<d.l.b.a.b.j.b.g<?>> LiT;
   
   static
   {
@@ -23,34 +23,34 @@ public abstract class al
   public al(l paraml, d.l.b.a.b.b.a.g paramg, f paramf, boolean paramBoolean, an paraman)
   {
     super(paraml, paramg, paramf, null, paraman);
-    this.Jvz = paramBoolean;
+    this.LiS = paramBoolean;
   }
   
   public final void a(d.l.b.a.b.l.g<d.l.b.a.b.j.b.g<?>> paramg)
   {
     if (paramg == null) {
-      adP(4);
+      agL(4);
     }
-    assert (!this.Jvz) : ("Constant value for variable initializer should be recorded only for final variables: " + fyB());
-    this.JvA = paramg;
+    assert (!this.LiS) : ("Constant value for variable initializer should be recorded only for final variables: " + fRf());
+    this.LiT = paramg;
   }
   
-  public final boolean fzy()
+  public final boolean fSc()
   {
-    return this.Jvz;
+    return this.LiS;
   }
   
-  public final d.l.b.a.b.j.b.g<?> fzz()
+  public final d.l.b.a.b.j.b.g<?> fSd()
   {
-    if (this.JvA != null) {
-      return (d.l.b.a.b.j.b.g)this.JvA.invoke();
+    if (this.LiT != null) {
+      return (d.l.b.a.b.j.b.g)this.LiT.invoke();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.al
  * JD-Core Version:    0.7.0.1
  */

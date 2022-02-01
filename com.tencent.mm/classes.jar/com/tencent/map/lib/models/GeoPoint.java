@@ -6,14 +6,14 @@ import android.os.Parcelable.Creator;
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.ArrayList;
+import java.util.List;
 
 @Keep
 public class GeoPoint
   implements Parcelable
 {
   public static final Parcelable.Creator<GeoPoint> CREATOR;
-  private static final int WORLD_SOUTH = -85000000;
-  private static final int WORLD_WEST = -180000000;
   private int mLatitudeE6;
   private int mLongitudeE6;
   
@@ -51,6 +51,14 @@ public class GeoPoint
     this.mLongitudeE6 = paramGeoPoint.mLongitudeE6;
   }
   
+  public GeoPoint(LatLng paramLatLng)
+  {
+    AppMethodBeat.i(191268);
+    this.mLatitudeE6 = ((int)(paramLatLng.latitude * 1000000.0D));
+    this.mLongitudeE6 = ((int)(paramLatLng.longitude * 1000000.0D));
+    AppMethodBeat.o(191268);
+  }
+  
   public static GeoPoint formString(String paramString)
   {
     AppMethodBeat.i(180742);
@@ -72,6 +80,43 @@ public class GeoPoint
     }
     AppMethodBeat.o(180742);
     return localGeoPoint;
+  }
+  
+  public static GeoPoint from(LatLng paramLatLng)
+  {
+    AppMethodBeat.i(191269);
+    if (paramLatLng == null)
+    {
+      AppMethodBeat.o(191269);
+      return null;
+    }
+    paramLatLng = new GeoPoint(paramLatLng);
+    AppMethodBeat.o(191269);
+    return paramLatLng;
+  }
+  
+  public static List<GeoPoint> from(List<LatLng> paramList)
+  {
+    int i = 0;
+    AppMethodBeat.i(191270);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      paramList = new ArrayList(0);
+      AppMethodBeat.o(191270);
+      return paramList;
+    }
+    int j = paramList.size();
+    ArrayList localArrayList = new ArrayList(j);
+    while (i < j)
+    {
+      LatLng localLatLng = (LatLng)paramList.get(i);
+      if (localLatLng != null) {
+        localArrayList.add(from(localLatLng));
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(191270);
+    return localArrayList;
   }
   
   public int describeContents()
@@ -152,7 +197,7 @@ public class GeoPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.map.lib.models.GeoPoint
  * JD-Core Version:    0.7.0.1
  */

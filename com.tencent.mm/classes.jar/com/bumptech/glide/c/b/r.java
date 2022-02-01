@@ -7,21 +7,21 @@ import java.util.Map;
 
 final class r
 {
-  private final Map<h, k<?>> aFs;
-  private final Map<h, k<?>> aFt;
+  private final Map<h, k<?>> aGi;
+  private final Map<h, k<?>> aGj;
   
   r()
   {
     AppMethodBeat.i(77031);
-    this.aFs = new HashMap();
-    this.aFt = new HashMap();
+    this.aGi = new HashMap();
+    this.aGj = new HashMap();
     AppMethodBeat.o(77031);
   }
   
   final void a(h paramh, k<?> paramk)
   {
     AppMethodBeat.i(77032);
-    Map localMap = aH(paramk.aDR);
+    Map localMap = aH(paramk.aEI);
     if (paramk.equals(localMap.get(paramh))) {
       localMap.remove(paramh);
     }
@@ -31,14 +31,14 @@ final class r
   final Map<h, k<?>> aH(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return this.aFt;
+      return this.aGj;
     }
-    return this.aFs;
+    return this.aGi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.r
  * JD-Core Version:    0.7.0.1
  */

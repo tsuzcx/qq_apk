@@ -12,29 +12,29 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.editor.a.e;
-import com.tencent.mm.plugin.recordvideo.background.f;
+import com.tencent.mm.plugin.recordvideo.background.g;
 import com.tencent.mm.plugin.recordvideo.ui.editor.PhotoEditText;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.ap;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TipItemView;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BitmapItemView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "MARGIN", "", "TAG", "", "originMatrix", "Landroid/graphics/Matrix;", "createBitmap", "Landroid/graphics/Bitmap;", "text", "", "textColor", "textBgColor", "getType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditItemType;", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "reshowText", "", "marginBottom", "viewMatrix", "setText", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TipItemView;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BitmapItemView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "MARGIN", "", "TAG", "", "originMatrix", "Landroid/graphics/Matrix;", "createBitmap", "Landroid/graphics/Bitmap;", "text", "", "textColor", "textBgColor", "getType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditItemType;", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "reshowText", "", "marginBottom", "viewMatrix", "setText", "plugin-recordvideo_release"})
 public final class h
   extends a
 {
-  private final int MARGIN;
   private final String TAG;
-  private final Matrix vtt;
+  private final int anr;
+  private final Matrix wDt;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(76176);
     this.TAG = "MicroMsg.TipItemView";
-    this.MARGIN = ao.fromDPToPix(paramContext, 32);
-    this.vtt = new Matrix();
+    this.anr = ao.fromDPToPix(paramContext, 32);
+    this.wDt = new Matrix();
     setTextSize(getResources().getDimension(2131166199));
     AppMethodBeat.o(76176);
   }
@@ -42,9 +42,9 @@ public final class h
   public final void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(76173);
-    Bitmap localBitmap = k(paramCharSequence, paramInt1, paramInt2);
+    Bitmap localBitmap = l(paramCharSequence, paramInt1, paramInt2);
     setText(paramCharSequence);
-    setSourceDataType(e.goJ);
+    setSourceDataType(e.gPr);
     setColor(paramInt1);
     setTextBg(paramInt2);
     float f2;
@@ -57,26 +57,26 @@ public final class h
       paramCharSequence = getBitmap();
       if (paramCharSequence != null)
       {
-        f2 = getValidRect().height() - ao.fromDPToPix(getContext(), 128) - ap.eb(getContext());
+        f2 = getValidRect().height() - ao.fromDPToPix(getContext(), 128) - ap.ej(getContext());
         f3 = getMarginBottom();
         f4 = paramCharSequence.getHeight();
-        paramInt1 = this.MARGIN;
-        paramCharSequence = f.vdH;
-        if (paramInt1 < f.dgJ().left) {
+        paramInt1 = this.anr;
+        paramCharSequence = g.wmx;
+        if (paramInt1 < g.dur().left) {
           break label178;
         }
       }
     }
-    for (float f1 = this.MARGIN;; f1 = f.dgJ().left)
+    for (float f1 = this.anr;; f1 = g.dur().left)
     {
-      getTouchTracker().dY.setTranslate(f1, f2 - f3 - f4);
+      getTouchTracker().eY.setTranslate(f1, f2 - f3 - f4);
       postInvalidate();
       AppMethodBeat.o(76173);
       return;
       paramInt3 += ao.fromDPToPix(getContext(), 24);
       break;
       label178:
-      paramCharSequence = f.vdH;
+      paramCharSequence = g.wmx;
     }
   }
   
@@ -86,19 +86,19 @@ public final class h
     k.h(paramMatrix, "viewMatrix");
     a(paramCharSequence, paramInt1, paramInt2, paramInt3);
     setViewMatrix(paramMatrix);
-    setSourceDataType(e.goJ);
+    setSourceDataType(e.gPr);
     AppMethodBeat.o(76174);
   }
   
   public final b getType()
   {
-    return b.vsL;
+    return b.wCL;
   }
   
-  public final Bitmap k(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public final Bitmap l(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(76175);
-    setSourceDataType(e.goJ);
+    setSourceDataType(e.gPr);
     Object localObject = getContext();
     k.g(localObject, "context");
     localObject = new PhotoEditText((Context)localObject);
@@ -110,45 +110,45 @@ public final class h
     ((PhotoEditText)localObject).setSingleLine(false);
     ((PhotoEditText)localObject).setTypeface(((PhotoEditText)localObject).getTypeface(), 1);
     if ((paramInt2 == 0) && (paramInt1 != -16777216)) {
-      com.tencent.mm.ad.c.e((TextView)localObject);
+      com.tencent.mm.ac.c.e((TextView)localObject);
     }
-    paramInt1 = this.MARGIN;
-    paramCharSequence = f.vdH;
-    if (paramInt1 >= f.dgJ().left)
+    paramInt1 = this.anr;
+    paramCharSequence = g.wmx;
+    if (paramInt1 >= g.dur().left)
     {
-      paramCharSequence = f.vdH;
-      paramInt1 = f.dgJ().width();
-      paramInt2 = this.MARGIN;
-      paramCharSequence = f.vdH;
-      paramInt1 -= (paramInt2 - f.dgJ().left) * 2;
+      paramCharSequence = g.wmx;
+      paramInt1 = g.dur().width();
+      paramInt2 = this.anr;
+      paramCharSequence = g.wmx;
+      paramInt1 -= (paramInt2 - g.dur().left) * 2;
       ((PhotoEditText)localObject).setMaxWidth(paramInt1);
       ((PhotoEditText)localObject).measure(0, 0);
       if (((PhotoEditText)localObject).getMeasuredWidth() > 0)
       {
         paramInt1 = ((PhotoEditText)localObject).getMeasuredWidth();
-        paramCharSequence = f.vdH;
-        if (paramInt1 <= f.dgJ().width()) {
+        paramCharSequence = g.wmx;
+        if (paramInt1 <= g.dur().width()) {
           break label395;
         }
       }
-      paramCharSequence = f.vdH;
-      paramInt1 = f.dgJ().width();
+      paramCharSequence = g.wmx;
+      paramInt1 = g.dur().width();
       label224:
       if (((PhotoEditText)localObject).getMeasuredHeight() > 0)
       {
         paramInt2 = ((PhotoEditText)localObject).getMeasuredHeight();
-        paramCharSequence = f.vdH;
-        if (paramInt2 <= f.dgJ().height()) {
+        paramCharSequence = g.wmx;
+        if (paramInt2 <= g.dur().height()) {
           break label404;
         }
       }
-      paramCharSequence = f.vdH;
+      paramCharSequence = g.wmx;
     }
     label395:
     label404:
-    for (paramInt2 = f.dgJ().height();; paramInt2 = ((PhotoEditText)localObject).getMeasuredHeight())
+    for (paramInt2 = g.dur().height();; paramInt2 = ((PhotoEditText)localObject).getMeasuredHeight())
     {
-      ad.i(this.TAG, "measuredWidth:" + ((PhotoEditText)localObject).getMeasuredWidth() + " , measuredHeight:" + ((PhotoEditText)localObject).getMeasuredHeight());
+      ac.i(this.TAG, "measuredWidth:" + ((PhotoEditText)localObject).getMeasuredWidth() + " , measuredHeight:" + ((PhotoEditText)localObject).getMeasuredHeight());
       paramCharSequence = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(paramCharSequence);
       ((PhotoEditText)localObject).draw(localCanvas);
@@ -159,8 +159,8 @@ public final class h
       k.g(paramCharSequence, "bitmap");
       AppMethodBeat.o(76175);
       return paramCharSequence;
-      paramCharSequence = f.vdH;
-      paramInt1 = f.dgJ().width();
+      paramCharSequence = g.wmx;
+      paramInt1 = g.dur().width();
       break;
       paramInt1 = ((PhotoEditText)localObject).getMeasuredWidth();
       break label224;
@@ -171,16 +171,16 @@ public final class h
   {
     AppMethodBeat.i(76172);
     k.h(paramMotionEvent, "event");
-    this.vtt.set(getTouchTracker().dY);
+    this.wDt.set(getTouchTracker().eY);
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    getTouchTracker().dY.set(this.vtt);
+    getTouchTracker().eY.set(this.wDt);
     AppMethodBeat.o(76172);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.h
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.mm.pluginsdk.e;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 
 public final class a
 {
-  public static Bundle aAA(String paramString)
+  public static Bundle aFS(String paramString)
   {
     AppMethodBeat.i(30935);
     Bundle localBundle = new Bundle();
@@ -16,7 +16,7 @@ public final class a
     paramString = paramString.split("&");
     if ((paramString == null) || (paramString.length == 0))
     {
-      ad.e("MicroMsg.MallManager", "getWapPayBundle arrKeys == null || arrKeys.length == 0");
+      ac.e("MicroMsg.MallManager", "getWapPayBundle arrKeys == null || arrKeys.length == 0");
       AppMethodBeat.o(30935);
       return localBundle;
     }
@@ -34,28 +34,28 @@ public final class a
       }
       i += 1;
     }
-    localBundle.putString("_wxapi_payreq_appid", d("appid", localHashMap));
-    localBundle.putString("_wxapi_payreq_partnerid", d("partnerid", localHashMap));
-    localBundle.putString("_wxapi_payreq_prepayid", d("prepayid", localHashMap));
-    localBundle.putString("_wxapi_payreq_noncestr", d("noncestr", localHashMap));
-    localBundle.putString("_wxapi_payreq_timestamp", d("timestamp", localHashMap));
-    localBundle.putString("_wxapi_payreq_packagevalue", d("package", localHashMap));
-    localBundle.putString("_wxapi_payreq_sign", d("sign", localHashMap));
-    localBundle.putString("_wxapi_payreq_sign_type", d("signtype", localHashMap));
-    localBundle.putString("_wxapi_payreq_extdata", d("extdata", localHashMap));
+    localBundle.putString("_wxapi_payreq_appid", e("appid", localHashMap));
+    localBundle.putString("_wxapi_payreq_partnerid", e("partnerid", localHashMap));
+    localBundle.putString("_wxapi_payreq_prepayid", e("prepayid", localHashMap));
+    localBundle.putString("_wxapi_payreq_noncestr", e("noncestr", localHashMap));
+    localBundle.putString("_wxapi_payreq_timestamp", e("timestamp", localHashMap));
+    localBundle.putString("_wxapi_payreq_packagevalue", e("package", localHashMap));
+    localBundle.putString("_wxapi_payreq_sign", e("sign", localHashMap));
+    localBundle.putString("_wxapi_payreq_sign_type", e("signtype", localHashMap));
+    localBundle.putString("_wxapi_payreq_extdata", e("extdata", localHashMap));
     localBundle.putString("_wxapi_payoptions_callback_classname", "");
     localBundle.putInt("_wxapi_payoptions_callback_flags", -1);
     AppMethodBeat.o(30935);
     return localBundle;
   }
   
-  private static String d(String paramString, HashMap<String, String> paramHashMap)
+  private static String e(String paramString, HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(30936);
     paramHashMap = (String)paramHashMap.get(paramString);
     if (TextUtils.isEmpty(paramHashMap))
     {
-      ad.e("MicroMsg.MallManager", "getWapPayKey key: " + paramString + " value is empty");
+      ac.e("MicroMsg.MallManager", "getWapPayKey key: " + paramString + " value is empty");
       AppMethodBeat.o(30936);
       return "";
     }

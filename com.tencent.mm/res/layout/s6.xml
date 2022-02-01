@@ -39,7 +39,7 @@
             <TextView android:textSize="@dimen/ia" android:textColor="@color/ah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/e4o" android:layout_weight="1.0" />
         </LinearLayout>
         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="36.0dip" android:src="@raw/wcpay_security_icon" android:scaleType="centerInside" wallet:iconColor="@color/a_" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/ab" android:layout_gravity="center_horizontal" android:id="@id/h96" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="24.0dip" android:text="" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/ab" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/h96" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="24.0dip" android:text="" />
         <Button android:textColor="@color/aj" android:layout_gravity="bottom|center" android:id="@id/h94" android:layout_marginTop="84.0dip" android:text="" style="@style/o7" />
         <Button android:textColor="@color/Brand_90" android:layout_gravity="bottom|center" android:id="@id/h95" android:background="@drawable/c3z" android:layout_marginTop="16.0dip" android:text="" style="@style/oe" />
     </LinearLayout>

@@ -7,26 +7,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class d
 {
   int backgroundColor;
-  int buC;
-  boolean buD;
-  boolean buE;
-  int buF = -1;
-  int buG = -1;
-  int buH = -1;
-  int buI = -1;
-  int buJ = -1;
-  float buK;
-  d buL;
-  Layout.Alignment buM;
-  String iE;
+  int bsB;
+  boolean bsC;
+  boolean bsD;
+  int bsE = -1;
+  int bsF = -1;
+  int bsG = -1;
+  int bsH = -1;
+  int bsI = -1;
+  float bsJ;
+  d bsK;
+  Layout.Alignment bsL;
   String id;
+  String jD;
   
-  public final d aV(boolean paramBoolean)
+  public final d aU(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(92858);
     boolean bool;
-    if (this.buL == null)
+    if (this.bsK == null)
     {
       bool = true;
       a.checkState(bool);
@@ -36,7 +36,7 @@ final class d
     }
     for (;;)
     {
-      this.buF = i;
+      this.bsE = i;
       AppMethodBeat.o(92858);
       return this;
       bool = false;
@@ -46,12 +46,12 @@ final class d
     }
   }
   
-  public final d aW(boolean paramBoolean)
+  public final d aV(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(92859);
     boolean bool;
-    if (this.buL == null)
+    if (this.bsK == null)
     {
       bool = true;
       a.checkState(bool);
@@ -61,7 +61,7 @@ final class d
     }
     for (;;)
     {
-      this.buG = i;
+      this.bsF = i;
       AppMethodBeat.o(92859);
       return this;
       bool = false;
@@ -76,71 +76,71 @@ final class d
     AppMethodBeat.i(92861);
     if (paramd != null)
     {
-      if ((!this.buD) && (paramd.buD)) {
-        fc(paramd.buC);
+      if ((!this.bsC) && (paramd.bsC)) {
+        eP(paramd.bsB);
       }
-      if (this.buH == -1) {
-        this.buH = paramd.buH;
+      if (this.bsG == -1) {
+        this.bsG = paramd.bsG;
       }
-      if (this.buI == -1) {
-        this.buI = paramd.buI;
+      if (this.bsH == -1) {
+        this.bsH = paramd.bsH;
       }
-      if (this.iE == null) {
-        this.iE = paramd.iE;
+      if (this.jD == null) {
+        this.jD = paramd.jD;
       }
-      if (this.buF == -1) {
-        this.buF = paramd.buF;
+      if (this.bsE == -1) {
+        this.bsE = paramd.bsE;
       }
-      if (this.buG == -1) {
-        this.buG = paramd.buG;
+      if (this.bsF == -1) {
+        this.bsF = paramd.bsF;
       }
-      if (this.buM == null) {
-        this.buM = paramd.buM;
+      if (this.bsL == null) {
+        this.bsL = paramd.bsL;
       }
-      if (this.buJ == -1)
+      if (this.bsI == -1)
       {
-        this.buJ = paramd.buJ;
-        this.buK = paramd.buK;
+        this.bsI = paramd.bsI;
+        this.bsJ = paramd.bsJ;
       }
-      if ((!this.buE) && (paramd.buE)) {
-        fd(paramd.backgroundColor);
+      if ((!this.bsD) && (paramd.bsD)) {
+        eQ(paramd.backgroundColor);
       }
     }
     AppMethodBeat.o(92861);
     return this;
   }
   
-  public final d fc(int paramInt)
+  public final d eP(int paramInt)
   {
     AppMethodBeat.i(92860);
-    if (this.buL == null) {}
+    if (this.bsK == null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.buC = paramInt;
-      this.buD = true;
+      this.bsB = paramInt;
+      this.bsC = true;
       AppMethodBeat.o(92860);
       return this;
     }
   }
   
-  public final d fd(int paramInt)
+  public final d eQ(int paramInt)
   {
     this.backgroundColor = paramInt;
-    this.buE = true;
+    this.bsD = true;
     return this;
   }
   
   public final int getStyle()
   {
     int j = 0;
-    if ((this.buH == -1) && (this.buI == -1)) {
+    if ((this.bsG == -1) && (this.bsH == -1)) {
       return -1;
     }
-    if (this.buH == 1) {}
+    if (this.bsG == 1) {}
     for (int i = 1;; i = 0)
     {
-      if (this.buI == 1) {
+      if (this.bsH == 1) {
         j = 2;
       }
       return i | j;

@@ -9,14 +9,14 @@ public enum f
   static
   {
     AppMethodBeat.i(183140);
-    IxV = new f("THROW", 0, -3);
-    IxW = new f("ERROR", 1, -2);
-    IxX = new f("CANCEL", 2, -1);
-    IxY = new f("CREATED", 3, 0);
-    IxZ = new f("WAITING", 4, 1);
-    Iya = new f("RUNNING", 5, 2);
-    Iyb = new f("COMPLETE", 6, 3);
-    Iyc = new f[] { IxV, IxW, IxX, IxY, IxZ, Iya, Iyb };
+    JZE = new f("THROW", 0, -3);
+    JZF = new f("ERROR", 1, -2);
+    JZG = new f("CANCEL", 2, -1);
+    JZH = new f("CREATED", 3, 0);
+    JZI = new f("WAITING", 4, 1);
+    JZJ = new f("RUNNING", 5, 2);
+    JZK = new f("COMPLETE", 6, 3);
+    JZL = new f[] { JZE, JZF, JZG, JZH, JZI, JZJ, JZK };
     AppMethodBeat.o(183140);
   }
   

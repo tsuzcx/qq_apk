@@ -10,17 +10,15 @@ import android.widget.AbsListView;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.booter.y;
-import com.tencent.mm.g.c.ay;
-import com.tencent.mm.model.az;
+import com.tencent.mm.booter.z;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.brandservice.a.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.storage.p;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.mm.ui.chatting.c.b.ak;
@@ -28,27 +26,27 @@ import com.tencent.mm.ui.chatting.c.b.d;
 import com.tencent.mm.ui.chatting.c.b.r;
 import com.tencent.mm.ui.chatting.c.b.x;
 
-@com.tencent.mm.ui.chatting.c.a.a(eYT=x.class)
+@com.tencent.mm.ui.chatting.c.a.a(foJ=x.class)
 public class aa
   extends a
   implements x
 {
-  private View GwP;
-  private TextView GwQ;
-  private int GwR;
-  private int GwS = 0;
-  private Runnable awR;
+  private View HWG;
+  private TextView HWH;
+  private int HWI;
+  private int HWJ = 0;
+  private Runnable axL;
   
-  private boolean eYh()
+  private boolean fnT()
   {
     AppMethodBeat.i(35441);
-    d locald = (d)this.cOd.be(d.class);
-    if ((w.ti(this.cOd.getTalkerUserName())) || (w.tn(this.cOd.getTalkerUserName())))
+    d locald = (d)this.cLy.bf(d.class);
+    if ((w.xl(this.cLy.getTalkerUserName())) || (w.xq(this.cLy.getTalkerUserName())))
     {
       AppMethodBeat.o(35441);
       return true;
     }
-    if ((this.cOd.zgX.eKB()) && (locald.eWz() != null) && (((locald.eWz().Jc()) && (!((b)com.tencent.mm.kernel.g.ab(b.class)).bBQ())) || (locald.eWz().Jb())))
+    if ((this.cLy.AzG.fad()) && (locald.fml() != null) && (((locald.fml().IL()) && (!((b)com.tencent.mm.kernel.g.ab(b.class)).bIO())) || (locald.fml().IK())))
     {
       AppMethodBeat.o(35441);
       return true;
@@ -57,16 +55,16 @@ public class aa
     return false;
   }
   
-  public final void YN(int paramInt)
+  public final void aaY(int paramInt)
   {
     AppMethodBeat.i(35440);
-    if (eYh()) {}
-    for (int i = 5; (this.GwR < i) || (this.GwP == null); i = 10)
+    if (fnT()) {}
+    for (int i = 5; (this.HWI < i) || (this.HWG == null); i = 10)
     {
       AppMethodBeat.o(35440);
       return;
     }
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.GwP.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.HWG.getLayoutParams();
     switch (paramInt)
     {
     }
@@ -74,23 +72,23 @@ public class aa
     {
       AppMethodBeat.o(35440);
       return;
-      localLayoutParams.setMargins(0, this.cOd.GzJ.getMMResources().getDimensionPixelSize(2131165480) * 3, 0, 0);
+      localLayoutParams.setMargins(0, this.cLy.HZF.getMMResources().getDimensionPixelSize(2131165480) * 3, 0, 0);
       AppMethodBeat.o(35440);
       return;
-      ak localak = (ak)this.cOd.be(ak.class);
+      ak localak = (ak)this.cLy.bf(ak.class);
       int j;
-      if (localak.eYE())
+      if (localak.foq())
       {
-        i = localak.eYG();
-        if (!localak.eYF()) {
+        i = localak.fot();
+        if (!localak.jdMethod_for()) {
           break label261;
         }
-        j = this.cOd.GzJ.getMMResources().getDimensionPixelSize(2131165511);
+        j = this.cLy.HZF.getMMResources().getDimensionPixelSize(2131165511);
         label187:
-        if (!localak.gai()) {
+        if (!localak.fos()) {
           break label266;
         }
-        paramInt = this.cOd.GzJ.getMMResources().getDimensionPixelSize(2131165298);
+        paramInt = this.cLy.HZF.getMMResources().getDimensionPixelSize(2131165298);
         label213:
         if (j <= i) {
           break label274;
@@ -102,7 +100,7 @@ public class aa
       }
       for (;;)
       {
-        localLayoutParams.setMargins(0, this.cOd.GzJ.getMMResources().getDimensionPixelSize(2131165480) + paramInt, 0, 0);
+        localLayoutParams.setMargins(0, this.cLy.HZF.getMMResources().getDimensionPixelSize(2131165480) + paramInt, 0, 0);
         AppMethodBeat.o(35440);
         return;
         i = 0;
@@ -120,94 +118,94 @@ public class aa
           paramInt = i;
         }
       }
-      localLayoutParams.setMargins(0, this.cOd.GzJ.getMMResources().getDimensionPixelSize(2131165480), 0, 0);
+      localLayoutParams.setMargins(0, this.cLy.HZF.getMMResources().getDimensionPixelSize(2131165480), 0, 0);
       AppMethodBeat.o(35440);
       return;
-      if (!((ak)this.cOd.be(ak.class)).eYE()) {
-        localLayoutParams.setMargins(0, this.cOd.GzJ.getMMResources().getDimensionPixelSize(2131165480), 0, 0);
+      if (!((ak)this.cLy.bf(ak.class)).foq()) {
+        localLayoutParams.setMargins(0, this.cLy.HZF.getMMResources().getDimensionPixelSize(2131165480), 0, 0);
       }
     }
   }
   
-  public final void eQA()
+  public final void fgg()
   {
     AppMethodBeat.i(35442);
-    super.eQA();
-    this.GwP = this.cOd.findViewById(2131298101);
-    this.GwP.setVisibility(8);
-    az.arV();
-    am localam = com.tencent.mm.model.c.apR().aIn(this.cOd.getTalkerUserName());
-    if (localam != null)
+    super.fgg();
+    this.HWG = this.cLy.findViewById(2131298101);
+    this.HWG.setVisibility(8);
+    com.tencent.mm.model.az.ayM();
+    ap localap = com.tencent.mm.model.c.awG().aNI(this.cLy.getTalkerUserName());
+    if (localap != null)
     {
-      this.GwR = localam.field_unReadCount;
-      ad.i("MicroMsg.HistoryMsgTongueComponent", "[onChattingInit] getUnDeliverCount:%s mUnreadMessageCount:%s", new Object[] { Integer.valueOf(localam.field_UnDeliverCount), Integer.valueOf(this.GwR) });
+      this.HWI = localap.field_unReadCount;
+      ac.i("MicroMsg.HistoryMsgTongueComponent", "[onChattingInit] getUnDeliverCount:%s mUnreadMessageCount:%s", new Object[] { Integer.valueOf(localap.field_UnDeliverCount), Integer.valueOf(this.HWI) });
     }
     AppMethodBeat.o(35442);
   }
   
-  public final void eQC()
+  public final void fgi()
   {
     AppMethodBeat.i(35443);
-    super.eQC();
-    d locald = (d)this.cOd.be(d.class);
-    if (locald.eWC()) {
-      this.GwR = locald.eWL();
+    super.fgi();
+    d locald = (d)this.cLy.bf(d.class);
+    if (locald.fmo()) {
+      this.HWI = locald.fmx();
     }
-    Object localObject = (d)this.cOd.be(d.class);
-    if (((!bt.isNullOrNil(this.cOd.getTalkerUserName())) && (!this.cOd.eYZ()) && (!w.tl(this.cOd.getTalkerUserName())) && (!w.sE(this.cOd.getTalkerUserName())) && (!w.tg(this.cOd.getTalkerUserName())) && (!w.sH(this.cOd.getTalkerUserName()))) || (this.cOd.eZa()) || (((d)localObject).eWC()) || (eYh())) {}
+    Object localObject = (d)this.cLy.bf(d.class);
+    if (((!bs.isNullOrNil(this.cLy.getTalkerUserName())) && (!this.cLy.foO()) && (!w.xo(this.cLy.getTalkerUserName())) && (!w.wH(this.cLy.getTalkerUserName())) && (!w.xj(this.cLy.getTalkerUserName())) && (!w.wK(this.cLy.getTalkerUserName()))) || (this.cLy.foP()) || (((d)localObject).fmo()) || (fnT())) {}
     for (final int i = 1; i == 0; i = 0)
     {
-      ad.w("MicroMsg.HistoryMsgTongueComponent", "[tryShowTongue] no show tongue! username:%s unreadCount:%s isBizChat:%s", new Object[] { this.cOd.getTalkerUserName(), Integer.valueOf(this.GwR), Boolean.valueOf(locald.eWC()) });
-      this.GwP.setVisibility(8);
-      this.GwS = 0;
+      ac.w("MicroMsg.HistoryMsgTongueComponent", "[tryShowTongue] no show tongue! username:%s unreadCount:%s isBizChat:%s", new Object[] { this.cLy.getTalkerUserName(), Integer.valueOf(this.HWI), Boolean.valueOf(locald.fmo()) });
+      this.HWG.setVisibility(8);
+      this.HWJ = 0;
       AppMethodBeat.o(35443);
       return;
     }
-    int j = this.GwR;
-    if (eYh())
+    int j = this.HWI;
+    if (fnT())
     {
       i = 5;
-      ad.i("MicroMsg.HistoryMsgTongueComponent", "[update] threshold:%s fixUnreadMessage:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      ac.i("MicroMsg.HistoryMsgTongueComponent", "[update] threshold:%s fixUnreadMessage:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       if (j >= i)
       {
-        ad.i("MicroMsg.HistoryMsgTongueComponent", "[update] mGoBackToHistoryMsgLayout VISIBLE");
-        this.GwQ = ((TextView)this.cOd.findViewById(2131298102));
-        localObject = y.fjY;
-        if (((y)localObject).fkc != null) {
+        ac.i("MicroMsg.HistoryMsgTongueComponent", "[update] mGoBackToHistoryMsgLayout VISIBLE");
+        this.HWH = ((TextView)this.cLy.findViewById(2131298102));
+        localObject = z.fns;
+        if (((z)localObject).fnw != null) {
           break label461;
         }
-        ((y)localObject).fkd = 1;
+        ((z)localObject).fnx = 1;
         label323:
         if (j <= 999) {
           break label473;
         }
-        this.GwQ.setText(String.format(this.cOd.GzJ.getMMResources().getString(2131757180), new Object[] { Integer.valueOf(999) }));
+        this.HWH.setText(String.format(this.cLy.HZF.getMMResources().getString(2131757180), new Object[] { Integer.valueOf(999) }));
         label369:
-        if (!locald.eWC()) {
+        if (!locald.fmo()) {
           break label513;
         }
-        az.arV();
+        com.tencent.mm.model.az.ayM();
       }
     }
-    for (i = com.tencent.mm.model.c.apP().bY(this.cOd.getTalkerUserName(), locald.eWP()) - this.GwR;; i = com.tencent.mm.model.c.apO().agE(this.cOd.getTalkerUserName()) - this.GwR)
+    for (i = com.tencent.mm.model.c.awE().ca(this.cLy.getTalkerUserName(), locald.fmB()) - this.HWI;; i = com.tencent.mm.model.c.awD().aly(this.cLy.getTalkerUserName()) - this.HWI)
     {
-      this.GwP.setOnClickListener(new View.OnClickListener()
+      this.HWG.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(35435);
           aa.a(aa.this, 2);
-          paramAnonymousView = y.fjY;
-          if (paramAnonymousView.fkc != null) {
-            paramAnonymousView.fkc.fkt = 2;
+          paramAnonymousView = z.fns;
+          if (paramAnonymousView.fnw != null) {
+            paramAnonymousView.fnw.fnN = 2;
           }
-          if (((r)aa.this.cOd.be(r.class)).eXF()) {
-            ((r)aa.this.cOd.be(r.class)).eXG();
+          if (((r)aa.this.cLy.bf(r.class)).fnr()) {
+            ((r)aa.this.cLy.bf(r.class)).fns();
           }
           for (;;)
           {
-            if (w.tn(aa.this.cOd.getTalkerUserName())) {
-              ((com.tencent.mm.ui.chatting.c.b.g)aa.this.cOd.be(com.tencent.mm.ui.chatting.c.b.g.class)).eWZ();
+            if (w.xq(aa.this.cLy.getTalkerUserName())) {
+              ((com.tencent.mm.ui.chatting.c.b.g)aa.this.cLy.bf(com.tencent.mm.ui.chatting.c.b.g.class)).fmL();
             }
             AppMethodBeat.o(35435);
             return;
@@ -215,126 +213,126 @@ public class aa
           }
         }
       });
-      if (!((r)this.cOd.be(r.class)).eXF()) {
-        eYe();
+      if (!((r)this.cLy.bf(r.class)).fnr()) {
+        fnQ();
       }
       AppMethodBeat.o(35443);
       return;
       i = 10;
       break;
       label461:
-      ((y)localObject).fkc.fkt = 1;
+      ((z)localObject).fnw.fnN = 1;
       break label323;
       label473:
-      this.GwQ.setText(String.format(this.cOd.GzJ.getMMResources().getString(2131757180), new Object[] { Integer.valueOf(j) }));
+      this.HWH.setText(String.format(this.cLy.HZF.getMMResources().getString(2131757180), new Object[] { Integer.valueOf(j) }));
       break label369;
       label513:
-      az.arV();
+      com.tencent.mm.model.az.ayM();
     }
   }
   
-  public final int eYc()
+  public final int fnO()
   {
-    return this.GwR;
+    return this.HWI;
   }
   
-  public final void eYd()
+  public final void fnP()
   {
     AppMethodBeat.i(35437);
-    if (this.GwP == null)
+    if (this.HWG == null)
     {
       AppMethodBeat.o(35437);
       return;
     }
-    this.GwR = -1;
-    if (this.GwP.getVisibility() == 0)
+    this.HWI = -1;
+    if (this.HWG.getVisibility() == 0)
     {
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, this.GwP.getWidth(), 0.0F, 0.0F);
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, this.HWG.getWidth(), 0.0F, 0.0F);
       localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setInterpolator(AnimationUtils.loadInterpolator(this.cOd.GzJ.getContext(), 17432581));
-      this.GwP.startAnimation(localTranslateAnimation);
+      localTranslateAnimation.setInterpolator(AnimationUtils.loadInterpolator(this.cLy.HZF.getContext(), 17432581));
+      this.HWG.startAnimation(localTranslateAnimation);
     }
-    this.GwP.setVisibility(8);
+    this.HWG.setVisibility(8);
     AppMethodBeat.o(35437);
   }
   
-  public final void eYe()
+  public final void fnQ()
   {
     AppMethodBeat.i(35438);
-    if (eYh()) {}
-    for (int i = 5; this.GwR <= i; i = 10)
+    if (fnT()) {}
+    for (int i = 5; this.HWI <= i; i = 10)
     {
-      ad.w("MicroMsg.HistoryMsgTongueComponent", "[showMsgTongue] mUnreadMessageCount is smaller than threshold:".concat(String.valueOf(i)));
-      this.GwP.setVisibility(8);
+      ac.w("MicroMsg.HistoryMsgTongueComponent", "[showMsgTongue] mUnreadMessageCount is smaller than threshold:".concat(String.valueOf(i)));
+      this.HWG.setVisibility(8);
       AppMethodBeat.o(35438);
       return;
     }
-    if (this.GwP.getVisibility() == 0)
+    if (this.HWG.getVisibility() == 0)
     {
-      ad.w("MicroMsg.HistoryMsgTongueComponent", "[showMsgTongue] has show!!!");
+      ac.w("MicroMsg.HistoryMsgTongueComponent", "[showMsgTongue] has show!!!");
       AppMethodBeat.o(35438);
       return;
     }
-    this.GwP.removeCallbacks(this.awR);
-    View localView = this.GwP;
+    this.HWG.removeCallbacks(this.axL);
+    View localView = this.HWG;
     Runnable local2 = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(35436);
-        ad.i("MicroMsg.HistoryMsgTongueComponent", "show animation! GoBackToHistoryMsgLayout!!!");
+        ac.i("MicroMsg.HistoryMsgTongueComponent", "show animation! GoBackToHistoryMsgLayout!!!");
         aa.a(aa.this).setVisibility(0);
         aa.a(aa.this, 1);
-        Object localObject = (ak)aa.this.cOd.be(ak.class);
-        if ((((ak)localObject).eYE()) || (((ak)localObject).gai())) {
-          aa.this.YN(1);
+        Object localObject = (ak)aa.this.cLy.bf(ak.class);
+        if ((((ak)localObject).foq()) || (((ak)localObject).fos())) {
+          aa.this.aaY(1);
         }
         for (;;)
         {
           localObject = new TranslateAnimation(aa.a(aa.this).getWidth(), 0.0F, 0.0F, 0.0F);
           ((TranslateAnimation)localObject).setDuration(300L);
-          ((TranslateAnimation)localObject).setInterpolator(AnimationUtils.loadInterpolator(aa.this.cOd.GzJ.getContext(), 17432581));
+          ((TranslateAnimation)localObject).setInterpolator(AnimationUtils.loadInterpolator(aa.this.cLy.HZF.getContext(), 17432581));
           aa.a(aa.this).startAnimation((Animation)localObject);
           AppMethodBeat.o(35436);
           return;
           if (aa.b(aa.this)) {
-            aa.this.YN(3);
+            aa.this.aaY(3);
           } else {
-            aa.this.YN(0);
+            aa.this.aaY(0);
           }
         }
       }
     };
-    this.awR = local2;
+    this.axL = local2;
     localView.postDelayed(local2, 100L);
     AppMethodBeat.o(35438);
   }
   
-  public final void eYf()
+  public final void fnR()
   {
-    this.GwS = 0;
+    this.HWJ = 0;
   }
   
-  public final int eYg()
+  public final int fnS()
   {
-    return this.GwS;
+    return this.HWJ;
   }
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(35439);
     super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    if ((this.GwR > 0) && (paramInt3 - (paramInt1 + 1) >= this.GwR) && (this.GwP != null) && (this.GwP.getVisibility() == 0))
+    if ((this.HWI > 0) && (paramInt3 - (paramInt1 + 1) >= this.HWI) && (this.HWG != null) && (this.HWG.getVisibility() == 0))
     {
-      ad.i("MicroMsg.HistoryMsgTongueComponent", "summerbadcr jacks onScroll dismissMsgTongue mUnreadMessage[%d] [%d,%d]", new Object[] { Integer.valueOf(this.GwR), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1) });
-      eYd();
+      ac.i("MicroMsg.HistoryMsgTongueComponent", "summerbadcr jacks onScroll dismissMsgTongue mUnreadMessage[%d] [%d,%d]", new Object[] { Integer.valueOf(this.HWI), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1) });
+      fnP();
     }
     AppMethodBeat.o(35439);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.aa
  * JD-Core Version:    0.7.0.1
  */

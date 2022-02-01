@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import java.util.concurrent.ConcurrentHashMap;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "invoke"})
 final class b$e
   extends d.g.b.l
   implements a<ConcurrentHashMap<Long, Integer>>
 {
-  public static final e BNc;
+  public static final e Dfm;
   
   static
   {
     AppMethodBeat.i(124770);
-    BNc = new e();
+    Dfm = new e();
     AppMethodBeat.o(124770);
   }
   

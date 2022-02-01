@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.qqmail.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,20 +12,15 @@ public abstract class n
 {
   protected static String host = "";
   protected static int timeout = 0;
-  protected static String uLs;
   protected static String userAgent = "weixin/android";
+  protected static String vUj = "";
   
-  static
+  public static void apS(String paramString)
   {
-    uLs = "";
+    vUj = paramString;
   }
   
-  public static void akT(String paramString)
-  {
-    uLs = paramString;
-  }
-  
-  protected static Map<String, String> akU(String paramString)
+  protected static Map<String, String> apT(String paramString)
   {
     HashMap localHashMap = new HashMap();
     if ((paramString == null) || (paramString.length() == 0)) {}
@@ -46,7 +41,7 @@ public abstract class n
     }
   }
   
-  protected static String as(Map<String, String> paramMap)
+  protected static String au(Map<String, String> paramMap)
   {
     if ((paramMap == null) || (paramMap.size() == 0)) {
       return "";
@@ -66,7 +61,7 @@ public abstract class n
     return localStringBuilder.toString();
   }
   
-  protected static String d(String paramString1, String paramString2, Map<String, String> paramMap)
+  protected static String f(String paramString1, String paramString2, Map<String, String> paramMap)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if ((!paramString2.startsWith("http://")) && (!paramString2.startsWith("https://"))) {
@@ -86,7 +81,7 @@ public abstract class n
       if (i != 0) {}
       for (paramString1 = "";; paramString1 = "&")
       {
-        localStringBuilder.append(paramString1).append(URLEncoder.encode(str1, "utf-8")).append('=').append(URLEncoder.encode(bt.nullAsNil(str2), "utf-8"));
+        localStringBuilder.append(paramString1).append(URLEncoder.encode(str1, "utf-8")).append('=').append(URLEncoder.encode(bs.nullAsNil(str2), "utf-8"));
         i = 0;
         break;
       }
@@ -110,38 +105,38 @@ public abstract class n
   
   public static abstract interface a
   {
-    public abstract void ddV();
+    public abstract void drD();
   }
   
   public static final class b
   {
-    int uLt;
-    Map<String, String> uLu;
-    Map<String, String> uLv;
-    n.d uLw;
+    int vUk;
+    Map<String, String> vUl;
+    Map<String, String> vUm;
+    n.d vUn;
     
     public b(int paramInt, Map<String, String> paramMap1, Map<String, String> paramMap2, n.d paramd)
     {
-      this.uLt = paramInt;
-      this.uLu = paramMap1;
-      this.uLv = paramMap2;
-      this.uLw = paramd;
+      this.vUk = paramInt;
+      this.vUl = paramMap1;
+      this.vUm = paramMap2;
+      this.vUn = paramd;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(122692);
-      StringBuilder localStringBuilder = new StringBuilder("Request method:").append(this.uLt).append(", params:");
-      if (this.uLu != null)
+      StringBuilder localStringBuilder = new StringBuilder("Request method:").append(this.vUk).append(", params:");
+      if (this.vUl != null)
       {
-        localObject = this.uLu;
+        localObject = this.vUl;
         localStringBuilder = localStringBuilder.append(localObject).append(", cookie:");
-        if (this.uLv == null) {
+        if (this.vUm == null) {
           break label84;
         }
       }
       label84:
-      for (Object localObject = this.uLv;; localObject = "")
+      for (Object localObject = this.vUm;; localObject = "")
       {
         localObject = localObject;
         AppMethodBeat.o(122692);
@@ -156,12 +151,12 @@ public abstract class n
   {
     String content;
     int status = 0;
-    Map<String, String> uLv;
+    Map<String, String> vUm;
     
     public c(int paramInt, Map<String, String> paramMap, String paramString)
     {
       this.status = paramInt;
-      this.uLv = paramMap;
+      this.vUm = paramMap;
       this.content = paramString;
     }
     
@@ -170,9 +165,9 @@ public abstract class n
       AppMethodBeat.i(122693);
       StringBuilder localStringBuilder = new StringBuilder("Response status:").append(this.status).append(", cookie:");
       Object localObject;
-      if (this.uLv != null)
+      if (this.vUm != null)
       {
-        localObject = this.uLv;
+        localObject = this.vUm;
         localObject = localStringBuilder.append(localObject).append(", content length :");
         if (this.content == null) {
           break label87;
@@ -192,19 +187,19 @@ public abstract class n
   
   public static final class d
   {
-    String dln;
     String filePath;
+    String param;
     
     public d(String paramString1, String paramString2)
     {
-      this.dln = paramString1;
+      this.param = paramString1;
       this.filePath = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.n
  * JD-Core Version:    0.7.0.1
  */

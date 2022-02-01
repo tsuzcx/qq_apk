@@ -7,8 +7,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,38 +18,38 @@ public abstract class n
   extends k
 {
   int clickCount = 0;
-  protected d.a xas;
+  protected d.a ynh;
   
   public n(Context paramContext, x paramx, ViewGroup paramViewGroup)
   {
     super(paramContext, paramx, paramViewGroup);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad localad = dwi();
-    paramViewGroup = bt.nullAsNil(localad.dvK);
-    int i = localad.wXj;
-    int j = localad.dep;
-    long l = bt.aGi(localad.jyu);
+    ae localae = dKH();
+    paramViewGroup = bs.nullAsNil(localae.dtx);
+    int i = localae.yjY;
+    int j = localae.dbL;
+    long l = bs.aLz(localae.jYR);
     int k = paramx.subType;
-    if (bt.isNullOrNil(localad.dAM))
+    if (bs.isNullOrNil(localae.dyy))
     {
       paramContext = "";
-      paramx = bt.nullAsNil(paramContext);
-      if (!bt.isNullOrNil(localad.wXo)) {
+      paramx = bs.nullAsNil(paramContext);
+      if (!bs.isNullOrNil(localae.ykc)) {
         break label125;
       }
     }
     label125:
-    for (paramContext = "";; paramContext = localad.wXo)
+    for (paramContext = "";; paramContext = localae.ykc)
     {
-      this.xas = new d.a(paramViewGroup, j, i, l, k, paramx, bt.nullAsNil(paramContext));
+      this.ynh = new d.a(paramViewGroup, j, i, l, k, paramx, bs.nullAsNil(paramContext));
       return;
-      paramContext = localad.dAM;
+      paramContext = localae.dyy;
       break;
     }
   }
   
-  public final boolean aG(JSONObject paramJSONObject)
+  public final boolean aH(JSONObject paramJSONObject)
   {
-    if (!super.aG(paramJSONObject)) {
+    if (!super.aH(paramJSONObject)) {
       return false;
     }
     try
@@ -57,39 +59,39 @@ public abstract class n
     }
     catch (JSONException paramJSONObject)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.Sns.AdLandingPageBtnBaseComp", paramJSONObject, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.Sns.AdLandingPageBtnBaseComp", paramJSONObject, "", new Object[0]);
     }
     return false;
   }
   
-  protected final void dvT()
-  {
-    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.xab.paddingLeft, (int)this.xab.paddingTop, (int)this.xab.paddingRight, (int)this.xab.paddingBottom);
-    }
-    this.contentView.setLayoutParams(localLayoutParams);
-  }
-  
-  protected final void dwm()
+  protected final void dKL()
   {
     this.clickCount += 1;
   }
   
-  protected final void dwn()
+  protected final void dKM()
   {
-    Object localObject = this.xas;
+    Object localObject = this.ynh;
     try
     {
-      localObject = ((d.a)localObject).cFx();
+      localObject = ((d.a)localObject).cSH();
       AdLandingPagesProxy.getInstance().onAdLandingPageClick("13387", (String)localObject);
-      com.tencent.mm.sdk.platformtools.ad.i("NetSceneAdLadingPageClick", "report, channel=" + "13387" + ", content=" + (String)localObject);
+      ac.i("NetSceneAdLadingPageClick", "report, channel=" + "13387" + ", content=" + (String)localObject);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("NetSceneAdLadingPageClick", "report exp=" + localException.toString());
+      ac.e("NetSceneAdLadingPageClick", "report exp=" + localException.toString());
     }
+  }
+  
+  protected final void dKs()
+  {
+    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.ymQ.paddingLeft, (int)this.ymQ.paddingTop, (int)this.ymQ.paddingRight, (int)this.ymQ.paddingBottom);
+    }
+    this.contentView.setLayoutParams(localLayoutParams);
   }
 }
 

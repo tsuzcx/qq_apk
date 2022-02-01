@@ -11,14 +11,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.scanner.util.n;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import java.io.IOException;
@@ -27,23 +27,23 @@ public final class c
   extends Preference
   implements u.a
 {
-  private TextView kEu;
+  private TextView lfN;
   String mContent;
   private View mView;
-  String nLX;
-  private ImageView nVN;
+  String ooX;
+  private ImageView ozi;
   private f screen;
-  private TextView vRJ;
-  String vRK;
+  private TextView xcu;
+  String xcv;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(51785);
     this.mView = null;
-    this.nVN = null;
-    this.kEu = null;
-    this.vRJ = null;
+    this.ozi = null;
+    this.lfN = null;
+    this.xcu = null;
     setLayoutResource(2131495110);
     u.a(this);
     AppMethodBeat.o(51785);
@@ -61,13 +61,13 @@ public final class c
     return paramView;
   }
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void k(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(51788);
-    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(this.vRK)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    if ((!bs.isNullOrNil(paramString)) && (paramString.equals(this.xcv)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.nVN.setImageBitmap(paramBitmap);
-      this.nVN.setBackgroundColor(0);
+      this.ozi.setImageBitmap(paramBitmap);
+      this.ozi.setBackgroundColor(0);
       if (this.screen != null) {
         this.screen.notifyDataSetChanged();
       }
@@ -79,33 +79,33 @@ public final class c
   {
     AppMethodBeat.i(51787);
     super.onBindView(paramView);
-    this.nVN = ((ImageView)paramView.findViewById(2131298507));
-    this.kEu = ((TextView)paramView.findViewById(2131298528));
-    this.vRJ = ((TextView)paramView.findViewById(2131298510));
+    this.ozi = ((ImageView)paramView.findViewById(2131298507));
+    this.lfN = ((TextView)paramView.findViewById(2131298528));
+    this.xcu = ((TextView)paramView.findViewById(2131298510));
     Object localObject;
-    if (!bt.isNullOrNil(this.vRK))
+    if (!bs.isNullOrNil(this.xcv))
     {
-      localObject = u.a(new n(this.vRK));
+      localObject = u.a(new n(this.xcv));
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        this.nVN.setImageBitmap((Bitmap)localObject);
-        this.nVN.setBackgroundColor(0);
-        if (bt.isNullOrNil(this.nLX)) {
+        this.ozi.setImageBitmap((Bitmap)localObject);
+        this.ozi.setBackgroundColor(0);
+        if (bs.isNullOrNil(this.ooX)) {
           break label289;
         }
-        this.kEu.setText(k.b(this.mContext, this.nLX, this.kEu.getTextSize()));
+        this.lfN.setText(k.b(this.mContext, this.ooX, this.lfN.getTextSize()));
         label136:
-        if (bt.isNullOrNil(this.mContent)) {
+        if (bs.isNullOrNil(this.mContent)) {
           break label301;
         }
-        this.vRJ.setText(this.mContent);
+        this.xcu.setText(this.mContent);
       }
     }
     for (;;)
     {
       for (;;)
       {
-        if ((bt.isNullOrNil(this.nLX)) && (bt.isNullOrNil(this.vRK)))
+        if ((bs.isNullOrNil(this.ooX)) && (bs.isNullOrNil(this.xcv)))
         {
           paramView = (LinearLayout)paramView.findViewById(2131298509);
           localObject = paramView.getLayoutParams();
@@ -117,28 +117,28 @@ public final class c
         return;
         try
         {
-          localObject = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
-          this.nVN.setImageBitmap((Bitmap)localObject);
+          localObject = BackwardSupportUtil.b.b(ai.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
+          this.ozi.setImageBitmap((Bitmap)localObject);
         }
         catch (IOException localIOException)
         {
-          this.nVN.setImageBitmap(null);
+          this.ozi.setImageBitmap(null);
         }
       }
       break;
-      this.nVN.setVisibility(8);
+      this.ozi.setVisibility(8);
       break;
       label289:
-      this.kEu.setVisibility(8);
+      this.lfN.setVisibility(8);
       break label136;
       label301:
-      this.vRJ.setVisibility(8);
+      this.xcu.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.c
  * JD-Core Version:    0.7.0.1
  */

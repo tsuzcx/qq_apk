@@ -10,12 +10,12 @@ import com.tencent.mm.plugin.appbrand.p;
 public final class b
   implements p
 {
-  public static final b kPK;
+  public static final b lrj;
   
   static
   {
     AppMethodBeat.i(47551);
-    kPK = new b();
+    lrj = new b();
     AppMethodBeat.o(47551);
   }
   
@@ -23,7 +23,7 @@ public final class b
   {
     AppMethodBeat.i(47550);
     int i;
-    if (!paramAppBrandInitConfigWC.jdi)
+    if (!paramAppBrandInitConfigWC.jDv)
     {
       String str = paramAppBrandInitConfigWC.username;
       if (str != null) {
@@ -43,7 +43,7 @@ public final class b
       else
       {
         if (paramAppBrandInitConfigWC != null) {
-          paramAppBrandInitConfigWC.aNg();
+          paramAppBrandInitConfigWC.aTW();
         }
         paramAppBrandInitConfigWC = new f(paramAppBrandRuntimeContainerWC);
         AppMethodBeat.o(47550);
@@ -56,7 +56,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.b
  * JD-Core Version:    0.7.0.1
  */

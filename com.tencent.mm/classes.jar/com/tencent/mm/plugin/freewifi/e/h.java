@@ -12,49 +12,49 @@ import com.tencent.mm.plugin.freewifi.model.j;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.a;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.net.HttpURLConnection;
 
 public final class h
   extends e
   implements a
 {
-  private String riu;
-  private int riv;
+  private String srn;
+  private int sro;
   
   public h(FreeWifiFrontPageUI paramFreeWifiFrontPageUI)
   {
     super(paramFreeWifiFrontPageUI);
     AppMethodBeat.i(24899);
-    this.riv = 0;
-    this.riu = this.intent.getStringExtra("free_wifi_portal_ap_info_authurl_with_params");
-    ad.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, desc=Data retrieved. authUrlWithParams=%s", new Object[] { m.ai(this.intent), Integer.valueOf(m.aj(this.intent)), this.riu });
+    this.sro = 0;
+    this.srn = this.intent.getStringExtra("free_wifi_portal_ap_info_authurl_with_params");
+    ac.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, desc=Data retrieved. authUrlWithParams=%s", new Object[] { m.aj(this.intent), Integer.valueOf(m.ak(this.intent)), this.srn });
     AppMethodBeat.o(24899);
   }
   
-  private void ba(int paramInt, String paramString)
+  private void bf(int paramInt, String paramString)
   {
     AppMethodBeat.i(24901);
-    Object localObject = k.cvq();
+    Object localObject = k.cIC();
     ((k.a)localObject).ssid = this.ssid;
-    ((k.a)localObject).bssid = m.aav("MicroMsg.FreeWifi.ProtocolThreeOne");
-    ((k.a)localObject).ddV = m.aaw("MicroMsg.FreeWifi.ProtocolThreeOne");
-    ((k.a)localObject).ddU = this.ddU;
-    ((k.a)localObject).rfK = this.appId;
-    ((k.a)localObject).nSA = m.ai(this.intent);
-    ((k.a)localObject).rfL = 31;
-    ((k.a)localObject).rfM = k.b.rgn.rgx;
-    ((k.a)localObject).rfN = k.b.rgn.name;
+    ((k.a)localObject).bssid = m.afn("MicroMsg.FreeWifi.ProtocolThreeOne");
+    ((k.a)localObject).dbr = m.afo("MicroMsg.FreeWifi.ProtocolThreeOne");
+    ((k.a)localObject).dbq = this.dbq;
+    ((k.a)localObject).soC = this.appId;
+    ((k.a)localObject).ovU = m.aj(this.intent);
+    ((k.a)localObject).soD = 31;
+    ((k.a)localObject).soE = k.b.spf.spp;
+    ((k.a)localObject).soF = k.b.spf.name;
     ((k.a)localObject).result = paramInt;
-    ((k.a)localObject).foR = paramString;
-    ((k.a)localObject).channel = m.al(this.intent);
-    paramString = ((k.a)localObject).cvs();
+    ((k.a)localObject).fsq = paramString;
+    ((k.a)localObject).channel = m.am(this.intent);
+    paramString = ((k.a)localObject).cIE();
     localObject = this.intent;
     if (paramInt != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramString.c((Intent)localObject, bool).cvr();
+      paramString.c((Intent)localObject, bool).cID();
       AppMethodBeat.o(24901);
       return;
     }
@@ -63,26 +63,26 @@ public final class h
   public final void connect()
   {
     AppMethodBeat.i(24900);
-    ad.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, method=Protocol31.connect, desc=it starts connecting wifi by protocol 3.1. authUrlWithParams=%s", new Object[] { m.ai(this.intent), Integer.valueOf(m.aj(this.intent)), this.riu });
-    final String str = this.riu;
-    j.cwb().cvK().post(new Runnable()
+    ac.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, method=Protocol31.connect, desc=it starts connecting wifi by protocol 3.1. authUrlWithParams=%s", new Object[] { m.aj(this.intent), Integer.valueOf(m.ak(this.intent)), this.srn });
+    final String str = this.srn;
+    j.cJn().cIW().post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(24896);
-        ad.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, method=Protocol31.httpAuthentication, desc=it sends http request for authentication. http url=%s", new Object[] { m.ai(h.this.intent), Integer.valueOf(m.aj(h.this.intent)), str });
-        com.tencent.mm.plugin.freewifi.a.a.cvy();
+        ac.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, method=Protocol31.httpAuthentication, desc=it sends http request for authentication. http url=%s", new Object[] { m.aj(h.this.intent), Integer.valueOf(m.ak(h.this.intent)), str });
+        com.tencent.mm.plugin.freewifi.a.a.cIK();
         com.tencent.mm.plugin.freewifi.a.a.a(str, new a.a()
         {
           public final void d(HttpURLConnection paramAnonymous2HttpURLConnection)
           {
             AppMethodBeat.i(24894);
             int i = paramAnonymous2HttpURLConnection.getResponseCode();
-            ad.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, method=Protocol31.HttpAuthentication.onSuccess, desc=it receives http response for authentication. http response status code=%d", new Object[] { m.ai(h.this.intent), Integer.valueOf(m.aj(h.this.intent)), Integer.valueOf(i) });
+            ac.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, method=Protocol31.HttpAuthentication.onSuccess, desc=it receives http response for authentication. http response status code=%d", new Object[] { m.aj(h.this.intent), Integer.valueOf(m.ak(h.this.intent)), Integer.valueOf(i) });
             if (i == 200)
             {
               h.a(h.this, 0, "");
-              m.a(h.this.intent, h.this.ddU, h.this.rik, h.this.cJR, h.this.rij, "MicroMsg.FreeWifi.ProtocolThreeOne");
+              m.a(h.this.intent, h.this.dbq, h.this.srd, h.this.cGY, h.this.srb, "MicroMsg.FreeWifi.ProtocolThreeOne");
               AppMethodBeat.o(24894);
               return;
             }
@@ -93,11 +93,11 @@ public final class h
               AppMethodBeat.o(24894);
               return;
             }
-            ad.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, method=Protocol31.httpAuthentication, desc=http response status code is neither 200 nor 302, so it fails to connect wifi. ", new Object[] { m.ai(h.this.intent), Integer.valueOf(m.aj(h.this.intent)) });
-            paramAnonymous2HttpURLConnection = h.this.rij;
-            FreeWifiFrontPageUI.d locald = FreeWifiFrontPageUI.d.rkB;
+            ac.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, method=Protocol31.httpAuthentication, desc=http response status code is neither 200 nor 302, so it fails to connect wifi. ", new Object[] { m.aj(h.this.intent), Integer.valueOf(m.ak(h.this.intent)) });
+            paramAnonymous2HttpURLConnection = h.this.srb;
+            FreeWifiFrontPageUI.d locald = FreeWifiFrontPageUI.d.stu;
             FreeWifiFrontPageUI.a locala = new FreeWifiFrontPageUI.a();
-            locala.rka = m.a(h.this.rik, k.b.rgn, 32);
+            locala.ssT = m.a(h.this.srd, k.b.spf, 32);
             paramAnonymous2HttpURLConnection.a(locald, locala);
             h.a(h.this, 32, "INVALID_HTTP_RESP_CODE");
             AppMethodBeat.o(24894);
@@ -106,11 +106,11 @@ public final class h
           public final void o(Exception paramAnonymous2Exception)
           {
             AppMethodBeat.i(24895);
-            ad.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, method=Protocol31.httpAuthentication, desc=exception happens during http, so it fails to connect wifi. e.getMessage()=%s, stackTrace=%s", new Object[] { m.ai(h.this.intent), Integer.valueOf(m.aj(h.this.intent)), paramAnonymous2Exception.getMessage(), m.m(paramAnonymous2Exception) });
-            FreeWifiFrontPageUI localFreeWifiFrontPageUI = h.this.rij;
-            FreeWifiFrontPageUI.d locald = FreeWifiFrontPageUI.d.rkB;
+            ac.i("MicroMsg.FreeWifi.ProtocolThreeOne", "sessionKey=%s, step=%d, method=Protocol31.httpAuthentication, desc=exception happens during http, so it fails to connect wifi. e.getMessage()=%s, stackTrace=%s", new Object[] { m.aj(h.this.intent), Integer.valueOf(m.ak(h.this.intent)), paramAnonymous2Exception.getMessage(), m.m(paramAnonymous2Exception) });
+            FreeWifiFrontPageUI localFreeWifiFrontPageUI = h.this.srb;
+            FreeWifiFrontPageUI.d locald = FreeWifiFrontPageUI.d.stu;
             FreeWifiFrontPageUI.a locala = new FreeWifiFrontPageUI.a();
-            locala.rka = m.a(h.this.rik, k.b.rgn, m.n(paramAnonymous2Exception));
+            locala.ssT = m.a(h.this.srd, k.b.spf, m.n(paramAnonymous2Exception));
             localFreeWifiFrontPageUI.a(locald, locala);
             h.a(h.this, m.n(paramAnonymous2Exception), m.l(paramAnonymous2Exception));
             AppMethodBeat.o(24895);
@@ -124,7 +124,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.e.h
  * JD-Core Version:    0.7.0.1
  */

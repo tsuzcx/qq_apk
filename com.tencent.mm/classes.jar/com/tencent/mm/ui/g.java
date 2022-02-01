@@ -9,16 +9,16 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.am.af;
-import com.tencent.mm.am.e;
-import com.tencent.mm.am.w;
-import com.tencent.mm.cj.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.al.af;
+import com.tencent.mm.al.e;
+import com.tencent.mm.al.w;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.g.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
@@ -26,14 +26,14 @@ import com.tencent.mm.vfs.i;
 
 public final class g
 {
-  private static int aK(String paramString, int paramInt1, int paramInt2)
+  private static int aN(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(33029);
-    com.tencent.mm.api.c localc = af.awe().wy(paramString);
-    if (localc.Jf()) {
-      paramString = localc.Jm();
+    com.tencent.mm.api.c localc = af.aCW().AE(paramString);
+    if (localc.IO()) {
+      paramString = localc.IV();
     }
-    paramString = af.awn().wt(paramString);
+    paramString = af.aDf().Az(paramString);
     int i;
     int j;
     label55:
@@ -59,8 +59,8 @@ public final class g
     label215:
     for (long l2 = paramString.field_wwUserVid;; l2 = 0L)
     {
-      com.tencent.mm.plugin.report.service.h.vKh.f(13656, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(l1), Long.valueOf(l2) });
-      ad.d("MicroMsg.EnterpriseHelper", "enterprise wework action report: %s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(l1), Long.valueOf(l2) });
+      com.tencent.mm.plugin.report.service.h.wUl.f(13656, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(l1), Long.valueOf(l2) });
+      ac.d("MicroMsg.EnterpriseHelper", "enterprise wework action report: %s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(l1), Long.valueOf(l2) });
       AppMethodBeat.o(33029);
       return paramInt2;
       i = 0;
@@ -72,10 +72,10 @@ public final class g
     }
   }
   
-  public static void aL(String paramString, int paramInt1, int paramInt2)
+  public static void aO(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(33031);
-    Object localObject = af.awe().wy(paramString);
+    Object localObject = af.aCW().AE(paramString);
     if (paramInt2 == 3) {
       paramInt2 = 2;
     }
@@ -85,12 +85,12 @@ public final class g
       if (paramInt2 == 4) {
         i = 3;
       }
-      if (((com.tencent.mm.api.c)localObject).Jf()) {
-        paramString = ((com.tencent.mm.api.c)localObject).Jm();
+      if (((com.tencent.mm.api.c)localObject).IO()) {
+        paramString = ((com.tencent.mm.api.c)localObject).IV();
       }
-      paramString = af.awn().wt(paramString);
+      paramString = af.aDf().Az(paramString);
       localObject = new w(paramString, paramInt1, i, new Object());
-      com.tencent.mm.kernel.g.afA().gcy.a((n)localObject, 0);
+      com.tencent.mm.kernel.g.agQ().ghe.a((n)localObject, 0);
       if (paramString.field_chatOpen)
       {
         paramInt2 = 1;
@@ -101,7 +101,7 @@ public final class g
       label199:
       for (int j = 1;; j = 0)
       {
-        com.tencent.mm.plugin.report.service.h.vKh.f(15162, new Object[] { Long.valueOf(paramString.field_wwCorpId), Long.valueOf(paramString.field_wwUserVid), Integer.valueOf(paramInt2), Integer.valueOf(paramString.field_wwUnreadCnt), Integer.valueOf(j), Integer.valueOf(paramString.field_userType), Integer.valueOf(paramInt1), Integer.valueOf(i) });
+        com.tencent.mm.plugin.report.service.h.wUl.f(15162, new Object[] { Long.valueOf(paramString.field_wwCorpId), Long.valueOf(paramString.field_wwUserVid), Integer.valueOf(paramInt2), Integer.valueOf(paramString.field_wwUnreadCnt), Integer.valueOf(j), Integer.valueOf(paramString.field_userType), Integer.valueOf(paramInt1), Integer.valueOf(i) });
         AppMethodBeat.o(33031);
         return;
         paramInt2 = 0;
@@ -110,15 +110,15 @@ public final class g
     }
   }
   
-  public static int ca(Context paramContext, String paramString)
+  public static int cb(Context paramContext, String paramString)
   {
     AppMethodBeat.i(33024);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(33024);
       return 0;
     }
-    paramString = af.awn().wt(paramString);
+    paramString = af.aDf().Az(paramString);
     int i;
     if ((paramString != null) && ((paramString.field_userFlag & 0x2) != 0)) {
       i = 1;
@@ -140,16 +140,16 @@ public final class g
     return 0;
   }
   
-  public static void cb(Context paramContext, String paramString)
+  public static void cc(Context paramContext, String paramString)
   {
     AppMethodBeat.i(33025);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(33025);
       return;
     }
     if (!com.tencent.mm.pluginsdk.model.app.q.t(paramContext, "com.tencent.wework")) {
-      af.awn().ww(paramString);
+      af.aDf().AC(paramString);
     }
     AppMethodBeat.o(33025);
   }
@@ -159,26 +159,26 @@ public final class g
     AppMethodBeat.i(33026);
     if (com.tencent.mm.pluginsdk.model.app.q.t(paramContext, "com.tencent.wework"))
     {
-      aK(paramString, 4, paramInt);
+      aN(paramString, 4, paramInt);
       AppMethodBeat.o(33026);
       return;
     }
-    aK(paramString, 5, paramInt);
+    aN(paramString, 5, paramInt);
     AppMethodBeat.o(33026);
   }
   
   public static void u(Context paramContext, final String paramString, final int paramInt)
   {
     AppMethodBeat.i(33027);
-    aK(paramString, 1, paramInt);
-    aL(paramString, 2, paramInt);
-    com.tencent.mm.am.c localc = af.awn().wu(paramString);
+    aN(paramString, 1, paramInt);
+    aO(paramString, 2, paramInt);
+    com.tencent.mm.al.c localc = af.aDf().AA(paramString);
     Object localObject = null;
     String str;
     if ((4 == paramInt) || (3 == paramInt))
     {
-      af.awn();
-      str = com.tencent.mm.am.d.avw();
+      af.aDf();
+      str = com.tencent.mm.al.d.aCp();
       localObject = str;
       if (str != null)
       {
@@ -190,7 +190,7 @@ public final class g
           {
             paramString = new Intent();
             paramString.putExtra("rawUrl", str);
-            com.tencent.mm.bs.d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramString);
+            com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramString);
             AppMethodBeat.o(33027);
             return;
           }
@@ -199,9 +199,9 @@ public final class g
     }
     if (com.tencent.mm.pluginsdk.model.app.q.t(paramContext, "com.tencent.wework"))
     {
-      aK(paramString, 2, paramInt);
-      paramString = com.tencent.mm.plugin.appbrand.aa.b.getPackageInfo(paramContext, "com.tencent.wework");
-      if ((!bt.isNullOrNil(paramString.versionName)) && (paramString.versionName.compareTo("1.3.3") >= 0))
+      aN(paramString, 2, paramInt);
+      paramString = com.tencent.mm.plugin.appbrand.z.b.getPackageInfo(paramContext, "com.tencent.wework");
+      if ((!bs.isNullOrNil(paramString.versionName)) && (paramString.versionName.compareTo("1.3.3") >= 0))
       {
         paramString = new Intent();
         paramString.setAction("android.intent.action.VIEW");
@@ -240,13 +240,13 @@ public final class g
     if (localc.field_show_confirm)
     {
       localObject = new f.a(paramContext);
-      ((f.a)localObject).aMt(paramContext.getString(2131755691));
-      ((f.a)localObject).aaF(2131758453);
-      af.awn();
-      af.awn();
-      str = com.tencent.mm.am.d.nG(1);
+      ((f.a)localObject).aRV(paramContext.getString(2131755691));
+      ((f.a)localObject).acQ(2131758453);
+      af.aDf();
+      af.aDf();
+      str = com.tencent.mm.al.d.ou(1);
       if (str == null) {
-        ((f.a)localObject).aMo(paramContext.getString(2131758454));
+        ((f.a)localObject).aRQ(paramContext.getString(2131758454));
       }
       for (;;)
       {
@@ -264,7 +264,7 @@ public final class g
         }).show();
         AppMethodBeat.o(33027);
         return;
-        ((f.a)localObject).aMo(str);
+        ((f.a)localObject).aRQ(str);
       }
     }
     v(paramContext, paramString, paramInt);
@@ -274,24 +274,24 @@ public final class g
   public static void v(Context paramContext, String paramString, int paramInt)
   {
     AppMethodBeat.i(33028);
-    aK(paramString, 3, paramInt);
-    aL(paramString, 3, paramInt);
-    af.awe();
-    if (bt.isNullOrNil(e.wC(paramString))) {}
+    aN(paramString, 3, paramInt);
+    aO(paramString, 3, paramInt);
+    af.aCW();
+    if (bs.isNullOrNil(e.AI(paramString))) {}
     for (paramString = "off";; paramString = "on")
     {
       paramString = String.format("https://work.weixin.qq.com/wework_admin/commdownload?from=conv%s", new Object[] { paramString });
-      Object localObject = f.bQt().Sq(paramString);
-      if ((localObject != null) && (((FileDownloadTaskInfo)localObject).status == 3) && (i.eK(((FileDownloadTaskInfo)localObject).path))) {
+      Object localObject = f.bXJ().WC(paramString);
+      if ((localObject != null) && (((FileDownloadTaskInfo)localObject).status == 3) && (i.eA(((FileDownloadTaskInfo)localObject).path))) {
         i.deleteFile(((FileDownloadTaskInfo)localObject).path);
       }
       t.makeText(paramContext, paramContext.getString(2131758455), 2000).show();
       localObject = new g.a();
-      ((g.a)localObject).Sr(paramString);
-      ((g.a)localObject).St(paramContext.getString(2131758451));
-      ((g.a)localObject).zO(1);
-      ((g.a)localObject).jc(true);
-      f.bQt().a(((g.a)localObject).ofF);
+      ((g.a)localObject).WD(paramString);
+      ((g.a)localObject).WF(paramContext.getString(2131758451));
+      ((g.a)localObject).AG(1);
+      ((g.a)localObject).jF(true);
+      f.bXJ().a(((g.a)localObject).oJg);
       AppMethodBeat.o(33028);
       return;
     }
@@ -299,7 +299,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.g
  * JD-Core Version:    0.7.0.1
  */

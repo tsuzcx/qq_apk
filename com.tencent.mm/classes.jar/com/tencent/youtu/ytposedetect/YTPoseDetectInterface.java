@@ -6,18 +6,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytcommon.tools.YTCameraSetting;
 import com.tencent.youtu.ytcommon.tools.YTException;
 import com.tencent.youtu.ytcommon.tools.YTLogger;
+import com.tencent.youtu.ytposedetect.data.YTActRefData;
 import com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface;
 import com.tencent.youtu.ytposedetect.manager.PoseDetectProcessManager;
 
 public class YTPoseDetectInterface
 {
   private static final String TAG = "YoutuFaceDetect";
-  public static final String VERSION = "3.3.2";
+  public static final String VERSION = "3.5.0";
   private static PoseDetectResult mCheckResult;
-  private static boolean mInitModel = false;
+  private static int mInitModel = 0;
   private static boolean mIsStarted = false;
   public static int mModelRetainCount = 0;
   private static PoseDetectProcessManager mPoseDetectProcessManager;
+  
+  public static YTActRefData getActReflectData()
+  {
+    AppMethodBeat.i(192738);
+    YTActRefData localYTActRefData = YTPoseDetectJNIInterface.getActionReflectData(YTCameraSetting.getRotateTag(mPoseDetectProcessManager.mCameraRotate, 1));
+    AppMethodBeat.o(192738);
+    return localYTActRefData;
+  }
+  
+  public static YTPoseImage getBestImage(int paramInt)
+  {
+    AppMethodBeat.i(192739);
+    YTPoseImage localYTPoseImage = new YTPoseImage();
+    localYTPoseImage.yuvRotateData = YTPoseDetectJNIInterface.getBestImage(paramInt);
+    if ((paramInt == 5) || (paramInt == 6) || (paramInt == 7) || (paramInt == 8)) {
+      localYTPoseImage.width = mPoseDetectProcessManager.mDesiredPreviewHeight;
+    }
+    for (localYTPoseImage.height = mPoseDetectProcessManager.mDesiredPreviewWidth;; localYTPoseImage.height = mPoseDetectProcessManager.mDesiredPreviewHeight)
+    {
+      AppMethodBeat.o(192739);
+      return localYTPoseImage;
+      localYTPoseImage.width = mPoseDetectProcessManager.mDesiredPreviewWidth;
+    }
+  }
   
   public static void getBestImage(PoseDetectGetBestImage paramPoseDetectGetBestImage, boolean paramBoolean)
   {
@@ -40,12 +65,44 @@ public class YTPoseDetectInterface
     AppMethodBeat.o(62504);
   }
   
-  public static int getFrameNum()
+  public static YTPoseImage getEyeImage(int paramInt)
   {
-    AppMethodBeat.i(62509);
-    int i = YTPoseDetectJNIInterface.getFrameNum();
-    AppMethodBeat.o(62509);
-    return i;
+    AppMethodBeat.i(192740);
+    YTPoseImage localYTPoseImage = new YTPoseImage();
+    localYTPoseImage.yuvRotateData = YTPoseDetectJNIInterface.getEyeImage(paramInt);
+    if ((paramInt == 5) || (paramInt == 6) || (paramInt == 7) || (paramInt == 8)) {
+      localYTPoseImage.width = mPoseDetectProcessManager.mDesiredPreviewHeight;
+    }
+    for (localYTPoseImage.height = mPoseDetectProcessManager.mDesiredPreviewWidth;; localYTPoseImage.height = mPoseDetectProcessManager.mDesiredPreviewHeight)
+    {
+      AppMethodBeat.o(192740);
+      return localYTPoseImage;
+      localYTPoseImage.width = mPoseDetectProcessManager.mDesiredPreviewWidth;
+    }
+  }
+  
+  public static YTPoseImage getMouthImage(int paramInt)
+  {
+    AppMethodBeat.i(192741);
+    YTPoseImage localYTPoseImage = new YTPoseImage();
+    localYTPoseImage.yuvRotateData = YTPoseDetectJNIInterface.getMouthImage(paramInt);
+    if ((paramInt == 5) || (paramInt == 6) || (paramInt == 7) || (paramInt == 8)) {
+      localYTPoseImage.width = mPoseDetectProcessManager.mDesiredPreviewHeight;
+    }
+    for (localYTPoseImage.height = mPoseDetectProcessManager.mDesiredPreviewWidth;; localYTPoseImage.height = mPoseDetectProcessManager.mDesiredPreviewHeight)
+    {
+      AppMethodBeat.o(192741);
+      return localYTPoseImage;
+      localYTPoseImage.width = mPoseDetectProcessManager.mDesiredPreviewWidth;
+    }
+  }
+  
+  public static String getVersion()
+  {
+    AppMethodBeat.i(192737);
+    String str = "jar3.5.0_native" + YTPoseDetectJNIInterface.getVersion();
+    AppMethodBeat.o(192737);
+    return str;
   }
   
   public static int initModel()
@@ -54,9 +111,10 @@ public class YTPoseDetectInterface
     try
     {
       YTLogger.i("YoutuFaceDetect", "[YTFacePreviewInterface.initModel] ---");
-      if (mInitModel)
+      if (mInitModel > 0)
       {
         YTLogger.i("YoutuFaceDetect", "[YTFacePreviewInterface.initModel] has already inited.");
+        mInitModel += 1;
         AppMethodBeat.o(62500);
         return 0;
       }
@@ -66,7 +124,7 @@ public class YTPoseDetectInterface
         PoseDetectProcessManager localPoseDetectProcessManager = new PoseDetectProcessManager();
         mPoseDetectProcessManager = localPoseDetectProcessManager;
         localPoseDetectProcessManager.initAll();
-        mInitModel = true;
+        mInitModel += 1;
         AppMethodBeat.o(62500);
         return 0;
       }
@@ -111,7 +169,7 @@ public class YTPoseDetectInterface
   public static void poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt, byte[] paramArrayOfByte, Camera paramCamera, float paramFloat1, float paramFloat2, float paramFloat3, PoseDetectOnFrame paramPoseDetectOnFrame)
   {
     AppMethodBeat.i(62503);
-    if (!mInitModel)
+    if (mInitModel <= 0)
     {
       paramPoseDetectOnFrame.onFailed(2, "Not init model on poseDetect.", "Call YTPoseDetectInterface.initModel() before.");
       AppMethodBeat.o(62503);
@@ -124,11 +182,22 @@ public class YTPoseDetectInterface
       return;
     }
     paramPoseDetectOnFrame.onSuccess(mPoseDetectProcessManager.poseDetect(paramArrayOfFloat1, paramArrayOfFloat2, paramInt, paramArrayOfByte, paramFloat1, paramFloat2, paramFloat3));
+    if (YTPoseDetectJNIInterface.canReflect()) {
+      paramPoseDetectOnFrame.onCanReflect();
+    }
     if (YTPoseDetectJNIInterface.isRecordingDone())
     {
       paramArrayOfFloat1 = YTPoseDetectJNIInterface.getFrameList();
+      int j = YTCameraSetting.getRotateTag(mPoseDetectProcessManager.mCameraRotate, 1);
       YTLogger.i("YoutuFaceDetect", "[YTPoseDetectInterface.poseDetect] list num: " + paramArrayOfFloat1.length);
-      paramPoseDetectOnFrame.onRecordingDone(paramArrayOfFloat1, mPoseDetectProcessManager.mDesiredPreviewWidth, mPoseDetectProcessManager.mDesiredPreviewHeight);
+      int i = mPoseDetectProcessManager.mDesiredPreviewWidth;
+      paramInt = mPoseDetectProcessManager.mDesiredPreviewHeight;
+      if ((j == 5) || (j == 6) || (j == 7) || (j == 8))
+      {
+        i = mPoseDetectProcessManager.mDesiredPreviewHeight;
+        paramInt = mPoseDetectProcessManager.mDesiredPreviewWidth;
+      }
+      paramPoseDetectOnFrame.onRecordingDone(paramArrayOfFloat1, i, paramInt);
     }
     AppMethodBeat.o(62503);
   }
@@ -137,11 +206,15 @@ public class YTPoseDetectInterface
   {
     AppMethodBeat.i(62501);
     YTLogger.i("YoutuFaceDetect", "[YTFacePreviewInterface.finalize] ---");
-    if (mInitModel)
+    int i = mInitModel - 1;
+    mInitModel = i;
+    if (i <= 0)
     {
-      mPoseDetectProcessManager.clearAll();
+      if (mPoseDetectProcessManager != null) {
+        mPoseDetectProcessManager.clearAll();
+      }
       YTPoseDetectJNIInterface.releaseAll();
-      mInitModel = false;
+      mInitModel = 0;
     }
     AppMethodBeat.o(62501);
   }
@@ -151,13 +224,6 @@ public class YTPoseDetectInterface
     AppMethodBeat.i(62506);
     YTPoseDetectJNIInterface.resetDetect();
     AppMethodBeat.o(62506);
-  }
-  
-  public static void setFrameNum(int paramInt)
-  {
-    AppMethodBeat.i(62508);
-    YTPoseDetectJNIInterface.setFrameNum(paramInt);
-    AppMethodBeat.o(62508);
   }
   
   public static void setSafetyLevel(int paramInt)
@@ -179,7 +245,7 @@ public class YTPoseDetectInterface
       return -1;
     }
     mCheckResult = paramPoseDetectResult;
-    if (mInitModel) {
+    if (mInitModel > 0) {
       mPoseDetectProcessManager.start(paramContext, paramCamera, paramInt, new PoseDetectResult()
       {
         public final void onFailed(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
@@ -228,6 +294,8 @@ public class YTPoseDetectInterface
     public static final int DETECT_NOT_INIT_MODEL = 2;
     public static final int DETECT_SUCCESS = 0;
     
+    public abstract void onCanReflect();
+    
     public abstract void onFailed(int paramInt, String paramString1, String paramString2);
     
     public abstract void onRecordingDone(byte[][] paramArrayOfByte, int paramInt1, int paramInt2);
@@ -248,7 +316,7 @@ public class YTPoseDetectInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.YTPoseDetectInterface
  * JD-Core Version:    0.7.0.1
  */

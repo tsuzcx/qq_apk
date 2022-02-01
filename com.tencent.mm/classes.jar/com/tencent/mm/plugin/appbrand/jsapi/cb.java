@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import org.json.JSONObject;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSystemLog;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "PREFIX", "", "PREFIX$annotations", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "getPREFIX", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)Ljava/lang/String;", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wxa-app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSystemLog;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "PREFIX", "", "PREFIX$annotations", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "getPREFIX", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)Ljava/lang/String;", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wxa-app_release"})
 public final class cb
   extends a<c>
 {
   public static final int CTRL_INDEX = 65;
   public static final String NAME = "systemLog";
-  public static final a jzQ;
+  public static final a kam;
   
   static
   {
-    AppMethodBeat.i(194367);
-    jzQ = new a((byte)0);
-    AppMethodBeat.o(194367);
+    AppMethodBeat.i(193278);
+    kam = new a((byte)0);
+    AppMethodBeat.o(193278);
   }
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
@@ -36,8 +36,8 @@ public final class cb
     }
     for (;;)
     {
-      ad.i("AppBrandLog", new StringBuilder().append(paramJSONObject).append(" print:").toString() + str2);
-      paramc.h(paramInt, HI("ok"));
+      ac.i("AppBrandLog", new StringBuilder().append(paramJSONObject).append(" print:").toString() + str2);
+      paramc.h(paramInt, LM("ok"));
       AppMethodBeat.o(139845);
       return;
       paramJSONObject = str1;
@@ -47,7 +47,7 @@ public final class cb
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSystemLog$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wxa-app_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSystemLog$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wxa-app_release"})
   public static final class a {}
 }
 

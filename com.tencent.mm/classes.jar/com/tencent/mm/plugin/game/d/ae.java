@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ae
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String rZo;
-  public int saK;
+  public String thh;
+  public int tiE;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,19 +14,19 @@ public final class ae
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.saK);
-      if (this.rZo != null) {
-        paramVarArgs.d(2, this.rZo);
+      paramVarArgs.aR(1, this.tiE);
+      if (this.thh != null) {
+        paramVarArgs.d(2, this.thh);
       }
       AppMethodBeat.o(149413);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.saK) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.tiE) + 0;
       paramInt = i;
-      if (this.rZo != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.rZo);
+      if (this.thh != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.thh);
       }
       AppMethodBeat.o(149413);
       return paramInt;
@@ -34,9 +34,9 @@ public final class ae
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(149413);
@@ -52,11 +52,11 @@ public final class ae
         AppMethodBeat.o(149413);
         return -1;
       case 1: 
-        localae.saK = locala.KhF.xS();
+        localae.tiE = locala.LVo.xF();
         AppMethodBeat.o(149413);
         return 0;
       }
-      localae.rZo = locala.KhF.readString();
+      localae.thh = locala.LVo.readString();
       AppMethodBeat.o(149413);
       return 0;
     }
@@ -66,7 +66,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.ae
  * JD-Core Version:    0.7.0.1
  */

@@ -32,14 +32,14 @@ public class j
     if ((paramObject instanceof j))
     {
       paramObject = (j)paramObject;
-      if (Go() == null)
+      if (Ga() == null)
       {
-        if (paramObject.Go() != null) {}
+        if (paramObject.Ga() != null) {}
       }
       else {
-        while (Go().equals(paramObject.Go()))
+        while (Ga().equals(paramObject.Ga()))
         {
-          if ((!getName().equals(paramObject.getName())) || (!Gn().equals(paramObject.Gn())) || (!k.g(fvL(), paramObject.fvL()))) {
+          if ((!getName().equals(paramObject.getName())) || (!FZ().equals(paramObject.FZ())) || (!k.g(fOp(), paramObject.fOp()))) {
             break;
           }
           AppMethodBeat.o(128938);
@@ -51,7 +51,7 @@ public class j
     }
     if ((paramObject instanceof e))
     {
-      boolean bool = paramObject.equals(fvM());
+      boolean bool = paramObject.equals(fOq());
       AppMethodBeat.o(128938);
       return bool;
     }
@@ -59,7 +59,7 @@ public class j
     return false;
   }
   
-  protected final a fvK()
+  protected final a fOo()
   {
     AppMethodBeat.i(128937);
     e locale = w.a(this);
@@ -75,11 +75,11 @@ public class j
   public int hashCode()
   {
     AppMethodBeat.i(128939);
-    if (Go() == null) {}
-    for (int i = 0;; i = Go().hashCode() * 31)
+    if (Ga() == null) {}
+    for (int i = 0;; i = Ga().hashCode() * 31)
     {
       int j = getName().hashCode();
-      int k = Gn().hashCode();
+      int k = FZ().hashCode();
       AppMethodBeat.o(128939);
       return (i + j) * 31 + k;
     }
@@ -88,7 +88,7 @@ public class j
   public String toString()
   {
     AppMethodBeat.i(128940);
-    Object localObject = fvM();
+    Object localObject = fOq();
     if (localObject != this)
     {
       localObject = localObject.toString();

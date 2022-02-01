@@ -5,77 +5,77 @@ import java.util.HashMap;
 
 public final class e
 {
-  private static HashMap<String, Integer> BNm = null;
+  private static HashMap<String, Integer> Dfw = null;
   
-  public static int aAq(String paramString)
+  public static int aFI(String paramString)
   {
     AppMethodBeat.i(133670);
-    if (BNm == null)
+    if (Dfw == null)
     {
       HashMap localHashMap = new HashMap();
-      BNm = localHashMap;
+      Dfw = localHashMap;
       localHashMap.put("avi", Integer.valueOf(2131689581));
-      BNm.put("m4v", Integer.valueOf(2131689581));
-      BNm.put("vob", Integer.valueOf(2131689581));
-      BNm.put("mpeg", Integer.valueOf(2131689581));
-      BNm.put("mpe", Integer.valueOf(2131689581));
-      BNm.put("asx", Integer.valueOf(2131689581));
-      BNm.put("asf", Integer.valueOf(2131689581));
-      BNm.put("f4v", Integer.valueOf(2131689581));
-      BNm.put("flv", Integer.valueOf(2131689581));
-      BNm.put("mkv", Integer.valueOf(2131689581));
-      BNm.put("wmv", Integer.valueOf(2131689581));
-      BNm.put("wm", Integer.valueOf(2131689581));
-      BNm.put("3gp", Integer.valueOf(2131689581));
-      BNm.put("mp4", Integer.valueOf(2131689581));
-      BNm.put("rmvb", Integer.valueOf(2131689581));
-      BNm.put("rm", Integer.valueOf(2131689581));
-      BNm.put("ra", Integer.valueOf(2131689581));
-      BNm.put("ram", Integer.valueOf(2131689581));
-      BNm.put("mp3pro", Integer.valueOf(2131689564));
-      BNm.put("vqf", Integer.valueOf(2131689564));
-      BNm.put("cd", Integer.valueOf(2131689564));
-      BNm.put("md", Integer.valueOf(2131689564));
-      BNm.put("mod", Integer.valueOf(2131689564));
-      BNm.put("vorbis", Integer.valueOf(2131689564));
-      BNm.put("au", Integer.valueOf(2131689564));
-      BNm.put("amr", Integer.valueOf(2131689564));
-      BNm.put("silk", Integer.valueOf(2131689564));
-      BNm.put("wma", Integer.valueOf(2131689564));
-      BNm.put("mmf", Integer.valueOf(2131689564));
-      BNm.put("mid", Integer.valueOf(2131689564));
-      BNm.put("midi", Integer.valueOf(2131689564));
-      BNm.put("mp3", Integer.valueOf(2131689564));
-      BNm.put("aac", Integer.valueOf(2131689564));
-      BNm.put("ape", Integer.valueOf(2131689564));
-      BNm.put("aiff", Integer.valueOf(2131689564));
-      BNm.put("aif", Integer.valueOf(2131689564));
-      BNm.put("jfif", Integer.valueOf(2131230944));
-      BNm.put("tiff", Integer.valueOf(2131230944));
-      BNm.put("tif", Integer.valueOf(2131230944));
-      BNm.put("jpe", Integer.valueOf(2131230944));
-      BNm.put("dib", Integer.valueOf(2131230944));
-      BNm.put("jpeg", Integer.valueOf(2131230944));
-      BNm.put("jpg", Integer.valueOf(2131230944));
-      BNm.put("png", Integer.valueOf(2131230944));
-      BNm.put("bmp", Integer.valueOf(2131230944));
-      BNm.put("gif", Integer.valueOf(2131230944));
-      BNm.put("rar", Integer.valueOf(2131689573));
-      BNm.put("zip", Integer.valueOf(2131689573));
-      BNm.put("7z", Integer.valueOf(2131689573));
-      BNm.put("iso", Integer.valueOf(2131689573));
-      BNm.put("cab", Integer.valueOf(2131689573));
-      BNm.put("doc", Integer.valueOf(2131689585));
-      BNm.put("docx", Integer.valueOf(2131689585));
-      BNm.put("ppt", Integer.valueOf(2131689571));
-      BNm.put("pptx", Integer.valueOf(2131689571));
-      BNm.put("xls", Integer.valueOf(2131689557));
-      BNm.put("xlsx", Integer.valueOf(2131689557));
-      BNm.put("txt", Integer.valueOf(2131689576));
-      BNm.put("rtf", Integer.valueOf(2131689576));
-      BNm.put("pdf", Integer.valueOf(2131689568));
+      Dfw.put("m4v", Integer.valueOf(2131689581));
+      Dfw.put("vob", Integer.valueOf(2131689581));
+      Dfw.put("mpeg", Integer.valueOf(2131689581));
+      Dfw.put("mpe", Integer.valueOf(2131689581));
+      Dfw.put("asx", Integer.valueOf(2131689581));
+      Dfw.put("asf", Integer.valueOf(2131689581));
+      Dfw.put("f4v", Integer.valueOf(2131689581));
+      Dfw.put("flv", Integer.valueOf(2131689581));
+      Dfw.put("mkv", Integer.valueOf(2131689581));
+      Dfw.put("wmv", Integer.valueOf(2131689581));
+      Dfw.put("wm", Integer.valueOf(2131689581));
+      Dfw.put("3gp", Integer.valueOf(2131689581));
+      Dfw.put("mp4", Integer.valueOf(2131689581));
+      Dfw.put("rmvb", Integer.valueOf(2131689581));
+      Dfw.put("rm", Integer.valueOf(2131689581));
+      Dfw.put("ra", Integer.valueOf(2131689581));
+      Dfw.put("ram", Integer.valueOf(2131689581));
+      Dfw.put("mp3pro", Integer.valueOf(2131689564));
+      Dfw.put("vqf", Integer.valueOf(2131689564));
+      Dfw.put("cd", Integer.valueOf(2131689564));
+      Dfw.put("md", Integer.valueOf(2131689564));
+      Dfw.put("mod", Integer.valueOf(2131689564));
+      Dfw.put("vorbis", Integer.valueOf(2131689564));
+      Dfw.put("au", Integer.valueOf(2131689564));
+      Dfw.put("amr", Integer.valueOf(2131689564));
+      Dfw.put("silk", Integer.valueOf(2131689564));
+      Dfw.put("wma", Integer.valueOf(2131689564));
+      Dfw.put("mmf", Integer.valueOf(2131689564));
+      Dfw.put("mid", Integer.valueOf(2131689564));
+      Dfw.put("midi", Integer.valueOf(2131689564));
+      Dfw.put("mp3", Integer.valueOf(2131689564));
+      Dfw.put("aac", Integer.valueOf(2131689564));
+      Dfw.put("ape", Integer.valueOf(2131689564));
+      Dfw.put("aiff", Integer.valueOf(2131689564));
+      Dfw.put("aif", Integer.valueOf(2131689564));
+      Dfw.put("jfif", Integer.valueOf(2131230944));
+      Dfw.put("tiff", Integer.valueOf(2131230944));
+      Dfw.put("tif", Integer.valueOf(2131230944));
+      Dfw.put("jpe", Integer.valueOf(2131230944));
+      Dfw.put("dib", Integer.valueOf(2131230944));
+      Dfw.put("jpeg", Integer.valueOf(2131230944));
+      Dfw.put("jpg", Integer.valueOf(2131230944));
+      Dfw.put("png", Integer.valueOf(2131230944));
+      Dfw.put("bmp", Integer.valueOf(2131230944));
+      Dfw.put("gif", Integer.valueOf(2131230944));
+      Dfw.put("rar", Integer.valueOf(2131689573));
+      Dfw.put("zip", Integer.valueOf(2131689573));
+      Dfw.put("7z", Integer.valueOf(2131689573));
+      Dfw.put("iso", Integer.valueOf(2131689573));
+      Dfw.put("cab", Integer.valueOf(2131689573));
+      Dfw.put("doc", Integer.valueOf(2131689585));
+      Dfw.put("docx", Integer.valueOf(2131689585));
+      Dfw.put("ppt", Integer.valueOf(2131689571));
+      Dfw.put("pptx", Integer.valueOf(2131689571));
+      Dfw.put("xls", Integer.valueOf(2131689557));
+      Dfw.put("xlsx", Integer.valueOf(2131689557));
+      Dfw.put("txt", Integer.valueOf(2131689576));
+      Dfw.put("rtf", Integer.valueOf(2131689576));
+      Dfw.put("pdf", Integer.valueOf(2131689568));
     }
-    paramString = (Integer)BNm.get(paramString);
+    paramString = (Integer)Dfw.get(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(133670);
@@ -86,14 +86,14 @@ public final class e
     return i;
   }
   
-  public static int euN()
+  public static int eKg()
   {
     return 2131689577;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.e
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements View.OnTouchListener
 {
-  private a.a vBV;
+  private a.a wMa;
   
-  public static a djP()
+  public static a dxR()
   {
     AppMethodBeat.i(67915);
     a locala = new a();
@@ -27,8 +27,8 @@ public final class a
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(67916);
-    if (this.vBV == null) {
-      this.vBV = new a.a(paramView);
+    if (this.wMa == null) {
+      this.wMa = new a.a(paramView);
     }
     TextView localTextView = (TextView)paramView;
     localTextView.setMovementMethod(null);
@@ -49,20 +49,20 @@ public final class a
       if (paramMotionEvent.length != 0)
       {
         if (i == 0) {
-          paramView.postDelayed(this.vBV, ViewConfiguration.getLongPressTimeout());
+          paramView.postDelayed(this.wMa, ViewConfiguration.getLongPressTimeout());
         }
         for (;;)
         {
           AppMethodBeat.o(67916);
           return true;
-          paramView.removeCallbacks(this.vBV);
+          paramView.removeCallbacks(this.wMa);
           paramMotionEvent[0].onClick(localTextView);
         }
       }
     }
     else if (i == 3)
     {
-      paramView.removeCallbacks(this.vBV);
+      paramView.removeCallbacks(this.wMa);
     }
     AppMethodBeat.o(67916);
     return false;
@@ -70,7 +70,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.a
  * JD-Core Version:    0.7.0.1
  */

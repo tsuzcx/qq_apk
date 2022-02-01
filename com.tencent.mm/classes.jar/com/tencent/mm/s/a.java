@@ -1,88 +1,88 @@
 package com.tencent.mm.s;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.e.a;
-import com.tencent.mm.al.e.b;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.c;
-import com.tencent.mm.al.f.d;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.e.b;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.c;
+import com.tencent.mm.ak.f.d;
 import com.tencent.mm.api.h;
 import com.tencent.mm.api.q;
 import com.tencent.mm.model.ce;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.protocal.protobuf.pi;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.protocal.protobuf.pp;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bg;
 
 public final class a
   implements q
 {
-  private static cs b(cs paramcs)
+  private static cu b(cu paramcu)
   {
     boolean bool = true;
     AppMethodBeat.i(114095);
-    if (paramcs == null)
+    if (paramcu == null)
     {
       AppMethodBeat.o(114095);
       return null;
     }
-    Object localObject = paramcs.Cxx;
-    int i = paramcs.saz;
-    if (paramcs.Cxz == null) {}
+    Object localObject = paramcu.DPT;
+    int i = paramcu.tit;
+    if (paramcu.DPV == null) {}
     for (;;)
     {
-      ad.i("FunctionMsg.FunctionMsgDispatcher", "processAddMsg, fromUser: %s, msgType: %s, content==null: %s", new Object[] { localObject, Integer.valueOf(i), Boolean.valueOf(bool) });
-      localObject = bt.nullAsNil(z.a(paramcs.Cxx));
+      ac.i("FunctionMsg.FunctionMsgDispatcher", "processAddMsg, fromUser: %s, msgType: %s, content==null: %s", new Object[] { localObject, Integer.valueOf(i), Boolean.valueOf(bool) });
+      localObject = bs.nullAsNil(z.a(paramcu.DPT));
       if ("readerapp".equals(localObject))
       {
-        paramcs.Cxx = z.BE("newsapp");
-        paramcs.saz = 12399999;
+        paramcu.DPT = z.FI("newsapp");
+        paramcu.tit = 12399999;
       }
       if (("blogapp".equals(localObject)) || ("newsapp".equals(localObject))) {
-        paramcs.saz = 12399999;
+        paramcu.tit = 12399999;
       }
       AppMethodBeat.o(114095);
-      return paramcs;
+      return paramcu;
       bool = false;
     }
   }
   
-  public final void a(String paramString, h paramh, cs paramcs)
+  public final void a(String paramString, h paramh, cu paramcu)
   {
     boolean bool2 = false;
     AppMethodBeat.i(114096);
-    if ((paramh == null) || (paramcs == null))
+    if ((paramh == null) || (paramcu == null))
     {
       if (paramh == null) {}
       for (boolean bool1 = true;; bool1 = false)
       {
-        if (paramcs == null) {
+        if (paramcu == null) {
           bool2 = true;
         }
-        ad.e("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgAdd] null == item?%s null == addMsg?%s MsgType:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramcs.saz) });
+        ac.e("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgAdd] null == item?%s null == addMsg?%s MsgType:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramcu.tit) });
         AppMethodBeat.o(114096);
         return;
       }
     }
-    b(paramcs);
+    b(paramcu);
     try
     {
       e.b localb = new e.b();
-      localb.gVe = paramh.field_businessInfo;
-      localb.gVf = paramh.field_functionmsgid;
+      localb.hvD = paramh.field_businessInfo;
+      localb.hvE = paramh.field_functionmsgid;
       if (paramh.field_actionTime == 0L) {}
-      for (long l = ce.asQ() / 1000L;; l = paramh.field_actionTime)
+      for (long l = ce.azH() / 1000L;; l = paramh.field_actionTime)
       {
-        paramcs.CreateTime = ((int)l);
+        paramcu.CreateTime = ((int)l);
         paramh.field_status = 100;
-        paramh.a(paramcs);
-        bd localbd = bd.FzL;
-        bd.a(paramString, paramh);
-        ad.i("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgAdd] item:%s CreateTime:%s", new Object[] { paramh, Integer.valueOf(paramcs.CreateTime) });
-        f.d.ca(Integer.valueOf(paramcs.saz)).b(new f.a(paramcs, localb));
+        paramh.a(paramcu);
+        bg localbg = bg.GYN;
+        bg.a(paramString, paramh);
+        ac.i("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgAdd] item:%s CreateTime:%s", new Object[] { paramh, Integer.valueOf(paramcu.CreateTime) });
+        f.d.bY(Integer.valueOf(paramcu.tit)).b(new f.a(paramcu, localb));
         AppMethodBeat.o(114096);
         return;
       }
@@ -90,54 +90,54 @@ public final class a
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramString, "", new Object[0]);
+      ac.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramString, "", new Object[0]);
       AppMethodBeat.o(114096);
     }
   }
   
-  public final void b(pi parampi)
+  public final void b(pp parampp)
   {
     AppMethodBeat.i(114098);
     try
     {
       new e.b();
-      e.a.bZ(Long.valueOf(parampi.CNw));
+      e.a.bX(Long.valueOf(parampp.EfY));
       AppMethodBeat.o(114098);
       return;
     }
-    catch (Exception parampi)
+    catch (Exception parampp)
     {
-      ad.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", parampi, "", new Object[0]);
+      ac.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", parampp, "", new Object[0]);
       AppMethodBeat.o(114098);
     }
   }
   
-  public final void b(String paramString, h paramh, cs paramcs)
+  public final void b(String paramString, h paramh, cu paramcu)
   {
     AppMethodBeat.i(114097);
-    ad.i("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgDelete] item:%s", new Object[] { paramh });
+    ac.i("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgDelete] item:%s", new Object[] { paramh });
     try
     {
-      b(paramcs);
-      paramcs.CreateTime = ((int)paramh.field_actionTime);
-      paramh.a(paramcs);
+      b(paramcu);
+      paramcu.CreateTime = ((int)paramh.field_actionTime);
+      paramh.a(paramcu);
       paramh.field_status = 100;
-      bd localbd = bd.FzL;
-      bd.a(paramString, paramh);
-      f.d.ca(Integer.valueOf(paramcs.saz)).b(new f.c(paramcs, paramString, paramh));
+      bg localbg = bg.GYN;
+      bg.a(paramString, paramh);
+      f.d.bY(Integer.valueOf(paramcu.tit)).b(new f.c(paramcu, paramString, paramh));
       AppMethodBeat.o(114097);
       return;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramString, "", new Object[0]);
+      ac.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramString, "", new Object[0]);
       AppMethodBeat.o(114097);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.s.a
  * JD-Core Version:    0.7.0.1
  */

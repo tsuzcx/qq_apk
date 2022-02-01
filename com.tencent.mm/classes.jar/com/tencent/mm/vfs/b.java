@@ -3,8 +3,8 @@ package com.tencent.mm.vfs;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,64 +13,64 @@ import java.util.Set;
 
 public final class b
 {
-  private static final ArrayList<String> HSA;
-  private static final int[] HSq;
-  private static final int[] HSr;
-  private static final int[] HSs;
-  private static final int[] HSt;
-  private static final int[] HSu;
-  private static final int[] HSv;
-  private static final int[] HSw;
-  private static final int[] HSx;
-  private static final int[] HSy;
-  private static final int[] HSz;
+  private static final int[] JsV;
+  private static final int[] JsW;
+  private static final int[] JsX;
+  private static final int[] JsY;
+  private static final int[] JsZ;
+  private static final int[] Jta;
+  private static final int[] Jtb;
+  private static final int[] Jtc;
+  private static final int[] Jtd;
+  private static final int[] Jte;
+  private static final ArrayList<String> Jtf;
   
   static
   {
-    AppMethodBeat.i(192920);
-    HSq = new int[] { 10, 20 };
-    HSr = new int[] { 11, 21 };
-    HSs = new int[] { 12, 22 };
-    HSt = new int[] { 13, 23 };
-    HSu = new int[] { 14, 24 };
-    HSv = new int[] { 15, 25 };
-    HSw = new int[] { 16, 26 };
-    HSx = new int[] { 17, 27 };
-    HSy = new int[] { 18, 28 };
-    HSz = new int[] { 19, 29 };
+    AppMethodBeat.i(206976);
+    JsV = new int[] { 10, 20 };
+    JsW = new int[] { 11, 21 };
+    JsX = new int[] { 12, 22 };
+    JsY = new int[] { 13, 23 };
+    JsZ = new int[] { 14, 24 };
+    Jta = new int[] { 15, 25 };
+    Jtb = new int[] { 16, 26 };
+    Jtc = new int[] { 17, 27 };
+    Jtd = new int[] { 18, 28 };
+    Jte = new int[] { 19, 29 };
     ArrayList localArrayList = new ArrayList();
-    HSA = localArrayList;
+    Jtf = localArrayList;
     localArrayList.add("attachment");
-    HSA.add("Download");
-    HSA.add("voice");
-    HSA.add("voice2");
-    HSA.add("image");
-    HSA.add("oldimage2");
-    HSA.add("video");
-    HSA.add("oneday");
-    HSA.add("emoji");
-    HSA.add("finder");
-    AppMethodBeat.o(192920);
+    Jtf.add("Download");
+    Jtf.add("voice");
+    Jtf.add("voice2");
+    Jtf.add("image");
+    Jtf.add("oldimage2");
+    Jtf.add("video");
+    Jtf.add("oneday");
+    Jtf.add("emoji");
+    Jtf.add("finder");
+    AppMethodBeat.o(206976);
   }
   
   private static final void a(MigrationFileSystem paramMigrationFileSystem)
   {
-    AppMethodBeat.i(192919);
+    AppMethodBeat.i(206975);
     if (paramMigrationFileSystem == null)
     {
-      ad.i("MicroMsg.PostTaskVFSStat", "imageMigrationFileSystem is null ");
-      AppMethodBeat.o(192919);
+      ac.i("MicroMsg.PostTaskVFSStat", "imageMigrationFileSystem is null ");
+      AppMethodBeat.o(206975);
       return;
     }
-    paramMigrationFileSystem = paramMigrationFileSystem.HSg.iterator();
+    paramMigrationFileSystem = paramMigrationFileSystem.JsL.iterator();
     for (;;)
     {
       if (!paramMigrationFileSystem.hasNext()) {
         break label148;
       }
       Object localObject = (FileSystem)paramMigrationFileSystem.next();
-      ad.i("MicroMsg.PostTaskVFSStat", "List image directory of %s:", new Object[] { localObject });
-      localObject = ((FileSystem)localObject).cN("", false);
+      ac.i("MicroMsg.PostTaskVFSStat", "List image directory of %s:", new Object[] { localObject });
+      localObject = ((FileSystem)localObject).cT("", false);
       if (localObject != null)
       {
         localObject = ((Iterable)localObject).iterator();
@@ -80,7 +80,7 @@ public final class b
           FileSystem.a locala = (FileSystem.a)((Iterator)localObject).next();
           int j = i + 1;
           if (locala != null) {
-            ad.i("MicroMsg.PostTaskVFSStat", "--> %s", new Object[] { locala.EQk });
+            ac.i("MicroMsg.PostTaskVFSStat", "--> %s", new Object[] { locala.Gnx });
           }
           i = j;
           if (j <= 50) {
@@ -90,16 +90,16 @@ public final class b
       }
     }
     label148:
-    AppMethodBeat.o(192919);
+    AppMethodBeat.o(206975);
   }
   
   private static final boolean a(DelegateFileSystem paramDelegateFileSystem)
   {
-    AppMethodBeat.i(192918);
-    paramDelegateFileSystem = paramDelegateFileSystem.fhB();
+    AppMethodBeat.i(206974);
+    paramDelegateFileSystem = paramDelegateFileSystem.fxD();
     if (paramDelegateFileSystem == null)
     {
-      AppMethodBeat.o(192918);
+      AppMethodBeat.o(206974);
       return true;
     }
     paramDelegateFileSystem = paramDelegateFileSystem.iterator();
@@ -110,7 +110,7 @@ public final class b
       if ((localFileSystem == null) || (!(localFileSystem instanceof MigrationFileSystem))) {
         break label91;
       }
-      if ((bool) && (((MigrationFileSystem)localFileSystem).fhN())) {
+      if ((bool) && (((MigrationFileSystem)localFileSystem).fxO())) {
         bool = true;
       }
     }
@@ -120,237 +120,240 @@ public final class b
       break;
       bool = false;
       continue;
-      AppMethodBeat.o(192918);
+      AppMethodBeat.o(206974);
       return bool;
     }
   }
   
   public static void run()
   {
-    AppMethodBeat.i(192917);
-    ax localax = ax.aFC("VFSStatistic");
-    long l1 = localax.getLong("VFSReportTime", 0L);
+    AppMethodBeat.i(206973);
+    aw localaw = aw.aKT("VFSStatistic");
+    long l1 = localaw.getLong("VFSReportTime", 0L);
     long l2 = System.currentTimeMillis();
     if (l2 - l1 < 86400000L)
     {
-      AppMethodBeat.o(192917);
+      AppMethodBeat.o(206973);
       return;
     }
-    localax.encode("VFSReportTime", l2);
+    localaw.encode("VFSReportTime", l2);
     ArrayList localArrayList = new ArrayList();
-    if (!p.fim())
+    localArrayList.add(new IDKey(1387, 0, 1));
+    if (!p.fyz())
     {
       localArrayList.add(new IDKey(1387, 1, 1));
-      e.vIY.b(localArrayList, false);
-      ad.i("MicroMsg.PostTaskVFSStat", "VFSSwitch.isPathRemapOpen() is false");
-      AppMethodBeat.o(192917);
+      e.wTc.b(localArrayList, false);
+      ac.i("MicroMsg.PostTaskVFSStat", "VFSSwitch.isPathRemapOpen() is false");
+      AppMethodBeat.o(206973);
       return;
     }
-    localArrayList.add(new IDKey(1387, 0, 1));
-    boolean bool1 = p.fij();
+    boolean bool1 = p.fyw();
     localArrayList.add(new IDKey(1387, 2, 1));
     if (bool1) {
       localArrayList.add(new IDKey(1387, 3, 1));
     }
-    if (p.fik()) {
+    if (p.fyx())
+    {
       localArrayList.add(new IDKey(1387, 4, 1));
+      if (com.tencent.mm.sdcard_migrate.b.aKl(com.tencent.mm.loader.j.b.apg())) {
+        localArrayList.add(new IDKey(1387, 100, 1));
+      }
     }
     if (!bool1)
     {
-      e.vIY.b(localArrayList, false);
-      ad.i("MicroMsg.PostTaskVFSStat", "isAsyncMigrationOpened is false");
-      AppMethodBeat.o(192917);
+      e.wTc.b(localArrayList, false);
+      ac.i("MicroMsg.PostTaskVFSStat", "isAsyncMigrationOpened is false");
+      AppMethodBeat.o(206973);
       return;
     }
-    boolean bool3 = localax.getBoolean("VFSAsyncFinished", false);
+    boolean bool3 = localaw.getBoolean("VFSAsyncFinished", false);
     int i;
-    label273:
+    label301:
     MigrationFileSystem localMigrationFileSystem;
-    label321:
+    label349:
     Object localObject2;
     String str;
     boolean bool2;
-    label396:
-    label409:
+    label424:
+    label437:
     int j;
     if (bool3)
     {
-      i = HSq[1];
-      ad.i("MicroMsg.PostTaskVFSStat", "VFS_ASYNC_KEY_FINISH is %s", new Object[] { Integer.valueOf(i) });
+      i = JsV[1];
+      ac.i("MicroMsg.PostTaskVFSStat", "VFS_ASYNC_KEY_FINISH is %s", new Object[] { Integer.valueOf(i) });
       if (!bool3) {
-        break label510;
+        break label538;
       }
-      i = HSq[1];
+      i = JsV[1];
       localArrayList.add(new IDKey(1387, i, 1));
-      Object localObject1 = a.gap().gau();
+      Object localObject1 = a.ghk().gho();
       bool1 = true;
       i = 0;
       localMigrationFileSystem = null;
       localObject1 = ((Map)localObject1).entrySet().iterator();
       if (!((Iterator)localObject1).hasNext()) {
-        break label577;
+        break label605;
       }
       localObject2 = (Map.Entry)((Iterator)localObject1).next();
       str = (String)((Map.Entry)localObject2).getKey();
       localObject2 = (FileSystem)((Map.Entry)localObject2).getValue();
-      if (!HSA.contains(str)) {
-        break label1039;
+      if (!Jtf.contains(str)) {
+        break label1067;
       }
       if (!(localObject2 instanceof MigrationFileSystem)) {
-        break label519;
+        break label547;
       }
-      bool2 = ((MigrationFileSystem)localObject2).fhN();
+      bool2 = ((MigrationFileSystem)localObject2).fxO();
       if ((!bool1) || (!bool2)) {
-        break label565;
+        break label593;
       }
       bool1 = true;
       if (bool3) {
-        break label1036;
+        break label1064;
       }
       if (!bool2) {
-        break label571;
+        break label599;
       }
       j = 30;
-      label422:
-      localArrayList.add(new IDKey(1387, j + HSA.indexOf(str), 1));
-      ad.i("MicroMsg.PostTaskVFSStat", "FileSystem %s, isMigrationFinished is %s", new Object[] { str, Boolean.valueOf(bool2) });
+      label450:
+      localArrayList.add(new IDKey(1387, j + Jtf.indexOf(str), 1));
+      ac.i("MicroMsg.PostTaskVFSStat", "FileSystem %s, isMigrationFinished is %s", new Object[] { str, Boolean.valueOf(bool2) });
       if ((!str.equals("image")) || (bool2)) {
-        break label1036;
+        break label1064;
       }
       i = 1;
       localMigrationFileSystem = (MigrationFileSystem)localObject2;
     }
-    label519:
-    label1036:
-    label1039:
+    label538:
+    label547:
+    label1064:
+    label1067:
     for (;;)
     {
-      break label321;
-      i = HSq[0];
+      break label349;
+      i = JsV[0];
       break;
-      label510:
-      i = HSq[0];
-      break label273;
+      i = JsV[0];
+      break label301;
       if ((localObject2 instanceof DelegateFileSystem))
       {
         bool2 = a((DelegateFileSystem)localObject2);
-        break label396;
+        break label424;
       }
-      ad.e("MicroMsg.PostTaskVFSStat", "FileSystem %s type error %s", new Object[] { str, localObject2 });
-      break label321;
-      label565:
+      ac.e("MicroMsg.PostTaskVFSStat", "FileSystem %s type error %s", new Object[] { str, localObject2 });
+      break label349;
+      label593:
       bool1 = false;
-      break label409;
-      label571:
+      break label437;
+      label599:
       j = 40;
-      break label422;
-      label577:
+      break label450;
+      label605:
       if (i != 0)
       {
         localArrayList.add(new IDKey(1387, 90, 1));
         a(localMigrationFileSystem);
       }
-      ad.i("MicroMsg.PostTaskVFSStat", "VFSP_REPORT_ASYNC_FINISHED is %s, isMigrationFinished is %s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
+      ac.i("MicroMsg.PostTaskVFSStat", "VFSP_REPORT_ASYNC_FINISHED is %s, isMigrationFinished is %s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
       if ((bool3) && (!bool1)) {
         localArrayList.add(new IDKey(1387, 5, 1));
       }
       if (bool3)
       {
-        j = localax.getInt("VFSAsyncFinish", 0);
+        j = localaw.getInt("VFSAsyncFinish", 0);
         if (j > 1) {
-          break label797;
+          break label825;
         }
         if (!bool3) {
-          break label788;
+          break label816;
         }
-        i = HSr[1];
+        i = JsW[1];
       }
       for (;;)
       {
-        ad.i("MicroMsg.PostTaskVFSStat", "DaysKey %s", new Object[] { Integer.valueOf(i) });
+        ac.i("MicroMsg.PostTaskVFSStat", "DaysKey %s", new Object[] { Integer.valueOf(i) });
         localArrayList.add(new IDKey(1387, i, 1));
-        e.vIY.b(localArrayList, false);
+        e.wTc.b(localArrayList, false);
         if (bool3) {
-          break label1030;
+          break label1058;
         }
         if (!bool1) {
-          break label1020;
+          break label1048;
         }
-        localax.encode("VFSAsyncFinished", true);
-        localax.encode("VFSAsyncFinish", j);
-        AppMethodBeat.o(192917);
+        localaw.encode("VFSAsyncFinished", true);
+        localaw.encode("VFSAsyncFinish", j);
+        AppMethodBeat.o(206973);
         return;
-        j = localax.getInt("VFSAsyncStart", 0) + 1;
+        j = localaw.getInt("VFSAsyncStart", 0) + 1;
         break;
-        label788:
-        i = HSr[0];
+        label816:
+        i = JsW[0];
         continue;
-        label797:
+        label825:
         if (j <= 2)
         {
           if (bool3) {
-            i = HSs[1];
+            i = JsX[1];
           } else {
-            i = HSs[0];
+            i = JsX[0];
           }
         }
         else if (j <= 3)
         {
           if (bool3) {
-            i = HSt[1];
+            i = JsY[1];
           } else {
-            i = HSt[0];
+            i = JsY[0];
           }
         }
         else if (j <= 5)
         {
           if (bool3) {
-            i = HSu[1];
+            i = JsZ[1];
           } else {
-            i = HSu[0];
+            i = JsZ[0];
           }
         }
         else if (j <= 10)
         {
           if (bool3) {
-            i = HSv[1];
+            i = Jta[1];
           } else {
-            i = HSv[0];
+            i = Jta[0];
           }
         }
         else if (j <= 15)
         {
           if (bool3) {
-            i = HSw[1];
+            i = Jtb[1];
           } else {
-            i = HSw[0];
+            i = Jtb[0];
           }
         }
         else if (j <= 20)
         {
           if (bool3) {
-            i = HSx[1];
+            i = Jtc[1];
           } else {
-            i = HSx[0];
+            i = Jtc[0];
           }
         }
         else if (j <= 30)
         {
           if (bool3) {
-            i = HSy[1];
+            i = Jtd[1];
           } else {
-            i = HSy[0];
+            i = Jtd[0];
           }
         }
         else if (bool3) {
-          i = HSz[1];
+          i = Jte[1];
         } else {
-          i = HSz[0];
+          i = Jte[0];
         }
       }
-      label1020:
-      localax.encode("VFSAsyncStart", j);
-      AppMethodBeat.o(192917);
+      localaw.encode("VFSAsyncStart", j);
+      AppMethodBeat.o(206973);
       return;
     }
   }

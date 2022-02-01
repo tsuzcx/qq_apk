@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.collect.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -27,9 +27,9 @@ public class CollectAdapterUI
     AppMethodBeat.i(64028);
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
-    g.afC();
-    int i = ((Integer)g.afB().afk().get(ae.a.Fla, Integer.valueOf(0))).intValue();
-    ad.i("MicroMsg.CollectAdapterUI", "walletRegion: %s", new Object[] { Integer.valueOf(i) });
+    g.agS();
+    int i = ((Integer)g.agR().agA().get(ah.a.GIP, Integer.valueOf(0))).intValue();
+    ac.i("MicroMsg.CollectAdapterUI", "walletRegion: %s", new Object[] { Integer.valueOf(i) });
     if (i == 8) {
       d.b(this, "collect", ".ui.CollectHKMainUI", getIntent());
     }

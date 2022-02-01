@@ -15,7 +15,7 @@ import java.lang.ref.WeakReference;
 
 public abstract class TRTCCloud
 {
-  private static c mTXLogListener = null;
+  private static a mTXLogListener = null;
   static WeakReference<TRTCCloud> sInstance = null;
   
   public static void destroySharedInstance() {}
@@ -48,13 +48,13 @@ public abstract class TRTCCloud
   public static void setLogListener(TRTCCloudListener.TRTCLogListener paramTRTCLogListener)
   {
     if (mTXLogListener != null) {
-      mTXLogListener.IIf = null;
+      mTXLogListener.Kun = null;
     }
     if (paramTRTCLogListener != null)
     {
-      c localc = new c();
-      mTXLogListener = localc;
-      localc.IIf = paramTRTCLogListener;
+      a locala = new a();
+      mTXLogListener = locala;
+      locala.Kun = paramTRTCLogListener;
     }
     for (;;)
     {
@@ -127,7 +127,7 @@ public abstract class TRTCCloud
   
   public abstract void playAudioEffect(TRTCCloudDef.TRTCAudioEffectParam paramTRTCAudioEffectParam);
   
-  public abstract void playBGM(String paramString, TRTCCloud.BGMNotify paramBGMNotify);
+  public abstract void playBGM(String paramString, BGMNotify paramBGMNotify);
   
   public abstract void resumeAudioEffect(int paramInt);
   
@@ -170,7 +170,7 @@ public abstract class TRTCCloud
   @Deprecated
   public abstract void setChinLevel(int paramInt);
   
-  public abstract void setDebugViewMargin(String paramString, TRTCCloud.TRTCViewMargin paramTRTCViewMargin);
+  public abstract void setDebugViewMargin(String paramString, TRTCViewMargin paramTRTCViewMargin);
   
   public abstract void setDefaultStreamRecvMode(boolean paramBoolean1, boolean paramBoolean2);
   
@@ -302,19 +302,44 @@ public abstract class TRTCCloud
   
   public abstract void switchRole(int paramInt);
   
-  static final class c
+  public static abstract interface BGMNotify
+  {
+    public abstract void onBGMComplete(int paramInt);
+    
+    public abstract void onBGMProgress(long paramLong1, long paramLong2);
+    
+    public abstract void onBGMStart(int paramInt);
+  }
+  
+  public static class TRTCViewMargin
+  {
+    public float bottomMargin = 0.0F;
+    public float leftMargin = 0.0F;
+    public float rightMargin = 0.0F;
+    public float topMargin = 0.0F;
+    
+    public TRTCViewMargin(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+    {
+      this.leftMargin = paramFloat1;
+      this.topMargin = paramFloat3;
+      this.rightMargin = paramFloat2;
+      this.bottomMargin = paramFloat4;
+    }
+  }
+  
+  static final class a
     implements TXCLog.a
   {
-    TRTCCloudListener.TRTCLogListener IIf = null;
+    TRTCCloudListener.TRTCLogListener Kun = null;
     
     public final void a(int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(203647);
-      TRTCCloudListener.TRTCLogListener localTRTCLogListener = this.IIf;
+      AppMethodBeat.i(193205);
+      TRTCCloudListener.TRTCLogListener localTRTCLogListener = this.Kun;
       if (localTRTCLogListener != null) {
         localTRTCLogListener.onLog(paramString2, paramInt, paramString1);
       }
-      AppMethodBeat.o(203647);
+      AppMethodBeat.o(193205);
     }
   }
 }

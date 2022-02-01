@@ -7,13 +7,13 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.o;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.av.o;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.a.cs;
 import com.tencent.mm.g.a.cs.b;
-import com.tencent.mm.g.a.ry;
-import com.tencent.mm.g.a.ry.a;
-import com.tencent.mm.g.a.sb;
+import com.tencent.mm.g.a.sh;
+import com.tencent.mm.g.a.sh.a;
+import com.tencent.mm.g.a.sk;
 import com.tencent.mm.model.w;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.webview.luggage.f;
@@ -21,8 +21,8 @@ import com.tencent.mm.plugin.webview.model.c.a;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.i;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.widget.snackbar.a.c;
@@ -35,27 +35,27 @@ import org.json.JSONObject;
 public class ax
   extends bo<f>
 {
-  private static int dEE;
+  private static int dCq;
   
-  public static void SL(int paramInt)
+  public static void UT(int paramInt)
   {
-    dEE = paramInt;
+    dCq = paramInt;
   }
   
-  public static int elA()
+  public static int eAW()
   {
-    return dEE;
+    return dCq;
   }
   
-  public static void elB()
+  public static void eAX()
   {
-    dEE = 0;
+    dCq = 0;
   }
   
   public final void a(final Context paramContext, final String paramString, final bn.a parama)
   {
     AppMethodBeat.i(78620);
-    ad.d("MicroMsg.JsApiSendAppMessage", "invokeInMM");
+    ac.d("MicroMsg.JsApiSendAppMessage", "invokeInMM");
     try
     {
       paramString = new JSONObject(paramString);
@@ -75,7 +75,7 @@ public class ax
       switch (paramString.optInt("sendAppMessageScene", 0))
       {
       default: 
-        i.ayy(paramString.optString("img_url"));
+        i.aDP(paramString.optString("img_url"));
         localObject1 = new HashMap();
         ((HashMap)localObject1).put("img_url", paramString.optString("img_url"));
         ((HashMap)localObject1).put("desc", paramString.optString("desc"));
@@ -106,68 +106,68 @@ public class ax
               if (paramAnonymousIntent == null) {}
               for (String str = null; (str == null) || (str.length() == 0); str = paramAnonymousIntent.getStringExtra("Select_Conv_User"))
               {
-                ad.e("MicroMsg.JsApiSendAppMessage", "mmOnActivityResult fail, toUser is null");
+                ac.e("MicroMsg.JsApiSendAppMessage", "mmOnActivityResult fail, toUser is null");
                 parama.f("fail", null);
                 AppMethodBeat.o(78619);
                 return;
               }
-              if (bt.isNullOrNil(str))
+              if (bs.isNullOrNil(str))
               {
-                ad.e("MicroMsg.JsApiSendAppMessage", "toUser is null");
+                ac.e("MicroMsg.JsApiSendAppMessage", "toUser is null");
                 AppMethodBeat.o(78619);
                 return;
               }
-              o.ayE();
-              Object localObject2 = com.tencent.mm.aw.c.pT(paramString.optString("img_url"));
+              o.aFw();
+              Object localObject2 = com.tencent.mm.av.c.te(paramString.optString("img_url"));
               Object localObject3 = ax.br(paramString);
               if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()))
               {
-                ad.i("MicroMsg.JsApiSendAppMessage", "thumb image is not null");
+                ac.i("MicroMsg.JsApiSendAppMessage", "thumb image is not null");
                 localObject4 = new ByteArrayOutputStream();
                 ((Bitmap)localObject2).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject4);
                 ((WXMediaMessage)localObject3).thumbData = ((ByteArrayOutputStream)localObject4).toByteArray();
               }
-              Object localObject4 = com.tencent.mm.pluginsdk.model.app.h.j((String)localObject1, true, false);
-              localObject2 = new ry();
-              ((ry)localObject2).dxx.doG = ((WXMediaMessage)localObject3);
-              ((ry)localObject2).dxx.appId = ((String)localObject1);
-              localObject3 = ((ry)localObject2).dxx;
+              Object localObject4 = com.tencent.mm.pluginsdk.model.app.h.k((String)localObject1, true, false);
+              localObject2 = new sh();
+              ((sh)localObject2).dvk.dis = ((WXMediaMessage)localObject3);
+              ((sh)localObject2).dvk.appId = ((String)localObject1);
+              localObject3 = ((sh)localObject2).dvk;
               if (localObject4 == null)
               {
                 localObject1 = "";
-                ((ry.a)localObject3).appName = ((String)localObject1);
-                ((ry)localObject2).dxx.toUser = str;
-                ((ry)localObject2).dxx.dxy = 2;
-                if (!bt.isNullOrNil(paramString.optString("src_username"))) {
+                ((sh.a)localObject3).appName = ((String)localObject1);
+                ((sh)localObject2).dvk.toUser = str;
+                ((sh)localObject2).dvk.dit = 2;
+                if (!bs.isNullOrNil(paramString.optString("src_username"))) {
                   break label500;
                 }
-                ((ry)localObject2).dxx.dxB = null;
+                ((sh)localObject2).dvk.dvn = null;
               }
               for (;;)
               {
-                ((ry)localObject2).dxx.dxC = paramString.optString("shareUrl");
-                ((ry)localObject2).dxx.dxD = paramString.optString("currentUrl");
-                ((ry)localObject2).dxx.dxE = paramString.optString("preVerifyAppId");
-                com.tencent.mm.sdk.b.a.ESL.l((b)localObject2);
+                ((sh)localObject2).dvk.dvo = paramString.optString("shareUrl");
+                ((sh)localObject2).dvk.dvp = paramString.optString("currentUrl");
+                ((sh)localObject2).dvk.dvq = paramString.optString("preVerifyAppId");
+                com.tencent.mm.sdk.b.a.GpY.l((b)localObject2);
                 paramAnonymousIntent = paramAnonymousIntent.getStringExtra("custom_send_text");
-                if (!bt.isNullOrNil(paramAnonymousIntent))
+                if (!bs.isNullOrNil(paramAnonymousIntent))
                 {
-                  localObject1 = new sb();
-                  ((sb)localObject1).dxJ.dxK = str;
-                  ((sb)localObject1).dxJ.content = paramAnonymousIntent;
-                  ((sb)localObject1).dxJ.type = w.tq(str);
-                  ((sb)localObject1).dxJ.flags = 0;
-                  com.tencent.mm.sdk.b.a.ESL.l((b)localObject1);
+                  localObject1 = new sk();
+                  ((sk)localObject1).dvv.dvw = str;
+                  ((sk)localObject1).dvv.content = paramAnonymousIntent;
+                  ((sk)localObject1).dvv.type = w.xt(str);
+                  ((sk)localObject1).dvv.flags = 0;
+                  com.tencent.mm.sdk.b.a.GpY.l((b)localObject1);
                 }
-                com.tencent.mm.ui.base.h.cf(paramContext, paramContext.getResources().getString(2131755894));
+                com.tencent.mm.ui.base.h.cg(paramContext, paramContext.getResources().getString(2131755894));
                 parama.f(null, null);
                 AppMethodBeat.o(78619);
                 return;
                 localObject1 = ((g)localObject4).field_appName;
                 break;
                 label500:
-                ((ry)localObject2).dxx.dxz = paramString.optString("src_username");
-                ((ry)localObject2).dxx.dxA = paramString.optString("src_displayname");
+                ((sh)localObject2).dvk.dvl = paramString.optString("src_username");
+                ((sh)localObject2).dvk.dvm = paramString.optString("src_displayname");
               }
             }
             parama.f("cancel", null);
@@ -178,27 +178,27 @@ public class ax
         return;
       }
     }
-    ad.i("MicroMsg.JsApiSendAppMessage", "favoriteUrl");
+    ac.i("MicroMsg.JsApiSendAppMessage", "favoriteUrl");
     Object localObject1 = new cs();
     Object localObject2 = new c.a();
     ((c.a)localObject2).url = paramString.optString("shareUrl");
     ((c.a)localObject2).thumbUrl = paramString.optString("img_url");
     ((c.a)localObject2).title = paramString.optString("title");
     ((c.a)localObject2).desc = paramString.optString("desc");
-    ((c.a)localObject2).dlB = paramString.optString("appid");
+    ((c.a)localObject2).djj = paramString.optString("appid");
     if ((paramContext != null) && ((paramContext instanceof MMActivity)))
     {
-      ((cs)localObject1).deQ.activity = ((Activity)paramContext);
-      ((cs)localObject1).deQ.deW = 36;
+      ((cs)localObject1).dck.activity = ((Activity)paramContext);
+      ((cs)localObject1).dck.dcq = 36;
     }
-    ((cs)localObject1).deQ.deY = new a.c()
+    ((cs)localObject1).dck.dcs = new a.c()
     {
-      public final void aXN() {}
+      public final void beK() {}
       
       public final void onHide()
       {
         AppMethodBeat.i(78618);
-        ad.d("MicroMsg.JsApiSendAppMessage", "onHide");
+        ac.d("MicroMsg.JsApiSendAppMessage", "onHide");
         parama.f(null, null);
         AppMethodBeat.o(78618);
       }
@@ -206,8 +206,8 @@ public class ax
       public final void onShow() {}
     };
     com.tencent.mm.plugin.webview.model.c.a((cs)localObject1, (c.a)localObject2);
-    com.tencent.mm.sdk.b.a.ESL.l((b)localObject1);
-    if (((cs)localObject1).deR.ret != 0) {
+    com.tencent.mm.sdk.b.a.GpY.l((b)localObject1);
+    if (((cs)localObject1).dcl.ret != 0) {
       parama.f("fail", null);
     }
     AppMethodBeat.o(78620);
@@ -215,7 +215,7 @@ public class ax
   
   public final void b(com.tencent.luggage.d.a<f>.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 2;
   }

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.sns.ui.a.a;
 
-import com.tencent.mm.plugin.sns.m.a;
+import com.tencent.mm.plugin.sns.l.a;
 
 public final class b
 {
-  public com.tencent.mm.plugin.sns.m.b xFR = null;
-  public a xFS = null;
+  public com.tencent.mm.plugin.sns.l.b ySE = null;
+  public a ySF = null;
 }
 
 

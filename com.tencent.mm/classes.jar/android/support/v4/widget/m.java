@@ -7,17 +7,17 @@ import android.widget.ListView;
 public final class m
   extends a
 {
-  private final ListView RF;
+  private final ListView SA;
   
   public m(ListView paramListView)
   {
     super(paramListView);
-    this.RF = paramListView;
+    this.SA = paramListView;
   }
   
   public final void aR(int paramInt)
   {
-    ListView localListView = this.RF;
+    ListView localListView = this.SA;
     if (Build.VERSION.SDK_INT >= 19) {
       localListView.scrollListBy(paramInt);
     }
@@ -37,7 +37,7 @@ public final class m
   
   public final boolean aS(int paramInt)
   {
-    ListView localListView = this.RF;
+    ListView localListView = this.SA;
     int i = localListView.getCount();
     if (i == 0) {}
     int j;

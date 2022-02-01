@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class j
   implements b
 {
-  public AudioTrack ak(int paramInt1, int paramInt2, int paramInt3)
+  public AudioTrack am(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(137283);
     AudioTrack localAudioTrack = new AudioTrack(3, paramInt1, paramInt2, 2, paramInt3, 1);
@@ -15,7 +15,7 @@ public class j
     return localAudioTrack;
   }
   
-  public MediaPlayer cUU()
+  public MediaPlayer diA()
   {
     AppMethodBeat.i(137282);
     MediaPlayer localMediaPlayer = new MediaPlayer();
@@ -25,7 +25,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.j
  * JD-Core Version:    0.7.0.1
  */

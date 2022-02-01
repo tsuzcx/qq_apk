@@ -8,17 +8,17 @@ import com.tencent.luggage.k.a.c.c;
 
 public abstract interface b
 {
-  public abstract void EY();
+  public abstract void EC();
   
   public abstract void a(c paramc);
   
   public abstract void e(SurfaceTexture paramSurfaceTexture);
   
-  public abstract boolean h(a parama);
+  public abstract boolean g(a parama);
   
-  public abstract String i(a parama);
+  public abstract String h(a parama);
   
-  public abstract void n(MotionEvent paramMotionEvent);
+  public abstract void l(MotionEvent paramMotionEvent);
   
   public abstract void r(Bitmap paramBitmap);
   
@@ -28,7 +28,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.b.b
  * JD-Core Version:    0.7.0.1
  */

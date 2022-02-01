@@ -14,7 +14,7 @@ public final class n$3
   public final void onAnimationEnd(Animation paramAnimation)
   {
     AppMethodBeat.i(113857);
-    this.nJo.startAnimation(this.nJp);
+    this.omo.startAnimation(this.omp);
     AppMethodBeat.o(113857);
   }
   
@@ -24,7 +24,7 @@ public final class n$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.n.3
  * JD-Core Version:    0.7.0.1
  */

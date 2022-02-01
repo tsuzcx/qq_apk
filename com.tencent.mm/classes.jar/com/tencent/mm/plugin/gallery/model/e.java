@@ -8,10 +8,10 @@ import android.os.HandlerThread;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,56 +21,61 @@ import java.util.concurrent.ExecutorService;
 
 public final class e
 {
-  private static int bSt = 0;
-  public static boolean rAD = false;
-  public static boolean rAE = false;
-  public static boolean rAF = false;
-  public static boolean rAG = false;
-  private static volatile e rAK = null;
-  private o qXi;
-  private g rAA;
-  private ArrayList<GalleryItem.MediaItem> rAB;
-  private LinkedHashSet<GalleryItem.MediaItem> rAC;
-  private HashSet<GalleryItem.MediaItem> rAH;
-  private ArrayList<Bundle> rAI;
-  private HashMap<Integer, Boolean> rAJ;
-  private SparseArray<GalleryItem.a> rAL;
-  private c rAz;
+  private static int bQb = 0;
+  private static volatile e sJC;
+  public static boolean sJv = false;
+  public static boolean sJw = false;
+  public static boolean sJx = false;
+  public static boolean sJy = false;
+  private o rXK;
+  private ArrayList<Bundle> sJA;
+  private HashMap<Integer, Boolean> sJB;
+  private SparseArray<GalleryItem.a> sJD;
+  private c sJr;
+  private g sJs;
+  private ArrayList<GalleryItem.MediaItem> sJt;
+  private LinkedHashSet<GalleryItem.MediaItem> sJu;
+  private HashSet<GalleryItem.MediaItem> sJz;
+  
+  static
+  {
+    sJC = null;
+  }
   
   private e()
   {
     AppMethodBeat.i(111261);
-    this.rAB = null;
-    this.rAC = new LinkedHashSet();
-    this.rAH = new HashSet();
-    this.rAI = new ArrayList();
-    this.rAJ = new HashMap();
-    this.rAL = new SparseArray();
-    if (this.qXi == null) {
-      this.qXi = new o();
+    this.sJt = null;
+    this.sJu = new LinkedHashSet();
+    this.sJz = new HashSet();
+    this.sJA = new ArrayList();
+    this.sJB = new HashMap();
+    this.sJD = new SparseArray();
+    if (this.rXK == null) {
+      this.rXK = new o();
     }
-    if (this.rAA == null) {
-      this.rAA = new g();
+    if (this.sJs == null) {
+      this.sJs = new g();
     }
-    if (this.rAz == null) {
-      this.rAz = new c();
+    if (this.sJr == null) {
+      this.sJr = new c();
     }
-    Object localObject = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pww, "");
-    ad.i("MicroMsg.GalleryCore", "localAlbumName: %s.", new Object[] { localObject });
+    Object localObject = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.qaK, "");
+    ac.i("MicroMsg.GalleryCore", "localAlbumName: %s.", new Object[] { localObject });
     try
     {
-      localObject = new com.tencent.mm.ac.i((String)localObject).qI("localAlbumName");
+      localObject = new com.tencent.mm.ab.i((String)localObject).tX("localAlbumName");
       int i = 0;
-      while (i < ((com.tencent.mm.ac.f)localObject).length())
+      while (i < ((com.tencent.mm.ab.f)localObject).length())
       {
-        com.tencent.mm.ac.i locali = ((com.tencent.mm.ac.f)localObject).ml(i);
+        com.tencent.mm.ab.i locali = ((com.tencent.mm.ab.f)localObject).mk(i);
         GalleryItem.a locala = new GalleryItem.a();
         locala.key = locali.optString("key");
         locala.path = locali.optString("path");
-        locala.rBn = locali.optString("default");
-        locala.rBo = com.tencent.mm.plugin.gallery.a.d.abT(locala.path);
-        ad.d("MicroMsg.GalleryCore", "albumName info: %s.", new Object[] { locala });
-        this.rAL.put(locala.rBo, locala);
+        locala.sKf = locali.optString("default");
+        locala.sKg = com.tencent.mm.plugin.gallery.a.d.agL(locala.path);
+        ac.d("MicroMsg.GalleryCore", "albumName info: %s.", new Object[] { locala });
+        this.sJD.put(locala.sKg, locala);
         i += 1;
       }
       AppMethodBeat.o(111261);
@@ -82,24 +87,17 @@ public final class e
     }
   }
   
-  public static void DS(int paramInt)
+  public static void FO(int paramInt)
   {
     AppMethodBeat.i(111271);
-    czf().rAJ.put(Integer.valueOf(paramInt), Boolean.TRUE);
+    cMr().sJB.put(Integer.valueOf(paramInt), Boolean.TRUE);
     AppMethodBeat.o(111271);
-  }
-  
-  public static void Q(ArrayList<GalleryItem.MediaItem> paramArrayList)
-  {
-    AppMethodBeat.i(111270);
-    czf().rAB = paramArrayList;
-    AppMethodBeat.o(111270);
   }
   
   public static void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(111275);
-    int j = czh().jWF;
+    int j = cMt().kxr;
     int i;
     switch (j)
     {
@@ -108,17 +106,17 @@ public final class e
     }
     for (;;)
     {
-      ad.i("MicroMsg.GalleryCore", "[handleSelectImagePreviewReport] source:%s", new Object[] { Integer.valueOf(j) });
-      com.tencent.mm.plugin.gallery.a.d.bd(14205, i + "," + i + "," + paramArrayOfInt[0] + "," + paramArrayOfInt[1] + "," + paramArrayOfInt[2] + "," + paramArrayOfInt[3] + "," + paramBoolean1 + "," + paramBoolean2 + "," + rAD + "," + rAE + "," + rAF + "," + rAG);
-      rAD = false;
-      rAE = false;
-      rAF = false;
-      rAG = false;
+      ac.i("MicroMsg.GalleryCore", "[handleSelectImagePreviewReport] source:%s", new Object[] { Integer.valueOf(j) });
+      com.tencent.mm.plugin.gallery.a.d.bi(14205, i + "," + i + "," + paramArrayOfInt[0] + "," + paramArrayOfInt[1] + "," + paramArrayOfInt[2] + "," + paramArrayOfInt[3] + "," + paramBoolean1 + "," + paramBoolean2 + "," + sJv + "," + sJw + "," + sJx + "," + sJy);
+      sJv = false;
+      sJw = false;
+      sJx = false;
+      sJy = false;
       AppMethodBeat.o(111275);
       return;
       i = 1;
       continue;
-      if ((!bt.isNullOrNil(paramString)) && (paramString.equals(aj.getContext().getString(2131758845))))
+      if ((!bs.isNullOrNil(paramString)) && (paramString.equals(ai.getContext().getString(2131758845))))
       {
         i = 6;
       }
@@ -131,16 +129,23 @@ public final class e
     }
   }
   
-  public static GalleryItem.MediaItem abA(String paramString)
+  public static void ab(ArrayList<GalleryItem.MediaItem> paramArrayList)
+  {
+    AppMethodBeat.i(111270);
+    cMr().sJt = paramArrayList;
+    AppMethodBeat.o(111270);
+  }
+  
+  public static GalleryItem.MediaItem ags(String paramString)
   {
     AppMethodBeat.i(111260);
     paramString = GalleryItem.MediaItem.a(0, 0L, paramString, "", "");
-    if (czf().rAB != null)
+    if (cMr().sJt != null)
     {
-      int i = czf().rAB.indexOf(paramString);
+      int i = cMr().sJt.indexOf(paramString);
       if (i >= 0)
       {
-        paramString = (GalleryItem.MediaItem)czf().rAB.get(i);
+        paramString = (GalleryItem.MediaItem)cMr().sJt.get(i);
         AppMethodBeat.o(111260);
         return paramString;
       }
@@ -149,126 +154,35 @@ public final class e
     return null;
   }
   
-  public static SparseArray<GalleryItem.a> cze()
-  {
-    AppMethodBeat.i(173729);
-    SparseArray localSparseArray = czf().rAL;
-    AppMethodBeat.o(173729);
-    return localSparseArray;
-  }
-  
-  private static e czf()
-  {
-    AppMethodBeat.i(111262);
-    if (rAK == null) {
-      rAK = new e();
-    }
-    e locale = rAK;
-    AppMethodBeat.o(111262);
-    return locale;
-  }
-  
-  public static c czg()
-  {
-    AppMethodBeat.i(111263);
-    if (czf().rAz == null) {
-      czf().rAz = new c();
-    }
-    c localc = czf().rAz;
-    AppMethodBeat.o(111263);
-    return localc;
-  }
-  
-  public static o czh()
-  {
-    AppMethodBeat.i(111264);
-    if (czf().qXi == null) {
-      czf().qXi = new o();
-    }
-    o localo = czf().qXi;
-    AppMethodBeat.o(111264);
-    return localo;
-  }
-  
-  public static g czi()
-  {
-    AppMethodBeat.i(111265);
-    if (czf().rAA == null) {
-      czf().rAA = new g();
-    }
-    g localg = czf().rAA;
-    AppMethodBeat.o(111265);
-    return localg;
-  }
-  
-  public static ArrayList<GalleryItem.MediaItem> czj()
-  {
-    AppMethodBeat.i(200772);
-    ArrayList localArrayList = czf().rAB;
-    AppMethodBeat.o(200772);
-    return localArrayList;
-  }
-  
-  public static HashSet<GalleryItem.MediaItem> czk()
-  {
-    AppMethodBeat.i(111267);
-    HashSet localHashSet = czf().rAH;
-    AppMethodBeat.o(111267);
-    return localHashSet;
-  }
-  
-  public static ArrayList<Bundle> czl()
-  {
-    AppMethodBeat.i(111268);
-    ArrayList localArrayList = czf().rAI;
-    AppMethodBeat.o(111268);
-    return localArrayList;
-  }
-  
-  public static LinkedHashSet<GalleryItem.MediaItem> czm()
-  {
-    AppMethodBeat.i(111269);
-    LinkedHashSet localLinkedHashSet = czf().rAC;
-    AppMethodBeat.o(111269);
-    return localLinkedHashSet;
-  }
-  
-  public static void czn()
-  {
-    AppMethodBeat.i(111272);
-    czf().rAJ.clear();
-    AppMethodBeat.o(111272);
-  }
-  
-  public static int czo()
+  public static int cMA()
   {
     AppMethodBeat.i(111273);
-    int i = czf().rAJ.size();
+    int i = cMr().sJB.size();
     AppMethodBeat.o(111273);
     return i;
   }
   
-  public static void czp()
+  public static void cMB()
   {
     AppMethodBeat.i(111276);
-    bSt += 1;
-    ad.i("MicroMsg.GalleryCore", "pennqin, refGallery %d.", new Object[] { Integer.valueOf(bSt) });
+    bQb += 1;
+    ac.i("MicroMsg.GalleryCore", "pennqin, refGallery %d.", new Object[] { Integer.valueOf(bQb) });
     AppMethodBeat.o(111276);
   }
   
-  public static boolean czq()
+  public static boolean cMC()
   {
     AppMethodBeat.i(111277);
-    if (bSt > 0) {
-      bSt -= 1;
+    if (bQb > 0) {
+      bQb -= 1;
     }
-    ad.i("MicroMsg.GalleryCore", "pennqin, defGallery %d.", new Object[] { Integer.valueOf(bSt) });
-    if (bSt == 0)
+    ac.i("MicroMsg.GalleryCore", "pennqin, defGallery %d.", new Object[] { Integer.valueOf(bQb) });
+    if (bQb == 0)
     {
-      if ((rAK != null) && (rAK.rAA != null) && (rAK.rAz != null))
+      if ((sJC != null) && (sJC.sJs != null) && (sJC.sJr != null))
       {
-        if (bSt != 0) {
-          ad.w("MicroMsg.GalleryCore", "oh, ref count not right!!! Maybe because quick enter/back.");
+        if (bQb != 0) {
+          ac.w("MicroMsg.GalleryCore", "oh, ref count not right!!! Maybe because quick enter/back.");
         }
       }
       else
@@ -277,115 +191,206 @@ public final class e
         return true;
       }
       d locald;
-      if (czf().rAz != null)
+      if (cMr().sJr != null)
       {
-        ??? = p.rBO;
-        ??? = p.czR();
-        ((p)???).rBK.clear();
-        ((p)???).rBL.clear();
-        czg().czb();
-        rAK.rAz.b(null);
-        locald = rAK.rAz.rAg;
-        if (locald.rAu != null)
+        ??? = p.sKH;
+        ??? = p.cNd();
+        ((p)???).sKD.clear();
+        ((p)???).sKE.clear();
+        cMs().cMn();
+        sJC.sJr.b(null);
+        locald = sJC.sJr.sIY;
+        if (locald.sJm != null)
         {
-          locald.rAu.a(new d.4(locald));
-          locald.rAu = null;
+          locald.sJm.a(new d.4(locald));
+          locald.sJm = null;
         }
       }
       for (;;)
       {
         synchronized (locald.lock)
         {
-          if (locald.rAv != null)
+          if (locald.sJn != null)
           {
-            f localf = locald.rAv;
-            localf.czs();
-            localf.czt();
-            aj.getContext().getSharedPreferences(aj.eFD(), 0).edit().putInt("com.tencent.mm.gallery.cache.suffix", localf.rAQ).apply();
-            locald.rAv = null;
+            f localf = locald.sJn;
+            localf.cME();
+            localf.cMF();
+            ai.getContext().getSharedPreferences(ai.eUX(), 0).edit().putInt("com.tencent.mm.gallery.cache.suffix", localf.sJI).apply();
+            locald.sJn = null;
           }
-          rAK.rAz = null;
-          rAK.qXi = null;
-          if (rAK.rAA != null)
+          sJC.sJr = null;
+          sJC.rXK = null;
+          if (sJC.sJs != null)
           {
-            ??? = rAK.rAA.czz();
+            ??? = sJC.sJs.cML();
             if (??? != null)
             {
-              ((ap)???).removeCallbacksAndMessages(null);
-              rAK.rAA.czA().removeCallbacksAndMessages(null);
-              ??? = rAK.rAA.czB();
+              ((ao)???).removeCallbacksAndMessages(null);
+              sJC.sJs.cMM().removeCallbacksAndMessages(null);
+              ??? = sJC.sJs.cMN();
               if (??? == null) {
                 break label533;
               }
-              ((ap)???).removeCallbacksAndMessages(null);
-              ??? = rAK.rAA.czC();
+              ((ao)???).removeCallbacksAndMessages(null);
+              ??? = sJC.sJs.cMO();
               if (??? == null) {
                 break label545;
               }
-              ((ap)???).removeCallbacksAndMessages(null);
-              ??? = rAK.rAA;
-              if (((g)???).rAS != null)
+              ((ao)???).removeCallbacksAndMessages(null);
+              ??? = sJC.sJs;
+              if (((g)???).sJK != null)
               {
-                ((g)???).rAS.quit();
-                ((g)???).rAS = null;
+                ((g)???).sJK.quit();
+                ((g)???).sJK = null;
               }
-              ((g)???).rAU = null;
-              ((g)???).gAC = null;
-              if (((g)???).rAV != null)
+              ((g)???).sJM = null;
+              ((g)???).gox = null;
+              if (((g)???).sJN != null)
               {
-                ((g)???).rAV.shutdown();
-                ((g)???).rAV = null;
+                ((g)???).sJN.shutdown();
+                ((g)???).sJN = null;
               }
-              if (((g)???).rAW != null)
+              if (((g)???).sJO != null)
               {
-                ((g)???).rAW.shutdown();
-                ((g)???).rAW = null;
+                ((g)???).sJO.shutdown();
+                ((g)???).sJO = null;
               }
-              if (((g)???).rAX != null)
+              if (((g)???).sJP != null)
               {
-                ((g)???).rAX.shutdown();
-                ((g)???).rAX = null;
+                ((g)???).sJP.shutdown();
+                ((g)???).sJP = null;
               }
-              if (((g)???).rAY != null)
+              if (((g)???).sJQ != null)
               {
-                ((g)???).rAY.quit();
-                ((g)???).rAY = null;
+                ((g)???).sJQ.quit();
+                ((g)???).sJQ = null;
               }
-              ((g)???).rAZ = null;
-              if (((g)???).rAR != null)
+              ((g)???).sJR = null;
+              if (((g)???).sJJ != null)
               {
-                ((g)???).rAR.quit();
-                ((g)???).rAR = null;
+                ((g)???).sJJ.quit();
+                ((g)???).sJJ = null;
               }
-              ((g)???).rAT = null;
-              rAK.rAA = null;
+              ((g)???).sJL = null;
+              sJC.sJs = null;
             }
           }
           else
           {
-            rAK = null;
-            ad.i("MicroMsg.GalleryCore", "stopServices: finish.");
+            sJC = null;
+            ac.i("MicroMsg.GalleryCore", "stopServices: finish.");
           }
         }
-        ad.w("MicroMsg.GalleryHandlerThread", "assistHandler is null.");
+        ac.w("MicroMsg.GalleryHandlerThread", "assistHandler is null.");
         continue;
         label533:
-        ad.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
+        ac.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
         continue;
         label545:
-        ad.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
+        ac.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
       }
     }
     AppMethodBeat.o(111277);
     return false;
   }
   
+  public static SparseArray<GalleryItem.a> cMq()
+  {
+    AppMethodBeat.i(173729);
+    SparseArray localSparseArray = cMr().sJD;
+    AppMethodBeat.o(173729);
+    return localSparseArray;
+  }
+  
+  private static e cMr()
+  {
+    AppMethodBeat.i(111262);
+    if (sJC == null) {
+      sJC = new e();
+    }
+    e locale = sJC;
+    AppMethodBeat.o(111262);
+    return locale;
+  }
+  
+  public static c cMs()
+  {
+    AppMethodBeat.i(111263);
+    if (cMr().sJr == null) {
+      cMr().sJr = new c();
+    }
+    c localc = cMr().sJr;
+    AppMethodBeat.o(111263);
+    return localc;
+  }
+  
+  public static o cMt()
+  {
+    AppMethodBeat.i(111264);
+    if (cMr().rXK == null) {
+      cMr().rXK = new o();
+    }
+    o localo = cMr().rXK;
+    AppMethodBeat.o(111264);
+    return localo;
+  }
+  
+  public static g cMu()
+  {
+    AppMethodBeat.i(111265);
+    if (cMr().sJs == null) {
+      cMr().sJs = new g();
+    }
+    g localg = cMr().sJs;
+    AppMethodBeat.o(111265);
+    return localg;
+  }
+  
+  public static ArrayList<GalleryItem.MediaItem> cMv()
+  {
+    AppMethodBeat.i(210015);
+    ArrayList localArrayList = cMr().sJt;
+    AppMethodBeat.o(210015);
+    return localArrayList;
+  }
+  
+  public static HashSet<GalleryItem.MediaItem> cMw()
+  {
+    AppMethodBeat.i(111267);
+    HashSet localHashSet = cMr().sJz;
+    AppMethodBeat.o(111267);
+    return localHashSet;
+  }
+  
+  public static ArrayList<Bundle> cMx()
+  {
+    AppMethodBeat.i(111268);
+    ArrayList localArrayList = cMr().sJA;
+    AppMethodBeat.o(111268);
+    return localArrayList;
+  }
+  
+  public static LinkedHashSet<GalleryItem.MediaItem> cMy()
+  {
+    AppMethodBeat.i(111269);
+    LinkedHashSet localLinkedHashSet = cMr().sJu;
+    AppMethodBeat.o(111269);
+    return localLinkedHashSet;
+  }
+  
+  public static void cMz()
+  {
+    AppMethodBeat.i(111272);
+    cMr().sJB.clear();
+    AppMethodBeat.o(111272);
+  }
+  
   public static void e(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(111274);
-    ad.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] selectSize:%s isSendRaw:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1) });
+    ac.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] selectSize:%s isSendRaw:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1) });
     int i;
-    if (czh().jWF == 3) {
+    if (cMt().kxr == 3) {
       i = 1;
     }
     for (;;)
@@ -396,15 +401,15 @@ public final class e
       label180:
       label324:
       int k;
-      if (czf().rAH != null)
+      if (cMr().sJz != null)
       {
-        j = czf().rAH.size();
-        ad.i("MicroMsg.GalleryCore", "[reportPhotoEdit] fromScene:%s,selectSize:%s,editSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(j) });
+        j = cMr().sJz.size();
+        ac.i("MicroMsg.GalleryCore", "[reportPhotoEdit] fromScene:%s,selectSize:%s,editSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(j) });
         if (j > 0) {
-          com.tencent.mm.plugin.gallery.a.d.bd(13858, i + "," + paramInt + "," + j + ",0");
+          com.tencent.mm.plugin.gallery.a.d.bi(13858, i + "," + paramInt + "," + j + ",0");
         }
-        ad.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] imageState:%s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.gallery.a.d.cAR()) });
-        Iterator localIterator = czf().rAI.iterator();
+        ac.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] imageState:%s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.gallery.a.d.cOa()) });
+        Iterator localIterator = cMr().sJA.iterator();
         int n;
         int i1;
         int i2;
@@ -422,9 +427,9 @@ public final class e
           String str = ((Bundle)localObject).getString("after_photo_edit");
           if (!paramBoolean2)
           {
-            ad.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] delete file:%s", new Object[] { str });
+            ac.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] delete file:%s", new Object[] { str });
             com.tencent.mm.vfs.i.deleteFile(str);
-            com.tencent.mm.sdk.f.b.k(str, aj.getContext());
+            com.tencent.mm.sdk.f.b.k(str, ai.getContext());
           }
           n = ((Bundle)localObject).getInt("report_info_emotion_count");
           i1 = ((Bundle)localObject).getInt("report_info_text_count");
@@ -441,7 +446,7 @@ public final class e
             break label555;
           }
           k = 1;
-          ad.i("MicroMsg.GalleryCore", "[reportPhotoEdit] emojiCount:%s,textCount:%s,mosaicCount:%s,penCount:%s,isCrop:%s,undoCount:%s,isRotation:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt), Integer.valueOf(m), Integer.valueOf(k) });
+          ac.i("MicroMsg.GalleryCore", "[reportPhotoEdit] emojiCount:%s,textCount:%s,mosaicCount:%s,penCount:%s,isCrop:%s,undoCount:%s,isRotation:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt), Integer.valueOf(m), Integer.valueOf(k) });
         } while (j <= 0);
         localObject = new StringBuilder().append(i).append(",").append(paramBoolean1).append(",").append(n).append(",").append(i1).append(",").append(i2).append(",").append(i3).append(",");
         if (!bool1) {
@@ -459,9 +464,9 @@ public final class e
       label566:
       for (paramInt = 1;; paramInt = 0)
       {
-        com.tencent.mm.plugin.gallery.a.d.bd(13857, paramInt);
+        com.tencent.mm.plugin.gallery.a.d.bi(13857, paramInt);
         break label180;
-        if (czh().jWF != 4) {
+        if (cMt().kxr != 4) {
           break label578;
         }
         i = 2;

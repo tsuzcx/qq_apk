@@ -2,7 +2,7 @@ package com.tencent.mm.model;
 
 public abstract interface ao
 {
-  public abstract void nc(int paramInt);
+  public abstract void nQ(int paramInt);
 }
 
 

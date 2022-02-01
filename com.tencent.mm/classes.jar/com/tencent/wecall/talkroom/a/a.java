@@ -12,38 +12,38 @@ import com.tencent.pb.common.c.b;
 public final class a
   extends d
 {
-  public int ILI;
-  public int IjW;
-  public int sHe;
-  public String seB;
-  public long ztl;
+  public long AMc;
+  public int JLH;
+  public int Kya;
+  public int tOL;
+  public String tmu;
   
   public a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62531);
-    this.seB = null;
-    this.sHe = 0;
-    this.ztl = 0L;
+    this.tmu = null;
+    this.tOL = 0;
+    this.AMc = 0L;
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneAckVoiceGroup" });
     a.k localk = new a.k();
     try
     {
       localk.groupId = paramString;
-      this.seB = paramString;
-      localk.zkT = paramInt1;
-      this.sHe = paramInt1;
-      localk.zkU = paramLong;
-      this.ztl = paramLong;
-      this.ILI = paramInt3;
-      this.IjW = paramInt2;
+      this.tmu = paramString;
+      localk.ADE = paramInt1;
+      this.tOL = paramInt1;
+      localk.ADF = paramLong;
+      this.AMc = paramLong;
+      this.Kya = paramInt3;
+      this.JLH = paramInt2;
       paramString = new a.an();
       paramString.iLen = 0;
       a.bd localbd = new a.bd();
       localbd.type = 3;
-      localbd.InR = paramString;
-      localk.IkF = localbd;
+      localbd.JPB = paramString;
+      localk.JMq = localbd;
       this.mNetType = 3;
-      this.IjW = paramInt2;
+      this.JLH = paramInt2;
       c(189, localk);
       AppMethodBeat.o(62531);
       return;
@@ -57,7 +57,7 @@ public final class a
     }
   }
   
-  public final Object cC(byte[] paramArrayOfByte)
+  public final Object cB(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62532);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -80,7 +80,7 @@ public final class a
     }
   }
   
-  public final String flk()
+  public final String fBB()
   {
     return "CsCmd.Cmd_V_CSVoiceAckReq";
   }

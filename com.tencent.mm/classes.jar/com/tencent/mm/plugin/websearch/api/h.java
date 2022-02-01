@@ -1,12 +1,20 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.content.Context;
+import com.tencent.mm.kernel.c.a;
 
 public abstract interface h
+  extends a
 {
-  public abstract void bY(String paramString, boolean paramBoolean);
+  public abstract void a(Context paramContext, Runnable paramRunnable);
   
-  public abstract Object gy(Context paramContext);
+  public abstract boolean b(Context paramContext, Runnable paramRunnable);
+  
+  public abstract void ewR();
+  
+  public abstract void ewS();
+  
+  public abstract boolean ewT();
 }
 
 

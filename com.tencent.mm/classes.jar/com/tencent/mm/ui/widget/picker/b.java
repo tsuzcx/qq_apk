@@ -20,33 +20,33 @@ import java.util.Locale;
 public final class b
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private LinearLayout GSX;
-  private Button HIN;
-  private LinearLayout HIO;
-  private CustomDatePickerNew HIP;
-  public a HIQ;
-  private Button hJg;
-  private Button hJh;
-  private View jGG;
-  private int kBk;
-  private BottomSheetBehavior kBl;
+  private LinearLayout Itj;
+  private Button Jjk;
+  private LinearLayout Jjl;
+  private CustomDatePickerNew Jjm;
+  public a Jjn;
+  private Button gAJ;
+  private Button gCY;
+  private View khe;
+  private int lcC;
+  private BottomSheetBehavior lcD;
   private Context mContext;
-  private a sri;
+  private a tyZ;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(159526);
     this.mContext = paramContext;
-    this.sri = new a(this.mContext);
-    this.jGG = View.inflate(this.mContext, 2131493683, null);
-    this.HIO = ((LinearLayout)this.jGG.findViewById(2131298931));
-    this.GSX = ((LinearLayout)this.jGG.findViewById(2131307182));
-    this.HIP = new CustomDatePickerNew(this.mContext);
-    this.HIO.removeAllViews();
-    this.HIO.setGravity(17);
-    this.HIO.addView(this.HIP.getView(), new LinearLayout.LayoutParams(-1, -1));
-    this.hJh = ((Button)this.jGG.findViewById(2131302999));
-    this.hJh.setOnClickListener(new View.OnClickListener()
+    this.tyZ = new a(this.mContext);
+    this.khe = View.inflate(this.mContext, 2131493683, null);
+    this.Jjl = ((LinearLayout)this.khe.findViewById(2131298931));
+    this.Itj = ((LinearLayout)this.khe.findViewById(2131307182));
+    this.Jjm = new CustomDatePickerNew(this.mContext);
+    this.Jjl.removeAllViews();
+    this.Jjl.setGravity(17);
+    this.Jjl.addView(this.Jjm.getView(), new LinearLayout.LayoutParams(-1, -1));
+    this.gAJ = ((Button)this.khe.findViewById(2131302999));
+    this.gAJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -56,8 +56,8 @@ public final class b
         AppMethodBeat.o(159522);
       }
     });
-    this.hJg = ((Button)this.jGG.findViewById(2131297690));
-    this.hJg.setOnClickListener(new View.OnClickListener()
+    this.gCY = ((Button)this.khe.findViewById(2131297690));
+    this.gCY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -67,57 +67,48 @@ public final class b
         AppMethodBeat.o(159523);
       }
     });
-    this.HIN = ((Button)this.jGG.findViewById(2131297600));
-    this.HIN.setOnClickListener(new View.OnClickListener()
+    this.Jjk = ((Button)this.khe.findViewById(2131297600));
+    this.Jjk.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(195288);
+        AppMethodBeat.i(199758);
         b.a(b.this, true, b.a(b.this).getYear(), b.a(b.this).getMonth(), b.a(b.this).getDayOfMonth());
         b.this.hide();
-        AppMethodBeat.o(195288);
+        AppMethodBeat.o(199758);
       }
     });
-    this.sri.setContentView(this.jGG);
-    this.sri.setOnCancelListener(new DialogInterface.OnCancelListener()
+    this.tyZ.setContentView(this.khe);
+    this.tyZ.setOnCancelListener(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(195289);
+        AppMethodBeat.i(199759);
         b.a(b.this, false, 0, 0, 0);
         b.this.hide();
-        AppMethodBeat.o(195289);
+        AppMethodBeat.o(199759);
       }
     });
-    this.kBk = ao.fromDPToPix(this.mContext, 420);
-    this.kBl = BottomSheetBehavior.l((View)this.jGG.getParent());
-    if (this.kBl != null)
+    this.lcC = ao.fromDPToPix(this.mContext, 420);
+    this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
+    if (this.lcD != null)
     {
-      this.kBl.J(this.kBk);
-      this.kBl.lh = false;
+      this.lcD.J(this.lcC);
+      this.lcD.mg = false;
     }
-    this.sri.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.tyZ.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(195290);
+        AppMethodBeat.i(199760);
         b.b(b.this);
-        AppMethodBeat.o(195290);
+        AppMethodBeat.o(199760);
       }
     });
     AppMethodBeat.o(159526);
   }
   
-  public final void aL(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(159528);
-    if (this.HIP != null) {
-      this.HIP.aL(paramBoolean1, paramBoolean2);
-    }
-    AppMethodBeat.o(159528);
-  }
-  
-  public final void aM(int paramInt1, int paramInt2, int paramInt3)
+  public final void aO(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159527);
     if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
@@ -125,13 +116,13 @@ public final class b
       AppMethodBeat.o(159527);
       return;
     }
-    if (this.HIP != null) {
-      this.HIP.aL(paramInt1, paramInt2, paramInt3);
+    if (this.Jjm != null) {
+      this.Jjm.aN(paramInt1, paramInt2, paramInt3);
     }
     AppMethodBeat.o(159527);
   }
   
-  public final void aN(int paramInt1, int paramInt2, int paramInt3)
+  public final void aP(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159529);
     if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
@@ -141,13 +132,22 @@ public final class b
     }
     Calendar localCalendar = Calendar.getInstance(Locale.US);
     localCalendar.set(paramInt1, paramInt2 - 1, paramInt3);
-    if (this.HIP != null) {
-      this.HIP.setMinDate(Long.valueOf(localCalendar.getTimeInMillis()));
+    if (this.Jjm != null) {
+      this.Jjm.setMinDate(Long.valueOf(localCalendar.getTimeInMillis()));
     }
     AppMethodBeat.o(159529);
   }
   
-  public final void aO(int paramInt1, int paramInt2, int paramInt3)
+  public final void aP(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(159528);
+    if (this.Jjm != null) {
+      this.Jjm.aP(paramBoolean1, paramBoolean2);
+    }
+    AppMethodBeat.o(159528);
+  }
+  
+  public final void aQ(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159530);
     if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
@@ -157,18 +157,18 @@ public final class b
     }
     Calendar localCalendar = Calendar.getInstance(Locale.US);
     localCalendar.set(paramInt1, paramInt2 - 1, paramInt3);
-    if (this.HIP != null) {
-      this.HIP.setMaxDate(Long.valueOf(localCalendar.getTimeInMillis()));
+    if (this.Jjm != null) {
+      this.Jjm.setMaxDate(Long.valueOf(localCalendar.getTimeInMillis()));
     }
     AppMethodBeat.o(159530);
   }
   
-  public final String ffY()
+  public final String fvX()
   {
     AppMethodBeat.i(159533);
     String str = null;
-    if (this.HIP != null) {
-      str = this.HIP.currentValue();
+    if (this.Jjm != null) {
+      str = this.Jjm.currentValue();
     }
     AppMethodBeat.o(159533);
     return str;
@@ -177,8 +177,8 @@ public final class b
   public final void hide()
   {
     AppMethodBeat.i(159532);
-    if (this.sri != null) {
-      this.sri.dismiss();
+    if (this.tyZ != null) {
+      this.tyZ.dismiss();
     }
     AppMethodBeat.o(159532);
   }
@@ -187,22 +187,22 @@ public final class b
   
   public final void setLongTermYear(boolean paramBoolean)
   {
-    AppMethodBeat.i(195291);
-    if (this.HIP != null) {
-      this.HIP.setLongTermYear(paramBoolean);
+    AppMethodBeat.i(199761);
+    if (this.Jjm != null) {
+      this.Jjm.setLongTermYear(paramBoolean);
     }
-    AppMethodBeat.o(195291);
+    AppMethodBeat.o(199761);
   }
   
   public final void show()
   {
     AppMethodBeat.i(159531);
-    if (this.sri != null)
+    if (this.tyZ != null)
     {
-      if (this.HIP != null) {
-        this.HIP.onShow();
+      if (this.Jjm != null) {
+        this.Jjm.onShow();
       }
-      this.sri.show();
+      this.tyZ.show();
     }
     AppMethodBeat.o(159531);
   }

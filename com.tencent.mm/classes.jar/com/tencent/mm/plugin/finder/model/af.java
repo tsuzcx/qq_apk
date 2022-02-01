@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bow;
+import com.tencent.mm.protocal.protobuf.btm;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/model/StreamMarkReadStat;", "", "feedId", "", "isRead", "", "timestamp", "stat", "Lcom/tencent/mm/protocal/protobuf/MarkReadStat;", "(JZJLcom/tencent/mm/protocal/protobuf/MarkReadStat;)V", "getFeedId", "()J", "()Z", "setRead", "(Z)V", "getStat", "()Lcom/tencent/mm/protocal/protobuf/MarkReadStat;", "setStat", "(Lcom/tencent/mm/protocal/protobuf/MarkReadStat;)V", "getTimestamp", "compareTo", "", "other", "component1", "component2", "component3", "component4", "copy", "equals", "", "hashCode", "toString", "", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/StreamMarkReadStat;", "", "feedId", "", "isRead", "", "timestamp", "stat", "Lcom/tencent/mm/protocal/protobuf/MarkReadStat;", "(JZJLcom/tencent/mm/protocal/protobuf/MarkReadStat;)V", "getFeedId", "()J", "()Z", "setRead", "(Z)V", "getStat", "()Lcom/tencent/mm/protocal/protobuf/MarkReadStat;", "setStat", "(Lcom/tencent/mm/protocal/protobuf/MarkReadStat;)V", "getTimestamp", "compareTo", "", "other", "component1", "component2", "component3", "component4", "copy", "equals", "", "hashCode", "toString", "", "plugin-finder_release"})
 public final class af
   implements Comparable<af>
 {
-  boolean KTu;
-  bow KTv;
-  final long feedId;
+  final long dig;
+  boolean rvi;
+  btm rvj;
   private final long timestamp;
   
   private af(long paramLong1, long paramLong2)
   {
-    this.feedId = paramLong1;
-    this.KTu = false;
+    this.dig = paramLong1;
+    this.rvi = false;
     this.timestamp = paramLong2;
-    this.KTv = null;
+    this.rvj = null;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(198664);
+    AppMethodBeat.i(202591);
     if (this != paramObject)
     {
       if ((paramObject instanceof af))
       {
         paramObject = (af)paramObject;
-        if ((this.feedId != paramObject.feedId) || (this.KTu != paramObject.KTu) || (this.timestamp != paramObject.timestamp) || (!k.g(this.KTv, paramObject.KTv))) {}
+        if ((this.dig != paramObject.dig) || (this.rvi != paramObject.rvi) || (this.timestamp != paramObject.timestamp) || (!k.g(this.rvj, paramObject.rvj))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(198664);
+      AppMethodBeat.o(202591);
       return true;
     }
-    AppMethodBeat.o(198664);
+    AppMethodBeat.o(202591);
     return false;
   }
   
@@ -49,15 +49,15 @@ public final class af
   
   public final String toString()
   {
-    AppMethodBeat.i(198662);
-    String str = "StreamMarkReadStat(feedId=" + this.feedId + ", isRead=" + this.KTu + ", timestamp=" + this.timestamp + ", stat=" + this.KTv + ")";
-    AppMethodBeat.o(198662);
+    AppMethodBeat.i(202589);
+    String str = "StreamMarkReadStat(feedId=" + this.dig + ", isRead=" + this.rvi + ", timestamp=" + this.timestamp + ", stat=" + this.rvj + ")";
+    AppMethodBeat.o(202589);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.af
  * JD-Core Version:    0.7.0.1
  */

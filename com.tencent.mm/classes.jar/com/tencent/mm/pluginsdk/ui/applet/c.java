@@ -11,7 +11,7 @@ public final class c
   {
     AppMethodBeat.i(31340);
     paramContext = new b(paramContext, paramString1, paramInt, paramv, paramString2);
-    paramContext.BXE = 4;
+    paramContext.DpV = 4;
     AppMethodBeat.o(31340);
     return paramContext;
   }
@@ -34,7 +34,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.c
  * JD-Core Version:    0.7.0.1
  */

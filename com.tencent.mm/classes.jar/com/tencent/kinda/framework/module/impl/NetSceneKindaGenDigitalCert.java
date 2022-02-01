@@ -8,7 +8,9 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.s;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.wallet_core.c.ad;
 import com.tencent.mm.wallet_core.c.e;
 import com.tencent.mm.wallet_core.c.y;
 import com.tencent.mm.wallet_core.tenpay.model.m;
@@ -31,7 +33,7 @@ public class NetSceneKindaGenDigitalCert
     if (paramKGenDigitalCrtReq.mType == 1)
     {
       localHashMap1.put("type", com.tencent.mm.compatible.util.p.encode("1"));
-      localHashMap1.put("true_name", com.tencent.mm.compatible.util.p.encode(s.ecc().getTrueName()));
+      localHashMap1.put("true_name", com.tencent.mm.compatible.util.p.encode(s.ery().getTrueName()));
       localHashMap1.put("id_no", com.tencent.mm.compatible.util.p.encode(paramKGenDigitalCrtReq.getIdNo()));
       localHashMap1.put("id_type", com.tencent.mm.compatible.util.p.encode(paramKGenDigitalCrtReq.getIdType()));
     }
@@ -61,7 +63,7 @@ public class NetSceneKindaGenDigitalCert
       }
       else
       {
-        com.tencent.mm.sdk.platformtools.ad.e("kinda.NetSceneKindaGenDigitalCert", "KGenDigitalCrtReq.mType is illeagl.");
+        ac.e("kinda.NetSceneKindaGenDigitalCert", "KGenDigitalCrtReq.mType is illeagl.");
       }
     }
   }
@@ -70,12 +72,12 @@ public class NetSceneKindaGenDigitalCert
   {
     int k = 0;
     AppMethodBeat.i(18666);
-    g.afC();
-    g.afz();
+    g.agS();
+    g.agP();
     Object localObject3 = com.tencent.mm.b.p.getString(a.getUin());
-    String str1 = q.cG(false);
+    String str1 = q.cF(false);
     byte[] arrayOfByte = new byte[16];
-    Object localObject2 = y.fjW().getBytes();
+    Object localObject2 = y.fAm().getBytes();
     if (localObject2 != null)
     {
       localObject1 = localObject2;
@@ -101,24 +103,24 @@ public class NetSceneKindaGenDigitalCert
       i = m;
     } while (m < 16);
     Object localObject1 = new String(arrayOfByte);
-    localObject2 = ai.du((String)localObject3 + str1);
-    String str2 = ai.du((String)localObject3 + (String)localObject2 + new String(arrayOfByte));
-    com.tencent.mm.sdk.platformtools.ad.i("kinda.NetSceneKindaGenDigitalCert", "salt " + new String(arrayOfByte));
-    com.tencent.mm.sdk.platformtools.ad.i("kinda.NetSceneKindaGenDigitalCert", "crt_csr uin: %s: devideid: %s crt: %s", new Object[] { localObject3, str1, str2 });
-    localObject3 = com.tencent.mm.wallet_core.c.b.fjR();
-    com.tencent.mm.wallet_core.b.fjk();
+    localObject2 = ah.dg((String)localObject3 + str1);
+    String str2 = ah.dg((String)localObject3 + (String)localObject2 + new String(arrayOfByte));
+    ac.i("kinda.NetSceneKindaGenDigitalCert", "salt " + new String(arrayOfByte));
+    ac.i("kinda.NetSceneKindaGenDigitalCert", "crt_csr uin: %s: devideid: %s crt: %s", new Object[] { localObject3, str1, str2 });
+    localObject3 = com.tencent.mm.wallet_core.c.b.fAg();
+    com.tencent.mm.wallet_core.b.fzz();
     i = k;
-    if (com.tencent.mm.wallet_core.b.fjn()) {
+    if (com.tencent.mm.wallet_core.b.fzC()) {
       i = 1;
     }
-    localObject3 = ((com.tencent.mm.wallet_core.c.b)localObject3).gm(str2, i);
+    localObject3 = ((com.tencent.mm.wallet_core.c.b)localObject3).gq(str2, i);
     try
     {
       paramMap.put("sn_salt", com.tencent.mm.compatible.util.p.encode((String)localObject1));
       paramMap.put("crt_csr", com.tencent.mm.compatible.util.p.encode((String)localObject3));
       paramMap.put("crt_device_id", localObject2);
-      paramMap.put("device_os", d.glX);
-      paramMap.put("device_name", d.CpH);
+      paramMap.put("device_os", d.gMK);
+      paramMap.put("device_name", d.DHZ);
       AppMethodBeat.o(18666);
       return;
     }
@@ -154,7 +156,7 @@ public class NetSceneKindaGenDigitalCert
   {
     AppMethodBeat.i(18668);
     super.onGYNetEnd2(parame, paramJSONObject);
-    com.tencent.mm.sdk.platformtools.ad.i("kinda.NetSceneKindaGenDigitalCert", "errCode %d errMsg %s", new Object[] { Integer.valueOf(parame.errCode), parame.errMsg });
+    ac.i("kinda.NetSceneKindaGenDigitalCert", "errCode %d errMsg %s", new Object[] { Integer.valueOf(parame.errCode), parame.errMsg });
     for (;;)
     {
       try
@@ -163,27 +165,27 @@ public class NetSceneKindaGenDigitalCert
         paramJSONObject = paramJSONObject.optString("crt_no");
         if (parame.errCode == 0)
         {
-          boolean bool = com.tencent.mm.wallet_core.c.b.fjR().importCert(paramJSONObject, str);
-          com.tencent.mm.wallet_core.c.ad.aNa(paramJSONObject);
+          boolean bool = com.tencent.mm.wallet_core.c.b.fAg().importCert(paramJSONObject, str);
+          ad.aSD(paramJSONObject);
           if (bool)
           {
-            com.tencent.mm.sdk.platformtools.ad.i("kinda.NetSceneKindaGenDigitalCert", "importCert crt_crt success");
-            com.tencent.mm.sdk.platformtools.ad.i("kinda.NetSceneKindaGenDigitalCert", "_crt_crt %s _crt_no %s", new Object[] { ai.du(str), paramJSONObject });
+            ac.i("kinda.NetSceneKindaGenDigitalCert", "importCert crt_crt success");
+            ac.i("kinda.NetSceneKindaGenDigitalCert", "_crt_crt %s _crt_no %s", new Object[] { ah.dg(str), paramJSONObject });
             AppMethodBeat.o(18668);
             return;
           }
-          com.tencent.mm.sdk.platformtools.ad.e("kinda.NetSceneKindaGenDigitalCert", "importCert crt_crt fail");
+          ac.e("kinda.NetSceneKindaGenDigitalCert", "importCert crt_crt fail");
           continue;
         }
-        com.tencent.mm.wallet_core.c.b.fjR().fjS();
+        com.tencent.mm.wallet_core.c.b.fAg().fAh();
       }
       catch (Exception parame)
       {
-        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("kinda.NetSceneKindaGenDigitalCert", parame, "", new Object[0]);
+        ac.printErrStackTrace("kinda.NetSceneKindaGenDigitalCert", parame, "", new Object[0]);
         AppMethodBeat.o(18668);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ad.e("kinda.NetSceneKindaGenDigitalCert", " importCert crt_crt was not executed because of cgi resp error");
+      ac.e("kinda.NetSceneKindaGenDigitalCert", " importCert crt_crt was not executed because of cgi resp error");
     }
   }
 }

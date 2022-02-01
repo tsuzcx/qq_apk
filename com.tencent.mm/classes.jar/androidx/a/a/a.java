@@ -39,151 +39,151 @@ import java.util.regex.Pattern;
 public final class a
 {
   private static final boolean DEBUG;
-  private static final d[] ayA;
-  private static final d ayB;
-  private static final d ayC;
-  private static final byte[] ayD;
-  private static final byte[] aym;
-  private static final byte[] ayn;
-  private static final byte[] ayo;
-  private static final d[] ayp;
-  private static final d[] ayq;
-  private static final d[] ayr;
-  private static final d[] ays;
-  private static final d[] ayt;
-  private static final d ayu;
-  private static final d[] ayv;
-  private static final d[] ayw;
-  private static final d[] ayx;
-  private static final d[] ayy;
-  static final d[][] ayz;
-  public static final int[] vA;
-  public static final int[] vB;
-  static final byte[] vC;
-  private static final byte[] vD;
-  private static final byte[] vE;
-  private static SimpleDateFormat vF;
-  static final String[] vG;
-  static final int[] vH;
-  static final byte[] vI;
-  private static final HashMap<Integer, d>[] vW;
-  private static final HashMap<String, d>[] vX;
-  private static final HashSet<String> vY;
-  private static final HashMap<Integer, Integer> vZ;
-  private static final List<Integer> vx;
-  private static final List<Integer> vy;
-  public static final int[] vz;
-  static final Charset wa;
-  static final byte[] wb;
-  private static final Pattern wu;
-  private static final Pattern wv;
-  private FileDescriptor ayE;
-  private boolean ayF;
-  private String wd;
-  private AssetManager.AssetInputStream we;
-  private int wf;
-  private final HashMap<String, c>[] wg;
-  private Set<Integer> wh;
-  private ByteOrder wi;
-  private boolean wj;
-  private int wk;
-  private int wl;
-  private byte[] wm;
-  private int wn;
-  private int wo;
-  private int wp;
-  private int wq;
-  private int wr;
-  private int ws;
-  private boolean wt;
+  private static final byte[] azg;
+  private static final byte[] azh;
+  private static final byte[] azi;
+  private static final d[] azj;
+  private static final d[] azk;
+  private static final d[] azl;
+  private static final d[] azm;
+  private static final d[] azn;
+  private static final d azo;
+  private static final d[] azp;
+  private static final d[] azq;
+  private static final d[] azr;
+  private static final d[] azs;
+  static final d[][] azt;
+  private static final d[] azu;
+  private static final d azv;
+  private static final d azw;
+  private static final byte[] azx;
+  public static final int[] wA;
+  static final byte[] wB;
+  private static final byte[] wC;
+  private static final byte[] wD;
+  private static SimpleDateFormat wE;
+  static final String[] wF;
+  static final int[] wG;
+  static final byte[] wH;
+  private static final HashMap<Integer, d>[] wV;
+  private static final HashMap<String, d>[] wW;
+  private static final HashSet<String> wX;
+  private static final HashMap<Integer, Integer> wY;
+  static final Charset wZ;
+  private static final List<Integer> ww;
+  private static final List<Integer> wx;
+  public static final int[] wy;
+  public static final int[] wz;
+  static final byte[] xa;
+  private static final Pattern xs;
+  private static final Pattern xt;
+  private FileDescriptor azy;
+  private boolean azz;
+  private String xb;
+  private AssetManager.AssetInputStream xc;
+  private int xd;
+  private final HashMap<String, c>[] xe;
+  private Set<Integer> xf;
+  private ByteOrder xg;
+  private boolean xh;
+  private int xi;
+  private int xj;
+  private byte[] xk;
+  private int xl;
+  private int xm;
+  private int xn;
+  private int xo;
+  private int xp;
+  private int xq;
+  private boolean xr;
   
   static
   {
     AppMethodBeat.i(178752);
     DEBUG = Log.isLoggable("ExifInterface", 3);
-    vx = Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(6), Integer.valueOf(3), Integer.valueOf(8) });
-    vy = Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(7), Integer.valueOf(4), Integer.valueOf(5) });
-    vz = new int[] { 8, 8, 8 };
-    vA = new int[] { 4 };
-    vB = new int[] { 8 };
-    vC = new byte[] { -1, -40, -1 };
-    aym = new byte[] { 102, 116, 121, 112 };
-    ayn = new byte[] { 109, 105, 102, 49 };
-    ayo = new byte[] { 104, 101, 105, 99 };
-    vD = new byte[] { 79, 76, 89, 77, 80, 0 };
-    vE = new byte[] { 79, 76, 89, 77, 80, 85, 83, 0, 73, 73 };
-    vG = new String[] { "", "BYTE", "STRING", "USHORT", "ULONG", "URATIONAL", "SBYTE", "UNDEFINED", "SSHORT", "SLONG", "SRATIONAL", "SINGLE", "DOUBLE", "IFD" };
-    vH = new int[] { 0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8, 1 };
-    vI = new byte[] { 65, 83, 67, 73, 73, 0, 0, 0 };
-    ayp = new d[] { new d("NewSubfileType", 254, 4), new d("SubfileType", 255, 4), new d("ImageWidth", 256), new d("ImageLength", 257), new d("BitsPerSample", 258, 3), new d("Compression", 259, 3), new d("PhotometricInterpretation", 262, 3), new d("ImageDescription", 270, 2), new d("Make", 271, 2), new d("Model", 272, 2), new d("StripOffsets", 273), new d("Orientation", 274, 3), new d("SamplesPerPixel", 277, 3), new d("RowsPerStrip", 278), new d("StripByteCounts", 279), new d("XResolution", 282, 5), new d("YResolution", 283, 5), new d("PlanarConfiguration", 284, 3), new d("ResolutionUnit", 296, 3), new d("TransferFunction", 301, 3), new d("Software", 305, 2), new d("DateTime", 306, 2), new d("Artist", 315, 2), new d("WhitePoint", 318, 5), new d("PrimaryChromaticities", 319, 5), new d("SubIFDPointer", 330, 4), new d("JPEGInterchangeFormat", 513, 4), new d("JPEGInterchangeFormatLength", 514, 4), new d("YCbCrCoefficients", 529, 5), new d("YCbCrSubSampling", 530, 3), new d("YCbCrPositioning", 531, 3), new d("ReferenceBlackWhite", 532, 5), new d("Copyright", 33432, 2), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("SensorTopBorder", 4, 4), new d("SensorLeftBorder", 5, 4), new d("SensorBottomBorder", 6, 4), new d("SensorRightBorder", 7, 4), new d("ISO", 23, 3), new d("JpgFromRaw", 46, 7), new d("Xmp", 700, 1) };
-    ayq = new d[] { new d("ExposureTime", 33434, 5), new d("FNumber", 33437, 5), new d("ExposureProgram", 34850, 3), new d("SpectralSensitivity", 34852, 2), new d("PhotographicSensitivity", 34855, 3), new d("OECF", 34856, 7), new d("ExifVersion", 36864, 2), new d("DateTimeOriginal", 36867, 2), new d("DateTimeDigitized", 36868, 2), new d("ComponentsConfiguration", 37121, 7), new d("CompressedBitsPerPixel", 37122, 5), new d("ShutterSpeedValue", 37377, 10), new d("ApertureValue", 37378, 5), new d("BrightnessValue", 37379, 10), new d("ExposureBiasValue", 37380, 10), new d("MaxApertureValue", 37381, 5), new d("SubjectDistance", 37382, 5), new d("MeteringMode", 37383, 3), new d("LightSource", 37384, 3), new d("Flash", 37385, 3), new d("FocalLength", 37386, 5), new d("SubjectArea", 37396, 3), new d("MakerNote", 37500, 7), new d("UserComment", 37510, 7), new d("SubSecTime", 37520, 2), new d("SubSecTimeOriginal", 37521, 2), new d("SubSecTimeDigitized", 37522, 2), new d("FlashpixVersion", 40960, 7), new d("ColorSpace", 40961, 3), new d("PixelXDimension", 40962), new d("PixelYDimension", 40963), new d("RelatedSoundFile", 40964, 2), new d("InteroperabilityIFDPointer", 40965, 4), new d("FlashEnergy", 41483, 5), new d("SpatialFrequencyResponse", 41484, 7), new d("FocalPlaneXResolution", 41486, 5), new d("FocalPlaneYResolution", 41487, 5), new d("FocalPlaneResolutionUnit", 41488, 3), new d("SubjectLocation", 41492, 3), new d("ExposureIndex", 41493, 5), new d("SensingMethod", 41495, 3), new d("FileSource", 41728, 7), new d("SceneType", 41729, 7), new d("CFAPattern", 41730, 7), new d("CustomRendered", 41985, 3), new d("ExposureMode", 41986, 3), new d("WhiteBalance", 41987, 3), new d("DigitalZoomRatio", 41988, 5), new d("FocalLengthIn35mmFilm", 41989, 3), new d("SceneCaptureType", 41990, 3), new d("GainControl", 41991, 3), new d("Contrast", 41992, 3), new d("Saturation", 41993, 3), new d("Sharpness", 41994, 3), new d("DeviceSettingDescription", 41995, 7), new d("SubjectDistanceRange", 41996, 3), new d("ImageUniqueID", 42016, 2), new d("DNGVersion", 50706, 1), new d("DefaultCropSize", 50720) };
-    ayr = new d[] { new d("GPSVersionID", 0, 1), new d("GPSLatitudeRef", 1, 2), new d("GPSLatitude", 2, 5), new d("GPSLongitudeRef", 3, 2), new d("GPSLongitude", 4, 5), new d("GPSAltitudeRef", 5, 1), new d("GPSAltitude", 6, 5), new d("GPSTimeStamp", 7, 5), new d("GPSSatellites", 8, 2), new d("GPSStatus", 9, 2), new d("GPSMeasureMode", 10, 2), new d("GPSDOP", 11, 5), new d("GPSSpeedRef", 12, 2), new d("GPSSpeed", 13, 5), new d("GPSTrackRef", 14, 2), new d("GPSTrack", 15, 5), new d("GPSImgDirectionRef", 16, 2), new d("GPSImgDirection", 17, 5), new d("GPSMapDatum", 18, 2), new d("GPSDestLatitudeRef", 19, 2), new d("GPSDestLatitude", 20, 5), new d("GPSDestLongitudeRef", 21, 2), new d("GPSDestLongitude", 22, 5), new d("GPSDestBearingRef", 23, 2), new d("GPSDestBearing", 24, 5), new d("GPSDestDistanceRef", 25, 2), new d("GPSDestDistance", 26, 5), new d("GPSProcessingMethod", 27, 7), new d("GPSAreaInformation", 28, 7), new d("GPSDateStamp", 29, 2), new d("GPSDifferential", 30, 3) };
-    ays = new d[] { new d("InteroperabilityIndex", 1, 2) };
-    ayt = new d[] { new d("NewSubfileType", 254, 4), new d("SubfileType", 255, 4), new d("ThumbnailImageWidth", 256), new d("ThumbnailImageLength", 257), new d("BitsPerSample", 258, 3), new d("Compression", 259, 3), new d("PhotometricInterpretation", 262, 3), new d("ImageDescription", 270, 2), new d("Make", 271, 2), new d("Model", 272, 2), new d("StripOffsets", 273), new d("ThumbnailOrientation", 274, 3), new d("SamplesPerPixel", 277, 3), new d("RowsPerStrip", 278), new d("StripByteCounts", 279), new d("XResolution", 282, 5), new d("YResolution", 283, 5), new d("PlanarConfiguration", 284, 3), new d("ResolutionUnit", 296, 3), new d("TransferFunction", 301, 3), new d("Software", 305, 2), new d("DateTime", 306, 2), new d("Artist", 315, 2), new d("WhitePoint", 318, 5), new d("PrimaryChromaticities", 319, 5), new d("SubIFDPointer", 330, 4), new d("JPEGInterchangeFormat", 513, 4), new d("JPEGInterchangeFormatLength", 514, 4), new d("YCbCrCoefficients", 529, 5), new d("YCbCrSubSampling", 530, 3), new d("YCbCrPositioning", 531, 3), new d("ReferenceBlackWhite", 532, 5), new d("Copyright", 33432, 2), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("DNGVersion", 50706, 1), new d("DefaultCropSize", 50720) };
-    ayu = new d("StripOffsets", 273, 3);
-    ayv = new d[] { new d("ThumbnailImage", 256, 7), new d("CameraSettingsIFDPointer", 8224, 4), new d("ImageProcessingIFDPointer", 8256, 4) };
-    ayw = new d[] { new d("PreviewImageStart", 257, 4), new d("PreviewImageLength", 258, 4) };
-    ayx = new d[] { new d("AspectFrame", 4371, 3) };
-    ayy = new d[] { new d("ColorSpace", 55, 3) };
-    ayz = new d[][] { ayp, ayq, ayr, ays, ayt, ayp, ayv, ayw, ayx, ayy };
-    ayA = new d[] { new d("SubIFDPointer", 330, 4), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("InteroperabilityIFDPointer", 40965, 4), new d("CameraSettingsIFDPointer", 8224, 1), new d("ImageProcessingIFDPointer", 8256, 1) };
-    ayB = new d("JPEGInterchangeFormat", 513, 4);
-    ayC = new d("JPEGInterchangeFormatLength", 514, 4);
-    vW = new HashMap[ayz.length];
-    vX = new HashMap[ayz.length];
-    vY = new HashSet(Arrays.asList(new String[] { "FNumber", "DigitalZoomRatio", "ExposureTime", "SubjectDistance", "GPSTimeStamp" }));
-    vZ = new HashMap();
-    wa = Charset.forName("US-ASCII");
-    wb = "".getBytes(wa);
-    ayD = "".getBytes(wa);
+    ww = Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(6), Integer.valueOf(3), Integer.valueOf(8) });
+    wx = Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(7), Integer.valueOf(4), Integer.valueOf(5) });
+    wy = new int[] { 8, 8, 8 };
+    wz = new int[] { 4 };
+    wA = new int[] { 8 };
+    wB = new byte[] { -1, -40, -1 };
+    azg = new byte[] { 102, 116, 121, 112 };
+    azh = new byte[] { 109, 105, 102, 49 };
+    azi = new byte[] { 104, 101, 105, 99 };
+    wC = new byte[] { 79, 76, 89, 77, 80, 0 };
+    wD = new byte[] { 79, 76, 89, 77, 80, 85, 83, 0, 73, 73 };
+    wF = new String[] { "", "BYTE", "STRING", "USHORT", "ULONG", "URATIONAL", "SBYTE", "UNDEFINED", "SSHORT", "SLONG", "SRATIONAL", "SINGLE", "DOUBLE", "IFD" };
+    wG = new int[] { 0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8, 1 };
+    wH = new byte[] { 65, 83, 67, 73, 73, 0, 0, 0 };
+    azj = new d[] { new d("NewSubfileType", 254, 4), new d("SubfileType", 255, 4), new d("ImageWidth", 256), new d("ImageLength", 257), new d("BitsPerSample", 258, 3), new d("Compression", 259, 3), new d("PhotometricInterpretation", 262, 3), new d("ImageDescription", 270, 2), new d("Make", 271, 2), new d("Model", 272, 2), new d("StripOffsets", 273), new d("Orientation", 274, 3), new d("SamplesPerPixel", 277, 3), new d("RowsPerStrip", 278), new d("StripByteCounts", 279), new d("XResolution", 282, 5), new d("YResolution", 283, 5), new d("PlanarConfiguration", 284, 3), new d("ResolutionUnit", 296, 3), new d("TransferFunction", 301, 3), new d("Software", 305, 2), new d("DateTime", 306, 2), new d("Artist", 315, 2), new d("WhitePoint", 318, 5), new d("PrimaryChromaticities", 319, 5), new d("SubIFDPointer", 330, 4), new d("JPEGInterchangeFormat", 513, 4), new d("JPEGInterchangeFormatLength", 514, 4), new d("YCbCrCoefficients", 529, 5), new d("YCbCrSubSampling", 530, 3), new d("YCbCrPositioning", 531, 3), new d("ReferenceBlackWhite", 532, 5), new d("Copyright", 33432, 2), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("SensorTopBorder", 4, 4), new d("SensorLeftBorder", 5, 4), new d("SensorBottomBorder", 6, 4), new d("SensorRightBorder", 7, 4), new d("ISO", 23, 3), new d("JpgFromRaw", 46, 7), new d("Xmp", 700, 1) };
+    azk = new d[] { new d("ExposureTime", 33434, 5), new d("FNumber", 33437, 5), new d("ExposureProgram", 34850, 3), new d("SpectralSensitivity", 34852, 2), new d("PhotographicSensitivity", 34855, 3), new d("OECF", 34856, 7), new d("ExifVersion", 36864, 2), new d("DateTimeOriginal", 36867, 2), new d("DateTimeDigitized", 36868, 2), new d("ComponentsConfiguration", 37121, 7), new d("CompressedBitsPerPixel", 37122, 5), new d("ShutterSpeedValue", 37377, 10), new d("ApertureValue", 37378, 5), new d("BrightnessValue", 37379, 10), new d("ExposureBiasValue", 37380, 10), new d("MaxApertureValue", 37381, 5), new d("SubjectDistance", 37382, 5), new d("MeteringMode", 37383, 3), new d("LightSource", 37384, 3), new d("Flash", 37385, 3), new d("FocalLength", 37386, 5), new d("SubjectArea", 37396, 3), new d("MakerNote", 37500, 7), new d("UserComment", 37510, 7), new d("SubSecTime", 37520, 2), new d("SubSecTimeOriginal", 37521, 2), new d("SubSecTimeDigitized", 37522, 2), new d("FlashpixVersion", 40960, 7), new d("ColorSpace", 40961, 3), new d("PixelXDimension", 40962), new d("PixelYDimension", 40963), new d("RelatedSoundFile", 40964, 2), new d("InteroperabilityIFDPointer", 40965, 4), new d("FlashEnergy", 41483, 5), new d("SpatialFrequencyResponse", 41484, 7), new d("FocalPlaneXResolution", 41486, 5), new d("FocalPlaneYResolution", 41487, 5), new d("FocalPlaneResolutionUnit", 41488, 3), new d("SubjectLocation", 41492, 3), new d("ExposureIndex", 41493, 5), new d("SensingMethod", 41495, 3), new d("FileSource", 41728, 7), new d("SceneType", 41729, 7), new d("CFAPattern", 41730, 7), new d("CustomRendered", 41985, 3), new d("ExposureMode", 41986, 3), new d("WhiteBalance", 41987, 3), new d("DigitalZoomRatio", 41988, 5), new d("FocalLengthIn35mmFilm", 41989, 3), new d("SceneCaptureType", 41990, 3), new d("GainControl", 41991, 3), new d("Contrast", 41992, 3), new d("Saturation", 41993, 3), new d("Sharpness", 41994, 3), new d("DeviceSettingDescription", 41995, 7), new d("SubjectDistanceRange", 41996, 3), new d("ImageUniqueID", 42016, 2), new d("DNGVersion", 50706, 1), new d("DefaultCropSize", 50720) };
+    azl = new d[] { new d("GPSVersionID", 0, 1), new d("GPSLatitudeRef", 1, 2), new d("GPSLatitude", 2, 5), new d("GPSLongitudeRef", 3, 2), new d("GPSLongitude", 4, 5), new d("GPSAltitudeRef", 5, 1), new d("GPSAltitude", 6, 5), new d("GPSTimeStamp", 7, 5), new d("GPSSatellites", 8, 2), new d("GPSStatus", 9, 2), new d("GPSMeasureMode", 10, 2), new d("GPSDOP", 11, 5), new d("GPSSpeedRef", 12, 2), new d("GPSSpeed", 13, 5), new d("GPSTrackRef", 14, 2), new d("GPSTrack", 15, 5), new d("GPSImgDirectionRef", 16, 2), new d("GPSImgDirection", 17, 5), new d("GPSMapDatum", 18, 2), new d("GPSDestLatitudeRef", 19, 2), new d("GPSDestLatitude", 20, 5), new d("GPSDestLongitudeRef", 21, 2), new d("GPSDestLongitude", 22, 5), new d("GPSDestBearingRef", 23, 2), new d("GPSDestBearing", 24, 5), new d("GPSDestDistanceRef", 25, 2), new d("GPSDestDistance", 26, 5), new d("GPSProcessingMethod", 27, 7), new d("GPSAreaInformation", 28, 7), new d("GPSDateStamp", 29, 2), new d("GPSDifferential", 30, 3) };
+    azm = new d[] { new d("InteroperabilityIndex", 1, 2) };
+    azn = new d[] { new d("NewSubfileType", 254, 4), new d("SubfileType", 255, 4), new d("ThumbnailImageWidth", 256), new d("ThumbnailImageLength", 257), new d("BitsPerSample", 258, 3), new d("Compression", 259, 3), new d("PhotometricInterpretation", 262, 3), new d("ImageDescription", 270, 2), new d("Make", 271, 2), new d("Model", 272, 2), new d("StripOffsets", 273), new d("ThumbnailOrientation", 274, 3), new d("SamplesPerPixel", 277, 3), new d("RowsPerStrip", 278), new d("StripByteCounts", 279), new d("XResolution", 282, 5), new d("YResolution", 283, 5), new d("PlanarConfiguration", 284, 3), new d("ResolutionUnit", 296, 3), new d("TransferFunction", 301, 3), new d("Software", 305, 2), new d("DateTime", 306, 2), new d("Artist", 315, 2), new d("WhitePoint", 318, 5), new d("PrimaryChromaticities", 319, 5), new d("SubIFDPointer", 330, 4), new d("JPEGInterchangeFormat", 513, 4), new d("JPEGInterchangeFormatLength", 514, 4), new d("YCbCrCoefficients", 529, 5), new d("YCbCrSubSampling", 530, 3), new d("YCbCrPositioning", 531, 3), new d("ReferenceBlackWhite", 532, 5), new d("Copyright", 33432, 2), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("DNGVersion", 50706, 1), new d("DefaultCropSize", 50720) };
+    azo = new d("StripOffsets", 273, 3);
+    azp = new d[] { new d("ThumbnailImage", 256, 7), new d("CameraSettingsIFDPointer", 8224, 4), new d("ImageProcessingIFDPointer", 8256, 4) };
+    azq = new d[] { new d("PreviewImageStart", 257, 4), new d("PreviewImageLength", 258, 4) };
+    azr = new d[] { new d("AspectFrame", 4371, 3) };
+    azs = new d[] { new d("ColorSpace", 55, 3) };
+    azt = new d[][] { azj, azk, azl, azm, azn, azj, azp, azq, azr, azs };
+    azu = new d[] { new d("SubIFDPointer", 330, 4), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("InteroperabilityIFDPointer", 40965, 4), new d("CameraSettingsIFDPointer", 8224, 1), new d("ImageProcessingIFDPointer", 8256, 1) };
+    azv = new d("JPEGInterchangeFormat", 513, 4);
+    azw = new d("JPEGInterchangeFormatLength", 514, 4);
+    wV = new HashMap[azt.length];
+    wW = new HashMap[azt.length];
+    wX = new HashSet(Arrays.asList(new String[] { "FNumber", "DigitalZoomRatio", "ExposureTime", "SubjectDistance", "GPSTimeStamp" }));
+    wY = new HashMap();
+    wZ = Charset.forName("US-ASCII");
+    xa = "".getBytes(wZ);
+    azx = "".getBytes(wZ);
     Object localObject1 = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
-    vF = (SimpleDateFormat)localObject1;
+    wE = (SimpleDateFormat)localObject1;
     ((SimpleDateFormat)localObject1).setTimeZone(TimeZone.getTimeZone("UTC"));
     int i = 0;
-    while (i < ayz.length)
+    while (i < azt.length)
     {
-      vW[i] = new HashMap();
-      vX[i] = new HashMap();
-      localObject1 = ayz[i];
+      wV[i] = new HashMap();
+      wW[i] = new HashMap();
+      localObject1 = azt[i];
       int k = localObject1.length;
       int j = 0;
       while (j < k)
       {
         Object localObject2 = localObject1[j];
-        vW[i].put(Integer.valueOf(localObject2.number), localObject2);
-        vX[i].put(localObject2.name, localObject2);
+        wV[i].put(Integer.valueOf(localObject2.number), localObject2);
+        wW[i].put(localObject2.name, localObject2);
         j += 1;
       }
       i += 1;
     }
-    vZ.put(Integer.valueOf(ayA[0].number), Integer.valueOf(5));
-    vZ.put(Integer.valueOf(ayA[1].number), Integer.valueOf(1));
-    vZ.put(Integer.valueOf(ayA[2].number), Integer.valueOf(2));
-    vZ.put(Integer.valueOf(ayA[3].number), Integer.valueOf(3));
-    vZ.put(Integer.valueOf(ayA[4].number), Integer.valueOf(7));
-    vZ.put(Integer.valueOf(ayA[5].number), Integer.valueOf(8));
-    wu = Pattern.compile(".*[1-9].*");
-    wv = Pattern.compile("^([0-9][0-9]):([0-9][0-9]):([0-9][0-9])$");
+    wY.put(Integer.valueOf(azu[0].number), Integer.valueOf(5));
+    wY.put(Integer.valueOf(azu[1].number), Integer.valueOf(1));
+    wY.put(Integer.valueOf(azu[2].number), Integer.valueOf(2));
+    wY.put(Integer.valueOf(azu[3].number), Integer.valueOf(3));
+    wY.put(Integer.valueOf(azu[4].number), Integer.valueOf(7));
+    wY.put(Integer.valueOf(azu[5].number), Integer.valueOf(8));
+    xs = Pattern.compile(".*[1-9].*");
+    xt = Pattern.compile("^([0-9][0-9]):([0-9][0-9]):([0-9][0-9])$");
     AppMethodBeat.o(178752);
   }
   
   public a(InputStream paramInputStream)
   {
     AppMethodBeat.i(178714);
-    this.wg = new HashMap[ayz.length];
-    this.wh = new HashSet(ayz.length);
-    this.wi = ByteOrder.BIG_ENDIAN;
+    this.xe = new HashMap[azt.length];
+    this.xf = new HashSet(azt.length);
+    this.xg = ByteOrder.BIG_ENDIAN;
     if (paramInputStream == null)
     {
       paramInputStream = new NullPointerException("inputStream cannot be null");
       AppMethodBeat.o(178714);
       throw paramInputStream;
     }
-    this.wd = null;
+    this.xb = null;
     if ((paramInputStream instanceof AssetManager.AssetInputStream))
     {
-      this.we = ((AssetManager.AssetInputStream)paramInputStream);
-      this.ayE = null;
+      this.xc = ((AssetManager.AssetInputStream)paramInputStream);
+      this.azy = null;
     }
     for (;;)
     {
@@ -192,13 +192,13 @@ public final class a
       return;
       if (((paramInputStream instanceof FileInputStream)) && (a(((FileInputStream)paramInputStream).getFD())))
       {
-        this.we = null;
-        this.ayE = ((FileInputStream)paramInputStream).getFD();
+        this.xc = null;
+        this.azy = ((FileInputStream)paramInputStream).getFD();
       }
       else
       {
-        this.we = null;
-        this.ayE = null;
+        this.xc = null;
+        this.azy = null;
       }
     }
   }
@@ -206,9 +206,9 @@ public final class a
   public a(String paramString)
   {
     AppMethodBeat.i(178713);
-    this.wg = new HashMap[ayz.length];
-    this.wh = new HashSet(ayz.length);
-    this.wi = ByteOrder.BIG_ENDIAN;
+    this.xe = new HashMap[azt.length];
+    this.xf = new HashSet(azt.length);
+    this.xg = ByteOrder.BIG_ENDIAN;
     if (paramString == null)
     {
       paramString = new NullPointerException("filename cannot be null");
@@ -221,15 +221,15 @@ public final class a
       AppMethodBeat.o(178713);
       throw paramString;
     }
-    this.we = null;
-    this.wd = paramString;
+    this.xc = null;
+    this.xb = paramString;
     try
     {
       localFileInputStream = new FileInputStream(paramString);
       try
       {
         if (a(localFileInputStream.getFD())) {}
-        for (this.ayE = localFileInputStream.getFD();; this.ayE = null)
+        for (this.azy = localFileInputStream.getFD();; this.azy = null)
         {
           b(localFileInputStream);
           closeQuietly(localFileInputStream);
@@ -248,7 +248,7 @@ public final class a
     throw paramString;
   }
   
-  private c I(String paramString)
+  private c K(String paramString)
   {
     AppMethodBeat.i(178715);
     if (paramString == null)
@@ -262,9 +262,9 @@ public final class a
       str = "PhotographicSensitivity";
     }
     int i = 0;
-    while (i < ayz.length)
+    while (i < azt.length)
     {
-      paramString = (c)this.wg[i].get(str);
+      paramString = (c)this.xe[i].get(str);
       if (paramString != null)
       {
         AppMethodBeat.o(178715);
@@ -279,9 +279,9 @@ public final class a
   private int a(b paramb)
   {
     AppMethodBeat.i(178746);
-    int[] arrayOfInt = new int[ayz.length];
-    Object localObject1 = new int[ayz.length];
-    Object localObject2 = ayA;
+    int[] arrayOfInt = new int[azt.length];
+    Object localObject1 = new int[azt.length];
+    Object localObject2 = azu;
     int j = localObject2.length;
     int i = 0;
     while (i < j)
@@ -289,43 +289,43 @@ public final class a
       removeAttribute(localObject2[i].name);
       i += 1;
     }
-    removeAttribute(ayB.name);
-    removeAttribute(ayC.name);
+    removeAttribute(azv.name);
+    removeAttribute(azw.name);
     i = 0;
     int k;
-    while (i < ayz.length)
+    while (i < azt.length)
     {
-      localObject2 = this.wg[i].entrySet().toArray();
+      localObject2 = this.xe[i].entrySet().toArray();
       k = localObject2.length;
       j = 0;
       while (j < k)
       {
         Map.Entry localEntry = (Map.Entry)localObject2[j];
         if (localEntry.getValue() == null) {
-          this.wg[i].remove(localEntry.getKey());
+          this.xe[i].remove(localEntry.getKey());
         }
         j += 1;
       }
       i += 1;
     }
-    if (!this.wg[1].isEmpty()) {
-      this.wg[0].put(ayA[1].name, c.b(0L, this.wi));
+    if (!this.xe[1].isEmpty()) {
+      this.xe[0].put(azu[1].name, c.b(0L, this.xg));
     }
-    if (!this.wg[2].isEmpty()) {
-      this.wg[0].put(ayA[2].name, c.b(0L, this.wi));
+    if (!this.xe[2].isEmpty()) {
+      this.xe[0].put(azu[2].name, c.b(0L, this.xg));
     }
-    if (!this.wg[3].isEmpty()) {
-      this.wg[1].put(ayA[3].name, c.b(0L, this.wi));
+    if (!this.xe[3].isEmpty()) {
+      this.xe[1].put(azu[3].name, c.b(0L, this.xg));
     }
-    if (this.wj)
+    if (this.xh)
     {
-      this.wg[4].put(ayB.name, c.b(0L, this.wi));
-      this.wg[4].put(ayC.name, c.b(this.wl, this.wi));
+      this.xe[4].put(azv.name, c.b(0L, this.xg));
+      this.xe[4].put(azw.name, c.b(this.xj, this.xg));
     }
     j = 0;
-    if (j < ayz.length)
+    if (j < azt.length)
     {
-      localObject2 = this.wg[j].entrySet().iterator();
+      localObject2 = this.xe[j].entrySet().iterator();
       i = 0;
       label376:
       if (((Iterator)localObject2).hasNext())
@@ -347,66 +347,66 @@ public final class a
       break;
       i = 8;
       j = 0;
-      while (j < ayz.length)
+      while (j < azt.length)
       {
         k = i;
-        if (!this.wg[j].isEmpty())
+        if (!this.xe[j].isEmpty())
         {
           arrayOfInt[j] = i;
-          k = i + (this.wg[j].size() * 12 + 2 + 4 + localObject1[j]);
+          k = i + (this.xe[j].size() * 12 + 2 + 4 + localObject1[j]);
         }
         j += 1;
         i = k;
       }
       j = i;
-      if (this.wj)
+      if (this.xh)
       {
-        this.wg[4].put(ayB.name, c.b(i, this.wi));
-        this.wk = (i + 6);
-        j = i + this.wl;
+        this.xe[4].put(azv.name, c.b(i, this.xg));
+        this.xi = (i + 6);
+        j = i + this.xj;
       }
       int m = j + 8;
       if (DEBUG)
       {
         i = 0;
-        while (i < ayz.length)
+        while (i < azt.length)
         {
-          String.format("index: %d, offsets: %d, tag count: %d, data sizes: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(arrayOfInt[i]), Integer.valueOf(this.wg[i].size()), Integer.valueOf(localObject1[i]) });
+          String.format("index: %d, offsets: %d, tag count: %d, data sizes: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(arrayOfInt[i]), Integer.valueOf(this.xe[i].size()), Integer.valueOf(localObject1[i]) });
           i += 1;
         }
       }
-      if (!this.wg[1].isEmpty()) {
-        this.wg[0].put(ayA[1].name, c.b(arrayOfInt[1], this.wi));
+      if (!this.xe[1].isEmpty()) {
+        this.xe[0].put(azu[1].name, c.b(arrayOfInt[1], this.xg));
       }
-      if (!this.wg[2].isEmpty()) {
-        this.wg[0].put(ayA[2].name, c.b(arrayOfInt[2], this.wi));
+      if (!this.xe[2].isEmpty()) {
+        this.xe[0].put(azu[2].name, c.b(arrayOfInt[2], this.xg));
       }
-      if (!this.wg[3].isEmpty()) {
-        this.wg[1].put(ayA[3].name, c.b(arrayOfInt[3], this.wi));
+      if (!this.xe[3].isEmpty()) {
+        this.xe[1].put(azu[3].name, c.b(arrayOfInt[3], this.xg));
       }
       paramb.writeShort((short)m);
-      paramb.write(wb);
+      paramb.write(xa);
       short s;
-      if (this.wi == ByteOrder.BIG_ENDIAN)
+      if (this.xg == ByteOrder.BIG_ENDIAN)
       {
         s = 19789;
         paramb.writeShort(s);
-        paramb.wx = this.wi;
+        paramb.xv = this.xg;
         paramb.writeShort((short)42);
         paramb.writeInt(8);
         i = 0;
       }
       for (;;)
       {
-        if (i >= ayz.length) {
+        if (i >= azt.length) {
           break label1188;
         }
-        if (!this.wg[i].isEmpty())
+        if (!this.xe[i].isEmpty())
         {
-          paramb.writeShort((short)this.wg[i].size());
+          paramb.writeShort((short)this.xe[i].size());
           j = arrayOfInt[i];
-          k = this.wg[i].size();
-          localObject1 = this.wg[i].entrySet().iterator();
+          k = this.xe[i].size();
+          localObject1 = this.xe[i].entrySet().iterator();
           j = j + 2 + k * 12 + 4;
           for (;;)
           {
@@ -414,12 +414,12 @@ public final class a
               break label1072;
             }
             localObject2 = (Map.Entry)((Iterator)localObject1).next();
-            int n = ((d)vX[i].get(((Map.Entry)localObject2).getKey())).number;
+            int n = ((d)wW[i].get(((Map.Entry)localObject2).getKey())).number;
             localObject2 = (c)((Map.Entry)localObject2).getValue();
             k = ((c)localObject2).size();
             paramb.writeShort((short)n);
             paramb.writeShort((short)((c)localObject2).format);
-            paramb.writeInt(((c)localObject2).wz);
+            paramb.writeInt(((c)localObject2).xx);
             if (k > 4)
             {
               paramb.writeInt((int)j);
@@ -428,7 +428,7 @@ public final class a
               s = 18761;
               break;
             }
-            paramb.write(((c)localObject2).wA);
+            paramb.write(((c)localObject2).xy);
             if (k < 4) {
               while (k < 4)
               {
@@ -437,17 +437,17 @@ public final class a
               }
             }
           }
-          if ((i == 0) && (!this.wg[4].isEmpty())) {
+          if ((i == 0) && (!this.xe[4].isEmpty())) {
             paramb.writeInt((int)arrayOfInt[4]);
           }
           for (;;)
           {
-            localObject1 = this.wg[i].entrySet().iterator();
+            localObject1 = this.xe[i].entrySet().iterator();
             while (((Iterator)localObject1).hasNext())
             {
               localObject2 = (c)((Map.Entry)((Iterator)localObject1).next()).getValue();
-              if (((c)localObject2).wA.length > 4) {
-                paramb.write(((c)localObject2).wA, 0, ((c)localObject2).wA.length);
+              if (((c)localObject2).xy.length > 4) {
+                paramb.write(((c)localObject2).xy, 0, ((c)localObject2).xy.length);
               }
             }
             paramb.writeInt(0);
@@ -455,10 +455,10 @@ public final class a
         }
         i += 1;
       }
-      if (this.wj) {
+      if (this.xh) {
         paramb.write(getThumbnailBytes());
       }
-      paramb.wx = ByteOrder.BIG_ENDIAN;
+      paramb.xv = ByteOrder.BIG_ENDIAN;
       AppMethodBeat.o(178746);
       return m;
     }
@@ -472,19 +472,19 @@ public final class a
     d(parama, 0);
     d(parama, 5);
     d(parama, 4);
-    de();
-    if (this.wf == 8)
+    dl();
+    if (this.xd == 8)
     {
-      parama = (c)this.wg[1].get("MakerNote");
+      parama = (c)this.xe[1].get("MakerNote");
       if (parama != null)
       {
-        parama = new a(parama.wA);
-        parama.wx = this.wi;
+        parama = new a(parama.xy);
+        parama.xv = this.xg;
         parama.seek(6L);
         b(parama, 9);
-        parama = (c)this.wg[9].get("ColorSpace");
+        parama = (c)this.xe[9].get("ColorSpace");
         if (parama != null) {
-          this.wg[1].put("ColorSpace", parama);
+          this.xe[1].put("ColorSpace", parama);
         }
       }
     }
@@ -494,10 +494,10 @@ public final class a
   private void a(a parama, int paramInt)
   {
     AppMethodBeat.i(178738);
-    this.wi = c(parama);
-    parama.wx = this.wi;
+    this.xg = c(parama);
+    parama.xv = this.xg;
     int i = parama.readUnsignedShort();
-    if ((this.wf != 7) && (this.wf != 10) && (i != 42))
+    if ((this.xd != 7) && (this.xd != 10) && (i != 42))
     {
       parama = new IOException("Invalid start code: " + Integer.toHexString(i));
       AppMethodBeat.o(178738);
@@ -526,7 +526,7 @@ public final class a
     if (DEBUG) {
       new StringBuilder("getJpegAttributes starting with: ").append(parama);
     }
-    parama.wx = ByteOrder.BIG_ENDIAN;
+    parama.xv = ByteOrder.BIG_ENDIAN;
     parama.seek(paramInt1);
     int i = parama.readByte();
     if (i != -1)
@@ -588,11 +588,11 @@ public final class a
         parama.readFully(arrayOfByte);
         paramInt1 = j + k;
         long l;
-        if (c(arrayOfByte, wb))
+        if (c(arrayOfByte, xa))
         {
-          l = wb.length + j;
-          b(Arrays.copyOfRange(arrayOfByte, wb.length, arrayOfByte.length), paramInt2);
-          this.wo = ((int)l);
+          l = xa.length + j;
+          b(Arrays.copyOfRange(arrayOfByte, xa.length, arrayOfByte.length), paramInt2);
+          this.xm = ((int)l);
         }
         for (i = 0;; i = 0)
         {
@@ -603,18 +603,18 @@ public final class a
           parama = new IOException("Invalid exif");
           AppMethodBeat.o(178731);
           throw parama;
-          if (c(arrayOfByte, ayD))
+          if (c(arrayOfByte, azx))
           {
-            l = ayD.length + j;
-            arrayOfByte = Arrays.copyOfRange(arrayOfByte, ayD.length, arrayOfByte.length);
+            l = azx.length + j;
+            arrayOfByte = Arrays.copyOfRange(arrayOfByte, azx.length, arrayOfByte.length);
             if (getAttribute("Xmp") == null) {
-              this.wg[0].put("Xmp", new c(1, arrayOfByte.length, l, arrayOfByte));
+              this.xe[0].put("Xmp", new c(1, arrayOfByte.length, l, arrayOfByte));
             }
           }
         }
         if (getAttribute("UserComment") == null)
         {
-          this.wg[1].put("UserComment", c.J(new String(arrayOfByte, wa)));
+          this.xe[1].put("UserComment", c.L(new String(arrayOfByte, wZ)));
           i = 0;
           continue;
           if (parama.skipBytes(1) != 1)
@@ -623,8 +623,8 @@ public final class a
             AppMethodBeat.o(178731);
             throw parama;
           }
-          this.wg[paramInt2].put("ImageLength", c.b(parama.readUnsignedShort(), this.wi));
-          this.wg[paramInt2].put("ImageWidth", c.b(parama.readUnsignedShort(), this.wi));
+          this.xe[paramInt2].put("ImageLength", c.b(parama.readUnsignedShort(), this.xg));
+          this.xe[paramInt2].put("ImageWidth", c.b(parama.readUnsignedShort(), this.xg));
           i = k - 5;
           paramInt1 = j;
         }
@@ -639,7 +639,7 @@ public final class a
         }
         paramInt1 = i + paramInt1;
         break;
-        parama.wx = this.wi;
+        parama.xv = this.xg;
         AppMethodBeat.o(178731);
         return;
       }
@@ -657,12 +657,12 @@ public final class a
     int i;
     if ((localc != null) && (paramHashMap != null))
     {
-      j = localc.b(this.wi);
-      k = Math.min(paramHashMap.b(this.wi), parama.mLength - j);
-      if ((this.wf != 4) && (this.wf != 9) && (this.wf != 10)) {
+      j = localc.b(this.xg);
+      k = Math.min(paramHashMap.b(this.xg), parama.mLength - j);
+      if ((this.xd != 4) && (this.xd != 9) && (this.xd != 10)) {
         break label209;
       }
-      i = j + this.wo;
+      i = j + this.xm;
     }
     for (;;)
     {
@@ -671,23 +671,23 @@ public final class a
       }
       if ((i > 0) && (k > 0))
       {
-        this.wj = true;
-        this.wk = i;
-        this.wl = k;
-        if ((this.wd == null) && (this.we == null) && (this.ayE == null))
+        this.xh = true;
+        this.xi = i;
+        this.xj = k;
+        if ((this.xb == null) && (this.xc == null) && (this.azy == null))
         {
           paramHashMap = new byte[k];
           parama.seek(i);
           parama.readFully(paramHashMap);
-          this.wm = paramHashMap;
+          this.xk = paramHashMap;
         }
       }
       AppMethodBeat.o(178741);
       return;
       label209:
       i = j;
-      if (this.wf == 7) {
-        i = j + this.wp;
+      if (this.xd == 7) {
+        i = j + this.xn;
       }
     }
   }
@@ -719,8 +719,8 @@ public final class a
     paramHashMap = (c)paramHashMap.get("ImageWidth");
     if ((localc != null) && (paramHashMap != null))
     {
-      int i = localc.b(this.wi);
-      int j = paramHashMap.b(this.wi);
+      int i = localc.b(this.xg);
+      int j = paramHashMap.b(this.xg);
       if ((i <= 512) && (j <= 512))
       {
         AppMethodBeat.o(178743);
@@ -744,21 +744,21 @@ public final class a
     int j = ByteBuffer.wrap(arrayOfByte).getInt();
     a(parama, i, 5);
     parama.seek(j);
-    parama.wx = ByteOrder.BIG_ENDIAN;
+    parama.xv = ByteOrder.BIG_ENDIAN;
     j = parama.readInt();
     i = 0;
     while (i < j)
     {
       int k = parama.readUnsignedShort();
       int m = parama.readUnsignedShort();
-      if (k == ayu.number)
+      if (k == azo.number)
       {
         i = parama.readShort();
         j = parama.readShort();
-        parama = c.b(i, this.wi);
-        localObject = c.b(j, this.wi);
-        this.wg[0].put("ImageLength", parama);
-        this.wg[0].put("ImageWidth", localObject);
+        parama = c.b(i, this.xg);
+        localObject = c.b(j, this.xg);
+        this.xe[0].put("ImageLength", parama);
+        this.xe[0].put("ImageWidth", localObject);
         if (DEBUG) {
           new StringBuilder("Updated to length: ").append(i).append(", width: ").append(j);
         }
@@ -775,7 +775,7 @@ public final class a
   {
     AppMethodBeat.i(178739);
     int i = paramInt;
-    this.wh.add(Integer.valueOf(parama.mPosition));
+    this.xf.add(Integer.valueOf(parama.mPosition));
     if (parama.mPosition + 2 > parama.mLength)
     {
       AppMethodBeat.o(178739);
@@ -804,7 +804,7 @@ public final class a
       k = parama.readUnsignedShort();
       i2 = parama.readInt();
       l3 = parama.mPosition + 4L;
-      locald = (d)vW[i].get(Integer.valueOf(i3));
+      locald = (d)wV[i].get(Integer.valueOf(i3));
       long l2;
       if (DEBUG)
       {
@@ -838,7 +838,7 @@ public final class a
           break;
           localObject = null;
           break label155;
-          if ((k <= 0) || (k >= vH.length))
+          if ((k <= 0) || (k >= wG.length))
           {
             paramInt = k;
             m = n;
@@ -857,7 +857,7 @@ public final class a
             l1 = l2;
             if (DEBUG)
             {
-              new StringBuilder("Skip the tag entry since data format (").append(vG[k]).append(") is unexpected for tag: ").append(locald.name);
+              new StringBuilder("Skip the tag entry since data format (").append(wF[k]).append(") is unexpected for tag: ").append(locald.name);
               paramInt = k;
               m = n;
               l1 = l2;
@@ -875,9 +875,9 @@ public final class a
     label481:
     label621:
     label1265:
-    for (paramInt = locald.wB;; paramInt = k)
+    for (paramInt = locald.xz;; paramInt = k)
     {
-      l1 = i2 * vH[paramInt];
+      l1 = i2 * wG[paramInt];
       if ((l1 < 0L) || (l1 > 2147483647L))
       {
         if (!DEBUG) {
@@ -891,12 +891,12 @@ public final class a
       if (l1 > 4L)
       {
         k = parama.readInt();
-        if (this.wf != 7) {
+        if (this.xd != 7) {
           break label833;
         }
         if ("MakerNote".equals(locald.name))
         {
-          this.wp = k;
+          this.xn = k;
           if (k + l1 > parama.mLength) {
             break label865;
           }
@@ -905,7 +905,7 @@ public final class a
       }
       else
       {
-        localObject = (Integer)vZ.get(Integer.valueOf(i3));
+        localObject = (Integer)wY.get(Integer.valueOf(i3));
         if (DEBUG) {
           new StringBuilder("nextIfdType: ").append(localObject).append(" byteCount: ").append(l1);
         }
@@ -927,7 +927,7 @@ public final class a
           }
           if ((l1 > 0L) && (l1 < parama.mLength))
           {
-            if (this.wh.contains(Integer.valueOf((int)l1))) {
+            if (this.xf.contains(Integer.valueOf((int)l1))) {
               break label913;
             }
             parama.seek(l1);
@@ -943,19 +943,19 @@ public final class a
         if ((i != 6) || (!"ThumbnailImage".equals(locald.name))) {
           break label481;
         }
-        this.wq = k;
-        this.wr = i2;
-        localObject = c.b(6, this.wi);
-        c localc1 = c.b(this.wq, this.wi);
-        c localc2 = c.b(this.wr, this.wi);
-        this.wg[4].put("Compression", localObject);
-        this.wg[4].put("JPEGInterchangeFormat", localc1);
-        this.wg[4].put("JPEGInterchangeFormatLength", localc2);
+        this.xo = k;
+        this.xp = i2;
+        localObject = c.b(6, this.xg);
+        c localc1 = c.b(this.xo, this.xg);
+        c localc2 = c.b(this.xp, this.xg);
+        this.xe[4].put("Compression", localObject);
+        this.xe[4].put("JPEGInterchangeFormat", localc1);
+        this.xe[4].put("JPEGInterchangeFormatLength", localc2);
         break label481;
-        if ((this.wf != 10) || (!"JpgFromRaw".equals(locald.name))) {
+        if ((this.xd != 10) || (!"JpgFromRaw".equals(locald.name))) {
           break label481;
         }
-        this.ws = k;
+        this.xq = k;
         break label481;
         parama.seek(l3);
         break;
@@ -963,7 +963,7 @@ public final class a
         break label621;
         l1 = parama.readShort();
         break label621;
-        l1 = parama.df();
+        l1 = parama.dm();
         break label621;
         l1 = parama.readInt();
         break label621;
@@ -975,12 +975,12 @@ public final class a
       localObject = new byte[(int)l1];
       parama.readFully((byte[])localObject);
       localObject = new c(paramInt, i2, k, (byte[])localObject);
-      this.wg[i].put(locald.name, localObject);
+      this.xe[i].put(locald.name, localObject);
       if ("DNGVersion".equals(locald.name)) {
-        this.wf = 3;
+        this.xd = 3;
       }
-      if (((!"Make".equals(locald.name)) && (!"Model".equals(locald.name))) || ((((c)localObject).c(this.wi).contains("PENTAX")) || (("Compression".equals(locald.name)) && (((c)localObject).b(this.wi) == 65535)))) {
-        this.wf = 8;
+      if (((!"Make".equals(locald.name)) && (!"Model".equals(locald.name))) || ((((c)localObject).c(this.xg).contains("PENTAX")) || (("Compression".equals(locald.name)) && (((c)localObject).b(this.xg) == 65535)))) {
+        this.xd = 8;
       }
       if (parama.mPosition == l3) {
         break label241;
@@ -995,15 +995,15 @@ public final class a
         }
         if ((paramInt > 0L) && (paramInt < parama.mLength))
         {
-          if (!this.wh.contains(Integer.valueOf(paramInt)))
+          if (!this.xf.contains(Integer.valueOf(paramInt)))
           {
             parama.seek(paramInt);
-            if (this.wg[4].isEmpty())
+            if (this.xe[4].isEmpty())
             {
               i = 4;
               break;
             }
-            if (!this.wg[5].isEmpty()) {
+            if (!this.xe[5].isEmpty()) {
               break label1251;
             }
             i = 5;
@@ -1030,8 +1030,8 @@ public final class a
     Object localObject2 = (c)paramHashMap.get("StripByteCounts");
     if ((localObject1 != null) && (localObject2 != null))
     {
-      paramHashMap = e(((c)localObject1).a(this.wi));
-      localObject1 = e(((c)localObject2).a(this.wi));
+      paramHashMap = g(((c)localObject1).a(this.xg));
+      localObject1 = g(((c)localObject2).a(this.xg));
       if (paramHashMap == null)
       {
         AppMethodBeat.o(178742);
@@ -1067,9 +1067,9 @@ public final class a
         j += arrayOfByte.length;
         i += 1;
       }
-      this.wj = true;
-      this.wm = ((byte[])localObject2);
-      this.wl = localObject2.length;
+      this.xh = true;
+      this.xk = ((byte[])localObject2);
+      this.xj = localObject2.length;
     }
     AppMethodBeat.o(178742);
   }
@@ -1103,9 +1103,9 @@ public final class a
     final a locala;
     try
     {
-      while (i < ayz.length)
+      while (i < azt.length)
       {
-        this.wg[i] = new HashMap();
+        this.xe[i] = new HashMap();
         i += 1;
       }
       paramInputStream = new BufferedInputStream(paramInputStream, 5000);
@@ -1118,9 +1118,9 @@ public final class a
         break label302;
       }
       i = 4;
-      this.wf = i;
+      this.xd = i;
       locala = new a(paramInputStream);
-      switch (this.wf)
+      switch (this.xd)
       {
       }
     }
@@ -1129,7 +1129,7 @@ public final class a
       for (;;)
       {
         label200:
-        this.wt = false;
+        this.xr = false;
         label276:
         label302:
         return;
@@ -1139,32 +1139,32 @@ public final class a
     }
     finally
     {
-      dd();
+      dk();
       if (!DEBUG) {
         break label500;
       }
-      mP();
+      mZ();
       label500:
       AppMethodBeat.o(178721);
     }
-    paramInputStream = this.wg[4];
+    paramInputStream = this.xe[4];
     Object localObject1 = (c)paramInputStream.get("Compression");
     label617:
     int j;
     if (localObject1 != null)
     {
-      this.wn = ((c)localObject1).b(this.wi);
-      switch (this.wn)
+      this.xl = ((c)localObject1).b(this.xg);
+      switch (this.xl)
       {
       case 6: 
         for (;;)
         {
-          this.wt = true;
-          dd();
+          this.xr = true;
+          dk();
           if (!DEBUG) {
             break label1632;
           }
-          mP();
+          mZ();
           AppMethodBeat.o(178721);
           return;
           if (g((byte[])localObject1))
@@ -1178,8 +1178,8 @@ public final class a
             break;
           }
           localObject2 = new a((byte[])localObject1);
-          this.wi = c((a)localObject2);
-          ((a)localObject2).wx = this.wi;
+          this.xg = c((a)localObject2);
+          ((a)localObject2).xv = this.xg;
           i = ((a)localObject2).readShort();
           ((a)localObject2).close();
           if (i == 20306) {
@@ -1190,8 +1190,8 @@ public final class a
           }
           break label1650;
           localObject1 = new a((byte[])localObject1);
-          this.wi = c((a)localObject1);
-          ((a)localObject1).wx = this.wi;
+          this.xg = c((a)localObject1);
+          ((a)localObject1).xv = this.xg;
           i = ((a)localObject1).readShort();
           ((a)localObject1).close();
           if (i != 85) {
@@ -1283,10 +1283,10 @@ public final class a
                 localObject1 = localMediaMetadataRetriever.extractMetadata(30);
                 paramInputStream = localMediaMetadataRetriever.extractMetadata(31);
                 if (localObject2 != null) {
-                  this.wg[0].put("ImageWidth", c.b(Integer.parseInt((String)localObject2), this.wi));
+                  this.xe[0].put("ImageWidth", c.b(Integer.parseInt((String)localObject2), this.xg));
                 }
                 if (localObject1 != null) {
-                  this.wg[0].put("ImageLength", c.b(Integer.parseInt((String)localObject1), this.wi));
+                  this.xe[0].put("ImageLength", c.b(Integer.parseInt((String)localObject1), this.xg));
                 }
                 if (paramInputStream != null) {
                   i = 1;
@@ -1294,7 +1294,7 @@ public final class a
                 switch (Integer.parseInt(paramInputStream))
                 {
                 default: 
-                  this.wg[0].put("Orientation", c.b(i, this.wi));
+                  this.xe[0].put("Orientation", c.b(i, this.xg));
                   if ((localObject3 == null) || (str1 == null)) {
                     break label1008;
                   }
@@ -1314,13 +1314,13 @@ public final class a
               localMediaMetadataRetriever.release();
               AppMethodBeat.o(178721);
             }
-            if (this.ayE != null)
+            if (this.azy != null)
             {
-              localMediaMetadataRetriever.setDataSource(this.ayE);
+              localMediaMetadataRetriever.setDataSource(this.azy);
             }
-            else if (this.wd != null)
+            else if (this.xb != null)
             {
-              localMediaMetadataRetriever.setDataSource(this.wd);
+              localMediaMetadataRetriever.setDataSource(this.xb);
             }
             else
             {
@@ -1343,7 +1343,7 @@ public final class a
             throw paramInputStream;
           }
           i = j - 6;
-          if (!Arrays.equals((byte[])localObject3, wb))
+          if (!Arrays.equals((byte[])localObject3, xa))
           {
             paramInputStream = new IOException("Invalid identifier");
             AppMethodBeat.o(178721);
@@ -1363,59 +1363,59 @@ public final class a
           localMediaMetadataRetriever.release();
           break label200;
           a(locala);
-          paramInputStream = (c)this.wg[1].get("MakerNote");
+          paramInputStream = (c)this.xe[1].get("MakerNote");
           if (paramInputStream == null) {
             break label200;
           }
-          paramInputStream = new a(paramInputStream.wA);
-          paramInputStream.wx = this.wi;
-          localObject1 = new byte[vD.length];
+          paramInputStream = new a(paramInputStream.xy);
+          paramInputStream.xv = this.xg;
+          localObject1 = new byte[wC.length];
           paramInputStream.readFully((byte[])localObject1);
           paramInputStream.seek(0L);
-          localObject2 = new byte[vE.length];
+          localObject2 = new byte[wD.length];
           paramInputStream.readFully((byte[])localObject2);
-          if (Arrays.equals((byte[])localObject1, vD)) {
+          if (Arrays.equals((byte[])localObject1, wC)) {
             paramInputStream.seek(8L);
           }
           for (;;)
           {
             b(paramInputStream, 6);
-            paramInputStream = (c)this.wg[7].get("PreviewImageStart");
-            localObject1 = (c)this.wg[7].get("PreviewImageLength");
+            paramInputStream = (c)this.xe[7].get("PreviewImageStart");
+            localObject1 = (c)this.xe[7].get("PreviewImageLength");
             if ((paramInputStream != null) && (localObject1 != null))
             {
-              this.wg[5].put("JPEGInterchangeFormat", paramInputStream);
-              this.wg[5].put("JPEGInterchangeFormatLength", localObject1);
+              this.xe[5].put("JPEGInterchangeFormat", paramInputStream);
+              this.xe[5].put("JPEGInterchangeFormatLength", localObject1);
             }
-            paramInputStream = (c)this.wg[8].get("AspectFrame");
+            paramInputStream = (c)this.xe[8].get("AspectFrame");
             if (paramInputStream == null) {
               break;
             }
-            paramInputStream = (int[])paramInputStream.a(this.wi);
+            paramInputStream = (int[])paramInputStream.a(this.xg);
             if ((paramInputStream != null) && (paramInputStream.length == 4)) {
               break label1707;
             }
             new StringBuilder("Invalid aspect frame values. frame=").append(Arrays.toString(paramInputStream));
             break;
-            if (Arrays.equals((byte[])localObject2, vE)) {
+            if (Arrays.equals((byte[])localObject2, wD)) {
               paramInputStream.seek(12L);
             }
           }
-          paramInputStream = c.b(j, this.wi);
-          localObject1 = c.b(i, this.wi);
-          this.wg[0].put("ImageWidth", paramInputStream);
-          this.wg[0].put("ImageLength", localObject1);
+          paramInputStream = c.b(j, this.xg);
+          localObject1 = c.b(i, this.xg);
+          this.xe[0].put("ImageWidth", paramInputStream);
+          this.xe[0].put("ImageLength", localObject1);
           break label200;
           a(locala);
-          if ((c)this.wg[0].get("JpgFromRaw") != null) {
-            a(locala, this.ws, 5);
+          if ((c)this.xe[0].get("JpgFromRaw") != null) {
+            a(locala, this.xq, 5);
           }
-          paramInputStream = (c)this.wg[0].get("ISO");
-          localObject1 = (c)this.wg[1].get("PhotographicSensitivity");
+          paramInputStream = (c)this.xe[0].get("ISO");
+          localObject1 = (c)this.xe[1].get("PhotographicSensitivity");
           if ((paramInputStream == null) || (localObject1 != null)) {
             break label200;
           }
-          this.wg[1].put("PhotographicSensitivity", paramInputStream);
+          this.xe[1].put("PhotographicSensitivity", paramInputStream);
           break label200;
           a(locala);
           break label200;
@@ -1430,8 +1430,8 @@ public final class a
         label1008:
         if (localObject1 != null)
         {
-          localObject1 = (int[])((c)localObject1).a(this.wi);
-          if (Arrays.equals(vz, (int[])localObject1)) {
+          localObject1 = (int[])((c)localObject1).a(this.xg);
+          if (Arrays.equals(wy, (int[])localObject1)) {
             i = 1;
           }
         }
@@ -1446,19 +1446,19 @@ public final class a
       }
       b(locala, paramInputStream);
       break label276;
-      if (this.wf == 3)
+      if (this.xd == 3)
       {
         localObject2 = (c)paramInputStream.get("PhotometricInterpretation");
         if (localObject2 != null)
         {
-          i = ((c)localObject2).b(this.wi);
-          if ((i != 1) || (!Arrays.equals((int[])localObject1, vB)))
+          i = ((c)localObject2).b(this.xg);
+          if ((i != 1) || (!Arrays.equals((int[])localObject1, wA)))
           {
-            if ((i != 6) || (!Arrays.equals((int[])localObject1, vz))) {
+            if ((i != 6) || (!Arrays.equals((int[])localObject1, wy))) {
               break label1783;
             }
             break label1778;
-            this.wn = 6;
+            this.xl = 6;
             a(locala, paramInputStream);
             break label276;
             label1632:
@@ -1597,7 +1597,7 @@ public final class a
             AppMethodBeat.o(178734);
             throw paramInputStream;
           }
-          if (Arrays.equals(arrayOfByte2, wb))
+          if (Arrays.equals(arrayOfByte2, xa))
           {
             if (paramInputStream.skipBytes(j - 6) == j - 6) {
               continue;
@@ -1629,7 +1629,7 @@ public final class a
       case -38: 
         paramOutputStream.writeByte(-1);
         paramOutputStream.writeByte(i);
-        c(paramInputStream, paramOutputStream);
+        copy(paramInputStream, paramOutputStream);
         AppMethodBeat.o(178734);
         return;
         for (;;)
@@ -1710,24 +1710,6 @@ public final class a
     }
   }
   
-  private static int c(InputStream paramInputStream, OutputStream paramOutputStream)
-  {
-    AppMethodBeat.i(178751);
-    byte[] arrayOfByte = new byte[8192];
-    int i = 0;
-    for (;;)
-    {
-      int j = paramInputStream.read(arrayOfByte);
-      if (j == -1) {
-        break;
-      }
-      i += j;
-      paramOutputStream.write(arrayOfByte, 0, j);
-    }
-    AppMethodBeat.o(178751);
-    return i;
-  }
-  
   private static ByteOrder c(a parama)
   {
     AppMethodBeat.i(178737);
@@ -1751,13 +1733,13 @@ public final class a
   private void c(a parama, int paramInt)
   {
     AppMethodBeat.i(178740);
-    c localc1 = (c)this.wg[paramInt].get("ImageLength");
-    c localc2 = (c)this.wg[paramInt].get("ImageWidth");
+    c localc1 = (c)this.xe[paramInt].get("ImageLength");
+    c localc2 = (c)this.xe[paramInt].get("ImageWidth");
     if ((localc1 == null) || (localc2 == null))
     {
-      localc1 = (c)this.wg[paramInt].get("JPEGInterchangeFormat");
+      localc1 = (c)this.xe[paramInt].get("JPEGInterchangeFormat");
       if (localc1 != null) {
-        a(parama, localc1.b(this.wi), paramInt);
+        a(parama, localc1.b(this.xg), paramInt);
       }
     }
     AppMethodBeat.o(178740);
@@ -1804,55 +1786,73 @@ public final class a
     AppMethodBeat.o(178749);
   }
   
+  private static int copy(InputStream paramInputStream, OutputStream paramOutputStream)
+  {
+    AppMethodBeat.i(178751);
+    byte[] arrayOfByte = new byte[8192];
+    int i = 0;
+    for (;;)
+    {
+      int j = paramInputStream.read(arrayOfByte);
+      if (j == -1) {
+        break;
+      }
+      i += j;
+      paramOutputStream.write(arrayOfByte, 0, j);
+    }
+    AppMethodBeat.o(178751);
+    return i;
+  }
+  
   private void d(a parama, int paramInt)
   {
     AppMethodBeat.i(178745);
-    c localc1 = (c)this.wg[paramInt].get("DefaultCropSize");
-    c localc2 = (c)this.wg[paramInt].get("SensorTopBorder");
-    c localc3 = (c)this.wg[paramInt].get("SensorLeftBorder");
-    c localc4 = (c)this.wg[paramInt].get("SensorBottomBorder");
-    c localc5 = (c)this.wg[paramInt].get("SensorRightBorder");
+    c localc1 = (c)this.xe[paramInt].get("DefaultCropSize");
+    c localc2 = (c)this.xe[paramInt].get("SensorTopBorder");
+    c localc3 = (c)this.xe[paramInt].get("SensorLeftBorder");
+    c localc4 = (c)this.xe[paramInt].get("SensorBottomBorder");
+    c localc5 = (c)this.xe[paramInt].get("SensorRightBorder");
     if (localc1 != null)
     {
       if (localc1.format == 5)
       {
-        parama = (e[])localc1.a(this.wi);
+        parama = (e[])localc1.a(this.xg);
         if ((parama == null) || (parama.length != 2))
         {
           new StringBuilder("Invalid crop size values. cropSize=").append(Arrays.toString(parama));
           AppMethodBeat.o(178745);
           return;
         }
-        localc1 = c.a(parama[0], this.wi);
+        localc1 = c.a(parama[0], this.xg);
       }
-      for (parama = c.a(parama[1], this.wi);; parama = c.b(parama[1], this.wi))
+      for (parama = c.a(parama[1], this.xg);; parama = c.b(parama[1], this.xg))
       {
-        this.wg[paramInt].put("ImageWidth", localc1);
-        this.wg[paramInt].put("ImageLength", parama);
+        this.xe[paramInt].put("ImageWidth", localc1);
+        this.xe[paramInt].put("ImageLength", parama);
         AppMethodBeat.o(178745);
         return;
-        parama = (int[])localc1.a(this.wi);
+        parama = (int[])localc1.a(this.xg);
         if ((parama == null) || (parama.length != 2))
         {
           new StringBuilder("Invalid crop size values. cropSize=").append(Arrays.toString(parama));
           AppMethodBeat.o(178745);
           return;
         }
-        localc1 = c.b(parama[0], this.wi);
+        localc1 = c.b(parama[0], this.xg);
       }
     }
     if ((localc2 != null) && (localc3 != null) && (localc4 != null) && (localc5 != null))
     {
-      int i = localc2.b(this.wi);
-      int j = localc4.b(this.wi);
-      int k = localc5.b(this.wi);
-      int m = localc3.b(this.wi);
+      int i = localc2.b(this.xg);
+      int j = localc4.b(this.xg);
+      int k = localc5.b(this.xg);
+      int m = localc3.b(this.xg);
       if ((j > i) && (k > m))
       {
-        parama = c.b(j - i, this.wi);
-        localc1 = c.b(k - m, this.wi);
-        this.wg[paramInt].put("ImageLength", parama);
-        this.wg[paramInt].put("ImageWidth", localc1);
+        parama = c.b(j - i, this.xg);
+        localc1 = c.b(k - m, this.xg);
+        this.xe[paramInt].put("ImageLength", parama);
+        this.xe[paramInt].put("ImageWidth", localc1);
       }
       AppMethodBeat.o(178745);
       return;
@@ -1861,76 +1861,56 @@ public final class a
     AppMethodBeat.o(178745);
   }
   
-  private void dd()
+  private void dk()
   {
     AppMethodBeat.i(178736);
     String str = getAttribute("DateTimeOriginal");
     if ((str != null) && (getAttribute("DateTime") == null)) {
-      this.wg[0].put("DateTime", c.J(str));
+      this.xe[0].put("DateTime", c.L(str));
     }
     if (getAttribute("ImageWidth") == null) {
-      this.wg[0].put("ImageWidth", c.b(0L, this.wi));
+      this.xe[0].put("ImageWidth", c.b(0L, this.xg));
     }
     if (getAttribute("ImageLength") == null) {
-      this.wg[0].put("ImageLength", c.b(0L, this.wi));
+      this.xe[0].put("ImageLength", c.b(0L, this.xg));
     }
     if (getAttribute("Orientation") == null) {
-      this.wg[0].put("Orientation", c.b(0L, this.wi));
+      this.xe[0].put("Orientation", c.b(0L, this.xg));
     }
     if (getAttribute("LightSource") == null) {
-      this.wg[1].put("LightSource", c.b(0L, this.wi));
+      this.xe[1].put("LightSource", c.b(0L, this.xg));
     }
     AppMethodBeat.o(178736);
   }
   
-  private void de()
+  private void dl()
   {
     AppMethodBeat.i(178744);
     m(0, 5);
     m(0, 4);
     m(5, 4);
-    c localc1 = (c)this.wg[1].get("PixelXDimension");
-    c localc2 = (c)this.wg[1].get("PixelYDimension");
+    c localc1 = (c)this.xe[1].get("PixelXDimension");
+    c localc2 = (c)this.xe[1].get("PixelYDimension");
     if ((localc1 != null) && (localc2 != null))
     {
-      this.wg[0].put("ImageWidth", localc1);
-      this.wg[0].put("ImageLength", localc2);
+      this.xe[0].put("ImageWidth", localc1);
+      this.xe[0].put("ImageLength", localc2);
     }
-    if ((this.wg[4].isEmpty()) && (a(this.wg[5])))
+    if ((this.xe[4].isEmpty()) && (a(this.xe[5])))
     {
-      this.wg[4] = this.wg[5];
-      this.wg[5] = new HashMap();
+      this.xe[4] = this.xe[5];
+      this.xe[5] = new HashMap();
     }
-    a(this.wg[4]);
+    a(this.xe[4]);
     AppMethodBeat.o(178744);
-  }
-  
-  private static long[] e(Object paramObject)
-  {
-    if ((paramObject instanceof int[]))
-    {
-      paramObject = (int[])paramObject;
-      long[] arrayOfLong = new long[paramObject.length];
-      int i = 0;
-      while (i < paramObject.length)
-      {
-        arrayOfLong[i] = paramObject[i];
-        i += 1;
-      }
-      return arrayOfLong;
-    }
-    if ((paramObject instanceof long[])) {
-      return (long[])paramObject;
-    }
-    return null;
   }
   
   private static boolean f(byte[] paramArrayOfByte)
   {
     int i = 0;
-    while (i < vC.length)
+    while (i < wB.length)
     {
-      if (paramArrayOfByte[i] != vC[i]) {
+      if (paramArrayOfByte[i] != wB[i]) {
         return false;
       }
       i += 1;
@@ -1956,40 +1936,60 @@ public final class a
     return true;
   }
   
+  private static long[] g(Object paramObject)
+  {
+    if ((paramObject instanceof int[]))
+    {
+      paramObject = (int[])paramObject;
+      long[] arrayOfLong = new long[paramObject.length];
+      int i = 0;
+      while (i < paramObject.length)
+      {
+        arrayOfLong[i] = paramObject[i];
+        i += 1;
+      }
+      return arrayOfLong;
+    }
+    if ((paramObject instanceof long[])) {
+      return (long[])paramObject;
+    }
+    return null;
+  }
+  
   /* Error */
   private byte[] getThumbnailBytes()
   {
     // Byte code:
-    //   0: ldc_w 1353
+    //   0: ldc_w 1355
     //   3: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 786	androidx/a/a/a:wj	Z
+    //   7: getfield 787	androidx/a/a/a:xh	Z
     //   10: ifne +11 -> 21
-    //   13: ldc_w 1353
+    //   13: ldc_w 1355
     //   16: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: aconst_null
     //   20: areturn
     //   21: aload_0
-    //   22: getfield 1000	androidx/a/a/a:wm	[B
+    //   22: getfield 1001	androidx/a/a/a:xk	[B
     //   25: ifnull +16 -> 41
     //   28: aload_0
-    //   29: getfield 1000	androidx/a/a/a:wm	[B
+    //   29: getfield 1001	androidx/a/a/a:xk	[B
     //   32: astore_1
-    //   33: ldc_w 1353
+    //   33: ldc_w 1355
     //   36: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: aload_1
     //   40: areturn
     //   41: aload_0
-    //   42: getfield 715	androidx/a/a/a:we	Landroid/content/res/AssetManager$AssetInputStream;
+    //   42: getfield 715	androidx/a/a/a:xc	Landroid/content/res/AssetManager$AssetInputStream;
     //   45: ifnull +84 -> 129
     //   48: aload_0
-    //   49: getfield 715	androidx/a/a/a:we	Landroid/content/res/AssetManager$AssetInputStream;
+    //   49: getfield 715	androidx/a/a/a:xc	Landroid/content/res/AssetManager$AssetInputStream;
     //   52: astore_2
     //   53: aload_2
-    //   54: invokevirtual 1356	java/io/InputStream:markSupported	()Z
+    //   54: invokevirtual 1358	java/io/InputStream:markSupported	()Z
     //   57: ifeq +60 -> 117
     //   60: aload_2
-    //   61: invokevirtual 1357	java/io/InputStream:reset	()V
+    //   61: invokevirtual 1359	java/io/InputStream:reset	()V
     //   64: aconst_null
     //   65: astore_3
     //   66: aload_2
@@ -1998,11 +1998,11 @@ public final class a
     //   69: astore_2
     //   70: aload_1
     //   71: ifnonnull +130 -> 201
-    //   74: new 1359	java/io/FileNotFoundException
+    //   74: new 1361	java/io/FileNotFoundException
     //   77: dup
-    //   78: invokespecial 1360	java/io/FileNotFoundException:<init>	()V
+    //   78: invokespecial 1362	java/io/FileNotFoundException:<init>	()V
     //   81: astore_3
-    //   82: ldc_w 1353
+    //   82: ldc_w 1355
     //   85: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: aload_3
     //   89: athrow
@@ -2018,48 +2018,48 @@ public final class a
     //   101: aload_1
     //   102: ifnull +7 -> 109
     //   105: aload_1
-    //   106: invokestatic 1362	androidx/a/a/a:b	(Ljava/io/FileDescriptor;)V
-    //   109: ldc_w 1353
+    //   106: invokestatic 1364	androidx/a/a/a:b	(Ljava/io/FileDescriptor;)V
+    //   109: ldc_w 1355
     //   112: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   115: aconst_null
     //   116: areturn
     //   117: aload_2
     //   118: invokestatic 736	androidx/a/a/a:closeQuietly	(Ljava/io/Closeable;)V
-    //   121: ldc_w 1353
+    //   121: ldc_w 1355
     //   124: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: aconst_null
     //   128: areturn
     //   129: aload_0
-    //   130: getfield 711	androidx/a/a/a:wd	Ljava/lang/String;
+    //   130: getfield 711	androidx/a/a/a:xb	Ljava/lang/String;
     //   133: ifnull +20 -> 153
     //   136: new 721	java/io/FileInputStream
     //   139: dup
     //   140: aload_0
-    //   141: getfield 711	androidx/a/a/a:wd	Ljava/lang/String;
+    //   141: getfield 711	androidx/a/a/a:xb	Ljava/lang/String;
     //   144: invokespecial 732	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   147: astore_1
     //   148: aconst_null
     //   149: astore_2
     //   150: goto -80 -> 70
-    //   153: getstatic 1010	android/os/Build$VERSION:SDK_INT	I
+    //   153: getstatic 1011	android/os/Build$VERSION:SDK_INT	I
     //   156: bipush 21
     //   158: if_icmplt +220 -> 378
     //   161: aload_0
-    //   162: getfield 717	androidx/a/a/a:ayE	Ljava/io/FileDescriptor;
+    //   162: getfield 717	androidx/a/a/a:azy	Ljava/io/FileDescriptor;
     //   165: ifnull +213 -> 378
     //   168: aload_0
-    //   169: getfield 717	androidx/a/a/a:ayE	Ljava/io/FileDescriptor;
-    //   172: invokestatic 1366	android/system/Os:dup	(Ljava/io/FileDescriptor;)Ljava/io/FileDescriptor;
+    //   169: getfield 717	androidx/a/a/a:azy	Ljava/io/FileDescriptor;
+    //   172: invokestatic 1368	android/system/Os:dup	(Ljava/io/FileDescriptor;)Ljava/io/FileDescriptor;
     //   175: astore_1
     //   176: aload_1
     //   177: lconst_0
-    //   178: getstatic 1369	android/system/OsConstants:SEEK_SET	I
-    //   181: invokestatic 1021	android/system/Os:lseek	(Ljava/io/FileDescriptor;JI)J
+    //   178: getstatic 1371	android/system/OsConstants:SEEK_SET	I
+    //   181: invokestatic 1022	android/system/Os:lseek	(Ljava/io/FileDescriptor;JI)J
     //   184: pop2
     //   185: new 721	java/io/FileInputStream
     //   188: dup
     //   189: aload_1
-    //   190: invokespecial 1371	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   190: invokespecial 1373	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
     //   193: astore_3
     //   194: aload_1
     //   195: astore_2
@@ -2068,20 +2068,20 @@ public final class a
     //   198: goto -128 -> 70
     //   201: aload_1
     //   202: aload_0
-    //   203: getfield 807	androidx/a/a/a:wk	I
+    //   203: getfield 808	androidx/a/a/a:xi	I
     //   206: i2l
-    //   207: invokevirtual 1375	java/io/InputStream:skip	(J)J
+    //   207: invokevirtual 1377	java/io/InputStream:skip	(J)J
     //   210: aload_0
-    //   211: getfield 807	androidx/a/a/a:wk	I
+    //   211: getfield 808	androidx/a/a/a:xi	I
     //   214: i2l
     //   215: lcmp
     //   216: ifeq +49 -> 265
-    //   219: new 880	java/io/IOException
+    //   219: new 881	java/io/IOException
     //   222: dup
-    //   223: ldc_w 1377
-    //   226: invokespecial 898	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   223: ldc_w 1379
+    //   226: invokespecial 899	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   229: astore_3
-    //   230: ldc_w 1353
+    //   230: ldc_w 1355
     //   233: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   236: aload_3
     //   237: athrow
@@ -2095,40 +2095,40 @@ public final class a
     //   249: aload_3
     //   250: ifnull +7 -> 257
     //   253: aload_3
-    //   254: invokestatic 1362	androidx/a/a/a:b	(Ljava/io/FileDescriptor;)V
-    //   257: ldc_w 1353
+    //   254: invokestatic 1364	androidx/a/a/a:b	(Ljava/io/FileDescriptor;)V
+    //   257: ldc_w 1355
     //   260: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   263: aload_2
     //   264: athrow
     //   265: aload_0
-    //   266: getfield 788	androidx/a/a/a:wl	I
+    //   266: getfield 789	androidx/a/a/a:xj	I
     //   269: newarray byte
     //   271: astore_3
     //   272: aload_1
     //   273: aload_3
-    //   274: invokevirtual 1306	java/io/InputStream:read	([B)I
+    //   274: invokevirtual 1321	java/io/InputStream:read	([B)I
     //   277: aload_0
-    //   278: getfield 788	androidx/a/a/a:wl	I
+    //   278: getfield 789	androidx/a/a/a:xj	I
     //   281: if_icmpeq +22 -> 303
-    //   284: new 880	java/io/IOException
+    //   284: new 881	java/io/IOException
     //   287: dup
-    //   288: ldc_w 1377
-    //   291: invokespecial 898	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   288: ldc_w 1379
+    //   291: invokespecial 899	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   294: astore_3
-    //   295: ldc_w 1353
+    //   295: ldc_w 1355
     //   298: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   301: aload_3
     //   302: athrow
     //   303: aload_0
     //   304: aload_3
-    //   305: putfield 1000	androidx/a/a/a:wm	[B
+    //   305: putfield 1001	androidx/a/a/a:xk	[B
     //   308: aload_1
     //   309: invokestatic 736	androidx/a/a/a:closeQuietly	(Ljava/io/Closeable;)V
     //   312: aload_2
     //   313: ifnull +7 -> 320
     //   316: aload_2
-    //   317: invokestatic 1362	androidx/a/a/a:b	(Ljava/io/FileDescriptor;)V
-    //   320: ldc_w 1353
+    //   317: invokestatic 1364	androidx/a/a/a:b	(Ljava/io/FileDescriptor;)V
+    //   320: ldc_w 1355
     //   323: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   326: aload_3
     //   327: areturn
@@ -2221,20 +2221,20 @@ public final class a
   private static boolean h(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: ldc_w 1378
+    //   0: ldc_w 1380
     //   3: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aconst_null
     //   7: astore 13
     //   9: new 8	androidx/a/a/a$a
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 864	androidx/a/a/a$a:<init>	([B)V
+    //   14: invokespecial 865	androidx/a/a/a$a:<init>	([B)V
     //   17: astore_0
     //   18: aload_0
     //   19: getstatic 702	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
-    //   22: putfield 865	androidx/a/a/a$a:wx	Ljava/nio/ByteOrder;
+    //   22: putfield 866	androidx/a/a/a$a:xv	Ljava/nio/ByteOrder;
     //   25: aload_0
-    //   26: invokevirtual 901	androidx/a/a/a$a:readInt	()I
+    //   26: invokevirtual 902	androidx/a/a/a$a:readInt	()I
     //   29: i2l
     //   30: lstore 10
     //   32: iconst_4
@@ -2242,21 +2242,21 @@ public final class a
     //   35: astore 13
     //   37: aload_0
     //   38: aload 13
-    //   40: invokevirtual 962	androidx/a/a/a$a:read	([B)I
+    //   40: invokevirtual 963	androidx/a/a/a$a:read	([B)I
     //   43: pop
     //   44: aload 13
-    //   46: getstatic 157	androidx/a/a/a:aym	[B
-    //   49: invokestatic 1208	java/util/Arrays:equals	([B[B)Z
+    //   46: getstatic 157	androidx/a/a/a:azg	[B
+    //   49: invokestatic 1209	java/util/Arrays:equals	([B[B)Z
     //   52: istore 12
     //   54: iload 12
     //   56: ifne +15 -> 71
     //   59: aload_0
-    //   60: invokevirtual 1174	androidx/a/a/a$a:close	()V
-    //   63: ldc_w 1378
+    //   60: invokevirtual 1175	androidx/a/a/a$a:close	()V
+    //   63: ldc_w 1380
     //   66: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: iconst_0
     //   70: ireturn
-    //   71: ldc2_w 1221
+    //   71: ldc2_w 1222
     //   74: lstore 8
     //   76: lload 10
     //   78: lstore 6
@@ -2265,39 +2265,39 @@ public final class a
     //   83: lcmp
     //   84: ifne +35 -> 119
     //   87: aload_0
-    //   88: invokevirtual 1381	androidx/a/a/a$a:readLong	()J
+    //   88: invokevirtual 1383	androidx/a/a/a$a:readLong	()J
     //   91: lstore 6
     //   93: lload 6
-    //   95: ldc2_w 1382
+    //   95: ldc2_w 1384
     //   98: lcmp
     //   99: ifge +15 -> 114
     //   102: aload_0
-    //   103: invokevirtual 1174	androidx/a/a/a$a:close	()V
-    //   106: ldc_w 1378
+    //   103: invokevirtual 1175	androidx/a/a/a$a:close	()V
+    //   106: ldc_w 1380
     //   109: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   112: iconst_0
     //   113: ireturn
-    //   114: ldc2_w 1382
+    //   114: ldc2_w 1384
     //   117: lstore 8
     //   119: lload 6
     //   121: lstore 10
     //   123: lload 6
-    //   125: ldc2_w 1384
+    //   125: ldc2_w 1386
     //   128: lcmp
     //   129: ifle +8 -> 137
-    //   132: ldc2_w 1384
+    //   132: ldc2_w 1386
     //   135: lstore 10
     //   137: lload 10
     //   139: lload 8
     //   141: lsub
     //   142: lstore 8
     //   144: lload 8
-    //   146: ldc2_w 1221
+    //   146: ldc2_w 1222
     //   149: lcmp
     //   150: ifge +15 -> 165
     //   153: aload_0
-    //   154: invokevirtual 1174	androidx/a/a/a$a:close	()V
-    //   157: ldc_w 1378
+    //   154: invokevirtual 1175	androidx/a/a/a$a:close	()V
+    //   157: ldc_w 1380
     //   160: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: iconst_0
     //   164: ireturn
@@ -2312,20 +2312,20 @@ public final class a
     //   175: lstore 6
     //   177: lload 6
     //   179: lload 8
-    //   181: ldc2_w 1054
+    //   181: ldc2_w 1055
     //   184: ldiv
     //   185: lcmp
     //   186: ifge +128 -> 314
     //   189: aload_0
     //   190: aload 13
-    //   192: invokevirtual 962	androidx/a/a/a$a:read	([B)I
+    //   192: invokevirtual 963	androidx/a/a/a$a:read	([B)I
     //   195: istore_3
     //   196: iload_3
     //   197: iconst_4
     //   198: if_icmpeq +15 -> 213
     //   201: aload_0
-    //   202: invokevirtual 1174	androidx/a/a/a$a:close	()V
-    //   205: ldc_w 1378
+    //   202: invokevirtual 1175	androidx/a/a/a$a:close	()V
+    //   205: ldc_w 1380
     //   208: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   211: iconst_0
     //   212: ireturn
@@ -2338,8 +2338,8 @@ public final class a
     //   222: lcmp
     //   223: ifeq +76 -> 299
     //   226: aload 13
-    //   228: getstatic 162	androidx/a/a/a:ayn	[B
-    //   231: invokestatic 1208	java/util/Arrays:equals	([B[B)Z
+    //   228: getstatic 162	androidx/a/a/a:azh	[B
+    //   231: invokestatic 1209	java/util/Arrays:equals	([B[B)Z
     //   234: istore 12
     //   236: iload 12
     //   238: ifeq +37 -> 275
@@ -2358,14 +2358,14 @@ public final class a
     //   259: iload_2
     //   260: ifeq +39 -> 299
     //   263: aload_0
-    //   264: invokevirtual 1174	androidx/a/a/a$a:close	()V
-    //   267: ldc_w 1378
+    //   264: invokevirtual 1175	androidx/a/a/a$a:close	()V
+    //   267: ldc_w 1380
     //   270: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   273: iconst_1
     //   274: ireturn
     //   275: aload 13
-    //   277: getstatic 167	androidx/a/a/a:ayo	[B
-    //   280: invokestatic 1208	java/util/Arrays:equals	([B[B)Z
+    //   277: getstatic 167	androidx/a/a/a:azi	[B
+    //   280: invokestatic 1209	java/util/Arrays:equals	([B[B)Z
     //   283: istore 12
     //   285: iload_1
     //   286: istore_3
@@ -2386,8 +2386,8 @@ public final class a
     //   310: istore_1
     //   311: goto -134 -> 177
     //   314: aload_0
-    //   315: invokevirtual 1174	androidx/a/a/a$a:close	()V
-    //   318: ldc_w 1378
+    //   315: invokevirtual 1175	androidx/a/a/a$a:close	()V
+    //   318: ldc_w 1380
     //   321: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   324: iconst_0
     //   325: ireturn
@@ -2397,7 +2397,7 @@ public final class a
     //   330: aload_0
     //   331: ifnull -13 -> 318
     //   334: aload_0
-    //   335: invokevirtual 1174	androidx/a/a/a$a:close	()V
+    //   335: invokevirtual 1175	androidx/a/a/a$a:close	()V
     //   338: goto -20 -> 318
     //   341: astore 13
     //   343: aconst_null
@@ -2405,8 +2405,8 @@ public final class a
     //   345: aload_0
     //   346: ifnull +7 -> 353
     //   349: aload_0
-    //   350: invokevirtual 1174	androidx/a/a/a$a:close	()V
-    //   353: ldc_w 1378
+    //   350: invokevirtual 1175	androidx/a/a/a$a:close	()V
+    //   353: ldc_w 1380
     //   356: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   359: aload 13
     //   361: athrow
@@ -2448,7 +2448,67 @@ public final class a
     //   275	285	367	java/lang/Exception
   }
   
-  private static Pair<Integer, Integer> m(String paramString)
+  private void m(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(178748);
+    if ((this.xe[paramInt1].isEmpty()) || (this.xe[paramInt2].isEmpty()))
+    {
+      AppMethodBeat.o(178748);
+      return;
+    }
+    Object localObject1 = (c)this.xe[paramInt1].get("ImageLength");
+    Object localObject2 = (c)this.xe[paramInt1].get("ImageWidth");
+    c localc1 = (c)this.xe[paramInt2].get("ImageLength");
+    c localc2 = (c)this.xe[paramInt2].get("ImageWidth");
+    if ((localObject1 == null) || (localObject2 == null))
+    {
+      if (DEBUG) {
+        AppMethodBeat.o(178748);
+      }
+    }
+    else if ((localc1 == null) || (localc2 == null))
+    {
+      if (DEBUG) {
+        AppMethodBeat.o(178748);
+      }
+    }
+    else
+    {
+      int i = ((c)localObject1).b(this.xg);
+      int j = ((c)localObject2).b(this.xg);
+      int k = localc1.b(this.xg);
+      int m = localc2.b(this.xg);
+      if ((i < k) && (j < m))
+      {
+        localObject1 = this.xe[paramInt1];
+        localObject2 = this.xe;
+        localObject2[paramInt1] = localObject2[paramInt2];
+        this.xe[paramInt2] = localObject1;
+      }
+    }
+    AppMethodBeat.o(178748);
+  }
+  
+  private void mZ()
+  {
+    AppMethodBeat.i(178723);
+    int i = 0;
+    while (i < this.xe.length)
+    {
+      new StringBuilder("The size of tag group[").append(i).append("]: ").append(this.xe[i].size());
+      Iterator localIterator = this.xe[i].entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        c localc = (c)localEntry.getValue();
+        new StringBuilder("tagName: ").append((String)localEntry.getKey()).append(", tagType: ").append(localc.toString()).append(", tagValue: '").append(localc.c(this.xg)).append("'");
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(178723);
+  }
+  
+  private static Pair<Integer, Integer> n(String paramString)
   {
     AppMethodBeat.i(178747);
     Object localObject;
@@ -2457,7 +2517,7 @@ public final class a
     if (paramString.contains(","))
     {
       localObject = paramString.split(",", -1);
-      paramString = m(localObject[0]);
+      paramString = n(localObject[0]);
       if (((Integer)paramString.first).intValue() == 2)
       {
         AppMethodBeat.o(178747);
@@ -2466,7 +2526,7 @@ public final class a
       i = 1;
       if (i < localObject.length)
       {
-        localPair = m(localObject[i]);
+        localPair = n(localObject[i]);
         if ((!((Integer)localPair.first).equals(paramString.first)) && (!((Integer)localPair.second).equals(paramString.first))) {
           break label635;
         }
@@ -2568,73 +2628,13 @@ public final class a
     }
   }
   
-  private void m(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(178748);
-    if ((this.wg[paramInt1].isEmpty()) || (this.wg[paramInt2].isEmpty()))
-    {
-      AppMethodBeat.o(178748);
-      return;
-    }
-    Object localObject1 = (c)this.wg[paramInt1].get("ImageLength");
-    Object localObject2 = (c)this.wg[paramInt1].get("ImageWidth");
-    c localc1 = (c)this.wg[paramInt2].get("ImageLength");
-    c localc2 = (c)this.wg[paramInt2].get("ImageWidth");
-    if ((localObject1 == null) || (localObject2 == null))
-    {
-      if (DEBUG) {
-        AppMethodBeat.o(178748);
-      }
-    }
-    else if ((localc1 == null) || (localc2 == null))
-    {
-      if (DEBUG) {
-        AppMethodBeat.o(178748);
-      }
-    }
-    else
-    {
-      int i = ((c)localObject1).b(this.wi);
-      int j = ((c)localObject2).b(this.wi);
-      int k = localc1.b(this.wi);
-      int m = localc2.b(this.wi);
-      if ((i < k) && (j < m))
-      {
-        localObject1 = this.wg[paramInt1];
-        localObject2 = this.wg;
-        localObject2[paramInt1] = localObject2[paramInt2];
-        this.wg[paramInt2] = localObject1;
-      }
-    }
-    AppMethodBeat.o(178748);
-  }
-  
-  private void mP()
-  {
-    AppMethodBeat.i(178723);
-    int i = 0;
-    while (i < this.wg.length)
-    {
-      new StringBuilder("The size of tag group[").append(i).append("]: ").append(this.wg[i].size());
-      Iterator localIterator = this.wg[i].entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        c localc = (c)localEntry.getValue();
-        new StringBuilder("tagName: ").append((String)localEntry.getKey()).append(", tagType: ").append(localc.toString()).append(", tagValue: '").append(localc.c(this.wi)).append("'");
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(178723);
-  }
-  
   private void removeAttribute(String paramString)
   {
     AppMethodBeat.i(178720);
     int i = 0;
-    while (i < ayz.length)
+    while (i < azt.length)
     {
-      this.wg[i].remove(paramString);
+      this.xe[i].remove(paramString);
       i += 1;
     }
     AppMethodBeat.o(178720);
@@ -2643,12 +2643,12 @@ public final class a
   public final String getAttribute(String paramString)
   {
     AppMethodBeat.i(178716);
-    c localc = I(paramString);
+    c localc = K(paramString);
     if (localc != null)
     {
-      if (!vY.contains(paramString))
+      if (!wX.contains(paramString))
       {
-        paramString = localc.c(this.wi);
+        paramString = localc.c(this.xg);
         AppMethodBeat.o(178716);
         return paramString;
       }
@@ -2660,20 +2660,20 @@ public final class a
           AppMethodBeat.o(178716);
           return null;
         }
-        paramString = (e[])localc.a(this.wi);
+        paramString = (e[])localc.a(this.xg);
         if ((paramString == null) || (paramString.length != 3))
         {
           new StringBuilder("Invalid GPS Timestamp array. array=").append(Arrays.toString(paramString));
           AppMethodBeat.o(178716);
           return null;
         }
-        paramString = String.format("%02d:%02d:%02d", new Object[] { Integer.valueOf((int)((float)paramString[0].wD / (float)paramString[0].wE)), Integer.valueOf((int)((float)paramString[1].wD / (float)paramString[1].wE)), Integer.valueOf((int)((float)paramString[2].wD / (float)paramString[2].wE)) });
+        paramString = String.format("%02d:%02d:%02d", new Object[] { Integer.valueOf((int)((float)paramString[0].xB / (float)paramString[0].xC)), Integer.valueOf((int)((float)paramString[1].xB / (float)paramString[1].xC)), Integer.valueOf((int)((float)paramString[2].xB / (float)paramString[2].xC)) });
         AppMethodBeat.o(178716);
         return paramString;
       }
       try
       {
-        paramString = Double.toString(localc.d(this.wi));
+        paramString = Double.toString(localc.d(this.xg));
         AppMethodBeat.o(178716);
         return paramString;
       }
@@ -2690,7 +2690,7 @@ public final class a
   public final double getAttributeDouble(String paramString, double paramDouble)
   {
     AppMethodBeat.i(178718);
-    paramString = I(paramString);
+    paramString = K(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(178718);
@@ -2698,7 +2698,7 @@ public final class a
     }
     try
     {
-      double d = paramString.d(this.wi);
+      double d = paramString.d(this.xg);
       AppMethodBeat.o(178718);
       return d;
     }
@@ -2712,7 +2712,7 @@ public final class a
   public final int getAttributeInt(String paramString, int paramInt)
   {
     AppMethodBeat.i(178717);
-    paramString = I(paramString);
+    paramString = K(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(178717);
@@ -2720,7 +2720,7 @@ public final class a
     }
     try
     {
-      int i = paramString.b(this.wi);
+      int i = paramString.b(this.xg);
       AppMethodBeat.o(178717);
       return i;
     }
@@ -2734,7 +2734,7 @@ public final class a
   public final byte[] getThumbnail()
   {
     AppMethodBeat.i(178725);
-    if ((this.wn == 6) || (this.wn == 7))
+    if ((this.xl == 6) || (this.xl == 7))
     {
       byte[] arrayOfByte = getThumbnailBytes();
       AppMethodBeat.o(178725);
@@ -2744,7 +2744,7 @@ public final class a
     return null;
   }
   
-  public final double[] mQ()
+  public final double[] na()
   {
     AppMethodBeat.i(178727);
     String str1 = getAttribute("GPSLatitude");
@@ -2772,88 +2772,88 @@ public final class a
   public final void saveAttributes()
   {
     // Byte code:
-    //   0: ldc_w 1470
+    //   0: ldc_w 1474
     //   3: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 1160	androidx/a/a/a:wt	Z
+    //   7: getfield 1162	androidx/a/a/a:xr	Z
     //   10: ifeq +11 -> 21
     //   13: aload_0
-    //   14: getfield 862	androidx/a/a/a:wf	I
+    //   14: getfield 863	androidx/a/a/a:xd	I
     //   17: iconst_4
     //   18: if_icmpeq +22 -> 40
-    //   21: new 880	java/io/IOException
+    //   21: new 881	java/io/IOException
     //   24: dup
-    //   25: ldc_w 1472
-    //   28: invokespecial 898	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   25: ldc_w 1476
+    //   28: invokespecial 899	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   31: astore_1
-    //   32: ldc_w 1470
+    //   32: ldc_w 1474
     //   35: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_1
     //   39: athrow
     //   40: aload_0
-    //   41: getfield 717	androidx/a/a/a:ayE	Ljava/io/FileDescriptor;
+    //   41: getfield 717	androidx/a/a/a:azy	Ljava/io/FileDescriptor;
     //   44: ifnonnull +29 -> 73
     //   47: aload_0
-    //   48: getfield 711	androidx/a/a/a:wd	Ljava/lang/String;
+    //   48: getfield 711	androidx/a/a/a:xb	Ljava/lang/String;
     //   51: ifnonnull +22 -> 73
-    //   54: new 880	java/io/IOException
+    //   54: new 881	java/io/IOException
     //   57: dup
-    //   58: ldc_w 1474
-    //   61: invokespecial 898	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   58: ldc_w 1478
+    //   61: invokespecial 899	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   64: astore_1
-    //   65: ldc_w 1470
+    //   65: ldc_w 1474
     //   68: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: aload_1
     //   72: athrow
     //   73: aload_0
     //   74: iconst_1
-    //   75: putfield 1476	androidx/a/a/a:ayF	Z
+    //   75: putfield 1480	androidx/a/a/a:azz	Z
     //   78: aload_0
     //   79: aload_0
-    //   80: invokevirtual 1478	androidx/a/a/a:getThumbnail	()[B
-    //   83: putfield 1000	androidx/a/a/a:wm	[B
+    //   80: invokevirtual 1482	androidx/a/a/a:getThumbnail	()[B
+    //   83: putfield 1001	androidx/a/a/a:xk	[B
     //   86: aload_0
-    //   87: getfield 711	androidx/a/a/a:wd	Ljava/lang/String;
+    //   87: getfield 711	androidx/a/a/a:xb	Ljava/lang/String;
     //   90: ifnull +607 -> 697
-    //   93: new 1480	java/io/File
+    //   93: new 1484	java/io/File
     //   96: dup
     //   97: aload_0
-    //   98: getfield 711	androidx/a/a/a:wd	Ljava/lang/String;
-    //   101: invokespecial 1481	java/io/File:<init>	(Ljava/lang/String;)V
+    //   98: getfield 711	androidx/a/a/a:xb	Ljava/lang/String;
+    //   101: invokespecial 1485	java/io/File:<init>	(Ljava/lang/String;)V
     //   104: astore 7
     //   106: aload_0
-    //   107: getfield 711	androidx/a/a/a:wd	Ljava/lang/String;
+    //   107: getfield 711	androidx/a/a/a:xb	Ljava/lang/String;
     //   110: ifnull +143 -> 253
-    //   113: new 1480	java/io/File
+    //   113: new 1484	java/io/File
     //   116: dup
-    //   117: new 882	java/lang/StringBuilder
+    //   117: new 883	java/lang/StringBuilder
     //   120: dup
-    //   121: invokespecial 1482	java/lang/StringBuilder:<init>	()V
+    //   121: invokespecial 1486	java/lang/StringBuilder:<init>	()V
     //   124: aload_0
-    //   125: getfield 711	androidx/a/a/a:wd	Ljava/lang/String;
-    //   128: invokevirtual 893	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: ldc_w 1484
-    //   134: invokevirtual 893	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: invokevirtual 897	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: invokespecial 1481	java/io/File:<init>	(Ljava/lang/String;)V
+    //   125: getfield 711	androidx/a/a/a:xb	Ljava/lang/String;
+    //   128: invokevirtual 894	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: ldc_w 1488
+    //   134: invokevirtual 894	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: invokevirtual 898	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   140: invokespecial 1485	java/io/File:<init>	(Ljava/lang/String;)V
     //   143: astore_2
     //   144: aload 7
     //   146: aload_2
-    //   147: invokevirtual 1488	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   147: invokevirtual 1492	java/io/File:renameTo	(Ljava/io/File;)Z
     //   150: ifne +540 -> 690
-    //   153: new 880	java/io/IOException
+    //   153: new 881	java/io/IOException
     //   156: dup
-    //   157: new 882	java/lang/StringBuilder
+    //   157: new 883	java/lang/StringBuilder
     //   160: dup
-    //   161: ldc_w 1490
-    //   164: invokespecial 885	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   161: ldc_w 1494
+    //   164: invokespecial 886	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   167: aload_2
-    //   168: invokevirtual 1493	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   171: invokevirtual 893	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: invokevirtual 897	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   177: invokespecial 898	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   168: invokevirtual 1497	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   171: invokevirtual 894	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: invokevirtual 898	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   177: invokespecial 899	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   180: astore_1
-    //   181: ldc_w 1470
+    //   181: ldc_w 1474
     //   184: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   187: aload_1
     //   188: athrow
@@ -2866,17 +2866,17 @@ public final class a
     //   196: astore_3
     //   197: aload_1
     //   198: astore 4
-    //   200: new 880	java/io/IOException
+    //   200: new 881	java/io/IOException
     //   203: dup
-    //   204: ldc_w 1495
+    //   204: ldc_w 1499
     //   207: aload 5
-    //   209: invokespecial 1498	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   209: invokespecial 1502	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   212: astore 5
     //   214: aload_2
     //   215: astore_3
     //   216: aload_1
     //   217: astore 4
-    //   219: ldc_w 1470
+    //   219: ldc_w 1474
     //   222: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   225: aload_2
     //   226: astore_3
@@ -2891,36 +2891,36 @@ public final class a
     //   238: invokestatic 736	androidx/a/a/a:closeQuietly	(Ljava/io/Closeable;)V
     //   241: aload_3
     //   242: invokestatic 736	androidx/a/a/a:closeQuietly	(Ljava/io/Closeable;)V
-    //   245: ldc_w 1470
+    //   245: ldc_w 1474
     //   248: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   251: aload_2
     //   252: athrow
-    //   253: getstatic 1010	android/os/Build$VERSION:SDK_INT	I
+    //   253: getstatic 1011	android/os/Build$VERSION:SDK_INT	I
     //   256: bipush 21
     //   258: if_icmplt +423 -> 681
     //   261: aload_0
-    //   262: getfield 717	androidx/a/a/a:ayE	Ljava/io/FileDescriptor;
+    //   262: getfield 717	androidx/a/a/a:azy	Ljava/io/FileDescriptor;
     //   265: ifnull +416 -> 681
-    //   268: ldc_w 1500
-    //   271: ldc_w 1502
-    //   274: invokestatic 1506	java/io/File:createTempFile	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   268: ldc_w 1504
+    //   271: ldc_w 1506
+    //   274: invokestatic 1510	java/io/File:createTempFile	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
     //   277: astore 5
     //   279: aload_0
-    //   280: getfield 717	androidx/a/a/a:ayE	Ljava/io/FileDescriptor;
+    //   280: getfield 717	androidx/a/a/a:azy	Ljava/io/FileDescriptor;
     //   283: lconst_0
-    //   284: getstatic 1369	android/system/OsConstants:SEEK_SET	I
-    //   287: invokestatic 1021	android/system/Os:lseek	(Ljava/io/FileDescriptor;JI)J
+    //   284: getstatic 1371	android/system/OsConstants:SEEK_SET	I
+    //   287: invokestatic 1022	android/system/Os:lseek	(Ljava/io/FileDescriptor;JI)J
     //   290: pop2
     //   291: new 721	java/io/FileInputStream
     //   294: dup
     //   295: aload_0
-    //   296: getfield 717	androidx/a/a/a:ayE	Ljava/io/FileDescriptor;
-    //   299: invokespecial 1371	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   296: getfield 717	androidx/a/a/a:azy	Ljava/io/FileDescriptor;
+    //   299: invokespecial 1373	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
     //   302: astore_1
-    //   303: new 1508	java/io/FileOutputStream
+    //   303: new 1512	java/io/FileOutputStream
     //   306: dup
     //   307: aload 5
-    //   309: invokespecial 1511	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   309: invokespecial 1515	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   312: astore_2
     //   313: aload_2
     //   314: astore_3
@@ -2928,7 +2928,7 @@ public final class a
     //   316: astore 4
     //   318: aload_1
     //   319: aload_2
-    //   320: invokestatic 1263	androidx/a/a/a:c	(Ljava/io/InputStream;Ljava/io/OutputStream;)I
+    //   320: invokestatic 1265	androidx/a/a/a:copy	(Ljava/io/InputStream;Ljava/io/OutputStream;)I
     //   323: pop
     //   324: aload_1
     //   325: astore_3
@@ -2943,26 +2943,26 @@ public final class a
     //   339: new 721	java/io/FileInputStream
     //   342: dup
     //   343: aload_2
-    //   344: invokespecial 1512	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   344: invokespecial 1516	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   347: astore_3
     //   348: aload_0
-    //   349: getfield 711	androidx/a/a/a:wd	Ljava/lang/String;
+    //   349: getfield 711	androidx/a/a/a:xb	Ljava/lang/String;
     //   352: ifnull +70 -> 422
-    //   355: new 1508	java/io/FileOutputStream
+    //   355: new 1512	java/io/FileOutputStream
     //   358: dup
     //   359: aload_0
-    //   360: getfield 711	androidx/a/a/a:wd	Ljava/lang/String;
-    //   363: invokespecial 1513	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   360: getfield 711	androidx/a/a/a:xb	Ljava/lang/String;
+    //   363: invokespecial 1517	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   366: astore_1
-    //   367: new 1140	java/io/BufferedInputStream
+    //   367: new 1142	java/io/BufferedInputStream
     //   370: dup
     //   371: aload_3
-    //   372: invokespecial 1514	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   372: invokespecial 1518	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   375: astore_3
-    //   376: new 1516	java/io/BufferedOutputStream
+    //   376: new 1520	java/io/BufferedOutputStream
     //   379: dup
     //   380: aload_1
-    //   381: invokespecial 1519	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   381: invokespecial 1523	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   384: astore_1
     //   385: aload_1
     //   386: astore 4
@@ -2971,37 +2971,37 @@ public final class a
     //   391: aload_0
     //   392: aload_3
     //   393: aload_1
-    //   394: invokespecial 1521	androidx/a/a/a:b	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
+    //   394: invokespecial 1525	androidx/a/a/a:b	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
     //   397: aload_3
     //   398: invokestatic 736	androidx/a/a/a:closeQuietly	(Ljava/io/Closeable;)V
     //   401: aload_1
     //   402: invokestatic 736	androidx/a/a/a:closeQuietly	(Ljava/io/Closeable;)V
     //   405: aload_2
-    //   406: invokevirtual 1524	java/io/File:delete	()Z
+    //   406: invokevirtual 1528	java/io/File:delete	()Z
     //   409: pop
     //   410: aload_0
     //   411: aconst_null
-    //   412: putfield 1000	androidx/a/a/a:wm	[B
-    //   415: ldc_w 1470
+    //   412: putfield 1001	androidx/a/a/a:xk	[B
+    //   415: ldc_w 1474
     //   418: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   421: return
-    //   422: getstatic 1010	android/os/Build$VERSION:SDK_INT	I
+    //   422: getstatic 1011	android/os/Build$VERSION:SDK_INT	I
     //   425: bipush 21
     //   427: if_icmplt +249 -> 676
     //   430: aload_0
-    //   431: getfield 717	androidx/a/a/a:ayE	Ljava/io/FileDescriptor;
+    //   431: getfield 717	androidx/a/a/a:azy	Ljava/io/FileDescriptor;
     //   434: ifnull +242 -> 676
     //   437: aload_0
-    //   438: getfield 717	androidx/a/a/a:ayE	Ljava/io/FileDescriptor;
+    //   438: getfield 717	androidx/a/a/a:azy	Ljava/io/FileDescriptor;
     //   441: lconst_0
-    //   442: getstatic 1369	android/system/OsConstants:SEEK_SET	I
-    //   445: invokestatic 1021	android/system/Os:lseek	(Ljava/io/FileDescriptor;JI)J
+    //   442: getstatic 1371	android/system/OsConstants:SEEK_SET	I
+    //   445: invokestatic 1022	android/system/Os:lseek	(Ljava/io/FileDescriptor;JI)J
     //   448: pop2
-    //   449: new 1508	java/io/FileOutputStream
+    //   449: new 1512	java/io/FileOutputStream
     //   452: dup
     //   453: aload_0
-    //   454: getfield 717	androidx/a/a/a:ayE	Ljava/io/FileDescriptor;
-    //   457: invokespecial 1525	java/io/FileOutputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   454: getfield 717	androidx/a/a/a:azy	Ljava/io/FileDescriptor;
+    //   457: invokespecial 1529	java/io/FileOutputStream:<init>	(Ljava/io/FileDescriptor;)V
     //   460: astore_1
     //   461: goto -94 -> 367
     //   464: astore 6
@@ -3014,7 +3014,7 @@ public final class a
     //   473: aload_3
     //   474: astore 5
     //   476: aload_0
-    //   477: getfield 711	androidx/a/a/a:wd	Ljava/lang/String;
+    //   477: getfield 711	androidx/a/a/a:xb	Ljava/lang/String;
     //   480: ifnull +101 -> 581
     //   483: aload_1
     //   484: astore 4
@@ -3022,29 +3022,29 @@ public final class a
     //   487: astore 5
     //   489: aload_2
     //   490: aload 7
-    //   492: invokevirtual 1488	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   492: invokevirtual 1492	java/io/File:renameTo	(Ljava/io/File;)Z
     //   495: ifne +86 -> 581
     //   498: aload_1
     //   499: astore 4
     //   501: aload_3
     //   502: astore 5
-    //   504: new 880	java/io/IOException
+    //   504: new 881	java/io/IOException
     //   507: dup
-    //   508: new 882	java/lang/StringBuilder
+    //   508: new 883	java/lang/StringBuilder
     //   511: dup
-    //   512: ldc_w 1527
-    //   515: invokespecial 885	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   512: ldc_w 1531
+    //   515: invokespecial 886	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   518: aload 7
-    //   520: invokevirtual 1493	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   523: invokevirtual 893	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   526: invokevirtual 897	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   529: invokespecial 898	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   520: invokevirtual 1497	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   523: invokevirtual 894	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   526: invokevirtual 898	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   529: invokespecial 899	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   532: astore 6
     //   534: aload_1
     //   535: astore 4
     //   537: aload_3
     //   538: astore 5
-    //   540: ldc_w 1470
+    //   540: ldc_w 1474
     //   543: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   546: aload_1
     //   547: astore 4
@@ -3060,9 +3060,9 @@ public final class a
     //   563: aload 4
     //   565: invokestatic 736	androidx/a/a/a:closeQuietly	(Ljava/io/Closeable;)V
     //   568: aload_2
-    //   569: invokevirtual 1524	java/io/File:delete	()Z
+    //   569: invokevirtual 1528	java/io/File:delete	()Z
     //   572: pop
-    //   573: ldc_w 1470
+    //   573: ldc_w 1474
     //   576: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   579: aload_1
     //   580: athrow
@@ -3070,17 +3070,17 @@ public final class a
     //   582: astore 4
     //   584: aload_3
     //   585: astore 5
-    //   587: new 880	java/io/IOException
+    //   587: new 881	java/io/IOException
     //   590: dup
-    //   591: ldc_w 1529
+    //   591: ldc_w 1533
     //   594: aload 6
-    //   596: invokespecial 1498	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   596: invokespecial 1502	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   599: astore 6
     //   601: aload_1
     //   602: astore 4
     //   604: aload_3
     //   605: astore 5
-    //   607: ldc_w 1470
+    //   607: ldc_w 1474
     //   610: invokestatic 687	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   613: aload_1
     //   614: astore 4
@@ -3207,12 +3207,12 @@ public final class a
     if (paramString2 != null)
     {
       paramString1 = paramString2;
-      if (vY.contains(str))
+      if (wX.contains(str))
       {
         if (!str.equals("GPSTimeStamp")) {
           break label234;
         }
-        paramString1 = wv.matcher(paramString2);
+        paramString1 = xt.matcher(paramString2);
         if (!paramString1.find())
         {
           new StringBuilder("Invalid value for ").append(str).append(" : ").append(paramString2);
@@ -3223,17 +3223,17 @@ public final class a
       }
     }
     int j = 0;
-    if (j < ayz.length)
+    if (j < azt.length)
     {
-      if ((j != 4) || (this.wj))
+      if ((j != 4) || (this.xh))
       {
-        paramString2 = (d)vX[j].get(str);
+        paramString2 = (d)wW[j].get(str);
         if (paramString2 != null)
         {
           if (paramString1 != null) {
             break label286;
           }
-          this.wg[j].remove(str);
+          this.xe[j].remove(str);
         }
       }
       for (;;)
@@ -3255,10 +3255,10 @@ public final class a
           }
         }
         label286:
-        Object localObject1 = m(paramString1);
+        Object localObject1 = n(paramString1);
         int i;
-        if ((paramString2.wB == ((Integer)((Pair)localObject1).first).intValue()) || (paramString2.wB == ((Integer)((Pair)localObject1).second).intValue())) {
-          i = paramString2.wB;
+        if ((paramString2.xz == ((Integer)((Pair)localObject1).first).intValue()) || (paramString2.xz == ((Integer)((Pair)localObject1).second).intValue())) {
+          i = paramString2.xz;
         }
         label333:
         Object localObject2;
@@ -3270,46 +3270,46 @@ public final class a
         default: 
           break;
         case 1: 
-          localObject1 = this.wg[j];
+          localObject1 = this.xe[j];
           if ((paramString1.length() == 1) && (paramString1.charAt(0) >= '0') && (paramString1.charAt(0) <= '1')) {}
           for (paramString2 = new c(1, 1, new byte[] { (byte)(paramString1.charAt(0) - '0') });; paramString2 = new c(1, paramString2.length, paramString2))
           {
             ((HashMap)localObject1).put(str, paramString2);
             break;
-            if ((paramString2.wC != -1) && ((paramString2.wC == ((Integer)((Pair)localObject1).first).intValue()) || (paramString2.wC == ((Integer)((Pair)localObject1).second).intValue())))
+            if ((paramString2.xA != -1) && ((paramString2.xA == ((Integer)((Pair)localObject1).first).intValue()) || (paramString2.xA == ((Integer)((Pair)localObject1).second).intValue())))
             {
-              i = paramString2.wC;
+              i = paramString2.xA;
               break label333;
             }
-            if ((paramString2.wB == 1) || (paramString2.wB == 7) || (paramString2.wB == 2))
+            if ((paramString2.xz == 1) || (paramString2.xz == 7) || (paramString2.xz == 2))
             {
-              i = paramString2.wB;
+              i = paramString2.xz;
               break label333;
             }
             if (!DEBUG) {
               break;
             }
-            localObject2 = new StringBuilder("Given tag (").append(str).append(") value didn't match with one of expected formats: ").append(vG[paramString2.wB]);
-            if (paramString2.wC == -1)
+            localObject2 = new StringBuilder("Given tag (").append(str).append(") value didn't match with one of expected formats: ").append(wF[paramString2.xz]);
+            if (paramString2.xA == -1)
             {
               paramString2 = "";
-              localObject2 = ((StringBuilder)localObject2).append(paramString2).append(" (guess: ").append(vG[((Integer)localObject1.first).intValue()]);
+              localObject2 = ((StringBuilder)localObject2).append(paramString2).append(" (guess: ").append(wF[((Integer)localObject1.first).intValue()]);
               if (((Integer)((Pair)localObject1).second).intValue() != -1) {
                 break label703;
               }
             }
-            for (paramString2 = "";; paramString2 = ", " + vG[((Integer)localObject1.second).intValue()])
+            for (paramString2 = "";; paramString2 = ", " + wF[((Integer)localObject1.second).intValue()])
             {
               ((StringBuilder)localObject2).append(paramString2).append(")");
               break;
-              paramString2 = ", " + vG[paramString2.wC];
+              paramString2 = ", " + wF[paramString2.xA];
               break label609;
             }
-            paramString2 = paramString1.getBytes(wa);
+            paramString2 = paramString1.getBytes(wZ);
           }
         case 2: 
         case 7: 
-          this.wg[j].put(str, c.J(paramString1));
+          this.xe[j].put(str, c.L(paramString1));
           break;
         case 3: 
           paramString2 = paramString1.split(",", -1);
@@ -3320,7 +3320,7 @@ public final class a
             localObject1[i] = Integer.parseInt(paramString2[i]);
             i += 1;
           }
-          this.wg[j].put(str, c.c((int[])localObject1, this.wi));
+          this.xe[j].put(str, c.c((int[])localObject1, this.xg));
           break;
         case 9: 
           paramString2 = paramString1.split(",", -1);
@@ -3331,7 +3331,7 @@ public final class a
             localObject1[i] = Integer.parseInt(paramString2[i]);
             i += 1;
           }
-          this.wg[j].put(str, c.d((int[])localObject1, this.wi));
+          this.xe[j].put(str, c.d((int[])localObject1, this.xg));
           break;
         case 4: 
           paramString2 = paramString1.split(",", -1);
@@ -3342,7 +3342,7 @@ public final class a
             localObject1[i] = Long.parseLong(paramString2[i]);
             i += 1;
           }
-          this.wg[j].put(str, c.b((long[])localObject1, this.wi));
+          this.xe[j].put(str, c.b((long[])localObject1, this.xg));
           break;
         case 5: 
           paramString2 = paramString1.split(",", -1);
@@ -3354,7 +3354,7 @@ public final class a
             localObject1[i] = new e(Double.parseDouble(localObject2[0]), Double.parseDouble(localObject2[1]));
             i += 1;
           }
-          this.wg[j].put(str, c.a((e[])localObject1, this.wi));
+          this.xe[j].put(str, c.a((e[])localObject1, this.xg));
           break;
         case 10: 
           paramString2 = paramString1.split(",", -1);
@@ -3366,7 +3366,7 @@ public final class a
             localObject1[i] = new e(Double.parseDouble(localObject2[0]), Double.parseDouble(localObject2[1]));
             i += 1;
           }
-          this.wg[j].put(str, c.b((e[])localObject1, this.wi));
+          this.xe[j].put(str, c.b((e[])localObject1, this.xg));
           break;
         case 12: 
           label609:
@@ -3379,7 +3379,7 @@ public final class a
             localObject1[i] = Double.parseDouble(paramString2[i]);
             i += 1;
           }
-          this.wg[j].put(str, c.b((double[])localObject1, this.wi));
+          this.xe[j].put(str, c.b((double[])localObject1, this.xg));
         }
       }
     }
@@ -3394,17 +3394,17 @@ public final class a
     private static final ByteOrder LITTLE_ENDIAN = ByteOrder.LITTLE_ENDIAN;
     final int mLength;
     int mPosition;
-    private DataInputStream ww;
-    ByteOrder wx;
+    private DataInputStream xu;
+    ByteOrder xv;
     
     public a(InputStream paramInputStream)
     {
       AppMethodBeat.i(178669);
-      this.wx = ByteOrder.BIG_ENDIAN;
-      this.ww = new DataInputStream(paramInputStream);
-      this.mLength = this.ww.available();
+      this.xv = ByteOrder.BIG_ENDIAN;
+      this.xu = new DataInputStream(paramInputStream);
+      this.mLength = this.xu.available();
       this.mPosition = 0;
-      this.ww.mark(this.mLength);
+      this.xu.mark(this.mLength);
       AppMethodBeat.o(178669);
     }
     
@@ -3418,12 +3418,12 @@ public final class a
     public final int available()
     {
       AppMethodBeat.i(178672);
-      int i = this.ww.available();
+      int i = this.xu.available();
       AppMethodBeat.o(178672);
       return i;
     }
     
-    public final long df()
+    public final long dm()
     {
       AppMethodBeat.i(178686);
       long l = readInt();
@@ -3435,7 +3435,7 @@ public final class a
     {
       AppMethodBeat.i(178673);
       this.mPosition += 1;
-      int i = this.ww.read();
+      int i = this.xu.read();
       AppMethodBeat.o(178673);
       return i;
     }
@@ -3443,7 +3443,7 @@ public final class a
     public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(178674);
-      paramInt1 = this.ww.read(paramArrayOfByte, paramInt1, paramInt2);
+      paramInt1 = this.xu.read(paramArrayOfByte, paramInt1, paramInt2);
       this.mPosition += paramInt1;
       AppMethodBeat.o(178674);
       return paramInt1;
@@ -3453,7 +3453,7 @@ public final class a
     {
       AppMethodBeat.i(178676);
       this.mPosition += 1;
-      boolean bool = this.ww.readBoolean();
+      boolean bool = this.xu.readBoolean();
       AppMethodBeat.o(178676);
       return bool;
     }
@@ -3469,7 +3469,7 @@ public final class a
         AppMethodBeat.o(178681);
         throw localEOFException;
       }
-      int i = this.ww.read();
+      int i = this.xu.read();
       if (i < 0)
       {
         localEOFException = new EOFException();
@@ -3485,7 +3485,7 @@ public final class a
     {
       AppMethodBeat.i(178677);
       this.mPosition += 2;
-      char c = this.ww.readChar();
+      char c = this.xu.readChar();
       AppMethodBeat.o(178677);
       return c;
     }
@@ -3516,7 +3516,7 @@ public final class a
         AppMethodBeat.o(178680);
         throw paramArrayOfByte;
       }
-      if (this.ww.read(paramArrayOfByte, 0, paramArrayOfByte.length) != paramArrayOfByte.length)
+      if (this.xu.read(paramArrayOfByte, 0, paramArrayOfByte.length) != paramArrayOfByte.length)
       {
         paramArrayOfByte = new IOException("Couldn't read up to the length of buffer");
         AppMethodBeat.o(178680);
@@ -3535,7 +3535,7 @@ public final class a
         AppMethodBeat.o(178679);
         throw paramArrayOfByte;
       }
-      if (this.ww.read(paramArrayOfByte, paramInt1, paramInt2) != paramInt2)
+      if (this.xu.read(paramArrayOfByte, paramInt1, paramInt2) != paramInt2)
       {
         paramArrayOfByte = new IOException("Couldn't read up to the length of buffer");
         AppMethodBeat.o(178679);
@@ -3554,27 +3554,27 @@ public final class a
         AppMethodBeat.o(178683);
         throw ((Throwable)localObject);
       }
-      int i = this.ww.read();
-      int j = this.ww.read();
-      int k = this.ww.read();
-      int m = this.ww.read();
+      int i = this.xu.read();
+      int j = this.xu.read();
+      int k = this.xu.read();
+      int m = this.xu.read();
       if ((i | j | k | m) < 0)
       {
         localObject = new EOFException();
         AppMethodBeat.o(178683);
         throw ((Throwable)localObject);
       }
-      if (this.wx == LITTLE_ENDIAN)
+      if (this.xv == LITTLE_ENDIAN)
       {
         AppMethodBeat.o(178683);
         return i + ((j << 8) + ((k << 16) + (m << 24)));
       }
-      if (this.wx == BIG_ENDIAN)
+      if (this.xv == BIG_ENDIAN)
       {
         AppMethodBeat.o(178683);
         return (i << 24) + (j << 16) + (k << 8) + m;
       }
-      Object localObject = new IOException("Invalid byte order: " + this.wx);
+      Object localObject = new IOException("Invalid byte order: " + this.xv);
       AppMethodBeat.o(178683);
       throw ((Throwable)localObject);
     }
@@ -3594,14 +3594,14 @@ public final class a
         AppMethodBeat.o(178687);
         throw ((Throwable)localObject);
       }
-      int i = this.ww.read();
-      int j = this.ww.read();
-      int k = this.ww.read();
-      int m = this.ww.read();
-      int n = this.ww.read();
-      int i1 = this.ww.read();
-      int i2 = this.ww.read();
-      int i3 = this.ww.read();
+      int i = this.xu.read();
+      int j = this.xu.read();
+      int k = this.xu.read();
+      int m = this.xu.read();
+      int n = this.xu.read();
+      int i1 = this.xu.read();
+      int i2 = this.xu.read();
+      int i3 = this.xu.read();
       if ((i | j | k | m | n | i1 | i2 | i3) < 0)
       {
         localObject = new EOFException();
@@ -3616,7 +3616,7 @@ public final class a
       long l6;
       long l7;
       long l8;
-      if (this.wx == LITTLE_ENDIAN)
+      if (this.xv == LITTLE_ENDIAN)
       {
         l1 = i3;
         l2 = i2;
@@ -3629,7 +3629,7 @@ public final class a
         AppMethodBeat.o(178687);
         return l8 + ((l6 << 16) + ((l4 << 32) + ((l2 << 48) + (l1 << 56) + (l3 << 40)) + (l5 << 24)) + (l7 << 8));
       }
-      if (this.wx == BIG_ENDIAN)
+      if (this.xv == BIG_ENDIAN)
       {
         l1 = i;
         l2 = j;
@@ -3642,7 +3642,7 @@ public final class a
         AppMethodBeat.o(178687);
         return (l2 << 48) + (l1 << 56) + (l3 << 40) + (l4 << 32) + (l5 << 24) + (l6 << 16) + (l7 << 8) + l8;
       }
-      Object localObject = new IOException("Invalid byte order: " + this.wx);
+      Object localObject = new IOException("Invalid byte order: " + this.xv);
       AppMethodBeat.o(178687);
       throw ((Throwable)localObject);
     }
@@ -3657,8 +3657,8 @@ public final class a
         AppMethodBeat.o(178682);
         throw ((Throwable)localObject);
       }
-      int i = this.ww.read();
-      int j = this.ww.read();
+      int i = this.xu.read();
+      int j = this.xu.read();
       if ((i | j) < 0)
       {
         localObject = new EOFException();
@@ -3666,19 +3666,19 @@ public final class a
         throw ((Throwable)localObject);
       }
       short s;
-      if (this.wx == LITTLE_ENDIAN)
+      if (this.xv == LITTLE_ENDIAN)
       {
         s = (short)(i + (j << 8));
         AppMethodBeat.o(178682);
         return s;
       }
-      if (this.wx == BIG_ENDIAN)
+      if (this.xv == BIG_ENDIAN)
       {
         s = (short)((i << 8) + j);
         AppMethodBeat.o(178682);
         return s;
       }
-      Object localObject = new IOException("Invalid byte order: " + this.wx);
+      Object localObject = new IOException("Invalid byte order: " + this.xv);
       AppMethodBeat.o(178682);
       throw ((Throwable)localObject);
     }
@@ -3687,7 +3687,7 @@ public final class a
     {
       AppMethodBeat.i(178678);
       this.mPosition += 2;
-      String str = this.ww.readUTF();
+      String str = this.xu.readUTF();
       AppMethodBeat.o(178678);
       return str;
     }
@@ -3696,7 +3696,7 @@ public final class a
     {
       AppMethodBeat.i(178675);
       this.mPosition += 1;
-      int i = this.ww.readUnsignedByte();
+      int i = this.xu.readUnsignedByte();
       AppMethodBeat.o(178675);
       return i;
     }
@@ -3711,25 +3711,25 @@ public final class a
         AppMethodBeat.o(178685);
         throw ((Throwable)localObject);
       }
-      int i = this.ww.read();
-      int j = this.ww.read();
+      int i = this.xu.read();
+      int j = this.xu.read();
       if ((i | j) < 0)
       {
         localObject = new EOFException();
         AppMethodBeat.o(178685);
         throw ((Throwable)localObject);
       }
-      if (this.wx == LITTLE_ENDIAN)
+      if (this.xv == LITTLE_ENDIAN)
       {
         AppMethodBeat.o(178685);
         return i + (j << 8);
       }
-      if (this.wx == BIG_ENDIAN)
+      if (this.xv == BIG_ENDIAN)
       {
         AppMethodBeat.o(178685);
         return (i << 8) + j;
       }
-      Object localObject = new IOException("Invalid byte order: " + this.wx);
+      Object localObject = new IOException("Invalid byte order: " + this.xv);
       AppMethodBeat.o(178685);
       throw ((Throwable)localObject);
     }
@@ -3740,8 +3740,8 @@ public final class a
       if (this.mPosition > paramLong)
       {
         this.mPosition = 0;
-        this.ww.reset();
-        this.ww.mark(this.mLength);
+        this.xu.reset();
+        this.xu.mark(this.mLength);
       }
       while (skipBytes((int)paramLong) != (int)paramLong)
       {
@@ -3759,7 +3759,7 @@ public final class a
       int i = Math.min(paramInt, this.mLength - this.mPosition);
       paramInt = 0;
       while (paramInt < i) {
-        paramInt += this.ww.skipBytes(i - paramInt);
+        paramInt += this.xu.skipBytes(i - paramInt);
       }
       this.mPosition += paramInt;
       AppMethodBeat.o(178684);
@@ -3770,55 +3770,55 @@ public final class a
   static final class b
     extends FilterOutputStream
   {
-    ByteOrder wx;
-    private final OutputStream wy;
+    ByteOrder xv;
+    private final OutputStream xw;
     
     public b(OutputStream paramOutputStream, ByteOrder paramByteOrder)
     {
       super();
-      this.wy = paramOutputStream;
-      this.wx = paramByteOrder;
+      this.xw = paramOutputStream;
+      this.xv = paramByteOrder;
     }
     
     public final void write(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(178690);
-      this.wy.write(paramArrayOfByte);
+      this.xw.write(paramArrayOfByte);
       AppMethodBeat.o(178690);
     }
     
     public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(178691);
-      this.wy.write(paramArrayOfByte, paramInt1, paramInt2);
+      this.xw.write(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(178691);
     }
     
     public final void writeByte(int paramInt)
     {
       AppMethodBeat.i(178692);
-      this.wy.write(paramInt);
+      this.xw.write(paramInt);
       AppMethodBeat.o(178692);
     }
     
     public final void writeInt(int paramInt)
     {
       AppMethodBeat.i(178694);
-      if (this.wx == ByteOrder.LITTLE_ENDIAN)
+      if (this.xv == ByteOrder.LITTLE_ENDIAN)
       {
-        this.wy.write(paramInt >>> 0 & 0xFF);
-        this.wy.write(paramInt >>> 8 & 0xFF);
-        this.wy.write(paramInt >>> 16 & 0xFF);
-        this.wy.write(paramInt >>> 24 & 0xFF);
+        this.xw.write(paramInt >>> 0 & 0xFF);
+        this.xw.write(paramInt >>> 8 & 0xFF);
+        this.xw.write(paramInt >>> 16 & 0xFF);
+        this.xw.write(paramInt >>> 24 & 0xFF);
         AppMethodBeat.o(178694);
         return;
       }
-      if (this.wx == ByteOrder.BIG_ENDIAN)
+      if (this.xv == ByteOrder.BIG_ENDIAN)
       {
-        this.wy.write(paramInt >>> 24 & 0xFF);
-        this.wy.write(paramInt >>> 16 & 0xFF);
-        this.wy.write(paramInt >>> 8 & 0xFF);
-        this.wy.write(paramInt >>> 0 & 0xFF);
+        this.xw.write(paramInt >>> 24 & 0xFF);
+        this.xw.write(paramInt >>> 16 & 0xFF);
+        this.xw.write(paramInt >>> 8 & 0xFF);
+        this.xw.write(paramInt >>> 0 & 0xFF);
       }
       AppMethodBeat.o(178694);
     }
@@ -3826,17 +3826,17 @@ public final class a
     public final void writeShort(short paramShort)
     {
       AppMethodBeat.i(178693);
-      if (this.wx == ByteOrder.LITTLE_ENDIAN)
+      if (this.xv == ByteOrder.LITTLE_ENDIAN)
       {
-        this.wy.write(paramShort >>> 0 & 0xFF);
-        this.wy.write(paramShort >>> 8 & 0xFF);
+        this.xw.write(paramShort >>> 0 & 0xFF);
+        this.xw.write(paramShort >>> 8 & 0xFF);
         AppMethodBeat.o(178693);
         return;
       }
-      if (this.wx == ByteOrder.BIG_ENDIAN)
+      if (this.xv == ByteOrder.BIG_ENDIAN)
       {
-        this.wy.write(paramShort >>> 8 & 0xFF);
-        this.wy.write(paramShort >>> 0 & 0xFF);
+        this.xw.write(paramShort >>> 8 & 0xFF);
+        this.xw.write(paramShort >>> 0 & 0xFF);
       }
       AppMethodBeat.o(178693);
     }
@@ -3844,17 +3844,17 @@ public final class a
   
   static final class c
   {
-    public final long ayI;
+    public final long azC;
     public final int format;
-    public final byte[] wA;
-    public final int wz;
+    public final int xx;
+    public final byte[] xy;
     
     c(int paramInt1, int paramInt2, long paramLong, byte[] paramArrayOfByte)
     {
       this.format = paramInt1;
-      this.wz = paramInt2;
-      this.ayI = paramLong;
-      this.wA = paramArrayOfByte;
+      this.xx = paramInt2;
+      this.azC = paramLong;
+      this.xy = paramArrayOfByte;
     }
     
     c(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
@@ -3862,10 +3862,10 @@ public final class a
       this(paramInt1, paramInt2, -1L, paramArrayOfByte);
     }
     
-    public static c J(String paramString)
+    public static c L(String paramString)
     {
       AppMethodBeat.i(178700);
-      paramString = (paramString + '\000').getBytes(a.wa);
+      paramString = (paramString + '\000').getBytes(a.wZ);
       paramString = new c(2, paramString.length, paramString);
       AppMethodBeat.o(178700);
       return paramString;
@@ -3882,15 +3882,15 @@ public final class a
     public static c a(a.e[] paramArrayOfe, ByteOrder paramByteOrder)
     {
       AppMethodBeat.i(178701);
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.vH[5] * paramArrayOfe.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[5] * paramArrayOfe.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfe.length;
       int i = 0;
       while (i < j)
       {
         paramByteOrder = paramArrayOfe[i];
-        localByteBuffer.putInt((int)paramByteOrder.wD);
-        localByteBuffer.putInt((int)paramByteOrder.wE);
+        localByteBuffer.putInt((int)paramByteOrder.xB);
+        localByteBuffer.putInt((int)paramByteOrder.xC);
         i += 1;
       }
       paramArrayOfe = new c(5, paramArrayOfe.length, localByteBuffer.array());
@@ -3917,7 +3917,7 @@ public final class a
     public static c b(double[] paramArrayOfDouble, ByteOrder paramByteOrder)
     {
       AppMethodBeat.i(178704);
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.vH[12] * paramArrayOfDouble.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[12] * paramArrayOfDouble.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfDouble.length;
       int i = 0;
@@ -3934,7 +3934,7 @@ public final class a
     public static c b(long[] paramArrayOfLong, ByteOrder paramByteOrder)
     {
       AppMethodBeat.i(178697);
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.vH[4] * paramArrayOfLong.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[4] * paramArrayOfLong.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfLong.length;
       int i = 0;
@@ -3951,15 +3951,15 @@ public final class a
     public static c b(a.e[] paramArrayOfe, ByteOrder paramByteOrder)
     {
       AppMethodBeat.i(178703);
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.vH[10] * paramArrayOfe.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[10] * paramArrayOfe.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfe.length;
       int i = 0;
       while (i < j)
       {
         paramByteOrder = paramArrayOfe[i];
-        localByteBuffer.putInt((int)paramByteOrder.wD);
-        localByteBuffer.putInt((int)paramByteOrder.wE);
+        localByteBuffer.putInt((int)paramByteOrder.xB);
+        localByteBuffer.putInt((int)paramByteOrder.xC);
         i += 1;
       }
       paramArrayOfe = new c(10, paramArrayOfe.length, localByteBuffer.array());
@@ -3970,7 +3970,7 @@ public final class a
     public static c c(int[] paramArrayOfInt, ByteOrder paramByteOrder)
     {
       AppMethodBeat.i(178695);
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.vH[3] * paramArrayOfInt.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[3] * paramArrayOfInt.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfInt.length;
       int i = 0;
@@ -3987,7 +3987,7 @@ public final class a
     public static c d(int[] paramArrayOfInt, ByteOrder paramByteOrder)
     {
       AppMethodBeat.i(178699);
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.vH[9] * paramArrayOfInt.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[9] * paramArrayOfInt.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfInt.length;
       int i = 0;
@@ -4023,82 +4023,82 @@ public final class a
       //   21: istore 10
       //   23: iconst_0
       //   24: istore_2
-      //   25: ldc 137
-      //   27: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   30: new 139	androidx/a/a/a$a
+      //   25: ldc 138
+      //   27: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   30: new 140	androidx/a/a/a$a
       //   33: dup
       //   34: aload_0
-      //   35: getfield 27	androidx/a/a/a$c:wA	[B
-      //   38: invokespecial 142	androidx/a/a/a$a:<init>	([B)V
+      //   35: getfield 27	androidx/a/a/a$c:xy	[B
+      //   38: invokespecial 143	androidx/a/a/a$a:<init>	([B)V
       //   41: astore 12
       //   43: aload 12
       //   45: aload_1
-      //   46: putfield 146	androidx/a/a/a$a:wx	Ljava/nio/ByteOrder;
+      //   46: putfield 147	androidx/a/a/a$a:xv	Ljava/nio/ByteOrder;
       //   49: aload_0
       //   50: getfield 21	androidx/a/a/a$c:format	I
       //   53: istore 11
       //   55: iload 11
       //   57: tableswitch	default:+63 -> 120, 1:+75->132, 2:+166->223, 3:+303->360, 4:+345->402, 5:+389->446, 6:+75->132, 7:+166->223, 8:+447->504, 9:+492->549, 10:+537->594, 11:+597->654, 12:+643->700
       //   121: fconst_1
-      //   122: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   125: ldc 137
-      //   127: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   122: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   125: ldc 138
+      //   127: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   130: aconst_null
       //   131: areturn
       //   132: aload_0
-      //   133: getfield 27	androidx/a/a/a$c:wA	[B
+      //   133: getfield 27	androidx/a/a/a$c:xy	[B
       //   136: arraylength
       //   137: iconst_1
       //   138: if_icmpne +58 -> 196
       //   141: aload_0
-      //   142: getfield 27	androidx/a/a/a$c:wA	[B
+      //   142: getfield 27	androidx/a/a/a$c:xy	[B
       //   145: iconst_0
       //   146: baload
       //   147: iflt +49 -> 196
       //   150: aload_0
-      //   151: getfield 27	androidx/a/a/a$c:wA	[B
+      //   151: getfield 27	androidx/a/a/a$c:xy	[B
       //   154: iconst_0
       //   155: baload
       //   156: iconst_1
       //   157: if_icmpgt +39 -> 196
-      //   160: new 61	java/lang/String
+      //   160: new 62	java/lang/String
       //   163: dup
       //   164: iconst_1
       //   165: newarray char
       //   167: dup
       //   168: iconst_0
       //   169: aload_0
-      //   170: getfield 27	androidx/a/a/a$c:wA	[B
+      //   170: getfield 27	androidx/a/a/a$c:xy	[B
       //   173: iconst_0
       //   174: baload
       //   175: bipush 48
       //   177: iadd
       //   178: i2c
       //   179: castore
-      //   180: invokespecial 152	java/lang/String:<init>	([C)V
+      //   180: invokespecial 153	java/lang/String:<init>	([C)V
       //   183: astore_1
       //   184: aload 12
-      //   186: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   189: ldc 137
-      //   191: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   186: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   189: ldc 138
+      //   191: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   194: aload_1
       //   195: areturn
-      //   196: new 61	java/lang/String
+      //   196: new 62	java/lang/String
       //   199: dup
       //   200: aload_0
-      //   201: getfield 27	androidx/a/a/a$c:wA	[B
-      //   204: getstatic 59	androidx/a/a/a:wa	Ljava/nio/charset/Charset;
-      //   207: invokespecial 155	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
+      //   201: getfield 27	androidx/a/a/a$c:xy	[B
+      //   204: getstatic 60	androidx/a/a/a:wZ	Ljava/nio/charset/Charset;
+      //   207: invokespecial 156	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
       //   210: astore_1
       //   211: aload 12
-      //   213: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   216: ldc 137
-      //   218: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   213: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   216: ldc 138
+      //   218: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   221: aload_1
       //   222: areturn
       //   223: aload_0
-      //   224: getfield 23	androidx/a/a/a$c:wz	I
-      //   227: getstatic 158	androidx/a/a/a:vI	[B
+      //   224: getfield 23	androidx/a/a/a$c:xx	I
+      //   227: getstatic 159	androidx/a/a/a:wH	[B
       //   230: arraylength
       //   231: if_icmplt +614 -> 845
       //   234: iconst_0
@@ -4106,14 +4106,14 @@ public final class a
       //   236: iload 4
       //   238: istore_3
       //   239: iload_2
-      //   240: getstatic 158	androidx/a/a/a:vI	[B
+      //   240: getstatic 159	androidx/a/a/a:wH	[B
       //   243: arraylength
       //   244: if_icmpge +19 -> 263
       //   247: aload_0
-      //   248: getfield 27	androidx/a/a/a$c:wA	[B
+      //   248: getfield 27	androidx/a/a/a$c:xy	[B
       //   251: iload_2
       //   252: baload
-      //   253: getstatic 158	androidx/a/a/a:vI	[B
+      //   253: getstatic 159	androidx/a/a/a:wH	[B
       //   256: iload_2
       //   257: baload
       //   258: if_icmpeq +599 -> 857
@@ -4121,19 +4121,19 @@ public final class a
       //   262: istore_3
       //   263: iload_3
       //   264: ifeq +581 -> 845
-      //   267: getstatic 158	androidx/a/a/a:vI	[B
+      //   267: getstatic 159	androidx/a/a/a:wH	[B
       //   270: arraylength
       //   271: istore_2
-      //   272: new 43	java/lang/StringBuilder
+      //   272: new 44	java/lang/StringBuilder
       //   275: dup
-      //   276: invokespecial 44	java/lang/StringBuilder:<init>	()V
+      //   276: invokespecial 45	java/lang/StringBuilder:<init>	()V
       //   279: astore_1
       //   280: iload_2
       //   281: aload_0
-      //   282: getfield 23	androidx/a/a/a$c:wz	I
+      //   282: getfield 23	androidx/a/a/a$c:xx	I
       //   285: if_icmpge +58 -> 343
       //   288: aload_0
-      //   289: getfield 27	androidx/a/a/a$c:wA	[B
+      //   289: getfield 27	androidx/a/a/a$c:xy	[B
       //   292: iload_2
       //   293: baload
       //   294: istore_3
@@ -4145,44 +4145,44 @@ public final class a
       //   305: aload_1
       //   306: iload_3
       //   307: i2c
-      //   308: invokevirtual 51	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+      //   308: invokevirtual 52	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
       //   311: pop
       //   312: goto +538 -> 850
       //   315: aload_1
       //   316: bipush 63
-      //   318: invokevirtual 51	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+      //   318: invokevirtual 52	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
       //   321: pop
       //   322: goto +528 -> 850
       //   325: astore_1
       //   326: aload 12
       //   328: ifnull +8 -> 336
       //   331: aload 12
-      //   333: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   336: ldc 137
-      //   338: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   333: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   336: ldc 138
+      //   338: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   341: aconst_null
       //   342: areturn
       //   343: aload_1
-      //   344: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   344: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   347: astore_1
       //   348: aload 12
-      //   350: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   353: ldc 137
-      //   355: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   350: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   353: ldc 138
+      //   355: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   358: aload_1
       //   359: areturn
       //   360: aload_0
-      //   361: getfield 23	androidx/a/a/a$c:wz	I
+      //   361: getfield 23	androidx/a/a/a$c:xx	I
       //   364: newarray int
       //   366: astore_1
       //   367: iload_2
       //   368: aload_0
-      //   369: getfield 23	androidx/a/a/a$c:wz	I
+      //   369: getfield 23	androidx/a/a/a$c:xx	I
       //   372: if_icmpge +18 -> 390
       //   375: aload_1
       //   376: iload_2
       //   377: aload 12
-      //   379: invokevirtual 162	androidx/a/a/a$a:readUnsignedShort	()I
+      //   379: invokevirtual 163	androidx/a/a/a$a:readUnsignedShort	()I
       //   382: iastore
       //   383: iload_2
       //   384: iconst_1
@@ -4190,25 +4190,25 @@ public final class a
       //   386: istore_2
       //   387: goto -20 -> 367
       //   390: aload 12
-      //   392: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   395: ldc 137
-      //   397: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   392: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   395: ldc 138
+      //   397: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   400: aload_1
       //   401: areturn
       //   402: aload_0
-      //   403: getfield 23	androidx/a/a/a$c:wz	I
+      //   403: getfield 23	androidx/a/a/a$c:xx	I
       //   406: newarray long
       //   408: astore_1
       //   409: iload_3
       //   410: istore_2
       //   411: iload_2
       //   412: aload_0
-      //   413: getfield 23	androidx/a/a/a$c:wz	I
+      //   413: getfield 23	androidx/a/a/a$c:xx	I
       //   416: if_icmpge +18 -> 434
       //   419: aload_1
       //   420: iload_2
       //   421: aload 12
-      //   423: invokevirtual 166	androidx/a/a/a$a:df	()J
+      //   423: invokevirtual 167	androidx/a/a/a$a:dm	()J
       //   426: lastore
       //   427: iload_2
       //   428: iconst_1
@@ -4216,30 +4216,30 @@ public final class a
       //   430: istore_2
       //   431: goto -20 -> 411
       //   434: aload 12
-      //   436: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   439: ldc 137
-      //   441: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   436: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   439: ldc 138
+      //   441: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   444: aload_1
       //   445: areturn
       //   446: aload_0
-      //   447: getfield 23	androidx/a/a/a$c:wz	I
-      //   450: anewarray 75	androidx/a/a/a$e
+      //   447: getfield 23	androidx/a/a/a$c:xx	I
+      //   450: anewarray 76	androidx/a/a/a$e
       //   453: astore_1
       //   454: iload 5
       //   456: istore_2
       //   457: iload_2
       //   458: aload_0
-      //   459: getfield 23	androidx/a/a/a$c:wz	I
+      //   459: getfield 23	androidx/a/a/a$c:xx	I
       //   462: if_icmpge +30 -> 492
       //   465: aload_1
       //   466: iload_2
-      //   467: new 75	androidx/a/a/a$e
+      //   467: new 76	androidx/a/a/a$e
       //   470: dup
       //   471: aload 12
-      //   473: invokevirtual 166	androidx/a/a/a$a:df	()J
+      //   473: invokevirtual 167	androidx/a/a/a$a:dm	()J
       //   476: aload 12
-      //   478: invokevirtual 166	androidx/a/a/a$a:df	()J
-      //   481: invokespecial 169	androidx/a/a/a$e:<init>	(JJ)V
+      //   478: invokevirtual 167	androidx/a/a/a$a:dm	()J
+      //   481: invokespecial 170	androidx/a/a/a$e:<init>	(JJ)V
       //   484: aastore
       //   485: iload_2
       //   486: iconst_1
@@ -4247,25 +4247,25 @@ public final class a
       //   488: istore_2
       //   489: goto -32 -> 457
       //   492: aload 12
-      //   494: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   497: ldc 137
-      //   499: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   494: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   497: ldc 138
+      //   499: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   502: aload_1
       //   503: areturn
       //   504: aload_0
-      //   505: getfield 23	androidx/a/a/a$c:wz	I
+      //   505: getfield 23	androidx/a/a/a$c:xx	I
       //   508: newarray int
       //   510: astore_1
       //   511: iload 6
       //   513: istore_2
       //   514: iload_2
       //   515: aload_0
-      //   516: getfield 23	androidx/a/a/a$c:wz	I
+      //   516: getfield 23	androidx/a/a/a$c:xx	I
       //   519: if_icmpge +18 -> 537
       //   522: aload_1
       //   523: iload_2
       //   524: aload 12
-      //   526: invokevirtual 173	androidx/a/a/a$a:readShort	()S
+      //   526: invokevirtual 174	androidx/a/a/a$a:readShort	()S
       //   529: iastore
       //   530: iload_2
       //   531: iconst_1
@@ -4273,25 +4273,25 @@ public final class a
       //   533: istore_2
       //   534: goto -20 -> 514
       //   537: aload 12
-      //   539: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   542: ldc 137
-      //   544: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   539: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   542: ldc 138
+      //   544: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   547: aload_1
       //   548: areturn
       //   549: aload_0
-      //   550: getfield 23	androidx/a/a/a$c:wz	I
+      //   550: getfield 23	androidx/a/a/a$c:xx	I
       //   553: newarray int
       //   555: astore_1
       //   556: iload 7
       //   558: istore_2
       //   559: iload_2
       //   560: aload_0
-      //   561: getfield 23	androidx/a/a/a$c:wz	I
+      //   561: getfield 23	androidx/a/a/a$c:xx	I
       //   564: if_icmpge +18 -> 582
       //   567: aload_1
       //   568: iload_2
       //   569: aload 12
-      //   571: invokevirtual 176	androidx/a/a/a$a:readInt	()I
+      //   571: invokevirtual 177	androidx/a/a/a$a:readInt	()I
       //   574: iastore
       //   575: iload_2
       //   576: iconst_1
@@ -4299,32 +4299,32 @@ public final class a
       //   578: istore_2
       //   579: goto -20 -> 559
       //   582: aload 12
-      //   584: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   587: ldc 137
-      //   589: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   584: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   587: ldc 138
+      //   589: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   592: aload_1
       //   593: areturn
       //   594: aload_0
-      //   595: getfield 23	androidx/a/a/a$c:wz	I
-      //   598: anewarray 75	androidx/a/a/a$e
+      //   595: getfield 23	androidx/a/a/a$c:xx	I
+      //   598: anewarray 76	androidx/a/a/a$e
       //   601: astore_1
       //   602: iload 8
       //   604: istore_2
       //   605: iload_2
       //   606: aload_0
-      //   607: getfield 23	androidx/a/a/a$c:wz	I
+      //   607: getfield 23	androidx/a/a/a$c:xx	I
       //   610: if_icmpge +32 -> 642
       //   613: aload_1
       //   614: iload_2
-      //   615: new 75	androidx/a/a/a$e
+      //   615: new 76	androidx/a/a/a$e
       //   618: dup
       //   619: aload 12
-      //   621: invokevirtual 176	androidx/a/a/a$a:readInt	()I
+      //   621: invokevirtual 177	androidx/a/a/a$a:readInt	()I
       //   624: i2l
       //   625: aload 12
-      //   627: invokevirtual 176	androidx/a/a/a$a:readInt	()I
+      //   627: invokevirtual 177	androidx/a/a/a$a:readInt	()I
       //   630: i2l
-      //   631: invokespecial 169	androidx/a/a/a$e:<init>	(JJ)V
+      //   631: invokespecial 170	androidx/a/a/a$e:<init>	(JJ)V
       //   634: aastore
       //   635: iload_2
       //   636: iconst_1
@@ -4332,25 +4332,25 @@ public final class a
       //   638: istore_2
       //   639: goto -34 -> 605
       //   642: aload 12
-      //   644: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   647: ldc 137
-      //   649: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   644: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   647: ldc 138
+      //   649: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   652: aload_1
       //   653: areturn
       //   654: aload_0
-      //   655: getfield 23	androidx/a/a/a$c:wz	I
+      //   655: getfield 23	androidx/a/a/a$c:xx	I
       //   658: newarray double
       //   660: astore_1
       //   661: iload 9
       //   663: istore_2
       //   664: iload_2
       //   665: aload_0
-      //   666: getfield 23	androidx/a/a/a$c:wz	I
+      //   666: getfield 23	androidx/a/a/a$c:xx	I
       //   669: if_icmpge +19 -> 688
       //   672: aload_1
       //   673: iload_2
       //   674: aload 12
-      //   676: invokevirtual 180	androidx/a/a/a$a:readFloat	()F
+      //   676: invokevirtual 181	androidx/a/a/a$a:readFloat	()F
       //   679: f2d
       //   680: dastore
       //   681: iload_2
@@ -4359,25 +4359,25 @@ public final class a
       //   684: istore_2
       //   685: goto -21 -> 664
       //   688: aload 12
-      //   690: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   693: ldc 137
-      //   695: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   690: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   693: ldc 138
+      //   695: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   698: aload_1
       //   699: areturn
       //   700: aload_0
-      //   701: getfield 23	androidx/a/a/a$c:wz	I
+      //   701: getfield 23	androidx/a/a/a$c:xx	I
       //   704: newarray double
       //   706: astore_1
       //   707: iload 10
       //   709: istore_2
       //   710: iload_2
       //   711: aload_0
-      //   712: getfield 23	androidx/a/a/a$c:wz	I
+      //   712: getfield 23	androidx/a/a/a$c:xx	I
       //   715: if_icmpge +18 -> 733
       //   718: aload_1
       //   719: iload_2
       //   720: aload 12
-      //   722: invokevirtual 184	androidx/a/a/a$a:readDouble	()D
+      //   722: invokevirtual 185	androidx/a/a/a$a:readDouble	()D
       //   725: dastore
       //   726: iload_2
       //   727: iconst_1
@@ -4385,9 +4385,9 @@ public final class a
       //   729: istore_2
       //   730: goto -20 -> 710
       //   733: aload 12
-      //   735: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   738: ldc 137
-      //   740: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   735: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   738: ldc 138
+      //   740: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   743: aload_1
       //   744: areturn
       //   745: astore_1
@@ -4396,9 +4396,9 @@ public final class a
       //   749: aload 12
       //   751: ifnull +8 -> 759
       //   754: aload 12
-      //   756: invokevirtual 149	androidx/a/a/a$a:close	()V
-      //   759: ldc 137
-      //   761: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   756: invokevirtual 150	androidx/a/a/a$a:close	()V
+      //   759: ldc 138
+      //   761: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   764: aload_1
       //   765: athrow
       //   766: astore 12
@@ -4671,9 +4671,9 @@ public final class a
         i = m;
         while (i < localObject.length)
         {
-          paramByteOrder.append(localObject[i].wD);
+          paramByteOrder.append(localObject[i].xB);
           paramByteOrder.append('/');
-          paramByteOrder.append(localObject[i].wE);
+          paramByteOrder.append(localObject[i].xC);
           if (i + 1 != localObject.length) {
             paramByteOrder.append(",");
           }
@@ -4748,7 +4748,7 @@ public final class a
         paramByteOrder = (a.e[])paramByteOrder;
         if (paramByteOrder.length == 1)
         {
-          d = paramByteOrder[0].mR();
+          d = paramByteOrder[0].nb();
           AppMethodBeat.o(178707);
           return d;
         }
@@ -4763,13 +4763,13 @@ public final class a
     
     public final int size()
     {
-      return a.vH[this.format] * this.wz;
+      return a.wG[this.format] * this.xx;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(178705);
-      String str = "(" + a.vG[this.format] + ", data length:" + this.wA.length + ")";
+      String str = "(" + a.wF[this.format] + ", data length:" + this.xy.length + ")";
       AppMethodBeat.o(178705);
       return str;
     }
@@ -4779,29 +4779,29 @@ public final class a
   {
     public final String name;
     public final int number;
-    public final int wB;
-    public final int wC;
+    public final int xA;
+    public final int xz;
     
     d(String paramString, int paramInt)
     {
       this.name = paramString;
       this.number = paramInt;
-      this.wB = 3;
-      this.wC = 4;
+      this.xz = 3;
+      this.xA = 4;
     }
     
     d(String paramString, int paramInt1, int paramInt2)
     {
       this.name = paramString;
       this.number = paramInt1;
-      this.wB = paramInt2;
-      this.wC = -1;
+      this.xz = paramInt2;
+      this.xA = -1;
     }
     
     final boolean an(int paramInt)
     {
-      if ((this.wB == 7) || (paramInt == 7)) {}
-      while ((this.wB == paramInt) || (this.wC == paramInt) || (((this.wB == 4) || (this.wC == 4)) && ((paramInt == 3) || (((this.wB == 9) || (this.wC == 9)) && ((paramInt == 8) || (((this.wB == 12) || (this.wC == 12)) && (paramInt == 11))))))) {
+      if ((this.xz == 7) || (paramInt == 7)) {}
+      while ((this.xz == paramInt) || (this.xA == paramInt) || (((this.xz == 4) || (this.xA == 4)) && ((paramInt == 3) || (((this.xz == 9) || (this.xA == 9)) && ((paramInt == 8) || (((this.xz == 12) || (this.xA == 12)) && (paramInt == 11))))))) {
         return true;
       }
       return false;
@@ -4810,8 +4810,8 @@ public final class a
   
   static final class e
   {
-    public final long wD;
-    public final long wE;
+    public final long xB;
+    public final long xC;
     
     e(double paramDouble)
     {
@@ -4825,25 +4825,25 @@ public final class a
       AppMethodBeat.i(178711);
       if (paramLong2 == 0L)
       {
-        this.wD = 0L;
-        this.wE = 1L;
+        this.xB = 0L;
+        this.xC = 1L;
         AppMethodBeat.o(178711);
         return;
       }
-      this.wD = paramLong1;
-      this.wE = paramLong2;
+      this.xB = paramLong1;
+      this.xC = paramLong2;
       AppMethodBeat.o(178711);
     }
     
-    public final double mR()
+    public final double nb()
     {
-      return this.wD / this.wE;
+      return this.xB / this.xC;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(178712);
-      String str = this.wD + "/" + this.wE;
+      String str = this.xB + "/" + this.xC;
       AppMethodBeat.o(178712);
       return str;
     }

@@ -1,129 +1,61 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class bih
-  extends ckq
+  extends cqk
 {
-  public String DFP;
-  public String DFR;
-  public String DFS;
-  public b DFT;
-  public int DFU;
-  public String DFV;
-  public String cMo;
-  public String fVC;
-  public String scope;
-  public String signature;
-  public String url;
+  public int EXx;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82433);
+    AppMethodBeat.i(101817);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.BaseResponse == null)
       {
-        paramVarArgs.kX(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(101817);
+        throw paramVarArgs;
       }
-      if (this.url != null) {
-        paramVarArgs.d(2, this.url);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.fVC != null) {
-        paramVarArgs.d(3, this.fVC);
-      }
-      if (this.DFP != null) {
-        paramVarArgs.d(4, this.DFP);
-      }
-      if (this.cMo != null) {
-        paramVarArgs.d(5, this.cMo);
-      }
-      if (this.DFR != null) {
-        paramVarArgs.d(6, this.DFR);
-      }
-      if (this.signature != null) {
-        paramVarArgs.d(7, this.signature);
-      }
-      if (this.DFS != null) {
-        paramVarArgs.d(8, this.DFS);
-      }
-      if (this.DFT != null) {
-        paramVarArgs.c(9, this.DFT);
-      }
-      paramVarArgs.aR(10, this.DFU);
-      if (this.scope != null) {
-        paramVarArgs.d(11, this.scope);
-      }
-      if (this.DFV != null) {
-        paramVarArgs.d(12, this.DFV);
-      }
-      AppMethodBeat.o(82433);
+      paramVarArgs.aR(2, this.EXx);
+      AppMethodBeat.o(101817);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label970;
+      if (this.BaseResponse == null) {
+        break label402;
       }
     }
-    label970:
-    for (int i = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label402:
+    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.url);
-      }
-      i = paramInt;
-      if (this.fVC != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.fVC);
-      }
-      paramInt = i;
-      if (this.DFP != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.DFP);
-      }
-      i = paramInt;
-      if (this.cMo != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.cMo);
-      }
-      paramInt = i;
-      if (this.DFR != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.DFR);
-      }
-      i = paramInt;
-      if (this.signature != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.signature);
-      }
-      paramInt = i;
-      if (this.DFS != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.DFS);
-      }
-      i = paramInt;
-      if (this.DFT != null) {
-        i = paramInt + f.a.a.b.b.a.b(9, this.DFT);
-      }
-      i += f.a.a.b.b.a.bA(10, this.DFU);
-      paramInt = i;
-      if (this.scope != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.scope);
-      }
-      i = paramInt;
-      if (this.DFV != null) {
-        i = paramInt + f.a.a.b.b.a.e(12, this.DFV);
-      }
-      AppMethodBeat.o(82433);
-      return i;
+      int i = f.a.a.b.b.a.bx(2, this.EXx);
+      AppMethodBeat.o(101817);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(82433);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(101817);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(101817);
         return 0;
       }
       if (paramInt == 3)
@@ -134,76 +66,36 @@ public final class bih
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(82433);
+          AppMethodBeat.o(101817);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ip();
+            localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbih.BaseRequest = ((ip)localObject1);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbih.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(82433);
-          return 0;
-        case 2: 
-          localbih.url = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(82433);
-          return 0;
-        case 3: 
-          localbih.fVC = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(82433);
-          return 0;
-        case 4: 
-          localbih.DFP = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(82433);
-          return 0;
-        case 5: 
-          localbih.cMo = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(82433);
-          return 0;
-        case 6: 
-          localbih.DFR = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(82433);
-          return 0;
-        case 7: 
-          localbih.signature = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(82433);
-          return 0;
-        case 8: 
-          localbih.DFS = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(82433);
-          return 0;
-        case 9: 
-          localbih.DFT = ((f.a.a.a.a)localObject1).KhF.fMu();
-          AppMethodBeat.o(82433);
-          return 0;
-        case 10: 
-          localbih.DFU = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(82433);
-          return 0;
-        case 11: 
-          localbih.scope = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(82433);
+          AppMethodBeat.o(101817);
           return 0;
         }
-        localbih.DFV = ((f.a.a.a.a)localObject1).KhF.readString();
-        AppMethodBeat.o(82433);
+        localbih.EXx = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(101817);
         return 0;
       }
-      AppMethodBeat.o(82433);
+      AppMethodBeat.o(101817);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bih
  * JD-Core Version:    0.7.0.1
  */

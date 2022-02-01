@@ -16,31 +16,31 @@ import java.util.Map;
 public final class y
   implements i
 {
-  private final d.l.b.a.b.e.b.a JUh;
-  final Map<d.l.b.a.b.f.a, a.b> JVe;
-  private final b<d.l.b.a.b.f.a, an> JVf;
-  private final c Jiu;
+  private final c KVO;
+  private final d.l.b.a.b.e.b.a LHA;
+  final Map<d.l.b.a.b.f.a, a.b> LIx;
+  private final b<d.l.b.a.b.f.a, an> LIy;
   
   public y(a.l paraml, c paramc, d.l.b.a.b.e.b.a parama, b<? super d.l.b.a.b.f.a, ? extends an> paramb)
   {
     AppMethodBeat.i(60345);
-    this.Jiu = paramc;
-    this.JUh = parama;
-    this.JVf = paramb;
-    paraml = paraml.JHU;
+    this.KVO = paramc;
+    this.LHA = parama;
+    this.LIy = paramb;
+    paraml = paraml.Lvn;
     k.g(paraml, "proto.class_List");
     paramc = (Iterable)paraml;
-    paraml = (Map)new LinkedHashMap(d.k.h.kK(ae.adL(j.a(paramc, 10)), 16));
+    paraml = (Map)new LinkedHashMap(d.k.h.la(ae.agH(j.a(paramc, 10)), 16));
     paramc = paramc.iterator();
     while (paramc.hasNext())
     {
       parama = paramc.next();
       paramb = (a.b)parama;
-      c localc = this.Jiu;
+      c localc = this.KVO;
       k.g(paramb, "klass");
-      paraml.put(x.a(localc, paramb.JGu), parama);
+      paraml.put(x.a(localc, paramb.LtN), parama);
     }
-    this.JVe = paraml;
+    this.LIx = paraml;
     AppMethodBeat.o(60345);
   }
   
@@ -48,20 +48,20 @@ public final class y
   {
     AppMethodBeat.i(60344);
     k.h(parama, "classId");
-    a.b localb = (a.b)this.JVe.get(parama);
+    a.b localb = (a.b)this.LIx.get(parama);
     if (localb == null)
     {
       AppMethodBeat.o(60344);
       return null;
     }
-    parama = new h(this.Jiu, localb, this.JUh, (an)this.JVf.aA(parama));
+    parama = new h(this.KVO, localb, this.LHA, (an)this.LIy.ay(parama));
     AppMethodBeat.o(60344);
     return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.y
  * JD-Core Version:    0.7.0.1
  */

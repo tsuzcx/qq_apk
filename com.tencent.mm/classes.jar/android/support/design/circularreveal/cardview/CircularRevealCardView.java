@@ -14,7 +14,7 @@ public class CircularRevealCardView
   extends CardView
   implements c
 {
-  private final b gJ = new b(this);
+  private final b hI = new b(this);
   
   public CircularRevealCardView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,26 +26,26 @@ public class CircularRevealCardView
     super.draw(paramCanvas);
   }
   
-  public final void aV()
+  public final void bc()
   {
-    this.gJ.aV();
+    this.hI.bc();
   }
   
-  public final void aW()
+  public final void bd()
   {
-    this.gJ.aW();
+    this.hI.bd();
   }
   
-  public final boolean aX()
+  public final boolean be()
   {
     return super.isOpaque();
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.gJ != null)
+    if (this.hI != null)
     {
-      this.gJ.draw(paramCanvas);
+      this.hI.draw(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -53,45 +53,45 @@ public class CircularRevealCardView
   
   public Drawable getCircularRevealOverlayDrawable()
   {
-    return this.gJ.gQ;
+    return this.hI.hP;
   }
   
   public int getCircularRevealScrimColor()
   {
-    return this.gJ.gO.getColor();
+    return this.hI.hN.getColor();
   }
   
   public c.d getRevealInfo()
   {
-    return this.gJ.getRevealInfo();
+    return this.hI.getRevealInfo();
   }
   
   public boolean isOpaque()
   {
-    if (this.gJ != null) {
-      return this.gJ.isOpaque();
+    if (this.hI != null) {
+      return this.hI.isOpaque();
     }
     return super.isOpaque();
   }
   
   public void setCircularRevealOverlayDrawable(Drawable paramDrawable)
   {
-    this.gJ.setCircularRevealOverlayDrawable(paramDrawable);
+    this.hI.setCircularRevealOverlayDrawable(paramDrawable);
   }
   
   public void setCircularRevealScrimColor(int paramInt)
   {
-    this.gJ.setCircularRevealScrimColor(paramInt);
+    this.hI.setCircularRevealScrimColor(paramInt);
   }
   
   public void setRevealInfo(c.d paramd)
   {
-    this.gJ.setRevealInfo(paramd);
+    this.hI.setRevealInfo(paramd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.circularreveal.cardview.CircularRevealCardView
  * JD-Core Version:    0.7.0.1
  */

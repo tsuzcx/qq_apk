@@ -6,67 +6,47 @@ import com.tencent.mm.plugin.report.a;
 public final class dh
   extends a
 {
-  private long dTY;
-  private long dTZ = 0L;
-  private long dUa = 0L;
-  private String dUb;
+  public long dCS;
+  public long dRO;
+  public long dRP;
+  public long dRQ = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(118496);
+    AppMethodBeat.i(88783);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTY);
+    ((StringBuffer)localObject).append(this.dCS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTZ);
+    ((StringBuffer)localObject).append(this.dRO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUa);
+    ((StringBuffer)localObject).append(this.dRP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUb);
+    ((StringBuffer)localObject).append(this.dRQ);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(118496);
+    arz((String)localObject);
+    AppMethodBeat.o(88783);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(118497);
+    AppMethodBeat.i(88784);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Storyid:").append(this.dTY);
+    ((StringBuffer)localObject).append("action:").append(this.dCS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BrowseFriendsCount:").append(this.dTZ);
+    ((StringBuffer)localObject).append("msgid:").append(this.dRO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentFriendsCount:").append(this.dUa);
+    ((StringBuffer)localObject).append("msgType:").append(this.dRP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StoryidStr:").append(this.dUb);
+    ((StringBuffer)localObject).append("appMsgType:").append(this.dRQ);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118497);
+    AppMethodBeat.o(88784);
     return localObject;
-  }
-  
-  public final dh fS(long paramLong)
-  {
-    this.dTZ = paramLong;
-    return this;
-  }
-  
-  public final dh fT(long paramLong)
-  {
-    this.dUa = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 18744;
-  }
-  
-  public final dh jJ(String paramString)
-  {
-    AppMethodBeat.i(118495);
-    this.dUb = t("StoryidStr", paramString, true);
-    AppMethodBeat.o(118495);
-    return this;
+    return 18754;
   }
 }
 

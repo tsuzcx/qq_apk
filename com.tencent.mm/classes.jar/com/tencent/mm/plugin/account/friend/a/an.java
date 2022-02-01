@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cri;
-import com.tencent.mm.protocal.protobuf.crj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cwr;
+import com.tencent.mm.protocal.protobuf.cws;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class an
   extends n
@@ -25,15 +25,15 @@ public final class an
   {
     AppMethodBeat.i(131145);
     b.a locala = new b.a();
-    locala.gUU = new cri();
-    locala.gUV = new crj();
+    locala.hvt = new cwr();
+    locala.hvu = new cws();
     locala.uri = "/cgi-bin/micromsg-bin/newsetemailpwd";
     locala.funcId = 382;
     locala.reqCmdId = 181;
     locala.respCmdId = 1000000181;
-    this.rr = locala.atI();
-    ((cri)this.rr.gUS.gUX).CGf = bt.aGb(paramString);
-    ad.d("MicroMsg.NetSceneSetEmailPwd", "md5 ".concat(String.valueOf(paramString)));
+    this.rr = locala.aAz();
+    ((cwr)this.rr.hvr.hvw).DYF = bs.aLs(paramString);
+    ac.d("MicroMsg.NetSceneSetEmailPwd", "md5 ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(131145);
   }
   
@@ -54,7 +54,7 @@ public final class an
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131147);
-    ad.d("MicroMsg.NetSceneSetEmailPwd", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+    ac.d("MicroMsg.NetSceneSetEmailPwd", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(131147);
   }

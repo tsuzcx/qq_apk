@@ -9,8 +9,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -53,14 +53,14 @@ public class ShareMicroMsgChoiceUI
         return true;
       }
     });
-    ((IconPreference)this.screen.aKk("share_micromsg_to_sina")).drawable = com.tencent.mm.cd.a.l(this, 2131234022);
-    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apU().agP("@t.qq.com");
+    ((IconPreference)this.screen.aPN("share_micromsg_to_sina")).drawable = com.tencent.mm.cc.a.l(this, 2131234022);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awJ().alJ("@t.qq.com");
     int i;
     IconPreference localIconPreference;
-    if (bt.l((Integer)g.afB().afk().get(9, null)) != 0)
+    if (bs.m((Integer)g.agR().agA().get(9, null)) != 0)
     {
       i = 1;
-      localIconPreference = (IconPreference)this.screen.aKk("share_micromsg_qzone");
+      localIconPreference = (IconPreference)this.screen.aPN("share_micromsg_qzone");
       if (i != 0) {
         break label170;
       }
@@ -68,17 +68,17 @@ public class ShareMicroMsgChoiceUI
     }
     for (;;)
     {
-      localIconPreference = (IconPreference)this.screen.aKk("share_micromsg_to_fuckbook");
-      if (!u.arg()) {
+      localIconPreference = (IconPreference)this.screen.aPN("share_micromsg_to_fuckbook");
+      if (!u.axW()) {
         break label183;
       }
-      localIconPreference.drawable = com.tencent.mm.cd.a.l(this, 2131234021);
+      localIconPreference.drawable = com.tencent.mm.cc.a.l(this, 2131234021);
       AppMethodBeat.o(73843);
       return;
       i = 0;
       break;
       label170:
-      localIconPreference.drawable = com.tencent.mm.cd.a.l(this, 2131233940);
+      localIconPreference.drawable = com.tencent.mm.cc.a.l(this, 2131233940);
     }
     label183:
     this.screen.d(localIconPreference);
@@ -98,13 +98,13 @@ public class ShareMicroMsgChoiceUI
     AppMethodBeat.i(73844);
     paramf = paramPreference.mKey;
     if (paramf.equals("share_micromsg_qzone")) {
-      if (bt.l((Integer)g.afB().afk().get(9, null)) != 0)
+      if (bs.m((Integer)g.agR().agA().get(9, null)) != 0)
       {
         paramf = new Intent(this, ShowQRCodeStep1UI.class);
         paramf.putExtra("show_to", 2);
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.lS(0));
+        paramf = new com.tencent.mm.hellhoundlib.b.a().ba(paramf);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.aeD(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
@@ -112,24 +112,24 @@ public class ShareMicroMsgChoiceUI
     {
       AppMethodBeat.o(73844);
       return false;
-      h.j(this, 2131763041, 2131755906);
+      h.l(this, 2131763041, 2131755906);
       continue;
       if (paramf.equals("share_micromsg_to_sina"))
       {
         paramf = new Intent(this, ShowQRCodeStep1UI.class);
         paramf.putExtra("show_to", 3);
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.lS(0));
+        paramf = new com.tencent.mm.hellhoundlib.b.a().ba(paramf);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.aeD(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       else if (paramf.equals("share_micromsg_to_fuckbook"))
       {
         paramf = new Intent(this, ShowQRCodeStep1UI.class);
         paramf.putExtra("show_to", 4);
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.lS(0));
+        paramf = new com.tencent.mm.hellhoundlib.b.a().ba(paramf);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.aeD(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }

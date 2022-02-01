@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class jc
   extends b
 {
-  public a dnh;
-  public b dni;
+  public a dkw;
+  public b dkx;
   
   public jc()
   {
@@ -16,22 +17,22 @@ public final class jc
   
   private jc(byte paramByte)
   {
-    AppMethodBeat.i(153017);
-    this.dnh = new a();
-    this.dni = new b();
-    this.ESR = false;
+    AppMethodBeat.i(155370);
+    this.dkw = new a();
+    this.dkx = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(153017);
+    AppMethodBeat.o(155370);
   }
   
   public static final class a
   {
-    public String dnj;
+    public Context context;
   }
   
   public static final class b
   {
-    public String dnk;
+    public String dky;
   }
 }
 

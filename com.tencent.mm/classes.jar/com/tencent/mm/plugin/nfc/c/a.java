@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static final char[] jLy = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  private static final char[] klZ = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
   
   public static byte[] b(short paramShort)
   {
@@ -24,8 +24,8 @@ public final class a
     while (i < paramArrayOfByte.length)
     {
       int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar[(i * 2)] = jLy[(j >>> 4)];
-      arrayOfChar[(i * 2 + 1)] = jLy[(j & 0xF)];
+      arrayOfChar[(i * 2)] = klZ[(j >>> 4)];
+      arrayOfChar[(i * 2 + 1)] = klZ[(j & 0xF)];
       i += 1;
     }
     paramArrayOfByte = new String(arrayOfChar);

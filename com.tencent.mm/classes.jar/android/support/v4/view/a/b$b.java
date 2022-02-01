@@ -5,11 +5,11 @@ import android.view.accessibility.AccessibilityManager.TouchExplorationStateChan
 public final class b$b
   implements AccessibilityManager.TouchExplorationStateChangeListener
 {
-  final b.a Oo;
+  final b.a Pl;
   
   public b$b(b.a parama)
   {
-    this.Oo = parama;
+    this.Pl = parama;
   }
   
   public final boolean equals(Object paramObject)
@@ -21,22 +21,22 @@ public final class b$b
       return false;
     }
     paramObject = (b)paramObject;
-    return this.Oo.equals(paramObject.Oo);
+    return this.Pl.equals(paramObject.Pl);
   }
   
   public final int hashCode()
   {
-    return this.Oo.hashCode();
+    return this.Pl.hashCode();
   }
   
   public final void onTouchExplorationStateChanged(boolean paramBoolean)
   {
-    this.Oo.onTouchExplorationStateChanged(paramBoolean);
+    this.Pl.onTouchExplorationStateChanged(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.view.a.b.b
  * JD-Core Version:    0.7.0.1
  */

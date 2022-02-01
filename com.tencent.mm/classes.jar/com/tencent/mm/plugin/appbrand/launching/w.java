@@ -2,28 +2,29 @@ package com.tencent.mm.plugin.appbrand.launching;
 
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.c.a;
-import com.tencent.mm.co.f;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.b.p;
+import com.tencent.mm.cn.f;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkg;
 import com.tencent.mm.plugin.appbrand.appcache.ab;
 import com.tencent.mm.plugin.appbrand.appcache.bb;
 import com.tencent.mm.plugin.appbrand.appcache.bf;
-import com.tencent.mm.plugin.appbrand.appcache.g;
-import com.tencent.mm.plugin.appbrand.appcache.h;
-import com.tencent.mm.plugin.appbrand.appcache.i;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.protocal.protobuf.ate;
-import com.tencent.mm.protocal.protobuf.atf;
-import com.tencent.mm.protocal.protobuf.bbe;
-import com.tencent.mm.protocal.protobuf.bbf;
-import com.tencent.mm.protocal.protobuf.bdp;
-import com.tencent.mm.protocal.protobuf.bdq;
-import com.tencent.mm.protocal.protobuf.bmj;
-import com.tencent.mm.protocal.protobuf.ckp;
-import com.tencent.mm.protocal.protobuf.ji;
-import com.tencent.mm.protocal.protobuf.jj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import d.g.a.b;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.protocal.protobuf.awi;
+import com.tencent.mm.protocal.protobuf.awj;
+import com.tencent.mm.protocal.protobuf.bew;
+import com.tencent.mm.protocal.protobuf.bex;
+import com.tencent.mm.protocal.protobuf.bhh;
+import com.tencent.mm.protocal.protobuf.bhi;
+import com.tencent.mm.protocal.protobuf.bqz;
+import com.tencent.mm.protocal.protobuf.cpw;
+import com.tencent.mm.protocal.protobuf.jo;
+import com.tencent.mm.protocal.protobuf.jp;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aw;
 import d.g.a.q;
 import d.g.b.k;
 import d.y;
@@ -34,55 +35,55 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/launching/GetPkgDownloadUrlUnifiedCgiRouter;", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor;", "()V", "TAG", "", "mPreGetDownloadUrlResults", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest;", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "Lcom/tencent/mm/plugin/appbrand/launching/LocalUnifiedGetDownloadUrlResp;", "addPreGetDownloadUrlResult", "", "map", "", "removePreGetDownloadUrlResult", "request", "waitForBatchGetDownloadUrl", "inRequestList", "", "onSuccess", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "onError", "Lkotlin/Function3;", "", "scene", "waitForDownloadUrl", "wormholeForLegacyReleaseCode", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlResponse;", "cgi", "Lcom/tencent/mm/plugin/appbrand/appcache/CgiGetPkgDownloadInfo;", "wormholeForLegacyTestCode", "Lcom/tencent/mm/protocal/protobuf/GetTestCodeDownloadInfoResponse;", "Lcom/tencent/mm/plugin/appbrand/appcache/CgiGetTestCodeDownloadInfo;", "createNewProtocolReqItemList", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlReqItem;", "createRequestPackageInfo", "Lcom/tencent/mm/protocal/protobuf/RequestPackageInfo;", "RouterController", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/GetPkgDownloadUrlUnifiedCgiRouter;", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor;", "()V", "TAG", "", "mPreGetDownloadUrlResults", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest;", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "Lcom/tencent/mm/plugin/appbrand/launching/LocalUnifiedGetDownloadUrlResp;", "addPreGetDownloadUrlResult", "", "map", "", "removePreGetDownloadUrlResult", "request", "waitForBatchGetDownloadUrl", "inRequestList", "", "onSuccess", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "onError", "Lkotlin/Function3;", "", "scene", "waitForDownloadUrl", "wormholeForLegacyReleaseCode", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlResponse;", "cgi", "Lcom/tencent/mm/plugin/appbrand/appcache/CgiGetPkgDownloadInfo;", "wormholeForLegacyTestCode", "Lcom/tencent/mm/protocal/protobuf/GetTestCodeDownloadInfoResponse;", "Lcom/tencent/mm/plugin/appbrand/appcache/CgiGetTestCodeDownloadInfo;", "createNewProtocolReqItemList", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlReqItem;", "createRequestPackageInfo", "Lcom/tencent/mm/protocal/protobuf/RequestPackageInfo;", "RouterController", "plugin-appbrand-integration_release"})
 public final class w
   implements z
 {
-  private static final ConcurrentHashMap<z.b, atf[]> kIQ;
-  public static final w kIR;
+  private static final ConcurrentHashMap<z.b, awj[]> lkm;
+  public static final w lkn;
   
   static
   {
     AppMethodBeat.i(180554);
-    kIR = new w();
-    kIQ = new ConcurrentHashMap();
+    lkn = new w();
+    lkm = new ConcurrentHashMap();
     AppMethodBeat.o(180554);
   }
   
-  public static void M(Map<z.b, atf[]> paramMap)
+  public static void M(Map<z.b, awj[]> paramMap)
   {
     AppMethodBeat.i(180547);
     k.h(paramMap, "map");
-    kIQ.putAll(paramMap);
+    lkm.putAll(paramMap);
     AppMethodBeat.o(180547);
   }
   
-  public static final f<c.a<bbf>> a(i parami)
+  public static final f<c.a<bex>> a(com.tencent.mm.plugin.appbrand.appcache.i parami)
   {
     AppMethodBeat.i(180549);
     k.h(parami, "cgi");
-    Object localObject1 = w.a.kIS;
-    if (!w.a.a.bgy())
+    Object localObject1 = a.lko;
+    if (!w.a.a.bns())
     {
       AppMethodBeat.o(180549);
       return null;
     }
-    localObject1 = k.kJc;
+    localObject1 = k.lky;
     localObject1 = new StringBuilder("wormholeForLegacyTestCode with ");
-    Object localObject2 = parami.aPh();
+    Object localObject2 = parami.aVZ();
     k.g(localObject2, "cgi.request");
-    ad.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", k.a((bbe)localObject2) + " intercepted");
-    localObject1 = new ate();
-    ((ate)localObject1).Dth = new ckp();
-    ((ate)localObject1).Dth.dlB = parami.aPh().dlB;
-    ((ate)localObject1).Dth.DyR = parami.aPh().DyR;
-    ((ate)localObject1).Dth.DyU = parami.aPh().DyU;
-    ((ate)localObject1).Dth.CLK = parami.aPh().CPu;
-    ((ate)localObject1).Dtj = 0;
-    ((ate)localObject1).Dtm = parami.aPh().DyT;
-    localObject2 = new ji();
-    ((ji)localObject2).CEF.add(localObject1);
-    parami = new g((ji)localObject2).auK().b((com.tencent.mm.vending.c.a)new l(parami));
+    ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", k.a((bew)localObject2) + " intercepted");
+    localObject1 = new awi();
+    ((awi)localObject1).EOl = new cpw();
+    ((awi)localObject1).EOl.djj = parami.aVZ().djj;
+    ((awi)localObject1).EOl.EUn = parami.aVZ().EUn;
+    ((awi)localObject1).EOl.EUq = parami.aVZ().EUq;
+    ((awi)localObject1).EOl.Een = parami.aVZ().Eif;
+    ((awi)localObject1).EOn = 0;
+    ((awi)localObject1).EOq = parami.aVZ().EUp;
+    localObject2 = new jo();
+    ((jo)localObject2).DXf.add(localObject1);
+    parami = new com.tencent.mm.plugin.appbrand.appcache.g((jo)localObject2).aBB().b((com.tencent.mm.vending.c.a)new l(parami));
     AppMethodBeat.o(180549);
     return parami;
   }
@@ -91,94 +92,120 @@ public final class w
   {
     AppMethodBeat.i(180548);
     k.h(paramb, "request");
-    kIQ.remove(paramb);
+    lkm.remove(paramb);
     AppMethodBeat.o(180548);
   }
   
-  public static final f<c.a<bdq>> b(h paramh)
+  public static final f<c.a<bhi>> b(com.tencent.mm.plugin.appbrand.appcache.h paramh)
   {
+    Object localObject1 = null;
     AppMethodBeat.i(180550);
     k.h(paramh, "cgi");
-    Object localObject1 = w.a.kIS;
-    if (!w.a.a.bgy())
+    Object localObject2 = a.lko;
+    if (!w.a.a.bns())
     {
       AppMethodBeat.o(180550);
       return null;
     }
-    localObject1 = h.kJa;
-    localObject1 = new StringBuilder("wormholeForLegacyReleaseCode with ");
-    Object localObject2 = paramh.aPf();
-    k.g(localObject2, "cgi.request");
-    ad.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", h.a((bdp)localObject2) + " intercepted");
-    localObject2 = new i(paramh);
-    localObject1 = new ji();
-    ((ji)localObject1).CEF.add(((i)localObject2).bgz());
-    LinkedList localLinkedList = ((ji)localObject1).CEF;
-    ate localate = ((i)localObject2).bgz();
-    localate.Dtl = true;
-    localLinkedList.add(localate);
-    ((ji)localObject1).scene = paramh.aPf().scene;
-    ad.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "CgiBatchGetPkgDownloadInfo scene:%d", new Object[] { Integer.valueOf(((ji)localObject1).scene) });
-    if (paramh.aPf().DAL > 0)
+    localObject2 = h.lkw;
+    localObject2 = new StringBuilder("wormholeForLegacyReleaseCode with ");
+    Object localObject3 = paramh.aVX();
+    k.g(localObject3, "cgi.request");
+    ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", h.a((bhh)localObject3) + " intercepted");
+    localObject3 = new i(paramh);
+    localObject2 = new jo();
+    ((jo)localObject2).DXf.add(((i)localObject3).bnt());
+    Object localObject4 = ((jo)localObject2).DXf;
+    awi localawi = ((i)localObject3).bnt();
+    localawi.EOp = true;
+    ((LinkedList)localObject4).add(localawi);
+    ((jo)localObject2).scene = paramh.aVX().scene;
+    ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "CgiBatchGetPkgDownloadInfo scene:%d", new Object[] { Integer.valueOf(((jo)localObject2).scene) });
+    int i;
+    if (paramh.aVX().EWh > 0)
     {
-      localLinkedList = ((ji)localObject1).CEF;
-      localObject2 = ((i)localObject2).bgz();
-      ((ate)localObject2).Dti = new bmj();
-      ((ate)localObject2).Dti.CLL = paramh.aPf().DAL;
-      localLinkedList.add(localObject2);
-    }
-    paramh = new g((ji)localObject1).auK().b((com.tencent.mm.vending.c.a)new j(paramh));
-    AppMethodBeat.o(180550);
-    return paramh;
-  }
-  
-  private static ckp b(z.b paramb)
-  {
-    AppMethodBeat.i(196362);
-    ckp localckp = new ckp();
-    localckp.dlB = paramb.appId;
-    int i = paramb.deP;
-    int[] arrayOfInt = com.tencent.mm.cp.a.Igv;
-    k.g(arrayOfInt, "ConstantsWxaPackageProto…_INTEGRATED_PACKAGE_TYPES");
-    if (d.a.e.contains(arrayOfInt, i)) {
-      localckp.DyR = null;
+      localObject4 = com.tencent.mm.plugin.appbrand.app.j.aVC().a(new ab(paramh.aVX().djj, paramh.aVX().EUn, paramh.aVX().EUq).toString(), paramh.aVX().EWh, 0, new String[] { "pkgPath" });
+      if (localObject4 != null) {
+        localObject1 = ((bb)localObject4).field_pkgPath;
+      }
+      if (!com.tencent.mm.vfs.i.eA((String)localObject1)) {
+        break label403;
+      }
+      i = WxaPkg.Ic((String)localObject1);
+      localObject1 = new StringBuilder("wormholeForLegacyReleaseCode with ");
+      localObject4 = h.lkw;
+      localObject4 = paramh.aVX();
+      k.g(localObject4, "cgi.request");
+      ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", h.a((bhh)localObject4) + ", intercepted, oldPkg.innerVersion=" + i);
+      if (i != 0) {
+        break label408;
+      }
+      localObject1 = ((jo)localObject2).DXf;
+      localObject3 = ((i)localObject3).bnt();
+      ((awi)localObject3).EOm = new bqz();
+      ((awi)localObject3).EOm.Eeo = paramh.aVX().EWh;
+      ((LinkedList)localObject1).add(localObject3);
     }
     for (;;)
     {
-      localckp.DyU = paramb.deP;
-      localckp.CLK = paramb.gXn;
-      AppMethodBeat.o(196362);
-      return localckp;
-      arrayOfInt = com.tencent.mm.cp.a.Igu;
+      paramh = new com.tencent.mm.plugin.appbrand.appcache.g((jo)localObject2).aBB().b((com.tencent.mm.vending.c.a)new j(paramh));
+      AppMethodBeat.o(180550);
+      return paramh;
+      label403:
+      i = -1;
+      break;
+      label408:
+      com.tencent.mm.plugin.report.service.h.wUl.dB(697, 20);
+    }
+  }
+  
+  private static cpw b(z.b paramb)
+  {
+    AppMethodBeat.i(187299);
+    cpw localcpw = new cpw();
+    localcpw.djj = paramb.appId;
+    int i = paramb.dcj;
+    int[] arrayOfInt = com.tencent.mm.co.a.JHX;
+    k.g(arrayOfInt, "ConstantsWxaPackageProto…_INTEGRATED_PACKAGE_TYPES");
+    if (d.a.e.contains(arrayOfInt, i)) {
+      localcpw.EUn = null;
+    }
+    for (;;)
+    {
+      localcpw.EUq = paramb.dcj;
+      localcpw.Een = paramb.hxM;
+      AppMethodBeat.o(187299);
+      return localcpw;
+      arrayOfInt = com.tencent.mm.co.a.JHW;
       k.g(arrayOfInt, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
       if (d.a.e.contains(arrayOfInt, i)) {
-        localckp.DyR = null;
+        localcpw.EUn = null;
       } else {
-        localckp.DyR = paramb.chK;
+        localcpw.EUn = paramb.ceF;
       }
     }
   }
   
-  private static List<ate> c(z.b paramb)
+  private static List<awi> c(z.b paramb)
   {
     AppMethodBeat.i(180553);
     LinkedList localLinkedList = new LinkedList();
     Object localObject = new b(paramb);
-    ate localate = ((b)localObject).bgz();
-    localate.Dti = null;
-    localate.Dtl = false;
-    localLinkedList.add(localate);
-    localate = ((b)localObject).bgz();
-    localate.Dti = null;
-    localate.Dtl = true;
-    localLinkedList.add(localate);
-    if (paramb.kIJ > 0)
+    awi localawi = ((b)localObject).bnt();
+    localawi.EOm = null;
+    localawi.EOp = false;
+    localLinkedList.add(localawi);
+    localawi = ((b)localObject).bnt();
+    localawi.EOm = null;
+    localawi.EOp = true;
+    localLinkedList.add(localawi);
+    if (paramb.lkf > 0)
     {
-      localObject = ((b)localObject).bgz();
-      ((ate)localObject).Dti = new bmj();
-      ((ate)localObject).Dti.CLL = paramb.kIJ;
-      ((ate)localObject).Dti.DAQ = paramb.kJH;
-      ((ate)localObject).Dtl = false;
+      localObject = ((b)localObject).bnt();
+      ((awi)localObject).EOm = new bqz();
+      ((awi)localObject).EOm.Eeo = paramb.lkf;
+      ((awi)localObject).EOm.EWm = paramb.lld;
+      ((awi)localObject).EOp = false;
       localLinkedList.add(localObject);
     }
     paramb = (List)localLinkedList;
@@ -186,7 +213,7 @@ public final class w
     return paramb;
   }
   
-  public final void a(final z.b paramb, final b<? super atf[], y> paramb1, final q<? super Integer, ? super Integer, ? super String, y> paramq, int paramInt)
+  public final void a(final z.b paramb, final d.g.a.b<? super awj[], y> paramb1, final q<? super Integer, ? super Integer, ? super String, y> paramq, int paramInt)
   {
     Object localObject2 = null;
     Object localObject1 = null;
@@ -194,26 +221,26 @@ public final class w
     k.h(paramb, "request");
     k.h(paramb1, "onSuccess");
     k.h(paramq, "onError");
-    Object localObject3 = (atf[])kIQ.remove(paramb);
+    Object localObject3 = (awj[])lkm.remove(paramb);
     if (localObject3 != null)
     {
-      ad.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForDownloadUrl, intercepted by PreGet with ".concat(String.valueOf(paramb)));
+      ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForDownloadUrl, intercepted by PreGet with ".concat(String.valueOf(paramb)));
       k.g(localObject3, "preGetResp");
       if (d.a.e.f((Object[])localObject3, 0) != null)
       {
-        paramb1.aA(localObject3);
+        paramb1.ay(localObject3);
         AppMethodBeat.o(180551);
         return;
       }
     }
-    if (!paramb.kJI)
+    if (!paramb.lle)
     {
-      localObject3 = com.tencent.mm.cp.a.Igt;
+      localObject3 = com.tencent.mm.co.a.JHV;
       k.g(localObject3, "ConstantsWxaPackageProto…CGI_SUPPORT_PACKAGE_TYPES");
-      if (d.a.e.contains((int[])localObject3, paramb.deP))
+      if (d.a.e.contains((int[])localObject3, paramb.dcj))
       {
-        localObject3 = w.a.kIS;
-        if (!w.a.a.bgy()) {
+        localObject3 = a.lko;
+        if (!w.a.a.bns()) {
           break label236;
         }
       }
@@ -221,85 +248,85 @@ public final class w
     label236:
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "goNewCgi: %b,appId: %s", new Object[] { Boolean.valueOf(bool), paramb.appId });
+      ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "goNewCgi: %b,appId: %s", new Object[] { Boolean.valueOf(bool), paramb.appId });
       if (!bool) {
         break;
       }
-      localObject1 = new ji();
-      ((ji)localObject1).CEF.addAll((Collection)c(paramb));
-      new g((ji)localObject1).auK().j((com.tencent.mm.vending.c.a)new e(paramb1, paramb, paramq));
+      localObject1 = new jo();
+      ((jo)localObject1).DXf.addAll((Collection)c(paramb));
+      new com.tencent.mm.plugin.appbrand.appcache.g((jo)localObject1).aBB().j((com.tencent.mm.vending.c.a)new e(paramb1, paramb, paramq));
       AppMethodBeat.o(180551);
       return;
     }
-    if (j.a.qD(paramb.gXn))
+    if (j.a.rq(paramb.hxM))
     {
-      localObject1 = com.tencent.mm.plugin.appbrand.app.j.aOK();
+      localObject1 = com.tencent.mm.plugin.appbrand.app.j.aVC();
       if (localObject1 != null)
       {
-        localObject1 = ((bf)localObject1).a(new ab(paramb.appId, paramb.chK, paramb.deP).toString(), paramb.aAS, paramb.gXn, new String[] { "versionMd5" });
+        localObject1 = ((bf)localObject1).a(new ab(paramb.appId, paramb.ceF, paramb.dcj).toString(), paramb.aBM, paramb.hxM, new String[] { "versionMd5" });
         if (localObject1 == null) {}
       }
       for (localObject1 = ((bb)localObject1).field_versionMd5;; localObject1 = null)
       {
-        localObject2 = new bdp();
-        ((bdp)localObject2).dlB = paramb.appId;
-        ((bdp)localObject2).CLL = paramb.aAS;
-        ((bdp)localObject2).DyU = paramb.deP;
-        ((bdp)localObject2).DAL = paramb.kIJ;
-        if (((bdp)localObject2).DyU != 0)
+        localObject2 = new bhh();
+        ((bhh)localObject2).djj = paramb.appId;
+        ((bhh)localObject2).Eeo = paramb.aBM;
+        ((bhh)localObject2).EUq = paramb.dcj;
+        ((bhh)localObject2).EWh = paramb.lkf;
+        if (((bhh)localObject2).EUq != 0)
         {
-          localObject3 = com.tencent.mm.cp.a.Igu;
+          localObject3 = com.tencent.mm.co.a.JHW;
           k.g(localObject3, "ConstantsWxaPackageProto….PLUGINCODE_PACKAGE_TYPES");
-          if (!d.a.e.contains((int[])localObject3, ((bdp)localObject2).DyU)) {
-            ((bdp)localObject2).DyR = paramb.chK;
+          if (!d.a.e.contains((int[])localObject3, ((bhh)localObject2).EUq)) {
+            ((bhh)localObject2).EUn = paramb.ceF;
           }
         }
-        ((bdp)localObject2).scene = paramInt;
-        new h((bdp)localObject2).auK().j((com.tencent.mm.vending.c.a)new f(paramq, paramb1, (String)localObject1, paramb));
+        ((bhh)localObject2).scene = paramInt;
+        new com.tencent.mm.plugin.appbrand.appcache.h((bhh)localObject2).aBB().j((com.tencent.mm.vending.c.a)new f(paramq, paramb1, (String)localObject1, paramb));
         AppMethodBeat.o(180551);
         return;
       }
     }
-    if (paramb.deP == 0)
+    if (paramb.dcj == 0)
     {
-      ad.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForDownloadUrl, try getTestCode packageType=0, use record, request=".concat(String.valueOf(paramb)));
-      localObject2 = com.tencent.mm.plugin.appbrand.app.j.aOK();
+      ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForDownloadUrl, try getTestCode packageType=0, use record, request=".concat(String.valueOf(paramb)));
+      localObject2 = com.tencent.mm.plugin.appbrand.app.j.aVC();
       if (localObject2 != null) {
-        localObject1 = ((bf)localObject2).a(new ab(paramb.appId, paramb.chK, paramb.deP).toString(), 0, paramb.gXn, new String[] { "versionMd5", "downloadURL" });
+        localObject1 = ((bf)localObject2).a(new ab(paramb.appId, paramb.ceF, paramb.dcj).toString(), 0, paramb.hxM, new String[] { "versionMd5", "downloadURL" });
       }
       if (localObject1 == null)
       {
-        paramq.d(Integer.valueOf(-1), Integer.valueOf(-1), aj.getResources().getString(2131755583, new Object[] { com.tencent.mm.plugin.appbrand.appcache.e.qC(paramb.gXn) }));
+        paramq.d(Integer.valueOf(-1), Integer.valueOf(-1), ai.getResources().getString(2131755583, new Object[] { com.tencent.mm.plugin.appbrand.appcache.e.rp(paramb.hxM) }));
         AppMethodBeat.o(180551);
         return;
       }
-      paramq = new atf[3];
-      localObject2 = new atf();
-      ((atf)localObject2).url = ((bb)localObject1).field_downloadURL;
-      ((atf)localObject2).md5 = ((bb)localObject1).field_versionMd5;
-      ((atf)localObject2).Dto = false;
-      ((atf)localObject2).Dth = b(paramb);
+      paramq = new awj[3];
+      localObject2 = new awj();
+      ((awj)localObject2).url = ((bb)localObject1).field_downloadURL;
+      ((awj)localObject2).md5 = ((bb)localObject1).field_versionMd5;
+      ((awj)localObject2).EOs = false;
+      ((awj)localObject2).EOl = b(paramb);
       paramq[0] = localObject2;
-      paramb1.aA(paramq);
+      paramb1.ay(paramq);
       AppMethodBeat.o(180551);
       return;
     }
-    ad.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForDownloadUrl, try getTestCode with request=".concat(String.valueOf(paramb)));
-    localObject3 = com.tencent.mm.plugin.appbrand.app.j.aOK();
+    ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForDownloadUrl, try getTestCode with request=".concat(String.valueOf(paramb)));
+    localObject3 = com.tencent.mm.plugin.appbrand.app.j.aVC();
     localObject1 = localObject2;
     if (localObject3 != null)
     {
-      localObject3 = ((bf)localObject3).a(new ab(paramb.appId, paramb.chK, paramb.deP).toString(), 0, paramb.gXn, new String[] { "versionMd5" });
+      localObject3 = ((bf)localObject3).a(new ab(paramb.appId, paramb.ceF, paramb.dcj).toString(), 0, paramb.hxM, new String[] { "versionMd5" });
       localObject1 = localObject2;
       if (localObject3 != null) {
         localObject1 = ((bb)localObject3).field_versionMd5;
       }
     }
-    new i(paramb.appId, paramb.chK, (String)localObject1, paramb.gXn, paramb.deP).auK().j((com.tencent.mm.vending.c.a)new g(paramq, paramb, paramb1, (String)localObject1));
+    new com.tencent.mm.plugin.appbrand.appcache.i(paramb.appId, paramb.ceF, (String)localObject1, paramb.hxM, paramb.dcj).aBB().j((com.tencent.mm.vending.c.a)new g(paramq, paramb, paramb1, (String)localObject1));
     AppMethodBeat.o(180551);
   }
   
-  public final void a(List<z.b> paramList, final b<? super jj, y> paramb, final q<? super Integer, ? super Integer, ? super String, y> paramq, int paramInt)
+  public final void a(List<z.b> paramList, final d.g.a.b<? super jp, y> paramb, final q<? super Integer, ? super Integer, ? super String, y> paramq, int paramInt)
   {
     AppMethodBeat.i(180552);
     k.h(paramList, "inRequestList");
@@ -307,8 +334,8 @@ public final class w
     k.h(paramq, "onError");
     if (paramList.size() == 1)
     {
-      ad.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForBatchGetDownloadUrl, use single routine instead, with " + (z.b)d.a.j.iy(paramList));
-      a((z.b)paramList.get(0), (b)new c(paramb), paramq, paramInt);
+      ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForBatchGetDownloadUrl, use single routine instead, with " + (z.b)d.a.j.iO(paramList));
+      a((z.b)paramList.get(0), (d.g.a.b)new c(paramb), paramq, paramInt);
       AppMethodBeat.o(180552);
       return;
     }
@@ -321,13 +348,13 @@ public final class w
       Object localObject3 = ((Iterator)localObject2).next();
       k.g(localObject3, "iterator.next()");
       z.b localb = (z.b)localObject3;
-      localObject3 = (atf[])kIQ.remove(localb);
+      localObject3 = (awj[])lkm.remove(localb);
       if (localObject3 != null)
       {
         k.g(localObject3, "preGetResp");
         if (d.a.e.f((Object[])localObject3, 0) != null)
         {
-          ad.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForBatchGetDownloadUrl, intercepted by PreGet with ".concat(String.valueOf(localb)));
+          ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForBatchGetDownloadUrl, intercepted by PreGet with ".concat(String.valueOf(localb)));
           ((Iterator)localObject2).remove();
           int i = localObject3.length;
           paramInt = 0;
@@ -342,98 +369,201 @@ public final class w
         }
       }
     }
-    ad.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForBatchGetDownloadUrl, inRequestList.size=" + paramList.size() + ", realRequestList.size=" + ((LinkedList)localObject1).size() + ", preGetRespItemList.size=" + localLinkedList.size());
-    paramList = new ji();
+    ac.i("MicroMsg.AppBrand.GetPkgDownloadUrlUnifiedCgiRouter", "waitForBatchGetDownloadUrl, inRequestList.size=" + paramList.size() + ", realRequestList.size=" + ((LinkedList)localObject1).size() + ", preGetRespItemList.size=" + localLinkedList.size());
+    paramList = new jo();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (z.b)((Iterator)localObject1).next();
-      paramList.CEF.addAll((Collection)c((z.b)localObject2));
+      paramList.DXf.addAll((Collection)c((z.b)localObject2));
     }
-    new g(paramList).auK().j((com.tencent.mm.vending.c.a)new d(localLinkedList, paramb, paramq));
+    new com.tencent.mm.plugin.appbrand.appcache.g(paramList).aBB().j((com.tencent.mm.vending.c.a)new d(localLinkedList, paramb, paramq));
     AppMethodBeat.o(180552);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"buildBasicItem", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlReqItem;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/GetPkgDownloadUrlUnifiedCgiRouter$RouterController;", "", "useEncryptPkg", "", "isGame", "useNewCgi", "useNewSeparatedPluginCompatibleLogic", "Factory", "plugin-appbrand-integration_release"})
+  public static abstract interface a
+  {
+    public static final a lko = a.lkq;
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/GetPkgDownloadUrlUnifiedCgiRouter$RouterController$Factory;", "Lcom/tencent/mm/plugin/appbrand/launching/GetPkgDownloadUrlUnifiedCgiRouter$RouterController;", "()V", "SUPPORTED_PKG_ENCRYPT_VERSION_MAX", "", "TAG", "", "TEST_SWITCH_MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "resetTestSwitch", "", "key", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "useEncryptPkg", "isGame", "useNewCgi", "useNewSeparatedPluginCompatibleLogic", "plugin-appbrand-integration_release"})
+    public static final class a
+      implements w.a
+    {
+      private static final aw lkp;
+      
+      static
+      {
+        AppMethodBeat.i(180531);
+        lkq = new a();
+        lkp = aw.fK("MicroMsg.GetPkgDownloadUrlUnifiedCgiRouter.WECHAT_INSTANCE.TEST_SWITCH_MMKV", 2);
+        AppMethodBeat.o(180531);
+      }
+      
+      private static boolean a(b.a parama)
+      {
+        AppMethodBeat.i(187294);
+        if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE))
+        {
+          ac.i("MicroMsg.GetPkgDownloadUrlUnifiedCgiRouter.WECHAT_INSTANCE", "resetTestSwitch key:" + parama.name() + ", INTERNAL BUILD, defBool:true");
+          AppMethodBeat.o(187294);
+          return true;
+        }
+        if (!d.DIf)
+        {
+          ac.i("MicroMsg.GetPkgDownloadUrlUnifiedCgiRouter.WECHAT_INSTANCE", "resetTestSwitch key:" + parama.name() + ", !ALPHA, defBool:false");
+          AppMethodBeat.o(187294);
+          return false;
+        }
+        if (ai.cin()) {
+          k.g(com.tencent.mm.kernel.g.agP(), "MMKernel.account()");
+        }
+        String str;
+        for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.afF())
+        {
+          str = p.getString(i) + '_' + parama.name();
+          if (!lkp.containsKey(str)) {
+            break;
+          }
+          bool = lkp.getBoolean(str, false);
+          ac.i("MicroMsg.GetPkgDownloadUrlUnifiedCgiRouter.WECHAT_INSTANCE", "resetTestSwitch key:" + parama.name() + ", IS_ALPHA, defBool:" + bool);
+          AppMethodBeat.o(187294);
+          return bool;
+        }
+        if (com.tencent.mm.b.i.cc(i, 101) > 50) {}
+        for (boolean bool = true;; bool = false)
+        {
+          lkp.putBoolean(str, bool);
+          break;
+        }
+      }
+      
+      public static boolean bns()
+      {
+        AppMethodBeat.i(180528);
+        boolean bool1 = a(b.a.pQH);
+        boolean bool2 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pQH, bool1);
+        ac.i("MicroMsg.GetPkgDownloadUrlUnifiedCgiRouter.WECHAT_INSTANCE", "useNewCgi exptVal[" + bool2 + "] defVal[" + bool1 + ']');
+        AppMethodBeat.o(180528);
+        return bool2;
+      }
+      
+      public static boolean gQ(boolean paramBoolean)
+      {
+        AppMethodBeat.i(180529);
+        boolean bool2;
+        if (paramBoolean) {
+          bool2 = a(b.a.pQK);
+        }
+        for (boolean bool1 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pQK, bool2);; bool1 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pQJ, bool2))
+        {
+          ac.i("MicroMsg.GetPkgDownloadUrlUnifiedCgiRouter.WECHAT_INSTANCE", "useEncryptPkg isGame[" + paramBoolean + "] exptVal[" + bool1 + "] defVal[" + bool2 + ']');
+          AppMethodBeat.o(180529);
+          return bool1;
+          bool2 = a(b.a.pQJ);
+        }
+      }
+      
+      public static boolean gR(boolean paramBoolean)
+      {
+        AppMethodBeat.i(180530);
+        if (paramBoolean)
+        {
+          bool1 = a(b.a.pQL);
+          bool2 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pQL, bool1);
+          ac.i("MicroMsg.GetPkgDownloadUrlUnifiedCgiRouter.WECHAT_INSTANCE", "useNewSeparatedPluginCompatibleLogic isGame[" + paramBoolean + "] exptVal[" + bool2 + "] defVal[" + bool1 + ']');
+          AppMethodBeat.o(180530);
+          return bool2;
+        }
+        boolean bool1 = a(b.a.pQI);
+        boolean bool2 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pQI, bool1);
+        ac.i("MicroMsg.GetPkgDownloadUrlUnifiedCgiRouter.WECHAT_INSTANCE", "useNewSeparatedPluginCompatibleLogic isGame[" + paramBoolean + "] exptVal[" + bool2 + "] defVal[" + bool1 + ']');
+        AppMethodBeat.o(180530);
+        return bool2;
+      }
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"buildBasicItem", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlReqItem;", "invoke"})
   static final class b
     extends d.g.b.l
-    implements d.g.a.a<ate>
+    implements d.g.a.a<awi>
   {
     b(z.b paramb)
     {
       super();
     }
     
-    public final ate bgz()
+    public final awi bnt()
     {
       AppMethodBeat.i(180533);
-      ate localate = new ate();
-      w localw = w.kIR;
-      localate.Dth = w.d(this.kIV);
-      localate.Dtj = this.kIV.kJG;
-      if (this.kIV.kJI) {
-        localate.Dtk = true;
+      awi localawi = new awi();
+      w localw = w.lkn;
+      localawi.EOl = w.d(this.lkr);
+      localawi.EOn = this.lkr.llc;
+      if (this.lkr.lle) {
+        localawi.EOo = true;
       }
       for (;;)
       {
-        o.a(localate);
+        o.a(localawi);
         AppMethodBeat.o(180533);
-        return localate;
-        localate.CLL = this.kIV.aAS;
+        return localawi;
+        localawi.Eeo = this.lkr.aBM;
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "items", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "invoke", "([Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;)V"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "items", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "invoke", "([Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;)V"})
   static final class c
     extends d.g.b.l
-    implements b<atf[], y>
+    implements d.g.a.b<awj[], y>
   {
-    c(b paramb)
+    c(d.g.a.b paramb)
     {
       super();
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "kotlin.jvm.PlatformType", "call"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class d<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    d(LinkedList paramLinkedList, b paramb, q paramq) {}
+    d(LinkedList paramLinkedList, d.g.a.b paramb, q paramq) {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "kotlin.jvm.PlatformType", "call"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class e<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    e(b paramb, z.b paramb1, q paramq) {}
+    e(d.g.a.b paramb, z.b paramb1, q paramq) {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlResponse;", "kotlin.jvm.PlatformType", "call"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class f<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    f(q paramq, b paramb, String paramString, z.b paramb1) {}
+    f(q paramq, d.g.a.b paramb, String paramString, z.b paramb1) {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetTestCodeDownloadInfoResponse;", "kotlin.jvm.PlatformType", "call"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetTestCodeDownloadInfoResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class g<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    g(q paramq, z.b paramb, b paramb1, String paramString) {}
+    g(q paramq, z.b paramb, d.g.a.b paramb1, String paramString) {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"info", "", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlRequest;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"info", "", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlRequest;", "invoke"})
   static final class h
     extends d.g.b.l
-    implements b<bdp, String>
+    implements d.g.a.b<bhh, String>
   {
-    public static final h kJa;
+    public static final h lkw;
     
     static
     {
       AppMethodBeat.i(180541);
-      kJa = new h();
+      lkw = new h();
       AppMethodBeat.o(180541);
     }
     
@@ -442,59 +572,59 @@ public final class w
       super();
     }
     
-    public static String a(bdp parambdp)
+    public static String a(bhh parambhh)
     {
       AppMethodBeat.i(180540);
-      k.h(parambdp, "$this$info");
-      parambdp = "GetWxaAppCDNDownloadUrlRequest(appId:" + parambdp.dlB + " version:" + parambdp.CLL + " moduleName:" + parambdp.DyR + " pacakgeType:" + parambdp.DyU + " scene:" + parambdp.scene + ')';
+      k.h(parambhh, "$this$info");
+      parambhh = "GetWxaAppCDNDownloadUrlRequest(appId:" + parambhh.djj + " version:" + parambhh.Eeo + " moduleName:" + parambhh.EUn + " pacakgeType:" + parambhh.EUq + " scene:" + parambhh.scene + ')';
       AppMethodBeat.o(180540);
-      return parambdp;
+      return parambhh;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"makeReqItem", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlReqItem;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"makeReqItem", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlReqItem;", "invoke"})
   static final class i
     extends d.g.b.l
-    implements d.g.a.a<ate>
+    implements d.g.a.a<awi>
   {
-    i(h paramh)
+    i(com.tencent.mm.plugin.appbrand.appcache.h paramh)
     {
       super();
     }
     
-    public final ate bgz()
+    public final awi bnt()
     {
-      AppMethodBeat.i(196360);
-      ate localate = new ate();
-      localate.Dth = new ckp();
-      localate.Dth.dlB = this.kJb.aPf().dlB;
-      localate.CLL = this.kJb.aPf().CLL;
-      localate.Dth.DyU = this.kJb.aPf().DyU;
-      localate.Dth.DyR = this.kJb.aPf().DyR;
-      localate.Dtj = 0;
-      AppMethodBeat.o(196360);
-      return localate;
+      AppMethodBeat.i(187297);
+      awi localawi = new awi();
+      localawi.EOl = new cpw();
+      localawi.EOl.djj = this.lkx.aVX().djj;
+      localawi.Eeo = this.lkx.aVX().Eeo;
+      localawi.EOl.EUq = this.lkx.aVX().EUq;
+      localawi.EOl.EUn = this.lkx.aVX().EUn;
+      localawi.EOn = 0;
+      AppMethodBeat.o(187297);
+      return localawi;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlResponse;", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlResponse;", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "invoke"})
   static final class j<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    j(h paramh) {}
+    j(com.tencent.mm.plugin.appbrand.appcache.h paramh) {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"info", "", "Lcom/tencent/mm/protocal/protobuf/GetTestCodeDownloadInfoRequest;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"info", "", "Lcom/tencent/mm/protocal/protobuf/GetTestCodeDownloadInfoRequest;", "invoke"})
   static final class k
     extends d.g.b.l
-    implements b<bbe, String>
+    implements d.g.a.b<bew, String>
   {
-    public static final k kJc;
+    public static final k lky;
     
     static
     {
       AppMethodBeat.i(180545);
-      kJc = new k();
+      lky = new k();
       AppMethodBeat.o(180545);
     }
     
@@ -503,26 +633,26 @@ public final class w
       super();
     }
     
-    public static String a(bbe parambbe)
+    public static String a(bew parambew)
     {
       AppMethodBeat.i(180544);
-      k.h(parambbe, "$this$info");
-      parambbe = "GetTestCodeDownloadInfoRequest(appId:" + parambbe.dlB + " versionType:" + parambbe.CPu + " moduleName:" + parambbe.DyR + " packageType:" + parambbe.DyU + ')';
+      k.h(parambew, "$this$info");
+      parambew = "GetTestCodeDownloadInfoRequest(appId:" + parambew.djj + " versionType:" + parambew.Eif + " moduleName:" + parambew.EUn + " packageType:" + parambew.EUq + ')';
       AppMethodBeat.o(180544);
-      return parambbe;
+      return parambew;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetTestCodeDownloadInfoResponse;", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetTestCodeDownloadInfoResponse;", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/protocal/protobuf/BatchGetDownloadUrlResponse;", "invoke"})
   static final class l<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    l(i parami) {}
+    l(com.tencent.mm.plugin.appbrand.appcache.i parami) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.w
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.mm.ui.am;
 
 public abstract interface ab
 {
-  public static final int iHI = am.o(855638016, -855310);
+  public static final int jhK = am.o(855638016, -855310);
 }
 
 

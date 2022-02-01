@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.game.luggage.d.f;
 import com.tencent.mm.plugin.webview.b.b;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,13 +20,13 @@ public class g
   public final void a(Context paramContext, String paramString, bn.a parama)
   {
     AppMethodBeat.i(83063);
-    ad.i("MicroMsg.JsApiClearGameData", "invokeInMM");
+    ac.i("MicroMsg.JsApiClearGameData", "invokeInMM");
     try
     {
       paramContext = new JSONObject(paramString);
       if (paramContext == null)
       {
-        ad.e("MicroMsg.JsApiClearGameData", "data is null");
+        ac.e("MicroMsg.JsApiClearGameData", "data is null");
         parama.f("null_data", null);
         AppMethodBeat.o(83063);
         return;
@@ -41,7 +41,7 @@ public class g
       Object localObject = paramContext.optString("preVerifyAppId");
       paramString = (String)localObject;
       boolean bool;
-      if (bt.isNullOrNil((String)localObject))
+      if (bs.isNullOrNil((String)localObject))
       {
         paramString = Uri.parse(paramContext.optString("currentUrl"));
         if ((paramString.getHost() != null) && (paramString.getHost().equals("game.weixin.qq.com"))) {
@@ -55,24 +55,24 @@ public class g
         if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
           break label173;
         }
-        b.ejJ().b(paramString, (JSONArray)localObject);
+        b.eze().b(paramString, (JSONArray)localObject);
         parama.f(null, null);
         AppMethodBeat.o(83063);
         return;
       }
-      ad.i("MicroMsg.JsApiClearGameData", "appId is null");
+      ac.i("MicroMsg.JsApiClearGameData", "appId is null");
       parama.f("appid_null", null);
       AppMethodBeat.o(83063);
       return;
       label173:
       if (bool)
       {
-        b.ejJ().avM(paramString);
+        b.eze().aBe(paramString);
         parama.f(null, null);
         AppMethodBeat.o(83063);
         return;
       }
-      ad.i("MicroMsg.JsApiClearGameData", "keys is null");
+      ac.i("MicroMsg.JsApiClearGameData", "keys is null");
       parama.f("fail", null);
       AppMethodBeat.o(83063);
     }
@@ -80,7 +80,7 @@ public class g
   
   public final void b(a<f>.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 1;
   }

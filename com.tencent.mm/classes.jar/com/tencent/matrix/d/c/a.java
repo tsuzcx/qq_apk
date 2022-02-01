@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 public final class a
 {
-  private static Method cwM = null;
+  private static Method ctV = null;
   
   public static int a(Debug.MemoryInfo paramMemoryInfo)
   {
@@ -24,10 +24,10 @@ public final class a
     }
     try
     {
-      if (cwM == null) {
-        cwM = Class.forName("android.os.Debug$MemoryInfo").getMethod("getMemoryStat", new Class[] { String.class });
+      if (ctV == null) {
+        ctV = Class.forName("android.os.Debug$MemoryInfo").getMethod("getMemoryStat", new Class[] { String.class });
       }
-      int i = Integer.parseInt((String)cwM.invoke(paramMemoryInfo, new Object[] { paramString }));
+      int i = Integer.parseInt((String)ctV.invoke(paramMemoryInfo, new Object[] { paramString }));
       return i;
     }
     catch (Exception paramString)

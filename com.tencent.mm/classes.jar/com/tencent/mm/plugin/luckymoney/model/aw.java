@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
-import com.tencent.mm.protocal.protobuf.bfu;
+import com.tencent.mm.protocal.protobuf.bjm;
 
 public final class aw
 {
-  public bfu tfW;
+  public bjm uol;
 }
 
 

@@ -6,14 +6,14 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.e;
 public final class n
   extends e
 {
-  final boolean oqe;
-  public final boolean oqf;
+  final boolean oTE;
+  public final boolean oTF;
   
   public n(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super(paramInt1, paramInt2);
-    this.oqe = paramBoolean1;
-    this.oqf = paramBoolean2;
+    this.oTE = paramBoolean1;
+    this.oTF = paramBoolean2;
   }
   
   public final boolean a(e parame)
@@ -27,17 +27,17 @@ public final class n
     if (parame.isEmpty())
     {
       int i;
-      if ((parame.asw >= this.asw) && (parame.Mc < this.Mc))
+      if ((parame.atr >= this.atr) && (parame.MZ < this.MZ))
       {
         i = 1;
-        if ((parame.asw < this.asw) || (parame.Mc > this.Mc)) {
+        if ((parame.atr < this.atr) || (parame.MZ > this.MZ)) {
           break label101;
         }
       }
       label101:
       for (int j = 1;; j = 0)
       {
-        if ((i == 0) && ((j == 0) || (!this.oqf))) {
+        if ((i == 0) && ((j == 0) || (!this.oTF))) {
           break label106;
         }
         AppMethodBeat.o(30652);
@@ -49,7 +49,7 @@ public final class n
       AppMethodBeat.o(30652);
       return false;
     }
-    if (Math.max(this.asw, parame.asw) < Math.min(this.Mc, parame.Mc))
+    if (Math.max(this.atr, parame.atr) < Math.min(this.MZ, parame.MZ))
     {
       AppMethodBeat.o(30652);
       return true;
@@ -58,17 +58,17 @@ public final class n
     return false;
   }
   
-  public final int bTA()
+  public final int caO()
   {
     AppMethodBeat.i(30653);
-    int i = Math.abs(this.Mc - this.asw);
+    int i = Math.abs(this.MZ - this.atr);
     AppMethodBeat.o(30653);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.spans.n
  * JD-Core Version:    0.7.0.1
  */

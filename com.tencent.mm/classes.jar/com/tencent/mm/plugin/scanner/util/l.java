@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.scanner.util;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/util/ScanYuvUtils;", "", "()V", "encodeYUV420SP", "", "yuv420sp", "", "argb", "", "width", "", "height", "getNV21", "inputWidth", "inputHeight", "scaled", "Landroid/graphics/Bitmap;", "plugin-scan_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/util/ScanYuvUtils;", "", "()V", "encodeYUV420SP", "", "yuv420sp", "", "argb", "", "width", "", "height", "getNV21", "inputWidth", "inputHeight", "scaled", "Landroid/graphics/Bitmap;", "plugin-scan_release"})
 public final class l
 {
-  public static final l wbj;
+  public static final l xmp;
   
   static
   {
     AppMethodBeat.i(161063);
-    wbj = new l();
+    xmp = new l();
     AppMethodBeat.o(161063);
   }
   
@@ -111,7 +111,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.l
  * JD-Core Version:    0.7.0.1
  */

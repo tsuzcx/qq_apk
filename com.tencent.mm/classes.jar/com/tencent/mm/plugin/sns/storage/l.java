@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fk;
+import com.tencent.mm.g.c.fo;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class l
-  extends fk
+  extends fo
 {
   protected static c.a info;
   
@@ -15,24 +15,24 @@ public final class l
   {
     AppMethodBeat.i(176284);
     c.a locala = new c.a();
-    locala.EYt = new Field[4];
+    locala.GvF = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.EYv.put("key", "TEXT default ''  PRIMARY KEY ");
+    locala.GvH.put("key", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" key TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "key";
+    locala.GvG = "key";
     locala.columns[1] = "timestamp";
-    locala.EYv.put("timestamp", "LONG default '0' ");
+    locala.GvH.put("timestamp", "LONG default '0' ");
     localStringBuilder.append(" timestamp LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "extFlag";
-    locala.EYv.put("extFlag", "INTEGER default '0' ");
+    locala.GvH.put("extFlag", "INTEGER default '0' ");
     localStringBuilder.append(" extFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "draft";
-    locala.EYv.put("draft", "BLOB");
+    locala.GvH.put("draft", "BLOB");
     localStringBuilder.append(" draft BLOB");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();

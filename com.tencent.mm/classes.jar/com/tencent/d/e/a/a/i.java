@@ -10,28 +10,28 @@ import java.util.Map;
 
 public final class i
 {
-  private final int Isg;
-  final int Ish;
-  Object[] LV;
-  int Zo;
-  final int cPu;
+  private final int JTQ;
+  final int JTR;
+  Object[] MS;
+  int aaj;
+  final int cMP;
   
   public i(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(138410);
-    this.Isg = paramInt1;
-    this.LV = new Object[(int)Math.ceil(1.0F * paramInt3 / paramInt2)];
-    this.Zo = 0;
-    this.cPu = paramInt3;
-    this.Ish = paramInt2;
+    this.JTQ = paramInt1;
+    this.MS = new Object[(int)Math.ceil(1.0F * paramInt3 / paramInt2)];
+    this.aaj = 0;
+    this.cMP = paramInt3;
+    this.JTR = paramInt2;
     AppMethodBeat.o(138410);
   }
   
-  private ArrayList<f> abM(int paramInt)
+  private ArrayList<f> aef(int paramInt)
   {
     AppMethodBeat.i(138411);
     ArrayList localArrayList = new ArrayList();
-    List localList = (List)this.LV[paramInt];
+    List localList = (List)this.MS[paramInt];
     if (localList == null)
     {
       AppMethodBeat.o(138411);
@@ -45,7 +45,7 @@ public final class i
       localf.x = localj.values[0];
       localf.y = localj.values[1];
       localf.z = localj.values[2];
-      localf.IsB = localj.timestamp;
+      localf.JUl = localj.timestamp;
       localArrayList.add(localf);
       paramInt += 1;
     }
@@ -53,22 +53,22 @@ public final class i
     return localArrayList;
   }
   
-  public final Object[] fmt()
+  public final Object[] fCK()
   {
     AppMethodBeat.i(138413);
-    Object[] arrayOfObject = (Object[])this.LV.clone();
+    Object[] arrayOfObject = (Object[])this.MS.clone();
     AppMethodBeat.o(138413);
     return arrayOfObject;
   }
   
-  public final ArrayList<g> ip(List<k> paramList)
+  public final ArrayList<g> iC(List<k> paramList)
   {
     AppMethodBeat.i(138412);
     ArrayList localArrayList1 = new ArrayList();
     int j = 0;
-    if (j < this.LV.length)
+    if (j < this.MS.length)
     {
-      Object localObject = (List)this.LV[j];
+      Object localObject = (List)this.MS[j];
       g localg;
       ArrayList localArrayList2;
       HashMap localHashMap;
@@ -76,9 +76,9 @@ public final class i
       if ((localObject != null) && (((List)localObject).size() != 0))
       {
         localg = new g();
-        localArrayList2 = abM(j);
+        localArrayList2 = aef(j);
         localHashMap = new HashMap();
-        if (this.Isg != 1) {
+        if (this.JTQ != 1) {
           break label217;
         }
         i = 0;
@@ -86,20 +86,20 @@ public final class i
       for (;;)
       {
         localHashMap.put(Integer.valueOf(i), localArrayList2);
-        localg.IsD = localHashMap;
+        localg.JUn = localHashMap;
         localObject = (j)((List)localObject).get(0);
         if (localObject != null)
         {
-          localg.IsC = ((j)localObject).timestamp;
+          localg.JUm = ((j)localObject).timestamp;
           if (paramList.size() > j)
           {
             localObject = (k)paramList.get(j);
             if (localObject != null)
             {
-              localg.Isj = ((k)localObject).Isj;
-              localg.Isk = ((k)localObject).Isk;
-              localg.Isl = ((k)localObject).Isl;
-              localg.Ism = ((k)localObject).Ism;
+              localg.JTT = ((k)localObject).JTT;
+              localg.JTU = ((k)localObject).JTU;
+              localg.JTV = ((k)localObject).JTV;
+              localg.JTW = ((k)localObject).JTW;
             }
           }
           localArrayList1.add(localg);
@@ -107,9 +107,9 @@ public final class i
         j += 1;
         break;
         label217:
-        if (this.Isg == 4) {
+        if (this.JTQ == 4) {
           i = 2;
-        } else if (this.Isg == 9) {
+        } else if (this.JTQ == 9) {
           i = 4;
         } else {
           i = -1;
@@ -122,7 +122,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.e.a.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import java.util.List;
 
 public class g
   extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.h>
@@ -22,7 +22,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.g
  * JD-Core Version:    0.7.0.1
  */

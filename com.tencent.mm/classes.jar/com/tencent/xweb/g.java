@@ -15,12 +15,12 @@ import org.xwalk.core.Log;
 
 public final class g
 {
-  private static Map<String, Integer> jQM;
+  private static Map<String, Integer> krx;
   
   static
   {
     AppMethodBeat.i(156755);
-    jQM = new HashMap();
+    krx = new HashMap();
     AppMethodBeat.o(156755);
   }
   
@@ -47,7 +47,7 @@ public final class g
           paramHashMap.put("token", paramString3);
           paramHashMap = paramHashMap.toString();
           int i = d.startMiniQBToLoadUrl(paramContext, paramHashMap, localHashMap, paramValueCallback);
-          jQM.put(paramString3 + paramString1, Integer.valueOf(i));
+          krx.put(paramString3 + paramString1, Integer.valueOf(i));
           Log.i("XFilesReaderX5", "loadByMiniQB, ret = " + i + ", isSecondTime = " + String.valueOf(paramBoolean));
           a(paramString2, paramValueCallback1, i, paramInt);
           AppMethodBeat.o(156750);
@@ -83,7 +83,7 @@ public final class g
     AppMethodBeat.o(156752);
   }
   
-  public static void f(final int paramInt, final Context paramContext, final String paramString1, String paramString2, final String paramString3, boolean paramBoolean, final HashMap<String, String> paramHashMap, final ValueCallback<String> paramValueCallback, final ValueCallback<Integer> paramValueCallback1)
+  public static void e(final int paramInt, final Context paramContext, final String paramString1, String paramString2, final String paramString3, boolean paramBoolean, final HashMap<String, String> paramHashMap, final ValueCallback<String> paramValueCallback, final ValueCallback<Integer> paramValueCallback1)
   {
     AppMethodBeat.i(156748);
     if (paramBoolean)
@@ -98,8 +98,8 @@ public final class g
     for (Object localObject1 = paramString2;; localObject1 = "null")
     {
       Log.i("XFilesReaderX5", (String)localObject1);
-      f.lZ(paramString2, f.a.IMv.name());
-      f.gE(paramString2, paramInt);
+      f.mA(paramString2, f.a.KyO.name());
+      f.gI(paramString2, paramInt);
       try
       {
         localObject1 = new JSONObject();
@@ -126,13 +126,13 @@ public final class g
     AppMethodBeat.i(156749);
     try
     {
-      Integer localInteger = (Integer)jQM.get(paramString1 + paramString2);
+      Integer localInteger = (Integer)krx.get(paramString1 + paramString2);
       if (localInteger == null)
       {
         AppMethodBeat.o(156749);
         return;
       }
-      jQM.remove(paramString1 + paramString2);
+      krx.remove(paramString1 + paramString2);
       if (localInteger.intValue() == 0)
       {
         Log.i("XFilesReaderX5", "finishReadFile");
@@ -153,7 +153,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.g
  * JD-Core Version:    0.7.0.1
  */

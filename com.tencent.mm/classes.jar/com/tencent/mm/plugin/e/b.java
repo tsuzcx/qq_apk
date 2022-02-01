@@ -12,9 +12,9 @@ public final class b
   {
     AppMethodBeat.i(22633);
     getClass().getClassLoader();
-    j.pq("FFmpeg");
+    j.sC("FFmpeg");
     getClass().getClassLoader();
-    j.pq("wechatpack");
+    j.sC("wechatpack");
     AppMethodBeat.o(22633);
   }
   
@@ -25,7 +25,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.e.b
  * JD-Core Version:    0.7.0.1
  */

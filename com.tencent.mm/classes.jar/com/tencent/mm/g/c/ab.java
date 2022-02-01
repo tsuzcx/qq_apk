@@ -2,24 +2,24 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.hp;
+import com.tencent.mm.protocal.protobuf.ht;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.IOException;
 
 public abstract class ab
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eoP = "deviceId".hashCode();
-  private static final int eoQ = "sessionName".hashCode();
-  private static final int eoR = "moveTime".hashCode();
+  private static final int eqT = "deviceId".hashCode();
+  private static final int eqU = "sessionName".hashCode();
+  private static final int eqV = "moveTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eoM = true;
-  private boolean eoN = true;
-  private boolean eoO = true;
+  private boolean eqQ = true;
+  private boolean eqR = true;
+  private boolean eqS = true;
   public String field_deviceId;
-  public hp field_moveTime;
+  public ht field_moveTime;
   public String field_sessionName;
   
   public void convertFrom(Cursor paramCursor)
@@ -35,7 +35,7 @@ public abstract class ab
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eoP != k) {
+      if (eqT != k) {
         break label60;
       }
       this.field_deviceId = paramCursor.getString(i);
@@ -46,20 +46,20 @@ public abstract class ab
       break label20;
       break;
       label60:
-      if (eoQ == k) {
+      if (eqU == k) {
         this.field_sessionName = paramCursor.getString(i);
-      } else if (eoR == k) {
+      } else if (eqV == k) {
         try
         {
           byte[] arrayOfByte = paramCursor.getBlob(i);
           if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
             continue;
           }
-          this.field_moveTime = ((hp)new hp().parseFrom(arrayOfByte));
+          this.field_moveTime = ((ht)new ht().parseFrom(arrayOfByte));
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.SDK.BaseBackupMoveTime", localIOException.getMessage());
+          ac.e("MicroMsg.SDK.BaseBackupMoveTime", localIOException.getMessage());
         }
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -73,16 +73,16 @@ public abstract class ab
     if (this.field_deviceId == null) {
       this.field_deviceId = "";
     }
-    if (this.eoM) {
+    if (this.eqQ) {
       localContentValues.put("deviceId", this.field_deviceId);
     }
     if (this.field_sessionName == null) {
       this.field_sessionName = "";
     }
-    if (this.eoN) {
+    if (this.eqR) {
       localContentValues.put("sessionName", this.field_sessionName);
     }
-    if ((this.eoO) && (this.field_moveTime != null)) {}
+    if ((this.eqS) && (this.field_moveTime != null)) {}
     try
     {
       localContentValues.put("moveTime", this.field_moveTime.toByteArray());
@@ -95,7 +95,7 @@ public abstract class ab
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseBackupMoveTime", localIOException.getMessage());
+        ac.e("MicroMsg.SDK.BaseBackupMoveTime", localIOException.getMessage());
       }
     }
   }

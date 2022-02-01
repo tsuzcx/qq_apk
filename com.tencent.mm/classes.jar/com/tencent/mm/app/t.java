@@ -16,11 +16,11 @@ import com.tencent.mm.sdk.a.c;
 import com.tencent.mm.sdk.a.c.a;
 import com.tencent.mm.sdk.platformtools.CrashMonitorForJni;
 import com.tencent.mm.sdk.platformtools.CrashMonitorForJni.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.at.d;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.mm.sdk.platformtools.i;
 import com.tencent.xweb.WebView;
@@ -35,45 +35,45 @@ import java.util.Set;
 import org.xwalk.core.XWalkEnvironment;
 
 public class t
-  implements c, au.d
+  implements c, at.d
 {
-  private static final long cLI;
-  private static final Set<c.a> cLM;
-  private static String cLT;
-  private static final byte[] cMa;
-  private static volatile ParcelFileDescriptor cMb;
-  private static final String cMc;
+  private static final long cIQ;
+  private static final Set<c.a> cIU;
+  private static String cJb;
+  private static final byte[] cJi;
+  private static volatile ParcelFileDescriptor cJj;
+  private static final String cJk;
   private static CrashMonitorForJni.a sCrashExtraMessageGetter;
   
   static
   {
     AppMethodBeat.i(19455);
-    cLI = bt.eGO();
-    cLT = "";
-    cMa = new byte[] { 0 };
-    cMb = null;
-    cLM = new HashSet();
-    cMc = "version:" + d.CpK;
+    cIQ = bs.eWj();
+    cJb = "";
+    cJi = new byte[] { 0 };
+    cJj = null;
+    cIU = new HashSet();
+    cJk = "version:" + d.DIc;
     sCrashExtraMessageGetter = new CrashMonitorForJni.a()
     {
-      public final String KQ()
+      public final String KB()
       {
         AppMethodBeat.i(19446);
         StringBuilder localStringBuilder = new StringBuilder();
-        Object localObject = aj.getProcessName();
+        Object localObject = ai.getProcessName();
         if ((localObject != null) && ((((String)localObject).contains(":tools")) || (((String)localObject).contains(":appbrand")) || (((String)localObject).contains(":isolated_process0"))))
         {
           localStringBuilder.append("\n");
-          localObject = WebView.getCrashExtraMessage(aj.getContext());
+          localObject = WebView.getCrashExtraMessage(ai.getContext());
           if ((localObject != null) && (((String)localObject).length() > 0))
           {
-            String str = (String)localObject + String.format(Locale.US, "client_version:%s;", new Object[] { h.glW });
+            String str = (String)localObject + String.format(Locale.US, "client_version:%s;", new Object[] { h.gMJ });
             localObject = str;
             if (str.length() > 8192) {
               localObject = str.substring(str.length() - 8192);
             }
             localStringBuilder.append("#qbrowser.crashmsg=" + Base64.encodeToString(((String)localObject).getBytes(), 2));
-            ad.v("MicroMsg.MMIsolatedCrashReporter", "header #qbrowser.crashmsg=%s", new Object[] { localObject });
+            ac.v("MicroMsg.MMIsolatedCrashReporter", "header #qbrowser.crashmsg=%s", new Object[] { localObject });
           }
         }
         localObject = localStringBuilder.toString();
@@ -87,23 +87,23 @@ public class t
   public static boolean a(ParcelFileDescriptor paramParcelFileDescriptor1, ParcelFileDescriptor paramParcelFileDescriptor2, String arg2)
   {
     AppMethodBeat.i(19447);
-    cLT = ???;
-    synchronized (cMa)
+    cJb = ???;
+    synchronized (cJi)
     {
-      cMb = paramParcelFileDescriptor1;
+      cJj = paramParcelFileDescriptor1;
       paramParcelFileDescriptor1 = new t();
-      aj.getContext();
-      au.a(paramParcelFileDescriptor1);
+      ai.getContext();
+      at.a(paramParcelFileDescriptor1);
       com.tencent.mm.sdk.a.b.a(paramParcelFileDescriptor1);
       paramParcelFileDescriptor1 = af.get("ro.product.cpu.abi");
       if ((paramParcelFileDescriptor1 == null) || (paramParcelFileDescriptor1.length() == 0) || ((!paramParcelFileDescriptor1.equals("x86")) && (!paramParcelFileDescriptor1.equals("x86-64"))))
       {
         t.class.getClassLoader();
-        j.pq("wechatCrashForJni");
+        j.sC("wechatCrashForJni");
         CrashMonitorForJni.setCrashExtraMessageGetter(sCrashExtraMessageGetter);
-        paramParcelFileDescriptor1 = cMc;
-        paramParcelFileDescriptor1 = paramParcelFileDescriptor1 + "\n" + WebView.getCrashExtraMessage(aj.getContext()) + String.format(Locale.US, "client_version:%s;", new Object[] { h.glW }) + "\n";
-        ad.i("MicroMsg.MMIsolatedCrashReporter", "append crash extra message : %s", new Object[] { paramParcelFileDescriptor1 });
+        paramParcelFileDescriptor1 = cJk;
+        paramParcelFileDescriptor1 = paramParcelFileDescriptor1 + "\n" + WebView.getCrashExtraMessage(ai.getContext()) + String.format(Locale.US, "client_version:%s;", new Object[] { h.gMJ }) + "\n";
+        ac.i("MicroMsg.MMIsolatedCrashReporter", "append crash extra message : %s", new Object[] { paramParcelFileDescriptor1 });
         CrashMonitorForJni.setClientVersionMsg(paramParcelFileDescriptor1);
         CrashMonitorForJni.setCrashRecordLowFd(paramParcelFileDescriptor2);
       }
@@ -112,7 +112,7 @@ public class t
     }
   }
   
-  private static void eB(String paramString)
+  private static void eq(String paramString)
   {
     AppMethodBeat.i(19448);
     try
@@ -123,55 +123,55 @@ public class t
         if (-1 == i) {
           break;
         }
-        ad.e("MicroMsg.MMIsolatedCrashReporter", paramString.substring(0, i));
+        ac.e("MicroMsg.MMIsolatedCrashReporter", paramString.substring(0, i));
         paramString = paramString.substring(i + 1);
       }
-      ad.e("MicroMsg.MMIsolatedCrashReporter", paramString);
+      ac.e("MicroMsg.MMIsolatedCrashReporter", paramString);
       AppMethodBeat.o(19448);
       return;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.MMIsolatedCrashReporter", paramString, "Failed printing stack trace.", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MMIsolatedCrashReporter", paramString, "Failed printing stack trace.", new Object[0]);
       AppMethodBeat.o(19448);
     }
   }
   
-  private static String eC(String paramString)
+  private static String es(String paramString)
   {
     AppMethodBeat.i(19453);
     StringBuilder localStringBuilder = new StringBuilder(256);
     StringBuilderPrinter localStringBuilderPrinter = new StringBuilderPrinter(localStringBuilder);
-    Object localObject1 = aj.getContext();
-    localStringBuilderPrinter.println("#client.version=" + d.CpK);
-    localStringBuilderPrinter.println("#client.verhistory=" + ci.nr(4));
+    Object localObject1 = ai.getContext();
+    localStringBuilderPrinter.println("#client.version=" + d.DIc);
+    localStringBuilderPrinter.println("#client.verhistory=" + ci.of(4));
     localStringBuilderPrinter.println("#client.imei=0123456789ABCDEF");
     localStringBuilderPrinter.println("#accinfo.revision=" + h.REV);
     localStringBuilderPrinter.println("#accinfo.uin=0");
     localStringBuilderPrinter.println("#accinfo.dev=");
-    localStringBuilderPrinter.println("#accinfo.runtime=" + (bt.eGO() - cLI) + "(" + bt.nullAsNil(cLT) + ")");
-    localStringBuilderPrinter.println("#accinfo.build=" + h.TIME + ":" + h.HOSTNAME + ":" + i.cJR);
+    localStringBuilderPrinter.println("#accinfo.runtime=" + (bs.eWj() - cIQ) + "(" + bs.nullAsNil(cJb) + ")");
+    localStringBuilderPrinter.println("#accinfo.build=" + h.TIME + ":" + h.HOSTNAME + ":" + i.cGY);
     localStringBuilderPrinter.println("#qbrwoser.corever=" + WebView.getInstalledTbsCoreVersion((Context)localObject1));
     localStringBuilderPrinter.println("#qbrowser.ver=" + WebView.getTbsSDKVersion((Context)localObject1));
-    localStringBuilderPrinter.println("#xsdkver=200502");
+    localStringBuilderPrinter.println("#xsdkver=200601");
     try
     {
-      localStringBuilderPrinter.println("#xcorever=" + XWalkEnvironment.getInstalledNewstVersion(aj.getContext()));
+      localStringBuilderPrinter.println("#xcorever=" + XWalkEnvironment.getInstalledNewstVersion(ai.getContext()));
       localStringBuilderPrinter.println("#syswebcore=" + XWalkEnvironment.safeGetChromiunVersion());
-      ad.i("MicroMsg.MMIsolatedCrashReporter", "Activity dump before crash report, [%s]", new Object[] { com.tencent.mm.ae.a.agO() });
-      localStringBuilderPrinter.println(sCrashExtraMessageGetter.KQ());
+      ac.i("MicroMsg.MMIsolatedCrashReporter", "Activity dump before crash report, [%s]", new Object[] { com.tencent.mm.ad.a.aif() });
+      localStringBuilderPrinter.println(sCrashExtraMessageGetter.KB());
       Object localObject2 = new StringBuilder("#accinfo.env=");
       if (com.tencent.mm.sdk.a.b.foreground)
       {
         localObject1 = "f";
-        localStringBuilderPrinter.println((String)localObject1 + ":" + Thread.currentThread().getName() + ":" + com.tencent.mm.sdk.a.b.ESD);
+        localStringBuilderPrinter.println((String)localObject1 + ":" + Thread.currentThread().getName() + ":" + com.tencent.mm.sdk.a.b.GpQ);
         localObject1 = "";
       }
       try
       {
         localObject2 = new StatFs(Environment.getDataDirectory().getPath());
-        StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.aib());
-        localObject2 = String.format("%s:%d:%d:%d %s:%d:%d:%d", new Object[] { Environment.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()), com.tencent.mm.loader.j.b.aib(), Integer.valueOf(localStatFs.getBlockSize()), Integer.valueOf(localStatFs.getBlockCount()), Integer.valueOf(localStatFs.getAvailableBlocks()) });
+        StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.apb());
+        localObject2 = String.format("%s:%d:%d:%d %s:%d:%d:%d", new Object[] { Environment.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()), com.tencent.mm.loader.j.b.apb(), Integer.valueOf(localStatFs.getBlockSize()), Integer.valueOf(localStatFs.getBlockCount()), Integer.valueOf(localStatFs.getAvailableBlocks()) });
         localObject1 = localObject2;
       }
       catch (Exception localException2)
@@ -183,7 +183,7 @@ public class t
           int i;
           int j;
           String str;
-          ad.e("MicroMsg.MMIsolatedCrashReporter", "check data size failed :%s", new Object[] { localException2.getMessage() });
+          ac.e("MicroMsg.MMIsolatedCrashReporter", "check data size failed :%s", new Object[] { localException2.getMessage() });
         }
       }
       localStringBuilderPrinter.println("#accinfo.data=".concat(String.valueOf(localObject1)));
@@ -194,16 +194,16 @@ public class t
       l2 = Runtime.getRuntime().freeMemory();
       localObject1 = String.format("Runtime Mem[%s:%s:%s:%s] vmSize:%s", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l1 - l2), Long.valueOf(Runtime.getRuntime().maxMemory()), LogLogic.getVmSize() });
       localObject2 = "" + (String)localObject1;
-      i = com.tencent.mm.plugin.performance.c.b.HM();
+      i = com.tencent.mm.plugin.performance.d.a.Hx();
       localObject1 = localObject2;
       if (i > 260)
       {
         localObject1 = new LinkedList();
-        j = com.tencent.mm.plugin.performance.c.b.et((List)localObject1);
+        j = com.tencent.mm.plugin.performance.d.a.ex((List)localObject1);
         localObject1 = (String)localObject2 + String.format("[threadInfo(%s:%s) %s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), localObject1 });
       }
       localStringBuilderPrinter.println("#accinfo.memory=".concat(String.valueOf(localObject1)));
-      if (!bt.isNullOrNil(paramString)) {
+      if (!bs.isNullOrNil(paramString)) {
         localStringBuilderPrinter.println("#".concat(String.valueOf(paramString)));
       }
       localStringBuilderPrinter.println("#crashContent=");
@@ -215,7 +215,7 @@ public class t
     {
       for (;;)
       {
-        ad.e("MicroMsg.MMIsolatedCrashReporter", "get syswebcore failed: " + localException1.getMessage());
+        ac.e("MicroMsg.MMIsolatedCrashReporter", "get syswebcore failed: " + localException1.getMessage());
         continue;
         str = "b";
       }
@@ -223,7 +223,7 @@ public class t
   }
   
   /* Error */
-  public final void M(String paramString1, String paramString2)
+  public final void N(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: sipush 19450
@@ -236,11 +236,11 @@ public class t
     //   17: sipush 19450
     //   20: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: return
-    //   24: getstatic 46	com/tencent/mm/app/t:cMa	[B
+    //   24: getstatic 46	com/tencent/mm/app/t:cJi	[B
     //   27: astore 5
     //   29: aload 5
     //   31: monitorenter
-    //   32: getstatic 48	com/tencent/mm/app/t:cMb	Landroid/os/ParcelFileDescriptor;
+    //   32: getstatic 48	com/tencent/mm/app/t:cJj	Landroid/os/ParcelFileDescriptor;
     //   35: astore_2
     //   36: aload_2
     //   37: ifnull +44 -> 81
@@ -248,7 +248,7 @@ public class t
     //   43: dup
     //   44: new 472	java/io/FileWriter
     //   47: dup
-    //   48: getstatic 48	com/tencent/mm/app/t:cMb	Landroid/os/ParcelFileDescriptor;
+    //   48: getstatic 48	com/tencent/mm/app/t:cJj	Landroid/os/ParcelFileDescriptor;
     //   51: invokevirtual 478	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
     //   54: invokespecial 481	java/io/FileWriter:<init>	(Ljava/io/FileDescriptor;)V
     //   57: invokespecial 484	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
@@ -256,7 +256,7 @@ public class t
     //   61: aload_3
     //   62: astore_2
     //   63: aload_3
-    //   64: getstatic 78	com/tencent/mm/app/t:cMc	Ljava/lang/String;
+    //   64: getstatic 78	com/tencent/mm/app/t:cJk	Ljava/lang/String;
     //   67: invokevirtual 487	java/io/PrintWriter:print	(Ljava/lang/String;)V
     //   70: aload_3
     //   71: astore_2
@@ -264,7 +264,7 @@ public class t
     //   73: aload_1
     //   74: invokevirtual 488	java/io/PrintWriter:println	(Ljava/lang/String;)V
     //   77: aload_3
-    //   78: invokestatic 492	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   78: invokestatic 492	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   81: aload 5
     //   83: monitorexit
     //   84: sipush 19450
@@ -280,9 +280,9 @@ public class t
     //   101: ldc_w 494
     //   104: iconst_0
     //   105: anewarray 4	java/lang/Object
-    //   108: invokestatic 215	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   108: invokestatic 215	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   111: aload_1
-    //   112: invokestatic 492	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   112: invokestatic 492	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   115: goto -34 -> 81
     //   118: astore_1
     //   119: aload 5
@@ -295,7 +295,7 @@ public class t
     //   131: aconst_null
     //   132: astore_2
     //   133: aload_2
-    //   134: invokestatic 492	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   134: invokestatic 492	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   137: sipush 19450
     //   140: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   143: aload_1
@@ -332,12 +332,12 @@ public class t
     //   72	77	149	java/lang/Throwable
   }
   
-  public final void N(String paramString1, String paramString2) {}
+  public final void O(String paramString1, String paramString2) {}
   
   public final void a(com.tencent.mm.sdk.a.a parama)
   {
     AppMethodBeat.i(19451);
-    au.a(parama);
+    at.a(parama);
     AppMethodBeat.o(19451);
   }
   
@@ -349,12 +349,12 @@ public class t
       AppMethodBeat.o(19454);
       return;
     }
-    cLM.add(parama);
+    cIU.add(parama);
     AppMethodBeat.o(19454);
   }
   
   /* Error */
-  public final void a(au paramau, String paramString, java.lang.Throwable paramThrowable)
+  public final void b(at paramat, String paramString, java.lang.Throwable paramThrowable)
   {
     // Byte code:
     //   0: sipush 19452
@@ -366,20 +366,20 @@ public class t
     //   14: invokevirtual 508	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   17: astore_3
     //   18: aload_3
-    //   19: invokestatic 446	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   19: invokestatic 446	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   22: ifne +242 -> 264
     //   25: aload_1
     //   26: aload_3
-    //   27: invokevirtual 511	com/tencent/mm/sdk/platformtools/au:aFA	(Ljava/lang/String;)Ljava/lang/String;
+    //   27: invokevirtual 511	com/tencent/mm/sdk/platformtools/at:aKR	(Ljava/lang/String;)Ljava/lang/String;
     //   30: astore_1
     //   31: aload_1
-    //   32: invokestatic 446	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   32: invokestatic 446	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   35: ifne +229 -> 264
     //   38: new 57	java/lang/StringBuilder
     //   41: dup
     //   42: invokespecial 147	java/lang/StringBuilder:<init>	()V
     //   45: aload_1
-    //   46: invokestatic 513	com/tencent/mm/app/t:eC	(Ljava/lang/String;)Ljava/lang/String;
+    //   46: invokestatic 513	com/tencent/mm/app/t:es	(Ljava/lang/String;)Ljava/lang/String;
     //   49: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   52: aload_2
     //   53: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -397,12 +397,12 @@ public class t
     //   79: invokestatic 518	com/tencent/smtt/sdk/QbSdk:replaceLibraryName	(Ljava/lang/String;)Ljava/lang/String;
     //   82: astore 5
     //   84: aload 5
-    //   86: invokestatic 520	com/tencent/mm/app/t:eB	(Ljava/lang/String;)V
-    //   89: getstatic 46	com/tencent/mm/app/t:cMa	[B
+    //   86: invokestatic 520	com/tencent/mm/app/t:eq	(Ljava/lang/String;)V
+    //   89: getstatic 46	com/tencent/mm/app/t:cJi	[B
     //   92: astore 6
     //   94: aload 6
     //   96: monitorenter
-    //   97: getstatic 48	com/tencent/mm/app/t:cMb	Landroid/os/ParcelFileDescriptor;
+    //   97: getstatic 48	com/tencent/mm/app/t:cJj	Landroid/os/ParcelFileDescriptor;
     //   100: astore_1
     //   101: aload_1
     //   102: ifnull +88 -> 190
@@ -436,19 +436,19 @@ public class t
     //   155: dup
     //   156: new 472	java/io/FileWriter
     //   159: dup
-    //   160: getstatic 48	com/tencent/mm/app/t:cMb	Landroid/os/ParcelFileDescriptor;
+    //   160: getstatic 48	com/tencent/mm/app/t:cJj	Landroid/os/ParcelFileDescriptor;
     //   163: invokevirtual 478	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
     //   166: invokespecial 481	java/io/FileWriter:<init>	(Ljava/io/FileDescriptor;)V
     //   169: invokespecial 484	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
     //   172: astore_2
     //   173: aload_2
-    //   174: getstatic 78	com/tencent/mm/app/t:cMc	Ljava/lang/String;
+    //   174: getstatic 78	com/tencent/mm/app/t:cJk	Ljava/lang/String;
     //   177: invokevirtual 487	java/io/PrintWriter:print	(Ljava/lang/String;)V
     //   180: aload_2
     //   181: aload 5
     //   183: invokevirtual 488	java/io/PrintWriter:println	(Ljava/lang/String;)V
     //   186: aload_2
-    //   187: invokestatic 492	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   187: invokestatic 492	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   190: aload 6
     //   192: monitorexit
     //   193: sipush 19452
@@ -466,9 +466,9 @@ public class t
     //   210: ldc_w 494
     //   213: iconst_0
     //   214: anewarray 4	java/lang/Object
-    //   217: invokestatic 215	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   217: invokestatic 215	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   220: aload_2
-    //   221: invokestatic 492	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   221: invokestatic 492	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   224: goto -34 -> 190
     //   227: astore_1
     //   228: aload 6
@@ -483,7 +483,7 @@ public class t
     //   242: aload_3
     //   243: astore_1
     //   244: aload_2
-    //   245: invokestatic 492	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   245: invokestatic 492	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   248: sipush 19452
     //   251: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   254: aload_1
@@ -498,7 +498,7 @@ public class t
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	270	0	this	t
-    //   0	270	1	paramau	au
+    //   0	270	1	paramat	at
     //   0	270	2	paramString	String
     //   0	270	3	paramThrowable	java.lang.Throwable
     //   106	44	4	localObject	Object
@@ -525,14 +525,16 @@ public class t
     //   173	186	260	java/lang/Throwable
   }
   
-  public final void bp(Context paramContext)
+  public final void bq(Context paramContext)
   {
-    AppMethodBeat.i(204840);
-    au.a(this);
-    AppMethodBeat.o(204840);
+    AppMethodBeat.i(210110);
+    at.a(this);
+    AppMethodBeat.o(210110);
   }
   
   public final void d(int paramInt, String paramString1, String paramString2) {}
+  
+  public final void er(String paramString) {}
 }
 
 

@@ -2,65 +2,65 @@ package com.tencent.mm.plugin.fingerprint.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nm;
-import com.tencent.mm.g.a.nm.a;
+import com.tencent.mm.g.a.nv;
+import com.tencent.mm.g.a.nv.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class i
-  extends com.tencent.mm.sdk.b.c<nm>
+  extends com.tencent.mm.sdk.b.c<nv>
 {
-  private String dcE;
-  boolean rbD;
-  private a rbY;
-  nm rbZ;
-  private Runnable rca;
+  private String dac;
+  boolean sjX;
+  private a sks;
+  nv skt;
+  private Runnable sku;
   
   public i()
   {
     AppMethodBeat.i(160796);
-    this.rca = null;
-    this.rbD = false;
-    this.dcE = "";
-    this.__eventId = nm.class.getName().hashCode();
+    this.sku = null;
+    this.sjX = false;
+    this.dac = "";
+    this.__eventId = nv.class.getName().hashCode();
     AppMethodBeat.o(160796);
   }
   
-  public static void cuk()
+  public static void cHw()
   {
     AppMethodBeat.i(64339);
     ((com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class)).cancel();
     AppMethodBeat.o(64339);
   }
   
-  final void ae(int paramInt, String paramString)
+  final void af(int paramInt, String paramString)
   {
     AppMethodBeat.i(64341);
-    ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "onFail()");
-    ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class)).a(this.rbZ, paramInt, paramString);
-    if (this.rbD) {
-      this.rbZ = null;
+    ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "onFail()");
+    ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class)).a(this.skt, paramInt, paramString);
+    if (this.sjX) {
+      this.skt = null;
     }
-    ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "callback OpenFingerPrintAuthEvent onFail()");
+    ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "callback OpenFingerPrintAuthEvent onFail()");
     AppMethodBeat.o(64341);
   }
   
-  final boolean lu(boolean paramBoolean)
+  final boolean mm(boolean paramBoolean)
   {
     AppMethodBeat.i(64340);
-    cuk();
-    if (!((com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class)).cuq())
+    cHw();
+    if (!((com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class)).cHC())
     {
-      ad.e("MicroMsg.OpenFingerPrintAuthEventListener", "no fingerprints enrolled, use settings to enroll fingerprints first");
+      ac.e("MicroMsg.OpenFingerPrintAuthEventListener", "no fingerprints enrolled, use settings to enroll fingerprints first");
       release();
-      this.rbD = true;
-      ae(1, "");
+      this.sjX = true;
+      af(1, "");
       AppMethodBeat.o(64340);
       return false;
     }
-    ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class)).a(this.rbY, paramBoolean);
-    ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "startIdentify()");
+    ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class)).a(this.sks, paramBoolean);
+    ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "startIdentify()");
     AppMethodBeat.o(64340);
     return true;
   }
@@ -69,7 +69,7 @@ public final class i
   {
     AppMethodBeat.i(64338);
     ((com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class)).cancel();
-    this.rbZ = null;
+    this.skt = null;
     AppMethodBeat.o(64338);
   }
   
@@ -78,12 +78,12 @@ public final class i
   {
     public a() {}
     
-    public final void fE(int paramInt1, int paramInt2)
+    public final void fL(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(64337);
-      if (i.this.rbD)
+      if (i.this.sjX)
       {
-        ad.e("MicroMsg.OpenFingerPrintAuthEventListener", "hy: event already end. ignore");
+        ac.e("MicroMsg.OpenFingerPrintAuthEventListener", "hy: event already end. ignore");
         AppMethodBeat.o(64337);
         return;
       }
@@ -94,58 +94,58 @@ public final class i
       {
         AppMethodBeat.o(64337);
         return;
-        ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: identify FingerPrintConst.RESULT_SUCCESS");
+        ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: identify FingerPrintConst.RESULT_SUCCESS");
         Object localObject = i.this;
-        ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "onSuccess()");
-        ((i)localObject).rbD = true;
-        ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class)).a(((i)localObject).rbZ, paramInt2);
-        if (((i)localObject).rbD) {
-          ((i)localObject).rbZ = null;
+        ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "onSuccess()");
+        ((i)localObject).sjX = true;
+        ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class)).a(((i)localObject).skt, paramInt2);
+        if (((i)localObject).sjX) {
+          ((i)localObject).skt = null;
         }
-        ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "callback OpenFingerPrintAuthEvent onSuccess()");
-        i.cuk();
+        ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "callback OpenFingerPrintAuthEvent onSuccess()");
+        i.cHw();
         AppMethodBeat.o(64337);
         return;
-        ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: identify FingerPrintConst.RESULT_NO_MATCH");
-        i.this.rbD = false;
-        i.cuk();
-        i.this.lu(true);
-        i.this.ae(1, "");
+        ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: identify FingerPrintConst.RESULT_NO_MATCH");
+        i.this.sjX = false;
+        i.cHw();
+        i.this.mm(true);
+        i.this.af(1, "");
         AppMethodBeat.o(64337);
         return;
-        i.this.lu(false);
-        ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: identify FingerPrintConst.RESULT_TIMEOUT");
+        i.this.mm(false);
+        ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: identify FingerPrintConst.RESULT_TIMEOUT");
         AppMethodBeat.o(64337);
         return;
-        ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: identify timeout");
+        ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: identify timeout");
         AppMethodBeat.o(64337);
         return;
-        ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
-        i.this.rbD = true;
-        localObject = aj.getContext().getString(2131764095);
+        ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
+        i.this.sjX = true;
+        localObject = ai.getContext().getString(2131764095);
         if (paramInt1 == 10308) {
-          localObject = aj.getContext().getString(2131764096);
+          localObject = ai.getContext().getString(2131764096);
         }
         for (;;)
         {
-          i.cuk();
-          i.this.ae(2, (String)localObject);
+          i.cHw();
+          i.this.af(2, (String)localObject);
           AppMethodBeat.o(64337);
           return;
           if (paramInt1 == 2007) {
-            p.rcp.rcr = true;
+            p.skJ.skL = true;
           } else if (paramInt1 == 2005) {
-            localObject = aj.getContext().getString(2131764097);
+            localObject = ai.getContext().getString(2131764097);
           }
         }
-        ad.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
-        if (i.this.rbZ != null) {
-          com.tencent.mm.plugin.soter.d.a.Og(i.this.rbZ.dsz.dsC);
+        ac.i("MicroMsg.OpenFingerPrintAuthEventListener", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
+        if (i.this.skt != null) {
+          com.tencent.mm.plugin.soter.d.a.Ql(i.this.skt.dqj.dqm);
         }
-        i.this.rbD = true;
-        localObject = aj.getContext().getString(2131764095);
-        i.cuk();
-        i.this.ae(paramInt1, (String)localObject);
+        i.this.sjX = true;
+        localObject = ai.getContext().getString(2131764095);
+        i.cHw();
+        i.this.af(paramInt1, (String)localObject);
       }
     }
   }

@@ -12,12 +12,12 @@ import java.util.List;
 final class b
   implements g
 {
-  private final d.l.b.a.b.f.b JCF;
+  private final d.l.b.a.b.f.b LpY;
   
   public b(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(58019);
-    this.JCF = paramb;
+    this.LpY = paramb;
     AppMethodBeat.o(58019);
   }
   
@@ -38,14 +38,14 @@ final class b
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(58018);
-    Iterator localIterator = ((List)v.Jgl).iterator();
+    Iterator localIterator = ((List)v.KTF).iterator();
     AppMethodBeat.o(58018);
     return localIterator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.b
  * JD-Core Version:    0.7.0.1
  */

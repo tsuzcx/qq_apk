@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storage.RegionCodeDecoder.Region;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ZonePreference
   extends Preference
 {
-  RegionCodeDecoder.Region Huv;
-  private CharSequence Huw;
-  private TextView Hux;
+  RegionCodeDecoder.Region IUS;
+  private CharSequence IUT;
+  private TextView IUU;
   
   public ZonePreference(Context paramContext)
   {
@@ -37,37 +37,37 @@ public class ZonePreference
     AppMethodBeat.o(39205);
   }
   
-  private void fee()
+  private void ftZ()
   {
     AppMethodBeat.i(39208);
-    if (this.Hux == null)
+    if (this.IUU == null)
     {
       AppMethodBeat.o(39208);
       return;
     }
-    if ((this.Huw != null) && (!bt.isNullOrNil(this.Huw.toString()))) {
-      this.Hux.setVisibility(0);
+    if ((this.IUT != null) && (!bs.isNullOrNil(this.IUT.toString()))) {
+      this.IUU.setVisibility(0);
     }
     for (;;)
     {
-      this.Hux.setText(this.Huw);
+      this.IUU.setText(this.IUT);
       AppMethodBeat.o(39208);
       return;
-      this.Hux.setVisibility(8);
+      this.IUU.setVisibility(8);
     }
   }
   
   public final void a(RegionCodeDecoder.Region paramRegion)
   {
     AppMethodBeat.i(39206);
-    if ((paramRegion == null) || (bt.isNullOrNil(paramRegion.getName())) || (bt.isNullOrNil(paramRegion.getCode())))
+    if ((paramRegion == null) || (bs.isNullOrNil(paramRegion.getName())) || (bs.isNullOrNil(paramRegion.getCode())))
     {
-      ad.e("MicroMsg.ZonePreference", "setZoneItem item = null");
+      ac.e("MicroMsg.ZonePreference", "setZoneItem item = null");
       AppMethodBeat.o(39206);
       return;
     }
     setKey(paramRegion.getCode() + paramRegion.isCity());
-    this.Huv = paramRegion;
+    this.IUS = paramRegion;
     AppMethodBeat.o(39206);
   }
   
@@ -75,14 +75,14 @@ public class ZonePreference
   {
     AppMethodBeat.i(39210);
     super.onBindView(paramView);
-    if (this.Huv == null)
+    if (this.IUS == null)
     {
       AppMethodBeat.o(39210);
       return;
     }
-    ((TextView)paramView.findViewById(2131307140)).setText(this.Huv.getName());
-    this.Hux = ((TextView)paramView.findViewById(2131305556));
-    fee();
+    ((TextView)paramView.findViewById(2131307140)).setText(this.IUS.getName());
+    this.IUU = ((TextView)paramView.findViewById(2131305556));
+    ftZ();
     AppMethodBeat.o(39210);
   }
   
@@ -101,14 +101,14 @@ public class ZonePreference
   public final void setSummary(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(39207);
-    this.Huw = paramCharSequence;
-    fee();
+    this.IUT = paramCharSequence;
+    ftZ();
     AppMethodBeat.o(39207);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ZonePreference
  * JD-Core Version:    0.7.0.1
  */

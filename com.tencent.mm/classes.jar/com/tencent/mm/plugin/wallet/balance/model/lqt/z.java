@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bon;
-import com.tencent.mm.protocal.protobuf.caq;
+import com.tencent.mm.protocal.protobuf.btd;
+import com.tencent.mm.protocal.protobuf.cfp;
 import com.tencent.mm.vending.c.b;
 import com.tencent.mm.vending.h.e;
 import com.tencent.mm.vending.j.d;
@@ -10,9 +10,9 @@ import com.tencent.mm.vending.j.d;
 public class z
   implements b<y>
 {
-  protected y zFr;
-  public final b zFs;
-  public final a zFt;
+  protected y AXE;
+  public final b AXF;
+  public final a AXG;
   
   public z()
   {
@@ -24,29 +24,29 @@ public class z
   private z(y paramy)
   {
     AppMethodBeat.i(68511);
-    this.zFs = new b();
-    this.zFt = new a();
-    this.zFr = paramy;
+    this.AXF = new b();
+    this.AXG = new a();
+    this.AXE = paramy;
     AppMethodBeat.o(68511);
   }
   
   public final class a
-    implements e<bon, d<Integer, Integer, String>>
+    implements e<btd, d<Integer, Integer, String>>
   {
     public a() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.UI";
     }
   }
   
   public final class b
-    implements e<caq, Void>
+    implements e<cfp, Void>
   {
     public b() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.UI";
     }
@@ -54,7 +54,7 @@ public class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.z
  * JD-Core Version:    0.7.0.1
  */

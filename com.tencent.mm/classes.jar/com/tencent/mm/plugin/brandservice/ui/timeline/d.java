@@ -4,75 +4,75 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.a.c.h;
-import com.tencent.mm.aw.a.d.b;
-import com.tencent.mm.aw.d.a;
-import com.tencent.mm.aw.e;
-import com.tencent.mm.aw.g;
-import com.tencent.mm.aw.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.a.c.h;
+import com.tencent.mm.av.a.d.b;
+import com.tencent.mm.av.d.a;
+import com.tencent.mm.av.e;
+import com.tencent.mm.av.g;
+import com.tencent.mm.av.o;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.storage.s;
+import com.tencent.mm.storage.t;
 import com.tencent.mm.vfs.i;
 import java.util.HashMap;
 
 public final class d
   implements d.a
 {
-  int mXi;
-  public HashMap<Long, Integer> mXj;
-  private j mXk;
+  int nzH;
+  public HashMap<Long, Integer> nzI;
+  private j nzJ;
   
   public d(j paramj)
   {
     AppMethodBeat.i(5892);
-    this.mXj = new HashMap();
-    this.mXk = paramj;
+    this.nzI = new HashMap();
+    this.nzJ = paramj;
     AppMethodBeat.o(5892);
   }
   
-  private void a(e parame, s params, int paramInt, ImageView paramImageView)
+  private void a(e parame, t paramt, int paramInt, ImageView paramImageView)
   {
     AppMethodBeat.i(5893);
-    if (o.ayG().a(parame.deI, params.field_msgId, 0, Integer.valueOf(paramInt), 2131231564, this, 0, false) == -2)
+    if (o.aFy().a(parame.dcd, paramt.field_msgId, 0, Integer.valueOf(paramInt), 2131231564, this, 0, false) == -2)
     {
-      ad.w("MicroMsg.BizTimeLineImgMsgHandler", "it is already download image finish, but imgInfo is old, search db and repair.");
-      parame = c(params);
+      ac.w("MicroMsg.BizTimeLineImgMsgHandler", "it is already download image finish, but imgInfo is old, search db and repair.");
+      parame = c(paramt);
       if (parame == null)
       {
-        ad.w("MicroMsg.BizTimeLineImgMsgHandler", "get imgInfo by db but it is null.");
+        ac.w("MicroMsg.BizTimeLineImgMsgHandler", "get imgInfo by db but it is null.");
         AppMethodBeat.o(5893);
         return;
       }
       parame = i(parame);
-      if (i.eK(parame)) {
+      if (i.eA(parame)) {
         loadImage(parame, paramImageView);
       }
     }
     AppMethodBeat.o(5893);
   }
   
-  private static e c(s params)
+  private static e c(t paramt)
   {
     AppMethodBeat.i(5897);
     e locale1 = null;
-    if (params.field_msgId > 0L) {
-      locale1 = o.ayF().ms(params.field_msgId);
+    if (paramt.field_msgId > 0L) {
+      locale1 = o.aFx().qg(paramt.field_msgId);
     }
     e locale2;
     if (locale1 != null)
     {
       locale2 = locale1;
-      if (locale1.deI > 0L) {}
+      if (locale1.dcd > 0L) {}
     }
     else
     {
       locale2 = locale1;
-      if (params.field_msgSvrId > 0L) {
-        locale2 = o.ayF().mr(params.field_msgSvrId);
+      if (paramt.field_msgSvrId > 0L) {
+        locale2 = o.aFx().qf(paramt.field_msgSvrId);
       }
     }
     AppMethodBeat.o(5897);
@@ -88,26 +88,26 @@ public final class d
       AppMethodBeat.o(5896);
       return null;
     }
-    String str = parame.hgj;
+    String str = parame.hGM;
     Object localObject1 = localObject2;
-    if (parame.ayi())
+    if (parame.aFa())
     {
-      parame = o.ayF().d(parame);
+      parame = o.aFx().d(parame);
       localObject1 = localObject2;
       if (parame != null)
       {
-        parame = o.ayF().p(parame, "", "");
+        parame = o.aFx().p(parame, "", "");
         localObject1 = localObject2;
-        if (i.eK(parame))
+        if (i.eA(parame))
         {
-          ad.i("MicroMsg.BizTimeLineImgMsgHandler", "hasHdImg");
+          ac.i("MicroMsg.BizTimeLineImgMsgHandler", "hasHdImg");
           localObject1 = parame;
         }
       }
     }
     parame = (e)localObject1;
     if (localObject1 == null) {
-      parame = o.ayF().p(str, "", "");
+      parame = o.aFx().p(str, "", "");
     }
     AppMethodBeat.o(5896);
     return parame;
@@ -116,15 +116,15 @@ public final class d
   private void loadImage(String paramString, ImageView paramImageView)
   {
     AppMethodBeat.i(5895);
-    if (this.mXi != 0) {}
+    if (this.nzH != 0) {}
     for (final int i = 2131231245;; i = 0)
     {
-      com.tencent.mm.aw.a.a locala = o.ayJ();
+      com.tencent.mm.av.a.a locala = o.aFB();
       c.a locala1 = new c.a();
-      locala1.hkk = "biz_nor_img".concat(String.valueOf(i));
-      locala1.hki = 2131100141;
-      locala1.hjX = 1;
-      locala.a(paramString, paramImageView, locala1.azc(), new h()
+      locala1.hKN = "biz_nor_img".concat(String.valueOf(i));
+      locala1.hKL = 2131100141;
+      locala1.hKA = 1;
+      locala.a(paramString, paramImageView, locala1.aFT(), new h()
       {
         public final Bitmap a(String paramAnonymousString, View paramAnonymousView, b paramAnonymousb)
         {
@@ -136,27 +136,27 @@ public final class d
           }
           if ((paramAnonymousb == null) || (paramAnonymousb.bitmap == null) || (paramAnonymousb.bitmap.isRecycled()))
           {
-            ad.w("MicroMsg.BizTimeLineImgMsgHandler", "onProcessBitmap bitmap is null");
+            ac.w("MicroMsg.BizTimeLineImgMsgHandler", "onProcessBitmap bitmap is null");
             AppMethodBeat.o(5891);
             return null;
           }
-          if (bt.isNullOrNil(paramAnonymousString))
+          if (bs.isNullOrNil(paramAnonymousString))
           {
-            ad.w("MicroMsg.BizTimeLineImgMsgHandler", "onProcessBitmap url is null");
+            ac.w("MicroMsg.BizTimeLineImgMsgHandler", "onProcessBitmap url is null");
             AppMethodBeat.o(5891);
             return null;
           }
           try
           {
-            int j = com.tencent.mm.cd.a.hV(paramAnonymousView.getContext()) - (int)(com.tencent.mm.cd.a.getDensity(paramAnonymousView.getContext()) * 16.0F);
-            if (d.this.mXi != 0) {}
-            for (int i = d.this.mXi;; i = (int)(j / 2.35D))
+            int j = com.tencent.mm.cc.a.ig(paramAnonymousView.getContext()) - (int)(com.tencent.mm.cc.a.getDensity(paramAnonymousView.getContext()) * 16.0F);
+            if (d.this.nzH != 0) {}
+            for (int i = d.this.nzH;; i = (int)(j / 2.35D))
             {
               paramAnonymousView = f.b(paramAnonymousb.bitmap, j, i, true);
               paramAnonymousString = Bitmap.createScaledBitmap(paramAnonymousView, j, i, true);
               if ((paramAnonymousString != paramAnonymousView) && (paramAnonymousView != null) && (!paramAnonymousView.isRecycled()))
               {
-                ad.i("MicroMsg.BizTimeLineImgMsgHandler", "bitmap recycled %s", new Object[] { paramAnonymousView });
+                ac.i("MicroMsg.BizTimeLineImgMsgHandler", "bitmap recycled %s", new Object[] { paramAnonymousView });
                 paramAnonymousView.recycle();
               }
               paramAnonymousView = f.k(paramAnonymousString, i);
@@ -170,7 +170,7 @@ public final class d
           }
           catch (OutOfMemoryError paramAnonymousString)
           {
-            ad.w("MicroMsg.BizTimeLineImgMsgHandler", "onProcessBitmap OutOfMemoryError %s", new Object[] { paramAnonymousString.getMessage() });
+            ac.w("MicroMsg.BizTimeLineImgMsgHandler", "onProcessBitmap OutOfMemoryError %s", new Object[] { paramAnonymousString.getMessage() });
             AppMethodBeat.o(5891);
           }
         }
@@ -184,19 +184,19 @@ public final class d
     }
   }
   
-  private void n(long paramLong, int paramInt)
+  private void o(long paramLong, int paramInt)
   {
     AppMethodBeat.i(5900);
-    this.mXj.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
+    this.nzI.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
     AppMethodBeat.o(5900);
   }
   
-  private int nC(long paramLong)
+  private int ro(long paramLong)
   {
     AppMethodBeat.i(5899);
-    if (this.mXj.containsKey(Long.valueOf(paramLong)))
+    if (this.nzI.containsKey(Long.valueOf(paramLong)))
     {
-      int i = ((Integer)this.mXj.get(Long.valueOf(paramLong))).intValue();
+      int i = ((Integer)this.nzI.get(Long.valueOf(paramLong))).intValue();
       AppMethodBeat.o(5899);
       return i;
     }
@@ -213,53 +213,53 @@ public final class d
     AppMethodBeat.i(5898);
     if ((paramInt3 != 0) || (paramInt4 != 0))
     {
-      ad.i("MicroMsg.BizTimeLineImgMsgHandler", "onImgTaskEnd errType %d, errCode %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+      ac.i("MicroMsg.BizTimeLineImgMsgHandler", "onImgTaskEnd errType %d, errCode %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
       if (paramInt4 == -5103059)
       {
-        n(paramLong2, 2);
+        o(paramLong2, 2);
         AppMethodBeat.o(5898);
         return;
       }
-      n(paramLong2, 3);
+      o(paramLong2, 3);
       AppMethodBeat.o(5898);
       return;
     }
-    n(paramLong2, 1);
-    this.mXk.bCM();
+    o(paramLong2, 1);
+    this.nzJ.bJU();
     AppMethodBeat.o(5898);
   }
   
-  public final void a(s params, int paramInt1, ImageView paramImageView, int paramInt2)
+  public final void a(t paramt, int paramInt1, ImageView paramImageView, int paramInt2)
   {
     AppMethodBeat.i(5894);
-    this.mXi = paramInt2;
-    if ((nC(params.field_msgId) == 2) || (nC(params.field_msgId) == 3))
+    this.nzH = paramInt2;
+    if ((ro(paramt.field_msgId) == 2) || (ro(paramt.field_msgId) == 3))
     {
       AppMethodBeat.o(5894);
       return;
     }
-    e locale = c(params);
+    e locale = c(paramt);
     if (locale != null)
     {
       String str = i(locale);
-      if (i.eK(str))
+      if (i.eA(str))
       {
         loadImage(str, paramImageView);
-        n(params.field_msgId, 1);
+        o(paramt.field_msgId, 1);
         AppMethodBeat.o(5894);
         return;
       }
-      a(locale, params, paramInt1, paramImageView);
+      a(locale, paramt, paramInt1, paramImageView);
       AppMethodBeat.o(5894);
       return;
     }
-    ad.w("MicroMsg.BizTimeLineImgMsgHandler", "showImg img info is null. %d/%d", new Object[] { Long.valueOf(params.field_msgId), Long.valueOf(params.field_msgSvrId) });
+    ac.w("MicroMsg.BizTimeLineImgMsgHandler", "showImg img info is null. %d/%d", new Object[] { Long.valueOf(paramt.field_msgId), Long.valueOf(paramt.field_msgSvrId) });
     AppMethodBeat.o(5894);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.d
  * JD-Core Version:    0.7.0.1
  */

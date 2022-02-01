@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +27,7 @@ public final class o
     this.db = parame;
   }
   
-  public final List<n> bIT()
+  public final List<n> bQg()
   {
     AppMethodBeat.i(113026);
     ArrayList localArrayList = new ArrayList();
@@ -39,14 +39,14 @@ public final class o
       localArrayList.add(localn);
     }
     localCursor.close();
-    ad.d("MicroMsg.ShareCardSyncItemInfoStorage", "getAll, share card count = %d", new Object[] { Integer.valueOf(localArrayList.size()) });
+    ac.d("MicroMsg.ShareCardSyncItemInfoStorage", "getAll, share card count = %d", new Object[] { Integer.valueOf(localArrayList.size()) });
     AppMethodBeat.o(113026);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.o
  * JD-Core Version:    0.7.0.1
  */

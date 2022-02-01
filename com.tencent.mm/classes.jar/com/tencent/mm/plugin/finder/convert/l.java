@@ -1,31 +1,32 @@
 package com.tencent.mm.plugin.finder.convert;
 
+import android.support.v7.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.c;
-import com.tencent.mm.plugin.finder.model.k;
+import com.tencent.mm.plugin.finder.model.n;
+import com.tencent.mm.view.recyclerview.b;
+import com.tencent.mm.view.recyclerview.e;
+import d.g.b.k;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedPlainTextConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedPlainText;", "contract", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;", "safeMode", "", "tabType", "", "(Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;ZI)V", "convertMedia", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "getLayoutId", "plugin-finder_release"})
-public class l
-  extends e<k>
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedLikeConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLike;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+public final class l
+  extends b<n>
 {
-  private final c qqD;
-  
-  private l(c paramc, boolean paramBoolean, int paramInt)
+  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
   {
-    super(paramc, paramBoolean, paramInt);
-    AppMethodBeat.i(165412);
-    this.qqD = paramc;
-    AppMethodBeat.o(165412);
+    AppMethodBeat.i(201294);
+    k.h(paramRecyclerView, "recyclerView");
+    k.h(parame, "holder");
+    AppMethodBeat.o(201294);
   }
   
   public final int getLayoutId()
   {
-    return 2131492872;
+    return 2131496189;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.l
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ import java.io.RandomAccessFile;
 public final class q
   implements g
 {
-  private final x<? super q> bws;
-  private long bwt;
+  private final w<? super q> bur;
+  private long bus;
   private RandomAccessFile file;
   private boolean opened;
   private Uri uri;
@@ -20,9 +20,9 @@ public final class q
     this(null);
   }
   
-  public q(x<? super q> paramx)
+  public q(w<? super q> paramw)
   {
-    this.bws = paramx;
+    this.bur = paramw;
   }
   
   public final long a(j paramj)
@@ -38,8 +38,8 @@ public final class q
         if (paramj.length == -1L)
         {
           l = this.file.length() - paramj.position;
-          this.bwt = l;
-          if (this.bwt >= 0L) {
+          this.bus = l;
+          if (this.bus >= 0L) {
             break;
           }
           paramj = new EOFException();
@@ -56,10 +56,10 @@ public final class q
       l = paramj.length;
     }
     this.opened = true;
-    if (this.bws != null) {
-      this.bws.vl();
+    if (this.bur != null) {
+      this.bur.ve();
     }
-    long l = this.bwt;
+    long l = this.bus;
     AppMethodBeat.o(93079);
     return l;
   }
@@ -87,8 +87,8 @@ public final class q
       if (this.opened)
       {
         this.opened = false;
-        if (this.bws != null) {
-          this.bws.vm();
+        if (this.bur != null) {
+          this.bur.vf();
         }
       }
       AppMethodBeat.o(93081);
@@ -109,19 +109,19 @@ public final class q
       AppMethodBeat.o(93080);
       return 0;
     }
-    if (this.bwt == 0L)
+    if (this.bus == 0L)
     {
       AppMethodBeat.o(93080);
       return -1;
     }
     try
     {
-      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bwt, paramInt2));
+      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bus, paramInt2));
       if (paramInt1 > 0)
       {
-        this.bwt -= paramInt1;
-        if (this.bws != null) {
-          this.bws.fj(paramInt1);
+        this.bus -= paramInt1;
+        if (this.bur != null) {
+          this.bur.eV(paramInt1);
         }
       }
       AppMethodBeat.o(93080);

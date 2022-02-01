@@ -7,28 +7,28 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.s;
+import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDividerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "orientation", "", "(I)V", "bounds", "Landroid/graphics/Rect;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerSize", "getOrientation", "()I", "drawHorizontal", "", "canvas", "Landroid/graphics/Canvas;", "parent", "Landroid/support/v7/widget/RecyclerView;", "drawVertical", "getItemOffsets", "outRect", "view", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onDraw", "c", "Companion", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDividerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "orientation", "", "(I)V", "bounds", "Landroid/graphics/Rect;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerSize", "getOrientation", "()I", "drawHorizontal", "", "canvas", "Landroid/graphics/Canvas;", "parent", "Landroid/support/v7/widget/RecyclerView;", "drawVertical", "getItemOffsets", "outRect", "view", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onDraw", "c", "Companion", "plugin-story_release"})
 public final class b
   extends RecyclerView.h
 {
-  public static final a yxI;
-  private final Rect eT;
-  private final Drawable ipA;
+  public static final b.a zKX;
+  private final Rect fU;
+  private final Drawable iPH;
   private final int orientation;
-  private int yxH;
+  private int zKW;
   
   static
   {
     AppMethodBeat.i(120329);
-    yxI = new a((byte)0);
+    zKX = new b.a((byte)0);
     AppMethodBeat.o(120329);
   }
   
@@ -36,20 +36,20 @@ public final class b
   {
     AppMethodBeat.i(120328);
     this.orientation = paramInt;
-    this.ipA = ((Drawable)new ColorDrawable(-16777216));
-    this.eT = new Rect();
-    this.yxH = a.fromDPToPix(aj.getContext(), 16);
+    this.iPH = ((Drawable)new ColorDrawable(-16777216));
+    this.fU = new Rect();
+    this.zKW = a.fromDPToPix(ai.getContext(), 16);
     AppMethodBeat.o(120328);
   }
   
-  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     int m = 0;
     int k = 0;
     AppMethodBeat.i(120326);
     k.h(paramCanvas, "c");
     k.h(paramRecyclerView, "parent");
-    k.h(params, "state");
+    k.h(paramt, "state");
     if (paramRecyclerView.getLayoutManager() == null)
     {
       AppMethodBeat.o(120326);
@@ -73,14 +73,14 @@ public final class b
         m = paramRecyclerView.getChildCount();
         while (k < m)
         {
-          params = paramRecyclerView.getChildAt(k);
-          RecyclerView.c(params, this.eT);
-          n = this.eT.bottom;
-          k.g(params, "child");
-          n = Math.round(params.getTranslationY()) + n;
-          i1 = this.yxH;
-          this.ipA.setBounds(j, n - i1, i, n);
-          this.ipA.draw(paramCanvas);
+          paramt = paramRecyclerView.getChildAt(k);
+          RecyclerView.c(paramt, this.fU);
+          n = this.fU.bottom;
+          k.g(paramt, "child");
+          n = Math.round(paramt.getTranslationY()) + n;
+          i1 = this.zKW;
+          this.iPH.setBounds(j, n - i1, i, n);
+          this.iPH.draw(paramCanvas);
           k += 1;
         }
         i = paramRecyclerView.getWidth();
@@ -103,16 +103,16 @@ public final class b
       k = m;
       while (k < n)
       {
-        params = paramRecyclerView.getChildAt(k);
+        paramt = paramRecyclerView.getChildAt(k);
         if (paramRecyclerView.getLayoutManager() != null) {
-          RecyclerView.i.c(params, this.eT);
+          RecyclerView.i.c(paramt, this.fU);
         }
-        m = this.eT.right;
-        k.g(params, "child");
-        m = Math.round(params.getTranslationX()) + m;
-        i1 = this.yxH;
-        this.ipA.setBounds(m - i1, j, m, i);
-        this.ipA.draw(paramCanvas);
+        m = this.fU.right;
+        k.g(paramt, "child");
+        m = Math.round(paramt.getTranslationX()) + m;
+        i1 = this.zKW;
+        this.iPH.setBounds(m - i1, j, m, i);
+        this.iPH.draw(paramCanvas);
         k += 1;
       }
       i = paramRecyclerView.getHeight();
@@ -122,13 +122,13 @@ public final class b
     AppMethodBeat.o(120326);
   }
   
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(120327);
     k.h(paramRect, "outRect");
     k.h(paramView, "view");
     k.h(paramRecyclerView, "parent");
-    k.h(params, "state");
+    k.h(paramt, "state");
     int i;
     if (paramRecyclerView.getLayoutManager() != null)
     {
@@ -154,21 +154,18 @@ public final class b
     {
       if (this.orientation == 0)
       {
-        paramRect.set(0, 0, this.yxH, 0);
+        paramRect.set(0, 0, this.zKW, 0);
         AppMethodBeat.o(120327);
         return;
       }
-      paramRect.set(0, 0, 0, this.yxH);
+      paramRect.set(0, 0, 0, this.zKW);
     }
     AppMethodBeat.o(120327);
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDividerDecoration$Companion;", "", "()V", "Horizontal", "", "Vertical", "plugin-story_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.b
  * JD-Core Version:    0.7.0.1
  */

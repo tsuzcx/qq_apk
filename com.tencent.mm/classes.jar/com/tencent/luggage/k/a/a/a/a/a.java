@@ -11,18 +11,19 @@ import com.tencent.luggage.k.a.a.a;
 import com.tencent.luggage.k.a.a.i;
 import com.tencent.luggage.k.a.a.j;
 import com.tencent.luggage.k.a.a.k;
-import com.tencent.luggage.k.a.a.l;
-import com.tencent.luggage.k.a.a.m;
 import com.tencent.luggage.k.a.a.n;
+import com.tencent.luggage.k.a.a.p;
 import com.tencent.luggage.k.a.a.q;
 import com.tencent.luggage.k.a.a.r;
+import com.tencent.luggage.k.a.a.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.u;
 import com.tencent.mm.plugin.appbrand.jsapi.w;
 import com.tencent.mm.plugin.appbrand.jsapi.z;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.rtmp.ITXLivePlayListener;
 import com.tencent.rtmp.TXLiveBase;
 import com.tencent.rtmp.TXLivePlayer.ITXAudioVolumeEvaluationListener;
@@ -36,43 +37,43 @@ import org.json.JSONObject;
 
 public final class a
   extends com.tencent.luggage.k.a.b.a
-  implements com.tencent.luggage.k.a.a.h, n
+  implements k, p
 {
-  private w cjE;
-  private boolean ckA;
-  boolean ckB;
-  boolean ckC;
-  com.tencent.mm.plugin.appbrand.jsapi.q.c ckD;
-  String ckE;
-  public Handler ckF;
-  private HandlerThread ckG;
-  boolean ckH;
-  volatile boolean ckI;
-  AtomicBoolean ckJ;
-  com.tencent.luggage.k.a.a.a ckK;
-  com.tencent.luggage.k.a.a.b<d> ckL;
-  String ckM;
-  public r ckN;
-  public int ckO;
-  volatile boolean ckP;
-  boolean ckQ;
-  boolean ckR;
-  public boolean ckS;
-  private com.tencent.luggage.k.a.a.h ckT;
-  public AtomicBoolean ckU;
-  volatile String ckV;
-  volatile com.tencent.luggage.k.a.a.g ckW;
-  volatile Bitmap ckX;
-  public b ckq;
-  public com.tencent.luggage.k.a.a.a.a.a.c ckr;
-  public com.tencent.luggage.k.a.a.a.a.a.b cks;
-  public com.tencent.luggage.k.a.a.a.a.a.a ckt;
-  public com.tencent.luggage.k.a.a cku;
-  a.a ckv;
-  public int ckw;
-  public int ckx;
-  public int cky;
-  public int ckz;
+  private w cgA;
+  boolean chA;
+  boolean chB;
+  com.tencent.mm.plugin.appbrand.jsapi.p.c chC;
+  String chD;
+  public Handler chE;
+  private HandlerThread chF;
+  boolean chG;
+  volatile boolean chH;
+  AtomicBoolean chI;
+  private p chK;
+  com.tencent.luggage.k.a.a.a chM;
+  com.tencent.luggage.k.a.a.b<d> chN;
+  String chO;
+  public n chP;
+  public int chQ;
+  volatile boolean chR;
+  boolean chS;
+  boolean chT;
+  public boolean chU;
+  public AtomicBoolean chW;
+  volatile String chX;
+  volatile com.tencent.luggage.k.a.a.g chY;
+  volatile Bitmap chZ;
+  public b chp;
+  public com.tencent.luggage.k.a.a.a.a.a.c chq;
+  public com.tencent.luggage.k.a.a.a.a.a.b chr;
+  public com.tencent.luggage.k.a.a.a.a.a.a chs;
+  public com.tencent.luggage.k.a.a cht;
+  a.a chu;
+  public int chv;
+  public int chw;
+  public int chx;
+  public int chy;
+  private boolean chz;
   public Surface mSurface;
   public SurfaceTexture mSurfaceTexture;
   volatile String mTitle;
@@ -80,61 +81,61 @@ public final class a
   public a()
   {
     AppMethodBeat.i(138827);
-    this.cky = 0;
-    this.ckz = 0;
-    this.ckD = null;
-    this.ckE = null;
-    this.ckH = false;
-    this.ckI = false;
-    this.ckJ = null;
-    this.cjE = new a.5(this);
-    this.ckK = new com.tencent.luggage.k.a.a.a(this, this.cjE)
+    this.chx = 0;
+    this.chy = 0;
+    this.chC = null;
+    this.chD = null;
+    this.chG = false;
+    this.chH = false;
+    this.chI = null;
+    this.cgA = new w()
+    {
+      private u chL;
+      
+      public final u EK()
+      {
+        return this.chL;
+      }
+    };
+    this.chM = new com.tencent.luggage.k.a.a.a(this, this.cgA)
     {
       public final void a(String paramAnonymousString, com.tencent.luggage.k.a.a paramAnonymousa)
       {
         AppMethodBeat.i(178802);
         a(paramAnonymousa);
-        paramAnonymousa = paramAnonymousa.EB();
+        paramAnonymousa = paramAnonymousa.Ee();
         if ((paramAnonymousString.contains("insert")) || (paramAnonymousString.contains("update")))
         {
           if (paramAnonymousa.has("autoplay")) {
-            this.cjF = paramAnonymousa.optBoolean("autoplay");
+            this.cgB = paramAnonymousa.optBoolean("autoplay");
           }
           paramAnonymousString = z.D(paramAnonymousa);
           if (paramAnonymousString != null) {
-            this.cjG = paramAnonymousString.booleanValue();
+            this.cgC = paramAnonymousString.booleanValue();
           }
         }
         for (;;)
         {
-          ad.d(a.this.EE(), "mAutoRotationPluginHandlerCommons.handleJsApi, mIsNeedNotify: " + this.cjF + ", mIsAutoRotationEnabled: " + this.cjG);
+          ac.d(a.this.getLogTag(), "mAutoRotationPluginHandlerCommons.handleJsApi, mIsNeedNotify: " + this.cgB + ", mIsAutoRotationEnabled: " + this.cgC);
           AppMethodBeat.o(178802);
           return;
           if (paramAnonymousString.contains("operate"))
           {
             paramAnonymousString = paramAnonymousa.optString("type");
-            if ((!bt.isNullOrNil(paramAnonymousString)) && ((paramAnonymousString.equalsIgnoreCase("play")) || (paramAnonymousString.equalsIgnoreCase("resume")))) {
-              this.cjF = true;
+            if ((!bs.isNullOrNil(paramAnonymousString)) && ((paramAnonymousString.equalsIgnoreCase("play")) || (paramAnonymousString.equalsIgnoreCase("resume")))) {
+              this.cgB = true;
             }
           }
           else if (paramAnonymousString.contains("remove"))
           {
-            this.cjF = false;
+            this.cgB = false;
           }
         }
       }
     };
-    this.ckL = new com.tencent.luggage.k.a.a.b()
+    this.chN = new com.tencent.luggage.k.a.a.b()
     {
-      private d clb = null;
-      
-      public final String EE()
-      {
-        AppMethodBeat.i(178803);
-        String str = a.this.EE();
-        AppMethodBeat.o(178803);
-        return str;
-      }
+      private d chV = null;
       
       public final int getId()
       {
@@ -151,33 +152,41 @@ public final class a
         AppMethodBeat.o(178805);
         return str;
       }
+      
+      public final String getLogTag()
+      {
+        AppMethodBeat.i(178803);
+        String str = a.this.getLogTag();
+        AppMethodBeat.o(178803);
+        return str;
+      }
     };
-    this.ckM = "";
-    this.ckN = null;
-    this.ckO = -1;
-    this.ckP = false;
-    this.ckQ = false;
-    this.ckR = false;
-    this.ckS = false;
-    this.ckT = new q();
-    this.ckU = new AtomicBoolean(false);
+    this.chO = "";
+    this.chP = null;
+    this.chQ = -1;
+    this.chR = false;
+    this.chS = false;
+    this.chT = false;
+    this.chU = false;
+    this.chK = new s();
+    this.chW = new AtomicBoolean(false);
     this.mTitle = null;
-    this.ckV = null;
-    this.ckW = null;
-    this.ckX = null;
-    this.ckG = com.tencent.e.c.d.gv(String.format("LivePlayerThread_%s", new Object[] { Long.valueOf(System.currentTimeMillis()) }), 5);
-    this.ckG.start();
-    this.ckF = new Handler(this.ckG.getLooper());
-    com.tencent.luggage.k.a.a.a.b.EX();
-    this.ckq = new b(aj.getContext());
-    this.ckq.mHandler = this.ckF;
-    this.ckq.cli = new ITXLivePlayListener()
+    this.chX = null;
+    this.chY = null;
+    this.chZ = null;
+    this.chF = com.tencent.e.c.d.gz(String.format("LivePlayerThread_%s", new Object[] { Long.valueOf(System.currentTimeMillis()) }), 5);
+    this.chF.start();
+    this.chE = new Handler(this.chF.getLooper());
+    com.tencent.luggage.k.a.a.a.b.EB();
+    this.chp = new b(ai.getContext());
+    this.chp.mHandler = this.chE;
+    this.chp.cik = new ITXLivePlayListener()
     {
       public final void onNetStatus(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(138814);
-        if (a.this.Fa()) {
-          a.this.cks.d(a.this.getId(), paramAnonymousBundle);
+        if (a.this.EE()) {
+          a.this.chr.d(a.this.getId(), paramAnonymousBundle);
         }
         AppMethodBeat.o(138814);
       }
@@ -185,11 +194,11 @@ public final class a
       public final void onPlayEvent(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(138813);
-        if (a.this.Fa()) {
-          a.this.cks.a(a.this.getId(), paramAnonymousInt, paramAnonymousBundle);
+        if (a.this.EE()) {
+          a.this.chr.a(a.this.getId(), paramAnonymousInt, paramAnonymousBundle);
         }
-        if (a.this.ckt != null) {
-          a.this.ckt.gT(paramAnonymousInt);
+        if (a.this.chs != null) {
+          a.this.chs.gD(paramAnonymousInt);
         }
         switch (paramAnonymousInt)
         {
@@ -198,56 +207,56 @@ public final class a
         {
           AppMethodBeat.o(138813);
           return;
-          if (a.this.ckN != null)
+          if (a.this.chP != null)
           {
-            a.this.ckN.ET();
+            a.this.chP.Ex();
             AppMethodBeat.o(138813);
             return;
           }
-          a.this.ckO = 0;
+          a.this.chQ = 0;
           AppMethodBeat.o(138813);
           return;
-          if (a.this.ckN != null)
+          if (a.this.chP != null)
           {
-            a.this.ckN.EU();
-            a.this.ckN.bB(a.this.ckP);
+            a.this.chP.Ey();
+            a.this.chP.bA(a.this.chR);
             AppMethodBeat.o(138813);
             return;
           }
           paramAnonymousBundle = a.this;
-          if (a.this.ckP) {}
+          if (a.this.chR) {}
           for (paramAnonymousInt = 2;; paramAnonymousInt = 3)
           {
-            paramAnonymousBundle.ckO = paramAnonymousInt;
+            paramAnonymousBundle.chQ = paramAnonymousInt;
             AppMethodBeat.o(138813);
             return;
           }
-          if (a.this.ckN != null)
+          if (a.this.chP != null)
           {
-            a.this.ckN.EV();
+            a.this.chP.Ez();
             AppMethodBeat.o(138813);
             return;
           }
-          a.this.ckO = 7;
+          a.this.chQ = 7;
           AppMethodBeat.o(138813);
           return;
-          if (a.this.ckN != null)
+          if (a.this.chP != null)
           {
-            a.this.ckN.onStop();
+            a.this.chP.onStop();
             AppMethodBeat.o(138813);
             return;
           }
-          a.this.ckO = 6;
+          a.this.chQ = 6;
         }
       }
     };
-    this.ckq.mAudioVolumeListener = new TXLivePlayer.ITXAudioVolumeEvaluationListener()
+    this.chp.mAudioVolumeListener = new TXLivePlayer.ITXAudioVolumeEvaluationListener()
     {
       public final void onAudioVolumeEvaluationNotify(int paramAnonymousInt)
       {
         AppMethodBeat.i(138816);
-        if (a.this.cks != null) {
-          a.this.cks.bX(a.this.getId(), paramAnonymousInt);
+        if (a.this.chr != null) {
+          a.this.chr.bU(a.this.getId(), paramAnonymousInt);
         }
         AppMethodBeat.o(138816);
       }
@@ -255,70 +264,29 @@ public final class a
     AppMethodBeat.o(138827);
   }
   
-  private void EZ()
+  private void ED()
   {
     AppMethodBeat.i(138833);
-    if ((this.ckw != 0) && (this.ckx != 0) && (this.mSurfaceTexture != null) && (this.ckq != null))
+    if ((this.chv != 0) && (this.chw != 0) && (this.mSurfaceTexture != null) && (this.chp != null))
     {
-      ad.i(EE(), "adjustHtmlSize, size:[%d, %d]", new Object[] { Integer.valueOf(this.ckw), Integer.valueOf(this.ckx) });
-      this.mSurfaceTexture.setDefaultBufferSize(this.ckw, this.ckx);
-      if ((Fb()) && (this.ckI))
+      ac.i(getLogTag(), "adjustHtmlSize, size:[%d, %d]", new Object[] { Integer.valueOf(this.chv), Integer.valueOf(this.chw) });
+      this.mSurfaceTexture.setDefaultBufferSize(this.chv, this.chw);
+      if ((EG()) && (this.chH))
       {
-        ad.i(EE(), "adjustHtmlSize, i am pip player, isWebViewInBackground");
+        ac.i(getLogTag(), "adjustHtmlSize, i am pip player, isWebViewInBackground");
         AppMethodBeat.o(138833);
         return;
       }
-      this.ckq.bW(this.ckw, this.ckx);
+      this.chp.bT(this.chv, this.chw);
     }
     AppMethodBeat.o(138833);
   }
   
-  public final String EE()
-  {
-    AppMethodBeat.i(138826);
-    String str = String.format("%s(%s)", new Object[] { "MicroMsg.SameLayer.LivePlayerPluginHandler", AL() });
-    AppMethodBeat.o(138826);
-    return str;
-  }
-  
-  public final void EO()
-  {
-    AppMethodBeat.i(194964);
-    if (this.ckF != null) {
-      this.ckF.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(178807);
-          if (a.this.ckq != null)
-          {
-            a.this.ckq.b("stop", null);
-            a.this.cG("stop");
-            b localb = a.this.ckq;
-            if (localb.cli != null) {
-              localb.cli.onPlayEvent(6001, new Bundle());
-            }
-          }
-          AppMethodBeat.o(178807);
-        }
-      });
-    }
-    AppMethodBeat.o(194964);
-  }
-  
-  public final String EP()
-  {
-    AppMethodBeat.i(194965);
-    String str = String.format("%s_%s", new Object[] { this.type, Integer.valueOf(getId()) });
-    AppMethodBeat.o(194965);
-    return str;
-  }
-  
-  public final void EY()
+  public final void EC()
   {
     AppMethodBeat.i(138829);
-    if (this.ckF != null) {
-      this.ckF.post(new Runnable()
+    if (this.chE != null) {
+      this.chE.post(new Runnable()
       {
         public final void run()
         {
@@ -331,55 +299,88 @@ public final class a
     AppMethodBeat.o(138829);
   }
   
-  final boolean Fa()
+  final boolean EE()
   {
-    return this.cks != null;
+    return this.chr != null;
   }
   
-  final boolean Fb()
+  final boolean EG()
   {
-    AppMethodBeat.i(194961);
-    boolean bool = this.ckL.e(this.cku);
-    AppMethodBeat.o(194961);
+    AppMethodBeat.i(206562);
+    boolean bool = this.chN.d(this.cht);
+    AppMethodBeat.o(206562);
     return bool;
   }
   
-  public final void Fc()
+  public final void EH()
   {
-    AppMethodBeat.i(194966);
-    if ((this.ckq != null) && (!this.ckq.clh.isPlaying())) {
-      cF("play");
+    AppMethodBeat.i(206567);
+    if ((this.chp != null) && (!this.chp.cij.isPlaying())) {
+      cu("play");
     }
-    AppMethodBeat.o(194966);
+    AppMethodBeat.o(206567);
   }
   
-  final boolean Fd()
+  final boolean EI()
   {
-    AppMethodBeat.i(194968);
-    if (this.cku == null)
+    AppMethodBeat.i(206569);
+    if (this.cht == null)
     {
-      ad.w(EE(), "amIBackgroundAudioPlayer, mInsertInvokeContext is null");
-      AppMethodBeat.o(194968);
+      ac.w(getLogTag(), "amIBackgroundAudioPlayer, mInsertInvokeContext is null");
+      AppMethodBeat.o(206569);
       return false;
     }
-    com.tencent.mm.plugin.appbrand.jsapi.aa.a locala = com.tencent.luggage.k.a.a.e.g(this.cku);
+    com.tencent.mm.plugin.appbrand.jsapi.z.a locala = com.tencent.luggage.k.a.a.e.f(this.cht);
     if (locala == null)
     {
-      ad.w(EE(), "amIBackgroundAudioPlayer, audioOfVideoBackgroundPlayManager is null");
-      AppMethodBeat.o(194968);
+      ac.w(getLogTag(), "amIBackgroundAudioPlayer, audioOfVideoBackgroundPlayManager is null");
+      AppMethodBeat.o(206569);
       return false;
     }
     boolean bool = locala.a(this);
-    AppMethodBeat.o(194968);
+    AppMethodBeat.o(206569);
     return bool;
   }
   
-  public final <AddOn extends i> AddOn U(Class<AddOn> paramClass)
+  public final void Es()
   {
-    AppMethodBeat.i(194972);
-    ad.i(EE(), "getAddOn for " + paramClass.getSimpleName());
-    paramClass = this.ckT.U(paramClass);
-    AppMethodBeat.o(194972);
+    AppMethodBeat.i(206565);
+    if (this.chE != null) {
+      this.chE.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(178807);
+          if (a.this.chp != null)
+          {
+            a.this.chp.b("stop", null);
+            a.this.cv("stop");
+            b localb = a.this.chp;
+            if (localb.cik != null) {
+              localb.cik.onPlayEvent(6001, new Bundle());
+            }
+          }
+          AppMethodBeat.o(178807);
+        }
+      });
+    }
+    AppMethodBeat.o(206565);
+  }
+  
+  public final String Et()
+  {
+    AppMethodBeat.i(206566);
+    String str = String.format("%s_%s", new Object[] { this.type, Integer.valueOf(getId()) });
+    AppMethodBeat.o(206566);
+    return str;
+  }
+  
+  public final <AddOn extends q> AddOn U(Class<AddOn> paramClass)
+  {
+    AppMethodBeat.i(210420);
+    ac.i(getLogTag(), "getAddOn for " + paramClass.getSimpleName());
+    paramClass = this.chK.U(paramClass);
+    AppMethodBeat.o(210420);
     return paramClass;
   }
   
@@ -388,100 +389,100 @@ public final class a
     AppMethodBeat.i(138831);
     if (paramJSONObject.has("needEvent"))
     {
-      this.ckA = paramJSONObject.optBoolean("needEvent", false);
-      if (Fa()) {
-        this.cks.n(parama);
+      this.chz = paramJSONObject.optBoolean("needEvent", false);
+      if (EE()) {
+        this.chr.m(parama);
       }
     }
     AppMethodBeat.o(138831);
   }
   
-  public final <AddOn extends i> void a(Class<AddOn> paramClass, AddOn paramAddOn)
+  public final <AddOn extends q> void a(Class<AddOn> paramClass, AddOn paramAddOn)
   {
-    AppMethodBeat.i(194971);
-    ad.i(EE(), "setAddOn for " + paramClass.getSimpleName());
-    this.ckT.a(paramClass, paramAddOn);
-    AppMethodBeat.o(194971);
+    AppMethodBeat.i(210419);
+    ac.i(getLogTag(), "setAddOn for " + paramClass.getSimpleName());
+    this.chK.a(paramClass, paramAddOn);
+    AppMethodBeat.o(210419);
   }
   
-  public final boolean bV(int paramInt1, int paramInt2)
+  public final boolean bS(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194963);
-    if (this.ckq != null)
+    AppMethodBeat.i(206564);
+    if (this.chp != null)
     {
-      if (!this.ckU.get()) {
-        this.ckq.bW(paramInt1, paramInt2);
+      if (!this.chW.get()) {
+        this.chp.bT(paramInt1, paramInt2);
       }
       for (;;)
       {
-        AppMethodBeat.o(194963);
+        AppMethodBeat.o(206564);
         return true;
-        ad.i(EE(), "setSurfaceSize, JustPlayAudio");
+        ac.i(getLogTag(), "setSurfaceSize, JustPlayAudio");
       }
     }
-    ad.w(EE(), "setSurfaceSize, Adapter is null");
-    AppMethodBeat.o(194963);
+    ac.w(getLogTag(), "setSurfaceSize, Adapter is null");
+    AppMethodBeat.o(206564);
     return false;
   }
   
-  public final void cF(final String paramString)
+  public final void cu(final String paramString)
   {
     AppMethodBeat.i(177134);
-    if (this.ckF != null) {
-      this.ckF.post(new Runnable()
+    if (this.chE != null) {
+      this.chE.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(194949);
-          a.this.ckq.b(paramString, null);
-          a.this.cG(paramString);
-          AppMethodBeat.o(194949);
+          AppMethodBeat.i(206540);
+          a.this.chp.b(paramString, null);
+          a.this.cv(paramString);
+          AppMethodBeat.o(206540);
         }
       });
     }
     AppMethodBeat.o(177134);
   }
   
-  final void cG(String paramString)
+  final void cv(String paramString)
   {
-    AppMethodBeat.i(194967);
+    AppMethodBeat.i(206568);
     if (paramString.equalsIgnoreCase("pause"))
     {
-      if (this.ckN != null) {
-        this.ckN.onPause();
+      if (this.chP != null) {
+        this.chP.onPause();
       }
-      while (this.ckt != null)
+      while (this.chs != null)
       {
-        this.ckt.gT(2006);
-        AppMethodBeat.o(194967);
+        this.chs.gD(2006);
+        AppMethodBeat.o(206568);
         return;
-        this.ckO = 4;
+        this.chQ = 4;
       }
     }
     if (paramString.equalsIgnoreCase("stop"))
     {
-      if (this.ckN == null) {
+      if (this.chP == null) {
         break label118;
       }
-      this.ckN.onStop();
+      this.chP.onStop();
     }
     for (;;)
     {
-      if (this.ckt != null) {
-        this.ckt.gT(2006);
+      if (this.chs != null) {
+        this.chs.gD(2006);
       }
-      AppMethodBeat.o(194967);
+      AppMethodBeat.o(206568);
       return;
       label118:
-      this.ckO = 6;
+      this.chQ = 6;
     }
   }
   
   public final void e(final SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(138828);
-    if (this.ckF != null) {
-      this.ckF.post(new Runnable()
+    if (this.chE != null) {
+      this.chE.post(new Runnable()
       {
         public final void run()
         {
@@ -494,31 +495,36 @@ public final class a
     AppMethodBeat.o(138828);
   }
   
-  public final boolean f(Surface paramSurface)
+  public final boolean e(Surface paramSurface)
   {
-    AppMethodBeat.i(194962);
-    if (this.ckq != null)
+    AppMethodBeat.i(206563);
+    if (this.chp != null)
     {
-      if (!this.ckU.get()) {
-        this.ckq.g(paramSurface);
+      if (!this.chW.get()) {
+        this.chp.f(paramSurface);
       }
       for (;;)
       {
-        AppMethodBeat.o(194962);
+        AppMethodBeat.o(206563);
         return true;
-        ad.i(EE(), "setSurface, JustPlayAudio");
+        ac.i(getLogTag(), "setSurface, JustPlayAudio");
       }
     }
-    ad.w(EE(), "setSurface, Adapter is null");
-    AppMethodBeat.o(194962);
+    ac.w(getLogTag(), "setSurface, Adapter is null");
+    AppMethodBeat.o(206563);
     return false;
   }
   
-  final void gQ(int paramInt)
+  public final boolean g(com.tencent.luggage.k.a.a parama)
+  {
+    return true;
+  }
+  
+  final void gA(int paramInt)
   {
     AppMethodBeat.i(138835);
-    if (this.ckr != null) {
-      this.ckr.aO(paramInt);
+    if (this.chq != null) {
+      this.chq.aK(paramInt);
     }
     AppMethodBeat.o(138835);
   }
@@ -526,59 +532,62 @@ public final class a
   public final String getKey()
   {
     AppMethodBeat.i(177133);
-    String str = AL() + "@" + hashCode();
+    String str = Ap() + "@" + hashCode();
     AppMethodBeat.o(177133);
+    return str;
+  }
+  
+  public final String getLogTag()
+  {
+    AppMethodBeat.i(138826);
+    String str = String.format("%s(%s)", new Object[] { "MicroMsg.SameLayer.LivePlayerPluginHandler", Ap() });
+    AppMethodBeat.o(138826);
     return str;
   }
   
   public final String getName()
   {
-    AppMethodBeat.i(194970);
+    AppMethodBeat.i(206571);
     String str = getKey();
-    AppMethodBeat.o(194970);
+    AppMethodBeat.o(206571);
     return str;
   }
   
-  public final boolean h(com.tencent.luggage.k.a.a parama)
-  {
-    return true;
-  }
-  
-  public final String i(final com.tencent.luggage.k.a.a parama)
+  public final String h(final com.tencent.luggage.k.a.a parama)
   {
     AppMethodBeat.i(138830);
-    if (this.ckF != null) {
-      this.ckF.post(new Runnable()
+    if (this.chE != null) {
+      this.chE.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(138819);
           a locala = a.this;
           com.tencent.luggage.k.a.a locala1 = parama;
-          String str = locala1.EC();
+          String str = locala1.Ef();
           Object localObject1;
           Object localObject2;
           int i;
-          if (!bt.isNullOrNil(str))
+          if (!bs.isNullOrNil(str))
           {
-            localObject1 = locala1.EB();
-            ad.i(locala.EE(), "*** handler(%s) handleJsApi(%s), data:%s", new Object[] { locala.AL(), str, ((JSONObject)localObject1).toString() });
+            localObject1 = locala1.Ee();
+            ac.i(locala.getLogTag(), "*** handler(%s) handleJsApi(%s), data:%s", new Object[] { locala.Ap(), str, ((JSONObject)localObject1).toString() });
             new StringBuilder("handleJsApi:").append(str).append(", data:").append(localObject1);
             if (!str.contains("insert")) {
-              break label1135;
+              break label1161;
             }
-            locala.gQ(1);
-            localObject1 = locala1.EB();
+            locala.gA(1);
+            localObject1 = locala1.Ee();
             if (((JSONObject)localObject1).optInt("mode", 0) != 2) {
               break label325;
             }
-            locala.ckQ = true;
+            locala.chS = true;
             localObject2 = locala1.getContext();
             if ((localObject2 instanceof Activity)) {
               break label258;
             }
-            ad.w("MicroMsg.SameLayer.LivePlayerPluginHandler", "checkPermission, pageContext not activity");
-            locala1.cD("fail:internal error invalid android context");
+            ac.w("MicroMsg.SameLayer.LivePlayerPluginHandler", "checkPermission, pageContext not activity");
+            locala1.cs("fail:internal error invalid android context");
             i = 0;
             if (i != 0) {
               break label331;
@@ -586,27 +595,24 @@ public final class a
           }
           label215:
           label237:
-          label891:
           Object localObject3;
-          label258:
-          label390:
-          label1673:
           for (;;)
           {
-            locala.ckK.a(str, locala1);
-            localObject1 = locala1.EB();
+            locala.chM.a(str, locala1);
+            localObject1 = locala1.Ee();
             if (localObject1 != null) {
-              break label2897;
+              break label2890;
             }
-            ad.w(locala.EE(), "handleAutoPlay, null == dataJsonObj");
-            localObject1 = locala1.EB();
+            ac.w(locala.getLogTag(), "handleAutoPlay, null == dataJsonObj");
+            localObject1 = locala1.Ee();
             if (localObject1 != null) {
-              break label2935;
+              break label2910;
             }
-            ad.w(locala.EE(), "handlePlayerUrl, null == dataJsonObj");
-            locala.ckL.a(locala1, locala.ckM);
+            ac.w(locala.getLogTag(), "handlePlayerUrl, null == dataJsonObj");
+            locala.chN.a(locala1, locala.chO);
             AppMethodBeat.o(138819);
             return;
+            label258:
             if (com.tencent.luggage.h.h.o((Activity)localObject2, "android.permission.RECORD_AUDIO"))
             {
               i = 1;
@@ -614,410 +620,404 @@ public final class a
             }
             localObject2 = new HashMap();
             ((Map)localObject2).put("errCode", Integer.valueOf(10001));
-            ad.w("MicroMsg.SameLayer.LivePlayerPluginHandler", "checkPermission, permission denied");
+            ac.w("MicroMsg.SameLayer.LivePlayerPluginHandler", "checkPermission, permission denied");
             locala1.d("fail:system permission denied", (Map)localObject2);
             i = 0;
             break;
             label325:
-            locala.ckQ = false;
+            locala.chS = false;
             label331:
             TXLiveBase.setAppVersion(String.format("weixin_%s", new Object[] { locala1.getAppId() }));
-            locala.cku = locala1;
-            localObject2 = locala1.Dj();
-            if ((localObject2 instanceof aa))
-            {
-              if (!((aa)localObject2).cdK)
+            locala.cht = locala1;
+            localObject2 = locala1.CM();
+            if ((localObject2 instanceof aa)) {
+              if (!((aa)localObject2).caH)
               {
                 bool = true;
-                locala.ckI = bool;
+                label390:
+                locala.chH = bool;
+                label396:
+                locala.chu = new a.22(locala);
+                locala1.a(locala.chu);
+                if (locala.chs != null) {
+                  locala.chs.m(locala1);
+                }
+                locala.a(locala1, (JSONObject)localObject1);
+                locala.i((JSONObject)localObject1);
+                locala.chA = ((JSONObject)localObject1).optBoolean("autoPauseIfNavigate", true);
+                locala.chB = ((JSONObject)localObject1).optBoolean("autoPauseIfOpenNative", true);
+                locala.mTitle = ((JSONObject)localObject1).optString("title", locala.mTitle);
+                locala.chX = ((JSONObject)localObject1).optString("backgroundPoster", locala.chX);
+                localObject2 = locala1.CM();
+                if (localObject2 != null) {
+                  break label917;
+                }
+                ac.w(locala.getLogTag(), "updateReferrers, component is null");
+                label540:
+                if (locala.chD == null) {}
               }
-            }
-            else
-            {
-              locala.ckv = new a.21(locala);
-              locala1.a(locala.ckv);
-              if (locala.ckt != null) {
-                locala.ckt.n(locala1);
-              }
-              locala.a(locala1, (JSONObject)localObject1);
-              locala.i((JSONObject)localObject1);
-              locala.ckB = ((JSONObject)localObject1).optBoolean("autoPauseIfNavigate", true);
-              locala.ckC = ((JSONObject)localObject1).optBoolean("autoPauseIfOpenNative", true);
-              locala.mTitle = ((JSONObject)localObject1).optString("title", locala.mTitle);
-              locala.ckV = ((JSONObject)localObject1).optString("backgroundPoster", locala.ckV);
-              localObject2 = locala1.Dj();
-              if (localObject2 != null) {
-                break label891;
-              }
-              ad.w(locala.EE(), "updateReferrers, component is null");
-              label539:
-              if (locala.ckE == null) {}
             }
             Object localObject4;
             try
             {
-              ((JSONObject)localObject1).put("referrer", locala.ckE);
-              if (!locala.ckI) {}
+              ((JSONObject)localObject1).put("referrer", locala.chD);
+              if (locala.chH) {
+                ac.i(locala.getLogTag(), "insert, webView in background");
+              }
             }
             catch (JSONException localJSONException1)
             {
               try
               {
                 ((JSONObject)localObject1).put("isInForeground", false);
-                locala.ckJ = new AtomicBoolean(((JSONObject)localObject1).optBoolean("autoplay", false));
+                locala.chI = new AtomicBoolean(((JSONObject)localObject1).optBoolean("autoplay", false));
                 localObject2 = com.tencent.luggage.k.a.a.a.c.g((JSONObject)localObject1);
-                localObject1 = locala.ckq;
-                if (((b)localObject1).cli != null)
+                localObject1 = locala.chp;
+                if (((b)localObject1).cik != null)
                 {
                   localObject4 = new Bundle();
                   ((Bundle)localObject4).putString("EVT_MSG", TXLiveBase.getSDKVersionStr());
                   ((Bundle)localObject4).putLong("EVT_TIME", System.currentTimeMillis());
-                  ((b)localObject1).cli.onPlayEvent(-9999999, (Bundle)localObject4);
+                  ((b)localObject1).cik.onPlayEvent(-9999999, (Bundle)localObject4);
                 }
                 b.l("initLivePlayer", (Bundle)localObject2);
                 ((b)localObject1).mVideoView = null;
-                ((b)localObject1).ckM = ((Bundle)localObject2).getString("playUrl", ((b)localObject1).ckM);
-                ((b)localObject1).clk = ((b)localObject1).n((Bundle)localObject2);
+                ((b)localObject1).chO = ((Bundle)localObject2).getString("playUrl", ((b)localObject1).chO);
+                ((b)localObject1).cim = ((b)localObject1).n((Bundle)localObject2);
                 ((b)localObject1).a((Bundle)localObject2, true);
-                ((b)localObject1).ckP = ((Bundle)localObject2).getBoolean("autoplay", ((b)localObject1).ckP);
-                if ((((Bundle)localObject2).getBoolean("isInForeground", true)) && (((b)localObject1).ckP) && (((b)localObject1).ckM != null) && (!((b)localObject1).ckM.isEmpty()))
+                ((b)localObject1).chR = ((Bundle)localObject2).getBoolean("autoplay", ((b)localObject1).chR);
+                if ((((Bundle)localObject2).getBoolean("isInForeground", true)) && (((b)localObject1).chR) && (((b)localObject1).chO != null) && (!((b)localObject1).chO.isEmpty()))
                 {
-                  ad.i("TXLivePlayerJSAdapter", "initLivePlayer: startPlay");
-                  ((b)localObject1).clh.startPlay(((b)localObject1).ckM, ((b)localObject1).clk);
+                  ac.i("TXLivePlayerJSAdapter", "initLivePlayer: startPlay");
+                  ((b)localObject1).cij.startPlay(((b)localObject1).chO, ((b)localObject1).cim);
                 }
                 ((b)localObject1).mInited = true;
                 localObject4 = new com.tencent.luggage.k.a.a.a.a();
-                ad.i(locala.EE(), "insert, code:%d info:%s", new Object[] { Integer.valueOf(((com.tencent.luggage.k.a.a.a.a)localObject4).errorCode), ((com.tencent.luggage.k.a.a.a.a)localObject4).cko });
+                ac.i(locala.getLogTag(), "insert, code:%d info:%s", new Object[] { Integer.valueOf(((com.tencent.luggage.k.a.a.a.a)localObject4).errorCode), ((com.tencent.luggage.k.a.a.a.a)localObject4).chn });
                 if (((com.tencent.luggage.k.a.a.a.a)localObject4).errorCode == 0)
                 {
                   localObject1 = "ok";
-                  locala1.cD((String)localObject1);
-                  if ((((com.tencent.luggage.k.a.a.a.a)localObject4).errorCode != 0) || (locala.ckt == null)) {
+                  locala1.cs((String)localObject1);
+                  if ((((com.tencent.luggage.k.a.a.a.a)localObject4).errorCode != 0) || (locala.chs == null)) {
                     continue;
                   }
-                  locala.ckt.a(locala1, (Bundle)localObject2);
+                  locala.chs.a(locala1, (Bundle)localObject2);
                   continue;
                   bool = false;
                   break label390;
-                  localObject4 = (com.tencent.mm.plugin.appbrand.jsapi.q.a)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.q.a.class);
+                  ac.w(locala.getLogTag(), "insert, component is not AppBrandPageView");
+                  break label396;
+                  label917:
+                  localObject4 = (com.tencent.mm.plugin.appbrand.jsapi.p.a)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.p.a.class);
                   if (localObject4 == null)
                   {
-                    ad.w(locala.EE(), "updateReferrers, referrerHelper is null");
-                    break label539;
+                    ac.w(locala.getLogTag(), "updateReferrers, referrerHelper is null");
+                    break label540;
                   }
-                  if (locala.ckD == null) {
-                    locala.ckD = ((com.tencent.mm.plugin.appbrand.jsapi.q.a)localObject4).bbJ();
+                  if (locala.chC == null) {
+                    locala.chC = ((com.tencent.mm.plugin.appbrand.jsapi.p.a)localObject4).biC();
                   }
-                  com.tencent.mm.plugin.appbrand.jsapi.q.c localc = ((com.tencent.mm.plugin.appbrand.jsapi.q.a)localObject4).a((JSONObject)localObject1, (com.tencent.mm.plugin.appbrand.jsapi.c)localObject2);
+                  com.tencent.mm.plugin.appbrand.jsapi.p.c localc = ((com.tencent.mm.plugin.appbrand.jsapi.p.a)localObject4).a((JSONObject)localObject1, (com.tencent.mm.plugin.appbrand.jsapi.c)localObject2);
                   if (localc != null) {
-                    locala.ckD = localc;
+                    locala.chC = localc;
                   }
-                  ad.i(locala.EE(), "updateReferrers, mReferrerPolicy: " + locala.ckD);
-                  if (com.tencent.mm.plugin.appbrand.jsapi.q.c.khR == locala.ckD)
+                  ac.i(locala.getLogTag(), "updateReferrers, mReferrerPolicy: " + locala.chC);
+                  if (com.tencent.mm.plugin.appbrand.jsapi.p.c.kIJ == locala.chC)
                   {
-                    locala.ckE = null;
-                    break label539;
+                    locala.chD = null;
+                    break label540;
                   }
-                  locala.ckE = ((com.tencent.mm.plugin.appbrand.jsapi.q.a)localObject4).y((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2);
-                  ad.i(locala.EE(), "updateReferrers, mReferrer: " + locala.ckE);
-                  break label539;
+                  locala.chD = ((com.tencent.mm.plugin.appbrand.jsapi.p.a)localObject4).y((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2);
+                  ac.i(locala.getLogTag(), "updateReferrers, mReferrer: " + locala.chD);
+                  break label540;
                   localJSONException1 = localJSONException1;
-                  ad.w(locala.EE(), "insert, put referrer fail since " + localJSONException1.toString());
+                  ac.w(locala.getLogTag(), "insert, put referrer fail since " + localJSONException1.toString());
                 }
               }
               catch (JSONException localJSONException2)
               {
                 for (;;)
                 {
-                  ad.w(locala.EE(), "insert, put isInForeground fail since " + localJSONException2.toString());
+                  ac.w(locala.getLogTag(), "insert, put isInForeground fail since " + localJSONException2.toString());
                   continue;
                   localObject1 = "fail";
                 }
               }
             }
-            label1135:
+            label1161:
             if (str.contains("update"))
             {
-              locala.gQ(2);
-              localObject1 = locala1.EB();
+              locala.gA(2);
+              localObject1 = locala1.Ee();
               if (((JSONObject)localObject1).has("autoPauseIfNavigate")) {
-                locala.ckB = ((JSONObject)localObject1).optBoolean("autoPauseIfNavigate", true);
+                locala.chA = ((JSONObject)localObject1).optBoolean("autoPauseIfNavigate", true);
               }
               if (((JSONObject)localObject1).has("autoPauseIfOpenNative")) {
-                locala.ckC = ((JSONObject)localObject1).optBoolean("autoPauseIfOpenNative", true);
+                locala.chB = ((JSONObject)localObject1).optBoolean("autoPauseIfOpenNative", true);
               }
-              if (locala.ckt != null) {
-                locala.ckt.n(locala1);
+              if (locala.chs != null) {
+                locala.chs.m(locala1);
               }
               locala.a(locala1, (JSONObject)localObject1);
               locala.i((JSONObject)localObject1);
               locala.mTitle = ((JSONObject)localObject1).optString("title", locala.mTitle);
-              locala.ckV = ((JSONObject)localObject1).optString("backgroundPoster", locala.ckV);
+              locala.chX = ((JSONObject)localObject1).optString("backgroundPoster", locala.chX);
               localObject1 = com.tencent.luggage.k.a.a.a.c.g((JSONObject)localObject1);
-              localObject3 = locala.ckq;
+              localObject3 = locala.chp;
               if (!((b)localObject3).mInited)
               {
                 localObject1 = new com.tencent.luggage.k.a.a.a.a(-3, "uninited livePlayer");
-                ad.i(locala.EE(), "update, code:%d info:%s", new Object[] { Integer.valueOf(((com.tencent.luggage.k.a.a.a.a)localObject1).errorCode), ((com.tencent.luggage.k.a.a.a.a)localObject1).cko });
+                label1331:
+                ac.i(locala.getLogTag(), "update, code:%d info:%s", new Object[] { Integer.valueOf(((com.tencent.luggage.k.a.a.a.a)localObject1).errorCode), ((com.tencent.luggage.k.a.a.a.a)localObject1).chn });
                 if (((com.tencent.luggage.k.a.a.a.a)localObject1).errorCode != 0) {
-                  break label1673;
+                  break label1701;
                 }
               }
+              label1701:
               for (localObject1 = "ok";; localObject1 = "fail")
               {
-                locala1.cD((String)localObject1);
+                locala1.cs((String)localObject1);
                 break;
                 b.l("updateLivePlayer", (Bundle)localObject1);
                 ((b)localObject3).a((Bundle)localObject1, false);
-                bool = ((b)localObject3).clh.isPlaying();
-                localObject4 = ((Bundle)localObject1).getString("playUrl", ((b)localObject3).ckM);
-                if ((localObject4 != null) && (!((String)localObject4).isEmpty()) && (((b)localObject3).ckM != null) && (!((b)localObject3).ckM.equalsIgnoreCase((String)localObject4)) && (((b)localObject3).clh.isPlaying()))
+                bool = ((b)localObject3).cij.isPlaying();
+                localObject4 = ((Bundle)localObject1).getString("playUrl", ((b)localObject3).chO);
+                if ((localObject4 != null) && (!((String)localObject4).isEmpty()) && (((b)localObject3).chO != null) && (!((b)localObject3).chO.equalsIgnoreCase((String)localObject4)) && (((b)localObject3).cij.isPlaying()))
                 {
-                  ad.i("TXLivePlayerJSAdapter", "updateLivePlayer: stopPlay playUrl-old = " + ((b)localObject3).ckM + " playUrl-new = " + (String)localObject4);
-                  ((b)localObject3).clh.stopPlay(true);
+                  ac.i("TXLivePlayerJSAdapter", "updateLivePlayer: stopPlay playUrl-old = " + ((b)localObject3).chO + " playUrl-new = " + (String)localObject4);
+                  ((b)localObject3).cij.stopPlay(true);
                 }
-                ((b)localObject3).ckM = ((String)localObject4);
+                ((b)localObject3).chO = ((String)localObject4);
                 i = ((b)localObject3).n((Bundle)localObject1);
-                if ((i != ((b)localObject3).clk) && (((b)localObject3).clh.isPlaying()))
+                if ((i != ((b)localObject3).cim) && (((b)localObject3).cij.isPlaying()))
                 {
-                  ad.i("TXLivePlayerJSAdapter", "updateLivePlayer: stopPlay  playType-old = " + ((b)localObject3).clk + " playType-new = " + i);
-                  ((b)localObject3).clh.stopPlay(true);
+                  ac.i("TXLivePlayerJSAdapter", "updateLivePlayer: stopPlay  playType-old = " + ((b)localObject3).cim + " playType-new = " + i);
+                  ((b)localObject3).cij.stopPlay(true);
                 }
-                ((b)localObject3).clk = i;
-                ((b)localObject3).ckP = ((Bundle)localObject1).getBoolean("autoplay", ((b)localObject3).ckP);
-                if (((((b)localObject3).ckP) || (bool)) && (((b)localObject3).ckM != null) && (!((b)localObject3).ckM.isEmpty()) && (!((b)localObject3).clh.isPlaying()))
+                ((b)localObject3).cim = i;
+                ((b)localObject3).chR = ((Bundle)localObject1).getBoolean("autoplay", ((b)localObject3).chR);
+                if (((((b)localObject3).chR) || (bool)) && (((b)localObject3).chO != null) && (!((b)localObject3).chO.isEmpty()) && (!((b)localObject3).cij.isPlaying()))
                 {
-                  ad.i("TXLivePlayerJSAdapter", "updateLivePlayer: startPlay");
-                  ((b)localObject3).clh.startPlay(((b)localObject3).ckM, ((b)localObject3).clk);
+                  ac.i("TXLivePlayerJSAdapter", "updateLivePlayer: startPlay");
+                  ((b)localObject3).cij.startPlay(((b)localObject3).chO, ((b)localObject3).cim);
                 }
                 localObject1 = new com.tencent.luggage.k.a.a.a.a();
-                break label1303;
+                break label1331;
               }
             }
-            label1303:
             if ((str.contains("operate")) && (str.contains("Background")))
             {
-              localObject1 = locala1.EB().optString("type");
-              ad.i(locala.EE(), "operateBackground, type:%s", new Object[] { localObject1 });
-              if ((!bt.isNullOrNil((String)localObject1)) && (locala.ckq != null))
+              localObject1 = locala1.Ee().optString("type");
+              ac.i(locala.getLogTag(), "operateBackground, type:%s", new Object[] { localObject1 });
+              if ((!bs.isNullOrNil((String)localObject1)) && (locala.chp != null))
               {
                 if (((String)localObject1).equals("stop"))
                 {
-                  locala.j(locala1);
-                  if (locala.ckH)
+                  locala.i(locala1);
+                  if (locala.chG)
                   {
-                    ad.i(locala.EE(), "operateBackground, isRuntimeInBackground, setPlayingWhenEnterBackground false");
-                    locala.ckJ = new AtomicBoolean(false);
+                    ac.i(locala.getLogTag(), "operateBackground, isRuntimeInBackground, setPlayingWhenEnterBackground false");
+                    locala.chI = new AtomicBoolean(false);
                   }
                 }
                 else
                 {
-                  locala1.cD("fail");
+                  locala1.cs("fail");
                 }
               }
               else {
-                locala1.cD("fail");
+                locala1.cs("fail");
               }
             }
             else
             {
               if (!str.contains("operate")) {
-                break label2851;
+                break label2844;
               }
-              locala.gQ(3);
-              localObject1 = locala1.EB();
+              locala.gA(3);
+              localObject1 = locala1.Ee();
               localObject3 = ((JSONObject)localObject1).optString("type");
-              ad.i(locala.EE(), "operate, type:%s", new Object[] { localObject3 });
-              if ((bt.isNullOrNil((String)localObject3)) || (locala.ckq == null)) {
-                break label2837;
+              ac.i(locala.getLogTag(), "operate, type:%s", new Object[] { localObject3 });
+              if ((bs.isNullOrNil((String)localObject3)) || (locala.chp == null)) {
+                break label2830;
               }
               if (((String)localObject3).equals("snapshot"))
               {
-                locala.ckq.clj = new a.4(locala, locala1);
-                localObject1 = locala.ckq.b("snapshot", locala1.EB());
+                locala.chp.cil = new a.4(locala, locala1);
+                localObject1 = locala.chp.b("snapshot", locala1.Ee());
                 if (((com.tencent.luggage.k.a.a.a.a)localObject1).errorCode != 0)
                 {
-                  ad.i(locala.EE(), "operateSnapshot, fail:%s", new Object[] { Integer.valueOf(((com.tencent.luggage.k.a.a.a.a)localObject1).errorCode) });
-                  locala1.cD("fail:snapshot error");
+                  ac.i(locala.getLogTag(), "operateSnapshot, fail:%s", new Object[] { Integer.valueOf(((com.tencent.luggage.k.a.a.a.a)localObject1).errorCode) });
+                  locala1.cs("fail:snapshot error");
                 }
                 else
                 {
-                  ad.i(locala.EE(), "operateSnapshot, success");
+                  ac.i(locala.getLogTag(), "operateSnapshot, success");
                 }
               }
               else
               {
                 if (((String)localObject3).equalsIgnoreCase("requestFullScreen"))
                 {
-                  if ((locala.ckt != null) && (locala.ckt.k(locala1)))
+                  if ((locala.chs != null) && (locala.chs.j(locala1)))
                   {
                     bool = true;
-                    label2045:
-                    ad.i("MicroMsg.SameLayer.LivePlayerPluginHandler", "operateRequestFullscreen, result:%s", new Object[] { Boolean.valueOf(bool) });
+                    label2073:
+                    ac.i("MicroMsg.SameLayer.LivePlayerPluginHandler", "operateRequestFullscreen, result:%s", new Object[] { Boolean.valueOf(bool) });
                     if (!bool) {
-                      break label2089;
+                      break label2117;
                     }
                   }
-                  label2089:
+                  label2117:
                   for (localObject1 = "ok";; localObject1 = "fail")
                   {
-                    locala1.cD((String)localObject1);
+                    locala1.cs((String)localObject1);
                     break;
                     bool = false;
-                    break label2045;
+                    break label2073;
                   }
                 }
                 if (((String)localObject3).equalsIgnoreCase("exitFullScreen"))
                 {
-                  if ((locala.ckt != null) && (locala.ckt.l(locala1)))
+                  if ((locala.chs != null) && (locala.chs.k(locala1)))
                   {
                     bool = true;
-                    label2132:
-                    ad.i("MicroMsg.SameLayer.LivePlayerPluginHandler", "operateExitFullscreen, result:%s", new Object[] { Boolean.valueOf(bool) });
+                    label2160:
+                    ac.i("MicroMsg.SameLayer.LivePlayerPluginHandler", "operateExitFullscreen, result:%s", new Object[] { Boolean.valueOf(bool) });
                     if (!bool) {
-                      break label2176;
+                      break label2204;
                     }
                   }
+                  label2204:
                   for (localObject1 = "ok";; localObject1 = "fail")
                   {
-                    locala1.cD((String)localObject1);
+                    locala1.cs((String)localObject1);
                     break;
                     bool = false;
-                    break label2132;
+                    break label2160;
                   }
                 }
                 if (((String)localObject3).equalsIgnoreCase("exitPictureInPicture"))
                 {
-                  bool = locala.ckL.d(locala1);
-                  ad.i(locala.EE(), "operateExitPip, result:%s", new Object[] { Boolean.valueOf(bool) });
+                  bool = locala.chN.c(locala1);
+                  ac.i(locala.getLogTag(), "operateExitPip, result:%s", new Object[] { Boolean.valueOf(bool) });
                   if (bool) {}
                   for (localObject1 = "ok";; localObject1 = "fail")
                   {
-                    locala1.cD((String)localObject1);
+                    locala1.cs((String)localObject1);
                     break;
                   }
                 }
                 if (!((String)localObject3).equalsIgnoreCase("requestBackgroundPlayback")) {
-                  break label2659;
+                  break label2687;
                 }
-                ad.d(locala.EE(), "enableBackgroundPlayAudio");
-                if (locala.ckQ)
+                ac.d(locala.getLogTag(), "enableBackgroundPlayAudio");
+                if (locala.chS)
                 {
-                  ad.w(locala.EE(), "enableBackgroundPlayAudio, mIsRTCMode");
-                  locala1.cD("fail");
+                  ac.w(locala.getLogTag(), "enableBackgroundPlayAudio, mIsRTCMode");
+                  locala1.cs("fail");
                 }
                 else
                 {
-                  if (!locala.ckH) {
-                    break label2342;
+                  if (!locala.chG) {
+                    break label2370;
                   }
-                  ad.w(locala.EE(), "enableBackgroundPlayAudio, isRuntimeInBackground");
-                  locala1.cD("fail");
+                  ac.w(locala.getLogTag(), "enableBackgroundPlayAudio, isRuntimeInBackground");
+                  locala1.cs("fail");
                 }
               }
             }
           }
-          label2176:
-          label2342:
-          if (!locala.ckR)
+          label2370:
+          if (!locala.chT)
           {
-            ad.d(locala.EE(), "registerAddOnPlayAudio");
-            locala.a(l.class, new a.11(locala));
-            ad.d(locala.EE(), "registerAddOnVideoController");
-            locala.a(m.class, new a.13(locala));
-            ad.d(locala.EE(), "registerAddOnInfo");
-            locala.a(k.class, new a.14(locala));
-            ad.d(locala.EE(), "registerAddOnGetSnapshot");
-            locala.a(j.class, new a.17(locala));
-            locala.ckR = true;
+            ac.d(locala.getLogTag(), "registerAddOnPlayAudio");
+            locala.a(j.class, new a.11(locala));
+            ac.d(locala.getLogTag(), "registerAddOnVideoController");
+            locala.a(r.class, new a.13(locala));
+            ac.d(locala.getLogTag(), "registerAddOnInfo");
+            locala.a(i.class, new a.14(locala));
+            ac.d(locala.getLogTag(), "registerAddOnGetSnapshot");
+            locala.a(com.tencent.luggage.k.a.a.h.class, new a.17(locala));
+            locala.chT = true;
           }
-          ad.d(locala.EE(), "enableBackgroundPlayAudioInternal");
+          ac.d(locala.getLogTag(), "enableBackgroundPlayAudioInternal");
           if (locala1 == null)
           {
-            ad.w(locala.EE(), "enableBackgroundPlayAudioInternal, invokeContext is null");
+            ac.w(locala.getLogTag(), "enableBackgroundPlayAudioInternal, invokeContext is null");
             bool = false;
-            label2497:
+            label2525:
             if (!bool) {
-              break label2955;
+              break label2930;
             }
-            if ((locala.ckq != null) && (!locala.ckq.clh.isPlaying()))
+            if ((locala.chp != null) && (!locala.chp.cij.isPlaying()))
             {
-              locala.ckU.set(true);
-              locala.ckq.g(null);
+              locala.chW.set(true);
+              locala.chp.f(null);
             }
-            locala.ckS = true;
-            if (locala.cks != null) {
-              locala.cks.s(locala.getId(), true);
+            locala.chU = true;
+            if (locala.chr != null) {
+              locala.chr.r(locala.getId(), true);
             }
           }
-          label2955:
+          label2830:
+          label2844:
+          label2890:
+          label2910:
+          label2930:
           for (boolean bool = true;; bool = false)
           {
-            ad.i(locala.EE(), "enableBackgroundPlayAudio, result:%s", new Object[] { Boolean.valueOf(bool) });
+            ac.i(locala.getLogTag(), "enableBackgroundPlayAudio, result:%s", new Object[] { Boolean.valueOf(bool) });
             if (bool) {}
             for (localObject1 = "ok";; localObject1 = "fail")
             {
-              locala1.cD((String)localObject1);
+              locala1.cs((String)localObject1);
               break;
-              localObject1 = com.tencent.luggage.k.a.a.e.g(locala1);
+              localObject1 = com.tencent.luggage.k.a.a.e.f(locala1);
               if (localObject1 == null)
               {
-                ad.w(locala.EE(), "enableBackgroundPlayAudioInternal, audioOfVideoBackgroundPlayManager is null");
+                ac.w(locala.getLogTag(), "enableBackgroundPlayAudioInternal, audioOfVideoBackgroundPlayManager is null");
                 bool = false;
-                break label2497;
+                break label2525;
               }
-              bool = ((com.tencent.mm.plugin.appbrand.jsapi.aa.a)localObject1).b(locala);
-              break label2497;
+              bool = ((com.tencent.mm.plugin.appbrand.jsapi.z.a)localObject1).b(locala);
+              break label2525;
             }
-            label2659:
+            label2687:
             if (((String)localObject3).equalsIgnoreCase("exitBackgroundPlayback"))
             {
-              locala.j(locala1);
+              locala.i(locala1);
               break;
             }
-            if (locala.ckq.b((String)localObject3, (JSONObject)localObject1).errorCode == 0) {}
+            if (locala.chp.b((String)localObject3, (JSONObject)localObject1).errorCode == 0) {}
             for (localObject1 = "ok";; localObject1 = "fail")
             {
-              locala1.cD((String)localObject1);
-              if ((!((String)localObject3).equalsIgnoreCase("play")) && (!((String)localObject3).equalsIgnoreCase("resume"))) {
-                break label2752;
+              locala1.cs((String)localObject1);
+              if ((!((String)localObject3).equalsIgnoreCase("stop")) && (!((String)localObject3).equalsIgnoreCase("pause"))) {
+                break;
               }
-              locala.ckL.b(locala1);
+              locala.chN.b(locala1);
+              locala.cv((String)localObject3);
+              if ((!((String)localObject3).equalsIgnoreCase("stop")) || (!locala.chG)) {
+                break;
+              }
+              ac.i(locala.getLogTag(), "operate, isRuntimeInBackground, setPlayingWhenEnterBackground false");
+              locala.chI = new AtomicBoolean(false);
               break;
             }
-            label2752:
-            if ((!((String)localObject3).equalsIgnoreCase("stop")) && (!((String)localObject3).equalsIgnoreCase("pause"))) {
-              break;
-            }
-            locala.ckL.c(locala1);
-            locala.cG((String)localObject3);
-            if ((!((String)localObject3).equalsIgnoreCase("stop")) || (!locala.ckH)) {
-              break;
-            }
-            ad.i(locala.EE(), "operate, isRuntimeInBackground, setPlayingWhenEnterBackground false");
-            locala.ckJ = new AtomicBoolean(false);
+            locala1.cs("fail");
             break;
-            label2837:
-            locala1.cD("fail");
-            break;
-            label2851:
             if (!str.contains("remove")) {
               break;
             }
-            locala.gQ(4);
+            locala.gA(4);
             locala.release();
-            locala1.cD("ok");
-            locala.ckL.c(locala1);
+            locala1.cs("ok");
+            locala.chN.b(locala1);
             break;
-            label2897:
-            locala.ckP = ((JSONObject)localObject1).optBoolean("autoplay", locala.ckP);
-            if (!locala.ckP) {
-              break label215;
-            }
-            locala.ckL.b(locala1);
+            locala.chR = ((JSONObject)localObject1).optBoolean("autoplay", locala.chR);
             break label215;
-            label2935:
-            locala.ckM = ((JSONObject)localObject1).optString("playUrl", locala.ckM);
+            locala.chO = ((JSONObject)localObject1).optString("playUrl", locala.chO);
             break label237;
           }
         }
@@ -1025,6 +1025,59 @@ public final class a
     }
     AppMethodBeat.o(138830);
     return null;
+  }
+  
+  final void i(com.tencent.luggage.k.a.a parama)
+  {
+    AppMethodBeat.i(206570);
+    ac.d(getLogTag(), "disableBackgroundPlayAudio");
+    if (this.chS)
+    {
+      ac.w(getLogTag(), "disableBackgroundPlayAudio, mIsRTCMode");
+      parama.cs("fail");
+      AppMethodBeat.o(206570);
+      return;
+    }
+    ac.d(getLogTag(), "disableBackgroundPlayAudioInternal");
+    int i;
+    if (parama == null)
+    {
+      ac.w(getLogTag(), "disableBackgroundPlayAudioInternal, invokeContext is null");
+      i = 0;
+      if (i == 0) {
+        break label226;
+      }
+      this.chW.set(false);
+      if (this.chp != null) {
+        this.chp.f(this.mSurface);
+      }
+      this.chU = false;
+      if (this.chr != null) {
+        this.chr.r(getId(), false);
+      }
+    }
+    label226:
+    for (boolean bool = true;; bool = false)
+    {
+      ac.i(getLogTag(), "disableBackgroundPlayAudio, result:%s", new Object[] { Boolean.valueOf(bool) });
+      if (bool) {}
+      for (Object localObject = "ok";; localObject = "fail")
+      {
+        parama.cs((String)localObject);
+        AppMethodBeat.o(206570);
+        return;
+        localObject = com.tencent.luggage.k.a.a.e.f(parama);
+        if (localObject == null)
+        {
+          ac.w(getLogTag(), "disableBackgroundPlayAudio, audioOfVideoBackgroundPlayManager is null");
+          i = 0;
+          break;
+        }
+        ((com.tencent.mm.plugin.appbrand.jsapi.z.a)localObject).c(this);
+        i = 1;
+        break;
+      }
+    }
   }
   
   final void i(JSONObject paramJSONObject)
@@ -1035,78 +1088,25 @@ public final class a
       paramJSONObject = paramJSONObject.optJSONObject("position");
       if (paramJSONObject != null)
       {
-        this.ckw = com.tencent.mm.plugin.appbrand.aa.g.um(paramJSONObject.optInt("width", 0));
-        this.ckx = com.tencent.mm.plugin.appbrand.aa.g.um(paramJSONObject.optInt("height", 0));
-        ad.i(EE(), "parseHtmlPosition, size:[%d, %d]", new Object[] { Integer.valueOf(this.ckw), Integer.valueOf(this.ckx) });
-        EZ();
+        this.chv = com.tencent.mm.plugin.appbrand.z.g.ve(paramJSONObject.optInt("width", 0));
+        this.chw = com.tencent.mm.plugin.appbrand.z.g.ve(paramJSONObject.optInt("height", 0));
+        ac.i(getLogTag(), "parseHtmlPosition, size:[%d, %d]", new Object[] { Integer.valueOf(this.chv), Integer.valueOf(this.chw) });
+        ED();
       }
     }
     AppMethodBeat.o(138832);
   }
   
-  final void j(com.tencent.luggage.k.a.a parama)
-  {
-    AppMethodBeat.i(194969);
-    ad.d(EE(), "disableBackgroundPlayAudio");
-    if (this.ckQ)
-    {
-      ad.w(EE(), "disableBackgroundPlayAudio, mIsRTCMode");
-      parama.cD("fail");
-      AppMethodBeat.o(194969);
-      return;
-    }
-    ad.d(EE(), "disableBackgroundPlayAudioInternal");
-    int i;
-    if (parama == null)
-    {
-      ad.w(EE(), "disableBackgroundPlayAudioInternal, invokeContext is null");
-      i = 0;
-      if (i == 0) {
-        break label226;
-      }
-      this.ckU.set(false);
-      if (this.ckq != null) {
-        this.ckq.g(this.mSurface);
-      }
-      this.ckS = false;
-      if (this.cks != null) {
-        this.cks.s(getId(), false);
-      }
-    }
-    label226:
-    for (boolean bool = true;; bool = false)
-    {
-      ad.i(EE(), "disableBackgroundPlayAudio, result:%s", new Object[] { Boolean.valueOf(bool) });
-      if (bool) {}
-      for (Object localObject = "ok";; localObject = "fail")
-      {
-        parama.cD((String)localObject);
-        AppMethodBeat.o(194969);
-        return;
-        localObject = com.tencent.luggage.k.a.a.e.g(parama);
-        if (localObject == null)
-        {
-          ad.w(EE(), "disableBackgroundPlayAudio, audioOfVideoBackgroundPlayManager is null");
-          i = 0;
-          break;
-        }
-        ((com.tencent.mm.plugin.appbrand.jsapi.aa.a)localObject).c(this);
-        i = 1;
-        break;
-      }
-    }
-  }
-  
   final void release()
   {
     AppMethodBeat.i(138834);
-    if (this.ckt != null) {
-      this.ckt.m(this.cku);
+    if (this.chs != null) {
+      this.chs.l(this.cht);
     }
     b localb;
-    if (this.ckq != null)
+    if (this.chp != null)
     {
-      localb = this.ckq;
+      localb = this.chp;
       if (localb.mInited) {
         break label150;
       }
@@ -1114,29 +1114,29 @@ public final class a
     }
     for (;;)
     {
-      this.ckq = null;
+      this.chp = null;
       if (this.mSurface != null)
       {
         this.mSurface.release();
         this.mSurface = null;
       }
-      if (this.cku != null)
+      if (this.cht != null)
       {
-        this.cku.ED();
-        this.ckv = null;
+        this.cht.Eg();
+        this.chu = null;
       }
-      ad.i(EE(), "LivePlayer release handler thread");
-      if (this.ckF != null) {
-        this.ckF.removeCallbacksAndMessages(null);
+      ac.i(getLogTag(), "LivePlayer release handler thread");
+      if (this.chE != null) {
+        this.chE.removeCallbacksAndMessages(null);
       }
-      if (this.ckG != null) {
-        this.ckG.quitSafely();
+      if (this.chF != null) {
+        this.chF.quitSafely();
       }
       AppMethodBeat.o(138834);
       return;
       label150:
-      localb.clh.stopPlay(true);
-      localb.clh.setPlayListener(null);
+      localb.cij.stopPlay(true);
+      localb.cij.setPlayListener(null);
       localb.mInited = false;
       new com.tencent.luggage.k.a.a.a.a();
     }
@@ -1144,7 +1144,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

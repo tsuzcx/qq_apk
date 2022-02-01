@@ -7,14 +7,14 @@ import org.json.JSONArray;
 
 public final class d
 {
-  public String hMd = "ok";
-  public List<c> kyb = null;
+  public String imz = "ok";
+  public List<c> kZp = null;
   
-  public final JSONArray beK()
+  public final JSONArray blE()
   {
     AppMethodBeat.i(144697);
     JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = this.kyb.iterator();
+    Iterator localIterator = this.kZp.iterator();
     while (localIterator.hasNext()) {
       localJSONArray.put(((c)localIterator.next()).toJSONObject());
     }
@@ -27,11 +27,11 @@ public final class d
     AppMethodBeat.i(144696);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("mErrorMsg:");
-    ((StringBuilder)localObject).append(this.hMd);
+    ((StringBuilder)localObject).append(this.imz);
     ((StringBuilder)localObject).append(" mWifiList:");
     Iterator localIterator;
-    if ((this.kyb != null) && (this.kyb.size() > 0)) {
-      localIterator = this.kyb.iterator();
+    if ((this.kZp != null) && (this.kZp.size() > 0)) {
+      localIterator = this.kZp.iterator();
     }
     while (localIterator.hasNext())
     {

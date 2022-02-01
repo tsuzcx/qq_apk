@@ -21,15 +21,16 @@ import com.tencent.mm.model.v;
 import com.tencent.mm.openim.room.a.a;
 import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.voip.b.i;
+import com.tencent.mm.plugin.voip.b.j;
+import com.tencent.mm.plugin.voip.b.l;
 import com.tencent.mm.plugin.voip.model.u;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.base.t;
 import java.lang.ref.WeakReference;
 import java.util.Timer;
@@ -38,91 +39,94 @@ import java.util.TimerTask;
 public class VoipVoiceFragment
   extends VoipBaseFragment
 {
+  private Button AIK;
+  private TextView AIZ;
+  private View.OnClickListener AJC;
+  private View.OnClickListener AJD;
+  private boolean AJk;
+  private boolean ALA;
+  private boolean ALB;
+  private View.OnClickListener ALC;
+  private View.OnClickListener ALD;
+  private View.OnClickListener ALE;
+  private View.OnClickListener ALF;
+  private View.OnClickListener ALG;
+  private View.OnClickListener ALH;
+  private Runnable ALI;
+  private View ALf;
+  private ImageView ALg;
+  private TextView ALh;
+  private TextView ALi;
+  private TextView ALj;
+  private TextView ALk;
+  private TextView ALl;
+  private View ALm;
+  private RelativeLayout ALn;
+  private MMCheckBox ALo;
+  private TextView ALp;
+  private RelativeLayout ALq;
+  private MMCheckBox ALr;
+  private TextView ALs;
+  private TextView ALt;
+  private TextView ALu;
+  private VoipBigIconButton ALv;
+  private VoipBigIconButton ALw;
+  private VoipBigIconButton ALx;
+  private VoipBigIconButton ALy;
+  private VoipSmallIconButton ALz;
+  private int AzM;
   private boolean mIsMute;
   private Timer mTimer;
-  private boolean nSO;
-  private Runnable oOz;
-  private TextView sKW;
-  private int zhd;
-  private Button zpV;
-  private View.OnClickListener zqP;
-  private View.OnClickListener zqQ;
-  private TextView zqk;
-  private boolean zqw;
-  private TextView zsA;
-  private View zsB;
-  private RelativeLayout zsC;
-  private MMCheckBox zsD;
-  private TextView zsE;
-  private RelativeLayout zsF;
-  private MMCheckBox zsG;
-  private TextView zsH;
-  private TextView zsI;
-  private TextView zsJ;
-  private VoipBigIconButton zsK;
-  private VoipBigIconButton zsL;
-  private VoipBigIconButton zsM;
-  private VoipBigIconButton zsN;
-  private VoipSmallIconButton zsO;
-  private boolean zsP;
-  private View.OnClickListener zsQ;
-  private View.OnClickListener zsR;
-  private View.OnClickListener zsS;
-  private View.OnClickListener zsT;
-  private View.OnClickListener zsU;
-  private View.OnClickListener zsV;
-  private View zsu;
-  private ImageView zsv;
-  private TextView zsw;
-  private TextView zsx;
-  private TextView zsy;
-  private TextView zsz;
+  private boolean owj;
+  private Runnable prT;
+  private TextView tSC;
   
   public VoipVoiceFragment()
   {
     AppMethodBeat.i(115474);
-    this.zhd = 1;
+    this.AzM = 1;
     this.mIsMute = false;
-    this.nSO = false;
-    this.zqw = false;
-    this.zsP = false;
-    this.zqP = new View.OnClickListener()
+    this.owj = false;
+    this.AJk = false;
+    this.ALA = false;
+    this.ALB = false;
+    this.AJC = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(115463);
-        h.vKh.f(11618, new Object[] { Integer.valueOf(3), Integer.valueOf(1) });
-        if ((VoipVoiceFragment.this.zrd != null) && (VoipVoiceFragment.this.zrd.get() != null)) {
-          ((c)VoipVoiceFragment.this.zrd.get()).rv(true);
+        h.wUl.f(11618, new Object[] { Integer.valueOf(3), Integer.valueOf(1) });
+        if ((VoipVoiceFragment.this.AJQ != null) && (VoipVoiceFragment.this.AJQ.get() != null)) {
+          ((c)VoipVoiceFragment.this.AJQ.get()).sw(true);
         }
-        if (VoipVoiceFragment.this.zrw != null) {
-          VoipVoiceFragment.this.zrw.ao(false, true);
+        if (VoipVoiceFragment.this.AKh != null) {
+          VoipVoiceFragment.this.AKh.as(false, true);
         }
         AppMethodBeat.o(115463);
       }
     };
-    this.zqQ = new View.OnClickListener()
+    this.AJD = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(115466);
-        h.vKh.f(11619, new Object[] { Integer.valueOf(3) });
-        if ((VoipVoiceFragment.this.zrd != null) && (VoipVoiceFragment.this.zrd.get() != null)) {
-          ((c)VoipVoiceFragment.this.zrd.get()).dSF();
+        h.wUl.f(11619, new Object[] { Integer.valueOf(3) });
+        if ((VoipVoiceFragment.this.AJQ != null) && (VoipVoiceFragment.this.AJQ.get() != null)) {
+          ((c)VoipVoiceFragment.this.AJQ.get()).ehR();
         }
         AppMethodBeat.o(115466);
       }
     };
-    this.zsQ = new View.OnClickListener()
+    this.ALC = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(115467);
         boolean bool = VoipVoiceFragment.a(VoipVoiceFragment.this).isChecked();
-        ad.i("MicroMsg.VoipVoiceFragment", "onSpeakerClick, status: %b", new Object[] { Boolean.valueOf(bool) });
+        ac.i("MicroMsg.VoipVoiceFragment", "onSpeakerClick, status: %b", new Object[] { Boolean.valueOf(bool) });
         VoipVoiceFragment.a(VoipVoiceFragment.this).setEnabled(false);
-        if ((VoipVoiceFragment.this.zrd != null) && (VoipVoiceFragment.this.zrd.get() != null)) {
-          ((c)VoipVoiceFragment.this.zrd.get()).rt(bool);
+        if ((VoipVoiceFragment.this.AJQ != null) && (VoipVoiceFragment.this.AJQ.get() != null)) {
+          ((c)VoipVoiceFragment.this.AJQ.get()).su(bool);
         }
         paramAnonymousView = VoipVoiceFragment.this;
         if (bool) {}
@@ -135,34 +139,34 @@ public class VoipVoiceFragment
         }
       }
     };
-    this.zsR = new View.OnClickListener()
+    this.ALD = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(115468);
         boolean bool = VoipVoiceFragment.b(VoipVoiceFragment.this).isChecked();
-        ad.i("MicroMsg.VoipVoiceFragment", "onMicClick, status: %b", new Object[] { Boolean.valueOf(bool) });
+        ac.i("MicroMsg.VoipVoiceFragment", "onMicClick, status: %b", new Object[] { Boolean.valueOf(bool) });
         VoipVoiceFragment.b(VoipVoiceFragment.this).setEnabled(false);
-        if ((VoipVoiceFragment.this.zrd != null) && (VoipVoiceFragment.this.zrd.get() != null)) {
-          ((c)VoipVoiceFragment.this.zrd.get()).ns(bool);
+        if ((VoipVoiceFragment.this.AJQ != null) && (VoipVoiceFragment.this.AJQ.get() != null)) {
+          ((c)VoipVoiceFragment.this.AJQ.get()).om(bool);
         }
         VoipVoiceFragment.a(VoipVoiceFragment.this, bool);
         VoipVoiceFragment.b(VoipVoiceFragment.this).setEnabled(true);
         AppMethodBeat.o(115468);
       }
     };
-    this.zsS = new View.OnClickListener()
+    this.ALE = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(115469);
-        ad.i("MicroMsg.VoipVoiceFragment", "click accept voice invite button");
-        h.vKh.a(11526, true, true, new Object[] { Integer.valueOf(com.tencent.mm.plugin.voip.c.dRQ().dUz()), Long.valueOf(com.tencent.mm.plugin.voip.c.dRQ().dUA()), Long.valueOf(com.tencent.mm.plugin.voip.c.dRQ().dTa()), Integer.valueOf(2) });
-        if ((VoipVoiceFragment.this.zrd != null) && (VoipVoiceFragment.this.zrd.get() != null) && (((c)VoipVoiceFragment.this.zrd.get()).dSg()))
+        ac.i("MicroMsg.VoipVoiceFragment", "click accept voice invite button");
+        h.wUl.a(11526, true, true, new Object[] { Integer.valueOf(com.tencent.mm.plugin.voip.c.ehb().ejL()), Long.valueOf(com.tencent.mm.plugin.voip.c.ehb().ejM()), Long.valueOf(com.tencent.mm.plugin.voip.c.ehb().eim()), Integer.valueOf(2) });
+        if ((VoipVoiceFragment.this.AJQ != null) && (VoipVoiceFragment.this.AJQ.get() != null) && (((c)VoipVoiceFragment.this.AJQ.get()).ehs()))
         {
           VoipVoiceFragment.c(VoipVoiceFragment.this).setEnabled(false);
           VoipVoiceFragment.d(VoipVoiceFragment.this).setText(2131764949);
-          VoipVoiceFragment.this.zrx.a(VoipVoiceFragment.e(VoipVoiceFragment.this), VoipBaseFragment.zrr);
+          VoipVoiceFragment.this.AKi.a(VoipVoiceFragment.e(VoipVoiceFragment.this), VoipBaseFragment.AKc);
           VoipVoiceFragment.f(VoipVoiceFragment.this).setVisibility(0);
           VoipVoiceFragment.g(VoipVoiceFragment.this).setVisibility(8);
           VoipVoiceFragment.c(VoipVoiceFragment.this).setVisibility(8);
@@ -172,52 +176,52 @@ public class VoipVoiceFragment
         AppMethodBeat.o(115469);
       }
     };
-    this.zsT = new View.OnClickListener()
+    this.ALF = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(115470);
-        ad.i("MicroMsg.VoipVoiceFragment", "click reject voice invite button");
-        h.vKh.a(11526, true, true, new Object[] { Integer.valueOf(com.tencent.mm.plugin.voip.c.dRQ().dUz()), Long.valueOf(com.tencent.mm.plugin.voip.c.dRQ().dUA()), Long.valueOf(com.tencent.mm.plugin.voip.c.dRQ().dTa()), Integer.valueOf(5) });
-        if ((VoipVoiceFragment.this.zrd != null) && (VoipVoiceFragment.this.zrd.get() != null) && (((c)VoipVoiceFragment.this.zrd.get()).dSf()))
+        ac.i("MicroMsg.VoipVoiceFragment", "click reject voice invite button");
+        h.wUl.a(11526, true, true, new Object[] { Integer.valueOf(com.tencent.mm.plugin.voip.c.ehb().ejL()), Long.valueOf(com.tencent.mm.plugin.voip.c.ehb().ejM()), Long.valueOf(com.tencent.mm.plugin.voip.c.ehb().eim()), Integer.valueOf(5) });
+        if ((VoipVoiceFragment.this.AJQ != null) && (VoipVoiceFragment.this.AJQ.get() != null) && (((c)VoipVoiceFragment.this.AJQ.get()).ehr()))
         {
           VoipVoiceFragment.h(VoipVoiceFragment.this).setEnabled(false);
           VoipVoiceFragment.c(VoipVoiceFragment.this).setEnabled(false);
-          VoipVoiceFragment.this.hT(2131764909, -1);
-          if (VoipVoiceFragment.this.zrw != null) {
-            VoipVoiceFragment.this.zrw.ao(true, false);
+          VoipVoiceFragment.this.ii(2131764909, -1);
+          if (VoipVoiceFragment.this.AKh != null) {
+            VoipVoiceFragment.this.AKh.as(true, false);
           }
         }
         AppMethodBeat.o(115470);
       }
     };
-    this.zsU = new View.OnClickListener()
+    this.ALG = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(115471);
-        ad.i("MicroMsg.VoipVoiceFragment", "click hangup voice talking button");
-        if ((VoipVoiceFragment.this.zrd != null) && (VoipVoiceFragment.this.zrd.get() != null) && (((c)VoipVoiceFragment.this.zrd.get()).dSa())) {
-          VoipVoiceFragment.this.hT(2131764857, -1);
+        ac.i("MicroMsg.VoipVoiceFragment", "click hangup voice talking button");
+        if ((VoipVoiceFragment.this.AJQ != null) && (VoipVoiceFragment.this.AJQ.get() != null) && (((c)VoipVoiceFragment.this.AJQ.get()).ehm())) {
+          VoipVoiceFragment.this.ii(2131764857, -1);
         }
         AppMethodBeat.o(115471);
       }
     };
-    this.zsV = new View.OnClickListener()
+    this.ALH = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(115472);
-        ad.i("MicroMsg.VoipVoiceFragment", "click cancel voice invite button");
-        if ((VoipVoiceFragment.this.zrd != null) && (VoipVoiceFragment.this.zrd.get() != null) && (((c)VoipVoiceFragment.this.zrd.get()).dSi()))
+        ac.i("MicroMsg.VoipVoiceFragment", "click cancel voice invite button");
+        if ((VoipVoiceFragment.this.AJQ != null) && (VoipVoiceFragment.this.AJQ.get() != null) && (((c)VoipVoiceFragment.this.AJQ.get()).ehu()))
         {
-          VoipVoiceFragment.this.hT(2131764813, -1);
+          VoipVoiceFragment.this.ii(2131764813, -1);
           VoipVoiceFragment.j(VoipVoiceFragment.this).setEnabled(false);
         }
         AppMethodBeat.o(115472);
       }
     };
-    this.oOz = new Runnable()
+    this.prT = new Runnable()
     {
       public final void run()
       {
@@ -231,320 +235,349 @@ public class VoipVoiceFragment
         AppMethodBeat.o(115473);
       }
     };
-    AppMethodBeat.o(115474);
-  }
-  
-  private void Qy(int paramInt)
-  {
-    AppMethodBeat.i(115480);
-    this.zsu.setVisibility(0);
-    this.zsy.setVisibility(8);
-    this.zsz.setText(2131764874);
-    this.zrx.a(this.zsA, zrr);
-    this.zsB.setVisibility(0);
-    if (this.zsx != null)
-    {
-      if ((!af.aHH(this.flk)) || (bt.ai(this.zsx.getText()))) {
-        break label277;
-      }
-      this.zsx.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.zsK.setVisibility(8);
-      this.zsL.setVisibility(8);
-      this.zsM.setVisibility(8);
-      this.zsN.setVisibility(0);
-      this.zsO.setVisibility(8);
-      this.zsF.setVisibility(0);
-      this.zsG.setEnabled(false);
-      this.zsG.setBackgroundResource(2131234600);
-      this.zsH.setTextColor(1728053247);
-      dWl();
-      this.zsG.setChecked(this.mIsMute);
-      this.zsC.setVisibility(0);
-      if ((paramInt != 4097) && (2 == this.zhd)) {
-        hT(2131764790, 10000);
-      }
-      dWa();
-      this.zsJ.setVisibility(8);
-      if (com.tencent.mm.plugin.voip.c.dRQ().zhw != null)
-      {
-        this.zsJ.setVisibility(0);
-        this.zsJ.setText(com.tencent.mm.plugin.voip.c.dRQ().zhw);
-      }
-      if (zrv == 2) {
-        this.zsP = true;
-      }
-      AppMethodBeat.o(115480);
-      return;
-      label277:
-      this.zsx.setVisibility(8);
-    }
-  }
-  
-  private void aKf()
-  {
-    AppMethodBeat.i(115491);
-    if ((this.mTimer == null) || (this.nSO))
-    {
-      AppMethodBeat.o(115491);
-      return;
-    }
-    if (-1L == this.zre) {
-      this.zre = bt.aGK();
-    }
-    this.nSO = true;
-    TimerTask local2 = new TimerTask()
+    this.ALI = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(115465);
-        VoipVoiceFragment.this.iDu.post(new Runnable()
+        if ((VoipVoiceFragment.this.getActivity() == null) || (VoipVoiceFragment.this.getActivity().isFinishing()))
         {
-          public final void run()
-          {
-            AppMethodBeat.i(115464);
-            String str = VoipVoiceFragment.mz(bt.lZ(VoipVoiceFragment.this.zre));
-            VoipVoiceFragment.g(VoipVoiceFragment.this).setText(str);
-            VoipVoiceFragment.l(VoipVoiceFragment.this);
-            AppMethodBeat.o(115464);
-          }
-        });
+          AppMethodBeat.o(115465);
+          return;
+        }
+        VoipVoiceFragment.l(VoipVoiceFragment.this);
+        VoipVoiceFragment.m(VoipVoiceFragment.this).setVisibility(8);
         AppMethodBeat.o(115465);
       }
     };
-    this.mTimer.schedule(local2, 50L, 1000L);
-    AppMethodBeat.o(115491);
+    AppMethodBeat.o(115474);
   }
   
-  private void dVT()
+  private void SH(int paramInt)
   {
-    AppMethodBeat.i(115479);
-    this.zsu.setVisibility(0);
-    this.zsy.setVisibility(8);
-    this.zsz.setText(2131764902);
-    this.zrx.a(this.zsA, zrr);
-    this.zsB.setVisibility(0);
-    this.zsK.setVisibility(8);
-    this.zsL.setVisibility(8);
-    this.zsM.setVisibility(8);
-    this.zsN.setVisibility(0);
-    this.zsO.setVisibility(8);
-    this.zsF.setVisibility(0);
-    this.zsG.setEnabled(false);
-    this.zsG.setBackgroundResource(2131234600);
-    this.zsH.setTextColor(1728053247);
-    this.zsJ.setVisibility(8);
-    if (com.tencent.mm.plugin.voip.c.dRQ().zhw != null)
+    AppMethodBeat.i(115480);
+    this.ALf.setVisibility(0);
+    this.ALj.setVisibility(8);
+    this.ALk.setText(2131764874);
+    this.AKi.a(this.ALl, AKc);
+    this.ALm.setVisibility(0);
+    if (this.ALi != null)
     {
-      this.zsJ.setVisibility(0);
-      this.zsJ.setText(com.tencent.mm.plugin.voip.c.dRQ().zhw);
-    }
-    dWl();
-    this.zsG.setChecked(this.mIsMute);
-    this.zsC.setVisibility(0);
-    if (2 == this.zhd) {
-      hT(2131764790, 10000);
-    }
-    dWa();
-    AppMethodBeat.o(115479);
-  }
-  
-  private void dWg()
-  {
-    AppMethodBeat.i(115481);
-    this.zsz.setText(2131764949);
-    this.zrx.a(this.zsA, zrr);
-    this.zsK.setVisibility(8);
-    this.zsL.setVisibility(8);
-    this.zsM.setVisibility(0);
-    this.zsN.setVisibility(8);
-    this.zsO.setVisibility(8);
-    AppMethodBeat.o(115481);
-  }
-  
-  private void dWh()
-  {
-    AppMethodBeat.i(115482);
-    this.zrx.dWc();
-    this.zsM.setEnabled(false);
-    this.zsN.setEnabled(false);
-    this.zsK.setEnabled(false);
-    this.zsL.setEnabled(false);
-    this.zsO.setEnabled(false);
-    AppMethodBeat.o(115482);
-  }
-  
-  private void dWi()
-  {
-    AppMethodBeat.i(115483);
-    this.zsu.setVisibility(0);
-    this.zsB.setVisibility(0);
-    this.zsz.setText(2131764875);
-    this.zrx.a(this.zsA, zrr);
-    if (this.zsx != null)
-    {
-      if ((!af.aHH(this.flk)) || (bt.ai(this.zsx.getText()))) {
-        break label211;
+      if ((!ai.aNc(this.foE)) || (bs.aj(this.ALi.getText()))) {
+        break label277;
       }
-      this.zsx.setVisibility(0);
+      this.ALi.setVisibility(0);
     }
     for (;;)
     {
-      dWl();
-      this.zsK.setVisibility(0);
-      this.zsL.setVisibility(0);
-      this.zsM.setVisibility(8);
-      this.zsN.setVisibility(8);
-      if (this.zqw) {
-        this.zsO.setVisibility(0);
+      this.ALv.setVisibility(8);
+      this.ALw.setVisibility(8);
+      this.ALx.setVisibility(8);
+      this.ALy.setVisibility(0);
+      this.ALz.setVisibility(8);
+      this.ALq.setVisibility(0);
+      this.ALr.setEnabled(false);
+      this.ALr.setBackgroundResource(2131234600);
+      this.ALs.setTextColor(1728053247);
+      elx();
+      this.ALr.setChecked(this.mIsMute);
+      this.ALn.setVisibility(0);
+      if ((paramInt != 4097) && (2 == this.AzM)) {
+        ii(2131764790, 10000);
       }
-      if (zrv == 256)
+      elm();
+      this.ALu.setVisibility(8);
+      if (com.tencent.mm.plugin.voip.c.ehb().AAf != null)
       {
-        this.zsP = true;
-        hT(2131764791, 10000);
+        this.ALu.setVisibility(0);
+        this.ALu.setText(com.tencent.mm.plugin.voip.c.ehb().AAf);
       }
-      dWa();
-      this.zsJ.setVisibility(8);
-      if (com.tencent.mm.plugin.voip.c.dRQ().zhw != null)
+      if (AKg == 2) {
+        this.ALA = true;
+      }
+      AppMethodBeat.o(115480);
+      return;
+      label277:
+      this.ALi.setVisibility(8);
+    }
+  }
+  
+  private void aQW()
+  {
+    AppMethodBeat.i(115491);
+    if ((this.mTimer == null) || (this.owj))
+    {
+      AppMethodBeat.o(115491);
+      return;
+    }
+    if (-1L == this.AJR) {
+      this.AJR = bs.aNx();
+    }
+    this.owj = true;
+    TimerTask local3 = new TimerTask()
+    {
+      public final void run()
       {
-        this.zsJ.setVisibility(0);
-        this.zsJ.setText(com.tencent.mm.plugin.voip.c.dRQ().zhw);
+        AppMethodBeat.i(208487);
+        VoipVoiceFragment.this.jdu.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(208486);
+            String str = VoipVoiceFragment.qn(bs.pN(VoipVoiceFragment.this.AJR));
+            VoipVoiceFragment.g(VoipVoiceFragment.this).setText(str);
+            VoipVoiceFragment.n(VoipVoiceFragment.this);
+            AppMethodBeat.o(208486);
+          }
+        });
+        AppMethodBeat.o(208487);
+      }
+    };
+    this.mTimer.schedule(local3, 50L, 1000L);
+    AppMethodBeat.o(115491);
+  }
+  
+  private void elf()
+  {
+    AppMethodBeat.i(115479);
+    this.ALf.setVisibility(0);
+    this.ALj.setVisibility(8);
+    this.ALk.setText(2131764902);
+    this.AKi.a(this.ALl, AKc);
+    this.ALm.setVisibility(0);
+    this.ALv.setVisibility(8);
+    this.ALw.setVisibility(8);
+    this.ALx.setVisibility(8);
+    this.ALy.setVisibility(0);
+    this.ALz.setVisibility(8);
+    this.ALq.setVisibility(0);
+    this.ALr.setEnabled(false);
+    this.ALr.setBackgroundResource(2131234600);
+    this.ALs.setTextColor(1728053247);
+    this.ALu.setVisibility(8);
+    if (com.tencent.mm.plugin.voip.c.ehb().AAf != null)
+    {
+      this.ALu.setVisibility(0);
+      this.ALu.setText(com.tencent.mm.plugin.voip.c.ehb().AAf);
+    }
+    elx();
+    this.ALr.setChecked(this.mIsMute);
+    this.ALn.setVisibility(0);
+    if (2 == this.AzM) {
+      ii(2131764790, 10000);
+    }
+    elm();
+    AppMethodBeat.o(115479);
+  }
+  
+  private void els()
+  {
+    AppMethodBeat.i(115481);
+    this.ALk.setText(2131764949);
+    this.AKi.a(this.ALl, AKc);
+    this.ALv.setVisibility(8);
+    this.ALw.setVisibility(8);
+    this.ALx.setVisibility(0);
+    this.ALy.setVisibility(8);
+    this.ALz.setVisibility(8);
+    AppMethodBeat.o(115481);
+  }
+  
+  private void elt()
+  {
+    AppMethodBeat.i(115482);
+    this.AKi.elo();
+    this.ALx.setEnabled(false);
+    this.ALy.setEnabled(false);
+    this.ALv.setEnabled(false);
+    this.ALw.setEnabled(false);
+    this.ALz.setEnabled(false);
+    AppMethodBeat.o(115482);
+  }
+  
+  private void elu()
+  {
+    AppMethodBeat.i(115483);
+    this.ALf.setVisibility(0);
+    this.ALm.setVisibility(0);
+    this.ALk.setText(2131764875);
+    this.AKi.a(this.ALl, AKc);
+    if (this.ALi != null)
+    {
+      if ((!ai.aNc(this.foE)) || (bs.aj(this.ALi.getText()))) {
+        break label211;
+      }
+      this.ALi.setVisibility(0);
+    }
+    for (;;)
+    {
+      elx();
+      this.ALv.setVisibility(0);
+      this.ALw.setVisibility(0);
+      this.ALx.setVisibility(8);
+      this.ALy.setVisibility(8);
+      if (this.AJk) {
+        this.ALz.setVisibility(0);
+      }
+      if (AKg == 256)
+      {
+        this.ALA = true;
+        ii(2131764791, 10000);
+      }
+      elm();
+      this.ALu.setVisibility(8);
+      if (com.tencent.mm.plugin.voip.c.ehb().AAf != null)
+      {
+        this.ALu.setVisibility(0);
+        this.ALu.setText(com.tencent.mm.plugin.voip.c.ehb().AAf);
       }
       AppMethodBeat.o(115483);
       return;
       label211:
-      this.zsx.setVisibility(8);
+      this.ALi.setVisibility(8);
     }
   }
   
-  private void dWj()
+  private void elv()
   {
     AppMethodBeat.i(115484);
-    this.zsu.setVisibility(0);
-    this.zsB.setVisibility(0);
-    this.zsz.setText(2131764949);
-    this.zrx.a(this.zsA, zrr);
-    this.zsK.setVisibility(8);
-    this.zsL.setVisibility(8);
-    this.zsM.setVisibility(0);
-    this.zsN.setVisibility(8);
-    this.zsO.setVisibility(8);
-    hT(2131764790, 10000);
-    dWa();
+    this.ALf.setVisibility(0);
+    this.ALm.setVisibility(0);
+    this.ALk.setText(2131764949);
+    this.AKi.a(this.ALl, AKc);
+    this.ALv.setVisibility(8);
+    this.ALw.setVisibility(8);
+    this.ALx.setVisibility(0);
+    this.ALy.setVisibility(8);
+    this.ALz.setVisibility(8);
+    ii(2131764790, 10000);
+    elm();
     AppMethodBeat.o(115484);
   }
   
-  private void dWk()
+  private void elw()
   {
     AppMethodBeat.i(115485);
-    this.zsN.setVisibility(8);
-    this.zsK.setVisibility(8);
-    this.zsL.setVisibility(8);
-    this.zsO.setVisibility(8);
-    this.zsB.setVisibility(8);
-    this.zrx.dWc();
-    this.zsM.setVisibility(0);
-    this.zsy.setVisibility(0);
-    this.zsF.setVisibility(0);
-    this.zsC.setVisibility(0);
-    this.zsu.setVisibility(0);
-    this.zpV.setVisibility(0);
-    this.zsG.setEnabled(true);
-    this.zsG.setBackgroundResource(2131234589);
-    this.zsH.setTextColor(-1);
-    dWl();
-    this.zsG.setChecked(this.mIsMute);
-    if (!this.zsP) {
-      hT(2131764783, 10000);
+    this.ALy.setVisibility(8);
+    this.ALv.setVisibility(8);
+    this.ALw.setVisibility(8);
+    this.ALz.setVisibility(8);
+    this.ALm.setVisibility(8);
+    this.AKi.elo();
+    this.ALx.setVisibility(0);
+    this.ALj.setVisibility(0);
+    this.ALq.setVisibility(0);
+    this.ALn.setVisibility(0);
+    this.ALf.setVisibility(0);
+    this.AIK.setVisibility(0);
+    this.ALr.setEnabled(true);
+    this.ALr.setBackgroundResource(2131234589);
+    this.ALs.setTextColor(-1);
+    elx();
+    this.ALr.setChecked(this.mIsMute);
+    if (!this.ALA) {
+      ii(2131764783, 10000);
     }
     for (;;)
     {
-      if (ab.hWp) {
-        this.zqk.setVisibility(0);
+      if (ab.iwt) {
+        this.AIZ.setVisibility(0);
       }
-      dWa();
-      aKf();
-      this.zsJ.setVisibility(8);
-      if (com.tencent.mm.plugin.voip.c.dRQ().zhw != null)
+      elm();
+      aQW();
+      this.ALu.setVisibility(8);
+      if (com.tencent.mm.plugin.voip.c.ehb().AAf != null)
       {
-        this.zsJ.setVisibility(0);
-        this.zsJ.setText(com.tencent.mm.plugin.voip.c.dRQ().zhw);
+        this.ALu.setVisibility(0);
+        this.ALu.setText(com.tencent.mm.plugin.voip.c.ehb().AAf);
       }
       AppMethodBeat.o(115485);
       return;
-      if (2 == this.zhd) {
-        hT(2131764785, 10000);
-      } else if (3 == this.zhd) {
-        hT(2131764784, 10000);
+      if (2 == this.AzM) {
+        ii(2131764785, 10000);
+      } else if (3 == this.AzM) {
+        ii(2131764784, 10000);
       }
     }
   }
   
-  private void dWl()
+  private void elx()
   {
     AppMethodBeat.i(115493);
-    if ((this.zsD == null) || (this.zsE == null))
+    if ((this.ALo == null) || (this.ALp == null))
     {
-      ad.e("MicroMsg.VoipVoiceFragment", "speaker is null");
+      ac.e("MicroMsg.VoipVoiceFragment", "speaker is null");
       AppMethodBeat.o(115493);
       return;
     }
-    if ((4 == this.zhd) || (3 == this.zhd))
+    if ((4 == this.AzM) || (3 == this.AzM))
     {
-      this.zsD.setEnabled(false);
-      this.zsE.setTextColor(1728053247);
-      this.zsD.setBackgroundResource(2131234586);
-      ad.i("MicroMsg.VoipVoiceFragment", "updateSpeakerStatus, disable mCbVoiceSpeakerSwitcher");
+      this.ALo.setEnabled(false);
+      this.ALp.setTextColor(1728053247);
+      this.ALo.setBackgroundResource(2131234586);
+      ac.i("MicroMsg.VoipVoiceFragment", "updateSpeakerStatus, disable mCbVoiceSpeakerSwitcher");
       AppMethodBeat.o(115493);
       return;
     }
-    if (this.zhd == 1) {}
+    if (this.AzM == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.zsD.setBackgroundResource(2131234590);
-      this.zsD.setEnabled(true);
-      this.zsE.setTextColor(-1);
-      this.zsD.setChecked(bool);
-      ad.i("MicroMsg.VoipVoiceFragment", "updateSpeakerStatus, set mCbVoiceSpeakerSwitcher isChecked:%s", new Object[] { Boolean.valueOf(bool) });
+      this.ALo.setBackgroundResource(2131234590);
+      this.ALo.setEnabled(true);
+      this.ALp.setTextColor(-1);
+      this.ALo.setChecked(bool);
+      ac.i("MicroMsg.VoipVoiceFragment", "updateSpeakerStatus, set mCbVoiceSpeakerSwitcher isChecked:%s", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(115493);
       return;
     }
   }
   
-  protected final void atj(String paramString)
+  protected final void ayA(String paramString)
   {
     AppMethodBeat.i(115486);
-    if (this.zsJ != null)
+    if (this.ALu != null)
     {
-      this.zsJ.setVisibility(0);
-      this.zsJ.setText(paramString);
+      this.ALu.setVisibility(0);
+      this.ALu.setText(paramString);
     }
     AppMethodBeat.o(115486);
   }
   
-  protected final void dVQ()
+  public final void ela()
+  {
+    AppMethodBeat.i(208488);
+    if (this.tSC != null)
+    {
+      this.ALB = true;
+      this.tSC.setVisibility(0);
+      this.tSC.setText(2131766838);
+      this.jdu.removeCallbacks(this.ALI);
+      this.jdu.postDelayed(this.ALI, 10000L);
+    }
+    AppMethodBeat.o(208488);
+  }
+  
+  protected final void elc()
   {
     AppMethodBeat.i(115489);
-    if (this.sKW != null)
+    if (this.tSC != null)
     {
-      this.sKW.clearAnimation();
-      this.sKW.setVisibility(8);
+      this.tSC.clearAnimation();
+      this.tSC.setVisibility(8);
     }
     AppMethodBeat.o(115489);
   }
   
-  public final void dVR() {}
+  public final void eld() {}
   
-  public final void hS(int paramInt1, int paramInt2)
+  public final void ih(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115477);
-    super.hS(paramInt1, paramInt2);
-    ad.i("MicroMsg.VoipVoiceFragment", "newState: " + i.QI(paramInt2) + ", action: " + i.QI(paramInt1) + ", lastStatus: " + i.QI(zrv) + ", isSwitchFromVideo: " + this.zsP);
-    if (this.vHU == null)
+    super.ih(paramInt1, paramInt2);
+    ac.i("MicroMsg.VoipVoiceFragment", "newState: " + j.SR(paramInt2) + ", action: " + j.SR(paramInt1) + ", lastStatus: " + j.SR(AKg) + ", isSwitchFromVideo: " + this.ALA);
+    if (this.wRY == null)
     {
-      ad.i("MicroMsg.VoipVoiceFragment", "fragment no create, return first, onCreateView will call it again");
+      ac.i("MicroMsg.VoipVoiceFragment", "fragment no create, return first, onCreateView will call it again");
       AppMethodBeat.o(115477);
       return;
     }
@@ -555,45 +588,45 @@ public class VoipVoiceFragment
     {
       AppMethodBeat.o(115477);
       return;
-      dVT();
+      elf();
       AppMethodBeat.o(115477);
       return;
-      Qy(paramInt1);
+      SH(paramInt1);
       AppMethodBeat.o(115477);
       return;
-      dWg();
+      els();
       AppMethodBeat.o(115477);
       return;
-      dWk();
+      elw();
       AppMethodBeat.o(115477);
       return;
-      dWh();
+      elt();
       AppMethodBeat.o(115477);
       return;
-      dWi();
+      elu();
       AppMethodBeat.o(115477);
       return;
-      dWj();
+      elv();
     }
   }
   
-  protected final void hT(int paramInt1, int paramInt2)
+  protected final void ii(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115487);
-    if (this.zsI == null)
+    if (this.ALt == null)
     {
       AppMethodBeat.o(115487);
       return;
     }
-    this.zsI.setText(paramInt1);
-    this.zsI.setVisibility(0);
-    this.zsI.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    this.zsI.setBackgroundResource(2131234591);
-    this.zsI.setCompoundDrawables(null, null, null, null);
-    this.zsI.setCompoundDrawablePadding(0);
-    this.iDu.removeCallbacks(this.oOz);
+    this.ALt.setText(paramInt1);
+    this.ALt.setVisibility(0);
+    this.ALt.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    this.ALt.setBackgroundResource(2131234591);
+    this.ALt.setCompoundDrawables(null, null, null, null);
+    this.ALt.setCompoundDrawablePadding(0);
+    this.jdu.removeCallbacks(this.prT);
     if (-1 != paramInt2) {
-      this.iDu.postDelayed(this.oOz, paramInt2);
+      this.jdu.postDelayed(this.prT, paramInt2);
     }
     AppMethodBeat.o(115487);
   }
@@ -603,83 +636,83 @@ public class VoipVoiceFragment
     AppMethodBeat.i(115476);
     paramBundle = new DisplayMetrics();
     ((WindowManager)paramLayoutInflater.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(paramBundle);
-    ad.i("MicroMsg.VoipVoiceFragment", "dpi: " + paramBundle.heightPixels / paramBundle.density);
+    ac.i("MicroMsg.VoipVoiceFragment", "dpi: " + paramBundle.heightPixels / paramBundle.density);
     if (paramBundle.heightPixels / paramBundle.density <= 540.0F)
     {
-      this.vHU = ((RelativeLayout)paramLayoutInflater.inflate(2131495885, paramViewGroup, false));
-      this.zrs = ((ImageView)this.vHU.findViewById(2131306556));
-      this.zsu = this.vHU.findViewById(2131306607);
-      this.zsv = ((ImageView)this.vHU.findViewById(2131306621));
-      a.b.a(this.zsv, this.flk, 0.0375F, true);
-      this.zsw = ((TextView)this.vHU.findViewById(2131306622));
-      this.zsw.setText(com.tencent.mm.pluginsdk.ui.span.k.b(getActivity(), v.sh(this.flk), this.zsw.getTextSize()));
-      this.zsx = ((TextView)this.vHU.findViewById(2131306624));
-      this.zsy = ((TextView)this.vHU.findViewById(2131306629));
-      this.zsz = ((TextView)this.vHU.findViewById(2131306611));
-      this.zsA = ((TextView)this.vHU.findViewById(2131306613));
-      this.zsB = this.vHU.findViewById(2131306612);
-      this.zsI = ((TextView)this.vHU.findViewById(2131306608));
-      this.zsJ = ((TextView)this.vHU.findViewById(2131306625));
-      this.sKW = ((TextView)this.vHU.findViewById(2131306581));
-      t(this.zsA);
-      if (ab.hWp) {
-        this.zqk = ((TextView)this.vHU.findViewById(2131299493));
+      this.wRY = ((RelativeLayout)paramLayoutInflater.inflate(2131495885, paramViewGroup, false));
+      this.AKd = ((ImageView)this.wRY.findViewById(2131306556));
+      this.ALf = this.wRY.findViewById(2131306607);
+      this.ALg = ((ImageView)this.wRY.findViewById(2131306621));
+      a.b.a(this.ALg, this.foE, 0.0375F, true);
+      this.ALh = ((TextView)this.wRY.findViewById(2131306622));
+      this.ALh.setText(com.tencent.mm.pluginsdk.ui.span.k.b(getActivity(), v.wk(this.foE), this.ALh.getTextSize()));
+      this.ALi = ((TextView)this.wRY.findViewById(2131306624));
+      this.ALj = ((TextView)this.wRY.findViewById(2131306629));
+      this.ALk = ((TextView)this.wRY.findViewById(2131306611));
+      this.ALl = ((TextView)this.wRY.findViewById(2131306613));
+      this.ALm = this.wRY.findViewById(2131306612);
+      this.ALt = ((TextView)this.wRY.findViewById(2131306608));
+      this.ALu = ((TextView)this.wRY.findViewById(2131306625));
+      this.tSC = ((TextView)this.wRY.findViewById(2131306581));
+      t(this.ALl);
+      if (ab.iwt) {
+        this.AIZ = ((TextView)this.wRY.findViewById(2131299493));
       }
-      this.zsF = ((RelativeLayout)this.vHU.findViewById(2131306615));
-      this.zsG = ((MMCheckBox)this.vHU.findViewById(2131306614));
-      this.zsG.setChecked(this.mIsMute);
-      this.zsH = ((TextView)this.vHU.findViewById(2131306616));
-      this.zsH.setText(2131764886);
-      this.zsC = ((RelativeLayout)this.vHU.findViewById(2131306627));
-      this.zsD = ((MMCheckBox)this.vHU.findViewById(2131306626));
-      this.zsE = ((TextView)this.vHU.findViewById(2131306628));
-      this.zsE.setText(2131764919);
-      dWl();
-      this.zsK = ((VoipBigIconButton)this.vHU.findViewById(2131306606));
-      this.zsK.setOnClickListener(this.zsS);
-      this.zsL = ((VoipBigIconButton)this.vHU.findViewById(2131306620));
-      this.zsL.setOnClickListener(this.zsT);
-      this.zsM = ((VoipBigIconButton)this.vHU.findViewById(2131306610));
-      this.zsM.setOnClickListener(this.zsU);
-      this.zsN = ((VoipBigIconButton)this.vHU.findViewById(2131306609));
-      this.zsN.setOnClickListener(this.zsV);
-      if (com.tencent.mm.plugin.voip.b.k.Bo("VOIPBlockIgnoreButton") != 0) {
+      this.ALq = ((RelativeLayout)this.wRY.findViewById(2131306615));
+      this.ALr = ((MMCheckBox)this.wRY.findViewById(2131306614));
+      this.ALr.setChecked(this.mIsMute);
+      this.ALs = ((TextView)this.wRY.findViewById(2131306616));
+      this.ALs.setText(2131764886);
+      this.ALn = ((RelativeLayout)this.wRY.findViewById(2131306627));
+      this.ALo = ((MMCheckBox)this.wRY.findViewById(2131306626));
+      this.ALp = ((TextView)this.wRY.findViewById(2131306628));
+      this.ALp.setText(2131764919);
+      elx();
+      this.ALv = ((VoipBigIconButton)this.wRY.findViewById(2131306606));
+      this.ALv.setOnClickListener(this.ALE);
+      this.ALw = ((VoipBigIconButton)this.wRY.findViewById(2131306620));
+      this.ALw.setOnClickListener(this.ALF);
+      this.ALx = ((VoipBigIconButton)this.wRY.findViewById(2131306610));
+      this.ALx.setOnClickListener(this.ALG);
+      this.ALy = ((VoipBigIconButton)this.wRY.findViewById(2131306609));
+      this.ALy.setOnClickListener(this.ALH);
+      if (l.Fs("VOIPBlockIgnoreButton") != 0) {
         break label938;
       }
     }
     label938:
     for (boolean bool = true;; bool = false)
     {
-      this.zqw = bool;
-      this.zsO = ((VoipSmallIconButton)this.vHU.findViewById(2131306576));
-      this.zsO.setOnClickListener(this.zqQ);
-      if (!this.zqw) {
-        this.zsO.setVisibility(8);
+      this.AJk = bool;
+      this.ALz = ((VoipSmallIconButton)this.wRY.findViewById(2131306576));
+      this.ALz.setOnClickListener(this.AJD);
+      if (!this.AJk) {
+        this.ALz.setVisibility(8);
       }
-      this.zsD.setOnClickListener(this.zsQ);
-      this.zsG.setOnClickListener(this.zsR);
-      this.zpV = ((Button)this.vHU.findViewById(2131297592));
-      this.zpV.setOnClickListener(this.zqP);
-      int i = t.jA(getActivity());
-      ad.d("MicroMsg.VoipVoiceFragment", "statusHeight: ".concat(String.valueOf(i)));
-      as(this.zpV, i);
-      if ((this.zgY) && (2 == this.zhd)) {
-        hT(2131764790, 10000);
+      this.ALo.setOnClickListener(this.ALC);
+      this.ALr.setOnClickListener(this.ALD);
+      this.AIK = ((Button)this.wRY.findViewById(2131297592));
+      this.AIK.setOnClickListener(this.AJC);
+      int i = t.jL(getActivity());
+      ac.d("MicroMsg.VoipVoiceFragment", "statusHeight: ".concat(String.valueOf(i)));
+      au(this.AIK, i);
+      if ((this.AzH) && (2 == this.AzM)) {
+        ii(2131764790, 10000);
       }
-      paramLayoutInflater = a.G(((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(this.flk));
-      if ((!bt.isNullOrNil(paramLayoutInflater)) && (this.zsx != null)) {
-        this.zsx.setText(paramLayoutInflater);
+      paramLayoutInflater = a.H(((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(this.foE));
+      if ((!bs.isNullOrNil(paramLayoutInflater)) && (this.ALi != null)) {
+        this.ALi.setText(paramLayoutInflater);
       }
       this.mTimer = new Timer();
-      hS(this.zru, this.mStatus);
-      paramLayoutInflater = this.vHU;
+      ih(this.AKf, this.mStatus);
+      paramLayoutInflater = this.wRY;
       AppMethodBeat.o(115476);
       return paramLayoutInflater;
-      this.vHU = ((RelativeLayout)paramLayoutInflater.inflate(2131495884, paramViewGroup, false));
+      this.wRY = ((RelativeLayout)paramLayoutInflater.inflate(2131495884, paramViewGroup, false));
       if (!Build.MANUFACTURER.equalsIgnoreCase("meizu")) {
         break;
       }
-      ((RelativeLayout)this.vHU.findViewById(2131304207)).setPadding(0, 0, 0, BackwardSupportUtil.b.g(getActivity(), 40.0F));
+      ((RelativeLayout)this.wRY.findViewById(2131304207)).setPadding(0, 0, 0, BackwardSupportUtil.b.g(getActivity(), 40.0F));
       break;
     }
   }
@@ -687,39 +720,44 @@ public class VoipVoiceFragment
   public void onDestroy()
   {
     AppMethodBeat.i(115475);
-    this.nSO = false;
+    this.owj = false;
     super.onDestroy();
     AppMethodBeat.o(115475);
   }
   
-  protected final void rJ(boolean paramBoolean)
+  protected final void sK(boolean paramBoolean)
   {
     AppMethodBeat.i(115488);
-    if (this.sKW != null)
+    if (this.ALB)
+    {
+      AppMethodBeat.o(115488);
+      return;
+    }
+    if (this.tSC != null)
     {
       if (!paramBoolean) {
-        break label49;
+        break label63;
       }
-      this.sKW.setText(2131764892);
+      this.tSC.setText(2131764892);
     }
     for (;;)
     {
-      this.sKW.clearAnimation();
-      this.sKW.setVisibility(0);
+      this.tSC.clearAnimation();
+      this.tSC.setVisibility(0);
       AppMethodBeat.o(115488);
       return;
-      label49:
-      this.sKW.setText(2131764891);
+      label63:
+      this.tSC.setText(2131764891);
     }
   }
   
   public final void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(115490);
-    ad.m("MicroMsg.VoipVoiceFragment", "setMute:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.m("MicroMsg.VoipVoiceFragment", "setMute:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     this.mIsMute = paramBoolean;
-    if ((this.zsG != null) && (this.zsH != null)) {
-      this.zsG.setChecked(paramBoolean);
+    if ((this.ALr != null) && (this.ALs != null)) {
+      this.ALr.setChecked(paramBoolean);
     }
     AppMethodBeat.o(115490);
   }
@@ -729,8 +767,8 @@ public class VoipVoiceFragment
     AppMethodBeat.i(115492);
     if (paramInt != -1)
     {
-      this.zhd = paramInt;
-      dWl();
+      this.AzM = paramInt;
+      elx();
     }
     AppMethodBeat.o(115492);
   }
@@ -749,7 +787,7 @@ public class VoipVoiceFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipVoiceFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import android.os.Handler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.soter.d.j;
 import com.tencent.mm.plugin.soter.d.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.lang.ref.WeakReference;
 
 public enum a
@@ -14,8 +14,8 @@ public enum a
   static
   {
     AppMethodBeat.i(145940);
-    yah = new a("IML");
-    yai = new a[] { yah };
+    znh = new a("IML");
+    zni = new a[] { znh };
     AppMethodBeat.o(145940);
   }
   
@@ -24,13 +24,13 @@ public enum a
   public static c a(Activity paramActivity, j paramj, k paramk, Handler paramHandler)
   {
     AppMethodBeat.i(145939);
-    if (((paramj.yaH & 0x1) != 0) && (com.tencent.soter.core.a.eO(aj.getContext())))
+    if (((paramj.znG & 0x1) != 0) && (com.tencent.soter.core.a.fb(ai.getContext())))
     {
       paramActivity = new b(new WeakReference(paramActivity), paramj, paramk, paramHandler);
       AppMethodBeat.o(145939);
       return paramActivity;
     }
-    ad.e("MicroMsg.SoterControllerFactory", "hy: no matching: %d", new Object[] { Byte.valueOf(paramj.yaH) });
+    ac.e("MicroMsg.SoterControllerFactory", "hy: no matching: %d", new Object[] { Byte.valueOf(paramj.znG) });
     AppMethodBeat.o(145939);
     return null;
   }

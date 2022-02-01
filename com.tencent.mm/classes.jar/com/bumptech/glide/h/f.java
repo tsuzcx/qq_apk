@@ -9,21 +9,21 @@ import java.util.Set;
 
 public class f<T, Y>
 {
-  private final long aGb;
-  private long aGd;
-  private final Map<T, Y> aLt;
+  private final long aGR;
+  private long aGT;
+  private final Map<T, Y> aMj;
   private long maxSize;
   
   public f(long paramLong)
   {
     AppMethodBeat.i(77749);
-    this.aLt = new LinkedHashMap(100, 0.75F, true);
-    this.aGb = paramLong;
+    this.aMj = new LinkedHashMap(100, 0.75F, true);
+    this.aGR = paramLong;
     this.maxSize = paramLong;
     AppMethodBeat.o(77749);
   }
   
-  protected int T(Y paramY)
+  protected int V(Y paramY)
   {
     return 1;
   }
@@ -35,7 +35,7 @@ public class f<T, Y>
     try
     {
       AppMethodBeat.i(77750);
-      paramT = this.aLt.get(paramT);
+      paramT = this.aMj.get(paramT);
       AppMethodBeat.o(77750);
       return paramT;
     }
@@ -46,17 +46,17 @@ public class f<T, Y>
     }
   }
   
-  protected final void m(long paramLong)
+  protected final void o(long paramLong)
   {
     try
     {
       AppMethodBeat.i(77754);
-      while (this.aGd > paramLong)
+      while (this.aGT > paramLong)
       {
-        Iterator localIterator = this.aLt.entrySet().iterator();
+        Iterator localIterator = this.aMj.entrySet().iterator();
         Object localObject3 = (Map.Entry)localIterator.next();
         Object localObject2 = ((Map.Entry)localObject3).getValue();
-        this.aGd -= T(localObject2);
+        this.aGT -= V(localObject2);
         localObject3 = ((Map.Entry)localObject3).getKey();
         localIterator.remove();
         d(localObject3, localObject2);
@@ -66,14 +66,14 @@ public class f<T, Y>
     finally {}
   }
   
-  public final void os()
+  public final void oC()
   {
     AppMethodBeat.i(77753);
-    m(0L);
+    o(0L);
     AppMethodBeat.o(77753);
   }
   
-  public final long pP()
+  public final long pZ()
   {
     try
     {
@@ -93,11 +93,11 @@ public class f<T, Y>
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 99
+    //   2: ldc 98
     //   4: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: aload_2
-    //   9: invokevirtual 82	com/bumptech/glide/h/f:T	(Ljava/lang/Object;)I
+    //   9: invokevirtual 81	com/bumptech/glide/h/f:V	(Ljava/lang/Object;)I
     //   12: istore_3
     //   13: iload_3
     //   14: i2l
@@ -108,10 +108,10 @@ public class f<T, Y>
     //   23: aload_0
     //   24: aload_1
     //   25: aload_2
-    //   26: invokevirtual 90	com/bumptech/glide/h/f:d	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   26: invokevirtual 89	com/bumptech/glide/h/f:d	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   29: aconst_null
     //   30: astore_1
-    //   31: ldc 99
+    //   31: ldc 98
     //   33: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   36: aload_0
     //   37: monitorexit
@@ -120,44 +120,44 @@ public class f<T, Y>
     //   40: aload_2
     //   41: ifnull +18 -> 59
     //   44: aload_0
-    //   45: getfield 59	com/bumptech/glide/h/f:aGd	J
+    //   45: getfield 58	com/bumptech/glide/h/f:aGT	J
     //   48: lstore 4
     //   50: aload_0
     //   51: iload_3
     //   52: i2l
     //   53: lload 4
     //   55: ladd
-    //   56: putfield 59	com/bumptech/glide/h/f:aGd	J
+    //   56: putfield 58	com/bumptech/glide/h/f:aGT	J
     //   59: aload_0
-    //   60: getfield 32	com/bumptech/glide/h/f:aLt	Ljava/util/Map;
+    //   60: getfield 32	com/bumptech/glide/h/f:aMj	Ljava/util/Map;
     //   63: aload_1
     //   64: aload_2
-    //   65: invokeinterface 101 3 0
+    //   65: invokeinterface 100 3 0
     //   70: astore 6
     //   72: aload 6
     //   74: ifnull +35 -> 109
     //   77: aload_0
     //   78: aload_0
-    //   79: getfield 59	com/bumptech/glide/h/f:aGd	J
+    //   79: getfield 58	com/bumptech/glide/h/f:aGT	J
     //   82: aload_0
     //   83: aload 6
-    //   85: invokevirtual 82	com/bumptech/glide/h/f:T	(Ljava/lang/Object;)I
+    //   85: invokevirtual 81	com/bumptech/glide/h/f:V	(Ljava/lang/Object;)I
     //   88: i2l
     //   89: lsub
-    //   90: putfield 59	com/bumptech/glide/h/f:aGd	J
+    //   90: putfield 58	com/bumptech/glide/h/f:aGT	J
     //   93: aload 6
     //   95: aload_2
-    //   96: invokevirtual 105	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   96: invokevirtual 104	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   99: ifne +10 -> 109
     //   102: aload_0
     //   103: aload_1
     //   104: aload 6
-    //   106: invokevirtual 90	com/bumptech/glide/h/f:d	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   106: invokevirtual 89	com/bumptech/glide/h/f:d	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   109: aload_0
     //   110: aload_0
     //   111: getfield 36	com/bumptech/glide/h/f:maxSize	J
-    //   114: invokevirtual 94	com/bumptech/glide/h/f:m	(J)V
-    //   117: ldc 99
+    //   114: invokevirtual 93	com/bumptech/glide/h/f:o	(J)V
+    //   117: ldc 98
     //   119: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   122: aload 6
     //   124: astore_1
@@ -190,9 +190,9 @@ public class f<T, Y>
     try
     {
       AppMethodBeat.i(77752);
-      paramT = this.aLt.remove(paramT);
+      paramT = this.aMj.remove(paramT);
       if (paramT != null) {
-        this.aGd -= T(paramT);
+        this.aGT -= V(paramT);
       }
       AppMethodBeat.o(77752);
       return paramT;
@@ -202,7 +202,7 @@ public class f<T, Y>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.h.f
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import java.util.TimeZone;
 
 final class aa
 {
-  private static long aC(long paramLong)
+  private static long ay(long paramLong)
   {
     AppMethodBeat.i(88041);
     long l = TimeZone.getDefault().getOffset(paramLong);
@@ -13,10 +13,10 @@ final class aa
     return l + paramLong;
   }
   
-  static long aD(long paramLong)
+  static long az(long paramLong)
   {
     AppMethodBeat.i(88042);
-    paramLong = aC(paramLong) / 1000L;
+    paramLong = ay(paramLong) / 1000L;
     AppMethodBeat.o(88042);
     return paramLong;
   }

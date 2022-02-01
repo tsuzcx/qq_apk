@@ -10,22 +10,24 @@ import android.view.Surface;
 import com.tencent.luggage.k.a.a.a;
 import com.tencent.luggage.k.a.a.b.b.c.a;
 import com.tencent.luggage.k.a.a.b.b.f;
-import com.tencent.luggage.k.a.a.l;
-import com.tencent.luggage.k.a.a.m;
+import com.tencent.luggage.k.a.a.i;
+import com.tencent.luggage.k.a.a.p;
 import com.tencent.luggage.k.a.a.r;
+import com.tencent.luggage.k.a.a.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.h.b.e.a;
-import com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.h.p;
+import com.tencent.mm.plugin.appbrand.jsapi.u;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.b;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.d;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.g;
 import com.tencent.mm.plugin.appbrand.jsapi.w;
 import com.tencent.mm.plugin.appbrand.jsapi.z;
+import com.tencent.mm.plugin.appbrand.jsapi.z.e.a.h.p;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import d.n.n;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import d.g.b.k;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -39,65 +41,65 @@ import org.json.JSONObject;
 
 public final class b
   extends com.tencent.luggage.k.a.b.a
-  implements com.tencent.luggage.k.a.a.h
+  implements p
 {
-  private w cjE;
-  boolean ckA;
-  boolean ckB;
-  boolean ckC;
-  com.tencent.mm.plugin.appbrand.jsapi.q.c ckD;
-  String ckE;
-  boolean ckH;
-  AtomicBoolean ckJ;
-  com.tencent.luggage.k.a.a.a ckK;
-  com.tencent.luggage.k.a.a.b<d> ckL;
-  public r ckN;
-  boolean ckR;
-  public boolean ckS;
-  private com.tencent.luggage.k.a.a.h ckT;
-  public AtomicBoolean ckU;
-  volatile String ckV;
-  volatile com.tencent.luggage.k.a.a.g ckW;
-  volatile Bitmap ckX;
-  public com.tencent.luggage.k.a.a cku;
-  a.a ckv;
-  public int ckw;
-  public int ckx;
-  public int cky;
-  public int ckz;
-  public com.tencent.mm.plugin.appbrand.jsapi.video.e.b cmS;
-  public com.tencent.luggage.k.a.a.b.b.d cmT;
-  public com.tencent.luggage.k.a.a.b.b.a cmU;
-  public com.tencent.luggage.k.a.a.b.b.c cmV;
-  public com.tencent.luggage.k.a.a.b.b.e cmW;
-  public f cmX;
-  public com.tencent.luggage.k.a.a.b.b.b cmY;
-  volatile com.tencent.mm.plugin.appbrand.jsapi.aa.e.b cmZ;
-  boolean cna;
-  boolean cnb;
-  boolean cnc;
-  boolean cnd;
-  long cne;
-  boolean cnf;
-  public boolean cng;
-  volatile boolean cnh;
-  boolean cni;
-  boolean cnj;
-  int cnk;
-  int cnl;
-  String cnm;
-  String cnn;
-  boolean cno;
-  boolean cnp;
-  private boolean cnq;
-  private final ConcurrentLinkedQueue<Runnable> cnr;
-  Handler cns;
-  private HandlerThread cnt;
-  volatile com.tencent.luggage.k.a.a cnu;
-  public a cnv;
-  public a cnw;
-  public float cnx;
-  public float cny;
+  private w cgA;
+  boolean chA;
+  boolean chB;
+  com.tencent.mm.plugin.appbrand.jsapi.p.c chC;
+  String chD;
+  boolean chG;
+  AtomicBoolean chI;
+  private p chK;
+  com.tencent.luggage.k.a.a.a chM;
+  com.tencent.luggage.k.a.a.b<d> chN;
+  public com.tencent.luggage.k.a.a.n chP;
+  boolean chT;
+  public boolean chU;
+  public AtomicBoolean chW;
+  volatile String chX;
+  volatile com.tencent.luggage.k.a.a.g chY;
+  volatile Bitmap chZ;
+  public com.tencent.luggage.k.a.a cht;
+  a.a chu;
+  public int chv;
+  public int chw;
+  public int chx;
+  public int chy;
+  boolean chz;
+  public com.tencent.mm.plugin.appbrand.jsapi.video.e.b cjU;
+  public com.tencent.luggage.k.a.a.b.b.d cjV;
+  public com.tencent.luggage.k.a.a.b.b.a cjW;
+  public com.tencent.luggage.k.a.a.b.b.c cjX;
+  public com.tencent.luggage.k.a.a.b.b.e cjY;
+  public f cjZ;
+  public float ckA;
+  public com.tencent.luggage.k.a.a.b.b.b cka;
+  volatile com.tencent.mm.plugin.appbrand.jsapi.z.e.b ckb;
+  boolean ckc;
+  boolean ckd;
+  boolean cke;
+  boolean ckf;
+  long ckg;
+  boolean ckh;
+  public boolean cki;
+  volatile boolean ckj;
+  boolean ckk;
+  boolean ckl;
+  int ckm;
+  int ckn;
+  String cko;
+  String ckp;
+  boolean ckq;
+  boolean ckr;
+  private boolean cks;
+  private final ConcurrentLinkedQueue<Runnable> ckt;
+  Handler cku;
+  private HandlerThread ckv;
+  volatile com.tencent.luggage.k.a.a ckw;
+  public a ckx;
+  public a cky;
+  public float ckz;
   public Surface mSurface;
   public SurfaceTexture mSurfaceTexture;
   volatile String mTitle;
@@ -107,65 +109,65 @@ public final class b
   public b()
   {
     AppMethodBeat.i(138972);
-    this.cni = false;
-    this.cnj = false;
-    this.cky = 0;
-    this.ckz = 0;
-    this.cnq = false;
-    this.ckH = false;
-    this.ckJ = null;
-    this.cnr = new ConcurrentLinkedQueue();
-    this.cnu = null;
-    this.ckD = null;
-    this.ckE = null;
-    this.cjE = new b.25(this);
-    this.ckK = new com.tencent.luggage.k.a.a.a(this, this.cjE)
+    this.ckk = false;
+    this.ckl = false;
+    this.chx = 0;
+    this.chy = 0;
+    this.cks = false;
+    this.chG = false;
+    this.chI = null;
+    this.ckt = new ConcurrentLinkedQueue();
+    this.ckw = null;
+    this.chC = null;
+    this.chD = null;
+    this.cgA = new w()
+    {
+      private u cih;
+      
+      public final u EK()
+      {
+        return this.cih;
+      }
+    };
+    this.chM = new com.tencent.luggage.k.a.a.a(this, this.cgA)
     {
       public final void a(String paramAnonymousString, com.tencent.luggage.k.a.a paramAnonymousa)
       {
         AppMethodBeat.i(178843);
         a(paramAnonymousa);
-        paramAnonymousa = paramAnonymousa.EB();
+        paramAnonymousa = paramAnonymousa.Ee();
         if ((paramAnonymousString.contains("insert")) || (paramAnonymousString.contains("update")))
         {
           if (paramAnonymousa.has("autoplay")) {
-            this.cjF = paramAnonymousa.optBoolean("autoplay");
+            this.cgB = paramAnonymousa.optBoolean("autoplay");
           }
           paramAnonymousString = z.D(paramAnonymousa);
           if (paramAnonymousString != null) {
-            this.cjG = paramAnonymousString.booleanValue();
+            this.cgC = paramAnonymousString.booleanValue();
           }
         }
         for (;;)
         {
-          ad.d(b.this.EE(), "mAutoRotationPluginHandlerCommons.handleJsApi, mIsNeedNotify: " + this.cjF + ", mIsAutoRotationEnabled: " + this.cjG);
+          ac.d(b.this.getLogTag(), "mAutoRotationPluginHandlerCommons.handleJsApi, mIsNeedNotify: " + this.cgB + ", mIsAutoRotationEnabled: " + this.cgC);
           AppMethodBeat.o(178843);
           return;
           if (paramAnonymousString.contains("operate"))
           {
             paramAnonymousString = paramAnonymousa.optString("type");
-            if ((!bt.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equalsIgnoreCase("play"))) {
-              this.cjF = true;
+            if ((!bs.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equalsIgnoreCase("play"))) {
+              this.cgB = true;
             }
           }
           else if (paramAnonymousString.contains("remove"))
           {
-            this.cjF = false;
+            this.cgB = false;
           }
         }
       }
     };
-    this.ckL = new com.tencent.luggage.k.a.a.b()
+    this.chN = new com.tencent.luggage.k.a.a.b()
     {
-      private d cnF = null;
-      
-      public final String EE()
-      {
-        AppMethodBeat.i(178844);
-        String str = b.this.EE();
-        AppMethodBeat.o(178844);
-        return str;
-      }
+      private d ckE = null;
       
       public final int getId()
       {
@@ -182,89 +184,97 @@ public final class b
         AppMethodBeat.o(178846);
         return str;
       }
+      
+      public final String getLogTag()
+      {
+        AppMethodBeat.i(178844);
+        String str = b.this.getLogTag();
+        AppMethodBeat.o(178844);
+        return str;
+      }
     };
-    this.cnv = null;
-    this.cnw = null;
-    this.ckN = null;
-    this.cnx = 1.0F;
-    this.cny = 1.0F;
-    this.ckR = false;
-    this.ckS = false;
-    this.ckT = new com.tencent.luggage.k.a.a.q();
-    this.ckU = new AtomicBoolean(false);
+    this.ckx = null;
+    this.cky = null;
+    this.chP = null;
+    this.ckz = 1.0F;
+    this.ckA = 1.0F;
+    this.chT = false;
+    this.chU = false;
+    this.chK = new s();
+    this.chW = new AtomicBoolean(false);
     this.mTitle = null;
-    this.ckV = null;
-    this.ckW = null;
-    this.ckX = null;
-    this.cnt = com.tencent.e.c.d.gv(String.format("VideoThread_%s", new Object[] { Long.valueOf(System.currentTimeMillis()) }), 5);
-    this.cnt.start();
-    this.cns = new Handler(this.cnt.getLooper());
+    this.chX = null;
+    this.chY = null;
+    this.chZ = null;
+    this.ckv = com.tencent.e.c.d.gz(String.format("VideoThread_%s", new Object[] { Long.valueOf(System.currentTimeMillis()) }), 5);
+    this.ckv.start();
+    this.cku = new Handler(this.ckv.getLooper());
     AppMethodBeat.o(138972);
   }
   
-  private void Fo()
+  private void EW()
   {
     AppMethodBeat.i(138975);
-    synchronized (this.cnr)
+    synchronized (this.ckt)
     {
-      if (this.cnr.isEmpty()) {
+      if (this.ckt.isEmpty()) {
         break label102;
       }
-      ad.i(EE(), "flushPendingTasks, size:%d", new Object[] { Integer.valueOf(this.cnr.size()) });
-      Iterator localIterator = this.cnr.iterator();
+      ac.i(getLogTag(), "flushPendingTasks, size:%d", new Object[] { Integer.valueOf(this.ckt.size()) });
+      Iterator localIterator = this.ckt.iterator();
       if (localIterator.hasNext()) {
         ((Runnable)localIterator.next()).run();
       }
     }
-    this.cnr.clear();
+    this.ckt.clear();
     label102:
     AppMethodBeat.o(138975);
   }
   
-  private void Fu()
+  private void Fc()
   {
     AppMethodBeat.i(138996);
-    if (this.cmS != null)
+    if (this.cjU != null)
     {
-      ad.i(EE(), "releaseMediaPlayer");
-      this.cmS.a(null);
-      this.cmS.a(null);
-      this.cmS.a(null);
-      this.cmS.a(null);
-      this.cmS.a(null);
-      this.cmS.a(null);
-      this.cmS.stop();
-      this.cmS.reset();
-      this.cmS.release();
+      ac.i(getLogTag(), "releaseMediaPlayer");
+      this.cjU.a(null);
+      this.cjU.a(null);
+      this.cjU.a(null);
+      this.cjU.a(null);
+      this.cjU.a(null);
+      this.cjU.a(null);
+      this.cjU.stop();
+      this.cjU.reset();
+      this.cjU.release();
     }
-    this.cmS = null;
-    this.cnh = false;
+    this.cjU = null;
+    this.ckj = false;
     AppMethodBeat.o(138996);
   }
   
-  private void Fv()
+  private void Fd()
   {
     AppMethodBeat.i(138998);
-    if (this.cmS != null)
+    if (this.cjU != null)
     {
-      this.cmS.setMute(this.cnj);
+      this.cjU.setMute(this.ckl);
       if (this.mSurface != null)
       {
-        boolean bool = this.ckU.get();
-        if ((!this.cnp) && (!bool))
+        boolean bool = this.chW.get();
+        if ((!this.ckr) && (!bool))
         {
-          ad.i(EE(), "applyMediaPlayerParams, setSurface");
-          this.cmS.setSurface(this.mSurface);
+          ac.i(getLogTag(), "applyMediaPlayerParams, setSurface");
+          this.cjU.setSurface(this.mSurface);
           AppMethodBeat.o(138998);
           return;
         }
-        ad.i(EE(), "applyMediaPlayerParams, setSurface, WebViewInBackground: %b, JustPlayAudio: %b", new Object[] { Boolean.valueOf(this.cnp), Boolean.valueOf(bool) });
+        ac.i(getLogTag(), "applyMediaPlayerParams, setSurface, WebViewInBackground: %b, JustPlayAudio: %b", new Object[] { Boolean.valueOf(this.ckr), Boolean.valueOf(bool) });
       }
     }
     AppMethodBeat.o(138998);
   }
   
-  private void Fw()
+  private void Fe()
   {
     AppMethodBeat.i(138999);
     if (this.mSurface != null)
@@ -275,15 +285,7 @@ public final class b
     AppMethodBeat.o(138999);
   }
   
-  public final String EE()
-  {
-    AppMethodBeat.i(138973);
-    String str = String.format("%s(%s)", new Object[] { "MicroMsg.SameLayer.VideoPluginHandler", AL() });
-    AppMethodBeat.o(138973);
-    return str;
-  }
-  
-  public final void EY()
+  public final void EC()
   {
     AppMethodBeat.i(138976);
     k(new Runnable()
@@ -299,16 +301,16 @@ public final class b
   }
   
   /* Error */
-  final boolean Fa()
+  final boolean EE()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 491	com/tencent/luggage/k/a/a/b/b:ckA	Z
+    //   3: getfield 480	com/tencent/luggage/k/a/a/b/b:chz	Z
     //   6: ifeq +18 -> 24
     //   9: aload_0
-    //   10: getfield 493	com/tencent/luggage/k/a/a/b/b:cmT	Lcom/tencent/luggage/k/a/a/b/b/d;
+    //   10: getfield 482	com/tencent/luggage/k/a/a/b/b:cjV	Lcom/tencent/luggage/k/a/a/b/b/d;
     //   13: astore_2
     //   14: aload_2
     //   15: ifnull +9 -> 24
@@ -337,48 +339,48 @@ public final class b
     //   2	14	29	finally
   }
   
-  public final void Fc()
+  public final void EH()
   {
-    AppMethodBeat.i(195010);
+    AppMethodBeat.i(206631);
     k(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(177151);
-        if ((b.this.cmS != null) && (!b.this.cmS.isPlaying())) {
+        if ((b.this.cjU != null) && (!b.this.cjU.isPlaying())) {
           b.this.i(false, true);
         }
         AppMethodBeat.o(177151);
       }
     });
-    AppMethodBeat.o(195010);
+    AppMethodBeat.o(206631);
   }
   
-  final boolean Fd()
+  final boolean EI()
   {
-    AppMethodBeat.i(195014);
-    if (this.cku == null)
+    AppMethodBeat.i(206638);
+    if (this.cht == null)
     {
-      ad.w(EE(), "amIBackgroundAudioPlayer, mInsertInvokeContext is null");
-      AppMethodBeat.o(195014);
+      ac.w(getLogTag(), "amIBackgroundAudioPlayer, mInsertInvokeContext is null");
+      AppMethodBeat.o(206638);
       return false;
     }
-    com.tencent.mm.plugin.appbrand.jsapi.aa.a locala = com.tencent.luggage.k.a.a.e.g(this.cku);
+    com.tencent.mm.plugin.appbrand.jsapi.z.a locala = com.tencent.luggage.k.a.a.e.f(this.cht);
     if (locala == null)
     {
-      ad.w(EE(), "amIBackgroundAudioPlayer, audioOfVideoBackgroundPlayManager is null");
-      AppMethodBeat.o(195014);
+      ac.w(getLogTag(), "amIBackgroundAudioPlayer, audioOfVideoBackgroundPlayManager is null");
+      AppMethodBeat.o(206638);
       return false;
     }
     boolean bool = locala.a(this);
-    AppMethodBeat.o(195014);
+    AppMethodBeat.o(206638);
     return bool;
   }
   
-  public final boolean Fn()
+  public final boolean EV()
   {
     AppMethodBeat.i(177165);
-    if ((this.ckJ != null) && (this.ckJ.get()))
+    if ((this.chI != null) && (this.chI.get()))
     {
       AppMethodBeat.o(177165);
       return true;
@@ -387,41 +389,41 @@ public final class b
     return false;
   }
   
-  final void Fp()
+  final void EX()
   {
     AppMethodBeat.i(138979);
-    if ((this.cmS != null) && (this.mSurfaceTexture != null))
+    if ((this.cjU != null) && (this.mSurfaceTexture != null))
     {
-      int i = this.cmS.getVideoWidth();
-      int j = this.cmS.getVideoHeight();
+      int i = this.cjU.getVideoWidth();
+      int j = this.cjU.getVideoHeight();
       if ((i == 0) && (j == 0))
       {
-        ad.w(EE(), "VideoCanvas, registerMediaPlayer, width or height is 0");
+        ac.w(getLogTag(), "VideoCanvas, registerMediaPlayer, width or height is 0");
         AppMethodBeat.o(138979);
         return;
       }
-      if (!this.cnq)
+      if (!this.cks)
       {
-        this.cnq = true;
-        com.tencent.mm.plugin.appbrand.j.a.aVW().a(getId(), this, this.mSurfaceTexture, i, j, this.cku.getAppId());
+        this.cks = true;
+        com.tencent.mm.plugin.appbrand.j.a.bcU().a(getId(), this, this.mSurfaceTexture, i, j, this.cht.getAppId());
         AppMethodBeat.o(138979);
         return;
       }
-      ad.w(EE(), "VideoCanvas, registerMediaPlayer, already registered");
+      ac.w(getLogTag(), "VideoCanvas, registerMediaPlayer, already registered");
       AppMethodBeat.o(138979);
       return;
     }
-    ad.w(EE(), "VideoCanvas, registerMediaPlayer, media player or surface texture is null");
+    ac.w(getLogTag(), "VideoCanvas, registerMediaPlayer, media player or surface texture is null");
     AppMethodBeat.o(138979);
   }
   
-  final boolean Fq()
+  final boolean EY()
   {
     AppMethodBeat.i(178849);
     Object localObject;
-    if ((this.cku instanceof com.tencent.mm.plugin.appbrand.i.b))
+    if ((this.cht instanceof com.tencent.mm.plugin.appbrand.i.b))
     {
-      localObject = this.cku.Dj();
+      localObject = this.cht.CM();
       if ((localObject instanceof aa)) {
         localObject = (aa)localObject;
       }
@@ -431,8 +433,8 @@ public final class b
       if (localObject != null)
       {
         localObject = ((aa)localObject).getRuntime();
-        ad.i(EE(), "cancelResumePlayingWhenRelaunch:%s", new Object[] { Boolean.valueOf(((AppBrandRuntime)localObject).iDN) });
-        boolean bool = ((AppBrandRuntime)localObject).iDN;
+        ac.i(getLogTag(), "cancelResumePlayingWhenRelaunch:%s", new Object[] { Boolean.valueOf(((AppBrandRuntime)localObject).jdN) });
+        boolean bool = ((AppBrandRuntime)localObject).jdN;
         AppMethodBeat.o(178849);
         return bool;
         if ((localObject instanceof com.tencent.mm.plugin.appbrand.q)) {
@@ -448,37 +450,37 @@ public final class b
     }
   }
   
-  final void Fr()
+  final void EZ()
   {
     AppMethodBeat.i(138983);
-    if (!bt.isNullOrNil(this.cnn))
+    if (!bs.isNullOrNil(this.ckp))
     {
-      if ((this.cng) && (FI() != null) && (this.cmX != null))
+      if ((Fq() != null) && (this.cjZ != null))
       {
-        if (this.cmX.a(this.cnn, this.ckw, this.ckx, this.mVideoWidth, this.mVideoHeight))
+        if (this.cjZ.a(this.ckp, this.chv, this.chw, this.mVideoWidth, this.mVideoHeight))
         {
-          this.cnx = this.cmX.FG();
-          this.cny = this.cmX.FH();
-          ad.i(EE(), "adjust objectFit:%s, scale:[%s, %s]", new Object[] { this.cnn, Float.valueOf(this.cnx), Float.valueOf(this.cny) });
-          com.tencent.luggage.k.a.d.a(FI(), this.type, getId(), this.cnx, this.cny);
+          this.ckz = this.cjZ.Fo();
+          this.ckA = this.cjZ.Fp();
+          ac.i(getLogTag(), "adjust objectFit:%s, scale:[%s, %s]", new Object[] { this.ckp, Float.valueOf(this.ckz), Float.valueOf(this.ckA) });
+          com.tencent.luggage.k.a.d.a(Fq(), this.type, getId(), this.ckz, this.ckA);
           AppMethodBeat.o(138983);
         }
       }
       else
       {
-        ad.i(EE(), "adjust objectFit, video not prepared");
+        ac.i(getLogTag(), "adjust objectFit, video not prepared");
         AppMethodBeat.o(138983);
       }
     }
     else {
-      ad.i(EE(), "adjust objectFit, no video objectFit");
+      ac.i(getLogTag(), "adjust objectFit, no video objectFit");
     }
     AppMethodBeat.o(138983);
   }
   
-  public final void Fs()
+  public final void Fa()
   {
-    AppMethodBeat.i(195011);
+    AppMethodBeat.i(206632);
     k(new Runnable()
     {
       public final void run()
@@ -488,28 +490,28 @@ public final class b
         AppMethodBeat.o(177152);
       }
     });
-    AppMethodBeat.o(195011);
+    AppMethodBeat.o(206632);
   }
   
-  final boolean Ft()
+  final boolean Fb()
   {
     AppMethodBeat.i(138987);
-    if (this.cmS != null)
+    if (this.cjU != null)
     {
-      if (this.cmY != null) {
-        this.cmY.a(this.cku, this.cmS);
+      if (this.cka != null) {
+        this.cka.a(this.cht, this.cjU);
       }
-      if (!this.cng)
+      if (!this.cki)
       {
-        ad.i(EE(), "video stop, video not prepared yet, stop video when prepared");
-        this.cnd = false;
+        ac.i(getLogTag(), "video stop, video not prepared yet, stop video when prepared");
+        this.ckf = false;
         AppMethodBeat.o(138987);
         return true;
       }
-      ad.i(EE(), "video stop");
-      this.cmS.stop();
-      if (Fa()) {
-        this.cmT.bK(true);
+      ac.i(getLogTag(), "video stop");
+      this.cjU.stop();
+      if (EE()) {
+        this.cjV.bK(true);
       }
       AppMethodBeat.o(138987);
       return true;
@@ -518,93 +520,47 @@ public final class b
     return false;
   }
   
-  public final int Fx()
+  public final int Ff()
   {
     AppMethodBeat.i(177169);
-    int i = (int)(this.cky + (1.0F - this.cnx) * this.ckw / 2.0F);
-    ad.d(EE(), "getVideoPositionX, videoPosX: ".concat(String.valueOf(i)));
+    int i = (int)(this.chx + (1.0F - this.ckz) * this.chv / 2.0F);
+    ac.d(getLogTag(), "getVideoPositionX, videoPosX: ".concat(String.valueOf(i)));
     AppMethodBeat.o(177169);
     return i;
   }
   
-  public final int Fy()
+  public final int Fg()
   {
     AppMethodBeat.i(177170);
-    int i = (int)(this.ckz + (1.0F - this.cny) * this.ckx / 2.0F);
-    ad.d(EE(), "getVideoPositionY, videoPosY: ".concat(String.valueOf(i)));
+    int i = (int)(this.chy + (1.0F - this.ckA) * this.chw / 2.0F);
+    ac.d(getLogTag(), "getVideoPositionY, videoPosY: ".concat(String.valueOf(i)));
     AppMethodBeat.o(177170);
     return i;
   }
   
-  public final <AddOn extends com.tencent.luggage.k.a.a.i> AddOn U(Class<AddOn> paramClass)
+  public final <AddOn extends com.tencent.luggage.k.a.a.q> AddOn U(Class<AddOn> paramClass)
   {
-    AppMethodBeat.i(195018);
-    ad.i(EE(), "getAddOn for " + paramClass.getSimpleName());
-    paramClass = this.ckT.U(paramClass);
-    AppMethodBeat.o(195018);
+    AppMethodBeat.i(210442);
+    ac.i(getLogTag(), "getAddOn for " + paramClass.getSimpleName());
+    paramClass = this.chK.U(paramClass);
+    AppMethodBeat.o(210442);
     return paramClass;
   }
   
-  final void a(com.tencent.mm.plugin.appbrand.jsapi.o.b.a parama)
+  public final <AddOn extends com.tencent.luggage.k.a.a.q> void a(Class<AddOn> paramClass, AddOn paramAddOn)
   {
-    AppMethodBeat.i(177167);
-    ad.i(EE(), "video release");
-    if (this.cmY != null) {
-      this.cmY.x(this.cku);
-    }
-    if ((com.tencent.mm.plugin.appbrand.jsapi.o.b.a.kgZ != parama) && (com.tencent.mm.plugin.appbrand.jsapi.o.b.a.kha != parama))
-    {
-      Ft();
-      Fu();
-    }
-    if (this.cmT != null)
-    {
-      this.cmT.destroy();
-      this.cmT = null;
-      this.cmU = null;
-    }
-    if (this.cmZ != null)
-    {
-      com.tencent.mm.plugin.appbrand.jsapi.aa.e.b localb = this.cmZ;
-      localb.bfi().destroy();
-      localb.kAo = false;
-      localb.gt(false);
-      localb.bfi().bfr();
-      this.cmZ = null;
-    }
-    Fw();
-    if (this.cku != null)
-    {
-      this.cku.ED();
-      this.ckv = null;
-    }
-    if ((com.tencent.mm.plugin.appbrand.jsapi.o.b.a.kgZ != parama) && (com.tencent.mm.plugin.appbrand.jsapi.o.b.a.kha != parama))
-    {
-      ad.i(EE(), "video release handler thread");
-      if (this.cns != null) {
-        this.cns.removeCallbacksAndMessages(null);
-      }
-      if (this.cnt != null) {
-        this.cnt.quitSafely();
-      }
-    }
-    AppMethodBeat.o(177167);
-  }
-  
-  public final <AddOn extends com.tencent.luggage.k.a.a.i> void a(Class<AddOn> paramClass, AddOn paramAddOn)
-  {
-    AppMethodBeat.i(195017);
-    ad.i(EE(), "setAddOn for " + paramClass.getSimpleName());
-    this.ckT.a(paramClass, paramAddOn);
-    AppMethodBeat.o(195017);
+    AppMethodBeat.i(210441);
+    ac.i(getLogTag(), "setAddOn for " + paramClass.getSimpleName());
+    this.chK.a(paramClass, paramAddOn);
+    AppMethodBeat.o(210441);
   }
   
   final String b(com.tencent.luggage.k.a.a parama, String paramString)
   {
     AppMethodBeat.i(138982);
     String str = paramString;
-    if (this.cmY != null) {
-      str = this.cmY.b(parama, paramString);
+    if (this.cka != null) {
+      str = this.cka.b(parama, paramString);
     }
     AppMethodBeat.o(138982);
     return str;
@@ -619,29 +575,29 @@ public final class b
       return;
     }
     boolean bool = paramJSONObject.optBoolean("enableCasting");
-    ad.d(EE(), "isEnableVideoCast = ".concat(String.valueOf(bool)));
-    q(parama);
-    this.cmZ.kAn = bool;
+    ac.d(getLogTag(), "isEnableVideoCast = ".concat(String.valueOf(bool)));
+    p(parama);
+    this.ckb.lbF = bool;
     AppMethodBeat.o(138981);
   }
   
-  final void bF(boolean paramBoolean)
+  final void bE(boolean paramBoolean)
   {
-    AppMethodBeat.i(195009);
-    if (this.cmS != null)
+    AppMethodBeat.i(206630);
+    if (this.cjU != null)
     {
-      ad.i(EE(), "video prepare async");
-      if ((paramBoolean) && (Fa())) {
-        this.cmT.onVideoWaiting();
+      ac.i(getLogTag(), "video prepare async");
+      if ((paramBoolean) && (EE())) {
+        this.cjV.onVideoWaiting();
       }
-      this.cng = false;
-      this.cnd = false;
-      if (this.cmY != null) {
-        this.cmY.c(this.cmS);
+      this.cki = false;
+      this.ckf = false;
+      if (this.cka != null) {
+        this.cka.c(this.cjU);
       }
-      this.cmS.prepareAsync();
+      this.cjU.prepareAsync();
     }
-    AppMethodBeat.o(195009);
+    AppMethodBeat.o(206630);
   }
   
   public final void e(final SurfaceTexture paramSurfaceTexture)
@@ -659,32 +615,37 @@ public final class b
     AppMethodBeat.o(138974);
   }
   
-  public final boolean f(Surface paramSurface)
+  public final boolean e(Surface paramSurface)
   {
-    AppMethodBeat.i(195013);
-    if (this.cmS != null)
+    AppMethodBeat.i(206637);
+    if (this.cjU != null)
     {
-      if (!this.ckU.get()) {
-        this.cmS.setSurface(paramSurface);
+      if (!this.chW.get()) {
+        this.cjU.setSurface(paramSurface);
       }
       for (;;)
       {
-        AppMethodBeat.o(195013);
+        AppMethodBeat.o(206637);
         return true;
-        ad.i(EE(), "setSurface, JustPlayAudio");
+        ac.i(getLogTag(), "setSurface, JustPlayAudio");
       }
     }
-    ad.w(EE(), "setSurface, MediaPlayer is null");
-    AppMethodBeat.o(195013);
+    ac.w(getLogTag(), "setSurface, MediaPlayer is null");
+    AppMethodBeat.o(206637);
     return false;
+  }
+  
+  public final boolean g(com.tencent.luggage.k.a.a parama)
+  {
+    return true;
   }
   
   public final int getCurrentPosition()
   {
     AppMethodBeat.i(138990);
-    if (this.cmS != null)
+    if (this.cjU != null)
     {
-      int i = this.cmS.getCurrentPosition();
+      int i = this.cjU.getCurrentPosition();
       AppMethodBeat.o(138990);
       return i;
     }
@@ -695,9 +656,9 @@ public final class b
   final int getDuration()
   {
     AppMethodBeat.i(138991);
-    if (this.cmS != null)
+    if (this.cjU != null)
     {
-      int i = this.cmS.getDuration();
+      int i = this.cjU.getDuration();
       AppMethodBeat.o(138991);
       return i;
     }
@@ -708,25 +669,28 @@ public final class b
   public final String getKey()
   {
     AppMethodBeat.i(177168);
-    String str = AL() + "@" + hashCode();
+    String str = Ap() + "@" + hashCode();
     AppMethodBeat.o(177168);
+    return str;
+  }
+  
+  public final String getLogTag()
+  {
+    AppMethodBeat.i(138973);
+    String str = String.format("%s(%s)", new Object[] { "MicroMsg.SameLayer.VideoPluginHandler", Ap() });
+    AppMethodBeat.o(138973);
     return str;
   }
   
   public final String getName()
   {
-    AppMethodBeat.i(195016);
+    AppMethodBeat.i(206640);
     String str = getKey();
-    AppMethodBeat.o(195016);
+    AppMethodBeat.o(206640);
     return str;
   }
   
-  public final boolean h(com.tencent.luggage.k.a.a parama)
-  {
-    return true;
-  }
-  
-  public final String i(final com.tencent.luggage.k.a.a parama)
+  public final String h(final com.tencent.luggage.k.a.a parama)
   {
     AppMethodBeat.i(138977);
     k(new Runnable()
@@ -736,317 +700,302 @@ public final class b
         AppMethodBeat.i(138966);
         b localb = b.this;
         com.tencent.luggage.k.a.a locala = parama;
-        String str = locala.EC();
-        if (!bt.isNullOrNil(str))
+        String str = locala.Ef();
+        Object localObject2;
+        if (!bs.isNullOrNil(str))
         {
-          localObject1 = locala.EB();
-          ad.i(localb.EE(), "*** handler(%s) handleJsApi(%s), data:%s", new Object[] { localb.AL(), str, ((JSONObject)localObject1).toString() });
+          localObject1 = locala.Ee();
+          ac.i(localb.getLogTag(), "*** handler(%s) handleJsApi(%s), data:%s", new Object[] { localb.Ap(), str, ((JSONObject)localObject1).toString() });
           if (!str.contains("insert")) {
-            break label1027;
+            break label974;
           }
-          localb.cku = locala;
-          if (localb.cmS == null)
+          localb.cht = locala;
+          if (localb.cjU == null)
           {
-            ad.w(localb.EE(), "insert, media player is null");
-            localb.s(localb.cku);
+            ac.w(localb.getLogTag(), "insert, media player is null");
+            localb.r(localb.cht);
           }
-          localObject1 = null;
-        }
-        try
-        {
-          localObject2 = com.tencent.mm.plugin.appbrand.jsapi.o.c.a(new com.tencent.mm.ac.i(locala.EB().toString()));
-          localObject1 = localObject2;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            Object localObject2;
-            continue;
-            int j = 0;
+          localb.chu = new b.5(localb);
+          locala.a(localb.chu);
+          if (localb.cka != null) {
+            localb.cka.v(locala);
           }
-        }
-        localb.ckv = new b.5(localb, (com.tencent.mm.plugin.appbrand.jsapi.o.b.a)localObject1);
-        locala.a(localb.ckv);
-        if (localb.cmY != null) {
-          localb.cmY.w(locala);
-        }
-        if ((localb.mSurface != null) && (localb.cmS != null))
-        {
-          ad.i(localb.EE(), "insert, setSurface");
-          localb.cmS.setSurface(localb.mSurface);
-        }
-        Object localObject1 = locala.EB();
-        localb.cnf = ((JSONObject)localObject1).optBoolean("autoplay", false);
-        if (localb.cnf) {
-          localb.ckL.b(locala);
-        }
-        localb.cne = ((((JSONObject)localObject1).optDouble("initialTime", 0.0D) * 1000.0D));
-        localb.cni = ((JSONObject)localObject1).optBoolean("loop", false);
-        localb.cnj = ((JSONObject)localObject1).optBoolean("muted", false);
-        localb.cmS.setMute(localb.cnj);
-        localb.ckB = ((JSONObject)localObject1).optBoolean("autoPauseIfNavigate", true);
-        localb.ckC = ((JSONObject)localObject1).optBoolean("autoPauseIfOpenNative", true);
-        localb.ckA = ((JSONObject)localObject1).optBoolean("needEvent", false);
-        if ((localb.ckA) && (localb.cmT != null))
-        {
-          localb.cmT.n(locala);
-          localObject2 = ((JSONObject)localObject1).optString("data", "");
-          localb.cmT.cI((String)localObject2);
-          if (localb.cmU != null)
+          if ((localb.mSurface != null) && (localb.cjU != null))
           {
-            localb.cmU.n(locala);
-            localb.cmU.cI((String)localObject2);
+            ac.i(localb.getLogTag(), "insert, setSurface");
+            localb.cjU.setSurface(localb.mSurface);
           }
-        }
-        if (((JSONObject)localObject1).has("position"))
-        {
-          localObject2 = ((JSONObject)localObject1).optJSONObject("position");
-          if (localObject2 != null)
+          localObject1 = locala.Ee();
+          localb.ckh = ((JSONObject)localObject1).optBoolean("autoplay", false);
+          localb.ckg = ((((JSONObject)localObject1).optDouble("initialTime", 0.0D) * 1000.0D));
+          localb.ckk = ((JSONObject)localObject1).optBoolean("loop", false);
+          localb.ckl = ((JSONObject)localObject1).optBoolean("muted", false);
+          localb.cjU.setMute(localb.ckl);
+          localb.chA = ((JSONObject)localObject1).optBoolean("autoPauseIfNavigate", true);
+          localb.chB = ((JSONObject)localObject1).optBoolean("autoPauseIfOpenNative", true);
+          localb.chz = ((JSONObject)localObject1).optBoolean("needEvent", false);
+          if ((localb.chz) && (localb.cjV != null))
           {
-            localb.ckw = com.tencent.mm.plugin.appbrand.aa.g.um(((JSONObject)localObject2).optInt("width", 0));
-            localb.ckx = com.tencent.mm.plugin.appbrand.aa.g.um(((JSONObject)localObject2).optInt("height", 0));
-            ad.i(localb.EE(), "insert, size:[%d, %d]", new Object[] { Integer.valueOf(localb.ckw), Integer.valueOf(localb.ckx) });
-          }
-        }
-        localb.cnn = ((JSONObject)localObject1).optString("objectFit", "contain");
-        if (bt.isNullOrNil(localb.cnn)) {
-          localb.cnn = "contain";
-        }
-        localb.Fr();
-        localObject2 = locala.Dj();
-        if (localObject2 == null)
-        {
-          ad.w(localb.EE(), "updateReferrers, component is null");
-          localb.cnm = ((JSONObject)localObject1).optString("filePath");
-          if (!bt.isNullOrNil(localb.cnm))
-          {
-            if (localb.cmY != null) {
-              localb.cmY.a(localb.cmS, localb.cnm);
-            }
-            localObject2 = localb.b(locala, localb.cnm);
-            ad.i(localb.EE(), "insert, path:%s, proxy:%s", new Object[] { localb.cnm, localObject2 });
-            if (!bt.isNullOrNil((String)localObject2))
+            localb.cjV.m(locala);
+            localObject2 = ((JSONObject)localObject1).optString("data", "");
+            localb.cjV.cx((String)localObject2);
+            if (localb.cjW != null)
             {
-              localb.cmS.dp((String)localObject2, localb.ckE);
-              ad.i(localb.EE(), "insert, media player prepare async");
-              localb.bF(true);
+              localb.cjW.m(locala);
+              localb.cjW.cx((String)localObject2);
+            }
+          }
+          if (((JSONObject)localObject1).has("position"))
+          {
+            localObject2 = ((JSONObject)localObject1).optJSONObject("position");
+            if (localObject2 != null)
+            {
+              localb.chv = com.tencent.mm.plugin.appbrand.z.g.ve(((JSONObject)localObject2).optInt("width", 0));
+              localb.chw = com.tencent.mm.plugin.appbrand.z.g.ve(((JSONObject)localObject2).optInt("height", 0));
+              ac.i(localb.getLogTag(), "insert, size:[%d, %d]", new Object[] { Integer.valueOf(localb.chv), Integer.valueOf(localb.chw) });
+            }
+          }
+          localb.ckp = ((JSONObject)localObject1).optString("objectFit", "contain");
+          if (bs.isNullOrNil(localb.ckp)) {
+            localb.ckp = "contain";
+          }
+          localb.EZ();
+          localObject2 = locala.CM();
+          if (localObject2 != null) {
+            break label804;
+          }
+          ac.w(localb.getLogTag(), "updateReferrers, component is null");
+          localb.cko = ((JSONObject)localObject1).optString("filePath");
+          if (!bs.isNullOrNil(localb.cko))
+          {
+            if (localb.cka != null) {
+              localb.cka.a(localb.cjU, localb.cko);
+            }
+            localObject2 = localb.b(locala, localb.cko);
+            ac.i(localb.getLogTag(), "insert, path:%s, proxy:%s", new Object[] { localb.cko, localObject2 });
+            if (!bs.isNullOrNil((String)localObject2))
+            {
+              localb.cjU.dB((String)localObject2, localb.chD);
+              ac.i(localb.getLogTag(), "insert, media player prepare async");
+              localb.bE(true);
             }
           }
           localb.mTitle = ((JSONObject)localObject1).optString("title", localb.mTitle);
-          localb.ckV = ((JSONObject)localObject1).optString("backgroundPoster", localb.ckV);
+          localb.chX = ((JSONObject)localObject1).optString("backgroundPoster", localb.chX);
           localb.b(locala, (JSONObject)localObject1);
-          locala.cD("ok");
-          label812:
-          localb.ckK.a(str, locala);
-          if (localb.cnm == null) {
-            break label4099;
-          }
+          locala.cs("ok");
         }
-        label4099:
-        for (localObject1 = localb.cnm;; localObject1 = "")
+        label786:
+        label804:
+        Object localObject3;
+        Object localObject4;
+        for (;;)
         {
-          localb.ckL.a(locala, (String)localObject1);
+          localb.chM.a(str, locala);
+          if (localb.cko == null) {
+            break label3990;
+          }
+          localObject1 = localb.cko;
+          localb.chN.a(locala, (String)localObject1);
           AppMethodBeat.o(138966);
           return;
-          Object localObject3 = (com.tencent.mm.plugin.appbrand.jsapi.q.a)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.q.a.class);
+          localObject3 = (com.tencent.mm.plugin.appbrand.jsapi.p.a)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.p.a.class);
           if (localObject3 == null)
           {
-            ad.w(localb.EE(), "updateReferrers, referrerHelper is null");
+            ac.w(localb.getLogTag(), "updateReferrers, referrerHelper is null");
             break;
           }
-          if (localb.ckD == null) {
-            localb.ckD = ((com.tencent.mm.plugin.appbrand.jsapi.q.a)localObject3).bbJ();
+          if (localb.chC == null) {
+            localb.chC = ((com.tencent.mm.plugin.appbrand.jsapi.p.a)localObject3).biC();
           }
-          Object localObject4 = ((com.tencent.mm.plugin.appbrand.jsapi.q.a)localObject3).a((JSONObject)localObject1, (com.tencent.mm.plugin.appbrand.jsapi.c)localObject2);
+          localObject4 = ((com.tencent.mm.plugin.appbrand.jsapi.p.a)localObject3).a((JSONObject)localObject1, (com.tencent.mm.plugin.appbrand.jsapi.c)localObject2);
           if (localObject4 != null) {
-            localb.ckD = ((com.tencent.mm.plugin.appbrand.jsapi.q.c)localObject4);
+            localb.chC = ((com.tencent.mm.plugin.appbrand.jsapi.p.c)localObject4);
           }
-          ad.i(localb.EE(), "updateReferrers, mReferrerPolicy: " + localb.ckD);
-          if (com.tencent.mm.plugin.appbrand.jsapi.q.c.khR == localb.ckD)
+          ac.i(localb.getLogTag(), "updateReferrers, mReferrerPolicy: " + localb.chC);
+          if (com.tencent.mm.plugin.appbrand.jsapi.p.c.kIJ == localb.chC)
           {
-            localb.ckE = null;
+            localb.chD = null;
             break;
           }
-          localb.ckE = ((com.tencent.mm.plugin.appbrand.jsapi.q.a)localObject3).y((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2);
-          ad.i(localb.EE(), "updateReferrers, mReferrer: " + localb.ckE);
+          localb.chD = ((com.tencent.mm.plugin.appbrand.jsapi.p.a)localObject3).y((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2);
+          ac.i(localb.getLogTag(), "updateReferrers, mReferrer: " + localb.chD);
           break;
-          label1027:
-          boolean bool1;
-          if (str.contains("update"))
+          label974:
+          if (!str.contains("update")) {
+            break label2034;
+          }
+          if (localb.cjU != null) {
+            break label1018;
+          }
+          ac.w(localb.getLogTag(), "update, media player is null");
+          locala.cs("fail");
+        }
+        label1018:
+        Object localObject1 = locala.Ee();
+        if (((JSONObject)localObject1).has("filePath"))
+        {
+          localObject2 = ((JSONObject)localObject1).optString("filePath");
+          if ((!bs.isNullOrNil((String)localObject2)) && (!((String)localObject2).equalsIgnoreCase(localb.cko)))
           {
-            if (localb.cmS == null)
+            localb.cko = ((String)localObject2);
+            localObject2 = localb.b(locala, localb.cko);
+            ac.i(localb.getLogTag(), "update, path:%s, proxy:%s", new Object[] { localb.cko, localObject2 });
+            if ((localb.cjU == null) || (!bs.isNullOrNil((String)localObject2)))
             {
-              ad.w(localb.EE(), "update, media player is null");
-              locala.cD("fail");
-              break label812;
+              localb.ckq = false;
+              localb.Fb();
+              localb.q(locala);
             }
-            localObject1 = locala.EB();
-            if (!((JSONObject)localObject1).has("filePath")) {
-              break label4111;
+            if (localb.cka != null) {
+              localb.cka.a(localb.cjU, localb.cko);
             }
-            localObject2 = ((JSONObject)localObject1).optString("filePath");
-            if ((bt.isNullOrNil((String)localObject2)) || (((String)localObject2).equalsIgnoreCase(localb.cnm))) {
-              break label4111;
-            }
-            localb.cnm = ((String)localObject2);
-            localObject2 = localb.b(locala, localb.cnm);
-            ad.i(localb.EE(), "update, path:%s, proxy:%s", new Object[] { localb.cnm, localObject2 });
-            if ((localb.cmS == null) || (!bt.isNullOrNil((String)localObject2)))
+            localb.cjU.dB((String)localObject2, localb.chD);
+          }
+        }
+        for (int j = 1;; j = 0)
+        {
+          boolean bool1;
+          if ((localb.mSurface != null) && (localb.cjU != null))
+          {
+            bool1 = localb.chW.get();
+            if ((!localb.ckr) && (!bool1))
             {
-              localb.cno = false;
-              localb.Ft();
-              localb.r(locala);
-            }
-            if (localb.cmY != null) {
-              localb.cmY.a(localb.cmS, localb.cnm);
-            }
-            localb.cmS.dp((String)localObject2, localb.ckE);
-            j = 1;
-            if ((localb.mSurface != null) && (localb.cmS != null))
-            {
-              bool1 = localb.ckU.get();
-              if ((!localb.cnp) && (!bool1))
-              {
-                ad.i(localb.EE(), "update, setSurface");
-                localb.cmS.setSurface(localb.mSurface);
-              }
-            }
-            else
-            {
-              label1319:
-              if (((JSONObject)localObject1).has("autoplay"))
-              {
-                localb.cnf = ((JSONObject)localObject1).optBoolean("autoplay", localb.cnf);
-                if (localb.cnf) {
-                  localb.ckL.b(locala);
-                }
-              }
-              if (((JSONObject)localObject1).has("initialTime")) {
-                localb.cne = ((((JSONObject)localObject1).optDouble("initialTime", 0.0D) * 1000.0D));
-              }
-              if (((JSONObject)localObject1).has("loop")) {
-                localb.cni = ((JSONObject)localObject1).optBoolean("loop", localb.cni);
-              }
-              if (((JSONObject)localObject1).has("muted"))
-              {
-                localb.cnj = ((JSONObject)localObject1).optBoolean("muted", localb.cnj);
-                localb.cmS.setMute(localb.cnj);
-              }
-              if (((JSONObject)localObject1).has("autoPauseIfNavigate")) {
-                localb.ckB = ((JSONObject)localObject1).optBoolean("autoPauseIfNavigate", localb.ckB);
-              }
-              if (((JSONObject)localObject1).has("autoPauseIfOpenNative")) {
-                localb.ckC = ((JSONObject)localObject1).optBoolean("autoPauseIfOpenNative", localb.ckC);
-              }
-              if (((JSONObject)localObject1).has("needEvent")) {
-                localb.ckA = ((JSONObject)localObject1).optBoolean("needEvent", localb.ckA);
-              }
-              if ((localb.ckA) && (localb.cmT != null))
-              {
-                localb.cmT.n(locala);
-                localObject2 = ((JSONObject)localObject1).optString("data", "");
-                if (((JSONObject)localObject1).has("data")) {
-                  localb.cmT.cI((String)localObject2);
-                }
-                if (localb.cmU != null)
-                {
-                  if (((JSONObject)localObject1).has("data")) {
-                    localb.cmU.cI((String)localObject2);
-                  }
-                  localb.cmU.n(locala);
-                }
-              }
-              int i = 0;
-              if (((JSONObject)localObject1).has("position"))
-              {
-                localObject2 = ((JSONObject)localObject1).optJSONObject("position");
-                if (localObject2 != null)
-                {
-                  localb.ckw = com.tencent.mm.plugin.appbrand.aa.g.um(((JSONObject)localObject2).optInt("width", localb.ckw));
-                  localb.ckx = com.tencent.mm.plugin.appbrand.aa.g.um(((JSONObject)localObject2).optInt("height", localb.ckx));
-                  ad.i(localb.EE(), "update, size:[%d, %d]", new Object[] { Integer.valueOf(localb.ckw), Integer.valueOf(localb.ckx) });
-                }
-                i = 1;
-              }
-              if (((JSONObject)localObject1).has("objectFit"))
-              {
-                localb.cnn = ((JSONObject)localObject1).optString("objectFit", localb.cnn);
-                if (bt.isNullOrNil(localb.cnn)) {
-                  localb.cnn = "contain";
-                }
-                i = 1;
-              }
-              if (i != 0) {
-                localb.Fr();
-              }
-              localb.b(locala, (JSONObject)localObject1);
-              localObject2 = ((JSONObject)localObject1).optString("filePath");
-              if ((localb.cmZ != null) && (localb.cmZ.bfh()))
-              {
-                localObject3 = localb.cmZ;
-                d.g.b.k.h(localObject2, "updateVideoPath");
-                ad.i("MicroMsg.VideoCast.AppBrandVideoCastHandler", "updateVideoPath: [" + (String)localObject2 + ']');
-                if (!n.aC((CharSequence)n.trim((CharSequence)localObject2).toString()))
-                {
-                  ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject3).bfi().bfr();
-                  if (!d.g.b.k.g(localObject2, ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject3).videoPath))
-                  {
-                    ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject3).setVideoPath((String)localObject2);
-                    ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject3).gt(true);
-                    ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject3).bfi().n((d.g.a.b)new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.f((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject3));
-                    if (((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject3).bfi().dvJ != -1) {
-                      break label2096;
-                    }
-                    ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject3).bfi().dvJ = 8;
-                  }
-                }
-              }
-            }
-            for (;;)
-            {
-              localb.mTitle = ((JSONObject)localObject1).optString("title", localb.mTitle);
-              localb.ckV = ((JSONObject)localObject1).optString("backgroundPoster", localb.ckV);
-              if (j != 0)
-              {
-                ad.i(localb.EE(), "update, media player prepare async");
-                localb.bF(true);
-              }
-              locala.cD("ok");
-              break;
-              ad.i(localb.EE(), "update, setSurface, WebViewInBackground: %b, JustPlayAudio: %b", new Object[] { Boolean.valueOf(localb.cnp), Boolean.valueOf(bool1) });
-              break label1319;
-              label2096:
-              ad.i("MicroMsg.VideoCast.AppBrandVideoCastHandler", "discard a updateVideoPath report event");
+              ac.i(localb.getLogTag(), "update, setSurface");
+              localb.cjU.setSurface(localb.mSurface);
             }
           }
+          else
+          {
+            label1266:
+            if (((JSONObject)localObject1).has("autoplay")) {
+              localb.ckh = ((JSONObject)localObject1).optBoolean("autoplay", localb.ckh);
+            }
+            if (((JSONObject)localObject1).has("initialTime")) {
+              localb.ckg = ((((JSONObject)localObject1).optDouble("initialTime", 0.0D) * 1000.0D));
+            }
+            if (((JSONObject)localObject1).has("loop")) {
+              localb.ckk = ((JSONObject)localObject1).optBoolean("loop", localb.ckk);
+            }
+            if (((JSONObject)localObject1).has("muted"))
+            {
+              localb.ckl = ((JSONObject)localObject1).optBoolean("muted", localb.ckl);
+              localb.cjU.setMute(localb.ckl);
+            }
+            if (((JSONObject)localObject1).has("autoPauseIfNavigate")) {
+              localb.chA = ((JSONObject)localObject1).optBoolean("autoPauseIfNavigate", localb.chA);
+            }
+            if (((JSONObject)localObject1).has("autoPauseIfOpenNative")) {
+              localb.chB = ((JSONObject)localObject1).optBoolean("autoPauseIfOpenNative", localb.chB);
+            }
+            if (((JSONObject)localObject1).has("needEvent")) {
+              localb.chz = ((JSONObject)localObject1).optBoolean("needEvent", localb.chz);
+            }
+            if ((localb.chz) && (localb.cjV != null))
+            {
+              localb.cjV.m(locala);
+              localObject2 = ((JSONObject)localObject1).optString("data", "");
+              if (((JSONObject)localObject1).has("data")) {
+                localb.cjV.cx((String)localObject2);
+              }
+              if (localb.cjW != null)
+              {
+                if (((JSONObject)localObject1).has("data")) {
+                  localb.cjW.cx((String)localObject2);
+                }
+                localb.cjW.m(locala);
+              }
+            }
+            int i = 0;
+            if (((JSONObject)localObject1).has("position"))
+            {
+              localObject2 = ((JSONObject)localObject1).optJSONObject("position");
+              if (localObject2 != null)
+              {
+                localb.chv = com.tencent.mm.plugin.appbrand.z.g.ve(((JSONObject)localObject2).optInt("width", localb.chv));
+                localb.chw = com.tencent.mm.plugin.appbrand.z.g.ve(((JSONObject)localObject2).optInt("height", localb.chw));
+                ac.i(localb.getLogTag(), "update, size:[%d, %d]", new Object[] { Integer.valueOf(localb.chv), Integer.valueOf(localb.chw) });
+              }
+              i = 1;
+            }
+            if (((JSONObject)localObject1).has("objectFit"))
+            {
+              localb.ckp = ((JSONObject)localObject1).optString("objectFit", localb.ckp);
+              if (bs.isNullOrNil(localb.ckp)) {
+                localb.ckp = "contain";
+              }
+              i = 1;
+            }
+            if (i != 0) {
+              localb.EZ();
+            }
+            localb.b(locala, (JSONObject)localObject1);
+            localObject2 = ((JSONObject)localObject1).optString("filePath");
+            if ((localb.ckb != null) && (localb.ckb.bmb()))
+            {
+              localObject3 = localb.ckb;
+              k.h(localObject2, "updateVideoPath");
+              ac.i("MicroMsg.VideoCast.AppBrandVideoCastHandler", "updateVideoPath: [" + (String)localObject2 + ']');
+              if (!d.n.n.aD((CharSequence)d.n.n.trim((CharSequence)localObject2).toString()))
+              {
+                ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject3).bmc().bml();
+                if (!k.g(localObject2, ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject3).videoPath))
+                {
+                  ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject3).setVideoPath((String)localObject2);
+                  ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject3).gP(true);
+                  ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject3).bmc().r((d.g.a.b)new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.f((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject3));
+                  if (((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject3).bmc().dtw != -1) {
+                    break label2022;
+                  }
+                  ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject3).bmc().dtw = 8;
+                }
+              }
+            }
+          }
+          for (;;)
+          {
+            localb.mTitle = ((JSONObject)localObject1).optString("title", localb.mTitle);
+            localb.chX = ((JSONObject)localObject1).optString("backgroundPoster", localb.chX);
+            if (j != 0)
+            {
+              ac.i(localb.getLogTag(), "update, media player prepare async");
+              localb.bE(true);
+            }
+            locala.cs("ok");
+            break;
+            ac.i(localb.getLogTag(), "update, setSurface, WebViewInBackground: %b, JustPlayAudio: %b", new Object[] { Boolean.valueOf(localb.ckr), Boolean.valueOf(bool1) });
+            break label1266;
+            label2022:
+            ac.i("MicroMsg.VideoCast.AppBrandVideoCastHandler", "discard a updateVideoPath report event");
+          }
+          label2034:
           boolean bool2;
           if ((str.contains("operate")) && (str.contains("Background")))
           {
-            if (localb.cmS == null)
+            if (localb.cjU == null)
             {
-              ad.w(localb.EE(), "operateBackground, media player is null");
-              locala.cD("fail");
-              break label812;
+              ac.w(localb.getLogTag(), "operateBackground, media player is null");
+              locala.cs("fail");
+              break;
             }
-            localObject1 = locala.EB();
+            localObject1 = locala.Ee();
             bool1 = false;
             localObject1 = ((JSONObject)localObject1).optString("type");
-            if (bt.isNullOrNil((String)localObject1)) {
-              break label812;
+            if (bs.isNullOrNil((String)localObject1)) {
+              break;
             }
-            ad.i(localb.EE(), "operateBackground, type:%s", new Object[] { localObject1 });
+            ac.i(localb.getLogTag(), "operateBackground, type:%s", new Object[] { localObject1 });
             if (((String)localObject1).equalsIgnoreCase("stop"))
             {
-              bool2 = localb.t(locala);
+              bool2 = localb.s(locala);
               bool1 = bool2;
               if (bool2)
               {
                 bool1 = bool2;
-                if (localb.ckH)
+                if (localb.chG)
                 {
-                  ad.i(localb.EE(), "operateBackground, isRuntimeInBackground, setPlayingWhenEnterBackground false");
-                  localb.ckJ = new AtomicBoolean(false);
+                  ac.i(localb.getLogTag(), "operateBackground, isRuntimeInBackground, setPlayingWhenEnterBackground false");
+                  localb.chI = new AtomicBoolean(false);
                   bool1 = bool2;
                 }
               }
@@ -1054,81 +1003,82 @@ public final class b
             if (bool1) {}
             for (localObject1 = "ok";; localObject1 = "fail")
             {
-              locala.cD((String)localObject1);
+              locala.cs((String)localObject1);
               break;
             }
           }
           if (str.contains("operate"))
           {
-            if (localb.cmS == null)
+            if (localb.cjU == null)
             {
-              ad.w(localb.EE(), "operate, media player is null");
-              locala.cD("fail");
-              break label812;
+              ac.w(localb.getLogTag(), "operate, media player is null");
+              locala.cs("fail");
+              break;
             }
-            localObject3 = locala.EB();
+            localObject3 = locala.Ee();
             bool2 = false;
             localObject2 = ((JSONObject)localObject3).optString("type");
-            if (bt.isNullOrNil((String)localObject2)) {
-              break label812;
+            if (bs.isNullOrNil((String)localObject2)) {
+              break;
             }
-            ad.i(localb.EE(), "operate, type:%s", new Object[] { localObject2 });
+            ac.i(localb.getLogTag(), "operate, type:%s", new Object[] { localObject2 });
             if (((String)localObject2).equalsIgnoreCase("startCasting"))
             {
               bool1 = true;
-              label2421:
+              label2347:
               if (!bool1) {
-                break label3145;
+                break label3061;
               }
-              ad.i(localb.EE(), "video cast operate, type:%s", new Object[] { localObject2 });
-              if (localb.cmZ == null) {
-                localb.q(locala);
+              ac.i(localb.getLogTag(), "video cast operate, type:%s", new Object[] { localObject2 });
+              if (localb.ckb == null) {
+                localb.p(locala);
               }
-              localb.cmZ.setVideoPath(localb.cnm);
-              localb.cmZ.kAi = localb.getCurrentPosition();
+              localb.ckb.setVideoPath(localb.cko);
+              localb.ckb.lbA = localb.getCurrentPosition();
               if (!((String)localObject2).equalsIgnoreCase("requestFullScreen")) {
-                break label2621;
+                break label2536;
               }
-              bool1 = localb.k(locala);
-              label2507:
+              bool1 = localb.j(locala);
+              label2433:
               if (!((String)localObject2).equalsIgnoreCase("snapshot")) {
-                break label4003;
+                break label3919;
               }
-              ad.i(localb.EE(), "getSnapshotCached");
-              if (localb.cmY != null) {
-                break label3988;
+              ac.i(localb.getLogTag(), "getSnapshotCached");
+              if (localb.cka != null) {
+                break label3904;
               }
-              locala.cD("fail:snapshot error");
+              locala.cs("fail:snapshot error");
             }
             for (;;)
             {
-              if ((!((String)localObject2).equalsIgnoreCase("startCasting")) && (!((String)localObject2).equalsIgnoreCase("pause")) && (!((String)localObject2).equalsIgnoreCase("stop"))) {
-                break label4034;
+              label2474:
+              if ((!((String)localObject2).equalsIgnoreCase("pause")) && (!((String)localObject2).equalsIgnoreCase("stop"))) {
+                break label3940;
               }
-              localb.ckL.c(locala);
+              localb.chN.b(locala);
               break;
-              if (localb.cmZ == null)
+              if (localb.ckb == null)
               {
                 bool1 = false;
-                break label2421;
+                break label2347;
               }
-              bool1 = localb.cmZ.bfh();
-              break label2421;
-              label2621:
+              bool1 = localb.ckb.bmb();
+              break label2347;
+              label2536:
               if (((String)localObject2).equalsIgnoreCase("exitFullScreen"))
               {
-                bool1 = localb.l(locala);
-                break label2507;
+                bool1 = localb.k(locala);
+                break label2433;
               }
-              localObject1 = localb.cmZ;
-              d.g.b.k.h(localObject3, "data");
-              d.g.b.k.h(locala, "invokeContext");
+              localObject1 = localb.ckb;
+              k.h(localObject3, "data");
+              k.h(locala, "invokeContext");
               localObject4 = ((JSONObject)localObject3).optString("type");
-              ad.i("MicroMsg.VideoCast.AppBrandVideoCastHandler", "handleOperate: type = ".concat(String.valueOf(localObject4)));
+              ac.i("MicroMsg.VideoCast.AppBrandVideoCastHandler", "handleOperate: type = ".concat(String.valueOf(localObject4)));
               if (localObject4 == null)
               {
                 bool1 = true;
-                break label2507;
+                break label2433;
               }
               switch (((String)localObject4).hashCode())
               {
@@ -1147,107 +1097,107 @@ public final class b
                         break;
                         if (((String)localObject4).equals("play"))
                         {
-                          com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.h.b(((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).bfi());
+                          com.tencent.mm.plugin.appbrand.jsapi.z.e.a.h.b(((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).bmc());
                           bool1 = true;
                           break;
                           if (((String)localObject4).equals("reconnectCasting"))
                           {
-                            localObject3 = ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).kAl;
+                            localObject3 = ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).lbD;
                             if (localObject3 != null) {
-                              ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.c)localObject3).sw(5);
+                              ((com.tencent.mm.plugin.appbrand.jsapi.z.e.a.c)localObject3).tn(5);
                             }
-                            localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).bfi();
-                            if (((com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.h)localObject1).kBx.bfs().aUM() != e.a.jiM) {
-                              break label3119;
+                            localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).bmc();
+                            if (((com.tencent.mm.plugin.appbrand.jsapi.z.e.a.h)localObject1).lcP.bmm().bbK() != e.a.jIZ) {
+                              break label3035;
                             }
-                            ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.h)localObject1).kBX.bH(true);
+                            ((com.tencent.mm.plugin.appbrand.jsapi.z.e.a.h)localObject1).ldp.bH(true);
                             bool1 = true;
                             break;
                             if (((String)localObject4).equals("exitCasting"))
                             {
-                              localObject3 = ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).kAl;
+                              localObject3 = ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).lbD;
                               if (localObject3 != null) {
-                                ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.c)localObject3).sw(6);
+                                ((com.tencent.mm.plugin.appbrand.jsapi.z.e.a.c)localObject3).tn(6);
                               }
-                              com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.h.d(((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).bfi());
-                              ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).bfi().destroy();
-                              ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).kAo = false;
-                              ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).gt(false);
+                              com.tencent.mm.plugin.appbrand.jsapi.z.e.a.h.d(((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).bmc());
+                              ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).bmc().destroy();
+                              ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).lbG = false;
+                              ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).gP(false);
                             }
                           }
                         }
                       }
                     } while (!((String)localObject4).equals("startCasting"));
-                    ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).bfi().kBO = ((d.g.a.a)new com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.e((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1));
-                    com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.h.a(((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).bfi());
+                    ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).bmc().ldg = ((d.g.a.a)new com.tencent.mm.plugin.appbrand.jsapi.z.e.b.e((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1));
+                    com.tencent.mm.plugin.appbrand.jsapi.z.e.a.h.a(((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).bmc());
                     bool1 = true;
                     break;
                   } while (!((String)localObject4).equals("switchCasting"));
-                  localObject3 = ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).kAl;
+                  localObject3 = ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).lbD;
                   if (localObject3 != null) {
-                    ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.c)localObject3).sw(4);
+                    ((com.tencent.mm.plugin.appbrand.jsapi.z.e.a.c)localObject3).tn(4);
                   }
-                  ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).bfi().w(false, true);
+                  ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).bmc().x(false, true);
                   bool1 = true;
                   break;
                 } while (!((String)localObject4).equals("seek"));
-                long l = com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.W((JSONObject)localObject3);
+                long l = com.tencent.mm.plugin.appbrand.jsapi.z.e.b.W((JSONObject)localObject3);
                 if (l <= 0L) {
-                  break label3104;
+                  break label3020;
                 }
-                ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).bfi().JV(com.tencent.mm.plugin.appbrand.jsapi.aa.e.b.c.sv((int)l));
+                ((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).bmc().Oc(com.tencent.mm.plugin.appbrand.jsapi.z.e.b.c.tm((int)l));
                 bool1 = true;
                 break;
               } while (!((String)localObject4).equals("pause"));
-              com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.h.c(((com.tencent.mm.plugin.appbrand.jsapi.aa.e.b)localObject1).bfi());
+              com.tencent.mm.plugin.appbrand.jsapi.z.e.a.h.c(((com.tencent.mm.plugin.appbrand.jsapi.z.e.b)localObject1).bmc());
               bool1 = true;
-              break label2507;
-              label3104:
-              ad.i("MicroMsg.VideoCast.AppBrandVideoCastHandler", "invalid seek position");
+              break label2433;
+              label3020:
+              ac.i("MicroMsg.VideoCast.AppBrandVideoCastHandler", "invalid seek position");
               bool1 = false;
-              break label2507;
-              label3119:
-              ((com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.h)localObject1).kBx.p((d.g.a.b)new h.p((com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.h)localObject1));
+              break label2433;
+              label3035:
+              ((com.tencent.mm.plugin.appbrand.jsapi.z.e.a.h)localObject1).lcP.t((d.g.a.b)new h.p((com.tencent.mm.plugin.appbrand.jsapi.z.e.a.h)localObject1));
               bool1 = true;
-              break label2507;
-              label3145:
+              break label2433;
+              label3061:
               if (((String)localObject2).equalsIgnoreCase("play"))
               {
                 bool1 = localb.i(false, true);
-                break label2507;
+                break label2433;
               }
               if (((String)localObject2).equalsIgnoreCase("pause"))
               {
                 bool1 = localb.pause();
-                break label2507;
+                break label2433;
               }
               if (((String)localObject2).equalsIgnoreCase("stop"))
               {
-                bool2 = localb.Ft();
+                bool2 = localb.Fb();
                 bool1 = bool2;
                 if (!bool2) {
-                  break label2507;
+                  break label2433;
                 }
                 bool1 = bool2;
-                if (!localb.ckH) {
-                  break label2507;
+                if (!localb.chG) {
+                  break label2433;
                 }
-                ad.i(localb.EE(), "stop, isRuntimeInBackground, setPlayingWhenEnterBackground false");
-                localb.ckJ = new AtomicBoolean(false);
+                ac.i(localb.getLogTag(), "stop, isRuntimeInBackground, setPlayingWhenEnterBackground false");
+                localb.chI = new AtomicBoolean(false);
                 bool1 = bool2;
-                break label2507;
+                break label2433;
               }
-              label3332:
+              label3248:
               double d;
               if (((String)localObject2).equalsIgnoreCase("seek"))
               {
-                if ((localb.cmS != null) && (localObject3 != null) && (((JSONObject)localObject3).has("data")))
+                if ((localb.cjU != null) && (localObject3 != null) && (((JSONObject)localObject3).has("data")))
                 {
                   localObject1 = ((JSONObject)localObject3).optJSONArray("data");
                   if ((localObject1 != null) && (((JSONArray)localObject1).length() != 0)) {
-                    break label3332;
+                    break label3248;
                   }
-                  ad.w(localb.EE(), "seek, data array is null");
+                  ac.w(localb.getLogTag(), "seek, data array is null");
                 }
                 for (;;)
                 {
@@ -1255,149 +1205,148 @@ public final class b
                   break;
                   d = ((JSONArray)localObject1).optDouble(0, -1.0D);
                   if (d >= 0.0D) {
-                    break label3373;
+                    break label3289;
                   }
-                  ad.w(localb.EE(), "seek, invalid position:%s", new Object[] { Double.valueOf(d) });
+                  ac.w(localb.getLogTag(), "seek, invalid position:%s", new Object[] { Double.valueOf(d) });
                 }
-                label3373:
+                label3289:
                 localb.seek((d * 1000.0D));
                 bool1 = true;
-                break label2507;
+                break label2433;
               }
               if (((String)localObject2).equalsIgnoreCase("playbackRate"))
               {
-                if ((localb.cmS != null) && (localObject3 != null) && (((JSONObject)localObject3).has("data")))
+                if ((localb.cjU != null) && (localObject3 != null) && (((JSONObject)localObject3).has("data")))
                 {
                   localObject1 = ((JSONObject)localObject3).optJSONArray("data");
                   if ((localObject1 != null) && (((JSONArray)localObject1).length() != 0)) {
-                    break label3463;
+                    break label3379;
                   }
-                  ad.w(localb.EE(), "speed, data array is null");
+                  ac.w(localb.getLogTag(), "speed, data array is null");
                 }
                 for (;;)
                 {
                   bool1 = false;
                   break;
-                  label3463:
+                  label3379:
                   d = ((JSONArray)localObject1).optDouble(0, -1.0D);
                   if (d >= 0.0D) {
-                    break label3504;
+                    break label3420;
                   }
-                  ad.w(localb.EE(), "speed, invalid rate:%s", new Object[] { Double.valueOf(d) });
+                  ac.w(localb.getLogTag(), "speed, invalid rate:%s", new Object[] { Double.valueOf(d) });
                 }
-                label3504:
-                ad.i(localb.EE(), "speed, speed:%s", new Object[] { Double.valueOf(d) });
-                bool1 = localb.cmS.ay((float)d);
-                break label2507;
+                label3420:
+                ac.i(localb.getLogTag(), "speed, speed:%s", new Object[] { Double.valueOf(d) });
+                bool1 = localb.cjU.aC((float)d);
+                break label2433;
               }
               if (((String)localObject2).equalsIgnoreCase("requestFullScreen"))
               {
-                bool1 = localb.k(locala);
-                break label2507;
+                bool1 = localb.j(locala);
+                break label2433;
               }
               if (((String)localObject2).equalsIgnoreCase("exitFullScreen"))
               {
-                bool1 = localb.l(locala);
-                break label2507;
+                bool1 = localb.k(locala);
+                break label2433;
               }
               if (((String)localObject2).equalsIgnoreCase("setScreenBrightness"))
               {
-                ad.i(localb.EE(), "setScreenBrightness");
-                if ((localb.cmY != null) && (localb.cmY.u(locala)))
+                ac.i(localb.getLogTag(), "setScreenBrightness");
+                if ((localb.cka != null) && (localb.cka.t(locala)))
                 {
                   bool1 = true;
-                  break label2507;
+                  break label2433;
                 }
                 bool1 = false;
-                break label2507;
+                break label2433;
               }
               if (((String)localObject2).equalsIgnoreCase("exitPictureInPicture"))
               {
-                bool1 = localb.ckL.d(locala);
-                break label2507;
+                bool1 = localb.chN.c(locala);
+                break label2433;
               }
               if (((String)localObject2).equalsIgnoreCase("requestBackgroundPlayback"))
               {
-                ad.d(localb.EE(), "enableBackgroundPlayAudio");
-                if (!localb.ckR)
+                ac.d(localb.getLogTag(), "enableBackgroundPlayAudio");
+                if (!localb.chT)
                 {
-                  ad.d(localb.EE(), "registerAddOnPlayAudio");
-                  localb.a(l.class, new b.28(localb));
-                  ad.d(localb.EE(), "registerAddOnVideoController");
-                  localb.a(m.class, new b.29(localb));
-                  ad.d(localb.EE(), "registerAddOnInfo");
-                  localb.a(com.tencent.luggage.k.a.a.k.class, new b.30(localb));
-                  ad.d(localb.EE(), "registerAddOnGetSnapshot");
-                  localb.a(com.tencent.luggage.k.a.a.j.class, new b.32(localb));
-                  localb.ckR = true;
+                  ac.d(localb.getLogTag(), "registerAddOnPlayAudio");
+                  localb.a(com.tencent.luggage.k.a.a.j.class, new b.28(localb));
+                  ac.d(localb.getLogTag(), "registerAddOnVideoController");
+                  localb.a(r.class, new b.29(localb));
+                  ac.d(localb.getLogTag(), "registerAddOnInfo");
+                  localb.a(i.class, new b.30(localb));
+                  ac.d(localb.getLogTag(), "registerAddOnGetSnapshot");
+                  localb.a(com.tencent.luggage.k.a.a.h.class, new b.32(localb));
+                  localb.chT = true;
                 }
-                ad.d(localb.EE(), "enableBackgroundPlayAudioInternal");
+                ac.d(localb.getLogTag(), "enableBackgroundPlayAudioInternal");
                 if (locala == null)
                 {
-                  ad.w(localb.EE(), "enableBackgroundPlayAudioInternal, invokeContext is null");
+                  ac.w(localb.getLogTag(), "enableBackgroundPlayAudioInternal, invokeContext is null");
                   bool1 = false;
                 }
                 for (;;)
                 {
                   if (!bool1) {
-                    break label3955;
+                    break label3871;
                   }
-                  localb.ckU.set(true);
-                  if (localb.cmS != null) {
-                    localb.cmS.setSurface(null);
+                  localb.chW.set(true);
+                  if (localb.cjU != null) {
+                    localb.cjU.setSurface(null);
                   }
-                  localb.ckS = true;
-                  if (localb.cmT != null) {
-                    localb.cmT.bL(true);
+                  localb.chU = true;
+                  if (localb.cjV != null) {
+                    localb.cjV.bL(true);
                   }
                   bool1 = true;
                   break;
-                  localObject1 = com.tencent.luggage.k.a.a.e.g(locala);
+                  localObject1 = com.tencent.luggage.k.a.a.e.f(locala);
                   if (localObject1 == null)
                   {
-                    ad.w(localb.EE(), "enableBackgroundPlayAudioInternal, audioOfVideoBackgroundPlayManager is null");
+                    ac.w(localb.getLogTag(), "enableBackgroundPlayAudioInternal, audioOfVideoBackgroundPlayManager is null");
                     bool1 = false;
                   }
                   else
                   {
-                    bool1 = ((com.tencent.mm.plugin.appbrand.jsapi.aa.a)localObject1).b(localb);
+                    bool1 = ((com.tencent.mm.plugin.appbrand.jsapi.z.a)localObject1).b(localb);
                   }
                 }
-                label3955:
+                label3871:
                 bool1 = false;
-                break label2507;
+                break label2433;
               }
               bool1 = bool2;
               if (!((String)localObject2).equalsIgnoreCase("exitBackgroundPlayback")) {
-                break label2507;
+                break label2433;
               }
-              bool1 = localb.t(locala);
-              break label2507;
-              label3988:
-              localb.cnu = locala;
+              bool1 = localb.s(locala);
+              break label2433;
+              label3904:
+              localb.ckw = locala;
               localb.takeScreenshot();
             }
-            label4003:
+            label3919:
             if (bool1) {}
             for (localObject1 = "ok";; localObject1 = "fail")
             {
-              locala.cD((String)localObject1);
+              locala.cs((String)localObject1);
+              break label2474;
+              label3940:
               break;
             }
-            label4034:
-            if (!((String)localObject2).equalsIgnoreCase("play")) {
-              break label812;
-            }
-            localb.ckL.b(locala);
-            break label812;
           }
           if (!str.contains("remove")) {
-            break label812;
+            break;
           }
-          localb.a(null);
-          locala.cD("ok");
-          localb.ckL.c(locala);
-          break label812;
+          localb.release();
+          locala.cs("ok");
+          localb.chN.b(locala);
+          break;
+          label3990:
+          localObject1 = "";
+          break label786;
         }
       }
     });
@@ -1408,53 +1357,53 @@ public final class b
   final boolean i(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(177166);
-    if (this.cmS != null)
+    if (this.cjU != null)
     {
-      if ((this.cng) && (this.cmS.isPlaying()))
+      if ((this.cki) && (this.cjU.isPlaying()))
       {
-        ad.i(EE(), "video play, video is playing");
-        if (Fa()) {
-          this.cmT.bJ(paramBoolean1);
+        ac.i(getLogTag(), "video play, video is playing");
+        if (EE()) {
+          this.cjV.bJ(paramBoolean1);
         }
         AppMethodBeat.o(177166);
         return true;
       }
-      if ((this.cmS != null) && (!this.cng))
+      if ((this.cjU != null) && (!this.cki))
       {
-        ad.i(EE(), "video play, video not prepared yet, start until prepared");
-        this.cnd = true;
+        ac.i(getLogTag(), "video play, video not prepared yet, start until prepared");
+        this.ckf = true;
         AppMethodBeat.o(177166);
         return true;
       }
-      if ((this.cmS != null) && (this.cmS.getState() == 5))
+      if ((this.cjU != null) && (this.cjU.getState() == 5))
       {
         if (!paramBoolean2)
         {
-          ad.i(EE(), "video has ended playing, do not restart");
+          ac.i(getLogTag(), "video has ended playing, do not restart");
           AppMethodBeat.o(177166);
           return false;
         }
-        ad.i(EE(), "video play, video has stopped now, try prepare and start when prepared");
-        bF(true);
-        this.cnd = true;
+        ac.i(getLogTag(), "video play, video has stopped now, try prepare and start when prepared");
+        bE(true);
+        this.ckf = true;
         AppMethodBeat.o(177166);
         return true;
       }
-      if (this.cno)
+      if (this.ckq)
       {
         if (!paramBoolean2)
         {
-          ad.i(EE(), "video has ended playing, do not restart");
+          ac.i(getLogTag(), "video has ended playing, do not restart");
           AppMethodBeat.o(177166);
           return false;
         }
-        ad.i(EE(), "video play, video has ended playing, clear surface and start again");
-        this.cno = false;
+        ac.i(getLogTag(), "video play, video has ended playing, clear surface and start again");
+        this.ckq = false;
         try
         {
-          if ((this.mSurfaceTexture != null) && (this.cng))
+          if ((this.mSurfaceTexture != null) && (this.cki))
           {
-            ad.i(EE(), "clearSurfaceTexture");
+            ac.i(getLogTag(), "clearSurfaceTexture");
             Object localObject2 = this.mSurfaceTexture;
             localObject1 = (EGL10)EGLContext.getEGL();
             EGLDisplay localEGLDisplay = ((EGL10)localObject1).eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
@@ -1481,22 +1430,22 @@ public final class b
           for (;;)
           {
             Object localObject1;
-            ad.printErrStackTrace(EE(), localException, "clearSurfaceTexture error", new Object[0]);
+            ac.printErrStackTrace(getLogTag(), localException, "clearSurfaceTexture error", new Object[0]);
             continue;
-            this.cmS.dp(this.cnm, this.ckE);
+            this.cjU.dB(this.cko, this.chD);
           }
         }
-        r(this.cku);
-        if (this.cmS != null)
+        q(this.cht);
+        if (this.cjU != null)
         {
-          this.cnf = true;
-          localObject1 = b(this.cku, this.cnm);
-          if (!bt.isNullOrNil((String)localObject1))
+          this.ckh = true;
+          localObject1 = b(this.cht, this.cko);
+          if (!bs.isNullOrNil((String)localObject1))
           {
-            this.cmS.dp((String)localObject1, this.ckE);
-            ad.i(EE(), "video play, media player state:%s", new Object[] { Integer.valueOf(this.cmS.getState()) });
-            bF(false);
-            this.cnd = true;
+            this.cjU.dB((String)localObject1, this.chD);
+            ac.i(getLogTag(), "video play, media player state:%s", new Object[] { Integer.valueOf(this.cjU.getState()) });
+            bE(false);
+            this.ckf = true;
           }
         }
         else
@@ -1505,13 +1454,13 @@ public final class b
           return true;
         }
       }
-      ad.i(EE(), "video play");
-      if (this.cmS != null)
+      ac.i(getLogTag(), "video play");
+      if (this.cjU != null)
       {
-        if (Fa()) {
-          this.cmT.bJ(paramBoolean1);
+        if (EE()) {
+          this.cjV.bJ(paramBoolean1);
         }
-        this.cmS.start();
+        this.cjU.start();
       }
       AppMethodBeat.o(177166);
       return true;
@@ -1523,9 +1472,9 @@ public final class b
   final boolean isPlaying()
   {
     AppMethodBeat.i(138989);
-    if (this.cmS != null)
+    if (this.cjU != null)
     {
-      boolean bool = this.cmS.isPlaying();
+      boolean bool = this.cjU.isPlaying();
       AppMethodBeat.o(138989);
       return bool;
     }
@@ -1533,11 +1482,11 @@ public final class b
     return false;
   }
   
-  final boolean k(com.tencent.luggage.k.a.a parama)
+  final boolean j(com.tencent.luggage.k.a.a parama)
   {
     AppMethodBeat.i(138993);
-    ad.i(EE(), "requestFullscreen");
-    if ((this.cmY != null) && (this.cmY.k(parama)))
+    ac.i(getLogTag(), "requestFullscreen");
+    if ((this.cka != null) && (this.cka.j(parama)))
     {
       AppMethodBeat.o(138993);
       return true;
@@ -1546,30 +1495,11 @@ public final class b
     return false;
   }
   
-  public final boolean k(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(138980);
-    if (this.cns != null)
-    {
-      if (this.cns.getLooper() == Looper.myLooper()) {
-        paramRunnable.run();
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(138980);
-        return true;
-        this.cns.post(paramRunnable);
-      }
-    }
-    AppMethodBeat.o(138980);
-    return false;
-  }
-  
-  final boolean l(com.tencent.luggage.k.a.a parama)
+  final boolean k(com.tencent.luggage.k.a.a parama)
   {
     AppMethodBeat.i(138994);
-    ad.i(EE(), "exitFullscreen");
-    if ((this.cmY != null) && (this.cmY.l(parama)))
+    ac.i(getLogTag(), "exitFullscreen");
+    if ((this.cka != null) && (this.cka.k(parama)))
     {
       AppMethodBeat.o(138994);
       return true;
@@ -1578,106 +1508,134 @@ public final class b
     return false;
   }
   
+  public final boolean k(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(138980);
+    if (this.cku != null)
+    {
+      if (this.cku.getLooper() == Looper.myLooper()) {
+        paramRunnable.run();
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(138980);
+        return true;
+        this.cku.post(paramRunnable);
+      }
+    }
+    AppMethodBeat.o(138980);
+    return false;
+  }
+  
+  final void p(com.tencent.luggage.k.a.a parama)
+  {
+    AppMethodBeat.i(138978);
+    if (this.ckb != null)
+    {
+      AppMethodBeat.o(138978);
+      return;
+    }
+    this.ckb = this.cka.a(this.cjW, parama);
+    AppMethodBeat.o(138978);
+  }
+  
   final boolean pause()
   {
-    AppMethodBeat.i(138986);
-    if (this.cmS != null)
+    AppMethodBeat.i(210440);
+    if (this.cjU != null)
     {
-      if (!this.cng)
+      if (!this.cki)
       {
-        ad.i(EE(), "video pause, video not prepared yet, pause video when prepared");
-        this.cnd = false;
-        AppMethodBeat.o(138986);
+        ac.i(getLogTag(), "video pause, video not prepared yet, pause video when prepared");
+        this.ckf = false;
+        AppMethodBeat.o(210440);
         return true;
       }
-      if (!this.cmS.isPlaying())
+      if (!this.cjU.isPlaying())
       {
-        ad.i(EE(), "video pause, video is not playing");
-        AppMethodBeat.o(138986);
+        ac.i(getLogTag(), "video pause, video is not playing");
+        AppMethodBeat.o(210440);
         return true;
       }
-      ad.i(EE(), "video pause");
-      this.cmS.pause();
-      if (Fa()) {
-        this.cmT.bK(false);
+      ac.i(getLogTag(), "video pause");
+      this.cjU.pause();
+      if (EE()) {
+        this.cjV.bK(false);
       }
-      AppMethodBeat.o(138986);
+      AppMethodBeat.o(210440);
       return true;
     }
-    AppMethodBeat.o(138986);
+    AppMethodBeat.o(210440);
     return false;
   }
   
   final void q(com.tencent.luggage.k.a.a parama)
   {
-    AppMethodBeat.i(138978);
-    if (this.cmZ != null)
-    {
-      AppMethodBeat.o(138978);
-      return;
-    }
-    this.cmZ = this.cmY.a(this.cmU, parama);
-    AppMethodBeat.o(138978);
+    AppMethodBeat.i(138995);
+    Fc();
+    r(parama);
+    Fd();
+    AppMethodBeat.o(138995);
   }
   
   public final void r(Bitmap paramBitmap)
   {
     AppMethodBeat.i(178848);
     super.r(paramBitmap);
-    ad.i(EE(), "*** handler(%s) handlePluginScreenshotTaken", new Object[] { AL() });
-    Object localObject = this.cnu;
+    ac.i(getLogTag(), "*** handler(%s) handlePluginScreenshotTaken", new Object[] { Ap() });
+    Object localObject = this.ckw;
     int i;
     if (localObject == null)
     {
-      ad.w(EE(), "handlePluginScreenshotTaken4JsApiCall, invokeContext is null");
+      ac.w(getLogTag(), "handlePluginScreenshotTaken4JsApiCall, invokeContext is null");
       i = 0;
     }
     for (;;)
     {
       if (i == 0)
       {
-        localObject = this.ckW;
+        localObject = this.chY;
         if (localObject == null)
         {
-          ad.w(EE(), "handlePluginScreenshotTaken4NativeCall, getSnapshotCallback is null");
+          ac.w(getLogTag(), "handlePluginScreenshotTaken4NativeCall, getSnapshotCallback is null");
           AppMethodBeat.o(178848);
           return;
           if (paramBitmap == null)
           {
-            ad.w(EE(), "handlePluginScreenshotTaken4JsApiCall, bitmap is null");
+            ac.w(getLogTag(), "handlePluginScreenshotTaken4JsApiCall, bitmap is null");
             i = 0;
             continue;
           }
-          if ((this.ckw == 0) || (this.ckx == 0)) {
+          if ((this.chv == 0) || (this.chw == 0)) {
             break label265;
           }
         }
       }
     }
     label265:
-    for (Bitmap localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(this.cnx * this.ckw), (int)(this.cny * this.ckx), false);; localBitmap = paramBitmap)
+    for (Bitmap localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(this.ckz * this.chv), (int)(this.ckA * this.chw), false);; localBitmap = paramBitmap)
     {
-      this.cmY.a((com.tencent.luggage.k.a.a)localObject, localBitmap);
-      this.cnu = null;
+      this.cka.a((com.tencent.luggage.k.a.a)localObject, localBitmap);
+      this.ckw = null;
       i = 1;
       break;
       if (paramBitmap == null)
       {
-        ad.w(EE(), "handlePluginScreenshotTaken4NativeCall, bitmap is null");
+        ac.w(getLogTag(), "handlePluginScreenshotTaken4NativeCall, bitmap is null");
         ((com.tencent.luggage.k.a.a.g)localObject).o(null);
         AppMethodBeat.o(178848);
         return;
       }
       localBitmap = paramBitmap;
-      if (this.ckw != 0)
+      if (this.chv != 0)
       {
         localBitmap = paramBitmap;
-        if (this.ckx != 0) {
-          localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(this.cnx * this.ckw), (int)(this.cny * this.ckx), false);
+        if (this.chw != 0) {
+          localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(this.ckz * this.chv), (int)(this.ckA * this.chw), false);
         }
       }
       ((com.tencent.luggage.k.a.a.g)localObject).o(localBitmap);
-      this.ckW = null;
+      this.chY = null;
       AppMethodBeat.o(178848);
       return;
     }
@@ -1685,157 +1643,163 @@ public final class b
   
   final void r(com.tencent.luggage.k.a.a parama)
   {
-    AppMethodBeat.i(138995);
-    Fu();
-    s(parama);
-    Fv();
-    AppMethodBeat.o(138995);
-  }
-  
-  final void s(com.tencent.luggage.k.a.a parama)
-  {
     AppMethodBeat.i(138997);
-    ad.i(EE(), "createMediaPlayer");
-    if (this.cmY != null) {
-      this.cmS = this.cmY.a(parama, this.cns);
+    ac.i(getLogTag(), "createMediaPlayer");
+    if (this.cka != null) {
+      this.cjU = this.cka.a(parama, this.cku);
     }
-    if (this.cmS == null)
+    if (this.cjU == null)
     {
-      ad.e(EE(), "createMediaPlayer, create media player fail");
+      ac.e(getLogTag(), "createMediaPlayer, create media player fail");
       AppMethodBeat.o(138997);
       return;
     }
-    this.cnh = true;
-    this.cmS.a(new b.d()
+    this.ckj = true;
+    this.cjU.a(new b.d()
     {
-      public final boolean cb(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final boolean bY(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(194992);
+        AppMethodBeat.i(210423);
         b localb = b.this;
         boolean bool = localb.k(new b.4(localb, paramAnonymousInt1, paramAnonymousInt2));
-        AppMethodBeat.o(194992);
+        AppMethodBeat.o(210423);
         return bool;
       }
     });
-    this.cmS.a(new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c()
+    this.cjU.a(new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c()
     {
-      public final boolean cc(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final boolean bZ(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(194993);
+        AppMethodBeat.i(210424);
         b localb = b.this;
         boolean bool = localb.k(new b.3(localb, paramAnonymousInt1, paramAnonymousInt2));
-        AppMethodBeat.o(194993);
+        AppMethodBeat.o(210424);
         return bool;
       }
     });
-    this.cmS.a(new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.e()
+    this.cjU.a(new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.e()
     {
       public final void a(com.tencent.mm.plugin.appbrand.jsapi.video.e.b paramAnonymousb)
       {
-        AppMethodBeat.i(194994);
+        AppMethodBeat.i(210425);
         paramAnonymousb = b.this;
         paramAnonymousb.k(new b.2(paramAnonymousb));
-        AppMethodBeat.o(194994);
+        AppMethodBeat.o(210425);
       }
     });
-    this.cmS.a(new b.b()
+    this.cjU.a(new b.b()
     {
-      public final void Fz()
+      public final void Fh()
       {
-        AppMethodBeat.i(194995);
+        AppMethodBeat.i(210426);
         b localb = b.this;
-        localb.k(new b.38(localb));
-        AppMethodBeat.o(194995);
+        localb.k(new b.39(localb));
+        AppMethodBeat.o(210426);
       }
     });
-    this.cmS.a(new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.f()
+    this.cjU.a(new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.f()
     {
       public final void b(com.tencent.mm.plugin.appbrand.jsapi.video.e.b paramAnonymousb)
       {
-        AppMethodBeat.i(194996);
+        AppMethodBeat.i(210427);
         paramAnonymousb = b.this;
-        paramAnonymousb.k(new b.37(paramAnonymousb));
-        AppMethodBeat.o(194996);
+        paramAnonymousb.k(new b.38(paramAnonymousb));
+        AppMethodBeat.o(210427);
       }
     });
-    this.cmS.a(new b.g()
+    this.cjU.a(new b.g()
     {
       public final void a(com.tencent.mm.plugin.appbrand.jsapi.video.e.b paramAnonymousb, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(194997);
+        AppMethodBeat.i(210428);
         paramAnonymousb = b.this;
-        paramAnonymousb.k(new b.36(paramAnonymousb, paramAnonymousInt1, paramAnonymousInt2));
-        AppMethodBeat.o(194997);
+        paramAnonymousb.k(new b.37(paramAnonymousb, paramAnonymousInt1, paramAnonymousInt2));
+        AppMethodBeat.o(210428);
       }
     });
-    this.cmS.a(new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.a()
+    this.cjU.a(new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.a()
     {
-      public final void gX(int paramAnonymousInt)
+      public final void gH(int paramAnonymousInt)
       {
-        AppMethodBeat.i(194998);
+        AppMethodBeat.i(210429);
         b localb = b.this;
-        localb.k(new b.35(localb, paramAnonymousInt));
-        AppMethodBeat.o(194998);
+        localb.k(new b.36(localb, paramAnonymousInt));
+        AppMethodBeat.o(210429);
       }
     });
-    if (this.cnv != null) {
-      this.cnv.bG(this.cng);
+    if (this.ckx != null) {
+      this.ckx.bG(this.cki);
     }
     AppMethodBeat.o(138997);
   }
   
-  final void seek(long paramLong)
+  final void release()
   {
-    AppMethodBeat.i(138992);
-    if ((this.cng) && (this.cmS != null))
-    {
-      if (Fa()) {
-        this.cmT.onVideoWaiting();
-      }
-      if (this.cmS != null)
-      {
-        this.cnb = isPlaying();
-        paramLong = Math.min(getDuration(), Math.max(0L, paramLong));
-        ad.i(EE(), "seek, position:%s, isPlaying:%s, videoEndPlaying:%s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(this.cnb), Boolean.valueOf(this.cno) });
-        this.cno = false;
-        this.cmS.seekTo(paramLong);
-        AppMethodBeat.o(138992);
-      }
+    AppMethodBeat.i(206634);
+    ac.i(getLogTag(), "video release");
+    if (this.cka != null) {
+      this.cka.w(this.cht);
     }
-    else
+    Fb();
+    Fc();
+    if (this.cjV != null)
     {
-      this.cne = paramLong;
+      this.cjV.destroy();
+      this.cjV = null;
+      this.cjW = null;
     }
-    AppMethodBeat.o(138992);
+    if (this.ckb != null)
+    {
+      com.tencent.mm.plugin.appbrand.jsapi.z.e.b localb = this.ckb;
+      localb.bmc().destroy();
+      localb.lbG = false;
+      localb.gP(false);
+      localb.bmc().bml();
+      this.ckb = null;
+    }
+    Fe();
+    if (this.cht != null)
+    {
+      this.cht.Eg();
+      this.chu = null;
+    }
+    ac.i(getLogTag(), "video release handler thread");
+    if (this.cku != null) {
+      this.cku.removeCallbacksAndMessages(null);
+    }
+    if (this.ckv != null) {
+      this.ckv.quitSafely();
+    }
+    AppMethodBeat.o(206634);
   }
   
-  final boolean t(com.tencent.luggage.k.a.a parama)
+  final boolean s(com.tencent.luggage.k.a.a parama)
   {
-    AppMethodBeat.i(195015);
-    ad.d(EE(), "disableBackgroundPlayAudio");
-    ad.d(EE(), "disableBackgroundPlayAudioInternal");
+    AppMethodBeat.i(206639);
+    ac.d(getLogTag(), "disableBackgroundPlayAudio");
+    ac.d(getLogTag(), "disableBackgroundPlayAudioInternal");
     int i;
     if (parama == null)
     {
-      ad.w(EE(), "disableBackgroundPlayAudioInternal, invokeContext is null");
+      ac.w(getLogTag(), "disableBackgroundPlayAudioInternal, invokeContext is null");
       i = 0;
     }
     while (i != 0)
     {
-      this.ckU.set(false);
-      if (this.cmS != null) {
-        this.cmS.setSurface(this.mSurface);
+      this.chW.set(false);
+      if (this.cjU != null) {
+        this.cjU.setSurface(this.mSurface);
       }
-      this.ckS = false;
-      if (this.cmT != null) {
-        this.cmT.bL(false);
+      this.chU = false;
+      if (this.cjV != null) {
+        this.cjV.bL(false);
       }
-      AppMethodBeat.o(195015);
+      AppMethodBeat.o(206639);
       return true;
-      parama = com.tencent.luggage.k.a.a.e.g(parama);
+      parama = com.tencent.luggage.k.a.a.e.f(parama);
       if (parama == null)
       {
-        ad.w(EE(), "disableBackgroundPlayAudio, audioOfVideoBackgroundPlayManager is null");
+        ac.w(getLogTag(), "disableBackgroundPlayAudio, audioOfVideoBackgroundPlayManager is null");
         i = 0;
       }
       else
@@ -1844,23 +1808,41 @@ public final class b
         i = 1;
       }
     }
-    AppMethodBeat.o(195015);
+    AppMethodBeat.o(206639);
     return false;
+  }
+  
+  final void seek(long paramLong)
+  {
+    AppMethodBeat.i(138992);
+    if ((this.cki) && (this.cjU != null))
+    {
+      if (EE()) {
+        this.cjV.onVideoWaiting();
+      }
+      if (this.cjU != null)
+      {
+        this.ckd = isPlaying();
+        paramLong = Math.min(getDuration(), Math.max(0L, paramLong));
+        ac.i(getLogTag(), "seek, position:%s, isPlaying:%s, videoEndPlaying:%s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(this.ckd), Boolean.valueOf(this.ckq) });
+        this.ckq = false;
+        this.cjU.seekTo(paramLong);
+        AppMethodBeat.o(138992);
+      }
+    }
+    else
+    {
+      this.ckg = paramLong;
+    }
+    AppMethodBeat.o(138992);
   }
   
   final void takeScreenshot()
   {
-    AppMethodBeat.i(195012);
-    ad.i(EE(), "takeScreenshot");
-    com.tencent.luggage.k.a.c.c localc = FI();
-    String str = this.type;
-    int i = getId();
-    if ((localc != null) && (localc.FJ() != null))
-    {
-      ad.i("MicroMsg.SameLayer.WebViewExtendPluginUtil", "applyPluginScreenshot, %s#%d", new Object[] { str, Integer.valueOf(i) });
-      localc.FJ().takePluginScreenshot(str, i);
-    }
-    AppMethodBeat.o(195012);
+    AppMethodBeat.i(206635);
+    ac.i(getLogTag(), "takeScreenshot");
+    com.tencent.luggage.k.a.d.a(Fq(), this.type, getId());
+    AppMethodBeat.o(206635);
   }
   
   public static abstract interface a
@@ -1870,7 +1852,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a.b.b
  * JD-Core Version:    0.7.0.1
  */

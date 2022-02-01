@@ -4,16 +4,16 @@ import com.tencent.mm.model.at;
 
 public final class b
 {
-  private static at hCf = null;
+  private static at icG = null;
   
   public static void a(at paramat)
   {
-    hCf = paramat;
+    icG = paramat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.b
  * JD-Core Version:    0.7.0.1
  */

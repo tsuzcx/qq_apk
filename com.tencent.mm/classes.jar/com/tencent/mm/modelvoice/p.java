@@ -1,14 +1,14 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
 
 public final class p
 {
-  public String hAb;
-  public boolean hAc;
+  public String iaC;
+  public boolean iaD;
   public long time;
   
   public p(String paramString)
@@ -23,17 +23,17 @@ public final class p
           str = paramString.substring(0, paramString.length() - 1);
         }
         paramString = str.split(":");
-        if ((paramString.length == 4) && (af.st(paramString[0])))
+        if ((paramString.length == 4) && (ai.ww(paramString[0])))
         {
           i = 1;
           if (paramString.length > i) {
-            this.hAb = paramString[i];
+            this.iaC = paramString[i];
           }
           if (paramString.length > i + 1) {
-            this.time = bt.getLong(paramString[(i + 1)], 0L);
+            this.time = bs.getLong(paramString[(i + 1)], 0L);
           }
           if (paramString.length > i + 2) {
-            this.hAc = paramString[(i + 2)].equals("1");
+            this.iaD = paramString[(i + 2)].equals("1");
           }
           AppMethodBeat.o(130092);
           return;
@@ -41,12 +41,12 @@ public final class p
       }
       catch (Exception paramString)
       {
-        if (this.hAb == null) {
-          this.hAb = "";
+        if (this.iaC == null) {
+          this.iaC = "";
         }
-        this.hAc = false;
+        this.iaD = false;
         this.time = 0L;
-        ad.e("MicroMsg.VoiceContent", "VoiceContent parse failed.");
+        ac.e("MicroMsg.VoiceContent", "VoiceContent parse failed.");
         AppMethodBeat.o(130092);
         return;
       }
@@ -67,14 +67,14 @@ public final class p
     }
   }
   
-  public final String aCQ()
+  public final String aJH()
   {
-    return this.hAb;
+    return this.iaC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelvoice.p
  * JD-Core Version:    0.7.0.1
  */

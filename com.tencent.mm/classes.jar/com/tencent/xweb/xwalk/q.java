@@ -1,70 +1,76 @@
 package com.tencent.xweb.xwalk;
 
-import android.graphics.Bitmap;
+import android.webkit.WebBackForwardList;
 import android.webkit.WebHistoryItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.xwalk.core.XWalkNavigationItem;
+import org.xwalk.core.XWalkNavigationHistory;
 
 public final class q
-  extends WebHistoryItem
+  extends WebBackForwardList
 {
-  XWalkNavigationItem IUy;
+  XWalkNavigationHistory KGZ;
   
-  public q(XWalkNavigationItem paramXWalkNavigationItem)
+  public q(XWalkNavigationHistory paramXWalkNavigationHistory)
   {
-    this.IUy = paramXWalkNavigationItem;
+    this.KGZ = paramXWalkNavigationHistory;
   }
   
-  protected final WebHistoryItem clone()
+  protected final WebBackForwardList clone()
   {
-    AppMethodBeat.i(194704);
-    q localq = new q(this.IUy);
-    AppMethodBeat.o(194704);
+    AppMethodBeat.i(208929);
+    q localq = new q(this.KGZ);
+    AppMethodBeat.o(208929);
     return localq;
   }
   
-  public final Bitmap getFavicon()
+  public final int getCurrentIndex()
   {
-    return null;
+    AppMethodBeat.i(208926);
+    if (this.KGZ == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.KGZ.getCurrentIndex()))
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(208926);
+      return i;
+    }
   }
   
-  public final String getOriginalUrl()
+  public final WebHistoryItem getCurrentItem()
   {
-    AppMethodBeat.i(194702);
-    if (this.IUy == null)
+    AppMethodBeat.i(208925);
+    if (this.KGZ == null)
     {
-      AppMethodBeat.o(194702);
+      AppMethodBeat.o(208925);
       return null;
     }
-    String str = this.IUy.getOriginalUrl();
-    AppMethodBeat.o(194702);
-    return str;
+    r localr = new r(this.KGZ.getCurrentItem());
+    AppMethodBeat.o(208925);
+    return localr;
   }
   
-  public final String getTitle()
+  public final WebHistoryItem getItemAtIndex(int paramInt)
   {
-    AppMethodBeat.i(194703);
-    if (this.IUy == null)
+    AppMethodBeat.i(208927);
+    if (this.KGZ == null)
     {
-      AppMethodBeat.o(194703);
+      AppMethodBeat.o(208927);
       return null;
     }
-    String str = this.IUy.getTitle();
-    AppMethodBeat.o(194703);
-    return str;
+    r localr = new r(this.KGZ.getItemAt(paramInt));
+    AppMethodBeat.o(208927);
+    return localr;
   }
   
-  public final String getUrl()
+  public final int getSize()
   {
-    AppMethodBeat.i(194701);
-    if (this.IUy == null)
+    AppMethodBeat.i(208928);
+    if (this.KGZ == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.KGZ.size()))
     {
-      AppMethodBeat.o(194701);
-      return null;
+      int i = localInteger.intValue();
+      AppMethodBeat.o(208928);
+      return i;
     }
-    String str = this.IUy.getUrl();
-    AppMethodBeat.o(194701);
-    return str;
   }
 }
 

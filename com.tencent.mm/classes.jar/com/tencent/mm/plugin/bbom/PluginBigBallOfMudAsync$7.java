@@ -5,14 +5,14 @@ import com.tencent.mm.plugin.webview.ui.tools.widget.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.b;
 import com.tencent.mm.plugin.webview.ui.tools.widget.j;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.w;
+import com.tencent.xweb.x;
 
 final class PluginBigBallOfMudAsync$7
   implements a
 {
   PluginBigBallOfMudAsync$7(PluginBigBallOfMudAsync paramPluginBigBallOfMudAsync) {}
   
-  public final w a(MMWebView paramMMWebView, b paramb)
+  public final x a(MMWebView paramMMWebView, b paramb)
   {
     AppMethodBeat.i(22426);
     paramMMWebView = new j(paramMMWebView, paramb);

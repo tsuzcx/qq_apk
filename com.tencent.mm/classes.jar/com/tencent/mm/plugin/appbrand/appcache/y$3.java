@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.e;
@@ -13,20 +13,20 @@ final class y$3
 {
   y$3(String paramString) {}
   
-  private ArrayList<String> aPM()
+  private ArrayList<String> aWE()
   {
-    AppMethodBeat.i(192855);
+    AppMethodBeat.i(206845);
     try
     {
       ArrayList localArrayList1 = new ArrayList();
-      g.afA().gcy.gVH.getHostByName(this.hLE, localArrayList1);
-      AppMethodBeat.o(192855);
+      g.agQ().ghe.hwg.getHostByName(this.ima, localArrayList1);
+      AppMethodBeat.o(206845);
       return localArrayList1;
     }
     catch (Throwable localThrowable)
     {
       ArrayList localArrayList2 = new ArrayList(0);
-      AppMethodBeat.o(192855);
+      AppMethodBeat.o(206845);
       return localArrayList2;
     }
   }

@@ -3,49 +3,73 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class duq
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String sdv;
-  public String vJI;
+  public String Fvl;
+  public String GcA;
+  public String Gcz;
+  public String tia;
+  public String tlK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123697);
+    AppMethodBeat.i(32506);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.sdv != null) {
-        paramVarArgs.d(1, this.sdv);
+      if (this.Fvl != null) {
+        paramVarArgs.d(1, this.Fvl);
       }
-      if (this.vJI != null) {
-        paramVarArgs.d(2, this.vJI);
+      if (this.Gcz != null) {
+        paramVarArgs.d(2, this.Gcz);
       }
-      AppMethodBeat.o(123697);
+      if (this.tlK != null) {
+        paramVarArgs.d(3, this.tlK);
+      }
+      if (this.tia != null) {
+        paramVarArgs.d(4, this.tia);
+      }
+      if (this.GcA != null) {
+        paramVarArgs.d(5, this.GcA);
+      }
+      AppMethodBeat.o(32506);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.sdv == null) {
-        break label274;
+      if (this.Fvl == null) {
+        break label465;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.sdv) + 0;; paramInt = 0)
+    label465:
+    for (int i = f.a.a.b.b.a.e(1, this.Fvl) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.vJI != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.vJI);
+      paramInt = i;
+      if (this.Gcz != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Gcz);
       }
-      AppMethodBeat.o(123697);
+      i = paramInt;
+      if (this.tlK != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.tlK);
+      }
+      paramInt = i;
+      if (this.tia != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.tia);
+      }
+      i = paramInt;
+      if (this.GcA != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.GcA);
+      }
+      AppMethodBeat.o(32506);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(123697);
+        AppMethodBeat.o(32506);
         return 0;
       }
       if (paramInt == 3)
@@ -55,18 +79,30 @@ public final class duq
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(123697);
+          AppMethodBeat.o(32506);
           return -1;
         case 1: 
-          localduq.sdv = locala.KhF.readString();
-          AppMethodBeat.o(123697);
+          localduq.Fvl = locala.LVo.readString();
+          AppMethodBeat.o(32506);
+          return 0;
+        case 2: 
+          localduq.Gcz = locala.LVo.readString();
+          AppMethodBeat.o(32506);
+          return 0;
+        case 3: 
+          localduq.tlK = locala.LVo.readString();
+          AppMethodBeat.o(32506);
+          return 0;
+        case 4: 
+          localduq.tia = locala.LVo.readString();
+          AppMethodBeat.o(32506);
           return 0;
         }
-        localduq.vJI = locala.KhF.readString();
-        AppMethodBeat.o(123697);
+        localduq.GcA = locala.LVo.readString();
+        AppMethodBeat.o(32506);
         return 0;
       }
-      AppMethodBeat.o(123697);
+      AppMethodBeat.o(32506);
       return -1;
     }
   }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.luckymoney.a;
 
 public abstract interface a$a
 {
-  public abstract void ib(boolean paramBoolean);
+  public abstract void iB(boolean paramBoolean);
 }
 
 

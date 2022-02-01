@@ -1,243 +1,165 @@
 package com.tencent.mm.search.b;
 
-import com.tencent.e.i;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Parcelable;
+import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.bu;
+import com.tencent.mm.emoji.a.a.ad;
+import com.tencent.mm.emoji.a.a.h;
+import com.tencent.mm.emoji.a.a.y;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.ui.chat.j;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.search.c.a;
+import com.tencent.mm.search.data.SimilarEmojiQueryModel;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.storage.emotion.f;
+import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.widget.a.d.a;
 import d.g.b.k;
 import d.l;
-import java.util.ArrayList;
-import java.util.Iterator;
+import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/search/report/SimilarEmojiReport;", "", "()V", "source", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "timestamp", "", "getTimestamp", "()J", "setTimestamp", "(J)V", "reportClickEmoji", "", "select", "index", "reportClickSimilarMenu", "emojiInfo", "reportClickSosEntrance", "reportListIdle", "emojiList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "reportShowSimilarMenu", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/search/logic/SimilarEmojiPanelClickListener;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelClickListener;", "scene", "", "(I)V", "jumpData", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "getJumpData", "()Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "setJumpData", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;)V", "handlePayEmoji", "", "context", "Landroid/content/Context;", "emoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "onClick", "position", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Companion", "plugin-emojisdk_release"})
 public final class b
+  extends com.tencent.mm.emoji.panel.a.d
 {
-  private static EmojiInfo EZk;
-  public static final b EZl;
-  private static long timestamp;
+  public static final b.a Gwv;
+  public SimilarEmojiQueryModel Gwu;
   
   static
   {
-    AppMethodBeat.i(105858);
-    EZl = new b();
-    AppMethodBeat.o(105858);
+    AppMethodBeat.i(105838);
+    Gwv = new b.a((byte)0);
+    AppMethodBeat.o(105838);
   }
   
-  public static void E(EmojiInfo paramEmojiInfo)
+  public b(int paramInt)
   {
-    AppMethodBeat.i(105854);
-    k.h(paramEmojiInfo, "emojiInfo");
-    timestamp = System.currentTimeMillis();
-    EZk = paramEmojiInfo;
-    bu localbu = new bu();
-    localbu.eV(timestamp);
-    localbu.eW(1L);
-    localbu.iq(paramEmojiInfo.field_groupId);
-    localbu.ir(paramEmojiInfo.JS());
-    localbu.aBj();
-    paramEmojiInfo = a.EZj;
-    a.eHw();
-    AppMethodBeat.o(105854);
+    super(paramInt);
   }
   
-  public static void F(EmojiInfo paramEmojiInfo)
+  public final void a(final Context paramContext, int paramInt, y paramy)
   {
-    AppMethodBeat.i(105855);
-    k.h(paramEmojiInfo, "emojiInfo");
-    bu localbu = new bu();
-    localbu.eV(timestamp);
-    localbu.eW(2L);
-    localbu.iq(paramEmojiInfo.field_groupId);
-    localbu.ir(paramEmojiInfo.JS());
-    localbu.aBj();
-    paramEmojiInfo = a.EZj;
-    a.eHx();
-    AppMethodBeat.o(105855);
-  }
-  
-  public static void b(EmojiInfo paramEmojiInfo, long paramLong)
-  {
-    AppMethodBeat.i(105857);
-    k.h(paramEmojiInfo, "select");
-    com.tencent.e.h.Iye.aP((Runnable)new a(paramLong, paramEmojiInfo));
-    AppMethodBeat.o(105857);
-  }
-  
-  public static void b(ArrayList<EmojiInfo> paramArrayList, long paramLong)
-  {
-    AppMethodBeat.i(105856);
-    k.h(paramArrayList, "emojiList");
-    com.tencent.e.h.Iye.aP((Runnable)new b(paramLong, paramArrayList));
-    AppMethodBeat.o(105856);
-  }
-  
-  public static void eHD()
-  {
-    Object localObject2 = null;
-    AppMethodBeat.i(169247);
-    bu localbu = new bu();
-    localbu.eV(timestamp);
-    localbu.eW(5L);
-    Object localObject1 = EZk;
-    if (localObject1 != null) {}
-    for (localObject1 = ((EmojiInfo)localObject1).field_groupId;; localObject1 = null)
+    AppMethodBeat.i(105837);
+    k.h(paramContext, "context");
+    if (paramy == null)
     {
-      localbu.iq((String)localObject1);
-      EmojiInfo localEmojiInfo = EZk;
-      localObject1 = localObject2;
-      if (localEmojiInfo != null) {
-        localObject1 = localEmojiInfo.JS();
-      }
-      localbu.ir((String)localObject1);
-      localbu.Qv();
-      localbu.aBj();
-      AppMethodBeat.o(169247);
+      AppMethodBeat.o(105837);
       return;
     }
-  }
-  
-  public static long getTimestamp()
-  {
-    return timestamp;
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    a(long paramLong, EmojiInfo paramEmojiInfo) {}
-    
-    public final void run()
+    if ((paramy instanceof h)) {}
+    for (Object localObject = ((h)paramy).fPB.field_md5;; localObject = "")
     {
-      Object localObject2 = null;
-      AppMethodBeat.i(105852);
-      bu localbu = new bu();
-      Object localObject1 = b.EZl;
-      localbu.eV(b.getTimestamp());
-      localbu.eW(4L);
-      localObject1 = b.EZl;
-      localObject1 = b.eHE();
-      if (localObject1 != null)
-      {
-        localObject1 = ((EmojiInfo)localObject1).field_groupId;
-        localbu.iq((String)localObject1);
-        localObject1 = b.EZl;
-        EmojiInfo localEmojiInfo = b.eHE();
-        localObject1 = localObject2;
-        if (localEmojiInfo != null) {
-          localObject1 = localEmojiInfo.JS();
-        }
-        localbu.ir((String)localObject1);
-        localbu.eX(this.EZm);
-        localbu.Qv();
-        localbu.is(this.EZn.field_groupId);
-        localbu.it(this.EZn.JS());
-        localbu.iu(String.valueOf(this.EZn.LCo));
-        if (!com.tencent.mm.emoji.a.h.abj().l(this.EZn)) {
-          break label194;
-        }
-        localObject1 = "2";
-        label155:
-        localbu.iw((String)localObject1);
-        if (!com.tencent.mm.plugin.emoji.h.b.w(this.EZn)) {
-          break label200;
-        }
-        localbu.iv("1");
+      ac.i("MicroMsg.SimilarEmoji", "onClick: " + paramInt + ", md5 :" + (String)localObject);
+      if ((!(paramy instanceof h)) || (((h)paramy).fRp != 102)) {
+        break label403;
       }
-      for (;;)
+      localObject = a.Gwx;
+      a.eWU();
+      localObject = com.tencent.mm.search.c.b.GwA;
+      com.tencent.mm.search.c.b.b(((h)paramy).fPB, paramInt);
+      if (((h)paramy).fPB.Kgo == 1)
       {
-        localbu.aBj();
-        AppMethodBeat.o(105852);
-        return;
-        localObject1 = null;
-        break;
-        label194:
-        localObject1 = "1";
-        break label155;
-        label200:
-        localbu.iv("2");
-      }
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(long paramLong, ArrayList paramArrayList) {}
-    
-    public final void run()
-    {
-      Iterator localIterator = null;
-      AppMethodBeat.i(105853);
-      bu localbu = new bu();
-      Object localObject = b.EZl;
-      localbu.eV(b.getTimestamp());
-      localbu.eW(3L);
-      localObject = b.EZl;
-      localObject = b.eHE();
-      EmojiInfo localEmojiInfo;
-      if (localObject != null)
-      {
-        localObject = ((EmojiInfo)localObject).field_groupId;
-        localbu.iq((String)localObject);
-        localObject = b.EZl;
-        localEmojiInfo = b.eHE();
-        localObject = localIterator;
-        if (localEmojiInfo != null) {
-          localObject = localEmojiInfo.JS();
-        }
-        localbu.ir((String)localObject);
-        localbu.eX(this.EZm);
-        localbu.Qv();
-        localbu.is("");
-        localbu.it("");
-        localbu.iu("");
-        localbu.iv("");
-        localbu.iw("");
-        localIterator = ((Iterable)this.EZo).iterator();
-      }
-      for (;;)
-      {
-        label148:
-        if (!localIterator.hasNext()) {
-          break label432;
-        }
-        localEmojiInfo = (EmojiInfo)localIterator.next();
-        localObject = localbu.Qu();
-        localbu.is((String)localObject + localEmojiInfo.field_groupId + "#");
-        localObject = localbu.JS();
-        localbu.it((String)localObject + localEmojiInfo.JS() + "#");
-        localObject = localbu.Qw();
-        localbu.iu((String)localObject + String.valueOf(localEmojiInfo.LCo) + "#");
-        localObject = localbu.Qy();
-        StringBuilder localStringBuilder = new StringBuilder().append((String)localObject);
-        if (com.tencent.mm.emoji.a.h.abj().l(localEmojiInfo)) {}
-        for (localObject = "2";; localObject = "1")
-        {
-          localbu.iw((String)localObject + "#");
-          if (!com.tencent.mm.plugin.emoji.h.b.w(localEmojiInfo)) {
-            break label392;
-          }
-          localObject = localbu.Qx();
-          localbu.iv((String)localObject + "1".concat(String.valueOf("#")));
-          break label148;
-          localObject = null;
+        if (bs.isNullOrNil(((h)paramy).fPB.azp())) {
           break;
         }
-        label392:
-        localObject = localbu.Qx();
-        localbu.iv((String)localObject + "2".concat(String.valueOf("#")));
+        localObject = g.ad(com.tencent.mm.plugin.emoji.b.d.class);
+        k.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
+        if (!((com.tencent.mm.plugin.emoji.b.d)localObject).getEmojiMgr().XQ(((h)paramy).fPB.azp())) {
+          break;
+        }
+        ac.i("MicroMsg.SimilarEmoji", "buy and resend emoji");
       }
-      label432:
-      localbu.aBj();
-      AppMethodBeat.o(105853);
+      paramContext = ((h)paramy).fPB;
+      paramy = az.faZ();
+      k.g(paramy, "EmojiStorageMgr.getInstance()");
+      if (paramy.bEN().aOT(paramContext.field_md5) == null)
+      {
+        paramy = az.faZ();
+        k.g(paramy, "EmojiStorageMgr.getInstance()");
+        paramy.bEN().K(paramContext);
+      }
+      paramy = this.fTJ;
+      if (paramy == null) {
+        break label397;
+      }
+      paramy.B(paramContext);
+      AppMethodBeat.o(105837);
+      return;
+    }
+    paramy = ((h)paramy).fPB;
+    localObject = new d.a(paramContext);
+    ((d.a)localObject).aRH("");
+    ((d.a)localObject).aRI(paramContext.getString(2131763721));
+    ((d.a)localObject).yf(true);
+    ((d.a)localObject).acM(2131758210).b((DialogInterface.OnClickListener)new b(paramy, paramContext));
+    ((d.a)localObject).acN(2131755691);
+    paramContext = ((d.a)localObject).fvp();
+    k.g(paramContext, "alert");
+    paramy = paramContext.getWindow();
+    if (paramy != null)
+    {
+      paramy.setSoftInputMode(48);
+      paramy.setFlags(131072, 131072);
+    }
+    paramContext.show();
+    AppMethodBeat.o(105837);
+    return;
+    label397:
+    AppMethodBeat.o(105837);
+    return;
+    label403:
+    if (((paramy instanceof ad)) && (((ad)paramy).fRp == 101))
+    {
+      if (this.Gwu == null)
+      {
+        ac.i("MicroMsg.SimilarEmoji", "can not jump for null data!");
+        AppMethodBeat.o(105837);
+        return;
+      }
+      paramy = com.tencent.mm.search.c.b.GwA;
+      com.tencent.mm.search.c.b.eWY();
+      paramy = new Intent();
+      paramy.putExtra("KEY_NET_PARAM", (Parcelable)this.Gwu);
+      com.tencent.mm.br.d.b(((t)paramContext).getBaseContext(), "webview", ".emojistore.ui.SosSimilarUI", paramy, 229);
+    }
+    AppMethodBeat.o(105837);
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  static final class b
+    implements DialogInterface.OnClickListener
+  {
+    b(EmojiInfo paramEmojiInfo, Context paramContext) {}
+    
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+    {
+      AppMethodBeat.i(105836);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("extra_id", this.fTM.field_groupId);
+      localIntent.putExtra("preceding_scence", 20);
+      Context localContext = paramContext;
+      if (localContext == null)
+      {
+        paramDialogInterface = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMContextThemeWrapper");
+        AppMethodBeat.o(105836);
+        throw paramDialogInterface;
+      }
+      com.tencent.mm.br.d.b(((t)localContext).getBaseContext(), "emoji", ".ui.EmojiStoreDetailUI", localIntent);
+      paramDialogInterface.cancel();
+      AppMethodBeat.o(105836);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.search.b.b
  * JD-Core Version:    0.7.0.1
  */

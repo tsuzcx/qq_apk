@@ -8,21 +8,15 @@ public abstract class cx
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eCC = "timestamp".hashCode();
-  private static final int eKA = "rankID".hashCode();
-  private static final int eKB = "appusername".hashCode();
-  private static final int eKC = "liketips".hashCode();
-  private static final int eme = "username".hashCode();
+  private static final int eMD = "championUrl".hashCode();
+  private static final int eME = "championMotto".hashCode();
+  private static final int eok = "username".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCs = true;
-  private boolean eKx = true;
-  private boolean eKy = true;
-  private boolean eKz = true;
-  private boolean emb = true;
-  public String field_appusername;
-  public String field_liketips;
-  public String field_rankID;
-  public int field_timestamp;
+  private boolean eMB = true;
+  private boolean eMC = true;
+  private boolean eoh = true;
+  public String field_championMotto;
+  public String field_championUrl;
   public String field_username;
   
   public void convertFrom(Cursor paramCursor)
@@ -38,10 +32,10 @@ public abstract class cx
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eKA != k) {
+      if (eok != k) {
         break label60;
       }
-      this.field_rankID = paramCursor.getString(i);
+      this.field_username = paramCursor.getString(i);
     }
     for (;;)
     {
@@ -49,14 +43,10 @@ public abstract class cx
       break label20;
       break;
       label60:
-      if (eKB == k) {
-        this.field_appusername = paramCursor.getString(i);
-      } else if (eme == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (eCC == k) {
-        this.field_timestamp = paramCursor.getInt(i);
-      } else if (eKC == k) {
-        this.field_liketips = paramCursor.getString(i);
+      if (eMD == k) {
+        this.field_championUrl = paramCursor.getString(i);
+      } else if (eME == k) {
+        this.field_championMotto = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -66,23 +56,14 @@ public abstract class cx
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eKx) {
-      localContentValues.put("rankID", this.field_rankID);
-    }
-    if (this.eKy) {
-      localContentValues.put("appusername", this.field_appusername);
-    }
-    if (this.emb) {
+    if (this.eoh) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eCs) {
-      localContentValues.put("timestamp", Integer.valueOf(this.field_timestamp));
+    if (this.eMB) {
+      localContentValues.put("championUrl", this.field_championUrl);
     }
-    if (this.field_liketips == null) {
-      this.field_liketips = "";
-    }
-    if (this.eKz) {
-      localContentValues.put("liketips", this.field_liketips);
+    if (this.eMC) {
+      localContentValues.put("championMotto", this.field_championMotto);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

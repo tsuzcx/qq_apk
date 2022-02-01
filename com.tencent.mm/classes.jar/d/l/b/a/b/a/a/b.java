@@ -27,36 +27,36 @@ import java.util.List;
 public final class b
   extends d.l.b.a.b.b.c.a
 {
-  private static final d.l.b.a.b.f.a Jou;
-  private static final d.l.b.a.b.f.a Jov;
-  public static final a Jow;
-  private final i JlL;
-  private final b Joq;
-  private final d Jor;
-  private final d.l.b.a.b.b.ab Jos;
-  final c Jot;
+  private static final d.l.b.a.b.f.a LbO;
+  private static final d.l.b.a.b.f.a LbP;
+  public static final a LbQ;
+  private final i KZf;
+  private final b LbK;
+  private final d LbL;
+  private final d.l.b.a.b.b.ab LbM;
+  final c LbN;
   final int arity;
   final List<as> parameters;
   
   static
   {
     AppMethodBeat.i(56733);
-    Jow = new a((byte)0);
-    Jou = new d.l.b.a.b.f.a(d.l.b.a.b.a.g.JlB, d.l.b.a.b.f.f.aQC("Function"));
-    Jov = new d.l.b.a.b.f.a(d.l.b.a.b.a.j.fxp(), d.l.b.a.b.f.f.aQC("KFunction"));
+    LbQ = new a((byte)0);
+    LbO = new d.l.b.a.b.f.a(d.l.b.a.b.a.g.KYV, d.l.b.a.b.f.f.aWB("Function"));
+    LbP = new d.l.b.a.b.f.a(d.l.b.a.b.a.j.fPT(), d.l.b.a.b.f.f.aWB("KFunction"));
     AppMethodBeat.o(56733);
   }
   
   public b(final i parami, d.l.b.a.b.b.ab paramab, c paramc, int paramInt)
   {
-    super(parami, paramc.adT(paramInt));
+    super(parami, paramc.agP(paramInt));
     AppMethodBeat.i(56732);
-    this.JlL = parami;
-    this.Jos = paramab;
-    this.Jot = paramc;
+    this.KZf = parami;
+    this.LbM = paramab;
+    this.LbN = paramc;
     this.arity = paramInt;
-    this.Joq = new b();
-    this.Jor = new d(this.JlL, this);
+    this.LbK = new b();
+    this.LbL = new d(this.KZf, this);
     parami = new ArrayList();
     paramab = new d.g.b.l(parami)
     {
@@ -66,9 +66,9 @@ public final class b
         k.h(paramAnonymousbh, "variance");
         k.h(paramAnonymousString, "name");
         ArrayList localArrayList = parami;
-        d.l.b.a.b.b.l locall = (d.l.b.a.b.b.l)this.Jox;
-        g.a locala = d.l.b.a.b.b.a.g.JrB;
-        localArrayList.add(ai.a(locall, g.a.fzI(), paramAnonymousbh, d.l.b.a.b.f.f.aQC(paramAnonymousString), parami.size()));
+        d.l.b.a.b.b.l locall = (d.l.b.a.b.b.l)this.LbR;
+        g.a locala = d.l.b.a.b.b.a.g.LeU;
+        localArrayList.add(ai.a(locall, g.a.fSm(), paramAnonymousbh, d.l.b.a.b.f.f.aWB(paramAnonymousString), parami.size()));
         AppMethodBeat.o(56717);
       }
     };
@@ -78,100 +78,100 @@ public final class b
     while (((Iterator)localObject).hasNext())
     {
       paramInt = ((d.a.ab)localObject).nextInt();
-      paramab.a(bh.JYD, "P".concat(String.valueOf(paramInt)));
-      paramc.add(d.y.JfV);
+      paramab.a(bh.LLW, "P".concat(String.valueOf(paramInt)));
+      paramc.add(d.y.KTp);
     }
-    paramab.a(bh.JYE, "R");
-    this.parameters = d.a.j.m((Iterable)parami);
+    paramab.a(bh.LLX, "R");
+    this.parameters = d.a.j.l((Iterable)parami);
     AppMethodBeat.o(56732);
   }
   
-  public final boolean fxA()
+  public final at fPW()
   {
-    return false;
+    return (at)this.LbK;
   }
   
-  public final boolean fxB()
+  public final d.l.b.a.b.b.f fPY()
   {
-    return false;
+    return d.l.b.a.b.b.f.Ldx;
   }
   
-  public final boolean fxC()
+  public final w fPZ()
   {
-    return false;
+    return w.LdJ;
   }
   
-  public final boolean fxD()
-  {
-    return false;
-  }
-  
-  public final boolean fxE()
-  {
-    return false;
-  }
-  
-  public final d.l.b.a.b.b.a.g fxF()
-  {
-    AppMethodBeat.i(56729);
-    Object localObject = d.l.b.a.b.b.a.g.JrB;
-    localObject = g.a.fzI();
-    AppMethodBeat.o(56729);
-    return localObject;
-  }
-  
-  public final an fxG()
-  {
-    AppMethodBeat.i(56730);
-    an localan = an.JqJ;
-    k.g(localan, "SourceElement.NO_SOURCE");
-    AppMethodBeat.o(56730);
-    return localan;
-  }
-  
-  public final List<as> fxI()
-  {
-    return this.parameters;
-  }
-  
-  public final at fxs()
-  {
-    return (at)this.Joq;
-  }
-  
-  public final d.l.b.a.b.b.f fxu()
-  {
-    return d.l.b.a.b.b.f.Jqe;
-  }
-  
-  public final w fxv()
-  {
-    return w.Jqq;
-  }
-  
-  public final ba fxx()
+  public final ba fQb()
   {
     AppMethodBeat.i(56728);
-    ba localba = az.JqT;
+    ba localba = az.Lem;
     k.g(localba, "Visibilities.PUBLIC");
     AppMethodBeat.o(56728);
     return localba;
   }
   
-  public final boolean fxy()
+  public final boolean fQc()
   {
     return false;
   }
   
-  public final boolean fxz()
+  public final boolean fQd()
   {
     return false;
+  }
+  
+  public final boolean fQe()
+  {
+    return false;
+  }
+  
+  public final boolean fQf()
+  {
+    return false;
+  }
+  
+  public final boolean fQg()
+  {
+    return false;
+  }
+  
+  public final boolean fQh()
+  {
+    return false;
+  }
+  
+  public final boolean fQi()
+  {
+    return false;
+  }
+  
+  public final d.l.b.a.b.b.a.g fQj()
+  {
+    AppMethodBeat.i(56729);
+    Object localObject = d.l.b.a.b.b.a.g.LeU;
+    localObject = g.a.fSm();
+    AppMethodBeat.o(56729);
+    return localObject;
+  }
+  
+  public final an fQk()
+  {
+    AppMethodBeat.i(56730);
+    an localan = an.Lec;
+    k.g(localan, "SourceElement.NO_SOURCE");
+    AppMethodBeat.o(56730);
+    return localan;
+  }
+  
+  public final List<as> fQm()
+  {
+    return this.parameters;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(56731);
-    String str = fyB().qV();
+    String str = fRf().rf();
     k.g(str, "name.asString()");
     AppMethodBeat.o(56731);
     return str;
@@ -189,21 +189,21 @@ public final class b
       AppMethodBeat.o(56722);
     }
     
-    public final Collection<d.l.b.a.b.m.ab> fxL()
+    public final Collection<d.l.b.a.b.m.ab> fQp()
     {
       AppMethodBeat.i(56719);
-      Object localObject1 = this.Jox.Jot;
+      Object localObject1 = this.LbR.LbN;
       d.l.b.a.b.b.y localy;
       Object localObject2;
-      switch (c.ciE[localObject1.ordinal()])
+      switch (c.cfA[localObject1.ordinal()])
       {
       default: 
         localObject1 = new d.m();
         AppMethodBeat.o(56719);
         throw ((Throwable)localObject1);
       case 1: 
-        localObject1 = d.a.j.listOf(b.fxJ());
-        localy = b.a(this.Jox).fzc();
+        localObject1 = d.a.j.listOf(b.fQn());
+        localy = b.a(this.LbR).fRG();
         localObject2 = (Iterable)localObject1;
         localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
         localObject2 = ((Iterable)localObject2).iterator();
@@ -220,54 +220,54 @@ public final class b
           localObject1 = (Throwable)new IllegalStateException(("Built-in class " + localObject3 + " not found").toString());
           AppMethodBeat.o(56719);
           throw ((Throwable)localObject1);
-          localObject1 = d.a.j.listOf(new d.l.b.a.b.f.a[] { b.fxK(), new d.l.b.a.b.f.a(d.l.b.a.b.a.g.JlB, b.c.Joz.adT(this.Jox.arity)) });
+          localObject1 = d.a.j.listOf(new d.l.b.a.b.f.a[] { b.fQo(), new d.l.b.a.b.f.a(d.l.b.a.b.a.g.KYV, b.c.LbS.agP(this.LbR.arity)) });
           break;
-          localObject1 = d.a.j.listOf(b.fxJ());
+          localObject1 = d.a.j.listOf(b.fQn());
           break;
-          localObject1 = d.a.j.listOf(new d.l.b.a.b.f.a[] { b.fxK(), new d.l.b.a.b.f.a(c.JRb, b.c.JoA.adT(this.Jox.arity)) });
+          localObject1 = d.a.j.listOf(new d.l.b.a.b.f.a[] { b.fQo(), new d.l.b.a.b.f.a(c.LEu, b.c.LbT.agP(this.LbR.arity)) });
           break;
         }
-        localObject3 = b.b(this.Jox);
-        Object localObject4 = locale.fxs();
+        localObject3 = b.b(this.LbR);
+        Object localObject4 = locale.fPW();
         k.g(localObject4, "descriptor.typeConstructor");
         localObject4 = (Iterable)d.a.j.D((List)localObject3, ((at)localObject4).getParameters().size());
         localObject3 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject4, 10));
         localObject4 = ((Iterable)localObject4).iterator();
         while (((Iterator)localObject4).hasNext()) {
-          ((Collection)localObject3).add(new ax((d.l.b.a.b.m.ab)((as)((Iterator)localObject4).next()).fyA()));
+          ((Collection)localObject3).add(new ax((d.l.b.a.b.m.ab)((as)((Iterator)localObject4).next()).fRe()));
         }
         localObject3 = (List)localObject3;
-        localObject4 = d.l.b.a.b.b.a.g.JrB;
-        ((Collection)localObject1).add(ac.a(g.a.fzI(), locale, (List)localObject3));
+        localObject4 = d.l.b.a.b.b.a.g.LeU;
+        ((Collection)localObject1).add(ac.a(g.a.fSm(), locale, (List)localObject3));
       }
       label441:
-      localObject1 = (Collection)d.a.j.m((Iterable)localObject1);
+      localObject1 = (Collection)d.a.j.l((Iterable)localObject1);
       AppMethodBeat.o(56719);
       return localObject1;
     }
     
-    public final boolean fxO()
+    public final boolean fQs()
     {
       return true;
     }
     
-    public final aq fxP()
+    public final aq fQt()
     {
-      return (aq)aq.a.JqL;
+      return (aq)aq.a.Lee;
     }
     
     public final List<as> getParameters()
     {
-      AppMethodBeat.i(202316);
-      List localList = b.b(this.Jox);
-      AppMethodBeat.o(202316);
+      AppMethodBeat.i(210232);
+      List localList = b.b(this.LbR);
+      AppMethodBeat.o(210232);
       return localList;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(56721);
-      String str = this.Jox.toString();
+      String str = this.LbR.toString();
       AppMethodBeat.o(56721);
       return str;
     }
@@ -275,40 +275,40 @@ public final class b
   
   public static enum c
   {
-    public static final a JoG;
-    public final d.l.b.a.b.f.b JoE;
-    public final String JoF;
+    public static final a LbZ;
+    public final d.l.b.a.b.f.b LbX;
+    public final String LbY;
     
     static
     {
       AppMethodBeat.i(56723);
-      Object localObject1 = d.l.b.a.b.a.g.JlB;
+      Object localObject1 = d.l.b.a.b.a.g.KYV;
       k.g(localObject1, "BUILT_INS_PACKAGE_FQ_NAME");
       localObject1 = new c("Function", 0, (d.l.b.a.b.f.b)localObject1, "Function");
-      Joz = (c)localObject1;
-      Object localObject2 = c.JRb;
+      LbS = (c)localObject1;
+      Object localObject2 = c.LEu;
       k.g(localObject2, "COROUTINES_PACKAGE_FQ_NAME_RELEASE");
       localObject2 = new c("SuspendFunction", 1, (d.l.b.a.b.f.b)localObject2, "SuspendFunction");
-      JoA = (c)localObject2;
-      c localc1 = new c("KFunction", 2, d.l.b.a.b.a.j.fxp(), "KFunction");
-      JoB = localc1;
-      c localc2 = new c("KSuspendFunction", 3, d.l.b.a.b.a.j.fxp(), "KSuspendFunction");
-      JoC = localc2;
-      JoD = new c[] { localObject1, localObject2, localc1, localc2 };
-      JoG = new a((byte)0);
+      LbT = (c)localObject2;
+      c localc1 = new c("KFunction", 2, d.l.b.a.b.a.j.fPT(), "KFunction");
+      LbU = localc1;
+      c localc2 = new c("KSuspendFunction", 3, d.l.b.a.b.a.j.fPT(), "KSuspendFunction");
+      LbV = localc2;
+      LbW = new c[] { localObject1, localObject2, localc1, localc2 };
+      LbZ = new a((byte)0);
       AppMethodBeat.o(56723);
     }
     
     private c(d.l.b.a.b.f.b paramb, String paramString)
     {
-      this.JoE = paramb;
-      this.JoF = paramString;
+      this.LbX = paramb;
+      this.LbY = paramString;
     }
     
-    public final d.l.b.a.b.f.f adT(int paramInt)
+    public final d.l.b.a.b.f.f agP(int paramInt)
     {
       AppMethodBeat.i(56724);
-      d.l.b.a.b.f.f localf = d.l.b.a.b.f.f.aQC(this.JoF + paramInt);
+      d.l.b.a.b.f.f localf = d.l.b.a.b.f.f.aWB(this.LbY + paramInt);
       k.g(localf, "Name.identifier(\"$classNamePrefix$arity\")");
       AppMethodBeat.o(56724);
       return localf;
@@ -319,7 +319,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

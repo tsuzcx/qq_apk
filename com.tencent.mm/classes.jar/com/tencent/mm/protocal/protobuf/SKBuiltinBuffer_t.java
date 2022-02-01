@@ -3,11 +3,11 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SKBuiltinBuffer_t
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   private static final int fieldNumberBuffer = 2;
   private static final int fieldNumberILen = 1;
-  private com.tencent.mm.bx.b Buffer;
+  private com.tencent.mm.bw.b Buffer;
   private boolean hasBuffer;
   private boolean hasILen;
   private int iLen;
@@ -27,7 +27,7 @@ public class SKBuiltinBuffer_t
   public int computeSize()
   {
     AppMethodBeat.i(2372);
-    int j = f.a.a.b.b.a.bA(1, this.iLen) + 0;
+    int j = f.a.a.b.b.a.bx(1, this.iLen) + 0;
     int i = j;
     if (this.hasBuffer) {
       i = j + f.a.a.b.b.a.b(2, this.Buffer);
@@ -37,14 +37,14 @@ public class SKBuiltinBuffer_t
     return i + j;
   }
   
-  public com.tencent.mm.bx.b getBuffer()
+  public com.tencent.mm.bw.b getBuffer()
   {
     return this.Buffer;
   }
   
   public byte[] getBufferToBytes()
   {
-    return this.Buffer.wA;
+    return this.Buffer.xy;
   }
   
   public int getILen()
@@ -61,21 +61,17 @@ public class SKBuiltinBuffer_t
   {
     AppMethodBeat.i(2376);
     paramArrayOfByte = new f.a.a.a.a(paramArrayOfByte, unknownTagHandler);
-    for (int i = getNextFieldNumber(paramArrayOfByte);; i = getNextFieldNumber(paramArrayOfByte))
-    {
-      if (i <= 0)
-      {
-        paramArrayOfByte = validate();
-        AppMethodBeat.o(2376);
-        return paramArrayOfByte;
-      }
+    for (int i = getNextFieldNumber(paramArrayOfByte); i > 0; i = getNextFieldNumber(paramArrayOfByte)) {
       if (!populateBuilderWithField(paramArrayOfByte, this, i)) {
-        paramArrayOfByte.fMq();
+        paramArrayOfByte.gfg();
       }
     }
+    paramArrayOfByte = validate();
+    AppMethodBeat.o(2376);
+    return paramArrayOfByte;
   }
   
-  public final boolean populateBuilderWithField(f.a.a.a.a parama, com.tencent.mm.bx.a parama1, int paramInt)
+  public final boolean populateBuilderWithField(f.a.a.a.a parama, com.tencent.mm.bw.a parama1, int paramInt)
   {
     AppMethodBeat.i(2375);
     parama1 = (SKBuiltinBuffer_t)parama1;
@@ -89,13 +85,13 @@ public class SKBuiltinBuffer_t
     {
       AppMethodBeat.o(2375);
       return bool;
-      parama1.setILen(parama.KhF.xS());
+      parama1.setILen(parama.LVo.xF());
       continue;
-      parama1.setBuffer(parama.KhF.fMu());
+      parama1.setBuffer(parama.LVo.gfk());
     }
   }
   
-  public SKBuiltinBuffer_t setBuffer(com.tencent.mm.bx.b paramb)
+  public SKBuiltinBuffer_t setBuffer(com.tencent.mm.bw.b paramb)
   {
     AppMethodBeat.i(2369);
     if (paramb == null) {
@@ -103,7 +99,7 @@ public class SKBuiltinBuffer_t
     }
     this.Buffer = paramb;
     this.hasBuffer = true;
-    setILen(this.Buffer.wA.length);
+    setILen(this.Buffer.xy.length);
     AppMethodBeat.o(2369);
     return this;
   }
@@ -111,9 +107,9 @@ public class SKBuiltinBuffer_t
   public SKBuiltinBuffer_t setBuffer(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(2367);
-    paramArrayOfByte = com.tencent.mm.bx.b.cd(paramArrayOfByte);
+    paramArrayOfByte = com.tencent.mm.bw.b.cc(paramArrayOfByte);
     setBuffer(paramArrayOfByte);
-    setILen(paramArrayOfByte.wA.length);
+    setILen(paramArrayOfByte.xy.length);
     AppMethodBeat.o(2367);
     return this;
   }
@@ -121,9 +117,9 @@ public class SKBuiltinBuffer_t
   public SKBuiltinBuffer_t setBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2368);
-    paramArrayOfByte = com.tencent.mm.bx.b.F(paramArrayOfByte, paramInt1, paramInt2);
+    paramArrayOfByte = com.tencent.mm.bw.b.E(paramArrayOfByte, paramInt1, paramInt2);
     setBuffer(paramArrayOfByte);
-    setILen(paramArrayOfByte.wA.length);
+    setILen(paramArrayOfByte.xy.length);
     AppMethodBeat.o(2368);
     return this;
   }
@@ -140,14 +136,15 @@ public class SKBuiltinBuffer_t
   public String toString()
   {
     AppMethodBeat.i(2370);
-    String str2 = new StringBuilder(String.valueOf("")).append(getClass().getName()).append("(").toString() + "iLen = " + this.iLen + "   ";
-    String str1 = str2;
+    Object localObject = "" + getClass().getName() + "(";
+    String str = (String)localObject + "iLen = " + this.iLen + "   ";
+    localObject = str;
     if (this.hasBuffer) {
-      str1 = str2 + "Buffer = " + this.Buffer + "   ";
+      localObject = str + "Buffer = " + this.Buffer + "   ";
     }
-    str1 = str1 + ")";
+    localObject = (String)localObject + ")";
     AppMethodBeat.o(2370);
-    return str1;
+    return localObject;
   }
   
   protected SKBuiltinBuffer_t validate()

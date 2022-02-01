@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 import android.os.Parcel;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class ICommLibReader$b
 {
@@ -38,7 +38,7 @@ public final class ICommLibReader$b
     }
     catch (Exception paramParcel)
     {
-      ad.e("Luggage.WXA.ICommLibReader.ParcelHelper", "readFromParcel e=%s", new Object[] { paramParcel });
+      ac.e("Luggage.WXA.ICommLibReader.ParcelHelper", "readFromParcel e=%s", new Object[] { paramParcel });
       AppMethodBeat.o(178573);
     }
     return null;

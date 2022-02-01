@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.card.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.card.d.e;
 import com.tencent.mm.plugin.card.d.r;
 import com.tencent.mm.plugin.card.model.CardInfo;
@@ -13,14 +13,14 @@ import com.tencent.mm.plugin.card.model.g.c;
 import com.tencent.mm.plugin.card.model.i;
 import com.tencent.mm.plugin.card.model.j;
 import com.tencent.mm.plugin.card.model.k;
-import com.tencent.mm.protocal.protobuf.bwv;
-import com.tencent.mm.protocal.protobuf.cdy;
-import com.tencent.mm.protocal.protobuf.cdz;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.protocal.protobuf.cbp;
+import com.tencent.mm.protocal.protobuf.cjb;
+import com.tencent.mm.protocal.protobuf.cjc;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,36 +28,36 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class g
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  public int fLq;
-  public List<WeakReference<a>> nqa;
-  public com.tencent.mm.plugin.card.d.c nqx;
-  public av nqy;
+  public int fPc;
+  public List<WeakReference<a>> nTa;
+  public com.tencent.mm.plugin.card.d.c nTx;
+  public au nTy;
   
   public g()
   {
     AppMethodBeat.i(112625);
-    this.nqa = new ArrayList();
-    this.nqy = new av(new av.a()
+    this.nTa = new ArrayList();
+    this.nTy = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(112624);
-        ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onTimerExpired, do refresh code!");
+        ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onTimerExpired, do refresh code!");
         g localg = g.this;
-        ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onShowTimeExpired()");
-        if (localg.nqa != null)
+        ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onShowTimeExpired()");
+        if (localg.nTa != null)
         {
           int i = 0;
-          while (i < localg.nqa.size())
+          while (i < localg.nTa.size())
           {
-            Object localObject = (WeakReference)localg.nqa.get(i);
+            Object localObject = (WeakReference)localg.nTa.get(i);
             if (localObject != null)
             {
               localObject = (g.a)((WeakReference)localObject).get();
               if (localObject != null) {
-                ((g.a)localObject).bIA();
+                ((g.a)localObject).bPN();
               }
             }
             i += 1;
@@ -70,28 +70,28 @@ public final class g
     AppMethodBeat.o(112625);
   }
   
-  private void N(LinkedList<bwv> paramLinkedList)
+  private void N(LinkedList<cbp> paramLinkedList)
   {
     AppMethodBeat.i(112636);
-    com.tencent.mm.kernel.g.afA().gcy.a(1275, this);
+    com.tencent.mm.kernel.g.agQ().ghe.a(1275, this);
     paramLinkedList = new ah(paramLinkedList);
-    com.tencent.mm.kernel.g.afA().gcy.a(paramLinkedList, 0);
+    com.tencent.mm.kernel.g.agQ().ghe.a(paramLinkedList, 0);
     AppMethodBeat.o(112636);
   }
   
   private void a(com.tencent.mm.plugin.card.d.c paramc)
   {
     AppMethodBeat.i(112642);
-    ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onSuccess()");
-    if (this.nqa == null)
+    ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onSuccess()");
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112642);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      Object localObject = (WeakReference)this.nqa.get(i);
+      Object localObject = (WeakReference)this.nTa.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -104,39 +104,39 @@ public final class g
     AppMethodBeat.o(112642);
   }
   
-  private void a(cdz paramcdz)
+  private void a(cjc paramcjc)
   {
     AppMethodBeat.i(112638);
-    if (paramcdz == null)
+    if (paramcjc == null)
     {
       AppMethodBeat.o(112638);
       return;
     }
-    String str = paramcdz.dyc;
+    String str = paramcjc.dvO;
     Object localObject;
-    if (am.bJk().Qu(str) == null)
+    if (am.bQx().UG(str) == null)
     {
-      localObject = b(paramcdz);
-      am.bJk().insert((com.tencent.mm.sdk.e.c)localObject);
+      localObject = b(paramcjc);
+      am.bQx().insert((com.tencent.mm.sdk.e.c)localObject);
     }
     for (;;)
     {
-      localObject = am.bJj().Qv(str);
-      if ((!((List)localObject).isEmpty()) && (am.bJj().vv(str)) && (this.nqx != null)) {
-        a(str, (List)localObject, this.nqx);
+      localObject = am.bQw().UH(str);
+      if ((!((List)localObject).isEmpty()) && (am.bQw().zB(str)) && (this.nTx != null)) {
+        a(str, (List)localObject, this.nTx);
       }
-      paramcdz = paramcdz.Eaf.iterator();
-      while (paramcdz.hasNext())
+      paramcjc = paramcjc.Fxa.iterator();
+      while (paramcjc.hasNext())
       {
-        localObject = (cdy)paramcdz.next();
+        localObject = (cjb)paramcjc.next();
         k localk = new k();
         localk.field_card_id = str;
-        localk.field_code_id = ((cdy)localObject).ntk;
-        localk.field_code = e.eG(str, ((cdy)localObject).data);
-        am.bJj().insert(localk);
+        localk.field_code_id = ((cjb)localObject).nWk;
+        localk.field_code = e.eT(str, ((cjb)localObject).data);
+        am.bQw().insert(localk);
       }
-      localObject = b(paramcdz);
-      am.bJk().update((com.tencent.mm.sdk.e.c)localObject, new String[0]);
+      localObject = b(paramcjc);
+      am.bQx().update((com.tencent.mm.sdk.e.c)localObject, new String[0]);
     }
     AppMethodBeat.o(112638);
   }
@@ -148,7 +148,7 @@ public final class g
     if (paramr == null)
     {
       i = 0;
-      ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", i);
+      ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", i);
       localObject = new LinkedList();
       ((LinkedList)localObject).add(paramString);
       if (paramr != null) {
@@ -159,8 +159,8 @@ public final class g
     for (int i = 0;; i = paramr.scene)
     {
       paramString = new ae((LinkedList)localObject, i);
-      com.tencent.mm.kernel.g.afA().gcy.a(1382, this);
-      com.tencent.mm.kernel.g.afA().gcy.a(paramString, 0);
+      com.tencent.mm.kernel.g.agQ().ghe.a(1382, this);
+      com.tencent.mm.kernel.g.agQ().ghe.a(paramString, 0);
       AppMethodBeat.o(112633);
       return;
       i = paramr.scene;
@@ -173,7 +173,7 @@ public final class g
     AppMethodBeat.i(112634);
     if (paramc == null)
     {
-      ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doNetSceneReport error! CardCodeRefreshAction is null! cannot report!");
+      ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doNetSceneReport error! CardCodeRefreshAction is null! cannot report!");
       AppMethodBeat.o(112634);
       return;
     }
@@ -191,7 +191,7 @@ public final class g
     AppMethodBeat.i(112630);
     if (System.currentTimeMillis() - parami.field_fetch_time > parami.field_expire_time_interval * 1000)
     {
-      ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "code  expire time is true! currentTime= %s,codeFetchTime=%s,field_expire_time_interval=%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Long.valueOf(parami.field_fetch_time), Integer.valueOf(parami.field_expire_time_interval) });
+      ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "code  expire time is true! currentTime= %s,codeFetchTime=%s,field_expire_time_interval=%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Long.valueOf(parami.field_fetch_time), Integer.valueOf(parami.field_expire_time_interval) });
       AppMethodBeat.o(112630);
       return true;
     }
@@ -199,50 +199,50 @@ public final class g
     return false;
   }
   
-  private static i b(cdz paramcdz)
+  private static i b(cjc paramcjc)
   {
     AppMethodBeat.i(112639);
     i locali = new i();
-    locali.field_card_id = paramcdz.dyc;
-    locali.field_lower_bound = paramcdz.Eaa;
-    locali.field_expire_time_interval = paramcdz.Ead;
-    locali.field_need_insert_show_timestamp = paramcdz.Eab;
-    locali.field_show_expire_interval = paramcdz.Eae;
-    locali.field_show_timestamp_encrypt_key = paramcdz.Eac;
+    locali.field_card_id = paramcjc.dvO;
+    locali.field_lower_bound = paramcjc.FwV;
+    locali.field_expire_time_interval = paramcjc.FwY;
+    locali.field_need_insert_show_timestamp = paramcjc.FwW;
+    locali.field_show_expire_interval = paramcjc.FwZ;
+    locali.field_show_timestamp_encrypt_key = paramcjc.FwX;
     locali.field_fetch_time = System.currentTimeMillis();
     AppMethodBeat.o(112639);
     return locali;
   }
   
-  private static bwv b(String paramString1, String paramString2, com.tencent.mm.plugin.card.d.c paramc)
+  private static cbp b(String paramString1, String paramString2, com.tencent.mm.plugin.card.d.c paramc)
   {
     AppMethodBeat.i(112637);
-    bwv localbwv = new bwv();
-    localbwv.dyc = paramString1;
-    localbwv.ntk = paramString2;
-    localbwv.DTm = new Long(System.currentTimeMillis() / 1000L).intValue();
+    cbp localcbp = new cbp();
+    localcbp.dvO = paramString1;
+    localcbp.nWk = paramString2;
+    localcbp.FpI = new Long(System.currentTimeMillis() / 1000L).intValue();
     if (paramc == null) {}
     for (int i = -1;; i = paramc.action)
     {
-      localbwv.DTn = i;
+      localcbp.FpJ = i;
       AppMethodBeat.o(112637);
-      return localbwv;
+      return localcbp;
     }
   }
   
   private void b(com.tencent.mm.plugin.card.d.c paramc)
   {
     AppMethodBeat.i(112644);
-    ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onReceiveCodeUnavailable()");
-    if (this.nqa == null)
+    ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onReceiveCodeUnavailable()");
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112644);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      Object localObject = (WeakReference)this.nqa.get(i);
+      Object localObject = (WeakReference)this.nTa.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -263,12 +263,12 @@ public final class g
       AppMethodBeat.o(112632);
       return false;
     }
-    if ((paramb.bHW() != null) && (paramb.bHW().CPJ))
+    if ((paramb.bPj() != null) && (paramb.bPj().Eiu))
     {
       AppMethodBeat.o(112632);
       return true;
     }
-    ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "get cardInfo is_commom_card is false!");
+    ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "get cardInfo is_commom_card is false!");
     AppMethodBeat.o(112632);
     return false;
   }
@@ -276,10 +276,10 @@ public final class g
   public final void a(a parama)
   {
     AppMethodBeat.i(112641);
-    if (this.nqa == null) {
-      this.nqa = new ArrayList();
+    if (this.nTa == null) {
+      this.nTa = new ArrayList();
     }
-    this.nqa.add(new WeakReference(parama));
+    this.nTa.add(new WeakReference(parama));
     AppMethodBeat.o(112641);
   }
   
@@ -288,37 +288,37 @@ public final class g
     AppMethodBeat.i(112627);
     if (!e(paramb))
     {
-      ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "cannot  get qrCode !");
-      ae(2, "");
+      ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "cannot  get qrCode !");
+      af(2, "");
       AppMethodBeat.o(112627);
       return;
     }
-    if (!com.tencent.mm.plugin.card.d.l.isNetworkAvailable(aj.getContext()))
+    if (!com.tencent.mm.plugin.card.d.l.isNetworkAvailable(ai.getContext()))
     {
-      ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "isNetworkAvailable false cannot connet network!");
-      ae(-1, "");
+      ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "isNetworkAvailable false cannot connet network!");
+      af(-1, "");
       AppMethodBeat.o(112627);
       return;
     }
-    if (this.fLq >= 3)
+    if (this.fPc >= 3)
     {
-      ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doRequestNetSceneGetDynamicQrcode is  limit requestcount:" + this.fLq + ",cannot request!");
+      ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doRequestNetSceneGetDynamicQrcode is  limit requestcount:" + this.fPc + ",cannot request!");
       AppMethodBeat.o(112627);
       return;
     }
-    a(paramb.bHZ(), paramr);
-    this.fLq += 1;
+    a(paramb.bPm(), paramr);
+    this.fPc += 1;
     AppMethodBeat.o(112627);
   }
   
   public final void a(r paramr)
   {
     AppMethodBeat.i(112628);
-    ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard! fromScene=%d", new Object[] { Integer.valueOf(paramr.scene) });
-    Object localObject1 = am.bIV().bIL();
+    ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard! fromScene=%d", new Object[] { Integer.valueOf(paramr.scene) });
+    Object localObject1 = am.bQi().bPY();
     if ((localObject1 == null) || (((List)localObject1).isEmpty()))
     {
-      ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard do update all offileQrcode is failure! is dynamic cardList is empyt!fromScene=%d", new Object[] { Integer.valueOf(paramr.scene) });
+      ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard do update all offileQrcode is failure! is dynamic cardList is empyt!fromScene=%d", new Object[] { Integer.valueOf(paramr.scene) });
       AppMethodBeat.o(112628);
       return;
     }
@@ -328,23 +328,23 @@ public final class g
       CardInfo localCardInfo = (CardInfo)((Iterator)localObject1).next();
       if (localCardInfo == null)
       {
-        ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard  is failure! cardInfo is null fromScene=%d", new Object[] { Integer.valueOf(paramr.scene) });
+        ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard  is failure! cardInfo is null fromScene=%d", new Object[] { Integer.valueOf(paramr.scene) });
       }
       else if (paramr == null)
       {
-        ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard  is failure! fromScene is null!");
+        ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard  is failure! fromScene is null!");
       }
       else
       {
-        ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard  get dynamic code! cardId= %s,fromScene=%d", new Object[] { localCardInfo.bHZ(), Integer.valueOf(paramr.scene) });
+        ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard  get dynamic code! cardId= %s,fromScene=%d", new Object[] { localCardInfo.bPm(), Integer.valueOf(paramr.scene) });
         if (!e(localCardInfo))
         {
-          ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "cannot  get qrCode ! cardId =%s", new Object[] { localCardInfo.bHZ() });
+          ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "cannot  get qrCode ! cardId =%s", new Object[] { localCardInfo.bPm() });
         }
         else
         {
-          Object localObject2 = localCardInfo.bHZ();
-          i locali = am.bJk().Qu((String)localObject2);
+          Object localObject2 = localCardInfo.bPm();
+          i locali = am.bQx().UG((String)localObject2);
           int i;
           if (locali == null) {
             i = 1;
@@ -354,21 +354,21 @@ public final class g
             if (i != 0) {
               break label356;
             }
-            ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "do not need  get qrCode!  cardId =%s,fromScene=%d", new Object[] { localCardInfo.bHZ(), Integer.valueOf(paramr.scene) });
+            ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "do not need  get qrCode!  cardId =%s,fromScene=%d", new Object[] { localCardInfo.bPm(), Integer.valueOf(paramr.scene) });
             break;
-            localObject2 = am.bJj().Qv((String)localObject2);
+            localObject2 = am.bQw().UH((String)localObject2);
             if (((List)localObject2).isEmpty())
             {
               i = 1;
             }
             else if (((List)localObject2).size() < locali.field_lower_bound)
             {
-              this.nqx = com.tencent.mm.plugin.card.d.c.nJd;
+              this.nTx = com.tencent.mm.plugin.card.d.c.omd;
               i = 1;
             }
             else if (a(locali))
             {
-              this.nqx = com.tencent.mm.plugin.card.d.c.nIX;
+              this.nTx = com.tencent.mm.plugin.card.d.c.olX;
               i = 1;
             }
             else
@@ -377,8 +377,8 @@ public final class g
             }
           }
           label356:
-          ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard doNetSceneGetDynamicQrcode! fromScene=%d", new Object[] { Integer.valueOf(paramr.scene) });
-          a(localCardInfo.bHZ(), paramr);
+          ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doUpdateOfflineQrcodeByDynaimicCard doNetSceneGetDynamicQrcode! fromScene=%d", new Object[] { Integer.valueOf(paramr.scene) });
+          a(localCardInfo.bPm(), paramr);
         }
       }
     }
@@ -390,29 +390,29 @@ public final class g
     AppMethodBeat.i(112635);
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.add(b(paramString1, paramString2, paramc));
-    ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doNetSceneReport, operate_list=%d,refreshAction=%d", new Object[] { Integer.valueOf(localLinkedList.size()), Integer.valueOf(paramc.action) });
+    ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doNetSceneReport, operate_list=%d,refreshAction=%d", new Object[] { Integer.valueOf(localLinkedList.size()), Integer.valueOf(paramc.action) });
     N(localLinkedList);
     AppMethodBeat.o(112635);
   }
   
-  public final void ae(int paramInt, String paramString)
+  public final void af(int paramInt, String paramString)
   {
     AppMethodBeat.i(112643);
-    ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onFail()");
-    if (this.nqa == null)
+    ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onFail()");
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112643);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      Object localObject = (WeakReference)this.nqa.get(i);
+      Object localObject = (WeakReference)this.nTa.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
         if (localObject != null) {
-          ((a)localObject).aD(paramInt, paramString);
+          ((a)localObject).aF(paramInt, paramString);
         }
       }
       i += 1;
@@ -424,46 +424,46 @@ public final class g
   {
     AppMethodBeat.i(112629);
     String str = paramg.field_card_id;
-    Object localObject1 = am.bJj();
-    if (paramg.ntd)
+    Object localObject1 = am.bQw();
+    if (paramg.nWd)
     {
-      paramg = am.bJj().Qv(str);
-      localObject2 = ((com.tencent.mm.plugin.card.model.l)localObject1).Qx(str);
-      ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "get msg allUnavailable is true! delete all card code data by card_id=%s", new Object[] { str });
-      if (((com.tencent.mm.plugin.card.model.l)localObject1).vv(str))
+      paramg = am.bQw().UH(str);
+      localObject2 = ((com.tencent.mm.plugin.card.model.l)localObject1).UJ(str);
+      ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "get msg allUnavailable is true! delete all card code data by card_id=%s", new Object[] { str });
+      if (((com.tencent.mm.plugin.card.model.l)localObject1).zB(str))
       {
         if (localObject2 != null)
         {
-          ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "code is showing card_id= %s,notify ui to refresh!", new Object[] { str });
-          b(com.tencent.mm.plugin.card.d.c.nJc);
+          ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "code is showing card_id= %s,notify ui to refresh!", new Object[] { str });
+          b(com.tencent.mm.plugin.card.d.c.omc);
         }
-        a(str, paramg, com.tencent.mm.plugin.card.d.c.nJc);
+        a(str, paramg, com.tencent.mm.plugin.card.d.c.omc);
       }
       AppMethodBeat.o(112629);
       return;
     }
-    Object localObject2 = paramg.nte;
+    Object localObject2 = paramg.nWe;
     if (localObject2 == null)
     {
-      ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "get msg allUnavailable is false! unavailableQrCodeList is empty, do nothing! card_id=%s", new Object[] { str });
+      ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "get msg allUnavailable is false! unavailableQrCodeList is empty, do nothing! card_id=%s", new Object[] { str });
       AppMethodBeat.o(112629);
       return;
     }
-    ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "get msg allUnavailable is false! delete card code data by unavailableQrCodeList, card_id=%s，unavailableQrCodeList size= %d", new Object[] { str, Integer.valueOf(((List)localObject2).size()) });
-    paramg = ((com.tencent.mm.plugin.card.model.l)localObject1).Qx(str);
+    ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "get msg allUnavailable is false! delete card code data by unavailableQrCodeList, card_id=%s，unavailableQrCodeList size= %d", new Object[] { str, Integer.valueOf(((List)localObject2).size()) });
+    paramg = ((com.tencent.mm.plugin.card.model.l)localObject1).UJ(str);
     localObject1 = new LinkedList();
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       g.c localc = (g.c)((Iterator)localObject2).next();
-      if (am.bJj().ez(str, localc.ntk)) {
-        ((LinkedList)localObject1).add(b(str, localc.ntk, com.tencent.mm.plugin.card.d.c.nJc));
+      if (am.bQw().eM(str, localc.nWk)) {
+        ((LinkedList)localObject1).add(b(str, localc.nWk, com.tencent.mm.plugin.card.d.c.omc));
       }
     }
     if (paramg != null)
     {
-      ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "code is showing card_id= %s,code_id= %s, notify ui to refresh!", new Object[] { str, paramg.field_code_id });
-      b(com.tencent.mm.plugin.card.d.c.nJc);
+      ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "code is showing card_id= %s,code_id= %s, notify ui to refresh!", new Object[] { str, paramg.field_code_id });
+      b(com.tencent.mm.plugin.card.d.c.omc);
     }
     if (!((LinkedList)localObject1).isEmpty()) {
       N((LinkedList)localObject1);
@@ -471,12 +471,12 @@ public final class g
     AppMethodBeat.o(112629);
   }
   
-  public final void bIo()
+  public final void bPB()
   {
     AppMethodBeat.i(112631);
-    ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "stopRefreshCodeTimer!");
-    if (!this.nqy.eFX()) {
-      this.nqy.stopTimer();
+    ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "stopRefreshCodeTimer!");
+    if (!this.nTy.eVs()) {
+      this.nTy.stopTimer();
     }
     AppMethodBeat.o(112631);
   }
@@ -488,28 +488,28 @@ public final class g
     if (paramn != null) {}
     for (Object localObject = paramn.getClass();; localObject = "")
     {
-      ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", localObject);
+      ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", localObject);
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label170;
       }
       if (!(paramn instanceof ae)) {
         break label150;
       }
-      paramString = ((ae)paramn).ntP;
+      paramString = ((ae)paramn).nWP;
       if (paramString != null) {
         break;
       }
-      ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "onSceneEnd, resp  qr_code_item_list is null ");
+      ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "onSceneEnd, resp  qr_code_item_list is null ");
       AppMethodBeat.o(112640);
       return;
     }
     a(paramString);
-    a(this.nqx);
-    com.tencent.mm.kernel.g.afA().gcy.b(1382, this);
+    a(this.nTx);
+    com.tencent.mm.kernel.g.agQ().ghe.b(1382, this);
     AppMethodBeat.o(112640);
     return;
     label150:
-    com.tencent.mm.kernel.g.afA().gcy.b(1275, this);
+    com.tencent.mm.kernel.g.agQ().ghe.b(1275, this);
     AppMethodBeat.o(112640);
     return;
     label170:
@@ -525,40 +525,40 @@ public final class g
     label293:
     for (localObject = paramn.getClass();; localObject = "")
     {
-      ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", localObject);
+      ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", localObject);
       if (!(paramn instanceof ae)) {
         break label301;
       }
-      ae(paramInt2, paramString);
-      com.tencent.mm.kernel.g.afA().gcy.b(1382, this);
+      af(paramInt2, paramString);
+      com.tencent.mm.kernel.g.agQ().ghe.b(1382, this);
       AppMethodBeat.o(112640);
       return;
       paramInt1 = 0;
       break;
     }
     label301:
-    com.tencent.mm.kernel.g.afA().gcy.b(1275, this);
+    com.tencent.mm.kernel.g.agQ().ghe.b(1275, this);
     AppMethodBeat.o(112640);
   }
   
   public final void release()
   {
     AppMethodBeat.i(112626);
-    this.fLq = 0;
-    bIo();
-    ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "removeNetSceneListener!");
-    com.tencent.mm.kernel.g.afA().gcy.b(1382, this);
-    com.tencent.mm.kernel.g.afA().gcy.b(1275, this);
+    this.fPc = 0;
+    bPB();
+    ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "removeNetSceneListener!");
+    com.tencent.mm.kernel.g.agQ().ghe.b(1382, this);
+    com.tencent.mm.kernel.g.agQ().ghe.b(1275, this);
     AppMethodBeat.o(112626);
   }
   
   public static abstract interface a
   {
-    public abstract void aD(int paramInt, String paramString);
+    public abstract void aF(int paramInt, String paramString);
     
     public abstract void b(com.tencent.mm.plugin.card.d.c paramc);
     
-    public abstract void bIA();
+    public abstract void bPN();
     
     public abstract void c(com.tencent.mm.plugin.card.d.c paramc);
   }

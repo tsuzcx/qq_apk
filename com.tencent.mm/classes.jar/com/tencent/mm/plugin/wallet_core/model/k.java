@@ -31,14 +31,14 @@ import com.tencent.mm.compatible.util.p;
 import com.tencent.mm.jniinterface.AesEcb;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.az;
-import com.tencent.mm.protocal.protobuf.byx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.bb;
+import com.tencent.mm.protocal.protobuf.cdt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.c.y;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,49 +55,49 @@ import org.json.JSONException;
 
 public final class k
 {
-  private static k.b Aek;
-  private static k Ael;
-  private static az Aem = null;
-  private static long Aen = 0L;
-  public JSONArray Aeo;
+  private static k.b BwE;
+  private static k BwF;
+  private static bb BwG = null;
+  private static long BwH = 0L;
+  public JSONArray BwI;
   
   private k()
   {
     AppMethodBeat.i(70283);
-    g.afC();
-    String str = (String)g.afB().afk().get(ae.a.FkP, "");
-    ad.i("MicroMsg.GpsReportHelper", "GpsReportHelper ".concat(String.valueOf(str)));
-    if (!bt.isNullOrNil(str)) {
+    g.agS();
+    String str = (String)g.agR().agA().get(ah.a.GIE, "");
+    ac.i("MicroMsg.GpsReportHelper", "GpsReportHelper ".concat(String.valueOf(str)));
+    if (!bs.isNullOrNil(str)) {
       try
       {
-        this.Aeo = new JSONArray(str);
+        this.BwI = new JSONArray(str);
         AppMethodBeat.o(70283);
         return;
       }
       catch (JSONException localJSONException)
       {
-        ad.printErrStackTrace("MicroMsg.GpsReportHelper", localJSONException, "", new Object[0]);
-        ad.e("MicroMsg.GpsReportHelper", "parse lbs config error", new Object[] { localJSONException });
+        ac.printErrStackTrace("MicroMsg.GpsReportHelper", localJSONException, "", new Object[0]);
+        ac.e("MicroMsg.GpsReportHelper", "parse lbs config error", new Object[] { localJSONException });
       }
     }
     AppMethodBeat.o(70283);
   }
   
-  public static void Rx(int paramInt)
+  public static void TG(int paramInt)
   {
     AppMethodBeat.i(70291);
-    ad.i("MicroMsg.GpsReportHelper", "reflashLocationInfo ".concat(String.valueOf(paramInt)));
-    Aen = System.currentTimeMillis() / 1000L;
+    ac.i("MicroMsg.GpsReportHelper", "reflashLocationInfo ".concat(String.valueOf(paramInt)));
+    BwH = System.currentTimeMillis() / 1000L;
     if (!shouldReportLocation())
     {
-      Aek = null;
-      ebR();
-      Aen = System.currentTimeMillis() / 1000L;
+      BwE = null;
+      ern();
+      BwH = System.currentTimeMillis() / 1000L;
     }
     AppMethodBeat.o(70291);
   }
   
-  public static az aN(Map<String, String> paramMap)
+  public static bb aR(Map<String, String> paramMap)
   {
     AppMethodBeat.i(70289);
     Object localObject1 = new ArrayList();
@@ -109,7 +109,7 @@ public final class k
     }
     Object localObject2 = TextUtils.join("&", (Iterable)localObject1);
     byte[] arrayOfByte = new byte[16];
-    localObject1 = y.fjW().getBytes();
+    localObject1 = y.fAm().getBytes();
     if (localObject1 != null)
     {
       paramMap = (Map<String, String>)localObject1;
@@ -134,55 +134,55 @@ public final class k
       j = i;
       i = k;
     } while (k < 16);
-    paramMap = new az();
+    paramMap = new bb();
     localObject1 = Base64.encode(arrayOfByte, 0);
-    paramMap.Cvi = o.ebU().bR((byte[])localObject1);
-    paramMap.Cvh = new String(Base64.encode(AesEcb.aesCryptEcb(((String)localObject2).getBytes(), arrayOfByte, true, true), 0));
+    paramMap.DND = o.erq().bQ((byte[])localObject1);
+    paramMap.DNC = new String(Base64.encode(AesEcb.aesCryptEcb(((String)localObject2).getBytes(), arrayOfByte, true, true), 0));
     AppMethodBeat.o(70289);
     return paramMap;
   }
   
-  public static byx cRk()
+  public static cdt deU()
   {
     AppMethodBeat.i(70294);
-    if (Aem == null)
+    if (BwG == null)
     {
       AppMethodBeat.o(70294);
       return null;
     }
-    byx localbyx = new byx();
-    localbyx.evA = Aem.evA;
-    localbyx.evz = Aem.evz;
-    localbyx.latitude = Aem.latitude;
-    localbyx.longitude = Aem.longitude;
-    localbyx.Cve = Aem.Cve;
-    localbyx.Cvi = Aem.Cvi;
-    localbyx.Cvf = Aem.Cvf;
-    localbyx.Cvg = Aem.Cvg;
-    localbyx.Cvh = Aem.Cvh;
+    cdt localcdt = new cdt();
+    localcdt.exW = BwG.exW;
+    localcdt.exV = BwG.exV;
+    localcdt.latitude = BwG.latitude;
+    localcdt.longitude = BwG.longitude;
+    localcdt.DNz = BwG.DNz;
+    localcdt.DND = BwG.DND;
+    localcdt.DNA = BwG.DNA;
+    localcdt.DNB = BwG.DNB;
+    localcdt.DNC = BwG.DNC;
     AppMethodBeat.o(70294);
-    return localbyx;
+    return localcdt;
   }
   
-  public static k ebN()
+  public static k erj()
   {
     AppMethodBeat.i(70284);
-    if (Ael == null) {
-      Ael = new k();
+    if (BwF == null) {
+      BwF = new k();
     }
-    k localk = Ael;
+    k localk = BwF;
     AppMethodBeat.o(70284);
     return localk;
   }
   
-  private static String ebO()
+  private static String erk()
   {
     AppMethodBeat.i(70285);
     long l = System.currentTimeMillis();
     Object localObject1 = new StringBuffer();
     try
     {
-      localObject2 = aj.getContext();
+      localObject2 = ai.getContext();
       if (localObject2 == null)
       {
         AppMethodBeat.o(70285);
@@ -202,26 +202,26 @@ public final class k
         Object localObject2;
         int i;
         ScanResult localScanResult;
-        ad.printErrStackTrace("MicroMsg.GpsReportHelper", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.GpsReportHelper", localException, "", new Object[0]);
       }
     }
     if (((Iterator)localObject2).hasNext())
     {
       localScanResult = (ScanResult)((Iterator)localObject2).next();
-      ((StringBuffer)localObject1).append(String.format("&scan_ssid%d=%s&scan_bssid%d=%s&sm%d=%s", new Object[] { Integer.valueOf(i), qg(localScanResult.SSID), Integer.valueOf(i), qg(localScanResult.BSSID), Integer.valueOf(i), Integer.valueOf(localScanResult.level) }));
+      ((StringBuffer)localObject1).append(String.format("&scan_ssid%d=%s&scan_bssid%d=%s&sm%d=%s", new Object[] { Integer.valueOf(i), tt(localScanResult.SSID), Integer.valueOf(i), tt(localScanResult.BSSID), Integer.valueOf(i), Integer.valueOf(localScanResult.level) }));
       i += 1;
       if (i < 5) {}
     }
     else
     {
-      ad.e("MicroMsg.GpsReportHelper", "RecordCostTime: readScanWifi cost %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      ac.e("MicroMsg.GpsReportHelper", "RecordCostTime: readScanWifi cost %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       localObject1 = ((StringBuffer)localObject1).toString();
       AppMethodBeat.o(70285);
       return localObject1;
     }
   }
   
-  private static String ebP()
+  private static String erl()
   {
     AppMethodBeat.i(70286);
     long l1 = System.currentTimeMillis();
@@ -232,11 +232,11 @@ public final class k
       return "";
     }
     ((HashMap)localObject1).put("is_ci_permitted", "0");
-    ((HashMap)localObject1).put("net_type", ay.iw(aj.getContext()));
-    ad.e("MicroMsg.GpsReportHelper", "RecordCostTime: readCellInfo cost 01- %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    ((HashMap)localObject1).put("net_type", ax.iH(ai.getContext()));
+    ac.e("MicroMsg.GpsReportHelper", "RecordCostTime: readCellInfo cost 01- %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
     long l2 = System.currentTimeMillis();
     l1 = l2;
-    if (ebQ())
+    if (erm())
     {
       ((HashMap)localObject1).put("is_ci_permitted", "1");
       ((HashMap)localObject1).put("uuid", UUID.randomUUID().toString());
@@ -246,9 +246,9 @@ public final class k
     }
     try
     {
-      if (aj.getContext().checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") == 0)
+      if (ai.getContext().checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") == 0)
       {
-        localObject2 = ((ConnectivityManager)aj.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
+        localObject2 = ((ConnectivityManager)ai.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
         if (localObject2 != null) {
           ((HashMap)localObject1).put("net_subtype", ((NetworkInfo)localObject2).getSubtype());
         }
@@ -263,10 +263,10 @@ public final class k
       Object localObject3;
       break label239;
     }
-    ad.e("MicroMsg.GpsReportHelper", "RecordCostTime: readCellInfo cost 02- %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+    ac.e("MicroMsg.GpsReportHelper", "RecordCostTime: readCellInfo cost 02- %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
     l1 = System.currentTimeMillis();
-    localObject2 = fu(aj.getContext());
-    ad.e("MicroMsg.GpsReportHelper", "RecordCostTime: readCellInfo cost 03- %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    localObject2 = fG(ai.getContext());
+    ac.e("MicroMsg.GpsReportHelper", "RecordCostTime: readCellInfo cost 03- %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
     l1 = System.currentTimeMillis();
     j = ((List)localObject2).size();
     i = 0;
@@ -275,20 +275,20 @@ public final class k
       localObject3 = (a)((List)localObject2).get(i);
       if (localObject3 != null)
       {
-        ((HashMap)localObject1).put("mcc_".concat(String.valueOf(i)), ((a)localObject3).tzr);
-        ((HashMap)localObject1).put("mnc_".concat(String.valueOf(i)), ((a)localObject3).tzs);
-        ((HashMap)localObject1).put("lac_".concat(String.valueOf(i)), ((a)localObject3).Aep);
-        ((HashMap)localObject1).put("cell_id_".concat(String.valueOf(i)), ((a)localObject3).tzt);
+        ((HashMap)localObject1).put("mcc_".concat(String.valueOf(i)), ((a)localObject3).uHO);
+        ((HashMap)localObject1).put("mnc_".concat(String.valueOf(i)), ((a)localObject3).uHP);
+        ((HashMap)localObject1).put("lac_".concat(String.valueOf(i)), ((a)localObject3).BwJ);
+        ((HashMap)localObject1).put("cell_id_".concat(String.valueOf(i)), ((a)localObject3).uHQ);
         ((HashMap)localObject1).put("type_".concat(String.valueOf(i)), ((a)localObject3).type);
-        ((HashMap)localObject1).put("sid_".concat(String.valueOf(i)), ((a)localObject3).Aer);
-        ((HashMap)localObject1).put("net_id_".concat(String.valueOf(i)), ((a)localObject3).Aes);
+        ((HashMap)localObject1).put("sid_".concat(String.valueOf(i)), ((a)localObject3).BwL);
+        ((HashMap)localObject1).put("net_id_".concat(String.valueOf(i)), ((a)localObject3).BwM);
         ((HashMap)localObject1).put("sys_id_".concat(String.valueOf(i)), ((a)localObject3).systemId);
-        ((HashMap)localObject1).put("dbm_".concat(String.valueOf(i)), ((a)localObject3).Aet);
-        ((HashMap)localObject1).put("tac_".concat(String.valueOf(i)), ((a)localObject3).Aeq);
-        ((HashMap)localObject1).put("arfcn_".concat(String.valueOf(i)), ((a)localObject3).Aew);
-        ((HashMap)localObject1).put("earfcn_".concat(String.valueOf(i)), ((a)localObject3).Aeu);
-        ((HashMap)localObject1).put("uarfcn_".concat(String.valueOf(i)), ((a)localObject3).Aev);
-        ((HashMap)localObject1).put("dbm_".concat(String.valueOf(i)), ((a)localObject3).Aet);
+        ((HashMap)localObject1).put("dbm_".concat(String.valueOf(i)), ((a)localObject3).BwN);
+        ((HashMap)localObject1).put("tac_".concat(String.valueOf(i)), ((a)localObject3).BwK);
+        ((HashMap)localObject1).put("arfcn_".concat(String.valueOf(i)), ((a)localObject3).BwQ);
+        ((HashMap)localObject1).put("earfcn_".concat(String.valueOf(i)), ((a)localObject3).BwO);
+        ((HashMap)localObject1).put("uarfcn_".concat(String.valueOf(i)), ((a)localObject3).BwP);
+        ((HashMap)localObject1).put("dbm_".concat(String.valueOf(i)), ((a)localObject3).BwN);
       }
       i += 1;
     }
@@ -299,25 +299,25 @@ public final class k
     {
       String str1 = (String)((Iterator)localObject3).next();
       String str2 = (String)((HashMap)localObject1).get(str1);
-      if (!bt.isNullOrNil(str2)) {
-        ((StringBuilder)localObject2).append(String.format("&%s=%s", new Object[] { str1, qg(str2) }));
+      if (!bs.isNullOrNil(str2)) {
+        ((StringBuilder)localObject2).append(String.format("&%s=%s", new Object[] { str1, tt(str2) }));
       }
     }
     localObject2 = ((StringBuilder)localObject2).toString();
     localObject1 = localObject2;
-    if (!bt.isNullOrNil((String)localObject2))
+    if (!bs.isNullOrNil((String)localObject2))
     {
       localObject1 = localObject2;
       if (((String)localObject2).indexOf("&") == 0) {
         localObject1 = ((String)localObject2).substring(1);
       }
     }
-    ad.e("MicroMsg.GpsReportHelper", "RecordCostTime: readCellInfo cost 03- %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    ac.e("MicroMsg.GpsReportHelper", "RecordCostTime: readCellInfo cost 03- %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
     AppMethodBeat.o(70286);
     return localObject1;
   }
   
-  private static boolean ebQ()
+  private static boolean erm()
   {
     AppMethodBeat.i(70287);
     if ((Build.VERSION.SDK_INT < 23) && (!"MNC".equals(Build.VERSION.CODENAME)))
@@ -327,7 +327,7 @@ public final class k
     }
     try
     {
-      int i = b.checkSelfPermission(aj.getContext(), "android.permission.ACCESS_COARSE_LOCATION");
+      int i = b.checkSelfPermission(ai.getContext(), "android.permission.ACCESS_COARSE_LOCATION");
       if (i == 0)
       {
         AppMethodBeat.o(70287);
@@ -336,7 +336,7 @@ public final class k
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.GpsReportHelper", "check permission exception:%s.", new Object[] { localException });
+      ac.e("MicroMsg.GpsReportHelper", "check permission exception:%s.", new Object[] { localException });
       AppMethodBeat.o(70287);
       return true;
     }
@@ -344,7 +344,7 @@ public final class k
     return false;
   }
   
-  private static void ebR()
+  private static void ern()
   {
     AppMethodBeat.i(70292);
     long l = System.currentTimeMillis();
@@ -353,23 +353,23 @@ public final class k
       AppMethodBeat.o(70292);
       return;
     }
-    if ((ebT()) || (shouldReportCellInfo())) {}
+    if ((erp()) || (shouldReportCellInfo())) {}
     try
     {
-      Object localObject = (WifiManager)aj.getContext().getApplicationContext().getSystemService("wifi");
+      Object localObject = (WifiManager)ai.getContext().getApplicationContext().getSystemService("wifi");
       localObject = ((WifiManager)localObject).getConnectionInfo().getRssi();
-      String str2 = ay.iA(aj.getContext());
+      String str2 = ax.iL(ai.getContext());
       String str3 = System.currentTimeMillis();
-      String str4 = ay.iB(aj.getContext());
-      String str5 = q.WX();
-      localObject = String.format("wifissid=%s&wifibssid=%s&wifimac=%s&sm=%s&ssid_timestamp=%s", new Object[] { qg(str2), qg(str4), qg(str5), localObject, str3 });
-      str2 = ebO();
+      String str4 = ax.iM(ai.getContext());
+      String str5 = q.XU();
+      localObject = String.format("wifissid=%s&wifibssid=%s&wifimac=%s&sm=%s&ssid_timestamp=%s", new Object[] { tt(str2), tt(str4), tt(str5), localObject, str3 });
+      str2 = erk();
       str2 = (String)localObject + str2;
       if (shouldReportCellInfo())
       {
-        localObject = ebP();
-        jE(str2, (String)localObject);
-        ad.e("MicroMsg.GpsReportHelper", "RecordCostTime: refreshWifiAndCellInfo cost %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        localObject = erl();
+        ka(str2, (String)localObject);
+        ac.e("MicroMsg.GpsReportHelper", "RecordCostTime: refreshWifiAndCellInfo cost %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
         AppMethodBeat.o(70292);
         return;
       }
@@ -378,7 +378,7 @@ public final class k
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.GpsReportHelper", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.GpsReportHelper", localException, "", new Object[0]);
         String str1 = "";
         continue;
         str1 = null;
@@ -386,29 +386,29 @@ public final class k
     }
   }
   
-  public static az ebS()
+  public static bb ero()
   {
     AppMethodBeat.i(70293);
     long l = System.currentTimeMillis() / 1000L;
-    if (l - Aen > 300L)
+    if (l - BwH > 300L)
     {
-      ebR();
-      Aen = l;
+      ern();
+      BwH = l;
     }
-    az localaz = Aem;
+    bb localbb = BwG;
     AppMethodBeat.o(70293);
-    return localaz;
+    return localbb;
   }
   
-  public static boolean ebT()
+  public static boolean erp()
   {
     AppMethodBeat.i(70296);
-    boolean bool = s.ecc().ecN().ecy();
+    boolean bool = s.ery().esi().erT();
     AppMethodBeat.o(70296);
     return bool;
   }
   
-  private static List<a> fu(Context paramContext)
+  private static List<a> fG(Context paramContext)
   {
     for (;;)
     {
@@ -434,31 +434,31 @@ public final class k
           }
           paramContext = (CellInfo)localIterator.next();
           locala = new a();
-          locala.lrk = localTelephonyManager.getNetworkType();
+          locala.lTf = localTelephonyManager.getNetworkType();
           if (!(paramContext instanceof CellInfoGsm)) {
             continue;
           }
           localObject2 = ((CellInfoGsm)paramContext).getCellSignalStrength();
           localObject1 = ((CellInfoGsm)paramContext).getCellIdentity();
           i = ((CellIdentityGsm)localObject1).getMnc();
-          locala.tzt = ((CellIdentityGsm)localObject1).getCid();
-          locala.tzr = ((CellIdentityGsm)localObject1).getMcc();
-          locala.tzs = ((CellIdentityGsm)localObject1).getMnc();
-          locala.Aep = ((CellIdentityGsm)localObject1).getLac();
-          locala.Aet = ((CellSignalStrengthGsm)localObject2).getDbm();
+          locala.uHQ = ((CellIdentityGsm)localObject1).getCid();
+          locala.uHO = ((CellIdentityGsm)localObject1).getMcc();
+          locala.uHP = ((CellIdentityGsm)localObject1).getMnc();
+          locala.BwJ = ((CellIdentityGsm)localObject1).getLac();
+          locala.BwN = ((CellSignalStrengthGsm)localObject2).getDbm();
           if (!paramContext.isRegistered()) {
             continue;
           }
           paramContext = "1";
-          locala.Aex = paramContext;
+          locala.BwR = paramContext;
           if (Build.VERSION.SDK_INT < 24) {
             break label950;
           }
-          locala.Aew = ((CellIdentityGsm)localObject1).getArfcn();
+          locala.BwQ = ((CellIdentityGsm)localObject1).getArfcn();
         }
         catch (Exception paramContext)
         {
-          ad.e("MicroMsg.GpsReportHelper", "loadCellInfo: Unable to obtain cell signal information: ", new Object[] { paramContext });
+          ac.e("MicroMsg.GpsReportHelper", "loadCellInfo: Unable to obtain cell signal information: ", new Object[] { paramContext });
           AppMethodBeat.o(70298);
           return localLinkedList;
         }
@@ -474,14 +474,14 @@ public final class k
           localObject1 = ((CellInfoCdma)paramContext).getCellSignalStrength();
           localObject2 = ((CellInfoCdma)paramContext).getCellIdentity();
           i = ((CellIdentityCdma)localObject2).getSystemId();
-          locala.tzt = ((CellIdentityCdma)localObject2).getBasestationId();
-          locala.tzs = ((CellIdentityCdma)localObject2).getSystemId();
-          locala.Aep = ((CellIdentityCdma)localObject2).getNetworkId();
-          locala.Aet = ((CellSignalStrengthCdma)localObject1).getDbm();
+          locala.uHQ = ((CellIdentityCdma)localObject2).getBasestationId();
+          locala.uHP = ((CellIdentityCdma)localObject2).getSystemId();
+          locala.BwJ = ((CellIdentityCdma)localObject2).getNetworkId();
+          locala.BwN = ((CellSignalStrengthCdma)localObject1).getDbm();
           if (paramContext.isRegistered())
           {
             paramContext = "1";
-            locala.Aex = paramContext;
+            locala.BwR = paramContext;
           }
         }
         else
@@ -491,20 +491,20 @@ public final class k
             localObject2 = ((CellInfoLte)paramContext).getCellSignalStrength();
             localObject1 = ((CellInfoLte)paramContext).getCellIdentity();
             i = ((CellIdentityLte)localObject1).getMnc();
-            locala.tzt = ((CellIdentityLte)localObject1).getCi();
-            locala.tzr = ((CellIdentityLte)localObject1).getMcc();
-            locala.tzs = ((CellIdentityLte)localObject1).getMnc();
-            locala.Aeq = ((CellIdentityLte)localObject1).getTac();
-            locala.Aet = ((CellSignalStrengthLte)localObject2).getDbm();
+            locala.uHQ = ((CellIdentityLte)localObject1).getCi();
+            locala.uHO = ((CellIdentityLte)localObject1).getMcc();
+            locala.uHP = ((CellIdentityLte)localObject1).getMnc();
+            locala.BwK = ((CellIdentityLte)localObject1).getTac();
+            locala.BwN = ((CellSignalStrengthLte)localObject2).getDbm();
             if (!paramContext.isRegistered()) {
               break label963;
             }
             paramContext = "1";
-            locala.Aex = paramContext;
+            locala.BwR = paramContext;
             if (Build.VERSION.SDK_INT < 24) {
               break label960;
             }
-            locala.Aeu = ((CellIdentityLte)localObject1).getEarfcn();
+            locala.BwO = ((CellIdentityLte)localObject1).getEarfcn();
             break label960;
           }
           if ((j >= 18) && ((paramContext instanceof CellInfoWcdma)))
@@ -512,23 +512,23 @@ public final class k
             localObject2 = ((CellInfoWcdma)paramContext).getCellSignalStrength();
             localObject1 = ((CellInfoWcdma)paramContext).getCellIdentity();
             i = ((CellIdentityWcdma)localObject1).getMnc();
-            locala.tzt = ((CellIdentityWcdma)localObject1).getCid();
-            locala.tzr = ((CellIdentityWcdma)localObject1).getMcc();
-            locala.tzs = ((CellIdentityWcdma)localObject1).getMnc();
-            locala.Aep = ((CellIdentityWcdma)localObject1).getLac();
-            locala.Aet = ((CellSignalStrengthWcdma)localObject2).getDbm();
+            locala.uHQ = ((CellIdentityWcdma)localObject1).getCid();
+            locala.uHO = ((CellIdentityWcdma)localObject1).getMcc();
+            locala.uHP = ((CellIdentityWcdma)localObject1).getMnc();
+            locala.BwJ = ((CellIdentityWcdma)localObject1).getLac();
+            locala.BwN = ((CellSignalStrengthWcdma)localObject2).getDbm();
             if (!paramContext.isRegistered()) {
               break label973;
             }
             paramContext = "1";
-            locala.Aex = paramContext;
+            locala.BwR = paramContext;
             if (Build.VERSION.SDK_INT < 24) {
               break label970;
             }
-            locala.Aev = ((CellIdentityWcdma)localObject1).getUarfcn();
+            locala.BwP = ((CellIdentityWcdma)localObject1).getUarfcn();
             break label970;
           }
-          ad.i("MicroMsg.GpsReportHelper", "Unknown type of cell signal!\n ClassName: " + paramContext.getClass().getSimpleName() + "\n ToString: " + paramContext.toString());
+          ac.i("MicroMsg.GpsReportHelper", "Unknown type of cell signal!\n ClassName: " + paramContext.getClass().getSimpleName() + "\n ToString: " + paramContext.toString());
           i = 0;
           continue;
           continue;
@@ -550,15 +550,15 @@ public final class k
     }
   }
   
-  private static void jE(String paramString1, String paramString2)
+  private static void ka(String paramString1, String paramString2)
   {
     AppMethodBeat.i(70290);
-    if (Aem == null) {
-      Aem = new az();
+    if (BwG == null) {
+      BwG = new bb();
     }
-    ad.d("MicroMsg.GpsReportHelper", "encrypt data userInfo:%s, cellInfo:%s", new Object[] { paramString1, paramString2 });
+    ac.d("MicroMsg.GpsReportHelper", "encrypt data userInfo:%s, cellInfo:%s", new Object[] { paramString1, paramString2 });
     byte[] arrayOfByte3 = new byte[16];
-    byte[] arrayOfByte2 = y.fjW().getBytes();
+    byte[] arrayOfByte2 = y.fAm().getBytes();
     if (arrayOfByte2 != null)
     {
       arrayOfByte1 = arrayOfByte2;
@@ -584,24 +584,40 @@ public final class k
       i = k;
     } while (k < 16);
     byte[] arrayOfByte1 = Base64.encode(arrayOfByte3, 0);
-    Aem.Cvi = o.ebU().bR(arrayOfByte1);
-    ad.d("MicroMsg.GpsReportHelper", "encryptReportData mLocationInfo.encrypt_key %s", new Object[] { Aem.Cvi });
-    if (!bt.isNullOrNil(paramString1))
+    BwG.DND = o.erq().bQ(arrayOfByte1);
+    ac.d("MicroMsg.GpsReportHelper", "encryptReportData mLocationInfo.encrypt_key %s", new Object[] { BwG.DND });
+    if (!bs.isNullOrNil(paramString1))
     {
       paramString1 = Base64.encode(AesEcb.aesCryptEcb(paramString1.getBytes(), arrayOfByte3, true, true), 0);
-      Aem.Cvh = new String(paramString1);
-      ad.d("MicroMsg.GpsReportHelper", "encryptReportData mLocationInfo.encrypt_userinfo %s", new Object[] { new String(paramString1) });
+      BwG.DNC = new String(paramString1);
+      ac.d("MicroMsg.GpsReportHelper", "encryptReportData mLocationInfo.encrypt_userinfo %s", new Object[] { new String(paramString1) });
     }
-    if (!bt.isNullOrNil(paramString2))
+    if (!bs.isNullOrNil(paramString2))
     {
       paramString1 = Base64.encode(AesEcb.aesCryptEcb(paramString2.getBytes(), arrayOfByte3, true, true), 0);
-      Aem.Cvj = new String(paramString1);
-      ad.d("MicroMsg.GpsReportHelper", "encryptReportData mLocationInfo.encrypt_cellinfo %s", new Object[] { new String(paramString1) });
+      BwG.DNE = new String(paramString1);
+      ac.d("MicroMsg.GpsReportHelper", "encryptReportData mLocationInfo.encrypt_cellinfo %s", new Object[] { new String(paramString1) });
     }
     AppMethodBeat.o(70290);
   }
   
-  private static String qg(String paramString)
+  public static boolean shouldReportCellInfo()
+  {
+    AppMethodBeat.i(70297);
+    boolean bool = s.ery().esi().erU();
+    AppMethodBeat.o(70297);
+    return bool;
+  }
+  
+  public static boolean shouldReportLocation()
+  {
+    AppMethodBeat.i(70295);
+    boolean bool = s.ery().esi().IJ();
+    AppMethodBeat.o(70295);
+    return bool;
+  }
+  
+  private static String tt(String paramString)
   {
     AppMethodBeat.i(70288);
     try
@@ -613,46 +629,30 @@ public final class k
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.GpsReportHelper", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.GpsReportHelper", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(70288);
     return paramString;
   }
   
-  public static boolean shouldReportCellInfo()
-  {
-    AppMethodBeat.i(70297);
-    boolean bool = s.ecc().ecN().ecz();
-    AppMethodBeat.o(70297);
-    return bool;
-  }
-  
-  public static boolean shouldReportLocation()
-  {
-    AppMethodBeat.i(70295);
-    boolean bool = s.ecc().ecN().Ja();
-    AppMethodBeat.o(70295);
-    return bool;
-  }
-  
   public static final class a
   {
-    public String Aep;
-    public String Aeq;
-    public String Aer;
-    public String Aes;
-    public String Aet;
-    public String Aeu;
-    public String Aev;
-    public String Aew;
-    public String Aex;
-    public String lrk;
+    public String BwJ;
+    public String BwK;
+    public String BwL;
+    public String BwM;
+    public String BwN;
+    public String BwO;
+    public String BwP;
+    public String BwQ;
+    public String BwR;
+    public String lTf;
     public String systemId;
     public String type;
-    public String tzr;
-    public String tzs;
-    public String tzt;
+    public String uHO;
+    public String uHP;
+    public String uHQ;
   }
 }
 

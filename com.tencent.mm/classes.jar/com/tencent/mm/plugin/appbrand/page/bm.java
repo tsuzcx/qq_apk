@@ -1,129 +1,156 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
+import android.support.v4.view.t;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.b.a;
+import com.tencent.mm.plugin.appbrand.config.a.d;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.h;
-import d.g.b.k;
-import d.l;
-import d.v;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b.b;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.d;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.ui.am;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewActionBarExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewActionBarExtension;", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "applyActionBarSizeProperty", "", "actionBar", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;", "onActionbarInstalled", "onBackground", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDestroy", "onForeground", "Companion", "luggage-wechat-full-sdk_release"})
+@SuppressLint({"ViewConstructor"})
 public final class bm
-  implements a
+  extends FrameLayout
+  implements b.b
 {
-  public static final bm.a lfn;
-  private final aa ceg;
+  private aa caw;
+  d lCt;
+  private b lCu;
+  boolean lFU;
   
-  static
+  public bm(Context paramContext, aa paramaa)
   {
-    AppMethodBeat.i(183075);
-    lfn = new bm.a((byte)0);
-    AppMethodBeat.o(183075);
-  }
-  
-  public bm(aa paramaa)
-  {
-    AppMethodBeat.i(183074);
-    this.ceg = paramaa;
-    AppMethodBeat.o(183074);
-  }
-  
-  private static void c(b paramb)
-  {
-    AppMethodBeat.i(186861);
-    Object localObject1 = paramb.getContext();
-    Object localObject2 = paramb.getCapsuleView();
-    if (localObject2 != null)
+    super(paramContext);
+    AppMethodBeat.i(147502);
+    this.lFU = false;
+    this.caw = paramaa;
+    paramContext = this.caw.getPageConfig();
+    if (paramContext == null)
     {
-      k.g(localObject2, "it");
-      if ((((View)localObject2).getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
-      {
-        Object localObject3 = ((View)localObject2).getLayoutParams();
-        if (localObject3 == null)
-        {
-          paramb = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-          AppMethodBeat.o(186861);
-          throw paramb;
-        }
-        localObject3 = (ViewGroup.MarginLayoutParams)localObject3;
-        k.g(localObject1, "context");
-        ((ViewGroup.MarginLayoutParams)localObject3).rightMargin = ((Context)localObject1).getResources().getDimensionPixelSize(2131167028);
-        ((View)localObject2).setLayoutParams(((View)localObject2).getLayoutParams());
-      }
-    }
-    else
-    {
-      localObject2 = paramb.getNavResetStyleListener();
-      if (localObject2 == null) {
-        break label238;
-      }
-    }
-    label238:
-    for (int i = ((b.c)localObject2).bkf();; i = b.c.lRp)
-    {
-      paramb.bre();
-      k.g(localObject1, "context");
-      paramb.setNavContainerMinimumWidth(((Context)localObject1).getResources().getDimensionPixelOffset(i));
-      i = ((Context)localObject1).getResources().getDimensionPixelOffset(2131165742);
-      paramb.setActionBarHeight(i);
-      paramb = new StringBuilder("[applyActionBarSizeProperty] ActionBar height=").append(i).append("  density=");
-      localObject1 = ((Context)localObject1).getResources();
-      k.g(localObject1, "context.resources");
-      ad.i("MPPageViewActionBarExtensionImpl", ((Resources)localObject1).getDisplayMetrics().density);
-      AppMethodBeat.o(186861);
+      AppMethodBeat.o(147502);
       return;
-      if ((!h.IS_FLAVOR_RED) && (!h.DEBUG)) {
-        break;
+    }
+    if (paramContext.bap())
+    {
+      this.lCt = new d(getContext());
+      this.lCt.setActuallyVisible(false);
+      this.lCu = ((b)this.caw.lrk.c(getContext(), b.class));
+      this.lCu.setFullscreenMode(false);
+      this.lCu.hA(false);
+      brw();
+      this.lCt.addView(this.lCu);
+      addView(this.lCt, -1, -2);
+    }
+    setBackgroundColor(g.cd(paramContext.jBX, -1));
+    AppMethodBeat.o(147502);
+  }
+  
+  private void brx()
+  {
+    AppMethodBeat.i(147505);
+    if (this.lCu != null)
+    {
+      if ((getVisibility() == 0) && (t.aC(this)))
+      {
+        this.lCu.setLoadingIconVisibility(true);
+        this.lCt.setActuallyVisible(true);
+        AppMethodBeat.o(147505);
+        return;
       }
-      paramb = (Throwable)new RuntimeException("it is not MarginLayoutParams");
-      AppMethodBeat.o(186861);
-      throw paramb;
+      this.lCu.setLoadingIconVisibility(false);
+      this.lCt.setActuallyVisible(false);
+    }
+    AppMethodBeat.o(147505);
+  }
+  
+  final void brw()
+  {
+    AppMethodBeat.i(147503);
+    if (this.lCu == null)
+    {
+      AppMethodBeat.o(147503);
+      return;
+    }
+    if (!TextUtils.isEmpty(this.caw.bqy().getMainTitle())) {
+      this.lCu.setMainTitle(this.caw.bqy().getMainTitle());
+    }
+    for (;;)
+    {
+      this.lCu.setNavHidden(this.caw.bqy().byg());
+      AppMethodBeat.o(147503);
+      return;
+      this.lCu.setMainTitle(getContext().getString(2131755293));
     }
   }
   
-  public final void a(b paramb)
+  public final void he(boolean paramBoolean)
   {
-    AppMethodBeat.i(186860);
-    k.h(paramb, "actionBar");
-    c(paramb);
-    AppMethodBeat.o(186860);
+    this.lFU = paramBoolean;
   }
   
-  public final void onBackground() {}
-  
-  public final void onConfigurationChanged(Configuration paramConfiguration)
+  protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(183072);
-    k.h(paramConfiguration, "newConfig");
-    paramConfiguration = this.ceg.bjH();
-    k.g(paramConfiguration, "page.actionBar");
-    c(paramConfiguration);
-    AppMethodBeat.o(183072);
+    AppMethodBeat.i(147507);
+    super.onAttachedToWindow();
+    brx();
+    AppMethodBeat.o(147507);
   }
   
-  public final void onDestroy() {}
-  
-  public final void onForeground()
+  protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(183071);
-    b localb = this.ceg.bjH();
-    k.g(localb, "page.actionBar");
-    c(localb);
-    AppMethodBeat.o(183071);
+    AppMethodBeat.i(147508);
+    super.onDetachedFromWindow();
+    brx();
+    AppMethodBeat.o(147508);
+  }
+  
+  public final void setBackgroundColor(int paramInt)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(147504);
+    if (paramInt == 0)
+    {
+      setWillNotDraw(true);
+      AppMethodBeat.o(147504);
+      return;
+    }
+    paramInt = 0xFF000000 | paramInt;
+    setWillNotDraw(false);
+    super.setBackgroundColor(paramInt);
+    if (this.lCu != null)
+    {
+      this.lCu.setBackgroundAlpha(1.0D);
+      this.lCu.setBackgroundColor(paramInt);
+      if (am.ZN(paramInt)) {
+        break label81;
+      }
+    }
+    for (;;)
+    {
+      this.lCu.setForegroundStyle(bool);
+      AppMethodBeat.o(147504);
+      return;
+      label81:
+      bool = false;
+    }
+  }
+  
+  public final void setVisibility(int paramInt)
+  {
+    AppMethodBeat.i(147506);
+    super.setVisibility(paramInt);
+    brx();
+    AppMethodBeat.o(147506);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bm
  * JD-Core Version:    0.7.0.1
  */

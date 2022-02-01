@@ -6,47 +6,49 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.d.a>> oho;
+  private static LinkedList<Class<? extends com.tencent.luggage.d.a>> oKO;
   
   private static void aM(Class<? extends com.tencent.luggage.d.a> paramClass)
   {
     AppMethodBeat.i(83050);
-    oho.add(paramClass);
+    oKO.add(paramClass);
     AppMethodBeat.o(83050);
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.d.a>> bQW()
+  public static LinkedList<Class<? extends com.tencent.luggage.d.a>> bYl()
   {
     try
     {
       AppMethodBeat.i(83049);
-      oho = new LinkedList();
+      oKO = new LinkedList();
       aM(g.class);
       aM(i.class);
       aM(j.class);
-      aM(k.class);
       aM(l.class);
-      aM(q.class);
+      aM(m.class);
       aM(r.class);
       aM(s.class);
+      aM(u.class);
+      aM(z.class);
       aM(x.class);
-      aM(v.class);
-      aM(w.class);
-      aM(n.class);
+      aM(y.class);
+      aM(o.class);
       aM(c.class);
       aM(b.class);
-      aM(p.class);
+      aM(q.class);
       aM(h.class);
-      aM(o.class);
+      aM(p.class);
       aM(f.class);
-      aM(t.class);
+      aM(v.class);
       aM(e.class);
-      aM(u.class);
-      aM(m.class);
-      aM(y.class);
+      aM(w.class);
+      aM(n.class);
+      aM(aa.class);
       aM(ba.class);
       aM(d.class);
-      LinkedList localLinkedList = oho;
+      aM(k.class);
+      aM(t.class);
+      LinkedList localLinkedList = oKO;
       AppMethodBeat.o(83049);
       return localLinkedList;
     }

@@ -5,11 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "TAG", "", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "TAG", "", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-emojicapture_release"})
 public final class EmojiCaptureReceiver
   extends BroadcastReceiver
 {
@@ -21,7 +21,7 @@ public final class EmojiCaptureReceiver
     k.h(paramContext, "context");
     k.h(paramIntent, "intent");
     paramContext = paramIntent.getAction();
-    ad.i(this.TAG, "onReceive: ".concat(String.valueOf(paramContext)));
+    ac.i(this.TAG, "onReceive: ".concat(String.valueOf(paramContext)));
     if (paramContext == null)
     {
       AppMethodBeat.o(415);
@@ -38,7 +38,7 @@ public final class EmojiCaptureReceiver
       {
         int i = paramIntent.getIntExtra("res_sub_type", 0);
         boolean bool = paramIntent.getBooleanExtra("res_result", false);
-        ad.i(this.TAG, "onReceive: res update " + i + ' ' + bool);
+        ac.i(this.TAG, "onReceive: res update " + i + ' ' + bool);
         AppMethodBeat.o(415);
         return;
         if (paramContext.equals("com.tencent.mm.Emoji_Capture_Upload"))
@@ -46,9 +46,9 @@ public final class EmojiCaptureReceiver
           long l = paramIntent.getLongExtra("upload_time_enter", 0L);
           bool = paramIntent.getBooleanExtra("upload_success", false);
           paramContext = paramIntent.getStringExtra("upload_md5");
-          paramIntent = b.fSs;
+          paramIntent = b.fWn;
           b.b(l, bool, paramContext);
-          ad.i(this.TAG, "onReceive: upload " + l + ", " + bool + ", " + paramContext);
+          ac.i(this.TAG, "onReceive: upload " + l + ", " + bool + ", " + paramContext);
         }
       }
     }

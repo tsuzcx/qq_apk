@@ -19,14 +19,13 @@ import android.widget.BaseAdapter;
 import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.a.cl;
 import com.tencent.mm.g.a.cs;
-import com.tencent.mm.g.a.pj;
-import com.tencent.mm.g.a.pl;
-import com.tencent.mm.g.a.pl.a;
-import com.tencent.mm.g.b.a.ao;
-import com.tencent.mm.kernel.b;
+import com.tencent.mm.g.a.ps;
+import com.tencent.mm.g.a.pu;
+import com.tencent.mm.g.a.pu.a;
+import com.tencent.mm.g.b.a.bo;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.y;
 import com.tencent.mm.model.y.b;
@@ -40,15 +39,14 @@ import com.tencent.mm.plugin.record.b.n;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic.a;
 import com.tencent.mm.plugin.scanner.word.a.a;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.p;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.base.MultiTouchImageView;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.tools.MMGestureGallery;
@@ -65,34 +63,34 @@ import java.util.Map;
 @com.tencent.mm.ui.base.a(3)
 public class RecordMsgImageUI
   extends MMActivity
-  implements d.a, r.a, com.tencent.mm.plugin.record.a.d, a.a<String, Integer>
+  implements d.a, r.a, com.tencent.mm.plugin.record.a.d, a.a<String, com.tencent.mm.plugin.scanner.word.b>
 {
-  private List<afy> fvw;
-  private MMGestureGallery ibu;
-  private ScanCodeSheetItemLogic kxs;
+  private List<agx> fzd;
+  private MMGestureGallery iBx;
+  private ScanCodeSheetItemLogic kYG;
   private long msgId;
-  private n.d oEU;
-  private Runnable qcN;
-  private com.tencent.mm.ui.widget.a.e qed;
-  private com.tencent.mm.plugin.fav.ui.d qee;
-  private Map<String, b> qef;
-  private boolean qeg;
-  private r qeh;
-  private com.tencent.mm.sdk.b.c qej;
+  private n.d piv;
+  private Runnable qLs;
+  private com.tencent.mm.ui.widget.a.e qMG;
+  private com.tencent.mm.plugin.fav.ui.d qMH;
+  private Map<String, b> qMI;
+  private boolean qMJ;
+  private r qMK;
+  private com.tencent.mm.sdk.b.c qMM;
   private int selection;
-  private com.tencent.mm.plugin.record.b.l vbH;
-  private a vbP;
-  private String vbQ;
+  private a wkD;
+  private String wkE;
+  private com.tencent.mm.plugin.record.b.l wkv;
   
   public RecordMsgImageUI()
   {
     AppMethodBeat.i(27959);
-    this.fvw = new LinkedList();
+    this.fzd = new LinkedList();
     this.selection = 0;
     this.msgId = -1L;
-    this.vbQ = null;
-    this.qef = new HashMap();
-    this.oEU = new n.d()
+    this.wkE = null;
+    this.qMI = new HashMap();
+    this.piv = new n.d()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -109,27 +107,27 @@ public class RecordMsgImageUI
           return;
           paramAnonymousMenuItem = RecordMsgImageUI.this;
           cs localcs = new cs();
-          com.tencent.mm.pluginsdk.model.g.a(localcs, paramAnonymousMenuItem.getIntent().getIntExtra("key_favorite_source_type", 1), paramAnonymousMenuItem.dgu());
-          localcs.deQ.deW = 10;
-          localcs.deQ.activity = paramAnonymousMenuItem;
-          com.tencent.mm.sdk.b.a.ESL.l(localcs);
+          com.tencent.mm.pluginsdk.model.g.a(localcs, paramAnonymousMenuItem.getIntent().getIntExtra("key_favorite_source_type", 1), paramAnonymousMenuItem.dub());
+          localcs.dck.dcq = 10;
+          localcs.dck.activity = paramAnonymousMenuItem;
+          com.tencent.mm.sdk.b.a.GpY.l(localcs);
           AppMethodBeat.o(27953);
           return;
           RecordMsgImageUI.l(RecordMsgImageUI.this);
           AppMethodBeat.o(27953);
           return;
-          paramAnonymousMenuItem = new ao();
-          paramAnonymousMenuItem.dFd = 3L;
-          paramAnonymousMenuItem.dMB = 5L;
-          paramAnonymousMenuItem.aBj();
-          RecordMsgImageUI.d(RecordMsgImageUI.this).cjj();
+          paramAnonymousMenuItem = new bo();
+          paramAnonymousMenuItem.dCQ = 3L;
+          paramAnonymousMenuItem.dNc = 5L;
+          paramAnonymousMenuItem.aHZ();
+          RecordMsgImageUI.d(RecordMsgImageUI.this).cqQ();
           AppMethodBeat.o(27953);
           return;
           RecordMsgImageUI.m(RecordMsgImageUI.this);
         }
       }
     };
-    this.qcN = new Runnable()
+    this.qLs = new Runnable()
     {
       public final void run()
       {
@@ -138,11 +136,11 @@ public class RecordMsgImageUI
         AppMethodBeat.o(27944);
       }
     };
-    this.qej = new com.tencent.mm.sdk.b.c() {};
+    this.qMM = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(27959);
   }
   
-  private void iD(boolean paramBoolean)
+  private void jg(boolean paramBoolean)
   {
     AppMethodBeat.i(27962);
     final ArrayList localArrayList1 = new ArrayList();
@@ -153,17 +151,17 @@ public class RecordMsgImageUI
     localArrayList2.add(getString(2131761941));
     localArrayList1.add(Integer.valueOf(2));
     localArrayList2.add(getString(2131762781));
-    String str = dgu();
-    if ((this.qeg) && (!bt.isNullOrNil(str)))
+    String str = dub();
+    if ((this.qMJ) && (!bs.isNullOrNil(str)))
     {
       localArrayList1.add(Integer.valueOf(4));
       localArrayList2.add(getString(2131757184));
     }
     localArrayList1.add(Integer.valueOf(5));
     localArrayList2.add(getString(2131757183));
-    final b localb = (b)this.qef.get(str);
-    if ((localb != null) && (localb.qet != null)) {
-      if (!bt.isNullOrNil(localb.qet.dva.result))
+    final b localb = (b)this.qMI.get(str);
+    if ((localb != null) && (localb.qMW != null)) {
+      if (!bs.isNullOrNil(localb.qMW.dsM.result))
       {
         localArrayList1.add(Integer.valueOf(3));
         localArrayList2.add("");
@@ -173,10 +171,10 @@ public class RecordMsgImageUI
     {
       if (!isFinishing())
       {
-        if (this.qed == null) {
-          this.qed = new com.tencent.mm.ui.widget.a.e(getContext(), 1, false);
+        if (this.qMG == null) {
+          this.qMG = new com.tencent.mm.ui.widget.a.e(getContext(), 1, false);
         }
-        this.qed.HrX = new n.c()
+        this.qMG.ISu = new n.c()
         {
           public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
           {
@@ -200,45 +198,45 @@ public class RecordMsgImageUI
             AppMethodBeat.o(27950);
           }
         };
-        this.qed.HrY = this.oEU;
-        this.qed.GHn = new e.b()
+        this.qMG.ISv = this.piv;
+        this.qMG.Ihj = new e.b()
         {
           public final void onDismiss()
           {
             AppMethodBeat.i(27951);
             RecordMsgImageUI.i(RecordMsgImageUI.this);
-            RecordMsgImageUI.j(RecordMsgImageUI.this).vLD = null;
+            RecordMsgImageUI.j(RecordMsgImageUI.this).wVE = null;
             AppMethodBeat.o(27951);
           }
         };
         if (!getContext().isFinishing()) {
-          this.qed.csG();
+          this.qMG.cED();
         }
       }
-      if (!bt.isNullOrNil(str))
+      if (!bs.isNullOrNil(str))
       {
-        com.tencent.mm.kernel.g.afC();
-        if ((com.tencent.mm.kernel.g.afA().gcy.auR() != 0) && (paramBoolean)) {
-          this.qeh.scan(str);
+        com.tencent.mm.kernel.g.agS();
+        if ((com.tencent.mm.kernel.g.agQ().ghe.aBK() != 0) && (paramBoolean)) {
+          this.qMK.scan(str);
         }
       }
       AppMethodBeat.o(27962);
       return;
-      pj localpj = new pj();
-      localpj.duX.dcQ = System.currentTimeMillis();
-      localpj.duX.filePath = str;
-      com.tencent.mm.sdk.b.a.ESL.l(localpj);
+      ps localps = new ps();
+      localps.dsJ.dao = System.currentTimeMillis();
+      localps.dsJ.filePath = str;
+      com.tencent.mm.sdk.b.a.GpY.l(localps);
     }
   }
   
   public final void a(int paramInt, i parami)
   {
     AppMethodBeat.i(27972);
-    Iterator localIterator = this.fvw.iterator();
+    Iterator localIterator = this.fzd.iterator();
     while (localIterator.hasNext()) {
-      if (((afy)localIterator.next()).dkb.equals(parami.field_dataId))
+      if (((agx)localIterator.next()).dhw.equals(parami.field_dataId))
       {
-        aq.f(this.qcN);
+        ap.f(this.qLs);
         AppMethodBeat.o(27972);
         return;
       }
@@ -246,15 +244,23 @@ public class RecordMsgImageUI
     AppMethodBeat.o(27972);
   }
   
-  public final MultiTouchImageView ciP()
+  public final String cqG()
+  {
+    AppMethodBeat.i(27969);
+    String str = dub();
+    AppMethodBeat.o(27969);
+    return str;
+  }
+  
+  public final MultiTouchImageView cqw()
   {
     AppMethodBeat.i(27967);
-    int i = this.ibu.getSelectedItemPosition();
-    Object localObject = this.ibu;
+    int i = this.iBx.getSelectedItemPosition();
+    Object localObject = this.iBx;
     localObject = ((MMGestureGallery)localObject).getChildAt(i - ((MMGestureGallery)localObject).getFirstVisiblePosition());
     if (localObject == null)
     {
-      ad.i("MicroMsg.ShowImageUI", "getCurView() pos:%s firstPos:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.ibu.getFirstVisiblePosition()) });
+      ac.i("MicroMsg.ShowImageUI", "getCurView() pos:%s firstPos:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.iBx.getFirstVisiblePosition()) });
       AppMethodBeat.o(27967);
       return null;
     }
@@ -269,44 +275,36 @@ public class RecordMsgImageUI
     return localObject;
   }
   
-  public final String ciQ()
+  public final String cqx()
   {
     AppMethodBeat.i(27968);
-    int i = this.ibu.getSelectedItemPosition();
-    String str = this.vbP.Kd(i).dkb;
+    int i = this.iBx.getSelectedItemPosition();
+    String str = this.wkD.Mc(i).dhw;
     AppMethodBeat.o(27968);
-    return str;
-  }
-  
-  public final String ciZ()
-  {
-    AppMethodBeat.i(27969);
-    String str = dgu();
-    AppMethodBeat.o(27969);
     return str;
   }
   
   public void dealContentView(View paramView)
   {
     AppMethodBeat.i(27970);
-    ai.l(ai.a(getWindow(), null), getBodyView());
+    aj.m(aj.a(getWindow(), null), getBodyView());
     ((ViewGroup)getBodyView().getParent()).removeView(getBodyView());
     ((ViewGroup)getWindow().getDecorView()).addView(getBodyView(), 0);
     AppMethodBeat.o(27970);
   }
   
-  final String dgu()
+  final String dub()
   {
     AppMethodBeat.i(27966);
-    int i = this.ibu.getSelectedItemPosition();
+    int i = this.iBx.getSelectedItemPosition();
     if (-1 == i)
     {
-      ad.w("MicroMsg.ShowImageUI", "error position");
+      ac.w("MicroMsg.ShowImageUI", "error position");
       AppMethodBeat.o(27966);
       return null;
     }
-    String str = n.c(this.vbP.Kd(i), this.msgId);
-    ad.d("MicroMsg.ShowImageUI", "cur pos %d path %s", new Object[] { Integer.valueOf(i), str });
+    String str = n.c(this.wkD.Mc(i), this.msgId);
+    ac.d("MicroMsg.ShowImageUI", "cur pos %d path %s", new Object[] { Integer.valueOf(i), str });
     AppMethodBeat.o(27966);
     return str;
   }
@@ -331,7 +329,7 @@ public class RecordMsgImageUI
       label58:
       for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("custom_send_text"))
       {
-        if (!bt.isNullOrNil((String)localObject)) {
+        if (!bs.isNullOrNil((String)localObject)) {
           break label69;
         }
         AppMethodBeat.o(27971);
@@ -340,10 +338,10 @@ public class RecordMsgImageUI
         break;
       }
       label69:
-      Object localObject = bt.S(((String)localObject).split(","));
-      if (bt.gL((List)localObject))
+      Object localObject = bs.S(((String)localObject).split(","));
+      if (bs.gY((List)localObject))
       {
-        ad.w("MicroMsg.ShowImageUI", "want to send record msg, but toUser is null");
+        ac.w("MicroMsg.ShowImageUI", "want to send record msg, but toUser is null");
         AppMethodBeat.o(27971);
         return;
       }
@@ -352,23 +350,23 @@ public class RecordMsgImageUI
         public final void run()
         {
           AppMethodBeat.i(27941);
-          this.qcu.dismiss();
+          this.qLa.dismiss();
           AppMethodBeat.o(27941);
         }
       };
-      az.afE().ax(new Runnable()
+      az.agU().az(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(27942);
-          Iterator localIterator = this.vbK.iterator();
+          Iterator localIterator = this.wky.iterator();
           while (localIterator.hasNext())
           {
             String str = (String)localIterator.next();
-            j.cOB().a(RecordMsgImageUI.this.getContext(), str, RecordMsgImageUI.n(RecordMsgImageUI.this), 0, "", "", 0L, RecordMsgImageUI.o(RecordMsgImageUI.this));
-            j.cOB().hm(paramIntent, str);
+            j.dck().a(RecordMsgImageUI.this.getContext(), str, RecordMsgImageUI.n(RecordMsgImageUI.this), 0, "", "", 0L, RecordMsgImageUI.o(RecordMsgImageUI.this));
+            j.dck().hF(paramIntent, str);
           }
-          aq.f(local2);
+          ap.f(local2);
           AppMethodBeat.o(27942);
         }
         
@@ -392,60 +390,60 @@ public class RecordMsgImageUI
     AppMethodBeat.i(27960);
     super.onCreate(paramBundle);
     hideTitleView();
-    if (com.tencent.mm.compatible.util.d.lf(19)) {
+    if (com.tencent.mm.compatible.util.d.kZ(19)) {
       getWindow().setFlags(201327616, 201327616);
     }
     for (;;)
     {
-      this.qeh = new r(this, this, this);
-      this.vbH = new com.tencent.mm.plugin.record.b.l();
+      this.qMK = new r(this, this, this);
+      this.wkv = new com.tencent.mm.plugin.record.b.l();
       this.msgId = getIntent().getLongExtra("message_id", -1L);
       paramBundle = getIntent().getStringExtra("record_data_id");
-      localObject = n.alt(getIntent().getStringExtra("record_xml"));
+      localObject = n.aqs(getIntent().getStringExtra("record_xml"));
       if (localObject != null) {
         break;
       }
-      ad.w("MicroMsg.ShowImageUI", "get record msg data error, empty");
+      ac.w("MicroMsg.ShowImageUI", "get record msg data error, empty");
       finish();
       AppMethodBeat.o(27960);
       return;
       getWindow().setFlags(1024, 1024);
     }
-    Object localObject = ((com.tencent.mm.protocal.b.a.c)localObject).gKs.iterator();
+    Object localObject = ((com.tencent.mm.protocal.b.a.c)localObject).hkS.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      afy localafy = (afy)((Iterator)localObject).next();
-      if (localafy.dataType == 2)
+      agx localagx = (agx)((Iterator)localObject).next();
+      if (localagx.dataType == 2)
       {
-        this.fvw.add(localafy);
-        if (localafy.dkb.equals(paramBundle)) {
-          this.selection = (this.fvw.size() - 1);
+        this.fzd.add(localagx);
+        if (localagx.dhw.equals(paramBundle)) {
+          this.selection = (this.fzd.size() - 1);
         }
       }
     }
-    if (this.fvw.isEmpty())
+    if (this.fzd.isEmpty())
     {
-      ad.w("MicroMsg.ShowImageUI", "get image data error, empty");
+      ac.w("MicroMsg.ShowImageUI", "get image data error, empty");
       finish();
       AppMethodBeat.o(27960);
       return;
     }
-    this.ibu = ((MMGestureGallery)findViewById(2131300335));
-    this.qee = new com.tencent.mm.plugin.fav.ui.d(this.ibu, this, this);
-    this.ibu.setVerticalFadingEdgeEnabled(false);
-    this.ibu.setHorizontalFadingEdgeEnabled(false);
-    this.vbP = new a((byte)0);
-    this.vbP.fvw = this.fvw;
-    this.vbP.msgId = this.msgId;
-    this.vbP.vbH = this.vbH;
-    this.ibu.setAdapter(this.vbP);
-    this.ibu.setSelection(this.selection);
-    this.ibu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+    this.iBx = ((MMGestureGallery)findViewById(2131300335));
+    this.qMH = new com.tencent.mm.plugin.fav.ui.d(this.iBx, this, this);
+    this.iBx.setVerticalFadingEdgeEnabled(false);
+    this.iBx.setHorizontalFadingEdgeEnabled(false);
+    this.wkD = new a((byte)0);
+    this.wkD.fzd = this.fzd;
+    this.wkD.msgId = this.msgId;
+    this.wkD.wkv = this.wkv;
+    this.iBx.setAdapter(this.wkD);
+    this.iBx.setSelection(this.selection);
+    this.iBx.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
     {
       public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(27940);
-        if (n.d(RecordMsgImageUI.a(RecordMsgImageUI.this).Kd(paramAnonymousInt), RecordMsgImageUI.b(RecordMsgImageUI.this)))
+        if (n.d(RecordMsgImageUI.a(RecordMsgImageUI.this).Mc(paramAnonymousInt), RecordMsgImageUI.b(RecordMsgImageUI.this)))
         {
           RecordMsgImageUI.this.setMMTitle(String.format("%d/%d", new Object[] { Integer.valueOf(paramAnonymousInt + 1), Integer.valueOf(RecordMsgImageUI.c(RecordMsgImageUI.this).size()) }));
           RecordMsgImageUI.this.enableOptionMenu(true);
@@ -458,37 +456,37 @@ public class RecordMsgImageUI
       
       public final void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
     });
-    this.ibu.setSingleClickOverListener(new MMGestureGallery.f()
+    this.iBx.setSingleClickOverListener(new MMGestureGallery.f()
     {
-      public final void aHo()
+      public final void aOd()
       {
         AppMethodBeat.i(27946);
-        if (RecordMsgImageUI.d(RecordMsgImageUI.this).qgu != 1) {
-          RecordMsgImageUI.e(RecordMsgImageUI.this).kD(false);
+        if (RecordMsgImageUI.d(RecordMsgImageUI.this).qOW != 1) {
+          RecordMsgImageUI.e(RecordMsgImageUI.this).lh(false);
         }
         AppMethodBeat.o(27946);
       }
     });
-    this.ibu.setLongClickOverListener(new MMGestureGallery.c()
+    this.iBx.setLongClickOverListener(new MMGestureGallery.c()
     {
-      public final void aHp()
+      public final void aOe()
       {
         AppMethodBeat.i(27947);
-        if (RecordMsgImageUI.d(RecordMsgImageUI.this).qgu == 1)
+        if (RecordMsgImageUI.d(RecordMsgImageUI.this).qOW == 1)
         {
           AppMethodBeat.o(27947);
           return;
         }
-        Object localObject = y.arz().E("basescanui@datacenter", true);
-        ((y.b)localObject).m("key_basescanui_screen_x", Integer.valueOf(RecordMsgImageUI.f(RecordMsgImageUI.this).getXDown()));
-        ((y.b)localObject).m("key_basescanui_screen_y", Integer.valueOf(RecordMsgImageUI.f(RecordMsgImageUI.this).getYDown()));
-        localObject = new ao();
-        ((ao)localObject).dFd = 1L;
-        ((ao)localObject).dMB = 5L;
-        ((ao)localObject).aBj();
-        if ((RecordMsgImageUI.d(RecordMsgImageUI.this).qgu == 0) || (RecordMsgImageUI.d(RecordMsgImageUI.this).qgu == 2))
+        Object localObject = y.ayq().F("basescanui@datacenter", true);
+        ((y.b)localObject).l("key_basescanui_screen_x", Integer.valueOf(RecordMsgImageUI.f(RecordMsgImageUI.this).getXDown()));
+        ((y.b)localObject).l("key_basescanui_screen_y", Integer.valueOf(RecordMsgImageUI.f(RecordMsgImageUI.this).getYDown()));
+        localObject = new bo();
+        ((bo)localObject).dCQ = 1L;
+        ((bo)localObject).dNc = 5L;
+        ((bo)localObject).aHZ();
+        if ((RecordMsgImageUI.d(RecordMsgImageUI.this).qOW == 0) || (RecordMsgImageUI.d(RecordMsgImageUI.this).qOW == 2))
         {
-          RecordMsgImageUI.a(RecordMsgImageUI.this, com.tencent.mm.plugin.scanner.g.dkX());
+          RecordMsgImageUI.a(RecordMsgImageUI.this, com.tencent.mm.plugin.scanner.h.dyZ());
           AppMethodBeat.o(27947);
           return;
         }
@@ -502,16 +500,16 @@ public class RecordMsgImageUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(27948);
-        RecordMsgImageUI.e(RecordMsgImageUI.this).kD(false);
+        RecordMsgImageUI.e(RecordMsgImageUI.this).lh(false);
         AppMethodBeat.o(27948);
         return true;
       }
     });
     ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().a(this);
-    com.tencent.mm.sdk.b.a.ESL.c(this.qej);
-    this.kxs = new ScanCodeSheetItemLogic(this, new ScanCodeSheetItemLogic.a()
+    com.tencent.mm.sdk.b.a.GpY.c(this.qMM);
+    this.kYG = new ScanCodeSheetItemLogic(this, new ScanCodeSheetItemLogic.a()
     {
-      public final void beE()
+      public final void bly()
       {
         AppMethodBeat.i(27949);
         if ((RecordMsgImageUI.h(RecordMsgImageUI.this) != null) && (RecordMsgImageUI.h(RecordMsgImageUI.this).isShowing())) {
@@ -527,14 +525,14 @@ public class RecordMsgImageUI
   {
     AppMethodBeat.i(27965);
     ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b(this);
-    this.vbH.destory();
-    if (this.qeh != null) {
-      this.qeh.onDestroy();
+    this.wkv.destory();
+    if (this.qMK != null) {
+      this.qMK.onDestroy();
     }
-    if (this.qee != null) {
-      this.qee.onDestroy();
+    if (this.qMH != null) {
+      this.qMH.onDestroy();
     }
-    com.tencent.mm.sdk.b.a.ESL.d(this.qej);
+    com.tencent.mm.sdk.b.a.GpY.d(this.qMM);
     super.onDestroy();
     AppMethodBeat.o(27965);
   }
@@ -544,7 +542,7 @@ public class RecordMsgImageUI
     AppMethodBeat.i(27961);
     if (paramInt == 4)
     {
-      this.qee.kD(false);
+      this.qMH.lh(false);
       AppMethodBeat.o(27961);
       return true;
     }
@@ -557,7 +555,7 @@ public class RecordMsgImageUI
   {
     AppMethodBeat.i(27963);
     super.onPause();
-    f.d(false, true, true);
+    f.e(false, true, true);
     AppMethodBeat.o(27963);
   }
   
@@ -565,7 +563,7 @@ public class RecordMsgImageUI
   {
     AppMethodBeat.i(27964);
     super.onResume();
-    f.d(true, true, true);
+    f.e(true, true, true);
     AppMethodBeat.o(27964);
   }
   
@@ -578,30 +576,30 @@ public class RecordMsgImageUI
   static final class a
     extends BaseAdapter
   {
-    List<afy> fvw;
+    List<agx> fzd;
     long msgId;
-    com.tencent.mm.plugin.record.b.l vbH;
+    com.tencent.mm.plugin.record.b.l wkv;
     
     private a()
     {
       AppMethodBeat.i(27954);
-      this.fvw = new LinkedList();
+      this.fzd = new LinkedList();
       this.msgId = -1L;
       AppMethodBeat.o(27954);
     }
     
-    public final afy Kd(int paramInt)
+    public final agx Mc(int paramInt)
     {
       AppMethodBeat.i(27956);
-      afy localafy = (afy)this.fvw.get(paramInt);
+      agx localagx = (agx)this.fzd.get(paramInt);
       AppMethodBeat.o(27956);
-      return localafy;
+      return localagx;
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(27955);
-      int i = this.fvw.size();
+      int i = this.fzd.size();
       AppMethodBeat.o(27955);
       return i;
     }
@@ -614,21 +612,21 @@ public class RecordMsgImageUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(27957);
-      com.tencent.mm.plugin.record.b.l locall = this.vbH;
-      afy localafy = Kd(paramInt);
+      com.tencent.mm.plugin.record.b.l locall = this.wkv;
+      agx localagx = Mc(paramInt);
       long l = this.msgId;
-      Object localObject = locall.a(localafy, l, false);
+      Object localObject = locall.a(localagx, l, false);
       if (localObject == null)
       {
-        boolean bool = locall.a(localafy, l);
-        ad.d("MicroMsg.RecordMsgImgService", "get image fail, try download, can retry:%B", new Object[] { Boolean.valueOf(bool) });
+        boolean bool = locall.a(localagx, l);
+        ac.d("MicroMsg.RecordMsgImgService", "get image fail, try download, can retry:%B", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
-          n.b(localafy, l, bool);
+          n.b(localagx, l, bool);
         }
       }
       if (localObject == null)
       {
-        ad.w("MicroMsg.ShowImageUI", "get image fail");
+        ac.w("MicroMsg.ShowImageUI", "get image fail");
         if (paramView != null)
         {
           localObject = paramView;
@@ -658,20 +656,20 @@ public class RecordMsgImageUI
         AppMethodBeat.o(27957);
         return paramView;
         paramView = (MultiTouchImageView)paramView;
-        paramView.cH(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+        paramView.cF(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
       }
     }
   }
   
   static final class b
   {
-    pl qet;
-    boolean qim;
+    pu qMW;
+    boolean qQO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.RecordMsgImageUI
  * JD-Core Version:    0.7.0.1
  */

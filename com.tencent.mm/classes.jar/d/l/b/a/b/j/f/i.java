@@ -22,21 +22,21 @@ public abstract class i
   {
     k.h(paramf, "name");
     k.h(parama, "location");
-    return (Collection)v.Jgl;
+    return (Collection)v.KTF;
   }
   
   public Collection<l> a(d paramd, b<? super f, Boolean> paramb)
   {
     k.h(paramd, "kindFilter");
     k.h(paramb, "nameFilter");
-    return (Collection)v.Jgl;
+    return (Collection)v.KTF;
   }
   
   public Collection<? extends am> b(f paramf, a parama)
   {
     k.h(paramf, "name");
     k.h(parama, "location");
-    return (Collection)v.Jgl;
+    return (Collection)v.KTF;
   }
   
   public d.l.b.a.b.b.h c(f paramf, a parama)
@@ -58,9 +58,9 @@ public abstract class i
     localj.b(paramf, parama);
   }
   
-  public Set<f> fzU()
+  public Set<f> fSy()
   {
-    Object localObject1 = (Iterable)a(d.JTr, d.l.b.a.b.o.d.fKi());
+    Object localObject1 = (Iterable)a(d.LGK, d.l.b.a.b.o.d.gcL());
     Collection localCollection = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -74,14 +74,14 @@ public abstract class i
     localCollection = (Collection)new LinkedHashSet();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      localCollection.add(((am)((Iterator)localObject1).next()).fyB());
+      localCollection.add(((am)((Iterator)localObject1).next()).fRf());
     }
     return (Set)localCollection;
   }
   
-  public Set<f> fzV()
+  public Set<f> fSz()
   {
-    Object localObject1 = (Iterable)a(d.JTs, d.l.b.a.b.o.d.fKi());
+    Object localObject1 = (Iterable)a(d.LGL, d.l.b.a.b.o.d.gcL());
     Collection localCollection = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -95,14 +95,14 @@ public abstract class i
     localCollection = (Collection)new LinkedHashSet();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      localCollection.add(((ax)((Iterator)localObject1).next()).fyB());
+      localCollection.add(((ax)((Iterator)localObject1).next()).fRf());
     }
     return (Set)localCollection;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.i
  * JD-Core Version:    0.7.0.1
  */

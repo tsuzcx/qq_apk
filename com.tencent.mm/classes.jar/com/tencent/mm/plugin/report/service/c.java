@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class c
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int fVA;
-  public int mBH;
-  public boolean vJB;
-  public String vJI;
-  public boolean vJJ;
-  public boolean vJK;
+  public int fZv;
+  public int ndI;
+  public boolean wTF;
+  public String wTM;
+  public boolean wTN;
+  public boolean wTO;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -19,46 +19,46 @@ public final class c
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.vJI == null)
+      if (this.wTM == null)
       {
         paramVarArgs = new b("Not all required fields were included: Value");
         AppMethodBeat.o(143831);
         throw paramVarArgs;
       }
-      paramVarArgs.aR(1, this.fVA);
-      if (this.vJI != null) {
-        paramVarArgs.d(2, this.vJI);
+      paramVarArgs.aR(1, this.fZv);
+      if (this.wTM != null) {
+        paramVarArgs.d(2, this.wTM);
       }
-      paramVarArgs.bg(3, this.vJJ);
-      paramVarArgs.bg(4, this.vJB);
-      paramVarArgs.aR(5, this.mBH);
-      paramVarArgs.bg(6, this.vJK);
+      paramVarArgs.bl(3, this.wTN);
+      paramVarArgs.bl(4, this.wTF);
+      paramVarArgs.aR(5, this.ndI);
+      paramVarArgs.bl(6, this.wTO);
       AppMethodBeat.o(143831);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.fVA) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.fZv) + 0;
       paramInt = i;
-      if (this.vJI != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.vJI);
+      if (this.wTM != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.wTM);
       }
-      i = f.a.a.b.b.a.fY(3);
-      int j = f.a.a.b.b.a.fY(4);
-      int k = f.a.a.b.b.a.bA(5, this.mBH);
-      int m = f.a.a.b.b.a.fY(6);
+      i = f.a.a.b.b.a.fK(3);
+      int j = f.a.a.b.b.a.fK(4);
+      int k = f.a.a.b.b.a.bx(5, this.ndI);
+      int m = f.a.a.b.b.a.fK(6);
       AppMethodBeat.o(143831);
       return paramInt + (i + 1) + (j + 1) + k + (m + 1);
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      if (this.vJI == null)
+      if (this.wTM == null)
       {
         paramVarArgs = new b("Not all required fields were included: Value");
         AppMethodBeat.o(143831);
@@ -77,27 +77,27 @@ public final class c
         AppMethodBeat.o(143831);
         return -1;
       case 1: 
-        localc.fVA = locala.KhF.xS();
+        localc.fZv = locala.LVo.xF();
         AppMethodBeat.o(143831);
         return 0;
       case 2: 
-        localc.vJI = locala.KhF.readString();
+        localc.wTM = locala.LVo.readString();
         AppMethodBeat.o(143831);
         return 0;
       case 3: 
-        localc.vJJ = locala.KhF.fHu();
+        localc.wTN = locala.LVo.fZX();
         AppMethodBeat.o(143831);
         return 0;
       case 4: 
-        localc.vJB = locala.KhF.fHu();
+        localc.wTF = locala.LVo.fZX();
         AppMethodBeat.o(143831);
         return 0;
       case 5: 
-        localc.mBH = locala.KhF.xS();
+        localc.ndI = locala.LVo.xF();
         AppMethodBeat.o(143831);
         return 0;
       }
-      localc.vJK = locala.KhF.fHu();
+      localc.wTO = locala.LVo.fZX();
       AppMethodBeat.o(143831);
       return 0;
     }

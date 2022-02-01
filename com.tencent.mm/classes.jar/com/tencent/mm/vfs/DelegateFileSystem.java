@@ -17,7 +17,7 @@ public abstract class DelegateFileSystem
 {
   public void a(CancellationSignal paramCancellationSignal)
   {
-    Iterator localIterator = fhB().iterator();
+    Iterator localIterator = fxD().iterator();
     while (localIterator.hasNext())
     {
       FileSystem localFileSystem = (FileSystem)localIterator.next();
@@ -26,52 +26,52 @@ public abstract class DelegateFileSystem
     }
   }
   
-  public ReadableByteChannel aMA(String paramString)
+  public ReadableByteChannel aSc(String paramString)
   {
-    FileSystem localFileSystem = gj(paramString, 1);
+    FileSystem localFileSystem = gn(paramString, 1);
     if (localFileSystem == null) {
       throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString)));
     }
-    return localFileSystem.aMA(paramString);
+    return localFileSystem.aSc(paramString);
   }
   
-  public ByteChannel aMB(String paramString)
+  public ByteChannel aSd(String paramString)
   {
-    FileSystem localFileSystem = gj(paramString, 3);
+    FileSystem localFileSystem = gn(paramString, 3);
     if (localFileSystem == null) {
       throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString)));
     }
-    return localFileSystem.aMB(paramString);
+    return localFileSystem.aSd(paramString);
   }
   
-  public FileSystem.b aMC(String paramString)
+  public FileSystem.b aSe(String paramString)
   {
-    FileSystem localFileSystem = gj(paramString, 0);
+    FileSystem localFileSystem = gn(paramString, 0);
     if (localFileSystem == null) {
       throw new RuntimeException("Cannot delegate path to filesystem: ".concat(String.valueOf(paramString)));
     }
-    return localFileSystem.aMC(paramString);
+    return localFileSystem.aSe(paramString);
   }
   
-  public boolean aMD(String paramString)
+  public boolean aSf(String paramString)
   {
-    FileSystem localFileSystem = gj(paramString, 1);
-    return (localFileSystem != null) && (localFileSystem.aMD(paramString));
+    FileSystem localFileSystem = gn(paramString, 1);
+    return (localFileSystem != null) && (localFileSystem.aSf(paramString));
   }
   
-  public FileSystem.a aME(String paramString)
+  public FileSystem.a aSg(String paramString)
   {
-    FileSystem localFileSystem = gj(paramString, 1);
+    FileSystem localFileSystem = gn(paramString, 1);
     if (localFileSystem == null) {
       return null;
     }
-    return localFileSystem.aME(paramString);
+    return localFileSystem.aSg(paramString);
   }
   
-  public boolean aMF(String paramString)
+  public boolean aSh(String paramString)
   {
-    FileSystem localFileSystem = gj(paramString, 2);
-    return (localFileSystem != null) && (localFileSystem.aMF(paramString));
+    FileSystem localFileSystem = gn(paramString, 2);
+    return (localFileSystem != null) && (localFileSystem.aSh(paramString));
   }
   
   protected final boolean b(String paramString1, FileSystem paramFileSystem, String paramString2)
@@ -79,84 +79,84 @@ public abstract class DelegateFileSystem
     throw new AssertionError();
   }
   
-  public void bN(Map<String, String> paramMap)
+  public void bS(Map<String, String> paramMap)
   {
-    Iterator localIterator = fhB().iterator();
+    Iterator localIterator = fxD().iterator();
     while (localIterator.hasNext()) {
-      ((FileSystem)localIterator.next()).bN(paramMap);
+      ((FileSystem)localIterator.next()).bS(paramMap);
     }
   }
   
-  public WritableByteChannel cL(String paramString, boolean paramBoolean)
+  public WritableByteChannel cR(String paramString, boolean paramBoolean)
   {
     if (paramBoolean) {}
     FileSystem localFileSystem;
     for (int i = 3;; i = 2)
     {
-      localFileSystem = gj(paramString, i);
+      localFileSystem = gn(paramString, i);
       if (localFileSystem != null) {
         break;
       }
       throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString)));
     }
-    return localFileSystem.cL(paramString, paramBoolean);
+    return localFileSystem.cR(paramString, paramBoolean);
   }
   
-  public OutputStream cM(String paramString, boolean paramBoolean)
+  public OutputStream cS(String paramString, boolean paramBoolean)
   {
     if (paramBoolean) {}
     FileSystem localFileSystem;
     for (int i = 3;; i = 2)
     {
-      localFileSystem = gj(paramString, i);
+      localFileSystem = gn(paramString, i);
       if (localFileSystem != null) {
         break;
       }
       throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString)));
     }
-    return localFileSystem.cM(paramString, paramBoolean);
+    return localFileSystem.cS(paramString, paramBoolean);
   }
   
-  public final Iterable<FileSystem.a> cN(final String paramString, final boolean paramBoolean)
+  public final Iterable<FileSystem.a> cT(final String paramString, final boolean paramBoolean)
   {
     new Iterable()
     {
       public final Iterator<FileSystem.a> iterator()
       {
         AppMethodBeat.i(13092);
-        q.a local1 = new q.a(DelegateFileSystem.this.fhB().iterator()) {};
+        q.a local1 = new q.a(DelegateFileSystem.this.fxD().iterator()) {};
         AppMethodBeat.o(13092);
         return local1;
       }
     };
   }
   
-  public final boolean cO(String paramString, boolean paramBoolean)
+  public boolean cU(String paramString, boolean paramBoolean)
   {
-    Iterator localIterator = fhB().iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((FileSystem)localIterator.next()).cO(paramString, paramBoolean) | bool) {}
+    Iterator localIterator = fxD().iterator();
+    for (boolean bool = false; localIterator.hasNext(); bool = ((FileSystem)localIterator.next()).cU(paramString, paramBoolean) | bool) {}
     return bool;
   }
   
-  public final String cP(String paramString, boolean paramBoolean)
+  public final String cV(String paramString, boolean paramBoolean)
   {
     if (paramBoolean) {}
     FileSystem localFileSystem;
     for (int i = 2;; i = 1)
     {
-      localFileSystem = gj(paramString, i);
+      localFileSystem = gn(paramString, i);
       if (localFileSystem != null) {
         break;
       }
       return null;
     }
-    return localFileSystem.cP(paramString, paramBoolean);
+    return localFileSystem.cV(paramString, paramBoolean);
   }
   
-  public final boolean cf(String paramString, long paramLong)
+  public final boolean ch(String paramString, long paramLong)
   {
-    FileSystem localFileSystem = gj(paramString, 3);
-    return (localFileSystem != null) && (localFileSystem.cf(paramString, paramLong));
+    FileSystem localFileSystem = gn(paramString, 3);
+    return (localFileSystem != null) && (localFileSystem.ch(paramString, paramLong));
   }
   
   protected final long d(String paramString1, FileSystem paramFileSystem, String paramString2)
@@ -164,16 +164,16 @@ public abstract class DelegateFileSystem
     throw new AssertionError();
   }
   
-  public int fhA()
+  public int fxC()
   {
-    return gj("", 0).fhA();
+    return gn("", 0).fxC();
   }
   
-  protected abstract Iterable<FileSystem> fhB();
+  protected abstract Iterable<FileSystem> fxD();
   
-  protected abstract FileSystem gj(String paramString, int paramInt);
+  protected abstract FileSystem gn(String paramString, int paramInt);
   
-  public ParcelFileDescriptor lw(String paramString1, String paramString2)
+  public ParcelFileDescriptor lT(String paramString1, String paramString2)
   {
     int i;
     if (paramString2.contains("rw")) {
@@ -182,7 +182,7 @@ public abstract class DelegateFileSystem
     FileSystem localFileSystem;
     for (;;)
     {
-      localFileSystem = gj(paramString1, i);
+      localFileSystem = gn(paramString1, i);
       if (localFileSystem != null) {
         break;
       }
@@ -193,22 +193,22 @@ public abstract class DelegateFileSystem
         i = 1;
       }
     }
-    return localFileSystem.lw(paramString1, paramString2);
+    return localFileSystem.lT(paramString1, paramString2);
   }
   
   public InputStream openRead(String paramString)
   {
-    FileSystem localFileSystem = gj(paramString, 1);
+    FileSystem localFileSystem = gn(paramString, 1);
     if (localFileSystem == null) {
       throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString)));
     }
     return localFileSystem.openRead(paramString);
   }
   
-  public final boolean vv(String paramString)
+  public boolean zB(String paramString)
   {
-    Iterator localIterator = fhB().iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((FileSystem)localIterator.next()).vv(paramString) | bool) {}
+    Iterator localIterator = fxD().iterator();
+    for (boolean bool = false; localIterator.hasNext(); bool = ((FileSystem)localIterator.next()).zB(paramString) | bool) {}
     return bool;
   }
 }

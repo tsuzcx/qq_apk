@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.mapsdk.rastercore.LogHelper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tencentmap.mapsdk.a.a;
 
 public class QSupportMapFragment
   extends Fragment
@@ -54,7 +54,7 @@ public class QSupportMapFragment
       this.mapView = new MapView(paramLayoutInflater.getContext());
       this.mapView.onCreate(paramViewGroup);
     }
-    a.b("js", "QSupportMapFragment onCreateView ");
+    LogHelper.v("js", "QSupportMapFragment onCreateView ");
     paramLayoutInflater = this.mapView;
     AppMethodBeat.o(87491);
     return paramLayoutInflater;
@@ -116,7 +116,7 @@ public class QSupportMapFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.QSupportMapFragment
  * JD-Core Version:    0.7.0.1
  */

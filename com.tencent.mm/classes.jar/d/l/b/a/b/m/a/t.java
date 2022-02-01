@@ -9,12 +9,12 @@ import d.l.b.a.b.m.d;
 
 public final class t
 {
-  public static final t JZh;
+  public static final t LMA;
   
   static
   {
     AppMethodBeat.i(61149);
-    JZh = new t();
+    LMA = new t();
     AppMethodBeat.o(61149);
   }
   
@@ -23,14 +23,14 @@ public final class t
     AppMethodBeat.i(61148);
     k.h(parambg1, "a");
     k.h(parambg2, "b");
-    boolean bool = d.JWR.a((p)s.JZg, (g)parambg1, (g)parambg2);
+    boolean bool = d.LKk.a((p)s.LMz, (g)parambg1, (g)parambg2);
     AppMethodBeat.o(61148);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.t
  * JD-Core Version:    0.7.0.1
  */

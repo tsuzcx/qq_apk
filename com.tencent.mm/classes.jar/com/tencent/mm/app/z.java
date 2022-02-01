@@ -1,32 +1,58 @@
 package com.tencent.mm.app;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Set;
 
-final class z
+public final class z
 {
-  public static boolean bq(Context paramContext)
+  private static final Set<String> cJH;
+  
+  static
   {
-    AppMethodBeat.i(190854);
-    try
+    AppMethodBeat.i(160098);
+    HashSet localHashSet = new HashSet();
+    cJH = localHashSet;
+    localHashSet.add(":nospace");
+    cJH.add(":cuploader");
+    cJH.add(":dexopt");
+    cJH.add(":recovery");
+    cJH.add(":fallback");
+    cJH.add(":isolated_process0");
+    cJH.add(":hotpot");
+    cJH.add(":extmig");
+    AppMethodBeat.o(160098);
+  }
+  
+  public static String ev(String paramString)
+  {
+    AppMethodBeat.i(160095);
+    int i = paramString.indexOf(':');
+    if (i != -1)
     {
-      if (!((Boolean)Class.forName(aj.getPackageName() + ".recovery.RecoveryInitializer").getMethod("init", new Class[] { Context.class }).invoke(null, new Object[] { paramContext })).booleanValue())
-      {
-        AppMethodBeat.o(190854);
-        return true;
-      }
-      AppMethodBeat.o(190854);
-      return false;
+      paramString = paramString.substring(i);
+      AppMethodBeat.o(160095);
+      return paramString;
     }
-    catch (Throwable paramContext)
-    {
-      ad.printErrStackTrace("MicroMsg.recovery.loader", paramContext, "recovery init fail", new Object[0]);
-      AppMethodBeat.o(190854);
-    }
-    return false;
+    AppMethodBeat.o(160095);
+    return "";
+  }
+  
+  public static boolean ew(String paramString)
+  {
+    AppMethodBeat.i(160096);
+    paramString = ev(paramString);
+    boolean bool = cJH.contains(paramString);
+    AppMethodBeat.o(160096);
+    return bool;
+  }
+  
+  public static boolean ex(String paramString)
+  {
+    AppMethodBeat.i(160097);
+    boolean bool = paramString.endsWith(":nospace");
+    AppMethodBeat.o(160097);
+    return bool;
   }
 }
 

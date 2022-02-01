@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.topstory.ui.video.fs;
 import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ddb;
+import com.tencent.mm.protocal.protobuf.dio;
 
 public final class l
   extends f
@@ -23,21 +23,21 @@ public final class l
     AppMethodBeat.i(126405);
     super.init();
     findViewById(2131299154).setVisibility(8);
-    this.yRf.setVisibility(8);
-    this.yRe.setVisibility(8);
-    this.yRd.setVisibility(8);
+    this.AeU.setVisibility(8);
+    this.AeT.setVisibility(8);
+    this.AeS.setVisibility(8);
     findViewById(2131305133).setVisibility(8);
     AppMethodBeat.o(126405);
   }
   
-  public final void m(ddb paramddb)
+  public final void m(dio paramdio)
   {
     AppMethodBeat.i(126406);
-    super.m(paramddb);
+    super.m(paramdio);
     findViewById(2131299154).setVisibility(8);
-    this.yRf.setVisibility(8);
-    this.yRe.setVisibility(8);
-    this.yRd.setVisibility(8);
+    this.AeU.setVisibility(8);
+    this.AeT.setVisibility(8);
+    this.AeS.setVisibility(8);
     findViewById(2131305133).setVisibility(8);
     AppMethodBeat.o(126406);
   }

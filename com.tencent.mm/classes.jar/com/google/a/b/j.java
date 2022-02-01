@@ -8,8 +8,8 @@ import java.util.Map;
 
 public final class j
 {
-  private static final Map<Class<?>, Class<?>> bGA;
-  private static final Map<Class<?>, Class<?>> bGz;
+  private static final Map<Class<?>, Class<?>> bEh;
+  private static final Map<Class<?>, Class<?>> bEi;
   
   static
   {
@@ -25,8 +25,8 @@ public final class j
     a(localHashMap1, localHashMap2, Long.TYPE, Long.class);
     a(localHashMap1, localHashMap2, Short.TYPE, Short.class);
     a(localHashMap1, localHashMap2, Void.TYPE, Void.class);
-    bGz = Collections.unmodifiableMap(localHashMap1);
-    bGA = Collections.unmodifiableMap(localHashMap2);
+    bEh = Collections.unmodifiableMap(localHashMap1);
+    bEi = Collections.unmodifiableMap(localHashMap2);
     AppMethodBeat.o(107973);
   }
   
@@ -41,14 +41,14 @@ public final class j
   public static boolean g(Type paramType)
   {
     AppMethodBeat.i(107972);
-    boolean bool = bGz.containsKey(paramType);
+    boolean bool = bEh.containsKey(paramType);
     AppMethodBeat.o(107972);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.b.j
  * JD-Core Version:    0.7.0.1
  */

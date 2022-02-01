@@ -6,8 +6,8 @@ import java.io.IOException;
 
 public class FLock
 {
-  private volatile int ETB;
-  private e fGL;
+  private volatile int GqO;
+  private e fKs;
   
   static
   {
@@ -20,7 +20,7 @@ public class FLock
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.FLock", localThrowable, "fail to load so.", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.FLock", localThrowable, "fail to load so.", new Object[0]);
       AppMethodBeat.o(125222);
     }
   }
@@ -28,14 +28,14 @@ public class FLock
   private FLock(e parame)
   {
     AppMethodBeat.i(175410);
-    this.fGL = null;
-    this.ETB = -1;
+    this.fKs = null;
+    this.GqO = -1;
     if (!parame.exists()) {}
     while (parame.isFile()) {
       try
       {
         parame.createNewFile();
-        this.fGL = parame;
+        this.fKs = parame;
         AppMethodBeat.o(175410);
         return;
       }
@@ -63,10 +63,10 @@ public class FLock
     try
     {
       AppMethodBeat.i(125217);
-      if (this.ETB != -1)
+      if (this.GqO != -1)
       {
-        nativeFree(this.ETB);
-        this.ETB = -1;
+        nativeFree(this.GqO);
+        this.GqO = -1;
       }
       AppMethodBeat.o(125217);
       return;
@@ -83,31 +83,31 @@ public class FLock
     //   2: ldc 87
     //   4: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 50	com/tencent/mm/sdk/platformtools/FLock:fGL	Lcom/tencent/mm/vfs/e;
+    //   8: getfield 50	com/tencent/mm/sdk/platformtools/FLock:fKs	Lcom/tencent/mm/vfs/e;
     //   11: invokevirtual 58	com/tencent/mm/vfs/e:exists	()Z
     //   14: istore_2
     //   15: iload_2
     //   16: ifne +16 -> 32
     //   19: aload_0
-    //   20: getfield 50	com/tencent/mm/sdk/platformtools/FLock:fGL	Lcom/tencent/mm/vfs/e;
+    //   20: getfield 50	com/tencent/mm/sdk/platformtools/FLock:fKs	Lcom/tencent/mm/vfs/e;
     //   23: invokevirtual 61	com/tencent/mm/vfs/e:createNewFile	()Z
     //   26: pop
     //   27: aload_0
     //   28: iconst_m1
-    //   29: putfield 52	com/tencent/mm/sdk/platformtools/FLock:ETB	I
+    //   29: putfield 52	com/tencent/mm/sdk/platformtools/FLock:GqO	I
     //   32: aload_0
-    //   33: getfield 52	com/tencent/mm/sdk/platformtools/FLock:ETB	I
+    //   33: getfield 52	com/tencent/mm/sdk/platformtools/FLock:GqO	I
     //   36: iconst_m1
     //   37: if_icmpne +20 -> 57
     //   40: aload_0
     //   41: aload_0
-    //   42: getfield 50	com/tencent/mm/sdk/platformtools/FLock:fGL	Lcom/tencent/mm/vfs/e;
-    //   45: invokevirtual 91	com/tencent/mm/vfs/e:fhU	()Landroid/net/Uri;
+    //   42: getfield 50	com/tencent/mm/sdk/platformtools/FLock:fKs	Lcom/tencent/mm/vfs/e;
+    //   45: invokevirtual 91	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
     //   48: invokestatic 97	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   51: invokestatic 101	com/tencent/mm/sdk/platformtools/FLock:nativeInit	(Ljava/lang/String;)I
-    //   54: putfield 52	com/tencent/mm/sdk/platformtools/FLock:ETB	I
+    //   54: putfield 52	com/tencent/mm/sdk/platformtools/FLock:GqO	I
     //   57: aload_0
-    //   58: getfield 52	com/tencent/mm/sdk/platformtools/FLock:ETB	I
+    //   58: getfield 52	com/tencent/mm/sdk/platformtools/FLock:GqO	I
     //   61: istore_1
     //   62: ldc 87
     //   64: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -149,7 +149,7 @@ public class FLock
   
   private static native int nativeUnlock(int paramInt);
   
-  public final boolean eFe()
+  public final boolean eUy()
   {
     boolean bool = false;
     for (;;)
@@ -186,7 +186,7 @@ public class FLock
     }
   }
   
-  public final void eFf()
+  public final void eUz()
   {
     for (;;)
     {
@@ -267,14 +267,14 @@ public class FLock
       try
       {
         AppMethodBeat.i(125221);
-        if (this.ETB == -1)
+        if (this.GqO == -1)
         {
           AppMethodBeat.o(125221);
           return;
         }
         try
         {
-          int i = nativeUnlock(this.ETB);
+          int i = nativeUnlock(this.GqO);
           switch (i)
           {
           case 9: 
@@ -288,7 +288,7 @@ public class FLock
           free();
           AppMethodBeat.o(125221);
         }
-        localObject3 = new IllegalArgumentException(this.ETB + " is not a valid fd.");
+        localObject3 = new IllegalArgumentException(this.GqO + " is not a valid fd.");
       }
       finally {}
       AppMethodBeat.o(125221);
@@ -303,7 +303,7 @@ public class FLock
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.FLock
  * JD-Core Version:    0.7.0.1
  */

@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.radar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.m;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/RadarApplication;", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "()V", "regitMMModelCallback", "", "callback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "regitMMUICallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "Companion", "plugin-radar_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/RadarApplication;", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "()V", "regitMMModelCallback", "", "callback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "regitMMUICallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "Companion", "plugin-radar_release"})
 public final class a
   implements m
 {
-  private static com.tencent.mm.pluginsdk.l hYt;
-  private static com.tencent.mm.pluginsdk.k hYu;
-  public static final a uRB;
+  private static com.tencent.mm.pluginsdk.l iyx;
+  private static com.tencent.mm.pluginsdk.k iyy;
+  public static final a waq;
   
   static
   {
     AppMethodBeat.i(138495);
-    uRB = new a((byte)0);
+    waq = new a((byte)0);
     AppMethodBeat.o(138495);
   }
   
@@ -22,7 +22,7 @@ public final class a
   {
     AppMethodBeat.i(138494);
     d.g.b.k.h(paramk, "callback");
-    hYu = paramk;
+    iyy = paramk;
     AppMethodBeat.o(138494);
   }
   
@@ -30,11 +30,11 @@ public final class a
   {
     AppMethodBeat.i(138493);
     d.g.b.k.h(paraml, "callback");
-    hYt = paraml;
+    iyx = paraml;
     AppMethodBeat.o(138493);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/RadarApplication$Companion;", "", "()V", "modelCallback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "getModelCallback", "()Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "setModelCallback", "(Lcom/tencent/mm/pluginsdk/IMMModelCallback;)V", "uiCallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "getUiCallback", "()Lcom/tencent/mm/pluginsdk/IMMUICallback;", "setUiCallback", "(Lcom/tencent/mm/pluginsdk/IMMUICallback;)V", "plugin-radar_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/RadarApplication$Companion;", "", "()V", "modelCallback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "getModelCallback", "()Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "setModelCallback", "(Lcom/tencent/mm/pluginsdk/IMMModelCallback;)V", "uiCallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "getUiCallback", "()Lcom/tencent/mm/pluginsdk/IMMUICallback;", "setUiCallback", "(Lcom/tencent/mm/pluginsdk/IMMUICallback;)V", "plugin-radar_release"})
   public static final class a {}
 }
 

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.backup.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.cmg;
-import com.tencent.mm.protocal.protobuf.hu;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.crn;
+import com.tencent.mm.protocal.protobuf.hy;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class i
@@ -13,48 +13,48 @@ public final class i
   public static int a(a parama)
   {
     AppMethodBeat.i(21527);
-    if (parama.muV == null)
+    if (parama.mWW == null)
     {
-      ad.e("MicroMsg.BackupPackUtil", "packBackupItem %s is null!", new Object[] { "backupItemInfo.backupitem" });
+      ac.e("MicroMsg.BackupPackUtil", "packBackupItem %s is null!", new Object[] { "backupItemInfo.backupitem" });
       AppMethodBeat.o(21527);
       return 0;
     }
-    int i = (int)com.tencent.mm.vfs.i.aMN(parama.filePath);
+    int i = (int)com.tencent.mm.vfs.i.aSp(parama.filePath);
     if (i <= 0)
     {
-      ad.e("MicroMsg.BackupPackUtil", "packBackupItem filePath error:" + parama.filePath);
+      ac.e("MicroMsg.BackupPackUtil", "packBackupItem filePath error:" + parama.filePath);
       AppMethodBeat.o(21527);
       return 0;
     }
-    if (parama.muX)
+    if (parama.mWY)
     {
       AppMethodBeat.o(21527);
       return i;
     }
-    if (parama.muW == null)
+    if (parama.mWX == null)
     {
-      ad.e("MicroMsg.BackupPackUtil", "packBackupItem error mediaInfoList null");
+      ac.e("MicroMsg.BackupPackUtil", "packBackupItem error mediaInfoList null");
       AppMethodBeat.o(21527);
       return 0;
     }
-    StringBuilder localStringBuilder = new StringBuilder(parama.muV.Cxx.toString()).append("_").append(parama.muV.Cxy.toString()).append("_").append(parama.muV.uKZ).append("_backup");
-    if (parama.muY == null) {}
-    for (String str = "";; str = "_" + parama.muY)
+    StringBuilder localStringBuilder = new StringBuilder(parama.mWW.DPT.toString()).append("_").append(parama.mWW.DPU.toString()).append("_").append(parama.mWW.vTQ).append("_backup");
+    if (parama.mWZ == null) {}
+    for (String str = "";; str = "_" + parama.mWZ)
     {
       str = str;
-      ad.d("MicroMsg.BackupPackUtil", "packBackupItem mediaId:%s, filePath:%s", new Object[] { str, parama.filePath });
-      parama.muV.CCT.add(new cmf().aEE(str));
-      parama.muV.CCU.add(new cmg().VP(parama.mediaType));
-      parama.muV.CCS = parama.muV.CCT.size();
-      if (parama.muS == null) {
-        parama.muS = new u();
+      ac.d("MicroMsg.BackupPackUtil", "packBackupItem mediaId:%s, filePath:%s", new Object[] { str, parama.filePath });
+      parama.mWW.DVq.add(new crm().aJV(str));
+      parama.mWW.DVr.add(new crn().XY(parama.mediaType));
+      parama.mWW.DVp = parama.mWW.DVq.size();
+      if (parama.mWT == null) {
+        parama.mWT = new u();
       }
-      parama.muS.mBF = parama.muV.uKZ;
-      parama.muS.mediaId = str;
-      parama.muS.path = parama.filePath;
-      parama.muS.type = parama.mediaType;
-      if (!parama.muZ) {
-        parama.muW.add(parama.muS);
+      parama.mWT.ndG = parama.mWW.vTQ;
+      parama.mWT.mediaId = str;
+      parama.mWT.path = parama.filePath;
+      parama.mWT.type = parama.mediaType;
+      if (!parama.mXa) {
+        parama.mWX.add(parama.mWT);
       }
       AppMethodBeat.o(21527);
       return 0;
@@ -64,35 +64,35 @@ public final class i
   public static final class a
   {
     String filePath;
+    u mWT;
+    hy mWW;
+    LinkedList<u> mWX;
+    boolean mWY = true;
+    String mWZ;
+    boolean mXa;
     int mediaType;
-    u muS;
-    hu muV;
-    LinkedList<u> muW;
-    boolean muX = true;
-    String muY;
-    boolean muZ;
     
-    public a(String paramString1, hu paramhu, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
+    public a(String paramString1, hy paramhy, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
     {
       this.filePath = paramString1;
-      this.muV = paramhu;
-      this.muW = paramLinkedList;
+      this.mWW = paramhy;
+      this.mWX = paramLinkedList;
       this.mediaType = paramInt;
-      this.muX = paramBoolean1;
-      this.muY = paramString2;
-      this.muZ = paramBoolean2;
-      this.muS = null;
+      this.mWY = paramBoolean1;
+      this.mWZ = paramString2;
+      this.mXa = paramBoolean2;
+      this.mWT = null;
     }
     
-    public a(String paramString, hu paramhu, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean1, boolean paramBoolean2, u paramu)
+    public a(String paramString, hy paramhy, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean1, boolean paramBoolean2, u paramu)
     {
       this.filePath = paramString;
-      this.muV = paramhu;
-      this.muW = paramLinkedList;
+      this.mWW = paramhy;
+      this.mWX = paramLinkedList;
       this.mediaType = paramInt;
-      this.muX = paramBoolean1;
-      this.muZ = paramBoolean2;
-      this.muS = paramu;
+      this.mWY = paramBoolean1;
+      this.mXa = paramBoolean2;
+      this.mWT = paramu;
     }
   }
 }

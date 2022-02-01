@@ -8,47 +8,47 @@ public abstract class h
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ejR;
-  private static final int ekU = "createTime".hashCode();
-  private static final int elJ = "appId".hashCode();
-  private static final int elK = "sdkVer".hashCode();
-  private static final int elL = "mediaSvrId".hashCode();
-  private static final int elM = "mediaId".hashCode();
-  private static final int elN = "clientAppDataId".hashCode();
-  private static final int elO;
-  private static final int elP;
-  private static final int elQ;
-  private static final int elR = "lastModifyTime".hashCode();
-  private static final int elS = "fileFullPath".hashCode();
-  private static final int elT = "fullXml".hashCode();
-  private static final int elU = "msgInfoId".hashCode();
-  private static final int elV = "netTimes".hashCode();
-  private static final int elW = "isUseCdn".hashCode();
-  private static final int elX = "signature".hashCode();
-  private static final int elY = "fakeAeskey".hashCode();
-  private static final int elZ = "fakeSignature".hashCode();
+  private static final int elV;
+  private static final int emY = "createTime".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int enP = "sdkVer".hashCode();
+  private static final int enQ = "mediaSvrId".hashCode();
+  private static final int enR = "mediaId".hashCode();
+  private static final int enS = "clientAppDataId".hashCode();
+  private static final int enT;
+  private static final int enU;
+  private static final int enV;
+  private static final int enW = "lastModifyTime".hashCode();
+  private static final int enX = "fileFullPath".hashCode();
+  private static final int enY = "fullXml".hashCode();
+  private static final int enZ = "msgInfoId".hashCode();
+  private static final int eoa = "netTimes".hashCode();
+  private static final int eob = "isUseCdn".hashCode();
+  private static final int eoc = "signature".hashCode();
+  private static final int eod = "fakeAeskey".hashCode();
+  private static final int eoe = "fakeSignature".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
   private boolean __hadSettype = true;
-  private boolean ejO = true;
-  private boolean ekx = true;
-  private boolean elA = true;
-  private boolean elB = true;
-  private boolean elC = true;
-  private boolean elD = true;
-  private boolean elE = true;
-  private boolean elF = true;
-  private boolean elG = true;
-  private boolean elH = true;
-  private boolean elI = true;
-  private boolean els = true;
-  private boolean elt = true;
-  private boolean elu = true;
-  private boolean elv = true;
-  private boolean elw = true;
-  private boolean elx = true;
-  private boolean ely = true;
-  private boolean elz = true;
+  private boolean elS = true;
+  private boolean emB = true;
+  private boolean enA = true;
+  private boolean enB = true;
+  private boolean enC = true;
+  private boolean enD = true;
+  private boolean enE = true;
+  private boolean enF = true;
+  private boolean enG = true;
+  private boolean enH = true;
+  private boolean enI = true;
+  private boolean enJ = true;
+  private boolean enK = true;
+  private boolean enL = true;
+  private boolean enM = true;
+  private boolean enN = true;
+  private boolean enx = true;
+  private boolean eny = true;
+  private boolean enz = true;
   public String field_appId;
   public String field_clientAppDataId;
   public long field_createTime;
@@ -72,10 +72,10 @@ public abstract class h
   
   static
   {
-    elO = "totalLen".hashCode();
-    elP = "offset".hashCode();
-    ejR = "status".hashCode();
-    elQ = "isUpload".hashCode();
+    enT = "totalLen".hashCode();
+    enU = "offset".hashCode();
+    elV = "status".hashCode();
+    enV = "isUpload".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -91,7 +91,7 @@ public abstract class h
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
+      if (enO != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -102,19 +102,19 @@ public abstract class h
       break label20;
       break;
       label60:
-      if (elK == k)
+      if (enP == k)
       {
         this.field_sdkVer = paramCursor.getLong(i);
       }
-      else if (elL == k)
+      else if (enQ == k)
       {
         this.field_mediaSvrId = paramCursor.getString(i);
       }
-      else if (elM == k)
+      else if (enR == k)
       {
         this.field_mediaId = paramCursor.getString(i);
       }
-      else if (elN == k)
+      else if (enS == k)
       {
         this.field_clientAppDataId = paramCursor.getString(i);
       }
@@ -122,21 +122,21 @@ public abstract class h
       {
         this.field_type = paramCursor.getLong(i);
       }
-      else if (elO == k)
+      else if (enT == k)
       {
         this.field_totalLen = paramCursor.getLong(i);
       }
-      else if (elP == k)
+      else if (enU == k)
       {
         this.field_offset = paramCursor.getLong(i);
       }
-      else if (ejR == k)
+      else if (elV == k)
       {
         this.field_status = paramCursor.getLong(i);
       }
       else
       {
-        if (elQ == k)
+        if (enV == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -145,25 +145,25 @@ public abstract class h
             break;
           }
         }
-        if (ekU == k) {
+        if (emY == k) {
           this.field_createTime = paramCursor.getLong(i);
-        } else if (elR == k) {
+        } else if (enW == k) {
           this.field_lastModifyTime = paramCursor.getLong(i);
-        } else if (elS == k) {
+        } else if (enX == k) {
           this.field_fileFullPath = paramCursor.getString(i);
-        } else if (elT == k) {
+        } else if (enY == k) {
           this.field_fullXml = paramCursor.getString(i);
-        } else if (elU == k) {
+        } else if (enZ == k) {
           this.field_msgInfoId = paramCursor.getLong(i);
-        } else if (elV == k) {
+        } else if (eoa == k) {
           this.field_netTimes = paramCursor.getLong(i);
-        } else if (elW == k) {
+        } else if (eob == k) {
           this.field_isUseCdn = paramCursor.getInt(i);
-        } else if (elX == k) {
+        } else if (eoc == k) {
           this.field_signature = paramCursor.getString(i);
-        } else if (elY == k) {
+        } else if (eod == k) {
           this.field_fakeAeskey = paramCursor.getString(i);
-        } else if (elZ == k) {
+        } else if (eoe == k) {
           this.field_fakeSignature = paramCursor.getString(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -175,64 +175,64 @@ public abstract class h
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.elt) {
+    if (this.eny) {
       localContentValues.put("sdkVer", Long.valueOf(this.field_sdkVer));
     }
-    if (this.elu) {
+    if (this.enz) {
       localContentValues.put("mediaSvrId", this.field_mediaSvrId);
     }
-    if (this.elv) {
+    if (this.enA) {
       localContentValues.put("mediaId", this.field_mediaId);
     }
-    if (this.elw) {
+    if (this.enB) {
       localContentValues.put("clientAppDataId", this.field_clientAppDataId);
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Long.valueOf(this.field_type));
     }
-    if (this.elx) {
+    if (this.enC) {
       localContentValues.put("totalLen", Long.valueOf(this.field_totalLen));
     }
-    if (this.ely) {
+    if (this.enD) {
       localContentValues.put("offset", Long.valueOf(this.field_offset));
     }
-    if (this.ejO) {
+    if (this.elS) {
       localContentValues.put("status", Long.valueOf(this.field_status));
     }
-    if (this.elz) {
+    if (this.enE) {
       localContentValues.put("isUpload", Boolean.valueOf(this.field_isUpload));
     }
-    if (this.ekx) {
+    if (this.emB) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.elA) {
+    if (this.enF) {
       localContentValues.put("lastModifyTime", Long.valueOf(this.field_lastModifyTime));
     }
-    if (this.elB) {
+    if (this.enG) {
       localContentValues.put("fileFullPath", this.field_fileFullPath);
     }
-    if (this.elC) {
+    if (this.enH) {
       localContentValues.put("fullXml", this.field_fullXml);
     }
-    if (this.elD) {
+    if (this.enI) {
       localContentValues.put("msgInfoId", Long.valueOf(this.field_msgInfoId));
     }
-    if (this.elE) {
+    if (this.enJ) {
       localContentValues.put("netTimes", Long.valueOf(this.field_netTimes));
     }
-    if (this.elF) {
+    if (this.enK) {
       localContentValues.put("isUseCdn", Integer.valueOf(this.field_isUseCdn));
     }
-    if (this.elG) {
+    if (this.enL) {
       localContentValues.put("signature", this.field_signature);
     }
-    if (this.elH) {
+    if (this.enM) {
       localContentValues.put("fakeAeskey", this.field_fakeAeskey);
     }
-    if (this.elI) {
+    if (this.enN) {
       localContentValues.put("fakeSignature", this.field_fakeSignature);
     }
     if (this.systemRowid > 0L) {
@@ -243,7 +243,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.h
  * JD-Core Version:    0.7.0.1
  */

@@ -10,48 +10,48 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.k;
-import com.tencent.mm.plugin.appbrand.o.e;
-import com.tencent.mm.plugin.appbrand.o.e.a;
-import com.tencent.mm.plugin.appbrand.o.e.c;
+import com.tencent.mm.plugin.appbrand.n.e;
+import com.tencent.mm.plugin.appbrand.n.e.a;
+import com.tencent.mm.plugin.appbrand.n.e.c;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.sdk.platformtools.h;
 
 public final class ModularizingPkgRetrieverWC
   implements e, com.tencent.mm.vending.e.a
 {
-  final LoadParams kLS;
-  volatile e.a kLT;
-  transient com.tencent.mm.plugin.appbrand.jsapi.m.a kLU;
+  final LoadParams lnp;
+  volatile e.a lnq;
+  transient com.tencent.mm.plugin.appbrand.jsapi.l.a lnr;
   
   private ModularizingPkgRetrieverWC(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(47305);
-    this.kLU = new com.tencent.mm.plugin.appbrand.jsapi.m.a();
-    this.kLS = new LoadParams(paramString1, paramInt1, paramInt2, paramString2, com.tencent.mm.plugin.appbrand.report.quality.a.ME(paramString1), (byte)0);
+    this.lnr = new com.tencent.mm.plugin.appbrand.jsapi.l.a();
+    this.lnp = new LoadParams(paramString1, paramInt1, paramInt2, paramString2, com.tencent.mm.plugin.appbrand.report.quality.a.QN(paramString1), (byte)0);
     AppMethodBeat.o(47305);
   }
   
   public final void a(e.a parama)
   {
-    this.kLT = parama;
+    this.lnq = parama;
   }
   
   public final void dead()
   {
-    this.kLT = null;
+    this.lnq = null;
   }
   
   public final void start()
   {
     AppMethodBeat.i(47306);
-    ad.i("MicroMsg.AppBrand.ModularizingPkgRetrieverWC[modularizing]", "startLoad %s", new Object[] { this.kLS.toString() });
-    this.kLU.setName("loadPackage");
-    this.kLU.startTime = bt.eGO();
-    this.kLU.t("packageName", this.kLS.chK);
-    XIPCInvoker.a("com.tencent.mm", this.kLS, a.class, new d() {});
+    ac.i("MicroMsg.AppBrand.ModularizingPkgRetrieverWC[modularizing]", "startLoad %s", new Object[] { this.lnp.toString() });
+    this.lnr.setName("loadPackage");
+    this.lnr.startTime = bs.eWj();
+    this.lnr.s("packageName", this.lnp.ceF);
+    XIPCInvoker.a("com.tencent.mm", this.lnp, a.class, new d() {});
     AppMethodBeat.o(47306);
   }
   
@@ -60,9 +60,9 @@ public final class ModularizingPkgRetrieverWC
   {
     public static final Parcelable.Creator<LoadParams> CREATOR;
     public final String appId;
-    public final String chK;
-    public final int dkC;
-    public final QualitySession kKy;
+    public final String ceF;
+    public final int dib;
+    public final QualitySession llU;
     public final int pkgVersion;
     
     static
@@ -76,20 +76,20 @@ public final class ModularizingPkgRetrieverWC
     {
       AppMethodBeat.i(47295);
       this.appId = paramParcel.readString();
-      this.dkC = paramParcel.readInt();
+      this.dib = paramParcel.readInt();
       this.pkgVersion = paramParcel.readInt();
-      this.chK = paramParcel.readString();
-      this.kKy = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
+      this.ceF = paramParcel.readString();
+      this.llU = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
       AppMethodBeat.o(47295);
     }
     
     private LoadParams(String paramString1, int paramInt1, int paramInt2, String paramString2, QualitySession paramQualitySession)
     {
       this.appId = paramString1;
-      this.dkC = paramInt1;
+      this.dib = paramInt1;
       this.pkgVersion = paramInt2;
-      this.chK = paramString2;
-      this.kKy = paramQualitySession;
+      this.ceF = paramString2;
+      this.llU = paramQualitySession;
     }
     
     public final int describeContents()
@@ -100,7 +100,7 @@ public final class ModularizingPkgRetrieverWC
     public final String toString()
     {
       AppMethodBeat.i(47296);
-      String str = "LoadParams{appId='" + this.appId + '\'' + ", pkgType=" + this.dkC + ", pkgVersion=" + this.pkgVersion + ", moduleName='" + this.chK + '\'' + '}';
+      String str = "LoadParams{appId='" + this.appId + '\'' + ", pkgType=" + this.dib + ", pkgVersion=" + this.pkgVersion + ", moduleName='" + this.ceF + '\'' + '}';
       AppMethodBeat.o(47296);
       return str;
     }
@@ -109,10 +109,10 @@ public final class ModularizingPkgRetrieverWC
     {
       AppMethodBeat.i(47294);
       paramParcel.writeString(this.appId);
-      paramParcel.writeInt(this.dkC);
+      paramParcel.writeInt(this.dib);
       paramParcel.writeInt(this.pkgVersion);
-      paramParcel.writeString(this.chK);
-      paramParcel.writeParcelable(this.kKy, paramInt);
+      paramParcel.writeString(this.ceF);
+      paramParcel.writeParcelable(this.llU, paramInt);
       AppMethodBeat.o(47294);
     }
   }
@@ -121,9 +121,9 @@ public final class ModularizingPkgRetrieverWC
     implements Parcelable
   {
     public static final Parcelable.Creator<WxaPkgResultProgressPair> CREATOR;
-    WxaPkgWrappingInfo kMa;
-    WxaPkgLoadProgress kMb;
-    private a kMc;
+    WxaPkgWrappingInfo lnx;
+    WxaPkgLoadProgress lny;
+    private a lnz;
     
     static
     {
@@ -135,22 +135,22 @@ public final class ModularizingPkgRetrieverWC
     WxaPkgResultProgressPair(Parcel paramParcel)
     {
       AppMethodBeat.i(47302);
-      this.kMa = ((WxaPkgWrappingInfo)paramParcel.readParcelable(WxaPkgWrappingInfo.class.getClassLoader()));
-      this.kMb = ((WxaPkgLoadProgress)paramParcel.readParcelable(WxaPkgLoadProgress.class.getClassLoader()));
-      this.kMc = ((a)paramParcel.readSerializable());
+      this.lnx = ((WxaPkgWrappingInfo)paramParcel.readParcelable(WxaPkgWrappingInfo.class.getClassLoader()));
+      this.lny = ((WxaPkgLoadProgress)paramParcel.readParcelable(WxaPkgLoadProgress.class.getClassLoader()));
+      this.lnz = ((a)paramParcel.readSerializable());
       AppMethodBeat.o(47302);
     }
     
     WxaPkgResultProgressPair(WxaPkgLoadProgress paramWxaPkgLoadProgress)
     {
-      this.kMb = paramWxaPkgLoadProgress;
-      this.kMc = a.kMe;
+      this.lny = paramWxaPkgLoadProgress;
+      this.lnz = a.lnB;
     }
     
     WxaPkgResultProgressPair(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
     {
-      this.kMa = paramWxaPkgWrappingInfo;
-      this.kMc = a.kMd;
+      this.lnx = paramWxaPkgWrappingInfo;
+      this.lnz = a.lnA;
     }
     
     public int describeContents()
@@ -161,9 +161,9 @@ public final class ModularizingPkgRetrieverWC
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(47303);
-      paramParcel.writeParcelable(this.kMa, paramInt);
-      paramParcel.writeParcelable(this.kMb, paramInt);
-      paramParcel.writeSerializable(this.kMc);
+      paramParcel.writeParcelable(this.lnx, paramInt);
+      paramParcel.writeParcelable(this.lny, paramInt);
+      paramParcel.writeSerializable(this.lnz);
       AppMethodBeat.o(47303);
     }
     
@@ -172,9 +172,9 @@ public final class ModularizingPkgRetrieverWC
       static
       {
         AppMethodBeat.i(47301);
-        kMd = new a("Finish", 0);
-        kMe = new a("Progressing", 1);
-        kMf = new a[] { kMd, kMe };
+        lnA = new a("Finish", 0);
+        lnB = new a("Progressing", 1);
+        lnC = new a[] { lnA, lnB };
         AppMethodBeat.o(47301);
       }
       
@@ -185,12 +185,12 @@ public final class ModularizingPkgRetrieverWC
   static final class a
     implements com.tencent.mm.ipcinvoker.b<ModularizingPkgRetrieverWC.LoadParams, ModularizingPkgRetrieverWC.WxaPkgResultProgressPair>
   {
-    private d<ModularizingPkgRetrieverWC.WxaPkgResultProgressPair> fZr = null;
+    private d<ModularizingPkgRetrieverWC.WxaPkgResultProgressPair> gdX = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ModularizingPkgRetrieverWC
  * JD-Core Version:    0.7.0.1
  */

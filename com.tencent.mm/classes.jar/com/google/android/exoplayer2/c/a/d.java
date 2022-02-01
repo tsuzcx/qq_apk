@@ -4,11 +4,11 @@ import com.google.android.exoplayer2.o;
 
 abstract class d
 {
-  protected final com.google.android.exoplayer2.c.m aXw;
+  protected final com.google.android.exoplayer2.c.m aYi;
   
   protected d(com.google.android.exoplayer2.c.m paramm)
   {
-    this.aXw = paramm;
+    this.aYi = paramm;
   }
   
   protected abstract void a(com.google.android.exoplayer2.i.m paramm, long paramLong);

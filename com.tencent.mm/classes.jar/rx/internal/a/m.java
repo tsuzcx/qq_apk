@@ -23,9 +23,9 @@ public final class m<T>
         AppMethodBeat.i(90304);
         parami.a(new f()
         {
-          final AtomicLong Kpw;
+          final AtomicLong Mdf;
           
-          public final void xU(long paramAnonymous2Long)
+          public final void CI(long paramAnonymous2Long)
           {
             AppMethodBeat.i(90300);
             if ((paramAnonymous2Long > 0L) && (!m.1.this.completed))
@@ -34,13 +34,13 @@ public final class m<T>
               long l2;
               do
               {
-                l1 = this.Kpw.get();
+                l1 = this.Mdf.get();
                 l2 = Math.min(paramAnonymous2Long, m.this.limit - l1);
                 if (l2 == 0L) {
                   break;
                 }
-              } while (!this.Kpw.compareAndSet(l1, l1 + l2));
-              paramAnonymousf.xU(l2);
+              } while (!this.Mdf.compareAndSet(l1, l1 + l2));
+              paramAnonymousf.CI(l2);
               AppMethodBeat.o(90300);
               return;
             }
@@ -50,21 +50,10 @@ public final class m<T>
         AppMethodBeat.o(90304);
       }
       
-      public final void fNs()
-      {
-        AppMethodBeat.i(90301);
-        if (!this.completed)
-        {
-          this.completed = true;
-          parami.fNs();
-        }
-        AppMethodBeat.o(90301);
-      }
-      
-      public final void fV(T paramAnonymousT)
+      public final void gd(T paramAnonymousT)
       {
         AppMethodBeat.i(90303);
-        if (!this.KoC.KrX)
+        if (!this.Mcl.MfG)
         {
           int i = this.count;
           this.count = (i + 1);
@@ -73,24 +62,35 @@ public final class m<T>
             if (this.count == m.this.limit) {}
             for (i = 1;; i = 0)
             {
-              parami.fV(paramAnonymousT);
+              parami.gd(paramAnonymousT);
               if ((i == 0) || (this.completed)) {
                 break;
               }
               this.completed = true;
               try
               {
-                parami.fNs();
+                parami.ggi();
                 return;
               }
               finally
               {
-                this.KoC.fNw();
+                this.Mcl.ggm();
                 AppMethodBeat.o(90303);
               }
             }
           }
         }
+      }
+      
+      public final void ggi()
+      {
+        AppMethodBeat.i(90301);
+        if (!this.completed)
+        {
+          this.completed = true;
+          parami.ggi();
+        }
+        AppMethodBeat.o(90301);
       }
       
       public final void onError(Throwable paramAnonymousThrowable)
@@ -106,7 +106,7 @@ public final class m<T>
           }
           finally
           {
-            this.KoC.fNw();
+            this.Mcl.ggm();
             AppMethodBeat.o(90302);
           }
         }
@@ -115,8 +115,8 @@ public final class m<T>
     };
     if (this.limit == 0)
     {
-      parami.fNs();
-      local1.KoC.fNw();
+      parami.ggi();
+      local1.Mcl.ggm();
     }
     parami.b(local1);
     AppMethodBeat.o(90305);
@@ -125,7 +125,7 @@ public final class m<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.a.m
  * JD-Core Version:    0.7.0.1
  */

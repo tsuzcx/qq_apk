@@ -11,26 +11,26 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/MediaBannerIndicator;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "count", "getCount", "()I", "setCount", "(I)V", "currentIndex", "getCurrentIndex", "setCurrentIndex", "indicatorMargin", "getIndicatorMargin", "setIndicatorMargin", "indicatorWidth", "getIndicatorWidth", "setIndicatorWidth", "isShowOnlyOneIndicator", "", "()Z", "setShowOnlyOneIndicator", "(Z)V", "selectDrawable", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "getSelectDrawable", "()Landroid/graphics/drawable/Drawable;", "setSelectDrawable", "(Landroid/graphics/drawable/Drawable;)V", "unSelectDrawable", "getUnSelectDrawable", "setUnSelectDrawable", "Companion", "libmmui_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/MediaBannerIndicator;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "count", "getCount", "()I", "setCount", "(I)V", "currentIndex", "getCurrentIndex", "setCurrentIndex", "indicatorMargin", "getIndicatorMargin", "setIndicatorMargin", "indicatorWidth", "getIndicatorWidth", "setIndicatorWidth", "isShowOnlyOneIndicator", "", "()Z", "setShowOnlyOneIndicator", "(Z)V", "selectDrawable", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "getSelectDrawable", "()Landroid/graphics/drawable/Drawable;", "setSelectDrawable", "(Landroid/graphics/drawable/Drawable;)V", "unSelectDrawable", "getUnSelectDrawable", "setUnSelectDrawable", "Companion", "libmmui_release"})
 public final class MediaBannerIndicator
   extends LinearLayout
 {
-  public static final a HVn;
-  private int HVj;
-  private int HVk;
-  private Drawable HVl;
-  private Drawable HVm;
-  private boolean LDz;
+  public static final MediaBannerIndicator.a JvY;
+  private int JvT;
+  private int JvU;
+  private Drawable JvV;
+  private Drawable JvW;
+  private boolean JvX;
   private int count;
   private int currentIndex;
   
   static
   {
     AppMethodBeat.i(164560);
-    HVn = new a((byte)0);
+    JvY = new MediaBannerIndicator.a((byte)0);
     AppMethodBeat.o(164560);
   }
   
@@ -38,12 +38,12 @@ public final class MediaBannerIndicator
   {
     super(paramContext);
     AppMethodBeat.i(164557);
-    this.HVj = ((int)getResources().getDimension(2131166431));
-    this.HVk = ((int)getResources().getDimension(2131165274));
+    this.JvT = ((int)getResources().getDimension(2131166431));
+    this.JvU = ((int)getResources().getDimension(2131165274));
     setOrientation(0);
     setGravity(17);
-    this.HVl = getContext().getDrawable(2131233932);
-    this.HVm = getContext().getDrawable(2131232605);
+    this.JvV = getContext().getDrawable(2131233932);
+    this.JvW = getContext().getDrawable(2131232605);
     AppMethodBeat.o(164557);
   }
   
@@ -51,12 +51,12 @@ public final class MediaBannerIndicator
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164558);
-    this.HVj = ((int)getResources().getDimension(2131166431));
-    this.HVk = ((int)getResources().getDimension(2131165274));
+    this.JvT = ((int)getResources().getDimension(2131166431));
+    this.JvU = ((int)getResources().getDimension(2131165274));
     setOrientation(0);
     setGravity(17);
-    this.HVl = getContext().getDrawable(2131233932);
-    this.HVm = getContext().getDrawable(2131232605);
+    this.JvV = getContext().getDrawable(2131233932);
+    this.JvW = getContext().getDrawable(2131232605);
     AppMethodBeat.o(164558);
   }
   
@@ -64,12 +64,12 @@ public final class MediaBannerIndicator
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164559);
-    this.HVj = ((int)getResources().getDimension(2131166431));
-    this.HVk = ((int)getResources().getDimension(2131165274));
+    this.JvT = ((int)getResources().getDimension(2131166431));
+    this.JvU = ((int)getResources().getDimension(2131165274));
     setOrientation(0);
     setGravity(17);
-    this.HVl = getContext().getDrawable(2131233932);
-    this.HVm = getContext().getDrawable(2131232605);
+    this.JvV = getContext().getDrawable(2131233932);
+    this.JvW = getContext().getDrawable(2131232605);
     AppMethodBeat.o(164559);
   }
   
@@ -85,22 +85,22 @@ public final class MediaBannerIndicator
   
   public final int getIndicatorMargin()
   {
-    return this.HVk;
+    return this.JvU;
   }
   
   public final int getIndicatorWidth()
   {
-    return this.HVj;
+    return this.JvT;
   }
   
   public final Drawable getSelectDrawable()
   {
-    return this.HVl;
+    return this.JvV;
   }
   
   public final Drawable getUnSelectDrawable()
   {
-    return this.HVm;
+    return this.JvW;
   }
   
   public final void setCount(int paramInt)
@@ -108,7 +108,7 @@ public final class MediaBannerIndicator
     AppMethodBeat.i(164555);
     removeAllViews();
     this.count = paramInt;
-    if ((paramInt > 1) || ((paramInt > 0) && (this.LDz)))
+    if ((paramInt > 1) || ((paramInt > 0) && (this.JvX)))
     {
       setVisibility(0);
       int i = 0;
@@ -117,22 +117,22 @@ public final class MediaBannerIndicator
         ImageView localImageView = new ImageView(getContext());
         localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         if (this.currentIndex == i) {
-          localImageView.setImageDrawable(this.HVl);
+          localImageView.setImageDrawable(this.JvV);
         }
         for (;;)
         {
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.HVj, this.HVj);
-          localLayoutParams.leftMargin = this.HVk;
-          localLayoutParams.rightMargin = this.HVk;
+          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.JvT, this.JvT);
+          localLayoutParams.leftMargin = this.JvU;
+          localLayoutParams.rightMargin = this.JvU;
           localLayoutParams.gravity = 17;
           addView((View)localImageView, (ViewGroup.LayoutParams)localLayoutParams);
           i += 1;
           break;
-          localImageView.setImageDrawable(this.HVm);
+          localImageView.setImageDrawable(this.JvW);
         }
       }
       setCurrentIndex(0);
-      ad.i("MicroMsg.MediaBannerIndicator", "[MediaBannerIndicator] count=".concat(String.valueOf(paramInt)));
+      ac.i("MicroMsg.MediaBannerIndicator", "[MediaBannerIndicator] count=".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(164555);
       return;
     }
@@ -151,7 +151,7 @@ public final class MediaBannerIndicator
     localObject = (ImageView)localObject;
     if (localObject != null)
     {
-      ((ImageView)localObject).setImageDrawable(this.HVm);
+      ((ImageView)localObject).setImageDrawable(this.JvW);
       localView = getChildAt(paramInt);
       localObject = localView;
       if (!(localView instanceof ImageView)) {
@@ -159,7 +159,7 @@ public final class MediaBannerIndicator
       }
       localObject = (ImageView)localObject;
       if (localObject != null) {
-        ((ImageView)localObject).setImageDrawable(this.HVl);
+        ((ImageView)localObject).setImageDrawable(this.JvV);
       }
     }
     this.currentIndex = paramInt;
@@ -168,35 +168,32 @@ public final class MediaBannerIndicator
   
   public final void setIndicatorMargin(int paramInt)
   {
-    this.HVk = paramInt;
+    this.JvU = paramInt;
   }
   
   public final void setIndicatorWidth(int paramInt)
   {
-    this.HVj = paramInt;
+    this.JvT = paramInt;
   }
   
   public final void setSelectDrawable(Drawable paramDrawable)
   {
-    this.HVl = paramDrawable;
+    this.JvV = paramDrawable;
   }
   
   public final void setShowOnlyOneIndicator(boolean paramBoolean)
   {
-    this.LDz = paramBoolean;
+    this.JvX = paramBoolean;
   }
   
   public final void setUnSelectDrawable(Drawable paramDrawable)
   {
-    this.HVm = paramDrawable;
+    this.JvW = paramDrawable;
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/MediaBannerIndicator$Companion;", "", "()V", "TAG", "", "libmmui_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.MediaBannerIndicator
  * JD-Core Version:    0.7.0.1
  */

@@ -10,20 +10,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
 {
   public int fontStyle = -1;
-  public TextPaint ga = null;
-  public Layout.Alignment ggL = Layout.Alignment.ALIGN_NORMAL;
-  public TextUtils.TruncateAt ggM = null;
-  public TextDirectionHeuristic ggO = null;
-  public float ggP = 0.0F;
-  public float ggQ = 1.0F;
-  public boolean ggR = false;
-  public int ghn = -1;
+  public TextPaint gZ = null;
+  public int glT = -1;
+  public Layout.Alignment glr = Layout.Alignment.ALIGN_NORMAL;
+  public TextUtils.TruncateAt gls = null;
+  public TextDirectionHeuristic glu = null;
+  public float glv = 0.0F;
+  public float glw = 1.0F;
+  public boolean glx = false;
   public int gravity = 51;
   public int linkColor = -1;
   public int maxLength = -1;
   public int maxLines = -1;
   public int minLines = -1;
-  public Typeface pC = null;
+  public Typeface qC = null;
   public int textColor = -1;
   public float textSize = -1.0F;
   
@@ -32,27 +32,27 @@ public final class a
     AppMethodBeat.i(141135);
     int j = this.maxLines * 31 + 0 + this.maxLength * 31;
     int i = j;
-    if (this.ga != null) {
-      i = j + this.ga.hashCode() * 31;
+    if (this.gZ != null) {
+      i = j + this.gZ.hashCode() * 31;
     }
-    j = i + this.ggL.hashCode() * 31;
+    j = i + this.glr.hashCode() * 31;
     i = j;
-    if (this.ggM != null) {
-      i = j + this.ggM.hashCode() * 31;
+    if (this.gls != null) {
+      i = j + this.gls.hashCode() * 31;
     }
-    j = i + this.gravity * 31 + this.ghn * 31;
+    j = i + this.gravity * 31 + this.glT * 31;
     i = j;
-    if (this.ggO != null) {
-      i = j + this.ggO.hashCode() * 31;
+    if (this.glu != null) {
+      i = j + this.glu.hashCode() * 31;
     }
-    j = (int)((int)(i + this.ggP * 31.0F) + this.ggQ * 31.0F);
-    if (this.ggR) {}
+    j = (int)((int)(i + this.glv * 31.0F) + this.glw * 31.0F);
+    if (this.glx) {}
     for (i = 1;; i = 0)
     {
       j = i * 31 + j;
       i = j;
-      if (this.pC != null) {
-        i = j + this.pC.hashCode() * 31;
+      if (this.qC != null) {
+        i = j + this.qC.hashCode() * 31;
       }
       i = (int)(i + this.fontStyle * 31 + this.textSize * 31.0F);
       j = this.textColor;
@@ -68,15 +68,15 @@ public final class a
     Object localObject = new StringBuilder("");
     ((StringBuilder)localObject).append(String.format("maxLines: %d ", new Object[] { Integer.valueOf(this.maxLines) }));
     ((StringBuilder)localObject).append(String.format("maxLength: %d ", new Object[] { Integer.valueOf(this.maxLength) }));
-    ((StringBuilder)localObject).append(String.format("textPaint: %s ", new Object[] { this.ga }));
-    ((StringBuilder)localObject).append(String.format("alignment: %s ", new Object[] { this.ggL }));
-    ((StringBuilder)localObject).append(String.format("ellipsize: %s ", new Object[] { this.ggM }));
+    ((StringBuilder)localObject).append(String.format("textPaint: %s ", new Object[] { this.gZ }));
+    ((StringBuilder)localObject).append(String.format("alignment: %s ", new Object[] { this.glr }));
+    ((StringBuilder)localObject).append(String.format("ellipsize: %s ", new Object[] { this.gls }));
     ((StringBuilder)localObject).append(String.format("gravity: %s ", new Object[] { Integer.valueOf(this.gravity) }));
-    ((StringBuilder)localObject).append(String.format("ellipsizeWidth: %s ", new Object[] { Integer.valueOf(this.ghn) }));
-    ((StringBuilder)localObject).append(String.format("textDirection: %s ", new Object[] { this.ggO }));
-    ((StringBuilder)localObject).append(String.format("spacingAdd: %s spacingMult: %s ", new Object[] { Float.valueOf(this.ggP), Float.valueOf(this.ggQ) }));
-    ((StringBuilder)localObject).append(String.format("includedPad: %b ", new Object[] { Boolean.valueOf(this.ggR) }));
-    ((StringBuilder)localObject).append(String.format("typeface: %s ", new Object[] { this.pC }));
+    ((StringBuilder)localObject).append(String.format("ellipsizeWidth: %s ", new Object[] { Integer.valueOf(this.glT) }));
+    ((StringBuilder)localObject).append(String.format("textDirection: %s ", new Object[] { this.glu }));
+    ((StringBuilder)localObject).append(String.format("spacingAdd: %s spacingMult: %s ", new Object[] { Float.valueOf(this.glv), Float.valueOf(this.glw) }));
+    ((StringBuilder)localObject).append(String.format("includedPad: %b ", new Object[] { Boolean.valueOf(this.glx) }));
+    ((StringBuilder)localObject).append(String.format("typeface: %s ", new Object[] { this.qC }));
     ((StringBuilder)localObject).append(String.format("fontStyle: %d ", new Object[] { Integer.valueOf(this.fontStyle) }));
     ((StringBuilder)localObject).append(String.format("textSize: %s ", new Object[] { Float.valueOf(this.textSize) }));
     ((StringBuilder)localObject).append(String.format("textColor: %d", new Object[] { Integer.valueOf(this.textColor) }));
@@ -88,7 +88,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.a.a
  * JD-Core Version:    0.7.0.1
  */

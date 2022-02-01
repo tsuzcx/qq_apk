@@ -31,7 +31,7 @@ public class BoltsMeasurementEventListener
   private void close()
   {
     AppMethodBeat.i(17682);
-    d.T(this.applicationContext).unregisterReceiver(this);
+    d.U(this.applicationContext).unregisterReceiver(this);
     AppMethodBeat.o(17682);
   }
   
@@ -55,7 +55,7 @@ public class BoltsMeasurementEventListener
   private void open()
   {
     AppMethodBeat.i(17681);
-    d.T(this.applicationContext).a(this, new IntentFilter("com.parse.bolts.measurement_event"));
+    d.U(this.applicationContext).a(this, new IntentFilter("com.parse.bolts.measurement_event"));
     AppMethodBeat.o(17681);
   }
   

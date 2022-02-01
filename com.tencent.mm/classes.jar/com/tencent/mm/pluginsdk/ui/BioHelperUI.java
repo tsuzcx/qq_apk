@@ -12,23 +12,23 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 
 public class BioHelperUI
   extends MMActivity
 {
-  private String BUF;
-  private b BUG;
-  private String fsw;
-  private String kGt;
+  private String DmV;
+  private b DmW;
+  private String fwd;
+  private String lhM;
   private int mType;
   private String mWording;
-  private int oTe;
+  private int pwp;
   
   public int getLayoutId()
   {
@@ -43,8 +43,8 @@ public class BioHelperUI
     if (paramIntent == null) {}
     for (;;)
     {
-      ad.i("MicroMsg.BioHelperUI", "onActivityResult, requestCode:%d, resultCode:%d, data==null:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
-      this.BUG.g(paramInt1, paramInt2, paramIntent);
+      ac.i("MicroMsg.BioHelperUI", "onActivityResult, requestCode:%d, resultCode:%d, data==null:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+      this.DmW.g(paramInt1, paramInt2, paramIntent);
       AppMethodBeat.o(128843);
       return;
       bool = false;
@@ -57,22 +57,22 @@ public class BioHelperUI
     AppMethodBeat.i(128842);
     super.onCreate(paramBundle);
     this.mType = getIntent().getIntExtra("k_type", 1);
-    ad.i("MicroMsg.BioHelperUI", "hy: starting to bio helper ui, type: %d", new Object[] { Integer.valueOf(this.mType) });
-    this.kGt = bt.by(getIntent().getStringExtra("Kusername"), null);
-    this.fsw = bt.by(getIntent().getStringExtra("Kvertify_key"), null);
-    this.BUF = bt.by(getIntent().getStringExtra("KVoiceHelpUrl"), null);
-    this.mWording = bt.by(getIntent().getStringExtra("KVoiceHelpWording"), null);
-    this.oTe = getIntent().getIntExtra("KVoiceHelpCode", 0);
+    ac.i("MicroMsg.BioHelperUI", "hy: starting to bio helper ui, type: %d", new Object[] { Integer.valueOf(this.mType) });
+    this.lhM = bs.bG(getIntent().getStringExtra("Kusername"), null);
+    this.fwd = bs.bG(getIntent().getStringExtra("Kvertify_key"), null);
+    this.DmV = bs.bG(getIntent().getStringExtra("KVoiceHelpUrl"), null);
+    this.mWording = bs.bG(getIntent().getStringExtra("KVoiceHelpWording"), null);
+    this.pwp = getIntent().getIntExtra("KVoiceHelpCode", 0);
     if (this.mType == 0) {
       paramBundle = new c((byte)0);
     }
     for (;;)
     {
-      this.BUG = paramBundle;
-      if ((this.BUG != null) && (!bt.isNullOrNil(this.kGt)) && (!bt.isNullOrNil(this.fsw))) {
+      this.DmW = paramBundle;
+      if ((this.DmW != null) && (!bs.isNullOrNil(this.lhM)) && (!bs.isNullOrNil(this.fwd))) {
         break;
       }
-      ad.w("MicroMsg.BioHelperUI", "type or username or ticket is null and finish");
+      ac.w("MicroMsg.BioHelperUI", "type or username or ticket is null and finish");
       finish();
       AppMethodBeat.o(128842);
       return;
@@ -82,18 +82,18 @@ public class BioHelperUI
       }
       else
       {
-        ad.e("MicroMsg.BioHelperUI", "hy: invalid type!!!");
+        ac.e("MicroMsg.BioHelperUI", "hy: invalid type!!!");
         paramBundle = localObject;
       }
     }
     paramBundle = (TextView)findViewById(2131297273);
-    if (!bt.isNullOrNil(this.mWording)) {
+    if (!bs.isNullOrNil(this.mWording)) {
       paramBundle.setText(this.mWording);
     }
     for (;;)
     {
-      setMMTitle(this.BUG.exi());
-      ((ImageView)findViewById(2131297271)).setImageResource(this.BUG.exj());
+      setMMTitle(this.DmW.eMC());
+      ((ImageView)findViewById(2131297271)).setImageResource(this.DmW.eMD());
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -104,15 +104,15 @@ public class BioHelperUI
           return true;
         }
       });
-      this.BUG.aV(getIntent());
+      this.DmW.aW(getIntent());
       paramBundle = (Button)findViewById(2131297274);
-      paramBundle.setText(this.BUG.exk());
+      paramBundle.setText(this.DmW.eME());
       paramBundle.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(128829);
-          BioHelperUI.a(BioHelperUI.this).hi(BioHelperUI.this);
+          BioHelperUI.a(BioHelperUI.this).ht(BioHelperUI.this);
           AppMethodBeat.o(128829);
         }
       });
@@ -127,8 +127,8 @@ public class BioHelperUI
           paramAnonymousView.putExtra("show_bottom", false);
           paramAnonymousView.putExtra("needRedirect", false);
           paramAnonymousView.putExtra("neverGetA8Key", true);
-          paramAnonymousView.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Cqe);
-          paramAnonymousView.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Cqa);
+          paramAnonymousView.putExtra("hardcode_jspermission", JsapiPermissionWrapper.DIw);
+          paramAnonymousView.putExtra("hardcode_general_ctrl", GeneralControlWrapper.DIs);
           d.b(BioHelperUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousView);
           BioHelperUI.this.finish();
           AppMethodBeat.o(128830);
@@ -136,7 +136,7 @@ public class BioHelperUI
       });
       AppMethodBeat.o(128842);
       return;
-      paramBundle.setText(this.BUG.exl());
+      paramBundle.setText(this.DmW.eMF());
     }
   }
   
@@ -151,9 +151,9 @@ public class BioHelperUI
   {
     private a() {}
     
-    public final void aV(Intent paramIntent) {}
+    public final void aW(Intent paramIntent) {}
     
-    public final String exi()
+    public final String eMC()
     {
       AppMethodBeat.i(128831);
       String str = BioHelperUI.this.getString(2131756553);
@@ -161,12 +161,12 @@ public class BioHelperUI
       return str;
     }
     
-    public final int exj()
+    public final int eMD()
     {
       return 2131232134;
     }
     
-    public final String exk()
+    public final String eME()
     {
       AppMethodBeat.i(128832);
       String str = BioHelperUI.this.getString(2131756554);
@@ -174,7 +174,7 @@ public class BioHelperUI
       return str;
     }
     
-    public final String exl()
+    public final String eMF()
     {
       AppMethodBeat.i(128833);
       String str = BioHelperUI.this.getString(2131756551);
@@ -191,14 +191,14 @@ public class BioHelperUI
       {
         BioHelperUI.this.finish();
         paramIntent = paramIntent.getStringExtra("KFaceLoginAuthPwd");
-        bool = bt.isNullOrNil(paramIntent);
-        if (!bt.isNullOrNil(paramIntent)) {
+        bool = bs.isNullOrNil(paramIntent);
+        if (!bs.isNullOrNil(paramIntent)) {
           break label75;
         }
       }
       for (;;)
       {
-        ad.i("MicroMsg.BioHelperUI", "hy: secondary check onActivityResult, do faceprint auth, authPwd is null:%b, authPwd.len:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1) });
+        ac.i("MicroMsg.BioHelperUI", "hy: secondary check onActivityResult, do faceprint auth, authPwd is null:%b, authPwd.len:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1) });
         AppMethodBeat.o(128835);
         return;
         label75:
@@ -206,7 +206,7 @@ public class BioHelperUI
       }
     }
     
-    public final void hi(Context paramContext)
+    public final void ht(Context paramContext)
     {
       AppMethodBeat.i(128834);
       paramContext = new Intent();
@@ -221,19 +221,19 @@ public class BioHelperUI
   
   static abstract interface b
   {
-    public abstract void aV(Intent paramIntent);
+    public abstract void aW(Intent paramIntent);
     
-    public abstract String exi();
+    public abstract String eMC();
     
-    public abstract int exj();
+    public abstract int eMD();
     
-    public abstract String exk();
+    public abstract String eME();
     
-    public abstract String exl();
+    public abstract String eMF();
     
     public abstract void g(int paramInt1, int paramInt2, Intent paramIntent);
     
-    public abstract void hi(Context paramContext);
+    public abstract void ht(Context paramContext);
   }
   
   final class c
@@ -243,7 +243,7 @@ public class BioHelperUI
     
     private c() {}
     
-    public final void aV(Intent paramIntent)
+    public final void aW(Intent paramIntent)
     {
       AppMethodBeat.i(128836);
       if (paramIntent == null)
@@ -255,7 +255,7 @@ public class BioHelperUI
       AppMethodBeat.o(128836);
     }
     
-    public final String exi()
+    public final String eMC()
     {
       AppMethodBeat.i(128837);
       String str = BioHelperUI.this.getString(2131756557);
@@ -263,12 +263,12 @@ public class BioHelperUI
       return str;
     }
     
-    public final int exj()
+    public final int eMD()
     {
       return 2131234489;
     }
     
-    public final String exk()
+    public final String eME()
     {
       AppMethodBeat.i(128838);
       String str = BioHelperUI.this.getString(2131756556);
@@ -276,7 +276,7 @@ public class BioHelperUI
       return str;
     }
     
-    public final String exl()
+    public final String eMF()
     {
       AppMethodBeat.i(128839);
       String str = BioHelperUI.this.getString(2131756552);
@@ -293,8 +293,8 @@ public class BioHelperUI
         if ((paramInt1 == 1024) && (paramIntent != null))
         {
           paramIntent = paramIntent.getStringExtra("VoiceLoginAuthPwd");
-          bool = bt.isNullOrNil(paramIntent);
-          if (!bt.isNullOrNil(paramIntent)) {
+          bool = bs.isNullOrNil(paramIntent);
+          if (!bs.isNullOrNil(paramIntent)) {
             break label129;
           }
         }
@@ -302,7 +302,7 @@ public class BioHelperUI
       label129:
       for (paramInt1 = i;; paramInt1 = paramIntent.length())
       {
-        ad.d("MicroMsg.BioHelperUI", "onActivityResult, do voiceprint auth, authPwd is null:%b, authPwd.len:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1) });
+        ac.d("MicroMsg.BioHelperUI", "onActivityResult, do voiceprint auth, authPwd is null:%b, authPwd.len:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1) });
         Intent localIntent = new Intent();
         localIntent.putExtra("VoiceLoginAuthPwd", paramIntent);
         localIntent.putExtra("KVoiceHelpCode", BioHelperUI.e(BioHelperUI.this));
@@ -313,7 +313,7 @@ public class BioHelperUI
       }
     }
     
-    public final void hi(Context paramContext)
+    public final void ht(Context paramContext)
     {
       AppMethodBeat.i(128840);
       Intent localIntent = new Intent();
@@ -327,7 +327,7 @@ public class BioHelperUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.BioHelperUI
  * JD-Core Version:    0.7.0.1
  */

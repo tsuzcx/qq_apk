@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.b.c;
 
 public final class i
 {
-  String kpE;
-  String kpF;
+  String kQX;
+  String kQY;
 }
 
 

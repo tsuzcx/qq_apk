@@ -11,13 +11,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.model.at;
+import com.tencent.mm.plugin.sns.model.au;
 import com.tencent.mm.plugin.sns.ui.OnlineVideoView;
 import com.tencent.mm.plugin.sns.ui.SnsTimeLineUI;
 import com.tencent.mm.pluginsdk.ui.h.e;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.btz;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,20 +26,20 @@ import java.util.List;
 
 public final class d
 {
-  private static d xWo;
-  private List<WeakReference<SnsTimelineVideoView>> xWp;
-  private List<SnsTimelineVideoView> xWq;
-  private int xWr;
-  public c xWs;
-  public String xWt;
-  public SnsTimelineVideoView xWu;
+  private static d zjk;
+  private List<WeakReference<SnsTimelineVideoView>> zjl;
+  private List<SnsTimelineVideoView> zjm;
+  private int zjn;
+  public c zjo;
+  public String zjp;
+  public SnsTimelineVideoView zjq;
   
   public d()
   {
     AppMethodBeat.i(100419);
-    this.xWp = new LinkedList();
-    this.xWq = new ArrayList();
-    this.xWr = 0;
+    this.zjl = new LinkedList();
+    this.zjm = new ArrayList();
+    this.zjn = 0;
     AppMethodBeat.o(100419);
   }
   
@@ -68,34 +68,34 @@ public final class d
     return bool1;
   }
   
-  private void MV()
+  private void MT()
   {
     AppMethodBeat.i(100421);
-    ad.i("MicroMsg.Sns.SnsVideoViewMgr", "stopAll");
+    ac.i("MicroMsg.Sns.SnsVideoViewMgr", "stopAll");
     final SnsTimelineVideoView localSnsTimelineVideoView;
-    if (!this.xWq.isEmpty())
+    if (!this.zjm.isEmpty())
     {
-      localIterator = this.xWq.iterator();
+      localIterator = this.zjm.iterator();
       while (localIterator.hasNext())
       {
         localSnsTimelineVideoView = (SnsTimelineVideoView)localIterator.next();
         if ((localSnsTimelineVideoView != null) && (localSnsTimelineVideoView.getParent() != null))
         {
           ViewGroup localViewGroup = (ViewGroup)localSnsTimelineVideoView.getParent();
-          localSnsTimelineVideoView.xWf = false;
+          localSnsTimelineVideoView.zjb = false;
           localViewGroup.removeView(localSnsTimelineVideoView);
         }
         else if (localSnsTimelineVideoView != null)
         {
-          localSnsTimelineVideoView.dDP();
+          localSnsTimelineVideoView.dSn();
         }
       }
-      this.xWq.clear();
+      this.zjm.clear();
     }
-    this.xWu = null;
-    this.xWs = null;
-    this.xWt = "";
-    Iterator localIterator = this.xWp.iterator();
+    this.zjq = null;
+    this.zjo = null;
+    this.zjp = "";
+    Iterator localIterator = this.zjl.iterator();
     int j;
     for (int i = 0; localIterator.hasNext(); i = j)
     {
@@ -104,36 +104,36 @@ public final class d
       if (localSnsTimelineVideoView != null)
       {
         j = i;
-        if (!localSnsTimelineVideoView.xWg) {
+        if (!localSnsTimelineVideoView.zjc) {
           j = i + 1;
         }
-        localSnsTimelineVideoView.dzu();
-        com.tencent.e.h.Iye.aP(new Runnable()
+        localSnsTimelineVideoView.dNR();
+        com.tencent.e.h.JZN.aS(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(100417);
-            localSnsTimelineVideoView.xpQ = true;
+            localSnsTimelineVideoView.yCG = true;
             localSnsTimelineVideoView.onDestroy();
             AppMethodBeat.o(100417);
           }
         });
       }
     }
-    ad.w("MicroMsg.Sns.SnsVideoViewMgr", "[fallbackRelease] releaseCount=%s allCount=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.xWp.size()) });
-    this.xWp.clear();
+    ac.w("MicroMsg.Sns.SnsVideoViewMgr", "[fallbackRelease] releaseCount=%s allCount=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.zjl.size()) });
+    this.zjl.clear();
     AppMethodBeat.o(100421);
   }
   
-  public static d dDS()
+  public static d dSq()
   {
     try
     {
       AppMethodBeat.i(100418);
-      if (xWo == null) {
-        xWo = new d();
+      if (zjk == null) {
+        zjk = new d();
       }
-      d locald = xWo;
+      d locald = zjk;
       AppMethodBeat.o(100418);
       return locald;
     }
@@ -143,30 +143,30 @@ public final class d
   public final void a(OnlineVideoView paramOnlineVideoView, c paramc, String paramString)
   {
     AppMethodBeat.i(100420);
-    this.xWu = ((SnsTimelineVideoView)paramOnlineVideoView);
-    if (this.xWu != null) {
-      this.xWu.setVisibility(0);
+    this.zjq = ((SnsTimelineVideoView)paramOnlineVideoView);
+    if (this.zjq != null) {
+      this.zjq.setVisibility(0);
     }
-    ad.i("MicroMsg.Sns.SnsVideoViewMgr", "lxl startPlay, pos:%s, vid:%s, tlObjId:%s videoViewsSize: %s info %s", new Object[] { Integer.valueOf(0), paramc.dyS.Id, paramString, Integer.valueOf(this.xWq.size()), paramOnlineVideoView.dzB() });
+    ac.i("MicroMsg.Sns.SnsVideoViewMgr", "lxl startPlay, pos:%s, vid:%s, tlObjId:%s videoViewsSize: %s info %s", new Object[] { Integer.valueOf(0), paramc.dwE.Id, paramString, Integer.valueOf(this.zjm.size()), paramOnlineVideoView.dNY() });
     Object localObject1 = new ArrayList();
-    Object localObject2 = this.xWq.iterator();
+    Object localObject2 = this.zjm.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       SnsTimelineVideoView localSnsTimelineVideoView = (SnsTimelineVideoView)((Iterator)localObject2).next();
       if (localSnsTimelineVideoView != paramOnlineVideoView) {
-        if ((!localSnsTimelineVideoView.isPlaying()) && (!localSnsTimelineVideoView.Nb()))
+        if ((!localSnsTimelineVideoView.isPlaying()) && (!localSnsTimelineVideoView.MZ()))
         {
-          ad.i("MicroMsg.Sns.SnsVideoViewMgr", "%s remove isPlaying:%s, isPause:%s", new Object[] { Integer.valueOf(localSnsTimelineVideoView.hashCode()), Boolean.valueOf(localSnsTimelineVideoView.isPlaying()), Boolean.valueOf(localSnsTimelineVideoView.Nb()) });
+          ac.i("MicroMsg.Sns.SnsVideoViewMgr", "%s remove isPlaying:%s, isPause:%s", new Object[] { Integer.valueOf(localSnsTimelineVideoView.hashCode()), Boolean.valueOf(localSnsTimelineVideoView.isPlaying()), Boolean.valueOf(localSnsTimelineVideoView.MZ()) });
           ((List)localObject1).add(localSnsTimelineVideoView);
         }
         else
         {
           boolean bool = B(localSnsTimelineVideoView);
-          localSnsTimelineVideoView.qc(true);
+          localSnsTimelineVideoView.rb(true);
           if (bool) {
-            localSnsTimelineVideoView.dDM();
+            localSnsTimelineVideoView.dSk();
           }
-          ad.i("MicroMsg.Sns.SnsVideoViewMgr", "%s pause ", new Object[] { Integer.valueOf(localSnsTimelineVideoView.hashCode()) });
+          ac.i("MicroMsg.Sns.SnsVideoViewMgr", "%s pause ", new Object[] { Integer.valueOf(localSnsTimelineVideoView.hashCode()) });
         }
       }
     }
@@ -177,85 +177,85 @@ public final class d
       if (((SnsTimelineVideoView)localObject2).getParent() != null) {
         ((ViewGroup)((SnsTimelineVideoView)localObject2).getParent()).removeView((View)localObject2);
       }
-      this.xWq.remove(localObject2);
-      ((SnsTimelineVideoView)localObject2).dDP();
+      this.zjm.remove(localObject2);
+      ((SnsTimelineVideoView)localObject2).dSn();
     }
-    if (this.xWu.xWa != null)
+    if (this.zjq.ziW != null)
     {
-      if ((bt.kU(paramString, this.xWu.xWb)) && (this.xWu.xWa.dyS.Id.equals(paramc.dyS.Id)))
+      if ((bs.lr(paramString, this.zjq.ziX)) && (this.zjq.ziW.dwE.Id.equals(paramc.dwE.Id)))
       {
-        ad.i("MicroMsg.Sns.SnsVideoViewMgr", "%s has been played or playing, just resume", new Object[] { Integer.valueOf(this.xWu.hashCode()) });
-        if (!this.xWu.isPlaying())
+        ac.i("MicroMsg.Sns.SnsVideoViewMgr", "%s has been played or playing, just resume", new Object[] { Integer.valueOf(this.zjq.hashCode()) });
+        if (!this.zjq.isPlaying())
         {
-          this.xWu.setScene(1);
-          paramOnlineVideoView = this.xWu;
+          this.zjq.setScene(1);
+          paramOnlineVideoView = this.zjq;
           paramc = new StringBuilder();
-          g.afz();
-          paramOnlineVideoView.setSessionId(new p(a.getUin()).toString() + "_" + bt.eGO());
-          this.xWu.setSessionTimestamp(bt.eGO());
-          this.xWu.setSnsId(this.xWu.xWa.dpC);
-          this.xWu.setFilePath(at.D(this.xWu.xWa.dyS));
+          g.agP();
+          paramOnlineVideoView.setSessionId(new p(a.getUin()).toString() + "_" + bs.eWj());
+          this.zjq.setSessionTimestamp(bs.eWj());
+          this.zjq.setSnsId(this.zjq.ziW.dnn);
+          this.zjq.setFilePath(au.D(this.zjq.ziW.dwE));
         }
-        this.xWu.dzF();
-        this.xWu.setMute(true);
-        this.xWu.abandonAudioFocus();
+        this.zjq.dOc();
+        this.zjq.setMute(true);
+        this.zjq.abandonAudioFocus();
         AppMethodBeat.o(100420);
         return;
       }
-      ad.i("MicroMsg.Sns.SnsVideoViewMgr", "%s played another video, destroy it", new Object[] { Integer.valueOf(this.xWu.hashCode()) });
-      this.xWu.dDR();
+      ac.i("MicroMsg.Sns.SnsVideoViewMgr", "%s played another video, destroy it", new Object[] { Integer.valueOf(this.zjq.hashCode()) });
+      this.zjq.dSp();
     }
-    this.xWu.xWa = paramc;
-    this.xWu.xWb = paramString;
-    this.xWu.xVZ = SnsTimelineVideoView.a.xWm;
-    this.xWu.xWc = System.currentTimeMillis();
-    ad.i("MicroMsg.Sns.SnsVideoViewMgr", "%s startPlay, setState PLAYING %s", new Object[] { Integer.valueOf(this.xWu.hashCode()), paramOnlineVideoView.dzB() });
-    this.xWs = paramc;
-    this.xWt = paramString;
-    this.xWu.setMute(true);
-    this.xWu.a(paramc.dyS, paramc.dgg, paramc.hgr);
-    this.xWu.abandonAudioFocus();
-    this.xWu.onResume();
-    this.xWu.setScene(1);
-    paramOnlineVideoView = this.xWu;
+    this.zjq.ziW = paramc;
+    this.zjq.ziX = paramString;
+    this.zjq.ziV = SnsTimelineVideoView.a.zji;
+    this.zjq.ziY = System.currentTimeMillis();
+    ac.i("MicroMsg.Sns.SnsVideoViewMgr", "%s startPlay, setState PLAYING %s", new Object[] { Integer.valueOf(this.zjq.hashCode()), paramOnlineVideoView.dNY() });
+    this.zjo = paramc;
+    this.zjp = paramString;
+    this.zjq.setMute(true);
+    this.zjq.a(paramc.dwE, paramc.ddB, paramc.hGU);
+    this.zjq.abandonAudioFocus();
+    this.zjq.onResume();
+    this.zjq.setScene(1);
+    paramOnlineVideoView = this.zjq;
     paramc = new StringBuilder();
-    g.afz();
-    paramOnlineVideoView.setSessionId(new p(a.getUin()).toString() + "_" + bt.eGO());
-    this.xWu.setSessionTimestamp(bt.eGO());
-    this.xWu.setSnsId(this.xWu.xWa.dpC);
-    this.xWu.setFilePath(at.D(this.xWu.xWa.dyS));
-    ad.i("MicroMsg.Sns.SnsVideoViewMgr", "lxl normal start");
+    g.agP();
+    paramOnlineVideoView.setSessionId(new p(a.getUin()).toString() + "_" + bs.eWj());
+    this.zjq.setSessionTimestamp(bs.eWj());
+    this.zjq.setSnsId(this.zjq.ziW.dnn);
+    this.zjq.setFilePath(au.D(this.zjq.ziW.dwE));
+    ac.i("MicroMsg.Sns.SnsVideoViewMgr", "lxl normal start");
     AppMethodBeat.o(100420);
   }
   
-  public final void aE(Activity paramActivity)
+  public final void aI(Activity paramActivity)
   {
     AppMethodBeat.i(100424);
-    this.xWr -= 1;
-    ad.i("MicroMsg.Sns.SnsVideoViewMgr", "onUIDestroy %d", new Object[] { Integer.valueOf(this.xWr) });
-    if ((this.xWr <= 0) || ((paramActivity instanceof SnsTimeLineUI)))
+    this.zjn -= 1;
+    ac.i("MicroMsg.Sns.SnsVideoViewMgr", "onUIDestroy %d", new Object[] { Integer.valueOf(this.zjn) });
+    if ((this.zjn <= 0) || ((paramActivity instanceof SnsTimeLineUI)))
     {
-      if (this.xWr > 0) {
-        com.tencent.mm.plugin.report.service.h.vKh.m(31L, 4L, 1L);
+      if (this.zjn > 0) {
+        com.tencent.mm.plugin.report.service.h.wUl.n(31L, 4L, 1L);
       }
-      MV();
+      MT();
     }
     AppMethodBeat.o(100424);
   }
   
-  public final boolean aqR(String paramString)
+  public final boolean awa(String paramString)
   {
     AppMethodBeat.i(100425);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(100425);
       return false;
     }
-    Iterator localIterator = this.xWq.iterator();
+    Iterator localIterator = this.zjm.iterator();
     while (localIterator.hasNext())
     {
       SnsTimelineVideoView localSnsTimelineVideoView = (SnsTimelineVideoView)localIterator.next();
-      if ((paramString.equals(localSnsTimelineVideoView.xWb)) && (localSnsTimelineVideoView.xVZ != SnsTimelineVideoView.a.xWk))
+      if ((paramString.equals(localSnsTimelineVideoView.ziX)) && (localSnsTimelineVideoView.ziV != SnsTimelineVideoView.a.zjg))
       {
         AppMethodBeat.o(100425);
         return true;
@@ -265,21 +265,21 @@ public final class d
     return false;
   }
   
-  public final SnsTimelineVideoView aqS(String paramString)
+  public final SnsTimelineVideoView awb(String paramString)
   {
     AppMethodBeat.i(100426);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(100426);
       return null;
     }
-    Object localObject = this.xWq.iterator();
+    Object localObject = this.zjm.iterator();
     SnsTimelineVideoView localSnsTimelineVideoView;
     while (((Iterator)localObject).hasNext())
     {
       localSnsTimelineVideoView = (SnsTimelineVideoView)((Iterator)localObject).next();
-      if (paramString.equals(localSnsTimelineVideoView.xWb)) {
-        this.xWq.remove(localSnsTimelineVideoView);
+      if (paramString.equals(localSnsTimelineVideoView.ziX)) {
+        this.zjm.remove(localSnsTimelineVideoView);
       }
     }
     for (;;)
@@ -295,30 +295,30 @@ public final class d
         AppMethodBeat.o(100426);
         return localSnsTimelineVideoView;
       }
-      if (localSnsTimelineVideoView != this.xWu)
+      if (localSnsTimelineVideoView != this.zjq)
       {
         AppMethodBeat.o(100426);
         return localSnsTimelineVideoView;
       }
       if (localSnsTimelineVideoView == null) {}
-      for (localObject = null;; localObject = fX(localSnsTimelineVideoView.getContext()))
+      for (localObject = null;; localObject = gj(localSnsTimelineVideoView.getContext()))
       {
-        localSnsTimelineVideoView.xWf = true;
+        localSnsTimelineVideoView.zjb = true;
         localViewGroup.removeView(localSnsTimelineVideoView);
         if (((SnsTimelineVideoView)localObject).getParent() != null)
         {
-          ((SnsTimelineVideoView)localObject).dDQ();
-          ((SnsTimelineVideoView)localObject).xWf = true;
+          ((SnsTimelineVideoView)localObject).dSo();
+          ((SnsTimelineVideoView)localObject).zjb = true;
           ((ViewGroup)((SnsTimelineVideoView)localObject).getParent()).removeView((View)localObject);
         }
         ((SnsTimelineVideoView)localObject).setVisibility(0);
-        ((SnsTimelineVideoView)localObject).setVideoScaleType(h.e.BVt);
+        ((SnsTimelineVideoView)localObject).setVideoScaleType(h.e.DnK);
         localViewGroup.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
         ((SnsTimelineVideoView)localObject).setTag(new a());
-        ((SnsTimelineVideoView)localObject).a(localSnsTimelineVideoView.xWa.dyS, localSnsTimelineVideoView.xWa.dgg, localSnsTimelineVideoView.xWa.hgr);
+        ((SnsTimelineVideoView)localObject).a(localSnsTimelineVideoView.ziW.dwE, localSnsTimelineVideoView.ziW.ddB, localSnsTimelineVideoView.ziW.hGU);
         ((SnsTimelineVideoView)localObject).setThumbViewScaleType(ImageView.ScaleType.CENTER_CROP);
-        a((OnlineVideoView)localObject, localSnsTimelineVideoView.xWa, localSnsTimelineVideoView.xWb);
-        ad.i("MicroMsg.Sns.SnsVideoViewMgr", "findAndReCreateVideoView lxl reAttach succ %s", new Object[] { paramString });
+        a((OnlineVideoView)localObject, localSnsTimelineVideoView.ziW, localSnsTimelineVideoView.ziX);
+        ac.i("MicroMsg.Sns.SnsVideoViewMgr", "findAndReCreateVideoView lxl reAttach succ %s", new Object[] { paramString });
         AppMethodBeat.o(100426);
         return localSnsTimelineVideoView;
       }
@@ -326,19 +326,19 @@ public final class d
     }
   }
   
-  public final SnsTimelineVideoView aqT(String paramString)
+  public final SnsTimelineVideoView awc(String paramString)
   {
     AppMethodBeat.i(100427);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(100427);
       return null;
     }
-    Iterator localIterator = this.xWq.iterator();
+    Iterator localIterator = this.zjm.iterator();
     while (localIterator.hasNext())
     {
       SnsTimelineVideoView localSnsTimelineVideoView = (SnsTimelineVideoView)localIterator.next();
-      if (paramString.equals(localSnsTimelineVideoView.xWb))
+      if (paramString.equals(localSnsTimelineVideoView.ziX))
       {
         AppMethodBeat.o(100427);
         return localSnsTimelineVideoView;
@@ -348,36 +348,36 @@ public final class d
     return null;
   }
   
-  public final void ckd()
+  public final void crK()
   {
     AppMethodBeat.i(100422);
-    ad.i("MicroMsg.Sns.SnsVideoViewMgr", "pausePlay");
-    if (this.xWu != null)
+    ac.i("MicroMsg.Sns.SnsVideoViewMgr", "pausePlay");
+    if (this.zjq != null)
     {
-      boolean bool = B(this.xWu);
-      this.xWu.qc(true);
+      boolean bool = B(this.zjq);
+      this.zjq.rb(true);
       if (bool) {
-        this.xWu.dDM();
+        this.zjq.dSk();
       }
     }
     AppMethodBeat.o(100422);
   }
   
-  public final void dDT()
+  public final void dSr()
   {
-    this.xWr += 1;
+    this.zjn += 1;
   }
   
-  public final SnsTimelineVideoView fX(Context paramContext)
+  public final SnsTimelineVideoView gj(Context paramContext)
   {
     AppMethodBeat.i(100428);
     Object localObject = null;
-    Iterator localIterator = this.xWq.iterator();
+    Iterator localIterator = this.zjm.iterator();
     SnsTimelineVideoView localSnsTimelineVideoView;
     if (localIterator.hasNext())
     {
       localSnsTimelineVideoView = (SnsTimelineVideoView)localIterator.next();
-      if (localSnsTimelineVideoView.xVZ != SnsTimelineVideoView.a.xWk) {
+      if (localSnsTimelineVideoView.ziV != SnsTimelineVideoView.a.zjg) {
         break label494;
       }
       localObject = localSnsTimelineVideoView;
@@ -387,39 +387,39 @@ public final class d
     {
       break;
       if (localObject == null) {
-        if (this.xWq.size() < 3)
+        if (this.zjm.size() < 3)
         {
           paramContext = new SnsTimelineVideoView(paramContext);
-          this.xWq.add(paramContext);
-          this.xWp.add(new WeakReference(paramContext));
+          this.zjm.add(paramContext);
+          this.zjl.add(new WeakReference(paramContext));
         }
       }
       for (;;)
       {
-        paramContext.xVZ = SnsTimelineVideoView.a.xWl;
-        paramContext.dzy();
-        ad.i("MicroMsg.Sns.SnsVideoViewMgr", "%s getAvailableVideoView, setState ATTACHING", new Object[] { Integer.valueOf(paramContext.hashCode()) });
+        paramContext.ziV = SnsTimelineVideoView.a.zjh;
+        paramContext.dNV();
+        ac.i("MicroMsg.Sns.SnsVideoViewMgr", "%s getAvailableVideoView, setState ATTACHING", new Object[] { Integer.valueOf(paramContext.hashCode()) });
         AppMethodBeat.o(100428);
         return paramContext;
         localObject = new ArrayList();
         int i = -1;
         int j = 0;
-        while (j < this.xWq.size())
+        while (j < this.zjm.size())
         {
-          localSnsTimelineVideoView = (SnsTimelineVideoView)this.xWq.get(j);
+          localSnsTimelineVideoView = (SnsTimelineVideoView)this.zjm.get(j);
           int k = i;
-          if (localSnsTimelineVideoView.xVZ != SnsTimelineVideoView.a.xWm)
+          if (localSnsTimelineVideoView.ziV != SnsTimelineVideoView.a.zji)
           {
             k = i;
-            if (localSnsTimelineVideoView.xWc < 9223372036854775807L)
+            if (localSnsTimelineVideoView.ziY < 9223372036854775807L)
             {
               k = i;
-              if (!localSnsTimelineVideoView.xWe) {
+              if (!localSnsTimelineVideoView.zja) {
                 k = j;
               }
             }
           }
-          if (localSnsTimelineVideoView.xWe) {
+          if (localSnsTimelineVideoView.zja) {
             ((List)localObject).add(localSnsTimelineVideoView);
           }
           j += 1;
@@ -428,30 +428,30 @@ public final class d
         if ((i < 0) && (((List)localObject).size() > 0))
         {
           localSnsTimelineVideoView = (SnsTimelineVideoView)((List)localObject).get(0);
-          this.xWq.remove(localSnsTimelineVideoView);
+          this.zjm.remove(localSnsTimelineVideoView);
           if ((localSnsTimelineVideoView != null) && (localSnsTimelineVideoView.getParent() != null))
           {
-            localSnsTimelineVideoView.xWf = false;
+            localSnsTimelineVideoView.zjb = false;
             ((ViewGroup)localSnsTimelineVideoView.getParent()).removeView(localSnsTimelineVideoView);
           }
           for (;;)
           {
             paramContext = new SnsTimelineVideoView(paramContext);
-            this.xWq.add(paramContext);
-            this.xWp.add(new WeakReference(paramContext));
-            ad.i("MicroMsg.Sns.SnsVideoViewMgr", "use new one, removes size:%s, first:%s", new Object[] { Integer.valueOf(((List)localObject).size()), Integer.valueOf(((SnsTimelineVideoView)((List)localObject).get(0)).hashCode()) });
+            this.zjm.add(paramContext);
+            this.zjl.add(new WeakReference(paramContext));
+            ac.i("MicroMsg.Sns.SnsVideoViewMgr", "use new one, removes size:%s, first:%s", new Object[] { Integer.valueOf(((List)localObject).size()), Integer.valueOf(((SnsTimelineVideoView)((List)localObject).get(0)).hashCode()) });
             break;
             if (localSnsTimelineVideoView != null) {
-              localSnsTimelineVideoView.dDP();
+              localSnsTimelineVideoView.dSn();
             }
           }
         }
-        paramContext = this.xWq;
+        paramContext = this.zjm;
         if (i < 0) {}
         for (j = 0;; j = i)
         {
           paramContext = (SnsTimelineVideoView)paramContext.get(j);
-          ad.i("MicroMsg.Sns.SnsVideoViewMgr", "use minIndex: %s", new Object[] { Integer.valueOf(i) });
+          ac.i("MicroMsg.Sns.SnsVideoViewMgr", "use minIndex: %s", new Object[] { Integer.valueOf(i) });
           break;
         }
         paramContext = (Context)localObject;
@@ -462,13 +462,13 @@ public final class d
   public final void onUIPause()
   {
     AppMethodBeat.i(100423);
-    ad.i("MicroMsg.Sns.SnsVideoViewMgr", "pausePlay onUIPause");
-    if (this.xWu != null)
+    ac.i("MicroMsg.Sns.SnsVideoViewMgr", "pausePlay onUIPause");
+    if (this.zjq != null)
     {
-      boolean bool = B(this.xWu);
-      this.xWu.dDN();
+      boolean bool = B(this.zjq);
+      this.zjq.dSl();
       if (bool) {
-        this.xWu.dDM();
+        this.zjq.dSk();
       }
     }
     AppMethodBeat.o(100423);

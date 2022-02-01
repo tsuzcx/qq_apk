@@ -11,26 +11,26 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BakFinishUI
   extends MMWizardActivity
   implements e.e
 {
-  private ap handler;
-  private int mzJ;
-  private TextView mzL;
+  private ao handler;
+  private int nbK;
+  private TextView nbM;
   
   public BakFinishUI()
   {
     AppMethodBeat.i(21980);
-    this.handler = new ap(Looper.getMainLooper());
+    this.handler = new ao(Looper.getMainLooper());
     AppMethodBeat.o(21980);
   }
   
-  public final void byt()
+  public final void bFp()
   {
     AppMethodBeat.i(21985);
     this.handler.post(new Runnable()
@@ -38,7 +38,7 @@ public class BakFinishUI
       public final void run()
       {
         AppMethodBeat.i(21978);
-        a.byd().bye().mzc = -1;
+        a.bEZ().bFa().nbd = -1;
         BakFinishUI.b(BakFinishUI.this);
         AppMethodBeat.o(21978);
       }
@@ -55,9 +55,9 @@ public class BakFinishUI
   {
     AppMethodBeat.i(21982);
     setMMTitle(2131756308);
-    this.mzL = ((TextView)findViewById(2131297074));
-    if (6 == this.mzJ) {
-      this.mzL.setText(getString(2131756304));
+    this.nbM = ((TextView)findViewById(2131297074));
+    if (6 == this.nbK) {
+      this.nbM.setText(getString(2131756304));
     }
     for (;;)
     {
@@ -66,7 +66,7 @@ public class BakFinishUI
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(21977);
-          a.byd().bye().mzc = -1;
+          a.bEZ().bFa().nbd = -1;
           BakFinishUI.a(BakFinishUI.this);
           AppMethodBeat.o(21977);
           return true;
@@ -74,8 +74,8 @@ public class BakFinishUI
       });
       AppMethodBeat.o(21982);
       return;
-      if (1 == this.mzJ) {
-        this.mzL.setText(getString(2131756295));
+      if (1 == this.nbK) {
+        this.nbM.setText(getString(2131756295));
       }
     }
   }
@@ -89,10 +89,10 @@ public class BakFinishUI
       AppMethodBeat.o(21981);
       return;
     }
-    this.mzJ = getIntent().getIntExtra("cmd", -1);
-    ad.i("MicroMsg.BakFinishUI", "BakFinishUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.mzJ) });
+    this.nbK = getIntent().getIntExtra("cmd", -1);
+    ac.i("MicroMsg.BakFinishUI", "BakFinishUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.nbK) });
     initView();
-    a.byd().bye().myU = this;
+    a.bEZ().bFa().naV = this;
     AppMethodBeat.o(21981);
   }
   
@@ -100,8 +100,8 @@ public class BakFinishUI
   {
     AppMethodBeat.i(21983);
     super.onDestroy();
-    a.byd().bye().myU = null;
-    ad.i("MicroMsg.BakFinishUI", "BakFinishUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.mzJ) });
+    a.bEZ().bFa().naV = null;
+    ac.i("MicroMsg.BakFinishUI", "BakFinishUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.nbK) });
     AppMethodBeat.o(21983);
   }
   
@@ -113,9 +113,9 @@ public class BakFinishUI
       public final void run()
       {
         AppMethodBeat.i(21979);
-        ad.d("MicroMsg.BakFinishUI", "BakFinishUI onCloseSocket");
+        ac.d("MicroMsg.BakFinishUI", "BakFinishUI onCloseSocket");
         Intent localIntent = new Intent(BakFinishUI.this, BakConnErrorUI.class);
-        MMWizardActivity.V(BakFinishUI.this, localIntent);
+        MMWizardActivity.aj(BakFinishUI.this, localIntent);
         AppMethodBeat.o(21979);
       }
     });
@@ -127,8 +127,8 @@ public class BakFinishUI
     AppMethodBeat.i(21984);
     if (paramInt == 4)
     {
-      a.byd().bye().mzc = -1;
-      Xo(1);
+      a.bEZ().bFa().nbd = -1;
+      ZA(1);
       AppMethodBeat.o(21984);
       return true;
     }
@@ -145,7 +145,7 @@ public class BakFinishUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakFinishUI
  * JD-Core Version:    0.7.0.1
  */

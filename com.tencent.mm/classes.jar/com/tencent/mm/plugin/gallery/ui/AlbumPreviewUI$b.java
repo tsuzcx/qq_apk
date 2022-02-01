@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(111452);
-    rIw = new b("CREATE", 0);
-    rIx = new b("SKIP", 1);
-    rIy = new b[] { rIw, rIx };
+    sQl = new b("CREATE", 0);
+    sQm = new b("SKIP", 1);
+    sQn = new b[] { sQl, sQm };
     AppMethodBeat.o(111452);
   }
   

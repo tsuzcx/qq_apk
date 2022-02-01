@@ -3,11 +3,10 @@ package com.tencent.mm.plugin.mmsight.segment;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.memory.o;
 import com.tencent.mm.memory.o.b;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class FFmpegSightJNIThumbFetcher
   implements d
@@ -63,7 +62,7 @@ public class FFmpegSightJNIThumbFetcher
   public int getDurationMs()
   {
     AppMethodBeat.i(107634);
-    ad.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getDurationMs() returned: " + this.mDurationMs);
+    ac.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getDurationMs() returned: " + this.mDurationMs);
     int i = this.mDurationMs;
     AppMethodBeat.o(107634);
     return i;
@@ -73,7 +72,7 @@ public class FFmpegSightJNIThumbFetcher
   {
     long l = 0L;
     AppMethodBeat.i(107633);
-    ad.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getFrameAtTime() called with: timeMs = [%d], mBufId = [%d]", new Object[] { Long.valueOf(paramLong), Integer.valueOf(this.mBufId) });
+    ac.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getFrameAtTime() called with: timeMs = [%d], mBufId = [%d]", new Object[] { Long.valueOf(paramLong), Integer.valueOf(this.mBufId) });
     if (paramLong > this.mDurationMs) {
       paramLong = this.mDurationMs;
     }
@@ -84,15 +83,15 @@ public class FFmpegSightJNIThumbFetcher
       }
       for (;;)
       {
-        ad.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getFrameAtTime() seekStream return %d", new Object[] { Integer.valueOf(SightVideoJNI.seekStreamWithFlag((float)paramLong / 1000.0F, 1, this.mBufId)) });
+        ac.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getFrameAtTime() seekStream return %d", new Object[] { Integer.valueOf(SightVideoJNI.seekStreamWithFlag((float)paramLong / 1000.0F, 1, this.mBufId)) });
         if ((this.mReusedBitmap == null) || (this.mReusedBitmap.isRecycled()) || (this.mReusedBitmap.getWidth() != this.mScaledWidth) || (this.mReusedBitmap.getHeight() != this.mScaledHeight))
         {
           if ((this.mReusedBitmap != null) && (!this.mReusedBitmap.isRecycled())) {
-            o.gEi.f(this.mReusedBitmap);
+            com.tencent.mm.memory.o.heJ.f(this.mReusedBitmap);
           }
-          this.mReusedBitmap = o.gEi.a(new o.b(this.mScaledWidth, this.mScaledHeight));
+          this.mReusedBitmap = com.tencent.mm.memory.o.heJ.a(new o.b(this.mScaledWidth, this.mScaledHeight));
         }
-        ad.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getFrameAtTime() dr return %d", new Object[] { Integer.valueOf(SightVideoJNI.drawScaledFrame(this.mBufId, this.mReusedBitmap, this.mScaledWidth, this.mScaledHeight)) });
+        ac.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getFrameAtTime() dr return %d", new Object[] { Integer.valueOf(SightVideoJNI.drawScaledFrame(this.mBufId, this.mReusedBitmap, this.mScaledWidth, this.mScaledHeight)) });
         Bitmap localBitmap = this.mReusedBitmap;
         this.mReusedBitmap = null;
         AppMethodBeat.o(107633);
@@ -104,7 +103,7 @@ public class FFmpegSightJNIThumbFetcher
   public int getScaledHeight()
   {
     AppMethodBeat.i(107636);
-    ad.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getScaledHeight() returned: " + this.mScaledHeight);
+    ac.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getScaledHeight() returned: " + this.mScaledHeight);
     int i = this.mScaledHeight;
     AppMethodBeat.o(107636);
     return i;
@@ -113,7 +112,7 @@ public class FFmpegSightJNIThumbFetcher
   public int getScaledWidth()
   {
     AppMethodBeat.i(107635);
-    ad.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getScaledWidth() returned: " + this.mScaledWidth);
+    ac.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getScaledWidth() returned: " + this.mScaledWidth);
     int i = this.mScaledWidth;
     AppMethodBeat.o(107635);
     return i;
@@ -122,11 +121,11 @@ public class FFmpegSightJNIThumbFetcher
   public void init(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(107630);
-    ad.i("MicroMsg.FFmpegSightJNIThumbFetcher", "init() called with: path = [" + paramString + "], segment_interval = [" + paramInt1 + "], width = [" + paramInt2 + "], height = [" + paramInt3 + "]");
+    ac.i("MicroMsg.FFmpegSightJNIThumbFetcher", "init() called with: path = [" + paramString + "], segment_interval = [" + paramInt1 + "], width = [" + paramInt2 + "], height = [" + paramInt3 + "]");
     this.mBufId = SightVideoJNI.openFileVFS(paramString, 1, 16, false);
     if (this.mBufId < 0)
     {
-      paramString = new p("open file error.");
+      paramString = new o("open file error.");
       AppMethodBeat.o(107630);
       throw paramString;
     }
@@ -136,14 +135,14 @@ public class FFmpegSightJNIThumbFetcher
     paramString = calculateScaledLength(paramInt2, paramInt3, paramInt1, i, new Point());
     this.mScaledWidth = paramString.x;
     this.mScaledHeight = paramString.y;
-    ad.i("MicroMsg.FFmpegSightJNIThumbFetcher", "FFmpegSightJNIThumbFetcher.init. scaled size is (%d, %d); raw size is (%d, %d)", new Object[] { Integer.valueOf(this.mScaledWidth), Integer.valueOf(this.mScaledHeight), Integer.valueOf(paramInt1), Integer.valueOf(i) });
+    ac.i("MicroMsg.FFmpegSightJNIThumbFetcher", "FFmpegSightJNIThumbFetcher.init. scaled size is (%d, %d); raw size is (%d, %d)", new Object[] { Integer.valueOf(this.mScaledWidth), Integer.valueOf(this.mScaledHeight), Integer.valueOf(paramInt1), Integer.valueOf(i) });
     AppMethodBeat.o(107630);
   }
   
   public void release()
   {
     AppMethodBeat.i(107637);
-    ad.i("MicroMsg.FFmpegSightJNIThumbFetcher", "release() called");
+    ac.i("MicroMsg.FFmpegSightJNIThumbFetcher", "release() called");
     b.c(new ReleaseRunnable(this.mReusedBitmap, this.mBufId, null), "release");
     AppMethodBeat.o(107637);
   }
@@ -151,7 +150,7 @@ public class FFmpegSightJNIThumbFetcher
   public void reuseBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(107632);
-    ad.i("MicroMsg.FFmpegSightJNIThumbFetcher", "reuseBitmap() called with: bitmap = [" + paramBitmap + "]");
+    ac.i("MicroMsg.FFmpegSightJNIThumbFetcher", "reuseBitmap() called with: bitmap = [" + paramBitmap + "]");
     if (paramBitmap == null)
     {
       AppMethodBeat.o(107632);
@@ -177,7 +176,7 @@ public class FFmpegSightJNIThumbFetcher
     {
       AppMethodBeat.i(107629);
       if ((this.mReusedBitmap != null) && (!this.mReusedBitmap.isRecycled())) {
-        o.gEi.f(this.mReusedBitmap);
+        com.tencent.mm.memory.o.heJ.f(this.mReusedBitmap);
       }
       SightVideoJNI.freeObj(this.mBufId);
       AppMethodBeat.o(107629);

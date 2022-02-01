@@ -29,18 +29,18 @@ public final class a
       return Pattern.matches("cpu[0-9]", paramAnonymousFile.getName());
     }
   };
-  private static a cFu = null;
-  private static long cFv = 0L;
-  private static long cFw = 0L;
-  private static int cFx = 0;
+  private static a cCC = null;
+  private static long cCD = 0L;
+  private static long cCE = 0L;
+  private static int cCF = 0;
   
-  public static long Ik()
+  public static long HT()
   {
     return Runtime.getRuntime().freeMemory() / 1024L;
   }
   
   /* Error */
-  public static double Il()
+  public static double HU()
   {
     // Byte code:
     //   0: aconst_null
@@ -414,7 +414,7 @@ public final class a
     //   125	135	592	java/lang/Exception
   }
   
-  private static int Im()
+  private static int HV()
   {
     int j = 0;
     if (Build.VERSION.SDK_INT <= 10) {
@@ -423,10 +423,10 @@ public final class a
     int i;
     try
     {
-      int k = ds("/sys/devices/system/cpu/possible");
+      int k = cZ("/sys/devices/system/cpu/possible");
       i = k;
       if (k == 0) {
-        i = ds("/sys/devices/system/cpu/present");
+        i = cZ("/sys/devices/system/cpu/present");
       }
       if (i == 0)
       {
@@ -449,7 +449,7 @@ public final class a
     return j;
   }
   
-  public static long In()
+  public static long HW()
   {
     int i = 0;
     Object localObject1 = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
@@ -492,10 +492,10 @@ public final class a
   {
     try
     {
-      paramJSONObject.put("machine", aN(paramApplication));
-      paramJSONObject.put("cpu_app", Il());
+      paramJSONObject.put("machine", aO(paramApplication));
+      paramJSONObject.put("cpu_app", HU());
       paramJSONObject.put("mem", getTotalMemory(paramApplication));
-      paramJSONObject.put("mem_free", aR(paramApplication));
+      paramJSONObject.put("mem_free", aS(paramApplication));
       return paramJSONObject;
     }
     catch (JSONException paramApplication)
@@ -505,63 +505,63 @@ public final class a
     return paramJSONObject;
   }
   
-  public static a aN(Context paramContext)
+  public static a aO(Context paramContext)
   {
-    if (cFu != null) {
-      return cFu;
+    if (cCC != null) {
+      return cCC;
     }
     long l1 = System.currentTimeMillis();
     long l2 = getTotalMemory(paramContext);
-    int i = Im();
+    int i = HV();
     c.i("Matrix.DeviceUtil", "[getLevel] totalMemory:%s coresNum:%s", new Object[] { Long.valueOf(l2), Integer.valueOf(i) });
     if (l2 >= 8589934592L) {
-      cFu = a.cFy;
+      cCC = a.cCG;
     }
     for (;;)
     {
-      c.i("Matrix.DeviceUtil", "getLevel, cost:" + (System.currentTimeMillis() - l1) + ", level:" + cFu, new Object[0]);
-      return cFu;
+      c.i("Matrix.DeviceUtil", "getLevel, cost:" + (System.currentTimeMillis() - l1) + ", level:" + cCC, new Object[0]);
+      return cCC;
       if (l2 >= 6442450944L) {
-        cFu = a.cFz;
+        cCC = a.cCH;
       } else if (l2 >= 4294967296L) {
-        cFu = a.cFA;
+        cCC = a.cCI;
       } else if (l2 >= 2147483648L)
       {
         if (i >= 4) {
-          cFu = a.cFA;
+          cCC = a.cCI;
         } else if (i >= 2) {
-          cFu = a.cFB;
+          cCC = a.cCJ;
         } else if (i > 0) {
-          cFu = a.cFB;
+          cCC = a.cCJ;
         }
       }
       else if ((0L <= l2) && (l2 < 1073741824L)) {
-        cFu = a.cFC;
+        cCC = a.cCK;
       } else {
-        cFu = a.cFD;
+        cCC = a.cCL;
       }
     }
   }
   
-  public static long aO(Context paramContext)
+  public static long aP(Context paramContext)
   {
-    if (0L != cFw) {
-      return cFw;
+    if (0L != cCE) {
+      return cCE;
     }
     getTotalMemory(paramContext);
-    return cFw;
+    return cCE;
   }
   
-  public static int aP(Context paramContext)
+  public static int aQ(Context paramContext)
   {
-    if (cFx != 0) {
-      return cFx * 1024;
+    if (cCF != 0) {
+      return cCF * 1024;
     }
     getTotalMemory(paramContext);
-    return cFx * 1024;
+    return cCF * 1024;
   }
   
-  public static boolean aQ(Context paramContext)
+  public static boolean aR(Context paramContext)
   {
     ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
     ((ActivityManager)paramContext.getSystemService("activity")).getMemoryInfo(localMemoryInfo);
@@ -569,7 +569,7 @@ public final class a
   }
   
   /* Error */
-  public static long aR(Context paramContext)
+  public static long aS(Context paramContext)
   {
     // Byte code:
     //   0: getstatic 146	android/os/Build$VERSION:SDK_INT	I
@@ -758,7 +758,7 @@ public final class a
     //   153	160	302	java/lang/Exception
   }
   
-  public static Debug.MemoryInfo aS(Context paramContext)
+  public static Debug.MemoryInfo aT(Context paramContext)
   {
     try
     {
@@ -776,44 +776,8 @@ public final class a
     return null;
   }
   
-  private static String convertStreamToString(InputStream paramInputStream)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    try
-    {
-      localBufferedReader = new BufferedReader(new InputStreamReader(paramInputStream, "UTF-8"));
-      try
-      {
-        for (;;)
-        {
-          paramInputStream = localBufferedReader.readLine();
-          if (paramInputStream == null) {
-            break;
-          }
-          localStringBuilder.append(paramInputStream).append('\n');
-        }
-        if (localBufferedReader == null) {
-          break label59;
-        }
-      }
-      finally {}
-    }
-    finally
-    {
-      for (;;)
-      {
-        BufferedReader localBufferedReader = null;
-      }
-    }
-    localBufferedReader.close();
-    label59:
-    throw paramInputStream;
-    localBufferedReader.close();
-    return localStringBuilder.toString();
-  }
-  
   /* Error */
-  private static int ds(String paramString)
+  private static int cZ(String paramString)
   {
     // Byte code:
     //   0: new 332	java/io/FileInputStream
@@ -846,24 +810,24 @@ public final class a
     //   52: aload_3
     //   53: astore_0
     //   54: aload 5
-    //   56: ldc_w 378
-    //   59: invokevirtual 381	java/lang/String:matches	(Ljava/lang/String;)Z
+    //   56: ldc_w 372
+    //   59: invokevirtual 375	java/lang/String:matches	(Ljava/lang/String;)Z
     //   62: istore_2
     //   63: iload_2
     //   64: ifne +32 -> 96
     //   67: aload_3
-    //   68: invokevirtual 384	java/io/InputStream:close	()V
+    //   68: invokevirtual 378	java/io/InputStream:close	()V
     //   71: iconst_0
     //   72: ireturn
     //   73: astore_0
     //   74: ldc 115
-    //   76: ldc_w 386
+    //   76: ldc_w 380
     //   79: iconst_1
     //   80: anewarray 4	java/lang/Object
     //   83: dup
     //   84: iconst_0
     //   85: aload_0
-    //   86: invokevirtual 387	java/io/IOException:toString	()Ljava/lang/String;
+    //   86: invokevirtual 381	java/io/IOException:toString	()Ljava/lang/String;
     //   89: aastore
     //   90: invokestatic 131	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   93: goto -22 -> 71
@@ -871,7 +835,7 @@ public final class a
     //   97: astore_0
     //   98: aload 5
     //   100: iconst_2
-    //   101: invokevirtual 391	java/lang/String:substring	(I)Ljava/lang/String;
+    //   101: invokevirtual 385	java/lang/String:substring	(I)Ljava/lang/String;
     //   104: invokestatic 355	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   107: istore_1
     //   108: iload_1
@@ -879,18 +843,18 @@ public final class a
     //   110: iadd
     //   111: istore_1
     //   112: aload_3
-    //   113: invokevirtual 384	java/io/InputStream:close	()V
+    //   113: invokevirtual 378	java/io/InputStream:close	()V
     //   116: iload_1
     //   117: ireturn
     //   118: astore_0
     //   119: ldc 115
-    //   121: ldc_w 386
+    //   121: ldc_w 380
     //   124: iconst_1
     //   125: anewarray 4	java/lang/Object
     //   128: dup
     //   129: iconst_0
     //   130: aload_0
-    //   131: invokevirtual 387	java/io/IOException:toString	()Ljava/lang/String;
+    //   131: invokevirtual 381	java/io/IOException:toString	()Ljava/lang/String;
     //   134: aastore
     //   135: invokestatic 131	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   138: iload_1
@@ -901,30 +865,30 @@ public final class a
     //   144: aload_3
     //   145: astore_0
     //   146: ldc 115
-    //   148: ldc_w 386
+    //   148: ldc_w 380
     //   151: iconst_1
     //   152: anewarray 4	java/lang/Object
     //   155: dup
     //   156: iconst_0
     //   157: aload 4
-    //   159: invokevirtual 387	java/io/IOException:toString	()Ljava/lang/String;
+    //   159: invokevirtual 381	java/io/IOException:toString	()Ljava/lang/String;
     //   162: aastore
     //   163: invokestatic 131	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   166: aload_3
     //   167: ifnull +7 -> 174
     //   170: aload_3
-    //   171: invokevirtual 384	java/io/InputStream:close	()V
+    //   171: invokevirtual 378	java/io/InputStream:close	()V
     //   174: iconst_0
     //   175: ireturn
     //   176: astore_0
     //   177: ldc 115
-    //   179: ldc_w 386
+    //   179: ldc_w 380
     //   182: iconst_1
     //   183: anewarray 4	java/lang/Object
     //   186: dup
     //   187: iconst_0
     //   188: aload_0
-    //   189: invokevirtual 387	java/io/IOException:toString	()Ljava/lang/String;
+    //   189: invokevirtual 381	java/io/IOException:toString	()Ljava/lang/String;
     //   192: aastore
     //   193: invokestatic 131	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   196: goto -22 -> 174
@@ -934,18 +898,18 @@ public final class a
     //   202: aload_0
     //   203: ifnull +7 -> 210
     //   206: aload_0
-    //   207: invokevirtual 384	java/io/InputStream:close	()V
+    //   207: invokevirtual 378	java/io/InputStream:close	()V
     //   210: aload_3
     //   211: athrow
     //   212: astore_0
     //   213: ldc 115
-    //   215: ldc_w 386
+    //   215: ldc_w 380
     //   218: iconst_1
     //   219: anewarray 4	java/lang/Object
     //   222: dup
     //   223: iconst_0
     //   224: aload_0
-    //   225: invokevirtual 387	java/io/IOException:toString	()Ljava/lang/String;
+    //   225: invokevirtual 381	java/io/IOException:toString	()Ljava/lang/String;
     //   228: aastore
     //   229: invokestatic 131	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   232: goto -22 -> 210
@@ -984,6 +948,42 @@ public final class a
     //   42	47	239	java/io/IOException
     //   54	63	239	java/io/IOException
     //   98	108	239	java/io/IOException
+  }
+  
+  private static String convertStreamToString(InputStream paramInputStream)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    try
+    {
+      localBufferedReader = new BufferedReader(new InputStreamReader(paramInputStream, "UTF-8"));
+      try
+      {
+        for (;;)
+        {
+          paramInputStream = localBufferedReader.readLine();
+          if (paramInputStream == null) {
+            break;
+          }
+          localStringBuilder.append(paramInputStream).append('\n');
+        }
+        if (localBufferedReader == null) {
+          break label59;
+        }
+      }
+      finally {}
+    }
+    finally
+    {
+      for (;;)
+      {
+        BufferedReader localBufferedReader = null;
+      }
+    }
+    localBufferedReader.close();
+    label59:
+    throw paramInputStream;
+    localBufferedReader.close();
+    return localStringBuilder.toString();
   }
   
   public static long getDalvikHeap()
@@ -1028,8 +1028,8 @@ public final class a
   public static long getTotalMemory(Context paramContext)
   {
     long l1 = 0L;
-    if (0L != cFv) {
-      l1 = cFv;
+    if (0L != cCD) {
+      l1 = cCD;
     }
     long l2;
     do
@@ -1040,14 +1040,14 @@ public final class a
     ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
     paramContext.getMemoryInfo(localMemoryInfo);
-    cFv = localMemoryInfo.totalMem;
-    cFw = localMemoryInfo.threshold;
+    cCD = localMemoryInfo.totalMem;
+    cCE = localMemoryInfo.threshold;
     l1 = Runtime.getRuntime().maxMemory();
     if (l1 == 9223372036854775807L) {}
-    for (cFx = paramContext.getMemoryClass();; cFx = (int)(l1 / 1048576L))
+    for (cCF = paramContext.getMemoryClass();; cCF = (int)(l1 / 1048576L))
     {
-      c.i("Matrix.DeviceUtil", "getTotalMemory cost:" + (System.currentTimeMillis() - l2) + ", total_mem:" + cFv + ", LowMemoryThresold:" + cFw + ", Memory Class:" + cFx, new Object[0]);
-      return cFv;
+      c.i("Matrix.DeviceUtil", "getTotalMemory cost:" + (System.currentTimeMillis() - l2) + ", total_mem:" + cCD + ", LowMemoryThresold:" + cCE + ", Memory Class:" + cCF, new Object[0]);
+      return cCD;
     }
   }
   

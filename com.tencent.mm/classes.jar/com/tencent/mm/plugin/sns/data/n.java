@@ -2,45 +2,45 @@ package com.tencent.mm.plugin.sns.data;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.storage.bc;
+import com.tencent.mm.protocal.protobuf.btz;
+import com.tencent.mm.storage.bf;
 
 public final class n
 {
-  public String dpC;
-  public bpi dyS;
+  public String dnn;
+  public btz dwE;
   public String key;
   public int requestType;
   public int size;
-  public String wBe;
-  public String wBf;
-  public bc wBg;
-  public SparseArray<bpi> wBh;
+  public String xNA;
+  public bf xNB;
+  public SparseArray<btz> xNC;
+  public String xNz;
   
   public n()
   {
     AppMethodBeat.i(95089);
-    this.wBh = new SparseArray();
+    this.xNC = new SparseArray();
     AppMethodBeat.o(95089);
   }
   
-  public n(bpi parambpi, int paramInt, String paramString1, bc parambc, String paramString2, String paramString3)
+  public n(btz parambtz, int paramInt, String paramString1, bf parambf, String paramString2, String paramString3)
   {
-    this.dyS = parambpi;
+    this.dwE = parambtz;
     this.requestType = paramInt;
-    this.wBg = parambc;
+    this.xNB = parambf;
     this.key = paramString1;
-    this.wBe = paramString2;
-    this.wBf = paramString3;
+    this.xNz = paramString2;
+    this.xNA = paramString3;
   }
   
-  public n(String paramString1, SparseArray<bpi> paramSparseArray, String paramString2, bc parambc, int paramInt)
+  public n(String paramString1, SparseArray<btz> paramSparseArray, String paramString2, bf parambf, int paramInt)
   {
-    this.dpC = paramString1;
-    this.wBh = paramSparseArray;
+    this.dnn = paramString1;
+    this.xNC = paramSparseArray;
     this.requestType = 9;
     this.key = paramString2;
-    this.wBg = parambc;
+    this.xNB = parambf;
     this.size = paramInt;
   }
 }

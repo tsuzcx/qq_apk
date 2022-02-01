@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.offline.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.xh;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.xs;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.offline.i;
 import com.tencent.mm.plugin.offline.k;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -25,116 +25,116 @@ import java.util.Set;
 
 public final class s
 {
-  private List<WeakReference<a>> nqa;
-  public ArrayList<Long> uhy;
-  public b ukv;
-  private HashSet<String> ukw;
+  private List<WeakReference<a>> nTa;
+  public ArrayList<Long> vqw;
+  public b vtr;
+  private HashSet<String> vts;
   
   public s()
   {
     AppMethodBeat.i(66322);
-    this.nqa = new ArrayList();
-    this.ukv = null;
-    this.uhy = new ArrayList();
-    this.ukw = new HashSet();
-    Object localObject = com.tencent.mm.plugin.offline.c.a.cZs();
+    this.nTa = new ArrayList();
+    this.vtr = null;
+    this.vqw = new ArrayList();
+    this.vts = new HashSet();
+    Object localObject = com.tencent.mm.plugin.offline.c.a.dna();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = bw.K((String)localObject, "sysmsg");
+      localObject = bv.L((String)localObject, "sysmsg");
       if (localObject != null)
       {
-        int i = bt.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
+        int i = bs.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
         if ((i >= 0) && (i == 4))
         {
-          ad.i("MicroMsg.WalletOfflineMsgManager", "msg type is 4 ");
-          b(ah((Map)localObject));
+          ac.i("MicroMsg.WalletOfflineMsgManager", "msg type is 4 ");
+          b(aj((Map)localObject));
         }
       }
     }
-    this.uhy.clear();
+    this.vqw.clear();
     AppMethodBeat.o(66322);
   }
   
-  private d ag(Map<String, String> paramMap)
+  private d ai(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66327);
     d locald = new d();
-    locald.ukC = bt.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    locald.dlJ = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
+    locald.vty = bs.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    locald.djr = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
     AppMethodBeat.o(66327);
     return locald;
   }
   
-  private b ah(Map<String, String> paramMap)
+  private b aj(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66328);
-    if (this.ukv == null) {
-      this.ukv = new b();
+    if (this.vtr == null) {
+      this.vtr = new b();
     }
-    this.ukv.ukC = bt.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    this.ukv.ukz = ((String)paramMap.get(".sysmsg.paymsg.isfreeze"));
-    this.ukv.ukA = ((String)paramMap.get(".sysmsg.paymsg.freezetype"));
-    this.ukv.ukB = ((String)paramMap.get(".sysmsg.paymsg.freezemsg"));
-    paramMap = this.ukv;
+    this.vtr.vty = bs.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    this.vtr.vtv = ((String)paramMap.get(".sysmsg.paymsg.isfreeze"));
+    this.vtr.vtw = ((String)paramMap.get(".sysmsg.paymsg.freezetype"));
+    this.vtr.vtx = ((String)paramMap.get(".sysmsg.paymsg.freezemsg"));
+    paramMap = this.vtr;
     AppMethodBeat.o(66328);
     return paramMap;
   }
   
-  private e ai(Map<String, String> paramMap)
+  private e ak(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66329);
     e locale = new e();
-    locale.ukC = bt.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    locale.ukD = ((String)paramMap.get(".sysmsg.paymsg.cftretcode"));
-    locale.ukE = ((String)paramMap.get(".sysmsg.paymsg.cftretmsg"));
-    locale.ukF = ((String)paramMap.get(".sysmsg.paymsg.wxretcode"));
-    locale.ukG = ((String)paramMap.get(".sysmsg.paymsg.wxretmsg"));
-    locale.ukH = ((String)paramMap.get(".sysmsg.paymsg.error_detail_url"));
-    locale.ukI = true;
+    locale.vty = bs.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    locale.vtz = ((String)paramMap.get(".sysmsg.paymsg.cftretcode"));
+    locale.vtA = ((String)paramMap.get(".sysmsg.paymsg.cftretmsg"));
+    locale.vtB = ((String)paramMap.get(".sysmsg.paymsg.wxretcode"));
+    locale.vtC = ((String)paramMap.get(".sysmsg.paymsg.wxretmsg"));
+    locale.vtD = ((String)paramMap.get(".sysmsg.paymsg.error_detail_url"));
+    locale.vtE = true;
     AppMethodBeat.o(66329);
     return locale;
   }
   
-  private f aj(Map<String, String> paramMap)
+  private f al(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66330);
     f localf = new f();
-    localf.ukC = bt.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    localf.ukJ = ((String)paramMap.get(".sysmsg.paymsg.transid"));
-    localf.ukK = com.tencent.mm.plugin.offline.c.a.am(paramMap);
-    if (localf.ukK.Afx.size() > 0) {
-      com.tencent.mm.plugin.offline.c.a.ajV(((Orders.Commodity)localf.ukK.Afx.get(0)).dcF);
+    localf.vty = bs.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    localf.vtF = ((String)paramMap.get(".sysmsg.paymsg.transid"));
+    localf.vtG = com.tencent.mm.plugin.offline.c.a.ao(paramMap);
+    if (localf.vtG.BxR.size() > 0) {
+      com.tencent.mm.plugin.offline.c.a.aoT(((Orders.Commodity)localf.vtG.BxR.get(0)).dad);
     }
     if (paramMap.containsKey(".sysmsg.paymsg.real_name_info")) {
-      localf.dDs = new h(paramMap);
+      localf.dBe = new h(paramMap);
     }
     AppMethodBeat.o(66330);
     return localf;
   }
   
-  private d ak(Map<String, String> paramMap)
+  private d am(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66331);
     d locald = new d();
-    locald.ukC = bt.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    locald.dlJ = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
+    locald.vty = bs.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    locald.djr = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
     AppMethodBeat.o(66331);
     return locald;
   }
   
-  private g al(Map<String, String> paramMap)
+  private g an(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66332);
     g localg = new g();
-    localg.ukC = bt.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    localg.ukL = ((String)paramMap.get(".sysmsg.paymsg.good_name"));
-    localg.ukM = ((String)paramMap.get(".sysmsg.paymsg.total_fee"));
-    localg.dlJ = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
+    localg.vty = bs.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    localg.vtH = ((String)paramMap.get(".sysmsg.paymsg.good_name"));
+    localg.vtI = ((String)paramMap.get(".sysmsg.paymsg.total_fee"));
+    localg.djr = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
     localg.id = ((String)paramMap.get(".sysmsg.paymsg.id"));
     paramMap = (String)paramMap.get(".sysmsg.paymsg.confirm_type");
-    ad.i("MicroMsg.WalletOfflineMsgManager", "msg confirm_type is" + localg.ocN);
+    ac.i("MicroMsg.WalletOfflineMsgManager", "msg confirm_type is" + localg.oGm);
     if ((!TextUtils.isEmpty(paramMap)) && (paramMap.equals("1"))) {}
-    for (localg.ocN = 1;; localg.ocN = 0)
+    for (localg.oGm = 1;; localg.oGm = 0)
     {
       AppMethodBeat.o(66332);
       return localg;
@@ -144,15 +144,15 @@ public final class s
   private void b(c paramc)
   {
     AppMethodBeat.i(66323);
-    if (this.nqa == null)
+    if (this.nTa == null)
     {
       AppMethodBeat.o(66323);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      Object localObject = (WeakReference)this.nqa.get(i);
+      Object localObject = (WeakReference)this.nTa.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -168,38 +168,38 @@ public final class s
   public final void a(a parama)
   {
     AppMethodBeat.i(66324);
-    if (this.nqa == null) {
-      this.nqa = new ArrayList();
+    if (this.nTa == null) {
+      this.nTa = new ArrayList();
     }
-    this.nqa.add(new WeakReference(parama));
+    this.nTa.add(new WeakReference(parama));
     AppMethodBeat.o(66324);
   }
   
-  public final void ajD(String arg1)
+  public final void aoB(String arg1)
   {
     AppMethodBeat.i(66326);
-    com.tencent.mm.plugin.offline.c.a.ajT("");
-    com.tencent.mm.plugin.offline.c.a.ajV("");
-    com.tencent.mm.plugin.offline.c.a.ajU("");
-    Object localObject = bw.K(???, "sysmsg");
+    com.tencent.mm.plugin.offline.c.a.aoR("");
+    com.tencent.mm.plugin.offline.c.a.aoT("");
+    com.tencent.mm.plugin.offline.c.a.aoS("");
+    Object localObject = bv.L(???, "sysmsg");
     if (localObject == null)
     {
       AppMethodBeat.o(66326);
       return;
     }
-    int j = bt.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
-    int i = bt.getInt((String)((Map)localObject).get(".sysmsg.paymsg.pay_cmd"), -1);
+    int j = bs.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
+    int i = bs.getInt((String)((Map)localObject).get(".sysmsg.paymsg.pay_cmd"), -1);
     String str = (String)((Map)localObject).get(".sysmsg.paymsg.req_key");
-    com.tencent.mm.plugin.offline.c.a.ajT((String)((Map)localObject).get(".sysmsg.paymsg.ack_key"));
-    com.tencent.mm.plugin.offline.c.a.IQ(j);
-    com.tencent.mm.plugin.offline.c.a.ajU(str);
-    j = bt.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
-    ad.i("MicroMsg.WalletOfflineMsgManager", "msg type is ".concat(String.valueOf(j)));
-    ad.v("MicroMsg.WalletOfflineMsgManager", "msg type is type %d xml %s", new Object[] { Integer.valueOf(j), ??? });
+    com.tencent.mm.plugin.offline.c.a.aoR((String)((Map)localObject).get(".sysmsg.paymsg.ack_key"));
+    com.tencent.mm.plugin.offline.c.a.KP(j);
+    com.tencent.mm.plugin.offline.c.a.aoS(str);
+    j = bs.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
+    ac.i("MicroMsg.WalletOfflineMsgManager", "msg type is ".concat(String.valueOf(j)));
+    ac.v("MicroMsg.WalletOfflineMsgManager", "msg type is type %d xml %s", new Object[] { Integer.valueOf(j), ??? });
     if ((j >= 0) && (j == 4))
     {
-      b(ah((Map)localObject));
-      com.tencent.mm.plugin.offline.c.a.ajK(???);
+      b(aj((Map)localObject));
+      com.tencent.mm.plugin.offline.c.a.aoI(???);
       AppMethodBeat.o(66326);
       return;
     }
@@ -208,71 +208,71 @@ public final class s
       if (i != 1) {
         break label639;
       }
-      ad.i("MicroMsg.WalletOfflineMsgManager", "payCmd is PAY_CMD_OFFLINE_PAY_REFRESH_TOKEN (value is 1), refresh offline token");
-      k.cYr();
-      k.cYu().gt(4, 4);
+      ac.i("MicroMsg.WalletOfflineMsgManager", "payCmd is PAY_CMD_OFFLINE_PAY_REFRESH_TOKEN (value is 1), refresh offline token");
+      k.dlZ();
+      k.dmc().gA(4, 4);
     }
     label639:
     for (boolean bool = false;; bool = true)
     {
-      ??? = ai((Map)localObject);
-      ???.ukI = bool;
+      ??? = ak((Map)localObject);
+      ???.vtE = bool;
       b(???);
       AppMethodBeat.o(66326);
       return;
       if ((j >= 0) && (j == 6))
       {
         str = (String)((Map)localObject).get(".sysmsg.paymsg.transid");
-        ad.i("helios", "MSG_TYPE_ORDER trasid=".concat(String.valueOf(str)));
-        if (!bt.isNullOrNil(str))
+        ac.i("helios", "MSG_TYPE_ORDER trasid=".concat(String.valueOf(str)));
+        if (!bs.isNullOrNil(str))
         {
-          com.tencent.mm.kernel.g.afC();
-          com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fme, Boolean.TRUE);
+          com.tencent.mm.kernel.g.agS();
+          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GJT, Boolean.TRUE);
         }
-        ad.i("MicroMsg.WalletOfflineMsgManager", "orders xml: %s", new Object[] { ??? });
-        b(aj((Map)localObject));
+        ac.i("MicroMsg.WalletOfflineMsgManager", "orders xml: %s", new Object[] { ??? });
+        b(al((Map)localObject));
         AppMethodBeat.o(66326);
         return;
       }
       if ((j >= 0) && (j == 7))
       {
-        com.tencent.mm.plugin.wallet_core.model.s.ecc().VP();
+        com.tencent.mm.plugin.wallet_core.model.s.ery().WN();
         AppMethodBeat.o(66326);
         return;
       }
       if ((j >= 0) && (j == 8))
       {
-        b(al((Map)localObject));
+        b(an((Map)localObject));
         AppMethodBeat.o(66326);
         return;
       }
       if ((j >= 0) && (j == 10))
       {
-        k.cYr();
-        k.cYu().gt(4, 4);
+        k.dlZ();
+        k.dmc().gA(4, 4);
         AppMethodBeat.o(66326);
         return;
       }
       if ((j >= 0) && (j == 20))
       {
-        ??? = new xh();
-        ???.dDr.dDs = new h((Map)localObject);
-        com.tencent.mm.sdk.b.a.ESL.l(???);
+        ??? = new xs();
+        ???.dBd.dBe = new h((Map)localObject);
+        com.tencent.mm.sdk.b.a.GpY.l(???);
         AppMethodBeat.o(66326);
         return;
       }
       if ((j >= 0) && (j == 23))
       {
-        localObject = ak((Map)localObject);
-        synchronized (this.ukw)
+        localObject = am((Map)localObject);
+        synchronized (this.vts)
         {
-          if (this.ukw.contains(((d)localObject).dlJ))
+          if (this.vts.contains(((d)localObject).djr))
           {
-            ad.i("MicroMsg.WalletOfflineMsgManager", "pass this msg %s", new Object[] { ((d)localObject).dlJ });
+            ac.i("MicroMsg.WalletOfflineMsgManager", "pass this msg %s", new Object[] { ((d)localObject).djr });
             AppMethodBeat.o(66326);
             return;
           }
-          this.ukw.add(((d)localObject).dlJ);
+          this.vts.add(((d)localObject).djr);
           b((c)localObject);
           AppMethodBeat.o(66326);
           return;
@@ -280,7 +280,7 @@ public final class s
       }
       if ((j >= 0) && (j == 24))
       {
-        b(ag(localMap));
+        b(ai(localMap));
         AppMethodBeat.o(66326);
         return;
       }
@@ -289,25 +289,25 @@ public final class s
     }
   }
   
-  public final void ajE(String paramString)
+  public final void aoC(String paramString)
   {
     AppMethodBeat.i(66333);
-    int i = bt.getInt((String)bw.K(paramString, "sysmsg").get(".sysmsg.paymsg.PayMsgType"), -1);
+    int i = bs.getInt((String)bv.L(paramString, "sysmsg").get(".sysmsg.paymsg.PayMsgType"), -1);
     paramString = new HashSet();
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.uiM));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.uiL));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.uiN));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.uiK));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.uiH));
+    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.vrI));
+    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.vrH));
+    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.vrJ));
+    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.vrG));
+    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.vrD));
     if (paramString.contains(Integer.valueOf(i))) {
-      com.tencent.mm.kernel.g.afE().ax(new Runnable()
+      com.tencent.mm.kernel.g.agU().az(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(66320);
-          ad.v("MicroMsg.WalletOfflineMsgManager", "DO NetSceneOfflineAckMsg");
-          com.tencent.mm.kernel.g.afC();
-          com.tencent.mm.kernel.g.afA().gcy.a(new b(this.ukx), 0);
+          ac.v("MicroMsg.WalletOfflineMsgManager", "DO NetSceneOfflineAckMsg");
+          com.tencent.mm.kernel.g.agS();
+          com.tencent.mm.kernel.g.agQ().ghe.a(new b(this.vtt), 0);
           AppMethodBeat.o(66320);
         }
       });
@@ -318,21 +318,21 @@ public final class s
   public final void b(a parama)
   {
     AppMethodBeat.i(66325);
-    if (this.nqa == null)
+    if (this.nTa == null)
     {
       AppMethodBeat.o(66325);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      WeakReference localWeakReference = (WeakReference)this.nqa.get(i);
+      WeakReference localWeakReference = (WeakReference)this.nTa.get(i);
       if (localWeakReference != null)
       {
         a locala = (a)localWeakReference.get();
         if ((locala != null) && (locala.equals(parama)))
         {
-          this.nqa.remove(localWeakReference);
+          this.nTa.remove(localWeakReference);
           AppMethodBeat.o(66325);
           return;
         }
@@ -350,9 +350,9 @@ public final class s
   public final class b
     extends s.c
   {
-    public String ukA;
-    public String ukB;
-    public String ukz;
+    public String vtv;
+    public String vtw;
+    public String vtx;
     
     public b()
     {
@@ -362,7 +362,7 @@ public final class s
   
   public class c
   {
-    public int ukC;
+    public int vty;
     
     public c() {}
   }
@@ -370,7 +370,7 @@ public final class s
   public final class d
     extends s.c
   {
-    public String dlJ;
+    public String djr;
     
     public d()
     {
@@ -381,12 +381,12 @@ public final class s
   public final class e
     extends s.c
   {
-    public String ukD;
-    public String ukE;
-    public String ukF;
-    public String ukG;
-    public String ukH;
-    public boolean ukI = true;
+    public String vtA;
+    public String vtB;
+    public String vtC;
+    public String vtD;
+    public boolean vtE = true;
+    public String vtz;
     
     public e()
     {
@@ -397,9 +397,9 @@ public final class s
   public final class f
     extends s.c
   {
-    public s.h dDs;
-    public String ukJ;
-    public Orders ukK;
+    public s.h dBe;
+    public String vtF;
+    public Orders vtG;
     
     public f()
     {
@@ -410,11 +410,11 @@ public final class s
   public final class g
     extends s.c
   {
-    public String dlJ;
+    public String djr;
     public String id;
-    public int ocN;
-    public String ukL;
-    public String ukM;
+    public int oGm;
+    public String vtH;
+    public String vtI;
     
     public g()
     {
@@ -424,26 +424,26 @@ public final class s
   
   public final class h
   {
-    public String dCT;
-    public String dCU;
-    public String dCV;
-    public String dCW;
-    public String dCX;
-    public boolean ukN;
+    public String dAF;
+    public String dAG;
+    public String dAH;
+    public String dAI;
+    public String dAJ;
+    public boolean vtJ;
     
     public h()
     {
       AppMethodBeat.i(66321);
       Object localObject;
-      this.dCT = ((String)localObject.get(".sysmsg.paymsg.guide_flag"));
-      this.dCU = ((String)localObject.get(".sysmsg.paymsg.guide_wording"));
-      this.dCV = ((String)localObject.get(".sysmsg.paymsg.left_button_wording"));
-      this.dCW = ((String)localObject.get(".sysmsg.paymsg.right_button_wording"));
-      this.dCX = ((String)localObject.get(".sysmsg.paymsg.upload_credit_url"));
+      this.dAF = ((String)localObject.get(".sysmsg.paymsg.guide_flag"));
+      this.dAG = ((String)localObject.get(".sysmsg.paymsg.guide_wording"));
+      this.dAH = ((String)localObject.get(".sysmsg.paymsg.left_button_wording"));
+      this.dAI = ((String)localObject.get(".sysmsg.paymsg.right_button_wording"));
+      this.dAJ = ((String)localObject.get(".sysmsg.paymsg.upload_credit_url"));
       if ("1".equals(localObject.get(".sysmsg.paymsg.guide_block"))) {}
       for (boolean bool = true;; bool = false)
       {
-        this.ukN = bool;
+        this.vtJ = bool;
         AppMethodBeat.o(66321);
         return;
       }

@@ -29,11 +29,13 @@ public abstract interface KViewLayout
   
   public abstract void setFlexWrap(Wrap paramWrap);
   
+  public abstract void setFocusableInTouchMode(boolean paramBoolean);
+  
   public abstract void setJustifyContent(Justify paramJustify);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.gen.KViewLayout
  * JD-Core Version:    0.7.0.1
  */

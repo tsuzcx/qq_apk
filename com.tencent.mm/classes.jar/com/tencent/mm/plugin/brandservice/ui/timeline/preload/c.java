@@ -5,9 +5,9 @@ import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.v;
-import com.tencent.mm.am.af;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.ah.v;
+import com.tencent.mm.al.af;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI;
 import com.tencent.mm.pluginsdk.model.r;
 import com.tencent.mm.pluginsdk.ui.applet.e;
@@ -16,12 +16,12 @@ import com.tencent.mm.pluginsdk.ui.applet.l;
 import com.tencent.mm.pluginsdk.ui.applet.m;
 import com.tencent.mm.pluginsdk.ui.applet.m.a;
 import com.tencent.mm.pluginsdk.ui.applet.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.s;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storage.t;
+import com.tencent.mm.storage.u;
 import com.tencent.mm.vfs.i;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -30,53 +30,61 @@ import java.util.Map;
 
 public final class c
 {
-  private static HashSet<Long> nch;
-  private static HashSet<String> nci;
-  private static Boolean ncn;
-  private static Boolean nco;
-  public BizTimeLineUI mWy;
-  private int nce;
-  private int ncf;
-  public int ncg;
-  public List<s> ncj;
-  private List<s> nck;
-  private boolean ncl;
-  public boolean ncm;
+  private static HashSet<Long> nET;
+  private static HashSet<String> nEU;
+  private static Boolean nEZ;
+  private static Boolean nFa;
+  private int nEQ;
+  private int nER;
+  public int nES;
+  public List<t> nEV;
+  private List<t> nEW;
+  private boolean nEX;
+  public boolean nEY;
+  public BizTimeLineUI nyX;
   
   static
   {
     AppMethodBeat.i(6181);
-    nch = new HashSet();
-    nci = new HashSet();
-    ncn = null;
-    nco = null;
+    nET = new HashSet();
+    nEU = new HashSet();
+    nEZ = null;
+    nFa = null;
     AppMethodBeat.o(6181);
   }
   
-  public c(BizTimeLineUI paramBizTimeLineUI, int paramInt1, int paramInt2, List<s> paramList)
+  public c(BizTimeLineUI paramBizTimeLineUI, int paramInt1, int paramInt2, List<t> paramList)
   {
     AppMethodBeat.i(6160);
-    this.ncg = 0;
-    this.ncj = new LinkedList();
-    this.ncl = false;
-    this.ncm = false;
-    this.mWy = paramBizTimeLineUI;
-    this.nce = paramInt1;
-    this.ncf = paramInt2;
-    this.nck = paramList;
-    if (this.nck.size() <= 10) {
+    this.nES = 0;
+    this.nEV = new LinkedList();
+    this.nEX = false;
+    this.nEY = false;
+    this.nyX = paramBizTimeLineUI;
+    this.nEQ = paramInt1;
+    this.nER = paramInt2;
+    this.nEW = paramList;
+    if (this.nEW.size() <= 10) {
       Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
       {
         public final boolean queueIdle()
         {
           AppMethodBeat.i(6154);
-          c.this.Wc();
+          c.this.Xa();
           AppMethodBeat.o(6154);
           return false;
         }
       });
     }
     AppMethodBeat.o(6160);
+  }
+  
+  public static String Cx(String paramString)
+  {
+    AppMethodBeat.i(210006);
+    paramString = com.tencent.mm.api.b.q(paramString, 1);
+    AppMethodBeat.o(210006);
+    return paramString;
   }
   
   private boolean a(v paramv, String paramString, final long paramLong, int paramInt, boolean paramBoolean)
@@ -87,17 +95,17 @@ public final class c
       AppMethodBeat.o(6165);
       return false;
     }
-    ad.v("MicroMsg.BizTimeLineImgLoader", "doPreLoadNext pos %d", new Object[] { Integer.valueOf(paramInt) });
-    ImageView localImageView = new ImageView(this.mWy);
-    this.ncg += 1;
+    ac.v("MicroMsg.BizTimeLineImgLoader", "doPreLoadNext pos %d", new Object[] { Integer.valueOf(paramInt) });
+    ImageView localImageView = new ImageView(this.nyX);
+    this.nES += 1;
     if ((paramInt == 0) && (paramBoolean)) {
-      a(paramLong, paramInt, paramv, paramString, localImageView, getContentWidth(), this.nce, true, new m.a()
+      a(paramLong, paramInt, paramv, paramString, localImageView, getContentWidth(), this.nEQ, true, new m.a()
       {
         public final void onFinish()
         {
           AppMethodBeat.i(6156);
           c.e(c.this);
-          c.this.o(paramLong, this.iko);
+          c.this.p(paramLong, this.iKv);
           AppMethodBeat.o(6156);
         }
         
@@ -108,13 +116,13 @@ public final class c
     {
       AppMethodBeat.o(6165);
       return true;
-      a(paramLong, paramInt, paramv, paramString, localImageView, this.ncf, this.ncf, true, new m.a()
+      a(paramLong, paramInt, paramv, paramString, localImageView, this.nER, this.nER, true, new m.a()
       {
         public final void onFinish()
         {
           AppMethodBeat.i(6157);
           c.e(c.this);
-          c.this.o(paramLong, this.iko);
+          c.this.p(paramLong, this.iKv);
           AppMethodBeat.o(6157);
         }
         
@@ -123,15 +131,15 @@ public final class c
     }
   }
   
-  public static boolean a(s params, v paramv)
+  public static boolean a(t paramt, v paramv)
   {
     AppMethodBeat.i(6174);
-    if ((params == null) || (paramv == null))
+    if ((paramt == null) || (paramv == null))
     {
       AppMethodBeat.o(6174);
       return false;
     }
-    boolean bool = com.tencent.mm.plugin.brandservice.ui.b.a.a(params, paramv);
+    boolean bool = com.tencent.mm.plugin.brandservice.ui.b.a.a(paramt, paramv);
     AppMethodBeat.o(6174);
     return bool;
   }
@@ -139,92 +147,54 @@ public final class c
   private static boolean a(String paramString, long paramLong, int paramInt)
   {
     AppMethodBeat.i(6169);
-    if (nci.contains(paramLong + "_" + paramInt))
+    if (nEU.contains(paramLong + "_" + paramInt))
     {
       AppMethodBeat.o(6169);
       return true;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(6169);
       return false;
     }
-    if (!i.eK(r.aAK(com.tencent.mm.api.b.q(paramString, 1))))
+    if (!i.eA(r.aGc(com.tencent.mm.api.b.q(paramString, 1))))
     {
       AppMethodBeat.o(6169);
       return false;
     }
-    nci.add(paramLong + "_" + paramInt);
+    nEU.add(paramLong + "_" + paramInt);
     AppMethodBeat.o(6169);
     return true;
   }
   
-  private s bDk()
-  {
-    AppMethodBeat.i(6167);
-    int i = 0;
-    try
-    {
-      while (i < this.nck.size() + this.ncj.size())
-      {
-        s locals = xP(i);
-        if ((locals != null) && (locals.eJL()) && (locals.field_isRead != 1) && (!nch.contains(Long.valueOf(locals.field_msgId))))
-        {
-          ad.v("MicroMsg.BizTimeLineImgLoader", "getNextPreloadInfo pos=%d,msg id=%d", new Object[] { Integer.valueOf(i), Long.valueOf(locals.field_msgId) });
-          AppMethodBeat.o(6167);
-          return locals;
-        }
-        i += 1;
-        nD(locals.field_msgId);
-      }
-      return null;
-    }
-    catch (Exception localException)
-    {
-      ad.w("MicroMsg.BizTimeLineImgLoader", "getNextPreloadInfo %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(6167);
-    }
-  }
-  
-  private static boolean bDm()
-  {
-    AppMethodBeat.i(6175);
-    if (ncn == null) {
-      bDo();
-    }
-    boolean bool = ncn.booleanValue();
-    AppMethodBeat.o(6175);
-    return bool;
-  }
-  
-  public static boolean bDn()
+  public static boolean bKA()
   {
     AppMethodBeat.i(6176);
-    if (nco == null) {
-      bDo();
+    if (nFa == null) {
+      bKB();
     }
-    boolean bool = nco.booleanValue();
+    boolean bool = nFa.booleanValue();
     AppMethodBeat.o(6176);
     return bool;
   }
   
-  private static void bDo()
+  private static void bKB()
   {
     AppMethodBeat.i(6177);
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aty().qu("100461");
-    if ((localc.isValid()) && ("1".equals(localc.eJy().get("isOpenBizMsgPreDownloadCover"))))
+    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aAp().tJ("100461");
+    if ((localc.isValid()) && ("1".equals(localc.eYV().get("isOpenBizMsgPreDownloadCover"))))
     {
       bool = true;
-      ncn = Boolean.valueOf(bool);
-      if ((!localc.isValid()) || (!"1".equals(localc.eJy().get("isOnlyPreloadInWifi")))) {
+      nEZ = Boolean.valueOf(bool);
+      if ((!localc.isValid()) || (!"1".equals(localc.eYV().get("isOnlyPreloadInWifi")))) {
         break label126;
       }
     }
     label126:
     for (boolean bool = true;; bool = false)
     {
-      nco = Boolean.valueOf(bool);
-      ad.i("MicroMsg.BizTimeLineImgLoader", "BizTimeLineImg initABTest %b/%b", new Object[] { ncn, nco });
+      nFa = Boolean.valueOf(bool);
+      ac.i("MicroMsg.BizTimeLineImgLoader", "BizTimeLineImg initABTest %b/%b", new Object[] { nEZ, nFa });
       AppMethodBeat.o(6177);
       return;
       bool = false;
@@ -232,52 +202,82 @@ public final class c
     }
   }
   
-  private static void nD(long paramLong)
+  private t bKx()
+  {
+    AppMethodBeat.i(6167);
+    int i = 0;
+    try
+    {
+      while (i < this.nEW.size() + this.nEV.size())
+      {
+        t localt = yG(i);
+        if ((localt != null) && (localt.eZj()) && (localt.field_isRead != 1) && (!nET.contains(Long.valueOf(localt.field_msgId))))
+        {
+          ac.v("MicroMsg.BizTimeLineImgLoader", "getNextPreloadInfo pos=%d,msg id=%d", new Object[] { Integer.valueOf(i), Long.valueOf(localt.field_msgId) });
+          AppMethodBeat.o(6167);
+          return localt;
+        }
+        i += 1;
+        rp(localt.field_msgId);
+      }
+      return null;
+    }
+    catch (Exception localException)
+    {
+      ac.w("MicroMsg.BizTimeLineImgLoader", "getNextPreloadInfo %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(6167);
+    }
+  }
+  
+  private static boolean bKz()
+  {
+    AppMethodBeat.i(6175);
+    if (nEZ == null) {
+      bKB();
+    }
+    boolean bool = nEZ.booleanValue();
+    AppMethodBeat.o(6175);
+    return bool;
+  }
+  
+  private static void rp(long paramLong)
   {
     AppMethodBeat.i(6166);
-    nch.add(Long.valueOf(paramLong));
+    nET.add(Long.valueOf(paramLong));
     AppMethodBeat.o(6166);
   }
   
-  private s xP(int paramInt)
+  private t yG(int paramInt)
   {
     AppMethodBeat.i(6173);
     try
     {
-      s locals;
-      if (paramInt < this.nck.size())
+      t localt;
+      if (paramInt < this.nEW.size())
       {
-        locals = (s)this.nck.get(paramInt);
+        localt = (t)this.nEW.get(paramInt);
         AppMethodBeat.o(6173);
-        return locals;
+        return localt;
       }
-      if (paramInt < this.nck.size() + this.ncj.size())
+      if (paramInt < this.nEW.size() + this.nEV.size())
       {
-        locals = (s)this.ncj.get(paramInt - this.nck.size());
+        localt = (t)this.nEV.get(paramInt - this.nEW.size());
         AppMethodBeat.o(6173);
-        return locals;
+        return localt;
       }
     }
     catch (Throwable localThrowable)
     {
-      ad.w("MicroMsg.BizTimeLineImgLoader", "getItem error %s", new Object[] { localThrowable.getMessage() });
+      ac.w("MicroMsg.BizTimeLineImgLoader", "getItem error %s", new Object[] { localThrowable.getMessage() });
       AppMethodBeat.o(6173);
     }
     return null;
   }
   
-  public static String ys(String paramString)
-  {
-    AppMethodBeat.i(205024);
-    paramString = com.tencent.mm.api.b.q(paramString, 1);
-    AppMethodBeat.o(205024);
-    return paramString;
-  }
-  
-  public final void Wc()
+  public final void Xa()
   {
     AppMethodBeat.i(6171);
-    if (!bDm())
+    if (!bKz())
     {
       AppMethodBeat.o(6171);
       return;
@@ -292,19 +292,19 @@ public final class c
           AppMethodBeat.o(6159);
           return;
         }
-        s locals = c.this.bDl();
-        if (locals == null)
+        t localt = c.this.bKy();
+        if (localt == null)
         {
           AppMethodBeat.o(6159);
           return;
         }
-        aq.f(new Runnable()
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(6158);
             c.f(c.this).clear();
-            c.f(c.this).addAll(this.krN);
+            c.f(c.this).addAll(this.gan);
             AppMethodBeat.o(6158);
           }
         });
@@ -316,39 +316,39 @@ public final class c
   
   public final void a(long paramLong, int paramInt1, v paramv, String paramString, ImageView paramImageView, int paramInt2, int paramInt3, boolean paramBoolean, m.a parama, int paramInt4, float paramFloat)
   {
-    AppMethodBeat.i(193001);
-    paramImageView.setContentDescription(this.mWy.getString(2131757186));
+    AppMethodBeat.i(198741);
+    paramImageView.setContentDescription(this.nyX.getString(2131757186));
     paramString = com.tencent.mm.api.b.q(paramString, 1);
-    Object localObject = g.BXQ;
-    if (g.UJ(1))
+    Object localObject = g.Dqh;
+    if (g.WT(1))
     {
-      localObject = com.tencent.mm.pluginsdk.model.a.BOa;
-      com.tencent.mm.pluginsdk.model.a.i(paramLong, paramInt1, paramv.url);
+      localObject = com.tencent.mm.pluginsdk.model.a.Dgo;
+      com.tencent.mm.pluginsdk.model.a.l(paramLong, paramInt1, paramv.url);
     }
-    localObject = com.tencent.mm.pluginsdk.model.b.BOz;
+    localObject = com.tencent.mm.pluginsdk.model.b.DgN;
     localObject = new c.a();
-    ((c.a)localObject).hki = 2131100141;
-    ((c.a)localObject).hjU = true;
+    ((c.a)localObject).hKL = 2131100141;
+    ((c.a)localObject).hKx = true;
     localObject = ((c.a)localObject).de(paramInt2, paramInt3);
-    ((c.a)localObject).hkk = "2131231255";
-    ((c.a)localObject).hjJ = new n(1);
-    ((c.a)localObject).hkr = new e(1);
-    ((c.a)localObject).hks = new l();
-    ((c.a)localObject).gjt = r.aAK(paramString);
-    com.tencent.mm.pluginsdk.model.b.a(paramLong, paramInt1, paramv, paramString, paramImageView, paramInt4, paramBoolean, ((c.a)localObject).azc(), new m(1, paramInt2, paramInt3, true, true, paramFloat, parama));
-    AppMethodBeat.o(193001);
+    ((c.a)localObject).hKN = "2131231255";
+    ((c.a)localObject).hKm = new n(1);
+    ((c.a)localObject).hKU = new e(1);
+    ((c.a)localObject).hKV = new l();
+    ((c.a)localObject).gKe = r.aGc(paramString);
+    com.tencent.mm.pluginsdk.model.b.a(paramLong, paramInt1, paramv, paramString, paramImageView, paramInt4, paramBoolean, ((c.a)localObject).aFT(), new m(1, paramInt2, paramInt3, true, true, paramFloat, parama));
+    AppMethodBeat.o(198741);
   }
   
   public final void a(long paramLong, int paramInt1, v paramv, String paramString, ImageView paramImageView, int paramInt2, int paramInt3, boolean paramBoolean1, m.a parama, boolean paramBoolean2, int paramInt4)
   {
     AppMethodBeat.i(6161);
-    paramImageView.setContentDescription(this.mWy.getString(2131757186));
+    paramImageView.setContentDescription(this.nyX.getString(2131757186));
     paramString = com.tencent.mm.api.b.q(paramString, 1);
-    Object localObject = g.BXQ;
-    if (g.UJ(1))
+    Object localObject = g.Dqh;
+    if (g.WT(1))
     {
-      localObject = com.tencent.mm.pluginsdk.model.a.BOa;
-      com.tencent.mm.pluginsdk.model.a.i(paramLong, paramInt1, paramv.url);
+      localObject = com.tencent.mm.pluginsdk.model.a.Dgo;
+      com.tencent.mm.pluginsdk.model.a.l(paramLong, paramInt1, paramv.url);
     }
     int i;
     if (paramBoolean2)
@@ -361,18 +361,18 @@ public final class c
     label236:
     for (int j = 2131231247;; j = 2131231252)
     {
-      float f = com.tencent.mm.cd.a.fromDPToPix(this.mWy, 8);
-      localObject = com.tencent.mm.pluginsdk.model.b.BOz;
+      float f = com.tencent.mm.cc.a.fromDPToPix(this.nyX, 8);
+      localObject = com.tencent.mm.pluginsdk.model.b.DgN;
       localObject = new c.a();
-      ((c.a)localObject).hki = j;
-      ((c.a)localObject).hjU = true;
+      ((c.a)localObject).hKL = j;
+      ((c.a)localObject).hKx = true;
       localObject = ((c.a)localObject).de(paramInt2, paramInt3);
-      ((c.a)localObject).hkk = String.valueOf(i);
-      ((c.a)localObject).hjJ = new n(1);
-      ((c.a)localObject).hkr = new e(1);
-      ((c.a)localObject).hks = new l();
-      ((c.a)localObject).gjt = r.aAK(paramString);
-      com.tencent.mm.pluginsdk.model.b.a(paramLong, paramInt1, paramv, paramString, paramImageView, paramInt4, paramBoolean1, ((c.a)localObject).azc(), new m(1, paramInt2, paramInt3, false, paramBoolean2, f, parama));
+      ((c.a)localObject).hKN = String.valueOf(i);
+      ((c.a)localObject).hKm = new n(1);
+      ((c.a)localObject).hKU = new e(1);
+      ((c.a)localObject).hKV = new l();
+      ((c.a)localObject).gKe = r.aGc(paramString);
+      com.tencent.mm.pluginsdk.model.b.a(paramLong, paramInt1, paramv, paramString, paramImageView, paramInt4, paramBoolean1, ((c.a)localObject).aFT(), new m(1, paramInt2, paramInt3, false, paramBoolean2, f, parama));
       AppMethodBeat.o(6161);
       return;
       i = 0;
@@ -382,34 +382,34 @@ public final class c
   
   public final void a(String paramString, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(193002);
-    paramImageView.setContentDescription(this.mWy.getString(2131757186));
-    Object localObject = com.tencent.mm.pluginsdk.model.b.BOz;
+    AppMethodBeat.i(198742);
+    paramImageView.setContentDescription(this.nyX.getString(2131757186));
+    Object localObject = com.tencent.mm.pluginsdk.model.b.DgN;
     localObject = new c.a();
-    ((c.a)localObject).hjS = true;
-    ((c.a)localObject).hkf = 2131100141;
+    ((c.a)localObject).hKv = true;
+    ((c.a)localObject).hKI = 2131100141;
     localObject = ((c.a)localObject).de(paramInt1, paramInt2);
-    ((c.a)localObject).hjX = 4;
-    com.tencent.mm.pluginsdk.model.b.a(-1L, -1, null, paramString, paramImageView, paramInt3, false, ((c.a)localObject).azc(), new m());
-    AppMethodBeat.o(193002);
+    ((c.a)localObject).hKA = 4;
+    com.tencent.mm.pluginsdk.model.b.a(-1L, -1, null, paramString, paramImageView, paramInt3, false, ((c.a)localObject).aFT(), new m());
+    AppMethodBeat.o(198742);
   }
   
-  public final void bDj()
+  public final void bKw()
   {
     AppMethodBeat.i(6164);
-    if (!bDm())
+    if (!bKz())
     {
       AppMethodBeat.o(6164);
       return;
     }
-    if ((this.ncl) || (this.ncm))
+    if ((this.nEX) || (this.nEY))
     {
-      ad.v("MicroMsg.BizTimeLineImgLoader", "preLoadNext loading %b, onPause %b", new Object[] { Boolean.valueOf(this.ncl), Boolean.valueOf(this.ncm) });
+      ac.v("MicroMsg.BizTimeLineImgLoader", "preLoadNext loading %b, onPause %b", new Object[] { Boolean.valueOf(this.nEX), Boolean.valueOf(this.nEY) });
       AppMethodBeat.o(6164);
       return;
     }
-    this.ncl = true;
-    ad.v("MicroMsg.BizTimeLineImgLoader", "preLoadNext");
+    this.nEX = true;
+    ac.v("MicroMsg.BizTimeLineImgLoader", "preLoadNext");
     com.tencent.mm.plugin.brandservice.b.a("BizTimeLineImgLoaderThread", new Runnable()
     {
       public final void run()
@@ -421,46 +421,46 @@ public final class c
           AppMethodBeat.o(6155);
           return;
         }
-        if ((c.bDn()) && (!ay.isWifi(c.b(c.this))))
+        if ((c.bKA()) && (!ax.isWifi(c.b(c.this))))
         {
           AppMethodBeat.o(6155);
           return;
         }
         if (!c.c(c.this))
         {
-          ad.v("MicroMsg.BizTimeLineImgLoader", "not all visibleItem loaded");
+          ac.v("MicroMsg.BizTimeLineImgLoader", "not all visibleItem loaded");
           AppMethodBeat.o(6155);
           return;
         }
-        s locals = c.d(c.this);
-        if (locals == null)
+        t localt = c.d(c.this);
+        if (localt == null)
         {
-          ad.v("MicroMsg.BizTimeLineImgLoader", "not loading");
+          ac.v("MicroMsg.BizTimeLineImgLoader", "not loading");
           AppMethodBeat.o(6155);
           return;
         }
-        c.a(c.this, locals);
+        c.a(c.this, localt);
         AppMethodBeat.o(6155);
       }
     }, 500L);
     AppMethodBeat.o(6164);
   }
   
-  public final s bDl()
+  public final t bKy()
   {
     AppMethodBeat.i(6172);
     try
     {
-      if (this.nck.size() > 0)
+      if (this.nEW.size() > 0)
       {
-        s locals = (s)this.nck.get(this.nck.size() - 1);
+        t localt = (t)this.nEW.get(this.nEW.size() - 1);
         AppMethodBeat.o(6172);
-        return locals;
+        return localt;
       }
     }
     catch (Throwable localThrowable)
     {
-      ad.w("MicroMsg.BizTimeLineImgLoader", "getItem error %s", new Object[] { localThrowable.getMessage() });
+      ac.w("MicroMsg.BizTimeLineImgLoader", "getItem error %s", new Object[] { localThrowable.getMessage() });
       AppMethodBeat.o(6172);
     }
     return null;
@@ -469,26 +469,26 @@ public final class c
   public final int getContentWidth()
   {
     AppMethodBeat.i(6163);
-    int i = com.tencent.mm.cd.a.hV(this.mWy);
-    int j = com.tencent.mm.plugin.brandservice.ui.timeline.c.mWK;
+    int i = com.tencent.mm.cc.a.ig(this.nyX);
+    int j = com.tencent.mm.plugin.brandservice.ui.timeline.c.nzj;
     AppMethodBeat.o(6163);
     return i - j;
   }
   
-  public final void o(long paramLong, int paramInt)
+  public final void p(long paramLong, int paramInt)
   {
     AppMethodBeat.i(6168);
-    ad.v("MicroMsg.BizTimeLineImgLoader", "onLoadFinish mLoadingCount %d", new Object[] { Integer.valueOf(this.ncg) });
-    nci.add(paramLong + "_" + paramInt);
-    if (this.ncg <= 0) {
-      bDj();
+    ac.v("MicroMsg.BizTimeLineImgLoader", "onLoadFinish mLoadingCount %d", new Object[] { Integer.valueOf(this.nES) });
+    nEU.add(paramLong + "_" + paramInt);
+    if (this.nES <= 0) {
+      bKw();
     }
     AppMethodBeat.o(6168);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.preload.c
  * JD-Core Version:    0.7.0.1
  */

@@ -9,23 +9,23 @@ public final class a
   extends c
 {
   public final List<a> audios;
-  public final List<Format> boN;
-  public final Format bpB;
-  public final List<a> bpP;
-  public final List<a> bpR;
+  public final List<Format> bnf;
+  public final Format bob;
+  public final List<a> bor;
+  public final List<a> bos;
   
   public a(String paramString, List<String> paramList, List<a> paramList1, List<a> paramList2, List<a> paramList3, Format paramFormat, List<Format> paramList4)
   {
     super(paramString, paramList);
     AppMethodBeat.i(62886);
-    this.bpP = Collections.unmodifiableList(paramList1);
+    this.bor = Collections.unmodifiableList(paramList1);
     this.audios = Collections.unmodifiableList(paramList2);
-    this.bpR = Collections.unmodifiableList(paramList3);
-    this.bpB = paramFormat;
+    this.bos = Collections.unmodifiableList(paramList3);
+    this.bob = paramFormat;
     if (paramList4 != null) {}
     for (paramString = Collections.unmodifiableList(paramList4);; paramString = null)
     {
-      this.boN = paramString;
+      this.bnf = paramString;
       AppMethodBeat.o(62886);
       return;
     }
@@ -33,13 +33,13 @@ public final class a
   
   public static final class a
   {
-    public final Format aSv;
+    public final Format aTo;
     public final String url;
     
     public a(String paramString, Format paramFormat)
     {
       this.url = paramString;
-      this.aSv = paramFormat;
+      this.aTo = paramFormat;
     }
   }
 }

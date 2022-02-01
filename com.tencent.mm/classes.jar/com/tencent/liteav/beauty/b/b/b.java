@@ -1,12 +1,12 @@
 package com.tencent.liteav.beauty.b.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class b
-  extends g
+  extends h
 {
   private int r;
   private int s;

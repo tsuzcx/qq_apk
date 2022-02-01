@@ -8,21 +8,21 @@ public abstract class x
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elJ = "appId".hashCode();
-  private static final int emV = "version".hashCode();
-  private static final int eng = "packageType".hashCode();
-  private static final int enh = "packageKey".hashCode();
-  private static final int eni = "source".hashCode();
-  private static final int enj = "hitCount".hashCode();
-  private static final int enk = "reportId".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int epb = "version".hashCode();
+  private static final int epl = "packageType".hashCode();
+  private static final int epm = "packageKey".hashCode();
+  private static final int epn = "source".hashCode();
+  private static final int epo = "hitCount".hashCode();
+  private static final int epp = "reportId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean els = true;
-  private boolean emQ = true;
-  private boolean ena = true;
-  private boolean enb = true;
-  private boolean enc = true;
-  private boolean ene = true;
-  private boolean enf = true;
+  private boolean enx = true;
+  private boolean eoW = true;
+  private boolean epg = true;
+  private boolean eph = true;
+  private boolean epi = true;
+  private boolean epj = true;
+  private boolean epk = true;
   public String field_appId;
   public int field_hitCount;
   public String field_packageKey;
@@ -44,7 +44,7 @@ public abstract class x
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
+      if (enO != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -55,17 +55,17 @@ public abstract class x
       break label20;
       break;
       label60:
-      if (emV == k) {
+      if (epb == k) {
         this.field_version = paramCursor.getInt(i);
-      } else if (eng == k) {
+      } else if (epl == k) {
         this.field_packageType = paramCursor.getInt(i);
-      } else if (enh == k) {
+      } else if (epm == k) {
         this.field_packageKey = paramCursor.getString(i);
-      } else if (eni == k) {
+      } else if (epn == k) {
         this.field_source = paramCursor.getInt(i);
-      } else if (enj == k) {
+      } else if (epo == k) {
         this.field_hitCount = paramCursor.getInt(i);
-      } else if (enk == k) {
+      } else if (epp == k) {
         this.field_reportId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -76,25 +76,25 @@ public abstract class x
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.emQ) {
+    if (this.eoW) {
       localContentValues.put("version", Integer.valueOf(this.field_version));
     }
-    if (this.ena) {
+    if (this.epg) {
       localContentValues.put("packageType", Integer.valueOf(this.field_packageType));
     }
-    if (this.enb) {
+    if (this.eph) {
       localContentValues.put("packageKey", this.field_packageKey);
     }
-    if (this.enc) {
+    if (this.epi) {
       localContentValues.put("source", Integer.valueOf(this.field_source));
     }
-    if (this.ene) {
+    if (this.epj) {
       localContentValues.put("hitCount", Integer.valueOf(this.field_hitCount));
     }
-    if (this.enf) {
+    if (this.epk) {
       localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {

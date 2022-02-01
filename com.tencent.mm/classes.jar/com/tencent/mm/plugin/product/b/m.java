@@ -10,9 +10,9 @@ import com.tencent.mm.plugin.product.c.j;
 import com.tencent.mm.plugin.product.c.k;
 import com.tencent.mm.plugin.product.c.l;
 import com.tencent.mm.plugin.product.c.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.util.LinkedList;
 import java.util.Map;
 import org.json.JSONArray;
@@ -21,26 +21,26 @@ import org.json.JSONObject;
 
 public final class m
 {
-  public String kqB;
+  public String kRU;
   public int status;
-  public String uwi;
-  public int uwj;
-  public int uwk;
-  public int uwl;
-  public c uwm;
-  public n uwn;
-  public LinkedList<l> uwo;
-  public f uwp;
-  public String uwq;
-  public String uwr;
+  public String vFb;
+  public int vFc;
+  public int vFd;
+  public int vFe;
+  public c vFf;
+  public n vFg;
+  public LinkedList<l> vFh;
+  public f vFi;
+  public String vFj;
+  public String vFk;
   
   public m()
   {
     AppMethodBeat.i(66909);
-    this.uwk = 2147483647;
-    this.uwl = 2147483647;
+    this.vFd = 2147483647;
+    this.vFe = 2147483647;
     this.status = 6;
-    this.uwo = new LinkedList();
+    this.vFh = new LinkedList();
     AppMethodBeat.o(66909);
   }
   
@@ -64,23 +64,23 @@ public final class m
       try
       {
         paramString = new JSONObject(paramString);
-        paramm.uwi = paramString.getString("product_id");
-        paramm.uwj = paramString.getInt("product_type");
-        paramm.uwk = paramString.optInt("quantity", 2147483647);
-        paramm.uwl = paramString.optInt("left_buy_quantity", 2147483647);
+        paramm.vFb = paramString.getString("product_id");
+        paramm.vFc = paramString.getInt("product_type");
+        paramm.vFd = paramString.optInt("quantity", 2147483647);
+        paramm.vFe = paramString.optInt("left_buy_quantity", 2147483647);
         paramm.status = paramString.optInt("status", 6);
         localObject1 = paramString.optJSONObject("ext_attr");
         if (localObject1 != null)
         {
-          paramm.uwp = new f();
+          paramm.vFi = new f();
           localObject1 = ((JSONObject)localObject1).optJSONObject("product_ext");
           if (localObject1 == null) {
             break label302;
           }
-          localObject2 = paramm.uwp;
+          localObject2 = paramm.vFi;
           localObject3 = new j();
-          ((j)localObject3).dtM = ((JSONObject)localObject1).getInt("flag");
-          ((f)localObject2).uwJ = ((j)localObject3);
+          ((j)localObject3).drx = ((JSONObject)localObject1).getInt("flag");
+          ((f)localObject2).vFC = ((j)localObject3);
         }
         for (;;)
         {
@@ -88,12 +88,12 @@ public final class m
           if (localObject1 == null) {
             break label874;
           }
-          paramm.uwm = new c();
-          paramm.uwm.name = ((JSONObject)localObject1).getString("name");
-          paramm.uwm.uww = ((JSONObject)localObject1).getInt("ori_price");
-          paramm.uwm.uwx = ((JSONObject)localObject1).getInt("up_price");
-          paramm.uwm.uwy = ((JSONObject)localObject1).getInt("low_price");
-          paramm.uwm.uwz = new LinkedList();
+          paramm.vFf = new c();
+          paramm.vFf.name = ((JSONObject)localObject1).getString("name");
+          paramm.vFf.vFp = ((JSONObject)localObject1).getInt("ori_price");
+          paramm.vFf.vFq = ((JSONObject)localObject1).getInt("up_price");
+          paramm.vFf.vFr = ((JSONObject)localObject1).getInt("low_price");
+          paramm.vFf.vFs = new LinkedList();
           localObject2 = ((JSONObject)localObject1).getJSONArray("img_info");
           j = ((JSONArray)localObject2).length();
           i = 0;
@@ -101,43 +101,43 @@ public final class m
             break;
           }
           localObject3 = ((JSONArray)localObject2).getString(i);
-          if (bt.isNullOrNil((String)localObject3)) {
+          if (bs.isNullOrNil((String)localObject3)) {
             break label1250;
           }
-          paramm.uwm.uwz.add(localObject3);
+          paramm.vFf.vFs.add(localObject3);
           break label1250;
-          paramm.uwp.uwK = paramString.optString("ext_attr");
+          paramm.vFi.vFD = paramString.optString("ext_attr");
         }
-        paramm.uwm.gKF = ((JSONObject)localObject1).getString("digest");
+        paramm.vFf.hlf = ((JSONObject)localObject1).getString("digest");
       }
       catch (JSONException paramString)
       {
-        ad.printErrStackTrace("MicroMsg.ProductInfo", paramString, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.ProductInfo", paramString, "", new Object[0]);
         AppMethodBeat.o(66910);
         return paramm;
       }
-      paramm.uwm.uop = ((JSONObject)localObject1).getString("fee_type");
-      paramm.uwm.detail = ((JSONObject)localObject1).getString("detail");
+      paramm.vFf.vxl = ((JSONObject)localObject1).getString("fee_type");
+      paramm.vFf.detail = ((JSONObject)localObject1).getString("detail");
       localObject2 = ((JSONObject)localObject1).optJSONObject("share_info");
       if (localObject2 != null)
       {
-        paramm.uwm.uwH = new k();
-        paramm.uwm.uwH.odo = ((JSONObject)localObject2).optString("icon_url");
-        paramm.uwm.uwH.url = ((JSONObject)localObject2).optString("url");
+        paramm.vFf.vFA = new k();
+        paramm.vFf.vFA.oGN = ((JSONObject)localObject2).optString("icon_url");
+        paramm.vFf.vFA.url = ((JSONObject)localObject2).optString("url");
       }
       localObject2 = ((JSONObject)localObject1).optJSONArray("sku_table");
       if (localObject2 != null)
       {
-        paramm.uwm.uwF = new LinkedList();
+        paramm.vFf.vFy = new LinkedList();
         k = ((JSONArray)localObject2).length();
         i = 0;
         while (i < k)
         {
           localObject4 = ((JSONArray)localObject2).getJSONObject(i);
           localObject3 = new com.tencent.mm.plugin.product.c.m();
-          ((com.tencent.mm.plugin.product.c.m)localObject3).uwP = ((JSONObject)localObject4).getString("id");
-          ((com.tencent.mm.plugin.product.c.m)localObject3).uwQ = ((JSONObject)localObject4).getString("name");
-          ((com.tencent.mm.plugin.product.c.m)localObject3).uwR = new LinkedList();
+          ((com.tencent.mm.plugin.product.c.m)localObject3).vFI = ((JSONObject)localObject4).getString("id");
+          ((com.tencent.mm.plugin.product.c.m)localObject3).vFJ = ((JSONObject)localObject4).getString("name");
+          ((com.tencent.mm.plugin.product.c.m)localObject3).vFK = new LinkedList();
           localObject4 = ((JSONObject)localObject4).getJSONArray("value_list");
           m = ((JSONArray)localObject4).length();
           j = 0;
@@ -147,18 +147,18 @@ public final class m
             h localh = new h();
             localh.id = ((JSONObject)localObject5).getString("id");
             localh.name = ((JSONObject)localObject5).getString("name");
-            localh.fN = true;
-            ((com.tencent.mm.plugin.product.c.m)localObject3).uwR.add(localh);
+            localh.gM = true;
+            ((com.tencent.mm.plugin.product.c.m)localObject3).vFK.add(localh);
             j += 1;
           }
-          paramm.uwm.uwF.add(localObject3);
+          paramm.vFf.vFy.add(localObject3);
           i += 1;
         }
       }
       localObject1 = ((JSONObject)localObject1).optJSONArray("actiongroup_attr");
       if (localObject1 != null)
       {
-        paramm.uwm.uwG = new LinkedList();
+        paramm.vFf.vFz = new LinkedList();
         k = ((JSONArray)localObject1).length();
         i = 0;
       }
@@ -170,9 +170,9 @@ public final class m
         localObject2 = ((JSONArray)localObject1).getJSONObject(i);
         localObject3 = new a();
         ((a)localObject3).Name = ((JSONObject)localObject2).getString("name");
-        ((a)localObject3).mBH = 0;
-        if (!bt.isNullOrNil(((a)localObject3).Name)) {
-          paramm.uwm.uwG.add(localObject3);
+        ((a)localObject3).ndI = 0;
+        if (!bs.isNullOrNil(((a)localObject3).Name)) {
+          paramm.vFf.vFz.add(localObject3);
         }
         localObject2 = ((JSONObject)localObject2).getJSONArray("action_list");
         m = ((JSONArray)localObject2).length();
@@ -182,11 +182,11 @@ public final class m
           localObject3 = ((JSONArray)localObject2).getJSONObject(j);
           localObject4 = new a();
           ((a)localObject4).Name = ((JSONObject)localObject3).getString("name");
-          ((a)localObject4).uwt = ((JSONObject)localObject3).getString("tips");
-          ((a)localObject4).mBH = ((JSONObject)localObject3).getInt("type");
-          ((a)localObject4).gKr = ((JSONObject)localObject3).getString("content");
+          ((a)localObject4).vFm = ((JSONObject)localObject3).getString("tips");
+          ((a)localObject4).ndI = ((JSONObject)localObject3).getInt("type");
+          ((a)localObject4).hkR = ((JSONObject)localObject3).getString("content");
           ((a)localObject4).IconUrl = ((JSONObject)localObject3).getString("icon_url");
-          paramm.uwm.uwG.add(localObject4);
+          paramm.vFf.vFz.add(localObject4);
           j += 1;
         }
       }
@@ -195,19 +195,19 @@ public final class m
       if (localObject1 != null)
       {
         k = ((JSONArray)localObject1).length();
-        paramm.uwo = new LinkedList();
+        paramm.vFh = new LinkedList();
         i = 0;
         while (i < k)
         {
           localObject3 = ((JSONArray)localObject1).getJSONObject(i);
           localObject2 = new l();
-          ((l)localObject2).uwM = ((JSONObject)localObject3).getString("id_info");
-          ((l)localObject2).uwN = ((JSONObject)localObject3).getInt("price");
-          ((l)localObject2).uwk = ((JSONObject)localObject3).getInt("quantity");
+          ((l)localObject2).vFF = ((JSONObject)localObject3).getString("id_info");
+          ((l)localObject2).vFG = ((JSONObject)localObject3).getInt("price");
+          ((l)localObject2).vFd = ((JSONObject)localObject3).getInt("quantity");
           ((l)localObject2).url = ((JSONObject)localObject3).getString("icon_url");
           localObject3 = ((JSONObject)localObject3).getJSONArray("express_fee");
           m = ((JSONArray)localObject3).length();
-          ((l)localObject2).uwO = new LinkedList();
+          ((l)localObject2).vFH = new LinkedList();
           j = 0;
           while (j < m)
           {
@@ -216,28 +216,28 @@ public final class m
             ((e)localObject5).id = ((JSONObject)localObject4).getInt("id");
             ((e)localObject5).name = ((JSONObject)localObject4).getString("name");
             ((e)localObject5).value = ((JSONObject)localObject4).getInt("price");
-            ((l)localObject2).uwO.add(localObject5);
+            ((l)localObject2).vFH.add(localObject5);
             j += 1;
           }
-          paramm.uwo.add(localObject2);
+          paramm.vFh.add(localObject2);
           i += 1;
         }
       }
       localObject1 = paramString.optJSONObject("seller_attr");
       if (localObject1 != null)
       {
-        paramm.uwn = new n();
-        paramm.uwn.dlB = ((JSONObject)localObject1).getString("appid");
-        paramm.uwn.name = ((JSONObject)localObject1).getString("name");
-        paramm.uwn.username = ((JSONObject)localObject1).getString("username");
-        paramm.uwn.uwS = ((JSONObject)localObject1).optString("logo");
-        paramm.uwn.dtM = ((JSONObject)localObject1).optInt("flag", 0);
+        paramm.vFg = new n();
+        paramm.vFg.djj = ((JSONObject)localObject1).getString("appid");
+        paramm.vFg.name = ((JSONObject)localObject1).getString("name");
+        paramm.vFg.username = ((JSONObject)localObject1).getString("username");
+        paramm.vFg.vFL = ((JSONObject)localObject1).optString("logo");
+        paramm.vFg.drx = ((JSONObject)localObject1).optInt("flag", 0);
       }
       paramString = paramString.optJSONObject("oss_info");
       if (paramString != null)
       {
-        paramm.uwq = paramString.optString("self_buy_button_word");
-        paramm.uwr = paramString.optString("product_mixed_h5_html");
+        paramm.vFj = paramString.optString("self_buy_button_word");
+        paramm.vFk = paramString.optString("product_mixed_h5_html");
       }
       AppMethodBeat.o(66910);
       return paramm;
@@ -257,62 +257,62 @@ public final class m
     if (paramm == null) {
       localm = new m();
     }
-    paramString = bw.K(paramString, "mallProductInfo");
+    paramString = bv.L(paramString, "mallProductInfo");
     if (paramString == null)
     {
       AppMethodBeat.o(66911);
       return null;
     }
-    localm.uwi = bt.nullAsNil((String)paramString.get(".mallProductInfo.id"));
-    localm.uwj = bt.getInt((String)paramString.get(".mallProductInfo.type"), 0);
-    localm.uwm = new c();
-    localm.uwm.name = bt.nullAsNil((String)paramString.get(".mallProductInfo.name"));
-    localm.uwm.gKF = bt.nullAsNil((String)paramString.get(".mallProductInfo.digest"));
-    localm.uwm.uwx = bt.getInt((String)paramString.get(".mallProductInfo.highPrice"), 0);
-    localm.uwm.uwy = bt.getInt((String)paramString.get(".mallProductInfo.lowPrice"), 0);
-    localm.uwm.uww = bt.getInt((String)paramString.get(".mallProductInfo.originPrice"), 0);
-    localm.kqB = bt.nullAsNil((String)paramString.get(".mallProductInfo.sourceUrl"));
-    int j = bt.getInt((String)paramString.get(".mallProductInfo.imgCount"), 0);
+    localm.vFb = bs.nullAsNil((String)paramString.get(".mallProductInfo.id"));
+    localm.vFc = bs.getInt((String)paramString.get(".mallProductInfo.type"), 0);
+    localm.vFf = new c();
+    localm.vFf.name = bs.nullAsNil((String)paramString.get(".mallProductInfo.name"));
+    localm.vFf.hlf = bs.nullAsNil((String)paramString.get(".mallProductInfo.digest"));
+    localm.vFf.vFq = bs.getInt((String)paramString.get(".mallProductInfo.highPrice"), 0);
+    localm.vFf.vFr = bs.getInt((String)paramString.get(".mallProductInfo.lowPrice"), 0);
+    localm.vFf.vFp = bs.getInt((String)paramString.get(".mallProductInfo.originPrice"), 0);
+    localm.kRU = bs.nullAsNil((String)paramString.get(".mallProductInfo.sourceUrl"));
+    int j = bs.getInt((String)paramString.get(".mallProductInfo.imgCount"), 0);
     if (j > 0)
     {
-      localm.uwm.uwz = new LinkedList();
+      localm.vFf.vFs = new LinkedList();
       if (i < j)
       {
         if (i == 0) {}
-        for (paramm = bt.nullAsNil((String)paramString.get(".mallProductInfo.imgList.imgUrl"));; paramm = bt.nullAsNil((String)paramString.get(".mallProductInfo.imgList.imgUrl".concat(String.valueOf(i)))))
+        for (paramm = bs.nullAsNil((String)paramString.get(".mallProductInfo.imgList.imgUrl"));; paramm = bs.nullAsNil((String)paramString.get(".mallProductInfo.imgList.imgUrl".concat(String.valueOf(i)))))
         {
-          if (!bt.isNullOrNil(paramm)) {
-            localm.uwm.uwz.add(paramm);
+          if (!bs.isNullOrNil(paramm)) {
+            localm.vFf.vFs.add(paramm);
           }
           i += 1;
           break;
         }
       }
     }
-    localm.uwm.uwH = new k();
-    localm.uwm.uwH.url = bt.nullAsNil((String)paramString.get(".mallProductInfo.shareInfo.shareUrl"));
-    localm.uwm.uwH.odo = bt.nullAsNil((String)paramString.get(".mallProductInfo.shareInfo.shareThumbUrl"));
-    localm.uwn = new n();
-    localm.uwn.dlB = bt.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.appID"));
-    localm.uwn.name = bt.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.appName"));
-    localm.uwn.username = bt.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.usrName"));
+    localm.vFf.vFA = new k();
+    localm.vFf.vFA.url = bs.nullAsNil((String)paramString.get(".mallProductInfo.shareInfo.shareUrl"));
+    localm.vFf.vFA.oGN = bs.nullAsNil((String)paramString.get(".mallProductInfo.shareInfo.shareThumbUrl"));
+    localm.vFg = new n();
+    localm.vFg.djj = bs.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.appID"));
+    localm.vFg.name = bs.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.appName"));
+    localm.vFg.username = bs.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.usrName"));
     AppMethodBeat.o(66911);
     return localm;
   }
   
-  public final String dbE()
+  public final String dpm()
   {
     AppMethodBeat.i(66912);
     String str;
-    if ((this.uwm != null) && (this.uwm.uwH != null) && (!bt.isNullOrNil(this.uwm.uwH.odo)))
+    if ((this.vFf != null) && (this.vFf.vFA != null) && (!bs.isNullOrNil(this.vFf.vFA.oGN)))
     {
-      str = this.uwm.uwH.odo;
+      str = this.vFf.vFA.oGN;
       AppMethodBeat.o(66912);
       return str;
     }
-    if ((this.uwm != null) && (this.uwm.uwz != null) && (this.uwm.uwz.size() > 0))
+    if ((this.vFf != null) && (this.vFf.vFs != null) && (this.vFf.vFs.size() > 0))
     {
-      str = (String)this.uwm.uwz.get(0);
+      str = (String)this.vFf.vFs.get(0);
       AppMethodBeat.o(66912);
       return str;
     }

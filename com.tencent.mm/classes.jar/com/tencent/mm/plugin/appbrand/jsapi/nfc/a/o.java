@@ -1,7 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.ad;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.a.ae;
 import d.g.a.b;
 import d.g.b.k;
@@ -17,18 +19,18 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiWriteNdefMessage;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiWriteNdefMessage;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
 public final class o
   extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.c>
 {
   public static final int CTRL_INDEX = 793;
   public static final String NAME = "writeNdefMessage";
-  public static final a kcA;
+  public static final a kDn;
   
   static
   {
     AppMethodBeat.i(183668);
-    kcA = new a((byte)0);
+    kDn = new a((byte)0);
     AppMethodBeat.o(183668);
   }
   
@@ -37,35 +39,35 @@ public final class o
     AppMethodBeat.i(183667);
     if (paramc == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "invoke, env is null");
+      ac.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "invoke, env is null");
       AppMethodBeat.o(183667);
       return;
     }
     if (paramJSONObject == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "invoke, data is null");
-      paramc.h(paramInt, k("fail:invalid parameter", (Map)ae.c(new d.o[] { u.P("errCode", Integer.valueOf(13011)) })));
+      ac.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "invoke, data is null");
+      paramc.h(paramInt, k("fail:invalid parameter", (Map)ae.c(new d.o[] { u.Q("errCode", Integer.valueOf(13011)) })));
       AppMethodBeat.o(183667);
       return;
     }
-    Object localObject1 = (com.tencent.mm.plugin.appbrand.jsapi.ad)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.ad.class);
-    if ((localObject1 != null) && (!((com.tencent.mm.plugin.appbrand.jsapi.ad)localObject1).aXM()))
+    Object localObject1 = (ad)com.tencent.luggage.a.e.K(ad.class);
+    if ((localObject1 != null) && (!((ad)localObject1).beJ()))
     {
-      paramc.h(paramInt, k("fail:user is not authorized", (Map)ae.c(new d.o[] { u.P("errCode", Integer.valueOf(13019)) })));
+      paramc.h(paramInt, k("fail:user is not authorized", (Map)ae.c(new d.o[] { u.Q("errCode", Integer.valueOf(13019)) })));
       AppMethodBeat.o(183667);
       return;
     }
-    localObject1 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.kcQ;
+    localObject1 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.kDD;
     com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c localc = c.a.w(paramc);
     if (localc == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "invoke, can not get activity");
-      paramc.h(paramInt, k("fail:unknown", (Map)ae.c(new d.o[] { u.P("errCode", Integer.valueOf(13010)) })));
+      ac.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "invoke, can not get activity");
+      paramc.h(paramInt, k("fail:unknown", (Map)ae.c(new d.o[] { u.Q("errCode", Integer.valueOf(13010)) })));
       AppMethodBeat.o(183667);
       return;
     }
     b localb = (b)new b(this, paramc, paramInt);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.AppBrand.JsApiWriteNdefMessage", "invoke, appId: " + paramc.getAppId() + ", data: " + paramJSONObject);
+    ac.d("MicroMsg.AppBrand.JsApiWriteNdefMessage", "invoke, appId: " + paramc.getAppId() + ", data: " + paramJSONObject);
     int i;
     int j;
     Object localObject2;
@@ -83,8 +85,8 @@ public final class o
       }
       catch (Exception paramJSONObject)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "parse uris failed since ".concat(String.valueOf(paramJSONObject)));
-        paramc.h(paramInt, k("fail:invalid parameter", (Map)ae.c(new d.o[] { u.P("errCode", Integer.valueOf(13011)) })));
+        ac.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "parse uris failed since ".concat(String.valueOf(paramJSONObject)));
+        paramc.h(paramInt, k("fail:invalid parameter", (Map)ae.c(new d.o[] { u.Q("errCode", Integer.valueOf(13011)) })));
         AppMethodBeat.o(183667);
         return;
       }
@@ -100,11 +102,11 @@ public final class o
         i += 1;
       }
       paramJSONObject = (List)localObject1;
-      localObject1 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.kdw;
-      paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.bq(paramJSONObject);
+      localObject1 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.kEj;
+      paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.bp(paramJSONObject);
       if (paramJSONObject == null)
       {
-        paramc.h(paramInt, k("fail:parse NdefMessage failed", (Map)ae.c(new d.o[] { u.P("errCode", Integer.valueOf(13012)) })));
+        paramc.h(paramInt, k("fail:parse NdefMessage failed", (Map)ae.c(new d.o[] { u.Q("errCode", Integer.valueOf(13012)) })));
         AppMethodBeat.o(183667);
         return;
       }
@@ -126,8 +128,8 @@ public final class o
       }
       catch (Exception paramJSONObject)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "parse texts failed since ".concat(String.valueOf(paramJSONObject)));
-        paramc.h(paramInt, k("fail:invalid parameter", (Map)ae.c(new d.o[] { u.P("errCode", Integer.valueOf(13011)) })));
+        ac.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "parse texts failed since ".concat(String.valueOf(paramJSONObject)));
+        paramc.h(paramInt, k("fail:invalid parameter", (Map)ae.c(new d.o[] { u.Q("errCode", Integer.valueOf(13011)) })));
         AppMethodBeat.o(183667);
         return;
       }
@@ -146,8 +148,8 @@ public final class o
         paramJSONObject = (JSONObject)paramJSONObject;
         if (paramJSONObject == null)
         {
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "parse texts failed since convert jsonObject failed");
-          paramc.h(paramInt, k("fail:invalid parameter", (Map)ae.c(new d.o[] { u.P("errCode", Integer.valueOf(13011)) })));
+          ac.w("MicroMsg.AppBrand.JsApiWriteNdefMessage", "parse texts failed since convert jsonObject failed");
+          paramc.h(paramInt, k("fail:invalid parameter", (Map)ae.c(new d.o[] { u.Q("errCode", Integer.valueOf(13011)) })));
           AppMethodBeat.o(183667);
           return;
         }
@@ -167,11 +169,11 @@ public final class o
         i += 1;
       }
       paramJSONObject = (List)localCollection;
-      localObject1 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.kdw;
-      paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.br(paramJSONObject);
+      localObject1 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.kEj;
+      paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.bq(paramJSONObject);
       if (paramJSONObject == null)
       {
-        paramc.h(paramInt, k("fail:parse NdefMessage failed", (Map)ae.c(new d.o[] { u.P("errCode", Integer.valueOf(13012)) })));
+        paramc.h(paramInt, k("fail:parse NdefMessage failed", (Map)ae.c(new d.o[] { u.Q("errCode", Integer.valueOf(13012)) })));
         AppMethodBeat.o(183667);
         return;
       }
@@ -179,12 +181,12 @@ public final class o
       AppMethodBeat.o(183667);
       return;
     }
-    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.c.a.a(paramJSONObject, (b)c.kcC);
-    localObject1 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.kdw;
-    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.H(paramJSONObject);
+    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.c.a.a(paramJSONObject, (b)c.kDp);
+    localObject1 = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.kEj;
+    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.b.c.G(paramJSONObject);
     if (paramJSONObject == null)
     {
-      paramc.h(paramInt, k("fail:parse NdefMessage failed", (Map)ae.c(new d.o[] { u.P("errCode", Integer.valueOf(13012)) })));
+      paramc.h(paramInt, k("fail:parse NdefMessage failed", (Map)ae.c(new d.o[] { u.Q("errCode", Integer.valueOf(13012)) })));
       AppMethodBeat.o(183667);
       return;
     }
@@ -192,10 +194,10 @@ public final class o
     AppMethodBeat.o(183667);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiWriteNdefMessage$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_TEXTS", "PARAM_URIS", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiWriteNdefMessage$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_TEXTS", "PARAM_URIS", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a {}
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "invoke"})
   static final class b
     extends d.g.b.l
     implements b<com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.e<y>, y>
@@ -206,18 +208,18 @@ public final class o
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "invoke"})
   static final class c
     extends d.g.b.l
     implements b<Object, Object>
   {
-    public static final c kcC;
+    public static final c kDp;
     
     static
     {
-      AppMethodBeat.i(194623);
-      kcC = new c();
-      AppMethodBeat.o(194623);
+      AppMethodBeat.i(200898);
+      kDp = new c();
+      AppMethodBeat.o(200898);
     }
     
     c()
@@ -225,11 +227,11 @@ public final class o
       super();
     }
     
-    public final Object aA(Object paramObject)
+    public final Object ay(Object paramObject)
     {
-      AppMethodBeat.i(194622);
+      AppMethodBeat.i(200897);
       k.h(paramObject, "it");
-      AppMethodBeat.o(194622);
+      AppMethodBeat.o(200897);
       return paramObject;
     }
   }

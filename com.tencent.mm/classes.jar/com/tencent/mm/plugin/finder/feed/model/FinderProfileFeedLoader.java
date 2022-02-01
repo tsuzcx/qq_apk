@@ -3,65 +3,68 @@ package com.tencent.mm.plugin.finder.feed.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.model.internal.c.a;
-import com.tencent.mm.plugin.finder.feed.model.internal.f;
+import com.tencent.mm.plugin.finder.feed.model.internal.b.a;
+import com.tencent.mm.plugin.finder.feed.model.internal.c;
+import com.tencent.mm.plugin.finder.feed.model.internal.e;
+import com.tencent.mm.plugin.finder.feed.model.internal.h;
 import com.tencent.mm.plugin.finder.feed.model.internal.i;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import d.g.b.k;
+import d.a.j;
+import d.l;
 import d.y;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderProfileFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "username", "", "oldDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lkotlin/collections/ArrayList;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;Ljava/lang/String;Ljava/util/ArrayList;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "fetchEndCallback", "Lkotlin/Function0;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "isLoadingMore", "", "()Z", "setLoadingMore", "(Z)V", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getOldDataList", "()Ljava/util/ArrayList;", "onFetchCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/ProfileResponse;", "getOnFetchCallback", "()Lkotlin/jvm/functions/Function1;", "setOnFetchCallback", "(Lkotlin/jvm/functions/Function1;)V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getLastItem", "", "isObservePostEvent", "onFetchDone", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "onFetchRefreshDone", "requestLoadMore", "requestRefresh", "sort", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/FinderProfileFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "username", "", "oldDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lkotlin/collections/ArrayList;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;Ljava/lang/String;Ljava/util/ArrayList;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "fetchEndCallback", "Lkotlin/Function0;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "isLoadingMore", "", "()Z", "setLoadingMore", "(Z)V", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getOldDataList", "()Ljava/util/ArrayList;", "onFetchCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/ProfileResponse;", "getOnFetchCallback", "()Lkotlin/jvm/functions/Function1;", "setOnFetchCallback", "(Lkotlin/jvm/functions/Function1;)V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getLastItem", "", "isObservePostEvent", "onFetchDone", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "onFetchRefreshDone", "requestLoadMore", "requestRefresh", "sort", "plugin-finder_release"})
 public final class FinderProfileFeedLoader
   extends BaseFinderFeedLoader
 {
   private String TAG;
   private d.g.a.a<y> fetchEndCallback;
   private boolean isLoadingMore;
-  private com.tencent.mm.bx.b lastBuffer;
+  private com.tencent.mm.bw.b lastBuffer;
   private final ArrayList<BaseFinderFeed> oldDataList;
-  private d.g.a.b<? super q, y> onFetchCallback;
+  private d.g.a.b<? super v, y> onFetchCallback;
   
-  public FinderProfileFeedLoader(com.tencent.mm.plugin.finder.feed.model.internal.b paramb, String paramString, ArrayList<BaseFinderFeed> paramArrayList, dzp paramdzp)
+  public FinderProfileFeedLoader(c paramc, String paramString, ArrayList<BaseFinderFeed> paramArrayList, anm paramanm)
   {
-    super(paramString, paramdzp);
-    AppMethodBeat.i(198274);
+    super(paramString, paramanm);
+    AppMethodBeat.i(202184);
     this.oldDataList = paramArrayList;
     this.TAG = "Finder.FinderProfileFeedLoader";
-    AppMethodBeat.o(198274);
+    AppMethodBeat.o(202184);
   }
   
   private final void sort()
   {
-    AppMethodBeat.i(198273);
+    AppMethodBeat.i(202183);
     List localList = (List)getDataList();
     if (localList.size() > 1) {
-      d.a.j.a(localList, (Comparator)new Comparator()
+      j.a(localList, (Comparator)new Comparator()
       {
         public final int compare(T paramAnonymousT1, T paramAnonymousT2)
         {
-          AppMethodBeat.i(198271);
+          AppMethodBeat.i(202181);
           int i = d.b.a.a((Comparable)Integer.valueOf(((BaseFinderFeed)paramAnonymousT2).feedObject.getCreateTime()), (Comparable)Integer.valueOf(((BaseFinderFeed)paramAnonymousT1).feedObject.getCreateTime()));
-          AppMethodBeat.o(198271);
+          AppMethodBeat.o(202181);
           return i;
         }
       });
     }
-    AppMethodBeat.o(198273);
+    AppMethodBeat.o(202183);
   }
   
-  public final f<Object, Object, i> createDataFetch(dzp paramdzp)
+  public final e<Object, Object, h> createDataFetch(anm paramanm)
   {
-    AppMethodBeat.i(198272);
-    paramdzp = (f)new n(paramdzp);
-    AppMethodBeat.o(198272);
-    return paramdzp;
+    AppMethodBeat.i(202182);
+    paramanm = (e)new s(paramanm);
+    AppMethodBeat.o(202182);
+    return paramanm;
   }
   
   public final d.g.a.a<y> getFetchEndCallback()
@@ -69,7 +72,7 @@ public final class FinderProfileFeedLoader
     return this.fetchEndCallback;
   }
   
-  public final com.tencent.mm.bx.b getLastBuffer()
+  public final com.tencent.mm.bw.b getLastBuffer()
   {
     return this.lastBuffer;
   }
@@ -97,7 +100,7 @@ public final class FinderProfileFeedLoader
     return this.oldDataList;
   }
   
-  public final d.g.a.b<q, y> getOnFetchCallback()
+  public final d.g.a.b<v, y> getOnFetchCallback()
   {
     return this.onFetchCallback;
   }
@@ -120,10 +123,10 @@ public final class FinderProfileFeedLoader
   public final void onFetchDone(IResponse<BaseFinderFeed> paramIResponse)
   {
     AppMethodBeat.i(166046);
-    k.h(paramIResponse, "response");
+    d.g.b.k.h(paramIResponse, "response");
     d.g.a.b localb = this.onFetchCallback;
     if (localb != null) {
-      localb.aA((q)paramIResponse);
+      localb.ay((v)paramIResponse);
     }
     if (2 == paramIResponse.getPullType()) {}
     for (int i = 1;; i = 0)
@@ -150,10 +153,10 @@ public final class FinderProfileFeedLoader
   public final void onFetchRefreshDone(IResponse<BaseFinderFeed> paramIResponse)
   {
     AppMethodBeat.i(166047);
-    k.h(paramIResponse, "response");
-    Object localObject = RefreshLoadMoreLayout.c.HXu;
-    localObject = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.fiH());
-    paramIResponse = new com.tencent.mm.plugin.finder.feed.model.internal.l(7, paramIResponse.getIncrementList(), false, 12);
+    d.g.b.k.h(paramIResponse, "response");
+    Object localObject = RefreshLoadMoreLayout.c.Jyi;
+    localObject = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.fyS());
+    paramIResponse = new com.tencent.mm.plugin.finder.feed.model.internal.k(7, paramIResponse.getIncrementList(), false, 12);
     dispatcher().a(paramIResponse, (RefreshLoadMoreLayout.c)localObject);
     AppMethodBeat.o(166047);
   }
@@ -163,24 +166,24 @@ public final class FinderProfileFeedLoader
     AppMethodBeat.i(166045);
     if (this.isLoadingMore)
     {
-      ad.i(getTAG(), "isLoadingMore return");
+      ac.i(getTAG(), "isLoadingMore return");
       AppMethodBeat.o(166045);
       return;
     }
     this.isLoadingMore = true;
     long l = getLastItem();
-    p localp = new p(getUsername(), l, 2, this.lastBuffer, getContextObj());
-    ad.i(getTAG(), "requestLoadMore ".concat(String.valueOf(localp)));
-    fetchData((com.tencent.mm.plugin.finder.feed.model.internal.j)localp);
+    u localu = new u(getUsername(), l, 2, this.lastBuffer, getContextObj());
+    ac.i(getTAG(), "requestLoadMore ".concat(String.valueOf(localu)));
+    fetchData((i)localu);
     AppMethodBeat.o(166045);
   }
   
   public final void requestRefresh()
   {
     AppMethodBeat.i(166043);
-    p localp = new p(getUsername(), 0L, 1, null, getContextObj());
-    ad.i(getTAG(), "111 requestRefresh ".concat(String.valueOf(localp)));
-    fetchData((com.tencent.mm.plugin.finder.feed.model.internal.j)localp);
+    u localu = new u(getUsername(), 0L, 1, null, getContextObj());
+    ac.i(getTAG(), "111 requestRefresh ".concat(String.valueOf(localu)));
+    fetchData((i)localu);
     AppMethodBeat.o(166043);
   }
   
@@ -189,7 +192,7 @@ public final class FinderProfileFeedLoader
     this.fetchEndCallback = parama;
   }
   
-  public final void setLastBuffer(com.tencent.mm.bx.b paramb)
+  public final void setLastBuffer(com.tencent.mm.bw.b paramb)
   {
     this.lastBuffer = paramb;
   }
@@ -199,7 +202,7 @@ public final class FinderProfileFeedLoader
     this.isLoadingMore = paramBoolean;
   }
   
-  public final void setOnFetchCallback(d.g.a.b<? super q, y> paramb)
+  public final void setOnFetchCallback(d.g.a.b<? super v, y> paramb)
   {
     this.onFetchCallback = paramb;
   }
@@ -207,14 +210,14 @@ public final class FinderProfileFeedLoader
   public final void setTAG(String paramString)
   {
     AppMethodBeat.i(166042);
-    k.h(paramString, "<set-?>");
+    d.g.b.k.h(paramString, "<set-?>");
     this.TAG = paramString;
     AppMethodBeat.o(166042);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.FinderProfileFeedLoader
  * JD-Core Version:    0.7.0.1
  */

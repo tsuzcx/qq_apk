@@ -6,131 +6,67 @@ import com.tencent.mm.plugin.report.a;
 public final class hl
   extends a
 {
-  private String dKI;
-  private long hNd;
-  private long iRS = 0L;
-  private long iRT;
-  private String iRU;
-  private long iRV;
-  private long iRW;
-  private String iSd;
+  public String ecm;
+  public long eco;
+  public String eex;
+  public long efG;
+  public long efH;
+  public long efI;
+  public String efJ;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(203713);
+    AppMethodBeat.i(43631);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.iRS);
+    ((StringBuffer)localObject).append(this.efG);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.iRT);
+    ((StringBuffer)localObject).append(this.efH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.hNd);
+    ((StringBuffer)localObject).append(this.efI);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKI);
+    ((StringBuffer)localObject).append(this.ecm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.iRU);
+    ((StringBuffer)localObject).append(this.eco);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.iRV);
+    ((StringBuffer)localObject).append(this.eex);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.iRW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.iSd);
+    ((StringBuffer)localObject).append(this.efJ);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(203713);
+    arz((String)localObject);
+    AppMethodBeat.o(43631);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(203714);
+    AppMethodBeat.i(43632);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("fromTab:").append(this.iRS);
+    ((StringBuffer)localObject).append("visitScene:").append(this.efG);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("toTab:").append(this.iRT);
+    ((StringBuffer)localObject).append("businessScene:").append(this.efH);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ActionTimeStamp:").append(this.hNd);
+    ((StringBuffer)localObject).append("innerScene:").append(this.efI);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Sessionid:").append(this.dKI);
+    ((StringBuffer)localObject).append("AppId:").append(this.ecm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickContextid:").append(this.iRU);
+    ((StringBuffer)localObject).append("AppType:").append(this.eco);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("hasRedDot:").append(this.iRV);
+    ((StringBuffer)localObject).append("path:").append(this.eex);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ManuallyTapped:").append(this.iRW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ContextID:").append(this.iSd);
+    ((StringBuffer)localObject).append("openRate:").append(this.efJ);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(203714);
+    AppMethodBeat.o(43632);
     return localObject;
-  }
-  
-  public final hl Zh(String paramString)
-  {
-    AppMethodBeat.i(203710);
-    this.dKI = t("Sessionid", paramString, true);
-    AppMethodBeat.o(203710);
-    return this;
-  }
-  
-  public final hl Zj(String paramString)
-  {
-    AppMethodBeat.i(203711);
-    this.iRU = t("ClickContextid", paramString, true);
-    AppMethodBeat.o(203711);
-    return this;
-  }
-  
-  public final hl Zk(String paramString)
-  {
-    AppMethodBeat.i(203712);
-    this.iSd = t("ContextID", paramString, true);
-    AppMethodBeat.o(203712);
-    return this;
-  }
-  
-  public final String ahP()
-  {
-    return this.iRU;
-  }
-  
-  public final hl ahR()
-  {
-    this.iRV = 1L;
-    return this;
-  }
-  
-  public final hl ajr()
-  {
-    this.iRW = 0L;
-    return this;
   }
   
   public final int getId()
   {
-    return 19949;
-  }
-  
-  public final hl yj(long paramLong)
-  {
-    this.iRS = paramLong;
-    return this;
-  }
-  
-  public final hl yk(long paramLong)
-  {
-    this.iRT = paramLong;
-    return this;
-  }
-  
-  public final hl yl(long paramLong)
-  {
-    this.hNd = paramLong;
-    return this;
+    return 18852;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.hl
  * JD-Core Version:    0.7.0.1
  */

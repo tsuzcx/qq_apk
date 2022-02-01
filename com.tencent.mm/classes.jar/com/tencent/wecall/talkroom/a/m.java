@@ -11,9 +11,9 @@ import com.tencent.wecall.talkroom.model.c;
 public final class m
   extends d
 {
-  public int sHe;
-  public String seB;
-  public long ztl;
+  public long AMc;
+  public int tOL;
+  public String tmu;
   
   public m(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
@@ -23,15 +23,15 @@ public final class m
     try
     {
       localj.groupId = paramString;
-      this.seB = paramString;
+      this.tmu = paramString;
       localj.roomId = paramInt1;
-      this.sHe = paramInt1;
-      localj.sAY = paramLong;
-      this.ztl = paramLong;
+      this.tOL = paramInt1;
+      localj.tIG = paramLong;
+      this.AMc = paramLong;
       localj.action = paramInt2;
       localj.timestamp = System.currentTimeMillis();
       this.mNetType = 3;
-      this.IjW = c.fpJ().aOs(paramString);
+      this.JLH = c.fIe().aUe(paramString);
       c(243, localj);
       AppMethodBeat.o(62524);
       return;
@@ -45,7 +45,7 @@ public final class m
     }
   }
   
-  public final Object cC(byte[] paramArrayOfByte)
+  public final Object cB(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62525);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -68,7 +68,7 @@ public final class m
     }
   }
   
-  public final String flk()
+  public final String fBB()
   {
     return "CsCmd.Cmd_V_CSSwitchVideoGroupReq";
   }

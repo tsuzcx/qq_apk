@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,14 +9,14 @@ import org.json.JSONObject;
 public final class ac
   extends m
 {
-  public JSONObject jwa;
-  public String zWH;
+  public String Bpb;
+  public JSONObject jWw;
   
   public ac(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5, String paramString6, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(69950);
-    this.zWH = "";
-    this.zWH = paramString1;
+    this.Bpb = "";
+    this.Bpb = paramString1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("activity_id", paramString1);
     localHashMap.put("award_id", paramString2);
@@ -56,8 +55,8 @@ public final class ac
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69951);
-    ad.i("MicroMsg.NetSceneTenpayQueryBindPayaward", "errcode %s errmsg %s json %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
-    this.jwa = paramJSONObject;
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.NetSceneTenpayQueryBindPayaward", "errcode %s errmsg %s json %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
+    this.jWw = paramJSONObject;
     AppMethodBeat.o(69951);
   }
 }

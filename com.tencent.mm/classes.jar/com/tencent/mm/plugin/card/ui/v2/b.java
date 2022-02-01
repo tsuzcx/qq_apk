@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.card.ui.v2;
 
-import com.tencent.mm.protocal.protobuf.bxy;
-import com.tencent.mm.protocal.protobuf.bxz;
+import com.tencent.mm.protocal.protobuf.ccu;
+import com.tencent.mm.protocal.protobuf.ccv;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "", "()V", "jumpElement", "Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;", "getJumpElement", "()Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;", "setJumpElement", "(Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;)V", "ticketElement", "Lcom/tencent/mm/protocal/protobuf/PageTicketElement;", "getTicketElement", "()Lcom/tencent/mm/protocal/protobuf/PageTicketElement;", "setTicketElement", "(Lcom/tencent/mm/protocal/protobuf/PageTicketElement;)V", "title", "", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "type", "", "getType", "()I", "setType", "(I)V", "plugin-card_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "", "()V", "jumpElement", "Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;", "getJumpElement", "()Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;", "setJumpElement", "(Lcom/tencent/mm/protocal/protobuf/PageTicketJumpElement;)V", "ticketElement", "Lcom/tencent/mm/protocal/protobuf/PageTicketElement;", "getTicketElement", "()Lcom/tencent/mm/protocal/protobuf/PageTicketElement;", "setTicketElement", "(Lcom/tencent/mm/protocal/protobuf/PageTicketElement;)V", "title", "", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "type", "", "getType", "()I", "setType", "(I)V", "plugin-card_release"})
 public final class b
 {
-  bxz nFS;
-  bxy nFT;
+  ccv oiT;
+  ccu oiU;
   String title;
   int type;
 }

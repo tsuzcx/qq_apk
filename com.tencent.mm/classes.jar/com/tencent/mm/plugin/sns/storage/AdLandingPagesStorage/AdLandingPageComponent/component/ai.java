@@ -15,49 +15,80 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.TextView;
 import com.tencent.e.i.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.g;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac;
+import com.tencent.mm.cf.g;
+import com.tencent.mm.plugin.sns.ad.e.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class ai
   extends k
 {
-  TextView ss;
-  private b xdx;
-  volatile boolean xdy = false;
+  TextView tr;
+  private b yqm;
+  volatile boolean yqn = false;
   
-  public ai(Context paramContext, ac paramac, ViewGroup paramViewGroup)
+  public ai(Context paramContext, ad paramad, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramac, paramViewGroup);
+    super(paramContext, paramad, paramViewGroup);
   }
   
-  public final void dvA()
+  @TargetApi(17)
+  public final void dJW()
+  {
+    AppMethodBeat.i(96802);
+    View localView = this.contentView;
+    localView.setBackgroundColor(this.backgroundColor);
+    localView.findViewById(2131304897).setBackgroundColor(this.backgroundColor);
+    localView.findViewById(2131304898).setBackgroundColor(this.backgroundColor);
+    this.tr = ((TextView)localView.findViewById(2131304898));
+    AppMethodBeat.o(96802);
+  }
+  
+  public final void dJX()
+  {
+    AppMethodBeat.i(96799);
+    super.dJX();
+    if (this.yqm != null) {
+      this.yqm.cancel();
+    }
+    this.yqn = true;
+    AppMethodBeat.o(96799);
+  }
+  
+  public final void dJY()
+  {
+    AppMethodBeat.i(96803);
+    super.dJY();
+    AppMethodBeat.o(96803);
+  }
+  
+  public final void dJZ()
   {
     AppMethodBeat.i(96804);
-    super.dvA();
+    super.dJZ();
     AppMethodBeat.o(96804);
   }
   
-  protected final void dvN()
+  protected final void dKm()
   {
     AppMethodBeat.i(96801);
-    if (((ac)this.xab).textSize > 0.0F) {
-      this.ss.setTextSize(0, ((ac)this.xab).textSize);
+    if (((ad)this.ymQ).textSize > 0.0F) {
+      this.tr.setTextSize(0, ((ad)this.ymQ).textSize);
     }
     Object localObject;
-    if (((ac)this.xab).subType == 1)
+    if (((ad)this.ymQ).subType == 1)
     {
-      if (!bt.isNullOrNil(((ac)this.xab).wXe))
+      if (!bs.isNullOrNil(((ad)this.ymQ).yjT))
       {
-        localObject = ((ac)this.xab).wXe.trim().replace("<icon", "<img");
-        if (this.xdx != null) {
-          this.xdx.cancel();
+        localObject = ((ad)this.ymQ).yjT.trim().replace("<icon", "<img");
+        if (this.yqm != null) {
+          this.yqm.cancel();
         }
-        this.xdx = new b()
+        this.yqm = new b()
         {
           public final String getKey()
           {
@@ -67,83 +98,83 @@ public final class ai
           public final void run()
           {
             AppMethodBeat.i(96798);
-            if (ai.this.xdy)
+            if (ai.this.yqn)
             {
               AppMethodBeat.o(96798);
               return;
             }
-            aq.f(new Runnable()
+            ap.f(new Runnable()
             {
               public final Drawable getDrawable(String paramAnonymous2String)
               {
                 AppMethodBeat.i(96796);
                 Object localObject = null;
-                String str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.iU("adId", paramAnonymous2String);
+                String str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.js("adId", paramAnonymous2String);
                 int i;
                 int j;
-                if ((!bt.isNullOrNil(str)) && (com.tencent.mm.vfs.i.eK(str)))
+                if ((!bs.isNullOrNil(str)) && (com.tencent.mm.vfs.i.eA(str)))
                 {
-                  paramAnonymous2String = Drawable.createFromPath(str);
+                  paramAnonymous2String = a.a(ai.this.tr.getResources(), str);
                   if (paramAnonymous2String == null) {
-                    break label149;
+                    break label162;
                   }
                   if (paramAnonymous2String.getIntrinsicHeight() != 0)
                   {
                     i = paramAnonymous2String.getIntrinsicWidth() * (int)ai.a(ai.this).textSize / paramAnonymous2String.getIntrinsicHeight();
                     if (paramAnonymous2String.getIntrinsicHeight() == 0) {
-                      break label119;
+                      break label132;
                     }
                     j = (int)ai.a(ai.this).textSize;
-                    label96:
+                    label109:
                     paramAnonymous2String.setBounds(0, 0, i, j);
                   }
                 }
-                label149:
+                label132:
+                label162:
                 for (;;)
                 {
                   AppMethodBeat.o(96796);
                   return paramAnonymous2String;
                   i = paramAnonymous2String.getIntrinsicWidth();
                   break;
-                  label119:
                   j = paramAnonymous2String.getIntrinsicHeight();
-                  break label96;
+                  break label109;
                   com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.c("adId", paramAnonymous2String, false, 0, new f.a()
                   {
-                    public final void apm(String paramAnonymous3String)
+                    public final void asD(String paramAnonymous3String)
                     {
                       AppMethodBeat.i(96795);
                       try
                       {
-                        aq.f(new Runnable()
+                        ap.f(new Runnable()
                         {
                           public final Drawable getDrawable(String paramAnonymous4String)
                           {
                             AppMethodBeat.i(96793);
                             Object localObject = null;
-                            String str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.iU("adId", paramAnonymous4String);
+                            String str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.js("adId", paramAnonymous4String);
                             paramAnonymous4String = localObject;
                             int i;
-                            if (!bt.isNullOrNil(str))
+                            if (!bs.isNullOrNil(str))
                             {
                               paramAnonymous4String = localObject;
-                              if (com.tencent.mm.vfs.i.eK(str))
+                              if (com.tencent.mm.vfs.i.eA(str))
                               {
-                                paramAnonymous4String = Drawable.createFromPath(str);
+                                paramAnonymous4String = a.a(ai.this.tr.getResources(), str);
                                 if (paramAnonymous4String != null)
                                 {
                                   if (paramAnonymous4String.getIntrinsicHeight() == 0) {
-                                    break label129;
+                                    break label148;
                                   }
                                   i = paramAnonymous4String.getIntrinsicWidth() * (int)ai.a(ai.this).textSize / paramAnonymous4String.getIntrinsicHeight();
                                   if (paramAnonymous4String.getIntrinsicHeight() == 0) {
-                                    break label137;
+                                    break label156;
                                   }
                                 }
                               }
                             }
-                            label129:
-                            label137:
+                            label148:
+                            label156:
                             for (int j = (int)ai.a(ai.this).textSize;; j = paramAnonymous4String.getIntrinsicHeight())
                             {
                               paramAnonymous4String.setBounds(0, 0, i, j);
@@ -158,7 +189,7 @@ public final class ai
                           public final void run()
                           {
                             AppMethodBeat.i(96794);
-                            ai.this.ss.setText(this.xdE);
+                            ai.this.tr.setText(this.yqt);
                             AppMethodBeat.o(96794);
                           }
                         });
@@ -167,14 +198,14 @@ public final class ai
                       }
                       catch (Exception paramAnonymous3String)
                       {
-                        ad.e("MicroMsg.Sns.AdLandingPageTextComponent", "the backgroundCoverUrl is set error ,because " + paramAnonymous3String.toString());
+                        ac.e("MicroMsg.Sns.AdLandingPageTextComponent", "the backgroundCoverUrl is set error ,because " + paramAnonymous3String.toString());
                         AppMethodBeat.o(96795);
                       }
                     }
                     
-                    public final void dsA() {}
+                    public final void dFC() {}
                     
-                    public final void duP() {}
+                    public final void dFD() {}
                   });
                   paramAnonymous2String = localObject;
                 }
@@ -184,117 +215,87 @@ public final class ai
               public final void run()
               {
                 AppMethodBeat.i(96797);
-                ai.this.ss.setText(g.eIa().b(this.xdE, ai.this.ss.getTextSize()));
+                ai.this.tr.setText(g.eXw().b(this.yqt, ai.this.tr.getTextSize()));
                 AppMethodBeat.o(96797);
               }
             });
             AppMethodBeat.o(96798);
           }
         };
-        com.tencent.e.h.Iye.aP(this.xdx);
+        com.tencent.e.h.JZN.aS(this.yqm);
       }
-      if (((ac)this.xab).textAlignment != 0) {
+      if (((ad)this.ymQ).textAlignment != 0) {
         break label418;
       }
-      this.ss.setGravity(3);
+      this.tr.setGravity(3);
       label151:
-      if ((((ac)this.xab).tFP == null) || (((ac)this.xab).tFP.length() <= 0)) {
-        break label503;
+      if ((((ad)this.ymQ).uOk == null) || (((ad)this.ymQ).uOk.length() <= 0)) {
+        break label504;
       }
     }
     for (;;)
     {
       try
       {
-        i = Color.parseColor(((ac)this.xab).tFP);
-        this.ss.setTextColor(i);
-        if (((ac)this.xab).wXi > 0.0F) {
-          this.ss.setLineSpacing(0.0F, ((ac)this.xab).wXi + 1.0F);
+        i = Color.parseColor(((ad)this.ymQ).uOk);
+        this.tr.setTextColor(i);
+        if (((ad)this.ymQ).yjX > 0.0F) {
+          this.tr.setLineSpacing(0.0F, ((ad)this.ymQ).yjX + 1.0F);
         }
-        localObject = this.ss.getPaint();
-        if (((ac)this.xab).wXf) {
+        localObject = this.tr.getPaint();
+        if (((ad)this.ymQ).yjU) {
           ((TextPaint)localObject).setFakeBoldText(true);
         }
-        if (((ac)this.xab).wXg) {
+        if (((ad)this.ymQ).yjV) {
           ((TextPaint)localObject).setTextSkewX(-0.25F);
         }
-        if (((ac)this.xab).wXh) {
+        if (((ad)this.ymQ).yjW) {
           ((TextPaint)localObject).setUnderlineText(true);
         }
-        if (((ac)this.xab).maxLines > 0) {
-          this.ss.setMaxLines(((ac)this.xab).maxLines);
+        if (((ad)this.ymQ).maxLines > 0) {
+          this.tr.setMaxLines(((ad)this.ymQ).maxLines);
         }
-        if (((ac)this.xab).wWb == ac.wXd) {
-          this.ss.setTypeface(al.fW(this.context));
+        if (((ad)this.ymQ).yiP == ad.yjS) {
+          this.tr.setTypeface(al.gi(this.context));
         }
         AppMethodBeat.o(96801);
         return;
-        if (bt.isNullOrNil(((ac)this.xab).wXe)) {
+        if (bs.isNullOrNil(((ad)this.ymQ).yjT)) {
           break;
         }
-        this.ss.setText(g.eIa().b(((ac)this.xab).wXe.trim(), this.ss.getTextSize()));
+        this.tr.setText(g.eXw().b(((ad)this.ymQ).yjT.trim(), this.tr.getTextSize()));
         break;
         label418:
-        if (((ac)this.xab).textAlignment == 1)
+        if (((ad)this.ymQ).textAlignment == 1)
         {
-          this.ss.setGravity(17);
+          this.tr.setGravity(17);
           break label151;
         }
-        if (((ac)this.xab).textAlignment != 2) {
+        if (((ad)this.ymQ).textAlignment != 2) {
           break label151;
         }
-        this.ss.setGravity(5);
+        this.tr.setGravity(5);
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.Sns.AdLandingPageTextComponent", "parse the color is error : " + ((ac)this.xab).tFP);
+        ac.e("MicroMsg.Sns.AdLandingPageTextComponent", "parse the color is error : " + ((ad)this.ymQ).uOk);
         continue;
       }
-      label503:
+      label504:
       int i = Color.parseColor("#FFFFFF");
-      this.ss.setTextColor(i);
+      this.tr.setTextColor(i);
     }
   }
   
-  protected final void dvT()
+  protected final void dKs()
   {
     AppMethodBeat.i(96800);
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.xab.paddingLeft, (int)this.xab.paddingTop, (int)this.xab.paddingRight, (int)this.xab.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.ymQ.paddingLeft, (int)this.ymQ.paddingTop, (int)this.ymQ.paddingRight, (int)this.ymQ.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(96800);
-  }
-  
-  @TargetApi(17)
-  public final void dvx()
-  {
-    AppMethodBeat.i(96802);
-    View localView = this.contentView;
-    localView.setBackgroundColor(this.backgroundColor);
-    localView.findViewById(2131304897).setBackgroundColor(this.backgroundColor);
-    localView.findViewById(2131304898).setBackgroundColor(this.backgroundColor);
-    this.ss = ((TextView)localView.findViewById(2131304898));
-    AppMethodBeat.o(96802);
-  }
-  
-  public final void dvy()
-  {
-    AppMethodBeat.i(96799);
-    super.dvy();
-    if (this.xdx != null) {
-      this.xdx.cancel();
-    }
-    this.xdy = true;
-    AppMethodBeat.o(96799);
-  }
-  
-  public final void dvz()
-  {
-    AppMethodBeat.i(96803);
-    super.dvz();
-    AppMethodBeat.o(96803);
   }
   
   protected final int getLayout()
@@ -304,7 +305,7 @@ public final class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  static final boolean FCg;
+  static final boolean Hbj;
   
   static
   {
@@ -29,7 +29,7 @@ public final class b
       default: 
         bool = true;
       }
-      FCg = bool;
+      Hbj = bool;
       AppMethodBeat.o(133325);
       return;
       if (str.equals("exynos7884"))
@@ -64,7 +64,7 @@ public final class b
   }
   
   /* Error */
-  static String eNT()
+  static String fdx()
   {
     // Byte code:
     //   0: ldc 70
@@ -258,7 +258,7 @@ public final class b
     //   346: invokevirtual 160	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   349: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   352: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   355: invokestatic 166	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   355: invokestatic 166	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   358: aload 4
     //   360: astore_1
     //   361: aload 7

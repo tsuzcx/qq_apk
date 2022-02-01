@@ -9,7 +9,7 @@ import android.os.AsyncTask;
 import com.davemorrissey.labs.subscaleview.a.d;
 import com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.FileNotFoundException;
 import java.lang.ref.WeakReference;
 
@@ -28,50 +28,50 @@ public final class b
     extends AsyncTask<Void, Void, int[]>
     implements com.davemorrissey.labs.subscaleview.c.b
   {
-    private final WeakReference<Context> aLG;
-    private final WeakReference<com.davemorrissey.labs.subscaleview.a.b<? extends d>> aLH;
-    private final Uri aLI;
-    private com.davemorrissey.labs.subscaleview.a.c aLK;
-    private long aLL;
-    private d aLM;
+    private com.davemorrissey.labs.subscaleview.a.c aMA;
+    private long aMB;
+    private d aMC;
+    private final WeakReference<Context> aMw;
+    private final WeakReference<com.davemorrissey.labs.subscaleview.a.b<? extends d>> aMx;
+    private final Uri aMy;
     private Exception exception;
-    private final WeakReference<SubsamplingScaleImageView> lo;
+    private final WeakReference<SubsamplingScaleImageView> mn;
     
     a(SubsamplingScaleImageView paramSubsamplingScaleImageView, Context paramContext, com.davemorrissey.labs.subscaleview.a.b<? extends d> paramb, Uri paramUri)
     {
       AppMethodBeat.i(157356);
-      this.lo = new WeakReference(paramSubsamplingScaleImageView);
-      this.aLG = new WeakReference(paramContext);
-      this.aLH = new WeakReference(paramb);
-      this.aLI = paramUri;
+      this.mn = new WeakReference(paramSubsamplingScaleImageView);
+      this.aMw = new WeakReference(paramContext);
+      this.aMx = new WeakReference(paramb);
+      this.aMy = paramUri;
       AppMethodBeat.o(157356);
     }
     
     private void a(SubsamplingScaleImageView paramSubsamplingScaleImageView)
     {
       AppMethodBeat.i(157358);
-      if ((paramSubsamplingScaleImageView != null) && (this.aLL != -1L)) {
-        paramSubsamplingScaleImageView.dz((int)(System.currentTimeMillis() - this.aLL));
+      if ((paramSubsamplingScaleImageView != null) && (this.aMB != -1L)) {
+        paramSubsamplingScaleImageView.dy((int)(System.currentTimeMillis() - this.aMB));
       }
       AppMethodBeat.o(157358);
     }
     
     @SuppressLint({"LongLogTag"})
-    private int[] pZ()
+    private int[] qj()
     {
       AppMethodBeat.i(157357);
-      ad.d("MicroMsg.LegacyTileInitLoaderFactory", "alvinluo TileInitTask doInBackground");
-      this.aLL = System.currentTimeMillis();
+      ac.d("MicroMsg.LegacyTileInitLoaderFactory", "alvinluo TileInitTask doInBackground");
+      this.aMB = System.currentTimeMillis();
       try
       {
-        Object localObject1 = this.aLI.toString();
-        Context localContext = (Context)this.aLG.get();
-        Object localObject2 = (com.davemorrissey.labs.subscaleview.a.b)this.aLH.get();
-        SubsamplingScaleImageView localSubsamplingScaleImageView = (SubsamplingScaleImageView)this.lo.get();
+        Object localObject1 = this.aMy.toString();
+        Context localContext = (Context)this.aMw.get();
+        Object localObject2 = (com.davemorrissey.labs.subscaleview.a.b)this.aMx.get();
+        SubsamplingScaleImageView localSubsamplingScaleImageView = (SubsamplingScaleImageView)this.mn.get();
         if ((localContext != null) && (localObject2 != null) && (localSubsamplingScaleImageView != null))
         {
-          this.aLM = ((d)((com.davemorrissey.labs.subscaleview.a.b)localObject2).pV());
-          localObject2 = this.aLM.c(localContext, this.aLI);
+          this.aMC = ((d)((com.davemorrissey.labs.subscaleview.a.b)localObject2).qf());
+          localObject2 = this.aMC.c(localContext, this.aMy);
           int k = ((Point)localObject2).x;
           int m = ((Point)localObject2).y;
           int n = localSubsamplingScaleImageView.h(localContext, (String)localObject1);
@@ -95,10 +95,10 @@ public final class b
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
-        ad.printErrStackTrace("MicroMsg.LegacyTileInitLoaderFactory", localFileNotFoundException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.LegacyTileInitLoaderFactory", localFileNotFoundException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
         this.exception = localFileNotFoundException;
-        this.aLK = new com.davemorrissey.labs.subscaleview.a.c(1, "tile init file not found");
-        a((SubsamplingScaleImageView)this.lo.get());
+        this.aMA = new com.davemorrissey.labs.subscaleview.a.c(1, "tile init file not found");
+        a((SubsamplingScaleImageView)this.mn.get());
         AppMethodBeat.o(157357);
         return null;
       }
@@ -106,19 +106,19 @@ public final class b
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.LegacyTileInitLoaderFactory", localException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.LegacyTileInitLoaderFactory", localException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
           this.exception = localException;
-          this.aLK = new com.davemorrissey.labs.subscaleview.a.c(4, "tile init failed");
+          this.aMA = new com.davemorrissey.labs.subscaleview.a.c(4, "tile init failed");
         }
       }
     }
     
     public final void cancel() {}
     
-    public final void pY()
+    public final void qi()
     {
       AppMethodBeat.i(157359);
-      executeOnExecutor(((SubsamplingScaleImageView)this.lo.get()).executor, new Void[0]);
+      executeOnExecutor(((SubsamplingScaleImageView)this.mn.get()).executor, new Void[0]);
       AppMethodBeat.o(157359);
     }
   }

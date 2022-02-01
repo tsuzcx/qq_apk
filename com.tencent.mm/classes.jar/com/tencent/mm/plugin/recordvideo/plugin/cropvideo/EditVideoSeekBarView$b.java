@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.recordvideo.plugin.cropvideo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "error", "", "onPrepared"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "error", "", "onPrepared"})
 public final class EditVideoSeekBarView$b
   implements c.a
 {
-  public static final b vmc;
+  public static final b wuI;
   
   static
   {
     AppMethodBeat.i(75704);
-    vmc = new b();
+    wuI = new b();
     AppMethodBeat.o(75704);
   }
   
-  public final void ni(boolean paramBoolean)
+  public final void oa(boolean paramBoolean)
   {
     AppMethodBeat.i(75703);
     if (paramBoolean)
     {
-      ad.e("MicroMsg.VideoSeekBarEditorView", "Not Supported init SegmentSeekBar failed.");
+      ac.e("MicroMsg.VideoSeekBarEditorView", "Not Supported init SegmentSeekBar failed.");
       AppMethodBeat.o(75703);
       return;
     }

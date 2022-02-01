@@ -5,7 +5,7 @@ import java.io.Serializable;
 public abstract interface j
   extends Serializable
 {
-  public abstract int aL(long paramLong);
+  public abstract int aH(long paramLong);
 }
 
 

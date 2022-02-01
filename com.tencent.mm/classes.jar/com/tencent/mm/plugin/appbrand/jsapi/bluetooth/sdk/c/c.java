@@ -4,12 +4,12 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public boolean gMR;
-  public boolean jJR;
-  public boolean jJS;
-  public boolean jJT;
-  public boolean jJU;
+  public boolean hnr;
   public JSONObject jsonObject;
+  public boolean kkr;
+  public boolean kks;
+  public boolean kkt;
+  public boolean kku;
   public String uuid;
 }
 

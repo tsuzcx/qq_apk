@@ -6,81 +6,32 @@ import com.tencent.mm.plugin.report.a;
 public final class df
   extends a
 {
-  private long dTL = 0L;
-  private long dTM = 0L;
-  private long dTN = 0L;
-  private long dTO = 0L;
+  public long dNx = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(118488);
+    AppMethodBeat.i(149926);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTL);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTM);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTN);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTO);
+    ((StringBuffer)localObject).append(this.dNx);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(118488);
+    arz((String)localObject);
+    AppMethodBeat.o(149926);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(118489);
+    AppMethodBeat.i(149927);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ExposeViewId:").append(this.dTL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickClearCount:").append(this.dTM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickRenewCount:").append(this.dTN);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IfDeleteVideo:").append(this.dTO);
+    ((StringBuffer)localObject).append("ClickScene:").append(this.dNx);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118489);
+    AppMethodBeat.o(149927);
     return localObject;
-  }
-  
-  public final long QL()
-  {
-    return this.dTM;
-  }
-  
-  public final long QM()
-  {
-    return this.dTN;
-  }
-  
-  public final df fN(long paramLong)
-  {
-    this.dTL = paramLong;
-    return this;
-  }
-  
-  public final df fO(long paramLong)
-  {
-    this.dTM = paramLong;
-    return this;
-  }
-  
-  public final df fP(long paramLong)
-  {
-    this.dTN = paramLong;
-    return this;
-  }
-  
-  public final df fQ(long paramLong)
-  {
-    this.dTO = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 16913;
+    return 16867;
   }
 }
 

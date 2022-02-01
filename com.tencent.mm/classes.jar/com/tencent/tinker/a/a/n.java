@@ -6,27 +6,27 @@ import com.tencent.tinker.a.a.b.e;
 public final class n
   extends s.a.a<n>
 {
-  public int IAG;
-  public int IBs;
-  public int IBt;
+  public int KmP;
+  public int KnB;
+  public int KnC;
   
   public n(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramInt1);
-    this.IBs = paramInt2;
-    this.IAG = paramInt3;
-    this.IBt = paramInt4;
+    this.KnB = paramInt2;
+    this.KmP = paramInt3;
+    this.KnC = paramInt4;
   }
   
   private int b(n paramn)
   {
-    if (this.IBs != paramn.IBs) {
-      return c.ks(this.IBs, paramn.IBs);
+    if (this.KnB != paramn.KnB) {
+      return c.kJ(this.KnB, paramn.KnB);
     }
-    if (this.IBt != paramn.IBt) {
-      return c.ks(this.IBt, paramn.IBt);
+    if (this.KnC != paramn.KnC) {
+      return c.kJ(this.KnC, paramn.KnC);
     }
-    return c.ks(this.IAG, paramn.IAG);
+    return c.kJ(this.KmP, paramn.KmP);
   }
   
   public final boolean equals(Object paramObject)
@@ -40,7 +40,7 @@ public final class n
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.IBs), Integer.valueOf(this.IAG), Integer.valueOf(this.IBt) });
+    return e.hash(new Object[] { Integer.valueOf(this.KnB), Integer.valueOf(this.KmP), Integer.valueOf(this.KnC) });
   }
 }
 

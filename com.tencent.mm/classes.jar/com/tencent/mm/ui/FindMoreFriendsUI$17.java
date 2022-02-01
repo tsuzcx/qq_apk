@@ -2,7 +2,7 @@ package com.tencent.mm.ui;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 
 final class FindMoreFriendsUI$17
   implements Runnable
@@ -12,7 +12,7 @@ final class FindMoreFriendsUI$17
   public final void run()
   {
     AppMethodBeat.i(33050);
-    d.b(this.FJN.getContext(), "webview", ".ui.tools.WebViewUI", this.val$intent);
+    d.b(this.HiV.getContext(), "webview", ".ui.tools.WebViewUI", this.val$intent);
     AppMethodBeat.o(33050);
   }
 }

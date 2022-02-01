@@ -14,57 +14,57 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.widget.c;
 
 public final class a
 {
-  static final int BiX;
-  a BiY;
-  final b BiZ;
-  boolean Bja;
-  PointF Bjb;
-  boolean Bjc;
-  boolean Bjd;
+  static final int CBk;
+  a CBl;
+  final b CBm;
+  boolean CBn;
+  PointF CBo;
+  boolean CBp;
+  boolean CBq;
   boolean mIsShowing;
   int mScreenHeight;
   int mScreenWidth;
   
   static
   {
-    int i = b.Bjl;
-    BiX = i * i;
+    int i = b.CBy;
+    CBk = i * i;
   }
   
   public a(b paramb)
   {
     AppMethodBeat.i(80412);
-    this.Bjb = new PointF();
-    this.BiZ = paramb;
-    paramb = (WindowManager)aj.getContext().getSystemService("window");
+    this.CBo = new PointF();
+    this.CBm = paramb;
+    paramb = (WindowManager)ai.getContext().getSystemService("window");
     WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    if (d.lf(26)) {}
+    if (d.kZ(26)) {}
     for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
     {
       localLayoutParams.format = 1;
       localLayoutParams.flags = 40;
       localLayoutParams.gravity = 85;
-      localLayoutParams.width = b.Bjm;
-      localLayoutParams.height = b.Bjm;
+      localLayoutParams.width = b.CBz;
+      localLayoutParams.height = b.CBz;
       localLayoutParams.x = 0;
       localLayoutParams.y = 0;
-      this.BiY = new a(aj.getContext());
+      this.CBl = new a(ai.getContext());
       try
       {
-        this.BiY.setVisibility(8);
-        paramb.addView(this.BiY, localLayoutParams);
+        this.CBl.setVisibility(8);
+        paramb.addView(this.CBl, localLayoutParams);
         AppMethodBeat.o(80412);
         return;
       }
       catch (Exception paramb)
       {
-        ad.e("MicroMsg.BagCancelController", "showCanceller add failed %s", new Object[] { paramb });
+        ac.e("MicroMsg.BagCancelController", "showCanceller add failed %s", new Object[] { paramb });
         AppMethodBeat.o(80412);
       }
     }
@@ -73,39 +73,39 @@ public final class a
   static final class a
     extends FrameLayout
   {
-    Vibrator lRO;
     View mContentView;
-    ImageView pev;
+    Vibrator mtQ;
+    ImageView pHG;
     
     public a(Context paramContext)
     {
       super();
       AppMethodBeat.i(80409);
-      this.lRO = ((Vibrator)paramContext.getSystemService("vibrator"));
+      this.mtQ = ((Vibrator)paramContext.getSystemService("vibrator"));
       LayoutInflater.from(paramContext).inflate(2131496081, this);
-      this.pev = ((ImageView)findViewById(2131297203));
-      paramContext = (RelativeLayout.LayoutParams)this.pev.getLayoutParams();
-      paramContext.height = b.Bjl;
-      paramContext.width = b.Bjl;
-      this.pev.setLayoutParams(paramContext);
+      this.pHG = ((ImageView)findViewById(2131297203));
+      paramContext = (RelativeLayout.LayoutParams)this.pHG.getLayoutParams();
+      paramContext.height = b.CBy;
+      paramContext.width = b.CBy;
+      this.pHG.setLayoutParams(paramContext);
       this.mContentView = findViewById(2131298739);
       AppMethodBeat.o(80409);
     }
     
-    final void ab(float paramFloat1, float paramFloat2)
+    final void af(float paramFloat1, float paramFloat2)
     {
       AppMethodBeat.i(80410);
       ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat1, paramFloat2, 1, 1.0F, 1, 1.0F);
       localScaleAnimation.setFillAfter(true);
       localScaleAnimation.setDuration(50L);
-      this.pev.startAnimation(localScaleAnimation);
+      this.pHG.startAnimation(localScaleAnimation);
       AppMethodBeat.o(80410);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void epn();
+    public abstract void eEI();
   }
 }
 

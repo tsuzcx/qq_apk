@@ -6,42 +6,42 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.z;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.ui.aj;
 
 public final class b
 {
-  private a HyG;
-  private boolean HyH;
-  private int HyI;
-  private int HyJ;
-  private int HyK;
-  public boolean HyL;
-  Runnable HyM;
-  Runnable HyN;
-  private Rect fTd;
-  private int mEi;
+  private a IZd;
+  private boolean IZe;
+  private int IZf;
+  private int IZg;
+  private int IZh;
+  public boolean IZi;
+  Runnable IZj;
+  Runnable IZk;
+  private Rect fWY;
   private int maxHeight;
+  private int ngo;
   private View view;
   
   public b(View paramView, a parama)
   {
     AppMethodBeat.i(143328);
-    this.fTd = new Rect();
-    this.HyH = false;
-    this.HyL = false;
+    this.fWY = new Rect();
+    this.IZe = false;
+    this.IZi = false;
     this.view = paramView;
-    this.HyG = parama;
-    this.HyK = ai.eb(paramView.getContext());
-    this.mEi = z.il(paramView.getContext());
+    this.IZd = parama;
+    this.IZh = aj.ej(paramView.getContext());
+    this.ngo = y.iw(paramView.getContext());
     AppMethodBeat.o(143328);
   }
   
-  private boolean feG()
+  private boolean fuB()
   {
     AppMethodBeat.i(143332);
-    boolean bool = z.ip(this.view.getContext());
+    boolean bool = y.iA(this.view.getContext());
     AppMethodBeat.o(143332);
     return bool;
   }
@@ -49,7 +49,7 @@ public final class b
   private boolean isInMultiWindowMode()
   {
     AppMethodBeat.i(143333);
-    if ((d.lf(24)) && ((this.view.getContext() instanceof Activity)))
+    if ((d.kZ(24)) && ((this.view.getContext() instanceof Activity)))
     {
       boolean bool = ((Activity)this.view.getContext()).isInMultiWindowMode();
       AppMethodBeat.o(143333);
@@ -59,21 +59,21 @@ public final class b
     return false;
   }
   
-  public final void aI(Runnable paramRunnable)
+  public final void aL(Runnable paramRunnable)
   {
     AppMethodBeat.i(143330);
-    this.HyM = paramRunnable;
-    this.HyN = null;
+    this.IZj = paramRunnable;
+    this.IZk = null;
     this.view.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(143326);
-        if (b.this.HyM != null)
+        if (b.this.IZj != null)
         {
-          ad.w("MicroMsg.InputPanelHelper", "onKeyboardShowOnce not run in measure");
-          b.this.HyM.run();
-          b.this.HyM = null;
+          ac.w("MicroMsg.InputPanelHelper", "onKeyboardShowOnce not run in measure");
+          b.this.IZj.run();
+          b.this.IZj = null;
         }
         AppMethodBeat.o(143326);
       }
@@ -81,21 +81,21 @@ public final class b
     AppMethodBeat.o(143330);
   }
   
-  public final void aJ(Runnable paramRunnable)
+  public final void aM(Runnable paramRunnable)
   {
     AppMethodBeat.i(143331);
-    this.HyN = paramRunnable;
-    this.HyM = null;
+    this.IZk = paramRunnable;
+    this.IZj = null;
     this.view.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(143327);
-        if (b.this.HyN != null)
+        if (b.this.IZk != null)
         {
-          ad.w("MicroMsg.InputPanelHelper", "onKeyboardHideOnce not run in measure");
-          b.this.HyN.run();
-          b.this.HyN = null;
+          ac.w("MicroMsg.InputPanelHelper", "onKeyboardHideOnce not run in measure");
+          b.this.IZk.run();
+          b.this.IZk = null;
         }
         AppMethodBeat.o(143327);
       }
@@ -103,67 +103,67 @@ public final class b
     AppMethodBeat.o(143331);
   }
   
-  public final void aao(int paramInt)
+  public final void acB(int paramInt)
   {
     AppMethodBeat.i(143329);
-    if ((!feG()) || (isInMultiWindowMode()))
+    if ((!fuB()) || (isInMultiWindowMode()))
     {
-      ad.i("MicroMsg.InputPanelHelper", "onMeasure: delay call runnable");
+      ac.i("MicroMsg.InputPanelHelper", "onMeasure: delay call runnable");
       AppMethodBeat.o(143329);
       return;
     }
-    int i = this.HyI;
-    int j = this.fTd.bottom;
-    this.HyI = View.MeasureSpec.getSize(paramInt);
-    this.view.getWindowVisibleDisplayFrame(this.fTd);
+    int i = this.IZf;
+    int j = this.fWY.bottom;
+    this.IZf = View.MeasureSpec.getSize(paramInt);
+    this.view.getWindowVisibleDisplayFrame(this.fWY);
     boolean bool;
-    if (!this.HyH)
+    if (!this.IZe)
     {
-      if (j != this.fTd.bottom)
+      if (j != this.fWY.bottom)
       {
         bool = true;
-        this.HyH = bool;
+        this.IZe = bool;
       }
     }
     else
     {
-      this.HyJ = this.fTd.bottom;
-      if (this.HyJ > this.maxHeight - this.HyK) {
-        this.maxHeight = this.HyJ;
+      this.IZg = this.fWY.bottom;
+      if (this.IZg > this.maxHeight - this.IZh) {
+        this.maxHeight = this.IZg;
       }
-      paramInt = this.maxHeight - this.HyJ;
-      if (paramInt <= this.HyK) {
+      paramInt = this.maxHeight - this.IZg;
+      if (paramInt <= this.IZh) {
         break label298;
       }
       bool = true;
       label147:
       if (bool) {
-        this.mEi = paramInt;
+        this.ngo = paramInt;
       }
-      if ((this.HyH) && (bool != this.HyL))
+      if ((this.IZe) && (bool != this.IZi))
       {
-        if (paramInt != this.HyK) {
+        if (paramInt != this.IZh) {
           break label304;
         }
-        this.HyG.g(false, this.mEi - paramInt);
+        this.IZd.g(false, this.ngo - paramInt);
       }
     }
     for (;;)
     {
-      this.HyL = bool;
-      if (((!this.HyH) || (i <= this.HyI + this.HyK)) && (i >= this.HyI - this.HyK)) {
+      this.IZi = bool;
+      if (((!this.IZe) || (i <= this.IZf + this.IZh)) && (i >= this.IZf - this.IZh)) {
         break label343;
       }
-      ad.i("MicroMsg.InputPanelHelper", "onMeasure: run, %s", new Object[] { Boolean.valueOf(bool) });
-      this.HyH = false;
+      ac.i("MicroMsg.InputPanelHelper", "onMeasure: run, %s", new Object[] { Boolean.valueOf(bool) });
+      this.IZe = false;
       if (!bool) {
         break label322;
       }
-      if (this.HyM == null) {
+      if (this.IZj == null) {
         break label343;
       }
-      this.HyM.run();
-      this.HyM = null;
+      this.IZj.run();
+      this.IZj = null;
       AppMethodBeat.o(143329);
       return;
       bool = false;
@@ -172,13 +172,13 @@ public final class b
       bool = false;
       break label147;
       label304:
-      this.HyG.g(bool, this.mEi);
+      this.IZd.g(bool, this.ngo);
     }
     label322:
-    if (this.HyN != null)
+    if (this.IZk != null)
     {
-      this.HyN.run();
-      this.HyN = null;
+      this.IZk.run();
+      this.IZk = null;
     }
     label343:
     AppMethodBeat.o(143329);

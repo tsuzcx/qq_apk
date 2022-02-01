@@ -9,24 +9,24 @@ import com.tencent.mm.ui.MMActivity;
 
 public class j
 {
-  public MMActivity nCW;
-  public int tqo;
-  private int tqp;
+  public MMActivity ofX;
+  public int uyG;
+  private int uyH;
   
   public j(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(65941);
-    this.nCW = paramMMActivity;
-    if (cMO())
+    this.ofX = paramMMActivity;
+    if (dau())
     {
       paramMMActivity = paramMMActivity.getWindow();
       paramMMActivity.addFlags(-2147483648);
-      this.tqp = paramMMActivity.getStatusBarColor();
+      this.uyH = paramMMActivity.getStatusBarColor();
     }
     AppMethodBeat.o(65941);
   }
   
-  public static boolean cMO()
+  public static boolean dau()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
@@ -34,20 +34,20 @@ public class j
   protected void z(Drawable paramDrawable)
   {
     AppMethodBeat.i(65942);
-    if (this.nCW.getSupportActionBar() != null) {
-      this.nCW.getSupportActionBar().setBackgroundDrawable(paramDrawable);
+    if (this.ofX.getSupportActionBar() != null) {
+      this.ofX.getSupportActionBar().setBackgroundDrawable(paramDrawable);
     }
     AppMethodBeat.o(65942);
   }
   
   public static final class a
   {
-    public int lQE;
-    public int miX;
-    public Drawable tqq;
-    public int tqr;
-    public int tqs;
-    public int tqt;
+    public int mKX;
+    public int msH;
+    public int tWw;
+    public Drawable uyI;
+    public int uyJ;
+    public int uyK;
   }
 }
 

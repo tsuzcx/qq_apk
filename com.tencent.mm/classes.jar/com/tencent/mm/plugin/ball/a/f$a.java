@@ -4,11 +4,11 @@ import android.view.MotionEvent;
 
 public abstract interface f$a
 {
-  public abstract void aK(float paramFloat);
+  public abstract void aO(float paramFloat);
   
-  public abstract int ic(boolean paramBoolean);
+  public abstract int iC(boolean paramBoolean);
   
-  public abstract void m(MotionEvent paramMotionEvent);
+  public abstract void k(MotionEvent paramMotionEvent);
 }
 
 

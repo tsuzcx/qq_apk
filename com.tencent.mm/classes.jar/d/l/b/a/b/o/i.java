@@ -4,6 +4,7 @@ import TT;;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.ae;
 import d.a.e;
+import d.g.b.a.d;
 import d.g.b.aa;
 import d.g.b.k;
 import d.v;
@@ -13,26 +14,27 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public final class i<T>
   extends AbstractSet<T>
 {
-  public static final i.b KbP;
+  public static final b LPk;
   private Object data;
   private int size;
   
   static
   {
     AppMethodBeat.i(61401);
-    KbP = new i.b((byte)0);
+    LPk = new b((byte)0);
     AppMethodBeat.o(61401);
   }
   
-  public static final <T> i<T> fKq()
+  public static final <T> i<T> gcT()
   {
     AppMethodBeat.i(61402);
-    i locali = i.b.fKq();
+    i locali = b.gcT();
     AppMethodBeat.o(61402);
     return locali;
   }
@@ -80,7 +82,7 @@ public final class i<T>
         {
           localObject = Arrays.copyOf((Object[])localObject, localObject.length);
           k.h(localObject, "elements");
-          localObject = (LinkedHashSet)e.b((Object[])localObject, (Collection)new LinkedHashSet(ae.adL(localObject.length)));
+          localObject = (LinkedHashSet)e.b((Object[])localObject, (Collection)new LinkedHashSet(ae.agH(localObject.length)));
           ((LinkedHashSet)localObject).add(paramT);
         }
         for (paramT = (TT)localObject;; paramT = (TT)localObject)
@@ -99,7 +101,7 @@ public final class i<T>
         AppMethodBeat.o(61399);
         throw paramT;
       }
-    } while (aa.eN(localObject).add(paramT));
+    } while (aa.eQ(localObject).add(paramT));
     AppMethodBeat.o(61399);
     return false;
   }
@@ -160,7 +162,7 @@ public final class i<T>
     }
     if (size() == 1)
     {
-      localObject = (Iterator)new i.c(this.data);
+      localObject = (Iterator)new c(this.data);
       AppMethodBeat.o(61398);
       return localObject;
     }
@@ -184,14 +186,58 @@ public final class i<T>
       AppMethodBeat.o(61398);
       throw ((Throwable)localObject);
     }
-    localObject = aa.eN(localObject).iterator();
+    localObject = aa.eQ(localObject).iterator();
     AppMethodBeat.o(61398);
     return localObject;
+  }
+  
+  public static final class b
+  {
+    public static <T> i<T> gcT()
+    {
+      AppMethodBeat.i(61395);
+      i locali = new i((byte)0);
+      AppMethodBeat.o(61395);
+      return locali;
+    }
+  }
+  
+  static final class c<T>
+    implements d, Iterator<T>
+  {
+    private final T KUQ;
+    private boolean KVf;
+    
+    public c(T paramT)
+    {
+      this.KUQ = paramT;
+      this.KVf = true;
+    }
+    
+    public final boolean hasNext()
+    {
+      return this.KVf;
+    }
+    
+    public final T next()
+    {
+      AppMethodBeat.i(61396);
+      if (this.KVf)
+      {
+        this.KVf = false;
+        localObject = this.KUQ;
+        AppMethodBeat.o(61396);
+        return localObject;
+      }
+      Object localObject = (Throwable)new NoSuchElementException();
+      AppMethodBeat.o(61396);
+      throw ((Throwable)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.o.i
  * JD-Core Version:    0.7.0.1
  */

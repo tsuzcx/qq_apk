@@ -2,7 +2,7 @@ package com.tencent.mm.xlog.app;
 
 public final class a
 {
-  public static String Igx = "wechatxlog";
+  public static String JIc = "wechatxlog";
 }
 
 

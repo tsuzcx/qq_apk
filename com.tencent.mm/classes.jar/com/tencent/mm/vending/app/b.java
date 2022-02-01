@@ -11,25 +11,25 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static b HPc;
-  Map<c, a> HPd;
-  final SparseIntArray HPe;
-  final Handler HPf;
+  private static b Jpx;
+  final Handler JpA;
+  Map<c, a> Jpy;
+  final SparseIntArray Jpz;
   
   static
   {
     AppMethodBeat.i(74893);
-    HPc = null;
-    HPc = new b();
+    Jpx = null;
+    Jpx = new b();
     AppMethodBeat.o(74893);
   }
   
   public b()
   {
     AppMethodBeat.i(74891);
-    this.HPd = new ConcurrentHashMap();
-    this.HPe = new SparseIntArray();
-    this.HPf = new Handler(com.tencent.mm.vending.i.b.fhw().HQX.getLooper())
+    this.Jpy = new ConcurrentHashMap();
+    this.Jpz = new SparseIntArray();
+    this.JpA = new Handler(com.tencent.mm.vending.i.b.fxy().Jrs.getLooper())
     {
       public final void handleMessage(Message arg1)
       {
@@ -43,10 +43,10 @@ public final class b
           AppMethodBeat.o(74894);
           return;
           locala.onCreate();
-          synchronized (locala.HOS)
+          synchronized (locala.Jpn)
           {
-            locala.HOV = true;
-            locala.HOS.notify();
+            locala.Jpq = true;
+            locala.Jpn.notify();
             AppMethodBeat.o(74894);
             return;
           }
@@ -61,32 +61,32 @@ public final class b
     AppMethodBeat.o(74891);
   }
   
-  public static b fhb()
+  public static b fxd()
   {
-    return HPc;
+    return Jpx;
   }
   
   public final void a(c paramc, a parama)
   {
     AppMethodBeat.i(74892);
-    if (!this.HPd.containsKey(paramc))
+    if (!this.Jpy.containsKey(paramc))
     {
-      this.HPd.put(paramc, parama);
+      this.Jpy.put(paramc, parama);
       com.tencent.mm.vending.f.a.i("Vending.InteractorManager", "presenter %s hash %s interactor %s looper %s", new Object[] { paramc, Integer.valueOf(paramc.hashCode()), parama, Looper.myLooper() });
-      int i = this.HPe.get(paramc.hashCode(), 0);
+      int i = this.Jpz.get(paramc.hashCode(), 0);
       if ((i > 0) && (i < 4))
       {
         if (i > 0) {
-          this.HPf.sendMessage(this.HPf.obtainMessage(1, parama));
+          this.JpA.sendMessage(this.JpA.obtainMessage(1, parama));
         }
         if (i >= 2) {
-          this.HPf.sendMessage(this.HPf.obtainMessage(2, parama));
+          this.JpA.sendMessage(this.JpA.obtainMessage(2, parama));
         }
         if (i >= 3) {
-          this.HPf.sendMessage(this.HPf.obtainMessage(3, parama));
+          this.JpA.sendMessage(this.JpA.obtainMessage(3, parama));
         }
         if (i >= 4) {
-          this.HPf.sendMessage(this.HPf.obtainMessage(4, parama));
+          this.JpA.sendMessage(this.JpA.obtainMessage(4, parama));
         }
       }
       AppMethodBeat.o(74892);

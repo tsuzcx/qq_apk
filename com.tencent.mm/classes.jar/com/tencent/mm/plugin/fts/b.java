@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 
@@ -15,16 +15,16 @@ public final class b
   implements Runnable
 {
   private int errorCode;
-  private j rma;
-  private WeakReference<l> rmb;
+  private j suU;
+  private WeakReference<l> suV;
   
   public b(int paramInt, j paramj)
   {
     AppMethodBeat.i(52500);
     this.errorCode = paramInt;
-    this.rma = paramj;
-    this.rmb = new WeakReference(paramj.rpO);
-    this.rma.rpO = null;
+    this.suU = paramj;
+    this.suV = new WeakReference(paramj.syI);
+    this.suU.syI = null;
     AppMethodBeat.o(52500);
   }
   
@@ -34,15 +34,15 @@ public final class b
     final k localk;
     if ((this.errorCode == -2) || (this.errorCode == -3))
     {
-      localk = new k(this.rma);
-      localk.rpP = this;
-      localk.bRZ = this.errorCode;
-      localk.rpQ = new LinkedList();
-      localk.roS = h.bc(this.rma.query, false);
-      if (this.rma.handler != null) {
+      localk = new k(this.suU);
+      localk.syJ = this;
+      localk.bPH = this.errorCode;
+      localk.syK = new LinkedList();
+      localk.sxM = h.bi(this.suU.query, false);
+      if (this.suU.handler != null) {
         break label113;
       }
-      l locall = (l)this.rmb.get();
+      l locall = (l)this.suV.get();
       if (locall != null) {
         locall.b(localk);
       }
@@ -52,7 +52,7 @@ public final class b
       AppMethodBeat.o(52501);
       return true;
       label113:
-      this.rma.handler.post(new Runnable()
+      this.suU.handler.post(new Runnable()
       {
         public final void run()
         {
@@ -99,7 +99,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b
  * JD-Core Version:    0.7.0.1
  */

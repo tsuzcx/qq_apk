@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.appusage.y;
 import com.tencent.mm.plugin.appbrand.appusage.y.a;
 import com.tencent.mm.plugin.appbrand.config.u;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -17,33 +17,33 @@ import java.util.Locale;
 
  enum i
 {
-  private static final a jpH;
+  private static final a jPW;
   
   static
   {
     AppMethodBeat.i(45047);
-    jpI = new i[0];
-    jpH = new a();
+    jPX = new i[0];
+    jPW = new a();
     AppMethodBeat.o(45047);
   }
   
-  static AppBrandRecentTaskInfo Hp(String paramString)
+  static AppBrandRecentTaskInfo Lt(String paramString)
   {
     AppMethodBeat.i(45044);
-    if (j.aOI() == null)
+    if (j.aVA() == null)
     {
       AppMethodBeat.o(45044);
       return null;
     }
-    Object localObject = j.aOI();
-    if (bt.isNullOrNil(paramString)) {
+    Object localObject = j.aVA();
+    if (bs.isNullOrNil(paramString)) {
       paramString = null;
     }
     while (paramString == null)
     {
       AppMethodBeat.o(45044);
       return null;
-      localObject = ((y)localObject).iVg.query("AppBrandLauncherLayoutItem", null, String.format(Locale.US, "%s=? and %s=?", new Object[] { "scene", "recordId" }), new String[] { "2", paramString }, null, null, null);
+      localObject = ((y)localObject).jvw.query("AppBrandLauncherLayoutItem", null, String.format(Locale.US, "%s=? and %s=?", new Object[] { "scene", "recordId" }), new String[] { "2", paramString }, null, null, null);
       if (localObject == null)
       {
         paramString = null;
@@ -55,7 +55,7 @@ import java.util.Locale;
         }
         paramString = new y.a();
         paramString.convertFrom((Cursor)localObject);
-        if (bt.isNullOrNil(paramString.field_brandId)) {
+        if (bs.isNullOrNil(paramString.field_brandId)) {
           break label171;
         }
       }
@@ -70,14 +70,14 @@ import java.util.Locale;
     }
   }
   
-  static List<AppBrandRecentTaskInfo> aWv()
+  static List<AppBrandRecentTaskInfo> bdt()
   {
     AppMethodBeat.i(45043);
     LinkedList localLinkedList = new LinkedList();
-    if (j.aOI() != null)
+    if (j.aVA() != null)
     {
-      ArrayList localArrayList = j.aOI().qO(10000);
-      if (!bt.gL(localArrayList)) {
+      ArrayList localArrayList = j.aVA().rB(10000);
+      if (!bs.gY(localArrayList)) {
         localLinkedList.addAll(localArrayList);
       }
     }
@@ -88,8 +88,8 @@ import java.util.Locale;
   static void c(k.a parama)
   {
     AppMethodBeat.i(45045);
-    if (j.aOI() != null) {
-      j.aOI().add(parama);
+    if (j.aVA() != null) {
+      j.aVA().add(parama);
     }
     AppMethodBeat.o(45045);
   }
@@ -97,8 +97,8 @@ import java.util.Locale;
   static void d(k.a parama)
   {
     AppMethodBeat.i(45046);
-    if (j.aOI() != null) {
-      j.aOI().remove(parama);
+    if (j.aVA() != null) {
+      j.aVA().remove(parama);
     }
     AppMethodBeat.o(45046);
   }
@@ -106,20 +106,20 @@ import java.util.Locale;
   static void onCreate()
   {
     AppMethodBeat.i(45041);
-    u.aTL().add(jpH);
+    u.baJ().add(jPW);
     AppMethodBeat.o(45041);
   }
   
   static void onDestroy()
   {
     AppMethodBeat.i(45042);
-    u.aTL().remove(jpH);
+    u.baJ().remove(jPW);
     AppMethodBeat.o(45042);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.k.i
  * JD-Core Version:    0.7.0.1
  */

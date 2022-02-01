@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ex
   extends b
 {
-  public a dhu;
+  public a deO;
   
   public ex()
   {
@@ -15,22 +15,23 @@ public final class ex
   
   private ex(byte paramByte)
   {
-    AppMethodBeat.i(19798);
-    this.dhu = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19797);
+    this.deO = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19798);
+    AppMethodBeat.o(19797);
   }
   
   public static final class a
   {
-    public byte[] data;
+    public long deL;
+    public int dea;
     public String mac;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ex
  * JD-Core Version:    0.7.0.1
  */

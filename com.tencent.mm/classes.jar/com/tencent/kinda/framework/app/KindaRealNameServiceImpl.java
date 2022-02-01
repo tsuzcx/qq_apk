@@ -6,7 +6,7 @@ import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.a.a;
 import com.tencent.mm.plugin.wallet_core.model.s;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.i;
 
@@ -49,7 +49,7 @@ public class KindaRealNameServiceImpl
           return true;
           paramVoidCallback2.call();
           continue;
-          ad.e("MicroMsg.KindaRealNameServiceImpl", "WalletGetDisclaimerCallback resultCode=%d,errMsg=%s,errcode=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousString, Integer.valueOf(paramAnonymousInt2) });
+          ac.e("MicroMsg.KindaRealNameServiceImpl", "WalletGetDisclaimerCallback resultCode=%d,errMsg=%s,errcode=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousString, Integer.valueOf(paramAnonymousInt2) });
           paramVoidCallback1.call();
         }
       }
@@ -58,7 +58,7 @@ public class KindaRealNameServiceImpl
     if ((paramVoidCallback1 instanceof MMActivity)) {}
     for (paramVoidCallback1 = (MMActivity)paramVoidCallback1;; paramVoidCallback1 = null)
     {
-      s.ebW();
+      s.ers();
       s.b(paramVoidCallback1, locali, 1);
       AppMethodBeat.o(18508);
       return;

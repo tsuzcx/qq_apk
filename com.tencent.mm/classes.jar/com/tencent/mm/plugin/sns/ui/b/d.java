@@ -17,8 +17,8 @@ public final class d
   {
     super(paramActivity, paramView, paramBoolean);
     AppMethodBeat.i(99899);
-    this.tbV = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.tbV.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.ukk = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.ukk.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -31,37 +31,37 @@ public final class d
           if (f != 0.0F)
           {
             paramAnonymousValueAnimator = (FrameLayout.LayoutParams)d.this.view.getLayoutParams();
-            paramAnonymousValueAnimator.leftMargin = ((int)(d.this.xNV * f));
-            paramAnonymousValueAnimator.topMargin = ((int)(d.this.xNW * f));
+            paramAnonymousValueAnimator.leftMargin = ((int)(d.this.zaL * f));
+            paramAnonymousValueAnimator.topMargin = ((int)(d.this.zaM * f));
             localViewGroup = (ViewGroup)d.this.view.getParent();
             if (!paramBoolean) {
               break label238;
             }
-            paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() - (d.this.gnh - d.this.xOa * f) - paramAnonymousValueAnimator.leftMargin));
+            paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() - (d.this.gNU - d.this.zaQ * f) - paramAnonymousValueAnimator.leftMargin));
           }
         }
-        for (paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() - (d.this.gni - d.this.xNZ * f) - paramAnonymousValueAnimator.topMargin));; paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() * f - d.this.xNY * f - paramAnonymousValueAnimator.topMargin)))
+        for (paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() - (d.this.gNV - d.this.zaP * f) - paramAnonymousValueAnimator.topMargin));; paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() * f - d.this.zaO * f - paramAnonymousValueAnimator.topMargin)))
         {
           d.this.view.setLayoutParams(paramAnonymousValueAnimator);
-          if (d.this.xNU != null) {
-            d.this.xNU.bu(f);
+          if (d.this.zaK != null) {
+            d.this.zaK.bC(f);
           }
           AppMethodBeat.o(99896);
           return;
           d.this.view.setAlpha(1.0F - f);
           break;
           label238:
-          paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() * f - d.this.xNX * f - paramAnonymousValueAnimator.leftMargin));
+          paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() * f - d.this.zaN * f - paramAnonymousValueAnimator.leftMargin));
         }
       }
     });
-    this.tbV.addListener(new AnimatorListenerAdapter()
+    this.ukk.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99898);
-        if (d.this.xNU != null) {
-          d.this.xNU.onAnimationEnd();
+        if (d.this.zaK != null) {
+          d.this.zaK.onAnimationEnd();
         }
         d.this.view.setVisibility(8);
         AppMethodBeat.o(99898);
@@ -70,8 +70,8 @@ public final class d
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99897);
-        if (d.this.xNU != null) {
-          d.this.xNU.onAnimationStart();
+        if (d.this.zaK != null) {
+          d.this.zaK.onAnimationStart();
         }
         d.this.view.setVisibility(0);
         AppMethodBeat.o(99897);
@@ -79,17 +79,17 @@ public final class d
     });
     if (paramBoolean)
     {
-      this.tbV.setDuration(300L);
+      this.ukk.setDuration(300L);
       AppMethodBeat.o(99899);
       return;
     }
-    this.tbV.setDuration(400L);
+    this.ukk.setDuration(400L);
     AppMethodBeat.o(99899);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.d
  * JD-Core Version:    0.7.0.1
  */

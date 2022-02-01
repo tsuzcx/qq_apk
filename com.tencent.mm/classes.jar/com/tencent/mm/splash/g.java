@@ -1,22 +1,22 @@
 package com.tencent.mm.splash;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class g
 {
-  public static final boolean wH;
+  public static final boolean xF;
   
   static
   {
     AppMethodBeat.i(40620);
-    wH = o(System.getProperty("java.vm.version"));
+    xF = p(System.getProperty("java.vm.version"));
     AppMethodBeat.o(40620);
   }
   
-  private static boolean o(String paramString)
+  private static boolean p(String paramString)
   {
     bool2 = false;
     AppMethodBeat.i(40619);
@@ -56,7 +56,7 @@ public final class g
     if (bool1) {}
     for (paramString = " has multidex support";; paramString = " does not have multidex support")
     {
-      ad.i("MicroMsg.MultiDex", paramString);
+      ac.i("MicroMsg.MultiDex", paramString);
       AppMethodBeat.o(40619);
       return bool1;
     }

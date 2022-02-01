@@ -4,21 +4,21 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.bk;
 
 public final class o
 {
-  public static int aqz()
+  public static int axp()
   {
     AppMethodBeat.i(20317);
-    if (!g.afw())
+    if (!g.agM())
     {
-      ad.w("MicroMsg.BottleConversationLogic", "get Bottle Total Conversation Unread, but has not set uin");
+      ac.w("MicroMsg.BottleConversationLogic", "get Bottle Total Conversation Unread, but has not set uin");
       AppMethodBeat.o(20317);
       return 0;
     }
-    Cursor localCursor = ((k)g.ab(k.class)).apR().eLo();
+    Cursor localCursor = ((k)g.ab(k.class)).awG().faQ();
     if ((localCursor != null) && (localCursor.getCount() > 0)) {
       localCursor.moveToFirst();
     }

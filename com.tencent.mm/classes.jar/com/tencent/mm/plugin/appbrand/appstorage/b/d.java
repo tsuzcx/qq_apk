@@ -3,27 +3,27 @@ package com.tencent.mm.plugin.appbrand.appstorage.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/LegacyFolder;", "", "dir", "", "(Ljava/lang/String;ILjava/lang/String;)V", "getDir", "()Ljava/lang/String;", "imagecache", "wxafiles", "wxanewfiles", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/LegacyFolder;", "", "dir", "", "(Ljava/lang/String;ILjava/lang/String;)V", "getDir", "()Ljava/lang/String;", "imagecache", "wxafiles", "wxanewfiles", "plugin-appbrand-integration_release"})
 public enum d
 {
-  public final String iTP;
+  public final String jub;
   
   static
   {
     AppMethodBeat.i(175124);
     d locald1 = new d("imagecache", 0, "wxacache");
-    iTL = locald1;
+    jtX = locald1;
     d locald2 = new d("wxafiles", 1, "wxafiles");
-    iTM = locald2;
+    jtY = locald2;
     d locald3 = new d("wxanewfiles", 2, "wxanewfiles");
-    iTN = locald3;
-    iTO = new d[] { locald1, locald2, locald3 };
+    jtZ = locald3;
+    jua = new d[] { locald1, locald2, locald3 };
     AppMethodBeat.o(175124);
   }
   
   private d(String paramString)
   {
-    this.iTP = paramString;
+    this.jub = paramString;
   }
 }
 

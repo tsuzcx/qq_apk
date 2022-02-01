@@ -16,54 +16,54 @@ public final class MediaDescriptionCompat
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaDescriptionCompat> CREATOR = new Parcelable.Creator() {};
-  private final CharSequence Eo;
-  final String Jh;
-  private final CharSequence Ji;
-  private final CharSequence Jj;
-  private final Bitmap Jk;
-  private final Uri Jl;
-  private final Uri Jm;
-  private Object Jn;
+  private final CharSequence Fm;
+  final String Kc;
+  private final CharSequence Kd;
+  private final CharSequence Ke;
+  private final Bitmap Kf;
+  private final Uri Kg;
+  private final Uri Kh;
+  private Object Ki;
   private final Bundle mExtras;
   
   MediaDescriptionCompat(Parcel paramParcel)
   {
-    this.Jh = paramParcel.readString();
-    this.Eo = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-    this.Ji = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-    this.Jj = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.Kc = paramParcel.readString();
+    this.Fm = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.Kd = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.Ke = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
     ClassLoader localClassLoader = getClass().getClassLoader();
-    this.Jk = ((Bitmap)paramParcel.readParcelable(localClassLoader));
-    this.Jl = ((Uri)paramParcel.readParcelable(localClassLoader));
+    this.Kf = ((Bitmap)paramParcel.readParcelable(localClassLoader));
+    this.Kg = ((Uri)paramParcel.readParcelable(localClassLoader));
     this.mExtras = paramParcel.readBundle(localClassLoader);
-    this.Jm = ((Uri)paramParcel.readParcelable(localClassLoader));
+    this.Kh = ((Uri)paramParcel.readParcelable(localClassLoader));
   }
   
   private MediaDescriptionCompat(String paramString, CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, Bitmap paramBitmap, Uri paramUri1, Bundle paramBundle, Uri paramUri2)
   {
-    this.Jh = paramString;
-    this.Eo = paramCharSequence1;
-    this.Ji = paramCharSequence2;
-    this.Jj = paramCharSequence3;
-    this.Jk = paramBitmap;
-    this.Jl = paramUri1;
+    this.Kc = paramString;
+    this.Fm = paramCharSequence1;
+    this.Kd = paramCharSequence2;
+    this.Ke = paramCharSequence3;
+    this.Kf = paramBitmap;
+    this.Kg = paramUri1;
     this.mExtras = paramBundle;
-    this.Jm = paramUri2;
+    this.Kh = paramUri2;
   }
   
-  public static MediaDescriptionCompat s(Object paramObject)
+  public static MediaDescriptionCompat u(Object paramObject)
   {
     a locala;
     Bundle localBundle;
     if ((paramObject != null) && (Build.VERSION.SDK_INT >= 21))
     {
       locala = new a();
-      locala.Jh = ((MediaDescription)paramObject).getMediaId();
-      locala.Eo = ((MediaDescription)paramObject).getTitle();
-      locala.Ji = ((MediaDescription)paramObject).getSubtitle();
-      locala.Jj = ((MediaDescription)paramObject).getDescription();
-      locala.Jk = ((MediaDescription)paramObject).getIconBitmap();
-      locala.Jl = ((MediaDescription)paramObject).getIconUri();
+      locala.Kc = ((MediaDescription)paramObject).getMediaId();
+      locala.Fm = ((MediaDescription)paramObject).getTitle();
+      locala.Kd = ((MediaDescription)paramObject).getSubtitle();
+      locala.Ke = ((MediaDescription)paramObject).getDescription();
+      locala.Kf = ((MediaDescription)paramObject).getIconBitmap();
+      locala.Kg = ((MediaDescription)paramObject).getIconUri();
       localBundle = ((MediaDescription)paramObject).getExtras();
       if (localBundle == null) {
         break label235;
@@ -82,19 +82,19 @@ public final class MediaDescriptionCompat
           if (localObject == null) {
             break label211;
           }
-          locala.Jm = ((Uri)localObject);
+          locala.Kh = ((Uri)localObject);
         }
       }
       for (;;)
       {
-        localObject = new MediaDescriptionCompat(locala.Jh, locala.Eo, locala.Ji, locala.Jj, locala.Jk, locala.Jl, locala.mExtras, locala.Jm);
-        ((MediaDescriptionCompat)localObject).Jn = paramObject;
+        localObject = new MediaDescriptionCompat(locala.Kc, locala.Fm, locala.Kd, locala.Ke, locala.Kf, locala.Kg, locala.mExtras, locala.Kh);
+        ((MediaDescriptionCompat)localObject).Ki = paramObject;
         return localObject;
         localBundle.remove("android.support.v4.media.description.MEDIA_URI");
         localBundle.remove("android.support.v4.media.description.NULL_BUNDLE_FLAG");
         break;
         if (Build.VERSION.SDK_INT >= 23) {
-          locala.Jm = ((MediaDescription)paramObject).getMediaUri();
+          locala.Kh = ((MediaDescription)paramObject).getMediaUri();
         }
       }
       return null;
@@ -108,44 +108,44 @@ public final class MediaDescriptionCompat
   
   public final String toString()
   {
-    return this.Eo + ", " + this.Ji + ", " + this.Jj;
+    return this.Fm + ", " + this.Kd + ", " + this.Ke;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     if (Build.VERSION.SDK_INT < 21)
     {
-      paramParcel.writeString(this.Jh);
-      TextUtils.writeToParcel(this.Eo, paramParcel, paramInt);
-      TextUtils.writeToParcel(this.Ji, paramParcel, paramInt);
-      TextUtils.writeToParcel(this.Jj, paramParcel, paramInt);
-      paramParcel.writeParcelable(this.Jk, paramInt);
-      paramParcel.writeParcelable(this.Jl, paramInt);
+      paramParcel.writeString(this.Kc);
+      TextUtils.writeToParcel(this.Fm, paramParcel, paramInt);
+      TextUtils.writeToParcel(this.Kd, paramParcel, paramInt);
+      TextUtils.writeToParcel(this.Ke, paramParcel, paramInt);
+      paramParcel.writeParcelable(this.Kf, paramInt);
+      paramParcel.writeParcelable(this.Kg, paramInt);
       paramParcel.writeBundle(this.mExtras);
-      paramParcel.writeParcelable(this.Jm, paramInt);
+      paramParcel.writeParcelable(this.Kh, paramInt);
       return;
     }
-    if ((this.Jn != null) || (Build.VERSION.SDK_INT < 21))
+    if ((this.Ki != null) || (Build.VERSION.SDK_INT < 21))
     {
-      localObject = this.Jn;
+      localObject = this.Ki;
       ((MediaDescription)localObject).writeToParcel(paramParcel, paramInt);
       return;
     }
     MediaDescription.Builder localBuilder = new MediaDescription.Builder();
-    Object localObject = this.Jh;
+    Object localObject = this.Kc;
     ((MediaDescription.Builder)localBuilder).setMediaId((String)localObject);
-    localObject = this.Eo;
+    localObject = this.Fm;
     ((MediaDescription.Builder)localBuilder).setTitle((CharSequence)localObject);
-    localObject = this.Ji;
+    localObject = this.Kd;
     ((MediaDescription.Builder)localBuilder).setSubtitle((CharSequence)localObject);
-    localObject = this.Jj;
+    localObject = this.Ke;
     ((MediaDescription.Builder)localBuilder).setDescription((CharSequence)localObject);
-    localObject = this.Jk;
+    localObject = this.Kf;
     ((MediaDescription.Builder)localBuilder).setIconBitmap((Bitmap)localObject);
-    localObject = this.Jl;
+    localObject = this.Kg;
     ((MediaDescription.Builder)localBuilder).setIconUri((Uri)localObject);
     Bundle localBundle = this.mExtras;
-    if ((Build.VERSION.SDK_INT < 23) && (this.Jm != null))
+    if ((Build.VERSION.SDK_INT < 23) && (this.Kh != null))
     {
       localObject = localBundle;
       if (localBundle == null)
@@ -153,18 +153,18 @@ public final class MediaDescriptionCompat
         localObject = new Bundle();
         ((Bundle)localObject).putBoolean("android.support.v4.media.description.NULL_BUNDLE_FLAG", true);
       }
-      ((Bundle)localObject).putParcelable("android.support.v4.media.description.MEDIA_URI", this.Jm);
+      ((Bundle)localObject).putParcelable("android.support.v4.media.description.MEDIA_URI", this.Kh);
     }
     for (;;)
     {
       ((MediaDescription.Builder)localBuilder).setExtras((Bundle)localObject);
       if (Build.VERSION.SDK_INT >= 23)
       {
-        localObject = this.Jm;
+        localObject = this.Kh;
         ((MediaDescription.Builder)localBuilder).setMediaUri((Uri)localObject);
       }
-      this.Jn = ((MediaDescription.Builder)localBuilder).build();
-      localObject = this.Jn;
+      this.Ki = ((MediaDescription.Builder)localBuilder).build();
+      localObject = this.Ki;
       break;
       localObject = localBundle;
     }
@@ -172,19 +172,19 @@ public final class MediaDescriptionCompat
   
   public static final class a
   {
-    CharSequence Eo;
-    String Jh;
-    CharSequence Ji;
-    CharSequence Jj;
-    Bitmap Jk;
-    Uri Jl;
-    Uri Jm;
+    CharSequence Fm;
+    String Kc;
+    CharSequence Kd;
+    CharSequence Ke;
+    Bitmap Kf;
+    Uri Kg;
+    Uri Kh;
     Bundle mExtras;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.MediaDescriptionCompat
  * JD-Core Version:    0.7.0.1
  */

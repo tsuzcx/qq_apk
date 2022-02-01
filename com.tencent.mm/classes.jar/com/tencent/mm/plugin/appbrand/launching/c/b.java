@@ -4,37 +4,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
  enum b
 {
-  final String htS;
+  final String hUu;
   final int scene;
   
   static
   {
     AppMethodBeat.i(47409);
-    kNN = new b("WALLET", 0, "weapp://wallet/", 1019);
-    kNO = new b("SEARCH_NATIVE_FEATURE", 1, "weapp://search/", 1005);
-    kNP = new b[] { kNN, kNO };
+    lpm = new b("WALLET", 0, "weapp://wallet/", 1019);
+    lpn = new b("SEARCH_NATIVE_FEATURE", 1, "weapp://search/", 1005);
+    lpo = new b[] { lpm, lpn };
     AppMethodBeat.o(47409);
   }
   
   private b(String paramString, int paramInt)
   {
-    this.htS = paramString;
+    this.hUu = paramString;
     this.scene = paramInt;
   }
   
-  static String bhg()
+  static String boa()
   {
     return "";
   }
   
-  static String bhh()
+  static String bob()
   {
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class dd
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Name;
-  public int scz;
+  public int tkt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -21,7 +21,7 @@ public final class dd
         AppMethodBeat.o(41835);
         throw paramVarArgs;
       }
-      paramVarArgs.aR(1, this.scz);
+      paramVarArgs.aR(1, this.tkt);
       if (this.Name != null) {
         paramVarArgs.d(2, this.Name);
       }
@@ -30,7 +30,7 @@ public final class dd
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.scz) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.tkt) + 0;
       paramInt = i;
       if (this.Name != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.Name);
@@ -41,9 +41,9 @@ public final class dd
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       if (this.Name == null)
@@ -65,11 +65,11 @@ public final class dd
         AppMethodBeat.o(41835);
         return -1;
       case 1: 
-        localdd.scz = locala.KhF.xS();
+        localdd.tkt = locala.LVo.xF();
         AppMethodBeat.o(41835);
         return 0;
       }
-      localdd.Name = locala.KhF.readString();
+      localdd.Name = locala.LVo.readString();
       AppMethodBeat.o(41835);
       return 0;
     }
@@ -79,7 +79,7 @@ public final class dd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.dd
  * JD-Core Version:    0.7.0.1
  */

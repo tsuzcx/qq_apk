@@ -26,18 +26,18 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView;", "Landroid/widget/TextView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isRunningShow", "", "()Z", "setRunningShow", "(Z)V", "mFirst", "mScroller", "Landroid/widget/Scroller;", "mXPaused", "value", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "player", "getPlayer", "()Lcom/google/android/exoplayer2/SimpleExoPlayer;", "setPlayer", "(Lcom/google/android/exoplayer2/SimpleExoPlayer;)V", "rndDuration", "getRndDuration", "()I", "setRndDuration", "(I)V", "scrollFirstDelay", "getScrollFirstDelay", "setScrollFirstDelay", "calculateScrollingLen", "computeScroll", "", "fillText", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo$MusicLrcBean;", "Lkotlin/collections/ArrayList;", "hlString", "", "resumeScroll", "setShow", "isShow", "spanForQuery", "", "source", "startScroll", "stopScroll", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView;", "Landroid/widget/TextView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isRunningShow", "", "()Z", "setRunningShow", "(Z)V", "mFirst", "mScroller", "Landroid/widget/Scroller;", "mXPaused", "value", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "player", "getPlayer", "()Lcom/google/android/exoplayer2/SimpleExoPlayer;", "setPlayer", "(Lcom/google/android/exoplayer2/SimpleExoPlayer;)V", "rndDuration", "getRndDuration", "()I", "setRndDuration", "(I)V", "scrollFirstDelay", "getScrollFirstDelay", "setScrollFirstDelay", "calculateScrollingLen", "computeScroll", "", "fillText", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo$MusicLrcBean;", "Lkotlin/collections/ArrayList;", "hlString", "", "resumeScroll", "setShow", "isShow", "spanForQuery", "", "source", "startScroll", "stopScroll", "plugin-recordvideo_release"})
 @SuppressLint({"AppCompatCustomView"})
 public final class MusicLrcView
   extends TextView
 {
+  private v gHz;
   private Scroller mScroller;
-  private boolean vqe;
-  private v vqg;
-  private int vsg;
-  private int vsh;
-  private boolean vsi;
-  private int vsj;
+  private int vix;
+  private boolean wAd;
+  private int wCh;
+  private boolean wCi;
+  private int wCj;
   
   public MusicLrcView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -48,9 +48,9 @@ public final class MusicLrcView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(76042);
-    this.vsg = 10000;
-    this.vsh = (-getWidth());
-    this.vsi = true;
+    this.wCh = 10000;
+    this.vix = (-getWidth());
+    this.wCi = true;
     AppMethodBeat.o(76042);
   }
   
@@ -85,43 +85,43 @@ public final class MusicLrcView
     }
   }
   
-  private void diT()
+  private void dwP()
   {
     AppMethodBeat.i(76036);
-    if (!this.vqe)
+    if (!this.wAd)
     {
       AppMethodBeat.o(76036);
       return;
     }
-    this.vsh = (-getWidth());
+    this.vix = (-getWidth());
     setHorizontallyScrolling(true);
     if (this.mScroller == null)
     {
       this.mScroller = new Scroller(getContext(), (Interpolator)new LinearInterpolator());
       setScroller(this.mScroller);
     }
-    final int j = diU();
-    final int i = j - this.vsh * 3 / 4;
+    final int j = dwQ();
+    final int i = j - this.vix * 3 / 4;
     if (i != 0)
     {
-      j = this.vsg * i / j;
-      if (this.vsi)
+      j = this.wCh * i / j;
+      if (this.wCi)
       {
-        postDelayed((Runnable)new b(this, i, j), this.vsj);
+        postDelayed((Runnable)new b(this, i, j), this.wCj);
         AppMethodBeat.o(76036);
         return;
       }
       Scroller localScroller = this.mScroller;
       if (localScroller == null) {
-        k.fvU();
+        k.fOy();
       }
-      localScroller.startScroll(this.vsh, 0, i, 0, j);
+      localScroller.startScroll(this.vix, 0, i, 0, j);
       invalidate();
     }
     AppMethodBeat.o(76036);
   }
   
-  private final int diU()
+  private final int dwQ()
   {
     AppMethodBeat.i(76040);
     TextPaint localTextPaint = getPaint();
@@ -139,14 +139,14 @@ public final class MusicLrcView
     return i;
   }
   
-  public final void cMi()
+  public final void cZO()
   {
     AppMethodBeat.i(76035);
-    if (this.vqe)
+    if (this.wAd)
     {
-      this.vsh = getWidth();
-      this.vsi = true;
-      diT();
+      this.vix = getWidth();
+      this.wCi = true;
+      dwP();
     }
     AppMethodBeat.o(76035);
   }
@@ -162,13 +162,13 @@ public final class MusicLrcView
     }
     Scroller localScroller = this.mScroller;
     if (localScroller == null) {
-      k.fvU();
+      k.fOy();
     }
     if (localScroller.isFinished())
     {
-      this.vsh = (-getWidth());
-      this.vsi = false;
-      diT();
+      this.vix = (-getWidth());
+      this.wCi = false;
+      dwP();
     }
     AppMethodBeat.o(76041);
   }
@@ -191,7 +191,7 @@ public final class MusicLrcView
         {
           if (((Iterator)localObject2).hasNext())
           {
-            ((StringBuilder)localObject1).append(((AudioCacheInfo.c)((Iterator)localObject2).next()).viN).append("  ");
+            ((StringBuilder)localObject1).append(((AudioCacheInfo.c)((Iterator)localObject2).next()).wrz).append("  ");
             continue;
             i = 0;
             break;
@@ -221,9 +221,9 @@ public final class MusicLrcView
     for (paramString = a((String)localObject1, (CharSequence)paramString);; paramString = (CharSequence)((StringBuilder)localObject1).toString())
     {
       setText(paramString);
-      this.vsg = (((AudioCacheInfo.c)j.iA((List)paramArrayList)).viO - ((AudioCacheInfo.c)j.iy((List)paramArrayList)).cUL);
-      if (this.vsg == 0) {
-        this.vsg = 10000;
+      this.wCh = (((AudioCacheInfo.c)j.iQ((List)paramArrayList)).wrA - ((AudioCacheInfo.c)j.iO((List)paramArrayList)).cSh);
+      if (this.wCh == 0) {
+        this.wCh = 10000;
       }
       AppMethodBeat.o(76037);
       return;
@@ -234,17 +234,17 @@ public final class MusicLrcView
   
   public final v getPlayer()
   {
-    return this.vqg;
+    return this.gHz;
   }
   
   public final int getRndDuration()
   {
-    return this.vsg;
+    return this.wCh;
   }
   
   public final int getScrollFirstDelay()
   {
-    return this.vsj;
+    return this.wCj;
   }
   
   public final void setPlayer(v paramv)
@@ -252,8 +252,8 @@ public final class MusicLrcView
     AppMethodBeat.i(76033);
     if (paramv != null)
     {
-      this.vqg = paramv;
-      paramv = this.vqg;
+      this.gHz = paramv;
+      paramv = this.gHz;
       if (paramv != null)
       {
         paramv.a((q.a)new a(this));
@@ -266,41 +266,41 @@ public final class MusicLrcView
   
   public final void setRndDuration(int paramInt)
   {
-    this.vsg = paramInt;
+    this.wCh = paramInt;
   }
   
   public final void setRunningShow(boolean paramBoolean)
   {
-    this.vqe = paramBoolean;
+    this.wAd = paramBoolean;
   }
   
   public final void setScrollFirstDelay(int paramInt)
   {
-    this.vsj = paramInt;
+    this.wCj = paramInt;
   }
   
   public final void setShow(boolean paramBoolean)
   {
     AppMethodBeat.i(76034);
-    this.vqe = paramBoolean;
-    if (!this.vqe)
+    this.wAd = paramBoolean;
+    if (!this.wAd)
     {
       if (this.mScroller != null)
       {
         Scroller localScroller = this.mScroller;
         if (localScroller == null) {
-          k.fvU();
+          k.fOy();
         }
         localScroller.startScroll(0, 0, 0, 0, 0);
       }
       AppMethodBeat.o(76034);
       return;
     }
-    cMi();
+    cZO();
     AppMethodBeat.o(76034);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView$player$1", "Lcom/google/android/exoplayer2/Player$EventListener;", "onLoadingChanged", "", "p0", "", "onPlaybackParametersChanged", "Lcom/google/android/exoplayer2/PlaybackParameters;", "onPlayerError", "Lcom/google/android/exoplayer2/ExoPlaybackException;", "onPlayerStateChanged", "p1", "", "onPositionDiscontinuity", "onRepeatModeChanged", "onTimelineChanged", "Lcom/google/android/exoplayer2/Timeline;", "", "onTracksChanged", "Lcom/google/android/exoplayer2/source/TrackGroupArray;", "Lcom/google/android/exoplayer2/trackselection/TrackSelectionArray;", "plugin-recordvideo_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView$player$1", "Lcom/google/android/exoplayer2/Player$EventListener;", "onLoadingChanged", "", "p0", "", "onPlaybackParametersChanged", "Lcom/google/android/exoplayer2/PlaybackParameters;", "onPlayerError", "Lcom/google/android/exoplayer2/ExoPlaybackException;", "onPlayerStateChanged", "p1", "", "onPositionDiscontinuity", "onRepeatModeChanged", "onTimelineChanged", "Lcom/google/android/exoplayer2/Timeline;", "", "onTracksChanged", "Lcom/google/android/exoplayer2/source/TrackGroupArray;", "Lcom/google/android/exoplayer2/trackselection/TrackSelectionArray;", "plugin-recordvideo_release"})
   public static final class a
     implements q.a
   {
@@ -318,8 +318,8 @@ public final class MusicLrcView
       AppMethodBeat.i(76031);
       if (paramInt == 3)
       {
-        this.vsk.cMi();
-        localObject1 = this.vsk.getPlayer();
+        this.wCk.cZO();
+        localObject1 = this.wCk.getPlayer();
         if (localObject1 == null) {
           break label118;
         }
@@ -328,18 +328,18 @@ public final class MusicLrcView
       for (Object localObject1 = Long.valueOf(((v)localObject1).getDuration());; localObject1 = null)
       {
         if (localObject1 == null) {
-          k.fvU();
+          k.fOy();
         }
-        if (((Long)localObject1).longValue() < this.vsk.getRndDuration())
+        if (((Long)localObject1).longValue() < this.wCk.getRndDuration())
         {
-          MusicLrcView localMusicLrcView = this.vsk;
-          v localv = this.vsk.getPlayer();
+          MusicLrcView localMusicLrcView = this.wCk;
+          v localv = this.wCk.getPlayer();
           localObject1 = localObject2;
           if (localv != null) {
             localObject1 = Long.valueOf(localv.getDuration());
           }
           if (localObject1 == null) {
-            k.fvU();
+            k.fOy();
           }
           localMusicLrcView.setRndDuration((int)((Long)localObject1).longValue());
         }
@@ -348,14 +348,14 @@ public final class MusicLrcView
       }
     }
     
-    public final void rJ() {}
+    public final void rU() {}
     
-    public final void rK() {}
+    public final void rV() {}
     
-    public final void rL() {}
+    public final void rW() {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -364,19 +364,19 @@ public final class MusicLrcView
     public final void run()
     {
       AppMethodBeat.i(76032);
-      Scroller localScroller = MusicLrcView.a(this.vsk);
+      Scroller localScroller = MusicLrcView.a(this.wCk);
       if (localScroller == null) {
-        k.fvU();
+        k.fOy();
       }
-      localScroller.startScroll(MusicLrcView.b(this.vsk), 0, i, 0, j);
-      this.vsk.invalidate();
+      localScroller.startScroll(MusicLrcView.b(this.wCk), 0, i, 0, j);
+      this.wCk.invalidate();
       AppMethodBeat.o(76032);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.MusicLrcView
  * JD-Core Version:    0.7.0.1
  */

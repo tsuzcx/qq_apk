@@ -6,23 +6,23 @@ import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "isLegal", "", "uniqueValue", "", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "isLegal", "", "uniqueValue", "", "plugin-emojisdk_release"})
 public final class a
   implements c
 {
-  final EmojiGroupInfo fLb;
+  final EmojiGroupInfo fON;
   
   public a(EmojiGroupInfo paramEmojiGroupInfo)
   {
     AppMethodBeat.i(105380);
-    this.fLb = paramEmojiGroupInfo;
+    this.fON = paramEmojiGroupInfo;
     AppMethodBeat.o(105380);
   }
   
-  public final String aaX()
+  public final String abW()
   {
     AppMethodBeat.i(105379);
-    String str = this.fLb.fZJ();
+    String str = this.fON.fdm();
     k.g(str, "groupInfo.productID");
     AppMethodBeat.o(105379);
     return str;
@@ -30,7 +30,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.a
  * JD-Core Version:    0.7.0.1
  */

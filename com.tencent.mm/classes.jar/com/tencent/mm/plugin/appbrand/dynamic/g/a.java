@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.appbrand.dynamic.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.c;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.a.e;
 import com.tencent.mm.plugin.appbrand.appcache.bf;
 import com.tencent.mm.plugin.appbrand.widget.k;
-import com.tencent.mm.protocal.protobuf.bky;
-import com.tencent.mm.protocal.protobuf.bkz;
-import com.tencent.mm.protocal.protobuf.dtq;
-import com.tencent.mm.protocal.protobuf.duo;
-import com.tencent.mm.protocal.protobuf.dwt;
+import com.tencent.mm.protocal.protobuf.bou;
+import com.tencent.mm.protocal.protobuf.bov;
+import com.tencent.mm.protocal.protobuf.dzh;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.eck;
 
 public final class a
-  extends c<bkz>
+  extends c<bov>
 {
-  private int dkC;
-  public k jnC;
-  private int jnh;
-  public final com.tencent.mm.al.b rr;
+  private int dib;
+  public k jNO;
+  private int jNu;
+  public final com.tencent.mm.ak.b rr;
   
-  public a(String paramString, boolean paramBoolean, dwt paramdwt)
+  public a(String paramString, boolean paramBoolean, eck parameck)
   {
     AppMethodBeat.i(121417);
-    bky localbky = new bky();
-    localbky.hnC = paramString;
-    localbky.DIQ = paramdwt;
+    bou localbou = new bou();
+    localbou.hOf = paramString;
+    localbou.Fel = parameck;
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
-      localbky.Dym = i;
+      localbou.ETI = i;
       paramString = new b.a();
       paramString.funcId = 1181;
       paramString.uri = "/cgi-bin/mmbiz-bin/wxaattr/launchwxawidget";
-      paramString.gUU = localbky;
-      paramString.gUV = new bkz();
-      paramString = paramString.atI();
+      paramString.hvt = localbou;
+      paramString.hvu = new bov();
+      paramString = paramString.aAz();
       this.rr = paramString;
       this.rr = paramString;
-      this.jnh = paramdwt.EKF;
-      this.dkC = com.tencent.mm.plugin.appbrand.dynamic.k.b.dI(this.jnh, paramdwt.DGx);
+      this.jNu = parameck.GhR;
+      this.dib = com.tencent.mm.plugin.appbrand.dynamic.k.b.dI(this.jNu, parameck.FbR);
       AppMethodBeat.o(121417);
       return;
     }
@@ -50,47 +50,47 @@ public final class a
   
   private String getAppId()
   {
-    return ((bky)this.rr.gUS.gUX).hnC;
+    return ((bou)this.rr.hvr.hvw).hOf;
   }
   
-  public final void a(int paramInt1, int paramInt2, String paramString, bkz parambkz)
+  public final void a(int paramInt1, int paramInt2, String paramString, bov parambov)
   {
     AppMethodBeat.i(121418);
     u.i("MicroMsg.CgiLaunchWxaWidget", "onCgiBack, errType %d, errCode %d, errMsg %s, req appId %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, getAppId() });
-    if ((paramInt1 == 0) && (paramInt2 == 0) && (parambkz != null))
+    if ((paramInt1 == 0) && (paramInt2 == 0) && (parambov != null))
     {
       paramString = getAppId();
-      this.jnC = ((com.tencent.mm.plugin.appbrand.widget.a.a)g.ab(com.tencent.mm.plugin.appbrand.widget.a.a.class)).aOE().a(paramString, this.dkC, this.jnh, parambkz);
-      if (parambkz.DIS != null)
+      this.jNO = ((com.tencent.mm.plugin.appbrand.widget.a.a)g.ab(com.tencent.mm.plugin.appbrand.widget.a.a.class)).aVw().a(paramString, this.dib, this.jNu, parambov);
+      if (parambov.Fen != null)
       {
-        String str = ((e)g.ab(e.class)).aOk().aJ(paramString, this.dkC);
-        duo localduo = new duo();
-        localduo.EIX = str;
-        localduo.CHC = parambkz.DIS.CHC;
-        if (this.dkC == 10102)
+        String str = ((e)g.ab(e.class)).aVa().aN(paramString, this.dib);
+        eaf localeaf = new eaf();
+        localeaf.Ggj = str;
+        localeaf.Eae = parambov.Fen.Eae;
+        if (this.dib == 10102)
         {
-          localduo.EIW = parambkz.DIS.EIn;
-          ((e)g.ab(e.class)).aOk().a(paramString, localduo, this.dkC);
+          localeaf.Ggi = parambov.Fen.Gfz;
+          ((e)g.ab(e.class)).aVa().a(paramString, localeaf, this.dib);
           AppMethodBeat.o(121418);
           return;
         }
-        if (this.dkC == 10002)
+        if (this.dib == 10002)
         {
-          localduo.EIW = parambkz.DIS.EIm;
-          ((e)g.ab(e.class)).aOk().a(paramString, localduo, this.dkC);
+          localeaf.Ggi = parambov.Fen.Gfy;
+          ((e)g.ab(e.class)).aVa().a(paramString, localeaf, this.dib);
         }
       }
       AppMethodBeat.o(121418);
       return;
     }
-    com.tencent.mm.plugin.appbrand.dynamic.j.aVk().GY(getAppId());
-    this.jnC = ((com.tencent.mm.plugin.appbrand.widget.a.a)g.ab(com.tencent.mm.plugin.appbrand.widget.a.a.class)).aOE().S(getAppId(), this.dkC, this.jnh);
+    com.tencent.mm.plugin.appbrand.dynamic.j.bci().Lc(getAppId());
+    this.jNO = ((com.tencent.mm.plugin.appbrand.widget.a.a)g.ab(com.tencent.mm.plugin.appbrand.widget.a.a.class)).aVw().R(getAppId(), this.dib, this.jNu);
     AppMethodBeat.o(121418);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.g.a
  * JD-Core Version:    0.7.0.1
  */

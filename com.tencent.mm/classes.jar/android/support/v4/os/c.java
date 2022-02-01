@@ -16,32 +16,32 @@ public final class c
   static final class a<T>
     implements Parcelable.ClassLoaderCreator<T>
   {
-    private final d<T> Kr;
+    private final d<T> Lm;
     
     a(d<T> paramd)
     {
-      this.Kr = paramd;
+      this.Lm = paramd;
     }
     
     public final T createFromParcel(Parcel paramParcel)
     {
-      return this.Kr.createFromParcel(paramParcel, null);
+      return this.Lm.createFromParcel(paramParcel, null);
     }
     
     public final T createFromParcel(Parcel paramParcel, ClassLoader paramClassLoader)
     {
-      return this.Kr.createFromParcel(paramParcel, paramClassLoader);
+      return this.Lm.createFromParcel(paramParcel, paramClassLoader);
     }
     
     public final T[] newArray(int paramInt)
     {
-      return this.Kr.newArray(paramInt);
+      return this.Lm.newArray(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.os.c
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public final class e
     super(paramContext);
   }
   
-  protected final com.tencent.mm.view.b.a fio()
+  protected final com.tencent.mm.view.b.a fyB()
   {
     AppMethodBeat.i(9363);
     com.tencent.mm.view.b.b localb = new com.tencent.mm.view.b.b(getContext(), getPresenter());
@@ -20,7 +20,7 @@ public final class e
     return localb;
   }
   
-  protected final com.tencent.mm.view.footer.a fip()
+  protected final com.tencent.mm.view.footer.a fyC()
   {
     AppMethodBeat.i(9364);
     com.tencent.mm.view.footer.b localb = new com.tencent.mm.view.footer.b(getContext(), getPresenter());
@@ -30,15 +30,15 @@ public final class e
   
   public final g[] getFeatures()
   {
-    if (this.HUh == null) {
-      this.HUh = new g[] { g.cJs, g.cJu, g.cJt, g.cJv, g.cJw };
+    if (this.JuP == null) {
+      this.JuP = new g[] { g.cGz, g.cGB, g.cGA, g.cGC, g.cGD };
     }
-    return this.HUh;
+    return this.JuP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.e
  * JD-Core Version:    0.7.0.1
  */

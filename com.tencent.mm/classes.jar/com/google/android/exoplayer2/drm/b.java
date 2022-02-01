@@ -5,9 +5,9 @@ import android.annotation.TargetApi;
 @TargetApi(16)
 public abstract interface b<T extends c>
 {
-  public abstract boolean sF();
+  public abstract boolean sO();
   
-  public abstract a<T> sG();
+  public abstract a<T> sP();
 }
 
 

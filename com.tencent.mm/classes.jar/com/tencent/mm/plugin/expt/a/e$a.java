@@ -9,16 +9,16 @@ public enum e$a
   static
   {
     AppMethodBeat.i(121046);
-    pDA = new a("MM_DEFAULT", 0, 0);
-    pDB = new a("MMAppMgr_Activated", 1, 1);
-    pDC = new a("MMAppMgr_Deactivated", 2, 2);
-    pDD = new a("MMLifeCall_OnResume", 3, 3);
-    pDE = new a("MMLifeCall_OnPause", 4, 4);
-    pDF = new a("MMActivity_OnResume", 5, 5);
-    pDG = new a("MMActivity_OnPause", 6, 6);
-    pDH = new a("MMActivity_Back2Front", 7, 7);
-    pDI = new a("MMActivity_Front2Back", 8, 8);
-    pDJ = new a[] { pDA, pDB, pDC, pDD, pDE, pDF, pDG, pDH, pDI };
+    qin = new a("MM_DEFAULT", 0, 0);
+    qio = new a("MMAppMgr_Activated", 1, 1);
+    qip = new a("MMAppMgr_Deactivated", 2, 2);
+    qiq = new a("MMLifeCall_OnResume", 3, 3);
+    qir = new a("MMLifeCall_OnPause", 4, 4);
+    qis = new a("MMActivity_OnResume", 5, 5);
+    qit = new a("MMActivity_OnPause", 6, 6);
+    qiu = new a("MMActivity_Back2Front", 7, 7);
+    qiv = new a("MMActivity_Front2Back", 8, 8);
+    qiw = new a[] { qin, qio, qip, qiq, qir, qis, qit, qiu, qiv };
     AppMethodBeat.o(121046);
   }
   
@@ -27,33 +27,33 @@ public enum e$a
     this.value = paramInt;
   }
   
-  public static a Bm(int paramInt)
+  public static a Ce(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return pDA;
+      return qin;
     case 1: 
-      return pDB;
+      return qio;
     case 2: 
-      return pDC;
+      return qip;
     case 3: 
-      return pDD;
+      return qiq;
     case 4: 
-      return pDE;
+      return qir;
     case 5: 
-      return pDF;
+      return qis;
     case 6: 
-      return pDG;
+      return qit;
     case 7: 
-      return pDH;
+      return qiu;
     }
-    return pDI;
+    return qiv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.a.e.a
  * JD-Core Version:    0.7.0.1
  */

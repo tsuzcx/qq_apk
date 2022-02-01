@@ -14,8 +14,8 @@ public final class b
   private Context context = null;
   private String stackTrace = "";
   private String threadName = "";
-  private int vKT = 0;
-  private long vKU = 0L;
+  private int wUX = 0;
+  private long wUY = 0L;
   
   public b(Context paramContext)
   {
@@ -37,7 +37,7 @@ public final class b
       if ((i + 1) * 512 < this.stackTrace.length()) {}
       for (paramThread = this.stackTrace.substring(i * 512, (i + 1) * 512);; paramThread = this.stackTrace.substring(i * 512))
       {
-        com.tencent.mm.plugin.report.service.h.vKh.f(17910, new Object[] { a.glW, com.tencent.mm.sdk.platformtools.h.glW, this.threadName, Integer.valueOf(0), paramThread, Integer.valueOf(1), Integer.valueOf(i + 1), Integer.valueOf(j), Long.valueOf(l) });
+        com.tencent.mm.plugin.report.service.h.wUl.f(17910, new Object[] { a.gMJ, com.tencent.mm.sdk.platformtools.h.gMJ, this.threadName, Integer.valueOf(0), paramThread, Integer.valueOf(1), Integer.valueOf(i + 1), Integer.valueOf(j), Long.valueOf(l) });
         i += 1;
         break;
       }
@@ -55,7 +55,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.rubbishbin.b
  * JD-Core Version:    0.7.0.1
  */

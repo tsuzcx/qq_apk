@@ -11,13 +11,13 @@ import java.util.Iterator;
 final class h
   implements b
 {
-  public static final h Kad;
+  public static final h LNw;
   private static final String description = "should not have varargs or parameters with default values";
   
   static
   {
     AppMethodBeat.i(61304);
-    Kad = new h();
+    LNw = new h();
     description = "should not have varargs or parameters with default values";
     AppMethodBeat.o(61304);
   }
@@ -31,7 +31,7 @@ final class h
   {
     AppMethodBeat.i(61303);
     k.h(paramt, "functionDescriptor");
-    paramt = paramt.fyq();
+    paramt = paramt.fQU();
     k.g(paramt, "functionDescriptor.valueParameters");
     paramt = (Iterable)paramt;
     if ((!(paramt instanceof Collection)) || (!((Collection)paramt).isEmpty()))
@@ -41,7 +41,7 @@ final class h
       {
         av localav = (av)paramt.next();
         k.g(localav, "it");
-        if ((!a.b(localav)) && (localav.fzu() == null)) {}
+        if ((!a.b(localav)) && (localav.fRY() == null)) {}
         for (int i = 1; i == 0; i = 0)
         {
           AppMethodBeat.o(61303);
@@ -64,7 +64,7 @@ final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.n.h
  * JD-Core Version:    0.7.0.1
  */

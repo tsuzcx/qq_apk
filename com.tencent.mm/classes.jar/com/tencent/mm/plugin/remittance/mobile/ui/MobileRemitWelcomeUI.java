@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import org.xwalk.core.Log;
 
 public class MobileRemitWelcomeUI
@@ -41,7 +41,7 @@ public class MobileRemitWelcomeUI
       {
         AppMethodBeat.i(67754);
         Log.i("MicroMsg.mobileRemit.MobileRemitWelcomeUI", "goto MobileRemitNumberInputUI");
-        g.afB().afk().set(ae.a.FvI, Boolean.FALSE);
+        g.agR().agA().set(ah.a.GTC, Boolean.FALSE);
         d.b(MobileRemitWelcomeUI.this.getContext(), "remittance", ".mobile.ui.MobileRemitNumberInputUI", MobileRemitWelcomeUI.this.getIntent());
         MobileRemitWelcomeUI.this.finish();
         AppMethodBeat.o(67754);

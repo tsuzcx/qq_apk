@@ -1,19 +1,13 @@
 package com.tencent.xweb;
 
-import android.graphics.Bitmap;
-import java.io.File;
-
-public abstract interface p
+public final class p
 {
-  public abstract File getCacheFileDir();
+  public static a Kzl;
   
-  public abstract int getMaxHeightSupported();
-  
-  public abstract File getResultFileDir();
-  
-  public abstract void onLongScreenshotFinished(int paramInt, String paramString);
-  
-  public abstract Bitmap overrideScreenshot(Bitmap paramBitmap);
+  public static abstract interface a
+  {
+    public abstract void sC(String paramString);
+  }
 }
 
 

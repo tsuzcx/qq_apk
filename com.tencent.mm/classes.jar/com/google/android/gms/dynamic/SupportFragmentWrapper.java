@@ -214,9 +214,9 @@ public final class SupportFragmentWrapper
   {
     AppMethodBeat.i(5443);
     Fragment localFragment = this.zzabq;
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(localFragment, paramIntent.adn(), "com/google/android/gms/dynamic/SupportFragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localFragment.startActivity((Intent)paramIntent.lS(0));
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(localFragment, paramIntent.aeD(), "com/google/android/gms/dynamic/SupportFragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localFragment.startActivity((Intent)paramIntent.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(localFragment, "com/google/android/gms/dynamic/SupportFragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(5443);
   }
@@ -238,7 +238,7 @@ public final class SupportFragmentWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.dynamic.SupportFragmentWrapper
  * JD-Core Version:    0.7.0.1
  */

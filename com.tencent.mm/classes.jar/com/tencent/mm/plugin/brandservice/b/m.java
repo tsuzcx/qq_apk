@@ -1,100 +1,86 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.network.e;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cnm;
-import com.tencent.mm.protocal.protobuf.cnn;
-import com.tencent.mm.protocal.protobuf.pf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ctd;
+import com.tencent.mm.protocal.protobuf.cte;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class m
   extends n
   implements k
 {
+  private String cZL;
   private g callback;
-  private String dcm;
-  private String jko;
-  private b mTj;
-  private cnn mTk;
-  private long mTl;
-  private int offset;
+  private b nvB;
+  private long nvD;
+  public cte nvE;
   private int scene;
   
-  public m(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2)
+  public m(String paramString, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(5587);
-    this.dcm = paramString1;
-    this.mTl = paramLong;
-    this.offset = paramInt1;
-    this.scene = paramInt2;
-    this.jko = paramString2;
-    ad.i("MicroMsg.NetSceneSearchDetailPageNew", "Constructors: keyword = (%s) , LSB exist () , businessType is (%d) , offset is (%d) , scene is (%d), searchId(%s).", new Object[] { paramString1, Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2 });
-    AppMethodBeat.o(5587);
+    AppMethodBeat.i(5590);
+    this.cZL = paramString;
+    this.nvD = paramLong;
+    this.scene = paramInt;
+    ac.i("MicroMsg.NetSceneSearchHomePageNew", "Constructors: keyword (%s) , businessType (%d), scene (%d)", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(5590);
   }
   
-  public final pf bCs()
+  public final int doScene(com.tencent.mm.network.e parame, g paramg)
   {
-    if (this.mTk == null) {
-      return null;
-    }
-    return this.mTk.EhZ;
-  }
-  
-  public final int doScene(e parame, g paramg)
-  {
-    AppMethodBeat.i(5589);
+    AppMethodBeat.i(5592);
+    ac.i("MicroMsg.NetSceneSearchHomePageNew", "doScene");
     this.callback = paramg;
-    if (!bt.isNullOrNil(this.dcm))
+    if (!bs.isNullOrNil(this.cZL))
     {
       paramg = new b.a();
-      paramg.funcId = 1071;
-      paramg.uri = "/cgi-bin/mmbiz-bin/bizsearch/detailpage";
-      paramg.gUU = new cnm();
-      paramg.gUV = new cnn();
+      paramg.funcId = 1070;
+      paramg.uri = "/cgi-bin/mmbiz-bin/bizsearch/homepage";
+      paramg.hvt = new ctd();
+      paramg.hvu = new cte();
       paramg.reqCmdId = 0;
       paramg.respCmdId = 0;
-      this.mTj = paramg.atI();
-      paramg = (cnm)this.mTj.gUS.gUX;
-      paramg.DLE = f.bCk();
-      paramg.Dtb = this.dcm;
-      paramg.CNp = this.mTl;
-      paramg.CNt = this.offset;
-      paramg.EhX = this.scene;
-      paramg.CNs = this.jko;
-      int i = dispatch(parame, this.mTj, this);
-      AppMethodBeat.o(5589);
+      this.nvB = paramg.aAz();
+      paramg = (ctd)this.nvB.hvr.hvw;
+      paramg.EOf = this.cZL;
+      paramg.FhT = e.bJn();
+      paramg.EfR = this.nvD;
+      paramg.FEV = this.scene;
+      ac.i("MicroMsg.NetSceneSearchHomePageNew", "businessTypeList is %d", new Object[] { Long.valueOf(this.nvD) });
+      int i = dispatch(parame, this.nvB, this);
+      AppMethodBeat.o(5592);
       return i;
     }
-    ad.e("MicroMsg.NetSceneSearchDetailPageNew", "keyword is unavailable.");
-    AppMethodBeat.o(5589);
+    ac.e("MicroMsg.NetSceneSearchHomePageNew", "keyword is unavailable");
+    AppMethodBeat.o(5592);
     return -1;
   }
   
   public final int getType()
   {
-    return 1071;
+    return 1070;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(5588);
-    ad.i("MicroMsg.NetSceneSearchDetailPageNew", "netId (%d) , errType (%d) , errCode (%d) , errMsg (%s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (this.mTj != null)) {
-      this.mTk = ((cnn)this.mTj.gUT.gUX);
+    AppMethodBeat.i(5591);
+    ac.i("MicroMsg.NetSceneSearchHomePageNew", "netId (%d) , errType (%d) , errCode (%d) , errMsg (%s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (this.nvB != null)) {
+      this.nvE = ((cte)this.nvB.hvs.hvw);
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(5588);
+    AppMethodBeat.o(5591);
   }
 }
 

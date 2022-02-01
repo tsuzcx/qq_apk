@@ -4,6 +4,8 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.Interpolator;
@@ -17,48 +19,48 @@ import java.util.Random;
 
 public final class c
 {
-  private final b hOO;
-  private final d hOP;
-  private final ViewGroup hOQ;
-  final ConfettiView hOR;
-  final Queue<com.tencent.mm.particles.a.b> hOS;
-  final List<com.tencent.mm.particles.a.b> hOT;
-  private long hOU;
-  int hOV;
-  long hOW;
-  private float hOX;
-  private float hOY;
-  public Interpolator hOZ;
-  private Rect hPa;
-  private float hPb;
-  private float hPc;
-  private float hPd;
-  private float hPe;
-  private float hPf;
-  private float hPg;
-  private float hPh;
-  private float hPi;
-  private Float hPj;
-  private Float hPk;
-  private Float hPl;
-  private Float hPm;
-  private int hPn;
-  private int hPo;
-  private float hPp;
-  private float hPq;
-  private float hPr;
-  private float hPs;
-  private Float hPt;
-  private Float hPu;
-  private long hPv;
-  public float hPw;
-  public float hPx;
-  private ValueAnimator qT;
+  private float ipA;
+  private float ipB;
+  private float ipC;
+  private float ipD;
+  private Float ipE;
+  private Float ipF;
+  private Float ipG;
+  private Float ipH;
+  private int ipI;
+  private int ipJ;
+  private float ipK;
+  private float ipL;
+  private float ipM;
+  private float ipN;
+  private Float ipO;
+  private Float ipP;
+  private long ipQ;
+  public float ipR;
+  public float ipS;
+  private final b ipj;
+  private final d ipk;
+  private final ViewGroup ipl;
+  final ConfettiView ipm;
+  final Queue<com.tencent.mm.particles.a.b> ipn;
+  final List<com.tencent.mm.particles.a.b> ipo;
+  private long ipp;
+  int ipq;
+  long ipr;
+  private float ips;
+  private float ipt;
+  public Interpolator ipu;
+  private Rect ipv;
+  private float ipw;
+  private float ipx;
+  private float ipy;
+  private float ipz;
+  private ValueAnimator rT;
   private final Random random;
   
   public c(Context paramContext, b paramb, d paramd, ViewGroup paramViewGroup)
   {
-    this(paramb, paramd, paramViewGroup, ConfettiView.cK(paramContext));
+    this(paramb, paramd, paramViewGroup, ConfettiView.cT(paramContext));
     AppMethodBeat.i(151350);
     AppMethodBeat.o(151350);
   }
@@ -67,37 +69,47 @@ public final class c
   {
     AppMethodBeat.i(151351);
     this.random = new Random();
-    this.hOS = new LinkedList();
-    this.hOT = new ArrayList(300);
-    this.hOO = paramb;
-    this.hOP = paramd;
-    this.hOQ = paramViewGroup;
-    this.hOR = paramConfettiView;
-    this.hOR.hOT = this.hOT;
-    this.hOR.addOnAttachStateChangeListener(new c.1(this));
-    this.hPv = -1L;
-    this.hPa = new Rect(0, 0, paramViewGroup.getWidth(), paramViewGroup.getHeight());
+    this.ipn = new LinkedList();
+    this.ipo = new ArrayList(300);
+    this.ipj = paramb;
+    this.ipk = paramd;
+    this.ipl = paramViewGroup;
+    this.ipm = paramConfettiView;
+    this.ipm.ipo = this.ipo;
+    this.ipm.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener()
+    {
+      public final void onViewAttachedToWindow(View paramAnonymousView) {}
+      
+      public final void onViewDetachedFromWindow(View paramAnonymousView)
+      {
+        AppMethodBeat.i(151348);
+        c.this.aMv();
+        AppMethodBeat.o(151348);
+      }
+    });
+    this.ipQ = -1L;
+    this.ipv = new Rect(0, 0, paramViewGroup.getWidth(), paramViewGroup.getHeight());
     AppMethodBeat.o(151351);
   }
   
-  private void E(int paramInt, long paramLong)
+  private void D(int paramInt, long paramLong)
   {
     AppMethodBeat.i(151357);
     int i = 0;
     com.tencent.mm.particles.a.b localb;
     if (i < paramInt)
     {
-      localb = (com.tencent.mm.particles.a.b)this.hOS.poll();
+      localb = (com.tencent.mm.particles.a.b)this.ipn.poll();
       if (localb != null) {
         break label90;
       }
-      localb = this.hOO.a(this.random);
+      localb = this.ipj.a(this.random);
     }
     label90:
     for (;;)
     {
-      a(localb, this.hOP, this.random, paramLong);
-      this.hOT.add(localb);
+      a(localb, this.ipk, this.random, paramLong);
+      this.ipo.add(localb);
       i += 1;
       break;
       AppMethodBeat.o(151357);
@@ -118,86 +130,86 @@ public final class c
     Object localObject = null;
     AppMethodBeat.i(151359);
     paramb.reset();
-    paramb.hPK = paramLong;
-    paramb.hPL = paramd.ak(paramRandom.nextFloat());
-    paramb.hPM = paramd.al(paramRandom.nextFloat());
-    paramb.hPN = a(this.hPb, this.hPc, paramRandom);
-    paramb.hPO = a(this.hPd, this.hPe, paramRandom);
-    paramb.hPf = a(this.hPf, this.hPg, paramRandom);
-    paramb.hPh = a(this.hPh, this.hPi, paramRandom);
-    if (this.hPj == null)
+    paramb.iqf = paramLong;
+    paramb.iqg = paramd.ao(paramRandom.nextFloat());
+    paramb.iqh = paramd.ap(paramRandom.nextFloat());
+    paramb.iqi = a(this.ipw, this.ipx, paramRandom);
+    paramb.iqj = a(this.ipy, this.ipz, paramRandom);
+    paramb.ipA = a(this.ipA, this.ipB, paramRandom);
+    paramb.ipC = a(this.ipC, this.ipD, paramRandom);
+    if (this.ipE == null)
     {
       paramd = null;
-      paramb.hPj = paramd;
-      if (this.hPl != null) {
+      paramb.ipE = paramd;
+      if (this.ipG != null) {
         break label270;
       }
       paramd = null;
       label129:
-      paramb.hPl = paramd;
-      paramb.hPR = a(this.hPn, this.hPo, paramRandom);
-      paramb.hPS = a(this.hPp, this.hPq, paramRandom);
-      paramb.hPr = a(this.hPr, this.hPs, paramRandom);
-      if (this.hPt != null) {
+      paramb.ipG = paramd;
+      paramb.iqm = a(this.ipI, this.ipJ, paramRandom);
+      paramb.iqn = a(this.ipK, this.ipL, paramRandom);
+      paramb.ipM = a(this.ipM, this.ipN, paramRandom);
+      if (this.ipO != null) {
         break label295;
       }
     }
     label270:
     label295:
-    for (paramd = localObject;; paramd = Float.valueOf(a(this.hPt.floatValue(), this.hPu.floatValue(), paramRandom)))
+    for (paramd = localObject;; paramd = Float.valueOf(a(this.ipO.floatValue(), this.ipP.floatValue(), paramRandom)))
     {
-      paramb.hPt = paramd;
-      paramb.hPv = this.hPv;
-      paramb.hOZ = this.hOZ;
-      paramb.hPU = a(this.hPw, this.hPx, paramRandom);
-      paramb.k(this.hPa);
+      paramb.ipO = paramd;
+      paramb.ipQ = this.ipQ;
+      paramb.ipu = this.ipu;
+      paramb.iqp = a(this.ipR, this.ipS, paramRandom);
+      paramb.j(this.ipv);
       AppMethodBeat.o(151359);
       return;
-      paramd = Float.valueOf(a(this.hPj.floatValue(), this.hPk.floatValue(), paramRandom));
+      paramd = Float.valueOf(a(this.ipE.floatValue(), this.ipF.floatValue(), paramRandom));
       break;
-      paramd = Float.valueOf(a(this.hPl.floatValue(), this.hPm.floatValue(), paramRandom));
+      paramd = Float.valueOf(a(this.ipG.floatValue(), this.ipH.floatValue(), paramRandom));
       break label129;
     }
   }
   
-  private void aFF()
+  private void aMw()
   {
     AppMethodBeat.i(151355);
-    if (this.qT != null) {
-      this.qT.cancel();
+    if (this.rT != null) {
+      this.rT.cancel();
     }
-    this.hOU = 0L;
-    Iterator localIterator = this.hOT.iterator();
+    this.ipp = 0L;
+    Iterator localIterator = this.ipo.iterator();
     while (localIterator.hasNext())
     {
-      this.hOS.add(localIterator.next());
+      this.ipn.add(localIterator.next());
       localIterator.remove();
     }
     AppMethodBeat.o(151355);
   }
   
-  private void aFG()
+  private void aMx()
   {
     AppMethodBeat.i(151356);
-    ViewParent localViewParent = this.hOR.getParent();
+    ViewParent localViewParent = this.ipm.getParent();
     if (localViewParent != null)
     {
-      if (localViewParent != this.hOQ) {
-        ((ViewGroup)localViewParent).removeView(this.hOR);
+      if (localViewParent != this.ipl) {
+        ((ViewGroup)localViewParent).removeView(this.ipm);
       }
     }
     else {
-      this.hOQ.addView(this.hOR);
+      this.ipl.addView(this.ipm);
     }
-    this.hOR.terminated = false;
+    this.ipm.terminated = false;
     AppMethodBeat.o(151356);
   }
   
-  private void aFH()
+  private void aMy()
   {
     AppMethodBeat.i(151358);
-    this.qT = ValueAnimator.ofInt(new int[] { 0 }).setDuration(9223372036854775807L);
-    this.qT.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.rT = ValueAnimator.ofInt(new int[] { 0 }).setDuration(9223372036854775807L);
+    this.rT.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -205,7 +217,7 @@ public final class c
         long l1 = paramAnonymousValueAnimator.getCurrentPlayTime();
         c.a(c.this, l1);
         paramAnonymousValueAnimator = c.this;
-        Iterator localIterator = paramAnonymousValueAnimator.hOT.iterator();
+        Iterator localIterator = paramAnonymousValueAnimator.ipo.iterator();
         label93:
         label358:
         label364:
@@ -213,30 +225,30 @@ public final class c
         while (localIterator.hasNext())
         {
           com.tencent.mm.particles.a.b localb = (com.tencent.mm.particles.a.b)localIterator.next();
-          if (localb.hPK == -1L) {
-            localb.hPK = l1;
+          if (localb.iqf == -1L) {
+            localb.iqf = l1;
           }
-          long l2 = l1 - localb.hPK;
+          long l2 = l1 - localb.iqf;
           boolean bool;
           if (l2 >= 0L)
           {
             bool = true;
-            localb.hPZ = bool;
-            if ((localb.hPZ) && (!localb.terminated))
+            localb.iqu = bool;
+            if ((localb.iqu) && (!localb.terminated))
             {
-              localb.hPW = com.tencent.mm.particles.a.b.a(l2, localb.hPL, localb.hPN, localb.hPf, localb.hPP, localb.hPj);
-              localb.hPX = com.tencent.mm.particles.a.b.a(l2, localb.hPM, localb.hPO, localb.hPh, localb.hPQ, localb.hPl);
-              localb.hPY = com.tencent.mm.particles.a.b.a(l2, localb.hPR, localb.hPS, localb.hPr, localb.hPT, localb.hPt);
-              if (localb.hOZ == null) {
+              localb.iqr = com.tencent.mm.particles.a.b.a(l2, localb.iqg, localb.iqi, localb.ipA, localb.iqk, localb.ipE);
+              localb.iqs = com.tencent.mm.particles.a.b.a(l2, localb.iqh, localb.iqj, localb.ipC, localb.iql, localb.ipG);
+              localb.iqt = com.tencent.mm.particles.a.b.a(l2, localb.iqm, localb.iqn, localb.ipM, localb.iqo, localb.ipO);
+              if (localb.ipu == null) {
                 break label347;
               }
-              localb.alpha = ((int)(localb.hOZ.getInterpolation((float)l2 / localb.hPU) * 255.0F));
-              if ((localb.hQa) || ((float)l2 < localb.hPU)) {
+              localb.alpha = ((int)(localb.ipu.getInterpolation((float)l2 / localb.iqp) * 255.0F));
+              if ((localb.iqv) || ((float)l2 < localb.iqp)) {
                 break label358;
               }
               bool = true;
               localb.terminated = bool;
-              localb.hPV = Math.min(1.0F, (float)l2 / localb.hPU);
+              localb.iqq = Math.min(1.0F, (float)l2 / localb.iqp);
             }
             if (localb.terminated) {
               break label364;
@@ -248,7 +260,7 @@ public final class c
               break label367;
             }
             localIterator.remove();
-            paramAnonymousValueAnimator.hOS.add(localb);
+            paramAnonymousValueAnimator.ipn.add(localb);
             break;
             bool = false;
             break label93;
@@ -261,114 +273,114 @@ public final class c
         label257:
         label280:
         label347:
-        if ((c.this.hOT.size() == 0) && (l1 >= c.this.hOW))
+        if ((c.this.ipo.size() == 0) && (l1 >= c.this.ipr))
         {
-          c.this.aFE();
+          c.this.aMv();
           AppMethodBeat.o(151349);
           return;
         }
-        c.this.hOR.invalidate();
+        c.this.ipm.invalidate();
         AppMethodBeat.o(151349);
       }
     });
-    this.qT.start();
+    this.rT.start();
     AppMethodBeat.o(151358);
   }
   
-  public final c Bm(long paramLong)
+  public final c B(float paramFloat1, float paramFloat2)
   {
-    this.hPv = paramLong;
+    this.ipw = (paramFloat1 / 1000.0F);
+    this.ipx = (paramFloat2 / 1000.0F);
     return this;
   }
   
-  public final c aFA()
+  public final c C(float paramFloat1, float paramFloat2)
   {
-    this.hPr = 0.00036F;
-    this.hPs = 0.00018F;
+    this.ipy = (paramFloat1 / 1000.0F);
+    this.ipz = (paramFloat2 / 1000.0F);
     return this;
   }
   
-  public final c aFB()
+  public final c aMp()
+  {
+    this.ipq = 1;
+    return this;
+  }
+  
+  public final c aMq()
+  {
+    this.ipr = 9223372036854775807L;
+    return this;
+  }
+  
+  public final c aMr()
+  {
+    this.ipI = 180;
+    this.ipJ = 180;
+    return this;
+  }
+  
+  public final c aMs()
+  {
+    this.ipM = 0.00036F;
+    this.ipN = 0.00018F;
+    return this;
+  }
+  
+  public final c aMt()
   {
     AppMethodBeat.i(151352);
-    this.hPt = Float.valueOf(0.36F);
-    this.hPu = Float.valueOf(0.0F);
+    this.ipO = Float.valueOf(0.36F);
+    this.ipP = Float.valueOf(0.0F);
     AppMethodBeat.o(151352);
     return this;
   }
   
-  public final c aFD()
+  public final c aMu()
   {
     AppMethodBeat.i(151353);
-    aFF();
-    aFG();
-    E(this.hOV, 0L);
-    aFH();
+    aMw();
+    aMx();
+    D(this.ipq, 0L);
+    aMy();
     AppMethodBeat.o(151353);
     return this;
   }
   
-  public final void aFE()
+  public final void aMv()
   {
     AppMethodBeat.i(151354);
-    if (this.qT != null) {
-      this.qT.cancel();
+    if (this.rT != null) {
+      this.rT.cancel();
     }
-    this.hOR.aFE();
+    this.ipm.aMv();
     AppMethodBeat.o(151354);
   }
   
-  public final c aFy()
+  public final c al(float paramFloat)
   {
-    this.hOW = 9223372036854775807L;
+    this.ips = (paramFloat / 1000.0F);
+    this.ipt = (1.0F / this.ips);
     return this;
   }
   
-  public final c aFz()
+  public final c am(float paramFloat)
   {
-    this.hPn = 180;
-    this.hPo = 180;
+    this.ipA = (paramFloat / 1000000.0F);
+    this.ipB = 0.0F;
     return this;
   }
   
-  public final c ah(float paramFloat)
+  public final c an(float paramFloat)
   {
-    this.hOX = (paramFloat / 1000.0F);
-    this.hOY = (1.0F / this.hOX);
+    this.ipC = (paramFloat / 1000000.0F);
+    this.ipD = 0.0F;
     return this;
   }
   
-  public final c ai(float paramFloat)
+  public final c qy(long paramLong)
   {
-    this.hPf = (paramFloat / 1000000.0F);
-    this.hPg = 0.0F;
-    return this;
-  }
-  
-  public final c aj(float paramFloat)
-  {
-    this.hPh = (paramFloat / 1000000.0F);
-    this.hPi = 0.0F;
-    return this;
-  }
-  
-  public final c fQO()
-  {
-    this.hOV = 1;
-    return this;
-  }
-  
-  public final c y(float paramFloat1, float paramFloat2)
-  {
-    this.hPb = (paramFloat1 / 1000.0F);
-    this.hPc = (paramFloat2 / 1000.0F);
-    return this;
-  }
-  
-  public final c z(float paramFloat1, float paramFloat2)
-  {
-    this.hPd = (paramFloat1 / 1000.0F);
-    this.hPe = (paramFloat2 / 1000.0F);
+    this.ipQ = paramLong;
     return this;
   }
 }

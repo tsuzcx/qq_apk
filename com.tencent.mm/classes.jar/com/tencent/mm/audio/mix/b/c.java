@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public final class c
 {
-  private static c cTB;
-  private long cTA;
-  private ArrayList<e> cTC;
+  private static c cQY;
+  private long cQX;
+  private ArrayList<e> cQZ;
   private int count;
   private Object sLock;
   private int size;
@@ -17,24 +17,24 @@ public final class c
   private c()
   {
     AppMethodBeat.i(136731);
-    this.cTC = new ArrayList();
+    this.cQZ = new ArrayList();
     this.sLock = new Object();
-    this.cTA = 3000000L;
+    this.cQX = 3000000L;
     this.size = 0;
     this.count = 0;
     AppMethodBeat.o(136731);
   }
   
-  public static c MJ()
+  public static c MH()
   {
     AppMethodBeat.i(136732);
-    if (cTB == null) {}
+    if (cQY == null) {}
     try
     {
-      if (cTB == null) {
-        cTB = new c();
+      if (cQY == null) {
+        cQY = new c();
       }
-      c localc = cTB;
+      c localc = cQY;
       AppMethodBeat.o(136732);
       return localc;
     }
@@ -44,18 +44,18 @@ public final class c
     }
   }
   
-  public final e MK()
+  public final e MI()
   {
     AppMethodBeat.i(136733);
     synchronized (this.sLock)
     {
-      if (this.cTC.size() > 0)
+      if (this.cQZ.size() > 0)
       {
-        e locale = (e)this.cTC.remove(this.cTC.size() - 1);
+        e locale = (e)this.cQZ.remove(this.cQZ.size() - 1);
         AppMethodBeat.o(136733);
         return locale;
       }
-      if (this.size >= this.cTA)
+      if (this.size >= this.cQX)
       {
         b.e("MicroMsg.Mix.AudioPcmDataTrackFixedSizePool", "size >= FIX_SIZE, size:%d", new Object[] { Integer.valueOf(this.size) });
         AppMethodBeat.o(136733);
@@ -65,7 +65,7 @@ public final class c
       this.size = (this.count * 3536);
       b.i("MicroMsg.Mix.AudioPcmDataTrackFixedSizePool", "pool tract count:%d", new Object[] { Integer.valueOf(this.count) });
       ??? = new e();
-      ((e)???).cTv = true;
+      ((e)???).cQS = true;
       AppMethodBeat.o(136733);
       return ???;
     }
@@ -74,12 +74,12 @@ public final class c
   public final void b(e parame)
   {
     AppMethodBeat.i(136734);
-    if ((parame == null) || (parame.cTk == null))
+    if ((parame == null) || (parame.cQH == null))
     {
       AppMethodBeat.o(136734);
       return;
     }
-    if (!parame.cTv)
+    if (!parame.cQS)
     {
       AppMethodBeat.o(136734);
       return;
@@ -87,7 +87,7 @@ public final class c
     parame.reset();
     synchronized (this.sLock)
     {
-      this.cTC.add(0, parame);
+      this.cQZ.add(0, parame);
       AppMethodBeat.o(136734);
       return;
     }

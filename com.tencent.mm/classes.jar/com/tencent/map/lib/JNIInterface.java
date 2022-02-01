@@ -2,16 +2,20 @@ package com.tencent.map.lib;
 
 import android.graphics.Rect;
 import com.tencent.map.lib.callbacks.TileOverlayCallback;
+import com.tencent.map.lib.models.AggregationOverlayInfo;
 import com.tencent.map.lib.models.AnnocationText;
 import com.tencent.map.lib.models.AnnocationTextResult;
 import com.tencent.map.lib.models.CircleInfo;
 import com.tencent.map.lib.models.CityTrafficInfo;
 import com.tencent.map.lib.models.GeoPoint;
+import com.tencent.map.lib.models.GroundOverlayInfo;
 import com.tencent.map.lib.models.MarkerInfo;
 import com.tencent.map.lib.models.MaskLayer;
 import com.tencent.map.lib.models.Polygon2D;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions.Text;
+import com.tencent.tencentmap.mapsdk.maps.model.VectorHeatAggregationUnit;
 import java.util.ArrayList;
 
 public class JNIInterface
@@ -63,7 +67,11 @@ public class JNIInterface
   
   public native String getMapEngineRenderStatus(long paramLong);
   
+  public native long nativeAddAggregationOverlay(long paramLong, AggregationOverlayInfo paramAggregationOverlayInfo);
+  
   public native int nativeAddCircle(long paramLong, CircleInfo paramCircleInfo);
+  
+  public native long nativeAddGroundOverlay(long paramLong, GroundOverlayInfo paramGroundOverlayInfo);
   
   public native int nativeAddMarker(long paramLong, String paramString, double paramDouble1, double paramDouble2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt1, int paramInt2);
   
@@ -119,9 +127,19 @@ public class JNIInterface
   
   public native void nativeFromScreenLocation(long paramLong, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, double[] paramArrayOfDouble);
   
+  public native float[] nativeGLProjectMatrix();
+  
+  public native double[] nativeGLViewMatrix();
+  
+  public native float nativeGLViewScaleRatio();
+  
+  public native int[] nativeGLViewport();
+  
   public native boolean nativeGenerateTextures(long paramLong);
   
   public native String nativeGetActiveIndoorBuildingGUID(long paramLong);
+  
+  public native VectorHeatAggregationUnit nativeGetAggregationUnit(long paramLong1, long paramLong2, LatLng paramLatLng);
   
   public native String nativeGetBlockRouteInfo(long paramLong, int paramInt1, int paramInt2);
   
@@ -212,6 +230,8 @@ public class JNIInterface
   
   public native void nativeReloadTileOverlay(long paramLong, int paramInt);
   
+  public native void nativeRemoveGLVisualizationOverlay(long paramLong1, long paramLong2);
+  
   public native void nativeRemoveMarker(long paramLong, int paramInt);
   
   public native void nativeRemoveMaskLayer(long paramLong, int paramInt);
@@ -278,7 +298,7 @@ public class JNIInterface
   
   public native void nativeSetLocationMarkerHidden(long paramLong, boolean paramBoolean);
   
-  public native void nativeSetLocationMarkerImage(long paramLong, String paramString);
+  public native int nativeSetLocationMarkerImage(long paramLong, String paramString, float paramFloat1, float paramFloat2);
   
   public native void nativeSetMapParam(long paramLong, byte[] paramArrayOfByte);
   
@@ -330,9 +350,13 @@ public class JNIInterface
   
   public native void nativeUnlockEngine(long paramLong);
   
+  public native void nativeUpdateAggregationOverlay(long paramLong1, long paramLong2, AggregationOverlayInfo paramAggregationOverlayInfo);
+  
   public native void nativeUpdateCircle(long paramLong, int paramInt, CircleInfo paramCircleInfo);
   
   public native void nativeUpdateFrame(long paramLong, double paramDouble);
+  
+  public native void nativeUpdateGroundOverlay(long paramLong1, long paramLong2, GroundOverlayInfo paramGroundOverlayInfo);
   
   public native void nativeUpdateMapResource(long paramLong, String paramString);
   
@@ -353,6 +377,19 @@ public class JNIInterface
   public native void nativeZoomToSpan(long paramLong, Rect paramRect1, Rect paramRect2, boolean paramBoolean);
   
   public native void nativeZoomToSpanForNavigation(long paramLong, GeoPoint paramGeoPoint, int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public boolean onJniCallbackRenderMapFrame(int paramInt)
+  {
+    AppMethodBeat.i(191266);
+    if (this.mCallback != null)
+    {
+      boolean bool = this.mCallback.onJniCallbackRenderMapFrame(paramInt);
+      AppMethodBeat.o(191266);
+      return bool;
+    }
+    AppMethodBeat.o(191266);
+    return false;
+  }
   
   public void onMapCameraChangeStopped()
   {
@@ -389,7 +426,7 @@ public class JNIInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.map.lib.JNIInterface
  * JD-Core Version:    0.7.0.1
  */

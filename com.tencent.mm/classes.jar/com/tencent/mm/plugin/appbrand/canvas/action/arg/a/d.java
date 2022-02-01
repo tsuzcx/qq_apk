@@ -7,33 +7,33 @@ import com.tencent.mm.sdk.c;
 
 public final class d
 {
-  private static d iZH;
-  public c<DrawCanvasArg> iZF;
-  public c<DrawActionWrapper> iZG;
+  private static d jzU;
+  public c<DrawCanvasArg> jzS;
+  public c<DrawActionWrapper> jzT;
   
   static
   {
     AppMethodBeat.i(145320);
-    iZH = new d();
+    jzU = new d();
     AppMethodBeat.o(145320);
   }
   
   private d()
   {
     AppMethodBeat.i(145319);
-    this.iZF = new c(5);
-    this.iZG = new c(500);
+    this.jzS = new c(5);
+    this.jzT = new c(500);
     AppMethodBeat.o(145319);
   }
   
-  public static d aSU()
+  public static d aZT()
   {
-    return iZH;
+    return jzU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.d
  * JD-Core Version:    0.7.0.1
  */

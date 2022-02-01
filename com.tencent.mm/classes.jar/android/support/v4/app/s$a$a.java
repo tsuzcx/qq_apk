@@ -9,13 +9,13 @@ import java.util.Set;
 
 public final class s$a$a
 {
-  public boolean Ek = true;
-  private boolean El = true;
-  private int Em;
-  private final int En;
-  private final CharSequence Eo;
-  private final PendingIntent Ep;
-  private ArrayList<x> Eq;
+  public boolean Fi = true;
+  private boolean Fj = true;
+  private int Fk;
+  private final int Fl;
+  private final CharSequence Fm;
+  private final PendingIntent Fn;
+  private ArrayList<x> Fo;
   private final Bundle mExtras;
   
   public s$a$a(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent)
@@ -25,27 +25,27 @@ public final class s$a$a
   
   private s$a$a(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent, Bundle paramBundle)
   {
-    this.En = paramInt;
-    this.Eo = s.c.j(paramCharSequence);
-    this.Ep = paramPendingIntent;
+    this.Fl = paramInt;
+    this.Fm = s.c.j(paramCharSequence);
+    this.Fn = paramPendingIntent;
     this.mExtras = paramBundle;
-    this.Eq = null;
-    this.Ek = true;
-    this.Em = 0;
-    this.El = true;
+    this.Fo = null;
+    this.Fi = true;
+    this.Fk = 0;
+    this.Fj = true;
   }
   
-  public final s.a dM()
+  public final s.a dT()
   {
     Object localObject1 = new ArrayList();
     Object localObject2 = new ArrayList();
-    if (this.Eq != null)
+    if (this.Fo != null)
     {
-      Iterator localIterator = this.Eq.iterator();
+      Iterator localIterator = this.Fo.iterator();
       while (localIterator.hasNext())
       {
         x localx = (x)localIterator.next();
-        if ((!localx.FK) && ((localx.FJ == null) || (localx.FJ.length == 0)) && (localx.FL != null) && (!localx.FL.isEmpty())) {}
+        if ((!localx.GI) && ((localx.GH == null) || (localx.GH.length == 0)) && (localx.GJ != null) && (!localx.GJ.isEmpty())) {}
         for (int i = 1;; i = 0)
         {
           if (i == 0) {
@@ -68,7 +68,7 @@ public final class s$a$a
     label217:
     for (localObject2 = null;; localObject2 = (x[])((List)localObject2).toArray(new x[((List)localObject2).size()]))
     {
-      return new s.a(this.En, this.Eo, this.Ep, this.mExtras, (x[])localObject2, (x[])localObject1, this.Ek, this.Em, this.El);
+      return new s.a(this.Fl, this.Fm, this.Fn, this.mExtras, (x[])localObject2, (x[])localObject1, this.Fi, this.Fk, this.Fj);
       localObject1 = (x[])((List)localObject1).toArray(new x[((List)localObject1).size()]);
       break;
     }
@@ -76,7 +76,7 @@ public final class s$a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v4.app.s.a.a
  * JD-Core Version:    0.7.0.1
  */

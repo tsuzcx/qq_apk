@@ -6,39 +6,39 @@ import com.tencent.mm.plugin.report.a;
 public final class j
   extends a
 {
-  public long dHq;
-  public String dHr;
-  public long dHs;
-  public long dHt;
+  public long dFd;
+  public String dFe;
+  public long dFf;
+  public long dFg;
   
-  public final String PV()
+  public final String PR()
   {
     AppMethodBeat.i(163174);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHq);
+    ((StringBuffer)localObject).append(this.dFd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHr);
+    ((StringBuffer)localObject).append(this.dFe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHs);
+    ((StringBuffer)localObject).append(this.dFf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHt);
+    ((StringBuffer)localObject).append(this.dFg);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
+    arz((String)localObject);
     AppMethodBeat.o(163174);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
     AppMethodBeat.i(163175);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ActionType:").append(this.dHq);
+    ((StringBuffer)localObject).append("ActionType:").append(this.dFd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dHr);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WeShiCount:").append(this.dHs);
+    ((StringBuffer)localObject).append("WeShiCount:").append(this.dFf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickTime:").append(this.dHt);
+    ((StringBuffer)localObject).append("ClickTime:").append(this.dFg);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(163175);
     return localObject;
@@ -51,7 +51,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.j
  * JD-Core Version:    0.7.0.1
  */

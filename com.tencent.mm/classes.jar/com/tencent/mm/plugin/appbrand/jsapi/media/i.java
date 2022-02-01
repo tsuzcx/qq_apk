@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.be;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +25,7 @@ public final class i
 {
   private static final int CTRL_INDEX = 120;
   private static final String NAME = "getImageInfo";
-  private static final Collection<b> jXX;
+  private static final Collection<b> kyJ;
   
   static
   {
@@ -33,7 +33,7 @@ public final class i
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.add(new a((byte)0));
     localLinkedList.add(new d((byte)0));
-    jXX = Collections.unmodifiableCollection(localLinkedList);
+    kyJ = Collections.unmodifiableCollection(localLinkedList);
     AppMethodBeat.o(139879);
   }
   
@@ -43,7 +43,7 @@ public final class i
     public final com.tencent.mm.vending.j.a i(AppBrandRuntime paramAppBrandRuntime, String paramString)
     {
       AppMethodBeat.i(139873);
-      paramAppBrandRuntime = paramAppBrandRuntime.Ee().EP(paramString);
+      paramAppBrandRuntime = paramAppBrandRuntime.DH().IS(paramString);
       if (paramAppBrandRuntime == null)
       {
         AppMethodBeat.o(139873);
@@ -51,16 +51,16 @@ public final class i
       }
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(com.tencent.mm.vfs.q.B(paramAppBrandRuntime.fhU()), localOptions);
+      BitmapFactory.decodeFile(com.tencent.mm.vfs.q.B(paramAppBrandRuntime.fxV()), localOptions);
       paramString = new i.c((byte)0);
       paramString.width = localOptions.outWidth;
       paramString.height = localOptions.outHeight;
       paramString.type = com.tencent.luggage.e.a.a.e(localOptions);
       if (com.tencent.luggage.e.a.a.d(localOptions)) {}
-      for (paramAppBrandRuntime = com.tencent.luggage.e.a.a.gL(com.tencent.luggage.e.a.a.co(com.tencent.mm.vfs.q.B(paramAppBrandRuntime.fhU())));; paramAppBrandRuntime = "up")
+      for (paramAppBrandRuntime = com.tencent.luggage.e.a.a.gv(com.tencent.luggage.e.a.a.ce(com.tencent.mm.vfs.q.B(paramAppBrandRuntime.fxV())));; paramAppBrandRuntime = "up")
       {
-        paramString.jbC = paramAppBrandRuntime;
-        paramAppBrandRuntime = com.tencent.mm.vending.j.a.L(i.e.jYd, paramString);
+        paramString.jBP = paramAppBrandRuntime;
+        paramAppBrandRuntime = com.tencent.mm.vending.j.a.L(i.e.kyP, paramString);
         AppMethodBeat.o(139873);
         return paramAppBrandRuntime;
       }
@@ -75,7 +75,7 @@ public final class i
   static final class c
   {
     public int height;
-    public String jbC;
+    public String jBP;
     public String type;
     public int width;
   }
@@ -106,15 +106,15 @@ public final class i
         paramString.reset();
         label92:
         if (bool) {}
-        for (paramAppBrandRuntime = com.tencent.luggage.e.a.a.gL(com.tencent.luggage.e.a.a.j(paramString));; paramAppBrandRuntime = "up")
+        for (paramAppBrandRuntime = com.tencent.luggage.e.a.a.gv(com.tencent.luggage.e.a.a.i(paramString));; paramAppBrandRuntime = "up")
         {
-          localc.jbC = paramAppBrandRuntime;
-          bt.d(paramString);
-          paramAppBrandRuntime = com.tencent.mm.vending.j.a.L(i.e.jYd, localc);
+          localc.jBP = paramAppBrandRuntime;
+          bs.d(paramString);
+          paramAppBrandRuntime = com.tencent.mm.vending.j.a.L(i.e.kyP, localc);
           AppMethodBeat.o(139874);
           return paramAppBrandRuntime;
         }
-        paramAppBrandRuntime = com.tencent.mm.vending.j.a.eg(i.e.jYb);
+        paramAppBrandRuntime = com.tencent.mm.vending.j.a.eh(i.e.kyN);
         AppMethodBeat.o(139874);
         return paramAppBrandRuntime;
       }
@@ -130,10 +130,10 @@ public final class i
     static
     {
       AppMethodBeat.i(139877);
-      jYb = new e("FILE_NOT_FOUND", 0);
-      jYc = new e("UNKNOWN_FAIL", 1);
-      jYd = new e("RESOLVED", 2);
-      jYe = new e[] { jYb, jYc, jYd };
+      kyN = new e("FILE_NOT_FOUND", 0);
+      kyO = new e("UNKNOWN_FAIL", 1);
+      kyP = new e("RESOLVED", 2);
+      kyQ = new e[] { kyN, kyO, kyP };
       AppMethodBeat.o(139877);
     }
     
@@ -142,7 +142,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.i
  * JD-Core Version:    0.7.0.1
  */

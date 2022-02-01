@@ -3,23 +3,24 @@ package com.tencent.mm.plugin.remittance.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 
 public final class ad
 {
-  public static void aml(String paramString)
+  public static void ars(String paramString)
   {
     AppMethodBeat.i(67912);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(67912);
       return;
     }
-    Object localObject = djO();
-    com.tencent.mm.sdk.platformtools.ad.d("Micromsg.RemittanceLogic", "cur friendsListStr=".concat(String.valueOf(localObject)));
+    Object localObject = dxQ();
+    ac.d("Micromsg.RemittanceLogic", "cur friendsListStr=".concat(String.valueOf(localObject)));
     StringBuilder localStringBuilder = new StringBuilder();
-    if (!bt.isNullOrNil((String)localObject))
+    if (!bs.isNullOrNil((String)localObject))
     {
       localObject = ((String)localObject).split(",");
       if (localObject != null)
@@ -45,19 +46,19 @@ public final class ad
     localStringBuilder.insert(0, ",");
     localStringBuilder.insert(0, paramString);
     localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    com.tencent.mm.sdk.platformtools.ad.d("Micromsg.RemittanceLogic", "new friendsListStr=" + localStringBuilder.toString());
-    g.afC();
-    g.afB().afk().set(327733, localStringBuilder.toString());
-    g.afC();
-    g.afB().afk().eKy();
+    ac.d("Micromsg.RemittanceLogic", "new friendsListStr=" + localStringBuilder.toString());
+    g.agS();
+    g.agR().agA().set(327733, localStringBuilder.toString());
+    g.agS();
+    g.agR().agA().faa();
     AppMethodBeat.o(67912);
   }
   
-  public static String djO()
+  public static String dxQ()
   {
     AppMethodBeat.i(67913);
-    g.afC();
-    String str = bt.nullAsNil((String)g.afB().afk().get(327733, null));
+    g.agS();
+    String str = bs.nullAsNil((String)g.agR().agA().get(327733, null));
     AppMethodBeat.o(67913);
     return str;
   }

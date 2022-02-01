@@ -2,9 +2,9 @@ package com.tencent.mm.pluginsdk.h.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ab;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bi;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bh;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -18,8 +18,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class n
   extends f<l>
 {
-  private final com.tencent.e.b BTw;
-  protected final c BTx;
+  private final com.tencent.e.b DlM;
+  protected final c DlN;
   
   public n(String paramString, c paramc)
   {
@@ -29,32 +29,32 @@ public class n
   private n(String paramString, c paramc, byte paramByte)
   {
     AppMethodBeat.i(184268);
-    this.BTw = new f.a(this, paramString, 4, 4, new c());
-    this.BTx = paramc;
+    this.DlM = new f.a(this, paramString, 4, 4, new c());
+    this.DlN = paramc;
     AppMethodBeat.o(184268);
   }
   
   protected f.d a(l paraml)
   {
     AppMethodBeat.i(152044);
-    ad.i("MicroMsg.ResDownloader.NetworkWorker", "request.class = " + paraml.getClass().getSimpleName());
-    q.a.ewL();
+    ac.i("MicroMsg.ResDownloader.NetworkWorker", "request.class = " + paraml.getClass().getSimpleName());
+    q.a.eMf();
     a locala = q.c(paraml);
     Object localObject = locala;
     if (locala == null)
     {
-      ad.i("MicroMsg.ResDownloader.NetworkWorker", "get null handler from plugin, use default handler");
+      ac.i("MicroMsg.ResDownloader.NetworkWorker", "get null handler from plugin, use default handler");
       localObject = new b(paraml);
     }
-    ((a)localObject).BTA = this.BTx;
+    ((a)localObject).DlQ = this.DlN;
     AppMethodBeat.o(152044);
     return localObject;
   }
   
-  final void aBp(String paramString)
+  final void aGH(String paramString)
   {
     AppMethodBeat.i(152043);
-    super.HF(paramString);
+    super.LJ(paramString);
     AppMethodBeat.o(152043);
   }
   
@@ -62,14 +62,14 @@ public class n
   {
     int j = 0;
     AppMethodBeat.i(152042);
-    if ((aBn(paraml.BRL)) || (aBm(paraml.BRL)))
+    if ((aGF(paraml.Dkb)) || (aGE(paraml.Dkb)))
     {
-      ad.i("MicroMsg.ResDownloader.NetworkWorker", "urlKey = %s is already queueing, skip repeated task", new Object[] { paraml.BRL });
+      ac.i("MicroMsg.ResDownloader.NetworkWorker", "urlKey = %s is already queueing, skip repeated task", new Object[] { paraml.Dkb });
       AppMethodBeat.o(152042);
       return 0;
     }
-    int i = ab.Xx();
-    ad.i("MicroMsg.ResDownloader.NetworkWorker", "currentNetType(%d), requestNetType(%d)", new Object[] { Integer.valueOf(i), Integer.valueOf(paraml.networkType) });
+    int i = ab.Yu();
+    ac.i("MicroMsg.ResDownloader.NetworkWorker", "currentNetType(%d), requestNetType(%d)", new Object[] { Integer.valueOf(i), Integer.valueOf(paraml.networkType) });
     if (i != 0) {
       if (2 == paraml.networkType) {
         i = 1;
@@ -77,7 +77,7 @@ public class n
     }
     while (i == 0)
     {
-      ad.i("MicroMsg.ResDownloader.NetworkWorker", "urlKey = %s, mismatch networkType , skip task", new Object[] { paraml.BRL });
+      ac.i("MicroMsg.ResDownloader.NetworkWorker", "urlKey = %s, mismatch networkType , skip task", new Object[] { paraml.Dkb });
       AppMethodBeat.o(152042);
       return 1;
       if (i == 1) {
@@ -86,10 +86,10 @@ public class n
         i = 0;
       }
     }
-    if ((!this.BTw.isShutdown()) && (!this.BTw.isTerminated()))
+    if ((!this.DlM.isShutdown()) && (!this.DlM.isTerminated()))
     {
-      i = this.BTw.IxB.get();
-      if ((com.tencent.e.b.aca(i)) || (!com.tencent.e.b.ko(i, 1610612736))) {
+      i = this.DlM.JZk.get();
+      if ((com.tencent.e.b.aet(i)) || (!com.tencent.e.b.kB(i, 1610612736))) {
         break label210;
       }
     }
@@ -110,26 +110,26 @@ public class n
     return 2;
   }
   
-  protected final com.tencent.e.b ewx()
+  protected final com.tencent.e.b eLR()
   {
-    return this.BTw;
+    return this.DlM;
   }
   
   public void shutdown()
   {
     AppMethodBeat.i(152045);
-    this.BTw.shutdownNow();
-    Iterator localIterator = this.BTg.keySet().iterator();
+    this.DlM.shutdownNow();
+    Iterator localIterator = this.Dlw.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (Future)this.BTg.get(localObject);
+      localObject = (Future)this.Dlw.get(localObject);
       if (localObject != null) {
         ((Future)localObject).cancel(true);
       }
     }
     this.pendingRequests.clear();
-    this.BTg.clear();
+    this.Dlw.clear();
     AppMethodBeat.o(152045);
   }
   
@@ -137,70 +137,75 @@ public class n
     extends f.d<Req>
     implements e
   {
-    private static final ThreadLocal<j> BTy = new ThreadLocal() {};
-    private final int BRU;
-    public volatile c BTA;
-    private final AtomicInteger BTz;
+    private static final ThreadLocal<j> DlO = new ThreadLocal() {};
+    private final int Dkk;
+    private final AtomicInteger DlP;
+    public volatile c DlQ;
     
     protected a(Req paramReq)
     {
       super();
-      this.BRU = paramReq.BRU;
-      this.BTz = new AtomicInteger(this.BRU);
+      this.Dkk = paramReq.Dkk;
+      this.DlP = new AtomicInteger(this.Dkk);
     }
     
-    public boolean aQl()
+    public boolean aXd()
     {
       return false;
     }
     
-    public boolean aQm()
+    public boolean aXe()
     {
       return true;
     }
     
-    public boolean aQn()
+    public boolean aXf()
     {
       return false;
     }
     
-    protected boolean aQo()
+    protected boolean aXg()
     {
       return true;
     }
     
-    public boolean aQp()
+    public boolean aXh()
     {
-      if (this.BTz.decrementAndGet() > 0) {}
+      if (this.DlP.decrementAndGet() > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.BTA.B(ewl(), this.BRU, this.BTz.get());
+        this.DlQ.A(eLF(), this.Dkk, this.DlP.get());
         return bool;
       }
     }
     
     protected m b(j paramj)
     {
-      if (!aQo()) {
+      if (!aXg()) {
         return j.a(this);
       }
-      paramj = q.a.ewL().aBq(ewl());
+      paramj = q.a.eMf().aGI(eLF());
       if (paramj != null)
       {
         paramj.field_status = 1;
-        q.a.ewL().h(paramj);
+        q.a.eMf().h(paramj);
       }
       return j.a(this);
     }
     
-    public final String ewF()
+    public final String eLF()
+    {
+      return ((l)aXi()).Dkb;
+    }
+    
+    public final String eLZ()
     {
       return "GET";
     }
     
-    public final Collection<b> ewG()
+    public final Collection<b> eMa()
     {
-      Map localMap = ((l)aQq()).getRequestHeaders();
+      Map localMap = ((l)aXi()).getRequestHeaders();
       if ((localMap == null) || (localMap.size() == 0)) {
         return null;
       }
@@ -214,65 +219,60 @@ public class n
       {
         String str1 = (String)((Iterator)localObject).next();
         String str2 = (String)localMap.get(str1);
-        if (!bt.isNullOrNil(str2)) {
+        if (!bs.isNullOrNil(str2)) {
           localLinkedList.add(new b(str1, str2));
         }
       }
       return localLinkedList;
     }
     
-    public final int ewH()
+    public final int eMb()
     {
-      return ((l)aQq()).ewH();
+      return ((l)aXi()).eMb();
     }
     
-    public final String ewI()
+    public final String eMc()
     {
       return "application/x-www-form-urlencoded;charset=utf-8";
     }
     
-    public final String ewl()
-    {
-      return ((l)aQq()).BRL;
-    }
-    
     public final int getConnectTimeout()
     {
-      return ((l)aQq()).getConnectTimeout();
+      return ((l)aXi()).getConnectTimeout();
     }
     
     public final String getFilePath()
     {
-      return ((l)aQq()).getFilePath();
+      return ((l)aXi()).getFilePath();
     }
     
     public final int getReadTimeout()
     {
-      return ((l)aQq()).getReadTimeout();
+      return ((l)aXi()).getReadTimeout();
     }
     
     public String getURL()
     {
-      return ((l)aQq()).url;
+      return ((l)aXi()).url;
     }
     
-    public boolean mR(long paramLong)
+    public boolean qG(long paramLong)
     {
-      this.BTA.G(ewl(), paramLong);
-      long l = bi.eGv();
-      ad.i("MicroMsg.ResDownloader.NetworkWorker", "%s: get available size = %d", new Object[] { ewl(), Long.valueOf(l) });
+      this.DlQ.H(eLF(), paramLong);
+      long l = bh.eVQ();
+      ac.i("MicroMsg.ResDownloader.NetworkWorker", "%s: get available size = %d", new Object[] { eLF(), Long.valueOf(l) });
       return l >= paramLong;
     }
     
     public final void run()
     {
-      m localm = b((j)BTy.get());
+      m localm = b((j)DlO.get());
       if (localm != null)
       {
-        this.BTA.a(this, localm);
+        this.DlQ.a(this, localm);
         return;
       }
-      ad.e("MicroMsg.ResDownloader.NetworkWorker", "groupId = %s, performer get null response", new Object[] { asy() });
+      ac.e("MicroMsg.ResDownloader.NetworkWorker", "groupId = %s, performer get null response", new Object[] { azp() });
     }
   }
   
@@ -284,7 +284,7 @@ public class n
       super();
     }
     
-    public final String asy()
+    public final String azp()
     {
       return "ResDownload";
     }
@@ -300,18 +300,18 @@ public class n
       AppMethodBeat.o(152037);
     }
     
-    private static String av(Runnable paramRunnable)
+    private static String ax(Runnable paramRunnable)
     {
       AppMethodBeat.i(152038);
       if ((paramRunnable instanceof f.c))
       {
-        if ((((f.c)paramRunnable).BTi instanceof l))
+        if ((((f.c)paramRunnable).Dly instanceof l))
         {
-          paramRunnable = String.format("priority = %d, urlKey = %s", new Object[] { Integer.valueOf(((l)((f.c)paramRunnable).BTi).priority), ((f.c)paramRunnable).BTi.ewl() });
+          paramRunnable = String.format("priority = %d, urlKey = %s", new Object[] { Integer.valueOf(((l)((f.c)paramRunnable).Dly).priority), ((f.c)paramRunnable).Dly.eLF() });
           AppMethodBeat.o(152038);
           return paramRunnable;
         }
-        paramRunnable = String.format("unknown request = %s", new Object[] { ((f.c)paramRunnable).BTi });
+        paramRunnable = String.format("unknown request = %s", new Object[] { ((f.c)paramRunnable).Dly });
         AppMethodBeat.o(152038);
         return paramRunnable;
       }
@@ -323,7 +323,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.h.a.c.n
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.TenpayCgiCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.tenpay.model.p;
 import java.util.HashMap;
 import org.json.JSONObject;
@@ -58,7 +58,7 @@ public class NetSceneTenpay
   {
     AppMethodBeat.i(18671);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
-    ad.i("WXP", "errCode:%d,errMsg:%s,json:%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
+    ac.i("WXP", "errCode:%d,errMsg:%s,json:%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
     String.format("errCode:%d,errMsg:%s,json:%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
     if (paramInt == 0)
     {

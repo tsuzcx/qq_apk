@@ -5,11 +5,11 @@ import android.webkit.ValueCallback;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.q.a;
-import com.tencent.mm.protocal.protobuf.dnp;
-import com.tencent.mm.protocal.protobuf.dnx;
-import com.tencent.mm.protocal.protobuf.doe;
-import com.tencent.mm.protocal.protobuf.doj;
+import com.tencent.mm.plugin.appbrand.p.a;
+import com.tencent.mm.protocal.protobuf.dtg;
+import com.tencent.mm.protocal.protobuf.dto;
+import com.tencent.mm.protocal.protobuf.dtv;
+import com.tencent.mm.protocal.protobuf.dua;
 import com.tencent.mm.sdk.platformtools.h;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -19,56 +19,56 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class l
 {
-  private boolean jgA;
-  private boolean jgB;
-  private final HashMap<String, Method> jgC;
-  private final HashMap<String, doe> jgD;
-  LinkedList<Pair<String, ValueCallback<String>>> jgE;
-  final LinkedList<o> jgF;
-  final Map<String, k> jgG;
-  final LinkedList<dnx> jgH;
-  final HashMap<Integer, b> jgI;
-  int jgJ;
-  long jgK;
-  com.tencent.luggage.sdk.b.a.c.c jgn;
-  final dnp jgo;
-  private String jgp;
-  private int jgq;
-  private int jgr;
-  doj jgs;
-  m jgt;
-  AtomicInteger jgu;
-  long jgv;
-  long jgw;
-  long jgx;
-  long jgy;
-  AtomicInteger jgz;
+  com.tencent.luggage.sdk.b.a.c.c jGC;
+  final dtg jGD;
+  private String jGE;
+  private int jGF;
+  private int jGG;
+  dua jGH;
+  m jGI;
+  AtomicInteger jGJ;
+  long jGK;
+  long jGL;
+  long jGM;
+  long jGN;
+  AtomicInteger jGO;
+  private boolean jGP;
+  private boolean jGQ;
+  private final HashMap<String, Method> jGR;
+  private final HashMap<String, dtv> jGS;
+  LinkedList<Pair<String, ValueCallback<String>>> jGT;
+  final LinkedList<o> jGU;
+  final Map<String, k> jGV;
+  final LinkedList<dto> jGW;
+  final HashMap<Integer, b> jGX;
+  int jGY;
+  long jGZ;
   final Object mLock;
   private int mStatus;
   
   public l()
   {
     AppMethodBeat.i(147009);
-    this.jgq = 0;
-    this.jgr = 0;
+    this.jGF = 0;
+    this.jGG = 0;
     this.mStatus = 0;
-    this.jgu = new AtomicInteger(0);
-    this.jgv = 0L;
-    this.jgw = 0L;
-    this.jgy = System.currentTimeMillis();
-    this.jgz = new AtomicInteger(0);
-    this.jgC = new HashMap();
-    this.jgD = new HashMap();
-    this.jgE = new LinkedList();
-    this.jgF = new LinkedList();
-    this.jgG = new HashMap();
-    this.jgH = new LinkedList();
-    this.jgI = new HashMap();
+    this.jGJ = new AtomicInteger(0);
+    this.jGK = 0L;
+    this.jGL = 0L;
+    this.jGN = System.currentTimeMillis();
+    this.jGO = new AtomicInteger(0);
+    this.jGR = new HashMap();
+    this.jGS = new HashMap();
+    this.jGT = new LinkedList();
+    this.jGU = new LinkedList();
+    this.jGV = new HashMap();
+    this.jGW = new LinkedList();
+    this.jGX = new HashMap();
     this.mLock = new Object();
-    this.jgJ = 0;
-    this.jgK = 0L;
-    this.jgo = new dnp();
-    this.jgo.Cwa = h.ETr;
+    this.jGY = 0;
+    this.jGZ = 0L;
+    this.jGD = new dtg();
+    this.jGD.DOv = h.GqE;
     AppMethodBeat.o(147009);
   }
   
@@ -86,11 +86,11 @@ public final class l
     }
   }
   
-  public final void GC(String paramString)
+  public final void KG(String paramString)
   {
     try
     {
-      this.jgp = paramString;
+      this.jGE = paramString;
       return;
     }
     finally
@@ -104,24 +104,24 @@ public final class l
   {
     boolean bool = true;
     AppMethodBeat.i(147010);
-    this.jgn = paramc;
-    u.setUin(this.jgn.Dl().DZ().uin);
-    this.jgt = u.GJ(paramString);
-    paramString = this.jgn.Dl().DY();
+    this.jGC = paramc;
+    u.setUin(this.jGC.CO().DC().uin);
+    this.jGI = u.KN(paramString);
+    paramString = this.jGC.CO().DB();
     if (paramString != null)
     {
-      paramString.cft = this.jgt.cft;
-      paramString.cfe = true;
-      paramc = (a)paramc.Dl().ar(a.class);
+      paramString.ccq = this.jGI.ccq;
+      paramString.ccb = true;
+      paramc = (a)paramc.CO().ar(a.class);
       if (paramc != null) {
-        if (paramString.cft) {
+        if (paramString.ccq) {
           break label102;
         }
       }
     }
     for (;;)
     {
-      paramc.kUo = bool;
+      paramc.lvY = bool;
       AppMethodBeat.o(147010);
       return;
       label102:
@@ -129,11 +129,11 @@ public final class l
     }
   }
   
-  public final String aUc()
+  public final String bba()
   {
     try
     {
-      String str = this.jgp;
+      String str = this.jGE;
       return str;
     }
     finally
@@ -143,11 +143,11 @@ public final class l
     }
   }
   
-  public final int aUd()
+  public final int bbb()
   {
     try
     {
-      int i = this.jgq;
+      int i = this.jGF;
       return i;
     }
     finally
@@ -157,11 +157,11 @@ public final class l
     }
   }
   
-  public final int aUe()
+  public final int bbc()
   {
     try
     {
-      int i = this.jgr;
+      int i = this.jGG;
       return i;
     }
     finally
@@ -171,11 +171,11 @@ public final class l
     }
   }
   
-  public final boolean aUf()
+  public final boolean bbd()
   {
     try
     {
-      boolean bool = this.jgB;
+      boolean bool = this.jGQ;
       return bool;
     }
     finally
@@ -185,7 +185,7 @@ public final class l
     }
   }
   
-  public final boolean aUg()
+  public final boolean bbe()
   {
     AppMethodBeat.i(147013);
     if (getStatus() == 5)
@@ -197,17 +197,17 @@ public final class l
     return false;
   }
   
-  public final boolean aUh()
+  public final boolean bbf()
   {
-    return this.jgt.jgO == 3;
+    return this.jGI.jHd == 3;
   }
   
   public final void dF(int paramInt1, int paramInt2)
   {
     try
     {
-      if ((this.jgr >= paramInt1) && (this.jgr <= paramInt2)) {
-        this.jgr = paramInt2;
+      if ((this.jGG >= paramInt1) && (this.jGG <= paramInt2)) {
+        this.jGG = paramInt2;
       }
       return;
     }
@@ -218,11 +218,11 @@ public final class l
     }
   }
   
-  public final void fA(boolean paramBoolean)
+  public final void fV(boolean paramBoolean)
   {
     try
     {
-      this.jgB = paramBoolean;
+      this.jGP = paramBoolean;
       return;
     }
     finally
@@ -232,11 +232,11 @@ public final class l
     }
   }
   
-  public final void fz(boolean paramBoolean)
+  public final void fW(boolean paramBoolean)
   {
     try
     {
-      this.jgA = paramBoolean;
+      this.jGQ = paramBoolean;
       return;
     }
     finally
@@ -250,7 +250,7 @@ public final class l
   {
     try
     {
-      boolean bool = this.jgA;
+      boolean bool = this.jGP;
       return bool;
     }
     finally
@@ -314,11 +314,11 @@ public final class l
     //   28	33	36	finally
   }
   
-  public final void qU(int paramInt)
+  public final void rH(int paramInt)
   {
     try
     {
-      this.jgq = paramInt;
+      this.jGF = paramInt;
       return;
     }
     finally
@@ -328,12 +328,12 @@ public final class l
     }
   }
   
-  public final void qV(int paramInt)
+  public final void rI(int paramInt)
   {
     try
     {
-      if (this.jgr < paramInt) {
-        this.jgr = paramInt;
+      if (this.jGG < paramInt) {
+        this.jGG = paramInt;
       }
       return;
     }
@@ -344,9 +344,9 @@ public final class l
     }
   }
   
-  public final void qW(int paramInt)
+  public final void rJ(int paramInt)
   {
-    this.jgK += paramInt;
+    this.jGZ += paramInt;
   }
   
   public final void setStatus(int paramInt)
@@ -365,7 +365,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.l
  * JD-Core Version:    0.7.0.1
  */

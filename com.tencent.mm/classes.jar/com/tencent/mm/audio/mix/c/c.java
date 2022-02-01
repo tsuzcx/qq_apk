@@ -7,108 +7,108 @@ import java.lang.reflect.Array;
 public class c
   implements g
 {
-  protected static long cTV;
-  protected static long cTW;
-  protected static Object cTX;
-  protected h cTJ;
-  protected int cTK;
-  protected int cTL;
-  protected int cTM;
-  protected int cTN;
-  protected int cTO;
-  protected int cTP;
-  protected boolean cTQ;
-  protected boolean cTR;
-  protected boolean cTS;
-  protected String cTT;
-  protected String cTU;
-  protected byte[][] cTY;
-  protected h cTZ;
+  protected static long cRs;
+  protected static long cRt;
+  protected static Object cRu;
+  protected h cRg;
+  protected int cRh;
+  protected int cRi;
+  protected int cRj;
+  protected int cRk;
+  protected int cRl;
+  protected int cRm;
+  protected boolean cRn;
+  protected boolean cRo;
+  protected boolean cRp;
+  protected String cRq;
+  protected String cRr;
+  protected byte[][] cRv;
+  protected h cRw;
   
   static
   {
     AppMethodBeat.i(136766);
-    cTV = 0L;
-    cTW = 0L;
-    cTX = new Object();
+    cRs = 0L;
+    cRt = 0L;
+    cRu = new Object();
     AppMethodBeat.o(136766);
   }
   
   public c()
   {
     AppMethodBeat.i(136761);
-    this.cTK = 0;
-    this.cTL = 0;
-    this.cTM = 0;
-    this.cTN = 44100;
-    this.cTO = 2;
-    this.cTP = 2;
-    this.cTQ = false;
-    this.cTR = false;
-    this.cTS = false;
-    this.cTY = new byte[2][];
+    this.cRh = 0;
+    this.cRi = 0;
+    this.cRj = 0;
+    this.cRk = 44100;
+    this.cRl = 2;
+    this.cRm = 2;
+    this.cRn = false;
+    this.cRo = false;
+    this.cRp = false;
+    this.cRv = new byte[2][];
     AppMethodBeat.o(136761);
   }
   
   public final void F(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136763);
-    int i = this.cTK;
-    this.cTK = paramInt1;
-    this.cTL = paramInt2;
-    this.cTM = paramInt3;
-    if (this.cTN != this.cTK) {
-      if (this.cTJ == null)
+    int i = this.cRh;
+    this.cRh = paramInt1;
+    this.cRi = paramInt2;
+    this.cRj = paramInt3;
+    if (this.cRk != this.cRh) {
+      if (this.cRg == null)
       {
-        this.cTJ = MS();
-        this.cTJ.j(this.cTU, this.cTK, this.cTN);
-        if ((this.cTL == 2) && (this.cTO == 2))
+        this.cRg = MQ();
+        this.cRg.j(this.cRr, this.cRh, this.cRk);
+        if ((this.cRi == 2) && (this.cRl == 2))
         {
-          if (this.cTZ != null) {
+          if (this.cRw != null) {
             break label247;
           }
-          this.cTZ = MS();
-          this.cTZ.j(this.cTU + "RResample", this.cTK, this.cTN);
+          this.cRw = MQ();
+          this.cRw.j(this.cRr + "RResample", this.cRh, this.cRk);
         }
         label145:
-        this.cTS = true;
+        this.cRp = true;
       }
     }
     for (;;)
     {
-      if (this.cTP != this.cTM) {
-        this.cTR = true;
+      if (this.cRm != this.cRj) {
+        this.cRo = true;
       }
-      if (this.cTO != this.cTL) {
-        this.cTQ = true;
+      if (this.cRl != this.cRi) {
+        this.cRn = true;
       }
       AppMethodBeat.o(136763);
       return;
-      if ((this.cTJ == null) || (i == this.cTK)) {
+      if ((this.cRg == null) || (i == this.cRh)) {
         break;
       }
-      this.cTJ.release();
-      this.cTJ = MS();
-      this.cTJ.j(this.cTU, this.cTK, this.cTN);
+      this.cRg.release();
+      this.cRg = MQ();
+      this.cRg.j(this.cRr, this.cRh, this.cRk);
       break;
       label247:
-      if ((this.cTZ == null) || (i == this.cTK)) {
+      if ((this.cRw == null) || (i == this.cRh)) {
         break label145;
       }
-      this.cTZ.release();
-      this.cTZ = MS();
-      this.cTZ.j(this.cTU + "RResample", this.cTK, this.cTN);
+      this.cRw.release();
+      this.cRw = MQ();
+      this.cRw.j(this.cRr + "RResample", this.cRh, this.cRk);
       break label145;
-      this.cTS = false;
-      if (this.cTJ != null)
+      this.cRp = false;
+      if (this.cRg != null)
       {
-        this.cTJ.release();
-        this.cTJ = null;
+        this.cRg.release();
+        this.cRg = null;
       }
     }
   }
   
-  public byte[] L(byte[] paramArrayOfByte)
+  public byte[] J(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(136764);
     if (paramArrayOfByte == null)
@@ -116,9 +116,9 @@ public class c
       AppMethodBeat.o(136764);
       return paramArrayOfByte;
     }
-    if (this.cTR)
+    if (this.cRo)
     {
-      ??? = b.a(this.cTM, this.cTP, paramArrayOfByte);
+      ??? = b.a(this.cRj, this.cRm, paramArrayOfByte);
       if (??? == null) {}
     }
     for (;;)
@@ -128,13 +128,13 @@ public class c
       }
       for (;;)
       {
-        if ((this.cTL == 1) && (this.cTO == 2) && (this.cTS))
+        if ((this.cRi == 1) && (this.cRl == 2) && (this.cRp))
         {
-          paramArrayOfByte = this.cTJ.L((byte[])???);
+          paramArrayOfByte = this.cRg.J((byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
-          paramArrayOfByte = b.b(this.cTL, this.cTO, this.cTP, (byte[])???);
+          paramArrayOfByte = b.b(this.cRi, this.cRl, this.cRm, (byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
@@ -142,18 +142,18 @@ public class c
           return ???;
         }
         byte[] arrayOfByte;
-        if ((this.cTL == 2) && (this.cTO == 2) && (this.cTS))
+        if ((this.cRi == 2) && (this.cRl == 2) && (this.cRp))
         {
-          if ((this.cTJ instanceof i)) {
-            if (this.cTO == 2)
+          if ((this.cRg instanceof i)) {
+            if (this.cRl == 2)
             {
               int i = ???.length / 2;
-              if ((this.cTY == null) || (i != this.cTY.length)) {
-                this.cTY = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
+              if ((this.cRv == null) || (i != this.cRv.length)) {
+                this.cRv = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
               }
-              b.a(this.cTP, (byte[])???, this.cTY);
-              paramArrayOfByte = this.cTJ.L(this.cTY[0]);
-              arrayOfByte = this.cTZ.L(this.cTY[1]);
+              b.a(this.cRm, (byte[])???, this.cRv);
+              paramArrayOfByte = this.cRg.J(this.cRv[0]);
+              arrayOfByte = this.cRw.J(this.cRv[1]);
               if ((paramArrayOfByte == null) || (arrayOfByte == null)) {
                 paramArrayOfByte = (byte[])???;
               }
@@ -166,16 +166,16 @@ public class c
             }
             AppMethodBeat.o(136764);
             return ???;
-            paramArrayOfByte = b.a(this.cTP, paramArrayOfByte, arrayOfByte);
+            paramArrayOfByte = b.a(this.cRm, paramArrayOfByte, arrayOfByte);
             continue;
-            paramArrayOfByte = this.cTJ.L((byte[])???);
+            paramArrayOfByte = this.cRg.J((byte[])???);
             continue;
-            paramArrayOfByte = this.cTJ.L((byte[])???);
+            paramArrayOfByte = this.cRg.J((byte[])???);
           }
         }
-        if (this.cTQ)
+        if (this.cRn)
         {
-          arrayOfByte = b.b(this.cTL, this.cTO, this.cTP, (byte[])???);
+          arrayOfByte = b.b(this.cRi, this.cRl, this.cRm, (byte[])???);
           if (arrayOfByte != null) {
             ??? = arrayOfByte;
           }
@@ -186,16 +186,16 @@ public class c
           for (;;)
           {
             ??? = paramArrayOfByte;
-            if (this.cTS) {}
-            synchronized (cTX)
+            if (this.cRp) {}
+            synchronized (cRu)
             {
-              cTV += 1L;
+              cRs += 1L;
               System.nanoTime();
-              ??? = this.cTJ.L(paramArrayOfByte);
+              ??? = this.cRg.J(paramArrayOfByte);
               if (??? != null) {
                 paramArrayOfByte = (byte[])???;
               }
-              synchronized (cTX)
+              synchronized (cRu)
               {
                 ??? = paramArrayOfByte;
               }
@@ -211,7 +211,7 @@ public class c
     }
   }
   
-  public h MS()
+  public h MQ()
   {
     AppMethodBeat.i(136762);
     i locali = new i();
@@ -219,9 +219,9 @@ public class c
     return locali;
   }
   
-  public void MT() {}
+  public void MR() {}
   
-  public e MU()
+  public e MS()
   {
     return null;
   }
@@ -231,15 +231,15 @@ public class c
   public void release()
   {
     AppMethodBeat.i(136765);
-    if (this.cTJ != null)
+    if (this.cRg != null)
     {
-      this.cTJ.release();
-      this.cTJ = null;
+      this.cRg.release();
+      this.cRg = null;
     }
-    if (this.cTZ != null)
+    if (this.cRw != null)
     {
-      this.cTZ.release();
-      this.cTZ = null;
+      this.cRw.release();
+      this.cRw = null;
     }
     AppMethodBeat.o(136765);
   }

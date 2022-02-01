@@ -7,23 +7,23 @@ import java.util.List;
 
 public final class d
 {
-  final LinkedList<Class<? extends a>> bZX;
+  final LinkedList<Class<? extends a>> bWU;
   
   public d()
   {
     AppMethodBeat.i(140371);
-    this.bZX = new LinkedList();
+    this.bWU = new LinkedList();
     AppMethodBeat.o(140371);
   }
   
-  public final void J(List<Class<? extends a>> paramList)
+  public final void A(List<Class<? extends a>> paramList)
   {
     AppMethodBeat.i(140372);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       Class localClass = (Class)paramList.next();
-      this.bZX.add(localClass);
+      this.bWU.add(localClass);
     }
     AppMethodBeat.o(140372);
   }

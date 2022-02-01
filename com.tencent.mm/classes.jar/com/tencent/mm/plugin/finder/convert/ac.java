@@ -1,45 +1,76 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.support.v7.widget.RecyclerView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.w;
-import com.tencent.mm.view.recyclerview.b;
+import com.tencent.mm.loader.d;
+import com.tencent.mm.plugin.finder.loader.f;
+import com.tencent.mm.plugin.finder.loader.h;
+import com.tencent.mm.plugin.finder.loader.h.a;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.model.b;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.m;
+import com.tencent.mm.protocal.protobuf.bqs;
 import com.tencent.mm.view.recyclerview.e;
-import d.g.a.a;
+import d.a.j;
 import d.g.b.k;
-import d.y;
+import d.l;
+import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedNoMreFooterConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedFooterNoMoreData;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/convert/FinderMixFeedVideoRoundCornerConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMixFeedRoundCornerConvert;", "()V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "baseItem", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
 public final class ac
-  extends b<w>
+  extends ab
 {
-  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
+  public final void a(e parame, b paramb, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    AppMethodBeat.i(197423);
-    k.h(paramRecyclerView, "recyclerView");
+    AppMethodBeat.i(201337);
     k.h(parame, "holder");
-    AppMethodBeat.o(197423);
-  }
-  
-  public final int getLayoutId()
-  {
-    return 2131496263;
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class a
-    extends d.g.b.l
-    implements a<y>
-  {
-    a(e parame)
+    k.h(paramb, "baseItem");
+    super.a(parame, paramb, paramInt1, paramInt2, paramBoolean, paramList);
+    paramb = paramb.rux;
+    if (paramb != null)
     {
-      super();
+      paramList = (bqs)j.iO((List)paramb.feedObject.getMediaList());
+      paramb = (ImageView)parame.adJ(2131305798);
+      k.g(paramb, "thumbIv");
+      Object localObject1 = paramb.getLayoutParams();
+      Object localObject2 = parame.getContext();
+      k.g(localObject2, "holder.context");
+      localObject2 = ((Context)localObject2).getResources();
+      k.g(localObject2, "holder.context.resources");
+      paramInt1 = ((Resources)localObject2).getDisplayMetrics().widthPixels;
+      parame = parame.getContext();
+      k.g(parame, "holder.context");
+      int i = (paramInt1 - (int)parame.getResources().getDimension(2131165284)) / 2;
+      if (i > 0)
+      {
+        paramInt2 = (int)(paramList.height * i / paramList.width);
+        paramInt1 = paramInt2;
+        if (paramInt2 > i * 1.166666666666667D) {
+          paramInt1 = (int)(i * 1.166666666666667D);
+        }
+        ((ViewGroup.LayoutParams)localObject1).width = i;
+        ((ViewGroup.LayoutParams)localObject1).height = paramInt1;
+        paramb.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      }
+      parame = h.rtK;
+      parame = h.cwn();
+      paramList = new f(paramList, m.rDR);
+      localObject1 = h.rtK;
+      parame.a(paramList, paramb, h.a(h.a.rtL));
+      AppMethodBeat.o(201337);
+      return;
     }
+    AppMethodBeat.o(201337);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.ac
  * JD-Core Version:    0.7.0.1
  */

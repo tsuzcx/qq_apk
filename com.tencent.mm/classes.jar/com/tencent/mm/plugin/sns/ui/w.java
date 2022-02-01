@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 public abstract interface w
 {
-  public abstract void aqo(String paramString);
+  public abstract void avx(String paramString);
 }
 
 

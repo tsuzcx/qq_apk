@@ -31,46 +31,46 @@ public class SwipeRefreshLayout
 {
   private static final int[] LAYOUT_ATTRS = { 16842766 };
   private static final String LOG_TAG = SwipeRefreshLayout.class.getSimpleName();
-  private View Pj;
-  b SF;
-  boolean SG = false;
-  private float SH = -1.0F;
-  private float SI;
-  private final l SJ;
-  private final int[] SK = new int[2];
-  private final int[] SL = new int[2];
-  private boolean SM;
-  private int SN;
-  int SO;
-  private float SP;
-  boolean SQ;
-  private boolean SR;
-  private final DecelerateInterpolator SS;
-  c ST;
-  private int SU = -1;
-  float SV;
-  protected int SW;
-  int SX;
-  int SY;
-  d SZ;
-  private Animation Ta;
-  private Animation Tb;
-  private Animation Tc;
-  private Animation Td;
-  private Animation Te;
-  boolean Tf;
-  private int Tg;
-  boolean Th;
-  private a Ti;
-  private Animation.AnimationListener Tj = new Animation.AnimationListener()
+  private View Qe;
+  b TA;
+  boolean TB = false;
+  private float TC = -1.0F;
+  private float TD;
+  private final l TE;
+  private final int[] TF = new int[2];
+  private final int[] TG = new int[2];
+  private boolean TH;
+  private int TI;
+  int TJ;
+  private float TK;
+  boolean TL;
+  private boolean TM;
+  private final DecelerateInterpolator TN;
+  c TO;
+  private int TP = -1;
+  float TQ;
+  protected int TR;
+  int TS;
+  int TT;
+  d TU;
+  private Animation TV;
+  private Animation TW;
+  private Animation TX;
+  private Animation TY;
+  private Animation TZ;
+  boolean Ua;
+  private int Ub;
+  boolean Uc;
+  private a Ud;
+  private Animation.AnimationListener Ue = new Animation.AnimationListener()
   {
     public final void onAnimationEnd(Animation paramAnonymousAnimation)
     {
-      if (SwipeRefreshLayout.this.SG)
+      if (SwipeRefreshLayout.this.TB)
       {
-        SwipeRefreshLayout.this.SZ.setAlpha(255);
-        SwipeRefreshLayout.this.SZ.start();
-        SwipeRefreshLayout.this.SO = SwipeRefreshLayout.this.ST.getTop();
+        SwipeRefreshLayout.this.TU.setAlpha(255);
+        SwipeRefreshLayout.this.TU.start();
+        SwipeRefreshLayout.this.TJ = SwipeRefreshLayout.this.TO.getTop();
         return;
       }
       SwipeRefreshLayout.this.reset();
@@ -80,27 +80,27 @@ public class SwipeRefreshLayout
     
     public final void onAnimationStart(Animation paramAnonymousAnimation) {}
   };
-  private final Animation Tk = new Animation()
+  private final Animation Uf = new Animation()
   {
     public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
     {
-      if (!SwipeRefreshLayout.this.Th) {}
-      for (int i = SwipeRefreshLayout.this.SX - Math.abs(SwipeRefreshLayout.this.SW);; i = SwipeRefreshLayout.this.SX)
+      if (!SwipeRefreshLayout.this.Uc) {}
+      for (int i = SwipeRefreshLayout.this.TS - Math.abs(SwipeRefreshLayout.this.TR);; i = SwipeRefreshLayout.this.TS)
       {
         int j = SwipeRefreshLayout.this.mFrom;
         i = (int)((i - SwipeRefreshLayout.this.mFrom) * paramAnonymousFloat);
-        int k = SwipeRefreshLayout.this.ST.getTop();
+        int k = SwipeRefreshLayout.this.TO.getTop();
         SwipeRefreshLayout.this.setTargetOffsetTopAndBottom(i + j - k);
-        SwipeRefreshLayout.this.SZ.A(1.0F - paramAnonymousFloat);
+        SwipeRefreshLayout.this.TU.E(1.0F - paramAnonymousFloat);
         return;
       }
     }
   };
-  private final Animation Tl = new Animation()
+  private final Animation Ug = new Animation()
   {
     public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
     {
-      SwipeRefreshLayout.this.K(paramAnonymousFloat);
+      SwipeRefreshLayout.this.O(paramAnonymousFloat);
     }
   };
   private int mActivePointerId = -1;
@@ -108,110 +108,110 @@ public class SwipeRefreshLayout
   private float mInitialMotionY;
   private boolean mIsBeingDragged;
   private int mTouchSlop;
-  private final o nE;
+  private final o oF;
   
   public SwipeRefreshLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.SN = getResources().getInteger(17694721);
+    this.TI = getResources().getInteger(17694721);
     setWillNotDraw(false);
-    this.SS = new DecelerateInterpolator(2.0F);
+    this.TN = new DecelerateInterpolator(2.0F);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
-    this.Tg = ((int)(40.0F * localDisplayMetrics.density));
-    this.ST = new c(getContext());
-    this.SZ = new d(getContext());
-    this.SZ.setStyle(1);
-    this.ST.setImageDrawable(this.SZ);
-    this.ST.setVisibility(8);
-    addView(this.ST);
+    this.Ub = ((int)(40.0F * localDisplayMetrics.density));
+    this.TO = new c(getContext());
+    this.TU = new d(getContext());
+    this.TU.setStyle(1);
+    this.TO.setImageDrawable(this.TU);
+    this.TO.setVisibility(8);
+    addView(this.TO);
     setChildrenDrawingOrderEnabled(true);
-    this.SX = ((int)(localDisplayMetrics.density * 64.0F));
-    this.SH = this.SX;
-    this.nE = new o(this);
-    this.SJ = new l(this);
+    this.TS = ((int)(localDisplayMetrics.density * 64.0F));
+    this.TC = this.TS;
+    this.oF = new o(this);
+    this.TE = new l(this);
     setNestedScrollingEnabled(true);
-    int i = -this.Tg;
-    this.SO = i;
-    this.SW = i;
-    K(1.0F);
+    int i = -this.Ub;
+    this.TJ = i;
+    this.TR = i;
+    O(1.0F);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, LAYOUT_ATTRS);
     setEnabled(paramContext.getBoolean(0, true));
     paramContext.recycle();
   }
   
-  private void H(float paramFloat)
+  private void L(float paramFloat)
   {
-    this.SZ.N(true);
-    float f1 = Math.min(1.0F, Math.abs(paramFloat / this.SH));
+    this.TU.N(true);
+    float f1 = Math.min(1.0F, Math.abs(paramFloat / this.TC));
     float f2 = Math.max((float)(f1 - 0.4D), 0.0F) * 5.0F / 3.0F;
     float f4 = Math.abs(paramFloat);
-    float f5 = this.SH;
+    float f5 = this.TC;
     int i;
     int j;
-    if (this.SY > 0)
+    if (this.TT > 0)
     {
-      i = this.SY;
+      i = this.TT;
       float f3 = i;
       f4 = Math.max(0.0F, Math.min(f4 - f5, f3 * 2.0F) / f3);
       f4 = (float)(f4 / 4.0F - Math.pow(f4 / 4.0F, 2.0D)) * 2.0F;
-      i = this.SW;
+      i = this.TR;
       j = (int)(f3 * f1 + f3 * f4 * 2.0F);
-      if (this.ST.getVisibility() != 0) {
-        this.ST.setVisibility(0);
+      if (this.TO.getVisibility() != 0) {
+        this.TO.setVisibility(0);
       }
-      if (!this.SQ)
+      if (!this.TL)
       {
-        this.ST.setScaleX(1.0F);
-        this.ST.setScaleY(1.0F);
+        this.TO.setScaleX(1.0F);
+        this.TO.setScaleY(1.0F);
       }
-      if (this.SQ) {
-        setAnimationProgress(Math.min(1.0F, paramFloat / this.SH));
+      if (this.TL) {
+        setAnimationProgress(Math.min(1.0F, paramFloat / this.TC));
       }
-      if (paramFloat >= this.SH) {
+      if (paramFloat >= this.TC) {
         break label337;
       }
-      if ((this.SZ.getAlpha() > 76) && (!a(this.Tc))) {
-        fB();
+      if ((this.TU.getAlpha() > 76) && (!a(this.TX))) {
+        fJ();
       }
     }
     for (;;)
     {
-      this.SZ.B(Math.min(0.8F, f2 * 0.8F));
-      this.SZ.A(Math.min(1.0F, f2));
-      this.SZ.C((-0.25F + f2 * 0.4F + f4 * 2.0F) * 0.5F);
-      setTargetOffsetTopAndBottom(j + i - this.SO);
+      this.TU.F(Math.min(0.8F, f2 * 0.8F));
+      this.TU.E(Math.min(1.0F, f2));
+      this.TU.G((-0.25F + f2 * 0.4F + f4 * 2.0F) * 0.5F);
+      setTargetOffsetTopAndBottom(j + i - this.TJ);
       return;
-      if (this.Th)
+      if (this.Uc)
       {
-        i = this.SX - this.SW;
+        i = this.TS - this.TR;
         break;
       }
-      i = this.SX;
+      i = this.TS;
       break;
       label337:
-      if ((this.SZ.getAlpha() < 255) && (!a(this.Td))) {
-        fC();
+      if ((this.TU.getAlpha() < 255) && (!a(this.TY))) {
+        fK();
       }
     }
   }
   
-  private void I(float paramFloat)
+  private void M(float paramFloat)
   {
-    if (paramFloat > this.SH)
+    if (paramFloat > this.TC)
     {
       f(true, true);
       return;
     }
-    this.SG = false;
-    this.SZ.B(0.0F);
+    this.TB = false;
+    this.TU.F(0.0F);
     Animation.AnimationListener local5 = null;
-    if (!this.SQ) {
+    if (!this.TL) {
       local5 = new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
-          if (!SwipeRefreshLayout.this.SQ) {
+          if (!SwipeRefreshLayout.this.TL) {
             SwipeRefreshLayout.this.a(null);
           }
         }
@@ -221,31 +221,31 @@ public class SwipeRefreshLayout
         public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       };
     }
-    b(this.SO, local5);
-    this.SZ.N(false);
+    b(this.TJ, local5);
+    this.TU.N(false);
   }
   
-  private void J(float paramFloat)
+  private void N(float paramFloat)
   {
-    if ((paramFloat - this.SP > this.mTouchSlop) && (!this.mIsBeingDragged))
+    if ((paramFloat - this.TK > this.mTouchSlop) && (!this.mIsBeingDragged))
     {
-      this.mInitialMotionY = (this.SP + this.mTouchSlop);
+      this.mInitialMotionY = (this.TK + this.mTouchSlop);
       this.mIsBeingDragged = true;
-      this.SZ.setAlpha(76);
+      this.TU.setAlpha(76);
     }
   }
   
   private void a(int paramInt, Animation.AnimationListener paramAnimationListener)
   {
     this.mFrom = paramInt;
-    this.Tk.reset();
-    this.Tk.setDuration(200L);
-    this.Tk.setInterpolator(this.SS);
+    this.Uf.reset();
+    this.Uf.setDuration(200L);
+    this.Uf.setInterpolator(this.TN);
     if (paramAnimationListener != null) {
-      this.ST.PG = paramAnimationListener;
+      this.TO.QB = paramAnimationListener;
     }
-    this.ST.clearAnimation();
-    this.ST.startAnimation(this.Tk);
+    this.TO.clearAnimation();
+    this.TO.startAnimation(this.Uf);
   }
   
   private static boolean a(Animation paramAnimation)
@@ -255,76 +255,76 @@ public class SwipeRefreshLayout
   
   private void b(int paramInt, Animation.AnimationListener paramAnimationListener)
   {
-    if (this.SQ)
+    if (this.TL)
     {
       c(paramInt, paramAnimationListener);
       return;
     }
     this.mFrom = paramInt;
-    this.Tl.reset();
-    this.Tl.setDuration(200L);
-    this.Tl.setInterpolator(this.SS);
+    this.Ug.reset();
+    this.Ug.setDuration(200L);
+    this.Ug.setInterpolator(this.TN);
     if (paramAnimationListener != null) {
-      this.ST.PG = paramAnimationListener;
+      this.TO.QB = paramAnimationListener;
     }
-    this.ST.clearAnimation();
-    this.ST.startAnimation(this.Tl);
+    this.TO.clearAnimation();
+    this.TO.startAnimation(this.Ug);
   }
   
   private void c(int paramInt, Animation.AnimationListener paramAnimationListener)
   {
     this.mFrom = paramInt;
-    this.SV = this.ST.getScaleX();
-    this.Te = new Animation()
+    this.TQ = this.TO.getScaleX();
+    this.TZ = new Animation()
     {
       public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
       {
-        float f1 = SwipeRefreshLayout.this.SV;
-        float f2 = -SwipeRefreshLayout.this.SV;
+        float f1 = SwipeRefreshLayout.this.TQ;
+        float f2 = -SwipeRefreshLayout.this.TQ;
         SwipeRefreshLayout.this.setAnimationProgress(f1 + f2 * paramAnonymousFloat);
-        SwipeRefreshLayout.this.K(paramAnonymousFloat);
+        SwipeRefreshLayout.this.O(paramAnonymousFloat);
       }
     };
-    this.Te.setDuration(150L);
+    this.TZ.setDuration(150L);
     if (paramAnimationListener != null) {
-      this.ST.PG = paramAnimationListener;
+      this.TO.QB = paramAnimationListener;
     }
-    this.ST.clearAnimation();
-    this.ST.startAnimation(this.Te);
+    this.TO.clearAnimation();
+    this.TO.startAnimation(this.TZ);
   }
   
   private void f(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.SG != paramBoolean1)
+    if (this.TB != paramBoolean1)
     {
-      this.Tf = paramBoolean2;
-      fD();
-      this.SG = paramBoolean1;
-      if (this.SG) {
-        a(this.SO, this.Tj);
+      this.Ua = paramBoolean2;
+      fL();
+      this.TB = paramBoolean1;
+      if (this.TB) {
+        a(this.TJ, this.Ue);
       }
     }
     else
     {
       return;
     }
-    a(this.Tj);
+    a(this.Ue);
   }
   
-  private void fB()
+  private void fJ()
   {
-    this.Tc = z(this.SZ.getAlpha(), 76);
+    this.TX = z(this.TU.getAlpha(), 76);
   }
   
-  private void fC()
+  private void fK()
   {
-    this.Td = z(this.SZ.getAlpha(), 255);
+    this.TY = z(this.TU.getAlpha(), 255);
   }
   
-  private void fD()
+  private void fL()
   {
     int i;
-    if (this.Pj == null) {
+    if (this.Qe == null) {
       i = 0;
     }
     for (;;)
@@ -332,8 +332,8 @@ public class SwipeRefreshLayout
       if (i < getChildCount())
       {
         View localView = getChildAt(i);
-        if (!localView.equals(this.ST)) {
-          this.Pj = localView;
+        if (!localView.equals(this.TO)) {
+          this.Qe = localView;
         }
       }
       else
@@ -344,14 +344,14 @@ public class SwipeRefreshLayout
     }
   }
   
-  private boolean fE()
+  private boolean fM()
   {
-    if (this.Ti != null) {
-      return this.Ti.fF();
+    if (this.Ud != null) {
+      return this.Ud.fN();
     }
-    if ((this.Pj instanceof ListView))
+    if ((this.Qe instanceof ListView))
     {
-      ListView localListView = (ListView)this.Pj;
+      ListView localListView = (ListView)this.Qe;
       if (Build.VERSION.SDK_INT >= 19) {
         return localListView.canScrollList(-1);
       }
@@ -365,7 +365,7 @@ public class SwipeRefreshLayout
       }
       return false;
     }
-    return this.Pj.canScrollVertically(-1);
+    return this.Qe.canScrollVertically(-1);
   }
   
   private void onSecondaryPointerUp(MotionEvent paramMotionEvent)
@@ -386,8 +386,8 @@ public class SwipeRefreshLayout
   
   private void setColorViewAlpha(int paramInt)
   {
-    this.ST.getBackground().setAlpha(paramInt);
-    this.SZ.setAlpha(paramInt);
+    this.TO.getBackground().setAlpha(paramInt);
+    this.TU.setAlpha(paramInt);
   }
   
   private Animation z(final int paramInt1, final int paramInt2)
@@ -396,97 +396,97 @@ public class SwipeRefreshLayout
     {
       public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
       {
-        SwipeRefreshLayout.this.SZ.setAlpha((int)(paramInt1 + (paramInt2 - paramInt1) * paramAnonymousFloat));
+        SwipeRefreshLayout.this.TU.setAlpha((int)(paramInt1 + (paramInt2 - paramInt1) * paramAnonymousFloat));
       }
     };
     local4.setDuration(300L);
-    this.ST.PG = null;
-    this.ST.clearAnimation();
-    this.ST.startAnimation(local4);
+    this.TO.QB = null;
+    this.TO.clearAnimation();
+    this.TO.startAnimation(local4);
     return local4;
   }
   
-  final void K(float paramFloat)
+  final void O(float paramFloat)
   {
-    setTargetOffsetTopAndBottom(this.mFrom + (int)((this.SW - this.mFrom) * paramFloat) - this.ST.getTop());
+    setTargetOffsetTopAndBottom(this.mFrom + (int)((this.TR - this.mFrom) * paramFloat) - this.TO.getTop());
   }
   
   final void a(Animation.AnimationListener paramAnimationListener)
   {
-    this.Tb = new Animation()
+    this.TW = new Animation()
     {
       public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
       {
         SwipeRefreshLayout.this.setAnimationProgress(1.0F - paramAnonymousFloat);
       }
     };
-    this.Tb.setDuration(150L);
-    this.ST.PG = paramAnimationListener;
-    this.ST.clearAnimation();
-    this.ST.startAnimation(this.Tb);
+    this.TW.setDuration(150L);
+    this.TO.QB = paramAnimationListener;
+    this.TO.clearAnimation();
+    this.TO.startAnimation(this.TW);
   }
   
   public boolean dispatchNestedFling(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    return this.SJ.dispatchNestedFling(paramFloat1, paramFloat2, paramBoolean);
+    return this.TE.dispatchNestedFling(paramFloat1, paramFloat2, paramBoolean);
   }
   
   public boolean dispatchNestedPreFling(float paramFloat1, float paramFloat2)
   {
-    return this.SJ.dispatchNestedPreFling(paramFloat1, paramFloat2);
+    return this.TE.dispatchNestedPreFling(paramFloat1, paramFloat2);
   }
   
   public boolean dispatchNestedPreScroll(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    return this.SJ.dispatchNestedPreScroll(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2);
+    return this.TE.dispatchNestedPreScroll(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2);
   }
   
   public boolean dispatchNestedScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
   {
-    return this.SJ.dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt);
+    return this.TE.dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt);
   }
   
   protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
-    if (this.SU < 0) {}
+    if (this.TP < 0) {}
     do
     {
       return paramInt2;
       if (paramInt2 == paramInt1 - 1) {
-        return this.SU;
+        return this.TP;
       }
-    } while (paramInt2 < this.SU);
+    } while (paramInt2 < this.TP);
     return paramInt2 + 1;
   }
   
   public int getNestedScrollAxes()
   {
-    return this.nE.Nd;
+    return this.oF.NY;
   }
   
   public int getProgressCircleDiameter()
   {
-    return this.Tg;
+    return this.Ub;
   }
   
   public int getProgressViewEndOffset()
   {
-    return this.SX;
+    return this.TS;
   }
   
   public int getProgressViewStartOffset()
   {
-    return this.SW;
+    return this.TR;
   }
   
   public boolean hasNestedScrollingParent()
   {
-    return this.SJ.aN(0);
+    return this.TE.aN(0);
   }
   
   public boolean isNestedScrollingEnabled()
   {
-    return this.SJ.Na;
+    return this.TE.NV;
   }
   
   protected void onDetachedFromWindow()
@@ -497,12 +497,12 @@ public class SwipeRefreshLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    fD();
+    fL();
     int i = paramMotionEvent.getActionMasked();
-    if ((this.SR) && (i == 0)) {
-      this.SR = false;
+    if ((this.TM) && (i == 0)) {
+      this.TM = false;
     }
-    if ((!isEnabled()) || (this.SR) || (fE()) || (this.SG) || (this.SM)) {
+    if ((!isEnabled()) || (this.TM) || (fM()) || (this.TB) || (this.TH)) {
       return false;
     }
     switch (i)
@@ -511,14 +511,14 @@ public class SwipeRefreshLayout
     for (;;)
     {
       return this.mIsBeingDragged;
-      setTargetOffsetTopAndBottom(this.SW - this.ST.getTop());
+      setTargetOffsetTopAndBottom(this.TR - this.TO.getTop());
       this.mActivePointerId = paramMotionEvent.getPointerId(0);
       this.mIsBeingDragged = false;
       i = paramMotionEvent.findPointerIndex(this.mActivePointerId);
       if (i < 0) {
         break;
       }
-      this.SP = paramMotionEvent.getY(i);
+      this.TK = paramMotionEvent.getY(i);
       continue;
       if (this.mActivePointerId == -1) {
         break;
@@ -527,7 +527,7 @@ public class SwipeRefreshLayout
       if (i < 0) {
         break;
       }
-      J(paramMotionEvent.getY(i));
+      N(paramMotionEvent.getY(i));
       continue;
       onSecondaryPointerUp(paramMotionEvent);
       continue;
@@ -544,38 +544,38 @@ public class SwipeRefreshLayout
     do
     {
       return;
-      if (this.Pj == null) {
-        fD();
+      if (this.Qe == null) {
+        fL();
       }
-    } while (this.Pj == null);
-    View localView = this.Pj;
+    } while (this.Qe == null);
+    View localView = this.Qe;
     paramInt3 = getPaddingLeft();
     paramInt4 = getPaddingTop();
     localView.layout(paramInt3, paramInt4, paramInt1 - getPaddingLeft() - getPaddingRight() + paramInt3, paramInt2 - getPaddingTop() - getPaddingBottom() + paramInt4);
-    paramInt2 = this.ST.getMeasuredWidth();
-    paramInt3 = this.ST.getMeasuredHeight();
-    this.ST.layout(paramInt1 / 2 - paramInt2 / 2, this.SO, paramInt1 / 2 + paramInt2 / 2, this.SO + paramInt3);
+    paramInt2 = this.TO.getMeasuredWidth();
+    paramInt3 = this.TO.getMeasuredHeight();
+    this.TO.layout(paramInt1 / 2 - paramInt2 / 2, this.TJ, paramInt1 / 2 + paramInt2 / 2, this.TJ + paramInt3);
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.Pj == null) {
-      fD();
+    if (this.Qe == null) {
+      fL();
     }
-    if (this.Pj == null) {}
+    if (this.Qe == null) {}
     for (;;)
     {
       return;
-      this.Pj.measure(View.MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(), 1073741824), View.MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), 1073741824));
-      this.ST.measure(View.MeasureSpec.makeMeasureSpec(this.Tg, 1073741824), View.MeasureSpec.makeMeasureSpec(this.Tg, 1073741824));
-      this.SU = -1;
+      this.Qe.measure(View.MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(), 1073741824), View.MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), 1073741824));
+      this.TO.measure(View.MeasureSpec.makeMeasureSpec(this.Ub, 1073741824), View.MeasureSpec.makeMeasureSpec(this.Ub, 1073741824));
+      this.TP = -1;
       paramInt1 = 0;
       while (paramInt1 < getChildCount())
       {
-        if (getChildAt(paramInt1) == this.ST)
+        if (getChildAt(paramInt1) == this.TO)
         {
-          this.SU = paramInt1;
+          this.TP = paramInt1;
           return;
         }
         paramInt1 += 1;
@@ -595,21 +595,21 @@ public class SwipeRefreshLayout
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    if ((paramInt2 > 0) && (this.SI > 0.0F))
+    if ((paramInt2 > 0) && (this.TD > 0.0F))
     {
-      if (paramInt2 <= this.SI) {
+      if (paramInt2 <= this.TD) {
         break label141;
       }
-      paramArrayOfInt[1] = (paramInt2 - (int)this.SI);
-      this.SI = 0.0F;
+      paramArrayOfInt[1] = (paramInt2 - (int)this.TD);
+      this.TD = 0.0F;
     }
     for (;;)
     {
-      H(this.SI);
-      if ((this.Th) && (paramInt2 > 0) && (this.SI == 0.0F) && (Math.abs(paramInt2 - paramArrayOfInt[1]) > 0)) {
-        this.ST.setVisibility(8);
+      L(this.TD);
+      if ((this.Uc) && (paramInt2 > 0) && (this.TD == 0.0F) && (Math.abs(paramInt2 - paramArrayOfInt[1]) > 0)) {
+        this.TO.setVisibility(8);
       }
-      paramView = this.SK;
+      paramView = this.TF;
       if (dispatchNestedPreScroll(paramInt1 - paramArrayOfInt[0], paramInt2 - paramArrayOfInt[1], paramView, null))
       {
         paramArrayOfInt[0] += paramView[0];
@@ -618,44 +618,44 @@ public class SwipeRefreshLayout
       }
       return;
       label141:
-      this.SI -= paramInt2;
+      this.TD -= paramInt2;
       paramArrayOfInt[1] = paramInt2;
     }
   }
   
   public void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.SL);
-    paramInt1 = this.SL[1] + paramInt4;
-    if ((paramInt1 < 0) && (!fE()))
+    dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.TG);
+    paramInt1 = this.TG[1] + paramInt4;
+    if ((paramInt1 < 0) && (!fM()))
     {
-      float f = this.SI;
-      this.SI = (Math.abs(paramInt1) + f);
-      H(this.SI);
+      float f = this.TD;
+      this.TD = (Math.abs(paramInt1) + f);
+      L(this.TD);
     }
   }
   
   public void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
-    this.nE.Nd = paramInt;
+    this.oF.NY = paramInt;
     startNestedScroll(paramInt & 0x2);
-    this.SI = 0.0F;
-    this.SM = true;
+    this.TD = 0.0F;
+    this.TH = true;
   }
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
   {
-    return (isEnabled()) && (!this.SR) && (!this.SG) && ((paramInt & 0x2) != 0);
+    return (isEnabled()) && (!this.TM) && (!this.TB) && ((paramInt & 0x2) != 0);
   }
   
   public void onStopNestedScroll(View paramView)
   {
-    this.nE.Nd = 0;
-    this.SM = false;
-    if (this.SI > 0.0F)
+    this.oF.NY = 0;
+    this.TH = false;
+    if (this.TD > 0.0F)
     {
-      I(this.SI);
-      this.SI = 0.0F;
+      M(this.TD);
+      this.TD = 0.0F;
     }
     stopNestedScroll();
   }
@@ -663,10 +663,10 @@ public class SwipeRefreshLayout
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getActionMasked();
-    if ((this.SR) && (i == 0)) {
-      this.SR = false;
+    if ((this.TM) && (i == 0)) {
+      this.TM = false;
     }
-    if ((!isEnabled()) || (this.SR) || (fE()) || (this.SG) || (this.SM)) {}
+    if ((!isEnabled()) || (this.TM) || (fM()) || (this.TB) || (this.TH)) {}
     float f1;
     do
     {
@@ -691,14 +691,14 @@ public class SwipeRefreshLayout
             break;
           }
           f1 = paramMotionEvent.getY(i);
-          J(f1);
+          N(f1);
           if (this.mIsBeingDragged)
           {
             f1 = (f1 - this.mInitialMotionY) * 0.5F;
             if (f1 <= 0.0F) {
               break;
             }
-            H(f1);
+            L(f1);
             continue;
             i = paramMotionEvent.getActionIndex();
             if (i < 0) {
@@ -717,7 +717,7 @@ public class SwipeRefreshLayout
       f1 = paramMotionEvent.getY(i);
       float f2 = this.mInitialMotionY;
       this.mIsBeingDragged = false;
-      I((f1 - f2) * 0.5F);
+      M((f1 - f2) * 0.5F);
     }
     this.mActivePointerId = -1;
     return false;
@@ -725,32 +725,32 @@ public class SwipeRefreshLayout
   
   public void requestDisallowInterceptTouchEvent(boolean paramBoolean)
   {
-    if (((Build.VERSION.SDK_INT >= 21) || (!(this.Pj instanceof AbsListView))) && ((this.Pj == null) || (t.av(this.Pj)))) {
+    if (((Build.VERSION.SDK_INT >= 21) || (!(this.Qe instanceof AbsListView))) && ((this.Qe == null) || (t.av(this.Qe)))) {
       super.requestDisallowInterceptTouchEvent(paramBoolean);
     }
   }
   
   final void reset()
   {
-    this.ST.clearAnimation();
-    this.SZ.stop();
-    this.ST.setVisibility(8);
+    this.TO.clearAnimation();
+    this.TU.stop();
+    this.TO.setVisibility(8);
     setColorViewAlpha(255);
-    if (this.SQ) {
+    if (this.TL) {
       setAnimationProgress(0.0F);
     }
     for (;;)
     {
-      this.SO = this.ST.getTop();
+      this.TJ = this.TO.getTop();
       return;
-      setTargetOffsetTopAndBottom(this.SW - this.SO);
+      setTargetOffsetTopAndBottom(this.TR - this.TJ);
     }
   }
   
   void setAnimationProgress(float paramFloat)
   {
-    this.ST.setScaleX(paramFloat);
-    this.ST.setScaleY(paramFloat);
+    this.TO.setScaleX(paramFloat);
+    this.TO.setScaleY(paramFloat);
   }
   
   @Deprecated
@@ -761,10 +761,10 @@ public class SwipeRefreshLayout
   
   public void setColorSchemeColors(int... paramVarArgs)
   {
-    fD();
-    d locald = this.SZ;
-    locald.PO.setColors(paramVarArgs);
-    locald.PO.aU(0);
+    fL();
+    d locald = this.TU;
+    locald.QJ.setColors(paramVarArgs);
+    locald.QJ.aU(0);
     locald.invalidateSelf();
   }
   
@@ -783,7 +783,7 @@ public class SwipeRefreshLayout
   
   public void setDistanceToTriggerSync(int paramInt)
   {
-    this.SH = paramInt;
+    this.TC = paramInt;
   }
   
   public void setEnabled(boolean paramBoolean)
@@ -796,17 +796,17 @@ public class SwipeRefreshLayout
   
   public void setNestedScrollingEnabled(boolean paramBoolean)
   {
-    this.SJ.setNestedScrollingEnabled(paramBoolean);
+    this.TE.setNestedScrollingEnabled(paramBoolean);
   }
   
   public void setOnChildScrollUpCallback(a parama)
   {
-    this.Ti = parama;
+    this.Ud = parama;
   }
   
   public void setOnRefreshListener(b paramb)
   {
-    this.SF = paramb;
+    this.TA = paramb;
   }
   
   @Deprecated
@@ -817,7 +817,7 @@ public class SwipeRefreshLayout
   
   public void setProgressBackgroundColorSchemeColor(int paramInt)
   {
-    this.ST.setBackgroundColor(paramInt);
+    this.TO.setBackgroundColor(paramInt);
   }
   
   public void setProgressBackgroundColorSchemeResource(int paramInt)
@@ -827,30 +827,30 @@ public class SwipeRefreshLayout
   
   public void setRefreshing(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.SG != paramBoolean))
+    if ((paramBoolean) && (this.TB != paramBoolean))
     {
-      this.SG = paramBoolean;
-      if (!this.Th) {}
-      for (int i = this.SX + this.SW;; i = this.SX)
+      this.TB = paramBoolean;
+      if (!this.Uc) {}
+      for (int i = this.TS + this.TR;; i = this.TS)
       {
-        setTargetOffsetTopAndBottom(i - this.SO);
-        this.Tf = false;
-        Animation.AnimationListener localAnimationListener = this.Tj;
-        this.ST.setVisibility(0);
-        this.SZ.setAlpha(255);
-        this.Ta = new Animation()
+        setTargetOffsetTopAndBottom(i - this.TJ);
+        this.Ua = false;
+        Animation.AnimationListener localAnimationListener = this.Ue;
+        this.TO.setVisibility(0);
+        this.TU.setAlpha(255);
+        this.TV = new Animation()
         {
           public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
           {
             SwipeRefreshLayout.this.setAnimationProgress(paramAnonymousFloat);
           }
         };
-        this.Ta.setDuration(this.SN);
+        this.TV.setDuration(this.TI);
         if (localAnimationListener != null) {
-          this.ST.PG = localAnimationListener;
+          this.TO.QB = localAnimationListener;
         }
-        this.ST.clearAnimation();
-        this.ST.startAnimation(this.Ta);
+        this.TO.clearAnimation();
+        this.TO.startAnimation(this.TV);
         return;
       }
     }
@@ -864,47 +864,47 @@ public class SwipeRefreshLayout
     }
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     if (paramInt == 0) {}
-    for (this.Tg = ((int)(localDisplayMetrics.density * 56.0F));; this.Tg = ((int)(localDisplayMetrics.density * 40.0F)))
+    for (this.Ub = ((int)(localDisplayMetrics.density * 56.0F));; this.Ub = ((int)(localDisplayMetrics.density * 40.0F)))
     {
-      this.ST.setImageDrawable(null);
-      this.SZ.setStyle(paramInt);
-      this.ST.setImageDrawable(this.SZ);
+      this.TO.setImageDrawable(null);
+      this.TU.setStyle(paramInt);
+      this.TO.setImageDrawable(this.TU);
       return;
     }
   }
   
   public void setSlingshotDistance(int paramInt)
   {
-    this.SY = paramInt;
+    this.TT = paramInt;
   }
   
   void setTargetOffsetTopAndBottom(int paramInt)
   {
-    this.ST.bringToFront();
-    t.s(this.ST, paramInt);
-    this.SO = this.ST.getTop();
+    this.TO.bringToFront();
+    t.s(this.TO, paramInt);
+    this.TJ = this.TO.getTop();
   }
   
   public boolean startNestedScroll(int paramInt)
   {
-    return this.SJ.t(paramInt, 0);
+    return this.TE.t(paramInt, 0);
   }
   
   public void stopNestedScroll()
   {
-    this.SJ.aM(0);
+    this.TE.aM(0);
   }
   
   public static abstract interface a
   {
-    public abstract boolean fF();
+    public abstract boolean fN();
   }
   
   public static abstract interface b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.widget.SwipeRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bcv;
-import com.tencent.mm.protocal.protobuf.bcw;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bgn;
+import com.tencent.mm.protocal.protobuf.bgo;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class e
   extends n
@@ -19,26 +19,26 @@ public final class e
 {
   private g callback;
   private b rr;
-  private bcv sCN;
-  public bcw sCO;
+  private bgn tKv;
+  public bgo tKw;
   
   public e()
   {
     AppMethodBeat.i(25463);
     this.rr = null;
-    this.sCN = null;
-    this.sCO = null;
+    this.tKv = null;
+    this.tKw = null;
     this.callback = null;
     b.a locala = new b.a();
-    locala.gUU = new bcv();
-    locala.gUV = new bcw();
+    locala.hvt = new bgn();
+    locala.hvu = new bgo();
     locala.funcId = 831;
     locala.uri = "/cgi-bin/micromsg-bin/getwcopackageproductlist";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    this.sCN = ((bcv)this.rr.gUS.gUX);
-    ad.i("MicroMsg.NetSceneIPCallGetPackageProductList", "NetSceneIPCallGetPackageProductList");
+    this.rr = locala.aAz();
+    this.tKv = ((bgn)this.rr.hvr.hvw);
+    ac.i("MicroMsg.NetSceneIPCallGetPackageProductList", "NetSceneIPCallGetPackageProductList");
     AppMethodBeat.o(25463);
   }
   
@@ -59,8 +59,8 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25465);
-    ad.i("MicroMsg.NetSceneIPCallGetPackageProductList", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.sCO = ((bcw)((b)paramq).gUT.gUX);
+    ac.i("MicroMsg.NetSceneIPCallGetPackageProductList", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.tKw = ((bgo)((b)paramq).hvs.hvw);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

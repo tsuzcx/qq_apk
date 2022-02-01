@@ -6,29 +6,29 @@ import com.tencent.mm.plugin.emojicapture.model.e;
 import com.tencent.mm.plugin.emojicapture.ui.b.b;
 import com.tencent.mm.plugin.emojicapture.ui.b.b.a;
 import com.tencent.mm.plugin.xlabeffect.XLabEffect;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/filter/EmojiFilterProcess;", "", "()V", "effectEnable", "", "getEffectEnable", "()Z", "setEffectEnable", "(Z)V", "faceTrackFbo", "", "inputTexture", "lensId", "", "outputTexture", "textureHeight", "textureWidth", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "clear", "filterProcess", "initial", "previewRgbTexture", "setInputTexture", "texture", "setRemoveBg", "remove", "updateTextureSize", "Companion", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/filter/EmojiFilterProcess;", "", "()V", "effectEnable", "", "getEffectEnable", "()Z", "setEffectEnable", "(Z)V", "faceTrackFbo", "", "inputTexture", "lensId", "", "outputTexture", "textureHeight", "textureWidth", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "clear", "filterProcess", "initial", "previewRgbTexture", "setInputTexture", "texture", "setRemoveBg", "remove", "updateTextureSize", "Companion", "plugin-emojicapture_release"})
 public final class a
 {
   public static final String TAG = "MicroMsg.EmojiFilterProcess";
-  public static final a.a oJE;
-  public XLabEffect fVU;
-  public int guC;
-  public int guI;
-  public int guJ;
-  public int oJB;
-  public int oJC;
-  public boolean oJD;
-  public String oJp;
+  public static final a.a pnc;
+  public XLabEffect fZP;
+  public int gqX;
+  public int gqZ;
+  public int gra;
+  public String pmO;
+  public int pmZ;
+  public int pna;
+  public boolean pnb;
   
   static
   {
     AppMethodBeat.i(138);
-    oJE = new a.a((byte)0);
+    pnc = new a.a((byte)0);
     TAG = "MicroMsg.EmojiFilterProcess";
     AppMethodBeat.o(138);
   }
@@ -36,7 +36,7 @@ public final class a
   public a()
   {
     AppMethodBeat.i(137);
-    this.oJD = ax.aFC("xlab_effect_config").getBoolean("effect", true);
+    this.pnb = aw.aKT("xlab_effect_config").getBoolean("effect", true);
     AppMethodBeat.o(137);
   }
   
@@ -46,59 +46,59 @@ public final class a
     Object localObject = TAG;
     Thread localThread = Thread.currentThread();
     k.g(localThread, "Thread.currentThread()");
-    ad.i((String)localObject, "clear %s %d", new Object[] { this, Long.valueOf(localThread.getId()) });
+    ac.i((String)localObject, "clear %s %d", new Object[] { this, Long.valueOf(localThread.getId()) });
     try
     {
-      GLES20.glDeleteFramebuffers(1, new int[] { this.oJC }, 0);
-      localObject = this.fVU;
+      GLES20.glDeleteFramebuffers(1, new int[] { this.pna }, 0);
+      localObject = this.fZP;
       if (localObject != null) {
         ((XLabEffect)localObject).destroy();
       }
-      this.fVU = null;
+      this.fZP = null;
       AppMethodBeat.o(136);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(TAG, (Throwable)localException, "clear error: %s", new Object[] { localException.getMessage() });
-      e locale = e.oKa;
-      e.bXP();
+      ac.printErrStackTrace(TAG, (Throwable)localException, "clear error: %s", new Object[] { localException.getMessage() });
+      e locale = e.pny;
+      e.cfc();
       AppMethodBeat.o(136);
     }
   }
   
-  public final void fi(int paramInt1, int paramInt2)
+  public final void fl(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(135);
-    this.guC = paramInt1;
-    this.oJB = paramInt2;
+    this.gqX = paramInt1;
+    this.pmZ = paramInt2;
     try
     {
       Object localObject = TAG;
-      String str = "initial %s, %d, " + this.oJD;
+      String str = "initial %s, %d, " + this.pnb;
       Thread localThread = Thread.currentThread();
       k.g(localThread, "Thread.currentThread()");
-      ad.i((String)localObject, str, new Object[] { this, Long.valueOf(localThread.getId()) });
-      this.fVU = new XLabEffect(0, 0, 0, false, 15);
-      localObject = this.fVU;
+      ac.i((String)localObject, str, new Object[] { this, Long.valueOf(localThread.getId()) });
+      this.fZP = new XLabEffect(0, 0, 0, false, 15);
+      localObject = this.fZP;
       if (localObject != null) {
-        ((XLabEffect)localObject).tN(true);
+        ((XLabEffect)localObject).pt(true);
       }
-      localObject = this.fVU;
+      localObject = this.fZP;
       if (localObject != null) {
-        ((XLabEffect)localObject).tP(false);
+        ((XLabEffect)localObject).uQ(false);
       }
-      localObject = b.oRy;
-      this.oJC = b.a.bYN();
-      ad.d(TAG, "initial end %s", new Object[] { this });
+      localObject = b.puK;
+      this.pna = b.a.cfY();
+      ac.d(TAG, "initial end %s", new Object[] { this });
       AppMethodBeat.o(135);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(TAG, (Throwable)localException, "initial error", new Object[0]);
-      e locale = e.oKa;
-      e.bXN();
+      ac.printErrStackTrace(TAG, (Throwable)localException, "initial error", new Object[0]);
+      e locale = e.pny;
+      e.cfa();
       AppMethodBeat.o(135);
     }
   }

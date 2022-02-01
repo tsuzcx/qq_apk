@@ -7,36 +7,36 @@ import java.util.List;
 
 public final class a
 {
-  private List<Object> fYb;
+  private List<Object> gcI;
   
   public a()
   {
     AppMethodBeat.i(177080);
-    this.fYb = new ArrayList();
+    this.gcI = new ArrayList();
     AppMethodBeat.o(177080);
   }
   
-  public final Object[] adn()
+  public final Object[] aeD()
   {
     AppMethodBeat.i(177082);
-    Collections.reverse(this.fYb);
-    Object[] arrayOfObject = this.fYb.toArray();
+    Collections.reverse(this.gcI);
+    Object[] arrayOfObject = this.gcI.toArray();
     AppMethodBeat.o(177082);
     return arrayOfObject;
   }
   
-  public final a bd(Object paramObject)
+  public final a ba(Object paramObject)
   {
     AppMethodBeat.i(177081);
-    this.fYb.add(paramObject);
+    this.gcI.add(paramObject);
     AppMethodBeat.o(177081);
     return this;
   }
   
-  public final Object lS(int paramInt)
+  public final Object lR(int paramInt)
   {
     AppMethodBeat.i(177083);
-    Object localObject = this.fYb.get(paramInt);
+    Object localObject = this.gcI.get(paramInt);
     AppMethodBeat.o(177083);
     return localObject;
   }

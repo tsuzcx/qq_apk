@@ -5,14 +5,14 @@ import com.tencent.mm.ui.MMActivity;
 public abstract class a
 {
   protected MMActivity activity;
-  protected b.a xOe;
+  protected b.a zaU;
   
   public final void a(b.a parama)
   {
-    this.xOe = parama;
+    this.zaU = parama;
   }
   
-  public abstract void ts(long paramLong);
+  public abstract void xV(long paramLong);
 }
 
 

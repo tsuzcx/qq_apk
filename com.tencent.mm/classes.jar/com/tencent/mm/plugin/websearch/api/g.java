@@ -7,7 +7,7 @@ import java.util.Map;
 public abstract interface g
   extends a
 {
-  public abstract void G(Context paramContext, String paramString1, String paramString2);
+  public abstract void F(Context paramContext, String paramString1, String paramString2);
   
   public abstract void a(Context paramContext, int paramInt, String paramString1, String paramString2);
   

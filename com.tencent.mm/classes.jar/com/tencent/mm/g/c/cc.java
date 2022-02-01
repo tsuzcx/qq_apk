@@ -2,112 +2,149 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
+import com.tencent.mm.protocal.protobuf.aje;
+import com.tencent.mm.protocal.protobuf.amt;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public abstract class cc
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS Finder_MediaCache_media_id ON FinderMediaCacheInfo(mediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_state ON FinderMediaCacheInfo(state)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_origin_media_id ON FinderMediaCacheInfo(originMediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_fileFormat ON FinderMediaCacheInfo(fileFormat)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_updateTime ON FinderMediaCacheInfo(updateTime)" };
-  private static final int eDq;
-  private static final int eEG;
-  private static final int eEH;
-  private static final int eEI;
-  private static final int elM = "mediaId".hashCode();
-  private static final int emf = "updateTime".hashCode();
-  private static final int eoZ = "url".hashCode();
-  private static final int etB = "filePath".hashCode();
-  private static final int ezb;
-  private static final int qnD;
-  private static final int qnO;
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eGG;
+  private static final int eGH;
+  private static final int eGI;
+  private static final int eGJ;
+  private static final int eGK;
+  private static final int eGL;
+  private static final int eGM;
+  private static final int eGN = "originalFlag".hashCode();
+  private static final int eGO = "originalInfo".hashCode();
+  private static final int eoc;
+  private static final int eok = "username".hashCode();
+  private static final int epb;
+  private static final int etG = "nickname".hashCode();
+  private static final int etq;
+  private static final int exv;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCN = true;
-  private boolean eED = true;
-  private boolean eEE = true;
-  private boolean eEF = true;
-  private boolean elv = true;
-  private boolean emc = true;
-  private boolean eoV = true;
-  private boolean ett = true;
-  private boolean eyp = true;
-  public long field_cacheSize;
-  public String field_fileFormat;
-  public String field_filePath;
-  public boolean field_hasPlayed;
-  public String field_mediaId;
-  public String field_originMediaId;
-  public int field_reqFormat;
-  public int field_state;
-  public long field_totalSize;
-  public long field_updateTime;
-  public String field_url;
-  private boolean qnB = true;
-  private boolean qnC = true;
+  private boolean eGA = true;
+  private boolean eGB = true;
+  private boolean eGC = true;
+  private boolean eGD = true;
+  private boolean eGE = true;
+  private boolean eGF = true;
+  private boolean eGx = true;
+  private boolean eGy = true;
+  private boolean eGz = true;
+  private boolean enL = true;
+  private boolean eoW = true;
+  private boolean eoh = true;
+  private boolean etC = true;
+  private boolean etc = true;
+  private boolean exd = true;
+  public FinderAuthInfo field_authInfo;
+  public String field_avatarUrl;
+  public String field_coverImg;
+  public aje field_extInfo;
+  public String field_firstPageMD5;
+  public int field_followTime;
+  public int field_follow_Flag;
+  public String field_nickname;
+  public int field_originalFlag;
+  public amt field_originalInfo;
+  public String field_pyInitial;
+  public String field_signature;
+  public int field_spamStatus;
+  public String field_username;
+  public long field_version;
   
   static
   {
-    eDq = "totalSize".hashCode();
-    eEG = "cacheSize".hashCode();
-    ezb = "state".hashCode();
-    eEH = "hasPlayed".hashCode();
-    eEI = "reqFormat".hashCode();
-    qnD = "originMediaId".hashCode();
-    qnO = "fileFormat".hashCode();
+    eGG = "avatarUrl".hashCode();
+    epb = "version".hashCode();
+    eGH = "firstPageMD5".hashCode();
+    eoc = "signature".hashCode();
+    eGI = "follow_Flag".hashCode();
+    exv = "pyInitial".hashCode();
+    eGJ = "followTime".hashCode();
+    eGK = "coverImg".hashCode();
+    eGL = "spamStatus".hashCode();
+    eGM = "authInfo".hashCode();
+    etq = "extInfo".hashCode();
   }
   
-  public static c.a So()
+  public static c.a Th()
   {
     c.a locala = new c.a();
-    locala.EYt = new Field[11];
-    locala.columns = new String[12];
+    locala.GvF = new Field[15];
+    locala.columns = new String[16];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "mediaId";
-    locala.EYv.put("mediaId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" mediaId TEXT PRIMARY KEY ");
+    locala.columns[0] = "username";
+    locala.GvH.put("username", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "mediaId";
-    locala.columns[1] = "url";
-    locala.EYv.put("url", "TEXT");
-    localStringBuilder.append(" url TEXT");
+    locala.GvG = "username";
+    locala.columns[1] = "nickname";
+    locala.GvH.put("nickname", "TEXT default '' ");
+    localStringBuilder.append(" nickname TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[2] = "filePath";
-    locala.EYv.put("filePath", "TEXT");
-    localStringBuilder.append(" filePath TEXT");
+    locala.columns[2] = "avatarUrl";
+    locala.GvH.put("avatarUrl", "TEXT default '' ");
+    localStringBuilder.append(" avatarUrl TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[3] = "totalSize";
-    locala.EYv.put("totalSize", "LONG");
-    localStringBuilder.append(" totalSize LONG");
+    locala.columns[3] = "version";
+    locala.GvH.put("version", "LONG");
+    localStringBuilder.append(" version LONG");
     localStringBuilder.append(", ");
-    locala.columns[4] = "cacheSize";
-    locala.EYv.put("cacheSize", "LONG");
-    localStringBuilder.append(" cacheSize LONG");
+    locala.columns[4] = "firstPageMD5";
+    locala.GvH.put("firstPageMD5", "TEXT default '' ");
+    localStringBuilder.append(" firstPageMD5 TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[5] = "state";
-    locala.EYv.put("state", "INTEGER");
-    localStringBuilder.append(" state INTEGER");
+    locala.columns[5] = "signature";
+    locala.GvH.put("signature", "TEXT default '' ");
+    localStringBuilder.append(" signature TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[6] = "hasPlayed";
-    locala.EYv.put("hasPlayed", "INTEGER");
-    localStringBuilder.append(" hasPlayed INTEGER");
+    locala.columns[6] = "follow_Flag";
+    locala.GvH.put("follow_Flag", "INTEGER default '0' ");
+    localStringBuilder.append(" follow_Flag INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[7] = "reqFormat";
-    locala.EYv.put("reqFormat", "INTEGER default '-1' ");
-    localStringBuilder.append(" reqFormat INTEGER default '-1' ");
+    locala.columns[7] = "pyInitial";
+    locala.GvH.put("pyInitial", "TEXT default '' ");
+    localStringBuilder.append(" pyInitial TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[8] = "originMediaId";
-    locala.EYv.put("originMediaId", "TEXT");
-    localStringBuilder.append(" originMediaId TEXT");
+    locala.columns[8] = "followTime";
+    locala.GvH.put("followTime", "INTEGER default '0' ");
+    localStringBuilder.append(" followTime INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[9] = "fileFormat";
-    locala.EYv.put("fileFormat", "TEXT");
-    localStringBuilder.append(" fileFormat TEXT");
+    locala.columns[9] = "coverImg";
+    locala.GvH.put("coverImg", "TEXT default '' ");
+    localStringBuilder.append(" coverImg TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[10] = "updateTime";
-    locala.EYv.put("updateTime", "LONG");
-    localStringBuilder.append(" updateTime LONG");
-    locala.columns[11] = "rowid";
+    locala.columns[10] = "spamStatus";
+    locala.GvH.put("spamStatus", "INTEGER");
+    localStringBuilder.append(" spamStatus INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "authInfo";
+    locala.GvH.put("authInfo", "BLOB");
+    localStringBuilder.append(" authInfo BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "extInfo";
+    locala.GvH.put("extInfo", "BLOB");
+    localStringBuilder.append(" extInfo BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "originalFlag";
+    locala.GvH.put("originalFlag", "INTEGER default '0' ");
+    localStringBuilder.append(" originalFlag INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[14] = "originalInfo";
+    locala.GvH.put("originalInfo", "BLOB");
+    localStringBuilder.append(" originalInfo BLOB");
+    locala.columns[15] = "rowid";
     locala.sql = localStringBuilder.toString();
     return locala;
   }
@@ -125,11 +162,11 @@ public abstract class cc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elM != k) {
+      if (eok != k) {
         break label65;
       }
-      this.field_mediaId = paramCursor.getString(i);
-      this.elv = true;
+      this.field_username = paramCursor.getString(i);
+      this.eoh = true;
     }
     for (;;)
     {
@@ -137,48 +174,69 @@ public abstract class cc
       break label20;
       break;
       label65:
-      if (eoZ == k)
-      {
-        this.field_url = paramCursor.getString(i);
-      }
-      else if (etB == k)
-      {
-        this.field_filePath = paramCursor.getString(i);
-      }
-      else if (eDq == k)
-      {
-        this.field_totalSize = paramCursor.getLong(i);
-      }
-      else if (eEG == k)
-      {
-        this.field_cacheSize = paramCursor.getLong(i);
-      }
-      else if (ezb == k)
-      {
-        this.field_state = paramCursor.getInt(i);
-      }
-      else
-      {
-        if (eEH == k)
+      if (etG == k) {
+        this.field_nickname = paramCursor.getString(i);
+      } else if (eGG == k) {
+        this.field_avatarUrl = paramCursor.getString(i);
+      } else if (epb == k) {
+        this.field_version = paramCursor.getLong(i);
+      } else if (eGH == k) {
+        this.field_firstPageMD5 = paramCursor.getString(i);
+      } else if (eoc == k) {
+        this.field_signature = paramCursor.getString(i);
+      } else if (eGI == k) {
+        this.field_follow_Flag = paramCursor.getInt(i);
+      } else if (exv == k) {
+        this.field_pyInitial = paramCursor.getString(i);
+      } else if (eGJ == k) {
+        this.field_followTime = paramCursor.getInt(i);
+      } else if (eGK == k) {
+        this.field_coverImg = paramCursor.getString(i);
+      } else if (eGL == k) {
+        this.field_spamStatus = paramCursor.getInt(i);
+      } else if (eGM == k) {
+        try
         {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_hasPlayed = bool;
-            break;
+          byte[] arrayOfByte1 = paramCursor.getBlob(i);
+          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
+            continue;
           }
+          this.field_authInfo = ((FinderAuthInfo)new FinderAuthInfo().parseFrom(arrayOfByte1));
         }
-        if (eEI == k) {
-          this.field_reqFormat = paramCursor.getInt(i);
-        } else if (qnD == k) {
-          this.field_originMediaId = paramCursor.getString(i);
-        } else if (qnO == k) {
-          this.field_fileFormat = paramCursor.getString(i);
-        } else if (emf == k) {
-          this.field_updateTime = paramCursor.getLong(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
+        catch (IOException localIOException1)
+        {
+          ac.e("MicroMsg.SDK.BaseFinderContact", localIOException1.getMessage());
         }
+      } else if (etq == k) {
+        try
+        {
+          byte[] arrayOfByte2 = paramCursor.getBlob(i);
+          if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
+            continue;
+          }
+          this.field_extInfo = ((aje)new aje().parseFrom(arrayOfByte2));
+        }
+        catch (IOException localIOException2)
+        {
+          ac.e("MicroMsg.SDK.BaseFinderContact", localIOException2.getMessage());
+        }
+      } else if (eGN == k) {
+        this.field_originalFlag = paramCursor.getInt(i);
+      } else if (eGO == k) {
+        try
+        {
+          byte[] arrayOfByte3 = paramCursor.getBlob(i);
+          if ((arrayOfByte3 == null) || (arrayOfByte3.length <= 0)) {
+            continue;
+          }
+          this.field_originalInfo = ((amt)new amt().parseFrom(arrayOfByte3));
+        }
+        catch (IOException localIOException3)
+        {
+          ac.e("MicroMsg.SDK.BaseFinderContact", localIOException3.getMessage());
+        }
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -186,50 +244,107 @@ public abstract class cc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.elv) {
-      localContentValues.put("mediaId", this.field_mediaId);
+    if (this.field_username == null) {
+      this.field_username = "";
     }
-    if (this.eoV) {
-      localContentValues.put("url", this.field_url);
+    if (this.eoh) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.ett) {
-      localContentValues.put("filePath", this.field_filePath);
+    if (this.field_nickname == null) {
+      this.field_nickname = "";
     }
-    if (this.eCN) {
-      localContentValues.put("totalSize", Long.valueOf(this.field_totalSize));
+    if (this.etC) {
+      localContentValues.put("nickname", this.field_nickname);
     }
-    if (this.eED) {
-      localContentValues.put("cacheSize", Long.valueOf(this.field_cacheSize));
+    if (this.field_avatarUrl == null) {
+      this.field_avatarUrl = "";
     }
-    if (this.eyp) {
-      localContentValues.put("state", Integer.valueOf(this.field_state));
+    if (this.eGx) {
+      localContentValues.put("avatarUrl", this.field_avatarUrl);
     }
-    if (this.eEE) {
-      localContentValues.put("hasPlayed", Boolean.valueOf(this.field_hasPlayed));
+    if (this.eoW) {
+      localContentValues.put("version", Long.valueOf(this.field_version));
     }
-    if (this.eEF) {
-      localContentValues.put("reqFormat", Integer.valueOf(this.field_reqFormat));
+    if (this.field_firstPageMD5 == null) {
+      this.field_firstPageMD5 = "";
     }
-    if (this.qnB) {
-      localContentValues.put("originMediaId", this.field_originMediaId);
+    if (this.eGy) {
+      localContentValues.put("firstPageMD5", this.field_firstPageMD5);
     }
-    if (this.qnC) {
-      localContentValues.put("fileFormat", this.field_fileFormat);
+    if (this.field_signature == null) {
+      this.field_signature = "";
     }
-    if (this.emc) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.enL) {
+      localContentValues.put("signature", this.field_signature);
     }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+    if (this.eGz) {
+      localContentValues.put("follow_Flag", Integer.valueOf(this.field_follow_Flag));
     }
-    return localContentValues;
+    if (this.field_pyInitial == null) {
+      this.field_pyInitial = "";
+    }
+    if (this.exd) {
+      localContentValues.put("pyInitial", this.field_pyInitial);
+    }
+    if (this.eGA) {
+      localContentValues.put("followTime", Integer.valueOf(this.field_followTime));
+    }
+    if (this.field_coverImg == null) {
+      this.field_coverImg = "";
+    }
+    if (this.eGB) {
+      localContentValues.put("coverImg", this.field_coverImg);
+    }
+    if (this.eGC) {
+      localContentValues.put("spamStatus", Integer.valueOf(this.field_spamStatus));
+    }
+    if ((this.eGD) && (this.field_authInfo != null)) {}
+    try
+    {
+      localContentValues.put("authInfo", this.field_authInfo.toByteArray());
+      if ((!this.etc) || (this.field_extInfo == null)) {}
+    }
+    catch (IOException localIOException2)
+    {
+      try
+      {
+        localContentValues.put("extInfo", this.field_extInfo.toByteArray());
+        if (this.eGE) {
+          localContentValues.put("originalFlag", Integer.valueOf(this.field_originalFlag));
+        }
+        if ((!this.eGF) || (this.field_originalInfo == null)) {}
+      }
+      catch (IOException localIOException2)
+      {
+        try
+        {
+          for (;;)
+          {
+            localContentValues.put("originalInfo", this.field_originalInfo.toByteArray());
+            if (this.systemRowid > 0L) {
+              localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+            }
+            return localContentValues;
+            localIOException1 = localIOException1;
+            ac.e("MicroMsg.SDK.BaseFinderContact", localIOException1.getMessage());
+          }
+          localIOException2 = localIOException2;
+          ac.e("MicroMsg.SDK.BaseFinderContact", localIOException2.getMessage());
+        }
+        catch (IOException localIOException3)
+        {
+          for (;;)
+          {
+            ac.e("MicroMsg.SDK.BaseFinderContact", localIOException3.getMessage());
+          }
+        }
+      }
+    }
   }
-  
-  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.cc
  * JD-Core Version:    0.7.0.1
  */

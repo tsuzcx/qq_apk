@@ -17,8 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.tools.b.c.a;
 import com.tencent.mm.ui.tools.f.a;
@@ -27,38 +27,38 @@ import com.tencent.mm.ui.widget.MMEditText;
 public final class WebViewInputFooter
   extends LinearLayout
 {
-  private View BwA;
-  public MMEditText BwB;
-  public LinearLayout BwC;
-  public boolean BwD;
-  private int BwE;
-  private WebViewInputFooter.c Bwu;
-  private WebViewInputFooter.a Bwv;
-  private b Bww;
-  private WebViewSmileyPanel Bwx;
-  public View Bwy;
-  private View Bwz;
-  public MMActivity imP;
-  private ImageButton mcY;
+  private WebViewInputFooter.c COC;
+  private WebViewInputFooter.a COD;
+  private b COE;
+  private WebViewSmileyPanel COF;
+  public View COG;
+  private View COH;
+  private View COI;
+  public MMEditText COJ;
+  public LinearLayout COK;
+  public boolean COL;
+  private int COM;
+  public MMActivity iMV;
+  private ImageButton mEW;
   public int state;
-  private boolean tqy;
+  private boolean uyP;
   
   public WebViewInputFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(82316);
     this.state = 0;
-    this.BwE = 2147483647;
-    this.tqy = true;
-    this.imP = ((MMActivity)paramContext);
-    paramContext = (ViewGroup)View.inflate(this.imP, 2131496084, this);
-    this.BwC = ((LinearLayout)paramContext.findViewById(2131306914));
-    this.Bwz = paramContext.findViewById(2131306918);
-    this.BwA = paramContext.findViewById(2131306917);
-    this.Bwy = paramContext.findViewById(2131306919);
-    this.BwB = ((MMEditText)paramContext.findViewById(2131306915));
-    this.mcY = ((ImageButton)paramContext.findViewById(2131306920));
-    this.mcY.setOnClickListener(new View.OnClickListener()
+    this.COM = 2147483647;
+    this.uyP = true;
+    this.iMV = ((MMActivity)paramContext);
+    paramContext = (ViewGroup)View.inflate(this.iMV, 2131496084, this);
+    this.COK = ((LinearLayout)paramContext.findViewById(2131306914));
+    this.COH = paramContext.findViewById(2131306918);
+    this.COI = paramContext.findViewById(2131306917);
+    this.COG = paramContext.findViewById(2131306919);
+    this.COJ = ((MMEditText)paramContext.findViewById(2131306915));
+    this.mEW = ((ImageButton)paramContext.findViewById(2131306920));
+    this.mEW.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -84,7 +84,7 @@ public final class WebViewInputFooter
         AppMethodBeat.o(82308);
       }
     });
-    this.BwB.setOnTouchListener(new View.OnTouchListener()
+    this.COJ.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -98,39 +98,17 @@ public final class WebViewInputFooter
         return false;
       }
     });
-    this.Bwx = new WebViewSmileyPanel(getContext());
-    this.Bwx.setVisibility(8);
-    this.Bwx.setBackgroundResource(2131234802);
-    this.Bwx.setOnTextOperationListener(new WebViewSmileyPanel.a()
+    this.COF = new WebViewSmileyPanel(getContext());
+    this.COF.setVisibility(8);
+    this.COF.setBackgroundResource(2131234802);
+    this.COF.setOnTextOperationListener(new WebViewSmileyPanel.a()
     {
-      public final void append(String paramAnonymousString)
-      {
-        AppMethodBeat.i(82310);
-        try
-        {
-          if (WebViewInputFooter.c(WebViewInputFooter.this))
-          {
-            WebViewInputFooter.j(WebViewInputFooter.this).NL(paramAnonymousString);
-            AppMethodBeat.o(82310);
-            return;
-          }
-          WebViewInputFooter.this.BwB.aMd(paramAnonymousString);
-          AppMethodBeat.o(82310);
-          return;
-        }
-        catch (Exception paramAnonymousString)
-        {
-          ad.e("MicroMsg.WebViewInputFooter", "appendText, exp = %s", new Object[] { paramAnonymousString });
-          AppMethodBeat.o(82310);
-        }
-      }
-      
-      public final void btF()
+      public final void amb()
       {
         AppMethodBeat.i(82311);
         if ((WebViewInputFooter.c(WebViewInputFooter.this)) && (WebViewInputFooter.j(WebViewInputFooter.this) != null))
         {
-          WebViewInputFooter.j(WebViewInputFooter.this).NL("[DELETE_EMOTION]");
+          WebViewInputFooter.j(WebViewInputFooter.this).RU("[DELETE_EMOTION]");
           AppMethodBeat.o(82311);
           return;
         }
@@ -149,33 +127,55 @@ public final class WebViewInputFooter
         }
         AppMethodBeat.o(82311);
       }
+      
+      public final void append(String paramAnonymousString)
+      {
+        AppMethodBeat.i(82310);
+        try
+        {
+          if (WebViewInputFooter.c(WebViewInputFooter.this))
+          {
+            WebViewInputFooter.j(WebViewInputFooter.this).RU(paramAnonymousString);
+            AppMethodBeat.o(82310);
+            return;
+          }
+          WebViewInputFooter.this.COJ.aRF(paramAnonymousString);
+          AppMethodBeat.o(82310);
+          return;
+        }
+        catch (Exception paramAnonymousString)
+        {
+          ac.e("MicroMsg.WebViewInputFooter", "appendText, exp = %s", new Object[] { paramAnonymousString });
+          AppMethodBeat.o(82310);
+        }
+      }
     });
-    ((LinearLayout)findViewById(2131304239)).addView(this.Bwx, -1, 0);
-    this.BwA.setOnClickListener(new View.OnClickListener()
+    ((LinearLayout)findViewById(2131304239)).addView(this.COF, -1, 0);
+    this.COI.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82314);
-        paramAnonymousView = com.tencent.mm.ui.tools.b.c.d(WebViewInputFooter.d(WebViewInputFooter.this)).aaj(WebViewInputFooter.l(WebViewInputFooter.this));
-        paramAnonymousView.mcf = f.a.Hrl;
-        paramAnonymousView.HuM = true;
+        paramAnonymousView = com.tencent.mm.ui.tools.b.c.d(WebViewInputFooter.d(WebViewInputFooter.this)).acw(WebViewInputFooter.l(WebViewInputFooter.this));
+        paramAnonymousView.mEd = f.a.IRI;
+        paramAnonymousView.IVj = true;
         paramAnonymousView.a(new c.a()
         {
-          public final void CH(String paramAnonymous2String)
+          public final void GK(String paramAnonymous2String)
           {
             AppMethodBeat.i(82312);
             if (WebViewInputFooter.k(WebViewInputFooter.this) != null) {
-              WebViewInputFooter.k(WebViewInputFooter.this).awg(WebViewInputFooter.d(WebViewInputFooter.this).getText().toString());
+              WebViewInputFooter.k(WebViewInputFooter.this).aBy(WebViewInputFooter.d(WebViewInputFooter.this).getText().toString());
             }
             paramAnonymous2String = WebViewInputFooter.this;
-            paramAnonymous2String.BwB.clearComposingText();
-            paramAnonymous2String.BwB.setText("");
+            paramAnonymous2String.COJ.clearComposingText();
+            paramAnonymous2String.COJ.setText("");
             AppMethodBeat.o(82312);
           }
           
-          public final void aKr() {}
+          public final void aRi() {}
           
-          public final void ck(String paramAnonymous2String)
+          public final void ca(String paramAnonymous2String)
           {
             AppMethodBeat.i(164038);
             if (WebViewInputFooter.b(WebViewInputFooter.this) != null) {
@@ -187,7 +187,7 @@ public final class WebViewInputFooter
         AppMethodBeat.o(82314);
       }
     });
-    this.BwB.addTextChangedListener(new TextWatcher()
+    this.COJ.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -214,37 +214,37 @@ public final class WebViewInputFooter
     AppMethodBeat.o(82316);
   }
   
-  private void btD()
+  private void bAD()
   {
     AppMethodBeat.i(82318);
-    if (this.Bww != null) {
-      this.Bww.elg();
+    if (this.COE != null) {
+      this.COE.eAC();
     }
-    this.Bwx.setVisibility(8);
-    this.mcY.setImageResource(2131690564);
+    this.COF.setVisibility(8);
+    this.mEW.setImageResource(2131690564);
     this.state = 0;
     AppMethodBeat.o(82318);
   }
   
-  private int eoC()
+  private int eDX()
   {
     AppMethodBeat.i(82317);
-    if (this.Bww != null) {
-      this.Bww.elf();
+    if (this.COE != null) {
+      this.COE.eAB();
     }
-    if (this.BwB != null) {
-      this.imP.hideVKB(this.BwB);
+    if (this.COJ != null) {
+      this.iMV.hideVKB(this.COJ);
     }
-    this.Bwx.setVisibility(0);
-    Object localObject = this.Bwx;
+    this.COF.setVisibility(0);
+    Object localObject = this.COF;
     if (((WebViewSmileyPanel)localObject).mContentView != null) {
       ((WebViewSmileyPanel)localObject).mContentView.setVisibility(0);
     }
-    localObject = this.Bwx.getLayoutParams();
-    if ((localObject != null) && (this.tqy))
+    localObject = this.COF.getLayoutParams();
+    if ((localObject != null) && (this.uyP))
     {
-      ((ViewGroup.LayoutParams)localObject).height = i.in(getContext());
-      this.Bwx.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      ((ViewGroup.LayoutParams)localObject).height = i.iy(getContext());
+      this.COF.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     if (localObject != null)
     {
@@ -256,40 +256,40 @@ public final class WebViewInputFooter
     return 0;
   }
   
-  private void err()
+  private void eGL()
   {
     AppMethodBeat.i(82321);
-    if (this.BwB != null)
+    if (this.COJ != null)
     {
-      this.BwB.clearFocus();
-      this.BwB.setFocusable(false);
-      this.BwB.setFocusableInTouchMode(false);
+      this.COJ.clearFocus();
+      this.COJ.setFocusable(false);
+      this.COJ.setFocusableInTouchMode(false);
     }
     AppMethodBeat.o(82321);
   }
   
-  public final int ers()
+  public final int eGM()
   {
     AppMethodBeat.i(82322);
     setVisibility(0);
-    if (this.BwC != null) {
-      this.BwC.setVisibility(8);
+    if (this.COK != null) {
+      this.COK.setVisibility(8);
     }
-    this.BwD = true;
+    this.COL = true;
     this.state = 1;
-    int i = eoC();
+    int i = eDX();
     AppMethodBeat.o(82322);
     return i;
   }
   
-  public final void ert()
+  public final void eGN()
   {
     AppMethodBeat.i(82324);
-    if (this.BwD) {
+    if (this.COL) {
       setVisibility(8);
     }
     this.state = 0;
-    btD();
+    bAD();
     AppMethodBeat.o(82324);
   }
   
@@ -297,16 +297,16 @@ public final class WebViewInputFooter
   {
     AppMethodBeat.i(82323);
     setVisibility(8);
-    if (this.imP != null)
+    if (this.iMV != null)
     {
-      if (this.BwB != null) {
-        this.imP.hideVKB(this.BwB);
+      if (this.COJ != null) {
+        this.iMV.hideVKB(this.COJ);
       }
-      this.imP.hideVKB();
+      this.iMV.hideVKB();
     }
     this.state = 0;
-    btD();
-    err();
+    bAD();
+    eGL();
     AppMethodBeat.o(82323);
   }
   
@@ -326,63 +326,63 @@ public final class WebViewInputFooter
   {
     AppMethodBeat.i(82319);
     super.onDetachedFromWindow();
-    err();
-    if ((this.BwB != null) && (this.imP != null)) {
-      this.imP.hideVKB(this.BwB);
+    eGL();
+    if ((this.COJ != null) && (this.iMV != null)) {
+      this.iMV.hideVKB(this.COJ);
     }
-    this.BwB = null;
-    WebViewSmileyPanel localWebViewSmileyPanel = this.Bwx;
-    c localc = localWebViewSmileyPanel.BwH;
-    localc.BwN = null;
-    localc.mfC = null;
+    this.COJ = null;
+    WebViewSmileyPanel localWebViewSmileyPanel = this.COF;
+    c localc = localWebViewSmileyPanel.COP;
+    localc.COV = null;
+    localc.mHB = null;
     if (localWebViewSmileyPanel.mContentView != null)
     {
       ((ViewGroup)localWebViewSmileyPanel.mContentView.getParent()).removeView(localWebViewSmileyPanel.mContentView);
       ((ViewGroup)localWebViewSmileyPanel.mContentView).removeAllViews();
       localWebViewSmileyPanel.mContentView = null;
     }
-    localWebViewSmileyPanel.nqt = null;
+    localWebViewSmileyPanel.nTt = null;
     removeAllViews();
-    this.imP = null;
-    this.Bwu = null;
+    this.iMV = null;
+    this.COC = null;
     AppMethodBeat.o(82319);
   }
   
   public final void setMaxCount(int paramInt)
   {
     if (paramInt > 0) {
-      this.BwE = paramInt;
+      this.COM = paramInt;
     }
   }
   
   public final void setOnSmileyChosenListener(WebViewInputFooter.a parama)
   {
-    this.Bwv = parama;
+    this.COD = parama;
   }
   
   public final void setOnSmileyPanelVisibilityChangedListener(b paramb)
   {
-    this.Bww = paramb;
+    this.COE = paramb;
   }
   
   public final void setOnTextSendListener(WebViewInputFooter.c paramc)
   {
-    this.Bwu = paramc;
+    this.COC = paramc;
   }
   
   public final void setText(String paramString)
   {
     AppMethodBeat.i(82320);
-    this.BwB.setText("");
-    if (bt.isNullOrNil(paramString))
+    this.COJ.setText("");
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(82320);
       return;
     }
     try
     {
-      this.BwB.append(paramString);
-      ad.d("MicroMsg.WebViewInputFooter", "after setText, editText.getText() = %s", new Object[] { this.BwB.getText() });
+      this.COJ.append(paramString);
+      ac.d("MicroMsg.WebViewInputFooter", "after setText, editText.getText() = %s", new Object[] { this.COJ.getText() });
       AppMethodBeat.o(82320);
       return;
     }
@@ -390,21 +390,21 @@ public final class WebViewInputFooter
     {
       for (;;)
       {
-        ad.d("MicroMsg.WebViewInputFooter", "appendText, exp = %s", new Object[] { paramString });
+        ac.d("MicroMsg.WebViewInputFooter", "appendText, exp = %s", new Object[] { paramString });
       }
     }
   }
   
   public static abstract interface b
   {
-    public abstract void elf();
+    public abstract void eAB();
     
-    public abstract void elg();
+    public abstract void eAC();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter
  * JD-Core Version:    0.7.0.1
  */

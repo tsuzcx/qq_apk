@@ -20,7 +20,7 @@ public final class a
     }
     for (;;)
     {
-      paramMap = com.tencent.mm.game.report.d.a.m((Map)localObject);
+      paramMap = com.tencent.mm.game.report.d.a.l((Map)localObject);
       AppMethodBeat.o(108271);
       return paramMap;
       ((Map)localObject).put("ssid", Integer.valueOf(9));

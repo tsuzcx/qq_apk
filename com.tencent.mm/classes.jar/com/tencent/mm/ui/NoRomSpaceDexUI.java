@@ -13,24 +13,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class NoRomSpaceDexUI
   extends HellActivity
   implements DialogInterface.OnClickListener
 {
-  PendingIntent FRz;
+  PendingIntent Hrn;
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(33679);
-    if (this.FRz != null) {}
+    if (this.Hrn != null) {}
     try
     {
-      this.FRz.send();
+      this.Hrn.send();
       label19:
-      System.exit(0);
+      finish();
       Process.killProcess(Process.myPid());
       AppMethodBeat.o(33679);
       return;
@@ -45,10 +45,10 @@ public class NoRomSpaceDexUI
   {
     AppMethodBeat.i(33678);
     super.onCreate(paramBundle);
-    ac.initLanguage(aj.getContext());
+    ab.initLanguage(ai.getContext());
     setContentView(2131495023);
     Object localObject = getIntent();
-    this.FRz = ((PendingIntent)((Intent)localObject).getParcelableExtra("action"));
+    this.Hrn = ((PendingIntent)((Intent)localObject).getParcelableExtra("action"));
     paramBundle = new o(this);
     if (((Intent)localObject).hasExtra("title"))
     {
@@ -66,7 +66,7 @@ public class NoRomSpaceDexUI
     for (;;)
     {
       paramBundle.setCancelable(false);
-      paramBundle.eQS();
+      paramBundle.fgy();
       paramBundle.show();
       AppMethodBeat.o(33678);
       return;
@@ -74,17 +74,17 @@ public class NoRomSpaceDexUI
       break;
       label141:
       int i = ((Intent)localObject).getIntExtra("messageRes", 2131757337);
-      paramBundle.ESe.setVisibility(0);
-      paramBundle.ERW.setVisibility(0);
-      paramBundle.ERW.setText(i);
+      paramBundle.Gpr.setVisibility(0);
+      paramBundle.Gpj.setVisibility(0);
+      paramBundle.Gpj.setText(i);
       break label88;
       label177:
       localObject = getString(((Intent)localObject).getIntExtra("buttonRes", 2131757337));
-      if (paramBundle.zXZ != null)
+      if (paramBundle.Bqt != null)
       {
-        paramBundle.zXZ.setVisibility(0);
-        paramBundle.zXZ.setText((CharSequence)localObject);
-        paramBundle.zXZ.setOnClickListener(new o.1(paramBundle, this));
+        paramBundle.Bqt.setVisibility(0);
+        paramBundle.Bqt.setText((CharSequence)localObject);
+        paramBundle.Bqt.setOnClickListener(new o.1(paramBundle, this));
       }
     }
   }

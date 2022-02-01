@@ -6,71 +6,71 @@ import com.tencent.tinker.a.a.b.e;
 public final class d
   extends s.a.a<d>
 {
-  public int IAu;
-  public int[][] IAv;
-  public int[][] IAw;
-  public int[][] IAx;
+  public int KmD;
+  public int[][] KmE;
+  public int[][] KmF;
+  public int[][] KmG;
   
   public d(int paramInt1, int paramInt2, int[][] paramArrayOfInt1, int[][] paramArrayOfInt2, int[][] paramArrayOfInt3)
   {
     super(paramInt1);
-    this.IAu = paramInt2;
-    this.IAv = paramArrayOfInt1;
-    this.IAw = paramArrayOfInt2;
-    this.IAx = paramArrayOfInt3;
+    this.KmD = paramInt2;
+    this.KmE = paramArrayOfInt1;
+    this.KmF = paramArrayOfInt2;
+    this.KmG = paramArrayOfInt3;
   }
   
   private int a(d paramd)
   {
     int k = 0;
-    if (this.IAu != paramd.IAu)
+    if (this.KmD != paramd.KmD)
     {
-      j = c.ks(this.IAu, paramd.IAu);
+      j = c.kJ(this.KmD, paramd.KmD);
       return j;
     }
-    int n = this.IAv.length;
-    int j = this.IAw.length;
-    int m = this.IAx.length;
-    int i = paramd.IAv.length;
-    int i1 = paramd.IAw.length;
-    int i2 = paramd.IAx.length;
+    int n = this.KmE.length;
+    int j = this.KmF.length;
+    int m = this.KmG.length;
+    int i = paramd.KmE.length;
+    int i1 = paramd.KmF.length;
+    int i2 = paramd.KmG.length;
     if (n != i) {
-      return c.kt(n, i);
+      return c.kK(n, i);
     }
     if (j != i1) {
-      return c.kt(j, i1);
+      return c.kK(j, i1);
     }
     if (m != i2) {
-      return c.kt(m, i2);
+      return c.kK(m, i2);
     }
     i = 0;
     int i3;
     while (i < n)
     {
-      i1 = this.IAv[i][0];
-      i2 = this.IAv[i][1];
-      i3 = paramd.IAv[i][0];
-      int i4 = paramd.IAv[i][1];
+      i1 = this.KmE[i][0];
+      i2 = this.KmE[i][1];
+      i3 = paramd.KmE[i][0];
+      int i4 = paramd.KmE[i][1];
       if (i1 != i3) {
-        return c.ks(i1, i3);
+        return c.kJ(i1, i3);
       }
       if (i2 != i4) {
-        return c.kt(i2, i4);
+        return c.kK(i2, i4);
       }
       i += 1;
     }
     i = 0;
     while (i < j)
     {
-      n = this.IAw[i][0];
-      i1 = this.IAw[i][1];
-      i2 = paramd.IAw[i][0];
-      i3 = paramd.IAw[i][1];
+      n = this.KmF[i][0];
+      i1 = this.KmF[i][1];
+      i2 = paramd.KmF[i][0];
+      i3 = paramd.KmF[i][1];
       if (n != i2) {
-        return c.ks(n, i2);
+        return c.kJ(n, i2);
       }
       if (i1 != i3) {
-        return c.kt(i1, i3);
+        return c.kK(i1, i3);
       }
       i += 1;
     }
@@ -81,15 +81,15 @@ public final class d
       if (i >= m) {
         break;
       }
-      j = this.IAx[i][0];
-      n = this.IAx[i][1];
-      i1 = paramd.IAx[i][0];
-      i2 = paramd.IAx[i][1];
+      j = this.KmG[i][0];
+      n = this.KmG[i][1];
+      i1 = paramd.KmG[i][0];
+      i2 = paramd.KmG[i][1];
       if (j != i1) {
-        return c.ks(j, i1);
+        return c.kJ(j, i1);
       }
       if (n != i2) {
-        return c.kt(n, i2);
+        return c.kK(n, i2);
       }
       i += 1;
     }
@@ -106,7 +106,7 @@ public final class d
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.IAu), this.IAv, this.IAw, this.IAx });
+    return e.hash(new Object[] { Integer.valueOf(this.KmD), this.KmE, this.KmF, this.KmG });
   }
 }
 

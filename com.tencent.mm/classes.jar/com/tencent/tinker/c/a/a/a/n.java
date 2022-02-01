@@ -10,40 +10,40 @@ import com.tencent.tinker.c.a.c.c;
 public final class n
   extends i<r>
 {
-  private s.a IDh = null;
-  private s.a IDi = null;
-  private i.e IDj = null;
-  private i.e IDk = null;
+  private s.a Kpq = null;
+  private s.a Kpr = null;
+  private i.e Kps = null;
+  private i.e Kpt = null;
   
   public n(com.tencent.tinker.c.a.b.a parama, com.tencent.tinker.a.a.i parami1, com.tencent.tinker.a.a.i parami2, c paramc)
   {
     super(parama, parami1, paramc);
     if (parami2 != null)
     {
-      this.IDh = parami2.IBe.IBL;
-      this.IDi = parami2.IBe.IBz;
-      this.IDj = parami2.a(this.IDh);
-      this.IDk = parami2.a(this.IDi);
+      this.Kpq = parami2.Knn.KnU;
+      this.Kpr = parami2.Knn.KnI;
+      this.Kps = parami2.a(this.Kpq);
+      this.Kpt = parami2.a(this.Kpr);
     }
   }
   
   protected final void a(c paramc, int paramInt1, int paramInt2)
   {
     if (paramInt1 >= 0) {
-      paramc.IEf.acy(paramInt1);
+      paramc.Kqo.afu(paramInt1);
     }
   }
   
   protected final void a(c paramc, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramInt1 != paramInt3) {
-      paramc.IDR.put(paramInt1, paramInt3);
+      paramc.Kqa.put(paramInt1, paramInt3);
     }
   }
   
   protected final s.a c(com.tencent.tinker.a.a.i parami)
   {
-    return parami.IBe.IBL;
+    return parami.Knn.KnU;
   }
 }
 

@@ -7,20 +7,20 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SelectPreference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 
 public class SelectSexUI
   extends MMPreference
 {
-  private int evp = -1;
-  private SelectPreference qPt;
-  private SelectPreference qPu;
+  private int exL = -1;
+  private SelectPreference rKX;
+  private SelectPreference rKY;
   private f screen;
   
   public int getResourceId()
@@ -32,11 +32,11 @@ public class SelectSexUI
   {
     AppMethodBeat.i(73949);
     this.screen = getPreferenceScreen();
-    this.qPt = ((SelectPreference)this.screen.aKk("select_male"));
-    this.qPu = ((SelectPreference)this.screen.aKk("select_female"));
-    int i = bt.a((Integer)g.afB().afk().get(12290, null), 0);
+    this.rKX = ((SelectPreference)this.screen.aPN("select_male"));
+    this.rKY = ((SelectPreference)this.screen.aPN("select_female"));
+    int i = bs.a((Integer)g.agR().agA().get(12290, null), 0);
     if (i == 1) {
-      this.qPt.ira = true;
+      this.rKX.isSelected = true;
     }
     for (;;)
     {
@@ -62,11 +62,11 @@ public class SelectSexUI
           AppMethodBeat.o(73947);
           return true;
         }
-      }, null, r.b.FOB);
+      }, null, s.b.Hom);
       AppMethodBeat.o(73949);
       return;
       if (i == 2) {
-        this.qPu.ira = true;
+        this.rKY.isSelected = true;
       }
     }
   }
@@ -85,9 +85,9 @@ public class SelectSexUI
     paramPreference = paramPreference.mKey;
     if (paramPreference.equals("select_male"))
     {
-      this.evp = 1;
-      this.qPt.ira = true;
-      this.qPu.ira = false;
+      this.exL = 1;
+      this.rKX.isSelected = true;
+      this.rKY.isSelected = false;
       paramf.notifyDataSetChanged();
     }
     for (;;)
@@ -96,9 +96,9 @@ public class SelectSexUI
       return false;
       if (paramPreference.equals("select_female"))
       {
-        this.evp = 2;
-        this.qPt.ira = false;
-        this.qPu.ira = true;
+        this.exL = 2;
+        this.rKX.isSelected = false;
+        this.rKY.isSelected = true;
         paramf.notifyDataSetChanged();
       }
     }
@@ -112,7 +112,7 @@ public class SelectSexUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SelectSexUI
  * JD-Core Version:    0.7.0.1
  */

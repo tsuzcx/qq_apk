@@ -16,38 +16,37 @@ import com.tencent.mm.ui.widget.textview.a.f;
 final class u$a
   extends c.a
 {
-  a.f GHI;
-  protected ImageView GHZ;
-  protected TextView GIU;
-  protected MMNeat7extView GLB;
-  com.tencent.mm.ui.widget.textview.a GLC;
-  g GLD;
-  a.e GLE;
-  ViewStub GLF;
-  ChattingItemTranslate GLG;
-  View GLZ;
-  com.tencent.mm.ui.widget.b.a GqT;
-  View hFi;
-  protected TextView qkL;
-  protected ProgressBar uPp;
+  com.tencent.mm.ui.widget.b.a HQL;
+  a.f IhD;
+  protected ImageView IhW;
+  protected TextView IiR;
+  g IlA;
+  a.e IlB;
+  ViewStub IlC;
+  ChattingItemTranslate IlD;
+  View IlW;
+  protected MMNeat7extView Ily;
+  com.tencent.mm.ui.widget.textview.a Ilz;
+  View ifK;
+  protected TextView qTn;
   
-  public final a fX(View paramView)
+  public final a gk(View paramView)
   {
     AppMethodBeat.i(37002);
-    super.fK(paramView);
-    this.GLB = ((MMNeat7extView)paramView.findViewById(2131298073));
-    this.uPp = ((ProgressBar)paramView.findViewById(2131306220));
-    this.GHZ = ((ImageView)paramView.findViewById(2131298174));
-    this.qkL = ((TextView)paramView.findViewById(2131298044));
-    this.GIU = ((TextView)paramView.findViewById(2131298023));
-    this.wet = ((TextView)paramView.findViewById(2131298185));
-    this.hIS = ((CheckBox)paramView.findViewById(2131298068));
-    this.lRB = paramView.findViewById(2131298147);
-    this.naN = paramView.findViewById(2131303673);
-    this.GLZ = paramView.findViewById(2131303674);
-    this.hFi = paramView.findViewById(2131298071);
-    this.GLF = ((ViewStub)paramView.findViewById(2131306075));
-    this.GLD = new g(this.GLB, new n(this.GLB.getContext()));
+    super.fX(paramView);
+    this.Ily = ((MMNeat7extView)paramView.findViewById(2131298073));
+    this.vYf = ((ProgressBar)paramView.findViewById(2131306220));
+    this.IhW = ((ImageView)paramView.findViewById(2131298174));
+    this.qTn = ((TextView)paramView.findViewById(2131298044));
+    this.IiR = ((TextView)paramView.findViewById(2131298023));
+    this.xpH = ((TextView)paramView.findViewById(2131298185));
+    this.ijt = ((CheckBox)paramView.findViewById(2131298068));
+    this.gGk = paramView.findViewById(2131298147);
+    this.nDl = paramView.findViewById(2131303673);
+    this.IlW = paramView.findViewById(2131303674);
+    this.ifK = paramView.findViewById(2131298071);
+    this.IlC = ((ViewStub)paramView.findViewById(2131306075));
+    this.IlA = new g(this.Ily, new n(this.Ily.getContext()));
     AppMethodBeat.o(37002);
     return this;
   }

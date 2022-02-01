@@ -1,150 +1,95 @@
 package com.tencent.mm.plugin.finder.video;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.support.v7.widget.RecyclerView;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.n;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.event.base.d;
-import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
-import com.tencent.mm.plugin.finder.life.UILifecycleObserver;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.preload.MediaPreloadCore;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderVideoRecycler;
-import com.tencent.mm.ui.MMActivity;
-import d.g.a.b;
-import d.g.b.k;
+import com.tencent.mm.media.i.b.a;
+import com.tencent.mm.media.i.b.b;
 import d.l;
+import java.nio.FloatBuffer;
+import java.util.Arrays;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "Lcom/tencent/mm/plugin/finder/life/SupportLifecycle;", "Lcom/tencent/mm/app/IAppForegroundListener;", "tabType", "", "(I)V", "autoPlayManager", "Lcom/tencent/mm/plugin/finder/video/FinderVideoAutoPlayManager;", "getAutoPlayManager", "()Lcom/tencent/mm/plugin/finder/video/FinderVideoAutoPlayManager;", "setAutoPlayManager", "(Lcom/tencent/mm/plugin/finder/video/FinderVideoAutoPlayManager;)V", "eventSubscribers", "Lcom/tencent/mm/plugin/finder/event/FinderEventSubscribers;", "getEventSubscribers", "()Lcom/tencent/mm/plugin/finder/event/FinderEventSubscribers;", "setEventSubscribers", "(Lcom/tencent/mm/plugin/finder/event/FinderEventSubscribers;)V", "isDefaultMute", "", "Ljava/lang/Boolean;", "playingFeedId", "", "getPlayingFeedId", "()J", "setPlayingFeedId", "(J)V", "preloadCore", "Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;", "getPreloadCore", "()Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;", "setPreloadCore", "(Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;)V", "recycler", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;", "getRecycler", "()Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;", "setRecycler", "(Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "getTabType", "()I", "videoDownloader", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoDownloader;", "getVideoDownloader", "()Lcom/tencent/mm/plugin/finder/loader/FinderVideoDownloader;", "setVideoDownloader", "(Lcom/tencent/mm/plugin/finder/loader/FinderVideoDownloader;)V", "onAppBackground", "", "activity", "", "onAppForeground", "onInitialize", "context", "Lcom/tencent/mm/ui/MMActivity;", "initializer", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore$Initializer;", "isPreInflate", "pauseAllVideo", "setDefaultMute", "isMute", "Companion", "Initializer", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/FinderGLTextureRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcBlend;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "videoHeight", "videoWidth", "initDrawCoordBuffer", "", "setVideoSize", "width", "height", "plugin-finder_release"})
 public final class c
-  extends com.tencent.mm.plugin.finder.life.a
-  implements n
+  extends b
 {
-  public static final a qTM;
-  private final int IoU;
-  public FinderVideoRecycler Lcs;
-  public MediaPreloadCore Lct;
-  private RecyclerView fPw;
-  m qTG;
-  public FinderVideoAutoPlayManager qTH;
-  public com.tencent.mm.plugin.finder.event.a qTI;
-  public long qTL;
+  int videoHeight;
+  int videoWidth;
   
-  static
+  public c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(168046);
-    qTM = new a((byte)0);
-    AppMethodBeat.o(168046);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
   }
   
-  public c(int paramInt)
+  public final void arp()
   {
-    AppMethodBeat.i(199785);
-    this.IoU = paramInt;
-    this.qTG = new m();
-    AppMethodBeat.o(199785);
-  }
-  
-  public final void a(MMActivity paramMMActivity, b paramb, boolean paramBoolean)
-  {
-    AppMethodBeat.i(199783);
-    k.h(paramMMActivity, "context");
-    Object localObject1 = com.tencent.mm.ui.component.a.LCX;
-    localObject1 = com.tencent.mm.ui.component.a.bE(PluginFinder.class).get(FinderVideoRecycler.class);
-    k.g(localObject1, "UICProvider.of(PluginFin…ideoRecycler::class.java)");
-    this.Lcs = ((FinderVideoRecycler)localObject1);
-    localObject1 = this.Lcs;
-    if (localObject1 == null) {
-      k.aPZ("recycler");
-    }
-    ((FinderVideoRecycler)localObject1).d(paramMMActivity, paramBoolean);
-    if (paramb != null)
+    AppMethodBeat.i(203701);
+    if (this.scaleType == 4)
     {
-      localObject1 = paramb.clN();
-      this.fPw = ((RecyclerView)localObject1);
-      paramb = paramb.fSX();
-      Object localObject2 = com.tencent.mm.ui.component.a.LCX;
-      localObject2 = ((FinderReporterUIC)com.tencent.mm.ui.component.a.s(paramMMActivity).get(FinderReporterUIC.class)).ahW(this.IoU);
-      if (localObject2 != null)
+      Object localObject = aro();
+      float f7 = ((RectF)localObject).left;
+      float f1 = ((RectF)localObject).top;
+      float f5 = ((RectF)localObject).right;
+      float f2 = ((RectF)localObject).bottom;
+      localObject = this.gVo;
+      float[] arrayOfFloat;
+      int i;
+      if (localObject != null)
       {
-        localObject2 = new com.tencent.mm.plugin.finder.event.a((RecyclerView)localObject1, (d)localObject2);
-        ((com.tencent.mm.plugin.finder.event.a)localObject2).Bu();
-        this.qTI = ((com.tencent.mm.plugin.finder.event.a)localObject2);
+        arrayOfFloat = com.tencent.mm.media.j.c.gWD;
+        arrayOfFloat = Arrays.copyOf(arrayOfFloat, arrayOfFloat.length);
+        c.a locala = c.a.rQM;
+        if (this.videoWidth <= 0) {
+          break label354;
+        }
+        i = this.videoWidth;
+        if (this.videoHeight <= 0) {
+          break label363;
+        }
       }
-      localObject2 = com.tencent.mm.ui.component.a.LCX;
-      localObject2 = com.tencent.mm.ui.component.a.s(paramMMActivity).get(MediaPreloadCore.class);
-      MediaPreloadCore localMediaPreloadCore = (MediaPreloadCore)localObject2;
-      com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.LCX;
-      localMediaPreloadCore.a(paramb, ((FinderReporterUIC)com.tencent.mm.ui.component.a.s(paramMMActivity).get(FinderReporterUIC.class)).ahW(this.IoU));
-      this.Lct = ((MediaPreloadCore)localObject2);
-      this.qTG = new m(this.Lct);
-      paramb = this.Lcs;
-      if (paramb == null) {
-        k.aPZ("recycler");
+      label354:
+      label363:
+      for (int j = this.videoHeight;; j = this.gra)
+      {
+        float f6 = c.a.ai(((Rect)localObject).left / i);
+        float f8 = c.a.ai(((Rect)localObject).right / i);
+        float f4 = c.a.ai(((Rect)localObject).bottom / j);
+        float f3 = c.a.ai(((Rect)localObject).top / j);
+        float f9 = Math.abs(f5 - f7);
+        f5 = Math.abs(f2 - f1);
+        f6 = f6 * f9 + f7;
+        f7 = f8 * f9 + f7;
+        f4 = Math.min(f1, f2) + f5 * f4;
+        f1 = f3 * f5 + Math.min(f1, f2);
+        arrayOfFloat[0] = f6;
+        arrayOfFloat[1] = f1;
+        arrayOfFloat[2] = f7;
+        arrayOfFloat[3] = f1;
+        arrayOfFloat[4] = f6;
+        arrayOfFloat[5] = f4;
+        arrayOfFloat[6] = f7;
+        arrayOfFloat[7] = f4;
+        this.grD.put(com.tencent.mm.media.j.c.gWD);
+        this.grD.position(0);
+        this.grD.put(arrayOfFloat);
+        this.grD.position(0);
+        this.grE.position(0);
+        this.grE.position(0);
+        this.grE.put(com.tencent.mm.media.j.c.gWC);
+        this.grE.position(0);
+        AppMethodBeat.o(203701);
+        return;
+        i = this.gqZ;
+        break;
       }
-      this.qTH = new FinderVideoAutoPlayManager(paramMMActivity, (RecyclerView)localObject1, paramb, this.IoU);
-      paramb = this.qTH;
-      if (paramb == null) {
-        k.fvU();
-      }
-      paramb.setup();
     }
-    a(paramMMActivity, (UILifecycleObserver)new FinderVideoCore.onInitialize.2(this, paramMMActivity));
-    AppMethodBeat.o(199783);
-  }
-  
-  public final void csl()
-  {
-    AppMethodBeat.i(168043);
-    FinderVideoRecycler localFinderVideoRecycler = this.Lcs;
-    if (localFinderVideoRecycler == null) {
-      k.aPZ("recycler");
-    }
-    localFinderVideoRecycler.J((b)c.c.qTO);
-    AppMethodBeat.o(168043);
-  }
-  
-  public final FinderVideoRecycler fWq()
-  {
-    AppMethodBeat.i(199782);
-    FinderVideoRecycler localFinderVideoRecycler = this.Lcs;
-    if (localFinderVideoRecycler == null) {
-      k.aPZ("recycler");
-    }
-    AppMethodBeat.o(199782);
-    return localFinderVideoRecycler;
-  }
-  
-  public final void onAppBackground(String paramString)
-  {
-    AppMethodBeat.i(168044);
-    paramString = this.Lcs;
-    if (paramString == null) {
-      k.aPZ("recycler");
-    }
-    paramString.lD(null);
-    AppMethodBeat.o(168044);
-  }
-  
-  public final void onAppForeground(String paramString) {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/FinderVideoCore$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/FinderVideoCore$Initializer;", "", "getData", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "isUseAutoPlay", "", "isUsePreload", "onAttachRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
-  public static abstract interface b
-  {
-    public abstract RecyclerView clN();
-    
-    public abstract DataBuffer<BaseFinderFeed> fSX();
+    super.arp();
+    AppMethodBeat.o(203701);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.kinda.gen.KJSEvent;
 import com.tencent.kinda.gen.KindaJSEventType;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity.a;
 import java.util.HashMap;
 import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
@@ -45,7 +45,7 @@ public class KindaJSEvent
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("key_jsapi_close_page_after_pay", i);
-      ad.i("MicroMsg.KindaJSEvent", "[kindaCloseWebViewImpl] The data from JsApiPayUseCase: isCloseWebView: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      ac.i("MicroMsg.KindaJSEvent", "[kindaCloseWebViewImpl] The data from JsApiPayUseCase: isCloseWebView: %b", new Object[] { Boolean.valueOf(paramBoolean) });
       if (this.mIMMOnActivityResult != null) {
         this.mIMMOnActivityResult.c(this.mRequestCode, this.mResultCode, localIntent);
       }
@@ -79,7 +79,7 @@ public class KindaJSEvent
     }
     for (paramHashMap = (HashMap<String, String>)localObject;; paramHashMap = (HashMap<String, String>)localObject)
     {
-      ad.i("MicroMsg.KindaJSEvent", "[kindaEndWithResult] The data from JsApiPayUseCase: result: %s, pay_status(isClearFailure): %d, err_code: %s, err_desc: %s", new Object[] { paramString, Integer.valueOf(i), paramHashMap, str });
+      ac.i("MicroMsg.KindaJSEvent", "[kindaEndWithResult] The data from JsApiPayUseCase: result: %s, pay_status(isClearFailure): %d, err_code: %s, err_desc: %s", new Object[] { paramString, Integer.valueOf(i), paramHashMap, str });
       localObject = new Intent();
       this.mResultCode = 0;
       if (paramString.endsWith("ok"))
@@ -116,15 +116,15 @@ public class KindaJSEvent
   
   public KindaJSEventType kindaGetType()
   {
-    AppMethodBeat.i(186431);
+    AppMethodBeat.i(207393);
     if (this.mDelegate != null)
     {
       localKindaJSEventType = this.mDelegate.kindaGetType();
-      AppMethodBeat.o(186431);
+      AppMethodBeat.o(207393);
       return localKindaJSEventType;
     }
     KindaJSEventType localKindaJSEventType = this.mEventType;
-    AppMethodBeat.o(186431);
+    AppMethodBeat.o(207393);
     return localKindaJSEventType;
   }
   

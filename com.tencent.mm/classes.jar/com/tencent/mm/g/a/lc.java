@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class lc
   extends b
 {
-  public a dpD;
+  public a dmV;
   
   public lc()
   {
@@ -15,21 +15,16 @@ public final class lc
   
   private lc(byte paramByte)
   {
-    AppMethodBeat.i(155544);
-    this.dpD = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19817);
+    this.dmV = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(155544);
+    AppMethodBeat.o(19817);
   }
   
   public static final class a
   {
-    public boolean dpE = false;
-    public int dpF;
-    public boolean dpG = false;
-    public int dpH;
-    public boolean dpI = false;
-    public int dpJ;
+    public int opType;
   }
 }
 

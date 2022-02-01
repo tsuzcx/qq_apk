@@ -7,27 +7,27 @@ import d.n.n;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/report/BehaviorTraceData;", "", "()V", "lock", "Ljava/lang/Object;", "traceJsonArray", "Lorg/json/JSONArray;", "addTrace", "", "aid", "", "checkLength", "", "trace", "Lorg/json/JSONObject;", "getTraceString", "", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/report/BehaviorTraceData;", "", "()V", "lock", "Ljava/lang/Object;", "traceJsonArray", "Lorg/json/JSONArray;", "addTrace", "", "aid", "", "checkLength", "", "trace", "Lorg/json/JSONObject;", "getTraceString", "", "plugin-recordvideo_release"})
 public final class a
 {
   private final Object lock;
-  private JSONArray vph;
+  private JSONArray wxW;
   
   public a()
   {
     AppMethodBeat.i(75830);
-    this.vph = new JSONArray();
+    this.wxW = new JSONArray();
     this.lock = new Object();
     AppMethodBeat.o(75830);
   }
   
-  public final void Kn(int paramInt)
+  public final void Mm(int paramInt)
   {
     AppMethodBeat.i(75828);
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("aid", paramInt);
-    localJSONObject.put("td", this.vph.length() + 1);
-    if (this.vph.toString().length() + localJSONObject.toString().length() > 1000) {
+    localJSONObject.put("td", this.wxW.length() + 1);
+    if (this.wxW.toString().length() + localJSONObject.toString().length() > 1000) {
       paramInt = 0;
     }
     for (;;)
@@ -35,7 +35,7 @@ public final class a
       if (paramInt != 0) {}
       synchronized (this.lock)
       {
-        this.vph.put(localJSONObject);
+        this.wxW.put(localJSONObject);
         AppMethodBeat.o(75828);
         return;
         paramInt = 1;
@@ -43,12 +43,12 @@ public final class a
     }
   }
   
-  public final String diw()
+  public final String dwp()
   {
     AppMethodBeat.i(75829);
     synchronized (this.lock)
     {
-      String str = this.vph.toString();
+      String str = this.wxW.toString();
       k.g(str, "traceJsonArray.toString()");
       str = n.h(str, ",", ";", false);
       AppMethodBeat.o(75829);
@@ -58,7 +58,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.d.a
  * JD-Core Version:    0.7.0.1
  */

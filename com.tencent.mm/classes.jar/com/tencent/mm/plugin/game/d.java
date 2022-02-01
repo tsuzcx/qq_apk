@@ -7,34 +7,34 @@ import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.model.b;
 import com.tencent.mm.plugin.game.model.r;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class d
   implements c, com.tencent.mm.plugin.game.api.d
 {
-  private b rNm;
-  private r rNn;
+  private b sVb;
+  private r sVc;
   
-  public final b cBb()
+  public final b cOk()
   {
     AppMethodBeat.i(40843);
-    g.afz().aeD();
-    if (this.rNm == null) {
-      this.rNm = new b();
+    g.agP().afT();
+    if (this.sVb == null) {
+      this.sVb = new b();
     }
-    b localb = this.rNm;
+    b localb = this.sVb;
     AppMethodBeat.o(40843);
     return localb;
   }
   
-  public final r cBc()
+  public final r cOl()
   {
     AppMethodBeat.i(40845);
-    g.afz().aeD();
-    if (this.rNn == null) {
-      this.rNn = new r();
+    g.agP().afT();
+    if (this.sVc == null) {
+      this.sVc = new r();
     }
-    r localr = this.rNn;
+    r localr = this.sVc;
     AppMethodBeat.o(40845);
     return localr;
   }
@@ -42,16 +42,16 @@ public final class d
   public final void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(40841);
-    ad.i("MicroMsg.GameService", "GameService onAccountInitialized");
-    this.rNm = new b();
-    this.rNn = new r();
+    ac.i("MicroMsg.GameService", "GameService onAccountInitialized");
+    this.sVb = new b();
+    this.sVc = new r();
     AppMethodBeat.o(40841);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(40842);
-    ad.i("MicroMsg.GameService", "GameService onAccountRelease");
+    ac.i("MicroMsg.GameService", "GameService onAccountRelease");
     AppMethodBeat.o(40842);
   }
 }

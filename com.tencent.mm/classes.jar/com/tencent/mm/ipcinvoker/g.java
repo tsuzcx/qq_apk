@@ -7,7 +7,7 @@ import junit.framework.Assert;
 
 public final class g
 {
-  private static String fZo;
+  private static String gdU;
   public static Context sContext;
   
   /* Error */
@@ -200,13 +200,13 @@ public final class g
     //   162	175	288	java/lang/Exception
   }
   
-  public static String adv()
+  public static String aeL()
   {
     AppMethodBeat.i(158733);
-    if ((fZo == null) || (fZo.length() == 0)) {
-      fZo = B(sContext, Process.myPid());
+    if ((gdU == null) || (gdU.length() == 0)) {
+      gdU = B(sContext, Process.myPid());
     }
-    String str = fZo;
+    String str = gdU;
     AppMethodBeat.o(158733);
     return str;
   }
@@ -220,10 +220,10 @@ public final class g
     return localContext;
   }
   
-  public static boolean qp(String paramString)
+  public static boolean tE(String paramString)
   {
     AppMethodBeat.i(158732);
-    if ((paramString != null) && (paramString.equals(adv())))
+    if ((paramString != null) && (paramString.equals(aeL())))
     {
       AppMethodBeat.o(158732);
       return true;
@@ -234,7 +234,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.g
  * JD-Core Version:    0.7.0.1
  */

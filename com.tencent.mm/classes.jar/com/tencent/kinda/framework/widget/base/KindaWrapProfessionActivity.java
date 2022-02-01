@@ -2,12 +2,12 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.on;
+import com.tencent.mm.g.a.ow;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSelectProfessionUI;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
@@ -22,9 +22,9 @@ public class KindaWrapProfessionActivity
     super.onPause();
     if (isFinishing())
     {
-      on localon = new on();
-      localon.dtH.dtI = "flag_activity_close_WalletSelectProfessionUI";
-      a.ESL.l(localon);
+      ow localow = new ow();
+      localow.drs.drt = "flag_activity_close_WalletSelectProfessionUI";
+      a.GpY.l(localow);
     }
     AppMethodBeat.o(18987);
   }
@@ -38,13 +38,13 @@ public class KindaWrapProfessionActivity
       if (paramf.length != 2) {
         break label125;
       }
-      int i = bt.getInt(paramf[1], 0);
+      int i = bs.getInt(paramf[1], 0);
       paramf = this.mProfessions[i];
-      paramPreference = new on();
-      paramPreference.dtH.dtI = paramf.Aap;
-      paramPreference.dtH.dtJ = paramf.Aaq;
-      a.ESL.l(paramPreference);
-      ad.i("", "KindaWrapProfessionActivity.onPreferenceTreeClick，发送事件，当前线程：" + Thread.currentThread().getId());
+      paramPreference = new ow();
+      paramPreference.drs.drt = paramf.BsJ;
+      paramPreference.drs.dru = paramf.BsK;
+      a.GpY.l(paramPreference);
+      ac.i("", "KindaWrapProfessionActivity.onPreferenceTreeClick，发送事件，当前线程：" + Thread.currentThread().getId());
     }
     for (;;)
     {
@@ -52,7 +52,7 @@ public class KindaWrapProfessionActivity
       AppMethodBeat.o(18988);
       return true;
       label125:
-      ad.w("", "KindaWrapProfessionActivity error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
+      ac.w("", "KindaWrapProfessionActivity error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
     }
   }
   

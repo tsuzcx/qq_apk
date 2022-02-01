@@ -5,9 +5,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.List;
 
 final class b$2
@@ -23,12 +23,12 @@ final class b$2
       int i;
       try
       {
-        this.pMR.pML = System.currentTimeMillis();
-        List localList = aj.getContext().getPackageManager().getInstalledApplications(128);
+        this.qvz.qvt = System.currentTimeMillis();
+        List localList = ai.getContext().getPackageManager().getInstalledApplications(128);
         if (localList == null)
         {
-          ad.e("MicroMsg.SubCoreExtQLauncher", "getInstalledApplications return null");
-          this.pMR.pMK = false;
+          ac.e("MicroMsg.SubCoreExtQLauncher", "getInstalledApplications return null");
+          this.qvz.qvs = false;
           AppMethodBeat.o(24550);
           return;
         }
@@ -36,14 +36,14 @@ final class b$2
         if (i < localList.size())
         {
           ApplicationInfo localApplicationInfo = (ApplicationInfo)localList.get(i);
-          if ((localApplicationInfo == null) || ((!bt.nullAsNil(localApplicationInfo.packageName).startsWith("com.tencent.qlauncher")) && (!bt.nullAsNil(localApplicationInfo.packageName).startsWith("com.tencent.qqlauncher")) && (!bt.nullAsNil(localApplicationInfo.packageName).startsWith("com.tencent.launcher"))) || (localApplicationInfo.metaData == null)) {
+          if ((localApplicationInfo == null) || ((!bs.nullAsNil(localApplicationInfo.packageName).startsWith("com.tencent.qlauncher")) && (!bs.nullAsNil(localApplicationInfo.packageName).startsWith("com.tencent.qqlauncher")) && (!bs.nullAsNil(localApplicationInfo.packageName).startsWith("com.tencent.launcher"))) || (localApplicationInfo.metaData == null)) {
             break label382;
           }
           Object localObject = localApplicationInfo.metaData.getString("qlauncher_wx_coop");
           if ((localObject == null) || (((String)localObject).length() <= 0))
           {
-            ad.w("MicroMsg.SubCoreExtQLauncher", "qlauncher_wx_coop not found, %s, costTime = %s", new Object[] { localApplicationInfo.packageName, Long.valueOf(System.currentTimeMillis() - this.pMR.pML) });
-            this.pMR.pMK = false;
+            ac.w("MicroMsg.SubCoreExtQLauncher", "qlauncher_wx_coop not found, %s, costTime = %s", new Object[] { localApplicationInfo.packageName, Long.valueOf(System.currentTimeMillis() - this.qvz.qvt) });
+            this.qvz.qvs = false;
           }
           else
           {
@@ -54,10 +54,10 @@ final class b$2
               int j = 0;
               if (j < k)
               {
-                if (bt.nullAsNil(localObject[j]).trim().equalsIgnoreCase("fun1"))
+                if (bs.nullAsNil(localObject[j]).trim().equalsIgnoreCase("fun1"))
                 {
-                  ad.d("MicroMsg.SubCoreExtQLauncher", "founded qlauncher, %s", new Object[] { localApplicationInfo.packageName });
-                  this.pMR.pMK = true;
+                  ac.d("MicroMsg.SubCoreExtQLauncher", "founded qlauncher, %s", new Object[] { localApplicationInfo.packageName });
+                  this.qvz.qvs = true;
                   AppMethodBeat.o(24550);
                   return;
                 }
@@ -65,18 +65,18 @@ final class b$2
                 continue;
               }
             }
-            this.pMR.pMK = false;
+            this.qvz.qvs = false;
           }
         }
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.SubCoreExtQLauncher", "exception in getApplicationInfo, %s", new Object[] { localException.getMessage() });
-        this.pMR.pMK = false;
+        ac.e("MicroMsg.SubCoreExtQLauncher", "exception in getApplicationInfo, %s", new Object[] { localException.getMessage() });
+        this.qvz.qvs = false;
         AppMethodBeat.o(24550);
         return;
       }
-      ad.d("MicroMsg.SubCoreExtQLauncher", "qlauncher not founded, costTime = %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.pMR.pML) });
+      ac.d("MicroMsg.SubCoreExtQLauncher", "qlauncher not founded, costTime = %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.qvz.qvt) });
       AppMethodBeat.o(24550);
       return;
       label382:

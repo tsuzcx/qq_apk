@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.backup.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.li;
+import com.tencent.mm.g.a.lr;
 import com.tencent.mm.sdk.b.c;
 
 final class a$4
-  extends c<li>
+  extends c<lr>
 {
   a$4(a parama)
   {
     AppMethodBeat.i(161292);
-    this.__eventId = li.class.getName().hashCode();
+    this.__eventId = lr.class.getName().hashCode();
     AppMethodBeat.o(161292);
   }
 }

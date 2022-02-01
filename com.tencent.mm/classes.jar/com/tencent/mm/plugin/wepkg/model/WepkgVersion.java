@@ -12,24 +12,24 @@ public class WepkgVersion
   implements Parcelable
 {
   public static final Parcelable.Creator<WepkgVersion> CREATOR;
-  public int BID;
-  public boolean BJA;
-  public boolean BJB;
-  public boolean BJC;
-  public int BJD;
-  public boolean BJt;
-  public long BJu;
-  public long BJv;
-  public int BJw;
-  public String BJx;
-  public int BJy;
-  public long BJz;
+  public int DaM;
+  public boolean DbC;
+  public long DbD;
+  public long DbE;
+  public int DbF;
+  public String DbG;
+  public int DbH;
+  public long DbI;
+  public boolean DbJ;
+  public boolean DbK;
+  public boolean DbL;
+  public int DbM;
   public String appId;
   public String charset;
   public long createTime;
-  public int dER;
+  public int dCD;
   public String downloadUrl;
-  public String fUW;
+  public String fYR;
   public String md5;
   public String pkgPath;
   public String version;
@@ -46,23 +46,23 @@ public class WepkgVersion
   public WepkgVersion(Parcel paramParcel)
   {
     AppMethodBeat.i(110760);
-    this.fUW = paramParcel.readString();
+    this.fYR = paramParcel.readString();
     this.appId = paramParcel.readString();
     this.version = paramParcel.readString();
     this.pkgPath = paramParcel.readString();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.BJt = bool1;
-      this.BJu = paramParcel.readLong();
-      this.BJv = paramParcel.readLong();
-      this.BJw = paramParcel.readInt();
-      this.BJx = paramParcel.readString();
+      this.DbC = bool1;
+      this.DbD = paramParcel.readLong();
+      this.DbE = paramParcel.readLong();
+      this.DbF = paramParcel.readInt();
+      this.DbG = paramParcel.readString();
       this.md5 = paramParcel.readString();
       this.downloadUrl = paramParcel.readString();
-      this.BJy = paramParcel.readInt();
-      this.BID = paramParcel.readInt();
-      this.BJz = paramParcel.readLong();
+      this.DbH = paramParcel.readInt();
+      this.DaM = paramParcel.readInt();
+      this.DbI = paramParcel.readLong();
       this.createTime = paramParcel.readLong();
       this.charset = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
@@ -70,13 +70,13 @@ public class WepkgVersion
       }
       bool1 = true;
       label154:
-      this.BJA = bool1;
+      this.DbJ = bool1;
       if (paramParcel.readByte() == 0) {
         break label219;
       }
       bool1 = true;
       label168:
-      this.BJB = bool1;
+      this.DbK = bool1;
       if (paramParcel.readByte() == 0) {
         break label224;
       }
@@ -86,9 +86,9 @@ public class WepkgVersion
     label224:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.BJC = bool1;
-      this.BJD = paramParcel.readInt();
-      this.dER = paramParcel.readInt();
+      this.DbL = bool1;
+      this.DbM = paramParcel.readInt();
+      this.dCD = paramParcel.readInt();
       AppMethodBeat.o(110760);
       return;
       bool1 = false;
@@ -104,27 +104,27 @@ public class WepkgVersion
   {
     if (parame != null)
     {
-      this.fUW = parame.field_pkgId;
+      this.fYR = parame.field_pkgId;
       this.appId = parame.field_appId;
       this.version = parame.field_version;
       this.pkgPath = parame.field_pkgPath;
-      this.BJt = parame.field_disableWvCache;
-      this.BJu = parame.field_clearPkgTime;
-      this.BJv = parame.field_checkIntervalTime;
-      this.BJw = parame.field_packMethod;
-      this.BJx = parame.field_domain;
+      this.DbC = parame.field_disableWvCache;
+      this.DbD = parame.field_clearPkgTime;
+      this.DbE = parame.field_checkIntervalTime;
+      this.DbF = parame.field_packMethod;
+      this.DbG = parame.field_domain;
       this.md5 = parame.field_md5;
       this.downloadUrl = parame.field_downloadUrl;
-      this.BJy = parame.field_pkgSize;
-      this.BID = parame.field_downloadNetType;
-      this.BJz = parame.field_nextCheckTime;
+      this.DbH = parame.field_pkgSize;
+      this.DaM = parame.field_downloadNetType;
+      this.DbI = parame.field_nextCheckTime;
       this.createTime = parame.field_createTime;
       this.charset = parame.field_charset;
-      this.BJA = parame.field_bigPackageReady;
-      this.BJB = parame.field_preloadFilesReady;
-      this.BJC = parame.field_preloadFilesAtomic;
-      this.BJD = parame.field_totalDownloadCount;
-      this.dER = parame.field_downloadTriggerType;
+      this.DbJ = parame.field_bigPackageReady;
+      this.DbK = parame.field_preloadFilesReady;
+      this.DbL = parame.field_preloadFilesAtomic;
+      this.DbM = parame.field_totalDownloadCount;
+      this.dCD = parame.field_downloadTriggerType;
     }
   }
   
@@ -133,7 +133,7 @@ public class WepkgVersion
     return 0;
   }
   
-  public final JSONObject etO()
+  public final JSONObject eJh()
   {
     AppMethodBeat.i(110761);
     JSONObject localJSONObject = new JSONObject();
@@ -142,22 +142,22 @@ public class WepkgVersion
       localJSONObject.put("appId", this.appId);
       localJSONObject.put("version", this.version);
       localJSONObject.put("pkgPath", this.pkgPath);
-      localJSONObject.put("disableWvCache", this.BJt);
-      localJSONObject.put("clearPkgTime", this.BJu);
-      localJSONObject.put("checkIntervalTime", this.BJv);
-      localJSONObject.put("packMethod", this.BJw);
-      localJSONObject.put("domain", this.BJx);
+      localJSONObject.put("disableWvCache", this.DbC);
+      localJSONObject.put("clearPkgTime", this.DbD);
+      localJSONObject.put("checkIntervalTime", this.DbE);
+      localJSONObject.put("packMethod", this.DbF);
+      localJSONObject.put("domain", this.DbG);
       localJSONObject.put("md5", this.md5);
       localJSONObject.put("downloadUrl", this.downloadUrl);
-      localJSONObject.put("pkgSize", this.BJy);
-      localJSONObject.put("downloadNetType", this.BID);
-      localJSONObject.put("nextCheckTime", this.BJz);
+      localJSONObject.put("pkgSize", this.DbH);
+      localJSONObject.put("downloadNetType", this.DaM);
+      localJSONObject.put("nextCheckTime", this.DbI);
       localJSONObject.put("charset", this.charset);
-      localJSONObject.put("bigPackageReady", this.BJA);
-      localJSONObject.put("preloadFilesReady", this.BJB);
-      localJSONObject.put("preloadFilesAtomic", this.BJC);
-      localJSONObject.put("totalDownloadCount", this.BJD);
-      localJSONObject.put("downloadTriggerType", this.dER);
+      localJSONObject.put("bigPackageReady", this.DbJ);
+      localJSONObject.put("preloadFilesReady", this.DbK);
+      localJSONObject.put("preloadFilesAtomic", this.DbL);
+      localJSONObject.put("totalDownloadCount", this.DbM);
+      localJSONObject.put("downloadTriggerType", this.dCD);
       label222:
       AppMethodBeat.o(110761);
       return localJSONObject;
@@ -172,38 +172,38 @@ public class WepkgVersion
   {
     int i = 1;
     AppMethodBeat.i(110762);
-    paramParcel.writeString(this.fUW);
+    paramParcel.writeString(this.fYR);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.version);
     paramParcel.writeString(this.pkgPath);
-    if (this.BJt)
+    if (this.DbC)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.BJu);
-      paramParcel.writeLong(this.BJv);
-      paramParcel.writeInt(this.BJw);
-      paramParcel.writeString(this.BJx);
+      paramParcel.writeLong(this.DbD);
+      paramParcel.writeLong(this.DbE);
+      paramParcel.writeInt(this.DbF);
+      paramParcel.writeString(this.DbG);
       paramParcel.writeString(this.md5);
       paramParcel.writeString(this.downloadUrl);
-      paramParcel.writeInt(this.BJy);
-      paramParcel.writeInt(this.BID);
-      paramParcel.writeLong(this.BJz);
+      paramParcel.writeInt(this.DbH);
+      paramParcel.writeInt(this.DaM);
+      paramParcel.writeLong(this.DbI);
       paramParcel.writeLong(this.createTime);
       paramParcel.writeString(this.charset);
-      if (!this.BJA) {
+      if (!this.DbJ) {
         break label214;
       }
       paramInt = 1;
       label151:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.BJB) {
+      if (!this.DbK) {
         break label219;
       }
       paramInt = 1;
       label166:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.BJC) {
+      if (!this.DbL) {
         break label224;
       }
     }
@@ -213,8 +213,8 @@ public class WepkgVersion
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.BJD);
-      paramParcel.writeInt(this.dER);
+      paramParcel.writeInt(this.DbM);
+      paramParcel.writeInt(this.dCD);
       AppMethodBeat.o(110762);
       return;
       paramInt = 0;

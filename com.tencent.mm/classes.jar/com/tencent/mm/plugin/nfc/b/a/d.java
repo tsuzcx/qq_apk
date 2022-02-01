@@ -7,11 +7,11 @@ public abstract interface d
 {
   public abstract c a(a parama);
   
-  public abstract boolean cWF();
-  
   public abstract void close();
   
   public abstract boolean connect();
+  
+  public abstract boolean dkn();
   
   public abstract boolean isConnected();
 }

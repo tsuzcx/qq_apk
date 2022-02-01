@@ -14,7 +14,7 @@ public class TextViewWithBottomLine
   extends AppCompatTextView
 {
   private Paint mPaint;
-  private boolean rTJ;
+  private boolean tbB;
   
   public TextViewWithBottomLine(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -45,7 +45,7 @@ public class TextViewWithBottomLine
   {
     AppMethodBeat.i(41182);
     super.onDraw(paramCanvas);
-    if (this.rTJ) {
+    if (this.tbB) {
       paramCanvas.drawRoundRect(0.0F, getHeight() - ao.fromDPToPix(getContext(), 2), getWidth(), getHeight(), ao.fromDPToPix(getContext(), 1), ao.fromDPToPix(getContext(), 1), this.mPaint);
     }
     AppMethodBeat.o(41182);
@@ -54,7 +54,7 @@ public class TextViewWithBottomLine
   public void setSelected(boolean paramBoolean)
   {
     AppMethodBeat.i(41183);
-    this.rTJ = paramBoolean;
+    this.tbB = paramBoolean;
     if (paramBoolean) {
       setTextColor(getResources().getColor(2131100711));
     }
@@ -69,7 +69,7 @@ public class TextViewWithBottomLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.TextViewWithBottomLine
  * JD-Core Version:    0.7.0.1
  */

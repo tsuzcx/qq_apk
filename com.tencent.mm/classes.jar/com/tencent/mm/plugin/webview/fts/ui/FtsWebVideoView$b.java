@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(78072);
-    AQB = new b("AUTO", 0);
-    AQC = new b("LANDSCAPE", 1);
-    AQD = new b("PORTRAIT", 2);
-    AQE = new b[] { AQB, AQC, AQD };
+    CiO = new b("AUTO", 0);
+    CiP = new b("LANDSCAPE", 1);
+    CiQ = new b("PORTRAIT", 2);
+    CiR = new b[] { CiO, CiP, CiQ };
     AppMethodBeat.o(78072);
   }
   

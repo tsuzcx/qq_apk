@@ -5,17 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/mix/FrameInfo;", "", "bitmap", "Landroid/graphics/Bitmap;", "frameDuration", "", "(Landroid/graphics/Bitmap;J)V", "getBitmap", "()Landroid/graphics/Bitmap;", "getFrameDuration", "()J", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/mix/FrameInfo;", "", "bitmap", "Landroid/graphics/Bitmap;", "frameDuration", "", "(Landroid/graphics/Bitmap;J)V", "getBitmap", "()Landroid/graphics/Bitmap;", "getFrameDuration", "()J", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"})
 public final class c
 {
   public final Bitmap bitmap;
-  public final long grP;
+  public final long gSx;
   
   public c(Bitmap paramBitmap, long paramLong)
   {
     AppMethodBeat.i(93719);
     this.bitmap = paramBitmap;
-    this.grP = paramLong;
+    this.gSx = paramLong;
     AppMethodBeat.o(93719);
   }
   
@@ -27,7 +27,7 @@ public final class c
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        if ((!k.g(this.bitmap, paramObject.bitmap)) || (this.grP != paramObject.grP)) {}
+        if ((!k.g(this.bitmap, paramObject.bitmap)) || (this.gSx != paramObject.gSx)) {}
       }
     }
     else
@@ -46,7 +46,7 @@ public final class c
     if (localBitmap != null) {}
     for (int i = localBitmap.hashCode();; i = 0)
     {
-      long l = this.grP;
+      long l = this.gSx;
       int j = (int)(l ^ l >>> 32);
       AppMethodBeat.o(93721);
       return i * 31 + j;
@@ -56,7 +56,7 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(93720);
-    String str = "FrameInfo(bitmap=" + this.bitmap + ", frameDuration=" + this.grP + ")";
+    String str = "FrameInfo(bitmap=" + this.bitmap + ", frameDuration=" + this.gSx + ")";
     AppMethodBeat.o(93720);
     return str;
   }

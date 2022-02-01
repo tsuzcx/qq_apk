@@ -5,17 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import d.n.n;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"startsWithIgnoreCase", "", "", "prefix", "protocol", "luggage-commons_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"startsWithIgnoreCase", "", "", "prefix", "protocol", "startsWithIgnoreCaseAndBlank", "luggage-commons_release"})
 public final class c
 {
   public static final boolean a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(194911);
+    AppMethodBeat.i(201066);
     d.g.b.k.h(paramString1, "$this$startsWithIgnoreCase");
     d.g.b.k.h(paramString2, "prefix");
-    if (n.aC((CharSequence)paramString2))
+    if (n.aD((CharSequence)paramString2))
     {
-      AppMethodBeat.o(194911);
+      AppMethodBeat.o(201066);
       return false;
     }
     String str = paramString1;
@@ -29,8 +29,8 @@ public final class c
     }
     for (;;)
     {
-      paramBoolean = k.A(str, paramString2);
-      AppMethodBeat.o(194911);
+      paramBoolean = k.B(str, paramString2);
+      AppMethodBeat.o(201066);
       return paramBoolean;
       label73:
       str = paramString1;

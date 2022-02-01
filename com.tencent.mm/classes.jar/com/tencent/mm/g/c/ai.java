@@ -8,27 +8,27 @@ public abstract class ai
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ekS;
-  private static final int epV;
-  private static final int epZ;
-  private static final int eps;
-  private static final int eqa = "bitFlag".hashCode();
-  private static final int eqe = "addMemberUrl".hashCode();
-  private static final int eqh = "userId".hashCode();
-  private static final int eql;
-  private static final int eqm;
-  private static final int eqn;
+  private static final int emW;
+  private static final int erZ;
+  private static final int erw;
+  private static final int esd;
+  private static final int ese = "bitFlag".hashCode();
+  private static final int esi = "addMemberUrl".hashCode();
+  private static final int esl = "userId".hashCode();
+  private static final int esp;
+  private static final int esq;
+  private static final int esr;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ekv = true;
-  private boolean epI = true;
-  private boolean epM = true;
-  private boolean epN = true;
-  private boolean epR = true;
-  private boolean epd = true;
-  private boolean eqg = true;
-  private boolean eqi = true;
-  private boolean eqj = true;
-  private boolean eqk = true;
+  private boolean emz = true;
+  private boolean erM = true;
+  private boolean erQ = true;
+  private boolean erR = true;
+  private boolean erV = true;
+  private boolean erh = true;
+  private boolean esk = true;
+  private boolean esm = true;
+  private boolean esn = true;
+  private boolean eso = true;
   public int field_UserVersion;
   public String field_addMemberUrl;
   public int field_bitFlag;
@@ -42,13 +42,13 @@ public abstract class ai
   
   static
   {
-    ekS = "userName".hashCode();
-    eql = "userNamePY".hashCode();
-    eps = "brandUserName".hashCode();
-    eqm = "UserVersion".hashCode();
-    epZ = "needToUpdate".hashCode();
-    epV = "headImageUrl".hashCode();
-    eqn = "profileUrl".hashCode();
+    emW = "userName".hashCode();
+    esp = "userNamePY".hashCode();
+    erw = "brandUserName".hashCode();
+    esq = "UserVersion".hashCode();
+    esd = "needToUpdate".hashCode();
+    erZ = "headImageUrl".hashCode();
+    esr = "profileUrl".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -64,11 +64,11 @@ public abstract class ai
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eqh != k) {
+      if (esl != k) {
         break label65;
       }
       this.field_userId = paramCursor.getString(i);
-      this.eqg = true;
+      this.esk = true;
     }
     for (;;)
     {
@@ -76,25 +76,25 @@ public abstract class ai
       break label20;
       break;
       label65:
-      if (ekS == k)
+      if (emW == k)
       {
         this.field_userName = paramCursor.getString(i);
       }
-      else if (eql == k)
+      else if (esp == k)
       {
         this.field_userNamePY = paramCursor.getString(i);
       }
-      else if (eps == k)
+      else if (erw == k)
       {
         this.field_brandUserName = paramCursor.getString(i);
       }
-      else if (eqm == k)
+      else if (esq == k)
       {
         this.field_UserVersion = paramCursor.getInt(i);
       }
       else
       {
-        if (epZ == k)
+        if (esd == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -103,13 +103,13 @@ public abstract class ai
             break;
           }
         }
-        if (epV == k) {
+        if (erZ == k) {
           this.field_headImageUrl = paramCursor.getString(i);
-        } else if (eqn == k) {
+        } else if (esr == k) {
           this.field_profileUrl = paramCursor.getString(i);
-        } else if (eqa == k) {
+        } else if (ese == k) {
           this.field_bitFlag = paramCursor.getInt(i);
-        } else if (eqe == k) {
+        } else if (esi == k) {
           this.field_addMemberUrl = paramCursor.getString(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -121,43 +121,43 @@ public abstract class ai
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eqg) {
+    if (this.esk) {
       localContentValues.put("userId", this.field_userId);
     }
     if (this.field_userName == null) {
       this.field_userName = "";
     }
-    if (this.ekv) {
+    if (this.emz) {
       localContentValues.put("userName", this.field_userName);
     }
     if (this.field_userNamePY == null) {
       this.field_userNamePY = "";
     }
-    if (this.eqi) {
+    if (this.esm) {
       localContentValues.put("userNamePY", this.field_userNamePY);
     }
     if (this.field_brandUserName == null) {
       this.field_brandUserName = "";
     }
-    if (this.epd) {
+    if (this.erh) {
       localContentValues.put("brandUserName", this.field_brandUserName);
     }
-    if (this.eqj) {
+    if (this.esn) {
       localContentValues.put("UserVersion", Integer.valueOf(this.field_UserVersion));
     }
-    if (this.epM) {
+    if (this.erQ) {
       localContentValues.put("needToUpdate", Boolean.valueOf(this.field_needToUpdate));
     }
-    if (this.epI) {
+    if (this.erM) {
       localContentValues.put("headImageUrl", this.field_headImageUrl);
     }
-    if (this.eqk) {
+    if (this.eso) {
       localContentValues.put("profileUrl", this.field_profileUrl);
     }
-    if (this.epN) {
+    if (this.erR) {
       localContentValues.put("bitFlag", Integer.valueOf(this.field_bitFlag));
     }
-    if (this.epR) {
+    if (this.erV) {
       localContentValues.put("addMemberUrl", this.field_addMemberUrl);
     }
     if (this.systemRowid > 0L) {
@@ -168,7 +168,7 @@ public abstract class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ai
  * JD-Core Version:    0.7.0.1
  */

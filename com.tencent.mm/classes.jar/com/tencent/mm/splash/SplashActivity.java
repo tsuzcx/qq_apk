@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class SplashActivity
   extends HellActivity
 {
-  private boolean FbH = false;
+  private boolean GyZ = false;
   
-  private void eIt()
+  private void eXP()
   {
     AppMethodBeat.i(40662);
-    e locale = h.Fbp;
+    e locale = h.GyG;
     new Runnable()
     {
       public final void run()
@@ -27,26 +27,26 @@ public class SplashActivity
         AppMethodBeat.o(40653);
       }
     };
-    if (locale.Lj()) {
-      eIv();
+    if (locale.Li()) {
+      eXR();
     }
     AppMethodBeat.o(40662);
   }
   
-  private void eIv()
+  private void eXR()
   {
     AppMethodBeat.i(40664);
-    if (this.FbH)
+    if (this.GyZ)
     {
       AppMethodBeat.o(40664);
       return;
     }
-    this.FbH = true;
+    this.GyZ = true;
     if (!isFinishing())
     {
       setResult(-100);
       int i = getIntent().getIntExtra("hashcode", 0);
-      Iterator localIterator = h.Fbm.iterator();
+      Iterator localIterator = h.GyD.iterator();
       while (localIterator.hasNext())
       {
         i locali = (i)localIterator.next();
@@ -72,7 +72,7 @@ public class SplashActivity
         public final void run()
         {
           AppMethodBeat.i(40656);
-          h.Fbp = null;
+          h.GyG = null;
           AppMethodBeat.o(40656);
         }
       }, 5000L);
@@ -82,12 +82,12 @@ public class SplashActivity
     }
   }
   
-  public final void eIu()
+  public final void eXQ()
   {
     AppMethodBeat.i(40663);
-    if (h.Fbp != null)
+    if (h.GyG != null)
     {
-      if (!h.Fbp.a(this, new Runnable()
+      if (!h.GyG.a(this, new Runnable()
       {
         public final void run()
         {
@@ -97,14 +97,14 @@ public class SplashActivity
         }
       }))
       {
-        eIt();
+        eXP();
         AppMethodBeat.o(40663);
       }
     }
     else
     {
       h.b("WxSplash.SplashActivity", "permissions delegate is null, call splash finish directly.", new Object[0]);
-      eIv();
+      eXR();
     }
     AppMethodBeat.o(40663);
   }
@@ -115,13 +115,13 @@ public class SplashActivity
     super.onCreate(paramBundle);
     h.a(this);
     h.b("WxSplash.SplashActivity", "onCreate", new Object[0]);
-    if (!h.eIk())
+    if (!h.eXG())
     {
       h.b("WxSplash.SplashActivity", "no need splash, finish", new Object[0]);
-      eIu();
+      eXQ();
     }
-    if (h.Fby != null) {
-      h.Fby.r(this);
+    if (h.GyP != null) {
+      h.GyP.r(this);
     }
     AppMethodBeat.o(40657);
   }
@@ -146,8 +146,8 @@ public class SplashActivity
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(40661);
-    if (h.Fbp != null) {
-      h.Fbp.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    if (h.GyG != null) {
+      h.GyG.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
     }
     AppMethodBeat.o(40661);
   }

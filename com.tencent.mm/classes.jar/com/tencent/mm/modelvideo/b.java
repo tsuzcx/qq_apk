@@ -4,7 +4,7 @@ public abstract interface b
 {
   public abstract void a(a parama);
   
-  public abstract void fy(String paramString);
+  public abstract void fo(String paramString);
   
   public abstract boolean isVideoDataAvailable(String paramString, int paramInt1, int paramInt2);
   
@@ -14,18 +14,18 @@ public abstract interface b
   
   public static abstract interface a
   {
-    public abstract void Bl(long paramLong);
+    public abstract void aq(String paramString, int paramInt);
     
-    public abstract void am(String paramString, int paramInt);
-    
-    public abstract void k(String paramString, long paramLong1, long paramLong2);
+    public abstract void i(String paramString, long paramLong1, long paramLong2);
     
     public abstract void onDataAvailable(String paramString, long paramLong1, long paramLong2);
+    
+    public abstract void qq(long paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvideo.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,122 @@ import oicq.wlogin_sdk.tools.util;
 
 public final class c
 {
-  TreeMap<Long, WloginAllSigInfo> KhX;
+  TreeMap<Long, WloginAllSigInfo> LVG;
   Context _context;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(88054);
-    this.KhX = new TreeMap();
+    this.LVG = new TreeMap();
     this._context = paramContext;
     AppMethodBeat.o(88054);
+  }
+  
+  /* Error */
+  private WloginAllSigInfo CF(long paramLong)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 35
+    //   4: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: ldc 37
+    //   9: ldc 39
+    //   11: lload_1
+    //   12: invokestatic 45	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   15: invokevirtual 49	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   18: invokestatic 55	oicq/wlogin_sdk/tools/util:ni	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: aload_0
+    //   22: getfield 26	oicq/wlogin_sdk/request/c:LVG	Ljava/util/TreeMap;
+    //   25: new 57	java/lang/Long
+    //   28: dup
+    //   29: lload_1
+    //   30: invokespecial 60	java/lang/Long:<init>	(J)V
+    //   33: invokevirtual 64	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   36: checkcast 66	oicq/wlogin_sdk/request/WloginAllSigInfo
+    //   39: astore_3
+    //   40: aload_3
+    //   41: ifnull +12 -> 53
+    //   44: ldc 35
+    //   46: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: aload_0
+    //   50: monitorexit
+    //   51: aload_3
+    //   52: areturn
+    //   53: aload_0
+    //   54: getfield 28	oicq/wlogin_sdk/request/c:_context	Landroid/content/Context;
+    //   57: ifnonnull +13 -> 70
+    //   60: ldc 35
+    //   62: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: aconst_null
+    //   66: astore_3
+    //   67: goto -18 -> 49
+    //   70: aload_0
+    //   71: getfield 28	oicq/wlogin_sdk/request/c:_context	Landroid/content/Context;
+    //   74: ldc 68
+    //   76: invokestatic 72	oicq/wlogin_sdk/request/c:cE	(Landroid/content/Context;Ljava/lang/String;)Ljava/util/TreeMap;
+    //   79: astore_3
+    //   80: aload_3
+    //   81: ifnonnull +13 -> 94
+    //   84: ldc 35
+    //   86: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   89: aconst_null
+    //   90: astore_3
+    //   91: goto -42 -> 49
+    //   94: aload_3
+    //   95: new 57	java/lang/Long
+    //   98: dup
+    //   99: lload_1
+    //   100: invokespecial 60	java/lang/Long:<init>	(J)V
+    //   103: invokevirtual 64	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   106: checkcast 66	oicq/wlogin_sdk/request/WloginAllSigInfo
+    //   109: astore_3
+    //   110: aload_3
+    //   111: ifnonnull +20 -> 131
+    //   114: ldc 37
+    //   116: ldc 74
+    //   118: invokestatic 55	oicq/wlogin_sdk/tools/util:ni	(Ljava/lang/String;Ljava/lang/String;)V
+    //   121: ldc 35
+    //   123: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: aconst_null
+    //   127: astore_3
+    //   128: goto -79 -> 49
+    //   131: aload_0
+    //   132: getfield 26	oicq/wlogin_sdk/request/c:LVG	Ljava/util/TreeMap;
+    //   135: new 57	java/lang/Long
+    //   138: dup
+    //   139: lload_1
+    //   140: invokespecial 60	java/lang/Long:<init>	(J)V
+    //   143: aload_3
+    //   144: invokevirtual 78	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   147: pop
+    //   148: aload_3
+    //   149: invokevirtual 82	oicq/wlogin_sdk/request/WloginAllSigInfo:get_clone	()Loicq/wlogin_sdk/request/WloginAllSigInfo;
+    //   152: astore_3
+    //   153: ldc 35
+    //   155: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   158: goto -109 -> 49
+    //   161: astore_3
+    //   162: aload_0
+    //   163: monitorexit
+    //   164: aload_3
+    //   165: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	166	0	this	c
+    //   0	166	1	paramLong	long
+    //   39	114	3	localObject1	Object
+    //   161	4	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	40	161	finally
+    //   44	49	161	finally
+    //   53	65	161	finally
+    //   70	80	161	finally
+    //   84	89	161	finally
+    //   94	110	161	finally
+    //   114	126	161	finally
+    //   131	158	161	finally
   }
   
   /* Error */
@@ -26,103 +133,103 @@ public final class c
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: ldc 39
+    //   2: ldc 89
     //   4: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: new 41	oicq/wlogin_sdk/request/a
+    //   7: new 91	oicq/wlogin_sdk/request/a
     //   10: dup
     //   11: aload_0
     //   12: aload_1
-    //   13: invokespecial 44	oicq/wlogin_sdk/request/a:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   13: invokespecial 94	oicq/wlogin_sdk/request/a:<init>	(Landroid/content/Context;Ljava/lang/String;)V
     //   16: astore_0
     //   17: aload_0
-    //   18: invokevirtual 48	oicq/wlogin_sdk/request/a:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   18: invokevirtual 98	oicq/wlogin_sdk/request/a:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   21: astore 4
     //   23: aload 4
-    //   25: new 50	java/lang/StringBuilder
+    //   25: new 100	java/lang/StringBuilder
     //   28: dup
-    //   29: ldc 52
-    //   31: invokespecial 55	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   29: ldc 102
+    //   31: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   34: aload_1
-    //   35: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: ldc 61
-    //   40: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: ldc 111
+    //   40: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: aload_1
-    //   44: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: ldc 63
-    //   49: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: invokevirtual 72	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   44: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: ldc 113
+    //   49: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokevirtual 122	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
     //   58: aload 4
     //   60: aload_1
     //   61: iconst_1
-    //   62: anewarray 74	java/lang/String
+    //   62: anewarray 41	java/lang/String
     //   65: dup
     //   66: iconst_0
-    //   67: ldc 76
+    //   67: ldc 124
     //   69: aastore
-    //   70: ldc 78
+    //   70: ldc 126
     //   72: aconst_null
     //   73: aconst_null
     //   74: aconst_null
     //   75: aconst_null
-    //   76: invokevirtual 82	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   76: invokevirtual 130	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   79: astore_3
     //   80: aload_3
-    //   81: invokeinterface 88 1 0
+    //   81: invokeinterface 136 1 0
     //   86: ifne +55 -> 141
     //   89: aload 4
-    //   91: new 50	java/lang/StringBuilder
+    //   91: new 100	java/lang/StringBuilder
     //   94: dup
-    //   95: ldc 90
-    //   97: invokespecial 55	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   95: ldc 138
+    //   97: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   100: aload_1
-    //   101: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: ldc 92
-    //   106: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: ldc 140
+    //   106: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: aload_1
-    //   110: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: ldc 94
-    //   115: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   110: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: ldc 142
+    //   115: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   121: iconst_2
     //   122: anewarray 4	java/lang/Object
     //   125: dup
     //   126: iconst_0
     //   127: iconst_0
-    //   128: invokestatic 100	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   128: invokestatic 147	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   131: aastore
     //   132: dup
     //   133: iconst_1
     //   134: iconst_1
     //   135: newarray byte
     //   137: aastore
-    //   138: invokevirtual 103	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   138: invokevirtual 150	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   141: aload 4
-    //   143: new 50	java/lang/StringBuilder
+    //   143: new 100	java/lang/StringBuilder
     //   146: dup
-    //   147: ldc 105
-    //   149: invokespecial 55	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   147: ldc 152
+    //   149: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   152: aload_1
-    //   153: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: ldc 107
-    //   158: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: ldc 154
+    //   158: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   161: aload_1
-    //   162: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: ldc 109
-    //   167: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   162: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: ldc 156
+    //   167: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   173: iconst_1
     //   174: anewarray 4	java/lang/Object
     //   177: dup
     //   178: iconst_0
     //   179: aload_2
     //   180: aastore
-    //   181: invokevirtual 103	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   181: invokevirtual 150	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   184: aload_3
-    //   185: invokeinterface 112 1 0
+    //   185: invokeinterface 159 1 0
     //   190: aload_0
-    //   191: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   194: ldc 39
+    //   191: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   194: ldc 89
     //   196: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   199: iconst_0
     //   200: ireturn
@@ -130,52 +237,52 @@ public final class c
     //   202: aload_3
     //   203: astore_1
     //   204: aload_0
-    //   205: invokestatic 119	oicq/wlogin_sdk/tools/util:q	(Ljava/lang/Exception;)V
+    //   205: invokestatic 164	oicq/wlogin_sdk/tools/util:r	(Ljava/lang/Exception;)V
     //   208: aload_1
     //   209: ifnull +7 -> 216
     //   212: aload_1
-    //   213: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   216: ldc 39
+    //   213: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   216: ldc 89
     //   218: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   221: sipush -1022
     //   224: ireturn
     //   225: astore_1
     //   226: aload_1
-    //   227: invokestatic 119	oicq/wlogin_sdk/tools/util:q	(Ljava/lang/Exception;)V
+    //   227: invokestatic 164	oicq/wlogin_sdk/tools/util:r	(Ljava/lang/Exception;)V
     //   230: aload_0
-    //   231: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   234: ldc 39
+    //   231: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   234: ldc 89
     //   236: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   239: sipush -1022
     //   242: ireturn
     //   243: astore_1
     //   244: aload_1
-    //   245: invokestatic 119	oicq/wlogin_sdk/tools/util:q	(Ljava/lang/Exception;)V
+    //   245: invokestatic 164	oicq/wlogin_sdk/tools/util:r	(Ljava/lang/Exception;)V
     //   248: aload_0
-    //   249: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   252: ldc 39
+    //   249: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   252: ldc 89
     //   254: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   257: sipush -1022
     //   260: ireturn
     //   261: astore_1
     //   262: aload_1
-    //   263: invokestatic 119	oicq/wlogin_sdk/tools/util:q	(Ljava/lang/Exception;)V
+    //   263: invokestatic 164	oicq/wlogin_sdk/tools/util:r	(Ljava/lang/Exception;)V
     //   266: aload_3
-    //   267: invokeinterface 112 1 0
+    //   267: invokeinterface 159 1 0
     //   272: aload_0
-    //   273: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   276: ldc 39
+    //   273: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   276: ldc 89
     //   278: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   281: sipush -1022
     //   284: ireturn
     //   285: astore_1
     //   286: aload_1
-    //   287: invokestatic 119	oicq/wlogin_sdk/tools/util:q	(Ljava/lang/Exception;)V
+    //   287: invokestatic 164	oicq/wlogin_sdk/tools/util:r	(Ljava/lang/Exception;)V
     //   290: aload_3
-    //   291: invokeinterface 112 1 0
+    //   291: invokeinterface 159 1 0
     //   296: aload_0
-    //   297: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   300: ldc 39
+    //   297: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   300: ldc 89
     //   302: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   305: sipush -1022
     //   308: ireturn
@@ -223,74 +330,74 @@ public final class c
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 127
+    //   2: ldc 170
     //   4: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: new 129	javax/crypto/spec/SecretKeySpec
+    //   7: new 172	javax/crypto/spec/SecretKeySpec
     //   10: dup
-    //   11: getstatic 135	oicq/wlogin_sdk/request/i:Kiz	[B
-    //   14: ldc 137
-    //   16: invokespecial 140	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   11: getstatic 178	oicq/wlogin_sdk/request/i:LWi	[B
+    //   14: ldc 180
+    //   16: invokespecial 183	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   19: astore 5
-    //   21: ldc 137
-    //   23: invokestatic 146	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   21: ldc 180
+    //   23: invokestatic 189	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
     //   26: astore 4
     //   28: aload 4
     //   30: iconst_1
     //   31: aload 5
-    //   33: invokevirtual 150	javax/crypto/Cipher:init	(ILjava/security/Key;)V
-    //   36: new 152	java/io/ByteArrayOutputStream
+    //   33: invokevirtual 193	javax/crypto/Cipher:init	(ILjava/security/Key;)V
+    //   36: new 195	java/io/ByteArrayOutputStream
     //   39: dup
-    //   40: invokespecial 153	java/io/ByteArrayOutputStream:<init>	()V
+    //   40: invokespecial 196	java/io/ByteArrayOutputStream:<init>	()V
     //   43: astore 5
-    //   45: new 155	java/io/ObjectOutputStream
+    //   45: new 198	java/io/ObjectOutputStream
     //   48: dup
-    //   49: new 157	javax/crypto/CipherOutputStream
+    //   49: new 200	javax/crypto/CipherOutputStream
     //   52: dup
     //   53: aload 5
     //   55: aload 4
-    //   57: invokespecial 160	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
-    //   60: invokespecial 163	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   57: invokespecial 203	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
+    //   60: invokespecial 206	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   63: astore 4
     //   65: aload 4
     //   67: aload_1
-    //   68: invokevirtual 167	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   68: invokevirtual 210	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   71: aload 4
-    //   73: invokevirtual 168	java/io/ObjectOutputStream:close	()V
+    //   73: invokevirtual 211	java/io/ObjectOutputStream:close	()V
     //   76: aload_0
     //   77: getfield 28	oicq/wlogin_sdk/request/c:_context	Landroid/content/Context;
     //   80: aload_2
     //   81: aload 5
-    //   83: invokevirtual 172	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   86: invokestatic 174	oicq/wlogin_sdk/request/c:a	(Landroid/content/Context;Ljava/lang/String;[B)I
+    //   83: invokevirtual 215	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   86: invokestatic 217	oicq/wlogin_sdk/request/c:a	(Landroid/content/Context;Ljava/lang/String;[B)I
     //   89: istore_3
-    //   90: ldc 127
+    //   90: ldc 170
     //   92: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   95: aload_0
     //   96: monitorexit
     //   97: iload_3
     //   98: ireturn
     //   99: astore_1
-    //   100: new 176	java/io/StringWriter
+    //   100: new 219	java/io/StringWriter
     //   103: dup
-    //   104: invokespecial 177	java/io/StringWriter:<init>	()V
+    //   104: invokespecial 220	java/io/StringWriter:<init>	()V
     //   107: astore_2
-    //   108: new 179	java/io/PrintWriter
+    //   108: new 222	java/io/PrintWriter
     //   111: dup
     //   112: aload_2
     //   113: iconst_1
-    //   114: invokespecial 182	java/io/PrintWriter:<init>	(Ljava/io/Writer;Z)V
+    //   114: invokespecial 225	java/io/PrintWriter:<init>	(Ljava/io/Writer;Z)V
     //   117: astore 4
     //   119: aload_1
     //   120: aload 4
-    //   122: invokevirtual 186	java/lang/Exception:printStackTrace	(Ljava/io/PrintWriter;)V
+    //   122: invokevirtual 229	java/lang/Exception:printStackTrace	(Ljava/io/PrintWriter;)V
     //   125: aload 4
-    //   127: invokevirtual 189	java/io/PrintWriter:flush	()V
+    //   127: invokevirtual 232	java/io/PrintWriter:flush	()V
     //   130: aload_2
-    //   131: invokevirtual 190	java/io/StringWriter:flush	()V
-    //   134: ldc 192
+    //   131: invokevirtual 233	java/io/StringWriter:flush	()V
+    //   134: ldc 235
     //   136: aload_2
-    //   137: invokevirtual 193	java/io/StringWriter:toString	()Ljava/lang/String;
-    //   140: invokestatic 197	oicq/wlogin_sdk/tools/util:mJ	(Ljava/lang/String;Ljava/lang/String;)V
+    //   137: invokevirtual 236	java/io/StringWriter:toString	()Ljava/lang/String;
+    //   140: invokestatic 239	oicq/wlogin_sdk/tools/util:nj	(Ljava/lang/String;Ljava/lang/String;)V
     //   143: sipush -1022
     //   146: istore_3
     //   147: goto -57 -> 90
@@ -317,82 +424,82 @@ public final class c
   }
   
   /* Error */
-  private static TreeMap cA(Context paramContext, String paramString)
+  private static TreeMap cE(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: ldc 200
+    //   0: ldc 240
     //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: aload_1
-    //   7: invokestatic 204	oicq/wlogin_sdk/request/c:cB	(Landroid/content/Context;Ljava/lang/String;)[B
+    //   7: invokestatic 244	oicq/wlogin_sdk/request/c:cF	(Landroid/content/Context;Ljava/lang/String;)[B
     //   10: astore 4
     //   12: aload 4
-    //   14: ifnull +540 -> 554
-    //   17: new 129	javax/crypto/spec/SecretKeySpec
+    //   14: ifnull +541 -> 555
+    //   17: new 172	javax/crypto/spec/SecretKeySpec
     //   20: dup
-    //   21: getstatic 135	oicq/wlogin_sdk/request/i:Kiz	[B
-    //   24: ldc 137
-    //   26: invokespecial 140	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   21: getstatic 178	oicq/wlogin_sdk/request/i:LWi	[B
+    //   24: ldc 180
+    //   26: invokespecial 183	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   29: astore_1
-    //   30: ldc 137
-    //   32: invokestatic 146	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   30: ldc 180
+    //   32: invokestatic 189	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
     //   35: astore_2
     //   36: aload_2
     //   37: iconst_2
     //   38: aload_1
-    //   39: invokevirtual 150	javax/crypto/Cipher:init	(ILjava/security/Key;)V
-    //   42: new 206	java/io/ObjectInputStream
+    //   39: invokevirtual 193	javax/crypto/Cipher:init	(ILjava/security/Key;)V
+    //   42: new 246	java/io/ObjectInputStream
     //   45: dup
-    //   46: new 208	javax/crypto/CipherInputStream
+    //   46: new 248	javax/crypto/CipherInputStream
     //   49: dup
-    //   50: new 210	java/io/ByteArrayInputStream
+    //   50: new 250	java/io/ByteArrayInputStream
     //   53: dup
     //   54: aload 4
-    //   56: invokespecial 213	java/io/ByteArrayInputStream:<init>	([B)V
+    //   56: invokespecial 253	java/io/ByteArrayInputStream:<init>	([B)V
     //   59: aload_2
-    //   60: invokespecial 216	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
-    //   63: invokespecial 219	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   60: invokespecial 256	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
+    //   63: invokespecial 259	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   66: astore_2
     //   67: aload_2
-    //   68: invokevirtual 223	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   68: invokevirtual 263	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   71: checkcast 23	java/util/TreeMap
     //   74: astore_1
     //   75: aload_1
-    //   76: ifnull +473 -> 549
+    //   76: ifnull +474 -> 550
     //   79: aload_2
-    //   80: invokevirtual 224	java/io/ObjectInputStream:close	()V
-    //   83: ldc 200
+    //   80: invokevirtual 264	java/io/ObjectInputStream:close	()V
+    //   83: ldc 240
     //   85: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: aload_1
     //   89: areturn
     //   90: astore_2
     //   91: aconst_null
     //   92: astore_1
-    //   93: new 176	java/io/StringWriter
+    //   93: new 219	java/io/StringWriter
     //   96: dup
-    //   97: invokespecial 177	java/io/StringWriter:<init>	()V
+    //   97: invokespecial 220	java/io/StringWriter:<init>	()V
     //   100: astore_3
-    //   101: new 179	java/io/PrintWriter
+    //   101: new 222	java/io/PrintWriter
     //   104: dup
     //   105: aload_3
     //   106: iconst_1
-    //   107: invokespecial 182	java/io/PrintWriter:<init>	(Ljava/io/Writer;Z)V
+    //   107: invokespecial 225	java/io/PrintWriter:<init>	(Ljava/io/Writer;Z)V
     //   110: astore 5
     //   112: aload_2
     //   113: aload 5
-    //   115: invokevirtual 186	java/lang/Exception:printStackTrace	(Ljava/io/PrintWriter;)V
+    //   115: invokevirtual 229	java/lang/Exception:printStackTrace	(Ljava/io/PrintWriter;)V
     //   118: aload 5
-    //   120: invokevirtual 189	java/io/PrintWriter:flush	()V
+    //   120: invokevirtual 232	java/io/PrintWriter:flush	()V
     //   123: aload_3
-    //   124: invokevirtual 190	java/io/StringWriter:flush	()V
-    //   127: ldc 192
+    //   124: invokevirtual 233	java/io/StringWriter:flush	()V
+    //   127: ldc 235
     //   129: aload_3
-    //   130: invokevirtual 193	java/io/StringWriter:toString	()Ljava/lang/String;
-    //   133: invokestatic 197	oicq/wlogin_sdk/tools/util:mJ	(Ljava/lang/String;Ljava/lang/String;)V
+    //   130: invokevirtual 236	java/io/StringWriter:toString	()Ljava/lang/String;
+    //   133: invokestatic 239	oicq/wlogin_sdk/tools/util:nj	(Ljava/lang/String;Ljava/lang/String;)V
     //   136: aload_1
     //   137: astore_2
     //   138: aload_0
-    //   139: invokestatic 228	oicq/wlogin_sdk/tools/util:ln	(Landroid/content/Context;)[B
+    //   139: invokestatic 268	oicq/wlogin_sdk/tools/util:lC	(Landroid/content/Context;)[B
     //   142: astore_3
     //   143: aload_2
     //   144: astore_1
@@ -403,33 +510,33 @@ public final class c
     //   151: aload_3
     //   152: arraylength
     //   153: ifle +82 -> 235
-    //   156: new 129	javax/crypto/spec/SecretKeySpec
+    //   156: new 172	javax/crypto/spec/SecretKeySpec
     //   159: dup
     //   160: aload_3
-    //   161: ldc 137
-    //   163: invokespecial 140	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   161: ldc 180
+    //   163: invokespecial 183	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   166: astore_1
-    //   167: ldc 137
-    //   169: invokestatic 146	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   167: ldc 180
+    //   169: invokestatic 189	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
     //   172: astore_3
     //   173: aload_3
     //   174: iconst_2
     //   175: aload_1
-    //   176: invokevirtual 150	javax/crypto/Cipher:init	(ILjava/security/Key;)V
-    //   179: new 206	java/io/ObjectInputStream
+    //   176: invokevirtual 193	javax/crypto/Cipher:init	(ILjava/security/Key;)V
+    //   179: new 246	java/io/ObjectInputStream
     //   182: dup
-    //   183: new 208	javax/crypto/CipherInputStream
+    //   183: new 248	javax/crypto/CipherInputStream
     //   186: dup
-    //   187: new 210	java/io/ByteArrayInputStream
+    //   187: new 250	java/io/ByteArrayInputStream
     //   190: dup
     //   191: aload 4
-    //   193: invokespecial 213	java/io/ByteArrayInputStream:<init>	([B)V
+    //   193: invokespecial 253	java/io/ByteArrayInputStream:<init>	([B)V
     //   196: aload_3
-    //   197: invokespecial 216	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
-    //   200: invokespecial 219	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   197: invokespecial 256	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
+    //   200: invokespecial 259	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   203: astore 5
     //   205: aload 5
-    //   207: invokevirtual 223	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   207: invokevirtual 263	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   210: checkcast 23	java/util/TreeMap
     //   213: astore_3
     //   214: aload_3
@@ -437,8 +544,8 @@ public final class c
     //   216: aload_3
     //   217: ifnull +18 -> 235
     //   220: aload 5
-    //   222: invokevirtual 224	java/io/ObjectInputStream:close	()V
-    //   225: ldc 200
+    //   222: invokevirtual 264	java/io/ObjectInputStream:close	()V
+    //   225: ldc 240
     //   227: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   230: aload_3
     //   231: areturn
@@ -446,7 +553,7 @@ public final class c
     //   233: aload_2
     //   234: astore_1
     //   235: aload_0
-    //   236: invokestatic 231	oicq/wlogin_sdk/tools/util:lm	(Landroid/content/Context;)[B
+    //   236: invokestatic 271	oicq/wlogin_sdk/tools/util:lB	(Landroid/content/Context;)[B
     //   239: astore_3
     //   240: aload_1
     //   241: astore_2
@@ -457,34 +564,34 @@ public final class c
     //   248: aload_3
     //   249: arraylength
     //   250: ifle +82 -> 332
-    //   253: new 129	javax/crypto/spec/SecretKeySpec
+    //   253: new 172	javax/crypto/spec/SecretKeySpec
     //   256: dup
     //   257: aload_3
-    //   258: invokestatic 237	oicq/wlogin_sdk/tools/c:di	([B)[B
-    //   261: ldc 137
-    //   263: invokespecial 140	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   258: invokestatic 277	oicq/wlogin_sdk/tools/c:di	([B)[B
+    //   261: ldc 180
+    //   263: invokespecial 183	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   266: astore_2
-    //   267: ldc 137
-    //   269: invokestatic 146	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   267: ldc 180
+    //   269: invokestatic 189	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
     //   272: astore_3
     //   273: aload_3
     //   274: iconst_2
     //   275: aload_2
-    //   276: invokevirtual 150	javax/crypto/Cipher:init	(ILjava/security/Key;)V
-    //   279: new 206	java/io/ObjectInputStream
+    //   276: invokevirtual 193	javax/crypto/Cipher:init	(ILjava/security/Key;)V
+    //   279: new 246	java/io/ObjectInputStream
     //   282: dup
-    //   283: new 208	javax/crypto/CipherInputStream
+    //   283: new 248	javax/crypto/CipherInputStream
     //   286: dup
-    //   287: new 210	java/io/ByteArrayInputStream
+    //   287: new 250	java/io/ByteArrayInputStream
     //   290: dup
     //   291: aload 4
-    //   293: invokespecial 213	java/io/ByteArrayInputStream:<init>	([B)V
+    //   293: invokespecial 253	java/io/ByteArrayInputStream:<init>	([B)V
     //   296: aload_3
-    //   297: invokespecial 216	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
-    //   300: invokespecial 219	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   297: invokespecial 256	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
+    //   300: invokespecial 259	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   303: astore_3
     //   304: aload_3
-    //   305: invokevirtual 223	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   305: invokevirtual 263	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   308: checkcast 23	java/util/TreeMap
     //   311: astore_2
     //   312: aload_2
@@ -492,8 +599,8 @@ public final class c
     //   314: aload_2
     //   315: ifnull +15 -> 330
     //   318: aload_3
-    //   319: invokevirtual 224	java/io/ObjectInputStream:close	()V
-    //   322: ldc 200
+    //   319: invokevirtual 264	java/io/ObjectInputStream:close	()V
+    //   322: ldc 240
     //   324: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   327: aload_2
     //   328: areturn
@@ -501,7 +608,7 @@ public final class c
     //   330: aload_1
     //   331: astore_2
     //   332: aload_0
-    //   333: invokestatic 240	oicq/wlogin_sdk/tools/util:ll	(Landroid/content/Context;)[B
+    //   333: invokestatic 280	oicq/wlogin_sdk/tools/util:lA	(Landroid/content/Context;)[B
     //   336: astore_1
     //   337: aload_2
     //   338: astore_0
@@ -512,34 +619,34 @@ public final class c
     //   345: aload_1
     //   346: arraylength
     //   347: ifle +82 -> 429
-    //   350: new 129	javax/crypto/spec/SecretKeySpec
+    //   350: new 172	javax/crypto/spec/SecretKeySpec
     //   353: dup
     //   354: aload_1
-    //   355: invokestatic 237	oicq/wlogin_sdk/tools/c:di	([B)[B
-    //   358: ldc 137
-    //   360: invokespecial 140	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   355: invokestatic 277	oicq/wlogin_sdk/tools/c:di	([B)[B
+    //   358: ldc 180
+    //   360: invokespecial 183	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   363: astore_0
-    //   364: ldc 137
-    //   366: invokestatic 146	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   364: ldc 180
+    //   366: invokestatic 189	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
     //   369: astore_1
     //   370: aload_1
     //   371: iconst_2
     //   372: aload_0
-    //   373: invokevirtual 150	javax/crypto/Cipher:init	(ILjava/security/Key;)V
-    //   376: new 206	java/io/ObjectInputStream
+    //   373: invokevirtual 193	javax/crypto/Cipher:init	(ILjava/security/Key;)V
+    //   376: new 246	java/io/ObjectInputStream
     //   379: dup
-    //   380: new 208	javax/crypto/CipherInputStream
+    //   380: new 248	javax/crypto/CipherInputStream
     //   383: dup
-    //   384: new 210	java/io/ByteArrayInputStream
+    //   384: new 250	java/io/ByteArrayInputStream
     //   387: dup
     //   388: aload 4
-    //   390: invokespecial 213	java/io/ByteArrayInputStream:<init>	([B)V
+    //   390: invokespecial 253	java/io/ByteArrayInputStream:<init>	([B)V
     //   393: aload_1
-    //   394: invokespecial 216	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
-    //   397: invokespecial 219	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   394: invokespecial 256	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
+    //   397: invokespecial 259	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   400: astore_3
     //   401: aload_3
-    //   402: invokevirtual 223	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   402: invokevirtual 263	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   405: checkcast 23	java/util/TreeMap
     //   408: astore_1
     //   409: aload_1
@@ -547,99 +654,99 @@ public final class c
     //   411: aload_1
     //   412: ifnull +17 -> 429
     //   415: aload_3
-    //   416: invokevirtual 224	java/io/ObjectInputStream:close	()V
-    //   419: ldc 200
+    //   416: invokevirtual 264	java/io/ObjectInputStream:close	()V
+    //   419: ldc 240
     //   421: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   424: aload_1
     //   425: areturn
     //   426: astore_0
     //   427: aload_2
     //   428: astore_0
-    //   429: new 129	javax/crypto/spec/SecretKeySpec
+    //   429: new 172	javax/crypto/spec/SecretKeySpec
     //   432: dup
-    //   433: new 74	java/lang/String
+    //   433: new 41	java/lang/String
     //   436: dup
-    //   437: ldc 242
-    //   439: invokespecial 243	java/lang/String:<init>	(Ljava/lang/String;)V
-    //   442: invokevirtual 246	java/lang/String:getBytes	()[B
-    //   445: ldc 137
-    //   447: invokespecial 140	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
-    //   450: astore_1
-    //   451: ldc 137
-    //   453: invokestatic 146	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
-    //   456: astore_2
-    //   457: aload_2
-    //   458: iconst_2
-    //   459: aload_1
-    //   460: invokevirtual 150	javax/crypto/Cipher:init	(ILjava/security/Key;)V
-    //   463: new 206	java/io/ObjectInputStream
-    //   466: dup
-    //   467: new 208	javax/crypto/CipherInputStream
-    //   470: dup
-    //   471: new 210	java/io/ByteArrayInputStream
-    //   474: dup
-    //   475: aload 4
-    //   477: invokespecial 213	java/io/ByteArrayInputStream:<init>	([B)V
-    //   480: aload_2
-    //   481: invokespecial 216	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
-    //   484: invokespecial 219	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   487: astore_2
-    //   488: aload_2
-    //   489: invokevirtual 223	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   492: checkcast 23	java/util/TreeMap
-    //   495: astore_1
-    //   496: aload_1
-    //   497: astore_0
-    //   498: aload_1
-    //   499: ifnull +15 -> 514
-    //   502: aload_2
-    //   503: invokevirtual 224	java/io/ObjectInputStream:close	()V
-    //   506: ldc 200
-    //   508: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   511: aload_1
-    //   512: areturn
-    //   513: astore_1
-    //   514: ldc 200
-    //   516: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   519: aload_0
-    //   520: areturn
-    //   521: astore_0
-    //   522: aload_1
-    //   523: astore_0
-    //   524: goto -10 -> 514
-    //   527: astore_0
-    //   528: aload_1
-    //   529: astore_0
-    //   530: goto -101 -> 429
-    //   533: astore_1
-    //   534: aload_2
-    //   535: astore_1
-    //   536: goto -206 -> 330
-    //   539: astore_1
-    //   540: aload_3
-    //   541: astore_1
-    //   542: goto -307 -> 235
-    //   545: astore_2
-    //   546: goto -453 -> 93
-    //   549: aload_1
-    //   550: astore_2
-    //   551: goto -413 -> 138
-    //   554: aconst_null
-    //   555: astore_0
-    //   556: goto -42 -> 514
+    //   437: ldc_w 282
+    //   440: invokespecial 283	java/lang/String:<init>	(Ljava/lang/String;)V
+    //   443: invokevirtual 286	java/lang/String:getBytes	()[B
+    //   446: ldc 180
+    //   448: invokespecial 183	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   451: astore_1
+    //   452: ldc 180
+    //   454: invokestatic 189	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   457: astore_2
+    //   458: aload_2
+    //   459: iconst_2
+    //   460: aload_1
+    //   461: invokevirtual 193	javax/crypto/Cipher:init	(ILjava/security/Key;)V
+    //   464: new 246	java/io/ObjectInputStream
+    //   467: dup
+    //   468: new 248	javax/crypto/CipherInputStream
+    //   471: dup
+    //   472: new 250	java/io/ByteArrayInputStream
+    //   475: dup
+    //   476: aload 4
+    //   478: invokespecial 253	java/io/ByteArrayInputStream:<init>	([B)V
+    //   481: aload_2
+    //   482: invokespecial 256	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
+    //   485: invokespecial 259	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   488: astore_2
+    //   489: aload_2
+    //   490: invokevirtual 263	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   493: checkcast 23	java/util/TreeMap
+    //   496: astore_1
+    //   497: aload_1
+    //   498: astore_0
+    //   499: aload_1
+    //   500: ifnull +15 -> 515
+    //   503: aload_2
+    //   504: invokevirtual 264	java/io/ObjectInputStream:close	()V
+    //   507: ldc 240
+    //   509: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   512: aload_1
+    //   513: areturn
+    //   514: astore_1
+    //   515: ldc 240
+    //   517: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   520: aload_0
+    //   521: areturn
+    //   522: astore_0
+    //   523: aload_1
+    //   524: astore_0
+    //   525: goto -10 -> 515
+    //   528: astore_0
+    //   529: aload_1
+    //   530: astore_0
+    //   531: goto -102 -> 429
+    //   534: astore_1
+    //   535: aload_2
+    //   536: astore_1
+    //   537: goto -207 -> 330
+    //   540: astore_1
+    //   541: aload_3
+    //   542: astore_1
+    //   543: goto -308 -> 235
+    //   546: astore_2
+    //   547: goto -454 -> 93
+    //   550: aload_1
+    //   551: astore_2
+    //   552: goto -414 -> 138
+    //   555: aconst_null
+    //   556: astore_0
+    //   557: goto -42 -> 515
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	559	0	paramContext	Context
-    //   0	559	1	paramString	String
+    //   0	560	0	paramContext	Context
+    //   0	560	1	paramString	String
     //   35	45	2	localObject1	Object
     //   90	23	2	localException1	java.lang.Exception
     //   137	191	2	localObject2	Object
     //   329	1	2	localException2	java.lang.Exception
-    //   331	204	2	localObject3	Object
-    //   545	1	2	localException3	java.lang.Exception
-    //   550	1	2	str	String
-    //   100	441	3	localObject4	Object
-    //   10	466	4	arrayOfByte	byte[]
+    //   331	205	2	localObject3	Object
+    //   546	1	2	localException3	java.lang.Exception
+    //   551	1	2	str	String
+    //   100	442	3	localObject4	Object
+    //   10	467	4	arrayOfByte	byte[]
     //   110	111	5	localObject5	Object
     // Exception table:
     //   from	to	target	type
@@ -650,278 +757,241 @@ public final class c
     //   248	312	329	java/lang/Exception
     //   332	337	426	java/lang/Exception
     //   345	409	426	java/lang/Exception
-    //   429	496	513	java/lang/Exception
-    //   502	506	521	java/lang/Exception
-    //   415	419	527	java/lang/Exception
-    //   318	322	533	java/lang/Exception
-    //   220	225	539	java/lang/Exception
-    //   79	83	545	java/lang/Exception
+    //   429	497	514	java/lang/Exception
+    //   503	507	522	java/lang/Exception
+    //   415	419	528	java/lang/Exception
+    //   318	322	534	java/lang/Exception
+    //   220	225	540	java/lang/Exception
+    //   79	83	546	java/lang/Exception
   }
   
   /* Error */
-  private static byte[] cB(Context paramContext, String paramString)
+  private static byte[] cF(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: ldc 247
-    //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 253	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   8: astore 4
-    //   10: new 41	oicq/wlogin_sdk/request/a
-    //   13: dup
-    //   14: aload_0
-    //   15: aload_1
-    //   16: invokespecial 44	oicq/wlogin_sdk/request/a:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   19: astore_2
-    //   20: aload_2
-    //   21: invokevirtual 256	oicq/wlogin_sdk/request/a:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   24: astore 5
-    //   26: aload 5
-    //   28: new 50	java/lang/StringBuilder
-    //   31: dup
-    //   32: ldc_w 258
-    //   35: invokespecial 55	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   38: aload_1
-    //   39: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: ldc_w 260
-    //   45: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: aconst_null
-    //   52: invokevirtual 264	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   55: astore_3
-    //   56: aload 4
-    //   58: astore_0
-    //   59: aload_3
-    //   60: invokeinterface 268 1 0
-    //   65: ifeq +20 -> 85
-    //   68: aload 4
-    //   70: astore_0
-    //   71: aload_3
-    //   72: iconst_0
-    //   73: invokeinterface 272 2 0
-    //   78: ifle +7 -> 85
-    //   81: getstatic 275	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   84: astore_0
-    //   85: aload_3
-    //   86: ifnull +18 -> 104
-    //   89: aload_3
-    //   90: invokeinterface 278 1 0
-    //   95: ifne +9 -> 104
-    //   98: aload_3
-    //   99: invokeinterface 112 1 0
-    //   104: aload_0
-    //   105: invokevirtual 281	java/lang/Boolean:booleanValue	()Z
-    //   108: ifne +36 -> 144
-    //   111: aload_2
-    //   112: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   115: ldc 247
-    //   117: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   120: aconst_null
-    //   121: areturn
-    //   122: astore_0
-    //   123: aconst_null
-    //   124: astore_1
-    //   125: aload_0
-    //   126: invokestatic 119	oicq/wlogin_sdk/tools/util:q	(Ljava/lang/Exception;)V
-    //   129: aload_1
-    //   130: ifnull +7 -> 137
-    //   133: aload_1
-    //   134: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   137: ldc 247
-    //   139: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   142: aconst_null
-    //   143: areturn
-    //   144: aload 5
-    //   146: aload_1
-    //   147: iconst_1
-    //   148: anewarray 74	java/lang/String
-    //   151: dup
-    //   152: iconst_0
-    //   153: aload_1
-    //   154: aastore
-    //   155: ldc 78
-    //   157: aconst_null
-    //   158: aconst_null
-    //   159: aconst_null
+    //   0: ldc_w 287
+    //   3: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: getstatic 293	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   9: astore 4
+    //   11: new 91	oicq/wlogin_sdk/request/a
+    //   14: dup
+    //   15: aload_0
+    //   16: aload_1
+    //   17: invokespecial 94	oicq/wlogin_sdk/request/a:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   20: astore_2
+    //   21: aload_2
+    //   22: invokevirtual 296	oicq/wlogin_sdk/request/a:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   25: astore 5
+    //   27: aload 5
+    //   29: new 100	java/lang/StringBuilder
+    //   32: dup
+    //   33: ldc_w 298
+    //   36: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   39: aload_1
+    //   40: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: ldc_w 300
+    //   46: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: aconst_null
+    //   53: invokevirtual 304	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   56: astore_3
+    //   57: aload 4
+    //   59: astore_0
+    //   60: aload_3
+    //   61: invokeinterface 308 1 0
+    //   66: ifeq +20 -> 86
+    //   69: aload 4
+    //   71: astore_0
+    //   72: aload_3
+    //   73: iconst_0
+    //   74: invokeinterface 312 2 0
+    //   79: ifle +7 -> 86
+    //   82: getstatic 315	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   85: astore_0
+    //   86: aload_3
+    //   87: ifnull +18 -> 105
+    //   90: aload_3
+    //   91: invokeinterface 318 1 0
+    //   96: ifne +9 -> 105
+    //   99: aload_3
+    //   100: invokeinterface 159 1 0
+    //   105: aload_0
+    //   106: invokevirtual 321	java/lang/Boolean:booleanValue	()Z
+    //   109: ifne +38 -> 147
+    //   112: aload_2
+    //   113: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   116: ldc_w 287
+    //   119: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   122: aconst_null
+    //   123: areturn
+    //   124: astore_0
+    //   125: aconst_null
+    //   126: astore_1
+    //   127: aload_0
+    //   128: invokestatic 164	oicq/wlogin_sdk/tools/util:r	(Ljava/lang/Exception;)V
+    //   131: aload_1
+    //   132: ifnull +7 -> 139
+    //   135: aload_1
+    //   136: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   139: ldc_w 287
+    //   142: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: aconst_null
+    //   146: areturn
+    //   147: aload 5
+    //   149: aload_1
+    //   150: iconst_1
+    //   151: anewarray 41	java/lang/String
+    //   154: dup
+    //   155: iconst_0
+    //   156: aload_1
+    //   157: aastore
+    //   158: ldc 126
     //   160: aconst_null
-    //   161: invokevirtual 82	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   164: astore_0
-    //   165: aload_0
-    //   166: invokeinterface 88 1 0
-    //   171: ifne +57 -> 228
-    //   174: aload_0
-    //   175: invokeinterface 112 1 0
-    //   180: aload_2
-    //   181: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   184: ldc 247
-    //   186: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   189: aconst_null
-    //   190: areturn
-    //   191: astore_0
-    //   192: aconst_null
-    //   193: astore_1
-    //   194: aload_0
-    //   195: invokestatic 119	oicq/wlogin_sdk/tools/util:q	(Ljava/lang/Exception;)V
-    //   198: aload_1
-    //   199: ifnull +18 -> 217
+    //   161: aconst_null
+    //   162: aconst_null
+    //   163: aconst_null
+    //   164: invokevirtual 130	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   167: astore_0
+    //   168: aload_0
+    //   169: invokeinterface 136 1 0
+    //   174: ifne +59 -> 233
+    //   177: aload_0
+    //   178: invokeinterface 159 1 0
+    //   183: aload_2
+    //   184: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   187: ldc_w 287
+    //   190: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   193: aconst_null
+    //   194: areturn
+    //   195: astore_0
+    //   196: aconst_null
+    //   197: astore_1
+    //   198: aload_0
+    //   199: invokestatic 164	oicq/wlogin_sdk/tools/util:r	(Ljava/lang/Exception;)V
     //   202: aload_1
-    //   203: invokeinterface 278 1 0
-    //   208: ifne +9 -> 217
-    //   211: aload_1
-    //   212: invokeinterface 112 1 0
-    //   217: aload_2
-    //   218: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   221: ldc 247
-    //   223: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   226: aconst_null
-    //   227: areturn
-    //   228: aload_0
-    //   229: invokeinterface 284 1 0
-    //   234: pop
-    //   235: aload_0
-    //   236: iconst_0
-    //   237: invokeinterface 288 2 0
-    //   242: astore_1
-    //   243: aload_0
-    //   244: invokeinterface 112 1 0
-    //   249: aload_2
-    //   250: invokevirtual 113	oicq/wlogin_sdk/request/a:close	()V
-    //   253: ldc 247
-    //   255: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   258: aload_1
-    //   259: areturn
-    //   260: astore_0
-    //   261: aload_3
-    //   262: astore_1
-    //   263: goto -69 -> 194
+    //   203: ifnull +18 -> 221
+    //   206: aload_1
+    //   207: invokeinterface 318 1 0
+    //   212: ifne +9 -> 221
+    //   215: aload_1
+    //   216: invokeinterface 159 1 0
+    //   221: aload_2
+    //   222: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   225: ldc_w 287
+    //   228: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   231: aconst_null
+    //   232: areturn
+    //   233: aload_0
+    //   234: invokeinterface 324 1 0
+    //   239: pop
+    //   240: aload_0
+    //   241: iconst_0
+    //   242: invokeinterface 328 2 0
+    //   247: astore_1
+    //   248: aload_0
+    //   249: invokeinterface 159 1 0
+    //   254: aload_2
+    //   255: invokevirtual 160	oicq/wlogin_sdk/request/a:close	()V
+    //   258: ldc_w 287
+    //   261: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   264: aload_1
+    //   265: areturn
     //   266: astore_0
-    //   267: aload_2
+    //   267: aload_3
     //   268: astore_1
-    //   269: goto -144 -> 125
+    //   269: goto -71 -> 198
+    //   272: astore_0
+    //   273: aload_2
+    //   274: astore_1
+    //   275: goto -148 -> 127
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	272	0	paramContext	Context
-    //   0	272	1	paramString	String
-    //   19	249	2	locala	a
-    //   55	207	3	localCursor	android.database.Cursor
-    //   8	61	4	localBoolean	java.lang.Boolean
-    //   24	121	5	localSQLiteDatabase	android.database.sqlite.SQLiteDatabase
+    //   0	278	0	paramContext	Context
+    //   0	278	1	paramString	String
+    //   20	254	2	locala	a
+    //   56	212	3	localCursor	android.database.Cursor
+    //   9	61	4	localBoolean	java.lang.Boolean
+    //   25	123	5	localSQLiteDatabase	android.database.sqlite.SQLiteDatabase
     // Exception table:
     //   from	to	target	type
-    //   10	20	122	java/lang/Exception
-    //   26	56	191	android/database/SQLException
-    //   59	68	260	android/database/SQLException
-    //   71	85	260	android/database/SQLException
-    //   89	104	260	android/database/SQLException
-    //   104	115	260	android/database/SQLException
-    //   144	165	260	android/database/SQLException
-    //   20	26	266	java/lang/Exception
+    //   11	21	124	java/lang/Exception
+    //   27	57	195	android/database/SQLException
+    //   60	69	266	android/database/SQLException
+    //   72	86	266	android/database/SQLException
+    //   90	105	266	android/database/SQLException
+    //   105	116	266	android/database/SQLException
+    //   147	168	266	android/database/SQLException
+    //   21	27	272	java/lang/Exception
   }
   
   /* Error */
-  private WloginAllSigInfo xS(long paramLong)
+  public final WloginSigInfo CG(long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 291
+    //   2: ldc_w 331
     //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: ldc_w 293
-    //   11: ldc_w 295
-    //   14: lload_1
-    //   15: invokestatic 298	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   18: invokevirtual 302	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   21: invokestatic 305	oicq/wlogin_sdk/tools/util:mI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   24: aload_0
-    //   25: getfield 26	oicq/wlogin_sdk/request/c:KhX	Ljava/util/TreeMap;
-    //   28: new 307	java/lang/Long
-    //   31: dup
-    //   32: lload_1
-    //   33: invokespecial 310	java/lang/Long:<init>	(J)V
-    //   36: invokevirtual 314	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   39: checkcast 316	oicq/wlogin_sdk/request/WloginAllSigInfo
-    //   42: astore_3
-    //   43: aload_3
-    //   44: ifnull +13 -> 57
-    //   47: ldc_w 291
-    //   50: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: aload_3
-    //   56: areturn
-    //   57: aload_0
-    //   58: getfield 28	oicq/wlogin_sdk/request/c:_context	Landroid/content/Context;
-    //   61: ifnonnull +14 -> 75
-    //   64: ldc_w 291
-    //   67: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   70: aconst_null
-    //   71: astore_3
-    //   72: goto -19 -> 53
-    //   75: aload_0
-    //   76: getfield 28	oicq/wlogin_sdk/request/c:_context	Landroid/content/Context;
-    //   79: ldc 123
-    //   81: invokestatic 318	oicq/wlogin_sdk/request/c:cA	(Landroid/content/Context;Ljava/lang/String;)Ljava/util/TreeMap;
-    //   84: astore_3
-    //   85: aload_3
-    //   86: ifnonnull +14 -> 100
-    //   89: ldc_w 291
-    //   92: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   95: aconst_null
-    //   96: astore_3
-    //   97: goto -44 -> 53
-    //   100: aload_3
-    //   101: new 307	java/lang/Long
-    //   104: dup
-    //   105: lload_1
-    //   106: invokespecial 310	java/lang/Long:<init>	(J)V
-    //   109: invokevirtual 314	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   112: checkcast 316	oicq/wlogin_sdk/request/WloginAllSigInfo
-    //   115: astore_3
-    //   116: aload_3
-    //   117: ifnonnull +23 -> 140
-    //   120: ldc_w 293
-    //   123: ldc_w 320
-    //   126: invokestatic 305	oicq/wlogin_sdk/tools/util:mI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   129: ldc_w 291
-    //   132: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   135: aconst_null
-    //   136: astore_3
-    //   137: goto -84 -> 53
-    //   140: aload_0
-    //   141: getfield 26	oicq/wlogin_sdk/request/c:KhX	Ljava/util/TreeMap;
-    //   144: new 307	java/lang/Long
-    //   147: dup
-    //   148: lload_1
-    //   149: invokespecial 310	java/lang/Long:<init>	(J)V
-    //   152: aload_3
-    //   153: invokevirtual 324	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   156: pop
-    //   157: aload_3
-    //   158: invokevirtual 328	oicq/wlogin_sdk/request/WloginAllSigInfo:get_clone	()Loicq/wlogin_sdk/request/WloginAllSigInfo;
-    //   161: astore_3
-    //   162: ldc_w 291
-    //   165: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   168: goto -115 -> 53
-    //   171: astore_3
-    //   172: aload_0
-    //   173: monitorexit
-    //   174: aload_3
-    //   175: athrow
+    //   8: ldc_w 333
+    //   11: new 100	java/lang/StringBuilder
+    //   14: dup
+    //   15: ldc 39
+    //   17: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   20: lload_1
+    //   21: invokevirtual 336	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   24: ldc_w 338
+    //   27: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokestatic 55	oicq/wlogin_sdk/tools/util:ni	(Ljava/lang/String;Ljava/lang/String;)V
+    //   36: aload_0
+    //   37: lload_1
+    //   38: invokespecial 340	oicq/wlogin_sdk/request/c:CF	(J)Loicq/wlogin_sdk/request/WloginAllSigInfo;
+    //   41: astore_3
+    //   42: aload_3
+    //   43: ifnonnull +15 -> 58
+    //   46: ldc_w 331
+    //   49: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   52: aconst_null
+    //   53: astore_3
+    //   54: aload_0
+    //   55: monitorexit
+    //   56: aload_3
+    //   57: areturn
+    //   58: aload_3
+    //   59: getfield 343	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
+    //   62: ldc2_w 344
+    //   65: invokestatic 348	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   68: invokevirtual 64	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   71: checkcast 350	oicq/wlogin_sdk/sharemem/WloginSigInfo
+    //   74: astore_3
+    //   75: aload_3
+    //   76: ifnonnull +14 -> 90
+    //   79: ldc_w 331
+    //   82: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: aconst_null
+    //   86: astore_3
+    //   87: goto -33 -> 54
+    //   90: ldc_w 331
+    //   93: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   96: goto -42 -> 54
+    //   99: astore_3
+    //   100: aload_0
+    //   101: monitorexit
+    //   102: aload_3
+    //   103: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	176	0	this	c
-    //   0	176	1	paramLong	long
-    //   42	120	3	localObject1	Object
-    //   171	4	3	localObject2	Object
+    //   0	104	0	this	c
+    //   0	104	1	paramLong	long
+    //   41	46	3	localObject1	Object
+    //   99	4	3	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   2	43	171	finally
-    //   47	53	171	finally
-    //   57	70	171	finally
-    //   75	85	171	finally
-    //   89	95	171	finally
-    //   100	116	171	finally
-    //   120	135	171	finally
-    //   140	168	171	finally
+    //   2	42	99	finally
+    //   46	52	99	finally
+    //   58	75	99	finally
+    //   79	85	99	finally
+    //   90	96	99	finally
   }
   
   public final int a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, byte[] paramArrayOfByte11, byte[] paramArrayOfByte12, byte[] paramArrayOfByte13, byte[] paramArrayOfByte14, byte[] paramArrayOfByte15, byte[] paramArrayOfByte16, byte[][] paramArrayOfByte)
@@ -932,7 +1002,7 @@ public final class c
       try
       {
         AppMethodBeat.i(88055);
-        WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)this.KhX.get(new Long(paramLong1));
+        WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)this.LVG.get(new Long(paramLong1));
         if (localWloginAllSigInfo != null) {
           break label339;
         }
@@ -943,18 +1013,18 @@ public final class c
           localObject = (byte[])((WloginSigInfo)localObject)._en_A1.clone();
           localWloginAllSigInfo._useInfo = new WloginSimpleInfo(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
           int i = localWloginAllSigInfo.put_siginfo(paramLong2, paramLong3, paramLong4, paramLong5, paramLong6, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte13, paramArrayOfByte14, paramArrayOfByte15, paramArrayOfByte16, paramArrayOfByte);
-          util.aRk("before put_siginfo, ret=".concat(String.valueOf(i)));
+          util.aXk("before put_siginfo, ret=".concat(String.valueOf(i)));
           if (this._context != null)
           {
-            paramArrayOfByte2 = cA(this._context, "tk_file");
+            paramArrayOfByte2 = cE(this._context, "tk_file");
             paramArrayOfByte1 = paramArrayOfByte2;
             if (paramArrayOfByte2 == null) {
               paramArrayOfByte1 = new TreeMap();
             }
-            util.aRk("after loadTKTreeMap");
+            util.aXk("after loadTKTreeMap");
             paramArrayOfByte1.put(new Long(paramLong1), localWloginAllSigInfo.get_clone());
             i = a(paramArrayOfByte1, "tk_file");
-            util.aRk("after refreshTKTreeMap, ret=".concat(String.valueOf(i)));
+            util.aXk("after refreshTKTreeMap, ret=".concat(String.valueOf(i)));
           }
           if (i != 0)
           {
@@ -963,7 +1033,7 @@ public final class c
               paramArrayOfByte1._en_A1 = ((byte[])((byte[])localObject).clone());
             }
           }
-          this.KhX.put(new Long(paramLong1), localWloginAllSigInfo);
+          this.LVG.put(new Long(paramLong1), localWloginAllSigInfo);
           AppMethodBeat.o(88055);
           return i;
         }
@@ -974,43 +1044,43 @@ public final class c
   }
   
   /* Error */
-  public final void g(Long paramLong)
+  public final void h(Long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 373
+    //   2: ldc_w 390
     //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 26	oicq/wlogin_sdk/request/c:KhX	Ljava/util/TreeMap;
+    //   9: getfield 26	oicq/wlogin_sdk/request/c:LVG	Ljava/util/TreeMap;
     //   12: aload_1
-    //   13: invokevirtual 376	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   13: invokevirtual 393	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   16: pop
     //   17: aload_0
     //   18: getfield 28	oicq/wlogin_sdk/request/c:_context	Landroid/content/Context;
     //   21: ifnull +40 -> 61
     //   24: aload_0
     //   25: getfield 28	oicq/wlogin_sdk/request/c:_context	Landroid/content/Context;
-    //   28: ldc 123
-    //   30: invokestatic 318	oicq/wlogin_sdk/request/c:cA	(Landroid/content/Context;Ljava/lang/String;)Ljava/util/TreeMap;
+    //   28: ldc 68
+    //   30: invokestatic 72	oicq/wlogin_sdk/request/c:cE	(Landroid/content/Context;Ljava/lang/String;)Ljava/util/TreeMap;
     //   33: astore_2
     //   34: aload_2
     //   35: ifnonnull +12 -> 47
-    //   38: ldc_w 373
+    //   38: ldc_w 390
     //   41: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: aload_0
     //   45: monitorexit
     //   46: return
     //   47: aload_2
     //   48: aload_1
-    //   49: invokevirtual 376	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   49: invokevirtual 393	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   52: pop
     //   53: aload_0
     //   54: aload_2
-    //   55: ldc 123
-    //   57: invokespecial 368	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
+    //   55: ldc 68
+    //   57: invokespecial 385	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
     //   60: pop
-    //   61: ldc_w 373
+    //   61: ldc_w 390
     //   64: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   67: goto -23 -> 44
     //   70: astore_1
@@ -1029,76 +1099,6 @@ public final class c
     //   38	44	70	finally
     //   47	61	70	finally
     //   61	67	70	finally
-  }
-  
-  /* Error */
-  public final WloginSigInfo xT(long paramLong)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 379
-    //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: ldc_w 381
-    //   11: new 50	java/lang/StringBuilder
-    //   14: dup
-    //   15: ldc_w 295
-    //   18: invokespecial 55	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   21: lload_1
-    //   22: invokevirtual 384	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   25: ldc_w 386
-    //   28: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   34: invokestatic 305	oicq/wlogin_sdk/tools/util:mI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   37: aload_0
-    //   38: lload_1
-    //   39: invokespecial 388	oicq/wlogin_sdk/request/c:xS	(J)Loicq/wlogin_sdk/request/WloginAllSigInfo;
-    //   42: astore_3
-    //   43: aload_3
-    //   44: ifnonnull +15 -> 59
-    //   47: ldc_w 379
-    //   50: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   53: aconst_null
-    //   54: astore_3
-    //   55: aload_0
-    //   56: monitorexit
-    //   57: aload_3
-    //   58: areturn
-    //   59: aload_3
-    //   60: getfield 334	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
-    //   63: ldc2_w 389
-    //   66: invokestatic 393	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   69: invokevirtual 314	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   72: checkcast 336	oicq/wlogin_sdk/sharemem/WloginSigInfo
-    //   75: astore_3
-    //   76: aload_3
-    //   77: ifnonnull +14 -> 91
-    //   80: ldc_w 379
-    //   83: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   86: aconst_null
-    //   87: astore_3
-    //   88: goto -33 -> 55
-    //   91: ldc_w 379
-    //   94: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   97: goto -42 -> 55
-    //   100: astore_3
-    //   101: aload_0
-    //   102: monitorexit
-    //   103: aload_3
-    //   104: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	105	0	this	c
-    //   0	105	1	paramLong	long
-    //   42	46	3	localObject1	Object
-    //   100	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	43	100	finally
-    //   47	53	100	finally
-    //   59	76	100	finally
-    //   80	86	100	finally
-    //   91	97	100	finally
   }
 }
 

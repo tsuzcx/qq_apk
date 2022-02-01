@@ -19,11 +19,11 @@ public final class f
     try
     {
       localf.groupId = paramString;
-      localf.zkT = paramInt1;
-      localf.zkU = paramLong;
-      localf.bvJ = paramInt2;
+      localf.ADE = paramInt1;
+      localf.ADF = paramLong;
+      localf.reason = paramInt2;
       this.mNetType = 2;
-      this.IjW = c.fpJ().aOs(paramString);
+      this.JLH = c.fIe().aUe(paramString);
       c(143, localf);
       AppMethodBeat.o(62536);
       return;
@@ -37,7 +37,7 @@ public final class f
     }
   }
   
-  public final Object cC(byte[] paramArrayOfByte)
+  public final Object cB(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62537);
     if (paramArrayOfByte != null) {}
@@ -59,7 +59,7 @@ public final class f
     }
   }
   
-  public final String flk()
+  public final String fBB()
   {
     return "CsCmd.Cmd_V_CSExitVoiceRoomReq";
   }

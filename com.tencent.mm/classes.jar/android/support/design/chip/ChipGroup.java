@@ -19,14 +19,14 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 public class ChipGroup
   extends FlowLayout
 {
-  private boolean gA;
-  private b gB;
-  private final a gC = new a((byte)0);
-  private c gD = new c((byte)0);
-  private int gE = -1;
-  private boolean gF = false;
-  private int gy;
-  private int gz;
+  private b hA;
+  private final a hB = new a((byte)0);
+  private c hC = new c((byte)0);
+  private int hD = -1;
+  private boolean hE = false;
+  private int hx;
+  private int hy;
+  private boolean hz;
   
   public ChipGroup(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,10 +44,10 @@ public class ChipGroup
     setSingleSelection(paramContext.getBoolean(5, false));
     paramInt = paramContext.getResourceId(0, -1);
     if (paramInt != -1) {
-      this.gE = paramInt;
+      this.hD = paramInt;
     }
     paramContext.recycle();
-    super.setOnHierarchyChangeListener(this.gD);
+    super.setOnHierarchyChangeListener(this.hC);
   }
   
   private void c(int paramInt, boolean paramBoolean)
@@ -55,15 +55,15 @@ public class ChipGroup
     View localView = findViewById(paramInt);
     if ((localView instanceof Chip))
     {
-      this.gF = true;
+      this.hE = true;
       ((Chip)localView).setChecked(paramBoolean);
-      this.gF = false;
+      this.hE = false;
     }
   }
   
   private void setCheckedId(int paramInt)
   {
-    this.gE = paramInt;
+    this.hD = paramInt;
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
@@ -73,8 +73,8 @@ public class ChipGroup
       Chip localChip = (Chip)paramView;
       if (localChip.isChecked())
       {
-        if ((this.gE != -1) && (this.gA)) {
-          c(this.gE, false);
+        if ((this.hD != -1) && (this.hz)) {
+          c(this.hD, false);
         }
         setCheckedId(localChip.getId());
       }
@@ -104,29 +104,29 @@ public class ChipGroup
   
   public int getCheckedChipId()
   {
-    if (this.gA) {
-      return this.gE;
+    if (this.hz) {
+      return this.hD;
     }
     return -1;
   }
   
   public int getChipSpacingHorizontal()
   {
-    return this.gy;
+    return this.hx;
   }
   
   public int getChipSpacingVertical()
   {
-    return this.gz;
+    return this.hy;
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    if (this.gE != -1)
+    if (this.hD != -1)
     {
-      c(this.gE, true);
-      setCheckedId(this.gE);
+      c(this.hD, true);
+      setCheckedId(this.hD);
     }
   }
   
@@ -138,9 +138,9 @@ public class ChipGroup
   
   public void setChipSpacingHorizontal(int paramInt)
   {
-    if (this.gy != paramInt)
+    if (this.hx != paramInt)
     {
-      this.gy = paramInt;
+      this.hx = paramInt;
       setItemSpacing(paramInt);
       requestLayout();
     }
@@ -158,9 +158,9 @@ public class ChipGroup
   
   public void setChipSpacingVertical(int paramInt)
   {
-    if (this.gz != paramInt)
+    if (this.hy != paramInt)
     {
-      this.gz = paramInt;
+      this.hy = paramInt;
       setLineSpacing(paramInt);
       requestLayout();
     }
@@ -191,12 +191,12 @@ public class ChipGroup
   
   public void setOnCheckedChangeListener(b paramb)
   {
-    this.gB = paramb;
+    this.hA = paramb;
   }
   
   public void setOnHierarchyChangeListener(ViewGroup.OnHierarchyChangeListener paramOnHierarchyChangeListener)
   {
-    c.a(this.gD, paramOnHierarchyChangeListener);
+    c.a(this.hC, paramOnHierarchyChangeListener);
   }
   
   @Deprecated
@@ -223,10 +223,10 @@ public class ChipGroup
   
   public void setSingleSelection(boolean paramBoolean)
   {
-    if (this.gA != paramBoolean)
+    if (this.hz != paramBoolean)
     {
-      this.gA = paramBoolean;
-      this.gF = true;
+      this.hz = paramBoolean;
+      this.hE = true;
       int i = 0;
       while (i < getChildCount())
       {
@@ -236,7 +236,7 @@ public class ChipGroup
         }
         i += 1;
       }
-      this.gF = false;
+      this.hE = false;
       setCheckedId(-1);
     }
   }
@@ -291,7 +291,7 @@ public class ChipGroup
   final class c
     implements ViewGroup.OnHierarchyChangeListener
   {
-    private ViewGroup.OnHierarchyChangeListener gH;
+    private ViewGroup.OnHierarchyChangeListener hG;
     
     private c() {}
     
@@ -309,8 +309,8 @@ public class ChipGroup
       {
         paramView2.setId(i);
         ((Chip)paramView2).setOnCheckedChangeListenerInternal(ChipGroup.d(ChipGroup.this));
-        if (this.gH != null) {
-          this.gH.onChildViewAdded(paramView1, paramView2);
+        if (this.hG != null) {
+          this.hG.onChildViewAdded(paramView1, paramView2);
         }
         return;
       }
@@ -321,15 +321,15 @@ public class ChipGroup
       if ((paramView1 == ChipGroup.this) && ((paramView2 instanceof Chip))) {
         ((Chip)paramView2).setOnCheckedChangeListenerInternal(null);
       }
-      if (this.gH != null) {
-        this.gH.onChildViewRemoved(paramView1, paramView2);
+      if (this.hG != null) {
+        this.hG.onChildViewRemoved(paramView1, paramView2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.chip.ChipGroup
  * JD-Core Version:    0.7.0.1
  */

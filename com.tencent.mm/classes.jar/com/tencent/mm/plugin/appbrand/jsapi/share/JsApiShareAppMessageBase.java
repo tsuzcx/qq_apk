@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.appbrand.jsapi.share;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import android.util.Log;
 import com.tencent.luggage.h.e;
 import com.tencent.luggage.h.e.b;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.br.d;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.model.y.b;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.ab.g;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandWeishiParams;
+import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.menu.p;
@@ -29,8 +29,10 @@ import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.page.ae;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cyn;
+import com.tencent.mm.protocal.protobuf.cyp;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.util.ArrayList;
@@ -45,33 +47,33 @@ import org.json.JSONObject;
 public abstract class JsApiShareAppMessageBase<Param extends d>
   extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.service.c>
 {
-  final int kjK = com.tencent.luggage.sdk.g.a.aD(this);
+  final int kLb = com.tencent.luggage.sdk.g.a.aA(this);
   
   protected Param a(com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject)
   {
-    ad.i("MicroMsg.JsApiShareAppMessageBase", "invoke share app message directly.");
-    d locald = bbS();
+    ac.i("MicroMsg.JsApiShareAppMessageBase", "invoke share app message directly.");
+    d locald = biN();
     if (paramJSONObject == null)
     {
-      ad.i("MicroMsg.JsApiShareAppMessageBase", "data is null");
+      ac.i("MicroMsg.JsApiShareAppMessageBase", "data is null");
       throw new c("data is null");
     }
-    locald.djj = paramc.au(Activity.class);
-    if (locald.djj == null)
+    locald.dgE = paramc.au(Activity.class);
+    if (locald.dgE == null)
     {
-      ad.i("MicroMsg.JsApiShareAppMessageBase", "share app message fail, context is null");
+      ac.i("MicroMsg.JsApiShareAppMessageBase", "share app message fail, context is null");
       throw new c("fail:internal error invalid android context");
     }
-    locald.kjS = ((ae)paramc.at(ae.class));
-    if (locald.kjS == null)
+    locald.kLj = ((ae)paramc.at(ae.class));
+    if (locald.kLj == null)
     {
-      ad.i("MicroMsg.JsApiShareAppMessageBase", "share app message fail, pageView is null");
+      ac.i("MicroMsg.JsApiShareAppMessageBase", "share app message fail, pageView is null");
       throw new c("current page do not exist");
     }
-    p localp = locald.kjS.ts(com.tencent.mm.plugin.appbrand.menu.q.kSb.ordinal());
+    p localp = locald.kLj.uj(com.tencent.mm.plugin.appbrand.menu.q.ltB.ordinal());
     if (localp == null)
     {
-      ad.i("MicroMsg.JsApiShareAppMessageBase", "share app message fail, menuInfo is null.");
+      ac.i("MicroMsg.JsApiShareAppMessageBase", "share app message fail, menuInfo is null.");
       throw new c("menu is null");
     }
     Object localObject1 = paramJSONObject.optString("type");
@@ -79,18 +81,18 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
       localObject1 = "weishi";
     }
     Object localObject2 = localObject1;
-    if (bt.isNullOrNil((String)localObject1)) {
+    if (bs.isNullOrNil((String)localObject1)) {
       localObject2 = "normal";
     }
-    ad.i("MicroMsg.JsApiShareAppMessageBase", "hy: share type is %s", new Object[] { localObject2 });
+    ac.i("MicroMsg.JsApiShareAppMessageBase", "hy: share type is %s", new Object[] { localObject2 });
     if ("video".equalsIgnoreCase((String)localObject2))
     {
       localObject1 = new h();
-      locald.kjV = ((b)localObject1);
-      locald.kjT = paramc.getRuntime().aNb();
-      locald.withShareTicket = localp.jBF.getBoolean("enable_share_with_share_ticket", false);
-      locald.kkc = localp.jBF.getBoolean("is_todo_message", false);
-      locald.gFz = localp.jBF.getString("share_todo_activity_id", "");
+      locald.kLm = ((b)localObject1);
+      locald.kLk = paramc.getRuntime().aTR();
+      locald.withShareTicket = localp.kcb.getBoolean("enable_share_with_share_ticket", false);
+      locald.kLt = localp.kcb.getBoolean("is_todo_message", false);
+      locald.hga = localp.kcb.getString("share_todo_activity_id", "");
       if (!locald.withShareTicket) {
         break label526;
       }
@@ -101,19 +103,19 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
       locald.type = i;
       locald.title = paramJSONObject.optString("title");
       locald.desc = paramJSONObject.optString("desc", "");
-      locald.dbu = paramJSONObject.optString("path");
-      locald.gFC = paramJSONObject.optString("imageUrl");
+      locald.cYQ = paramJSONObject.optString("path");
+      locald.hgd = paramJSONObject.optString("imageUrl");
       locald.cacheKey = paramJSONObject.optString("cacheKey");
-      locald.kjU = paramJSONObject.optBoolean("disableForward", false);
-      ad.i("MicroMsg.JsApiShareAppMessageBase", "disableForward:%b", new Object[] { Boolean.valueOf(locald.kjU) });
-      locald.dzY = paramJSONObject.optString("messageExtraData");
+      locald.kLl = paramJSONObject.optBoolean("disableForward", false);
+      ac.i("MicroMsg.JsApiShareAppMessageBase", "disableForward:%b", new Object[] { Boolean.valueOf(locald.kLl) });
+      locald.dxK = paramJSONObject.optString("messageExtraData");
       locald.subType = paramJSONObject.optInt("cardSubType", 0);
-      locald.kjZ = paramJSONObject.optBoolean("useDefaultSnapshot", true);
-      localObject1 = paramc.getRuntime().aNc();
+      locald.kLq = paramJSONObject.optBoolean("useDefaultSnapshot", true);
+      localObject1 = paramc.getRuntime().aTS();
       if (localObject1 != null) {
         break label531;
       }
-      ad.e("MicroMsg.JsApiShareAppMessageBase", "hy: no init config");
+      ac.e("MicroMsg.JsApiShareAppMessageBase", "hy: no init config");
       throw new c("no init config");
       if ("h5".equalsIgnoreCase((String)localObject2))
       {
@@ -129,38 +131,38 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
       break;
     }
     label531:
-    locald.kjW = localp.jBF.tE("enable_share_dynamic");
-    locald.kjX = localp.jBF.tE("enable_share_with_updateable_msg");
-    locald.gIj = localp.jBF.getString("enable_share_with_updateable_msg_template_id", "");
+    locald.kLn = localp.kcb.xK("enable_share_dynamic");
+    locald.kLo = localp.kcb.xK("enable_share_with_updateable_msg");
+    locald.hiK = localp.kcb.getString("enable_share_with_updateable_msg_template_id", "");
     locald.appId = paramc.getAppId();
     locald.userName = ((AppBrandInitConfigWC)localObject1).username;
-    locald.dkC = locald.kjT.jdS.iOQ;
-    locald.pkgVersion = locald.kjT.jdS.pkgVersion;
-    locald.kjY = paramc.getRuntime().aNc().cfd;
-    locald.jfU = u.Du(paramc.getAppId());
-    locald.jOD = r.IX(locald.gFC);
-    locald.dpa = r.a(locald.kjS, locald.gFC, locald.kjZ);
-    ad.i("MicroMsg.JsApiShareAppMessageBase", "imgPath[%s] imageUrl[%s] default[%s]", new Object[] { locald.dpa, locald.gFC, Boolean.valueOf(locald.kjZ) });
-    locald.kkd = new HashMap();
-    locald.kkd.put("desc", locald.desc);
-    locald.kkd.put("type", Integer.valueOf(locald.type));
-    locald.kkd.put("title", locald.title);
-    locald.kkd.put("app_id", locald.appId);
-    locald.kkd.put("pkg_type", Integer.valueOf(locald.dkC));
-    locald.kkd.put("pkg_version", Integer.valueOf(locald.pkgVersion));
-    locald.kkd.put("img_url", locald.gFC);
-    locald.kkd.put("is_dynamic", Boolean.valueOf(locald.kjW));
-    locald.kkd.put("cache_key", locald.cacheKey);
-    locald.kkd.put("path", locald.dbu);
-    locald.kkd.put("disableForward", Boolean.valueOf(locald.kjU));
-    locald.kkd.put("subType", Integer.valueOf(locald.subType));
-    if (!bt.isNullOrNil(locald.dpa)) {
-      locald.kkd.put("delay_load_img_path", locald.dpa);
+    locald.dib = locald.kLk.jEg.jpa;
+    locald.pkgVersion = locald.kLk.jEg.pkgVersion;
+    locald.kLp = paramc.getRuntime().aTS().cca;
+    locald.jGj = u.Hx(paramc.getAppId());
+    locald.kpe = r.Nb(locald.hgd);
+    locald.dmK = r.a(locald.kLj, locald.hgd, locald.kLq);
+    ac.i("MicroMsg.JsApiShareAppMessageBase", "imgPath[%s] imageUrl[%s] default[%s]", new Object[] { locald.dmK, locald.hgd, Boolean.valueOf(locald.kLq) });
+    locald.kLu = new HashMap();
+    locald.kLu.put("desc", locald.desc);
+    locald.kLu.put("type", Integer.valueOf(locald.type));
+    locald.kLu.put("title", locald.title);
+    locald.kLu.put("app_id", locald.appId);
+    locald.kLu.put("pkg_type", Integer.valueOf(locald.dib));
+    locald.kLu.put("pkg_version", Integer.valueOf(locald.pkgVersion));
+    locald.kLu.put("img_url", locald.hgd);
+    locald.kLu.put("is_dynamic", Boolean.valueOf(locald.kLn));
+    locald.kLu.put("cache_key", locald.cacheKey);
+    locald.kLu.put("path", locald.cYQ);
+    locald.kLu.put("disableForward", Boolean.valueOf(locald.kLl));
+    locald.kLu.put("subType", Integer.valueOf(locald.subType));
+    if (!bs.isNullOrNil(locald.dmK)) {
+      locald.kLu.put("delay_load_img_path", locald.dmK);
     }
-    locald.kka = paramJSONObject.optString("openId");
-    locald.kkb = paramJSONObject.optString("chatroomUsername");
-    locald.kjV.a(locald, paramc, paramJSONObject);
-    ad.i("MicroMsg.JsApiShareAppMessageBase", "hy: params: %s", new Object[] { locald.toString() });
+    locald.kLr = paramJSONObject.optString("openId");
+    locald.kLs = paramJSONObject.optString("chatroomUsername");
+    locald.kLm.a(locald, paramc, paramJSONObject);
+    ac.i("MicroMsg.JsApiShareAppMessageBase", "hy: params: %s", new Object[] { locald.toString() });
     return locald;
   }
   
@@ -172,15 +174,15 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
       paramString = new JSONArray();
       try
       {
-        if (!bt.gL(paramSendAppMessageTask.kkQ))
+        if (!bs.gY(paramSendAppMessageTask.kMi))
         {
-          paramSendAppMessageTask = paramSendAppMessageTask.kkQ.iterator();
+          paramSendAppMessageTask = paramSendAppMessageTask.kMi.iterator();
           while (paramSendAppMessageTask.hasNext())
           {
             ShareInfo localShareInfo = (ShareInfo)paramSendAppMessageTask.next();
             JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("shareKey", localShareInfo.cfh);
-            localJSONObject.put("shareName", localShareInfo.cff);
+            localJSONObject.put("shareKey", localShareInfo.ccd);
+            localJSONObject.put("shareName", localShareInfo.ccc);
             paramString.put(localJSONObject);
           }
         }
@@ -188,7 +190,7 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
       }
       catch (JSONException paramSendAppMessageTask)
       {
-        ad.e("MicroMsg.JsApiShareAppMessageBase", Log.getStackTraceString(paramSendAppMessageTask));
+        ac.e("MicroMsg.JsApiShareAppMessageBase", Log.getStackTraceString(paramSendAppMessageTask));
         paramParam.put("shareInfos", paramString);
         return paramParam;
       }
@@ -204,9 +206,9 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
       paramIntent.putExtra("mutil_select_is_ret", bool);
       paramIntent.putExtra("select_is_ret", true);
       paramIntent.putExtra("scene_from", 3);
-      paramIntent.putExtra("appbrand_params", paramParam.kkd);
+      paramIntent.putExtra("appbrand_params", paramParam.kLu);
       paramIntent.putExtra("Retr_Msg_Type", 2);
-      paramParam.kjV.a(paramParam, paramIntent);
+      paramParam.kLm.a(paramParam, paramIntent);
       return;
     }
   }
@@ -217,40 +219,40 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
   
   protected void a(SendAppMessageTask paramSendAppMessageTask, String paramString1, String paramString2, boolean paramBoolean, com.tencent.mm.plugin.appbrand.service.c paramc, Param paramParam)
   {
-    paramSendAppMessageTask.kkB = paramString2;
+    paramSendAppMessageTask.kLS = paramString2;
     paramSendAppMessageTask.toUser = paramString1;
     paramSendAppMessageTask.appId = paramParam.appId;
     paramString1 = paramc.getRuntime();
     int i;
-    if ((paramString1 != null) && (paramString1.Eg() != null) && ((paramString1.Eg() instanceof AppBrandInitConfigWC)))
+    if ((paramString1 != null) && (paramString1.DJ() != null) && ((paramString1.DJ() instanceof AppBrandInitConfigWC)))
     {
-      paramSendAppMessageTask.aAS = ((AppBrandInitConfigWC)paramString1.Eg()).aAS;
+      paramSendAppMessageTask.aBM = ((AppBrandInitConfigWC)paramString1.DJ()).aBM;
       paramSendAppMessageTask.userName = paramParam.userName;
       paramSendAppMessageTask.title = paramParam.title;
       paramSendAppMessageTask.description = paramParam.desc;
-      paramSendAppMessageTask.url = paramParam.jfU;
-      paramSendAppMessageTask.path = paramParam.dbu;
+      paramSendAppMessageTask.url = paramParam.jGj;
+      paramSendAppMessageTask.path = paramParam.cYQ;
       paramSendAppMessageTask.type = paramParam.type;
-      paramSendAppMessageTask.jOD = paramParam.jOD;
-      paramSendAppMessageTask.kkC = paramParam.gFC;
-      paramSendAppMessageTask.iconUrl = paramParam.kjT.hGe;
-      paramSendAppMessageTask.dkC = paramParam.kjT.jdS.iOQ;
-      paramSendAppMessageTask.jfT = paramParam.kjT.jdS.md5;
-      paramSendAppMessageTask.version = paramParam.kjT.jdS.pkgVersion;
-      paramSendAppMessageTask.nickname = paramParam.kjT.dfM;
-      paramSendAppMessageTask.dzY = paramParam.dzY;
-      paramSendAppMessageTask.cfU = paramParam.kjT.cfU;
+      paramSendAppMessageTask.kpe = paramParam.kpe;
+      paramSendAppMessageTask.kLT = paramParam.hgd;
+      paramSendAppMessageTask.iconUrl = paramParam.kLk.igG;
+      paramSendAppMessageTask.dib = paramParam.kLk.jEg.jpa;
+      paramSendAppMessageTask.jGi = paramParam.kLk.jEg.md5;
+      paramSendAppMessageTask.version = paramParam.kLk.jEg.pkgVersion;
+      paramSendAppMessageTask.nickname = paramParam.kLk.ddh;
+      paramSendAppMessageTask.dxK = paramParam.dxK;
+      paramSendAppMessageTask.ccR = paramParam.kLk.ccR;
       paramSendAppMessageTask.subType = paramParam.subType;
-      if (!paramParam.kjU) {
+      if (!paramParam.kLl) {
         break label500;
       }
       i = 1;
       label242:
-      paramSendAppMessageTask.jwB = i;
-      paramSendAppMessageTask.shareCount = n.Dp(paramParam.appId).iFM.getAndIncrement();
-      paramSendAppMessageTask.kkH = paramParam.kjS.jzm;
-      paramSendAppMessageTask.kkI = paramParam.kjS.aWO();
-      paramString1 = paramParam.kjS.getRuntime().DZ().cfo;
+      paramSendAppMessageTask.jWX = i;
+      paramSendAppMessageTask.kLX = n.Hs(paramParam.appId).jfO.getAndIncrement();
+      paramSendAppMessageTask.kLZ = paramParam.kLj.jZJ;
+      paramSendAppMessageTask.kMa = paramParam.kLj.bdM();
+      paramString1 = paramParam.kLj.getRuntime().DC().ccl;
       if (paramString1 != null)
       {
         if (paramString1.scene != 0) {
@@ -259,17 +261,17 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
         i = 1000;
         label321:
         paramSendAppMessageTask.scene = i;
-        paramSendAppMessageTask.dbt = bt.nullAsNil(paramString1.dbt);
-        paramSendAppMessageTask.kkG = bt.nullAsNil(paramParam.kjS.getRuntime().aNc().Da());
+        paramSendAppMessageTask.cYP = bs.nullAsNil(paramString1.cYP);
+        paramSendAppMessageTask.kLY = bs.nullAsNil(paramParam.kLj.getRuntime().aTS().CD());
       }
-      paramSendAppMessageTask.kkD = r.IY(paramParam.dpa);
+      paramSendAppMessageTask.kLU = r.Nc(paramParam.dmK);
       paramSendAppMessageTask.withShareTicket = paramParam.withShareTicket;
-      paramSendAppMessageTask.kjW = paramParam.kjW;
-      paramSendAppMessageTask.kjX = paramParam.kjX;
-      paramSendAppMessageTask.gIj = paramParam.gIj;
+      paramSendAppMessageTask.kLn = paramParam.kLn;
+      paramSendAppMessageTask.kLo = paramParam.kLo;
+      paramSendAppMessageTask.hiK = paramParam.hiK;
       paramSendAppMessageTask.cacheKey = paramParam.cacheKey;
-      paramSendAppMessageTask.cIB = paramParam.kjY;
-      paramString1 = paramParam.kjS.bkd();
+      paramSendAppMessageTask.cFI = paramParam.kLp;
+      paramString1 = paramParam.kLj.bqU();
       if (paramString1 != null) {
         break label515;
       }
@@ -277,14 +279,14 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     label515:
     for (paramString1 = "";; paramString1 = paramString1.getWebView().getUrl())
     {
-      paramSendAppMessageTask.kkK = paramString1;
-      paramParam.kjV.a(paramSendAppMessageTask, paramc);
-      paramSendAppMessageTask.kkc = paramParam.kkc;
-      paramSendAppMessageTask.gFz = paramParam.gFz;
-      paramSendAppMessageTask.gFM = paramBoolean;
+      paramSendAppMessageTask.kMc = paramString1;
+      paramParam.kLm.a(paramSendAppMessageTask, paramc);
+      paramSendAppMessageTask.kLt = paramParam.kLt;
+      paramSendAppMessageTask.hga = paramParam.hga;
+      paramSendAppMessageTask.hgn = paramBoolean;
       return;
-      ad.w("MicroMsg.JsApiShareAppMessageBase", "hy: can not retrieve init config");
-      paramSendAppMessageTask.aAS = -1;
+      ac.w("MicroMsg.JsApiShareAppMessageBase", "hy: can not retrieve init config");
+      paramSendAppMessageTask.aBM = -1;
       break;
       label500:
       i = 0;
@@ -304,9 +306,9 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
         int j = 0;
         int i = 0;
         AppMethodBeat.i(174891);
-        if (paramAnonymousInt1 != JsApiShareAppMessageBase.this.kjK)
+        if (paramAnonymousInt1 != JsApiShareAppMessageBase.this.kLb)
         {
-          ad.i("MicroMsg.JsApiShareAppMessageBase", "requestCode(%d) not corrected.", new Object[] { Integer.valueOf(paramAnonymousInt1) });
+          ac.i("MicroMsg.JsApiShareAppMessageBase", "requestCode(%d) not corrected.", new Object[] { Integer.valueOf(paramAnonymousInt1) });
           AppMethodBeat.o(174891);
           return;
         }
@@ -331,16 +333,16 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
           if (paramAnonymousInt2 == -1) {
             break label207;
           }
-          ad.i("MicroMsg.JsApiShareAppMessageBase", "resultCode is not RESULT_OK(%d)", new Object[] { Integer.valueOf(paramAnonymousInt2) });
+          ac.i("MicroMsg.JsApiShareAppMessageBase", "resultCode is not RESULT_OK(%d)", new Object[] { Integer.valueOf(paramAnonymousInt2) });
           JsApiShareAppMessageBase.this.a(paramParam, paramAnonymousInt2);
           paramc.h(paramInt, JsApiShareAppMessageBase.this.e("cancel", null));
           paramAnonymousIntent = paramParam.userName;
-          str2 = paramParam.kjT.dfM;
+          str2 = paramParam.kLk.ddh;
           paramAnonymousInt2 = i;
           if (bool) {
             paramAnonymousInt2 = 1;
           }
-          JsApiShareAppMessageBase.b(str1, paramAnonymousIntent, str2, paramAnonymousInt2, paramAnonymousInt1, 1);
+          JsApiShareAppMessageBase.c(str1, paramAnonymousIntent, str2, paramAnonymousInt2, paramAnonymousInt1, 1);
           AppMethodBeat.o(174891);
           return;
           str1 = paramAnonymousIntent.getStringExtra("Select_Conv_User");
@@ -351,21 +353,21 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
         label207:
         if ((str1 == null) || (str1.length() == 0))
         {
-          ad.e("MicroMsg.JsApiShareAppMessageBase", "mmOnActivityResult fail, toUser is null");
+          ac.e("MicroMsg.JsApiShareAppMessageBase", "mmOnActivityResult fail, toUser is null");
           JsApiShareAppMessageBase.this.a(paramParam);
           paramc.h(paramInt, JsApiShareAppMessageBase.this.e("fail:selected user is nil", null));
           AppMethodBeat.o(174891);
           return;
         }
-        ad.i("MicroMsg.JsApiShareAppMessageBase", "result success toUser : %s ", new Object[] { str1 });
+        ac.i("MicroMsg.JsApiShareAppMessageBase", "result success toUser : %s ", new Object[] { str1 });
         paramAnonymousIntent = paramAnonymousIntent.getStringExtra("custom_send_text");
         String str2 = paramParam.userName;
-        String str3 = paramParam.kjT.dfM;
+        String str3 = paramParam.kLk.ddh;
         paramAnonymousInt2 = j;
         if (bool) {
           paramAnonymousInt2 = 1;
         }
-        JsApiShareAppMessageBase.b(str1, str2, str3, paramAnonymousInt2, paramAnonymousInt1, 2);
+        JsApiShareAppMessageBase.c(str1, str2, str3, paramAnonymousInt2, paramAnonymousInt1, 2);
         JsApiShareAppMessageBase.this.a(str1, paramAnonymousIntent, bool, paramc, paramInt, paramParam);
         AppMethodBeat.o(174891);
       }
@@ -374,33 +376,33 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
       public final void run()
       {
         AppMethodBeat.i(174893);
-        e.az(paramParam.djj).b(new e.b()
+        e.aA(paramParam.dgE).b(new e.b()
         {
           public final boolean b(int paramAnonymous2Int1, int paramAnonymous2Int2, Intent paramAnonymous2Intent)
           {
             AppMethodBeat.i(174892);
-            if (JsApiShareAppMessageBase.this.kjK != paramAnonymous2Int1)
+            if (JsApiShareAppMessageBase.this.kLb != paramAnonymous2Int1)
             {
               AppMethodBeat.o(174892);
               return false;
             }
-            JsApiShareAppMessageBase.3.this.kfQ.c(paramAnonymous2Int1, paramAnonymous2Int2, paramAnonymous2Intent);
+            JsApiShareAppMessageBase.3.this.kGG.c(paramAnonymous2Int1, paramAnonymous2Int2, paramAnonymous2Intent);
             AppMethodBeat.o(174892);
             return true;
           }
         });
-        Activity localActivity = paramParam.djj;
+        Activity localActivity = paramParam.dgE;
         if (paramBoolean) {}
         for (String str = ".ui.transmit.SelectConversationDirectSelectUI";; str = ".ui.transmit.SelectConversationUI")
         {
-          d.c(localActivity, str, paramIntent, JsApiShareAppMessageBase.this.kjK);
+          d.c(localActivity, str, paramIntent, JsApiShareAppMessageBase.this.kLb);
           AppMethodBeat.o(174893);
           return;
         }
       }
     };
-    if (paramParam.kjV.c(paramParam)) {
-      ad.d("MicroMsg.JsApiShareAppMessageBase", "hy: should delay navigate");
+    if (paramParam.kLm.c(paramParam)) {
+      ac.d("MicroMsg.JsApiShareAppMessageBase", "hy: should delay navigate");
     }
     for (long l = 200L;; l = 0L)
     {
@@ -415,25 +417,25 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     a(localSendAppMessageTask, paramString1, paramString2, paramBoolean, paramc, paramParam);
     if (paramParam.withShareTicket)
     {
-      localSendAppMessageTask.jwt = new Runnable()
+      localSendAppMessageTask.jWP = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(174894);
-          ad.i("MicroMsg.JsApiShareAppMessageBase", "task callback");
-          localSendAppMessageTask.aXn();
+          ac.i("MicroMsg.JsApiShareAppMessageBase", "task callback");
+          localSendAppMessageTask.bek();
           paramc.h(paramInt, JsApiShareAppMessageBase.this.k("ok", JsApiShareAppMessageBase.this.a(paramParam, localSendAppMessageTask, paramString1)));
           JsApiShareAppMessageBase.this.a(true, paramParam, paramString1);
           AppMethodBeat.o(174894);
         }
       };
-      localSendAppMessageTask.aXm();
+      localSendAppMessageTask.bej();
       AppBrandMainProcessService.a(localSendAppMessageTask);
     }
     for (;;)
     {
-      if (paramParam.djj != null) {
-        com.tencent.mm.ui.base.h.cf(paramParam.djj, paramParam.djj.getResources().getString(2131755317));
+      if (paramParam.dgE != null) {
+        com.tencent.mm.ui.base.h.cg(paramParam.dgE, paramParam.dgE.getResources().getString(2131755317));
       }
       return;
       AppBrandMainProcessService.a(localSendAppMessageTask);
@@ -444,71 +446,13 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
   
   protected void a(boolean paramBoolean, Param paramParam, String paramString) {}
   
-  protected abstract Param bbS();
-  
-  static class ShareDialogTodoReportData
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<ShareDialogTodoReportData> CREATOR;
-    public String gIw;
-    public String kke;
-    public int kkf;
-    public int kkg;
-    public int kkh;
-    public String username;
-    
-    static
-    {
-      AppMethodBeat.i(184723);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(184723);
-    }
-    
-    protected ShareDialogTodoReportData(Parcel paramParcel)
-    {
-      AppMethodBeat.i(184722);
-      this.kke = paramParcel.readString();
-      this.username = paramParcel.readString();
-      this.gIw = paramParcel.readString();
-      this.kkf = paramParcel.readInt();
-      this.kkg = paramParcel.readInt();
-      this.kkh = paramParcel.readInt();
-      AppMethodBeat.o(184722);
-    }
-    
-    public ShareDialogTodoReportData(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
-    {
-      this.kke = paramString1;
-      this.username = paramString2;
-      this.gIw = paramString3;
-      this.kkf = paramInt1;
-      this.kkg = paramInt2;
-      this.kkh = paramInt3;
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(184721);
-      paramParcel.writeString(this.kke);
-      paramParcel.writeString(this.username);
-      paramParcel.writeString(this.gIw);
-      paramParcel.writeInt(this.kkf);
-      paramParcel.writeInt(this.kkg);
-      paramParcel.writeInt(this.kkh);
-      AppMethodBeat.o(184721);
-    }
-  }
+  protected abstract Param biN();
   
   protected static final class a
   {
     int errCode = 0;
     String errMsg = "";
-    Map<String, String> kjQ = null;
+    Map<String, String> kLh = null;
     
     a(String paramString)
     {
@@ -518,7 +462,7 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     private a(String paramString, byte paramByte)
     {
       this.errMsg = paramString;
-      this.kjQ = null;
+      this.kLh = null;
     }
   }
   
@@ -538,7 +482,7 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
   protected static final class c
     extends IllegalArgumentException
   {
-    JsApiShareAppMessageBase.a kjR;
+    JsApiShareAppMessageBase.a kLi;
     
     c(String paramString)
     {
@@ -549,30 +493,30 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
   protected static class d
   {
     String appId;
+    String cYQ;
     String cacheKey;
-    String dbu;
     String desc;
-    Activity djj = null;
-    int dkC;
-    String dpa;
-    String dzY;
-    String gFC;
-    public String gFz = "";
-    String gIj;
-    boolean jOD;
-    String jfU;
-    ae kjS = null;
-    AppBrandSysConfigWC kjT = null;
-    boolean kjU;
-    JsApiShareAppMessageBase.b kjV;
-    boolean kjW;
-    boolean kjX;
-    int kjY;
-    boolean kjZ = false;
-    String kka = "";
-    String kkb = "";
-    public boolean kkc;
-    HashMap<String, Object> kkd;
+    Activity dgE = null;
+    int dib;
+    String dmK;
+    String dxK;
+    public String hga = "";
+    String hgd;
+    String hiK;
+    String jGj;
+    ae kLj = null;
+    AppBrandSysConfigWC kLk = null;
+    boolean kLl;
+    JsApiShareAppMessageBase.b kLm;
+    boolean kLn;
+    boolean kLo;
+    int kLp;
+    boolean kLq = false;
+    String kLr = "";
+    String kLs = "";
+    public boolean kLt;
+    HashMap<String, Object> kLu;
+    boolean kpe;
     int pkgVersion;
     int subType = 0;
     String title;
@@ -583,29 +527,25 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     public String toString()
     {
       AppMethodBeat.i(174895);
-      String str = "Params{context=" + this.djj + ", pageView=" + this.kjS + ", config=" + this.kjT + ", withShareTicket=" + this.withShareTicket + ", type=" + this.type + ", subType=" + this.subType + ", title='" + this.title + '\'' + ", desc='" + this.desc + '\'' + ", pagePath='" + this.dbu + '\'' + ", imageUrl='" + this.gFC + '\'' + ", cacheKey='" + this.cacheKey + '\'' + ", disableForward=" + this.kjU + ", messageExtraData='" + this.dzY + '\'' + ", mShareExtImp=" + this.kjV + ", isDynamicMsg=" + this.kjW + ", isUpdateMsg=" + this.kjX + ", templateId='" + this.gIj + '\'' + ", appId='" + this.appId + '\'' + ", userName='" + this.userName + '\'' + ", pkgType=" + this.dkC + ", pkgVersion=" + this.pkgVersion + ", finalAppServiceTypeReport=" + this.kjY + ", errorUrl='" + this.jfU + '\'' + ", needDelThumb=" + this.jOD + ", imgPath='" + this.dpa + '\'' + ", useDefaultSnapshot=" + this.kjZ + ", msgParams=" + this.kkd + ", todoActivityId=" + this.gFz + ", isToDoMessage=" + this.kkc + '}';
+      String str = "Params{context=" + this.dgE + ", pageView=" + this.kLj + ", config=" + this.kLk + ", withShareTicket=" + this.withShareTicket + ", type=" + this.type + ", subType=" + this.subType + ", title='" + this.title + '\'' + ", desc='" + this.desc + '\'' + ", pagePath='" + this.cYQ + '\'' + ", imageUrl='" + this.hgd + '\'' + ", cacheKey='" + this.cacheKey + '\'' + ", disableForward=" + this.kLl + ", messageExtraData='" + this.dxK + '\'' + ", mShareExtImp=" + this.kLm + ", isDynamicMsg=" + this.kLn + ", isUpdateMsg=" + this.kLo + ", templateId='" + this.hiK + '\'' + ", appId='" + this.appId + '\'' + ", userName='" + this.userName + '\'' + ", pkgType=" + this.dib + ", pkgVersion=" + this.pkgVersion + ", finalAppServiceTypeReport=" + this.kLp + ", errorUrl='" + this.jGj + '\'' + ", needDelThumb=" + this.kpe + ", imgPath='" + this.dmK + '\'' + ", useDefaultSnapshot=" + this.kLq + ", msgParams=" + this.kLu + ", todoActivityId=" + this.hga + ", isToDoMessage=" + this.kLt + '}';
       AppMethodBeat.o(174895);
       return str;
     }
   }
   
-  static class e
-    implements com.tencent.mm.ipcinvoker.k<JsApiShareAppMessageBase.ShareDialogTodoReportData, IPCVoid>
-  {}
-  
   protected static final class f
     implements JsApiShareAppMessageBase.b
   {
-    String kki;
+    String kLz;
     
     public final <ShareParams extends JsApiShareAppMessageBase.d> void a(ShareParams paramShareParams, Intent paramIntent)
     {
       AppMethodBeat.i(174897);
       HashMap localHashMap = new HashMap(4);
-      localHashMap.put("img_url", paramShareParams.gFC);
+      localHashMap.put("img_url", paramShareParams.hgd);
       localHashMap.put("title", paramShareParams.title);
       localHashMap.put("desc", paramShareParams.desc);
-      localHashMap.put("url", this.kki);
+      localHashMap.put("url", this.kLz);
       paramIntent.putExtra("webview_params", localHashMap);
       AppMethodBeat.o(174897);
     }
@@ -613,22 +553,22 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     public final <ShareParams extends JsApiShareAppMessageBase.d> void a(ShareParams paramShareParams, com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(174896);
-      this.kki = paramJSONObject.optString("link");
-      if (bt.isNullOrNil(this.kki))
+      this.kLz = paramJSONObject.optString("link");
+      if (bs.isNullOrNil(this.kLz))
       {
-        ad.w("MicroMsg.JsApiShareAppMessageBase", "hy: is h5 share type but no link!");
+        ac.w("MicroMsg.JsApiShareAppMessageBase", "hy: is h5 share type but no link!");
         paramShareParams = new JsApiShareAppMessageBase.c("is h5 share type but no h5 link");
         AppMethodBeat.o(174896);
         throw paramShareParams;
       }
-      paramShareParams.kkd.put("is_h5", Boolean.TRUE);
+      paramShareParams.kLu.put("is_h5", Boolean.TRUE);
       AppMethodBeat.o(174896);
     }
     
     public final <ShareParams extends JsApiShareAppMessageBase.d> void a(SendAppMessageTask paramSendAppMessageTask, com.tencent.mm.plugin.appbrand.service.c paramc)
     {
-      paramSendAppMessageTask.kkF = 5;
-      paramSendAppMessageTask.url = this.kki;
+      paramSendAppMessageTask.kLW = 5;
+      paramSendAppMessageTask.url = this.kLz;
     }
     
     public final <ShareParams extends JsApiShareAppMessageBase.d> void b(ShareParams paramShareParams) {}
@@ -636,7 +576,7 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     public final <ShareParams extends JsApiShareAppMessageBase.d> boolean c(ShareParams paramShareParams)
     {
       AppMethodBeat.i(174898);
-      boolean bool = bt.nullAsNil(paramShareParams.dpa).startsWith("delayLoadFile://");
+      boolean bool = bs.nullAsNil(paramShareParams.dmK).startsWith("delayLoadFile://");
       AppMethodBeat.o(174898);
       return bool;
     }
@@ -644,7 +584,7 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     public final String toString()
     {
       AppMethodBeat.i(174899);
-      String str = "ShareTypeH5{h5Link='" + this.kki + '\'' + '}';
+      String str = "ShareTypeH5{h5Link='" + this.kLz + '\'' + '}';
       AppMethodBeat.o(174899);
       return str;
     }
@@ -664,7 +604,7 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     public final <ShareParams extends JsApiShareAppMessageBase.d> boolean c(ShareParams paramShareParams)
     {
       AppMethodBeat.i(174900);
-      boolean bool = bt.nullAsNil(paramShareParams.dpa).startsWith("delayLoadFile://");
+      boolean bool = bs.nullAsNil(paramShareParams.dmK).startsWith("delayLoadFile://");
       AppMethodBeat.o(174900);
       return bool;
     }
@@ -678,11 +618,11 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
   protected static final class h
     implements JsApiShareAppMessageBase.b
   {
-    String dyw;
-    String gFL;
-    String kkj;
-    String kkk;
-    String kkl;
+    String dwi;
+    String hgm;
+    String kLA;
+    String kLB;
+    String kLC;
     String videoPath;
     
     public final <ShareParams extends JsApiShareAppMessageBase.d> void a(ShareParams paramShareParams, Intent paramIntent) {}
@@ -692,37 +632,37 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
       AppMethodBeat.i(174901);
       this.videoPath = paramJSONObject.optString("videoPath");
       paramc = paramJSONObject.optString("videoThumbPath");
-      this.dyw = paramJSONObject.optString("videoMD5");
-      this.kkj = paramJSONObject.optString("videoButtonText");
-      this.gFL = paramJSONObject.optString("playDesc");
-      this.kkk = r.a(paramShareParams.kjS, this.videoPath, paramShareParams.kjZ);
-      this.kkl = r.a(paramShareParams.kjS, paramc, paramShareParams.kjZ);
-      if ((bt.isNullOrNil(this.kkk)) || (bt.isNullOrNil(this.kkl)) || (bt.isNullOrNil(this.dyw)))
+      this.dwi = paramJSONObject.optString("videoMD5");
+      this.kLA = paramJSONObject.optString("videoButtonText");
+      this.hgm = paramJSONObject.optString("playDesc");
+      this.kLB = r.a(paramShareParams.kLj, this.videoPath, paramShareParams.kLq);
+      this.kLC = r.a(paramShareParams.kLj, paramc, paramShareParams.kLq);
+      if ((bs.isNullOrNil(this.kLB)) || (bs.isNullOrNil(this.kLC)) || (bs.isNullOrNil(this.dwi)))
       {
-        ad.w("MicroMsg.JsApiShareAppMessageBase", "hy: try share video but video path or video thumbpath or md5 is null nil");
+        ac.w("MicroMsg.JsApiShareAppMessageBase", "hy: try share video but video path or video thumbpath or md5 is null nil");
         paramShareParams = new JsApiShareAppMessageBase.c("try share video but video path or video thumbpath is null nil");
         AppMethodBeat.o(174901);
         throw paramShareParams;
       }
-      paramShareParams.kkd.put("is_video", Boolean.TRUE);
-      paramShareParams.kkd.put("footer_icon", paramShareParams.kjT.hGe);
-      paramShareParams.kkd.put("footer_text", paramShareParams.kjT.dfM);
-      paramShareParams.kkd.put("video_path", this.kkk);
-      paramShareParams.kkd.put("video_thumb_path", this.kkl);
+      paramShareParams.kLu.put("is_video", Boolean.TRUE);
+      paramShareParams.kLu.put("footer_icon", paramShareParams.kLk.igG);
+      paramShareParams.kLu.put("footer_text", paramShareParams.kLk.ddh);
+      paramShareParams.kLu.put("video_path", this.kLB);
+      paramShareParams.kLu.put("video_thumb_path", this.kLC);
       AppMethodBeat.o(174901);
     }
     
     public final <ShareParams extends JsApiShareAppMessageBase.d> void a(SendAppMessageTask paramSendAppMessageTask, com.tencent.mm.plugin.appbrand.service.c paramc)
     {
       AppMethodBeat.i(174902);
-      paramSendAppMessageTask.kkF = 4;
-      paramSendAppMessageTask.kkJ = true;
-      paramSendAppMessageTask.videoPath = r.IY(this.kkk);
-      paramSendAppMessageTask.kkP = r.IY(this.kkl);
-      paramSendAppMessageTask.dyw = this.dyw;
-      paramSendAppMessageTask.kkj = this.kkj;
-      paramSendAppMessageTask.gFL = this.gFL;
-      paramSendAppMessageTask.kkD = r.IY(this.kkl);
+      paramSendAppMessageTask.kLW = 4;
+      paramSendAppMessageTask.kMb = true;
+      paramSendAppMessageTask.videoPath = r.Nc(this.kLB);
+      paramSendAppMessageTask.kMh = r.Nc(this.kLC);
+      paramSendAppMessageTask.dwi = this.dwi;
+      paramSendAppMessageTask.kLA = this.kLA;
+      paramSendAppMessageTask.hgm = this.hgm;
+      paramSendAppMessageTask.kLU = r.Nc(this.kLC);
       AppMethodBeat.o(174902);
     }
     
@@ -731,7 +671,7 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     public final <ShareParams extends JsApiShareAppMessageBase.d> boolean c(ShareParams paramShareParams)
     {
       AppMethodBeat.i(174903);
-      if ((bt.nullAsNil(paramShareParams.dpa).startsWith("delayLoadFile://")) || (bt.nullAsNil(this.kkk).startsWith("delayLoadFile://")) || (bt.nullAsNil(this.kkl).startsWith("delayLoadFile://")))
+      if ((bs.nullAsNil(paramShareParams.dmK).startsWith("delayLoadFile://")) || (bs.nullAsNil(this.kLB).startsWith("delayLoadFile://")) || (bs.nullAsNil(this.kLC).startsWith("delayLoadFile://")))
       {
         AppMethodBeat.o(174903);
         return true;
@@ -743,7 +683,7 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     public final String toString()
     {
       AppMethodBeat.i(174904);
-      String str = "ShareTypeVideo{videoPath='" + this.videoPath + '\'' + ", videoMD5='" + this.dyw + '\'' + ", videoButtonText='" + this.kkj + '\'' + ", videoPlayDesc='" + this.gFL + '\'' + ", videoPathInFileSystem='" + this.kkk + '\'' + ", videoThumbPathInFileSystem='" + this.kkl + '\'' + '}';
+      String str = "ShareTypeVideo{videoPath='" + this.videoPath + '\'' + ", videoMD5='" + this.dwi + '\'' + ", videoButtonText='" + this.kLA + '\'' + ", videoPlayDesc='" + this.hgm + '\'' + ", videoPathInFileSystem='" + this.kLB + '\'' + ", videoThumbPathInFileSystem='" + this.kLC + '\'' + '}';
       AppMethodBeat.o(174904);
       return str;
     }
@@ -757,17 +697,17 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     public final <ShareParams extends JsApiShareAppMessageBase.d> void a(ShareParams paramShareParams, com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(174905);
-      paramShareParams.kjZ = false;
+      paramShareParams.kLq = false;
       String str = paramJSONObject.optString("webpageUrl");
       paramJSONObject = str;
-      if (bt.isNullOrNil(str)) {
-        paramJSONObject = u.Du(paramc.getAppId());
+      if (bs.isNullOrNil(str)) {
+        paramJSONObject = u.Hx(paramc.getAppId());
       }
-      paramShareParams.jfU = paramJSONObject;
-      paramShareParams.kkd.put("is_weishi_video", Boolean.TRUE);
-      paramc = paramc.getRuntime().aNc();
-      if ((paramc.cfj != null) && (!bt.isNullOrNil(paramc.cfj.jeb))) {
-        paramShareParams.kkd.put("msg_img_path", paramc.cfj.jeb);
+      paramShareParams.jGj = paramJSONObject;
+      paramShareParams.kLu.put("is_weishi_video", Boolean.TRUE);
+      paramc = paramc.getRuntime().aTS();
+      if ((paramc.ccf != null) && (!bs.isNullOrNil(paramc.ccf.jEp))) {
+        paramShareParams.kLu.put("msg_img_path", paramc.ccf.jEp);
       }
       AppMethodBeat.o(174905);
     }
@@ -775,18 +715,18 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     public final <ShareParams extends JsApiShareAppMessageBase.d> void a(SendAppMessageTask paramSendAppMessageTask, com.tencent.mm.plugin.appbrand.service.c paramc)
     {
       AppMethodBeat.i(174906);
-      paramc = paramc.getRuntime().aNc();
-      paramSendAppMessageTask.kkF = 3;
-      if (paramc.cfj != null)
+      paramc = paramc.getRuntime().aTS();
+      paramSendAppMessageTask.kLW = 3;
+      if (paramc.ccf != null)
       {
-        paramSendAppMessageTask.kkL = paramc.cfj.appId;
-        paramSendAppMessageTask.kkM = paramc.cfj.appName;
-        paramSendAppMessageTask.kkN = paramc.cfj.jec;
-        paramSendAppMessageTask.kkO = paramc.cfj.thumbUrl;
-        if (bt.isNullOrNil(paramSendAppMessageTask.kkC))
+        paramSendAppMessageTask.kMd = paramc.ccf.appId;
+        paramSendAppMessageTask.kMe = paramc.ccf.appName;
+        paramSendAppMessageTask.kMf = paramc.ccf.jEq;
+        paramSendAppMessageTask.kMg = paramc.ccf.thumbUrl;
+        if (bs.isNullOrNil(paramSendAppMessageTask.kLT))
         {
-          paramSendAppMessageTask.kkD = paramc.cfj.jea;
-          paramSendAppMessageTask.jOD = false;
+          paramSendAppMessageTask.kLU = paramc.ccf.jEo;
+          paramSendAppMessageTask.kpe = false;
         }
       }
       AppMethodBeat.o(174906);
@@ -795,14 +735,14 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
     public final <ShareParams extends JsApiShareAppMessageBase.d> void b(ShareParams paramShareParams)
     {
       AppMethodBeat.i(174908);
-      com.tencent.mm.plugin.report.service.h.vKh.f(16979, new Object[] { paramShareParams.appId, paramShareParams.dbu, Integer.valueOf(0), Integer.valueOf(3) });
+      com.tencent.mm.plugin.report.service.h.wUl.f(16979, new Object[] { paramShareParams.appId, paramShareParams.cYQ, Integer.valueOf(0), Integer.valueOf(3) });
       AppMethodBeat.o(174908);
     }
     
     public final <ShareParams extends JsApiShareAppMessageBase.d> boolean c(ShareParams paramShareParams)
     {
       AppMethodBeat.i(174907);
-      boolean bool = bt.nullAsNil(paramShareParams.dpa).startsWith("delayLoadFile://");
+      boolean bool = bs.nullAsNil(paramShareParams.dmK).startsWith("delayLoadFile://");
       AppMethodBeat.o(174907);
       return bool;
     }
@@ -810,7 +750,7 @@ public abstract class JsApiShareAppMessageBase<Param extends d>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.JsApiShareAppMessageBase
  * JD-Core Version:    0.7.0.1
  */

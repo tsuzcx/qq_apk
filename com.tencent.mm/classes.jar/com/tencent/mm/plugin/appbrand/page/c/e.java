@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/navigation/NavigateBackInterceptionInfo;", "", "enable", "", "dialogContent", "", "(ZLjava/lang/String;)V", "getDialogContent", "()Ljava/lang/String;", "getEnable", "()Z", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "luggage-wxa-app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/navigation/NavigateBackInterceptionInfo;", "", "enable", "", "dialogContent", "", "(ZLjava/lang/String;)V", "getDialogContent", "()Ljava/lang/String;", "getEnable", "()Z", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "luggage-wxa-app_release"})
 public final class e
 {
   final boolean enable;
-  final String lgT;
+  final String lGN;
   
   public e(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(176469);
     this.enable = paramBoolean;
-    this.lgT = paramString;
+    this.lGN = paramString;
     AppMethodBeat.o(176469);
   }
   
@@ -26,7 +26,7 @@ public final class e
       if ((paramObject instanceof e))
       {
         paramObject = (e)paramObject;
-        if ((this.enable != paramObject.enable) || (!k.g(this.lgT, paramObject.lgT))) {}
+        if ((this.enable != paramObject.enable) || (!k.g(this.lGN, paramObject.lGN))) {}
       }
     }
     else
@@ -46,7 +46,7 @@ public final class e
   public final String toString()
   {
     AppMethodBeat.i(176470);
-    String str = "NavigateBackInterceptionInfo(enable=" + this.enable + ", dialogContent=" + this.lgT + ")";
+    String str = "NavigateBackInterceptionInfo(enable=" + this.enable + ", dialogContent=" + this.lGN + ")";
     AppMethodBeat.o(176470);
     return str;
   }

@@ -1,6 +1,12 @@
-// INTERNAL ERROR //
+package com.tencent.mm.live.c;
+
+import d.l;
+
+@l(fNY={1, 1, 16})
+public final class bj {}
+
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.bj
  * JD-Core Version:    0.7.0.1
  */

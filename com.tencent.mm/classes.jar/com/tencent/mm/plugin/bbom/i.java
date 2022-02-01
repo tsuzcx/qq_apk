@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bb.b;
-import com.tencent.mm.bb.b.a;
-import com.tencent.mm.bb.b.c;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ba.b;
+import com.tencent.mm.ba.b.a;
+import com.tencent.mm.ba.b.c;
+import com.tencent.mm.ba.d;
+import com.tencent.mm.bj.c;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.model.w;
 import com.tencent.mm.platformtools.z;
@@ -13,14 +15,14 @@ import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pluginsdk.f.a;
 import com.tencent.mm.pluginsdk.f.a.a;
-import com.tencent.mm.protocal.protobuf.bwz;
-import com.tencent.mm.protocal.protobuf.bxb;
-import com.tencent.mm.protocal.protobuf.bxc;
-import com.tencent.mm.protocal.protobuf.zw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.protocal.protobuf.aav;
+import com.tencent.mm.protocal.protobuf.cbt;
+import com.tencent.mm.protocal.protobuf.cbv;
+import com.tencent.mm.protocal.protobuf.cbw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,49 +31,49 @@ import java.util.List;
 import java.util.Set;
 
 public final class i
-  implements com.tencent.mm.al.g, a
+  implements com.tencent.mm.ak.g, a
 {
-  private List<a.a> mLI;
+  private List<a.a> nnR;
   
   public i()
   {
     AppMethodBeat.i(22360);
-    this.mLI = new ArrayList();
+    this.nnR = new ArrayList();
     AppMethodBeat.o(22360);
   }
   
-  public final void Gl(String paramString)
+  public final void Kp(String paramString)
   {
     AppMethodBeat.i(22361);
-    ad.i("MicroMsg.DeleteContactService", "delete contact %s", new Object[] { paramString });
-    ((k)com.tencent.mm.kernel.g.ab(k.class)).apL().c(new com.tencent.mm.bb.c(paramString));
+    ac.i("MicroMsg.DeleteContactService", "delete contact %s", new Object[] { paramString });
+    ((k)com.tencent.mm.kernel.g.ab(k.class)).awA().c(new d(paramString));
     AppMethodBeat.o(22361);
   }
   
   public final void a(a.a parama)
   {
     AppMethodBeat.i(22362);
-    this.mLI.add(parama);
+    this.nnR.add(parama);
     AppMethodBeat.o(22362);
   }
   
   public final void b(a.a parama)
   {
     AppMethodBeat.i(22363);
-    this.mLI.remove(parama);
+    this.nnR.remove(parama);
     AppMethodBeat.o(22363);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(22364);
-    ad.i("MicroMsg.DeleteContactService", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.DeleteContactService", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     List localList;
     Object localObject1;
     if ((paramn instanceof b))
     {
-      localList = ((b)paramn).hot;
-      localObject1 = ((b.c)((b)paramn).hos.getRespObj()).hox;
+      localList = ((b)paramn).hOW;
+      localObject1 = ((b.c)((b)paramn).hOV.getRespObj()).hPa;
       paramString = new HashMap();
       paramn = new HashMap();
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
@@ -90,30 +92,30 @@ public final class i
           if (((j.b)localObject2).getCmdId() != 4) {
             break label471;
           }
-          localObject2 = z.a(((zw)new zw().parseFrom(((j.b)localObject2).getBuffer())).Dby);
-          paramInt2 = ((Integer)((bxb)localObject1).DTv.DpH.get(paramInt1)).intValue();
-          ad.i("MicroMsg.DeleteContactService", "handel delete contact %s,%d", new Object[] { localObject2, Integer.valueOf(paramInt2) });
-          localObject3 = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY((String)localObject2);
+          localObject2 = z.a(((aav)new aav().parseFrom(((j.b)localObject2).getBuffer())).EuE);
+          paramInt2 = ((Integer)((cbv)localObject1).FpR.EKK.get(paramInt1)).intValue();
+          ac.i("MicroMsg.DeleteContactService", "handel delete contact %s,%d", new Object[] { localObject2, Integer.valueOf(paramInt2) });
+          localObject3 = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt((String)localObject2);
           if (paramInt2 == 0)
           {
-            w.sG((String)localObject2);
+            w.wJ((String)localObject2);
             bi.a((String)localObject2, null);
-            ((k)com.tencent.mm.kernel.g.ab(k.class)).apR().aIl((String)localObject2);
-            com.tencent.mm.bk.c.f(0L, (String)localObject2);
-            com.tencent.mm.bk.c.f(0L, ((au)localObject3).field_encryptUsername);
-            paramString.put(localObject2, ((bxb)localObject1).DTv.DpH.get(paramInt1));
-            paramn.put(localObject2, ((bxb)localObject1).DTv.DTw.get(paramInt1));
+            ((k)com.tencent.mm.kernel.g.ab(k.class)).awG().aNG((String)localObject2);
+            c.f(0L, (String)localObject2);
+            c.f(0L, ((av)localObject3).field_encryptUsername);
+            paramString.put(localObject2, ((cbv)localObject1).FpR.EKK.get(paramInt1));
+            paramn.put(localObject2, ((cbv)localObject1).FpR.FpS.get(paramInt1));
             break label471;
           }
-          ((af)localObject3).Zk();
-          ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().c((String)localObject2, (af)localObject3);
+          ((ai)localObject3).aaf();
+          ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().c((String)localObject2, (ai)localObject3);
           continue;
         }
-        localIterator = this.mLI.iterator();
+        localIterator = this.nnR.iterator();
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.DeleteContactService", localException, "BaseProtoBuf parseFrom error!", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.DeleteContactService", localException, "BaseProtoBuf parseFrom error!", new Object[0]);
       }
       Iterator localIterator;
       while (localIterator.hasNext())
@@ -123,7 +125,7 @@ public final class i
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (String)((Iterator)localObject2).next();
-          ((a.a)localObject1).a((String)localObject3, ((Integer)paramString.get(localObject3)).intValue(), (bwz)paramn.get(localObject3));
+          ((a.a)localObject1).a((String)localObject3, ((Integer)paramString.get(localObject3)).intValue(), (cbt)paramn.get(localObject3));
         }
       }
       AppMethodBeat.o(22364);
@@ -135,7 +137,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.i
  * JD-Core Version:    0.7.0.1
  */

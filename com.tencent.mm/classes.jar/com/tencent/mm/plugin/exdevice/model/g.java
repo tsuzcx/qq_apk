@@ -1,33 +1,34 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.g.a.er;
-import com.tencent.mm.g.a.ja;
-import com.tencent.mm.g.a.ja.b;
-import com.tencent.mm.g.c.cw;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.g.a.es;
+import com.tencent.mm.g.a.jh;
+import com.tencent.mm.g.a.jh.b;
+import com.tencent.mm.g.c.cy;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.model.az;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
 import com.tencent.mm.pluginsdk.model.app.ap;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.bgr;
-import com.tencent.mm.protocal.protobuf.bgs;
-import com.tencent.mm.protocal.protobuf.bgt;
-import com.tencent.mm.protocal.protobuf.bgu;
-import com.tencent.mm.protocal.protobuf.bgv;
-import com.tencent.mm.protocal.protobuf.bgw;
-import com.tencent.mm.protocal.protobuf.bgx;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.protocal.protobuf.ddt;
-import com.tencent.mm.protocal.protobuf.yk;
+import com.tencent.mm.protocal.protobuf.bkj;
+import com.tencent.mm.protocal.protobuf.bkk;
+import com.tencent.mm.protocal.protobuf.bkl;
+import com.tencent.mm.protocal.protobuf.bkm;
+import com.tencent.mm.protocal.protobuf.bkn;
+import com.tencent.mm.protocal.protobuf.bko;
+import com.tencent.mm.protocal.protobuf.bkp;
+import com.tencent.mm.protocal.protobuf.btz;
+import com.tencent.mm.protocal.protobuf.dji;
+import com.tencent.mm.protocal.protobuf.zf;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bl.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bo.b;
 import com.tencent.mm.vfs.i;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -38,62 +39,62 @@ import java.util.List;
 import java.util.Set;
 
 public final class g
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  String dpz;
-  long fYz;
-  long fll;
-  String hhN;
-  public g.a hhW;
-  boolean oUY;
-  boolean oUZ;
-  HashMap<Integer, String> oVA;
-  boolean oVa;
-  String oVb;
-  String oVc;
-  String oVd;
-  String oVe;
-  String oVf;
-  private String oVg;
-  boolean oVh;
-  boolean oVi;
-  public HashMap<String, String> oVj;
-  bgs oVk;
-  long oVl;
-  List<com.tencent.mm.plugin.exdevice.i.b> oVm;
-  List<com.tencent.mm.plugin.exdevice.i.b> oVn;
-  HashMap<String, String> oVo;
-  HashMap<String, Integer> oVp;
-  HashMap<String, Boolean> oVq;
-  j.a oVr;
-  j.a oVs;
-  j.a oVt;
-  j.a oVu;
-  Runnable oVv;
-  bgs oVw;
-  String oVx;
-  String oVy;
-  int oVz;
+  String dnk;
+  long foF;
+  long gdf;
+  String hIq;
+  public g.a hIz;
+  HashMap<String, Integer> pyA;
+  HashMap<String, Boolean> pyB;
+  j.a pyC;
+  j.a pyD;
+  j.a pyE;
+  j.a pyF;
+  Runnable pyG;
+  bkk pyH;
+  String pyI;
+  String pyJ;
+  int pyK;
+  HashMap<Integer, String> pyL;
+  boolean pyj;
+  boolean pyk;
+  boolean pyl;
+  String pym;
+  String pyn;
+  String pyo;
+  String pyp;
+  String pyq;
+  private String pyr;
+  boolean pys;
+  boolean pyt;
+  public HashMap<String, String> pyu;
+  bkk pyv;
+  long pyw;
+  List<com.tencent.mm.plugin.exdevice.i.b> pyx;
+  List<com.tencent.mm.plugin.exdevice.i.b> pyy;
+  HashMap<String, String> pyz;
   
   public g()
   {
     AppMethodBeat.i(23327);
-    this.oUY = false;
-    this.oUZ = false;
-    this.oVa = false;
-    this.oVe = "send_data_sucess";
-    this.oVf = "send_data_failed";
-    this.oVg = "send_data_sending";
-    this.oVh = false;
-    this.oVi = false;
-    this.oVj = new HashMap();
-    this.hhN = "";
-    this.oVm = null;
-    this.oVn = new ArrayList();
-    this.oVo = new HashMap();
-    this.oVp = new HashMap();
-    this.oVq = new HashMap();
-    this.oVv = new Runnable()
+    this.pyj = false;
+    this.pyk = false;
+    this.pyl = false;
+    this.pyp = "send_data_sucess";
+    this.pyq = "send_data_failed";
+    this.pyr = "send_data_sending";
+    this.pys = false;
+    this.pyt = false;
+    this.pyu = new HashMap();
+    this.hIq = "";
+    this.pyx = null;
+    this.pyy = new ArrayList();
+    this.pyz = new HashMap();
+    this.pyA = new HashMap();
+    this.pyB = new HashMap();
+    this.pyG = new Runnable()
     {
       /* Error */
       public final void run()
@@ -104,7 +105,7 @@ public final class g
         //   6: new 31	java/lang/StringBuilder
         //   9: dup
         //   10: invokespecial 32	java/lang/StringBuilder:<init>	()V
-        //   13: invokestatic 38	com/tencent/mm/loader/j/b:aip	()Ljava/lang/String;
+        //   13: invokestatic 38	com/tencent/mm/loader/j/b:app	()Ljava/lang/String;
         //   16: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
         //   19: ldc 44
         //   21: iconst_3
@@ -116,8 +117,8 @@ public final class g
         //   30: dup
         //   31: iconst_1
         //   32: aload_0
-        //   33: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   36: getfield 50	com/tencent/mm/plugin/exdevice/model/g:dpz	Ljava/lang/String;
+        //   33: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   36: getfield 50	com/tencent/mm/plugin/exdevice/model/g:dnk	Ljava/lang/String;
         //   39: invokevirtual 56	java/lang/String:hashCode	()I
         //   42: invokestatic 62	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   45: aastore
@@ -130,9 +131,9 @@ public final class g
         //   57: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
         //   60: astore 5
         //   62: aload_0
-        //   63: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   66: getfield 50	com/tencent/mm/plugin/exdevice/model/g:dpz	Ljava/lang/String;
-        //   69: invokestatic 75	com/tencent/mm/plugin/exdevice/model/g:UD	(Ljava/lang/String;)[B
+        //   63: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   66: getfield 50	com/tencent/mm/plugin/exdevice/model/g:dnk	Ljava/lang/String;
+        //   69: invokestatic 75	com/tencent/mm/plugin/exdevice/model/g:YP	(Ljava/lang/String;)[B
         //   72: astore_2
         //   73: aload_2
         //   74: ifnull +257 -> 331
@@ -143,11 +144,11 @@ public final class g
         //   81: invokestatic 81	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
         //   84: astore 4
         //   86: aload_0
-        //   87: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   87: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
         //   90: astore 6
         //   92: aload 5
         //   94: iconst_0
-        //   95: invokestatic 87	com/tencent/mm/vfs/i:cM	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+        //   95: invokestatic 87	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/OutputStream;
         //   98: astore_3
         //   99: aload_3
         //   100: astore_2
@@ -166,28 +167,28 @@ public final class g
         //   123: aload_3
         //   124: invokevirtual 107	java/io/OutputStream:close	()V
         //   127: aload_0
-        //   128: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   128: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
         //   131: aload 5
-        //   133: putfield 110	com/tencent/mm/plugin/exdevice/model/g:oVc	Ljava/lang/String;
+        //   133: putfield 110	com/tencent/mm/plugin/exdevice/model/g:pyn	Ljava/lang/String;
         //   136: aload_0
-        //   137: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   140: getfield 110	com/tencent/mm/plugin/exdevice/model/g:oVc	Ljava/lang/String;
+        //   137: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   140: getfield 110	com/tencent/mm/plugin/exdevice/model/g:pyn	Ljava/lang/String;
         //   143: ifnonnull +219 -> 362
         //   146: aload_0
-        //   147: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   150: getfield 110	com/tencent/mm/plugin/exdevice/model/g:oVc	Ljava/lang/String;
-        //   153: invokestatic 114	com/tencent/mm/vfs/i:eK	(Ljava/lang/String;)Z
+        //   147: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   150: getfield 110	com/tencent/mm/plugin/exdevice/model/g:pyn	Ljava/lang/String;
+        //   153: invokestatic 114	com/tencent/mm/vfs/i:eA	(Ljava/lang/String;)Z
         //   156: ifne +206 -> 362
         //   159: ldc 116
         //   161: ldc 118
-        //   163: invokestatic 124	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   163: invokestatic 124	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   166: aload_0
-        //   167: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   170: getfield 127	com/tencent/mm/plugin/exdevice/model/g:oVy	Ljava/lang/String;
+        //   167: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   170: getfield 127	com/tencent/mm/plugin/exdevice/model/g:pyJ	Ljava/lang/String;
         //   173: aload_0
-        //   174: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   177: getfield 130	com/tencent/mm/plugin/exdevice/model/g:oVf	Ljava/lang/String;
-        //   180: invokestatic 133	com/tencent/mm/plugin/exdevice/model/g:ff	(Ljava/lang/String;Ljava/lang/String;)V
+        //   174: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   177: getfield 130	com/tencent/mm/plugin/exdevice/model/g:pyq	Ljava/lang/String;
+        //   180: invokestatic 133	com/tencent/mm/plugin/exdevice/model/g:fs	(Ljava/lang/String;Ljava/lang/String;)V
         //   183: sipush 23317
         //   186: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   189: return
@@ -197,7 +198,7 @@ public final class g
         //   194: ldc 138
         //   196: iconst_0
         //   197: anewarray 4	java/lang/Object
-        //   200: invokestatic 142	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   200: invokestatic 142	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   203: goto -76 -> 127
         //   206: astore_2
         //   207: ldc 116
@@ -205,7 +206,7 @@ public final class g
         //   210: ldc 138
         //   212: iconst_0
         //   213: anewarray 4	java/lang/Object
-        //   216: invokestatic 142	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   216: invokestatic 142	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   219: sipush 23317
         //   222: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   225: return
@@ -216,14 +217,14 @@ public final class g
         //   231: astore_2
         //   232: ldc 116
         //   234: ldc 144
-        //   236: invokestatic 124	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   236: invokestatic 124	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   239: aload_3
         //   240: astore_2
         //   241: aload 6
-        //   243: getfield 127	com/tencent/mm/plugin/exdevice/model/g:oVy	Ljava/lang/String;
+        //   243: getfield 127	com/tencent/mm/plugin/exdevice/model/g:pyJ	Ljava/lang/String;
         //   246: aload 6
-        //   248: getfield 130	com/tencent/mm/plugin/exdevice/model/g:oVf	Ljava/lang/String;
-        //   251: invokestatic 133	com/tencent/mm/plugin/exdevice/model/g:ff	(Ljava/lang/String;Ljava/lang/String;)V
+        //   248: getfield 130	com/tencent/mm/plugin/exdevice/model/g:pyq	Ljava/lang/String;
+        //   251: invokestatic 133	com/tencent/mm/plugin/exdevice/model/g:fs	(Ljava/lang/String;Ljava/lang/String;)V
         //   254: aload_3
         //   255: astore_2
         //   256: ldc 116
@@ -231,7 +232,7 @@ public final class g
         //   260: ldc 138
         //   262: iconst_0
         //   263: anewarray 4	java/lang/Object
-        //   266: invokestatic 142	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   266: invokestatic 142	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   269: aload_3
         //   270: ifnull -143 -> 127
         //   273: aload_3
@@ -243,7 +244,7 @@ public final class g
         //   284: ldc 138
         //   286: iconst_0
         //   287: anewarray 4	java/lang/Object
-        //   290: invokestatic 142	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   290: invokestatic 142	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   293: goto -166 -> 127
         //   296: astore_3
         //   297: aconst_null
@@ -262,30 +263,30 @@ public final class g
         //   319: ldc 138
         //   321: iconst_0
         //   322: anewarray 4	java/lang/Object
-        //   325: invokestatic 142	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   325: invokestatic 142	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   328: goto -21 -> 307
         //   331: ldc 116
         //   333: ldc 146
-        //   335: invokestatic 124	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   335: invokestatic 124	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   338: aload_0
-        //   339: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   342: getfield 127	com/tencent/mm/plugin/exdevice/model/g:oVy	Ljava/lang/String;
+        //   339: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   342: getfield 127	com/tencent/mm/plugin/exdevice/model/g:pyJ	Ljava/lang/String;
         //   345: aload_0
-        //   346: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   349: getfield 130	com/tencent/mm/plugin/exdevice/model/g:oVf	Ljava/lang/String;
-        //   352: invokestatic 133	com/tencent/mm/plugin/exdevice/model/g:ff	(Ljava/lang/String;Ljava/lang/String;)V
+        //   346: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   349: getfield 130	com/tencent/mm/plugin/exdevice/model/g:pyq	Ljava/lang/String;
+        //   352: invokestatic 133	com/tencent/mm/plugin/exdevice/model/g:fs	(Ljava/lang/String;Ljava/lang/String;)V
         //   355: sipush 23317
         //   358: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   361: return
         //   362: iconst_m1
         //   363: istore_1
-        //   364: new 148	com/tencent/mm/protocal/protobuf/bgt
+        //   364: new 148	com/tencent/mm/protocal/protobuf/bkl
         //   367: dup
-        //   368: invokespecial 149	com/tencent/mm/protocal/protobuf/bgt:<init>	()V
+        //   368: invokespecial 149	com/tencent/mm/protocal/protobuf/bkl:<init>	()V
         //   371: astore 5
         //   373: aload_0
-        //   374: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   377: getfield 110	com/tencent/mm/plugin/exdevice/model/g:oVc	Ljava/lang/String;
+        //   374: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   377: getfield 110	com/tencent/mm/plugin/exdevice/model/g:pyn	Ljava/lang/String;
         //   380: astore 6
         //   382: aload 6
         //   384: ifnull +215 -> 599
@@ -315,7 +316,7 @@ public final class g
         //   429: invokevirtual 173	java/lang/String:substring	(II)Ljava/lang/String;
         //   432: astore_2
         //   433: aload 6
-        //   435: invokestatic 177	com/tencent/mm/vfs/i:aEN	(Ljava/lang/String;)Ljava/lang/String;
+        //   435: invokestatic 177	com/tencent/mm/vfs/i:aKe	(Ljava/lang/String;)Ljava/lang/String;
         //   438: astore 4
         //   440: ldc 116
         //   442: ldc 179
@@ -325,7 +326,7 @@ public final class g
         //   449: iconst_0
         //   450: aload 6
         //   452: aastore
-        //   453: invokestatic 182	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   453: invokestatic 182	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   456: ldc 116
         //   458: ldc 184
         //   460: iconst_1
@@ -335,7 +336,7 @@ public final class g
         //   466: iload_1
         //   467: invokestatic 62	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   470: aastore
-        //   471: invokestatic 182	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   471: invokestatic 182	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   474: ldc 116
         //   476: ldc 186
         //   478: iconst_1
@@ -344,49 +345,49 @@ public final class g
         //   483: iconst_0
         //   484: aload 4
         //   486: aastore
-        //   487: invokestatic 182	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   487: invokestatic 182	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   490: aload 5
         //   492: aload_2
-        //   493: putfield 189	com/tencent/mm/protocal/protobuf/bgt:Type	Ljava/lang/String;
+        //   493: putfield 189	com/tencent/mm/protocal/protobuf/bkl:Type	Ljava/lang/String;
         //   496: aload 5
         //   498: aload_3
-        //   499: putfield 192	com/tencent/mm/protocal/protobuf/bgt:Name	Ljava/lang/String;
+        //   499: putfield 192	com/tencent/mm/protocal/protobuf/bkl:Name	Ljava/lang/String;
         //   502: aload 5
         //   504: iload_1
-        //   505: putfield 196	com/tencent/mm/protocal/protobuf/bgt:mBC	I
+        //   505: putfield 196	com/tencent/mm/protocal/protobuf/bkl:ndD	I
         //   508: aload 5
         //   510: aload 4
-        //   512: putfield 199	com/tencent/mm/protocal/protobuf/bgt:Md5	Ljava/lang/String;
+        //   512: putfield 199	com/tencent/mm/protocal/protobuf/bkl:Md5	Ljava/lang/String;
         //   515: aload_0
-        //   516: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   519: getfield 203	com/tencent/mm/plugin/exdevice/model/g:oVw	Lcom/tencent/mm/protocal/protobuf/bgs;
+        //   516: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   519: getfield 203	com/tencent/mm/plugin/exdevice/model/g:pyH	Lcom/tencent/mm/protocal/protobuf/bkk;
         //   522: aload 5
-        //   524: putfield 209	com/tencent/mm/protocal/protobuf/bgs:DEF	Lcom/tencent/mm/protocal/protobuf/bgt;
+        //   524: putfield 209	com/tencent/mm/protocal/protobuf/bkk:Faa	Lcom/tencent/mm/protocal/protobuf/bkl;
         //   527: aload_0
-        //   528: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   531: getfield 203	com/tencent/mm/plugin/exdevice/model/g:oVw	Lcom/tencent/mm/protocal/protobuf/bgs;
+        //   528: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   531: getfield 203	com/tencent/mm/plugin/exdevice/model/g:pyH	Lcom/tencent/mm/protocal/protobuf/bkk;
         //   534: iconst_3
-        //   535: putfield 212	com/tencent/mm/protocal/protobuf/bgs:DEC	I
+        //   535: putfield 212	com/tencent/mm/protocal/protobuf/bkk:EZX	I
         //   538: new 214	com/tencent/mm/plugin/exdevice/model/n
         //   541: dup
         //   542: aload_0
-        //   543: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   546: getfield 203	com/tencent/mm/plugin/exdevice/model/g:oVw	Lcom/tencent/mm/protocal/protobuf/bgs;
+        //   543: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   546: getfield 203	com/tencent/mm/plugin/exdevice/model/g:pyH	Lcom/tencent/mm/protocal/protobuf/bkk;
         //   549: aload_0
-        //   550: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   553: getfield 217	com/tencent/mm/plugin/exdevice/model/g:oVx	Ljava/lang/String;
+        //   550: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   553: getfield 217	com/tencent/mm/plugin/exdevice/model/g:pyI	Ljava/lang/String;
         //   556: aload_0
-        //   557: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   560: getfield 127	com/tencent/mm/plugin/exdevice/model/g:oVy	Ljava/lang/String;
+        //   557: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   560: getfield 127	com/tencent/mm/plugin/exdevice/model/g:pyJ	Ljava/lang/String;
         //   563: aload_0
-        //   564: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
-        //   567: getfield 220	com/tencent/mm/plugin/exdevice/model/g:oVz	I
-        //   570: invokespecial 223	com/tencent/mm/plugin/exdevice/model/n:<init>	(Lcom/tencent/mm/protocal/protobuf/bgs;Ljava/lang/String;Ljava/lang/String;I)V
+        //   564: getfield 14	com/tencent/mm/plugin/exdevice/model/g$1:pyM	Lcom/tencent/mm/plugin/exdevice/model/g;
+        //   567: getfield 220	com/tencent/mm/plugin/exdevice/model/g:pyK	I
+        //   570: invokespecial 223	com/tencent/mm/plugin/exdevice/model/n:<init>	(Lcom/tencent/mm/protocal/protobuf/bkk;Ljava/lang/String;Ljava/lang/String;I)V
         //   573: astore_2
-        //   574: invokestatic 229	com/tencent/mm/model/az:aeS	()Lcom/tencent/mm/al/q;
+        //   574: invokestatic 229	com/tencent/mm/model/az:agi	()Lcom/tencent/mm/ak/q;
         //   577: aload_2
         //   578: iconst_0
-        //   579: invokevirtual 235	com/tencent/mm/al/q:a	(Lcom/tencent/mm/al/n;I)Z
+        //   579: invokevirtual 235	com/tencent/mm/ak/q:a	(Lcom/tencent/mm/ak/n;I)Z
         //   582: pop
         //   583: sipush 23317
         //   586: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -456,12 +457,12 @@ public final class g
         //   115	119	594	java/io/IOException
       }
     };
-    this.hhW = new g.a()
+    this.hIz = new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(23318);
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s] sentToCloud:[%s]", new Object[] { g.this.hhN, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd, Boolean.valueOf(g.this.oVh) });
+        ac.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s] sentToCloud:[%s]", new Object[] { g.this.hIq, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd, Boolean.valueOf(g.this.pys) });
         if (paramAnonymousc != null) {}
         label560:
         label568:
@@ -470,12 +471,12 @@ public final class g
           try
           {
             paramAnonymousInt = (int)((float)paramAnonymousc.field_finishedLength / (float)paramAnonymousc.field_toltalLength * 100.0F);
-            com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "sent to cloud progress %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            ac.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "sent to cloud progress %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
             if (paramAnonymousInt < 100) {
               break label568;
             }
             paramAnonymousInt = 99;
-            paramAnonymousString = g.this.oVj.keySet().iterator();
+            paramAnonymousString = g.this.pyu.keySet().iterator();
             if (paramAnonymousString.hasNext())
             {
               paramAnonymousc = (String)paramAnonymousString.next();
@@ -488,47 +489,47 @@ public final class g
           }
           catch (Exception paramAnonymousString)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "cdnCallback Exception %s", new Object[] { paramAnonymousString });
+            ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "cdnCallback Exception %s", new Object[] { paramAnonymousString });
             AppMethodBeat.o(23318);
             return 0;
           }
-          if (g.this.oVh)
+          if (g.this.pys)
           {
-            paramAnonymousString = new bgs();
-            g.this.a(paramAnonymousString, g.this.fll);
-            g.this.oVh = false;
-            if ((g.oJ(g.this.fll).booleanValue()) || (g.oK(g.this.fll).booleanValue()))
+            paramAnonymousString = new bkk();
+            g.this.a(paramAnonymousString, g.this.foF);
+            g.this.pys = false;
+            if ((g.sv(g.this.foF).booleanValue()) || (g.sw(g.this.foF).booleanValue()))
             {
-              paramAnonymousString.DEF.COP = paramAnonymousd.field_aesKey;
-              paramAnonymousString.DEF.DEJ = g.this.oVl;
-              paramAnonymousString.DEF.CCm = paramAnonymousd.field_fileId;
-              paramAnonymousString.DEF.Url = paramAnonymousd.field_fileUrl;
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "image_msg.url:[%s]", new Object[] { paramAnonymousString.DEF.Url });
+              paramAnonymousString.Faa.EhA = paramAnonymousd.field_aesKey;
+              paramAnonymousString.Faa.Fae = g.this.pyw;
+              paramAnonymousString.Faa.DUJ = paramAnonymousd.field_fileId;
+              paramAnonymousString.Faa.Url = paramAnonymousd.field_fileUrl;
+              ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "image_msg.url:[%s]", new Object[] { paramAnonymousString.Faa.Url });
             }
             for (;;)
             {
-              g.this.oVk = paramAnonymousString;
-              paramAnonymousc = g.this.oVj.keySet().iterator();
+              g.this.pyv = paramAnonymousString;
+              paramAnonymousc = g.this.pyu.keySet().iterator();
               while (paramAnonymousc.hasNext())
               {
                 paramAnonymousd = (String)paramAnonymousc.next();
-                paramAnonymousd = new n(paramAnonymousString, (String)g.this.oVj.get(paramAnonymousd), paramAnonymousd, 1);
-                az.aeS().a(paramAnonymousd, 0);
+                paramAnonymousd = new n(paramAnonymousString, (String)g.this.pyu.get(paramAnonymousd), paramAnonymousd, 1);
+                az.agi().a(paramAnonymousd, 0);
               }
-              if (g.oI(g.this.fll).booleanValue())
+              if (g.su(g.this.foF).booleanValue())
               {
-                paramAnonymousString.DEG.COP = paramAnonymousd.field_aesKey;
-                paramAnonymousString.DEG.CCm = paramAnonymousd.field_fileId;
-                paramAnonymousString.DEG.Url = paramAnonymousd.field_fileUrl;
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "file_msg.url:[%s]", new Object[] { paramAnonymousString.DEG.Url });
+                paramAnonymousString.Fab.EhA = paramAnonymousd.field_aesKey;
+                paramAnonymousString.Fab.DUJ = paramAnonymousd.field_fileId;
+                paramAnonymousString.Fab.Url = paramAnonymousd.field_fileUrl;
+                ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "file_msg.url:[%s]", new Object[] { paramAnonymousString.Fab.Url });
               }
-              else if (g.oL(g.this.fll).booleanValue())
+              else if (g.sx(g.this.foF).booleanValue())
               {
-                paramAnonymousString.DEI.Url = paramAnonymousd.field_fileUrl;
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "video_msg.url:[%s]", new Object[] { paramAnonymousString.DEI.Url });
+                paramAnonymousString.Fad.Url = paramAnonymousd.field_fileUrl;
+                ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "video_msg.url:[%s]", new Object[] { paramAnonymousString.Fad.Url });
               }
             }
-            g.this.oVj.clear();
+            g.this.pyu.clear();
           }
           AppMethodBeat.o(23318);
           return 0;
@@ -538,52 +539,52 @@ public final class g
       public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream)
       {
         AppMethodBeat.i(23319);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "getCdnAuthInfo mediaId = ".concat(String.valueOf(paramAnonymousString)));
+        ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "getCdnAuthInfo mediaId = ".concat(String.valueOf(paramAnonymousString)));
         AppMethodBeat.o(23319);
       }
       
       public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(23320);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "decodePrepareResponse ");
+        ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "decodePrepareResponse ");
         AppMethodBeat.o(23320);
         return paramAnonymousArrayOfByte;
       }
     };
-    this.oVA = new HashMap();
-    this.oVn.clear();
-    this.oVo.clear();
-    this.oVq.clear();
-    this.oVm = ad.bZG().cak();
-    if ((this.oVm != null) && (this.oVm.size() > 0))
+    this.pyL = new HashMap();
+    this.pyy.clear();
+    this.pyz.clear();
+    this.pyB.clear();
+    this.pyx = ad.cgP().cht();
+    if ((this.pyx != null) && (this.pyx.size() > 0))
     {
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "Bind Device Size is %d", new Object[] { Integer.valueOf(this.oVm.size()) });
-      int j = this.oVm.size();
+      ac.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "Bind Device Size is %d", new Object[] { Integer.valueOf(this.pyx.size()) });
+      int j = this.pyx.size();
       int i = 0;
       while (i < j)
       {
-        if ((((com.tencent.mm.plugin.exdevice.i.b)this.oVm.get(i)).eKt.contains("internet_to_device")) && (!((com.tencent.mm.plugin.exdevice.i.b)this.oVm.get(i)).eKt.contains("wechat_to_device"))) {
-          this.oVn.add(this.oVm.get(i));
+        if ((((com.tencent.mm.plugin.exdevice.i.b)this.pyx.get(i)).eNl.contains("internet_to_device")) && (!((com.tencent.mm.plugin.exdevice.i.b)this.pyx.get(i)).eNl.contains("wechat_to_device"))) {
+          this.pyy.add(this.pyx.get(i));
         }
         i += 1;
       }
-      this.oVu = new g.3(this);
-      this.oVr = new g.4(this);
-      this.oVs = new g.5(this);
-      this.oVt = new g.6(this);
-      az.aeS().a(1717, this);
-      j.bZx().a(14, this.oVr);
-      j.bZx().a(12, this.oVs);
-      j.bZx().a(13, this.oVt);
-      j.bZx().a(15, this.oVu);
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "initWCLanDeviceLib...");
+      this.pyF = new g.3(this);
+      this.pyC = new g.4(this);
+      this.pyD = new g.5(this);
+      this.pyE = new g.6(this);
+      az.agi().a(1717, this);
+      j.cgG().a(14, this.pyC);
+      j.cgG().a(12, this.pyD);
+      j.cgG().a(13, this.pyE);
+      j.cgG().a(15, this.pyF);
+      ac.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "initWCLanDeviceLib...");
       Java2CExDevice.initWCLanDeviceLib();
     }
     AppMethodBeat.o(23327);
   }
   
   /* Error */
-  static String U(String paramString, long paramLong)
+  static String V(String paramString, long paramLong)
   {
     // Byte code:
     //   0: sipush 23336
@@ -671,7 +672,7 @@ public final class g
     //   164: aload 6
     //   166: invokevirtual 308	java/io/IOException:getMessage	()Ljava/lang/String;
     //   169: aastore
-    //   170: invokestatic 311	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   170: invokestatic 311	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   173: aload_3
     //   174: ifnull +11 -> 185
     //   177: aload_3
@@ -704,7 +705,7 @@ public final class g
     //   230: ldc 98
     //   232: iconst_0
     //   233: anewarray 4	java/lang/Object
-    //   236: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   236: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   239: sipush 23336
     //   242: invokestatic 240	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   245: aconst_null
@@ -715,7 +716,7 @@ public final class g
     //   251: ldc 98
     //   253: iconst_0
     //   254: anewarray 4	java/lang/Object
-    //   257: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   257: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   260: sipush 23336
     //   263: invokestatic 240	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   266: aconst_null
@@ -726,7 +727,7 @@ public final class g
     //   272: ldc 98
     //   274: iconst_0
     //   275: anewarray 4	java/lang/Object
-    //   278: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   278: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   281: sipush 23336
     //   284: invokestatic 240	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   287: aconst_null
@@ -737,7 +738,7 @@ public final class g
     //   293: ldc 98
     //   295: iconst_0
     //   296: anewarray 4	java/lang/Object
-    //   299: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   299: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   302: sipush 23336
     //   305: invokestatic 240	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   308: aconst_null
@@ -767,7 +768,7 @@ public final class g
     //   350: ldc 98
     //   352: iconst_0
     //   353: anewarray 4	java/lang/Object
-    //   356: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   356: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   359: sipush 23336
     //   362: invokestatic 240	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   365: aconst_null
@@ -778,7 +779,7 @@ public final class g
     //   371: ldc 98
     //   373: iconst_0
     //   374: anewarray 4	java/lang/Object
-    //   377: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   377: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   380: sipush 23336
     //   383: invokestatic 240	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   386: aconst_null
@@ -835,7 +836,7 @@ public final class g
   }
   
   /* Error */
-  public static byte[] UD(String paramString)
+  public static byte[] YP(String paramString)
   {
     // Byte code:
     //   0: sipush 23332
@@ -848,7 +849,7 @@ public final class g
     //   16: iconst_0
     //   17: aload_0
     //   18: aastore
-    //   19: invokestatic 161	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   19: invokestatic 161	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   22: aload_0
     //   23: aconst_null
     //   24: invokestatic 333	com/tencent/mm/network/b:a	(Ljava/lang/String;Lcom/tencent/mm/network/b$b;)Lcom/tencent/mm/network/v;
@@ -919,7 +920,7 @@ public final class g
     //   144: ldc 98
     //   146: iconst_0
     //   147: anewarray 4	java/lang/Object
-    //   150: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   150: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   153: aload_0
     //   154: ifnull +7 -> 161
     //   157: aload_0
@@ -987,7 +988,7 @@ public final class g
     //   268: ldc 98
     //   270: iconst_0
     //   271: anewarray 4	java/lang/Object
-    //   274: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   274: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   277: goto -34 -> 243
     //   280: astore_0
     //   281: ldc 147
@@ -995,7 +996,7 @@ public final class g
     //   284: ldc 98
     //   286: iconst_0
     //   287: anewarray 4	java/lang/Object
-    //   290: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   290: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   293: goto -42 -> 251
     //   296: aload_3
     //   297: ifnull +7 -> 304
@@ -1010,7 +1011,7 @@ public final class g
     //   315: ldc 98
     //   317: iconst_0
     //   318: anewarray 4	java/lang/Object
-    //   321: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   321: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   324: goto -20 -> 304
     //   327: astore_0
     //   328: ldc 147
@@ -1018,7 +1019,7 @@ public final class g
     //   331: ldc 98
     //   333: iconst_0
     //   334: anewarray 4	java/lang/Object
-    //   337: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   337: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   340: goto -179 -> 161
     //   343: astore_0
     //   344: ldc 147
@@ -1026,7 +1027,7 @@ public final class g
     //   347: ldc 98
     //   349: iconst_0
     //   350: anewarray 4	java/lang/Object
-    //   353: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   353: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   356: goto -187 -> 169
     //   359: astore_0
     //   360: aconst_null
@@ -1057,7 +1058,7 @@ public final class g
     //   405: ldc 98
     //   407: iconst_0
     //   408: anewarray 4	java/lang/Object
-    //   411: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   411: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   414: goto -39 -> 375
     //   417: astore_2
     //   418: ldc 147
@@ -1065,7 +1066,7 @@ public final class g
     //   421: ldc 98
     //   423: iconst_0
     //   424: anewarray 4	java/lang/Object
-    //   427: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   427: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   430: goto -47 -> 383
     //   433: astore_0
     //   434: aconst_null
@@ -1168,51 +1169,51 @@ public final class g
       return "";
     }
     String str = null;
-    if (!bt.isNullOrNil(paramb.eKn)) {
-      str = paramb.eKn;
+    if (!bs.isNullOrNil(paramb.eNf)) {
+      str = paramb.eNf;
     }
     for (;;)
     {
-      paramb = bt.nullAsNil(str);
+      paramb = bs.nullAsNil(str);
       AppMethodBeat.o(23340);
       return paramb;
-      if (!bt.isNullOrNil(paramb.eKo)) {
-        str = paramb.eKo;
+      if (!bs.isNullOrNil(paramb.eNg)) {
+        str = paramb.eNg;
       } else if (paramb.field_mac != 0L) {
-        str = com.tencent.mm.plugin.exdevice.k.b.pe(paramb.field_mac);
-      } else if (!bt.isNullOrNil(paramb.field_deviceID)) {
+        str = com.tencent.mm.plugin.exdevice.k.b.sQ(paramb.field_mac);
+      } else if (!bs.isNullOrNil(paramb.field_deviceID)) {
         str = paramb.field_deviceID;
       }
     }
   }
   
-  static void ff(String paramString1, String paramString2)
+  static void fs(String paramString1, String paramString2)
   {
     AppMethodBeat.i(23338);
-    er localer = new er();
-    localer.dhh.dhj = paramString2;
-    localer.dhh.cLR = paramString1;
-    a.ESL.l(localer);
+    es locales = new es();
+    locales.deC.deE = paramString2;
+    locales.deC.cIZ = paramString1;
+    a.GpY.l(locales);
     AppMethodBeat.o(23338);
   }
   
-  static Boolean oI(long paramLong)
+  static Boolean su(long paramLong)
   {
     AppMethodBeat.i(23328);
     boolean bool2 = false;
-    az.arV();
-    Object localObject = com.tencent.mm.model.c.apO().rm(paramLong);
-    if (((du)localObject).field_msgId == 0L)
+    az.ayM();
+    Object localObject = com.tencent.mm.model.c.awD().vP(paramLong);
+    if (((dy)localObject).field_msgId == 0L)
     {
       localObject = Boolean.FALSE;
       AppMethodBeat.o(23328);
       return localObject;
     }
-    String str = ((du)localObject).field_content;
+    String str = ((dy)localObject).field_content;
     boolean bool1 = bool2;
-    if (((bl)localObject).getType() == 49)
+    if (((bo)localObject).getType() == 49)
     {
-      localObject = k.b.rx(str);
+      localObject = k.b.vA(str);
       bool1 = bool2;
       if (localObject != null)
       {
@@ -1226,82 +1227,82 @@ public final class g
     return Boolean.valueOf(bool1);
   }
   
-  static Boolean oJ(long paramLong)
+  static Boolean sv(long paramLong)
   {
     AppMethodBeat.i(23329);
     boolean bool = false;
-    az.arV();
-    Object localObject = com.tencent.mm.model.c.apO().rm(paramLong);
-    if (((du)localObject).field_msgId == 0L)
+    az.ayM();
+    Object localObject = com.tencent.mm.model.c.awD().vP(paramLong);
+    if (((dy)localObject).field_msgId == 0L)
     {
       localObject = Boolean.FALSE;
       AppMethodBeat.o(23329);
       return localObject;
     }
-    if (((bl)localObject).getType() == 3) {
+    if (((bo)localObject).getType() == 3) {
       bool = true;
     }
     AppMethodBeat.o(23329);
     return Boolean.valueOf(bool);
   }
   
-  static Boolean oK(long paramLong)
+  static Boolean sw(long paramLong)
   {
     AppMethodBeat.i(23330);
     boolean bool = false;
-    az.arV();
-    Object localObject = com.tencent.mm.model.c.apO().rm(paramLong);
-    if (((du)localObject).field_msgId == 0L)
+    az.ayM();
+    Object localObject = com.tencent.mm.model.c.awD().vP(paramLong);
+    if (((dy)localObject).field_msgId == 0L)
     {
       localObject = Boolean.FALSE;
       AppMethodBeat.o(23330);
       return localObject;
     }
-    if (((bl)localObject).eMb()) {
+    if (((bo)localObject).fbG()) {
       bool = true;
     }
     AppMethodBeat.o(23330);
     return Boolean.valueOf(bool);
   }
   
-  static Boolean oL(long paramLong)
+  static Boolean sx(long paramLong)
   {
     AppMethodBeat.i(23331);
     boolean bool = false;
-    az.arV();
-    Object localObject = com.tencent.mm.model.c.apO().rm(paramLong);
-    if (((du)localObject).field_msgId == 0L)
+    az.ayM();
+    Object localObject = com.tencent.mm.model.c.awD().vP(paramLong);
+    if (((dy)localObject).field_msgId == 0L)
     {
       localObject = Boolean.FALSE;
       AppMethodBeat.o(23331);
       return localObject;
     }
-    if (((bl)localObject).getType() == 62) {
+    if (((bo)localObject).getType() == 62) {
       bool = true;
     }
     AppMethodBeat.o(23331);
     return Boolean.valueOf(bool);
   }
   
-  private String oM(long paramLong)
+  private String sy(long paramLong)
   {
     AppMethodBeat.i(23337);
     String str = "";
-    az.arV();
-    Object localObject1 = com.tencent.mm.model.c.apO().rm(paramLong);
-    if (((du)localObject1).field_msgId == 0L)
+    az.ayM();
+    Object localObject1 = com.tencent.mm.model.c.awD().vP(paramLong);
+    if (((dy)localObject1).field_msgId == 0L)
     {
       AppMethodBeat.o(23337);
       return "";
     }
-    int i = ((bl)localObject1).getType();
-    Object localObject2 = ((du)localObject1).field_content;
-    if (((bl)localObject1).cxB())
+    int i = ((bo)localObject1).getType();
+    Object localObject2 = ((dy)localObject1).field_content;
+    if (((bo)localObject1).cKN())
     {
-      localObject2 = k.b.rx((String)localObject2);
+      localObject2 = k.b.vA((String)localObject2);
       if ((localObject2 != null) && ((((k.b)localObject2).type == 6) || (((k.b)localObject2).type == 2)))
       {
-        localObject1 = ap.bxS().aAL(((k.b)localObject2).dbA);
+        localObject1 = ap.bEO().aGd(((k.b)localObject2).cZa);
         if (localObject1 != null) {
           localObject1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath;
         }
@@ -1311,7 +1312,7 @@ public final class g
     {
       AppMethodBeat.o(23337);
       return localObject1;
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "getFilePath attInfo is null");
+      ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "getFilePath attInfo is null");
       localObject1 = str;
       continue;
       localObject1 = str;
@@ -1323,33 +1324,33 @@ public final class g
         }
         else
         {
-          this.oUZ = true;
+          this.pyk = true;
           localObject1 = str;
           continue;
           if (i == 3)
           {
-            localObject2 = com.tencent.mm.aw.o.ayF().I((bl)localObject1);
+            localObject2 = com.tencent.mm.av.o.aFx().I((bo)localObject1);
             localObject1 = str;
             if (localObject2 != null)
             {
-              str = com.tencent.mm.aw.o.ayF().yg(((com.tencent.mm.aw.e)localObject2).hgj);
+              str = com.tencent.mm.av.o.aFx().Cl(((com.tencent.mm.av.e)localObject2).hGM);
               localObject1 = str;
-              if (bt.isNullOrNil(str)) {
-                localObject1 = com.tencent.mm.aw.o.ayF().yg(((com.tencent.mm.aw.e)localObject2).hgl);
+              if (bs.isNullOrNil(str)) {
+                localObject1 = com.tencent.mm.av.o.aFx().Cl(((com.tencent.mm.av.e)localObject2).hGO);
               }
             }
           }
           else if (i == 62)
           {
-            com.tencent.mm.modelvideo.o.aCI();
-            localObject1 = t.zQ(((du)localObject1).field_imgPath);
+            com.tencent.mm.modelvideo.o.aJy();
+            localObject1 = t.DV(((dy)localObject1).field_imgPath);
           }
           else
           {
             localObject1 = str;
             if (i == 48)
             {
-              this.oUZ = true;
+              this.pyk = true;
               localObject1 = str;
             }
           }
@@ -1358,31 +1359,31 @@ public final class g
     }
   }
   
-  final bpi a(TimeLineObject paramTimeLineObject)
+  final btz a(TimeLineObject paramTimeLineObject)
   {
     AppMethodBeat.i(23333);
-    paramTimeLineObject = paramTimeLineObject.Etm.DaC.iterator();
+    paramTimeLineObject = paramTimeLineObject.FQo.Etz.iterator();
     while (paramTimeLineObject.hasNext())
     {
-      bpi localbpi = (bpi)paramTimeLineObject.next();
-      if (localbpi.Id.equals(this.oVd))
+      btz localbtz = (btz)paramTimeLineObject.next();
+      if (localbtz.Id.equals(this.pyo))
       {
         AppMethodBeat.o(23333);
-        return localbpi;
+        return localbtz;
       }
     }
     AppMethodBeat.o(23333);
     return null;
   }
   
-  final boolean a(bgs parambgs, long paramLong)
+  final boolean a(bkk parambkk, long paramLong)
   {
     AppMethodBeat.i(23335);
     int j = -1;
     Object localObject4 = null;
     Object localObject5 = null;
     Object localObject6 = null;
-    String str = oM(paramLong);
+    String str = sy(paramLong);
     Object localObject3 = localObject6;
     Object localObject2 = localObject5;
     Object localObject1 = localObject4;
@@ -1399,142 +1400,142 @@ public final class g
         localObject2 = ((com.tencent.mm.vfs.e)localObject1).getName();
         i = (int)((com.tencent.mm.vfs.e)localObject1).length();
         localObject3 = ((String)localObject2).substring(((String)localObject2).lastIndexOf(".") + 1, ((String)localObject2).length());
-        localObject1 = i.aEN(str);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "filePath %s", new Object[] { str });
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "fileSize %s", new Object[] { Integer.valueOf(i) });
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "fileMd5 %s", new Object[] { localObject1 });
+        localObject1 = i.aKe(str);
+        ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "filePath %s", new Object[] { str });
+        ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "fileSize %s", new Object[] { Integer.valueOf(i) });
+        ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "fileMd5 %s", new Object[] { localObject1 });
       }
     }
-    az.arV();
-    localObject4 = com.tencent.mm.model.c.apO().rm(paramLong);
-    if (((du)localObject4).field_msgId == 0L)
+    az.ayM();
+    localObject4 = com.tencent.mm.model.c.awD().vP(paramLong);
+    if (((dy)localObject4).field_msgId == 0L)
     {
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "msgInfo or msgInfo.getMsgId() = 0");
+      ac.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "msgInfo or msgInfo.getMsgId() = 0");
       AppMethodBeat.o(23335);
       return false;
     }
-    switch (((bl)localObject4).getType())
+    switch (((bo)localObject4).getType())
     {
     }
     for (;;)
     {
       AppMethodBeat.o(23335);
       return true;
-      localObject3 = k.b.rx(((du)localObject4).field_content);
+      localObject3 = k.b.vA(((dy)localObject4).field_content);
       if (localObject3 == null)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "get content is null");
+        ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "get content is null");
         AppMethodBeat.o(23335);
         return false;
       }
       if (((k.b)localObject3).type == 3)
       {
-        localObject1 = new bgv();
-        ((bgv)localObject1).Title = ((k.b)localObject3).title;
-        ((bgv)localObject1).DEO = ((k.b)localObject3).description;
-        ((bgv)localObject1).Url = ((k.b)localObject3).url;
-        ((bgv)localObject1).DEP = ((k.b)localObject3).gHd;
-        ((bgv)localObject1).CXg = ((k.b)localObject3).gHA;
-        ((bgv)localObject1).DEQ = ((k.b)localObject3).gHB;
-        ((bgv)localObject1).scR = ((k.b)localObject3).appName;
-        if (bt.isNullOrNil(((bgv)localObject1).scR))
+        localObject1 = new bkn();
+        ((bkn)localObject1).Title = ((k.b)localObject3).title;
+        ((bkn)localObject1).Faj = ((k.b)localObject3).description;
+        ((bkn)localObject1).Url = ((k.b)localObject3).url;
+        ((bkn)localObject1).Fak = ((k.b)localObject3).hhE;
+        ((bkn)localObject1).EpP = ((k.b)localObject3).hib;
+        ((bkn)localObject1).Fal = ((k.b)localObject3).hic;
+        ((bkn)localObject1).tkL = ((k.b)localObject3).appName;
+        if (bs.isNullOrNil(((bkn)localObject1).tkL))
         {
-          localObject2 = com.tencent.mm.pluginsdk.model.app.h.fv(((k.b)localObject3).appId, ((k.b)localObject3).aAS);
+          localObject2 = com.tencent.mm.pluginsdk.model.app.h.fA(((k.b)localObject3).appId, ((k.b)localObject3).aBM);
           if (localObject2 != null) {
-            ((bgv)localObject1).scR = ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_appName;
+            ((bkn)localObject1).tkL = ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_appName;
           }
         }
-        ((bgv)localObject1).DER = ((k.b)localObject3).gHu;
-        ((bgv)localObject1).DES = ((k.b)localObject3).gHv;
-        ((bgv)localObject1).DET = ((k.b)localObject3).gHy;
-        parambgs.DED = ((bgv)localObject1);
-        parambgs.DEC = 1;
+        ((bkn)localObject1).Fam = ((k.b)localObject3).hhV;
+        ((bkn)localObject1).Fan = ((k.b)localObject3).hhW;
+        ((bkn)localObject1).Fao = ((k.b)localObject3).hhZ;
+        parambkk.EZY = ((bkn)localObject1);
+        parambkk.EZX = 1;
       }
       else if (((k.b)localObject3).type == 6)
       {
-        localObject2 = new bgr();
-        ((bgr)localObject2).Type = ((k.b)localObject3).gHf;
-        ((bgr)localObject2).Name = ((k.b)localObject3).title;
-        ((bgr)localObject2).mBC = i;
-        ((bgr)localObject2).Md5 = ((String)localObject1);
-        parambgs.DEG = ((bgr)localObject2);
-        parambgs.DEC = 4;
+        localObject2 = new bkj();
+        ((bkj)localObject2).Type = ((k.b)localObject3).hhG;
+        ((bkj)localObject2).Name = ((k.b)localObject3).title;
+        ((bkj)localObject2).ndD = i;
+        ((bkj)localObject2).Md5 = ((String)localObject1);
+        parambkk.Fab = ((bkj)localObject2);
+        parambkk.EZX = 4;
       }
       else if (((k.b)localObject3).type == 5)
       {
-        localObject1 = new bgw();
-        ((bgw)localObject1).Url = ((k.b)localObject3).url;
-        ((bgw)localObject1).Title = ((k.b)localObject3).title;
-        ((bgw)localObject1).DEO = ((k.b)localObject3).description;
-        ((bgw)localObject1).scR = ((k.b)localObject3).appName;
-        if (bt.isNullOrNil(((bgw)localObject1).scR))
+        localObject1 = new bko();
+        ((bko)localObject1).Url = ((k.b)localObject3).url;
+        ((bko)localObject1).Title = ((k.b)localObject3).title;
+        ((bko)localObject1).Faj = ((k.b)localObject3).description;
+        ((bko)localObject1).tkL = ((k.b)localObject3).appName;
+        if (bs.isNullOrNil(((bko)localObject1).tkL))
         {
-          localObject2 = com.tencent.mm.pluginsdk.model.app.h.fv(((k.b)localObject3).appId, ((k.b)localObject3).aAS);
+          localObject2 = com.tencent.mm.pluginsdk.model.app.h.fA(((k.b)localObject3).appId, ((k.b)localObject3).aBM);
           if (localObject2 != null) {
-            ((bgw)localObject1).scR = ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_appName;
+            ((bko)localObject1).tkL = ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_appName;
           }
         }
-        parambgs.DEH = ((bgw)localObject1);
-        parambgs.DEC = 5;
+        parambkk.Fac = ((bko)localObject1);
+        parambkk.EZX = 5;
       }
       else if (((k.b)localObject3).type == 2)
       {
-        localObject3 = new bgt();
-        ((bgt)localObject3).Type = "jpg";
-        ((bgt)localObject3).Name = ((String)localObject2);
-        ((bgt)localObject3).mBC = i;
-        ((bgt)localObject3).Md5 = ((String)localObject1);
-        parambgs.DEF = ((bgt)localObject3);
-        parambgs.DEC = 3;
+        localObject3 = new bkl();
+        ((bkl)localObject3).Type = "jpg";
+        ((bkl)localObject3).Name = ((String)localObject2);
+        ((bkl)localObject3).ndD = i;
+        ((bkl)localObject3).Md5 = ((String)localObject1);
+        parambkk.Faa = ((bkl)localObject3);
+        parambkk.EZX = 3;
         continue;
-        localObject4 = new bgt();
-        ((bgt)localObject4).Type = ((String)localObject3);
-        ((bgt)localObject4).Name = ((String)localObject2);
-        ((bgt)localObject4).mBC = i;
-        ((bgt)localObject4).Md5 = ((String)localObject1);
-        parambgs.DEF = ((bgt)localObject4);
-        parambgs.DEC = 3;
+        localObject4 = new bkl();
+        ((bkl)localObject4).Type = ((String)localObject3);
+        ((bkl)localObject4).Name = ((String)localObject2);
+        ((bkl)localObject4).ndD = i;
+        ((bkl)localObject4).Md5 = ((String)localObject1);
+        parambkk.Faa = ((bkl)localObject4);
+        parambkk.EZX = 3;
         continue;
-        az.arV();
-        localObject1 = com.tencent.mm.model.c.apO().agD(((du)localObject4).field_content);
-        localObject2 = new bgu();
-        ((bgu)localObject2).DEK = ((float)((bl.b)localObject1).sOv);
-        ((bgu)localObject2).DEL = ((float)((bl.b)localObject1).sOw);
-        ((bgu)localObject2).DEM = ((bl.b)localObject1).dpd;
-        ((bgu)localObject2).Label = ((bl.b)localObject1).label;
-        ((bgu)localObject2).DEN = ((bl.b)localObject1).goQ;
-        parambgs.DEE = ((bgu)localObject2);
-        parambgs.DEC = 2;
+        az.ayM();
+        localObject1 = com.tencent.mm.model.c.awD().alx(((dy)localObject4).field_content);
+        localObject2 = new bkm();
+        ((bkm)localObject2).Faf = ((float)((bo.b)localObject1).tWI);
+        ((bkm)localObject2).Fag = ((float)((bo.b)localObject1).tWJ);
+        ((bkm)localObject2).Fah = ((bo.b)localObject1).dmN;
+        ((bkm)localObject2).Label = ((bo.b)localObject1).label;
+        ((bkm)localObject2).Fai = ((bo.b)localObject1).gPy;
+        parambkk.EZZ = ((bkm)localObject2);
+        parambkk.EZX = 2;
         continue;
-        localObject4 = new bgx();
-        ((bgx)localObject4).Type = ((String)localObject3);
-        ((bgx)localObject4).mBC = i;
-        ((bgx)localObject4).Md5 = ((String)localObject1);
-        ((bgx)localObject4).Name = ((String)localObject2);
-        parambgs.DEI = ((bgx)localObject4);
-        parambgs.DEC = 6;
+        localObject4 = new bkp();
+        ((bkp)localObject4).Type = ((String)localObject3);
+        ((bkp)localObject4).ndD = i;
+        ((bkp)localObject4).Md5 = ((String)localObject1);
+        ((bkp)localObject4).Name = ((String)localObject2);
+        parambkk.Fad = ((bkp)localObject4);
+        parambkk.EZX = 6;
       }
     }
   }
   
-  public final TimeLineObject bZv()
+  public final TimeLineObject cgE()
   {
     AppMethodBeat.i(23334);
-    Object localObject = new ja();
-    ((ja)localObject).dmY.dgg = this.oVb;
-    a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
-    localObject = ((ja)localObject).dmZ.dna;
+    Object localObject = new jh();
+    ((jh)localObject).dkG.ddB = this.pym;
+    a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+    localObject = ((jh)localObject).dkH.dkI;
     AppMethodBeat.o(23334);
     return localObject;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(23339);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (paramn == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "scene is null.");
+      ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "scene is null.");
       AppMethodBeat.o(23339);
       return;
     }
@@ -1543,91 +1544,91 @@ public final class g
       Object localObject = (n)paramn;
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "NetSceneGetAppMsgInfo onSceneEnd, errType(%d) errCode(%d) errMsg(%s).", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-        ff(((n)localObject).cLR, this.oVf);
+        ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "NetSceneGetAppMsgInfo onSceneEnd, errType(%d) errCode(%d) errMsg(%s).", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        fs(((n)localObject).cIZ, this.pyq);
         AppMethodBeat.o(23339);
         return;
       }
-      if ((((n)localObject).rr != null) && (((n)localObject).rr.gUT.gUX != null)) {}
-      for (paramString = (ddt)((n)localObject).rr.gUT.gUX;; paramString = null)
+      if ((((n)localObject).rr != null) && (((n)localObject).rr.hvs.hvw != null)) {}
+      for (paramString = (dji)((n)localObject).rr.hvs.hvw;; paramString = null)
       {
-        paramn = paramString.Evs;
-        if (1 != ((n)localObject).oWg) {
+        paramn = paramString.FSv;
+        if (1 != ((n)localObject).pzr) {
           break;
         }
-        ff(((n)localObject).cLR, this.oVe);
+        fs(((n)localObject).cIZ, this.pyp);
         AppMethodBeat.o(23339);
         return;
       }
-      localObject = ((n)localObject).cLR;
-      String str = (String)this.oVo.get(localObject);
-      ff((String)localObject, this.oVg);
-      if ((this.oVa) && (this.oVb != null)) {}
-      for (paramString = this.oVc; (str == null) || (str.length() == 0); paramString = oM(this.fll))
+      localObject = ((n)localObject).cIZ;
+      String str = (String)this.pyz.get(localObject);
+      fs((String)localObject, this.pyr);
+      if ((this.pyl) && (this.pym != null)) {}
+      for (paramString = this.pyn; (str == null) || (str.length() == 0); paramString = sy(this.foF))
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "mDeviceInfo error");
-        ff((String)localObject, this.oVf);
+        ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "mDeviceInfo error");
+        fs((String)localObject, this.pyq);
         AppMethodBeat.o(23339);
         return;
       }
-      if (!this.oUY)
+      if (!this.pyj)
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "onItemClick stop scan...");
+        ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "onItemClick stop scan...");
         Java2CExDevice.stopScanWCLanDevice();
-        this.oUY = true;
+        this.pyj = true;
       }
-      if ((!this.oVq.containsKey(localObject)) || (!((Boolean)this.oVq.get(localObject)).booleanValue()))
+      if ((!this.pyB.containsKey(localObject)) || (!((Boolean)this.pyB.get(localObject)).booleanValue()))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "connectWCLanDevice mDeviceInfo: ".concat(String.valueOf(str)));
+        ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "connectWCLanDevice mDeviceInfo: ".concat(String.valueOf(str)));
         if (Java2CExDevice.connectWCLanDevice(str.getBytes(), true) != 0)
         {
-          ff((String)localObject, this.oVf);
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "connectWCLanDevice error!");
+          fs((String)localObject, this.pyq);
+          ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "connectWCLanDevice error!");
         }
       }
-      if (this.oUZ)
+      if (this.pyk)
       {
         paramInt1 = Java2CExDevice.useWCLanDeviceService(str.getBytes(), paramn.getBytes());
         if (paramInt1 != 0)
         {
-          this.oVA.put(Integer.valueOf(paramInt1), localObject);
-          this.oVp.put(localObject, Integer.valueOf(paramInt1));
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "get useWCLanDeviceService mCallBackCmdId: ".concat(String.valueOf(paramInt1)));
+          this.pyL.put(Integer.valueOf(paramInt1), localObject);
+          this.pyA.put(localObject, Integer.valueOf(paramInt1));
+          ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "get useWCLanDeviceService mCallBackCmdId: ".concat(String.valueOf(paramInt1)));
           AppMethodBeat.o(23339);
           return;
         }
-        ff((String)localObject, this.oVf);
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "useWCLanDeviceService error!");
+        fs((String)localObject, this.pyq);
+        ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "useWCLanDeviceService error!");
         AppMethodBeat.o(23339);
         return;
       }
       if ((paramString == null) || (paramString.length() == 0))
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "file path is error");
-        ff((String)localObject, this.oVf);
+        ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "file path is error");
+        fs((String)localObject, this.pyq);
         AppMethodBeat.o(23339);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "sendDataToNearFieldDevice %s", new Object[] { paramString });
+      ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "sendDataToNearFieldDevice %s", new Object[] { paramString });
       paramString = com.tencent.mm.b.q.k(paramString, false);
       paramInt1 = Java2CExDevice.sendFileToWCLanDevice(str.getBytes(), paramn.getBytes(), paramString.getBytes());
       if (paramInt1 != 0)
       {
-        this.oVA.put(Integer.valueOf(paramInt1), localObject);
-        this.oVp.put(localObject, Integer.valueOf(paramInt1));
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "get sendFileToWCLanDevice mCallBackCmdId =".concat(String.valueOf(paramInt1)));
+        this.pyL.put(Integer.valueOf(paramInt1), localObject);
+        this.pyA.put(localObject, Integer.valueOf(paramInt1));
+        ac.d("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "get sendFileToWCLanDevice mCallBackCmdId =".concat(String.valueOf(paramInt1)));
         AppMethodBeat.o(23339);
         return;
       }
-      ff((String)localObject, this.oVf);
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "sendFileToWCLanDevice error!");
+      fs((String)localObject, this.pyq);
+      ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "sendFileToWCLanDevice error!");
     }
     AppMethodBeat.o(23339);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.g
  * JD-Core Version:    0.7.0.1
  */

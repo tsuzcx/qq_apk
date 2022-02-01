@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public abstract class a<CONTEXT extends b>
 {
-  CONTEXT bZT;
+  CONTEXT bWQ;
   
   public abstract void a(a<CONTEXT>.a parama);
   
@@ -15,33 +15,33 @@ public abstract class a<CONTEXT extends b>
   
   public final class a
   {
-    public CONTEXT bZU;
-    public k bZV;
+    public CONTEXT bWR;
+    public k bWS;
     
     public a() {}
     
     public final void a(String paramString, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(140370);
-      this.bZV.a(paramString, paramJSONObject);
+      this.bWS.a(paramString, paramJSONObject);
       AppMethodBeat.o(140370);
     }
     
     public final void c(String paramString, Map<String, Object> paramMap)
     {
       AppMethodBeat.i(140369);
-      k localk = this.bZV;
+      k localk = this.bWS;
       String str = paramString;
       if (paramString == null) {
         str = "";
       }
-      localk.bZu = str;
+      localk.bWr = str;
       if (paramMap != null) {}
       for (paramString = new JSONObject(paramMap);; paramString = null)
       {
-        localk.bZv = paramString;
-        if (localk.bZo != 0) {
-          localk.AI();
+        localk.bWs = paramString;
+        if (localk.bWl != 0) {
+          localk.Am();
         }
         AppMethodBeat.o(140369);
         return;

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
 final class RecyclerViewDrawerSquares$h$1
   implements Runnable
 {
@@ -13,7 +13,7 @@ final class RecyclerViewDrawerSquares$h$1
   public final void run()
   {
     AppMethodBeat.i(164674);
-    this.HZf.invoke();
+    this.JzV.invoke();
     AppMethodBeat.o(164674);
   }
 }

@@ -9,7 +9,7 @@ abstract class l<K, V>
 {
   public void clear()
   {
-    zQ().clear();
+    zD().clear();
   }
   
   public boolean contains(@Nullable Object paramObject)
@@ -17,7 +17,7 @@ abstract class l<K, V>
     if ((paramObject instanceof Map.Entry))
     {
       paramObject = (Map.Entry)paramObject;
-      return zQ().j(paramObject.getKey(), paramObject.getValue());
+      return zD().j(paramObject.getKey(), paramObject.getValue());
     }
     return false;
   }
@@ -27,17 +27,17 @@ abstract class l<K, V>
     if ((paramObject instanceof Map.Entry))
     {
       paramObject = (Map.Entry)paramObject;
-      return zQ().remove(paramObject.getKey(), paramObject.getValue());
+      return zD().remove(paramObject.getKey(), paramObject.getValue());
     }
     return false;
   }
   
   public int size()
   {
-    return zQ().size();
+    return zD().size();
   }
   
-  abstract k<K, V> zQ();
+  abstract k<K, V> zD();
 }
 
 

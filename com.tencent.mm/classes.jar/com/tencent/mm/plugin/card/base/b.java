@@ -1,87 +1,87 @@
 package com.tencent.mm.plugin.card.base;
 
-import com.tencent.mm.protocal.protobuf.csx;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.protocal.protobuf.rh;
-import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.protocal.protobuf.cyg;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.rr;
+import com.tencent.mm.protocal.protobuf.ry;
 
 public abstract interface b
 {
-  public abstract void Qh(String paramString);
+  public abstract void Ut(String paramString);
   
-  public abstract void a(qo paramqo);
+  public abstract void a(qy paramqy);
   
-  public abstract void a(rh paramrh);
+  public abstract void a(rr paramrr);
   
-  public abstract boolean bHA();
+  public abstract boolean bON();
   
-  public abstract boolean bHB();
+  public abstract boolean bOO();
   
-  public abstract boolean bHC();
+  public abstract boolean bOP();
   
-  public abstract boolean bHD();
+  public abstract boolean bOQ();
   
-  public abstract boolean bHE();
+  public abstract boolean bOR();
   
-  public abstract boolean bHF();
+  public abstract boolean bOS();
   
-  public abstract boolean bHG();
+  public abstract boolean bOT();
   
-  public abstract boolean bHH();
+  public abstract boolean bOU();
   
-  public abstract boolean bHI();
+  public abstract boolean bOV();
   
-  public abstract boolean bHJ();
+  public abstract boolean bOW();
   
-  public abstract boolean bHK();
+  public abstract boolean bOX();
   
-  public abstract boolean bHL();
+  public abstract boolean bOY();
   
-  public abstract boolean bHM();
+  public abstract boolean bOZ();
   
-  public abstract boolean bHN();
+  public abstract boolean bPa();
   
-  public abstract boolean bHO();
+  public abstract boolean bPb();
   
-  public abstract boolean bHP();
+  public abstract boolean bPc();
   
-  public abstract boolean bHQ();
+  public abstract boolean bPd();
   
-  public abstract boolean bHR();
+  public abstract boolean bPe();
   
-  public abstract boolean bHS();
+  public abstract boolean bPf();
   
-  public abstract boolean bHT();
+  public abstract boolean bPg();
   
-  public abstract boolean bHU();
+  public abstract boolean bPh();
   
-  public abstract ro bHV();
+  public abstract ry bPi();
   
-  public abstract qo bHW();
+  public abstract qy bPj();
   
-  public abstract csx bHX();
+  public abstract cyg bPk();
   
-  public abstract rh bHY();
+  public abstract rr bPl();
   
-  public abstract String bHZ();
+  public abstract String bPm();
   
-  public abstract String bIa();
+  public abstract String bPn();
   
-  public abstract String bIb();
+  public abstract String bPo();
   
-  public abstract long bIc();
+  public abstract long bPp();
   
-  public abstract String bId();
+  public abstract String bPq();
   
-  public abstract int bIe();
+  public abstract int bPr();
   
-  public abstract String bIf();
+  public abstract String bPs();
   
   public abstract long getEndTime();
   
   public abstract boolean isAcceptable();
   
-  public abstract String yO(int paramInt);
+  public abstract String zE(int paramInt);
 }
 
 

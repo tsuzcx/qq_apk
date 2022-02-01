@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.ipcall.model.b.b;
 import com.tencent.mm.plugin.ipcall.model.e.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class c
   extends b
 {
-  private h sDP;
+  private h tLx;
   
-  public final void Ca() {}
+  public final void BE() {}
   
   public final void b(com.tencent.mm.plugin.ipcall.model.b.c paramc)
   {
     AppMethodBeat.i(25516);
-    if (this.sAl != null)
+    if (this.tHV != null)
     {
-      this.sDP = new h(this.sAl.roomId, this.sAl.sAY, this.sAl.sAZ);
-      az.aeS().a(this.sDP, 0);
+      this.tLx = new h(this.tHV.roomId, this.tHV.tIG, this.tHV.tIH);
+      az.agi().a(this.tLx, 0);
     }
     AppMethodBeat.o(25516);
   }
   
-  public final int[] cHx()
+  public final int[] cUI()
   {
     return new int[] { 824 };
   }
   
-  public final void cHy()
+  public final void cUJ()
   {
     AppMethodBeat.i(25517);
-    ad.d("MicroMsg.IPCallHeartBeatService", "heartbeat, onLoopSuccess");
+    ac.d("MicroMsg.IPCallHeartBeatService", "heartbeat, onLoopSuccess");
     AppMethodBeat.o(25517);
   }
   
-  public final void cHz()
+  public final void cUK()
   {
     AppMethodBeat.i(25518);
-    ad.d("MicroMsg.IPCallHeartBeatService", "heartbeat, onLoopFailed");
+    ac.d("MicroMsg.IPCallHeartBeatService", "heartbeat, onLoopFailed");
     AppMethodBeat.o(25518);
   }
   
@@ -59,8 +59,8 @@ public final class c
   public final void onStop()
   {
     AppMethodBeat.i(25515);
-    if (this.sDP != null) {
-      az.aeS().a(this.sDP);
+    if (this.tLx != null) {
+      az.agi().a(this.tLx);
     }
     AppMethodBeat.o(25515);
   }

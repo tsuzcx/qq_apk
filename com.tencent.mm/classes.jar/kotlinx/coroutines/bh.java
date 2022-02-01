@@ -1,55 +1,31 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
+import d.d.f;
+import d.d.g;
 import d.l;
-import d.y;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/InvokeOnCancelling;", "Lkotlinx/coroutines/Job;", "job", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "handler", "<init>", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "(Ljava/lang/Throwable;)V", "", "toString", "()Ljava/lang/String;", "Lkotlin/jvm/functions/Function1;", "kotlinx-coroutines-core", "Lkotlinx/coroutines/JobCancellingNode;"})
-final class bh
-  extends bl<bj>
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/GlobalScope;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlinx-coroutines-core"})
+public final class bh
+  implements ag
 {
-  private static final AtomicIntegerFieldUpdater Kep;
-  private volatile int _invoked;
-  private final b<Throwable, y> jGI;
+  public static final bh LRM;
   
   static
   {
-    AppMethodBeat.i(118220);
-    Kep = AtomicIntegerFieldUpdater.newUpdater(bh.class, "_invoked");
-    AppMethodBeat.o(118220);
+    AppMethodBeat.i(118184);
+    LRM = new bh();
+    AppMethodBeat.o(118184);
   }
   
-  public bh(bj parambj, b<? super Throwable, y> paramb)
+  public final f gde()
   {
-    super(parambj);
-    AppMethodBeat.i(118219);
-    this.jGI = paramb;
-    this._invoked = 0;
-    AppMethodBeat.o(118219);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118218);
-    String str = "InvokeOnCancelling[" + getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
-    AppMethodBeat.o(118218);
-    return str;
-  }
-  
-  public final void u(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118216);
-    if (Kep.compareAndSet(this, 0, 1)) {
-      this.jGI.aA(paramThrowable);
-    }
-    AppMethodBeat.o(118216);
+    return (f)g.KTZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.bh
  * JD-Core Version:    0.7.0.1
  */

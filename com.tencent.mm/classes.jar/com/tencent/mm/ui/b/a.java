@@ -16,8 +16,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class a
 {
-  private MenuInflater VF;
-  b VJ = null;
+  private MenuInflater WA;
+  b WE = null;
   public ActionBar mActionBar;
   final Activity mActivity;
   
@@ -28,23 +28,23 @@ public abstract class a
   
   private b startSupportActionMode(b.a parama)
   {
-    if (this.VJ != null) {
-      this.VJ.finish();
+    if (this.WE != null) {
+      this.WE.finish();
     }
     parama = new a(parama);
     ActionBar localActionBar = getSupportActionBar();
     if (localActionBar != null) {
-      this.VJ = localActionBar.a(parama);
+      this.WE = localActionBar.a(parama);
     }
-    return this.VJ;
+    return this.WE;
   }
   
-  abstract ActionBar eSg();
+  abstract ActionBar fhQ();
   
   public final MenuInflater getMenuInflater()
   {
     ActionBar localActionBar;
-    if (this.VF == null)
+    if (this.WA == null)
     {
       localActionBar = getSupportActionBar();
       if (localActionBar == null) {
@@ -52,15 +52,15 @@ public abstract class a
       }
     }
     label36:
-    for (this.VF = new g(localActionBar.getThemedContext());; this.VF = new g(this.mActivity)) {
-      return this.VF;
+    for (this.WA = new g(localActionBar.getThemedContext());; this.WA = new g(this.mActivity)) {
+      return this.WA;
     }
   }
   
   final ActionBar getSupportActionBar()
   {
     if (this.mActionBar == null) {
-      this.mActionBar = eSg();
+      this.mActionBar = fhQ();
     }
     return this.mActionBar;
   }
@@ -79,25 +79,25 @@ public abstract class a
   final class a
     implements b.a
   {
-    private b.a Wq;
+    private b.a Xl;
     
     public a(b.a parama)
     {
-      this.Wq = parama;
+      this.Xl = parama;
     }
     
     public final void a(b paramb)
     {
       AppMethodBeat.i(141508);
-      this.Wq.a(paramb);
-      a.this.VJ = null;
+      this.Xl.a(paramb);
+      a.this.WE = null;
       AppMethodBeat.o(141508);
     }
     
     public final boolean a(b paramb, Menu paramMenu)
     {
       AppMethodBeat.i(141505);
-      boolean bool = this.Wq.a(paramb, paramMenu);
+      boolean bool = this.Xl.a(paramb, paramMenu);
       AppMethodBeat.o(141505);
       return bool;
     }
@@ -105,7 +105,7 @@ public abstract class a
     public final boolean a(b paramb, MenuItem paramMenuItem)
     {
       AppMethodBeat.i(141507);
-      boolean bool = this.Wq.a(paramb, paramMenuItem);
+      boolean bool = this.Xl.a(paramb, paramMenuItem);
       AppMethodBeat.o(141507);
       return bool;
     }
@@ -113,7 +113,7 @@ public abstract class a
     public final boolean b(b paramb, Menu paramMenu)
     {
       AppMethodBeat.i(141506);
-      boolean bool = this.Wq.b(paramb, paramMenu);
+      boolean bool = this.Xl.b(paramb, paramMenu);
       AppMethodBeat.o(141506);
       return bool;
     }
@@ -121,7 +121,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

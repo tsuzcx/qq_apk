@@ -15,35 +15,35 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class d
   implements Handler.Callback
 {
-  Handler IAj;
-  final d IAk;
-  HashSet<e> IAl;
-  LinkedList<e> IAm;
-  final LinkedList<c> IAn;
-  c[] IAo;
-  AtomicBoolean IyI;
+  AtomicBoolean Kar;
+  Handler KbS;
+  final d KbT;
+  HashSet<e> KbU;
+  LinkedList<e> KbV;
+  final LinkedList<c> KbW;
+  c[] KbX;
   boolean isRunning;
   
   d(d paramd)
   {
     AppMethodBeat.i(183466);
-    this.IAj = com.tencent.e.e.d.a("SerialQueueLeader", this);
-    this.IyI = new AtomicBoolean(false);
+    this.KbS = com.tencent.e.e.d.a("SerialQueueLeader", this);
+    this.Kar = new AtomicBoolean(false);
     this.isRunning = false;
-    this.IAl = new HashSet();
-    this.IAm = new LinkedList();
-    this.IAn = new LinkedList();
-    this.IAk = paramd;
+    this.KbU = new HashSet();
+    this.KbV = new LinkedList();
+    this.KbW = new LinkedList();
+    this.KbT = paramd;
     AppMethodBeat.o(183466);
   }
   
-  private LinkedList<e> jdMethod_for()
+  private LinkedList<e> fEH()
   {
     AppMethodBeat.i(183474);
     try
     {
-      LinkedList localLinkedList = new LinkedList(this.IAm);
-      localLinkedList.addAll(this.IAl);
+      LinkedList localLinkedList = new LinkedList(this.KbV);
+      localLinkedList.addAll(this.KbU);
       return localLinkedList;
     }
     finally
@@ -59,7 +59,7 @@ public final class d
     //   0: ldc 98
     //   2: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 64	com/tencent/e/j/d:IyI	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   6: getfield 64	com/tencent/e/j/d:Kar	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   9: invokevirtual 102	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   12: ifeq +9 -> 21
     //   15: ldc 98
@@ -75,7 +75,7 @@ public final class d
     //   33: lcmp
     //   34: ifle +68 -> 102
     //   37: aload_0
-    //   38: getfield 57	com/tencent/e/j/d:IAj	Landroid/os/Handler;
+    //   38: getfield 57	com/tencent/e/j/d:KbS	Landroid/os/Handler;
     //   41: invokevirtual 108	android/os/Handler:obtainMessage	()Landroid/os/Message;
     //   44: astore 5
     //   46: aload 5
@@ -87,12 +87,12 @@ public final class d
     //   58: aload_0
     //   59: monitorenter
     //   60: aload_0
-    //   61: getfield 71	com/tencent/e/j/d:IAl	Ljava/util/HashSet;
+    //   61: getfield 71	com/tencent/e/j/d:KbU	Ljava/util/HashSet;
     //   64: aload_3
     //   65: invokevirtual 122	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   68: pop
     //   69: aload_0
-    //   70: getfield 57	com/tencent/e/j/d:IAj	Landroid/os/Handler;
+    //   70: getfield 57	com/tencent/e/j/d:KbS	Landroid/os/Handler;
     //   73: aload 5
     //   75: invokestatic 128	android/os/SystemClock:uptimeMillis	()J
     //   78: lload_1
@@ -114,7 +114,7 @@ public final class d
     //   102: aload_0
     //   103: monitorenter
     //   104: aload_0
-    //   105: getfield 76	com/tencent/e/j/d:IAm	Ljava/util/LinkedList;
+    //   105: getfield 76	com/tencent/e/j/d:KbV	Ljava/util/LinkedList;
     //   108: invokevirtual 135	java/util/LinkedList:isEmpty	()Z
     //   111: istore 4
     //   113: iload 4
@@ -126,7 +126,7 @@ public final class d
     //   126: iconst_1
     //   127: putfield 66	com/tencent/e/j/d:isRunning	Z
     //   130: aload_0
-    //   131: getfield 80	com/tencent/e/j/d:IAk	Lcom/tencent/e/j/d$d;
+    //   131: getfield 80	com/tencent/e/j/d:KbT	Lcom/tencent/e/j/d$d;
     //   134: invokestatic 141	java/util/Objects:requireNonNull	(Ljava/lang/Object;)Ljava/lang/Object;
     //   137: checkcast 17	com/tencent/e/j/d$d
     //   140: aload_3
@@ -143,7 +143,7 @@ public final class d
     //   163: lcmp
     //   164: ifne +19 -> 183
     //   167: aload_0
-    //   168: getfield 76	com/tencent/e/j/d:IAm	Ljava/util/LinkedList;
+    //   168: getfield 76	com/tencent/e/j/d:KbV	Ljava/util/LinkedList;
     //   171: aload_3
     //   172: invokevirtual 150	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
     //   175: aload_0
@@ -152,7 +152,7 @@ public final class d
     //   179: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   182: return
     //   183: aload_0
-    //   184: getfield 76	com/tencent/e/j/d:IAm	Ljava/util/LinkedList;
+    //   184: getfield 76	com/tencent/e/j/d:KbV	Ljava/util/LinkedList;
     //   187: aload_3
     //   188: invokevirtual 153	java/util/LinkedList:addLast	(Ljava/lang/Object;)V
     //   191: goto -16 -> 175
@@ -190,20 +190,20 @@ public final class d
     e locale;
     try
     {
-      localIterator = this.IAl.iterator();
+      localIterator = this.KbU.iterator();
       while (localIterator.hasNext())
       {
         locale = (e)localIterator.next();
         if (paramb.c(locale))
         {
-          this.IAj.removeMessages(1, locale);
+          this.KbS.removeMessages(1, locale);
           if (!locale.isCancelled()) {
             locale.cancel(false);
           }
           localIterator.remove();
         }
       }
-      localIterator = this.IAm.iterator();
+      localIterator = this.KbV.iterator();
     }
     finally
     {
@@ -228,13 +228,13 @@ public final class d
     AppMethodBeat.i(183472);
     try
     {
-      Iterator localIterator = this.IAl.iterator();
+      Iterator localIterator = this.KbU.iterator();
       while (localIterator.hasNext()) {
         if (parama.d((e)localIterator.next())) {
           return true;
         }
       }
-      localIterator = this.IAm.iterator();
+      localIterator = this.KbV.iterator();
       while (localIterator.hasNext()) {
         if (parama.d((e)localIterator.next())) {
           return true;
@@ -254,8 +254,8 @@ public final class d
     e locale;
     try
     {
-      this.IAj.removeMessages(1);
-      Iterator localIterator1 = this.IAm.iterator();
+      this.KbS.removeMessages(1);
+      Iterator localIterator1 = this.KbV.iterator();
       while (localIterator1.hasNext())
       {
         locale = (e)localIterator1.next();
@@ -263,13 +263,13 @@ public final class d
           locale.cancel(false);
         }
       }
-      this.IAm.clear();
+      this.KbV.clear();
     }
     finally
     {
       AppMethodBeat.o(183469);
     }
-    Iterator localIterator2 = this.IAl.iterator();
+    Iterator localIterator2 = this.KbU.iterator();
     while (localIterator2.hasNext())
     {
       locale = (e)localIterator2.next();
@@ -277,15 +277,15 @@ public final class d
         locale.cancel(false);
       }
     }
-    this.IAl.clear();
+    this.KbU.clear();
     AppMethodBeat.o(183469);
   }
   
-  public final List<String> foq()
+  public final List<String> fEG()
   {
     AppMethodBeat.i(183470);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = jdMethod_for().iterator();
+    Iterator localIterator = fEH().iterator();
     while (localIterator.hasNext()) {
       localLinkedList.add(((e)localIterator.next()).getKey());
     }
@@ -299,7 +299,7 @@ public final class d
     if (paramMessage.what == 1) {}
     try
     {
-      if (this.IAl.remove(paramMessage.obj))
+      if (this.KbU.remove(paramMessage.obj))
       {
         a(0L, (e)paramMessage.obj);
         return true;
@@ -320,7 +320,7 @@ public final class d
   public final boolean quit()
   {
     AppMethodBeat.i(183473);
-    if (this.IyI.compareAndSet(false, true)) {
+    if (this.Kar.compareAndSet(false, true)) {
       try
       {
         clear();
@@ -339,8 +339,8 @@ public final class d
   public final int size()
   {
     AppMethodBeat.i(183468);
-    int i = this.IAm.size();
-    int j = this.IAl.size();
+    int i = this.KbV.size();
+    int j = this.KbU.size();
     AppMethodBeat.o(183468);
     return i + j;
   }

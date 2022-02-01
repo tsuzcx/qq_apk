@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.wallet.balance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import org.json.JSONObject;
 
 public final class c
   extends m
 {
-  public String dlJ;
+  public String djr;
   
   public final int getFuncId()
   {
@@ -28,13 +28,13 @@ public final class c
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(68393);
-    ad.d("Micromsg.NetSceneTenpayBalanceSave", "errCode " + paramInt + " errMsg: " + paramString);
+    ac.d("Micromsg.NetSceneTenpayBalanceSave", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(68393);
       return;
     }
-    this.dlJ = paramJSONObject.optString("req_key");
+    this.djr = paramJSONObject.optString("req_key");
     AppMethodBeat.o(68393);
   }
 }

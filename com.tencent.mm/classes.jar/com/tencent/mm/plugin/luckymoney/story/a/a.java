@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.luckymoney.story.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.c;
-import com.tencent.mm.protocal.protobuf.azs;
-import com.tencent.mm.protocal.protobuf.azt;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.protocal.protobuf.bdk;
+import com.tencent.mm.protocal.protobuf.bdl;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
-  extends c<azt>
+  extends c<bdl>
 {
-  public String thF;
+  public String upV;
   
   public a(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(163688);
-    Object localObject = new azs();
+    Object localObject = new bdk();
     b.a locala = new b.a();
-    locala.gUU = ((com.tencent.mm.bx.a)localObject);
-    locala.gUV = new azt();
+    locala.hvt = ((com.tencent.mm.bw.a)localObject);
+    locala.hvu = new bdl();
     locala.funcId = 3634;
     locala.uri = "/cgi-bin/micromsg-bin/getredpacketstory";
-    ((azs)localObject).gGQ = paramString;
+    ((bdk)localObject).hhr = paramString;
     if (!paramBoolean) {
       locala.timeout = 5000;
     }
-    localObject = locala.atI();
+    localObject = locala.aAz();
     ((b)localObject).setIsUserCmd(paramBoolean);
     this.rr = ((b)localObject);
-    this.thF = paramString;
-    ad.i("MicroMsg.CgiRedPacketStoryInfo", "packet id: %s", new Object[] { paramString });
+    this.upV = paramString;
+    ac.i("MicroMsg.CgiRedPacketStoryInfo", "packet id: %s", new Object[] { paramString });
     AppMethodBeat.o(163688);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ public enum f$a
   static
   {
     AppMethodBeat.i(89366);
-    tCx = new a("Preview", 0);
-    tCy = new a("Recording", 1);
-    tCz = new a("Stoping", 2);
-    tCA = new a[] { tCx, tCy, tCz };
+    uKU = new a("Preview", 0);
+    uKV = new a("Recording", 1);
+    uKW = new a("Stoping", 2);
+    uKX = new a[] { uKU, uKV, uKW };
     AppMethodBeat.o(89366);
   }
   
@@ -18,7 +18,7 @@ public enum f$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.f.a
  * JD-Core Version:    0.7.0.1
  */

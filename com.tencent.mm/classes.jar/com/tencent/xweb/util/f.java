@@ -10,7 +10,7 @@ import org.xwalk.core.Log;
 
 public final class f
 {
-  public static Object aPu(String paramString)
+  public static Object aVn(String paramString)
   {
     AppMethodBeat.i(157011);
     if (TextUtils.isEmpty(paramString))
@@ -102,7 +102,7 @@ public final class f
     return paramObject;
   }
   
-  public static Object mj(String paramString1, String paramString2)
+  public static Object mK(String paramString1, String paramString2)
   {
     AppMethodBeat.i(157009);
     try

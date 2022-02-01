@@ -21,12 +21,12 @@ public class c
   extends Drawable
   implements Animatable, g.b
 {
-  boolean aFm;
-  final a aJm;
-  private boolean aJn;
-  private int aJo;
-  private boolean aJp;
-  private Rect aJq;
+  boolean aGc;
+  final a aKc;
+  private boolean aKd;
+  private int aKe;
+  private boolean aKf;
+  private Rect aKg;
   private boolean isRunning;
   private boolean isVisible;
   private int loopCount;
@@ -34,7 +34,7 @@ public class c
   
   public c(Context paramContext, a parama, m<Bitmap> paramm, int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this(new a(new g(com.bumptech.glide.c.ac(paramContext), parama, paramInt1, paramInt2, paramm, paramBitmap)));
+    this(new a(new g(com.bumptech.glide.c.ad(paramContext), parama, paramInt1, paramInt2, paramm, paramBitmap)));
     AppMethodBeat.i(77484);
     AppMethodBeat.o(77484);
   }
@@ -43,8 +43,8 @@ public class c
   {
     AppMethodBeat.i(77485);
     this.isVisible = true;
-    this.aJo = -1;
-    this.aJm = ((a)i.checkNotNull(parama, "Argument must not be null"));
+    this.aKe = -1;
+    this.aKc = ((a)i.checkNotNull(parama, "Argument must not be null"));
     AppMethodBeat.o(77485);
   }
   
@@ -59,14 +59,14 @@ public class c
     return localPaint;
   }
   
-  private void pd()
+  private void pn()
   {
     AppMethodBeat.i(77489);
-    if (!this.aFm) {}
+    if (!this.aGc) {}
     for (boolean bool = true;; bool = false)
     {
       i.checkArgument(bool, "You cannot start a recycled Drawable. Ensure thatyou clear any references to the Drawable when clearing the corresponding request.");
-      if (this.aJm.aJr.getFrameCount() != 1) {
+      if (this.aKc.aKh.getFrameCount() != 1) {
         break;
       }
       invalidateSelf();
@@ -76,27 +76,27 @@ public class c
     if (!this.isRunning)
     {
       this.isRunning = true;
-      this.aJm.aJr.a(this);
+      this.aKc.aKh.a(this);
       invalidateSelf();
     }
     AppMethodBeat.o(77489);
   }
   
-  private void pe()
+  private void po()
   {
     AppMethodBeat.i(77490);
     this.isRunning = false;
-    this.aJm.aJr.b(this);
+    this.aKc.aKh.b(this);
     AppMethodBeat.o(77490);
   }
   
-  private Rect pf()
+  private Rect pp()
   {
     AppMethodBeat.i(77498);
-    if (this.aJq == null) {
-      this.aJq = new Rect();
+    if (this.aKg == null) {
+      this.aKg = new Rect();
     }
-    Rect localRect = this.aJq;
+    Rect localRect = this.aKg;
     AppMethodBeat.o(77498);
     return localRect;
   }
@@ -104,37 +104,37 @@ public class c
   public void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(77495);
-    if (this.aFm)
+    if (this.aGc)
     {
       AppMethodBeat.o(77495);
       return;
     }
-    if (this.aJp)
+    if (this.aKf)
     {
-      Gravity.apply(119, getIntrinsicWidth(), getIntrinsicHeight(), getBounds(), pf());
-      this.aJp = false;
+      Gravity.apply(119, getIntrinsicWidth(), getIntrinsicHeight(), getBounds(), pp());
+      this.aKf = false;
     }
-    paramCanvas.drawBitmap(this.aJm.aJr.ph(), null, pf(), getPaint());
+    paramCanvas.drawBitmap(this.aKc.aKh.pr(), null, pp(), getPaint());
     AppMethodBeat.o(77495);
   }
   
   public final ByteBuffer getBuffer()
   {
     AppMethodBeat.i(77486);
-    ByteBuffer localByteBuffer = this.aJm.aJr.aJs.getData().asReadOnlyBuffer();
+    ByteBuffer localByteBuffer = this.aKc.aKh.aKi.getData().asReadOnlyBuffer();
     AppMethodBeat.o(77486);
     return localByteBuffer;
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    return this.aJm;
+    return this.aKc;
   }
   
   public int getIntrinsicHeight()
   {
     AppMethodBeat.i(77493);
-    int i = this.aJm.aJr.ph().getHeight();
+    int i = this.aKc.aKh.pr().getHeight();
     AppMethodBeat.o(77493);
     return i;
   }
@@ -142,7 +142,7 @@ public class c
   public int getIntrinsicWidth()
   {
     AppMethodBeat.i(77492);
-    int i = this.aJm.aJr.ph().getWidth();
+    int i = this.aKc.aKh.pr().getWidth();
     AppMethodBeat.o(77492);
     return i;
   }
@@ -161,16 +161,16 @@ public class c
   {
     AppMethodBeat.i(77494);
     super.onBoundsChange(paramRect);
-    this.aJp = true;
+    this.aKf = true;
     AppMethodBeat.o(77494);
   }
   
-  public final Bitmap pc()
+  public final Bitmap pm()
   {
-    return this.aJm.aJr.aJz;
+    return this.aKc.aKh.aKp;
   }
   
-  public final void pg()
+  public final void pq()
   {
     AppMethodBeat.i(77500);
     for (Object localObject = getCallback(); (localObject instanceof Drawable); localObject = ((Drawable)localObject).getCallback()) {}
@@ -182,14 +182,14 @@ public class c
       return;
     }
     invalidateSelf();
-    localObject = this.aJm.aJr;
-    if (((g)localObject).aJw != null) {}
-    for (int i = ((g)localObject).aJw.index;; i = -1)
+    localObject = this.aKc.aKh;
+    if (((g)localObject).aKm != null) {}
+    for (int i = ((g)localObject).aKm.index;; i = -1)
     {
-      if (i == this.aJm.aJr.getFrameCount() - 1) {
+      if (i == this.aKc.aKh.getFrameCount() - 1) {
         this.loopCount += 1;
       }
-      if ((this.aJo != -1) && (this.loopCount >= this.aJo)) {
+      if ((this.aKe != -1) && (this.loopCount >= this.aKe)) {
         stop();
       }
       AppMethodBeat.o(77500);
@@ -215,7 +215,7 @@ public class c
   {
     AppMethodBeat.i(77491);
     boolean bool;
-    if (!this.aFm)
+    if (!this.aGc)
     {
       bool = true;
       i.checkArgument(bool, "Cannot change the visibility of a recycled resource. Ensure that you unset the Drawable from your View before changing the View's visibility.");
@@ -223,7 +223,7 @@ public class c
       if (paramBoolean1) {
         break label52;
       }
-      pe();
+      po();
     }
     for (;;)
     {
@@ -233,8 +233,8 @@ public class c
       bool = false;
       break;
       label52:
-      if (this.aJn) {
-        pd();
+      if (this.aKd) {
+        pn();
       }
     }
   }
@@ -242,10 +242,10 @@ public class c
   public void start()
   {
     AppMethodBeat.i(77487);
-    this.aJn = true;
+    this.aKd = true;
     this.loopCount = 0;
     if (this.isVisible) {
-      pd();
+      pn();
     }
     AppMethodBeat.o(77487);
   }
@@ -253,19 +253,19 @@ public class c
   public void stop()
   {
     AppMethodBeat.i(77488);
-    this.aJn = false;
-    pe();
+    this.aKd = false;
+    po();
     AppMethodBeat.o(77488);
   }
   
   static final class a
     extends Drawable.ConstantState
   {
-    final g aJr;
+    final g aKh;
     
     a(g paramg)
     {
-      this.aJr = paramg;
+      this.aKh = paramg;
     }
     
     public final int getChangingConfigurations()
@@ -292,7 +292,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.e.c
  * JD-Core Version:    0.7.0.1
  */

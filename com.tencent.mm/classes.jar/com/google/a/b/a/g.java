@@ -8,18 +8,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   extends s<Object>
 {
-  public static final t bGF;
-  private final f bGS;
+  public static final t bEn;
+  private final f bEA;
   
   static
   {
     AppMethodBeat.i(107990);
-    bGF = new t()
+    bEn = new t()
     {
       public final <T> s<T> a(f paramAnonymousf, com.google.a.c.a<T> paramAnonymousa)
       {
         AppMethodBeat.i(107996);
-        if (paramAnonymousa.bIC == Object.class)
+        if (paramAnonymousa.bGk == Object.class)
         {
           paramAnonymousf = new g(paramAnonymousf);
           AppMethodBeat.o(107996);
@@ -34,7 +34,7 @@ public final class g
   
   g(f paramf)
   {
-    this.bGS = paramf;
+    this.bEA = paramf;
   }
   
   public final void a(com.google.a.d.a parama, Object paramObject)
@@ -42,15 +42,15 @@ public final class g
     AppMethodBeat.i(107989);
     if (paramObject == null)
     {
-      parama.xI();
+      parama.xv();
       AppMethodBeat.o(107989);
       return;
     }
-    s locals = this.bGS.B(paramObject.getClass());
+    s locals = this.bEA.B(paramObject.getClass());
     if ((locals instanceof g))
     {
-      parama.xG();
-      parama.xH();
+      parama.xt();
+      parama.xu();
       AppMethodBeat.o(107989);
       return;
     }
@@ -60,7 +60,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.b.a.g
  * JD-Core Version:    0.7.0.1
  */

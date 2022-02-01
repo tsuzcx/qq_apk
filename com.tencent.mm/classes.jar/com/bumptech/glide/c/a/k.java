@@ -8,34 +8,34 @@ import java.io.InputStream;
 public final class k
   implements e<InputStream>
 {
-  private final m aCP;
+  private final m aDG;
   
   k(InputStream paramInputStream, b paramb)
   {
     AppMethodBeat.i(76895);
-    this.aCP = new m(paramInputStream, paramb);
-    this.aCP.mark(5242880);
+    this.aDG = new m(paramInputStream, paramb);
+    this.aDG.mark(5242880);
     AppMethodBeat.o(76895);
   }
   
   public final void cleanup()
   {
     AppMethodBeat.i(76896);
-    this.aCP.release();
+    this.aDG.release();
     AppMethodBeat.o(76896);
   }
   
   public static final class a
     implements e.a<InputStream>
   {
-    private final b aCQ;
+    private final b aDH;
     
     public a(b paramb)
     {
-      this.aCQ = paramb;
+      this.aDH = paramb;
     }
     
-    public final Class<InputStream> nK()
+    public final Class<InputStream> nU()
     {
       return InputStream.class;
     }
@@ -43,7 +43,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.a.k
  * JD-Core Version:    0.7.0.1
  */

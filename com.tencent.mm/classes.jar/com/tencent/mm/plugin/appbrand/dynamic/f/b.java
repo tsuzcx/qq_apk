@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.b.c;
-import com.tencent.mm.plugin.appbrand.aa.g;
+import com.tencent.mm.aa.b.c;
+import com.tencent.mm.plugin.appbrand.z.g;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -12,9 +12,9 @@ public final class b
   extends c
 {
   public String cacheKey;
-  public Map<String, String> jne;
-  public int jnf;
-  public int jng;
+  public Map<String, String> jNr;
+  public int jNs;
+  public int jNt;
   public String path;
   public String title;
   
@@ -38,14 +38,14 @@ public final class b
       {
         localJSONObject.put("title", this.title);
         localJSONObject.put("path", this.path);
-        if (this.jne != null) {
+        if (this.jNr != null) {
           continue;
         }
         localObject = new HashMap();
         localJSONObject.put("query", new JSONObject((Map)localObject));
         localJSONObject.put("cacheKey", this.cacheKey);
-        localJSONObject.put("width", g.ul(this.jnf));
-        localJSONObject.put("height", g.ul(this.jng));
+        localJSONObject.put("width", g.vd(this.jNs));
+        localJSONObject.put("height", g.vd(this.jNt));
       }
       catch (JSONException localJSONException)
       {
@@ -54,13 +54,13 @@ public final class b
       }
       AppMethodBeat.o(121392);
       return localJSONObject;
-      localObject = this.jne;
+      localObject = this.jNr;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.b
  * JD-Core Version:    0.7.0.1
  */

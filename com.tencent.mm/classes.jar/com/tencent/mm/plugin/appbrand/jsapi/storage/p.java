@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.appbrand.jsapi.storage;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.o.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.vfs.e;
 
 public final class p
 {
   /* Error */
-  private static String B(e parame)
+  private static String A(e parame)
   {
     // Byte code:
     //   0: ldc 11
@@ -133,28 +133,28 @@ public final class p
     //   28	44	154	java/io/IOException
   }
   
-  public static String IZ(String paramString)
+  public static String Nd(String paramString)
   {
     AppMethodBeat.i(147300);
-    paramString = B(new e(aj.getContext().getCacheDir(), paramString));
+    paramString = A(new e(ai.getContext().getCacheDir(), paramString));
     AppMethodBeat.o(147300);
     return paramString;
   }
   
-  public static void Ja(String paramString)
+  public static void Ne(String paramString)
   {
     AppMethodBeat.i(147301);
-    boolean bool = new e(aj.getContext().getCacheDir(), paramString).delete();
-    ad.i("MicroMsg.JsApiStorageHelper", "deleteTmpFile: " + paramString + ":" + bool);
+    boolean bool = new e(ai.getContext().getCacheDir(), paramString).delete();
+    ac.i("MicroMsg.JsApiStorageHelper", "deleteTmpFile: " + paramString + ":" + bool);
     AppMethodBeat.o(147301);
   }
   
   static String a(o.a parama)
   {
-    if (parama == o.a.iSO) {
+    if (parama == o.a.jsZ) {
       return "ok";
     }
-    if (parama == o.a.iSS) {
+    if (parama == o.a.jtd) {
       return "fail:quota reached";
     }
     return "fail:internal error set DB data fail";
@@ -168,7 +168,7 @@ public final class p
     //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 19	com/tencent/mm/vfs/e
     //   8: dup
-    //   9: invokestatic 75	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   9: invokestatic 75	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
     //   12: invokevirtual 81	android/content/Context:getCacheDir	()Ljava/io/File;
     //   15: aload_0
     //   16: invokespecial 84	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
@@ -238,7 +238,7 @@ public final class p
     //   40	48	95	finally
   }
   
-  public static int p(String... paramVarArgs)
+  public static int n(String... paramVarArgs)
   {
     AppMethodBeat.i(147297);
     int m = paramVarArgs.length;
@@ -259,7 +259,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.p
  * JD-Core Version:    0.7.0.1
  */

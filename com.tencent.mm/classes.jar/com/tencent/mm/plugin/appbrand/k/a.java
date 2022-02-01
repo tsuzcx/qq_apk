@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appusage.y;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,13 +16,13 @@ final class a
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(45009);
-    if (j.aOI() == null)
+    if (j.aVA() == null)
     {
-      ad.w("MicroMsg.AppBrandSearchStorageChangeListener", "onNotifyChange by SysConfigStorage, but sLayoutStorage is null.");
+      ac.w("MicroMsg.AppBrandSearchStorageChangeListener", "onNotifyChange by SysConfigStorage, but sLayoutStorage is null.");
       AppMethodBeat.o(45009);
       return;
     }
-    switch (paramm.jqR)
+    switch (paramm.jRj)
     {
     }
     for (;;)
@@ -38,16 +38,16 @@ final class a
           while (paramString.hasNext())
           {
             paramm = (String)paramString.next();
-            localLinkedList.addAll(j.aOI().Fl(paramm));
+            localLinkedList.addAll(j.aVA().Jp(paramm));
           }
         }
       }
       else
       {
-        localLinkedList.addAll(j.aOI().Fl(paramm.obj.toString()));
+        localLinkedList.addAll(j.aVA().Jp(paramm.obj.toString()));
         if (!localLinkedList.isEmpty())
         {
-          j.aOI().doNotify("batch", 3, localLinkedList);
+          j.aVA().doNotify("batch", 3, localLinkedList);
           AppMethodBeat.o(45009);
           return;
           localLinkedList = new LinkedList();
@@ -59,15 +59,15 @@ final class a
               while (paramString.hasNext())
               {
                 paramm = (String)paramString.next();
-                localLinkedList.addAll(j.aOI().Fl(paramm));
+                localLinkedList.addAll(j.aVA().Jp(paramm));
               }
             }
           }
           else
           {
-            localLinkedList.addAll(j.aOI().Fl(paramm.obj.toString()));
+            localLinkedList.addAll(j.aVA().Jp(paramm.obj.toString()));
             if (!localLinkedList.isEmpty()) {
-              j.aOI().doNotify("batch", 5, localLinkedList);
+              j.aVA().doNotify("batch", 5, localLinkedList);
             }
           }
         }
@@ -77,7 +77,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.k.a
  * JD-Core Version:    0.7.0.1
  */

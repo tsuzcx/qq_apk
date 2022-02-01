@@ -14,19 +14,19 @@ public final class a$2
     AppMethodBeat.i(116655);
     if (paramInt == 0)
     {
-      this.AJm.eiC();
+      this.CbD.exW();
       AppMethodBeat.o(116655);
       return;
     }
     if (paramInt == 1) {
-      this.AJm.ehK();
+      this.CbD.exe();
     }
     AppMethodBeat.o(116655);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.b.a.2
  * JD-Core Version:    0.7.0.1
  */

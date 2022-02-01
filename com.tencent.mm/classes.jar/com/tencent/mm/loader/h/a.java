@@ -6,35 +6,35 @@ import java.io.OutputStream;
 public final class a
   extends f<String>
 {
-  public String bxn;
-  private f.a gly;
+  public String contentType;
+  private f.a gMl;
   
   private a(String paramString1, String paramString2, f.a<String> parama)
   {
     super(paramString1);
-    this.bxn = paramString2;
-    this.gly = parama;
+    this.contentType = paramString2;
+    this.gMl = parama;
   }
   
-  public static a an(String paramString1, String paramString2)
+  public static a av(String paramString1, String paramString2)
   {
     new a(paramString1, paramString2, new f.a() {});
   }
   
-  public final com.tencent.mm.loader.h.b.a ahF()
+  public final com.tencent.mm.loader.h.b.a aoH()
   {
-    return this.gly.ahG();
+    return this.gMl.aoI();
   }
   
   public final void b(OutputStream paramOutputStream)
   {
-    c localc = c.giE;
+    c localc = c.gJp;
     c.a((String)this.data, paramOutputStream);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.h.a
  * JD-Core Version:    0.7.0.1
  */

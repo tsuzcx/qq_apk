@@ -7,10 +7,10 @@ public enum g$a
   static
   {
     AppMethodBeat.i(56102);
-    sWl = new a("UNKNOWN", 0);
-    sWm = new a("SUCC", 1);
-    sWn = new a("QUIT", 2);
-    sWo = new a[] { sWl, sWm, sWn };
+    uey = new a("UNKNOWN", 0);
+    uez = new a("SUCC", 1);
+    ueA = new a("QUIT", 2);
+    ueB = new a[] { uey, uez, ueA };
     AppMethodBeat.o(56102);
   }
   

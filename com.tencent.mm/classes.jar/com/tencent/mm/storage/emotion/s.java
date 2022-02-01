@@ -1,37 +1,37 @@
 package com.tencent.mm.storage.emotion;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.GetEmotionListResponse;
+import com.tencent.mm.protocal.protobuf.awn;
+import com.tencent.mm.protocal.protobuf.bbz;
+import com.tencent.mm.protocal.protobuf.czh;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
-import com.tencent.mm.storagebase.h;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.IOException;
 
 public final class s
-  extends j<SmileyInfo>
+  extends j<r>
   implements g.a
 {
-  private static final String[] FBW;
-  private static final String[] FBX;
   public static final String[] SQL_CREATE;
   private e db;
   
   static
   {
-    AppMethodBeat.i(105145);
-    SQL_CREATE = new String[] { j.getCreateSQLs(SmileyInfo.info, "SmileyInfo") };
-    FBW = new String[] { "key", "cnValue", "qqValue", "enValue", "twValue", "thValue", "eggIndex", "fileName" };
-    FBX = new String[] { "key" };
-    AppMethodBeat.o(105145);
+    AppMethodBeat.i(105137);
+    SQL_CREATE = new String[] { j.getCreateSQLs(r.info, "GetEmotionListCache") };
+    AppMethodBeat.o(105137);
   }
   
   public s(e parame)
   {
-    this(parame, SmileyInfo.info, "SmileyInfo");
+    this(parame, r.info, "GetEmotionListCache");
   }
   
   private s(e parame, c.a parama, String paramString)
@@ -40,185 +40,493 @@ public final class s
     this.db = parame;
   }
   
+  private boolean aPe(String paramString)
+  {
+    AppMethodBeat.i(105128);
+    if (this.db.delete("GetEmotionListCache", "reqType=?", new String[] { paramString }) > 0)
+    {
+      AppMethodBeat.o(105128);
+      return true;
+    }
+    AppMethodBeat.o(105128);
+    return false;
+  }
+  
+  public final GetEmotionListResponse YY(int paramInt)
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(105130);
+    Cursor localCursor = this.db.a("GetEmotionListCache", null, "reqType=?", new String[] { String.valueOf(paramInt) }, null, null, null, 2);
+    Object localObject1 = localObject3;
+    r localr;
+    if (localCursor != null)
+    {
+      localObject1 = localObject3;
+      if (localCursor.moveToFirst()) {
+        localr = new r(localCursor);
+      }
+    }
+    try
+    {
+      localObject1 = new GetEmotionListResponse();
+      ((GetEmotionListResponse)localObject1).parseFrom(localr.field_cache);
+      ac.d("MicroMsg.emoji.Storage", "succed get cache: %d", new Object[] { Integer.valueOf(paramInt) });
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      AppMethodBeat.o(105130);
+      return localObject1;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ac.e("MicroMsg.emoji.Storage", "exception:%s", new Object[] { bs.m(localIOException) });
+        Object localObject2 = localObject3;
+      }
+    }
+  }
+  
   public final int a(g paramg)
   {
     this.db = paramg;
     return 0;
   }
   
-  public final boolean aL(ArrayList<SmileyInfo> paramArrayList)
+  public final boolean a(int paramInt, GetEmotionListResponse paramGetEmotionListResponse)
   {
-    AppMethodBeat.i(105144);
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0))
+    AppMethodBeat.i(105129);
+    if (paramGetEmotionListResponse == null)
     {
-      ad.i("MicroMsg.emoji.NewSmileyInfoStorage", "insertSmileyInfoList failed. list is null.");
-      AppMethodBeat.o(105144);
+      AppMethodBeat.o(105129);
       return false;
     }
-    h localh;
-    long l;
-    if ((this.db instanceof h))
+    try
     {
-      localh = (h)this.db;
-      l = localh.rb(Thread.currentThread().getId());
+      this.db.delete("GetEmotionListCache", "reqType=?", new String[] { String.valueOf(paramInt) });
+      paramGetEmotionListResponse = new r(String.valueOf(paramInt), paramGetEmotionListResponse.toByteArray());
+      ac.d("MicroMsg.emoji.Storage", "insert cache: %d", new Object[] { Integer.valueOf(paramInt) });
+      boolean bool = insert(paramGetEmotionListResponse);
+      AppMethodBeat.o(105129);
+      return bool;
     }
-    for (;;)
+    catch (Exception paramGetEmotionListResponse)
     {
-      this.db.delete("SmileyInfo", null, null);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext()) {
-        insert((SmileyInfo)paramArrayList.next());
+      ac.e("MicroMsg.emoji.Storage", "exception:%s", new Object[] { bs.m(paramGetEmotionListResponse) });
+      AppMethodBeat.o(105129);
+    }
+    return false;
+  }
+  
+  public final boolean a(czh paramczh)
+  {
+    AppMethodBeat.i(105134);
+    if (paramczh == null)
+    {
+      AppMethodBeat.o(105134);
+      return false;
+    }
+    try
+    {
+      aPe("Smiley_panel_req_type");
+      boolean bool = insert(new r("Smiley_panel_req_type", paramczh.toByteArray()));
+      AppMethodBeat.o(105134);
+      return bool;
+    }
+    catch (Exception paramczh)
+    {
+      ac.e("MicroMsg.emoji.Storage", "exception:%s", new Object[] { bs.m(paramczh) });
+      AppMethodBeat.o(105134);
+    }
+    return false;
+  }
+  
+  public final boolean a(String paramString, awn paramawn)
+  {
+    AppMethodBeat.i(105136);
+    if (paramawn == null)
+    {
+      AppMethodBeat.o(105136);
+      return false;
+    }
+    try
+    {
+      aPe(paramString);
+      boolean bool = insert(new r(paramString, paramawn.toByteArray()));
+      AppMethodBeat.o(105136);
+      return bool;
+    }
+    catch (Exception paramString)
+    {
+      ac.e("MicroMsg.emoji.Storage", "exception:%s", new Object[] { bs.m(paramString) });
+      AppMethodBeat.o(105136);
+    }
+    return false;
+  }
+  
+  public final boolean a(String paramString, bbz parambbz)
+  {
+    AppMethodBeat.i(105131);
+    if (parambbz == null)
+    {
+      AppMethodBeat.o(105131);
+      return false;
+    }
+    try
+    {
+      aPe(paramString);
+      boolean bool = insert(new r(paramString, parambbz.toByteArray()));
+      AppMethodBeat.o(105131);
+      return bool;
+    }
+    catch (Exception paramString)
+    {
+      ac.e("MicroMsg.emoji.Storage", "exception:%s", new Object[] { bs.m(paramString) });
+      AppMethodBeat.o(105131);
+    }
+    return false;
+  }
+  
+  public final bbz aPf(String paramString)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(105132);
+    Cursor localCursor = this.db.a("GetEmotionListCache", null, "reqType=?", new String[] { paramString }, null, null, null, 2);
+    Object localObject1 = localObject2;
+    r localr;
+    if (localCursor != null)
+    {
+      localObject1 = localObject2;
+      if (localCursor.moveToFirst()) {
+        localr = new r(localCursor);
       }
-      int i = -1;
-      if (localh != null) {
-        i = localh.mX(l);
+    }
+    try
+    {
+      localObject1 = new bbz();
+      ((bbz)localObject1).parseFrom(localr.field_cache);
+      ac.d("MicroMsg.emoji.Storage", "succed get designerID cache: %s", new Object[] { paramString });
+      if (localCursor != null) {
+        localCursor.close();
       }
-      if (i >= 0)
+      AppMethodBeat.o(105132);
+      return localObject1;
+    }
+    catch (IOException paramString)
+    {
+      for (;;)
       {
-        AppMethodBeat.o(105144);
-        return true;
+        ac.e("MicroMsg.emoji.Storage", "exception:%s", new Object[] { bs.m(paramString) });
+        localObject1 = localObject2;
       }
-      AppMethodBeat.o(105144);
-      return false;
-      l = -1L;
-      localh = null;
     }
   }
   
   /* Error */
-  public final ArrayList<SmileyInfo> bUE()
+  public final awn aPg(String paramString)
   {
     // Byte code:
-    //   0: ldc 145
-    //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 79	java/util/ArrayList
-    //   8: dup
-    //   9: invokespecial 147	java/util/ArrayList:<init>	()V
-    //   12: astore 5
-    //   14: aload_0
-    //   15: getfield 72	com/tencent/mm/storage/emotion/s:db	Lcom/tencent/mm/sdk/e/e;
-    //   18: ldc 32
-    //   20: getstatic 56	com/tencent/mm/storage/emotion/s:FBW	[Ljava/lang/String;
-    //   23: ldc 149
-    //   25: iconst_1
-    //   26: anewarray 24	java/lang/String
-    //   29: dup
-    //   30: iconst_0
-    //   31: ldc 151
-    //   33: aastore
-    //   34: aconst_null
-    //   35: aconst_null
-    //   36: aconst_null
-    //   37: iconst_2
-    //   38: invokeinterface 154 9 0
-    //   43: astore_3
-    //   44: aload_3
-    //   45: ifnull +64 -> 109
-    //   48: aload_3
-    //   49: astore_2
-    //   50: aload_3
-    //   51: invokeinterface 159 1 0
-    //   56: ifeq +53 -> 109
-    //   59: aload_3
-    //   60: astore_2
-    //   61: new 26	com/tencent/mm/storage/emotion/SmileyInfo
-    //   64: dup
-    //   65: invokespecial 160	com/tencent/mm/storage/emotion/SmileyInfo:<init>	()V
-    //   68: astore 4
-    //   70: aload_3
-    //   71: astore_2
-    //   72: aload 4
-    //   74: aload_3
-    //   75: invokevirtual 164	com/tencent/mm/storage/emotion/SmileyInfo:convertFrom	(Landroid/database/Cursor;)V
-    //   78: aload_3
-    //   79: astore_2
-    //   80: aload 4
-    //   82: iconst_m1
-    //   83: putfield 168	com/tencent/mm/storage/emotion/SmileyInfo:field_position	I
-    //   86: aload_3
-    //   87: astore_2
-    //   88: aload 5
-    //   90: aload 4
-    //   92: invokevirtual 172	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   95: pop
-    //   96: aload_3
-    //   97: astore_2
-    //   98: aload_3
-    //   99: invokeinterface 175 1 0
-    //   104: istore_1
-    //   105: iload_1
-    //   106: ifne -47 -> 59
-    //   109: aload_3
-    //   110: ifnull +9 -> 119
-    //   113: aload_3
-    //   114: invokeinterface 178 1 0
-    //   119: ldc 145
-    //   121: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   124: aload 5
-    //   126: areturn
-    //   127: astore 4
-    //   129: aconst_null
-    //   130: astore_3
-    //   131: aload_3
-    //   132: astore_2
-    //   133: ldc 85
-    //   135: aload 4
-    //   137: invokestatic 184	com/tencent/mm/sdk/platformtools/bt:m	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   140: invokestatic 187	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   143: aload_3
-    //   144: ifnull -25 -> 119
-    //   147: aload_3
-    //   148: invokeinterface 178 1 0
-    //   153: goto -34 -> 119
-    //   156: astore_3
+    //   0: ldc 173
+    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_1
+    //   6: invokestatic 176	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   9: ifeq +17 -> 26
+    //   12: ldc 97
+    //   14: ldc 178
+    //   16: invokestatic 182	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: ldc 173
+    //   21: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   24: aconst_null
+    //   25: areturn
+    //   26: aload_0
+    //   27: getfield 50	com/tencent/mm/storage/emotion/s:db	Lcom/tencent/mm/sdk/e/e;
+    //   30: ldc 30
+    //   32: aconst_null
+    //   33: ldc 55
+    //   35: iconst_1
+    //   36: anewarray 22	java/lang/String
+    //   39: dup
+    //   40: iconst_0
+    //   41: aload_1
+    //   42: aastore
+    //   43: aconst_null
+    //   44: aconst_null
+    //   45: aconst_null
+    //   46: invokeinterface 186 8 0
+    //   51: astore_1
+    //   52: aload_1
+    //   53: ifnull +142 -> 195
+    //   56: aload_1
+    //   57: astore_2
+    //   58: aload_1
+    //   59: invokeinterface 80 1 0
+    //   64: ifeq +131 -> 195
+    //   67: aload_1
+    //   68: astore_2
+    //   69: new 24	com/tencent/mm/storage/emotion/r
+    //   72: dup
+    //   73: aload_1
+    //   74: invokespecial 83	com/tencent/mm/storage/emotion/r:<init>	(Landroid/database/Cursor;)V
+    //   77: astore 4
+    //   79: aload_1
+    //   80: astore_2
+    //   81: new 157	com/tencent/mm/protocal/protobuf/awn
+    //   84: dup
+    //   85: invokespecial 187	com/tencent/mm/protocal/protobuf/awn:<init>	()V
+    //   88: astore_3
+    //   89: aload_1
+    //   90: astore_2
+    //   91: aload_3
+    //   92: aload 4
+    //   94: getfield 91	com/tencent/mm/storage/emotion/r:field_cache	[B
+    //   97: invokevirtual 188	com/tencent/mm/protocal/protobuf/awn:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   100: pop
+    //   101: aload_3
+    //   102: astore_2
+    //   103: aload_2
+    //   104: astore_3
+    //   105: aload_1
+    //   106: ifnull +11 -> 117
+    //   109: aload_1
+    //   110: invokeinterface 115 1 0
+    //   115: aload_2
+    //   116: astore_3
+    //   117: ldc 173
+    //   119: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   122: aload_3
+    //   123: areturn
+    //   124: astore_3
+    //   125: aconst_null
+    //   126: astore_1
+    //   127: aload_1
+    //   128: astore_2
+    //   129: ldc 97
+    //   131: ldc 117
+    //   133: iconst_1
+    //   134: anewarray 101	java/lang/Object
+    //   137: dup
+    //   138: iconst_0
+    //   139: aload_3
+    //   140: invokestatic 123	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   143: aastore
+    //   144: invokestatic 126	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   147: aload_1
+    //   148: ifnull +42 -> 190
+    //   151: aload_1
+    //   152: invokeinterface 115 1 0
     //   157: aconst_null
-    //   158: astore_2
-    //   159: aload_2
-    //   160: ifnull +9 -> 169
-    //   163: aload_2
-    //   164: invokeinterface 178 1 0
-    //   169: ldc 145
-    //   171: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   174: aload_3
-    //   175: athrow
-    //   176: astore_3
-    //   177: goto -18 -> 159
-    //   180: astore 4
-    //   182: goto -51 -> 131
+    //   158: astore_3
+    //   159: goto -42 -> 117
+    //   162: astore_1
+    //   163: aconst_null
+    //   164: astore_2
+    //   165: aload_2
+    //   166: ifnull +9 -> 175
+    //   169: aload_2
+    //   170: invokeinterface 115 1 0
+    //   175: ldc 173
+    //   177: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   180: aload_1
+    //   181: athrow
+    //   182: astore_1
+    //   183: goto -18 -> 165
+    //   186: astore_3
+    //   187: goto -60 -> 127
+    //   190: aconst_null
+    //   191: astore_3
+    //   192: goto -75 -> 117
+    //   195: aconst_null
+    //   196: astore_2
+    //   197: goto -94 -> 103
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	185	0	this	s
-    //   104	2	1	bool	boolean
-    //   49	115	2	localCursor1	android.database.Cursor
-    //   43	105	3	localCursor2	android.database.Cursor
-    //   156	19	3	localObject1	java.lang.Object
-    //   176	1	3	localObject2	java.lang.Object
-    //   68	23	4	localSmileyInfo	SmileyInfo
-    //   127	9	4	localException1	java.lang.Exception
-    //   180	1	4	localException2	java.lang.Exception
-    //   12	113	5	localArrayList	ArrayList
+    //   0	200	0	this	s
+    //   0	200	1	paramString	String
+    //   57	140	2	localObject1	Object
+    //   88	35	3	localObject2	Object
+    //   124	16	3	localIOException1	IOException
+    //   158	1	3	localObject3	Object
+    //   186	1	3	localIOException2	IOException
+    //   191	1	3	localObject4	Object
+    //   77	16	4	localr	r
     // Exception table:
     //   from	to	target	type
-    //   14	44	127	java/lang/Exception
-    //   14	44	156	finally
-    //   50	59	176	finally
-    //   61	70	176	finally
-    //   72	78	176	finally
-    //   80	86	176	finally
-    //   88	96	176	finally
-    //   98	105	176	finally
-    //   133	143	176	finally
-    //   50	59	180	java/lang/Exception
-    //   61	70	180	java/lang/Exception
-    //   72	78	180	java/lang/Exception
-    //   80	86	180	java/lang/Exception
-    //   88	96	180	java/lang/Exception
-    //   98	105	180	java/lang/Exception
+    //   26	52	124	java/io/IOException
+    //   26	52	162	finally
+    //   58	67	182	finally
+    //   69	79	182	finally
+    //   81	89	182	finally
+    //   91	101	182	finally
+    //   129	147	182	finally
+    //   58	67	186	java/io/IOException
+    //   69	79	186	java/io/IOException
+    //   81	89	186	java/io/IOException
+    //   91	101	186	java/io/IOException
+  }
+  
+  /* Error */
+  public final czh fdv()
+  {
+    // Byte code:
+    //   0: ldc 191
+    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: getfield 50	com/tencent/mm/storage/emotion/s:db	Lcom/tencent/mm/sdk/e/e;
+    //   9: ldc 30
+    //   11: aconst_null
+    //   12: ldc 55
+    //   14: iconst_1
+    //   15: anewarray 22	java/lang/String
+    //   18: dup
+    //   19: iconst_0
+    //   20: ldc 148
+    //   22: aastore
+    //   23: aconst_null
+    //   24: aconst_null
+    //   25: aconst_null
+    //   26: invokeinterface 186 8 0
+    //   31: astore_1
+    //   32: aload_1
+    //   33: ifnull +142 -> 175
+    //   36: aload_1
+    //   37: astore_2
+    //   38: aload_1
+    //   39: invokeinterface 80 1 0
+    //   44: ifeq +131 -> 175
+    //   47: aload_1
+    //   48: astore_2
+    //   49: new 24	com/tencent/mm/storage/emotion/r
+    //   52: dup
+    //   53: aload_1
+    //   54: invokespecial 83	com/tencent/mm/storage/emotion/r:<init>	(Landroid/database/Cursor;)V
+    //   57: astore 4
+    //   59: aload_1
+    //   60: astore_2
+    //   61: new 152	com/tencent/mm/protocal/protobuf/czh
+    //   64: dup
+    //   65: invokespecial 192	com/tencent/mm/protocal/protobuf/czh:<init>	()V
+    //   68: astore_3
+    //   69: aload_1
+    //   70: astore_2
+    //   71: aload_3
+    //   72: aload 4
+    //   74: getfield 91	com/tencent/mm/storage/emotion/r:field_cache	[B
+    //   77: invokevirtual 193	com/tencent/mm/protocal/protobuf/czh:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   80: pop
+    //   81: aload_3
+    //   82: astore_2
+    //   83: aload_2
+    //   84: astore_3
+    //   85: aload_1
+    //   86: ifnull +11 -> 97
+    //   89: aload_1
+    //   90: invokeinterface 115 1 0
+    //   95: aload_2
+    //   96: astore_3
+    //   97: ldc 191
+    //   99: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   102: aload_3
+    //   103: areturn
+    //   104: astore_3
+    //   105: aconst_null
+    //   106: astore_1
+    //   107: aload_1
+    //   108: astore_2
+    //   109: ldc 97
+    //   111: ldc 117
+    //   113: iconst_1
+    //   114: anewarray 101	java/lang/Object
+    //   117: dup
+    //   118: iconst_0
+    //   119: aload_3
+    //   120: invokestatic 123	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   123: aastore
+    //   124: invokestatic 126	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   127: aload_1
+    //   128: ifnull +42 -> 170
+    //   131: aload_1
+    //   132: invokeinterface 115 1 0
+    //   137: aconst_null
+    //   138: astore_3
+    //   139: goto -42 -> 97
+    //   142: astore_1
+    //   143: aconst_null
+    //   144: astore_2
+    //   145: aload_2
+    //   146: ifnull +9 -> 155
+    //   149: aload_2
+    //   150: invokeinterface 115 1 0
+    //   155: ldc 191
+    //   157: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   160: aload_1
+    //   161: athrow
+    //   162: astore_1
+    //   163: goto -18 -> 145
+    //   166: astore_3
+    //   167: goto -60 -> 107
+    //   170: aconst_null
+    //   171: astore_3
+    //   172: goto -75 -> 97
+    //   175: aconst_null
+    //   176: astore_2
+    //   177: goto -94 -> 83
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	180	0	this	s
+    //   31	101	1	localCursor	Cursor
+    //   142	19	1	localObject1	Object
+    //   162	1	1	localObject2	Object
+    //   37	140	2	localObject3	Object
+    //   68	35	3	localObject4	Object
+    //   104	16	3	localException1	Exception
+    //   138	1	3	localObject5	Object
+    //   166	1	3	localException2	Exception
+    //   171	1	3	localObject6	Object
+    //   57	16	4	localr	r
+    // Exception table:
+    //   from	to	target	type
+    //   5	32	104	java/lang/Exception
+    //   5	32	142	finally
+    //   38	47	162	finally
+    //   49	59	162	finally
+    //   61	69	162	finally
+    //   71	81	162	finally
+    //   109	127	162	finally
+    //   38	47	166	java/lang/Exception
+    //   49	59	166	java/lang/Exception
+    //   61	69	166	java/lang/Exception
+    //   71	81	166	java/lang/Exception
+  }
+  
+  public final byte[] get(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(209802);
+    Cursor localCursor = this.db.query("GetEmotionListCache", null, "reqType=?", new String[] { paramString }, null, null, null);
+    paramString = localObject2;
+    if (localCursor != null)
+    {
+      paramString = localObject1;
+      if (localCursor.moveToFirst()) {
+        paramString = new r(localCursor).field_cache;
+      }
+      localCursor.close();
+    }
+    AppMethodBeat.o(209802);
+    return paramString;
+  }
+  
+  public final void k(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(209803);
+    replace(new r(paramString, paramArrayOfByte));
+    AppMethodBeat.o(209803);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.s
  * JD-Core Version:    0.7.0.1
  */

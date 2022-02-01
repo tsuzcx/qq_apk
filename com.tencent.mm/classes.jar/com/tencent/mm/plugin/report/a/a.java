@@ -1,44 +1,25 @@
 package com.tencent.mm.plugin.report.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bc;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.g.b.a.r;
 
 public final class a
-  extends bc
 {
-  protected static c.a info;
-  
-  static
+  public static void a(long paramLong1, long paramLong2, long paramLong3, String paramString)
   {
-    AppMethodBeat.i(143779);
-    c.a locala = new c.a();
-    locala.EYt = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "bakLogId";
-    locala.EYv.put("bakLogId", "INTEGER");
-    localStringBuilder.append(" bakLogId INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "valueStr";
-    locala.EYv.put("valueStr", "TEXT");
-    localStringBuilder.append(" valueStr TEXT");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(143779);
-  }
-  
-  public final c.a getDBInfo()
-  {
-    return info;
+    AppMethodBeat.i(206465);
+    r localr = new r();
+    localr.dGa = paramLong1;
+    localr.dGb = paramLong2;
+    localr.dGc = paramLong3;
+    localr.dGd = localr.t("UserName", paramString, true);
+    localr.aHZ();
+    AppMethodBeat.o(206465);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.report.a.a
  * JD-Core Version:    0.7.0.1
  */

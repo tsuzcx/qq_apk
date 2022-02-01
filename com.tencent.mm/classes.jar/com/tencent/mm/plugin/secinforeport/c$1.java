@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.secinforeport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x.a;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class c$1
   implements x.a
@@ -19,15 +19,15 @@ final class c$1
     AppMethodBeat.i(89166);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      ad.i("MicroMsg.SecInfoReporterImpl", "cgireport succ, ctx: %d, stack: %s", new Object[] { Integer.valueOf(this.wcw), bt.eGN().toString() });
-      e.vIY.idkeyStat(416L, 1L, 1L, false);
+      ac.i("MicroMsg.SecInfoReporterImpl", "cgireport succ, ctx: %d, stack: %s", new Object[] { Integer.valueOf(this.xnH), bs.eWi().toString() });
+      e.wTc.idkeyStat(416L, 1L, 1L, false);
     }
     for (;;)
     {
       AppMethodBeat.o(89166);
       return 0;
-      ad.w("MicroMsg.SecInfoReporterImpl", "cgireport failed, ctx: %d, err: %d:%d %s, stack: %s", new Object[] { Integer.valueOf(this.wcw), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, bt.eGN().toString() });
-      e.vIY.idkeyStat(416L, 2L, 1L, false);
+      ac.w("MicroMsg.SecInfoReporterImpl", "cgireport failed, ctx: %d, err: %d:%d %s, stack: %s", new Object[] { Integer.valueOf(this.xnH), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, bs.eWi().toString() });
+      e.wTc.idkeyStat(416L, 2L, 1L, false);
     }
   }
 }

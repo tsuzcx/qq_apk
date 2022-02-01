@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.game.commlib.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.vending.h.g;
 
 public final class a
 {
-  private static final Object lLU;
-  private static volatile ap rOz;
+  private static final Object mnR;
+  private static volatile ao sWp;
   
   static
   {
     AppMethodBeat.i(89962);
-    lLU = new Object();
+    mnR = new Object();
     AppMethodBeat.o(89962);
   }
   
-  public static void bql()
+  public static void bxi()
   {
     AppMethodBeat.i(89960);
-    if (rOz == null)
+    if (sWp == null)
     {
       AppMethodBeat.o(89960);
       return;
     }
-    synchronized (lLU)
+    synchronized (mnR)
     {
-      if (rOz != null)
+      if (sWp != null)
       {
-        g.aMy("GameCommLib#WorkThread");
-        rOz.quit();
-        rOz = null;
+        g.aSa("GameCommLib#WorkThread");
+        sWp.quit();
+        sWp = null;
       }
       AppMethodBeat.o(89960);
       return;
     }
   }
   
-  public static ap cBt()
+  public static ao cOC()
   {
     AppMethodBeat.i(184541);
-    if (rOz == null) {}
-    synchronized (lLU)
+    if (sWp == null) {}
+    synchronized (mnR)
     {
-      if (rOz == null)
+      if (sWp == null)
       {
-        rOz = new ap("GameCommLib#WorkThread");
-        g.a("GameCommLib#WorkThread", new com.tencent.mm.cf.a("GameCommLib#WorkThread"));
+        sWp = new ao("GameCommLib#WorkThread");
+        g.a("GameCommLib#WorkThread", new com.tencent.mm.ce.a("GameCommLib#WorkThread"));
       }
-      ??? = rOz;
+      ??? = sWp;
       AppMethodBeat.o(184541);
       return ???;
     }

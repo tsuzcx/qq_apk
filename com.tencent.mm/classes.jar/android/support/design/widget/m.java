@@ -4,7 +4,7 @@ import android.graphics.drawable.Drawable;
 
 public abstract interface m
 {
-  public abstract boolean cc();
+  public abstract boolean cj();
   
   public abstract void e(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   

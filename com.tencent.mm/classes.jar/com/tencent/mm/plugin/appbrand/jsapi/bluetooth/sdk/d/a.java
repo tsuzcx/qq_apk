@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static a jLx;
+  public static a klY;
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(144653);
-    if (jLx != null)
+    if (klY != null)
     {
       String.format(paramString2, paramVarArgs);
-      jLx.e(paramString1, paramString2, paramVarArgs);
+      klY.e(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(144653);
   }
@@ -20,10 +20,10 @@ public final class a
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(144655);
-    if (jLx != null)
+    if (klY != null)
     {
       String.format(paramString2, paramVarArgs);
-      jLx.i(paramString1, paramString2, paramVarArgs);
+      klY.i(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(144655);
   }
@@ -31,10 +31,10 @@ public final class a
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(144654);
-    if (jLx != null)
+    if (klY != null)
     {
       String.format(paramString2, paramVarArgs);
-      jLx.w(paramString1, paramString2, paramVarArgs);
+      klY.w(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(144654);
   }

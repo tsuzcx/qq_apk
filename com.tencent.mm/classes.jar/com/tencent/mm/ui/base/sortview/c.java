@@ -5,8 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,60 +15,60 @@ import java.util.Map;
 public final class c
   extends BaseAdapter
 {
-  List<d> Ggt;
-  private Map<String, Integer> Ggy;
-  private a Ggz;
+  List<d> HGj;
+  private Map<String, Integer> HGo;
+  private a HGp;
   
   public c(a parama)
   {
     AppMethodBeat.i(142694);
-    this.Ggt = null;
+    this.HGj = null;
     if (parama == null)
     {
       parama = new RuntimeException("ViewCreator can not be null.");
       AppMethodBeat.o(142694);
       throw parama;
     }
-    this.Ggz = parama;
-    this.Ggt = new ArrayList();
-    this.Ggy = new HashMap();
+    this.HGp = parama;
+    this.HGj = new ArrayList();
+    this.HGo = new HashMap();
     AppMethodBeat.o(142694);
-  }
-  
-  private String Yc(int paramInt)
-  {
-    AppMethodBeat.i(142702);
-    if ((paramInt < 0) || (paramInt >= this.Ggt.size()))
-    {
-      AppMethodBeat.o(142702);
-      return null;
-    }
-    String str = ((d)this.Ggt.get(paramInt)).GgC;
-    AppMethodBeat.o(142702);
-    return str;
   }
   
   private static String a(d paramd)
   {
-    if ((paramd != null) && (paramd.GgC != null)) {
-      return paramd.GgC;
+    if ((paramd != null) && (paramd.HGs != null)) {
+      return paramd.HGs;
     }
     return null;
   }
   
-  private void eTL()
+  private String aan(int paramInt)
+  {
+    AppMethodBeat.i(142702);
+    if ((paramInt < 0) || (paramInt >= this.HGj.size()))
+    {
+      AppMethodBeat.o(142702);
+      return null;
+    }
+    String str = ((d)this.HGj.get(paramInt)).HGs;
+    AppMethodBeat.o(142702);
+    return str;
+  }
+  
+  private void fjy()
   {
     AppMethodBeat.i(142698);
-    this.Ggy.clear();
+    this.HGo.clear();
     Object localObject = null;
     int i = 0;
-    if (i < this.Ggt.size())
+    if (i < this.HGj.size())
     {
-      String str = a((d)this.Ggt.get(i));
+      String str = a((d)this.HGj.get(i));
       if ((str == null) || (str.equalsIgnoreCase((String)localObject))) {
         break label90;
       }
-      this.Ggy.put(str, Integer.valueOf(i));
+      this.HGo.put(str, Integer.valueOf(i));
       localObject = str;
     }
     label90:
@@ -81,54 +81,33 @@ public final class c
     }
   }
   
-  private void hs(List<d> paramList)
+  private void hF(List<d> paramList)
   {
     AppMethodBeat.i(142697);
-    if (this.Ggt != paramList)
+    if (this.HGj != paramList)
     {
-      this.Ggt.clear();
+      this.HGj.clear();
       if (paramList != null) {
-        this.Ggt.addAll(paramList);
+        this.HGj.addAll(paramList);
       }
     }
-    eTL();
+    fjy();
     notifyDataSetChanged();
     AppMethodBeat.o(142697);
   }
   
-  public final int aKp(String paramString)
+  public final int aPS(String paramString)
   {
     AppMethodBeat.i(142703);
-    int i = bt.a((Integer)this.Ggy.get(paramString), -1);
+    int i = bs.a((Integer)this.HGo.get(paramString), -1);
     AppMethodBeat.o(142703);
     return i;
-  }
-  
-  public final void ga(final List<d> paramList)
-  {
-    AppMethodBeat.i(142696);
-    if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
-    {
-      aq.f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(142693);
-          c.a(c.this, paramList);
-          AppMethodBeat.o(142693);
-        }
-      });
-      AppMethodBeat.o(142696);
-      return;
-    }
-    hs(paramList);
-    AppMethodBeat.o(142696);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(142699);
-    int i = this.Ggt.size();
+    int i = this.HGj.size();
     AppMethodBeat.o(142699);
     return i;
   }
@@ -136,7 +115,7 @@ public final class c
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(142700);
-    Object localObject = this.Ggt.get(paramInt);
+    Object localObject = this.HGj.get(paramInt);
     AppMethodBeat.o(142700);
     return localObject;
   }
@@ -151,10 +130,10 @@ public final class c
     boolean bool2 = true;
     AppMethodBeat.i(142701);
     paramViewGroup = (d)getItem(paramInt);
-    Object localObject = Yc(paramInt);
-    String str = Yc(paramInt + 1);
+    Object localObject = aan(paramInt);
+    String str = aan(paramInt + 1);
     boolean bool1;
-    if (paramInt == aKp((String)localObject))
+    if (paramInt == aPS((String)localObject))
     {
       bool1 = true;
       if ((localObject == null) || (((String)localObject).equalsIgnoreCase(str))) {
@@ -163,7 +142,7 @@ public final class c
     }
     for (;;)
     {
-      localObject = this.Ggz;
+      localObject = this.HGp;
       getCount();
       paramView = ((a)localObject).a(paramViewGroup, paramView, paramInt, bool1, bool2);
       AppMethodBeat.o(142701);
@@ -175,10 +154,31 @@ public final class c
     }
   }
   
+  public final void gh(final List<d> paramList)
+  {
+    AppMethodBeat.i(142696);
+    if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
+    {
+      ap.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(142693);
+          c.a(c.this, paramList);
+          AppMethodBeat.o(142693);
+        }
+      });
+      AppMethodBeat.o(142696);
+      return;
+    }
+    hF(paramList);
+    AppMethodBeat.o(142696);
+  }
+  
   public final void refresh()
   {
     AppMethodBeat.i(142695);
-    ga(this.Ggt);
+    gh(this.HGj);
     AppMethodBeat.o(142695);
   }
   
@@ -189,7 +189,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.sortview.c
  * JD-Core Version:    0.7.0.1
  */

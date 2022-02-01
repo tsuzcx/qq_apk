@@ -16,26 +16,26 @@ import java.util.List;
 public class b
   implements g
 {
-  private final f JVC;
+  private final f LIV;
   
   static
   {
     AppMethodBeat.i(60390);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(b.class), "annotations", "getAnnotations()Ljava/util/List;")) };
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(b.class), "annotations", "getAnnotations()Ljava/util/List;")) };
     AppMethodBeat.o(60390);
   }
   
   public b(i parami, a<? extends List<? extends c>> parama)
   {
     AppMethodBeat.i(60394);
-    this.JVC = parami.H(parama);
+    this.LIV = parami.O(parama);
     AppMethodBeat.o(60394);
   }
   
-  private final List<c> fJA()
+  private final List<c> gcd()
   {
     AppMethodBeat.i(60391);
-    List localList = (List)h.a(this.JVC, $$delegatedProperties[0]);
+    List localList = (List)h.a(this.LIV, $$delegatedProperties[0]);
     AppMethodBeat.o(60391);
     return localList;
   }
@@ -61,7 +61,7 @@ public class b
   public boolean isEmpty()
   {
     AppMethodBeat.i(60392);
-    boolean bool = fJA().isEmpty();
+    boolean bool = gcd().isEmpty();
     AppMethodBeat.o(60392);
     return bool;
   }
@@ -69,14 +69,14 @@ public class b
   public Iterator<c> iterator()
   {
     AppMethodBeat.i(60393);
-    Iterator localIterator = fJA().iterator();
+    Iterator localIterator = gcd().iterator();
     AppMethodBeat.o(60393);
     return localIterator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.b.b
  * JD-Core Version:    0.7.0.1
  */

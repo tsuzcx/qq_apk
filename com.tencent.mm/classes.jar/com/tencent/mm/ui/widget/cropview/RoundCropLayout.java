@@ -24,28 +24,28 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "DEFAULT_CROP_WIDTH_RATIO", "", "TAG", "", "circleAreaPaint", "Landroid/graphics/Paint;", "circleLinePaint", "cropLayerColor", "cropLineColor", "cropLineWidth", "cropWidth", "cropWidthRatio", "imageBitmap", "Landroid/graphics/Bitmap;", "imageView", "Lcom/tencent/mm/ui/base/MultiTouchImageView;", "scaleDetector", "Landroid/view/ScaleGestureDetector;", "scrollDetector", "Landroid/view/GestureDetector;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "getCropBitmap", "onLayout", "changed", "", "left", "top", "right", "bottom", "setBitmap", "bitmap", "setCropLayerColor", "colorValue", "setCropLineColor", "setCropWidth", "width", "setCropWidthRatio", "ratio", "setImagePath", "filePath", "ScrollScaleListener", "SimpleTouchListener", "libmmui_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "DEFAULT_CROP_WIDTH_RATIO", "", "TAG", "", "circleAreaPaint", "Landroid/graphics/Paint;", "circleLinePaint", "cropLayerColor", "cropLineColor", "cropLineWidth", "cropWidth", "cropWidthRatio", "imageBitmap", "Landroid/graphics/Bitmap;", "imageView", "Lcom/tencent/mm/ui/base/MultiTouchImageView;", "scaleDetector", "Landroid/view/ScaleGestureDetector;", "scrollDetector", "Landroid/view/GestureDetector;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "getCropBitmap", "onLayout", "changed", "", "left", "top", "right", "bottom", "setBitmap", "bitmap", "setCropLayerColor", "colorValue", "setCropLineColor", "setCropWidth", "width", "setCropWidthRatio", "ratio", "setImagePath", "filePath", "ScrollScaleListener", "SimpleTouchListener", "libmmui_release"})
 public final class RoundCropLayout
   extends FrameLayout
 {
-  private ScaleGestureDetector HCB;
-  private final float HEe;
-  private float HEf;
-  private int HEg;
-  private int HEh;
-  private int HEi;
-  private int HEj;
-  private Paint HEk;
-  private Paint HEl;
-  private GestureDetector HEm;
+  private ScaleGestureDetector JcX;
+  private final float JeB;
+  private float JeC;
+  private int JeD;
+  private int JeE;
+  private int JeF;
+  private Paint JeG;
+  private Paint JeH;
+  private GestureDetector JeI;
   private final String TAG;
+  private int gry;
   private Bitmap imageBitmap;
-  private MultiTouchImageView jPH;
+  private MultiTouchImageView kqu;
   
   public RoundCropLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -59,26 +59,26 @@ public final class RoundCropLayout
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164466);
     this.TAG = "MicroMsg.RoundCropLayout";
-    this.HEe = 0.9F;
-    this.HEh = -1;
-    this.HEi = ao.fromDPToPix(getContext(), 1);
-    this.HEj = getResources().getColor(2131099660);
-    this.HEk = new Paint();
-    this.HEl = new Paint();
+    this.JeB = 0.9F;
+    this.JeD = -1;
+    this.JeE = ao.fromDPToPix(getContext(), 1);
+    this.JeF = getResources().getColor(2131099660);
+    this.JeG = new Paint();
+    this.JeH = new Paint();
     setWillNotDraw(false);
-    this.HEk.setColor(this.HEh);
-    this.HEk.setStrokeWidth(this.HEi);
-    this.HEk.setAntiAlias(true);
-    this.HEk.setStyle(Paint.Style.STROKE);
-    this.HEl.setXfermode((Xfermode)new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    this.jPH = new MultiTouchImageView(paramContext, null);
-    addView((View)this.jPH, 0, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+    this.JeG.setColor(this.JeD);
+    this.JeG.setStrokeWidth(this.JeE);
+    this.JeG.setAntiAlias(true);
+    this.JeG.setStyle(Paint.Style.STROKE);
+    this.JeH.setXfermode((Xfermode)new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.kqu = new MultiTouchImageView(paramContext, null);
+    addView((View)this.kqu, 0, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
     paramAttributeSet = new a();
-    this.HEm = new GestureDetector(paramContext, (GestureDetector.OnGestureListener)paramAttributeSet);
-    this.HCB = new ScaleGestureDetector(paramContext, (ScaleGestureDetector.OnScaleGestureListener)paramAttributeSet);
-    this.HCB.setQuickScaleEnabled(true);
-    this.jPH.setOnTouchListener((View.OnTouchListener)new RoundCropLayout.b(this));
-    setCropWidthRatio(this.HEe);
+    this.JeI = new GestureDetector(paramContext, (GestureDetector.OnGestureListener)paramAttributeSet);
+    this.JcX = new ScaleGestureDetector(paramContext, (ScaleGestureDetector.OnScaleGestureListener)paramAttributeSet);
+    this.JcX.setQuickScaleEnabled(true);
+    this.kqu.setOnTouchListener((View.OnTouchListener)new b());
+    setCropWidthRatio(this.JeB);
     AppMethodBeat.o(164466);
   }
   
@@ -89,9 +89,9 @@ public final class RoundCropLayout
     if (paramCanvas != null)
     {
       int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null, 31);
-      paramCanvas.drawColor(this.HEj);
-      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.HEg / 2 + this.HEi, this.HEk);
-      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.HEg / 2, this.HEl);
+      paramCanvas.drawColor(this.JeF);
+      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.gry / 2 + this.JeE, this.JeG);
+      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.gry / 2, this.JeH);
       paramCanvas.restoreToCount(i);
     }
     AppMethodBeat.o(164464);
@@ -103,13 +103,13 @@ public final class RoundCropLayout
     Bitmap localBitmap = this.imageBitmap;
     if (localBitmap != null)
     {
-      int i = (getWidth() - this.HEg) / 2;
-      int j = (getHeight() - this.HEg) / 2;
+      int i = (getWidth() - this.gry) / 2;
+      int j = (getHeight() - this.gry) / 2;
       Matrix localMatrix = new Matrix();
-      this.jPH.getImageMatrix().invert(localMatrix);
+      this.kqu.getImageMatrix().invert(localMatrix);
       RectF localRectF = new RectF();
       localMatrix.mapRect(localRectF, new RectF(i, j, getWidth() - i, getHeight() - j));
-      ad.i(this.TAG, "cropArea ".concat(String.valueOf(localRectF)));
+      ac.i(this.TAG, "cropArea ".concat(String.valueOf(localRectF)));
       if (localRectF.left < 0.0F) {
         localRectF.left = 0.0F;
       }
@@ -122,7 +122,7 @@ public final class RoundCropLayout
       if (localRectF.bottom > localBitmap.getHeight()) {
         localRectF.bottom = localBitmap.getHeight();
       }
-      ad.i(this.TAG, "fix cropArea ".concat(String.valueOf(localRectF)));
+      ac.i(this.TAG, "fix cropArea ".concat(String.valueOf(localRectF)));
       if ((localRectF.width() > 0.0F) && (localRectF.height() > 0.0F))
       {
         localBitmap = Bitmap.createBitmap(this.imageBitmap, (int)localRectF.left, (int)localRectF.top, (int)localRectF.width(), (int)localRectF.height());
@@ -138,8 +138,8 @@ public final class RoundCropLayout
   {
     AppMethodBeat.i(164463);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.HEg == 0) {
-      this.HEg = ((int)(this.HEf * getWidth()));
+    if (this.gry == 0) {
+      this.gry = ((int)(this.JeC * getWidth()));
     }
     AppMethodBeat.o(164463);
   }
@@ -151,9 +151,9 @@ public final class RoundCropLayout
     paramBitmap = this.imageBitmap;
     if (paramBitmap != null)
     {
-      this.jPH.setImageBitmap(paramBitmap);
-      this.jPH.cH(paramBitmap.getWidth(), paramBitmap.getHeight());
-      this.jPH.eSz();
+      this.kqu.setImageBitmap(paramBitmap);
+      this.kqu.cF(paramBitmap.getWidth(), paramBitmap.getHeight());
+      this.kqu.fij();
       AppMethodBeat.o(164460);
       return;
     }
@@ -162,32 +162,32 @@ public final class RoundCropLayout
   
   public final void setCropLayerColor(int paramInt)
   {
-    this.HEj = paramInt;
+    this.JeF = paramInt;
   }
   
   public final void setCropLineColor(int paramInt)
   {
-    this.HEh = paramInt;
+    this.JeD = paramInt;
   }
   
   public final void setCropWidth(int paramInt)
   {
-    this.HEg = paramInt;
+    this.gry = paramInt;
   }
   
   public final void setCropWidthRatio(float paramFloat)
   {
-    this.HEf = paramFloat;
+    this.JeC = paramFloat;
   }
   
   public final void setImagePath(final String paramString)
   {
     AppMethodBeat.i(164461);
-    d.c.a.V((d.g.a.a)new c(this, paramString));
+    d.c.a.L((d.g.a.a)new c(this, paramString));
     AppMethodBeat.o(164461);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener;", "Landroid/view/GestureDetector$SimpleOnGestureListener;", "Landroid/view/ScaleGestureDetector$OnScaleGestureListener;", "(Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;)V", "onDown", "", "e", "Landroid/view/MotionEvent;", "onScale", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "", "onScroll", "e1", "e2", "distanceX", "", "distanceY", "libmmui_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener;", "Landroid/view/GestureDetector$SimpleOnGestureListener;", "Landroid/view/ScaleGestureDetector$OnScaleGestureListener;", "(Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;)V", "onDown", "", "e", "Landroid/view/MotionEvent;", "onScale", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "", "onScroll", "e1", "e2", "distanceX", "", "distanceY", "libmmui_release"})
   final class a
     extends GestureDetector.SimpleOnGestureListener
     implements ScaleGestureDetector.OnScaleGestureListener
@@ -202,8 +202,8 @@ public final class RoundCropLayout
       AppMethodBeat.i(164456);
       if (paramScaleGestureDetector != null)
       {
-        ad.d(RoundCropLayout.a(this.HEn), "onScale scaleFactor " + paramScaleGestureDetector.getScaleFactor() + " imageScale " + RoundCropLayout.d(this.HEn).getScale() + " pivot (" + paramScaleGestureDetector.getFocusX() + ", " + paramScaleGestureDetector.getFocusY() + ')');
-        RoundCropLayout.d(this.HEn).m(paramScaleGestureDetector.getScaleFactor() * RoundCropLayout.d(this.HEn).getScale(), paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        ac.d(RoundCropLayout.a(this.JeJ), "onScale scaleFactor " + paramScaleGestureDetector.getScaleFactor() + " imageScale " + RoundCropLayout.d(this.JeJ).getScale() + " pivot (" + paramScaleGestureDetector.getFocusX() + ", " + paramScaleGestureDetector.getFocusY() + ')');
+        RoundCropLayout.d(this.JeJ).m(paramScaleGestureDetector.getScaleFactor() * RoundCropLayout.d(this.JeJ).getScale(), paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
       }
       AppMethodBeat.o(164456);
       return true;
@@ -212,7 +212,7 @@ public final class RoundCropLayout
     public final boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
     {
       AppMethodBeat.i(164454);
-      ad.d(RoundCropLayout.a(this.HEn), "scale begin");
+      ac.d(RoundCropLayout.a(this.JeJ), "scale begin");
       AppMethodBeat.o(164454);
       return true;
     }
@@ -220,7 +220,7 @@ public final class RoundCropLayout
     public final void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
     {
       AppMethodBeat.i(164455);
-      ad.d(RoundCropLayout.a(this.HEn), "scale end");
+      ac.d(RoundCropLayout.a(this.JeJ), "scale end");
       AppMethodBeat.o(164455);
     }
     
@@ -229,8 +229,8 @@ public final class RoundCropLayout
       AppMethodBeat.i(164453);
       if (paramMotionEvent2 != null)
       {
-        ad.d(RoundCropLayout.a(this.HEn), "distanceX " + paramFloat1 + " distanceY " + paramFloat2);
-        RoundCropLayout.d(this.HEn).ag(-paramFloat1, -paramFloat2);
+        ac.d(RoundCropLayout.a(this.JeJ), "distanceX " + paramFloat1 + " distanceY " + paramFloat2);
+        RoundCropLayout.d(this.JeJ).ak(-paramFloat1, -paramFloat2);
         AppMethodBeat.o(164453);
         return true;
       }
@@ -239,7 +239,52 @@ public final class RoundCropLayout
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener;", "Landroid/view/View$OnTouchListener;", "(Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;)V", "isScale", "", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "libmmui_release"})
+  final class b
+    implements View.OnTouchListener
+  {
+    private boolean gru;
+    
+    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(164457);
+      if (paramMotionEvent != null)
+      {
+        paramView = Integer.valueOf(paramMotionEvent.getActionMasked());
+        ac.d(RoundCropLayout.a(this.JeJ), "action ".concat(String.valueOf(paramView)));
+        if (paramView != null) {
+          break label87;
+        }
+        label40:
+        if (paramView != null) {
+          break label102;
+        }
+      }
+      for (;;)
+      {
+        RoundCropLayout.b(this.JeJ).onTouchEvent(paramMotionEvent);
+        if (!this.gru) {
+          RoundCropLayout.c(this.JeJ).onTouchEvent(paramMotionEvent);
+        }
+        AppMethodBeat.o(164457);
+        return true;
+        paramView = null;
+        break;
+        label87:
+        if (paramView.intValue() != 0) {
+          break label40;
+        }
+        this.gru = false;
+        continue;
+        label102:
+        if ((paramView.intValue() == 5) && (paramMotionEvent.getPointerCount() == 2)) {
+          this.gru = true;
+        }
+      }
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -249,7 +294,7 @@ public final class RoundCropLayout
       super();
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run", "com/tencent/mm/ui/widget/cropview/RoundCropLayout$setImagePath$1$1$1"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/ui/widget/cropview/RoundCropLayout$setImagePath$1$1$1"})
     static final class a
       implements Runnable
     {
@@ -258,7 +303,7 @@ public final class RoundCropLayout
       public final void run()
       {
         AppMethodBeat.i(164458);
-        this.HEp.HEn.setBitmap(this.HEq);
+        this.JeK.JeJ.setBitmap(this.Aov);
         AppMethodBeat.o(164458);
       }
     }

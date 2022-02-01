@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.feed;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/FinderFavFeedUIContract;", "", "()V", "FavFeedPresenter", "FavFeedViewCallback", "plugin-finder_release"})
 public final class e {}
 
 

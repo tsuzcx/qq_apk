@@ -12,8 +12,8 @@ final class b$2
   public final void onCreateMMMenu(l paraml)
   {
     AppMethodBeat.i(186005);
-    paraml.c(0, this.jOm[0]);
-    paraml.c(1, this.jOm[1]);
+    paraml.c(0, this.koN[0]);
+    paraml.c(1, this.koN[1]);
     AppMethodBeat.o(186005);
   }
 }

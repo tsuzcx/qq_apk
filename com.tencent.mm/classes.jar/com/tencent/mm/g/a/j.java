@@ -8,8 +8,8 @@ import com.tencent.mm.sdk.b.b;
 public final class j
   extends b
 {
-  public a dba;
-  public b dbb;
+  public a cYw;
+  public b cYx;
   
   public j()
   {
@@ -19,9 +19,9 @@ public final class j
   private j(byte paramByte)
   {
     AppMethodBeat.i(149847);
-    this.dba = new a();
-    this.dbb = new b();
-    this.ESR = false;
+    this.cYw = new a();
+    this.cYx = new b();
+    this.Gqe = false;
     this.callback = null;
     AppMethodBeat.o(149847);
   }
@@ -29,15 +29,15 @@ public final class j
   public static final class a
   {
     public int actionCode;
+    public boolean cYA;
+    public String cYy;
+    public boolean cYz;
     public Context context;
-    public String dbc;
-    public boolean dbd;
-    public boolean dbe;
   }
   
   public static final class b
   {
-    public Bundle dbf;
+    public Bundle cYB;
   }
 }
 

@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class mi
   extends b
 {
-  public a drw;
+  public a doN;
+  public b doO;
   
   public mi()
   {
@@ -17,24 +16,29 @@ public final class mi
   
   private mi(byte paramByte)
   {
-    AppMethodBeat.i(89647);
-    this.drw = new a();
-    this.ESR = false;
+    AppMethodBeat.i(116462);
+    this.doN = new a();
+    this.doO = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(89647);
+    AppMethodBeat.o(116462);
   }
   
   public static final class a
   {
-    public Context context;
-    public String group;
-    public Intent intent;
-    public int type = 0;
+    public String chatroomName;
+    public String doP;
+    public boolean doi = false;
+  }
+  
+  public static final class b
+  {
+    public int errCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.mi
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class TAVGLUtils
   
   public static void checkEglError(String paramString)
   {
-    AppMethodBeat.i(202246);
+    AppMethodBeat.i(198307);
     int i = 0;
     String str = "";
     for (;;)
@@ -34,20 +34,20 @@ public class TAVGLUtils
     if (i != 0) {
       new RuntimeException("EGL error encountered (see log): ".concat(String.valueOf(str)));
     }
-    AppMethodBeat.o(202246);
+    AppMethodBeat.o(198307);
   }
   
   public static String convertStreamToString(InputStream paramInputStream)
   {
-    AppMethodBeat.i(202248);
+    AppMethodBeat.i(198309);
     paramInputStream = new Scanner(paramInputStream).useDelimiter("\\A");
     if (paramInputStream.hasNext())
     {
       paramInputStream = paramInputStream.next();
-      AppMethodBeat.o(202248);
+      AppMethodBeat.o(198309);
       return paramInputStream;
     }
-    AppMethodBeat.o(202248);
+    AppMethodBeat.o(198309);
     return "";
   }
   
@@ -136,7 +136,7 @@ public class TAVGLUtils
   
   public static Bitmap saveBitmap(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(202249);
+    AppMethodBeat.i(198310);
     int[] arrayOfInt = new int[1];
     GLES20.glBindTexture(3553, paramInt1);
     GLES20.glGenFramebuffers(1, arrayOfInt, 0);
@@ -152,13 +152,13 @@ public class TAVGLUtils
     GLES20.glBindFramebuffer(36160, 0);
     GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
     GLES20.glBindTexture(3553, 0);
-    AppMethodBeat.o(202249);
+    AppMethodBeat.o(198310);
     return localBitmap;
   }
   
   public static Bitmap saveBitmap(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(202250);
+    AppMethodBeat.i(198311);
     int[] arrayOfInt = new int[1];
     GLES20.glGenFramebuffers(1, arrayOfInt, 0);
     GLES20.glBindFramebuffer(36160, arrayOfInt[0]);
@@ -172,13 +172,13 @@ public class TAVGLUtils
     paramTextureInfo.copyPixelsFromBuffer(localByteBuffer);
     GLES20.glBindFramebuffer(36160, 0);
     GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
-    AppMethodBeat.o(202250);
+    AppMethodBeat.o(198311);
     return paramTextureInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.player.TAVGLUtils
  * JD-Core Version:    0.7.0.1
  */

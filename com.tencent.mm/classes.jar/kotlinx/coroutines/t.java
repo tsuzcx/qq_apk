@@ -1,27 +1,44 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
 import d.l;
-import d.y;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/CompletedWithCancellation;", "", "result", "onCancellation", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "toString", "", "kotlinx-coroutines-core"})
-final class t
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CompletedExceptionally;", "", "cause", "", "handled", "<init>", "(Ljava/lang/Throwable;Z)V", "makeHandled", "()Z", "", "toString", "()Ljava/lang/String;", "Ljava/lang/Throwable;", "getHandled", "kotlinx-coroutines-core", ""})
+public class t
 {
-  public final b<Throwable, y> Kdr;
-  public final Object result;
+  private static final AtomicIntegerFieldUpdater LQS;
+  private volatile int _handled;
+  public final Throwable cause;
   
-  public final String toString()
+  static
   {
-    AppMethodBeat.i(190034);
-    String str = "CompletedWithCancellation[" + this.result + ']';
-    AppMethodBeat.o(190034);
+    AppMethodBeat.i(191140);
+    LQS = AtomicIntegerFieldUpdater.newUpdater(t.class, "_handled");
+    AppMethodBeat.o(191140);
+  }
+  
+  public t(Throwable paramThrowable, boolean paramBoolean) {}
+  
+  public final boolean gdy()
+  {
+    AppMethodBeat.i(191139);
+    boolean bool = LQS.compareAndSet(this, 0, 1);
+    AppMethodBeat.o(191139);
+    return bool;
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(118157);
+    String str = getClass().getSimpleName() + '[' + this.cause + ']';
+    AppMethodBeat.o(118157);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.t
  * JD-Core Version:    0.7.0.1
  */

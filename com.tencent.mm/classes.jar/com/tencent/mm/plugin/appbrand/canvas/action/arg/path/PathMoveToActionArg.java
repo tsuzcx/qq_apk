@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.path;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
+import com.tencent.mm.plugin.appbrand.z.g;
 import org.json.JSONObject;
 
 public class PathMoveToActionArg
@@ -85,7 +85,7 @@ public class PathMoveToActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathMoveToActionArg
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.game.model.o;
 import com.tencent.mm.plugin.game.model.o.e;
 import com.tencent.mm.plugin.game.model.p;
 import com.tencent.mm.plugin.game.model.s;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.widget.b.a;
 import java.util.HashMap;
@@ -21,13 +21,13 @@ import java.util.HashMap;
 public final class e
   implements View.OnClickListener, View.OnLongClickListener
 {
-  private int fsv;
-  private b snM;
+  private int fwc;
+  private b tvF;
   
   public e(int paramInt, b paramb)
   {
-    this.fsv = paramInt;
-    this.snM = paramb;
+    this.fwc = paramInt;
+    this.tvF = paramb;
   }
   
   public final void onClick(View paramView)
@@ -39,21 +39,21 @@ public final class e
       return;
     }
     a locala = (a)paramView.getTag();
-    if ((locala.snP == null) || (locala.snQ == null))
+    if ((locala.tvI == null) || (locala.tvJ == null))
     {
       AppMethodBeat.o(183902);
       return;
     }
-    int i = p.a(paramView.getContext(), locala.snP, locala.snQ, locala.snP.field_appId, this.fsv);
+    int i = p.a(paramView.getContext(), locala.tvI, locala.tvJ, locala.tvI.field_appId, this.fwc);
     HashMap localHashMap = new HashMap();
     localHashMap.put("tab", "2");
     if (locala.isNew) {}
     for (paramView = "1";; paramView = "2")
     {
       localHashMap.put("isnew", paramView);
-      localHashMap.put("fold", String.valueOf(locala.snP.field_hasMergedCount));
-      localHashMap.put("ext_data", locala.snP.rWS);
-      com.tencent.mm.game.report.e.a(aj.getContext(), 13, 1301, locala.rYB, i, 0, locala.snP.field_appId, this.fsv, locala.snP.rWQ, locala.snP.field_gameMsgId, locala.snP.rWR, com.tencent.mm.game.report.e.l(localHashMap));
+      localHashMap.put("fold", String.valueOf(locala.tvI.field_hasMergedCount));
+      localHashMap.put("ext_data", locala.tvI.teK);
+      com.tencent.mm.game.report.e.a(ai.getContext(), 13, 1301, locala.tgt, i, 0, locala.tvI.field_appId, this.fwc, locala.tvI.teI, locala.tvI.field_gameMsgId, locala.tvI.teJ, com.tencent.mm.game.report.e.k(localHashMap));
       AppMethodBeat.o(183902);
       return;
     }
@@ -68,13 +68,13 @@ public final class e
       return false;
     }
     final a locala = (a)paramView.getTag();
-    if (locala.snP == null)
+    if (locala.tvI == null)
     {
       AppMethodBeat.o(183903);
       return false;
     }
     paramView = new a(paramView.getContext(), paramView);
-    paramView.HIu = new View.OnCreateContextMenuListener()
+    paramView.JiR = new View.OnCreateContextMenuListener()
     {
       public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
       {
@@ -83,22 +83,22 @@ public final class e
         AppMethodBeat.o(183900);
       }
     };
-    paramView.HrY = new n.d()
+    paramView.ISv = new n.d()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(183901);
         if (paramAnonymousMenuItem.getItemId() == 11)
         {
-          ((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().delete(locala.snP, new String[0]);
+          ((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().delete(locala.tvI, new String[0]);
           if (e.a(e.this) != null) {
-            e.a(e.this).cEs();
+            e.a(e.this).cRC();
           }
         }
         AppMethodBeat.o(183901);
       }
     };
-    paramView.eh(0, 0);
+    paramView.ej(0, 0);
     AppMethodBeat.o(183903);
     return true;
   }
@@ -106,16 +106,16 @@ public final class e
   public static final class a
   {
     public boolean isNew;
-    public int rYB;
-    public o snP;
-    public o.e snQ;
+    public int tgt;
+    public o tvI;
+    public o.e tvJ;
     
     public a(o paramo, o.e parame, int paramInt)
     {
       AppMethodBeat.i(184812);
-      this.snP = paramo;
-      this.snQ = parame;
-      this.rYB = paramInt;
+      this.tvI = paramo;
+      this.tvJ = parame;
+      this.tgt = paramInt;
       if (!paramo.field_isRead) {}
       for (boolean bool = true;; bool = false)
       {
@@ -128,7 +128,7 @@ public final class e
   
   public static abstract interface b
   {
-    public abstract void cEs();
+    public abstract void cRC();
   }
 }
 

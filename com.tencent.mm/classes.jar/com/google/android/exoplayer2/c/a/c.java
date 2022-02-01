@@ -11,7 +11,7 @@ import java.util.Map;
 final class c
   extends d
 {
-  long aSz = -9223372036854775807L;
+  long aTs = -9223372036854775807L;
   
   public c()
   {
@@ -87,7 +87,7 @@ final class c
     AppMethodBeat.i(91987);
     int i = paramm.readUnsignedShort();
     int j = paramm.position;
-    paramm.fl(i);
+    paramm.eX(i);
     paramm = new String(paramm.data, j, i);
     AppMethodBeat.o(91987);
     return paramm;
@@ -96,7 +96,7 @@ final class c
   private static ArrayList<Object> e(m paramm)
   {
     AppMethodBeat.i(91988);
-    int j = paramm.vQ();
+    int j = paramm.vF();
     ArrayList localArrayList = new ArrayList(j);
     int i = 0;
     while (i < j)
@@ -128,7 +128,7 @@ final class c
   private static HashMap<String, Object> g(m paramm)
   {
     AppMethodBeat.i(91990);
-    int j = paramm.vQ();
+    int j = paramm.vF();
     HashMap localHashMap = new HashMap(j);
     int i = 0;
     while (i < j)
@@ -144,7 +144,7 @@ final class c
   {
     AppMethodBeat.i(91991);
     Date localDate = new Date(c(paramm).doubleValue());
-    paramm.fl(2);
+    paramm.eX(2);
     AppMethodBeat.o(91991);
     return localDate;
   }
@@ -173,7 +173,7 @@ final class c
     {
       double d = ((Double)paramm.get("duration")).doubleValue();
       if (d > 0.0D) {
-        this.aSz = ((d * 1000000.0D));
+        this.aTs = ((d * 1000000.0D));
       }
     }
     AppMethodBeat.o(91984);

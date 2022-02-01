@@ -6,7 +6,7 @@ import com.tencent.soter.core.c.g;
 public abstract class e<T>
   extends f
 {
-  public T Ivv = null;
+  public T JXe = null;
   
   e()
   {
@@ -34,7 +34,7 @@ public abstract class e<T>
       if (!g.isNullOrNil(paramString)) {
         this.errMsg = paramString;
       }
-      this.Ivv = paramT;
+      this.JXe = paramT;
       return;
       this.errMsg = "get support soter failed remotely";
       continue;
@@ -61,10 +61,10 @@ public abstract class e<T>
   
   public String toString()
   {
-    if (this.Ivv == null) {
+    if (this.JXe == null) {
       return super.toString();
     }
-    return String.format("total: %s, extData: %s", new Object[] { super.toString(), this.Ivv.toString() });
+    return String.format("total: %s, extData: %s", new Object[] { super.toString(), this.JXe.toString() });
   }
 }
 

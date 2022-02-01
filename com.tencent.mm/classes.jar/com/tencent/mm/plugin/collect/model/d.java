@@ -6,20 +6,20 @@ import java.util.List;
 
 public enum d
 {
-  public List<d.a> nqa;
+  public List<d.a> nTa;
   
   static
   {
     AppMethodBeat.i(63779);
-    nTb = new d("INSTANCE");
-    nTc = new d[] { nTb };
+    oww = new d("INSTANCE");
+    owx = new d[] { oww };
     AppMethodBeat.o(63779);
   }
   
   private d()
   {
     AppMethodBeat.i(63778);
-    this.nqa = new LinkedList();
+    this.nTa = new LinkedList();
     AppMethodBeat.o(63778);
   }
 }

@@ -2,14 +2,12 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.f.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.l;
 import com.tencent.mm.sdk.platformtools.o;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.g;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.io.IOException;
@@ -18,20 +16,19 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import org.apache.commons.a.c;
 
 public final class LuggageLocalFileObjectManager
 {
-  private static final w iTb;
-  private final String iSI;
-  private final String iSJ;
-  private final String iSK;
-  private final Collection<a> iTa;
+  private static final w jtm;
+  private final String jsT;
+  private final String jsU;
+  private final String jsV;
+  private final Collection<a> jtl;
   
   static
   {
     AppMethodBeat.i(134403);
-    iTb = new w()
+    jtm = new w()
     {
       public final String toString()
       {
@@ -44,32 +41,32 @@ public final class LuggageLocalFileObjectManager
   LuggageLocalFileObjectManager(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(134388);
-    this.iSI = (q.B(new e(paramString1).fhU()) + "/");
-    this.iSJ = paramString2;
-    this.iSK = paramString3;
+    this.jsT = (q.B(new e(paramString1).fxV()) + "/");
+    this.jsU = paramString2;
+    this.jsV = paramString3;
     paramString1 = new LinkedList();
     paramString1.add(new b((byte)0));
-    this.iTa = Collections.unmodifiableCollection(paramString1);
+    this.jtl = Collections.unmodifiableCollection(paramString1);
     AppMethodBeat.o(134388);
   }
   
   private <T extends w> T a(String paramString1, Class<T> paramClass, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(134393);
-    if (!i.eK(paramString1))
+    if (!i.eA(paramString1))
     {
       AppMethodBeat.o(134393);
       return null;
     }
-    Object localObject1 = c.getExtension(paramString1);
+    Object localObject1 = org.apache.commons.a.d.getExtension(paramString1);
     Object localObject2;
-    if (bt.isNullOrNil((String)localObject1))
+    if (bs.isNullOrNil((String)localObject1))
     {
-      Iterator localIterator = this.iTa.iterator();
+      Iterator localIterator = this.jtl.iterator();
       localObject1 = null;
       while (localIterator.hasNext())
       {
-        localObject2 = ((a)localIterator.next()).cj(paramString1, paramString2);
+        localObject2 = ((a)localIterator.next()).cs(paramString1, paramString2);
         localObject1 = localObject2;
         if (localObject2 != null) {
           localObject1 = localObject2;
@@ -85,7 +82,7 @@ public final class LuggageLocalFileObjectManager
     label143:
     for (int i = -1;; i = ((a)localObject1).size())
     {
-      ad.e("MicroMsg.AppBrand.LuggageLocalFileObjectManager", "attachCast, no handler return correct info, attach.size = %d", new Object[] { Integer.valueOf(i) });
+      ac.e("MicroMsg.AppBrand.LuggageLocalFileObjectManager", "attachCast, no handler return correct info, attach.size = %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(134393);
       return null;
       paramString2 = (String)localObject1;
@@ -95,34 +92,34 @@ public final class LuggageLocalFileObjectManager
     {
       label153:
       localObject2 = (w)paramClass.newInstance();
-      ((w)localObject2).diQ = ((String)((a)localObject1).get(0));
-      ((w)localObject2).mimeType = d.aGE(paramString2);
-      ((w)localObject2).gPG = ((String)((a)localObject1).get(1));
-      if (bt.isNullOrNil(((w)localObject2).gPG))
+      ((w)localObject2).dgl = ((String)((a)localObject1).get(0));
+      ((w)localObject2).mimeType = com.tencent.mm.sdk.f.d.aLW(paramString2);
+      ((w)localObject2).hqg = ((String)((a)localObject1).get(1));
+      if (bs.isNullOrNil(((w)localObject2).hqg))
       {
-        ad.e("MicroMsg.AppBrand.LuggageLocalFileObjectManager", "attachCast appId %s, Null Or Nil fileFullPath");
+        ac.e("MicroMsg.AppBrand.LuggageLocalFileObjectManager", "attachCast appId %s, Null Or Nil fileFullPath");
         AppMethodBeat.o(134393);
         return null;
       }
       paramClass = paramString2;
-      if (bt.isNullOrNil(paramString2)) {
+      if (bs.isNullOrNil(paramString2)) {
         paramClass = "unknown";
       }
-      ((w)localObject2).fyk = bt.by((String)((a)localObject1).get(3), paramClass);
-      paramClass = ((w)localObject2).gPG;
-      if ((paramBoolean) && (k.ce(paramString1, paramClass))) {
+      ((w)localObject2).fBR = bs.bG((String)((a)localObject1).get(3), paramClass);
+      paramClass = ((w)localObject2).hqg;
+      if ((paramBoolean) && (k.cn(paramString1, paramClass))) {
         i = 1;
       }
       while (i != 0)
       {
-        paramString1 = new e(((w)localObject2).gPG);
-        ((w)localObject2).hWY = paramString1.length();
-        ((w)localObject2).iSc = paramString1.lastModified();
+        paramString1 = new e(((w)localObject2).hqg);
+        ((w)localObject2).ixc = paramString1.length();
+        ((w)localObject2).jsn = paramString1.lastModified();
         AppMethodBeat.o(134393);
         return localObject2;
         if (!paramBoolean)
         {
-          paramBoolean = o.kP(paramString1, paramClass);
+          paramBoolean = o.lm(paramString1, paramClass);
           if (paramBoolean)
           {
             i = 1;
@@ -135,20 +132,20 @@ public final class LuggageLocalFileObjectManager
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrand.LuggageLocalFileObjectManager", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AppBrand.LuggageLocalFileObjectManager", paramString1, "", new Object[0]);
       AppMethodBeat.o(134393);
     }
   }
   
-  private String aRm()
+  private String aYh()
   {
     AppMethodBeat.i(134395);
-    l.aAk(this.iSI);
+    l.aFC(this.jsT);
     try
     {
-      new e(this.iSI, ".nomedia").createNewFile();
+      new e(this.jsT, ".nomedia").createNewFile();
       label32:
-      String str = this.iSI;
+      String str = this.jsT;
       AppMethodBeat.o(134395);
       return str;
     }
@@ -158,19 +155,19 @@ public final class LuggageLocalFileObjectManager
     }
   }
   
-  final w Fa(String paramString)
+  final w Jd(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(134397);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(134397);
       return null;
     }
-    Iterator localIterator = this.iTa.iterator();
+    Iterator localIterator = this.jtl.iterator();
     while (localIterator.hasNext())
     {
-      w localw = ((a)localIterator.next()).Fe(paramString);
+      w localw = ((a)localIterator.next()).Jh(paramString);
       localObject = localw;
       if (localw != null) {
         localObject = localw;
@@ -181,29 +178,29 @@ public final class LuggageLocalFileObjectManager
   }
   
   @Deprecated
-  public final w Fb(String paramString)
+  public final w Je(String paramString)
   {
     AppMethodBeat.i(134398);
-    if ((bt.isNullOrNil(paramString)) || (!paramString.startsWith(this.iSK)))
+    if ((bs.isNullOrNil(paramString)) || (!paramString.startsWith(this.jsV)))
     {
-      ad.e("MicroMsg.AppBrand.LuggageLocalFileObjectManager", "getItemByLocalId, invalid args, localId(%s)", new Object[] { paramString });
+      ac.e("MicroMsg.AppBrand.LuggageLocalFileObjectManager", "getItemByLocalId, invalid args, localId(%s)", new Object[] { paramString });
       AppMethodBeat.o(134398);
       return null;
     }
-    String str = paramString.substring(this.iSK.length());
-    Iterator localIterator = this.iTa.iterator();
+    String str = paramString.substring(this.jsV.length());
+    Iterator localIterator = this.jtl.iterator();
     paramString = null;
     if (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      paramString = locala.Fd(str);
+      paramString = locala.Jg(str);
       if (paramString != null) {
-        ad.i("MicroMsg.AppBrand.LuggageLocalFileObjectManager", "getItemByLocalId, handled by %s, result = %s", new Object[] { locala.toString(), paramString });
+        ac.i("MicroMsg.AppBrand.LuggageLocalFileObjectManager", "getItemByLocalId, handled by %s, result = %s", new Object[] { locala.toString(), paramString });
       }
     }
     for (;;)
     {
-      if (iTb == paramString)
+      if (jtm == paramString)
       {
         AppMethodBeat.o(134398);
         return null;
@@ -218,7 +215,7 @@ public final class LuggageLocalFileObjectManager
   {
     AppMethodBeat.i(134396);
     Object localObject = null;
-    Iterator localIterator = this.iTa.iterator();
+    Iterator localIterator = this.jtl.iterator();
     while (localIterator.hasNext())
     {
       w localw = ((a)localIterator.next()).a(paramw);
@@ -231,10 +228,10 @@ public final class LuggageLocalFileObjectManager
     return localObject;
   }
   
-  public final List<w> aRj()
+  public final List<w> aYe()
   {
     AppMethodBeat.i(134390);
-    e[] arrayOfe = aRk();
+    e[] arrayOfe = aYf();
     if ((arrayOfe == null) || (arrayOfe.length <= 0))
     {
       AppMethodBeat.o(134390);
@@ -245,7 +242,7 @@ public final class LuggageLocalFileObjectManager
     int i = 0;
     while (i < j)
     {
-      w localw = Fa(arrayOfe[i].getName());
+      w localw = Jd(arrayOfe[i].getName());
       if (localw != null) {
         localLinkedList.add(localw);
       }
@@ -255,52 +252,26 @@ public final class LuggageLocalFileObjectManager
     return localLinkedList;
   }
   
-  final e[] aRk()
+  final e[] aYf()
   {
     AppMethodBeat.i(175590);
-    Object localObject = new e(aRm());
+    Object localObject = new e(aYh());
     if ((!((e)localObject).exists()) || (!((e)localObject).isDirectory()))
     {
       AppMethodBeat.o(175590);
       return null;
     }
-    localObject = ((e)localObject).a(new g()
-    {
-      public final boolean accept(e paramAnonymouse)
-      {
-        AppMethodBeat.i(175588);
-        if ((paramAnonymouse.exists()) && (!paramAnonymouse.isDirectory()) && (!bt.isNullOrNil(paramAnonymouse.getName())) && (paramAnonymouse.getName().startsWith("store_")))
-        {
-          AppMethodBeat.o(175588);
-          return true;
-        }
-        AppMethodBeat.o(175588);
-        return false;
-      }
-    });
+    localObject = ((e)localObject).a(new LuggageLocalFileObjectManager.1(this));
     AppMethodBeat.o(175590);
     return localObject;
   }
   
-  public final List<w> aRl()
+  public final List<w> aYg()
   {
     AppMethodBeat.i(134392);
-    Object localObject = new e(aRm());
+    Object localObject = new e(aYh());
     if ((!((e)localObject).exists()) || (!((e)localObject).isDirectory())) {}
-    for (localObject = null; (localObject == null) || (localObject.length <= 0); localObject = ((e)localObject).a(new g()
-        {
-          public final boolean accept(e paramAnonymouse)
-          {
-            AppMethodBeat.i(175589);
-            if ((paramAnonymouse.exists()) && (!paramAnonymouse.isDirectory()) && (!bt.isNullOrNil(paramAnonymouse.getName())) && (paramAnonymouse.getName().startsWith("tmp_")))
-            {
-              AppMethodBeat.o(175589);
-              return true;
-            }
-            AppMethodBeat.o(175589);
-            return false;
-          }
-        }))
+    for (localObject = null; (localObject == null) || (localObject.length <= 0); localObject = ((e)localObject).a(new LuggageLocalFileObjectManager.2(this)))
     {
       AppMethodBeat.o(134392);
       return null;
@@ -310,7 +281,7 @@ public final class LuggageLocalFileObjectManager
     int i = 0;
     while (i < j)
     {
-      w localw = Fa(localObject[i].getName());
+      w localw = Jd(localObject[i].getName());
       if (localw != null) {
         localLinkedList.add(localw);
       }
@@ -324,12 +295,12 @@ public final class LuggageLocalFileObjectManager
   public final String genMediaFilePath(String paramString)
   {
     AppMethodBeat.i(134389);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(134389);
       return null;
     }
-    paramString = aRm() + paramString;
+    paramString = aYh() + paramString;
     AppMethodBeat.o(134389);
     return paramString;
   }
@@ -344,13 +315,13 @@ public final class LuggageLocalFileObjectManager
   
   static abstract interface a
   {
-    public abstract w Fd(String paramString);
+    public abstract w Jg(String paramString);
     
-    public abstract w Fe(String paramString);
+    public abstract w Jh(String paramString);
     
     public abstract w a(w paramw);
     
-    public abstract a cj(String paramString1, String paramString2);
+    public abstract a cs(String paramString1, String paramString2);
   }
   
   final class b
@@ -358,7 +329,7 @@ public final class LuggageLocalFileObjectManager
   {
     private b() {}
     
-    public final w Fd(String paramString)
+    public final w Jg(String paramString)
     {
       Object localObject1 = null;
       AppMethodBeat.i(134384);
@@ -367,34 +338,34 @@ public final class LuggageLocalFileObjectManager
         AppMethodBeat.o(134384);
         return null;
       }
-      Object localObject3 = c.getExtension(paramString);
+      Object localObject3 = org.apache.commons.a.d.getExtension(paramString);
       String str2 = paramString.replaceFirst("store_", "").replaceFirst("tmp_", "");
       String str1 = str2;
-      if (!bt.isNullOrNil((String)localObject3)) {
+      if (!bs.isNullOrNil((String)localObject3)) {
         str1 = str2.replaceFirst(".".concat(String.valueOf(localObject3)), "");
       }
-      if (bt.isNullOrNil(str1))
+      if (bs.isNullOrNil(str1))
       {
-        paramString = LuggageLocalFileObjectManager.aRn();
+        paramString = LuggageLocalFileObjectManager.aYi();
         AppMethodBeat.o(134384);
         return paramString;
       }
       try
       {
-        str2 = LuggageLocalFileObjectManager.ch(str1, LuggageLocalFileObjectManager.a(LuggageLocalFileObjectManager.this));
+        str2 = LuggageLocalFileObjectManager.cq(str1, LuggageLocalFileObjectManager.a(LuggageLocalFileObjectManager.this));
         localObject1 = str2;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", localException, "retrieveMediaObject, decrypt exp ", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", localException, "retrieveMediaObject, decrypt exp ", new Object[0]);
         }
         Object localObject2 = ((String)localObject1).split("\\|");
         if ((localObject2 != null) && (localObject2.length == 2)) {
           break label200;
         }
-        paramString = LuggageLocalFileObjectManager.aRn();
+        paramString = LuggageLocalFileObjectManager.aYi();
         AppMethodBeat.o(134384);
         return paramString;
         label200:
@@ -406,62 +377,62 @@ public final class LuggageLocalFileObjectManager
         for (localObject1 = "store_";; localObject1 = "tmp_")
         {
           str1 = LuggageLocalFileObjectManager.b(LuggageLocalFileObjectManager.this) + (String)localObject1 + str1;
-          l1 = bt.getLong(localObject2[0], 0L);
+          l1 = bs.getLong(localObject2[0], 0L);
           localObject2 = localObject2[1];
           if (((String)localObject2).equalsIgnoreCase((String)localObject3)) {
             break;
           }
-          paramString = LuggageLocalFileObjectManager.aRn();
+          paramString = LuggageLocalFileObjectManager.aYi();
           AppMethodBeat.o(134384);
           return paramString;
         }
         try
         {
-          long l2 = LuggageLocalFileObjectManager.Fc(str1);
+          long l2 = LuggageLocalFileObjectManager.Jf(str1);
           if (l1 != l2)
           {
-            ad.e("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, exactCRC32(%d) != fileCRC32(%d), localId(%s)", new Object[] { Long.valueOf(l2), Long.valueOf(l1), paramString });
-            paramString = LuggageLocalFileObjectManager.aRn();
+            ac.e("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, exactCRC32(%d) != fileCRC32(%d), localId(%s)", new Object[] { Long.valueOf(l2), Long.valueOf(l1), paramString });
+            paramString = LuggageLocalFileObjectManager.aYi();
             AppMethodBeat.o(134384);
             return paramString;
           }
         }
         catch (IOException paramString)
         {
-          ad.e("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, getCRC exp = %s", new Object[] { bt.m(paramString) });
-          paramString = LuggageLocalFileObjectManager.aRn();
+          ac.e("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, getCRC exp = %s", new Object[] { bs.m(paramString) });
+          paramString = LuggageLocalFileObjectManager.aYi();
           AppMethodBeat.o(134384);
           return paramString;
         }
         localObject3 = new w();
-        ((w)localObject3).diQ = (LuggageLocalFileObjectManager.c(LuggageLocalFileObjectManager.this) + paramString);
-        ((w)localObject3).gPG = str1;
-        ((w)localObject3).mimeType = d.aGE((String)localObject2);
-        ((w)localObject3).iSb = ((String)localObject1).equalsIgnoreCase("store_");
-        paramString = new e(((w)localObject3).gPG);
-        ((w)localObject3).iSc = paramString.lastModified();
-        ((w)localObject3).hWY = paramString.length();
+        ((w)localObject3).dgl = (LuggageLocalFileObjectManager.c(LuggageLocalFileObjectManager.this) + paramString);
+        ((w)localObject3).hqg = str1;
+        ((w)localObject3).mimeType = com.tencent.mm.sdk.f.d.aLW((String)localObject2);
+        ((w)localObject3).jsm = ((String)localObject1).equalsIgnoreCase("store_");
+        paramString = new e(((w)localObject3).hqg);
+        ((w)localObject3).jsn = paramString.lastModified();
+        ((w)localObject3).ixc = paramString.length();
         AppMethodBeat.o(134384);
       }
-      if (bt.isNullOrNil((String)localObject1))
+      if (bs.isNullOrNil((String)localObject1))
       {
-        ad.d("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, get empty decrypted string");
-        paramString = LuggageLocalFileObjectManager.aRn();
+        ac.d("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, get empty decrypted string");
+        paramString = LuggageLocalFileObjectManager.aYi();
         AppMethodBeat.o(134384);
         return paramString;
       }
       return localObject3;
     }
     
-    public final w Fe(String paramString)
+    public final w Jh(String paramString)
     {
       AppMethodBeat.i(134387);
       String str2 = paramString.replaceFirst("store_", "").replaceFirst("tmp_", "");
       Object localObject2;
       try
       {
-        String str1 = LuggageLocalFileObjectManager.ch(str2, LuggageLocalFileObjectManager.a(LuggageLocalFileObjectManager.this));
-        if (bt.isNullOrNil(str1))
+        String str1 = LuggageLocalFileObjectManager.cq(str2, LuggageLocalFileObjectManager.a(LuggageLocalFileObjectManager.this));
+        if (bs.isNullOrNil(str1))
         {
           AppMethodBeat.o(134387);
           return null;
@@ -471,7 +442,7 @@ public final class LuggageLocalFileObjectManager
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", localException, "retrieveMediaObjectByRealFileName, dec exp = ", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", localException, "retrieveMediaObjectByRealFileName, dec exp = ", new Object[0]);
           localObject1 = null;
         }
         localObject1 = ((String)localObject1).split("\\|");
@@ -482,19 +453,19 @@ public final class LuggageLocalFileObjectManager
         }
         localObject1 = localObject1[1];
         localObject2 = new StringBuilder().append(LuggageLocalFileObjectManager.c(LuggageLocalFileObjectManager.this)).append(paramString);
-        if (!bt.isNullOrNil((String)localObject1)) {}
+        if (!bs.isNullOrNil((String)localObject1)) {}
       }
       for (Object localObject1 = "";; localObject1 = ".".concat(String.valueOf(localObject1)))
       {
         localObject2 = (String)localObject1;
         localObject1 = new w();
-        ((w)localObject1).diQ = ((String)localObject2);
-        ((w)localObject1).gPG = (LuggageLocalFileObjectManager.b(LuggageLocalFileObjectManager.this) + paramString);
-        ((w)localObject1).fyk = str2;
-        ((w)localObject1).iSb = paramString.startsWith("store_");
-        paramString = new e(((w)localObject1).gPG);
-        ((w)localObject1).iSc = paramString.lastModified();
-        ((w)localObject1).hWY = paramString.length();
+        ((w)localObject1).dgl = ((String)localObject2);
+        ((w)localObject1).hqg = (LuggageLocalFileObjectManager.b(LuggageLocalFileObjectManager.this) + paramString);
+        ((w)localObject1).fBR = str2;
+        ((w)localObject1).jsm = paramString.startsWith("store_");
+        paramString = new e(((w)localObject1).hqg);
+        ((w)localObject1).jsn = paramString.lastModified();
+        ((w)localObject1).ixc = paramString.length();
         AppMethodBeat.o(134387);
         return localObject1;
       }
@@ -508,17 +479,17 @@ public final class LuggageLocalFileObjectManager
         AppMethodBeat.o(134385);
         return null;
       }
-      String str = paramw.gPG.replaceFirst("tmp_", "store_");
-      if (k.ce(paramw.gPG, str))
+      String str = paramw.hqg.replaceFirst("tmp_", "store_");
+      if (k.cn(paramw.hqg, str))
       {
         w localw = new w();
-        localw.gPG = str;
-        localw.diQ = paramw.diQ.replaceFirst("tmp_", "store_");
-        localw.hWY = paramw.hWY;
-        localw.fyk = paramw.fyk;
-        localw.iSc = new e(localw.gPG).lastModified();
+        localw.hqg = str;
+        localw.dgl = paramw.dgl.replaceFirst("tmp_", "store_");
+        localw.ixc = paramw.ixc;
+        localw.fBR = paramw.fBR;
+        localw.jsn = new e(localw.hqg).lastModified();
         localw.mimeType = paramw.mimeType;
-        localw.iSb = true;
+        localw.jsm = true;
         AppMethodBeat.o(134385);
         return localw;
       }
@@ -527,7 +498,7 @@ public final class LuggageLocalFileObjectManager
     }
     
     /* Error */
-    public final a cj(String paramString1, String paramString2)
+    public final a cs(String paramString1, String paramString2)
     {
       // Byte code:
       //   0: ldc 210
@@ -535,12 +506,12 @@ public final class LuggageLocalFileObjectManager
       //   5: aload_2
       //   6: astore 5
       //   8: aload_2
-      //   9: invokestatic 65	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   9: invokestatic 65	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
       //   12: ifeq +8 -> 20
-      //   15: invokestatic 213	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager:aRo	()Ljava/lang/String;
+      //   15: invokestatic 213	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager:aYj	()Ljava/lang/String;
       //   18: astore 5
       //   20: aload_1
-      //   21: invokestatic 131	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager:Fc	(Ljava/lang/String;)J
+      //   21: invokestatic 131	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager:Jf	(Ljava/lang/String;)J
       //   24: lstore_3
       //   25: getstatic 219	java/util/Locale:US	Ljava/util/Locale;
       //   28: ldc 221
@@ -565,15 +536,15 @@ public final class LuggageLocalFileObjectManager
       //   59: iconst_0
       //   60: aload_1
       //   61: aastore
-      //   62: invokestatic 229	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   62: invokestatic 229	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   65: aload_1
       //   66: aload_0
-      //   67: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager$b:iTc	Lcom/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager;
+      //   67: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager$b:jtn	Lcom/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager;
       //   70: invokestatic 82	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager:a	(Lcom/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager;)Ljava/lang/String;
-      //   73: invokestatic 232	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager:ci	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      //   73: invokestatic 232	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager:cr	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
       //   76: astore_1
       //   77: aload_1
-      //   78: invokestatic 65	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   78: invokestatic 65	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
       //   81: ifeq +54 -> 135
       //   84: ldc 210
       //   86: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -587,9 +558,9 @@ public final class LuggageLocalFileObjectManager
       //   100: dup
       //   101: iconst_0
       //   102: aload_1
-      //   103: invokestatic 148	com/tencent/mm/sdk/platformtools/bt:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+      //   103: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
       //   106: aastore
-      //   107: invokestatic 142	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   107: invokestatic 142	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   110: ldc 210
       //   112: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   115: aconst_null
@@ -600,7 +571,7 @@ public final class LuggageLocalFileObjectManager
       //   121: ldc 236
       //   123: iconst_0
       //   124: anewarray 4	java/lang/Object
-      //   127: invokestatic 101	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   127: invokestatic 101	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   130: aconst_null
       //   131: astore_1
       //   132: goto -55 -> 77
@@ -613,7 +584,7 @@ public final class LuggageLocalFileObjectManager
       //   148: dup
       //   149: invokespecial 110	java/lang/StringBuilder:<init>	()V
       //   152: aload_0
-      //   153: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager$b:iTc	Lcom/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager;
+      //   153: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager$b:jtn	Lcom/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager;
       //   156: invokestatic 112	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager:b	(Lcom/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager;)Ljava/lang/String;
       //   159: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   162: aload_1
@@ -624,14 +595,14 @@ public final class LuggageLocalFileObjectManager
       //   173: dup
       //   174: invokespecial 110	java/lang/StringBuilder:<init>	()V
       //   177: aload_0
-      //   178: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager$b:iTc	Lcom/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager;
+      //   178: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager$b:jtn	Lcom/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager;
       //   181: invokestatic 154	com/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager:c	(Lcom/tencent/mm/plugin/appbrand/appstorage/LuggageLocalFileObjectManager;)Ljava/lang/String;
       //   184: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   187: aload_1
       //   188: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   191: astore 6
       //   193: aload 5
-      //   195: invokestatic 65	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   195: invokestatic 65	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
       //   198: ifeq +50 -> 248
       //   201: ldc 56
       //   203: astore_1
@@ -652,7 +623,7 @@ public final class LuggageLocalFileObjectManager
       //   227: iconst_1
       //   228: aload_2
       //   229: aastore
-      //   230: invokestatic 229	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   230: invokestatic 229	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   233: aload_1
       //   234: aload_2
       //   235: aload 5
@@ -690,7 +661,7 @@ public final class LuggageLocalFileObjectManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.LuggageLocalFileObjectManager
  * JD-Core Version:    0.7.0.1
  */

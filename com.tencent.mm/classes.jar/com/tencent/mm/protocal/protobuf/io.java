@@ -2,129 +2,90 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class io
-  extends com.tencent.mm.bx.a
+public final class io
+  extends com.tencent.mm.bw.a
 {
-  public String CEf;
-  public String CEg;
-  public String dEy;
-  public String dEz;
-  public String dfT;
-  public String gKD;
-  public String gKv;
-  public String gKw;
-  public int height;
-  public String title;
-  public String url;
-  public int videoDuration;
-  public String videoUrl;
-  public int width;
+  public String DWr;
+  public String DWs;
+  public String DWt;
+  public String DWu;
+  public String DWv;
+  public String nWj;
+  public String oGN;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43083);
+    AppMethodBeat.i(124392);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.CEf != null) {
-        paramVarArgs.d(1, this.CEf);
+      if (this.DWr != null) {
+        paramVarArgs.d(1, this.DWr);
       }
-      if (this.videoUrl != null) {
-        paramVarArgs.d(2, this.videoUrl);
+      if (this.DWs != null) {
+        paramVarArgs.d(2, this.DWs);
       }
-      if (this.CEg != null) {
-        paramVarArgs.d(3, this.CEg);
+      if (this.DWt != null) {
+        paramVarArgs.d(3, this.DWt);
       }
-      if (this.title != null) {
-        paramVarArgs.d(4, this.title);
+      if (this.oGN != null) {
+        paramVarArgs.d(4, this.oGN);
       }
-      if (this.gKD != null) {
-        paramVarArgs.d(5, this.gKD);
+      if (this.nWj != null) {
+        paramVarArgs.d(5, this.nWj);
       }
-      paramVarArgs.aR(6, this.videoDuration);
-      paramVarArgs.aR(7, this.width);
-      paramVarArgs.aR(8, this.height);
-      if (this.url != null) {
-        paramVarArgs.d(9, this.url);
+      if (this.DWu != null) {
+        paramVarArgs.d(6, this.DWu);
       }
-      if (this.dfT != null) {
-        paramVarArgs.d(10, this.dfT);
+      if (this.DWv != null) {
+        paramVarArgs.d(7, this.DWv);
       }
-      if (this.gKv != null) {
-        paramVarArgs.d(11, this.gKv);
-      }
-      if (this.gKw != null) {
-        paramVarArgs.d(12, this.gKw);
-      }
-      if (this.dEz != null) {
-        paramVarArgs.d(13, this.dEz);
-      }
-      if (this.dEy != null) {
-        paramVarArgs.d(14, this.dEy);
-      }
-      AppMethodBeat.o(43083);
+      AppMethodBeat.o(124392);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CEf == null) {
-        break label962;
+      if (this.DWr == null) {
+        break label578;
       }
     }
-    label962:
-    for (int i = f.a.a.b.b.a.e(1, this.CEf) + 0;; i = 0)
+    label578:
+    for (int i = f.a.a.b.b.a.e(1, this.DWr) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.videoUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.videoUrl);
+      if (this.DWs != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.DWs);
       }
       i = paramInt;
-      if (this.CEg != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.CEg);
+      if (this.DWt != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.DWt);
       }
       paramInt = i;
-      if (this.title != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.title);
+      if (this.oGN != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.oGN);
       }
       i = paramInt;
-      if (this.gKD != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.gKD);
-      }
-      i = i + f.a.a.b.b.a.bA(6, this.videoDuration) + f.a.a.b.b.a.bA(7, this.width) + f.a.a.b.b.a.bA(8, this.height);
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.url);
-      }
-      i = paramInt;
-      if (this.dfT != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.dfT);
+      if (this.nWj != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.nWj);
       }
       paramInt = i;
-      if (this.gKv != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.gKv);
+      if (this.DWu != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.DWu);
       }
       i = paramInt;
-      if (this.gKw != null) {
-        i = paramInt + f.a.a.b.b.a.e(12, this.gKw);
+      if (this.DWv != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.DWv);
       }
-      paramInt = i;
-      if (this.dEz != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.dEz);
-      }
-      i = paramInt;
-      if (this.dEy != null) {
-        i = paramInt + f.a.a.b.b.a.e(14, this.dEy);
-      }
-      AppMethodBeat.o(43083);
+      AppMethodBeat.o(124392);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(43083);
+        AppMethodBeat.o(124392);
         return 0;
       }
       if (paramInt == 3)
@@ -134,73 +95,45 @@ public class io
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(43083);
+          AppMethodBeat.o(124392);
           return -1;
         case 1: 
-          localio.CEf = locala.KhF.readString();
-          AppMethodBeat.o(43083);
+          localio.DWr = locala.LVo.readString();
+          AppMethodBeat.o(124392);
           return 0;
         case 2: 
-          localio.videoUrl = locala.KhF.readString();
-          AppMethodBeat.o(43083);
+          localio.DWs = locala.LVo.readString();
+          AppMethodBeat.o(124392);
           return 0;
         case 3: 
-          localio.CEg = locala.KhF.readString();
-          AppMethodBeat.o(43083);
+          localio.DWt = locala.LVo.readString();
+          AppMethodBeat.o(124392);
           return 0;
         case 4: 
-          localio.title = locala.KhF.readString();
-          AppMethodBeat.o(43083);
+          localio.oGN = locala.LVo.readString();
+          AppMethodBeat.o(124392);
           return 0;
         case 5: 
-          localio.gKD = locala.KhF.readString();
-          AppMethodBeat.o(43083);
+          localio.nWj = locala.LVo.readString();
+          AppMethodBeat.o(124392);
           return 0;
         case 6: 
-          localio.videoDuration = locala.KhF.xS();
-          AppMethodBeat.o(43083);
-          return 0;
-        case 7: 
-          localio.width = locala.KhF.xS();
-          AppMethodBeat.o(43083);
-          return 0;
-        case 8: 
-          localio.height = locala.KhF.xS();
-          AppMethodBeat.o(43083);
-          return 0;
-        case 9: 
-          localio.url = locala.KhF.readString();
-          AppMethodBeat.o(43083);
-          return 0;
-        case 10: 
-          localio.dfT = locala.KhF.readString();
-          AppMethodBeat.o(43083);
-          return 0;
-        case 11: 
-          localio.gKv = locala.KhF.readString();
-          AppMethodBeat.o(43083);
-          return 0;
-        case 12: 
-          localio.gKw = locala.KhF.readString();
-          AppMethodBeat.o(43083);
-          return 0;
-        case 13: 
-          localio.dEz = locala.KhF.readString();
-          AppMethodBeat.o(43083);
+          localio.DWu = locala.LVo.readString();
+          AppMethodBeat.o(124392);
           return 0;
         }
-        localio.dEy = locala.KhF.readString();
-        AppMethodBeat.o(43083);
+        localio.DWv = locala.LVo.readString();
+        AppMethodBeat.o(124392);
         return 0;
       }
-      AppMethodBeat.o(43083);
+      AppMethodBeat.o(124392);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.io
  * JD-Core Version:    0.7.0.1
  */

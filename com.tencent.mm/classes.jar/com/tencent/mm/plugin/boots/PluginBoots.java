@@ -7,7 +7,7 @@ import com.tencent.mm.kernel.a.b.b;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.model.t;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -16,17 +16,17 @@ public class PluginBoots
   extends f
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.boots.a.d
 {
-  private com.tencent.mm.sdk.b.c<bm> mQA;
-  private com.tencent.mm.sdk.b.c<bk> mQB;
-  private com.tencent.mm.plugin.boots.b.a mQy;
-  private com.tencent.mm.plugin.hp.b.c mQz;
+  private com.tencent.mm.plugin.boots.b.a nsJ;
+  private com.tencent.mm.plugin.hp.b.c nsK;
+  private com.tencent.mm.sdk.b.c<bm> nsL;
+  private com.tencent.mm.sdk.b.c<bk> nsM;
   
   public PluginBoots()
   {
     AppMethodBeat.i(117361);
-    this.mQz = new com.tencent.mm.plugin.hp.b.c();
-    this.mQA = new com.tencent.mm.sdk.b.c() {};
-    this.mQB = new com.tencent.mm.sdk.b.c() {};
+    this.nsK = new com.tencent.mm.plugin.hp.b.c();
+    this.nsL = new PluginBoots.1(this);
+    this.nsM = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(117361);
   }
   
@@ -55,7 +55,7 @@ public class PluginBoots
   public void dependency()
   {
     AppMethodBeat.i(117364);
-    ad.d("MicroMsg.Boots.PluginBoots", "[cpan] boots dependency");
+    ac.d("MicroMsg.Boots.PluginBoots", "[cpan] boots dependency");
     dependsOn(com.tencent.mm.plugin.comm.a.a.class);
     AppMethodBeat.o(117364);
   }
@@ -63,23 +63,23 @@ public class PluginBoots
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(117366);
-    ad.d("MicroMsg.Boots.PluginBoots", "[cpan] boots execute %s", new Object[] { paramg.mProcessName });
-    if (com.tencent.mm.plugin.boots.b.a.mQX == null) {
-      com.tencent.mm.plugin.boots.b.a.mQX = new com.tencent.mm.plugin.boots.b.a();
+    ac.d("MicroMsg.Boots.PluginBoots", "[cpan] boots execute %s", new Object[] { paramg.mProcessName });
+    if (com.tencent.mm.plugin.boots.b.a.ntn == null) {
+      com.tencent.mm.plugin.boots.b.a.ntn = new com.tencent.mm.plugin.boots.b.a();
     }
-    this.mQy = com.tencent.mm.plugin.boots.b.a.mQX;
-    if ((paramg.agu()) || (paramg.ra(":patch")))
+    this.nsJ = com.tencent.mm.plugin.boots.b.a.ntn;
+    if ((paramg.ahL()) || (paramg.up(":patch")))
     {
-      com.tencent.mm.plugin.hp.tinker.e.cGg();
-      com.tencent.mm.plugin.hp.tinker.e.b(com.tencent.mm.app.d.cKY);
-      com.tencent.mm.sdk.b.a.ESL.c(this.mQz);
-      com.tencent.mm.sdk.b.a.ESL.c(this.mQB);
-      com.tencent.mm.sdk.b.a.ESL.c(this.mQA);
+      com.tencent.mm.plugin.hp.tinker.e.cTq();
+      com.tencent.mm.plugin.hp.tinker.e.b(com.tencent.mm.app.d.cIg);
+      com.tencent.mm.sdk.b.a.GpY.c(this.nsK);
+      com.tencent.mm.sdk.b.a.GpY.c(this.nsM);
+      com.tencent.mm.sdk.b.a.GpY.c(this.nsL);
     }
-    if (paramg.agu()) {
+    if (paramg.ahL()) {
       com.tencent.mm.kernel.g.a(a.class, new com.tencent.mm.kernel.c.e(new a()));
     }
-    if (paramg.agu()) {
+    if (paramg.ahL()) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.boots.a.c.class, new com.tencent.mm.kernel.c.e(new a()));
     }
     AppMethodBeat.o(117366);
@@ -87,13 +87,13 @@ public class PluginBoots
   
   public com.tencent.mm.plugin.boots.a.e getTinkerLogic()
   {
-    return this.mQy;
+    return this.nsJ;
   }
   
   public void installed()
   {
     AppMethodBeat.i(117362);
-    ad.d("MicroMsg.Boots.PluginBoots", "[cpan] boots installed");
+    ac.d("MicroMsg.Boots.PluginBoots", "[cpan] boots installed");
     alias(com.tencent.mm.plugin.boots.a.d.class);
     AppMethodBeat.o(117362);
   }
@@ -112,9 +112,9 @@ public class PluginBoots
   public void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(117368);
-    ad.d("MicroMsg.Boots.PluginBoots", "[cpan] boots onDataBaseOpened");
-    if (this.mQy != null) {
-      this.mQy.mQY = new com.tencent.mm.plugin.boots.b.a.a(paramh1);
+    ac.d("MicroMsg.Boots.PluginBoots", "[cpan] boots onDataBaseOpened");
+    if (this.nsJ != null) {
+      this.nsJ.nto = new com.tencent.mm.plugin.boots.b.a.a(paramh1);
     }
     AppMethodBeat.o(117368);
   }
@@ -122,7 +122,7 @@ public class PluginBoots
   public void uninstalled()
   {
     AppMethodBeat.i(117363);
-    ad.d("MicroMsg.Boots.PluginBoots", "uninstalled");
+    ac.d("MicroMsg.Boots.PluginBoots", "uninstalled");
     super.uninstalled();
     AppMethodBeat.o(117363);
   }
@@ -141,7 +141,7 @@ public class PluginBoots
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.boots.PluginBoots
  * JD-Core Version:    0.7.0.1
  */

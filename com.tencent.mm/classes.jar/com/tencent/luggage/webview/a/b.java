@@ -11,32 +11,32 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  private final LinkedList<Pair<c, Pattern>> cju;
+  private final LinkedList<Pair<c, Pattern>> cgq;
   
   public b()
   {
     AppMethodBeat.i(140557);
-    this.cju = new LinkedList();
+    this.cgq = new LinkedList();
     AppMethodBeat.o(140557);
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(140558);
-    Object localObject = paramc.Eu();
+    Object localObject = paramc.DX();
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     for (localObject = null;; localObject = Pattern.compile((String)localObject))
     {
-      this.cju.add(new Pair(paramc, localObject));
+      this.cgq.add(new Pair(paramc, localObject));
       AppMethodBeat.o(140558);
       return;
     }
   }
   
-  public final WebResourceResponse cC(String paramString)
+  public final WebResourceResponse cr(String paramString)
   {
     AppMethodBeat.i(140559);
-    Iterator localIterator = this.cju.iterator();
+    Iterator localIterator = this.cgq.iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = (Pair)localIterator.next();
@@ -44,7 +44,7 @@ public final class b
       localObject2 = (Pattern)((Pair)localObject2).second;
       if ((localObject2 != null) && (((Pattern)localObject2).matcher(paramString).matches()))
       {
-        localObject1 = ((c)localObject1).bW(paramString);
+        localObject1 = ((c)localObject1).bM(paramString);
         if (localObject1 != null)
         {
           AppMethodBeat.o(140559);

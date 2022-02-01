@@ -7,29 +7,36 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class g
 {
-  public a Ize;
-  HashMap<String, Object> cvB;
+  public a KaN;
+  HashMap<String, Object> csJ;
   
   public g(a parama)
   {
     AppMethodBeat.i(183329);
-    this.cvB = new HashMap();
-    this.Ize = parama;
+    this.csJ = new HashMap();
+    this.KaN = parama;
     AppMethodBeat.o(183329);
   }
   
-  public final int foc()
+  public final int fEs()
   {
     AppMethodBeat.i(183330);
-    int i = this.Ize.Izg.get();
+    int i = this.KaN.KaP.get();
     AppMethodBeat.o(183330);
     return i;
   }
   
-  public final int gA(String paramString, int paramInt)
+  public final void gD(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(183332);
+    this.KaN.KaO.put(paramString, Integer.valueOf(paramInt));
+    AppMethodBeat.o(183332);
+  }
+  
+  public final int gE(String paramString, int paramInt)
   {
     AppMethodBeat.i(183333);
-    paramString = this.Ize.Izf.get(paramString);
+    paramString = this.KaN.KaO.get(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(183333);
@@ -43,7 +50,7 @@ public final class g
   public final long getLong(String paramString, long paramLong)
   {
     AppMethodBeat.i(183334);
-    paramString = this.cvB.get(paramString);
+    paramString = this.csJ.get(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(183334);
@@ -54,32 +61,25 @@ public final class g
     return paramLong;
   }
   
-  public final void gz(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(183332);
-    this.Ize.Izf.put(paramString, Integer.valueOf(paramInt));
-    AppMethodBeat.o(183332);
-  }
-  
   public final void put(String paramString, long paramLong)
   {
     AppMethodBeat.i(183331);
-    this.cvB.put(paramString, Long.valueOf(paramLong));
+    this.csJ.put(paramString, Long.valueOf(paramLong));
     AppMethodBeat.o(183331);
   }
   
   public static final class a
   {
-    public ConcurrentHashMap<String, Object> Izf;
-    public AtomicInteger Izg;
+    public ConcurrentHashMap<String, Object> KaO;
+    public AtomicInteger KaP;
     public String key;
     
     public a(String paramString, AtomicInteger paramAtomicInteger)
     {
       AppMethodBeat.i(183328);
-      this.Izf = new ConcurrentHashMap();
+      this.KaO = new ConcurrentHashMap();
       this.key = paramString;
-      this.Izg = paramAtomicInteger;
+      this.KaP = paramAtomicInteger;
       AppMethodBeat.o(183328);
     }
   }

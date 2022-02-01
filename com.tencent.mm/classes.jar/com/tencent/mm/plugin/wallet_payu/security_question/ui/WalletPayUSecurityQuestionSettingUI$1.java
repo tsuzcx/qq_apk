@@ -15,7 +15,7 @@ final class WalletPayUSecurityQuestionSettingUI$1
   {
     AppMethodBeat.i(72223);
     paraml.clear();
-    ArrayList localArrayList = WalletPayUSecurityQuestionSettingUI.a(this.ABj);
+    ArrayList localArrayList = WalletPayUSecurityQuestionSettingUI.a(this.BTE);
     if (localArrayList != null)
     {
       int i = 0;

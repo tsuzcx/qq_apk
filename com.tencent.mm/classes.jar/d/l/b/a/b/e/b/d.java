@@ -14,18 +14,18 @@ import java.util.List;
 public final class d
   implements c
 {
-  private final a.o JKH;
-  private final a.n JKI;
+  private final a.o Lya;
+  private final a.n Lyb;
   
   public d(a.o paramo, a.n paramn)
   {
     AppMethodBeat.i(59068);
-    this.JKH = paramo;
-    this.JKI = paramn;
+    this.Lya = paramo;
+    this.Lyb = paramn;
     AppMethodBeat.o(59068);
   }
   
-  private final t<List<String>, List<String>, Boolean> afq(int paramInt)
+  private final t<List<String>, List<String>, Boolean> aim(int paramInt)
   {
     AppMethodBeat.i(59067);
     Object localObject1 = new LinkedList();
@@ -33,20 +33,20 @@ public final class d
     boolean bool = false;
     if (paramInt != -1)
     {
-      a.n.b localb = this.JKI.aeF(paramInt);
-      Object localObject2 = this.JKH;
+      a.n.b localb = this.Lyb.ahB(paramInt);
+      Object localObject2 = this.Lya;
       k.g(localb, "proto");
-      localObject2 = ((a.o)localObject2).getString(localb.JId);
-      a.n.b.b localb1 = localb.JIe;
+      localObject2 = ((a.o)localObject2).getString(localb.Lvw);
+      a.n.b.b localb1 = localb.Lvx;
       if (localb1 == null) {
-        k.fvU();
+        k.fOy();
       }
-      switch (e.ciE[localb1.ordinal()])
+      switch (e.cfA[localb1.ordinal()])
       {
       }
       for (;;)
       {
-        paramInt = localb.JIc;
+        paramInt = localb.Lvv;
         break;
         localLinkedList.addFirst(localObject2);
         continue;
@@ -61,10 +61,10 @@ public final class d
     return localObject1;
   }
   
-  public final String afo(int paramInt)
+  public final String aik(int paramInt)
   {
     AppMethodBeat.i(59065);
-    Object localObject2 = afq(paramInt);
+    Object localObject2 = aim(paramInt);
     Object localObject1 = (List)((t)localObject2).first;
     localObject2 = j.a((Iterable)((t)localObject2).second, (CharSequence)".", null, null, 0, null, null, 62);
     if (((List)localObject1).isEmpty())
@@ -77,10 +77,10 @@ public final class d
     return localObject1;
   }
   
-  public final boolean afp(int paramInt)
+  public final boolean ail(int paramInt)
   {
     AppMethodBeat.i(59066);
-    boolean bool = ((Boolean)afq(paramInt).JfT).booleanValue();
+    boolean bool = ((Boolean)aim(paramInt).KTn).booleanValue();
     AppMethodBeat.o(59066);
     return bool;
   }
@@ -88,7 +88,7 @@ public final class d
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(59064);
-    String str = this.JKH.getString(paramInt);
+    String str = this.Lya.getString(paramInt);
     k.g(str, "strings.getString(index)");
     AppMethodBeat.o(59064);
     return str;
@@ -96,7 +96,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.b.d
  * JD-Core Version:    0.7.0.1
  */

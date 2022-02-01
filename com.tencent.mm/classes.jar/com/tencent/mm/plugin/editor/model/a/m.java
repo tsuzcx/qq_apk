@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.editor.model.a;
 public final class m
   extends f
 {
-  public Boolean omS = Boolean.FALSE;
-  public Boolean omT = Boolean.FALSE;
+  public Boolean oQs = Boolean.FALSE;
+  public Boolean oQt = Boolean.FALSE;
   
-  public final String bSi()
+  public final String bZx()
   {
-    return this.omK;
+    return this.oQk;
   }
   
   public final int getType()
@@ -18,7 +18,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.a.m
  * JD-Core Version:    0.7.0.1
  */

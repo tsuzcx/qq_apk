@@ -12,18 +12,18 @@ import java.util.concurrent.TimeUnit;
 public final class f
   extends a
 {
-  public a IzF;
+  public a Kbo;
   
   public f()
   {
     AppMethodBeat.i(183372);
-    this.IzF = new a((byte)0);
+    this.Kbo = new a((byte)0);
     AppMethodBeat.o(183372);
   }
   
-  protected final a.a foe()
+  protected final a.a fEu()
   {
-    return this.IzF;
+    return this.Kbo;
   }
   
   public final String getName()
@@ -34,26 +34,26 @@ public final class f
   public final void j(k<?> paramk)
   {
     AppMethodBeat.i(183374);
-    this.IzF.azU.removeCallbacks(paramk);
+    this.Kbo.aAO.removeCallbacks(paramk);
     AppMethodBeat.o(183374);
   }
   
   protected final void onShutdown()
   {
     AppMethodBeat.i(183373);
-    this.IzF.azU.removeCallbacksAndMessages(null);
+    this.Kbo.aAO.removeCallbacksAndMessages(null);
     AppMethodBeat.o(183373);
   }
   
   public static final class a
     implements a.a
   {
-    public Handler azU;
+    public Handler aAO;
     
     private a()
     {
       AppMethodBeat.i(183370);
-      this.azU = new Handler(Looper.getMainLooper())
+      this.aAO = new Handler(Looper.getMainLooper())
       {
         public final void dispatchMessage(Message paramAnonymousMessage)
         {
@@ -73,7 +73,7 @@ public final class f
     public final void i(k<?> paramk)
     {
       AppMethodBeat.i(183371);
-      this.azU.postDelayed(paramk, paramk.getDelay(TimeUnit.MILLISECONDS));
+      this.aAO.postDelayed(paramk, paramk.getDelay(TimeUnit.MILLISECONDS));
       AppMethodBeat.o(183371);
     }
   }

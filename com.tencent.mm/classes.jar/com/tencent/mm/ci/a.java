@@ -1,76 +1,34 @@
 package com.tencent.mm.ci;
 
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.mm.sdk.platformtools.ap;
 
-public final class a<T>
-  implements b.a<T>
+public final class a
 {
-  private final Object Fco;
-  private HashSet<Object<T>> iYb;
-  private final String mName;
-  private T mValue;
-  
-  private a(String paramString)
+  public static boolean post(Runnable paramRunnable)
   {
-    AppMethodBeat.i(133213);
-    this.Fco = new Object();
-    this.mName = paramString;
-    this.iYb = new HashSet();
-    AppMethodBeat.o(133213);
+    AppMethodBeat.i(156366);
+    h.JZN.aS(paramRunnable);
+    AppMethodBeat.o(156366);
+    return true;
   }
   
-  a(String paramString, T paramT)
+  public static boolean y(Runnable paramRunnable)
   {
-    this(paramString);
-    this.mValue = paramT;
+    AppMethodBeat.i(156367);
+    h.JZN.q(paramRunnable, 1000L);
+    AppMethodBeat.o(156367);
+    return true;
   }
   
-  public final T get()
+  public static boolean z(Runnable paramRunnable)
   {
-    return this.mValue;
-  }
-  
-  public final String name()
-  {
-    return this.mName;
-  }
-  
-  final void set(T arg1)
-  {
-    AppMethodBeat.i(133214);
-    Object localObject1 = this.mValue;
-    int i;
-    if ((??? == localObject1) || ((??? != null) && (???.equals(localObject1)))) {
-      i = 1;
-    }
-    while (i == 0)
-    {
-      this.mValue = ???;
-      synchronized (this.Fco)
-      {
-        localObject1 = this.iYb.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label87;
-        }
-        ((Iterator)localObject1).next();
-      }
-      i = 0;
-      continue;
-      label87:
-      AppMethodBeat.o(133214);
-      return;
-    }
-    AppMethodBeat.o(133214);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(133215);
-    String str = "Status: " + this.mName;
-    AppMethodBeat.o(133215);
-    return str;
+    AppMethodBeat.i(182045);
+    ap.f(paramRunnable);
+    AppMethodBeat.o(182045);
+    return true;
   }
 }
 

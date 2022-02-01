@@ -8,19 +8,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.be;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.lang.ref.WeakReference;
 
 public class a
 {
-  public static final a cbh;
+  public static final a bYe;
   
   static
   {
     AppMethodBeat.i(130461);
-    cbh = new a();
+    bYe = new a();
     AppMethodBeat.o(130461);
   }
   
@@ -28,7 +28,7 @@ public class a
   {
     AppMethodBeat.i(130460);
     paramAppBrandRuntime = new WeakReference(paramAppBrandRuntime);
-    paramMBRuntime = (h)paramMBRuntime.Gd();
+    paramMBRuntime = (h)paramMBRuntime.FP();
     paramAppBrandRuntime = new b()
     {
       private static String a(AppBrandRuntime paramAnonymousAppBrandRuntime, String paramAnonymousString)
@@ -39,21 +39,21 @@ public class a
         {
           try
           {
-            paramAnonymousAppBrandRuntime = paramAnonymousAppBrandRuntime.Ee().EP(paramAnonymousString);
+            paramAnonymousAppBrandRuntime = paramAnonymousAppBrandRuntime.DH().IS(paramAnonymousString);
             if (paramAnonymousAppBrandRuntime == null) {
               continue;
             }
-            paramAnonymousAppBrandRuntime = q.B(paramAnonymousAppBrandRuntime.fhU());
+            paramAnonymousAppBrandRuntime = q.B(paramAnonymousAppBrandRuntime.fxV());
           }
           catch (Exception paramAnonymousAppBrandRuntime)
           {
-            ad.e("MBFontManagerRegistry", "Read [%s] from filesystem failed", new Object[] { paramAnonymousString });
+            ac.e("MBFontManagerRegistry", "Read [%s] from filesystem failed", new Object[] { paramAnonymousString });
             paramAnonymousAppBrandRuntime = localObject;
             continue;
           }
           AppMethodBeat.o(130458);
           return paramAnonymousAppBrandRuntime;
-          ad.e("MBFontManagerRegistry", "Read [%s] from filesystem failed, no file", new Object[] { paramAnonymousString });
+          ac.e("MBFontManagerRegistry", "Read [%s] from filesystem failed, no file", new Object[] { paramAnonymousString });
           paramAnonymousAppBrandRuntime = localObject;
         }
       }
@@ -72,17 +72,17 @@ public class a
         {
           for (;;)
           {
-            ad.e("MBFontManagerRegistry", "Read [%s] from WxaPkgRuntimeReader failed", new Object[] { paramAnonymousString });
+            ac.e("MBFontManagerRegistry", "Read [%s] from WxaPkgRuntimeReader failed", new Object[] { paramAnonymousString });
             paramAnonymousAppBrandRuntime = localObject;
           }
         }
       }
       
-      public final Typeface ca(String paramAnonymousString)
+      public final Typeface bQ(String paramAnonymousString)
       {
         localObject = null;
         AppMethodBeat.i(130456);
-        ad.i("MBFontManagerRegistry", "loadFont at path[%s]", new Object[] { paramAnonymousString });
+        ac.i("MBFontManagerRegistry", "loadFont at path[%s]", new Object[] { paramAnonymousString });
         if ((paramAnonymousString == null) || (paramAnonymousString.length() == 0))
         {
           AppMethodBeat.o(130456);
@@ -97,7 +97,7 @@ public class a
         {
           for (;;)
           {
-            ad.e("MBFontManagerRegistry", "Create typeface from file failed. fontPath = [%s]", new Object[] { paramAnonymousString });
+            ac.e("MBFontManagerRegistry", "Create typeface from file failed. fontPath = [%s]", new Object[] { paramAnonymousString });
             paramAnonymousString = localObject;
           }
         }
@@ -105,10 +105,10 @@ public class a
         return paramAnonymousString;
       }
       
-      public final String cb(String paramAnonymousString)
+      public final String bR(String paramAnonymousString)
       {
         AppMethodBeat.i(130457);
-        ad.i("MBFontManagerRegistry", "getFontPath at path[%s]", new Object[] { paramAnonymousString });
+        ac.i("MBFontManagerRegistry", "getFontPath at path[%s]", new Object[] { paramAnonymousString });
         if ((paramAnonymousString == null) || (paramAnonymousString.length() == 0))
         {
           AppMethodBeat.o(130457);
@@ -117,7 +117,7 @@ public class a
         AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)paramAppBrandRuntime.get();
         if (localAppBrandRuntime == null)
         {
-          ad.e("MBFontManagerRegistry", "hy: runtime released");
+          ac.e("MBFontManagerRegistry", "hy: runtime released");
           AppMethodBeat.o(130457);
           return null;
         }
@@ -131,16 +131,16 @@ public class a
         return paramAnonymousString;
       }
     };
-    paramMBRuntime.cqy = paramAppBrandRuntime;
-    if (paramMBRuntime.cqP != null) {
-      paramMBRuntime.cqP.cqy = paramAppBrandRuntime;
+    paramMBRuntime.cnF = paramAppBrandRuntime;
+    if (paramMBRuntime.cnW != null) {
+      paramMBRuntime.cnW.cnF = paramAppBrandRuntime;
     }
     AppMethodBeat.o(130460);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.b.a
  * JD-Core Version:    0.7.0.1
  */

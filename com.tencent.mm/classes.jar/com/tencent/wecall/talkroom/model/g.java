@@ -68,7 +68,7 @@ public final class g
     }
   }
   
-  public final void cZ(final String paramString, final boolean paramBoolean)
+  public final void de(final String paramString, final boolean paramBoolean)
   {
     AppMethodBeat.i(62698);
     paramString = new Runnable()
@@ -81,7 +81,7 @@ public final class g
           ArrayList localArrayList = new ArrayList(g.this.callbacks);
           ??? = localArrayList.iterator();
           if (((Iterator)???).hasNext()) {
-            ((g.a)((Iterator)???).next()).cZ(paramString, paramBoolean);
+            ((g.a)((Iterator)???).next()).de(paramString, paramBoolean);
           }
         }
         AppMethodBeat.o(62589);
@@ -125,7 +125,7 @@ public final class g
     AppMethodBeat.o(62697);
   }
   
-  public final void gC(final String paramString, final int paramInt)
+  public final void gG(final String paramString, final int paramInt)
   {
     AppMethodBeat.i(62700);
     com.tencent.pb.common.c.g.runOnMainThread(new Runnable()
@@ -137,7 +137,7 @@ public final class g
         {
           Iterator localIterator = g.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((g.a)localIterator.next()).gC(paramString, paramInt);
+            ((g.a)localIterator.next()).gG(paramString, paramInt);
           }
         }
         AppMethodBeat.o(62584);
@@ -146,7 +146,7 @@ public final class g
     AppMethodBeat.o(62700);
   }
   
-  public final void ir(final List<MultiTalkGroup> paramList)
+  public final void iE(final List<MultiTalkGroup> paramList)
   {
     AppMethodBeat.i(62693);
     paramList = new Runnable()
@@ -158,7 +158,7 @@ public final class g
         {
           Iterator localIterator = g.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((g.a)localIterator.next()).ir(paramList);
+            ((g.a)localIterator.next()).iE(paramList);
           }
         }
         AppMethodBeat.o(62687);
@@ -232,45 +232,45 @@ public final class g
   
   public static abstract interface a
   {
-    public abstract void E(String paramString, byte[] paramArrayOfByte);
+    public abstract void D(String paramString, byte[] paramArrayOfByte);
     
-    public abstract void Hh(int paramInt);
+    public abstract void Je(int paramInt);
     
     public abstract void a(int paramInt, MultiTalkGroup paramMultiTalkGroup);
     
-    public abstract void aCb();
+    public abstract void aIR();
     
-    public abstract void acS(int paramInt);
+    public abstract void afO(int paramInt);
     
-    public abstract void acT(int paramInt);
+    public abstract void afP(int paramInt);
     
     public abstract void b(MultiTalkGroup paramMultiTalkGroup);
     
-    public abstract void cSr();
+    public abstract void de(String paramString, boolean paramBoolean);
     
-    public abstract void cSs();
+    public abstract void dgb();
     
-    public abstract void cZ(String paramString, boolean paramBoolean);
+    public abstract void dgc();
     
-    public abstract void ei(List<a.ap> paramList);
+    public abstract void em(List<a.ap> paramList);
     
     public abstract void f(MultiTalkGroup paramMultiTalkGroup);
     
-    public abstract void fpO();
+    public abstract void fIj();
     
-    public abstract void fpP();
+    public abstract void fIk();
     
-    public abstract void fpQ();
+    public abstract void fIl();
     
-    public abstract void gC(String paramString, int paramInt);
+    public abstract void gG(String paramString, int paramInt);
     
-    public abstract void ir(List<MultiTalkGroup> paramList);
+    public abstract void iE(List<MultiTalkGroup> paramList);
     
     public abstract void n(int paramInt, Object paramObject);
     
-    public abstract void ns(boolean paramBoolean);
-    
     public abstract void o(MultiTalkGroup paramMultiTalkGroup);
+    
+    public abstract void om(boolean paramBoolean);
     
     public abstract void onStateChanged(int paramInt);
     

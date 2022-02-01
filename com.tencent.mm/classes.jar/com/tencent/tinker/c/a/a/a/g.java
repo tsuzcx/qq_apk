@@ -9,36 +9,36 @@ import com.tencent.tinker.c.a.c.c;
 public final class g
   extends i<com.tencent.tinker.a.a.g>
 {
-  private s.a ICV = null;
-  private i.e ICW = null;
+  private s.a Kpe = null;
+  private i.e Kpf = null;
   
   public g(com.tencent.tinker.c.a.b.a parama, com.tencent.tinker.a.a.i parami1, com.tencent.tinker.a.a.i parami2, c paramc)
   {
     super(parama, parami1, paramc);
     if (parami2 != null)
     {
-      this.ICV = parami2.IBe.IBK;
-      this.ICW = parami2.a(this.ICV);
+      this.Kpe = parami2.Knn.KnT;
+      this.Kpf = parami2.a(this.Kpe);
     }
   }
   
   protected final void a(c paramc, int paramInt1, int paramInt2)
   {
     if (paramInt2 >= 0) {
-      paramc.IEs.acy(paramInt2);
+      paramc.KqB.afu(paramInt2);
     }
   }
   
   protected final void a(c paramc, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramInt2 != paramInt4) {
-      paramc.IEe.put(paramInt2, paramInt4);
+      paramc.Kqn.put(paramInt2, paramInt4);
     }
   }
   
   protected final s.a c(com.tencent.tinker.a.a.i parami)
   {
-    return parami.IBe.IBK;
+    return parami.Knn.KnT;
   }
 }
 

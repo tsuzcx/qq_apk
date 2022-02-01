@@ -6,48 +6,46 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ay;
-import com.tencent.mm.model.az;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
 import com.tencent.mm.pluginsdk.g.h;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bh.b;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bk.b;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
-import com.tencent.mm.ui.q;
-import com.tencent.mm.ui.q.a;
+import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.r.a;
 
 final class c
-  extends q<am>
+  extends r<ap>
   implements n.b
 {
-  private final MMActivity imP;
-  protected MMSlideDelView.g mRk;
-  protected MMSlideDelView.c mRl;
-  protected MMSlideDelView.f mRm;
-  protected MMSlideDelView.d mRn;
+  private final MMActivity iMV;
+  protected MMSlideDelView.g ntA;
+  protected MMSlideDelView.c ntB;
+  protected MMSlideDelView.f ntC;
+  protected MMSlideDelView.d ntD;
   
-  public c(Context paramContext, q.a parama)
+  public c(Context paramContext, r.a parama)
   {
-    super(paramContext, new am());
+    super(paramContext, new ap());
     AppMethodBeat.i(27759);
-    this.mRn = MMSlideDelView.getItemStatusCallBack();
+    this.ntD = MMSlideDelView.getItemStatusCallBack();
     super.a(parama);
-    this.imP = ((MMActivity)paramContext);
+    this.iMV = ((MMActivity)paramContext);
     AppMethodBeat.o(27759);
   }
   
-  private static int OV(String paramString)
+  private static int Tf(String paramString)
   {
     int j = 1;
     AppMethodBeat.i(27762);
@@ -72,28 +70,28 @@ final class c
     }
   }
   
-  public final void Wd()
+  public final void Xb()
   {
     AppMethodBeat.i(27760);
-    az.arV();
-    setCursor(com.tencent.mm.model.c.apR().aIw(w.gMq));
-    if (this.FNn != null) {
-      this.FNn.aIp();
+    com.tencent.mm.model.az.ayM();
+    setCursor(com.tencent.mm.model.c.awG().aNR(w.hmQ));
+    if (this.HmY != null) {
+      this.HmY.aPg();
     }
     super.notifyDataSetChanged();
     AppMethodBeat.o(27760);
   }
   
-  public final void We()
+  public final void Xc()
   {
     AppMethodBeat.i(27764);
-    Wd();
+    Xb();
     AppMethodBeat.o(27764);
   }
   
   public final void a(MMSlideDelView.f paramf)
   {
-    this.mRm = paramf;
+    this.ntC = paramf;
   }
   
   public final int getItemViewType(int paramInt)
@@ -104,41 +102,41 @@ final class c
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(27761);
-    am localam = (am)getItem(paramInt);
+    ap localap = (ap)getItem(paramInt);
     View localView;
     Object localObject;
     if (paramView == null)
     {
       paramViewGroup = new a();
-      localView = View.inflate(this.imP, 2131495763, null);
-      paramViewGroup.frr = ((ImageView)localView.findViewById(2131297008));
-      paramViewGroup.frs = ((TextView)localView.findViewById(2131302867));
-      paramViewGroup.mRp = ((TextView)localView.findViewById(2131306207));
-      paramViewGroup.mRq = ((TextView)localView.findViewById(2131301311));
-      paramViewGroup.lVB = ((ImageView)localView.findViewById(2131305187));
-      paramViewGroup.mRr = ((TextView)localView.findViewById(2131305882));
+      localView = View.inflate(this.iMV, 2131495763, null);
+      paramViewGroup.fuY = ((ImageView)localView.findViewById(2131297008));
+      paramViewGroup.fuZ = ((TextView)localView.findViewById(2131302867));
+      paramViewGroup.ntF = ((TextView)localView.findViewById(2131306207));
+      paramViewGroup.ntG = ((TextView)localView.findViewById(2131301311));
+      paramViewGroup.mxD = ((ImageView)localView.findViewById(2131305187));
+      paramViewGroup.ntH = ((TextView)localView.findViewById(2131305882));
       localView.setTag(paramViewGroup);
-      paramViewGroup.frs.setText(v.sh(localam.field_username));
-      localObject = paramViewGroup.mRp;
-      if (localam.field_status != 1) {
+      paramViewGroup.fuZ.setText(v.wk(localap.field_username));
+      localObject = paramViewGroup.ntF;
+      if (localap.field_status != 1) {
         break label461;
       }
-      paramView = this.imP.getString(2131761075);
+      paramView = this.iMV.getString(2131761075);
       label170:
       ((TextView)localObject).setText(paramView);
-      a.b.c(paramViewGroup.frr, localam.field_username);
-      az.arV();
-      localObject = com.tencent.mm.model.c.apR().Lu();
-      if (bt.isNullOrNil(localam.field_digest)) {
+      a.b.c(paramViewGroup.fuY, localap.field_username);
+      com.tencent.mm.model.az.ayM();
+      localObject = com.tencent.mm.model.c.awG().Ls();
+      if (bs.isNullOrNil(localap.field_digest)) {
         break label518;
       }
-      if (bt.isNullOrNil(localam.field_digestUser)) {
+      if (bs.isNullOrNil(localap.field_digestUser)) {
         break label508;
       }
-      if ((localam.field_isSend != 0) || (!w.pF(localam.field_username))) {
+      if ((localap.field_isSend != 0) || (!w.sQ(localap.field_username))) {
         break label496;
       }
-      paramView = v.getDisplayName(localam.field_digestUser, localam.field_username);
+      paramView = v.getDisplayName(localap.field_digestUser, localap.field_username);
     }
     for (;;)
     {
@@ -147,9 +145,9 @@ final class c
       label508:
       try
       {
-        paramView = String.format(localam.field_digest, new Object[] { paramView });
-        paramViewGroup.mRq.setText(k.b(this.imP, paramView, paramViewGroup.mRq.getTextSize()));
-        switch (localam.field_status)
+        paramView = String.format(localap.field_digest, new Object[] { paramView });
+        paramViewGroup.ntG.setText(k.b(this.iMV, paramView, paramViewGroup.ntG.getTextSize()));
+        switch (localap.field_status)
         {
         case 3: 
         case 4: 
@@ -158,17 +156,17 @@ final class c
           if (paramInt == -1) {
             break label580;
           }
-          paramViewGroup.lVB.setBackgroundResource(paramInt);
-          paramViewGroup.lVB.setVisibility(0);
+          paramViewGroup.mxD.setBackgroundResource(paramInt);
+          paramViewGroup.mxD.setVisibility(0);
           paramInt = localView.getPaddingBottom();
           int i = localView.getPaddingTop();
           int j = localView.getPaddingRight();
           int k = localView.getPaddingLeft();
-          if (localam.field_unReadCount <= 100) {
+          if (localap.field_unReadCount <= 100) {
             break label592;
           }
-          paramViewGroup.mRr.setText("...");
-          paramViewGroup.mRr.setVisibility(0);
+          paramViewGroup.ntH.setText("...");
+          paramViewGroup.ntH.setVisibility(0);
           localView.setBackgroundResource(2131233277);
           localView.setPadding(k, i, j, paramInt);
           AppMethodBeat.o(27761);
@@ -179,19 +177,19 @@ final class c
       paramViewGroup = (a)paramView.getTag();
       localView = paramView;
       break;
-      if (localam.field_conversationTime == 9223372036854775807L)
+      if (localap.field_conversationTime == 9223372036854775807L)
       {
         paramView = "";
         break label170;
       }
-      paramView = h.c(this.imP, localam.field_conversationTime, true);
+      paramView = h.c(this.iMV, localap.field_conversationTime, true);
       break label170;
-      paramView = v.sh(localam.field_digestUser);
+      paramView = v.wk(localap.field_digestUser);
       continue;
-      paramView = localam.field_digest;
+      paramView = localap.field_digest;
       continue;
       label518:
-      paramView = ((bh.b)localObject).a(localam.field_isSend, localam.field_username, localam.field_content, OV(localam.field_msgType), this.imP);
+      paramView = ((bk.b)localObject).a(localap.field_isSend, localap.field_username, localap.field_content, Tf(localap.field_msgType), this.iMV);
       continue;
       paramInt = -1;
       continue;
@@ -202,17 +200,17 @@ final class c
       paramInt = 2131690877;
       continue;
       label580:
-      paramViewGroup.lVB.setVisibility(8);
+      paramViewGroup.mxD.setVisibility(8);
       continue;
       label592:
-      if (localam.field_unReadCount > 0)
+      if (localap.field_unReadCount > 0)
       {
-        paramViewGroup.mRr.setText(localam.field_unReadCount);
-        paramViewGroup.mRr.setVisibility(0);
+        paramViewGroup.ntH.setText(localap.field_unReadCount);
+        paramViewGroup.ntH.setVisibility(0);
       }
       else
       {
-        paramViewGroup.mRr.setVisibility(4);
+        paramViewGroup.ntH.setVisibility(4);
       }
     }
   }
@@ -225,35 +223,35 @@ final class c
   public final void onPause()
   {
     AppMethodBeat.i(27763);
-    if (this.mRn != null) {
-      this.mRn.cIg();
+    if (this.ntD != null) {
+      this.ntD.cVr();
     }
     AppMethodBeat.o(27763);
   }
   
   public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
   {
-    this.mRl = paramc;
+    this.ntB = paramc;
   }
   
   public final void setPerformItemClickListener(MMSlideDelView.g paramg)
   {
-    this.mRk = paramg;
+    this.ntA = paramg;
   }
   
   public static final class a
   {
-    public ImageView frr;
-    public TextView frs;
-    public ImageView lVB;
-    public TextView mRp;
-    public TextView mRq;
-    public TextView mRr;
+    public ImageView fuY;
+    public TextView fuZ;
+    public ImageView mxD;
+    public TextView ntF;
+    public TextView ntG;
+    public TextView ntH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qmessage.ui.c
  * JD-Core Version:    0.7.0.1
  */

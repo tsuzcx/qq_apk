@@ -8,11 +8,11 @@ public abstract class aa
     return "onWxaWidgetJsError";
   }
   
-  public abstract void vh(String paramString);
+  public abstract void zn(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.aa
  * JD-Core Version:    0.7.0.1
  */

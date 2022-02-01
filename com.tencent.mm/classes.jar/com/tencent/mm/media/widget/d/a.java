@@ -14,29 +14,29 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.media.widget.b.c;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.l;
 import d.n.n;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/widget/util/CameraHelper;", "", "()V", "CAMERA_API_LEVEL1", "", "CAMERA_API_LEVEL2", "SCENE_APPBRAND", "SCENE_CHATTING", "SCENE_EMOJI", "SCENE_FAV", "SCENE_GAME", "SCENE_SNS", "SCENE_SNS_VLOG", "SCENE_STICK_PREVIEW", "SCENE_STORY", "SCENE_STORY_VLOG", "TAG", "", "cameraNum", "getCameraNum", "()I", "setCameraNum", "(I)V", "hasBackCamera", "", "getHasBackCamera", "()Z", "setHasBackCamera", "(Z)V", "hasFrontCamera", "getHasFrontCamera", "setHasFrontCamera", "checkSceneSupportRecordStream", "scene", "enableSwitchCamera", "hasBackCameraInThread", "hasFrontCameraInThread", "isCameraApi2CanUse", "isCaptureUseImageCallback", "isProcessCaptureUseImageCallback", "process", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "cameraApiLevel", "isProcessUseCamera2", "isProcessUseCamera2RecordStream", "isProcessUseVideoStabilization", "isRenderscriptSupported", "isUseRecordStream", "isVendorCameraEffectSupported", "isVendorDebugModeSupported", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/util/CameraHelper;", "", "()V", "CAMERA_API_LEVEL1", "", "CAMERA_API_LEVEL2", "SCENE_APPBRAND", "SCENE_CHATTING", "SCENE_EMOJI", "SCENE_FAV", "SCENE_GAME", "SCENE_SNS", "SCENE_SNS_VLOG", "SCENE_STICK_PREVIEW", "SCENE_STORY", "SCENE_STORY_VLOG", "TAG", "", "cameraNum", "getCameraNum", "()I", "setCameraNum", "(I)V", "hasBackCamera", "", "getHasBackCamera", "()Z", "setHasBackCamera", "(Z)V", "hasFrontCamera", "getHasFrontCamera", "setHasFrontCamera", "checkSceneSupportRecordStream", "scene", "enableSwitchCamera", "hasBackCameraInThread", "hasFrontCameraInThread", "isCameraApi2CanUse", "isCaptureUseImageCallback", "isProcessCaptureUseImageCallback", "process", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "cameraApiLevel", "isProcessUseCamera2", "isProcessUseCamera2RecordStream", "isProcessUseVideoStabilization", "isRenderscriptSupported", "isUseRecordStream", "isVendorCameraEffectSupported", "isVendorDebugModeSupported", "plugin-mediaeditor_release"})
 public final class a
 {
-  private static boolean fBc;
-  private static boolean fBe;
-  private static int gDI;
-  public static final a gDJ;
+  private static boolean fEJ;
+  private static boolean fEL;
+  private static int hej;
+  public static final a hek;
   
   static
   {
     AppMethodBeat.i(94381);
-    gDJ = new a();
-    gDI = 2;
-    fBc = true;
-    fBe = true;
-    h.Iye.aP((Runnable)1.gDK);
+    hek = new a();
+    hej = 2;
+    fEJ = true;
+    fEL = true;
+    h.JZN.aS((Runnable)1.hel);
     AppMethodBeat.o(94381);
   }
   
@@ -55,21 +55,21 @@ public final class a
       AppMethodBeat.o(94375);
       return false;
     }
-    boolean bool = aoG();
+    boolean bool = avx();
     AppMethodBeat.o(94375);
     return bool;
   }
   
-  public static final boolean anO()
+  public static final boolean auG()
   {
     AppMethodBeat.i(94380);
-    if (gDI > 1) {}
+    if (hej > 1) {}
     for (;;)
     {
       int i;
       try
       {
-        int m = gDI;
+        int m = hej;
         i = 0;
         int j = 0;
         int k = 0;
@@ -96,7 +96,7 @@ public final class a
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.CameraHelper", (Throwable)localException, " error", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.CameraHelper", (Throwable)localException, " error", new Object[0]);
         AppMethodBeat.o(94380);
         return true;
       }
@@ -107,34 +107,78 @@ public final class a
     }
   }
   
-  public static int aoD()
+  public static final boolean avA()
   {
-    return gDI;
+    if ((ae.fJk != null) && (ae.fJk.fIc != -1)) {
+      return ae.fJk.fIc == 1;
+    }
+    return false;
   }
   
-  public static boolean aoE()
+  public static final boolean avB()
   {
-    return fBc;
+    AppMethodBeat.i(94379);
+    if ((ae.fJk != null) && (ae.fJk.fIe != -1))
+    {
+      if (ae.fJk.fIe == 1)
+      {
+        AppMethodBeat.o(94379);
+        return true;
+      }
+      AppMethodBeat.o(94379);
+      return false;
+    }
+    boolean bool = ((b)g.ab(b.class)).a(b.a.pSF, false);
+    AppMethodBeat.o(94379);
+    return bool;
   }
   
-  public static boolean aoF()
+  public static final boolean avC()
   {
-    return fBe;
+    if ((ae.fJk != null) && (ae.fJk.fIf != -1)) {
+      return ae.fJk.fIf == 1;
+    }
+    return false;
   }
   
-  private static boolean aoG()
+  public static final boolean avD()
+  {
+    return fEJ;
+  }
+  
+  public static final boolean avE()
+  {
+    return fEL;
+  }
+  
+  public static int avu()
+  {
+    return hej;
+  }
+  
+  public static boolean avv()
+  {
+    return fEJ;
+  }
+  
+  public static boolean avw()
+  {
+    return fEL;
+  }
+  
+  private static boolean avx()
   {
     AppMethodBeat.i(94374);
-    if ((ae.fFD != null) && (ae.fFD.fEt != -1)) {
-      if (ae.fFD.fEt != 3) {}
+    if ((ae.fJk != null) && (ae.fJk.fIa != -1)) {
+      if (ae.fJk.fIa != 3) {}
     }
     for (int i = 1;; i = 0)
     {
-      if ((((b)g.ab(b.class)).a(b.a.poP, 2) != 2) || (i == 0))
+      if ((((b)g.ab(b.class)).a(b.a.pSA, 2) != 2) || (i == 0))
       {
         AppMethodBeat.o(94374);
         return false;
-        if (ae.fFD.fEt == 1)
+        if (ae.fJk.fIa == 1)
         {
           AppMethodBeat.o(94374);
           return true;
@@ -142,22 +186,22 @@ public final class a
         AppMethodBeat.o(94374);
         return false;
       }
-      if (com.tencent.mm.compatible.util.d.lg(21))
+      if (com.tencent.mm.compatible.util.d.la(21))
       {
         AppMethodBeat.o(94374);
         return false;
       }
-      if (com.tencent.mm.compatible.util.k.XS())
+      if (com.tencent.mm.compatible.util.k.YP())
       {
         AppMethodBeat.o(94374);
         return false;
       }
-      if (com.tencent.mm.compatible.util.k.XT())
+      if (com.tencent.mm.compatible.util.k.YQ())
       {
         AppMethodBeat.o(94374);
         return false;
       }
-      Object localObject = aj.getContext().getSystemService("camera");
+      Object localObject = ai.getContext().getSystemService("camera");
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type android.hardware.camera2.CameraManager");
@@ -172,7 +216,7 @@ public final class a
           ((CameraManager)localObject).getCameraCharacteristics(localObject.getCameraIdList()[0]);
           localObject = ((CameraManager)localObject).getCameraCharacteristics("0").get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL);
           if (localObject == null) {
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
           i = ((Number)localObject).intValue();
           switch (i)
@@ -181,16 +225,16 @@ public final class a
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.CameraHelper", "a camera access exception happend");
+          ac.e("MicroMsg.CameraHelper", "a camera access exception happend");
           AppMethodBeat.o(94374);
           return false;
-          c localc1 = c.gya;
-          c.and();
+          c localc1 = c.gYy;
+          c.atW();
           continue;
         }
         catch (AssertionError localAssertionError)
         {
-          ad.e("MicroMsg.CameraHelper", "some device has some problem in LegecyCamera ");
+          ac.e("MicroMsg.CameraHelper", "some device has some problem in LegecyCamera ");
           AppMethodBeat.o(94374);
           return false;
         }
@@ -199,27 +243,27 @@ public final class a
         }
         AppMethodBeat.o(94374);
         return true;
-        localObject = c.gya;
-        c.anc();
+        localObject = c.gYy;
+        c.atV();
         continue;
-        c localc2 = c.gya;
-        c.ane();
+        c localc2 = c.gYy;
+        c.atX();
         continue;
-        localc2 = c.gya;
-        c.anf();
+        localc2 = c.gYy;
+        c.atY();
         continue;
-        localc2 = c.gya;
-        c.ang();
+        localc2 = c.gYy;
+        c.atZ();
       }
       AppMethodBeat.o(94374);
       return false;
     }
   }
   
-  public static final boolean aoH()
+  public static final boolean avy()
   {
     AppMethodBeat.i(177321);
-    if (((b)g.ab(b.class)).a(b.a.poS, true))
+    if (((b)g.ab(b.class)).a(b.a.pSD, true))
     {
       AppMethodBeat.o(177321);
       return true;
@@ -228,12 +272,12 @@ public final class a
     return false;
   }
   
-  public static final boolean aoI()
+  public static final boolean avz()
   {
     AppMethodBeat.i(94378);
-    if ((ae.fFD != null) && (ae.fFD.fEw != -1))
+    if ((ae.fJk != null) && (ae.fJk.fId != -1))
     {
-      if (ae.fFD.fEw == 1)
+      if (ae.fJk.fId == 1)
       {
         AppMethodBeat.o(94378);
         return true;
@@ -241,80 +285,36 @@ public final class a
       AppMethodBeat.o(94378);
       return false;
     }
-    boolean bool = ((b)g.ab(b.class)).a(b.a.poT, false);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.pSE, false);
     AppMethodBeat.o(94378);
     return bool;
-  }
-  
-  public static final boolean aoJ()
-  {
-    if ((ae.fFD != null) && (ae.fFD.fEv != -1)) {
-      return ae.fFD.fEv == 1;
-    }
-    return false;
-  }
-  
-  public static final boolean aoK()
-  {
-    AppMethodBeat.i(94379);
-    if ((ae.fFD != null) && (ae.fFD.fEx != -1))
-    {
-      if (ae.fFD.fEx == 1)
-      {
-        AppMethodBeat.o(94379);
-        return true;
-      }
-      AppMethodBeat.o(94379);
-      return false;
-    }
-    boolean bool = ((b)g.ab(b.class)).a(b.a.poU, false);
-    AppMethodBeat.o(94379);
-    return bool;
-  }
-  
-  public static final boolean aoL()
-  {
-    if ((ae.fFD != null) && (ae.fFD.fEy != -1)) {
-      return ae.fFD.fEy == 1;
-    }
-    return false;
-  }
-  
-  public static final boolean aoM()
-  {
-    return fBc;
-  }
-  
-  public static final boolean aoN()
-  {
-    return fBe;
   }
   
   public static final boolean b(com.tencent.mm.media.widget.camerarecordview.d.a parama)
   {
     AppMethodBeat.i(94376);
     d.g.b.k.h(parama, "process");
-    if ((ae.fFD != null) && (ae.fFD.fEu != -1)) {
-      if (ae.fFD.fEt != 3) {}
+    if ((ae.fJk != null) && (ae.fJk.fIb != -1)) {
+      if (ae.fJk.fIa != 3) {}
     }
     for (int i = 1;; i = 0)
     {
-      if (((b)g.ab(b.class)).a(b.a.poR, false)) {
+      if (((b)g.ab(b.class)).a(b.a.pSC, false)) {
         i = 0;
       }
       while (i != 0)
       {
         i = parama.getRecordScene();
-        parama = ((b)g.ab(b.class)).a(b.a.poQ, "");
-        if (!bt.isNullOrNil(parama))
+        parama = ((b)g.ab(b.class)).a(b.a.pSB, "");
+        if (!bs.isNullOrNil(parama))
         {
           d.g.b.k.g(parama, "supportScene");
           if (n.a((CharSequence)parama, (CharSequence)String.valueOf(i), false))
           {
-            ad.i("MicroMsg.CameraHelper", "the scene = " + i + " is support record stream ");
+            ac.i("MicroMsg.CameraHelper", "the scene = " + i + " is support record stream ");
             AppMethodBeat.o(94376);
             return true;
-            if (ae.fFD.fEt == 1)
+            if (ae.fJk.fIa == 1)
             {
               i = 1;
               continue;
@@ -341,7 +341,7 @@ public final class a
       AppMethodBeat.o(94377);
       return false;
     }
-    if ((aoI()) && (a(parama)) && (aoG()))
+    if ((avz()) && (a(parama)) && (avx()))
     {
       AppMethodBeat.o(94377);
       return true;
@@ -350,19 +350,19 @@ public final class a
     return false;
   }
   
-  public static void dW(boolean paramBoolean)
+  public static void er(boolean paramBoolean)
   {
-    fBc = paramBoolean;
+    fEJ = paramBoolean;
   }
   
-  public static void dX(boolean paramBoolean)
+  public static void es(boolean paramBoolean)
   {
-    fBe = paramBoolean;
+    fEL = paramBoolean;
   }
   
-  public static void mT(int paramInt)
+  public static void nH(int paramInt)
   {
-    gDI = paramInt;
+    hej = paramInt;
   }
 }
 

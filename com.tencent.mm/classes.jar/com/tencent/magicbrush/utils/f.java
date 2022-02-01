@@ -9,26 +9,26 @@ import d.l;
 import d.y;
 import java.util.concurrent.Callable;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/magicbrush/utils/ThreadUtil;", "", "()V", "uiHandler", "Landroid/os/Handler;", "getMainHandler", "isUiThread", "", "postOnUiThread", "r", "Lkotlin/Function0;", "", "run", "Ljava/lang/Runnable;", "delayMs", "", "runOnJsThreadIfAvailable", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "runnable", "runOnUiThread", "syncOnUiThread", "T", "cb", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "callable", "Ljava/util/concurrent/Callable;", "(Ljava/util/concurrent/Callable;)Ljava/lang/Object;", "lib-magicbrush-nano_release"})
+@l(fNY={1, 1, 13}, fNZ={""}, fOa={"Lcom/tencent/magicbrush/utils/ThreadUtil;", "", "()V", "uiHandler", "Landroid/os/Handler;", "getMainHandler", "isUiThread", "", "postOnUiThread", "r", "Lkotlin/Function0;", "", "run", "Ljava/lang/Runnable;", "delayMs", "", "runOnJsThreadIfAvailable", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "runnable", "runOnUiThread", "syncOnUiThread", "T", "cb", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "callable", "Ljava/util/concurrent/Callable;", "(Ljava/util/concurrent/Callable;)Ljava/lang/Object;", "lib-magicbrush-nano_release"})
 public final class f
 {
-  private static final Handler csO;
-  public static final f csP;
+  private static final Handler cpW;
+  public static final f cpX;
   
   static
   {
     AppMethodBeat.i(140298);
-    csP = new f();
-    csO = new Handler(Looper.getMainLooper());
+    cpX = new f();
+    cpW = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(140298);
   }
   
-  public static final Handler GA()
+  public static final Handler Em()
   {
-    return csO;
+    return cpW;
   }
   
-  public static final boolean GB()
+  public static final boolean Gm()
   {
     AppMethodBeat.i(140294);
     Thread localThread = Thread.currentThread();
@@ -51,7 +51,7 @@ public final class f
   {
     AppMethodBeat.i(140297);
     k.h(parama, "cb");
-    parama = new e((Callable)new f.a(parama));
+    parama = new e((Callable)new a(parama));
     runOnUiThread((Runnable)parama);
     parama = parama.get();
     AppMethodBeat.o(140297);
@@ -62,19 +62,34 @@ public final class f
   {
     AppMethodBeat.i(140295);
     k.h(paramRunnable, "run");
-    if (GB())
+    if (Gm())
     {
       paramRunnable.run();
       AppMethodBeat.o(140295);
       return;
     }
-    csO.post(paramRunnable);
+    cpW.post(paramRunnable);
     AppMethodBeat.o(140295);
+  }
+  
+  @l(fNY={1, 1, 13}, fNZ={""}, fOa={"<anonymous>", "T", "call", "()Ljava/lang/Object;"})
+  static final class a<V>
+    implements Callable<T>
+  {
+    a(a parama) {}
+    
+    public final T call()
+    {
+      AppMethodBeat.i(140293);
+      Object localObject = this.cpY.invoke();
+      AppMethodBeat.o(140293);
+      return localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.utils.f
  * JD-Core Version:    0.7.0.1
  */

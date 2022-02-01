@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bum;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.protocal.protobuf.cer;
-import com.tencent.mm.protocal.protobuf.ww;
+import com.tencent.mm.protocal.protobuf.bzd;
+import com.tencent.mm.protocal.protobuf.bzf;
+import com.tencent.mm.protocal.protobuf.cju;
+import com.tencent.mm.protocal.protobuf.xk;
 import com.tencent.mm.vending.c.b;
 import com.tencent.mm.vending.g.g;
 import com.tencent.mm.vending.h.e;
@@ -12,11 +12,11 @@ import com.tencent.mm.vending.h.e;
 public class u
   implements b<t>
 {
-  protected t zFb;
-  public final b zFc;
-  public final a zFd;
-  public final d zFe;
-  public final c zFf;
+  protected t AXo;
+  public final b AXp;
+  public final a AXq;
+  public final d AXr;
+  public final c AXs;
   
   public u()
   {
@@ -28,55 +28,55 @@ public class u
   private u(t paramt)
   {
     AppMethodBeat.i(68490);
-    this.zFc = new b();
-    this.zFd = new a();
-    this.zFe = new d();
-    this.zFf = new c();
-    this.zFb = paramt;
+    this.AXp = new b();
+    this.AXq = new a();
+    this.AXr = new d();
+    this.AXs = new c();
+    this.AXo = paramt;
     AppMethodBeat.o(68490);
   }
   
   public final class a
-    implements e<ww, com.tencent.mm.vending.j.c<String, Integer>>
+    implements e<xk, com.tencent.mm.vending.j.c<String, Integer>>
   {
     public a() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.LOGIC";
     }
   }
   
   public final class b
-    implements e<cer, Void>
+    implements e<cju, Void>
   {
     public b() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.LOGIC";
     }
     
-    public final com.tencent.mm.vending.g.c<cer> aHm()
+    public final com.tencent.mm.vending.g.c<cju> aOa()
     {
       AppMethodBeat.i(68484);
-      com.tencent.mm.vending.g.c localc = g.fhq().c(this);
+      com.tencent.mm.vending.g.c localc = g.fxs().c(this);
       AppMethodBeat.o(68484);
       return localc;
     }
   }
   
   public final class c
-    implements e<bum, com.tencent.mm.vending.j.c<Integer, Integer>>
+    implements e<bzd, com.tencent.mm.vending.j.c<Integer, Integer>>
   {
     public c() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.UI";
     }
     
-    public final com.tencent.mm.vending.g.c<bum> id(int paramInt1, int paramInt2)
+    public final com.tencent.mm.vending.g.c<bzd> is(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(68486);
       com.tencent.mm.vending.g.c localc = g.J(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)).c(this);
@@ -86,11 +86,11 @@ public class u
   }
   
   public final class d
-    implements e<buo, com.tencent.mm.vending.j.c<Integer, Integer>>
+    implements e<bzf, com.tencent.mm.vending.j.c<Integer, Integer>>
   {
     public d() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.UI";
     }
@@ -98,7 +98,7 @@ public class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.u
  * JD-Core Version:    0.7.0.1
  */

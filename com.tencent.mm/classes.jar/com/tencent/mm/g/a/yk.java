@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.c.a;
-import com.tencent.mm.plugin.appbrand.appcache.i;
 import com.tencent.mm.sdk.b.b;
 
 public final class yk
   extends b
 {
-  public a dEY;
+  public a dBY;
+  public b dBZ;
   
   public yk()
   {
@@ -17,24 +16,28 @@ public final class yk
   
   private yk(byte paramByte)
   {
-    AppMethodBeat.i(43444);
-    this.dEY = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19850);
+    this.dBY = new a();
+    this.dBZ = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(43444);
+    AppMethodBeat.o(19850);
   }
   
   public static final class a
   {
-    public long bof;
-    public long cCY;
-    public c.a dEX;
-    public i dEZ;
+    public int cZu;
+    public String username;
+  }
+  
+  public static final class b
+  {
+    public int dCa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.yk
  * JD-Core Version:    0.7.0.1
  */

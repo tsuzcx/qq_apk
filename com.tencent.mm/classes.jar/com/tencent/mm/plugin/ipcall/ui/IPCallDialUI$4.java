@@ -13,7 +13,7 @@ final class IPCallDialUI$4
   {
     AppMethodBeat.i(25745);
     paramDialogInterface.dismiss();
-    this.sGR.finish();
+    this.tOy.finish();
     AppMethodBeat.o(25745);
   }
 }

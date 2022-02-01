@@ -16,20 +16,20 @@ import javax.annotation.concurrent.GuardedBy;
 
 public final class o
 {
-  private static o bDz;
+  private static o bBh;
   @GuardedBy("serviceClassNames")
-  private final n<String, String> bDA;
-  private Boolean bDB;
-  final Queue<Intent> bDC;
-  public final Queue<Intent> bDD;
+  private final n<String, String> bBi;
+  private Boolean bBj;
+  final Queue<Intent> bBk;
+  public final Queue<Intent> bBl;
   
   private o()
   {
     AppMethodBeat.i(4181);
-    this.bDA = new n();
-    this.bDB = null;
-    this.bDC = new ArrayDeque();
-    this.bDD = new ArrayDeque();
+    this.bBi = new n();
+    this.bBj = null;
+    this.bBk = new ArrayDeque();
+    this.bBl = new ArrayDeque();
     AppMethodBeat.o(4181);
   }
   
@@ -47,9 +47,9 @@ public final class o
   private final int b(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(4184);
-    synchronized (this.bDA)
+    synchronized (this.bBi)
     {
-      ??? = (String)this.bDA.get(paramIntent.getAction());
+      ??? = (String)this.bBi.get(paramIntent.getAction());
       ??? = ???;
       if (??? == null)
       {
@@ -64,17 +64,17 @@ public final class o
     try
     {
       boolean bool;
-      if (this.bDB == null)
+      if (this.bBj == null)
       {
         if (paramContext.checkCallingOrSelfPermission("android.permission.WAKE_LOCK") == 0)
         {
           bool = true;
           label85:
-          this.bDB = Boolean.valueOf(bool);
+          this.bBj = Boolean.valueOf(bool);
         }
       }
       else {
-        if (!this.bDB.booleanValue()) {
+        if (!this.bBj.booleanValue()) {
           break label400;
         }
       }
@@ -111,9 +111,9 @@ public final class o
         }
         for (;;)
         {
-          synchronized (this.bDA)
+          synchronized (this.bBi)
           {
-            this.bDA.put(paramIntent.getAction(), ???);
+            this.bBi.put(paramIntent.getAction(), ???);
             if (Log.isLoggable("FirebaseInstanceId", 3))
             {
               ??? = String.valueOf(???);
@@ -152,15 +152,15 @@ public final class o
     return 402;
   }
   
-  public static o wZ()
+  public static o wM()
   {
     try
     {
       AppMethodBeat.i(4180);
-      if (bDz == null) {
-        bDz = new o();
+      if (bBh == null) {
+        bBh = new o();
       }
-      o localo = bDz;
+      o localo = bBh;
       AppMethodBeat.o(4180);
       return localo;
     }
@@ -199,7 +199,7 @@ public final class o
       }
       i = 1;
       break;
-      this.bDC.offer(paramIntent);
+      this.bBk.offer(paramIntent);
       for (;;)
       {
         paramString = new Intent(paramString);
@@ -207,7 +207,7 @@ public final class o
         i = b(paramContext, paramString);
         AppMethodBeat.o(4183);
         return i;
-        this.bDD.offer(paramIntent);
+        this.bBl.offer(paramIntent);
       }
       new String("Unknown service action: ");
     }

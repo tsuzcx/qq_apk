@@ -11,9 +11,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class SearchBarUI
   extends BaseActivity
-  implements af.a
+  implements ag.a
 {
-  af FRX;
+  ag HrM;
   
   public void onClickBackBtn(View paramView)
   {
@@ -23,7 +23,7 @@ public abstract class SearchBarUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = BaseActivity.c.FHp;
+    paramBundle = BaseActivity.c.Hgx;
     a("", new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -31,10 +31,10 @@ public abstract class SearchBarUI
         AppMethodBeat.i(159098);
         paramAnonymousMenuItem = SearchBarUI.this;
         paramAnonymousMenuItem.removeAllOptionMenu();
-        paramAnonymousMenuItem.FRX = new af(paramAnonymousMenuItem);
-        paramAnonymousMenuItem.FRX.setSearchViewListener(paramAnonymousMenuItem);
-        paramAnonymousMenuItem.FRX.setHint(paramAnonymousMenuItem.getResources().getString(2131764545));
-        paramAnonymousMenuItem.getSupportActionBar().setCustomView(paramAnonymousMenuItem.FRX);
+        paramAnonymousMenuItem.HrM = new ag(paramAnonymousMenuItem);
+        paramAnonymousMenuItem.HrM.setSearchViewListener(paramAnonymousMenuItem);
+        paramAnonymousMenuItem.HrM.setHint(paramAnonymousMenuItem.getResources().getString(2131764545));
+        paramAnonymousMenuItem.getSupportActionBar().setCustomView(paramAnonymousMenuItem.HrM);
         SearchBarUI.showVKB(paramAnonymousMenuItem);
         AppMethodBeat.o(159098);
         return false;

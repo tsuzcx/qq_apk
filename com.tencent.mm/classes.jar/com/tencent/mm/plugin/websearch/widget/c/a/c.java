@@ -6,11 +6,11 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -40,7 +40,7 @@ public final class c
           paramString.putExtra((String)localEntry.getKey(), (String)localEntry.getValue());
         }
       }
-      com.tencent.mm.cj.a.post(new Runnable()
+      com.tencent.mm.ci.a.post(new Runnable()
       {
         public final void run()
         {
@@ -52,7 +52,7 @@ public final class c
     }
     catch (Exception paramContext)
     {
-      ad.e("OpenAppNativeApp", bt.m(paramContext));
+      ac.e("OpenAppNativeApp", bs.m(paramContext));
       AppMethodBeat.o(116664);
       return false;
     }
@@ -60,7 +60,7 @@ public final class c
     return true;
   }
   
-  public final boolean avn(String paramString)
+  public final boolean aAF(String paramString)
   {
     AppMethodBeat.i(116662);
     if (TextUtils.isEmpty(paramString))
@@ -73,10 +73,10 @@ public final class c
     return bool;
   }
   
-  public final boolean avo(String paramString)
+  public final boolean aAG(String paramString)
   {
     AppMethodBeat.i(116663);
-    if (!avn(paramString))
+    if (!aAF(paramString))
     {
       AppMethodBeat.o(116663);
       return false;
@@ -90,21 +90,21 @@ public final class c
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
       localHashMap.put(str2, str1);
     }
-    if (!b(aj.getContext(), paramString, localHashMap))
+    if (!b(ai.getContext(), paramString, localHashMap))
     {
       paramString = new Intent();
       paramString.putExtra("rawUrl", (String)localObject);
       paramString.putExtra("useJs", true);
-      d.b(aj.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
+      d.b(ai.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
     }
     AppMethodBeat.o(116663);
     return true;
   }
   
-  public final boolean uX(long paramLong)
+  public final boolean zA(long paramLong)
   {
     AppMethodBeat.i(116661);
-    boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.Z(paramLong, 1);
+    boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.ac(paramLong, 1);
     AppMethodBeat.o(116661);
     return bool;
   }

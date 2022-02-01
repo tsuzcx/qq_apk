@@ -11,19 +11,19 @@ public abstract interface i
 {
   public abstract boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong);
   
-  public abstract byte[] auZ();
+  public abstract byte[] aBS();
   
-  public abstract byte[] avb();
+  public abstract byte[] aBU();
   
-  public abstract String avc();
+  public abstract String aBV();
   
-  public abstract byte[] avp();
+  public abstract byte[] aCi();
   
-  public abstract String avq();
+  public abstract String aCj();
   
-  public abstract String avr();
+  public abstract String aCk();
   
-  public abstract int avs();
+  public abstract int aCl();
   
   public abstract byte[] getAuthResponse();
   
@@ -37,7 +37,7 @@ public abstract interface i
   
   public abstract int getUin();
   
-  public abstract byte[] mq(int paramInt);
+  public abstract byte[] mp(int paramInt);
   
   public abstract void setErrMsg(String paramString);
   
@@ -90,7 +90,7 @@ public abstract interface i
         }
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = auZ();
+        paramParcel1 = aBS();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -124,19 +124,19 @@ public abstract interface i
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = mq(paramParcel1.readInt());
+        paramParcel1 = mp(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = avp();
+        paramParcel1 = aCi();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = avb();
+        paramParcel1 = aBU();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -148,7 +148,7 @@ public abstract interface i
         return true;
       case 12: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = avc();
+        paramParcel1 = aBV();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
@@ -160,19 +160,19 @@ public abstract interface i
         return true;
       case 14: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = avq();
+        paramParcel1 = aCj();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
       case 15: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = avr();
+        paramParcel1 = aCk();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
       case 16: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramInt1 = avs();
+        paramInt1 = aCl();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -271,12 +271,7 @@ public abstract interface i
         //   18	77	105	finally
       }
       
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
-      public final byte[] auZ()
+      public final byte[] aBS()
       {
         AppMethodBeat.i(133071);
         Parcel localParcel1 = Parcel.obtain();
@@ -297,7 +292,7 @@ public abstract interface i
         }
       }
       
-      public final byte[] avb()
+      public final byte[] aBU()
       {
         AppMethodBeat.i(133079);
         Parcel localParcel1 = Parcel.obtain();
@@ -318,7 +313,7 @@ public abstract interface i
         }
       }
       
-      public final String avc()
+      public final String aBV()
       {
         AppMethodBeat.i(133081);
         Parcel localParcel1 = Parcel.obtain();
@@ -339,7 +334,7 @@ public abstract interface i
         }
       }
       
-      public final byte[] avp()
+      public final byte[] aCi()
       {
         AppMethodBeat.i(133078);
         Parcel localParcel1 = Parcel.obtain();
@@ -360,7 +355,7 @@ public abstract interface i
         }
       }
       
-      public final String avq()
+      public final String aCj()
       {
         AppMethodBeat.i(133083);
         Parcel localParcel1 = Parcel.obtain();
@@ -381,7 +376,7 @@ public abstract interface i
         }
       }
       
-      public final String avr()
+      public final String aCk()
       {
         AppMethodBeat.i(133084);
         Parcel localParcel1 = Parcel.obtain();
@@ -402,7 +397,7 @@ public abstract interface i
         }
       }
       
-      public final int avs()
+      public final int aCl()
       {
         AppMethodBeat.i(133085);
         Parcel localParcel1 = Parcel.obtain();
@@ -421,6 +416,11 @@ public abstract interface i
           localParcel1.recycle();
           AppMethodBeat.o(133085);
         }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
       }
       
       public final byte[] getAuthResponse()
@@ -549,7 +549,7 @@ public abstract interface i
         }
       }
       
-      public final byte[] mq(int paramInt)
+      public final byte[] mp(int paramInt)
       {
         AppMethodBeat.i(133077);
         Parcel localParcel1 = Parcel.obtain();

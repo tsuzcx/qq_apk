@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.downloader.i.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
 import com.tencent.mm.pluginsdk.model.app.am;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,13 +18,13 @@ public class c
   public final void a(Context paramContext, String paramString, final bn.a parama)
   {
     AppMethodBeat.i(8826);
-    ad.i("MicroMsg.JsApiLaunchApplication", "invokeInMM");
+    ac.i("MicroMsg.JsApiLaunchApplication", "invokeInMM");
     try
     {
       paramString = new JSONObject(paramString);
       if (paramString == null)
       {
-        ad.e("MicroMsg.JsApiLaunchApplication", "data is null");
+        ac.e("MicroMsg.JsApiLaunchApplication", "data is null");
         parama.f("fail", null);
         AppMethodBeat.o(8826);
         return;
@@ -34,24 +34,24 @@ public class c
     {
       for (;;)
       {
-        ad.e("MicroMsg.JsApiLaunchApplication", "paras data error: " + paramString.getMessage());
+        ac.e("MicroMsg.JsApiLaunchApplication", "paras data error: " + paramString.getMessage());
         paramString = null;
       }
       paramString = paramString.optString("appID");
-      if (bt.isNullOrNil(paramString))
+      if (bs.isNullOrNil(paramString))
       {
-        ad.e("MicroMsg.JsApiLaunchApplication", "appid is null or nil");
+        ac.e("MicroMsg.JsApiLaunchApplication", "appid is null or nil");
         parama.f("fail", null);
         AppMethodBeat.o(8826);
         return;
       }
       a.a(paramContext, paramString, new am()
       {
-        public final void u(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+        public final void v(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
         {
-          AppMethodBeat.i(190189);
+          AppMethodBeat.i(195681);
           parama.f(null, null);
-          AppMethodBeat.o(190189);
+          AppMethodBeat.o(195681);
         }
       });
       AppMethodBeat.o(8826);
@@ -60,7 +60,7 @@ public class c
   
   public final void b(a.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 2;
   }

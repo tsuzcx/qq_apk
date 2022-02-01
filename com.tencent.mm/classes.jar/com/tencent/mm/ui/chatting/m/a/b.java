@@ -7,8 +7,8 @@ import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pluginsdk.ui.tools.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.c.b.d;
 import com.tencent.mm.ui.chatting.c.b.i;
 import com.tencent.mm.ui.chatting.c.b.w;
@@ -21,43 +21,43 @@ import java.util.List;
 public final class b
   extends a
 {
-  private int GGO;
-  private long Gsa;
+  private long HRS;
+  private int IgK;
   
   public b(com.tencent.mm.ui.chatting.d.a parama, e parame)
   {
     super(parama, parame);
     AppMethodBeat.i(36658);
-    this.Gsa = ((d)faA().be(d.class)).eWP();
+    this.HRS = ((d)fqq().bf(d.class)).fmB();
     AppMethodBeat.o(36658);
   }
   
-  private int faB()
+  private int fqr()
   {
     AppMethodBeat.i(36660);
-    int i = ((w)faA().be(w.class)).eYb();
+    int i = ((w)fqq().bf(w.class)).fnN();
     AppMethodBeat.o(36660);
     return i;
   }
   
-  public final void a(MMChattingListView paramMMChattingListView, d.d<bl> paramd)
+  public final void a(MMChattingListView paramMMChattingListView, d.d<bo> paramd)
   {
     AppMethodBeat.i(36659);
     super.a(paramMMChattingListView, paramd);
-    d.a locala = paramd.GFc;
-    int i = paramd.GFd.size();
-    int j = paramd.fwP;
+    d.a locala = paramd.IeY;
+    int i = paramd.IeZ.size();
+    int j = paramd.fAw;
     int k;
-    switch (1.GGj[locala.ordinal()])
+    switch (1.Igf[locala.ordinal()])
     {
     case 3: 
     default: 
-      ad.i("MicroMsg.ChattingLoader.ChattingBizDataPresenter", "[onViewUpdate] result:%s", new Object[] { paramd.toString() });
-      paramd = faA().getTalkerUserName();
-      long l = ((k)g.ab(k.class)).aqo().age(paramd);
-      az.arV();
-      k = com.tencent.mm.model.c.apO().E(paramd, 0L, l);
-      ad.i("MicroMsg.ChattingLoader.ChattingBizDataPresenter", "[isShowTopAll] talker:%s createTime:%s expiredCount:%s", new Object[] { paramd, Long.valueOf(l), Integer.valueOf(k) });
+      ac.i("MicroMsg.ChattingLoader.ChattingBizDataPresenter", "[onViewUpdate] result:%s", new Object[] { paramd.toString() });
+      paramd = fqq().getTalkerUserName();
+      long l = ((k)g.ab(k.class)).axd().akY(paramd);
+      az.ayM();
+      k = com.tencent.mm.model.c.awD().C(paramd, 0L, l);
+      ac.i("MicroMsg.ChattingLoader.ChattingBizDataPresenter", "[isShowTopAll] talker:%s createTime:%s expiredCount:%s", new Object[] { paramd, Long.valueOf(l), Integer.valueOf(k) });
       if (j - k > i) {
         break;
       }
@@ -68,27 +68,27 @@ public final class b
       paramMMChattingListView.setIsBottomShowAll(true);
       AppMethodBeat.o(36659);
       return;
-      paramMMChattingListView.vL(false);
+      paramMMChattingListView.wP(false);
       k = paramMMChattingListView.getCurCount();
       int m = paramMMChattingListView.getPreCount();
-      n.a(paramMMChattingListView.getListView(), k - m + 1, faB() + paramMMChattingListView.getTopHeight(), false);
+      n.a(paramMMChattingListView.getListView(), k - m + 1, fqr() + paramMMChattingListView.getTopHeight(), false);
       k = paramMMChattingListView.getCurCount() - paramMMChattingListView.getPreCount();
       if (k <= 0) {
         break;
       }
-      ((i)faA().be(i.class)).YG(k);
+      ((i)fqq().bf(i.class)).aaR(k);
       break;
-      paramMMChattingListView.vM(false);
-      n.a(paramMMChattingListView.getListView(), paramMMChattingListView.getPreCount() + 1, paramMMChattingListView.getListView().getHeight() - faB(), false);
+      paramMMChattingListView.wQ(false);
+      n.a(paramMMChattingListView.getListView(), paramMMChattingListView.getPreCount() + 1, paramMMChattingListView.getListView().getHeight() - fqr(), false);
       break;
-      faA().wc(false);
+      fqq().xg(false);
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.m.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class CommentFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<CommentFrame> CREATOR;
-  public final String aSt;
+  public final String aTm;
   public final String description;
   public final String text;
   
@@ -24,7 +24,7 @@ public final class CommentFrame
   {
     super("COMM");
     AppMethodBeat.i(92421);
-    this.aSt = paramParcel.readString();
+    this.aTm = paramParcel.readString();
     this.description = paramParcel.readString();
     this.text = paramParcel.readString();
     AppMethodBeat.o(92421);
@@ -33,7 +33,7 @@ public final class CommentFrame
   public CommentFrame(String paramString1, String paramString2, String paramString3)
   {
     super("COMM");
-    this.aSt = paramString1;
+    this.aTm = paramString1;
     this.description = paramString2;
     this.text = paramString3;
   }
@@ -52,7 +52,7 @@ public final class CommentFrame
       return false;
     }
     paramObject = (CommentFrame)paramObject;
-    if ((x.g(this.description, paramObject.description)) && (x.g(this.aSt, paramObject.aSt)) && (x.g(this.text, paramObject.text)))
+    if ((x.g(this.description, paramObject.description)) && (x.g(this.aTm, paramObject.aTm)) && (x.g(this.text, paramObject.text)))
     {
       AppMethodBeat.o(92422);
       return true;
@@ -66,9 +66,9 @@ public final class CommentFrame
     int k = 0;
     AppMethodBeat.i(92423);
     int i;
-    if (this.aSt != null)
+    if (this.aTm != null)
     {
-      i = this.aSt.hashCode();
+      i = this.aTm.hashCode();
       if (this.description == null) {
         break label78;
       }
@@ -90,7 +90,7 @@ public final class CommentFrame
   {
     AppMethodBeat.i(92424);
     paramParcel.writeString(this.id);
-    paramParcel.writeString(this.aSt);
+    paramParcel.writeString(this.aTm);
     paramParcel.writeString(this.text);
     AppMethodBeat.o(92424);
   }

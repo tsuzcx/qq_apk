@@ -6,28 +6,28 @@ import com.tencent.soter.a.b.e;
 
 public class f
 {
-  private static volatile f Iwh = null;
-  static volatile SparseArray<d> Iwi = null;
-  final Object Iwj;
+  private static volatile f JXQ = null;
+  static volatile SparseArray<d> JXR = null;
+  final Object JXS;
   
   private f()
   {
     AppMethodBeat.i(35);
-    this.Iwj = new Object();
-    Iwi = new SparseArray(5);
+    this.JXS = new Object();
+    JXR = new SparseArray(5);
     AppMethodBeat.o(35);
   }
   
-  public static f fnw()
+  public static f fDM()
   {
     AppMethodBeat.i(36);
-    if (Iwh == null) {
+    if (JXQ == null) {
       try
       {
-        if (Iwh == null) {
-          Iwh = new f();
+        if (JXQ == null) {
+          JXQ = new f();
         }
-        f localf1 = Iwh;
+        f localf1 = JXQ;
         return localf1;
       }
       finally
@@ -35,7 +35,7 @@ public class f
         AppMethodBeat.o(36);
       }
     }
-    f localf2 = Iwh;
+    f localf2 = JXQ;
     AppMethodBeat.o(36);
     return localf2;
   }
@@ -43,17 +43,17 @@ public class f
   public final boolean a(final d paramd, e parame)
   {
     AppMethodBeat.i(37);
-    if (!paramd.fnu())
+    if (!paramd.fDK())
     {
       int j = paramd.hashCode();
-      Object localObject = this.Iwj;
+      Object localObject = this.JXS;
       int i = 0;
       try
       {
-        while (i < Iwi.size())
+        while (i < JXR.size())
         {
-          int k = Iwi.keyAt(i);
-          if ((Iwi.get(k) != null) && (((d)Iwi.get(k)).getClass().getName().equals(paramd.getClass().getName())))
+          int k = JXR.keyAt(i);
+          if ((JXR.get(k) != null) && (((d)JXR.get(k)).getClass().getName().equals(paramd.getClass().getName())))
           {
             com.tencent.soter.core.c.d.w("Soter.SoterTaskManager", "soter: already such type of task. abandon add task", new Object[0]);
             parame.errCode = 1023;
@@ -63,8 +63,8 @@ public class f
           }
           i += 1;
         }
-        Iwi.put(j, paramd);
-        g.fnz().ae(new Runnable()
+        JXR.put(j, paramd);
+        g.fDP().ag(new Runnable()
         {
           public final void run()
           {
@@ -86,27 +86,27 @@ public class f
     return false;
   }
   
-  public final void fnx()
+  public final void fDN()
   {
     int i = 0;
     AppMethodBeat.i(38);
-    synchronized (this.Iwj)
+    synchronized (this.JXS)
     {
       com.tencent.soter.core.c.d.i("Soter.SoterTaskManager", "soter: request cancel all", new Object[0]);
-      if (Iwi.size() != 0) {
-        while (i < Iwi.size())
+      if (JXR.size() != 0) {
+        while (i < JXR.size())
         {
-          final int j = Iwi.keyAt(i);
-          g.fnz().ae(new Runnable()
+          final int j = JXR.keyAt(i);
+          g.fDP().ag(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(33);
               synchronized (f.a(f.this))
               {
-                d locald = (d)f.adW().get(j);
+                d locald = (d)f.afm().get(j);
                 if (locald != null) {
-                  locald.fnv();
+                  locald.fDL();
                 }
                 AppMethodBeat.o(33);
                 return;
@@ -116,33 +116,33 @@ public class f
           i += 1;
         }
       }
-      Iwi.clear();
+      JXR.clear();
       AppMethodBeat.o(38);
       return;
     }
   }
   
-  public final void fny()
+  public final void fDO()
   {
     int i = 0;
     AppMethodBeat.i(39);
-    synchronized (this.Iwj)
+    synchronized (this.JXS)
     {
       com.tencent.soter.core.c.d.i("Soter.SoterTaskManager", "soter: request publish cancellation", new Object[0]);
-      if (Iwi.size() != 0) {
-        while (i < Iwi.size())
+      if (JXR.size() != 0) {
+        while (i < JXR.size())
         {
-          final int j = Iwi.keyAt(i);
-          g.fnz().ae(new Runnable()
+          final int j = JXR.keyAt(i);
+          g.fDP().ag(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(34);
               synchronized (f.a(f.this))
               {
-                d locald = (d)f.adW().get(j);
+                d locald = (d)f.afm().get(j);
                 if ((locald != null) && ((locald instanceof a)) && (!((a)locald).isCancelled())) {
-                  ((a)locald).fnt();
+                  ((a)locald).fDJ();
                 }
                 AppMethodBeat.o(34);
                 return;

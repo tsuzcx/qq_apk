@@ -16,9 +16,9 @@ public class ProductSectionItem
   public String jumpUrl;
   public String name;
   public int scene;
-  public List<Skus> upB;
-  public String upC;
-  public String upD;
+  public List<Skus> vyx;
+  public String vyy;
+  public String vyz;
   
   static
   {
@@ -37,21 +37,21 @@ public class ProductSectionItem
     int j = paramParcel.readInt();
     if (j > 0)
     {
-      this.upB = new ArrayList();
+      this.vyx = new ArrayList();
       int i = 0;
       while (i < j)
       {
         Skus localSkus = new Skus();
         localSkus.key = paramParcel.readString();
         localSkus.value = paramParcel.readString();
-        this.upB.add(localSkus);
+        this.vyx.add(localSkus);
         i += 1;
       }
     }
     this.count = paramParcel.readInt();
-    this.upC = paramParcel.readString();
+    this.vyy = paramParcel.readString();
     this.jumpUrl = paramParcel.readString();
-    this.upD = paramParcel.readString();
+    this.vyz = paramParcel.readString();
     this.scene = paramParcel.readInt();
     AppMethodBeat.o(66697);
   }
@@ -66,13 +66,13 @@ public class ProductSectionItem
     AppMethodBeat.i(66698);
     paramParcel.writeString(this.iconUrl);
     paramParcel.writeString(this.name);
-    if (this.upB != null)
+    if (this.vyx != null)
     {
-      paramParcel.writeInt(this.upB.size());
+      paramParcel.writeInt(this.vyx.size());
       paramInt = 0;
-      while (paramInt < this.upB.size())
+      while (paramInt < this.vyx.size())
       {
-        Skus localSkus = (Skus)this.upB.get(paramInt);
+        Skus localSkus = (Skus)this.vyx.get(paramInt);
         paramParcel.writeString(localSkus.key);
         paramParcel.writeString(localSkus.value);
         paramInt += 1;
@@ -80,9 +80,9 @@ public class ProductSectionItem
     }
     paramParcel.writeInt(0);
     paramParcel.writeInt(this.count);
-    paramParcel.writeString(this.upC);
+    paramParcel.writeString(this.vyy);
     paramParcel.writeString(this.jumpUrl);
-    paramParcel.writeString(this.upD);
+    paramParcel.writeString(this.vyz);
     paramParcel.writeInt(this.scene);
     AppMethodBeat.o(66698);
   }
@@ -111,7 +111,7 @@ public class ProductSectionItem
       AppMethodBeat.o(66693);
     }
     
-    public static String eo(List<Skus> paramList)
+    public static String es(List<Skus> paramList)
     {
       AppMethodBeat.i(66695);
       if ((paramList == null) || (paramList.size() == 0))

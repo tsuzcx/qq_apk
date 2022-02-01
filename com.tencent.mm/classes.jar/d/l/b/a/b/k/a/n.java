@@ -12,31 +12,31 @@ import java.util.List;
 
 public final class n
 {
-  public final l JEr;
-  public final ad JUE;
-  public final w JUF;
-  final i JUG;
-  final f JUH;
-  private final a JUh;
-  public final c Jiu;
-  public final h Jiv;
-  public final d.l.b.a.b.b.l Jtl;
+  public final c KVO;
+  public final h KVP;
+  private final a LHA;
+  public final ad LHX;
+  public final w LHY;
+  final i LHZ;
+  final f LIa;
+  public final d.l.b.a.b.b.l LgE;
+  public final l LrK;
   
   public n(l paraml, c paramc, d.l.b.a.b.b.l paraml1, h paramh, i parami, a parama, f paramf, ad paramad, List<a.r> paramList)
   {
     AppMethodBeat.i(60309);
-    this.JEr = paraml;
-    this.Jiu = paramc;
-    this.Jtl = paraml1;
-    this.Jiv = paramh;
-    this.JUG = parami;
-    this.JUh = parama;
-    this.JUH = paramf;
-    paraml1 = "Deserializer for \"" + this.Jtl.fyB() + '"';
-    paraml = this.JUH;
+    this.LrK = paraml;
+    this.KVO = paramc;
+    this.LgE = paraml1;
+    this.KVP = paramh;
+    this.LHZ = parami;
+    this.LHA = parama;
+    this.LIa = paramf;
+    paraml1 = "Deserializer for \"" + this.LgE.fRf() + '"';
+    paraml = this.LIa;
     if (paraml != null)
     {
-      paramc = paraml.fCe();
+      paramc = paraml.fUI();
       paraml = paramc;
       if (paramc != null) {}
     }
@@ -44,8 +44,8 @@ public final class n
     {
       paraml = "[container not found]";
     }
-    this.JUE = new ad(this, paramad, paramList, paraml1, paraml, (byte)0);
-    this.JUF = new w(this);
+    this.LHX = new ad(this, paramad, paramList, paraml1, paraml, (byte)0);
+    this.LHY = new w(this);
     AppMethodBeat.o(60309);
   }
   
@@ -58,7 +58,7 @@ public final class n
     k.h(paramh, "typeTable");
     k.h(parami, "versionRequirementTable");
     k.h(parama, "metadataVersion");
-    l locall = this.JEr;
+    l locall = this.LrK;
     k.h(parama, "version");
     k.h(parama, "version");
     int i;
@@ -71,19 +71,19 @@ public final class n
     }
     for (;;)
     {
-      paraml = new n(locall, paramc, paraml, paramh, parami, parama, this.JUH, this.JUE, paramList);
+      paraml = new n(locall, paramc, paraml, paramh, parami, parama, this.LIa, this.LHX, paramList);
       AppMethodBeat.o(60307);
       return paraml;
       i = 0;
       break;
       label130:
-      parami = this.JUG;
+      parami = this.LHZ;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.n
  * JD-Core Version:    0.7.0.1
  */

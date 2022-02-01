@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.offline;
 
 public abstract interface b
 {
-  public abstract void bIp();
+  public abstract void bPC();
 }
 
 

@@ -6,108 +6,108 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.model.ay;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class ad
 {
-  private static boolean hME = false;
-  private static ad hMw;
   private static boolean hasInit = false;
-  private t fil;
-  private ad.a hMA;
-  private ac hMB;
-  private ab hMC;
-  private z hMD;
-  private ae hMx;
-  private af hMy;
-  private Context hMz;
-  private ap handler;
+  private static ad imT;
+  private static boolean inb = false;
+  private t flG;
+  private ao handler;
+  private ae imU;
+  private af imV;
+  private Context imW;
+  private a imX;
+  private ac imY;
+  private ab imZ;
+  private z ina;
   
   public static void a(ab paramab)
   {
     AppMethodBeat.i(132927);
-    aFf().hMC = paramab;
+    aLW().imZ = paramab;
     AppMethodBeat.o(132927);
   }
   
   public static void a(ac paramac)
   {
     AppMethodBeat.i(132925);
-    aFf().hMB = paramac;
+    aLW().imY = paramac;
     AppMethodBeat.o(132925);
   }
   
-  public static void a(ad.a parama)
+  public static void a(a parama)
   {
     AppMethodBeat.i(132921);
-    aFf().hMA = parama;
+    aLW().imX = parama;
     AppMethodBeat.o(132921);
   }
   
   public static void a(ae paramae)
   {
     AppMethodBeat.i(132913);
-    aFf().hMx = paramae;
+    aLW().imU = paramae;
     AppMethodBeat.o(132913);
   }
   
   public static void a(af paramaf)
   {
     AppMethodBeat.i(132915);
-    aFf().hMy = paramaf;
+    aLW().imV = paramaf;
     AppMethodBeat.o(132915);
   }
   
   public static void a(z paramz)
   {
     AppMethodBeat.i(132930);
-    aFf().hMD = paramz;
+    aLW().ina = paramz;
     AppMethodBeat.o(132930);
   }
   
-  public static void a(ap paramap)
+  public static void a(ao paramao)
   {
     AppMethodBeat.i(132919);
-    aFf().handler = paramap;
+    aLW().handler = paramao;
     AppMethodBeat.o(132919);
   }
   
-  private static ad aFf()
+  private static ad aLW()
   {
     AppMethodBeat.i(132907);
-    if (hMw == null) {
-      hMw = new ad();
+    if (imT == null) {
+      imT = new ad();
     }
-    ad localad = hMw;
+    ad localad = imT;
     AppMethodBeat.o(132907);
     return localad;
   }
   
-  private static SharedPreferences aFg()
+  private static SharedPreferences aLX()
   {
     AppMethodBeat.i(132908);
-    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("notify_key_pref_no_account", g.XN());
-    ax localax = ax.aFC("notify_key_pref_no_account");
-    ax.a(localSharedPreferences, localax);
+    SharedPreferences localSharedPreferences = ai.getContext().getSharedPreferences("notify_key_pref_no_account", g.YK());
+    aw localaw = aw.aKT("notify_key_pref_no_account");
+    aw.a(localSharedPreferences, localaw);
     AppMethodBeat.o(132908);
-    return localax;
+    return localaw;
   }
   
-  public static SharedPreferences aFh()
+  public static SharedPreferences aLY()
   {
     AppMethodBeat.i(132909);
-    Object localObject2 = aFg().getString("login_weixin_username", "");
+    Object localObject2 = aLX().getString("login_weixin_username", "");
     Object localObject1 = localObject2;
-    if (bt.isNullOrNil((String)localObject2))
+    if (bs.isNullOrNil((String)localObject2))
     {
-      localObject2 = ay.gNa.ao("login_weixin_username", "");
+      localObject2 = ay.hnA.aw("login_weixin_username", "");
       localObject1 = localObject2;
-      if (!bt.isNullOrNil((String)localObject2))
+      if (!bs.isNullOrNil((String)localObject2))
       {
-        aFg().edit().putString("login_weixin_username", (String)localObject2).commit();
+        aLX().edit().putString("login_weixin_username", (String)localObject2).commit();
         localObject1 = localObject2;
       }
     }
@@ -116,37 +116,37 @@ public final class ad
       localObject2 = ((String)localObject1).replace("[\\/\\\\]", "#").trim();
     }
     localObject1 = "notify_key_pref".concat(String.valueOf(localObject2));
-    localObject2 = ax.aFC((String)localObject1);
-    ax.a(aj.getContext().getSharedPreferences((String)localObject1, g.XN()), (ax)localObject2);
+    localObject2 = aw.aKT((String)localObject1);
+    aw.a(ai.getContext().getSharedPreferences((String)localObject1, g.YK()), (aw)localObject2);
     AppMethodBeat.o(132909);
     return localObject2;
   }
   
-  public static void aFi()
+  public static void aLZ()
   {
     AppMethodBeat.i(132910);
     SharedPreferences localSharedPreferences;
     int i;
     if (!hasInit)
     {
-      localSharedPreferences = aFh();
+      localSharedPreferences = aLY();
       long l = localSharedPreferences.getLong("wakeup_alarm_last_tick", 0L);
       i = localSharedPreferences.getInt("wakeup_alarm_last_cnt", 0);
-      if ((l == 0L) || (l > bt.eGO()))
+      if ((l == 0L) || (l > bs.eWj()))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMPushCore", "dealWithOnCreate, invalid time, thisCnt:%d", new Object[] { Integer.valueOf(i) });
-        localSharedPreferences.edit().putLong("wakeup_alarm_last_tick", bt.eGO()).commit();
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMPushCore", "dealWithOnCreate, invalid time, thisCnt:%d", new Object[] { Integer.valueOf(i) });
+        localSharedPreferences.edit().putLong("wakeup_alarm_last_tick", bs.eWj()).commit();
         localSharedPreferences.edit().putInt("wakeup_alarm_last_cnt", 1).commit();
         AppMethodBeat.o(132910);
         return;
       }
-      if (bt.vM(l) <= 86400000L) {
+      if (bs.Ap(l) <= 86400000L) {
         break label216;
       }
       localSharedPreferences.edit().putInt("wakeup_alarm_launch_cnt", i).commit();
-      localSharedPreferences.edit().putLong("wakeup_alarm_last_tick", bt.eGO()).commit();
+      localSharedPreferences.edit().putLong("wakeup_alarm_last_tick", bs.eWj()).commit();
       localSharedPreferences.edit().putInt("wakeup_alarm_last_cnt", 1).commit();
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMPushCore", "dealWithOnCreate, statistics cycle expire, thisCnt:%d", new Object[] { Integer.valueOf(i) });
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMPushCore", "dealWithOnCreate, statistics cycle expire, thisCnt:%d", new Object[] { Integer.valueOf(i) });
     }
     for (;;)
     {
@@ -155,22 +155,22 @@ public final class ad
       return;
       label216:
       localSharedPreferences.edit().putInt("wakeup_alarm_last_cnt", i + 1).commit();
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMPushCore", "dealWithOnCreate, add up launch count to:%d", new Object[] { Integer.valueOf(i + 1) });
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMPushCore", "dealWithOnCreate, add up launch count to:%d", new Object[] { Integer.valueOf(i + 1) });
     }
   }
   
-  public static boolean aFj()
+  public static boolean aMa()
   {
     AppMethodBeat.i(132911);
-    String str = ay.gNa.ao("login_user_name", "");
+    String str = ay.hnA.aw("login_user_name", "");
     Object localObject = str;
     if (str != null) {
       localObject = str.replaceAll("[/\\\\]", "#").trim();
     }
-    localObject = aj.getContext().getSharedPreferences("notify_key_pref".concat(String.valueOf(localObject)), g.XN());
+    localObject = ai.getContext().getSharedPreferences("notify_key_pref".concat(String.valueOf(localObject)), g.YK());
     int i = ((SharedPreferences)localObject).getInt("wakeup_alarm_launch_cnt", 0);
     int j = ((SharedPreferences)localObject).getInt("wakeup_alarm_last_cnt", 0);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMPushCore", "isFrequentlyLaunch cnt:%d, thisCnt:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMPushCore", "isFrequentlyLaunch cnt:%d, thisCnt:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
     if (i > 10)
     {
       i = 1;
@@ -188,66 +188,66 @@ public final class ad
     }
   }
   
-  public static ae aFk()
+  public static ae aMb()
   {
     AppMethodBeat.i(132912);
-    ae localae = aFf().hMx;
+    ae localae = aLW().imU;
     AppMethodBeat.o(132912);
     return localae;
   }
   
-  public static af aFl()
+  public static af aMc()
   {
     AppMethodBeat.i(132914);
-    af localaf = aFf().hMy;
+    af localaf = aLW().imV;
     AppMethodBeat.o(132914);
     return localaf;
   }
   
-  public static ap aFm()
+  public static ao aMd()
   {
     AppMethodBeat.i(132918);
-    ap localap = aFf().handler;
+    ao localao = aLW().handler;
     AppMethodBeat.o(132918);
-    return localap;
+    return localao;
   }
   
-  public static ad.a aFn()
+  public static a aMe()
   {
     AppMethodBeat.i(132920);
-    ad.a locala = aFf().hMA;
+    a locala = aLW().imX;
     AppMethodBeat.o(132920);
     return locala;
   }
   
-  public static t aFo()
+  public static t aMf()
   {
     AppMethodBeat.i(132922);
-    t localt = aFf().fil;
+    t localt = aLW().flG;
     AppMethodBeat.o(132922);
     return localt;
   }
   
-  public static ac aFp()
+  public static ac aMg()
   {
     AppMethodBeat.i(132924);
-    ac localac = aFf().hMB;
+    ac localac = aLW().imY;
     AppMethodBeat.o(132924);
     return localac;
   }
   
-  public static ab aFq()
+  public static ab aMh()
   {
     AppMethodBeat.i(132926);
-    ab localab = aFf().hMC;
+    ab localab = aLW().imZ;
     AppMethodBeat.o(132926);
     return localab;
   }
   
-  public static z aFr()
+  public static z aMi()
   {
     AppMethodBeat.i(132929);
-    z localz = aFf().hMD;
+    z localz = aLW().ina;
     AppMethodBeat.o(132929);
     return localz;
   }
@@ -255,14 +255,14 @@ public final class ad
   public static void g(t paramt)
   {
     AppMethodBeat.i(132923);
-    aFf().fil = paramt;
+    aLW().flG = paramt;
     AppMethodBeat.o(132923);
   }
   
   public static Context getContext()
   {
     AppMethodBeat.i(132916);
-    Context localContext = aFf().hMz;
+    Context localContext = aLW().imW;
     AppMethodBeat.o(132916);
     return localContext;
   }
@@ -270,13 +270,18 @@ public final class ad
   public static void setContext(Context paramContext)
   {
     AppMethodBeat.i(132917);
-    aFf().hMz = paramContext;
+    aLW().imW = paramContext;
     AppMethodBeat.o(132917);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void cv(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.ad
  * JD-Core Version:    0.7.0.1
  */

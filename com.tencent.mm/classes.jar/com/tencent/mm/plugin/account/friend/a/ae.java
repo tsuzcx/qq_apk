@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aww;
-import com.tencent.mm.protocal.protobuf.awx;
-import com.tencent.mm.protocal.protobuf.buk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bao;
+import com.tencent.mm.protocal.protobuf.bap;
+import com.tencent.mm.protocal.protobuf.bzb;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.List;
 
 public final class ae
@@ -20,8 +20,8 @@ public final class ae
   implements k
 {
   private g callback;
-  b iaa;
-  int ilb;
+  b gvE;
+  int iLi;
   
   public ae(String paramString1, int paramInt, String paramString2)
   {
@@ -29,28 +29,28 @@ public final class ae
     b.a locala = new b.a();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/micromsg-bin/getoldacctfriend";
-    aww localaww = new aww();
-    this.ilb = paramInt;
-    localaww.Dwb = paramInt;
-    localaww.mAQ = paramString1;
-    localaww.CzY = paramString2;
-    locala.gUU = localaww;
-    locala.gUV = new awx();
-    this.iaa = locala.atI();
-    ad.i("MicroMsg.NetSceneGetOldAccountFriend", "get old account friend %s, max seq %d, session %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    bao localbao = new bao();
+    this.iLi = paramInt;
+    localbao.ERw = paramInt;
+    localbao.ncR = paramString1;
+    localbao.DSu = paramString2;
+    locala.hvt = localbao;
+    locala.hvu = new bap();
+    this.gvE = locala.aAz();
+    ac.i("MicroMsg.NetSceneGetOldAccountFriend", "get old account friend %s, max seq %d, session %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     AppMethodBeat.o(184425);
   }
   
-  public final List<buk> aJa()
+  public final List<bzb> aPR()
   {
-    return ((awx)this.iaa.gUT.gUX).Dwc;
+    return ((bap)this.gvE.hvs.hvw).ERx;
   }
   
   public final int doScene(e parame, g paramg)
   {
     AppMethodBeat.i(184426);
     this.callback = paramg;
-    int i = dispatch(parame, this.iaa, this);
+    int i = dispatch(parame, this.gvE, this);
     AppMethodBeat.o(184426);
     return i;
   }
@@ -63,9 +63,9 @@ public final class ae
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(184427);
-    ad.i("MicroMsg.NetSceneGetOldAccountFriend", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (!aJa().isEmpty())) {
-      this.ilb = ((buk)aJa().get(aJa().size() - 1)).CLY;
+    ac.i("MicroMsg.NetSceneGetOldAccountFriend", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (!aPR().isEmpty())) {
+      this.iLi = ((bzb)aPR().get(aPR().size() - 1)).EeA;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(184427);
@@ -73,7 +73,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.ae
  * JD-Core Version:    0.7.0.1
  */

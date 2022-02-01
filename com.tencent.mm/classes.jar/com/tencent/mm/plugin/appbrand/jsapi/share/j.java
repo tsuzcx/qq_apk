@@ -12,7 +12,7 @@ import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.page.ae;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.h;
 
 public final class j
@@ -20,19 +20,19 @@ public final class j
 {
   public static final int CTRL_INDEX = 74;
   public static final String NAME = "shareTimeline";
-  private static boolean kks = false;
-  private final int kkt;
+  private static boolean kLJ = false;
+  private final int kLK;
   
   public j()
   {
     AppMethodBeat.i(180273);
-    this.kkt = com.tencent.luggage.sdk.g.a.aD(this);
+    this.kLK = com.tencent.luggage.sdk.g.a.aA(this);
     AppMethodBeat.o(180273);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.j
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package io.flutter.app;
 
 import android.content.ComponentCallbacks2;
 import android.content.Intent;
-import io.flutter.a.a.m.a;
-import io.flutter.a.a.m.d;
+import io.flutter.plugin.a.m.a;
+import io.flutter.plugin.a.m.d;
 
 public abstract interface b
   extends ComponentCallbacks2, m.a, m.d
 {
-  public abstract void ftX();
+  public abstract void fMJ();
   
   public abstract boolean onBackPressed();
   
@@ -30,7 +30,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.app.b
  * JD-Core Version:    0.7.0.1
  */

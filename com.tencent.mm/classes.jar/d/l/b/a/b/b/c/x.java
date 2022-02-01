@@ -23,14 +23,14 @@ import java.util.Set;
 public class x
   extends g
 {
-  private final d.l.b.a.b.l.i JlL;
-  private List<as> Jqw;
-  private final boolean Jqy;
-  private ba JtI;
-  private w Jtn;
-  private final d.l.b.a.b.b.f Jto;
-  private at Jtp;
-  private final Collection<ab> JuQ;
+  private final d.l.b.a.b.l.i KZf;
+  private List<as> LdP;
+  private final boolean LdR;
+  private w LgG;
+  private final d.l.b.a.b.b.f LgH;
+  private at LgI;
+  private ba Lhb;
+  private final Collection<ab> Lij;
   
   static
   {
@@ -48,25 +48,25 @@ public class x
   {
     super(parami, paraml, paramf1, paraman);
     AppMethodBeat.i(57193);
-    this.JuQ = new ArrayList();
-    this.JlL = parami;
-    if ((!$assertionsDisabled) && (paramf == d.l.b.a.b.b.f.Jqi))
+    this.Lij = new ArrayList();
+    this.KZf = parami;
+    if ((!$assertionsDisabled) && (paramf == d.l.b.a.b.b.f.LdB))
     {
       paraml = new AssertionError("Fix isCompanionObject()");
       AppMethodBeat.o(57193);
       throw paraml;
     }
-    this.Jto = paramf;
-    this.Jqy = false;
+    this.LgH = paramf;
+    this.LdR = false;
     AppMethodBeat.o(57193);
   }
   
-  private static Set<d> fAf()
+  private static Set<d> fSJ()
   {
     AppMethodBeat.i(57201);
     Set localSet = Collections.emptySet();
     if (localSet == null) {
-      adP(13);
+      agL(13);
     }
     AppMethodBeat.o(57201);
     return localSet;
@@ -76,11 +76,11 @@ public class x
   {
     AppMethodBeat.i(57205);
     if (parami == null) {
-      adP(16);
+      agL(16);
     }
-    parami = h.b.JTG;
+    parami = h.b.LGZ;
     if (parami == null) {
-      adP(17);
+      agL(17);
     }
     AppMethodBeat.o(57205);
     return parami;
@@ -90,15 +90,15 @@ public class x
   {
     AppMethodBeat.i(57195);
     if (paramw == null) {
-      adP(6);
+      agL(6);
     }
-    if ((!$assertionsDisabled) && (paramw == w.Jqo))
+    if ((!$assertionsDisabled) && (paramw == w.LdH))
     {
       paramw = new AssertionError("Implement getSealedSubclasses() for this class: " + getClass());
       AppMethodBeat.o(57195);
       throw paramw;
     }
-    this.Jtn = paramw;
+    this.LgG = paramw;
     AppMethodBeat.o(57195);
   }
   
@@ -106,171 +106,171 @@ public class x
   {
     AppMethodBeat.i(57198);
     if (paramba == null) {
-      adP(9);
+      agL(9);
     }
-    this.JtI = paramba;
+    this.Lhb = paramba;
     AppMethodBeat.o(57198);
   }
   
-  public final void fAg()
-  {
-    AppMethodBeat.i(57204);
-    if ((!$assertionsDisabled) && (this.Jtp != null))
-    {
-      localObject = new AssertionError(this.Jtp);
-      AppMethodBeat.o(57204);
-      throw ((Throwable)localObject);
-    }
-    this.Jtp = new d.l.b.a.b.m.j(this, this.Jqw, this.JuQ, this.JlL);
-    Object localObject = fAf().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((f)((Iterator)localObject).next()).J(fyA());
-    }
-    AppMethodBeat.o(57204);
-  }
-  
-  public final boolean fxA()
-  {
-    return false;
-  }
-  
-  public final boolean fxB()
-  {
-    return false;
-  }
-  
-  public final boolean fxC()
-  {
-    return false;
-  }
-  
-  public final boolean fxD()
-  {
-    return false;
-  }
-  
-  public final d.l.b.a.b.b.a.g fxF()
-  {
-    AppMethodBeat.i(57194);
-    Object localObject = d.l.b.a.b.b.a.g.JrB;
-    localObject = g.a.fzI();
-    if (localObject == null) {
-      adP(5);
-    }
-    AppMethodBeat.o(57194);
-    return localObject;
-  }
-  
-  public final Collection<e> fxH()
-  {
-    AppMethodBeat.i(57207);
-    List localList = Collections.emptyList();
-    if (localList == null) {
-      adP(19);
-    }
-    AppMethodBeat.o(57207);
-    return localList;
-  }
-  
-  public final List<as> fxI()
-  {
-    AppMethodBeat.i(57203);
-    List localList = this.Jqw;
-    if (localList == null) {
-      adP(15);
-    }
-    AppMethodBeat.o(57203);
-    return localList;
-  }
-  
-  public final h fxr()
+  public final h fPV()
   {
     AppMethodBeat.i(57206);
-    h.b localb = h.b.JTG;
+    h.b localb = h.b.LGZ;
     if (localb == null) {
-      adP(18);
+      agL(18);
     }
     AppMethodBeat.o(57206);
     return localb;
   }
   
-  public final at fxs()
+  public final at fPW()
   {
     AppMethodBeat.i(57200);
-    at localat = this.Jtp;
+    at localat = this.LgI;
     if (localat == null) {
-      adP(11);
+      agL(11);
     }
     AppMethodBeat.o(57200);
     return localat;
   }
   
-  public final e fxt()
+  public final e fPX()
   {
     return null;
   }
   
-  public final d.l.b.a.b.b.f fxu()
+  public final d.l.b.a.b.b.f fPY()
   {
     AppMethodBeat.i(57197);
-    d.l.b.a.b.b.f localf = this.Jto;
+    d.l.b.a.b.b.f localf = this.LgH;
     if (localf == null) {
-      adP(8);
+      agL(8);
     }
     AppMethodBeat.o(57197);
     return localf;
   }
   
-  public final w fxv()
+  public final w fPZ()
   {
     AppMethodBeat.i(57196);
-    w localw = this.Jtn;
+    w localw = this.LgG;
     if (localw == null) {
-      adP(7);
+      agL(7);
     }
     AppMethodBeat.o(57196);
     return localw;
   }
   
-  public final d fxw()
+  public final d fQa()
   {
     return null;
   }
   
-  public final ba fxx()
+  public final ba fQb()
   {
     AppMethodBeat.i(57199);
-    ba localba = this.JtI;
+    ba localba = this.Lhb;
     if (localba == null) {
-      adP(10);
+      agL(10);
     }
     AppMethodBeat.o(57199);
     return localba;
   }
   
-  public final boolean fxy()
+  public final boolean fQc()
   {
     return false;
   }
   
-  public final boolean fxz()
+  public final boolean fQd()
   {
-    return this.Jqy;
+    return this.LdR;
   }
   
-  public final void iK(List<as> paramList)
+  public final boolean fQe()
+  {
+    return false;
+  }
+  
+  public final boolean fQf()
+  {
+    return false;
+  }
+  
+  public final boolean fQg()
+  {
+    return false;
+  }
+  
+  public final boolean fQh()
+  {
+    return false;
+  }
+  
+  public final d.l.b.a.b.b.a.g fQj()
+  {
+    AppMethodBeat.i(57194);
+    Object localObject = d.l.b.a.b.b.a.g.LeU;
+    localObject = g.a.fSm();
+    if (localObject == null) {
+      agL(5);
+    }
+    AppMethodBeat.o(57194);
+    return localObject;
+  }
+  
+  public final Collection<e> fQl()
+  {
+    AppMethodBeat.i(57207);
+    List localList = Collections.emptyList();
+    if (localList == null) {
+      agL(19);
+    }
+    AppMethodBeat.o(57207);
+    return localList;
+  }
+  
+  public final List<as> fQm()
+  {
+    AppMethodBeat.i(57203);
+    List localList = this.LdP;
+    if (localList == null) {
+      agL(15);
+    }
+    AppMethodBeat.o(57203);
+    return localList;
+  }
+  
+  public final void fSK()
+  {
+    AppMethodBeat.i(57204);
+    if ((!$assertionsDisabled) && (this.LgI != null))
+    {
+      localObject = new AssertionError(this.LgI);
+      AppMethodBeat.o(57204);
+      throw ((Throwable)localObject);
+    }
+    this.LgI = new d.l.b.a.b.m.j(this, this.LdP, this.Lij, this.KZf);
+    Object localObject = fSJ().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((f)((Iterator)localObject).next()).J(fRe());
+    }
+    AppMethodBeat.o(57204);
+  }
+  
+  public final void ja(List<as> paramList)
   {
     AppMethodBeat.i(57202);
     if (paramList == null) {
-      adP(14);
+      agL(14);
     }
-    if (this.Jqw != null)
+    if (this.LdP != null)
     {
-      paramList = new IllegalStateException("Type parameters are already set for " + fyB());
+      paramList = new IllegalStateException("Type parameters are already set for " + fRf());
       AppMethodBeat.o(57202);
       throw paramList;
     }
-    this.Jqw = new ArrayList(paramList);
+    this.LdP = new ArrayList(paramList);
     AppMethodBeat.o(57202);
   }
   
@@ -284,7 +284,7 @@ public class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.x
  * JD-Core Version:    0.7.0.1
  */

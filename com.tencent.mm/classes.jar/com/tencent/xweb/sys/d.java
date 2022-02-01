@@ -9,21 +9,21 @@ import android.webkit.WebViewClient;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.internal.e;
-import com.tencent.xweb.n;
+import com.tencent.xweb.o;
 
 public final class d
   implements e
 {
-  WebViewClient IRa;
-  WebChromeClient IRb;
-  WebView IRc;
+  WebViewClient KDw;
+  WebChromeClient KDx;
+  WebView KDy;
   
   public d(WebView paramWebView)
   {
     AppMethodBeat.i(153668);
-    this.IRc = paramWebView;
-    this.IRa = new WebViewClient();
-    this.IRb = new WebChromeClient();
+    this.KDy = paramWebView;
+    this.KDw = new WebViewClient();
+    this.KDx = new WebChromeClient();
     AppMethodBeat.o(153668);
   }
   
@@ -32,7 +32,7 @@ public final class d
     return false;
   }
   
-  public final boolean a(String paramString1, String paramString2, String paramString3, n paramn)
+  public final boolean a(String paramString1, String paramString2, String paramString3, o paramo)
   {
     return false;
   }
@@ -46,10 +46,10 @@ public final class d
   
   public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
   
-  public final void z(String paramString, Bitmap paramBitmap)
+  public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(153669);
-    this.IRa.onPageStarted(this.IRc, paramString, paramBitmap);
+    this.KDw.onPageStarted(this.KDy, paramString, paramBitmap);
     AppMethodBeat.o(153669);
   }
 }

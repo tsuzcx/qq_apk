@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.ipcall.model.b.b;
 import com.tencent.mm.plugin.ipcall.model.b.c;
 import com.tencent.mm.plugin.ipcall.model.e.o;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class i
   extends b
 {
-  private o sDT = null;
-  private int sDU = 0;
+  private int gaC = 0;
+  private o tLB = null;
   
-  public final void Ca() {}
+  public final void BE() {}
   
   public final void b(c paramc)
   {
@@ -23,12 +23,12 @@ public final class i
     if (paramc == null) {}
     for (;;)
     {
-      ad.d("MicroMsg.IPCallSyncService", "serviceImpl, info==null: %b", new Object[] { Boolean.valueOf(bool) });
-      if (this.sAl != null)
+      ac.d("MicroMsg.IPCallSyncService", "serviceImpl, info==null: %b", new Object[] { Boolean.valueOf(bool) });
+      if (this.tHV != null)
       {
-        this.sDU = this.sAl.sBh;
-        this.sDT = new o(this.sAl.roomId, this.sAl.sAY, this.sAl.cHA(), this.sAl.sAZ, false);
-        az.aeS().a(this.sDT, 0);
+        this.gaC = this.tHV.tIP;
+        this.tLB = new o(this.tHV.roomId, this.tHV.tIG, this.tHV.cUL(), this.tHV.tIH, false);
+        az.agi().a(this.tLB, 0);
       }
       AppMethodBeat.o(25527);
       return;
@@ -36,22 +36,22 @@ public final class i
     }
   }
   
-  public final int[] cHx()
+  public final int[] cUI()
   {
     return new int[] { 819 };
   }
   
-  public final void cHy()
+  public final void cUJ()
   {
     AppMethodBeat.i(25528);
-    ad.d("MicroMsg.IPCallSyncService", "onLoopSuccess");
+    ac.d("MicroMsg.IPCallSyncService", "onLoopSuccess");
     AppMethodBeat.o(25528);
   }
   
-  public final void cHz()
+  public final void cUK()
   {
     AppMethodBeat.i(25529);
-    ad.d("MicroMsg.IPCallSyncService", "onLoopFailed");
+    ac.d("MicroMsg.IPCallSyncService", "onLoopFailed");
     AppMethodBeat.o(25529);
   }
   
@@ -62,7 +62,7 @@ public final class i
   
   public final int getTimerInterval()
   {
-    return this.sDU;
+    return this.gaC;
   }
   
   public final void onDestroy() {}
@@ -70,8 +70,8 @@ public final class i
   public final void onStop()
   {
     AppMethodBeat.i(25526);
-    if (this.sDT != null) {
-      az.aeS().a(this.sDT);
+    if (this.tLB != null) {
+      az.agi().a(this.tLB);
     }
     AppMethodBeat.o(25526);
   }

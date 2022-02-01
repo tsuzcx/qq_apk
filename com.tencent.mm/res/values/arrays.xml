@@ -24,7 +24,7 @@
         <item>正在修复聊天记录</item>
         <item>正在重建索引</item>
         <item>正在从备份数据恢复</item>
-        <item>正在合并数据</item>
+        <item>正在校验与合并数据</item>
         <item>正在完成恢复</item>
     </string-array>
     <string-array name="g">

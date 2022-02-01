@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.fav.a.p;
 import com.tencent.mm.plugin.fav.a.q;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -30,34 +30,6 @@ public final class a
     this.listeners = new CopyOnWriteArrayList();
     this.db = parame;
     AppMethodBeat.o(101664);
-  }
-  
-  public final c Yk(String paramString)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(101669);
-    if (bt.isNullOrNil(paramString))
-    {
-      ad.e("MicroMsg.FavCdnStorage", "md5 null");
-      AppMethodBeat.o(101669);
-      return null;
-    }
-    paramString = "select * from FavCdnInfo where dataId = '" + paramString + "'";
-    Cursor localCursor = this.db.a(paramString, null, 2);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(101669);
-      return null;
-    }
-    paramString = localObject;
-    if (localCursor.moveToFirst())
-    {
-      paramString = new c();
-      paramString.convertFrom(localCursor);
-    }
-    localCursor.close();
-    AppMethodBeat.o(101669);
-    return paramString;
   }
   
   public final void a(p paramp)
@@ -89,6 +61,34 @@ public final class a
     return false;
   }
   
+  public final c acG(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(101669);
+    if (bs.isNullOrNil(paramString))
+    {
+      ac.e("MicroMsg.FavCdnStorage", "md5 null");
+      AppMethodBeat.o(101669);
+      return null;
+    }
+    paramString = "select * from FavCdnInfo where dataId = '" + paramString + "'";
+    Cursor localCursor = this.db.a(paramString, null, 2);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(101669);
+      return null;
+    }
+    paramString = localObject;
+    if (localCursor.moveToFirst())
+    {
+      paramString = new c();
+      paramString.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(101669);
+    return paramString;
+  }
+  
   public final void b(p paramp)
   {
     AppMethodBeat.i(101663);
@@ -118,7 +118,7 @@ public final class a
     return false;
   }
   
-  public final LinkedList<c> chT()
+  public final LinkedList<c> cpA()
   {
     AppMethodBeat.i(101671);
     Object localObject = "select * from FavCdnInfo where status = 1 order by modifyTime desc " + " limit 1";
@@ -146,7 +146,7 @@ public final class a
     return localLinkedList;
   }
   
-  public final Cursor chU()
+  public final Cursor cpB()
   {
     AppMethodBeat.i(101676);
     Cursor localCursor = this.db.rawQuery("select * from FavCdnInfo where type = 0 and status = 1", null);
@@ -154,7 +154,7 @@ public final class a
     return localCursor;
   }
   
-  public final Cursor chV()
+  public final Cursor cpC()
   {
     AppMethodBeat.i(101677);
     Cursor localCursor = this.db.rawQuery("select * from FavCdnInfo where type = 1 and status = 1", null);
@@ -187,7 +187,14 @@ public final class a
     return false;
   }
   
-  public final List<c> pN(long paramLong)
+  public final void startAll()
+  {
+    AppMethodBeat.i(101665);
+    this.db.execSQL("FavCdnInfo", "update FavCdnInfo set status = 1 where status <> 3");
+    AppMethodBeat.o(101665);
+  }
+  
+  public final List<c> tC(long paramLong)
   {
     AppMethodBeat.i(101672);
     ArrayList localArrayList = new ArrayList();
@@ -203,12 +210,12 @@ public final class a
       }
       ((Cursor)localObject).close();
     }
-    ad.v("MicroMsg.FavCdnStorage", "getInfos size:%d", new Object[] { Integer.valueOf(localArrayList.size()) });
+    ac.v("MicroMsg.FavCdnStorage", "getInfos size:%d", new Object[] { Integer.valueOf(localArrayList.size()) });
     AppMethodBeat.o(101672);
     return localArrayList;
   }
   
-  public final List<c> pO(long paramLong)
+  public final List<c> tD(long paramLong)
   {
     AppMethodBeat.i(101673);
     LinkedList localLinkedList = new LinkedList();
@@ -225,12 +232,12 @@ public final class a
     if (localObject != null) {
       ((Cursor)localObject).close();
     }
-    ad.v("MicroMsg.FavCdnStorage", "getUploadedInfos size:%d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    ac.v("MicroMsg.FavCdnStorage", "getUploadedInfos size:%d", new Object[] { Integer.valueOf(localLinkedList.size()) });
     AppMethodBeat.o(101673);
     return localLinkedList;
   }
   
-  public final void pP(long paramLong)
+  public final void tE(long paramLong)
   {
     AppMethodBeat.i(101674);
     String str = String.format("delete from %s where %s = %d and %s = %d", new Object[] { "FavCdnInfo", "favLocalId", Long.valueOf(paramLong), "type", Integer.valueOf(0) });
@@ -238,7 +245,7 @@ public final class a
     AppMethodBeat.o(101674);
   }
   
-  public final boolean pQ(long paramLong)
+  public final boolean tF(long paramLong)
   {
     AppMethodBeat.i(101678);
     c localc = new c();
@@ -248,14 +255,7 @@ public final class a
     return bool;
   }
   
-  public final void startAll()
-  {
-    AppMethodBeat.i(101665);
-    this.db.execSQL("FavCdnInfo", "update FavCdnInfo set status = 1 where status <> 3");
-    AppMethodBeat.o(101665);
-  }
-  
-  public final int x(long paramLong, int paramInt)
+  public final int y(long paramLong, int paramInt)
   {
     AppMethodBeat.i(101675);
     Object localObject = "select status from FavCdnInfo where favLocalId = " + paramLong + " and type = " + paramInt;
@@ -325,7 +325,7 @@ public final class a
   public final void y(g paramg)
   {
     AppMethodBeat.i(101670);
-    long l = bt.eGO();
+    long l = bs.eWj();
     paramg = "update FavCdnInfo set status = 1,modifyTime = " + l + " where favLocalId = " + paramg.field_localId + " and type = 0 and status <> 3";
     this.db.execSQL("FavCdnInfo", paramg);
     AppMethodBeat.o(101670);
@@ -333,7 +333,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.f.a
  * JD-Core Version:    0.7.0.1
  */

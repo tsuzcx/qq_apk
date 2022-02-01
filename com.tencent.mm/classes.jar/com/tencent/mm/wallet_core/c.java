@@ -5,10 +5,10 @@ import com.tencent.mm.loader.j.b;
 
 public final class c
 {
-  public static String fjo()
+  public static String fzD()
   {
     AppMethodBeat.i(72646);
-    String str = b.aih() + "wallet";
+    String str = b.aph() + "wallet";
     AppMethodBeat.o(72646);
     return str;
   }

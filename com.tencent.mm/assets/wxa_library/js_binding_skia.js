@@ -12,6 +12,7 @@
         NativeGlobal.SkiaImage = global.Image;
         NativeGlobal.SkiaImageData = global.ImageData;
         NativeGlobal.SkiaPath2D = global.Path2D;
+        NativeGlobal.SkiaCanvasLoadNewFont = global.skiacanvasLoadNewFont;
 
         //NativeGlobal.globalSkiaCanvasView = new global.CanvasView(3);
         //console.log("skia globalSkiaCanvasView", NativeGlobal.globalSkiaCanvasView.id);

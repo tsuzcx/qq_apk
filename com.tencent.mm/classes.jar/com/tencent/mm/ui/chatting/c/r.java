@@ -11,78 +11,78 @@ import com.tencent.mm.ui.chatting.c.b.i;
 import com.tencent.mm.ui.chatting.c.b.m;
 import com.tencent.mm.ui.chatting.c.b.q;
 
-@com.tencent.mm.ui.chatting.c.a.a(eYT=com.tencent.mm.ui.chatting.c.b.o.class)
+@com.tencent.mm.ui.chatting.c.a.a(foJ=com.tencent.mm.ui.chatting.c.b.o.class)
 public class r
   extends a
   implements com.tencent.mm.ui.chatting.c.b.o
 {
-  private long[] Gne = null;
-  private boolean Gus = false;
-  private com.tencent.mm.ui.chatting.o Gut = null;
+  private long[] HMU = null;
+  private boolean HUl = false;
+  private com.tencent.mm.ui.chatting.o HUm = null;
   
-  public final void eQA()
+  public final void fgg()
   {
     AppMethodBeat.i(35297);
-    this.Gus = this.cOd.GzJ.getBooleanExtra("expose_edit_mode", false).booleanValue();
-    this.Gne = this.cOd.GzJ.getArguments().getLongArray("expose_selected_ids");
+    this.HUl = this.cLy.HZF.getBooleanExtra("expose_edit_mode", false).booleanValue();
+    this.HMU = this.cLy.HZF.getArguments().getLongArray("expose_selected_ids");
     AppMethodBeat.o(35297);
   }
   
-  public final void eQB()
+  public final void fgh()
   {
     AppMethodBeat.i(35298);
-    if ((this.Gus) && (this.Gut == null)) {
-      this.Gut = new com.tencent.mm.ui.chatting.o(this.cOd, this.Gne);
+    if ((this.HUl) && (this.HUm == null)) {
+      this.HUm = new com.tencent.mm.ui.chatting.o(this.cLy, this.HMU);
     }
     AppMethodBeat.o(35298);
   }
   
-  public final void eQC()
+  public final void fgi()
   {
     AppMethodBeat.i(35299);
-    super.eQC();
-    if (this.Gut != null)
+    super.fgi();
+    if (this.HUm != null)
     {
-      com.tencent.mm.ui.chatting.o localo = this.Gut;
-      Object localObject = (i)localo.cOd.be(i.class);
-      ((ae)localo.cOd.be(ae.class)).eYt();
-      ((i)localObject).eWm();
-      ((i)localObject).eWh();
-      if (localo.Gne != null)
+      com.tencent.mm.ui.chatting.o localo = this.HUm;
+      Object localObject = (i)localo.cLy.bf(i.class);
+      ((ae)localo.cLy.bf(ae.class)).fof();
+      ((i)localObject).flY();
+      ((i)localObject).flT();
+      if (localo.HMU != null)
       {
-        long[] arrayOfLong = localo.Gne;
+        long[] arrayOfLong = localo.HMU;
         int j = arrayOfLong.length;
         int i = 0;
         while (i < j)
         {
-          ((i)localObject).wA(arrayOfLong[i]);
+          ((i)localObject).Bd(arrayOfLong[i]);
           i += 1;
         }
       }
-      localObject = ((q)localo.cOd.be(q.class)).eXs();
+      localObject = ((q)localo.cLy.bf(q.class)).fne();
       if (localObject != null) {
         ((ChatFooter)localObject).setVisibility(8);
       }
-      localObject = ((q)localo.cOd.be(q.class)).eXt();
+      localObject = ((q)localo.cLy.bf(q.class)).fnf();
       if (localObject != null) {
         ((ChatFooterCustom)localObject).setVisibility(8);
       }
-      ((m)localo.cOd.be(m.class)).eXq();
-      localo.cOd.hideVKB();
-      ((ao)localo.cOd.be(ao.class)).eYR();
-      localo.cOd.wk(true);
+      ((m)localo.cLy.bf(m.class)).fnc();
+      localo.cLy.hideVKB();
+      ((ao)localo.cLy.bf(ao.class)).foH();
+      localo.cLy.xo(true);
     }
     AppMethodBeat.o(35299);
   }
   
-  public final boolean eXr()
+  public final boolean fnd()
   {
-    return this.Gus;
+    return this.HUl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.r
  * JD-Core Version:    0.7.0.1
  */

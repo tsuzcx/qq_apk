@@ -1,55 +1,55 @@
 package kotlinx.coroutines;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.a.b;
 import d.l;
-import d.v;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import d.y;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/JobNode;", "J", "Lkotlinx/coroutines/Job;", "Lkotlinx/coroutines/CompletionHandlerBase;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/Incomplete;", "job", "(Lkotlinx/coroutines/Job;)V", "isActive", "", "()Z", "Lkotlinx/coroutines/Job;", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "dispose", "", "kotlinx-coroutines-core"})
-public abstract class bm<J extends bj>
-  extends u
-  implements au, be
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/InvokeOnCancelling;", "Lkotlinx/coroutines/Job;", "job", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "handler", "<init>", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "(Ljava/lang/Throwable;)V", "", "toString", "()Ljava/lang/String;", "Lkotlin/jvm/functions/Function1;", "kotlinx-coroutines-core", "Lkotlinx/coroutines/JobCancellingNode;"})
+final class bm
+  extends bq<bo>
 {
-  public final J Kes;
+  private static final AtomicIntegerFieldUpdater LRP;
+  private volatile int _invoked;
+  private final b<Throwable, y> khg;
   
-  public bm(J paramJ)
+  static
   {
-    this.Kes = paramJ;
+    AppMethodBeat.i(118220);
+    LRP = AtomicIntegerFieldUpdater.newUpdater(bm.class, "_invoked");
+    AppMethodBeat.o(118220);
   }
   
-  public final void dispose()
+  public bm(bo parambo, b<? super Throwable, y> paramb)
   {
-    Object localObject1 = this.Kes;
-    if (localObject1 == null) {
-      throw new v("null cannot be cast to non-null type kotlinx.coroutines.JobSupport");
+    super(parambo);
+    AppMethodBeat.i(118219);
+    this.khg = paramb;
+    this._invoked = 0;
+    AppMethodBeat.o(118219);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(118218);
+    String str = "InvokeOnCancelling[" + getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
+    AppMethodBeat.o(118218);
+    return str;
+  }
+  
+  public final void u(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(118216);
+    if (LRP.compareAndSet(this, 0, 1)) {
+      this.khg.ay(paramThrowable);
     }
-    localObject1 = (bn)localObject1;
-    Object localObject2;
-    do
-    {
-      localObject2 = ((bn)localObject1).fLv();
-      if (!(localObject2 instanceof bm)) {
-        break;
-      }
-    } while ((localObject2 == this) && (!bn.Kdh.compareAndSet(localObject1, localObject2, bo.fLB())));
-    while ((!(localObject2 instanceof be)) || (((be)localObject2).fLh() == null)) {
-      return;
-    }
-    bsN();
-  }
-  
-  public final bs fLh()
-  {
-    return null;
-  }
-  
-  public final boolean isActive()
-  {
-    return true;
+    AppMethodBeat.o(118216);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.bm
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class og
   extends b
 {
-  public a dtn;
+  public a dqH;
   
   public og()
   {
@@ -16,25 +15,21 @@ public final class og
   
   private og(byte paramByte)
   {
-    AppMethodBeat.i(125623);
-    this.dtn = new a();
-    this.ESR = false;
+    AppMethodBeat.i(117549);
+    this.dqH = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125623);
+    AppMethodBeat.o(117549);
   }
   
   public static final class a
   {
-    public int diR = 0;
-    public long dto = 0L;
-    public boolean dtp = false;
-    public List list;
-    public int scene = 0;
+    public int ret;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.og
  * JD-Core Version:    0.7.0.1
  */

@@ -10,49 +10,49 @@ import java.util.concurrent.TimeUnit;
 
 final class a
 {
-  private static final a ayO;
-  private static final int ayQ;
-  static final int ayR;
-  static final int ayS;
-  private final Executor ayP;
+  private static final a azI;
+  private static final int azK;
+  static final int azL;
+  static final int azM;
+  private final Executor azJ;
   
   static
   {
     AppMethodBeat.i(52976);
-    ayO = new a();
+    azI = new a();
     int i = Runtime.getRuntime().availableProcessors();
-    ayQ = i;
-    ayR = i + 1;
-    ayS = ayQ * 2 + 1;
+    azK = i;
+    azL = i + 1;
+    azM = azK * 2 + 1;
     AppMethodBeat.o(52976);
   }
   
   private a()
   {
     AppMethodBeat.i(52974);
-    this.ayP = new a.a((byte)0);
+    this.azJ = new a.a((byte)0);
     AppMethodBeat.o(52974);
-  }
-  
-  public static Executor mX()
-  {
-    return ayO.ayP;
   }
   
   public static ExecutorService newCachedThreadPool()
   {
     AppMethodBeat.i(52975);
-    ThreadPoolExecutor localThreadPoolExecutor = new ThreadPoolExecutor(ayR, ayS, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue());
+    ThreadPoolExecutor localThreadPoolExecutor = new ThreadPoolExecutor(azL, azM, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue());
     if (Build.VERSION.SDK_INT >= 9) {
       localThreadPoolExecutor.allowCoreThreadTimeOut(true);
     }
     AppMethodBeat.o(52975);
     return localThreadPoolExecutor;
   }
+  
+  public static Executor nh()
+  {
+    return azI.azJ;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     a.a
  * JD-Core Version:    0.7.0.1
  */

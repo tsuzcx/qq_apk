@@ -15,9 +15,9 @@ import com.tencent.mm.model.d.b.1;
 import com.tencent.mm.model.d.c;
 import com.tencent.mm.model.d.c.1;
 import com.tencent.mm.model.d.c.a;
-import com.tencent.mm.plugin.sns.c.o;
+import com.tencent.mm.plugin.sns.b.o;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.HomeUI;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MainTabUI;
@@ -29,14 +29,14 @@ import java.util.Iterator;
 
 public final class v
 {
-  public static v cMg;
-  public boolean cMh;
-  public ap cMi;
+  public static v cJo;
+  public boolean cJp;
+  public ao cJq;
   
   public v()
   {
     AppMethodBeat.i(19458);
-    this.cMi = new ap(Looper.getMainLooper())
+    this.cJq = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -45,26 +45,26 @@ public final class v
         Object localObject;
         if (paramAnonymousMessage.what == -1999)
         {
-          if (!v.this.cMh)
+          if (!v.this.cJp)
           {
             paramAnonymousMessage = LauncherUI.getInstance();
-            if ((paramAnonymousMessage != null) && (paramAnonymousMessage.FMd))
+            if ((paramAnonymousMessage != null) && (paramAnonymousMessage.Hll))
             {
-              paramAnonymousMessage.FMb.getMainTabUI().aKb("tab_main");
+              paramAnonymousMessage.Hlj.getMainTabUI().aPD("tab_main");
               localObject = paramAnonymousMessage.getHomeUI();
-              if (((HomeUI)localObject).FKI) {
-                ((HomeUI)localObject).FKK = true;
+              if (((HomeUI)localObject).HjQ) {
+                ((HomeUI)localObject).HjS = true;
               }
-              localObject = o.wzG;
+              localObject = o.xMa;
               if (localObject != null) {
-                ((com.tencent.mm.plugin.sns.c.g)localObject).drP();
+                ((com.tencent.mm.plugin.sns.b.g)localObject).dGo();
               }
-              paramAnonymousMessage = paramAnonymousMessage.FMb.getMainTabUI().FPQ.values().iterator();
+              paramAnonymousMessage = paramAnonymousMessage.Hlj.getMainTabUI().HpB.values().iterator();
               while (paramAnonymousMessage.hasNext())
               {
                 localObject = (Fragment)paramAnonymousMessage.next();
                 if (!(localObject instanceof MainUI)) {
-                  ((m)localObject).ePd();
+                  ((m)localObject).feH();
                 }
               }
             }
@@ -74,7 +74,7 @@ public final class v
         }
         else if (paramAnonymousMessage.what == -2999)
         {
-          if (v.this.cMh)
+          if (v.this.cJp)
           {
             AppMethodBeat.o(19457);
             return;
@@ -82,26 +82,26 @@ public final class v
           paramAnonymousMessage = LauncherUI.getInstance();
           if (paramAnonymousMessage != null)
           {
-            paramAnonymousMessage = paramAnonymousMessage.FMb.getMainTabUI();
-            if (paramAnonymousMessage.FPQ.containsKey(Integer.valueOf(0))) {
-              ((m)paramAnonymousMessage.FPQ.get(Integer.valueOf(0))).ePd();
+            paramAnonymousMessage = paramAnonymousMessage.Hlj.getMainTabUI();
+            if (paramAnonymousMessage.HpB.containsKey(Integer.valueOf(0))) {
+              ((m)paramAnonymousMessage.HpB.get(Integer.valueOf(0))).feH();
             }
           }
-          if (com.tencent.mm.kernel.g.afz().aeI())
+          if (com.tencent.mm.kernel.g.agP().afY())
           {
-            az.arP();
-            paramAnonymousMessage = bz.ut("plugin.emoji");
+            az.ayG();
+            paramAnonymousMessage = bz.yz("plugin.emoji");
             if (paramAnonymousMessage != null) {
               paramAnonymousMessage.clearPluginData(0);
             }
-            paramAnonymousMessage = b.atE();
-            localObject = com.tencent.mm.model.d.a.atB();
-            c localc = c.atG();
-            az.afE().ax(new b.1(paramAnonymousMessage));
-            h.Iye.aP(new a.1((com.tencent.mm.model.d.a)localObject));
+            paramAnonymousMessage = b.aAv();
+            localObject = com.tencent.mm.model.d.a.aAs();
+            c localc = c.aAx();
+            az.agU().az(new b.1(paramAnonymousMessage));
+            h.JZN.aS(new a.1((com.tencent.mm.model.d.a)localObject));
             localc.a(paramAnonymousMessage);
             localc.a((c.a)localObject);
-            az.afE().ax(new c.1(localc));
+            az.agU().az(new c.1(localc));
           }
           System.gc();
         }
@@ -111,13 +111,13 @@ public final class v
     AppMethodBeat.o(19458);
   }
   
-  public static v KT()
+  public static v KE()
   {
     AppMethodBeat.i(19459);
-    if (cMg == null) {
-      cMg = new v();
+    if (cJo == null) {
+      cJo = new v();
     }
-    v localv = cMg;
+    v localv = cJo;
     AppMethodBeat.o(19459);
     return localv;
   }
@@ -125,17 +125,17 @@ public final class v
   public final void start()
   {
     AppMethodBeat.i(19460);
-    this.cMh = false;
-    this.cMi.removeMessages(-1999);
-    this.cMi.removeMessages(-2999);
-    this.cMi.sendEmptyMessageDelayed(-1999, 3000L);
-    this.cMi.sendEmptyMessageDelayed(-2999, 30000L);
+    this.cJp = false;
+    this.cJq.removeMessages(-1999);
+    this.cJq.removeMessages(-2999);
+    this.cJq.sendEmptyMessageDelayed(-1999, 3000L);
+    this.cJq.sendEmptyMessageDelayed(-2999, 30000L);
     AppMethodBeat.o(19460);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.app.v
  * JD-Core Version:    0.7.0.1
  */

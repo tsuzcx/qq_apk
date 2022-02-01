@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.s;
 import com.tencent.mm.splash.SplashActivity;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 
 public class WeChatSplashActivity
   extends SplashActivity
@@ -27,7 +27,7 @@ public class WeChatSplashActivity
     Object localObject = super.getSystemService(paramString);
     if ("layout_inflater".equals(paramString))
     {
-      paramString = y.b((LayoutInflater)localObject);
+      paramString = z.b((LayoutInflater)localObject);
       AppMethodBeat.o(160110);
       return paramString;
     }
@@ -46,7 +46,7 @@ public class WeChatSplashActivity
   public void onPause()
   {
     AppMethodBeat.i(160111);
-    s.euR();
+    s.eKk();
     super.onPause();
     AppMethodBeat.o(160111);
   }

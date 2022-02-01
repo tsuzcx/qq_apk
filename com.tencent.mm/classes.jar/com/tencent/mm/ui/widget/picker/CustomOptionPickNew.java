@@ -14,145 +14,145 @@ import java.util.Arrays;
 public class CustomOptionPickNew
   extends FrameLayout
 {
-  private com.tencent.mm.ui.widget.picker.g.a<String> HIJ;
+  private com.tencent.mm.ui.widget.picker.g.a<String> Jjg;
   private Context context;
-  private String[] mip;
-  private int mit;
-  private int miu;
+  private String[] mKp;
+  private int mKt;
+  private int mKu;
   
   public CustomOptionPickNew(Context paramContext)
   {
     super(new ContextThemeWrapper(paramContext, 2131821679));
-    AppMethodBeat.i(195269);
+    AppMethodBeat.i(199739);
     this.context = paramContext;
-    this.HIJ = new com.tencent.mm.ui.widget.picker.g.a(paramContext);
+    this.Jjg = new com.tencent.mm.ui.widget.picker.g.a(paramContext);
     init();
-    AppMethodBeat.o(195269);
+    AppMethodBeat.o(199739);
   }
   
   public CustomOptionPickNew(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(new ContextThemeWrapper(paramContext, 2131821679), paramAttributeSet);
-    AppMethodBeat.i(195270);
+    AppMethodBeat.i(199740);
     this.context = paramContext;
-    this.HIJ = new com.tencent.mm.ui.widget.picker.g.a(paramContext);
+    this.Jjg = new com.tencent.mm.ui.widget.picker.g.a(paramContext);
     init();
-    AppMethodBeat.o(195270);
+    AppMethodBeat.o(199740);
   }
   
   public CustomOptionPickNew(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(195271);
+    AppMethodBeat.i(199741);
     this.context = paramContext;
-    this.HIJ = new com.tencent.mm.ui.widget.picker.g.a(paramContext);
+    this.Jjg = new com.tencent.mm.ui.widget.picker.g.a(paramContext);
     init();
-    AppMethodBeat.o(195271);
+    AppMethodBeat.o(199741);
   }
   
   private void init()
   {
-    AppMethodBeat.i(195274);
+    AppMethodBeat.i(199744);
     new com.tencent.mm.ui.widget.picker.b.a(this.context, new e()
     {
-      public final void pH(int paramAnonymousInt)
+      public final void qu(int paramAnonymousInt)
       {
-        AppMethodBeat.i(195268);
+        AppMethodBeat.i(199738);
         CustomOptionPickNew.a(CustomOptionPickNew.this, paramAnonymousInt);
-        AppMethodBeat.o(195268);
+        AppMethodBeat.o(199738);
       }
-    }).aaW(this.miu).aaV(android.support.v4.content.b.n(this.context, 2131099656)).a(this.HIJ);
+    }).adi(this.mKu).adh(android.support.v4.content.b.n(this.context, 2131099656)).a(this.Jjg);
     setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165923));
     setItemHeight(this.context.getResources().getDimensionPixelSize(2131165292));
     setDividerColor(android.support.v4.content.b.n(this.context, 2131099656));
-    this.HIJ.HKu.ds(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
-    this.HIJ.HKu.HKw.aaU(android.support.v4.content.b.n(this.context, 2131099664)).aaT(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
-    AppMethodBeat.o(195274);
+    this.Jjg.JkR.ds(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
+    this.Jjg.JkR.JkT.adg(android.support.v4.content.b.n(this.context, 2131099664)).adf(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+    AppMethodBeat.o(199744);
   }
   
   private void setDividerColor(int paramInt)
   {
-    AppMethodBeat.i(195275);
-    this.HIJ.HKu.setDividerColor(paramInt);
-    AppMethodBeat.o(195275);
+    AppMethodBeat.i(199745);
+    this.Jjg.JkR.setDividerColor(paramInt);
+    AppMethodBeat.o(199745);
   }
   
-  public final void aaQ(int paramInt)
+  public final void adb(int paramInt)
   {
-    AppMethodBeat.i(195273);
-    this.HIJ.fgm().setCurrentItem(paramInt);
-    AppMethodBeat.o(195273);
+    AppMethodBeat.i(199743);
+    this.Jjg.fwm().setCurrentItem(paramInt);
+    AppMethodBeat.o(199743);
   }
   
   public final String currentValue()
   {
-    AppMethodBeat.i(195279);
-    this.HIJ.aGe();
-    String str = this.mip[this.mit];
-    AppMethodBeat.o(195279);
+    AppMethodBeat.i(199749);
+    this.Jjg.aMR();
+    String str = this.mKp[this.mKt];
+    AppMethodBeat.o(199749);
     return str;
   }
   
   public int getValue()
   {
-    AppMethodBeat.i(195276);
-    this.HIJ.aGe();
-    int i = this.mit;
-    AppMethodBeat.o(195276);
+    AppMethodBeat.i(199746);
+    this.Jjg.aMR();
+    int i = this.mKt;
+    AppMethodBeat.o(199746);
     return i;
   }
   
   public WheelView getView()
   {
-    AppMethodBeat.i(195280);
-    WheelView localWheelView = this.HIJ.fgm();
-    AppMethodBeat.o(195280);
+    AppMethodBeat.i(199750);
+    WheelView localWheelView = this.Jjg.fwm();
+    AppMethodBeat.o(199750);
     return localWheelView;
   }
   
   public void setDividerHeight(float paramFloat)
   {
-    AppMethodBeat.i(195278);
-    this.HIJ.HKu.HKw.setDividerHeight(paramFloat);
-    AppMethodBeat.o(195278);
+    AppMethodBeat.i(199748);
+    this.Jjg.JkR.JkT.setDividerHeight(paramFloat);
+    AppMethodBeat.o(199748);
   }
   
   public void setItemHeight(int paramInt) {}
   
   public void setOnValueChangedListener(d paramd)
   {
-    AppMethodBeat.i(195277);
-    this.HIJ.setOnValueChangedListener(paramd);
-    AppMethodBeat.o(195277);
+    AppMethodBeat.i(199747);
+    this.Jjg.setOnValueChangedListener(paramd);
+    AppMethodBeat.o(199747);
   }
   
   public void setOptionsArray(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(195272);
-    this.mip = paramArrayOfString;
-    com.tencent.mm.ui.widget.picker.g.a locala = this.HIJ;
+    AppMethodBeat.i(199742);
+    this.mKp = paramArrayOfString;
+    com.tencent.mm.ui.widget.picker.g.a locala = this.Jjg;
     paramArrayOfString = Arrays.asList(paramArrayOfString);
-    com.tencent.mm.ui.widget.picker.g.b localb = locala.HKu;
-    localb.hSX = paramArrayOfString;
-    localb.HKw.setAdapter(new com.tencent.mm.ui.widget.picker.a.a(localb.hSX));
-    localb.HKw.setCurrentItem(0);
-    localb.HKw.setIsOptions(true);
+    com.tencent.mm.ui.widget.picker.g.b localb = locala.JkR;
+    localb.itc = paramArrayOfString;
+    localb.JkT.setAdapter(new com.tencent.mm.ui.widget.picker.a.a(localb.itc));
+    localb.JkT.setCurrentItem(0);
+    localb.JkT.setIsOptions(true);
     b.1 local1 = new b.1(localb);
-    if ((paramArrayOfString != null) && (localb.hSY)) {
-      localb.HKw.setOnItemSelectedListener(local1);
+    if ((paramArrayOfString != null) && (localb.itd)) {
+      localb.JkT.setOnItemSelectedListener(local1);
     }
-    locala.fgl();
-    AppMethodBeat.o(195272);
+    locala.fwl();
+    AppMethodBeat.o(199742);
   }
   
   public void setValue(int paramInt)
   {
-    this.miu = paramInt;
+    this.mKu = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.CustomOptionPickNew
  * JD-Core Version:    0.7.0.1
  */

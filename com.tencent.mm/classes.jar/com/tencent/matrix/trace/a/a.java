@@ -2,17 +2,17 @@ package com.tencent.matrix.trace.a;
 
 public final class a
 {
-  private static final a cBx = new a();
-  public boolean cBy;
+  private static final a cyG = new a();
+  public boolean cyH;
   
-  public static a HS()
+  public static a HD()
   {
-    return cBx;
+    return cyG;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.trace.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,17 +6,17 @@ import com.tencent.mm.plugin.webview.luggage.b.n;
 public final class a
   extends n
 {
-  public final void cBw()
+  public final void cOH()
   {
     AppMethodBeat.i(83094);
-    super.cBw();
+    super.cOH();
     AppMethodBeat.o(83094);
   }
   
-  public final void cBx()
+  public final void cOI()
   {
     AppMethodBeat.i(83095);
-    super.cBx();
+    super.cOI();
     AppMethodBeat.o(83095);
   }
 }

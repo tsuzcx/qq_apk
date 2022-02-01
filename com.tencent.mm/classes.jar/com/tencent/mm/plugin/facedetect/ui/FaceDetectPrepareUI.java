@@ -14,7 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.facedetect.c.f;
 import com.tencent.mm.plugin.facedetect.model.FaceContextData;
 import com.tencent.mm.plugin.facedetect.model.FaceDetectReporter;
@@ -22,9 +22,9 @@ import com.tencent.mm.plugin.facedetect.model.e;
 import com.tencent.mm.plugin.facedetect.model.l;
 import com.tencent.mm.plugin.facedetect.service.FaceDetectProcessService;
 import com.tencent.mm.plugin.facedetectlight.Utils.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMFragmentActivity;
 import java.lang.ref.WeakReference;
 
@@ -33,54 +33,54 @@ public class FaceDetectPrepareUI
   extends MMFragmentActivity
   implements a.a, f
 {
-  private String flk;
-  private boolean goa = false;
-  private boolean gqP = false;
+  private String foE;
+  private boolean gRx = false;
+  private boolean gnd = false;
   private String mAppId;
-  private String pNM = null;
-  private float pNO;
-  private int pNh;
-  private com.tencent.mm.plugin.facedetect.b.d pNi = null;
-  private int pNs;
-  private long pOI;
-  private com.tencent.mm.plugin.facedetect.c.a pRR = null;
-  private a pRS = null;
-  private FaceTutorial pRT = null;
-  private boolean pRU;
-  private byte[] pRV;
-  private boolean pRW = false;
-  private boolean pRX = false;
-  private b pRY;
-  private boolean pRZ = false;
-  private int pRr;
-  private boolean pSa = false;
-  private String pSb = null;
-  private long pSc = -1L;
-  private Messenger pSd = null;
-  private a pSe = null;
-  private int pSf = -1;
-  private boolean pSg = false;
-  private com.tencent.mm.plugin.facedetectlight.Utils.a pSh;
-  private RelativeLayout pSi;
-  private boolean pSj = false;
-  private int pSk = -1;
-  private boolean pSl = false;
-  private float pSm = 0.0F;
+  private a qAA = null;
+  private FaceTutorial qAB = null;
+  private boolean qAC;
+  private byte[] qAD;
+  private boolean qAE = false;
+  private boolean qAF = false;
+  private b qAG;
+  private boolean qAH = false;
+  private boolean qAI = false;
+  private String qAJ = null;
+  private long qAK = -1L;
+  private Messenger qAL = null;
+  private a qAM = null;
+  private int qAN = -1;
+  private boolean qAO = false;
+  private com.tencent.mm.plugin.facedetectlight.Utils.a qAP;
+  private RelativeLayout qAQ;
+  private boolean qAR = false;
+  private int qAS = -1;
+  private boolean qAT = false;
+  private float qAU = 0.0F;
+  private com.tencent.mm.plugin.facedetect.c.a qAz = null;
+  private int qvP;
+  private com.tencent.mm.plugin.facedetect.b.d qvQ = null;
+  private int qwa;
+  private String qwu = null;
+  private float qww;
+  private long qxq;
+  private int qzZ;
   
   private void a(final int paramInt1, final int paramInt2, final String paramString1, final String paramString2, final boolean paramBoolean, final c paramc)
   {
     AppMethodBeat.i(103955);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo showFailJumper showErrMsg: %s", new Object[] { paramString2 });
+    ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo showFailJumper showErrMsg: %s", new Object[] { paramString2 });
     Object localObject;
-    if (this.pSl)
+    if (this.qAT)
     {
       localObject = findViewById(2131299729);
       if (localObject != null)
       {
-        ad.i("MicroMsg.FaceDetectPrepareUI", "carson: hide tutorialRoot");
+        ac.i("MicroMsg.FaceDetectPrepareUI", "carson: hide tutorialRoot");
         ((View)localObject).setVisibility(8);
       }
-      this.pSi.setVisibility(0);
+      this.qAQ.setVisibility(0);
     }
     if (paramBoolean)
     {
@@ -101,7 +101,7 @@ public class FaceDetectPrepareUI
           {
             if (FaceDetectPrepareUI.b(FaceDetectPrepareUI.this) != null)
             {
-              FaceDetectPrepareUI.b(FaceDetectPrepareUI.this).cfw();
+              FaceDetectPrepareUI.b(FaceDetectPrepareUI.this).cnd();
               AppMethodBeat.o(103920);
             }
           }
@@ -125,7 +125,7 @@ public class FaceDetectPrepareUI
       });
       paramString2.status = 3;
       paramString1 = getString(2131758717);
-      if (this.pNM == null) {
+      if (this.qwu == null) {
         paramString1 = null;
       }
       a.a(paramString2, paramString1, new View.OnClickListener()
@@ -133,9 +133,9 @@ public class FaceDetectPrepareUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(103922);
-          if (bt.isNullOrNil(FaceDetectPrepareUI.e(FaceDetectPrepareUI.this)))
+          if (bs.isNullOrNil(FaceDetectPrepareUI.e(FaceDetectPrepareUI.this)))
           {
-            ad.e("MicroMsg.FaceDetectPrepareUI", "alvinluo feedback url is null");
+            ac.e("MicroMsg.FaceDetectPrepareUI", "alvinluo feedback url is null");
             AppMethodBeat.o(103922);
             return;
           }
@@ -147,10 +147,10 @@ public class FaceDetectPrepareUI
             {
               paramAnonymousView = com.tencent.mm.compatible.util.p.encode(String.format("appid=%s;errcode=%d;identifyid=%s", new Object[] { paramAnonymousView, Integer.valueOf(paramInt2), "" }), "UTF-8");
               paramAnonymousView = FaceDetectPrepareUI.e(FaceDetectPrepareUI.this) + "?customInfo=" + paramAnonymousView;
-              ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo feedback url: %s", new Object[] { paramAnonymousView });
+              ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo feedback url: %s", new Object[] { paramAnonymousView });
               Intent localIntent = new Intent();
               localIntent.putExtra("rawUrl", paramAnonymousView);
-              com.tencent.mm.bs.d.b(FaceDetectPrepareUI.this, "webview", ".ui.tools.WebViewUI", localIntent);
+              com.tencent.mm.br.d.b(FaceDetectPrepareUI.this, "webview", ".ui.tools.WebViewUI", localIntent);
               AppMethodBeat.o(103922);
               return;
             }
@@ -158,17 +158,17 @@ public class FaceDetectPrepareUI
           }
           catch (Exception paramAnonymousView)
           {
-            ad.printErrStackTrace("MicroMsg.FaceDetectPrepareUI", paramAnonymousView, "alvinluo start feedback webview exception", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.FaceDetectPrepareUI", paramAnonymousView, "alvinluo start feedback webview exception", new Object[0]);
             AppMethodBeat.o(103922);
           }
         }
       });
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(103923);
-          FaceDetectPrepareUI.this.a(true, this.pSq, paramString2);
+          FaceDetectPrepareUI.this.a(true, this.qAY, paramString2);
           AppMethodBeat.o(103923);
         }
       });
@@ -179,27 +179,27 @@ public class FaceDetectPrepareUI
     }
   }
   
-  private void aP(int paramInt, String paramString)
+  private void aS(int paramInt, String paramString)
   {
     AppMethodBeat.i(103968);
     if (hasError()) {
-      if (this.pRR != null) {
-        this.pRR.c(this.pRY.errType, this.pRY.errCode, this.pRY.errMsg, this.pRY.extras);
+      if (this.qAz != null) {
+        this.qAz.c(this.qAG.errType, this.qAG.errCode, this.qAG.errMsg, this.qAG.extras);
       }
     }
     for (;;)
     {
-      this.gqP = true;
+      this.gRx = true;
       finish();
       AppMethodBeat.o(103968);
       return;
-      if (this.pRR != null) {
-        this.pRR.aN(paramInt, paramString);
+      if (this.qAz != null) {
+        this.qAz.aQ(paramInt, paramString);
       }
     }
   }
   
-  private void aZv()
+  private void bgn()
   {
     AppMethodBeat.i(103963);
     c(4, 90013, "init lib failed", getString(2131758723));
@@ -209,9 +209,9 @@ public class FaceDetectPrepareUI
   private void c(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
     AppMethodBeat.i(103964);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "onProcessingError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1 });
+    ac.i("MicroMsg.FaceDetectPrepareUI", "onProcessingError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1 });
     d(paramInt1, paramInt2, paramString1, null);
-    this.pRX = true;
+    this.qAF = true;
     a(paramInt1, paramInt2, paramString1, paramString2, false, new c()
     {
       public final void v(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
@@ -226,7 +226,100 @@ public class FaceDetectPrepareUI
     AppMethodBeat.o(103964);
   }
   
-  private void cgA()
+  private void cod()
+  {
+    AppMethodBeat.i(103947);
+    if (this.qAz != null) {
+      this.qAz.cnd();
+    }
+    AppMethodBeat.o(103947);
+  }
+  
+  private void coe()
+  {
+    AppMethodBeat.i(103949);
+    switch (this.qzZ)
+    {
+    default: 
+      this.qAS = 0;
+      AppMethodBeat.o(103949);
+      return;
+    case 0: 
+      this.qAS = 0;
+      FaceDetectReporter.cnC().qye = 4;
+      AppMethodBeat.o(103949);
+      return;
+    case 1: 
+      this.qAS = 1;
+      FaceDetectReporter.cnC().qye = 6;
+      AppMethodBeat.o(103949);
+      return;
+    }
+    float f = this.qAP.getLux();
+    FaceDetectReporter.cnC().qyf = Math.round(f);
+    ac.i("MicroMsg.FaceDetectPrepareUI", "curLux is : ".concat(String.valueOf(f)));
+    ac.i("MicroMsg.FaceDetectPrepareUI", "Light threshold is : " + this.qww);
+    if (f < this.qww)
+    {
+      this.qAP.stop();
+      this.qAS = 1;
+      FaceDetectReporter.cnC().qye = 6;
+      AppMethodBeat.o(103949);
+      return;
+    }
+    this.qAS = 0;
+    FaceDetectReporter.cnC().qye = 4;
+    AppMethodBeat.o(103949);
+  }
+  
+  private void cof()
+  {
+    AppMethodBeat.i(103950);
+    this.qAN = 2;
+    if (this.qAz != null) {
+      this.qAz.CO(0);
+    }
+    Intent localIntent = new Intent(this, FaceDetectUI.class);
+    localIntent.putExtra("k_user_name", this.foE);
+    localIntent.putExtra("k_server_scene", this.qvP);
+    localIntent.putExtra("k_need_signature", this.qAC);
+    localIntent.putExtra("k_bio_id", String.valueOf(this.qxq));
+    localIntent.putExtra("k_bio_config", this.qAD);
+    localIntent.putExtra("business_tips", this.qAJ);
+    ac.i("MicroMsg.FaceDetectPrepareUI", "carson logic ");
+    ac.i("MicroMsg.FaceDetectPrepareUI", "Config is " + this.qAD);
+    ac.i("MicroMsg.FaceDetectPrepareUI", "Carson bioID is " + this.qxq + "  string：" + String.valueOf(this.qxq));
+    ac.v("MicroMsg.FaceDetectPrepareUI", "alvinluo FaceDetectReporter info: %s", new Object[] { Long.valueOf(FaceDetectReporter.cnC().sessionId) });
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("key_parcelable_reporter", FaceDetectReporter.cnC());
+    localIntent.putExtra("key_reporter_bundle", localBundle);
+    if (this.qAA != null) {
+      this.qAA.cob();
+    }
+    startActivityForResult(localIntent, 1);
+    AppMethodBeat.o(103950);
+  }
+  
+  private void cog()
+  {
+    AppMethodBeat.i(103952);
+    if (this.qAA != null) {
+      this.qAA.dismiss();
+    }
+    ac.i("MicroMsg.FaceDetectPrepareUI", "carson init jumper: %b", new Object[] { Boolean.valueOf(this.qAR) });
+    if (!this.qAR)
+    {
+      this.qAA = new a(this);
+      this.qAA.create();
+      AppMethodBeat.o(103952);
+      return;
+    }
+    this.qAA = new b(this);
+    this.qAA.create();
+    AppMethodBeat.o(103952);
+  }
+  
+  private void coh()
   {
     AppMethodBeat.i(103954);
     String str = getString(2131758727);
@@ -239,122 +332,29 @@ public class FaceDetectPrepareUI
         AppMethodBeat.o(103942);
       }
     });
-    localc.pTA = true;
-    localc.pTC = (str.length() - 3);
+    localc.qCf = true;
+    localc.qCh = (str.length() - 3);
     localc.status = 1;
     a(false, true, localc);
     AppMethodBeat.o(103954);
   }
   
-  private void cgB()
+  private void coi()
   {
     AppMethodBeat.i(103962);
     c(4, 90011, "get image failed", getString(2131758718));
     AppMethodBeat.o(103962);
   }
   
-  private void cgw()
-  {
-    AppMethodBeat.i(103947);
-    if (this.pRR != null) {
-      this.pRR.cfw();
-    }
-    AppMethodBeat.o(103947);
-  }
-  
-  private void cgx()
-  {
-    AppMethodBeat.i(103949);
-    switch (this.pRr)
-    {
-    default: 
-      this.pSk = 0;
-      AppMethodBeat.o(103949);
-      return;
-    case 0: 
-      this.pSk = 0;
-      FaceDetectReporter.cfV().pPw = 4;
-      AppMethodBeat.o(103949);
-      return;
-    case 1: 
-      this.pSk = 1;
-      FaceDetectReporter.cfV().pPw = 6;
-      AppMethodBeat.o(103949);
-      return;
-    }
-    float f = this.pSh.getLux();
-    FaceDetectReporter.cfV().pPx = Math.round(f);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "curLux is : ".concat(String.valueOf(f)));
-    ad.i("MicroMsg.FaceDetectPrepareUI", "Light threshold is : " + this.pNO);
-    if (f < this.pNO)
-    {
-      this.pSh.stop();
-      this.pSk = 1;
-      FaceDetectReporter.cfV().pPw = 6;
-      AppMethodBeat.o(103949);
-      return;
-    }
-    this.pSk = 0;
-    FaceDetectReporter.cfV().pPw = 4;
-    AppMethodBeat.o(103949);
-  }
-  
-  private void cgy()
-  {
-    AppMethodBeat.i(103950);
-    this.pSf = 2;
-    if (this.pRR != null) {
-      this.pRR.BT(0);
-    }
-    Intent localIntent = new Intent(this, FaceDetectUI.class);
-    localIntent.putExtra("k_user_name", this.flk);
-    localIntent.putExtra("k_server_scene", this.pNh);
-    localIntent.putExtra("k_need_signature", this.pRU);
-    localIntent.putExtra("k_bio_id", String.valueOf(this.pOI));
-    localIntent.putExtra("k_bio_config", this.pRV);
-    localIntent.putExtra("business_tips", this.pSb);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "carson logic ");
-    ad.i("MicroMsg.FaceDetectPrepareUI", "Config is " + this.pRV);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "Carson bioID is " + this.pOI + "  string：" + String.valueOf(this.pOI));
-    ad.v("MicroMsg.FaceDetectPrepareUI", "alvinluo FaceDetectReporter info: %s", new Object[] { Long.valueOf(FaceDetectReporter.cfV().sessionId) });
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("key_parcelable_reporter", FaceDetectReporter.cfV());
-    localIntent.putExtra("key_reporter_bundle", localBundle);
-    if (this.pRS != null) {
-      this.pRS.cgu();
-    }
-    startActivityForResult(localIntent, 1);
-    AppMethodBeat.o(103950);
-  }
-  
-  private void cgz()
-  {
-    AppMethodBeat.i(103952);
-    if (this.pRS != null) {
-      this.pRS.dismiss();
-    }
-    ad.i("MicroMsg.FaceDetectPrepareUI", "carson init jumper: %b", new Object[] { Boolean.valueOf(this.pSj) });
-    if (!this.pSj)
-    {
-      this.pRS = new a(this);
-      this.pRS.create();
-      AppMethodBeat.o(103952);
-      return;
-    }
-    this.pRS = new b(this);
-    this.pRS.create();
-    AppMethodBeat.o(103952);
-  }
-  
   private boolean hasError()
   {
     AppMethodBeat.i(103965);
-    boolean bool2 = this.pRW;
-    if (this.pRY == null) {}
+    boolean bool2 = this.qAE;
+    if (this.qAG == null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo hasLastError: %b, lastError == null: %b, hashCode: %d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Integer.valueOf(hashCode()) });
-      if ((!this.pRW) || (this.pRY == null)) {
+      ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo hasLastError: %b, lastError == null: %b, hashCode: %d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Integer.valueOf(hashCode()) });
+      if ((!this.qAE) || (this.qAG == null)) {
         break;
       }
       AppMethodBeat.o(103965);
@@ -364,13 +364,13 @@ public class FaceDetectPrepareUI
     return false;
   }
   
-  private void p(int paramInt, Bundle paramBundle)
+  private void q(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(103946);
     if (paramBundle != null) {}
     for (Object localObject = paramBundle.toString();; localObject = "null")
     {
-      ad.i("MicroMsg.FaceDetectPrepareUI", "hy: sending msg: cmd: %d, data: %s", new Object[] { Integer.valueOf(paramInt), localObject });
+      ac.i("MicroMsg.FaceDetectPrepareUI", "hy: sending msg: cmd: %d, data: %s", new Object[] { Integer.valueOf(paramInt), localObject });
       localObject = paramBundle;
       if (paramBundle == null) {
         localObject = new Bundle();
@@ -378,7 +378,7 @@ public class FaceDetectPrepareUI
       ((Bundle)localObject).putInt("k_cmd", paramInt);
       paramBundle = new Intent(this, FaceDetectProcessService.class);
       paramBundle.putExtras((Bundle)localObject);
-      com.tencent.mm.bs.d.l(paramBundle, "tools");
+      com.tencent.mm.br.d.l(paramBundle, "tools");
       AppMethodBeat.o(103946);
       return;
     }
@@ -388,12 +388,12 @@ public class FaceDetectPrepareUI
   {
     int i = 1;
     AppMethodBeat.i(103956);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "finishWithResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.FaceDetectPrepareUI", "finishWithResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (paramBundle != null) {
-      paramBundle.putString("k_bio_id", String.valueOf(this.pOI));
+      paramBundle.putString("k_bio_id", String.valueOf(this.qxq));
     }
     Bundle localBundle = new Bundle();
-    localBundle.putInt("err_code", l.BZ(paramInt2));
+    localBundle.putInt("err_code", l.CU(paramInt2));
     localBundle.putString("err_msg", paramString);
     if (paramBundle != null) {
       localBundle.putAll(paramBundle);
@@ -401,19 +401,19 @@ public class FaceDetectPrepareUI
     paramString = new Intent();
     paramString.putExtras(localBundle);
     setResult(-1, paramString);
-    if (this.pRZ)
+    if (this.qAH)
     {
-      this.pSa = true;
-      p(5, this.pRR.cfA());
-      paramString = FaceDetectReporter.cfV();
-      if (!this.pRZ) {
+      this.qAI = true;
+      q(5, this.qAz.cnh());
+      paramString = FaceDetectReporter.cnC();
+      if (!this.qAH) {
         break label176;
       }
     }
     label176:
     for (paramInt1 = i;; paramInt1 = 0)
     {
-      paramString.pPy = paramInt1;
+      paramString.qyg = paramInt1;
       finish();
       AppMethodBeat.o(103956);
       return;
@@ -425,18 +425,18 @@ public class FaceDetectPrepareUI
     AppMethodBeat.i(103953);
     if (paramBoolean2)
     {
-      ad.i("MicroMsg.FaceDetectPrepareUI", "hy: need blur");
+      ac.i("MicroMsg.FaceDetectPrepareUI", "hy: need blur");
       com.tencent.mm.sdk.g.b.c(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(103941);
-          aq.f(new Runnable()
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(103940);
-              FaceDetectPrepareUI.d(FaceDetectPrepareUI.this).V(this.pSv);
+              FaceDetectPrepareUI.d(FaceDetectPrepareUI.this).V(this.qBd);
               AppMethodBeat.o(103940);
             }
           });
@@ -444,41 +444,36 @@ public class FaceDetectPrepareUI
         }
       }, "face_refresh_background");
     }
-    this.pRS.a(paramc);
+    this.qAA.a(paramc);
     AppMethodBeat.o(103953);
   }
   
-  public final void cfB()
-  {
-    this.pSg = false;
-  }
-  
-  public final void cfw()
+  public final void cnd()
   {
     AppMethodBeat.i(103948);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo startFaceDetect");
-    ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo preparing");
-    if (this.pRR != null)
+    ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo startFaceDetect");
+    ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo preparing");
+    if (this.qAz != null)
     {
       String str = getIntent().getExtras().getString("k_ticket");
-      if (!bt.isNullOrNil(str))
+      if (!bs.isNullOrNil(str))
       {
-        ad.i("MicroMsg.FaceDetectBaseController", "hy: has prepared ticket. force set");
-        com.tencent.mm.plugin.facedetect.b.p.XH(str);
+        ac.i("MicroMsg.FaceDetectBaseController", "hy: has prepared ticket. force set");
+        com.tencent.mm.plugin.facedetect.b.p.ace(str);
       }
     }
-    ad.i("MicroMsg.FaceDetectPrepareUI", "carson init jumper: %b", new Object[] { Boolean.valueOf(this.pSj) });
-    if (!this.pSj)
+    ac.i("MicroMsg.FaceDetectPrepareUI", "carson init jumper: %b", new Object[] { Boolean.valueOf(this.qAR) });
+    if (!this.qAR)
     {
-      ad.i("MicroMsg.FaceDetectPrepareUI", "hy: start show jumper: %b", new Object[] { Boolean.TRUE });
-      this.pSc = bt.GC();
+      ac.i("MicroMsg.FaceDetectPrepareUI", "hy: start show jumper: %b", new Object[] { Boolean.TRUE });
+      this.qAK = bs.Gn();
       com.tencent.mm.sdk.g.b.c(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(103939);
-          final Bitmap localBitmap = com.tencent.mm.plugin.facedetect.model.p.XJ(FaceDetectPrepareUI.c(FaceDetectPrepareUI.this));
-          aq.f(new Runnable()
+          final Bitmap localBitmap = com.tencent.mm.plugin.facedetect.model.p.acg(FaceDetectPrepareUI.c(FaceDetectPrepareUI.this));
+          ap.f(new Runnable()
           {
             public final void onClick(View paramAnonymous2View)
             {
@@ -491,8 +486,8 @@ public class FaceDetectPrepareUI
             public final void run()
             {
               AppMethodBeat.i(103938);
-              c localc = a.a(FaceDetectPrepareUI.this, this.pSt);
-              localc.pTD = localBitmap;
+              c localc = a.a(FaceDetectPrepareUI.this, this.qBb);
+              localc.qCi = localBitmap;
               FaceDetectPrepareUI.this.a(false, false, localc);
               AppMethodBeat.o(103938);
             }
@@ -501,25 +496,25 @@ public class FaceDetectPrepareUI
         }
       }, "face_prepareInit");
     }
-    cgx();
+    coe();
     int i;
-    switch (this.pSk)
+    switch (this.qAS)
     {
     default: 
       i = 1;
     }
     for (;;)
     {
-      if ((this.pNh == 0) || (this.pNh == 1) || (this.pNh == 3) || (this.pNh == 4)) {
+      if ((this.qvP == 0) || (this.qvP == 1) || (this.qvP == 3) || (this.qvP == 4)) {
         i = 1;
       }
-      this.pNs = i;
-      if (this.pRR != null)
+      this.qwa = i;
+      if (this.qAz != null)
       {
-        this.pRR.pOg = this.pNs;
-        this.pRR.cfv();
+        this.qAz.qwO = this.qwa;
+        this.qAz.cnc();
       }
-      this.pSg = true;
+      this.qAO = true;
       AppMethodBeat.o(103948);
       return;
       i = 1;
@@ -528,36 +523,41 @@ public class FaceDetectPrepareUI
     }
   }
   
-  public final void cfy() {}
+  public final void cnf() {}
+  
+  public final void cni()
+  {
+    this.qAO = false;
+  }
   
   public final void d(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(103966);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo saveError errType: %d, errCode: %d, errMsg: %s, hashCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(hashCode()) });
-    if (this.pRY == null) {
-      this.pRY = new b((byte)0);
+    ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo saveError errType: %d, errCode: %d, errMsg: %s, hashCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(hashCode()) });
+    if (this.qAG == null) {
+      this.qAG = new b((byte)0);
     }
-    this.pRW = true;
-    this.pRY.e(paramInt1, paramInt2, paramString, paramBundle);
+    this.qAE = true;
+    this.qAG.e(paramInt1, paramInt2, paramString, paramBundle);
     AppMethodBeat.o(103966);
   }
   
   public void finish()
   {
     AppMethodBeat.i(103961);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "dismissJumper");
-    if ((this.pRS != null) && (this.pRS.bcB())) {
-      this.pRS.dismiss();
+    ac.i("MicroMsg.FaceDetectPrepareUI", "dismissJumper");
+    if ((this.qAA != null) && (this.qAA.bjw())) {
+      this.qAA.dismiss();
     }
-    if (this.pRT != null) {
-      this.pRT.dismiss();
+    if (this.qAB != null) {
+      this.qAB.dismiss();
     }
-    ad.v("MicroMsg.FaceDetectPrepareUI", "alvinluo: releaseFaceDetect");
-    if (this.pRR != null) {
-      this.pRR.cfy();
+    ac.v("MicroMsg.FaceDetectPrepareUI", "alvinluo: releaseFaceDetect");
+    if (this.qAz != null) {
+      this.qAz.cnf();
     }
     super.finish();
-    this.goa = true;
+    this.gnd = true;
     AppMethodBeat.o(103961);
   }
   
@@ -566,14 +566,14 @@ public class FaceDetectPrepareUI
     boolean bool2 = false;
     boolean bool1 = false;
     AppMethodBeat.i(103951);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 2)
     {
-      this.pSf = 1;
-      this.pSi.setVisibility(0);
+      this.qAN = 1;
+      this.qAQ.setVisibility(0);
       if (paramIntent == null)
       {
-        ad.e("MicroMsg.FaceDetectPrepareUI", "carson onActivityResult data is null");
+        ac.e("MicroMsg.FaceDetectPrepareUI", "carson onActivityResult data is null");
         a(4, 90018, "system error", getString(2131758738), false, new c()
         {
           public final void v(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
@@ -590,29 +590,29 @@ public class FaceDetectPrepareUI
       }
       localObject = (FaceDetectReporter)paramIntent.getParcelableExtra("key_parcelable_reporter");
       if (localObject != null) {
-        FaceDetectReporter.cfV().a((FaceDetectReporter)localObject);
+        FaceDetectReporter.cnC().a((FaceDetectReporter)localObject);
       }
-      localObject = FaceDetectReporter.cfV();
-      if (this.pRZ) {}
+      localObject = FaceDetectReporter.cnC();
+      if (this.qAH) {}
       for (paramInt1 = 1;; paramInt1 = 0)
       {
-        ((FaceDetectReporter)localObject).pPy = paramInt1;
-        FaceDetectReporter.cfV().pPx = Math.round(this.pSm);
+        ((FaceDetectReporter)localObject).qyg = paramInt1;
+        FaceDetectReporter.cnC().qyf = Math.round(this.qAU);
         paramInt1 = paramIntent.getIntExtra("err_type", -1);
         paramInt2 = paramIntent.getIntExtra("err_code", -1);
         str = paramIntent.getStringExtra("err_msg");
-        if (this.pRR != null)
+        if (this.qAz != null)
         {
-          localObject = this.pRR;
+          localObject = this.qAz;
           paramIntent.getExtras();
           ((com.tencent.mm.plugin.facedetect.c.a)localObject).t(paramInt1, paramInt2, str);
         }
-        ad.i("MicroMsg.FaceDetectPrepareUI", "carson onActivityResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
+        ac.i("MicroMsg.FaceDetectPrepareUI", "carson onActivityResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
         if ((paramInt1 != 0) || (paramInt2 != 0)) {
           break;
         }
-        cgA();
-        p(6, paramIntent.getExtras());
+        coh();
+        q(6, paramIntent.getExtras());
         AppMethodBeat.o(103951);
         return;
       }
@@ -620,7 +620,7 @@ public class FaceDetectPrepareUI
       {
         if ((paramInt2 == 90004) || (paramInt2 == 90025))
         {
-          aP(paramInt2, str);
+          aS(paramInt2, str);
           AppMethodBeat.o(103951);
         }
       }
@@ -663,16 +663,16 @@ public class FaceDetectPrepareUI
         else
         {
           paramIntent = (Intent)localObject;
-          if (bt.isNullOrNil((String)localObject)) {
+          if (bs.isNullOrNil((String)localObject)) {
             paramIntent = getString(2131764085);
           }
         }
       }
     }
-    this.pSf = 1;
+    this.qAN = 1;
     if (paramIntent == null)
     {
-      ad.e("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult data is null");
+      ac.e("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult data is null");
       a(4, 90018, "system error", getString(2131758738), false, new c()
       {
         public final void v(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
@@ -689,22 +689,22 @@ public class FaceDetectPrepareUI
     }
     Object localObject = (FaceDetectReporter)paramIntent.getParcelableExtra("key_parcelable_reporter");
     if (localObject != null) {
-      FaceDetectReporter.cfV().a((FaceDetectReporter)localObject);
+      FaceDetectReporter.cnC().a((FaceDetectReporter)localObject);
     }
     paramInt1 = paramIntent.getIntExtra("err_type", -1);
     paramInt2 = paramIntent.getIntExtra("err_code", -1);
     String str = paramIntent.getStringExtra("err_msg");
-    if (this.pRR != null)
+    if (this.qAz != null)
     {
-      localObject = this.pRR;
+      localObject = this.qAz;
       paramIntent.getExtras();
       ((com.tencent.mm.plugin.facedetect.c.a)localObject).t(paramInt1, paramInt2, str);
     }
-    ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
+    ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      cgA();
-      p(1, null);
+      coh();
+      q(1, null);
       AppMethodBeat.o(103951);
       return;
     }
@@ -712,7 +712,7 @@ public class FaceDetectPrepareUI
     {
       if ((paramInt2 == 90004) || (paramInt2 == 90025))
       {
-        aP(paramInt2, str);
+        aS(paramInt2, str);
         AppMethodBeat.o(103951);
       }
     }
@@ -756,7 +756,7 @@ public class FaceDetectPrepareUI
       else
       {
         paramIntent = (Intent)localObject;
-        if (bt.isNullOrNil((String)localObject)) {
+        if (bs.isNullOrNil((String)localObject)) {
           paramIntent = getString(2131764085);
         }
       }
@@ -768,33 +768,33 @@ public class FaceDetectPrepareUI
     AppMethodBeat.i(103967);
     if (hasError())
     {
-      if (this.pRR != null)
+      if (this.qAz != null)
       {
-        this.pRR.c(this.pRY.errType, this.pRY.errCode, this.pRY.errMsg, this.pRY.extras);
+        this.qAz.c(this.qAG.errType, this.qAG.errCode, this.qAG.errMsg, this.qAG.extras);
         AppMethodBeat.o(103967);
       }
     }
     else
     {
-      if (this.pSf == 1)
+      if (this.qAN == 1)
       {
-        aP(90003, "user cancel in init");
+        aS(90003, "user cancel in init");
         AppMethodBeat.o(103967);
         return;
       }
-      if (this.pSf == 3)
+      if (this.qAN == 3)
       {
-        aP(90005, "user cancel in uploading");
+        aS(90005, "user cancel in uploading");
         AppMethodBeat.o(103967);
         return;
       }
-      if (this.pSf == 0)
+      if (this.qAN == 0)
       {
-        aP(90002, "user cancel in tutorial");
+        aS(90002, "user cancel in tutorial");
         AppMethodBeat.o(103967);
         return;
       }
-      aP(90050, "user cancel unknown");
+      aS(90050, "user cancel unknown");
     }
     AppMethodBeat.o(103967);
   }
@@ -804,56 +804,56 @@ public class FaceDetectPrepareUI
     AppMethodBeat.i(103945);
     super.onCreate(paramBundle);
     setContentView(2131493917);
-    this.pSi = ((RelativeLayout)findViewById(2131299696));
-    this.pSi.setVisibility(4);
+    this.qAQ = ((RelativeLayout)findViewById(2131299696));
+    this.qAQ.setVisibility(4);
     getWindow().addFlags(2097280);
     this.mAppId = getIntent().getStringExtra("k_app_id");
-    this.flk = getIntent().getStringExtra("k_user_name");
-    this.pNh = getIntent().getIntExtra("k_server_scene", -1);
-    this.pRU = getIntent().getBooleanExtra("k_need_signature", false);
+    this.foE = getIntent().getStringExtra("k_user_name");
+    this.qvP = getIntent().getIntExtra("k_server_scene", -1);
+    this.qAC = getIntent().getBooleanExtra("k_need_signature", false);
     boolean bool;
-    if ((e.cfG()) || (getIntent().getBooleanExtra("key_is_need_video", false)))
+    if ((e.cnn()) || (getIntent().getBooleanExtra("key_is_need_video", false)))
     {
       bool = true;
-      this.pRZ = bool;
-      this.pNM = getIntent().getStringExtra("key_feedback_url");
-      this.pSb = getIntent().getStringExtra("business_tips");
-      this.pRr = getIntent().getIntExtra("check_alive_type_response", -1);
-      if (this.pRr == -1) {
-        this.pRr = getIntent().getIntExtra("check_alive_type", 0);
+      this.qAH = bool;
+      this.qwu = getIntent().getStringExtra("key_feedback_url");
+      this.qAJ = getIntent().getStringExtra("business_tips");
+      this.qzZ = getIntent().getIntExtra("check_alive_type_response", -1);
+      if (this.qzZ == -1) {
+        this.qzZ = getIntent().getIntExtra("check_alive_type", 0);
       }
-      this.pNO = getIntent().getFloatExtra("mLight_threshold", -1.0F);
-      this.pSh = a.b.chf();
-      this.pSh.che();
-      ad.i("MicroMsg.FaceDetectPrepareUI", "mIsNeedVideo： " + this.pRZ);
-      ad.i("MicroMsg.FaceDetectPrepareUI", "check_alive_type is " + this.pRr);
-      ad.i("MicroMsg.FaceDetectPrepareUI", "mLight_threshold is " + this.pNO);
-      ad.i("MicroMsg.FaceDetectPrepareUI", "mChechLiveFlag is " + this.pNs);
-      this.pSe = new a(this, (byte)0);
-      this.pSd = new Messenger(this.pSe);
+      this.qww = getIntent().getFloatExtra("mLight_threshold", -1.0F);
+      this.qAP = a.b.coM();
+      this.qAP.coL();
+      ac.i("MicroMsg.FaceDetectPrepareUI", "mIsNeedVideo： " + this.qAH);
+      ac.i("MicroMsg.FaceDetectPrepareUI", "check_alive_type is " + this.qzZ);
+      ac.i("MicroMsg.FaceDetectPrepareUI", "mLight_threshold is " + this.qww);
+      ac.i("MicroMsg.FaceDetectPrepareUI", "mChechLiveFlag is " + this.qwa);
+      this.qAM = new a(this, (byte)0);
+      this.qAL = new Messenger(this.qAM);
       paramBundle = new Intent(this, FaceDetectProcessService.class);
-      paramBundle.putExtra("k_messenger", this.pSd);
-      com.tencent.mm.bs.d.l(paramBundle, "tools");
+      paramBundle.putExtra("k_messenger", this.qAL);
+      com.tencent.mm.br.d.l(paramBundle, "tools");
       FaceContextData.a(new FaceContextData());
-      com.tencent.mm.plugin.facedetect.model.p.ai(this);
+      com.tencent.mm.plugin.facedetect.model.p.am(this);
       paramBundle = getIntent().getExtras();
-      float f = this.pSh.getLux();
-      this.pSm = f;
+      float f = this.qAP.getLux();
+      this.qAU = f;
       if (paramBundle != null)
       {
         paramBundle.putFloat("key_current_light", f);
-        paramBundle.putBoolean("key_upload_video", this.pRZ);
+        paramBundle.putBoolean("key_upload_video", this.qAH);
       }
-      com.tencent.mm.plugin.facedetect.c.b localb = com.tencent.mm.plugin.facedetect.c.b.pOk;
-      this.pRR = com.tencent.mm.plugin.facedetect.c.b.a(this, this, this.pNh, this.pNs, paramBundle);
-      if (this.pRR != null) {
+      com.tencent.mm.plugin.facedetect.c.b localb = com.tencent.mm.plugin.facedetect.c.b.qwS;
+      this.qAz = com.tencent.mm.plugin.facedetect.c.b.a(this, this, this.qvP, this.qwa, paramBundle);
+      if (this.qAz != null) {
         break label603;
       }
-      aZv();
+      bgn();
       label483:
-      if (this.pRY != null)
+      if (this.qAG != null)
       {
-        paramBundle = this.pRY;
+        paramBundle = this.qAG;
         paramBundle.errType = -1;
         paramBundle.errCode = -1;
         paramBundle.errMsg = "";
@@ -861,35 +861,35 @@ public class FaceDetectPrepareUI
           paramBundle.extras.clear();
         }
       }
-      this.pRW = false;
-      this.pSf = 1;
-      cgz();
-      if (!com.tencent.mm.plugin.facedetect.model.p.ah(this)) {
+      this.qAE = false;
+      this.qAN = 1;
+      cog();
+      if (!com.tencent.mm.plugin.facedetect.model.p.al(this)) {
         break label644;
       }
-      ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo checkFacePermissionAnd Request true and do init ");
-      cgw();
+      ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo checkFacePermissionAnd Request true and do init ");
+      cod();
     }
     for (;;)
     {
-      if (this.pRZ)
+      if (this.qAH)
       {
         paramBundle = new Bundle();
-        paramBundle.putBoolean("key_is_need_video", this.pRZ);
-        p(4, paramBundle);
+        paramBundle.putBoolean("key_is_need_video", this.qAH);
+        q(4, paramBundle);
       }
       AppMethodBeat.o(103945);
       return;
       bool = false;
       break;
       label603:
-      this.pRR.a(new com.tencent.mm.plugin.facedetect.b.c()
+      this.qAz.a(new com.tencent.mm.plugin.facedetect.b.c()
       {
-        public final void aM(int paramAnonymousInt, String paramAnonymousString)
+        public final void aP(int paramAnonymousInt, String paramAnonymousString)
         {
           AppMethodBeat.i(103925);
-          ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onGetConfigFailed, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(90015), paramAnonymousString });
-          paramAnonymousInt = FaceDetectPrepareUI.Ce(paramAnonymousInt);
+          ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onGetConfigFailed, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(90015), paramAnonymousString });
+          paramAnonymousInt = FaceDetectPrepareUI.CZ(paramAnonymousInt);
           FaceDetectPrepareUI.a(FaceDetectPrepareUI.this, paramAnonymousInt, 90015, paramAnonymousString, FaceDetectPrepareUI.this.getString(2131758723));
           AppMethodBeat.o(103925);
         }
@@ -897,7 +897,7 @@ public class FaceDetectPrepareUI
         public final void e(long paramAnonymousLong, byte[] paramAnonymousArrayOfByte)
         {
           AppMethodBeat.i(103924);
-          ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onGetConfigSuccess, bioId: %d, isCancel: %b", new Object[] { Long.valueOf(paramAnonymousLong), Boolean.valueOf(FaceDetectPrepareUI.h(FaceDetectPrepareUI.this)) });
+          ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onGetConfigSuccess, bioId: %d, isCancel: %b", new Object[] { Long.valueOf(paramAnonymousLong), Boolean.valueOf(FaceDetectPrepareUI.h(FaceDetectPrepareUI.this)) });
           if (FaceDetectPrepareUI.h(FaceDetectPrepareUI.this))
           {
             AppMethodBeat.o(103924);
@@ -909,14 +909,14 @@ public class FaceDetectPrepareUI
           AppMethodBeat.o(103924);
         }
       });
-      this.pNi = new com.tencent.mm.plugin.facedetect.b.d()
+      this.qvQ = new com.tencent.mm.plugin.facedetect.b.d()
       {
-        private double pSr = 0.0D;
+        private double qAZ = 0.0D;
         
         public final void a(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, String paramAnonymousString)
         {
           AppMethodBeat.i(103927);
-          ad.i("MicroMsg.FaceDetectPrepareUI", "onError scene: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), paramAnonymousString });
+          ac.i("MicroMsg.FaceDetectPrepareUI", "onError scene: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), paramAnonymousString });
           FaceDetectPrepareUI.a(FaceDetectPrepareUI.this, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousString, FaceDetectPrepareUI.this.getString(2131764085));
           AppMethodBeat.o(103927);
         }
@@ -924,8 +924,8 @@ public class FaceDetectPrepareUI
         public final void f(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
           AppMethodBeat.i(103929);
-          ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onVerifyEnd sceneType: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousn.getType()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-          paramAnonymousInt1 = FaceDetectPrepareUI.Ce(paramAnonymousInt1);
+          ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onVerifyEnd sceneType: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousn.getType()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          paramAnonymousInt1 = FaceDetectPrepareUI.CZ(paramAnonymousInt1);
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
             FaceDetectPrepareUI.this.d(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, null);
           }
@@ -938,8 +938,8 @@ public class FaceDetectPrepareUI
         public final void n(String paramAnonymousString, Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(103928);
-          ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onUploadEnd");
-          int i = FaceDetectPrepareUI.Ce(0);
+          ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onUploadEnd");
+          int i = FaceDetectPrepareUI.CZ(0);
           if (i != 0) {
             FaceDetectPrepareUI.this.d(i, 0, paramAnonymousString, paramAnonymousBundle);
           }
@@ -949,34 +949,34 @@ public class FaceDetectPrepareUI
           AppMethodBeat.o(103928);
         }
         
-        public final void u(double paramAnonymousDouble)
+        public final void t(double paramAnonymousDouble)
         {
           AppMethodBeat.i(103926);
-          ad.i("MicroMsg.FaceDetectPrepareUI", "hy: reg on process : %f", new Object[] { Double.valueOf(paramAnonymousDouble) });
-          this.pSr = (100.0D * paramAnonymousDouble);
+          ac.i("MicroMsg.FaceDetectPrepareUI", "hy: reg on process : %f", new Object[] { Double.valueOf(paramAnonymousDouble) });
+          this.qAZ = (100.0D * paramAnonymousDouble);
           if (FaceDetectPrepareUI.b(FaceDetectPrepareUI.this) != null) {
             FaceDetectPrepareUI.b(FaceDetectPrepareUI.this);
           }
           AppMethodBeat.o(103926);
         }
       };
-      this.pRR.a(this.pNi);
+      this.qAz.a(this.qvQ);
       break label483;
       label644:
-      ad.i("MicroMsg.FaceDetectPrepareUI", "hy: no camera permission. request permission");
+      ac.i("MicroMsg.FaceDetectPrepareUI", "hy: no camera permission. request permission");
     }
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(103957);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "onDestroy");
+    ac.i("MicroMsg.FaceDetectPrepareUI", "onDestroy");
     super.onDestroy();
-    if (!this.pSa) {
-      com.tencent.mm.bs.d.n(new Intent(this, FaceDetectProcessService.class), "tools");
+    if (!this.qAI) {
+      com.tencent.mm.br.d.n(new Intent(this, FaceDetectProcessService.class), "tools");
     }
-    if (this.pSh != null) {
-      this.pSh.stop();
+    if (this.qAP != null) {
+      this.qAP.stop();
     }
     AppMethodBeat.o(103957);
   }
@@ -985,7 +985,7 @@ public class FaceDetectPrepareUI
   {
     int i = 90008;
     AppMethodBeat.i(103969);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onRequestPermissionsResult");
+    ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onRequestPermissionsResult");
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
       AppMethodBeat.o(103969);
@@ -994,7 +994,7 @@ public class FaceDetectPrepareUI
     switch (paramInt)
     {
     default: 
-      ad.i("MicroMsg.FaceDetectPrepareUI", "carson：finish()");
+      ac.i("MicroMsg.FaceDetectPrepareUI", "carson：finish()");
       AppMethodBeat.o(103969);
       return;
     }
@@ -1009,7 +1009,7 @@ public class FaceDetectPrepareUI
         if (paramInt == 0) {
           break label255;
         }
-        cgw();
+        cod();
         AppMethodBeat.o(103969);
         return;
       }
@@ -1022,8 +1022,8 @@ public class FaceDetectPrepareUI
     }
     for (;;)
     {
-      this.pSi.setVisibility(0);
-      ad.i("MicroMsg.FaceDetectPrepareUI", " mFacePrepareLayout, visible: %s", new Object[] { Integer.valueOf(this.pSi.getVisibility()) });
+      this.qAQ.setVisibility(0);
+      ac.i("MicroMsg.FaceDetectPrepareUI", " mFacePrepareLayout, visible: %s", new Object[] { Integer.valueOf(this.qAQ.getVisibility()) });
       paramArrayOfInt = findViewById(2131299729);
       if (paramArrayOfInt != null) {
         paramArrayOfInt.setVisibility(8);
@@ -1089,9 +1089,9 @@ public class FaceDetectPrepareUI
   public void onResume()
   {
     AppMethodBeat.i(103959);
-    ad.i("MicroMsg.FaceDetectPrepareUI", "onResume");
+    ac.i("MicroMsg.FaceDetectPrepareUI", "onResume");
     super.onResume();
-    this.pSg = true;
+    this.qAO = true;
     AppMethodBeat.o(103959);
   }
   
@@ -1106,11 +1106,11 @@ public class FaceDetectPrepareUI
   {
     AppMethodBeat.i(103960);
     super.onStop();
-    if (this.pSg)
+    if (this.qAO)
     {
-      if ((!this.goa) && (hasError()))
+      if ((!this.gnd) && (hasError()))
       {
-        a(this.pRY.errType, this.pRY.errCode, this.pRY.errMsg, this.pRY.extras);
+        a(this.qAG.errType, this.qAG.errCode, this.qAG.errMsg, this.qAG.extras);
         AppMethodBeat.o(103960);
         return;
       }
@@ -1128,21 +1128,21 @@ public class FaceDetectPrepareUI
   static final class a
     extends Handler
   {
-    private WeakReference<FaceDetectPrepareUI> pRI;
+    private WeakReference<FaceDetectPrepareUI> qAq;
     
     private a(FaceDetectPrepareUI paramFaceDetectPrepareUI)
     {
       AppMethodBeat.i(103943);
-      this.pRI = null;
-      this.pRI = new WeakReference(paramFaceDetectPrepareUI);
+      this.qAq = null;
+      this.qAq = new WeakReference(paramFaceDetectPrepareUI);
       AppMethodBeat.o(103943);
     }
     
     public final void handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(103944);
-      ad.i("MicroMsg.FaceDetectPrepareUI", "alvinluo client msg.what: %d", new Object[] { Integer.valueOf(paramMessage.what) });
-      if ((this.pRI != null) && (this.pRI.get() != null)) {
+      ac.i("MicroMsg.FaceDetectPrepareUI", "alvinluo client msg.what: %d", new Object[] { Integer.valueOf(paramMessage.what) });
+      if ((this.qAq != null) && (this.qAq.get() != null)) {
         switch (paramMessage.what)
         {
         }
@@ -1151,13 +1151,13 @@ public class FaceDetectPrepareUI
       {
         AppMethodBeat.o(103944);
         return;
-        FaceDetectPrepareUI.a((FaceDetectPrepareUI)this.pRI.get(), paramMessage);
+        FaceDetectPrepareUI.a((FaceDetectPrepareUI)this.qAq.get(), paramMessage);
         AppMethodBeat.o(103944);
         return;
-        FaceDetectPrepareUI.b((FaceDetectPrepareUI)this.pRI.get(), paramMessage);
+        FaceDetectPrepareUI.b((FaceDetectPrepareUI)this.qAq.get(), paramMessage);
         AppMethodBeat.o(103944);
         return;
-        FaceDetectPrepareUI.c((FaceDetectPrepareUI)this.pRI.get(), paramMessage);
+        FaceDetectPrepareUI.c((FaceDetectPrepareUI)this.qAq.get(), paramMessage);
       }
     }
   }
@@ -1187,7 +1187,7 @@ public class FaceDetectPrepareUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.FaceDetectPrepareUI
  * JD-Core Version:    0.7.0.1
  */

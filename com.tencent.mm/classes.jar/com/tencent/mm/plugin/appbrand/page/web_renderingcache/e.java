@@ -5,16 +5,16 @@ import com.tencent.mm.vfs.g;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "f", "Lcom/tencent/mm/vfs/VFSFile;", "kotlin.jvm.PlatformType", "accept"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "f", "Lcom/tencent/mm/vfs/VFSFile;", "kotlin.jvm.PlatformType", "accept"})
 final class e
   implements g
 {
-  public static final e lhk;
+  public static final e lHd;
   
   static
   {
     AppMethodBeat.i(50965);
-    lhk = new e();
+    lHd = new e();
     AppMethodBeat.o(50965);
   }
   

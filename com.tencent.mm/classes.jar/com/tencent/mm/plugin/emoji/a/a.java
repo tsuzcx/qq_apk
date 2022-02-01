@@ -15,44 +15,44 @@ import com.tencent.mm.plugin.emoji.a.a.e;
 import com.tencent.mm.plugin.emoji.a.a.f;
 import com.tencent.mm.plugin.emoji.model.j.a;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public abstract class a
 {
   private final String TAG = "MicroMsg.emoji.BaseEmojiItemHolder";
-  protected View iIW;
-  protected TextView kEu;
+  protected View jja;
+  protected TextView lfN;
   Context mContext;
   private LayoutInflater mLayoutInflater;
   public int mPosition;
-  private View otd;
-  private final int ote = 2131493771;
-  private final int otf = 2131493808;
-  private final int otg = 2131493809;
-  private int[] oth = { -1, -1 };
-  private int oti = -1;
-  public f otj;
-  protected View otk;
-  protected ImageView otl;
-  protected ImageView otm;
-  protected View otn;
-  protected TextView oto;
-  protected TextView otp;
-  protected ProgressBar otq;
-  protected ViewGroup otr;
-  protected View ots;
-  protected TextView ott;
-  protected ImageView otu;
-  protected View otv;
-  protected ProgressBar otw;
-  protected TextView otx;
-  protected TextView oty;
-  protected FrameLayout otz;
+  private View oWE;
+  private final int oWF = 2131493771;
+  private final int oWG = 2131493808;
+  private final int oWH = 2131493809;
+  private int[] oWI = { -1, -1 };
+  private int oWJ = -1;
+  public f oWK;
+  protected View oWL;
+  protected ImageView oWM;
+  protected ImageView oWN;
+  protected View oWO;
+  protected TextView oWP;
+  protected TextView oWQ;
+  protected ProgressBar oWR;
+  protected ViewGroup oWS;
+  protected View oWT;
+  protected TextView oWU;
+  protected ImageView oWV;
+  protected View oWW;
+  protected ProgressBar oWX;
+  protected TextView oWY;
+  protected TextView oWZ;
+  protected FrameLayout oXa;
   
   public a(Context paramContext, View paramView)
   {
-    this(paramContext, paramView, a.otD);
+    this(paramContext, paramView, a.oXe);
   }
   
   private a(Context paramContext, View paramView, a parama)
@@ -63,41 +63,41 @@ public abstract class a
     if (paramView == null) {}
     label446:
     int i;
-    switch (2.otC[parama.ordinal()])
+    switch (2.oXd[parama.ordinal()])
     {
     default: 
-      paramContext = Am(this.ote);
-      this.iIW = paramContext;
+      paramContext = Be(this.oWF);
+      this.jja = paramContext;
       if (paramContext != null)
       {
-        this.otd = paramContext;
-        this.otk = this.otd.findViewById(2131301144);
-        this.otm = ((ImageView)this.otd.findViewById(2131301197));
-        this.otl = ((ImageView)this.otd.findViewById(2131301154));
-        this.kEu = ((TextView)this.otd.findViewById(2131301169));
-        this.otn = this.otd.findViewById(2131301171);
-        this.oto = ((TextView)this.otd.findViewById(2131301146));
-        this.otp = ((TextView)this.otd.findViewById(2131301157));
-        this.otq = ((ProgressBar)this.otd.findViewById(2131303403));
-        this.ots = this.otd.findViewById(2131301174);
-        this.otr = ((ViewGroup)this.otd.findViewById(2131301185));
-        this.ott = ((TextView)this.otd.findViewById(2131301192));
-        this.otu = ((ImageView)this.otd.findViewById(2131301194));
-        this.otv = this.otd.findViewById(2131301183);
-        this.otw = ((ProgressBar)this.otd.findViewById(2131301151));
-        this.otx = ((TextView)this.otd.findViewById(2131301142));
-        this.oty = ((TextView)this.otd.findViewById(2131301172));
-        this.otz = ((FrameLayout)this.otd.findViewById(2131301166));
+        this.oWE = paramContext;
+        this.oWL = this.oWE.findViewById(2131301144);
+        this.oWN = ((ImageView)this.oWE.findViewById(2131301197));
+        this.oWM = ((ImageView)this.oWE.findViewById(2131301154));
+        this.lfN = ((TextView)this.oWE.findViewById(2131301169));
+        this.oWO = this.oWE.findViewById(2131301171);
+        this.oWP = ((TextView)this.oWE.findViewById(2131301146));
+        this.oWQ = ((TextView)this.oWE.findViewById(2131301157));
+        this.oWR = ((ProgressBar)this.oWE.findViewById(2131303403));
+        this.oWT = this.oWE.findViewById(2131301174);
+        this.oWS = ((ViewGroup)this.oWE.findViewById(2131301185));
+        this.oWU = ((TextView)this.oWE.findViewById(2131301192));
+        this.oWV = ((ImageView)this.oWE.findViewById(2131301194));
+        this.oWW = this.oWE.findViewById(2131301183);
+        this.oWX = ((ProgressBar)this.oWE.findViewById(2131301151));
+        this.oWY = ((TextView)this.oWE.findViewById(2131301142));
+        this.oWZ = ((TextView)this.oWE.findViewById(2131301172));
+        this.oXa = ((FrameLayout)this.oWE.findViewById(2131301166));
       }
-      bTZ();
-      if (parama == a.otD)
+      cbn();
+      if (parama == a.oXe)
       {
-        paramView = bUa();
-        if ((this.otl != null) && (paramView[0] >= 0) && (paramView[1] >= 0) && ((paramView[0] != this.oth[0]) || (paramView[1] != this.oth[1]))) {
+        paramView = cbo();
+        if ((this.oWM != null) && (paramView[0] >= 0) && (paramView[1] >= 0) && ((paramView[0] != this.oWI[0]) || (paramView[1] != this.oWI[1]))) {
           break label515;
         }
-        i = bUb();
-        if ((this.otd != null) && (i >= 0) && (this.oti != i)) {
+        i = cbp();
+        if ((this.oWE != null) && (i >= 0) && (this.oWJ != i)) {
           break label553;
         }
       }
@@ -107,28 +107,28 @@ public abstract class a
     {
       paramContext.setTag(this);
       return;
-      paramContext = Am(this.ote);
+      paramContext = Be(this.oWF);
       break;
-      paramContext = Am(this.otg);
+      paramContext = Be(this.oWH);
       break;
-      paramContext = Am(this.otf);
+      paramContext = Be(this.oWG);
       break;
       label515:
-      parama = this.otl.getLayoutParams();
+      parama = this.oWM.getLayoutParams();
       parama.width = paramView[0];
       parama.height = paramView[1];
-      this.otl.setLayoutParams(parama);
-      this.oth = paramView;
+      this.oWM.setLayoutParams(parama);
+      this.oWI = paramView;
       break label446;
       label553:
-      this.otd.setMinimumHeight(i);
-      if (this.otk != null) {
-        this.otk.setMinimumHeight(i);
+      this.oWE.setMinimumHeight(i);
+      if (this.oWL != null) {
+        this.oWL.setMinimumHeight(i);
       }
     }
   }
   
-  private View Am(int paramInt)
+  private View Be(int paramInt)
   {
     if ((this.mLayoutInflater == null) || (paramInt <= 0)) {
       return null;
@@ -136,57 +136,57 @@ public abstract class a
     return this.mLayoutInflater.inflate(paramInt, null);
   }
   
-  private void bUm()
+  private void cbA()
   {
-    this.otq.setVisibility(8);
-    this.otr.setBackgroundResource(2131231365);
-    this.otr.setVisibility(0);
-    this.ots.setEnabled(true);
-    this.ott.setText("");
-    if (this.otv == null) {
-      this.otw.setVisibility(4);
+    this.oWR.setVisibility(8);
+    this.oWS.setBackgroundResource(2131231365);
+    this.oWS.setVisibility(0);
+    this.oWT.setEnabled(true);
+    this.oWU.setText("");
+    if (this.oWW == null) {
+      this.oWX.setVisibility(4);
     }
     for (;;)
     {
-      this.ott.setVisibility(0);
-      this.ott.setText(2131758319);
-      this.ott.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
-      this.otu.setVisibility(8);
+      this.oWU.setVisibility(0);
+      this.oWU.setText(2131758319);
+      this.oWU.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+      this.oWV.setVisibility(8);
       return;
-      this.otv.setVisibility(4);
+      this.oWW.setVisibility(4);
     }
   }
   
-  public final void An(int paramInt)
+  public final void Bf(int paramInt)
   {
-    this.otm.setVisibility(paramInt);
+    this.oWN.setVisibility(paramInt);
   }
   
-  public final void Ao(int paramInt)
+  public final void Bg(int paramInt)
   {
-    this.ots.setVisibility(paramInt);
+    this.oWT.setVisibility(paramInt);
   }
   
-  public final void Tm(String paramString)
+  public final void Xy(String paramString)
   {
-    this.oto.setText(paramString);
+    this.oWP.setText(paramString);
   }
   
-  public final void Tn(String paramString)
+  public final void Xz(String paramString)
   {
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      this.otp.setVisibility(8);
+      this.oWQ.setVisibility(8);
       return;
     }
-    this.otp.setVisibility(0);
-    this.otp.setText(paramString);
+    this.oWQ.setVisibility(0);
+    this.oWQ.setText(paramString);
   }
   
   public final void a(final j.a parama)
   {
-    if (this.ots != null) {
-      this.ots.setOnClickListener(new View.OnClickListener()
+    if (this.oWT != null) {
+      this.oWT.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -212,248 +212,248 @@ public abstract class a
     }
   }
   
-  protected abstract void bTZ();
-  
-  protected abstract int[] bUa();
-  
-  protected abstract int bUb();
-  
-  public final void bUc()
+  public void cbB()
   {
-    this.kEu.setText(2131758385);
-  }
-  
-  public final ImageView bUd()
-  {
-    return this.otl;
-  }
-  
-  public final void bUe()
-  {
-    this.otl.setImageResource(2131232662);
-  }
-  
-  public final ImageView bUf()
-  {
-    return this.otm;
-  }
-  
-  public final void bUg()
-  {
-    this.otm.setImageResource(2131232094);
-  }
-  
-  public final void bUh()
-  {
-    this.oto.setVisibility(8);
-    this.otp.setVisibility(8);
-  }
-  
-  public final int bUi()
-  {
-    if (this.otj == null) {}
-    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.otj.mStatus)) {
-      return localInteger.intValue();
-    }
-  }
-  
-  public final String bUj()
-  {
-    if (this.otj == null) {}
-    while (this.otj.ouL == null) {
-      return null;
-    }
-    return this.otj.ouL.PackPrice;
-  }
-  
-  protected abstract boolean bUk();
-  
-  protected final void bUl()
-  {
-    this.otq.setVisibility(8);
-    this.otr.setVisibility(8);
-    this.ots.setEnabled(false);
-    this.otu.setVisibility(8);
-    this.otw.setVisibility(0);
-    this.otw.setProgress(getProgress());
-    if (this.otv == null)
-    {
-      this.otw.setVisibility(0);
+    if (this.oWK == null) {}
+    while (!cby()) {
       return;
     }
-    this.otv.setVisibility(0);
-  }
-  
-  public void bUn()
-  {
-    if (this.otj == null) {}
-    while (!bUk()) {
-      return;
-    }
-    this.ott.setVisibility(8);
-    this.ott.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
-    switch (bUi())
+    this.oWU.setVisibility(8);
+    this.oWU.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
+    switch (cbw())
     {
     case 1: 
     case 2: 
     case 5: 
     case 9: 
     default: 
-      ad.w("MicroMsg.emoji.BaseEmojiItemHolder", "unknow product status:%d", new Object[] { Integer.valueOf(bUi()) });
+      ac.w("MicroMsg.emoji.BaseEmojiItemHolder", "unknow product status:%d", new Object[] { Integer.valueOf(cbw()) });
       return;
     case 8: 
-      this.otq.setVisibility(8);
-      this.otr.setBackgroundDrawable(null);
-      this.otr.setVisibility(0);
-      this.ots.setEnabled(false);
-      this.ott.setVisibility(0);
-      this.ott.setText(2131758322);
-      this.otu.setVisibility(4);
-      if (this.otv == null)
+      this.oWR.setVisibility(8);
+      this.oWS.setBackgroundDrawable(null);
+      this.oWS.setVisibility(0);
+      this.oWT.setEnabled(false);
+      this.oWU.setVisibility(0);
+      this.oWU.setText(2131758322);
+      this.oWV.setVisibility(4);
+      if (this.oWW == null)
       {
-        this.otw.setVisibility(4);
+        this.oWX.setVisibility(4);
         return;
       }
-      this.otv.setVisibility(4);
+      this.oWW.setVisibility(4);
       return;
     case 0: 
-      bUm();
+      cbA();
       return;
     case 6: 
-      bUl();
+      cbz();
       return;
     case 7: 
-      if (this.otj.ouP)
+      if (this.oWK.oYp)
       {
-        ad.d("MicroMsg.emoji.BaseEmojiItemHolder", "jacks use emoji");
-        this.otq.setVisibility(8);
-        this.otr.setBackgroundResource(2131231365);
-        this.otr.setVisibility(0);
-        this.otr.setTag(getProductId());
-        this.ots.setEnabled(true);
-        this.ott.setVisibility(0);
-        this.ott.setText(2131758387);
-        this.ott.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
-        this.otu.setVisibility(4);
-        if (this.otv == null)
+        ac.d("MicroMsg.emoji.BaseEmojiItemHolder", "jacks use emoji");
+        this.oWR.setVisibility(8);
+        this.oWS.setBackgroundResource(2131231365);
+        this.oWS.setVisibility(0);
+        this.oWS.setTag(getProductId());
+        this.oWT.setEnabled(true);
+        this.oWU.setVisibility(0);
+        this.oWU.setText(2131758387);
+        this.oWU.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+        this.oWV.setVisibility(4);
+        if (this.oWW == null)
         {
-          this.otw.setVisibility(4);
+          this.oWX.setVisibility(4);
           return;
         }
-        this.otv.setVisibility(4);
+        this.oWW.setVisibility(4);
         return;
       }
-      if ((this.otj.ouR) && (e.fd(this.otj.ouL.PackFlag, 64)))
+      if ((this.oWK.oYr) && (e.fg(this.oWK.oYl.PackFlag, 64)))
       {
-        this.otr.setVisibility(0);
-        this.otr.setBackgroundResource(2131231370);
-        this.ott.setVisibility(0);
-        this.ott.setText(2131758352);
-        this.ott.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
-        this.otu.setVisibility(4);
-        this.ots.setEnabled(true);
-        if (this.otv == null)
+        this.oWS.setVisibility(0);
+        this.oWS.setBackgroundResource(2131231370);
+        this.oWU.setVisibility(0);
+        this.oWU.setText(2131758352);
+        this.oWU.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+        this.oWV.setVisibility(4);
+        this.oWT.setEnabled(true);
+        if (this.oWW == null)
         {
-          this.otw.setVisibility(4);
+          this.oWX.setVisibility(4);
           return;
         }
-        this.otv.setVisibility(4);
+        this.oWW.setVisibility(4);
         return;
       }
-      this.otq.setVisibility(8);
-      this.otr.setVisibility(0);
-      this.otr.setBackgroundResource(2131231372);
-      this.ott.setVisibility(0);
-      this.ott.setText(2131758321);
-      this.ott.setTextColor(this.mContext.getResources().getColorStateList(2131100022));
-      this.otu.setVisibility(4);
-      this.ots.setEnabled(false);
-      if (this.otv == null)
+      this.oWR.setVisibility(8);
+      this.oWS.setVisibility(0);
+      this.oWS.setBackgroundResource(2131231372);
+      this.oWU.setVisibility(0);
+      this.oWU.setText(2131758321);
+      this.oWU.setTextColor(this.mContext.getResources().getColorStateList(2131100022));
+      this.oWV.setVisibility(4);
+      this.oWT.setEnabled(false);
+      if (this.oWW == null)
       {
-        this.otw.setVisibility(4);
+        this.oWX.setVisibility(4);
         return;
       }
-      this.otv.setVisibility(4);
+      this.oWW.setVisibility(4);
       return;
     case 3: 
-      bUm();
+      cbA();
       return;
     case 4: 
     case 12: 
-      this.otq.setVisibility(8);
-      this.otr.setBackgroundResource(2131231372);
-      this.otr.setVisibility(0);
-      if (this.otv == null) {
-        this.otw.setVisibility(4);
+      this.oWR.setVisibility(8);
+      this.oWS.setBackgroundResource(2131231372);
+      this.oWS.setVisibility(0);
+      if (this.oWW == null) {
+        this.oWX.setVisibility(4);
       }
       for (;;)
       {
-        this.ots.setEnabled(true);
-        this.otu.setVisibility(4);
-        this.ott.setVisibility(0);
-        if (this.otj.ouL == null) {
+        this.oWT.setEnabled(true);
+        this.oWV.setVisibility(4);
+        this.oWU.setVisibility(0);
+        if (this.oWK.oYl == null) {
           break;
         }
-        this.ott.setText(this.otj.ouL.PackPrice);
+        this.oWU.setText(this.oWK.oYl.PackPrice);
         return;
-        this.otv.setVisibility(4);
+        this.oWW.setVisibility(4);
       }
     case 10: 
-      this.otq.setVisibility(8);
-      this.otr.setBackgroundResource(2131231372);
-      this.otr.setVisibility(0);
-      this.ott.setVisibility(0);
-      this.ott.setText(2131758343);
-      this.otu.setVisibility(4);
-      this.ots.setEnabled(true);
-      if (this.otv == null)
+      this.oWR.setVisibility(8);
+      this.oWS.setBackgroundResource(2131231372);
+      this.oWS.setVisibility(0);
+      this.oWU.setVisibility(0);
+      this.oWU.setText(2131758343);
+      this.oWV.setVisibility(4);
+      this.oWT.setEnabled(true);
+      if (this.oWW == null)
       {
-        this.otw.setVisibility(4);
+        this.oWX.setVisibility(4);
         return;
       }
-      this.otv.setVisibility(4);
+      this.oWW.setVisibility(4);
       return;
     }
-    this.otq.setVisibility(0);
-    this.otr.setBackgroundResource(2131231372);
-    this.otr.setVisibility(0);
-    this.ott.setVisibility(0);
-    this.ott.setText("");
-    this.ots.setEnabled(false);
-    this.otu.setVisibility(4);
-    if (this.otv == null)
+    this.oWR.setVisibility(0);
+    this.oWS.setBackgroundResource(2131231372);
+    this.oWS.setVisibility(0);
+    this.oWU.setVisibility(0);
+    this.oWU.setText("");
+    this.oWT.setEnabled(false);
+    this.oWV.setVisibility(4);
+    if (this.oWW == null)
     {
-      this.otw.setVisibility(4);
+      this.oWX.setVisibility(4);
       return;
     }
-    this.otv.setVisibility(4);
+    this.oWW.setVisibility(4);
+  }
+  
+  protected abstract void cbn();
+  
+  protected abstract int[] cbo();
+  
+  protected abstract int cbp();
+  
+  public final void cbq()
+  {
+    this.lfN.setText(2131758385);
+  }
+  
+  public final ImageView cbr()
+  {
+    return this.oWM;
+  }
+  
+  public final void cbs()
+  {
+    this.oWM.setImageResource(2131232662);
+  }
+  
+  public final ImageView cbt()
+  {
+    return this.oWN;
+  }
+  
+  public final void cbu()
+  {
+    this.oWN.setImageResource(2131232094);
+  }
+  
+  public final void cbv()
+  {
+    this.oWP.setVisibility(8);
+    this.oWQ.setVisibility(8);
+  }
+  
+  public final int cbw()
+  {
+    if (this.oWK == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.oWK.mStatus)) {
+      return localInteger.intValue();
+    }
+  }
+  
+  public final String cbx()
+  {
+    if (this.oWK == null) {}
+    while (this.oWK.oYl == null) {
+      return null;
+    }
+    return this.oWK.oYl.PackPrice;
+  }
+  
+  protected abstract boolean cby();
+  
+  protected final void cbz()
+  {
+    this.oWR.setVisibility(8);
+    this.oWS.setVisibility(8);
+    this.oWT.setEnabled(false);
+    this.oWV.setVisibility(8);
+    this.oWX.setVisibility(0);
+    this.oWX.setProgress(getProgress());
+    if (this.oWW == null)
+    {
+      this.oWX.setVisibility(0);
+      return;
+    }
+    this.oWW.setVisibility(0);
   }
   
   public final String getProductId()
   {
-    if (this.otj == null) {}
-    while (this.otj.ouL == null) {
+    if (this.oWK == null) {}
+    while (this.oWK.oYl == null) {
       return null;
     }
-    return this.otj.ouL.ProductID;
+    return this.oWK.oYl.ProductID;
   }
   
   public final int getProgress()
   {
-    if (this.otj == null) {
+    if (this.oWK == null) {
       return 0;
     }
-    return this.otj.EI;
+    return this.oWK.FG;
   }
   
   public final View getRoot()
   {
-    return this.iIW;
+    return this.jja;
   }
   
   public final void setTitle(String paramString)
   {
-    this.kEu.setText(paramString);
+    this.lfN.setText(paramString);
   }
   
   public static enum a
@@ -461,10 +461,10 @@ public abstract class a
     static
     {
       AppMethodBeat.i(108294);
-      otD = new a("LIST", 0);
-      otE = new a("GRID_MAIN", 1);
-      otF = new a("GRID_RECOMMEND", 2);
-      otG = new a[] { otD, otE, otF };
+      oXe = new a("LIST", 0);
+      oXf = new a("GRID_MAIN", 1);
+      oXg = new a("GRID_RECOMMEND", 2);
+      oXh = new a[] { oXe, oXf, oXg };
       AppMethodBeat.o(108294);
     }
     
@@ -473,7 +473,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a
  * JD-Core Version:    0.7.0.1
  */

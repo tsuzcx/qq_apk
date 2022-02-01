@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ov
   extends b
 {
-  public a dui;
-  public b duj;
+  public a dro;
+  public b drp;
   
   public ov()
   {
@@ -16,28 +17,31 @@ public final class ov
   
   private ov(byte paramByte)
   {
-    AppMethodBeat.i(127289);
-    this.dui = new a();
-    this.duj = new b();
-    this.ESR = false;
+    AppMethodBeat.i(117551);
+    this.dro = new a();
+    this.drp = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(127289);
+    AppMethodBeat.o(117551);
   }
   
   public static final class a
   {
-    public String duk;
-    public String talker;
+    public Context context;
+    public String drq;
+    public int opType = 0;
   }
   
   public static final class b
   {
-    public boolean dew = false;
+    public boolean dbS = false;
+    public String drr;
+    public String thumbPath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.ov
  * JD-Core Version:    0.7.0.1
  */

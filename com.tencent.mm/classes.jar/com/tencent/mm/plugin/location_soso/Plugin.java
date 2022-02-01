@@ -5,7 +5,7 @@ import com.tencent.mm.model.aw;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class Plugin
   implements d
@@ -15,7 +15,7 @@ public class Plugin
   public Plugin()
   {
     AppMethodBeat.i(56228);
-    ad.d("MicroMsg.Plugin", "initLoctionInit");
+    ac.d("MicroMsg.Plugin", "initLoctionInit");
     AppMethodBeat.o(56228);
   }
   
@@ -36,7 +36,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.location_soso.Plugin
  * JD-Core Version:    0.7.0.1
  */

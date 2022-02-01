@@ -1,77 +1,163 @@
 package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
-import d.l;
-import java.util.HashMap;
-import java.util.HashSet;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/sdk/platformtools/MMCacheSlotManager;", "Lcom/tencent/mm/sdk/platformtools/BaseSlotManager;", "Lcom/tencent/mm/sdk/platformtools/MMCacheSlot;", "()V", "caches", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "add", "", "key", "clearSlot", "slotId", "", "slot", "contains", "", "containsKey", "getSlotByKey", "slotKey", "remarkSlot", "verifySlot", "libcompatible_release"})
 public final class al
-  extends d<ak>
 {
-  private final HashMap<String, ak> EUD;
+  public volatile boolean GrQ;
   
   public al()
   {
-    super(60L, (byte)0);
-    AppMethodBeat.i(156378);
-    this.EUD = new HashMap();
-    AppMethodBeat.o(156378);
+    this.GrQ = false;
   }
   
-  protected final void bO(String paramString, long paramLong)
+  public al(boolean paramBoolean)
   {
-    AppMethodBeat.i(156373);
-    k.h(paramString, "slotKey");
-    paramString = (ak)this.EUD.get(paramString);
-    if (paramString != null)
+    this.GrQ = paramBoolean;
+  }
+  
+  public final void block()
+  {
+    AppMethodBeat.i(157616);
+    try
     {
-      paramString.id = paramLong;
-      AppMethodBeat.o(156373);
+      for (;;)
+      {
+        boolean bool = this.GrQ;
+        if (bool) {
+          break;
+        }
+        try
+        {
+          wait();
+        }
+        catch (InterruptedException localInterruptedException) {}
+      }
       return;
     }
-    AppMethodBeat.o(156373);
-  }
-  
-  protected final boolean bP(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(156374);
-    k.h(paramString, "slotKey");
-    paramString = (ak)this.EUD.get(paramString);
-    if ((paramString != null) && (paramString.id == paramLong))
+    finally
     {
-      AppMethodBeat.o(156374);
-      return true;
+      AppMethodBeat.o(157616);
     }
-    AppMethodBeat.o(156374);
-    return false;
   }
   
-  public final boolean contains(String paramString)
+  public final void close()
   {
-    AppMethodBeat.i(156377);
-    k.h(paramString, "key");
-    if (aFe(paramString) != null)
+    try
     {
-      AppMethodBeat.o(156377);
-      return true;
+      this.GrQ = false;
+      return;
     }
-    AppMethodBeat.o(156377);
-    return false;
+    finally {}
   }
   
-  public final void xe(String paramString)
+  /* Error */
+  public final boolean eVj()
   {
-    AppMethodBeat.i(156376);
-    k.h(paramString, "key");
-    ((ak)eEX()).EUC.add(paramString);
-    AppMethodBeat.o(156376);
+    // Byte code:
+    //   0: ldc 34
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc2_w 35
+    //   8: lconst_0
+    //   9: lcmp
+    //   10: ifeq +74 -> 84
+    //   13: aload_0
+    //   14: monitorenter
+    //   15: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   18: lstore_1
+    //   19: ldc2_w 35
+    //   22: lload_1
+    //   23: ladd
+    //   24: lstore_3
+    //   25: aload_0
+    //   26: getfield 12	com/tencent/mm/sdk/platformtools/al:GrQ	Z
+    //   29: istore 5
+    //   31: iload 5
+    //   33: ifne +23 -> 56
+    //   36: lload_1
+    //   37: lload_3
+    //   38: lcmp
+    //   39: ifge +17 -> 56
+    //   42: aload_0
+    //   43: lload_3
+    //   44: lload_1
+    //   45: lsub
+    //   46: invokevirtual 45	java/lang/Object:wait	(J)V
+    //   49: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   52: lstore_1
+    //   53: goto -28 -> 25
+    //   56: aload_0
+    //   57: getfield 12	com/tencent/mm/sdk/platformtools/al:GrQ	Z
+    //   60: istore 5
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: ldc 34
+    //   66: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: iload 5
+    //   71: ireturn
+    //   72: astore 6
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: ldc 34
+    //   78: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: aload 6
+    //   83: athrow
+    //   84: aload_0
+    //   85: invokevirtual 47	com/tencent/mm/sdk/platformtools/al:block	()V
+    //   88: ldc 34
+    //   90: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: iconst_1
+    //   94: ireturn
+    //   95: astore 6
+    //   97: goto -48 -> 49
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	100	0	this	al
+    //   18	35	1	l1	long
+    //   24	20	3	l2	long
+    //   29	41	5	bool	boolean
+    //   72	10	6	localObject	Object
+    //   95	1	6	localInterruptedException	InterruptedException
+    // Exception table:
+    //   from	to	target	type
+    //   15	19	72	finally
+    //   25	31	72	finally
+    //   42	49	72	finally
+    //   49	53	72	finally
+    //   56	64	72	finally
+    //   74	76	72	finally
+    //   42	49	95	java/lang/InterruptedException
+  }
+  
+  public final void open()
+  {
+    AppMethodBeat.i(157615);
+    try
+    {
+      boolean bool = this.GrQ;
+      this.GrQ = true;
+      if (!bool) {
+        notifyAll();
+      }
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(157615);
+    }
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(157618);
+    String str = "MMConditionVariable[" + hashCode() + "," + this.GrQ + "]";
+    AppMethodBeat.o(157618);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.al
  * JD-Core Version:    0.7.0.1
  */

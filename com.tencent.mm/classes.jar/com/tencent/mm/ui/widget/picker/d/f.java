@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget.picker.d;
 
 public abstract interface f
 {
-  public abstract void ffX();
+  public abstract void fvW();
 }
 
 

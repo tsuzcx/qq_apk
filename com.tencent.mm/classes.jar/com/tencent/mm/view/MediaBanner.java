@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.c;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.n;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,30 +24,30 @@ import d.g;
 import d.g.b.u;
 import d.g.b.w;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/MediaBanner;", "VH", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Landroid/support/v7/widget/RecyclerView$Adapter;", "adapter", "getAdapter", "()Landroid/support/v7/widget/RecyclerView$Adapter;", "setAdapter", "(Landroid/support/v7/widget/RecyclerView$Adapter;)V", "container", "Landroid/widget/LinearLayout;", "getContainer", "()Landroid/widget/LinearLayout;", "container$delegate", "Lkotlin/Lazy;", "focusPosition", "getFocusPosition", "()I", "setFocusPosition", "(I)V", "indicator", "Lcom/tencent/mm/view/MediaBannerIndicator;", "getIndicator", "()Lcom/tencent/mm/view/MediaBannerIndicator;", "indicatorBottomMargin", "indicatorHeight", "getIndicatorHeight", "manager", "Landroid/support/v7/widget/LinearLayoutManager;", "getManager", "()Landroid/support/v7/widget/LinearLayoutManager;", "pageChangeCallback", "Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "getPageChangeCallback", "()Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "setPageChangeCallback", "(Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;)V", "pagerView", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "getPagerView", "()Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "pagerViewContainer", "getPagerViewContainer", "()Landroid/widget/FrameLayout;", "parentRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "getParentRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setParentRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "style", "Lcom/tencent/mm/view/MediaBanner$Style;", "getStyle", "()Lcom/tencent/mm/view/MediaBanner$Style;", "setStyle", "(Lcom/tencent/mm/view/MediaBanner$Style;)V", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "viewPool", "getViewPool", "()Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "setViewPool", "(Landroid/support/v7/widget/RecyclerView$RecycledViewPool;)V", "getChildViewAt", "Landroid/view/View;", "position", "getLinearLayoutManager", "isInterceptTouch", "", "direction", "event", "Landroid/view/MotionEvent;", "isSuperIntercept", "selectViewAt", "", "Companion", "ILayoutManagerScrollEnableCallback", "IPageChangeCallback", "Style", "libmmui_release"})
-public class MediaBanner<VH extends RecyclerView.v>
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/MediaBanner;", "VH", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Landroid/support/v7/widget/RecyclerView$Adapter;", "adapter", "getAdapter", "()Landroid/support/v7/widget/RecyclerView$Adapter;", "setAdapter", "(Landroid/support/v7/widget/RecyclerView$Adapter;)V", "container", "Landroid/widget/LinearLayout;", "getContainer", "()Landroid/widget/LinearLayout;", "container$delegate", "Lkotlin/Lazy;", "focusPosition", "getFocusPosition", "()I", "setFocusPosition", "(I)V", "indicator", "Lcom/tencent/mm/view/MediaBannerIndicator;", "getIndicator", "()Lcom/tencent/mm/view/MediaBannerIndicator;", "indicatorBottomMargin", "indicatorHeight", "getIndicatorHeight", "manager", "Landroid/support/v7/widget/LinearLayoutManager;", "getManager", "()Landroid/support/v7/widget/LinearLayoutManager;", "pageChangeCallback", "Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "getPageChangeCallback", "()Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "setPageChangeCallback", "(Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;)V", "pagerView", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "getPagerView", "()Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "pagerViewContainer", "getPagerViewContainer", "()Landroid/widget/FrameLayout;", "parentRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "getParentRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setParentRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "style", "Lcom/tencent/mm/view/MediaBanner$Style;", "getStyle", "()Lcom/tencent/mm/view/MediaBanner$Style;", "setStyle", "(Lcom/tencent/mm/view/MediaBanner$Style;)V", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "viewPool", "getViewPool", "()Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "setViewPool", "(Landroid/support/v7/widget/RecyclerView$RecycledViewPool;)V", "getChildViewAt", "Landroid/view/View;", "position", "getLinearLayoutManager", "isInterceptTouch", "", "direction", "event", "Landroid/view/MotionEvent;", "isSuperIntercept", "selectViewAt", "", "Companion", "ILayoutManagerScrollEnableCallback", "IPageChangeCallback", "Style", "libmmui_release"})
+public class MediaBanner<VH extends RecyclerView.w>
   extends FrameLayout
 {
-  public static final a HVe;
-  private final int HUV;
-  private MediaBanner.d HUW;
-  private c HUX;
-  private final MediaBannerIndicator HUY;
-  private int HUZ;
-  private RecyclerView HVa;
-  private final RecyclerHorizontalViewPager HVb;
-  private RecyclerView.n HVc;
-  private final f HVd;
-  private final FrameLayout LDy;
-  private RecyclerView.a<VH> fQu;
-  private final int mFx;
-  private final LinearLayoutManager pFy;
+  public static final MediaBanner.a JvO;
+  private final int JvD;
+  private MediaBanner.d JvE;
+  private c JvF;
+  private final LinearLayoutManager JvG;
+  private final MediaBannerIndicator JvH;
+  private int JvI;
+  private RecyclerView JvJ;
+  private final RecyclerHorizontalViewPager JvK;
+  private final FrameLayout JvL;
+  private RecyclerView.n JvM;
+  private final f JvN;
+  private RecyclerView.a<VH> fUp;
+  private final int nhC;
   
   static
   {
     AppMethodBeat.i(164547);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(MediaBanner.class), "container", "getContainer()Landroid/widget/LinearLayout;")) };
-    HVe = new a((byte)0);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(MediaBanner.class), "container", "getContainer()Landroid/widget/LinearLayout;")) };
+    JvO = new MediaBanner.a((byte)0);
     AppMethodBeat.o(164547);
   }
   
@@ -55,63 +55,63 @@ public class MediaBanner<VH extends RecyclerView.v>
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164553);
-    this.mFx = ((int)getResources().getDimension(2131165303));
-    this.HUV = ((int)getResources().getDimension(2131165292));
-    this.HUW = MediaBanner.d.HVg;
+    this.nhC = ((int)getResources().getDimension(2131165303));
+    this.JvD = ((int)getResources().getDimension(2131165292));
+    this.JvE = MediaBanner.d.JvQ;
     paramContext = getContext();
     d.g.b.k.g(paramContext, "context");
-    this.pFy = lE(paramContext);
-    this.HUY = new MediaBannerIndicator(getContext());
+    this.JvG = kx(paramContext);
+    this.JvH = new MediaBannerIndicator(getContext());
     paramContext = getContext();
     d.g.b.k.g(paramContext, "context");
-    this.HVb = ((RecyclerHorizontalViewPager)new g(this, paramContext));
-    this.LDy = new FrameLayout(getContext());
-    this.HVd = g.E((d.g.a.a)new f(this));
-    this.HVb.setHasFixedSize(false);
-    this.pFy.cb(3);
-    this.pFy.aw(true);
-    this.pFy.setOrientation(0);
-    this.HVb.setLayoutManager((RecyclerView.i)this.pFy);
-    this.LDy.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2));
+    this.JvK = ((RecyclerHorizontalViewPager)new g(this, paramContext));
+    this.JvL = new FrameLayout(getContext());
+    this.JvN = g.K((d.g.a.a)new f(this));
+    this.JvK.setHasFixedSize(false);
+    this.JvG.cb(3);
+    this.JvG.aw(true);
+    this.JvG.setOrientation(0);
+    this.JvK.setLayoutManager((RecyclerView.i)this.JvG);
+    this.JvL.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2));
     paramContext = getContainer();
     if (paramContext != null) {
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2));
     }
-    if (this.HUW == MediaBanner.d.HVg)
+    if (this.JvE == MediaBanner.d.JvQ)
     {
       paramContext = getContainer();
       if (paramContext != null)
       {
         paramContext.setOrientation(1);
         paramContext.setGravity(49);
-        this.LDy.addView((View)this.HVb, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-2, -2));
-        paramContext.addView((View)this.LDy, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
-        this.HUY.setGravity(17);
-        paramContext.addView((View)this.HUY, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, this.HUV));
+        this.JvL.addView((View)this.JvK, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-2, -2));
+        paramContext.addView((View)this.JvL, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
+        this.JvH.setGravity(17);
+        paramContext.addView((View)this.JvH, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, this.JvD));
         paramContext.setGravity(17);
         addView((View)paramContext, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
       }
     }
     for (;;)
     {
-      this.HVb.setOnInterceptTouchEvent((RecyclerHorizontalViewPager.c)new RecyclerHorizontalViewPager.c()
+      this.JvK.setOnInterceptTouchEvent((RecyclerHorizontalViewPager.c)new RecyclerHorizontalViewPager.c()
       {
-        private float qXK;
+        private float rYu;
         
-        public final boolean c(MotionEvent paramAnonymousMotionEvent, boolean paramAnonymousBoolean)
+        public final boolean b(MotionEvent paramAnonymousMotionEvent, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(164538);
           d.g.b.k.h(paramAnonymousMotionEvent, "event");
-          paramAnonymousBoolean = MediaBanner.b(paramAnonymousMotionEvent, paramAnonymousBoolean);
+          paramAnonymousBoolean = MediaBanner.c(paramAnonymousMotionEvent, paramAnonymousBoolean);
           AppMethodBeat.o(164538);
           return paramAnonymousBoolean;
         }
         
-        public final void m(MotionEvent paramAnonymousMotionEvent)
+        public final void k(MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(164537);
           d.g.b.k.h(paramAnonymousMotionEvent, "event");
-          Object localObject = this.HVf.getParentRecyclerView();
+          Object localObject = this.JvP.getParentRecyclerView();
           if (localObject != null)
           {
             localObject = ((RecyclerView)localObject).getLayoutManager();
@@ -120,36 +120,36 @@ public class MediaBanner<VH extends RecyclerView.v>
               if (paramAnonymousMotionEvent.getAction() != 0) {
                 break label95;
               }
-              this.qXK = paramAnonymousMotionEvent.getRawX();
+              this.rYu = paramAnonymousMotionEvent.getRawX();
             }
           }
           for (;;)
           {
             if ((paramAnonymousMotionEvent.getAction() == 1) || (paramAnonymousMotionEvent.getAction() == 3)) {
-              ((MediaBanner.b)localObject).lo(true);
+              ((MediaBanner.b)localObject).mc(true);
             }
             AppMethodBeat.o(164537);
             return;
             localObject = null;
             break;
             label95:
-            if ((paramAnonymousMotionEvent.getAction() == 2) && (Math.abs(paramAnonymousMotionEvent.getRawX() - this.qXK) >= 15.0F)) {
-              ((MediaBanner.b)localObject).lo(false);
+            if ((paramAnonymousMotionEvent.getAction() == 2) && (Math.abs(paramAnonymousMotionEvent.getRawX() - this.rYu) >= 15.0F)) {
+              ((MediaBanner.b)localObject).mc(false);
             }
           }
         }
       });
       AppMethodBeat.o(164553);
       return;
-      if (this.HUW == MediaBanner.d.HVh)
+      if (this.JvE == MediaBanner.d.JvR)
       {
-        this.LDy.addView((View)this.HVb);
-        addView((View)this.LDy, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-        paramContext = new FrameLayout.LayoutParams(-1, this.HUV);
-        paramContext.bottomMargin = this.mFx;
+        this.JvL.addView((View)this.JvK);
+        addView((View)this.JvL, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+        paramContext = new FrameLayout.LayoutParams(-1, this.JvD);
+        paramContext.bottomMargin = this.nhC;
         paramContext.gravity = 81;
-        this.HUY.setGravity(81);
-        addView((View)this.HUY, (ViewGroup.LayoutParams)paramContext);
+        this.JvH.setGravity(81);
+        addView((View)this.JvH, (ViewGroup.LayoutParams)paramContext);
       }
     }
   }
@@ -158,63 +158,63 @@ public class MediaBanner<VH extends RecyclerView.v>
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164554);
-    this.mFx = ((int)getResources().getDimension(2131165303));
-    this.HUV = ((int)getResources().getDimension(2131165292));
-    this.HUW = MediaBanner.d.HVg;
+    this.nhC = ((int)getResources().getDimension(2131165303));
+    this.JvD = ((int)getResources().getDimension(2131165292));
+    this.JvE = MediaBanner.d.JvQ;
     paramContext = getContext();
     d.g.b.k.g(paramContext, "context");
-    this.pFy = lE(paramContext);
-    this.HUY = new MediaBannerIndicator(getContext());
+    this.JvG = kx(paramContext);
+    this.JvH = new MediaBannerIndicator(getContext());
     paramContext = getContext();
     d.g.b.k.g(paramContext, "context");
-    this.HVb = ((RecyclerHorizontalViewPager)new g(this, paramContext));
-    this.LDy = new FrameLayout(getContext());
-    this.HVd = g.E((d.g.a.a)new f(this));
-    this.HVb.setHasFixedSize(false);
-    this.pFy.cb(3);
-    this.pFy.aw(true);
-    this.pFy.setOrientation(0);
-    this.HVb.setLayoutManager((RecyclerView.i)this.pFy);
-    this.LDy.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2));
+    this.JvK = ((RecyclerHorizontalViewPager)new g(this, paramContext));
+    this.JvL = new FrameLayout(getContext());
+    this.JvN = g.K((d.g.a.a)new f(this));
+    this.JvK.setHasFixedSize(false);
+    this.JvG.cb(3);
+    this.JvG.aw(true);
+    this.JvG.setOrientation(0);
+    this.JvK.setLayoutManager((RecyclerView.i)this.JvG);
+    this.JvL.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2));
     paramContext = getContainer();
     if (paramContext != null) {
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2));
     }
-    if (this.HUW == MediaBanner.d.HVg)
+    if (this.JvE == MediaBanner.d.JvQ)
     {
       paramContext = getContainer();
       if (paramContext != null)
       {
         paramContext.setOrientation(1);
         paramContext.setGravity(49);
-        this.LDy.addView((View)this.HVb, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-2, -2));
-        paramContext.addView((View)this.LDy, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
-        this.HUY.setGravity(17);
-        paramContext.addView((View)this.HUY, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, this.HUV));
+        this.JvL.addView((View)this.JvK, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-2, -2));
+        paramContext.addView((View)this.JvL, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
+        this.JvH.setGravity(17);
+        paramContext.addView((View)this.JvH, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, this.JvD));
         paramContext.setGravity(17);
         addView((View)paramContext, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
       }
     }
     for (;;)
     {
-      this.HVb.setOnInterceptTouchEvent((RecyclerHorizontalViewPager.c)new RecyclerHorizontalViewPager.c()
+      this.JvK.setOnInterceptTouchEvent((RecyclerHorizontalViewPager.c)new RecyclerHorizontalViewPager.c()
       {
-        private float qXK;
+        private float rYu;
         
-        public final boolean c(MotionEvent paramAnonymousMotionEvent, boolean paramAnonymousBoolean)
+        public final boolean b(MotionEvent paramAnonymousMotionEvent, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(164538);
           d.g.b.k.h(paramAnonymousMotionEvent, "event");
-          paramAnonymousBoolean = MediaBanner.b(paramAnonymousMotionEvent, paramAnonymousBoolean);
+          paramAnonymousBoolean = MediaBanner.c(paramAnonymousMotionEvent, paramAnonymousBoolean);
           AppMethodBeat.o(164538);
           return paramAnonymousBoolean;
         }
         
-        public final void m(MotionEvent paramAnonymousMotionEvent)
+        public final void k(MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(164537);
           d.g.b.k.h(paramAnonymousMotionEvent, "event");
-          Object localObject = this.HVf.getParentRecyclerView();
+          Object localObject = this.JvP.getParentRecyclerView();
           if (localObject != null)
           {
             localObject = ((RecyclerView)localObject).getLayoutManager();
@@ -223,41 +223,41 @@ public class MediaBanner<VH extends RecyclerView.v>
               if (paramAnonymousMotionEvent.getAction() != 0) {
                 break label95;
               }
-              this.qXK = paramAnonymousMotionEvent.getRawX();
+              this.rYu = paramAnonymousMotionEvent.getRawX();
             }
           }
           for (;;)
           {
             if ((paramAnonymousMotionEvent.getAction() == 1) || (paramAnonymousMotionEvent.getAction() == 3)) {
-              ((MediaBanner.b)localObject).lo(true);
+              ((MediaBanner.b)localObject).mc(true);
             }
             AppMethodBeat.o(164537);
             return;
             localObject = null;
             break;
             label95:
-            if ((paramAnonymousMotionEvent.getAction() == 2) && (Math.abs(paramAnonymousMotionEvent.getRawX() - this.qXK) >= 15.0F)) {
-              ((MediaBanner.b)localObject).lo(false);
+            if ((paramAnonymousMotionEvent.getAction() == 2) && (Math.abs(paramAnonymousMotionEvent.getRawX() - this.rYu) >= 15.0F)) {
+              ((MediaBanner.b)localObject).mc(false);
             }
           }
         }
       });
       AppMethodBeat.o(164554);
       return;
-      if (this.HUW == MediaBanner.d.HVh)
+      if (this.JvE == MediaBanner.d.JvR)
       {
-        this.LDy.addView((View)this.HVb);
-        addView((View)this.LDy, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-        paramContext = new FrameLayout.LayoutParams(-1, this.HUV);
-        paramContext.bottomMargin = this.mFx;
+        this.JvL.addView((View)this.JvK);
+        addView((View)this.JvL, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+        paramContext = new FrameLayout.LayoutParams(-1, this.JvD);
+        paramContext.bottomMargin = this.nhC;
         paramContext.gravity = 81;
-        this.HUY.setGravity(81);
-        addView((View)this.HUY, (ViewGroup.LayoutParams)paramContext);
+        this.JvH.setGravity(81);
+        addView((View)this.JvH, (ViewGroup.LayoutParams)paramContext);
       }
     }
   }
   
-  public static boolean b(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public static boolean c(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
     AppMethodBeat.i(164551);
     d.g.b.k.h(paramMotionEvent, "event");
@@ -265,84 +265,84 @@ public class MediaBanner<VH extends RecyclerView.v>
     return paramBoolean;
   }
   
-  private static LinearLayoutManager lE(Context paramContext)
+  private static LinearLayoutManager kx(Context paramContext)
   {
-    AppMethodBeat.i(203964);
+    AppMethodBeat.i(197317);
     d.g.b.k.h(paramContext, "context");
     paramContext = new LinearLayoutManager();
-    AppMethodBeat.o(203964);
+    AppMethodBeat.o(197317);
     return paramContext;
   }
   
   public final RecyclerView.a<VH> getAdapter()
   {
-    return this.fQu;
+    return this.fUp;
   }
   
   public final LinearLayout getContainer()
   {
     AppMethodBeat.i(164550);
-    LinearLayout localLinearLayout = (LinearLayout)this.HVd.getValue();
+    LinearLayout localLinearLayout = (LinearLayout)this.JvN.getValue();
     AppMethodBeat.o(164550);
     return localLinearLayout;
   }
   
   public final int getFocusPosition()
   {
-    return this.HUZ;
+    return this.JvI;
   }
   
   public final MediaBannerIndicator getIndicator()
   {
-    return this.HUY;
+    return this.JvH;
   }
   
   public final int getIndicatorHeight()
   {
-    return this.HUV;
+    return this.JvD;
   }
   
   public final LinearLayoutManager getManager()
   {
-    return this.pFy;
+    return this.JvG;
   }
   
   public final c getPageChangeCallback()
   {
-    return this.HUX;
+    return this.JvF;
   }
   
   public final RecyclerHorizontalViewPager getPagerView()
   {
-    return this.HVb;
+    return this.JvK;
   }
   
   public final FrameLayout getPagerViewContainer()
   {
-    return this.LDy;
+    return this.JvL;
   }
   
   public final RecyclerView getParentRecyclerView()
   {
-    return this.HVa;
+    return this.JvJ;
   }
   
   public final MediaBanner.d getStyle()
   {
-    return this.HUW;
+    return this.JvE;
   }
   
   public final RecyclerView.n getViewPool()
   {
-    return this.HVc;
+    return this.JvM;
   }
   
   public final void setAdapter(RecyclerView.a<VH> parama)
   {
     AppMethodBeat.i(164552);
-    this.fQu = parama;
-    this.HVb.setAdapter(this.fQu);
-    parama = this.fQu;
+    this.fUp = parama;
+    this.JvK.setAdapter(this.fUp);
+    parama = this.fUp;
     if (parama != null)
     {
       parama.a((RecyclerView.c)new e(this));
@@ -354,51 +354,42 @@ public class MediaBanner<VH extends RecyclerView.v>
   
   public final void setFocusPosition(int paramInt)
   {
-    this.HUZ = paramInt;
+    this.JvI = paramInt;
   }
   
   public final void setPageChangeCallback(c paramc)
   {
-    this.HUX = paramc;
+    this.JvF = paramc;
   }
   
   public final void setParentRecyclerView(RecyclerView paramRecyclerView)
   {
-    this.HVa = paramRecyclerView;
+    this.JvJ = paramRecyclerView;
   }
   
   public final void setStyle(MediaBanner.d paramd)
   {
     AppMethodBeat.i(164548);
     d.g.b.k.h(paramd, "<set-?>");
-    this.HUW = paramd;
+    this.JvE = paramd;
     AppMethodBeat.o(164548);
   }
   
   public final void setViewPool(RecyclerView.n paramn)
   {
     AppMethodBeat.i(164549);
-    this.HVc = paramn;
-    this.HVb.setRecycledViewPool(paramn);
+    this.JvM = paramn;
+    this.JvK.setRecycledViewPool(paramn);
     AppMethodBeat.o(164549);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/MediaBanner$Companion;", "", "()V", "TAG", "", "libmmui_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/MediaBanner$ILayoutManagerScrollEnableCallback;", "", "setScrollVerticallyEnable", "", "enable", "", "libmmui_release"})
-  public static abstract interface b
-  {
-    public abstract void lo(boolean paramBoolean);
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "", "onPageChange", "", "position", "", "isIdle", "", "libmmui_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "", "onPageChange", "", "position", "", "isIdle", "", "libmmui_release"})
   public static abstract interface c
   {
     public abstract void ad(int paramInt, boolean paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/view/MediaBanner$adapter$1", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeInserted", "positionStart", "", "itemCount", "onItemRangeRemoved", "libmmui_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/view/MediaBanner$adapter$1", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeInserted", "positionStart", "", "itemCount", "onItemRangeRemoved", "libmmui_release"})
   public static final class e
     extends RecyclerView.c
   {
@@ -406,10 +397,10 @@ public class MediaBanner<VH extends RecyclerView.v>
     {
       AppMethodBeat.i(164543);
       super.at(paramInt1, paramInt2);
-      RecyclerView.a locala = this.HVf.getAdapter();
+      RecyclerView.a locala = this.JvP.getAdapter();
       if (locala != null)
       {
-        this.HVf.getIndicator().setCount(locala.getItemCount());
+        this.JvP.getIndicator().setCount(locala.getItemCount());
         AppMethodBeat.o(164543);
         return;
       }
@@ -420,10 +411,10 @@ public class MediaBanner<VH extends RecyclerView.v>
     {
       AppMethodBeat.i(164544);
       super.au(paramInt1, paramInt2);
-      RecyclerView.a locala = this.HVf.getAdapter();
+      RecyclerView.a locala = this.JvP.getAdapter();
       if (locala != null)
       {
-        this.HVf.getIndicator().setCount(locala.getItemCount());
+        this.JvP.getIndicator().setCount(locala.getItemCount());
         AppMethodBeat.o(164544);
         return;
       }
@@ -434,16 +425,16 @@ public class MediaBanner<VH extends RecyclerView.v>
     {
       AppMethodBeat.i(164542);
       super.onChanged();
-      Object localObject = this.HVf.getAdapter();
+      Object localObject = this.JvP.getAdapter();
       if (localObject != null)
       {
-        this.HVf.getIndicator().setCount(((RecyclerView.a)localObject).getItemCount());
-        if (this.HVf.getIndicator().getCount() > 0)
+        this.JvP.getIndicator().setCount(((RecyclerView.a)localObject).getItemCount());
+        if (this.JvP.getIndicator().getCount() > 0)
         {
-          localObject = this.HVf.getPagerView();
+          localObject = this.JvP.getPagerView();
           com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.adn(), "com/tencent/mm/view/MediaBanner$adapter$1", "onChanged", "()V", "Undefined", "scrollToPosition", "(I)V");
-          ((RecyclerHorizontalViewPager)localObject).ca(((Integer)locala.lS(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.aeD(), "com/tencent/mm/view/MediaBanner$adapter$1", "onChanged", "()V", "Undefined", "scrollToPosition", "(I)V");
+          ((RecyclerHorizontalViewPager)localObject).ca(((Integer)locala.lR(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/view/MediaBanner$adapter$1", "onChanged", "()V", "Undefined", "scrollToPosition", "(I)V");
         }
         AppMethodBeat.o(164542);
@@ -453,7 +444,7 @@ public class MediaBanner<VH extends RecyclerView.v>
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Landroid/widget/LinearLayout;", "VH", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/widget/LinearLayout;", "VH", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "invoke"})
   static final class f
     extends d.g.b.l
     implements d.g.a.a<LinearLayout>
@@ -464,7 +455,7 @@ public class MediaBanner<VH extends RecyclerView.v>
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/view/MediaBanner$pagerView$1", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "onPageChange", "", "position", "", "isIdle", "", "libmmui_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/view/MediaBanner$pagerView$1", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "onPageChange", "", "position", "", "isIdle", "", "libmmui_release"})
   public static final class g
     extends RecyclerHorizontalViewPager
   {
@@ -477,9 +468,9 @@ public class MediaBanner<VH extends RecyclerView.v>
     {
       AppMethodBeat.i(164546);
       super.ad(paramInt, paramBoolean);
-      this.HVf.setFocusPosition(paramInt);
-      this.HVf.getIndicator().setCurrentIndex(paramInt);
-      MediaBanner.c localc = this.HVf.getPageChangeCallback();
+      this.JvP.setFocusPosition(paramInt);
+      this.JvP.getIndicator().setCurrentIndex(paramInt);
+      MediaBanner.c localc = this.JvP.getPageChangeCallback();
       if (localc != null)
       {
         localc.ad(paramInt, paramBoolean);
@@ -492,7 +483,7 @@ public class MediaBanner<VH extends RecyclerView.v>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.MediaBanner
  * JD-Core Version:    0.7.0.1
  */

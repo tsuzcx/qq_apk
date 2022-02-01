@@ -5,30 +5,30 @@ import java.util.Map;
 
 public enum p
 {
-  private static Map<Integer, p> bXA;
+  private static Map<Integer, p> bVi;
   int mId;
   int mSize;
   
   static
   {
     int i = 0;
-    bXr = new p("OBJECT", 0, 2, 0);
-    bXs = new p("BOOLEAN", 1, 4, 1);
-    bXt = new p("CHAR", 2, 5, 2);
-    bXu = new p("FLOAT", 3, 6, 4);
-    bXv = new p("DOUBLE", 4, 7, 8);
-    bXw = new p("BYTE", 5, 8, 1);
-    bXx = new p("SHORT", 6, 9, 2);
-    bXy = new p("INT", 7, 10, 4);
-    bXz = new p("LONG", 8, 11, 8);
-    bXB = new p[] { bXr, bXs, bXt, bXu, bXv, bXw, bXx, bXy, bXz };
-    bXA = j.zT();
+    bUZ = new p("OBJECT", 0, 2, 0);
+    bVa = new p("BOOLEAN", 1, 4, 1);
+    bVb = new p("CHAR", 2, 5, 2);
+    bVc = new p("FLOAT", 3, 6, 4);
+    bVd = new p("DOUBLE", 4, 7, 8);
+    bVe = new p("BYTE", 5, 8, 1);
+    bVf = new p("SHORT", 6, 9, 2);
+    bVg = new p("INT", 7, 10, 4);
+    bVh = new p("LONG", 8, 11, 8);
+    bVj = new p[] { bUZ, bVa, bVb, bVc, bVd, bVe, bVf, bVg, bVh };
+    bVi = j.zG();
     p[] arrayOfp = values();
     int j = arrayOfp.length;
     while (i < j)
     {
       p localp = arrayOfp[i];
-      bXA.put(Integer.valueOf(localp.mId), localp);
+      bVi.put(Integer.valueOf(localp.mId), localp);
       i += 1;
     }
   }
@@ -41,7 +41,7 @@ public enum p
   
   public static String c(p paramp)
   {
-    switch (1.bWI[paramp.ordinal()])
+    switch (1.bUq[paramp.ordinal()])
     {
     default: 
       throw new IllegalArgumentException("OBJECT type is not a primitive type");
@@ -63,9 +63,9 @@ public enum p
     return "long[]";
   }
   
-  public static p gv(int paramInt)
+  public static p gg(int paramInt)
   {
-    return (p)bXA.get(Integer.valueOf(paramInt));
+    return (p)bVi.get(Integer.valueOf(paramInt));
   }
 }
 

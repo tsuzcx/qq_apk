@@ -12,10 +12,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class DividerPreference
   extends Preference
 {
+  private boolean mLw;
   private View mView;
-  private boolean mjw;
-  private boolean uqQ;
-  private boolean uqR;
+  private boolean vzM;
+  private boolean vzN;
   
   public DividerPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,9 +27,9 @@ public class DividerPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(70645);
     this.mView = null;
-    this.uqQ = false;
-    this.uqR = false;
-    this.mjw = true;
+    this.vzM = false;
+    this.vzN = false;
+    this.mLw = true;
     setLayoutResource(2131493717);
     AppMethodBeat.o(70645);
   }
@@ -53,15 +53,15 @@ public class DividerPreference
     paramView = paramView.findViewById(2131299166);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     int i = BackwardSupportUtil.b.g(this.mContext, 10.0F);
-    if (this.uqQ) {}
+    if (this.vzM) {}
     for (int j = i;; j = 0)
     {
-      if (this.uqR) {}
+      if (this.vzN) {}
       for (;;)
       {
         localLayoutParams.setMargins(0, j, 0, i);
         paramView.setLayoutParams(localLayoutParams);
-        if (!this.mjw)
+        if (!this.mLw)
         {
           paramView.setVisibility(4);
           AppMethodBeat.o(70647);

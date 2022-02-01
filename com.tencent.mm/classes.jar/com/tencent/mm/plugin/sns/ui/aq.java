@@ -6,8 +6,8 @@ public final class aq
   public String desc;
   public int duration;
   public String title;
-  public String xsM;
-  public String xsN;
+  public String yFD;
+  public String yFE;
 }
 
 

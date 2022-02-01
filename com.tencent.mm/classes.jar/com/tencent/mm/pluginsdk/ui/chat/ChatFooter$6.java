@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class ChatFooter$6
   implements ActionMode.Callback
@@ -23,17 +23,17 @@ final class ChatFooter$6
   public final boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
     AppMethodBeat.i(185756);
-    paramActionMode = com.tencent.mm.pluginsdk.g.a.ewb();
-    h.vKh.m(1014L, 5L, 1L);
-    com.tencent.mm.plugin.c.a.aLf();
+    paramActionMode = com.tencent.mm.pluginsdk.g.a.eLv();
+    h.wUl.n(1014L, 5L, 1L);
+    com.tencent.mm.plugin.c.a.aRW();
     if (com.tencent.mm.plugin.c.a.z(paramActionMode))
     {
-      ad.i("MicroMsg.ChatFooter", "anti paste text %s", new Object[] { paramActionMode });
-      h.vKh.m(1014L, 6L, 1L);
+      ac.i("MicroMsg.ChatFooter", "anti paste text %s", new Object[] { paramActionMode });
+      h.wUl.n(1014L, 6L, 1L);
       if (paramMenu.size() > 0)
       {
         paramMenu.removeItem(16908322);
-        if (d.lf(23)) {
+        if (d.kZ(23)) {
           paramMenu.removeItem(16908340);
         }
       }

@@ -11,10 +11,10 @@ import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 public class CheckBoxWithTipIconPreference
   extends CheckBoxPreference
 {
-  private TextView zVJ;
-  private int zVK;
-  private String zVL;
-  private int zVM;
+  private TextView Bod;
+  private int Boe;
+  private String Bof;
+  private int Bog;
   
   public CheckBoxWithTipIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,35 +25,35 @@ public class CheckBoxWithTipIconPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(69843);
-    this.zVK = -1;
-    this.zVL = "";
-    this.zVM = 8;
+    this.Boe = -1;
+    this.Bof = "";
+    this.Bog = 8;
     setLayoutResource(2131494891);
     AppMethodBeat.o(69843);
   }
   
-  public final void Ru(int paramInt)
+  public final void TD(int paramInt)
   {
     AppMethodBeat.i(69846);
-    this.zVM = paramInt;
-    if (this.zVJ != null) {
-      this.zVJ.setVisibility(paramInt);
+    this.Bog = paramInt;
+    if (this.Bod != null) {
+      this.Bod.setVisibility(paramInt);
     }
     AppMethodBeat.o(69846);
   }
   
-  public final void eM(String paramString, int paramInt)
+  public final void eU(String paramString, int paramInt)
   {
     AppMethodBeat.i(69845);
-    this.zVK = paramInt;
-    this.zVL = paramString;
-    if (this.zVJ != null)
+    this.Boe = paramInt;
+    this.Bof = paramString;
+    if (this.Bod != null)
     {
-      if (this.zVK > 0) {
-        this.zVJ.setBackgroundResource(this.zVK);
+      if (this.Boe > 0) {
+        this.Bod.setBackgroundResource(this.Boe);
       }
-      if (!TextUtils.isEmpty(this.zVL)) {
-        this.zVJ.setText(this.zVL);
+      if (!TextUtils.isEmpty(this.Bof)) {
+        this.Bod.setText(this.Bof);
       }
     }
     AppMethodBeat.o(69845);
@@ -63,9 +63,9 @@ public class CheckBoxWithTipIconPreference
   {
     AppMethodBeat.i(69844);
     super.onBindView(paramView);
-    this.zVJ = ((TextView)paramView.findViewById(2131305883));
-    eM(this.zVL, this.zVK);
-    Ru(this.zVM);
+    this.Bod = ((TextView)paramView.findViewById(2131305883));
+    eU(this.Bof, this.Boe);
+    TD(this.Bog);
     AppMethodBeat.o(69844);
   }
 }

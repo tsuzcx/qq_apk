@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.pwdgroup.ui;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 
 final class FacingCreateChatRoomAllInOneUI$11
-  extends ap
+  extends ao
 {
   FacingCreateChatRoomAllInOneUI$11(FacingCreateChatRoomAllInOneUI paramFacingCreateChatRoomAllInOneUI) {}
   
@@ -19,19 +19,19 @@ final class FacingCreateChatRoomAllInOneUI$11
     {
       AppMethodBeat.o(27632);
       return;
-      if (FacingCreateChatRoomAllInOneUI.b(this.uIU) != null)
+      if (FacingCreateChatRoomAllInOneUI.b(this.vRL) != null)
       {
-        FacingCreateChatRoomAllInOneUI.b(this.uIU).setData(FacingCreateChatRoomAllInOneUI.c(this.uIU));
+        FacingCreateChatRoomAllInOneUI.b(this.vRL).setData(FacingCreateChatRoomAllInOneUI.c(this.vRL));
         AppMethodBeat.o(27632);
         return;
-        FacingCreateChatRoomAllInOneUI.d(this.uIU);
+        FacingCreateChatRoomAllInOneUI.d(this.vRL);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.FacingCreateChatRoomAllInOneUI.11
  * JD-Core Version:    0.7.0.1
  */

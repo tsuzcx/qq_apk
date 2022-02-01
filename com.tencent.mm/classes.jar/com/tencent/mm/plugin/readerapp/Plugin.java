@@ -7,22 +7,22 @@ import com.tencent.mm.plugin.readerapp.ui.b;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class Plugin
   implements d
 {
-  private c mQZ;
+  private c ntp;
   
   public Plugin()
   {
     AppMethodBeat.i(102644);
-    this.mQZ = new c()
+    this.ntp = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a ab(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(102643);
-        ad.i("MicroMsg.ReaderApp.Plugin", "create contact widget type[%s]", new Object[] { paramAnonymousString });
+        ac.i("MicroMsg.ReaderApp.Plugin", "create contact widget type[%s]", new Object[] { paramAnonymousString });
         if ("widget_type_news".equals(paramAnonymousString))
         {
           paramAnonymousContext = new b(paramAnonymousContext);
@@ -51,12 +51,12 @@ public final class Plugin
   
   public final c getContactWidgetFactory()
   {
-    return this.mQZ;
+    return this.ntp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.Plugin
  * JD-Core Version:    0.7.0.1
  */

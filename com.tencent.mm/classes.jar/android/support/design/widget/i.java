@@ -21,7 +21,7 @@ import java.util.List;
 final class i
   extends h
 {
-  private InsetDrawable oY;
+  private InsetDrawable pX;
   
   i(VisibilityAwareImageButton paramVisibilityAwareImageButton, m paramm)
   {
@@ -31,90 +31,90 @@ final class i
   private Animator d(float paramFloat1, float paramFloat2)
   {
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.play(ObjectAnimator.ofFloat(this.oO, "elevation", new float[] { paramFloat1 }).setDuration(0L)).with(ObjectAnimator.ofFloat(this.oO, View.TRANSLATION_Z, new float[] { paramFloat2 }).setDuration(100L));
-    localAnimatorSet.setInterpolator(ov);
+    localAnimatorSet.play(ObjectAnimator.ofFloat(this.pN, "elevation", new float[] { paramFloat1 }).setDuration(0L)).with(ObjectAnimator.ofFloat(this.pN, View.TRANSLATION_Z, new float[] { paramFloat2 }).setDuration(100L));
+    localAnimatorSet.setInterpolator(pu);
     return localAnimatorSet;
   }
   
   final void a(ColorStateList paramColorStateList1, PorterDuff.Mode paramMode, ColorStateList paramColorStateList2, int paramInt)
   {
-    this.oC = android.support.v4.graphics.drawable.a.i(cj());
-    android.support.v4.graphics.drawable.a.a(this.oC, paramColorStateList1);
+    this.pB = android.support.v4.graphics.drawable.a.i(cq());
+    android.support.v4.graphics.drawable.a.a(this.pB, paramColorStateList1);
     if (paramMode != null) {
-      android.support.v4.graphics.drawable.a.a(this.oC, paramMode);
+      android.support.v4.graphics.drawable.a.a(this.pB, paramMode);
     }
     if (paramInt > 0) {
-      this.oE = a(paramInt, paramColorStateList1);
+      this.pD = a(paramInt, paramColorStateList1);
     }
-    for (paramColorStateList1 = new LayerDrawable(new Drawable[] { this.oE, this.oC });; paramColorStateList1 = this.oC)
+    for (paramColorStateList1 = new LayerDrawable(new Drawable[] { this.pD, this.pB });; paramColorStateList1 = this.pB)
     {
-      this.oD = new RippleDrawable(android.support.design.e.a.b(paramColorStateList2), paramColorStateList1, null);
-      this.oF = this.oD;
-      this.oP.setBackgroundDrawable(this.oD);
+      this.pC = new RippleDrawable(android.support.design.e.a.b(paramColorStateList2), paramColorStateList1, null);
+      this.pE = this.pC;
+      this.pO.setBackgroundDrawable(this.pC);
       return;
-      this.oE = null;
+      this.pD = null;
     }
   }
   
-  final void ce() {}
-  
-  final void cf()
-  {
-    cg();
-  }
-  
-  final boolean ch()
-  {
-    return false;
-  }
-  
-  final b ci()
-  {
-    return new c();
-  }
-  
-  final GradientDrawable ck()
-  {
-    return new a();
-  }
-  
-  final void d(float paramFloat1, float paramFloat2, float paramFloat3)
+  final void c(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     if (Build.VERSION.SDK_INT == 21) {
-      this.oO.refreshDrawableState();
+      this.pN.refreshDrawableState();
     }
     for (;;)
     {
-      if (this.oP.cc()) {
-        cg();
+      if (this.pO.cj()) {
+        cn();
       }
       return;
       StateListAnimator localStateListAnimator = new StateListAnimator();
       localStateListAnimator.addState(PRESSED_ENABLED_STATE_SET, d(paramFloat1, paramFloat3));
-      localStateListAnimator.addState(oL, d(paramFloat1, paramFloat2));
-      localStateListAnimator.addState(oM, d(paramFloat1, paramFloat2));
-      localStateListAnimator.addState(oN, d(paramFloat1, paramFloat2));
+      localStateListAnimator.addState(pK, d(paramFloat1, paramFloat2));
+      localStateListAnimator.addState(pL, d(paramFloat1, paramFloat2));
+      localStateListAnimator.addState(pM, d(paramFloat1, paramFloat2));
       AnimatorSet localAnimatorSet = new AnimatorSet();
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(ObjectAnimator.ofFloat(this.oO, "elevation", new float[] { paramFloat1 }).setDuration(0L));
+      localArrayList.add(ObjectAnimator.ofFloat(this.pN, "elevation", new float[] { paramFloat1 }).setDuration(0L));
       if ((Build.VERSION.SDK_INT >= 22) && (Build.VERSION.SDK_INT <= 24)) {
-        localArrayList.add(ObjectAnimator.ofFloat(this.oO, View.TRANSLATION_Z, new float[] { this.oO.getTranslationZ() }).setDuration(100L));
+        localArrayList.add(ObjectAnimator.ofFloat(this.pN, View.TRANSLATION_Z, new float[] { this.pN.getTranslationZ() }).setDuration(100L));
       }
-      localArrayList.add(ObjectAnimator.ofFloat(this.oO, View.TRANSLATION_Z, new float[] { 0.0F }).setDuration(100L));
+      localArrayList.add(ObjectAnimator.ofFloat(this.pN, View.TRANSLATION_Z, new float[] { 0.0F }).setDuration(100L));
       localAnimatorSet.playSequentially((Animator[])localArrayList.toArray(new Animator[0]));
-      localAnimatorSet.setInterpolator(ov);
+      localAnimatorSet.setInterpolator(pu);
       localStateListAnimator.addState(ENABLED_STATE_SET, localAnimatorSet);
       localStateListAnimator.addState(EMPTY_STATE_SET, d(0.0F, 0.0F));
-      this.oO.setStateListAnimator(localStateListAnimator);
+      this.pN.setStateListAnimator(localStateListAnimator);
     }
+  }
+  
+  final void cl() {}
+  
+  final void cm()
+  {
+    cn();
+  }
+  
+  final boolean co()
+  {
+    return false;
+  }
+  
+  final b cp()
+  {
+    return new c();
+  }
+  
+  final GradientDrawable cr()
+  {
+    return new a();
   }
   
   final void d(Rect paramRect)
   {
-    if (this.oP.cc())
+    if (this.pO.cj())
     {
-      float f1 = this.oP.getRadius();
-      float f2 = this.oO.getElevation() + this.oH;
+      float f1 = this.pO.getRadius();
+      float f2 = this.pN.getElevation() + this.pG;
       int i = (int)Math.ceil(l.b(f2, f1, false));
       int j = (int)Math.ceil(l.a(f2, f1, false));
       paramRect.set(i, j, i, j);
@@ -127,51 +127,51 @@ final class i
   {
     if (Build.VERSION.SDK_INT == 21)
     {
-      if (!this.oO.isEnabled()) {
+      if (!this.pN.isEnabled()) {
         break label92;
       }
-      this.oO.setElevation(this.elevation);
-      if (this.oO.isPressed()) {
-        this.oO.setTranslationZ(this.oH);
+      this.pN.setElevation(this.elevation);
+      if (this.pN.isPressed()) {
+        this.pN.setTranslationZ(this.pG);
       }
     }
     else
     {
       return;
     }
-    if ((this.oO.isFocused()) || (this.oO.isHovered()))
+    if ((this.pN.isFocused()) || (this.pN.isHovered()))
     {
-      this.oO.setTranslationZ(this.oG);
+      this.pN.setTranslationZ(this.pF);
       return;
     }
-    this.oO.setTranslationZ(0.0F);
+    this.pN.setTranslationZ(0.0F);
     return;
     label92:
-    this.oO.setElevation(0.0F);
-    this.oO.setTranslationZ(0.0F);
+    this.pN.setElevation(0.0F);
+    this.pN.setTranslationZ(0.0F);
   }
   
   final void e(Rect paramRect)
   {
-    if (this.oP.cc())
+    if (this.pO.cj())
     {
-      this.oY = new InsetDrawable(this.oD, paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
-      this.oP.setBackgroundDrawable(this.oY);
+      this.pX = new InsetDrawable(this.pC, paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+      this.pO.setBackgroundDrawable(this.pX);
       return;
     }
-    this.oP.setBackgroundDrawable(this.oD);
+    this.pO.setBackgroundDrawable(this.pC);
   }
   
   public final float getElevation()
   {
-    return this.oO.getElevation();
+    return this.pN.getElevation();
   }
   
   final void setRippleColor(ColorStateList paramColorStateList)
   {
-    if ((this.oD instanceof RippleDrawable))
+    if ((this.pC instanceof RippleDrawable))
     {
-      ((RippleDrawable)this.oD).setColor(android.support.design.e.a.b(paramColorStateList));
+      ((RippleDrawable)this.pC).setColor(android.support.design.e.a.b(paramColorStateList));
       return;
     }
     super.setRippleColor(paramColorStateList);

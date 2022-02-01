@@ -8,48 +8,48 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.page.ae;
 import com.tencent.mm.plugin.webview.model.aw;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.vfs.e;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/complaint/AppBrandComplaintHelper;", "", "()V", "TAG", "", "tryTakeScreenshot", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/complaint/AppBrandComplaintHelper;", "", "()V", "TAG", "", "tryTakeScreenshot", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a jaY;
+  public static final a jBl;
   
   static
   {
-    AppMethodBeat.i(196241);
-    jaY = new a();
-    AppMethodBeat.o(196241);
+    AppMethodBeat.i(187106);
+    jBl = new a();
+    AppMethodBeat.o(187106);
   }
   
   public static final String b(ae paramae)
   {
-    AppMethodBeat.i(196240);
+    AppMethodBeat.i(187105);
     k.h(paramae, "pageView");
-    ad.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, pageView:".concat(String.valueOf(paramae)));
-    Object localObject = ((c)g.ab(c.class)).aTh();
+    ac.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, pageView:".concat(String.valueOf(paramae)));
+    Object localObject = ((c)g.ab(c.class)).getCacheDir();
     if (localObject == null)
     {
-      ad.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, null image cache dir");
-      AppMethodBeat.o(196240);
+      ac.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, null image cache dir");
+      AppMethodBeat.o(187105);
       return null;
     }
     localObject = new e((String)localObject + '/' + paramae.getAppId() + '_' + System.currentTimeMillis() + ".jpeg");
-    paramae.Ds();
+    paramae.CV();
     localObject = ((e)localObject).getAbsolutePath();
     k.g(localObject, "tempFile.absolutePath");
-    h.Iye.aP((Runnable)new a(paramae, (String)localObject));
-    paramae = aw.awH((String)localObject);
-    ad.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, localId:" + paramae + ", imagePath:" + (String)localObject);
-    AppMethodBeat.o(196240);
+    h.JZN.aS((Runnable)new a(paramae, (String)localObject));
+    paramae = aw.aBZ((String)localObject);
+    ac.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, localId:" + paramae + ", imagePath:" + (String)localObject);
+    AppMethodBeat.o(187105);
     return paramae;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -57,8 +57,8 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(196239);
-      Bitmap localBitmap = this.jaZ.bjW();
+      AppMethodBeat.i(187104);
+      Bitmap localBitmap = this.jBm.bqN();
       Object localObject5 = null;
       Object localObject6 = null;
       Object localObject1 = null;
@@ -82,46 +82,46 @@ public final class a
           localObject4 = f.a(localBitmap, 640, 640, false, true);
           localObject2 = localObject4;
           localObject1 = localObject4;
-          f.a((Bitmap)localObject4, 100, Bitmap.CompressFormat.JPEG, this.jba, true);
+          f.a((Bitmap)localObject4, 100, Bitmap.CompressFormat.JPEG, this.jBn, true);
           localObject2 = localObject4;
           localObject1 = localObject4;
-          ad.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, save bitmap to file:" + this.jba + ", cost:" + (System.currentTimeMillis() - l));
+          ac.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, save bitmap to file:" + this.jBn + ", cost:" + (System.currentTimeMillis() - l));
           localObject2 = localObject4;
           localObject1 = localObject4;
-          ((c)g.ab(c.class)).FH(this.jba);
+          ((c)g.ab(c.class)).JL(this.jBn);
         }
         if ((localBitmap != null) && (!localBitmap.isRecycled()))
         {
-          ad.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle bitmap:".concat(String.valueOf(localBitmap)));
+          ac.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle bitmap:".concat(String.valueOf(localBitmap)));
           localBitmap.recycle();
         }
         if ((localObject4 != null) && (!((Bitmap)localObject4).isRecycled()))
         {
-          ad.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle thumbnail:".concat(String.valueOf(localObject4)));
+          ac.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle thumbnail:".concat(String.valueOf(localObject4)));
           ((Bitmap)localObject4).recycle();
         }
-        AppMethodBeat.o(196239);
+        AppMethodBeat.o(187104);
         return;
       }
       catch (Exception localException)
       {
         localObject1 = localObject2;
-        ad.printErrStackTrace("MicroMsg.AppBrandComplaintHelper", (Throwable)localException, "tryTakeScreenshot, save bitmap to file fail", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.AppBrandComplaintHelper", (Throwable)localException, "tryTakeScreenshot, save bitmap to file fail", new Object[0]);
         return;
       }
       finally
       {
         if ((localBitmap != null) && (!localBitmap.isRecycled()))
         {
-          ad.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle bitmap:".concat(String.valueOf(localBitmap)));
+          ac.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle bitmap:".concat(String.valueOf(localBitmap)));
           localBitmap.recycle();
         }
         if ((localObject1 != null) && (!localObject1.isRecycled()))
         {
-          ad.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle thumbnail:".concat(String.valueOf(localObject1)));
+          ac.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle thumbnail:".concat(String.valueOf(localObject1)));
           localObject1.recycle();
         }
-        AppMethodBeat.o(196239);
+        AppMethodBeat.o(187104);
       }
     }
   }

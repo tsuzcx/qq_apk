@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.game;
 
-import android.database.Cursor;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.n.a;
@@ -10,92 +9,37 @@ import com.tencent.mm.plugin.game.api.b.a;
 import com.tencent.mm.plugin.game.media.o;
 import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class PluginGame
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.game.api.h
 {
-  c rNu;
+  c sVj;
   
   private void checkHaowanPublishState()
   {
     AppMethodBeat.i(40859);
-    com.tencent.e.h.Iye.q(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(40854);
-        Object localObject2;
-        for (;;)
-        {
-          try
-          {
-            Object localObject1 = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBg();
-            localObject2 = String.format("select * from %s where %s=%d", new Object[] { "GameHaowanPublishEdition", "publishState", Integer.valueOf(0) });
-            ad.i("MicroMsg.Haowan.GameHaowanPublishStorage", "queryAllPublish: %s", new Object[] { localObject2 });
-            localObject2 = ((com.tencent.mm.plugin.game.media.g)localObject1).rawQuery((String)localObject2, new String[0]);
-            if (localObject2 == null)
-            {
-              localObject1 = null;
-              if (!bt.gL((List)localObject1)) {
-                break;
-              }
-              ad.i("MicroMsg.PluginGame", "checkHaowanPublishState none");
-              AppMethodBeat.o(40854);
-              return;
-            }
-            localObject1 = new LinkedList();
-            if (((Cursor)localObject2).moveToNext())
-            {
-              com.tencent.mm.plugin.game.media.e locale = new com.tencent.mm.plugin.game.media.e();
-              locale.convertFrom((Cursor)localObject2);
-              ((LinkedList)localObject1).add(locale);
-            }
-            else
-            {
-              ((Cursor)localObject2).close();
-            }
-          }
-          catch (Exception localException)
-          {
-            ad.printErrStackTrace("MicroMsg.PluginGame", localException, "", new Object[0]);
-            AppMethodBeat.o(40854);
-            return;
-          }
-        }
-        Iterator localIterator = localException.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject2 = (com.tencent.mm.plugin.game.media.e)localIterator.next();
-          ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBg().acp(((com.tencent.mm.plugin.game.media.e)localObject2).field_taskId);
-        }
-        AppMethodBeat.o(40854);
-      }
-    }, 500L);
+    com.tencent.e.h.JZN.q(new PluginGame.1(this), 500L);
     AppMethodBeat.o(40859);
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(40855);
-    if (paramg.agu())
+    if (paramg.ahL())
     {
-      ad.i("MicroMsg.PluginGame", "PluginGame configure");
+      ac.i("MicroMsg.PluginGame", "PluginGame configure");
       b.a.a(new b());
-      if (this.rNu == null) {
-        this.rNu = new c();
+      if (this.sVj == null) {
+        this.sVj = new c();
       }
     }
-    if (paramg.ra(":tools")) {
-      com.tencent.mm.plugin.report.service.h.vKh.m(939L, 1L, 1L);
+    if (paramg.up(":tools")) {
+      com.tencent.mm.plugin.report.service.h.wUl.n(939L, 1L, 1L);
     }
-    if (paramg.ra(":toolsmp")) {
-      com.tencent.mm.plugin.report.service.h.vKh.m(939L, 10L, 1L);
+    if (paramg.up(":toolsmp")) {
+      com.tencent.mm.plugin.report.service.h.wUl.n(939L, 10L, 1L);
     }
     AppMethodBeat.o(40855);
   }
@@ -103,10 +47,10 @@ public class PluginGame
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(40856);
-    if (paramg.agu())
+    if (paramg.ahL())
     {
-      ad.i("MicroMsg.PluginGame", "PluginGame execute");
-      com.tencent.mm.bs.c.aCW("game");
+      ac.i("MicroMsg.PluginGame", "PluginGame execute");
+      com.tencent.mm.br.c.aIn("game");
       com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.game.api.e.class, new e());
       com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.game.api.d.class, new d());
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.game.api.f.class, new com.tencent.mm.kernel.c.e(new o()));
@@ -114,7 +58,7 @@ public class PluginGame
       AppMethodBeat.o(40856);
       return;
     }
-    if ((paramg.ra(":tools")) || (paramg.ra(":toolsmp")) || (paramg.rb(":appbrand"))) {
+    if ((paramg.up(":tools")) || (paramg.up(":toolsmp")) || (paramg.uq(":appbrand"))) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.game.api.f.class, new com.tencent.mm.kernel.c.e(new o()));
     }
     AppMethodBeat.o(40856);
@@ -123,32 +67,32 @@ public class PluginGame
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(40857);
-    ad.i("MicroMsg.PluginGame", "onAccountInitialized");
-    if (this.rNu != null)
+    ac.i("MicroMsg.PluginGame", "onAccountInitialized");
+    if (this.sVj != null)
     {
-      paramc = this.rNu;
-      ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().a("gamecenter", paramc.oXa, true);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rMV);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rMX);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rMY);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.fop);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rMZ);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rNa);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rNb);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rNc);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rNd);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rNg);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rNh);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rNe);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rNi);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rNj);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.pIJ);
-      com.tencent.mm.sdk.b.a.ESL.c(paramc.rNk);
-      k.bQj();
-      com.tencent.mm.plugin.game.model.a.e.bQj();
+      paramc = this.sVj;
+      ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().a("gamecenter", paramc.pAl, true);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUK);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUM);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUN);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.frK);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUO);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUP);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUQ);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUR);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUS);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUV);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUW);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUT);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUX);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUY);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.qrq);
+      com.tencent.mm.sdk.b.a.GpY.c(paramc.sUZ);
+      k.bXA();
+      com.tencent.mm.plugin.game.model.a.e.bXA();
       c.appForegroundListener.alive();
-      com.tencent.mm.plugin.recordvideo.background.a locala = com.tencent.mm.plugin.recordvideo.background.a.vdo;
-      com.tencent.mm.plugin.recordvideo.background.a.a(5, paramc.rMW);
+      com.tencent.mm.plugin.recordvideo.background.a locala = com.tencent.mm.plugin.recordvideo.background.a.wme;
+      com.tencent.mm.plugin.recordvideo.background.a.a(5, paramc.sUL);
     }
     checkHaowanPublishState();
     AppMethodBeat.o(40857);
@@ -157,34 +101,34 @@ public class PluginGame
   public void onAccountRelease()
   {
     AppMethodBeat.i(40858);
-    ad.i("MicroMsg.PluginGame", "onAccountRelease");
-    if (this.rNu != null)
+    ac.i("MicroMsg.PluginGame", "onAccountRelease");
+    if (this.sVj != null)
     {
-      c localc = this.rNu;
-      ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().b("gamecenter", localc.oXa, true);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rMV);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rMX);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rMY);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.fop);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rMZ);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rNa);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rNb);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rNc);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rNd);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rNg);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rNh);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rNe);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rNi);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rNj);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.pIJ);
-      com.tencent.mm.sdk.b.a.ESL.d(localc.rNk);
-      k.bQk();
-      com.tencent.mm.plugin.game.model.a.e.bQk();
+      c localc = this.sVj;
+      ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().b("gamecenter", localc.pAl, true);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUK);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUM);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUN);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.frK);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUO);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUP);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUQ);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUR);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUS);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUV);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUW);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUT);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUX);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUY);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.qrq);
+      com.tencent.mm.sdk.b.a.GpY.d(localc.sUZ);
+      k.bXB();
+      com.tencent.mm.plugin.game.model.a.e.bXB();
       c.appForegroundListener.dead();
-      com.tencent.mm.plugin.recordvideo.background.a locala = com.tencent.mm.plugin.recordvideo.background.a.vdo;
-      com.tencent.mm.plugin.recordvideo.background.a.b(5, localc.rMW);
+      com.tencent.mm.plugin.recordvideo.background.a locala = com.tencent.mm.plugin.recordvideo.background.a.wme;
+      com.tencent.mm.plugin.recordvideo.background.a.b(5, localc.sUL);
     }
-    com.tencent.mm.plugin.game.f.c.bql();
+    com.tencent.mm.plugin.game.f.c.bxi();
     AppMethodBeat.o(40858);
   }
 }

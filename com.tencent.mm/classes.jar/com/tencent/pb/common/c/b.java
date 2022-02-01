@@ -5,11 +5,11 @@ import com.tencent.wecall.talkroom.model.f;
 
 public final class b
 {
-  private static int InX = 2;
-  private static boolean InY = false;
+  private static int JPI = 2;
+  private static boolean JPJ = false;
   public static int level = 0;
   
-  private static String L(Object[] paramArrayOfObject)
+  private static String N(Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
       return "";
@@ -41,7 +41,7 @@ public final class b
   
   private static void U(int paramInt, String paramString1, String paramString2)
   {
-    e locale = f.fqf();
+    e locale = f.fIA();
     if (locale != null) {
       locale.F(paramInt, "MTSDK".concat(String.valueOf(paramString1)), paramString2);
     }
@@ -49,47 +49,47 @@ public final class b
   
   public static void d(String paramString, Object... paramVarArgs)
   {
-    if ((!InY) || (InX > 1)) {}
+    if ((!JPJ) || (JPI > 1)) {}
     while (paramString == null) {
       return;
     }
-    U(1, paramString, " ".concat(String.valueOf(L(paramVarArgs))));
+    U(1, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
   }
   
   public static void e(String paramString, Object... paramVarArgs)
   {
-    if ((!InY) || (InX > 4)) {
+    if ((!JPJ) || (JPI > 4)) {
       return;
     }
-    U(4, paramString, " ".concat(String.valueOf(L(paramVarArgs))));
+    U(4, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
   }
   
-  public static void flC()
+  public static void fBT()
   {
-    InX = 0;
-    InY = true;
+    JPI = 0;
+    JPJ = true;
   }
   
   public static void i(String paramString, Object... paramVarArgs)
   {
-    if ((!InY) || (InX > 2)) {
+    if ((!JPJ) || (JPI > 2)) {
       return;
     }
-    U(2, paramString, " ".concat(String.valueOf(L(paramVarArgs))));
+    U(2, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
   }
   
   public static void w(String paramString, Object... paramVarArgs)
   {
-    if ((!InY) || (InX > 3)) {}
+    if ((!JPJ) || (JPI > 3)) {}
     while (paramString == null) {
       return;
     }
-    U(3, paramString, " ".concat(String.valueOf(L(paramVarArgs))));
+    U(3, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.pb.common.c.b
  * JD-Core Version:    0.7.0.1
  */

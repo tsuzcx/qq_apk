@@ -20,22 +20,22 @@ import com.tencent.mm.plugin.fingerprint.b.a.c;
 import com.tencent.mm.plugin.fingerprint.b.a.d;
 import com.tencent.mm.plugin.fingerprint.b.a.e;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.am;
 
 public class WcPayCashierFingerprintDialog
   extends com.tencent.mm.ui.base.i
   implements LifecycleObserver
 {
-  private ImageView AsE;
-  TextView AsH;
-  ImageView AsI;
-  TextView AsJ;
-  a AsK;
-  b AsL;
-  private ViewGroup kWT;
+  private ImageView BKY;
+  TextView BLb;
+  ImageView BLc;
+  TextView BLd;
+  a BLe;
+  b BLf;
+  private ViewGroup lyD;
   
   public WcPayCashierFingerprintDialog(Context paramContext)
   {
@@ -57,16 +57,16 @@ public class WcPayCashierFingerprintDialog
   {
     AppMethodBeat.i(71430);
     initView();
-    setContentView(this.kWT);
+    setContentView(this.lyD);
     setCanceledOnTouchOutside(false);
-    this.AsK = new a();
+    this.BLe = new a();
     setOnCancelListener(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(71418);
         if (WcPayCashierFingerprintDialog.a(WcPayCashierFingerprintDialog.this) != null) {
-          WcPayCashierFingerprintDialog.a(WcPayCashierFingerprintDialog.this).eeU();
+          WcPayCashierFingerprintDialog.a(WcPayCashierFingerprintDialog.this).eup();
         }
         AppMethodBeat.o(71418);
       }
@@ -76,10 +76,10 @@ public class WcPayCashierFingerprintDialog
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(71419);
-        ad.i("MicroMsg.WcPayCashierFingerprintDialog", "dialog dismiss");
+        ac.i("MicroMsg.WcPayCashierFingerprintDialog", "dialog dismiss");
         if (WcPayCashierFingerprintDialog.b(WcPayCashierFingerprintDialog.this) != null)
         {
-          WcPayCashierFingerprintDialog.b(WcPayCashierFingerprintDialog.this).eeX();
+          WcPayCashierFingerprintDialog.b(WcPayCashierFingerprintDialog.this).eus();
           WcPayCashierFingerprintDialog.c(WcPayCashierFingerprintDialog.this);
         }
         WcPayCashierFingerprintDialog.d(WcPayCashierFingerprintDialog.this);
@@ -92,17 +92,17 @@ public class WcPayCashierFingerprintDialog
   private void initView()
   {
     AppMethodBeat.i(71431);
-    this.kWT = ((ViewGroup)View.inflate(getContext(), 2131496058, null));
-    this.AsE = ((ImageView)this.kWT.findViewById(2131307048));
-    this.AsH = ((TextView)this.kWT.findViewById(2131307049));
-    this.AsI = ((ImageView)this.kWT.findViewById(2131307051));
-    this.AsJ = ((TextView)this.kWT.findViewById(2131307050));
-    this.AsE.setOnClickListener(new View.OnClickListener()
+    this.lyD = ((ViewGroup)View.inflate(getContext(), 2131496058, null));
+    this.BKY = ((ImageView)this.lyD.findViewById(2131307048));
+    this.BLb = ((TextView)this.lyD.findViewById(2131307049));
+    this.BLc = ((ImageView)this.lyD.findViewById(2131307051));
+    this.BLd = ((TextView)this.lyD.findViewById(2131307050));
+    this.BKY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71420);
-        ad.i("MicroMsg.WcPayCashierFingerprintDialog", "click back icon");
+        ac.i("MicroMsg.WcPayCashierFingerprintDialog", "click back icon");
         WcPayCashierFingerprintDialog.this.cancel();
         AppMethodBeat.o(71420);
       }
@@ -110,11 +110,11 @@ public class WcPayCashierFingerprintDialog
     AppMethodBeat.o(71431);
   }
   
-  public final void eeW()
+  public final void eur()
   {
     AppMethodBeat.i(71435);
-    this.AsI.setImageDrawable(am.i(getContext(), 2131690621, getContext().getResources().getColor(2131099735)));
-    this.AsJ.setTextColor(getContext().getResources().getColor(2131100482));
+    this.BLc.setImageDrawable(am.k(getContext(), 2131690621, getContext().getResources().getColor(2131099735)));
+    this.BLd.setTextColor(getContext().getResources().getColor(2131100482));
     AppMethodBeat.o(71435);
   }
   
@@ -122,14 +122,14 @@ public class WcPayCashierFingerprintDialog
   public void onActivityDestroy()
   {
     AppMethodBeat.i(71434);
-    ad.i("MicroMsg.WcPayCashierFingerprintDialog", "activity destroy");
-    if (this.AsK != null)
+    ac.i("MicroMsg.WcPayCashierFingerprintDialog", "activity destroy");
+    if (this.BLe != null)
     {
-      this.AsK.eeX();
-      this.AsK = null;
+      this.BLe.eus();
+      this.BLe = null;
     }
-    this.AsE = null;
-    this.AsL = null;
+    this.BKY = null;
+    this.BLf = null;
     AppMethodBeat.o(71434);
   }
   
@@ -137,7 +137,7 @@ public class WcPayCashierFingerprintDialog
   public void onActivityPause()
   {
     AppMethodBeat.i(71433);
-    ad.i("MicroMsg.WcPayCashierFingerprintDialog", "activity paused, release and dismiss");
+    ac.i("MicroMsg.WcPayCashierFingerprintDialog", "activity paused, release and dismiss");
     cancel();
     AppMethodBeat.o(71433);
   }
@@ -146,41 +146,41 @@ public class WcPayCashierFingerprintDialog
   {
     AppMethodBeat.i(71432);
     super.onCreate(paramBundle);
-    paramBundle = this.AsK;
-    ad.i("MicroMsg.WcPayCashierFingerprintDialog", "req fingerprint auth 2");
-    com.tencent.mm.plugin.soter.d.a.dEP();
-    h.vKh.dB(1104, 38);
+    paramBundle = this.BLe;
+    ac.i("MicroMsg.WcPayCashierFingerprintDialog", "req fingerprint auth 2");
+    com.tencent.mm.plugin.soter.d.a.dTo();
+    h.wUl.dB(1104, 38);
     com.tencent.mm.plugin.fingerprint.b.a.i locali = (com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class);
-    com.tencent.mm.plugin.fingerprint.b.a.f localf = new com.tencent.mm.plugin.fingerprint.b.a.f(paramBundle.rcj);
-    localf.dcE = paramBundle.dcE;
-    locali.a(aj.getContext(), localf, new WcPayCashierFingerprintDialog.a.1(paramBundle));
+    com.tencent.mm.plugin.fingerprint.b.a.f localf = new com.tencent.mm.plugin.fingerprint.b.a.f(paramBundle.skD);
+    localf.dac = paramBundle.dac;
+    locali.a(ai.getContext(), localf, new WcPayCashierFingerprintDialog.a.1(paramBundle));
     AppMethodBeat.o(71432);
   }
   
   final class a
   {
-    int ApS;
-    com.tencent.mm.plugin.fingerprint.b.a.i AsN;
-    public String dcE;
-    com.tencent.mm.plugin.fingerprint.d.a rbu;
-    public String rcj;
+    int BIm;
+    com.tencent.mm.plugin.fingerprint.b.a.i BLh;
+    public String dac;
+    com.tencent.mm.plugin.fingerprint.d.a sjO;
+    public String skD;
     
     a()
     {
       AppMethodBeat.i(71426);
-      this.rbu = ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class));
-      this.AsN = ((com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class));
+      this.sjO = ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class));
+      this.BLh = ((com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class));
       AppMethodBeat.o(71426);
     }
     
-    public final void eeX()
+    public final void eus()
     {
       AppMethodBeat.i(71427);
-      ad.i("MicroMsg.WcPayCashierFingerprintDialog", "release fingerprint");
-      this.AsN.cancel();
-      com.tencent.soter.a.g.f.fnw().fnx();
-      this.rbu = null;
-      this.AsN = null;
+      ac.i("MicroMsg.WcPayCashierFingerprintDialog", "release fingerprint");
+      this.BLh.cancel();
+      com.tencent.soter.a.g.f.fDM().fDN();
+      this.sjO = null;
+      this.BLh = null;
       AppMethodBeat.o(71427);
     }
   }
@@ -189,11 +189,11 @@ public class WcPayCashierFingerprintDialog
   {
     public abstract void a(e parame);
     
-    public abstract void eeU();
+    public abstract void eup();
     
-    public abstract void eeV();
+    public abstract void euq();
     
-    public abstract void sP(boolean paramBoolean);
+    public abstract void tQ(boolean paramBoolean);
   }
 }
 

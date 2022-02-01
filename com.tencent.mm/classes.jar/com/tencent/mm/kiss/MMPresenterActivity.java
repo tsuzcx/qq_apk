@@ -9,30 +9,30 @@ import com.tencent.mm.vending.app.c;
 public abstract class MMPresenterActivity
   extends MMActivity
 {
-  private c gfW = new c();
+  private c gkC = new c();
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.gfW.B(getIntent(), this);
+    this.gkC.B(getIntent(), this);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.gfW.onDestroy();
+    this.gkC.onDestroy();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.gfW.abd(3);
+    this.gkC.adp(3);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.gfW.abd(2);
+    this.gkC.adp(2);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

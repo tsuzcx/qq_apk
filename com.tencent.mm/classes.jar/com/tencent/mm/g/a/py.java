@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class py
   extends b
 {
-  public a dvz;
+  public a dtc;
   
   public py()
   {
@@ -15,22 +15,22 @@ public final class py
   
   private py(byte paramByte)
   {
-    AppMethodBeat.i(63291);
-    this.dvz = new a();
-    this.ESR = false;
+    AppMethodBeat.i(184120);
+    this.dtc = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(63291);
+    AppMethodBeat.o(184120);
   }
   
   public static final class a
   {
-    public boolean dfO = false;
-    public int dvA = 0;
+    public int type = 0;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.py
  * JD-Core Version:    0.7.0.1
  */

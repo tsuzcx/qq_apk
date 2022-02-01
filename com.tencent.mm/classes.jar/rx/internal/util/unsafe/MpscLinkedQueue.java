@@ -62,7 +62,7 @@ public final class MpscLinkedQueue<E>
     b localb = (b)((b)localObject).get();
     if (localb != null)
     {
-      localObject = localb.fNP();
+      localObject = localb.ggF();
       spConsumerNode(localb);
       AppMethodBeat.o(90149);
       return localObject;
@@ -73,7 +73,7 @@ public final class MpscLinkedQueue<E>
       {
         localb = (b)((b)localObject).get();
       } while (localb == null);
-      localObject = localb.fNP();
+      localObject = localb.ggF();
       this.consumerNode = localb;
       AppMethodBeat.o(90149);
       return localObject;
@@ -97,7 +97,7 @@ public final class MpscLinkedQueue<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.util.unsafe.MpscLinkedQueue
  * JD-Core Version:    0.7.0.1
  */

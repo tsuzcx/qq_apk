@@ -7,9 +7,9 @@ public enum f$a
   static
   {
     AppMethodBeat.i(95473);
-    wEB = new a("IMG_SCENE_NONE", 0);
-    wEC = new a("IMG_SCENE_SNSUSER", 1);
-    wED = new a[] { wEB, wEC };
+    xQW = new a("IMG_SCENE_NONE", 0);
+    xQX = new a("IMG_SCENE_SNSUSER", 1);
+    xQY = new a[] { xQW, xQX };
     AppMethodBeat.o(95473);
   }
   

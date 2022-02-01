@@ -7,7 +7,7 @@ import com.tencent.mm.protocal.c;
 public class b
   extends f.a
 {
-  public final boolean Tj(int paramInt)
+  public final boolean Vr(int paramInt)
   {
     return false;
   }
@@ -22,47 +22,47 @@ public class b
     return false;
   }
   
-  public final void axu(String paramString) {}
+  public final void aCM(String paramString) {}
   
-  public final void ay(Bundle paramBundle) {}
+  public final void aD(Bundle paramBundle) {}
   
-  public final void az(Bundle paramBundle) {}
+  public final void aE(Bundle paramBundle) {}
   
-  public String dvR()
+  public String dKq()
   {
     return null;
   }
   
   public final void e(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public final void ekt() {}
-  
-  public final void eku() {}
-  
-  public final String ene()
+  public final String eCA()
   {
     return null;
   }
   
-  public final int enf()
+  public final String eCy()
+  {
+    return null;
+  }
+  
+  public final int eCz()
   {
     return 0;
   }
   
-  public final String eng()
+  public final Bundle eH(String paramString1, String paramString2)
   {
-    return null;
-  }
-  
-  public final Bundle ev(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(189767);
-    paramString1 = c.aDg(null);
-    AppMethodBeat.o(189767);
+    AppMethodBeat.i(205396);
+    paramString1 = c.aIx(null);
+    AppMethodBeat.o(205396);
     return paramString1;
   }
   
-  public boolean f(int paramInt, Bundle paramBundle)
+  public final void ezP() {}
+  
+  public final void ezQ() {}
+  
+  public boolean g(int paramInt, Bundle paramBundle)
   {
     return false;
   }
@@ -72,22 +72,22 @@ public class b
     return null;
   }
   
-  public Bundle j(int paramInt, Bundle paramBundle)
+  public Bundle k(int paramInt, Bundle paramBundle)
   {
     return null;
   }
   
-  public final void kd(String paramString1, String paramString2) {}
+  public final void kA(String paramString1, String paramString2) {}
   
-  public final void ke(String paramString1, String paramString2) {}
+  public final void kz(String paramString1, String paramString2) {}
   
-  public final void t(int paramInt, Bundle paramBundle) {}
+  public final void u(int paramInt, Bundle paramBundle) {}
   
-  public final void to(boolean paramBoolean) {}
+  public final void uq(boolean paramBoolean) {}
   
-  public final void tp(boolean paramBoolean) {}
+  public final void ur(boolean paramBoolean) {}
   
-  public final void tq(boolean paramBoolean) {}
+  public final void us(boolean paramBoolean) {}
 }
 
 

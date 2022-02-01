@@ -10,22 +10,22 @@ import android.view.inputmethod.InputConnection;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.numberpad.BaseNumberKeyboardView;
 import com.tencent.mm.plugin.appbrand.widget.input.numberpad.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class AppBrandNumberKeyboardView
   extends BaseNumberKeyboardView
 {
-  private int mcJ;
-  private final SparseArray<String> mcK;
-  InputConnection mcL;
-  a mcM;
+  private int mEH;
+  private final SparseArray<String> mEI;
+  InputConnection mEJ;
+  a mEK;
   
   public AppBrandNumberKeyboardView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(136495);
-    this.mcJ = 0;
-    this.mcK = new SparseArray() {};
+    this.mEH = 0;
+    this.mEI = new SparseArray() {};
     init();
     AppMethodBeat.o(136495);
   }
@@ -34,8 +34,8 @@ public final class AppBrandNumberKeyboardView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(136496);
-    this.mcJ = 0;
-    this.mcK = new SparseArray() {};
+    this.mEH = 0;
+    this.mEI = new SparseArray() {};
     init();
     AppMethodBeat.o(136496);
   }
@@ -95,29 +95,29 @@ public final class AppBrandNumberKeyboardView
       }
     };
     int i = 0;
-    while (i < this.mcK.size())
+    while (i < this.mEI.size())
     {
-      findViewById(getId((String)this.mcK.valueAt(i))).setOnClickListener(local2);
+      findViewById(getId((String)this.mEI.valueAt(i))).setOnClickListener(local2);
       i += 1;
     }
     findViewById(getId("tenpay_keyboard_x")).setOnClickListener(local2);
     findViewById(getId("tenpay_keyboard_d")).setOnClickListener(null);
     findViewById(getId("tenpay_keyboard_d")).setOnTouchListener(new an()
     {
-      protected final void bcn()
-      {
-        AppMethodBeat.i(136493);
-        ad.d("MicroMsg.AppBrand.AppBrandNumberKeyboardView", "backspace onSingleTap");
-        AppBrandNumberKeyboardView.d(AppBrandNumberKeyboardView.this);
-        AppMethodBeat.o(136493);
-      }
-      
-      protected final void btw()
+      protected final void bAw()
       {
         AppMethodBeat.i(136494);
-        ad.d("MicroMsg.AppBrand.AppBrandNumberKeyboardView", "backspace onRepeat");
+        ac.d("MicroMsg.AppBrand.AppBrandNumberKeyboardView", "backspace onRepeat");
         AppBrandNumberKeyboardView.d(AppBrandNumberKeyboardView.this);
         AppMethodBeat.o(136494);
+      }
+      
+      protected final void bjj()
+      {
+        AppMethodBeat.i(136493);
+        ac.d("MicroMsg.AppBrand.AppBrandNumberKeyboardView", "backspace onSingleTap");
+        AppBrandNumberKeyboardView.d(AppBrandNumberKeyboardView.this);
+        AppMethodBeat.o(136493);
       }
     });
     AppMethodBeat.o(136497);
@@ -135,13 +135,13 @@ public final class AppBrandNumberKeyboardView
   {
     AppMethodBeat.i(136498);
     super.setXMode(paramInt);
-    this.mcJ = paramInt;
+    this.mEH = paramInt;
     AppMethodBeat.o(136498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.AppBrandNumberKeyboardView
  * JD-Core Version:    0.7.0.1
  */

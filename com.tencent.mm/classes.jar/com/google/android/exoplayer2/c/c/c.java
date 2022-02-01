@@ -5,39 +5,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class c
   implements b.a
 {
-  private final long aSz;
-  private final long[] aWE;
-  private final long[] aZC;
+  private final long aTs;
+  private final long[] aXq;
+  private final long[] bao;
   
   c(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long paramLong)
   {
-    this.aWE = paramArrayOfLong1;
-    this.aZC = paramArrayOfLong2;
-    this.aSz = paramLong;
+    this.aXq = paramArrayOfLong1;
+    this.bao = paramArrayOfLong2;
+    this.aTs = paramLong;
   }
   
-  public final long K(long paramLong)
+  public final long L(long paramLong)
   {
     AppMethodBeat.i(92046);
-    paramLong = this.aZC[com.google.android.exoplayer2.i.x.a(this.aWE, paramLong, true)];
+    paramLong = this.bao[com.google.android.exoplayer2.i.x.a(this.aXq, paramLong, true)];
     AppMethodBeat.o(92046);
     return paramLong;
   }
   
-  public final long M(long paramLong)
+  public final long N(long paramLong)
   {
     AppMethodBeat.i(92047);
-    paramLong = this.aWE[com.google.android.exoplayer2.i.x.a(this.aZC, paramLong, true)];
+    paramLong = this.aXq[com.google.android.exoplayer2.i.x.a(this.bao, paramLong, true)];
     AppMethodBeat.o(92047);
     return paramLong;
   }
   
   public final long getDurationUs()
   {
-    return this.aSz;
+    return this.aTs;
   }
   
-  public final boolean sH()
+  public final boolean sQ()
   {
     return true;
   }

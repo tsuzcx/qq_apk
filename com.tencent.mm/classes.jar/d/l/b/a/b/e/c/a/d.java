@@ -6,25 +6,25 @@ import d.l.b.a.b.e.b.b.c;
 
 public final class d
 {
-  private static final b.a JLB;
-  public static final d JLC;
+  private static final b.a LyU;
+  public static final d LyV;
   
   static
   {
     AppMethodBeat.i(59232);
-    JLC = new d();
-    JLB = b.c.fGi();
+    LyV = new d();
+    LyU = b.c.fYM();
     AppMethodBeat.o(59232);
   }
   
-  public static b.a fGU()
+  public static b.a fZy()
   {
-    return JLB;
+    return LyU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.c.a.d
  * JD-Core Version:    0.7.0.1
  */

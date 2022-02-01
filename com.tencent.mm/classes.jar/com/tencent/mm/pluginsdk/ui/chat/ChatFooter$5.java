@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class ChatFooter$5
   implements View.OnLongClickListener
@@ -15,13 +15,13 @@ final class ChatFooter$5
   public final boolean onLongClick(View paramView)
   {
     AppMethodBeat.i(185755);
-    paramView = com.tencent.mm.pluginsdk.g.a.ewb();
-    h.vKh.m(1014L, 0L, 1L);
-    com.tencent.mm.plugin.c.a.aLf();
+    paramView = com.tencent.mm.pluginsdk.g.a.eLv();
+    h.wUl.n(1014L, 0L, 1L);
+    com.tencent.mm.plugin.c.a.aRW();
     if (com.tencent.mm.plugin.c.a.z(paramView))
     {
-      h.vKh.m(1014L, 1L, 1L);
-      ad.i("MicroMsg.ChatFooter", "anti paste text %s", new Object[] { paramView });
+      h.wUl.n(1014L, 1L, 1L);
+      ac.i("MicroMsg.ChatFooter", "anti paste text %s", new Object[] { paramView });
       AppMethodBeat.o(185755);
       return true;
     }

@@ -40,19 +40,19 @@ public abstract interface u
   
   public abstract int getVisibility();
   
-  public abstract boolean hS();
-  
-  public abstract boolean hT();
-  
-  public abstract void hU();
-  
   public abstract boolean hasExpandedActionView();
   
   public abstract boolean hideOverflowMenu();
   
-  public abstract ViewGroup iV();
+  public abstract boolean ia();
+  
+  public abstract boolean ib();
+  
+  public abstract void ic();
   
   public abstract boolean isOverflowMenuShowing();
+  
+  public abstract ViewGroup jd();
   
   public abstract void setBackgroundDrawable(Drawable paramDrawable);
   

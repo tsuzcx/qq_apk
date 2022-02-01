@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.account.security.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ez;
-import com.tencent.mm.protocal.protobuf.bmu;
+import com.tencent.mm.g.c.fd;
+import com.tencent.mm.protocal.protobuf.brk;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends ez
+  extends fd
 {
   protected static c.a info;
   
@@ -16,24 +16,24 @@ public final class d
   {
     AppMethodBeat.i(125520);
     c.a locala = new c.a();
-    locala.EYt = new Field[4];
+    locala.GvF = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "uid";
-    locala.EYv.put("uid", "TEXT default ''  PRIMARY KEY ");
+    locala.GvH.put("uid", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" uid TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "uid";
+    locala.GvG = "uid";
     locala.columns[1] = "name";
-    locala.EYv.put("name", "TEXT default '' ");
+    locala.GvH.put("name", "TEXT default '' ");
     localStringBuilder.append(" name TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "devicetype";
-    locala.EYv.put("devicetype", "TEXT default '' ");
+    locala.GvH.put("devicetype", "TEXT default '' ");
     localStringBuilder.append(" devicetype TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "createtime";
-    locala.EYv.put("createtime", "LONG default '0' ");
+    locala.GvH.put("createtime", "LONG default '0' ");
     localStringBuilder.append(" createtime LONG default '0' ");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -49,13 +49,13 @@ public final class d
     this.field_createtime = 0L;
   }
   
-  public d(bmu parambmu)
+  public d(brk parambrk)
   {
     AppMethodBeat.i(125519);
-    this.field_uid = parambmu.uuid;
-    this.field_devicetype = parambmu.devicetype;
-    this.field_name = parambmu.devicename;
-    this.field_createtime = parambmu.DKh;
+    this.field_uid = parambrk.uuid;
+    this.field_devicetype = parambrk.devicetype;
+    this.field_name = parambrk.devicename;
+    this.field_createtime = parambrk.Fgw;
     AppMethodBeat.o(125519);
   }
   
@@ -66,7 +66,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -10,18 +10,18 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
 import com.tencent.mm.plugin.webview.model.an;
 import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public final class b
 {
-  public static JSONObject HG(String paramString)
+  public static JSONObject LK(String paramString)
   {
     AppMethodBeat.i(78767);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(78767);
       return null;
@@ -34,16 +34,16 @@ public final class b
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.LuggageWebViewUtil", paramString.getMessage());
+      ac.e("MicroMsg.LuggageWebViewUtil", paramString.getMessage());
       AppMethodBeat.o(78767);
     }
     return null;
   }
   
-  public static boolean Ng(String paramString)
+  public static boolean Rp(String paramString)
   {
     AppMethodBeat.i(78769);
-    if ((!bt.isNullOrNil(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString))))
+    if ((!bs.isNullOrNil(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString))))
     {
       AppMethodBeat.o(78769);
       return true;
@@ -52,18 +52,18 @@ public final class b
     return false;
   }
   
-  public static WebViewJSSDKFileItem awq(String paramString)
+  public static WebViewJSSDKFileItem aBI(String paramString)
   {
     AppMethodBeat.i(78768);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.LuggageWebViewUtil", "get by local id error, local id is null or nil");
+      ac.e("MicroMsg.LuggageWebViewUtil", "get by local id error, local id is null or nil");
       AppMethodBeat.o(78768);
       return null;
     }
-    if (aj.cbv())
+    if (ai.ciE())
     {
-      paramString = g.emF().awC(paramString);
+      paramString = g.eCa().aBU(paramString);
       AppMethodBeat.o(78768);
       return paramString;
     }
@@ -77,7 +77,7 @@ public final class b
     AppMethodBeat.i(78766);
     if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
-      aq.f(paramRunnable);
+      ap.f(paramRunnable);
       AppMethodBeat.o(78766);
       return;
     }

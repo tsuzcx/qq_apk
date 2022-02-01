@@ -10,14 +10,14 @@ import d.l.b.a.b.k.a.i;
 public final class g
   implements i
 {
-  private final n JzO;
-  private final e JzP;
+  private final n Lnh;
+  private final e Lni;
   
   public g(n paramn, e parame)
   {
     AppMethodBeat.i(58194);
-    this.JzO = paramn;
-    this.JzP = parame;
+    this.Lnh = paramn;
+    this.Lni = parame;
     AppMethodBeat.o(58194);
   }
   
@@ -25,27 +25,27 @@ public final class g
   {
     AppMethodBeat.i(58193);
     k.h(parama, "classId");
-    p localp = o.a(this.JzO, parama);
+    p localp = o.a(this.Lnh, parama);
     if (localp == null)
     {
       AppMethodBeat.o(58193);
       return null;
     }
-    boolean bool = k.g(localp.fwp(), parama);
-    if ((aa.JfW) && (!bool))
+    boolean bool = k.g(localp.fOT(), parama);
+    if ((aa.KTq) && (!bool))
     {
-      parama = (Throwable)new AssertionError("Class with incorrect id found: expected " + parama + ", actual " + localp.fwp());
+      parama = (Throwable)new AssertionError("Class with incorrect id found: expected " + parama + ", actual " + localp.fOT());
       AppMethodBeat.o(58193);
       throw parama;
     }
-    parama = this.JzP.a(localp);
+    parama = this.Lni.a(localp);
     AppMethodBeat.o(58193);
     return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.g
  * JD-Core Version:    0.7.0.1
  */

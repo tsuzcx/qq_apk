@@ -59,7 +59,7 @@ public final class a
   public final b a(String paramString, com.google.c.a parama, int paramInt1, int paramInt2, Map<com.google.c.c, ?> paramMap)
   {
     AppMethodBeat.i(12300);
-    if (parama != com.google.c.a.bJk)
+    if (parama != com.google.c.a.bGS)
     {
       paramString = new IllegalArgumentException("Can only encode PDF_417, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12300);
@@ -71,33 +71,33 @@ public final class a
     int k;
     if (paramMap != null)
     {
-      if (paramMap.containsKey(com.google.c.c.bJy)) {
-        parama.bJJ = Boolean.valueOf(paramMap.get(com.google.c.c.bJy).toString()).booleanValue();
+      if (paramMap.containsKey(com.google.c.c.bHg)) {
+        parama.bHr = Boolean.valueOf(paramMap.get(com.google.c.c.bHg).toString()).booleanValue();
       }
-      if (paramMap.containsKey(com.google.c.c.bJz)) {
-        parama.bMw = com.google.c.e.a.c.valueOf(paramMap.get(com.google.c.c.bJz).toString());
+      if (paramMap.containsKey(com.google.c.c.bHh)) {
+        parama.bKe = com.google.c.e.a.c.valueOf(paramMap.get(com.google.c.c.bHh).toString());
       }
-      if (paramMap.containsKey(com.google.c.c.bJA))
+      if (paramMap.containsKey(com.google.c.c.bHi))
       {
-        d locald = (d)paramMap.get(com.google.c.c.bJA);
-        i = locald.bMs;
-        j = locald.bMr;
+        d locald = (d)paramMap.get(com.google.c.c.bHi);
+        i = locald.bKa;
+        j = locald.bJZ;
         k = locald.maxRows;
-        int m = locald.bMt;
-        parama.bMs = i;
-        parama.bMr = j;
+        int m = locald.bKb;
+        parama.bKa = i;
+        parama.bJZ = j;
         parama.maxRows = k;
-        parama.bMt = m;
+        parama.bKb = m;
       }
-      if (paramMap.containsKey(com.google.c.c.bJx))
+      if (paramMap.containsKey(com.google.c.c.bHf))
       {
-        i = Integer.parseInt(paramMap.get(com.google.c.c.bJx).toString());
-        if (paramMap.containsKey(com.google.c.c.bJs))
+        i = Integer.parseInt(paramMap.get(com.google.c.c.bHf).toString());
+        if (paramMap.containsKey(com.google.c.c.bHa))
         {
-          j = Integer.parseInt(paramMap.get(com.google.c.c.bJs).toString());
+          j = Integer.parseInt(paramMap.get(com.google.c.c.bHa).toString());
           label265:
-          if (paramMap.containsKey(com.google.c.c.bJt)) {
-            parama.bMx = Charset.forName(paramMap.get(com.google.c.c.bJt).toString());
+          if (paramMap.containsKey(com.google.c.c.bHb)) {
+            parama.bKf = Charset.forName(paramMap.get(com.google.c.c.bHb).toString());
           }
         }
       }
@@ -105,7 +105,7 @@ public final class a
     for (;;)
     {
       parama.k(paramString, j);
-      paramString = parama.bMv.bO(1, 4);
+      paramString = parama.bKd.bL(1, 4);
       if (paramInt2 > paramInt1)
       {
         j = 1;
@@ -133,7 +133,7 @@ public final class a
         {
           if (paramInt1 > 1)
           {
-            paramString = parama.bMv.bO(paramInt1, paramInt1 << 2);
+            paramString = parama.bKd.bL(paramInt1, paramInt1 << 2);
             if (j == 0) {
               break label444;
             }
@@ -164,7 +164,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.e.a
  * JD-Core Version:    0.7.0.1
  */

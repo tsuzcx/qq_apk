@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.aw;
 import d.f;
 import d.g;
 import d.g.a.a;
@@ -12,39 +12,39 @@ import d.l;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberReporter;", "", "()V", "TAG", "", "mmKv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getMmKv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmKv$delegate", "Lkotlin/Lazy;", "sMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberReportAction;", "Lkotlin/collections/HashMap;", "get", "appId", "init", "", "resotre", "save", "uninit", "luggage-wechat-full-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberReporter;", "", "()V", "TAG", "", "mmKv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getMmKv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmKv$delegate", "Lkotlin/Lazy;", "sMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberReportAction;", "Lkotlin/collections/HashMap;", "get", "appId", "init", "", "resotre", "save", "uninit", "luggage-wechat-full-sdk_release"})
 public final class z
 {
-  private static final HashMap<String, y> llQ;
-  private static final f llR;
-  public static final z llS;
+  private static final HashMap<String, y> lLH;
+  private static final f lLI;
+  public static final z lLJ;
   
   static
   {
     AppMethodBeat.i(169650);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(z.class), "mmKv", "getMmKv()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;")) };
-    llS = new z();
-    llQ = new HashMap();
-    llR = g.E((a)z.a.llT);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(z.class), "mmKv", "getMmKv()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;")) };
+    lLJ = new z();
+    lLH = new HashMap();
+    lLI = g.K((a)z.a.lLK);
     AppMethodBeat.o(169650);
   }
   
-  private static ax blF()
+  private static aw bsu()
   {
     AppMethodBeat.i(169651);
-    ax localax = (ax)llR.getValue();
+    aw localaw = (aw)lLI.getValue();
     AppMethodBeat.o(169651);
-    return localax;
+    return localaw;
   }
   
-  public final void Kx(String paramString)
+  public final void OE(String paramString)
   {
     try
     {
       AppMethodBeat.i(169652);
       d.g.b.k.h(paramString, "appId");
       y localy = new y((byte)0);
-      ((Map)llQ).put(paramString, localy);
+      ((Map)lLH).put(paramString, localy);
       AppMethodBeat.o(169652);
       return;
     }
@@ -55,15 +55,15 @@ public final class z
     }
   }
   
-  public final void Ml(String paramString)
+  public final void Qs(String paramString)
   {
     try
     {
       AppMethodBeat.i(169653);
       d.g.b.k.h(paramString, "appId");
-      y localy = Mn(paramString);
+      y localy = Qu(paramString);
       if (localy != null) {
-        blF().putString(paramString, localy.toString()).commit();
+        bsu().putString(paramString, localy.toString()).commit();
       }
       AppMethodBeat.o(169653);
       return;
@@ -72,7 +72,7 @@ public final class z
   }
   
   /* Error */
-  public final void Mm(String paramString)
+  public final void Qt(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -82,10 +82,10 @@ public final class z
     //   7: aload_1
     //   8: ldc 116
     //   10: invokestatic 122	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: invokestatic 141	com/tencent/mm/plugin/appbrand/phonenumber/z:blF	()Lcom/tencent/mm/sdk/platformtools/ax;
+    //   13: invokestatic 141	com/tencent/mm/plugin/appbrand/phonenumber/z:bsu	()Lcom/tencent/mm/sdk/platformtools/aw;
     //   16: aload_1
     //   17: ldc 158
-    //   19: invokevirtual 162	com/tencent/mm/sdk/platformtools/ax:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   19: invokevirtual 162	com/tencent/mm/sdk/platformtools/aw:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   22: astore 4
     //   24: aload 4
     //   26: astore_3
@@ -109,7 +109,7 @@ public final class z
     //   63: aload_3
     //   64: invokespecial 177	com/tencent/mm/plugin/appbrand/phonenumber/y:<init>	(Ljava/lang/String;)V
     //   67: astore_3
-    //   68: getstatic 80	com/tencent/mm/plugin/appbrand/phonenumber/z:llQ	Ljava/util/HashMap;
+    //   68: getstatic 80	com/tencent/mm/plugin/appbrand/phonenumber/z:lLH	Ljava/util/HashMap;
     //   71: checkcast 129	java/util/Map
     //   74: aload_1
     //   75: aload_3
@@ -143,13 +143,13 @@ public final class z
     //   82	87	95	finally
   }
   
-  public final y Mn(String paramString)
+  public final y Qu(String paramString)
   {
     try
     {
       AppMethodBeat.i(169655);
       d.g.b.k.h(paramString, "appId");
-      paramString = (y)llQ.get(paramString);
+      paramString = (y)lLH.get(paramString);
       AppMethodBeat.o(169655);
       return paramString;
     }
@@ -161,7 +161,7 @@ public final class z
   }
   
   /* Error */
-  public final void Mo(String paramString)
+  public final void Qv(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -178,7 +178,7 @@ public final class z
     //   22: astore_3
     //   23: aload_0
     //   24: aload_1
-    //   25: invokevirtual 139	com/tencent/mm/plugin/appbrand/phonenumber/z:Mn	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/phonenumber/y;
+    //   25: invokevirtual 139	com/tencent/mm/plugin/appbrand/phonenumber/z:Qu	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/phonenumber/y;
     //   28: astore_2
     //   29: aload_2
     //   30: ifnull +50 -> 80
@@ -190,14 +190,14 @@ public final class z
     //   41: aload_2
     //   42: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: invokevirtual 195	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 201	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;)V
-    //   51: getstatic 80	com/tencent/mm/plugin/appbrand/phonenumber/z:llQ	Ljava/util/HashMap;
+    //   48: invokestatic 201	com/tencent/mm/sdk/platformtools/ac:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   51: getstatic 80	com/tencent/mm/plugin/appbrand/phonenumber/z:lLH	Ljava/util/HashMap;
     //   54: aload_1
     //   55: invokevirtual 204	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   58: pop
-    //   59: invokestatic 141	com/tencent/mm/plugin/appbrand/phonenumber/z:blF	()Lcom/tencent/mm/sdk/platformtools/ax;
+    //   59: invokestatic 141	com/tencent/mm/plugin/appbrand/phonenumber/z:bsu	()Lcom/tencent/mm/sdk/platformtools/aw;
     //   62: aload_1
-    //   63: invokevirtual 207	com/tencent/mm/sdk/platformtools/ax:remove	(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    //   63: invokevirtual 207	com/tencent/mm/sdk/platformtools/aw:remove	(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
     //   66: invokeinterface 155 1 0
     //   71: pop
     //   72: ldc 183
@@ -228,7 +228,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.z
  * JD-Core Version:    0.7.0.1
  */

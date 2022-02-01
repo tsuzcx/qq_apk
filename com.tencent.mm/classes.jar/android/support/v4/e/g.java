@@ -3,10 +3,10 @@ package android.support.v4.e;
 public final class g<E>
   implements Cloneable
 {
-  public static final Object LS = new Object();
-  public boolean LT = false;
-  public long[] LU;
-  public Object[] LV;
+  public static final Object MP = new Object();
+  public boolean MQ = false;
+  public long[] MR;
+  public Object[] MS;
   public int mSize;
   
   public g()
@@ -17,23 +17,23 @@ public final class g<E>
   private g(byte paramByte)
   {
     paramByte = d.aI(10);
-    this.LU = new long[paramByte];
-    this.LV = new Object[paramByte];
+    this.MR = new long[paramByte];
+    this.MS = new Object[paramByte];
     this.mSize = 0;
   }
   
   private void gc()
   {
     int m = this.mSize;
-    long[] arrayOfLong = this.LU;
-    Object[] arrayOfObject = this.LV;
+    long[] arrayOfLong = this.MR;
+    Object[] arrayOfObject = this.MS;
     int i = 0;
     int k;
     for (int j = 0; i < m; j = k)
     {
       Object localObject = arrayOfObject[i];
       k = j;
-      if (localObject != LS)
+      if (localObject != MP)
       {
         if (i != j)
         {
@@ -45,40 +45,40 @@ public final class g<E>
       }
       i += 1;
     }
-    this.LT = false;
+    this.MQ = false;
     this.mSize = j;
   }
   
   public final void append(long paramLong, E paramE)
   {
-    if ((this.mSize != 0) && (paramLong <= this.LU[(this.mSize - 1)]))
+    if ((this.mSize != 0) && (paramLong <= this.MR[(this.mSize - 1)]))
     {
       put(paramLong, paramE);
       return;
     }
-    if ((this.LT) && (this.mSize >= this.LU.length)) {
+    if ((this.MQ) && (this.mSize >= this.MR.length)) {
       gc();
     }
     int i = this.mSize;
-    if (i >= this.LU.length)
+    if (i >= this.MR.length)
     {
       int j = d.aI(i + 1);
       long[] arrayOfLong = new long[j];
       Object[] arrayOfObject = new Object[j];
-      System.arraycopy(this.LU, 0, arrayOfLong, 0, this.LU.length);
-      System.arraycopy(this.LV, 0, arrayOfObject, 0, this.LV.length);
-      this.LU = arrayOfLong;
-      this.LV = arrayOfObject;
+      System.arraycopy(this.MR, 0, arrayOfLong, 0, this.MR.length);
+      System.arraycopy(this.MS, 0, arrayOfObject, 0, this.MS.length);
+      this.MR = arrayOfLong;
+      this.MS = arrayOfObject;
     }
-    this.LU[i] = paramLong;
-    this.LV[i] = paramE;
+    this.MR[i] = paramLong;
+    this.MS[i] = paramE;
     this.mSize = (i + 1);
   }
   
   public final void clear()
   {
     int j = this.mSize;
-    Object[] arrayOfObject = this.LV;
+    Object[] arrayOfObject = this.MS;
     int i = 0;
     while (i < j)
     {
@@ -86,16 +86,16 @@ public final class g<E>
       i += 1;
     }
     this.mSize = 0;
-    this.LT = false;
+    this.MQ = false;
   }
   
-  public final g<E> eS()
+  public final g<E> fa()
   {
     try
     {
       g localg = (g)super.clone();
-      localg.LU = ((long[])this.LU.clone());
-      localg.LV = ((Object[])this.LV.clone());
+      localg.MR = ((long[])this.MR.clone());
+      localg.MS = ((Object[])this.MS.clone());
       return localg;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
@@ -106,89 +106,89 @@ public final class g<E>
   
   public final E get(long paramLong, E paramE)
   {
-    int i = d.a(this.LU, this.mSize, paramLong);
-    if ((i < 0) || (this.LV[i] == LS)) {
+    int i = d.a(this.MR, this.mSize, paramLong);
+    if ((i < 0) || (this.MS[i] == MP)) {
       return paramE;
     }
-    return this.LV[i];
+    return this.MS[i];
   }
   
   public final int indexOfKey(long paramLong)
   {
-    if (this.LT) {
+    if (this.MQ) {
       gc();
     }
-    return d.a(this.LU, this.mSize, paramLong);
+    return d.a(this.MR, this.mSize, paramLong);
   }
   
   public final long keyAt(int paramInt)
   {
-    if (this.LT) {
+    if (this.MQ) {
       gc();
     }
-    return this.LU[paramInt];
+    return this.MR[paramInt];
   }
   
   public final void put(long paramLong, E paramE)
   {
-    int i = d.a(this.LU, this.mSize, paramLong);
+    int i = d.a(this.MR, this.mSize, paramLong);
     if (i >= 0)
     {
-      this.LV[i] = paramE;
+      this.MS[i] = paramE;
       return;
     }
     int j = i ^ 0xFFFFFFFF;
-    if ((j < this.mSize) && (this.LV[j] == LS))
+    if ((j < this.mSize) && (this.MS[j] == MP))
     {
-      this.LU[j] = paramLong;
-      this.LV[j] = paramE;
+      this.MR[j] = paramLong;
+      this.MS[j] = paramE;
       return;
     }
     i = j;
-    if (this.LT)
+    if (this.MQ)
     {
       i = j;
-      if (this.mSize >= this.LU.length)
+      if (this.mSize >= this.MR.length)
       {
         gc();
-        i = d.a(this.LU, this.mSize, paramLong) ^ 0xFFFFFFFF;
+        i = d.a(this.MR, this.mSize, paramLong) ^ 0xFFFFFFFF;
       }
     }
     Object localObject;
-    if (this.mSize >= this.LU.length)
+    if (this.mSize >= this.MR.length)
     {
       j = d.aI(this.mSize + 1);
       localObject = new long[j];
       Object[] arrayOfObject = new Object[j];
-      System.arraycopy(this.LU, 0, localObject, 0, this.LU.length);
-      System.arraycopy(this.LV, 0, arrayOfObject, 0, this.LV.length);
-      this.LU = ((long[])localObject);
-      this.LV = arrayOfObject;
+      System.arraycopy(this.MR, 0, localObject, 0, this.MR.length);
+      System.arraycopy(this.MS, 0, arrayOfObject, 0, this.MS.length);
+      this.MR = ((long[])localObject);
+      this.MS = arrayOfObject;
     }
     if (this.mSize - i != 0)
     {
-      localObject = this.LU;
+      localObject = this.MR;
       System.arraycopy(localObject, i, localObject, i + 1, this.mSize - i);
-      localObject = this.LV;
+      localObject = this.MS;
       System.arraycopy(localObject, i, localObject, i + 1, this.mSize - i);
     }
-    this.LU[i] = paramLong;
-    this.LV[i] = paramE;
+    this.MR[i] = paramLong;
+    this.MS[i] = paramE;
     this.mSize += 1;
   }
   
   public final void removeAt(int paramInt)
   {
-    if (this.LV[paramInt] != LS)
+    if (this.MS[paramInt] != MP)
     {
-      this.LV[paramInt] = LS;
-      this.LT = true;
+      this.MS[paramInt] = MP;
+      this.MQ = true;
     }
   }
   
   public final int size()
   {
-    if (this.LT) {
+    if (this.MQ) {
       gc();
     }
     return this.mSize;
@@ -226,10 +226,10 @@ public final class g<E>
   
   public final E valueAt(int paramInt)
   {
-    if (this.LT) {
+    if (this.MQ) {
       gc();
     }
-    return this.LV[paramInt];
+    return this.MS[paramInt];
   }
 }
 

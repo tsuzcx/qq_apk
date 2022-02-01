@@ -2,43 +2,43 @@ package com.tencent.mm.plugin.backup.b;
 
 public final class e
 {
-  public int mqj = -100;
-  public int mqk;
-  public int mql;
-  public int mqm;
-  public long mqn;
-  public long mqo;
-  public long mqp;
-  public long mqq;
-  public long mqr;
-  public long mqs;
-  public long mqt;
-  public long mqu;
+  public int mSk = -100;
+  public int mSl;
+  public int mSm;
+  public int mSn;
+  public long mSp;
+  public long mSq;
+  public long mSr;
+  public long mSs;
+  public long mSt;
+  public long mSu;
+  public long mSv;
+  public long mSw;
   
-  public final void O(int paramInt1, int paramInt2, int paramInt3)
+  public final void P(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.mqj = paramInt1;
-    this.mqk = paramInt2;
-    this.mql = paramInt3;
+    this.mSk = paramInt1;
+    this.mSl = paramInt2;
+    this.mSm = paramInt3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, long paramLong3, long paramLong4)
   {
-    this.mqj = paramInt1;
-    this.mqk = paramInt2;
-    this.mql = paramInt3;
-    this.mqn = paramLong1;
-    this.mqq = paramLong2;
-    this.mqo = paramLong3;
-    this.mqp = paramLong4;
+    this.mSk = paramInt1;
+    this.mSl = paramInt2;
+    this.mSm = paramInt3;
+    this.mSp = paramLong1;
+    this.mSs = paramLong2;
+    this.mSq = paramLong3;
+    this.mSr = paramLong4;
   }
   
-  public final int bwc()
+  public final int bCY()
   {
-    if (this.mqq == 0L) {
+    if (this.mSs == 0L) {
       return 1;
     }
-    double d = this.mqn * 100L / this.mqq;
+    double d = this.mSp * 100L / this.mSs;
     if (d <= 5.0D) {}
     for (d *= 4.0D;; d = (d - 5.0D) * 80.0D / 95.0D + 20.0D) {
       return (int)d;

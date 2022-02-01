@@ -13,7 +13,7 @@ final class WalletBaseUI$10
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(72969);
-    a.b(this.Ifm, null, -10000);
+    a.b(this.JGO, null, -10000);
     AppMethodBeat.o(72969);
   }
 }

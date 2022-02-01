@@ -15,7 +15,7 @@ final class b$a$1
   {
     AppMethodBeat.i(63212);
     float f = paramInt2;
-    paramInt1 = this.keE;
+    paramInt1 = this.kFu;
     Object localObject = Shader.TileMode.REPEAT;
     localObject = new LinearGradient(0.0F, 0.0F, 0.0F, f, new int[] { 0, paramInt1 }, new float[] { 0.0F, 1.0F }, (Shader.TileMode)localObject);
     AppMethodBeat.o(63212);
@@ -24,7 +24,7 @@ final class b$a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.b.a.1
  * JD-Core Version:    0.7.0.1
  */

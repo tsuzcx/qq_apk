@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ho
   extends b
 {
-  public a dlk;
+  public a diF;
   
   public ho()
   {
@@ -16,27 +15,22 @@ public final class ho
   
   private ho(byte paramByte)
   {
-    AppMethodBeat.i(116030);
-    this.dlk = new a();
-    this.ESR = false;
+    AppMethodBeat.i(140986);
+    this.diF = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116030);
+    AppMethodBeat.o(140986);
   }
   
   public static final class a
   {
-    public int actionCode;
-    public String appId;
-    public Context context;
-    public String extMsg;
-    public String messageAction;
-    public String messageExt;
-    public int scene;
+    public float diG = 0.0F;
+    public float diH = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.ho
  * JD-Core Version:    0.7.0.1
  */

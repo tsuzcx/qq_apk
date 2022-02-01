@@ -7,8 +7,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.storage.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.a.e;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +25,9 @@ final class SnsCommentDetailUI$7
     {
       try
       {
-        paramMenuItem = af.dtu().apK(this.xxF.dxX());
-        localn = SnsCommentDetailUI.u(this.xxA);
-        boolean bool = bt.kU(SnsCommentDetailUI.t(this.xxA), this.xxF.field_userName);
+        paramMenuItem = af.dHR().auT(this.yKv.dMu());
+        localn = SnsCommentDetailUI.u(this.yKq);
+        boolean bool = bs.lr(SnsCommentDetailUI.t(this.yKq), this.yKv.field_userName);
         localArrayList1 = new ArrayList();
         localArrayList2 = new ArrayList();
         if ((bool) && (paramMenuItem != null))
@@ -35,17 +35,17 @@ final class SnsCommentDetailUI$7
           if (paramMenuItem.field_localPrivate <= 0) {
             continue;
           }
-          if ((!bt.isNullOrNil(af.dta())) && (af.dta().equals(paramMenuItem.field_userName)))
+          if ((!bs.isNullOrNil(af.dHx())) && (af.dHx().equals(paramMenuItem.field_userName)))
           {
             localArrayList1.add(localn.mContext.getString(2131763967));
             localArrayList2.add(Integer.valueOf(1));
           }
           if (localArrayList1.size() != 0)
           {
-            localn.xlR = new e(localn.mContext, 1, false);
-            localn.xlR.HrX = new n.1(localn, localArrayList1, localArrayList2);
-            localn.xlR.HrY = new n.2(localn, paramMenuItem);
-            localn.xlR.csG();
+            localn.yyJ = new e(localn.mContext, 1, false);
+            localn.yyJ.ISu = new n.1(localn, localArrayList1, localArrayList2);
+            localn.yyJ.ISv = new n.2(localn, paramMenuItem);
+            localn.yyJ.cED();
           }
         }
       }
@@ -54,7 +54,7 @@ final class SnsCommentDetailUI$7
         n localn;
         ArrayList localArrayList1;
         ArrayList localArrayList2;
-        ad.printErrStackTrace("MicroMsg.SnsCommentDetailUI", paramMenuItem, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.SnsCommentDetailUI", paramMenuItem, "", new Object[0]);
         continue;
       }
       AppMethodBeat.o(163090);
@@ -66,7 +66,7 @@ final class SnsCommentDetailUI$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.7
  * JD-Core Version:    0.7.0.1
  */

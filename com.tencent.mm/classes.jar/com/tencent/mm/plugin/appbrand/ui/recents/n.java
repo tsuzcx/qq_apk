@@ -9,8 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.f;
 import android.support.v7.widget.RecyclerView.f.a;
 import android.support.v7.widget.RecyclerView.f.c;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.RecyclerView.w;
 import android.support.v7.widget.as;
 import android.support.v7.widget.v;
 import android.view.View;
@@ -29,108 +29,111 @@ import java.util.Set;
 final class n
   extends v
 {
-  final ArrayList<AppBrandLauncherRecentsList.e> lJA;
-  boolean lJB;
-  boolean lJi;
-  boolean lJj;
-  private final RecyclerView.f.a lJk;
-  final Set<RecyclerView.f.a> lJl;
-  private final Interpolator lJm;
-  private final ArrayList<b> lJn;
-  final ArrayList<RecyclerView.v> lJo;
-  private final ArrayList<d> lJp;
-  final ArrayList<RecyclerView.v> lJq;
-  private final ArrayList<AppBrandLauncherRecentsList.e> lJr;
-  final ArrayList<AppBrandLauncherRecentsList.e> lJs;
-  private final ArrayList<AppBrandLauncherRecentsList.e> lJt;
-  final ArrayList<AppBrandLauncherRecentsList.e> lJu;
-  private final ArrayList<f> lJv;
-  final ArrayList<AppBrandLauncherRecentsList.e> lJw;
-  private final ArrayList<RecyclerView.v> lJx;
-  private final ArrayList<AppBrandLauncherRecentsList.e> lJy;
-  final ArrayList<AppBrandLauncherRecentsList.e> lJz;
+  boolean mlf;
+  boolean mlg;
+  private final RecyclerView.f.a mlh;
+  final Set<RecyclerView.f.a> mli;
+  private final Interpolator mlj;
+  private final ArrayList<b> mlk;
+  final ArrayList<RecyclerView.w> mll;
+  private final ArrayList<d> mlm;
+  final ArrayList<RecyclerView.w> mln;
+  private final ArrayList<AppBrandLauncherRecentsList.e> mlo;
+  final ArrayList<AppBrandLauncherRecentsList.e> mlp;
+  private final ArrayList<AppBrandLauncherRecentsList.e> mlq;
+  final ArrayList<AppBrandLauncherRecentsList.e> mlr;
+  private final ArrayList<f> mls;
+  final ArrayList<AppBrandLauncherRecentsList.e> mlt;
+  private final ArrayList<RecyclerView.w> mlu;
+  private final ArrayList<AppBrandLauncherRecentsList.e> mlv;
+  final ArrayList<AppBrandLauncherRecentsList.e> mlw;
+  final ArrayList<AppBrandLauncherRecentsList.e> mlx;
+  boolean mly;
   
   n()
   {
     AppMethodBeat.i(49247);
-    this.lJi = false;
-    this.lJj = true;
-    this.lJk = new RecyclerView.f.a()
+    this.mlf = false;
+    this.mlg = true;
+    this.mlh = new RecyclerView.f.a()
     {
-      public final void kV()
+      public final void ld()
       {
         AppMethodBeat.i(49231);
-        Iterator localIterator = n.this.lJl.iterator();
-        while (localIterator.hasNext()) {
-          ((RecyclerView.f.a)localIterator.next()).kV();
+        synchronized (n.this.mli)
+        {
+          Iterator localIterator = new HashSet(n.this.mli).iterator();
+          if (localIterator.hasNext()) {
+            ((RecyclerView.f.a)localIterator.next()).ld();
+          }
         }
-        n.this.lJB = false;
+        n.this.mly = false;
         AppMethodBeat.o(49231);
       }
     };
-    this.lJl = new HashSet();
-    this.lJm = new AccelerateDecelerateInterpolator();
-    this.lJn = new ArrayList();
-    this.lJo = new ArrayList();
-    this.lJp = new ArrayList();
-    this.lJq = new ArrayList();
-    this.lJr = new ArrayList();
-    this.lJs = new ArrayList();
-    this.lJt = new ArrayList();
-    this.lJu = new ArrayList();
-    this.lJv = new ArrayList();
-    this.lJw = new ArrayList();
-    this.lJx = new ArrayList();
-    this.lJy = new ArrayList();
-    this.lJz = new ArrayList();
-    this.lJA = new ArrayList();
-    this.lJB = false;
+    this.mli = new HashSet();
+    this.mlj = new AccelerateDecelerateInterpolator();
+    this.mlk = new ArrayList();
+    this.mll = new ArrayList();
+    this.mlm = new ArrayList();
+    this.mln = new ArrayList();
+    this.mlo = new ArrayList();
+    this.mlp = new ArrayList();
+    this.mlq = new ArrayList();
+    this.mlr = new ArrayList();
+    this.mls = new ArrayList();
+    this.mlt = new ArrayList();
+    this.mlu = new ArrayList();
+    this.mlv = new ArrayList();
+    this.mlw = new ArrayList();
+    this.mlx = new ArrayList();
+    this.mly = false;
     AppMethodBeat.o(49247);
   }
   
-  private void e(RecyclerView.v paramv)
+  private void e(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49250);
-    paramv.arI.animate().setInterpolator(new ValueAnimator().getInterpolator());
-    d(paramv);
-    t.e(paramv.arI, 0.0F);
-    t.f(paramv.arI, 1.0F);
+    paramw.asD.animate().setInterpolator(new ValueAnimator().getInterpolator());
+    d(paramw);
+    t.e(paramw.asD, 0.0F);
+    t.f(paramw.asD, 1.0F);
     AppMethodBeat.o(49250);
   }
   
-  public final void A(RecyclerView.v paramv)
+  public final void A(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49253);
-    super.A(paramv);
-    if (!this.lJw.contains(paramv)) {
-      this.lJB = true;
+    super.A(paramw);
+    if (!this.mlt.contains(paramw)) {
+      this.mly = true;
     }
     AppMethodBeat.o(49253);
   }
   
-  public final void C(RecyclerView.v paramv)
+  public final void C(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49263);
-    super.C(paramv);
-    if (this.lJx.contains(paramv)) {
-      ((RecentsRecyclerView)paramv.arI.getParent()).cN(paramv.arI);
+    super.C(paramw);
+    if (this.mlu.contains(paramw)) {
+      ((RecentsRecyclerView)paramw.asD.getParent()).cP(paramw.asD);
     }
     AppMethodBeat.o(49263);
   }
   
-  public final void D(RecyclerView.v paramv)
+  public final void D(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49264);
-    super.D(paramv);
-    if (this.lJx.contains(paramv))
+    super.D(paramw);
+    if (this.mlu.contains(paramw))
     {
-      this.lJx.remove(paramv);
-      ((RecentsRecyclerView)paramv.arI.getParent()).cO(paramv.arI);
+      this.mlu.remove(paramw);
+      ((RecentsRecyclerView)paramw.asD.getParent()).cQ(paramw.asD);
     }
     AppMethodBeat.o(49264);
   }
   
-  public final RecyclerView.f.c a(RecyclerView.s params, RecyclerView.v paramv, int paramInt, List<Object> paramList)
+  public final RecyclerView.f.c a(RecyclerView.t paramt, RecyclerView.w paramw, int paramInt, List<Object> paramList)
   {
     AppMethodBeat.i(49265);
     if ((paramInt & 0x2) > 0)
@@ -144,79 +147,79 @@ final class n
           localObject = (Boolean)((Bundle)localObject).get("star");
           if ((localObject != null) && (((Boolean)localObject).booleanValue()))
           {
-            params = new c((byte)0).c(paramv, paramInt);
+            paramt = new c((byte)0).c(paramw, paramInt);
             AppMethodBeat.o(49265);
-            return params;
+            return paramt;
           }
           if ((localObject != null) && (!((Boolean)localObject).booleanValue()))
           {
-            params = new e((byte)0).c(paramv, paramInt);
+            paramt = new e((byte)0).c(paramw, paramInt);
             AppMethodBeat.o(49265);
-            return params;
+            return paramt;
           }
         }
       }
     }
-    params = super.a(params, paramv, paramInt, paramList);
-    params.aqt = paramInt;
+    paramt = super.a(paramt, paramw, paramInt, paramList);
+    paramt.aro = paramInt;
     AppMethodBeat.o(49265);
-    return params;
+    return paramt;
   }
   
-  public final boolean a(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final boolean a(RecyclerView.w paramw, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(49254);
-    if ((!(paramv instanceof AppBrandLauncherRecentsList.e)) || (!this.lJj))
+    if (!this.mlg)
     {
-      e(paramv);
-      x(paramv);
+      e(paramw);
+      x(paramw);
       AppMethodBeat.o(49254);
       return false;
     }
-    boolean bool = super.a(paramv, paramInt1, paramInt2, paramInt3, paramInt4);
+    boolean bool = super.a(paramw, paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(49254);
     return bool;
   }
   
-  public final boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final boolean a(RecyclerView.w paramw1, RecyclerView.w paramw2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(49260);
-    if (t.ag(paramv1.arI) == null)
+    if (t.ag(paramw1.asD) == null)
     {
-      t.f(paramv1.arI, 1.0F);
-      t.e(paramv1.arI, 0.0F);
+      t.f(paramw1.asD, 1.0F);
+      t.e(paramw1.asD, 0.0F);
     }
-    if (t.ag(paramv2.arI) == null)
+    if (t.ag(paramw2.asD) == null)
     {
-      t.f(paramv2.arI, 1.0F);
-      t.e(paramv2.arI, 0.0F);
+      t.f(paramw2.asD, 1.0F);
+      t.e(paramw2.asD, 0.0F);
     }
-    n(paramv1);
-    n(paramv2);
+    n(paramw1);
+    n(paramw2);
     AppMethodBeat.o(49260);
     return false;
   }
   
-  public final boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
+  public final boolean a(RecyclerView.w paramw1, RecyclerView.w paramw2, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
     AppMethodBeat.i(49266);
-    if (!this.lJj)
+    if (!this.mlg)
     {
-      n(paramv1);
-      n(paramv2);
+      n(paramw1);
+      n(paramw2);
       AppMethodBeat.o(49266);
       return false;
     }
-    boolean bool = super.a(paramv1, paramv2, paramc1, paramc2);
+    boolean bool = super.a(paramw1, paramw2, paramc1, paramc2);
     AppMethodBeat.o(49266);
     return bool;
   }
   
-  public final boolean a(RecyclerView.v paramv, List<Object> paramList)
+  public final boolean a(RecyclerView.w paramw, List<Object> paramList)
   {
     AppMethodBeat.i(49267);
-    boolean bool = super.a(paramv, paramList);
-    if (((paramv instanceof AppBrandLauncherRecentsList.e)) || (bool))
+    boolean bool = super.a(paramw, paramList);
+    if (((paramw instanceof AppBrandLauncherRecentsList.e)) || (bool))
     {
       AppMethodBeat.o(49267);
       return true;
@@ -229,22 +232,27 @@ final class n
   {
     AppMethodBeat.i(49248);
     if (parama != null) {
-      this.lJl.add(parama);
+      synchronized (this.mli)
+      {
+        this.mli.add(parama);
+        AppMethodBeat.o(49248);
+        return;
+      }
     }
     AppMethodBeat.o(49248);
   }
   
-  public final boolean b(RecyclerView.v paramv)
+  public final boolean b(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49259);
-    if (!this.lJj)
+    if (!this.mlg)
     {
-      e(paramv);
-      w(paramv);
+      e(paramw);
+      w(paramw);
       AppMethodBeat.o(49259);
       return false;
     }
-    boolean bool = super.b(paramv);
+    boolean bool = super.b(paramw);
     AppMethodBeat.o(49259);
     return bool;
   }
@@ -253,62 +261,67 @@ final class n
   {
     AppMethodBeat.i(49249);
     if (parama != null) {
-      this.lJl.remove(parama);
+      synchronized (this.mli)
+      {
+        this.mli.remove(parama);
+        AppMethodBeat.o(49249);
+        return;
+      }
     }
     AppMethodBeat.o(49249);
   }
   
-  public final boolean c(RecyclerView.v paramv)
+  public final boolean c(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49255);
-    e(paramv);
-    n(paramv);
+    e(paramw);
+    n(paramw);
     AppMethodBeat.o(49255);
     return false;
   }
   
-  public final void d(RecyclerView.v paramv)
+  public final void d(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49256);
-    if (((paramv instanceof AppBrandLauncherRecentsList.e)) && (this.lJy.remove(paramv)))
+    if (((paramw instanceof AppBrandLauncherRecentsList.e)) && (this.mlv.remove(paramw)))
     {
-      t.e(paramv.arI, 0.0F);
-      n(paramv);
+      t.e(paramw.asD, 0.0F);
+      n(paramw);
     }
-    super.d(paramv);
+    super.d(paramw);
     AppMethodBeat.o(49256);
   }
   
-  public final boolean d(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
+  public final boolean d(RecyclerView.w paramw, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
     AppMethodBeat.i(49258);
-    if (!this.lJj)
+    if (!this.mlg)
     {
-      e(paramv);
-      w(paramv);
+      e(paramw);
+      w(paramw);
       AppMethodBeat.o(49258);
       return false;
     }
     if ((paramc1 instanceof c))
     {
-      e(paramv);
+      e(paramw);
       AppMethodBeat.o(49258);
       return true;
     }
     if ((paramc1 instanceof e))
     {
-      e(paramv);
+      e(paramw);
       AppMethodBeat.o(49258);
       return true;
     }
-    if (((paramc1.aqt & 0x800) > 0) && ((paramv instanceof AppBrandLauncherRecentsList.e)) && (paramc2 == null)) {
+    if (((paramc1.aro & 0x800) > 0) && ((paramw instanceof AppBrandLauncherRecentsList.e)) && (paramc2 == null)) {
       try
       {
-        bool = ((AppBrandLauncherRecentsList.e)paramv).bpH().iVe;
+        bool = ((AppBrandLauncherRecentsList.e)paramw).bwD().jvu;
         if (!bool)
         {
-          e(paramv);
-          this.lJv.add(new f((AppBrandLauncherRecentsList.e)paramv, paramc1.left, paramc1.top, (byte)0));
+          e(paramw);
+          this.mls.add(new f((AppBrandLauncherRecentsList.e)paramw, paramc1.left, paramc1.top, (byte)0));
           AppMethodBeat.o(49258);
           return true;
         }
@@ -321,101 +334,113 @@ final class n
         }
       }
     }
-    boolean bool = super.d(paramv, paramc1, paramc2);
+    boolean bool = super.d(paramw, paramc1, paramc2);
     AppMethodBeat.o(49258);
     return bool;
   }
   
-  public final boolean e(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
+  public final boolean e(RecyclerView.w paramw, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
     AppMethodBeat.i(49257);
-    if (!this.lJj)
+    if (!this.mlg)
     {
-      bool = c(paramv);
+      bool = c(paramw);
       AppMethodBeat.o(49257);
       return bool;
     }
     if ((paramc1 != null) && ((paramc1.left != paramc2.left) || (paramc1.top != paramc2.top)))
     {
-      bool = super.a(paramv, paramc1.left, paramc1.top, paramc2.left, paramc2.top);
+      bool = super.a(paramw, paramc1.left, paramc1.top, paramc2.left, paramc2.top);
       AppMethodBeat.o(49257);
       return bool;
     }
-    if ((this.lJi) && ((paramv.arI.getParent() instanceof RecyclerView)) && ((paramv instanceof AppBrandLauncherRecentsList.e)))
+    if ((this.mlf) && ((paramw.asD.getParent() instanceof RecyclerView)) && ((paramw instanceof AppBrandLauncherRecentsList.e)))
     {
-      paramc1 = (RecyclerView)paramv.arI.getParent();
+      paramc1 = (RecyclerView)paramw.asD.getParent();
       if (paramc1.getHeight() > 0)
       {
         if (paramc2.bottom >= paramc1.getHeight())
         {
-          paramv = (AppBrandLauncherRecentsList.e)paramv;
-          t.e(paramv.arI, paramv.arI.getHeight());
-          this.lJy.add(paramv);
+          paramw = (AppBrandLauncherRecentsList.e)paramw;
+          t.e(paramw.asD, paramw.asD.getHeight());
+          this.mlv.add(paramw);
           AppMethodBeat.o(49257);
           return true;
         }
         if (paramc2.top <= 0)
         {
-          paramv = (AppBrandLauncherRecentsList.e)paramv;
-          t.e(paramv.arI, -paramv.arI.getHeight());
-          this.lJy.add(paramv);
+          paramw = (AppBrandLauncherRecentsList.e)paramw;
+          t.e(paramw.asD, -paramw.asD.getHeight());
+          this.mlv.add(paramw);
           AppMethodBeat.o(49257);
           return true;
         }
       }
     }
-    boolean bool = c(paramv);
+    boolean bool = c(paramw);
     AppMethodBeat.o(49257);
     return bool;
   }
   
-  public final boolean f(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
+  public final boolean f(RecyclerView.w paramw, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
     AppMethodBeat.i(49261);
-    if (!this.lJj)
+    if (!this.mlg)
     {
-      e(paramv);
-      x(paramv);
+      e(paramw);
+      x(paramw);
       AppMethodBeat.o(49261);
       return false;
     }
-    boolean bool = super.f(paramv, paramc1, paramc2);
+    boolean bool = super.f(paramw, paramc1, paramc2);
     AppMethodBeat.o(49261);
     return bool;
   }
   
-  public final void iW()
+  public final boolean isRunning()
+  {
+    AppMethodBeat.i(49251);
+    if ((!this.mlk.isEmpty()) || (!this.mll.isEmpty()) || (!this.mlm.isEmpty()) || (!this.mln.isEmpty()) || (!this.mlo.isEmpty()) || (!this.mlp.isEmpty()) || (!this.mlq.isEmpty()) || (!this.mlr.isEmpty()) || (!this.mls.isEmpty()) || (!this.mlt.isEmpty()) || (!this.mlv.isEmpty()) || (!this.mlw.isEmpty()) || (!this.mlx.isEmpty()) || (super.isRunning()))
+    {
+      AppMethodBeat.o(49251);
+      return true;
+    }
+    AppMethodBeat.o(49251);
+    return false;
+  }
+  
+  public final void je()
   {
     AppMethodBeat.i(49252);
-    a(this.lJk);
+    a(this.mlh);
     Object localObject1;
     Object localObject2;
     Object localObject3;
     Object localObject4;
     Object localObject5;
-    if (!this.lJn.isEmpty())
+    if (!this.mlk.isEmpty())
     {
-      localObject1 = this.lJn.iterator();
+      localObject1 = this.mlk.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (b)((Iterator)localObject1).next();
-        this.lJo.add(((b)localObject2).lJF);
-        localObject3 = ((b)localObject2).lJF;
-        localObject4 = ((b)localObject2).lJF.arI;
-        ((b)localObject2).lJF.lIA.setVisibility(0);
+        this.mll.add(((b)localObject2).mlC);
+        localObject3 = ((b)localObject2).mlC;
+        localObject4 = ((b)localObject2).mlC.asD;
+        ((b)localObject2).mlC.mkx.setVisibility(0);
         t.e((View)localObject4, 0.0F);
         localObject5 = t.ag((View)localObject4);
-        double d1 = ((b)localObject2).ajN / ((b)localObject2).lJF.arI.getHeight();
-        double d2 = this.aqr;
-        ((x)localObject5).h(Math.max(this.aqr, Math.min(Math.round(d1 * d2) + this.aqr, 400L)));
-        ((x)localObject5).a(this.lJm);
+        double d1 = ((b)localObject2).akH / ((b)localObject2).mlC.asD.getHeight();
+        double d2 = this.arm;
+        ((x)localObject5).j(Math.max(this.arm, Math.min(Math.round(d1 * d2) + this.arm, 400L)));
+        ((x)localObject5).a(this.mlj);
         ((x)localObject5).a(new z()
         {
           public final void aH(View paramAnonymousView)
           {
             AppMethodBeat.i(49232);
-            ((RecentsRecyclerView)paramAnonymousView.getParent()).cN(paramAnonymousView);
-            n.this.A(this.ajC);
+            ((RecentsRecyclerView)paramAnonymousView.getParent()).cP(paramAnonymousView);
+            n.this.A(this.akw);
             AppMethodBeat.o(49232);
           }
           
@@ -427,11 +452,11 @@ final class n
               AppMethodBeat.o(49233);
               return;
             }
-            ((RecentsRecyclerView)paramAnonymousView.getParent()).cO(paramAnonymousView);
-            this.lJD.a(null);
+            ((RecentsRecyclerView)paramAnonymousView.getParent()).cQ(paramAnonymousView);
+            this.mlA.a(null);
             t.e(paramAnonymousView, 0.0F);
-            n.this.w(this.ajC);
-            n.this.lJo.remove(this.ajC);
+            n.this.w(this.akw);
+            n.this.mll.remove(this.akw);
             n.a(n.this);
             AppMethodBeat.o(49233);
           }
@@ -449,31 +474,31 @@ final class n
             AppMethodBeat.o(49234);
           }
         });
-        ((x)localObject5).x(-((b)localObject2).ajN - ((View)localObject4).getHeight()).start();
+        ((x)localObject5).B(-((b)localObject2).akH - ((View)localObject4).getHeight()).start();
       }
-      this.lJn.clear();
+      this.mlk.clear();
     }
-    if (!this.lJp.isEmpty())
+    if (!this.mlm.isEmpty())
     {
-      localObject1 = this.lJp.iterator();
+      localObject1 = this.mlm.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (d)((Iterator)localObject1).next();
-        this.lJq.add(((d)localObject2).lJF);
-        localObject3 = ((d)localObject2).lJF;
-        localObject5 = ((d)localObject2).lJF.arI;
+        this.mln.add(((d)localObject2).mlC);
+        localObject3 = ((d)localObject2).mlC;
+        localObject5 = ((d)localObject2).mlC.asD;
         localObject4 = (RecentsRecyclerView)((View)localObject5).getParent();
-        ((d)localObject2).lJF.lIA.setVisibility(8);
+        ((d)localObject2).mlC.mkx.setVisibility(8);
         t.e((View)localObject5, 0.0F);
         localObject5 = t.ag((View)localObject5);
-        ((x)localObject5).h(this.aqr);
+        ((x)localObject5).j(this.arm);
         ((x)localObject5).a(new z()
         {
           public final void aH(View paramAnonymousView)
           {
             AppMethodBeat.i(49235);
-            ((RecentsRecyclerView)paramAnonymousView.getParent()).cN(paramAnonymousView);
-            n.this.A(this.ajC);
+            ((RecentsRecyclerView)paramAnonymousView.getParent()).cP(paramAnonymousView);
+            n.this.A(this.akw);
             AppMethodBeat.o(49235);
           }
           
@@ -485,11 +510,11 @@ final class n
               AppMethodBeat.o(49236);
               return;
             }
-            ((RecentsRecyclerView)paramAnonymousView.getParent()).cO(paramAnonymousView);
-            this.lJD.a(null);
+            ((RecentsRecyclerView)paramAnonymousView.getParent()).cQ(paramAnonymousView);
+            this.mlA.a(null);
             t.e(paramAnonymousView, 0.0F);
-            n.this.w(this.ajC);
-            n.this.lJq.remove(this.ajC);
+            n.this.w(this.akw);
+            n.this.mln.remove(this.akw);
             n.a(n.this);
             AppMethodBeat.o(49236);
           }
@@ -507,23 +532,23 @@ final class n
             AppMethodBeat.o(49237);
           }
         });
-        ((x)localObject5).x(((RecentsRecyclerView)localObject4).getHeight() - ((d)localObject2).ajN).start();
+        ((x)localObject5).B(((RecentsRecyclerView)localObject4).getHeight() - ((d)localObject2).akH).start();
       }
-      this.lJp.clear();
+      this.mlm.clear();
     }
-    if (!this.lJr.isEmpty())
+    if (!this.mlo.isEmpty())
     {
-      localObject1 = this.lJr.iterator();
+      localObject1 = this.mlo.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (AppBrandLauncherRecentsList.e)((Iterator)localObject1).next();
-        this.lJs.add(localObject2);
-        t.g(((AppBrandLauncherRecentsList.e)localObject2).lIA, 0.1F);
-        t.h(((AppBrandLauncherRecentsList.e)localObject2).lIA, 0.1F);
-        t.f(((AppBrandLauncherRecentsList.e)localObject2).lIA, 0.0F);
-        ((AppBrandLauncherRecentsList.e)localObject2).lIA.setVisibility(0);
-        localObject3 = t.ag(((AppBrandLauncherRecentsList.e)localObject2).lIA);
-        ((x)localObject3).h(this.aqs);
+        this.mlp.add(localObject2);
+        t.g(((AppBrandLauncherRecentsList.e)localObject2).mkx, 0.1F);
+        t.h(((AppBrandLauncherRecentsList.e)localObject2).mkx, 0.1F);
+        t.f(((AppBrandLauncherRecentsList.e)localObject2).mkx, 0.0F);
+        ((AppBrandLauncherRecentsList.e)localObject2).mkx.setVisibility(0);
+        localObject3 = t.ag(((AppBrandLauncherRecentsList.e)localObject2).mkx);
+        ((x)localObject3).j(this.arn);
         ((x)localObject3).a(new z()
         {
           public final void aH(View paramAnonymousView) {}
@@ -531,9 +556,9 @@ final class n
           public final void aI(View paramAnonymousView)
           {
             AppMethodBeat.i(49238);
-            this.lJD.a(null);
-            n.this.n(this.lJE);
-            n.this.lJs.remove(this.lJE);
+            this.mlA.a(null);
+            n.this.n(this.mlB);
+            n.this.mlp.remove(this.mlB);
             n.a(n.this);
             AppMethodBeat.o(49238);
           }
@@ -551,23 +576,23 @@ final class n
             AppMethodBeat.o(49239);
           }
         });
-        ((x)localObject3).w(1.0F).y(1.0F).z(1.0F).start();
+        ((x)localObject3).A(1.0F).C(1.0F).D(1.0F).start();
       }
-      this.lJr.clear();
+      this.mlo.clear();
     }
-    if (!this.lJt.isEmpty())
+    if (!this.mlq.isEmpty())
     {
-      localObject1 = this.lJt.iterator();
+      localObject1 = this.mlq.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (AppBrandLauncherRecentsList.e)((Iterator)localObject1).next();
-        this.lJu.add(localObject2);
-        t.g(((AppBrandLauncherRecentsList.e)localObject2).lIA, 1.0F);
-        t.h(((AppBrandLauncherRecentsList.e)localObject2).lIA, 1.0F);
-        t.f(((AppBrandLauncherRecentsList.e)localObject2).lIA, 1.0F);
-        ((AppBrandLauncherRecentsList.e)localObject2).lIA.setVisibility(0);
-        localObject3 = t.ag(((AppBrandLauncherRecentsList.e)localObject2).lIA);
-        ((x)localObject3).h(this.aqs);
+        this.mlr.add(localObject2);
+        t.g(((AppBrandLauncherRecentsList.e)localObject2).mkx, 1.0F);
+        t.h(((AppBrandLauncherRecentsList.e)localObject2).mkx, 1.0F);
+        t.f(((AppBrandLauncherRecentsList.e)localObject2).mkx, 1.0F);
+        ((AppBrandLauncherRecentsList.e)localObject2).mkx.setVisibility(0);
+        localObject3 = t.ag(((AppBrandLauncherRecentsList.e)localObject2).mkx);
+        ((x)localObject3).j(this.arn);
         ((x)localObject3).a(new z()
         {
           public final void aH(View paramAnonymousView) {}
@@ -575,39 +600,39 @@ final class n
           public final void aI(View paramAnonymousView)
           {
             AppMethodBeat.i(49240);
-            t.g(this.lJE.lIA, 1.0F);
-            t.h(this.lJE.lIA, 1.0F);
-            t.f(this.lJE.lIA, 1.0F);
-            this.lJE.lIA.setVisibility(8);
-            n.this.n(this.lJE);
-            n.this.lJu.remove(this.lJE);
+            t.g(this.mlB.mkx, 1.0F);
+            t.h(this.mlB.mkx, 1.0F);
+            t.f(this.mlB.mkx, 1.0F);
+            this.mlB.mkx.setVisibility(8);
+            n.this.n(this.mlB);
+            n.this.mlr.remove(this.mlB);
             n.a(n.this);
             AppMethodBeat.o(49240);
           }
         });
-        ((x)localObject3).w(0.0F).y(0.1F).z(0.1F).start();
+        ((x)localObject3).A(0.0F).C(0.1F).D(0.1F).start();
       }
-      this.lJt.clear();
+      this.mlq.clear();
     }
-    if (!this.lJv.isEmpty())
+    if (!this.mls.isEmpty())
     {
-      localObject1 = this.lJv.iterator();
+      localObject1 = this.mls.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject3 = (f)((Iterator)localObject1).next();
-        this.lJw.add(((f)localObject3).lJF);
-        localObject2 = ((f)localObject3).lJF.arI;
+        this.mlt.add(((f)localObject3).mlC);
+        localObject2 = ((f)localObject3).mlC.asD;
         t.e((View)localObject2, 0.0F);
         t.f((View)localObject2, 1.0F);
-        localObject3 = ((f)localObject3).lJF;
+        localObject3 = ((f)localObject3).mlC;
         localObject4 = t.ag((View)localObject2);
-        ((x)localObject4).h(this.aqr);
+        ((x)localObject4).j(this.arm);
         ((x)localObject4).a(new z()
         {
           public final void aH(View paramAnonymousView)
           {
             AppMethodBeat.i(49241);
-            n.this.A(this.lJE);
+            n.this.A(this.mlB);
             AppMethodBeat.o(49241);
           }
           
@@ -616,42 +641,42 @@ final class n
             AppMethodBeat.i(49242);
             t.e(paramAnonymousView, 0.0F);
             t.f(paramAnonymousView, 1.0F);
-            n.this.w(this.lJE);
-            n.this.lJw.remove(this.lJE);
+            n.this.w(this.mlB);
+            n.this.mlt.remove(this.mlB);
             n.a(n.this);
             AppMethodBeat.o(49242);
           }
         });
-        ((x)localObject4).w(0.0F).x(-((View)localObject2).getHeight()).start();
+        ((x)localObject4).A(0.0F).B(-((View)localObject2).getHeight()).start();
       }
-      this.lJv.clear();
+      this.mls.clear();
     }
-    super.iW();
-    if (!this.lJy.isEmpty())
+    super.je();
+    if (!this.mlv.isEmpty())
     {
-      this.lJz.addAll(this.lJy);
+      this.mlw.addAll(this.mlv);
       localObject1 = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(49243);
-          Iterator localIterator = n.this.lJz.iterator();
+          Iterator localIterator = n.this.mlw.iterator();
           while (localIterator.hasNext())
           {
             AppBrandLauncherRecentsList.e locale = (AppBrandLauncherRecentsList.e)localIterator.next();
             n localn = n.this;
-            x localx = t.ag(locale.arI);
-            localn.lJA.add(locale);
-            localx.x(0.0F).h(localn.aqr).a(new n.8(localn, locale, localx)).start();
+            x localx = t.ag(locale.asD);
+            localn.mlx.add(locale);
+            localx.B(0.0F).j(localn.arm).a(new n.8(localn, locale, localx)).start();
           }
-          n.this.lJz.clear();
+          n.this.mlw.clear();
           AppMethodBeat.o(49243);
         }
       };
-      this.lJy.clear();
-      if (this.lJB)
+      this.mlv.clear();
+      if (this.mly)
       {
-        t.a(((AppBrandLauncherRecentsList.e)this.lJz.get(0)).arI, (Runnable)localObject1, kQ());
+        t.a(((AppBrandLauncherRecentsList.e)this.mlw.get(0)).asD, (Runnable)localObject1, kY());
         AppMethodBeat.o(49252);
         return;
       }
@@ -660,25 +685,13 @@ final class n
     AppMethodBeat.o(49252);
   }
   
-  public final boolean isRunning()
-  {
-    AppMethodBeat.i(49251);
-    if ((!this.lJn.isEmpty()) || (!this.lJo.isEmpty()) || (!this.lJp.isEmpty()) || (!this.lJq.isEmpty()) || (!this.lJr.isEmpty()) || (!this.lJs.isEmpty()) || (!this.lJt.isEmpty()) || (!this.lJu.isEmpty()) || (!this.lJv.isEmpty()) || (!this.lJw.isEmpty()) || (!this.lJy.isEmpty()) || (!this.lJz.isEmpty()) || (!this.lJA.isEmpty()) || (super.isRunning()))
-    {
-      AppMethodBeat.o(49251);
-      return true;
-    }
-    AppMethodBeat.o(49251);
-    return false;
-  }
-  
-  public final void o(RecyclerView.v paramv)
+  public final void o(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49262);
-    super.o(paramv);
-    ViewParent localViewParent = paramv.arI.getParent();
+    super.o(paramw);
+    ViewParent localViewParent = paramw.asD.getParent();
     if ((localViewParent instanceof RecentsRecyclerView)) {
-      ((RecentsRecyclerView)localViewParent).cO(paramv.arI);
+      ((RecentsRecyclerView)localViewParent).cQ(paramw.asD);
     }
     AppMethodBeat.o(49262);
   }
@@ -686,11 +699,11 @@ final class n
   static class a
     extends RecyclerView.f.c
   {
-    public final RecyclerView.f.c c(RecyclerView.v paramv, int paramInt)
+    public final RecyclerView.f.c c(RecyclerView.w paramw, int paramInt)
     {
       AppMethodBeat.i(49246);
-      super.c(paramv, paramInt);
-      this.aqt = paramInt;
+      super.c(paramw, paramInt);
+      this.aro = paramInt;
       AppMethodBeat.o(49246);
       return this;
     }
@@ -724,27 +737,27 @@ final class n
   
   static final class f
   {
-    int ajM;
-    int ajN;
-    AppBrandLauncherRecentsList.e lJF;
+    int akG;
+    int akH;
+    AppBrandLauncherRecentsList.e mlC;
     
     private f(AppBrandLauncherRecentsList.e parame, int paramInt1, int paramInt2)
     {
-      this.lJF = parame;
-      this.ajM = paramInt1;
-      this.ajN = paramInt2;
+      this.mlC = parame;
+      this.akG = paramInt1;
+      this.akH = paramInt2;
     }
   }
   
   static class g
   {
-    int ajN;
-    AppBrandLauncherRecentsList.e lJF;
+    int akH;
+    AppBrandLauncherRecentsList.e mlC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.n
  * JD-Core Version:    0.7.0.1
  */

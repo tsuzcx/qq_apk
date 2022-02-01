@@ -45,7 +45,7 @@ final class d
             paramIntent = String.valueOf(localBundle);
             new StringBuilder(String.valueOf(paramString).length() + 22 + String.valueOf(paramIntent).length()).append("Sending event=").append(paramString).append(" params=").append(paramIntent);
           }
-          paramIntent = (com.google.firebase.analytics.connector.a)com.google.firebase.a.wA().w(com.google.firebase.analytics.connector.a.class);
+          paramIntent = (com.google.firebase.analytics.connector.a)com.google.firebase.a.wn().w(com.google.firebase.analytics.connector.a.class);
           if (paramIntent != null)
           {
             paramIntent.logEvent("fcm", paramString, localBundle);

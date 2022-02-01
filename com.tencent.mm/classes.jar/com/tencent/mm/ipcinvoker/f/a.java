@@ -22,13 +22,13 @@ public final class a
       AppMethodBeat.o(158820);
       return;
     }
-    b.qt(this.process);
+    b.tI(this.process);
     AppMethodBeat.o(158820);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.f.a
  * JD-Core Version:    0.7.0.1
  */

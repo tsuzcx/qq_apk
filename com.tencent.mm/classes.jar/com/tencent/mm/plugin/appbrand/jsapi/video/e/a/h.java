@@ -7,15 +7,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class h
   implements com.google.android.exoplayer2.c.h
 {
-  private int aWN;
+  private int aXz;
   
-  public final e[] sK()
+  public final e[] sT()
   {
     try
     {
-      AppMethodBeat.i(194191);
-      g localg = new g(this.aWN);
-      AppMethodBeat.o(194191);
+      AppMethodBeat.i(194536);
+      g localg = new g(this.aXz);
+      AppMethodBeat.o(194536);
       return new e[] { localg };
     }
     finally {}

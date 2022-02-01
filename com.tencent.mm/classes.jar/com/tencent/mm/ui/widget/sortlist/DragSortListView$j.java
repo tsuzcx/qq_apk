@@ -6,55 +6,55 @@ import java.util.ArrayList;
 
 final class DragSortListView$j
 {
-  private SparseIntArray HNo;
-  private ArrayList<Integer> HNp;
-  private int xZb;
+  private SparseIntArray JnK;
+  private ArrayList<Integer> JnL;
+  private int zlZ;
   
   private DragSortListView$j(DragSortListView paramDragSortListView)
   {
     AppMethodBeat.i(159781);
-    this.HNo = new SparseIntArray(3);
-    this.HNp = new ArrayList(3);
-    this.xZb = 3;
+    this.JnK = new SparseIntArray(3);
+    this.JnL = new ArrayList(3);
+    this.zlZ = 3;
     AppMethodBeat.o(159781);
   }
   
   public final void add(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159782);
-    int i = this.HNo.get(paramInt1, -1);
+    int i = this.JnK.get(paramInt1, -1);
     if (i != paramInt2)
     {
       if (i != -1) {
         break label87;
       }
-      if (this.HNo.size() == this.xZb) {
-        this.HNo.delete(((Integer)this.HNp.remove(0)).intValue());
+      if (this.JnK.size() == this.zlZ) {
+        this.JnK.delete(((Integer)this.JnL.remove(0)).intValue());
       }
     }
     for (;;)
     {
-      this.HNo.put(paramInt1, paramInt2);
-      this.HNp.add(Integer.valueOf(paramInt1));
+      this.JnK.put(paramInt1, paramInt2);
+      this.JnL.add(Integer.valueOf(paramInt1));
       AppMethodBeat.o(159782);
       return;
       label87:
-      this.HNp.remove(Integer.valueOf(paramInt1));
+      this.JnL.remove(Integer.valueOf(paramInt1));
     }
   }
   
   public final void clear()
   {
     AppMethodBeat.i(159784);
-    this.HNo.clear();
-    this.HNp.clear();
+    this.JnK.clear();
+    this.JnL.clear();
     AppMethodBeat.o(159784);
   }
   
   public final int get(int paramInt)
   {
     AppMethodBeat.i(159783);
-    paramInt = this.HNo.get(paramInt, -1);
+    paramInt = this.JnK.get(paramInt, -1);
     AppMethodBeat.o(159783);
     return paramInt;
   }

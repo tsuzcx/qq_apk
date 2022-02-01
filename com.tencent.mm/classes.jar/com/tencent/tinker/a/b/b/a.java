@@ -2,7 +2,20 @@ package com.tencent.tinker.a.b.b;
 
 public final class a
 {
-  public static String acu(int paramInt)
+  public static String Ca(long paramLong)
+  {
+    char[] arrayOfChar = new char[16];
+    int i = 0;
+    while (i < 16)
+    {
+      arrayOfChar[(15 - i)] = Character.forDigit((int)paramLong & 0xF, 16);
+      paramLong >>= 4;
+      i += 1;
+    }
+    return new String(arrayOfChar);
+  }
+  
+  public static String afq(int paramInt)
   {
     char[] arrayOfChar = new char[8];
     int j = 0;
@@ -17,7 +30,7 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String acv(int paramInt)
+  public static String afr(int paramInt)
   {
     char[] arrayOfChar = new char[4];
     int j = 0;
@@ -32,15 +45,15 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String acw(int paramInt)
+  public static String afs(int paramInt)
   {
     if (paramInt == (char)paramInt) {
-      return acv(paramInt);
+      return afr(paramInt);
     }
-    return acu(paramInt);
+    return afq(paramInt);
   }
   
-  public static String acx(int paramInt)
+  public static String aft(int paramInt)
   {
     int i = 0;
     char[] arrayOfChar = new char[9];
@@ -56,19 +69,6 @@ public final class a
       i += 1;
       continue;
       arrayOfChar[0] = '+';
-    }
-    return new String(arrayOfChar);
-  }
-  
-  public static String xo(long paramLong)
-  {
-    char[] arrayOfChar = new char[16];
-    int i = 0;
-    while (i < 16)
-    {
-      arrayOfChar[(15 - i)] = Character.forDigit((int)paramLong & 0xF, 16);
-      paramLong >>= 4;
-      i += 1;
     }
     return new String(arrayOfChar);
   }

@@ -12,7 +12,7 @@ public final class a
   public a()
   {
     AppMethodBeat.i(28048);
-    com.tencent.mm.sdk.b.a.ESL.c(new i());
+    com.tencent.mm.sdk.b.a.GpY.c(new i());
     AppMethodBeat.o(28048);
   }
   

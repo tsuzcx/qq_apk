@@ -6,27 +6,27 @@ import java.io.OutputStream;
 
 public final class i
 {
-  static e IPL;
+  static e KCg;
   
   static
   {
     AppMethodBeat.i(183528);
-    IPL = g.frD().frC();
+    KCg = g.fKf().fKe();
     AppMethodBeat.o(183528);
   }
   
-  public static String aEN(String paramString)
+  public static String aKe(String paramString)
   {
     AppMethodBeat.i(183524);
-    paramString = IPL.aEN(paramString);
+    paramString = KCg.aKe(paramString);
     AppMethodBeat.o(183524);
     return paramString;
   }
   
-  public static boolean kP(String paramString1, String paramString2)
+  public static boolean lm(String paramString1, String paramString2)
   {
     AppMethodBeat.i(183525);
-    boolean bool = IPL.kP(paramString1, paramString2);
+    boolean bool = KCg.lm(paramString1, paramString2);
     AppMethodBeat.o(183525);
     return bool;
   }
@@ -34,15 +34,15 @@ public final class i
   public static InputStream openRead(String paramString)
   {
     AppMethodBeat.i(183526);
-    paramString = IPL.openRead(paramString);
+    paramString = KCg.openRead(paramString);
     AppMethodBeat.o(183526);
     return paramString;
   }
   
-  public static OutputStream vu(String paramString)
+  public static OutputStream zA(String paramString)
   {
     AppMethodBeat.i(183527);
-    paramString = IPL.vu(paramString);
+    paramString = KCg.zA(paramString);
     AppMethodBeat.o(183527);
     return paramString;
   }

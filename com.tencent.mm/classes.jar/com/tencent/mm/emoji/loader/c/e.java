@@ -5,23 +5,23 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "url", "", "path", "authKey", "fetcherType", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "getAuthKey", "()Ljava/lang/String;", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getFetcherType", "()I", "getPath", "getUrl", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "url", "", "path", "authKey", "fetcherType", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "getAuthKey", "()Ljava/lang/String;", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getFetcherType", "()I", "getPath", "getUrl", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "plugin-emojisdk_release"})
 public final class e
 {
-  final EmojiInfo fLP;
-  final String fLQ;
-  final int fLR;
+  final EmojiInfo fPB;
+  final String fPC;
+  final int fPD;
   final String path;
   final String url;
   
   public e(EmojiInfo paramEmojiInfo, String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(105431);
-    this.fLP = paramEmojiInfo;
+    this.fPB = paramEmojiInfo;
     this.url = paramString1;
     this.path = paramString2;
-    this.fLQ = paramString3;
-    this.fLR = paramInt;
+    this.fPC = paramString3;
+    this.fPD = paramInt;
     AppMethodBeat.o(105431);
   }
   
@@ -33,7 +33,7 @@ public final class e
       if ((paramObject instanceof e))
       {
         paramObject = (e)paramObject;
-        if ((!k.g(this.fLP, paramObject.fLP)) || (!k.g(this.url, paramObject.url)) || (!k.g(this.path, paramObject.path)) || (!k.g(this.fLQ, paramObject.fLQ)) || (this.fLR != paramObject.fLR)) {}
+        if ((!k.g(this.fPB, paramObject.fPB)) || (!k.g(this.url, paramObject.url)) || (!k.g(this.path, paramObject.path)) || (!k.g(this.fPC, paramObject.fPC)) || (this.fPD != paramObject.fPD)) {}
       }
     }
     else
@@ -49,7 +49,7 @@ public final class e
   {
     int m = 0;
     AppMethodBeat.i(105433);
-    Object localObject = this.fLP;
+    Object localObject = this.fPB;
     int i;
     int j;
     if (localObject != null)
@@ -70,11 +70,11 @@ public final class e
     label122:
     for (int k = localObject.hashCode();; k = 0)
     {
-      localObject = this.fLQ;
+      localObject = this.fPC;
       if (localObject != null) {
         m = localObject.hashCode();
       }
-      int n = this.fLR;
+      int n = this.fPD;
       AppMethodBeat.o(105433);
       return ((k + (j + i * 31) * 31) * 31 + m) * 31 + n;
       i = 0;
@@ -87,14 +87,14 @@ public final class e
   public final String toString()
   {
     AppMethodBeat.i(105432);
-    String str = "EmojiFetcherConfig(emojiInfo=" + this.fLP + ", url=" + this.url + ", path=" + this.path + ", authKey=" + this.fLQ + ", fetcherType=" + this.fLR + ")";
+    String str = "EmojiFetcherConfig(emojiInfo=" + this.fPB + ", url=" + this.url + ", path=" + this.path + ", authKey=" + this.fPC + ", fetcherType=" + this.fPD + ")";
     AppMethodBeat.o(105432);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.c.e
  * JD-Core Version:    0.7.0.1
  */

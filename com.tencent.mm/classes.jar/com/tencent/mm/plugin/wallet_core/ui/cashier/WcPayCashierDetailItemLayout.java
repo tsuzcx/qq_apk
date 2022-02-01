@@ -10,27 +10,27 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class WcPayCashierDetailItemLayout
   extends LinearLayout
 {
-  private static final int ArE;
-  private static final int ArF;
-  private static final int nOl;
-  public CdnImageView ArG;
-  public CdnImageView ArH;
-  public TextView ott;
-  public TextView vCb;
+  private static final int BJY;
+  private static final int BJZ;
+  private static final int orn;
+  public CdnImageView BKa;
+  public CdnImageView BKb;
+  public TextView oWU;
+  public TextView wMg;
   
   static
   {
     AppMethodBeat.i(71333);
-    nOl = a.fromDPToPix(aj.getContext(), 288);
-    ArE = a.fromDPToPix(aj.getContext(), 20);
-    ArF = a.fromDPToPix(aj.getContext(), 11);
+    orn = a.fromDPToPix(ai.getContext(), 288);
+    BJY = a.fromDPToPix(ai.getContext(), 20);
+    BJZ = a.fromDPToPix(ai.getContext(), 11);
     AppMethodBeat.o(71333);
   }
   
@@ -62,29 +62,29 @@ public class WcPayCashierDetailItemLayout
   {
     AppMethodBeat.i(71330);
     View.inflate(getContext(), 2131496054, this);
-    this.vCb = ((TextView)findViewById(2131307052));
-    this.ArG = ((CdnImageView)findViewById(2131307053));
-    this.ott = ((TextView)findViewById(2131307055));
-    this.ArH = ((CdnImageView)findViewById(2131307054));
-    Drawable localDrawable = this.ArH.getDrawable();
+    this.wMg = ((TextView)findViewById(2131307052));
+    this.BKa = ((CdnImageView)findViewById(2131307053));
+    this.oWU = ((TextView)findViewById(2131307055));
+    this.BKb = ((CdnImageView)findViewById(2131307054));
+    Drawable localDrawable = this.BKb.getDrawable();
     if (localDrawable != null) {
       localDrawable.setColorFilter(getResources().getColor(2131099676), PorterDuff.Mode.SRC_ATOP);
     }
     AppMethodBeat.o(71330);
   }
   
-  public final void Q(CharSequence paramCharSequence)
+  public final void R(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(71332);
-    this.ott.setText(paramCharSequence);
+    this.oWU.setText(paramCharSequence);
     post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(71326);
-        Layout localLayout = WcPayCashierDetailItemLayout.this.ott.getLayout();
+        Layout localLayout = WcPayCashierDetailItemLayout.this.oWU.getLayout();
         if ((localLayout != null) && (localLayout.getLineCount() > 1)) {
-          WcPayCashierDetailItemLayout.this.ott.setMaxWidth((int)localLayout.getLineWidth(0));
+          WcPayCashierDetailItemLayout.this.oWU.setMaxWidth((int)localLayout.getLineWidth(0));
         }
         AppMethodBeat.o(71326);
       }
@@ -92,26 +92,26 @@ public class WcPayCashierDetailItemLayout
     AppMethodBeat.o(71332);
   }
   
-  public final void eeC()
+  public final void etX()
   {
     AppMethodBeat.i(71331);
-    if (this.ott.getVisibility() != 8) {
+    if (this.oWU.getVisibility() != 8) {
       post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(71325);
-          int j = WcPayCashierDetailItemLayout.this.vCb.getWidth();
+          int j = WcPayCashierDetailItemLayout.this.wMg.getWidth();
           int i = j;
-          if (WcPayCashierDetailItemLayout.this.ArG.getVisibility() != 8) {
-            i = j + WcPayCashierDetailItemLayout.ArE;
+          if (WcPayCashierDetailItemLayout.this.BKa.getVisibility() != 8) {
+            i = j + WcPayCashierDetailItemLayout.BJY;
           }
           j = i;
-          if (WcPayCashierDetailItemLayout.this.ArH.getVisibility() != 8) {
-            j = i + WcPayCashierDetailItemLayout.ArF;
+          if (WcPayCashierDetailItemLayout.this.BKb.getVisibility() != 8) {
+            j = i + WcPayCashierDetailItemLayout.BJZ;
           }
-          i = WcPayCashierDetailItemLayout.nOl;
-          WcPayCashierDetailItemLayout.this.ott.setMaxWidth(i - j);
+          i = WcPayCashierDetailItemLayout.orn;
+          WcPayCashierDetailItemLayout.this.oWU.setMaxWidth(i - j);
           AppMethodBeat.o(71325);
         }
       });

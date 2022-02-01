@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class ab
   extends j<aa>
@@ -31,7 +31,7 @@ public final class ab
   public final void a(aa paramaa)
   {
     AppMethodBeat.i(97652);
-    if ((paramaa == null) || (bt.isNullOrNil(paramaa.field_canvasXml)))
+    if ((paramaa == null) || (bs.isNullOrNil(paramaa.field_canvasXml)))
     {
       AppMethodBeat.o(97652);
       return;

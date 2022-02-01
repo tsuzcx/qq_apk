@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ad
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String saI;
-  public String saJ;
+  public String tiC;
+  public String tiD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,35 +14,35 @@ public final class ad
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.saI != null) {
-        paramVarArgs.d(1, this.saI);
+      if (this.tiC != null) {
+        paramVarArgs.d(1, this.tiC);
       }
-      if (this.saJ != null) {
-        paramVarArgs.d(2, this.saJ);
+      if (this.tiD != null) {
+        paramVarArgs.d(2, this.tiD);
       }
       AppMethodBeat.o(41731);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.saI == null) {
+      if (this.tiC == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.saI) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.tiC) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.saJ != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.saJ);
+      if (this.tiD != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.tiD);
       }
       AppMethodBeat.o(41731);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(41731);
@@ -58,11 +58,11 @@ public final class ad
           AppMethodBeat.o(41731);
           return -1;
         case 1: 
-          localad.saI = locala.KhF.readString();
+          localad.tiC = locala.LVo.readString();
           AppMethodBeat.o(41731);
           return 0;
         }
-        localad.saJ = locala.KhF.readString();
+        localad.tiD = locala.LVo.readString();
         AppMethodBeat.o(41731);
         return 0;
       }
@@ -73,7 +73,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.ad
  * JD-Core Version:    0.7.0.1
  */

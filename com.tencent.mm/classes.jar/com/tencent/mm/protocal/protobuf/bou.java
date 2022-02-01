@@ -1,116 +1,120 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bou
-  extends com.tencent.mm.bx.a
+  extends cpx
 {
-  public int DMd;
-  public String DMe;
-  public String bssid;
-  public String ddU;
-  public int dhP;
-  public int rfL;
-  public String ssid;
+  public int ETI;
+  public eck Fel;
+  public String hOf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32344);
+    AppMethodBeat.i(123626);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ssid != null) {
-        paramVarArgs.d(1, this.ssid);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.bssid != null) {
-        paramVarArgs.d(2, this.bssid);
+      if (this.hOf != null) {
+        paramVarArgs.d(2, this.hOf);
       }
-      paramVarArgs.aR(3, this.dhP);
-      paramVarArgs.aR(4, this.DMd);
-      if (this.DMe != null) {
-        paramVarArgs.d(5, this.DMe);
+      paramVarArgs.aR(3, this.ETI);
+      if (this.Fel != null)
+      {
+        paramVarArgs.ln(4, this.Fel.computeSize());
+        this.Fel.writeFields(paramVarArgs);
       }
-      if (this.ddU != null) {
-        paramVarArgs.d(6, this.ddU);
-      }
-      paramVarArgs.aR(7, this.rfL);
-      AppMethodBeat.o(32344);
+      AppMethodBeat.o(123626);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ssid == null) {
-        break label543;
+      if (this.BaseRequest == null) {
+        break label570;
       }
     }
-    label543:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ssid) + 0;; paramInt = 0)
+    label570:
+    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.bssid != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.bssid);
+      if (this.hOf != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.hOf);
       }
-      i = i + f.a.a.b.b.a.bA(3, this.dhP) + f.a.a.b.b.a.bA(4, this.DMd);
+      i += f.a.a.b.b.a.bx(3, this.ETI);
       paramInt = i;
-      if (this.DMe != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.DMe);
+      if (this.Fel != null) {
+        paramInt = i + f.a.a.a.lm(4, this.Fel.computeSize());
       }
-      i = paramInt;
-      if (this.ddU != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.ddU);
-      }
-      paramInt = f.a.a.b.b.a.bA(7, this.rfL);
-      AppMethodBeat.o(32344);
-      return i + paramInt;
+      AppMethodBeat.o(123626);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(32344);
+        AppMethodBeat.o(123626);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         bou localbou = (bou)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32344);
+          AppMethodBeat.o(123626);
           return -1;
         case 1: 
-          localbou.ssid = locala.KhF.readString();
-          AppMethodBeat.o(32344);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new iv();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbou.BaseRequest = ((iv)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(123626);
           return 0;
         case 2: 
-          localbou.bssid = locala.KhF.readString();
-          AppMethodBeat.o(32344);
+          localbou.hOf = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(123626);
           return 0;
         case 3: 
-          localbou.dhP = locala.KhF.xS();
-          AppMethodBeat.o(32344);
-          return 0;
-        case 4: 
-          localbou.DMd = locala.KhF.xS();
-          AppMethodBeat.o(32344);
-          return 0;
-        case 5: 
-          localbou.DMe = locala.KhF.readString();
-          AppMethodBeat.o(32344);
-          return 0;
-        case 6: 
-          localbou.ddU = locala.KhF.readString();
-          AppMethodBeat.o(32344);
+          localbou.ETI = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(123626);
           return 0;
         }
-        localbou.rfL = locala.KhF.xS();
-        AppMethodBeat.o(32344);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new eck();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((eck)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localbou.Fel = ((eck)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(123626);
         return 0;
       }
-      AppMethodBeat.o(32344);
+      AppMethodBeat.o(123626);
       return -1;
     }
   }

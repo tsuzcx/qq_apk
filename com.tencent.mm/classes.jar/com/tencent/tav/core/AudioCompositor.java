@@ -16,10 +16,10 @@ public class AudioCompositor
   
   public AudioCompositor(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(201533);
+    AppMethodBeat.i(197594);
     this.TAG = ("AudioCompositor@" + Integer.toHexString(hashCode()));
     this.audioMixer = new AudioMixer(paramAudioInfo.sampleRate, paramAudioInfo.channelCount);
-    AppMethodBeat.o(201533);
+    AppMethodBeat.o(197594);
   }
   
   public void clear()
@@ -39,10 +39,10 @@ public class AudioCompositor
   
   public ByteBuffer processFrame(ByteBuffer paramByteBuffer, float paramFloat1, float paramFloat2, AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(201536);
+    AppMethodBeat.i(197597);
     this.audioMixer.setAudioInfo(paramAudioInfo.sampleRate, paramAudioInfo.channelCount, paramAudioInfo.pcmEncoding);
     paramByteBuffer = this.audioMixer.processBytes(paramByteBuffer, paramFloat2, paramFloat1, 1.0F);
-    AppMethodBeat.o(201536);
+    AppMethodBeat.o(197597);
     return paramByteBuffer;
   }
   
@@ -441,14 +441,14 @@ public class AudioCompositor
   
   public void setAudioInfo(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(201534);
+    AppMethodBeat.i(197595);
     this.audioMixer = new AudioMixer(paramAudioInfo.sampleRate, paramAudioInfo.channelCount);
-    AppMethodBeat.o(201534);
+    AppMethodBeat.o(197595);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.core.AudioCompositor
  * JD-Core Version:    0.7.0.1
  */

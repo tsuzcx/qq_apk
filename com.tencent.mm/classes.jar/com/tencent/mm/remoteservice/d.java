@@ -9,30 +9,30 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class d
 {
-  List<Runnable> ELW;
-  c ELX;
+  List<Runnable> Gji;
+  c Gjj;
   private Context context;
-  private ServiceConnection nKI;
+  private ServiceConnection onI;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(152748);
-    this.ELW = new LinkedList();
-    this.nKI = new ServiceConnection()
+    this.Gji = new LinkedList();
+    this.onI = new ServiceConnection()
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
         AppMethodBeat.i(152747);
-        d.this.ELX = c.a.K(paramAnonymousIBinder);
-        paramAnonymousComponentName = (Runnable[])d.this.ELW.toArray(new Runnable[d.this.ELW.size()]);
+        d.this.Gjj = c.a.K(paramAnonymousIBinder);
+        paramAnonymousComponentName = (Runnable[])d.this.Gji.toArray(new Runnable[d.this.Gji.size()]);
         int j = paramAnonymousComponentName.length;
         int i = 0;
         while (i < j)
@@ -43,18 +43,18 @@ public final class d
           }
           i += 1;
         }
-        d.this.ELW.clear();
+        d.this.Gji.clear();
         AppMethodBeat.o(152747);
       }
       
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
-        d.this.ELX = null;
+        d.this.Gjj = null;
       }
     };
     Context localContext = paramContext;
     if ((paramContext instanceof Activity)) {
-      localContext = aj.getContext();
+      localContext = ai.getContext();
     }
     this.context = localContext;
     AppMethodBeat.o(152748);
@@ -66,13 +66,13 @@ public final class d
     if (isConnected()) {
       try
       {
-        this.ELX.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
+        this.Gjj.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
         AppMethodBeat.o(152752);
         return;
       }
       catch (RemoteException paramb)
       {
-        ad.e("MicroMsg.RemoteServiceProxy", "exception:%s", new Object[] { bt.m(paramb) });
+        ac.e("MicroMsg.RemoteServiceProxy", "exception:%s", new Object[] { bs.m(paramb) });
       }
     }
     AppMethodBeat.o(152752);
@@ -93,16 +93,16 @@ public final class d
       AppMethodBeat.o(152749);
       return;
     }
-    this.ELW.add(paramRunnable);
+    this.Gji.add(paramRunnable);
     paramRunnable = new Intent(this.context, RemoteService.class);
-    this.context.bindService(paramRunnable, this.nKI, 1);
+    this.context.bindService(paramRunnable, this.onI, 1);
     AppMethodBeat.o(152749);
   }
   
   public final boolean isConnected()
   {
     AppMethodBeat.i(152750);
-    if ((this.ELX != null) && (this.ELX.asBinder().isBinderAlive()))
+    if ((this.Gjj != null) && (this.Gjj.asBinder().isBinderAlive()))
     {
       AppMethodBeat.o(152750);
       return true;
@@ -114,10 +114,10 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(152751);
-    if ((this.ELX != null) && (this.nKI != null))
+    if ((this.Gjj != null) && (this.onI != null))
     {
-      this.context.unbindService(this.nKI);
-      this.ELX = null;
+      this.context.unbindService(this.onI);
+      this.Gjj = null;
     }
     this.context = null;
     AppMethodBeat.o(152751);
@@ -125,7 +125,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.remoteservice.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class an
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Title;
-  public String rZW;
-  public int rZY;
-  public String rZo;
-  public String sbi;
-  public boolean sbj;
-  public boolean sbk;
-  public String sbl;
-  public String sbm;
-  public int sbn;
+  public String thP;
+  public int thR;
+  public String thh;
+  public String tjc;
+  public boolean tjd;
+  public boolean tje;
+  public String tjf;
+  public String tjg;
+  public int tjh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -29,7 +29,7 @@ public final class an
         AppMethodBeat.o(41742);
         throw paramVarArgs;
       }
-      if (this.sbi == null)
+      if (this.tjc == null)
       {
         paramVarArgs = new b("Not all required fields were included: NavKey");
         AppMethodBeat.o(41742);
@@ -38,24 +38,24 @@ public final class an
       if (this.Title != null) {
         paramVarArgs.d(1, this.Title);
       }
-      if (this.sbi != null) {
-        paramVarArgs.d(2, this.sbi);
+      if (this.tjc != null) {
+        paramVarArgs.d(2, this.tjc);
       }
-      if (this.rZo != null) {
-        paramVarArgs.d(3, this.rZo);
+      if (this.thh != null) {
+        paramVarArgs.d(3, this.thh);
       }
-      paramVarArgs.bg(4, this.sbj);
-      paramVarArgs.bg(5, this.sbk);
-      if (this.sbl != null) {
-        paramVarArgs.d(6, this.sbl);
+      paramVarArgs.bl(4, this.tjd);
+      paramVarArgs.bl(5, this.tje);
+      if (this.tjf != null) {
+        paramVarArgs.d(6, this.tjf);
       }
-      if (this.sbm != null) {
-        paramVarArgs.d(7, this.sbm);
+      if (this.tjg != null) {
+        paramVarArgs.d(7, this.tjg);
       }
-      paramVarArgs.aR(8, this.sbn);
-      paramVarArgs.aR(9, this.rZY);
-      if (this.rZW != null) {
-        paramVarArgs.d(10, this.rZW);
+      paramVarArgs.aR(8, this.tjh);
+      paramVarArgs.aR(9, this.thR);
+      if (this.thP != null) {
+        paramVarArgs.d(10, this.thP);
       }
       AppMethodBeat.o(41742);
       return 0;
@@ -69,35 +69,35 @@ public final class an
     for (int i = f.a.a.b.b.a.e(1, this.Title) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.sbi != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.sbi);
+      if (this.tjc != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.tjc);
       }
       i = paramInt;
-      if (this.rZo != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.rZo);
+      if (this.thh != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.thh);
       }
-      i = i + (f.a.a.b.b.a.fY(4) + 1) + (f.a.a.b.b.a.fY(5) + 1);
+      i = i + (f.a.a.b.b.a.fK(4) + 1) + (f.a.a.b.b.a.fK(5) + 1);
       paramInt = i;
-      if (this.sbl != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.sbl);
+      if (this.tjf != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.tjf);
       }
       i = paramInt;
-      if (this.sbm != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.sbm);
+      if (this.tjg != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.tjg);
       }
-      i = i + f.a.a.b.b.a.bA(8, this.sbn) + f.a.a.b.b.a.bA(9, this.rZY);
+      i = i + f.a.a.b.b.a.bx(8, this.tjh) + f.a.a.b.b.a.bx(9, this.thR);
       paramInt = i;
-      if (this.rZW != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.rZW);
+      if (this.thP != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.thP);
       }
       AppMethodBeat.o(41742);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.Title == null)
@@ -106,7 +106,7 @@ public final class an
           AppMethodBeat.o(41742);
           throw paramVarArgs;
         }
-        if (this.sbi == null)
+        if (this.tjc == null)
         {
           paramVarArgs = new b("Not all required fields were included: NavKey");
           AppMethodBeat.o(41742);
@@ -125,43 +125,43 @@ public final class an
           AppMethodBeat.o(41742);
           return -1;
         case 1: 
-          localan.Title = locala.KhF.readString();
+          localan.Title = locala.LVo.readString();
           AppMethodBeat.o(41742);
           return 0;
         case 2: 
-          localan.sbi = locala.KhF.readString();
+          localan.tjc = locala.LVo.readString();
           AppMethodBeat.o(41742);
           return 0;
         case 3: 
-          localan.rZo = locala.KhF.readString();
+          localan.thh = locala.LVo.readString();
           AppMethodBeat.o(41742);
           return 0;
         case 4: 
-          localan.sbj = locala.KhF.fHu();
+          localan.tjd = locala.LVo.fZX();
           AppMethodBeat.o(41742);
           return 0;
         case 5: 
-          localan.sbk = locala.KhF.fHu();
+          localan.tje = locala.LVo.fZX();
           AppMethodBeat.o(41742);
           return 0;
         case 6: 
-          localan.sbl = locala.KhF.readString();
+          localan.tjf = locala.LVo.readString();
           AppMethodBeat.o(41742);
           return 0;
         case 7: 
-          localan.sbm = locala.KhF.readString();
+          localan.tjg = locala.LVo.readString();
           AppMethodBeat.o(41742);
           return 0;
         case 8: 
-          localan.sbn = locala.KhF.xS();
+          localan.tjh = locala.LVo.xF();
           AppMethodBeat.o(41742);
           return 0;
         case 9: 
-          localan.rZY = locala.KhF.xS();
+          localan.thR = locala.LVo.xF();
           AppMethodBeat.o(41742);
           return 0;
         }
-        localan.rZW = locala.KhF.readString();
+        localan.thP = locala.LVo.readString();
         AppMethodBeat.o(41742);
         return 0;
       }
@@ -172,7 +172,7 @@ public final class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.an
  * JD-Core Version:    0.7.0.1
  */

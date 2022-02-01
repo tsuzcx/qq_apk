@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.MMDotView;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -29,15 +29,15 @@ public final class i
   extends AlertDialog
   implements ViewPager.OnPageChangeListener
 {
-  private CharSequence Eo;
-  private TextView UA;
-  private View hIZ;
+  private CharSequence Fm;
+  private TextView Vw;
+  private View ijA;
   private Context mContext;
-  private MMDotView mfR;
-  private b sKf;
-  private IPCallShareViewPager sKg;
-  private View.OnClickListener sKh;
-  private LinkedList<Integer> sKi;
+  private MMDotView mHQ;
+  private b tRL;
+  private IPCallShareViewPager tRM;
+  private View.OnClickListener tRN;
+  private LinkedList<Integer> tRO;
   
   public final void dismiss()
   {
@@ -50,7 +50,7 @@ public final class i
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.IPCallShareDialog", "dismiss exception, e = " + localException.getMessage());
+      ac.e("MicroMsg.IPCallShareDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(25975);
     }
   }
@@ -62,7 +62,7 @@ public final class i
     getWindow().getAttributes().width = getWindow().getWindowManager().getDefaultDisplay().getWidth();
     getWindow().setGravity(80);
     getWindow().getDecorView().setPadding(0, 0, 0, 0);
-    setContentView(this.hIZ);
+    setContentView(this.ijA);
     AppMethodBeat.o(25972);
   }
   
@@ -73,15 +73,15 @@ public final class i
   public final void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(25973);
-    if (this.sKf.getCount() <= 1)
+    if (this.tRL.getCount() <= 1)
     {
-      this.mfR.setVisibility(4);
+      this.mHQ.setVisibility(4);
       AppMethodBeat.o(25973);
       return;
     }
-    this.mfR.setVisibility(0);
-    this.mfR.setDotCount(this.sKf.getCount());
-    this.mfR.setSelectedDot(paramInt);
+    this.mHQ.setVisibility(0);
+    this.mHQ.setDotCount(this.tRL.getCount());
+    this.mHQ.setSelectedDot(paramInt);
     AppMethodBeat.o(25973);
   }
   
@@ -89,28 +89,28 @@ public final class i
   {
     if (paramCharSequence != null)
     {
-      this.Eo = paramCharSequence;
+      this.Fm = paramCharSequence;
       return;
     }
-    this.Eo = null;
+    this.Fm = null;
   }
   
   public final void show()
   {
     AppMethodBeat.i(25974);
-    if ((this.sKi == null) || (this.sKi.size() == 0))
+    if ((this.tRO == null) || (this.tRO.size() == 0))
     {
       AppMethodBeat.o(25974);
       return;
     }
-    this.sKg.setOnPageChangeListener(this);
+    this.tRM.setOnPageChangeListener(this);
     b localb = new b();
-    localb.sKj = this.sKh;
-    localb.sKo = this.sKi;
+    localb.tRP = this.tRN;
+    localb.tRU = this.tRO;
     int i;
-    if (localb.sKo.size() > 0)
+    if (localb.tRU.size() > 0)
     {
-      localb.mCount = ((localb.sKo.size() - 1) / 9 + 1);
+      localb.mCount = ((localb.tRU.size() - 1) / 9 + 1);
       i = 0;
     }
     for (;;)
@@ -118,32 +118,32 @@ public final class i
       if (i >= localb.mCount) {
         break label257;
       }
-      View localView = ((LayoutInflater)localb.sKq.mContext.getSystemService("layout_inflater")).inflate(2131494526, null);
+      View localView = ((LayoutInflater)localb.tRW.mContext.getSystemService("layout_inflater")).inflate(2131494526, null);
       GridView localGridView = (GridView)localView.findViewById(2131301133);
       ArrayList localArrayList = new ArrayList();
       int j = i * 9;
       for (;;)
       {
-        if ((j < localb.sKo.size()) && (j < i * 9 + 9))
+        if ((j < localb.tRU.size()) && (j < i * 9 + 9))
         {
-          localArrayList.add(localb.sKo.get(j));
+          localArrayList.add(localb.tRU.get(j));
           j += 1;
           continue;
           localb.mCount = 0;
           break;
         }
       }
-      a locala = new a(localb.sKq.getContext());
-      locala.sKj = localb.sKj;
-      locala.cbP = localArrayList;
+      a locala = new a(localb.tRW.getContext());
+      locala.tRP = localb.tRP;
+      locala.bYM = localArrayList;
       localGridView.setAdapter(locala);
-      localb.sKp.add(localView);
+      localb.tRV.add(localView);
       i += 1;
     }
     label257:
-    this.sKf = localb;
-    this.sKg.setAdapter(this.sKf);
-    this.UA.setText(this.Eo);
+    this.tRL = localb;
+    this.tRM.setAdapter(this.tRL);
+    this.Vw.setText(this.Fm);
     super.show();
     AppMethodBeat.o(25974);
   }
@@ -151,14 +151,14 @@ public final class i
   public static final class a
     extends BaseAdapter
   {
-    List<Integer> cbP;
+    List<Integer> bYM;
     private Context mContext;
-    View.OnClickListener sKj;
+    View.OnClickListener tRP;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(25964);
-      this.cbP = null;
+      this.bYM = null;
       if (paramContext != null) {}
       for (boolean bool = true;; bool = false)
       {
@@ -172,12 +172,12 @@ public final class i
     public final int getCount()
     {
       AppMethodBeat.i(25965);
-      if (this.cbP == null)
+      if (this.bYM == null)
       {
         AppMethodBeat.o(25965);
         return 0;
       }
-      int i = this.cbP.size();
+      int i = this.bYM.size();
       AppMethodBeat.o(25965);
       return i;
     }
@@ -185,9 +185,9 @@ public final class i
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(25966);
-      if (this.cbP != null)
+      if (this.bYM != null)
       {
-        Object localObject = this.cbP.get(paramInt);
+        Object localObject = this.bYM.get(paramInt);
         AppMethodBeat.o(25966);
         return localObject;
       }
@@ -207,9 +207,9 @@ public final class i
       {
         paramView = ((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131494527, paramViewGroup, false);
         paramViewGroup = new a();
-        paramViewGroup.sKl = ((RelativeLayout)paramView.findViewById(2131301339));
-        paramViewGroup.sKm = ((TextView)paramView.findViewById(2131301132));
-        paramViewGroup.sKn = ((ImageView)paramView.findViewById(2131301131));
+        paramViewGroup.tRR = ((RelativeLayout)paramView.findViewById(2131301339));
+        paramViewGroup.tRS = ((TextView)paramView.findViewById(2131301132));
+        paramViewGroup.tRT = ((ImageView)paramView.findViewById(2131301131));
         paramView.setTag(paramViewGroup);
       }
       Object localObject;
@@ -224,8 +224,8 @@ public final class i
         paramViewGroup = (a)paramView.getTag();
       }
       paramViewGroup.id = ((Integer)localObject).intValue();
-      IPCallShareCouponCardUI.a(this.mContext, paramViewGroup.id, paramViewGroup.sKm, paramViewGroup.sKn);
-      paramViewGroup.sKl.setOnClickListener(new View.OnClickListener()
+      IPCallShareCouponCardUI.a(this.mContext, paramViewGroup.id, paramViewGroup.tRS, paramViewGroup.tRT);
+      paramViewGroup.tRR.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -248,9 +248,9 @@ public final class i
     public final class a
     {
       int id;
-      RelativeLayout sKl;
-      TextView sKm;
-      ImageView sKn;
+      RelativeLayout tRR;
+      TextView tRS;
+      ImageView tRT;
       
       public a() {}
     }
@@ -260,14 +260,14 @@ public final class i
     extends q
   {
     int mCount;
-    View.OnClickListener sKj;
-    LinkedList<Integer> sKo;
-    ArrayList<View> sKp;
+    View.OnClickListener tRP;
+    LinkedList<Integer> tRU;
+    ArrayList<View> tRV;
     
     public b()
     {
       AppMethodBeat.i(25968);
-      this.sKp = new ArrayList();
+      this.tRV = new ArrayList();
       this.mCount = 0;
       AppMethodBeat.o(25968);
     }
@@ -275,7 +275,7 @@ public final class i
     public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
     {
       AppMethodBeat.i(25969);
-      ad.v("MicroMsg.IPCallShareDialog", "destroy item: %d", new Object[] { Integer.valueOf(paramInt) });
+      ac.v("MicroMsg.IPCallShareDialog", "destroy item: %d", new Object[] { Integer.valueOf(paramInt) });
       paramViewGroup.removeView((View)paramObject);
       AppMethodBeat.o(25969);
     }
@@ -296,8 +296,8 @@ public final class i
     public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
     {
       AppMethodBeat.i(25970);
-      if (this.sKp.get(paramInt) != null) {}
-      for (View localView = (View)this.sKp.get(paramInt);; localView = null)
+      if (this.tRV.get(paramInt) != null) {}
+      for (View localView = (View)this.tRV.get(paramInt);; localView = null)
       {
         if (localView != null)
         {

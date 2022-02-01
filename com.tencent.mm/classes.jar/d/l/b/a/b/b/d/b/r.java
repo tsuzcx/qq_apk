@@ -23,8 +23,8 @@ public abstract class r
     k.h(paramArrayOfType, "parameterTypes");
     k.h(paramArrayOfAnnotation, "parameterAnnotations");
     ArrayList localArrayList = new ArrayList(paramArrayOfType.length);
-    Object localObject = a.JvS;
-    List localList = a.b(fwO());
+    Object localObject = a.Ljl;
+    List localList = a.b(fPs());
     if (localList != null) {}
     int j;
     w localw;
@@ -35,7 +35,7 @@ public abstract class r
       if (j >= k) {
         break label251;
       }
-      localObject = w.Jwr;
+      localObject = w.LjK;
       localw = w.a.j(paramArrayOfType[j]);
       if (localList == null) {
         break label239;
@@ -44,10 +44,10 @@ public abstract class r
       if (localObject != null) {
         break;
       }
-      throw ((Throwable)new IllegalStateException(("No parameter with index " + j + '+' + i + " (name=" + fyB() + " type=" + localw + ") in " + localList + "@ReflectJavaMember").toString()));
+      throw ((Throwable)new IllegalStateException(("No parameter with index " + j + '+' + i + " (name=" + fRf() + " type=" + localw + ") in " + localList + "@ReflectJavaMember").toString()));
     }
     label191:
-    if ((paramBoolean) && (j == e.S(paramArrayOfType))) {}
+    if ((paramBoolean) && (j == e.U(paramArrayOfType))) {}
     for (boolean bool = true;; bool = false)
     {
       localArrayList.add(new y(localw, paramArrayOfAnnotation[j], (String)localObject, bool));
@@ -63,69 +63,69 @@ public abstract class r
   
   public boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof r)) && (k.g(fwO(), ((r)paramObject).fwO()));
+    return ((paramObject instanceof r)) && (k.g(fPs(), ((r)paramObject).fPs()));
   }
   
-  public final boolean fAJ()
+  public abstract Member fPs();
+  
+  public final ba fQb()
   {
-    return t.a.a(this);
+    return t.a.d(this);
   }
   
-  public final boolean fAK()
+  public final d.l.b.a.b.f.f fRf()
   {
-    return t.a.c(this);
+    Object localObject = fPs().getName();
+    if (localObject != null) {
+      return d.l.b.a.b.f.f.aWB((String)localObject);
+    }
+    localObject = h.Lzv;
+    k.g(localObject, "SpecialNames.NO_NAME_PROVIDED");
+    return localObject;
   }
   
-  public final AnnotatedElement fAz()
+  public final AnnotatedElement fTd()
   {
-    Member localMember = fwO();
+    Member localMember = fPs();
     if (localMember == null) {
       throw new v("null cannot be cast to non-null type java.lang.reflect.AnnotatedElement");
     }
     return (AnnotatedElement)localMember;
   }
   
-  public final boolean fje()
+  public final boolean fTn()
+  {
+    return t.a.a(this);
+  }
+  
+  public final boolean fTo()
+  {
+    return t.a.c(this);
+  }
+  
+  public final boolean fzr()
   {
     return t.a.b(this);
   }
   
-  public abstract Member fwO();
-  
-  public final ba fxx()
-  {
-    return t.a.d(this);
-  }
-  
-  public final d.l.b.a.b.f.f fyB()
-  {
-    Object localObject = fwO().getName();
-    if (localObject != null) {
-      return d.l.b.a.b.f.f.aQC((String)localObject);
-    }
-    localObject = h.JMc;
-    k.g(localObject, "SpecialNames.NO_NAME_PROVIDED");
-    return localObject;
-  }
-  
   public final int getModifiers()
   {
-    return fwO().getModifiers();
+    return fPs().getModifiers();
   }
   
   public int hashCode()
   {
-    return fwO().hashCode();
+    return fPs().hashCode();
   }
   
   public String toString()
   {
-    return getClass().getName() + ": " + fwO();
+    return getClass().getName() + ": " + fPs();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.r
  * JD-Core Version:    0.7.0.1
  */

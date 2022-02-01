@@ -5,22 +5,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo;
-import com.tencent.mm.protocal.protobuf.abm;
-import com.tencent.mm.protocal.protobuf.abn;
-import com.tencent.mm.protocal.protobuf.aco;
-import com.tencent.mm.protocal.protobuf.amg;
-import com.tencent.mm.protocal.protobuf.ba;
-import com.tencent.mm.protocal.protobuf.beh;
-import com.tencent.mm.protocal.protobuf.csx;
-import com.tencent.mm.protocal.protobuf.dax;
-import com.tencent.mm.protocal.protobuf.dij;
-import com.tencent.mm.protocal.protobuf.oc;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.protocal.protobuf.rd;
-import com.tencent.mm.protocal.protobuf.ro;
-import com.tencent.mm.protocal.protobuf.rw;
-import com.tencent.mm.protocal.protobuf.xo;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.acl;
+import com.tencent.mm.protocal.protobuf.acm;
+import com.tencent.mm.protocal.protobuf.adn;
+import com.tencent.mm.protocal.protobuf.apj;
+import com.tencent.mm.protocal.protobuf.bc;
+import com.tencent.mm.protocal.protobuf.bhz;
+import com.tencent.mm.protocal.protobuf.cyg;
+import com.tencent.mm.protocal.protobuf.dgj;
+import com.tencent.mm.protocal.protobuf.dny;
+import com.tencent.mm.protocal.protobuf.oj;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.rn;
+import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.protocal.protobuf.sg;
+import com.tencent.mm.protocal.protobuf.yg;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import org.json.JSONArray;
@@ -29,12 +29,12 @@ import org.json.JSONObject;
 
 public final class f
 {
-  public static ArrayList<ShareCardInfo> Re(String paramString)
+  public static ArrayList<ShareCardInfo> Vq(String paramString)
   {
     AppMethodBeat.i(113779);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.CardInfoParser", "parseShareCardArray jsonContent is null");
+      ac.e("MicroMsg.CardInfoParser", "parseShareCardArray jsonContent is null");
       AppMethodBeat.o(113779);
       return null;
     }
@@ -43,7 +43,7 @@ public final class f
       paramString = new JSONObject(paramString).optJSONArray("card_list");
       if ((paramString == null) || (paramString.length() == 0))
       {
-        ad.e("MicroMsg.CardInfoParser", "parseShareCardArray cardItemListJson is null");
+        ac.e("MicroMsg.CardInfoParser", "parseShareCardArray cardItemListJson is null");
         AppMethodBeat.o(113779);
         return null;
       }
@@ -62,18 +62,18 @@ public final class f
     }
     catch (JSONException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.CardInfoParser", paramString, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.CardInfoParser", paramString, "", new Object[0]);
       AppMethodBeat.o(113779);
     }
     return null;
   }
   
-  public static ArrayList<CardInfo> Rf(String paramString)
+  public static ArrayList<CardInfo> Vr(String paramString)
   {
     AppMethodBeat.i(113782);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.CardInfoParser", "parseCardArray jsonContent is null");
+      ac.e("MicroMsg.CardInfoParser", "parseCardArray jsonContent is null");
       AppMethodBeat.o(113782);
       return null;
     }
@@ -82,7 +82,7 @@ public final class f
       paramString = new JSONObject(paramString).optJSONArray("card_array");
       if ((paramString == null) || (paramString.length() == 0))
       {
-        ad.e("MicroMsg.CardInfoParser", "parseCardArray cardItemListJson is null");
+        ac.e("MicroMsg.CardInfoParser", "parseCardArray cardItemListJson is null");
         AppMethodBeat.o(113782);
         return null;
       }
@@ -101,13 +101,13 @@ public final class f
     }
     catch (JSONException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.CardInfoParser", paramString, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.CardInfoParser", paramString, "", new Object[0]);
       AppMethodBeat.o(113782);
     }
     return null;
   }
   
-  private static String Rg(String paramString)
+  private static String Vs(String paramString)
   {
     AppMethodBeat.i(113785);
     if ((TextUtils.isEmpty(paramString)) || ("null".equals(paramString)))
@@ -124,7 +124,7 @@ public final class f
     AppMethodBeat.i(113783);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.CardInfoParser", "parserCardItemJson jsonContent is null");
+      ac.e("MicroMsg.CardInfoParser", "parserCardItemJson jsonContent is null");
       AppMethodBeat.o(113783);
       return;
     }
@@ -136,7 +136,7 @@ public final class f
     }
     catch (JSONException paramCardInfo)
     {
-      ad.printErrStackTrace("MicroMsg.CardInfoParser", paramCardInfo, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.CardInfoParser", paramCardInfo, "", new Object[0]);
       AppMethodBeat.o(113783);
     }
   }
@@ -146,32 +146,32 @@ public final class f
     AppMethodBeat.i(113784);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.CardInfoParser", "parserCardItemJson json is null");
+      ac.e("MicroMsg.CardInfoParser", "parserCardItemJson json is null");
       AppMethodBeat.o(113784);
       return;
     }
-    paramCardInfo.field_card_id = Rg(paramJSONObject.optString("card_id"));
-    paramCardInfo.field_card_tp_id = Rg(paramJSONObject.optString("card_tp_id"));
+    paramCardInfo.field_card_id = Vs(paramJSONObject.optString("card_id"));
+    paramCardInfo.field_card_tp_id = Vs(paramJSONObject.optString("card_tp_id"));
     paramCardInfo.field_delete_state_flag = paramJSONObject.optInt("state_flag");
     paramCardInfo.field_updateTime = paramJSONObject.optInt("update_time");
     paramCardInfo.field_updateSeq = paramJSONObject.optLong("sequence");
     paramCardInfo.field_from_username = paramJSONObject.optString("from_username");
     paramCardInfo.field_begin_time = paramJSONObject.optLong("begin_time", 0L);
     paramCardInfo.field_end_time = paramJSONObject.optLong("end_time", 0L);
-    paramCardInfo.nru = paramJSONObject.optString("encrypt_code");
+    paramCardInfo.nUu = paramJSONObject.optString("encrypt_code");
     JSONObject localJSONObject1 = paramJSONObject.optJSONObject("card_data_info");
     JSONObject localJSONObject2 = paramJSONObject.optJSONObject("card_tp_info");
     paramJSONObject = paramJSONObject.optJSONObject("share_info");
-    paramCardInfo.nsD = ac(localJSONObject1);
-    paramCardInfo.nsC = ad(localJSONObject2);
-    paramCardInfo.nsE = ae(paramJSONObject);
-    if (paramCardInfo.nsC != null)
+    paramCardInfo.nVD = ac(localJSONObject1);
+    paramCardInfo.nVC = ad(localJSONObject2);
+    paramCardInfo.nVE = ae(paramJSONObject);
+    if (paramCardInfo.nVC != null)
     {
-      paramCardInfo.a(paramCardInfo.nsC);
-      paramCardInfo.field_block_mask = Integer.toString(paramCardInfo.nsC.CRL);
-      paramCardInfo.field_card_type = paramCardInfo.nsC.lpz;
+      paramCardInfo.a(paramCardInfo.nVC);
+      paramCardInfo.field_block_mask = Integer.toString(paramCardInfo.nVC.Ekw);
+      paramCardInfo.field_card_type = paramCardInfo.nVC.lRv;
       if (TextUtils.isEmpty(paramCardInfo.field_card_tp_id)) {
-        paramCardInfo.field_card_tp_id = paramCardInfo.nsC.nrr;
+        paramCardInfo.field_card_tp_id = paramCardInfo.nVC.nUr;
       }
       if ((paramCardInfo.field_begin_time == 0L) && (localJSONObject2 != null)) {
         paramCardInfo.field_begin_time = localJSONObject2.optLong("begin_time");
@@ -179,17 +179,17 @@ public final class f
       if ((paramCardInfo.field_end_time == 0L) && (localJSONObject2 != null)) {
         paramCardInfo.field_end_time = localJSONObject2.optLong("end_time");
       }
-      if (paramCardInfo.nsC.CSj != null) {
-        paramCardInfo.field_is_dynamic = paramCardInfo.nsC.CSj.DcV;
+      if (paramCardInfo.nVC.EkU != null) {
+        paramCardInfo.field_is_dynamic = paramCardInfo.nVC.EkU.Ewc;
       }
     }
-    if (paramCardInfo.nsD != null)
+    if (paramCardInfo.nVD != null)
     {
-      paramCardInfo.a(paramCardInfo.nsD);
-      paramCardInfo.field_status = paramCardInfo.nsD.status;
+      paramCardInfo.a(paramCardInfo.nVD);
+      paramCardInfo.field_status = paramCardInfo.nVD.status;
     }
-    if (paramCardInfo.nsE != null) {
-      paramCardInfo.a(paramCardInfo.nsE);
+    if (paramCardInfo.nVE != null) {
+      paramCardInfo.a(paramCardInfo.nVE);
     }
     paramCardInfo.field_local_updateTime = ((int)(System.currentTimeMillis() / 1000L));
     AppMethodBeat.o(113784);
@@ -200,7 +200,7 @@ public final class f
     AppMethodBeat.i(113780);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.CardInfoParser", "parserShareCardItemJson jsonContent is null");
+      ac.e("MicroMsg.CardInfoParser", "parserShareCardItemJson jsonContent is null");
       AppMethodBeat.o(113780);
       return;
     }
@@ -212,8 +212,8 @@ public final class f
     }
     catch (JSONException paramShareCardInfo)
     {
-      ad.printErrStackTrace("MicroMsg.CardInfoParser", paramShareCardInfo, "", new Object[0]);
-      ad.e("MicroMsg.CardInfoParser", paramShareCardInfo.getMessage());
+      ac.printErrStackTrace("MicroMsg.CardInfoParser", paramShareCardInfo, "", new Object[0]);
+      ac.e("MicroMsg.CardInfoParser", paramShareCardInfo.getMessage());
       AppMethodBeat.o(113780);
     }
   }
@@ -223,12 +223,12 @@ public final class f
     AppMethodBeat.i(113781);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.CardInfoParser", "parserShareCardItemJson json is null");
+      ac.e("MicroMsg.CardInfoParser", "parserShareCardItemJson json is null");
       AppMethodBeat.o(113781);
       return;
     }
-    paramShareCardInfo.field_card_id = Rg(paramJSONObject.optString("card_id"));
-    paramShareCardInfo.field_card_tp_id = Rg(paramJSONObject.optString("card_tp_id"));
+    paramShareCardInfo.field_card_id = Vs(paramJSONObject.optString("card_id"));
+    paramShareCardInfo.field_card_tp_id = Vs(paramJSONObject.optString("card_tp_id"));
     paramShareCardInfo.field_app_id = paramJSONObject.optString("app_id");
     paramShareCardInfo.field_consumer = paramJSONObject.optString("consumer");
     paramShareCardInfo.field_share_time = paramJSONObject.optInt("share_time");
@@ -241,54 +241,54 @@ public final class f
     JSONObject localJSONObject1 = paramJSONObject.optJSONObject("card_data_info");
     JSONObject localJSONObject2 = paramJSONObject.optJSONObject("card_tp_info");
     paramJSONObject = paramJSONObject.optJSONObject("share_info");
-    paramShareCardInfo.nsD = ac(localJSONObject1);
-    paramShareCardInfo.nsC = ad(localJSONObject2);
-    paramShareCardInfo.nsE = ae(paramJSONObject);
-    if (paramShareCardInfo.nsD != null) {
-      paramShareCardInfo.a(paramShareCardInfo.nsD);
+    paramShareCardInfo.nVD = ac(localJSONObject1);
+    paramShareCardInfo.nVC = ad(localJSONObject2);
+    paramShareCardInfo.nVE = ae(paramJSONObject);
+    if (paramShareCardInfo.nVD != null) {
+      paramShareCardInfo.a(paramShareCardInfo.nVD);
     }
-    if (paramShareCardInfo.nsC != null)
+    if (paramShareCardInfo.nVC != null)
     {
-      paramShareCardInfo.a(paramShareCardInfo.nsC);
+      paramShareCardInfo.a(paramShareCardInfo.nVC);
       paramShareCardInfo.field_end_time = localJSONObject2.optInt("end_time");
       paramShareCardInfo.field_begin_time = localJSONObject2.optInt("begin_time");
     }
-    if (paramShareCardInfo.nsE != null) {
-      paramShareCardInfo.a(paramShareCardInfo.nsE);
+    if (paramShareCardInfo.nVE != null) {
+      paramShareCardInfo.a(paramShareCardInfo.nVE);
     }
     paramShareCardInfo.field_local_updateTime = ((int)(System.currentTimeMillis() / 1000L));
     AppMethodBeat.o(113781);
   }
   
-  private static qo ac(JSONObject paramJSONObject)
+  private static qy ac(JSONObject paramJSONObject)
   {
     Object localObject2 = null;
     AppMethodBeat.i(113786);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.CardInfoParser", "parserCardDataInfo json is null");
+      ac.e("MicroMsg.CardInfoParser", "parserCardDataInfo json is null");
       AppMethodBeat.o(113786);
       return null;
     }
-    qo localqo = new qo();
+    qy localqy = new qy();
     for (;;)
     {
       try
       {
-        localqo.status = paramJSONObject.optInt("status");
-        localqo.CPn = paramJSONObject.optInt("init_balance");
-        localqo.CPo = paramJSONObject.optInt("init_bonus");
+        localqy.status = paramJSONObject.optInt("status");
+        localqy.EhY = paramJSONObject.optInt("init_balance");
+        localqy.EhZ = paramJSONObject.optInt("init_bonus");
         localObject1 = paramJSONObject.optJSONArray("cell_list0");
         if (localObject1 != null) {
-          localqo.CPp = r((JSONArray)localObject1);
+          localqy.Eia = r((JSONArray)localObject1);
         }
         localObject1 = paramJSONObject.optJSONArray("cell_list1");
         if (localObject1 != null) {
-          localqo.CPq = r((JSONArray)localObject1);
+          localqy.Eib = r((JSONArray)localObject1);
         }
         localObject1 = paramJSONObject.optJSONArray("cell_list2");
         if (localObject1 != null) {
-          localqo.CPr = r((JSONArray)localObject1);
+          localqy.Eic = r((JSONArray)localObject1);
         }
         localJSONArray = paramJSONObject.optJSONArray("acceptors");
         if (localJSONArray != null)
@@ -301,62 +301,62 @@ public final class f
             }
             localObject1 = localObject2;
           }
-          localqo.CPs = ((LinkedList)localObject1);
+          localqy.Eid = ((LinkedList)localObject1);
         }
-        localqo.CPt = paramJSONObject.optInt("avail_num");
-        localqo.CPu = paramJSONObject.optInt("code_type");
-        localqo.code = paramJSONObject.optString("code");
+        localqy.Eie = paramJSONObject.optInt("avail_num");
+        localqy.Eif = paramJSONObject.optInt("code_type");
+        localqy.code = paramJSONObject.optString("code");
         localObject1 = paramJSONObject.optJSONArray("secondary_fields");
         if (localObject1 != null) {
-          localqo.CPv = s((JSONArray)localObject1);
+          localqy.Eig = s((JSONArray)localObject1);
         }
-        localqo.CPw = paramJSONObject.optLong("stock_num");
-        localqo.CPx = paramJSONObject.optInt("limit_num");
-        localqo.CPy = paramJSONObject.optString("user_report_url");
+        localqy.Eih = paramJSONObject.optLong("stock_num");
+        localqy.Eii = paramJSONObject.optInt("limit_num");
+        localqy.Eij = paramJSONObject.optString("user_report_url");
         localObject1 = paramJSONObject.optJSONObject("third_field");
         if (localObject1 != null) {
-          localqo.CPz = af((JSONObject)localObject1);
+          localqy.Eik = af((JSONObject)localObject1);
         }
-        localqo.CPA = t(paramJSONObject.optJSONArray("action_sheets"));
+        localqy.Eil = t(paramJSONObject.optJSONArray("action_sheets"));
         localObject1 = paramJSONObject.optJSONObject("card_list_field");
         if (localObject1 != null) {
-          localqo.CPB = af((JSONObject)localObject1);
+          localqy.Eim = af((JSONObject)localObject1);
         }
         localObject1 = paramJSONObject.optJSONObject("operate_field");
         if (localObject1 != null) {
-          localqo.CPC = af((JSONObject)localObject1);
+          localqy.Ein = af((JSONObject)localObject1);
         }
         localObject1 = paramJSONObject.optJSONObject("limit_field");
         if (localObject1 != null) {
-          localqo.CPD = af((JSONObject)localObject1);
+          localqy.Eio = af((JSONObject)localObject1);
         }
         localObject1 = paramJSONObject.optJSONObject("detail_table");
         if (localObject1 != null) {
-          localqo.CPE = aj((JSONObject)localObject1);
+          localqy.Eip = aj((JSONObject)localObject1);
         }
-        localqo.CPF = paramJSONObject.optString("background_pic_url");
+        localqy.Eiq = paramJSONObject.optString("background_pic_url");
         localObject1 = paramJSONObject.optJSONObject("gifting_info_cell");
         if (localObject1 != null) {
-          localqo.CPG = af((JSONObject)localObject1);
+          localqy.Eir = af((JSONObject)localObject1);
         }
-        localqo.CPH = paramJSONObject.optString("sign_number");
+        localqy.Eis = paramJSONObject.optString("sign_number");
         localObject1 = paramJSONObject.optJSONObject("unavailable_qrcode_field");
         if (localObject1 != null) {
-          localqo.CPI = af((JSONObject)localObject1);
+          localqy.Eit = af((JSONObject)localObject1);
         }
-        localqo.CPJ = paramJSONObject.optBoolean("is_commom_card");
-        localqo.CPK = paramJSONObject.optBoolean("is_location_authorized");
+        localqy.Eiu = paramJSONObject.optBoolean("is_commom_card");
+        localqy.Eiv = paramJSONObject.optBoolean("is_location_authorized");
       }
       catch (JSONException paramJSONObject)
       {
         Object localObject1;
         JSONArray localJSONArray;
         int i;
-        ad.printErrStackTrace("MicroMsg.CardInfoParser", paramJSONObject, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.CardInfoParser", paramJSONObject, "", new Object[0]);
         continue;
       }
       AppMethodBeat.o(113786);
-      return localqo;
+      return localqy;
       localObject1 = new LinkedList();
       i = 0;
       if (i < localJSONArray.length())
@@ -367,17 +367,17 @@ public final class f
     }
   }
   
-  public static ro ad(JSONObject paramJSONObject)
+  public static ry ad(JSONObject paramJSONObject)
   {
     Object localObject2 = null;
     AppMethodBeat.i(113788);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.CardInfoParser", "parserCardTpInfo json is null");
+      ac.e("MicroMsg.CardInfoParser", "parserCardTpInfo json is null");
       AppMethodBeat.o(113788);
       return null;
     }
-    ro localro = new ro();
+    ry localry = new ry();
     Object localObject1;
     Object localObject3;
     label525:
@@ -386,91 +386,91 @@ public final class f
     int i;
     label803:
     label1017:
-    dax localdax;
+    dgj localdgj;
     for (;;)
     {
       try
       {
-        localro.nrr = paramJSONObject.optString("card_tp_id");
-        localro.gGR = paramJSONObject.optString("logo_url");
-        localro.dlB = paramJSONObject.optString("appid");
-        localro.CRC = paramJSONObject.optString("app_username");
-        localro.CRD = paramJSONObject.optInt("card_category");
-        localro.lpz = paramJSONObject.optInt("card_type");
-        localro.nsK = paramJSONObject.optString("brand_name");
-        localro.title = paramJSONObject.optString("title");
-        localro.nrs = paramJSONObject.optString("sub_title");
-        localro.gHT = paramJSONObject.optString("color");
-        localro.iau = paramJSONObject.optString("notice");
-        localro.CRE = paramJSONObject.optString("service_phone");
-        localro.CRH = paramJSONObject.optString("image_text_url");
-        localro.CRI = paramJSONObject.optString("source_icon");
-        localro.source = paramJSONObject.optString("source");
+        localry.nUr = paramJSONObject.optString("card_tp_id");
+        localry.hhs = paramJSONObject.optString("logo_url");
+        localry.djj = paramJSONObject.optString("appid");
+        localry.Ekn = paramJSONObject.optString("app_username");
+        localry.Eko = paramJSONObject.optInt("card_category");
+        localry.lRv = paramJSONObject.optInt("card_type");
+        localry.nVK = paramJSONObject.optString("brand_name");
+        localry.title = paramJSONObject.optString("title");
+        localry.nUs = paramJSONObject.optString("sub_title");
+        localry.hiu = paramJSONObject.optString("color");
+        localry.iAx = paramJSONObject.optString("notice");
+        localry.Ekp = paramJSONObject.optString("service_phone");
+        localry.Eks = paramJSONObject.optString("image_text_url");
+        localry.Ekt = paramJSONObject.optString("source_icon");
+        localry.source = paramJSONObject.optString("source");
         localObject1 = paramJSONObject.optJSONArray("primary_fields");
         if (localObject1 != null) {
-          localro.CRF = s((JSONArray)localObject1);
+          localry.Ekq = s((JSONArray)localObject1);
         }
         localObject1 = paramJSONObject.optJSONArray("introduce_fields");
         if (localObject1 != null) {
-          localro.CRG = s((JSONArray)localObject1);
+          localry.Ekr = s((JSONArray)localObject1);
         }
-        localro.CRJ = paramJSONObject.optInt("shop_count");
-        localro.jEK = paramJSONObject.optString("limit_wording");
-        localro.nsJ = paramJSONObject.optString("card_type_name");
-        localro.CRK = paramJSONObject.optString("h5_show_url");
-        localro.CRL = paramJSONObject.optInt("block_mask");
-        localro.CRM = paramJSONObject.optString("middle_icon");
-        localro.CRN = paramJSONObject.optString("accept_wording");
-        localro.CRO = paramJSONObject.optLong("control_flag");
-        localro.CRP = paramJSONObject.optString("advertise_wording");
-        localro.CRQ = paramJSONObject.optString("advertise_url");
-        localro.CRR = paramJSONObject.optString("public_service_name");
+        localry.Eku = paramJSONObject.optInt("shop_count");
+        localry.kfh = paramJSONObject.optString("limit_wording");
+        localry.nVJ = paramJSONObject.optString("card_type_name");
+        localry.Ekv = paramJSONObject.optString("h5_show_url");
+        localry.Ekw = paramJSONObject.optInt("block_mask");
+        localry.Ekx = paramJSONObject.optString("middle_icon");
+        localry.Eky = paramJSONObject.optString("accept_wording");
+        localry.Ekz = paramJSONObject.optLong("control_flag");
+        localry.EkA = paramJSONObject.optString("advertise_wording");
+        localry.EkB = paramJSONObject.optString("advertise_url");
+        localry.EkC = paramJSONObject.optString("public_service_name");
         localObject3 = paramJSONObject.optJSONObject("announcement");
         if (localObject3 != null) {
           continue;
         }
-        ad.e("MicroMsg.CardInfoParser", "parserannoucement json is null");
+        ac.e("MicroMsg.CardInfoParser", "parserannoucement json is null");
         localObject1 = null;
-        localro.CRS = ((rd)localObject1);
-        localro.CRT = paramJSONObject.optString("public_service_tip");
-        localro.CRU = paramJSONObject.optString("primary_sub_title");
-        localro.CRV = paramJSONObject.optInt("gen_type");
-        localro.CRW = ah(paramJSONObject.optJSONObject("detail_struct"));
+        localry.EkD = ((rn)localObject1);
+        localry.EkE = paramJSONObject.optString("public_service_tip");
+        localry.EkF = paramJSONObject.optString("primary_sub_title");
+        localry.EkG = paramJSONObject.optInt("gen_type");
+        localry.EkH = ah(paramJSONObject.optJSONObject("detail_struct"));
         localObject3 = paramJSONObject.optJSONObject("use_condition");
         if (localObject3 != null) {
           continue;
         }
-        ad.e("MicroMsg.CardInfoParser", "parserUseCondition json is null");
+        ac.e("MicroMsg.CardInfoParser", "parserUseCondition json is null");
         localObject1 = null;
-        localro.CRX = ((dij)localObject1);
+        localry.EkI = ((dny)localObject1);
         localObject3 = paramJSONObject.optJSONObject("follow_box");
         if (localObject3 != null) {
           break label1191;
         }
-        ad.e("MicroMsg.CardInfoParser", "parserFollowBox json is null");
+        ac.e("MicroMsg.CardInfoParser", "parserFollowBox json is null");
         localObject1 = null;
-        localro.CRY = ((amg)localObject1);
+        localry.EkJ = ((apj)localObject1);
         localObject3 = paramJSONObject.optJSONObject("guidance");
         if (localObject3 != null) {
           break label1264;
         }
-        ad.e("MicroMsg.CardInfoParser", "parserActionSheet json is null");
+        ac.e("MicroMsg.CardInfoParser", "parserActionSheet json is null");
         localObject1 = null;
-        localro.CRZ = ((ba)localObject1);
-        localro.CSa = paramJSONObject.optInt("need_direct_jump", 0);
-        localro.CSb = paramJSONObject.optInt("is_acceptable", 0);
-        localro.CSc = paramJSONObject.optString("unacceptable_wording");
-        localro.CSd = paramJSONObject.optInt("has_hongbao", 0);
-        localro.CSe = paramJSONObject.optString("accept_ui_title");
-        localro.CSf = paramJSONObject.optInt("show_accept_view", 0);
+        localry.EkK = ((bc)localObject1);
+        localry.EkL = paramJSONObject.optInt("need_direct_jump", 0);
+        localry.EkM = paramJSONObject.optInt("is_acceptable", 0);
+        localry.EkN = paramJSONObject.optString("unacceptable_wording");
+        localry.EkO = paramJSONObject.optInt("has_hongbao", 0);
+        localry.EkP = paramJSONObject.optString("accept_ui_title");
+        localry.EkQ = paramJSONObject.optInt("show_accept_view", 0);
         localObject1 = paramJSONObject.optJSONObject("brand_field");
         if (localObject1 != null) {
-          localro.CSg = af((JSONObject)localObject1);
+          localry.EkR = af((JSONObject)localObject1);
         }
-        localro.CSh = paramJSONObject.optString("shop_name");
+        localry.EkS = paramJSONObject.optString("shop_name");
         localObject1 = paramJSONObject.optJSONObject("pay_and_qrcode_field");
         if (localObject1 != null) {
-          localro.CSi = af((JSONObject)localObject1);
+          localry.EkT = af((JSONObject)localObject1);
         }
         localObject3 = paramJSONObject.optJSONObject("dynamic_qr_code_info");
         if (localObject3 != null)
@@ -478,82 +478,82 @@ public final class f
           if (localObject3 != null) {
             break label1299;
           }
-          ad.e("MicroMsg.CardInfoParser", "parserDynamicQrCodeInfo json is null");
+          ac.e("MicroMsg.CardInfoParser", "parserDynamicQrCodeInfo json is null");
           localObject1 = null;
-          localro.CSj = ((aco)localObject1);
+          localry.EkU = ((adn)localObject1);
         }
-        localro.CSk = paramJSONObject.optBoolean("is_card_code_exposed");
-        localro.CSl = paramJSONObject.optInt("qrcode_correct_level");
-        localro.CSm = paramJSONObject.optBoolean("dismiss_qrcode_icon_on_card");
-        localro.CSn = paramJSONObject.optBoolean("need_location");
+        localry.EkV = paramJSONObject.optBoolean("is_card_code_exposed");
+        localry.EkW = paramJSONObject.optInt("qrcode_correct_level");
+        localry.EkX = paramJSONObject.optBoolean("dismiss_qrcode_icon_on_card");
+        localry.EkY = paramJSONObject.optBoolean("need_location");
         localObject3 = paramJSONObject.optJSONObject("bluetooth_info");
         if (localObject3 != null)
         {
           if (localObject3 != null) {
             break label1397;
           }
-          ad.e("MicroMsg.CardInfoParser", "parseBluetoothInfo json is null");
+          ac.e("MicroMsg.CardInfoParser", "parseBluetoothInfo json is null");
           localObject1 = localObject2;
-          localro.CSo = ((oc)localObject1);
+          localry.EkZ = ((oj)localObject1);
         }
-        localro.CSp = paramJSONObject.optString("biz_nickname");
-        localro.CSq = paramJSONObject.optString("gift_title");
-        ad.d("MicroMsg.CardInfoParser", "parse gift title: %s", new Object[] { localro.CSq });
+        localry.Ela = paramJSONObject.optString("biz_nickname");
+        localry.Elb = paramJSONObject.optString("gift_title");
+        ac.d("MicroMsg.CardInfoParser", "parse gift title: %s", new Object[] { localry.Elb });
       }
       catch (JSONException paramJSONObject)
       {
-        ad.printErrStackTrace("MicroMsg.CardInfoParser", paramJSONObject, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.CardInfoParser", paramJSONObject, "", new Object[0]);
         continue;
-        localObject1 = new dij();
-        ((dij)localObject1).title = ((JSONObject)localObject3).optString("title");
+        localObject1 = new dny();
+        ((dny)localObject1).title = ((JSONObject)localObject3).optString("title");
         localJSONArray = ((JSONObject)localObject3).optJSONArray("outer_tag_list");
         if (localJSONArray == null) {
           break;
         }
       }
       AppMethodBeat.o(113788);
-      return localro;
-      localObject1 = new rd();
-      ((rd)localObject1).type = ((JSONObject)localObject3).optInt("type");
-      ((rd)localObject1).text = ((JSONObject)localObject3).optString("text");
-      ((rd)localObject1).url = ((JSONObject)localObject3).optString("url");
-      ((rd)localObject1).wmA = ((JSONObject)localObject3).optInt("endtime");
-      ((rd)localObject1).CJd = ((JSONObject)localObject3).optInt("create_time");
-      ((rd)localObject1).CQW = ((JSONObject)localObject3).optString("thumb_url");
+      return localry;
+      localObject1 = new rn();
+      ((rn)localObject1).type = ((JSONObject)localObject3).optInt("type");
+      ((rn)localObject1).text = ((JSONObject)localObject3).optString("text");
+      ((rn)localObject1).url = ((JSONObject)localObject3).optString("url");
+      ((rn)localObject1).xxQ = ((JSONObject)localObject3).optInt("endtime");
+      ((rn)localObject1).EbF = ((JSONObject)localObject3).optInt("create_time");
+      ((rn)localObject1).EjH = ((JSONObject)localObject3).optString("thumb_url");
       continue;
       if (localJSONArray.length() > 0)
       {
-        ((dij)localObject1).EyA = new LinkedList();
+        ((dny)localObject1).FVC = new LinkedList();
         i = 0;
         if (i >= localJSONArray.length()) {
           break label1063;
         }
-        localdax = ai(localJSONArray.optJSONObject(i));
-        if (localdax == null) {
+        localdgj = ai(localJSONArray.optJSONObject(i));
+        if (localdgj == null) {
           break label1452;
         }
-        ((dij)localObject1).EyA.add(localdax);
+        ((dny)localObject1).FVC.add(localdgj);
         break label1452;
       }
     }
-    ad.e("MicroMsg.CardInfoParser", "parserUseCondition outer_tag_list is null");
+    ac.e("MicroMsg.CardInfoParser", "parserUseCondition outer_tag_list is null");
     label1063:
     JSONArray localJSONArray = ((JSONObject)localObject3).optJSONArray("inner_tag_list");
     if ((localJSONArray != null) && (localJSONArray.length() > 0))
     {
-      ((dij)localObject1).EyB = new LinkedList();
+      ((dny)localObject1).FVD = new LinkedList();
       i = 0;
     }
     for (;;)
     {
       if (i < localJSONArray.length())
       {
-        localdax = ai(localJSONArray.optJSONObject(i));
-        if (localdax != null)
+        localdgj = ai(localJSONArray.optJSONObject(i));
+        if (localdgj != null)
         {
-          ((dij)localObject1).EyB.add(localdax);
+          ((dny)localObject1).FVD.add(localdgj);
           break label1459;
-          ad.e("MicroMsg.CardInfoParser", "parserUseCondition inner_tag_list is null");
+          ac.e("MicroMsg.CardInfoParser", "parserUseCondition inner_tag_list is null");
         }
       }
       else
@@ -561,34 +561,34 @@ public final class f
         localObject3 = ((JSONObject)localObject3).optJSONArray("detail_field");
         if ((localObject3 != null) && (((JSONArray)localObject3).length() > 0))
         {
-          ((dij)localObject1).EyC = s((JSONArray)localObject3);
+          ((dny)localObject1).FVE = s((JSONArray)localObject3);
           break;
         }
-        ad.e("MicroMsg.CardInfoParser", "parserUseCondition detail_field is null");
+        ac.e("MicroMsg.CardInfoParser", "parserUseCondition detail_field is null");
         break;
         label1191:
-        localObject1 = new amg();
-        ((amg)localObject1).text = ((JSONObject)localObject3).optString("text");
-        ((amg)localObject1).Dnr = ((JSONObject)localObject3).optInt("follow");
-        ad.i("MicroMsg.CardInfoParser", "follow:" + ((amg)localObject1).Dnr + "　text:" + ((amg)localObject1).text);
+        localObject1 = new apj();
+        ((apj)localObject1).text = ((JSONObject)localObject3).optString("text");
+        ((apj)localObject1).EIr = ((JSONObject)localObject3).optInt("follow");
+        ac.i("MicroMsg.CardInfoParser", "follow:" + ((apj)localObject1).EIr + "　text:" + ((apj)localObject1).text);
         break label525;
         label1264:
-        localObject1 = new ba();
-        ((ba)localObject1).text = ((JSONObject)localObject3).optString("text");
-        ((ba)localObject1).url = ((JSONObject)localObject3).optString("url");
+        localObject1 = new bc();
+        ((bc)localObject1).text = ((JSONObject)localObject3).optString("text");
+        ((bc)localObject1).url = ((JSONObject)localObject3).optString("url");
         break label555;
         label1299:
-        localObject1 = new aco();
-        ((aco)localObject1).DcV = ((JSONObject)localObject3).optBoolean("is_dynamic");
-        ((aco)localObject1).DcW = ((JSONObject)localObject3).optBoolean("can_refresh");
-        ((aco)localObject1).DcX = ((JSONObject)localObject3).optString("refresh_wording");
-        ad.i("MicroMsg.CardInfoParser", "is_dynamic:" + ((aco)localObject1).DcV + "　can_refresh:" + ((aco)localObject1).DcW + "　refresh_wording:" + ((aco)localObject1).DcX);
+        localObject1 = new adn();
+        ((adn)localObject1).Ewc = ((JSONObject)localObject3).optBoolean("is_dynamic");
+        ((adn)localObject1).Ewd = ((JSONObject)localObject3).optBoolean("can_refresh");
+        ((adn)localObject1).Ewe = ((JSONObject)localObject3).optString("refresh_wording");
+        ac.i("MicroMsg.CardInfoParser", "is_dynamic:" + ((adn)localObject1).Ewc + "　can_refresh:" + ((adn)localObject1).Ewd + "　refresh_wording:" + ((adn)localObject1).Ewe);
         break label720;
         label1397:
-        localObject1 = new oc();
-        ((oc)localObject1).name = ((JSONObject)localObject3).optString("name");
-        ((oc)localObject1).CLF = ((JSONObject)localObject3).optInt("report_time_interval", 0);
-        ad.i("MicroMsg.CardInfoParser", "blueToothInfo.name:%s", new Object[] { ((oc)localObject1).name });
+        localObject1 = new oj();
+        ((oj)localObject1).name = ((JSONObject)localObject3).optString("name");
+        ((oj)localObject1).Eei = ((JSONObject)localObject3).optInt("report_time_interval", 0);
+        ac.i("MicroMsg.CardInfoParser", "blueToothInfo.name:%s", new Object[] { ((oj)localObject1).name });
         break label803;
         label1452:
         i += 1;
@@ -599,81 +599,81 @@ public final class f
     }
   }
   
-  private static csx ae(JSONObject paramJSONObject)
+  private static cyg ae(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(113790);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.CardInfoParser", "parserShareInfo json is null");
+      ac.e("MicroMsg.CardInfoParser", "parserShareInfo json is null");
       AppMethodBeat.o(113790);
       return null;
     }
-    csx localcsx = new csx();
-    localcsx.Ekz = paramJSONObject.optString("gift_msg_title");
+    cyg localcyg = new cyg();
+    localcyg.FHx = paramJSONObject.optString("gift_msg_title");
     AppMethodBeat.o(113790);
-    return localcsx;
+    return localcyg;
   }
   
-  private static xo af(JSONObject paramJSONObject)
+  private static yg af(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(113792);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.CardInfoParser", "parserThirdFiled json is null");
+      ac.e("MicroMsg.CardInfoParser", "parserThirdFiled json is null");
       AppMethodBeat.o(113792);
       return null;
     }
-    xo localxo = new xo();
-    localxo.title = paramJSONObject.optString("title");
-    localxo.nrt = paramJSONObject.optString("aux_title");
-    localxo.nrs = paramJSONObject.optString("sub_title");
-    localxo.url = paramJSONObject.optString("url");
-    localxo.CSH = paramJSONObject.optLong("show_flag");
-    localxo.CSI = paramJSONObject.optString("primary_color");
-    localxo.CSJ = paramJSONObject.optString("secondary_color");
-    localxo.odo = paramJSONObject.optString("icon_url");
+    yg localyg = new yg();
+    localyg.title = paramJSONObject.optString("title");
+    localyg.nUt = paramJSONObject.optString("aux_title");
+    localyg.nUs = paramJSONObject.optString("sub_title");
+    localyg.url = paramJSONObject.optString("url");
+    localyg.Els = paramJSONObject.optLong("show_flag");
+    localyg.Elt = paramJSONObject.optString("primary_color");
+    localyg.Elu = paramJSONObject.optString("secondary_color");
+    localyg.oGN = paramJSONObject.optString("icon_url");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("gifting_info");
     if (localJSONObject != null) {
-      localxo.CZh = ag(localJSONObject);
+      localyg.ErU = ag(localJSONObject);
     }
-    localxo.CRq = paramJSONObject.optString("app_brand_user_name");
-    localxo.CRr = paramJSONObject.optString("app_brand_pass");
+    localyg.Ekb = paramJSONObject.optString("app_brand_user_name");
+    localyg.Ekc = paramJSONObject.optString("app_brand_pass");
     AppMethodBeat.o(113792);
-    return localxo;
+    return localyg;
   }
   
-  private static beh ag(JSONObject paramJSONObject)
+  private static bhz ag(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(113793);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.CardInfoParser", "parserGiftInfo json is null");
+      ac.e("MicroMsg.CardInfoParser", "parserGiftInfo json is null");
       AppMethodBeat.o(113793);
       return null;
     }
-    ad.d("MicroMsg.CardInfoParser", "parserGitfInfo:%s", new Object[] { paramJSONObject });
-    beh localbeh = new beh();
-    localbeh.CtZ = p.dG(paramJSONObject.optString("biz_uin"));
-    localbeh.Cua = paramJSONObject.optString("order_id");
+    ac.d("MicroMsg.CardInfoParser", "parserGitfInfo:%s", new Object[] { paramJSONObject });
+    bhz localbhz = new bhz();
+    localbhz.DMq = p.dv(paramJSONObject.optString("biz_uin"));
+    localbhz.DMr = paramJSONObject.optString("order_id");
     AppMethodBeat.o(113793);
-    return localbeh;
+    return localbhz;
   }
   
-  private static abm ah(JSONObject paramJSONObject)
+  private static acl ah(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(113794);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.CardInfoParser", "parserDetailStruct json is null");
+      ac.e("MicroMsg.CardInfoParser", "parserDetailStruct json is null");
       AppMethodBeat.o(113794);
       return null;
     }
-    abm localabm = new abm();
-    localabm.title = paramJSONObject.optString("title");
-    localabm.url = paramJSONObject.optString("url");
-    localabm.desc = paramJSONObject.optString("abstract");
-    localabm.detail = paramJSONObject.optString("detail");
-    localabm.DbP = paramJSONObject.optString("ad_title");
+    acl localacl = new acl();
+    localacl.title = paramJSONObject.optString("title");
+    localacl.url = paramJSONObject.optString("url");
+    localacl.desc = paramJSONObject.optString("abstract");
+    localacl.detail = paramJSONObject.optString("detail");
+    localacl.EuW = paramJSONObject.optString("ad_title");
     JSONArray localJSONArray = paramJSONObject.optJSONArray("icon_url_list");
     if ((localJSONArray != null) && (localJSONArray.length() > 0))
     {
@@ -694,74 +694,74 @@ public final class f
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.CardInfoParser", localJSONException, "", new Object[0]);
-            ad.e("MicroMsg.CardInfoParser", "getMessage:" + localJSONException.getMessage());
+            ac.printErrStackTrace("MicroMsg.CardInfoParser", localJSONException, "", new Object[0]);
+            ac.e("MicroMsg.CardInfoParser", "getMessage:" + localJSONException.getMessage());
           }
         }
         localLinkedList.add(paramJSONObject);
         i += 1;
       }
       label198:
-      localabm.DbO = localLinkedList;
+      localacl.EuV = localLinkedList;
     }
     for (;;)
     {
       AppMethodBeat.o(113794);
-      return localabm;
-      ad.e("MicroMsg.CardInfoParser", "parserDetailStruct icon_url_list is null");
+      return localacl;
+      ac.e("MicroMsg.CardInfoParser", "parserDetailStruct icon_url_list is null");
     }
   }
   
-  private static dax ai(JSONObject paramJSONObject)
+  private static dgj ai(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(113795);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.CardInfoParser", "parserUseCondition json is null");
+      ac.e("MicroMsg.CardInfoParser", "parserUseCondition json is null");
       AppMethodBeat.o(113795);
       return null;
     }
-    dax localdax = new dax();
-    localdax.tag = paramJSONObject.optString("tag");
-    localdax.gHT = paramJSONObject.optString("color");
+    dgj localdgj = new dgj();
+    localdgj.tag = paramJSONObject.optString("tag");
+    localdgj.hiu = paramJSONObject.optString("color");
     AppMethodBeat.o(113795);
-    return localdax;
+    return localdgj;
   }
   
-  private static abn aj(JSONObject paramJSONObject)
+  private static acm aj(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(113796);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.CardInfoParser", "parserDetailTable json is null");
+      ac.e("MicroMsg.CardInfoParser", "parserDetailTable json is null");
       AppMethodBeat.o(113796);
       return null;
     }
-    abn localabn = new abn();
-    localabn.title = paramJSONObject.optString("title");
-    localabn.nrs = paramJSONObject.optString("sub_title");
-    localabn.DbQ = paramJSONObject.optInt("show_num", 0);
+    acm localacm = new acm();
+    localacm.title = paramJSONObject.optString("title");
+    localacm.nUs = paramJSONObject.optString("sub_title");
+    localacm.EuX = paramJSONObject.optInt("show_num", 0);
     paramJSONObject = paramJSONObject.optJSONArray("rows");
     if ((paramJSONObject != null) && (paramJSONObject.length() > 0)) {}
     for (;;)
     {
       try
       {
-        localabn.DbR = s(paramJSONObject);
+        localacm.EuY = s(paramJSONObject);
         AppMethodBeat.o(113796);
-        return localabn;
+        return localacm;
       }
       catch (JSONException paramJSONObject)
       {
-        ad.printErrStackTrace("MicroMsg.CardInfoParser", paramJSONObject, "", new Object[0]);
-        ad.e("MicroMsg.CardInfoParser", paramJSONObject.getMessage());
+        ac.printErrStackTrace("MicroMsg.CardInfoParser", paramJSONObject, "", new Object[0]);
+        ac.e("MicroMsg.CardInfoParser", paramJSONObject.getMessage());
         continue;
       }
-      ad.e("MicroMsg.CardInfoParser", "parserDetailTable jsonArray is  null");
+      ac.e("MicroMsg.CardInfoParser", "parserDetailTable jsonArray is  null");
     }
   }
   
-  private static LinkedList<rw> r(JSONArray paramJSONArray)
+  private static LinkedList<sg> r(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(113787);
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
@@ -774,25 +774,25 @@ public final class f
     while (i < paramJSONArray.length())
     {
       JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-      rw localrw = new rw();
-      localrw.title = localJSONObject.optString("title");
-      localrw.nrs = localJSONObject.optString("sub_title");
-      localrw.nvv = localJSONObject.optString("tips");
-      localrw.url = localJSONObject.optString("url");
-      localrw.CSH = localJSONObject.optLong("show_flag");
-      localrw.CSI = localJSONObject.optString("primary_color");
-      localrw.CSJ = localJSONObject.optString("secondary_color");
-      localrw.odo = localJSONObject.optString("icon_url");
-      localrw.CRq = localJSONObject.optString("app_brand_user_name");
-      localrw.CRr = localJSONObject.optString("app_brand_pass");
-      localLinkedList.add(localrw);
+      sg localsg = new sg();
+      localsg.title = localJSONObject.optString("title");
+      localsg.nUs = localJSONObject.optString("sub_title");
+      localsg.nYv = localJSONObject.optString("tips");
+      localsg.url = localJSONObject.optString("url");
+      localsg.Els = localJSONObject.optLong("show_flag");
+      localsg.Elt = localJSONObject.optString("primary_color");
+      localsg.Elu = localJSONObject.optString("secondary_color");
+      localsg.oGN = localJSONObject.optString("icon_url");
+      localsg.Ekb = localJSONObject.optString("app_brand_user_name");
+      localsg.Ekc = localJSONObject.optString("app_brand_pass");
+      localLinkedList.add(localsg);
       i += 1;
     }
     AppMethodBeat.o(113787);
     return localLinkedList;
   }
   
-  private static LinkedList<xo> s(JSONArray paramJSONArray)
+  private static LinkedList<yg> s(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(113789);
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
@@ -804,9 +804,9 @@ public final class f
     int i = 0;
     while (i < paramJSONArray.length())
     {
-      xo localxo = af(paramJSONArray.getJSONObject(i));
-      if (localxo != null) {
-        localLinkedList.add(localxo);
+      yg localyg = af(paramJSONArray.getJSONObject(i));
+      if (localyg != null) {
+        localLinkedList.add(localyg);
       }
       i += 1;
     }
@@ -814,7 +814,7 @@ public final class f
     return localLinkedList;
   }
   
-  private static LinkedList<ba> t(JSONArray paramJSONArray)
+  private static LinkedList<bc> t(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(113791);
     LinkedList localLinkedList = new LinkedList();
@@ -826,18 +826,18 @@ public final class f
         if (i < paramJSONArray.length()) {
           try
           {
-            ba localba = new ba();
+            bc localbc = new bc();
             JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-            localba.text = localJSONObject.optString("text");
-            localba.url = localJSONObject.optString("url");
-            localLinkedList.add(localba);
+            localbc.text = localJSONObject.optString("text");
+            localbc.url = localJSONObject.optString("url");
+            localLinkedList.add(localbc);
             i += 1;
           }
           catch (JSONException localJSONException)
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.CardInfoParser", localJSONException, "", new Object[0]);
+              ac.printErrStackTrace("MicroMsg.CardInfoParser", localJSONException, "", new Object[0]);
             }
           }
         }

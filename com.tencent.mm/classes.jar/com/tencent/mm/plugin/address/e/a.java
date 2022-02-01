@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.address.e;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.address.d.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
 {
@@ -12,19 +12,19 @@ public final class a
     AppMethodBeat.i(21053);
     if (paramb == null)
     {
-      ad.e("MicroMsg.AddrUtil", "addressObj == null");
+      ac.e("MicroMsg.AddrUtil", "addressObj == null");
       AppMethodBeat.o(21053);
       return null;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("nationalCode", paramb.iyV);
-    localIntent.putExtra("userName", paramb.iyT);
-    localIntent.putExtra("telNumber", paramb.iyU);
-    localIntent.putExtra("addressPostalCode", paramb.iyR);
-    localIntent.putExtra("proviceFirstStageName", paramb.iyO);
-    localIntent.putExtra("addressCitySecondStageName", paramb.iyP);
-    localIntent.putExtra("addressCountiesThirdStageName", paramb.iyQ);
-    localIntent.putExtra("addressDetailInfo", paramb.iyS);
+    localIntent.putExtra("nationalCode", paramb.iYY);
+    localIntent.putExtra("userName", paramb.iYW);
+    localIntent.putExtra("telNumber", paramb.iYX);
+    localIntent.putExtra("addressPostalCode", paramb.iYU);
+    localIntent.putExtra("proviceFirstStageName", paramb.iYR);
+    localIntent.putExtra("addressCitySecondStageName", paramb.iYS);
+    localIntent.putExtra("addressCountiesThirdStageName", paramb.iYT);
+    localIntent.putExtra("addressDetailInfo", paramb.iYV);
     AppMethodBeat.o(21053);
     return localIntent;
   }

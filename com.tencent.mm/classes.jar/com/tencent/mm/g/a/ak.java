@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ak
   extends b
 {
-  public a dci;
+  public a cZE;
+  public ak.b cZF;
   
   public ak()
   {
@@ -15,21 +16,22 @@ public final class ak
   
   private ak(byte paramByte)
   {
-    AppMethodBeat.i(5530);
-    this.dci = new a();
-    this.ESR = false;
+    AppMethodBeat.i(42651);
+    this.cZE = new a();
+    this.cZF = new ak.b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(5530);
+    AppMethodBeat.o(42651);
   }
   
   public static final class a
   {
-    public String userName;
+    public int cZG = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,119 +1,59 @@
 package com.tencent.mm.ak;
 
-import android.database.Cursor;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.storagebase.h;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.bkh;
+import com.tencent.mm.protocal.protobuf.bxl;
+import com.tencent.mm.protocal.protobuf.oq;
+import com.tencent.mm.sdk.platformtools.ac;
 
-public final class o
+public abstract class o
+  extends n
+  implements k
 {
-  private static List<String> gUu;
-  private static int gUv;
-  private static a gUw;
+  protected int hwd = 3;
+  private boolean hwe = false;
   
-  static
-  {
-    AppMethodBeat.i(150317);
-    gUu = null;
-    gUv = 0;
-    gUw = new a(new b());
-    AppMethodBeat.o(150317);
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString, q paramq);
   
-  public static void E(Runnable paramRunnable)
+  public abstract void aBH();
+  
+  public abstract g aBI();
+  
+  public abstract oq b(q paramq);
+  
+  public abstract bxl c(q paramq);
+  
+  public abstract bkh d(q paramq);
+  
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(150315);
-    if (!g.afz().aeI())
+    if ((paramInt2 == 4) && (paramInt3 == -301))
     {
-      AppMethodBeat.o(150315);
+      ac.i("MicroMsg.NetSceneIDCRedirectBase", "alvinluo NetScene pre process MM_ERR_IDC_REDIRECT redirectCount: %d", new Object[] { Integer.valueOf(this.hwd) });
+      if (paramq != null)
+      {
+        ac.i("MicroMsg.NetSceneIDCRedirectBase", "update idc info");
+        ba.a(true, b(paramq), c(paramq), d(paramq));
+      }
+      this.hwd -= 1;
+      if (this.hwd <= 0)
+      {
+        aBH();
+        this.hwe = false;
+        return;
+      }
+      ac.d("MicroMsg.NetSceneIDCRedirectBase", "redirect IDC");
+      doScene(dispatcher(), aBI());
       return;
     }
-    Object localObject = p.auF();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((j)localObject).gPa.a("select username from img_flag where username not in (select username from rcontact ) and username not like \"%@qqim\" and username not like \"%@bottle\";", null, 2);
-    while (((Cursor)localObject).moveToNext()) {
-      localArrayList.add(((Cursor)localObject).getString(0));
-    }
-    ((Cursor)localObject).close();
-    gUu = localArrayList;
-    if (localArrayList.size() <= 0)
-    {
-      AppMethodBeat.o(150315);
-      return;
-    }
-    gUw.gUx.gUy = paramRunnable;
-    gUw.av(10L, 10L);
-    AppMethodBeat.o(150315);
-  }
-  
-  public static void auB()
-  {
-    AppMethodBeat.i(150316);
-    gUv = 0;
-    gUw.stopTimer();
-    AppMethodBeat.o(150316);
-  }
-  
-  static final class a
-    extends av
-  {
-    final o.b gUx;
-    
-    public a(o.b paramb)
-    {
-      super(true);
-      this.gUx = paramb;
-    }
-  }
-  
-  static final class b
-    implements av.a
-  {
-    Runnable gUy;
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(150314);
-      int j = o.apA().size();
-      ad.e("MicroMsg.RemoveAvatarTask", "RemoveOldAvatar left count:".concat(String.valueOf(j)));
-      if ((j <= 2000) || (o.gUv >= 300))
-      {
-        if (this.gUy != null) {
-          this.gUy.run();
-        }
-        o.auC();
-        AppMethodBeat.o(150314);
-        return false;
-      }
-      long l = g.afB().gda.rb(Thread.currentThread().getId());
-      int i = j - 1;
-      while (i >= j - 30)
-      {
-        o.auD();
-        String str = (String)o.apA().get(i);
-        o.apA().remove(i);
-        p.auq();
-        e.K(str, false);
-        p.auq();
-        e.K(str, true);
-        p.auF().wf(str);
-        i -= 1;
-      }
-      g.afB().gda.mX(l);
-      AppMethodBeat.o(150314);
-      return true;
-    }
+    a(paramInt2, paramInt3, paramString, paramq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ak.o
  * JD-Core Version:    0.7.0.1
  */

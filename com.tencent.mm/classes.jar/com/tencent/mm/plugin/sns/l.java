@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.sns;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.y.b;
 import com.tencent.mm.modelsns.f;
 import com.tencent.mm.modelstat.p;
 import com.tencent.mm.modelstat.p.a;
-import com.tencent.mm.plugin.sns.c.d;
-import com.tencent.mm.plugin.sns.c.j;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.cxi;
-import com.tencent.mm.protocal.protobuf.cxj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.dcu;
+import com.tencent.mm.protocal.protobuf.dcv;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
 
 public final class l
   implements j
 {
-  public final String U(bl parambl)
+  public final String U(bo parambo)
   {
     AppMethodBeat.i(94910);
-    parambl = p.U(parambl);
+    parambo = p.U(parambo);
     AppMethodBeat.o(94910);
-    return parambl;
+    return parambo;
   }
   
   public final String a(String paramString, PString paramPString)
@@ -37,53 +37,53 @@ public final class l
     return paramString;
   }
   
-  public final void a(String paramString, y.b paramb, bl parambl)
+  public final void a(String paramString, y.b paramb, bo parambo)
   {
     AppMethodBeat.i(94908);
-    if (parambl.cxB())
+    if (parambo.cKN())
     {
-      parambl = k.b.rx(parambl.field_content);
-      if ((parambl != null) && (!bt.isNullOrNil(parambl.dxG))) {
-        paramb.m(paramString, parambl.dxG);
+      parambo = k.b.vA(parambo.field_content);
+      if ((parambo != null) && (!bs.isNullOrNil(parambo.dvs))) {
+        paramb.l(paramString, parambo.dvs);
       }
     }
     AppMethodBeat.o(94908);
   }
   
-  public final void ay(bl parambl)
+  public final void aA(bo parambo)
   {
     AppMethodBeat.i(94909);
-    String str = p.U(parambl);
-    cxi localcxi;
+    String str = p.U(parambo);
+    dcu localdcu;
     if (str != null)
     {
       Object localObject = Base64.decode(str, 0);
-      localcxi = new cxi();
+      localdcu = new dcu();
       try
       {
-        localcxi.parseFrom((byte[])localObject);
-        localObject = localcxi.Ept;
+        localdcu.parseFrom((byte[])localObject);
+        localObject = localdcu.FMs;
         if (localObject == null)
         {
           AppMethodBeat.o(94909);
           return;
         }
       }
-      catch (Exception parambl)
+      catch (Exception parambo)
       {
-        ad.printErrStackTrace("MicroMsg.SnsStatExtUtil", parambl, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.SnsStatExtUtil", parambo, "", new Object[0]);
         AppMethodBeat.o(94909);
         return;
       }
-      if (!parambl.field_talker.endsWith("@chatroom")) {
+      if (!parambo.field_talker.endsWith("@chatroom")) {
         break label193;
       }
     }
     label193:
-    for (parambl = p.a.hxk.value;; parambl = p.a.hxj.value)
+    for (parambo = p.a.hXL.value;; parambo = p.a.hXK.value)
     {
-      ad.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene(%s), statExtStr:%s(id=%s, uxinfo=%s)", new Object[] { parambl, str, localcxi.Ept.Epw, localcxi.Ept.CoM });
-      ((d)g.ab(d.class)).f(13235, new Object[] { parambl, localcxi.Ept.Epw, localcxi.Ept.CoM });
+      ac.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene(%s), statExtStr:%s(id=%s, uxinfo=%s)", new Object[] { parambo, str, localdcu.FMs.FMv, localdcu.FMs.DHe });
+      ((d)g.ab(d.class)).f(13235, new Object[] { parambo, localdcu.FMs.FMv, localdcu.FMs.DHe });
       AppMethodBeat.o(94909);
       return;
     }
@@ -98,7 +98,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.l
  * JD-Core Version:    0.7.0.1
  */

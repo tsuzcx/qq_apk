@@ -5,68 +5,68 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.h.e;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public final class i
   implements c
 {
   private int audioBitrate;
   private int audioSampleRate;
-  private int gnH;
-  c.a tEg;
-  private ap tEl;
-  private MediaRecorder tEx;
-  private boolean tEy;
+  private int gOt;
+  c.a uMB;
+  private ao uMG;
+  private MediaRecorder uMS;
+  private boolean uMT;
   
   public i(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89496);
-    this.tEy = false;
-    this.tEl = new ap()
+    this.uMT = false;
+    this.uMG = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(89495);
-        if (i.this.tEg != null)
+        if (i.this.uMB != null)
         {
-          i.this.tEg.aoB();
-          i.this.tEg = null;
+          i.this.uMB.avs();
+          i.this.uMB = null;
         }
         AppMethodBeat.o(89495);
       }
     };
     this.audioSampleRate = paramInt1;
     this.audioBitrate = paramInt2;
-    this.gnH = paramInt3;
-    if (this.gnH <= 0) {
-      this.gnH = 1;
+    this.gOt = paramInt3;
+    if (this.gOt <= 0) {
+      this.gOt = 1;
     }
-    ad.i("MicroMsg.MMSightAACMediaRecorder", "MMSightAACMediaRecorder, sampleRate: %s, bitrate: %s, audioChannelCount: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ac.i("MicroMsg.MMSightAACMediaRecorder", "MMSightAACMediaRecorder, sampleRate: %s, bitrate: %s, audioChannelCount: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(89496);
   }
   
-  public final int D(int paramInt, String paramString)
+  public final int E(int paramInt, String paramString)
   {
     AppMethodBeat.i(89497);
-    ad.i("MicroMsg.MMSightAACMediaRecorder", "MMSightAACMediaRecorder init tempPath[%s], sampleRate[%d]", new Object[] { paramString, Integer.valueOf(this.audioSampleRate) });
-    this.tEx = new e();
-    this.tEx.setAudioSource(1);
-    this.tEx.setOutputFormat(2);
-    this.tEx.setAudioEncoder(3);
-    this.tEx.setAudioChannels(this.gnH);
-    this.tEx.setAudioEncodingBitRate(this.audioBitrate);
-    this.tEx.setAudioSamplingRate(this.audioSampleRate);
-    this.tEx.setOutputFile(paramString);
+    ac.i("MicroMsg.MMSightAACMediaRecorder", "MMSightAACMediaRecorder init tempPath[%s], sampleRate[%d]", new Object[] { paramString, Integer.valueOf(this.audioSampleRate) });
+    this.uMS = new e();
+    this.uMS.setAudioSource(1);
+    this.uMS.setOutputFormat(2);
+    this.uMS.setAudioEncoder(3);
+    this.uMS.setAudioChannels(this.gOt);
+    this.uMS.setAudioEncodingBitRate(this.audioBitrate);
+    this.uMS.setAudioSamplingRate(this.audioSampleRate);
+    this.uMS.setOutputFile(paramString);
     try
     {
-      this.tEx.prepare();
+      this.uMS.prepare();
       AppMethodBeat.o(89497);
       return 0;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", paramString, "mediaRecorder prepare error: %s", new Object[] { paramString.getMessage() });
+      ac.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", paramString, "mediaRecorder prepare error: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(89497);
     }
     return -1;
@@ -75,23 +75,23 @@ public final class i
   public final int a(c.a parama)
   {
     AppMethodBeat.i(89498);
-    ad.i("MicroMsg.MMSightAACMediaRecorder", "start, onPcmReady: %s", new Object[] { parama });
-    this.tEg = parama;
+    ac.i("MicroMsg.MMSightAACMediaRecorder", "start, onPcmReady: %s", new Object[] { parama });
+    this.uMB = parama;
     try
     {
-      if ((this.tEx != null) && (!this.tEy)) {
-        this.tEx.start();
+      if ((this.uMS != null) && (!this.uMT)) {
+        this.uMS.start();
       }
       return 0;
     }
     catch (Exception parama)
     {
-      ad.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", parama, "start record aac.mp4 error:%s", new Object[] { parama.getMessage() });
+      ac.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", parama, "start record aac.mp4 error:%s", new Object[] { parama.getMessage() });
       return -1;
     }
     finally
     {
-      this.tEl.sendEmptyMessage(0);
+      this.uMG.sendEmptyMessage(0);
       AppMethodBeat.o(89498);
     }
   }
@@ -99,42 +99,35 @@ public final class i
   public final int a(c.b paramb)
   {
     AppMethodBeat.i(89499);
-    ad.i("MicroMsg.MMSightAACMediaRecorder", "stop, mediaRecorder: %s, callback: %s", new Object[] { this.tEx, paramb });
-    if (this.tEx == null)
+    ac.i("MicroMsg.MMSightAACMediaRecorder", "stop, mediaRecorder: %s, callback: %s", new Object[] { this.uMS, paramb });
+    if (this.uMS == null)
     {
       if (paramb != null) {
-        paramb.aoA();
+        paramb.avr();
       }
       AppMethodBeat.o(89499);
       return 0;
     }
     try
     {
-      if (!this.tEy)
+      if (!this.uMT)
       {
-        this.tEx.stop();
-        this.tEx.release();
+        this.uMS.stop();
+        this.uMS.release();
       }
-      this.tEx = null;
+      this.uMS = null;
       if (paramb != null) {
-        paramb.aoA();
+        paramb.avr();
       }
       AppMethodBeat.o(89499);
       return 0;
     }
     catch (Exception paramb)
     {
-      ad.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", paramb, "stop record aac.mp4 error:%s", new Object[] { paramb.getMessage() });
+      ac.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", paramb, "stop record aac.mp4 error:%s", new Object[] { paramb.getMessage() });
       AppMethodBeat.o(89499);
     }
     return -1;
-  }
-  
-  public final void cQe() {}
-  
-  public final com.tencent.mm.audio.b.c.a cQf()
-  {
-    return null;
   }
   
   public final void clear()
@@ -142,37 +135,44 @@ public final class i
     AppMethodBeat.i(89500);
     try
     {
-      if (this.tEx != null)
+      if (this.uMS != null)
       {
-        if (!this.tEy)
+        if (!this.uMT)
         {
-          this.tEx.stop();
-          this.tEx.release();
+          this.uMS.stop();
+          this.uMS.release();
         }
-        this.tEx = null;
+        this.uMS = null;
       }
       AppMethodBeat.o(89500);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", localException, "clear error: %s", new Object[] { localException.getMessage() });
+      ac.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", localException, "clear error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(89500);
     }
   }
   
-  public final void mO(int paramInt) {}
+  public final void ddM() {}
   
-  public final void nf(boolean paramBoolean)
+  public final com.tencent.mm.audio.b.c.a ddN()
   {
-    this.tEy = paramBoolean;
+    return null;
+  }
+  
+  public final void nC(int paramInt) {}
+  
+  public final void nY(boolean paramBoolean)
+  {
+    this.uMT = paramBoolean;
   }
   
   public final void pause()
   {
     AppMethodBeat.i(89501);
-    if (d.lf(24)) {
-      this.tEx.pause();
+    if (d.kZ(24)) {
+      this.uMS.pause();
     }
     AppMethodBeat.o(89501);
   }
@@ -180,8 +180,8 @@ public final class i
   public final void resume()
   {
     AppMethodBeat.i(89502);
-    if (d.lf(24)) {
-      this.tEx.resume();
+    if (d.kZ(24)) {
+      this.uMS.resume();
     }
     AppMethodBeat.o(89502);
   }

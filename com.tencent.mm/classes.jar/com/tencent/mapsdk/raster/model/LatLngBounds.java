@@ -313,7 +313,7 @@ public class LatLngBounds
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.LatLngBounds
  * JD-Core Version:    0.7.0.1
  */

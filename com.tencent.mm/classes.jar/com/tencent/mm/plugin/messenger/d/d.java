@@ -4,11 +4,11 @@ import com.tencent.mm.plugin.messenger.e.a;
 
 public final class d
 {
-  public a tzh;
+  public a uHE;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.d.d
  * JD-Core Version:    0.7.0.1
  */

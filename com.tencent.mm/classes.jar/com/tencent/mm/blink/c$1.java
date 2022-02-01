@@ -8,7 +8,7 @@ public final class c$1
   public final void run()
   {
     AppMethodBeat.i(19870);
-    a.SR();
+    a.TL();
     AppMethodBeat.o(19870);
   }
 }

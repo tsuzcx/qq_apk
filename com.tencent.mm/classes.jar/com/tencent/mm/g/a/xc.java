@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xc
   extends b
 {
-  public a dCB;
+  public a dzT;
   
   public xc()
   {
@@ -15,21 +15,21 @@ public final class xc
   
   private xc(byte paramByte)
   {
-    AppMethodBeat.i(116057);
-    this.dCB = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19846);
+    this.dzT = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116057);
+    AppMethodBeat.o(19846);
   }
   
   public static final class a
   {
-    public String uri;
+    public String path;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.xc
  * JD-Core Version:    0.7.0.1
  */

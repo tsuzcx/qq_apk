@@ -8,10 +8,10 @@ import com.tencent.mm.ipcinvoker.p;
 import com.tencent.mm.plugin.game.d.ay;
 import com.tencent.mm.plugin.game.d.cv;
 import com.tencent.mm.plugin.webview.ui.tools.game.h;
-import com.tencent.mm.protocal.protobuf.aoj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.d;
 import java.net.URLEncoder;
@@ -26,20 +26,20 @@ public final class e
   public static void a(k paramk, final String paramString)
   {
     AppMethodBeat.i(180130);
-    p.y(new Runnable()
+    p.z(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(83011);
-        this.rOW.a(new com.tencent.luggage.d.c()
+        this.sWM.a(new com.tencent.luggage.d.c()
         {
-          public final JSONObject AM()
+          public final JSONObject Aq()
           {
             AppMethodBeat.i(83010);
             JSONObject localJSONObject = new JSONObject();
             try
             {
-              localJSONObject.put("url", e.2.this.rOX);
+              localJSONObject.put("url", e.2.this.sWN);
               localJSONObject.put("set_cookie", 1);
               AppMethodBeat.o(83010);
               return localJSONObject;
@@ -48,7 +48,7 @@ public final class e
             {
               for (;;)
               {
-                ad.e("MicroMsg.LuggageGetA8KeyUtil", "onGetA8Key, e:" + localException.getMessage());
+                ac.e("MicroMsg.LuggageGetA8KeyUtil", "onGetA8Key, e:" + localException.getMessage());
               }
             }
           }
@@ -67,9 +67,9 @@ public final class e
   public static void a(final k paramk, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(83012);
-    GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.qd(paramString);
-    ad.i("MicroMsg.LuggageGetA8KeyUtil", "getA8Key begin, time: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-    localGameWebPerformanceInfo.fVl = System.currentTimeMillis();
+    GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.tq(paramString);
+    ac.i("MicroMsg.LuggageGetA8KeyUtil", "getA8Key begin, time: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+    localGameWebPerformanceInfo.fZg = System.currentTimeMillis();
     com.tencent.mm.plugin.webview.e.c localc = new com.tencent.mm.plugin.webview.e.c();
     localc.a(paramString, new com.tencent.mm.plugin.webview.e.a()
     {
@@ -77,14 +77,14 @@ public final class e
       
       public final void a(int paramAnonymousInt1, String paramAnonymousString1, int paramAnonymousInt2, int paramAnonymousInt3, String paramAnonymousString2) {}
       
-      public final void be(int paramAnonymousInt, String paramAnonymousString) {}
+      public final void bj(int paramAnonymousInt, String paramAnonymousString) {}
       
-      public final void bf(int paramAnonymousInt, String paramAnonymousString)
+      public final void bk(int paramAnonymousInt, String paramAnonymousString)
       {
-        AppMethodBeat.i(190157);
-        this.rOV.fVl = System.currentTimeMillis();
-        h.bz(paramAnonymousString, System.currentTimeMillis());
-        AppMethodBeat.o(190157);
+        AppMethodBeat.i(195135);
+        this.sWL.fZg = System.currentTimeMillis();
+        h.bB(paramAnonymousString, System.currentTimeMillis());
+        AppMethodBeat.o(195135);
       }
     });
     if (paramBoolean) {
@@ -96,31 +96,31 @@ public final class e
   public static void a(final MMWebView paramMMWebView, String paramString, final Map<String, String> paramMap)
   {
     AppMethodBeat.i(180131);
-    if ((bt.isNullOrNil(paramString)) || (paramMMWebView == null))
+    if ((bs.isNullOrNil(paramString)) || (paramMMWebView == null))
     {
-      ad.e("MicroMsg.LuggageGetA8KeyUtil", "url is null");
+      ac.e("MicroMsg.LuggageGetA8KeyUtil", "url is null");
       AppMethodBeat.o(180131);
       return;
     }
-    p.y(new Runnable()
+    p.z(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(180129);
-        d.kU(aj.getContext());
-        Object localObject3 = com.tencent.xweb.c.fqC();
-        String str2 = "; max-age=" + com.tencent.mm.plugin.game.commlib.a.cBp();
+        d.li(ai.getContext());
+        Object localObject3 = com.tencent.xweb.c.fJa();
+        String str2 = "; max-age=" + com.tencent.mm.plugin.game.commlib.a.cOy();
         String str3 = str2 + "; httponly";
         Object localObject4 = Uri.parse(this.val$url);
         Object localObject5 = ((Uri)localObject4).getHost();
         String str1 = ((Uri)localObject4).getScheme();
         Object localObject1 = str1;
-        if (bt.isNullOrNil(str1)) {
+        if (bs.isNullOrNil(str1)) {
           localObject1 = "http";
         }
-        if (bt.isNullOrNil((String)localObject5))
+        if (bs.isNullOrNil((String)localObject5))
         {
-          ad.e("MicroMsg.LuggageGetA8KeyUtil", "host is null");
+          ac.e("MicroMsg.LuggageGetA8KeyUtil", "host is null");
           AppMethodBeat.o(180129);
           return;
         }
@@ -129,8 +129,8 @@ public final class e
         String str4;
         for (str1 = (String)localObject1 + "://" + (String)localObject5;; str1 = (String)localObject1 + "://." + (String)localObject5)
         {
-          ad.i("MicroMsg.LuggageGetA8KeyUtil", "domain = %s", new Object[] { str1 });
-          ad.i("MicroMsg.LuggageGetA8KeyUtil", "before set cookies:%s", new Object[] { ((com.tencent.xweb.c)localObject3).getCookie(str1) });
+          ac.i("MicroMsg.LuggageGetA8KeyUtil", "domain = %s", new Object[] { str1 });
+          ac.i("MicroMsg.LuggageGetA8KeyUtil", "before set cookies:%s", new Object[] { ((com.tencent.xweb.c)localObject3).getCookie(str1) });
           boolean bool3 = false;
           boolean bool2 = false;
           bool1 = bool3;
@@ -156,26 +156,26 @@ public final class e
         {
           try
           {
-            if (com.tencent.mm.plugin.game.commlib.a.rOm != null)
+            if (com.tencent.mm.plugin.game.commlib.a.sWd != null)
             {
-              localObject1 = com.tencent.mm.plugin.game.commlib.a.rOm.sbO;
-              if ((localObject1 == null) || (bt.gL(((com.tencent.mm.plugin.game.d.a)localObject1).rZm))) {
+              localObject1 = com.tencent.mm.plugin.game.commlib.a.sWd.tjI;
+              if ((localObject1 == null) || (bs.gY(((com.tencent.mm.plugin.game.d.a)localObject1).thf))) {
                 continue;
               }
-              localObject5 = ((com.tencent.mm.plugin.game.d.a)localObject1).rZm.iterator();
+              localObject5 = ((com.tencent.mm.plugin.game.d.a)localObject1).thf.iterator();
               if (!((Iterator)localObject5).hasNext()) {
                 break label964;
               }
               localObject1 = (cv)((Iterator)localObject5).next();
-              if (bt.isNullOrNil(((cv)localObject1).sdv)) {
+              if (bs.isNullOrNil(((cv)localObject1).tlp)) {
                 break label955;
               }
-              str4 = ((Uri)localObject4).getQueryParameter(((cv)localObject1).sdv);
-              if (bt.isNullOrNil(((cv)localObject1).sdw))
+              str4 = ((Uri)localObject4).getQueryParameter(((cv)localObject1).tlp);
+              if (bs.isNullOrNil(((cv)localObject1).tlq))
               {
-                localObject1 = ((cv)localObject1).sdv;
-                ad.i("MicroMsg.LuggageGetA8KeyUtil", "key = %s, value = %s", new Object[] { localObject1, str4 });
-                if (bt.isNullOrNil(str4)) {
+                localObject1 = ((cv)localObject1).tlp;
+                ac.i("MicroMsg.LuggageGetA8KeyUtil", "key = %s, value = %s", new Object[] { localObject1, str4 });
+                if (bs.isNullOrNil(str4)) {
                   break label955;
                 }
                 ((com.tencent.xweb.c)localObject3).setCookie(str1, (String)localObject1 + "=" + URLEncoder.encode(str4, "utf-8") + str3);
@@ -185,25 +185,25 @@ public final class e
             }
             else
             {
-              com.tencent.mm.plugin.game.commlib.a.cBk();
-              if (com.tencent.mm.plugin.game.commlib.a.rOm == null) {
+              com.tencent.mm.plugin.game.commlib.a.cOt();
+              if (com.tencent.mm.plugin.game.commlib.a.sWd == null) {
                 break label958;
               }
-              localObject1 = com.tencent.mm.plugin.game.commlib.a.rOm.sbO;
+              localObject1 = com.tencent.mm.plugin.game.commlib.a.sWd.tjI;
               continue;
             }
-            localObject1 = ((cv)localObject1).sdw;
+            localObject1 = ((cv)localObject1).tlq;
             continue;
-            ad.i("MicroMsg.LuggageGetA8KeyUtil", "hasSetCookie=".concat(String.valueOf(bool1)));
+            ac.i("MicroMsg.LuggageGetA8KeyUtil", "hasSetCookie=".concat(String.valueOf(bool1)));
             if (bool1) {
               ((com.tencent.xweb.c)localObject3).setCookie(str1, "cookie_passkey=1".concat(String.valueOf(str2)));
             }
-            d.fqE();
+            d.fJc();
             d.sync();
             str1 = ((com.tencent.xweb.c)localObject3).getCookie(str1);
-            ad.i("MicroMsg.LuggageGetA8KeyUtil", "after set cookies:%s", new Object[] { str1 });
+            ac.i("MicroMsg.LuggageGetA8KeyUtil", "after set cookies:%s", new Object[] { str1 });
             paramMMWebView.evaluateJavascript("javascript:if(window.__GAME_LOGIN_CALLBACK) {window.__GAME_LOGIN_CALLBACK({\"cookie_passkey\":1});}", null);
-            localObject3 = com.tencent.mm.game.report.api.a.fUK;
+            localObject3 = com.tencent.mm.game.report.api.a.fYF;
             if (bool1)
             {
               localObject1 = "SET_COOKIE_SUCCESS";
@@ -213,14 +213,14 @@ public final class e
               localObject1 = ((Uri)localObject4).getQueryParameter("uin");
               localObject5 = ((Uri)localObject4).getQueryParameter("key");
               localObject4 = ((Uri)localObject4).getQueryParameter("pass_ticket");
-              ad.i("MicroMsg.LuggageGetA8KeyUtil", "uin = %s, key = %s, pass_ticket = %s", new Object[] { localObject1, localObject5, localObject4 });
-              if (!bt.isNullOrNil((String)localObject1)) {
+              ac.i("MicroMsg.LuggageGetA8KeyUtil", "uin = %s, key = %s, pass_ticket = %s", new Object[] { localObject1, localObject5, localObject4 });
+              if (!bs.isNullOrNil((String)localObject1)) {
                 ((com.tencent.xweb.c)localObject3).setCookie(str1, "X-WECHAT-UIN=" + URLEncoder.encode((String)localObject1, "utf-8") + str3);
               }
-              if (!bt.isNullOrNil((String)localObject5)) {
+              if (!bs.isNullOrNil((String)localObject5)) {
                 ((com.tencent.xweb.c)localObject3).setCookie(str1, "X-WECHAT-KEY=" + URLEncoder.encode((String)localObject5, "utf-8") + str3);
               }
-              if (!bt.isNullOrNil((String)localObject4))
+              if (!bs.isNullOrNil((String)localObject4))
               {
                 ((com.tencent.xweb.c)localObject3).setCookie(str1, "pass_ticket=" + URLEncoder.encode((String)localObject4, "utf-8") + str3);
                 bool1 = true;
@@ -235,8 +235,8 @@ public final class e
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("MicroMsg.LuggageGetA8KeyUtil", localException, "", new Object[0]);
-            com.tencent.mm.game.report.api.a.fUK.a(10, "SET_COOKIE_FAIL", "exception", 0L);
+            ac.printErrStackTrace("MicroMsg.LuggageGetA8KeyUtil", localException, "", new Object[0]);
+            com.tencent.mm.game.report.api.a.fYF.a(10, "SET_COOKIE_FAIL", "exception", 0L);
             AppMethodBeat.o(180129);
             return;
           }

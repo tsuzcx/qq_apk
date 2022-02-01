@@ -3,11 +3,11 @@ package android.support.design.widget;
 public final class Snackbar
   extends BaseTransientBottomBar<Snackbar>
 {
-  private static final int[] qD = { 2130969461 };
+  private static final int[] rD = { 2130969461 };
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.widget.Snackbar
  * JD-Core Version:    0.7.0.1
  */

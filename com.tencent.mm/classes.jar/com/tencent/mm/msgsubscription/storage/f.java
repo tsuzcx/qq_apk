@@ -6,25 +6,25 @@ import d.l;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgServiceFactory;", "", "()V", "NAME_BIZ", "", "NAME_WXA", "imps", "", "Lcom/tencent/mm/msgsubscription/storage/BaseSubscribeMsgService;", "getInstance", "name", "register", "", "implement", "unregister", "plugin-comm_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgServiceFactory;", "", "()V", "NAME_BIZ", "", "NAME_WXA", "imps", "", "Lcom/tencent/mm/msgsubscription/storage/BaseSubscribeMsgService;", "getInstance", "name", "register", "", "implement", "unregister", "plugin-comm_release"})
 public final class f
 {
-  private static final Map<String, a> hHU;
-  public static final f hHV;
+  private static final Map<String, a> iiw;
+  public static final f iix;
   
   static
   {
     AppMethodBeat.i(149653);
-    hHV = new f();
-    hHU = (Map)new LinkedHashMap();
+    iix = new f();
+    iiw = (Map)new LinkedHashMap();
     AppMethodBeat.o(149653);
   }
   
-  public static a AN(String paramString)
+  public static a ES(String paramString)
   {
     AppMethodBeat.i(149651);
     k.h(paramString, "name");
-    paramString = (a)hHU.get(paramString);
+    paramString = (a)iiw.get(paramString);
     AppMethodBeat.o(149651);
     return paramString;
   }
@@ -34,7 +34,7 @@ public final class f
     AppMethodBeat.i(149652);
     k.h(paramString, "name");
     k.h(parama, "implement");
-    hHU.put(paramString, parama);
+    iiw.put(paramString, parama);
     AppMethodBeat.o(149652);
   }
 }

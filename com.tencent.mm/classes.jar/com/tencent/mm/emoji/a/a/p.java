@@ -5,17 +5,17 @@ import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/panel/GroupExpandItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "expand", "", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;Z)V", "getExpand", "()Z", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "contentEquals", "other", "", "equals", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/GroupExpandItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "expand", "", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;Z)V", "getExpand", "()Z", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "contentEquals", "other", "", "equals", "plugin-emojisdk_release"})
 public final class p
   extends y
 {
-  private final EmojiGroupInfo fLb;
-  public final boolean fOg;
+  private final EmojiGroupInfo fON;
+  public final boolean fRR;
   
-  public final boolean aT(Object paramObject)
+  public final boolean aQ(Object paramObject)
   {
     AppMethodBeat.i(105560);
-    if ((super.aT(paramObject)) && ((paramObject instanceof p)) && (k.g(((p)paramObject).fLb.fZJ(), this.fLb.fZJ())) && (((p)paramObject).fOg == this.fOg))
+    if ((super.aQ(paramObject)) && ((paramObject instanceof p)) && (k.g(((p)paramObject).fON.fdm(), this.fON.fdm())) && (((p)paramObject).fRR == this.fRR))
     {
       AppMethodBeat.o(105560);
       return true;
@@ -27,7 +27,7 @@ public final class p
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(105559);
-    if ((super.equals(paramObject)) && ((paramObject instanceof p)) && (k.g(((p)paramObject).fLb.fZJ(), this.fLb.fZJ())))
+    if ((super.equals(paramObject)) && ((paramObject instanceof p)) && (k.g(((p)paramObject).fON.fdm(), this.fON.fdm())))
     {
       AppMethodBeat.o(105559);
       return true;
@@ -38,7 +38,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.a.a.p
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.liteav.beauty.b;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.beauty.c.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
@@ -13,7 +13,7 @@ import java.nio.ShortBuffer;
 import java.util.List;
 
 public class x
-  extends g
+  extends h
 {
   private static final float[] A = { 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F };
   protected static final short[] v = { 1, 2, 0, 2, 0, 3 };

@@ -2,7 +2,7 @@ package com.google.android.exoplayer2.i;
 
 public abstract interface o<T>
 {
-  public abstract boolean ae(T paramT);
+  public abstract boolean evaluate(T paramT);
 }
 
 

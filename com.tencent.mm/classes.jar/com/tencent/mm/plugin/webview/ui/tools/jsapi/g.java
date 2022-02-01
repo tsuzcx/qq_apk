@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class g
 {
-  private static final SparseArray<f> BrO;
-  private static volatile f BrP;
+  private static final SparseArray<f> CJU;
+  private static volatile f CJV;
   
   static
   {
     AppMethodBeat.i(82017);
-    BrO = new SparseArray();
-    BrP = null;
+    CJU = new SparseArray();
+    CJV = null;
     AppMethodBeat.o(82017);
   }
   
-  public static f TO(int paramInt)
+  public static f VW(int paramInt)
   {
     AppMethodBeat.i(82015);
     try
     {
-      if (BrO.get(paramInt) == null)
+      if (CJU.get(paramInt) == null)
       {
         localf = new f(paramInt);
-        BrO.put(paramInt, localf);
+        CJU.put(paramInt, localf);
       }
-      f localf = (f)BrO.get(paramInt);
-      BrP = localf;
+      f localf = (f)CJU.get(paramInt);
+      CJV = localf;
       return localf;
     }
     finally
@@ -40,19 +40,19 @@ public final class g
   public static void detach()
   {
     AppMethodBeat.i(82016);
-    ad.i("MicroMsg.MsgHandlerHolder", "detach");
+    ac.i("MicroMsg.MsgHandlerHolder", "detach");
     int i = 0;
     try
     {
-      while (i < BrO.size())
+      while (i < CJU.size())
       {
-        BrO.valueAt(i);
-        BrO.keyAt(i);
+        CJU.valueAt(i);
+        CJU.keyAt(i);
         i += 1;
       }
-      BrO.clear();
-      if (BrP != null) {
-        BrP = null;
+      CJU.clear();
+      if (CJV != null) {
+        CJV = null;
       }
       AppMethodBeat.o(82016);
       return;
@@ -64,13 +64,13 @@ public final class g
   }
   
   @Deprecated
-  public static f eqx()
+  public static f eFR()
   {
     AppMethodBeat.i(82014);
-    if (BrP == null) {
-      BrP = new f(0);
+    if (CJV == null) {
+      CJV = new f(0);
     }
-    f localf = BrP;
+    f localf = CJV;
     AppMethodBeat.o(82014);
     return localf;
   }

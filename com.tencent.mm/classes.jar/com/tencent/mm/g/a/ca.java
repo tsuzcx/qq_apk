@@ -12,7 +12,7 @@ public final class ca
   
   private ca(byte paramByte)
   {
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
   }
 }

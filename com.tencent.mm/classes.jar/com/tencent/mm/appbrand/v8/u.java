@@ -3,30 +3,30 @@ package com.tencent.mm.appbrand.v8;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.utils.v;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.nio.ByteBuffer;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class u
   implements e
 {
-  private final AtomicInteger cQI;
-  private final AtomicInteger cQJ;
-  private final SparseArray<ByteBuffer> cQK;
+  private final AtomicInteger cOd;
+  private final AtomicInteger cOe;
+  private final SparseArray<ByteBuffer> cOf;
   
   public u()
   {
     AppMethodBeat.i(144103);
-    this.cQI = new AtomicInteger(0);
-    this.cQJ = new AtomicInteger(0);
-    this.cQK = new SparseArray();
+    this.cOd = new AtomicInteger(0);
+    this.cOe = new AtomicInteger(0);
+    this.cOf = new SparseArray();
     AppMethodBeat.o(144103);
   }
   
   public final void bufferStoreBindTo(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(144107);
-    ad.e("V8EngineBufferStore", "no bind to here");
+    ac.e("V8EngineBufferStore", "no bind to here");
     AppMethodBeat.o(144107);
   }
   
@@ -35,9 +35,9 @@ public final class u
     AppMethodBeat.i(144104);
     try
     {
-      int i = this.cQI.addAndGet(1);
-      this.cQK.put(i, null);
-      ad.i("V8EngineBufferStore", "generateId:%d", new Object[] { Integer.valueOf(i) });
+      int i = this.cOd.addAndGet(1);
+      this.cOf.put(i, null);
+      ac.i("V8EngineBufferStore", "generateId:%d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(144104);
       return i;
     }
@@ -52,11 +52,11 @@ public final class u
     AppMethodBeat.i(144105);
     try
     {
-      ByteBuffer localByteBuffer1 = (ByteBuffer)this.cQK.get(paramInt);
-      this.cQK.remove(paramInt);
+      ByteBuffer localByteBuffer1 = (ByteBuffer)this.cOf.get(paramInt);
+      this.cOf.remove(paramInt);
       if (localByteBuffer1 == null)
       {
-        ad.e("V8EngineBufferStore", "getBuffer:%d not contains", new Object[] { Integer.valueOf(paramInt) });
+        ac.e("V8EngineBufferStore", "getBuffer:%d not contains", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(144105);
         return null;
       }
@@ -66,7 +66,7 @@ public final class u
       AppMethodBeat.o(144105);
     }
     int i = localByteBuffer2.capacity();
-    ad.i("V8EngineBufferStore", "getBuffer:%d remains[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.cQJ.addAndGet(-i)) });
+    ac.i("V8EngineBufferStore", "getBuffer:%d remains[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.cOe.addAndGet(-i)) });
     AppMethodBeat.o(144105);
     return localByteBuffer2;
   }
@@ -85,7 +85,7 @@ public final class u
     }
     while (!localByteBuffer.isDirect())
     {
-      ad.i("V8EngineBufferStore", "setBuffer:%d cannot convert to direct buffer", new Object[] { Integer.valueOf(paramInt) });
+      ac.i("V8EngineBufferStore", "setBuffer:%d cannot convert to direct buffer", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(144106);
       return;
       if (paramByteBuffer.isDirect()) {
@@ -93,18 +93,18 @@ public final class u
       } else if (!paramByteBuffer.hasArray()) {
         localByteBuffer = paramByteBuffer;
       } else {
-        localByteBuffer = v.az(paramByteBuffer.array());
+        localByteBuffer = v.ay(paramByteBuffer.array());
       }
     }
     try
     {
-      if (this.cQK.indexOfKey(paramInt) < 0)
+      if (this.cOf.indexOfKey(paramInt) < 0)
       {
-        ad.i("V8EngineBufferStore", "setBuffer:%d not contains", new Object[] { Integer.valueOf(paramInt) });
+        ac.i("V8EngineBufferStore", "setBuffer:%d not contains", new Object[] { Integer.valueOf(paramInt) });
         return;
       }
-      this.cQK.put(paramInt, localByteBuffer);
-      ad.i("V8EngineBufferStore", "setBuffer %d isDirect:%b remains[%d]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramByteBuffer.isDirect()), Integer.valueOf(this.cQJ.addAndGet(paramByteBuffer.capacity())) });
+      this.cOf.put(paramInt, localByteBuffer);
+      ac.i("V8EngineBufferStore", "setBuffer %d isDirect:%b remains[%d]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramByteBuffer.isDirect()), Integer.valueOf(this.cOe.addAndGet(paramByteBuffer.capacity())) });
       AppMethodBeat.o(144106);
       return;
     }
@@ -121,7 +121,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.u
  * JD-Core Version:    0.7.0.1
  */

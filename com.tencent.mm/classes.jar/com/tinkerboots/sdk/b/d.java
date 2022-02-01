@@ -5,45 +5,45 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tinker.lib.f.a;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.util.HashSet;
 
 public final class d
 {
-  private static String IWA;
-  private static HashSet<String> IWB;
+  private static String KJL;
+  private static HashSet<String> KJM;
   
   static
   {
     AppMethodBeat.i(3466);
-    IWB = new HashSet();
+    KJM = new HashSet();
     AppMethodBeat.o(3466);
   }
   
-  public static String ftQ()
+  public static String fMB()
   {
-    if (IWA == null) {
+    if (KJL == null) {
       return "";
     }
-    return IWA;
+    return KJL;
   }
   
-  public static boolean ftR()
+  public static boolean fMC()
   {
     AppMethodBeat.i(3465);
-    if (IWA == null)
+    if (KJL == null)
     {
       AppMethodBeat.o(3465);
       return false;
     }
-    boolean bool = IWB.contains(IWA);
+    boolean bool = KJM.contains(KJL);
     AppMethodBeat.o(3465);
     return bool;
   }
   
   public static abstract interface a
   {
-    public abstract void daE();
+    public abstract void dom();
   }
   
   public static final class b
@@ -61,12 +61,12 @@ public final class d
           if (paramAnonymousIntent == null) {}
           for (paramAnonymousIntent = "";; paramAnonymousIntent = paramAnonymousIntent.getAction())
           {
-            a.i("Tinker.TinkerUtils", "ScreenReceiver action [%s] ", new Object[] { paramAnonymousIntent });
+            ShareTinkerLog.v("Tinker.TinkerUtils", "ScreenReceiver action [%s] ", new Object[] { paramAnonymousIntent });
             if ("android.intent.action.SCREEN_OFF".equals(paramAnonymousIntent))
             {
               paramAnonymousContext.unregisterReceiver(this);
               if (parama != null) {
-                parama.daE();
+                parama.dom();
               }
             }
             AppMethodBeat.o(3463);
@@ -80,7 +80,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tinkerboots.sdk.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.backup.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class e
 {
-  public static int msa;
-  public static int msb;
-  public static int msc;
-  public static int msd;
-  public static int mse;
-  public static int msf;
-  public static int msg;
-  public static long msh;
-  public static long msi;
-  public static long msj;
+  public static int mUb;
+  public static int mUc;
+  public static int mUd;
+  public static int mUe;
+  public static int mUf;
+  public static int mUg;
+  public static int mUh;
+  public static long mUi;
+  public static long mUj;
+  public static long mUk;
   
-  public static void bwv()
+  public static void bDr()
   {
     AppMethodBeat.i(21272);
-    ad.d("MicroMsg.TestInfo", getInfo());
+    ac.d("MicroMsg.TestInfo", getInfo());
     AppMethodBeat.o(21272);
   }
   
-  public static void bww()
+  public static void bDs()
   {
     AppMethodBeat.i(21273);
-    ad.d("MicroMsg.TestInfo", "netTime" + (bt.eGO() - msi));
+    ac.d("MicroMsg.TestInfo", "netTime" + (bs.eWj() - mUj));
     AppMethodBeat.o(21273);
   }
   
   private static String getInfo()
   {
     AppMethodBeat.i(21274);
-    String str = "total_count: " + msg + "text_count: " + msc + "normal_count : " + msb + " image_count: " + msa + " voice_count : " + mse + " video_count " + msd + " app_count : " + msf + " time: " + (bt.eGO() - msh) + " net: " + msj;
+    String str = "total_count: " + mUh + "text_count: " + mUd + "normal_count : " + mUc + " image_count: " + mUb + " voice_count : " + mUf + " video_count " + mUe + " app_count : " + mUg + " time: " + (bs.eWj() - mUi) + " net: " + mUk;
     AppMethodBeat.o(21274);
     return str;
   }
@@ -42,39 +42,39 @@ public final class e
   public static void reset()
   {
     AppMethodBeat.i(21271);
-    msa = 0;
-    msb = 0;
-    msc = 0;
-    msd = 0;
-    mse = 0;
-    msf = 0;
-    msg = 0;
-    long l = bt.eGO();
-    msh = l;
-    msj = l - msi;
+    mUb = 0;
+    mUc = 0;
+    mUd = 0;
+    mUe = 0;
+    mUf = 0;
+    mUg = 0;
+    mUh = 0;
+    long l = bs.eWj();
+    mUi = l;
+    mUk = l - mUj;
     AppMethodBeat.o(21271);
   }
   
-  public static void vV(int paramInt)
+  public static void wM(int paramInt)
   {
     switch (paramInt)
     {
     }
     for (;;)
     {
-      msg += 1;
+      mUh += 1;
       return;
-      msc += 1;
+      mUd += 1;
       continue;
-      msf += 1;
+      mUg += 1;
       continue;
-      mse += 1;
+      mUf += 1;
       continue;
-      msd += 1;
+      mUe += 1;
       continue;
-      msa += 1;
+      mUb += 1;
       continue;
-      msb += 1;
+      mUc += 1;
     }
   }
 }

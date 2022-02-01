@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage$FeedAndNonceId;", "", "feedId", "", "objectNonceId", "", "(JLjava/lang/String;)V", "getFeedId", "()J", "getObjectNonceId", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage$FeedAndNonceId;", "", "feedId", "", "objectNonceId", "", "(JLjava/lang/String;)V", "getFeedId", "()J", "getObjectNonceId", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-finder_release"})
 public final class a$b
 {
-  public final long feedId;
+  public final long dig;
   public final String objectNonceId;
   
   public a$b(long paramLong, String paramString)
   {
     AppMethodBeat.i(166881);
-    this.feedId = paramLong;
+    this.dig = paramLong;
     this.objectNonceId = paramString;
     AppMethodBeat.o(166881);
   }
@@ -26,7 +26,7 @@ public final class a$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.feedId != paramObject.feedId) || (!k.g(this.objectNonceId, paramObject.objectNonceId))) {}
+        if ((this.dig != paramObject.dig) || (!k.g(this.objectNonceId, paramObject.objectNonceId))) {}
       }
     }
     else
@@ -41,7 +41,7 @@ public final class a$b
   public final int hashCode()
   {
     AppMethodBeat.i(166883);
-    long l = this.feedId;
+    long l = this.dig;
     int j = (int)(l ^ l >>> 32);
     String str = this.objectNonceId;
     if (str != null) {}
@@ -55,7 +55,7 @@ public final class a$b
   public final String toString()
   {
     AppMethodBeat.i(166882);
-    String str = "FeedAndNonceId(feedId=" + this.feedId + ", objectNonceId=" + this.objectNonceId + ")";
+    String str = "FeedAndNonceId(feedId=" + this.dig + ", objectNonceId=" + this.objectNonceId + ")";
     AppMethodBeat.o(166882);
     return str;
   }

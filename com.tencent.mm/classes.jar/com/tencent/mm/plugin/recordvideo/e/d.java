@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.recordvideo.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/util/MemLeakUtil;", "", "()V", "TAG", "", "leakList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/editor/panel/EditorEmojiPanel;", "Lkotlin/collections/ArrayList;", "addLeakObj", "", "panel", "releaseObj", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/util/MemLeakUtil;", "", "()V", "TAG", "", "leakList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/editor/panel/EditorEmojiPanel;", "Lkotlin/collections/ArrayList;", "addLeakObj", "", "panel", "releaseObj", "plugin-recordvideo_release"})
 public final class d
 {
   private static final String TAG = "MicroMsg.MemLeakUtil";
-  private static final ArrayList<com.tencent.mm.media.editor.b.a> vtQ;
-  public static final d vtR;
+  private static final ArrayList<com.tencent.mm.media.editor.b.a> wDT;
+  public static final d wDU;
   
   static
   {
     AppMethodBeat.i(76225);
-    vtR = new d();
-    vtQ = new ArrayList();
+    wDU = new d();
+    wDT = new ArrayList();
     TAG = "MicroMsg.MemLeakUtil";
     AppMethodBeat.o(76225);
   }
@@ -28,23 +28,23 @@ public final class d
   {
     AppMethodBeat.i(76223);
     k.h(parama, "panel");
-    ad.i(TAG, "add panel  ".concat(String.valueOf(parama)));
-    vtQ.add(parama);
+    ac.i(TAG, "add panel  ".concat(String.valueOf(parama)));
+    wDT.add(parama);
     AppMethodBeat.o(76223);
   }
   
-  public static void djg()
+  public static void dxg()
   {
     AppMethodBeat.i(76224);
-    ad.i(TAG, "release panel ");
-    Iterator localIterator = ((Iterable)vtQ).iterator();
+    ac.i(TAG, "release panel ");
+    Iterator localIterator = ((Iterable)wDT).iterator();
     while (localIterator.hasNext())
     {
       com.tencent.mm.media.editor.b.a locala = (com.tencent.mm.media.editor.b.a)localIterator.next();
-      ad.i(TAG, "release panel ".concat(String.valueOf(locala)));
-      locala.fSY.destroy();
+      ac.i(TAG, "release panel ".concat(String.valueOf(locala)));
+      locala.fWT.destroy();
     }
-    vtQ.clear();
+    wDT.clear();
     AppMethodBeat.o(76224);
   }
 }

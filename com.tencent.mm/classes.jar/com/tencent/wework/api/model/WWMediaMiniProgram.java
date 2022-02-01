@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaMiniProgram
   extends WWMediaMessage.WWMediaObject
 {
-  public byte[] IMb;
+  public byte[] Kyt;
   public String iconUrl;
   public String name;
   public String path;
@@ -27,7 +27,7 @@ public class WWMediaMiniProgram
       AppMethodBeat.o(106553);
       return false;
     }
-    if ((this.IMb == null) || (this.IMb.length <= 0) || (this.IMb.length > 1048576))
+    if ((this.Kyt == null) || (this.Kyt.length <= 0) || (this.Kyt.length > 1048576))
     {
       AppMethodBeat.o(106553);
       return false;
@@ -65,7 +65,7 @@ public class WWMediaMiniProgram
     for (String str = "";; str = this.title)
     {
       paramBundle.putString("_wwwxaobject_title", str);
-      paramBundle.putByteArray("_wwwxaobject_hdImageData", this.IMb);
+      paramBundle.putByteArray("_wwwxaobject_hdImageData", this.Kyt);
       paramBundle.putInt("_wwwxaobject_type", this.type);
       super.toBundle(paramBundle);
       AppMethodBeat.o(106554);

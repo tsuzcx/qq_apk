@@ -9,48 +9,48 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.PointF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
 {
   float progress;
-  ValueAnimator qT;
-  a tMa;
-  a tMb;
-  boolean tMc;
-  public a tMd;
-  PointF tMe;
-  PointF tMf;
-  PointF tMg;
-  PointF tMh;
-  PointF tMi;
-  PointF tMj;
-  float tMk;
-  float tMl;
-  float tMm;
-  float tMn;
-  Path tMo;
-  private Paint tMp;
+  ValueAnimator rT;
+  a uUE;
+  a uUF;
+  boolean uUG;
+  public a uUH;
+  PointF uUI;
+  PointF uUJ;
+  PointF uUK;
+  PointF uUL;
+  PointF uUM;
+  PointF uUN;
+  float uUO;
+  float uUP;
+  float uUQ;
+  float uUR;
+  Path uUS;
+  private Paint uUT;
   
   public b(a parama1, a parama2, a parama)
   {
     AppMethodBeat.i(94797);
     this.progress = 0.0F;
-    this.tMc = false;
-    this.tMk = 0.0F;
-    this.tMl = 0.0F;
-    this.tMm = 0.0F;
-    this.tMn = 0.0F;
-    this.tMp = null;
-    this.tMa = parama1;
-    this.tMb = parama2;
-    this.tMd = parama;
-    this.tMl = (MMSightProgressBar.pgN * 2.0F);
-    this.tMm = (-MMSightProgressBar.pgN * 0.5F);
-    this.tMo = new Path();
-    this.tMp = new Paint();
-    this.tMp.setAntiAlias(true);
-    this.tMp.setStyle(Paint.Style.FILL);
+    this.uUG = false;
+    this.uUO = 0.0F;
+    this.uUP = 0.0F;
+    this.uUQ = 0.0F;
+    this.uUR = 0.0F;
+    this.uUT = null;
+    this.uUE = parama1;
+    this.uUF = parama2;
+    this.uUH = parama;
+    this.uUP = (MMSightProgressBar.pJX * 2.0F);
+    this.uUQ = (-MMSightProgressBar.pJX * 0.5F);
+    this.uUS = new Path();
+    this.uUT = new Paint();
+    this.uUT.setAntiAlias(true);
+    this.uUT.setStyle(Paint.Style.FILL);
     AppMethodBeat.o(94797);
   }
   
@@ -58,7 +58,7 @@ public final class b
   {
     public abstract void a(a parama);
     
-    public abstract void cRf();
+    public abstract void deP();
   }
 }
 

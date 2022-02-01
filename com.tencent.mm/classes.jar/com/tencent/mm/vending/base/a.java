@@ -3,7 +3,7 @@ package com.tencent.mm.vending.base;
 public abstract class a<_Struct>
   extends Vending<_Struct, Class<?>, Void>
 {
-  protected abstract _Struct bg(Class<?> paramClass);
+  protected abstract _Struct bj(Class<?> paramClass);
   
   protected void destroyAsynchronous() {}
   

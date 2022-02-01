@@ -3,7 +3,7 @@ package com.tencent.mm.compatible.deviceinfo;
 import android.os.Build;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class j
   implements d.a
@@ -14,9 +14,9 @@ final class j
     d.a.a locala = new d.a.a();
     try
     {
-      locala.fBM = w.e(paramLooper);
-      locala.dwp = 0;
-      if (locala.fBM == null)
+      locala.fFt = w.e(paramLooper);
+      locala.duc = 0;
+      if (locala.fFt == null)
       {
         AppMethodBeat.o(155653);
         return null;
@@ -29,8 +29,8 @@ final class j
     }
     if (Build.DISPLAY.startsWith("Flyme"))
     {
-      locala.dwp = 90;
-      locala.fBM.setDisplayOrientation(90);
+      locala.duc = 90;
+      locala.fFt.setDisplayOrientation(90);
     }
     label174:
     for (;;)
@@ -46,8 +46,8 @@ final class j
         if (i < 7093) {
           break label174;
         }
-        locala.dwp = 90;
-        locala.fBM.setDisplayOrientation(180);
+        locala.duc = 90;
+        locala.fFt.setDisplayOrientation(180);
         break;
         paramLooper = Build.DISPLAY;
         if (paramLooper.substring(0, 0).equals("1"))
@@ -60,7 +60,7 @@ final class j
           if ((paramLooper == null) || (paramLooper.length < 2)) {
             i = -1;
           } else {
-            i = bt.getInt(paramLooper[1], 0);
+            i = bs.getInt(paramLooper[1], 0);
           }
         }
       }
@@ -69,7 +69,7 @@ final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.j
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.h.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import d.a.j;
 import d.a.v;
@@ -14,15 +14,15 @@ import d.n.n;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/util/FPSComputer;", "", "()V", "REPORT_ID_SROTY_VIDEO", "", "REPORT_KEY_EXECUTE_TIME", "REPORT_KEY_FAIL_COUNT", "TAG", "", "computeMinMaxAvgFps", "", "path", "result", "", "threshold", "", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/util/FPSComputer;", "", "()V", "REPORT_ID_SROTY_VIDEO", "", "REPORT_KEY_EXECUTE_TIME", "REPORT_KEY_FAIL_COUNT", "TAG", "", "computeMinMaxAvgFps", "", "path", "result", "", "threshold", "", "plugin-mediaeditor_release"})
 public final class b
 {
-  public static final b gwd;
+  public static final b gWB;
   
   static
   {
     AppMethodBeat.i(93873);
-    gwd = new b();
+    gWB = new b();
     AppMethodBeat.o(93873);
   }
   
@@ -30,9 +30,9 @@ public final class b
   {
     AppMethodBeat.i(93871);
     k.h(paramArrayOfDouble, "result");
-    if ((paramString == null) || (!i.eK(paramString)))
+    if ((paramString == null) || (!i.eA(paramString)))
     {
-      paramString = (List)v.Jgl;
+      paramString = (List)v.KTF;
       AppMethodBeat.o(93871);
       return paramString;
     }
@@ -57,7 +57,7 @@ public final class b
           k.g(localObject, "mediaExtractor.getTrackFormat(i)");
           localObject = ((MediaFormat)localObject).getString("mime");
           k.g(localObject, "format.getString(MediaFormat.KEY_MIME)");
-          if (!n.mA((String)localObject, "video/")) {
+          if (!n.nb((String)localObject, "video/")) {
             continue;
           }
           j = 1;
@@ -112,7 +112,7 @@ public final class b
           }
           paramArrayOfDouble[0] = k;
           paramArrayOfDouble[1] = m;
-          paramArrayOfDouble[2] = j.v((Iterable)localObject);
+          paramArrayOfDouble[2] = j.u((Iterable)localObject);
         }
         localc.release();
       }
@@ -124,8 +124,8 @@ public final class b
         long l2;
         int i3;
         int i2;
-        ad.e("FPSComputer", "compute fps error: " + localException.getLocalizedMessage());
-        h.vKh.D(986L, 103L);
+        ac.e("FPSComputer", "compute fps error: " + localException.getLocalizedMessage());
+        h.wUl.A(986L, 103L);
         localc.release();
         continue;
       }
@@ -135,8 +135,8 @@ public final class b
         AppMethodBeat.o(93871);
       }
       l2 = System.currentTimeMillis();
-      ad.i("FPSComputer", "compute fps for file: " + paramString + ", threshold = " + paramInt + " frames = " + localList.size() + ", execute time = " + (l2 - l1) + "ms, min fps = " + paramArrayOfDouble[0] + ", max fps = " + paramArrayOfDouble[1] + ", avg fps = " + paramArrayOfDouble[2]);
-      h.vKh.m(986L, 102L, l2 - l1);
+      ac.i("FPSComputer", "compute fps for file: " + paramString + ", threshold = " + paramInt + " frames = " + localList.size() + ", execute time = " + (l2 - l1) + "ms, min fps = " + paramArrayOfDouble[0] + ", max fps = " + paramArrayOfDouble[1] + ", avg fps = " + paramArrayOfDouble[2]);
+      h.wUl.n(986L, 102L, l2 - l1);
       AppMethodBeat.o(93871);
       return localList;
       i += 1;
@@ -150,7 +150,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.j.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,30 +9,30 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RadioBelowSummarytAndIconPreference
   extends Preference
 {
-  int abP;
+  private LinearLayout BkV;
+  private ImageView BkW;
+  private View BkX;
+  View.OnClickListener BkY;
+  int acJ;
   private View mView;
-  private LinearLayout zSB;
-  private ImageView zSC;
-  private View zSD;
-  View.OnClickListener zSE;
   
   public RadioBelowSummarytAndIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.abP = 0;
+    this.acJ = 0;
   }
   
   public RadioBelowSummarytAndIconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(69580);
-    this.abP = 0;
+    this.acJ = 0;
     setLayoutResource(2131494804);
     AppMethodBeat.o(69580);
   }
@@ -41,11 +41,11 @@ public class RadioBelowSummarytAndIconPreference
   {
     AppMethodBeat.i(69582);
     super.onBindView(paramView);
-    Yb(8);
-    if ((this.zSC != null) && (this.zSE != null) && (!bt.iY(0, this.abP)))
+    aam(8);
+    if ((this.BkW != null) && (this.BkY != null) && (!bs.jl(0, this.acJ)))
     {
-      this.zSC.setImageResource(this.abP);
-      this.zSC.post(new Runnable()
+      this.BkW.setImageResource(this.acJ);
+      this.BkW.post(new Runnable()
       {
         public final void run()
         {
@@ -56,7 +56,7 @@ public class RadioBelowSummarytAndIconPreference
           AppMethodBeat.o(69578);
         }
       });
-      this.zSD.setOnClickListener(new View.OnClickListener()
+      this.BkX.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -66,20 +66,20 @@ public class RadioBelowSummarytAndIconPreference
         }
       });
     }
-    while (this.zSB != null) {
-      if (this.Gge != 0)
+    while (this.BkV != null) {
+      if (this.HFU != 0)
       {
-        this.zSB.removeAllViews();
-        View.inflate(this.mContext, this.Gge, this.zSB);
+        this.BkV.removeAllViews();
+        View.inflate(this.mContext, this.HFU, this.BkV);
         AppMethodBeat.o(69582);
         return;
-        if (this.zSC != null) {
-          this.zSC.setVisibility(8);
+        if (this.BkW != null) {
+          this.BkW.setVisibility(8);
         }
       }
       else
       {
-        this.zSB.setVisibility(8);
+        this.BkV.setVisibility(8);
       }
     }
     AppMethodBeat.o(69582);
@@ -93,10 +93,10 @@ public class RadioBelowSummarytAndIconPreference
       paramViewGroup = super.onCreateView(paramViewGroup);
       ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
       localViewGroup.removeAllViews();
-      this.zSB = ((LinearLayout)paramViewGroup.findViewById(16908312));
+      this.BkV = ((LinearLayout)paramViewGroup.findViewById(16908312));
       View.inflate(this.mContext, 2131494890, localViewGroup);
-      this.zSC = ((ImageView)localViewGroup.findViewById(2131305551));
-      this.zSD = localViewGroup.findViewById(2131305549);
+      this.BkW = ((ImageView)localViewGroup.findViewById(2131305551));
+      this.BkX = localViewGroup.findViewById(2131305549);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;
@@ -106,7 +106,7 @@ public class RadioBelowSummarytAndIconPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.RadioBelowSummarytAndIconPreference
  * JD-Core Version:    0.7.0.1
  */

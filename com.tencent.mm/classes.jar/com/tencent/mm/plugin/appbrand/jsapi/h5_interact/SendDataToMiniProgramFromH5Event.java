@@ -10,8 +10,8 @@ public class SendDataToMiniProgramFromH5Event
 {
   public static final Parcelable.Creator<SendDataToMiniProgramFromH5Event> CREATOR;
   public String data;
-  public String jRv;
-  public int jRw;
+  public String ksh;
+  public int ksi;
   
   static
   {
@@ -25,9 +25,9 @@ public class SendDataToMiniProgramFromH5Event
   protected SendDataToMiniProgramFromH5Event(Parcel paramParcel)
   {
     AppMethodBeat.i(46357);
-    this.jRv = paramParcel.readString();
+    this.ksh = paramParcel.readString();
     this.data = paramParcel.readString();
-    this.jRw = paramParcel.readInt();
+    this.ksi = paramParcel.readInt();
     AppMethodBeat.o(46357);
   }
   
@@ -39,15 +39,15 @@ public class SendDataToMiniProgramFromH5Event
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(46356);
-    paramParcel.writeString(this.jRv);
+    paramParcel.writeString(this.ksh);
     paramParcel.writeString(this.data);
-    paramParcel.writeInt(this.jRw);
+    paramParcel.writeInt(this.ksi);
     AppMethodBeat.o(46356);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.h5_interact.SendDataToMiniProgramFromH5Event
  * JD-Core Version:    0.7.0.1
  */

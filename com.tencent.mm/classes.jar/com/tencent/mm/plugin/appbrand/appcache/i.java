@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.h;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.c;
-import com.tencent.mm.al.c.a;
+import com.tencent.mm.ab.h;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.c.a;
 import com.tencent.mm.b.p;
-import com.tencent.mm.co.f;
+import com.tencent.mm.cn.f;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.launching.t;
 import com.tencent.mm.plugin.appbrand.launching.w;
-import com.tencent.mm.protocal.protobuf.bbe;
-import com.tencent.mm.protocal.protobuf.bbf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bew;
+import com.tencent.mm.protocal.protobuf.bex;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vending.c.a;
 import org.json.JSONObject;
 
 public final class i
-  extends c<bbf>
+  extends c<bex>
 {
   public final b rr;
   
@@ -30,26 +30,26 @@ public final class i
     b.a locala = new b.a();
     locala.funcId = 1718;
     locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/gettestcodedownloadinfo";
-    bbe localbbe = new bbe();
-    localbbe.dlB = paramString1;
+    bew localbew = new bew();
+    localbew.djj = paramString1;
     if (paramInt2 != 12) {
-      localbbe.DyR = paramString2;
+      localbew.EUn = paramString2;
     }
-    localbbe.DyS = paramString3;
-    localbbe.CPu = paramInt1;
-    localbbe.DyU = paramInt2;
+    localbew.EUo = paramString3;
+    localbew.Eif = paramInt1;
+    localbew.EUq = paramInt2;
     if (paramInt1 == 1) {
-      paramString3 = ((t)j.T(t.class)).bG(paramString1, paramInt1);
+      paramString3 = ((t)j.T(t.class)).bK(paramString1, paramInt1);
     }
     try
     {
-      localbbe.DyT = new p(h.qE(paramString3).optLong("dev_key")).intValue();
-      locala.gUU = localbbe;
-      locala.gUV = new bbf();
-      paramString3 = locala.atI();
+      localbew.EUp = new p(h.tT(paramString3).optLong("dev_key")).intValue();
+      locala.hvt = localbew;
+      locala.hvu = new bex();
+      paramString3 = locala.aAz();
       this.rr = paramString3;
       this.rr = paramString3;
-      ad.d("MicroMsg.AppBrand.CgiGetTestCodeDownloadInfo", "appid:%s,module_name:%s,code_type:%d,package type:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ac.d("MicroMsg.AppBrand.CgiGetTestCodeDownloadInfo", "appid:%s,module_name:%s,code_type:%d,package type:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       AppMethodBeat.o(44238);
       return;
     }
@@ -57,26 +57,21 @@ public final class i
     {
       for (;;)
       {
-        ad.e("MicroMsg.AppBrand.CgiGetTestCodeDownloadInfo", "opt devKey %s", new Object[] { paramString3 });
+        ac.e("MicroMsg.AppBrand.CgiGetTestCodeDownloadInfo", "opt devKey %s", new Object[] { paramString3 });
       }
     }
   }
   
-  public final bbe aPh()
-  {
-    return (bbe)this.rr.gUS.gUX;
-  }
-  
-  public final f<c.a<bbf>> auK()
+  public final f<c.a<bex>> aBB()
   {
     try
     {
       AppMethodBeat.i(44239);
-      final long l = bt.eGO();
+      final long l = bs.eWj();
       f localf2 = w.a(this);
       f localf1 = localf2;
       if (localf2 == null) {
-        localf1 = super.auK();
+        localf1 = super.aBB();
       }
       localf1 = localf1.b(new a() {});
       AppMethodBeat.o(44239);
@@ -84,10 +79,15 @@ public final class i
     }
     finally {}
   }
+  
+  public final bew aVZ()
+  {
+    return (bew)this.rr.hvr.hvw;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.i
  * JD-Core Version:    0.7.0.1
  */

@@ -16,15 +16,15 @@ public class MDrawableView
   extends View
   implements a
 {
-  private final b jal;
-  private final Set<View.OnAttachStateChangeListener> jam;
+  private final b jAy;
+  private final Set<View.OnAttachStateChangeListener> jAz;
   
   public MDrawableView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(145420);
-    this.jal = new b(this);
-    this.jam = new LinkedHashSet();
+    this.jAy = new b(this);
+    this.jAz = new LinkedHashSet();
     setLayerType(1, null);
     AppMethodBeat.o(145420);
   }
@@ -33,8 +33,8 @@ public class MDrawableView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(145421);
-    this.jal = new b(this);
-    this.jam = new LinkedHashSet();
+    this.jAy = new b(this);
+    this.jAz = new LinkedHashSet();
     setLayerType(1, null);
     AppMethodBeat.o(145421);
   }
@@ -43,13 +43,13 @@ public class MDrawableView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(145422);
-    this.jal = new b(this);
-    this.jam = new LinkedHashSet();
+    this.jAy = new b(this);
+    this.jAz = new LinkedHashSet();
     setLayerType(1, null);
     AppMethodBeat.o(145422);
   }
   
-  public final void Q(Runnable paramRunnable)
+  public final void S(Runnable paramRunnable)
   {
     AppMethodBeat.i(145425);
     post(paramRunnable);
@@ -59,47 +59,47 @@ public class MDrawableView
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145433);
-    this.jal.a(paramDrawCanvasArg, parama);
+    this.jAy.a(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145433);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145431);
-    this.jal.a(paramJSONArray, parama);
+    this.jAy.a(paramJSONArray, parama);
     AppMethodBeat.o(145431);
   }
   
-  public final void aSM()
+  public final void aZL()
   {
     AppMethodBeat.i(145424);
     postInvalidate();
     AppMethodBeat.o(145424);
   }
   
-  public final void aSN()
+  public final void aZM()
   {
     AppMethodBeat.i(145435);
-    this.jal.aSN();
+    this.jAy.aZM();
     AppMethodBeat.o(145435);
   }
   
-  public final void aSO()
+  public final void aZN()
   {
     AppMethodBeat.i(145442);
-    this.jal.aSO();
+    this.jAy.aZN();
     AppMethodBeat.o(145442);
   }
   
   public void addOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145436);
-    if (this.jam.contains(paramOnAttachStateChangeListener))
+    if (this.jAz.contains(paramOnAttachStateChangeListener))
     {
       AppMethodBeat.o(145436);
       return;
     }
-    this.jam.add(paramOnAttachStateChangeListener);
+    this.jAz.add(paramOnAttachStateChangeListener);
     super.addOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145436);
   }
@@ -107,21 +107,21 @@ public class MDrawableView
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145434);
-    this.jal.b(paramDrawCanvasArg, parama);
+    this.jAy.b(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145434);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145432);
-    this.jal.b(paramJSONArray, parama);
+    this.jAy.b(paramJSONArray, parama);
     AppMethodBeat.o(145432);
   }
   
   public d getDrawContext()
   {
     AppMethodBeat.i(145426);
-    d locald = this.jal.getDrawContext();
+    d locald = this.jAy.getDrawContext();
     AppMethodBeat.o(145426);
     return locald;
   }
@@ -129,7 +129,7 @@ public class MDrawableView
   public String getSessionId()
   {
     AppMethodBeat.i(145439);
-    String str = this.jal.getSessionId();
+    String str = this.jAy.getSessionId();
     AppMethodBeat.o(145439);
     return str;
   }
@@ -137,7 +137,7 @@ public class MDrawableView
   public String getTraceId()
   {
     AppMethodBeat.i(145429);
-    String str = this.jal.getTraceId();
+    String str = this.jAy.getTraceId();
     AppMethodBeat.o(145429);
     return str;
   }
@@ -145,14 +145,14 @@ public class MDrawableView
   public final boolean h(Canvas paramCanvas)
   {
     AppMethodBeat.i(145430);
-    boolean bool = this.jal.h(paramCanvas);
+    boolean bool = this.jAy.h(paramCanvas);
     AppMethodBeat.o(145430);
     return bool;
   }
   
   public final boolean isPaused()
   {
-    return this.jal.mPause;
+    return this.jAy.mPause;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -165,14 +165,14 @@ public class MDrawableView
   public final void onResume()
   {
     AppMethodBeat.i(145438);
-    this.jal.onResume();
+    this.jAy.onResume();
     AppMethodBeat.o(145438);
   }
   
   public void removeOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145437);
-    this.jam.remove(paramOnAttachStateChangeListener);
+    this.jAz.remove(paramOnAttachStateChangeListener);
     super.removeOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145437);
   }
@@ -180,28 +180,28 @@ public class MDrawableView
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
     AppMethodBeat.i(145427);
-    this.jal.setDrawActionReportable(parama);
+    this.jAy.setDrawActionReportable(parama);
     AppMethodBeat.o(145427);
   }
   
   public void setSessionId(String paramString)
   {
     AppMethodBeat.i(145440);
-    this.jal.setSessionId(paramString);
+    this.jAy.setSessionId(paramString);
     AppMethodBeat.o(145440);
   }
   
   public void setStartTime(long paramLong)
   {
     AppMethodBeat.i(145441);
-    this.jal.setStartTime(paramLong);
+    this.jAy.setStartTime(paramLong);
     AppMethodBeat.o(145441);
   }
   
   public void setTraceId(String paramString)
   {
     AppMethodBeat.i(145428);
-    this.jal.setTraceId(paramString);
+    this.jAy.setTraceId(paramString);
     AppMethodBeat.o(145428);
   }
 }

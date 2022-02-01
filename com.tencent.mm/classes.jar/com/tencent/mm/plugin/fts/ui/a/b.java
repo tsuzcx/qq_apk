@@ -8,17 +8,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.ai;
 
 public abstract class b
   extends a
 {
-  public af contact;
-  public com.tencent.mm.plugin.fts.a.a.m jpy;
-  public CharSequence mVX;
-  public CharSequence mVY;
-  public String ruV;
-  a ruW = new a();
+  public ai contact;
+  public com.tencent.mm.plugin.fts.a.a.m jPN;
+  public CharSequence nyw;
+  public CharSequence nyx;
+  public String sDN;
+  a sDO = new a();
   public String username;
   
   public b(int paramInt)
@@ -26,19 +26,19 @@ public abstract class b
     super(1, paramInt);
   }
   
-  public final int aWu()
+  public final int bds()
   {
-    return this.jpy.rqc;
+    return this.jPN.syW;
   }
   
   public final class a
     extends a.a
   {
-    public ImageView frr;
-    public TextView hJe;
-    public TextView ica;
-    public View jpE;
-    TextView ruX;
+    public ImageView fuY;
+    public TextView iCg;
+    public TextView ijE;
+    public View jPT;
+    TextView sDP;
     
     public a()
     {
@@ -57,12 +57,12 @@ public abstract class b
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       paramContext = LayoutInflater.from(paramContext).inflate(2131494192, paramViewGroup, false);
-      paramViewGroup = (b.a)b.this.ruW;
-      paramViewGroup.frr = ((ImageView)paramContext.findViewById(2131297008));
-      paramViewGroup.ica = ((TextView)paramContext.findViewById(2131305948));
-      paramViewGroup.hJe = ((TextView)paramContext.findViewById(2131299008));
-      paramViewGroup.ruX = ((TextView)paramContext.findViewById(2131301150));
-      paramViewGroup.jpE = paramContext.findViewById(2131299154);
+      paramViewGroup = (b.a)b.this.sDO;
+      paramViewGroup.fuY = ((ImageView)paramContext.findViewById(2131297008));
+      paramViewGroup.iCg = ((TextView)paramContext.findViewById(2131305948));
+      paramViewGroup.ijE = ((TextView)paramContext.findViewById(2131299008));
+      paramViewGroup.sDP = ((TextView)paramContext.findViewById(2131301150));
+      paramViewGroup.jPT = paramContext.findViewById(2131299154);
       paramContext.setTag(paramViewGroup);
       return paramContext;
     }
@@ -71,17 +71,17 @@ public abstract class b
     {
       paramContext = (b.a)parama;
       parama = (b)parama1;
-      com.tencent.mm.plugin.fts.ui.m.p(paramContext.jpE, b.this.rqz);
-      com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.frr, parama.username);
-      com.tencent.mm.plugin.fts.ui.m.a(parama.mVX, paramContext.ica);
-      com.tencent.mm.plugin.fts.ui.m.a(parama.mVY, paramContext.hJe);
-      com.tencent.mm.plugin.fts.ui.m.a(parama.ruV, paramContext.ruX);
+      com.tencent.mm.plugin.fts.ui.m.p(paramContext.jPT, b.this.szt);
+      com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.fuY, parama.username);
+      com.tencent.mm.plugin.fts.ui.m.a(parama.nyw, paramContext.iCg);
+      com.tencent.mm.plugin.fts.ui.m.a(parama.nyx, paramContext.ijE);
+      com.tencent.mm.plugin.fts.ui.m.a(parama.sDN, paramContext.sDP);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

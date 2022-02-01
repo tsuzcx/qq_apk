@@ -14,8 +14,9 @@ import com.tencent.mm.b.p;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.protocal.i;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,47 +25,47 @@ import java.io.StringWriter;
 public final class aj
   implements StnLogic.ICallBack
 {
-  private static WakerLock hMQ = null;
-  private static int hMR = 1000000205;
-  private static int hMS = 205;
-  private static byte[] hMT;
-  private static byte[] hMU;
+  private static WakerLock inn = null;
+  private static int ino = 1000000205;
+  private static int inp = 205;
+  private static byte[] inq;
+  private static byte[] inr;
   
   private static int a(ByteArrayOutputStream paramByteArrayOutputStream1, ByteArrayOutputStream paramByteArrayOutputStream2)
   {
     AppMethodBeat.i(132958);
-    if (ad.aFo() == null)
+    if (ad.aMf() == null)
     {
       AppMethodBeat.o(132958);
       return 0;
     }
     try
     {
-      byte[] arrayOfByte = ad.aFo().aEN();
+      byte[] arrayOfByte = ad.aMf().aLE();
       if (arrayOfByte != null)
       {
         paramByteArrayOutputStream1.write(arrayOfByte);
-        hMT = arrayOfByte;
+        inq = arrayOfByte;
       }
-      arrayOfByte = ad.aFo().gcD;
+      arrayOfByte = ad.aMf().ghj;
       if (arrayOfByte != null)
       {
         paramByteArrayOutputStream2.write(arrayOfByte);
-        hMU = arrayOfByte;
+        inr = arrayOfByte;
       }
-      int i = ad.aFo().hKZ.getUin();
+      int i = ad.aMf().ilv.getUin();
       AppMethodBeat.o(132958);
       return i;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("StnCallBack", exception2String(localException));
-      if ((hMT == null) || (hMU == null)) {}
+      com.tencent.mm.sdk.platformtools.ac.e("StnCallBack", exception2String(localException));
+      if ((inq == null) || (inr == null)) {}
     }
     try
     {
-      paramByteArrayOutputStream1.write(hMT);
-      paramByteArrayOutputStream2.write(hMU);
+      paramByteArrayOutputStream1.write(inq);
+      paramByteArrayOutputStream2.write(inr);
       label111:
       AppMethodBeat.o(132958);
       return 0;
@@ -88,20 +89,20 @@ public final class aj
   public final int buf2Resp(int paramInt1, Object paramObject, byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt2)
   {
     AppMethodBeat.i(132953);
-    if (ad.aFp() == null)
+    if (ad.aMg() == null)
     {
       AppMethodBeat.o(132953);
       return -1;
     }
     try
     {
-      paramInt1 = ad.aFp().a(paramInt1, paramArrayOfByte, paramArrayOfInt1, paramArrayOfInt2);
+      paramInt1 = ad.aMg().a(paramInt1, paramArrayOfByte, paramArrayOfInt1, paramArrayOfInt2);
       AppMethodBeat.o(132953);
       return paramInt1;
     }
     catch (Exception paramObject)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("StnCallBack", exception2String(paramObject));
+      com.tencent.mm.sdk.platformtools.ac.e("StnCallBack", exception2String(paramObject));
       new StringBuilder().append(paramObject.getClass().getSimpleName()).append(":").append(paramObject.getStackTrace()[0]).append(", ").append(paramObject.getStackTrace()[1]);
       AppMethodBeat.o(132953);
     }
@@ -110,37 +111,37 @@ public final class aj
   
   public final int getLongLinkIdentifyCheckBuffer(String paramString, ByteArrayOutputStream paramByteArrayOutputStream1, ByteArrayOutputStream paramByteArrayOutputStream2, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(192886);
-    paramArrayOfInt[0] = hMS;
-    paramArrayOfInt[1] = hMR;
+    AppMethodBeat.i(206899);
+    paramArrayOfInt[0] = inp;
+    paramArrayOfInt[1] = ino;
     if ((a(paramByteArrayOutputStream1, paramByteArrayOutputStream2) == 0) || (paramByteArrayOutputStream1.size() == 0) || (paramByteArrayOutputStream2.size() == 0))
     {
       i = StnLogic.ECHECK_NEXT;
-      AppMethodBeat.o(192886);
+      AppMethodBeat.o(206899);
       return i;
     }
     int i = StnLogic.ECHECK_NOW;
-    AppMethodBeat.o(192886);
+    AppMethodBeat.o(206899);
     return i;
   }
   
   public final boolean isLogoned()
   {
     AppMethodBeat.i(132960);
-    if (ad.aFo() == null)
+    if (ad.aMf() == null)
     {
       AppMethodBeat.o(132960);
       return false;
     }
     try
     {
-      boolean bool = ad.aFo().hKZ.ava();
+      boolean bool = ad.aMf().ilv.aBT();
       AppMethodBeat.o(132960);
       return bool;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("StnCallBack", exception2String(localException));
+      com.tencent.mm.sdk.platformtools.ac.e("StnCallBack", exception2String(localException));
       new StringBuilder().append(localException.getClass().getSimpleName()).append(":").append(localException.getStackTrace()[0]).append(", ").append(localException.getStackTrace()[1]);
       AppMethodBeat.o(132960);
     }
@@ -150,20 +151,20 @@ public final class aj
   public final boolean makesureAuthed(String paramString)
   {
     AppMethodBeat.i(132950);
-    if (ad.aFo() == null)
+    if (ad.aMf() == null)
     {
       AppMethodBeat.o(132950);
       return false;
     }
     try
     {
-      boolean bool = ad.aFo().Bb(paramString);
+      boolean bool = ad.aMf().Fg(paramString);
       AppMethodBeat.o(132950);
       return bool;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("StnCallBack", exception2String(paramString));
+      com.tencent.mm.sdk.platformtools.ac.e("StnCallBack", exception2String(paramString));
       new StringBuilder().append(paramString.getClass().getSimpleName()).append(":").append(paramString.getStackTrace()[0]).append(", ").append(paramString.getStackTrace()[1]);
       AppMethodBeat.o(132950);
     }
@@ -173,16 +174,16 @@ public final class aj
   public final void networkAnalysisCallBack(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(132961);
-    com.tencent.mm.sdk.platformtools.ad.i("StnCallBack", "networkAnalysisCallBack: status:%d, stage:%d, isDetectEnd:%b, kvInfo:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean), paramString });
+    com.tencent.mm.sdk.platformtools.ac.i("StnCallBack", "networkAnalysisCallBack: status:%d, stage:%d, isDetectEnd:%b, kvInfo:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean), paramString });
     try
     {
-      ad.aFo().hLh.networkAnalysisCallBack(paramInt1, paramInt2, paramBoolean, paramString);
+      ad.aMf().ilD.networkAnalysisCallBack(paramInt1, paramInt2, paramBoolean, paramString);
       AppMethodBeat.o(132961);
       return;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("StnCallBack", paramString, "", new Object[0]);
+      com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("StnCallBack", paramString, "", new Object[0]);
       new StringBuilder().append(paramString.getClass().getSimpleName()).append(":").append(paramString.getStackTrace()[0]).append(", ").append(paramString.getStackTrace()[1]);
       AppMethodBeat.o(132961);
     }
@@ -190,7 +191,7 @@ public final class aj
   
   public final boolean onLongLinkIdentifyResp(String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(192887);
+    AppMethodBeat.i(206900);
     ByteArrayOutputStream localByteArrayOutputStream;
     if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null)) {
       localByteArrayOutputStream = new ByteArrayOutputStream();
@@ -200,8 +201,8 @@ public final class aj
       localByteArrayOutputStream.write(paramArrayOfByte1);
       localByteArrayOutputStream.write(paramArrayOfByte2);
       label34:
-      onPush(paramString, hMR, 0, localByteArrayOutputStream.toByteArray());
-      AppMethodBeat.o(192887);
+      onPush(paramString, ino, 0, localByteArrayOutputStream.toByteArray());
+      AppMethodBeat.o(206900);
       return true;
     }
     catch (IOException paramArrayOfByte1)
@@ -217,35 +218,35 @@ public final class aj
   
   public final void onPush(String paramString, final int paramInt1, int paramInt2, final byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(192885);
-    if (ad.aFq() == null)
+    AppMethodBeat.i(206898);
+    if (ad.aMh() == null)
     {
-      AppMethodBeat.o(192885);
+      AppMethodBeat.o(206898);
       return;
     }
     try
     {
-      if (hMQ == null) {
-        hMQ = new WakerLock(ad.getContext(), "StnCallBack");
+      if (inn == null) {
+        inn = new WakerLock(ad.getContext(), "StnCallBack");
       }
-      hMQ.lock(1000L, "StnLogic.onNotify");
-      ad.aFm().post(new Runnable()
+      inn.lock(1000L, "StnLogic.onNotify");
+      ad.aMd().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(132946);
-          ad.aFq().j(paramInt1, paramArrayOfByte);
+          ad.aMh().j(paramInt1, paramArrayOfByte);
           AppMethodBeat.o(132946);
         }
       });
-      AppMethodBeat.o(192885);
+      AppMethodBeat.o(206898);
       return;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("StnCallBack", exception2String(paramString));
+      com.tencent.mm.sdk.platformtools.ac.e("StnCallBack", exception2String(paramString));
       new StringBuilder().append(paramString.getClass().getSimpleName()).append(":").append(paramString.getStackTrace()[0]).append(", ").append(paramString.getStackTrace()[1]);
-      AppMethodBeat.o(192885);
+      AppMethodBeat.o(206898);
     }
   }
   
@@ -255,17 +256,17 @@ public final class aj
     // Byte code:
     //   0: ldc_w 266
     //   3: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 120	com/tencent/mm/network/ad:aFp	()Lcom/tencent/mm/network/ac;
+    //   6: invokestatic 120	com/tencent/mm/network/ad:aMg	()Lcom/tencent/mm/network/ac;
     //   9: ifnonnull +11 -> 20
     //   12: ldc_w 266
     //   15: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   18: iconst_0
     //   19: ireturn
-    //   20: invokestatic 120	com/tencent/mm/network/ad:aFp	()Lcom/tencent/mm/network/ac;
+    //   20: invokestatic 120	com/tencent/mm/network/ad:aMg	()Lcom/tencent/mm/network/ac;
     //   23: iload_1
-    //   24: invokevirtual 270	com/tencent/mm/network/ac:po	(I)I
+    //   24: invokevirtual 270	com/tencent/mm/network/ac:qc	(I)I
     //   27: istore 5
-    //   29: invokestatic 254	com/tencent/mm/network/ad:aFm	()Lcom/tencent/mm/sdk/platformtools/ap;
+    //   29: invokestatic 254	com/tencent/mm/network/ad:aMd	()Lcom/tencent/mm/sdk/platformtools/ao;
     //   32: new 10	com/tencent/mm/network/aj$2
     //   35: dup
     //   36: aload_0
@@ -274,7 +275,7 @@ public final class aj
     //   39: iload_3
     //   40: iload 4
     //   42: invokespecial 273	com/tencent/mm/network/aj$2:<init>	(Lcom/tencent/mm/network/aj;ILjava/lang/Object;II)V
-    //   45: invokevirtual 263	com/tencent/mm/sdk/platformtools/ap:post	(Ljava/lang/Runnable;)Z
+    //   45: invokevirtual 263	com/tencent/mm/sdk/platformtools/ao:post	(Ljava/lang/Runnable;)Z
     //   48: pop
     //   49: iload 5
     //   51: istore_1
@@ -288,7 +289,7 @@ public final class aj
     //   63: ldc 86
     //   65: aload_2
     //   66: invokestatic 90	com/tencent/mm/network/aj:exception2String	(Ljava/lang/Exception;)Ljava/lang/String;
-    //   69: invokestatic 96	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   69: invokestatic 96	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   72: new 127	java/lang/StringBuilder
     //   75: dup
     //   76: invokespecial 128	java/lang/StringBuilder:<init>	()V
@@ -335,14 +336,14 @@ public final class aj
     AppMethodBeat.i(132955);
     try
     {
-      ad.aFl().pr(paramInt1);
-      com.tencent.mm.aq.a.nR(paramInt1);
+      ad.aMc().qf(paramInt1);
+      com.tencent.mm.ap.a.oF(paramInt1);
       AppMethodBeat.o(132955);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("StnCallBack", "reportConnectInfo :%s", new Object[] { bt.m(localException) });
+      com.tencent.mm.sdk.platformtools.ac.e("StnCallBack", "reportConnectInfo :%s", new Object[] { bs.m(localException) });
       AppMethodBeat.o(132955);
     }
   }
@@ -350,20 +351,20 @@ public final class aj
   public final boolean req2Buf(int paramInt1, Object paramObject, ByteArrayOutputStream paramByteArrayOutputStream, int[] paramArrayOfInt, int paramInt2, String paramString)
   {
     AppMethodBeat.i(132952);
-    if (ad.aFp() == null)
+    if (ad.aMg() == null)
     {
       AppMethodBeat.o(132952);
       return false;
     }
     try
     {
-      boolean bool = ad.aFp().a(paramInt1, paramByteArrayOutputStream, paramArrayOfInt, paramInt2, paramString);
+      boolean bool = ad.aMg().a(paramInt1, paramByteArrayOutputStream, paramArrayOfInt, paramInt2, paramString);
       AppMethodBeat.o(132952);
       return bool;
     }
     catch (Exception paramObject)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("StnCallBack", exception2String(paramObject));
+      com.tencent.mm.sdk.platformtools.ac.e("StnCallBack", exception2String(paramObject));
       new StringBuilder().append(paramObject.getClass().getSimpleName()).append(":").append(paramObject.getStackTrace()[0]).append(", ").append(paramObject.getStackTrace()[1]);
       AppMethodBeat.o(132952);
     }
@@ -373,19 +374,19 @@ public final class aj
   public final void requestDoSync()
   {
     AppMethodBeat.i(132959);
-    if (ad.aFq() == null)
+    if (ad.aMh() == null)
     {
       AppMethodBeat.o(132959);
       return;
     }
     try
     {
-      ad.aFm().post(new Runnable()
+      ad.aMd().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(132948);
-          ad.aFq().j(24, o.hr(7));
+          ad.aMh().j(24, o.ha(7));
           AppMethodBeat.o(132948);
         }
       });
@@ -394,7 +395,7 @@ public final class aj
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("StnCallBack", exception2String(localException));
+      com.tencent.mm.sdk.platformtools.ac.e("StnCallBack", exception2String(localException));
       new StringBuilder().append(localException.getClass().getSimpleName()).append(":").append(localException.getStackTrace()[0]).append(", ").append(localException.getStackTrace()[1]);
       AppMethodBeat.o(132959);
     }
@@ -407,7 +408,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.aj
  * JD-Core Version:    0.7.0.1
  */

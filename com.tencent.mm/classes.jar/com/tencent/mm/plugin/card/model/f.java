@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.card.model;
 
 public final class f
 {
-  public String nsN;
-  public String nsO;
-  public String nsP;
-  public boolean nsQ = false;
+  public String nVN;
+  public String nVO;
+  public String nVP;
+  public boolean nVQ = false;
 }
 
 

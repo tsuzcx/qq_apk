@@ -7,64 +7,35 @@ import com.tencent.mm.sdk.e.c;
 public abstract class es
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eTA = "allArticleWording".hashCode();
-  private static final int eTB = "historyArticlesUrl".hashCode();
-  private static final int eTC = "userRole".hashCode();
-  private static final int eTD = "banReason".hashCode();
-  private static final int eTE = "showRecommendArticle".hashCode();
-  private static final int eTF = "showService".hashCode();
-  private static final int eTG = "messageListStr".hashCode();
-  private static final int eTH = "serviceInfoListStr".hashCode();
-  private static final int eTI = "bizAccountListStr".hashCode();
-  private static final int eTJ = "cacheTime".hashCode();
-  private static final int eTK = "decryptUserName".hashCode();
-  private static final int eTL = "hiddenAvatar".hashCode();
-  private static final int eTM = "hiddenButtonBeforeFocus".hashCode();
-  private static final int eTN = "newBanReason".hashCode();
-  private static final int eTy;
-  private static final int eTz;
-  private static final int eme = "username".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestAppIDIndex ON PredownloadBlockCgiRequest(appId)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestStartTimeIndex ON PredownloadBlockCgiRequest(startTime)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestEndTimeIndex ON PredownloadBlockCgiRequest(endTime)" };
+  private static final int eVW = "sceneList".hashCode();
+  private static final int eVX = "cgiList".hashCode();
+  private static final int emh;
+  private static final int emi;
+  private static final int enO;
+  private static final int eok = "username".hashCode();
+  private static final int epp = "reportId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eTi = true;
-  private boolean eTj = true;
-  private boolean eTk = true;
-  private boolean eTl = true;
-  private boolean eTm = true;
-  private boolean eTn = true;
-  private boolean eTo = true;
-  private boolean eTp = true;
-  private boolean eTq = true;
-  private boolean eTr = true;
-  private boolean eTs = true;
-  private boolean eTt = true;
-  private boolean eTu = true;
-  private boolean eTv = true;
-  private boolean eTw = true;
-  private boolean eTx = true;
+  private boolean eVU = true;
+  private boolean eVV = true;
+  private boolean ema = true;
   private boolean emb = true;
-  public String field_allArticleWording;
-  public String field_banReason;
-  public String field_bizAccountListStr;
-  public long field_cacheTime;
-  public String field_decryptUserName;
-  public int field_friendSubscribeCount;
-  public int field_hiddenAvatar;
-  public int field_hiddenButtonBeforeFocus;
-  public String field_historyArticlesUrl;
-  public String field_messageListStr;
-  public String field_newBanReason;
-  public int field_originalArticleCount;
-  public String field_serviceInfoListStr;
-  public int field_showRecommendArticle;
-  public int field_showService;
-  public int field_userRole;
+  private boolean enx = true;
+  private boolean eoh = true;
+  private boolean epk = true;
+  public String field_appId;
+  public String field_cgiList;
+  public long field_endTime;
+  public int field_reportId;
+  public String field_sceneList;
+  public long field_startTime;
   public String field_username;
   
   static
   {
-    eTy = "originalArticleCount".hashCode();
-    eTz = "friendSubscribeCount".hashCode();
+    enO = "appId".hashCode();
+    emh = "startTime".hashCode();
+    emi = "endTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -80,11 +51,11 @@ public abstract class es
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eme != k) {
+      if (eok != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.emb = true;
+      this.eoh = true;
     }
     for (;;)
     {
@@ -92,38 +63,18 @@ public abstract class es
       break label20;
       break;
       label65:
-      if (eTy == k) {
-        this.field_originalArticleCount = paramCursor.getInt(i);
-      } else if (eTz == k) {
-        this.field_friendSubscribeCount = paramCursor.getInt(i);
-      } else if (eTA == k) {
-        this.field_allArticleWording = paramCursor.getString(i);
-      } else if (eTB == k) {
-        this.field_historyArticlesUrl = paramCursor.getString(i);
-      } else if (eTC == k) {
-        this.field_userRole = paramCursor.getInt(i);
-      } else if (eTD == k) {
-        this.field_banReason = paramCursor.getString(i);
-      } else if (eTE == k) {
-        this.field_showRecommendArticle = paramCursor.getInt(i);
-      } else if (eTF == k) {
-        this.field_showService = paramCursor.getInt(i);
-      } else if (eTG == k) {
-        this.field_messageListStr = paramCursor.getString(i);
-      } else if (eTH == k) {
-        this.field_serviceInfoListStr = paramCursor.getString(i);
-      } else if (eTI == k) {
-        this.field_bizAccountListStr = paramCursor.getString(i);
-      } else if (eTJ == k) {
-        this.field_cacheTime = paramCursor.getLong(i);
-      } else if (eTK == k) {
-        this.field_decryptUserName = paramCursor.getString(i);
-      } else if (eTL == k) {
-        this.field_hiddenAvatar = paramCursor.getInt(i);
-      } else if (eTM == k) {
-        this.field_hiddenButtonBeforeFocus = paramCursor.getInt(i);
-      } else if (eTN == k) {
-        this.field_newBanReason = paramCursor.getString(i);
+      if (enO == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (emh == k) {
+        this.field_startTime = paramCursor.getLong(i);
+      } else if (emi == k) {
+        this.field_endTime = paramCursor.getLong(i);
+      } else if (eVW == k) {
+        this.field_sceneList = paramCursor.getString(i);
+      } else if (eVX == k) {
+        this.field_cgiList = paramCursor.getString(i);
+      } else if (epp == k) {
+        this.field_reportId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -133,59 +84,26 @@ public abstract class es
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.emb) {
+    if (this.eoh) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eTi) {
-      localContentValues.put("originalArticleCount", Integer.valueOf(this.field_originalArticleCount));
+    if (this.enx) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.eTj) {
-      localContentValues.put("friendSubscribeCount", Integer.valueOf(this.field_friendSubscribeCount));
+    if (this.ema) {
+      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.eTk) {
-      localContentValues.put("allArticleWording", this.field_allArticleWording);
+    if (this.emb) {
+      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
-    if (this.eTl) {
-      localContentValues.put("historyArticlesUrl", this.field_historyArticlesUrl);
+    if (this.eVU) {
+      localContentValues.put("sceneList", this.field_sceneList);
     }
-    if (this.eTm) {
-      localContentValues.put("userRole", Integer.valueOf(this.field_userRole));
+    if (this.eVV) {
+      localContentValues.put("cgiList", this.field_cgiList);
     }
-    if (this.eTn) {
-      localContentValues.put("banReason", this.field_banReason);
-    }
-    if (this.eTo) {
-      localContentValues.put("showRecommendArticle", Integer.valueOf(this.field_showRecommendArticle));
-    }
-    if (this.eTp) {
-      localContentValues.put("showService", Integer.valueOf(this.field_showService));
-    }
-    if (this.eTq) {
-      localContentValues.put("messageListStr", this.field_messageListStr);
-    }
-    if (this.eTr) {
-      localContentValues.put("serviceInfoListStr", this.field_serviceInfoListStr);
-    }
-    if (this.eTs) {
-      localContentValues.put("bizAccountListStr", this.field_bizAccountListStr);
-    }
-    if (this.eTt) {
-      localContentValues.put("cacheTime", Long.valueOf(this.field_cacheTime));
-    }
-    if (this.field_decryptUserName == null) {
-      this.field_decryptUserName = "";
-    }
-    if (this.eTu) {
-      localContentValues.put("decryptUserName", this.field_decryptUserName);
-    }
-    if (this.eTv) {
-      localContentValues.put("hiddenAvatar", Integer.valueOf(this.field_hiddenAvatar));
-    }
-    if (this.eTw) {
-      localContentValues.put("hiddenButtonBeforeFocus", Integer.valueOf(this.field_hiddenButtonBeforeFocus));
-    }
-    if (this.eTx) {
-      localContentValues.put("newBanReason", this.field_newBanReason);
+    if (this.epk) {
+      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -195,7 +113,7 @@ public abstract class es
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.es
  * JD-Core Version:    0.7.0.1
  */

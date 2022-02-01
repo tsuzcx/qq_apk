@@ -5,7 +5,9 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.TencentMapContext;
-import java.lang.ref.WeakReference;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class BitmapDescriptorFactory
 {
@@ -19,12 +21,25 @@ public final class BitmapDescriptorFactory
   public static final float HUE_ROSE = 330.0F;
   public static final float HUE_VIOLET = 270.0F;
   public static final float HUE_YELLOW = 60.0F;
-  private static WeakReference<TencentMapContext> sTencentMapContextWeakReference;
+  private static AtomicInteger sAttachIndex;
+  private static List<TencentMapContext> sTencentMapContextList;
+  
+  static
+  {
+    AppMethodBeat.i(191295);
+    sTencentMapContextList = new CopyOnWriteArrayList();
+    sAttachIndex = new AtomicInteger(0);
+    AppMethodBeat.o(191295);
+  }
   
   public static void attachMapContext(TencentMapContext paramTencentMapContext)
   {
     AppMethodBeat.i(181049);
-    sTencentMapContextWeakReference = new WeakReference(paramTencentMapContext);
+    if (!sTencentMapContextList.contains(paramTencentMapContext))
+    {
+      sTencentMapContextList.add(paramTencentMapContext);
+      sAttachIndex.incrementAndGet();
+    }
     AppMethodBeat.o(181049);
   }
   
@@ -50,15 +65,12 @@ public final class BitmapDescriptorFactory
   public static BitmapDescriptor defaultMarker()
   {
     AppMethodBeat.i(173087);
-    if (sTencentMapContextWeakReference != null)
+    Object localObject = getActiveMapContext();
+    if (localObject != null)
     {
-      Object localObject = (TencentMapContext)sTencentMapContextWeakReference.get();
-      if (localObject != null)
-      {
-        localObject = defaultMarker((TencentMapContext)localObject);
-        AppMethodBeat.o(173087);
-        return localObject;
-      }
+      localObject = defaultMarker((TencentMapContext)localObject);
+      AppMethodBeat.o(173087);
+      return localObject;
     }
     AppMethodBeat.o(173087);
     return null;
@@ -67,15 +79,12 @@ public final class BitmapDescriptorFactory
   public static BitmapDescriptor defaultMarker(float paramFloat)
   {
     AppMethodBeat.i(173088);
-    if (sTencentMapContextWeakReference != null)
+    Object localObject = getActiveMapContext();
+    if (localObject != null)
     {
-      Object localObject = (TencentMapContext)sTencentMapContextWeakReference.get();
-      if (localObject != null)
-      {
-        localObject = defaultMarker((TencentMapContext)localObject, paramFloat);
-        AppMethodBeat.o(173088);
-        return localObject;
-      }
+      localObject = defaultMarker((TencentMapContext)localObject, paramFloat);
+      AppMethodBeat.o(173088);
+      return localObject;
     }
     AppMethodBeat.o(173088);
     return null;
@@ -97,6 +106,15 @@ public final class BitmapDescriptorFactory
     return paramTencentMapContext;
   }
   
+  public static void detachMapContext(TencentMapContext paramTencentMapContext)
+  {
+    AppMethodBeat.i(191293);
+    if (sTencentMapContextList.remove(paramTencentMapContext)) {
+      sAttachIndex.decrementAndGet();
+    }
+    AppMethodBeat.o(191293);
+  }
+  
   public static BitmapDescriptor fromAsset(TencentMapContext paramTencentMapContext, String paramString)
   {
     AppMethodBeat.i(181051);
@@ -108,15 +126,12 @@ public final class BitmapDescriptorFactory
   public static BitmapDescriptor fromAsset(String paramString)
   {
     AppMethodBeat.i(173084);
-    if (sTencentMapContextWeakReference != null)
+    TencentMapContext localTencentMapContext = getActiveMapContext();
+    if (localTencentMapContext != null)
     {
-      TencentMapContext localTencentMapContext = (TencentMapContext)sTencentMapContextWeakReference.get();
-      if (localTencentMapContext != null)
-      {
-        paramString = fromAsset(localTencentMapContext, paramString);
-        AppMethodBeat.o(173084);
-        return paramString;
-      }
+      paramString = fromAsset(localTencentMapContext, paramString);
+      AppMethodBeat.o(173084);
+      return paramString;
     }
     AppMethodBeat.o(173084);
     return null;
@@ -125,15 +140,12 @@ public final class BitmapDescriptorFactory
   public static BitmapDescriptor fromBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(173089);
-    if (sTencentMapContextWeakReference != null)
+    TencentMapContext localTencentMapContext = getActiveMapContext();
+    if (localTencentMapContext != null)
     {
-      TencentMapContext localTencentMapContext = (TencentMapContext)sTencentMapContextWeakReference.get();
-      if (localTencentMapContext != null)
-      {
-        paramBitmap = fromBitmap(localTencentMapContext, paramBitmap);
-        AppMethodBeat.o(173089);
-        return paramBitmap;
-      }
+      paramBitmap = fromBitmap(localTencentMapContext, paramBitmap);
+      AppMethodBeat.o(173089);
+      return paramBitmap;
     }
     AppMethodBeat.o(173089);
     return null;
@@ -163,15 +175,12 @@ public final class BitmapDescriptorFactory
   public static BitmapDescriptor fromFile(String paramString)
   {
     AppMethodBeat.i(173085);
-    if (sTencentMapContextWeakReference != null)
+    TencentMapContext localTencentMapContext = getActiveMapContext();
+    if (localTencentMapContext != null)
     {
-      TencentMapContext localTencentMapContext = (TencentMapContext)sTencentMapContextWeakReference.get();
-      if (localTencentMapContext != null)
-      {
-        paramString = fromFile(localTencentMapContext, paramString);
-        AppMethodBeat.o(173085);
-        return paramString;
-      }
+      paramString = fromFile(localTencentMapContext, paramString);
+      AppMethodBeat.o(173085);
+      return paramString;
     }
     AppMethodBeat.o(173085);
     return null;
@@ -188,15 +197,12 @@ public final class BitmapDescriptorFactory
   public static BitmapDescriptor fromPath(String paramString)
   {
     AppMethodBeat.i(173086);
-    if (sTencentMapContextWeakReference != null)
+    TencentMapContext localTencentMapContext = getActiveMapContext();
+    if (localTencentMapContext != null)
     {
-      TencentMapContext localTencentMapContext = (TencentMapContext)sTencentMapContextWeakReference.get();
-      if (localTencentMapContext != null)
-      {
-        paramString = fromPath(localTencentMapContext, paramString);
-        AppMethodBeat.o(173086);
-        return paramString;
-      }
+      paramString = fromPath(localTencentMapContext, paramString);
+      AppMethodBeat.o(173086);
+      return paramString;
     }
     AppMethodBeat.o(173086);
     return null;
@@ -205,15 +211,12 @@ public final class BitmapDescriptorFactory
   public static BitmapDescriptor fromResource(int paramInt)
   {
     AppMethodBeat.i(173083);
-    if (sTencentMapContextWeakReference != null)
+    Object localObject = getActiveMapContext();
+    if (localObject != null)
     {
-      Object localObject = (TencentMapContext)sTencentMapContextWeakReference.get();
-      if (localObject != null)
-      {
-        localObject = fromResource((TencentMapContext)localObject, paramInt);
-        AppMethodBeat.o(173083);
-        return localObject;
-      }
+      localObject = fromResource((TencentMapContext)localObject, paramInt);
+      AppMethodBeat.o(173083);
+      return localObject;
     }
     AppMethodBeat.o(173083);
     return null;
@@ -230,15 +233,12 @@ public final class BitmapDescriptorFactory
   public static BitmapDescriptor fromView(View paramView)
   {
     AppMethodBeat.i(173090);
-    if (sTencentMapContextWeakReference != null)
+    TencentMapContext localTencentMapContext = getActiveMapContext();
+    if (localTencentMapContext != null)
     {
-      TencentMapContext localTencentMapContext = (TencentMapContext)sTencentMapContextWeakReference.get();
-      if (localTencentMapContext != null)
-      {
-        paramView = fromView(localTencentMapContext, paramView);
-        AppMethodBeat.o(173090);
-        return paramView;
-      }
+      paramView = fromView(localTencentMapContext, paramView);
+      AppMethodBeat.o(173090);
+      return paramView;
     }
     AppMethodBeat.o(173090);
     return null;
@@ -272,10 +272,23 @@ public final class BitmapDescriptorFactory
     }
     return null;
   }
+  
+  private static TencentMapContext getActiveMapContext()
+  {
+    AppMethodBeat.i(191294);
+    if (sAttachIndex.get() > 0)
+    {
+      TencentMapContext localTencentMapContext = (TencentMapContext)sTencentMapContextList.get(sAttachIndex.get() - 1);
+      AppMethodBeat.o(191294);
+      return localTencentMapContext;
+    }
+    AppMethodBeat.o(191294);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory
  * JD-Core Version:    0.7.0.1
  */

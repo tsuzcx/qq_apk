@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.topstory.ui.video;
 import android.support.v4.e.o;
 import android.support.v7.widget.RecyclerView.a;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.ddb;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dio;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
@@ -13,89 +13,89 @@ import java.util.Map;
 public abstract class e
   extends RecyclerView.a<h>
 {
-  protected o<View> yOj = new o();
-  protected o<View> yOk = new o();
-  public Map<String, WeakReference<h>> yOl = new HashMap();
-  public b yOm;
+  protected o<View> Aca = new o();
+  protected o<View> Acb = new o();
+  public Map<String, WeakReference<h>> Acc = new HashMap();
+  public b Acd;
   
   public e(b paramb)
   {
-    this.yOm = paramb;
+    this.Acd = paramb;
   }
   
-  public int Pl(int paramInt)
+  public int Rr(int paramInt)
   {
     return 1;
   }
   
-  public final boolean Pm(int paramInt)
+  public final boolean Rs(int paramInt)
   {
-    return paramInt < this.yOj.size();
+    return paramInt < this.Aca.size();
   }
   
-  public final boolean Pn(int paramInt)
+  public final boolean Rt(int paramInt)
   {
-    return paramInt >= this.yOj.size() + this.yOm.dOT().dPF();
+    return paramInt >= this.Aca.size() + this.Acd.edt().eee();
   }
   
   public final void addHeaderView(View paramView)
   {
-    this.yOj.put(this.yOj.size() + 100000, paramView);
+    this.Aca.put(this.Aca.size() + 100000, paramView);
   }
   
-  public final h b(ddb paramddb)
+  public final h b(dio paramdio)
   {
-    if ((paramddb != null) && (this.yOl.containsKey(paramddb.rNP)) && (this.yOl.get(paramddb.rNP) != null))
+    if ((paramdio != null) && (this.Acc.containsKey(paramdio.sVF)) && (this.Acc.get(paramdio.sVF) != null))
     {
-      h localh = (h)((WeakReference)this.yOl.get(paramddb.rNP)).get();
-      if ((localh != null) && (localh.yLU != null) && (localh.yLU == paramddb)) {
+      h localh = (h)((WeakReference)this.Acc.get(paramdio.sVF)).get();
+      if ((localh != null) && (localh.zZN != null) && (localh.zZN == paramdio)) {
         return localh;
       }
-      this.yOl.remove(paramddb.rNP);
-      ad.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "getViewHolderByVideoInfo not match");
+      this.Acc.remove(paramdio.sVF);
+      ac.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "getViewHolderByVideoInfo not match");
     }
     return null;
   }
   
-  public final void dOZ()
+  public final void edz()
   {
-    this.yOk.clear();
+    this.Acb.clear();
   }
   
-  public final void fc(View paramView)
+  public final void fp(View paramView)
   {
-    this.yOk.put(this.yOk.size() + 200000, paramView);
+    this.Acb.put(this.Acb.size() + 200000, paramView);
   }
   
   public final int getFootersCount()
   {
-    return this.yOk.size();
+    return this.Acb.size();
   }
   
   public final int getHeadersCount()
   {
-    return this.yOj.size();
+    return this.Aca.size();
   }
   
   public final int getItemCount()
   {
-    return this.yOm.dOT().dPF() + this.yOj.size() + this.yOk.size();
+    return this.Acd.edt().eee() + this.Aca.size() + this.Acb.size();
   }
   
   public final int getItemViewType(int paramInt)
   {
-    if (Pm(paramInt)) {
-      return this.yOj.keyAt(paramInt);
+    if (Rs(paramInt)) {
+      return this.Aca.keyAt(paramInt);
     }
-    if (Pn(paramInt)) {
-      return this.yOk.keyAt(paramInt - this.yOj.size() - this.yOm.dOT().dPF());
+    if (Rt(paramInt)) {
+      return this.Acb.keyAt(paramInt - this.Aca.size() - this.Acd.edt().eee());
     }
-    return Pl(paramInt);
+    return Rr(paramInt);
   }
   
-  protected void m(List<ddb> paramList, boolean paramBoolean)
+  protected void n(List<dio> paramList, boolean paramBoolean)
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "callbackToSuccess %d %b", new Object[] { Integer.valueOf(paramList.size()), Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "callbackToSuccess %d %b", new Object[] { Integer.valueOf(paramList.size()), Boolean.valueOf(paramBoolean) });
   }
 }
 

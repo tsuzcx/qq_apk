@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.protocal.protobuf.aao;
-import com.tencent.mm.protocal.protobuf.aap;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.abn;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends n
   implements com.tencent.mm.network.k
 {
   private g callback;
-  private String dyc;
-  public int ntx;
+  private String dvO;
+  public int nWx;
   private final b rr;
   
   public a(String paramString)
   {
     AppMethodBeat.i(112954);
-    this.dyc = "";
+    this.dvO = "";
     b.a locala = new b.a();
-    locala.gUU = new aao();
-    locala.gUV = new aap();
+    locala.hvt = new abn();
+    locala.hvu = new abo();
     locala.uri = "/cgi-bin/mmbiz-bin/card/delsharecard";
     locala.funcId = 1163;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ((aao)this.rr.gUS.gUX).dyc = paramString;
-    this.dyc = paramString;
+    this.rr = locala.aAz();
+    ((abn)this.rr.hvr.hvw).dvO = paramString;
+    this.dvO = paramString;
     AppMethodBeat.o(112954);
   }
   
@@ -57,14 +57,14 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112955);
-    ad.i("MicroMsg.NetSceneDelShareCard", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ac.i("MicroMsg.NetSceneDelShareCard", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (aap)this.rr.gUT.gUX;
-      ad.i("MicroMsg.NetSceneDelShareCard", "ret_code:" + paramq.ntx);
-      this.ntx = paramq.ntx;
-      if (this.ntx == 0) {
-        am.bJd().QI(this.dyc);
+      paramq = (abo)this.rr.hvs.hvw;
+      ac.i("MicroMsg.NetSceneDelShareCard", "ret_code:" + paramq.nWx);
+      this.nWx = paramq.nWx;
+      if (this.nWx == 0) {
+        am.bQq().UU(this.dvO);
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -73,7 +73,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.a
  * JD-Core Version:    0.7.0.1
  */

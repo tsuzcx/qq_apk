@@ -36,59 +36,59 @@ import javax.annotation.concurrent.GuardedBy;
 
 public class a
 {
-  private static final List<String> bBX;
-  private static final List<String> bBY;
-  private static final List<String> bBZ;
-  private static final List<String> bCa;
-  private static final Set<String> bCb;
+  private static final List<String> bzF;
+  private static final List<String> bzG;
+  private static final List<String> bzH;
+  private static final List<String> bzI;
+  private static final Set<String> bzJ;
   @GuardedBy("sLock")
-  static final Map<String, a> bCc;
+  static final Map<String, a> bzK;
   private static final Object sLock;
-  private final Context bCd;
-  private final b bCe;
-  private final n bCf;
-  private final AtomicBoolean bCg;
-  private final AtomicBoolean bCh;
-  private final List<Object> bCi;
-  private final List<Object> bCj;
-  private a bCk;
+  private final Context bzL;
+  private final b bzM;
+  private final n bzN;
+  private final AtomicBoolean bzO;
+  private final AtomicBoolean bzP;
+  private final List<Object> bzQ;
+  private final List<Object> bzR;
+  private a bzS;
   private final String mName;
   private final List<Object> zzm;
   
   static
   {
     AppMethodBeat.i(4062);
-    bBX = Arrays.asList(new String[] { "com.google.firebase.auth.FirebaseAuth", "com.google.firebase.iid.FirebaseInstanceId" });
-    bBY = Collections.singletonList("com.google.firebase.crash.FirebaseCrash");
-    bBZ = Arrays.asList(new String[] { "com.google.android.gms.measurement.AppMeasurement" });
-    bCa = Arrays.asList(new String[0]);
-    bCb = Collections.emptySet();
+    bzF = Arrays.asList(new String[] { "com.google.firebase.auth.FirebaseAuth", "com.google.firebase.iid.FirebaseInstanceId" });
+    bzG = Collections.singletonList("com.google.firebase.crash.FirebaseCrash");
+    bzH = Arrays.asList(new String[] { "com.google.android.gms.measurement.AppMeasurement" });
+    bzI = Arrays.asList(new String[0]);
+    bzJ = Collections.emptySet();
     sLock = new Object();
-    bCc = new android.support.v4.e.a();
+    bzK = new android.support.v4.e.a();
     AppMethodBeat.o(4062);
   }
   
   private a(Context paramContext, String paramString, b paramb)
   {
     AppMethodBeat.i(4055);
-    this.bCg = new AtomicBoolean(false);
-    this.bCh = new AtomicBoolean();
-    this.bCi = new CopyOnWriteArrayList();
+    this.bzO = new AtomicBoolean(false);
+    this.bzP = new AtomicBoolean();
+    this.bzQ = new CopyOnWriteArrayList();
     this.zzm = new CopyOnWriteArrayList();
-    this.bCj = new CopyOnWriteArrayList();
-    this.bCd = ((Context)Preconditions.checkNotNull(paramContext));
+    this.bzR = new CopyOnWriteArrayList();
+    this.bzL = ((Context)Preconditions.checkNotNull(paramContext));
     this.mName = Preconditions.checkNotEmpty(paramString);
-    this.bCe = ((b)Preconditions.checkNotNull(paramb));
-    this.bCk = new com.google.firebase.b.a();
-    paramContext = new k(this.bCd);
-    this.bCf = new n(k.E(paramContext.bCF.am(paramContext.mContext)), new com.google.firebase.components.a[] { com.google.firebase.components.a.a(Context.class, this.bCd), com.google.firebase.components.a.a(a.class, this), com.google.firebase.components.a.a(b.class, this.bCe) });
+    this.bzM = ((b)Preconditions.checkNotNull(paramb));
+    this.bzS = new com.google.firebase.b.a();
+    paramContext = new k(this.bzL);
+    this.bzN = new n(k.z(paramContext.bAn.an(paramContext.mContext)), new com.google.firebase.components.a[] { com.google.firebase.components.a.a(Context.class, this.bzL), com.google.firebase.components.a.a(a.class, this), com.google.firebase.components.a.a(b.class, this.bzM) });
     AppMethodBeat.o(4055);
   }
   
   private static a a(Context arg0, b paramb, String paramString)
   {
     AppMethodBeat.i(4052);
-    com.google.firebase.b.b.xf();
+    com.google.firebase.b.b.wS();
     if ((PlatformVersion.isAtLeastIceCreamSandwich()) && ((???.getApplicationContext() instanceof Application)))
     {
       BackgroundDetector.initialize((Application)???.getApplicationContext());
@@ -101,14 +101,14 @@ public class a
     }
     synchronized (sLock)
     {
-      if (!bCc.containsKey(str))
+      if (!bzK.containsKey(str))
       {
         bool = true;
         Preconditions.checkState(bool, String.valueOf(str).length() + 33 + "FirebaseApp name " + str + " already exists!");
         Preconditions.checkNotNull(paramString, "Application context cannot be null.");
         paramb = new a(paramString, str, paramb);
-        bCc.put(str, paramb);
-        com.google.firebase.b.b.xg();
+        bzK.put(str, paramb);
+        com.google.firebase.b.b.wT();
         paramb.zzc();
         AppMethodBeat.o(4052);
         return paramb;
@@ -130,7 +130,7 @@ public class a
       if (paramBoolean) {}
       try
       {
-        if (bCa.contains(paramIterable))
+        if (bzI.contains(paramIterable))
         {
           Method localMethod = Class.forName(paramIterable).getMethod("getInstance", new Class[] { paramClass });
           int i = localMethod.getModifiers();
@@ -141,7 +141,7 @@ public class a
       }
       catch (ClassNotFoundException localClassNotFoundException)
       {
-        if (bCb.contains(paramIterable))
+        if (bzJ.contains(paramIterable))
         {
           paramClass = new IllegalStateException(String.valueOf(paramIterable).concat(" is missing, but is required. Check if it has been removed by Proguard."));
           AppMethodBeat.o(4060);
@@ -174,18 +174,18 @@ public class a
     AppMethodBeat.o(4060);
   }
   
-  public static a ai(Context paramContext)
+  public static a aj(Context paramContext)
   {
     AppMethodBeat.i(4051);
     synchronized (sLock)
     {
-      if (bCc.containsKey("[DEFAULT]"))
+      if (bzK.containsKey("[DEFAULT]"))
       {
-        paramContext = wA();
+        paramContext = wn();
         AppMethodBeat.o(4051);
         return paramContext;
       }
-      b localb = b.ak(paramContext);
+      b localb = b.al(paramContext);
       if (localb == null)
       {
         AppMethodBeat.o(4051);
@@ -206,12 +206,12 @@ public class a
     return str;
   }
   
-  public static a wA()
+  public static a wn()
   {
     AppMethodBeat.i(4050);
     synchronized (sLock)
     {
-      Object localObject2 = (a)bCc.get("[DEFAULT]");
+      Object localObject2 = (a)bzK.get("[DEFAULT]");
       if (localObject2 == null)
       {
         localObject2 = ProcessUtils.getMyProcessName();
@@ -225,12 +225,12 @@ public class a
   }
   
   @KeepForSdk
-  public static void wB()
+  public static void wo()
   {
     AppMethodBeat.i(4053);
     synchronized (sLock)
     {
-      ArrayList localArrayList = (ArrayList)new ArrayList(bCc.values());
+      ArrayList localArrayList = (ArrayList)new ArrayList(bzK.values());
       int k = localArrayList.size();
       int i = 0;
       while (i < k)
@@ -239,9 +239,9 @@ public class a
         int j = i + 1;
         localObject3 = (a)localObject3;
         i = j;
-        if (((a)localObject3).bCg.get())
+        if (((a)localObject3).bzO.get())
         {
-          ((a)localObject3).wD();
+          ((a)localObject3).wq();
           i = j;
         }
       }
@@ -251,7 +251,7 @@ public class a
   
   @KeepForSdk
   @VisibleForTesting
-  private boolean wC()
+  private boolean wp()
   {
     AppMethodBeat.i(4057);
     boolean bool = "[DEFAULT]".equals(getName());
@@ -259,7 +259,7 @@ public class a
     return bool;
   }
   
-  private final void wD()
+  private final void wq()
   {
     AppMethodBeat.i(4058);
     Iterator localIterator = this.zzm.iterator();
@@ -272,7 +272,7 @@ public class a
   private final void zza()
   {
     AppMethodBeat.i(4056);
-    if (!this.bCh.get()) {}
+    if (!this.bzP.get()) {}
     for (boolean bool = true;; bool = false)
     {
       Preconditions.checkState(bool, "FirebaseApp was deleted");
@@ -284,21 +284,21 @@ public class a
   private final void zzc()
   {
     AppMethodBeat.i(4059);
-    boolean bool = android.support.v4.content.b.S(this.bCd);
+    boolean bool = android.support.v4.content.b.T(this.bzL);
     if (bool) {
-      b.aj(this.bCd);
+      b.ak(this.bzL);
     }
     for (;;)
     {
-      a(a.class, this, bBX, bool);
-      if (wC())
+      a(a.class, this, bzF, bool);
+      if (wp())
       {
-        a(a.class, this, bBY, bool);
-        a(Context.class, this.bCd, bBZ, bool);
+        a(a.class, this, bzG, bool);
+        a(Context.class, this.bzL, bzH, bool);
       }
       AppMethodBeat.o(4059);
       return;
-      this.bCf.be(wC());
+      this.bzN.bd(wp());
     }
   }
   
@@ -319,7 +319,7 @@ public class a
   {
     AppMethodBeat.i(4044);
     zza();
-    Context localContext = this.bCd;
+    Context localContext = this.bzL;
     AppMethodBeat.o(4044);
     return localContext;
   }
@@ -335,7 +335,7 @@ public class a
   public String toString()
   {
     AppMethodBeat.i(4049);
-    String str = Objects.toStringHelper(this).add("name", this.mName).add("options", this.bCe).toString();
+    String str = Objects.toStringHelper(this).add("name", this.mName).add("options", this.bzM).toString();
     AppMethodBeat.o(4049);
     return str;
   }
@@ -345,16 +345,16 @@ public class a
   {
     AppMethodBeat.i(4054);
     zza();
-    paramClass = com.google.firebase.components.c.a(this.bCf, paramClass);
+    paramClass = com.google.firebase.components.c.a(this.bzN, paramClass);
     AppMethodBeat.o(4054);
     return paramClass;
   }
   
-  public final b wz()
+  public final b wm()
   {
     AppMethodBeat.i(4046);
     zza();
-    b localb = this.bCe;
+    b localb = this.bzM;
     AppMethodBeat.o(4046);
     return localb;
   }
@@ -366,32 +366,32 @@ public class a
   static final class b
     extends BroadcastReceiver
   {
-    private static AtomicReference<b> bCl;
-    private final Context bCd;
+    private static AtomicReference<b> bzT;
+    private final Context bzL;
     
     static
     {
       AppMethodBeat.i(4043);
-      bCl = new AtomicReference();
+      bzT = new AtomicReference();
       AppMethodBeat.o(4043);
     }
     
     private b(Context paramContext)
     {
-      this.bCd = paramContext;
+      this.bzL = paramContext;
     }
     
     public final void onReceive(Context arg1, Intent paramIntent)
     {
       AppMethodBeat.i(4041);
-      synchronized (a.wE())
+      synchronized (a.wr())
       {
-        paramIntent = a.bCc.values().iterator();
+        paramIntent = a.bzK.values().iterator();
         if (paramIntent.hasNext()) {
           a.a((a)paramIntent.next());
         }
       }
-      this.bCd.unregisterReceiver(this);
+      this.bzL.unregisterReceiver(this);
       AppMethodBeat.o(4041);
     }
   }

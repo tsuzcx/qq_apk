@@ -5,27 +5,27 @@ import java.util.Arrays;
 
 public final class a
 {
-  private static final char[] KnX;
-  private static final int[] KnY;
+  private static final char[] MbG;
+  private static final int[] MbH;
   
   static
   {
     AppMethodBeat.i(40575);
-    KnX = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+    MbG = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
     int[] arrayOfInt = new int[256];
-    KnY = arrayOfInt;
+    MbH = arrayOfInt;
     Arrays.fill(arrayOfInt, -1);
-    int j = KnX.length;
+    int j = MbG.length;
     int i = 0;
     for (;;)
     {
       if (i >= j)
       {
-        KnY[61] = 0;
+        MbH[61] = 0;
         AppMethodBeat.o(40575);
         return;
       }
-      KnY[KnX[i]] = i;
+      MbH[MbG[i]] = i;
       i += 1;
     }
   }
@@ -55,15 +55,15 @@ public final class a
           j = (paramArrayOfByte[(m - 1)] & 0xFF) << 2;
         }
         j |= (n & 0xFF) << 10;
-        arrayOfChar[(i5 - 4)] = KnX[(j >> 12)];
-        arrayOfChar[(i5 - 3)] = KnX[(j >>> 6 & 0x3F)];
+        arrayOfChar[(i5 - 4)] = MbG[(j >> 12)];
+        arrayOfChar[(i5 - 3)] = MbG[(j >>> 6 & 0x3F)];
         if (k != 2) {
           break label409;
         }
       }
     }
     label409:
-    for (int i = KnX[(j & 0x3F)];; i = 61)
+    for (int i = MbG[(j & 0x3F)];; i = 61)
     {
       arrayOfChar[(i5 - 2)] = i;
       arrayOfChar[(i5 - 1)] = '=';
@@ -75,13 +75,13 @@ public final class a
       i2 = i3 + 1;
       n = (i4 & 0xFF) << 8 | (n & 0xFF) << 16 | paramArrayOfByte[i3] & 0xFF;
       i3 = k + 1;
-      arrayOfChar[k] = KnX[(n >>> 18 & 0x3F)];
+      arrayOfChar[k] = MbG[(n >>> 18 & 0x3F)];
       k = i3 + 1;
-      arrayOfChar[i3] = KnX[(n >>> 12 & 0x3F)];
+      arrayOfChar[i3] = MbG[(n >>> 12 & 0x3F)];
       i4 = k + 1;
-      arrayOfChar[k] = KnX[(n >>> 6 & 0x3F)];
+      arrayOfChar[k] = MbG[(n >>> 6 & 0x3F)];
       i3 = i4 + 1;
-      arrayOfChar[i4] = KnX[(n & 0x3F)];
+      arrayOfChar[i4] = MbG[(n & 0x3F)];
       i4 = j + 1;
       j = i4;
       k = i3;

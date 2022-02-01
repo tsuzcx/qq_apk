@@ -9,19 +9,19 @@ import com.tencent.mm.dynamicbackground.a.c;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 11}, fvu={""}, fvv={"Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView;", "Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mRenderer", "Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$GLRenderer;", "needPause", "", "showGradientView", "onAttachedToWindow", "", "onDetachedFromWindow", "onResume", "onVisibilityChanged", "changedView", "Landroid/view/View;", "visibility", "", "release", "setColor", "particleColor1", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "setGradientBackgroundView", "gradientColorBackgroundView", "setShowGradientView", "show", "surfaceCreated", "holder", "Landroid/view/SurfaceHolder;", "surfaceDestroyed", "Companion", "GLRenderer", "dynamicbg_release"})
+@l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView;", "Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mRenderer", "Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$GLRenderer;", "needPause", "", "showGradientView", "onAttachedToWindow", "", "onDetachedFromWindow", "onResume", "onVisibilityChanged", "changedView", "Landroid/view/View;", "visibility", "", "release", "setColor", "particleColor1", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "setGradientBackgroundView", "gradientColorBackgroundView", "setShowGradientView", "show", "surfaceCreated", "holder", "Landroid/view/SurfaceHolder;", "surfaceDestroyed", "Companion", "GLRenderer", "dynamicbg_release"})
 public final class DynamicBackgroundGLSurfaceView
   extends GameGLSurfaceView
 {
-  public static final DynamicBackgroundGLSurfaceView.a fIJ;
-  public DynamicBackgroundGLSurfaceView.b fIG;
-  private boolean fIH;
-  private boolean fII;
+  public static final DynamicBackgroundGLSurfaceView.a fMp;
+  public DynamicBackgroundGLSurfaceView.b fMm;
+  private boolean fMn;
+  private boolean fMo;
   
   static
   {
     AppMethodBeat.i(103118);
-    fIJ = new DynamicBackgroundGLSurfaceView.a((byte)0);
+    fMp = new DynamicBackgroundGLSurfaceView.a((byte)0);
     AppMethodBeat.o(103118);
   }
   
@@ -35,17 +35,17 @@ public final class DynamicBackgroundGLSurfaceView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(103117);
     setEGLContextClientVersion(2);
-    aaA();
+    abz();
     setPreserveEGLContextOnPause(true);
-    this.fIG = new DynamicBackgroundGLSurfaceView.b(paramContext);
-    setRenderer((GameGLSurfaceView.n)this.fIG);
+    this.fMm = new DynamicBackgroundGLSurfaceView.b(paramContext);
+    setRenderer((GameGLSurfaceView.n)this.fMm);
     getHolder().setFormat(-3);
-    paramContext = this.fIG;
+    paramContext = this.fMm;
     if (paramContext != null)
     {
       paramAttributeSet = (GameGLSurfaceView)this;
       k.h(paramAttributeSet, "surfaceView");
-      paramContext.fIS = paramAttributeSet;
+      paramContext.fMy = paramAttributeSet;
       AppMethodBeat.o(103117);
       return;
     }
@@ -72,7 +72,7 @@ public final class DynamicBackgroundGLSurfaceView
   {
     AppMethodBeat.i(103115);
     super.onResume();
-    this.fIH = false;
+    this.fMn = false;
     AppMethodBeat.o(103115);
   }
   
@@ -82,10 +82,10 @@ public final class DynamicBackgroundGLSurfaceView
     k.h(paramView, "changedView");
     super.onVisibilityChanged(paramView, paramInt);
     c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo onVisibilityChanged: %d", new Object[] { Integer.valueOf(paramInt) });
-    if ((paramInt != 0) && (this.fIH))
+    if ((paramInt != 0) && (this.fMn))
     {
       c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo needPause", new Object[0]);
-      this.fIH = false;
+      this.fMn = false;
     }
     AppMethodBeat.o(103114);
   }
@@ -94,11 +94,11 @@ public final class DynamicBackgroundGLSurfaceView
   {
     AppMethodBeat.i(103116);
     k.h(paramView, "gradientColorBackgroundView");
-    DynamicBackgroundGLSurfaceView.b localb = this.fIG;
+    DynamicBackgroundGLSurfaceView.b localb = this.fMm;
     if (localb != null)
     {
       k.h(paramView, "gradientColorBackgroundView");
-      localb.fIP = paramView;
+      localb.fMv = paramView;
       AppMethodBeat.o(103116);
       return;
     }
@@ -107,13 +107,13 @@ public final class DynamicBackgroundGLSurfaceView
   
   public final void setShowGradientView(boolean paramBoolean)
   {
-    this.fII = paramBoolean;
-    DynamicBackgroundGLSurfaceView.b localb = this.fIG;
+    this.fMo = paramBoolean;
+    DynamicBackgroundGLSurfaceView.b localb = this.fMm;
     if (localb != null)
     {
-      localb.fII = paramBoolean;
-      if (!localb.fII) {
-        localb.fIR = false;
+      localb.fMo = paramBoolean;
+      if (!localb.fMo) {
+        localb.fMx = false;
       }
     }
   }
@@ -131,10 +131,10 @@ public final class DynamicBackgroundGLSurfaceView
     AppMethodBeat.i(103111);
     super.surfaceDestroyed(paramSurfaceHolder);
     c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo surfaceDestroyed", new Object[0]);
-    paramSurfaceHolder = this.fIG;
+    paramSurfaceHolder = this.fMm;
     if (paramSurfaceHolder != null)
     {
-      paramSurfaceHolder.fIQ = false;
+      paramSurfaceHolder.fMw = false;
       AppMethodBeat.o(103111);
       return;
     }

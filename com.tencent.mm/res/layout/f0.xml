@@ -6,7 +6,7 @@
         <TextView android:textSize="@dimen/ia" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/gam" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1" android:layout_marginStart="@dimen/rt" />
     </LinearLayout>
     <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
-        <ImageView android:layout_gravity="center" android:id="@id/ahk" android:visibility="gone" android:layout_width="@dimen/rh" android:layout_height="@dimen/rh" android:src="@raw/app_brand_video_play_btn_play" />
+        <ImageView android:layout_gravity="center" android:id="@id/ahk" android:visibility="visible" android:layout_width="@dimen/rh" android:layout_height="@dimen/rh" android:src="@raw/app_brand_video_play_btn_play" />
     </FrameLayout>
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f40" android:background="@drawable/dc" android:layout_width="fill_parent" android:layout_height="@dimen/rm" android:layout_alignParentBottom="true" android:paddingEnd="@dimen/rn">
         <ImageView android:gravity="center_vertical" android:id="@id/ee4" android:layout_width="@dimen/ry" android:layout_height="@dimen/ry" android:src="@raw/app_brand_video_play_btn_play" android:scaleType="fitCenter" android:layout_marginStart="@dimen/rk" />

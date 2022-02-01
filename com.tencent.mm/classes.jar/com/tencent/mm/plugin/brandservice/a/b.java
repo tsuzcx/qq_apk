@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.brandservice.a;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.ai.q;
-import com.tencent.mm.ai.y;
+import com.tencent.mm.ah.p;
+import com.tencent.mm.ah.q;
+import com.tencent.mm.ah.y;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.kernel.c.a;
 import java.util.HashMap;
@@ -17,17 +17,17 @@ public abstract interface b
 {
   public abstract boolean D(Object paramObject1, Object paramObject2);
   
-  public abstract boolean OW(String paramString);
+  public abstract boolean Tg(String paramString);
   
-  public abstract p OX(String paramString);
+  public abstract p Th(String paramString);
   
-  public abstract void OY(String paramString);
+  public abstract void Ti(String paramString);
   
-  public abstract long OZ(String paramString);
+  public abstract long Tj(String paramString);
   
-  public abstract String Pa(String paramString);
+  public abstract String Tk(String paramString);
   
-  public abstract void Pb(String paramString);
+  public abstract void Tl(String paramString);
   
   public abstract void a(Context paramContext, JSONObject paramJSONObject, HashMap<String, Object> paramHashMap);
   
@@ -41,23 +41,23 @@ public abstract interface b
   
   public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, Intent paramIntent, int paramInt4, a parama);
   
-  public abstract boolean bBQ();
+  public abstract boolean bIO();
   
-  public abstract boolean bBR();
+  public abstract boolean bIP();
   
-  public abstract boolean bBS();
+  public abstract boolean bIQ();
   
-  public abstract String bBT();
+  public abstract String bIR();
   
-  public abstract void bBU();
+  public abstract void bIS();
   
-  public abstract String bBV();
+  public abstract String bIT();
   
   public abstract void cb(List<q> paramList);
   
-  public abstract void ck(String paramString, int paramInt);
+  public abstract void cp(String paramString, int paramInt);
   
-  public abstract void cl(String paramString, int paramInt);
+  public abstract void cq(String paramString, int paramInt);
   
   public abstract String d(String paramString, int paramInt1, int paramInt2, int paramInt3);
   
@@ -69,13 +69,13 @@ public abstract interface b
   
   public abstract void k(List<q> paramList, int paramInt);
   
-  public abstract boolean xA(int paramInt);
+  public abstract boolean yr(int paramInt);
   
-  public abstract void xB(int paramInt);
+  public abstract boolean ys(int paramInt);
   
-  public abstract boolean xC(int paramInt);
+  public abstract void yt(int paramInt);
   
-  public abstract boolean xz(int paramInt);
+  public abstract boolean yu(int paramInt);
   
   public static final class a
   {

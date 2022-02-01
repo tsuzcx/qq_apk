@@ -17,7 +17,7 @@ public final class f
       int m = paramStringBuffer1.length();
       if (paramString != null)
       {
-        paramStringBuffer2.append(paramStringBuffer1).append(bt(paramString)).append(" <\n");
+        paramStringBuffer2.append(paramStringBuffer1).append(bk(paramString)).append(" <\n");
         paramStringBuffer1.append("  ");
       }
       Class localClass = paramObject.getClass();
@@ -89,7 +89,7 @@ public final class f
     }
     return;
     label395:
-    paramString = bt(paramString);
+    paramString = bk(paramString);
     paramStringBuffer2.append(paramStringBuffer1).append(paramString).append(": ");
     if ((paramObject instanceof String))
     {
@@ -146,7 +146,7 @@ public final class f
     paramStringBuffer.append('"');
   }
   
-  private static String bt(String paramString)
+  private static String bk(String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
@@ -209,7 +209,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.b.a.f
  * JD-Core Version:    0.7.0.1
  */

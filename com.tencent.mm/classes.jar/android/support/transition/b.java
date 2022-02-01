@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 public final class b
   extends al
 {
-  private float xS = 3.0F;
+  private float yQ = 3.0F;
   
   private static float e(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
@@ -43,7 +43,7 @@ public final class b
       if (l2 < 0L) {
         l1 = 300L;
       }
-      return Math.round((float)(l1 * i) / this.xS * f);
+      return Math.round((float)(l1 * i) / this.yQ * f);
       i = 1;
       paramu1 = paramu2;
       break;
@@ -56,7 +56,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.b
  * JD-Core Version:    0.7.0.1
  */

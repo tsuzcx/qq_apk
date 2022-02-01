@@ -7,12 +7,12 @@ public abstract interface v
   public static final class a
     implements v
   {
-    public static final a JUR;
+    public static final a LIk;
     
     static
     {
       AppMethodBeat.i(60323);
-      JUR = new a();
+      LIk = new a();
       AppMethodBeat.o(60323);
     }
   }

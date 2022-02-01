@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.offline.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,15 +29,15 @@ public final class o
     localHashMap.put("is_snapshot", String.valueOf(paramInt3));
     localHashMap.put("user_view_digit", String.valueOf(paramInt4));
     StringBuilder localStringBuilder = new StringBuilder();
-    g.afC();
-    localHashMap.put("code_ver", g.afB().afk().get(ae.a.FfP, ""));
-    localHashMap.put("card_id", a.nqb);
-    localHashMap.put("user_card_id", a.unn);
-    localHashMap.put("card_code", a.uno);
+    g.agS();
+    localHashMap.put("code_ver", g.agR().agA().get(ah.a.GDD, ""));
+    localHashMap.put("card_id", a.nTb);
+    localHashMap.put("user_card_id", a.vwj);
+    localHashMap.put("card_code", a.vwk);
     localHashMap.put("ext_business_attach", paramString);
     setRequestData(localHashMap);
-    ad.i("MicroMsg.NetSceneTenpayWxOfflineShowCode", "hy: residue_num == %d, entryscene = %d,is_snapshot = %d, user_view_digit: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    ad.d("MicroMsg.NetSceneTenpayWxOfflineShowCode", "card_id=%s,  user_card_id=%s,  card_code:%s ", new Object[] { a.nqb, a.unn, a.uno });
+    ac.i("MicroMsg.NetSceneTenpayWxOfflineShowCode", "hy: residue_num == %d, entryscene = %d,is_snapshot = %d, user_view_digit: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    ac.d("MicroMsg.NetSceneTenpayWxOfflineShowCode", "card_id=%s,  user_card_id=%s,  card_code:%s ", new Object[] { a.nTb, a.vwj, a.vwk });
     AppMethodBeat.o(66312);
   }
   
@@ -64,7 +64,7 @@ public final class o
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66313);
-    ad.i("MicroMsg.NetSceneTenpayWxOfflineShowCode", "onGynetEnd %s %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ac.i("MicroMsg.NetSceneTenpayWxOfflineShowCode", "onGynetEnd %s %s", new Object[] { Integer.valueOf(paramInt), paramString });
     AppMethodBeat.o(66313);
   }
 }

@@ -7,7 +7,7 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.finder.cgi.ae;
+import com.tencent.mm.plugin.finder.cgi.aw;
 
 public final class JsApiDeclareOriginalFinished
   extends a<com.tencent.mm.plugin.appbrand.q>
@@ -22,34 +22,34 @@ public final class JsApiDeclareOriginalFinished
     
     static
     {
-      AppMethodBeat.i(205040);
+      AppMethodBeat.i(186673);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(205040);
+      AppMethodBeat.o(186673);
     }
     
     public RefreshFinderUserpageTask() {}
     
     public RefreshFinderUserpageTask(Parcel paramParcel)
     {
-      AppMethodBeat.i(205038);
+      AppMethodBeat.i(186671);
       e(paramParcel);
-      AppMethodBeat.o(205038);
+      AppMethodBeat.o(186671);
     }
     
-    public final void aEz()
+    public final void aLq()
     {
-      AppMethodBeat.i(205039);
-      ae localae = new ae(u.aqO(), 0L, null, 0, null);
-      localae.qpJ = true;
-      g.aeS().a(localae, 0);
-      aXw();
-      AppMethodBeat.o(205039);
+      AppMethodBeat.i(186672);
+      aw localaw = new aw(u.axE(), 0L, null, 0, null);
+      localaw.qYP = true;
+      g.agi().a(localaw, 0);
+      bet();
+      AppMethodBeat.o(186672);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.finder.JsApiDeclareOriginalFinished
  * JD-Core Version:    0.7.0.1
  */

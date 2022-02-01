@@ -83,7 +83,7 @@ public abstract class p
     {
       this.can_pay_retry2 = bool;
       this.retryPayInfo = new ITenpaySave.RetryPayInfo();
-      this.retryPayInfo.ba(paramJSONObject);
+      this.retryPayInfo.bb(paramJSONObject);
       return;
       bool = false;
     }

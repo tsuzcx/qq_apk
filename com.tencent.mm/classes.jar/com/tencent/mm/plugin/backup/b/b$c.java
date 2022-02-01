@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.backup.b;
 public abstract interface b$c
   extends b.d
 {
-  public abstract void bvR();
+  public abstract void bCN();
 }
 
 

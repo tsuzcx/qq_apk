@@ -9,29 +9,29 @@ import java.util.ArrayList;
 public abstract class b
   implements o
 {
-  public h XT;
-  protected Context acg;
-  protected LayoutInflater ach;
-  public o.a aci;
-  private int acj;
-  private int ack;
-  public p acl;
+  public h YO;
+  protected Context ada;
+  protected LayoutInflater adb;
+  public o.a adc;
+  private int add;
+  private int ade;
+  public p adf;
   protected Context mContext;
   public int mId;
   protected LayoutInflater mInflater;
   
   public b(Context paramContext)
   {
-    this.acg = paramContext;
-    this.ach = LayoutInflater.from(paramContext);
-    this.acj = 2131492894;
-    this.ack = 2131492893;
+    this.ada = paramContext;
+    this.adb = LayoutInflater.from(paramContext);
+    this.add = 2131492894;
+    this.ade = 2131492893;
   }
   
   public View a(j paramj, View paramView, ViewGroup paramViewGroup)
   {
     if ((paramView instanceof p.a)) {}
-    for (paramView = (p.a)paramView;; paramView = (p.a)this.ach.inflate(this.ack, paramViewGroup, false))
+    for (paramView = (p.a)paramView;; paramView = (p.a)this.adb.inflate(this.ade, paramViewGroup, false))
     {
       a(paramj, paramView);
       return (View)paramView;
@@ -42,13 +42,13 @@ public abstract class b
   {
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(this.mContext);
-    this.XT = paramh;
+    this.YO = paramh;
   }
   
   public void a(h paramh, boolean paramBoolean)
   {
-    if (this.aci != null) {
-      this.aci.a(paramh, paramBoolean);
+    if (this.adc != null) {
+      this.adc.a(paramh, paramBoolean);
     }
   }
   
@@ -56,13 +56,13 @@ public abstract class b
   
   public final void a(o.a parama)
   {
-    this.aci = parama;
+    this.adc = parama;
   }
   
   public boolean a(u paramu)
   {
-    if (this.aci != null) {
-      return this.aci.d(paramu);
+    if (this.adc != null) {
+      return this.adc.d(paramu);
     }
     return false;
   }
@@ -72,20 +72,20 @@ public abstract class b
     return false;
   }
   
-  public boolean bh()
+  public boolean bo()
   {
     return false;
   }
   
   public p c(ViewGroup paramViewGroup)
   {
-    if (this.acl == null)
+    if (this.adf == null)
     {
-      this.acl = ((p)this.ach.inflate(this.acj, paramViewGroup, false));
-      this.acl.a(this.XT);
+      this.adf = ((p)this.adb.inflate(this.add, paramViewGroup, false));
+      this.adf.a(this.YO);
       p(true);
     }
-    return this.acl;
+    return this.adf;
   }
   
   public final boolean c(j paramj)
@@ -111,7 +111,7 @@ public abstract class b
   
   public void p(boolean paramBoolean)
   {
-    ViewGroup localViewGroup = (ViewGroup)this.acl;
+    ViewGroup localViewGroup = (ViewGroup)this.adf;
     if (localViewGroup == null) {}
     label225:
     label231:
@@ -119,10 +119,10 @@ public abstract class b
     {
       return;
       int j;
-      if (this.XT != null)
+      if (this.YO != null)
       {
-        this.XT.hy();
-        ArrayList localArrayList = this.XT.hx();
+        this.YO.hG();
+        ArrayList localArrayList = this.YO.hF();
         int m = localArrayList.size();
         int k = 0;
         int i = 0;
@@ -149,7 +149,7 @@ public abstract class b
               if (localObject != null) {
                 ((ViewGroup)localObject).removeView(localView2);
               }
-              ((ViewGroup)this.acl).addView(localView2, i);
+              ((ViewGroup)this.adf).addView(localView2, i);
             }
             i += 1;
             k += 1;

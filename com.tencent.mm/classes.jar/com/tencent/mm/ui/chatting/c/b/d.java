@@ -1,65 +1,65 @@
 package com.tencent.mm.ui.chatting.c.b;
 
-import com.tencent.mm.am.a.k;
+import com.tencent.mm.al.a.k;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.g;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.c.ab;
 import com.tencent.mm.ui.chatting.c.c.a;
 import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.chatting.viewitems.bi;
+import com.tencent.mm.ui.chatting.viewitems.bj;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract interface d
   extends ab
 {
-  public abstract long QU();
+  public abstract String Bt(String paramString);
   
-  public abstract boolean a(a parama, bi parambi);
+  public abstract long Rw();
   
-  public abstract String aKF(String paramString);
+  public abstract boolean a(a parama, bj parambj);
   
-  public abstract void bh(LinkedList<String> paramLinkedList);
+  public abstract String aQi(String paramString);
   
-  public abstract com.tencent.mm.am.a.c eWA();
+  public abstract void bo(LinkedList<String> paramLinkedList);
   
-  public abstract k eWB();
+  public abstract boolean fmA();
   
-  public abstract boolean eWC();
+  public abstract long fmB();
   
-  public abstract boolean eWD();
+  public abstract void fmC();
   
-  public abstract boolean eWE();
+  public abstract com.tencent.mm.api.c fml();
   
-  public abstract c.a eWF();
+  public abstract com.tencent.mm.al.a.c fmm();
   
-  public abstract ChatFooter.g eWG();
+  public abstract k fmn();
   
-  public abstract List<bl> eWH();
+  public abstract boolean fmo();
   
-  public abstract boolean eWI();
+  public abstract boolean fmp();
   
-  public abstract void eWJ();
+  public abstract boolean fmq();
   
-  public abstract void eWK();
+  public abstract c.a fmr();
   
-  public abstract int eWL();
+  public abstract ChatFooter.g fms();
   
-  public abstract String eWM();
+  public abstract List<bo> fmt();
   
-  public abstract boolean eWN();
+  public abstract boolean fmu();
   
-  public abstract boolean eWO();
+  public abstract void fmv();
   
-  public abstract long eWP();
+  public abstract void fmw();
   
-  public abstract void eWQ();
+  public abstract int fmx();
   
-  public abstract com.tencent.mm.api.c eWz();
+  public abstract String fmy();
   
-  public abstract void fX(String paramString, int paramInt);
+  public abstract boolean fmz();
   
-  public abstract String xn(String paramString);
+  public abstract void gb(String paramString, int paramInt);
 }
 
 

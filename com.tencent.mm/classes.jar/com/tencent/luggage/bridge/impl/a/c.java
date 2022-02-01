@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.appbrand.g.a.c;
 public class c
   extends a
 {
-  public final String AL()
+  public final String Ap()
   {
     return "NetworkImageReader";
   }
@@ -41,7 +41,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.a.c
  * JD-Core Version:    0.7.0.1
  */

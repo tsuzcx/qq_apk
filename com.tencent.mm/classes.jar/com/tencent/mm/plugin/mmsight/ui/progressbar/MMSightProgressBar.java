@@ -15,9 +15,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.wcdb.support.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,26 +26,26 @@ import java.util.List;
 public class MMSightProgressBar
   extends View
 {
-  public static final int pgN;
-  public static final int tLN;
-  private static final int[] tLO;
+  public static final int pJX;
+  public static final int uUr;
+  private static final int[] uUs;
   private int centerX;
   private int centerY;
-  private ap handler;
+  private ao handler;
   private boolean isStart;
   private Paint paint;
-  private List<a> tLP;
-  private int tLQ;
-  private b tLR;
-  private boolean tLS;
-  private a tLT;
+  private List<a> uUt;
+  private int uUu;
+  private b uUv;
+  private boolean uUw;
+  private a uUx;
   
   static
   {
     AppMethodBeat.i(94793);
-    pgN = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 3);
-    tLN = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 5);
-    tLO = new int[] { -1, -1, Color.parseColor("#F5B3B2"), Color.parseColor("#EB6866"), Color.parseColor("#E64340") };
+    pJX = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 3);
+    uUr = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 5);
+    uUs = new int[] { -1, -1, Color.parseColor("#F5B3B2"), Color.parseColor("#EB6866"), Color.parseColor("#E64340") };
     AppMethodBeat.o(94793);
   }
   
@@ -53,13 +53,13 @@ public class MMSightProgressBar
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94789);
-    this.tLP = new ArrayList(5);
-    this.tLQ = 0;
+    this.uUt = new ArrayList(5);
+    this.uUu = 0;
     this.centerX = 0;
     this.centerY = 0;
     this.handler = null;
     this.isStart = false;
-    this.tLS = false;
+    this.uUw = false;
     init();
     AppMethodBeat.o(94789);
   }
@@ -68,13 +68,13 @@ public class MMSightProgressBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(94790);
-    this.tLP = new ArrayList(5);
-    this.tLQ = 0;
+    this.uUt = new ArrayList(5);
+    this.uUu = 0;
     this.centerX = 0;
     this.centerY = 0;
     this.handler = null;
     this.isStart = false;
-    this.tLS = false;
+    this.uUw = false;
     init();
     AppMethodBeat.o(94790);
   }
@@ -85,7 +85,7 @@ public class MMSightProgressBar
     this.paint = new Paint();
     this.paint.setColor(-65536);
     this.paint.setAntiAlias(true);
-    this.handler = new ap(Looper.getMainLooper())
+    this.handler = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -93,7 +93,7 @@ public class MMSightProgressBar
         if ((paramAnonymousMessage.what == 233) && (MMSightProgressBar.a(MMSightProgressBar.this)) && (MMSightProgressBar.b(MMSightProgressBar.this).size() > 0) && (MMSightProgressBar.b(MMSightProgressBar.this).size() < 5))
         {
           paramAnonymousMessage = (a)MMSightProgressBar.b(MMSightProgressBar.this).get(MMSightProgressBar.b(MMSightProgressBar.this).size() - 1);
-          int i = MMSightProgressBar.cjd()[MMSightProgressBar.b(MMSightProgressBar.this).size()];
+          int i = MMSightProgressBar.cqK()[MMSightProgressBar.b(MMSightProgressBar.this).size()];
           a locala = new a(MMSightProgressBar.b(MMSightProgressBar.this).size(), MMSightProgressBar.c(MMSightProgressBar.this), MMSightProgressBar.d(MMSightProgressBar.this), i);
           MMSightProgressBar.a(MMSightProgressBar.this, new b(paramAnonymousMessage, locala, new b.a()
           {
@@ -120,7 +120,7 @@ public class MMSightProgressBar
               }
             }
             
-            public final void cRf()
+            public final void deP()
             {
               AppMethodBeat.i(94787);
               MMSightProgressBar.this.invalidate();
@@ -128,17 +128,17 @@ public class MMSightProgressBar
             }
           }));
           paramAnonymousMessage = MMSightProgressBar.g(MMSightProgressBar.this);
-          paramAnonymousMessage.qT = ValueAnimator.ofFloat(new float[] { 0.0F, 100.0F });
-          paramAnonymousMessage.qT.addUpdateListener(new b.1(paramAnonymousMessage));
-          paramAnonymousMessage.qT.addListener(new b.2(paramAnonymousMessage));
-          paramAnonymousMessage.qT.setInterpolator(new AccelerateDecelerateInterpolator());
-          paramAnonymousMessage.qT.setDuration(2000L);
-          paramAnonymousMessage.qT.start();
+          paramAnonymousMessage.rT = ValueAnimator.ofFloat(new float[] { 0.0F, 100.0F });
+          paramAnonymousMessage.rT.addUpdateListener(new b.1(paramAnonymousMessage));
+          paramAnonymousMessage.rT.addListener(new b.2(paramAnonymousMessage));
+          paramAnonymousMessage.rT.setInterpolator(new AccelerateDecelerateInterpolator());
+          paramAnonymousMessage.rT.setDuration(2000L);
+          paramAnonymousMessage.rT.start();
         }
         AppMethodBeat.o(94788);
       }
     };
-    Log.i("MicroMsg.MMSightProgressBar", "init, pointRadius: %s, pointDistance: %s", new Object[] { Integer.valueOf(pgN), Integer.valueOf(tLN) });
+    Log.i("MicroMsg.MMSightProgressBar", "init, pointRadius: %s, pointDistance: %s", new Object[] { Integer.valueOf(pJX), Integer.valueOf(uUr) });
     AppMethodBeat.o(94791);
   }
   
@@ -160,102 +160,102 @@ public class MMSightProgressBar
       Log.i("MicroMsg.MMSightProgressBar", "left: %s, right: %s, top: %s, bottom: %s, centerX: %s, centerY: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(this.centerX), Integer.valueOf(this.centerY) });
       Log.i("MicroMsg.MMSightProgressBar", "add init point");
       localObject1 = new a(0, this.centerX, this.centerY, -1);
-      this.tLP.add(localObject1);
+      this.uUt.add(localObject1);
     }
     int i = paramCanvas.save();
-    this.tLQ = this.tLP.size();
+    this.uUu = this.uUt.size();
     float f1;
     float f3;
-    if (this.tLQ % 2 == 0)
+    if (this.uUu % 2 == 0)
     {
-      f1 = -(tLN / 2.0F + (this.tLQ / 2 - 1) * tLN + this.tLQ / 2 * pgN);
+      f1 = -(uUr / 2.0F + (this.uUu / 2 - 1) * uUr + this.uUu / 2 * pJX);
       f2 = f1;
-      if (this.tLR != null)
+      if (this.uUv != null)
       {
         f2 = f1;
-        if (this.tLR.tMc)
+        if (this.uUv.uUG)
         {
-          j = this.tLQ + 1;
+          j = this.uUu + 1;
           if (j % 2 != 0) {
             break label1181;
           }
-          f2 = tLN / 2.0F;
-          f3 = (j / 2 - 1) * tLN;
+          f2 = uUr / 2.0F;
+          f3 = (j / 2 - 1) * uUr;
         }
       }
     }
-    for (float f2 = -(j / 2 * pgN + (f2 + f3));; f2 = -(j / 2 * pgN + (f2 + f3)))
+    for (float f2 = -(j / 2 * pJX + (f2 + f3));; f2 = -(j / 2 * pJX + (f2 + f3)))
     {
-      Log.d("MicroMsg.MMSightProgressBar", "add translateX for splitting, dstTranslateX: %s, progress: %s", new Object[] { Float.valueOf(f2), Float.valueOf(this.tLR.progress) });
-      f3 = this.tLR.progress / 100.0F;
+      Log.d("MicroMsg.MMSightProgressBar", "add translateX for splitting, dstTranslateX: %s, progress: %s", new Object[] { Float.valueOf(f2), Float.valueOf(this.uUv.progress) });
+      f3 = this.uUv.progress / 100.0F;
       f2 = f1 - (Math.abs(f2) - Math.abs(f1)) * f3;
-      Log.d("MicroMsg.MMSightProgressBar", "draw, translateX: %s, currentPointCount: %s", new Object[] { Float.valueOf(f2), Integer.valueOf(this.tLQ) });
+      Log.d("MicroMsg.MMSightProgressBar", "draw, translateX: %s, currentPointCount: %s", new Object[] { Float.valueOf(f2), Integer.valueOf(this.uUu) });
       paramCanvas.translate(f2, 0.0F);
       Object localObject2;
       Object localObject3;
-      if ((this.tLR != null) && (this.tLR.tMc))
+      if ((this.uUv != null) && (this.uUv.uUG))
       {
-        localObject2 = this.tLR;
+        localObject2 = this.uUv;
         localObject1 = this.paint;
-        f1 = (tLN + pgN * 2) * (((b)localObject2).progress / 100.0F);
-        ad.d("MicroMsg.MMSightProgressPointSplitter", "drawForSplitProgress, progress: %s, rightPointXOffset: %s", new Object[] { Float.valueOf(((b)localObject2).progress), Float.valueOf(f1) });
-        if (((b)localObject2).tMk > ((b)localObject2).tMm)
+        f1 = (uUr + pJX * 2) * (((b)localObject2).progress / 100.0F);
+        ac.d("MicroMsg.MMSightProgressPointSplitter", "drawForSplitProgress, progress: %s, rightPointXOffset: %s", new Object[] { Float.valueOf(((b)localObject2).progress), Float.valueOf(f1) });
+        if (((b)localObject2).uUO > ((b)localObject2).uUQ)
         {
-          f2 = ((b)localObject2).tMa.tLW - pgN;
-          f3 = ((b)localObject2).tMa.tLX - pgN;
-          ((Paint)localObject1).setColor(((b)localObject2).tMb.color);
-          ((b)localObject2).tMo.reset();
-          ((b)localObject2).tMo.moveTo(((b)localObject2).tMe.x + f2, ((b)localObject2).tMe.y + f3);
-          ((b)localObject2).tMo.quadTo(((b)localObject2).tMf.x + f2, ((b)localObject2).tMf.y + f3, ((b)localObject2).tMg.x + f2, ((b)localObject2).tMg.y + f3);
-          ((b)localObject2).tMo.lineTo(((b)localObject2).tMj.x + f2, ((b)localObject2).tMj.y + f3);
-          ((b)localObject2).tMo.quadTo(((b)localObject2).tMi.x + f2, ((b)localObject2).tMi.y + f3, ((b)localObject2).tMh.x + f2, f3 + ((b)localObject2).tMh.y);
-          if (((b)localObject2).tMb.color != ((b)localObject2).tMa.color)
+          f2 = ((b)localObject2).uUE.uUA - pJX;
+          f3 = ((b)localObject2).uUE.uUB - pJX;
+          ((Paint)localObject1).setColor(((b)localObject2).uUF.color);
+          ((b)localObject2).uUS.reset();
+          ((b)localObject2).uUS.moveTo(((b)localObject2).uUI.x + f2, ((b)localObject2).uUI.y + f3);
+          ((b)localObject2).uUS.quadTo(((b)localObject2).uUJ.x + f2, ((b)localObject2).uUJ.y + f3, ((b)localObject2).uUK.x + f2, ((b)localObject2).uUK.y + f3);
+          ((b)localObject2).uUS.lineTo(((b)localObject2).uUN.x + f2, ((b)localObject2).uUN.y + f3);
+          ((b)localObject2).uUS.quadTo(((b)localObject2).uUM.x + f2, ((b)localObject2).uUM.y + f3, ((b)localObject2).uUL.x + f2, f3 + ((b)localObject2).uUL.y);
+          if (((b)localObject2).uUF.color != ((b)localObject2).uUE.color)
           {
-            f3 = ((b)localObject2).tMe.x;
-            float f4 = ((b)localObject2).tMa.tLX;
-            float f5 = pgN;
-            float f6 = ((b)localObject2).tMg.x;
-            float f7 = ((b)localObject2).tMa.tLX;
-            float f8 = pgN;
-            j = ((b)localObject2).tMa.color;
-            k = ((b)localObject2).tMb.color;
+            f3 = ((b)localObject2).uUI.x;
+            float f4 = ((b)localObject2).uUE.uUB;
+            float f5 = pJX;
+            float f6 = ((b)localObject2).uUK.x;
+            float f7 = ((b)localObject2).uUE.uUB;
+            float f8 = pJX;
+            j = ((b)localObject2).uUE.color;
+            k = ((b)localObject2).uUF.color;
             localObject3 = Shader.TileMode.REPEAT;
             ((Paint)localObject1).setShader(new LinearGradient(f3 + f2, f4 - f5, f2 + f6, f7 - f8, new int[] { j, k }, null, (Shader.TileMode)localObject3));
           }
-          paramCanvas.drawPath(((b)localObject2).tMo, (Paint)localObject1);
+          paramCanvas.drawPath(((b)localObject2).uUS, (Paint)localObject1);
           ((Paint)localObject1).setShader(null);
         }
-        localObject2 = ((b)localObject2).tMb;
+        localObject2 = ((b)localObject2).uUF;
         ((Paint)localObject1).setColor(((a)localObject2).color);
-        ((a)localObject2).tLX = ((a)localObject2).tLZ;
-        ((a)localObject2).tLW = (((a)localObject2).tLY + (((a)localObject2).index - 1) * (tLN + pgN * 2) + f1);
-        Log.d("MicroMsg.MMSightProgressPoint", "drawWithOffset, index: %s, offset: %s, pointX: %s", new Object[] { Integer.valueOf(((a)localObject2).index), Float.valueOf(f1), Float.valueOf(((a)localObject2).tLW) });
-        paramCanvas.drawCircle(((a)localObject2).tLW, ((a)localObject2).tLX, pgN, (Paint)localObject1);
+        ((a)localObject2).uUB = ((a)localObject2).uUD;
+        ((a)localObject2).uUA = (((a)localObject2).uUC + (((a)localObject2).index - 1) * (uUr + pJX * 2) + f1);
+        Log.d("MicroMsg.MMSightProgressPoint", "drawWithOffset, index: %s, offset: %s, pointX: %s", new Object[] { Integer.valueOf(((a)localObject2).index), Float.valueOf(f1), Float.valueOf(((a)localObject2).uUA) });
+        paramCanvas.drawCircle(((a)localObject2).uUA, ((a)localObject2).uUB, pJX, (Paint)localObject1);
         ((Paint)localObject1).setShader(null);
       }
-      localObject1 = this.tLP.iterator();
+      localObject1 = this.uUt.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (a)((Iterator)localObject1).next();
         localObject3 = this.paint;
         ((Paint)localObject3).setColor(((a)localObject2).color);
-        ((a)localObject2).tLW = (((a)localObject2).tLY + ((a)localObject2).index * (tLN + pgN * 2));
-        ((a)localObject2).tLX = ((a)localObject2).tLZ;
-        Log.d("MicroMsg.MMSightProgressPoint", "draw, index: %s, pointX: %s", new Object[] { Integer.valueOf(((a)localObject2).index), Float.valueOf(((a)localObject2).tLW) });
-        paramCanvas.drawCircle(((a)localObject2).tLW, ((a)localObject2).tLX, pgN, (Paint)localObject3);
+        ((a)localObject2).uUA = (((a)localObject2).uUC + ((a)localObject2).index * (uUr + pJX * 2));
+        ((a)localObject2).uUB = ((a)localObject2).uUD;
+        Log.d("MicroMsg.MMSightProgressPoint", "draw, index: %s, pointX: %s", new Object[] { Integer.valueOf(((a)localObject2).index), Float.valueOf(((a)localObject2).uUA) });
+        paramCanvas.drawCircle(((a)localObject2).uUA, ((a)localObject2).uUB, pJX, (Paint)localObject3);
         ((Paint)localObject3).setShader(null);
       }
-      f1 = -(pgN / 2.0F + this.tLQ / 2 * tLN + this.tLQ / 2 * pgN);
+      f1 = -(pJX / 2.0F + this.uUu / 2 * uUr + this.uUu / 2 * pJX);
       break;
       label1181:
-      f2 = pgN / 2.0F;
-      f3 = j / 2 * tLN;
+      f2 = pJX / 2.0F;
+      f3 = j / 2 * uUr;
     }
     paramCanvas.restoreToCount(i);
-    if ((this.isStart) && (!this.tLS) && (this.tLP.size() > 0))
+    if ((this.isStart) && (!this.uUw) && (this.uUt.size() > 0))
     {
       Log.i("MicroMsg.MMSightProgressBar", "start handler loop");
-      this.tLS = true;
+      this.uUw = true;
       this.handler.sendEmptyMessage(233);
     }
     AppMethodBeat.o(94792);
@@ -263,7 +263,7 @@ public class MMSightProgressBar
   
   public void setProgressCallback(a parama)
   {
-    this.tLT = parama;
+    this.uUx = parama;
   }
   
   public static abstract interface a {}

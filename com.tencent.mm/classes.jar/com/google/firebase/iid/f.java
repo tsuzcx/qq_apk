@@ -19,11 +19,11 @@ import javax.annotation.concurrent.GuardedBy;
 
 public final class f
 {
-  private final Context bDj;
+  private final Context bAR;
   @GuardedBy("this")
-  private int bDk;
+  private int bAS;
   @GuardedBy("this")
-  private int bDl = 0;
+  private int bAT = 0;
   @GuardedBy("this")
   private String zzbu;
   @GuardedBy("this")
@@ -31,7 +31,7 @@ public final class f
   
   public f(Context paramContext)
   {
-    this.bDj = paramContext;
+    this.bAR = paramContext;
   }
   
   public static String a(KeyPair paramKeyPair)
@@ -53,16 +53,34 @@ public final class f
     return null;
   }
   
+  private final PackageInfo aV(String paramString)
+  {
+    AppMethodBeat.i(4159);
+    try
+    {
+      paramString = this.bAR.getPackageManager().getPackageInfo(paramString, 0);
+      AppMethodBeat.o(4159);
+      return paramString;
+    }
+    catch (PackageManager.NameNotFoundException paramString)
+    {
+      paramString = String.valueOf(paramString);
+      new StringBuilder(String.valueOf(paramString).length() + 23).append("Failed to find package ").append(paramString);
+      AppMethodBeat.o(4159);
+    }
+    return null;
+  }
+  
   public static String b(a parama)
   {
     AppMethodBeat.i(4153);
-    String str = parama.wz().bCn;
+    String str = parama.wm().bzV;
     if (str != null)
     {
       AppMethodBeat.o(4153);
       return str;
     }
-    parama = parama.wz().zzs;
+    parama = parama.wm().zzs;
     if (!parama.startsWith("1:"))
     {
       AppMethodBeat.o(4153);
@@ -84,30 +102,12 @@ public final class f
     return parama;
   }
   
-  private final PackageInfo be(String paramString)
-  {
-    AppMethodBeat.i(4159);
-    try
-    {
-      paramString = this.bDj.getPackageManager().getPackageInfo(paramString, 0);
-      AppMethodBeat.o(4159);
-      return paramString;
-    }
-    catch (PackageManager.NameNotFoundException paramString)
-    {
-      paramString = String.valueOf(paramString);
-      new StringBuilder(String.valueOf(paramString).length() + 23).append("Failed to find package ").append(paramString);
-      AppMethodBeat.o(4159);
-    }
-    return null;
-  }
-  
   private final void zzab()
   {
     try
     {
       AppMethodBeat.i(4158);
-      PackageInfo localPackageInfo = be(this.bDj.getPackageName());
+      PackageInfo localPackageInfo = aV(this.bAR.getPackageName());
       if (localPackageInfo != null)
       {
         this.zzbu = Integer.toString(localPackageInfo.versionCode);
@@ -119,7 +119,7 @@ public final class f
     finally {}
   }
   
-  public final String wV()
+  public final String wI()
   {
     try
     {
@@ -134,7 +134,7 @@ public final class f
     finally {}
   }
   
-  public final String wW()
+  public final String wJ()
   {
     try
     {
@@ -149,19 +149,19 @@ public final class f
     finally {}
   }
   
-  public final int wX()
+  public final int wK()
   {
     try
     {
       AppMethodBeat.i(4157);
-      if (this.bDk == 0)
+      if (this.bAS == 0)
       {
-        PackageInfo localPackageInfo = be("com.google.android.gms");
+        PackageInfo localPackageInfo = aV("com.google.android.gms");
         if (localPackageInfo != null) {
-          this.bDk = localPackageInfo.versionCode;
+          this.bAS = localPackageInfo.versionCode;
         }
       }
-      int i = this.bDk;
+      int i = this.bAS;
       AppMethodBeat.o(4157);
       return i;
     }
@@ -176,13 +176,13 @@ public final class f
       try
       {
         AppMethodBeat.i(4152);
-        if (this.bDl != 0)
+        if (this.bAT != 0)
         {
-          i = this.bDl;
+          i = this.bAT;
           AppMethodBeat.o(4152);
           return i;
         }
-        PackageManager localPackageManager = this.bDj.getPackageManager();
+        PackageManager localPackageManager = this.bAR.getPackageManager();
         if (localPackageManager.checkPermission("com.google.android.c2dm.permission.SEND", "com.google.android.gms") == -1)
         {
           AppMethodBeat.o(4152);
@@ -198,8 +198,8 @@ public final class f
       localObject2 = localObject1.queryIntentServices((Intent)localObject2, 0);
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
-        this.bDl = 1;
-        i = this.bDl;
+        this.bAT = 1;
+        i = this.bAT;
         AppMethodBeat.o(4152);
       }
       else
@@ -211,15 +211,15 @@ public final class f
         if ((localList == null) || (localList.size() <= 0)) {
           break;
         }
-        this.bDl = 2;
-        i = this.bDl;
+        this.bAT = 2;
+        i = this.bAT;
         AppMethodBeat.o(4152);
       }
     }
     if (PlatformVersion.isAtLeastO()) {}
-    for (this.bDl = 2;; this.bDl = 1)
+    for (this.bAT = 2;; this.bAT = 1)
     {
-      i = this.bDl;
+      i = this.bAT;
       AppMethodBeat.o(4152);
       break;
     }

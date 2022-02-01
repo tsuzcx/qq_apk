@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.websearch.api.b;
 
 public final class h$b
 {
-  public b APC;
+  public b ChS;
   
   private h$b(h paramh) {}
 }

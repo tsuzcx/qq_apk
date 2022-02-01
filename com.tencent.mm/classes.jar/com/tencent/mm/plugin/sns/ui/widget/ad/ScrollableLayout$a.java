@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract interface ScrollableLayout$a
 {
-  public abstract boolean eu(View paramView);
+  public abstract boolean eH(View paramView);
 }
 
 

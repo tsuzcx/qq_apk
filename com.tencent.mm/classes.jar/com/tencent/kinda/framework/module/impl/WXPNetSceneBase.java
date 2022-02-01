@@ -5,12 +5,12 @@ import android.os.Looper;
 import com.tencent.kinda.gen.KCgi;
 import com.tencent.kinda.gen.KNetworkMockManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class WXPNetSceneBase
   extends n
@@ -45,14 +45,14 @@ public class WXPNetSceneBase
     this.mockManager = paramKNetworkMockManager;
     this.wxpCommReqResp = new WXPCommReqResp(paramArrayOfByte, paramString, paramInt2, paramInt1, this.respCmdId, true, paramInt5, paramInt4, paramKCgi.getRouteInfo(), this.mockManager);
     setIsKinda(true);
-    ad.i("MicroMsg.KindaLibWXPNetSceneBase", "init scene: cgiId:%d, cgiUri:%s ", new Object[] { Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.KindaLibWXPNetSceneBase", "init scene: cgiId:%d, cgiUri:%s ", new Object[] { Integer.valueOf(paramInt2), paramString });
     AppMethodBeat.o(18701);
   }
   
   public void cancel()
   {
     AppMethodBeat.i(18705);
-    ad.e("MicroMsg.KindaLibWXPNetSceneBase", "cancel: thread when doScene: %s, thread id: %d, cgiUri: %s", new Object[] { Thread.currentThread(), Long.valueOf(Thread.currentThread().getId()), this.cgiUri });
+    ac.e("MicroMsg.KindaLibWXPNetSceneBase", "cancel: thread when doScene: %s, thread id: %d, cgiUri: %s", new Object[] { Thread.currentThread(), Long.valueOf(Thread.currentThread().getId()), this.cgiUri });
     super.cancel();
     if (this.cgi == null)
     {
@@ -88,7 +88,7 @@ public class WXPNetSceneBase
   public void onGYNetEnd(int paramInt1, final int paramInt2, final int paramInt3, String paramString, final q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(18704);
-    ad.i("MicroMsg.KindaLibWXPNetSceneBase", "onGYNetEnd: %s, , uri: %s errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(this.cgiId), this.cgiUri, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.i("MicroMsg.KindaLibWXPNetSceneBase", "onGYNetEnd: %s, , uri: %s errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(this.cgiId), this.cgiUri, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     paramq = (WXPCommReqResp.Resp)paramq.getRespObj();
     if (this.cgi == null)
     {
@@ -122,7 +122,7 @@ public class WXPNetSceneBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.WXPNetSceneBase
  * JD-Core Version:    0.7.0.1
  */

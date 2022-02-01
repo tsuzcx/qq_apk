@@ -5,18 +5,18 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Matrix;)V", "currFrameTime", "", "getCurrFrameTime", "()J", "setCurrFrameTime", "(J)V", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "consumeTime", "lastFrameTime", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "seekTo", "timeMs", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Matrix;)V", "currFrameTime", "", "getCurrFrameTime", "()J", "setCurrFrameTime", "(J)V", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "consumeTime", "lastFrameTime", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "seekTo", "timeMs", "plugin-mediaeditor_release"})
 public abstract class b
 {
-  public Matrix dY;
-  long goC;
+  public Matrix eY;
+  long gPk;
   
   public b(Matrix paramMatrix)
   {
-    this.dY = paramMatrix;
+    this.eY = paramMatrix;
   }
   
-  public abstract long ajy();
+  public abstract long aqx();
   
   public abstract void destroy();
   
@@ -24,20 +24,20 @@ public abstract class b
   
   public abstract void init();
   
-  public long lz(long paramLong)
+  public long pn(long paramLong)
   {
-    while (this.goC <= paramLong) {
-      this.goC += ajy();
+    while (this.gPk <= paramLong) {
+      this.gPk += aqx();
     }
-    this.goC -= paramLong;
-    return this.goC;
+    this.gPk -= paramLong;
+    return this.gPk;
   }
   
   public void seekTo(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.editor.a.b
  * JD-Core Version:    0.7.0.1
  */

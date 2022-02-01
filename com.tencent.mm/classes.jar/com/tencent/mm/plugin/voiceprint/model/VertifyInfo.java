@@ -4,22 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class VertifyInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<VertifyInfo> CREATOR;
-  public String iri = "";
+  public String AvR = "";
+  public int AvY = 0;
+  public int Awf;
+  public int Awg;
+  public int Awh = 0;
+  public boolean Awi = false;
+  public String iRo = "";
   public String mFileName = "";
   public String mText = "";
-  public boolean pXx = false;
-  public int zdA;
-  public int zdB = 0;
-  public boolean zdC = false;
-  public String zdl = "";
-  public int zds = 0;
-  public int zdz;
+  public boolean qGc = false;
   
   static
   {
@@ -37,18 +37,18 @@ public class VertifyInfo
   {
     int i = 1;
     AppMethodBeat.i(29790);
-    paramParcel.writeInt(this.zdz);
-    paramParcel.writeInt(this.zdA);
-    paramParcel.writeInt(this.zdB);
-    paramParcel.writeInt(this.zds);
-    paramParcel.writeString(bt.by(this.mText, ""));
-    paramParcel.writeString(bt.by(this.zdl, ""));
-    paramParcel.writeString(bt.by(this.mFileName, ""));
-    if (this.zdC)
+    paramParcel.writeInt(this.Awf);
+    paramParcel.writeInt(this.Awg);
+    paramParcel.writeInt(this.Awh);
+    paramParcel.writeInt(this.AvY);
+    paramParcel.writeString(bs.bG(this.mText, ""));
+    paramParcel.writeString(bs.bG(this.AvR, ""));
+    paramParcel.writeString(bs.bG(this.mFileName, ""));
+    if (this.Awi)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.pXx) {
+      if (!this.qGc) {
         break label119;
       }
     }

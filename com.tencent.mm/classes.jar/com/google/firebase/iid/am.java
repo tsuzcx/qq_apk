@@ -5,7 +5,7 @@ import android.os.RemoteException;
 final class am
   implements Runnable
 {
-  private final aj bEB;
+  private final aj bCj;
   
   am(aj arg1) {}
   

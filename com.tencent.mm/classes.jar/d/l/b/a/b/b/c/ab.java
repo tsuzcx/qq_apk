@@ -19,29 +19,29 @@ public final class ab
   extends z
   implements ai
 {
-  private d.l.b.a.b.m.ab Jvd;
-  private final ai Jve;
+  private d.l.b.a.b.m.ab Liw;
+  private final ai Lix;
   
   public ab(ah paramah, g paramg, w paramw, ba paramba, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, b.a parama, ai paramai, an paraman)
   {
-    super(paramw, paramba, paramah, paramg, f.aQE("<get-" + paramah.fyB() + ">"), paramBoolean1, paramBoolean2, paramBoolean3, parama, paraman);
+    super(paramw, paramba, paramah, paramg, f.aWD("<get-" + paramah.fRf() + ">"), paramBoolean1, paramBoolean2, paramBoolean3, parama, paraman);
     AppMethodBeat.i(57244);
     if (paramai != null) {}
     for (;;)
     {
-      this.Jve = paramai;
+      this.Lix = paramai;
       AppMethodBeat.o(57244);
       return;
       paramai = this;
     }
   }
   
-  private ai fAl()
+  private ai fSP()
   {
     AppMethodBeat.i(57249);
-    ai localai = this.Jve;
+    ai localai = this.Lix;
     if (localai == null) {
-      adP(8);
+      agL(8);
     }
     AppMethodBeat.o(57249);
     return localai;
@@ -52,9 +52,9 @@ public final class ab
     AppMethodBeat.i(57245);
     d.l.b.a.b.m.ab localab = paramab;
     if (paramab == null) {
-      localab = fzf().fzr();
+      localab = fRJ().fRV();
     }
-    this.Jvd = localab;
+    this.Liw = localab;
     AppMethodBeat.o(57245);
   }
   
@@ -66,33 +66,33 @@ public final class ab
     return paramn;
   }
   
-  public final d.l.b.a.b.m.ab fyo()
+  public final d.l.b.a.b.m.ab fQS()
   {
-    return this.Jvd;
+    return this.Liw;
   }
   
-  public final List<av> fyq()
+  public final List<av> fQU()
   {
     AppMethodBeat.i(57247);
     List localList = Collections.emptyList();
     if (localList == null) {
-      adP(7);
+      agL(7);
     }
     AppMethodBeat.o(57247);
     return localList;
   }
   
-  public final Collection<? extends ai> fys()
+  public final Collection<? extends ai> fQW()
   {
     AppMethodBeat.i(57246);
-    Collection localCollection = super.xU(true);
+    Collection localCollection = super.zm(true);
     AppMethodBeat.o(57246);
     return localCollection;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.ab
  * JD-Core Version:    0.7.0.1
  */

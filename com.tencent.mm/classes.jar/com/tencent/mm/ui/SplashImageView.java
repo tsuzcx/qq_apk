@@ -11,14 +11,14 @@ import com.tencent.mm.ui.chatting.ap;
 public class SplashImageView
   extends ImageView
 {
-  private ap FSu;
+  private ap Hsj;
   private boolean hasDrawed;
   
   public SplashImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(33760);
-    cUb();
+    dhI();
     AppMethodBeat.o(33760);
   }
   
@@ -26,7 +26,7 @@ public class SplashImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33761);
-    cUb();
+    dhI();
     AppMethodBeat.o(33761);
   }
   
@@ -34,11 +34,11 @@ public class SplashImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33762);
-    cUb();
+    dhI();
     AppMethodBeat.o(33762);
   }
   
-  private void cUb()
+  private void dhI()
   {
     AppMethodBeat.i(33763);
     setBackgroundDrawable(getResources().getDrawable(2131234439));
@@ -53,8 +53,8 @@ public class SplashImageView
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.FSu != null) {
-        this.FSu.cAy();
+      if (this.Hsj != null) {
+        this.Hsj.cNI();
       }
     }
     AppMethodBeat.o(33764);
@@ -62,7 +62,7 @@ public class SplashImageView
   
   public void setOnDrawListener(ap paramap)
   {
-    this.FSu = paramap;
+    this.Hsj = paramap;
   }
 }
 

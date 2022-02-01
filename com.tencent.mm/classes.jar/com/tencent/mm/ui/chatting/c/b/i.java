@@ -4,66 +4,66 @@ import android.view.View.OnClickListener;
 import com.tencent.mm.modelvideo.t.a;
 import com.tencent.mm.pluginsdk.model.app.k.a;
 import com.tencent.mm.pluginsdk.ui.chat.l;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.chatting.c.ab;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.g.d.a;
 import com.tencent.mm.ui.chatting.s.f;
 import com.tencent.mm.ui.chatting.s.g;
 import java.util.Set;
 
 public abstract interface i
-  extends k.a, ab
+  extends k.a, com.tencent.mm.ui.chatting.c.ab
 {
+  public abstract boolean Bd(long paramLong);
+  
   public abstract void I(long paramLong, boolean paramBoolean);
-  
-  public abstract bl YE(int paramInt);
-  
-  public abstract void YF(int paramInt);
-  
-  public abstract void YG(int paramInt);
   
   public abstract void a(int paramInt, d.a parama);
   
-  public abstract void a(long paramLong, bl parambl, boolean paramBoolean);
+  public abstract void a(long paramLong, bo parambo, boolean paramBoolean);
   
   public abstract void a(long paramLong, d.a parama);
   
-  public abstract void ciV();
+  public abstract bo aaP(int paramInt);
   
-  public abstract int deG();
+  public abstract void aaQ(int paramInt);
   
-  public abstract int eKa();
+  public abstract void aaR(int paramInt);
   
-  public abstract Set<Long> eWg();
+  public abstract void cqC();
   
-  public abstract void eWh();
+  public abstract int dsn();
   
-  public abstract void eWi();
+  public abstract int eZx();
   
-  public abstract void eWj();
+  public abstract Set<Long> flS();
   
-  public abstract void eWk();
+  public abstract void flT();
   
-  public abstract void eWl();
+  public abstract void flU();
   
-  public abstract void eWm();
+  public abstract void flV();
   
-  public abstract t.a eWn();
+  public abstract void flW();
   
-  public abstract s.f eWo();
+  public abstract void flX();
   
-  public abstract s.g eWp();
+  public abstract void flY();
   
-  public abstract aa eWq();
+  public abstract t.a flZ();
   
-  public abstract l eWr();
+  public abstract s.f fma();
   
-  public abstract com.tencent.mm.ui.chatting.c eWs();
+  public abstract s.g fmb();
   
-  public abstract long eWt();
+  public abstract com.tencent.mm.ui.ab fmc();
   
-  public abstract com.tencent.mm.aw.a.a.c eWu();
+  public abstract l fmd();
+  
+  public abstract com.tencent.mm.ui.chatting.c fme();
+  
+  public abstract long fmf();
+  
+  public abstract com.tencent.mm.av.a.a.c fmg();
   
   public abstract void g(View.OnClickListener paramOnClickListener);
   
@@ -71,13 +71,11 @@ public abstract interface i
   
   public abstract boolean isInEditMode();
   
-  public abstract void o(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract boolean wA(long paramLong);
+  public abstract void q(long paramLong, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.b.i
  * JD-Core Version:    0.7.0.1
  */

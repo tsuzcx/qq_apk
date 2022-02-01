@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.expt.roomexpt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ey;
+import com.tencent.mm.g.c.fc;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class e
-  extends ey
+  extends fc
 {
   protected static c.a info;
   
@@ -15,47 +15,47 @@ public final class e
   {
     AppMethodBeat.i(122444);
     c.a locala = new c.a();
-    locala.EYt = new Field[10];
+    locala.GvF = new Field[10];
     locala.columns = new String[11];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "chatroom";
-    locala.EYv.put("chatroom", "TEXT");
+    locala.GvH.put("chatroom", "TEXT");
     localStringBuilder.append(" chatroom TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "daySec";
-    locala.EYv.put("daySec", "TEXT");
+    locala.GvH.put("daySec", "TEXT");
     localStringBuilder.append(" daySec TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "nickname";
-    locala.EYv.put("nickname", "TEXT");
+    locala.GvH.put("nickname", "TEXT");
     localStringBuilder.append(" nickname TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "isMute";
-    locala.EYv.put("isMute", "INTEGER");
+    locala.GvH.put("isMute", "INTEGER");
     localStringBuilder.append(" isMute INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "unReadCount";
-    locala.EYv.put("unReadCount", "INTEGER");
+    locala.GvH.put("unReadCount", "INTEGER");
     localStringBuilder.append(" unReadCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "sendCount";
-    locala.EYv.put("sendCount", "INTEGER");
+    locala.GvH.put("sendCount", "INTEGER");
     localStringBuilder.append(" sendCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "enterCount";
-    locala.EYv.put("enterCount", "INTEGER");
+    locala.GvH.put("enterCount", "INTEGER");
     localStringBuilder.append(" enterCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "disRedDotCount";
-    locala.EYv.put("disRedDotCount", "INTEGER");
+    locala.GvH.put("disRedDotCount", "INTEGER");
     localStringBuilder.append(" disRedDotCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "stayTime";
-    locala.EYv.put("stayTime", "LONG");
+    locala.GvH.put("stayTime", "LONG");
     localStringBuilder.append(" stayTime LONG");
     localStringBuilder.append(", ");
     locala.columns[9] = "score";
-    locala.EYv.put("score", "FLOAT");
+    locala.GvH.put("score", "FLOAT");
     localStringBuilder.append(" score FLOAT");
     locala.columns[10] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -78,7 +78,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.e
  * JD-Core Version:    0.7.0.1
  */

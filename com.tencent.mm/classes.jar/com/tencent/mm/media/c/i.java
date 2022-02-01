@@ -5,27 +5,27 @@ import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.z;
 import com.tencent.mm.media.j.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.a.b;
 import d.g.b.k;
 import d.l;
 import d.y;
 import java.nio.ByteBuffer;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoder;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "outputFps", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;ILkotlin/jvm/functions/Function1;)V", "TAG", "", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "sawInputEOS", "", "drainDecoder", "inputDecoder", "sendDecoderEOS", "startDecode", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoder;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "outputFps", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;ILkotlin/jvm/functions/Function1;)V", "TAG", "", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "sawInputEOS", "", "drainDecoder", "inputDecoder", "sendDecoderEOS", "startDecode", "Companion", "plugin-mediaeditor_release"})
 public final class i
   extends f
 {
-  public static final i.a gow;
+  public static final i.a gPf;
   private final String TAG;
   private MediaCodec.BufferInfo bufferInfo;
-  private volatile boolean goo;
+  private volatile boolean gOY;
   
   static
   {
     AppMethodBeat.i(93548);
-    gow = new i.a((byte)0);
+    gPf = new i.a((byte)0);
     AppMethodBeat.o(93548);
   }
   
@@ -37,28 +37,28 @@ public final class i
     this.TAG = "MicroMsg.MediaCodecTransDecoder";
     try
     {
-      this.mediaFormat = parama.gra;
-      this.gnF = z.pl(parama.ajO());
-      parama = this.gnF;
+      this.mediaFormat = parama.gRI;
+      this.gOr = z.sx(parama.aqN());
+      parama = this.gOr;
       if (parama == null) {
-        k.fvU();
+        k.fOy();
       }
       parama.a(this.mediaFormat, paramSurface, 0);
-      parama = this.gnF;
+      parama = this.gOr;
       if (parama == null) {
-        k.fvU();
+        k.fOy();
       }
       parama.start();
       if (paramb != null)
       {
-        paramb.aA(this);
+        paramb.ay(this);
         AppMethodBeat.o(93547);
         return;
       }
     }
     catch (Exception parama)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)parama, "create decoder error:" + parama.getMessage(), new Object[0]);
+      ac.printErrStackTrace(this.TAG, (Throwable)parama, "create decoder error:" + parama.getMessage(), new Object[0]);
       parama = (Throwable)new IllegalStateException("init decoder error");
       AppMethodBeat.o(93547);
       throw parama;
@@ -66,24 +66,24 @@ public final class i
     AppMethodBeat.o(93547);
   }
   
-  private final boolean ajv()
+  private final boolean aqu()
   {
     AppMethodBeat.i(93545);
     long l1;
     Object localObject2;
     try
     {
-      synchronized (this.gnZ)
+      synchronized (this.gOK)
       {
-        if (this.goa) {
-          ad.i(this.TAG, "inputDecoder already finished");
+        if (this.gnd) {
+          ac.i(this.TAG, "inputDecoder already finished");
         }
-        y localy = y.JfV;
-        ad.i(this.TAG, "inputDecoder");
-        l1 = bt.GC();
-        ??? = this.gnF;
+        y localy = y.KTp;
+        ac.i(this.TAG, "inputDecoder");
+        l1 = bs.Gn();
+        ??? = this.gOr;
         if (??? == null) {
-          k.fvU();
+          k.fOy();
         }
         ??? = ((z)???).getInputBuffers();
         if (??? == null)
@@ -92,71 +92,71 @@ public final class i
           return false;
         }
       }
-      localObject4 = this.gnF;
+      localObject4 = this.gOr;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)localException, "inputDecoder error", new Object[0]);
-      if (this.god)
+      ac.printErrStackTrace(this.TAG, (Throwable)localException, "inputDecoder error", new Object[0]);
+      if (this.gON)
       {
-        localObject2 = d.gwr;
-        d.amd();
+        localObject2 = d.gWO;
+        d.asV();
       }
       AppMethodBeat.o(93545);
       return true;
     }
     Object localObject4;
     if (localObject4 == null) {
-      k.fvU();
+      k.fOy();
     }
     int i = ((z)localObject4).dequeueInputBuffer(60000L);
     int j = 0;
     while ((i < 0) && (j < 15))
     {
-      if (ajw())
+      if (aqv())
       {
         AppMethodBeat.o(93545);
         return true;
       }
-      localObject4 = this.gnF;
+      localObject4 = this.gOr;
       if (localObject4 == null) {
-        k.fvU();
+        k.fOy();
       }
       i = ((z)localObject4).dequeueInputBuffer(60000L);
       j += 1;
     }
-    this.goo = false;
+    this.gOY = false;
     long l2;
     int k;
     if (i >= 0)
     {
       localObject2 = localObject2[i];
       ((ByteBuffer)localObject2).clear();
-      localObject4 = this.gnN;
+      localObject4 = this.gOy;
       if (localObject4 == null) {
-        k.fvU();
+        k.fOy();
       }
       k.g(localObject2, "inputBuffer");
       if (!((com.tencent.mm.media.e.a)localObject4).k((ByteBuffer)localObject2))
       {
-        ad.i(this.TAG, "read sample end");
+        ac.i(this.TAG, "read sample end");
         AppMethodBeat.o(93545);
         return true;
       }
-      l2 = this.gnN.getSampleTime();
-      k = this.gnN.sampleSize;
+      l2 = this.gOy.getSampleTime();
+      k = this.gOy.sampleSize;
       ((ByteBuffer)localObject2).position(0);
-      ad.i(this.TAG, "sampleTime : " + l2 + " us");
-      if ((k < 0) || (l2 >= this.gnO * 1000L))
+      ac.i(this.TAG, "sampleTime : " + l2 + " us");
+      if ((k < 0) || (l2 >= this.gOz * 1000L))
       {
-        this.goo = true;
-        ad.i(this.TAG, "sawInputEOS");
+        this.gOY = true;
+        ac.i(this.TAG, "sawInputEOS");
       }
-      localObject2 = this.gnF;
+      localObject2 = this.gOr;
       if (localObject2 == null) {
-        k.fvU();
+        k.fOy();
       }
-      if (!this.goo) {
+      if (!this.gOY) {
         break label490;
       }
     }
@@ -166,44 +166,44 @@ public final class i
       ((z)localObject2).a(i, k, l2, j);
       for (;;)
       {
-        bool = ajw();
-        ad.i(this.TAG, "inputDecoder cost " + bt.aS(l1));
+        bool = aqv();
+        ac.i(this.TAG, "inputDecoder cost " + bs.aO(l1));
         if (!bool) {
           break;
         }
-        ad.i(this.TAG, "drainDecoder eos");
+        ac.i(this.TAG, "drainDecoder eos");
         AppMethodBeat.o(93545);
         return true;
-        ad.w(this.TAG, "input buffer not available");
+        ac.w(this.TAG, "input buffer not available");
       }
-      boolean bool = this.goo;
+      boolean bool = this.gOY;
       AppMethodBeat.o(93545);
       return bool;
     }
   }
   
-  private final boolean ajw()
+  private final boolean aqv()
   {
     AppMethodBeat.i(93546);
     for (;;)
     {
       try
       {
-        ad.i(this.TAG, "drainDecoder");
-        synchronized (this.gnZ)
+        ac.i(this.TAG, "drainDecoder");
+        synchronized (this.gOK)
         {
-          if (this.goa) {
-            ad.i(this.TAG, "drainDecoder already finished");
+          if (this.gnd) {
+            ac.i(this.TAG, "drainDecoder already finished");
           }
-          y localy = y.JfV;
-          ??? = this.gnF;
+          y localy = y.KTp;
+          ??? = this.gOr;
           if (??? == null) {
-            k.fvU();
+            k.fOy();
           }
           i = ((z)???).dequeueOutputBuffer(this.bufferInfo, 100L);
           if (i == -1)
           {
-            ad.i(this.TAG, "no output from decoder available, break");
+            ac.i(this.TAG, "no output from decoder available, break");
             AppMethodBeat.o(93546);
             return false;
           }
@@ -214,60 +214,60 @@ public final class i
       }
       catch (Exception localException1)
       {
-        ad.printErrStackTrace(this.TAG, (Throwable)localException1, "drainDecoder error", new Object[0]);
-        if (this.god)
+        ac.printErrStackTrace(this.TAG, (Throwable)localException1, "drainDecoder error", new Object[0]);
+        if (this.gON)
         {
-          localObject2 = d.gwr;
-          d.amd();
+          localObject2 = d.gWO;
+          d.asV();
         }
         AppMethodBeat.o(93546);
         return false;
       }
-      ad.i(this.TAG, "decoder output buffers changed");
+      ac.i(this.TAG, "decoder output buffers changed");
       continue;
       label177:
       if (i == -2)
       {
-        localObject2 = this.gnF;
+        localObject2 = this.gOr;
         if (localObject2 == null) {
-          k.fvU();
+          k.fOy();
         }
         this.mediaFormat = ((z)localObject2).getOutputFormat();
-        ad.i(this.TAG, "decoder output format changed: " + this.mediaFormat);
+        ac.i(this.TAG, "decoder output format changed: " + this.mediaFormat);
         localObject2 = this.mediaFormat;
         if (localObject2 != null)
         {
-          b localb = this.gnW;
+          b localb = this.gOH;
           if (localb != null) {
-            localb.aA(localObject2);
+            localb.ay(localObject2);
           }
         }
       }
       else if (i < 0)
       {
-        ad.w(this.TAG, "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
+        ac.w(this.TAG, "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
       }
       else
       {
         long l = this.bufferInfo.presentationTimeUs;
-        ad.i(this.TAG, "presentationTimeUs : ".concat(String.valueOf(l)));
-        if ((l < this.bxw * 1000L) && ((this.bufferInfo.flags & 0x4) == 0))
+        ac.i(this.TAG, "presentationTimeUs : ".concat(String.valueOf(l)));
+        if ((l < this.bvf * 1000L) && ((this.bufferInfo.flags & 0x4) == 0))
         {
-          localObject2 = this.gnF;
+          localObject2 = this.gOr;
           if (localObject2 == null) {
-            k.fvU();
+            k.fOy();
           }
           ((z)localObject2).releaseOutputBuffer(i, false);
-          ad.i(this.TAG, "decoder pts: " + l + ", not reach start: " + this.bxw * 1000L);
+          ac.i(this.TAG, "decoder pts: " + l + ", not reach start: " + this.bvf * 1000L);
           AppMethodBeat.o(93546);
           return false;
         }
         if (this.bufferInfo.size != 0)
         {
           a(i, this.bufferInfo);
-          if ((this.gnO * 1000L != 1L) && (l >= this.gnO * 1000L))
+          if ((this.gOz * 1000L != 1L) && (l >= this.gOz * 1000L))
           {
-            ad.e(this.TAG, "exceed endTimeMs");
+            ac.e(this.TAG, "exceed endTimeMs");
             AppMethodBeat.o(93546);
             return true;
           }
@@ -277,14 +277,14 @@ public final class i
       }
       try
       {
-        localObject2 = this.gnF;
+        localObject2 = this.gOr;
         if (localObject2 == null) {
-          k.fvU();
+          k.fOy();
         }
         ((z)localObject2).stop();
-        localObject2 = this.gnF;
+        localObject2 = this.gOr;
         if (localObject2 == null) {
-          k.fvU();
+          k.fOy();
         }
         ((z)localObject2).release();
       }
@@ -298,14 +298,14 @@ public final class i
       return true;
       AppMethodBeat.o(93546);
       return false;
-      Object localObject2 = this.gnF;
+      Object localObject2 = this.gOr;
       if (localObject2 == null) {
-        k.fvU();
+        k.fOy();
       }
       ((z)localObject2).releaseOutputBuffer(i, false);
-      localObject2 = this.gnF;
+      localObject2 = this.gOr;
       if (localObject2 == null) {
-        k.fvU();
+        k.fOy();
       }
       j = ((z)localObject2).dequeueOutputBuffer(this.bufferInfo, 100L);
       int i = j;
@@ -316,34 +316,34 @@ public final class i
   public final void startDecode()
   {
     AppMethodBeat.i(93544);
-    while (!ajv()) {}
-    ad.i(this.TAG, "inputDecoder end");
+    while (!aqu()) {}
+    ac.i(this.TAG, "inputDecoder end");
     try
     {
       int i;
-      synchronized (this.gnZ)
+      synchronized (this.gOK)
       {
-        if (this.goa) {
-          ad.i(this.TAG, "drainDecoder already finished");
+        if (this.gnd) {
+          ac.i(this.TAG, "drainDecoder already finished");
         }
-        Object localObject3 = y.JfV;
-        ad.i(this.TAG, "sendDecoderEOS");
-        ??? = this.gnF;
+        Object localObject3 = y.KTp;
+        ac.i(this.TAG, "sendDecoderEOS");
+        ??? = this.gOr;
         if (??? == null) {
-          k.fvU();
+          k.fOy();
         }
         ??? = ((z)???).getInputBuffers();
-        localObject3 = this.gnF;
+        localObject3 = this.gOr;
         if (localObject3 == null) {
-          k.fvU();
+          k.fOy();
         }
         i = ((z)localObject3).dequeueInputBuffer(60000L);
         if (i < 0) {
-          if (!ajw())
+          if (!aqv())
           {
-            localObject3 = this.gnF;
+            localObject3 = this.gOr;
             if (localObject3 == null) {
-              k.fvU();
+              k.fOy();
             }
             i = ((z)localObject3).dequeueInputBuffer(60000L);
           }
@@ -356,11 +356,11 @@ public final class i
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)localException, "sendDecoderEOS error", new Object[0]);
+      ac.printErrStackTrace(this.TAG, (Throwable)localException, "sendDecoderEOS error", new Object[0]);
       for (;;)
       {
         releaseDecoder();
-        localObject2 = this.gnV;
+        localObject2 = this.gOG;
         if (localObject2 == null) {
           break;
         }
@@ -371,24 +371,24 @@ public final class i
         {
           localObject2 = localObject2[i];
           ((ByteBuffer)localObject2).clear();
-          locala = this.gnN;
+          locala = this.gOy;
           if (locala == null) {
-            k.fvU();
+            k.fOy();
           }
           k.g(localObject2, "inputBuffer");
           locala.k((ByteBuffer)localObject2);
-          l = this.gnN.getSampleTime();
+          l = this.gOy.getSampleTime();
           ((ByteBuffer)localObject2).position(0);
           if (i >= 0)
           {
-            localObject2 = this.gnF;
+            localObject2 = this.gOr;
             if (localObject2 == null) {
-              k.fvU();
+              k.fOy();
             }
             ((z)localObject2).a(i, 0, l, 4);
           }
         }
-        ajw();
+        aqv();
       }
       AppMethodBeat.o(93544);
     }
@@ -396,7 +396,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.c.i
  * JD-Core Version:    0.7.0.1
  */

@@ -14,18 +14,18 @@ public class MailAttachListLinearLayout
   extends LinearLayout
 {
   Context context;
-  List<String> uPX;
+  List<String> vYN;
   
   public MailAttachListLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(123105);
-    this.uPX = new ArrayList();
+    this.vYN = new ArrayList();
     this.context = paramContext;
     AppMethodBeat.o(123105);
   }
   
-  static String ia(String paramString1, String paramString2)
+  static String it(String paramString1, String paramString2)
   {
     AppMethodBeat.i(123106);
     if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2.length() == 0))

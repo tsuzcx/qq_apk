@@ -11,35 +11,36 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ak;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarChart;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import java.util.concurrent.CountDownLatch;
 
 public final class aj
   extends k
 {
-  private static final int xdF;
-  private CountDownLatch oYW;
-  private RadarChart xdG;
-  private Bitmap xdH;
-  private Bitmap xdI;
+  private static final int yqu;
+  private CountDownLatch pCh;
+  private RadarChart yqv;
+  private Bitmap yqw;
+  private Bitmap yqx;
   
   static
   {
     AppMethodBeat.i(96818);
-    xdF = Color.parseColor("#26eae9e2");
+    yqu = Color.parseColor("#26eae9e2");
     AppMethodBeat.o(96818);
   }
   
-  public aj(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj paramaj, ViewGroup paramViewGroup)
+  public aj(Context paramContext, ak paramak, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramaj, paramViewGroup);
+    super(paramContext, paramak, paramViewGroup);
     AppMethodBeat.i(96811);
-    this.oYW = new CountDownLatch(2);
+    this.pCh = new CountDownLatch(2);
     AppMethodBeat.o(96811);
   }
   
@@ -55,10 +56,26 @@ public final class aj
     AppMethodBeat.o(96816);
   }
   
-  protected final void dvN()
+  public final void dJW()
+  {
+    AppMethodBeat.i(96812);
+    this.yqv = ((RadarChart)this.contentView.findViewById(2131297955));
+    AppMethodBeat.o(96812);
+  }
+  
+  public final void dJX()
+  {
+    AppMethodBeat.i(96815);
+    super.dJX();
+    this.pCh.countDown();
+    this.pCh.countDown();
+    AppMethodBeat.o(96815);
+  }
+  
+  protected final void dKm()
   {
     AppMethodBeat.i(96814);
-    com.tencent.e.h.Iye.aP(new com.tencent.e.i.h()
+    com.tencent.e.h.JZN.aS(new com.tencent.e.i.h()
     {
       public final String getKey()
       {
@@ -92,12 +109,12 @@ public final class aj
         }
       }
     });
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj localaj = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)dwh();
-    if (localaj != null)
+    ak localak = (ak)dKG();
+    if (localak != null)
     {
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(localaj.wXu, localaj.wWF, new f.a()
+      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(localak.yki, localak.yjt, new f.a()
       {
-        public final void apm(String paramAnonymousString)
+        public final void asD(String paramAnonymousString)
         {
           AppMethodBeat.i(96808);
           try
@@ -110,24 +127,24 @@ public final class aj
           }
           catch (Exception paramAnonymousString)
           {
-            ad.e("AdlandingRadarChartComp", "%s" + bt.m(paramAnonymousString));
+            ac.e("AdlandingRadarChartComp", "%s" + bs.m(paramAnonymousString));
             AppMethodBeat.o(96808);
           }
         }
         
-        public final void dsA()
+        public final void dFC() {}
+        
+        public final void dFD()
         {
           AppMethodBeat.i(96807);
           aj.a(aj.this, null);
           aj.a(aj.this).countDown();
           AppMethodBeat.o(96807);
         }
-        
-        public final void duP() {}
       });
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(localaj.wXA, localaj.wWF, new f.a()
+      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(localak.yko, localak.yjt, new f.a()
       {
-        public final void apm(String paramAnonymousString)
+        public final void asD(String paramAnonymousString)
         {
           AppMethodBeat.i(96810);
           try
@@ -139,22 +156,22 @@ public final class aj
           }
           catch (Exception paramAnonymousString)
           {
-            ad.e("AdlandingRadarChartComp", "%s" + bt.m(paramAnonymousString));
+            ac.e("AdlandingRadarChartComp", "%s" + bs.m(paramAnonymousString));
             AppMethodBeat.o(96810);
           }
         }
         
-        public final void dsA()
+        public final void dFC() {}
+        
+        public final void dFD()
         {
           AppMethodBeat.i(96809);
           aj.b(aj.this, null);
           aj.a(aj.this).countDown();
           AppMethodBeat.o(96809);
         }
-        
-        public final void duP() {}
       });
-      dvT();
+      dKs();
       AppMethodBeat.o(96814);
       return;
     }
@@ -162,31 +179,15 @@ public final class aj
     AppMethodBeat.o(96814);
   }
   
-  protected final void dvT()
+  protected final void dKs()
   {
     AppMethodBeat.i(96813);
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.xab.paddingLeft, (int)this.xab.paddingTop, (int)this.xab.paddingRight, (int)this.xab.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.ymQ.paddingLeft, (int)this.ymQ.paddingTop, (int)this.ymQ.paddingRight, (int)this.ymQ.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(96813);
-  }
-  
-  public final void dvx()
-  {
-    AppMethodBeat.i(96812);
-    this.xdG = ((RadarChart)this.contentView.findViewById(2131297955));
-    AppMethodBeat.o(96812);
-  }
-  
-  public final void dvy()
-  {
-    AppMethodBeat.i(96815);
-    super.dvy();
-    this.oYW.countDown();
-    this.oYW.countDown();
-    AppMethodBeat.o(96815);
   }
   
   protected final int getLayout()
@@ -196,7 +197,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.aj
  * JD-Core Version:    0.7.0.1
  */

@@ -9,47 +9,47 @@ import d.g.a.a;
 import d.g.b.k;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandRuntimeLaunchConditionForMainProcessIPC;", "", "()V", "connect", "", "waitFor", "block", "Lkotlin/Function0;", "IPCInvokerConnector", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandRuntimeLaunchConditionForMainProcessIPC;", "", "()V", "connect", "", "waitFor", "block", "Lkotlin/Function0;", "IPCInvokerConnector", "plugin-appbrand-integration_release"})
 public final class b
 {
-  public static final b juS;
+  public static final b jVn;
   
   static
   {
-    AppMethodBeat.i(196277);
-    juS = new b();
-    AppMethodBeat.o(196277);
+    AppMethodBeat.i(187148);
+    jVn = new b();
+    AppMethodBeat.o(187148);
   }
   
   public static final void connect()
   {
-    AppMethodBeat.i(196275);
-    o((a)b.juT);
-    AppMethodBeat.o(196275);
+    AppMethodBeat.i(187146);
+    s((a)b.jVo);
+    AppMethodBeat.o(187146);
   }
   
-  public static final void o(a<y> parama)
+  public static final void s(a<y> parama)
   {
-    AppMethodBeat.i(196276);
+    AppMethodBeat.i(187147);
     k.h(parama, "block");
-    parama = new j((Runnable)new b.e(parama), 2);
-    AppBrandMainProcessService.U((Runnable)new c(parama));
-    XIPCInvoker.a("com.tencent.mm", IPCVoid.fZS, b.a.class, (d)new d(parama));
-    AppMethodBeat.o(196276);
+    parama = new j((Runnable)new e(parama), 2);
+    AppBrandMainProcessService.W((Runnable)new c(parama));
+    XIPCInvoker.a("com.tencent.mm", IPCVoid.gey, b.a.class, (d)new d(parama));
+    AppMethodBeat.o(187147);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.l
     implements a<y>
   {
-    public static final b juT;
+    public static final b jVo;
     
     static
     {
-      AppMethodBeat.i(196271);
-      juT = new b();
-      AppMethodBeat.o(196271);
+      AppMethodBeat.i(187142);
+      jVo = new b();
+      AppMethodBeat.o(187142);
     }
     
     b()
@@ -58,7 +58,7 @@ public final class b
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -66,22 +66,36 @@ public final class b
     
     public final void run()
     {
-      AppMethodBeat.i(196272);
-      this.juU.countDown();
-      AppMethodBeat.o(196272);
+      AppMethodBeat.i(187143);
+      this.jVp.countDown();
+      AppMethodBeat.o(187143);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class d<T>
     implements d<ResultType>
   {
     d(j paramj) {}
   }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  static final class e
+    implements Runnable
+  {
+    e(a parama) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(187145);
+      this.gmj.invoke();
+      AppMethodBeat.o(187145);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.b
  * JD-Core Version:    0.7.0.1
  */

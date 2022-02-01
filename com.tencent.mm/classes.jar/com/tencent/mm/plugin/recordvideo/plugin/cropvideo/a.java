@@ -28,15 +28,16 @@ import com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar;
 import com.tencent.mm.plugin.mmsight.segment.c.b;
 import com.tencent.mm.plugin.recordvideo.background.provider.WeSeeProvider;
 import com.tencent.mm.plugin.recordvideo.background.provider.WeSeeProvider.a;
-import com.tencent.mm.plugin.recordvideo.e.e;
+import com.tencent.mm.plugin.recordvideo.d.c;
+import com.tencent.mm.plugin.recordvideo.e.f;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.t;
 import com.tencent.mm.pluginsdk.ui.tools.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.am;
 import com.tencent.mm.ui.ap;
 import com.tencent.mm.ui.base.h;
@@ -44,52 +45,52 @@ import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/mmsight/segment/ISegmentSeekBar$OnSeekBarChangedListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "cropBtn", "Landroid/widget/ImageView;", "cropEnd", "", "cropRecyclerThumbSeekBar", "Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditVideoSeekBarView;", "cropStart", "dialog", "Lcom/tencent/mm/ui/widget/dialog/MMAlertDialog;", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "jumpHideAnimation", "", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "weseeArrowBtn", "weseeBtn", "weseeWrapper", "changeThumbBarPercent", "", "currentTime", "", "forceCropVideo", "isForce", "getSmaller", "a", "b", "getString", "", "resId", "name", "onBackPress", "onClick", "v", "Landroid/view/View;", "onDown", "left", "start", "end", "onMove", "onRecyclerChanged", "onUp", "release", "reset", "resetConfirmStyle", "bgStyleResId", "textColor", "(Ljava/lang/Integer;Ljava/lang/Integer;)V", "setCaptureInfo", "setJumpHideAnimation", "jump", "setUIParams", "seekbarHeight", "bgResId", "setVisibility", "visibility", "showWeSeeBtn", "synCropInfo", "Companion", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/mmsight/segment/ISegmentSeekBar$OnSeekBarChangedListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "cropBtn", "Landroid/widget/ImageView;", "cropEnd", "", "cropRecyclerThumbSeekBar", "Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditVideoSeekBarView;", "cropStart", "dialog", "Lcom/tencent/mm/ui/widget/dialog/MMAlertDialog;", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "jumpHideAnimation", "", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "weseeArrowBtn", "weseeBtn", "weseeWrapper", "changeThumbBarPercent", "", "currentTime", "", "forceCropVideo", "isForce", "getSmaller", "a", "b", "getString", "", "resId", "name", "onBackPress", "onClick", "v", "Landroid/view/View;", "onDown", "left", "start", "end", "onMove", "onRecyclerChanged", "onUp", "release", "reset", "resetConfirmStyle", "bgStyleResId", "textColor", "(Ljava/lang/Integer;Ljava/lang/Integer;)V", "setCaptureInfo", "setJumpHideAnimation", "jump", "setUIParams", "seekbarHeight", "bgResId", "setVisibility", "visibility", "showWeSeeBtn", "synCropInfo", "Companion", "plugin-recordvideo_release"})
 public final class a
   implements View.OnClickListener, c.b, t
 {
-  public static final a vlY;
-  ViewGroup fSZ;
-  private com.tencent.mm.ui.widget.a.d iAV;
-  public RecordConfigProvider vcC;
-  private com.tencent.mm.plugin.recordvideo.plugin.parent.d vjo;
-  private final ImageView vlP;
-  public final EditVideoSeekBarView vlQ;
-  private final ViewGroup vlR;
-  private final ImageView vlS;
-  private final ImageView vlT;
-  public com.tencent.mm.media.widget.camerarecordview.b.b vlU;
-  public boolean vlV;
-  private float vlW;
-  public float vlX;
+  public static final a.a wuE;
+  ViewGroup fWU;
+  private com.tencent.mm.ui.widget.a.d jaW;
+  public RecordConfigProvider rRi;
+  private com.tencent.mm.plugin.recordvideo.plugin.parent.d rTT;
+  public com.tencent.mm.media.widget.camerarecordview.b.b wuA;
+  public boolean wuB;
+  private float wuC;
+  public float wuD;
+  private final ImageView wuv;
+  public final EditVideoSeekBarView wuw;
+  private final ViewGroup wux;
+  private final ImageView wuy;
+  private final ImageView wuz;
   
   static
   {
     AppMethodBeat.i(75702);
-    vlY = new a((byte)0);
+    wuE = new a.a((byte)0);
     AppMethodBeat.o(75702);
   }
   
   public a(ViewGroup paramViewGroup, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd)
   {
     AppMethodBeat.i(75701);
-    this.fSZ = paramViewGroup;
-    this.vjo = paramd;
-    paramViewGroup = this.fSZ.findViewById(2131299289);
+    this.fWU = paramViewGroup;
+    this.rTT = paramd;
+    paramViewGroup = this.fWU.findViewById(2131299289);
     k.g(paramViewGroup, "parent.findViewById(R.id.editor_crop_video)");
-    this.vlP = ((ImageView)paramViewGroup);
-    paramViewGroup = this.fSZ.findViewById(2131299288);
+    this.wuv = ((ImageView)paramViewGroup);
+    paramViewGroup = this.fWU.findViewById(2131299288);
     k.g(paramViewGroup, "parent.findViewById(R.id.editor_crop_bar)");
-    this.vlQ = ((EditVideoSeekBarView)paramViewGroup);
-    this.vlR = ((ViewGroup)this.fSZ.findViewById(2131307099));
-    this.vlS = ((ImageView)this.fSZ.findViewById(2131301209));
-    this.vlT = ((ImageView)this.fSZ.findViewById(2131301226));
-    this.vlX = 1.0F;
-    this.vlP.setImageDrawable(am.i(this.fSZ.getContext(), 2131690382, -1));
-    this.vlP.setOnClickListener((View.OnClickListener)this);
-    this.vlQ.setCancelButtonClickListener((View.OnClickListener)this);
-    this.vlQ.setFinishButtonClickListener((View.OnClickListener)this);
-    paramViewGroup = this.vlQ.getLayoutParams();
+    this.wuw = ((EditVideoSeekBarView)paramViewGroup);
+    this.wux = ((ViewGroup)this.fWU.findViewById(2131307099));
+    this.wuy = ((ImageView)this.fWU.findViewById(2131301209));
+    this.wuz = ((ImageView)this.fWU.findViewById(2131301226));
+    this.wuD = 1.0F;
+    this.wuv.setImageDrawable(am.k(this.fWU.getContext(), 2131690382, -1));
+    this.wuv.setOnClickListener((View.OnClickListener)this);
+    this.wuw.setCancelButtonClickListener((View.OnClickListener)this);
+    this.wuw.setFinishButtonClickListener((View.OnClickListener)this);
+    paramViewGroup = this.wuw.getLayoutParams();
     if (paramViewGroup == null)
     {
       paramViewGroup = new v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
@@ -97,33 +98,33 @@ public final class a
       throw paramViewGroup;
     }
     paramViewGroup = (RelativeLayout.LayoutParams)paramViewGroup;
-    paramViewGroup.bottomMargin += ap.eb(this.fSZ.getContext());
-    this.vlQ.setLayoutParams((ViewGroup.LayoutParams)paramViewGroup);
+    paramViewGroup.bottomMargin += ap.ej(this.fWU.getContext());
+    this.wuw.setLayoutParams((ViewGroup.LayoutParams)paramViewGroup);
     AppMethodBeat.o(75701);
   }
   
-  private final void T(float paramFloat1, float paramFloat2)
+  private final void X(float paramFloat1, float paramFloat2)
   {
     float f1 = 0.0F;
     AppMethodBeat.i(75697);
-    Object localObject = this.vlU;
+    Object localObject = this.wuA;
     int k;
     float f2;
     int i;
     if (localObject != null)
     {
-      k = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).gBm - ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).cUL;
+      k = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).hbI - ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).cSh;
       f2 = k;
-      localObject = this.vcC;
+      localObject = this.rRi;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      i = ((RecordConfigProvider)localObject).vhQ;
-      localObject = this.vlU;
+      i = ((RecordConfigProvider)localObject).wqC;
+      localObject = this.wuA;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      f2 = (paramFloat2 - paramFloat1) * f2 - gL(i + 250, ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).gBm);
+      f2 = (paramFloat2 - paramFloat1) * f2 - gT(i + 250, ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).hbI);
       if (f2 >= 0.0F) {
         break label195;
       }
@@ -137,7 +138,7 @@ public final class a
       localObject = new Bundle();
       ((Bundle)localObject).putInt("EDIT_CROP_VIDEO_LENGTH_START_TIME_INT", i + j);
       ((Bundle)localObject).putInt("EDIT_CROP_VIDEO_LENGTH_END_TIME_INT", k - m);
-      this.vjo.a(d.c.voa, (Bundle)localObject);
+      this.rTT.a(d.c.wwH, (Bundle)localObject);
       AppMethodBeat.o(75697);
       return;
       AppMethodBeat.o(75697);
@@ -147,7 +148,7 @@ public final class a
     }
   }
   
-  public static int gL(int paramInt1, int paramInt2)
+  public static int gT(int paramInt1, int paramInt2)
   {
     if (paramInt1 > paramInt2) {
       return paramInt2;
@@ -158,9 +159,9 @@ public final class a
   private final String getString(int paramInt)
   {
     AppMethodBeat.i(75691);
-    if (this.fSZ.getContext() != null)
+    if (this.fWU.getContext() != null)
     {
-      String str = this.fSZ.getContext().getString(paramInt);
+      String str = this.fWU.getContext().getString(paramInt);
       k.g(str, "parent.context.getString(resId)");
       AppMethodBeat.o(75691);
       return str;
@@ -169,60 +170,60 @@ public final class a
     return "";
   }
   
-  public final void M(float paramFloat1, float paramFloat2)
+  public final void Q(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(75692);
-    ad.d("MicroMsg.EditCropVideoPlugin", "onRecyclerChanged : " + paramFloat1 + ' ' + paramFloat2);
-    this.vlW = paramFloat1;
-    this.vlX = paramFloat2;
-    T(paramFloat1, paramFloat2);
+    ac.d("MicroMsg.EditCropVideoPlugin", "onRecyclerChanged : " + paramFloat1 + ' ' + paramFloat2);
+    this.wuC = paramFloat1;
+    this.wuD = paramFloat2;
+    X(paramFloat1, paramFloat2);
     AppMethodBeat.o(75692);
   }
   
-  public final void N(float paramFloat1, float paramFloat2)
+  public final void R(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(75693);
-    ad.d("MicroMsg.EditCropVideoPlugin", "onDown : " + paramFloat1 + ' ' + paramFloat2);
-    d.b.a(this.vjo, d.c.voc);
+    ac.d("MicroMsg.EditCropVideoPlugin", "onDown : " + paramFloat1 + ' ' + paramFloat2);
+    d.b.a(this.rTT, d.c.wwJ);
     AppMethodBeat.o(75693);
   }
   
-  public final void O(float paramFloat1, float paramFloat2)
+  public final void S(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(75694);
-    ad.d("MicroMsg.EditCropVideoPlugin", "onUp : " + paramFloat1 + ' ' + paramFloat2);
-    this.vlW = paramFloat1;
-    this.vlX = paramFloat2;
-    T(paramFloat1, paramFloat2);
+    ac.d("MicroMsg.EditCropVideoPlugin", "onUp : " + paramFloat1 + ' ' + paramFloat2);
+    this.wuC = paramFloat1;
+    this.wuD = paramFloat2;
+    X(paramFloat1, paramFloat2);
     AppMethodBeat.o(75694);
   }
   
-  public final void P(float paramFloat1, float paramFloat2)
+  public final void T(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(75695);
-    ad.d("MicroMsg.EditCropVideoPlugin", "onMove : " + paramFloat1 + ' ' + paramFloat2);
+    ac.d("MicroMsg.EditCropVideoPlugin", "onMove : " + paramFloat1 + ' ' + paramFloat2);
     AppMethodBeat.o(75695);
   }
   
-  public final void apt() {}
-  
-  public final boolean dia()
+  public final boolean alO()
   {
     AppMethodBeat.i(75698);
-    ViewGroup localViewGroup = this.vlR;
+    ViewGroup localViewGroup = this.wux;
     if (localViewGroup != null) {
       localViewGroup.setVisibility(8);
     }
-    if (this.vlQ.getVisibility() == 0)
+    if (this.wuw.getVisibility() == 0)
     {
-      d.b.a(this.vjo, d.c.voe);
-      this.vlQ.animate().alpha(0.0F).setDuration(100L).setListener((Animator.AnimatorListener)new b(this));
+      d.b.a(this.rTT, d.c.wwL);
+      this.wuw.animate().alpha(0.0F).setDuration(100L).setListener((Animator.AnimatorListener)new b(this));
       AppMethodBeat.o(75698);
       return true;
     }
     AppMethodBeat.o(75698);
     return false;
   }
+  
+  public final void awk() {}
   
   public final String name()
   {
@@ -261,10 +262,10 @@ public final class a
         if (paramView.intValue() != 2131299263) {
           break label22;
         }
-        this.vlQ.tLG.reset();
-        d.b.a(this.vjo, d.c.voe);
-        this.vlQ.animate().alpha(0.0F).setDuration(100L).setListener((Animator.AnimatorListener)new c(this));
-        paramView = this.vlR;
+        this.wuw.uUk.reset();
+        d.b.a(this.rTT, d.c.wwL);
+        this.wuw.animate().alpha(0.0F).setDuration(100L).setListener((Animator.AnimatorListener)new c(this));
+        paramView = this.wux;
         if (paramView != null)
         {
           paramView.setVisibility(8);
@@ -277,22 +278,22 @@ public final class a
         if (paramView.intValue() != 2131299265) {
           break label26;
         }
-        T(this.vlW, this.vlX);
-        d.b.a(this.vjo, d.c.vof);
-        if (!this.vlV) {
-          this.vlQ.animate().alpha(0.0F).setDuration(100L).setListener((Animator.AnimatorListener)new d(this));
+        X(this.wuC, this.wuD);
+        d.b.a(this.rTT, d.c.wwM);
+        if (!this.wuB) {
+          this.wuw.animate().alpha(0.0F).setDuration(100L).setListener((Animator.AnimatorListener)new d(this));
         }
-        paramView = this.vlR;
+        paramView = this.wux;
         if (paramView != null) {
           paramView.setVisibility(8);
         }
-        paramView = this.vlU;
+        paramView = this.wuA;
         if (paramView != null)
         {
-          int i = paramView.gBm;
-          int j = paramView.cUL;
-          paramView = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-          com.tencent.mm.plugin.recordvideo.d.b.v("KEY_VIDEO_CROP_DURATION_MS_INT", Integer.valueOf((int)((i - j) * (this.vlX - this.vlW))));
+          int i = paramView.hbI;
+          int j = paramView.cSh;
+          paramView = c.wyg;
+          c.w("KEY_VIDEO_CROP_DURATION_MS_INT", Integer.valueOf((int)((i - j) * (this.wuD - this.wuC))));
           AppMethodBeat.o(75690);
           return;
         }
@@ -301,9 +302,9 @@ public final class a
         label284:
         if (paramView.intValue() == 2131299289)
         {
-          ou(false);
-          paramView = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-          com.tencent.mm.plugin.recordvideo.d.b.alO("KEY_CLICK_VIDEO_CROP_COUNT_INT");
+          pr(false);
+          paramView = c.wyg;
+          c.aqO("KEY_CLICK_VIDEO_CROP_COUNT_INT");
           AppMethodBeat.o(75690);
           return;
         }
@@ -313,13 +314,13 @@ public final class a
     Context localContext;
     if (paramView.intValue() == 2131307099)
     {
-      paramView = e.vtS;
-      paramView = this.fSZ.getContext();
+      paramView = f.wDX;
+      paramView = this.fWU.getContext();
       k.g(paramView, "parent.context");
-      bool = e.fK(paramView);
-      paramView = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-      com.tencent.mm.plugin.recordvideo.d.b.v("KEY_IS_CLICK_WESEE_BTN", Integer.valueOf(1));
-      localContext = this.fSZ.getContext();
+      bool = f.fV(paramView);
+      paramView = c.wyg;
+      c.w("KEY_IS_CLICK_WESEE_BTN", Integer.valueOf(1));
+      localContext = this.fWU.getContext();
       if (!bool) {
         break label445;
       }
@@ -327,7 +328,7 @@ public final class a
     label445:
     for (paramView = getString(2131755769);; paramView = getString(2131755767))
     {
-      this.iAV = h.d(localContext, paramView, "", getString(2131755835), getString(2131755691), (DialogInterface.OnClickListener)new e(this, bool), (DialogInterface.OnClickListener)new f(this, bool));
+      this.jaW = h.d(localContext, paramView, "", getString(2131755835), getString(2131755691), (DialogInterface.OnClickListener)new e(this, bool), (DialogInterface.OnClickListener)new f(this, bool));
       AppMethodBeat.o(75690);
       return;
     }
@@ -339,50 +340,50 @@ public final class a
   
   public final void onResume() {}
   
-  public final void ou(boolean paramBoolean)
+  public final void pr(boolean paramBoolean)
   {
     Object localObject2 = null;
     AppMethodBeat.i(75689);
-    this.vlQ.setVisibility(0);
-    ad.d("MicroMsg.EditCropVideoPlugin", "forceCropVideo isForce: ".concat(String.valueOf(paramBoolean)));
+    this.wuw.setVisibility(0);
+    ac.d("MicroMsg.EditCropVideoPlugin", "forceCropVideo isForce: ".concat(String.valueOf(paramBoolean)));
     Bundle localBundle = new Bundle();
     Object localObject1;
     if (paramBoolean)
     {
-      localObject1 = this.vcC;
+      localObject1 = this.rRi;
       if ((localObject1 != null) && (((RecordConfigProvider)localObject1).scene == 2))
       {
-        paramBoolean = TextUtils.equals((CharSequence)((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pvQ, "0"), (CharSequence)"1");
-        boolean bool = aj.eFE().getBoolean("wesee_switch", false);
-        ad.i("MicroMsg.EditCropVideoPlugin", "xSwitch: " + paramBoolean + ", commandSwitch:" + bool);
+        paramBoolean = TextUtils.equals((CharSequence)((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.qae, "0"), (CharSequence)"1");
+        boolean bool = ai.eUY().getBoolean("wesee_switch", false);
+        ac.i("MicroMsg.EditCropVideoPlugin", "xSwitch: " + paramBoolean + ", commandSwitch:" + bool);
         if ((!paramBoolean) && (!bool)) {
           break label513;
         }
         localBundle.putBoolean("EDIT_CROP_VIDEO_SHOW_WESEE_SWITCH_BOOLEAN", true);
-        localObject1 = this.vlR;
+        localObject1 = this.wux;
         if (localObject1 != null) {
           ((ViewGroup)localObject1).setVisibility(0);
         }
-        localObject1 = this.vlR;
+        localObject1 = this.wux;
         if (localObject1 != null) {
           ((ViewGroup)localObject1).setOnClickListener((View.OnClickListener)this);
         }
-        localObject1 = this.vlS;
+        localObject1 = this.wuy;
         if (localObject1 != null) {
-          ((ImageView)localObject1).setImageDrawable(am.i(this.fSZ.getContext(), 2131690503, -1));
+          ((ImageView)localObject1).setImageDrawable(am.k(this.fWU.getContext(), 2131690503, -1));
         }
-        localObject1 = this.vlT;
+        localObject1 = this.wuz;
         if (localObject1 != null) {
-          ((ImageView)localObject1).setImageDrawable(am.i(this.fSZ.getContext(), 2131690349, -1));
+          ((ImageView)localObject1).setImageDrawable(am.k(this.fWU.getContext(), 2131690349, -1));
         }
-        localObject1 = this.vlR;
+        localObject1 = this.wux;
         if (localObject1 != null)
         {
           localObject1 = ((ViewGroup)localObject1).getContext();
-          if (!ai.aF((Context)localObject1)) {
+          if (!aj.aG((Context)localObject1)) {
             break label409;
           }
-          localObject1 = this.vlR;
+          localObject1 = this.wux;
           if (localObject1 == null) {
             break label335;
           }
@@ -402,55 +403,55 @@ public final class a
         label341:
         ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localObject1;
         int i = localMarginLayoutParams.topMargin;
-        ViewGroup localViewGroup = this.vlR;
+        ViewGroup localViewGroup = this.wux;
         localObject1 = localObject2;
         if (localViewGroup != null) {
           localObject1 = localViewGroup.getContext();
         }
-        localMarginLayoutParams.topMargin = (i + ai.aE((Context)localObject1));
-        localObject1 = this.vlR;
+        localMarginLayoutParams.topMargin = (i + aj.aF((Context)localObject1));
+        localObject1 = this.wux;
         if (localObject1 != null) {
           ((ViewGroup)localObject1).setLayoutParams((ViewGroup.LayoutParams)localMarginLayoutParams);
         }
         label409:
-        localObject1 = WeSeeProvider.vfZ;
+        localObject1 = WeSeeProvider.woL;
         WeSeeProvider.a.delete();
-        localObject1 = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-        com.tencent.mm.plugin.recordvideo.d.b.v("KEY_IS_SHOW_WESEE_BTN", Integer.valueOf(1));
-        localObject1 = e.vtS;
-        localObject1 = this.fSZ.getContext();
+        localObject1 = c.wyg;
+        c.w("KEY_IS_SHOW_WESEE_BTN", Integer.valueOf(1));
+        localObject1 = f.wDX;
+        localObject1 = this.fWU.getContext();
         k.g(localObject1, "parent.context");
-        if (!e.fK((Context)localObject1)) {
+        if (!f.fV((Context)localObject1)) {
           break label531;
         }
-        localObject1 = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-        com.tencent.mm.plugin.recordvideo.d.b.v("KEY_IS_INSTALL_WESEE", Integer.valueOf(1));
+        localObject1 = c.wyg;
+        c.w("KEY_IS_INSTALL_WESEE", Integer.valueOf(1));
       }
     }
     for (;;)
     {
-      localObject1 = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-      com.tencent.mm.plugin.recordvideo.d.b.v("KEY_IS_CLICK_WESEE_BTN", Integer.valueOf(2));
-      this.vjo.a(d.c.vnY, localBundle);
+      localObject1 = c.wyg;
+      c.w("KEY_IS_CLICK_WESEE_BTN", Integer.valueOf(2));
+      this.rTT.a(d.c.wwF, localBundle);
       AppMethodBeat.o(75689);
       return;
       label513:
-      localObject1 = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-      com.tencent.mm.plugin.recordvideo.d.b.v("KEY_IS_SHOW_WESEE_BTN", Integer.valueOf(2));
+      localObject1 = c.wyg;
+      c.w("KEY_IS_SHOW_WESEE_BTN", Integer.valueOf(2));
       break;
       label531:
-      localObject1 = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-      com.tencent.mm.plugin.recordvideo.d.b.v("KEY_IS_INSTALL_WESEE", Integer.valueOf(2));
+      localObject1 = c.wyg;
+      c.w("KEY_IS_INSTALL_WESEE", Integer.valueOf(2));
     }
   }
   
   public final void release()
   {
     AppMethodBeat.i(75700);
-    this.vlQ.release();
-    if (this.iAV != null)
+    this.wuw.release();
+    if (this.jaW != null)
     {
-      Object localObject = this.iAV;
+      Object localObject = this.jaW;
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type android.app.Dialog");
@@ -459,11 +460,11 @@ public final class a
       }
       if (((Dialog)localObject).isShowing())
       {
-        localObject = this.iAV;
+        localObject = this.jaW;
         if (localObject != null) {
           ((com.tencent.mm.ui.widget.a.d)localObject).dismiss();
         }
-        ad.i("MicroMsg.EditCropVideoPlugin", "release dismiss dialog");
+        ac.i("MicroMsg.EditCropVideoPlugin", "release dismiss dialog");
       }
     }
     AppMethodBeat.o(75700);
@@ -472,21 +473,18 @@ public final class a
   public final void reset()
   {
     AppMethodBeat.i(75699);
-    this.vlQ.release();
+    this.wuw.release();
     AppMethodBeat.o(75699);
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75696);
-    this.vlP.setVisibility(paramInt);
+    this.wuv.setVisibility(paramInt);
     AppMethodBeat.o(75696);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin$onBackPress$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-recordvideo_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin$onBackPress$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-recordvideo_release"})
   public static final class b
     extends AnimatorListenerAdapter
   {
@@ -494,13 +492,13 @@ public final class a
     {
       AppMethodBeat.i(75684);
       k.h(paramAnimator, "animation");
-      a.a(this.vlZ).setVisibility(8);
-      a.a(this.vlZ).setAlpha(1.0F);
+      a.a(this.wuF).setVisibility(8);
+      a.a(this.wuF).setAlpha(1.0F);
       AppMethodBeat.o(75684);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin$onClick$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-recordvideo_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin$onClick$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-recordvideo_release"})
   public static final class c
     extends AnimatorListenerAdapter
   {
@@ -508,13 +506,13 @@ public final class a
     {
       AppMethodBeat.i(75685);
       k.h(paramAnimator, "animation");
-      a.a(this.vlZ).setVisibility(8);
-      a.a(this.vlZ).setAlpha(1.0F);
+      a.a(this.wuF).setVisibility(8);
+      a.a(this.wuF).setAlpha(1.0F);
       AppMethodBeat.o(75685);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin$onClick$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-recordvideo_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin$onClick$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-recordvideo_release"})
   public static final class d
     extends AnimatorListenerAdapter
   {
@@ -522,13 +520,13 @@ public final class a
     {
       AppMethodBeat.i(75686);
       k.h(paramAnimator, "animation");
-      a.a(this.vlZ).setVisibility(8);
-      a.a(this.vlZ).setAlpha(1.0F);
+      a.a(this.wuF).setVisibility(8);
+      a.a(this.wuF).setAlpha(1.0F);
       AppMethodBeat.o(75686);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
   static final class e
     implements DialogInterface.OnClickListener
   {
@@ -537,9 +535,9 @@ public final class a
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
       AppMethodBeat.i(75687);
-      if (a.b(this.vlZ) != null)
+      if (a.b(this.wuF) != null)
       {
-        paramDialogInterface = a.b(this.vlZ);
+        paramDialogInterface = a.b(this.wuF);
         if (paramDialogInterface == null)
         {
           paramDialogInterface = new v("null cannot be cast to non-null type android.app.Dialog");
@@ -548,45 +546,45 @@ public final class a
         }
         if (((Dialog)paramDialogInterface).isShowing())
         {
-          paramDialogInterface = a.b(this.vlZ);
+          paramDialogInterface = a.b(this.wuF);
           if (paramDialogInterface != null) {
             paramDialogInterface.dismiss();
           }
-          ad.i("MicroMsg.EditCropVideoPlugin", "click ok dismiss dialog");
+          ac.i("MicroMsg.EditCropVideoPlugin", "click ok dismiss dialog");
         }
       }
-      ad.i("MicroMsg.EditCropVideoPlugin", "dialog ok isInstallWeSee:" + bool);
-      paramDialogInterface = a.c(this.vlZ);
+      ac.i("MicroMsg.EditCropVideoPlugin", "dialog ok isInstallWeSee:" + bool);
+      paramDialogInterface = a.c(this.wuF);
       if (paramDialogInterface != null)
       {
-        paramDialogInterface = paramDialogInterface.gBj;
+        paramDialogInterface = paramDialogInterface.hbF;
         if (paramDialogInterface == null) {
           break label272;
         }
-        paramDialogInterface = a.c(this.vlZ);
+        paramDialogInterface = a.c(this.wuF);
         if (paramDialogInterface == null) {
           break label267;
         }
-        paramDialogInterface = paramDialogInterface.gBj;
+        paramDialogInterface = paramDialogInterface.hbF;
       }
       for (;;)
       {
         if (bool)
         {
-          localObject = e.vtS;
-          localObject = this.vlZ.fSZ.getContext();
+          localObject = f.wDX;
+          localObject = this.wuF.fWU.getContext();
           k.g(localObject, "parent.context");
           if (paramDialogInterface == null) {
-            k.fvU();
+            k.fOy();
           }
           k.h(localObject, "context");
           k.h(paramDialogInterface, "videoPath");
-          String str = e.rV(ce.asR());
+          String str = f.wy(ce.azI());
           q.a((Context)localObject, new Intent(), str, paramDialogInterface);
-          paramDialogInterface = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-          com.tencent.mm.plugin.recordvideo.d.b.v("KEY_WESEE_DIALOG_OPERATION", Integer.valueOf(1));
+          paramDialogInterface = c.wyg;
+          c.w("KEY_WESEE_DIALOG_OPERATION", Integer.valueOf(1));
           paramDialogInterface = new Intent();
-          localObject = this.vlZ.fSZ.getContext();
+          localObject = this.wuF.fWU.getContext();
           if (localObject == null)
           {
             paramDialogInterface = new v("null cannot be cast to non-null type android.app.Activity");
@@ -598,17 +596,17 @@ public final class a
             paramDialogInterface = null;
             continue;
             label272:
-            paramDialogInterface = a.c(this.vlZ);
+            paramDialogInterface = a.c(this.wuF);
             if (paramDialogInterface != null)
             {
-              paramDialogInterface = paramDialogInterface.gBn;
+              paramDialogInterface = paramDialogInterface.hbJ;
               continue;
             }
             paramDialogInterface = null;
             continue;
           }
           ((Activity)localObject).setResult(-2, paramDialogInterface);
-          paramDialogInterface = this.vlZ.fSZ.getContext();
+          paramDialogInterface = this.wuF.fWU.getContext();
           if (paramDialogInterface == null)
           {
             paramDialogInterface = new v("null cannot be cast to non-null type android.app.Activity");
@@ -616,26 +614,26 @@ public final class a
             throw paramDialogInterface;
           }
           ((Activity)paramDialogInterface).finish();
-          ad.d("MicroMsg.EditCropVideoPlugin", "set RESULT_VIDEO_FINISH");
+          ac.d("MicroMsg.EditCropVideoPlugin", "set RESULT_VIDEO_FINISH");
           AppMethodBeat.o(75687);
           return;
         }
       }
-      Object localObject = WeSeeProvider.vfZ;
-      paramDialogInterface = q.aCJ(paramDialogInterface);
+      Object localObject = WeSeeProvider.woL;
+      paramDialogInterface = q.aIb(paramDialogInterface);
       k.g(paramDialogInterface, "TakePhotoUtil.parseWeSeeUri(videoPath)");
-      WeSeeProvider.a.aZ(paramDialogInterface, System.currentTimeMillis());
-      paramDialogInterface = e.vtS;
-      paramDialogInterface = this.vlZ.fSZ.getContext();
+      WeSeeProvider.a.bb(paramDialogInterface, System.currentTimeMillis());
+      paramDialogInterface = f.wDX;
+      paramDialogInterface = this.wuF.fWU.getContext();
       k.g(paramDialogInterface, "parent.context");
-      e.fL(paramDialogInterface);
-      paramDialogInterface = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-      com.tencent.mm.plugin.recordvideo.d.b.v("KEY_WESEE_DIALOG_OPERATION", Integer.valueOf(3));
+      f.fW(paramDialogInterface);
+      paramDialogInterface = c.wyg;
+      c.w("KEY_WESEE_DIALOG_OPERATION", Integer.valueOf(3));
       AppMethodBeat.o(75687);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
   static final class f
     implements DialogInterface.OnClickListener
   {
@@ -646,32 +644,32 @@ public final class a
       AppMethodBeat.i(75688);
       if (bool)
       {
-        paramDialogInterface = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-        com.tencent.mm.plugin.recordvideo.d.b.v("KEY_WESEE_DIALOG_OPERATION", Integer.valueOf(2));
+        paramDialogInterface = c.wyg;
+        c.w("KEY_WESEE_DIALOG_OPERATION", Integer.valueOf(2));
       }
       for (;;)
       {
-        ad.i("MicroMsg.EditCropVideoPlugin", "dialog cancel");
-        if (a.b(this.vlZ) == null) {
+        ac.i("MicroMsg.EditCropVideoPlugin", "dialog cancel");
+        if (a.b(this.wuF) == null) {
           break label120;
         }
-        paramDialogInterface = a.b(this.vlZ);
+        paramDialogInterface = a.b(this.wuF);
         if (paramDialogInterface != null) {
           break;
         }
         paramDialogInterface = new v("null cannot be cast to non-null type android.app.Dialog");
         AppMethodBeat.o(75688);
         throw paramDialogInterface;
-        paramDialogInterface = com.tencent.mm.plugin.recordvideo.d.b.vpp;
-        com.tencent.mm.plugin.recordvideo.d.b.v("KEY_WESEE_DIALOG_OPERATION", Integer.valueOf(4));
+        paramDialogInterface = c.wyg;
+        c.w("KEY_WESEE_DIALOG_OPERATION", Integer.valueOf(4));
       }
       if (((Dialog)paramDialogInterface).isShowing())
       {
-        paramDialogInterface = a.b(this.vlZ);
+        paramDialogInterface = a.b(this.wuF);
         if (paramDialogInterface != null) {
           paramDialogInterface.dismiss();
         }
-        ad.i("MicroMsg.EditCropVideoPlugin", "click no dismiss dialog");
+        ac.i("MicroMsg.EditCropVideoPlugin", "click no dismiss dialog");
       }
       label120:
       AppMethodBeat.o(75688);
@@ -680,7 +678,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.cropvideo.a
  * JD-Core Version:    0.7.0.1
  */

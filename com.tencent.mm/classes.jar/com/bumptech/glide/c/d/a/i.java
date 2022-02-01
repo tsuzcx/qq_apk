@@ -15,12 +15,12 @@ import java.util.concurrent.locks.Lock;
 
 final class i
 {
-  private static final e aIM;
+  private static final e aJC;
   
   static
   {
     AppMethodBeat.i(77403);
-    aIM = new f()
+    aJC = new f()
     {
       public final void g(Bitmap paramAnonymousBitmap) {}
     };
@@ -51,7 +51,7 @@ final class i
         paramDrawable = b(parame, localDrawable, paramInt1, paramInt2);
         paramInt1 = 1;
         break;
-        parame = aIM;
+        parame = aJC;
       }
       label78:
       paramInt1 = 0;
@@ -83,7 +83,7 @@ final class i
     if (paramDrawable.getIntrinsicHeight() > 0) {
       paramInt2 = paramDrawable.getIntrinsicHeight();
     }
-    Lock localLock = p.pb();
+    Lock localLock = p.pl();
     localLock.lock();
     parame = parame.b(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     try
@@ -103,7 +103,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.i
  * JD-Core Version:    0.7.0.1
  */

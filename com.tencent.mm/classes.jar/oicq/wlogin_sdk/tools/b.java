@@ -2,7 +2,7 @@ package oicq.wlogin_sdk.tools;
 
 public class b
 {
-  public void F(int paramInt, String paramString) {}
+  public void G(int paramInt, String paramString) {}
   
   public void OnLog(int paramInt, String paramString1, String paramString2) {}
 }

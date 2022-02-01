@@ -13,9 +13,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class JsonRecyclerView
   extends RecyclerView
 {
-  private a Hkv;
-  float Hkw;
-  private RecyclerView.l Hkx;
+  private a IKO;
+  float IKP;
+  private RecyclerView.l IKQ;
   int mode;
   
   public JsonRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,17 +27,17 @@ public class JsonRecyclerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(38910);
-    this.Hkx = new RecyclerView.l()
+    this.IKQ = new RecyclerView.l()
     {
       public final boolean a(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(204985);
+        AppMethodBeat.i(196951);
         switch (paramAnonymousMotionEvent.getAction() & paramAnonymousMotionEvent.getActionMasked())
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(204985);
+          AppMethodBeat.o(196951);
           return false;
           JsonRecyclerView.this.mode = 1;
           continue;
@@ -46,17 +46,17 @@ public class JsonRecyclerView
           paramAnonymousRecyclerView = JsonRecyclerView.this;
           paramAnonymousRecyclerView.mode -= 1;
           continue;
-          JsonRecyclerView.this.Hkw = JsonRecyclerView.ad(paramAnonymousMotionEvent);
+          JsonRecyclerView.this.IKP = JsonRecyclerView.ad(paramAnonymousMotionEvent);
           paramAnonymousRecyclerView = JsonRecyclerView.this;
           paramAnonymousRecyclerView.mode += 1;
           continue;
           if (JsonRecyclerView.this.mode >= 2)
           {
             float f = JsonRecyclerView.ad(paramAnonymousMotionEvent);
-            if (Math.abs(f - JsonRecyclerView.this.Hkw) > 0.5F)
+            if (Math.abs(f - JsonRecyclerView.this.IKP) > 0.5F)
             {
-              JsonRecyclerView.a(JsonRecyclerView.this, f / JsonRecyclerView.this.Hkw);
-              JsonRecyclerView.this.Hkw = f;
+              JsonRecyclerView.a(JsonRecyclerView.this, f / JsonRecyclerView.this.IKP);
+              JsonRecyclerView.this.IKP = f;
             }
           }
         }
@@ -71,7 +71,7 @@ public class JsonRecyclerView
     AppMethodBeat.o(38910);
   }
   
-  private void u(View paramView, float paramFloat)
+  private void v(View paramView, float paramFloat)
   {
     AppMethodBeat.i(38913);
     if ((paramView instanceof JsonItemView))
@@ -82,7 +82,7 @@ public class JsonRecyclerView
       int i = 0;
       while (i < j)
       {
-        u(paramView.getChildAt(i), paramFloat);
+        v(paramView.getChildAt(i), paramFloat);
         i += 1;
       }
     }
@@ -91,12 +91,12 @@ public class JsonRecyclerView
   
   public void setBracesColor(int paramInt)
   {
-    a.Hkp = paramInt;
+    a.IKI = paramInt;
   }
   
   public void setKeyColor(int paramInt)
   {
-    a.Hkj = paramInt;
+    a.IKC = paramInt;
   }
   
   public void setScaleEnable(boolean paramBoolean)
@@ -104,11 +104,11 @@ public class JsonRecyclerView
     AppMethodBeat.i(38912);
     if (paramBoolean)
     {
-      a(this.Hkx);
+      a(this.IKQ);
       AppMethodBeat.o(38912);
       return;
     }
-    b(this.Hkx);
+    b(this.IKQ);
     AppMethodBeat.o(38912);
   }
   
@@ -119,10 +119,10 @@ public class JsonRecyclerView
     if (paramFloat < 10.0F) {
       f = 10.0F;
     }
-    while (a.Hkq != f)
+    while (a.IKJ != f)
     {
-      a.Hkq = f;
-      if (this.Hkv == null) {
+      a.IKJ = f;
+      if (this.IKO == null) {
         break;
       }
       RecyclerView.i locali = getLayoutManager();
@@ -130,7 +130,7 @@ public class JsonRecyclerView
       int i = 0;
       while (i < j)
       {
-        u(locali.getChildAt(i), f);
+        v(locali.getChildAt(i), f);
         i += 1;
       }
       f = paramFloat;
@@ -143,27 +143,27 @@ public class JsonRecyclerView
   
   public void setValueBooleanColor(int paramInt)
   {
-    a.Hkm = paramInt;
+    a.IKF = paramInt;
   }
   
   public void setValueNullColor(int paramInt)
   {
-    a.Hkl = paramInt;
+    a.IKE = paramInt;
   }
   
   public void setValueNumberColor(int paramInt)
   {
-    a.Hkl = paramInt;
+    a.IKE = paramInt;
   }
   
   public void setValueTextColor(int paramInt)
   {
-    a.Hkk = paramInt;
+    a.IKD = paramInt;
   }
   
   public void setValueUrlColor(int paramInt)
   {
-    a.Hkn = paramInt;
+    a.IKG = paramInt;
   }
 }
 

@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 
 public final class bh
 {
-  private static Method axu;
+  private static Method ayo;
   
   static
   {
@@ -17,9 +17,9 @@ public final class bh
     try
     {
       Method localMethod = View.class.getDeclaredMethod("computeFitSystemWindows", new Class[] { Rect.class, Rect.class });
-      axu = localMethod;
+      ayo = localMethod;
       if (!localMethod.isAccessible()) {
-        axu.setAccessible(true);
+        ayo.setAccessible(true);
       }
       return;
     }
@@ -28,10 +28,10 @@ public final class bh
   
   public static void a(View paramView, Rect paramRect1, Rect paramRect2)
   {
-    if (axu != null) {}
+    if (ayo != null) {}
     try
     {
-      axu.invoke(paramView, new Object[] { paramRect1, paramRect2 });
+      ayo.invoke(paramView, new Object[] { paramRect1, paramRect2 });
       return;
     }
     catch (Exception paramView) {}

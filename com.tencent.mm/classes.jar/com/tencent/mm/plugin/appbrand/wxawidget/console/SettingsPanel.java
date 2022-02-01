@@ -10,10 +10,10 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.modelappbrand.f;
 import com.tencent.mm.modelappbrand.n;
-import com.tencent.mm.plugin.appbrand.dynamic.widget.b;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 import com.tencent.mm.ui.widget.picker.c;
@@ -23,10 +23,10 @@ import java.util.ArrayList;
 public class SettingsPanel
   extends FrameLayout
 {
-  private Button moi;
-  private Button moj;
-  private View.OnClickListener mok;
-  private Runnable mol;
+  private Button mQj;
+  private Button mQk;
+  private View.OnClickListener mQl;
+  private Runnable mQm;
   
   public SettingsPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,8 +53,8 @@ public class SettingsPanel
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121675);
-        ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atK().restart();
-        aq.n(new Runnable()
+        ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAB().restart();
+        ap.n(new Runnable()
         {
           public final void run()
           {
@@ -70,19 +70,19 @@ public class SettingsPanel
       }
     });
     MMSwitchBtn localMMSwitchBtn = (MMSwitchBtn)findViewById(2131299484);
-    localMMSwitchBtn.setCheck(((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().atR());
+    localMMSwitchBtn.setCheck(((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().aAI());
     localMMSwitchBtn.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(121676);
-        ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().ed(paramAnonymousBoolean);
+        ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().ey(paramAnonymousBoolean);
         AppMethodBeat.o(121676);
       }
     });
-    this.moi = ((Button)findViewById(2131299235));
-    vC(b.aVR());
-    this.moi.setOnClickListener(new View.OnClickListener()
+    this.mQj = ((Button)findViewById(2131299235));
+    wt(com.tencent.mm.plugin.appbrand.dynamic.widget.b.bcP());
+    this.mQj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
@@ -94,8 +94,8 @@ public class SettingsPanel
         paramAnonymousView.add("MCanvasView");
         paramAnonymousView.add("MDrawableView");
         paramAnonymousView = new c(SettingsPanel.this.getContext(), paramAnonymousView);
-        paramAnonymousView.aaR(((Integer)SettingsPanel.b(SettingsPanel.this).getTag()).intValue());
-        paramAnonymousView.HIW = new c.a()
+        paramAnonymousView.adc(((Integer)SettingsPanel.b(SettingsPanel.this).getTag()).intValue());
+        paramAnonymousView.Jjt = new c.a()
         {
           public final void onResult(boolean paramAnonymous2Boolean, Object paramAnonymous2Object1, Object paramAnonymous2Object2)
           {
@@ -104,7 +104,7 @@ public class SettingsPanel
             if (paramAnonymous2Boolean) {
               SettingsPanel.b(SettingsPanel.this).setText((CharSequence)paramAnonymous2Object1);
             }
-            SettingsPanel.a(SettingsPanel.this, paramAnonymousView.ffZ());
+            SettingsPanel.a(SettingsPanel.this, paramAnonymousView.fvY());
             AppMethodBeat.o(121677);
           }
         };
@@ -112,9 +112,9 @@ public class SettingsPanel
         AppMethodBeat.o(121678);
       }
     });
-    this.moj = ((Button)findViewById(2131301232));
-    vD(com.tencent.mm.ac.h.aen());
-    this.moj.setOnClickListener(new View.OnClickListener()
+    this.mQk = ((Button)findViewById(2131301232));
+    wu(com.tencent.mm.ab.h.afD());
+    this.mQk.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
@@ -123,8 +123,8 @@ public class SettingsPanel
         paramAnonymousView.add("Normal");
         paramAnonymousView.add("Minimal-json");
         paramAnonymousView = new c(SettingsPanel.this.getContext(), paramAnonymousView);
-        paramAnonymousView.aaR(((Integer)SettingsPanel.c(SettingsPanel.this).getTag()).intValue());
-        paramAnonymousView.HIW = new c.a()
+        paramAnonymousView.adc(((Integer)SettingsPanel.c(SettingsPanel.this).getTag()).intValue());
+        paramAnonymousView.Jjt = new c.a()
         {
           public final void onResult(boolean paramAnonymous2Boolean, Object paramAnonymous2Object1, Object paramAnonymous2Object2)
           {
@@ -133,7 +133,7 @@ public class SettingsPanel
             if (paramAnonymous2Boolean) {
               SettingsPanel.c(SettingsPanel.this).setText((CharSequence)paramAnonymous2Object1);
             }
-            SettingsPanel.b(SettingsPanel.this, paramAnonymousView.ffZ());
+            SettingsPanel.b(SettingsPanel.this, paramAnonymousView.fvY());
             AppMethodBeat.o(121679);
           }
         };
@@ -152,7 +152,7 @@ public class SettingsPanel
         AppMethodBeat.o(121681);
       }
     });
-    if (((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().atS())
+    if (((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().aAJ())
     {
       findViewById(2131299485).setVisibility(0);
       findViewById(2131299236).setVisibility(0);
@@ -161,42 +161,42 @@ public class SettingsPanel
     AppMethodBeat.o(121685);
   }
   
-  private void vC(int paramInt)
+  private void wt(int paramInt)
   {
     AppMethodBeat.i(121686);
-    this.moi.setTag(Integer.valueOf(paramInt));
+    this.mQj.setTag(Integer.valueOf(paramInt));
     switch (paramInt)
     {
     default: 
-      this.moi.setText("MHADrawableView");
-      b.rf(0);
+      this.mQj.setText("MHADrawableView");
+      com.tencent.mm.plugin.appbrand.dynamic.widget.b.rS(0);
       AppMethodBeat.o(121686);
       return;
     case 1: 
-      this.moi.setText("MTextureView");
-      b.rf(1);
+      this.mQj.setText("MTextureView");
+      com.tencent.mm.plugin.appbrand.dynamic.widget.b.rS(1);
       AppMethodBeat.o(121686);
       return;
     case 2: 
-      this.moi.setText("MSurfaceView");
-      b.rf(2);
+      this.mQj.setText("MSurfaceView");
+      com.tencent.mm.plugin.appbrand.dynamic.widget.b.rS(2);
       AppMethodBeat.o(121686);
       return;
     case 3: 
-      this.moi.setText("MCanvasView");
-      b.rf(3);
+      this.mQj.setText("MCanvasView");
+      com.tencent.mm.plugin.appbrand.dynamic.widget.b.rS(3);
       AppMethodBeat.o(121686);
       return;
     }
-    this.moi.setText("MDrawableView");
-    b.rf(4);
+    this.mQj.setText("MDrawableView");
+    com.tencent.mm.plugin.appbrand.dynamic.widget.b.rS(4);
     AppMethodBeat.o(121686);
   }
   
-  private void vD(int paramInt)
+  private void wu(int paramInt)
   {
     AppMethodBeat.i(121687);
-    this.moj.setTag(Integer.valueOf(paramInt));
+    this.mQk.setTag(Integer.valueOf(paramInt));
     String str;
     switch (paramInt)
     {
@@ -205,9 +205,9 @@ public class SettingsPanel
     }
     for (paramInt = 0;; paramInt = 1)
     {
-      this.moj.setText(str);
-      com.tencent.mm.ac.h.mm(paramInt);
-      com.tencent.mm.ipcinvoker.h.a("com.tencent.mm:support", new IPCInteger(paramInt), SettingsPanel.a.class, null);
+      this.mQk.setText(str);
+      com.tencent.mm.ab.h.ml(paramInt);
+      com.tencent.mm.ipcinvoker.h.a("com.tencent.mm:support", new IPCInteger(paramInt), a.class, null);
       AppMethodBeat.o(121687);
       return;
       str = "Minimal-json";
@@ -216,17 +216,21 @@ public class SettingsPanel
   
   public void setOnCloseDebuggerClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.mok = paramOnClickListener;
+    this.mQl = paramOnClickListener;
   }
   
   public void setOnResetDebuggerRunnable(Runnable paramRunnable)
   {
-    this.mol = paramRunnable;
+    this.mQm = paramRunnable;
   }
+  
+  static class a
+    implements com.tencent.mm.ipcinvoker.b<IPCInteger, IPCVoid>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.SettingsPanel
  * JD-Core Version:    0.7.0.1
  */

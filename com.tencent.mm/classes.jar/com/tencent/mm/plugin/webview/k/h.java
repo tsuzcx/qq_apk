@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.webview.k;
 
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bt;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"TAG", "", "kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "canDebug", "", "showToast", "", "content", "tag", "webview-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"TAG", "", "kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "canDebug", "", "showToast", "", "content", "tag", "webview-sdk_release"})
 public final class h
 {
-  static final ax buO()
+  static final aw bBL()
   {
     AppMethodBeat.i(82933);
-    ax localax = ax.aFC("__webcompt_command");
-    k.g(localax, "MultiProcessMMKV.getMMKV(\"__webcompt_command\")");
+    aw localaw = aw.aKT("__webcompt_command");
+    k.g(localaw, "MultiProcessMMKV.getMMKV(\"__webcompt_command\")");
     AppMethodBeat.o(82933);
-    return localax;
+    return localaw;
   }
   
-  static final boolean ejp()
+  static final boolean eyK()
   {
     AppMethodBeat.i(82935);
-    if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.DEBUG) || ((ad.getLogLevel() == 0) && (bu.eGT())))
+    if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.DEBUG) || ((ac.getLogLevel() == 0) && (bt.eWo())))
     {
       AppMethodBeat.o(82935);
       return true;
@@ -37,14 +37,14 @@ public final class h
   static final void showToast(String paramString)
   {
     AppMethodBeat.i(82934);
-    if (ejp()) {
-      aq.f((Runnable)new a(paramString));
+    if (eyK()) {
+      ap.f((Runnable)new a(paramString));
     }
-    ad.i("WebComptCommand", paramString);
+    ac.i("WebComptCommand", paramString);
     AppMethodBeat.o(82934);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -53,7 +53,7 @@ public final class h
     public final void run()
     {
       AppMethodBeat.i(82932);
-      Toast.makeText(aj.getContext(), (CharSequence)this.fOY, 0).show();
+      Toast.makeText(ai.getContext(), (CharSequence)this.gAl, 0).show();
       AppMethodBeat.o(82932);
     }
   }

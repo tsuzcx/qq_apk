@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.address.e;
 import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.j.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,7 +24,7 @@ public final class e
       localJSONObject.put("type", paramb.type);
       if ((paramb.type != null) && (paramb.type.equals("1")))
       {
-        localJSONObject.put("title", paramb.szf);
+        localJSONObject.put("title", paramb.tGP);
         localJSONObject.put("taxNumber", "");
         localJSONObject.put("companyAddress", "");
         localJSONObject.put("telephone", "");
@@ -37,33 +37,33 @@ public final class e
         AppMethodBeat.o(21057);
         return paramb;
         localJSONObject.put("title", paramb.title);
-        if (paramb.szg == null) {
+        if (paramb.tGQ == null) {
           break;
         }
-        localJSONObject.put("taxNumber", paramb.szg);
-        if (paramb.szm == null) {
+        localJSONObject.put("taxNumber", paramb.tGQ);
+        if (paramb.tGW == null) {
           break label268;
         }
-        localJSONObject.put("companyAddress", paramb.szm);
-        if (paramb.szk == null) {
+        localJSONObject.put("companyAddress", paramb.tGW);
+        if (paramb.tGU == null) {
           break label280;
         }
-        localJSONObject.put("telephone", paramb.szk);
-        if (paramb.szi == null) {
+        localJSONObject.put("telephone", paramb.tGU);
+        if (paramb.tGS == null) {
           break label292;
         }
-        localJSONObject.put("bankName", paramb.szi);
-        if (paramb.szh == null) {
+        localJSONObject.put("bankName", paramb.tGS);
+        if (paramb.tGR == null) {
           break label304;
         }
-        localJSONObject.put("bankAccount", paramb.szh);
+        localJSONObject.put("bankAccount", paramb.tGR);
       }
     }
     catch (JSONException paramb)
     {
       for (;;)
       {
-        ad.e("MicroMsg.InvoiceUtil", "put json value error : %s", new Object[] { Log.getStackTraceString(paramb) });
+        ac.e("MicroMsg.InvoiceUtil", "put json value error : %s", new Object[] { Log.getStackTraceString(paramb) });
         continue;
         localJSONObject.put("taxNumber", "");
         continue;

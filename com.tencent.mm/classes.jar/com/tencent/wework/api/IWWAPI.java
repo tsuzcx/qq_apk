@@ -6,9 +6,9 @@ public abstract interface IWWAPI
 {
   public abstract boolean a(BaseMessage paramBaseMessage);
   
-  public abstract boolean fqp();
+  public abstract boolean fIK();
   
-  public abstract String fqq();
+  public abstract String fIL();
 }
 
 

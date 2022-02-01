@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class c
   extends h
 {
-  private final boolean aOB;
-  private final boolean aOC;
-  private final boolean aOD;
+  private final boolean aPr;
+  private final boolean aPs;
+  private final boolean aPt;
   private final String value;
   
   c(String paramString)
   {
     AppMethodBeat.i(74705);
     this.value = paramString;
-    this.aOB = "null".equals(paramString);
-    this.aOC = "true".equals(paramString);
-    this.aOD = "false".equals(paramString);
+    this.aPr = "null".equals(paramString);
+    this.aPs = "true".equals(paramString);
+    this.aPt = "false".equals(paramString);
     AppMethodBeat.o(74705);
   }
   
   final void a(i parami)
   {
     AppMethodBeat.i(74706);
-    parami.ad(this.value);
+    parami.ae(this.value);
     AppMethodBeat.o(74706);
   }
   
@@ -61,19 +61,19 @@ final class c
   
   public final boolean isBoolean()
   {
-    return (this.aOC) || (this.aOD);
+    return (this.aPs) || (this.aPt);
   }
   
-  public final boolean qt()
+  public final boolean qD()
   {
     AppMethodBeat.i(74708);
-    if (this.aOB)
+    if (this.aPr)
     {
-      bool = super.qt();
+      bool = super.qD();
       AppMethodBeat.o(74708);
       return bool;
     }
-    boolean bool = this.aOC;
+    boolean bool = this.aPs;
     AppMethodBeat.o(74708);
     return bool;
   }

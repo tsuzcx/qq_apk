@@ -9,30 +9,30 @@ import com.tencent.mm.plugin.topstory.a.c.f;
 
 public final class c
 {
+  private View AgR;
+  private View AgS;
+  public f Aha;
+  a Ahb;
+  private int Ahc;
   public View contentView;
-  public String gGC;
-  private View yTc;
-  private View yTd;
-  public f yTl;
-  a yTm;
-  private int yTn;
+  public String hhd;
   
   public c(View paramView, a parama, f paramf, String paramString)
   {
     AppMethodBeat.i(126639);
-    this.yTn = 16;
+    this.Ahc = 16;
     this.contentView = paramView;
-    this.yTl = paramf;
-    this.yTc = paramView.findViewById(2131299190);
-    this.yTd = paramView.findViewById(2131306200);
-    this.yTm = parama;
-    this.gGC = paramString;
+    this.Aha = paramf;
+    this.AgR = paramView.findViewById(2131299190);
+    this.AgS = paramView.findViewById(2131306200);
+    this.Ahb = parama;
+    this.hhd = paramString;
     paramView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(126638);
-        c.this.yTm.a(c.this.yTl);
+        c.this.Ahb.a(c.this.Aha);
         AppMethodBeat.o(126638);
       }
     });
@@ -45,17 +45,17 @@ public final class c
     int[] arrayOfInt = e.b(paramView.getContext(), paramView, this.contentView, paramBoolean);
     arrayOfInt[0] += 0;
     arrayOfInt[1] += paramInt;
-    if ((this.yTd != null) && (this.yTc != null))
+    if ((this.AgS != null) && (this.AgR != null))
     {
-      paramInt = e.fg(paramView) - e.dip2px(paramView.getContext(), this.yTn);
+      paramInt = e.ft(paramView) - e.dip2px(paramView.getContext(), this.Ahc);
       if (!paramBoolean) {
         break label150;
       }
-      this.yTd.setVisibility(0);
-      this.yTc.setVisibility(8);
-      paramView = (RelativeLayout.LayoutParams)this.yTd.getLayoutParams();
+      this.AgS.setVisibility(0);
+      this.AgR.setVisibility(8);
+      paramView = (RelativeLayout.LayoutParams)this.AgS.getLayoutParams();
       paramView.leftMargin = paramInt;
-      this.yTd.setLayoutParams(paramView);
+      this.AgS.setLayoutParams(paramView);
     }
     for (;;)
     {
@@ -65,11 +65,11 @@ public final class c
       AppMethodBeat.o(126640);
       return;
       label150:
-      this.yTd.setVisibility(8);
-      this.yTc.setVisibility(0);
-      paramView = (RelativeLayout.LayoutParams)this.yTc.getLayoutParams();
+      this.AgS.setVisibility(8);
+      this.AgR.setVisibility(0);
+      paramView = (RelativeLayout.LayoutParams)this.AgR.getLayoutParams();
       paramView.leftMargin = paramInt;
-      this.yTc.setLayoutParams(paramView);
+      this.AgR.setLayoutParams(paramView);
     }
   }
   

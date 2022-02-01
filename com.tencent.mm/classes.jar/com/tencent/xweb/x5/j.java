@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.internal.e;
-import com.tencent.xweb.n;
+import com.tencent.xweb.o;
 
 public final class j
   implements e
 {
-  c ISi;
-  b ISj;
-  WebView ISk;
+  c KEF;
+  b KEG;
+  WebView KEH;
   
   public j(WebView paramWebView)
   {
     AppMethodBeat.i(153868);
-    this.ISk = paramWebView;
-    this.ISi = new c();
-    this.ISj = new b();
+    this.KEH = paramWebView;
+    this.KEF = new c();
+    this.KEG = new b();
     AppMethodBeat.o(153868);
   }
   
@@ -30,7 +30,7 @@ public final class j
     return false;
   }
   
-  public final boolean a(String paramString1, String paramString2, String paramString3, n paramn)
+  public final boolean a(String paramString1, String paramString2, String paramString3, o paramo)
   {
     return false;
   }
@@ -43,16 +43,16 @@ public final class j
   public final void onHideCustomView()
   {
     AppMethodBeat.i(153870);
-    this.ISj.fsO();
+    this.KEG.fLr();
     AppMethodBeat.o(153870);
   }
   
   public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
   
-  public final void z(String paramString, Bitmap paramBitmap)
+  public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(153869);
-    this.ISi.b(this.ISk, paramString, paramBitmap);
+    this.KEF.b(this.KEH, paramString, paramBitmap);
     AppMethodBeat.o(153869);
   }
 }

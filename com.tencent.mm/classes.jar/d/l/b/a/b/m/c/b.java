@@ -8,12 +8,12 @@ public enum b
   {
     AppMethodBeat.i(61223);
     b localb1 = new b("FOR_SUBTYPING", 0);
-    JZA = localb1;
+    LMT = localb1;
     b localb2 = new b("FOR_INCORPORATION", 1);
-    JZB = localb2;
+    LMU = localb2;
     b localb3 = new b("FROM_EXPRESSION", 2);
-    JZC = localb3;
-    JZD = new b[] { localb1, localb2, localb3 };
+    LMV = localb3;
+    LMW = new b[] { localb1, localb2, localb3 };
     AppMethodBeat.o(61223);
   }
   

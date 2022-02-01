@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,54 +14,54 @@ import org.json.JSONObject;
 public final class af
   extends ac
 {
-  public String dDM;
-  public int dDN;
-  public int dDO;
-  public int dDP;
-  public String sZn;
-  public String tdh;
-  public au tdy;
-  public String tdz;
-  public String teL;
-  public String teM;
-  public int teP;
-  public String teQ;
-  public String teR;
-  public int teS;
-  public int teU;
-  public String teV;
-  public String teW;
-  public int teX;
-  public String teY;
-  public String teZ;
-  public String tfa;
-  public String tfb;
-  public String tfc;
-  public long tfd;
+  public int dBA;
+  public int dBB;
+  public String dBy;
+  public int dBz;
+  public String uhB;
+  public au ulN;
+  public String ulO;
+  public String ulw;
+  public String una;
+  public String unb;
+  public int une;
+  public String unf;
+  public String ung;
+  public int unh;
+  public int unj;
+  public String unk;
+  public String unl;
+  public int unm;
+  public String unn;
+  public String uno;
+  public String unp;
+  public String unq;
+  public String unr;
+  public long uns;
   
   public af(String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(65281);
-    this.teX = 1;
-    this.teY = null;
-    this.teZ = null;
-    this.tfa = null;
-    this.tfb = null;
-    this.tfc = null;
-    this.tfd = 0L;
-    this.dDM = paramString2;
-    this.sZn = paramString1;
-    this.teU = paramInt;
+    this.unm = 1;
+    this.unn = null;
+    this.uno = null;
+    this.unp = null;
+    this.unq = null;
+    this.unr = null;
+    this.uns = 0L;
+    this.dBy = paramString2;
+    this.uhB = paramString1;
+    this.unj = paramInt;
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
-    if (!bt.isNullOrNil(paramString2)) {
+    if (!bs.isNullOrNil(paramString2)) {
       localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
     }
     localHashMap.put("way", String.valueOf(paramInt));
     localHashMap.put("channelId", "2");
     localHashMap.put("package", paramString3);
-    g.afC();
-    long l = ((Long)g.afB().afk().get(ae.a.FkL, Long.valueOf(0L))).longValue();
+    g.agS();
+    long l = ((Long)g.agR().agA().get(ah.a.GIA, Long.valueOf(0L))).longValue();
     if (l > 0L)
     {
       if (System.currentTimeMillis() >= l) {
@@ -76,12 +76,12 @@ public final class af
       return;
       label206:
       paramString1 = new StringBuilder();
-      g.afC();
-      localHashMap.put("agreeDuty", (Integer)g.afB().afk().get(ae.a.FkM, Integer.valueOf(1)));
+      g.agS();
+      localHashMap.put("agreeDuty", (Integer)g.agR().agA().get(ah.a.GIB, Integer.valueOf(1)));
     }
   }
   
-  public final int bOC()
+  public final int bVS()
   {
     return 0;
   }
@@ -89,37 +89,37 @@ public final class af
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(65282);
-    this.teV = paramJSONObject.optString("spidLogo");
-    this.teW = paramJSONObject.optString("spidWishing");
-    this.teL = paramJSONObject.optString("spidName");
-    this.teV = paramJSONObject.optString("spidLogo");
-    this.dDO = paramJSONObject.optInt("hbStatus");
-    this.dDP = paramJSONObject.optInt("receiveStatus");
-    this.tdh = paramJSONObject.optString("statusMess");
-    this.teM = paramJSONObject.optString("hintMess");
-    this.tdz = paramJSONObject.optString("watermark");
-    this.sZn = paramJSONObject.optString("sendId");
-    this.teP = paramJSONObject.optInt("focusFlag");
-    this.teQ = paramJSONObject.optString("focusWording");
-    this.teR = paramJSONObject.optString("focusAppidUserName");
-    this.teS = paramJSONObject.optInt("isFocus");
-    this.dDN = paramJSONObject.optInt("hbType");
+    this.unk = paramJSONObject.optString("spidLogo");
+    this.unl = paramJSONObject.optString("spidWishing");
+    this.una = paramJSONObject.optString("spidName");
+    this.unk = paramJSONObject.optString("spidLogo");
+    this.dBA = paramJSONObject.optInt("hbStatus");
+    this.dBB = paramJSONObject.optInt("receiveStatus");
+    this.ulw = paramJSONObject.optString("statusMess");
+    this.unb = paramJSONObject.optString("hintMess");
+    this.ulO = paramJSONObject.optString("watermark");
+    this.uhB = paramJSONObject.optString("sendId");
+    this.une = paramJSONObject.optInt("focusFlag");
+    this.unf = paramJSONObject.optString("focusWording");
+    this.ung = paramJSONObject.optString("focusAppidUserName");
+    this.unh = paramJSONObject.optInt("isFocus");
+    this.dBz = paramJSONObject.optInt("hbType");
     paramString = paramJSONObject.optJSONObject("agree_duty");
     if (paramString != null)
     {
-      this.teY = paramString.optString("agreed_flag", "-1");
-      this.teZ = paramString.optString("title", "");
-      this.tfa = paramString.optString("service_protocol_wording", "");
-      this.tfb = paramString.optString("service_protocol_url", "");
-      this.tfc = paramString.optString("button_wording", "");
-      this.tfd = paramString.optLong("delay_expired_time", 0L);
+      this.unn = paramString.optString("agreed_flag", "-1");
+      this.uno = paramString.optString("title", "");
+      this.unp = paramString.optString("service_protocol_wording", "");
+      this.unq = paramString.optString("service_protocol_url", "");
+      this.unr = paramString.optString("button_wording", "");
+      this.uns = paramString.optLong("delay_expired_time", 0L);
     }
-    if (this.tfd > 0L)
+    if (this.uns > 0L)
     {
-      g.afC();
-      g.afB().afk().set(ae.a.FkL, Long.valueOf(System.currentTimeMillis() + this.tfd * 1000L));
+      g.agS();
+      g.agR().agA().set(ah.a.GIA, Long.valueOf(System.currentTimeMillis() + this.uns * 1000L));
     }
-    this.tdy = x.av(paramJSONObject.optJSONObject("operationTail"));
+    this.ulN = x.aw(paramJSONObject.optJSONObject("operationTail"));
     AppMethodBeat.o(65282);
   }
 }

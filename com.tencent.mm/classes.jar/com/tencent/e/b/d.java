@@ -7,9 +7,9 @@ public abstract interface d
 {
   public abstract void delete(long paramLong);
   
-  public abstract Map<String, a.a> fnT();
+  public abstract Map<String, a.a> fEj();
   
-  public abstract void m(Collection<a.a> paramCollection);
+  public abstract void n(Collection<a.a> paramCollection);
 }
 
 

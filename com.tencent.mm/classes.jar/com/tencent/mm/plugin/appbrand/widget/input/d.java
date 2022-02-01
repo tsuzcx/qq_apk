@@ -5,42 +5,42 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.widget.input.d.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
 final class d
   extends c<s>
 {
-  v maA;
-  com.tencent.mm.plugin.appbrand.widget.input.d.h maB;
-  boolean maC;
-  boolean maD;
-  int may;
-  s maz;
+  boolean mCA;
+  boolean mCB;
+  int mCw;
+  s mCx;
+  v mCy;
+  com.tencent.mm.plugin.appbrand.widget.input.d.h mCz;
   
   d(String paramString, aa paramaa, e parame)
   {
-    super(paramString, paramaa, parame.mao);
+    super(paramString, paramaa, parame.mCo);
     AppMethodBeat.i(136314);
-    this.may = 0;
-    this.maz = new s(paramaa.getContext());
-    this.may = bt.a((Integer)o.mbY.get(paramString), 0);
+    this.mCw = 0;
+    this.mCx = new s(paramaa.getContext());
+    this.mCw = bs.a((Integer)o.mDW.get(paramString), 0);
     AppMethodBeat.o(136314);
   }
   
-  private v bsT()
+  private v bzT()
   {
     AppMethodBeat.i(136325);
-    if (this.maA != null)
+    if (this.mCy != null)
     {
-      localv = this.maA;
+      localv = this.mCy;
       AppMethodBeat.o(136325);
       return localv;
     }
-    v localv = this.maz.getInputPanel();
-    this.maA = localv;
+    v localv = this.mCx.getInputPanel();
+    this.mCy = localv;
     AppMethodBeat.o(136325);
     return localv;
   }
@@ -48,27 +48,27 @@ final class d
   private boolean isFocused()
   {
     AppMethodBeat.i(136323);
-    if (this.maz == null)
+    if (this.mCx == null)
     {
       AppMethodBeat.o(136323);
       return false;
     }
-    if (this.maz.isFocused())
+    if (this.mCx.isFocused())
     {
       AppMethodBeat.o(136323);
       return true;
     }
-    if (bsT() == null)
+    if (bzT() == null)
     {
       AppMethodBeat.o(136323);
       return false;
     }
-    if (!bsT().isShown())
+    if (!bzT().isShown())
     {
       AppMethodBeat.o(136323);
       return false;
     }
-    if (this.maA.getAttachedEditText() == this.maz)
+    if (this.mCy.getAttachedEditText() == this.mCx)
     {
       AppMethodBeat.o(136323);
       return true;
@@ -77,15 +77,15 @@ final class d
     return false;
   }
   
-  public final boolean NK(String paramString)
+  public final boolean RT(String paramString)
   {
     AppMethodBeat.i(136320);
-    if (this.maz == null)
+    if (this.mCx == null)
     {
       AppMethodBeat.o(136320);
       return false;
     }
-    this.maz.D(paramString);
+    this.mCx.D(paramString);
     AppMethodBeat.o(136320);
     return true;
   }
@@ -93,37 +93,37 @@ final class d
   public final com.tencent.mm.plugin.appbrand.widget.input.d.h b(com.tencent.mm.plugin.appbrand.widget.input.d.h paramh)
   {
     AppMethodBeat.i(136319);
-    if (this.maB == null)
+    if (this.mCz == null)
     {
-      this.maB = paramh;
-      if ((aj.g(paramh.mhe)) && (this.maz != null)) {
-        this.maz.setPasswordMode(true);
+      this.mCz = paramh;
+      if ((aj.g(paramh.mJf)) && (this.mCx != null)) {
+        this.mCx.setPasswordMode(true);
       }
     }
-    while (this.maz == null)
+    while (this.mCx == null)
     {
       AppMethodBeat.o(136319);
       return null;
-      this.maB.a(paramh);
+      this.mCz.a(paramh);
     }
-    b.a(this.maz, this.maB);
-    paramh = this.maB;
+    b.a(this.mCx, this.mCz);
+    paramh = this.mCz;
     AppMethodBeat.o(136319);
     return paramh;
   }
   
-  final Rect bsK()
+  final Rect bzK()
   {
     AppMethodBeat.i(136318);
-    Rect localRect = new Rect(this.maB.mgC.intValue(), this.maB.mgB.intValue(), this.maB.mgC.intValue() + this.maB.mgz.intValue(), this.maB.mgB.intValue() + this.maB.mgA.intValue());
+    Rect localRect = new Rect(this.mCz.mIC.intValue(), this.mCz.mIB.intValue(), this.mCz.mIC.intValue() + this.mCz.mIz.intValue(), this.mCz.mIB.intValue() + this.mCz.mIA.intValue());
     AppMethodBeat.o(136318);
     return localRect;
   }
   
-  public final boolean bsQ()
+  public final boolean bzQ()
   {
     AppMethodBeat.i(136316);
-    if ((this.maB != null) && (aj.g(this.maB.mgW)))
+    if ((this.mCz != null) && (aj.g(this.mCz.mIX)))
     {
       AppMethodBeat.o(136316);
       return true;
@@ -132,44 +132,44 @@ final class d
     return false;
   }
   
-  public final int bsR()
+  public final int bzR()
   {
     AppMethodBeat.i(136317);
-    if ((this.maB == null) || (this.maB.mgT == null))
+    if ((this.mCz == null) || (this.mCz.mIU == null))
     {
       AppMethodBeat.o(136317);
       return 0;
     }
-    int i = this.maB.mgT.intValue();
+    int i = this.mCz.mIU.intValue();
     AppMethodBeat.o(136317);
     return i;
   }
   
-  public final boolean bsS()
+  public final boolean bzS()
   {
     AppMethodBeat.i(136322);
-    if (bsT() == null)
+    if (bzT() == null)
     {
       AppMethodBeat.o(136322);
       return false;
     }
     if (isFocused())
     {
-      Object localObject = this.maA;
+      Object localObject = this.mCy;
       ((v)localObject).setVisibility(8);
-      ((v)localObject).btv();
-      ad.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] disableInputFocus %s", new Object[] { this.maz });
-      if (this.maz != null)
+      ((v)localObject).bAv();
+      ac.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] disableInputFocus %s", new Object[] { this.mCx });
+      if (this.mCx != null)
       {
-        this.maz.setFocusable(false);
-        this.maz.setFocusableInTouchMode(false);
-        this.maz.setEnabled(false);
+        this.mCx.setFocusable(false);
+        this.mCx.setFocusableInTouchMode(false);
+        this.mCx.setEnabled(false);
       }
-      localObject = (aa)this.mar.get();
-      if ((localObject != null) && (((aa)localObject).kWU != null)) {
-        h.bsW().e(((aa)localObject).kWU);
+      localObject = (aa)this.mCq.get();
+      if ((localObject != null) && (((aa)localObject).lyE != null)) {
+        h.bzW().e(((aa)localObject).lyE);
       }
-      k.a(this.mar).uU(this.mao);
+      k.a(this.mCq).vL(this.mCo);
       AppMethodBeat.o(136322);
       return true;
     }
@@ -177,49 +177,49 @@ final class d
     return false;
   }
   
-  public final boolean er(int paramInt1, int paramInt2)
+  public final boolean eu(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(136321);
-    if (this.maz == null)
+    if (this.mCx == null)
     {
       AppMethodBeat.o(136321);
       return false;
     }
-    this.maA = v.df(((aa)this.mar.get()).jhz);
-    if (this.maA == null)
+    this.mCy = v.dh(((aa)this.mCq.get()).jHO);
+    if (this.mCy == null)
     {
       AppMethodBeat.o(136321);
       return false;
     }
-    this.maD = true;
-    Object localObject = (aa)this.mar.get();
-    if ((localObject != null) && (((aa)localObject).kWU != null)) {
-      h.bsW().d(((aa)localObject).kWU);
+    this.mCB = true;
+    Object localObject = (aa)this.mCq.get();
+    if ((localObject != null) && (((aa)localObject).lyE != null)) {
+      h.bzW().d(((aa)localObject).lyE);
     }
-    this.maA.setXMode(this.may);
-    localObject = this.maA;
-    s locals = this.maz;
+    this.mCy.setXMode(this.mCw);
+    localObject = this.mCy;
+    s locals = this.mCx;
     if (locals != null)
     {
       if (((v)localObject).mEditText != locals) {
-        ((v)localObject).btv();
+        ((v)localObject).bAv();
       }
       ((v)localObject).setInputEditText(locals);
       ((v)localObject).setVisibility(0);
     }
-    this.maA.setOnDoneListener(new v.a()
+    this.mCy.setOnDoneListener(new v.a()
     {
       public final void onDone()
       {
         AppMethodBeat.i(136313);
-        d.this.a(d.this.fQZ());
-        d.this.hA(false);
+        d.this.a(d.this.bxZ());
+        d.this.hY(false);
         AppMethodBeat.o(136313);
       }
     });
-    ja(paramInt1, paramInt2);
-    k.a(this.mar).uT(this.mao);
-    this.maD = false;
+    et(paramInt1, paramInt2);
+    k.a(this.mCq).vK(this.mCo);
+    this.mCB = false;
     AppMethodBeat.o(136321);
     return true;
   }
@@ -227,19 +227,19 @@ final class d
   public final View getInputPanel()
   {
     AppMethodBeat.i(136315);
-    bsT();
-    v localv = this.maA;
+    bzT();
+    v localv = this.mCy;
     AppMethodBeat.o(136315);
     return localv;
   }
   
-  protected final boolean hA(boolean paramBoolean)
+  protected final boolean hY(boolean paramBoolean)
   {
     AppMethodBeat.i(136324);
-    ad.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] onFocusChanged hasFocus %b, isFocused %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(isFocused()) });
+    ac.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] onFocusChanged hasFocus %b, isFocused %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(isFocused()) });
     if (!paramBoolean)
     {
-      if (this.maC)
+      if (this.mCA)
       {
         AppMethodBeat.o(136324);
         return true;
@@ -249,18 +249,18 @@ final class d
         AppMethodBeat.o(136324);
         return true;
       }
-      this.maC = true;
-      a(fQZ());
-      bsS();
-      bsN();
-      this.maC = false;
-      this.maz = null;
+      this.mCA = true;
+      a(bxZ());
+      bzS();
+      bzN();
+      this.mCA = false;
+      this.mCx = null;
     }
     for (;;)
     {
       AppMethodBeat.o(136324);
       return true;
-      if (this.maD)
+      if (this.mCB)
       {
         AppMethodBeat.o(136324);
         return true;
@@ -270,15 +270,15 @@ final class d
         AppMethodBeat.o(136324);
         return true;
       }
-      this.maD = true;
-      er(-2, -2);
-      this.maD = false;
+      this.mCB = true;
+      eu(-2, -2);
+      this.mCB = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d
  * JD-Core Version:    0.7.0.1
  */

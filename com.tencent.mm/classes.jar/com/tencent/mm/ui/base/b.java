@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -17,30 +17,13 @@ import java.lang.reflect.Proxy;
 
 public final class b
 {
-  public static void W(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(141617);
-    if ((paramIntent == null) || (paramContext == null) || (!(paramContext instanceof Activity)))
-    {
-      AppMethodBeat.o(141617);
-      return;
-    }
-    if (paramIntent.getBooleanExtra("animation_pop_in", false)) {
-      ((Activity)paramContext).overridePendingTransition(2130772095, 2130771986);
-    }
-    if (paramIntent.getBooleanExtra("animation_push_up_in", false)) {
-      ((Activity)paramContext).overridePendingTransition(2130772108, 2130771986);
-    }
-    AppMethodBeat.o(141617);
-  }
-  
   @TargetApi(16)
   public static void a(Activity paramActivity, a parama)
   {
     AppMethodBeat.i(141614);
-    if (d.lg(16))
+    if (d.la(16))
     {
-      ad.w("MicroMsg.ActivityUtil", "convertActivityToTranslucent::Android Version Error %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      ac.w("MicroMsg.ActivityUtil", "convertActivityToTranslucent::Android Version Error %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
       AppMethodBeat.o(141614);
       return;
     }
@@ -66,9 +49,9 @@ public final class b
           break label266;
         }
         Object localObject2 = new b((byte)0);
-        ((b)localObject2).oVT = new WeakReference(parama);
+        ((b)localObject2).pze = new WeakReference(parama);
         parama = Proxy.newProxyInstance(((Class)localObject1).getClassLoader(), new Class[] { localObject1 }, (InvocationHandler)localObject2);
-        if (d.lg(21))
+        if (d.la(21))
         {
           localObject1 = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject1 });
           ((Method)localObject1).setAccessible(true);
@@ -79,7 +62,7 @@ public final class b
       }
       catch (Throwable paramActivity)
       {
-        ad.printErrStackTrace("MicroMsg.ActivityUtil", paramActivity, "call convertActivityToTranslucent Fail: %s", new Object[] { paramActivity.getMessage() });
+        ac.printErrStackTrace("MicroMsg.ActivityUtil", paramActivity, "call convertActivityToTranslucent Fail: %s", new Object[] { paramActivity.getMessage() });
         AppMethodBeat.o(141614);
         return;
       }
@@ -96,13 +79,13 @@ public final class b
     }
   }
   
-  public static int aKg(String paramString)
+  public static int aPI(String paramString)
   {
     AppMethodBeat.i(141606);
-    paramString = aKh(paramString);
+    paramString = aPJ(paramString);
     if (paramString != null)
     {
-      int i = ba(paramString);
+      int i = bb(paramString);
       AppMethodBeat.o(141606);
       return i;
     }
@@ -110,7 +93,7 @@ public final class b
     return 0;
   }
   
-  private static Class<?> aKh(String paramString)
+  private static Class<?> aPJ(String paramString)
   {
     AppMethodBeat.i(141609);
     try
@@ -121,17 +104,17 @@ public final class b
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      ad.printErrStackTrace("MicroMsg.ActivityUtil", localClassNotFoundException, "", new Object[0]);
-      ad.e("MicroMsg.ActivityUtil", "Class %s not found in dex", new Object[] { paramString });
+      ac.printErrStackTrace("MicroMsg.ActivityUtil", localClassNotFoundException, "", new Object[0]);
+      ac.e("MicroMsg.ActivityUtil", "Class %s not found in dex", new Object[] { paramString });
       AppMethodBeat.o(141609);
     }
     return null;
   }
   
-  public static boolean aKi(String paramString)
+  public static boolean aPK(String paramString)
   {
     AppMethodBeat.i(141612);
-    if ((aKg(paramString) & 0x4) != 0)
+    if ((aPI(paramString) & 0x4) != 0)
     {
       AppMethodBeat.o(141612);
       return true;
@@ -140,7 +123,24 @@ public final class b
     return false;
   }
   
-  public static int ba(Class<?> paramClass)
+  public static void ak(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(141617);
+    if ((paramIntent == null) || (paramContext == null) || (!(paramContext instanceof Activity)))
+    {
+      AppMethodBeat.o(141617);
+      return;
+    }
+    if (paramIntent.getBooleanExtra("animation_pop_in", false)) {
+      ((Activity)paramContext).overridePendingTransition(2130772095, 2130771986);
+    }
+    if (paramIntent.getBooleanExtra("animation_push_up_in", false)) {
+      ((Activity)paramContext).overridePendingTransition(2130772108, 2130771986);
+    }
+    AppMethodBeat.o(141617);
+  }
+  
+  public static int bb(Class<?> paramClass)
   {
     AppMethodBeat.i(141607);
     a locala = (a)paramClass.getAnnotation(a.class);
@@ -150,18 +150,18 @@ public final class b
       AppMethodBeat.o(141607);
       return i;
     }
-    int i = bb(paramClass);
+    int i = bc(paramClass);
     AppMethodBeat.o(141607);
     return i;
   }
   
-  private static int bb(Class<?> paramClass)
+  private static int bc(Class<?> paramClass)
   {
     AppMethodBeat.i(141608);
     paramClass = paramClass.getSuperclass();
     if (paramClass != null)
     {
-      int i = ba(paramClass);
+      int i = bb(paramClass);
       AppMethodBeat.o(141608);
       return i;
     }
@@ -169,10 +169,10 @@ public final class b
     return 0;
   }
   
-  public static boolean bc(Class<?> paramClass)
+  public static boolean bd(Class<?> paramClass)
   {
     AppMethodBeat.i(141610);
-    if ((ba(paramClass) & 0x1) == 0)
+    if ((bb(paramClass) & 0x1) == 0)
     {
       AppMethodBeat.o(141610);
       return true;
@@ -181,10 +181,10 @@ public final class b
     return false;
   }
   
-  public static boolean bd(Class<?> paramClass)
+  public static boolean be(Class<?> paramClass)
   {
     AppMethodBeat.i(141611);
-    if ((ba(paramClass) & 0x2) == 0)
+    if ((bb(paramClass) & 0x2) == 0)
     {
       AppMethodBeat.o(141611);
       return true;
@@ -193,7 +193,7 @@ public final class b
     return false;
   }
   
-  public static void be(Activity paramActivity)
+  public static void bi(Activity paramActivity)
   {
     AppMethodBeat.i(141613);
     try
@@ -206,7 +206,7 @@ public final class b
     }
     catch (Throwable paramActivity)
     {
-      ad.printErrStackTrace("MicroMsg.ActivityUtil", paramActivity, "call convertActivityFromTranslucent Fail: %s", new Object[] { paramActivity.getMessage() });
+      ac.printErrStackTrace("MicroMsg.ActivityUtil", paramActivity, "call convertActivityFromTranslucent Fail: %s", new Object[] { paramActivity.getMessage() });
       AppMethodBeat.o(141613);
     }
   }
@@ -225,7 +225,7 @@ public final class b
     return paramComponentName;
   }
   
-  public static void jG(Context paramContext)
+  public static void jR(Context paramContext)
   {
     AppMethodBeat.i(141615);
     if ((paramContext == null) || (!(paramContext instanceof Activity)))
@@ -237,7 +237,7 @@ public final class b
     AppMethodBeat.o(141615);
   }
   
-  public static void jH(Context paramContext)
+  public static void jS(Context paramContext)
   {
     AppMethodBeat.i(141616);
     if ((paramContext == null) || (!(paramContext instanceof Activity)))
@@ -249,7 +249,7 @@ public final class b
     AppMethodBeat.o(141616);
   }
   
-  public static void jI(Context paramContext)
+  public static void jT(Context paramContext)
   {
     AppMethodBeat.i(141618);
     if ((paramContext == null) || (!(paramContext instanceof Activity)))
@@ -261,7 +261,7 @@ public final class b
     AppMethodBeat.o(141618);
   }
   
-  public static void jJ(Context paramContext)
+  public static void jU(Context paramContext)
   {
     AppMethodBeat.i(141619);
     if ((paramContext == null) || (!(paramContext instanceof Activity)))
@@ -275,28 +275,28 @@ public final class b
   
   public static abstract interface a
   {
-    public abstract void ib(boolean paramBoolean);
+    public abstract void iB(boolean paramBoolean);
   }
   
   static final class b
     implements InvocationHandler
   {
-    WeakReference<b.a> oVT;
+    WeakReference<b.a> pze;
     
     public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
     {
       boolean bool2 = false;
       AppMethodBeat.i(141604);
-      if (this.oVT == null)
+      if (this.pze == null)
       {
-        ad.i("MicroMsg.ActivityUtil", "swipe invoke fail, callbackRef NULL!");
+        ac.i("MicroMsg.ActivityUtil", "swipe invoke fail, callbackRef NULL!");
         AppMethodBeat.o(141604);
         return null;
       }
-      paramObject = (b.a)this.oVT.get();
+      paramObject = (b.a)this.pze.get();
       if (paramObject == null)
       {
-        ad.i("MicroMsg.ActivityUtil", "swipe invoke fail, callback NULL!");
+        ac.i("MicroMsg.ActivityUtil", "swipe invoke fail, callback NULL!");
         AppMethodBeat.o(141604);
         return null;
       }
@@ -312,7 +312,7 @@ public final class b
           }
         }
       }
-      paramObject.ib(bool1);
+      paramObject.iB(bool1);
       AppMethodBeat.o(141604);
       return null;
     }

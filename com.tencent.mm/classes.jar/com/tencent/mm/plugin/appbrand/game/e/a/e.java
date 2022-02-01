@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.appbrand.game.g.d;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,16 +18,16 @@ public final class e
 {
   public static final int CTRL_INDEX = 666;
   public static final String NAME = "operateGameRecorder";
-  a jrf;
-  c.a jrg;
-  String jrh;
+  a jRx;
+  c.a jRy;
+  String jRz;
   
   public e()
   {
     AppMethodBeat.i(45155);
-    this.jrf = new a();
-    this.jrg = null;
-    this.jrh = null;
+    this.jRx = new a();
+    this.jRy = null;
+    this.jRz = null;
     AppMethodBeat.o(45155);
   }
   
@@ -38,14 +38,14 @@ public final class e
     HashMap localHashMap = new HashMap(1);
     localHashMap.put("errCode", Integer.valueOf(paramInt3));
     paramq.h(paramInt1, k((String)localObject, localHashMap));
-    localObject = this.jrf;
+    localObject = this.jRx;
     ((a)localObject).g(paramq);
-    ad.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch error: %d, %s", new Object[] { Integer.valueOf(paramInt3), paramString });
+    ac.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch error: %d, %s", new Object[] { Integer.valueOf(paramInt3), paramString });
     paramq = new HashMap(3);
     paramq.put("state", "error");
     paramq.put("errCode", Integer.valueOf(paramInt3));
     paramq.put("errMsg", paramString);
-    ((a)localObject).B(paramq).aXQ();
+    ((a)localObject).A(paramq).beN();
     AppMethodBeat.o(45156);
   }
   
@@ -63,7 +63,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.e.a.e
  * JD-Core Version:    0.7.0.1
  */

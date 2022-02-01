@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.card.sharecard.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.box;
-import com.tencent.mm.protocal.protobuf.boy;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.btn;
+import com.tencent.mm.protocal.protobuf.bto;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,32 +22,32 @@ public final class f
   implements k
 {
   private g callback;
-  public String nre;
-  public int nrf;
-  public String nrg;
-  public int nrh;
-  public String nri;
-  public String nvk;
+  public String nUe;
+  public int nUf;
+  public String nUg;
+  public int nUh;
+  public String nUi;
+  public String nYk;
   private final b rr;
   
   public f(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(112969);
-    this.nrf = 0;
+    this.nUf = 0;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new box();
-    ((b.a)localObject).gUV = new boy();
+    ((b.a)localObject).hvt = new btn();
+    ((b.a)localObject).hvu = new bto();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/marksharecard";
     ((b.a)localObject).funcId = 1078;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (box)this.rr.gUS.gUX;
-    ((box)localObject).dyc = paramString;
-    ((box)localObject).DMg = paramInt2;
-    ((box)localObject).DMf = paramInt1;
-    ((box)localObject).scene = paramInt3;
-    this.nvk = paramString;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (btn)this.rr.hvr.hvw;
+    ((btn)localObject).dvO = paramString;
+    ((btn)localObject).Fiw = paramInt2;
+    ((btn)localObject).Fiv = paramInt1;
+    ((btn)localObject).scene = paramInt3;
+    this.nYk = paramString;
     AppMethodBeat.o(112969);
   }
   
@@ -68,16 +68,16 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112970);
-    ad.i("MicroMsg.NetSceneMarkShareCard", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ac.i("MicroMsg.NetSceneMarkShareCard", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (boy)this.rr.gUT.gUX;
-      ad.i("MicroMsg.NetSceneMarkShareCard", "json_ret:" + paramq.ntw);
-      paramq = paramq.ntw;
+      paramq = (bto)this.rr.hvs.hvw;
+      ac.i("MicroMsg.NetSceneMarkShareCard", "json_ret:" + paramq.nWw);
+      paramq = paramq.nWw;
       if (!TextUtils.isEmpty(paramq)) {
         break label130;
       }
-      ad.e("MicroMsg.NetSceneMarkShareCard", "parseJson json_ret is empty!");
+      ac.e("MicroMsg.NetSceneMarkShareCard", "parseJson json_ret is empty!");
     }
     for (;;)
     {
@@ -88,22 +88,22 @@ public final class f
       {
         label130:
         paramq = new JSONObject(paramq);
-        this.nre = paramq.optString("mark_user");
-        this.nrf = paramq.optInt("mark_succ", 0);
-        this.nrg = paramq.optString("mark_card_id");
-        this.nrh = paramq.optInt("expire_time", 0);
-        this.nri = paramq.optString("pay_qrcode_wording");
+        this.nUe = paramq.optString("mark_user");
+        this.nUf = paramq.optInt("mark_succ", 0);
+        this.nUg = paramq.optString("mark_card_id");
+        this.nUh = paramq.optInt("expire_time", 0);
+        this.nUi = paramq.optString("pay_qrcode_wording");
       }
       catch (JSONException paramq)
       {
-        ad.printErrStackTrace("MicroMsg.NetSceneMarkShareCard", paramq, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.NetSceneMarkShareCard", paramq, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.f
  * JD-Core Version:    0.7.0.1
  */

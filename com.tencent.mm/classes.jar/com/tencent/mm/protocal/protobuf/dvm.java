@@ -1,74 +1,81 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class dvm
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String dlB;
-  public int odq;
+  public LinkedList<dvn> EMe;
+  
+  public dvm()
+  {
+    AppMethodBeat.i(91733);
+    this.EMe = new LinkedList();
+    AppMethodBeat.o(91733);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(187836);
+    AppMethodBeat.i(91734);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dlB != null) {
-        paramVarArgs.d(1, this.dlB);
-      }
-      paramVarArgs.aR(2, this.odq);
-      AppMethodBeat.o(187836);
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.EMe);
+      AppMethodBeat.o(91734);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.dlB == null) {
-        break label258;
-      }
-    }
-    label258:
-    for (paramInt = f.a.a.b.b.a.e(1, this.dlB) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(2, this.odq);
-      AppMethodBeat.o(187836);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
-          }
-        }
-        AppMethodBeat.o(187836);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        dvm localdvm = (dvm)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(187836);
-          return -1;
-        case 1: 
-          localdvm.dlB = locala.KhF.readString();
-          AppMethodBeat.o(187836);
-          return 0;
-        }
-        localdvm.odq = locala.KhF.xS();
-        AppMethodBeat.o(187836);
-        return 0;
-      }
-      AppMethodBeat.o(187836);
-      return -1;
+      paramInt = f.a.a.a.c(1, 8, this.EMe);
+      AppMethodBeat.o(91734);
+      return paramInt + 0;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.EMe.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gfg();
+        }
+      }
+      AppMethodBeat.o(91734);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      dvm localdvm = (dvm)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(91734);
+        return -1;
+      }
+      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new dvn();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((dvn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localdvm.EMe.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(91734);
+      return 0;
+    }
+    AppMethodBeat.o(91734);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dvm
  * JD-Core Version:    0.7.0.1
  */

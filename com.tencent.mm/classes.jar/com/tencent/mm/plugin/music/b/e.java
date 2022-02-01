@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.music.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class e
 {
-  public static String cTA()
+  public static String dhk()
   {
     AppMethodBeat.i(137015);
-    String str = "audio" + ai.du(new StringBuilder().append(System.nanoTime()).toString());
+    String str = "audio" + ah.dg(new StringBuilder().append(System.nanoTime()).toString());
     AppMethodBeat.o(137015);
     return str;
   }

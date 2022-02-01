@@ -3,42 +3,42 @@ package com.tencent.mm.ui.contact;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.chatting.ChattingUI;
 
 public class SelectSpecialContactUI
   extends MMBaseSelectContactUI
 {
-  private int GXV;
+  private int Iyl;
   private String title;
   
-  protected final void VL()
+  protected final void WJ()
   {
     AppMethodBeat.i(38040);
-    super.VL();
+    super.WJ();
     this.title = getIntent().getStringExtra("titile");
-    this.GXV = getIntent().getIntExtra("list_attr", 0);
+    this.Iyl = getIntent().getIntExtra("list_attr", 0);
     AppMethodBeat.o(38040);
   }
   
-  protected final boolean aHt()
+  protected final boolean aOi()
   {
     return false;
   }
   
-  protected final boolean aHu()
+  protected final boolean aOj()
   {
     return false;
   }
   
-  protected final String aHv()
+  protected final String aOk()
   {
     return this.title;
   }
   
-  protected final q aHw()
+  protected final q aOl()
   {
     AppMethodBeat.i(38042);
     ae localae = new ae(this, getIntent().getStringExtra("filter_type"));
@@ -46,7 +46,7 @@ public class SelectSpecialContactUI
     return localae;
   }
   
-  protected final o aHx()
+  protected final o aOm()
   {
     return null;
   }
@@ -57,10 +57,10 @@ public class SelectSpecialContactUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void pT(int paramInt)
+  public final void qG(int paramInt)
   {
     AppMethodBeat.i(38041);
-    Object localObject = fbz().ZC(paramInt);
+    Object localObject = frq().abQ(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(38041);
@@ -72,9 +72,9 @@ public class SelectSpecialContactUI
       return;
     }
     localObject = ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username;
-    ad.i("MicroMsg.SelectSpecialContactUI", "ClickUser=%s", new Object[] { localObject });
+    ac.i("MicroMsg.SelectSpecialContactUI", "ClickUser=%s", new Object[] { localObject });
     Intent localIntent = new Intent();
-    if (u.hasAttr(this.GXV, 16384))
+    if (u.hasAttr(this.Iyl, 16384))
     {
       localIntent.putExtra("Select_Contact", (String)localObject);
       setResult(-1, localIntent);
@@ -82,7 +82,7 @@ public class SelectSpecialContactUI
       AppMethodBeat.o(38041);
       return;
     }
-    if (u.hasAttr(this.GXV, 32768))
+    if (u.hasAttr(this.Iyl, 32768))
     {
       localIntent.putExtra("Contact_User", (String)localObject);
       localIntent.putExtra("CONTACT_INFO_UI_SOURCE", 20);
@@ -93,9 +93,9 @@ public class SelectSpecialContactUI
     localIntent.setClass(this, ChattingUI.class);
     localIntent.putExtra("Chat_User", (String)localObject);
     localIntent.putExtra("finish_direct", true);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/contact/SelectSpecialContactUI", "handleItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/contact/SelectSpecialContactUI", "handleItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/SelectSpecialContactUI", "handleItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     AppMethodBeat.o(38041);
@@ -103,7 +103,7 @@ public class SelectSpecialContactUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.SelectSpecialContactUI
  * JD-Core Version:    0.7.0.1
  */

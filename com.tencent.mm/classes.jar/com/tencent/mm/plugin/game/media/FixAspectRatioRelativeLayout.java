@@ -7,12 +7,12 @@ import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class FixAspectRatioRelativeLayout
   extends RelativeLayout
 {
-  private float rQP;
+  private float rcc;
   
   public FixAspectRatioRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,7 +34,7 @@ public class FixAspectRatioRelativeLayout
   {
     AppMethodBeat.i(40898);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, f.a.FixAspectRatioImageView, paramInt, 0);
-    this.rQP = paramContext.getFloat(0, 0.0F);
+    this.rcc = paramContext.getFloat(0, 0.0F);
     paramContext.recycle();
     AppMethodBeat.o(40898);
   }
@@ -44,8 +44,8 @@ public class FixAspectRatioRelativeLayout
     AppMethodBeat.i(40899);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);
-    int i = (int)(this.rQP * paramInt1);
-    ad.i("MicroMsg.FixAspectRatioRelativeLayout", "width = %d, height = %d, ratioHeight = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+    int i = (int)(this.rcc * paramInt1);
+    ac.i("MicroMsg.FixAspectRatioRelativeLayout", "width = %d, height = %d, ratioHeight = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(i, 1073741824));
     AppMethodBeat.o(40899);
   }

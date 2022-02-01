@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.api.e;
 import com.tencent.mm.plugin.game.d.ba;
@@ -16,7 +16,7 @@ import com.tencent.mm.plugin.game.d.cl;
 import com.tencent.mm.plugin.game.d.cw;
 import com.tencent.mm.plugin.game.f.d;
 import com.tencent.mm.plugin.game.ui.GameMediaList.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,30 +24,30 @@ import java.util.LinkedList;
 public final class z
   extends x
 {
-  private boolean rRF;
-  public ba rXO;
-  public c rXP;
-  public aa rXQ;
+  private boolean sZv;
+  public ba tfG;
+  public c tfH;
+  public aa tfI;
   
   public z(a parama)
   {
     AppMethodBeat.i(41525);
     if (parama == null)
     {
-      this.rXO = new ba();
+      this.tfG = new ba();
       AppMethodBeat.o(41525);
       return;
     }
-    this.rXO = ((ba)parama);
-    this.rRF = false;
-    VL();
+    this.tfG = ((ba)parama);
+    this.sZv = false;
+    WJ();
     AppMethodBeat.o(41525);
   }
   
   public z(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41526);
-    this.rXO = new ba();
+    this.tfG = new ba();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41526);
@@ -55,9 +55,9 @@ public final class z
     }
     try
     {
-      this.rXO.parseFrom(paramArrayOfByte);
-      this.rRF = true;
-      VL();
+      this.tfG.parseFrom(paramArrayOfByte);
+      this.sZv = true;
+      WJ();
       AppMethodBeat.o(41526);
       return;
     }
@@ -65,117 +65,93 @@ public final class z
     {
       for (;;)
       {
-        ad.e("MicroMsg.GamePBDataDetail", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+        ac.e("MicroMsg.GamePBDataDetail", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       }
     }
   }
   
-  private void VL()
+  private void WJ()
   {
     AppMethodBeat.i(41527);
-    this.rXP = cDv();
-    if (this.rRF)
+    this.tfH = cQF();
+    if (this.sZv)
     {
-      this.rXQ = new aa(this.rXP.field_appId);
-      if (!this.rRF)
+      this.tfI = new aa(this.tfH.field_appId);
+      if (!this.sZv)
       {
-        d.c(this.rXP);
-        ((e)g.ab(e.class)).cBe().b(this.rXP.field_appId, this.rXO);
+        d.c(this.tfH);
+        ((e)g.ab(e.class)).cOn().b(this.tfH.field_appId, this.tfG);
       }
       AppMethodBeat.o(41527);
       return;
     }
-    String str = this.rXP.field_appId;
-    if (this.rXO.sbY != null) {}
-    for (LinkedList localLinkedList = this.rXO.sbY.sdx;; localLinkedList = null)
+    String str = this.tfH.field_appId;
+    if (this.tfG.tjS != null) {}
+    for (LinkedList localLinkedList = this.tfG.tjS.tlr;; localLinkedList = null)
     {
-      this.rXQ = new aa(str, localLinkedList);
+      this.tfI = new aa(str, localLinkedList);
       break;
     }
   }
   
-  private c cDv()
+  private c cQF()
   {
     AppMethodBeat.i(41528);
-    c localc = a(this.rXO.rZp);
+    c localc = a(this.tfG.thi);
     if (localc != null)
     {
       localc.scene = 12;
-      localc.dvS = 1201;
+      localc.dtF = 1201;
     }
     AppMethodBeat.o(41528);
     return localc;
   }
   
-  public final String cDA()
+  public final String cQG()
   {
-    if ((this.rXO.sbV == null) || (this.rXO.sbV.saB == null)) {
-      return null;
+    if (this.tfG.tjW != null) {
+      return this.tfG.tjW.title;
     }
-    return this.rXO.sbV.saB;
-  }
-  
-  public final String cDB()
-  {
-    if (this.rXO.sbW == null) {
-      return null;
-    }
-    return this.rXO.sbW.Title;
-  }
-  
-  public final LinkedList<bw> cDC()
-  {
-    if (this.rXO.sbW == null) {
-      return null;
-    }
-    return this.rXO.sbW.scO;
-  }
-  
-  public final String cDw()
-  {
-    if (this.rXO.scc != null) {
-      return this.rXO.scc.title;
-    }
-    if (this.rXO.sbX != null) {
-      return this.rXO.sbX.Title;
+    if (this.tfG.tjR != null) {
+      return this.tfG.tjR.Title;
     }
     return null;
   }
   
-  public final LinkedList<b> cDx()
+  public final LinkedList<b> cQH()
   {
     AppMethodBeat.i(41529);
     LinkedList localLinkedList;
     Iterator localIterator;
     Object localObject;
     b localb;
-    if ((this.rXO.scc != null) && (this.rXO.scc.nvu != null))
+    if ((this.tfG.tjW != null) && (this.tfG.tjW.nYu != null))
     {
       localLinkedList = new LinkedList();
-      localIterator = this.rXO.scc.nvu.iterator();
+      localIterator = this.tfG.tjW.nYu.iterator();
       while (localIterator.hasNext())
       {
         localObject = (bz)localIterator.next();
         localb = new b();
-        localb.dub = ((bz)localObject).dub;
+        localb.drM = ((bz)localObject).drM;
         localb.desc = ((bz)localObject).desc;
         localLinkedList.add(localb);
       }
       AppMethodBeat.o(41529);
       return localLinkedList;
     }
-    if ((this.rXO.sbX != null) && (this.rXO.sbX.scJ != null))
+    if ((this.tfG.tjR != null) && (this.tfG.tjR.tkD != null))
     {
       localLinkedList = new LinkedList();
-      localIterator = this.rXO.sbX.scJ.iterator();
+      localIterator = this.tfG.tjR.tkD.iterator();
       while (localIterator.hasNext())
       {
         localObject = (bt)localIterator.next();
         localb = new b();
-        localb.dub = ((bt)localObject).scM;
+        localb.drM = ((bt)localObject).tkG;
         localb.title = ((bt)localObject).Title;
-        localb.desc = ((bt)localObject).saB;
-        localb.url = ((bt)localObject).rZr;
+        localb.desc = ((bt)localObject).tiv;
+        localb.url = ((bt)localObject).thk;
         localLinkedList.add(localb);
       }
       AppMethodBeat.o(41529);
@@ -185,39 +161,63 @@ public final class z
     return null;
   }
   
-  public final int cDy()
+  public final int cQI()
   {
-    if (this.rXO.scc != null) {
+    if (this.tfG.tjW != null) {
       return 2;
     }
     return 1;
   }
   
-  public final String cDz()
+  public final String cQJ()
   {
-    if ((this.rXO.sbV == null) || (this.rXO.sbV.Title == null)) {
+    if ((this.tfG.tjP == null) || (this.tfG.tjP.Title == null)) {
       return null;
     }
-    return this.rXO.sbV.Title;
+    return this.tfG.tjP.Title;
+  }
+  
+  public final String cQK()
+  {
+    if ((this.tfG.tjP == null) || (this.tfG.tjP.tiv == null)) {
+      return null;
+    }
+    return this.tfG.tjP.tiv;
+  }
+  
+  public final String cQL()
+  {
+    if (this.tfG.tjQ == null) {
+      return null;
+    }
+    return this.tfG.tjQ.Title;
+  }
+  
+  public final LinkedList<bw> cQM()
+  {
+    if (this.tfG.tjQ == null) {
+      return null;
+    }
+    return this.tfG.tjQ.tkI;
   }
   
   public final LinkedList<GameMediaList.a> getMediaList()
   {
     AppMethodBeat.i(41530);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.rXO.sbV == null) || (this.rXO.sbV.rOa == null))
+    if ((this.tfG.tjP == null) || (this.tfG.tjP.sVR == null))
     {
       AppMethodBeat.o(41530);
       return localLinkedList;
     }
-    Iterator localIterator = this.rXO.sbV.rOa.iterator();
+    Iterator localIterator = this.tfG.tjP.sVR.iterator();
     while (localIterator.hasNext())
     {
       cl localcl = (cl)localIterator.next();
       GameMediaList.a locala = new GameMediaList.a();
-      locala.type = localcl.rNT;
-      locala.skI = localcl.sdi;
-      locala.url = localcl.sdj;
+      locala.type = localcl.sVK;
+      locala.tsB = localcl.tlc;
+      locala.url = localcl.tld;
       localLinkedList.add(locala);
     }
     AppMethodBeat.o(41530);
@@ -234,14 +234,14 @@ public final class z
   public static final class b
   {
     public String desc;
-    public String dub;
+    public String drM;
     public String title;
     public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.z
  * JD-Core Version:    0.7.0.1
  */

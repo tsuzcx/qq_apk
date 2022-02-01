@@ -6,86 +6,96 @@ import com.tencent.mm.plugin.report.a;
 public final class dp
   extends a
 {
-  private String dHr = "";
-  public long dTX = 0L;
-  private String dUW = "";
-  public long dUX = 0L;
-  private String dUY = "";
-  public long dUZ = 0L;
+  private String dFh;
+  public int dHw;
+  private String dJb;
+  public long dSr;
+  private String dSs;
+  public int dSt;
+  public long dSu;
+  public int dSv;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(94854);
+    AppMethodBeat.i(198554);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dUW);
+    ((StringBuffer)localObject).append(this.dHw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHr);
+    ((StringBuffer)localObject).append(this.dSr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUX);
+    ((StringBuffer)localObject).append(this.dJb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUY);
+    ((StringBuffer)localObject).append(this.dSs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUZ);
+    ((StringBuffer)localObject).append(this.dFh);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTX);
+    ((StringBuffer)localObject).append(this.dSt);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dSu);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dSv);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(94854);
+    arz((String)localObject);
+    AppMethodBeat.o(198554);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(94855);
+    AppMethodBeat.i(198555);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("EnterObjectId:").append(this.dUW);
+    ((StringBuffer)localObject).append("Scene:").append(this.dHw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dHr);
+    ((StringBuffer)localObject).append("PatTime:").append(this.dSr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeUinCount:").append(this.dUX);
+    ((StringBuffer)localObject).append("Username:").append(this.dJb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeUinList:").append(this.dUY);
+    ((StringBuffer)localObject).append("PattedUserName:").append(this.dSs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeNewVideoCount:").append(this.dUZ);
+    ((StringBuffer)localObject).append("ChatroomName:").append(this.dFh);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("InteractiveUserCount:").append(this.dTX);
+    ((StringBuffer)localObject).append("ErrorCode:").append(this.dSt);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("TimeInterval:").append(this.dSu);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsHitLocalFrequency:").append(this.dSv);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(94855);
+    AppMethodBeat.o(198555);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16843;
+    return 19878;
   }
   
-  public final dp jS(String paramString)
+  public final dp lB(String paramString)
   {
-    AppMethodBeat.i(94851);
-    this.dUW = t("EnterObjectId", paramString, true);
-    AppMethodBeat.o(94851);
+    AppMethodBeat.i(198551);
+    this.dJb = t("Username", paramString, true);
+    AppMethodBeat.o(198551);
     return this;
   }
   
-  public final dp jT(String paramString)
+  public final dp lC(String paramString)
   {
-    AppMethodBeat.i(94852);
-    this.dHr = t("SessionId", paramString, true);
-    AppMethodBeat.o(94852);
+    AppMethodBeat.i(198552);
+    this.dSs = t("PattedUserName", paramString, true);
+    AppMethodBeat.o(198552);
     return this;
   }
   
-  public final dp jU(String paramString)
+  public final dp lD(String paramString)
   {
-    AppMethodBeat.i(94853);
-    this.dUY = t("ExposeUinList", paramString, true);
-    AppMethodBeat.o(94853);
+    AppMethodBeat.i(198553);
+    this.dFh = t("ChatroomName", paramString, true);
+    AppMethodBeat.o(198553);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.dp
  * JD-Core Version:    0.7.0.1
  */

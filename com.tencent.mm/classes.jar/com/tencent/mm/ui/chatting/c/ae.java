@@ -7,7 +7,7 @@ public abstract interface ae
 {
   public abstract void a(AvatarImageView paramAvatarImageView);
   
-  public abstract void eYi();
+  public abstract void fnU();
 }
 
 

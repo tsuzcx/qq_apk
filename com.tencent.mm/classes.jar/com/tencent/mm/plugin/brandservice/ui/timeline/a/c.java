@@ -5,18 +5,18 @@ import d.g.a.a;
 import d.l;
 import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizSimpleViewPool;", "T", "", "callback", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)V", "newObj", "pool", "Ljava/util/LinkedList;", "get", "()Ljava/lang/Object;", "put", "", "view", "(Ljava/lang/Object;)Z", "plugin-brandservice_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizSimpleViewPool;", "T", "", "callback", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)V", "newObj", "pool", "Ljava/util/LinkedList;", "get", "()Ljava/lang/Object;", "put", "", "view", "(Ljava/lang/Object;)Z", "plugin-brandservice_release"})
 public final class c<T>
 {
-  final LinkedList<T> mYF;
-  a<? extends T> mYG;
+  final LinkedList<T> nBe;
+  a<? extends T> nBf;
   
   public c(a<? extends T> parama)
   {
-    AppMethodBeat.i(193038);
-    this.mYF = new LinkedList();
-    this.mYG = parama;
-    AppMethodBeat.o(193038);
+    AppMethodBeat.i(198832);
+    this.nBe = new LinkedList();
+    this.nBf = parama;
+    AppMethodBeat.o(198832);
   }
 }
 

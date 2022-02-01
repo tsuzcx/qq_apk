@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.graphics.drawable.b;
 import android.support.v4.graphics.drawable.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class e
   implements b.h
@@ -43,7 +43,7 @@ public class e
     return null;
   }
   
-  public String AL()
+  public String Ap()
   {
     return "RoundedBitmap";
   }
@@ -56,8 +56,8 @@ public class e
       AppMethodBeat.o(176005);
       return paramBitmap;
     }
-    Object localObject = d.a(aj.getResources(), paramBitmap);
-    ((b)localObject).dX();
+    Object localObject = d.a(ai.getResources(), paramBitmap);
+    ((b)localObject).ei();
     localObject = drawableToBitmap((Drawable)localObject);
     if (localObject != paramBitmap) {
       paramBitmap.recycle();
@@ -68,7 +68,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.e
  * JD-Core Version:    0.7.0.1
  */

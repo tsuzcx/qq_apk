@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.clg;
+import com.tencent.mm.protocal.protobuf.cqn;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,10 +14,10 @@ public class FTSLocalPageRelevantView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private String jko = null;
+  private String jKB = null;
   private String query = null;
-  private b rxn = null;
-  private List<clg> rxo = null;
+  private b sGf = null;
+  private List<cqn> sGg = null;
   
   public FTSLocalPageRelevantView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,8 +39,8 @@ public class FTSLocalPageRelevantView
   
   public String getSearchId()
   {
-    if (this.jko != null) {
-      return this.jko;
+    if (this.jKB != null) {
+      return this.jKB;
     }
     return "";
   }
@@ -49,16 +49,16 @@ public class FTSLocalPageRelevantView
   {
     AppMethodBeat.i(112265);
     Object localObject = new StringBuilder("");
-    if (this.rxo != null)
+    if (this.sGg != null)
     {
-      Iterator localIterator = this.rxo.iterator();
+      Iterator localIterator = this.sGg.iterator();
       while (localIterator.hasNext())
       {
-        clg localclg = (clg)localIterator.next();
+        cqn localcqn = (cqn)localIterator.next();
         if (((StringBuilder)localObject).length() > 0) {
           ((StringBuilder)localObject).append("|");
         }
-        ((StringBuilder)localObject).append(localclg.EgD);
+        ((StringBuilder)localObject).append(localcqn.FtK);
       }
     }
     localObject = ((StringBuilder)localObject).toString();
@@ -69,7 +69,7 @@ public class FTSLocalPageRelevantView
   public void onClick(View paramView)
   {
     AppMethodBeat.i(112264);
-    if ((this.rxn != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof a))) {
+    if ((this.sGf != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof a))) {
       paramView.getTag();
     }
     AppMethodBeat.o(112264);
@@ -77,7 +77,7 @@ public class FTSLocalPageRelevantView
   
   public void setOnRelevantClickListener(b paramb)
   {
-    this.rxn = paramb;
+    this.sGf = paramb;
   }
   
   final class a {}

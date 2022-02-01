@@ -9,8 +9,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.luggage.l;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class bc
@@ -21,10 +21,10 @@ public class bc
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78625);
-    ad.i("MicroMsg.JsApiSetNavigationBarButtons", "invokeInOwn");
-    String str1 = parama.bZV.bZb.optString("left");
-    Object localObject = parama.bZV.bZb.optString("right");
-    if ((bt.isNullOrNil(str1)) && (bt.isNullOrNil((String)localObject)))
+    ac.i("MicroMsg.JsApiSetNavigationBarButtons", "invokeInOwn");
+    String str1 = parama.bWS.bVY.optString("left");
+    Object localObject = parama.bWS.bVY.optString("right");
+    if ((bs.isNullOrNil(str1)) && (bs.isNullOrNil((String)localObject)))
     {
       parama.a("fail", null);
       AppMethodBeat.o(78625);
@@ -34,7 +34,7 @@ public class bc
     try
     {
       str1 = new JSONObject(str1).optString("color", "");
-      if (!bt.isNullOrNil(str1)) {
+      if (!bs.isNullOrNil(str1)) {
         localBundle.putString("set_navigation_bar_buttons_left_text_color", str1);
       }
       try
@@ -42,7 +42,7 @@ public class bc
         localObject = new JSONObject((String)localObject);
         boolean bool1 = ((JSONObject)localObject).optBoolean("hidden", false);
         str1 = ((JSONObject)localObject).optString("text", "");
-        String str2 = bt.nullAsNil(x.aCN(((JSONObject)localObject).optString("iconData", "")));
+        String str2 = bs.nullAsNil(x.aIf(((JSONObject)localObject).optString("iconData", "")));
         String str3 = ((JSONObject)localObject).optString("color", "");
         boolean bool2 = ((JSONObject)localObject).optBoolean("needClickEvent", false);
         if (bool1) {
@@ -57,9 +57,9 @@ public class bc
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException1, "setNavigationBarButtons opt right ", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException1, "setNavigationBarButtons opt right ", new Object[0]);
         }
-        l locall = ((f)parama.bZU).ekS();
+        l locall = ((f)parama.bWR).eAo();
         if (locall != null) {
           break label318;
         }
@@ -81,7 +81,7 @@ public class bc
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException2, "setNavigationBarButtons opt left ", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException2, "setNavigationBarButtons opt left ", new Object[0]);
         continue;
         label259:
         localBundle.putBoolean("set_navigation_bar_buttons_hide_right_button", true);
@@ -90,7 +90,7 @@ public class bc
     label318:
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

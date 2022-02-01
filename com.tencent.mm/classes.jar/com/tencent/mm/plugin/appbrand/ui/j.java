@@ -7,22 +7,22 @@ import android.content.ServiceConnection;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.z;
 
 public final class j
   extends MutableContextWrapper
 {
-  private ContextThemeWrapper lBZ;
+  private ContextThemeWrapper mdV;
   
   private j(Context paramContext, int paramInt)
   {
     super(paramContext);
     AppMethodBeat.i(177763);
-    this.lBZ = new a(paramContext.getApplicationContext(), paramInt);
+    this.mdV = new a(paramContext.getApplicationContext(), paramInt);
     if (!(paramContext instanceof ContextThemeWrapper))
     {
-      super.setBaseContext(this.lBZ);
+      super.setBaseContext(this.mdV);
       AppMethodBeat.o(177763);
       return;
     }
@@ -30,10 +30,10 @@ public final class j
     AppMethodBeat.o(177763);
   }
   
-  public static j dF(Context paramContext)
+  public static j dO(Context paramContext)
   {
     AppMethodBeat.i(48774);
-    paramContext = new j(paramContext, q.boF());
+    paramContext = new j(paramContext, q.bvA());
     AppMethodBeat.o(48774);
     return paramContext;
   }
@@ -52,7 +52,7 @@ public final class j
       AppMethodBeat.o(48776);
       return;
     }
-    super.setBaseContext(this.lBZ);
+    super.setBaseContext(this.mdV);
     AppMethodBeat.o(48776);
   }
   
@@ -67,7 +67,7 @@ public final class j
     }
     catch (IllegalArgumentException paramServiceConnection)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandRuntimePersistentContextWrapper", paramServiceConnection, "[CAPTURED CRASH]", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AppBrandRuntimePersistentContextWrapper", paramServiceConnection, "[CAPTURED CRASH]", new Object[0]);
       AppMethodBeat.o(48778);
     }
   }
@@ -91,7 +91,7 @@ public final class j
           if (this.mInflater == null)
           {
             this.mInflater = ((LayoutInflater)super.getSystemService(paramString));
-            this.mInflater = y.b(this.mInflater);
+            this.mInflater = z.b(this.mInflater);
           }
           paramString = this.mInflater;
           return paramString;
@@ -109,7 +109,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.j
  * JD-Core Version:    0.7.0.1
  */

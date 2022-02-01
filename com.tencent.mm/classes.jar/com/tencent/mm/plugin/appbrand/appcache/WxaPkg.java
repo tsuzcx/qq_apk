@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.pkg.WxaPkgBaseImpl;
 import com.tencent.mm.plugin.appbrand.appcache.pkg.WxaPkgMixedImpl;
@@ -7,8 +10,8 @@ import com.tencent.mm.plugin.appbrand.appcache.pkg.b;
 import com.tencent.mm.plugin.appbrand.appstorage.FileStat;
 import com.tencent.mm.plugin.appbrand.appstorage.FileStructStat;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -30,36 +33,36 @@ import java.util.Map;
 public final class WxaPkg
   implements p, Closeable
 {
-  public static final ByteOrder iNA = ByteOrder.BIG_ENDIAN;
-  public final e fGL;
-  public volatile boolean iLs;
-  volatile Map<String, WxaPkg.Info> iLy;
-  private volatile RandomAccessFile iNB;
-  private volatile FileChannel iNC;
-  private volatile FileStructStat iND;
-  private volatile com.tencent.mm.plugin.appbrand.appcache.pkg.a iNE;
+  public static final ByteOrder jnI = ByteOrder.BIG_ENDIAN;
+  public final e fKs;
+  volatile Map<String, Info> jlF;
+  public volatile boolean jlz;
+  private volatile RandomAccessFile jnJ;
+  private volatile FileChannel jnK;
+  private volatile FileStructStat jnL;
+  private volatile com.tencent.mm.plugin.appbrand.appcache.pkg.a jnM;
   
   public WxaPkg(e parame)
   {
     AppMethodBeat.i(175554);
-    this.iNC = null;
-    this.iLs = true;
-    this.iLy = null;
-    this.fGL = parame;
+    this.jnK = null;
+    this.jlz = true;
+    this.jlF = null;
+    this.fKs = parame;
     int i;
-    if ((this.fGL == null) || (!this.fGL.exists()))
+    if ((this.fKs == null) || (!this.fKs.exists()))
     {
       i = 0;
-      if ((i == 0) || (!aQh())) {
+      if ((i == 0) || (!aWZ())) {
         break label96;
       }
     }
     for (;;)
     {
-      this.iLs = bool;
+      this.jlz = bool;
       AppMethodBeat.o(175554);
       return;
-      if (this.fGL.length() > 14L)
+      if (this.fKs.length() > 14L)
       {
         i = 1;
         break;
@@ -79,54 +82,54 @@ public final class WxaPkg
   }
   
   /* Error */
-  public static int DZ(String paramString)
+  public static int Ic(String paramString)
   {
     // Byte code:
-    //   0: ldc 85
-    //   2: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 88
+    //   2: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 2	com/tencent/mm/plugin/appbrand/appcache/WxaPkg
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 86	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 89	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:<init>	(Ljava/lang/String;)V
     //   13: astore_3
     //   14: aconst_null
     //   15: astore_2
     //   16: aload_3
-    //   17: getfield 52	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:iLs	Z
+    //   17: getfield 55	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:jlz	Z
     //   20: ifeq +19 -> 39
     //   23: aload_3
-    //   24: invokevirtual 90	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:version	()I
+    //   24: invokevirtual 93	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:version	()I
     //   27: istore_1
     //   28: aload_3
-    //   29: invokevirtual 93	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:close	()V
-    //   32: ldc 85
-    //   34: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   29: invokevirtual 96	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:close	()V
+    //   32: ldc 88
+    //   34: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: iload_1
     //   38: ireturn
     //   39: iconst_0
     //   40: istore_1
     //   41: goto -13 -> 28
     //   44: astore_2
-    //   45: ldc 85
-    //   47: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: ldc 88
+    //   47: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: aload_2
     //   51: athrow
     //   52: astore_0
     //   53: aload_2
     //   54: ifnull +23 -> 77
     //   57: aload_3
-    //   58: invokevirtual 93	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:close	()V
-    //   61: ldc 85
-    //   63: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   58: invokevirtual 96	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:close	()V
+    //   61: ldc 88
+    //   63: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   66: aload_0
     //   67: athrow
     //   68: astore_3
     //   69: aload_2
     //   70: aload_3
-    //   71: invokevirtual 97	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   71: invokevirtual 100	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   74: goto -13 -> 61
     //   77: aload_3
-    //   78: invokevirtual 93	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:close	()V
+    //   78: invokevirtual 96	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:close	()V
     //   81: goto -20 -> 61
     //   84: astore_0
     //   85: goto -32 -> 53
@@ -147,47 +150,47 @@ public final class WxaPkg
   }
   
   /* Error */
-  private InputStream a(WxaPkg.Info paramInfo)
+  private InputStream a(Info paramInfo)
   {
     // Byte code:
-    //   0: ldc 102
-    //   2: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 105
+    //   2: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 56	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:fGL	Lcom/tencent/mm/vfs/e;
-    //   9: getfield 106	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
-    //   12: invokestatic 112	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
+    //   6: getfield 59	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:fKs	Lcom/tencent/mm/vfs/e;
+    //   9: getfield 109	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
+    //   12: invokestatic 115	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   15: iconst_0
-    //   16: invokestatic 118	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   16: invokestatic 121	com/tencent/mm/vfs/i:cY	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   19: astore_3
     //   20: aload_3
     //   21: astore_2
     //   22: aload_1
-    //   23: getfield 122	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:iLS	I
+    //   23: getfield 125	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:jlZ	I
     //   26: newarray byte
     //   28: astore 4
     //   30: aload_3
     //   31: astore_2
     //   32: aload_3
     //   33: aload_1
-    //   34: getfield 125	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:iLR	I
+    //   34: getfield 128	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:jlY	I
     //   37: i2l
-    //   38: invokevirtual 131	java/io/RandomAccessFile:seek	(J)V
+    //   38: invokevirtual 134	java/io/RandomAccessFile:seek	(J)V
     //   41: aload_3
     //   42: astore_2
     //   43: aload_3
     //   44: aload 4
-    //   46: invokevirtual 135	java/io/RandomAccessFile:readFully	([B)V
+    //   46: invokevirtual 138	java/io/RandomAccessFile:readFully	([B)V
     //   49: aload_3
     //   50: astore_2
-    //   51: new 137	java/io/ByteArrayInputStream
+    //   51: new 140	java/io/ByteArrayInputStream
     //   54: dup
     //   55: aload 4
-    //   57: invokespecial 139	java/io/ByteArrayInputStream:<init>	([B)V
+    //   57: invokespecial 142	java/io/ByteArrayInputStream:<init>	([B)V
     //   60: astore 4
     //   62: aload_3
-    //   63: invokestatic 145	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
-    //   66: ldc 102
-    //   68: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   63: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   66: ldc 105
+    //   68: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: aload 4
     //   73: areturn
     //   74: astore 4
@@ -195,40 +198,40 @@ public final class WxaPkg
     //   77: astore_3
     //   78: aload_3
     //   79: astore_2
-    //   80: ldc 147
-    //   82: ldc 149
+    //   80: ldc 150
+    //   82: ldc 152
     //   84: iconst_3
     //   85: anewarray 4	java/lang/Object
     //   88: dup
     //   89: iconst_0
     //   90: aload_0
-    //   91: getfield 56	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:fGL	Lcom/tencent/mm/vfs/e;
-    //   94: getfield 106	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
-    //   97: invokestatic 112	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
+    //   91: getfield 59	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:fKs	Lcom/tencent/mm/vfs/e;
+    //   94: getfield 109	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
+    //   97: invokestatic 115	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   100: aastore
     //   101: dup
     //   102: iconst_1
     //   103: aload_1
-    //   104: getfield 153	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:fileName	Ljava/lang/String;
+    //   104: getfield 156	com/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info:fileName	Ljava/lang/String;
     //   107: aastore
     //   108: dup
     //   109: iconst_2
     //   110: aload 4
     //   112: aastore
-    //   113: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   113: invokestatic 162	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   116: aload_3
-    //   117: invokestatic 145	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
-    //   120: ldc 102
-    //   122: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   120: ldc 105
+    //   122: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   125: aconst_null
     //   126: areturn
     //   127: astore_1
     //   128: aconst_null
     //   129: astore_2
     //   130: aload_2
-    //   131: invokestatic 145	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
-    //   134: ldc 102
-    //   136: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   131: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   134: ldc 105
+    //   136: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: aload_1
     //   140: athrow
     //   141: astore_1
@@ -238,7 +241,7 @@ public final class WxaPkg
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	150	0	this	WxaPkg
-    //   0	150	1	paramInfo	WxaPkg.Info
+    //   0	150	1	paramInfo	Info
     //   21	110	2	localRandomAccessFile1	RandomAccessFile
     //   19	98	3	localRandomAccessFile2	RandomAccessFile
     //   28	44	4	localObject	Object
@@ -259,16 +262,16 @@ public final class WxaPkg
     //   51	62	145	java/lang/Exception
   }
   
-  private boolean aQh()
+  private boolean aWZ()
   {
     AppMethodBeat.i(134285);
-    if (this.iNC == null) {}
+    if (this.jnK == null) {}
     try
     {
-      RandomAccessFile localRandomAccessFile = i.cS(q.B(this.fGL.mUri), false);
-      this.iNB = localRandomAccessFile;
-      this.iNC = localRandomAccessFile.getChannel();
-      if (this.iNC == null)
+      RandomAccessFile localRandomAccessFile = i.cY(q.B(this.fKs.mUri), false);
+      this.jnJ = localRandomAccessFile;
+      this.jnK = localRandomAccessFile.getChannel();
+      if (this.jnK == null)
       {
         AppMethodBeat.o(134285);
         return false;
@@ -278,27 +281,27 @@ public final class WxaPkg
     {
       for (;;)
       {
-        ad.e("MicroMsg.AppBrandWxaPkg", "open(), exp = %s", new Object[] { bt.m(localFileNotFoundException) });
+        ac.e("MicroMsg.AppBrandWxaPkg", "open(), exp = %s", new Object[] { bs.m(localFileNotFoundException) });
       }
-      int i = aQi();
+      int i = aXa();
       if (i < 0)
       {
-        ad.e("MicroMsg.AppBrandWxaPkg", "parseHeader, version is %d", new Object[] { Integer.valueOf(i) });
+        ac.e("MicroMsg.AppBrandWxaPkg", "parseHeader, version is %d", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(134285);
         return false;
       }
-      ad.i("MicroMsg.AppBrandWxaPkg", "wxapkg version: %d", new Object[] { Integer.valueOf(i) });
+      ac.i("MicroMsg.AppBrandWxaPkg", "wxapkg version: %d", new Object[] { Integer.valueOf(i) });
       Object localObject = null;
       switch (i)
       {
       }
       for (;;)
       {
-        this.iNE = ((com.tencent.mm.plugin.appbrand.appcache.pkg.a)localObject);
-        if (this.iNE != null) {
+        this.jnM = ((com.tencent.mm.plugin.appbrand.appcache.pkg.a)localObject);
+        if (this.jnM != null) {
           break;
         }
-        ad.e("MicroMsg.AppBrandWxaPkg", "parseHeader, mIWxaPkgAction is null");
+        ac.e("MicroMsg.AppBrandWxaPkg", "parseHeader, mIWxaPkgAction is null");
         AppMethodBeat.o(134285);
         return false;
         localObject = new b();
@@ -307,56 +310,56 @@ public final class WxaPkg
       }
       try
       {
-        boolean bool = this.iNE.a(this.iNC);
+        boolean bool = this.jnM.a(this.jnK);
         AppMethodBeat.o(134285);
         return bool;
       }
       catch (IOException localIOException)
       {
-        ad.e("MicroMsg.AppBrandWxaPkg", "parseHeader, exp = %s", new Object[] { bt.m(localIOException) });
+        ac.e("MicroMsg.AppBrandWxaPkg", "parseHeader, exp = %s", new Object[] { bs.m(localIOException) });
         AppMethodBeat.o(134285);
       }
     }
     return true;
   }
   
-  private int aQi()
+  private int aXa()
   {
     AppMethodBeat.i(175555);
     int i = -1;
     try
     {
-      this.iNC.position(1L);
+      this.jnK.position(1L);
       ByteBuffer localByteBuffer = ByteBuffer.allocate(4);
-      localByteBuffer.order(iNA);
-      this.iNC.read(localByteBuffer);
-      int j = WxaPkgBaseImpl.r(localByteBuffer.array(), 0, 4);
+      localByteBuffer.order(jnI);
+      this.jnK.read(localByteBuffer);
+      int j = WxaPkgBaseImpl.q(localByteBuffer.array(), 0, 4);
       i = j;
     }
     catch (IOException localIOException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.AppBrandWxaPkg", "getVersionFromHead, exp = %s", new Object[] { bt.m(localIOException) });
+        ac.e("MicroMsg.AppBrandWxaPkg", "getVersionFromHead, exp = %s", new Object[] { bs.m(localIOException) });
       }
     }
     AppMethodBeat.o(175555);
     return i;
   }
   
-  public final InputStream DM(String paramString)
+  public final InputStream HP(String paramString)
   {
     AppMethodBeat.i(134281);
-    WxaPkg.Info localInfo = openReadPartialInfo(paramString);
-    if ((this.iNE != null) && (this.iNE.b(localInfo)))
+    Info localInfo = openReadPartialInfo(paramString);
+    if ((this.jnM != null) && (this.jnM.b(localInfo)))
     {
       if (localInfo != null)
       {
-        paramString = this.iNE;
+        paramString = this.jnM;
         AppMethodBeat.o(134281);
         return null;
       }
-      ad.w("MicroMsg.AppBrandWxaPkg", "can't find info of file: %s", new Object[] { paramString });
+      ac.w("MicroMsg.AppBrandWxaPkg", "can't find info of file: %s", new Object[] { paramString });
       AppMethodBeat.o(134281);
       return null;
     }
@@ -370,49 +373,49 @@ public final class WxaPkg
       }
       try
       {
-        Object localObject = this.iNC.map(FileChannel.MapMode.READ_ONLY, localInfo.iLR, localInfo.iLS);
-        ((MappedByteBuffer)localObject).order(iNA);
-        ((MappedByteBuffer)localObject).limit(localInfo.iLS);
+        Object localObject = this.jnK.map(FileChannel.MapMode.READ_ONLY, localInfo.jlY, localInfo.jlZ);
+        ((MappedByteBuffer)localObject).order(jnI);
+        ((MappedByteBuffer)localObject).limit(localInfo.jlZ);
         localObject = new com.tencent.luggage.h.a((ByteBuffer)localObject);
         AppMethodBeat.o(134281);
         return localObject;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.AppBrandWxaPkg", "handleOpenReadFile, fileName = %s, fileOffset = %d, fileLength = %d, exp = %s", new Object[] { paramString, Integer.valueOf(localInfo.iLR), Integer.valueOf(localInfo.iLS), bt.m(localException) });
+        ac.e("MicroMsg.AppBrandWxaPkg", "handleOpenReadFile, fileName = %s, fileOffset = %d, fileLength = %d, exp = %s", new Object[] { paramString, Integer.valueOf(localInfo.jlY), Integer.valueOf(localInfo.jlZ), bs.m(localException) });
         AppMethodBeat.o(134281);
         return null;
       }
     }
-    ad.w("MicroMsg.AppBrandWxaPkg", "can't find info of file: %s", new Object[] { paramString });
+    ac.w("MicroMsg.AppBrandWxaPkg", "can't find info of file: %s", new Object[] { paramString });
     AppMethodBeat.o(134281);
     return null;
   }
   
-  public final boolean aPe()
+  public final boolean aVW()
   {
     AppMethodBeat.i(134283);
-    if ((!this.iLs) || (this.iNC == null) || (this.iNE == null) || (this.iNE.aQD() <= 4))
+    if ((!this.jlz) || (this.jnK == null) || (this.jnM == null) || (this.jnM.aXv() <= 4))
     {
-      boolean bool = this.iLs;
-      FileChannel localFileChannel = this.iNC;
-      if (this.iNE == null) {}
-      for (int i = -1;; i = this.iNE.aQD())
+      boolean bool = this.jlz;
+      FileChannel localFileChannel = this.jnK;
+      if (this.jnM == null) {}
+      for (int i = -1;; i = this.jnM.aXv())
       {
-        ad.e("MicroMsg.AppBrandWxaPkg", "readInfo, valid = %b, (null == mFileChannel) = %b, mBodyInfoLength = %d, skip", new Object[] { Boolean.valueOf(bool), localFileChannel, Integer.valueOf(i) });
+        ac.e("MicroMsg.AppBrandWxaPkg", "readInfo, valid = %b, (null == mFileChannel) = %b, mBodyInfoLength = %d, skip", new Object[] { Boolean.valueOf(bool), localFileChannel, Integer.valueOf(i) });
         AppMethodBeat.o(134283);
         return false;
       }
     }
-    if ((this.iLy != null) && (this.iNE.aQE() >= 0) && (this.iNE.aQE() == this.iLy.size()))
+    if ((this.jlF != null) && (this.jnM.aXw() >= 0) && (this.jnM.aXw() == this.jlF.size()))
     {
       AppMethodBeat.o(134283);
       return true;
     }
     try
     {
-      this.iLy = this.iNE.a(this.iNC, this.fGL);
-      if (this.iLy != null)
+      this.jlF = this.jnM.a(this.jnK, this.fKs);
+      if (this.jlF != null)
       {
         AppMethodBeat.o(134283);
         return true;
@@ -422,49 +425,49 @@ public final class WxaPkg
     {
       for (;;)
       {
-        ad.e("MicroMsg.AppBrandWxaPkg", "readInfo, exp = %s", new Object[] { bt.m(localException) });
+        ac.e("MicroMsg.AppBrandWxaPkg", "readInfo, exp = %s", new Object[] { bs.m(localException) });
       }
       AppMethodBeat.o(134283);
     }
     return false;
   }
   
-  public final FileStructStat aQe()
+  public final FileStructStat aWW()
   {
     AppMethodBeat.i(134278);
-    FileStructStat localFileStructStat2 = this.iND;
+    FileStructStat localFileStructStat2 = this.jnL;
     FileStructStat localFileStructStat1 = localFileStructStat2;
     if (localFileStructStat2 == null)
     {
       localFileStructStat1 = new FileStructStat();
-      FileStat.b(q.B(this.fGL.fhU()), localFileStructStat1);
-      this.iND = localFileStructStat1;
+      FileStat.b(q.B(this.fKs.fxV()), localFileStructStat1);
+      this.jnL = localFileStructStat1;
     }
     AppMethodBeat.o(134278);
     return localFileStructStat1;
   }
   
-  public final String aQf()
+  public final String aWX()
   {
-    AppMethodBeat.i(204824);
-    String str = q.B(this.fGL.fhU());
-    AppMethodBeat.o(204824);
+    AppMethodBeat.i(210319);
+    String str = q.B(this.fKs.fxV());
+    AppMethodBeat.o(210319);
     return str;
   }
   
-  public final List<WxaPkg.Info> aQg()
+  public final List<Info> aWY()
   {
     AppMethodBeat.i(134284);
-    if (!aPe()) {
-      ad.e("MicroMsg.AppBrandWxaPkg", "listInfos readInfo returns false");
+    if (!aVW()) {
+      ac.e("MicroMsg.AppBrandWxaPkg", "listInfos readInfo returns false");
     }
-    if (this.iLy == null)
+    if (this.jlF == null)
     {
       localObject = Collections.emptyList();
       AppMethodBeat.o(134284);
       return localObject;
     }
-    Object localObject = new LinkedList(this.iLy.values());
+    Object localObject = new LinkedList(this.jlF.values());
     AppMethodBeat.o(134284);
     return localObject;
   }
@@ -472,17 +475,17 @@ public final class WxaPkg
   public final void close()
   {
     AppMethodBeat.i(134279);
-    if (this.iNC != null) {}
+    if (this.jnK != null) {}
     try
     {
-      this.iNC.close();
-      this.iNC = null;
+      this.jnK.close();
+      this.jnK = null;
       label25:
-      if (this.iNB != null) {
+      if (this.jnJ != null) {
         try
         {
-          this.iNB.close();
-          this.iNB = null;
+          this.jnJ.close();
+          this.jnJ = null;
           AppMethodBeat.o(134279);
           return;
         }
@@ -503,8 +506,8 @@ public final class WxaPkg
     try
     {
       close();
-      if (this.iNE != null) {
-        this.iNE.close();
+      if (this.jnM != null) {
+        this.jnM.close();
       }
       return;
     }
@@ -515,37 +518,37 @@ public final class WxaPkg
     }
   }
   
-  public final WxaPkg.Info openReadPartialInfo(String paramString)
+  public final Info openReadPartialInfo(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(134280);
-    if ((this.iLy == null) || (bt.isNullOrNil(paramString)))
+    if ((this.jlF == null) || (bs.isNullOrNil(paramString)))
     {
       boolean bool;
-      if (this.iLy == null)
+      if (this.jlF == null)
       {
         bool = true;
-        if (this.iLy != null) {
+        if (this.jlF != null) {
           break label81;
         }
       }
       for (;;)
       {
-        ad.e("MicroMsg.AppBrandWxaPkg", "handleInterruptReadFile, mFileMap null = %b, mFileMap size = %d, fileName = %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), paramString });
+        ac.e("MicroMsg.AppBrandWxaPkg", "handleInterruptReadFile, mFileMap null = %b, mFileMap size = %d, fileName = %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), paramString });
         AppMethodBeat.o(134280);
         return null;
         bool = false;
         break;
         label81:
-        i = this.iLy.size();
+        i = this.jlF.size();
       }
     }
-    WxaPkg.Info localInfo2 = (WxaPkg.Info)this.iLy.get(paramString);
-    WxaPkg.Info localInfo1 = localInfo2;
+    Info localInfo2 = (Info)this.jlF.get(paramString);
+    Info localInfo1 = localInfo2;
     if (localInfo2 == null)
     {
-      paramString = m.EV(paramString);
-      localInfo1 = (WxaPkg.Info)this.iLy.get(paramString);
+      paramString = m.IY(paramString);
+      localInfo1 = (Info)this.jlF.get(paramString);
     }
     AppMethodBeat.o(134280);
     return localInfo1;
@@ -554,19 +557,69 @@ public final class WxaPkg
   public final int version()
   {
     AppMethodBeat.i(182984);
-    if (this.iNE == null)
+    if (this.jnM == null)
     {
       AppMethodBeat.o(182984);
       return -1;
     }
-    int i = this.iNE.getVersion();
+    int i = this.jnM.getVersion();
     AppMethodBeat.o(182984);
     return i;
+  }
+  
+  public static class Info
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<Info> CREATOR;
+    public final String fileName;
+    public final int jlY;
+    public final int jlZ;
+    public final String jnN;
+    
+    static
+    {
+      AppMethodBeat.i(182981);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(182981);
+    }
+    
+    protected Info(Parcel paramParcel)
+    {
+      AppMethodBeat.i(182980);
+      this.jnN = paramParcel.readString();
+      this.fileName = paramParcel.readString();
+      this.jlY = paramParcel.readInt();
+      this.jlZ = paramParcel.readInt();
+      AppMethodBeat.o(182980);
+    }
+    
+    public Info(String paramString1, String paramString2, int paramInt1, int paramInt2)
+    {
+      this.jnN = paramString1;
+      this.fileName = paramString2;
+      this.jlY = paramInt1;
+      this.jlZ = paramInt2;
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(182979);
+      paramParcel.writeString(this.jnN);
+      paramParcel.writeString(this.fileName);
+      paramParcel.writeInt(this.jlY);
+      paramParcel.writeInt(this.jlZ);
+      AppMethodBeat.o(182979);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.WxaPkg
  * JD-Core Version:    0.7.0.1
  */

@@ -18,6 +18,8 @@ public class XWalkSettings
   private ArrayList<Object> constructorParams;
   private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
+  private ReflectMethod disableCustomizedLongPressTimeoutVoidMethod;
+  private ReflectMethod enableCustomizedLongPressTimeoutIntMethod;
   private ReflectMethod enumLayoutAlgorithmClassValueOfMethod;
   private ReflectMethod getAcceptLanguagesMethod;
   private ReflectMethod getAllowContentAccessMethod;
@@ -163,6 +165,8 @@ public class XWalkSettings
     this.getMediaPlaybackRequiresUserGestureMethod = new ReflectMethod(null, "getMediaPlaybackRequiresUserGesture", new Class[0]);
     this.setAudioPlaybackRequiresUserGesturebooleanMethod = new ReflectMethod(null, "setAudioPlaybackRequiresUserGesture", new Class[0]);
     this.getAudioPlaybackRequiresUserGestureMethod = new ReflectMethod(null, "getAudioPlaybackRequiresUserGesture", new Class[0]);
+    this.enableCustomizedLongPressTimeoutIntMethod = new ReflectMethod(null, "enableCustomizedLongPressTimeout", new Class[0]);
+    this.disableCustomizedLongPressTimeoutVoidMethod = new ReflectMethod(null, "disableCustomizedLongPressTimeout", new Class[0]);
     this.setVideoPlaybackRequiresUserGesturebooleanMethod = new ReflectMethod(null, "setVideoPlaybackRequiresUserGesture", new Class[0]);
     this.getVideoPlaybackRequiresUserGestureMethod = new ReflectMethod(null, "getVideoPlaybackRequiresUserGesture", new Class[0]);
     this.setUsingForAppBrandMethod = new ReflectMethod(null, "setUsingForAppBrand", new Class[0]);
@@ -282,6 +286,52 @@ public class XWalkSettings
     AppMethodBeat.i(161642);
     InvokeChannel(30003, new String[] { String.valueOf(paramLong) });
     AppMethodBeat.o(161642);
+  }
+  
+  public void disableCustomizedLongPressTimeout()
+  {
+    AppMethodBeat.i(208974);
+    try
+    {
+      this.disableCustomizedLongPressTimeoutVoidMethod.invoke(new Object[0]);
+      AppMethodBeat.o(208974);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(208974);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(208974);
+    }
+  }
+  
+  public void enableCustomizedLongPressTimeout(int paramInt)
+  {
+    AppMethodBeat.i(208973);
+    try
+    {
+      this.enableCustomizedLongPressTimeoutIntMethod.invoke(new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(208973);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(208973);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(208973);
+    }
   }
   
   public String getAcceptLanguages()
@@ -1253,6 +1303,8 @@ public class XWalkSettings
     this.getAudioPlaybackRequiresUserGestureMethod.init(this.bridge, null, "getAudioPlaybackRequiresUserGestureSuper", new Class[0]);
     this.setVideoPlaybackRequiresUserGesturebooleanMethod.init(this.bridge, null, "setVideoPlaybackRequiresUserGestureSuper", new Class[] { Boolean.TYPE });
     this.getVideoPlaybackRequiresUserGestureMethod.init(this.bridge, null, "getVideoPlaybackRequiresUserGestureSuper", new Class[0]);
+    this.enableCustomizedLongPressTimeoutIntMethod.init(this.bridge, null, "enableCustomizedLongPressTimeoutSuper", new Class[] { Integer.TYPE });
+    this.disableCustomizedLongPressTimeoutVoidMethod.init(this.bridge, null, "disableCustomizedLongPressTimeoutSuper", new Class[0]);
     this.setUsingForAppBrandMethod.init(this.bridge, null, "setUsingForAppBrandSuper", new Class[] { Integer.TYPE });
     this.getUsingForAppBrandMethod.init(this.bridge, null, "getUsingForAppBrandSuper", new Class[0]);
     this.setUserAgentStringStringMethod.init(this.bridge, null, "setUserAgentStringSuper", new Class[] { String.class });

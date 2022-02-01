@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,23 +22,23 @@ import java.util.List;
 public class KeyValuePreference
   extends Preference
 {
-  private int ERM;
-  public String FNA;
-  public boolean Gfe;
-  private boolean Gff;
-  private boolean Gfg;
-  private boolean Gfh;
-  private int Gfi;
-  public int Gfj;
-  protected ImageView Gfk;
-  public Drawable Gfl;
-  private List<View> Gfm;
-  public int Gfn;
-  int Gfo;
+  private int GoZ;
+  public boolean HET;
+  private boolean HEU;
+  private boolean HEV;
+  private boolean HEW;
+  private int HEX;
+  public int HEY;
+  protected ImageView HEZ;
+  public Drawable HFa;
+  private List<View> HFb;
+  public int HFc;
+  int HFd;
+  public String Hnl;
   private View contentView;
-  public float oqc;
+  public float oTC;
   protected TextView titleTv;
-  protected TextView uCm;
+  protected TextView vLf;
   
   public KeyValuePreference(Context paramContext)
   {
@@ -54,55 +54,55 @@ public class KeyValuePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142578);
-    this.Gfe = true;
-    this.Gff = false;
-    this.FNA = null;
-    this.Gfg = false;
-    this.Gfh = false;
-    this.ERM = 17;
-    this.Gfi = 17;
-    this.Gfj = 0;
-    this.Gfk = null;
-    this.Gfl = null;
-    this.Gfm = new LinkedList();
+    this.HET = true;
+    this.HEU = false;
+    this.Hnl = null;
+    this.HEV = false;
+    this.HEW = false;
+    this.GoZ = 17;
+    this.HEX = 17;
+    this.HEY = 0;
+    this.HEZ = null;
+    this.HFa = null;
+    this.HFb = new LinkedList();
     setLayoutResource(2131494804);
     AppMethodBeat.o(142578);
   }
   
-  public final void XY(int paramInt)
+  public final void aaj(int paramInt)
   {
     AppMethodBeat.i(142581);
-    this.Gfo = paramInt;
-    if (this.uCm != null) {
-      this.uCm.setMaxLines(this.Gfo);
+    this.HFd = paramInt;
+    if (this.vLf != null) {
+      this.vLf.setMaxLines(this.HFd);
     }
     AppMethodBeat.o(142581);
   }
   
-  public final void eTC()
+  public final void fT(View paramView)
   {
-    this.Gfh = true;
-    this.Gfi = 5;
+    AppMethodBeat.i(142584);
+    this.HFb.add(paramView);
+    AppMethodBeat.o(142584);
   }
   
-  public final void eTD()
+  public final void fjo()
+  {
+    this.HEW = true;
+    this.HEX = 5;
+  }
+  
+  public final void fjp()
   {
     AppMethodBeat.i(142583);
-    this.Gfm.clear();
+    this.HFb.clear();
     AppMethodBeat.o(142583);
   }
   
-  public final void eTE()
+  public final void fjq()
   {
-    this.Gfg = true;
-    this.ERM = 49;
-  }
-  
-  public final void fG(View paramView)
-  {
-    AppMethodBeat.i(142584);
-    this.Gfm.add(paramView);
-    AppMethodBeat.o(142584);
+    this.HEV = true;
+    this.GoZ = 49;
   }
   
   public void onBindView(View paramView)
@@ -110,80 +110,80 @@ public class KeyValuePreference
     AppMethodBeat.i(142580);
     super.onBindView(paramView);
     this.contentView = paramView.findViewById(2131304242);
-    if (this.GfO != null) {
+    if (this.HFD != null) {
       this.contentView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(142576);
-          KeyValuePreference.this.GfO.dbW();
+          KeyValuePreference.this.HFD.dpE();
           AppMethodBeat.o(142576);
         }
       });
     }
-    if (this.GfP != null) {
+    if (this.HFE != null) {
       paramView.setOnLongClickListener(new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
         {
           AppMethodBeat.i(142577);
-          boolean bool = KeyValuePreference.this.GfP.ddk();
+          boolean bool = KeyValuePreference.this.HFE.dqS();
           AppMethodBeat.o(142577);
           return bool;
         }
       });
     }
-    this.uCm = ((TextView)paramView.findViewById(16908304));
-    if (this.uCm != null)
+    this.vLf = ((TextView)paramView.findViewById(16908304));
+    if (this.vLf != null)
     {
-      this.uCm.setSingleLine(this.Gfe);
-      if (this.Gfh) {
-        this.uCm.setGravity(this.Gfi);
+      this.vLf.setSingleLine(this.HET);
+      if (this.HEW) {
+        this.vLf.setGravity(this.HEX);
       }
     }
-    if (this.Gff) {
+    if (this.HEU) {
       setWidgetLayoutResource(2131494884);
     }
     this.titleTv = ((TextView)paramView.findViewById(16908310));
-    if (!bt.isNullOrNil(this.FNA)) {
-      this.titleTv.setText(this.FNA);
+    if (!bs.isNullOrNil(this.Hnl)) {
+      this.titleTv.setText(this.Hnl);
     }
     Object localObject;
     int i;
     if (this.titleTv != null)
     {
       localObject = this.titleTv.getLayoutParams();
-      if (this.Gfn == 0)
+      if (this.HFc == 0)
       {
-        i = a.ao(this.mContext, 2131165370);
+        i = a.au(this.mContext, 2131165370);
         ((ViewGroup.LayoutParams)localObject).width = i;
         this.titleTv.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
     else
     {
-      this.Gfk = ((ImageView)paramView.findViewById(2131300943));
-      if (this.Gfl == null) {
+      this.HEZ = ((ImageView)paramView.findViewById(2131300943));
+      if (this.HFa == null) {
         break label368;
       }
-      this.Gfk.setVisibility(this.Gfj);
-      this.Gfk.setImageDrawable(this.Gfl);
+      this.HEZ.setVisibility(this.HEY);
+      this.HEZ.setImageDrawable(this.HFa);
     }
     for (;;)
     {
-      if (this.Gfg)
+      if (this.HEV)
       {
         localObject = (LinearLayout)paramView.findViewById(2131298736);
         if (localObject != null) {
-          ((LinearLayout)localObject).setGravity(this.ERM);
+          ((LinearLayout)localObject).setGravity(this.GoZ);
         }
       }
-      if (this.Gfm.size() <= 0) {
+      if (this.HFb.size() <= 0) {
         break label380;
       }
       paramView = (LinearLayout)paramView.findViewById(2131305550);
       paramView.removeAllViews();
-      localObject = this.Gfm.iterator();
+      localObject = this.HFb.iterator();
       while (((Iterator)localObject).hasNext())
       {
         View localView = (View)((Iterator)localObject).next();
@@ -193,19 +193,19 @@ public class KeyValuePreference
         }
         paramView.addView(localView);
       }
-      i = this.Gfn;
+      i = this.HFc;
       break;
       label368:
-      this.Gfk.setVisibility(8);
+      this.HEZ.setVisibility(8);
     }
     label380:
-    if (this.oqc != 0.0F)
+    if (this.oTC != 0.0F)
     {
-      this.titleTv.setTextSize(this.oqc);
-      this.uCm.setTextSize(this.oqc);
+      this.titleTv.setTextSize(this.oTC);
+      this.vLf.setTextSize(this.oTC);
     }
-    if (this.Gfo > 0) {
-      this.uCm.setMaxLines(this.Gfo);
+    if (this.HFd > 0) {
+      this.vLf.setMaxLines(this.HFd);
     }
     AppMethodBeat.o(142580);
   }
@@ -222,11 +222,11 @@ public class KeyValuePreference
     return paramViewGroup;
   }
   
-  public final void vR(boolean paramBoolean)
+  public final void wV(boolean paramBoolean)
   {
     AppMethodBeat.i(142582);
-    this.Gff = paramBoolean;
-    if (this.Gff) {
+    this.HEU = paramBoolean;
+    if (this.HEU) {
       setWidgetLayoutResource(2131494884);
     }
     AppMethodBeat.o(142582);
@@ -234,7 +234,7 @@ public class KeyValuePreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.KeyValuePreference
  * JD-Core Version:    0.7.0.1
  */

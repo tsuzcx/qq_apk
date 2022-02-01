@@ -6,27 +6,27 @@ import java.util.Map;
 
 public final class b
 {
-  public Map<String, c> AwV;
+  public Map<String, c> BPp;
   
   b()
   {
     AppMethodBeat.i(71804);
-    this.AwV = new HashMap();
+    this.BPp = new HashMap();
     AppMethodBeat.o(71804);
   }
   
   b(String paramString, c paramc)
   {
     AppMethodBeat.i(71805);
-    this.AwV = new HashMap();
-    this.AwV.clear();
-    this.AwV.put(paramString, paramc);
+    this.BPp = new HashMap();
+    this.BPp.clear();
+    this.BPp.put(paramString, paramc);
     AppMethodBeat.o(71805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.b.a.b
  * JD-Core Version:    0.7.0.1
  */

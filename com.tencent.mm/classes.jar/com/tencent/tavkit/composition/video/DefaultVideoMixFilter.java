@@ -15,25 +15,25 @@ class DefaultVideoMixFilter
 {
   private void checkFillInRenderSize(RenderInfo paramRenderInfo, ImageCollection.TrackImagePair paramTrackImagePair, CIImage paramCIImage)
   {
-    AppMethodBeat.i(204731);
+    AppMethodBeat.i(192103);
     if (!(paramTrackImagePair.getTrack() instanceof TAVClip))
     {
-      AppMethodBeat.o(204731);
+      AppMethodBeat.o(192103);
       return;
     }
     paramTrackImagePair = ((TAVClip)paramTrackImagePair.getTrack()).getVideoConfiguration();
     if (Utils.isRectValid(paramTrackImagePair.getFrame()))
     {
-      AppMethodBeat.o(204731);
+      AppMethodBeat.o(192103);
       return;
     }
     paramCIImage.applyFillInFrame(new CGRect(new PointF(0.0F, 0.0F), paramRenderInfo.getRenderSize()), paramTrackImagePair.getContentMode());
-    AppMethodBeat.o(204731);
+    AppMethodBeat.o(192103);
   }
   
   public CIImage apply(TAVVideoMixEffect paramTAVVideoMixEffect, ImageCollection paramImageCollection, RenderInfo paramRenderInfo)
   {
-    AppMethodBeat.i(204730);
+    AppMethodBeat.i(192102);
     paramTAVVideoMixEffect = new CIImage(paramRenderInfo.getRenderSize());
     Object localObject1 = paramImageCollection.getVideoChannelImages().iterator();
     Object localObject2;
@@ -52,7 +52,7 @@ class DefaultVideoMixFilter
       checkFillInRenderSize(paramRenderInfo, (ImageCollection.TrackImagePair)localObject1, (CIImage)localObject2);
       ((CIImage)localObject2).imageByCompositingOverImage(paramTAVVideoMixEffect);
     }
-    AppMethodBeat.o(204730);
+    AppMethodBeat.o(192102);
     return paramTAVVideoMixEffect;
   }
   
@@ -60,7 +60,7 @@ class DefaultVideoMixFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.DefaultVideoMixFilter
  * JD-Core Version:    0.7.0.1
  */

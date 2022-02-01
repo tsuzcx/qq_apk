@@ -6,11 +6,11 @@ import com.tencent.luggage.a.e;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.plugin.appbrand.u.a;
-import com.tencent.mm.plugin.appbrand.u.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.plugin.appbrand.t.a;
+import com.tencent.mm.plugin.appbrand.t.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,7 +22,7 @@ public class WcWss
   {
     AppMethodBeat.i(144293);
     WcWss.class.getClassLoader();
-    j.pq("wcwss");
+    j.sC("wcwss");
     gMapCallbacks = new HashMap();
     AppMethodBeat.o(144293);
   }
@@ -33,11 +33,11 @@ public class WcWss
     int i = connectSocket(paramString1, paramString2, paramArrayOfObject1, paramArrayOfObject2, null, paramObject, paramArrayOfObject3);
     if (i > 0)
     {
-      ad.i("MicroMsg.WcWss", "connect wss pair(%s, %d)", new Object[] { paramString1, Integer.valueOf(i) });
+      ac.i("MicroMsg.WcWss", "connect wss pair(%s, %d)", new Object[] { paramString1, Integer.valueOf(i) });
       paramString2 = new Pair(paramString1, Integer.valueOf(i));
       if (gMapCallbacks.containsKey(paramString2))
       {
-        ad.e("MicroMsg.WcWss", "already exists pair(%s, %d)", new Object[] { paramString1, Integer.valueOf(i) });
+        ac.e("MicroMsg.WcWss", "already exists pair(%s, %d)", new Object[] { paramString1, Integer.valueOf(i) });
         AppMethodBeat.o(144283);
         return -1;
       }
@@ -47,10 +47,10 @@ public class WcWss
     return i;
   }
   
-  public static void bet()
+  public static void bln()
   {
     AppMethodBeat.i(144282);
-    ad.i("MicroMsg.WcWss", "initWcWss");
+    ac.i("MicroMsg.WcWss", "initWcWss");
     init();
     AppMethodBeat.o(144282);
   }
@@ -63,7 +63,7 @@ public class WcWss
   public static int doCertificateVerify(String paramString1, int paramInt, String paramString2, byte[][] paramArrayOfByte)
   {
     AppMethodBeat.i(144291);
-    ad.i("MicroMsg.WcWss", "doCertificateVerify group:%s,wssId:%s,hostname:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    ac.i("MicroMsg.WcWss", "doCertificateVerify group:%s,wssId:%s,hostname:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     paramString1 = new Pair(paramString1, Integer.valueOf(paramInt));
     if (gMapCallbacks.containsKey(paramString1))
     {
@@ -71,7 +71,7 @@ public class WcWss
       AppMethodBeat.o(144291);
       return paramInt;
     }
-    ad.e("MicroMsg.WcWss", "onMessage callback is null");
+    ac.e("MicroMsg.WcWss", "onMessage callback is null");
     AppMethodBeat.o(144291);
     return -1;
   }
@@ -90,37 +90,37 @@ public class WcWss
     AppMethodBeat.i(144292);
     try
     {
-      int i = ay.getNetType(aj.getContext());
+      int i = ax.getNetType(ai.getContext());
       if (i == -1)
       {
         AppMethodBeat.o(144292);
         return -1;
       }
-      boolean bool = ay.is2G(aj.getContext());
+      boolean bool = ax.is2G(ai.getContext());
       if (bool)
       {
         AppMethodBeat.o(144292);
         return 3;
       }
-      bool = ay.is3G(aj.getContext());
+      bool = ax.is3G(ai.getContext());
       if (bool)
       {
         AppMethodBeat.o(144292);
         return 4;
       }
-      bool = ay.is4G(aj.getContext());
+      bool = ax.is4G(ai.getContext());
       if (bool)
       {
         AppMethodBeat.o(144292);
         return 5;
       }
-      bool = ay.isWifi(i);
+      bool = ax.isWifi(i);
       if (bool)
       {
         AppMethodBeat.o(144292);
         return 1;
       }
-      bool = ay.isWap(i);
+      bool = ax.isWap(i);
       if (bool)
       {
         AppMethodBeat.o(144292);
@@ -131,7 +131,7 @@ public class WcWss
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.WcWss", localException, "getStatisticsNetType_", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.WcWss", localException, "getStatisticsNetType_", new Object[0]);
       AppMethodBeat.o(144292);
     }
     return -1;
@@ -143,7 +143,7 @@ public class WcWss
   public static void onClose(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(144287);
-    ad.i("MicroMsg.WcWss", "onClose group:%s,id:%s, reason:%s, code:%s", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.WcWss", "onClose group:%s,id:%s, reason:%s, code:%s", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2) });
     Pair localPair = new Pair(paramString1, Integer.valueOf(paramInt1));
     if (gMapCallbacks.containsKey(localPair))
     {
@@ -152,7 +152,7 @@ public class WcWss
       AppMethodBeat.o(144287);
       return;
     }
-    ad.e("MicroMsg.WcWss", "onClose callback is null");
+    ac.e("MicroMsg.WcWss", "onClose callback is null");
     AppMethodBeat.o(144287);
   }
   
@@ -160,7 +160,7 @@ public class WcWss
   public static void onHandShake(String paramString, int paramInt, String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
     AppMethodBeat.i(144284);
-    ad.i("MicroMsg.WcWss", "onHandShake group:%s, wssId:%s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.WcWss", "onHandShake group:%s, wssId:%s", new Object[] { paramString, Integer.valueOf(paramInt) });
     Pair localPair = new Pair(paramString, Integer.valueOf(paramInt));
     if (gMapCallbacks.containsKey(localPair))
     {
@@ -168,7 +168,7 @@ public class WcWss
       AppMethodBeat.o(144284);
       return;
     }
-    ad.e("MicroMsg.WcWss", "onHandShake callback is null");
+    ac.e("MicroMsg.WcWss", "onHandShake callback is null");
     AppMethodBeat.o(144284);
   }
   
@@ -176,7 +176,7 @@ public class WcWss
   public static void onIdKeyStat(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3)
   {
     AppMethodBeat.i(144289);
-    ad.v("MicroMsg.WcWss", "onIdKeyStat");
+    ac.v("MicroMsg.WcWss", "onIdKeyStat");
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramArrayOfInt1.length)
@@ -192,7 +192,7 @@ public class WcWss
   public static void onKvStat(int paramInt, String paramString)
   {
     AppMethodBeat.i(144288);
-    ad.i("MicroMsg.WcWss", "onKvStat logId:%s", new Object[] { Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.WcWss", "onKvStat logId:%s", new Object[] { Integer.valueOf(paramInt) });
     ((b)e.L(b.class)).kvStat(paramInt, paramString);
     AppMethodBeat.o(144288);
   }
@@ -201,7 +201,7 @@ public class WcWss
   public static void onMessage(String paramString, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
   {
     AppMethodBeat.i(144286);
-    ad.d("MicroMsg.WcWss", "onMessage group:%s,wssId:%s,isText:%s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    ac.d("MicroMsg.WcWss", "onMessage group:%s,wssId:%s,isText:%s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
     Pair localPair = new Pair(paramString, Integer.valueOf(paramInt));
     if (gMapCallbacks.containsKey(localPair))
     {
@@ -209,7 +209,7 @@ public class WcWss
       AppMethodBeat.o(144286);
       return;
     }
-    ad.e("MicroMsg.WcWss", "onMessage callback is null");
+    ac.e("MicroMsg.WcWss", "onMessage callback is null");
     AppMethodBeat.o(144286);
   }
   
@@ -217,7 +217,7 @@ public class WcWss
   public static void onOpen(String paramString1, int paramInt1, boolean paramBoolean, String[] paramArrayOfString1, String[] paramArrayOfString2, int paramInt2, String paramString2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8)
   {
     AppMethodBeat.i(175389);
-    ad.i("MicroMsg.WcWss", "onOpen group:%s,isSuc:%s, msg:%s, code:%s, wssId:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+    ac.i("MicroMsg.WcWss", "onOpen group:%s,isSuc:%s, msg:%s, code:%s, wssId:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
     Pair localPair = new Pair(paramString1, Integer.valueOf(paramInt1));
     if (gMapCallbacks.containsKey(localPair))
     {
@@ -230,7 +230,7 @@ public class WcWss
     }
     else
     {
-      ad.e("MicroMsg.WcWss", "onOpen callback is null");
+      ac.e("MicroMsg.WcWss", "onOpen callback is null");
     }
     AppMethodBeat.o(175389);
   }
@@ -254,7 +254,7 @@ public class WcWss
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.websocket.WcWss
  * JD-Core Version:    0.7.0.1
  */

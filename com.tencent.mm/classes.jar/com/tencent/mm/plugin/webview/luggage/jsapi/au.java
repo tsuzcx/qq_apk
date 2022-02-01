@@ -4,7 +4,7 @@ import android.content.Context;
 import com.tencent.luggage.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class au
   extends bo<f>
@@ -14,12 +14,12 @@ public class au
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78610);
-    ad.i("MicroMsg.JsApiRecordVideo", "invoke");
+    ac.i("MicroMsg.JsApiRecordVideo", "invoke");
     k.a(parama, 1);
     AppMethodBeat.o(78610);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

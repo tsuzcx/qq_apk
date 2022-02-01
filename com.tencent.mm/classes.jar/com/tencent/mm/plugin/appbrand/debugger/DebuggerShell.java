@@ -8,11 +8,11 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.sdk.platformtools.h;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,18 +23,18 @@ public final class DebuggerShell
   extends BroadcastReceiver
   implements com.tencent.mm.kernel.c.a, b
 {
-  private static boolean jgg;
-  private final Map<String, a> jgf;
+  private static boolean jGv;
+  private final Map<String, a> jGu;
   
   static
   {
     AppMethodBeat.i(44944);
-    jgg = false;
-    ad.d("MicroMsg.DebuggerShell", "<clinit> BuildConfig.ENABLE_APPBRAND_MONKEY_TEST=%b", new Object[] { Boolean.valueOf(jgg) });
-    if ((!jgg) && ((h.IS_FLAVOR_RED) || (bu.eGT())))
+    jGv = false;
+    ac.d("MicroMsg.DebuggerShell", "<clinit> BuildConfig.ENABLE_APPBRAND_MONKEY_TEST=%b", new Object[] { Boolean.valueOf(jGv) });
+    if ((!jGv) && ((h.IS_FLAVOR_RED) || (bt.eWo())))
     {
-      jgg = ax.aFC("ENABLE_APPBRAND_DEBUGGER").getBoolean("ENABLE_APPBRAND_DEBUGGER", false);
-      ad.d("MicroMsg.DebuggerShell", "<clinit> ENABLE_MONKEY from mmkv = %b", new Object[] { Boolean.valueOf(jgg) });
+      jGv = aw.aKT("ENABLE_APPBRAND_DEBUGGER").getBoolean("ENABLE_APPBRAND_DEBUGGER", false);
+      ac.d("MicroMsg.DebuggerShell", "<clinit> ENABLE_MONKEY from mmkv = %b", new Object[] { Boolean.valueOf(jGv) });
     }
     AppMethodBeat.o(44944);
   }
@@ -42,19 +42,19 @@ public final class DebuggerShell
   public DebuggerShell()
   {
     AppMethodBeat.i(44937);
-    this.jgf = new HashMap();
+    this.jGu = new HashMap();
     AppMethodBeat.o(44937);
   }
   
-  public static boolean aTY()
+  public static boolean baW()
   {
-    return jgg;
+    return jGv;
   }
   
-  public static boolean aTZ()
+  public static boolean baX()
   {
     AppMethodBeat.i(44941);
-    if ((jgg) || (bu.eGT()))
+    if ((jGv) || (bt.eWo()))
     {
       AppMethodBeat.o(44941);
       return true;
@@ -64,45 +64,45 @@ public final class DebuggerShell
   }
   
   @SuppressLint({"ApplySharedPref"})
-  public static void aUa()
+  public static void baY()
   {
     AppMethodBeat.i(44942);
-    ax.aFC("ENABLE_APPBRAND_DEBUGGER").edit().putBoolean("ENABLE_APPBRAND_DEBUGGER", true).commit();
-    jgg = true;
+    aw.aKT("ENABLE_APPBRAND_DEBUGGER").edit().putBoolean("ENABLE_APPBRAND_DEBUGGER", true).commit();
+    jGv = true;
     AppMethodBeat.o(44942);
   }
   
   @SuppressLint({"ApplySharedPref"})
-  public static void aUb()
+  public static void baZ()
   {
     AppMethodBeat.i(44943);
-    ax.aFC("ENABLE_APPBRAND_DEBUGGER").edit().putBoolean("ENABLE_APPBRAND_DEBUGGER", false).commit();
-    jgg = false;
+    aw.aKT("ENABLE_APPBRAND_DEBUGGER").edit().putBoolean("ENABLE_APPBRAND_DEBUGGER", false).commit();
+    jGv = false;
     AppMethodBeat.o(44943);
   }
   
-  public final void agv()
+  public final void ahM()
   {
     AppMethodBeat.i(44939);
     Object localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("com.tencent.mm.appbrand.debugger");
-    aj.getContext().registerReceiver(this, (IntentFilter)localObject);
-    localObject = a.jge.iterator();
+    ai.getContext().registerReceiver(this, (IntentFilter)localObject);
+    localObject = a.jGt.iterator();
     while (((Iterator)localObject).hasNext())
     {
       a locala = (a)((Iterator)localObject).next();
-      if ((locala != null) && (!bt.isNullOrNil(locala.name()))) {
-        this.jgf.put(locala.name(), locala);
+      if ((locala != null) && (!bs.isNullOrNil(locala.name()))) {
+        this.jGu.put(locala.name(), locala);
       }
     }
     AppMethodBeat.o(44939);
   }
   
-  public final void agw()
+  public final void ahN()
   {
     AppMethodBeat.i(44940);
-    aj.getContext().unregisterReceiver(this);
-    this.jgf.clear();
+    ai.getContext().unregisterReceiver(this);
+    this.jGu.clear();
     AppMethodBeat.o(44940);
   }
   
@@ -110,8 +110,8 @@ public final class DebuggerShell
   {
     AppMethodBeat.i(44938);
     paramContext = paramIntent.getStringExtra("action");
-    if ((!bt.isNullOrNil(paramContext)) && (this.jgf.containsKey(paramContext))) {
-      ((a)this.jgf.get(paramContext)).A(paramIntent);
+    if ((!bs.isNullOrNil(paramContext)) && (this.jGu.containsKey(paramContext))) {
+      ((a)this.jGu.get(paramContext)).A(paramIntent);
     }
     AppMethodBeat.o(44938);
   }
@@ -125,7 +125,7 @@ public final class DebuggerShell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.DebuggerShell
  * JD-Core Version:    0.7.0.1
  */

@@ -25,10 +25,10 @@ public final class x
   {
     AppMethodBeat.i(144176);
     paramIJSRuntime = (h)paramIJSRuntime;
-    if (paramIJSRuntime.cPl == null) {
-      paramIJSRuntime.cPl = new m(paramIJSRuntime, paramIJSRuntime.LI(), new h.5(paramIJSRuntime));
+    if (paramIJSRuntime.cMG == null) {
+      paramIJSRuntime.cMG = new m(paramIJSRuntime, paramIJSRuntime.LG(), new h.5(paramIJSRuntime));
     }
-    paramIJSRuntime = paramIJSRuntime.cPl;
+    paramIJSRuntime = paramIJSRuntime.cMG;
     AppMethodBeat.o(144176);
     return paramIJSRuntime;
   }
@@ -43,7 +43,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.x
  * JD-Core Version:    0.7.0.1
  */

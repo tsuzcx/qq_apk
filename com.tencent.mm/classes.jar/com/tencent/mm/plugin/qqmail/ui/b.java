@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.qqmail.b.ai;
 import com.tencent.mm.plugin.qqmail.b.aj;
 import com.tencent.mm.plugin.qqmail.b.o;
@@ -22,9 +22,9 @@ import com.tencent.mm.plugin.qqmail.b.w;
 import com.tencent.mm.plugin.qqmail.b.w.a;
 import com.tencent.mm.plugin.qqmail.b.w.c;
 import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,37 +34,37 @@ import java.util.Map;
 import java.util.Set;
 
 public final class b
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
   int mode;
-  private TextView uND;
-  private ImageView uNE;
-  ComposeUI uOZ;
-  ViewGroup uPa;
-  Map<String, aj> uPb;
-  Map<String, v> uPc;
-  Map<String, String> uPd;
-  Map<String, String> uPe;
-  b uPf;
-  private View.OnClickListener uPg;
+  private TextView vWt;
+  private ImageView vWu;
+  ComposeUI vXP;
+  ViewGroup vXQ;
+  Map<String, aj> vXR;
+  Map<String, v> vXS;
+  Map<String, String> vXT;
+  Map<String, String> vXU;
+  b vXV;
+  private View.OnClickListener vXW;
   
   private b(ComposeUI paramComposeUI, TextView paramTextView, ImageView paramImageView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(123021);
-    this.uPb = new HashMap();
-    this.uPc = new HashMap();
-    this.uPd = new LinkedHashMap();
-    this.uPe = new LinkedHashMap();
-    this.uPf = null;
-    this.uPg = null;
+    this.vXR = new HashMap();
+    this.vXS = new HashMap();
+    this.vXT = new LinkedHashMap();
+    this.vXU = new LinkedHashMap();
+    this.vXV = null;
+    this.vXW = null;
     this.mode = 5;
-    this.uOZ = paramComposeUI;
-    this.uPa = paramViewGroup;
-    this.uPg = null;
-    this.uND = paramTextView;
-    this.uNE = paramImageView;
-    deE();
-    com.tencent.mm.kernel.g.afA().gcy.a(484, this);
+    this.vXP = paramComposeUI;
+    this.vXQ = paramViewGroup;
+    this.vXW = null;
+    this.vWt = paramTextView;
+    this.vWu = paramImageView;
+    dsm();
+    com.tencent.mm.kernel.g.agQ().ghe.a(484, this);
     AppMethodBeat.o(123021);
   }
   
@@ -73,10 +73,10 @@ public final class b
     this(paramComposeUI, paramTextView, paramImageView, paramViewGroup);
   }
   
-  public final boolean Cq(String paramString)
+  public final boolean Gt(String paramString)
   {
     AppMethodBeat.i(123024);
-    boolean bool = this.uPb.containsKey(paramString);
+    boolean bool = this.vXR.containsKey(paramString);
     AppMethodBeat.o(123024);
     return bool;
   }
@@ -84,7 +84,7 @@ public final class b
   final void a(final aj paramaj)
   {
     AppMethodBeat.i(123025);
-    final LinearLayout localLinearLayout = (LinearLayout)((ViewGroup)View.inflate(this.uOZ, 2131495156, null)).findViewById(2131303313);
+    final LinearLayout localLinearLayout = (LinearLayout)((ViewGroup)View.inflate(this.vXP, 2131495156, null)).findViewById(2131303313);
     ImageView localImageView1 = (ImageView)localLinearLayout.findViewById(2131303312);
     TextView localTextView1 = (TextView)localLinearLayout.findViewById(2131303314);
     TextView localTextView2 = (TextView)localLinearLayout.findViewById(2131303316);
@@ -93,24 +93,24 @@ public final class b
     final ImageView localImageView2 = (ImageView)localLinearLayout.findViewById(2131303315);
     ImageView localImageView3 = (ImageView)localLinearLayout.findViewById(2131303311);
     ((ViewGroup)localLinearLayout.getParent()).removeView(localLinearLayout);
-    localImageView1.setImageResource(FileExplorerUI.aCv(paramaj.name));
+    localImageView1.setImageResource(FileExplorerUI.aHN(paramaj.name));
     localTextView1.setText(paramaj.name);
-    localTextView2.setText(bt.mK(paramaj.size));
+    localTextView2.setText(bs.qz(paramaj.size));
     a locala = new a((byte)0);
-    locala.kXS = localImageView1;
-    locala.imt = localTextView1;
-    locala.uOJ = localTextView2;
-    locala.uPp = localProgressBar;
-    locala.uPq = localTextView3;
-    locala.uPr = localImageView2;
-    locala.uPs = localImageView3;
+    locala.lzC = localImageView1;
+    locala.iMz = localTextView1;
+    locala.vXz = localTextView2;
+    locala.vYf = localProgressBar;
+    locala.vYg = localTextView3;
+    locala.vYh = localImageView2;
+    locala.vYi = localImageView3;
     localLinearLayout.setTag(locala);
     localLinearLayout.setId(Math.abs(paramaj.path.hashCode() / 2));
-    if (this.uPg != null) {
-      localLinearLayout.setOnClickListener(this.uPg);
+    if (this.vXW != null) {
+      localLinearLayout.setOnClickListener(this.vXW);
     }
-    this.uPa.addView(localLinearLayout);
-    deE();
+    this.vXQ.addView(localLinearLayout);
+    dsm();
     localLinearLayout.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -130,15 +130,15 @@ public final class b
         long l;
         if (b.this.mode == 5)
         {
-          l = b.this.ale(paramaj.path);
-          paramaj.uMU = l;
+          l = b.this.aqd(paramaj.path);
+          paramaj.vVK = l;
           AppMethodBeat.o(123009);
           return;
         }
         if (b.this.mode == 6)
         {
-          l = b.this.hZ(paramaj.path, paramaj.name);
-          paramaj.uMU = l;
+          l = b.this.is(paramaj.path, paramaj.name);
+          paramaj.vVK = l;
         }
         AppMethodBeat.o(123009);
       }
@@ -148,40 +148,40 @@ public final class b
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123011);
-        com.tencent.mm.ui.base.h.a(b.this.uOZ, 2131761951, 2131755906, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(b.this.vXP, 2131761951, 2131755906, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
             AppMethodBeat.i(123010);
             aj localaj;
-            if ((b.3.this.uPj.state == 0) || (b.3.this.uPj.state == 1))
+            if ((b.3.this.vXZ.state == 0) || (b.3.this.vXZ.state == 1))
             {
               paramAnonymous2DialogInterface = b.this;
-              localaj = b.3.this.uPj;
+              localaj = b.3.this.vXZ;
               if (paramAnonymous2DialogInterface.mode != 5) {
                 break label216;
               }
-              ((o)com.tencent.mm.kernel.g.ad(o.class)).getNormalMailAppService().cancel(localaj.uMU);
+              ((o)com.tencent.mm.kernel.g.ad(o.class)).getNormalMailAppService().cancel(localaj.vVK);
             }
             for (;;)
             {
-              b.this.uPb.remove(b.3.this.uPj.path);
-              b.this.uPc.remove(b.3.this.uPj.path);
-              b.this.uPd.remove(b.3.this.uPj.path);
-              b.this.uPe.remove(b.3.this.uPj.path);
-              b.this.uPa.removeView(b.3.this.uPk);
-              b.this.deE();
+              b.this.vXR.remove(b.3.this.vXZ.path);
+              b.this.vXS.remove(b.3.this.vXZ.path);
+              b.this.vXT.remove(b.3.this.vXZ.path);
+              b.this.vXU.remove(b.3.this.vXZ.path);
+              b.this.vXQ.removeView(b.3.this.vYa);
+              b.this.dsm();
               AppMethodBeat.o(123010);
               return;
               label216:
               if (paramAnonymous2DialogInterface.mode == 6)
               {
-                v localv = (v)paramAnonymous2DialogInterface.uPc.get(localaj.path);
+                v localv = (v)paramAnonymous2DialogInterface.vXS.get(localaj.path);
                 if (localv != null) {
-                  com.tencent.mm.kernel.g.afA().gcy.a(localv);
+                  com.tencent.mm.kernel.g.agQ().ghe.a(localv);
                 }
-                paramAnonymous2DialogInterface.uPd.remove(localaj.path);
-                paramAnonymous2DialogInterface.uPe.remove(localaj.path);
+                paramAnonymous2DialogInterface.vXT.remove(localaj.path);
+                paramAnonymous2DialogInterface.vXU.remove(localaj.path);
               }
             }
           }
@@ -189,7 +189,7 @@ public final class b
         AppMethodBeat.o(123011);
       }
     });
-    this.uPa.post(new Runnable()
+    this.vXQ.post(new Runnable()
     {
       public final void run()
       {
@@ -202,23 +202,23 @@ public final class b
     {
       if (this.mode == 5)
       {
-        paramaj.uMU = ale(paramaj.path);
+        paramaj.vVK = aqd(paramaj.path);
         AppMethodBeat.o(123025);
         return;
       }
       if (this.mode == 6) {
-        paramaj.uMU = hZ(paramaj.path, paramaj.name);
+        paramaj.vVK = is(paramaj.path, paramaj.name);
       }
     }
     AppMethodBeat.o(123025);
   }
   
-  final long ale(final String paramString)
+  final long aqd(final String paramString)
   {
     AppMethodBeat.i(123029);
     w.c localc = new w.c();
-    localc.uMh = false;
-    localc.uMg = true;
+    localc.vUX = false;
+    localc.vUW = true;
     long l = ((o)com.tencent.mm.kernel.g.ad(o.class)).getNormalMailAppService().a("/cgi-bin/uploaddata", "UploadFile", paramString, localc, new w.a()
     {
       public final void onComplete()
@@ -231,8 +231,8 @@ public final class b
       public final void onError(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(123015);
-        ad.e("MicroMsg.FileUploadHelper", "errCode:%d, desc:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-        paramAnonymousString = (aj)b.this.uPb.get(paramString);
+        ac.e("MicroMsg.FileUploadHelper", "errCode:%d, desc:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        paramAnonymousString = (aj)b.this.vXR.get(paramString);
         if (paramAnonymousString != null)
         {
           paramAnonymousString.state = 3;
@@ -240,11 +240,11 @@ public final class b
         }
         if (paramAnonymousInt == -5)
         {
-          b.this.uOZ.uNK.a(new c.a()
+          b.this.vXP.vWA.a(new c.a()
           {
-            public final void deh() {}
+            public final void drP() {}
             
-            public final void dei() {}
+            public final void drQ() {}
           });
           AppMethodBeat.o(123015);
           return;
@@ -255,7 +255,7 @@ public final class b
       public final boolean onReady()
       {
         AppMethodBeat.i(123013);
-        aj localaj = (aj)b.this.uPb.get(paramString);
+        aj localaj = (aj)b.this.vXR.get(paramString);
         if (localaj != null)
         {
           localaj.state = 1;
@@ -269,11 +269,11 @@ public final class b
       {
         AppMethodBeat.i(123014);
         paramAnonymousString = (String)paramAnonymousMap.get(".Response.result.DataID");
-        paramAnonymousMap = (aj)b.this.uPb.get(paramString);
+        paramAnonymousMap = (aj)b.this.vXR.get(paramString);
         if (paramAnonymousMap != null)
         {
           paramAnonymousMap.state = 2;
-          paramAnonymousMap.stn = paramAnonymousString;
+          paramAnonymousMap.tBd = paramAnonymousString;
           b.this.b(paramAnonymousMap);
         }
         AppMethodBeat.o(123014);
@@ -287,7 +287,7 @@ public final class b
   {
     AppMethodBeat.i(123034);
     int i = Math.abs(paramaj.path.hashCode() / 2);
-    Object localObject = (LinearLayout)this.uPa.findViewById(i);
+    Object localObject = (LinearLayout)this.vXQ.findViewById(i);
     if (localObject == null)
     {
       AppMethodBeat.o(123034);
@@ -301,33 +301,33 @@ public final class b
     {
       AppMethodBeat.o(123034);
       return;
-      ((a)localObject).imt.setTextColor(this.uOZ.getResources().getColor(2131100711));
-      ((a)localObject).uPp.setVisibility(0);
-      ((a)localObject).uPq.setVisibility(8);
-      ((a)localObject).uPr.setVisibility(8);
-      ((a)localObject).uPs.setVisibility(0);
+      ((a)localObject).iMz.setTextColor(this.vXP.getResources().getColor(2131100711));
+      ((a)localObject).vYf.setVisibility(0);
+      ((a)localObject).vYg.setVisibility(8);
+      ((a)localObject).vYh.setVisibility(8);
+      ((a)localObject).vYi.setVisibility(0);
       AppMethodBeat.o(123034);
       return;
-      ((a)localObject).imt.setTextColor(this.uOZ.getResources().getColor(2131100711));
-      ((a)localObject).uPp.setVisibility(8);
-      ((a)localObject).uPq.setVisibility(8);
-      ((a)localObject).uPr.setVisibility(8);
-      ((a)localObject).uPs.setVisibility(0);
+      ((a)localObject).iMz.setTextColor(this.vXP.getResources().getColor(2131100711));
+      ((a)localObject).vYf.setVisibility(8);
+      ((a)localObject).vYg.setVisibility(8);
+      ((a)localObject).vYh.setVisibility(8);
+      ((a)localObject).vYi.setVisibility(0);
       AppMethodBeat.o(123034);
       return;
-      ((a)localObject).imt.setTextColor(a.n(this.uOZ, 2131100544));
-      ((a)localObject).uPp.setVisibility(8);
-      ((a)localObject).uPq.setVisibility(0);
-      ((a)localObject).uPr.setVisibility(0);
-      ((a)localObject).uPs.setVisibility(0);
+      ((a)localObject).iMz.setTextColor(a.n(this.vXP, 2131100544));
+      ((a)localObject).vYf.setVisibility(8);
+      ((a)localObject).vYg.setVisibility(0);
+      ((a)localObject).vYh.setVisibility(0);
+      ((a)localObject).vYi.setVisibility(0);
     }
   }
   
-  public final String deA()
+  public final String dsi()
   {
     AppMethodBeat.i(123026);
     String str1 = "";
-    Iterator localIterator = this.uPb.keySet().iterator();
+    Iterator localIterator = this.vXR.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str3 = (String)localIterator.next();
@@ -335,41 +335,41 @@ public final class b
       if (str1.length() > 0) {
         str2 = str1 + "|";
       }
-      str1 = str2 + ((aj)this.uPb.get(str3)).stn;
+      str1 = str2 + ((aj)this.vXR.get(str3)).tBd;
     }
     AppMethodBeat.o(123026);
     return str1;
   }
   
-  public final LinkedList<aj> deB()
+  public final LinkedList<aj> dsj()
   {
     AppMethodBeat.i(123027);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.uPb.keySet().iterator();
+    Iterator localIterator = this.vXR.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localLinkedList.add(this.uPb.get(str));
+      localLinkedList.add(this.vXR.get(str));
     }
     AppMethodBeat.o(123027);
     return localLinkedList;
   }
   
-  public final void deC()
+  public final void dsk()
   {
     AppMethodBeat.i(123028);
     Iterator localIterator;
     Object localObject;
     if (this.mode == 5)
     {
-      localIterator = this.uPb.keySet().iterator();
+      localIterator = this.vXR.keySet().iterator();
       while (localIterator.hasNext())
       {
         localObject = (String)localIterator.next();
-        localObject = (aj)this.uPb.get(localObject);
+        localObject = (aj)this.vXR.get(localObject);
         if (((aj)localObject).state != 2)
         {
-          ((o)com.tencent.mm.kernel.g.ad(o.class)).getNormalMailAppService().cancel(((aj)localObject).uMU);
+          ((o)com.tencent.mm.kernel.g.ad(o.class)).getNormalMailAppService().cancel(((aj)localObject).vVK);
           ((aj)localObject).state = 3;
           b((aj)localObject);
         }
@@ -379,37 +379,37 @@ public final class b
     }
     if (this.mode == 6)
     {
-      localIterator = this.uPb.keySet().iterator();
+      localIterator = this.vXR.keySet().iterator();
       while (localIterator.hasNext())
       {
         localObject = (String)localIterator.next();
-        localObject = (aj)this.uPb.get(localObject);
+        localObject = (aj)this.vXR.get(localObject);
         if (((aj)localObject).state != 2)
         {
-          v localv = (v)this.uPc.get(((aj)localObject).path);
+          v localv = (v)this.vXS.get(((aj)localObject).path);
           if (localv != null)
           {
-            com.tencent.mm.kernel.g.afA().gcy.a(localv);
+            com.tencent.mm.kernel.g.agQ().ghe.a(localv);
             ((aj)localObject).state = 3;
             b((aj)localObject);
           }
-          this.uPd.remove(((aj)localObject).path);
-          this.uPe.remove(((aj)localObject).path);
-          this.uPc.remove(((aj)localObject).path);
+          this.vXT.remove(((aj)localObject).path);
+          this.vXU.remove(((aj)localObject).path);
+          this.vXS.remove(((aj)localObject).path);
         }
       }
     }
     AppMethodBeat.o(123028);
   }
   
-  public final boolean deD()
+  public final boolean dsl()
   {
     AppMethodBeat.i(123031);
-    Iterator localIterator = this.uPb.keySet().iterator();
+    Iterator localIterator = this.vXR.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (aj)this.uPb.get(localObject);
+      localObject = (aj)this.vXR.get(localObject);
       if ((((aj)localObject).state != 2) && (((aj)localObject).state != 3))
       {
         AppMethodBeat.o(123031);
@@ -420,17 +420,17 @@ public final class b
     return true;
   }
   
-  public final void deE()
+  public final void dsm()
   {
     AppMethodBeat.i(123032);
     int j;
     int i;
-    if (this.uPb.size() == 0)
+    if (this.vXR.size() == 0)
     {
-      this.uND.setText(this.uOZ.getString(2131761958) + " " + this.uOZ.getString(2131761961));
-      this.uNE.setImageResource(2131691058);
-      ((View)this.uPa.getParent()).setVisibility(8);
-      j = this.uPa.getChildCount();
+      this.vWt.setText(this.vXP.getString(2131761958) + " " + this.vXP.getString(2131761961));
+      this.vWu.setImageResource(2131691058);
+      ((View)this.vXQ.getParent()).setVisibility(8);
+      j = this.vXQ.getChildCount();
       i = 0;
       label102:
       if (i >= j) {
@@ -439,23 +439,23 @@ public final class b
       if (j != 1) {
         break label245;
       }
-      this.uPa.getChildAt(i).setBackgroundResource(2131233185);
+      this.vXQ.getChildAt(i).setBackgroundResource(2131233185);
     }
     for (;;)
     {
       i += 1;
       break label102;
-      this.uND.setText(this.uOZ.getString(2131761958) + this.uOZ.getResources().getQuantityString(2131623962, this.uPb.size(), new Object[] { Integer.valueOf(this.uPb.size()), bt.mK(getTotalSize()) }));
-      this.uNE.setImageResource(2131691059);
-      ((View)this.uPa.getParent()).setVisibility(0);
+      this.vWt.setText(this.vXP.getString(2131761958) + this.vXP.getResources().getQuantityString(2131623962, this.vXR.size(), new Object[] { Integer.valueOf(this.vXR.size()), bs.qz(getTotalSize()) }));
+      this.vWu.setImageResource(2131691059);
+      ((View)this.vXQ.getParent()).setVisibility(0);
       break;
       label245:
       if (i == 0) {
-        this.uPa.getChildAt(i).setBackgroundResource(2131233186);
+        this.vXQ.getChildAt(i).setBackgroundResource(2131233186);
       } else if ((i > 0) && (i < j - 1)) {
-        this.uPa.getChildAt(i).setBackgroundResource(2131233187);
+        this.vXQ.getChildAt(i).setBackgroundResource(2131233187);
       } else {
-        this.uPa.getChildAt(i).setBackgroundResource(2131233188);
+        this.vXQ.getChildAt(i).setBackgroundResource(2131233188);
       }
     }
     label311:
@@ -465,10 +465,10 @@ public final class b
   public final int getTotalSize()
   {
     AppMethodBeat.i(123033);
-    Iterator localIterator = this.uPb.keySet().iterator();
+    Iterator localIterator = this.vXR.keySet().iterator();
     String str;
     long l;
-    for (int i = 0; localIterator.hasNext(); i = (int)(((aj)this.uPb.get(str)).size + l))
+    for (int i = 0; localIterator.hasNext(); i = (int)(((aj)this.vXR.get(str)).size + l))
     {
       str = (String)localIterator.next();
       l = i;
@@ -477,10 +477,10 @@ public final class b
     return i;
   }
   
-  public final void hY(String paramString1, String paramString2)
+  public final void ir(String paramString1, String paramString2)
   {
     AppMethodBeat.i(123023);
-    if ((paramString1 == null) || (paramString1.length() == 0) || (this.uPb.containsKey(paramString1)))
+    if ((paramString1 == null) || (paramString1.length() == 0) || (this.vXR.containsKey(paramString1)))
     {
       AppMethodBeat.o(123023);
       return;
@@ -498,36 +498,36 @@ public final class b
     {
       localaj.size = locale.length();
       localaj.state = 0;
-      this.uPb.put(paramString1, localaj);
+      this.vXR.put(paramString1, localaj);
       a(localaj);
       AppMethodBeat.o(123023);
       return;
     }
   }
   
-  final long hZ(final String paramString1, final String paramString2)
+  final long is(final String paramString1, final String paramString2)
   {
     AppMethodBeat.i(123030);
-    if (this.uPc.containsKey(paramString1))
+    if (this.vXS.containsKey(paramString1))
     {
-      l = ((v)this.uPc.get(paramString1)).hashCode();
+      l = ((v)this.vXS.get(paramString1)).hashCode();
       AppMethodBeat.o(123030);
       return l;
     }
-    paramString2 = new v(paramString1, paramString1, new com.tencent.mm.al.h()
+    paramString2 = new v(paramString1, paramString1, new com.tencent.mm.ak.h()
     {
       public final void a(int paramAnonymousInt1, int paramAnonymousInt2, final n paramAnonymousn)
       {
         AppMethodBeat.i(123019);
-        ad.i("MicroMsg.FileUploadHelper", "offset: %d, totalLen: %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ac.i("MicroMsg.FileUploadHelper", "offset: %d, totalLen: %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         if (paramAnonymousInt1 < paramAnonymousInt2)
         {
-          ad.i("MicroMsg.FileUploadHelper", "uploading file: %s, offset: %d, totalLen: %d", new Object[] { paramString1, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-          paramAnonymousn = (aj)b.this.uPb.get(paramString1);
+          ac.i("MicroMsg.FileUploadHelper", "uploading file: %s, offset: %d, totalLen: %d", new Object[] { paramString1, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+          paramAnonymousn = (aj)b.this.vXR.get(paramString1);
           if (paramAnonymousn != null)
           {
             paramAnonymousn.state = 1;
-            aq.f(new Runnable()
+            ap.f(new Runnable()
             {
               public final void run()
               {
@@ -542,17 +542,17 @@ public final class b
         }
         if (paramAnonymousInt1 >= paramAnonymousInt2)
         {
-          final aj localaj = (aj)b.this.uPb.get(paramString1);
-          paramAnonymousn = ((v)paramAnonymousn).deb().uKY;
-          b.this.uPd.put(paramString1, paramAnonymousn);
-          b.this.uPe.put(paramString1, paramString2);
-          b.this.uPc.remove(paramString1);
-          ad.i("MicroMsg.FileUploadHelper", "finish uploaded file: %s, attachId: %s", new Object[] { paramString1, paramAnonymousn });
+          final aj localaj = (aj)b.this.vXR.get(paramString1);
+          paramAnonymousn = ((v)paramAnonymousn).drJ().vTP;
+          b.this.vXT.put(paramString1, paramAnonymousn);
+          b.this.vXU.put(paramString1, paramString2);
+          b.this.vXS.remove(paramString1);
+          ac.i("MicroMsg.FileUploadHelper", "finish uploaded file: %s, attachId: %s", new Object[] { paramString1, paramAnonymousn });
           if (localaj != null)
           {
             localaj.state = 2;
-            localaj.stn = paramAnonymousn;
-            aq.f(new Runnable()
+            localaj.tBd = paramAnonymousn;
+            ap.f(new Runnable()
             {
               public final void run()
               {
@@ -567,13 +567,13 @@ public final class b
         AppMethodBeat.o(123019);
       }
     });
-    aj localaj = (aj)this.uPb.get(paramString1);
+    aj localaj = (aj)this.vXR.get(paramString1);
     if (localaj != null) {
       localaj.state = 1;
     }
     b(localaj);
-    com.tencent.mm.kernel.g.afA().gcy.a(paramString2, 0);
-    this.uPc.put(paramString1, paramString2);
+    com.tencent.mm.kernel.g.agQ().ghe.a(paramString2, 0);
+    this.vXS.put(paramString1, paramString2);
     long l = paramString2.hashCode();
     AppMethodBeat.o(123030);
     return l;
@@ -586,14 +586,14 @@ public final class b
     {
       paramString = (v)paramn;
       paramn = paramString.filePath;
-      final aj localaj = (aj)this.uPb.get(paramn);
+      final aj localaj = (aj)this.vXR.get(paramn);
       if ((localaj != null) && ((paramInt1 != 0) || (paramInt2 != 0)))
       {
-        ad.e("MicroMsg.FileUploadHelper", "upload error, errType: %d, errCode: %d, file: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramn });
+        ac.e("MicroMsg.FileUploadHelper", "upload error, errType: %d, errCode: %d, file: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramn });
         localaj.state = 3;
-        this.uPc.remove(paramn);
-        com.tencent.mm.kernel.g.afA().gcy.a(paramString);
-        aq.f(new Runnable()
+        this.vXS.remove(paramn);
+        com.tencent.mm.kernel.g.agQ().ghe.a(paramString);
+        ap.f(new Runnable()
         {
           public final void run()
           {
@@ -609,20 +609,20 @@ public final class b
   
   final class a
   {
-    TextView imt;
-    ImageView kXS;
-    TextView uOJ;
-    ProgressBar uPp;
-    TextView uPq;
-    ImageView uPr;
-    ImageView uPs;
+    TextView iMz;
+    ImageView lzC;
+    TextView vXz;
+    ProgressBar vYf;
+    TextView vYg;
+    ImageView vYh;
+    ImageView vYi;
     
     private a() {}
   }
   
   public static abstract interface b
   {
-    public abstract void dev();
+    public abstract void dsd();
     
     public abstract void onComplete();
   }

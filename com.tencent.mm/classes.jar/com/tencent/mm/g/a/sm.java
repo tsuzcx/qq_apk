@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class sm
   extends b
 {
-  public a dya;
-  public b dyb;
+  public a dvy;
   
   public sm()
   {
@@ -16,30 +15,22 @@ public final class sm
   
   private sm(byte paramByte)
   {
-    AppMethodBeat.i(93327);
-    this.dya = new a();
-    this.dyb = new b();
-    this.ESR = false;
+    AppMethodBeat.i(19834);
+    this.dvy = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(93327);
+    AppMethodBeat.o(19834);
   }
   
   public static final class a
   {
-    public String dyc;
-    public String dyd;
-    public int dye = 0;
-  }
-  
-  public static final class b
-  {
-    public boolean dhg = false;
-    public String dyc;
+    public String dtD;
+    public int msgType = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.sm
  * JD-Core Version:    0.7.0.1
  */

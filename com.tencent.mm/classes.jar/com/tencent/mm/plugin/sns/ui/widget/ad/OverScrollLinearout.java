@@ -12,60 +12,60 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class OverScrollLinearout
   extends LinearLayout
 {
-  private boolean kPn;
-  private int ldE;
+  private int lDv;
+  private boolean lqM;
   private Scroller mScroller;
-  private int xVc;
-  private a xYI;
-  private int xYJ;
+  private int zhY;
+  private a zlF;
+  private int zlG;
   
   public OverScrollLinearout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(187795);
+    AppMethodBeat.i(200672);
     init(paramContext);
-    AppMethodBeat.o(187795);
+    AppMethodBeat.o(200672);
   }
   
   public OverScrollLinearout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(187796);
+    AppMethodBeat.i(200673);
     init(paramContext);
-    AppMethodBeat.o(187796);
+    AppMethodBeat.o(200673);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(187797);
+    AppMethodBeat.i(200674);
     this.mScroller = new Scroller(paramContext);
-    this.xYJ = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    AppMethodBeat.o(187797);
+    this.zlG = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    AppMethodBeat.o(200674);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(187798);
+    AppMethodBeat.i(200675);
     int i = paramMotionEvent.getAction();
     int j = (int)paramMotionEvent.getY();
     if (i == 0)
     {
-      this.kPn = false;
-      this.xVc = j;
-      this.ldE = this.xVc;
-      if (this.xYI != null) {
-        this.xYI.dwC();
+      this.lqM = false;
+      this.zhY = j;
+      this.lDv = this.zhY;
+      if (this.zlF != null) {
+        this.zlF.dLb();
       }
     }
     for (;;)
     {
       boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(187798);
+      AppMethodBeat.o(200675);
       return bool;
       if (i == 2)
       {
-        if ((this.xYI != null) && (this.xYI.dxa()) && (this.xVc - j >= this.xYJ)) {
-          this.kPn = true;
+        if ((this.zlF != null) && (this.zlF.dLz()) && (this.zhY - j >= this.zlG)) {
+          this.lqM = true;
         }
       }
       else if ((i == 1) || (i == 3))
@@ -83,46 +83,46 @@ public class OverScrollLinearout
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(187800);
+    AppMethodBeat.i(200677);
     super.onDraw(paramCanvas);
     if (this.mScroller.computeScrollOffset())
     {
       scrollTo(0, this.mScroller.getCurrY());
       invalidate();
     }
-    AppMethodBeat.o(187800);
+    AppMethodBeat.o(200677);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.kPn;
+    return this.lqM;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(187799);
+    AppMethodBeat.i(200676);
     int i = (int)paramMotionEvent.getY();
-    if (this.xYI != null) {
-      this.xYI.bs(this.ldE - i);
+    if (this.zlF != null) {
+      this.zlF.bA(this.lDv - i);
     }
-    this.ldE = i;
-    boolean bool = this.kPn;
-    AppMethodBeat.o(187799);
+    this.lDv = i;
+    boolean bool = this.lqM;
+    AppMethodBeat.o(200676);
     return bool;
   }
   
   public void setOnScrollActionListener(a parama)
   {
-    this.xYI = parama;
+    this.zlF = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void bs(float paramFloat);
+    public abstract void bA(float paramFloat);
     
-    public abstract void dwC();
+    public abstract void dLb();
     
-    public abstract boolean dxa();
+    public abstract boolean dLz();
   }
 }
 

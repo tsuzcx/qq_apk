@@ -16,7 +16,7 @@ public final class g
     AppMethodBeat.o(158812);
   }
   
-  public final boolean bh(Object paramObject)
+  public final boolean be(Object paramObject)
   {
     return paramObject instanceof f;
   }
@@ -37,7 +37,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.g
  * JD-Core Version:    0.7.0.1
  */

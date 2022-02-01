@@ -12,22 +12,22 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class ControlBoardPanel
   extends FrameLayout
 {
-  ConsolePanel joa;
-  a mnW;
-  View mnX;
-  SettingsPanel mnY;
-  View mnZ;
-  View moa;
-  View mob;
-  View moc;
-  WindowManager mod;
-  WindowManager.LayoutParams moe;
-  boolean mof;
+  ConsolePanel jOm;
+  a mPX;
+  View mPY;
+  SettingsPanel mPZ;
+  View mQa;
+  View mQb;
+  View mQc;
+  View mQd;
+  WindowManager mQe;
+  WindowManager.LayoutParams mQf;
+  boolean mQg;
   
   public ControlBoardPanel(Context paramContext)
   {
@@ -57,89 +57,89 @@ public class ControlBoardPanel
   {
     AppMethodBeat.i(121652);
     Context localContext = getContext();
-    this.mod = ((WindowManager)localContext.getSystemService("window"));
+    this.mQe = ((WindowManager)localContext.getSystemService("window"));
     LayoutInflater.from(localContext).inflate(2131493661, this, true);
-    this.mnX = findViewById(2131298780);
-    this.joa = ((ConsolePanel)findViewById(2131298581));
-    this.mnY = ((SettingsPanel)findViewById(2131304667));
-    this.mnZ = findViewById(2131303205);
-    this.moa = findViewById(2131298579);
-    this.mob = findViewById(2131304640);
-    this.moc = findViewById(2131303204);
-    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().atS()) {
-      this.moc.setVisibility(8);
+    this.mPY = findViewById(2131298780);
+    this.jOm = ((ConsolePanel)findViewById(2131298581));
+    this.mPZ = ((SettingsPanel)findViewById(2131304667));
+    this.mQa = findViewById(2131303205);
+    this.mQb = findViewById(2131298579);
+    this.mQc = findViewById(2131304640);
+    this.mQd = findViewById(2131303204);
+    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().aAJ()) {
+      this.mQd.setVisibility(8);
     }
-    this.moa.setOnClickListener(new View.OnClickListener()
+    this.mQb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121643);
-        if (ControlBoardPanel.this.joa.getVisibility() == 0)
+        if (ControlBoardPanel.this.jOm.getVisibility() == 0)
         {
-          ControlBoardPanel.this.mnX.setVisibility(8);
-          ControlBoardPanel.this.joa.setVisibility(8);
-          ControlBoardPanel.this.moa.setSelected(false);
+          ControlBoardPanel.this.mPY.setVisibility(8);
+          ControlBoardPanel.this.jOm.setVisibility(8);
+          ControlBoardPanel.this.mQb.setSelected(false);
           ControlBoardPanel.a(ControlBoardPanel.this);
           AppMethodBeat.o(121643);
           return;
         }
-        ControlBoardPanel.this.mnX.setVisibility(0);
-        ControlBoardPanel.this.joa.setVisibility(0);
-        ControlBoardPanel.this.mnY.setVisibility(8);
-        ControlBoardPanel.this.mnZ.setVisibility(8);
-        ControlBoardPanel.this.moa.setSelected(true);
-        ControlBoardPanel.this.mob.setSelected(false);
-        ControlBoardPanel.this.moc.setSelected(false);
+        ControlBoardPanel.this.mPY.setVisibility(0);
+        ControlBoardPanel.this.jOm.setVisibility(0);
+        ControlBoardPanel.this.mPZ.setVisibility(8);
+        ControlBoardPanel.this.mQa.setVisibility(8);
+        ControlBoardPanel.this.mQb.setSelected(true);
+        ControlBoardPanel.this.mQc.setSelected(false);
+        ControlBoardPanel.this.mQd.setSelected(false);
         ControlBoardPanel.b(ControlBoardPanel.this);
         AppMethodBeat.o(121643);
       }
     });
-    this.mob.setOnClickListener(new View.OnClickListener()
+    this.mQc.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121644);
-        if (ControlBoardPanel.this.mnY.getVisibility() == 0)
+        if (ControlBoardPanel.this.mPZ.getVisibility() == 0)
         {
-          ControlBoardPanel.this.mnX.setVisibility(8);
-          ControlBoardPanel.this.mnY.setVisibility(8);
-          ControlBoardPanel.this.mob.setSelected(false);
+          ControlBoardPanel.this.mPY.setVisibility(8);
+          ControlBoardPanel.this.mPZ.setVisibility(8);
+          ControlBoardPanel.this.mQc.setSelected(false);
           ControlBoardPanel.a(ControlBoardPanel.this);
           AppMethodBeat.o(121644);
           return;
         }
-        ControlBoardPanel.this.mnX.setVisibility(0);
-        ControlBoardPanel.this.joa.setVisibility(8);
-        ControlBoardPanel.this.mnY.setVisibility(0);
-        ControlBoardPanel.this.mnZ.setVisibility(8);
-        ControlBoardPanel.this.moa.setSelected(false);
-        ControlBoardPanel.this.mob.setSelected(true);
-        ControlBoardPanel.this.moc.setSelected(false);
+        ControlBoardPanel.this.mPY.setVisibility(0);
+        ControlBoardPanel.this.jOm.setVisibility(8);
+        ControlBoardPanel.this.mPZ.setVisibility(0);
+        ControlBoardPanel.this.mQa.setVisibility(8);
+        ControlBoardPanel.this.mQb.setSelected(false);
+        ControlBoardPanel.this.mQc.setSelected(true);
+        ControlBoardPanel.this.mQd.setSelected(false);
         ControlBoardPanel.b(ControlBoardPanel.this);
         AppMethodBeat.o(121644);
       }
     });
-    this.moc.setOnClickListener(new View.OnClickListener()
+    this.mQd.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121645);
-        if (ControlBoardPanel.this.mnZ.getVisibility() == 0)
+        if (ControlBoardPanel.this.mQa.getVisibility() == 0)
         {
-          ControlBoardPanel.this.mnX.setVisibility(8);
-          ControlBoardPanel.this.mnZ.setVisibility(8);
-          ControlBoardPanel.this.moc.setSelected(false);
+          ControlBoardPanel.this.mPY.setVisibility(8);
+          ControlBoardPanel.this.mQa.setVisibility(8);
+          ControlBoardPanel.this.mQd.setSelected(false);
           ControlBoardPanel.a(ControlBoardPanel.this);
           AppMethodBeat.o(121645);
           return;
         }
-        ControlBoardPanel.this.mnX.setVisibility(0);
-        ControlBoardPanel.this.joa.setVisibility(8);
-        ControlBoardPanel.this.mnY.setVisibility(8);
-        ControlBoardPanel.this.mnZ.setVisibility(0);
-        ControlBoardPanel.this.moa.setSelected(false);
-        ControlBoardPanel.this.mob.setSelected(false);
-        ControlBoardPanel.this.moc.setSelected(true);
+        ControlBoardPanel.this.mPY.setVisibility(0);
+        ControlBoardPanel.this.jOm.setVisibility(8);
+        ControlBoardPanel.this.mPZ.setVisibility(8);
+        ControlBoardPanel.this.mQa.setVisibility(0);
+        ControlBoardPanel.this.mQb.setSelected(false);
+        ControlBoardPanel.this.mQc.setSelected(false);
+        ControlBoardPanel.this.mQd.setSelected(true);
         ControlBoardPanel.b(ControlBoardPanel.this);
         AppMethodBeat.o(121645);
       }
@@ -149,40 +149,40 @@ public class ControlBoardPanel
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(121646);
-        ad.i("MicroMsg.ControlBoardPanel", "onKey(%s, %s)", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousKeyEvent });
+        ac.i("MicroMsg.ControlBoardPanel", "onKey(%s, %s)", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousKeyEvent });
         if (paramAnonymousInt == 4)
         {
-          ControlBoardPanel.this.mnX.setVisibility(8);
-          ControlBoardPanel.this.mnZ.setVisibility(8);
-          ControlBoardPanel.this.mnZ.setVisibility(8);
-          ControlBoardPanel.this.moc.setSelected(false);
-          ControlBoardPanel.this.moa.setSelected(false);
-          ControlBoardPanel.this.mob.setSelected(false);
+          ControlBoardPanel.this.mPY.setVisibility(8);
+          ControlBoardPanel.this.mQa.setVisibility(8);
+          ControlBoardPanel.this.mQa.setVisibility(8);
+          ControlBoardPanel.this.mQd.setSelected(false);
+          ControlBoardPanel.this.mQb.setSelected(false);
+          ControlBoardPanel.this.mQc.setSelected(false);
           ControlBoardPanel.a(ControlBoardPanel.this);
         }
         AppMethodBeat.o(121646);
         return false;
       }
     });
-    this.mnY.setOnCloseDebuggerClickListener(new View.OnClickListener()
+    this.mPZ.setOnCloseDebuggerClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121647);
         paramAnonymousView = ControlBoardPanel.this;
-        if (paramAnonymousView.mof)
+        if (paramAnonymousView.mQg)
         {
-          paramAnonymousView.mof = false;
-          paramAnonymousView.mod.removeViewImmediate(paramAnonymousView);
-          d.b(paramAnonymousView.joa);
-          if (paramAnonymousView.mnW != null) {
-            paramAnonymousView.mnW.a(paramAnonymousView, false);
+          paramAnonymousView.mQg = false;
+          paramAnonymousView.mQe.removeViewImmediate(paramAnonymousView);
+          d.b(paramAnonymousView.jOm);
+          if (paramAnonymousView.mPX != null) {
+            paramAnonymousView.mPX.a(paramAnonymousView, false);
           }
         }
         AppMethodBeat.o(121647);
       }
     });
-    this.mnY.setOnResetDebuggerRunnable(new Runnable()
+    this.mPZ.setOnResetDebuggerRunnable(new Runnable()
     {
       public final void run()
       {
@@ -197,7 +197,7 @@ public class ControlBoardPanel
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(121653);
-    ad.i("MicroMsg.ControlBoardPanel", "onKeyUp(%s, %s)", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
+    ac.i("MicroMsg.ControlBoardPanel", "onKeyUp(%s, %s)", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(121653);
     return bool;
@@ -206,8 +206,8 @@ public class ControlBoardPanel
   public final void reset()
   {
     AppMethodBeat.i(121654);
-    d.b(this.joa);
-    d.a(this.joa);
+    d.b(this.jOm);
+    d.a(this.jOm);
     AppMethodBeat.o(121654);
   }
   
@@ -218,7 +218,7 @@ public class ControlBoardPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.ControlBoardPanel
  * JD-Core Version:    0.7.0.1
  */

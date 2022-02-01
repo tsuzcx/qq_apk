@@ -7,31 +7,31 @@ import d.l.m.a;
 public final class u
   extends t
 {
-  private final d Jhr;
+  private final d KUK;
   private final String name;
   private final String signature;
   
   public u(d paramd, String paramString1, String paramString2)
   {
-    this.Jhr = paramd;
+    this.KUK = paramd;
     this.name = paramString1;
     this.signature = paramString2;
   }
   
-  public final String Gn()
+  public final String FZ()
   {
     return this.signature;
   }
   
-  public final d Go()
+  public final d Ga()
   {
-    return this.Jhr;
+    return this.KUK;
   }
   
   public final Object get(Object paramObject)
   {
     AppMethodBeat.i(128971);
-    paramObject = fvV().ac(new Object[] { paramObject });
+    paramObject = fOz().ae(new Object[] { paramObject });
     AppMethodBeat.o(128971);
     return paramObject;
   }

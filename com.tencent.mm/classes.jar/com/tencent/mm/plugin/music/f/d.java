@@ -6,49 +6,48 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.c.b.b;
 import com.tencent.mm.plugin.music.cache.e;
 import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.plugin.music.f.a.d.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
 
 public final class d
   extends a
 {
-  boolean rdQ;
-  com.tencent.mm.az.f tVP;
-  public boolean tWc;
-  com.tencent.mm.plugin.music.f.a.b tXT;
-  boolean tXU;
-  private com.tencent.mm.az.c tXV;
-  b.b tXW;
-  com.tencent.mm.plugin.music.c.b tXy;
+  boolean vdc;
+  public boolean veM;
+  com.tencent.mm.ay.f vey;
+  com.tencent.mm.plugin.music.f.a.b vgG;
+  boolean vgH;
+  private com.tencent.mm.ay.c vgI;
+  b.b vgJ;
+  com.tencent.mm.plugin.music.c.b vgk;
   
   public d()
   {
     AppMethodBeat.i(137335);
-    this.tXW = new b.b()
+    this.vgJ = new b.b()
     {
-      public final void HH(final int paramAnonymousInt)
+      public final void JG(final int paramAnonymousInt)
       {
         AppMethodBeat.i(137334);
         if (paramAnonymousInt == 1)
         {
-          if ((d.this.tXy != null) && (!d.this.rdQ) && (d.this.tXT != null))
+          if ((d.this.vgk != null) && (!d.this.vdc) && (d.this.vgG != null))
           {
-            Object localObject = com.tencent.mm.plugin.music.h.b.bl(d.this.tXy.tVI.hnp, d.this.tXy.qbG);
-            d.this.tXT.aiR((String)localObject);
+            Object localObject = com.tencent.mm.plugin.music.h.b.bs(d.this.vgk.veq.hNS, d.this.vgk.qKm);
+            d.this.vgG.anM((String)localObject);
             localObject = d.this;
-            if (k.cVk().requestFocus())
+            if (k.diQ().requestFocus())
             {
-              ad.i("MicroMsg.Music.MusicPlayer", "startPlay");
+              ac.i("MicroMsg.Music.MusicPlayer", "startPlay");
               try
               {
-                if (((d)localObject).tXT != null) {
-                  ((d)localObject).tXT.play();
+                if (((d)localObject).vgG != null) {
+                  ((d)localObject).vgG.play();
                 }
-                ((d)localObject).rdQ = true;
-                ((d)localObject).tXU = false;
+                ((d)localObject).vdc = true;
+                ((d)localObject).vgH = false;
                 AppMethodBeat.o(137334);
                 return;
               }
@@ -56,11 +55,11 @@ public final class d
               {
                 for (;;)
                 {
-                  ad.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "startPlay", new Object[0]);
+                  ac.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "startPlay", new Object[0]);
                 }
               }
             }
-            ad.e("MicroMsg.Music.MusicPlayer", "request focus error");
+            ac.e("MicroMsg.Music.MusicPlayer", "request focus error");
             AppMethodBeat.o(137334);
           }
         }
@@ -68,13 +67,13 @@ public final class d
         {
           if ((paramAnonymousInt == -2) || (paramAnonymousInt == 5) || (paramAnonymousInt == 19))
           {
-            aq.f(new Runnable()
+            ap.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(137332);
-                Toast.makeText(aj.getContext(), aj.getContext().getString(2131761480), 0).show();
-                d.a(d.this, d.this.tVP, paramAnonymousInt);
+                Toast.makeText(ai.getContext(), ai.getContext().getString(2131761480), 0).show();
+                d.a(d.this, d.this.vey, paramAnonymousInt);
                 AppMethodBeat.o(137332);
               }
             });
@@ -83,22 +82,22 @@ public final class d
           }
           if ((paramAnonymousInt == -1) || (paramAnonymousInt == 6) || (paramAnonymousInt == 4))
           {
-            aq.f(new d.2.2(this));
-            d.a(d.this, d.this.tVP, paramAnonymousInt);
+            ap.f(new d.2.2(this));
+            d.a(d.this, d.this.vey, paramAnonymousInt);
           }
         }
         AppMethodBeat.o(137334);
       }
     };
-    this.tWc = false;
+    this.veM = false;
     AppMethodBeat.o(137335);
   }
   
-  private void aiS(String paramString)
+  private void anN(String paramString)
   {
     AppMethodBeat.i(137350);
-    if (this.tXL != null) {
-      this.tXL.a(this.tVP, paramString);
+    if (this.vgx != null) {
+      this.vgx.a(this.vey, paramString);
     }
     AppMethodBeat.o(137350);
   }
@@ -106,15 +105,15 @@ public final class d
   private int getDownloadPercent()
   {
     AppMethodBeat.i(137347);
-    if (this.tXy != null)
+    if (this.vgk != null)
     {
-      com.tencent.mm.plugin.music.c.b localb = this.tXy;
+      com.tencent.mm.plugin.music.c.b localb = this.vgk;
       int i;
-      if (localb.qbG)
+      if (localb.qKm)
       {
-        ad.v("MicroMsg.Music.MusicDownloadTask", "WifiFileLength: %d downloadLength: %d", new Object[] { Long.valueOf(localb.tVJ.tVG), Long.valueOf(localb.tVJ.tVE) });
-        if (localb.tVJ.tVG != 0L) {
-          i = (int)(localb.tVJ.tVE * 100L / localb.tVJ.tVG);
+        ac.v("MicroMsg.Music.MusicDownloadTask", "WifiFileLength: %d downloadLength: %d", new Object[] { Long.valueOf(localb.ves.veo), Long.valueOf(localb.ves.vem) });
+        if (localb.ves.veo != 0L) {
+          i = (int)(localb.ves.vem * 100L / localb.ves.veo);
         }
       }
       while (i > 0)
@@ -123,9 +122,9 @@ public final class d
         return i;
         i = 0;
         continue;
-        ad.v("MicroMsg.Music.MusicDownloadTask", "fileLength: %d downloadLength: %d", new Object[] { Long.valueOf(localb.tVJ.tVD), Long.valueOf(localb.tVJ.tVC) });
-        if (localb.tVJ.tVD != 0L) {
-          i = (int)(localb.tVJ.tVC * 100L / localb.tVJ.tVD);
+        ac.v("MicroMsg.Music.MusicDownloadTask", "fileLength: %d downloadLength: %d", new Object[] { Long.valueOf(localb.ves.vel), Long.valueOf(localb.ves.vek) });
+        if (localb.ves.vel != 0L) {
+          i = (int)(localb.ves.vek * 100L / localb.ves.vel);
         } else {
           i = 0;
         }
@@ -137,13 +136,35 @@ public final class d
     return 0;
   }
   
-  public final boolean azF()
+  public final void EM()
+  {
+    AppMethodBeat.i(137341);
+    this.veM = true;
+    ac.i("MicroMsg.Music.MusicPlayer", "passivePause");
+    try
+    {
+      if ((this.vgG != null) && (this.vgG.isPlaying()))
+      {
+        this.vgG.pause();
+        G(this.vey);
+      }
+      AppMethodBeat.o(137341);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ac.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "passivePause", new Object[0]);
+      AppMethodBeat.o(137341);
+    }
+  }
+  
+  public final boolean aGv()
   {
     AppMethodBeat.i(137343);
-    if (this.tXT != null) {
+    if (this.vgG != null) {
       try
       {
-        boolean bool = this.tXT.isPlaying();
+        boolean bool = this.vgG.isPlaying();
         AppMethodBeat.o(137343);
         return bool;
       }
@@ -157,37 +178,37 @@ public final class d
     return false;
   }
   
-  public final boolean azG()
+  public final boolean aGw()
   {
-    return (this.rdQ) && (this.tWc);
+    return (this.vdc) && (this.veM);
   }
   
-  public final boolean azH()
+  public final boolean aGx()
   {
-    return this.rdQ;
+    return this.vdc;
   }
   
-  final void b(com.tencent.mm.az.f paramf, boolean paramBoolean)
+  final void b(com.tencent.mm.ay.f paramf, boolean paramBoolean)
   {
     AppMethodBeat.i(137338);
-    if (this.tXT == null)
+    if (this.vgG == null)
     {
-      if ((paramBoolean) || (!com.tencent.mm.compatible.util.d.lh(15))) {
+      if ((paramBoolean) || (!com.tencent.mm.compatible.util.d.lb(15))) {
         break label71;
       }
-      ad.i("MicroMsg.Music.MusicPlayer", "use MMPlayer");
+      ac.i("MicroMsg.Music.MusicPlayer", "use MMPlayer");
     }
-    for (this.tXT = new c();; this.tXT = new b())
+    for (this.vgG = new c();; this.vgG = new b())
     {
-      this.tXT.M(paramf);
-      this.tXT.a(new com.tencent.mm.plugin.music.f.a.f()
+      this.vgG.N(paramf);
+      this.vgG.a(new com.tencent.mm.plugin.music.f.a.f()
       {
-        long tXX;
+        long vgK;
         
-        public final void L(com.tencent.mm.az.f paramAnonymousf)
+        public final void M(com.tencent.mm.ay.f paramAnonymousf)
         {
           AppMethodBeat.i(137329);
-          com.tencent.mm.az.f localf = k.cVi().cUT();
+          com.tencent.mm.ay.f localf = k.diO().diz();
           if (localf == null)
           {
             AppMethodBeat.o(137329);
@@ -199,46 +220,46 @@ public final class d
           float f1;
           label235:
           int i;
-          if ((localf.f(paramAnonymousf)) && (d.this.tXT != null) && (d.this.tXT.isPlaying()))
+          if ((localf.f(paramAnonymousf)) && (d.this.vgG != null) && (d.this.vgG.isPlaying()))
           {
-            j = d.this.tXT.cVD();
-            k = d.this.tXT.getDuration();
+            j = d.this.vgG.djj();
+            k = d.this.vgG.getDuration();
             if ((j > 0) && (k > 0))
             {
               f2 = j / k;
-              if (d.this.tXy != null)
+              if (d.this.vgk != null)
               {
-                paramAnonymousf = d.this.tXy;
-                paramAnonymousf.tVK = f2;
-                boolean bool = ay.isNetworkConnected(aj.getContext());
+                paramAnonymousf = d.this.vgk;
+                paramAnonymousf.vet = f2;
+                boolean bool = ax.isNetworkConnected(ai.getContext());
                 if ((paramAnonymousf.isStop) && (bool))
                 {
-                  if (!paramAnonymousf.qbG) {
-                    break label363;
+                  if (!paramAnonymousf.qKm) {
+                    break label348;
                   }
-                  if (paramAnonymousf.tVJ.tVG != 0L)
+                  if (paramAnonymousf.ves.veo != 0L)
                   {
-                    f1 = (float)paramAnonymousf.tVJ.tVE / (float)paramAnonymousf.tVJ.tVG;
+                    f1 = (float)paramAnonymousf.ves.vem / (float)paramAnonymousf.ves.veo;
                     if ((f1 < 1.0F) && (f1 - f2 <= 0.15F) && (bool))
                     {
-                      ad.v("MicroMsg.Music.MusicDownloadTask", "playPercent=%.2f downloadPercent=%.2f isConnectNetwork=%b", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Boolean.valueOf(bool) });
+                      ac.v("MicroMsg.Music.MusicDownloadTask", "playPercent=%.2f downloadPercent=%.2f isConnectNetwork=%b", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Boolean.valueOf(bool) });
                       paramAnonymousf.start();
                     }
                   }
                 }
-                if ((d.this.tXy != null) && (d.this.tXy.isStop))
+                if ((d.this.vgk != null) && (d.this.vgk.isStop))
                 {
-                  paramAnonymousf = d.this.tXy;
-                  if (!paramAnonymousf.qbG) {
-                    break label396;
+                  paramAnonymousf = d.this.vgk;
+                  if (!paramAnonymousf.qKm) {
+                    break label381;
                   }
-                  if (paramAnonymousf.tVJ.tVG == 0L) {
-                    break label444;
+                  if (paramAnonymousf.ves.veo == 0L) {
+                    break label429;
                   }
-                  f1 = (float)paramAnonymousf.tVJ.tVE / (float)paramAnonymousf.tVJ.tVG;
+                  f1 = (float)paramAnonymousf.ves.vem / (float)paramAnonymousf.ves.veo;
                   label303:
                   if (f1 < 1.0F) {
-                    break label429;
+                    break label414;
                   }
                   i = 1;
                 }
@@ -249,42 +270,40 @@ public final class d
           {
             if (i == 0)
             {
-              ad.i("MicroMsg.Music.MusicPlayer", "download percent not enough can not play");
+              ac.i("MicroMsg.Music.MusicPlayer", "download percent not enough can not play");
               d.this.stopPlay();
             }
-            if (d.this.tUq != null) {
-              d.this.tUq.eS(j, k);
-            }
+            d.this.eV(j, k);
             AppMethodBeat.o(137329);
             return;
-            label363:
-            if (paramAnonymousf.tVJ.tVD == 0L) {
+            label348:
+            if (paramAnonymousf.ves.vel == 0L) {
               break label235;
             }
-            f1 = (float)paramAnonymousf.tVJ.tVC / (float)paramAnonymousf.tVJ.tVD;
+            f1 = (float)paramAnonymousf.ves.vek / (float)paramAnonymousf.ves.vel;
             break;
-            label396:
-            if (paramAnonymousf.tVJ.tVD != 0L)
+            label381:
+            if (paramAnonymousf.ves.vel != 0L)
             {
-              f1 = (float)paramAnonymousf.tVJ.tVC / (float)paramAnonymousf.tVJ.tVD;
+              f1 = (float)paramAnonymousf.ves.vek / (float)paramAnonymousf.ves.vel;
               break label303;
-              label429:
               if (f1 - f2 > 0.05F)
               {
                 i = 1;
                 continue;
               }
             }
-            label444:
+            label414:
+            label429:
             i = 0;
           }
         }
         
-        public final void c(com.tencent.mm.az.f paramAnonymousf, boolean paramAnonymousBoolean)
+        public final void c(com.tencent.mm.ay.f paramAnonymousf, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(137330);
-          ad.i("MicroMsg.Music.MusicPlayer", "setEvents, onStop");
-          com.tencent.mm.az.f localf = k.cVi().cUT();
+          ac.i("MicroMsg.Music.MusicPlayer", "setEvents, onStop");
+          com.tencent.mm.ay.f localf = k.diO().diz();
           if (localf == null)
           {
             AppMethodBeat.o(137330);
@@ -293,112 +312,112 @@ public final class d
           if (localf.f(paramAnonymousf)) {
             d.this.stopPlay();
           }
-          d.this.G(d.this.tVP);
+          d.this.H(d.this.vey);
           if (paramAnonymousBoolean) {
-            d.this.J(d.this.tVP);
+            d.this.K(d.this.vey);
           }
           AppMethodBeat.o(137330);
         }
         
-        public final void d(com.tencent.mm.az.f paramAnonymousf, boolean paramAnonymousBoolean)
+        public final void d(com.tencent.mm.ay.f paramAnonymousf, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(137331);
-          com.tencent.mm.az.f localf = k.cVi().cUT();
+          com.tencent.mm.ay.f localf = k.diO().diz();
           if (localf == null)
           {
             AppMethodBeat.o(137331);
             return;
           }
-          ad.i("MicroMsg.Music.MusicPlayer", "onError, needRetry:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          ac.i("MicroMsg.Music.MusicPlayer", "onError, needRetry:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
           if (paramAnonymousBoolean) {
             d.a(d.this, paramAnonymousf, 20);
           }
           while (localf.f(paramAnonymousf))
           {
-            ad.i("MicroMsg.Music.MusicPlayer", "stop");
+            ac.i("MicroMsg.Music.MusicPlayer", "stop");
             d.this.stopPlay();
             if (paramAnonymousBoolean)
             {
-              ad.i("MicroMsg.Music.MusicPlayer", "retry system media player again");
+              ac.i("MicroMsg.Music.MusicPlayer", "retry system media player again");
               d.this.b(localf, true);
-              d.this.tXy = new com.tencent.mm.plugin.music.c.b(paramAnonymousf, e.air(paramAnonymousf.hnp));
-              d.this.tXy.tVN = d.this.tXW;
-              d.this.tXy.start();
-              if (d.this.tXL == null) {
+              d.this.vgk = new com.tencent.mm.plugin.music.c.b(paramAnonymousf, e.anm(paramAnonymousf.hNS));
+              d.this.vgk.vew = d.this.vgJ;
+              d.this.vgk.start();
+              if (d.this.vgx == null) {
                 break label245;
               }
-              d.this.tXL.a(d.this.tXy);
+              d.this.vgx.a(d.this.vgk);
               AppMethodBeat.o(137331);
               return;
               d.a(d.this, paramAnonymousf, 21);
             }
             else
             {
-              aq.f(new d.1.1(this));
-              d.this.G(d.this.tVP);
+              ap.f(new d.1.1(this));
+              d.this.H(d.this.vey);
               AppMethodBeat.o(137331);
               return;
             }
           }
-          ad.i("MicroMsg.Music.MusicPlayer", "send stop event");
-          d.this.G(d.this.tVP);
+          ac.i("MicroMsg.Music.MusicPlayer", "send stop event");
+          d.this.H(d.this.vey);
           label245:
           AppMethodBeat.o(137331);
         }
         
-        public final void n(com.tencent.mm.az.f paramAnonymousf)
+        public final void n(com.tencent.mm.ay.f paramAnonymousf)
         {
           AppMethodBeat.i(137328);
-          ad.i("MicroMsg.Music.MusicPlayer", "setEvents, onStart");
-          d.this.D(paramAnonymousf);
+          ac.i("MicroMsg.Music.MusicPlayer", "setEvents, onStart");
+          d.this.E(paramAnonymousf);
           AppMethodBeat.o(137328);
         }
       });
       AppMethodBeat.o(137338);
       return;
       label71:
-      ad.i("MicroMsg.Music.MusicPlayer", "use MMMediaPlayer");
+      ac.i("MicroMsg.Music.MusicPlayer", "use MMMediaPlayer");
     }
   }
   
-  public final void cTO()
+  public final void dhJ()
   {
-    AppMethodBeat.i(137341);
-    this.tWc = true;
-    ad.i("MicroMsg.Music.MusicPlayer", "passivePause");
-    try
-    {
-      if ((this.tXT != null) && (this.tXT.isPlaying()))
-      {
-        this.tXT.pause();
-        F(this.tVP);
-      }
-      AppMethodBeat.o(137341);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ad.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "passivePause", new Object[0]);
-      AppMethodBeat.o(137341);
-    }
+    AppMethodBeat.i(137340);
+    ac.i("MicroMsg.Music.MusicPlayer", "pauseAndAbandonFocus");
+    pause();
+    k.diQ().bjF();
+    AppMethodBeat.o(137340);
   }
   
-  public final boolean cTP()
+  public final int dhO()
+  {
+    AppMethodBeat.i(137345);
+    if (this.vgG != null)
+    {
+      int i = this.vgG.djj();
+      AppMethodBeat.o(137345);
+      return i;
+    }
+    AppMethodBeat.o(137345);
+    return -1;
+  }
+  
+  public final boolean dhw()
   {
     return false;
   }
   
-  public final com.tencent.mm.az.c cTQ()
+  public final com.tencent.mm.ay.c dhx()
   {
     AppMethodBeat.i(137349);
     int k = getDuration();
-    int m = cUi();
+    int m = dhO();
     int i;
     int j;
-    if (azF())
+    if (aGv())
     {
       i = 1;
-      ad.i("MicroMsg.Music.MusicPlayer", "get music status = %d", new Object[] { Integer.valueOf(i) });
+      ac.i("MicroMsg.Music.MusicPlayer", "get music status = %d", new Object[] { Integer.valueOf(i) });
       j = getDownloadPercent();
       if (k <= 0) {
         break label165;
@@ -406,17 +425,17 @@ public final class d
     }
     for (;;)
     {
-      if (this.tXV != null) {
-        this.tXV.t(k, m, i, j);
+      if (this.vgI != null) {
+        this.vgI.t(k, m, i, j);
       }
       for (;;)
       {
-        this.tXV.dqn = false;
-        this.tXV.hnk = cVB();
-        com.tencent.mm.az.c localc = this.tXV;
+        this.vgI.dnY = false;
+        this.vgI.hNN = djh();
+        com.tencent.mm.ay.c localc = this.vgI;
         AppMethodBeat.o(137349);
         return localc;
-        if ((this.rdQ) && ((this.tXU) || (this.tUp))) {}
+        if ((this.vdc) && ((this.vgH) || (this.vcX))) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
@@ -428,49 +447,27 @@ public final class d
         label141:
         i = 2;
         break;
-        this.tXV = new com.tencent.mm.az.c(k, m, i, j);
+        this.vgI = new com.tencent.mm.ay.c(k, m, i, j);
       }
       label165:
       j = 0;
     }
   }
   
-  protected final void cUL()
+  protected final void dir()
   {
     AppMethodBeat.i(137337);
-    this.tXL = ((com.tencent.mm.plugin.music.e.d)com.tencent.mm.plugin.music.f.c.b.aP(com.tencent.mm.plugin.music.e.d.class));
-    this.tXM = k.cVi().tWk;
+    this.vgx = ((com.tencent.mm.plugin.music.e.d)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.e.d.class));
+    this.vgy = k.diO().veU;
     AppMethodBeat.o(137337);
-  }
-  
-  public final void cUc()
-  {
-    AppMethodBeat.i(137340);
-    ad.i("MicroMsg.Music.MusicPlayer", "pauseAndAbandonFocus");
-    pause();
-    k.cVk().bfc();
-    AppMethodBeat.o(137340);
-  }
-  
-  public final int cUi()
-  {
-    AppMethodBeat.i(137345);
-    if (this.tXT != null)
-    {
-      int i = this.tXT.cVD();
-      AppMethodBeat.o(137345);
-      return i;
-    }
-    AppMethodBeat.o(137345);
-    return -1;
   }
   
   public final int getDuration()
   {
     AppMethodBeat.i(137346);
-    if (this.tXT != null)
+    if (this.vgG != null)
     {
-      int i = this.tXT.getDuration();
+      int i = this.vgG.getDuration();
       AppMethodBeat.o(137346);
       return i;
     }
@@ -478,46 +475,69 @@ public final class d
     return -1;
   }
   
-  public final void h(com.tencent.mm.az.f paramf)
+  public final void h(com.tencent.mm.ay.f paramf)
   {
     AppMethodBeat.i(137336);
     super.h(paramf);
-    ad.i("MicroMsg.Music.MusicPlayer", "init and start download");
+    ac.i("MicroMsg.Music.MusicPlayer", "init and start download");
     stopPlay();
     if (paramf == null)
     {
-      ad.i("MicroMsg.Music.MusicPlayer", "music is null");
+      ac.i("MicroMsg.Music.MusicPlayer", "music is null");
       AppMethodBeat.o(137336);
       return;
     }
-    this.tXy = new com.tencent.mm.plugin.music.c.b(paramf, e.air(paramf.hnp));
-    this.tXy.tVN = this.tXW;
-    if (this.tXL != null)
+    this.vgk = new com.tencent.mm.plugin.music.c.b(paramf, e.anm(paramf.hNS));
+    this.vgk.vew = this.vgJ;
+    if (this.vgx != null)
     {
-      this.tXL.v(paramf);
-      ad.i("MicroMsg.Music.MusicPlayer", "initIdKeyStatData");
-      this.tXL.cUW();
-      this.tXL.a(this.tXy);
+      this.vgx.v(paramf);
+      ac.i("MicroMsg.Music.MusicPlayer", "initIdKeyStatData");
+      this.vgx.diC();
+      this.vgx.a(this.vgk);
     }
-    this.tVP = paramf;
+    this.vey = paramf;
     b(paramf, false);
-    ad.i("MicroMsg.Music.MusicPlayer", "startPlay src:%s,  playUrl:%s", new Object[] { paramf.hnv, paramf.playUrl });
-    this.tXy.start();
-    cVA();
+    ac.i("MicroMsg.Music.MusicPlayer", "startPlay src:%s,  playUrl:%s", new Object[] { paramf.hNY, paramf.playUrl });
+    this.vgk.start();
+    djg();
     AppMethodBeat.o(137336);
   }
   
-  public final boolean ox(int paramInt)
+  public final void pause()
+  {
+    AppMethodBeat.i(137339);
+    this.veM = false;
+    ac.i("MicroMsg.Music.MusicPlayer", "pause");
+    try
+    {
+      if ((this.vgG != null) && (this.vgG.isPlaying()))
+      {
+        this.vgG.pause();
+        this.vgH = true;
+        G(this.vey);
+      }
+      AppMethodBeat.o(137339);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ac.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "pause", new Object[0]);
+      AppMethodBeat.o(137339);
+    }
+  }
+  
+  public final boolean pl(int paramInt)
   {
     AppMethodBeat.i(137348);
-    ad.i("MicroMsg.Music.MusicPlayer", "seekToMusic pos:%d", new Object[] { Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.Music.MusicPlayer", "seekToMusic pos:%d", new Object[] { Integer.valueOf(paramInt) });
     try
     {
       int i = getDuration();
       int j = getDownloadPercent();
       if ((i < 0) || (paramInt > i))
       {
-        ad.e("MicroMsg.Music.MusicPlayer", "duration or position is illegal, stop");
+        ac.e("MicroMsg.Music.MusicPlayer", "duration or position is illegal, stop");
         stopPlay();
         AppMethodBeat.o(137348);
         return false;
@@ -530,46 +550,23 @@ public final class d
         if (paramInt > k)
         {
           i = k - 2000;
-          ad.i("MicroMsg.Music.MusicPlayer", "on completed seekto, position is %d =", new Object[] { Integer.valueOf(i) });
+          ac.i("MicroMsg.Music.MusicPlayer", "on completed seekto, position is %d =", new Object[] { Integer.valueOf(i) });
         }
       }
-      if ((this.tXT != null) && (i >= 0))
+      if ((this.vgG != null) && (i >= 0))
       {
-        this.tXT.seek(i);
-        H(this.tVP);
+        this.vgG.seek(i);
+        I(this.vey);
         AppMethodBeat.o(137348);
         return true;
       }
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "seekTo", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "seekTo", new Object[0]);
       AppMethodBeat.o(137348);
     }
     return false;
-  }
-  
-  public final void pause()
-  {
-    AppMethodBeat.i(137339);
-    this.tWc = false;
-    ad.i("MicroMsg.Music.MusicPlayer", "pause");
-    try
-    {
-      if ((this.tXT != null) && (this.tXT.isPlaying()))
-      {
-        this.tXT.pause();
-        this.tXU = true;
-        F(this.tVP);
-      }
-      AppMethodBeat.o(137339);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ad.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "pause", new Object[0]);
-      AppMethodBeat.o(137339);
-    }
   }
   
   public final void resume()
@@ -577,67 +574,67 @@ public final class d
     AppMethodBeat.i(137342);
     try
     {
-      if ((this.tXT != null) && (!this.tXT.isPlaying()))
+      if ((this.vgG != null) && (!this.vgG.isPlaying()))
       {
-        ad.i("MicroMsg.Music.MusicPlayer", "resume");
-        if (k.cVk().requestFocus())
+        ac.i("MicroMsg.Music.MusicPlayer", "resume");
+        if (k.diQ().requestFocus())
         {
-          this.tXT.play();
-          E(this.tVP);
+          this.vgG.play();
+          F(this.vey);
           AppMethodBeat.o(137342);
           return;
         }
-        ad.e("MicroMsg.Music.MusicPlayer", "request focus error");
+        ac.e("MicroMsg.Music.MusicPlayer", "request focus error");
         AppMethodBeat.o(137342);
         return;
       }
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "resume", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "resume", new Object[0]);
       AppMethodBeat.o(137342);
       return;
     }
-    ad.i("MicroMsg.Music.MusicPlayer", "music is playing");
+    ac.i("MicroMsg.Music.MusicPlayer", "music is playing");
     AppMethodBeat.o(137342);
   }
   
   public final void stopPlay()
   {
     AppMethodBeat.i(137344);
-    ad.i("MicroMsg.Music.MusicPlayer", "stopPlay");
-    if ((this.tXT != null) && ((this.tXT instanceof c))) {
-      aiS(this.tXT.cVE());
+    ac.i("MicroMsg.Music.MusicPlayer", "stopPlay");
+    if ((this.vgG != null) && ((this.vgG instanceof c))) {
+      anN(this.vgG.djk());
     }
     try
     {
-      if (this.tXy != null)
+      if (this.vgk != null)
       {
-        this.tXy.isStop = true;
-        this.tXy = null;
+        this.vgk.isStop = true;
+        this.vgk = null;
       }
-      if (this.tXT != null)
+      if (this.vgG != null)
       {
-        this.tXT.stop();
-        this.tXT = null;
+        this.vgG.stop();
+        this.vgG = null;
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "stopPlay", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.Music.MusicPlayer", localException, "stopPlay", new Object[0]);
       }
     }
-    k.cVk().bfc();
-    this.rdQ = false;
-    this.tWc = false;
+    k.diQ().bjF();
+    this.vdc = false;
+    this.veM = false;
     AppMethodBeat.o(137344);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.d
  * JD-Core Version:    0.7.0.1
  */

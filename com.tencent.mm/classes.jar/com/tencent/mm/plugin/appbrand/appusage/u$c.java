@@ -8,7 +8,7 @@ final class u$c
 {
   u$c(h paramh)
   {
-    super(paramh, u.a.gLr, "AppBrandStarApp", u.a.INDEX_CREATE);
+    super(paramh, u.a.hlR, "AppBrandStarApp", u.a.INDEX_CREATE);
   }
 }
 

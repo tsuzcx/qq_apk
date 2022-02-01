@@ -5,7 +5,7 @@ import com.tencent.mm.vending.c.a;
 public abstract interface e<_Ret, _Var>
   extends a<_Ret, _Var>
 {
-  public abstract String Tg();
+  public abstract String Ua();
 }
 
 

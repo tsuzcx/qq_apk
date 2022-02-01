@@ -18,8 +18,8 @@ import java.util.List;
 public class FabTransformationScrimBehavior
   extends ExpandableTransformationBehavior
 {
-  private final i jW = new i(75L);
-  private final i jX = new i(0L);
+  private final i kV = new i(75L);
+  private final i kW = new i(0L);
   
   public FabTransformationScrimBehavior() {}
   
@@ -44,7 +44,7 @@ public class FabTransformationScrimBehavior
     new ArrayList();
     if (paramBoolean1)
     {
-      paramView1 = this.jW;
+      paramView1 = this.kV;
       if (!paramBoolean1) {
         break label110;
       }
@@ -76,14 +76,14 @@ public class FabTransformationScrimBehavior
         }
       });
       return paramView1;
-      paramView1 = this.jX;
+      paramView1 = this.kW;
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.transformation.FabTransformationScrimBehavior
  * JD-Core Version:    0.7.0.1
  */

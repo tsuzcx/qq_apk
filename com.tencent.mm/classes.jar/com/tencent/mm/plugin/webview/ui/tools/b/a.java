@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.model.BallReportInfo;
 import com.tencent.mm.plugin.ball.ui.e;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.e.m;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,40 +17,42 @@ import java.util.Set;
 public final class a
   extends com.tencent.mm.plugin.ball.service.f
 {
-  private static final Set<String> AUq;
-  private static com.tencent.mm.plugin.ball.c.f jpa;
-  public WebViewUI BiO;
-  private boolean Bkc;
-  private boolean Bkd;
+  private static final Set<String> CmD;
+  private static com.tencent.mm.plugin.ball.c.f jPm;
+  public WebViewUI CBb;
+  private boolean CCq;
+  private boolean CCr;
+  private boolean CCs;
   
   static
   {
     AppMethodBeat.i(80523);
     HashSet localHashSet = new HashSet();
-    AUq = localHashSet;
+    CmD = localHashSet;
     localHashSet.add("title");
-    AUq.add("webpageTitle");
-    AUq.add("hide_option_menu");
-    AUq.add("translate_webview");
-    AUq.add("srcUsername");
-    AUq.add("srcDisplayname");
-    AUq.add("mode");
-    AUq.add("KTemplateId");
-    AUq.add("KPublisherId");
-    AUq.add(e.m.FIp);
-    AUq.add(e.m.FIq);
-    AUq.add("pay_channel");
-    AUq.add("key_download_restrict");
-    AUq.add("key_wallet_region");
-    AUq.add("key_function_id");
-    AUq.add(e.m.FIt);
-    AUq.add("geta8key_scene");
-    AUq.add("biz_video_msg_id");
-    AUq.add("biz_video_msg_index");
-    AUq.add("biz_video_msg_svr_id");
-    AUq.add("biz_mp_msg_info");
-    AUq.add(e.m.FIB);
-    jpa = new com.tencent.mm.plugin.ball.c.g()
+    CmD.add("webpageTitle");
+    CmD.add("hide_option_menu");
+    CmD.add("translate_webview");
+    CmD.add("srcUsername");
+    CmD.add("srcDisplayname");
+    CmD.add("mode");
+    CmD.add("KTemplateId");
+    CmD.add("KPublisherId");
+    CmD.add(e.m.Hhx);
+    CmD.add(e.m.Hhy);
+    CmD.add("pay_channel");
+    CmD.add("key_download_restrict");
+    CmD.add("key_wallet_region");
+    CmD.add("key_function_id");
+    CmD.add(e.m.HhB);
+    CmD.add("geta8key_scene");
+    CmD.add("biz_video_msg_id");
+    CmD.add("biz_video_msg_index");
+    CmD.add("biz_video_msg_svr_id");
+    CmD.add("biz_mp_msg_info");
+    CmD.add(e.m.HhJ);
+    CmD.add("key_menu_hide_expose");
+    jPm = new com.tencent.mm.plugin.ball.c.g()
     {
       public final void c(BallInfo paramAnonymousBallInfo)
       {
@@ -64,7 +66,7 @@ public final class a
       public final void e(BallInfo paramAnonymousBallInfo)
       {
         AppMethodBeat.i(80498);
-        ad.i("MicroMsg.WebViewFloatBallHelper", "onFloatBallInfoExposed, ballInfo:%s", new Object[] { paramAnonymousBallInfo });
+        ac.i("MicroMsg.WebViewFloatBallHelper", "onFloatBallInfoExposed, ballInfo:%s", new Object[] { paramAnonymousBallInfo });
         a.N(paramAnonymousBallInfo);
         AppMethodBeat.o(80498);
       }
@@ -76,26 +78,27 @@ public final class a
   {
     super(paramf);
     AppMethodBeat.i(80499);
-    this.Bkd = false;
-    this.BiO = paramWebViewUI;
-    ad.i("MicroMsg.WebViewFloatBallHelper", "createFloatBallHelper, WebViewUI:%s", new Object[] { Integer.valueOf(paramWebViewUI.hashCode()) });
+    this.CCr = false;
+    this.CCs = false;
+    this.CBb = paramWebViewUI;
+    ac.i("MicroMsg.WebViewFloatBallHelper", "createFloatBallHelper, WebViewUI:%s", new Object[] { Integer.valueOf(paramWebViewUI.hashCode()) });
     AppMethodBeat.o(80499);
   }
   
-  public static void aWo()
+  public static void bdm()
   {
     AppMethodBeat.i(80511);
     if (com.tencent.mm.kernel.g.ab(c.class) != null) {
-      ((c)com.tencent.mm.kernel.g.ab(c.class)).a(2, jpa);
+      ((c)com.tencent.mm.kernel.g.ab(c.class)).a(2, jPm);
     }
     AppMethodBeat.o(80511);
   }
   
-  public static void aWp()
+  public static void bdn()
   {
     AppMethodBeat.i(80512);
     if (com.tencent.mm.kernel.g.ab(c.class) != null) {
-      ((c)com.tencent.mm.kernel.g.ab(c.class)).b(2, jpa);
+      ((c)com.tencent.mm.kernel.g.ab(c.class)).b(2, jPm);
     }
     AppMethodBeat.o(80512);
   }
@@ -103,7 +106,7 @@ public final class a
   public static boolean isMpUrl(String paramString)
   {
     AppMethodBeat.i(80503);
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
       if ((paramString.startsWith("https://mp.weixin.qq.com/")) || (paramString.startsWith("http://mp.weixin.qq.com/")))
       {
@@ -117,47 +120,113 @@ public final class a
     return false;
   }
   
-  public final void OE(String paramString)
+  public final void SO(String paramString)
   {
     AppMethodBeat.i(80513);
-    if ((this.mDH != null) && (!bt.isNullOrNil(this.mDH.name)) && (!this.mDH.name.startsWith("http://")) && (!this.mDH.name.startsWith("https://")) && (!bt.isNullOrNil(paramString)) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
+    if ((this.nfN != null) && (!bs.isNullOrNil(this.nfN.name)) && (!this.nfN.name.startsWith("http://")) && (!this.nfN.name.startsWith("https://")) && (!bs.isNullOrNil(paramString)) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
     {
       AppMethodBeat.o(80513);
       return;
     }
-    super.OE(paramString);
+    super.SO(paramString);
     AppMethodBeat.o(80513);
   }
   
-  public final void Z(int paramInt, String paramString)
+  public final void aBz(String paramString)
+  {
+    AppMethodBeat.i(80518);
+    bGv().dlk = paramString;
+    bGr();
+    AppMethodBeat.o(80518);
+  }
+  
+  public final void aDu(String paramString)
+  {
+    AppMethodBeat.i(80519);
+    bGv().nfG = 9;
+    bGv().nfH = paramString;
+    bGr();
+    AppMethodBeat.o(80519);
+  }
+  
+  public final void aa(int paramInt, String paramString)
   {
     AppMethodBeat.i(80504);
-    this.Bkc = true;
-    ad.i("MicroMsg.WebViewFloatBallHelper", "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
-    super.Z(paramInt, paramString);
-    bzz().mDz = 3;
-    if (this.BiO.bFk()) {}
-    for (bzz().mDy = this.BiO.getIntent().getIntExtra(e.m.FIp, 10000);; bzz().mDy = this.BiO.beH())
+    this.CCq = true;
+    ac.i("MicroMsg.WebViewFloatBallHelper", "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    super.aa(paramInt, paramString);
+    bGv().nfG = 3;
+    if (this.CBb.bMx()) {}
+    for (bGv().nfF = this.CBb.getIntent().getIntExtra(e.m.Hhx, 10000);; bGv().nfF = this.CBb.blB())
     {
-      if (isMpUrl(this.BiO.bEx())) {
-        bzz().gWU = this.BiO.getIntent().getStringExtra("srcUsername");
+      if (isMpUrl(this.CBb.bLL())) {
+        bGv().hxt = this.CBb.getIntent().getStringExtra("srcUsername");
       }
-      ad.d("MicroMsg.WebViewFloatBallHelper", "initReportInfo generateScene %d", new Object[] { Integer.valueOf(bzz().mDy) });
-      bzv();
-      if ((this.mEA.getIntent() != null) && (this.mDH.hsl != null))
+      ac.d("MicroMsg.WebViewFloatBallHelper", "initReportInfo generateScene %d", new Object[] { Integer.valueOf(bGv().nfF) });
+      bGr();
+      if ((this.ngF.getIntent() != null) && (this.nfN.hSN != null))
       {
-        com.tencent.mm.plugin.ball.f.a.b(this.mEA.getIntent(), this.mDH.hsl, AUq);
-        bzv();
+        com.tencent.mm.plugin.ball.f.a.b(this.ngF.getIntent(), this.nfN.hSN, CmD);
+        bGr();
       }
       AppMethodBeat.o(80504);
       return;
     }
   }
   
-  public final boolean aVX()
+  public final void bGh()
+  {
+    AppMethodBeat.i(188502);
+    if (!this.CCr) {
+      super.bGh();
+    }
+    AppMethodBeat.o(188502);
+  }
+  
+  public final BallInfo bGk()
+  {
+    AppMethodBeat.i(80514);
+    BallInfo localBallInfo = super.bGk();
+    AppMethodBeat.o(80514);
+    return localBallInfo;
+  }
+  
+  public final void bGp()
+  {
+    AppMethodBeat.i(80515);
+    if ((this.CCq) && (this.nfP != null)) {
+      this.nfP.l(this.nfN);
+    }
+    AppMethodBeat.o(80515);
+  }
+  
+  public final void bGq()
+  {
+    AppMethodBeat.i(80516);
+    if ((this.CCq) && (this.nfP != null)) {
+      this.nfP.j(this.nfN);
+    }
+    AppMethodBeat.o(80516);
+  }
+  
+  public final void bGr()
+  {
+    AppMethodBeat.i(80517);
+    if ((this.CCq) && (this.nfP != null)) {
+      this.nfP.k(this.nfN);
+    }
+    AppMethodBeat.o(80517);
+  }
+  
+  public final boolean bGx()
+  {
+    return true;
+  }
+  
+  public final boolean bcV()
   {
     AppMethodBeat.i(80501);
-    if ((this.BiO.ekY()) && (this.mEA.aVX()))
+    if ((this.CBb.eAu()) && (this.ngF.bcV()))
     {
       AppMethodBeat.o(80501);
       return true;
@@ -166,149 +235,88 @@ public final class a
     return false;
   }
   
-  public final boolean aVY()
+  public final boolean bcW()
   {
-    AppMethodBeat.i(197146);
-    boolean bool = this.BiO.ekY();
-    AppMethodBeat.o(197146);
+    AppMethodBeat.i(210072);
+    boolean bool = this.CBb.eAu();
+    AppMethodBeat.o(210072);
     return bool;
   }
   
-  public final void aVZ()
+  public final void bcX()
   {
     AppMethodBeat.i(80507);
-    ad.i("MicroMsg.WebViewFloatBallHelper", "onEnterPage, WebViewUI:%s, isEntered: %b", new Object[] { Integer.valueOf(this.BiO.hashCode()), Boolean.valueOf(this.Bkd) });
-    if (!this.Bkd)
+    ac.i("MicroMsg.WebViewFloatBallHelper", "onEnterPage, WebViewUI:%s, isEntered: %b", new Object[] { Integer.valueOf(this.CBb.hashCode()), Boolean.valueOf(this.CCr) });
+    if (!this.CCr)
     {
-      this.Bkd = true;
-      super.aVZ();
+      this.CCr = true;
+      super.bcX();
     }
     AppMethodBeat.o(80507);
   }
   
-  public final void aWa()
+  public final void bcY()
   {
     AppMethodBeat.i(80508);
-    ad.i("MicroMsg.WebViewFloatBallHelper", "onExitPage, WebViewUI:%s", new Object[] { Integer.valueOf(this.BiO.hashCode()) });
-    if (((this.BiO instanceof com.tencent.mm.plugin.webview.g.a.a)) && (bzs()))
+    ac.i("MicroMsg.WebViewFloatBallHelper", "onExitPage, WebViewUI:%s", new Object[] { Integer.valueOf(this.CBb.hashCode()) });
+    if (((this.CBb instanceof com.tencent.mm.plugin.webview.g.a.a)) && (bGo()))
     {
-      int i = ((com.tencent.mm.plugin.webview.g.a.a)this.BiO).bFN();
-      if ((this.mDH != null) && (this.mDH.hsl != null))
+      int i = ((com.tencent.mm.plugin.webview.g.a.a)this.CBb).bNa();
+      if ((this.nfN != null) && (this.nfN.hSN != null))
       {
-        this.mDH.hsl.putInt("BizVideoPlayTime", i);
-        bzv();
+        this.nfN.hSN.putInt("BizVideoPlayTime", i);
+        bGr();
       }
     }
-    super.aWa();
-    this.Bkd = false;
+    super.bcY();
+    this.CCr = false;
     AppMethodBeat.o(80508);
   }
   
-  public final void aWb()
+  public final void bcZ()
   {
     AppMethodBeat.i(80510);
-    ad.i("MicroMsg.WebViewFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, WebViewUI:%s", new Object[] { Integer.valueOf(this.BiO.hashCode()) });
-    this.mEA.fF(false);
+    ac.i("MicroMsg.WebViewFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, WebViewUI:%s", new Object[] { Integer.valueOf(this.CBb.hashCode()) });
+    this.ngF.gb(false);
     AppMethodBeat.o(80510);
   }
   
-  public final void aWc()
+  public final void bda()
   {
     AppMethodBeat.i(80509);
-    ad.i("MicroMsg.WebViewFloatBallHelper", "onReceivedBallInfoRemovedEvent, WebViewUI:%s", new Object[] { Integer.valueOf(this.BiO.hashCode()) });
-    super.aWc();
+    ac.i("MicroMsg.WebViewFloatBallHelper", "onReceivedBallInfoRemovedEvent, WebViewUI:%s", new Object[] { Integer.valueOf(this.CBb.hashCode()) });
+    super.bda();
     AppMethodBeat.o(80509);
   }
   
-  public final boolean aWg()
+  public final boolean bde()
   {
-    AppMethodBeat.i(188068);
-    boolean bool = this.BiO.ekY();
-    AppMethodBeat.o(188068);
-    return bool;
-  }
-  
-  public final void awh(String paramString)
-  {
-    AppMethodBeat.i(80518);
-    bzz().dnC = paramString;
-    bzv();
-    AppMethodBeat.o(80518);
-  }
-  
-  public final void ayd(String paramString)
-  {
-    AppMethodBeat.i(80519);
-    bzz().mDz = 9;
-    bzz().mDA = paramString;
-    bzv();
-    AppMethodBeat.o(80519);
-  }
-  
-  public final boolean bzB()
-  {
-    return true;
-  }
-  
-  public final void bzl()
-  {
-    AppMethodBeat.i(188067);
-    if (!this.Bkd) {
-      super.bzl();
+    AppMethodBeat.i(188503);
+    if ((!this.CCs) && (this.CBb.eAu()))
+    {
+      AppMethodBeat.o(188503);
+      return true;
     }
-    AppMethodBeat.o(188067);
+    AppMethodBeat.o(188503);
+    return false;
   }
   
-  public final BallInfo bzo()
-  {
-    AppMethodBeat.i(80514);
-    BallInfo localBallInfo = super.bzo();
-    AppMethodBeat.o(80514);
-    return localBallInfo;
-  }
-  
-  public final void bzt()
-  {
-    AppMethodBeat.i(80515);
-    if ((this.Bkc) && (this.mDJ != null)) {
-      this.mDJ.k(this.mDH);
-    }
-    AppMethodBeat.o(80515);
-  }
-  
-  public final void bzu()
-  {
-    AppMethodBeat.i(80516);
-    if ((this.Bkc) && (this.mDJ != null)) {
-      this.mDJ.i(this.mDH);
-    }
-    AppMethodBeat.o(80516);
-  }
-  
-  public final void bzv()
-  {
-    AppMethodBeat.i(80517);
-    if ((this.Bkc) && (this.mDJ != null)) {
-      this.mDJ.j(this.mDH);
-    }
-    AppMethodBeat.o(80517);
-  }
-  
-  public final void epu()
+  public final void eEP()
   {
     AppMethodBeat.i(80502);
-    if (this.mEC != null) {
-      this.mEC.stop();
+    if (this.ngH != null) {
+      this.ngH.stop();
     }
+    this.CCs = true;
     AppMethodBeat.o(80502);
   }
   
-  public final int epv()
+  public final int eEQ()
   {
     AppMethodBeat.i(80520);
-    if ((this.mDH != null) && (this.mDH.hsl != null))
+    if ((this.nfN != null) && (this.nfN.hSN != null))
     {
-      int i = this.mDH.hsl.getInt("BizVideoPlayTime", 0);
+      int i = this.nfN.hSN.getInt("BizVideoPlayTime", 0);
       AppMethodBeat.o(80520);
       return i;
     }
@@ -318,8 +326,8 @@ public final class a
   
   public final String getName()
   {
-    if (this.mDH != null) {
-      return this.mDH.name;
+    if (this.nfN != null) {
+      return this.nfN.name;
     }
     return null;
   }
@@ -327,16 +335,16 @@ public final class a
   public final void onDestroy()
   {
     AppMethodBeat.i(80506);
-    ad.i("MicroMsg.WebViewFloatBallHelper", "onDestroy, WebViewUI:%s", new Object[] { Integer.valueOf(this.BiO.hashCode()) });
+    ac.i("MicroMsg.WebViewFloatBallHelper", "onDestroy, WebViewUI:%s", new Object[] { Integer.valueOf(this.CBb.hashCode()) });
     super.onDestroy();
     AppMethodBeat.o(80506);
   }
   
-  public final boolean rg(int paramInt)
+  public final boolean rT(int paramInt)
   {
     AppMethodBeat.i(80505);
-    ad.i("MicroMsg.WebViewFloatBallHelper", "onClose, WebViewUI:%s", new Object[] { Integer.valueOf(this.BiO.hashCode()) });
-    boolean bool = super.rg(paramInt);
+    ac.i("MicroMsg.WebViewFloatBallHelper", "onClose, WebViewUI:%s", new Object[] { Integer.valueOf(this.CBb.hashCode()) });
+    boolean bool = super.rT(paramInt);
     AppMethodBeat.o(80505);
     return bool;
   }

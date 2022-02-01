@@ -33,7 +33,7 @@ public final class ProfileManager
     try
     {
       if (instance == null) {
-        instance = new ProfileManager(d.T(FacebookSdk.getApplicationContext()), new ProfileCache());
+        instance = new ProfileManager(d.U(FacebookSdk.getApplicationContext()), new ProfileCache());
       }
       ProfileManager localProfileManager = instance;
       AppMethodBeat.o(17262);

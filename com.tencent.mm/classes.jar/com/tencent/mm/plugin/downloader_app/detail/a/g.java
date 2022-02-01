@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.downloader_app.a.c;
 import com.tencent.mm.plugin.downloader_app.api.a.b;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,7 +19,7 @@ public class g
   public final void a(Context paramContext, String paramString, final bn.a parama)
   {
     AppMethodBeat.i(8835);
-    ad.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
+    ac.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
     long l;
     try
     {
@@ -27,7 +27,7 @@ public class g
       l = paramString.optLong("download_id");
       if (l <= 0L)
       {
-        ad.e("MicroMsg.JsApiResumeDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
+        ac.e("MicroMsg.JsApiResumeDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
         parama.f("invalid_downloadid", null);
         AppMethodBeat.o(8835);
         return;
@@ -35,17 +35,17 @@ public class g
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiResumeDownloadTask", "paras data error: " + paramContext.getMessage());
+      ac.e("MicroMsg.JsApiResumeDownloadTask", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(8835);
       return;
     }
-    paramString = d.oq(l);
+    paramString = d.sc(l);
     if (paramString != null)
     {
       b localb = new b();
       localb.k(paramString);
-      localb.lrf = 0L;
+      localb.lTa = 0L;
       a.a(10, localb);
     }
     c.a(paramContext, paramString, null, new a.b()
@@ -53,19 +53,19 @@ public class g
       public final void a(com.tencent.mm.plugin.downloader_app.api.a.a paramAnonymousa, long paramAnonymousLong)
       {
         AppMethodBeat.i(8834);
-        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.ogO)
+        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.oKo)
         {
           parama.f(null, null);
           AppMethodBeat.o(8834);
           return;
         }
-        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.ogP)
+        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.oKp)
         {
           parama.f("fail", null);
           AppMethodBeat.o(8834);
           return;
         }
-        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.ogQ) {
+        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.oKq) {
           parama.f("wait_for_wifi", null);
         }
         AppMethodBeat.o(8834);
@@ -76,7 +76,7 @@ public class g
   
   public final void b(com.tencent.luggage.d.a.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 2;
   }

@@ -2,22 +2,22 @@ package com.tencent.mm.pluginsdk.model.app;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class t
   implements Runnable
 {
   private String appId = null;
-  private ap handler = null;
-  private int hrU = 0;
+  private int hSw = 0;
+  private ao handler = null;
   private String url = null;
   
-  public t(ap paramap, String paramString1, int paramInt, String paramString2)
+  public t(ao paramao, String paramString1, int paramInt, String paramString2)
   {
-    this.handler = paramap;
+    this.handler = paramao;
     this.appId = paramString1;
-    this.hrU = paramInt;
+    this.hSw = paramInt;
     this.url = paramString2;
   }
   
@@ -29,8 +29,8 @@ final class t
       AppMethodBeat.o(151793);
       return;
     }
-    Object localObject = bt.aGl(this.url);
-    localObject = new x(this.appId, this.hrU, (byte[])localObject);
+    Object localObject = bs.aLC(this.url);
+    localObject = new x(this.appId, this.hSw, (byte[])localObject);
     Message localMessage = Message.obtain();
     localMessage.obj = localObject;
     this.handler.sendMessage(localMessage);
@@ -39,7 +39,7 @@ final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.t
  * JD-Core Version:    0.7.0.1
  */

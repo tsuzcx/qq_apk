@@ -12,90 +12,90 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.editor.model.nativenote.c.e;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public abstract class d
   extends a
 {
-  public static int olA = Resources.getSystem().getDisplayMetrics().widthPixels;
-  public static int olB = (int)(40.0F * olz + 0.5F);
-  public static float olz = Resources.getSystem().getDisplayMetrics().density;
-  public ImageView djK;
-  public LinearLayout irQ;
-  public View.OnClickListener olC = new View.OnClickListener()
+  public static float oOZ = Resources.getSystem().getDisplayMetrics().density;
+  public static int oPa = Resources.getSystem().getDisplayMetrics().widthPixels;
+  public static int oPb = (int)(40.0F * oOZ + 0.5F);
+  public ImageView dhf;
+  public LinearLayout iRV;
+  public WXRTEditText oOL;
+  public WXRTEditText oOM;
+  public LinearLayout oON;
+  public TextView oOO;
+  public TextView oOP;
+  public ImageView oOQ;
+  public View oOR;
+  public LinearLayout oOS;
+  public LinearLayout oOT;
+  public LinearLayout oOU;
+  public LinearLayout oOV;
+  public LinearLayout oOW;
+  public LinearLayout oOX;
+  public LinearLayout oOY;
+  public View.OnClickListener oPc = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
       AppMethodBeat.i(181651);
-      d.this.okB.ooF.bRM().bRC();
+      d.this.oOb.oSf.bZb().bYR();
       AppMethodBeat.o(181651);
     }
   };
-  public WXRTEditText oll;
-  public WXRTEditText olm;
-  public LinearLayout oln;
-  public TextView olo;
-  public TextView olp;
-  public ImageView olq;
-  public View olr;
-  public LinearLayout ols;
-  public LinearLayout olt;
-  public LinearLayout olu;
-  public LinearLayout olv;
-  public LinearLayout olw;
-  public LinearLayout olx;
-  public LinearLayout oly;
   
   public d(View paramView, j paramj)
   {
     super(paramView, paramj);
-    this.djK = ((ImageView)paramView.findViewById(2131299257));
-    this.olr = paramView.findViewById(2131306315);
-    this.oln = ((LinearLayout)paramView.findViewById(2131302917));
-    this.irQ = ((LinearLayout)paramView.findViewById(2131302943));
-    this.olo = ((TextView)paramView.findViewById(2131302918));
-    this.olp = ((TextView)paramView.findViewById(2131302915));
-    this.olq = ((ImageView)paramView.findViewById(2131302916));
-    this.olo.setTextSize(16.0F);
-    this.olp.setTextSize(12.0F);
-    this.ols = ((LinearLayout)paramView.findViewById(2131302941));
-    this.ols.setVisibility(8);
-    this.olu = ((LinearLayout)paramView.findViewById(2131302936));
-    this.olu.setVisibility(8);
-    this.olv = ((LinearLayout)paramView.findViewById(2131302914));
-    this.olv.setVisibility(8);
-    this.olw = ((LinearLayout)paramView.findViewById(2131303103));
-    this.olw.setBackgroundColor(1347529272);
-    this.olw.setVisibility(8);
-    this.olw.setOnClickListener(new View.OnClickListener()
+    this.dhf = ((ImageView)paramView.findViewById(2131299257));
+    this.oOR = paramView.findViewById(2131306315);
+    this.oON = ((LinearLayout)paramView.findViewById(2131302917));
+    this.iRV = ((LinearLayout)paramView.findViewById(2131302943));
+    this.oOO = ((TextView)paramView.findViewById(2131302918));
+    this.oOP = ((TextView)paramView.findViewById(2131302915));
+    this.oOQ = ((ImageView)paramView.findViewById(2131302916));
+    this.oOO.setTextSize(16.0F);
+    this.oOP.setTextSize(12.0F);
+    this.oOS = ((LinearLayout)paramView.findViewById(2131302941));
+    this.oOS.setVisibility(8);
+    this.oOU = ((LinearLayout)paramView.findViewById(2131302936));
+    this.oOU.setVisibility(8);
+    this.oOV = ((LinearLayout)paramView.findViewById(2131302914));
+    this.oOV.setVisibility(8);
+    this.oOW = ((LinearLayout)paramView.findViewById(2131303103));
+    this.oOW.setBackgroundColor(1347529272);
+    this.oOW.setVisibility(8);
+    this.oOW.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181648);
-        e.bSW().bTb();
+        e.cal().caq();
         AppMethodBeat.o(181648);
       }
     });
-    this.olx = ((LinearLayout)paramView.findViewById(2131303110));
-    this.olx.setBackgroundColor(1347529272);
-    this.olx.setVisibility(4);
-    this.oly = ((LinearLayout)paramView.findViewById(2131303105));
-    this.oly.setBackgroundColor(1347529272);
-    this.oly.setVisibility(4);
-    this.olt = ((LinearLayout)paramView.findViewById(2131299269));
-    paramj = (RelativeLayout.LayoutParams)this.olt.getLayoutParams();
-    paramj.width = (olA - olB);
+    this.oOX = ((LinearLayout)paramView.findViewById(2131303110));
+    this.oOX.setBackgroundColor(1347529272);
+    this.oOX.setVisibility(4);
+    this.oOY = ((LinearLayout)paramView.findViewById(2131303105));
+    this.oOY.setBackgroundColor(1347529272);
+    this.oOY.setVisibility(4);
+    this.oOT = ((LinearLayout)paramView.findViewById(2131299269));
+    paramj = (RelativeLayout.LayoutParams)this.oOT.getLayoutParams();
+    paramj.width = (oPa - oPb);
     paramj.height = -2;
-    this.olt.setLayoutParams(paramj);
-    this.olm = ((WXRTEditText)paramView.findViewById(2131297578));
-    this.oll = ((WXRTEditText)paramView.findViewById(2131297580));
+    this.oOT.setLayoutParams(paramj);
+    this.oOM = ((WXRTEditText)paramView.findViewById(2131297578));
+    this.oOL = ((WXRTEditText)paramView.findViewById(2131297580));
     ((LinearLayout)paramView.findViewById(2131297579)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181649);
-        d.this.olm.bSH();
-        d.this.olm.requestFocus();
+        d.this.oOM.bZW();
+        d.this.oOM.requestFocus();
         AppMethodBeat.o(181649);
       }
     });
@@ -104,69 +104,69 @@ public abstract class d
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181650);
-        d.this.oll.bSH();
-        d.this.oll.requestFocus();
+        d.this.oOL.bZW();
+        d.this.oOL.requestFocus();
         AppMethodBeat.o(181650);
       }
     });
-    this.olm.setEditTextType(2);
-    this.oll.setEditTextType(1);
-    this.oll.oob = this;
-    this.olm.oob = this;
-    if (!this.okB.ooL)
+    this.oOM.setEditTextType(2);
+    this.oOL.setEditTextType(1);
+    this.oOL.oRB = this;
+    this.oOM.oRB = this;
+    if (!this.oOb.oSl)
     {
-      this.olm.setKeyListener(null);
-      this.olm.setEnabled(false);
-      this.olm.setFocusable(false);
-      this.oll.setKeyListener(null);
-      this.oll.setEnabled(false);
-      this.oll.setFocusable(false);
+      this.oOM.setKeyListener(null);
+      this.oOM.setEnabled(false);
+      this.oOM.setFocusable(false);
+      this.oOL.setKeyListener(null);
+      this.oOL.setEnabled(false);
+      this.oOL.setFocusable(false);
     }
-    this.okB.q(this.oll);
-    this.okB.q(this.olm);
+    this.oOb.q(this.oOL);
+    this.oOb.q(this.oOM);
   }
   
   public void a(com.tencent.mm.plugin.editor.model.a.a parama, int paramInt1, int paramInt2)
   {
-    ad.i("MicroMsg.EditorOtherItemHolder", "ImageItemHolder position is " + lm());
-    this.oll.setPosInDataList(paramInt1);
-    this.olm.setPosInDataList(paramInt1);
+    ac.i("MicroMsg.EditorOtherItemHolder", "ImageItemHolder position is " + lu());
+    this.oOL.setPosInDataList(paramInt1);
+    this.oOM.setPosInDataList(paramInt1);
     if (e.isEnabled()) {
-      e.bSW().a(this.olw, this.olx, this.oly, paramInt1);
+      e.cal().a(this.oOW, this.oOX, this.oOY, paramInt1);
     }
-    parama.omy = this.oll;
-    parama.omz = this.olm;
-    parama.omA = null;
-    if (parama.omv) {
-      if (parama.omB) {
-        this.oll.requestFocus();
+    parama.oPY = this.oOL;
+    parama.oPZ = this.oOM;
+    parama.oQa = null;
+    if (parama.oPV) {
+      if (parama.oQb) {
+        this.oOL.requestFocus();
       }
     }
     for (;;)
     {
-      if (this.oln.getVisibility() == 0)
+      if (this.oON.getVisibility() == 0)
       {
-        if (!parama.omC) {
+        if (!parama.oQc) {
           break;
         }
-        this.oln.setBackgroundResource(2131231974);
+        this.oON.setBackgroundResource(2131231974);
       }
       return;
-      this.olm.requestFocus();
+      this.oOM.requestFocus();
       continue;
-      if (this.oll.hasFocus()) {
-        this.oll.clearFocus();
+      if (this.oOL.hasFocus()) {
+        this.oOL.clearFocus();
       }
-      if (this.olm.hasFocus()) {
-        this.olm.clearFocus();
+      if (this.oOM.hasFocus()) {
+        this.oOM.clearFocus();
       }
     }
-    this.oln.setBackgroundResource(2131231973);
+    this.oON.setBackgroundResource(2131231973);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public final class d
   implements AbsListView.OnScrollListener
 {
-  private AbsListView.OnScrollListener BUD;
-  private ArrayList<WeakReference<a>> BUE;
+  private AbsListView.OnScrollListener DmT;
+  private ArrayList<WeakReference<a>> DmU;
   
   public d()
   {
@@ -20,18 +20,18 @@ public final class d
   public d(AbsListView.OnScrollListener paramOnScrollListener)
   {
     AppMethodBeat.i(152123);
-    this.BUE = new ArrayList();
-    this.BUD = paramOnScrollListener;
+    this.DmU = new ArrayList();
+    this.DmT = paramOnScrollListener;
     AppMethodBeat.o(152123);
   }
   
-  private void tV(boolean paramBoolean)
+  private void uW(boolean paramBoolean)
   {
     AppMethodBeat.i(152127);
     int i = 0;
-    if (i < this.BUE.size())
+    if (i < this.DmU.size())
     {
-      Object localObject = (WeakReference)this.BUE.get(i);
+      Object localObject = (WeakReference)this.DmU.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -43,9 +43,9 @@ public final class d
       {
         i += 1;
         break;
-        this.BUE.remove(i);
+        this.DmU.remove(i);
         continue;
-        this.BUE.remove(i);
+        this.DmU.remove(i);
       }
     }
     AppMethodBeat.o(152127);
@@ -54,15 +54,15 @@ public final class d
   public final void a(a parama)
   {
     AppMethodBeat.i(152126);
-    this.BUE.add(new WeakReference(parama));
+    this.DmU.add(new WeakReference(parama));
     AppMethodBeat.o(152126);
   }
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(152124);
-    if (this.BUD != null) {
-      this.BUD.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.DmT != null) {
+      this.DmT.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     AppMethodBeat.o(152124);
   }
@@ -71,16 +71,16 @@ public final class d
   {
     AppMethodBeat.i(152125);
     if (paramInt == 2) {
-      tV(true);
+      uW(true);
     }
     for (;;)
     {
-      if (this.BUD != null) {
-        this.BUD.onScrollStateChanged(paramAbsListView, paramInt);
+      if (this.DmT != null) {
+        this.DmT.onScrollStateChanged(paramAbsListView, paramInt);
       }
       AppMethodBeat.o(152125);
       return;
-      tV(false);
+      uW(false);
     }
   }
   
@@ -91,7 +91,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.d
  * JD-Core Version:    0.7.0.1
  */

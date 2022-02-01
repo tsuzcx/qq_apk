@@ -10,12 +10,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/img/MPImgLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "coverIV", "Landroid/widget/ImageView;", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "init", "", "initData", "plugin-brandservice_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/img/MPImgLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "coverIV", "Landroid/widget/ImageView;", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "init", "", "initData", "plugin-brandservice_release"})
 public final class MPImgLayout
   extends RelativeLayout
 {
   private final String TAG;
-  private ImageView mYy;
+  private ImageView nAX;
   
   public MPImgLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,7 +25,7 @@ public final class MPImgLayout
     View.inflate(getContext(), 2131494948, (ViewGroup)this);
     paramAttributeSet = findViewById(2131298824);
     k.g(paramAttributeSet, "findViewById(R.id.cover_iv)");
-    this.mYy = ((ImageView)paramAttributeSet);
+    this.nAX = ((ImageView)paramAttributeSet);
     k.h(paramContext, "context");
     AppMethodBeat.o(6537);
   }
@@ -38,7 +38,7 @@ public final class MPImgLayout
     View.inflate(getContext(), 2131494948, (ViewGroup)this);
     paramAttributeSet = findViewById(2131298824);
     k.g(paramAttributeSet, "findViewById(R.id.cover_iv)");
-    this.mYy = ((ImageView)paramAttributeSet);
+    this.nAX = ((ImageView)paramAttributeSet);
     k.h(paramContext, "context");
     AppMethodBeat.o(6538);
   }

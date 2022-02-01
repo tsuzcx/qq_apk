@@ -6,10 +6,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bq;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,12 +19,12 @@ public final class b
   extends n
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS addr_upload2 ( id int  PRIMARY KEY , md5 text  , peopleid text  , uploadtime long  , realname text  , realnamepyinitial text  , realnamequanpin text  , username text  , nickname text  , nicknamepyinitial text  , nicknamequanpin text  , type int  , moblie text  , email text  , status int  , reserved1 text  , reserved2 text  , reserved3 int  , reserved4 int , lvbuf BLOG , showhead int  ) ", "CREATE INDEX IF NOT EXISTS upload_time_index ON addr_upload2 ( uploadtime ) ", "CREATE INDEX IF NOT EXISTS addr_upload_user_index ON addr_upload2 ( username ) " };
-  public final h gPa;
+  public final h hpA;
   
   public b(h paramh)
   {
     AppMethodBeat.i(130974);
-    this.gPa = paramh;
+    this.hpA = paramh;
     Cursor localCursor = paramh.a("PRAGMA table_info( " + "addr_upload2" + " )", null, 2);
     int k = localCursor.getColumnIndex("name");
     int j = 0;
@@ -50,18 +50,18 @@ public final class b
     AppMethodBeat.o(130974);
   }
   
-  public final a Cc(String paramString)
+  public final a Gf(String paramString)
   {
     AppMethodBeat.i(130979);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(130979);
       return null;
     }
     a locala = new a();
-    Object localObject = "select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2 where addr_upload2.username=\"" + bt.aFQ(paramString) + "\"";
-    localObject = this.gPa.a((String)localObject, null, 2);
-    ad.d("MicroMsg.AddrUploadStorage", "get addrUpload :".concat(String.valueOf(paramString)));
+    Object localObject = "select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2 where addr_upload2.username=\"" + bs.aLh(paramString) + "\"";
+    localObject = this.hpA.a((String)localObject, null, 2);
+    ac.d("MicroMsg.AddrUploadStorage", "get addrUpload :".concat(String.valueOf(paramString)));
     if (((Cursor)localObject).moveToFirst()) {
       locala.convertFrom((Cursor)localObject);
     }
@@ -70,7 +70,7 @@ public final class b
     return locala;
   }
   
-  public final Cursor Cd(String paramString)
+  public final Cursor Gg(String paramString)
   {
     AppMethodBeat.i(130980);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -90,19 +90,19 @@ public final class b
     localStringBuilder.append(" or ");
     localStringBuilder.append("addr_upload2.status=2");
     localStringBuilder.append(")");
-    paramString = (String)g.afB().afk().get(6, null);
+    paramString = (String)g.agR().agA().get(6, null);
     if ((paramString != null) && (!paramString.equals("")))
     {
-      paramString = this.gPa.a("select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2  where type = 0 and moblie <> " + paramString + localStringBuilder.toString() + " order by  case when status = 1 then 0  when status = 65536 then 1  when status = 2 then 2 else 3 end  , realnamepyinitial", null, 0);
+      paramString = this.hpA.a("select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2  where type = 0 and moblie <> " + paramString + localStringBuilder.toString() + " order by  case when status = 1 then 0  when status = 65536 then 1  when status = 2 then 2 else 3 end  , realnamepyinitial", null, 0);
       AppMethodBeat.o(130980);
       return paramString;
     }
-    paramString = this.gPa.a("select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2  where type = 0" + localStringBuilder.toString() + " order by  case when status = 1 then 0  when status = 65536 then 1  when status = 2 then 2 else 3 end  , realnamepyinitial", null, 0);
+    paramString = this.hpA.a("select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2  where type = 0" + localStringBuilder.toString() + " order by  case when status = 1 then 0  when status = 65536 then 1  when status = 2 then 2 else 3 end  , realnamepyinitial", null, 0);
     AppMethodBeat.o(130980);
     return paramString;
   }
   
-  public final Cursor Ce(String paramString)
+  public final Cursor Gh(String paramString)
   {
     AppMethodBeat.i(130981);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -122,19 +122,19 @@ public final class b
     localStringBuilder.append(" or ");
     localStringBuilder.append("addr_upload2.status=2");
     localStringBuilder.append(")");
-    paramString = (String)g.afB().afk().get(6, null);
+    paramString = (String)g.agR().agA().get(6, null);
     if ((paramString != null) && (!paramString.equals("")))
     {
-      paramString = this.gPa.a("select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2  where type = 0 and moblie <> " + paramString + localStringBuilder.toString() + " order by showhead", null, 0);
+      paramString = this.hpA.a("select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2  where type = 0 and moblie <> " + paramString + localStringBuilder.toString() + " order by showhead", null, 0);
       AppMethodBeat.o(130981);
       return paramString;
     }
-    paramString = this.gPa.a("select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2  where type = 0" + localStringBuilder.toString() + " order by showhead", null, 0);
+    paramString = this.hpA.a("select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2  where type = 0" + localStringBuilder.toString() + " order by showhead", null, 0);
     AppMethodBeat.o(130981);
     return paramString;
   }
   
-  public final a Cf(String paramString)
+  public final a Gi(String paramString)
   {
     a locala = null;
     AppMethodBeat.i(130982);
@@ -143,8 +143,8 @@ public final class b
       AppMethodBeat.o(130982);
       return null;
     }
-    Object localObject = "select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2 where addr_upload2.id=" + a.Ca(paramString);
-    localObject = this.gPa.a((String)localObject, null, 2);
+    Object localObject = "select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2 where addr_upload2.id=" + a.Gd(paramString);
+    localObject = this.hpA.a((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst())
     {
       locala = new a();
@@ -154,20 +154,20 @@ public final class b
     if (locala != null) {}
     for (int i = 1;; i = 0)
     {
-      ad.d("MicroMsg.AddrUploadStorage", i);
+      ac.d("MicroMsg.AddrUploadStorage", i);
       ((Cursor)localObject).close();
       AppMethodBeat.o(130982);
       return locala;
     }
   }
   
-  public final List<a> Cg(String paramString)
+  public final List<a> Gj(String paramString)
   {
     AppMethodBeat.i(130984);
-    ad.d("MicroMsg.AddrUploadStorage", "sql : ".concat(String.valueOf(paramString)));
+    ac.d("MicroMsg.AddrUploadStorage", "sql : ".concat(String.valueOf(paramString)));
     ArrayList localArrayList = new ArrayList();
-    ad.d("MicroMsg.AddrUploadStorage", "sql : ".concat(String.valueOf(paramString)));
-    paramString = this.gPa.a(paramString, null, 2);
+    ac.d("MicroMsg.AddrUploadStorage", "sql : ".concat(String.valueOf(paramString)));
+    paramString = this.hpA.a(paramString, null, 2);
     while (paramString.moveToNext())
     {
       a locala = new a();
@@ -179,10 +179,10 @@ public final class b
     return localArrayList;
   }
   
-  public final String Ch(String paramString)
+  public final String Gk(String paramString)
   {
     AppMethodBeat.i(130986);
-    paramString = Cf(paramString);
+    paramString = Gi(paramString);
     if (paramString != null)
     {
       paramString = paramString.getUsername();
@@ -194,16 +194,16 @@ public final class b
   }
   
   /* Error */
-  public final String Ci(String paramString)
+  public final String Gl(String paramString)
   {
     // Byte code:
     //   0: ldc 252
     //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 107	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 107	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifne +90 -> 99
     //   12: aload_0
-    //   13: getfield 34	com/tencent/mm/plugin/account/friend/a/b:gPa	Lcom/tencent/mm/storagebase/h;
+    //   13: getfield 34	com/tencent/mm/plugin/account/friend/a/b:hpA	Lcom/tencent/mm/storagebase/h;
     //   16: ldc 43
     //   18: aconst_null
     //   19: ldc 254
@@ -270,7 +270,7 @@ public final class b
     //   122: aload_3
     //   123: invokevirtual 264	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   126: aastore
-    //   127: invokestatic 268	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   127: invokestatic 268	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   130: aload_2
     //   131: ifnull -32 -> 99
     //   134: aload_2
@@ -322,15 +322,15 @@ public final class b
     AppMethodBeat.i(130978);
     ContentValues localContentValues = parama.convertTo();
     if (localContentValues.size() > 0) {
-      i = this.gPa.update("addr_upload2", localContentValues, "id=?", new String[] { a.Ca(paramString) });
+      i = this.hpA.update("addr_upload2", localContentValues, "id=?", new String[] { a.Gd(paramString) });
     }
     if (i > 0)
     {
-      if (parama.JS().equals(paramString)) {
+      if (parama.JC().equals(paramString)) {
         break label101;
       }
       b(5, this, paramString);
-      b(2, this, parama.JS());
+      b(2, this, parama.JC());
     }
     for (;;)
     {
@@ -341,37 +341,7 @@ public final class b
     }
   }
   
-  public final List<String[]> aID()
-  {
-    AppMethodBeat.i(130983);
-    Cursor localCursor = this.gPa.a("select addr_upload2.moblie , addr_upload2.md5 from addr_upload2 where addr_upload2.type = 0", null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (localCursor.moveToNext()) {
-      localArrayList.add(new String[] { localCursor.getString(0), localCursor.getString(1) });
-    }
-    localCursor.close();
-    AppMethodBeat.o(130983);
-    return localArrayList;
-  }
-  
-  public final boolean aIE()
-  {
-    AppMethodBeat.i(130985);
-    if ((this.gPa == null) || (this.gPa.eHe()))
-    {
-      if (this.gPa == null) {}
-      for (Object localObject = "null";; localObject = Boolean.valueOf(this.gPa.eHe()))
-      {
-        ad.w("MicroMsg.AddrUploadStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
-        AppMethodBeat.o(130985);
-        return false;
-      }
-    }
-    AppMethodBeat.o(130985);
-    return true;
-  }
-  
-  public final boolean aL(List<String> paramList)
+  public final boolean aJ(List<String> paramList)
   {
     AppMethodBeat.i(130975);
     if (paramList.size() <= 0)
@@ -379,9 +349,9 @@ public final class b
       AppMethodBeat.o(130975);
       return false;
     }
-    br localbr = new br("MicroMsg.AddrUploadStorage", "delete transaction");
-    localbr.addSplit("begin");
-    long l = this.gPa.rb(Thread.currentThread().getId());
+    bq localbq = new bq("MicroMsg.AddrUploadStorage", "delete transaction");
+    localbq.addSplit("begin");
+    long l = this.hpA.vE(Thread.currentThread().getId());
     boolean bool;
     try
     {
@@ -391,38 +361,38 @@ public final class b
         String str = (String)paramList.next();
         if ((str != null) && (str.length() > 0))
         {
-          int i = this.gPa.delete("addr_upload2", "id =?", new String[] { a.Ca(str) });
-          ad.d("MicroMsg.AddrUploadStorage", "delete addr_upload2 md5 :" + str + ", res:" + i);
+          int i = this.hpA.delete("addr_upload2", "id =?", new String[] { a.Gd(str) });
+          ac.d("MicroMsg.AddrUploadStorage", "delete addr_upload2 md5 :" + str + ", res:" + i);
           if (i > 0)
           {
             b(5, this, str);
             continue;
-            this.gPa.mX(l);
+            this.hpA.qL(l);
           }
         }
       }
     }
     catch (Exception paramList)
     {
-      ad.printErrStackTrace("MicroMsg.AddrUploadStorage", paramList, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AddrUploadStorage", paramList, "", new Object[0]);
       bool = false;
     }
     for (;;)
     {
-      localbr.addSplit("end");
-      localbr.dumpToLog();
+      localbq.addSplit("end");
+      localbq.dumpToLog();
       AppMethodBeat.o(130975);
       return bool;
       bool = true;
     }
   }
   
-  public final boolean aM(List<String> paramList)
+  public final boolean aK(List<String> paramList)
   {
     AppMethodBeat.i(130977);
-    br localbr = new br("MicroMsg.AddrUploadStorage", "set uploaded transaction");
-    localbr.addSplit("transation begin");
-    long l = this.gPa.rb(Thread.currentThread().getId());
+    bq localbq = new bq("MicroMsg.AddrUploadStorage", "set uploaded transaction");
+    localbq.addSplit("transation begin");
+    long l = this.hpA.vE(Thread.currentThread().getId());
     boolean bool;
     try
     {
@@ -433,28 +403,28 @@ public final class b
         if ((str != null) && (str.length() > 0))
         {
           Object localObject = new a();
-          ((a)localObject).dtM = 8;
-          ((a)localObject).ijC = bt.aGK();
+          ((a)localObject).drx = 8;
+          ((a)localObject).iJJ = bs.aNx();
           localObject = ((a)localObject).convertTo();
           int i = 0;
           if (((ContentValues)localObject).size() > 0) {
-            i = this.gPa.update("addr_upload2", (ContentValues)localObject, "id=?", new String[] { a.Ca(str) });
+            i = this.hpA.update("addr_upload2", (ContentValues)localObject, "id=?", new String[] { a.Gd(str) });
           }
-          ad.i("MicroMsg.AddrUploadStorage", "local contact uploaded : " + str + ", update result: " + i);
+          ac.i("MicroMsg.AddrUploadStorage", "local contact uploaded : " + str + ", update result: " + i);
           continue;
-          this.gPa.mX(l);
+          this.hpA.qL(l);
         }
       }
     }
     catch (Exception paramList)
     {
-      ad.e("MicroMsg.AddrUploadStorage", paramList.getMessage());
+      ac.e("MicroMsg.AddrUploadStorage", paramList.getMessage());
       bool = false;
     }
     for (;;)
     {
-      localbr.addSplit("transation end");
-      localbr.dumpToLog();
+      localbq.addSplit("transation end");
+      localbq.dumpToLog();
       if (bool) {
         b(3, this, null);
       }
@@ -464,7 +434,37 @@ public final class b
     }
   }
   
-  public final boolean ao(List<a> paramList)
+  public final List<String[]> aPu()
+  {
+    AppMethodBeat.i(130983);
+    Cursor localCursor = this.hpA.a("select addr_upload2.moblie , addr_upload2.md5 from addr_upload2 where addr_upload2.type = 0", null, 2);
+    ArrayList localArrayList = new ArrayList();
+    while (localCursor.moveToNext()) {
+      localArrayList.add(new String[] { localCursor.getString(0), localCursor.getString(1) });
+    }
+    localCursor.close();
+    AppMethodBeat.o(130983);
+    return localArrayList;
+  }
+  
+  public final boolean aPv()
+  {
+    AppMethodBeat.i(130985);
+    if ((this.hpA == null) || (this.hpA.eWz()))
+    {
+      if (this.hpA == null) {}
+      for (Object localObject = "null";; localObject = Boolean.valueOf(this.hpA.eWz()))
+      {
+        ac.w("MicroMsg.AddrUploadStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
+        AppMethodBeat.o(130985);
+        return false;
+      }
+    }
+    AppMethodBeat.o(130985);
+    return true;
+  }
+  
+  public final boolean al(List<a> paramList)
   {
     AppMethodBeat.i(130976);
     if ((paramList == null) || (paramList.size() <= 0))
@@ -472,9 +472,9 @@ public final class b
       AppMethodBeat.o(130976);
       return false;
     }
-    br localbr = new br("MicroMsg.AddrUploadStorage", "transaction");
-    localbr.addSplit("transation begin");
-    long l = this.gPa.rb(Thread.currentThread().getId());
+    bq localbq = new bq("MicroMsg.AddrUploadStorage", "transaction");
+    localbq.addSplit("transation begin");
+    long l = this.hpA.vE(Thread.currentThread().getId());
     int i = 0;
     for (;;)
     {
@@ -487,9 +487,9 @@ public final class b
         if (locala == null) {
           continue;
         }
-        localObject = locala.JS();
-        localObject = "select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2  where addr_upload2.id = " + a.Ca((String)localObject);
-        localObject = this.gPa.a((String)localObject, null, 2);
+        localObject = locala.JC();
+        localObject = "select addr_upload2.id,addr_upload2.md5,addr_upload2.peopleid,addr_upload2.uploadtime,addr_upload2.realname,addr_upload2.realnamepyinitial,addr_upload2.realnamequanpin,addr_upload2.username,addr_upload2.nickname,addr_upload2.nicknamepyinitial,addr_upload2.nicknamequanpin,addr_upload2.type,addr_upload2.moblie,addr_upload2.email,addr_upload2.status,addr_upload2.reserved1,addr_upload2.reserved2,addr_upload2.reserved3,addr_upload2.reserved4,addr_upload2.lvbuf,addr_upload2.showhead from addr_upload2  where addr_upload2.id = " + a.Gd((String)localObject);
+        localObject = this.hpA.a((String)localObject, null, 2);
         if (localObject != null) {
           continue;
         }
@@ -497,49 +497,49 @@ public final class b
         if (bool) {
           continue;
         }
-        locala.dtM = -1;
+        locala.drx = -1;
         localObject = locala.convertTo();
-        if ((int)this.gPa.a("addr_upload2", "id", (ContentValues)localObject) != -1) {
+        if ((int)this.hpA.a("addr_upload2", "id", (ContentValues)localObject) != -1) {
           continue;
         }
-        ad.i("MicroMsg.AddrUploadStorage", "batchSet insert failed, num:%s email:%s", new Object[] { locala.aIA(), locala.getEmail() });
+        ac.i("MicroMsg.AddrUploadStorage", "batchSet insert failed, num:%s email:%s", new Object[] { locala.aPr(), locala.getEmail() });
         bool = true;
       }
       catch (Exception paramList)
       {
         a locala;
-        ad.e("MicroMsg.AddrUploadStorage", paramList.getMessage());
+        ac.e("MicroMsg.AddrUploadStorage", paramList.getMessage());
         boolean bool = false;
         continue;
-        b(2, this, locala.JS());
+        b(2, this, locala.JC());
         continue;
-        int k = a.Ca(locala.JS());
+        int k = a.Gd(locala.JC());
         Object localObject = locala.convertTo();
         int j = 0;
         if (((ContentValues)localObject).size() <= 0) {
           continue;
         }
-        j = this.gPa.update("addr_upload2", (ContentValues)localObject, "id=?", new String[] { String.valueOf(k) });
+        j = this.hpA.update("addr_upload2", (ContentValues)localObject, "id=?", new String[] { String.valueOf(k) });
         if (j != 0) {
           continue;
         }
-        ad.i("MicroMsg.AddrUploadStorage", "batchSet update result=0, num:%s email:%s", new Object[] { locala.aIA(), locala.getEmail() });
+        ac.i("MicroMsg.AddrUploadStorage", "batchSet update result=0, num:%s email:%s", new Object[] { locala.aPr(), locala.getEmail() });
         continue;
         if (j >= 0) {
           continue;
         }
-        ad.i("MicroMsg.AddrUploadStorage", "batchSet update failed, num:%s email:%s", new Object[] { locala.aIA(), locala.getEmail() });
+        ac.i("MicroMsg.AddrUploadStorage", "batchSet update failed, num:%s email:%s", new Object[] { locala.aPr(), locala.getEmail() });
         bool = true;
         continue;
-        b(3, this, locala.JS());
+        b(3, this, locala.JC());
         continue;
         bool = true;
         continue;
         i += 1;
       }
-      this.gPa.mX(l);
-      localbr.addSplit("transation end");
-      localbr.dumpToLog();
+      this.hpA.qL(l);
+      localbq.addSplit("transation end");
+      localbq.dumpToLog();
       AppMethodBeat.o(130976);
       return bool;
       bool = ((Cursor)localObject).moveToFirst();
@@ -549,7 +549,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.kinda.framework.widget.base;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.Editable;
@@ -11,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
+import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.ClearButtonMode;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.KSecureEditText;
@@ -43,7 +45,7 @@ public class KindaSecureEditTextImpl
     this.editText.setSingleLine();
     this.editText.setBackground(null);
     this.editText.setTextSize(16.0F);
-    TenpaySecureEditText.setSalt(e.fkB());
+    TenpaySecureEditText.setSalt(e.fAR());
     this.editText.setPadding(0, 0, 0, 0);
     this.editText.setCursorStyle(2131232606);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2);
@@ -279,6 +281,17 @@ public class KindaSecureEditTextImpl
   }
   
   public void setTintColor(DynamicColor paramDynamicColor) {}
+  
+  @SuppressLint({"ResourceType"})
+  public void setViewId(String paramString)
+  {
+    AppMethodBeat.i(207404);
+    super.setViewId(paramString);
+    if (this.iconImageView != null) {
+      MMKViewUtil.setId4KindaImplView(this.mContext, paramString + "_btn", this.iconImageView);
+    }
+    AppMethodBeat.o(207404);
+  }
   
   public void setVisibleClearIcon(boolean paramBoolean)
   {

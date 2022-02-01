@@ -6,28 +6,28 @@ import java.util.ArrayList;
 
 public class d
 {
-  private static d cTD;
-  private ArrayList<e> cTC;
+  private static d cRa;
+  private ArrayList<e> cQZ;
   private Object sLock;
   
   private d()
   {
     AppMethodBeat.i(136735);
-    this.cTC = new ArrayList();
+    this.cQZ = new ArrayList();
     this.sLock = new Object();
     AppMethodBeat.o(136735);
   }
   
-  public static d ML()
+  public static d MJ()
   {
     AppMethodBeat.i(136736);
-    if (cTD == null) {}
+    if (cRa == null) {}
     try
     {
-      if (cTD == null) {
-        cTD = new d();
+      if (cRa == null) {
+        cRa = new d();
       }
-      d locald = cTD;
+      d locald = cRa;
       AppMethodBeat.o(136736);
       return locald;
     }
@@ -37,14 +37,14 @@ public class d
     }
   }
   
-  public final e MK()
+  public final e MI()
   {
     AppMethodBeat.i(136737);
     synchronized (this.sLock)
     {
-      if (this.cTC.size() > 0)
+      if (this.cQZ.size() > 0)
       {
-        e locale = (e)this.cTC.remove(this.cTC.size() - 1);
+        e locale = (e)this.cQZ.remove(this.cQZ.size() - 1);
         AppMethodBeat.o(136737);
         return locale;
       }
@@ -54,12 +54,12 @@ public class d
     }
   }
   
-  public final long MM()
+  public final long MK()
   {
     try
     {
       AppMethodBeat.i(136739);
-      long l = this.cTC.size() * 3536;
+      long l = this.cQZ.size() * 3536;
       AppMethodBeat.o(136739);
       return l;
     }
@@ -73,7 +73,7 @@ public class d
   public final void b(e parame)
   {
     AppMethodBeat.i(136738);
-    if ((parame == null) || (parame.cTk == null))
+    if ((parame == null) || (parame.cQH == null))
     {
       AppMethodBeat.o(136738);
       return;
@@ -81,7 +81,7 @@ public class d
     parame.reset();
     synchronized (this.sLock)
     {
-      this.cTC.add(0, parame);
+      this.cQZ.add(0, parame);
       AppMethodBeat.o(136738);
       return;
     }

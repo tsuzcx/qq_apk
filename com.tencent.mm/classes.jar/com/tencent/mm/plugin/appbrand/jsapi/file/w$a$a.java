@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
 final class w$a$a
   extends d.g.b.l
   implements a<y>
 {
-  public static final a jQB;
+  public static final a krn;
   
   static
   {
     AppMethodBeat.i(147937);
-    jQB = new a();
+    krn = new a();
     AppMethodBeat.o(147937);
   }
   

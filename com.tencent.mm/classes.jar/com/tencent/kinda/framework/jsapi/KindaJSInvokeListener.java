@@ -1,51 +1,51 @@
 package com.tencent.kinda.framework.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kd;
-import com.tencent.mm.g.a.kd.a;
+import com.tencent.mm.g.a.kl;
+import com.tencent.mm.g.a.kl.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class KindaJSInvokeListener
-  extends c<kd>
+  extends c<kl>
 {
   private static final String TAG = "MicroMsg.KindaJSInvokeListener";
   
   public KindaJSInvokeListener()
   {
-    AppMethodBeat.i(186424);
-    this.__eventId = kd.class.getName().hashCode();
-    AppMethodBeat.o(186424);
+    AppMethodBeat.i(207386);
+    this.__eventId = kl.class.getName().hashCode();
+    AppMethodBeat.o(207386);
   }
   
-  private JSHandler createHandler(kd paramkd)
+  private JSHandler createHandler(kl paramkl)
   {
-    AppMethodBeat.i(186426);
-    if (paramkd.dou.dox.equals("phoneBindCardVerifySms"))
+    AppMethodBeat.i(207388);
+    if (paramkl.dmd.dmg.equals("phoneBindCardVerifySms"))
     {
-      paramkd = new PhoneBindCardVerifySmsJSHandler();
-      AppMethodBeat.o(186426);
-      return paramkd;
+      paramkl = new PhoneBindCardVerifySmsJSHandler();
+      AppMethodBeat.o(207388);
+      return paramkl;
     }
-    AppMethodBeat.o(186426);
+    AppMethodBeat.o(207388);
     return null;
   }
   
-  public boolean callback(kd paramkd)
+  public boolean callback(kl paramkl)
   {
-    AppMethodBeat.i(186425);
-    ad.i("MicroMsg.KindaJSInvokeListener", "handle jsapi callback: %s, %s", new Object[] { paramkd.dou.dox, Integer.valueOf(paramkd.dou.type) });
-    JSHandler localJSHandler = createHandler(paramkd);
+    AppMethodBeat.i(207387);
+    ac.i("MicroMsg.KindaJSInvokeListener", "handle jsapi callback: %s, %s", new Object[] { paramkl.dmd.dmg, Integer.valueOf(paramkl.dmd.type) });
+    JSHandler localJSHandler = createHandler(paramkl);
     if (localJSHandler != null) {
-      localJSHandler.handle(paramkd);
+      localJSHandler.handle(paramkl);
     }
-    AppMethodBeat.o(186425);
+    AppMethodBeat.o(207387);
     return false;
   }
   
   public static abstract interface JSHandler
   {
-    public abstract void handle(kd paramkd);
+    public abstract void handle(kl paramkl);
     
     public abstract String handleJsApi();
     

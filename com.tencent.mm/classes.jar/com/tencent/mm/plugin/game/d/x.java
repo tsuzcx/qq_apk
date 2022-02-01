@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class x
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Title;
-  public String mAQ;
-  public String rZw;
-  public String saB;
+  public String ncR;
+  public String thp;
+  public String tiv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -23,55 +23,55 @@ public final class x
         AppMethodBeat.o(41724);
         throw paramVarArgs;
       }
-      if (this.saB == null)
+      if (this.tiv == null)
       {
         paramVarArgs = new b("Not all required fields were included: Detail");
         AppMethodBeat.o(41724);
         throw paramVarArgs;
       }
-      if (this.mAQ != null) {
-        paramVarArgs.d(1, this.mAQ);
+      if (this.ncR != null) {
+        paramVarArgs.d(1, this.ncR);
       }
-      if (this.rZw != null) {
-        paramVarArgs.d(2, this.rZw);
+      if (this.thp != null) {
+        paramVarArgs.d(2, this.thp);
       }
       if (this.Title != null) {
         paramVarArgs.d(3, this.Title);
       }
-      if (this.saB != null) {
-        paramVarArgs.d(4, this.saB);
+      if (this.tiv != null) {
+        paramVarArgs.d(4, this.tiv);
       }
       AppMethodBeat.o(41724);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.mAQ == null) {
+      if (this.ncR == null) {
         break label490;
       }
     }
     label490:
-    for (int i = f.a.a.b.b.a.e(1, this.mAQ) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.ncR) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.rZw != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.rZw);
+      if (this.thp != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.thp);
       }
       i = paramInt;
       if (this.Title != null) {
         i = paramInt + f.a.a.b.b.a.e(3, this.Title);
       }
       paramInt = i;
-      if (this.saB != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.saB);
+      if (this.tiv != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.tiv);
       }
       AppMethodBeat.o(41724);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.Title == null)
@@ -80,7 +80,7 @@ public final class x
           AppMethodBeat.o(41724);
           throw paramVarArgs;
         }
-        if (this.saB == null)
+        if (this.tiv == null)
         {
           paramVarArgs = new b("Not all required fields were included: Detail");
           AppMethodBeat.o(41724);
@@ -99,19 +99,19 @@ public final class x
           AppMethodBeat.o(41724);
           return -1;
         case 1: 
-          localx.mAQ = locala.KhF.readString();
+          localx.ncR = locala.LVo.readString();
           AppMethodBeat.o(41724);
           return 0;
         case 2: 
-          localx.rZw = locala.KhF.readString();
+          localx.thp = locala.LVo.readString();
           AppMethodBeat.o(41724);
           return 0;
         case 3: 
-          localx.Title = locala.KhF.readString();
+          localx.Title = locala.LVo.readString();
           AppMethodBeat.o(41724);
           return 0;
         }
-        localx.saB = locala.KhF.readString();
+        localx.tiv = locala.LVo.readString();
         AppMethodBeat.o(41724);
         return 0;
       }
@@ -122,7 +122,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.x
  * JD-Core Version:    0.7.0.1
  */

@@ -17,14 +17,14 @@ public class SkiaCanvasView
   
   static
   {
-    AppMethodBeat.i(189199);
+    AppMethodBeat.i(189673);
     nativeInit();
-    AppMethodBeat.o(189199);
+    AppMethodBeat.o(189673);
   }
   
   public SkiaCanvasView(IXWebWorkingHandler paramIXWebWorkingHandler, final SurfaceTexture paramSurfaceTexture, String paramString, long paramLong)
   {
-    AppMethodBeat.i(189193);
+    AppMethodBeat.i(189667);
     this.mWidth = 300;
     this.mHeight = 150;
     new StringBuilder("SkiaCanvasView created ").append(this);
@@ -35,34 +35,34 @@ public class SkiaCanvasView
     {
       public void run()
       {
-        AppMethodBeat.i(189189);
+        AppMethodBeat.i(189663);
         SkiaCanvasView.access$002(SkiaCanvasView.this, paramSurfaceTexture);
         SkiaCanvasView.access$102(SkiaCanvasView.this, new Surface(paramSurfaceTexture));
         SkiaCanvasView.access$400(SkiaCanvasView.this, SkiaCanvasView.this.mAppTag, SkiaCanvasView.this.mViewID, SkiaCanvasView.this.mSurface);
-        AppMethodBeat.o(189189);
+        AppMethodBeat.o(189663);
       }
     });
-    AppMethodBeat.o(189193);
+    AppMethodBeat.o(189667);
   }
   
   private void checkAndPost(Runnable paramRunnable)
   {
-    AppMethodBeat.i(189194);
+    AppMethodBeat.i(189668);
     if (isRunOnWorkingThread())
     {
       paramRunnable.run();
-      AppMethodBeat.o(189194);
+      AppMethodBeat.o(189668);
       return;
     }
     this.mWorkingHandler.post(paramRunnable);
-    AppMethodBeat.o(189194);
+    AppMethodBeat.o(189668);
   }
   
   private boolean isRunOnWorkingThread()
   {
-    AppMethodBeat.i(189195);
+    AppMethodBeat.i(189669);
     boolean bool = this.mWorkingHandler.isRunOnWorkingThread();
-    AppMethodBeat.o(189195);
+    AppMethodBeat.o(189669);
     return bool;
   }
   
@@ -76,7 +76,7 @@ public class SkiaCanvasView
   
   public static String version()
   {
-    return "9e5457ece409ca169aae12380c802bb92561a6eb/1.0";
+    return "0349885a96bdb6e210b2acb6eb7dd7ca0a35db22/1.0";
   }
   
   public long getId()
@@ -91,12 +91,12 @@ public class SkiaCanvasView
     {
       public void run()
       {
-        AppMethodBeat.i(189192);
+        AppMethodBeat.i(189666);
         new StringBuilder("notifyTextureSizeChanged called with ").append(paramInt1).append(" / ").append(paramInt2).append(" this: ").append(this);
         SkiaCanvasView.access$602(SkiaCanvasView.this, paramInt1);
         SkiaCanvasView.access$702(SkiaCanvasView.this, paramInt2);
         SkiaCanvasView.this.mSurfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
-        AppMethodBeat.o(189192);
+        AppMethodBeat.o(189666);
       }
     });
     AppMethodBeat.o(4298);
@@ -109,10 +109,10 @@ public class SkiaCanvasView
     {
       public void run()
       {
-        AppMethodBeat.i(189190);
+        AppMethodBeat.i(189664);
         new StringBuilder("SkiaCanvasView recycle ").append(this);
         SkiaCanvasView.access$500(SkiaCanvasView.this, SkiaCanvasView.this.mViewID);
-        AppMethodBeat.o(189190);
+        AppMethodBeat.o(189664);
       }
     });
     AppMethodBeat.o(4296);
@@ -125,13 +125,13 @@ public class SkiaCanvasView
     {
       public void run()
       {
-        AppMethodBeat.i(189191);
+        AppMethodBeat.i(189665);
         new StringBuilder("SkiaCanvasView swapSurface ").append(this);
         SkiaCanvasView.access$002(SkiaCanvasView.this, paramSurfaceTexture);
         SkiaCanvasView.this.mSurfaceTexture.setDefaultBufferSize(SkiaCanvasView.this.mWidth, SkiaCanvasView.this.mHeight);
         SkiaCanvasView.access$102(SkiaCanvasView.this, new Surface(paramSurfaceTexture));
         SkiaCanvasView.access$800(SkiaCanvasView.this, SkiaCanvasView.this.mViewID, SkiaCanvasView.this.mSurface);
-        AppMethodBeat.o(189191);
+        AppMethodBeat.o(189665);
       }
     });
     AppMethodBeat.o(4297);
@@ -139,7 +139,7 @@ public class SkiaCanvasView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.SkiaCanvasView
  * JD-Core Version:    0.7.0.1
  */

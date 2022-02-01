@@ -17,7 +17,7 @@ import java.util.List;
 public class DetectCodeView
   extends View
 {
-  private List<DetectCode> ItO;
+  private List<DetectCode> JVx;
   private Paint paint;
   
   public DetectCodeView(Context paramContext)
@@ -48,9 +48,9 @@ public class DetectCodeView
   {
     AppMethodBeat.i(3571);
     super.onDraw(paramCanvas);
-    if ((this.ItO != null) && (!this.ItO.isEmpty()))
+    if ((this.JVx != null) && (!this.JVx.isEmpty()))
     {
-      Iterator localIterator = this.ItO.iterator();
+      Iterator localIterator = this.JVx.iterator();
       while (localIterator.hasNext())
       {
         DetectCode localDetectCode = (DetectCode)localIterator.next();
@@ -65,7 +65,7 @@ public class DetectCodeView
   public void setDetectedCodes(List<DetectCode> paramList)
   {
     AppMethodBeat.i(3570);
-    this.ItO = paramList;
+    this.JVx = paramList;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       this.paint.reset();
@@ -80,7 +80,7 @@ public class DetectCodeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.scanlib.ui.DetectCodeView
  * JD-Core Version:    0.7.0.1
  */

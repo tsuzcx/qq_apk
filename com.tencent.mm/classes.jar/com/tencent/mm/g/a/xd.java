@@ -2,12 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.bo;
 
 public final class xd
   extends b
 {
-  public a dCC;
-  public b dCD;
+  public a dzU;
   
   public xd()
   {
@@ -16,29 +16,23 @@ public final class xd
   
   private xd(byte paramByte)
   {
-    AppMethodBeat.i(91223);
-    this.dCC = new a();
-    this.dCD = new b();
-    this.ESR = false;
+    AppMethodBeat.i(19847);
+    this.dzU = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91223);
+    AppMethodBeat.o(19847);
   }
   
   public static final class a
   {
-    public String scene;
-  }
-  
-  public static final class b
-  {
-    public String content;
-    public String dCE;
-    public String url;
+    public bo cZc;
+    public String description;
+    public String dqf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.xd
  * JD-Core Version:    0.7.0.1
  */

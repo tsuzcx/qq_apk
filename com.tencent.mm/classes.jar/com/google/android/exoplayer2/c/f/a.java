@@ -1,170 +1,148 @@
 package com.google.android.exoplayer2.c.f;
 
-import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.c.e;
 import com.google.android.exoplayer2.c.f;
 import com.google.android.exoplayer2.c.g;
+import com.google.android.exoplayer2.c.h;
 import com.google.android.exoplayer2.c.k;
 import com.google.android.exoplayer2.c.l.a;
+import com.google.android.exoplayer2.i.m;
 import com.google.android.exoplayer2.i.x;
-import com.google.android.exoplayer2.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.IOException;
 
 public final class a
   implements e
 {
-  private static final int bfi;
-  private final Format aSv;
-  private int aXo;
-  private int aYG;
-  private com.google.android.exoplayer2.c.m aZw;
-  private final com.google.android.exoplayer2.i.m bfj;
-  private long bfk;
-  private int bfl;
-  private int version;
+  public static final h aXT;
+  private static final int bfU;
+  private final long bfV;
+  private final b bfW;
+  private final m bfX;
+  private boolean bfY;
   
   static
   {
-    AppMethodBeat.i(92187);
-    bfi = x.aY("RCC\001");
-    AppMethodBeat.o(92187);
-  }
-  
-  public a(Format paramFormat)
-  {
-    AppMethodBeat.i(92182);
-    this.aSv = paramFormat;
-    this.bfj = new com.google.android.exoplayer2.i.m(9);
-    this.aXo = 0;
-    AppMethodBeat.o(92182);
-  }
-  
-  private void m(f paramf)
-  {
-    AppMethodBeat.i(92186);
-    while (this.bfl > 0)
+    AppMethodBeat.i(92196);
+    aXT = new h()
     {
-      this.bfj.reset();
-      paramf.readFully(this.bfj.data, 0, 3);
-      this.aZw.a(this.bfj, 3);
-      this.aYG += 3;
-      this.bfl -= 1;
-    }
-    if (this.aYG > 0) {
-      this.aZw.a(this.bfk, 1, this.aYG, 0, null);
-    }
-    AppMethodBeat.o(92186);
+      public final e[] sT()
+      {
+        AppMethodBeat.i(92190);
+        a locala = new a();
+        AppMethodBeat.o(92190);
+        return new e[] { locala };
+      }
+    };
+    bfU = x.aQ("ID3");
+    AppMethodBeat.o(92196);
+  }
+  
+  public a()
+  {
+    this(0L);
+  }
+  
+  public a(long paramLong)
+  {
+    AppMethodBeat.i(92191);
+    this.bfV = paramLong;
+    this.bfW = new b();
+    this.bfX = new m(2786);
+    AppMethodBeat.o(92191);
   }
   
   public final int a(f paramf, k paramk)
   {
-    AppMethodBeat.i(92185);
-    int i;
-    for (;;)
+    AppMethodBeat.i(92195);
+    int i = paramf.read(this.bfX.data, 0, 2786);
+    if (i == -1)
     {
-      switch (this.aXo)
-      {
-      default: 
-        paramf = new IllegalStateException();
-        AppMethodBeat.o(92185);
-        throw paramf;
-      case 0: 
-        this.bfj.reset();
-        if (paramf.a(this.bfj.data, 0, 8, true))
-        {
-          if (this.bfj.readInt() != bfi)
-          {
-            paramf = new IOException("Input not RawCC");
-            AppMethodBeat.o(92185);
-            throw paramf;
-          }
-          this.version = this.bfj.readUnsignedByte();
-        }
-        for (i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label138;
-          }
-          this.aXo = 1;
-          break;
-        }
-        AppMethodBeat.o(92185);
-        return -1;
-      case 1: 
-        label138:
-        this.bfj.reset();
-        if (this.version != 0) {
-          break label232;
-        }
-        if (paramf.a(this.bfj.data, 0, 5, true)) {
-          break label192;
-        }
-        i = 0;
-        if (i == 0) {
-          break label313;
-        }
-        this.aXo = 2;
-      }
+      AppMethodBeat.o(92195);
+      return -1;
     }
-    label192:
-    for (this.bfk = (this.bfj.df() * 1000L / 45L);; this.bfk = this.bfj.readLong())
+    this.bfX.setPosition(0);
+    this.bfX.eW(i);
+    if (!this.bfY)
     {
-      this.bfl = this.bfj.readUnsignedByte();
-      this.aYG = 0;
-      i = 1;
-      break;
-      label232:
-      if (this.version != 1) {
-        break label279;
-      }
-      if (!paramf.a(this.bfj.data, 0, 9, true))
-      {
-        i = 0;
-        break;
-      }
+      this.bfW.timeUs = this.bfV;
+      this.bfY = true;
     }
-    label279:
-    paramf = new o("Unsupported version number: " + this.version);
-    AppMethodBeat.o(92185);
-    throw paramf;
-    label313:
-    this.aXo = 0;
-    AppMethodBeat.o(92185);
-    return -1;
-    m(paramf);
-    this.aXo = 1;
-    AppMethodBeat.o(92185);
+    this.bfW.t(this.bfX);
+    AppMethodBeat.o(92195);
     return 0;
   }
   
   public final void a(g paramg)
   {
-    AppMethodBeat.i(92183);
+    AppMethodBeat.i(92193);
+    this.bfW.a(paramg, new v.d(0, 1));
+    paramg.sU();
     paramg.a(new l.a(-9223372036854775807L));
-    this.aZw = paramg.bh(0, 3);
-    paramg.sL();
-    this.aZw.f(this.aSv);
-    AppMethodBeat.o(92183);
+    AppMethodBeat.o(92193);
   }
   
   public final boolean a(f paramf)
   {
-    AppMethodBeat.i(92184);
-    this.bfj.reset();
-    paramf.b(this.bfj.data, 0, 8);
-    if (this.bfj.readInt() == bfi)
+    AppMethodBeat.i(92192);
+    m localm = new m(10);
+    int i = 0;
+    for (;;)
     {
-      AppMethodBeat.o(92184);
-      return true;
+      paramf.b(localm.data, 0, 10);
+      localm.setPosition(0);
+      if (localm.vA() != bfU) {
+        break;
+      }
+      localm.eX(3);
+      j = localm.vE();
+      i += j + 10;
+      paramf.dR(j);
     }
-    AppMethodBeat.o(92184);
-    return false;
+    paramf.sR();
+    paramf.dR(i);
+    int j = 0;
+    int k = i;
+    for (;;)
+    {
+      paramf.b(localm.data, 0, 5);
+      localm.setPosition(0);
+      if (localm.readUnsignedShort() != 2935)
+      {
+        paramf.sR();
+        k += 1;
+        if (k - i >= 8192)
+        {
+          AppMethodBeat.o(92192);
+          return false;
+        }
+        paramf.dR(k);
+        j = 0;
+      }
+      else
+      {
+        j += 1;
+        if (j >= 4)
+        {
+          AppMethodBeat.o(92192);
+          return true;
+        }
+        int m = com.google.android.exoplayer2.a.a.n(localm.data);
+        if (m == -1)
+        {
+          AppMethodBeat.o(92192);
+          return false;
+        }
+        paramf.dR(m - 5);
+      }
+    }
   }
   
   public final void f(long paramLong1, long paramLong2)
   {
-    this.aXo = 0;
+    AppMethodBeat.i(92194);
+    this.bfY = false;
+    this.bfW.tg();
+    AppMethodBeat.o(92194);
   }
 }
 

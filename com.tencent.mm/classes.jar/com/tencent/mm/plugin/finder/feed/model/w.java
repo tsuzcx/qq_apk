@@ -1,355 +1,128 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
-import android.content.Context;
-import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.plugin.finder.cgi.r;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.loader.g.h;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.cgi.l.a;
+import com.tencent.mm.plugin.finder.cgi.l.c;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.model.internal.c.a;
+import com.tencent.mm.plugin.finder.feed.model.internal.c;
+import com.tencent.mm.plugin.finder.feed.model.internal.d;
 import com.tencent.mm.plugin.finder.feed.model.internal.e;
-import com.tencent.mm.plugin.finder.feed.model.internal.f;
-import com.tencent.mm.plugin.finder.feed.model.internal.h;
 import com.tencent.mm.plugin.finder.feed.model.internal.i;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.logic.b.a;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
+import com.tencent.mm.plugin.finder.utils.q;
+import com.tencent.mm.plugin.finder.utils.r;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
-import d.v;
 import d.y;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.LinkedList;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFriendLikeLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "targetUsername", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "fetchEndCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getTargetUsername", "()Ljava/lang/String;", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "onFetchDone", "response", "onFetchRefreshDone", "requestLoadMore", "requestRefresh", "Companion", "LikedTimeLineData", "LikedTimeLineInit", "LikedTimeLineRequest", "LikedTimelineResponse", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/TimelineData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/feed/model/TimelineInit;", "Lcom/tencent/mm/plugin/finder/feed/model/TimelineRequest;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$Callback;", "streamFetcher", "Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderTimelineFeedFetcher;", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderTimelineFeedFetcher;Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "taskExecutor", "Lcom/tencent/mm/plugin/finder/utils/SingleTaskExecutor;", "alive", "", "call", "request", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "callInitData", "", "init", "dead", "keep", "p0", "onFetchDone", "info", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "pullType", "", "plugin-finder_release"})
 public final class w
-  extends BaseFinderFeedLoader
+  extends e<x, z, BaseFinderFeed>
+  implements l.a, com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a>
 {
-  private static final ConcurrentHashMap<Long, w.a.a> KPV;
-  public static final a KPW;
-  private static final String TAG = "Finder.FinderFriendLikeLoader";
-  public d.g.a.b<? super IResponse<BaseFinderFeed>, y> KPL;
-  private boolean hasMore;
-  public com.tencent.mm.bx.b lastBuffer;
-  private final String qwI;
+  private r rgF;
+  private final c rne;
+  private final com.tencent.mm.plugin.finder.cgi.fetcher.b rnh;
   
-  static
+  public w(com.tencent.mm.plugin.finder.cgi.fetcher.b paramb, c paramc, anm paramanm)
   {
-    AppMethodBeat.i(198229);
-    KPW = new a((byte)0);
-    TAG = "Finder.FinderFriendLikeLoader";
-    KPV = new ConcurrentHashMap();
-    AppMethodBeat.o(198229);
+    super(paramanm);
+    AppMethodBeat.i(202237);
+    this.rnh = paramb;
+    this.rne = paramc;
+    AppMethodBeat.o(202237);
   }
   
-  public w(String paramString, dzp paramdzp)
+  public final void a(a parama, int paramInt)
   {
-    super(null, paramdzp, 1, null);
-    AppMethodBeat.i(198228);
-    this.qwI = paramString;
-    AppMethodBeat.o(198228);
+    AppMethodBeat.i(202236);
+    k.h(parama, "info");
+    AppMethodBeat.o(202236);
   }
   
-  public final f<Object, Object, i> createDataFetch(dzp paramdzp)
+  public final void alive()
   {
-    AppMethodBeat.i(198223);
-    paramdzp = (f)new b(paramdzp);
-    AppMethodBeat.o(198223);
-    return paramdzp;
-  }
-  
-  public final void onFetchDone(IResponse<BaseFinderFeed> paramIResponse)
-  {
-    AppMethodBeat.i(198226);
-    k.h(paramIResponse, "response");
-    super.onFetchDone(paramIResponse);
-    if ((paramIResponse instanceof e)) {
-      this.lastBuffer = paramIResponse.getLastBuffer();
-    }
-    this.hasMore = paramIResponse.getHasMore();
-    d.g.a.b localb = this.KPL;
-    if (localb != null)
+    AppMethodBeat.i(166092);
+    if (this.rne == c.rnY)
     {
-      localb.aA(paramIResponse);
-      AppMethodBeat.o(198226);
+      this.rgF = ((PluginFinder)g.ad(PluginFinder.class)).getFollowTlSingleExecutor();
+      localr = this.rgF;
+      if (localr != null)
+      {
+        localr.clean();
+        AppMethodBeat.o(166092);
+        return;
+      }
+      AppMethodBeat.o(166092);
       return;
     }
-    AppMethodBeat.o(198226);
+    r localr = new r("SingleExecutor#TabType=" + this.rnh.diw);
+    localr.start();
+    this.rgF = localr;
+    AppMethodBeat.o(166092);
   }
   
-  public final void onFetchRefreshDone(IResponse<BaseFinderFeed> paramIResponse)
+  public final void dead()
   {
-    AppMethodBeat.i(198227);
-    k.h(paramIResponse, "response");
-    RefreshLoadMoreLayout.c localc = new RefreshLoadMoreLayout.c(paramIResponse.getPullType());
-    Context localContext;
-    boolean bool;
-    if ((paramIResponse.getErrType() == 0) && (paramIResponse.getErrCode() == 0))
-    {
-      localContext = aj.getContext();
-      k.g(localContext, "MMApplicationContext.getContext()");
-      localc.HXp = ((CharSequence)localContext.getResources().getString(2131759373));
-      localc.HXo = 1;
-      if (paramIResponse.getPullType() == 0) {
-        break label230;
-      }
-      bool = true;
-      label83:
-      localc.hSO = bool;
-      localc.HXq = paramIResponse.getHasMore();
-      if (((localc.actionType == 0) || (localc.actionType == 4)) && (localc.HXr > 0)) {
-        localc.HXp = null;
-      }
-      ad.i(getTAG(), "[onFetchRefreshDone]  reason=".concat(String.valueOf(localc)));
-      if (!paramIResponse.getHasMore()) {
-        break label235;
-      }
+    AppMethodBeat.i(166093);
+    r localr = this.rgF;
+    if (localr != null) {
+      localr.reset();
     }
-    label230:
-    label235:
-    for (int i = 4;; i = 6)
+    this.rgF = null;
+    AppMethodBeat.o(166093);
+  }
+  
+  public final void keep(com.tencent.mm.vending.e.a parama)
+  {
+    AppMethodBeat.i(166089);
+    k.h(parama, "p0");
+    AppMethodBeat.o(166089);
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "task", "Lcom/tencent/mm/plugin/finder/utils/SingleTask;", "invoke"})
+  static final class a
+    extends d.g.b.l
+    implements d.g.a.b<q, y>
+  {
+    a(w paramw, z paramz, long paramLong, d paramd)
     {
-      paramIResponse = new com.tencent.mm.plugin.finder.feed.model.internal.l(i, paramIResponse.getIncrementList(), paramIResponse.isNeedClear(), 8);
-      dispatcher().a(paramIResponse, localc);
-      AppMethodBeat.o(198227);
-      return;
-      localContext = aj.getContext();
-      k.g(localContext, "MMApplicationContext.getContext()");
-      localc.HXp = ((CharSequence)localContext.getResources().getString(2131759383));
-      localc.HXo = -1;
-      break;
-      bool = false;
-      break label83;
-    }
-  }
-  
-  public final void requestLoadMore()
-  {
-    AppMethodBeat.i(198225);
-    d locald = new d(this.qwI, this.lastBuffer, 2);
-    ad.i(getTAG(), "requestLoadMore ".concat(String.valueOf(locald)));
-    fetchData((com.tencent.mm.plugin.finder.feed.model.internal.j)locald);
-    AppMethodBeat.o(198225);
-  }
-  
-  public final void requestRefresh()
-  {
-    AppMethodBeat.i(198224);
-    d locald = new d(this.qwI, this.lastBuffer, 0);
-    ad.i(getTAG(), "requestLoadMore ".concat(String.valueOf(locald)));
-    fetchData((com.tencent.mm.plugin.finder.feed.model.internal.j)locald);
-    AppMethodBeat.o(198224);
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFriendLikeLoader$Companion;", "", "()V", "TAG", "", "friendLikeDataCache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFriendLikeLoader$Companion$FriendLikeFeedCache;", "getFriendLikeDataCache", "()Ljava/util/concurrent/ConcurrentHashMap;", "clearCache", "", "getCache", "id", "putCache", "dataList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "FriendLikeFeedCache", "plugin-finder_release"})
-  public static final class a
-  {
-    public static a BK(long paramLong)
-    {
-      AppMethodBeat.i(198214);
-      ad.i(w.access$getTAG$cp(), "getCache " + paramLong + ", exist:" + w.fTx().containsKey(Long.valueOf(paramLong)));
-      a locala2 = (a)w.fTx().get(Long.valueOf(paramLong));
-      a locala1 = locala2;
-      if (locala2 == null) {
-        locala1 = new a((List)new ArrayList(), null);
-      }
-      AppMethodBeat.o(198214);
-      return locala1;
+      super();
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFriendLikeLoader$Companion$FriendLikeFeedCache;", "", "dataList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "(Ljava/util/List;Lcom/tencent/mm/protobuf/ByteString;)V", "getDataList", "()Ljava/util/List;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/feed/model/TimelineData$call$1$2$1", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$Callback;", "onFetchDone", "", "info", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "pullType", "", "plugin-finder_release"})
     public static final class a
+      implements l.a
     {
-      final List<BaseFinderFeed> dataList;
-      public final com.tencent.mm.bx.b lastBuffer;
+      a(w.a parama, q paramq) {}
       
-      public a(List<? extends BaseFinderFeed> paramList, com.tencent.mm.bx.b paramb)
+      public final void a(a parama, int paramInt)
       {
-        AppMethodBeat.i(198210);
-        this.dataList = paramList;
-        this.lastBuffer = paramb;
-        AppMethodBeat.o(198210);
+        AppMethodBeat.i(202233);
+        k.h(parama, "info");
+        aa localaa = new aa(parama.errType, parama.errCode, parama.errMsg, (byte)0);
+        localaa.setIncrementList(parama.incrementList);
+        localaa.setPullType(paramInt);
+        localaa.setHasMore(true);
+        localaa.setRequest((i)this.rnz.rny);
+        localaa.rnF = parama.rmv;
+        this.rnz.rmU.onFetchDone((IResponse)localaa);
+        this.rnA.a(h.gLN);
+        AppMethodBeat.o(202233);
       }
-      
-      public final boolean equals(Object paramObject)
-      {
-        AppMethodBeat.i(198213);
-        if (this != paramObject)
-        {
-          if ((paramObject instanceof a))
-          {
-            paramObject = (a)paramObject;
-            if ((!k.g(this.dataList, paramObject.dataList)) || (!k.g(this.lastBuffer, paramObject.lastBuffer))) {}
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(198213);
-          return true;
-        }
-        AppMethodBeat.o(198213);
-        return false;
-      }
-      
-      public final int hashCode()
-      {
-        int j = 0;
-        AppMethodBeat.i(198212);
-        Object localObject = this.dataList;
-        if (localObject != null) {}
-        for (int i = localObject.hashCode();; i = 0)
-        {
-          localObject = this.lastBuffer;
-          if (localObject != null) {
-            j = localObject.hashCode();
-          }
-          AppMethodBeat.o(198212);
-          return i * 31 + j;
-        }
-      }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(198211);
-        String str = "FriendLikeFeedCache(dataList=" + this.dataList + ", lastBuffer=" + this.lastBuffer + ")";
-        AppMethodBeat.o(198211);
-        return str;
-      }
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFriendLikeLoader$LikedTimeLineData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFriendLikeLoader$LikedTimeLineInit;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFriendLikeLoader$LikedTimeLineRequest;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "map", "", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetLikedList;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "alive", "", "call", "request", "callback", "callInitData", "", "init", "dead", "onSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
-  public static final class b
-    extends f<w.c, w.d, BaseFinderFeed>
-    implements com.tencent.mm.al.g
-  {
-    private final Map<r, e<BaseFinderFeed>> map;
-    
-    public b(dzp paramdzp)
-    {
-      super();
-      AppMethodBeat.i(198220);
-      this.map = ((Map)new LinkedHashMap());
-      AppMethodBeat.o(198220);
-    }
-    
-    public final void alive()
-    {
-      AppMethodBeat.i(198216);
-      com.tencent.mm.kernel.g.aeS().a(3965, (com.tencent.mm.al.g)this);
-      AppMethodBeat.o(198216);
-    }
-    
-    public final void dead()
-    {
-      AppMethodBeat.i(198217);
-      com.tencent.mm.kernel.g.aeS().b(3965, (com.tencent.mm.al.g)this);
-      AppMethodBeat.o(198217);
-    }
-    
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
-    {
-      AppMethodBeat.i(198218);
-      e locale = (e)this.map.get(paramn);
-      if (locale != null)
-      {
-        if (paramn == null)
-        {
-          paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderGetLikedList");
-          AppMethodBeat.o(198218);
-          throw paramString;
-        }
-        r localr = (r)paramn;
-        this.map.remove(paramn);
-        if ((paramInt1 == 0) && (paramInt2 == 0) && (localr.ckO() != 1)) {}
-        for (boolean bool = false;; bool = true)
-        {
-          paramn = new w.e(paramInt1, paramInt2, paramString);
-          paramString = localr.qpi;
-          if (paramString == null) {
-            break label246;
-          }
-          Object localObject = (Iterable)paramString;
-          paramString = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
-          localObject = ((Iterable)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            FinderItem localFinderItem = (FinderItem)((Iterator)localObject).next();
-            b.a locala = com.tencent.mm.plugin.finder.storage.logic.b.qKG;
-            paramString.add(b.a.h(localFinderItem));
-          }
-        }
-        label246:
-        for (paramString = (List)paramString;; paramString = null)
-        {
-          paramn.setIncrementList(paramString);
-          paramn.setPullType(localr.pullType);
-          paramn.setLastBuffer(localr.ckN());
-          paramn.setHasMore(bool);
-          locale.onFetchDone((IResponse)paramn);
-          AppMethodBeat.o(198218);
-          return;
-        }
-      }
-      AppMethodBeat.o(198218);
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFriendLikeLoader$LikedTimeLineInit;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitRequest;", "cacheId", "", "initDone", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "(JLcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;)V", "getCacheId", "()J", "plugin-finder_release"})
-  public static final class c
-    extends h
-  {
-    final long qxT;
-    
-    public c(long paramLong, com.tencent.mm.plugin.finder.feed.model.internal.g paramg)
-    {
-      super();
-      AppMethodBeat.i(198221);
-      this.qxT = paramLong;
-      AppMethodBeat.o(198221);
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFriendLikeLoader$LikedTimeLineRequest;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IRequest;", "targetUsername", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "(Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;I)V", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "getPullType", "()I", "getTargetUsername", "()Ljava/lang/String;", "plugin-finder_release"})
-  public static final class d
-    implements com.tencent.mm.plugin.finder.feed.model.internal.j
-  {
-    final com.tencent.mm.bx.b lastBuffer;
-    final int pullType;
-    final String qwI;
-    
-    public d(String paramString, com.tencent.mm.bx.b paramb, int paramInt)
-    {
-      AppMethodBeat.i(198222);
-      this.qwI = paramString;
-      this.lastBuffer = paramb;
-      this.pullType = paramInt;
-      AppMethodBeat.o(198222);
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFriendLikeLoader$LikedTimelineResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"})
-  public static final class e
-    extends IResponse<BaseFinderFeed>
-  {
-    public e(int paramInt1, int paramInt2, String paramString)
-    {
-      super(paramInt2, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.w
  * JD-Core Version:    0.7.0.1
  */

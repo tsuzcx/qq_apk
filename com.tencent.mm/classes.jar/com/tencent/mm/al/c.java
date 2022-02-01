@@ -1,148 +1,100 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.f;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cld;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import junit.framework.Assert;
+import com.tencent.mm.g.c.aj;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-@Deprecated
-public class c<_Resp extends cld>
+public final class c
+  extends aj
 {
-  private f<a<_Resp>> gUG;
-  b<_Resp> gUY;
-  public b rr;
+  protected static c.a info;
   
-  public c()
+  static
   {
-    AppMethodBeat.i(182916);
-    this.gUY = new b(this);
-    AppMethodBeat.o(182916);
+    AppMethodBeat.i(123984);
+    c.a locala = new c.a();
+    locala.GvF = new Field[17];
+    locala.columns = new String[18];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "userName";
+    locala.GvH.put("userName", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" userName TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.GvG = "userName";
+    locala.columns[1] = "qyUin";
+    locala.GvH.put("qyUin", "INTEGER");
+    localStringBuilder.append(" qyUin INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "userUin";
+    locala.GvH.put("userUin", "INTEGER");
+    localStringBuilder.append(" userUin INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "userFlag";
+    locala.GvH.put("userFlag", "INTEGER");
+    localStringBuilder.append(" userFlag INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "wwExposeTimes";
+    locala.GvH.put("wwExposeTimes", "INTEGER");
+    localStringBuilder.append(" wwExposeTimes INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "wwMaxExposeTimes";
+    locala.GvH.put("wwMaxExposeTimes", "INTEGER");
+    localStringBuilder.append(" wwMaxExposeTimes INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "wwCorpId";
+    locala.GvH.put("wwCorpId", "LONG");
+    localStringBuilder.append(" wwCorpId LONG");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "wwUserVid";
+    locala.GvH.put("wwUserVid", "LONG");
+    localStringBuilder.append(" wwUserVid LONG");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "userType";
+    locala.GvH.put("userType", "INTEGER");
+    localStringBuilder.append(" userType INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "chatOpen";
+    locala.GvH.put("chatOpen", "INTEGER");
+    localStringBuilder.append(" chatOpen INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "wwUnreadCnt";
+    locala.GvH.put("wwUnreadCnt", "INTEGER default '0' ");
+    localStringBuilder.append(" wwUnreadCnt INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "show_confirm";
+    locala.GvH.put("show_confirm", "INTEGER");
+    localStringBuilder.append(" show_confirm INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "use_preset_banner_tips";
+    locala.GvH.put("use_preset_banner_tips", "INTEGER");
+    localStringBuilder.append(" use_preset_banner_tips INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "hide_create_chat";
+    locala.GvH.put("hide_create_chat", "INTEGER");
+    localStringBuilder.append(" hide_create_chat INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[14] = "hide_mod_chat_member";
+    locala.GvH.put("hide_mod_chat_member", "INTEGER");
+    localStringBuilder.append(" hide_mod_chat_member INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "hide_colleage_invite";
+    locala.GvH.put("hide_colleage_invite", "INTEGER default 'true' ");
+    localStringBuilder.append(" hide_colleage_invite INTEGER default 'true' ");
+    localStringBuilder.append(", ");
+    locala.columns[16] = "raw_attrs";
+    locala.GvH.put("raw_attrs", "BLOB");
+    localStringBuilder.append(" raw_attrs BLOB");
+    locala.columns[17] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(123984);
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString, _Resp param_Resp, n paramn) {}
-  
-  public f<a<_Resp>> auK()
+  public final c.a getDBInfo()
   {
-    try
-    {
-      AppMethodBeat.i(182917);
-      Assert.assertNotNull("You should set a CommReqResp!", this.rr);
-      Assert.assertTrue("RunCgi NetSceneQueue not ready!", x.avu());
-      if (this.gUG == null) {
-        this.gUG = com.tencent.mm.co.g.c(new com.tencent.mm.vending.g.c.a() {});
-      }
-      f localf = this.gUG;
-      AppMethodBeat.o(182917);
-      return localf;
-    }
-    finally {}
-  }
-  
-  public final void c(b paramb)
-  {
-    this.rr = paramb;
-  }
-  
-  public final void cancel()
-  {
-    AppMethodBeat.i(182915);
-    if (this.gUY != null) {
-      x.a(this.gUY);
-    }
-    if (this.gUG != null) {
-      this.gUG.xd(true);
-    }
-    AppMethodBeat.o(182915);
-  }
-  
-  public static class a<T extends cld>
-  {
-    public n dfA;
-    public int errCode;
-    public String errMsg;
-    public int errType;
-    public T gUK;
-    public c gVa;
-    
-    public static <T extends cld> a<T> a(int paramInt1, int paramInt2, String paramString, T paramT, n paramn, c paramc)
-    {
-      AppMethodBeat.i(182910);
-      a locala = new a();
-      locala.errType = paramInt1;
-      locala.errCode = paramInt2;
-      locala.errMsg = paramString;
-      locala.gUK = paramT;
-      locala.dfA = paramn;
-      locala.gVa = paramc;
-      if (paramc != null) {
-        paramc.a(paramInt1, paramInt2, paramString, paramT, paramn);
-      }
-      AppMethodBeat.o(182910);
-      return locala;
-    }
-  }
-  
-  static final class b<_Resp extends cld>
-    extends n
-  {
-    final n gUM;
-    b gUN;
-    com.tencent.mm.vending.g.b gUO;
-    private k gUQ;
-    c gVb;
-    g gbr;
-    final long mStartTime;
-    
-    public b(c paramc)
-    {
-      AppMethodBeat.i(182912);
-      this.gbr = null;
-      this.gUM = this;
-      this.mStartTime = bt.eGO();
-      this.gUQ = new k()
-      {
-        public final void onGYNetEnd(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, String paramAnonymousString, q paramAnonymousq, byte[] paramAnonymousArrayOfByte)
-        {
-          AppMethodBeat.i(182911);
-          com.tencent.mm.vending.g.g.a(c.b.this.gUO, new Object[] { c.a.a(paramAnonymousInt2, paramAnonymousInt3, paramAnonymousString, (cld)c.b.this.gUN.gUT.gUX, c.b.this, c.b.this.gVb) });
-          c.b.this.gbr.onSceneEnd(paramAnonymousInt2, paramAnonymousInt3, paramAnonymousString, c.b.this.gUM);
-          ad.i("MicroMsg.Cgi", "onGYNetEnd:%d func:%d time:%d [%d,%d,%s]", new Object[] { Integer.valueOf(c.b.this.gUM.hashCode()), Integer.valueOf(c.b.this.getType()), Long.valueOf(bt.eGO() - c.b.this.mStartTime), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), paramAnonymousString });
-          AppMethodBeat.o(182911);
-        }
-      };
-      this.gVb = paramc;
-      AppMethodBeat.o(182912);
-    }
-    
-    public final int doScene(com.tencent.mm.network.e parame, g paramg)
-    {
-      AppMethodBeat.i(182914);
-      this.gbr = paramg;
-      int i = dispatch(parame, this.gUN, this.gUQ);
-      ad.i("MicroMsg.Cgi", "Start doScene:%d func:%d netid:%d time:%d", new Object[] { Integer.valueOf(this.gUM.hashCode()), Integer.valueOf(getType()), Integer.valueOf(i), Long.valueOf(bt.eGO() - this.mStartTime) });
-      if (i < 0) {
-        com.tencent.mm.vending.g.g.a(this.gUO, new Object[] { c.a.a(3, -1, "", (cld)this.gUN.gUT.gUX, this, this.gVb) });
-      }
-      AppMethodBeat.o(182914);
-      return i;
-    }
-    
-    public final int getType()
-    {
-      AppMethodBeat.i(182913);
-      int i = this.gUN.getType();
-      AppMethodBeat.o(182913);
-      return i;
-    }
-    
-    protected final int securityLimitCount()
-    {
-      return 1;
-    }
+    return info;
   }
 }
 

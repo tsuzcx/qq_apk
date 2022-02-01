@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.protocal.protobuf.em;
-import com.tencent.mm.protocal.protobuf.en;
 import com.tencent.mm.protocal.protobuf.eo;
 import com.tencent.mm.protocal.protobuf.ep;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.eq;
+import com.tencent.mm.protocal.protobuf.er;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.y;
 import java.util.HashMap;
@@ -16,70 +17,70 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoProfiler;", "", "()V", "END", "", "EVENT_CGI_SUCCESS", "", "EVENT_CLOSE_PAGE", "EVENT_ENTER_PAGE", "EVENT_FULLSCREEN", "EVENT_GETA8KEY", "EVENT_INSERT_VIDEO", "EVENT_MORE_VIDEO", "EVENT_ONREADY", "EVENT_PLAYER_ERROR", "EVENT_PLAYER_FIRST_DOWNLOAD", "EVENT_PLAYER_FIRST_PREPARE", "EVENT_PLAYER_LAG", "EVENT_PLAYER_PAUSE", "EVENT_PLAYER_PLAY", "EVENT_PLAYER_READY_PLAY", "EVENT_PLAYER_SEEK", "EVENT_PLAYER_SPEED", "EVENT_START_PLAYER", "EVENT_SWITCH_RESOLUTION", "START", "TAG", "initViewSelf", "insertVideoNativeView", "instanceMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoProfiler$Instance;", "Lkotlin/collections/HashMap;", "getInstanceMap", "()Ljava/util/HashMap;", "nameToTime", "", "onAppMsgGet", "onAppMsgGetProcess", "onMediaPlayerPrepared", "onPageFinished", "onResetAfterCreateSelf", "onResetAfterCreateSuper", "onResetBeforeCreate", "onResumeSelf", "onStartSelf", "onSurfaceTextureAvailable", "postBindedSelf", "setDataSource", "startTime", "clearInstance", "", "key", "enterTime", "end", "getInstance", "resetTrace", "traceTime", "name", "addEvent", "Lcom/tencent/mm/protocal/protobuf/AppMsgCommDataReport;", "ins", "endTime", "addItem", "value", "toInfoString", "Instance", "plugin-brandservice_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoProfiler;", "", "()V", "END", "", "EVENT_CGI_SUCCESS", "", "EVENT_CLOSE_PAGE", "EVENT_ENTER_PAGE", "EVENT_FULLSCREEN", "EVENT_GETA8KEY", "EVENT_INSERT_VIDEO", "EVENT_MORE_VIDEO", "EVENT_ONREADY", "EVENT_PLAYER_ERROR", "EVENT_PLAYER_FIRST_DOWNLOAD", "EVENT_PLAYER_FIRST_PREPARE", "EVENT_PLAYER_LAG", "EVENT_PLAYER_PAUSE", "EVENT_PLAYER_PLAY", "EVENT_PLAYER_READY_PLAY", "EVENT_PLAYER_SEEK", "EVENT_PLAYER_SPEED", "EVENT_START_PLAYER", "EVENT_SWITCH_RESOLUTION", "START", "TAG", "initViewSelf", "insertVideoNativeView", "instanceMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoProfiler$Instance;", "Lkotlin/collections/HashMap;", "getInstanceMap", "()Ljava/util/HashMap;", "nameToTime", "", "onAppMsgGet", "onAppMsgGetProcess", "onMediaPlayerPrepared", "onPageFinished", "onResetAfterCreateSelf", "onResetAfterCreateSuper", "onResetBeforeCreate", "onResumeSelf", "onStartSelf", "onSurfaceTextureAvailable", "postBindedSelf", "setDataSource", "startTime", "clearInstance", "", "key", "enterTime", "end", "getInstance", "resetTrace", "traceTime", "name", "addEvent", "Lcom/tencent/mm/protocal/protobuf/AppMsgCommDataReport;", "ins", "endTime", "addItem", "value", "toInfoString", "Instance", "plugin-brandservice_release"})
 public final class j
 {
-  private static final HashMap<String, Long> nlC;
-  private static final HashMap<String, a> nlD;
-  public static final j nlE;
+  private static final HashMap<String, Long> nOC;
+  private static final HashMap<String, a> nOD;
+  public static final j nOE;
   
   static
   {
-    AppMethodBeat.i(193369);
-    nlE = new j();
-    nlC = new HashMap();
-    nlD = new HashMap();
-    AppMethodBeat.o(193369);
+    AppMethodBeat.i(199181);
+    nOE = new j();
+    nOC = new HashMap();
+    nOD = new HashMap();
+    AppMethodBeat.o(199181);
   }
   
-  public static a Qa(String paramString)
+  public static a Um(String paramString)
   {
-    AppMethodBeat.i(193367);
+    AppMethodBeat.i(199179);
     k.h(paramString, "key");
-    if (nlD.get(paramString) == null)
+    if (nOD.get(paramString) == null)
     {
-      ((Map)nlD).put(paramString, new a());
-      ad.i("MicroMsg.BizVideoProfiler", " getInstance null, create " + (a)nlD.get(paramString));
+      ((Map)nOD).put(paramString, new a());
+      ac.i("MicroMsg.BizVideoProfiler", " getInstance null, create " + (a)nOD.get(paramString));
     }
-    paramString = nlD.get(paramString);
+    paramString = nOD.get(paramString);
     if (paramString == null) {
-      k.fvU();
+      k.fOy();
     }
     paramString = (a)paramString;
-    AppMethodBeat.o(193367);
+    AppMethodBeat.o(199179);
     return paramString;
   }
   
-  public static void Qb(String paramString)
+  public static void Un(String paramString)
   {
-    AppMethodBeat.i(193368);
+    AppMethodBeat.i(199180);
     k.h(paramString, "key");
-    if (!nlD.containsKey(paramString))
+    if (!nOD.containsKey(paramString))
     {
-      AppMethodBeat.o(193368);
+      AppMethodBeat.o(199180);
       return;
     }
-    nlD.remove(paramString);
-    AppMethodBeat.o(193368);
+    nOD.remove(paramString);
+    AppMethodBeat.o(199180);
   }
   
-  public static void a(em paramem, a parama, String paramString)
+  public static void a(eo parameo, a parama, String paramString)
   {
-    AppMethodBeat.i(193364);
-    k.h(paramem, "$this$addEvent");
+    AppMethodBeat.i(199176);
+    k.h(parameo, "$this$addEvent");
     k.h(paramString, "endTime");
     String str = "";
-    Object localObject1 = paramem.Cvr;
+    Object localObject1 = parameo.DNM;
     k.g(localObject1, "item");
     localObject1 = ((Iterable)localObject1).iterator();
     Object localObject2;
     if (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (ep)((Iterator)localObject1).next();
-      if (!k.g(((ep)localObject2).key, "EventType")) {
+      localObject2 = (er)((Iterator)localObject1).next();
+      if (!k.g(((er)localObject2).key, "EventType")) {
         break label213;
       }
-      str = ((ep)localObject2).gPh;
+      str = ((er)localObject2).hpH;
       k.g(str, "it.`val`");
     }
     label213:
@@ -88,276 +89,292 @@ public final class j
       break;
       if ((k.g(str, "") ^ true))
       {
-        localObject2 = paramem.Cvr;
-        ep localep = new ep();
-        localep.key = "EndTime";
+        localObject2 = parameo.DNM;
+        er localer = new er();
+        localer.key = "EndTime";
         localObject1 = paramString;
         if (k.g(paramString, "")) {
           localObject1 = String.valueOf(System.currentTimeMillis());
         }
-        localep.gPh = ((String)localObject1);
-        ((LinkedList)localObject2).add(localep);
+        localer.hpH = ((String)localObject1);
+        ((LinkedList)localObject2).add(localer);
         if (parama != null)
         {
-          paramString = parama.nlN;
+          paramString = parama.nON;
           if (paramString != null) {
-            paramString.add(paramem);
+            paramString.add(parameo);
           }
         }
         if (parama != null)
         {
-          paramem = parama.jAv;
-          if (paramem != null)
+          parameo = parama.kaR;
+          if (parameo != null)
           {
-            paramem.remove(str);
-            AppMethodBeat.o(193364);
+            parameo.remove(str);
+            AppMethodBeat.o(199176);
             return;
           }
         }
       }
-      AppMethodBeat.o(193364);
+      AppMethodBeat.o(199176);
       return;
     }
   }
   
-  public static void a(em paramem, String paramString1, String paramString2)
+  public static void a(eo parameo, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193366);
-    k.h(paramem, "$this$addItem");
+    AppMethodBeat.i(199178);
+    k.h(parameo, "$this$addItem");
     k.h(paramString1, "key");
     k.h(paramString2, "value");
-    paramem = paramem.Cvr;
-    ep localep = new ep();
-    localep.key = paramString1;
-    localep.gPh = paramString2;
-    paramem.add(localep);
-    AppMethodBeat.o(193366);
+    parameo = parameo.DNM;
+    er localer = new er();
+    localer.key = paramString1;
+    localer.hpH = paramString2;
+    parameo.add(localer);
+    AppMethodBeat.o(199178);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoProfiler$Instance;", "", "()V", "AppMsgUrl", "", "getAppMsgUrl", "()Ljava/lang/String;", "setAppMsgUrl", "(Ljava/lang/String;)V", "DeviceBrand", "getDeviceBrand", "setDeviceBrand", "DeviceModel", "getDeviceModel", "setDeviceModel", "EnterId", "getEnterId", "setEnterId", "EnterPageId", "getEnterPageId", "setEnterPageId", "LanguageVersion", "getLanguageVersion", "setLanguageVersion", "NetType", "getNetType", "setNetType", "OsName", "getOsName", "setOsName", "OsVersion", "getOsVersion", "setOsVersion", "Scene", "getScene", "setScene", "SubScene", "getSubScene", "setSubScene", "Vid", "getVid", "setVid", "eventItem", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgCommDataReport;", "getEventItem", "()Ljava/util/LinkedList;", "eventMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getEventMap", "()Ljava/util/HashMap;", "addPerformanceData", "", "performance", "Lcom/tencent/mm/pluginsdk/PerformanceHelper;", "clearEvent", "getEvent", "event", "report", "tryToAddEvent", "toInfoString", "plugin-brandservice_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoProfiler$Instance;", "", "()V", "AppMsgUrl", "", "getAppMsgUrl", "()Ljava/lang/String;", "setAppMsgUrl", "(Ljava/lang/String;)V", "DeviceBrand", "getDeviceBrand", "setDeviceBrand", "DeviceModel", "getDeviceModel", "setDeviceModel", "EnterId", "getEnterId", "setEnterId", "EnterPageId", "getEnterPageId", "setEnterPageId", "LanguageVersion", "getLanguageVersion", "setLanguageVersion", "NetType", "getNetType", "setNetType", "OsName", "getOsName", "setOsName", "OsVersion", "getOsVersion", "setOsVersion", "Scene", "getScene", "setScene", "SubScene", "getSubScene", "setSubScene", "Vid", "getVid", "setVid", "eventItem", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgCommDataReport;", "getEventItem", "()Ljava/util/LinkedList;", "eventMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getEventMap", "()Ljava/util/HashMap;", "addPerformanceData", "", "performance", "Lcom/tencent/mm/pluginsdk/PerformanceHelper;", "clearEvent", "getEvent", "event", "report", "tryToAddEvent", "toInfoString", "plugin-brandservice_release"})
   public static final class a
   {
-    String fVv;
-    String fVw;
-    String fVx;
-    String fVy;
-    final HashMap<String, em> jAv;
-    String nlF;
-    String nlG;
-    public String nlH;
-    public String nlI;
-    public String nlJ;
-    public String nlK;
-    public String nlL;
-    public String nlM;
-    public final LinkedList<em> nlN;
+    String fZq;
+    String fZr;
+    String fZs;
+    String fZt;
+    final HashMap<String, eo> kaR;
+    String nOF;
+    String nOG;
+    public String nOH;
+    public String nOI;
+    public String nOJ;
+    public String nOK;
+    public String nOL;
+    public String nOM;
+    public final LinkedList<eo> nON;
     
     public a()
     {
-      AppMethodBeat.i(193363);
-      this.fVv = "";
-      this.fVw = "";
-      this.fVx = "";
-      this.fVy = "";
-      this.nlF = "";
-      this.nlG = "-1";
-      this.nlH = "";
-      this.nlI = "";
-      this.nlJ = "";
-      this.nlK = "";
-      this.nlL = "";
-      this.nlM = "";
-      this.nlN = new LinkedList();
-      this.jAv = new HashMap();
-      AppMethodBeat.o(193363);
+      AppMethodBeat.i(199175);
+      this.fZq = "";
+      this.fZr = "";
+      this.fZs = "";
+      this.fZt = "";
+      this.nOF = "";
+      this.nOG = "-1";
+      this.nOH = "";
+      this.nOI = "";
+      this.nOJ = "";
+      this.nOK = "";
+      this.nOL = "";
+      this.nOM = "";
+      this.nON = new LinkedList();
+      this.kaR = new HashMap();
+      AppMethodBeat.o(199175);
     }
     
-    public final em Qc(String paramString)
+    public final eo Uo(String paramString)
     {
-      AppMethodBeat.i(193360);
+      AppMethodBeat.i(199172);
       k.h(paramString, "event");
-      Object localObject2 = (em)this.jAv.get(paramString);
+      Object localObject2 = (eo)this.kaR.get(paramString);
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new em();
-        ((em)localObject1).type = 5;
-        localObject2 = ((em)localObject1).Cvr;
-        ep localep = new ep();
-        localep.key = "EventType";
-        localep.gPh = paramString;
-        ((LinkedList)localObject2).add(localep);
-        localObject2 = ((em)localObject1).Cvr;
-        localep = new ep();
-        localep.key = "StartTime";
-        localep.gPh = String.valueOf(System.currentTimeMillis());
-        ((LinkedList)localObject2).add(localep);
-        ((Map)this.jAv).put(paramString, localObject1);
+        localObject1 = new eo();
+        ((eo)localObject1).type = 5;
+        localObject2 = ((eo)localObject1).DNM;
+        er localer = new er();
+        localer.key = "EventType";
+        localer.hpH = paramString;
+        ((LinkedList)localObject2).add(localer);
+        localObject2 = ((eo)localObject1).DNM;
+        localer = new er();
+        localer.key = "StartTime";
+        localer.hpH = String.valueOf(System.currentTimeMillis());
+        ((LinkedList)localObject2).add(localer);
+        ((Map)this.kaR).put(paramString, localObject1);
       }
-      AppMethodBeat.o(193360);
+      AppMethodBeat.o(199172);
       return localObject1;
     }
     
-    public final void Qd(String paramString)
+    public final void Up(String paramString)
     {
-      AppMethodBeat.i(193361);
+      AppMethodBeat.i(199173);
       k.h(paramString, "event");
-      paramString = (em)this.jAv.get(paramString);
+      paramString = (eo)this.kaR.get(paramString);
       if (paramString != null)
       {
-        j localj = j.nlE;
+        j localj = j.nOE;
         j.a(paramString, this);
-        AppMethodBeat.o(193361);
+        AppMethodBeat.o(199173);
         return;
       }
-      AppMethodBeat.o(193361);
+      AppMethodBeat.o(199173);
     }
     
-    public final void bGq()
+    public final void bND()
     {
-      AppMethodBeat.i(193359);
-      this.nlN.clear();
-      this.jAv.clear();
-      AppMethodBeat.o(193359);
+      AppMethodBeat.i(199171);
+      this.nON.clear();
+      this.kaR.clear();
+      AppMethodBeat.o(199171);
     }
     
     public final void report()
     {
-      AppMethodBeat.i(193362);
+      AppMethodBeat.i(199174);
       ((d.g.a.a)new c(this)).invoke();
-      en localen = new en();
-      em localem = new em();
-      localem.type = 5;
-      LinkedList localLinkedList = localem.Cvr;
       ep localep = new ep();
-      localep.key = "DeviceModel";
-      Object localObject2 = this.fVv;
+      eo localeo = new eo();
+      localeo.type = 5;
+      LinkedList localLinkedList = localeo.DNM;
+      er localer = new er();
+      localer.key = "DeviceModel";
+      Object localObject2 = this.fZq;
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "DeviceBrand";
-      localObject2 = this.fVw;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "DeviceBrand";
+      localObject2 = this.fZr;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "OsName";
-      localObject2 = this.fVx;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "OsName";
+      localObject2 = this.fZs;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "OsVersion";
-      localObject2 = this.fVy;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "OsVersion";
+      localObject2 = this.fZt;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "LanguageVersion";
-      localObject2 = this.nlF;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "LanguageVersion";
+      localObject2 = this.nOF;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "NetType";
-      localObject2 = this.nlG;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "NetType";
+      localObject2 = this.nOG;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "EnterId";
-      localObject2 = this.nlH;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "EnterId";
+      localObject2 = this.nOH;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "EnterPageId";
-      localObject2 = this.nlI;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "EnterPageId";
+      localObject2 = this.nOI;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "AppMsgUrl";
-      localObject2 = this.nlJ;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "AppMsgUrl";
+      localObject2 = this.nOJ;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "Vid";
-      localObject2 = this.nlK;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "Vid";
+      localObject2 = this.nOK;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "Scene";
-      localObject2 = this.nlL;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "Scene";
+      localObject2 = this.nOL;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localep = new ep();
-      localep.key = "SubScene";
-      localObject2 = this.nlM;
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localer = new er();
+      localer.key = "SubScene";
+      localObject2 = this.nOM;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localep.gPh = ((String)localObject1);
-      localLinkedList.add(localep);
-      localen.CyN = localem;
-      localObject1 = ((Iterable)this.nlN).iterator();
+      localer.hpH = ((String)localObject1);
+      localLinkedList.add(localer);
+      localep.DRj = localeo;
+      localObject1 = ((Iterable)this.nON).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (em)((Iterator)localObject1).next();
-        localen.CyM.add(localObject2);
+        localObject2 = (eo)((Iterator)localObject1).next();
+        localep.DRi.add(localObject2);
       }
       localObject1 = new b.a();
-      ((b.a)localObject1).c((com.tencent.mm.bx.a)localen);
-      ((b.a)localObject1).d((com.tencent.mm.bx.a)new eo());
-      ((b.a)localObject1).wg("/cgi-bin/mmbiz-bin/appmsg/appmsg_report");
-      ((b.a)localObject1).nB(1870);
-      ((b.a)localObject1).nD(0);
-      ((b.a)localObject1).nE(0);
-      IPCRunCgi.a(((b.a)localObject1).atI(), (IPCRunCgi.a)j.a.b.nlP);
-      ad.i("MicroMsg.BizVideoProfiler", " report instance = ".concat(String.valueOf(this)));
-      bGq();
-      AppMethodBeat.o(193362);
+      ((b.a)localObject1).c((com.tencent.mm.bw.a)localep);
+      ((b.a)localObject1).d((com.tencent.mm.bw.a)new eq());
+      ((b.a)localObject1).Am("/cgi-bin/mmbiz-bin/appmsg/appmsg_report");
+      ((b.a)localObject1).op(1870);
+      ((b.a)localObject1).or(0);
+      ((b.a)localObject1).os(0);
+      IPCRunCgi.a(((b.a)localObject1).aAz(), (IPCRunCgi.a)b.nOP);
+      ac.i("MicroMsg.BizVideoProfiler", " report instance = ".concat(String.valueOf(this)));
+      bND();
+      AppMethodBeat.o(199174);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<no name provided>", "", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "<anonymous parameter 2>", "", "<anonymous parameter 3>", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
+    static final class b
+      implements IPCRunCgi.a
+    {
+      public static final b nOP;
+      
+      static
+      {
+        AppMethodBeat.i(199169);
+        nOP = new b();
+        AppMethodBeat.o(199169);
+      }
+      
+      public final void a(int paramInt1, int paramInt2, String paramString, b paramb) {}
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<no name provided>", "", "invoke"})
     static final class c
       extends d.g.b.l
       implements d.g.a.a<y>
@@ -371,7 +388,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.util.j
  * JD-Core Version:    0.7.0.1
  */

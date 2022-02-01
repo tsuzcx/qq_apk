@@ -1,45 +1,26 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aim;
+import com.tencent.mm.protocal.protobuf.ajy;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/storage/data/PageCacheList;", "", "array", "", "Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "([Lcom/tencent/mm/plugin/finder/storage/data/CachePage;)V", "[Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "get", "typeFlag", "", "reset", "", "set", "page", "size", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/data/PageCacheList;", "", "array", "", "Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "([Lcom/tencent/mm/plugin/finder/storage/data/CachePage;)V", "[Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "get", "typeFlag", "", "reset", "", "set", "page", "size", "plugin-finder_release"})
 public final class j
 {
-  final g[] KXy;
+  final a[] rFd;
   
-  public j(g[] paramArrayOfg)
+  public j(a[] paramArrayOfa)
   {
-    AppMethodBeat.i(199078);
-    this.KXy = paramArrayOfg;
-    AppMethodBeat.o(199078);
+    AppMethodBeat.i(203046);
+    this.rFd = paramArrayOfa;
+    AppMethodBeat.o(203046);
   }
   
-  public final void a(int paramInt, g paramg)
+  public final a Em(int paramInt)
   {
-    AppMethodBeat.i(199076);
-    k.h(paramg, "page");
-    g[] arrayOfg = this.KXy;
-    int k = arrayOfg.length;
-    int j = 0;
-    int i = 0;
-    while (j < k)
-    {
-      if (paramInt == arrayOfg[j].type) {
-        this.KXy[i] = paramg;
-      }
-      j += 1;
-      i += 1;
-    }
-    AppMethodBeat.o(199076);
-  }
-  
-  public final g ahA(int paramInt)
-  {
-    AppMethodBeat.i(199075);
-    Object localObject2 = this.KXy;
+    AppMethodBeat.i(203043);
+    Object localObject2 = this.rFd;
     int k = localObject2.length;
     int i = 0;
     Object localObject1;
@@ -60,9 +41,9 @@ public final class j
     {
       localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = new g(10000, "default_v2", new aim(), (byte)0);
+        localObject2 = new a(10000, "default_v2", new ajy(), (byte)0);
       }
-      AppMethodBeat.o(199075);
+      AppMethodBeat.o(203043);
       return localObject2;
       j = 0;
       break label41;
@@ -73,20 +54,39 @@ public final class j
     }
   }
   
+  public final void a(int paramInt, a parama)
+  {
+    AppMethodBeat.i(203044);
+    k.h(parama, "page");
+    a[] arrayOfa = this.rFd;
+    int k = arrayOfa.length;
+    int j = 0;
+    int i = 0;
+    while (j < k)
+    {
+      if (paramInt == arrayOfa[j].type) {
+        this.rFd[i] = parama;
+      }
+      j += 1;
+      i += 1;
+    }
+    AppMethodBeat.o(203044);
+  }
+  
   public final void reset()
   {
-    AppMethodBeat.i(199077);
-    g[] arrayOfg = this.KXy;
-    int j = arrayOfg.length;
+    AppMethodBeat.i(203045);
+    a[] arrayOfa = this.rFd;
+    int j = arrayOfa.length;
     int i = 0;
     while (i < j)
     {
-      g localg = arrayOfg[i];
-      localg.jJR = false;
-      localg.a(new aim());
+      a locala = arrayOfa[i];
+      locala.kkr = false;
+      locala.a(new ajy());
       i += 1;
     }
-    AppMethodBeat.o(199077);
+    AppMethodBeat.o(203045);
   }
 }
 

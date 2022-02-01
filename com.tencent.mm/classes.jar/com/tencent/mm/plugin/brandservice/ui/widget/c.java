@@ -3,58 +3,58 @@ package com.tencent.mm.plugin.brandservice.ui.widget;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr;", "", "()V", "value", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "curSpeed", "getCurSpeed", "()Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "setCurSpeed", "(Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;)V", "lastSpeed", "getLastSpeed", "setLastSpeed", "resetCurSpeed", "", "MPVideoSpeed", "plugin-brandservice_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr;", "", "()V", "value", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "curSpeed", "getCurSpeed", "()Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "setCurSpeed", "(Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;)V", "lastSpeed", "getLastSpeed", "setLastSpeed", "resetCurSpeed", "", "MPVideoSpeed", "plugin-brandservice_release"})
 public final class c
 {
-  private static c.a nnU;
-  private static c.a nnV;
-  public static final c nnW;
+  private static c.a nQU;
+  private static c.a nQV;
+  public static final c nQW;
   
   static
   {
     AppMethodBeat.i(179028);
-    nnW = new c();
+    nQW = new c();
     AppMethodBeat.o(179028);
   }
   
   public static void a(c.a parama)
   {
-    if (nnV == null) {}
-    for (c.a locala = c.a.nnZ;; locala = nnV)
+    if (nQV == null) {}
+    for (c.a locala = c.a.nQZ;; locala = nQV)
     {
-      nnU = locala;
-      nnV = parama;
+      nQU = locala;
+      nQV = parama;
       return;
     }
   }
   
-  public static c.a bGJ()
+  public static c.a bNW()
   {
-    if (nnU == null) {
-      return c.a.nnZ;
+    if (nQU == null) {
+      return c.a.nQZ;
     }
-    return nnU;
+    return nQU;
   }
   
-  public static c.a bGK()
+  public static c.a bNX()
   {
-    if (nnV == null) {
-      return c.a.nnZ;
+    if (nQV == null) {
+      return c.a.nQZ;
     }
-    return nnV;
+    return nQV;
   }
   
-  public static void bGL()
+  public static void bNY()
   {
     AppMethodBeat.i(179027);
-    nnU = c.a.nnZ;
-    a(c.a.nnZ);
+    nQU = c.a.nQZ;
+    a(c.a.nQZ);
     AppMethodBeat.o(179027);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.c
  * JD-Core Version:    0.7.0.1
  */

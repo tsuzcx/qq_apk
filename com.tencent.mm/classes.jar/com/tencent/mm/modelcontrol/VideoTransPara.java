@@ -13,25 +13,26 @@ public class VideoTransPara
   public int audioSampleRate;
   public int duration;
   public int fps;
-  public int gnH;
-  public int gnp;
-  public int gnq;
-  public int hbW;
-  public int hbX;
-  public int hbY;
-  public int hci;
-  public int hcj;
-  public int hck;
-  public int hcl;
-  public int hcm;
-  public int hcn;
-  public int hco;
-  public int hcp;
-  public int hcq;
-  public int hcr;
-  public int hcs;
-  public int hct;
-  public int hcu;
+  public int gOb;
+  public int gOc;
+  public int gOt;
+  public int hCA;
+  public int hCK;
+  public int hCL;
+  public int hCM;
+  public int hCN;
+  public int hCO;
+  public int hCP;
+  public int hCQ;
+  public int hCR;
+  public int hCS;
+  public int hCT;
+  public int hCU;
+  public int hCV;
+  public int hCW;
+  public int hCX;
+  public int hCy;
+  public int hCz;
   public int height;
   public boolean isDefault;
   public int minDuration;
@@ -41,55 +42,56 @@ public class VideoTransPara
   static
   {
     AppMethodBeat.i(133565);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new VideoTransPara.1();
     AppMethodBeat.o(133565);
   }
   
   public VideoTransPara()
   {
-    this.gnH = 1;
-    this.hci = 0;
-    this.hct = 0;
-    this.hcu = 0;
+    this.gOt = 1;
+    this.hCK = 0;
+    this.hCW = 0;
+    this.hCX = 0;
   }
   
   protected VideoTransPara(Parcel paramParcel)
   {
     AppMethodBeat.i(133561);
-    this.gnH = 1;
-    this.hci = 0;
-    this.hct = 0;
-    this.hcu = 0;
+    this.gOt = 1;
+    this.hCK = 0;
+    this.hCW = 0;
+    this.hCX = 0;
     this.width = paramParcel.readInt();
     this.height = paramParcel.readInt();
     this.fps = paramParcel.readInt();
     this.videoBitrate = paramParcel.readInt();
     this.duration = paramParcel.readInt();
-    this.hbW = paramParcel.readInt();
+    this.hCy = paramParcel.readInt();
     this.audioBitrate = paramParcel.readInt();
     this.audioSampleRate = paramParcel.readInt();
-    this.hbX = paramParcel.readInt();
-    this.hbY = paramParcel.readInt();
+    this.hCz = paramParcel.readInt();
+    this.hCA = paramParcel.readInt();
     if (paramParcel.readInt() > 0) {}
     for (;;)
     {
       this.isDefault = bool;
-      this.hci = paramParcel.readInt();
-      this.hcj = paramParcel.readInt();
-      this.hck = paramParcel.readInt();
-      this.hcl = paramParcel.readInt();
-      this.hcm = paramParcel.readInt();
-      this.hcn = paramParcel.readInt();
-      this.hco = paramParcel.readInt();
-      this.hcp = paramParcel.readInt();
-      this.hcq = paramParcel.readInt();
-      this.gnp = paramParcel.readInt();
-      this.gnq = paramParcel.readInt();
-      this.hcr = paramParcel.readInt();
-      this.hcs = paramParcel.readInt();
-      this.gnH = paramParcel.readInt();
-      this.hct = paramParcel.readInt();
-      this.hcu = paramParcel.readInt();
+      this.hCK = paramParcel.readInt();
+      this.hCL = paramParcel.readInt();
+      this.hCM = paramParcel.readInt();
+      this.hCN = paramParcel.readInt();
+      this.hCO = paramParcel.readInt();
+      this.hCP = paramParcel.readInt();
+      this.hCQ = paramParcel.readInt();
+      this.hCR = paramParcel.readInt();
+      this.hCS = paramParcel.readInt();
+      this.hCT = paramParcel.readInt();
+      this.gOb = paramParcel.readInt();
+      this.gOc = paramParcel.readInt();
+      this.hCU = paramParcel.readInt();
+      this.hCV = paramParcel.readInt();
+      this.gOt = paramParcel.readInt();
+      this.hCW = paramParcel.readInt();
+      this.hCX = paramParcel.readInt();
       this.minDuration = paramParcel.readInt();
       AppMethodBeat.o(133561);
       return;
@@ -99,36 +101,38 @@ public class VideoTransPara
   
   public VideoTransPara(VideoTransPara paramVideoTransPara)
   {
-    this.gnH = 1;
-    this.hci = 0;
-    this.hct = 0;
-    this.hcu = 0;
+    this.gOt = 1;
+    this.hCK = 0;
+    this.hCW = 0;
+    this.hCX = 0;
     this.width = paramVideoTransPara.width;
     this.height = paramVideoTransPara.height;
     this.fps = paramVideoTransPara.fps;
     this.videoBitrate = paramVideoTransPara.videoBitrate;
     this.duration = paramVideoTransPara.duration;
-    this.hbW = paramVideoTransPara.hbW;
+    this.hCy = paramVideoTransPara.hCy;
     this.audioBitrate = paramVideoTransPara.audioBitrate;
     this.audioSampleRate = paramVideoTransPara.audioSampleRate;
-    this.hbX = paramVideoTransPara.hbX;
-    this.hbY = paramVideoTransPara.hbY;
+    this.hCz = paramVideoTransPara.hCz;
+    this.hCA = paramVideoTransPara.hCA;
     this.isDefault = paramVideoTransPara.isDefault;
-    this.hci = paramVideoTransPara.hci;
-    this.hcj = paramVideoTransPara.hcj;
-    this.hck = paramVideoTransPara.hck;
-    this.hcl = paramVideoTransPara.hcl;
-    this.hcm = paramVideoTransPara.hcm;
-    this.hcn = paramVideoTransPara.hcn;
-    this.hco = paramVideoTransPara.hco;
-    this.hcp = paramVideoTransPara.hcp;
-    this.gnp = paramVideoTransPara.gnp;
-    this.gnq = paramVideoTransPara.gnq;
-    this.hcr = paramVideoTransPara.hcr;
-    this.hcs = paramVideoTransPara.hcs;
-    this.gnH = paramVideoTransPara.gnH;
-    this.hct = paramVideoTransPara.hct;
-    this.hcu = paramVideoTransPara.hcu;
+    this.hCK = paramVideoTransPara.hCK;
+    this.hCL = paramVideoTransPara.hCL;
+    this.hCM = paramVideoTransPara.hCM;
+    this.hCN = paramVideoTransPara.hCN;
+    this.hCO = paramVideoTransPara.hCO;
+    this.hCP = paramVideoTransPara.hCP;
+    this.hCQ = paramVideoTransPara.hCQ;
+    this.hCR = paramVideoTransPara.hCR;
+    this.hCS = paramVideoTransPara.hCS;
+    this.hCT = paramVideoTransPara.hCT;
+    this.gOb = paramVideoTransPara.gOb;
+    this.gOc = paramVideoTransPara.gOc;
+    this.hCU = paramVideoTransPara.hCU;
+    this.hCV = paramVideoTransPara.hCV;
+    this.gOt = paramVideoTransPara.gOt;
+    this.hCW = paramVideoTransPara.hCW;
+    this.hCX = paramVideoTransPara.hCX;
     this.minDuration = paramVideoTransPara.minDuration;
   }
   
@@ -148,7 +152,7 @@ public class VideoTransPara
   public String toString()
   {
     AppMethodBeat.i(133563);
-    String str = "[isDefault " + this.isDefault + " width " + this.width + " height " + this.height + " fps " + this.fps + " video bitrate " + this.videoBitrate + " iFrame " + this.hbW + " audio bitrate " + this.audioBitrate + " audioSampleRate " + this.audioSampleRate + "audioChannelCount " + this.gnH + " duration " + this.duration + " profile index " + this.hbX + " preset index " + this.hbY + " thumbSize " + this.hci + " abaSwitch " + this.hcj + " qpSwitch " + this.hck + " abaUpgear " + this.hcl + " abaDowngear " + this.hcm + " abaIncreasesize " + this.hcn + " abaDecreasesize " + this.hco + " isEnableHEVCEncode " + this.hcp + " isEnable720p " + this.hcq + " minQP " + this.gnp + " maxQP " + this.gnq + " takePhotosVideoBR " + this.hcr + " remuxScene " + this.hcs + " hwEnableHevc " + this.hct + " swEnableHevc " + this.hcu + "]";
+    String str = "[isDefault " + this.isDefault + " width " + this.width + " height " + this.height + " fps " + this.fps + " video bitrate " + this.videoBitrate + " iFrame " + this.hCy + " audio bitrate " + this.audioBitrate + " audioSampleRate " + this.audioSampleRate + "audioChannelCount " + this.gOt + " duration " + this.duration + " profile index " + this.hCz + " preset index " + this.hCA + " thumbSize " + this.hCK + " abaSwitch " + this.hCL + " qpSwitch " + this.hCM + " abaUpgear " + this.hCN + " abaDowngear " + this.hCO + " ceilingVideoBR " + this.hCP + " flooringVideoBR " + this.hCQ + " isEnableHEVCEncode " + this.hCR + " isEnable720p " + this.hCS + " maxVideoSize " + this.hCT + " minQP " + this.gOb + " maxQP " + this.gOc + " takePhotosVideoBR " + this.hCU + " remuxScene " + this.hCV + " hwEnableHevc " + this.hCW + " swEnableHevc " + this.hCX + "]";
     AppMethodBeat.o(133563);
     return str;
   }
@@ -161,31 +165,32 @@ public class VideoTransPara
     paramParcel.writeInt(this.fps);
     paramParcel.writeInt(this.videoBitrate);
     paramParcel.writeInt(this.duration);
-    paramParcel.writeInt(this.hbW);
+    paramParcel.writeInt(this.hCy);
     paramParcel.writeInt(this.audioBitrate);
     paramParcel.writeInt(this.audioSampleRate);
-    paramParcel.writeInt(this.hbX);
-    paramParcel.writeInt(this.hbY);
+    paramParcel.writeInt(this.hCz);
+    paramParcel.writeInt(this.hCA);
     if (this.isDefault) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.hci);
-      paramParcel.writeInt(this.hcj);
-      paramParcel.writeInt(this.hck);
-      paramParcel.writeInt(this.hcl);
-      paramParcel.writeInt(this.hcm);
-      paramParcel.writeInt(this.hcn);
-      paramParcel.writeInt(this.hco);
-      paramParcel.writeInt(this.hcp);
-      paramParcel.writeInt(this.hcq);
-      paramParcel.writeInt(this.gnp);
-      paramParcel.writeInt(this.gnq);
-      paramParcel.writeInt(this.hcr);
-      paramParcel.writeInt(this.hcs);
-      paramParcel.writeInt(this.gnH);
-      paramParcel.writeInt(this.hct);
-      paramParcel.writeInt(this.hcu);
+      paramParcel.writeInt(this.hCK);
+      paramParcel.writeInt(this.hCL);
+      paramParcel.writeInt(this.hCM);
+      paramParcel.writeInt(this.hCN);
+      paramParcel.writeInt(this.hCO);
+      paramParcel.writeInt(this.hCP);
+      paramParcel.writeInt(this.hCQ);
+      paramParcel.writeInt(this.hCR);
+      paramParcel.writeInt(this.hCS);
+      paramParcel.writeInt(this.hCT);
+      paramParcel.writeInt(this.gOb);
+      paramParcel.writeInt(this.gOc);
+      paramParcel.writeInt(this.hCU);
+      paramParcel.writeInt(this.hCV);
+      paramParcel.writeInt(this.gOt);
+      paramParcel.writeInt(this.hCW);
+      paramParcel.writeInt(this.hCX);
       paramParcel.writeInt(this.minDuration);
       AppMethodBeat.o(133562);
       return;
@@ -194,7 +199,7 @@ public class VideoTransPara
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.VideoTransPara
  * JD-Core Version:    0.7.0.1
  */

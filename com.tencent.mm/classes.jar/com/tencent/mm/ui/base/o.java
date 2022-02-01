@@ -17,7 +17,7 @@ import com.tencent.mm.ui.an;
 public class o
   extends PopupWindow
 {
-  private View.OnTouchListener FYB;
+  private View.OnTouchListener Hyq;
   private Context mContext;
   
   public o(Context paramContext)
@@ -161,7 +161,7 @@ public class o
   
   public void setTouchInterceptor(View.OnTouchListener paramOnTouchListener)
   {
-    this.FYB = paramOnTouchListener;
+    this.Hyq = paramOnTouchListener;
   }
   
   final class a

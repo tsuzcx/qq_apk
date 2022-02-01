@@ -4,33 +4,33 @@ import android.webkit.ConsoleMessage;
 import android.webkit.ConsoleMessage.MessageLevel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.websearch.api.z;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.n;
-import com.tencent.xweb.w;
+import com.tencent.xweb.o;
+import com.tencent.xweb.x;
 
 public final class a
-  extends w
+  extends x
 {
   public final void a(WebView paramWebView, int paramInt) {}
   
   public final boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(176917);
-    ad.i("MicroMsg.FTS.PardusWebChromeClient", "onJsAlert %s %s", new Object[] { paramString1, paramString2 });
+    ac.i("MicroMsg.FTS.PardusWebChromeClient", "onJsAlert %s %s", new Object[] { paramString1, paramString2 });
     boolean bool = super.a(paramWebView, paramString1, paramString2, paramJsResult);
     AppMethodBeat.o(176917);
     return bool;
   }
   
-  public final boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, n paramn)
+  public final boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, o paramo)
   {
     AppMethodBeat.i(176916);
-    ad.i("MicroMsg.FTS.PardusWebChromeClient", "onJsPrompt %s %s", new Object[] { paramString1, paramString2 });
-    boolean bool = super.a(paramWebView, paramString1, paramString2, paramString3, paramn);
+    ac.i("MicroMsg.FTS.PardusWebChromeClient", "onJsPrompt %s %s", new Object[] { paramString1, paramString2 });
+    boolean bool = super.a(paramWebView, paramString1, paramString2, paramString3, paramo);
     AppMethodBeat.o(176916);
     return bool;
   }
@@ -38,7 +38,7 @@ public final class a
   public final boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(176915);
-    ad.i("MicroMsg.FTS.PardusWebChromeClient", "onJsConfirm %s %s", new Object[] { paramString1, paramString2 });
+    ac.i("MicroMsg.FTS.PardusWebChromeClient", "onJsConfirm %s %s", new Object[] { paramString1, paramString2 });
     boolean bool = super.b(paramWebView, paramString1, paramString2, paramJsResult);
     AppMethodBeat.o(176915);
     return bool;
@@ -47,10 +47,10 @@ public final class a
   public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
     AppMethodBeat.i(176918);
-    ad.i("MicroMsg.FTS.PardusWebChromeClient", "onConsoleMessage %d %s %s %s", new Object[] { Integer.valueOf(paramConsoleMessage.lineNumber()), paramConsoleMessage.messageLevel().name(), paramConsoleMessage.message(), paramConsoleMessage.sourceId() });
-    if ((paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.ERROR) && (!bt.isNullOrNil(paramConsoleMessage.message())))
+    ac.i("MicroMsg.FTS.PardusWebChromeClient", "onConsoleMessage %d %s %s %s", new Object[] { Integer.valueOf(paramConsoleMessage.lineNumber()), paramConsoleMessage.messageLevel().name(), paramConsoleMessage.message(), paramConsoleMessage.sourceId() });
+    if ((paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.ERROR) && (!bs.isNullOrNil(paramConsoleMessage.message())))
     {
-      e.vIY.f(19153, new Object[] { Integer.valueOf(aa.Sb(5)), paramConsoleMessage.messageLevel(), Integer.valueOf(2) });
+      e.wTc.f(19153, new Object[] { Integer.valueOf(z.Ul(5)), paramConsoleMessage.messageLevel(), Integer.valueOf(2) });
       if (!paramConsoleMessage.message().contains("SyntaxError")) {
         paramConsoleMessage.message().contains("Maximum call stack size exceeded");
       }

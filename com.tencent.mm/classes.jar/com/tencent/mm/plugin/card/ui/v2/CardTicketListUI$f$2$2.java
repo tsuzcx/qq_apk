@@ -5,17 +5,17 @@ import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
 final class CardTicketListUI$f$2$2
   implements DialogInterface.OnClickListener
 {
-  public static final 2 nGb;
+  public static final 2 ojc;
   
   static
   {
-    AppMethodBeat.i(192682);
-    nGb = new 2();
-    AppMethodBeat.o(192682);
+    AppMethodBeat.i(206256);
+    ojc = new 2();
+    AppMethodBeat.o(206256);
   }
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}

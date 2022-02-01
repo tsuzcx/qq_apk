@@ -5,21 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public final class m
   extends j<l>
 {
   public static final String[] SQL_CREATE;
+  private static String yvu;
+  public static String yvv;
+  public static String yvw;
   public com.tencent.mm.sdk.e.e db;
   
   static
   {
     AppMethodBeat.i(176289);
     SQL_CREATE = new String[] { j.getCreateSQLs(l.info, "snsDraft") };
+    yvu = " (snsDraft.extFlag & 2 == 0 ) ";
+    yvv = " (snsDraft.extFlag & 2 != 0 ) ";
+    yvw = " order by snsDraft.timestamp desc";
     AppMethodBeat.o(176289);
   }
   
@@ -28,11 +34,11 @@ public final class m
     super(parame, l.info, "snsDraft", null);
     AppMethodBeat.i(176285);
     this.db = parame;
-    ad.i("MicroMsg.SnsDraftStorage", "createDraftStorage " + parame + "  " + Thread.currentThread().getId());
+    ac.i("MicroMsg.SnsDraftStorage", "createDraftStorage " + parame + "  " + Thread.currentThread().getId());
     AppMethodBeat.o(176285);
   }
   
-  public final l apL(String paramString)
+  public final l auU(String paramString)
   {
     Integer localInteger = null;
     AppMethodBeat.i(176288);
@@ -49,7 +55,7 @@ public final class m
     }
     for (;;)
     {
-      ad.i("MicroMsg.SnsDraftStorage", "readDraft: %s, %s", new Object[] { paramString, localInteger });
+      ac.i("MicroMsg.SnsDraftStorage", "readDraft: %s, %s", new Object[] { paramString, localInteger });
       AppMethodBeat.o(176288);
       return locall;
       ((Cursor)localObject).close();
@@ -66,7 +72,7 @@ public final class m
     if (paramArrayOfByte == null) {}
     for (Object localObject = null;; localObject = Integer.valueOf(paramArrayOfByte.length))
     {
-      ad.i("MicroMsg.SnsDraftStorage", "writeDraft: %s, %s", new Object[] { paramString, localObject });
+      ac.i("MicroMsg.SnsDraftStorage", "writeDraft: %s, %s", new Object[] { paramString, localObject });
       localObject = new l();
       ((l)localObject).field_key = paramString;
       ((l)localObject).field_timestamp = System.currentTimeMillis();
@@ -78,33 +84,33 @@ public final class m
     }
   }
   
-  public final void qe(boolean paramBoolean)
+  public final void rd(boolean paramBoolean)
   {
     AppMethodBeat.i(176286);
     Object localObject;
     if (paramBoolean)
     {
-      g.afC();
-      localObject = (String)g.afB().afk().get(ae.a.Fiq, null);
+      g.agS();
+      localObject = (String)g.agR().agA().get(ah.a.GGf, null);
     }
-    while (!bt.isNullOrNil((String)localObject))
+    while (!bs.isNullOrNil((String)localObject))
     {
-      localObject = com.tencent.d.f.e.aNK((String)localObject);
-      if (!bt.cw((byte[])localObject)) {
+      localObject = com.tencent.d.f.e.aTn((String)localObject);
+      if (!bs.cv((byte[])localObject)) {
         if (paramBoolean)
         {
-          g.afC();
-          g.afB().afk().set(ae.a.Fiq, "");
+          g.agS();
+          g.agR().agA().set(ah.a.GGf, "");
           b("draft_text", (byte[])localObject, 0);
           AppMethodBeat.o(176286);
           return;
-          g.afC();
-          localObject = (String)g.afB().afk().get(ae.a.Fip, null);
+          g.agS();
+          localObject = (String)g.agR().agA().get(ah.a.GGe, null);
         }
         else
         {
-          g.afC();
-          g.afB().afk().set(ae.a.Fip, "");
+          g.agS();
+          g.agR().agA().set(ah.a.GGe, "");
           b("draft_normal", (byte[])localObject, 0);
         }
       }

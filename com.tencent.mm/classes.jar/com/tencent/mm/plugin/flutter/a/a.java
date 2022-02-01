@@ -7,9 +7,9 @@ public abstract interface a
 {
   public abstract void a(Context paramContext, c paramc);
   
-  public abstract <T> T aN(Class<T> paramClass);
+  public abstract <T> T aO(Class<T> paramClass);
   
-  public abstract boolean cuJ();
+  public abstract boolean cHV();
 }
 
 

@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.emoji.e.f;
 import com.tencent.mm.pluginsdk.a.d;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.storage.av;
+import com.tencent.mm.storage.az;
 
 public final class b
   extends t
 {
   public b()
   {
-    super(c.aCX("emoji"));
+    super(c.aIo("emoji"));
     AppMethodBeat.i(108544);
-    com.tencent.mm.plugin.emoji.b.b.a.ouV = new com.tencent.mm.plugin.emoji.b.b()
+    com.tencent.mm.plugin.emoji.b.b.a.oYv = new com.tencent.mm.plugin.emoji.b.b()
     {
-      public final as getEmojiDescMgr()
+      public final av getEmojiDescMgr()
       {
         AppMethodBeat.i(108543);
-        as localas = k.getEmojiDescMgr();
+        av localav = k.getEmojiDescMgr();
         AppMethodBeat.o(108543);
-        return localas;
+        return localav;
       }
       
       public final d getEmojiMgr()
       {
         AppMethodBeat.i(108541);
-        f localf = k.bUZ();
+        f localf = k.ccm();
         AppMethodBeat.o(108541);
         return localf;
       }
       
-      public final aw getEmojiStorageMgr()
+      public final az getEmojiStorageMgr()
       {
         AppMethodBeat.i(108542);
-        aw localaw = k.getEmojiStorageMgr();
+        az localaz = k.getEmojiStorageMgr();
         AppMethodBeat.o(108542);
-        return localaw;
+        return localaz;
       }
     };
     AppMethodBeat.o(108544);
@@ -46,7 +46,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.b
  * JD-Core Version:    0.7.0.1
  */

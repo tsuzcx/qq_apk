@@ -6,35 +6,35 @@ import com.google.b.a.e;
 public final class a$bd
   extends e
 {
-  public a.an InR = null;
+  public a.an JPB = null;
   public int type = 0;
   
   public a$bd()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
     if (this.type != 0) {
-      paramb.by(1, this.type);
+      paramb.bv(1, this.type);
     }
-    if (this.InR != null) {
-      paramb.a(2, this.InR);
+    if (this.JPB != null) {
+      paramb.a(2, this.JPB);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (this.type != 0) {
-      i = j + b.bA(1, this.type);
+      i = j + b.bx(1, this.type);
     }
     j = i;
-    if (this.InR != null) {
-      j = i + b.b(2, this.InR);
+    if (this.JPB != null) {
+      j = i + b.b(2, this.JPB);
     }
     return j;
   }

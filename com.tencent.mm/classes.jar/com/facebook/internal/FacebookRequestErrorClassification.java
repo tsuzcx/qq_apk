@@ -154,7 +154,7 @@ public final class FacebookRequestErrorClassification
   private static FacebookRequestErrorClassification getDefaultErrorClassificationImpl()
   {
     AppMethodBeat.i(17723);
-    FacebookRequestErrorClassification localFacebookRequestErrorClassification = new FacebookRequestErrorClassification(null, new FacebookRequestErrorClassification.1(), new FacebookRequestErrorClassification.2(), null, null, null);
+    FacebookRequestErrorClassification localFacebookRequestErrorClassification = new FacebookRequestErrorClassification(null, new HashMap()new HashMap {}, new HashMap() {}, null, null, null);
     AppMethodBeat.o(17723);
     return localFacebookRequestErrorClassification;
   }
@@ -291,7 +291,7 @@ public final class FacebookRequestErrorClassification
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.facebook.internal.FacebookRequestErrorClassification
  * JD-Core Version:    0.7.0.1
  */

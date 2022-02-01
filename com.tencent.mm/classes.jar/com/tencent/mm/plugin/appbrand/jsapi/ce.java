@@ -7,7 +7,7 @@ import com.tencent.mm.i.g.a;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.e;
 import java.io.ByteArrayOutputStream;
 import java.nio.ByteBuffer;
@@ -21,26 +21,26 @@ public final class ce
   private static String c(com.tencent.mm.plugin.appbrand.q paramq, String paramString)
   {
     AppMethodBeat.i(45705);
-    paramq = paramq.getRuntime().Ee().EP(paramString);
+    paramq = paramq.getRuntime().DH().IS(paramString);
     if (paramq == null)
     {
       AppMethodBeat.o(45705);
       return "";
     }
-    paramq = com.tencent.mm.vfs.q.B(paramq.fhU());
+    paramq = com.tencent.mm.vfs.q.B(paramq.fxV());
     AppMethodBeat.o(45705);
     return paramq;
   }
   
-  private static ByteBuffer ct(Object paramObject)
+  private static ByteBuffer cr(Object paramObject)
   {
-    AppMethodBeat.i(195808);
+    AppMethodBeat.i(186571);
     if ((paramObject instanceof String)) {
       paramObject = ByteBuffer.wrap(((String)paramObject).getBytes());
     }
     for (;;)
     {
-      AppMethodBeat.o(195808);
+      AppMethodBeat.o(186571);
       return paramObject;
       if ((paramObject instanceof ByteBuffer)) {
         paramObject = (ByteBuffer)paramObject;

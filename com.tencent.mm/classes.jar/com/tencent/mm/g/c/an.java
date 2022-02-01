@@ -8,13 +8,13 @@ public abstract class an
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ekU = "createTime".hashCode();
-  private static final int esm = "canvasId".hashCode();
-  private static final int esn = "canvasXml".hashCode();
+  private static final int emY = "createTime".hashCode();
+  private static final int euq = "canvasId".hashCode();
+  private static final int eur = "canvasXml".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ekx = true;
-  private boolean esk = true;
-  private boolean esl = true;
+  private boolean emB = true;
+  private boolean euo = true;
+  private boolean eup = true;
   public long field_canvasId;
   public String field_canvasXml;
   public long field_createTime;
@@ -32,11 +32,11 @@ public abstract class an
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (esm != k) {
+      if (euq != k) {
         break label65;
       }
       this.field_canvasId = paramCursor.getLong(i);
-      this.esk = true;
+      this.euo = true;
     }
     for (;;)
     {
@@ -44,9 +44,9 @@ public abstract class an
       break label20;
       break;
       label65:
-      if (esn == k) {
+      if (eur == k) {
         this.field_canvasXml = paramCursor.getString(i);
-      } else if (ekU == k) {
+      } else if (emY == k) {
         this.field_createTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -57,13 +57,13 @@ public abstract class an
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.esk) {
+    if (this.euo) {
       localContentValues.put("canvasId", Long.valueOf(this.field_canvasId));
     }
-    if (this.esl) {
+    if (this.eup) {
       localContentValues.put("canvasXml", this.field_canvasXml);
     }
-    if (this.ekx) {
+    if (this.emB) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
     if (this.systemRowid > 0L) {

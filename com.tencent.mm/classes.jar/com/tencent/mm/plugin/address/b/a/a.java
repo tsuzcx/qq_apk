@@ -7,23 +7,23 @@ import java.util.LinkedList;
 
 public final class a
 {
-  public com.tencent.mm.plugin.j.a.a iyt;
+  public com.tencent.mm.plugin.j.a.a iYw;
   
   public a()
   {
     AppMethodBeat.i(20762);
-    this.iyt = new com.tencent.mm.plugin.j.a.a();
+    this.iYw = new com.tencent.mm.plugin.j.a.a();
     AppMethodBeat.o(20762);
   }
   
-  public final b qi(int paramInt)
+  public final b qV(int paramInt)
   {
     AppMethodBeat.i(20763);
-    Iterator localIterator = this.iyt.szd.iterator();
+    Iterator localIterator = this.iYw.tGN.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.sze == paramInt)
+      if (localb.tGO == paramInt)
       {
         AppMethodBeat.o(20763);
         return localb;

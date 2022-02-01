@@ -7,8 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class nw
   extends b
 {
-  public a dsV;
-  public b dsW;
+  public a dqq;
   
   public nw()
   {
@@ -17,32 +16,24 @@ public final class nw
   
   private nw(byte paramByte)
   {
-    AppMethodBeat.i(91210);
-    this.dsV = new a();
-    this.dsW = new b();
-    this.ESR = false;
+    AppMethodBeat.i(89648);
+    this.dqq = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91210);
+    AppMethodBeat.o(89648);
   }
   
   public static final class a
   {
-    public int channel;
     public Context context;
-    public int scene;
-    public String source;
-    public int sourceType = 0;
-    public String url;
-  }
-  
-  public static final class b
-  {
-    public int ret = 0;
+    public int dqr;
+    public String extraInfo;
+    public int jumpType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.nw
  * JD-Core Version:    0.7.0.1
  */

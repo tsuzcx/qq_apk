@@ -10,56 +10,56 @@ public abstract class b
 {
   protected Context mContext;
   ArrayList<Object> mItems = new ArrayList();
-  int xUz;
+  int zhv;
   
   protected b(Context paramContext)
   {
     this.mContext = paramContext;
-    this.xUz = 3;
+    this.zhv = 3;
   }
   
-  public boolean NP(int paramInt)
+  public boolean PT(int paramInt)
   {
     return true;
   }
   
-  public boolean NQ(int paramInt)
+  public boolean PU(int paramInt)
   {
     return true;
   }
   
   public final void add(int paramInt, Object paramObject)
   {
-    dF(paramObject);
+    dG(paramObject);
     this.mItems.add(paramInt, paramObject);
     notifyDataSetChanged();
   }
   
   public final void add(Object paramObject)
   {
-    dF(paramObject);
+    dG(paramObject);
     this.mItems.add(paramObject);
     notifyDataSetChanged();
   }
   
   public void clear()
   {
-    this.xUy.clear();
+    this.zhu.clear();
     this.mItems.clear();
     notifyDataSetChanged();
   }
   
-  public void fM(List<?> paramList)
+  public void fU(List<?> paramList)
   {
     clear();
-    fL(paramList);
+    fT(paramList);
     this.mItems.addAll(paramList);
     notifyDataSetChanged();
   }
   
   public final int getColumnCount()
   {
-    return this.xUz;
+    return this.zhv;
   }
   
   protected final Context getContext()
@@ -77,7 +77,7 @@ public abstract class b
     return this.mItems.get(paramInt);
   }
   
-  public void hv(int paramInt1, int paramInt2)
+  public void hE(int paramInt1, int paramInt2)
   {
     if (paramInt2 < getCount())
     {
@@ -89,7 +89,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.b
  * JD-Core Version:    0.7.0.1
  */

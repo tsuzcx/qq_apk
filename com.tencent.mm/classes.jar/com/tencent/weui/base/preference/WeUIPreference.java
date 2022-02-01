@@ -28,7 +28,7 @@ import com.tencent.mm.ui.an;
 public abstract class WeUIPreference
   extends BaseActivity
 {
-  private b ILM;
+  private b Kye;
   protected ImageView bannerCloseBtn;
   protected TextView bannerTv;
   protected RelativeLayout bannerView;
@@ -48,13 +48,13 @@ public abstract class WeUIPreference
   {
     super.onCreate(paramBundle);
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
-    this.ILM = new b(this, this.sp);
+    this.Kye = new b(this, this.sp);
     this.list = ((ListView)findViewById(16908298));
     this.bannerView = ((RelativeLayout)findViewById(2131303382));
     this.bannerTv = ((TextView)findViewById(2131303381));
     this.bannerCloseBtn = ((ImageView)findViewById(2131303380));
-    paramBundle = this.ILM;
-    paramBundle.ILQ = new Preference.OnPreferenceChangeListener()
+    paramBundle = this.Kye;
+    paramBundle.Kyi = new Preference.OnPreferenceChangeListener()
     {
       public final boolean onPreferenceChange(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
@@ -66,7 +66,7 @@ public abstract class WeUIPreference
             break label162;
           }
           paramAnonymousObject = (CheckBoxPreference)paramAnonymousPreference;
-          paramAnonymousObject.lG = paramAnonymousObject.isChecked();
+          paramAnonymousObject.mF = paramAnonymousObject.isChecked();
           if (paramAnonymousObject.isPersistent()) {
             WeUIPreference.b(WeUIPreference.this).edit().putBoolean(paramAnonymousPreference.getKey(), paramAnonymousObject.isChecked()).commit();
           }
@@ -98,9 +98,9 @@ public abstract class WeUIPreference
     c localc;
     if (i != -1)
     {
-      localb = this.ILM;
-      localb.ILP = true;
-      localc = localb.ILO;
+      localb = this.Kye;
+      localb.Kyh = true;
+      localc = localb.Kyg;
       paramBundle = localc.mContext.getResources().getXml(i);
       if (paramBundle == null) {}
     }
@@ -108,9 +108,9 @@ public abstract class WeUIPreference
     {
       localc.a(paramBundle, localb);
       paramBundle.close();
-      localb.ILP = false;
+      localb.Kyh = false;
       localb.notifyDataSetChanged();
-      this.list.setAdapter(this.ILM);
+      this.list.setAdapter(this.Kye);
       this.list.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
@@ -187,7 +187,7 @@ public abstract class WeUIPreference
   
   public void onResume()
   {
-    this.ILM.notifyDataSetChanged();
+    this.Kye.notifyDataSetChanged();
     super.onResume();
   }
   

@@ -9,36 +9,38 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.af;
+import com.tencent.mm.al.af;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.i;
 import com.tencent.mm.plugin.brandservice.ui.base.BrandServiceSortView;
-import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.plugin.websearch.api.h;
+import com.tencent.mm.plugin.websearch.api.z;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.contact.u;
 import java.util.Map;
 
-@com.tencent.mm.kernel.i
+@i
 public class BrandServiceIndexUI
   extends MMActivity
   implements k.a
 {
-  private int cIB = 251658241;
-  private boolean lxH = false;
-  private TextView mUk = null;
-  private BrandServiceSortView mUl;
-  private boolean mUm = false;
+  private int cFI = 251658241;
+  private boolean lZB = false;
+  private TextView nwC = null;
+  private BrandServiceSortView nwD;
+  private boolean nwE = false;
   
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(5665);
-    ad.v("MicroMsg.BrandService.BrandServiceIndexUI", "On Storage Change, event : %s.", new Object[] { paramString });
-    this.lxH = true;
+    ac.v("MicroMsg.BrandService.BrandServiceIndexUI", "On Storage Change, event : %s.", new Object[] { paramString });
+    this.lZB = true;
     AppMethodBeat.o(5665);
   }
   
@@ -51,11 +53,11 @@ public class BrandServiceIndexUI
   {
     AppMethodBeat.i(5663);
     setMMTitle(2131755219);
-    this.mUl = ((BrandServiceSortView)findViewById(2131305113));
-    this.mUl.setShowFooterView(true);
-    this.mUl.setReturnResult(this.mUm);
-    this.mUk = ((TextView)findViewById(2131303112));
-    this.mUk.setOnClickListener(new View.OnClickListener()
+    this.nwD = ((BrandServiceSortView)findViewById(2131305113));
+    this.nwD.setShowFooterView(true);
+    this.nwD.setReturnResult(this.nwE);
+    this.nwC = ((TextView)findViewById(2131303112));
+    this.nwC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -63,7 +65,7 @@ public class BrandServiceIndexUI
         AppMethodBeat.o(5654);
       }
     });
-    this.mUk.setVisibility(8);
+    this.nwC.setVisibility(8);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -79,7 +81,7 @@ public class BrandServiceIndexUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(5656);
-        ad.v("MicroMsg.BrandService.BrandServiceIndexUI", "search btn was clicked.");
+        ac.v("MicroMsg.BrandService.BrandServiceIndexUI", "search btn was clicked.");
         paramAnonymousMenuItem = new Intent(BrandServiceIndexUI.this, BrandServiceLocalSearchUI.class);
         paramAnonymousMenuItem.putExtra("is_return_result", BrandServiceIndexUI.a(BrandServiceIndexUI.this));
         paramAnonymousMenuItem.addFlags(67108864);
@@ -93,25 +95,25 @@ public class BrandServiceIndexUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(5658);
-        if (aa.Sa(0)) {
-          ((com.tencent.mm.plugin.websearch.api.i)g.ab(com.tencent.mm.plugin.websearch.api.i.class)).a(aj.getContext(), new Runnable()
+        if (z.Uk(0)) {
+          ((h)g.ab(h.class)).a(ai.getContext(), new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(5657);
-              Intent localIntent = aa.ehS();
+              Intent localIntent = z.exm();
               localIntent.putExtra("KRightBtn", true);
               localIntent.putExtra("ftsneedkeyboard", true);
               localIntent.putExtra("key_load_js_without_delay", true);
               localIntent.putExtra("ftsType", 1);
               localIntent.putExtra("ftsbizscene", 6);
-              Map localMap = aa.f(6, true, 0);
-              String str = aa.RY(bt.aGh((String)localMap.get("scene")));
+              Map localMap = z.f(6, true, 0);
+              String str = z.Ui(bs.aLy((String)localMap.get("scene")));
               localMap.put("sessionId", str);
               localMap.put("subSessionId", str);
               localIntent.putExtra("sessionId", str);
-              localIntent.putExtra("rawUrl", aa.aR(localMap));
-              com.tencent.mm.bs.d.b(aj.getContext(), "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", localIntent);
+              localIntent.putExtra("rawUrl", z.aV(localMap));
+              com.tencent.mm.br.d.b(ai.getContext(), "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", localIntent);
               AppMethodBeat.o(5657);
             }
           });
@@ -121,7 +123,7 @@ public class BrandServiceIndexUI
           BrandServiceIndexUI.this.enableOptionMenu(1, false);
           AppMethodBeat.o(5658);
           return true;
-          ad.e("MicroMsg.BrandService.BrandServiceIndexUI", "fts h5 template not avail");
+          ac.e("MicroMsg.BrandService.BrandServiceIndexUI", "fts h5 template not avail");
         }
       }
     });
@@ -132,7 +134,7 @@ public class BrandServiceIndexUI
   {
     AppMethodBeat.i(5664);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == 1) && (paramInt2 == -1) && (this.mUm))
+    if ((paramInt1 == 1) && (paramInt2 == -1) && (this.nwE))
     {
       setResult(-1, paramIntent);
       finish();
@@ -144,20 +146,20 @@ public class BrandServiceIndexUI
   {
     AppMethodBeat.i(5659);
     super.onCreate(paramBundle);
-    this.cIB = getIntent().getIntExtra("intent_service_type", 251658241);
-    this.mUm = u.hasAttr(getIntent().getIntExtra("list_attr", 0), 16384);
+    this.cFI = getIntent().getIntExtra("intent_service_type", 251658241);
+    this.nwE = u.hasAttr(getIntent().getIntExtra("list_attr", 0), 16384);
     initView();
-    af.awe().add(this);
+    af.aCW().add(this);
     AppMethodBeat.o(5659);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(5662);
-    if (g.afw())
+    if (g.agM())
     {
-      this.mUl.release();
-      af.awe().remove(this);
+      this.nwD.release();
+      af.aCW().remove(this);
     }
     super.onDestroy();
     AppMethodBeat.o(5662);
@@ -166,12 +168,12 @@ public class BrandServiceIndexUI
   public void onPause()
   {
     AppMethodBeat.i(5661);
-    g.afC();
-    g.afB().afk().set(233474, Long.valueOf(System.currentTimeMillis()));
-    g.afC();
-    g.afB().afk().set(233473, Long.valueOf(System.currentTimeMillis()));
-    g.afC();
-    g.afB().afk().set(233476, Long.valueOf(System.currentTimeMillis()));
+    g.agS();
+    g.agR().agA().set(233474, Long.valueOf(System.currentTimeMillis()));
+    g.agS();
+    g.agR().agA().set(233473, Long.valueOf(System.currentTimeMillis()));
+    g.agS();
+    g.agR().agA().set(233476, Long.valueOf(System.currentTimeMillis()));
     super.onPause();
     AppMethodBeat.o(5661);
   }
@@ -179,13 +181,13 @@ public class BrandServiceIndexUI
   public void onResume()
   {
     AppMethodBeat.i(5660);
-    if (this.lxH)
+    if (this.lZB)
     {
-      this.lxH = false;
-      this.mUl.refresh();
+      this.lZB = false;
+      this.nwD.refresh();
     }
     super.onResume();
-    com.tencent.mm.cr.d.fkP();
+    com.tencent.mm.cq.d.fBf();
     enableOptionMenu(1, true);
     AppMethodBeat.o(5660);
   }

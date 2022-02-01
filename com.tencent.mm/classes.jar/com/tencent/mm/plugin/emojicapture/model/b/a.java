@@ -15,32 +15,32 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "Lcom/tencent/mm/media/mix/FrameRetriever;", "preViewRect", "Landroid/graphics/RectF;", "(Landroid/graphics/RectF;)V", "bitmap", "Landroid/graphics/Bitmap;", "canvas", "Landroid/graphics/Canvas;", "currFrameTime", "", "drawer", "Lcom/tencent/mm/media/mix/EditorFrameDrawer;", "editorItems", "", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "getEditorItems", "()Ljava/util/List;", "setEditorItems", "(Ljava/util/List;)V", "height", "", "paint", "Landroid/graphics/Paint;", "preViewMatrix", "Landroid/graphics/Matrix;", "width", "addItem", "", "item", "requestNextFrame", "Lcom/tencent/mm/media/mix/FrameInfo;", "start", "stop", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "Lcom/tencent/mm/media/mix/FrameRetriever;", "preViewRect", "Landroid/graphics/RectF;", "(Landroid/graphics/RectF;)V", "bitmap", "Landroid/graphics/Bitmap;", "canvas", "Landroid/graphics/Canvas;", "currFrameTime", "", "drawer", "Lcom/tencent/mm/media/mix/EditorFrameDrawer;", "editorItems", "", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "getEditorItems", "()Ljava/util/List;", "setEditorItems", "(Ljava/util/List;)V", "height", "", "paint", "Landroid/graphics/Paint;", "preViewMatrix", "Landroid/graphics/Matrix;", "width", "addItem", "", "item", "requestNextFrame", "Lcom/tencent/mm/media/mix/FrameInfo;", "start", "stop", "plugin-emojicapture_release"})
 public final class a
   implements com.tencent.mm.media.g.d
 {
   private final Bitmap bitmap;
-  private final Canvas btq;
-  private long goC;
-  List<com.tencent.mm.media.editor.a.b> grO;
+  private final Canvas brp;
+  private long gPk;
+  List<com.tencent.mm.media.editor.a.b> gSw;
   private int height;
-  private final Matrix oLb;
-  private final com.tencent.mm.media.g.b oLc;
   private final Paint paint;
+  private final Matrix pov;
+  private final com.tencent.mm.media.g.b pow;
   private int width;
   
   public a(RectF paramRectF)
   {
     AppMethodBeat.i(262);
-    Object localObject = com.tencent.mm.plugin.emojicapture.model.d.oJY;
-    this.width = com.tencent.mm.plugin.emojicapture.model.d.bXy();
-    localObject = com.tencent.mm.plugin.emojicapture.model.d.oJY;
-    this.height = com.tencent.mm.plugin.emojicapture.model.d.bXy();
-    this.grO = ((List)new ArrayList());
-    this.oLb = new Matrix();
+    Object localObject = com.tencent.mm.plugin.emojicapture.model.d.pnw;
+    this.width = com.tencent.mm.plugin.emojicapture.model.d.ceL();
+    localObject = com.tencent.mm.plugin.emojicapture.model.d.pnw;
+    this.height = com.tencent.mm.plugin.emojicapture.model.d.ceL();
+    this.gSw = ((List)new ArrayList());
+    this.pov = new Matrix();
     this.paint = new Paint();
-    this.oLc = new com.tencent.mm.media.g.b(this.grO);
-    localObject = this.oLb;
+    this.pow = new com.tencent.mm.media.g.b(this.gSw);
+    localObject = this.pov;
     float f1 = paramRectF.left;
     float f2 = paramRectF.top;
     float f3 = paramRectF.right;
@@ -53,7 +53,7 @@ public final class a
     paramRectF = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
     k.g(paramRectF, "Bitmap.createBitmap(widt… Bitmap.Config.ARGB_8888)");
     this.bitmap = paramRectF;
-    this.btq = new Canvas(this.bitmap);
+    this.brp = new Canvas(this.bitmap);
     AppMethodBeat.o(262);
   }
   
@@ -61,25 +61,25 @@ public final class a
   {
     AppMethodBeat.i(261);
     if (paramb != null) {
-      this.grO.add(paramb);
+      this.gSw.add(paramb);
     }
     AppMethodBeat.o(261);
   }
   
-  public final c aka()
+  public final c aqZ()
   {
     AppMethodBeat.i(259);
-    if (this.grO.size() <= 0)
+    if (this.gSw.size() <= 0)
     {
       AppMethodBeat.o(259);
       return null;
     }
-    int i = this.btq.save();
-    this.btq.drawColor(0, PorterDuff.Mode.MULTIPLY);
-    this.btq.concat(this.oLb);
-    this.goC = this.oLc.a(this.btq, this.paint);
-    this.btq.restoreToCount(i);
-    c localc = new c(this.bitmap, this.goC);
+    int i = this.brp.save();
+    this.brp.drawColor(0, PorterDuff.Mode.MULTIPLY);
+    this.brp.concat(this.pov);
+    this.gPk = this.pow.a(this.brp, this.paint);
+    this.brp.restoreToCount(i);
+    c localc = new c(this.bitmap, this.gPk);
     AppMethodBeat.o(259);
     return localc;
   }
@@ -87,7 +87,7 @@ public final class a
   public final void stop()
   {
     AppMethodBeat.i(260);
-    Iterator localIterator = this.grO.iterator();
+    Iterator localIterator = this.gSw.iterator();
     while (localIterator.hasNext()) {
       ((com.tencent.mm.media.editor.a.b)localIterator.next()).destroy();
     }
@@ -96,7 +96,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b.a
  * JD-Core Version:    0.7.0.1
  */

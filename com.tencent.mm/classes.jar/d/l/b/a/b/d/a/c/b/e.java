@@ -27,16 +27,16 @@ import java.util.List;
 public final class e
   extends ay
 {
-  private static final a JCr;
-  private static final a JCs;
-  public static final e JCt;
+  private static final a LpK;
+  private static final a LpL;
+  public static final e LpM;
   
   static
   {
     AppMethodBeat.i(57988);
-    JCt = new e();
-    JCr = d.a(d.l.b.a.b.d.a.a.l.Jzs, false, null, 3).a(b.JCf);
-    JCs = d.a(d.l.b.a.b.d.a.a.l.Jzs, false, null, 3).a(b.JCe);
+    LpM = new e();
+    LpK = d.a(d.l.b.a.b.d.a.a.l.LmL, false, null, 3).a(b.Lpy);
+    LpL = d.a(d.l.b.a.b.d.a.a.l.LmL, false, null, 3).a(b.Lpx);
     AppMethodBeat.o(57988);
   }
   
@@ -46,7 +46,7 @@ public final class e
     Object localObject1;
     for (;;)
     {
-      localObject1 = paramab.fIW().fxM();
+      localObject1 = paramab.gbz().fQq();
       if (!(localObject1 instanceof as)) {
         break;
       }
@@ -54,17 +54,17 @@ public final class e
     }
     if ((localObject1 instanceof d.l.b.a.b.b.e))
     {
-      Object localObject2 = y.ap(paramab).fIW().fxM();
+      Object localObject2 = y.ap(paramab).gbz().fQq();
       if (!(localObject2 instanceof d.l.b.a.b.b.e))
       {
         paramab = (Throwable)new IllegalStateException(("For some reason declaration for upper bound is not a class but \"" + localObject2 + "\" while for lower it's \"" + localObject1 + '"').toString());
         AppMethodBeat.o(57985);
         throw paramab;
       }
-      o localo = a(y.ao(paramab), (d.l.b.a.b.b.e)localObject1, JCr);
+      o localo = a(y.ao(paramab), (d.l.b.a.b.b.e)localObject1, LpK);
       localObject1 = (aj)localo.first;
       boolean bool1 = ((Boolean)localo.second).booleanValue();
-      paramab = a(y.ap(paramab), (d.l.b.a.b.b.e)localObject2, JCs);
+      paramab = a(y.ap(paramab), (d.l.b.a.b.b.e)localObject2, LpL);
       localObject2 = (aj)paramab.first;
       boolean bool2 = ((Boolean)paramab.second).booleanValue();
       if ((bool1) || (bool2)) {}
@@ -86,30 +86,30 @@ public final class e
     k.h(paramas, "parameter");
     k.h(parama, "attr");
     k.h(paramab, "erasedUpperBound");
-    Object localObject = parama.JCa;
-    switch (f.ciE[localObject.ordinal()])
+    Object localObject = parama.Lpt;
+    switch (f.cfA[localObject.ordinal()])
     {
     default: 
       paramas = new m();
       AppMethodBeat.o(57987);
       throw paramas;
     case 1: 
-      paramas = (av)new ax(bh.JYC, paramab);
+      paramas = (av)new ax(bh.LLV, paramab);
       AppMethodBeat.o(57987);
       return paramas;
     }
-    if (!paramas.fyC().JYH)
+    if (!paramas.fRg().LMa)
     {
-      paramas = (av)new ax(bh.JYC, (ab)d.l.b.a.b.j.d.a.G((d.l.b.a.b.b.l)paramas).fxa());
+      paramas = (av)new ax(bh.LLV, (ab)d.l.b.a.b.j.d.a.G((d.l.b.a.b.b.l)paramas).fPE());
       AppMethodBeat.o(57987);
       return paramas;
     }
-    localObject = paramab.fIW().getParameters();
+    localObject = paramab.gbz().getParameters();
     k.g(localObject, "erasedUpperBound.constructor.parameters");
     if (!((Collection)localObject).isEmpty()) {}
     for (int i = 1; i != 0; i = 0)
     {
-      paramas = (av)new ax(bh.JYE, paramab);
+      paramas = (av)new ax(bh.LLX, paramab);
       AppMethodBeat.o(57987);
       return paramas;
     }
@@ -121,35 +121,35 @@ public final class e
   private final o<aj, Boolean> a(final aj paramaj, d.l.b.a.b.b.e parame, final a parama)
   {
     AppMethodBeat.i(57986);
-    if (paramaj.fIW().getParameters().isEmpty())
+    if (paramaj.gbz().getParameters().isEmpty())
     {
-      paramaj = d.u.P(paramaj, Boolean.FALSE);
+      paramaj = d.u.Q(paramaj, Boolean.FALSE);
       AppMethodBeat.o(57986);
       return paramaj;
     }
     if (d.l.b.a.b.a.g.m((ab)paramaj))
     {
-      parama = (av)paramaj.fIT().get(0);
-      parame = parama.fJZ();
-      parama = parama.fzr();
+      parama = (av)paramaj.gbw().get(0);
+      parame = parama.gcC();
+      parama = parama.fRV();
       k.g(parama, "componentTypeProjection.type");
       parame = j.listOf(new ax(parame, P(parama)));
-      paramaj = d.u.P(ac.c(paramaj.fxF(), paramaj.fIW(), parame, paramaj.fBT()), Boolean.FALSE);
+      paramaj = d.u.Q(ac.c(paramaj.fQj(), paramaj.gbz(), parame, paramaj.fUx()), Boolean.FALSE);
       AppMethodBeat.o(57986);
       return paramaj;
     }
     if (ad.aq((ab)paramaj))
     {
-      paramaj = d.u.P(d.l.b.a.b.m.u.aQS("Raw error type: " + paramaj.fIW()), Boolean.FALSE);
+      paramaj = d.u.Q(d.l.b.a.b.m.u.aWR("Raw error type: " + paramaj.gbz()), Boolean.FALSE);
       AppMethodBeat.o(57986);
       return paramaj;
     }
-    h localh = parame.a((ay)JCt);
+    h localh = parame.a((ay)LpM);
     k.g(localh, "declaration.getMemberScope(RawSubstitution)");
-    d.l.b.a.b.b.a.g localg = paramaj.fxF();
-    at localat = parame.fxs();
+    d.l.b.a.b.b.a.g localg = paramaj.fQj();
+    at localat = parame.fPW();
     k.g(localat, "declaration.typeConstructor");
-    Object localObject1 = parame.fxs();
+    Object localObject1 = parame.fPW();
     k.g(localObject1, "declaration.typeConstructor");
     localObject1 = ((at)localObject1).getParameters();
     k.g(localObject1, "declaration.typeConstructor.parameters");
@@ -162,7 +162,7 @@ public final class e
       k.g(localas, "parameter");
       ((Collection)localObject1).add(a(localas, parama, d.b(localas)));
     }
-    paramaj = d.u.P(ac.a(localg, localat, (List)localObject1, paramaj.fBT(), localh, (d.g.a.b)new a(parame, paramaj, parama)), Boolean.TRUE);
+    paramaj = d.u.Q(ac.a(localg, localat, (List)localObject1, paramaj.fUx(), localh, (d.g.a.b)new a(parame, paramaj, parama)), Boolean.TRUE);
     AppMethodBeat.o(57986);
     return paramaj;
   }
@@ -184,7 +184,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.b.e
  * JD-Core Version:    0.7.0.1
  */

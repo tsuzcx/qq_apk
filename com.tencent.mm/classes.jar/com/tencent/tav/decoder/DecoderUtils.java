@@ -88,7 +88,7 @@ public class DecoderUtils
   
   public static long getDuration(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(201738);
+    AppMethodBeat.i(197799);
     try
     {
       j = paramAssetExtractor.getTrackCount();
@@ -101,7 +101,7 @@ public class DecoderUtils
       int j;
       MediaFormat localMediaFormat;
       String str;
-      AppMethodBeat.o(201738);
+      AppMethodBeat.o(197799);
       return 0L;
     }
     catch (Error paramAssetExtractor)
@@ -151,10 +151,10 @@ public class DecoderUtils
     {
       if (l1 > 0L)
       {
-        AppMethodBeat.o(201738);
+        AppMethodBeat.o(197799);
         return l1;
       }
-      AppMethodBeat.o(201738);
+      AppMethodBeat.o(197799);
       return l2;
     }
   }
@@ -320,21 +320,21 @@ public class DecoderUtils
   
   public static ByteBuffer getInputBuffer(MediaCodec paramMediaCodec, int paramInt)
   {
-    AppMethodBeat.i(201746);
+    AppMethodBeat.i(197807);
     if (Build.VERSION.SDK_INT < 21)
     {
       paramMediaCodec = paramMediaCodec.getInputBuffers()[paramInt];
-      AppMethodBeat.o(201746);
+      AppMethodBeat.o(197807);
       return paramMediaCodec;
     }
     paramMediaCodec = paramMediaCodec.getInputBuffer(paramInt);
-    AppMethodBeat.o(201746);
+    AppMethodBeat.o(197807);
     return paramMediaCodec;
   }
   
   public static Rectangle getMatrixAndCropRect(CGSize paramCGSize, int paramInt, float paramFloat1, float paramFloat2, Point paramPoint, Matrix paramMatrix)
   {
-    AppMethodBeat.i(201741);
+    AppMethodBeat.i(197802);
     while (paramInt < 0) {
       paramInt += 4;
     }
@@ -399,7 +399,7 @@ public class DecoderUtils
     }
     for (paramCGSize = paramPoint;; paramCGSize = null)
     {
-      AppMethodBeat.o(201741);
+      AppMethodBeat.o(197802);
       return paramCGSize;
       localCGSize.width = paramCGSize.width;
       localCGSize.height = paramCGSize.height;
@@ -417,21 +417,21 @@ public class DecoderUtils
   
   public static ByteBuffer getOutputBuffer(MediaCodec paramMediaCodec, int paramInt)
   {
-    AppMethodBeat.i(201745);
+    AppMethodBeat.i(197806);
     if (Build.VERSION.SDK_INT < 21)
     {
       paramMediaCodec = paramMediaCodec.getOutputBuffers()[paramInt];
-      AppMethodBeat.o(201745);
+      AppMethodBeat.o(197806);
       return paramMediaCodec;
     }
     paramMediaCodec = paramMediaCodec.getOutputBuffer(paramInt);
-    AppMethodBeat.o(201745);
+    AppMethodBeat.o(197806);
     return paramMediaCodec;
   }
   
   public static void getRotationMatrix(Matrix paramMatrix, int paramInt, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(201743);
+    AppMethodBeat.i(197804);
     int i = paramInt % 4;
     paramInt = i;
     if (i < 0) {
@@ -454,7 +454,7 @@ public class DecoderUtils
     for (;;)
     {
       paramMatrix.setValues(new float[] { f4, f2, paramFloat2, f3, f1, paramFloat1, 0.0F, 0.0F, 1.0F });
-      AppMethodBeat.o(201743);
+      AppMethodBeat.o(197804);
       return;
       paramFloat1 = 0.0F;
       f1 = 0.0F;
@@ -481,7 +481,7 @@ public class DecoderUtils
   
   public static CGSize getTransformedSize(CGSize paramCGSize, int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(201742);
+    AppMethodBeat.i(197803);
     paramCGSize = paramCGSize.clone();
     if (Math.abs(paramInt) % 2 == 1)
     {
@@ -498,7 +498,7 @@ public class DecoderUtils
     }
     for (;;)
     {
-      AppMethodBeat.o(201742);
+      AppMethodBeat.o(197803);
       return paramCGSize;
       label83:
       paramCGSize.height = ((int)Math.ceil(paramCGSize.width * 1.0F / paramFloat));
@@ -514,7 +514,7 @@ public class DecoderUtils
   
   public static float[] toOpenGL2DMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(201744);
+    AppMethodBeat.i(197805);
     float[] arrayOfFloat = new float[9];
     if (paramMatrix == null)
     {
@@ -537,13 +537,13 @@ public class DecoderUtils
       swap(arrayOfFloat, 2, 6);
       swap(arrayOfFloat, 5, 7);
     }
-    AppMethodBeat.o(201744);
+    AppMethodBeat.o(197805);
     return arrayOfFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.DecoderUtils
  * JD-Core Version:    0.7.0.1
  */

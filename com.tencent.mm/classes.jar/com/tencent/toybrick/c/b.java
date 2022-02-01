@@ -8,28 +8,28 @@ import com.tencent.toybrick.f.a;
 public final class b
   extends g<b, a>
 {
-  public static final int IGe = 2131494435;
+  public static final int Ksp = 2131494435;
   
-  public final g.b fpi()
+  public final g.b fHq()
   {
-    return g.b.IGV;
+    return g.b.Ktg;
   }
   
   public final int getLayoutResource()
   {
-    return IGe;
+    return Ksp;
   }
   
   public final class a
     extends a
   {
-    TextView IGp;
+    TextView KsA;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(159936);
-      this.IGp = ((TextView)paramView.findViewById(16908310));
+      this.KsA = ((TextView)paramView.findViewById(16908310));
       AppMethodBeat.o(159936);
     }
   }

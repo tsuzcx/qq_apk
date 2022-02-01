@@ -7,18 +7,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import org.json.JSONObject;
 
 public class JsApiMMTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<JsApiMMTask> CREATOR;
-  public a.a AUT;
-  public String AUU;
-  public String AUV;
+  public a.a Cng;
+  public String Cnh;
+  public String Cni;
   public String errMsg;
-  public String jBX;
+  public String kct;
   
   static
   {
@@ -36,39 +37,19 @@ public class JsApiMMTask
     AppMethodBeat.o(78501);
   }
   
-  public final void aEA()
-  {
-    AppMethodBeat.i(78498);
-    aXn();
-    if (this.AUT != null) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(this.AUV);
-        this.AUT.a(this.errMsg, localJSONObject);
-        AppMethodBeat.o(78498);
-        return;
-      }
-      catch (Exception localException)
-      {
-        this.AUT.a(this.errMsg, null);
-      }
-    }
-    AppMethodBeat.o(78498);
-  }
-  
-  public final void aEz()
+  public final void aLq()
   {
     AppMethodBeat.i(78497);
     try
     {
-      ((bn)Class.forName(this.AUU).newInstance()).a(aj.getContext(), this.jBX, new bn.a()
+      ((bn)Class.forName(this.Cnh).newInstance()).a(ai.getContext(), this.kct, new bn.a()
       {
         public final void f(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
           AppMethodBeat.i(78495);
           JsApiMMTask.this.errMsg = paramAnonymousString;
           if (paramAnonymousJSONObject != null) {
-            JsApiMMTask.this.AUV = paramAnonymousJSONObject.toString();
+            JsApiMMTask.this.Cni = paramAnonymousJSONObject.toString();
           }
           JsApiMMTask.a(JsApiMMTask.this);
           AppMethodBeat.o(78495);
@@ -79,27 +60,49 @@ public class JsApiMMTask
     }
     catch (Exception localException)
     {
+      ac.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInMainProcess fail.", new Object[0]);
       AppMethodBeat.o(78497);
     }
+  }
+  
+  public final void aLr()
+  {
+    AppMethodBeat.i(78498);
+    bek();
+    if (this.Cng != null) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(this.Cni);
+        this.Cng.a(this.errMsg, localJSONObject);
+        AppMethodBeat.o(78498);
+        return;
+      }
+      catch (Exception localException)
+      {
+        this.Cng.a(this.errMsg, null);
+        ac.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInClientProcess fail.", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(78498);
   }
   
   public final void e(Parcel paramParcel)
   {
     AppMethodBeat.i(78499);
-    this.jBX = paramParcel.readString();
-    this.AUU = paramParcel.readString();
+    this.kct = paramParcel.readString();
+    this.Cnh = paramParcel.readString();
     this.errMsg = paramParcel.readString();
-    this.AUV = paramParcel.readString();
+    this.Cni = paramParcel.readString();
     AppMethodBeat.o(78499);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(78500);
-    paramParcel.writeString(this.jBX);
-    paramParcel.writeString(this.AUU);
+    paramParcel.writeString(this.kct);
+    paramParcel.writeString(this.Cnh);
     paramParcel.writeString(this.errMsg);
-    paramParcel.writeString(this.AUV);
+    paramParcel.writeString(this.Cni);
     AppMethodBeat.o(78500);
   }
 }

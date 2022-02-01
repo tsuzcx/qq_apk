@@ -5,36 +5,36 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.d.b;
+import com.tencent.mm.plugin.recordvideo.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
 import com.tencent.mm.ui.am;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/ImageView;", "setView", "(Landroid/widget/ImageView;)V", "name", "", "onClick", "", "v", "Landroid/view/View;", "setVisibility", "visibility", "", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/ImageView;", "setView", "(Landroid/widget/ImageView;)V", "name", "", "onClick", "", "v", "Landroid/view/View;", "setVisibility", "visibility", "", "plugin-recordvideo_release"})
 public final class e
   implements View.OnClickListener, t
 {
-  private ImageView qkg;
-  private d vjo;
+  private ImageView qSI;
+  private d rTT;
   
   public e(ImageView paramImageView, d paramd)
   {
     AppMethodBeat.i(75485);
-    this.qkg = paramImageView;
-    this.vjo = paramd;
-    this.qkg.setImageDrawable(am.i(this.qkg.getContext(), 2131690463, -1));
-    this.qkg.setOnClickListener((View.OnClickListener)this);
+    this.qSI = paramImageView;
+    this.rTT = paramd;
+    this.qSI.setImageDrawable(am.k(this.qSI.getContext(), 2131690463, -1));
+    this.qSI.setOnClickListener((View.OnClickListener)this);
     AppMethodBeat.o(75485);
   }
   
-  public final void apt() {}
-  
-  public final boolean dia()
+  public final boolean alO()
   {
     return false;
   }
+  
+  public final void awk() {}
   
   public final String name()
   {
@@ -46,11 +46,11 @@ public final class e
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(75483);
-    d.b.a(this.vjo, d.c.vnF);
-    paramView = b.vpp;
-    b.Ko(11);
-    paramView = b.vpp;
-    b.Kp(12);
+    d.b.a(this.rTT, d.c.wwl);
+    paramView = c.wyg;
+    c.Mn(11);
+    paramView = c.wyg;
+    c.Mo(12);
     AppMethodBeat.o(75483);
   }
   
@@ -67,13 +67,13 @@ public final class e
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75484);
-    this.qkg.setVisibility(paramInt);
+    this.qSI.setVisibility(paramInt);
     AppMethodBeat.o(75484);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.e
  * JD-Core Version:    0.7.0.1
  */

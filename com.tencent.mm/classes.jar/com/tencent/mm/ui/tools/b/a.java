@@ -2,9 +2,9 @@ package com.tencent.mm.ui.tools.b;
 
 public abstract class a
 {
-  protected abstract int aVG();
+  protected abstract int bcE();
   
-  protected abstract void cAQ();
+  protected abstract void cNZ();
 }
 
 

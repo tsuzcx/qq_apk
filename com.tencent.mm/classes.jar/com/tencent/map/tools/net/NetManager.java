@@ -3,6 +3,7 @@ package com.tencent.map.tools.net;
 import android.content.Context;
 import com.tencent.map.tools.net.http.HttpCanceler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.File;
 import java.util.HashMap;
 
 public class NetManager
@@ -123,6 +124,7 @@ public class NetManager
   
   public class NetRequestBuilder
   {
+    private File mCacheFile;
     private HttpCanceler mCanceler;
     private HashMap<String, String> mHeaders;
     private String mNonce;
@@ -146,9 +148,85 @@ public class NetManager
       AppMethodBeat.o(180920);
     }
     
+    /* Error */
     private NetResponse onRequestFinish(NetResponse paramNetResponse)
     {
-      return paramNetResponse;
+      // Byte code:
+      //   0: ldc 69
+      //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: aload_1
+      //   6: astore_2
+      //   7: aload_1
+      //   8: ifnull +83 -> 91
+      //   11: aload_1
+      //   12: astore_2
+      //   13: aload_0
+      //   14: getfield 71	com/tencent/map/tools/net/NetManager$NetRequestBuilder:mCacheFile	Ljava/io/File;
+      //   17: ifnull +74 -> 91
+      //   20: aconst_null
+      //   21: astore_2
+      //   22: aload_0
+      //   23: getfield 71	com/tencent/map/tools/net/NetManager$NetRequestBuilder:mCacheFile	Ljava/io/File;
+      //   26: invokevirtual 77	java/io/File:isFile	()Z
+      //   29: ifeq +40 -> 69
+      //   32: aload_0
+      //   33: getfield 71	com/tencent/map/tools/net/NetManager$NetRequestBuilder:mCacheFile	Ljava/io/File;
+      //   36: invokevirtual 80	java/io/File:exists	()Z
+      //   39: ifeq +11 -> 50
+      //   42: aload_0
+      //   43: getfield 71	com/tencent/map/tools/net/NetManager$NetRequestBuilder:mCacheFile	Ljava/io/File;
+      //   46: invokevirtual 83	java/io/File:delete	()Z
+      //   49: pop
+      //   50: aload_0
+      //   51: getfield 71	com/tencent/map/tools/net/NetManager$NetRequestBuilder:mCacheFile	Ljava/io/File;
+      //   54: invokevirtual 87	java/io/File:getParentFile	()Ljava/io/File;
+      //   57: invokevirtual 90	java/io/File:mkdirs	()Z
+      //   60: pop
+      //   61: aload_0
+      //   62: getfield 71	com/tencent/map/tools/net/NetManager$NetRequestBuilder:mCacheFile	Ljava/io/File;
+      //   65: invokevirtual 93	java/io/File:createNewFile	()Z
+      //   68: pop
+      //   69: new 95	java/io/FileOutputStream
+      //   72: dup
+      //   73: aload_0
+      //   74: getfield 71	com/tencent/map/tools/net/NetManager$NetRequestBuilder:mCacheFile	Ljava/io/File;
+      //   77: invokespecial 98	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+      //   80: astore_3
+      //   81: aload_1
+      //   82: getfield 103	com/tencent/map/tools/net/NetResponse:data	[B
+      //   85: aload_3
+      //   86: invokestatic 109	com/tencent/map/tools/net/NetUtil:writeBytesWithoutClose	([BLjava/io/OutputStream;)V
+      //   89: aload_1
+      //   90: astore_2
+      //   91: ldc 69
+      //   93: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   96: aload_2
+      //   97: areturn
+      //   98: astore_1
+      //   99: aload_2
+      //   100: invokestatic 113	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+      //   103: new 100	com/tencent/map/tools/net/NetResponse
+      //   106: dup
+      //   107: aload_1
+      //   108: invokespecial 116	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
+      //   111: astore_2
+      //   112: goto -21 -> 91
+      //   115: astore_1
+      //   116: aload_3
+      //   117: astore_2
+      //   118: goto -19 -> 99
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	121	0	this	NetRequestBuilder
+      //   0	121	1	paramNetResponse	NetResponse
+      //   6	112	2	localObject	Object
+      //   80	37	3	localFileOutputStream	java.io.FileOutputStream
+      // Exception table:
+      //   from	to	target	type
+      //   22	50	98	java/lang/Exception
+      //   50	69	98	java/lang/Exception
+      //   69	81	98	java/lang/Exception
+      //   81	89	115	java/lang/Exception
     }
     
     private void onRequestStart(String paramString, NetRequestBuilder paramNetRequestBuilder) {}
@@ -192,6 +270,21 @@ public class NetManager
       onRequestStart("doRangePost", this);
       NetManager.this.doRangePost(this.mUrl, this.mPostData, this.mToken, this.mNonce, this.mTimestamp, this.mStartTag, this.mCanceler);
       AppMethodBeat.o(172912);
+    }
+    
+    public NetResponse downloadTo(File paramFile)
+    {
+      AppMethodBeat.i(191287);
+      onRequestStart("downloadTo[" + paramFile + "]", this);
+      paramFile = file(paramFile).doGet();
+      AppMethodBeat.o(191287);
+      return paramFile;
+    }
+    
+    public NetRequestBuilder file(File paramFile)
+    {
+      this.mCacheFile = paramFile;
+      return this;
     }
     
     public NetRequestBuilder header(HashMap<String, String> paramHashMap)
@@ -297,7 +390,7 @@ public class NetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.net.NetManager
  * JD-Core Version:    0.7.0.1
  */

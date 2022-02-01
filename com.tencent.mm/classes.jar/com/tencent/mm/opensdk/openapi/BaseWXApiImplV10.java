@@ -792,9 +792,9 @@ class BaseWXApiImplV10
     {
       localObject1 = this.context;
       Object localObject2 = this.context.getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
-      localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/mm/opensdk/openapi/BaseWXApiImplV10", "openWXApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+      localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
+      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/opensdk/openapi/BaseWXApiImplV10", "openWXApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/opensdk/openapi/BaseWXApiImplV10", "openWXApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(3798);
       return true;

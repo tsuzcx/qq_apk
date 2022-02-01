@@ -6,7 +6,7 @@ import com.tencent.pb.common.c.b;
 
 public final class j
 {
-  public static boolean aOD(String paramString)
+  public static boolean aUp(String paramString)
   {
     AppMethodBeat.i(62717);
     if (TextUtils.isEmpty(paramString))
@@ -19,12 +19,12 @@ public final class j
     return bool;
   }
   
-  public static int fqm()
+  public static int fIH()
   {
     AppMethodBeat.i(62718);
     try
     {
-      int i = a.fpu().sHe;
+      int i = a.fHP().tOL;
       AppMethodBeat.o(62718);
       return i;
     }
@@ -36,12 +36,12 @@ public final class j
     return 0;
   }
   
-  public static long fqn()
+  public static long fII()
   {
     AppMethodBeat.i(62719);
     try
     {
-      long l = a.fpu().ztl;
+      long l = a.fHP().AMc;
       AppMethodBeat.o(62719);
       return l;
     }

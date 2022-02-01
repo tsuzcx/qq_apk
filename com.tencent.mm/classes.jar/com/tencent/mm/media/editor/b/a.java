@@ -7,11 +7,11 @@ import d.g.a.b;
 import d.l;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/editor/panel/EditorEmojiPanel;", "Lcom/tencent/mm/emoji/view/EmojiPanelBottomSheet;", "Lcom/tencent/mm/media/editor/panel/IEditorPanel;", "context", "Landroid/content/Context;", "parent", "Landroid/view/ViewGroup;", "darkMode", "", "(Landroid/content/Context;Landroid/view/ViewGroup;Z)V", "visibleCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "visible", "", "dismiss", "setOnVisibleChangeCallback", "callback", "setShow", "show", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/editor/panel/EditorEmojiPanel;", "Lcom/tencent/mm/emoji/view/EmojiPanelBottomSheet;", "Lcom/tencent/mm/media/editor/panel/IEditorPanel;", "context", "Landroid/content/Context;", "parent", "Landroid/view/ViewGroup;", "darkMode", "", "(Landroid/content/Context;Landroid/view/ViewGroup;Z)V", "visibleCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "visible", "", "dismiss", "setOnVisibleChangeCallback", "callback", "setShow", "show", "plugin-mediaeditor_release"})
 public final class a
   extends com.tencent.mm.emoji.view.a
 {
-  public b<? super Boolean, y> gpp;
+  public b<? super Boolean, y> gPX;
   
   public a(Context paramContext, ViewGroup paramViewGroup)
   {
@@ -24,10 +24,10 @@ public final class a
   {
     AppMethodBeat.i(93589);
     super.dismiss();
-    b localb = this.gpp;
+    b localb = this.gPX;
     if (localb != null)
     {
-      localb.aA(Boolean.FALSE);
+      localb.ay(Boolean.FALSE);
       AppMethodBeat.o(93589);
       return;
     }
@@ -51,10 +51,10 @@ public final class a
   {
     AppMethodBeat.i(93588);
     super.show();
-    b localb = this.gpp;
+    b localb = this.gPX;
     if (localb != null)
     {
-      localb.aA(Boolean.TRUE);
+      localb.ay(Boolean.TRUE);
       AppMethodBeat.o(93588);
       return;
     }

@@ -3,8 +3,8 @@ package com.tencent.mm.ui.tools.b;
 import android.text.InputFilter;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.tools.f;
 import com.tencent.mm.ui.tools.f.a;
 import java.lang.ref.WeakReference;
@@ -13,27 +13,27 @@ import java.util.ArrayList;
 public class c
   extends a
 {
-  public boolean HuM = true;
-  public WeakReference<EditText> HuN;
-  private int HuO;
-  private int HuP;
-  private ArrayList<InputFilter> HuQ;
-  public a HuR;
+  public boolean IVj = true;
+  public WeakReference<EditText> IVk;
+  private int IVl;
+  private int IVm;
+  private ArrayList<InputFilter> IVn;
+  public a IVo;
+  public f.a mEd;
   private String mText;
-  public f.a mcf;
   
   public c(String paramString)
   {
     this.mText = paramString;
-    this.mcf = f.a.Hrm;
-    this.HuM = false;
+    this.mEd = f.a.IRJ;
+    this.IVj = false;
   }
   
   public c(WeakReference<EditText> paramWeakReference)
   {
-    this.HuN = paramWeakReference;
-    this.mcf = f.a.Hrm;
-    this.HuM = false;
+    this.IVk = paramWeakReference;
+    this.mEd = f.a.IRJ;
+    this.IVj = false;
   }
   
   public static c d(EditText paramEditText)
@@ -46,7 +46,7 @@ public class c
   
   public final c a(f.a parama)
   {
-    this.mcf = parama;
+    this.mEd = parama;
     return this;
   }
   
@@ -61,37 +61,44 @@ public class c
   public final void a(a parama)
   {
     AppMethodBeat.i(133842);
-    this.HuR = parama;
-    cAQ();
+    this.IVo = parama;
+    cNZ();
     AppMethodBeat.o(133842);
   }
   
-  protected final int aVG()
+  public final c acw(int paramInt)
+  {
+    this.IVm = 0;
+    this.IVl = paramInt;
+    return this;
+  }
+  
+  protected final int bcE()
   {
     AppMethodBeat.i(133843);
-    if (bt.isNullOrNil(this.mText))
+    if (bs.isNullOrNil(this.mText))
     {
-      if (this.HuN == null)
+      if (this.IVk == null)
       {
         AppMethodBeat.o(133843);
         return 1;
       }
-      this.mText = ((EditText)this.HuN.get()).getText().toString().trim();
+      this.mText = ((EditText)this.IVk.get()).getText().toString().trim();
     }
-    int j = f.a(this.mText, this.mcf);
+    int j = f.a(this.mText, this.mEd);
     if (j < 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ad.w("MicroMsg.InputTextBoundaryCheck", "you are crazy =.=!that is 2 GB character!");
+      ac.w("MicroMsg.InputTextBoundaryCheck", "you are crazy =.=!that is 2 GB character!");
       AppMethodBeat.o(133843);
       return 2;
     }
-    if (j < this.HuP)
+    if (j < this.IVm)
     {
       AppMethodBeat.o(133843);
       return 1;
     }
-    if (j > this.HuO)
+    if (j > this.IVl)
     {
       AppMethodBeat.o(133843);
       return 2;
@@ -100,34 +107,27 @@ public class c
     return 0;
   }
   
-  public final c aaj(int paramInt)
-  {
-    this.HuP = 0;
-    this.HuO = paramInt;
-    return this;
-  }
-  
-  protected final void cAQ()
+  protected final void cNZ()
   {
     AppMethodBeat.i(133844);
     Object localObject;
-    if (!this.HuM)
+    if (!this.IVj)
     {
-      if (this.HuN == null)
+      if (this.IVk == null)
       {
-        ad.w("MicroMsg.InputTextBoundaryCheck", "edit text view is null");
+        ac.w("MicroMsg.InputTextBoundaryCheck", "edit text view is null");
         AppMethodBeat.o(133844);
         return;
       }
-      if (bt.gL(this.HuQ))
+      if (bs.gY(this.IVn))
       {
-        localObject = a(this.HuO, this.mcf);
-        ((EditText)this.HuN.get()).setFilters(new InputFilter[] { localObject });
+        localObject = a(this.IVl, this.mEd);
+        ((EditText)this.IVk.get()).setFilters(new InputFilter[] { localObject });
       }
     }
-    else if (this.HuR != null)
+    else if (this.IVo != null)
     {
-      switch (aVG())
+      switch (bcE())
       {
       }
     }
@@ -135,40 +135,40 @@ public class c
     {
       AppMethodBeat.o(133844);
       return;
-      this.HuQ.add(a(this.HuO, this.mcf));
-      localObject = (InputFilter[])this.HuQ.toArray(new InputFilter[this.HuQ.size()]);
-      ((EditText)this.HuN.get()).setFilters((InputFilter[])localObject);
+      this.IVn.add(a(this.IVl, this.mEd));
+      localObject = (InputFilter[])this.IVn.toArray(new InputFilter[this.IVn.size()]);
+      ((EditText)this.IVk.get()).setFilters((InputFilter[])localObject);
       break;
-      this.HuR.CH(this.mText);
+      this.IVo.GK(this.mText);
       AppMethodBeat.o(133844);
       return;
-      this.HuR.aKr();
+      this.IVo.aRi();
       AppMethodBeat.o(133844);
       return;
-      this.HuR.ck(this.mText);
+      this.IVo.ca(this.mText);
     }
   }
   
-  public final c feh()
+  public final c fuc()
   {
-    this.HuM = true;
+    this.IVj = true;
     return this;
   }
   
-  public final c jE(int paramInt1, int paramInt2)
+  public final c jQ(int paramInt1, int paramInt2)
   {
-    this.HuP = paramInt1;
-    this.HuO = paramInt2;
+    this.IVm = paramInt1;
+    this.IVl = paramInt2;
     return this;
   }
   
   public static abstract interface a
   {
-    public abstract void CH(String paramString);
+    public abstract void GK(String paramString);
     
-    public abstract void aKr();
+    public abstract void aRi();
     
-    public abstract void ck(String paramString);
+    public abstract void ca(String paramString);
   }
 }
 

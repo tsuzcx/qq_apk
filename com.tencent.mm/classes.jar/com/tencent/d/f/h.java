@@ -4,22 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  private static boolean Itb;
-  private static g Itc;
+  private static boolean JUL;
+  private static g JUM;
   
   static
   {
     AppMethodBeat.i(138483);
-    Itb = false;
-    Itc = new k();
-    Itb = false;
-    Itc = new k();
+    JUL = false;
+    JUM = new k();
+    JUL = false;
+    JUM = new k();
     AppMethodBeat.o(138483);
   }
   
-  public static void eOC() {}
-  
-  public static void eo(Object paramObject)
+  public static void ep(Object paramObject)
   {
     AppMethodBeat.i(138481);
     if ((paramObject != null) && ((paramObject instanceof Exception)))
@@ -31,7 +29,7 @@ public final class h
     AppMethodBeat.o(138481);
   }
   
-  public static void ep(Object paramObject)
+  public static void eq(Object paramObject)
   {
     AppMethodBeat.i(138482);
     if ((paramObject != null) && ((paramObject instanceof Exception)))
@@ -43,20 +41,22 @@ public final class h
     AppMethodBeat.o(138482);
   }
   
-  public static void fmy() {}
+  public static void fCO() {}
   
-  public static void fmz() {}
+  public static void fCP() {}
+  
+  public static void feg() {}
   
   public static void w(Throwable paramThrowable)
   {
     AppMethodBeat.i(138480);
-    eo(paramThrowable);
+    ep(paramThrowable);
     AppMethodBeat.o(138480);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.f.h
  * JD-Core Version:    0.7.0.1
  */

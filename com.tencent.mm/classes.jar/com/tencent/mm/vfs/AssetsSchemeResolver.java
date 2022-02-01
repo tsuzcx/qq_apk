@@ -17,7 +17,7 @@ public final class AssetsSchemeResolver
   extends SchemeResolver.Base
 {
   public static final a CREATOR;
-  private final AssetsFileSystem HRc;
+  private final AssetsFileSystem Jrx;
   
   static
   {
@@ -29,13 +29,13 @@ public final class AssetsSchemeResolver
   private AssetsSchemeResolver()
   {
     AppMethodBeat.i(13036);
-    this.HRc = new AssetsFileSystem(a.gap().mContext);
+    this.Jrx = new AssetsFileSystem(a.ghk().mContext);
     AppMethodBeat.o(13036);
   }
   
-  public static AssetsSchemeResolver fhz()
+  public static AssetsSchemeResolver fxB()
   {
-    return a.HRe;
+    return a.Jrz;
   }
   
   public final Pair<FileSystem, String> a(SchemeResolver.a parama, Uri paramUri)
@@ -43,9 +43,9 @@ public final class AssetsSchemeResolver
     AppMethodBeat.i(13037);
     parama = paramUri.getPath();
     if (parama == null) {}
-    for (parama = "";; parama = q.l(parama, true, true))
+    for (parama = "";; parama = q.m(parama, true, true))
     {
-      parama = new Pair(this.HRc, parama);
+      parama = new Pair(this.Jrx, parama);
       AppMethodBeat.o(13037);
       return parama;
     }
@@ -55,12 +55,12 @@ public final class AssetsSchemeResolver
     extends AbstractFileSystem
   {
     public static final Parcelable.Creator<AssetsFileSystem> CREATOR = null;
-    private AssetManager HRd;
+    private AssetManager Jry;
     
     AssetsFileSystem(Context paramContext)
     {
       AppMethodBeat.i(13024);
-      this.HRd = paramContext.getAssets();
+      this.Jry = paramContext.getAssets();
       AppMethodBeat.o(13024);
     }
     
@@ -74,7 +74,7 @@ public final class AssetsSchemeResolver
       }
       for (;;)
       {
-        String[] arrayOfString = this.HRd.list(paramString1);
+        String[] arrayOfString = this.Jry.list(paramString1);
         if ((arrayOfString == null) || (arrayOfString.length == 0))
         {
           if (paramString2 != null)
@@ -106,7 +106,7 @@ public final class AssetsSchemeResolver
       }
     }
     
-    public final FileSystem.b aMC(String paramString)
+    public final FileSystem.b aSe(String paramString)
     {
       AppMethodBeat.i(13025);
       paramString = new FileSystem.b();
@@ -114,7 +114,7 @@ public final class AssetsSchemeResolver
       return paramString;
     }
     
-    public final boolean aMD(String paramString)
+    public final boolean aSf(String paramString)
     {
       AppMethodBeat.i(13028);
       try
@@ -130,7 +130,7 @@ public final class AssetsSchemeResolver
       return false;
     }
     
-    public final FileSystem.a aME(String paramString)
+    public final FileSystem.a aSg(String paramString)
     {
       AppMethodBeat.i(13029);
       for (;;)
@@ -159,7 +159,7 @@ public final class AssetsSchemeResolver
       }
     }
     
-    public final boolean aMF(String paramString)
+    public final boolean aSh(String paramString)
     {
       return false;
     }
@@ -172,7 +172,7 @@ public final class AssetsSchemeResolver
       throw paramString1;
     }
     
-    public final OutputStream cM(String paramString, boolean paramBoolean)
+    public final OutputStream cS(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(13027);
       paramString = new FileNotFoundException("Cannot open files for writing on read-only filesystems");
@@ -180,7 +180,7 @@ public final class AssetsSchemeResolver
       throw paramString;
     }
     
-    public final Iterable<FileSystem.a> cN(String paramString, boolean paramBoolean)
+    public final Iterable<FileSystem.a> cT(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(13031);
       String str1 = paramString;
@@ -205,7 +205,7 @@ public final class AssetsSchemeResolver
         String[] arrayOfString;
         AppMethodBeat.o(13031);
       }
-      paramString = this.HRd.list(str1);
+      paramString = this.Jry.list(str1);
       if (paramString == null)
       {
         AppMethodBeat.o(13031);
@@ -219,7 +219,7 @@ public final class AssetsSchemeResolver
       {
         str2 = paramString[i];
         str3 = str1 + str2;
-        arrayOfString = this.HRd.list(str3);
+        arrayOfString = this.Jry.list(str3);
         if ((arrayOfString != null) && (arrayOfString.length > 0)) {}
         for (paramBoolean = true;; paramBoolean = false)
         {
@@ -233,17 +233,17 @@ public final class AssetsSchemeResolver
       return null;
     }
     
-    public final boolean cO(String paramString, boolean paramBoolean)
+    public final boolean cU(String paramString, boolean paramBoolean)
     {
       return false;
     }
     
-    public final String cP(String paramString, boolean paramBoolean)
+    public final String cV(String paramString, boolean paramBoolean)
     {
       return null;
     }
     
-    public final boolean cf(String paramString, long paramLong)
+    public final boolean ch(String paramString, long paramLong)
     {
       return false;
     }
@@ -256,7 +256,7 @@ public final class AssetsSchemeResolver
       throw paramString1;
     }
     
-    public final int fhA()
+    public final int fxC()
     {
       return 12;
     }
@@ -266,7 +266,7 @@ public final class AssetsSchemeResolver
       AppMethodBeat.i(13026);
       try
       {
-        paramString = this.HRd.open(paramString);
+        paramString = this.Jry.open(paramString);
         AppMethodBeat.o(13026);
         return paramString;
       }
@@ -289,11 +289,6 @@ public final class AssetsSchemeResolver
       return "AssetsFS";
     }
     
-    public final boolean vv(String paramString)
-    {
-      return false;
-    }
-    
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(13034);
@@ -301,17 +296,22 @@ public final class AssetsSchemeResolver
       AppMethodBeat.o(13034);
       throw paramParcel;
     }
+    
+    public final boolean zB(String paramString)
+    {
+      return false;
+    }
   }
   
   static final class a
     implements Parcelable.Creator<AssetsSchemeResolver>
   {
-    static final AssetsSchemeResolver HRe;
+    static final AssetsSchemeResolver Jrz;
     
     static
     {
       AppMethodBeat.i(13035);
-      HRe = new AssetsSchemeResolver((byte)0);
+      Jrz = new AssetsSchemeResolver((byte)0);
       AppMethodBeat.o(13035);
     }
   }

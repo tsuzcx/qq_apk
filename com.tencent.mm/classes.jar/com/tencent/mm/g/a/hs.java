@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hs
   extends b
 {
-  public a dls;
-  public b dlt;
+  public a diL;
   
   public hs()
   {
@@ -16,28 +15,22 @@ public final class hs
   
   private hs(byte paramByte)
   {
-    AppMethodBeat.i(89643);
-    this.dls = new a();
-    this.dlt = new b();
-    this.ESR = false;
+    AppMethodBeat.i(91205);
+    this.diL = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(89643);
+    AppMethodBeat.o(91205);
   }
   
   public static final class a
   {
-    public int BX = 0;
-    public String dln;
-  }
-  
-  public static final class b
-  {
-    public String dlu;
+    public String diM;
+    public int type = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.hs
  * JD-Core Version:    0.7.0.1
  */

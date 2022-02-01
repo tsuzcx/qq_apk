@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.f.c;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
 
 public final class d
   extends com.tencent.e.i.b
 {
   public boolean isStop;
   private int limit;
-  private String npH;
-  private long npI;
-  private a npJ;
+  private String nSH;
+  private long nSI;
+  private a nSJ;
   
   public d(String paramString, long paramLong, int paramInt, a parama)
   {
     AppMethodBeat.i(22754);
-    this.npH = paramString;
-    this.npI = paramLong;
+    this.nSH = paramString;
+    this.nSI = paramLong;
     this.limit = paramInt;
-    this.npJ = parama;
-    ad.d("MicroMsg.ScanMsgTask", "%d scan msg[%d %d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.npI), Integer.valueOf(this.limit) });
+    this.nSJ = parama;
+    ac.d("MicroMsg.ScanMsgTask", "%d scan msg[%d %d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.nSI), Integer.valueOf(this.limit) });
     AppMethodBeat.o(22754);
   }
   
@@ -44,26 +44,26 @@ public final class d
       AppMethodBeat.o(22755);
       return;
     }
-    long l = bt.GC();
+    long l = bs.Gn();
     Object localObject3 = null;
     Cursor localCursor2 = null;
     localCursor1 = localCursor2;
     localObject1 = localObject3;
     try
     {
-      az.arV();
+      az.ayM();
       localCursor1 = localCursor2;
       localObject1 = localObject3;
-      localCursor2 = c.apO().i(this.npH, this.npI, this.limit);
+      localCursor2 = c.awD().i(this.nSH, this.nSI, this.limit);
       localCursor1 = localCursor2;
       localObject1 = localCursor2;
-      l = bt.aS(l);
+      l = bs.aO(l);
       localCursor1 = localCursor2;
       localObject1 = localCursor2;
-      com.tencent.mm.plugin.f.b.bHc();
+      com.tencent.mm.plugin.f.b.bOp();
       localCursor1 = localCursor2;
       localObject1 = localCursor2;
-      com.tencent.mm.plugin.f.b.J(this.limit, l);
+      com.tencent.mm.plugin.f.b.I(this.limit, l);
       boolean bool;
       do
       {
@@ -75,16 +75,16 @@ public final class d
         i += 1;
         localCursor1 = localCursor2;
         localObject1 = localCursor2;
-        localObject3 = new bl();
+        localObject3 = new bo();
         localCursor1 = localCursor2;
         localObject1 = localCursor2;
-        ((bl)localObject3).convertFrom(localCursor2);
+        ((bo)localObject3).convertFrom(localCursor2);
         localCursor1 = localCursor2;
         localObject1 = localCursor2;
-        com.tencent.mm.plugin.f.b.bHc().aa((bl)localObject3);
+        com.tencent.mm.plugin.f.b.bOp().aa((bo)localObject3);
         localCursor1 = localCursor2;
         localObject1 = localCursor2;
-        com.tencent.mm.plugin.f.b.bHc().nN(((du)localObject3).field_msgId);
+        com.tencent.mm.plugin.f.b.bOp().rz(((dy)localObject3).field_msgId);
         localCursor1 = localCursor2;
         localObject1 = localCursor2;
         bool = this.isStop;
@@ -96,20 +96,20 @@ public final class d
       return;
       localCursor1 = localCursor2;
       localObject1 = localCursor2;
-      ad.d("MicroMsg.ScanMsgTask", "%d scan msg count[%d] limit[%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(i), Integer.valueOf(this.limit) });
+      ac.d("MicroMsg.ScanMsgTask", "%d scan msg count[%d] limit[%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(i), Integer.valueOf(this.limit) });
       localCursor1 = localCursor2;
       localObject1 = localCursor2;
       if (i < this.limit)
       {
         localCursor1 = localCursor2;
         localObject1 = localCursor2;
-        localObject3 = com.tencent.mm.plugin.f.b.bHc();
+        localObject3 = com.tencent.mm.plugin.f.b.bOp();
         localCursor1 = localCursor2;
         localObject1 = localCursor2;
-        com.tencent.mm.plugin.f.b.bHc();
+        com.tencent.mm.plugin.f.b.bOp();
         localCursor1 = localCursor2;
         localObject1 = localCursor2;
-        ((com.tencent.mm.plugin.f.b)localObject3).nN(com.tencent.mm.plugin.f.b.bHf());
+        ((com.tencent.mm.plugin.f.b)localObject3).rz(com.tencent.mm.plugin.f.b.bOs());
       }
       if (localCursor2 != null) {
         localCursor2.close();
@@ -120,7 +120,7 @@ public final class d
       for (;;)
       {
         localObject1 = localCursor1;
-        ad.printErrStackTrace("MicroMsg.ScanMsgTask", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.ScanMsgTask", localException, "", new Object[0]);
         if (localCursor1 != null) {
           localCursor1.close();
         }
@@ -134,8 +134,8 @@ public final class d
       ((Cursor)localObject1).close();
       AppMethodBeat.o(22755);
     }
-    if (this.npJ != null) {
-      this.npJ.finish();
+    if (this.nSJ != null) {
+      this.nSJ.finish();
     }
     AppMethodBeat.o(22755);
   }
@@ -147,7 +147,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.f.c.d
  * JD-Core Version:    0.7.0.1
  */

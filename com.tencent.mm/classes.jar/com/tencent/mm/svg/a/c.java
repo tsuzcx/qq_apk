@@ -16,7 +16,7 @@ import com.tencent.mm.svg.b.d;
 public final class c
   extends b
 {
-  private a FDN;
+  private a HcQ;
   
   public c(Picture paramPicture, int paramInt) {}
   
@@ -25,7 +25,7 @@ public final class c
     int i = 1;
     int j = 0;
     AppMethodBeat.i(148721);
-    long l1 = com.tencent.mm.svg.b.b.eOy();
+    long l1 = com.tencent.mm.svg.b.b.fec();
     label388:
     label522:
     label524:
@@ -38,24 +38,24 @@ public final class c
         if (!paramCanvas.isHardwareAccelerated()) {
           break label388;
         }
-        if (this.FDN.FDO == null)
+        if (this.HcQ.HcR == null)
         {
-          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "Must not go here! %s", new Object[] { Integer.valueOf(this.FDE) });
-          if (this.FDN.FDP == null) {
+          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "Must not go here! %s", new Object[] { Integer.valueOf(this.HcH) });
+          if (this.HcQ.HcS == null) {
             break label522;
           }
-          if (!this.FDN.FDP.isRecycled()) {
+          if (!this.HcQ.HcS.isRecycled()) {
             break label361;
           }
           break label522;
-          localObject4 = eOr();
+          localObject4 = fdV();
           Object localObject1 = localObject4;
           if (localObject4 == null)
           {
-            localObject1 = a.C(this);
-            fA((View)localObject1);
+            localObject1 = a.B(this);
+            fN((View)localObject1);
           }
-          a.b((View)localObject1, this.FDG);
+          a.b((View)localObject1, this.HcJ);
           if (i != 0) {
             break label499;
           }
@@ -66,12 +66,12 @@ public final class c
           return;
         }
         l2 = System.nanoTime();
-        if ((this.FDN.FDP != null) && (!this.FDN.FDP.isRecycled())) {
+        if ((this.HcQ.HcS != null) && (!this.HcQ.HcS.isRecycled())) {
           continue;
         }
         if ((getIntrinsicWidth() > 2048) || (getIntrinsicHeight() > 2048))
         {
-          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "This drawable is too big. %s", new Object[] { Integer.valueOf(this.FDE) });
+          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "This drawable is too big. %s", new Object[] { Integer.valueOf(this.HcH) });
           continue;
         }
         if (getIntrinsicWidth() <= 0) {
@@ -80,8 +80,8 @@ public final class c
       }
       finally
       {
-        this.mDuration = com.tencent.mm.svg.b.b.wr(l1);
-        d.eOA();
+        this.mDuration = com.tencent.mm.svg.b.b.AU(l1);
+        d.fee();
         p(paramCanvas);
         AppMethodBeat.o(148721);
       }
@@ -94,39 +94,39 @@ public final class c
       {
         Object localObject3 = Bitmap.createBitmap(getIntrinsicWidth(), getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         localObject4 = new Canvas((Bitmap)localObject3);
-        this.FDN.FDO.draw((Canvas)localObject4);
-        this.FDN.FDP = ((Bitmap)localObject3);
-        com.tencent.mm.svg.b.b.wr(l2);
-        d.eOz();
+        this.HcQ.HcR.draw((Canvas)localObject4);
+        this.HcQ.HcS = ((Bitmap)localObject3);
+        com.tencent.mm.svg.b.b.AU(l2);
+        d.fed();
         p((Canvas)localObject4);
         continue;
         label361:
-        eOp();
-        paramCanvas.drawBitmap(this.FDN.FDP, null, this.Hy, this.FDG);
+        fdT();
+        paramCanvas.drawBitmap(this.HcQ.HcS, null, this.Iw, this.HcJ);
         break label524;
         i = j;
-        if (this.FDN.FDP != null)
+        if (this.HcQ.HcS != null)
         {
           i = j;
-          if (!this.FDN.FDP.isRecycled())
+          if (!this.HcQ.HcS.isRecycled())
           {
-            com.tencent.mm.svg.b.c.i("MicroMsg.SVGPictureDrawable", "recycle bitmap:%s", new Object[] { this.FDN.FDP.toString() });
-            this.FDN.FDP.recycle();
-            this.FDN.FDP = null;
+            com.tencent.mm.svg.b.c.i("MicroMsg.SVGPictureDrawable", "recycle bitmap:%s", new Object[] { this.HcQ.HcS.toString() });
+            this.HcQ.HcS.recycle();
+            this.HcQ.HcS = null;
             i = j;
             continue;
             label462:
-            localObject3 = this.FDN.FDO;
+            localObject3 = this.HcQ.HcR;
             if (localObject3 != null)
             {
-              eOp();
+              fdT();
               paramCanvas.save();
-              paramCanvas.drawPicture((Picture)localObject3, this.Hy);
+              paramCanvas.drawPicture((Picture)localObject3, this.Iw);
               paramCanvas.restore();
             }
             label499:
-            this.mDuration = com.tencent.mm.svg.b.b.wr(l1);
-            d.eOA();
+            this.mDuration = com.tencent.mm.svg.b.b.AU(l1);
+            d.fee();
             p(paramCanvas);
             AppMethodBeat.o(148721);
             return;
@@ -139,20 +139,20 @@ public final class c
   
   public final Drawable.ConstantState getConstantState()
   {
-    return this.FDN;
+    return this.HcQ;
   }
   
   public static final class a
     extends Drawable.ConstantState
   {
-    protected Picture FDO;
-    protected Bitmap FDP;
-    protected int zdA;
+    protected int Awg;
+    protected Picture HcR;
+    protected Bitmap HcS;
     
     public a(Picture paramPicture, int paramInt)
     {
-      this.FDO = paramPicture;
-      this.zdA = paramInt;
+      this.HcR = paramPicture;
+      this.Awg = paramInt;
     }
     
     public final int getChangingConfigurations()
@@ -163,7 +163,7 @@ public final class c
     public final Drawable newDrawable()
     {
       AppMethodBeat.i(148717);
-      c localc = new c(this.FDO, this.zdA);
+      c localc = new c(this.HcR, this.Awg);
       AppMethodBeat.o(148717);
       return localc;
     }

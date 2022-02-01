@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.wxcredit;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.c.w;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.g;
@@ -37,16 +37,16 @@ public class c
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72252);
           c.b(c.this).putString("key_pwd1", (String)paramAnonymousVarArgs[0]);
-          this.Ieo.a(new w((String)paramAnonymousVarArgs[0], 5, ""), true, 1);
+          this.JFQ.a(new w((String)paramAnonymousVarArgs[0], 5, ""), true, 1);
           AppMethodBeat.o(72252);
           return true;
         }
         
-        public final boolean x(Object... paramAnonymousVarArgs)
+        public final boolean z(Object... paramAnonymousVarArgs)
         {
           return false;
         }
@@ -62,7 +62,7 @@ public class c
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72253);
-    ad.d("MicroMsg.WXCreditChangeAmountProcess", "start Process : WXCreditCheckPwdProcess");
+    ac.d("MicroMsg.WXCreditChangeAmountProcess", "start Process : WXCreditCheckPwdProcess");
     b(paramActivity, WalletCheckPwdUI.class, paramBundle);
     AppMethodBeat.o(72253);
     return this;
@@ -73,7 +73,7 @@ public class c
     AppMethodBeat.i(72254);
     if ((paramActivity instanceof WalletCheckPwdUI))
     {
-      e.p(paramActivity, paramBundle.getString("key_url"), false);
+      e.o(paramActivity, paramBundle.getString("key_url"), false);
       AppMethodBeat.o(72254);
       return;
     }
@@ -93,7 +93,7 @@ public class c
     return false;
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "WXCreditCheckPwdProcess";
   }
@@ -101,7 +101,7 @@ public class c
   public final void g(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(72255);
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(72255);
   }
 }

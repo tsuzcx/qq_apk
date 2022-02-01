@@ -11,14 +11,14 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity;
 import java.lang.ref.WeakReference;
 
 public final class g
 {
-  public static void a(MMFragmentActivity paramMMFragmentActivity, View paramView)
+  public static void a(MMFragmentActivity paramMMFragmentActivity, final View paramView)
   {
     AppMethodBeat.i(141151);
     if (paramMMFragmentActivity == null)
@@ -27,12 +27,25 @@ public final class g
       return;
     }
     if ((Build.VERSION.SDK_INT >= 16) && (paramMMFragmentActivity.getWindow() != null) && (paramMMFragmentActivity.getWindow().getDecorView() != null)) {
-      paramMMFragmentActivity.getWindow().getDecorView().post(new g.2(paramMMFragmentActivity, paramView));
+      paramMMFragmentActivity.getWindow().getDecorView().post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(141145);
+          this.DfD.getWindow().getDecorView().setSystemUiVisibility(this.DfD.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
+          int i = com.tencent.mm.compatible.util.a.cd(this.DfD);
+          ac.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to contentView, height: %s", new Object[] { Integer.valueOf(i) });
+          if (paramView != null) {
+            paramView.setPadding(0, i, 0, 0);
+          }
+          AppMethodBeat.o(141145);
+        }
+      });
     }
     AppMethodBeat.o(141151);
   }
   
-  public static void aJ(Activity paramActivity)
+  public static void aN(Activity paramActivity)
   {
     AppMethodBeat.i(141148);
     if (Build.VERSION.SDK_INT >= 16)
@@ -48,7 +61,7 @@ public final class g
     AppMethodBeat.o(141148);
   }
   
-  public static void b(MMFragmentActivity paramMMFragmentActivity, View paramView)
+  public static void b(MMFragmentActivity paramMMFragmentActivity, final View paramView)
   {
     AppMethodBeat.i(141152);
     if (paramMMFragmentActivity == null)
@@ -57,12 +70,24 @@ public final class g
       return;
     }
     if ((Build.VERSION.SDK_INT >= 16) && (paramMMFragmentActivity.getWindow() != null) && (paramMMFragmentActivity.getWindow().getDecorView() != null)) {
-      paramMMFragmentActivity.getWindow().getDecorView().post(new g.3(paramMMFragmentActivity, paramView));
+      paramMMFragmentActivity.getWindow().getDecorView().post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(141146);
+          this.DfD.getWindow().getDecorView().setSystemUiVisibility(this.DfD.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
+          ac.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to contentView, height: %s", new Object[] { Integer.valueOf(this.val$height) });
+          if (paramView != null) {
+            paramView.setPadding(0, this.val$height, 0, 0);
+          }
+          AppMethodBeat.o(141146);
+        }
+      });
     }
     AppMethodBeat.o(141152);
   }
   
-  public static int dL(Context paramContext)
+  public static int dT(Context paramContext)
   {
     AppMethodBeat.i(141153);
     int i = 0;
@@ -85,7 +110,7 @@ public final class g
     }
   }
   
-  public static int gW(Context paramContext)
+  public static int hh(Context paramContext)
   {
     AppMethodBeat.i(141147);
     int i = 0;
@@ -119,16 +144,16 @@ public final class g
         public final void run()
         {
           AppMethodBeat.i(141144);
-          MMActivity localMMActivity = (MMActivity)this.BNs.get();
+          MMActivity localMMActivity = (MMActivity)this.DfC.get();
           if ((localMMActivity == null) || (localMMActivity.isFinishing()) || (localMMActivity.isDestroyed()))
           {
             AppMethodBeat.o(141144);
             return;
           }
           localMMActivity.getWindow().getDecorView().setSystemUiVisibility(localMMActivity.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
-          int i = com.tencent.mm.compatible.util.a.ca(localMMActivity);
-          ad.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to bodyView, height: %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.cd.a.fromDPToPix(localMMActivity, 2)) });
-          localMMActivity.getBodyView().setPadding(0, i - com.tencent.mm.cd.a.fromDPToPix(localMMActivity, 2), 0, 0);
+          int i = com.tencent.mm.compatible.util.a.cd(localMMActivity);
+          ac.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to bodyView, height: %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.cc.a.fromDPToPix(localMMActivity, 2)) });
+          localMMActivity.getBodyView().setPadding(0, i - com.tencent.mm.cc.a.fromDPToPix(localMMActivity, 2), 0, 0);
           AppMethodBeat.o(141144);
         }
       });
@@ -138,7 +163,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g
  * JD-Core Version:    0.7.0.1
  */

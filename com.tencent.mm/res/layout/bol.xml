@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/hff" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/hfh" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" />
+    <View android:id="@id/hgn" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/ci" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hce" android:padding="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/hcf" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ci" android:text="{title}" android:layout_weight="1.0" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout android:orientation="horizontal" android:id="@id/hcd" android:layout_width="fill_parent" android:layout_height="@dimen/c7" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toBottomOf="@id/hsx" />
+</LinearLayout>

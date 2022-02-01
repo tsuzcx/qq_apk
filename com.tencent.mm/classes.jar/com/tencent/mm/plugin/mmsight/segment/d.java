@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.mmsight.segment;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.concurrent.Callable;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -28,44 +28,44 @@ public abstract interface d
   
   public static final class a
   {
-    private Lock aGr;
+    private Lock aHh;
     private volatile int size;
-    private LinkedBlockingQueue<d> tFK;
-    private final int tFL;
-    private Callable<d> tFM;
+    private LinkedBlockingQueue<d> uOf;
+    private final int uOg;
+    private Callable<d> uOh;
     
     public a(int paramInt, Callable<d> paramCallable)
     {
       AppMethodBeat.i(107638);
       this.size = 0;
-      this.aGr = new ReentrantLock();
-      this.tFL = paramInt;
-      this.tFK = new LinkedBlockingQueue(paramInt);
-      this.tFM = paramCallable;
+      this.aHh = new ReentrantLock();
+      this.uOg = paramInt;
+      this.uOf = new LinkedBlockingQueue(paramInt);
+      this.uOh = paramCallable;
       AppMethodBeat.o(107638);
     }
     
-    private d cQw()
+    private d dee()
     {
       AppMethodBeat.i(107640);
       Object localObject;
-      if (this.tFM == null)
+      if (this.uOh == null)
       {
         localObject = new IllegalStateException("fetcher generator can not be null.");
         AppMethodBeat.o(107640);
         throw ((Throwable)localObject);
       }
-      long l = bt.GC();
+      long l = bs.Gn();
       try
       {
-        localObject = (d)this.tFM.call();
-        ad.d("FetcherPool", "time flee, construct fetcher instance cost %d", new Object[] { Long.valueOf(bt.aS(l)) });
+        localObject = (d)this.uOh.call();
+        ac.d("FetcherPool", "time flee, construct fetcher instance cost %d", new Object[] { Long.valueOf(bs.aO(l)) });
         AppMethodBeat.o(107640);
         return localObject;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("FetcherPool", localException, " fetcher generater call error %s", new Object[] { localException.getMessage() });
+        ac.printErrStackTrace("FetcherPool", localException, " fetcher generater call error %s", new Object[] { localException.getMessage() });
         AppMethodBeat.o(107640);
         throw localException;
       }
@@ -74,61 +74,61 @@ public abstract interface d
     public final void a(d paramd)
     {
       AppMethodBeat.i(107641);
-      ad.d("FetcherPool", "reuseFetcher");
+      ac.d("FetcherPool", "reuseFetcher");
       if (paramd == null)
       {
-        ad.e("FetcherPool", "Null object can not be reused.");
+        ac.e("FetcherPool", "Null object can not be reused.");
         AppMethodBeat.o(107641);
         return;
       }
-      if (this.tFK == null)
+      if (this.uOf == null)
       {
         paramd.release();
         AppMethodBeat.o(107641);
         return;
       }
-      if (this.tFK.contains(paramd))
+      if (this.uOf.contains(paramd))
       {
         paramd = new IllegalStateException("fetcher already in pool");
         AppMethodBeat.o(107641);
         throw paramd;
       }
-      this.tFK.offer(paramd);
+      this.uOf.offer(paramd);
       AppMethodBeat.o(107641);
     }
     
-    public final d cQv()
+    public final d ded()
     {
       AppMethodBeat.i(107639);
-      long l = bt.GC();
-      ad.d("FetcherPool", "acquireFetcher");
-      if (this.tFK == null)
+      long l = bs.Gn();
+      ac.d("FetcherPool", "acquireFetcher");
+      if (this.uOf == null)
       {
-        ad.d("FetcherPool", "acquireFetcher no pool directly return null");
+        ac.d("FetcherPool", "acquireFetcher no pool directly return null");
         AppMethodBeat.o(107639);
         return null;
       }
-      this.aGr.lock();
-      ad.d("FetcherPool", "pool.size() %d, size %d, maxFetcherSize %d", new Object[] { Integer.valueOf(this.tFK.size()), Integer.valueOf(this.size), Integer.valueOf(this.tFL) });
-      if (this.tFK == null)
+      this.aHh.lock();
+      ac.d("FetcherPool", "pool.size() %d, size %d, maxFetcherSize %d", new Object[] { Integer.valueOf(this.uOf.size()), Integer.valueOf(this.size), Integer.valueOf(this.uOg) });
+      if (this.uOf == null)
       {
-        this.aGr.unlock();
+        this.aHh.unlock();
         AppMethodBeat.o(107639);
         return null;
       }
-      if ((this.tFK.isEmpty()) && (this.size < this.tFL))
+      if ((this.uOf.isEmpty()) && (this.size < this.uOg))
       {
-        ad.d("FetcherPool", "new fetcher");
+        ac.d("FetcherPool", "new fetcher");
         this.size += 1;
-        this.aGr.unlock();
+        this.aHh.unlock();
       }
-      for (d locald = cQw();; locald = (d)this.tFK.poll(5L, TimeUnit.SECONDS))
+      for (d locald = dee();; locald = (d)this.uOf.poll(5L, TimeUnit.SECONDS))
       {
-        ad.d("FetcherPool", "time flee, acquireFetcher cost time %d", new Object[] { Long.valueOf(bt.aS(l)) });
+        ac.d("FetcherPool", "time flee, acquireFetcher cost time %d", new Object[] { Long.valueOf(bs.aO(l)) });
         AppMethodBeat.o(107639);
         return locald;
-        ad.d("FetcherPool", "waiting fetcher");
-        this.aGr.unlock();
+        ac.d("FetcherPool", "waiting fetcher");
+        this.aHh.unlock();
       }
     }
     
@@ -139,25 +139,25 @@ public abstract interface d
       //   0: ldc 181
       //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:tFK	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   6: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:uOf	Ljava/util/concurrent/LinkedBlockingQueue;
       //   9: ifnonnull +9 -> 18
       //   12: ldc 181
       //   14: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   17: return
       //   18: aload_0
-      //   19: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aGr	Ljava/util/concurrent/locks/Lock;
+      //   19: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aHh	Ljava/util/concurrent/locks/Lock;
       //   22: invokeinterface 142 1 0
       //   27: aload_0
-      //   28: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:tFK	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   28: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:uOf	Ljava/util/concurrent/LinkedBlockingQueue;
       //   31: ifnonnull +18 -> 49
       //   34: aload_0
-      //   35: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aGr	Ljava/util/concurrent/locks/Lock;
+      //   35: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aHh	Ljava/util/concurrent/locks/Lock;
       //   38: invokeinterface 155 1 0
       //   43: ldc 181
       //   45: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   48: return
       //   49: aload_0
-      //   50: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:tFK	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   50: getfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:uOf	Ljava/util/concurrent/LinkedBlockingQueue;
       //   53: invokevirtual 185	java/util/concurrent/LinkedBlockingQueue:iterator	()Ljava/util/Iterator;
       //   56: astore_1
       //   57: aload_1
@@ -179,21 +179,21 @@ public abstract interface d
       //   95: aload_1
       //   96: invokevirtual 103	java/lang/Exception:getMessage	()Ljava/lang/String;
       //   99: aastore
-      //   100: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   100: invokestatic 107	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   103: aload_0
       //   104: aconst_null
-      //   105: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:tFK	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   105: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:uOf	Ljava/util/concurrent/LinkedBlockingQueue;
       //   108: aload_0
-      //   109: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aGr	Ljava/util/concurrent/locks/Lock;
+      //   109: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aHh	Ljava/util/concurrent/locks/Lock;
       //   112: invokeinterface 155 1 0
       //   117: ldc 181
       //   119: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   122: return
       //   123: aload_0
       //   124: aconst_null
-      //   125: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:tFK	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   125: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:uOf	Ljava/util/concurrent/LinkedBlockingQueue;
       //   128: aload_0
-      //   129: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aGr	Ljava/util/concurrent/locks/Lock;
+      //   129: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aHh	Ljava/util/concurrent/locks/Lock;
       //   132: invokeinterface 155 1 0
       //   137: ldc 181
       //   139: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -201,9 +201,9 @@ public abstract interface d
       //   143: astore_1
       //   144: aload_0
       //   145: aconst_null
-      //   146: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:tFK	Ljava/util/concurrent/LinkedBlockingQueue;
+      //   146: putfield 45	com/tencent/mm/plugin/mmsight/segment/d$a:uOf	Ljava/util/concurrent/LinkedBlockingQueue;
       //   149: aload_0
-      //   150: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aGr	Ljava/util/concurrent/locks/Lock;
+      //   150: getfield 37	com/tencent/mm/plugin/mmsight/segment/d$a:aHh	Ljava/util/concurrent/locks/Lock;
       //   153: invokeinterface 155 1 0
       //   158: ldc 181
       //   160: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -227,7 +227,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.d
  * JD-Core Version:    0.7.0.1
  */

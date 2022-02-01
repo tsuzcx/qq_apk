@@ -125,11 +125,11 @@ final class b
   
   public static final class b
   {
-    b.c Iup;
+    b.c JVY;
     
     public b(b.c paramc)
     {
-      this.Iup = paramc;
+      this.JVY = paramc;
     }
   }
   

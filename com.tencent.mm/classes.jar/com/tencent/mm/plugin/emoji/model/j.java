@@ -9,58 +9,60 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.b.a.w;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.emoji.a.a.e;
 import com.tencent.mm.plugin.emoji.a.a.f;
 import com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardUI;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.au;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ax;
 import java.util.ArrayList;
 
 public final class j
 {
-  private Context FZ;
+  private Context GX;
   private final String TAG;
-  public Context mfC;
-  public int oxA;
-  public long oxB;
-  public String oxC;
-  public b oxD;
-  private String oxE;
-  private com.tencent.mm.plugin.emoji.h.c oxF;
-  public String oxG;
-  public com.tencent.mm.g.b.a.u oxH;
-  public boolean oxI;
-  public com.tencent.mm.plugin.emoji.a.a.a oxx;
-  public boolean oxy;
-  public Fragment oxz;
+  public Context mHB;
+  public com.tencent.mm.plugin.emoji.a.a.a paX;
+  public boolean paY;
+  public Fragment paZ;
+  public int pba;
+  public long pbb;
+  public String pbc;
+  public b pbd;
+  private String pbe;
+  private com.tencent.mm.plugin.emoji.h.c pbf;
+  public String pbg;
+  public w pbh;
+  public boolean pbi;
   
   public j()
   {
     AppMethodBeat.i(108633);
     this.TAG = "MicroMsg.emoji.PayOrDownloadComponent";
-    this.oxy = false;
-    this.oxB = 0L;
-    this.oxC = "";
-    this.oxI = false;
-    this.FZ = aj.getContext();
-    this.oxF = new com.tencent.mm.plugin.emoji.h.c(2003);
+    this.paY = false;
+    this.pbb = 0L;
+    this.pbc = "";
+    this.pbi = false;
+    this.GX = ai.getContext();
+    this.pbf = new com.tencent.mm.plugin.emoji.h.c(2003);
     AppMethodBeat.o(108633);
   }
   
-  private void Ua(String paramString)
+  private void Ym(String paramString)
   {
     AppMethodBeat.i(108637);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = getString(2131758285);
     }
-    com.tencent.mm.ui.base.h.d(this.mfC, str, "", new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.h.d(this.mHB, str, "", new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     });
@@ -70,16 +72,16 @@ public final class j
   private String getString(int paramInt)
   {
     AppMethodBeat.i(108638);
-    String str = this.FZ.getString(paramInt);
+    String str = this.GX.getString(paramInt);
     AppMethodBeat.o(108638);
     return str;
   }
   
-  private void j(String paramString1, String paramString2, String paramString3, String paramString4)
+  private void l(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(108635);
-    if (this.oxD != null) {
-      this.oxD.j(paramString1, paramString2, paramString3, paramString4);
+    if (this.pbd != null) {
+      this.pbd.l(paramString1, paramString2, paramString3, paramString4);
     }
     AppMethodBeat.o(108635);
   }
@@ -87,12 +89,12 @@ public final class j
   public final void a(com.tencent.mm.plugin.emoji.a.a parama)
   {
     AppMethodBeat.i(108634);
-    if ((parama == null) || (parama.otj == null) || (this.oxx == null) || (this.oxx.ouz == null))
+    if ((parama == null) || (parama.oWK == null) || (this.paX == null) || (this.paX.oXZ == null))
     {
       AppMethodBeat.o(108634);
       return;
     }
-    EmotionSummary localEmotionSummary = parama.otj.ouL;
+    EmotionSummary localEmotionSummary = parama.oWK.oYl;
     if (localEmotionSummary == null)
     {
       AppMethodBeat.o(108634);
@@ -102,25 +104,25 @@ public final class j
     String str3 = localEmotionSummary.PackName;
     Object localObject2 = localEmotionSummary.PriceNum;
     String str2 = localEmotionSummary.PriceType;
-    int i = parama.bUi();
+    int i = parama.cbw();
     Object localObject1;
     com.tencent.mm.plugin.emoji.a.a.c localc;
     boolean bool1;
     boolean bool2;
-    if (parama.otj == null)
+    if (parama.oWK == null)
     {
       localObject1 = null;
       ((Integer)localObject1).intValue();
-      localc = this.oxx.ouz;
-      bool1 = localc.ouI;
-      bool2 = parama.otj.ouP;
+      localc = this.paX.oXZ;
+      bool1 = localc.oYi;
+      bool2 = parama.oWK.oYp;
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         break label276;
       }
       localObject1 = "";
       label144:
-      ad.i("MicroMsg.emoji.PayOrDownloadComponent", "[onProductClick] productId:%s, productPrice:%s, productStatus:%d", new Object[] { str1, localObject1, Integer.valueOf(i) });
-      this.oxE = str1;
+      ac.i("MicroMsg.emoji.PayOrDownloadComponent", "[onProductClick] productId:%s, productPrice:%s, productStatus:%d", new Object[] { str1, localObject1, Integer.valueOf(i) });
+      this.pbe = str1;
     }
     switch (i)
     {
@@ -129,7 +131,7 @@ public final class j
     case 6: 
     case 8: 
     default: 
-      ad.w("MicroMsg.emoji.PayOrDownloadComponent", "[onProductClick] unkonw product status");
+      ac.w("MicroMsg.emoji.PayOrDownloadComponent", "[onProductClick] unkonw product status");
     case 9: 
     case 0: 
     case 7: 
@@ -145,81 +147,81 @@ public final class j
           {
             AppMethodBeat.o(108634);
             return;
-            localObject1 = Integer.valueOf(parama.otj.ouN);
+            localObject1 = Integer.valueOf(parama.oWK.oYn);
             break;
             localObject1 = localObject2;
             break label144;
             parama = new com.tencent.mm.plugin.emoji.f.q(str1, 2);
-            g.afA().gcy.a(parama, 0);
+            g.agQ().ghe.a(parama, 0);
             AppMethodBeat.o(108634);
             return;
-            if (this.oxx != null) {
-              this.oxx.cK(str1, 3);
+            if (this.paX != null) {
+              this.paX.cP(str1, 3);
             }
             AppMethodBeat.o(108634);
             return;
             if (bool2)
             {
-              if (this.oxz != null)
+              if (this.paZ != null)
               {
                 i = 1;
                 if (i == 0) {
                   break label470;
                 }
-                parama = this.oxF;
-                localObject1 = this.oxz;
-                ad.d("MicroMsg.emoji.UseSmileyTool", "jacks sendToFriend emoji");
+                parama = this.pbf;
+                localObject1 = this.paZ;
+                ac.d("MicroMsg.emoji.UseSmileyTool", "jacks sendToFriend emoji");
                 localObject2 = new Intent();
                 ((Intent)localObject2).putExtra("MMActivity.OverrideEnterAnimation", 2130772047);
                 ((Intent)localObject2).putExtra("MMActivity.OverrideExitAnimation", 2130772106);
-                d.a((Fragment)localObject1, ".ui.transmit.SelectConversationUI", (Intent)localObject2, parama.lzE);
+                d.a((Fragment)localObject1, ".ui.transmit.SelectConversationUI", (Intent)localObject2, parama.mbA);
                 ((Fragment)localObject1).getActivity().overridePendingTransition(2130772108, 2130772048);
               }
               for (;;)
               {
-                this.oxF.oJb = str1;
-                com.tencent.mm.plugin.report.service.h.vKh.f(12069, new Object[] { Integer.valueOf(1), str1 });
+                this.pbf.pmB = str1;
+                com.tencent.mm.plugin.report.service.h.wUl.f(12069, new Object[] { Integer.valueOf(1), str1 });
                 AppMethodBeat.o(108634);
                 return;
                 i = 0;
                 break;
-                this.oxF.O((Activity)this.mfC);
+                this.pbf.O((Activity)this.mHB);
               }
             }
-          } while (!parama.otj.ouR);
-          localObject1 = parama.otj.ouL.ProductID;
-          localObject2 = parama.otj.ouL.PackName;
-          str1 = this.oxG;
-          if (this.mfC != null)
+          } while (!parama.oWK.oYr);
+          localObject1 = parama.oWK.oYl.ProductID;
+          localObject2 = parama.oWK.oYl.PackName;
+          str1 = this.pbg;
+          if (this.mHB != null)
           {
-            if (this.oxA == 9) {}
+            if (this.pba == 9) {}
             for (i = 3;; i = 4)
             {
               parama = new Intent();
-              parama.setClass(this.mfC, EmojiStoreV2RewardUI.class);
+              parama.setClass(this.mHB, EmojiStoreV2RewardUI.class);
               parama.putExtra("extra_id", (String)localObject1);
               parama.putExtra("extra_name", (String)localObject2);
               parama.putExtra("name", str1);
-              parama.putExtra("scene", this.oxA);
+              parama.putExtra("scene", this.pba);
               parama.putExtra("pageType", i);
-              parama.putExtra("searchID", this.oxB);
-              localObject2 = this.mfC;
-              parama = new com.tencent.mm.hellhoundlib.b.a().bd(parama);
-              com.tencent.mm.hellhoundlib.a.a.a(localObject2, parama.adn(), "com/tencent/mm/plugin/emoji/model/PayOrDownloadComponent", "startRewardUI", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              ((Context)localObject2).startActivity((Intent)parama.lS(0));
+              parama.putExtra("searchID", this.pbb);
+              localObject2 = this.mHB;
+              parama = new com.tencent.mm.hellhoundlib.b.a().ba(parama);
+              com.tencent.mm.hellhoundlib.a.a.a(localObject2, parama.aeD(), "com/tencent/mm/plugin/emoji/model/PayOrDownloadComponent", "startRewardUI", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ((Context)localObject2).startActivity((Intent)parama.lR(0));
               com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/plugin/emoji/model/PayOrDownloadComponent", "startRewardUI", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              com.tencent.mm.plugin.report.service.h.vKh.f(12738, new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(this.oxA), Integer.valueOf(0) });
+              com.tencent.mm.plugin.report.service.h.wUl.f(12738, new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(this.pba), Integer.valueOf(0) });
               AppMethodBeat.o(108634);
               return;
             }
           }
-          ad.i("MicroMsg.emoji.PayOrDownloadComponent", "start reward ui faild. context is null");
+          ac.i("MicroMsg.emoji.PayOrDownloadComponent", "start reward ui faild. context is null");
           AppMethodBeat.o(108634);
           return;
-        } while (this.oxy);
+        } while (this.paY);
         parama = new Intent();
         parama.putExtra("key_product_id", str1);
-        ad.i("MicroMsg.emoji.PayOrDownloadComponent", "onProductClick: price %s, currency %s", new Object[] { localObject2, str2 });
+        ac.i("MicroMsg.emoji.PayOrDownloadComponent", "onProductClick: price %s, currency %s", new Object[] { localObject2, str2 });
         if (bool1)
         {
           parama.putExtra("key_currency_type", str2);
@@ -227,9 +229,9 @@ public final class j
         }
         for (;;)
         {
-          d.b(this.mfC, "wallet_index", ".ui.WalletIapUI", parama, 2001);
-          this.oxy = true;
-          com.tencent.mm.plugin.report.service.h.vKh.f(12066, new Object[] { Integer.valueOf(2), Integer.valueOf(this.oxA), "", str1, Long.valueOf(this.oxB), this.oxC });
+          d.b(this.mHB, "wallet_index", ".ui.WalletIapUI", parama, 2001);
+          this.paY = true;
+          com.tencent.mm.plugin.report.service.h.wUl.f(12066, new Object[] { Integer.valueOf(2), Integer.valueOf(this.pba), "", str1, Long.valueOf(this.pbb), this.pbc });
           AppMethodBeat.o(108634);
           return;
           parama.putExtra("key_currency_type", str2);
@@ -237,27 +239,27 @@ public final class j
         }
         if (com.tencent.mm.plugin.emoji.h.a.g(localEmotionSummary))
         {
-          com.tencent.mm.plugin.emoji.f.a.bVg();
-          com.tencent.mm.plugin.emoji.f.a.bVh();
+          com.tencent.mm.plugin.emoji.f.a.cct();
+          com.tencent.mm.plugin.emoji.f.a.ccu();
           AppMethodBeat.o(108634);
           return;
         }
-        j(str1, null, str3, localEmotionSummary.IconUrl);
-        if (this.oxx != null) {
-          this.oxx.cL(str1, 0);
+        l(str1, null, str3, localEmotionSummary.IconUrl);
+        if (this.paX != null) {
+          this.paX.cQ(str1, 0);
         }
-        ad.i("MicroMsg.emoji.PayOrDownloadComponent", "doScene ExchangeEmotionPackNetScene productId:%s", new Object[] { str1 });
-        com.tencent.mm.plugin.report.service.h.vKh.f(12066, new Object[] { Integer.valueOf(0), Integer.valueOf(this.oxA), "", str1, Long.valueOf(this.oxB), this.oxC });
-      } while (this.oxH == null);
-      this.oxH.dJy = 2;
-      this.oxH.gb(localEmotionSummary.ProductID);
-      localObject2 = this.oxH;
-      if (this.oxI) {}
+        ac.i("MicroMsg.emoji.PayOrDownloadComponent", "doScene ExchangeEmotionPackNetScene productId:%s", new Object[] { str1 });
+        com.tencent.mm.plugin.report.service.h.wUl.f(12066, new Object[] { Integer.valueOf(0), Integer.valueOf(this.pba), "", str1, Long.valueOf(this.pbb), this.pbc });
+      } while (this.pbh == null);
+      this.pbh.dHA = 2;
+      this.pbh.fS(localEmotionSummary.ProductID);
+      localObject2 = this.pbh;
+      if (this.pbi) {}
       for (localObject1 = localEmotionSummary.ExptDesc;; localObject1 = localEmotionSummary.Introduce)
       {
-        ((com.tencent.mm.g.b.a.u)localObject2).gc((String)localObject1);
-        this.oxH.gd(String.valueOf(parama.mPosition + 1));
-        this.oxH.aBj();
+        ((w)localObject2).fT((String)localObject1);
+        this.pbh.fU(String.valueOf(parama.mPosition + 1));
+        this.pbh.aHZ();
         AppMethodBeat.o(108634);
         return;
       }
@@ -267,7 +269,7 @@ public final class j
       }
       for (;;)
       {
-        this.oxx.cK(str1, i);
+        this.paX.cP(str1, i);
         AppMethodBeat.o(108634);
         return;
         if ((e.b(localEmotionSummary)) || ((!bool1) && (TextUtils.isEmpty(localEmotionSummary.PackPrice))))
@@ -276,9 +278,9 @@ public final class j
         }
         else if (bool1)
         {
-          parama = localc.Ts(str1);
-          if (TextUtils.isEmpty(parama.FyM)) {
-            i = parama.FyI;
+          parama = localc.XE(str1);
+          if (TextUtils.isEmpty(parama.GXN)) {
+            i = parama.GXJ;
           } else {
             i = 4;
           }
@@ -291,9 +293,9 @@ public final class j
     case 10: 
       label276:
       label470:
-      parama = localc.Ts(str1);
+      parama = localc.XE(str1);
       if (parama != null) {
-        switch (parama.FyJ)
+        switch (parama.GXK)
         {
         default: 
           parama = getString(2131758412);
@@ -301,7 +303,7 @@ public final class j
       }
       for (;;)
       {
-        com.tencent.mm.ui.base.h.c(this.mfC, parama, null, true);
+        com.tencent.mm.ui.base.h.c(this.mHB, parama, null, true);
         AppMethodBeat.o(108634);
         return;
         parama = getString(2131758261);
@@ -311,35 +313,35 @@ public final class j
         parama = getString(2131758407);
       }
     }
-    ad.w("MicroMsg.emoji.PayOrDownloadComponent", "[onProductClick] cannot action when loading.");
+    ac.w("MicroMsg.emoji.PayOrDownloadComponent", "[onProductClick] cannot action when loading.");
     AppMethodBeat.o(108634);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(108636);
-    ad.d("MicroMsg.emoji.PayOrDownloadComponent", "onActivityResult . requestCode:" + paramInt1 + "  resultCode:" + paramInt2);
+    ac.d("MicroMsg.emoji.PayOrDownloadComponent", "onActivityResult . requestCode:" + paramInt1 + "  resultCode:" + paramInt2);
     String str1 = "";
     int i = 0;
     if (paramIntent != null)
     {
       i = paramIntent.getIntExtra("key_err_code", 0);
-      ad.w("MicroMsg.emoji.PayOrDownloadComponent", "errCode:".concat(String.valueOf(i)));
+      ac.w("MicroMsg.emoji.PayOrDownloadComponent", "errCode:".concat(String.valueOf(i)));
       str1 = paramIntent.getStringExtra("key_err_msg");
-      ad.w("MicroMsg.emoji.PayOrDownloadComponent", "errMsg:".concat(String.valueOf(str1)));
+      ac.w("MicroMsg.emoji.PayOrDownloadComponent", "errMsg:".concat(String.valueOf(str1)));
     }
-    this.oxy = false;
+    this.paY = false;
     if (paramInt2 != -1)
     {
       if (paramInt1 == 2001)
       {
-        if (com.tencent.mm.model.u.aqU())
+        if (u.axK())
         {
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(166L, 6L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(166L, 6L, 1L, false);
           AppMethodBeat.o(108636);
           return;
         }
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(166L, 2L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(166L, 2L, 1L, false);
       }
       AppMethodBeat.o(108636);
       return;
@@ -348,22 +350,22 @@ public final class j
     {
     case 2002: 
     default: 
-      ad.e("MicroMsg.emoji.PayOrDownloadComponent", "onActivityResult unknow request");
+      ac.e("MicroMsg.emoji.PayOrDownloadComponent", "onActivityResult unknow request");
       AppMethodBeat.o(108636);
       return;
     case 2003: 
-      str1 = this.oxF.oJb;
-      if (bt.isNullOrNil(str1))
+      str1 = this.pbf.pmB;
+      if (bs.isNullOrNil(str1))
       {
         AppMethodBeat.o(108636);
         return;
       }
-      com.tencent.mm.plugin.emoji.h.c.a(paramIntent, str1, (Activity)this.mfC);
-      com.tencent.mm.plugin.report.service.h.vKh.f(12069, new Object[] { Integer.valueOf(3), str1 });
+      com.tencent.mm.plugin.emoji.h.c.a(paramIntent, str1, (Activity)this.mHB);
+      com.tencent.mm.plugin.report.service.h.wUl.f(12069, new Object[] { Integer.valueOf(3), str1 });
       AppMethodBeat.o(108636);
       return;
     }
-    if ((this.oxx == null) || (this.oxx.ouz == null))
+    if ((this.paX == null) || (this.paX.oXZ == null))
     {
       AppMethodBeat.o(108636);
       return;
@@ -379,24 +381,24 @@ public final class j
       {
         String str2 = (String)localArrayList.get(paramInt2);
         String str3 = (String)paramIntent.get(paramInt2);
-        au localau = this.oxx.ouz.Ts(str2);
-        if (this.oxE.equals(str2))
+        ax localax = this.paX.oXZ.XE(str2);
+        if (this.pbe.equals(str2))
         {
           i = 1;
-          j(str2, str3, localau.oEN, null);
-          this.oxx.cL(this.oxE, 0);
-          com.tencent.mm.ui.base.h.cf(this.mfC, str1);
-          ad.i("MicroMsg.emoji.PayOrDownloadComponent", "doScene ExchangeEmotionPackNetScene productId:%s", new Object[] { str2 });
+          l(str2, str3, localax.pio, null);
+          this.paX.cQ(this.pbe, 0);
+          com.tencent.mm.ui.base.h.cg(this.mHB, str1);
+          ac.i("MicroMsg.emoji.PayOrDownloadComponent", "doScene ExchangeEmotionPackNetScene productId:%s", new Object[] { str2 });
           paramInt1 = i;
           if (localArrayList.size() <= 1) {
             break label506;
           }
-          ad.i("MicroMsg.emoji.PayOrDownloadComponent", "some other product verify.");
+          ac.i("MicroMsg.emoji.PayOrDownloadComponent", "some other product verify.");
           paramInt1 = i;
-          if (this.oxD == null) {
+          if (this.pbd == null) {
             break label506;
           }
-          this.oxD.bUV();
+          this.pbd.cci();
           paramInt1 = 1;
         }
         label506:
@@ -404,74 +406,74 @@ public final class j
         {
           paramInt2 += 1;
           break;
-          this.oxx.cK(this.oxE, 5);
+          this.paX.cP(this.pbe, 5);
         }
       }
       if (paramInt1 == 0) {
-        Ua(str1);
+        Ym(str1);
       }
-      if (com.tencent.mm.model.u.aqU())
+      if (u.axK())
       {
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(166L, 4L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(166L, 4L, 1L, false);
         AppMethodBeat.o(108636);
         return;
       }
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(166L, 0L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(166L, 0L, 1L, false);
       AppMethodBeat.o(108636);
       return;
     }
     if ((paramIntent != null) && (i == 100000002))
     {
-      paramIntent = this.oxx.ouz.Ts(this.oxE);
-      j(this.oxE, null, paramIntent.oEN, null);
-      this.oxx.cL(this.oxE, 0);
-      ad.i("MicroMsg.emoji.PayOrDownloadComponent", "emoji has paied. now doScene ExchangeEmotionPackNetScene productId:%s", new Object[] { this.oxE });
-      Ua(str1);
-      if (com.tencent.mm.model.u.aqU())
+      paramIntent = this.paX.oXZ.XE(this.pbe);
+      l(this.pbe, null, paramIntent.pio, null);
+      this.paX.cQ(this.pbe, 0);
+      ac.i("MicroMsg.emoji.PayOrDownloadComponent", "emoji has paied. now doScene ExchangeEmotionPackNetScene productId:%s", new Object[] { this.pbe });
+      Ym(str1);
+      if (u.axK())
       {
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(166L, 7L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(166L, 7L, 1L, false);
         AppMethodBeat.o(108636);
         return;
       }
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(166L, 3L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(166L, 3L, 1L, false);
       AppMethodBeat.o(108636);
       return;
     }
     if ((paramIntent != null) && (i == 1))
     {
-      if (com.tencent.mm.model.u.aqU()) {
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(166L, 6L, 1L, false);
+      if (u.axK()) {
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(166L, 6L, 1L, false);
       }
       for (;;)
       {
-        ad.i("MicroMsg.emoji.PayOrDownloadComponent", "user cancel pay emoji.");
+        ac.i("MicroMsg.emoji.PayOrDownloadComponent", "user cancel pay emoji.");
         AppMethodBeat.o(108636);
         return;
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(166L, 2L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(166L, 2L, 1L, false);
       }
     }
-    if ((this.oxE == null) || (this.oxx == null) || (this.oxx.ouz == null))
+    if ((this.pbe == null) || (this.paX == null) || (this.paX.oXZ == null))
     {
-      Ua(str1);
-      if (!com.tencent.mm.model.u.aqU()) {
+      Ym(str1);
+      if (!u.axK()) {
         break label864;
       }
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(166L, 5L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(166L, 5L, 1L, false);
     }
     for (;;)
     {
-      ad.i("MicroMsg.emoji.PayOrDownloadComponent", "failed pay emoji. errormsg:%s", new Object[] { str1 });
+      ac.i("MicroMsg.emoji.PayOrDownloadComponent", "failed pay emoji. errormsg:%s", new Object[] { str1 });
       AppMethodBeat.o(108636);
       return;
-      this.oxx.ouz.Tq(this.oxE);
-      paramIntent = this.oxx.To(this.oxE);
+      this.paX.oXZ.XC(this.pbe);
+      paramIntent = this.paX.XA(this.pbe);
       if (paramIntent == null) {
         break;
       }
-      paramIntent.bUn();
+      paramIntent.cbB();
       break;
       label864:
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(166L, 1L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(166L, 1L, 1L, false);
     }
   }
   
@@ -482,14 +484,14 @@ public final class j
   
   public static abstract interface b
   {
-    public abstract void bUV();
+    public abstract void cci();
     
-    public abstract void j(String paramString1, String paramString2, String paramString3, String paramString4);
+    public abstract void l(String paramString1, String paramString2, String paramString3, String paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.j
  * JD-Core Version:    0.7.0.1
  */

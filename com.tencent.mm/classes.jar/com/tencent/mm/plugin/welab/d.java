@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.welab;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelsns.f;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class d
 {
@@ -11,17 +11,17 @@ public final class d
   {
     AppMethodBeat.i(146213);
     f localf = new f();
-    localf.o("expid", parama.BBF + ",");
-    localf.o("appid", parama.dlB + ",");
-    localf.o("action", parama.action + ",");
-    localf.o("timestamp", parama.timeStamp + ",");
+    localf.n("expid", parama.CTL + ",");
+    localf.n("appid", parama.djj + ",");
+    localf.n("action", parama.action + ",");
+    localf.n("timestamp", parama.timeStamp + ",");
     StringBuilder localStringBuilder = new StringBuilder();
-    if (parama.BBG) {}
+    if (parama.CTM) {}
     for (int i = 1;; i = 0)
     {
-      localf.o("hasRedPoint", i + ",");
-      ad.i("WelabReporter", "report " + localf.PW());
-      h.vKh.f(14206, new Object[] { localf });
+      localf.n("hasRedPoint", i + ",");
+      ac.i("WelabReporter", "report " + localf.PS());
+      h.wUl.f(14206, new Object[] { localf });
       AppMethodBeat.o(146213);
       return;
     }
@@ -31,11 +31,11 @@ public final class d
   {
     AppMethodBeat.i(146215);
     a locala = new a();
-    locala.dlB = paramString1;
+    locala.djj = paramString1;
     locala.action = paramInt;
     locala.timeStamp = System.currentTimeMillis();
-    locala.BBF = paramString2;
-    locala.BBG = paramBoolean;
+    locala.CTL = paramString2;
+    locala.CTM = paramBoolean;
     a(locala);
     AppMethodBeat.o(146215);
   }
@@ -44,21 +44,21 @@ public final class d
   {
     AppMethodBeat.i(146214);
     a locala = new a();
-    locala.dlB = paramString;
+    locala.djj = paramString;
     locala.action = paramInt;
     locala.timeStamp = System.currentTimeMillis();
-    locala.BBF = a.esb().ayW(paramString).field_expId;
-    locala.BBG = paramBoolean;
+    locala.CTL = a.eHv().aEn(paramString).field_expId;
+    locala.CTM = paramBoolean;
     a(locala);
     AppMethodBeat.o(146214);
   }
   
   public static final class a
   {
-    public String BBF;
-    public boolean BBG;
+    public String CTL;
+    public boolean CTM;
     public int action;
-    public String dlB;
+    public String djj;
     public long timeStamp;
   }
 }

@@ -56,7 +56,7 @@ public final class n
     return new String(arrayOfChar2);
   }
   
-  public static String dF(String paramString)
+  public static String du(String paramString)
   {
     MessageDigest localMessageDigest = MessageDigest.getInstance("SHA1");
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();

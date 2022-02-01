@@ -12,8 +12,8 @@ final class x
   {
     AppMethodBeat.i(4213);
     Log.isLoggable("EnhancedIntentService", 3);
-    w.a(this.bEa).f(this.bDZ.intent);
-    this.bDZ.finish();
+    w.a(this.bBI).f(this.bBH.intent);
+    this.bBH.finish();
     AppMethodBeat.o(4213);
   }
 }

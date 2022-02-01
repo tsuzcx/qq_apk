@@ -1,122 +1,122 @@
 package com.tencent.mm.plugin.webview.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aoj;
+import com.tencent.mm.protocal.protobuf.arn;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.WebView;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "", "()V", "clientListener", "Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "getClientListener", "()Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "controller", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "getController", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "setController", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V", "controllerListener", "Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "getControllerListener", "()Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "screenOrientation", "", "getScreenOrientation", "()I", "attach", "", "enableMinimize", "", "getA8KeyReason", "url", "", "intercept", "Lcom/tencent/xweb/WebResourceResponse;", "webview", "Lcom/tencent/xweb/WebView;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "interceptLoadError", "errorCode", "description", "failingUrl", "overrideGetA8Key", "force", "reason", "overrideNeedSyncGetA8Key", "overrideProcessResult", "reqUrl", "resp", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "overrideReload", "overrideStartLoad", "overrideUrl", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "webView", "overrideUrlRedirect", "fullUrl", "shouldBeFinished", "OverrideUrlResult", "webview-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "", "()V", "clientListener", "Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "getClientListener", "()Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "controller", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "getController", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "setController", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V", "controllerListener", "Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "getControllerListener", "()Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "screenOrientation", "", "getScreenOrientation", "()I", "attach", "", "enableMinimize", "", "getA8KeyReason", "url", "", "intercept", "Lcom/tencent/xweb/WebResourceResponse;", "webview", "Lcom/tencent/xweb/WebView;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "interceptLoadError", "errorCode", "description", "failingUrl", "overrideGetA8Key", "force", "reason", "overrideNeedSyncGetA8Key", "overrideProcessResult", "reqUrl", "resp", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "overrideReload", "overrideStartLoad", "overrideUrl", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "webView", "overrideUrlRedirect", "fullUrl", "shouldBeFinished", "OverrideUrlResult", "webview-sdk_release"})
 public class j
 {
-  private final e ANr;
-  private final i ANs;
+  private final e CfJ;
+  private final i CfK;
   public BaseWebViewController controller;
   private final int screenOrientation = -1;
   
-  public boolean PW(String paramString)
+  public boolean Ui(String paramString)
   {
-    AppMethodBeat.i(189379);
+    AppMethodBeat.i(205511);
     k.h(paramString, "url");
-    AppMethodBeat.o(189379);
+    AppMethodBeat.o(205511);
     return false;
   }
   
-  public boolean avI(String paramString)
+  public int aAM(String paramString)
   {
-    AppMethodBeat.i(189375);
+    AppMethodBeat.i(205514);
     k.h(paramString, "url");
-    AppMethodBeat.o(189375);
-    return false;
-  }
-  
-  public boolean avJ(String paramString)
-  {
-    AppMethodBeat.i(189376);
-    k.h(paramString, "url");
-    AppMethodBeat.o(189376);
-    return false;
-  }
-  
-  public boolean avK(String paramString)
-  {
-    AppMethodBeat.i(189377);
-    k.h(paramString, "url");
-    AppMethodBeat.o(189377);
-    return true;
-  }
-  
-  public int avu(String paramString)
-  {
-    AppMethodBeat.i(189382);
-    k.h(paramString, "url");
-    AppMethodBeat.o(189382);
+    AppMethodBeat.o(205514);
     return -1;
+  }
+  
+  public boolean aBa(String paramString)
+  {
+    AppMethodBeat.i(205507);
+    k.h(paramString, "url");
+    AppMethodBeat.o(205507);
+    return false;
+  }
+  
+  public boolean aBb(String paramString)
+  {
+    AppMethodBeat.i(205508);
+    k.h(paramString, "url");
+    AppMethodBeat.o(205508);
+    return false;
+  }
+  
+  public boolean aBc(String paramString)
+  {
+    AppMethodBeat.i(205509);
+    k.h(paramString, "url");
+    AppMethodBeat.o(205509);
+    return true;
   }
   
   public WebResourceResponse b(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(189380);
+    AppMethodBeat.i(205512);
     k.h(paramWebView, "webview");
     k.h(paramWebResourceRequest, "request");
-    AppMethodBeat.o(189380);
+    AppMethodBeat.o(205512);
     return null;
   }
   
   public a c(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(189373);
+    AppMethodBeat.i(205505);
     k.h(paramWebView, "webView");
     k.h(paramWebResourceRequest, "request");
     paramWebView = new a(false, false);
-    AppMethodBeat.o(189373);
+    AppMethodBeat.o(205505);
     return paramWebView;
   }
   
   public boolean c(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189381);
+    AppMethodBeat.i(205513);
     k.h(paramWebView, "webview");
     k.h(paramString1, "description");
     k.h(paramString2, "failingUrl");
-    AppMethodBeat.o(189381);
+    AppMethodBeat.o(205513);
     return false;
   }
   
-  public boolean d(String paramString, aoj paramaoj)
+  public boolean d(String paramString, arn paramarn)
   {
-    AppMethodBeat.i(189378);
+    AppMethodBeat.i(205510);
     k.h(paramString, "reqUrl");
-    k.h(paramaoj, "resp");
-    AppMethodBeat.o(189378);
+    k.h(paramarn, "resp");
+    AppMethodBeat.o(205510);
     return false;
   }
   
-  public boolean ejE()
+  public boolean eyZ()
   {
     return false;
   }
   
-  public e ejF()
+  public e eza()
   {
-    return this.ANr;
+    return this.CfJ;
   }
   
-  public i ejG()
+  public i ezb()
   {
-    return this.ANs;
+    return this.CfK;
   }
   
   public final BaseWebViewController getController()
   {
-    AppMethodBeat.i(189370);
+    AppMethodBeat.i(205502);
     BaseWebViewController localBaseWebViewController = this.controller;
     if (localBaseWebViewController == null) {
-      k.aPZ("controller");
+      k.aVY("controller");
     }
-    AppMethodBeat.o(189370);
+    AppMethodBeat.o(205502);
     return localBaseWebViewController;
   }
   
@@ -125,42 +125,42 @@ public class j
     return this.screenOrientation;
   }
   
-  public final void i(BaseWebViewController paramBaseWebViewController)
+  public final void k(BaseWebViewController paramBaseWebViewController)
   {
-    AppMethodBeat.i(189371);
+    AppMethodBeat.i(205503);
     k.h(paramBaseWebViewController, "controller");
     this.controller = paramBaseWebViewController;
-    AppMethodBeat.o(189371);
+    AppMethodBeat.o(205503);
   }
   
   public a n(WebView paramWebView, String paramString)
   {
-    AppMethodBeat.i(189372);
+    AppMethodBeat.i(205504);
     k.h(paramWebView, "webView");
     k.h(paramString, "url");
     paramWebView = new a(false, false);
-    AppMethodBeat.o(189372);
+    AppMethodBeat.o(205504);
     return paramWebView;
   }
   
   public boolean u(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189374);
+    AppMethodBeat.i(205506);
     k.h(paramString1, "reqUrl");
     k.h(paramString2, "fullUrl");
-    AppMethodBeat.o(189374);
+    AppMethodBeat.o(205506);
     return false;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "", "override", "", "result", "(ZZ)V", "getOverride", "()Z", "getResult", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "webview-sdk_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "", "override", "", "result", "(ZZ)V", "getOverride", "()Z", "getResult", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "webview-sdk_release"})
   public static final class a
   {
-    final boolean ANt;
+    final boolean CfL;
     final boolean result;
     
     public a(boolean paramBoolean1, boolean paramBoolean2)
     {
-      this.ANt = paramBoolean1;
+      this.CfL = paramBoolean1;
       this.result = paramBoolean2;
     }
     
@@ -171,7 +171,7 @@ public class j
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.ANt != paramObject.ANt) || (this.result != paramObject.result)) {}
+          if ((this.CfL != paramObject.CfL) || (this.result != paramObject.result)) {}
         }
       }
       else {
@@ -187,9 +187,9 @@ public class j
     
     public final String toString()
     {
-      AppMethodBeat.i(189369);
-      String str = "OverrideUrlResult(override=" + this.ANt + ", result=" + this.result + ")";
-      AppMethodBeat.o(189369);
+      AppMethodBeat.i(205501);
+      String str = "OverrideUrlResult(override=" + this.CfL + ", result=" + this.result + ")";
+      AppMethodBeat.o(205501);
       return str;
     }
   }

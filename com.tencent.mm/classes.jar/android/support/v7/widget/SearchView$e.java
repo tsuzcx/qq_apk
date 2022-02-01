@@ -9,30 +9,30 @@ import android.view.ViewConfiguration;
 final class SearchView$e
   extends TouchDelegate
 {
-  private final View atR;
-  private final Rect atS;
-  private final Rect atT;
-  private final Rect atU;
-  private final int atV;
-  private boolean atW;
+  private final View auM;
+  private final Rect auN;
+  private final Rect auO;
+  private final Rect auP;
+  private final int auQ;
+  private boolean auR;
   
   public SearchView$e(Rect paramRect1, Rect paramRect2, View paramView)
   {
     super(paramRect1, paramView);
-    this.atV = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-    this.atS = new Rect();
-    this.atU = new Rect();
-    this.atT = new Rect();
+    this.auQ = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
+    this.auN = new Rect();
+    this.auP = new Rect();
+    this.auO = new Rect();
     a(paramRect1, paramRect2);
-    this.atR = paramView;
+    this.auM = paramView;
   }
   
   public final void a(Rect paramRect1, Rect paramRect2)
   {
-    this.atS.set(paramRect1);
-    this.atU.set(paramRect1);
-    this.atU.inset(-this.atV, -this.atV);
-    this.atT.set(paramRect2);
+    this.auN.set(paramRect1);
+    this.auP.set(paramRect1);
+    this.auP.inset(-this.auQ, -this.auQ);
+    this.auO.set(paramRect2);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -52,48 +52,48 @@ final class SearchView$e
       bool2 = bool3;
       if (bool1)
       {
-        if ((i == 0) || (this.atT.contains(j, k))) {
+        if ((i == 0) || (this.auO.contains(j, k))) {
           break label203;
         }
-        paramMotionEvent.setLocation(this.atR.getWidth() / 2, this.atR.getHeight() / 2);
+        paramMotionEvent.setLocation(this.auM.getWidth() / 2, this.auM.getHeight() / 2);
       }
       break;
     }
     for (;;)
     {
-      bool2 = this.atR.dispatchTouchEvent(paramMotionEvent);
+      bool2 = this.auM.dispatchTouchEvent(paramMotionEvent);
       return bool2;
-      if (!this.atS.contains(j, k)) {
+      if (!this.auN.contains(j, k)) {
         break;
       }
-      this.atW = true;
+      this.auR = true;
       i = 1;
       bool1 = true;
       break label57;
-      bool2 = this.atW;
+      bool2 = this.auR;
       bool1 = bool2;
       if (bool2)
       {
         bool1 = bool2;
-        if (!this.atU.contains(j, k))
+        if (!this.auP.contains(j, k))
         {
           i = 0;
           bool1 = bool2;
           break label57;
-          bool1 = this.atW;
-          this.atW = false;
+          bool1 = this.auR;
+          this.auR = false;
         }
       }
       i = 1;
       break label57;
       label203:
-      paramMotionEvent.setLocation(j - this.atT.left, k - this.atT.top);
+      paramMotionEvent.setLocation(j - this.auO.left, k - this.auO.top);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v7.widget.SearchView.e
  * JD-Core Version:    0.7.0.1
  */

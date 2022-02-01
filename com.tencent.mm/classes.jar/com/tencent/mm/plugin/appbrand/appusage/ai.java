@@ -10,11 +10,11 @@ import java.util.List;
 public abstract interface ai
   extends a, g
 {
-  public abstract boolean aU(String paramString, int paramInt);
+  public abstract boolean aY(String paramString, int paramInt);
   
   public abstract List<LocalUsageInfo> dC(int paramInt1, int paramInt2);
   
-  public abstract List<LocalUsageInfo> qL(int paramInt);
+  public abstract List<LocalUsageInfo> ry(int paramInt);
 }
 
 

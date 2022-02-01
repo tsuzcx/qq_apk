@@ -5,17 +5,17 @@ import com.tencent.mm.vfs.e;
 
 public abstract interface a
 {
-  public abstract void C(e parame);
-  
-  public abstract f I(String paramString, long paramLong);
+  public abstract void B(e parame);
   
   public abstract f J(String paramString, long paramLong);
   
-  public abstract long Jh(String paramString);
+  public abstract f K(String paramString, long paramLong);
   
-  public abstract c Ji(String paramString);
+  public abstract long Nl(String paramString);
   
-  public abstract long Jj(String paramString);
+  public abstract c Nm(String paramString);
+  
+  public abstract long Nn(String paramString);
   
   public abstract e a(String paramString, long paramLong1, long paramLong2, c paramc, long paramLong3);
   
@@ -25,7 +25,7 @@ public abstract interface a
   
   public abstract boolean isCached(String paramString);
   
-  public abstract long vr();
+  public abstract long vi();
   
   public static abstract interface a
   {

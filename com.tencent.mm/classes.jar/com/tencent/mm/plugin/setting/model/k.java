@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.coy;
-import com.tencent.mm.protocal.protobuf.coz;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cuf;
+import com.tencent.mm.protocal.protobuf.cug;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class k
   extends n
@@ -28,17 +28,17 @@ public final class k
   {
     AppMethodBeat.i(73780);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new coy();
-    ((b.a)localObject).gUV = new coz();
+    ((b.a)localObject).hvt = new cuf();
+    ((b.a)localObject).hvu = new cug();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sendfeedback";
     ((b.a)localObject).funcId = 153;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (coy)this.rr.gUS.gUX;
-    ((coy)localObject).EiR = paramString1;
-    ((coy)localObject).gKr = paramString2;
-    ((coy)localObject).DIk = paramInt;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (cuf)this.rr.hvr.hvw;
+    ((cuf)localObject).FFP = paramString1;
+    ((cuf)localObject).hkR = paramString2;
+    ((cuf)localObject).FdF = paramInt;
     AppMethodBeat.o(73780);
   }
   
@@ -59,14 +59,14 @@ public final class k
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(73782);
-    ad.d("MicroMsg.NetSendSceneFeedBack", "onGYNetEnd type:" + paramInt2 + " code:" + paramInt3);
+    ac.d("MicroMsg.NetSendSceneFeedBack", "onGYNetEnd type:" + paramInt2 + " code:" + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(73782);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.k
  * JD-Core Version:    0.7.0.1
  */

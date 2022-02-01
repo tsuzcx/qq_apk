@@ -12,7 +12,7 @@ public final class cq
   
   private cq(byte paramByte)
   {
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
   }
 }

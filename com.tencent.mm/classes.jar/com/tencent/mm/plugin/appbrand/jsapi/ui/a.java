@@ -6,31 +6,31 @@ import com.tencent.mm.plugin.appbrand.jsapi.au;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.page.d;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.ui.ad;
-import com.tencent.mm.plugin.appbrand.ui.y;
+import com.tencent.mm.plugin.appbrand.ui.ac;
+import com.tencent.mm.plugin.appbrand.ui.x;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bt;
 import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/JsApiGetMenuButtonBoundingClientRectWC;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiGetMenuButtonBoundingClientRect;", "()V", "wechatIMPL", "Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider;", "provideLayoutPropertiesProvider", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "Companion", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/JsApiGetMenuButtonBoundingClientRectWC;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiGetMenuButtonBoundingClientRect;", "()V", "wechatIMPL", "Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider;", "provideLayoutPropertiesProvider", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "Companion", "plugin-appbrand-integration_release"})
 public final class a
   extends au
 {
   @Deprecated
-  public static final a klT;
-  private y klS;
+  public static final a kNl;
+  private x kNk;
   
   static
   {
     boolean bool = false;
     AppMethodBeat.i(180478);
-    klT = new a((byte)0);
-    if (bu.eGT()) {
+    kNl = new a((byte)0);
+    if (bt.eWo()) {
       bool = true;
     }
-    au.fM(bool);
+    au.gi(bool);
     AppMethodBeat.o(180478);
   }
   
@@ -40,11 +40,11 @@ public final class a
     AppMethodBeat.o(175187);
   }
   
-  public final y h(q paramq)
+  public final x h(q paramq)
   {
     AppMethodBeat.i(175186);
     k.h(paramq, "service");
-    if (((a)this).klS == null)
+    if (((a)this).kNk == null)
     {
       paramq = paramq.getRuntime();
       if (paramq == null)
@@ -54,25 +54,25 @@ public final class a
         throw paramq;
       }
       Object localObject = (o)paramq;
-      paramq = ((o)localObject).aMQ();
+      paramq = ((o)localObject).aTG();
       localObject = ((o)localObject).getAppContext();
       k.g(localObject, "rt.appContext");
-      this.klS = ((y)new ad(paramq.d((Context)localObject, b.class)));
+      this.kNk = ((x)new ac(paramq.d((Context)localObject, b.class)));
     }
-    paramq = this.klS;
+    paramq = this.kNk;
     if (paramq == null) {
-      k.aPZ("wechatIMPL");
+      k.aVY("wechatIMPL");
     }
     AppMethodBeat.o(175186);
     return paramq;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/JsApiGetMenuButtonBoundingClientRectWC$Companion;", "", "()V", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/JsApiGetMenuButtonBoundingClientRectWC$Companion;", "", "()V", "plugin-appbrand-integration_release"})
   static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ui.a
  * JD-Core Version:    0.7.0.1
  */

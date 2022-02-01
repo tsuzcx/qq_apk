@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.expt.hellhound.core.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.aw;
 
 public final class b
 {
-  public static void VO(String paramString)
+  public static void aad(String paramString)
   {
     AppMethodBeat.i(121859);
     if (TextUtils.isEmpty(paramString))
@@ -14,7 +14,7 @@ public final class b
       AppMethodBeat.o(121859);
       return;
     }
-    ax.aFC("_hellhound_mmkv").putLong(paramString, -1L);
+    aw.aKT("_hellhound_mmkv").putLong(paramString, -1L);
     AppMethodBeat.o(121859);
   }
   
@@ -26,7 +26,7 @@ public final class b
       AppMethodBeat.o(121858);
       return null;
     }
-    paramString = ax.aFC("_hellhound_mmkv").decodeBytes(paramString);
+    paramString = aw.aKT("_hellhound_mmkv").decodeBytes(paramString);
     AppMethodBeat.o(121858);
     return paramString;
   }
@@ -39,7 +39,7 @@ public final class b
       AppMethodBeat.o(121861);
       return null;
     }
-    paramString = ax.aFC("_hellhound_mmkv").getString(paramString, null);
+    paramString = aw.aKT("_hellhound_mmkv").getString(paramString, null);
     AppMethodBeat.o(121861);
     return paramString;
   }
@@ -52,7 +52,7 @@ public final class b
       AppMethodBeat.o(121857);
       return;
     }
-    ax.aFC("_hellhound_mmkv").encode(paramString, paramArrayOfByte);
+    aw.aKT("_hellhound_mmkv").encode(paramString, paramArrayOfByte);
     AppMethodBeat.o(121857);
   }
   
@@ -68,13 +68,13 @@ public final class b
     if (paramString2 == null) {
       str = "";
     }
-    ax.aFC("_hellhound_mmkv").putString(paramString1, str);
+    aw.aKT("_hellhound_mmkv").putString(paramString1, str);
     AppMethodBeat.o(121860);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.a.b
  * JD-Core Version:    0.7.0.1
  */

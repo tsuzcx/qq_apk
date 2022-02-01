@@ -9,47 +9,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements a.a
 {
-  private final com.bumptech.glide.c.b.a.b azE;
-  private final e azz;
+  private final e aAt;
+  private final com.bumptech.glide.c.b.a.b aAy;
   
   public b(e parame, com.bumptech.glide.c.b.a.b paramb)
   {
-    this.azz = parame;
-    this.azE = paramb;
+    this.aAt = parame;
+    this.aAy = paramb;
   }
   
   public final Bitmap a(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
     AppMethodBeat.i(77476);
-    paramConfig = this.azz.g(paramInt1, paramInt2, paramConfig);
+    paramConfig = this.aAt.g(paramInt1, paramInt2, paramConfig);
     AppMethodBeat.o(77476);
     return paramConfig;
   }
   
-  public final byte[] dl(int paramInt)
+  public final byte[] dk(int paramInt)
   {
     AppMethodBeat.i(77478);
-    if (this.azE == null)
+    if (this.aAy == null)
     {
       arrayOfByte = new byte[paramInt];
       AppMethodBeat.o(77478);
       return arrayOfByte;
     }
-    byte[] arrayOfByte = (byte[])this.azE.a(paramInt, [B.class);
+    byte[] arrayOfByte = (byte[])this.aAy.a(paramInt, [B.class);
     AppMethodBeat.o(77478);
     return arrayOfByte;
   }
   
-  public final int[] dm(int paramInt)
+  public final int[] dl(int paramInt)
   {
     AppMethodBeat.i(77480);
-    if (this.azE == null)
+    if (this.aAy == null)
     {
       arrayOfInt = new int[paramInt];
       AppMethodBeat.o(77480);
       return arrayOfInt;
     }
-    int[] arrayOfInt = (int[])this.azE.a(paramInt, [I.class);
+    int[] arrayOfInt = (int[])this.aAy.a(paramInt, [I.class);
     AppMethodBeat.o(77480);
     return arrayOfInt;
   }
@@ -57,37 +57,37 @@ public final class b
   public final void f(Bitmap paramBitmap)
   {
     AppMethodBeat.i(77477);
-    this.azz.g(paramBitmap);
+    this.aAt.g(paramBitmap);
     AppMethodBeat.o(77477);
   }
   
   public final void k(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(77479);
-    if (this.azE == null)
+    if (this.aAy == null)
     {
       AppMethodBeat.o(77479);
       return;
     }
-    this.azE.put(paramArrayOfByte);
+    this.aAy.put(paramArrayOfByte);
     AppMethodBeat.o(77479);
   }
   
-  public final void n(int[] paramArrayOfInt)
+  public final void o(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(77481);
-    if (this.azE == null)
+    if (this.aAy == null)
     {
       AppMethodBeat.o(77481);
       return;
     }
-    this.azE.put(paramArrayOfInt);
+    this.aAy.put(paramArrayOfInt);
     AppMethodBeat.o(77481);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.e.b
  * JD-Core Version:    0.7.0.1
  */

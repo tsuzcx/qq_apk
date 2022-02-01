@@ -7,12 +7,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i
 {
-  private static final int[] bdl;
+  private static final int[] bdX;
   
   static
   {
     AppMethodBeat.i(92128);
-    bdl = new int[] { x.aY("isom"), x.aY("iso2"), x.aY("iso3"), x.aY("iso4"), x.aY("iso5"), x.aY("iso6"), x.aY("avc1"), x.aY("hvc1"), x.aY("hev1"), x.aY("mp41"), x.aY("mp42"), x.aY("3g2a"), x.aY("3g2b"), x.aY("3gr6"), x.aY("3gs6"), x.aY("3ge6"), x.aY("3gg6"), x.aY("M4V "), x.aY("M4A "), x.aY("f4v "), x.aY("kddi"), x.aY("M4VP"), x.aY("qt  "), x.aY("MSNV") };
+    bdX = new int[] { x.aQ("isom"), x.aQ("iso2"), x.aQ("iso3"), x.aQ("iso4"), x.aQ("iso5"), x.aQ("iso6"), x.aQ("avc1"), x.aQ("hvc1"), x.aQ("hev1"), x.aQ("mp41"), x.aQ("mp42"), x.aQ("3g2a"), x.aQ("3g2b"), x.aQ("3gr6"), x.aQ("3gs6"), x.aQ("3ge6"), x.aQ("3gg6"), x.aQ("M4V "), x.aQ("M4A "), x.aQ("f4v "), x.aQ("kddi"), x.aQ("M4VP"), x.aQ("qt  "), x.aQ("MSNV") };
     AppMethodBeat.o(92128);
   }
   
@@ -45,14 +45,14 @@ final class i
         m = 8;
         localm.reset(8);
         paramf.b(localm.data, 0, 8);
-        l2 = localm.df();
+        l2 = localm.dm();
         i1 = localm.readInt();
         if (l2 == 1L)
         {
           k = 16;
           paramf.b(localm.data, 8, 8);
-          localm.fk(16);
-          l1 = localm.vS();
+          localm.eW(16);
+          l1 = localm.vH();
         }
         while (l1 < k)
         {
@@ -74,10 +74,10 @@ final class i
         }
         m = i + k;
         i = m;
-        if (i1 == a.bai) {
+        if (i1 == a.baU) {
           continue;
         }
-        if ((i1 != a.bar) && (i1 != a.bat)) {
+        if ((i1 != a.bbd) && (i1 != a.bbf)) {
           break label283;
         }
         bool1 = true;
@@ -94,7 +94,7 @@ final class i
       } while (m + l1 - k >= n);
       int k = (int)(l1 - k);
       i = m + k;
-      if (i1 == a.aZH)
+      if (i1 == a.bat)
       {
         if (k < 8)
         {
@@ -109,7 +109,7 @@ final class i
         if (m < i1)
         {
           if (m == 1) {
-            localm.fl(4);
+            localm.eX(4);
           }
           while (!ej(localm.readInt()))
           {
@@ -127,7 +127,7 @@ final class i
       }
       else if (k != 0)
       {
-        paramf.dS(k);
+        paramf.dR(k);
       }
     }
     AppMethodBeat.o(92126);
@@ -137,12 +137,12 @@ final class i
   private static boolean ej(int paramInt)
   {
     AppMethodBeat.i(92127);
-    if (paramInt >>> 8 == x.aY("3gp"))
+    if (paramInt >>> 8 == x.aQ("3gp"))
     {
       AppMethodBeat.o(92127);
       return true;
     }
-    int[] arrayOfInt = bdl;
+    int[] arrayOfInt = bdX;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)

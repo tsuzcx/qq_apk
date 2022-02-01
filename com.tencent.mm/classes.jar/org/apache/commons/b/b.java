@@ -9,150 +9,150 @@ import org.apache.commons.b.c.a;
 
 public final class b
 {
-  public static final String KkJ;
-  public static final String KkK;
-  private static final Map KkL;
-  private static final Map KkM;
-  private static final Map KkN;
-  private static final Map KkO;
-  static Class KkP;
-  static Class KkQ;
-  static Class KkR;
-  static Class KkS;
-  static Class KkT;
-  static Class KkU;
-  static Class KkV;
-  static Class KkW;
+  static Class LYA;
+  static Class LYB;
+  static Class LYC;
+  static Class LYD;
+  static Class LYE;
+  static Class LYF;
+  public static final String LYs;
+  public static final String LYt;
+  private static final Map LYu;
+  private static final Map LYv;
+  private static final Map LYw;
+  private static final Map LYx;
+  static Class LYy;
+  static Class LYz;
   
   static
   {
     AppMethodBeat.i(40703);
-    KkJ = ".";
-    KkK = "$";
+    LYs = ".";
+    LYt = "$";
     Object localObject2 = new HashMap();
-    KkL = (Map)localObject2;
+    LYu = (Map)localObject2;
     Class localClass = Boolean.TYPE;
     Object localObject1;
-    if (KkP == null)
+    if (LYy == null)
     {
-      localObject1 = aRo("java.lang.Boolean");
-      KkP = (Class)localObject1;
+      localObject1 = aXo("java.lang.Boolean");
+      LYy = (Class)localObject1;
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = KkL;
+      localObject2 = LYu;
       localClass = Byte.TYPE;
-      if (KkQ != null) {
+      if (LYz != null) {
         break label389;
       }
-      localObject1 = aRo("java.lang.Byte");
-      KkQ = (Class)localObject1;
+      localObject1 = aXo("java.lang.Byte");
+      LYz = (Class)localObject1;
       label80:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = KkL;
+      localObject2 = LYu;
       localClass = Character.TYPE;
-      if (KkR != null) {
+      if (LYA != null) {
         break label396;
       }
-      localObject1 = aRo("java.lang.Character");
-      KkR = (Class)localObject1;
+      localObject1 = aXo("java.lang.Character");
+      LYA = (Class)localObject1;
       label113:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = KkL;
+      localObject2 = LYu;
       localClass = Short.TYPE;
-      if (KkS != null) {
+      if (LYB != null) {
         break label403;
       }
-      localObject1 = aRo("java.lang.Short");
-      KkS = (Class)localObject1;
+      localObject1 = aXo("java.lang.Short");
+      LYB = (Class)localObject1;
       label146:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = KkL;
+      localObject2 = LYu;
       localClass = Integer.TYPE;
-      if (KkT != null) {
+      if (LYC != null) {
         break label410;
       }
-      localObject1 = aRo("java.lang.Integer");
-      KkT = (Class)localObject1;
+      localObject1 = aXo("java.lang.Integer");
+      LYC = (Class)localObject1;
       label179:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = KkL;
+      localObject2 = LYu;
       localClass = Long.TYPE;
-      if (KkU != null) {
+      if (LYD != null) {
         break label417;
       }
-      localObject1 = aRo("java.lang.Long");
-      KkU = (Class)localObject1;
+      localObject1 = aXo("java.lang.Long");
+      LYD = (Class)localObject1;
       label212:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = KkL;
+      localObject2 = LYu;
       localClass = Double.TYPE;
-      if (KkV != null) {
+      if (LYE != null) {
         break label424;
       }
-      localObject1 = aRo("java.lang.Double");
-      KkV = (Class)localObject1;
+      localObject1 = aXo("java.lang.Double");
+      LYE = (Class)localObject1;
       label245:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = KkL;
+      localObject2 = LYu;
       localClass = Float.TYPE;
-      if (KkW != null) {
+      if (LYF != null) {
         break label431;
       }
-      localObject1 = aRo("java.lang.Float");
-      KkW = (Class)localObject1;
+      localObject1 = aXo("java.lang.Float");
+      LYF = (Class)localObject1;
     }
     for (;;)
     {
       ((Map)localObject2).put(localClass, localObject1);
-      localObject1 = KkL;
+      localObject1 = LYu;
       localObject2 = Void.TYPE;
       ((Map)localObject1).put(localObject2, localObject2);
-      KkM = new HashMap();
-      localObject1 = KkL.keySet().iterator();
+      LYv = new HashMap();
+      localObject1 = LYu.keySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Class)((Iterator)localObject1).next();
-        localClass = (Class)KkL.get(localObject2);
+        localClass = (Class)LYu.get(localObject2);
         if (!localObject2.equals(localClass)) {
-          KkM.put(localClass, localObject2);
+          LYv.put(localClass, localObject2);
         }
       }
-      localObject1 = KkP;
+      localObject1 = LYy;
       break;
       label389:
-      localObject1 = KkQ;
+      localObject1 = LYz;
       break label80;
       label396:
-      localObject1 = KkR;
+      localObject1 = LYA;
       break label113;
       label403:
-      localObject1 = KkS;
+      localObject1 = LYB;
       break label146;
       label410:
-      localObject1 = KkT;
+      localObject1 = LYC;
       break label179;
       label417:
-      localObject1 = KkU;
+      localObject1 = LYD;
       break label212;
       label424:
-      localObject1 = KkV;
+      localObject1 = LYE;
       break label245;
       label431:
-      localObject1 = KkW;
+      localObject1 = LYF;
     }
-    KkN = new HashMap();
-    KkO = new HashMap();
-    mL("int", "I");
-    mL("boolean", "Z");
-    mL("float", "F");
-    mL("long", "J");
-    mL("short", "S");
-    mL("byte", "B");
-    mL("double", "D");
-    mL("char", "C");
+    LYw = new HashMap();
+    LYx = new HashMap();
+    nl("int", "I");
+    nl("boolean", "Z");
+    nl("float", "F");
+    nl("long", "J");
+    nl("short", "S");
+    nl("byte", "B");
+    nl("double", "D");
+    nl("char", "C");
     AppMethodBeat.o(40703);
   }
   
-  private static Class aRo(String paramString)
+  private static Class aXo(String paramString)
   {
     AppMethodBeat.i(40702);
     try
@@ -169,7 +169,7 @@ public final class b
     }
   }
   
-  public static String bz(Class paramClass)
+  public static String bC(Class paramClass)
   {
     int i = 0;
     AppMethodBeat.i(40701);
@@ -196,7 +196,7 @@ public final class b
       while (((String)localObject).charAt(0) == '[')
       {
         localObject = ((String)localObject).substring(1);
-        locala.aRA("[]");
+        locala.aXA("[]");
       }
       paramClass = (Class)localObject;
       if (((String)localObject).charAt(0) == 'L')
@@ -208,8 +208,8 @@ public final class b
       }
     }
     localObject = paramClass;
-    if (KkO.containsKey(paramClass)) {
-      localObject = (String)KkO.get(paramClass);
+    if (LYx.containsKey(paramClass)) {
+      localObject = (String)LYx.get(paramClass);
     }
     int j = ((String)localObject).lastIndexOf('.');
     if (j == -1) {}
@@ -228,17 +228,17 @@ public final class b
     }
   }
   
-  private static void mL(String paramString1, String paramString2)
+  private static void nl(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40700);
-    KkN.put(paramString1, paramString2);
-    KkO.put(paramString2, paramString1);
+    LYw.put(paramString1, paramString2);
+    LYx.put(paramString2, paramString1);
     AppMethodBeat.o(40700);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.apache.commons.b.b
  * JD-Core Version:    0.7.0.1
  */

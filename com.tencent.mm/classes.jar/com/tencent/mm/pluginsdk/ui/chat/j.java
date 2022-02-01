@@ -7,7 +7,7 @@ public abstract interface j
 {
   public abstract void B(EmojiInfo paramEmojiInfo);
   
-  public abstract void cOw();
+  public abstract void dcf();
 }
 
 

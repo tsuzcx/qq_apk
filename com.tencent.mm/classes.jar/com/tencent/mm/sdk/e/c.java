@@ -4,8 +4,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
@@ -125,7 +125,7 @@ public abstract class c
     }
     catch (Exception paramContentValues)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.IAutoDBItem", paramContentValues, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.IAutoDBItem", paramContentValues, "", new Object[0]);
       return false;
     }
     return true;
@@ -152,16 +152,16 @@ public abstract class c
     if (i < paramArrayOfField.length)
     {
       Object localObject = paramArrayOfField[i];
-      String str = b.aX(((Field)localObject).getType());
+      String str = b.aY(((Field)localObject).getType());
       if (str == null) {
-        ad.e("MicroMsg.SDK.IAutoDBItem", "failed identify on column: " + ((Field)localObject).getName() + ", skipped");
+        ac.e("MicroMsg.SDK.IAutoDBItem", "failed identify on column: " + ((Field)localObject).getName() + ", skipped");
       }
       for (;;)
       {
         i += 1;
         break;
         localObject = getColName((Field)localObject);
-        if (!bt.isNullOrNil((String)localObject)) {
+        if (!bs.isNullOrNil((String)localObject)) {
           localHashMap.put(localObject, str);
         }
       }
@@ -191,7 +191,7 @@ public abstract class c
     {
       arrayOfString[i] = getColName(paramArrayOfField[i]);
       String str = "getFullColumns failed:" + paramArrayOfField[i].getName();
-      if (!bt.isNullOrNil(arrayOfString[i])) {}
+      if (!bs.isNullOrNil(arrayOfString[i])) {}
       for (boolean bool = true;; bool = false)
       {
         Assert.assertTrue(str, bool);
@@ -214,26 +214,26 @@ public abstract class c
     if (i < paramArrayOfField.length)
     {
       localField = paramArrayOfField[i];
-      localObject = b.aX(localField.getType());
+      localObject = b.aY(localField.getType());
       if (localObject == null) {
-        ad.e("MicroMsg.SDK.IAutoDBItem", "failed identify on column: " + localField.getName() + ", skipped");
+        ac.e("MicroMsg.SDK.IAutoDBItem", "failed identify on column: " + localField.getName() + ", skipped");
       }
       do
       {
         i += 1;
         break;
         str2 = getColName(localField);
-      } while (bt.isNullOrNil(str2));
+      } while (bs.isNullOrNil(str2));
       str1 = "";
       if (!localField.isAnnotationPresent(i.class)) {
         break label244;
       }
-      str1 = " default '" + ((i)localField.getAnnotation(i.class)).eHf() + "' ";
+      str1 = " default '" + ((i)localField.getAnnotation(i.class)).eWA() + "' ";
     }
     label190:
     label232:
     label244:
-    for (int j = ((i)localField.getAnnotation(i.class)).eHg();; j = 0)
+    for (int j = ((i)localField.getAnnotation(i.class)).eWB();; j = 0)
     {
       localObject = new StringBuilder().append(str2).append(" ").append((String)localObject).append(str1);
       if (j == 1)
@@ -257,7 +257,7 @@ public abstract class c
   
   public static Field[] getValidFields(Class<?> paramClass)
   {
-    return initAutoDBInfo(paramClass).EYt;
+    return initAutoDBInfo(paramClass).GvF;
   }
   
   public static a initAutoDBInfo(Class<?> paramClass)
@@ -282,13 +282,13 @@ public abstract class c
         if (!localField.isAnnotationPresent(i.class)) {
           break label172;
         }
-        if (((i)localField.getAnnotation(i.class)).eHg() == 1) {
-          locala.EYu = paramClass;
+        if (((i)localField.getAnnotation(i.class)).eWB() == 1) {
+          locala.GvG = paramClass;
         }
       }
       for (;;)
       {
-        if (!bt.isNullOrNil(paramClass))
+        if (!bs.isNullOrNil(paramClass))
         {
           if (paramClass.equals("rowid")) {
             Assert.assertTrue("field_rowid reserved by MAutoDBItem, change now!", false);
@@ -306,10 +306,10 @@ public abstract class c
         } while (!str.startsWith("field_"));
       }
     }
-    locala.EYt = ((Field[])localLinkedList.toArray(new Field[0]));
-    locala.columns = getFullColumns(locala.EYt);
-    locala.EYv = getColsMap(locala.EYt);
-    locala.sql = getSql(locala.EYt);
+    locala.GvF = ((Field[])localLinkedList.toArray(new Field[0]));
+    locala.columns = getFullColumns(locala.GvF);
+    locala.GvH = getColsMap(locala.GvF);
+    locala.sql = getSql(locala.GvF);
     return locala;
   }
   
@@ -321,16 +321,16 @@ public abstract class c
   
   public static final class a
   {
-    public Field[] EYt;
-    public String EYu;
-    public Map<String, String> EYv;
+    public Field[] GvF;
+    public String GvG;
+    public Map<String, String> GvH;
     public String[] columns;
     public String sql;
     
     public a()
     {
       AppMethodBeat.i(158082);
-      this.EYv = new HashMap();
+      this.GvH = new HashMap();
       AppMethodBeat.o(158082);
     }
   }

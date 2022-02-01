@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a HPV = null;
+  private static a Jqq = null;
   
   public static void a(a parama)
   {
-    HPV = parama;
+    Jqq = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74938);
-    if (HPV != null) {
-      HPV.d(paramString1, paramString2, paramVarArgs);
+    if (Jqq != null) {
+      Jqq.d(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74938);
   }
@@ -23,8 +23,8 @@ public final class a
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74935);
-    if (HPV != null) {
-      HPV.e(paramString1, paramString2, paramVarArgs);
+    if (Jqq != null) {
+      Jqq.e(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74935);
   }
@@ -32,8 +32,8 @@ public final class a
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74937);
-    if (HPV != null) {
-      HPV.i(paramString1, paramString2, paramVarArgs);
+    if (Jqq != null) {
+      Jqq.i(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74937);
   }
@@ -41,8 +41,8 @@ public final class a
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74939);
-    if (HPV != null) {
-      HPV.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (Jqq != null) {
+      Jqq.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74939);
   }
@@ -50,8 +50,8 @@ public final class a
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(74936);
-    if (HPV != null) {
-      HPV.w(paramString1, paramString2, paramVarArgs);
+    if (Jqq != null) {
+      Jqq.w(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(74936);
   }

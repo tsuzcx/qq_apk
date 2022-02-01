@@ -21,23 +21,23 @@ import java.util.List;
 
 public final class b
 {
-  WeakReference<com.tencent.toybrick.b.b> IHe;
-  public Runnable IHf;
+  WeakReference<com.tencent.toybrick.b.b> Ktp;
+  public Runnable Ktq;
   public Handler mMainHandler;
   
   public b(com.tencent.toybrick.b.b paramb)
   {
     AppMethodBeat.i(159970);
     this.mMainHandler = new Handler(Looper.getMainLooper());
-    this.IHe = new WeakReference(paramb);
+    this.Ktp = new WeakReference(paramb);
     AppMethodBeat.o(159970);
   }
   
   final class a
   {
-    public c.b IHh;
-    public ArrayList<g> IHi;
-    public HashMap<g, Integer> IHj;
+    public c.b Kts;
+    public ArrayList<g> Ktt;
+    public HashMap<g, Integer> Ktu;
     
     private a() {}
   }
@@ -45,17 +45,17 @@ public final class b
   final class b
     implements Runnable
   {
-    boolean IGY;
-    private LinkedList<g> IHk;
-    private ArrayList<g> IHl;
+    boolean Ktj;
+    private LinkedList<g> Ktv;
+    private ArrayList<g> Ktw;
     
     public b(LinkedList<g> paramLinkedList, ArrayList<g> paramArrayList)
     {
       AppMethodBeat.i(159967);
-      this.IGY = paramLinkedList;
-      this.IHk = new LinkedList(paramArrayList);
+      this.Ktj = paramLinkedList;
+      this.Ktv = new LinkedList(paramArrayList);
       Collection localCollection;
-      this.IHl = new ArrayList(localCollection);
+      this.Ktw = new ArrayList(localCollection);
       AppMethodBeat.o(159967);
     }
     
@@ -63,7 +63,7 @@ public final class b
     {
       AppMethodBeat.i(159969);
       paramList.clear();
-      Object localObject1 = this.IHk.iterator();
+      Object localObject1 = this.Ktv.iterator();
       Object localObject2;
       while (((Iterator)localObject1).hasNext())
       {
@@ -74,22 +74,22 @@ public final class b
         paramHashMap.put(localObject2, Integer.valueOf(paramHashMap.size()));
       }
       Collections.sort(paramList);
-      if (this.IGY)
+      if (this.Ktj)
       {
         localObject2 = paramList.iterator();
         int i = 0;
         for (paramHashMap = null; ((Iterator)localObject2).hasNext(); paramHashMap = (HashMap<g, Integer>)localObject1)
         {
           localObject1 = (g)((Iterator)localObject2).next();
-          if (((g)localObject1).fpi() == g.b.IGV)
+          if (((g)localObject1).fHq() == g.b.Ktg)
           {
-            ((g)localObject1).IGN = false;
+            ((g)localObject1).KsY = false;
             if (paramHashMap != null) {
-              paramHashMap.IGN = false;
+              paramHashMap.KsY = false;
             }
           }
           if (i == paramList.size() - 1) {
-            ((g)localObject1).IGN = false;
+            ((g)localObject1).KsY = false;
           }
           i += 1;
         }
@@ -103,22 +103,22 @@ public final class b
       ArrayList localArrayList = new ArrayList();
       HashMap localHashMap = new HashMap();
       b(localArrayList, localHashMap);
-      c.b localb = c.a(new com.tencent.toybrick.a.a(this.IHl, localArrayList), true);
+      c.b localb = c.a(new com.tencent.toybrick.a.a(this.Ktw, localArrayList), true);
       final b.a locala = new b.a(b.this, (byte)0);
-      locala.IHj = localHashMap;
-      locala.IHh = localb;
-      locala.IHi = localArrayList;
+      locala.Ktu = localHashMap;
+      locala.Kts = localb;
+      locala.Ktt = localArrayList;
       b.this.mMainHandler.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(159966);
-          com.tencent.toybrick.b.b localb = (com.tencent.toybrick.b.b)b.this.IHe.get();
+          com.tencent.toybrick.b.b localb = (com.tencent.toybrick.b.b)b.this.Ktp.get();
           if (localb != null)
           {
-            localb.IFW = locala.IHi;
-            localb.IFY = locala.IHj;
-            locala.IHh.a(localb);
+            localb.Ksh = locala.Ktt;
+            localb.Ksj = locala.Ktu;
+            locala.Kts.a(localb);
           }
           AppMethodBeat.o(159966);
         }

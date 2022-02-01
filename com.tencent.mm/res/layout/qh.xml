@@ -11,7 +11,7 @@
                 <ImageView android:id="@id/alb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:maxWidth="@dimen/a4" />
                 <ImageView android:id="@id/ald" android:background="@drawable/ks" android:layout_width="0.0dip" android:layout_height="0.0dip" />
                 <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/gj_" android:background="@drawable/ks" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ProgressBar android:id="@id/gj8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c0" style="@style/a4r" />
+                    <ProgressBar android:id="@id/gj8" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4r" />
                     <TextView android:textColor="@color/a_u" android:id="@id/gj9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
                 </LinearLayout>
             </FrameLayout>

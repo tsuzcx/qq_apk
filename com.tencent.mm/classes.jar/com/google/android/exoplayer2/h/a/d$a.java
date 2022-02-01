@@ -2,7 +2,7 @@ package com.google.android.exoplayer2.h.a;
 
 public abstract interface d$a
 {
-  public abstract void m(long paramLong1, long paramLong2);
+  public abstract void k(long paramLong1, long paramLong2);
 }
 
 

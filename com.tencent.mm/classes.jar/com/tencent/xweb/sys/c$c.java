@@ -1,38 +1,61 @@
 package com.tencent.xweb.sys;
 
-import android.webkit.JsPromptResult;
+import android.annotation.TargetApi;
+import android.webkit.WebChromeClient.FileChooserParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.n;
+import com.tencent.xweb.x.a;
 
 public final class c$c
-  extends n
+  extends x.a
 {
-  public JsPromptResult IQV;
+  public WebChromeClient.FileChooserParams KDq;
   
-  public c$c(JsPromptResult paramJsPromptResult)
+  public c$c(WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    this.IQV = paramJsPromptResult;
+    this.KDq = paramFileChooserParams;
   }
   
-  public final void cancel()
+  @TargetApi(21)
+  public final String[] getAcceptTypes()
   {
-    AppMethodBeat.i(153663);
-    if (this.IQV != null) {
-      this.IQV.cancel();
+    AppMethodBeat.i(153660);
+    if (this.KDq != null)
+    {
+      String[] arrayOfString = this.KDq.getAcceptTypes();
+      AppMethodBeat.o(153660);
+      return arrayOfString;
     }
-    AppMethodBeat.o(153663);
+    AppMethodBeat.o(153660);
+    return new String[0];
   }
   
-  public final void confirm()
+  @TargetApi(21)
+  public final int getMode()
   {
-    AppMethodBeat.i(153662);
-    if (this.IQV != null) {
-      this.IQV.confirm();
+    AppMethodBeat.i(153659);
+    if (this.KDq != null)
+    {
+      int i = this.KDq.getMode();
+      AppMethodBeat.o(153659);
+      return i;
     }
-    AppMethodBeat.o(153662);
+    AppMethodBeat.o(153659);
+    return 0;
   }
   
-  public final void confirmWithResult(String paramString) {}
+  @TargetApi(21)
+  public final boolean isCaptureEnabled()
+  {
+    AppMethodBeat.i(153661);
+    if (this.KDq != null)
+    {
+      boolean bool = this.KDq.isCaptureEnabled();
+      AppMethodBeat.o(153661);
+      return bool;
+    }
+    AppMethodBeat.o(153661);
+    return false;
+  }
 }
 
 

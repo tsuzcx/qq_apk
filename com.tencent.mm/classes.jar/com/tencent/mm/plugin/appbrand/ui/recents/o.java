@@ -11,24 +11,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class o
   extends ae
 {
-  private final LinearLayoutManager lJG;
-  private final int lJH;
-  private final int lJI;
+  private final LinearLayoutManager mlD;
+  private final int mlE;
+  private final int mlF;
   
   public o(Context paramContext, LinearLayoutManager paramLinearLayoutManager)
   {
     super(paramContext);
     AppMethodBeat.i(49269);
-    this.lJG = paramLinearLayoutManager;
-    this.lJH = 3000;
-    this.lJI = Math.round(paramContext.getResources().getDisplayMetrics().heightPixels * 0.75F);
+    this.mlD = paramLinearLayoutManager;
+    this.mlE = 3000;
+    this.mlF = Math.round(paramContext.getResources().getDisplayMetrics().heightPixels * 0.75F);
     AppMethodBeat.o(49269);
   }
   
   public final PointF bZ(int paramInt)
   {
     AppMethodBeat.i(49271);
-    PointF localPointF = this.lJG.bZ(paramInt);
+    PointF localPointF = this.mlD.bZ(paramInt);
     AppMethodBeat.o(49271);
     return localPointF;
   }
@@ -36,15 +36,15 @@ public final class o
   public final int ce(int paramInt)
   {
     AppMethodBeat.i(49270);
-    paramInt = Math.min(this.lJH, paramInt);
-    paramInt = super.ce(Math.max(this.lJI, paramInt));
+    paramInt = Math.min(this.mlE, paramInt);
+    paramInt = super.ce(Math.max(this.mlF, paramInt));
     AppMethodBeat.o(49270);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.o
  * JD-Core Version:    0.7.0.1
  */

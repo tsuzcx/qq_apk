@@ -5,26 +5,26 @@ import android.os.IBinder;
 final class am
   implements ao
 {
-  private final IBinder Bo;
+  private final IBinder Cm;
   
   am(IBinder paramIBinder)
   {
-    this.Bo = paramIBinder;
+    this.Cm = paramIBinder;
   }
   
   public final boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof am)) && (((am)paramObject).Bo.equals(this.Bo));
+    return ((paramObject instanceof am)) && (((am)paramObject).Cm.equals(this.Cm));
   }
   
   public final int hashCode()
   {
-    return this.Bo.hashCode();
+    return this.Cm.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.am
  * JD-Core Version:    0.7.0.1
  */

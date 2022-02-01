@@ -3,7 +3,7 @@ package d.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"differenceModulo", "", "a", "b", "c", "", "getProgressionLastElement", "start", "end", "step", "mod", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"differenceModulo", "", "a", "b", "c", "", "getProgressionLastElement", "start", "end", "step", "mod", "kotlin-stdlib"})
 public final class c
 {
   private static final long aB(long paramLong1, long paramLong2)
@@ -15,15 +15,15 @@ public final class c
     return paramLong1 + paramLong2;
   }
   
-  public static final int aV(int paramInt1, int paramInt2, int paramInt3)
+  public static final int aX(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(128993);
-    paramInt1 = kH(kH(paramInt1, paramInt3) - kH(paramInt2, paramInt3), paramInt3);
+    paramInt1 = kX(kX(paramInt1, paramInt3) - kX(paramInt2, paramInt3), paramInt3);
     AppMethodBeat.o(128993);
     return paramInt1;
   }
   
-  private static final int kH(int paramInt1, int paramInt2)
+  private static final int kX(int paramInt1, int paramInt2)
   {
     paramInt1 %= paramInt2;
     if (paramInt1 >= 0) {

@@ -9,14 +9,14 @@ public enum c
   static
   {
     AppMethodBeat.i(174266);
-    Ixj = new c("VERBOSE", 0, 2);
-    Ixi = new c("DEBUG", 1, 3);
-    Ixk = new c("INFO", 2, 4);
-    Ixl = new c("WARN", 3, 5);
-    Ixm = new c("ERROR", 4, 6);
-    Ixn = new c("ALL", 5, -2147483648);
-    Ixo = new c("NONE", 6, 2147483647);
-    Ixp = new c[] { Ixj, Ixi, Ixk, Ixl, Ixm, Ixn, Ixo };
+    JYS = new c("VERBOSE", 0, 2);
+    JYR = new c("DEBUG", 1, 3);
+    JYT = new c("INFO", 2, 4);
+    JYU = new c("WARN", 3, 5);
+    JYV = new c("ERROR", 4, 6);
+    JYW = new c("ALL", 5, -2147483648);
+    JYX = new c("NONE", 6, 2147483647);
+    JYY = new c[] { JYS, JYR, JYT, JYU, JYV, JYW, JYX };
     AppMethodBeat.o(174266);
   }
   
@@ -31,8 +31,8 @@ public enum c
     switch (1.a[paramc.ordinal()])
     {
     default: 
-      if (paramc.h < Ixj.h) {
-        paramc = "V-" + (Ixj.h - paramc.h);
+      if (paramc.h < JYS.h) {
+        paramc = "V-" + (JYS.h - paramc.h);
       }
       break;
     }
@@ -50,31 +50,31 @@ public enum c
       continue;
       paramc = "E";
       continue;
-      paramc = "E+" + (paramc.h - Ixm.h);
+      paramc = "E+" + (paramc.h - JYV.h);
     }
   }
   
-  public static c abY(int paramInt)
+  public static c aer(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return Ixo;
+      return JYX;
     case 2: 
-      return Ixj;
+      return JYS;
     case 3: 
-      return Ixi;
+      return JYR;
     case 4: 
-      return Ixk;
+      return JYT;
     case 5: 
-      return Ixl;
+      return JYU;
     }
-    return Ixm;
+    return JYV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.a.c
  * JD-Core Version:    0.7.0.1
  */

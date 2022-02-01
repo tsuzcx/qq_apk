@@ -22,43 +22,43 @@ public class b
 {
   public static final int CTRL_INDEX = 662;
   public static final String NAME = "onDownloadAppStateChangeForNative";
-  public static HashMap<String, b> jAv;
-  private static Set<String> jAw;
-  private MMToClientEvent.c jAu;
+  public static HashMap<String, b> kaR;
+  private static Set<String> kaS;
+  private MMToClientEvent.c kaQ;
   
   static
   {
     AppMethodBeat.i(45740);
-    jAv = new HashMap();
-    jAw = new HashSet();
+    kaR = new HashMap();
+    kaS = new HashSet();
     AppMethodBeat.o(45740);
   }
   
   public b(final q paramq)
   {
     AppMethodBeat.i(45736);
-    this.jAu = new MMToClientEvent.c()
+    this.kaQ = new MMToClientEvent.c()
     {
-      public final void ch(Object paramAnonymousObject)
+      public final void cf(Object paramAnonymousObject)
       {
         AppMethodBeat.i(45732);
         if ((paramAnonymousObject instanceof AppbrandDownloadState))
         {
           paramAnonymousObject = (AppbrandDownloadState)paramAnonymousObject;
           if (paramq != null) {
-            b.this.g(paramq).HJ(paramAnonymousObject.aXY().toString()).aXQ();
+            b.this.g(paramq).LN(paramAnonymousObject.beV().toString()).beN();
           }
         }
         AppMethodBeat.o(45732);
       }
     };
-    MMToClientEvent.a(paramq.getAppId(), this.jAu);
-    paramq.getRuntime().iDK.a(new c.a()
+    MMToClientEvent.a(paramq.getAppId(), this.kaQ);
+    paramq.getRuntime().jdK.a(new c.a()
     {
       public final void a(String paramAnonymousString, com.tencent.mm.plugin.appbrand.b.b paramAnonymousb)
       {
         AppMethodBeat.i(45733);
-        if (paramAnonymousb == com.tencent.mm.plugin.appbrand.b.b.iQN)
+        if (paramAnonymousb == com.tencent.mm.plugin.appbrand.b.b.jqX)
         {
           MMToClientEvent.b(paramq.getAppId(), b.a(b.this));
           b.k(paramq);
@@ -72,7 +72,7 @@ public class b
   public static void a(AppbrandDownloadState paramAppbrandDownloadState)
   {
     AppMethodBeat.i(45737);
-    Iterator localIterator = jAw.iterator();
+    Iterator localIterator = kaS.iterator();
     while (localIterator.hasNext()) {
       e.b((String)localIterator.next(), paramAppbrandDownloadState);
     }
@@ -82,14 +82,14 @@ public class b
   public static void a(q paramq, b paramb)
   {
     AppMethodBeat.i(45738);
-    jAv.put(paramq.getAppId(), paramb);
+    kaR.put(paramq.getAppId(), paramb);
     h.a("com.tencent.mm", new IPCString(paramq.getAppId()), b.a.class, null);
     AppMethodBeat.o(45738);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.appdownload.b
  * JD-Core Version:    0.7.0.1
  */

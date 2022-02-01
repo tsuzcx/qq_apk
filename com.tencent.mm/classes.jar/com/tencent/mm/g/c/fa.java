@@ -8,25 +8,33 @@ public abstract class fa
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eVu = "xmlContent".hashCode();
-  private static final int eVv = "ScanTime".hashCode();
-  private static final int eVw = "funcType".hashCode();
-  private static final int eVx = "qrcodeUrl".hashCode();
-  private static final int elq = "scene".hashCode();
-  private static final int exi = "productId".hashCode();
+  private static final int eXr;
+  private static final int eXs;
+  private static final int eXt = "invalidtime".hashCode();
+  private static final int erG;
+  private static final int etX;
+  private static final int ezo = "transferId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eVq = true;
-  private boolean eVr = true;
-  private boolean eVs = true;
-  private boolean eVt = true;
-  private boolean elo = true;
-  private boolean exf = true;
-  public long field_ScanTime;
-  public int field_funcType;
-  public String field_productId;
-  public String field_qrcodeUrl;
-  public int field_scene;
-  public String field_xmlContent;
+  private boolean eXo = true;
+  private boolean eXp = true;
+  private boolean eXq = true;
+  private boolean err = true;
+  private boolean etJ = true;
+  private boolean ezn = true;
+  public long field_invalidtime;
+  public boolean field_isSend;
+  public long field_locaMsgId;
+  public int field_receiveStatus;
+  public String field_talker;
+  public String field_transferId;
+  
+  static
+  {
+    eXr = "locaMsgId".hashCode();
+    eXs = "receiveStatus".hashCode();
+    erG = "isSend".hashCode();
+    etX = "talker".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -34,18 +42,18 @@ public abstract class fa
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (exi != k) {
+      if (ezo != k) {
         break label65;
       }
-      this.field_productId = paramCursor.getString(i);
-      this.exf = true;
+      this.field_transferId = paramCursor.getString(i);
+      this.ezn = true;
     }
     for (;;)
     {
@@ -53,18 +61,32 @@ public abstract class fa
       break label20;
       break;
       label65:
-      if (eVu == k) {
-        this.field_xmlContent = paramCursor.getString(i);
-      } else if (eVv == k) {
-        this.field_ScanTime = paramCursor.getLong(i);
-      } else if (eVw == k) {
-        this.field_funcType = paramCursor.getInt(i);
-      } else if (eVx == k) {
-        this.field_qrcodeUrl = paramCursor.getString(i);
-      } else if (elq == k) {
-        this.field_scene = paramCursor.getInt(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      if (eXr == k)
+      {
+        this.field_locaMsgId = paramCursor.getLong(i);
+      }
+      else if (eXs == k)
+      {
+        this.field_receiveStatus = paramCursor.getInt(i);
+      }
+      else
+      {
+        if (erG == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            this.field_isSend = bool;
+            break;
+          }
+        }
+        if (etX == k) {
+          this.field_talker = paramCursor.getString(i);
+        } else if (eXt == k) {
+          this.field_invalidtime = paramCursor.getLong(i);
+        } else if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
+        }
       }
     }
   }
@@ -72,23 +94,23 @@ public abstract class fa
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.exf) {
-      localContentValues.put("productId", this.field_productId);
+    if (this.ezn) {
+      localContentValues.put("transferId", this.field_transferId);
     }
-    if (this.eVq) {
-      localContentValues.put("xmlContent", this.field_xmlContent);
+    if (this.eXo) {
+      localContentValues.put("locaMsgId", Long.valueOf(this.field_locaMsgId));
     }
-    if (this.eVr) {
-      localContentValues.put("ScanTime", Long.valueOf(this.field_ScanTime));
+    if (this.eXp) {
+      localContentValues.put("receiveStatus", Integer.valueOf(this.field_receiveStatus));
     }
-    if (this.eVs) {
-      localContentValues.put("funcType", Integer.valueOf(this.field_funcType));
+    if (this.err) {
+      localContentValues.put("isSend", Boolean.valueOf(this.field_isSend));
     }
-    if (this.eVt) {
-      localContentValues.put("qrcodeUrl", this.field_qrcodeUrl);
+    if (this.etJ) {
+      localContentValues.put("talker", this.field_talker);
     }
-    if (this.elo) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    if (this.eXq) {
+      localContentValues.put("invalidtime", Long.valueOf(this.field_invalidtime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

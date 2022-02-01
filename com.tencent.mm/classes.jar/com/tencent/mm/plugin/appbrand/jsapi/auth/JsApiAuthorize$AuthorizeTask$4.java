@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
-import com.tencent.mm.ab.a.a;
-import com.tencent.mm.ab.a.a.a;
+import com.tencent.mm.aa.a.a;
+import com.tencent.mm.aa.a.a.a;
 
 final class JsApiAuthorize$AuthorizeTask$4
   implements a.a<a>

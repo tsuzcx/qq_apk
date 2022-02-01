@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class co
   extends b
 {
-  public a deM;
+  public a dch;
   
   public co()
   {
@@ -16,8 +16,8 @@ public final class co
   private co(byte paramByte)
   {
     AppMethodBeat.i(42652);
-    this.deM = new a();
-    this.ESR = false;
+    this.dch = new a();
+    this.Gqe = false;
     this.callback = null;
     AppMethodBeat.o(42652);
   }

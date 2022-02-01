@@ -8,15 +8,15 @@ public abstract class ae
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eoY = "appMsgReportContextId".hashCode();
-  private static final int eoZ = "url".hashCode();
-  private static final int epa = "reportTime".hashCode();
-  private static final int epb = "aScene".hashCode();
+  private static final int erc = "appMsgReportContextId".hashCode();
+  private static final int erd = "url".hashCode();
+  private static final int ere = "reportTime".hashCode();
+  private static final int erf = "aScene".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eoU = true;
-  private boolean eoV = true;
-  private boolean eoW = true;
-  private boolean eoX = true;
+  private boolean eqY = true;
+  private boolean eqZ = true;
+  private boolean era = true;
+  private boolean erb = true;
   public int field_aScene;
   public long field_appMsgReportContextId;
   public long field_reportTime;
@@ -35,11 +35,11 @@ public abstract class ae
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eoY != k) {
+      if (erc != k) {
         break label65;
       }
       this.field_appMsgReportContextId = paramCursor.getLong(i);
-      this.eoU = true;
+      this.eqY = true;
     }
     for (;;)
     {
@@ -47,11 +47,11 @@ public abstract class ae
       break label20;
       break;
       label65:
-      if (eoZ == k) {
+      if (erd == k) {
         this.field_url = paramCursor.getString(i);
-      } else if (epa == k) {
+      } else if (ere == k) {
         this.field_reportTime = paramCursor.getLong(i);
-      } else if (epb == k) {
+      } else if (erf == k) {
         this.field_aScene = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -62,16 +62,16 @@ public abstract class ae
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoU) {
+    if (this.eqY) {
       localContentValues.put("appMsgReportContextId", Long.valueOf(this.field_appMsgReportContextId));
     }
-    if (this.eoV) {
+    if (this.eqZ) {
       localContentValues.put("url", this.field_url);
     }
-    if (this.eoW) {
+    if (this.era) {
       localContentValues.put("reportTime", Long.valueOf(this.field_reportTime));
     }
-    if (this.eoX) {
+    if (this.erb) {
       localContentValues.put("aScene", Integer.valueOf(this.field_aScene));
     }
     if (this.systemRowid > 0L) {

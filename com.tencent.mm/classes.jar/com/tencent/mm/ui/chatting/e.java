@@ -3,10 +3,10 @@ package com.tencent.mm.ui.chatting;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.transmit.SelectConversationUI;
 
@@ -15,7 +15,7 @@ public final class e
   public static boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
   {
     AppMethodBeat.i(34306);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(34306);
       return false;
@@ -28,9 +28,9 @@ public final class e
     {
       AppMethodBeat.o(34306);
       return true;
-      if (b.aKx(paramString1)) {
+      if (b.aQa(paramString1)) {
         localObject = new b();
-      } else if (d.aKx(paramString1)) {
+      } else if (d.aQa(paramString1)) {
         localObject = new d();
       }
     }
@@ -102,7 +102,7 @@ public final class e
   static final class b
     implements e.c
   {
-    public static boolean aKx(String paramString)
+    public static boolean aQa(String paramString)
     {
       AppMethodBeat.i(34302);
       if ((paramString != null) && ((paramString.startsWith("weixin://openNativeUrl/myDeviceList")) || (paramString.startsWith("weixin://openNativeUrl/bindMyDevice"))))
@@ -117,7 +117,7 @@ public final class e
     public final boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
     {
       AppMethodBeat.i(34303);
-      if (bt.isNullOrNil(paramString1))
+      if (bs.isNullOrNil(paramString1))
       {
         AppMethodBeat.o(34303);
         return false;
@@ -148,7 +148,7 @@ public final class e
   static final class d
     implements e.c
   {
-    public static boolean aKx(String paramString)
+    public static boolean aQa(String paramString)
     {
       AppMethodBeat.i(34304);
       if ((paramString != null) && ((paramString.startsWith("weixin://wesport/recommend")) || (paramString.startsWith("weixin://openNativeUrl/rankMyHomepage")) || (paramString.startsWith("weixin://openNativeUrl/rankSetting"))))
@@ -163,9 +163,9 @@ public final class e
     public final boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
     {
       AppMethodBeat.i(34305);
-      if (bt.isNullOrNil(paramString1))
+      if (bs.isNullOrNil(paramString1))
       {
-        ad.d("MicroMsg.BizNativeUrlDispatcher", "nativeUrl is null.");
+        ac.d("MicroMsg.BizNativeUrlDispatcher", "nativeUrl is null.");
         AppMethodBeat.o(34305);
         return false;
       }
@@ -182,23 +182,23 @@ public final class e
       }
       if (paramString1.startsWith("weixin://openNativeUrl/rankMyHomepage"))
       {
-        paramString1 = u.aqG();
-        if (bt.isNullOrNil(paramString1))
+        paramString1 = u.axw();
+        if (bs.isNullOrNil(paramString1))
         {
-          ad.e("MicroMsg.BizNativeUrlDispatcher", "Get username from UserInfo return null or nil.");
+          ac.e("MicroMsg.BizNativeUrlDispatcher", "Get username from UserInfo return null or nil.");
           AppMethodBeat.o(34305);
           return false;
         }
         paramMMFragment = new Intent();
         paramMMFragment.putExtra("username", paramString1);
         d.b(paramContext, "exdevice", ".ui.ExdeviceProfileUI", paramMMFragment);
-        ad.i("MicroMsg.BizNativeUrlDispatcher", "Jump to ExdeviceProfileUI.");
+        ac.i("MicroMsg.BizNativeUrlDispatcher", "Jump to ExdeviceProfileUI.");
         AppMethodBeat.o(34305);
         return true;
       }
       if (paramString1.startsWith("weixin://openNativeUrl/rankSetting"))
       {
-        d.O(paramContext, "exdevice", ".ui.ExdeviceSettingUI");
+        d.N(paramContext, "exdevice", ".ui.ExdeviceSettingUI");
         AppMethodBeat.o(34305);
         return true;
       }
@@ -209,7 +209,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.e
  * JD-Core Version:    0.7.0.1
  */

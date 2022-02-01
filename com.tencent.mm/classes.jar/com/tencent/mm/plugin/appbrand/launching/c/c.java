@@ -10,7 +10,7 @@ public final class c
   final void a(String paramString, Uri paramUri, a.a parama)
   {
     AppMethodBeat.i(47411);
-    switch (1.kNQ[parama.ordinal()])
+    switch (1.lpp[parama.ordinal()])
     {
     default: 
       AppBrand404PageUI.show(2131755402);
@@ -34,7 +34,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c.c
  * JD-Core Version:    0.7.0.1
  */

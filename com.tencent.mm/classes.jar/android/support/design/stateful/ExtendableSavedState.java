@@ -12,7 +12,7 @@ public class ExtendableSavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<ExtendableSavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-  public final n<String, Bundle> jE;
+  public final n<String, Bundle> kD;
   
   private ExtendableSavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
@@ -22,11 +22,11 @@ public class ExtendableSavedState
     paramParcel.readStringArray(paramClassLoader);
     Bundle[] arrayOfBundle = new Bundle[j];
     paramParcel.readTypedArray(arrayOfBundle, Bundle.CREATOR);
-    this.jE = new n(j);
+    this.kD = new n(j);
     int i = 0;
     while (i < j)
     {
-      this.jE.put(paramClassLoader[i], arrayOfBundle[i]);
+      this.kD.put(paramClassLoader[i], arrayOfBundle[i]);
       i += 1;
     }
   }
@@ -34,26 +34,26 @@ public class ExtendableSavedState
   public ExtendableSavedState(Parcelable paramParcelable)
   {
     super(paramParcelable);
-    this.jE = new n();
+    this.kD = new n();
   }
   
   public String toString()
   {
-    return "ExtendableSavedState{" + Integer.toHexString(System.identityHashCode(this)) + " states=" + this.jE + "}";
+    return "ExtendableSavedState{" + Integer.toHexString(System.identityHashCode(this)) + " states=" + this.kD + "}";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    int i = this.jE.size();
+    int i = this.kD.size();
     paramParcel.writeInt(i);
     String[] arrayOfString = new String[i];
     Bundle[] arrayOfBundle = new Bundle[i];
     paramInt = 0;
     while (paramInt < i)
     {
-      arrayOfString[paramInt] = ((String)this.jE.keyAt(paramInt));
-      arrayOfBundle[paramInt] = ((Bundle)this.jE.valueAt(paramInt));
+      arrayOfString[paramInt] = ((String)this.kD.keyAt(paramInt));
+      arrayOfBundle[paramInt] = ((Bundle)this.kD.valueAt(paramInt));
       paramInt += 1;
     }
     paramParcel.writeStringArray(arrayOfString);

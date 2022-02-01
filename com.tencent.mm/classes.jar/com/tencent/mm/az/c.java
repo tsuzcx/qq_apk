@@ -1,43 +1,45 @@
 package com.tencent.mm.az;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.storage.bo;
+import java.util.LinkedList;
+import java.util.Map;
+
 public final class c
+  extends a
 {
-  public int ark = -1;
-  public boolean dqn = false;
-  public int hnj = -1;
-  public String hnk = "";
-  public int mPosition = -1;
-  public int mStatus = 2;
-  
-  public c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public c(Map<String, String> paramMap, bo parambo)
   {
-    this.ark = paramInt1;
-    this.mPosition = paramInt2;
-    this.mStatus = paramInt3;
-    this.hnj = paramInt4;
+    super(paramMap, parambo);
   }
   
-  public final int getDuration()
+  protected final boolean axn()
   {
-    return this.ark;
-  }
-  
-  public final int getPosition()
-  {
-    return this.mPosition;
-  }
-  
-  public final void t(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.ark = paramInt1;
-    this.mPosition = paramInt2;
-    this.mStatus = paramInt3;
-    this.hnj = paramInt4;
+    AppMethodBeat.i(101784);
+    if (this.values == null)
+    {
+      AppMethodBeat.o(101784);
+      return false;
+    }
+    if (!this.TYPE.equals("chatroommuteexpt"))
+    {
+      AppMethodBeat.o(101784);
+      return false;
+    }
+    String str2 = (String)this.values.get(".sysmsg.chatroommuteexpt.text");
+    String str1 = (String)this.values.get(".sysmsg.chatroommuteexpt.link.text");
+    str2 = str2 + str1;
+    this.hOC.add(str1);
+    this.hOD.addFirst(Integer.valueOf(str2.length() - str1.length()));
+    this.hOE.add(Integer.valueOf(str2.length()));
+    this.hOA = str2;
+    AppMethodBeat.o(101784);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.az.c
  * JD-Core Version:    0.7.0.1
  */

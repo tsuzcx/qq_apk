@@ -9,10 +9,10 @@ import java.util.HashMap;
 public abstract class JobIntentService
   extends Service
 {
-  static final HashMap<ComponentName, Object> DM = new HashMap();
+  static final HashMap<ComponentName, Object> EK = new HashMap();
   static final Object sLock = new Object();
-  boolean DK = false;
-  final ArrayList<Object> DL;
+  boolean EI = false;
+  final ArrayList<Object> EJ;
   boolean mDestroyed = false;
   boolean mStopped = false;
   
@@ -20,10 +20,10 @@ public abstract class JobIntentService
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.DL = null;
+      this.EJ = null;
       return;
     }
-    this.DL = new ArrayList();
+    this.EJ = new ArrayList();
   }
 }
 

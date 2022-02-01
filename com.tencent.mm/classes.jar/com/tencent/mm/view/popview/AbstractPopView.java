@@ -14,8 +14,8 @@ import android.widget.FrameLayout;
 public abstract class AbstractPopView
   extends FrameLayout
 {
-  protected a IaF;
-  protected int IaG = 0;
+  protected a JBv;
+  protected int JBw = 0;
   
   public AbstractPopView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,8 +29,8 @@ public abstract class AbstractPopView
   
   public void dismiss()
   {
-    if (this.IaF != null) {
-      this.IaF.onDismiss();
+    if (this.JBv != null) {
+      this.JBv.onDismiss();
     }
   }
   
@@ -67,16 +67,16 @@ public abstract class AbstractPopView
     return super.dispatchKeyEvent(paramKeyEvent);
   }
   
-  public abstract void gD(View paramView);
+  public abstract void gU(View paramView);
   
   public abstract WindowManager.LayoutParams getWindowLayoutParams();
   
-  protected final void kn(Context paramContext)
+  protected final void kz(Context paramContext)
   {
     if ((paramContext instanceof Activity)) {}
     for (paramContext = (Activity)paramContext;; paramContext = null)
     {
-      this.IaG = 0;
+      this.JBw = 0;
       if (paramContext != null)
       {
         paramContext = paramContext.findViewById(16908290);
@@ -84,7 +84,7 @@ public abstract class AbstractPopView
         int[] arrayOfInt2 = new int[2];
         paramContext.getLocationOnScreen(arrayOfInt1);
         paramContext.getLocationInWindow(arrayOfInt2);
-        this.IaG = (arrayOfInt1[1] - arrayOfInt2[1]);
+        this.JBw = (arrayOfInt1[1] - arrayOfInt2[1]);
       }
       return;
       if ((paramContext instanceof ContextThemeWrapper))
@@ -114,7 +114,7 @@ public abstract class AbstractPopView
   
   public void setOnDismissCallback(a parama)
   {
-    this.IaF = parama;
+    this.JBv = parama;
   }
   
   public static abstract interface a

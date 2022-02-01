@@ -5,19 +5,19 @@ import d.e.c;
 import d.g.b.a.a;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/ranges/LongProgression;", "", "", "start", "endInclusive", "step", "(JJJ)V", "first", "getFirst", "()J", "last", "getLast", "getStep", "equals", "", "other", "", "hashCode", "", "isEmpty", "iterator", "Lkotlin/collections/LongIterator;", "toString", "", "Companion", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/LongProgression;", "", "", "start", "endInclusive", "step", "(JJJ)V", "first", "getFirst", "()J", "last", "getLast", "getStep", "equals", "", "other", "", "hashCode", "", "isEmpty", "iterator", "Lkotlin/collections/LongIterator;", "toString", "", "Companion", "kotlin-stdlib"})
 public class e
   implements a, Iterable<Long>
 {
-  public static final a JhQ;
-  public final long JhP;
+  public static final a KVk;
+  public final long KVj;
   public final long first;
-  public final long vfC;
+  public final long woo;
   
   static
   {
     AppMethodBeat.i(129320);
-    JhQ = new a((byte)0);
+    KVk = new a((byte)0);
     AppMethodBeat.o(129320);
   }
   
@@ -45,8 +45,8 @@ public class e
     }
     for (;;)
     {
-      this.JhP = l;
-      this.vfC = paramLong3;
+      this.KVj = l;
+      this.woo = paramLong3;
       AppMethodBeat.o(129319);
       return;
       l = paramLong2 - c.s(paramLong2, paramLong1, paramLong3);
@@ -67,7 +67,7 @@ public class e
   public boolean equals(Object paramObject)
   {
     AppMethodBeat.i(129316);
-    if (((paramObject instanceof e)) && (((isEmpty()) && (((e)paramObject).isEmpty())) || ((this.first == ((e)paramObject).first) && (this.JhP == ((e)paramObject).JhP) && (this.vfC == ((e)paramObject).vfC))))
+    if (((paramObject instanceof e)) && (((isEmpty()) && (((e)paramObject).isEmpty())) || ((this.first == ((e)paramObject).first) && (this.KVj == ((e)paramObject).KVj) && (this.woo == ((e)paramObject).woo))))
     {
       AppMethodBeat.o(129316);
       return true;
@@ -84,17 +84,17 @@ public class e
       AppMethodBeat.o(129317);
       return -1;
     }
-    int i = (int)(((this.first ^ this.first >>> 32) * 31L + (this.JhP ^ this.JhP >>> 32)) * 31L + (this.vfC ^ this.vfC >>> 32));
+    int i = (int)(((this.first ^ this.first >>> 32) * 31L + (this.KVj ^ this.KVj >>> 32)) * 31L + (this.woo ^ this.woo >>> 32));
     AppMethodBeat.o(129317);
     return i;
   }
   
   public boolean isEmpty()
   {
-    if (this.vfC > 0L) {
-      if (this.first <= this.JhP) {}
+    if (this.woo > 0L) {
+      if (this.first <= this.KVj) {}
     }
-    while (this.first < this.JhP)
+    while (this.first < this.KVj)
     {
       return true;
       return false;
@@ -105,18 +105,18 @@ public class e
   public String toString()
   {
     AppMethodBeat.i(129318);
-    if (this.vfC > 0L)
+    if (this.woo > 0L)
     {
-      str = this.first + ".." + this.JhP + " step " + this.vfC;
+      str = this.first + ".." + this.KVj + " step " + this.woo;
       AppMethodBeat.o(129318);
       return str;
     }
-    String str = this.first + " downTo " + this.JhP + " step " + -this.vfC;
+    String str = this.first + " downTo " + this.KVj + " step " + -this.woo;
     AppMethodBeat.o(129318);
     return str;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/ranges/LongProgression$Companion;", "", "()V", "fromClosedRange", "Lkotlin/ranges/LongProgression;", "rangeStart", "", "rangeEnd", "step", "kotlin-stdlib"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/LongProgression$Companion;", "", "()V", "fromClosedRange", "Lkotlin/ranges/LongProgression;", "rangeStart", "", "rangeEnd", "step", "kotlin-stdlib"})
   public static final class a
   {
     public static e t(long paramLong1, long paramLong2, long paramLong3)

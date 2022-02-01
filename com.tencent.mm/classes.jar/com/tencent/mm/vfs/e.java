@@ -13,13 +13,13 @@ import java.util.Iterator;
 public class e
   implements Comparable<e>
 {
-  private a.e HTa;
+  private a.e Jtv;
   public final Uri mUri;
   
   public e(Uri paramUri)
   {
     AppMethodBeat.i(13230);
-    this.HTa = null;
+    this.Jtv = null;
     if (paramUri == null)
     {
       paramUri = new NullPointerException("uri == null");
@@ -30,7 +30,7 @@ public class e
     Uri localUri = paramUri;
     if (str != null)
     {
-      str = q.l(str, false, false);
+      str = q.m(str, false, false);
       localUri = paramUri;
       if (!paramUri.getPath().equals(str)) {
         localUri = paramUri.buildUpon().path(str).build();
@@ -43,7 +43,7 @@ public class e
   private e(Uri paramUri, String paramString)
   {
     AppMethodBeat.i(13235);
-    this.HTa = null;
+    this.Jtv = null;
     if (paramString == null)
     {
       paramUri = new NullPointerException("name == null");
@@ -59,7 +59,7 @@ public class e
       if (localObject == null) {
         break label131;
       }
-      localObject = q.l((String)localObject, false, false);
+      localObject = q.m((String)localObject, false, false);
       if (paramString.getPath().equals(localObject)) {
         break label131;
       }
@@ -101,7 +101,7 @@ public class e
   
   public e(String paramString1, String paramString2) {}
   
-  public static e R(File paramFile)
+  public static e U(File paramFile)
   {
     AppMethodBeat.i(177541);
     if (paramFile != null)
@@ -114,7 +114,7 @@ public class e
     return null;
   }
   
-  private Uri fhS()
+  private Uri fxT()
   {
     AppMethodBeat.i(13238);
     Object localObject = this.mUri.getPath();
@@ -139,17 +139,17 @@ public class e
     AppMethodBeat.i(13252);
     if (paramg == null)
     {
-      paramg = fhW();
+      paramg = fxX();
       AppMethodBeat.o(13252);
       return paramg;
     }
-    Object localObject1 = fhR();
+    Object localObject1 = fxS();
     if (!((a.e)localObject1).valid())
     {
       AppMethodBeat.o(13252);
       return null;
     }
-    Object localObject2 = ((a.e)localObject1).HRC.cN(((a.e)localObject1).path, false);
+    Object localObject2 = ((a.e)localObject1).Jsh.cT(((a.e)localObject1).path, false);
     if (localObject2 == null)
     {
       AppMethodBeat.o(13252);
@@ -172,13 +172,13 @@ public class e
   public final String[] a(m paramm)
   {
     AppMethodBeat.i(170162);
-    Object localObject1 = fhR();
+    Object localObject1 = fxS();
     if (!((a.e)localObject1).valid())
     {
       AppMethodBeat.o(170162);
       return null;
     }
-    Object localObject2 = ((a.e)localObject1).HRC.cN(((a.e)localObject1).path, false);
+    Object localObject2 = ((a.e)localObject1).Jsh.cT(((a.e)localObject1).path, false);
     if (localObject2 == null)
     {
       AppMethodBeat.o(170162);
@@ -189,7 +189,7 @@ public class e
     while (((Iterator)localObject2).hasNext())
     {
       FileSystem.a locala = (FileSystem.a)((Iterator)localObject2).next();
-      if (paramm.qT(locala.name)) {
+      if (paramm.ui(locala.name)) {
         ((ArrayList)localObject1).add(locala.name);
       }
     }
@@ -198,11 +198,11 @@ public class e
     return paramm;
   }
   
-  public final boolean af(e parame)
+  public final boolean ae(e parame)
   {
     AppMethodBeat.i(13255);
-    a.e locale = fhR();
-    parame = parame.fhR();
+    a.e locale = fxS();
+    parame = parame.fxS();
     if ((!locale.valid()) || (!parame.valid()))
     {
       AppMethodBeat.o(13255);
@@ -210,7 +210,7 @@ public class e
     }
     try
     {
-      parame.HRC.a(parame.path, locale.HRC, locale.path);
+      parame.Jsh.a(parame.path, locale.Jsh, locale.path);
       AppMethodBeat.o(13255);
       return true;
     }
@@ -224,13 +224,13 @@ public class e
   public final e[] b(m paramm)
   {
     AppMethodBeat.i(170163);
-    Object localObject1 = fhR();
+    Object localObject1 = fxS();
     if (!((a.e)localObject1).valid())
     {
       AppMethodBeat.o(170163);
       return null;
     }
-    Object localObject2 = ((a.e)localObject1).HRC.cN(((a.e)localObject1).path, false);
+    Object localObject2 = ((a.e)localObject1).Jsh.cT(((a.e)localObject1).path, false);
     if (localObject2 == null)
     {
       AppMethodBeat.o(170163);
@@ -241,7 +241,7 @@ public class e
     while (((Iterator)localObject2).hasNext())
     {
       FileSystem.a locala = (FileSystem.a)((Iterator)localObject2).next();
-      if (paramm.qT(locala.name)) {
+      if (paramm.ui(locala.name)) {
         ((ArrayList)localObject1).add(new e(this, locala.name));
       }
     }
@@ -253,21 +253,21 @@ public class e
   public final boolean canRead()
   {
     AppMethodBeat.i(13241);
-    a.e locale = fhR();
+    a.e locale = fxS();
     if (!locale.valid())
     {
       AppMethodBeat.o(13241);
       return false;
     }
-    FileSystem localFileSystem = locale.HRC;
-    String str = localFileSystem.cP(locale.path, false);
+    FileSystem localFileSystem = locale.Jsh;
+    String str = localFileSystem.cV(locale.path, false);
     if (str != null)
     {
       bool = new File(str).canRead();
       AppMethodBeat.o(13241);
       return bool;
     }
-    boolean bool = localFileSystem.aMD(locale.path);
+    boolean bool = localFileSystem.aSf(locale.path);
     AppMethodBeat.o(13241);
     return bool;
   }
@@ -275,26 +275,26 @@ public class e
   public final boolean canWrite()
   {
     AppMethodBeat.i(170159);
-    a.e locale = fhR();
+    a.e locale = fxS();
     if (!locale.valid())
     {
       AppMethodBeat.o(170159);
       return false;
     }
-    FileSystem localFileSystem = locale.HRC;
-    if ((localFileSystem.fhA() & 0x1) == 0)
+    FileSystem localFileSystem = locale.Jsh;
+    if ((localFileSystem.fxC() & 0x1) == 0)
     {
       AppMethodBeat.o(170159);
       return false;
     }
-    String str = localFileSystem.cP(locale.path, true);
+    String str = localFileSystem.cV(locale.path, true);
     if (str != null)
     {
       bool = new File(str).canWrite();
       AppMethodBeat.o(170159);
       return bool;
     }
-    boolean bool = localFileSystem.aMD(locale.path);
+    boolean bool = localFileSystem.aSf(locale.path);
     AppMethodBeat.o(170159);
     return bool;
   }
@@ -302,19 +302,19 @@ public class e
   public final boolean createNewFile()
   {
     AppMethodBeat.i(13254);
-    Object localObject = fhR();
+    Object localObject = fxS();
     if (!((a.e)localObject).valid())
     {
       localObject = new FileNotFoundException("Cannot resolve path or URI: " + this.mUri);
       AppMethodBeat.o(13254);
       throw ((Throwable)localObject);
     }
-    if (((a.e)localObject).HRC.aMD(((a.e)localObject).path))
+    if (((a.e)localObject).Jsh.aSf(((a.e)localObject).path))
     {
       AppMethodBeat.o(13254);
       return false;
     }
-    ((a.e)localObject).HRC.cM(((a.e)localObject).path, false).close();
+    ((a.e)localObject).Jsh.cS(((a.e)localObject).path, false).close();
     AppMethodBeat.o(13254);
     return true;
   }
@@ -322,8 +322,8 @@ public class e
   public final boolean delete()
   {
     AppMethodBeat.i(13256);
-    a.e locale = fhR();
-    if ((locale.valid()) && (locale.HRC.vv(locale.path)))
+    a.e locale = fxS();
+    if ((locale.valid()) && (locale.Jsh.zB(locale.path)))
     {
       AppMethodBeat.o(13256);
       return true;
@@ -348,30 +348,30 @@ public class e
   public final boolean exists()
   {
     AppMethodBeat.i(13242);
-    a.e locale = fhR();
+    a.e locale = fxS();
     if (!locale.valid())
     {
       AppMethodBeat.o(13242);
       return false;
     }
-    boolean bool = locale.HRC.aMD(locale.path);
+    boolean bool = locale.Jsh.aSf(locale.path);
     AppMethodBeat.o(13242);
     return bool;
   }
   
-  public final a.e fhR()
+  public final a.e fxS()
   {
     AppMethodBeat.i(13228);
-    this.HTa = a.gap().a(this.mUri, this.HTa);
-    a.e locale = this.HTa;
+    this.Jtv = a.ghk().a(this.mUri, this.Jtv);
+    a.e locale = this.Jtv;
     AppMethodBeat.o(13228);
     return locale;
   }
   
-  public final e fhT()
+  public final e fxU()
   {
     AppMethodBeat.i(13240);
-    Object localObject = fhS();
+    Object localObject = fxT();
     if (localObject == null)
     {
       AppMethodBeat.o(13240);
@@ -382,7 +382,7 @@ public class e
     return localObject;
   }
   
-  public final Uri fhU()
+  public final Uri fxV()
   {
     int j = 0;
     AppMethodBeat.i(13243);
@@ -419,24 +419,24 @@ public class e
     }
   }
   
-  public final e fhV()
+  public final e fxW()
   {
     AppMethodBeat.i(13245);
-    e locale = new e(fhU());
+    e locale = new e(fxV());
     AppMethodBeat.o(13245);
     return locale;
   }
   
-  public final e[] fhW()
+  public final e[] fxX()
   {
     AppMethodBeat.i(13251);
-    Object localObject1 = fhR();
+    Object localObject1 = fxS();
     if (!((a.e)localObject1).valid())
     {
       AppMethodBeat.o(13251);
       return null;
     }
-    Object localObject2 = ((a.e)localObject1).HRC.cN(((a.e)localObject1).path, false);
+    Object localObject2 = ((a.e)localObject1).Jsh.cT(((a.e)localObject1).path, false);
     if (localObject2 == null)
     {
       AppMethodBeat.o(13251);
@@ -454,9 +454,9 @@ public class e
   
   public final String getAbsolutePath()
   {
-    AppMethodBeat.i(200798);
-    String str = q.B(fhU());
-    AppMethodBeat.o(200798);
+    AppMethodBeat.i(210176);
+    String str = q.B(fxV());
+    AppMethodBeat.o(210176);
     return str;
   }
   
@@ -478,7 +478,7 @@ public class e
   public final String getParent()
   {
     AppMethodBeat.i(13239);
-    Object localObject = fhS();
+    Object localObject = fxT();
     if (localObject == null)
     {
       AppMethodBeat.o(13239);
@@ -491,28 +491,28 @@ public class e
   
   public final String getPath()
   {
-    AppMethodBeat.i(200797);
+    AppMethodBeat.i(210175);
     String str = q.B(this.mUri);
-    AppMethodBeat.o(200797);
+    AppMethodBeat.o(210175);
     return str;
   }
   
   public final long getUsableSpace()
   {
     AppMethodBeat.i(13257);
-    Object localObject = fhR();
+    Object localObject = fxS();
     if (!((a.e)localObject).valid())
     {
       AppMethodBeat.o(13257);
       return 0L;
     }
-    localObject = ((a.e)localObject).HRC.aMC(((a.e)localObject).path);
+    localObject = ((a.e)localObject).Jsh.aSe(((a.e)localObject).path);
     if (localObject == null)
     {
       AppMethodBeat.o(13257);
       return 0L;
     }
-    long l = ((FileSystem.b)localObject).HRD;
+    long l = ((FileSystem.b)localObject).Jsi;
     AppMethodBeat.o(13257);
     return l;
   }
@@ -528,14 +528,14 @@ public class e
   public final boolean isDirectory()
   {
     AppMethodBeat.i(13246);
-    Object localObject = fhR();
+    Object localObject = fxS();
     if (!((a.e)localObject).valid())
     {
       AppMethodBeat.o(13246);
       return false;
     }
-    localObject = ((a.e)localObject).HRC.aME(((a.e)localObject).path);
-    if ((localObject != null) && (((FileSystem.a)localObject).HRB))
+    localObject = ((a.e)localObject).Jsh.aSg(((a.e)localObject).path);
+    if ((localObject != null) && (((FileSystem.a)localObject).Jsg))
     {
       AppMethodBeat.o(13246);
       return true;
@@ -547,14 +547,14 @@ public class e
   public final boolean isFile()
   {
     AppMethodBeat.i(13247);
-    Object localObject = fhR();
+    Object localObject = fxS();
     if (!((a.e)localObject).valid())
     {
       AppMethodBeat.o(13247);
       return false;
     }
-    localObject = ((a.e)localObject).HRC.aME(((a.e)localObject).path);
-    if ((localObject != null) && (!((FileSystem.a)localObject).HRB))
+    localObject = ((a.e)localObject).Jsh.aSg(((a.e)localObject).path);
+    if ((localObject != null) && (!((FileSystem.a)localObject).Jsg))
     {
       AppMethodBeat.o(13247);
       return true;
@@ -579,19 +579,19 @@ public class e
   public final long lastModified()
   {
     AppMethodBeat.i(13248);
-    Object localObject = fhR();
+    Object localObject = fxS();
     if (!((a.e)localObject).valid())
     {
       AppMethodBeat.o(13248);
       return 0L;
     }
-    localObject = ((a.e)localObject).HRC.aME(((a.e)localObject).path);
+    localObject = ((a.e)localObject).Jsh.aSg(((a.e)localObject).path);
     if (localObject == null)
     {
       AppMethodBeat.o(13248);
       return 0L;
     }
-    long l = ((FileSystem.a)localObject).HRA;
+    long l = ((FileSystem.a)localObject).Jsf;
     AppMethodBeat.o(13248);
     return l;
   }
@@ -599,13 +599,13 @@ public class e
   public final long length()
   {
     AppMethodBeat.i(13249);
-    Object localObject = fhR();
+    Object localObject = fxS();
     if (!((a.e)localObject).valid())
     {
       AppMethodBeat.o(13249);
       return 0L;
     }
-    localObject = ((a.e)localObject).HRC.aME(((a.e)localObject).path);
+    localObject = ((a.e)localObject).Jsh.aSg(((a.e)localObject).path);
     if (localObject == null)
     {
       AppMethodBeat.o(13249);
@@ -619,13 +619,13 @@ public class e
   public final String[] list()
   {
     AppMethodBeat.i(13250);
-    Object localObject1 = fhR();
+    Object localObject1 = fxS();
     if (!((a.e)localObject1).valid())
     {
       AppMethodBeat.o(13250);
       return null;
     }
-    Object localObject2 = ((a.e)localObject1).HRC.cN(((a.e)localObject1).path, false);
+    Object localObject2 = ((a.e)localObject1).Jsh.cT(((a.e)localObject1).path, false);
     if (localObject2 == null)
     {
       AppMethodBeat.o(13250);
@@ -643,22 +643,22 @@ public class e
   
   public final boolean mkdir()
   {
-    AppMethodBeat.i(200799);
+    AppMethodBeat.i(210177);
     boolean bool = mkdirs();
-    AppMethodBeat.o(200799);
+    AppMethodBeat.o(210177);
     return bool;
   }
   
   public final boolean mkdirs()
   {
     AppMethodBeat.i(13253);
-    a.e locale = fhR();
+    a.e locale = fxS();
     if (!locale.valid())
     {
       AppMethodBeat.o(13253);
       return false;
     }
-    boolean bool = locale.HRC.aMF(locale.path);
+    boolean bool = locale.Jsh.aSh(locale.path);
     AppMethodBeat.o(13253);
     return bool;
   }

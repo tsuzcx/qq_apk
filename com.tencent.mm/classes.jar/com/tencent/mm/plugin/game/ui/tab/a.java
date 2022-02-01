@@ -8,21 +8,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.b.g;
 import com.tencent.mm.plugin.game.model.GameTabData;
 import com.tencent.mm.plugin.game.model.GameTabData.TabItem;
 import com.tencent.mm.plugin.game.model.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.List;
 
 public final class a
   extends BaseAdapter
 {
   private Context mContext;
-  private GameTabData snW;
-  private String snX;
+  private GameTabData tvP;
+  private String tvQ;
   
   public a(Context paramContext)
   {
@@ -32,8 +32,8 @@ public final class a
   public final void a(GameTabData paramGameTabData, String paramString)
   {
     AppMethodBeat.i(42431);
-    this.snW = paramGameTabData;
-    this.snX = paramString;
+    this.tvP = paramGameTabData;
+    this.tvQ = paramString;
     notifyDataSetChanged();
     AppMethodBeat.o(42431);
   }
@@ -41,12 +41,12 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(42432);
-    if (this.snW == null)
+    if (this.tvP == null)
     {
       AppMethodBeat.o(42432);
       return 0;
     }
-    int i = this.snW.getItemList().size();
+    int i = this.tvP.acH().size();
     AppMethodBeat.o(42432);
     return i;
   }
@@ -61,23 +61,23 @@ public final class a
     AppMethodBeat.i(42433);
     paramView = LayoutInflater.from(this.mContext).inflate(2131494391, paramViewGroup, false);
     paramViewGroup = new a(paramView);
-    GameTabData.TabItem localTabItem = (GameTabData.TabItem)this.snW.getItemList().get(paramInt);
+    GameTabData.TabItem localTabItem = (GameTabData.TabItem)this.tvP.acH().get(paramInt);
     Object localObject;
     c.a locala;
     if (localTabItem != null)
     {
-      paramViewGroup.fQp.setText(localTabItem.title);
-      if (!bt.nullAsNil(this.snX).equalsIgnoreCase(localTabItem.rYs)) {
+      paramViewGroup.fUk.setText(localTabItem.title);
+      if (!bs.nullAsNil(this.tvQ).equalsIgnoreCase(localTabItem.tgk)) {
         break label185;
       }
-      if (!bt.isNullOrNil(localTabItem.rYy))
+      if (!bs.isNullOrNil(localTabItem.tgq))
       {
-        localObject = aj.rYC + g.getMessageDigest(localTabItem.rYy.getBytes());
+        localObject = aj.tgu + g.getMessageDigest(localTabItem.tgq.getBytes());
         locala = new c.a();
-        locala.hjU = true;
-        locala.gjt = ((String)localObject);
-        localObject = locala.azc();
-        com.tencent.mm.aw.a.a.ayO().a(localTabItem.rYy, paramViewGroup.hg, (c)localObject);
+        locala.hKx = true;
+        locala.gKe = ((String)localObject);
+        localObject = locala.aFT();
+        com.tencent.mm.av.a.a.aFG().a(localTabItem.tgq, paramViewGroup.ig, (c)localObject);
       }
     }
     for (;;)
@@ -86,28 +86,28 @@ public final class a
       AppMethodBeat.o(42433);
       return paramView;
       label185:
-      if (!bt.isNullOrNil(localTabItem.rYx))
+      if (!bs.isNullOrNil(localTabItem.tgp))
       {
-        localObject = aj.rYC + g.getMessageDigest(localTabItem.rYx.getBytes());
+        localObject = aj.tgu + g.getMessageDigest(localTabItem.tgp.getBytes());
         locala = new c.a();
-        locala.hjU = true;
-        locala.gjt = ((String)localObject);
-        localObject = locala.azc();
-        com.tencent.mm.aw.a.a.ayO().a(localTabItem.rYx, paramViewGroup.hg, (c)localObject);
+        locala.hKx = true;
+        locala.gKe = ((String)localObject);
+        localObject = locala.aFT();
+        com.tencent.mm.av.a.a.aFG().a(localTabItem.tgp, paramViewGroup.ig, (c)localObject);
       }
     }
   }
   
   public final class a
   {
-    TextView fQp;
-    ImageView hg;
+    TextView fUk;
+    ImageView ig;
     
     public a(View paramView)
     {
       AppMethodBeat.i(42430);
-      this.fQp = ((TextView)paramView.findViewById(2131297471));
-      this.hg = ((ImageView)paramView.findViewById(2131297469));
+      this.fUk = ((TextView)paramView.findViewById(2131297471));
+      this.ig = ((ImageView)paramView.findViewById(2131297469));
       AppMethodBeat.o(42430);
     }
   }

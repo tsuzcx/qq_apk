@@ -9,21 +9,21 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.alk;
+import com.tencent.mm.protocal.protobuf.aof;
 import d.g.a.b;
 import d.g.b.k;
 import d.l;
 import d.v;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/FinderTopicSuggestView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "listLayout", "listScrollView", "Landroid/widget/ScrollView;", "onItemSelected", "Lkotlin/Function1;", "", "getOnItemSelected", "()Lkotlin/jvm/functions/Function1;", "setOnItemSelected", "(Lkotlin/jvm/functions/Function1;)V", "initView", "refresh", "suggestions", "", "Lcom/tencent/mm/protocal/protobuf/FinderSuggestion;", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderTopicSuggestView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "listLayout", "listScrollView", "Landroid/widget/ScrollView;", "onItemSelected", "Lkotlin/Function1;", "", "getOnItemSelected", "()Lkotlin/jvm/functions/Function1;", "setOnItemSelected", "(Lkotlin/jvm/functions/Function1;)V", "initView", "refresh", "suggestions", "", "Lcom/tencent/mm/protocal/protobuf/FinderSuggestion;", "plugin-finder_release"})
 public final class FinderTopicSuggestView
   extends LinearLayout
 {
   private final String TAG;
-  public ScrollView qXX;
-  public LinearLayout qXY;
-  private b<? super String, y> qXZ;
+  public ScrollView rZk;
+  public LinearLayout rZl;
+  private b<? super String, y> rZm;
   
   public FinderTopicSuggestView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -50,24 +50,24 @@ public final class FinderTopicSuggestView
     LayoutInflater.from(getContext()).inflate(2131494120, (ViewGroup)this, true);
     View localView = findViewById(2131306034);
     k.g(localView, "findViewById(R.id.topic_suggest_item_scrollview)");
-    this.qXX = ((ScrollView)localView);
+    this.rZk = ((ScrollView)localView);
     localView = findViewById(2131306035);
     k.g(localView, "findViewById(R.id.topic_suggest_list)");
-    this.qXY = ((LinearLayout)localView);
+    this.rZl = ((LinearLayout)localView);
     AppMethodBeat.o(168422);
   }
   
   public final b<String, y> getOnItemSelected()
   {
-    return this.qXZ;
+    return this.rZm;
   }
   
   public final void setOnItemSelected(b<? super String, y> paramb)
   {
-    this.qXZ = paramb;
+    this.rZm = paramb;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   public static final class a
     implements View.OnClickListener
   {
@@ -76,10 +76,10 @@ public final class FinderTopicSuggestView
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(168421);
-      paramView = this.qYa.getOnItemSelected();
+      paramView = this.rZn.getOnItemSelected();
       if (paramView != null)
       {
-        Object localObject = this.qYb;
+        Object localObject = this.rZo;
         k.g(localObject, "suggestItemView");
         localObject = ((View)localObject).getTag();
         if (localObject == null)
@@ -88,11 +88,11 @@ public final class FinderTopicSuggestView
           AppMethodBeat.o(168421);
           throw paramView;
         }
-        localObject = ((alk)localObject).DmF;
+        localObject = ((aof)localObject).EHq;
         k.g(localObject, "(suggestItemView.tag as FinderSuggestion).suggest");
-        paramView.aA(localObject);
+        paramView.ay(localObject);
       }
-      this.qYa.setVisibility(8);
+      this.rZn.setVisibility(8);
       AppMethodBeat.o(168421);
     }
   }

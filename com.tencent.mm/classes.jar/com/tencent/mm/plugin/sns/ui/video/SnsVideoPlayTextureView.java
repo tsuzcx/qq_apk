@@ -12,8 +12,8 @@ import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
 import com.tencent.mm.pluginsdk.ui.tools.h.d;
 import com.tencent.mm.pluginsdk.ui.tools.h.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class SnsVideoPlayTextureView
   extends VideoPlayerTextureView
@@ -36,54 +36,54 @@ public class SnsVideoPlayTextureView
     AppMethodBeat.o(100407);
   }
   
-  public final void bei()
+  public final void blc()
   {
     AppMethodBeat.i(100409);
-    ad.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d open video [%s]", new Object[] { Integer.valueOf(hashCode()), this.path });
+    ac.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d open video [%s]", new Object[] { Integer.valueOf(hashCode()), this.path });
     synchronized (this.lock)
     {
-      if (this.oNJ != null)
+      if (this.prd != null)
       {
-        this.oNJ.tAl = null;
-        this.oNJ.stop();
-        this.oNJ.release();
-        this.oNJ = null;
+        this.prd.uIH = null;
+        this.prd.stop();
+        this.prd.release();
+        this.prd = null;
       }
-      if (bt.isNullOrNil(this.path))
+      if (bs.isNullOrNil(this.path))
       {
-        ad.w("MicroMsg.Sns.SnsVideoPlayTextureView", "%d open video but path is null.", new Object[] { Integer.valueOf(hashCode()) });
+        ac.w("MicroMsg.Sns.SnsVideoPlayTextureView", "%d open video but path is null.", new Object[] { Integer.valueOf(hashCode()) });
         AppMethodBeat.o(100409);
         return;
       }
       try
       {
-        this.WD = false;
-        this.oNJ = new j(Looper.getMainLooper());
-        this.oNJ.setPath(this.path);
-        this.oNJ.setIOnlineCache(this.tzW);
-        this.oNJ.setNeedResetExtractor(this.oNP);
-        this.oNJ.setIsOnlineVideoType(this.oNQ);
-        this.oNJ.tAl = this.oNT;
-        this.oNJ.setSurface(this.mSurface);
-        this.oNJ.nd(this.oNR);
+        this.Xy = false;
+        this.prd = new j(Looper.getMainLooper());
+        this.prd.setPath(this.path);
+        this.prd.setIOnlineCache(this.uIt);
+        this.prd.setNeedResetExtractor(this.prj);
+        this.prd.setIsOnlineVideoType(this.prk);
+        this.prd.uIH = this.prn;
+        this.prd.setSurface(this.mSurface);
+        this.prd.nW(this.prl);
         if (this.mSurface != null) {
-          this.oNJ.cuQ();
+          this.prd.cIc();
         }
         for (;;)
         {
           AppMethodBeat.o(100409);
           return;
-          if (this.oNL) {
-            this.oNJ.cuQ();
+          if (this.prf) {
+            this.prd.cIc();
           }
         }
         localObject2 = finally;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.Sns.SnsVideoPlayTextureView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
-        if (this.oNM != null) {
-          this.oNM.onError(-1, -1);
+        ac.printErrStackTrace("MicroMsg.Sns.SnsVideoPlayTextureView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
+        if (this.prg != null) {
+          this.prg.onError(-1, -1);
         }
         AppMethodBeat.o(100409);
         return;
@@ -94,50 +94,50 @@ public class SnsVideoPlayTextureView
   public final void c(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100415);
-    ad.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d surface[%d] available [%d, %d] pauseByDestroyed[%b]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramSurfaceTexture.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.kuD) });
+    ac.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d surface[%d] available [%d, %d] pauseByDestroyed[%b]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramSurfaceTexture.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.kVS) });
     for (;;)
     {
       try
       {
-        eTg();
+        fiQ();
         this.mSurface = new Surface(paramSurfaceTexture);
-        if ((this.oNJ == null) || (!this.WD))
+        if ((this.prd == null) || (!this.Xy))
         {
-          bei();
-          bGA();
-          if (this.oNO != null) {
-            this.oNO.aCw();
+          blc();
+          bNN();
+          if (this.pri != null) {
+            this.pri.aJn();
           }
           AppMethodBeat.o(100415);
           return;
         }
-        this.oNJ.j(this.mSurface);
-        if (!d.lf(23)) {
+        this.prd.i(this.mSurface);
+        if (!d.kZ(23)) {
           break label208;
         }
-        if (this.kuD)
+        if (this.kVS)
         {
-          this.oNJ.start();
-          this.kuD = false;
+          this.prd.start();
+          this.kVS = false;
           continue;
         }
-        this.kuE = true;
+        this.kVT = true;
       }
       catch (Exception paramSurfaceTexture)
       {
-        ad.printErrStackTrace("MicroMsg.Sns.SnsVideoPlayTextureView", paramSurfaceTexture, "onSurfaceTextureAvailable failed", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.Sns.SnsVideoPlayTextureView", paramSurfaceTexture, "onSurfaceTextureAvailable failed", new Object[0]);
         AppMethodBeat.o(100415);
         return;
       }
-      this.kuC = 0L;
-      this.oNJ.setMute(true);
-      this.oNJ.start();
+      this.kVR = 0L;
+      this.prd.setMute(true);
+      this.prd.start();
       continue;
       label208:
-      if (this.kuD) {
-        d(this.oNJ.cPu(), true);
+      if (this.kVS) {
+        d(this.prd.ddd(), true);
       } else {
-        d(this.oNJ.cPu(), false);
+        d(this.prd.ddd(), false);
       }
     }
   }
@@ -145,23 +145,34 @@ public class SnsVideoPlayTextureView
   public final void k(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(100416);
-    if ((d.lf(23)) && (this.kuE) && (this.kuC > 0L))
+    if ((d.kZ(23)) && (this.kVT) && (this.kVR > 0L))
     {
-      if (this.oNJ != null)
+      if (this.prd != null)
       {
-        this.oNJ.pause();
-        this.oNJ.setMute(this.fqj);
+        this.prd.pause();
+        this.prd.setMute(this.ftN);
       }
-      this.kuE = false;
+      this.kVT = false;
     }
-    if ((this.kuC > 0L) && (this.CnA != null))
+    if ((this.kVR > 0L) && (this.DFT != null))
     {
-      ad.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d notify surface update", new Object[] { Integer.valueOf(hashCode()) });
-      this.CnA.beo();
-      this.CnA = null;
+      ac.i("MicroMsg.Sns.SnsVideoPlayTextureView", "%d notify surface update", new Object[] { Integer.valueOf(hashCode()) });
+      this.DFT.bli();
+      this.DFT = null;
     }
-    this.kuC = System.currentTimeMillis();
+    this.kVR = System.currentTimeMillis();
     AppMethodBeat.o(100416);
+  }
+  
+  public final void p(double paramDouble)
+  {
+    AppMethodBeat.i(100413);
+    synchronized (this.lock)
+    {
+      super.p(paramDouble);
+      AppMethodBeat.o(100413);
+      return;
+    }
   }
   
   public final void pause()
@@ -171,17 +182,6 @@ public class SnsVideoPlayTextureView
     {
       super.pause();
       AppMethodBeat.o(100412);
-      return;
-    }
-  }
-  
-  public final void q(double paramDouble)
-  {
-    AppMethodBeat.i(100413);
-    synchronized (this.lock)
-    {
-      super.q(paramDouble);
-      AppMethodBeat.o(100413);
       return;
     }
   }
@@ -228,7 +228,7 @@ public class SnsVideoPlayTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.video.SnsVideoPlayTextureView
  * JD-Core Version:    0.7.0.1
  */

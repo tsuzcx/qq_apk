@@ -11,8 +11,8 @@ class ErrLog$Error
   implements Parcelable
 {
   public static final Parcelable.Creator<Error> CREATOR;
-  public boolean ENy;
-  public String bLg;
+  public boolean GkM;
+  public String bIO;
   public final String platform;
   public String tag;
   public long timestamp;
@@ -28,15 +28,15 @@ class ErrLog$Error
   protected ErrLog$Error(Parcel paramParcel)
   {
     AppMethodBeat.i(32587);
-    this.platform = (d.glX + "_" + d.CpK + "_" + Build.CPU_ABI);
+    this.platform = (d.gMK + "_" + d.DIc + "_" + Build.CPU_ABI);
     this.username = paramParcel.readString();
     this.tag = paramParcel.readString();
     this.timestamp = paramParcel.readLong();
-    this.bLg = paramParcel.readString();
+    this.bIO = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.ENy = bool;
+      this.GkM = bool;
       AppMethodBeat.o(32587);
       return;
     }
@@ -45,13 +45,13 @@ class ErrLog$Error
   public ErrLog$Error(String paramString1, String paramString2, long paramLong, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(32584);
-    this.platform = (d.glX + "_" + d.CpK + "_" + Build.CPU_ABI);
+    this.platform = (d.gMK + "_" + d.DIc + "_" + Build.CPU_ABI);
     this.username = paramString1;
     this.tag = paramString2;
     this.timestamp = paramLong;
-    this.bLg = paramString3;
-    this.ENy = false;
-    this.ENy = paramBoolean;
+    this.bIO = paramString3;
+    this.GkM = false;
+    this.GkM = paramBoolean;
     AppMethodBeat.o(32584);
   }
   
@@ -63,7 +63,7 @@ class ErrLog$Error
   public String toString()
   {
     AppMethodBeat.i(32585);
-    String str = this.username + "," + this.platform + "," + this.tag + ",time_" + this.timestamp + ",error_" + this.bLg;
+    String str = this.username + "," + this.platform + "," + this.tag + ",time_" + this.timestamp + ",error_" + this.bIO;
     AppMethodBeat.o(32585);
     return str;
   }
@@ -74,8 +74,8 @@ class ErrLog$Error
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.tag);
     paramParcel.writeLong(this.timestamp);
-    paramParcel.writeString(this.bLg);
-    if (this.ENy) {}
+    paramParcel.writeString(this.bIO);
+    if (this.GkM) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
@@ -86,7 +86,7 @@ class ErrLog$Error
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.ErrLog.Error
  * JD-Core Version:    0.7.0.1
  */

@@ -6,20 +6,20 @@ import java.lang.reflect.Method;
 
 public final class j
 {
-  static boolean bn(Context paramContext)
+  static boolean bo(Context paramContext)
   {
-    AppMethodBeat.i(189178);
+    AppMethodBeat.i(192563);
     try
     {
       Method localMethod = Class.forName("com.tencent.mm.sdcard_migrate.ExtStorageMigrateRoutine").getDeclaredMethod("triggerOnDemand", new Class[] { Context.class });
       localMethod.setAccessible(true);
       boolean bool = ((Boolean)localMethod.invoke(null, new Object[] { paramContext })).booleanValue();
-      AppMethodBeat.o(189178);
+      AppMethodBeat.o(192563);
       return bool;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(189178);
+      AppMethodBeat.o(192563);
     }
     return false;
   }

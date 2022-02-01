@@ -1,15 +1,7 @@
 package com.tencent.xweb;
 
-public abstract interface l
-{
-  @Deprecated
-  public abstract void a(k paramk);
-  
-  @Deprecated
-  public abstract void aOY(String paramString);
-  
-  public abstract boolean setProfileResultCallback(String paramString, j paramj);
-}
+@Deprecated
+public abstract interface l {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar

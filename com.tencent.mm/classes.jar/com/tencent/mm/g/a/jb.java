@@ -1,16 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bl;
 
 public final class jb
   extends b
 {
-  public a dnb;
-  public b dnc;
+  public a dku;
+  public b dkv;
   
   public jb()
   {
@@ -19,30 +16,24 @@ public final class jb
   
   private jb(byte paramByte)
   {
-    AppMethodBeat.i(55663);
-    this.dnb = new a();
-    this.dnc = new b();
-    this.ESR = false;
+    AppMethodBeat.i(149865);
+    this.dku = new a();
+    this.dkv = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(55663);
+    AppMethodBeat.o(149865);
   }
   
   public static final class a
   {
-    public bl dbD;
-    public ImageView dnd;
-    public ImageView dne;
-    public ProgressBar dnf;
-    public int dng;
-    public int h;
-    public int w;
+    public String userName;
   }
   
   public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.jb
  * JD-Core Version:    0.7.0.1
  */

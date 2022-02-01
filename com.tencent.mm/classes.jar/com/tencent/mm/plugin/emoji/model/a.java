@@ -5,20 +5,20 @@ import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 
 public final class a
 {
-  public EmotionBannerSet owE;
-  public EmotionBanner owF;
-  public boolean owG = false;
+  public EmotionBannerSet pae;
+  public EmotionBanner paf;
+  public boolean pag = false;
   
   public a(EmotionBanner paramEmotionBanner, EmotionBannerSet paramEmotionBannerSet, boolean paramBoolean)
   {
-    this.owF = paramEmotionBanner;
-    this.owE = paramEmotionBannerSet;
-    this.owG = paramBoolean;
+    this.paf = paramEmotionBanner;
+    this.pae = paramEmotionBannerSet;
+    this.pag = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.a
  * JD-Core Version:    0.7.0.1
  */

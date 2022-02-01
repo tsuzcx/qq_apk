@@ -11,19 +11,19 @@ import java.util.Set;
 public final class x<Data>
   implements n<Uri, Data>
 {
-  private static final Set<String> aId;
-  private final n<g, Data> aIf;
+  private static final Set<String> aIT;
+  private final n<g, Data> aIV;
   
   static
   {
     AppMethodBeat.i(77326);
-    aId = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "http", "https" })));
+    aIT = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "http", "https" })));
     AppMethodBeat.o(77326);
   }
   
   public x(n<g, Data> paramn)
   {
-    this.aIf = paramn;
+    this.aIV = paramn;
   }
   
   public static final class a
@@ -40,7 +40,7 @@ public final class x<Data>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.x
  * JD-Core Version:    0.7.0.1
  */

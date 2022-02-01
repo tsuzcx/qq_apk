@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
   extends j<a>
 {
-  public static final String[] gLs;
-  private final boolean jqw;
+  public static final String[] hlS;
+  private final boolean jQO;
   
   static
   {
     AppMethodBeat.i(45098);
-    gLs = new String[] { j.getCreateSQLs(a.info, "WxagGameInfo") };
+    hlS = new String[] { j.getCreateSQLs(a.info, "WxagGameInfo") };
     AppMethodBeat.o(45098);
   }
   
@@ -26,9 +26,9 @@ public final class b
     if (parame != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jqw = bool;
-      if (!this.jqw) {
-        ad.e("MicroMsg.MiniGameInfoStorage", "storage can not work!!!");
+      this.jQO = bool;
+      if (!this.jQO) {
+        ac.e("MicroMsg.MiniGameInfoStorage", "storage can not work!!!");
       }
       AppMethodBeat.o(45096);
       return;
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.b.a.b
  * JD-Core Version:    0.7.0.1
  */

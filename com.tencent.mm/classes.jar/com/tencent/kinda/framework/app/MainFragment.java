@@ -10,8 +10,8 @@ import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.gen.IUIPage;
 import com.tencent.kinda.gen.NavigationBarConfig;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 
 public class MainFragment
@@ -32,10 +32,10 @@ public class MainFragment
       initWithNavigationBarConfig(this.page.defaultNavigationBarConfig());
       if ((this.page.fullPageMode()) && (getController().mActionBar != null))
       {
-        ad.i("MicroMsg.MainFragment", "UIPage is fullPageMode, so hide Actionbar.");
+        ac.i("MicroMsg.MainFragment", "UIPage is fullPageMode, so hide Actionbar.");
         getController().mActionBar.hide();
       }
-      ad.i("MicroMsg.MainFragment", "finish init page");
+      ac.i("MicroMsg.MainFragment", "finish init page");
     }
     AppMethodBeat.o(18531);
   }
@@ -56,7 +56,7 @@ public class MainFragment
   {
     AppMethodBeat.i(18539);
     super.finalize();
-    ad.i("MicroMsg.MainFragment", "finalize " + this.page);
+    ac.i("MicroMsg.MainFragment", "finalize " + this.page);
     AppMethodBeat.o(18539);
   }
   
@@ -139,11 +139,11 @@ public class MainFragment
   
   public void onKeyboardShow(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(186414);
+    AppMethodBeat.i(207376);
     if (this.pagePlatformFuncDelegate != null) {
       this.pagePlatformFuncDelegate.onKeyboardShow(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(186414);
+    AppMethodBeat.o(207376);
   }
   
   public void onPause()

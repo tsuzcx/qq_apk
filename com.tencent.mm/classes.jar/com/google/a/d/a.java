@@ -9,53 +9,53 @@ import java.io.Writer;
 public class a
   implements Closeable, Flushable
 {
-  private static final String[] bID;
-  private static final String[] bIE;
-  public boolean bFh;
-  public boolean bFk;
-  public boolean bFm;
-  private int[] bIF;
-  private int bIG;
-  private String bIH;
-  private String bII;
+  private static final String[] bGl;
+  private static final String[] bGm;
+  public boolean bCP;
+  public boolean bCS;
+  public boolean bCU;
+  private int[] bGn;
+  private int bGo;
+  private String bGp;
+  private String bGq;
   private final Writer out;
   private String separator;
   
   static
   {
     AppMethodBeat.i(107869);
-    bID = new String[''];
+    bGl = new String[''];
     int i = 0;
     while (i <= 31)
     {
-      bID[i] = String.format("\\u%04x", new Object[] { Integer.valueOf(i) });
+      bGl[i] = String.format("\\u%04x", new Object[] { Integer.valueOf(i) });
       i += 1;
     }
-    bID[34] = "\\\"";
-    bID[92] = "\\\\";
-    bID[9] = "\\t";
-    bID[8] = "\\b";
-    bID[10] = "\\n";
-    bID[13] = "\\r";
-    bID[12] = "\\f";
-    String[] arrayOfString = (String[])bID.clone();
-    bIE = arrayOfString;
+    bGl[34] = "\\\"";
+    bGl[92] = "\\\\";
+    bGl[9] = "\\t";
+    bGl[8] = "\\b";
+    bGl[10] = "\\n";
+    bGl[13] = "\\r";
+    bGl[12] = "\\f";
+    String[] arrayOfString = (String[])bGl.clone();
+    bGm = arrayOfString;
     arrayOfString[60] = "\\u003c";
-    bIE[62] = "\\u003e";
-    bIE[38] = "\\u0026";
-    bIE[61] = "\\u003d";
-    bIE[39] = "\\u0027";
+    bGm[62] = "\\u003e";
+    bGm[38] = "\\u0026";
+    bGm[61] = "\\u003d";
+    bGm[39] = "\\u0027";
     AppMethodBeat.o(107869);
   }
   
   public a(Writer paramWriter)
   {
     AppMethodBeat.i(107845);
-    this.bIF = new int[32];
-    this.bIG = 0;
-    fN(6);
+    this.bGn = new int[32];
+    this.bGo = 0;
+    fz(6);
     this.separator = ":";
-    this.bFh = true;
+    this.bCP = true;
     if (paramWriter == null)
     {
       paramWriter = new NullPointerException("out == null");
@@ -66,16 +66,16 @@ public class a
     AppMethodBeat.o(107845);
   }
   
-  private void br(String paramString)
+  private void bi(String paramString)
   {
     AppMethodBeat.i(107865);
-    if (this.bFk) {}
+    if (this.bCS) {}
     int m;
     int i;
     int j;
     int n;
     int k;
-    for (String[] arrayOfString = bIE;; arrayOfString = bID)
+    for (String[] arrayOfString = bGm;; arrayOfString = bGl)
     {
       this.out.write("\"");
       m = paramString.length();
@@ -124,22 +124,22 @@ public class a
   private a c(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(107852);
-    int i = xM();
+    int i = xz();
     if ((i != paramInt2) && (i != paramInt1))
     {
       paramString = new IllegalStateException("Nesting problem.");
       AppMethodBeat.o(107852);
       throw paramString;
     }
-    if (this.bII != null)
+    if (this.bGq != null)
     {
-      paramString = new IllegalStateException("Dangling name: " + this.bII);
+      paramString = new IllegalStateException("Dangling name: " + this.bGq);
       AppMethodBeat.o(107852);
       throw paramString;
     }
-    this.bIG -= 1;
+    this.bGo -= 1;
     if (i == paramInt2) {
-      xO();
+      xB();
     }
     this.out.write(paramString);
     AppMethodBeat.o(107852);
@@ -149,90 +149,76 @@ public class a
   private a c(int paramInt, String paramString)
   {
     AppMethodBeat.i(107851);
-    xQ();
-    fN(paramInt);
+    xD();
+    fz(paramInt);
     this.out.write(paramString);
     AppMethodBeat.o(107851);
     return this;
   }
   
-  private void fN(int paramInt)
+  private void fA(int paramInt)
+  {
+    this.bGn[(this.bGo - 1)] = paramInt;
+  }
+  
+  private void fz(int paramInt)
   {
     AppMethodBeat.i(107853);
-    if (this.bIG == this.bIF.length)
+    if (this.bGo == this.bGn.length)
     {
-      arrayOfInt = new int[this.bIG * 2];
-      System.arraycopy(this.bIF, 0, arrayOfInt, 0, this.bIG);
-      this.bIF = arrayOfInt;
+      arrayOfInt = new int[this.bGo * 2];
+      System.arraycopy(this.bGn, 0, arrayOfInt, 0, this.bGo);
+      this.bGn = arrayOfInt;
     }
-    int[] arrayOfInt = this.bIF;
-    int i = this.bIG;
-    this.bIG = (i + 1);
+    int[] arrayOfInt = this.bGn;
+    int i = this.bGo;
+    this.bGo = (i + 1);
     arrayOfInt[i] = paramInt;
     AppMethodBeat.o(107853);
   }
   
-  private void fO(int paramInt)
-  {
-    this.bIF[(this.bIG - 1)] = paramInt;
-  }
-  
-  private int xM()
-  {
-    AppMethodBeat.i(107854);
-    if (this.bIG == 0)
-    {
-      IllegalStateException localIllegalStateException = new IllegalStateException("JsonWriter is closed.");
-      AppMethodBeat.o(107854);
-      throw localIllegalStateException;
-    }
-    int i = this.bIF[(this.bIG - 1)];
-    AppMethodBeat.o(107854);
-    return i;
-  }
-  
-  private void xN()
+  private void xA()
   {
     AppMethodBeat.i(107856);
-    if (this.bII != null)
+    if (this.bGq != null)
     {
-      xP();
-      br(this.bII);
-      this.bII = null;
+      xC();
+      bi(this.bGq);
+      this.bGq = null;
     }
     AppMethodBeat.o(107856);
   }
   
-  private void xO()
+  private void xB()
   {
     AppMethodBeat.i(107866);
-    if (this.bIH == null)
+    if (this.bGp == null)
     {
       AppMethodBeat.o(107866);
       return;
     }
     this.out.write("\n");
     int i = 1;
-    int j = this.bIG;
+    int j = this.bGo;
     while (i < j)
     {
-      this.out.write(this.bIH);
+      this.out.write(this.bGp);
       i += 1;
     }
     AppMethodBeat.o(107866);
   }
   
-  private void xP()
+  private void xC()
   {
     AppMethodBeat.i(107867);
-    int i = xM();
+    int i = xz();
     if (i == 5) {
       this.out.write(44);
     }
     while (i == 3)
     {
-      xO();
-      fO(4);
+      xB();
+      fA(4);
       AppMethodBeat.o(107867);
       return;
     }
@@ -241,11 +227,11 @@ public class a
     throw localIllegalStateException;
   }
   
-  private void xQ()
+  private void xD()
   {
     AppMethodBeat.i(107868);
     IllegalStateException localIllegalStateException;
-    switch (xM())
+    switch (xz())
     {
     case 3: 
     case 5: 
@@ -254,30 +240,44 @@ public class a
       AppMethodBeat.o(107868);
       throw localIllegalStateException;
     case 7: 
-      if (!this.bFm)
+      if (!this.bCU)
       {
         localIllegalStateException = new IllegalStateException("JSON must have only one top-level value.");
         AppMethodBeat.o(107868);
         throw localIllegalStateException;
       }
     case 6: 
-      fO(7);
+      fA(7);
       AppMethodBeat.o(107868);
       return;
     case 1: 
-      fO(2);
-      xO();
+      fA(2);
+      xB();
       AppMethodBeat.o(107868);
       return;
     case 2: 
       this.out.append(',');
-      xO();
+      xB();
       AppMethodBeat.o(107868);
       return;
     }
     this.out.append(this.separator);
-    fO(5);
+    fA(5);
     AppMethodBeat.o(107868);
+  }
+  
+  private int xz()
+  {
+    AppMethodBeat.i(107854);
+    if (this.bGo == 0)
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("JsonWriter is closed.");
+      AppMethodBeat.o(107854);
+      throw localIllegalStateException;
+    }
+    int i = this.bGn[(this.bGo - 1)];
+    AppMethodBeat.o(107854);
+    return i;
   }
   
   public a a(Boolean paramBoolean)
@@ -285,12 +285,12 @@ public class a
     AppMethodBeat.i(107860);
     if (paramBoolean == null)
     {
-      paramBoolean = xI();
+      paramBoolean = xv();
       AppMethodBeat.o(107860);
       return paramBoolean;
     }
-    xN();
-    xQ();
+    xA();
+    xD();
     Writer localWriter = this.out;
     if (paramBoolean.booleanValue()) {}
     for (paramBoolean = "true";; paramBoolean = "false")
@@ -306,39 +306,39 @@ public class a
     AppMethodBeat.i(107862);
     if (paramNumber == null)
     {
-      paramNumber = xI();
+      paramNumber = xv();
       AppMethodBeat.o(107862);
       return paramNumber;
     }
-    xN();
+    xA();
     String str = paramNumber.toString();
-    if ((!this.bFm) && ((str.equals("-Infinity")) || (str.equals("Infinity")) || (str.equals("NaN"))))
+    if ((!this.bCU) && ((str.equals("-Infinity")) || (str.equals("Infinity")) || (str.equals("NaN"))))
     {
       paramNumber = new IllegalArgumentException("Numeric values must be finite, but was ".concat(String.valueOf(paramNumber)));
       AppMethodBeat.o(107862);
       throw paramNumber;
     }
-    xQ();
+    xD();
     this.out.append(str);
     AppMethodBeat.o(107862);
     return this;
   }
   
-  public a az(long paramLong)
+  public a av(long paramLong)
   {
     AppMethodBeat.i(107861);
-    xN();
-    xQ();
+    xA();
+    xD();
     this.out.write(Long.toString(paramLong));
     AppMethodBeat.o(107861);
     return this;
   }
   
-  public a bg(boolean paramBoolean)
+  public a bf(boolean paramBoolean)
   {
     AppMethodBeat.i(107859);
-    xN();
-    xQ();
+    xA();
+    xD();
     Writer localWriter = this.out;
     if (paramBoolean) {}
     for (String str = "true";; str = "false")
@@ -349,7 +349,7 @@ public class a
     }
   }
   
-  public a bp(String paramString)
+  public a bg(String paramString)
   {
     AppMethodBeat.i(107855);
     if (paramString == null)
@@ -358,35 +358,35 @@ public class a
       AppMethodBeat.o(107855);
       throw paramString;
     }
-    if (this.bII != null)
+    if (this.bGq != null)
     {
       paramString = new IllegalStateException();
       AppMethodBeat.o(107855);
       throw paramString;
     }
-    if (this.bIG == 0)
+    if (this.bGo == 0)
     {
       paramString = new IllegalStateException("JsonWriter is closed.");
       AppMethodBeat.o(107855);
       throw paramString;
     }
-    this.bII = paramString;
+    this.bGq = paramString;
     AppMethodBeat.o(107855);
     return this;
   }
   
-  public a bq(String paramString)
+  public a bh(String paramString)
   {
     AppMethodBeat.i(107857);
     if (paramString == null)
     {
-      paramString = xI();
+      paramString = xv();
       AppMethodBeat.o(107857);
       return paramString;
     }
-    xN();
-    xQ();
-    br(paramString);
+    xA();
+    xD();
+    bi(paramString);
     AppMethodBeat.o(107857);
     return this;
   }
@@ -395,21 +395,21 @@ public class a
   {
     AppMethodBeat.i(107864);
     this.out.close();
-    int i = this.bIG;
-    if ((i > 1) || ((i == 1) && (this.bIF[(i - 1)] != 7)))
+    int i = this.bGo;
+    if ((i > 1) || ((i == 1) && (this.bGn[(i - 1)] != 7)))
     {
       IOException localIOException = new IOException("Incomplete document");
       AppMethodBeat.o(107864);
       throw localIOException;
     }
-    this.bIG = 0;
+    this.bGo = 0;
     AppMethodBeat.o(107864);
   }
   
   public void flush()
   {
     AppMethodBeat.i(107863);
-    if (this.bIG == 0)
+    if (this.bGo == 0)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("JsonWriter is closed.");
       AppMethodBeat.o(107863);
@@ -424,26 +424,26 @@ public class a
     AppMethodBeat.i(107846);
     if (paramString.length() == 0)
     {
-      this.bIH = null;
+      this.bGp = null;
       this.separator = ":";
       AppMethodBeat.o(107846);
       return;
     }
-    this.bIH = paramString;
+    this.bGp = paramString;
     this.separator = ": ";
     AppMethodBeat.o(107846);
   }
   
-  public a xE()
+  public a xr()
   {
     AppMethodBeat.i(107847);
-    xN();
+    xA();
     a locala = c(1, "[");
     AppMethodBeat.o(107847);
     return locala;
   }
   
-  public a xF()
+  public a xs()
   {
     AppMethodBeat.i(107848);
     a locala = c(1, 2, "]");
@@ -451,16 +451,16 @@ public class a
     return locala;
   }
   
-  public a xG()
+  public a xt()
   {
     AppMethodBeat.i(107849);
-    xN();
+    xA();
     a locala = c(3, "{");
     AppMethodBeat.o(107849);
     return locala;
   }
   
-  public a xH()
+  public a xu()
   {
     AppMethodBeat.i(107850);
     a locala = c(3, 5, "}");
@@ -468,30 +468,30 @@ public class a
     return locala;
   }
   
-  public a xI()
+  public a xv()
   {
     AppMethodBeat.i(107858);
-    if (this.bII != null)
+    if (this.bGq != null)
     {
-      if (this.bFh) {
-        xN();
+      if (this.bCP) {
+        xA();
       }
     }
     else
     {
-      xQ();
+      xD();
       this.out.write("null");
       AppMethodBeat.o(107858);
       return this;
     }
-    this.bII = null;
+    this.bGq = null;
     AppMethodBeat.o(107858);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.d.a
  * JD-Core Version:    0.7.0.1
  */

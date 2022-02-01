@@ -6,21 +6,21 @@ import com.google.b.a.e;
 public final class a$aj
   extends e
 {
-  public a.ax[] Imr = a.ax.fly();
+  public a.ax[] JOc = a.ax.fBP();
   
   public a$aj()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    if ((this.Imr != null) && (this.Imr.length > 0))
+    if ((this.JOc != null) && (this.JOc.length > 0))
     {
       int i = 0;
-      while (i < this.Imr.length)
+      while (i < this.JOc.length)
       {
-        a.ax localax = this.Imr[i];
+        a.ax localax = this.JOc[i];
         if (localax != null) {
           paramb.a(1, localax);
         }
@@ -30,23 +30,23 @@ public final class a$aj
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int i = super.yg();
+    int i = super.xT();
     int k = i;
-    if (this.Imr != null)
+    if (this.JOc != null)
     {
       k = i;
-      if (this.Imr.length > 0)
+      if (this.JOc.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.Imr.length) {
+          if (j >= this.JOc.length) {
             break;
           }
-          a.ax localax = this.Imr[j];
+          a.ax localax = this.JOc[j];
           k = i;
           if (localax != null) {
             k = i + b.b(1, localax);

@@ -8,11 +8,11 @@ public abstract class h
   implements Serializable
 {
   @Deprecated
-  public static final h aOw = a.aOw;
+  public static final h aPm = a.aPm;
   @Deprecated
-  public static final h aOx = a.aOx;
+  public static final h aPn = a.aPn;
   @Deprecated
-  public static final h aOy = a.aOy;
+  public static final h aPo = a.aPo;
   
   public final String a(l paraml)
   {
@@ -70,44 +70,44 @@ public abstract class h
     return false;
   }
   
-  public String qV()
-  {
-    throw new UnsupportedOperationException("Not a string: " + toString());
-  }
-  
-  public b qs()
+  public b qC()
   {
     throw new UnsupportedOperationException("Not an array: " + toString());
   }
   
-  public boolean qt()
+  public boolean qD()
   {
     throw new UnsupportedOperationException("Not a boolean: " + toString());
   }
   
-  public int qu()
+  public int qE()
   {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
   
-  public long qv()
+  public long qF()
   {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
   
-  public double qw()
+  public double qG()
   {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
   
-  public e qx()
+  public e qH()
   {
     throw new UnsupportedOperationException("Not an object: " + toString());
   }
   
+  public String rf()
+  {
+    throw new UnsupportedOperationException("Not a string: " + toString());
+  }
+  
   public String toString()
   {
-    return a(l.aPd);
+    return a(l.aPT);
   }
 }
 

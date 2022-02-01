@@ -7,12 +7,12 @@ final class a$c
   extends d.g.b.l
   implements m<d.l.b.a.b.b.l, d.l.b.a.b.b.l, Boolean>
 {
-  public static final c JQY;
+  public static final c LEr;
   
   static
   {
     AppMethodBeat.i(59876);
-    JQY = new c();
+    LEr = new c();
     AppMethodBeat.o(59876);
   }
   

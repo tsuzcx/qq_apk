@@ -1,123 +1,71 @@
 package com.tencent.xweb.xwalk.a;
 
-import android.app.Activity;
-import android.view.ViewGroup;
-import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.f;
-import java.lang.reflect.Method;
-import java.util.HashMap;
+import com.tencent.xweb.util.d;
+import com.tencent.xweb.util.g;
+import com.tencent.xweb.xwalk.updater.SchedulerConfig;
+import java.io.File;
 import org.xwalk.core.Log;
 
 public final class c
-  extends k
+  extends f
 {
-  public final boolean a(HashMap<String, String> paramHashMap, Activity paramActivity, ViewGroup paramViewGroup, final ValueCallback<Integer> paramValueCallback)
+  public final int a(SchedulerConfig paramSchedulerConfig)
   {
-    AppMethodBeat.i(157181);
-    if ((paramActivity == null) || (paramViewGroup == null))
+    AppMethodBeat.i(205104);
+    Log.i("FullScreenVideo", "performInstall version " + paramSchedulerConfig.version);
+    if (d.mJ(paramSchedulerConfig.path, paramSchedulerConfig.KHS))
     {
-      Log.e("XFilesPDFReader", "readFile params is null");
-      b("pdf", paramValueCallback, -5);
-      AppMethodBeat.o(157181);
-      return false;
+      agi(paramSchedulerConfig.version);
+      Log.i("FullScreenVideo", "performInstall " + this.KHj + " success");
+      AppMethodBeat.o(205104);
+      return 0;
     }
-    final String str = (String)paramHashMap.get("file_ext");
-    if ((str == null) || (str.isEmpty()))
-    {
-      Log.e("XFilesPDFReader", "readFile fileExt is null");
-      b("pdf", paramValueCallback, -5);
-      AppMethodBeat.o(157181);
-      return false;
+    Log.e("FullScreenVideo", "performInstall failed, md5 not match");
+    paramSchedulerConfig = new File(paramSchedulerConfig.path);
+    if (paramSchedulerConfig.exists()) {
+      paramSchedulerConfig.delete();
     }
-    int i = this.IUH;
-    if (i <= 0)
-    {
-      Log.e("XFilesPDFReader", "readFile plugin not installed");
-      b(str, paramValueCallback, -2);
-      AppMethodBeat.o(157181);
-      return false;
-    }
-    if (i < 100)
-    {
-      Log.e("XFilesPDFReader", "readFile plugin version is too old, require: 100");
-      b(str, paramValueCallback, -11);
-      AppMethodBeat.o(157181);
-      return false;
-    }
-    Log.i("XFilesPDFReader", "readFile by xweb, plugin version ".concat(String.valueOf(i)));
-    ads(1071);
-    try
-    {
-      paramHashMap.put("cache_dir", adp(i));
-      paramHashMap.put("res_dir", adq(i));
-      ftr();
-      Method localMethod = this.IVf.getMethod("readFile", new Class[] { Activity.class, ViewGroup.class, ClassLoader.class, HashMap.class, ValueCallback.class, ValueCallback.class, ValueCallback.class });
-      localMethod.setAccessible(true);
-      com.tencent.xweb.e.onStart(str);
-      localMethod.invoke(null, new Object[] { paramActivity, paramViewGroup, this.IVf.getClassLoader(), paramHashMap, this.IVi, this.IVj, new ValueCallback() {} });
-      AppMethodBeat.o(157181);
-      return true;
-    }
-    catch (Exception paramHashMap)
-    {
-      Log.e("XFilesPDFReader", "readFile error: " + paramHashMap.getMessage());
-      f.a("XFilesPDFReader", i, "invoke error ", paramHashMap);
-      b(str, paramValueCallback, -3);
-      AppMethodBeat.o(157181);
-    }
-    return false;
+    g.dj("FullScreenVideo", false);
+    AppMethodBeat.o(205104);
+    return -1;
   }
   
-  public final String adm(int paramInt)
+  public final String bi(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(157180);
-    String str = cS(paramInt, "pdfreader.apk");
-    AppMethodBeat.o(157180);
+    AppMethodBeat.i(157176);
+    String str = agj(paramInt);
+    if ((str == null) || (str.isEmpty()))
+    {
+      AppMethodBeat.o(157176);
+      return "";
+    }
+    if (!paramBoolean)
+    {
+      str = str + File.separator + "xweb_fullscreen_video.js";
+      AppMethodBeat.o(157176);
+      return str;
+    }
+    str = str + File.separator + "patch";
+    AppMethodBeat.o(157176);
     return str;
   }
   
-  public final String ftd()
+  public final boolean fLN()
   {
-    return "com.tencent.xweb.xfiles.pdf.PDFReader";
+    return true;
   }
   
-  public final String fte()
+  public final void fLO()
   {
-    return "com.tencent.xweb.xfiles.pdf.PDFReaderEnvironment";
-  }
-  
-  public final int ftf()
-  {
-    return 100;
+    AppMethodBeat.i(157178);
+    Log.i("FullScreenVideo", "checkVersionFiles, skip");
+    AppMethodBeat.o(157178);
   }
   
   public final String getPluginName()
   {
-    return "XFilesPDFReader";
-  }
-  
-  public final void p(HashMap<String, String> paramHashMap)
-  {
-    AppMethodBeat.i(157182);
-    if (this.IVf == null)
-    {
-      AppMethodBeat.o(157182);
-      return;
-    }
-    try
-    {
-      Method localMethod = this.IVf.getMethod("finishReadFile", new Class[] { HashMap.class });
-      localMethod.setAccessible(true);
-      localMethod.invoke(null, new Object[] { paramHashMap });
-      AppMethodBeat.o(157182);
-      return;
-    }
-    catch (Exception paramHashMap)
-    {
-      Log.e("XFilesPDFReader", "finishReadFile error: " + paramHashMap.getMessage());
-      AppMethodBeat.o(157182);
-    }
+    return "FullScreenVideo";
   }
 }
 

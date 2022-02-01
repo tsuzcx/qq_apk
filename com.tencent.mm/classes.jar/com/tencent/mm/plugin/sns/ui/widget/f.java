@@ -9,51 +9,51 @@ import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.a.b;
 import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class f
 {
-  private static f xYs;
-  private static final int xYv;
-  public int xXY = 0;
-  private com.tencent.mm.kiss.widget.textview.a.a xYt = null;
-  private com.tencent.mm.kiss.widget.textview.a.a xYu = null;
+  private static f zlp;
+  private static final int zls;
+  public int zkU = 0;
+  private com.tencent.mm.kiss.widget.textview.a.a zlq = null;
+  private com.tencent.mm.kiss.widget.textview.a.a zlr = null;
   
   static
   {
     AppMethodBeat.i(100557);
-    xYs = new f();
-    xYv = com.tencent.mm.cd.a.ap(aj.getContext(), 2131165200);
+    zlp = new f();
+    zls = com.tencent.mm.cc.a.av(ai.getContext(), 2131165200);
     AppMethodBeat.o(100557);
   }
   
-  public static f dEn()
+  public static f dSL()
   {
-    return xYs;
+    return zlp;
   }
   
   public static float getTextSize()
   {
     AppMethodBeat.i(100556);
-    float f = (int)(xYv * com.tencent.mm.cd.a.dT(aj.getContext()));
+    float f = (int)(zls * com.tencent.mm.cc.a.eb(ai.getContext()));
     AppMethodBeat.o(100556);
     return f;
   }
   
   public static void resetConfig()
   {
-    f localf = xYs;
-    localf.xYt = null;
-    localf.xYu = null;
+    f localf = zlp;
+    localf.zlq = null;
+    localf.zlr = null;
   }
   
-  public final com.tencent.mm.kiss.widget.textview.a.a dEo()
+  public final com.tencent.mm.kiss.widget.textview.a.a dSM()
   {
     AppMethodBeat.i(100554);
-    int i = (int)(xYv * com.tencent.mm.cd.a.dT(aj.getContext()));
-    this.xYu = b.agI().mv(8388627).mw(aj.getContext().getResources().getColor(2131100711)).ac(i).agJ().ggZ;
-    com.tencent.mm.kiss.widget.textview.a.a locala = this.xYu;
+    int i = (int)(zls * com.tencent.mm.cc.a.eb(ai.getContext()));
+    this.zlr = b.ahZ().mu(8388627).mv(ai.getContext().getResources().getColor(2131100711)).ag(i).aia().glF;
+    com.tencent.mm.kiss.widget.textview.a.a locala = this.zlr;
     AppMethodBeat.o(100554);
     return locala;
   }
@@ -61,11 +61,11 @@ public final class f
   public final com.tencent.mm.kiss.widget.textview.a.a getTextViewConfig()
   {
     AppMethodBeat.i(100553);
-    int i = (int)(xYv * com.tencent.mm.cd.a.dT(aj.getContext()));
-    if ((this.xYt == null) || ((int)this.xYt.textSize != i)) {
-      this.xYt = b.agI().mv(8388627).mw(aj.getContext().getResources().getColor(2131100711)).ac(i).ggZ;
+    int i = (int)(zls * com.tencent.mm.cc.a.eb(ai.getContext()));
+    if ((this.zlq == null) || ((int)this.zlq.textSize != i)) {
+      this.zlq = b.ahZ().mu(8388627).mv(ai.getContext().getResources().getColor(2131100711)).ag(i).glF;
     }
-    com.tencent.mm.kiss.widget.textview.a.a locala = this.xYt;
+    com.tencent.mm.kiss.widget.textview.a.a locala = this.zlq;
     AppMethodBeat.o(100553);
     return locala;
   }
@@ -73,24 +73,24 @@ public final class f
   public final int getViewWidth()
   {
     AppMethodBeat.i(100555);
-    if (this.xXY <= 0)
+    if (this.zkU <= 0)
     {
-      i = af.cPz().x;
-      int j = (int)(aj.getResources().getDimension(2131165516) + aj.getResources().getDimension(2131165516));
-      int k = (int)aj.getResources().getDimension(2131166840);
-      int m = (int)aj.getResources().getDimension(2131165516);
-      this.xXY = (i - k - j);
-      if (this.xXY <= 0)
+      i = af.ddi().x;
+      int j = (int)(ai.getResources().getDimension(2131165516) + ai.getResources().getDimension(2131165516));
+      int k = (int)ai.getResources().getDimension(2131166840);
+      int m = (int)ai.getResources().getDimension(2131165516);
+      this.zkU = (i - k - j);
+      if (this.zkU <= 0)
       {
         DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-        ((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+        ((WindowManager)ai.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
         i = localDisplayMetrics.widthPixels;
-        this.xXY = (i - k - j);
-        ad.i("MicroMsg.SnsPostDescPreloadTextViewConfig", "try again, screenWidth " + i + " textViewWidth " + this.xXY + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
+        this.zkU = (i - k - j);
+        ac.i("MicroMsg.SnsPostDescPreloadTextViewConfig", "try again, screenWidth " + i + " textViewWidth " + this.zkU + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
       }
-      ad.i("MicroMsg.SnsPostDescPreloadTextViewConfig", "finally, screenWidth " + i + " textViewWidth " + this.xXY + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
+      ac.i("MicroMsg.SnsPostDescPreloadTextViewConfig", "finally, screenWidth " + i + " textViewWidth " + this.zkU + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
     }
-    int i = this.xXY;
+    int i = this.zkU;
     AppMethodBeat.o(100555);
     return i;
   }

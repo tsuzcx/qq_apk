@@ -16,30 +16,30 @@ import java.util.HashMap;
 public final class d
   implements Cursor, com.tencent.mm.storagebase.a.d
 {
-  private static Cursor FCk;
+  private static Cursor Hbn;
   
-  public static Cursor eNU()
+  public static Cursor fdy()
   {
     AppMethodBeat.i(133330);
-    if (FCk == null) {
-      FCk = new d();
+    if (Hbn == null) {
+      Hbn = new d();
     }
-    Cursor localCursor = FCk;
+    Cursor localCursor = Hbn;
     AppMethodBeat.o(133330);
     return localCursor;
   }
   
-  public final boolean WP(int paramInt)
+  public final boolean YZ(int paramInt)
   {
     return false;
   }
   
-  public final a WQ(int paramInt)
+  public final a Za(int paramInt)
   {
     return null;
   }
   
-  public final void WR(int paramInt) {}
+  public final void Zb(int paramInt) {}
   
   public final void a(f.a parama) {}
   
@@ -52,31 +52,31 @@ public final class d
   
   public final void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
   
-  public final boolean dT(Object paramObject)
+  public final boolean dU(Object paramObject)
   {
     return false;
   }
   
-  public final a dU(Object paramObject)
+  public final a dV(Object paramObject)
   {
     return null;
   }
   
   public final void deactivate() {}
   
-  public final SparseArray[] eNV()
+  public final HashMap fdA()
   {
     return null;
   }
   
-  public final HashMap eNW()
-  {
-    return null;
-  }
-  
-  public final boolean eNX()
+  public final boolean fdB()
   {
     return false;
+  }
+  
+  public final SparseArray[] fdz()
+  {
+    return null;
   }
   
   public final byte[] getBlob(int paramInt)
@@ -251,7 +251,7 @@ public final class d
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {}
   
-  public final void ve(boolean paramBoolean) {}
+  public final void wg(boolean paramBoolean) {}
 }
 
 

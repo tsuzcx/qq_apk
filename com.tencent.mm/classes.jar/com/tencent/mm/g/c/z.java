@@ -8,21 +8,21 @@ public abstract class z
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ejL = "msgId".hashCode();
-  private static final int elJ;
-  private static final int eni;
-  private static final int eoF = "xml".hashCode();
-  private static final int eoG;
-  private static final int eoH;
+  private static final int elP = "msgId".hashCode();
+  private static final int enO;
+  private static final int epn;
+  private static final int eqJ = "xml".hashCode();
+  private static final int eqK;
+  private static final int eqL;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE;
   private boolean __hadSettype = true;
-  private boolean ejH = true;
-  private boolean els = true;
-  private boolean enc = true;
-  private boolean eoC = true;
-  private boolean eoD = true;
-  private boolean eoE = true;
+  private boolean elL = true;
+  private boolean enx = true;
+  private boolean epi = true;
+  private boolean eqG = true;
+  private boolean eqH = true;
+  private boolean eqI = true;
   public String field_appId;
   public String field_description;
   public long field_msgId;
@@ -33,10 +33,10 @@ public abstract class z
   
   static
   {
-    elJ = "appId".hashCode();
-    eoG = "title".hashCode();
-    eoH = "description".hashCode();
-    eni = "source".hashCode();
+    enO = "appId".hashCode();
+    eqK = "title".hashCode();
+    eqL = "description".hashCode();
+    epn = "source".hashCode();
     type_HASHCODE = "type".hashCode();
   }
   
@@ -53,11 +53,11 @@ public abstract class z
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ejL != k) {
+      if (elP != k) {
         break label65;
       }
       this.field_msgId = paramCursor.getLong(i);
-      this.ejH = true;
+      this.elL = true;
     }
     for (;;)
     {
@@ -65,15 +65,15 @@ public abstract class z
       break label20;
       break;
       label65:
-      if (eoF == k) {
+      if (eqJ == k) {
         this.field_xml = paramCursor.getString(i);
-      } else if (elJ == k) {
+      } else if (enO == k) {
         this.field_appId = paramCursor.getString(i);
-      } else if (eoG == k) {
+      } else if (eqK == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (eoH == k) {
+      } else if (eqL == k) {
         this.field_description = paramCursor.getString(i);
-      } else if (eni == k) {
+      } else if (epn == k) {
         this.field_source = paramCursor.getString(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
@@ -86,22 +86,22 @@ public abstract class z
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ejH) {
+    if (this.elL) {
       localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.eoC) {
+    if (this.eqG) {
       localContentValues.put("xml", this.field_xml);
     }
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eoD) {
+    if (this.eqH) {
       localContentValues.put("title", this.field_title);
     }
-    if (this.eoE) {
+    if (this.eqI) {
       localContentValues.put("description", this.field_description);
     }
-    if (this.enc) {
+    if (this.epi) {
       localContentValues.put("source", this.field_source);
     }
     if (this.__hadSettype) {

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.music.b.a;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class b
 {
-  static void B(ArrayList<IDKey> paramArrayList)
+  static void G(ArrayList<IDKey> paramArrayList)
   {
     AppMethodBeat.i(62941);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -23,10 +23,10 @@ public final class b
     AppMethodBeat.o(62941);
   }
   
-  public static int Hr(int paramInt)
+  public static int Jq(int paramInt)
   {
     AppMethodBeat.i(62940);
-    ad.i("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
+    ac.i("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     default: 
@@ -81,7 +81,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.a.b
  * JD-Core Version:    0.7.0.1
  */

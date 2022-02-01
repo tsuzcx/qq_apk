@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 public final class d
   extends Property<ViewGroup, Float>
 {
-  public static final Property<ViewGroup, Float> dV = new d("childrenAlpha");
+  public static final Property<ViewGroup, Float> eV = new d("childrenAlpha");
   
   private d(String paramString)
   {
@@ -15,7 +15,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.design.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.e.i;
 
 public abstract interface a
 {
-  public abstract boolean aNY(String paramString);
+  public abstract boolean aTB(String paramString);
 }
 
 

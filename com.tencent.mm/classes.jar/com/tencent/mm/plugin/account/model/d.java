@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.kq;
-import com.tencent.mm.protocal.protobuf.kr;
+import com.tencent.mm.protocal.protobuf.kw;
+import com.tencent.mm.protocal.protobuf.kx;
 
 public final class d
   extends n
   implements k
 {
-  public static int iog = 1;
-  public static int ioh = 2;
+  public static int iOm = 1;
+  public static int iOn = 2;
   private g callback;
   private b rr;
   
@@ -25,22 +25,22 @@ public final class d
   {
     AppMethodBeat.i(127829);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new kq();
-    ((b.a)localObject).gUV = new kr();
+    ((b.a)localObject).hvt = new kw();
+    ((b.a)localObject).hvu = new kx();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/bindemail";
     ((b.a)localObject).funcId = 256;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (kq)this.rr.gUS.gUX;
-    ((kq)localObject).OpCode = paramInt;
-    ((kq)localObject).CFx = paramString;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (kw)this.rr.hvr.hvw;
+    ((kw)localObject).OpCode = paramInt;
+    ((kw)localObject).DXX = paramString;
     AppMethodBeat.o(127829);
   }
   
-  public final int JJ()
+  public final int Js()
   {
-    return ((kq)this.rr.gUS.gUX).OpCode;
+    return ((kw)this.rr.hvr.hvw).OpCode;
   }
   
   public final int doScene(e parame, g paramg)
@@ -67,7 +67,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.d
  * JD-Core Version:    0.7.0.1
  */

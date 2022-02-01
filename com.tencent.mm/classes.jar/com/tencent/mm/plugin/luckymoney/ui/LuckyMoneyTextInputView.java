@@ -18,25 +18,25 @@ public class LuckyMoneyTextInputView
   extends LinearLayout
   implements c
 {
-  private TextView kEu;
-  private g sYH;
-  private MMEditText tae;
-  LinearLayout tqj;
-  ImageView tqk;
-  BaseEmojiView tql;
-  private View.OnClickListener tqm;
+  private TextView lfN;
+  private g ugV;
+  private MMEditText uiu;
+  LinearLayout uyB;
+  ImageView uyC;
+  BaseEmojiView uyD;
+  private View.OnClickListener uyE;
   
   public LuckyMoneyTextInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65933);
     paramContext = LayoutInflater.from(paramContext).inflate(2131494660, this, true);
-    this.tae = ((MMEditText)paramContext.findViewById(2131301944));
-    this.kEu = ((TextView)paramContext.findViewById(2131301945));
-    this.tqj = ((LinearLayout)paramContext.findViewById(2131301794));
-    this.tqk = ((ImageView)paramContext.findViewById(2131301795));
-    this.tql = ((BaseEmojiView)paramContext.findViewById(2131301793));
-    this.tae.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.uiu = ((MMEditText)paramContext.findViewById(2131301944));
+    this.lfN = ((TextView)paramContext.findViewById(2131301945));
+    this.uyB = ((LinearLayout)paramContext.findViewById(2131301794));
+    this.uyC = ((ImageView)paramContext.findViewById(2131301795));
+    this.uyD = ((BaseEmojiView)paramContext.findViewById(2131301793));
+    this.uiu.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
@@ -45,12 +45,12 @@ public class LuckyMoneyTextInputView
         {
           paramAnonymousView = LuckyMoneyTextInputView.a(LuckyMoneyTextInputView.this);
           LuckyMoneyTextInputView.this.getInputViewId();
-          paramAnonymousView.cKZ();
+          paramAnonymousView.cYF();
         }
         AppMethodBeat.o(65931);
       }
     });
-    this.tqj.setOnClickListener(new View.OnClickListener()
+    this.uyB.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -61,26 +61,26 @@ public class LuckyMoneyTextInputView
         AppMethodBeat.o(65932);
       }
     });
-    this.tqj.setVisibility(8);
+    this.uyB.setVisibility(8);
     AppMethodBeat.o(65933);
   }
   
   public final void A(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(65938);
-    this.tqj.setTag("delete");
-    this.tqk.setVisibility(8);
-    this.tql.setVisibility(0);
-    this.tql.setEmojiInfo(paramEmojiInfo);
+    this.uyB.setTag("delete");
+    this.uyC.setVisibility(8);
+    this.uyD.setVisibility(0);
+    this.uyD.setEmojiInfo(paramEmojiInfo);
     AppMethodBeat.o(65938);
   }
   
-  public final String FI(int paramInt)
+  public final String HD(int paramInt)
   {
     return null;
   }
   
-  public final int cKY()
+  public final int cYE()
   {
     return 0;
   }
@@ -88,7 +88,7 @@ public class LuckyMoneyTextInputView
   public String getInput()
   {
     AppMethodBeat.i(65934);
-    String str = this.tae.getText().toString();
+    String str = this.uiu.getText().toString();
     AppMethodBeat.o(65934);
     return str;
   }
@@ -101,18 +101,18 @@ public class LuckyMoneyTextInputView
     return i;
   }
   
-  public final void mT(boolean paramBoolean)
+  public final void nL(boolean paramBoolean)
   {
     AppMethodBeat.i(65937);
     if (paramBoolean)
     {
-      this.tqj.setVisibility(8);
+      this.uyB.setVisibility(8);
       AppMethodBeat.o(65937);
       return;
     }
-    this.tqj.setVisibility(0);
-    this.tqk.setVisibility(0);
-    this.tql.setVisibility(8);
+    this.uyB.setVisibility(0);
+    this.uyC.setVisibility(0);
+    this.uyD.setVisibility(8);
     AppMethodBeat.o(65937);
   }
   
@@ -123,25 +123,25 @@ public class LuckyMoneyTextInputView
   public void setHintText(String paramString)
   {
     AppMethodBeat.i(65935);
-    this.tae.setHint(paramString);
+    this.uiu.setHint(paramString);
     AppMethodBeat.o(65935);
   }
   
   public void setOnInputValidChangerListener(g paramg)
   {
-    this.sYH = paramg;
+    this.ugV = paramg;
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(65936);
-    this.kEu.setText(paramString);
+    this.lfN.setText(paramString);
     AppMethodBeat.o(65936);
   }
   
   public void setmOnEmojiSelectClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.tqm = paramOnClickListener;
+    this.uyE = paramOnClickListener;
   }
 }
 

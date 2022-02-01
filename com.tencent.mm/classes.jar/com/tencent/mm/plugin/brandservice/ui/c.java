@@ -4,10 +4,10 @@ import android.content.Context;
 import android.util.SparseArray;
 import android.widget.AbsListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.pf;
 import com.tencent.mm.protocal.protobuf.pm;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.protocal.protobuf.pt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.base.sortview.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,25 +18,25 @@ import java.util.Map;
 public class c
   extends b
 {
-  private int fwK;
+  private int fAr;
   protected int mScene;
-  protected String mTE;
-  protected int mTF;
-  private List<a> mTI;
-  private boolean mTJ;
-  protected boolean mTK;
-  protected boolean mTL;
-  int mTM;
-  protected long[] mTN;
-  protected b mTO;
+  protected String nvW;
+  protected int nvX;
+  private List<a> nwa;
+  private boolean nwb;
+  protected boolean nwc;
+  protected boolean nwd;
+  int nwe;
+  protected long[] nwf;
+  protected b nwg;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(5624);
-    this.mTI = new ArrayList();
-    E(true, true);
-    this.mTJ = true;
+    this.nwa = new ArrayList();
+    F(true, true);
+    this.nwb = true;
     b(new long[] { 1L });
     AppMethodBeat.o(5624);
   }
@@ -49,10 +49,10 @@ public class c
     }
     int k = parama.count;
     int i;
-    if (parama.mTQ)
+    if (parama.nwi)
     {
       i = 1;
-      if (!parama.mTR) {
+      if (!parama.nwj) {
         break label40;
       }
     }
@@ -66,30 +66,30 @@ public class c
     }
   }
   
-  private a a(pf parampf)
+  private a a(pm parampm)
   {
     AppMethodBeat.i(5626);
     a locala = new a();
-    locala.mTS = new LinkedList();
-    locala.mTS.add(parampf);
-    locala.dcn = parampf.CNp;
-    locala.count = parampf.saZ.size();
-    locala.continueFlag = parampf.CNq;
-    locala.fvw = new LinkedList();
-    locala.fvw.addAll(parampf.saZ);
-    locala.mTP = parampf.CNr;
-    locala.mTQ = this.mTL;
-    locala.mTR = b(locala);
+    locala.nwk = new LinkedList();
+    locala.nwk.add(parampm);
+    locala.cZM = parampm.EfR;
+    locala.count = parampm.tiT.size();
+    locala.continueFlag = parampm.EfS;
+    locala.fzd = new LinkedList();
+    locala.fzd.addAll(parampm.tiT);
+    locala.nwh = parampm.EfT;
+    locala.nwi = this.nwd;
+    locala.nwj = b(locala);
     AppMethodBeat.o(5626);
     return locala;
   }
   
   private boolean b(a parama)
   {
-    return (this.mTK) && (parama.continueFlag != 0);
+    return (this.nwc) && (parama.continueFlag != 0);
   }
   
-  private void bCv()
+  private void bJy()
   {
     boolean bool = true;
     for (;;)
@@ -101,45 +101,45 @@ public class c
         HashMap localHashMap = new HashMap();
         i = 0;
         a locala;
-        if (i < this.mTI.size())
+        if (i < this.nwa.size())
         {
-          locala = (a)this.mTI.get(i);
+          locala = (a)this.nwa.get(i);
           if (locala != null) {
-            localHashMap.put(Long.valueOf(locala.dcn), locala);
+            localHashMap.put(Long.valueOf(locala.cZM), locala);
           }
         }
         else
         {
-          this.mTI.clear();
-          this.fwK = 0;
+          this.nwa.clear();
+          this.fAr = 0;
           i = 0;
           int j;
-          if (i < this.mTN.length)
+          if (i < this.nwf.length)
           {
-            locala = (a)localHashMap.get(Long.valueOf(this.mTN[i]));
+            locala = (a)localHashMap.get(Long.valueOf(this.nwf[i]));
             if (locala == null) {
               break label281;
             }
-            this.mTI.add(locala);
-            j = this.fwK;
-            this.fwK = (a(locala) + j);
+            this.nwa.add(locala);
+            j = this.fAr;
+            this.fAr = (a(locala) + j);
             break label281;
           }
-          if (this.mTI.size() > 0)
+          if (this.nwa.size() > 0)
           {
-            locala = (a)this.mTI.get(this.mTI.size() - 1);
-            if (locala.mTR == this.mTJ)
+            locala = (a)this.nwa.get(this.nwa.size() - 1);
+            if (locala.nwj == this.nwb)
             {
-              j = this.fwK;
-              if (!locala.mTR) {
+              j = this.fAr;
+              if (!locala.nwj) {
                 continue;
               }
               i = -1;
-              this.fwK = (i + j);
-              if (this.mTJ) {
+              this.fAr = (i + j);
+              if (this.nwb) {
                 continue;
               }
-              locala.mTR = bool;
+              locala.nwj = bool;
             }
           }
           localHashMap.clear();
@@ -159,13 +159,13 @@ public class c
     }
   }
   
-  private int nB(long paramLong)
+  private int rn(long paramLong)
   {
     AppMethodBeat.i(5629);
     int i = 0;
-    while (i < this.mTI.size())
+    while (i < this.nwa.size())
     {
-      if (((a)this.mTI.get(i)).dcn == paramLong)
+      if (((a)this.nwa.get(i)).cZM == paramLong)
       {
         AppMethodBeat.o(5629);
         return i;
@@ -176,111 +176,115 @@ public class c
     return -1;
   }
   
-  public final void E(boolean paramBoolean1, boolean paramBoolean2)
+  public final void F(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.mTL = paramBoolean1;
-    this.mTK = paramBoolean2;
+    this.nwd = paramBoolean1;
+    this.nwc = paramBoolean2;
   }
   
-  public void a(pf parampf, boolean paramBoolean)
+  public void a(pm parampm, boolean paramBoolean)
   {
     AppMethodBeat.i(5627);
-    if (((this.mTJ) && (parampf == null)) || (parampf.saZ == null))
+    if (((this.nwb) && (parampm == null)) || (parampm.tiT == null))
     {
-      ad.e("MicroMsg.BrandService.BizSearchResultAdapter", "The content or content.ItemList is null or the mode do not support to append data.");
+      ac.e("MicroMsg.BrandService.BizSearchResultAdapter", "The content or content.ItemList is null or the mode do not support to append data.");
       AppMethodBeat.o(5627);
       return;
     }
     if (isEmpty()) {
-      this.mTM = ((int)(System.currentTimeMillis() / 1000L));
+      this.nwe = ((int)(System.currentTimeMillis() / 1000L));
     }
-    a locala = nA(parampf.CNp);
+    a locala = rm(parampm.EfR);
     if (locala == null) {
       if (paramBoolean)
       {
-        parampf = a(parampf);
-        this.mTI.add(parampf);
-        bCv();
+        parampm = a(parampm);
+        this.nwa.add(parampm);
+        bJy();
       }
     }
     for (;;)
     {
-      aq.f(this.Ggn);
+      ap.f(this.HGd);
       AppMethodBeat.o(5627);
       return;
-      ad.e("MicroMsg.BrandService.BizSearchResultAdapter", "The type(%d) do not exist.", new Object[] { Long.valueOf(parampf.CNp) });
+      ac.e("MicroMsg.BrandService.BizSearchResultAdapter", "The type(%d) do not exist.", new Object[] { Long.valueOf(parampm.EfR) });
       AppMethodBeat.o(5627);
       return;
-      if (locala.fvw == null) {
-        locala.fvw = new LinkedList();
+      if (locala.fzd == null) {
+        locala.fzd = new LinkedList();
       }
-      locala.fvw.addAll(parampf.saZ);
-      if (locala.mTS == null) {
-        locala.mTS = new LinkedList();
+      locala.fzd.addAll(parampm.tiT);
+      if (locala.nwk == null) {
+        locala.nwk = new LinkedList();
       }
-      locala.mTS.add(parampf);
-      locala.count += parampf.saZ.size();
-      this.fwK += parampf.saZ.size();
+      locala.nwk.add(parampm);
+      locala.count += parampm.tiT.size();
+      this.fAr += parampm.tiT.size();
     }
   }
   
   public final void b(long... paramVarArgs)
   {
     if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-      this.mTN = paramVarArgs;
+      this.nwf = paramVarArgs;
     }
   }
   
-  public void bCw()
+  public void bJz()
   {
     AppMethodBeat.i(5633);
-    m(null, null);
-    this.mTM = 0;
+    k(null, null);
+    this.nwe = 0;
     AppMethodBeat.o(5633);
   }
   
   public int getCount()
   {
-    return this.fwK;
+    return this.fAr;
   }
   
-  public void m(String paramString, List<pf> paramList)
+  public void k(String paramString, List<pm> paramList)
   {
     AppMethodBeat.i(5625);
-    this.mTI.clear();
-    this.Ggm.clear();
-    aq.f(this.Ggn);
-    this.fwK = 0;
-    this.mTE = paramString;
+    this.nwa.clear();
+    this.HGc.clear();
+    ap.f(this.HGd);
+    this.fAr = 0;
+    this.nvW = paramString;
     if (paramList != null)
     {
-      this.mTM = ((int)(System.currentTimeMillis() / 1000L));
+      this.nwe = ((int)(System.currentTimeMillis() / 1000L));
       int i = 0;
       while (i < paramList.size())
       {
-        paramString = (pf)paramList.get(i);
-        if ((paramString != null) && (paramString.saZ != null) && (paramString.saZ.size() > 0))
+        paramString = (pm)paramList.get(i);
+        if ((paramString != null) && (paramString.tiT != null) && (paramString.tiT.size() > 0))
         {
           paramString = a(paramString);
-          this.fwK += a(paramString);
-          this.mTI.add(paramString);
-          ad.i("MicroMsg.BrandService.BizSearchResultAdapter", "type(%d) , count(%d) , offset(%d)", new Object[] { Long.valueOf(paramString.dcn), Integer.valueOf(paramString.count), Integer.valueOf(this.fwK) });
+          this.fAr += a(paramString);
+          this.nwa.add(paramString);
+          ac.i("MicroMsg.BrandService.BizSearchResultAdapter", "type(%d) , count(%d) , offset(%d)", new Object[] { Long.valueOf(paramString.cZM), Integer.valueOf(paramString.count), Integer.valueOf(this.fAr) });
         }
         i += 1;
       }
-      bCv();
+      bJy();
     }
-    aq.f(this.Ggn);
+    ap.f(this.HGd);
     AppMethodBeat.o(5625);
   }
   
-  final a nA(long paramLong)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  
+  final a rm(long paramLong)
   {
     AppMethodBeat.i(5628);
-    int i = nB(paramLong);
+    int i = rn(paramLong);
     if (i >= 0)
     {
-      a locala = (a)this.mTI.get(i);
+      a locala = (a)this.nwa.get(i);
       AppMethodBeat.o(5628);
       return locala;
     }
@@ -288,18 +292,14 @@ public class c
     return null;
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
-  
   public final void setAddContactScene(int paramInt)
   {
-    this.mTF = paramInt;
+    this.nvX = paramInt;
   }
   
   public final void setReporter(b paramb)
   {
-    this.mTO = paramb;
+    this.nwg = paramb;
   }
   
   public final void setScene(int paramInt)
@@ -307,101 +307,32 @@ public class c
     this.mScene = paramInt;
   }
   
-  protected final a xG(int paramInt)
-  {
-    AppMethodBeat.i(5630);
-    if (paramInt >= 0)
-    {
-      int i = 0;
-      int j = 0;
-      while (i < this.mTI.size())
-      {
-        a locala = (a)this.mTI.get(i);
-        j += a(locala);
-        if (paramInt < j)
-        {
-          AppMethodBeat.o(5630);
-          return locala;
-        }
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(5630);
-    return null;
-  }
-  
-  protected final pf xH(int paramInt)
-  {
-    int k = 0;
-    AppMethodBeat.i(5631);
-    if (paramInt >= 0)
-    {
-      int i = 0;
-      int j = 0;
-      while (i < this.mTI.size())
-      {
-        a locala = (a)this.mTI.get(i);
-        int m = a(locala);
-        j += m;
-        if (paramInt < j)
-        {
-          if (locala.mTQ)
-          {
-            i = 1;
-            j = i + (j - m);
-            i = k;
-          }
-          for (;;)
-          {
-            if (i >= locala.mTS.size()) {
-              break label156;
-            }
-            pf localpf = (pf)locala.mTS.get(i);
-            j += localpf.saZ.size();
-            if (paramInt < j)
-            {
-              AppMethodBeat.o(5631);
-              return localpf;
-              i = 0;
-              break;
-            }
-            i += 1;
-          }
-        }
-        i += 1;
-      }
-    }
-    label156:
-    AppMethodBeat.o(5631);
-    return null;
-  }
-  
-  public final com.tencent.mm.ui.base.sortview.a xI(int paramInt)
+  public final com.tencent.mm.ui.base.sortview.a yA(int paramInt)
   {
     int k = 0;
     AppMethodBeat.i(5634);
     int i = 0;
     int j = 0;
-    while (i < this.mTI.size())
+    while (i < this.nwa.size())
     {
-      Object localObject2 = (a)this.mTI.get(i);
+      Object localObject2 = (a)this.nwa.get(i);
       int m = a((a)localObject2);
       j += m;
-      if ((((a)localObject2).mTQ) && (paramInt == j - m)) {
-        if (((a)localObject2).mTS.size() == 0) {
+      if ((((a)localObject2).nwi) && (paramInt == j - m)) {
+        if (((a)localObject2).nwk.size() == 0) {
           localObject1 = null;
         }
       }
       while (localObject1 != null)
       {
-        localObject1 = new d(((pf)localObject1).Title);
+        localObject1 = new d(((pm)localObject1).Title);
         AppMethodBeat.o(5634);
         return localObject1;
-        localObject1 = (pf)((a)localObject2).mTS.get(0);
+        localObject1 = (pm)((a)localObject2).nwk.get(0);
         continue;
-        if ((((a)localObject2).mTR) && (paramInt == j - 1))
+        if ((((a)localObject2).nwj) && (paramInt == j - 1))
         {
-          localObject1 = new f(((a)localObject2).dcn, ((a)localObject2).count, this.mTE);
+          localObject1 = new f(((a)localObject2).cZM, ((a)localObject2).count, this.nvW);
           AppMethodBeat.o(5634);
           return localObject1;
         }
@@ -409,22 +340,22 @@ public class c
         {
           m = ((a)localObject2).count;
           i = k;
-          if (((a)localObject2).mTR) {
+          if (((a)localObject2).nwj) {
             i = 1;
           }
           i += paramInt - j + m;
-          localObject1 = (pm)((a)localObject2).fvw.get(i);
-          long l = ((a)localObject2).dcn;
-          localObject2 = this.mTO;
+          localObject1 = (pt)((a)localObject2).fzd.get(i);
+          long l = ((a)localObject2).cZM;
+          localObject2 = this.nwg;
           if (localObject1 == null)
           {
-            ad.e("MicroMsg.BrandService.BizSearchResultAdapter", "data is null.");
+            ac.e("MicroMsg.BrandService.BizSearchResultAdapter", "data is null.");
             AppMethodBeat.o(5634);
             return null;
           }
           if (l == 1L)
           {
-            ad.v("MicroMsg.BrandService.BizSearchResultAdapter", "Create a BizContactDataItem.");
+            ac.v("MicroMsg.BrandService.BizSearchResultAdapter", "Create a BizContactDataItem.");
             localObject1 = new a(localObject1);
           }
           for (;;)
@@ -432,7 +363,7 @@ public class c
             if ((localObject1 instanceof com.tencent.mm.plugin.brandservice.ui.base.a))
             {
               com.tencent.mm.plugin.brandservice.ui.base.a locala = (com.tencent.mm.plugin.brandservice.ui.base.a)localObject1;
-              locala.xO(i);
+              locala.yF(i);
               locala.setPosition(paramInt);
               locala.setReporter((b)localObject2);
             }
@@ -455,16 +386,16 @@ public class c
     return localObject1;
   }
   
-  public Object[] xJ(int paramInt)
+  public Object[] yB(int paramInt)
   {
     AppMethodBeat.i(5635);
-    Object localObject2 = xG(paramInt);
-    Object localObject1 = xH(paramInt);
+    Object localObject2 = yy(paramInt);
+    Object localObject1 = yz(paramInt);
     if (localObject1 != null) {}
-    for (localObject1 = ((pf)localObject1).CNs; localObject2 != null; localObject1 = "")
+    for (localObject1 = ((pm)localObject1).EfU; localObject2 != null; localObject1 = "")
     {
-      localObject2 = ((a)localObject2).mTP;
-      paramInt = this.mTF;
+      localObject2 = ((a)localObject2).nwh;
+      paramInt = this.nvX;
       AppMethodBeat.o(5635);
       return new Object[] { this, localObject2, Integer.valueOf(paramInt), localObject1 };
     }
@@ -472,16 +403,85 @@ public class c
     return null;
   }
   
+  protected final a yy(int paramInt)
+  {
+    AppMethodBeat.i(5630);
+    if (paramInt >= 0)
+    {
+      int i = 0;
+      int j = 0;
+      while (i < this.nwa.size())
+      {
+        a locala = (a)this.nwa.get(i);
+        j += a(locala);
+        if (paramInt < j)
+        {
+          AppMethodBeat.o(5630);
+          return locala;
+        }
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(5630);
+    return null;
+  }
+  
+  protected final pm yz(int paramInt)
+  {
+    int k = 0;
+    AppMethodBeat.i(5631);
+    if (paramInt >= 0)
+    {
+      int i = 0;
+      int j = 0;
+      while (i < this.nwa.size())
+      {
+        a locala = (a)this.nwa.get(i);
+        int m = a(locala);
+        j += m;
+        if (paramInt < j)
+        {
+          if (locala.nwi)
+          {
+            i = 1;
+            j = i + (j - m);
+            i = k;
+          }
+          for (;;)
+          {
+            if (i >= locala.nwk.size()) {
+              break label156;
+            }
+            pm localpm = (pm)locala.nwk.get(i);
+            j += localpm.tiT.size();
+            if (paramInt < j)
+            {
+              AppMethodBeat.o(5631);
+              return localpm;
+              i = 0;
+              break;
+            }
+            i += 1;
+          }
+        }
+        i += 1;
+      }
+    }
+    label156:
+    AppMethodBeat.o(5631);
+    return null;
+  }
+  
   protected static final class a
   {
+    public long cZM;
     public int continueFlag;
     public int count;
-    public long dcn;
-    public List<pm> fvw;
-    public List<String> mTP;
-    public boolean mTQ;
-    public boolean mTR;
-    public List<pf> mTS;
+    public List<pt> fzd;
+    public List<String> nwh;
+    public boolean nwi;
+    public boolean nwj;
+    public List<pm> nwk;
   }
   
   public static abstract interface b
@@ -491,7 +491,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.c
  * JD-Core Version:    0.7.0.1
  */

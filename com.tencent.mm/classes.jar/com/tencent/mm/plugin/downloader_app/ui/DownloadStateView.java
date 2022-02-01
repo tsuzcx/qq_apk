@@ -8,14 +8,14 @@ import android.support.v4.content.b;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 
 public class DownloadStateView
   extends AppCompatImageView
 {
-  private int EI;
+  private int FG;
   private Paint mPaint;
-  private int ojq = -1;
+  private int oMQ = -1;
   
   public DownloadStateView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,7 +26,7 @@ public class DownloadStateView
   {
     AppMethodBeat.i(175279);
     super.onDraw(paramCanvas);
-    if (this.EI < 0)
+    if (this.FG < 0)
     {
       AppMethodBeat.o(175279);
       return;
@@ -41,22 +41,22 @@ public class DownloadStateView
     this.mPaint.setStrokeCap(Paint.Cap.ROUND);
     this.mPaint.setStrokeWidth(f1);
     paramCanvas.drawCircle(f2, f3, f4, this.mPaint);
-    this.mPaint.setColor(this.ojq);
-    paramCanvas.drawArc(f2 - f4, f3 - f4, f2 + f4, f3 + f4, -90.0F, this.EI / 100.0F * 360.0F, false, this.mPaint);
+    this.mPaint.setColor(this.oMQ);
+    paramCanvas.drawArc(f2 - f4, f3 - f4, f2 + f4, f3 + f4, -90.0F, this.FG / 100.0F * 360.0F, false, this.mPaint);
     AppMethodBeat.o(175279);
   }
   
   public void setProgress(int paramInt)
   {
     AppMethodBeat.i(175278);
-    this.EI = paramInt;
+    this.FG = paramInt;
     postInvalidate();
     AppMethodBeat.o(175278);
   }
   
   public void setProgressColor(int paramInt)
   {
-    this.ojq = paramInt;
+    this.oMQ = paramInt;
   }
 }
 

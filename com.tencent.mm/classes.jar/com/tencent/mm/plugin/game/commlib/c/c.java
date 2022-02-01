@@ -81,7 +81,7 @@ public final class c<E extends b>
     }
   }
   
-  public final int df(Object paramObject)
+  public final int dh(Object paramObject)
   {
     AppMethodBeat.i(89956);
     int i = 0;
@@ -89,7 +89,7 @@ public final class c<E extends b>
     for (int j = 0; i < size(); j = k)
     {
       k = j;
-      if (((b)get(i)).bRg().equals(paramObject)) {
+      if (((b)get(i)).bYv().equals(paramObject)) {
         k = j + 1;
       }
       i += 1;

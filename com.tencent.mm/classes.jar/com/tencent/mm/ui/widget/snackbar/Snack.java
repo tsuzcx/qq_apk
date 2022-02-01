@@ -9,12 +9,12 @@ class Snack
   implements Parcelable
 {
   public static final Parcelable.Creator<Snack> CREATOR;
-  final String HLd;
-  final int HLe;
-  final Parcelable HLf;
-  final short HLg;
-  final int HLh;
-  final String ste;
+  final String JlA;
+  final int JlB;
+  final Parcelable JlC;
+  final short JlD;
+  final int JlE;
+  final String tAU;
   
   static
   {
@@ -26,23 +26,23 @@ class Snack
   Snack(Parcel paramParcel)
   {
     AppMethodBeat.i(159697);
-    this.ste = paramParcel.readString();
-    this.HLd = paramParcel.readString();
-    this.HLe = paramParcel.readInt();
-    this.HLf = paramParcel.readParcelable(paramParcel.getClass().getClassLoader());
-    this.HLg = ((short)paramParcel.readInt());
-    this.HLh = paramParcel.readInt();
+    this.tAU = paramParcel.readString();
+    this.JlA = paramParcel.readString();
+    this.JlB = paramParcel.readInt();
+    this.JlC = paramParcel.readParcelable(paramParcel.getClass().getClassLoader());
+    this.JlD = ((short)paramParcel.readInt());
+    this.JlE = paramParcel.readInt();
     AppMethodBeat.o(159697);
   }
   
   Snack(String paramString1, String paramString2, int paramInt1, Parcelable paramParcelable, short paramShort, int paramInt2)
   {
-    this.ste = paramString1;
-    this.HLd = paramString2;
-    this.HLe = paramInt1;
-    this.HLf = paramParcelable;
-    this.HLg = paramShort;
-    this.HLh = paramInt2;
+    this.tAU = paramString1;
+    this.JlA = paramString2;
+    this.JlB = paramInt1;
+    this.JlC = paramParcelable;
+    this.JlD = paramShort;
+    this.JlE = paramInt2;
   }
   
   public int describeContents()
@@ -53,12 +53,12 @@ class Snack
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(159698);
-    paramParcel.writeString(this.ste);
-    paramParcel.writeString(this.HLd);
-    paramParcel.writeInt(this.HLe);
-    paramParcel.writeParcelable(this.HLf, 0);
-    paramParcel.writeInt(this.HLg);
-    paramParcel.writeInt(this.HLh);
+    paramParcel.writeString(this.tAU);
+    paramParcel.writeString(this.JlA);
+    paramParcel.writeInt(this.JlB);
+    paramParcel.writeParcelable(this.JlC, 0);
+    paramParcel.writeInt(this.JlD);
+    paramParcel.writeInt(this.JlE);
     AppMethodBeat.o(159698);
   }
 }

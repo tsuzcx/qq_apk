@@ -18,10 +18,8 @@ import com.facebook.yoga.YogaDisplay;
 import com.facebook.yoga.YogaEdge;
 import com.facebook.yoga.YogaFlexDirection;
 import com.facebook.yoga.YogaJustify;
-import com.facebook.yoga.YogaMeasureFunction;
-import com.facebook.yoga.YogaMeasureMode;
-import com.facebook.yoga.YogaMeasureOutput;
 import com.facebook.yoga.YogaNode;
+import com.facebook.yoga.YogaNodeFactory;
 import com.facebook.yoga.YogaOverflow;
 import com.facebook.yoga.YogaPositionType;
 import com.facebook.yoga.YogaWrap;
@@ -49,10 +47,10 @@ public class YogaLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(18237);
-    this.mYogaNode = new YogaNode();
+    this.mYogaNode = YogaNodeFactory.create();
     this.mYogaNodes = new HashMap();
     this.mYogaNode.setData(this);
-    this.mYogaNode.setMeasureFunction(new ViewMeasureFunction());
+    this.mYogaNode.setMeasureFunction(new YogaLayout.ViewMeasureFunction());
     if (paramAttributeSet != null) {}
     for (paramContext = new YogaLayout.LayoutParams(paramContext, paramAttributeSet);; paramContext = (YogaLayout.LayoutParams)generateDefaultLayoutParams())
     {
@@ -359,8 +357,10 @@ public class YogaLayout
         AppMethodBeat.o(18250);
         return;
       }
+      i = Math.round(paramYogaNode.getLayoutX() + paramFloat1);
+      j = Math.round(paramYogaNode.getLayoutY() + paramFloat2);
       localView.measure(View.MeasureSpec.makeMeasureSpec(Math.round(paramYogaNode.getLayoutWidth()), 1073741824), View.MeasureSpec.makeMeasureSpec(Math.round(paramYogaNode.getLayoutHeight()), 1073741824));
-      localView.layout(Math.round(paramYogaNode.getLayoutX() + paramFloat1), Math.round(paramYogaNode.getLayoutY() + paramFloat2), Math.round(paramYogaNode.getLayoutX() + paramFloat1 + paramYogaNode.getLayoutWidth()), Math.round(paramYogaNode.getLayoutY() + paramFloat2 + paramYogaNode.getLayoutHeight()));
+      localView.layout(i, j, localView.getMeasuredWidth() + i, localView.getMeasuredHeight() + j);
     }
     int j = paramYogaNode.getChildCount();
     int i = 0;
@@ -400,10 +400,7 @@ public class YogaLayout
     if (paramInt1 == -2147483648) {
       this.mYogaNode.setMaxWidth(i);
     }
-    if (paramInt2 == 0) {
-      this.mYogaNode.setHeightAuto();
-    }
-    this.mYogaNode.calculateLayout(1.0E+021F, 1.0E+021F);
+    this.mYogaNode.calculateLayout((0.0F / 0.0F), (0.0F / 0.0F));
     AppMethodBeat.o(18253);
   }
   
@@ -416,7 +413,7 @@ public class YogaLayout
       AppMethodBeat.o(18249);
       return;
     }
-    YogaNode localYogaNode2 = localYogaNode1.getParent();
+    YogaNode localYogaNode2 = localYogaNode1.getOwner();
     int i = 0;
     for (;;)
     {
@@ -431,29 +428,13 @@ public class YogaLayout
         localYogaNode1.setData(null);
         this.mYogaNodes.remove(paramView);
         if (paramBoolean) {
-          this.mYogaNode.calculateLayout(1.0E+021F, 1.0E+021F);
+          this.mYogaNode.calculateLayout((0.0F / 0.0F), (0.0F / 0.0F));
         }
         AppMethodBeat.o(18249);
         return;
       }
       i += 1;
     }
-  }
-  
-  public YogaNode addView(View paramView, YogaNode paramYogaNode)
-  {
-    AppMethodBeat.i(18240);
-    this.mYogaNode.setMeasureFunction(null);
-    if (!(paramView instanceof YogaLayout))
-    {
-      paramYogaNode.setData(paramView);
-      paramYogaNode.setMeasureFunction(new ViewMeasureFunction());
-    }
-    this.mYogaNodes.put(paramView, paramYogaNode);
-    this.mYogaNode.addChildAt(paramYogaNode, this.mYogaNode.getChildCount());
-    super.addView(paramView, getChildCount(), new YogaLayout.LayoutParams(-1, -1));
-    AppMethodBeat.o(18240);
-    return paramYogaNode;
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
@@ -484,12 +465,27 @@ public class YogaLayout
       return;
     }
     if (this.mYogaNodes.containsKey(paramView)) {}
-    for (paramLayoutParams = (YogaNode)this.mYogaNodes.get(paramView);; paramLayoutParams = new YogaNode())
+    for (paramLayoutParams = (YogaNode)this.mYogaNodes.get(paramView);; paramLayoutParams = YogaNodeFactory.create())
     {
       paramLayoutParams.setData(paramView);
-      paramLayoutParams.setMeasureFunction(new ViewMeasureFunction());
+      paramLayoutParams.setMeasureFunction(new YogaLayout.ViewMeasureFunction());
       break;
     }
+  }
+  
+  public void addView(View paramView, YogaNode paramYogaNode)
+  {
+    AppMethodBeat.i(192960);
+    this.mYogaNode.setMeasureFunction(null);
+    if (!(paramView instanceof YogaLayout))
+    {
+      paramYogaNode.setData(paramView);
+      paramYogaNode.setMeasureFunction(new YogaLayout.ViewMeasureFunction());
+    }
+    this.mYogaNodes.put(paramView, paramYogaNode);
+    this.mYogaNode.addChildAt(paramYogaNode, this.mYogaNode.getChildCount());
+    super.addView(paramView, getChildCount(), new YogaLayout.LayoutParams(-1, -1));
+    AppMethodBeat.o(192960);
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -654,41 +650,10 @@ public class YogaLayout
     super.removeViewsInLayout(paramInt1, paramInt2);
     AppMethodBeat.o(18245);
   }
-  
-  public static class ViewMeasureFunction
-    implements YogaMeasureFunction
-  {
-    private int viewMeasureSpecFromYogaMeasureMode(YogaMeasureMode paramYogaMeasureMode)
-    {
-      if (paramYogaMeasureMode == YogaMeasureMode.AT_MOST) {
-        return -2147483648;
-      }
-      if (paramYogaMeasureMode == YogaMeasureMode.EXACTLY) {
-        return 1073741824;
-      }
-      return 0;
-    }
-    
-    public long measure(YogaNode paramYogaNode, float paramFloat1, YogaMeasureMode paramYogaMeasureMode1, float paramFloat2, YogaMeasureMode paramYogaMeasureMode2)
-    {
-      AppMethodBeat.i(18236);
-      paramYogaNode = (View)paramYogaNode.getData();
-      if ((paramYogaNode == null) || ((paramYogaNode instanceof YogaLayout)))
-      {
-        l = YogaMeasureOutput.make(0, 0);
-        AppMethodBeat.o(18236);
-        return l;
-      }
-      paramYogaNode.measure(View.MeasureSpec.makeMeasureSpec((int)paramFloat1, viewMeasureSpecFromYogaMeasureMode(paramYogaMeasureMode1)), View.MeasureSpec.makeMeasureSpec((int)paramFloat2, viewMeasureSpecFromYogaMeasureMode(paramYogaMeasureMode2)));
-      long l = YogaMeasureOutput.make(paramYogaNode.getMeasuredWidth(), paramYogaNode.getMeasuredHeight());
-      AppMethodBeat.o(18236);
-      return l;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.facebook.yoga.android.YogaLayout
  * JD-Core Version:    0.7.0.1
  */

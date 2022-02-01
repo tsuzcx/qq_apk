@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.order.c.b;
@@ -30,18 +30,18 @@ import java.util.List;
 public class MallOrderProductListUI
   extends WalletBaseUI
 {
-  private ListView DQ;
-  private String gIw;
-  private List<ProductSectionItem> lWb;
-  private String nSY;
-  private BaseAdapter nxo;
+  private ListView EO;
+  private String hiX;
+  private List<ProductSectionItem> myd;
+  private BaseAdapter oao;
+  private String owt;
   
   public MallOrderProductListUI()
   {
     AppMethodBeat.i(66750);
-    this.lWb = new ArrayList();
-    this.nSY = "";
-    this.gIw = "";
+    this.myd = new ArrayList();
+    this.owt = "";
+    this.hiX = "";
     AppMethodBeat.o(66750);
   }
   
@@ -59,16 +59,16 @@ public class MallOrderProductListUI
     ArrayList localArrayList = localBundle.getParcelableArrayList("order_product_list");
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
-      this.lWb.clear();
-      this.lWb.addAll(localArrayList);
+      this.myd.clear();
+      this.myd.addAll(localArrayList);
     }
-    this.nSY = localBundle.getString("key_trans_id");
-    this.gIw = localBundle.getString("appname");
-    this.DQ = ((ListView)findViewById(2131303082));
-    this.nxo = new a((byte)0);
-    this.DQ.setAdapter(this.nxo);
-    this.nxo.notifyDataSetChanged();
-    this.DQ.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.owt = localBundle.getString("key_trans_id");
+    this.hiX = localBundle.getString("appname");
+    this.EO = ((ListView)findViewById(2131303082));
+    this.oao = new a((byte)0);
+    this.EO.setAdapter(this.oao);
+    this.oao.notifyDataSetChanged();
+    this.EO.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -77,7 +77,7 @@ public class MallOrderProductListUI
         if (paramAnonymousAdapterView != null)
         {
           MallOrderProductListUI.a(MallOrderProductListUI.this, paramAnonymousAdapterView);
-          c.a(Boolean.FALSE, MallOrderProductListUI.b(MallOrderProductListUI.this), MallOrderProductListUI.c(MallOrderProductListUI.this), paramAnonymousAdapterView.name, paramAnonymousAdapterView.upD);
+          c.a(Boolean.FALSE, MallOrderProductListUI.b(MallOrderProductListUI.this), MallOrderProductListUI.c(MallOrderProductListUI.this), paramAnonymousAdapterView.name, paramAnonymousAdapterView.vyz);
         }
         AppMethodBeat.o(66743);
       }
@@ -106,8 +106,8 @@ public class MallOrderProductListUI
     AppMethodBeat.i(66754);
     if (paramInt == 4)
     {
-      if ((com.tencent.mm.wallet_core.a.bo(this) instanceof com.tencent.mm.plugin.order.a.a)) {
-        com.tencent.mm.wallet_core.a.bl(this);
+      if ((com.tencent.mm.wallet_core.a.br(this) instanceof com.tencent.mm.plugin.order.a.a)) {
+        com.tencent.mm.wallet_core.a.bo(this);
       }
       AppMethodBeat.o(66754);
       return true;
@@ -133,7 +133,7 @@ public class MallOrderProductListUI
   {
     private a() {}
     
-    private ProductSectionItem IT(int paramInt)
+    private ProductSectionItem KS(int paramInt)
     {
       AppMethodBeat.i(66745);
       ProductSectionItem localProductSectionItem = (ProductSectionItem)MallOrderProductListUI.a(MallOrderProductListUI.this).get(paramInt);
@@ -162,35 +162,35 @@ public class MallOrderProductListUI
       {
         paramView = View.inflate(MallOrderProductListUI.this, 2131494723, null);
         paramViewGroup = new MallOrderProductListUI.b(MallOrderProductListUI.this, (byte)0);
-        paramViewGroup.nCK = ((ImageView)paramView.findViewById(2131301180));
-        paramViewGroup.upW = ((TextView)paramView.findViewById(2131301179));
-        paramViewGroup.upX = ((TextView)paramView.findViewById(2131301176));
-        paramViewGroup.upY = ((TextView)paramView.findViewById(2131301181));
-        paramViewGroup.upZ = ((TextView)paramView.findViewById(2131301177));
-        paramViewGroup.uqa = ((TextView)paramView.findViewById(2131301182));
+        paramViewGroup.ofL = ((ImageView)paramView.findViewById(2131301180));
+        paramViewGroup.vyS = ((TextView)paramView.findViewById(2131301179));
+        paramViewGroup.vyT = ((TextView)paramView.findViewById(2131301176));
+        paramViewGroup.vyU = ((TextView)paramView.findViewById(2131301181));
+        paramViewGroup.vyV = ((TextView)paramView.findViewById(2131301177));
+        paramViewGroup.vyW = ((TextView)paramView.findViewById(2131301182));
         paramView.setTag(paramViewGroup);
-        localProductSectionItem = IT(paramInt);
-        paramViewGroup.gGR = localProductSectionItem.iconUrl;
-        if ((TextUtils.isEmpty(paramViewGroup.gGR)) || (!e.aNe(paramViewGroup.gGR))) {
+        localProductSectionItem = KS(paramInt);
+        paramViewGroup.hhs = localProductSectionItem.iconUrl;
+        if ((TextUtils.isEmpty(paramViewGroup.hhs)) || (!e.aSH(paramViewGroup.hhs))) {
           break label275;
         }
-        Bitmap localBitmap = u.a(new b(paramViewGroup.gGR));
-        paramViewGroup.nCK.setImageBitmap(localBitmap);
+        Bitmap localBitmap = u.a(new b(paramViewGroup.hhs));
+        paramViewGroup.ofL.setImageBitmap(localBitmap);
       }
       for (;;)
       {
-        paramViewGroup.upW.setText(localProductSectionItem.name);
-        paramViewGroup.upX.setText(ProductSectionItem.Skus.eo(localProductSectionItem.upB));
-        paramViewGroup.upY.setText(localProductSectionItem.upC);
-        paramViewGroup.upZ.setText("+" + localProductSectionItem.count);
+        paramViewGroup.vyS.setText(localProductSectionItem.name);
+        paramViewGroup.vyT.setText(ProductSectionItem.Skus.es(localProductSectionItem.vyx));
+        paramViewGroup.vyU.setText(localProductSectionItem.vyy);
+        paramViewGroup.vyV.setText("+" + localProductSectionItem.count);
         u.a(paramViewGroup);
-        paramViewGroup.uqa.setVisibility(8);
+        paramViewGroup.vyW.setVisibility(8);
         AppMethodBeat.o(66746);
         return paramView;
         paramViewGroup = (MallOrderProductListUI.b)paramView.getTag();
         break;
         label275:
-        paramViewGroup.nCK.setImageResource(2131690780);
+        paramViewGroup.ofL.setImageResource(2131690780);
       }
     }
   }
@@ -198,26 +198,26 @@ public class MallOrderProductListUI
   final class b
     implements u.a
   {
-    String gGR;
-    ImageView nCK;
-    TextView upW;
-    TextView upX;
-    TextView upY;
-    TextView upZ;
-    TextView uqa;
+    String hhs;
+    ImageView ofL;
+    TextView vyS;
+    TextView vyT;
+    TextView vyU;
+    TextView vyV;
+    TextView vyW;
     
     private b() {}
     
-    public final void l(String paramString, final Bitmap paramBitmap)
+    public final void k(String paramString, final Bitmap paramBitmap)
     {
       AppMethodBeat.i(66749);
-      if ((paramString != null) && (paramString.equals(this.gGR))) {
-        this.nCK.post(new Runnable()
+      if ((paramString != null) && (paramString.equals(this.hhs))) {
+        this.ofL.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(66748);
-            MallOrderProductListUI.b.this.nCK.setImageBitmap(paramBitmap);
+            MallOrderProductListUI.b.this.ofL.setImageBitmap(paramBitmap);
             AppMethodBeat.o(66748);
           }
         });

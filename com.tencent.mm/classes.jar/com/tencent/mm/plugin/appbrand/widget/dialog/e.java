@@ -26,8 +26,8 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.luggage.h.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
@@ -36,17 +36,17 @@ public final class e
   extends RelativeLayout
   implements m
 {
-  private final j KCJ;
-  private final LinkedList<k> KCK;
-  private final Runnable KCL;
-  private k KCM;
-  private k KCN;
-  private Set<l> KCO;
-  private final Set<Object> KCP;
-  private final Set<Object> KCQ;
-  private boolean KCR;
-  private boolean cEL;
-  private final ap kFL;
+  private boolean cBT;
+  private final ao lhe;
+  private final j mAE;
+  private final LinkedList<k> mAF;
+  private final Runnable mAG;
+  private k mAH;
+  private k mAI;
+  private Set<l> mAJ;
+  private final Set<Object> mAK;
+  private final Set<Object> mAM;
+  private boolean mAN;
   private final View.OnClickListener mOnClickListener;
   private int mRotation;
   
@@ -55,9 +55,9 @@ public final class e
     super(paramContext);
     AppMethodBeat.i(131483);
     this.mRotation = 0;
-    this.kFL = new ap(Looper.getMainLooper());
-    this.KCJ = new j(this);
-    this.KCK = new LinkedList();
+    this.lhe = new ao(Looper.getMainLooper());
+    this.mAE = new j(this);
+    this.mAF = new LinkedList();
     this.mOnClickListener = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -69,7 +69,7 @@ public final class e
         AppMethodBeat.o(131477);
       }
     };
-    this.KCL = new Runnable()
+    this.mAG = new Runnable()
     {
       public final void run()
       {
@@ -80,11 +80,11 @@ public final class e
         AppMethodBeat.o(131478);
       }
     };
-    this.cEL = false;
-    this.KCO = new b();
-    this.KCP = new b();
-    this.KCQ = new b();
-    this.KCR = false;
+    this.cBT = false;
+    this.mAJ = new b();
+    this.mAK = new b();
+    this.mAM = new b();
+    this.mAN = false;
     setVisibility(4);
     setBackgroundColor(0);
     setOnClickListener(this.mOnClickListener);
@@ -95,7 +95,7 @@ public final class e
     AppMethodBeat.o(131483);
   }
   
-  private static Animator P(View paramView, int paramInt)
+  private static Animator Q(View paramView, int paramInt)
   {
     AppMethodBeat.i(131490);
     if (paramInt == 2)
@@ -122,7 +122,7 @@ public final class e
     return localAnimatorSet;
   }
   
-  private static void cW(View paramView)
+  private static void cX(View paramView)
   {
     AppMethodBeat.i(131487);
     if ((paramView == null) || (paramView.getParent() == null))
@@ -137,7 +137,7 @@ public final class e
   public final void a(l paraml)
   {
     AppMethodBeat.i(176008);
-    this.KCO.add(paraml);
+    this.mAJ.add(paraml);
     AppMethodBeat.o(176008);
   }
   
@@ -149,10 +149,10 @@ public final class e
       AppMethodBeat.o(131484);
       return;
     }
-    ad.i("MicroMsg.AppBrandDialogContainerLayout", "showDialog dialog[%s] tid[%d]", new Object[] { paramk.getClass().getName(), Long.valueOf(Thread.currentThread().getId()) });
+    ac.i("MicroMsg.AppBrandDialogContainerLayout", "showDialog dialog[%s] tid[%d]", new Object[] { paramk.getClass().getName(), Long.valueOf(Thread.currentThread().getId()) });
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      this.kFL.post(new Runnable()
+      this.lhe.post(new Runnable()
       {
         public final void run()
         {
@@ -164,21 +164,21 @@ public final class e
       AppMethodBeat.o(131484);
       return;
     }
-    f.aB(getContext());
-    if (this.KCJ.isRunning()) {
-      this.KCJ.cancel();
+    f.aC(getContext());
+    if (this.mAE.isRunning()) {
+      this.mAE.cancel();
     }
     View localView = paramk.getContentView();
     if (localView == null)
     {
-      ad.w("MicroMsg.AppBrandDialogContainerLayout", "showDialog NULL dialogView from dialog[%s], stack=%s", new Object[] { paramk, Log.getStackTraceString(new Throwable()) });
+      ac.w("MicroMsg.AppBrandDialogContainerLayout", "showDialog NULL dialogView from dialog[%s], stack=%s", new Object[] { paramk, Log.getStackTraceString(new Throwable()) });
       AppMethodBeat.o(131484);
       return;
     }
     RelativeLayout.LayoutParams localLayoutParams;
     if (localView.getParent() != this)
     {
-      cW(localView);
+      cX(localView);
       if (paramk.getPosition() != 2) {
         break label350;
       }
@@ -186,7 +186,7 @@ public final class e
       localLayoutParams.addRule(12);
       localLayoutParams.addRule(14);
       addView(localView, localLayoutParams);
-      if (this.KCN != paramk)
+      if (this.mAI != paramk)
       {
         localView.clearAnimation();
         if (paramk.getPosition() != 2) {
@@ -197,17 +197,17 @@ public final class e
     }
     for (;;)
     {
-      this.KCN = paramk;
+      this.mAI = paramk;
       localView.setOnClickListener(this.mOnClickListener);
-      this.KCK.add(paramk);
+      this.mAF.add(paramk);
       paramk.a(this);
       setVisibility(0);
       bringToFront();
-      this.KCJ.c(Color.argb(127, 0, 0, 0), null);
-      if ((this.KCO.isEmpty()) || (this.cEL)) {
+      this.mAE.c(Color.argb(127, 0, 0, 0), null);
+      if ((this.mAJ.isEmpty()) || (this.cBT)) {
         break label388;
       }
-      paramk = this.KCO.iterator();
+      paramk = this.mAJ.iterator();
       while (paramk.hasNext()) {
         ((l)paramk.next()).f(Boolean.TRUE);
       }
@@ -219,15 +219,39 @@ public final class e
       localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771999));
     }
     label388:
-    this.cEL = true;
+    this.cBT = true;
     AppMethodBeat.o(131484);
   }
   
   public final void b(l paraml)
   {
     AppMethodBeat.i(176009);
-    this.KCO.remove(paraml);
+    this.mAJ.remove(paraml);
     AppMethodBeat.o(176009);
+  }
+  
+  public final void blW()
+  {
+    AppMethodBeat.i(183778);
+    if (this.mAE.isRunning()) {
+      this.mAE.cancel();
+    }
+    if (!this.mAF.isEmpty())
+    {
+      a local5 = new a() {};
+      while (!this.mAF.isEmpty()) {
+        local5.apply(this.mAF.pollFirst());
+      }
+    }
+    this.mAH = null;
+    this.mAI = null;
+    this.mAN = false;
+    this.mAK.clear();
+    this.mAM.clear();
+    removeAllViewsInLayout();
+    this.lhe.removeCallbacksAndMessages(null);
+    this.mAG.run();
+    AppMethodBeat.o(183778);
   }
   
   public final void c(final k paramk)
@@ -243,19 +267,19 @@ public final class e
       AppMethodBeat.o(131485);
       return;
     }
-    if (this.KCM == paramk)
+    if (this.mAH == paramk)
     {
       AppMethodBeat.o(131485);
       return;
     }
-    this.KCM = paramk;
-    if (this.KCN == paramk) {
-      this.KCN = null;
+    this.mAH = paramk;
+    if (this.mAI == paramk) {
+      this.mAI = null;
     }
     final View localView = paramk.getContentView();
     localView.animate().cancel();
     localView.clearAnimation();
-    Animator localAnimator = P(localView, paramk.getPosition());
+    Animator localAnimator = Q(localView, paramk.getPosition());
     localAnimator.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
@@ -276,7 +300,7 @@ public final class e
           public final void run()
           {
             AppMethodBeat.i(131480);
-            e.this.removeView(e.4.this.KCT);
+            e.this.removeView(e.4.this.mAP);
             e.a(e.this, true);
             Iterator localIterator = e.d(e.this).iterator();
             while (localIterator.hasNext()) {
@@ -295,17 +319,17 @@ public final class e
       }
     });
     localAnimator.start();
-    if (this.KCK.size() <= 1) {
-      this.KCJ.c(0, this.KCL);
+    if (this.mAF.size() <= 1) {
+      this.mAE.c(0, this.mAG);
     }
-    if ((!this.KCO.isEmpty()) && (this.cEL))
+    if ((!this.mAJ.isEmpty()) && (this.cBT))
     {
-      paramk = this.KCO.iterator();
+      paramk = this.mAJ.iterator();
       while (paramk.hasNext()) {
         ((l)paramk.next()).f(Boolean.FALSE);
       }
     }
-    this.cEL = false;
+    this.cBT = false;
     AppMethodBeat.o(131485);
   }
   
@@ -322,34 +346,10 @@ public final class e
     return bool;
   }
   
-  public final void fQX()
-  {
-    AppMethodBeat.i(183778);
-    if (this.KCJ.isRunning()) {
-      this.KCJ.cancel();
-    }
-    if (!this.KCK.isEmpty())
-    {
-      a local5 = new a() {};
-      while (!this.KCK.isEmpty()) {
-        local5.apply(this.KCK.pollFirst());
-      }
-    }
-    this.KCM = null;
-    this.KCN = null;
-    this.KCR = false;
-    this.KCP.clear();
-    this.KCQ.clear();
-    removeAllViewsInLayout();
-    this.kFL.removeCallbacksAndMessages(null);
-    this.KCL.run();
-    AppMethodBeat.o(183778);
-  }
-  
   public final k getCurrentDialog()
   {
     AppMethodBeat.i(131486);
-    k localk = (k)this.KCK.peekLast();
+    k localk = (k)this.mAF.peekLast();
     AppMethodBeat.o(131486);
     return localk;
   }
@@ -357,14 +357,14 @@ public final class e
   public final boolean onBackPressed()
   {
     AppMethodBeat.i(131489);
-    k localk = (k)this.KCK.peekLast();
+    k localk = (k)this.mAF.peekLast();
     if (localk == null)
     {
       setVisibility(8);
       AppMethodBeat.o(131489);
       return false;
     }
-    if ((!localk.aEu()) && (localk.isCancelable()))
+    if ((!localk.aLl()) && (localk.isCancelable()))
     {
       localk.onCancel();
       c(localk);
@@ -384,9 +384,9 @@ public final class e
       if (this.mRotation != i)
       {
         this.mRotation = i;
-        paramConfiguration = this.KCK.iterator();
+        paramConfiguration = this.mAF.iterator();
         while (paramConfiguration.hasNext()) {
-          ((k)paramConfiguration.next()).pi(this.mRotation);
+          ((k)paramConfiguration.next()).pW(this.mRotation);
         }
       }
     }
@@ -395,7 +395,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.e
  * JD-Core Version:    0.7.0.1
  */

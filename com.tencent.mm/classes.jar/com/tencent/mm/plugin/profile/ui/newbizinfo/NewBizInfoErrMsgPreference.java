@@ -9,13 +9,13 @@ import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoErrMsgPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bindView", "", "value", "", "errMsg", "getErrMsg", "()Ljava/lang/String;", "setErrMsg", "(Ljava/lang/String;)V", "errMsgTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "onBindView", "", "view", "Landroid/view/View;", "setText", "app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoErrMsgPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bindView", "", "value", "", "errMsg", "getErrMsg", "()Ljava/lang/String;", "setErrMsg", "(Ljava/lang/String;)V", "errMsgTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "onBindView", "", "view", "Landroid/view/View;", "setText", "app_release"})
 public final class NewBizInfoErrMsgPreference
   extends Preference
 {
   private String errMsg = "";
-  private boolean paC;
-  private MMNeat7extView uFx;
+  private boolean pDN;
+  private MMNeat7extView vOp;
   
   public NewBizInfoErrMsgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,14 +27,14 @@ public final class NewBizInfoErrMsgPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private final void ddi()
+  private final void dqQ()
   {
     AppMethodBeat.i(39609);
-    MMNeat7extView localMMNeat7extView = this.uFx;
+    MMNeat7extView localMMNeat7extView = this.vOp;
     if (localMMNeat7extView == null) {
-      d.g.b.k.aPZ("errMsgTv");
+      d.g.b.k.aVY("errMsgTv");
     }
-    localMMNeat7extView.aq((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.f(localMMNeat7extView.getContext(), (CharSequence)this.errMsg, (int)localMMNeat7extView.getTextSize()));
+    localMMNeat7extView.ar((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.g(localMMNeat7extView.getContext(), (CharSequence)this.errMsg, (int)localMMNeat7extView.getTextSize()));
     AppMethodBeat.o(39609);
   }
   
@@ -48,9 +48,9 @@ public final class NewBizInfoErrMsgPreference
     localMMNeat7extView.setTextSize(1, 16.0F);
     localMMNeat7extView.setTextColor(localMMNeat7extView.getResources().getColor(2131100479));
     d.g.b.k.g(paramView, "view.findViewById<MMNeat…ey_text_color))\n        }");
-    this.uFx = ((MMNeat7extView)paramView);
-    this.paC = true;
-    ddi();
+    this.vOp = ((MMNeat7extView)paramView);
+    this.pDN = true;
+    dqQ();
     AppMethodBeat.o(39608);
   }
   
@@ -59,8 +59,8 @@ public final class NewBizInfoErrMsgPreference
     AppMethodBeat.i(39610);
     d.g.b.k.h(paramString, "value");
     this.errMsg = paramString;
-    if (this.paC) {
-      ddi();
+    if (this.pDN) {
+      dqQ();
     }
     AppMethodBeat.o(39610);
   }

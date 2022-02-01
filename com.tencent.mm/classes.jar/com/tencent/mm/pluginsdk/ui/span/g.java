@@ -11,22 +11,22 @@ import com.tencent.neattextview.textview.view.NeatTextView;
 public class g
   extends com.tencent.neattextview.textview.view.b
 {
-  private n CjI;
+  private n DBZ;
   
   public g(NeatTextView paramNeatTextView, n paramn)
   {
     super(paramNeatTextView.getContext(), paramNeatTextView);
     AppMethodBeat.i(152268);
-    this.CjI = paramn;
+    this.DBZ = paramn;
     AppMethodBeat.o(152268);
   }
   
   public final void cancel(int paramInt)
   {
     AppMethodBeat.i(152271);
-    if (this.Ijv != null)
+    if (this.JLg != null)
     {
-      CharacterStyle localCharacterStyle = this.Ijv.IhY;
+      CharacterStyle localCharacterStyle = this.JLg.JJH;
       if ((localCharacterStyle instanceof o)) {
         ((o)localCharacterStyle).setIsPressed(false);
       }
@@ -39,9 +39,9 @@ public class g
   {
     AppMethodBeat.i(152270);
     boolean bool = super.onDown(paramMotionEvent);
-    if (this.Ijv != null)
+    if (this.JLg != null)
     {
-      paramMotionEvent = this.Ijv.IhY;
+      paramMotionEvent = this.JLg.JJH;
       if ((paramMotionEvent instanceof o)) {
         ((o)paramMotionEvent).setIsPressed(true);
       }
@@ -55,7 +55,7 @@ public class g
   public void onLongPress(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(152272);
-    if ((this.Ijv != null) && (this.mView != null)) {
+    if ((this.JLg != null) && (this.mView != null)) {
       this.mView.performLongClick();
     }
     super.onLongPress(paramMotionEvent);
@@ -70,7 +70,7 @@ public class g
     if ((paramView instanceof NeatTextView))
     {
       NeatTextView localNeatTextView = (NeatTextView)paramView;
-      if ((!localNeatTextView.feI()) || (localNeatTextView.nmV))
+      if ((!localNeatTextView.fuD()) || (localNeatTextView.nPV))
       {
         if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
           localNeatTextView.getWrappedTextView().setPressed(false);
@@ -78,7 +78,7 @@ public class g
         for (;;)
         {
           localNeatTextView.getWrappedTextView().setTag(paramView.getTag());
-          bool = this.CjI.onTouch(localNeatTextView.getWrappedTextView(), paramMotionEvent);
+          bool = this.DBZ.onTouch(localNeatTextView.getWrappedTextView(), paramMotionEvent);
           AppMethodBeat.o(152269);
           return bool;
           if (paramMotionEvent.getAction() == 0) {
@@ -89,7 +89,7 @@ public class g
     }
     else
     {
-      this.CjI.onTouch(paramView, paramMotionEvent);
+      this.DBZ.onTouch(paramView, paramMotionEvent);
     }
     boolean bool = super.onTouch(paramView, paramMotionEvent);
     AppMethodBeat.o(152269);
@@ -98,7 +98,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.g
  * JD-Core Version:    0.7.0.1
  */

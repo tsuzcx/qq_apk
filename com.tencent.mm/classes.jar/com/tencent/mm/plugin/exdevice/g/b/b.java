@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.exdevice.g.b;
 public final class b
 {
   public String appName;
-  public String oYm;
+  public String pBx;
   public String username;
   
   public b(String paramString1, String paramString2, String paramString3)
   {
-    this.oYm = paramString1;
+    this.pBx = paramString1;
     this.appName = paramString2;
     this.username = paramString3;
   }

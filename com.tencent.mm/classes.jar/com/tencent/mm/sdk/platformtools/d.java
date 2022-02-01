@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.m;
 import d.g.b.k;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/sdk/platformtools/BaseSlotManager;", "T", "", "soltSeconds", "", "SLOT_SIZE", "", "(JI)V", "currentSlotId", "getCurrentSlotId", "()J", "prefix", "", "getPrefix", "()Ljava/lang/String;", "verifiedCache", "", "key", "getKey", "(I)Ljava/lang/String;", "toSlot", "getToSlot", "(J)I", "clearAll", "", "clearSlot", "slotId", "slot", "(JLjava/lang/Object;)V", "containsKey", "", "(Ljava/lang/Object;Ljava/lang/String;)Z", "findSlot", "(Ljava/lang/String;)Ljava/lang/Object;", "getSlot", "()Ljava/lang/Object;", "getSlotByKey", "slotKey", "(Ljava/lang/String;J)Ljava/lang/Object;", "remarkSlot", "verifyAllSlot", "verifySlot", "libcompatible_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sdk/platformtools/BaseSlotManager;", "T", "", "soltSeconds", "", "SLOT_SIZE", "", "(JI)V", "currentSlotId", "getCurrentSlotId", "()J", "prefix", "", "getPrefix", "()Ljava/lang/String;", "verifiedCache", "", "key", "getKey", "(I)Ljava/lang/String;", "toSlot", "getToSlot", "(J)I", "clearAll", "", "clearSlot", "slotId", "slot", "(JLjava/lang/Object;)V", "containsKey", "", "(Ljava/lang/Object;Ljava/lang/String;)Z", "findSlot", "(Ljava/lang/String;)Ljava/lang/Object;", "getSlot", "()Ljava/lang/Object;", "getSlotByKey", "slotKey", "(Ljava/lang/String;J)Ljava/lang/Object;", "remarkSlot", "verifyAllSlot", "verifySlot", "libcompatible_release"})
 public abstract class d<T>
 {
-  final boolean[] ETg;
-  private final long ETh;
-  private final int gXR;
-  private final String htS;
+  final boolean[] Gqt;
+  private final long Gqu;
+  private final String hUu;
+  private final int hyq;
   
   private d(long paramLong)
   {
-    this.ETh = paramLong;
-    this.gXR = 3;
+    this.Gqu = paramLong;
+    this.hyq = 3;
     StringBuilder localStringBuilder = new StringBuilder("_slots_id");
-    if (this.ETh == 900L) {}
-    for (Object localObject = "";; localObject = "_" + this.ETh)
+    if (this.Gqu == 900L) {}
+    for (Object localObject = "";; localObject = "_" + this.Gqu)
     {
-      this.htS = ((String)localObject + '_');
-      int j = this.gXR;
+      this.hUu = ((String)localObject + '_');
+      int j = this.hyq;
       localObject = new boolean[j];
       int i = 0;
       while (i < j)
@@ -30,54 +30,59 @@ public abstract class d<T>
         i += 1;
       }
     }
-    this.ETg = ((boolean[])localObject);
+    this.Gqt = ((boolean[])localObject);
   }
   
-  private final String We(int paramInt)
+  private final String Yn(int paramInt)
   {
-    return getPrefix() + paramInt % this.gXR;
+    return getPrefix() + paramInt % this.hyq;
   }
   
-  private final long eEV()
+  private final long eUp()
   {
-    return System.currentTimeMillis() / (this.ETh * 1000L);
+    return System.currentTimeMillis() / (this.Gqu * 1000L);
   }
   
-  public final T aFe(String paramString)
+  final int Ab(long paramLong)
+  {
+    return (int)((paramLong % this.hyq + this.hyq) % 3L);
+  }
+  
+  public final T aKv(String paramString)
   {
     k.h(paramString, "key");
-    eEW();
-    long l = eEV();
+    eUq();
+    long l = eUp();
     a locala = new a(this);
-    Object localObject = locala.I(l, paramString);
+    Object localObject = locala.G(l, paramString);
     if (localObject != null) {
       paramString = localObject;
     }
     do
     {
       return paramString;
-      localObject = locala.I(l - 1L, paramString);
+      localObject = locala.G(l - 1L, paramString);
       paramString = localObject;
     } while (localObject != null);
     return null;
   }
   
-  protected abstract void bO(String paramString, long paramLong);
+  protected abstract void bQ(String paramString, long paramLong);
   
-  protected abstract boolean bP(String paramString, long paramLong);
+  protected abstract boolean bR(String paramString, long paramLong);
   
-  protected abstract T bQ(String paramString, long paramLong);
+  protected abstract T bS(String paramString, long paramLong);
   
   protected abstract void c(long paramLong, T paramT);
   
   public final void clearAll()
   {
     int i = 0;
-    int j = this.gXR;
+    int j = this.hyq;
     if (j >= 0) {
       for (;;)
       {
-        c(-1L, a(this, We(i)));
+        c(-1L, a(this, Yn(i)));
         if (i == j) {
           break;
         }
@@ -88,22 +93,22 @@ public abstract class d<T>
   
   protected abstract boolean e(T paramT, String paramString);
   
-  public final void eEW()
+  public final void eUq()
   {
-    long l2 = eEV();
+    long l2 = eUp();
     long l1 = l2 - 1L;
     long l3 = l2 + 1L;
     if (l1 <= l3) {
       for (;;)
       {
-        int i = vy(l1);
-        String str = We(i);
-        if ((this.ETg[i] == 0) && (!bP(str, l1)))
+        int i = Ab(l1);
+        String str = Yn(i);
+        if ((this.Gqt[i] == 0) && (!bR(str, l1)))
         {
           c(l1, a(this, str));
-          this.ETg[i] = true;
+          this.Gqt[i] = true;
           if (l1 == l2) {
-            bO(str, l1);
+            bQ(str, l1);
           }
         }
         if (l1 == l3) {
@@ -114,24 +119,19 @@ public abstract class d<T>
     }
   }
   
-  public final T eEX()
+  public final T eUr()
   {
-    eEW();
-    long l = eEV();
-    return bQ(We(vy(l)), l);
+    eUq();
+    long l = eUp();
+    return bS(Yn(Ab(l)), l);
   }
   
   protected String getPrefix()
   {
-    return this.htS;
+    return this.hUu;
   }
   
-  final int vy(long paramLong)
-  {
-    return (int)((paramLong % this.gXR + this.gXR) % 3L);
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"checkSlot", "T", "slotId", "", "key", "", "invoke", "(JLjava/lang/String;)Ljava/lang/Object;"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"checkSlot", "T", "slotId", "", "key", "", "invoke", "(JLjava/lang/String;)Ljava/lang/Object;"})
   static final class a
     extends d.g.b.l
     implements m<Long, String, T>
@@ -141,15 +141,15 @@ public abstract class d<T>
       super();
     }
     
-    public final T I(long paramLong, String paramString)
+    public final T G(long paramLong, String paramString)
     {
       AppMethodBeat.i(156369);
       k.h(paramString, "key");
-      int i = this.ETi.vy(paramLong);
-      Object localObject = this.ETi.bQ(d.a(this.ETi, i), paramLong);
-      if (this.ETi.e(localObject, paramString))
+      int i = this.Gqv.Ab(paramLong);
+      Object localObject = this.Gqv.bS(d.a(this.Gqv, i), paramLong);
+      if (this.Gqv.e(localObject, paramString))
       {
-        this.ETi.ETg[i] = false;
+        this.Gqv.Gqt[i] = false;
         AppMethodBeat.o(156369);
         return localObject;
       }
@@ -160,7 +160,7 @@ public abstract class d<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.d
  * JD-Core Version:    0.7.0.1
  */

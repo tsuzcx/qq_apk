@@ -2,7 +2,7 @@ package com.google.android.exoplayer2.h;
 
 public abstract interface d
 {
-  public abstract long vg();
+  public abstract long va();
   
   public static abstract interface a {}
 }

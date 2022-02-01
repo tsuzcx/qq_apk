@@ -5,18 +5,18 @@ import d.l.b.a.b.b.y.a;
 
 public final class j
 {
-  private static final y.a<r<i>> JYR;
+  private static final y.a<r<i>> LMk;
   
   static
   {
     AppMethodBeat.i(61058);
-    JYR = new y.a("KotlinTypeRefiner");
+    LMk = new y.a("KotlinTypeRefiner");
     AppMethodBeat.o(61058);
   }
   
-  public static final y.a<r<i>> fKc()
+  public static final y.a<r<i>> gcF()
   {
-    return JYR;
+    return LMk;
   }
 }
 

@@ -2,10 +2,8 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.facebook.yoga.YogaNode;
 import com.facebook.yoga.android.YogaLayout;
@@ -24,11 +22,11 @@ import com.tencent.kinda.gen.KViewOnTouchCallback;
 import com.tencent.kinda.gen.PositionType;
 import com.tencent.kinda.gen.Visible;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.aj;
 
 public class MMKView<T extends View>
   extends ViewBase
@@ -146,7 +144,7 @@ public class MMKView<T extends View>
     AppMethodBeat.i(19243);
     if ((paramKPoint == null) || (getView() == null) || (getView().getContext() == null))
     {
-      ad.e("base_MMKView", "%s call convertPointToView params illegal! point: %s, getView(): %s.", new Object[] { this, paramKPoint, getView() });
+      ac.e("base_MMKView", "%s call convertPointToView params illegal! point: %s, getView(): %s.", new Object[] { this, paramKPoint, getView() });
       paramKPoint = new KPoint(0.0F, 0.0F);
       AppMethodBeat.o(19243);
       return paramKPoint;
@@ -155,7 +153,7 @@ public class MMKView<T extends View>
     int[] arrayOfInt2 = new int[2];
     getView().getLocationOnScreen(arrayOfInt1);
     if (paramKView == null) {
-      arrayOfInt2[1] = ai.iX(getView().getContext());
+      arrayOfInt2[1] = aj.ji(getView().getContext());
     }
     for (;;)
     {
@@ -309,31 +307,31 @@ public class MMKView<T extends View>
   
   public float getFrameOriginX()
   {
-    AppMethodBeat.i(186449);
+    AppMethodBeat.i(207413);
     if ((getView() == null) || (getView().getContext() == null))
     {
-      ad.e("base_MMKView", "%s call convertPointToView params illegal!, getView(): %s.", new Object[] { this, getView() });
-      AppMethodBeat.o(186449);
+      ac.e("base_MMKView", "%s call convertPointToView params illegal!, getView(): %s.", new Object[] { this, getView() });
+      AppMethodBeat.o(207413);
       return 0.0F;
     }
-    ad.i("base_MMKView", " get getFrameOriginX getView().getLeft(): %s.", new Object[] { Integer.valueOf(getView().getLeft()) });
-    float f = a.ar(getView().getContext(), getView().getLeft());
-    AppMethodBeat.o(186449);
+    ac.i("base_MMKView", " get getFrameOriginX getView().getLeft(): %s.", new Object[] { Integer.valueOf(getView().getLeft()) });
+    float f = a.ax(getView().getContext(), getView().getLeft());
+    AppMethodBeat.o(207413);
     return f;
   }
   
   public float getFrameOriginY()
   {
-    AppMethodBeat.i(186450);
+    AppMethodBeat.i(207414);
     if ((getView() == null) || (getView().getContext() == null))
     {
-      ad.e("base_MMKView", "%s call convertPointToView params illegal!, getView(): %s.", new Object[] { this, getView() });
-      AppMethodBeat.o(186450);
+      ac.e("base_MMKView", "%s call convertPointToView params illegal!, getView(): %s.", new Object[] { this, getView() });
+      AppMethodBeat.o(207414);
       return 0.0F;
     }
-    ad.i("base_MMKView", " get getFrameOriginY getView().getTop(): %s.", new Object[] { Integer.valueOf(getView().getTop()) });
-    float f = a.ar(getView().getContext(), getView().getTop());
-    AppMethodBeat.o(186450);
+    ac.i("base_MMKView", " get getFrameOriginY getView().getTop(): %s.", new Object[] { Integer.valueOf(getView().getTop()) });
+    float f = a.ax(getView().getContext(), getView().getTop());
+    AppMethodBeat.o(207414);
     return f;
   }
   
@@ -351,6 +349,11 @@ public class MMKView<T extends View>
     float f = this.flexAttr.getHeightPercent();
     AppMethodBeat.o(19187);
     return f;
+  }
+  
+  public boolean getIsRefreshing()
+  {
+    return false;
   }
   
   public float getLeft()
@@ -665,7 +668,7 @@ public class MMKView<T extends View>
   public String getViewId()
   {
     AppMethodBeat.i(19131);
-    if (bt.isNullOrNil(this.id))
+    if (bs.isNullOrNil(this.id))
     {
       AppMethodBeat.o(19131);
       return "";
@@ -745,6 +748,8 @@ public class MMKView<T extends View>
   
   public void removeBlurEffect() {}
   
+  public void requestLayout() {}
+  
   public void setAccessibilityString(String paramString)
   {
     AppMethodBeat.i(19241);
@@ -786,12 +791,12 @@ public class MMKView<T extends View>
     AppMethodBeat.i(19220);
     if (KindaGlobalAnimator.hasAnimate())
     {
-      ad.d("base_MMKView", "进入动画setBackgroundColor，KView：" + this + "，value：" + Long.toHexString(ColorUtil.absColor(ColorUtil.getColorByMode(paramDynamicColor))));
+      ac.d("base_MMKView", "进入动画setBackgroundColor，KView：" + this + "，value：" + Long.toHexString(ColorUtil.absColor(ColorUtil.getColorByMode(paramDynamicColor))));
       this.mAnimatorProxy.setBackgroundColor(paramDynamicColor);
       AppMethodBeat.o(19220);
       return;
     }
-    ad.d("base_MMKView", "进入View设置属性的setBackgroundColor，KView：" + this + "，value：" + Long.toHexString(ColorUtil.absColor(ColorUtil.getColorByMode(paramDynamicColor))));
+    ac.d("base_MMKView", "进入View设置属性的setBackgroundColor，KView：" + this + "，value：" + Long.toHexString(ColorUtil.absColor(ColorUtil.getColorByMode(paramDynamicColor))));
     this.backgroundColor = paramDynamicColor;
     if (ColorUtil.getColorByMode(this.backgroundColor) >= 0L)
     {
@@ -831,7 +836,7 @@ public class MMKView<T extends View>
     this.borderWidth = paramFloat;
     if (this.borderWidth > 0.0F)
     {
-      paramFloat = a.fromDPToPix(aj.getContext(), (int)paramFloat);
+      paramFloat = a.fromDPToPix(ai.getContext(), (int)paramFloat);
       checkIfNeedCreateBorderDrawable().setBorderWidth(paramFloat);
       setViewBackground(this.backgroundDrawable);
     }
@@ -856,7 +861,7 @@ public class MMKView<T extends View>
     AppMethodBeat.i(19233);
     this.bottomLeftBorderRadius = paramFloat;
     if (this.bottomLeftBorderRadius >= 0.0F) {
-      checkIfNeedCreateBorderDrawable().setBottomLeftBorderRadius(a.fromDPToPix(aj.getContext(), (int)this.bottomLeftBorderRadius));
+      checkIfNeedCreateBorderDrawable().setBottomLeftBorderRadius(a.fromDPToPix(ai.getContext(), (int)this.bottomLeftBorderRadius));
     }
     AppMethodBeat.o(19233);
   }
@@ -873,7 +878,7 @@ public class MMKView<T extends View>
     AppMethodBeat.i(19234);
     this.bottomRightBorderRadius = paramFloat;
     if (this.bottomRightBorderRadius >= 0.0F) {
-      checkIfNeedCreateBorderDrawable().setBottomRightBorderRadius(a.fromDPToPix(aj.getContext(), (int)this.bottomRightBorderRadius));
+      checkIfNeedCreateBorderDrawable().setBottomRightBorderRadius(a.fromDPToPix(ai.getContext(), (int)this.bottomRightBorderRadius));
     }
     AppMethodBeat.o(19234);
   }
@@ -891,7 +896,7 @@ public class MMKView<T extends View>
     this.borderRadius = paramFloat;
     if (this.borderRadius >= 0.0F)
     {
-      checkIfNeedCreateBorderDrawable().setBorderRadius(a.fromDPToPix(aj.getContext(), (int)this.borderRadius));
+      checkIfNeedCreateBorderDrawable().setBorderRadius(a.fromDPToPix(ai.getContext(), (int)this.borderRadius));
       setViewBackground(this.backgroundDrawable);
     }
     AppMethodBeat.o(19230);
@@ -948,6 +953,8 @@ public class MMKView<T extends View>
     this.flexAttr.setHeightPercent(paramFloat);
     AppMethodBeat.o(19186);
   }
+  
+  public void setIsRefreshing(boolean paramBoolean) {}
   
   public void setLeft(float paramFloat)
   {
@@ -1075,17 +1082,7 @@ public class MMKView<T extends View>
   {
     AppMethodBeat.i(19235);
     this.onClickCallback = paramKViewOnClickCallback;
-    getView().setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(19122);
-        if (MMKView.this.onClickCallback != null) {
-          MMKView.this.onClickCallback.onClick(MMKView.this);
-        }
-        AppMethodBeat.o(19122);
-      }
-    });
+    getView().setOnClickListener(new MMKView.2(this));
     AppMethodBeat.o(19235);
   }
   
@@ -1256,7 +1253,7 @@ public class MMKView<T extends View>
     AppMethodBeat.i(19231);
     this.topLeftBorderRadius = paramFloat;
     if (this.topLeftBorderRadius >= 0.0F) {
-      checkIfNeedCreateBorderDrawable().setTopLeftBorderRadius(a.fromDPToPix(aj.getContext(), (int)this.topLeftBorderRadius));
+      checkIfNeedCreateBorderDrawable().setTopLeftBorderRadius(a.fromDPToPix(ai.getContext(), (int)this.topLeftBorderRadius));
     }
     AppMethodBeat.o(19231);
   }
@@ -1273,7 +1270,7 @@ public class MMKView<T extends View>
     AppMethodBeat.i(19232);
     this.topRightBorderRadius = paramFloat;
     if (this.topRightBorderRadius >= 0.0F) {
-      checkIfNeedCreateBorderDrawable().setTopRightBorderRadius(a.fromDPToPix(aj.getContext(), (int)this.topRightBorderRadius));
+      checkIfNeedCreateBorderDrawable().setTopRightBorderRadius(a.fromDPToPix(ai.getContext(), (int)this.topRightBorderRadius));
     }
     AppMethodBeat.o(19232);
   }
@@ -1333,21 +1330,12 @@ public class MMKView<T extends View>
     AppMethodBeat.o(19238);
   }
   
-  @SuppressLint({"ResourceType"})
   public void setViewId(String paramString)
   {
     AppMethodBeat.i(19130);
     this.id = paramString;
     this.flexAttr.setTestId(paramString);
-    int i = this.mContext.getResources().getIdentifier(paramString, "id", this.mContext.getPackageName());
-    if (i > 0)
-    {
-      getView().setId(i);
-      ad.d("base_MMKView", "setViewId has set rid: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(19130);
-      return;
-    }
-    ad.d("base_MMKView", "setViewId has not set rid: " + paramString + ", because no found res.");
+    MMKViewUtil.setId4KindaImplView(this.mContext, paramString, getView());
     AppMethodBeat.o(19130);
   }
   
@@ -1397,7 +1385,7 @@ public class MMKView<T extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKView
  * JD-Core Version:    0.7.0.1
  */

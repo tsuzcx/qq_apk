@@ -7,31 +7,31 @@ import java.util.ArrayList;
 public abstract interface ae
   extends ab
 {
-  public abstract void YP(int paramInt);
+  public abstract boolean Bh(long paramLong);
   
-  public abstract boolean eYA();
+  public abstract void aba(int paramInt);
   
-  public abstract ArrayList<String> eYq();
+  public abstract ArrayList<String> foc();
   
-  public abstract boolean eYr();
+  public abstract boolean fod();
   
-  public abstract void eYs();
+  public abstract void foe();
   
-  public abstract void eYt();
+  public abstract void fof();
   
-  public abstract boolean eYu();
+  public abstract boolean fog();
   
-  public abstract u eYv();
+  public abstract u foh();
   
-  public abstract boolean eYw();
+  public abstract boolean foi();
   
-  public abstract boolean eYx();
+  public abstract boolean foj();
   
-  public abstract boolean eYy();
+  public abstract boolean fok();
   
-  public abstract boolean eYz();
+  public abstract boolean fol();
   
-  public abstract boolean wE(long paramLong);
+  public abstract boolean fom();
 }
 
 

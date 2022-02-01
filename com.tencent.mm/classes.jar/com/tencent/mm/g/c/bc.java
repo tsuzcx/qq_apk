@@ -8,13 +8,16 @@ public abstract class bc
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ewW = "bakLogId".hashCode();
-  private static final int ewX = "valueStr".hashCode();
+  private static final int elV = "status".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int epS = "modifyTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ewU;
-  private boolean ewV;
-  public int field_bakLogId;
-  public String field_valueStr;
+  private boolean elS = true;
+  private boolean enx = true;
+  private boolean epw = true;
+  public String field_appId;
+  public long field_modifyTime;
+  public int field_status;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,19 +32,22 @@ public abstract class bc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ewW != k) {
-        break label60;
+      if (enO != k) {
+        break label65;
       }
-      this.field_bakLogId = paramCursor.getInt(i);
+      this.field_appId = paramCursor.getString(i);
+      this.enx = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (ewX == k) {
-        this.field_valueStr = paramCursor.getString(i);
+      label65:
+      if (elV == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (epS == k) {
+        this.field_modifyTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -51,11 +57,14 @@ public abstract class bc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ewU) {
-      localContentValues.put("bakLogId", Integer.valueOf(this.field_bakLogId));
+    if (this.enx) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.ewV) {
-      localContentValues.put("valueStr", this.field_valueStr);
+    if (this.elS) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.epw) {
+      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

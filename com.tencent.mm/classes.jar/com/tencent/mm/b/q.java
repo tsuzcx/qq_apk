@@ -1,6 +1,6 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 
 public final class q
@@ -13,14 +13,14 @@ public final class q
       String str1 = paramString;
       if (str2 != null)
       {
-        ad.i("MicroMsg.VFSFileOpEx", "exportExternalPath:%s to realPath:%s", new Object[] { paramString, str2 });
+        ac.i("MicroMsg.VFSFileOpEx", "exportExternalPath:%s to realPath:%s", new Object[] { paramString, str2 });
         str1 = str2;
       }
       return str1;
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.VFSFileOpEx", localThrowable, "exportExternalPath failed", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.VFSFileOpEx", localThrowable, "exportExternalPath failed", new Object[0]);
     }
     return paramString;
   }

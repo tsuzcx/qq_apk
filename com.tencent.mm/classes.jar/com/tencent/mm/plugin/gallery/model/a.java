@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.gallery.model;
 import android.content.ContentResolver;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.Comparator;
 
 public final class a
   extends b
   implements Comparator<GalleryItem.MediaItem>
 {
-  protected ContentResolver bwu;
-  private u rAa;
-  private k rzZ;
+  protected ContentResolver but;
+  private k sIR;
+  private u sIS;
   
   public a()
   {
     AppMethodBeat.i(111230);
-    this.bwu = aj.getContext().getContentResolver();
-    this.rzZ = new k();
-    this.rAa = new u();
+    this.but = ai.getContext().getContentResolver();
+    this.sIR = new k();
+    this.sIS = new u();
     AppMethodBeat.o(111230);
   }
   
@@ -61,7 +61,7 @@ public final class a
     //   52: astore 13
     //   54: aload_0
     //   55: iconst_0
-    //   56: putfield 69	com/tencent/mm/plugin/gallery/model/a:gqP	Z
+    //   56: putfield 69	com/tencent/mm/plugin/gallery/model/a:gRx	Z
     //   59: aload 14
     //   61: astore 12
     //   63: aload 22
@@ -75,7 +75,7 @@ public final class a
     //   80: aload 22
     //   82: astore 13
     //   84: aload_1
-    //   85: invokestatic 78	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   85: invokestatic 78	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   88: ifeq +653 -> 741
     //   91: iload_2
     //   92: iconst_1
@@ -88,22 +88,22 @@ public final class a
     //   105: aload 22
     //   107: astore 13
     //   109: aload_0
-    //   110: getfield 38	com/tencent/mm/plugin/gallery/model/a:bwu	Landroid/content/ContentResolver;
+    //   110: getfield 38	com/tencent/mm/plugin/gallery/model/a:but	Landroid/content/ContentResolver;
     //   113: getstatic 84	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   116: aload_0
-    //   117: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   117: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   120: invokevirtual 88	com/tencent/mm/plugin/gallery/model/k:getProjection	()[Ljava/lang/String;
     //   123: aload_0
-    //   124: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   124: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   127: aload_0
-    //   128: getfield 92	com/tencent/mm/plugin/gallery/model/a:rAc	[Ljava/lang/String;
+    //   128: getfield 92	com/tencent/mm/plugin/gallery/model/a:sIU	[Ljava/lang/String;
     //   131: iconst_0
     //   132: invokevirtual 96	com/tencent/mm/plugin/gallery/model/k:b	([Ljava/lang/String;Z)Ljava/lang/String;
     //   135: aconst_null
     //   136: aload_0
-    //   137: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   137: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   140: iconst_0
-    //   141: invokevirtual 100	com/tencent/mm/plugin/gallery/model/k:lC	(Z)Ljava/lang/String;
+    //   141: invokevirtual 100	com/tencent/mm/plugin/gallery/model/k:mu	(Z)Ljava/lang/String;
     //   144: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   147: astore 11
     //   149: aload 11
@@ -113,22 +113,22 @@ public final class a
     //   157: aload 11
     //   159: astore 14
     //   161: aload_0
-    //   162: getfield 38	com/tencent/mm/plugin/gallery/model/a:bwu	Landroid/content/ContentResolver;
+    //   162: getfield 38	com/tencent/mm/plugin/gallery/model/a:but	Landroid/content/ContentResolver;
     //   165: getstatic 84	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   168: aload_0
-    //   169: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   169: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   172: invokevirtual 88	com/tencent/mm/plugin/gallery/model/k:getProjection	()[Ljava/lang/String;
     //   175: aload_0
-    //   176: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   176: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   179: aload_0
-    //   180: getfield 92	com/tencent/mm/plugin/gallery/model/a:rAc	[Ljava/lang/String;
+    //   180: getfield 92	com/tencent/mm/plugin/gallery/model/a:sIU	[Ljava/lang/String;
     //   183: iconst_1
     //   184: invokevirtual 96	com/tencent/mm/plugin/gallery/model/k:b	([Ljava/lang/String;Z)Ljava/lang/String;
     //   187: aconst_null
     //   188: aload_0
-    //   189: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   189: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   192: iconst_1
-    //   193: invokevirtual 100	com/tencent/mm/plugin/gallery/model/k:lC	(Z)Ljava/lang/String;
+    //   193: invokevirtual 100	com/tencent/mm/plugin/gallery/model/k:mu	(Z)Ljava/lang/String;
     //   196: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   199: astore 10
     //   201: iload_2
@@ -158,19 +158,19 @@ public final class a
     //   247: aload 11
     //   249: astore 15
     //   251: aload_0
-    //   252: getfield 38	com/tencent/mm/plugin/gallery/model/a:bwu	Landroid/content/ContentResolver;
+    //   252: getfield 38	com/tencent/mm/plugin/gallery/model/a:but	Landroid/content/ContentResolver;
     //   255: getstatic 109	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   258: aload_0
-    //   259: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   259: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   262: invokevirtual 110	com/tencent/mm/plugin/gallery/model/u:getProjection	()[Ljava/lang/String;
     //   265: aload_0
-    //   266: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   266: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   269: iconst_1
     //   270: anewarray 112	java/lang/String
     //   273: dup
     //   274: iconst_0
     //   275: aload_0
-    //   276: getfield 92	com/tencent/mm/plugin/gallery/model/a:rAc	[Ljava/lang/String;
+    //   276: getfield 92	com/tencent/mm/plugin/gallery/model/a:sIU	[Ljava/lang/String;
     //   279: iconst_0
     //   280: aaload
     //   281: aastore
@@ -178,9 +178,9 @@ public final class a
     //   283: invokevirtual 113	com/tencent/mm/plugin/gallery/model/u:b	([Ljava/lang/String;Z)Ljava/lang/String;
     //   286: aconst_null
     //   287: aload_0
-    //   288: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   288: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   291: iconst_0
-    //   292: invokevirtual 114	com/tencent/mm/plugin/gallery/model/u:lC	(Z)Ljava/lang/String;
+    //   292: invokevirtual 114	com/tencent/mm/plugin/gallery/model/u:mu	(Z)Ljava/lang/String;
     //   295: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   298: astore 22
     //   300: aload 22
@@ -206,19 +206,19 @@ public final class a
     //   340: aload 11
     //   342: astore 20
     //   344: aload_0
-    //   345: getfield 38	com/tencent/mm/plugin/gallery/model/a:bwu	Landroid/content/ContentResolver;
+    //   345: getfield 38	com/tencent/mm/plugin/gallery/model/a:but	Landroid/content/ContentResolver;
     //   348: getstatic 109	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   351: aload_0
-    //   352: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   352: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   355: invokevirtual 110	com/tencent/mm/plugin/gallery/model/u:getProjection	()[Ljava/lang/String;
     //   358: aload_0
-    //   359: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   359: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   362: iconst_1
     //   363: anewarray 112	java/lang/String
     //   366: dup
     //   367: iconst_0
     //   368: aload_0
-    //   369: getfield 92	com/tencent/mm/plugin/gallery/model/a:rAc	[Ljava/lang/String;
+    //   369: getfield 92	com/tencent/mm/plugin/gallery/model/a:sIU	[Ljava/lang/String;
     //   372: iconst_0
     //   373: aaload
     //   374: aastore
@@ -226,9 +226,9 @@ public final class a
     //   376: invokevirtual 113	com/tencent/mm/plugin/gallery/model/u:b	([Ljava/lang/String;Z)Ljava/lang/String;
     //   379: aconst_null
     //   380: aload_0
-    //   381: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   381: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   384: iconst_1
-    //   385: invokevirtual 114	com/tencent/mm/plugin/gallery/model/u:lC	(Z)Ljava/lang/String;
+    //   385: invokevirtual 114	com/tencent/mm/plugin/gallery/model/u:mu	(Z)Ljava/lang/String;
     //   388: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   391: astore 24
     //   393: aload 24
@@ -259,19 +259,19 @@ public final class a
     //   456: pop
     //   457: aload 13
     //   459: iconst_1
-    //   460: invokestatic 124	com/tencent/mm/plugin/gallery/model/a:c	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
+    //   460: invokestatic 123	com/tencent/mm/plugin/gallery/model/a:b	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
     //   463: astore 10
     //   465: aload 14
     //   467: iconst_1
-    //   468: invokestatic 124	com/tencent/mm/plugin/gallery/model/a:c	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
+    //   468: invokestatic 123	com/tencent/mm/plugin/gallery/model/a:b	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
     //   471: astore 11
     //   473: aload 15
     //   475: iconst_2
-    //   476: invokestatic 124	com/tencent/mm/plugin/gallery/model/a:c	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
+    //   476: invokestatic 123	com/tencent/mm/plugin/gallery/model/a:b	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
     //   479: astore 12
     //   481: aload 16
     //   483: iconst_2
-    //   484: invokestatic 124	com/tencent/mm/plugin/gallery/model/a:c	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
+    //   484: invokestatic 123	com/tencent/mm/plugin/gallery/model/a:b	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
     //   487: astore 17
     //   489: iconst_1
     //   490: istore 9
@@ -285,9 +285,9 @@ public final class a
     //   509: aload 19
     //   511: astore 18
     //   513: aload 19
-    //   515: getfield 130	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:rBt	J
+    //   515: getfield 129	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:sKl	J
     //   518: aload 11
-    //   520: getfield 130	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:rBt	J
+    //   520: getfield 129	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:sKl	J
     //   523: lcmp
     //   524: ifge +6 -> 530
     //   527: goto +1190 -> 1717
@@ -300,9 +300,9 @@ public final class a
     //   544: aload 18
     //   546: astore 19
     //   548: aload 18
-    //   550: getfield 130	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:rBt	J
+    //   550: getfield 129	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:sKl	J
     //   553: aload 12
-    //   555: getfield 130	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:rBt	J
+    //   555: getfield 129	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:sKl	J
     //   558: lcmp
     //   559: ifge +6 -> 565
     //   562: goto +1162 -> 1724
@@ -315,9 +315,9 @@ public final class a
     //   579: aload 19
     //   581: astore 18
     //   583: aload 19
-    //   585: getfield 130	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:rBt	J
+    //   585: getfield 129	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:sKl	J
     //   588: aload 17
-    //   590: getfield 130	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:rBt	J
+    //   590: getfield 129	com/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem:sKl	J
     //   593: lcmp
     //   594: ifge +6 -> 600
     //   597: goto +1134 -> 1731
@@ -325,17 +325,17 @@ public final class a
     //   602: ifnull +536 -> 1138
     //   605: aload 25
     //   607: aload 18
-    //   609: invokevirtual 134	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   609: invokevirtual 133	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   612: pop
     //   613: aload 18
     //   615: aload 10
     //   617: if_acmpne +411 -> 1028
     //   620: aload 13
-    //   622: invokeinterface 137 1 0
+    //   622: invokeinterface 136 1 0
     //   627: pop
     //   628: aload 13
     //   630: iconst_1
-    //   631: invokestatic 124	com/tencent/mm/plugin/gallery/model/a:c	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
+    //   631: invokestatic 123	com/tencent/mm/plugin/gallery/model/a:b	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
     //   634: astore 18
     //   636: aload 12
     //   638: astore 10
@@ -348,7 +348,7 @@ public final class a
     //   650: aload 25
     //   652: lload 4
     //   654: iload 9
-    //   656: invokevirtual 140	com/tencent/mm/plugin/gallery/model/a:a	(Lcom/tencent/mm/plugin/gallery/model/i$c;Ljava/util/LinkedList;JZ)Z
+    //   656: invokevirtual 139	com/tencent/mm/plugin/gallery/model/a:a	(Lcom/tencent/mm/plugin/gallery/model/i$c;Ljava/util/LinkedList;JZ)Z
     //   659: ifeq +15 -> 674
     //   662: iload 9
     //   664: istore 8
@@ -357,26 +357,26 @@ public final class a
     //   671: iconst_0
     //   672: istore 8
     //   674: aload_0
-    //   675: getfield 69	com/tencent/mm/plugin/gallery/model/a:gqP	Z
+    //   675: getfield 69	com/tencent/mm/plugin/gallery/model/a:gRx	Z
     //   678: istore 9
     //   680: iload 9
     //   682: ifeq +1056 -> 1738
     //   685: aload 13
     //   687: ifnull +10 -> 697
     //   690: aload 13
-    //   692: invokeinterface 143 1 0
+    //   692: invokeinterface 142 1 0
     //   697: aload 14
     //   699: ifnull +10 -> 709
     //   702: aload 14
-    //   704: invokeinterface 143 1 0
+    //   704: invokeinterface 142 1 0
     //   709: aload 15
     //   711: ifnull +10 -> 721
     //   714: aload 15
-    //   716: invokeinterface 143 1 0
+    //   716: invokeinterface 142 1 0
     //   721: aload 16
     //   723: ifnull +10 -> 733
     //   726: aload 16
-    //   728: invokeinterface 143 1 0
+    //   728: invokeinterface 142 1 0
     //   733: ldc 59
     //   735: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   738: aload 25
@@ -392,21 +392,21 @@ public final class a
     //   755: aload 22
     //   757: astore 13
     //   759: aload_0
-    //   760: getfield 38	com/tencent/mm/plugin/gallery/model/a:bwu	Landroid/content/ContentResolver;
+    //   760: getfield 38	com/tencent/mm/plugin/gallery/model/a:but	Landroid/content/ContentResolver;
     //   763: getstatic 84	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   766: aload_0
-    //   767: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   767: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   770: invokevirtual 88	com/tencent/mm/plugin/gallery/model/k:getProjection	()[Ljava/lang/String;
     //   773: aload_0
-    //   774: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   774: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   777: aload_1
     //   778: iconst_0
-    //   779: invokevirtual 147	com/tencent/mm/plugin/gallery/model/k:bd	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   779: invokevirtual 146	com/tencent/mm/plugin/gallery/model/k:bj	(Ljava/lang/String;Z)Ljava/lang/String;
     //   782: aconst_null
     //   783: aload_0
-    //   784: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   784: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   787: iconst_0
-    //   788: invokevirtual 100	com/tencent/mm/plugin/gallery/model/k:lC	(Z)Ljava/lang/String;
+    //   788: invokevirtual 100	com/tencent/mm/plugin/gallery/model/k:mu	(Z)Ljava/lang/String;
     //   791: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   794: astore 10
     //   796: aload 10
@@ -416,21 +416,21 @@ public final class a
     //   804: aload 10
     //   806: astore 14
     //   808: aload_0
-    //   809: getfield 38	com/tencent/mm/plugin/gallery/model/a:bwu	Landroid/content/ContentResolver;
+    //   809: getfield 38	com/tencent/mm/plugin/gallery/model/a:but	Landroid/content/ContentResolver;
     //   812: getstatic 84	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   815: aload_0
-    //   816: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   816: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   819: invokevirtual 88	com/tencent/mm/plugin/gallery/model/k:getProjection	()[Ljava/lang/String;
     //   822: aload_0
-    //   823: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   823: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   826: aload_1
     //   827: iconst_1
-    //   828: invokevirtual 147	com/tencent/mm/plugin/gallery/model/k:bd	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   828: invokevirtual 146	com/tencent/mm/plugin/gallery/model/k:bj	(Ljava/lang/String;Z)Ljava/lang/String;
     //   831: aconst_null
     //   832: aload_0
-    //   833: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   833: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
     //   836: iconst_1
-    //   837: invokevirtual 100	com/tencent/mm/plugin/gallery/model/k:lC	(Z)Ljava/lang/String;
+    //   837: invokevirtual 100	com/tencent/mm/plugin/gallery/model/k:mu	(Z)Ljava/lang/String;
     //   840: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   843: astore 11
     //   845: iload_2
@@ -460,21 +460,21 @@ public final class a
     //   891: aload 10
     //   893: astore 15
     //   895: aload_0
-    //   896: getfield 38	com/tencent/mm/plugin/gallery/model/a:bwu	Landroid/content/ContentResolver;
+    //   896: getfield 38	com/tencent/mm/plugin/gallery/model/a:but	Landroid/content/ContentResolver;
     //   899: getstatic 109	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   902: aload_0
-    //   903: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   903: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   906: invokevirtual 110	com/tencent/mm/plugin/gallery/model/u:getProjection	()[Ljava/lang/String;
     //   909: aload_0
-    //   910: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   910: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   913: aload_1
     //   914: iconst_0
-    //   915: invokevirtual 148	com/tencent/mm/plugin/gallery/model/u:bd	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   915: invokevirtual 147	com/tencent/mm/plugin/gallery/model/u:bj	(Ljava/lang/String;Z)Ljava/lang/String;
     //   918: aconst_null
     //   919: aload_0
-    //   920: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   920: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   923: iconst_0
-    //   924: invokevirtual 114	com/tencent/mm/plugin/gallery/model/u:lC	(Z)Ljava/lang/String;
+    //   924: invokevirtual 114	com/tencent/mm/plugin/gallery/model/u:mu	(Z)Ljava/lang/String;
     //   927: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   930: astore 22
     //   932: aload 22
@@ -500,21 +500,21 @@ public final class a
     //   972: aload 10
     //   974: astore 20
     //   976: aload_0
-    //   977: getfield 38	com/tencent/mm/plugin/gallery/model/a:bwu	Landroid/content/ContentResolver;
+    //   977: getfield 38	com/tencent/mm/plugin/gallery/model/a:but	Landroid/content/ContentResolver;
     //   980: getstatic 109	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   983: aload_0
-    //   984: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   984: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   987: invokevirtual 110	com/tencent/mm/plugin/gallery/model/u:getProjection	()[Ljava/lang/String;
     //   990: aload_0
-    //   991: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   991: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   994: aload_1
     //   995: iconst_1
-    //   996: invokevirtual 148	com/tencent/mm/plugin/gallery/model/u:bd	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   996: invokevirtual 147	com/tencent/mm/plugin/gallery/model/u:bj	(Ljava/lang/String;Z)Ljava/lang/String;
     //   999: aconst_null
     //   1000: aload_0
-    //   1001: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   1001: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
     //   1004: iconst_1
-    //   1005: invokevirtual 114	com/tencent/mm/plugin/gallery/model/u:lC	(Z)Ljava/lang/String;
+    //   1005: invokevirtual 114	com/tencent/mm/plugin/gallery/model/u:mu	(Z)Ljava/lang/String;
     //   1008: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   1011: astore 24
     //   1013: aload 24
@@ -528,11 +528,11 @@ public final class a
     //   1030: aload 11
     //   1032: if_acmpne +34 -> 1066
     //   1035: aload 14
-    //   1037: invokeinterface 137 1 0
+    //   1037: invokeinterface 136 1 0
     //   1042: pop
     //   1043: aload 14
     //   1045: iconst_1
-    //   1046: invokestatic 124	com/tencent/mm/plugin/gallery/model/a:c	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
+    //   1046: invokestatic 123	com/tencent/mm/plugin/gallery/model/a:b	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
     //   1049: astore 11
     //   1051: aload 10
     //   1053: astore 18
@@ -545,11 +545,11 @@ public final class a
     //   1068: aload 12
     //   1070: if_acmpne +30 -> 1100
     //   1073: aload 15
-    //   1075: invokeinterface 137 1 0
+    //   1075: invokeinterface 136 1 0
     //   1080: pop
     //   1081: aload 15
     //   1083: iconst_2
-    //   1084: invokestatic 124	com/tencent/mm/plugin/gallery/model/a:c	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
+    //   1084: invokestatic 123	com/tencent/mm/plugin/gallery/model/a:b	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
     //   1087: astore 18
     //   1089: aload 10
     //   1091: astore 12
@@ -560,11 +560,11 @@ public final class a
     //   1102: aload 17
     //   1104: if_acmpne +565 -> 1669
     //   1107: aload 16
-    //   1109: invokeinterface 137 1 0
+    //   1109: invokeinterface 136 1 0
     //   1114: pop
     //   1115: aload 16
     //   1117: iconst_2
-    //   1118: invokestatic 124	com/tencent/mm/plugin/gallery/model/a:c	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
+    //   1118: invokestatic 123	com/tencent/mm/plugin/gallery/model/a:b	(Landroid/database/Cursor;I)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
     //   1121: astore 17
     //   1123: aload 10
     //   1125: astore 18
@@ -573,26 +573,26 @@ public final class a
     //   1131: aload 18
     //   1133: astore 12
     //   1135: goto -491 -> 644
-    //   1138: ldc 150
-    //   1140: ldc 152
+    //   1138: ldc 149
+    //   1140: ldc 151
     //   1142: iconst_1
-    //   1143: anewarray 154	java/lang/Object
+    //   1143: anewarray 153	java/lang/Object
     //   1146: dup
     //   1147: iconst_0
     //   1148: aload 25
-    //   1150: invokevirtual 158	java/util/LinkedList:size	()I
-    //   1153: invokestatic 164	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1150: invokevirtual 157	java/util/LinkedList:size	()I
+    //   1153: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1156: aastore
-    //   1157: invokestatic 170	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1157: invokestatic 169	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1160: aload_3
     //   1161: aload 25
     //   1163: lload 4
     //   1165: iload 9
-    //   1167: invokeinterface 175 5 0
-    //   1172: ldc 150
-    //   1174: ldc 177
+    //   1167: invokeinterface 174 5 0
+    //   1172: ldc 149
+    //   1174: ldc 176
     //   1176: iconst_5
-    //   1177: anewarray 154	java/lang/Object
+    //   1177: anewarray 153	java/lang/Object
     //   1180: dup
     //   1181: iconst_0
     //   1182: aload_1
@@ -600,43 +600,43 @@ public final class a
     //   1184: dup
     //   1185: iconst_1
     //   1186: iload_2
-    //   1187: invokestatic 164	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1187: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1190: aastore
     //   1191: dup
     //   1192: iconst_2
     //   1193: aload 25
-    //   1195: invokevirtual 158	java/util/LinkedList:size	()I
-    //   1198: invokestatic 164	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1195: invokevirtual 157	java/util/LinkedList:size	()I
+    //   1198: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1201: aastore
     //   1202: dup
     //   1203: iconst_3
     //   1204: lload 4
-    //   1206: invokestatic 182	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1206: invokestatic 181	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1209: aastore
     //   1210: dup
     //   1211: iconst_4
     //   1212: invokestatic 65	java/lang/System:currentTimeMillis	()J
     //   1215: lload 6
     //   1217: lsub
-    //   1218: invokestatic 182	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1218: invokestatic 181	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1221: aastore
-    //   1222: invokestatic 184	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1222: invokestatic 183	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1225: aload 13
     //   1227: ifnull +10 -> 1237
     //   1230: aload 13
-    //   1232: invokeinterface 143 1 0
+    //   1232: invokeinterface 142 1 0
     //   1237: aload 14
     //   1239: ifnull +10 -> 1249
     //   1242: aload 14
-    //   1244: invokeinterface 143 1 0
+    //   1244: invokeinterface 142 1 0
     //   1249: aload 15
     //   1251: ifnull +10 -> 1261
     //   1254: aload 15
-    //   1256: invokeinterface 143 1 0
+    //   1256: invokeinterface 142 1 0
     //   1261: aload 16
     //   1263: ifnull +10 -> 1273
     //   1266: aload 16
-    //   1268: invokeinterface 143 1 0
+    //   1268: invokeinterface 142 1 0
     //   1273: ldc 59
     //   1275: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1278: aload 25
@@ -650,28 +650,28 @@ public final class a
     //   1288: astore 10
     //   1290: aconst_null
     //   1291: astore 11
-    //   1293: ldc 150
+    //   1293: ldc 149
     //   1295: aload 12
-    //   1297: ldc 186
+    //   1297: ldc 185
     //   1299: iconst_0
-    //   1300: anewarray 154	java/lang/Object
-    //   1303: invokestatic 190	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1300: anewarray 153	java/lang/Object
+    //   1303: invokestatic 189	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1306: aload 11
     //   1308: ifnull +10 -> 1318
     //   1311: aload 11
-    //   1313: invokeinterface 143 1 0
+    //   1313: invokeinterface 142 1 0
     //   1318: aload 10
     //   1320: ifnull +10 -> 1330
     //   1323: aload 10
-    //   1325: invokeinterface 143 1 0
+    //   1325: invokeinterface 142 1 0
     //   1330: aload_3
     //   1331: ifnull +9 -> 1340
     //   1334: aload_3
-    //   1335: invokeinterface 143 1 0
+    //   1335: invokeinterface 142 1 0
     //   1340: aload_1
     //   1341: ifnull +9 -> 1350
     //   1344: aload_1
-    //   1345: invokeinterface 143 1 0
+    //   1345: invokeinterface 142 1 0
     //   1350: new 71	java/util/LinkedList
     //   1353: dup
     //   1354: invokespecial 72	java/util/LinkedList:<init>	()V
@@ -697,28 +697,28 @@ public final class a
     //   1389: astore 14
     //   1391: aload_3
     //   1392: astore 13
-    //   1394: ldc 150
+    //   1394: ldc 149
     //   1396: aload 10
-    //   1398: ldc 186
+    //   1398: ldc 185
     //   1400: iconst_0
-    //   1401: anewarray 154	java/lang/Object
-    //   1404: invokestatic 190	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1401: anewarray 153	java/lang/Object
+    //   1404: invokestatic 189	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1407: aload_3
     //   1408: ifnull +9 -> 1417
     //   1411: aload_3
-    //   1412: invokeinterface 143 1 0
+    //   1412: invokeinterface 142 1 0
     //   1417: aload_1
     //   1418: ifnull +9 -> 1427
     //   1421: aload_1
-    //   1422: invokeinterface 143 1 0
+    //   1422: invokeinterface 142 1 0
     //   1427: aload 15
     //   1429: ifnull +10 -> 1439
     //   1432: aload 15
-    //   1434: invokeinterface 143 1 0
+    //   1434: invokeinterface 142 1 0
     //   1439: aload 11
     //   1441: ifnull -91 -> 1350
     //   1444: aload 11
-    //   1446: invokeinterface 143 1 0
+    //   1446: invokeinterface 142 1 0
     //   1451: goto -101 -> 1350
     //   1454: astore_1
     //   1455: aconst_null
@@ -730,19 +730,19 @@ public final class a
     //   1465: aload 13
     //   1467: ifnull +10 -> 1477
     //   1470: aload 13
-    //   1472: invokeinterface 143 1 0
+    //   1472: invokeinterface 142 1 0
     //   1477: aload 14
     //   1479: ifnull +10 -> 1489
     //   1482: aload 14
-    //   1484: invokeinterface 143 1 0
+    //   1484: invokeinterface 142 1 0
     //   1489: aload 12
     //   1491: ifnull +10 -> 1501
     //   1494: aload 12
-    //   1496: invokeinterface 143 1 0
+    //   1496: invokeinterface 142 1 0
     //   1501: aload_3
     //   1502: ifnull +9 -> 1511
     //   1505: aload_3
-    //   1506: invokeinterface 143 1 0
+    //   1506: invokeinterface 142 1 0
     //   1511: ldc 59
     //   1513: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1516: aload_1
@@ -999,248 +999,248 @@ public final class a
   }
   
   /* Error */
-  public final java.util.LinkedList<GalleryItem.AlbumItem> cyR()
+  public final java.util.LinkedList<GalleryItem.AlbumItem> cMd()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 6
-    //   3: ldc 203
+    //   3: ldc 196
     //   5: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: new 205	java/util/HashMap
+    //   8: new 198	java/util/HashMap
     //   11: dup
-    //   12: invokespecial 206	java/util/HashMap:<init>	()V
+    //   12: invokespecial 199	java/util/HashMap:<init>	()V
     //   15: astore 7
     //   17: new 71	java/util/LinkedList
     //   20: dup
     //   21: invokespecial 72	java/util/LinkedList:<init>	()V
     //   24: astore 8
     //   26: aload_0
-    //   27: getfield 38	com/tencent/mm/plugin/gallery/model/a:bwu	Landroid/content/ContentResolver;
+    //   27: getfield 38	com/tencent/mm/plugin/gallery/model/a:but	Landroid/content/ContentResolver;
     //   30: getstatic 109	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   33: aload_0
-    //   34: getfield 48	com/tencent/mm/plugin/gallery/model/a:rAa	Lcom/tencent/mm/plugin/gallery/model/u;
-    //   37: invokevirtual 209	com/tencent/mm/plugin/gallery/model/u:cyS	()[Ljava/lang/String;
-    //   40: ldc 211
+    //   34: getfield 48	com/tencent/mm/plugin/gallery/model/a:sIS	Lcom/tencent/mm/plugin/gallery/model/u;
+    //   37: invokevirtual 202	com/tencent/mm/plugin/gallery/model/u:cMe	()[Ljava/lang/String;
+    //   40: ldc 204
     //   42: aconst_null
-    //   43: ldc 213
+    //   43: ldc 206
     //   45: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   48: astore 4
     //   50: aload 4
     //   52: ifnonnull +121 -> 173
-    //   55: ldc 150
-    //   57: ldc 215
-    //   59: invokestatic 218	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   55: ldc 149
+    //   57: ldc 208
+    //   59: invokestatic 211	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   62: aconst_null
     //   63: astore_3
     //   64: aload_0
-    //   65: getfield 38	com/tencent/mm/plugin/gallery/model/a:bwu	Landroid/content/ContentResolver;
+    //   65: getfield 38	com/tencent/mm/plugin/gallery/model/a:but	Landroid/content/ContentResolver;
     //   68: getstatic 84	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   71: aload_0
-    //   72: getfield 43	com/tencent/mm/plugin/gallery/model/a:rzZ	Lcom/tencent/mm/plugin/gallery/model/k;
-    //   75: invokevirtual 219	com/tencent/mm/plugin/gallery/model/k:cyS	()[Ljava/lang/String;
-    //   78: ldc 211
+    //   72: getfield 43	com/tencent/mm/plugin/gallery/model/a:sIR	Lcom/tencent/mm/plugin/gallery/model/k;
+    //   75: invokevirtual 212	com/tencent/mm/plugin/gallery/model/k:cMe	()[Ljava/lang/String;
+    //   78: ldc 204
     //   80: aconst_null
-    //   81: ldc 213
+    //   81: ldc 206
     //   83: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   86: astore 4
     //   88: aload 4
-    //   90: ifnonnull +246 -> 336
-    //   93: ldc 150
-    //   95: ldc 221
-    //   97: invokestatic 218	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   90: ifnonnull +245 -> 335
+    //   93: ldc 149
+    //   95: ldc 214
+    //   97: invokestatic 211	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   100: aload 7
-    //   102: invokevirtual 224	java/util/HashMap:isEmpty	()Z
+    //   102: invokevirtual 217	java/util/HashMap:isEmpty	()Z
     //   105: ifne +19 -> 124
     //   108: aload 8
     //   110: aload 7
-    //   112: invokevirtual 228	java/util/HashMap:values	()Ljava/util/Collection;
-    //   115: invokevirtual 232	java/util/LinkedList:addAll	(Ljava/util/Collection;)Z
+    //   112: invokevirtual 221	java/util/HashMap:values	()Ljava/util/Collection;
+    //   115: invokevirtual 225	java/util/LinkedList:addAll	(Ljava/util/Collection;)Z
     //   118: pop
     //   119: aload 8
-    //   121: invokestatic 238	java/util/Collections:sort	(Ljava/util/List;)V
+    //   121: invokestatic 231	java/util/Collections:sort	(Ljava/util/List;)V
     //   124: aload 8
-    //   126: invokestatic 242	com/tencent/mm/plugin/gallery/model/a:ag	(Ljava/util/LinkedList;)V
+    //   126: invokestatic 235	com/tencent/mm/plugin/gallery/model/a:an	(Ljava/util/LinkedList;)V
     //   129: aload_3
     //   130: ifnull +10 -> 140
     //   133: aload 8
     //   135: iconst_1
     //   136: aload_3
-    //   137: invokevirtual 245	java/util/LinkedList:add	(ILjava/lang/Object;)V
-    //   140: ldc 203
+    //   137: invokevirtual 238	java/util/LinkedList:add	(ILjava/lang/Object;)V
+    //   140: ldc 196
     //   142: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   145: aload 8
     //   147: areturn
     //   148: astore_3
-    //   149: ldc 150
-    //   151: ldc 247
+    //   149: ldc 149
+    //   151: ldc 240
     //   153: iconst_1
-    //   154: anewarray 154	java/lang/Object
+    //   154: anewarray 153	java/lang/Object
     //   157: dup
     //   158: iconst_0
     //   159: aload_3
-    //   160: invokevirtual 251	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   160: invokevirtual 244	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   163: aastore
-    //   164: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   164: invokestatic 247	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   167: aconst_null
     //   168: astore 4
     //   170: goto -120 -> 50
     //   173: aload 4
     //   175: invokeinterface 120 1 0
-    //   180: ifeq +259 -> 439
+    //   180: ifeq +257 -> 437
     //   183: aconst_null
     //   184: astore 5
     //   186: iconst_0
     //   187: istore_2
     //   188: aload 4
     //   190: iconst_2
-    //   191: ldc_w 256
-    //   194: invokestatic 259	com/tencent/mm/plugin/gallery/model/a:a	(Landroid/database/Cursor;ILjava/lang/String;)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;
-    //   197: astore 9
-    //   199: aload 5
-    //   201: astore_3
-    //   202: iload_2
-    //   203: istore_1
-    //   204: aload 9
-    //   206: ifnull +42 -> 248
-    //   209: iload_2
-    //   210: aload 9
-    //   212: getfield 265	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:did	I
-    //   215: iadd
-    //   216: istore_2
-    //   217: aload 7
-    //   219: aload 9
-    //   221: getfield 269	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:Lmi	Ljava/lang/String;
-    //   224: aload 9
-    //   226: invokevirtual 273	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   229: pop
-    //   230: aload 5
-    //   232: astore_3
-    //   233: iload_2
-    //   234: istore_1
-    //   235: aload 5
-    //   237: ifnonnull +11 -> 248
-    //   240: aload 9
-    //   242: getfield 277	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:Lmj	Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
-    //   245: astore_3
-    //   246: iload_2
-    //   247: istore_1
-    //   248: aload_3
-    //   249: astore 5
-    //   251: iload_1
-    //   252: istore_2
-    //   253: aload 4
-    //   255: invokeinterface 137 1 0
-    //   260: ifne -72 -> 188
-    //   263: new 261	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem
-    //   266: dup
-    //   267: invokestatic 30	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   270: ldc_w 278
-    //   273: invokevirtual 282	android/content/Context:getString	(I)Ljava/lang/String;
-    //   276: iload_1
-    //   277: invokespecial 285	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:<init>	(Ljava/lang/String;I)V
-    //   280: astore 5
-    //   282: aload 5
-    //   284: iconst_1
-    //   285: putfield 288	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:Lml	Z
-    //   288: aload 5
-    //   290: aload_3
-    //   291: putfield 277	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:Lmj	Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
-    //   294: aload 5
-    //   296: astore_3
-    //   297: aload 4
-    //   299: invokeinterface 143 1 0
-    //   304: goto -240 -> 64
-    //   307: astore 4
-    //   309: ldc 150
-    //   311: ldc_w 290
-    //   314: iconst_1
-    //   315: anewarray 154	java/lang/Object
-    //   318: dup
-    //   319: iconst_0
-    //   320: aload 4
-    //   322: invokevirtual 251	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   325: aastore
-    //   326: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   329: aload 6
-    //   331: astore 4
-    //   333: goto -245 -> 88
-    //   336: aload 4
-    //   338: invokeinterface 120 1 0
-    //   343: ifeq +86 -> 429
-    //   346: aload 4
-    //   348: iconst_1
-    //   349: ldc_w 256
-    //   352: invokestatic 259	com/tencent/mm/plugin/gallery/model/a:a	(Landroid/database/Cursor;ILjava/lang/String;)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;
-    //   355: astore 5
-    //   357: aload 5
-    //   359: ifnull +60 -> 419
-    //   362: aload 7
-    //   364: aload 5
-    //   366: getfield 269	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:Lmi	Ljava/lang/String;
-    //   369: invokevirtual 294	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   372: checkcast 261	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem
-    //   375: astore 6
-    //   377: aload 6
-    //   379: ifnull +32 -> 411
-    //   382: aload 5
-    //   384: getfield 265	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:did	I
-    //   387: istore_1
-    //   388: aload 5
-    //   390: aload 6
-    //   392: getfield 265	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:did	I
-    //   395: iload_1
-    //   396: iadd
-    //   397: putfield 265	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:did	I
-    //   400: aload 7
-    //   402: aload 5
-    //   404: getfield 269	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:Lmi	Ljava/lang/String;
-    //   407: invokevirtual 297	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   410: pop
-    //   411: aload 8
-    //   413: aload 5
-    //   415: invokevirtual 134	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   418: pop
-    //   419: aload 4
-    //   421: invokeinterface 137 1 0
-    //   426: ifne -80 -> 346
-    //   429: aload 4
-    //   431: invokeinterface 143 1 0
-    //   436: goto -336 -> 100
-    //   439: aconst_null
-    //   440: astore_3
-    //   441: goto -144 -> 297
+    //   191: ldc 249
+    //   193: invokestatic 252	com/tencent/mm/plugin/gallery/model/a:a	(Landroid/database/Cursor;ILjava/lang/String;)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;
+    //   196: astore 9
+    //   198: aload 5
+    //   200: astore_3
+    //   201: iload_2
+    //   202: istore_1
+    //   203: aload 9
+    //   205: ifnull +42 -> 247
+    //   208: iload_2
+    //   209: aload 9
+    //   211: getfield 258	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:dfy	I
+    //   214: iadd
+    //   215: istore_2
+    //   216: aload 7
+    //   218: aload 9
+    //   220: getfield 262	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:xiC	Ljava/lang/String;
+    //   223: aload 9
+    //   225: invokevirtual 266	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   228: pop
+    //   229: aload 5
+    //   231: astore_3
+    //   232: iload_2
+    //   233: istore_1
+    //   234: aload 5
+    //   236: ifnonnull +11 -> 247
+    //   239: aload 9
+    //   241: getfield 270	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:xIb	Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
+    //   244: astore_3
+    //   245: iload_2
+    //   246: istore_1
+    //   247: aload_3
+    //   248: astore 5
+    //   250: iload_1
+    //   251: istore_2
+    //   252: aload 4
+    //   254: invokeinterface 136 1 0
+    //   259: ifne -71 -> 188
+    //   262: new 254	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem
+    //   265: dup
+    //   266: invokestatic 30	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   269: ldc_w 271
+    //   272: invokevirtual 275	android/content/Context:getString	(I)Ljava/lang/String;
+    //   275: iload_1
+    //   276: invokespecial 278	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:<init>	(Ljava/lang/String;I)V
+    //   279: astore 5
+    //   281: aload 5
+    //   283: iconst_1
+    //   284: putfield 281	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:xNm	Z
+    //   287: aload 5
+    //   289: aload_3
+    //   290: putfield 270	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:xIb	Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;
+    //   293: aload 5
+    //   295: astore_3
+    //   296: aload 4
+    //   298: invokeinterface 142 1 0
+    //   303: goto -239 -> 64
+    //   306: astore 4
+    //   308: ldc 149
+    //   310: ldc_w 283
+    //   313: iconst_1
+    //   314: anewarray 153	java/lang/Object
+    //   317: dup
+    //   318: iconst_0
+    //   319: aload 4
+    //   321: invokevirtual 244	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   324: aastore
+    //   325: invokestatic 247	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   328: aload 6
+    //   330: astore 4
+    //   332: goto -244 -> 88
+    //   335: aload 4
+    //   337: invokeinterface 120 1 0
+    //   342: ifeq +85 -> 427
+    //   345: aload 4
+    //   347: iconst_1
+    //   348: ldc 249
+    //   350: invokestatic 252	com/tencent/mm/plugin/gallery/model/a:a	(Landroid/database/Cursor;ILjava/lang/String;)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;
+    //   353: astore 5
+    //   355: aload 5
+    //   357: ifnull +60 -> 417
+    //   360: aload 7
+    //   362: aload 5
+    //   364: getfield 262	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:xiC	Ljava/lang/String;
+    //   367: invokevirtual 287	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   370: checkcast 254	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem
+    //   373: astore 6
+    //   375: aload 6
+    //   377: ifnull +32 -> 409
+    //   380: aload 5
+    //   382: getfield 258	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:dfy	I
+    //   385: istore_1
+    //   386: aload 5
+    //   388: aload 6
+    //   390: getfield 258	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:dfy	I
+    //   393: iload_1
+    //   394: iadd
+    //   395: putfield 258	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:dfy	I
+    //   398: aload 7
+    //   400: aload 5
+    //   402: getfield 262	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:xiC	Ljava/lang/String;
+    //   405: invokevirtual 290	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   408: pop
+    //   409: aload 8
+    //   411: aload 5
+    //   413: invokevirtual 133	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   416: pop
+    //   417: aload 4
+    //   419: invokeinterface 136 1 0
+    //   424: ifne -79 -> 345
+    //   427: aload 4
+    //   429: invokeinterface 142 1 0
+    //   434: goto -334 -> 100
+    //   437: aconst_null
+    //   438: astore_3
+    //   439: goto -143 -> 296
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	444	0	this	a
-    //   203	194	1	i	int
-    //   187	66	2	j	int
+    //   0	442	0	this	a
+    //   202	193	1	i	int
+    //   187	65	2	j	int
     //   63	74	3	localObject1	java.lang.Object
     //   148	12	3	localException1	java.lang.Exception
-    //   201	240	3	localObject2	java.lang.Object
-    //   48	250	4	localCursor	android.database.Cursor
-    //   307	14	4	localException2	java.lang.Exception
-    //   331	99	4	localAlbumItem1	GalleryItem.AlbumItem
-    //   184	230	5	localObject3	java.lang.Object
-    //   1	390	6	localAlbumItem2	GalleryItem.AlbumItem
-    //   15	386	7	localHashMap	java.util.HashMap
-    //   24	388	8	localLinkedList	java.util.LinkedList
-    //   197	44	9	localAlbumItem3	GalleryItem.AlbumItem
+    //   200	239	3	localObject2	java.lang.Object
+    //   48	249	4	localCursor	android.database.Cursor
+    //   306	14	4	localException2	java.lang.Exception
+    //   330	98	4	localAlbumItem1	GalleryItem.AlbumItem
+    //   184	228	5	localObject3	java.lang.Object
+    //   1	388	6	localAlbumItem2	GalleryItem.AlbumItem
+    //   15	384	7	localHashMap	java.util.HashMap
+    //   24	386	8	localLinkedList	java.util.LinkedList
+    //   196	44	9	localAlbumItem3	GalleryItem.AlbumItem
     // Exception table:
     //   from	to	target	type
     //   26	50	148	java/lang/Exception
-    //   64	88	307	java/lang/Exception
+    //   64	88	306	java/lang/Exception
   }
   
-  public final String lC(boolean paramBoolean)
+  public final String mu(boolean paramBoolean)
   {
     AppMethodBeat.i(111231);
     if (paramBoolean)
     {
-      str = b.rAe + " desc, bucket_display_name desc, _id desc";
+      str = b.sIW + " desc, bucket_display_name desc, _id desc";
       AppMethodBeat.o(111231);
       return str;
     }
-    String str = b.rAd + " desc, bucket_display_name desc, _id desc";
+    String str = b.sIV + " desc, bucket_display_name desc, _id desc";
     AppMethodBeat.o(111231);
     return str;
   }

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.wallet.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class b
   extends w
 {
   private g callback;
-  private String dol;
-  private com.tencent.mm.al.b rr;
+  private String dlU;
+  private com.tencent.mm.ak.b rr;
   
   public final int doScene(e parame, g paramg)
   {
@@ -33,12 +33,12 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(69063);
-    ad.d("MicroMsg.NetSceneSetMainBankCard", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    ac.d("MicroMsg.NetSceneSetMainBankCard", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      s.dZT();
-      s.dZU();
-      am.atV(this.dol);
+      s.epp();
+      s.epq();
+      am.azn(this.dlU);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69063);

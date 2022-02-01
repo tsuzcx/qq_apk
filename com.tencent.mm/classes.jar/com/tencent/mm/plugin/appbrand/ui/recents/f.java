@@ -19,8 +19,8 @@ import com.tencent.mm.modelappbrand.a.b.j;
 import com.tencent.mm.modelappbrand.a.b.k;
 import com.tencent.mm.plugin.appbrand.appusage.ap.d;
 import com.tencent.mm.plugin.gif.MMAnimateView;
-import com.tencent.mm.protocal.protobuf.ado;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.protocal.protobuf.aen;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.xwalk.core.Log;
@@ -29,54 +29,54 @@ public abstract class f
   extends a
   implements View.OnClickListener
 {
-  private ViewGroup lGY;
-  private ImageView lGZ;
-  private WeImageView lHa;
-  private View lHb;
-  private ImageView lHc;
-  private MMAnimateView lHd;
-  private TextView lHe;
-  private View lHf;
-  protected ado lHg;
   FragmentActivity mActivity;
+  private ViewGroup miT;
+  private ImageView miU;
+  private WeImageView miV;
+  private View miW;
+  private ImageView miX;
+  private MMAnimateView miY;
+  private TextView miZ;
+  private View mja;
+  protected aen mjb;
   
   f(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup)
   {
     this.mActivity = paramFragmentActivity;
-    this.lGY = ((ViewGroup)LayoutInflater.from(paramFragmentActivity).inflate(2131493037, paramViewGroup, false));
-    this.lGY.setOnClickListener(this);
-    ((TextView)this.lGY.findViewById(2131305902)).setText(getTitle());
-    this.lGZ = ((ImageView)this.lGY.findViewById(2131296712));
-    this.lHa = ((WeImageView)this.lGY.findViewById(2131300874));
-    this.lHf = this.lGY.findViewById(2131303917);
-    if (this.lHa != null) {
-      a(this.lHa);
+    this.miT = ((ViewGroup)LayoutInflater.from(paramFragmentActivity).inflate(2131493037, paramViewGroup, false));
+    this.miT.setOnClickListener(this);
+    ((TextView)this.miT.findViewById(2131305902)).setText(getTitle());
+    this.miU = ((ImageView)this.miT.findViewById(2131296712));
+    this.miV = ((WeImageView)this.miT.findViewById(2131300874));
+    this.mja = this.miT.findViewById(2131303917);
+    if (this.miV != null) {
+      a(this.miV);
     }
-    this.lHb = this.lGY.findViewById(2131304794);
-    this.lHc = ((ImageView)this.lGY.findViewById(2131304795));
-    this.lHd = ((MMAnimateView)this.lGY.findViewById(2131304796));
-    this.lHe = ((TextView)this.lGY.findViewById(2131304797));
+    this.miW = this.miT.findViewById(2131304794);
+    this.miX = ((ImageView)this.miT.findViewById(2131304795));
+    this.miY = ((MMAnimateView)this.miT.findViewById(2131304796));
+    this.miZ = ((TextView)this.miT.findViewById(2131304797));
   }
   
-  private void bpy()
+  private void bwt()
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.lHb, "alpha", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.miW, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator.setDuration(30L);
     localObjectAnimator.start();
   }
   
-  public final void b(final ado paramado)
+  public final void b(final aen paramaen)
   {
-    if (paramado == null) {}
+    if (paramaen == null) {}
     final ap.d locald;
     do
     {
       return;
-      this.lHg = paramado;
-      locald = ap.d.qP(paramado.rXs);
+      this.mjb = paramaen;
+      locald = ap.d.rC(paramaen.tfk);
     } while (locald == null);
-    Log.i("AppBrandLauncherListHeaderFolderEntrance", "[showShowCaseView]  wording=" + paramado.doh + " icon_url=" + paramado.odo + " icon_url2=" + paramado.Deh);
-    new a(paramado.odo, paramado.Deh, new f.a.a()
+    Log.i("AppBrandLauncherListHeaderFolderEntrance", "[showShowCaseView]  wording=" + paramaen.dlQ + " icon_url=" + paramaen.oGN + " icon_url2=" + paramaen.Exn);
+    new a(paramaen.oGN, paramaen.Exn, new f.a.a()
     {
       public final void b(final Bitmap paramAnonymousBitmap, final byte[] paramAnonymousArrayOfByte)
       {
@@ -95,12 +95,12 @@ public abstract class f
         for (;;)
         {
           Log.i("AppBrandLauncherListHeaderFolderEntrance", i);
-          aq.f(new Runnable()
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(180391);
-              f.a(f.this, f.1.this.lHh, f.1.this.lHi, paramAnonymousBitmap, paramAnonymousArrayOfByte);
+              f.a(f.this, f.1.this.mjc, f.1.this.mjd, paramAnonymousBitmap, paramAnonymousArrayOfByte);
               AppMethodBeat.o(180391);
             }
           });
@@ -115,14 +115,14 @@ public abstract class f
     }).start();
   }
   
-  public void bpt()
+  public void bwo()
   {
-    he(true);
+    hB(true);
   }
   
-  public final View bpu()
+  public final View bwp()
   {
-    return this.lGY;
+    return this.miT;
   }
   
   protected final FragmentActivity getActivity()
@@ -132,10 +132,10 @@ public abstract class f
   
   protected abstract String getTitle();
   
-  public final void hf(boolean paramBoolean)
+  public final void hC(boolean paramBoolean)
   {
     Log.i("AppBrandLauncherListHeaderFolderEntrance", "[showRedDot] showRedDot == ".concat(String.valueOf(paramBoolean)));
-    View localView = this.lHf;
+    View localView = this.mja;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -148,59 +148,59 @@ public abstract class f
   
   public final void onDetached()
   {
-    this.lHd.stop();
+    this.miY.stop();
   }
   
   public final void onPause()
   {
-    this.lHd.pause();
+    this.miY.pause();
   }
   
   public void onResume()
   {
-    b(this.lHg);
-    this.lHd.resume();
+    b(this.mjb);
+    this.miY.resume();
   }
   
-  public final void ud(int paramInt)
+  public final void uV(int paramInt)
   {
-    if (this.lGZ != null) {
-      this.lGZ.setVisibility(paramInt);
+    if (this.miU != null) {
+      this.miU.setVisibility(paramInt);
     }
-    TextView localTextView = (TextView)this.lGY.findViewById(2131305902);
+    TextView localTextView = (TextView)this.miT.findViewById(2131305902);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localTextView.getLayoutParams();
-    localLayoutParams.leftMargin = this.lGY.getResources().getDimensionPixelOffset(2131165786);
+    localLayoutParams.leftMargin = this.miT.getResources().getDimensionPixelOffset(2131165786);
     localTextView.setLayoutParams(localLayoutParams);
   }
   
-  public final void ue(int paramInt)
+  public final void uW(int paramInt)
   {
-    this.lGY.setBackgroundResource(paramInt);
+    this.miT.setBackgroundResource(paramInt);
   }
   
   static final class a
   {
     private final AtomicInteger counter;
     Bitmap imageBitmap;
-    private final String lHn;
-    private final String lHo;
-    private final a lHp;
-    byte[] lHq;
+    private final String mji;
+    private final String mjj;
+    private final a mjk;
+    byte[] mjl;
     
     public a(String paramString1, String paramString2, a parama)
     {
       AppMethodBeat.i(180397);
       this.counter = new AtomicInteger();
       this.imageBitmap = null;
-      this.lHq = null;
-      this.lHn = paramString1;
-      this.lHo = paramString2;
-      this.lHp = parama;
+      this.mjl = null;
+      this.mji = paramString1;
+      this.mjj = paramString2;
+      this.mjk = parama;
       if (!TextUtils.isEmpty(paramString1)) {
-        bpA();
+        bwv();
       }
       if (!TextUtils.isEmpty(paramString2)) {
-        bpA();
+        bwv();
       }
       if (this.counter.get() == 0) {
         parama.b(null, null);
@@ -208,12 +208,12 @@ public abstract class f
       AppMethodBeat.o(180397);
     }
     
-    private void Na(String paramString)
+    private void Rj(String paramString)
     {
       AppMethodBeat.i(180401);
-      b.aub().a(new b.k()
+      b.aAS().a(new b.k()
       {
-        public final String AL()
+        public final String Ap()
         {
           return "LoadShowcaseImageTask";
         }
@@ -222,50 +222,50 @@ public abstract class f
         {
           AppMethodBeat.i(180394);
           f.a.this.imageBitmap = paramAnonymousBitmap;
-          f.a.this.bpz();
+          f.a.this.bwu();
           AppMethodBeat.o(180394);
         }
         
-        public final void auj() {}
+        public final void aBa() {}
         
-        public final void nV()
+        public final void of()
         {
           AppMethodBeat.i(180395);
-          f.a.this.bpz();
+          f.a.this.bwu();
           AppMethodBeat.o(180395);
         }
       }, paramString, null);
       AppMethodBeat.o(180401);
     }
     
-    private void Nb(String paramString)
+    private void Rk(String paramString)
     {
       AppMethodBeat.i(180402);
-      b.aub().a(paramString, new b.j()
+      b.aAS().a(paramString, new b.j()
       {
-        public final void X(byte[] paramAnonymousArrayOfByte)
+        public final void W(byte[] paramAnonymousArrayOfByte)
         {
           AppMethodBeat.i(180396);
-          f.a.this.lHq = paramAnonymousArrayOfByte;
-          f.a.this.bpz();
+          f.a.this.mjl = paramAnonymousArrayOfByte;
+          f.a.this.bwu();
           AppMethodBeat.o(180396);
         }
       });
       AppMethodBeat.o(180402);
     }
     
-    private void bpA()
+    private void bwv()
     {
       AppMethodBeat.i(180399);
       this.counter.incrementAndGet();
       AppMethodBeat.o(180399);
     }
     
-    final void bpz()
+    final void bwu()
     {
       AppMethodBeat.i(180398);
-      if ((this.counter.decrementAndGet() == 0) && (this.lHp != null)) {
-        this.lHp.b(this.imageBitmap, this.lHq);
+      if ((this.counter.decrementAndGet() == 0) && (this.mjk != null)) {
+        this.mjk.b(this.imageBitmap, this.mjl);
       }
       AppMethodBeat.o(180398);
     }
@@ -273,11 +273,11 @@ public abstract class f
     public final void start()
     {
       AppMethodBeat.i(180400);
-      if (!TextUtils.isEmpty(this.lHn)) {
-        Na(this.lHn);
+      if (!TextUtils.isEmpty(this.mji)) {
+        Rj(this.mji);
       }
-      if (!TextUtils.isEmpty(this.lHo)) {
-        Nb(this.lHo);
+      if (!TextUtils.isEmpty(this.mjj)) {
+        Rk(this.mjj);
       }
       AppMethodBeat.o(180400);
     }
@@ -290,7 +290,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.f
  * JD-Core Version:    0.7.0.1
  */

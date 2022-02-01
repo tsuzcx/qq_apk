@@ -10,27 +10,27 @@ public final class b
 {
   private int mID;
   private long mInterval;
-  private long vIT;
-  private HashMap<Integer, Long> vIU;
+  private long wSX;
+  private HashMap<Integer, Long> wSY;
   
   public b()
   {
     AppMethodBeat.i(125118);
-    this.vIU = new HashMap();
+    this.wSY = new HashMap();
     this.mID = 463;
     this.mInterval = 300000L;
     AppMethodBeat.o(125118);
   }
   
-  private void ao(int paramInt, long paramLong)
+  private void an(int paramInt, long paramLong)
   {
     AppMethodBeat.i(125120);
-    Long localLong = (Long)this.vIU.get(Integer.valueOf(paramInt));
+    Long localLong = (Long)this.wSY.get(Integer.valueOf(paramInt));
     long l = paramLong;
     if (localLong != null) {
       l = paramLong + localLong.longValue();
     }
-    this.vIU.put(Integer.valueOf(paramInt), Long.valueOf(l));
+    this.wSY.put(Integer.valueOf(paramInt), Long.valueOf(l));
     AppMethodBeat.o(125120);
   }
   
@@ -39,18 +39,18 @@ public final class b
     AppMethodBeat.i(125119);
     try
     {
-      ao(paramInt1, paramLong);
-      ao(paramInt2, 1L);
+      an(paramInt1, paramLong);
+      an(paramInt2, 1L);
       paramLong = System.currentTimeMillis();
-      if (paramLong - this.vIT > this.mInterval)
+      if (paramLong - this.wSX > this.mInterval)
       {
-        Iterator localIterator = this.vIU.entrySet().iterator();
+        Iterator localIterator = this.wSY.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)localIterator.next();
-          e.vIY.idkeyStat(this.mID, ((Integer)localEntry.getKey()).intValue(), ((Long)localEntry.getValue()).longValue(), false);
+          e.wTc.idkeyStat(this.mID, ((Integer)localEntry.getKey()).intValue(), ((Long)localEntry.getValue()).longValue(), false);
         }
-        this.vIT = paramLong;
+        this.wSX = paramLong;
       }
     }
     finally

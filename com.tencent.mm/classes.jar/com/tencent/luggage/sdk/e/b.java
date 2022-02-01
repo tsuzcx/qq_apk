@@ -12,49 +12,49 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksCollection;", "", "()V", "onFinishListeners", "Ljava/util/LinkedList;", "Lkotlin/Function0;", "", "preFetchTasks", "Ljava/util/HashMap;", "", "Lcom/tencent/luggage/sdk/tasks/AppBrandBasePreFetchTask;", "Lkotlin/collections/HashMap;", "getPreFetchTasks", "()Ljava/util/HashMap;", "finishAllTask", "getTask", "T", "key", "onFinish", "l", "startTask", "preFetchLaunchTask", "Companion", "luggage-wechat-full-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksCollection;", "", "()V", "onFinishListeners", "Ljava/util/LinkedList;", "Lkotlin/Function0;", "", "preFetchTasks", "Ljava/util/HashMap;", "", "Lcom/tencent/luggage/sdk/tasks/AppBrandBasePreFetchTask;", "Lkotlin/collections/HashMap;", "getPreFetchTasks", "()Ljava/util/HashMap;", "finishAllTask", "getTask", "T", "key", "onFinish", "l", "startTask", "preFetchLaunchTask", "Companion", "luggage-wechat-full-sdk_release"})
 public class b
 {
-  public static final a cis;
-  public final HashMap<Integer, a<?>> ciq;
-  public final LinkedList<d.g.a.a<y>> cir;
+  public static final a cfo;
+  public final HashMap<Integer, a<?>> cfm;
+  public final LinkedList<d.g.a.a<y>> cfn;
   
   static
   {
-    AppMethodBeat.i(186846);
-    cis = new a((byte)0);
-    AppMethodBeat.o(186846);
+    AppMethodBeat.i(206200);
+    cfo = new a((byte)0);
+    AppMethodBeat.o(206200);
   }
   
   public b()
   {
-    AppMethodBeat.i(186845);
-    this.ciq = new HashMap();
-    this.cir = new LinkedList();
-    AppMethodBeat.o(186845);
+    AppMethodBeat.i(206199);
+    this.cfm = new HashMap();
+    this.cfn = new LinkedList();
+    AppMethodBeat.o(206199);
   }
   
   public final void b(a<?> parama)
   {
-    AppMethodBeat.i(186844);
+    AppMethodBeat.i(206198);
     k.h(parama, "preFetchLaunchTask");
-    ((Map)this.ciq).put(Integer.valueOf(parama.Ei()), parama);
-    parama.cij = new FutureTask((Callable)new a.b(parama));
-    i locali = h.Iye;
-    parama = parama.cij;
+    ((Map)this.cfm).put(Integer.valueOf(parama.DL()), parama);
+    parama.cfe = new FutureTask((Callable)new a.b(parama));
+    i locali = h.JZN;
+    parama = parama.cfe;
     if (parama == null) {
-      k.aPZ("futureTask");
+      k.aVY("futureTask");
     }
-    locali.aP((Runnable)parama);
-    AppMethodBeat.o(186844);
+    locali.aS((Runnable)parama);
+    AppMethodBeat.o(206198);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksCollection$Companion;", "", "()V", "TAG", "", "TASK_KEY_PROVIDE_WAWEBVIEW", "", "TASK_KEY_PROVIDE_WXSS", "luggage-wechat-full-sdk_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksCollection$Companion;", "", "()V", "TAG", "", "TASK_KEY_PROVIDE_WAWEBVIEW", "", "TASK_KEY_PROVIDE_WXSS", "luggage-wechat-full-sdk_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.e.b
  * JD-Core Version:    0.7.0.1
  */

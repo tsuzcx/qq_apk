@@ -8,38 +8,38 @@ import d.y;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/sticker/loader/StickerTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "callbackList", "Ljava/util/LinkedList;", "Lkotlin/Function1;", "", "", "getInfo", "()Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "addCallback", "callback", "cancel", "onResult", "success", "plugin-sticker_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/loader/StickerTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "callbackList", "Ljava/util/LinkedList;", "Lkotlin/Function1;", "", "", "getInfo", "()Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "addCallback", "callback", "cancel", "onResult", "success", "plugin-sticker_release"})
 public abstract class g
   extends c
 {
-  public final StickerLoadInfo Fdv;
-  final LinkedList<b<Boolean, y>> LAA;
+  final LinkedList<b<Boolean, y>> GAV;
+  public final StickerLoadInfo GAW;
   private final String TAG;
   
   public g(StickerLoadInfo paramStickerLoadInfo)
   {
-    this.Fdv = paramStickerLoadInfo;
+    this.GAW = paramStickerLoadInfo;
     this.TAG = "MicroMsg.StickerTask";
-    this.LAA = new LinkedList();
+    this.GAV = new LinkedList();
   }
   
-  public void df(boolean paramBoolean)
+  public void de(boolean paramBoolean)
   {
-    Iterator localIterator = ((Iterable)this.LAA).iterator();
+    Iterator localIterator = ((Iterable)this.GAV).iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).aA(Boolean.valueOf(paramBoolean));
+      ((b)localIterator.next()).ay(Boolean.valueOf(paramBoolean));
     }
     if (paramBoolean)
     {
-      a(h.gla);
+      a(h.gLN);
       return;
     }
-    a(h.glb);
+    a(h.gLO);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sticker.loader.g
  * JD-Core Version:    0.7.0.1
  */

@@ -9,34 +9,34 @@ import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
 import com.tencent.mm.plugin.wepkg.model.f;
 import com.tencent.mm.plugin.wepkg.model.g;
 import com.tencent.mm.plugin.wepkg.model.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.xweb.WebResourceResponse;
 
 public final class a
 {
-  private static g BGY;
-  private static boolean BGZ = false;
+  private static g CZf;
+  private static boolean CZg = false;
   
-  public static void azv(String paramString)
+  public static void aEM(String paramString)
   {
     AppMethodBeat.i(110512);
-    if (eti().equals(paramString)) {
-      BGZ = true;
+    if (eIB().equals(paramString)) {
+      CZg = true;
     }
     AppMethodBeat.o(110512);
   }
   
-  public static WebResourceResponse azw(String paramString)
+  public static WebResourceResponse aEN(String paramString)
   {
     AppMethodBeat.i(110515);
-    if ((b.etp() != 0) || (BGY == null))
+    if ((b.eII() != 0) || (CZf == null))
     {
-      ad.e("MicroMsg.CommJsLoader", "nativeJsCache is null");
+      ac.e("MicroMsg.CommJsLoader", "nativeJsCache is null");
       AppMethodBeat.o(110515);
       return null;
     }
-    paramString = BGY.azV(paramString);
+    paramString = CZf.aFn(paramString);
     if (paramString != null)
     {
       AppMethodBeat.o(110515);
@@ -46,92 +46,92 @@ public final class a
     return null;
   }
   
-  public static void bRh()
+  public static void bYw()
   {
     AppMethodBeat.i(110511);
-    tP();
+    tX();
     AppMethodBeat.o(110511);
   }
   
-  public static void ci(String paramString, boolean paramBoolean)
+  public static void co(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(110513);
-    if ((eti().equals(paramString)) && ((BGZ) || (b.etn() == 0)))
+    if ((eIB().equals(paramString)) && ((CZg) || (b.eIG() == 0)))
     {
-      BGZ = false;
+      CZg = false;
       if (paramBoolean) {
-        tP();
+        tX();
       }
     }
     AppMethodBeat.o(110513);
   }
   
-  public static String eti()
+  public static String eIB()
   {
     AppMethodBeat.i(110510);
-    if (com.tencent.mm.plugin.game.commlib.a.rOm != null) {
-      if (com.tencent.mm.plugin.game.commlib.a.rOm.sbJ == null) {
+    if (com.tencent.mm.plugin.game.commlib.a.sWd != null) {
+      if (com.tencent.mm.plugin.game.commlib.a.sWd.tjD == null) {
         break label47;
       }
     }
     label47:
-    for (String str = com.tencent.mm.plugin.game.commlib.a.rOm.sbJ.sag; !bt.isNullOrNil(str); str = null)
+    for (String str = com.tencent.mm.plugin.game.commlib.a.sWd.tjD.thZ; !bs.isNullOrNil(str); str = null)
     {
       AppMethodBeat.o(110510);
       return str;
-      com.tencent.mm.plugin.game.commlib.a.cBk();
+      com.tencent.mm.plugin.game.commlib.a.cOt();
     }
     AppMethodBeat.o(110510);
     return "commlib";
   }
   
-  public static String etj()
+  public static String eIC()
   {
-    if ((BGY != null) && (BGY.BIL != null)) {
-      return BGY.BIL.version;
+    if ((CZf != null) && (CZf.DaU != null)) {
+      return CZf.DaU.version;
     }
     return "";
   }
   
-  public static void tP()
+  public static void tX()
   {
     AppMethodBeat.i(110514);
-    ad.i("MicroMsg.CommJsLoader", "load");
-    com.tencent.mm.plugin.wepkg.model.i.a(eti(), new com.tencent.mm.plugin.wepkg.model.a()
+    ac.i("MicroMsg.CommJsLoader", "load");
+    com.tencent.mm.plugin.wepkg.model.i.a(eIB(), new com.tencent.mm.plugin.wepkg.model.a()
     {
       public final void a(BaseWepkgProcessTask paramAnonymousBaseWepkgProcessTask)
       {
         AppMethodBeat.i(110509);
-        paramAnonymousBaseWepkgProcessTask = ((WepkgCrossProcessTask)paramAnonymousBaseWepkgProcessTask).BIL;
+        paramAnonymousBaseWepkgProcessTask = ((WepkgCrossProcessTask)paramAnonymousBaseWepkgProcessTask).DaU;
         if (paramAnonymousBaseWepkgProcessTask == null)
         {
-          ad.e("MicroMsg.CommJsLoader", "wepkgVersion is null");
+          ac.e("MicroMsg.CommJsLoader", "wepkgVersion is null");
           a.a(null);
           AppMethodBeat.o(110509);
           return;
         }
         if (paramAnonymousBaseWepkgProcessTask.version == null)
         {
-          ad.e("MicroMsg.CommJsLoader", "version is null");
+          ac.e("MicroMsg.CommJsLoader", "version is null");
           a.a(null);
           AppMethodBeat.o(110509);
           return;
         }
-        if ((a.etk() != null) && (paramAnonymousBaseWepkgProcessTask.version.equals(a.etk().BIL.version)))
+        if ((a.eID() != null) && (paramAnonymousBaseWepkgProcessTask.version.equals(a.eID().DaU.version)))
         {
           AppMethodBeat.o(110509);
           return;
         }
-        if (!paramAnonymousBaseWepkgProcessTask.BJA)
+        if (!paramAnonymousBaseWepkgProcessTask.DbJ)
         {
-          ad.e("MicroMsg.CommJsLoader", "bigPackage is not ready");
+          ac.e("MicroMsg.CommJsLoader", "bigPackage is not ready");
           AppMethodBeat.o(110509);
           return;
         }
-        f localf = h.b(a.eti(), paramAnonymousBaseWepkgProcessTask.version, paramAnonymousBaseWepkgProcessTask.pkgPath, paramAnonymousBaseWepkgProcessTask.md5, paramAnonymousBaseWepkgProcessTask.BJy);
-        if ((localf == null) || (bt.isNullOrNil(paramAnonymousBaseWepkgProcessTask.pkgPath)) || (!com.tencent.mm.vfs.i.eK(paramAnonymousBaseWepkgProcessTask.pkgPath)))
+        f localf = h.b(a.eIB(), paramAnonymousBaseWepkgProcessTask.version, paramAnonymousBaseWepkgProcessTask.pkgPath, paramAnonymousBaseWepkgProcessTask.md5, paramAnonymousBaseWepkgProcessTask.DbH);
+        if ((localf == null) || (bs.isNullOrNil(paramAnonymousBaseWepkgProcessTask.pkgPath)) || (!com.tencent.mm.vfs.i.eA(paramAnonymousBaseWepkgProcessTask.pkgPath)))
         {
-          ad.e("MicroMsg.CommJsLoader", "path not exist");
+          ac.e("MicroMsg.CommJsLoader", "path not exist");
           AppMethodBeat.o(110509);
           return;
         }

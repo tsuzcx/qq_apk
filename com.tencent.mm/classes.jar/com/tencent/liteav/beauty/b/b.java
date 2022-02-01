@@ -1,9 +1,9 @@
 package com.tencent.liteav.beauty.b;
 
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 
 public class b
-  extends g
+  extends h
 {
   public void c(int paramInt) {}
   

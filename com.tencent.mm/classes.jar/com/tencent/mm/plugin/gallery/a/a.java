@@ -5,8 +5,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.ParcelFileDescriptor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,7 +20,7 @@ public final class a
     {
       try
       {
-        paramString = i.lB(paramString, "r").getFileDescriptor();
+        paramString = i.lY(paramString, "r").getFileDescriptor();
         if (paramString == null)
         {
           AppMethodBeat.o(111738);
@@ -32,7 +32,7 @@ public final class a
         j = paramOptions.outHeight;
         if ((i == -1) || (j == -1))
         {
-          ad.i("MicroMsg.GalleryBitmapUtil", "decode error, get invalid picture size");
+          ac.i("MicroMsg.GalleryBitmapUtil", "decode error, get invalid picture size");
           AppMethodBeat.o(111738);
           return null;
         }
@@ -46,7 +46,7 @@ public final class a
       {
         int i;
         int j;
-        ad.printErrStackTrace("MicroMsg.GalleryBitmapUtil", paramString, "decodeThumbnail fail!!!", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.GalleryBitmapUtil", paramString, "decodeThumbnail fail!!!", new Object[0]);
         AppMethodBeat.o(111738);
         return null;
         paramInt -= 1;
@@ -70,7 +70,7 @@ public final class a
       }
       catch (Throwable paramString)
       {
-        ad.printErrStackTrace("MicroMsg.GalleryBitmapUtil", paramString, "err!!", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.GalleryBitmapUtil", paramString, "err!!", new Object[0]);
         AppMethodBeat.o(111738);
         return null;
       }
@@ -95,13 +95,13 @@ public final class a
     throw paramString;
   }
   
-  public static Bitmap dk(String paramString, int paramInt)
+  public static Bitmap dq(String paramString, int paramInt)
   {
     Object localObject2 = null;
     AppMethodBeat.i(111737);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.GalleryBitmapUtil", "imgPath is invalid.");
+      ac.e("MicroMsg.GalleryBitmapUtil", "imgPath is invalid.");
       AppMethodBeat.o(111737);
       return null;
     }
@@ -120,7 +120,7 @@ public final class a
           if (localObject1 == null) {
             continue;
           }
-          ad.i("MicroMsg.GalleryBitmapUtil", "decode thumb success from exif.");
+          ac.i("MicroMsg.GalleryBitmapUtil", "decode thumb success from exif.");
           AppMethodBeat.o(111737);
           return localObject1;
         }
@@ -146,7 +146,7 @@ public final class a
       {
         byte[] arrayOfByte;
         Object localObject1;
-        ad.printErrStackTrace("MicroMsg.GalleryBitmapUtil", localFileNotFoundException, "failed to find file to read thumbnail: %s.", new Object[] { paramString });
+        ac.printErrStackTrace("MicroMsg.GalleryBitmapUtil", localFileNotFoundException, "failed to find file to read thumbnail: %s.", new Object[] { paramString });
         paramString = a(paramString, localOptions, paramInt);
         AppMethodBeat.o(111737);
         return paramString;
@@ -158,12 +158,12 @@ public final class a
       }
       catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
       {
-        ad.printErrStackTrace("MicroMsg.GalleryBitmapUtil", localIndexOutOfBoundsException, "failed to get thumbnail from: %s.", new Object[] { paramString });
+        ac.printErrStackTrace("MicroMsg.GalleryBitmapUtil", localIndexOutOfBoundsException, "failed to get thumbnail from: %s.", new Object[] { paramString });
         continue;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.GalleryBitmapUtil", localException, "failed to get thumbnail from: %s.", new Object[] { paramString });
+        ac.printErrStackTrace("MicroMsg.GalleryBitmapUtil", localException, "failed to get thumbnail from: %s.", new Object[] { paramString });
         continue;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -191,7 +191,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.a.a
  * JD-Core Version:    0.7.0.1
  */

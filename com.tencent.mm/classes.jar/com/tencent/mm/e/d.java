@@ -12,69 +12,48 @@ import com.tencent.mm.cache.f;
 public final class d
   extends b
 {
-  private float avt;
-  private float avu;
-  private float cSA;
-  private boolean cSB;
-  private boolean cSd;
-  private float cSe;
-  private float cSf;
+  private float awo;
+  private float awp;
+  private float cPW;
+  private boolean cPX;
+  private boolean cPY;
+  private float cPy;
+  private float cPz;
   public int mColor;
-  private Path uW;
+  private Path vU;
   
   public d()
   {
     AppMethodBeat.i(9148);
-    this.cSB = true;
-    this.cSd = false;
-    this.mColor = com.tencent.mm.view.footer.a.HZA[2];
-    this.uW = new Path();
+    this.cPX = true;
+    this.cPY = false;
+    this.mColor = com.tencent.mm.view.footer.a.JAq[2];
+    this.vU = new Path();
     AppMethodBeat.o(9148);
   }
   
-  public final a Mb()
+  public final a LZ()
   {
-    return a.cRs;
+    return a.cON;
   }
   
-  public final void Mc()
+  public final void Ma()
   {
     AppMethodBeat.i(9152);
-    ci(true);
+    ck(true);
     AppMethodBeat.o(9152);
   }
   
-  public final void onAlive()
-  {
-    AppMethodBeat.i(9149);
-    super.onAlive();
-    this.cSA = this.cRz.getInitScale();
-    AppMethodBeat.o(9149);
-  }
-  
-  public final void onDraw(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(9151);
-    paramCanvas.save();
-    paramCanvas.clipRect(this.cRB);
-    d(paramCanvas);
-    if (!this.uW.isEmpty()) {
-      new com.tencent.mm.aa.b(this.uW, this.cRz.getInitScale() / this.cRz.getCurScale(), this.mColor).draw(paramCanvas);
-    }
-    paramCanvas.restore();
-    AppMethodBeat.o(9151);
-  }
-  
-  public final boolean p(MotionEvent paramMotionEvent)
+  public final boolean n(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9150);
-    if (!Mi())
+    if (!Mg())
     {
       AppMethodBeat.o(9150);
       return false;
     }
-    if (this.cRI != null) {
-      this.cRI.p(paramMotionEvent);
+    if (this.cPd != null) {
+      this.cPd.n(paramMotionEvent);
     }
     float[] arrayOfFloat = s(paramMotionEvent.getX(), paramMotionEvent.getY());
     switch (paramMotionEvent.getActionMasked())
@@ -82,59 +61,80 @@ public final class d
     }
     for (;;)
     {
-      boolean bool = this.cSB;
+      boolean bool = this.cPX;
       AppMethodBeat.o(9150);
       return bool;
-      if (this.cRB.contains((int)arrayOfFloat[0], (int)arrayOfFloat[1]))
+      if (this.cOW.contains((int)arrayOfFloat[0], (int)arrayOfFloat[1]))
       {
         float f = arrayOfFloat[0];
-        this.cSe = f;
-        this.avt = f;
+        this.cPy = f;
+        this.awo = f;
         f = arrayOfFloat[1];
-        this.cSf = f;
-        this.avu = f;
+        this.cPz = f;
+        this.awp = f;
       }
-      for (this.cSB = true;; this.cSB = false)
+      for (this.cPX = true;; this.cPX = false)
       {
-        this.cSd = false;
+        this.cPY = false;
         break;
       }
-      if ((this.cSB) && (this.cSd))
+      if ((this.cPX) && (this.cPY))
       {
-        if (Md() == null)
+        if (Mb() == null)
         {
           AppMethodBeat.o(9150);
           return false;
         }
-        Md().add(new com.tencent.mm.aa.b(new Path(this.uW), this.cRz.getInitScale() / this.cRz.getCurScale(), this.mColor));
-        ci(false);
-        c.Uw().b(g.cJs);
+        Mb().add(new com.tencent.mm.z.b(new Path(this.vU), this.cOU.getInitScale() / this.cOU.getCurScale(), this.mColor));
+        ck(false);
+        c.Vr().b(g.cGz);
       }
-      Ml();
-      this.uW.reset();
-      this.cSd = false;
-      this.cSB = false;
+      Mj();
+      this.vU.reset();
+      this.cPY = false;
+      this.cPX = false;
       continue;
-      if ((this.cSB) && (this.cSd))
+      if ((this.cPX) && (this.cPY))
       {
-        this.cSe = this.avt;
-        this.cSf = this.avu;
-        this.avt = arrayOfFloat[0];
-        this.avu = arrayOfFloat[1];
-        this.uW.quadTo(this.cSe, this.cSf, (this.avt + this.cSe) / 2.0F, (this.avu + this.cSf) / 2.0F);
-        Mk();
+        this.cPy = this.awo;
+        this.cPz = this.awp;
+        this.awo = arrayOfFloat[0];
+        this.awp = arrayOfFloat[1];
+        this.vU.quadTo(this.cPy, this.cPz, (this.awo + this.cPy) / 2.0F, (this.awp + this.cPz) / 2.0F);
+        Mi();
       }
-      else if ((this.cSB) && (!this.cSd))
+      else if ((this.cPX) && (!this.cPY))
       {
-        this.uW.moveTo(arrayOfFloat[0], arrayOfFloat[1]);
-        this.cSd = true;
+        this.vU.moveTo(arrayOfFloat[0], arrayOfFloat[1]);
+        this.cPY = true;
       }
     }
+  }
+  
+  public final void onAlive()
+  {
+    AppMethodBeat.i(9149);
+    super.onAlive();
+    this.cPW = this.cOU.getInitScale();
+    AppMethodBeat.o(9149);
+  }
+  
+  public final void onDraw(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(9151);
+    paramCanvas.save();
+    paramCanvas.clipRect(this.cOW);
+    d(paramCanvas);
+    if (!this.vU.isEmpty()) {
+      new com.tencent.mm.z.b(this.vU, this.cOU.getInitScale() / this.cOU.getCurScale(), this.mColor).draw(paramCanvas);
+    }
+    paramCanvas.restore();
+    AppMethodBeat.o(9151);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.e.d
  * JD-Core Version:    0.7.0.1
  */

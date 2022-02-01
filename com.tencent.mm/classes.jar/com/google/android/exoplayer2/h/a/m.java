@@ -10,16 +10,16 @@ import java.util.regex.Pattern;
 final class m
   extends g
 {
-  private static final Pattern byA;
-  private static final Pattern byB;
-  private static final Pattern byz;
+  private static final Pattern bwh;
+  private static final Pattern bwi;
+  private static final Pattern bwj;
   
   static
   {
     AppMethodBeat.i(93032);
-    byz = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v1\\.exo$", 32);
-    byA = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v2\\.exo$", 32);
-    byB = Pattern.compile("^(\\d+)\\.(\\d+)\\.(\\d+)\\.v3\\.exo$", 32);
+    bwh = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v1\\.exo$", 32);
+    bwi = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v2\\.exo$", 32);
+    bwj = Pattern.compile("^(\\d+)\\.(\\d+)\\.(\\d+)\\.v3\\.exo$", 32);
     AppMethodBeat.o(93032);
   }
   
@@ -36,10 +36,10 @@ final class m
     if (!((String)localObject2).endsWith(".v3.exo"))
     {
       localObject1 = paramFile.getName();
-      localObject2 = byA.matcher((CharSequence)localObject1);
+      localObject2 = bwi.matcher((CharSequence)localObject1);
       if (((Matcher)localObject2).matches())
       {
-        localObject1 = x.bb(((Matcher)localObject2).group(1));
+        localObject1 = x.aS(((Matcher)localObject2).group(1));
         if (localObject1 == null) {
           localObject1 = null;
         }
@@ -50,7 +50,7 @@ final class m
         {
           AppMethodBeat.o(93031);
           return null;
-          localObject2 = byz.matcher((CharSequence)localObject1);
+          localObject2 = bwh.matcher((CharSequence)localObject1);
           if (!((Matcher)localObject2).matches())
           {
             localObject1 = null;
@@ -58,7 +58,7 @@ final class m
           else
           {
             localObject1 = ((Matcher)localObject2).group(1);
-            localObject2 = a(paramFile.getParentFile(), paramj.aE((String)localObject1), Long.parseLong(((Matcher)localObject2).group(2)), Long.parseLong(((Matcher)localObject2).group(3)));
+            localObject2 = a(paramFile.getParentFile(), paramj.az((String)localObject1), Long.parseLong(((Matcher)localObject2).group(2)), Long.parseLong(((Matcher)localObject2).group(3)));
             localObject1 = localObject2;
             if (!paramFile.renameTo((File)localObject2)) {
               localObject1 = null;
@@ -69,7 +69,7 @@ final class m
     }
     for (paramFile = ((File)localObject1).getName();; paramFile = (File)localObject2)
     {
-      paramFile = byB.matcher(paramFile);
+      paramFile = bwj.matcher(paramFile);
       if (!paramFile.matches())
       {
         AppMethodBeat.o(93031);
@@ -77,7 +77,7 @@ final class m
       }
       long l = ((File)localObject1).length();
       int i = Integer.parseInt(paramFile.group(1));
-      paramj = (String)paramj.byi.get(i);
+      paramj = (String)paramj.bvR.get(i);
       if (paramj == null)
       {
         AppMethodBeat.o(93031);
@@ -99,7 +99,7 @@ final class m
     return paramFile;
   }
   
-  public static m h(String paramString, long paramLong1, long paramLong2)
+  public static m g(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(93030);
     paramString = new m(paramString, paramLong1, paramLong2, -9223372036854775807L, null);

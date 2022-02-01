@@ -19,15 +19,15 @@ import java.util.List;
 public final class l
   implements ContextMenu
 {
-  public List<MenuItem> FYt;
-  public CharSequence adA;
+  public List<MenuItem> Hyi;
+  public CharSequence aeu;
   public Context mContext;
   
   public l(Context paramContext)
   {
     AppMethodBeat.i(159211);
     this.mContext = paramContext;
-    this.FYt = new ArrayList();
+    this.Hyi = new ArrayList();
     AppMethodBeat.o(159211);
   }
   
@@ -38,7 +38,7 @@ public final class l
     paramCharSequence = new SpannableString(paramCharSequence);
     paramCharSequence.setSpan(new ForegroundColorSpan(paramInt2), 0, paramCharSequence.length(), 0);
     localm.setTitle(paramCharSequence);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159229);
     return localm;
   }
@@ -49,7 +49,7 @@ public final class l
     m localm = new m(this.mContext, paramInt1, 0);
     localm.setTitle(paramCharSequence);
     localm.setIcon(paramInt2);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159226);
     return localm;
   }
@@ -59,8 +59,8 @@ public final class l
     AppMethodBeat.i(159227);
     m localm = new m(this.mContext, paramInt1, 0);
     localm.setTitle(paramCharSequence);
-    localm.jk(paramInt2, paramInt3);
-    this.FYt.add(localm);
+    localm.jx(paramInt2, paramInt3);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159227);
     return localm;
   }
@@ -70,9 +70,9 @@ public final class l
     AppMethodBeat.i(159228);
     m localm = new m(this.mContext, paramInt1, 0);
     localm.setTitle(paramCharSequence);
-    localm.jk(paramInt2, paramInt3);
-    localm.kRX = paramBoolean;
-    this.FYt.add(localm);
+    localm.jx(paramInt2, paramInt3);
+    localm.ltx = paramBoolean;
+    this.Hyi.add(localm);
     AppMethodBeat.o(159228);
     return localm;
   }
@@ -83,8 +83,8 @@ public final class l
     m localm = new m(this.mContext, paramInt1, 0);
     localm.setTitle(paramCharSequence);
     localm.setIcon(paramInt2);
-    localm.kRX = paramBoolean;
-    this.FYt.add(localm);
+    localm.ltx = paramBoolean;
+    this.Hyi.add(localm);
     AppMethodBeat.o(159221);
     return localm;
   }
@@ -95,7 +95,7 @@ public final class l
     m localm = new m(this.mContext, paramInt, 0);
     localm.setTitle(paramCharSequence);
     localm.setIcon(paramDrawable);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159218);
     return localm;
   }
@@ -105,9 +105,9 @@ public final class l
     AppMethodBeat.i(159222);
     m localm = new m(this.mContext, paramInt1, 0);
     localm.setTitle(paramCharSequence1);
-    localm.rvA = paramCharSequence2;
+    localm.sEs = paramCharSequence2;
     localm.setIcon(paramInt2);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159222);
     return localm;
   }
@@ -117,10 +117,10 @@ public final class l
     AppMethodBeat.i(159219);
     m localm = new m(this.mContext, paramInt, 0);
     localm.setTitle(paramCharSequence1);
-    localm.rvA = paramCharSequence2;
+    localm.sEs = paramCharSequence2;
     localm.setIcon(paramDrawable);
-    localm.kRX = paramBoolean;
-    this.FYt.add(localm);
+    localm.ltx = paramBoolean;
+    this.Hyi.add(localm);
     AppMethodBeat.o(159219);
     return localm;
   }
@@ -129,23 +129,28 @@ public final class l
   {
     AppMethodBeat.i(179496);
     m localm = new m(this.mContext, paramInt, 0);
-    localm.FYu = paramBoolean;
-    localm.dyl = false;
+    localm.Hyj = paramBoolean;
+    localm.dvX = false;
     localm.setTitle(paramCharSequence);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(179496);
     return localm;
   }
   
-  public final MenuItem aI(int paramInt1, int paramInt2, int paramInt3)
+  public final MenuItem aJ(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159217);
     m localm = new m(this.mContext, paramInt1, 0);
     localm.setTitle(paramInt2);
     localm.setIcon(paramInt3);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159217);
     return localm;
+  }
+  
+  public final List<MenuItem> acH()
+  {
+    return this.Hyi;
   }
   
   public final MenuItem add(int paramInt)
@@ -153,7 +158,7 @@ public final class l
     AppMethodBeat.i(159215);
     m localm = new m(this.mContext, 0, 0);
     localm.setTitle(paramInt);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159215);
     return localm;
   }
@@ -163,7 +168,7 @@ public final class l
     AppMethodBeat.i(159213);
     m localm = new m(this.mContext, paramInt2, paramInt1);
     localm.setTitle(paramInt4);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159213);
     return localm;
   }
@@ -173,7 +178,7 @@ public final class l
     AppMethodBeat.i(159214);
     m localm = new m(this.mContext, paramInt2, paramInt1);
     localm.setTitle(paramCharSequence);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159214);
     return localm;
   }
@@ -183,7 +188,7 @@ public final class l
     AppMethodBeat.i(159216);
     m localm = new m(this.mContext, 0, 0);
     localm.setTitle(paramCharSequence);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159216);
     return localm;
   }
@@ -218,10 +223,10 @@ public final class l
     AppMethodBeat.i(159220);
     m localm = new m(this.mContext, paramInt, 0);
     localm.setTitle(paramCharSequence1);
-    localm.rvA = paramCharSequence2;
-    localm.D(paramDrawable);
-    localm.kRX = paramBoolean;
-    this.FYt.add(localm);
+    localm.sEs = paramCharSequence2;
+    localm.C(paramDrawable);
+    localm.ltx = paramBoolean;
+    this.Hyi.add(localm);
     AppMethodBeat.o(159220);
     return localm;
   }
@@ -231,7 +236,7 @@ public final class l
     AppMethodBeat.i(159224);
     m localm = new m(this.mContext, paramInt, 0);
     localm.setTitle(paramCharSequence);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159224);
     return localm;
   }
@@ -239,15 +244,15 @@ public final class l
   public final void clear()
   {
     AppMethodBeat.i(159232);
-    Iterator localIterator = this.FYt.iterator();
+    Iterator localIterator = this.Hyi.iterator();
     while (localIterator.hasNext())
     {
       MenuItem localMenuItem = (MenuItem)localIterator.next();
-      ((m)localMenuItem).FYy = null;
+      ((m)localMenuItem).Hyn = null;
       ((m)localMenuItem).setOnMenuItemClickListener(null);
     }
-    this.FYt.clear();
-    this.adA = null;
+    this.Hyi.clear();
+    this.aeu = null;
     AppMethodBeat.o(159232);
   }
   
@@ -255,10 +260,10 @@ public final class l
   
   public final void close() {}
   
-  public final boolean eSQ()
+  public final boolean fiA()
   {
     AppMethodBeat.i(159212);
-    if (this.FYt.size() == 0)
+    if (this.Hyi.size() == 0)
     {
       AppMethodBeat.o(159212);
       return true;
@@ -270,7 +275,7 @@ public final class l
   public final MenuItem findItem(int paramInt)
   {
     AppMethodBeat.i(159233);
-    Iterator localIterator = this.FYt.iterator();
+    Iterator localIterator = this.Hyi.iterator();
     while (localIterator.hasNext())
     {
       MenuItem localMenuItem = (MenuItem)localIterator.next();
@@ -288,7 +293,7 @@ public final class l
   {
     AppMethodBeat.i(159230);
     if (paramMenuItem != null) {
-      this.FYt.add(paramMenuItem);
+      this.Hyi.add(paramMenuItem);
     }
     AppMethodBeat.o(159230);
     return null;
@@ -297,14 +302,9 @@ public final class l
   public final MenuItem getItem(int paramInt)
   {
     AppMethodBeat.i(159235);
-    MenuItem localMenuItem = (MenuItem)this.FYt.get(paramInt);
+    MenuItem localMenuItem = (MenuItem)this.Hyi.get(paramInt);
     AppMethodBeat.o(159235);
     return localMenuItem;
-  }
-  
-  public final List<MenuItem> getItemList()
-  {
-    return this.FYt;
   }
   
   public final boolean hasVisibleItems()
@@ -317,12 +317,12 @@ public final class l
     return false;
   }
   
-  public final MenuItem jj(int paramInt1, int paramInt2)
+  public final MenuItem jw(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159223);
     m localm = new m(this.mContext, paramInt1, 0);
     localm.setTitle(paramInt2);
-    this.FYt.add(localm);
+    this.Hyi.add(localm);
     AppMethodBeat.o(159223);
     return localm;
   }
@@ -343,7 +343,7 @@ public final class l
   {
     AppMethodBeat.i(159231);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.FYt.iterator();
+    Iterator localIterator = this.Hyi.iterator();
     while (localIterator.hasNext())
     {
       MenuItem localMenuItem = (MenuItem)localIterator.next();
@@ -351,7 +351,7 @@ public final class l
         localArrayList.add(localMenuItem);
       }
     }
-    this.FYt.removeAll(localArrayList);
+    this.Hyi.removeAll(localArrayList);
     AppMethodBeat.o(159231);
   }
   
@@ -389,7 +389,7 @@ public final class l
     if (paramCharSequence == null) {
       return this;
     }
-    this.adA = paramCharSequence;
+    this.aeu = paramCharSequence;
     return this;
   }
   
@@ -403,12 +403,12 @@ public final class l
   public final int size()
   {
     AppMethodBeat.i(159234);
-    if (this.FYt == null)
+    if (this.Hyi == null)
     {
       AppMethodBeat.o(159234);
       return 0;
     }
-    int i = this.FYt.size();
+    int i = this.Hyi.size();
     AppMethodBeat.o(159234);
     return i;
   }

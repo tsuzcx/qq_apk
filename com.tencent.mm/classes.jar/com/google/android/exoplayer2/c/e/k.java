@@ -20,8 +20,8 @@ final class k
       {
         i += 1;
         break;
-        if (parami.sV()) {}
-        for (int j = parami.eo(4) + 1; parami.sV(); j = 1)
+        if (parami.te()) {}
+        for (int j = parami.eo(4) + 1; parami.te(); j = 1)
         {
           int n = parami.eo(8);
           k = 0;
@@ -63,14 +63,14 @@ final class k
   public static boolean a(int paramInt, m paramm, boolean paramBoolean)
   {
     AppMethodBeat.i(92177);
-    if (paramm.vJ() < 7)
+    if (paramm.vy() < 7)
     {
       if (paramBoolean)
       {
         AppMethodBeat.o(92177);
         return false;
       }
-      paramm = new o("too short header: " + paramm.vJ());
+      paramm = new o("too short header: " + paramm.vy());
       AppMethodBeat.o(92177);
       throw paramm;
     }
@@ -100,15 +100,15 @@ final class k
     return true;
   }
   
-  static c[] a(i parami)
+  static k.c[] a(i parami)
   {
     AppMethodBeat.i(92178);
     int j = parami.eo(6) + 1;
-    c[] arrayOfc = new c[j];
+    k.c[] arrayOfc = new k.c[j];
     int i = 0;
     while (i < j)
     {
-      arrayOfc[i] = new c(parami.sV(), parami.eo(16), parami.eo(16), parami.eo(8));
+      arrayOfc[i] = new k.c(parami.te(), parami.eo(16), parami.eo(16), parami.eo(8));
       i += 1;
     }
     AppMethodBeat.o(92178);
@@ -143,7 +143,7 @@ final class k
       if (j < n)
       {
         i1 = parami.eo(3);
-        if (!parami.sV()) {
+        if (!parami.te()) {
           break label196;
         }
       }
@@ -266,46 +266,44 @@ final class k
     return i;
   }
   
-  public static final class c
+  public static final class b
   {
-    public final boolean beX;
-    public final int beY;
-    public final int beZ;
-    public final int bfa;
+    public final String[] bfI;
+    public final int length;
+    public final String vendor;
     
-    public c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+    public b(String paramString, String[] paramArrayOfString, int paramInt)
     {
-      this.beX = paramBoolean;
-      this.beY = paramInt1;
-      this.beZ = paramInt2;
-      this.bfa = paramInt3;
+      this.vendor = paramString;
+      this.bfI = paramArrayOfString;
+      this.length = paramInt;
     }
   }
   
   public static final class d
   {
-    public final long bfb;
-    public final int bfc;
-    public final int bfd;
-    public final int bfe;
-    public final int bff;
-    public final int bfg;
-    public final boolean bfh;
+    public final long bfN;
+    public final int bfO;
+    public final int bfP;
+    public final int bfQ;
+    public final int bfR;
+    public final int bfS;
+    public final boolean bfT;
     public final int channels;
     public final byte[] data;
     public final long sampleRate;
     
     public d(long paramLong1, int paramInt1, long paramLong2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean, byte[] paramArrayOfByte)
     {
-      this.bfb = paramLong1;
+      this.bfN = paramLong1;
       this.channels = paramInt1;
       this.sampleRate = paramLong2;
-      this.bfc = paramInt2;
-      this.bfd = paramInt3;
-      this.bfe = paramInt4;
-      this.bff = paramInt5;
-      this.bfg = paramInt6;
-      this.bfh = paramBoolean;
+      this.bfO = paramInt2;
+      this.bfP = paramInt3;
+      this.bfQ = paramInt4;
+      this.bfR = paramInt5;
+      this.bfS = paramInt6;
+      this.bfT = paramBoolean;
       this.data = paramArrayOfByte;
     }
   }

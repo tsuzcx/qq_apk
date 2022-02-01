@@ -21,43 +21,43 @@ import java.util.Set;
 public final class l
   implements h
 {
-  private final h JTA;
-  private final ba JTJ;
-  private Map<d.l.b.a.b.b.l, d.l.b.a.b.b.l> JTK;
-  private final d.f JTL;
+  private final h LGT;
+  private final ba LHc;
+  private Map<d.l.b.a.b.b.l, d.l.b.a.b.b.l> LHd;
+  private final d.f LHe;
   
   static
   {
     AppMethodBeat.i(60226);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(l.class), "_allDescriptors", "get_allDescriptors()Ljava/util/Collection;")) };
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(l.class), "_allDescriptors", "get_allDescriptors()Ljava/util/Collection;")) };
     AppMethodBeat.o(60226);
   }
   
   public l(h paramh, ba paramba)
   {
     AppMethodBeat.i(60235);
-    this.JTA = paramh;
-    paramh = paramba.fKb();
+    this.LGT = paramh;
+    paramh = paramba.gcE();
     d.g.b.k.g(paramh, "givenSubstitutor.substitution");
-    this.JTJ = d.l.b.a.b.j.a.a.d.c(paramh).fKa();
-    this.JTL = g.E((d.g.a.a)new a(this));
+    this.LHc = d.l.b.a.b.j.a.a.d.c(paramh).gcD();
+    this.LHe = g.K((d.g.a.a)new a(this));
     AppMethodBeat.o(60235);
   }
   
   private final <D extends d.l.b.a.b.b.l> D J(D paramD)
   {
     AppMethodBeat.i(60227);
-    if (this.JTJ.Jud.isEmpty())
+    if (this.LHc.Lhw.isEmpty())
     {
       AppMethodBeat.o(60227);
       return paramD;
     }
-    if (this.JTK == null) {
-      this.JTK = ((Map)new HashMap());
+    if (this.LHd == null) {
+      this.LHd = ((Map)new HashMap());
     }
-    Map localMap = this.JTK;
+    Map localMap = this.LHd;
     if (localMap == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
     Object localObject2 = localMap.get(paramD);
     Object localObject1 = localObject2;
@@ -65,7 +65,7 @@ public final class l
     {
       if ((paramD instanceof ap))
       {
-        localObject1 = ((ap)paramD).f(this.JTJ);
+        localObject1 = ((ap)paramD).f(this.LHc);
         if (localObject1 == null)
         {
           paramD = (Throwable)new AssertionError("We expect that no conflict should happen while substitution is guaranteed to generate invariant projection, but " + paramD + " substitution fails");
@@ -94,10 +94,10 @@ public final class l
     return paramD;
   }
   
-  private final <D extends d.l.b.a.b.b.l> Collection<D> w(Collection<? extends D> paramCollection)
+  private final <D extends d.l.b.a.b.b.l> Collection<D> x(Collection<? extends D> paramCollection)
   {
     AppMethodBeat.i(60228);
-    if (this.JTJ.Jud.isEmpty())
+    if (this.LHc.Lhw.isEmpty())
     {
       AppMethodBeat.o(60228);
       return paramCollection;
@@ -107,7 +107,7 @@ public final class l
       AppMethodBeat.o(60228);
       return paramCollection;
     }
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet(d.l.b.a.b.o.a.gq(paramCollection.size()));
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet(d.l.b.a.b.o.a.gb(paramCollection.size()));
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext()) {
       localLinkedHashSet.add(J((d.l.b.a.b.b.l)paramCollection.next()));
@@ -122,7 +122,7 @@ public final class l
     AppMethodBeat.i(60229);
     d.g.b.k.h(paramf, "name");
     d.g.b.k.h(parama, "location");
-    paramf = w(this.JTA.a(paramf, parama));
+    paramf = x(this.LGT.a(paramf, parama));
     AppMethodBeat.o(60229);
     return paramf;
   }
@@ -132,7 +132,7 @@ public final class l
     AppMethodBeat.i(60232);
     d.g.b.k.h(paramd, "kindFilter");
     d.g.b.k.h(paramb, "nameFilter");
-    paramd = (Collection)this.JTL.getValue();
+    paramd = (Collection)this.LHe.getValue();
     AppMethodBeat.o(60232);
     return paramd;
   }
@@ -142,7 +142,7 @@ public final class l
     AppMethodBeat.i(60231);
     d.g.b.k.h(paramf, "name");
     d.g.b.k.h(parama, "location");
-    paramf = w(this.JTA.b(paramf, parama));
+    paramf = x(this.LGT.b(paramf, parama));
     AppMethodBeat.o(60231);
     return paramf;
   }
@@ -152,7 +152,7 @@ public final class l
     AppMethodBeat.i(60230);
     d.g.b.k.h(paramf, "name");
     d.g.b.k.h(parama, "location");
-    paramf = this.JTA.c(paramf, parama);
+    paramf = this.LGT.c(paramf, parama);
     if (paramf != null)
     {
       paramf = (d.l.b.a.b.b.h)J((d.l.b.a.b.b.l)paramf);
@@ -163,18 +163,18 @@ public final class l
     return null;
   }
   
-  public final Set<d.l.b.a.b.f.f> fzU()
+  public final Set<d.l.b.a.b.f.f> fSy()
   {
     AppMethodBeat.i(60233);
-    Set localSet = this.JTA.fzU();
+    Set localSet = this.LGT.fSy();
     AppMethodBeat.o(60233);
     return localSet;
   }
   
-  public final Set<d.l.b.a.b.f.f> fzV()
+  public final Set<d.l.b.a.b.f.f> fSz()
   {
     AppMethodBeat.i(60234);
-    Set localSet = this.JTA.fzV();
+    Set localSet = this.LGT.fSz();
     AppMethodBeat.o(60234);
     return localSet;
   }
@@ -191,7 +191,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.l
  * JD-Core Version:    0.7.0.1
  */

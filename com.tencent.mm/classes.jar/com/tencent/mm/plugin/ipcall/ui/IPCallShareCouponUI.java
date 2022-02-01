@@ -23,21 +23,21 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.jq;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.jy;
 import com.tencent.mm.m.e;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.ipcall.model.f.i;
-import com.tencent.mm.protocal.protobuf.bdc;
-import com.tencent.mm.protocal.protobuf.dpa;
+import com.tencent.mm.protocal.protobuf.bgu;
+import com.tencent.mm.protocal.protobuf.dur;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h.c;
 import java.util.Iterator;
@@ -46,137 +46,137 @@ import java.util.List;
 
 public class IPCallShareCouponUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
   private String mDesc;
   private String mTitle;
   private String mWording;
-  private com.tencent.mm.sdk.b.c sFM;
-  private ProgressDialog sFV;
-  private RelativeLayout sJE;
-  private TextView sJF;
-  private ImageView sJG;
-  private RelativeLayout sJH;
-  private TextView sJI;
-  private ImageView sJJ;
-  private LinearLayout sJK;
-  private LinearLayout sJL;
-  private LinearLayout sJM;
-  private LinearLayout sJN;
-  private ImageView sJO;
-  private LinearLayout sJP;
-  private ImageView sJQ;
-  private TextView sJR;
-  private TextView sJS;
-  private TextView sJT;
-  private ImageView sJU;
-  private TextView sJV;
-  private TextView sJW;
-  private View sJX;
-  private IPCallDynamicTextView sJY;
-  private com.tencent.mm.plugin.ipcall.model.f.b sJZ;
-  private String sJk;
-  private String sJl;
-  private String sJm;
-  private String sJn;
-  private String sJo;
-  private String sJp;
-  private String sJq;
-  private LinkedList<dpa> sKa;
-  private boolean sKb;
+  private ProgressDialog tNC;
+  private com.tencent.mm.sdk.b.c tNt;
+  private String tQQ;
+  private String tQR;
+  private String tQS;
+  private String tQT;
+  private String tQU;
+  private String tQV;
+  private String tQW;
+  private ImageView tRA;
+  private TextView tRB;
+  private TextView tRC;
+  private View tRD;
+  private IPCallDynamicTextView tRE;
+  private com.tencent.mm.plugin.ipcall.model.f.b tRF;
+  private LinkedList<dur> tRG;
+  private boolean tRH;
+  private RelativeLayout tRk;
+  private TextView tRl;
+  private ImageView tRm;
+  private RelativeLayout tRn;
+  private TextView tRo;
+  private ImageView tRp;
+  private LinearLayout tRq;
+  private LinearLayout tRr;
+  private LinearLayout tRs;
+  private LinearLayout tRt;
+  private ImageView tRu;
+  private LinearLayout tRv;
+  private ImageView tRw;
+  private TextView tRx;
+  private TextView tRy;
+  private TextView tRz;
   
   public IPCallShareCouponUI()
   {
     AppMethodBeat.i(25953);
-    this.sJZ = new com.tencent.mm.plugin.ipcall.model.f.b();
-    this.sJk = null;
+    this.tRF = new com.tencent.mm.plugin.ipcall.model.f.b();
+    this.tQQ = null;
     this.mDesc = null;
-    this.sJl = null;
+    this.tQR = null;
     this.mTitle = null;
     this.mWording = null;
-    this.sJm = null;
-    this.sJn = null;
-    this.sJo = null;
-    this.sJp = null;
-    this.sJq = null;
-    this.sKa = null;
-    this.sFM = new com.tencent.mm.sdk.b.c() {};
-    this.sKb = false;
+    this.tQS = null;
+    this.tQT = null;
+    this.tQU = null;
+    this.tQV = null;
+    this.tQW = null;
+    this.tRG = null;
+    this.tNt = new com.tencent.mm.sdk.b.c() {};
+    this.tRH = false;
     AppMethodBeat.o(25953);
   }
   
-  private void a(bdc parambdc)
+  private void a(bgu parambgu)
   {
-    this.sJk = parambdc.DAt;
-    this.mDesc = parambdc.Desc;
-    this.sJl = parambdc.DAu;
-    this.mTitle = parambdc.Title;
-    this.mWording = parambdc.sDZ;
-    this.sJm = parambdc.DAv;
-    this.sJo = parambdc.DAw;
-    this.sJp = parambdc.DAx;
-    this.sJq = parambdc.DAy;
-    this.sKa = parambdc.DAf;
+    this.tQQ = parambgu.EVP;
+    this.mDesc = parambgu.Desc;
+    this.tQR = parambgu.EVQ;
+    this.mTitle = parambgu.Title;
+    this.mWording = parambgu.tLG;
+    this.tQS = parambgu.EVR;
+    this.tQU = parambgu.EVS;
+    this.tQV = parambgu.EVT;
+    this.tQW = parambgu.EVU;
+    this.tRG = parambgu.EVB;
   }
   
   private void refreshView()
   {
     AppMethodBeat.i(25957);
-    if (!bt.isNullOrNil(this.sJo))
+    if (!bs.isNullOrNil(this.tQU))
     {
-      if (this.sJn == null)
+      if (this.tQT == null)
       {
-        this.sJY.setValue(this.sJo, this.sJo);
-        this.sJn = this.sJo;
+        this.tRE.setValue(this.tQU, this.tQU);
+        this.tQT = this.tQU;
       }
     }
     else
     {
-      this.sJV.getText();
-      this.sJV.setText(this.sJp);
-      if (!bt.isNullOrNil(this.sJp)) {
+      this.tRB.getText();
+      this.tRB.setText(this.tQV);
+      if (!bs.isNullOrNil(this.tQV)) {
         break label188;
       }
-      this.sJV.setVisibility(8);
+      this.tRB.setVisibility(8);
     }
     StringBuffer localStringBuffer;
     for (;;)
     {
       localStringBuffer = new StringBuffer("");
-      if ((this.sKa == null) || (this.sKa.size() <= 0)) {
+      if ((this.tRG == null) || (this.tRG.size() <= 0)) {
         break label199;
       }
-      Iterator localIterator = this.sKa.iterator();
+      Iterator localIterator = this.tRG.iterator();
       while (localIterator.hasNext())
       {
-        dpa localdpa = (dpa)localIterator.next();
-        if ((localdpa != null) && (!bt.isNullOrNil(localdpa.Eit))) {
-          localStringBuffer.append(localdpa.Eit).append('\n');
+        dur localdur = (dur)localIterator.next();
+        if ((localdur != null) && (!bs.isNullOrNil(localdur.FFr))) {
+          localStringBuffer.append(localdur.FFr).append('\n');
         }
       }
-      this.sJY.setValue(this.sJn, this.sJo);
+      this.tRE.setValue(this.tQT, this.tQU);
       break;
       label188:
-      this.sJV.setVisibility(0);
+      this.tRB.setVisibility(0);
     }
     label199:
-    if (!bt.isNullOrNil(localStringBuffer.toString()))
+    if (!bs.isNullOrNil(localStringBuffer.toString()))
     {
       if (localStringBuffer.charAt(localStringBuffer.length() - 1) == '\n') {
         localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
       }
-      this.sJW.setText(localStringBuffer.toString());
-      this.sJW.setVisibility(0);
+      this.tRC.setText(localStringBuffer.toString());
+      this.tRC.setVisibility(0);
     }
-    while ((this.sJV.getVisibility() == 0) && (this.sJW.getVisibility() == 0))
+    while ((this.tRB.getVisibility() == 0) && (this.tRC.getVisibility() == 0))
     {
-      this.sJX.setVisibility(0);
+      this.tRD.setVisibility(0);
       AppMethodBeat.o(25957);
       return;
-      this.sJW.setText("");
-      this.sJW.setVisibility(8);
+      this.tRC.setText("");
+      this.tRC.setVisibility(8);
     }
-    this.sJX.setVisibility(8);
+    this.tRD.setVisibility(8);
     AppMethodBeat.o(25957);
   }
   
@@ -194,8 +194,8 @@ public class IPCallShareCouponUI
   {
     AppMethodBeat.i(25954);
     super.onCreate(paramBundle);
-    az.aeS().a(257, this);
-    com.tencent.mm.sdk.b.a.ESL.c(this.sFM);
+    az.agi().a(257, this);
+    com.tencent.mm.sdk.b.a.GpY.c(this.tNt);
     setMMTitle(2131760508);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -213,10 +213,10 @@ public class IPCallShareCouponUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(25943);
-        paramAnonymousMenuItem = com.tencent.mm.plugin.ipcall.a.c.cIM();
+        paramAnonymousMenuItem = com.tencent.mm.plugin.ipcall.a.c.cVX();
         int i;
-        if ((paramAnonymousMenuItem != null) && (!bt.isNullOrNil(paramAnonymousMenuItem.DAD))) {
-          if (com.tencent.mm.m.g.Zd().getInt("WCOWebPayListSwitch", 0) > 0)
+        if ((paramAnonymousMenuItem != null) && (!bs.isNullOrNil(paramAnonymousMenuItem.EVZ))) {
+          if (com.tencent.mm.m.g.ZY().getInt("WCOWebPayListSwitch", 0) > 0)
           {
             i = 1;
             if (i == 0) {
@@ -238,7 +238,7 @@ public class IPCallShareCouponUI
         {
           com.tencent.mm.ui.base.h.b(IPCallShareCouponUI.this.getContext(), null, paramAnonymousMenuItem, null, new h.c()
           {
-            public final void kM(int paramAnonymous2Int)
+            public final void kG(int paramAnonymous2Int)
             {
               AppMethodBeat.i(25942);
               int i = paramAnonymous2Int;
@@ -277,44 +277,44 @@ public class IPCallShareCouponUI
         }
       }
     });
-    this.sJY = ((IPCallDynamicTextView)findViewById(2131297085));
-    this.sJE = ((RelativeLayout)findViewById(2131303817));
-    this.sJF = ((TextView)findViewById(2131303836));
-    this.sJG = ((ImageView)findViewById(2131303823));
-    az.arV();
-    if (((Boolean)com.tencent.mm.model.c.afk().get(ae.a.FiI, Boolean.FALSE)).booleanValue()) {
-      this.sJG.setVisibility(0);
+    this.tRE = ((IPCallDynamicTextView)findViewById(2131297085));
+    this.tRk = ((RelativeLayout)findViewById(2131303817));
+    this.tRl = ((TextView)findViewById(2131303836));
+    this.tRm = ((ImageView)findViewById(2131303823));
+    az.ayM();
+    if (((Boolean)com.tencent.mm.model.c.agA().get(ah.a.GGx, Boolean.FALSE)).booleanValue()) {
+      this.tRm.setVisibility(0);
     }
-    az.arV();
-    paramBundle = (String)com.tencent.mm.model.c.afk().get(ae.a.FiH, "");
-    this.sJF.setText(paramBundle);
-    this.sJH = ((RelativeLayout)findViewById(2131303546));
-    this.sJI = ((TextView)findViewById(2131303123));
-    this.sJJ = ((ImageView)findViewById(2131303120));
-    az.arV();
-    paramBundle = (String)com.tencent.mm.model.c.afk().get(ae.a.FiJ, "");
-    this.sJI.setText(paramBundle);
-    this.sJV = ((TextView)findViewById(2131298812));
-    this.sJW = ((TextView)findViewById(2131303118));
-    this.sJX = findViewById(2131304848);
-    this.sJK = ((LinearLayout)findViewById(2131299541));
-    this.sJU = ((ImageView)findViewById(2131302741));
-    az.arV();
-    if (((Boolean)com.tencent.mm.model.c.afk().get(ae.a.FiK, Boolean.FALSE)).booleanValue()) {
-      this.sJU.setVisibility(0);
+    az.ayM();
+    paramBundle = (String)com.tencent.mm.model.c.agA().get(ah.a.GGw, "");
+    this.tRl.setText(paramBundle);
+    this.tRn = ((RelativeLayout)findViewById(2131303546));
+    this.tRo = ((TextView)findViewById(2131303123));
+    this.tRp = ((ImageView)findViewById(2131303120));
+    az.ayM();
+    paramBundle = (String)com.tencent.mm.model.c.agA().get(ah.a.GGy, "");
+    this.tRo.setText(paramBundle);
+    this.tRB = ((TextView)findViewById(2131298812));
+    this.tRC = ((TextView)findViewById(2131303118));
+    this.tRD = findViewById(2131304848);
+    this.tRq = ((LinearLayout)findViewById(2131299541));
+    this.tRA = ((ImageView)findViewById(2131302741));
+    az.ayM();
+    if (((Boolean)com.tencent.mm.model.c.agA().get(ah.a.GGz, Boolean.FALSE)).booleanValue()) {
+      this.tRA.setVisibility(0);
     }
-    this.sJR = ((TextView)findViewById(2131302899));
-    this.sJS = ((TextView)findViewById(2131296519));
-    this.sJT = ((TextView)findViewById(2131305240));
-    this.sJL = ((LinearLayout)findViewById(2131304739));
-    this.sJM = ((LinearLayout)findViewById(2131302648));
-    this.sJP = ((LinearLayout)findViewById(2131304479));
-    this.sJQ = ((ImageView)findViewById(2131304480));
-    this.sJN = ((LinearLayout)findViewById(2131302523));
-    this.sJO = ((ImageView)findViewById(2131302524));
-    az.arV();
-    if (((Boolean)com.tencent.mm.model.c.afk().get(ae.a.FiQ, Boolean.FALSE)).booleanValue()) {
-      this.sJO.setVisibility(0);
+    this.tRx = ((TextView)findViewById(2131302899));
+    this.tRy = ((TextView)findViewById(2131296519));
+    this.tRz = ((TextView)findViewById(2131305240));
+    this.tRr = ((LinearLayout)findViewById(2131304739));
+    this.tRs = ((LinearLayout)findViewById(2131302648));
+    this.tRv = ((LinearLayout)findViewById(2131304479));
+    this.tRw = ((ImageView)findViewById(2131304480));
+    this.tRt = ((LinearLayout)findViewById(2131302523));
+    this.tRu = ((ImageView)findViewById(2131302524));
+    az.ayM();
+    if (((Boolean)com.tencent.mm.model.c.agA().get(ah.a.GGF, Boolean.FALSE)).booleanValue()) {
+      this.tRu.setVisibility(0);
     }
     int i;
     label559:
@@ -324,20 +324,20 @@ public class IPCallShareCouponUI
     Object localObject1;
     label779:
     Object localObject2;
-    if (com.tencent.mm.plugin.ipcall.a.c.cIL())
+    if (com.tencent.mm.plugin.ipcall.a.c.cVW())
     {
       i = 1;
       if (i != 0) {
-        this.sJE.setVisibility(8);
+        this.tRk.setVisibility(8);
       }
-      if ((com.tencent.mm.plugin.ipcall.a.c.cIL()) || (com.tencent.mm.m.g.Zd().getInt("WCOPackagePurchaseSwitch", 0) == 0)) {
+      if ((com.tencent.mm.plugin.ipcall.a.c.cVW()) || (com.tencent.mm.m.g.ZY().getInt("WCOPackagePurchaseSwitch", 0) == 0)) {
         break label1059;
       }
       i = 1;
       if (i != 0) {
-        this.sJH.setVisibility(0);
+        this.tRn.setVisibility(0);
       }
-      if (com.tencent.mm.m.g.Zd().getInt("WCOAccountDetailSwitch", 0) != 1) {
+      if (com.tencent.mm.m.g.ZY().getInt("WCOAccountDetailSwitch", 0) != 1) {
         break label1064;
       }
       i = 1;
@@ -346,16 +346,16 @@ public class IPCallShareCouponUI
       }
       i = 1;
       if (i != 0) {
-        this.sJK.setVisibility(8);
+        this.tRq.setVisibility(8);
       }
-      if (!com.tencent.mm.plugin.ipcall.a.c.cIL()) {
+      if (!com.tencent.mm.plugin.ipcall.a.c.cVW()) {
         break label1074;
       }
       i = 1;
       if (i != 0) {
-        this.sJL.setVisibility(8);
+        this.tRr.setVisibility(8);
       }
-      this.sJR.setOnClickListener(new View.OnClickListener()
+      this.tRx.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -364,7 +364,7 @@ public class IPCallShareCouponUI
           AppMethodBeat.o(25946);
         }
       });
-      this.sJS.setOnClickListener(new View.OnClickListener()
+      this.tRy.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -373,7 +373,7 @@ public class IPCallShareCouponUI
           AppMethodBeat.o(25947);
         }
       });
-      this.sJK.setOnClickListener(new View.OnClickListener()
+      this.tRq.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -382,49 +382,49 @@ public class IPCallShareCouponUI
           AppMethodBeat.o(25948);
         }
       });
-      this.sJL.setOnClickListener(new View.OnClickListener()
+      this.tRr.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25949);
-          com.tencent.mm.plugin.report.service.h.vKh.f(13340, new Object[] { Integer.valueOf(1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1) });
+          com.tencent.mm.plugin.report.service.h.wUl.f(13340, new Object[] { Integer.valueOf(1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1) });
           Object localObject = new Intent();
           ((Intent)localObject).setClass(IPCallShareCouponUI.this.getContext(), IPCallShareCouponCardUI.class);
           paramAnonymousView = IPCallShareCouponUI.this.getContext();
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(25949);
         }
       });
-      this.sJN.setOnClickListener(new View.OnClickListener()
+      this.tRt.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25950);
-          az.arV();
-          if (((Boolean)com.tencent.mm.model.c.afk().get(ae.a.FiQ, Boolean.FALSE)).booleanValue())
+          az.ayM();
+          if (((Boolean)com.tencent.mm.model.c.agA().get(ah.a.GGF, Boolean.FALSE)).booleanValue())
           {
-            az.arV();
-            i.ag(4, -1, ((Integer)com.tencent.mm.model.c.afk().get(ae.a.FiR, Integer.valueOf(-1))).intValue());
+            az.ayM();
+            i.ah(4, -1, ((Integer)com.tencent.mm.model.c.agA().get(ah.a.GGG, Integer.valueOf(-1))).intValue());
           }
-          az.arV();
-          com.tencent.mm.model.c.afk().set(ae.a.FiR, Integer.valueOf(-1));
-          az.arV();
-          com.tencent.mm.model.c.afk().set(ae.a.FiQ, Boolean.FALSE);
+          az.ayM();
+          com.tencent.mm.model.c.agA().set(ah.a.GGG, Integer.valueOf(-1));
+          az.ayM();
+          com.tencent.mm.model.c.agA().set(ah.a.GGF, Boolean.FALSE);
           IPCallShareCouponUI.g(IPCallShareCouponUI.this).setVisibility(8);
           Object localObject = new Intent();
           ((Intent)localObject).setClass(IPCallShareCouponUI.this.getContext(), IPCallMsgUI.class);
           paramAnonymousView = IPCallShareCouponUI.this.getContext();
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(25950);
         }
       });
-      this.sJM.setOnClickListener(new View.OnClickListener()
+      this.tRs.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -432,36 +432,36 @@ public class IPCallShareCouponUI
           Object localObject = new Intent();
           ((Intent)localObject).setClass(IPCallShareCouponUI.this.getContext(), IPCallMyGiftCardUI.class);
           paramAnonymousView = IPCallShareCouponUI.this.getContext();
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(25951);
         }
       });
-      this.sJE.setOnClickListener(new View.OnClickListener()
+      this.tRk.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25952);
-          az.arV();
-          if (((Boolean)com.tencent.mm.model.c.afk().get(ae.a.FiI, Boolean.FALSE)).booleanValue() == true) {
-            i.ag(3, -1, -1);
+          az.ayM();
+          if (((Boolean)com.tencent.mm.model.c.agA().get(ah.a.GGx, Boolean.FALSE)).booleanValue() == true) {
+            i.ah(3, -1, -1);
           }
-          az.arV();
-          com.tencent.mm.model.c.afk().set(ae.a.FiI, Boolean.FALSE);
+          az.ayM();
+          com.tencent.mm.model.c.agA().set(ah.a.GGx, Boolean.FALSE);
           IPCallShareCouponUI.a(IPCallShareCouponUI.this).setVisibility(8);
           Object localObject = new Intent();
           ((Intent)localObject).setClass(IPCallShareCouponUI.this.getContext(), IPCallRechargeUI.class);
           paramAnonymousView = IPCallShareCouponUI.this;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$9", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$9", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$9", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(25952);
         }
       });
-      this.sJH.setOnClickListener(new View.OnClickListener()
+      this.tRn.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -469,21 +469,21 @@ public class IPCallShareCouponUI
           Object localObject = new Intent();
           ((Intent)localObject).setClass(IPCallShareCouponUI.this.getContext(), IPCallPackageUI.class);
           paramAnonymousView = IPCallShareCouponUI.this;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$10", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$10", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$10", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(25937);
         }
       });
-      this.sJP.setOnClickListener(new View.OnClickListener()
+      this.tRv.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25938);
           Intent localIntent = new Intent();
           paramAnonymousView = IPCallShareCouponUI.this.getString(2131760480) + "&usedcc=";
-          Object localObject = com.tencent.mm.plugin.ipcall.model.c.cGV().cGY();
+          Object localObject = com.tencent.mm.plugin.ipcall.model.c.cUg().cUj();
           int j;
           if ((localObject != null) && (((List)localObject).size() > 0))
           {
@@ -495,8 +495,8 @@ public class IPCallShareCouponUI
             j = 0;
             if (j < i)
             {
-              String str = com.tencent.mm.plugin.ipcall.a.a.aev(((Integer)((List)localObject).get(j)).toString());
-              if (bt.isNullOrNil(str)) {
+              String str = com.tencent.mm.plugin.ipcall.a.a.ajn(((Integer)((List)localObject).get(j)).toString());
+              if (bs.isNullOrNil(str)) {
                 break label241;
               }
               paramAnonymousView = paramAnonymousView + str + "|";
@@ -509,7 +509,7 @@ public class IPCallShareCouponUI
             break;
             localObject = paramAnonymousView;
             if (paramAnonymousView.endsWith("|")) {}
-            for (localObject = paramAnonymousView.substring(0, paramAnonymousView.length() - 1);; localObject = paramAnonymousView + com.tencent.mm.plugin.ipcall.a.a.aev(com.tencent.mm.plugin.ipcall.a.c.cIJ()))
+            for (localObject = paramAnonymousView.substring(0, paramAnonymousView.length() - 1);; localObject = paramAnonymousView + com.tencent.mm.plugin.ipcall.a.a.ajn(com.tencent.mm.plugin.ipcall.a.c.cVU()))
             {
               localIntent.putExtra("rawUrl", (String)localObject);
               localIntent.putExtra("showShare", false);
@@ -520,13 +520,13 @@ public class IPCallShareCouponUI
           }
         }
       });
-      paramBundle = com.tencent.mm.plugin.ipcall.a.c.cIM();
+      paramBundle = com.tencent.mm.plugin.ipcall.a.c.cVX();
       if (paramBundle == null) {
         break label1109;
       }
       a(paramBundle);
       refreshView();
-      if (!com.tencent.mm.plugin.ipcall.a.c.cIL()) {
+      if (!com.tencent.mm.plugin.ipcall.a.c.cVW()) {
         break label1181;
       }
       paramBundle = getString(2131760564);
@@ -539,8 +539,8 @@ public class IPCallShareCouponUI
           AppMethodBeat.i(25940);
           ((TextView)paramAnonymousView).setHighlightColor(IPCallShareCouponUI.this.getResources().getColor(2131101053));
           paramAnonymousView = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=weixin_phone/notice";
-          Object localObject = ac.ir(aj.getContext());
-          if (!bt.isNullOrNil((String)localObject)) {
+          Object localObject = ab.iC(ai.getContext());
+          if (!bs.isNullOrNil((String)localObject)) {
             paramAnonymousView = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=weixin_phone/notice" + "&wechat_real_lang=" + (String)localObject;
           }
           localObject = new Intent();
@@ -566,24 +566,24 @@ public class IPCallShareCouponUI
       }
       ((Spannable)localObject2).setSpan(localObject1, i, j, 33);
       label893:
-      this.sJT.setText((CharSequence)localObject2);
-      this.sJT.setMovementMethod(LinkMovementMethod.getInstance());
-      this.sJT.setVisibility(0);
+      this.tRz.setText((CharSequence)localObject2);
+      this.tRz.setMovementMethod(LinkMovementMethod.getInstance());
+      this.tRz.setVisibility(0);
     }
     for (;;)
     {
       paramBundle = (LinearLayout)findViewById(2131301348);
-      if ((paramBundle != null) && (this.sJE.getVisibility() == 8) && (this.sJH.getVisibility() == 8)) {
+      if ((paramBundle != null) && (this.tRk.getVisibility() == 8) && (this.tRn.getVisibility() == 8)) {
         paramBundle.setVisibility(8);
       }
       paramBundle = (LinearLayout)findViewById(2131301350);
-      if ((paramBundle != null) && (this.sJL.getVisibility() == 8) && (this.sJM.getVisibility() == 8)) {
+      if ((paramBundle != null) && (this.tRr.getVisibility() == 8) && (this.tRs.getVisibility() == 8)) {
         paramBundle.setVisibility(8);
       }
-      this.sJZ.start();
+      this.tRF.start();
       AppMethodBeat.o(25954);
       return;
-      if (com.tencent.mm.m.g.Zd().getInt("WCOPurchaseSwitch", 0) == 1) {}
+      if (com.tencent.mm.m.g.ZY().getInt("WCOPurchaseSwitch", 0) == 1) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -605,7 +605,7 @@ public class IPCallShareCouponUI
       i = 0;
       break label593;
       label1074:
-      if (com.tencent.mm.m.g.Zd().getInt("WCOInviteFriend", 0) == 1) {}
+      if (com.tencent.mm.m.g.ZY().getInt("WCOInviteFriend", 0) == 1) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -618,10 +618,10 @@ public class IPCallShareCouponUI
       i = 0;
       break label614;
       label1109:
-      this.sJY.setText("0");
+      this.tRE.setText("0");
       paramBundle = getContext();
       getString(2131755906);
-      this.sFV = com.tencent.mm.ui.base.h.b(paramBundle, getString(2131760457), true, new DialogInterface.OnCancelListener()
+      this.tNC = com.tencent.mm.ui.base.h.b(paramBundle, getString(2131760457), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -634,7 +634,7 @@ public class IPCallShareCouponUI
           }
           catch (Exception paramAnonymousDialogInterface)
           {
-            ad.e("MicroMsg.IPCallShareCouponUI", "IPCallShareCouponUI error: %s", new Object[] { paramAnonymousDialogInterface.getMessage() });
+            ac.e("MicroMsg.IPCallShareCouponUI", "IPCallShareCouponUI error: %s", new Object[] { paramAnonymousDialogInterface.getMessage() });
             AppMethodBeat.o(25939);
           }
         }
@@ -644,7 +644,7 @@ public class IPCallShareCouponUI
       ((Spannable)localObject2).setSpan(localObject1, 0, ((Spannable)localObject2).length(), 33);
       break label893;
       label1181:
-      this.sJT.setVisibility(8);
+      this.tRz.setVisibility(8);
     }
   }
   
@@ -652,10 +652,10 @@ public class IPCallShareCouponUI
   {
     AppMethodBeat.i(25956);
     super.onDestroy();
-    az.aeS().b(257, this);
-    com.tencent.mm.sdk.b.a.ESL.d(this.sFM);
-    this.sJZ.sDl = bt.eGO();
-    this.sJZ.finish();
+    az.agi().b(257, this);
+    com.tencent.mm.sdk.b.a.GpY.d(this.tNt);
+    this.tRF.tKT = bs.eWj();
+    this.tRF.finish();
     AppMethodBeat.o(25956);
   }
   
@@ -663,7 +663,7 @@ public class IPCallShareCouponUI
   {
     AppMethodBeat.i(25955);
     super.onResume();
-    com.tencent.mm.plugin.ipcall.model.g.b.cHM().my(false);
+    com.tencent.mm.plugin.ipcall.model.g.b.cUX().nr(false);
     AppMethodBeat.o(25955);
   }
   
@@ -674,17 +674,17 @@ public class IPCallShareCouponUI
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        a(((com.tencent.mm.plugin.ipcall.model.e.g)paramn).sCT);
+        a(((com.tencent.mm.plugin.ipcall.model.e.g)paramn).tKB);
         refreshView();
-        if ((this.sFV != null) && (this.sFV.isShowing())) {
-          this.sFV.dismiss();
+        if ((this.tNC != null) && (this.tNC.isShowing())) {
+          this.tNC.dismiss();
         }
         AppMethodBeat.o(25958);
         return;
       }
-      if ((this.sFV != null) && (this.sFV.isShowing()))
+      if ((this.tNC != null) && (this.tNC.isShowing()))
       {
-        this.sFV.dismiss();
+        this.tNC.dismiss();
         com.tencent.mm.ui.base.h.d(getContext(), getString(2131760455), getString(2131760448), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -707,7 +707,7 @@ public class IPCallShareCouponUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallShareCouponUI
  * JD-Core Version:    0.7.0.1
  */

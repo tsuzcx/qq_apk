@@ -1,13 +1,13 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class o
-  extends g
+  extends h
 {
   private static float[] C = { 0.1826F, 0.6142F, 0.062F, -0.1006F, -0.3386F, 0.4392F, 0.4392F, -0.3989F, -0.0403F };
   private static float[] D = { 0.256816F, 0.504154F, 0.0979137F, -0.148246F, -0.29102F, 0.439266F, 0.439271F, -0.367833F, -0.071438F };

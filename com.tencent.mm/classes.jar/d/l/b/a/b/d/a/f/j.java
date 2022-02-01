@@ -5,20 +5,20 @@ import java.util.List;
 
 public final class j
 {
-  final r JDl;
-  final List<r> JDm;
+  final r LqE;
+  final List<r> LqF;
   
   public j(r paramr, List<r> paramList)
   {
     AppMethodBeat.i(58075);
-    this.JDl = paramr;
-    this.JDm = paramList;
+    this.LqE = paramr;
+    this.LqF = paramList;
     AppMethodBeat.o(58075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.j
  * JD-Core Version:    0.7.0.1
  */

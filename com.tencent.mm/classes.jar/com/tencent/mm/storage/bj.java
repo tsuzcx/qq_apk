@@ -1,265 +1,170 @@
 package com.tencent.mm.storage;
 
 import android.database.Cursor;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dj;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.f;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.e.h;
+import java.util.List;
 
-public final class bj
-  extends j<bi>
-  implements f
+public abstract interface bj
+  extends h
 {
-  public static final String[] SQL_CREATE;
-  public e db;
+  public abstract int A(String paramString, byte[] paramArrayOfByte);
   
-  static
-  {
-    AppMethodBeat.i(117186);
-    SQL_CREATE = new String[] { j.getCreateSQLs(bi.info, "LBSVerifyMessage") };
-    AppMethodBeat.o(117186);
-  }
+  public abstract ai AO(long paramLong);
   
-  public bj(e parame)
-  {
-    super(parame, bi.info, "LBSVerifyMessage", dj.INDEX_CREATE);
-    this.db = parame;
-  }
+  public abstract Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2, boolean paramBoolean1, boolean paramBoolean2);
   
-  public final Cursor Fn(int paramInt)
-  {
-    AppMethodBeat.i(117175);
-    Object localObject = "SELECT * FROM " + getTableName() + " where isSend = 0 ORDER BY createtime desc LIMIT " + paramInt;
-    localObject = this.db.rawQuery((String)localObject, null);
-    AppMethodBeat.o(117175);
-    return localObject;
-  }
+  public abstract Cursor a(List<String> paramList1, String paramString, List<String> paramList2);
   
-  public final Cursor WC(int paramInt)
-  {
-    AppMethodBeat.i(117176);
-    Object localObject = "SELECT sayhiencryptuser,max(createtime) createtime FROM " + getTableName() + " where isSend = 0 GROUP BY sayhiencryptuser LIMIT " + paramInt;
-    localObject = "SELECT a.* FROM (" + (String)localObject + ") b left join " + getTableName() + " a on b.sayhiencryptuser=a.sayhiencryptuser and b.createtime=a.createtime where a.isSend = 0 ORDER BY a.createtime desc LIMIT " + paramInt;
-    localObject = this.db.rawQuery((String)localObject, null);
-    AppMethodBeat.o(117176);
-    return localObject;
-  }
+  public abstract Cursor a(String[] paramArrayOfString, String paramString1, String paramString2, List<String> paramList1, List<String> paramList2);
   
-  public final boolean a(bi parambi)
-  {
-    AppMethodBeat.i(117180);
-    if (parambi == null)
-    {
-      ad.e("MicroMsg.LBSVerifyMessageStorage", "insert fail, lbsMsg is null");
-      AppMethodBeat.o(117180);
-      return false;
-    }
-    if (super.insert(parambi))
-    {
-      doNotify(parambi.systemRowid);
-      AppMethodBeat.o(117180);
-      return true;
-    }
-    AppMethodBeat.o(117180);
-    return false;
-  }
+  public abstract Cursor a(String[] paramArrayOfString, String paramString, List<String> paramList);
   
-  public final bi[] aIL(String paramString)
-  {
-    AppMethodBeat.i(117181);
-    ad.d("MicroMsg.LBSVerifyMessageStorage", "getLastLBSVerifyMessage");
-    paramString = "select *, rowid from LBSVerifyMessage  where sayhiuser = '" + bt.aFQ(paramString) + "' or sayhiencryptuser = '" + bt.aFQ(paramString) + "' order by createtime DESC limit 3";
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      bi localbi = new bi();
-      localbi.convertFrom(paramString);
-      localArrayList.add(localbi);
-    }
-    paramString.close();
-    paramString = (bi[])localArrayList.toArray(new bi[localArrayList.size()]);
-    AppMethodBeat.o(117181);
-    return paramString;
-  }
+  public abstract void a(a parama);
   
-  public final bi aIM(String paramString)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(117182);
-    ad.d("MicroMsg.LBSVerifyMessageStorage", "getLBSVerifyMessage");
-    paramString = "select *, rowid from LBSVerifyMessage  where (sayhiuser = '" + bt.aFQ(paramString) + "' or sayhiencryptuser = '" + bt.aFQ(paramString) + "') and flag=1 order by createtime DESC limit 1";
-    Cursor localCursor = this.db.a(paramString, null, 2);
-    if (localCursor.moveToFirst())
-    {
-      paramString = new bi();
-      paramString.convertFrom(localCursor);
-    }
-    for (;;)
-    {
-      localCursor.close();
-      AppMethodBeat.o(117182);
-      return paramString;
-      ad.i("MicroMsg.LBSVerifyMessageStorage", "getLBSVerifyMessage, cursor count = 0");
-      paramString = localObject;
-    }
-  }
+  public abstract String aCs();
   
-  public final void aSi()
-  {
-    AppMethodBeat.i(117179);
-    this.db.delete(getTableName(), null, null);
-    AppMethodBeat.o(117179);
-  }
+  public abstract int aNA(String paramString);
   
-  public final void agi(String paramString)
-  {
-    AppMethodBeat.i(117177);
-    paramString = "svrid = '" + paramString + "'";
-    int i = this.db.delete(getTableName(), paramString, null);
-    if (i > 0) {
-      doNotify();
-    }
-    ad.i("MicroMsg.LBSVerifyMessageStorage", "delBySvrId = ".concat(String.valueOf(i)));
-    AppMethodBeat.o(117177);
-  }
+  public abstract String aNB(String paramString);
   
-  public final void agj(String paramString)
-  {
-    AppMethodBeat.i(117178);
-    paramString = "sayhiuser = '" + paramString + "' or sayhiencryptuser='" + paramString + "'";
-    int i = this.db.delete(getTableName(), paramString, null);
-    if (i > 0) {
-      doNotify();
-    }
-    ad.i("MicroMsg.LBSVerifyMessageStorage", "delByUserName = ".concat(String.valueOf(i)));
-    AppMethodBeat.o(117178);
-  }
+  public abstract int aNC(String paramString);
   
-  public final long agk(String paramString)
-  {
-    AppMethodBeat.i(117184);
-    Cursor localCursor;
-    if (paramString != null)
-    {
-      paramString = (bj)((k)g.ab(k.class)).cOF();
-      localCursor = paramString.db.a("SELECT * FROM " + paramString.getTableName() + " ORDER BY createtime DESC LIMIT 1", null, 2);
-      if (localCursor == null)
-      {
-        paramString = null;
-        if (paramString == null) {
-          break label154;
-        }
-      }
-    }
-    label154:
-    for (long l1 = paramString.field_createtime + 1L;; l1 = 0L)
-    {
-      long l2 = bt.aGK();
-      if (l1 > l2)
-      {
-        AppMethodBeat.o(117184);
-        return l1;
-        if (!localCursor.moveToFirst())
-        {
-          localCursor.close();
-          paramString = null;
-          break;
-        }
-        paramString = new bi();
-        paramString.convertFrom(localCursor);
-        localCursor.close();
-        break;
-      }
-      AppMethodBeat.o(117184);
-      return l2;
-    }
-  }
+  public abstract String aND(String paramString);
   
-  public final int bIR()
-  {
-    AppMethodBeat.i(117172);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName() + " where status != 4", null, 2);
-    if (!localCursor.moveToFirst())
-    {
-      localCursor.close();
-      AppMethodBeat.o(117172);
-      return 0;
-    }
-    int i = localCursor.getInt(0);
-    localCursor.close();
-    AppMethodBeat.o(117172);
-    return i;
-  }
+  public abstract ai aNn(String paramString);
   
-  public final bi cOP()
-  {
-    AppMethodBeat.i(117174);
-    Cursor localCursor = this.db.a("SELECT * FROM " + getTableName() + " where status != 4 ORDER BY createtime DESC LIMIT 1", null, 2);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(117174);
-      return null;
-    }
-    if (!localCursor.moveToFirst())
-    {
-      localCursor.close();
-      AppMethodBeat.o(117174);
-      return null;
-    }
-    bi localbi = new bi();
-    localbi.convertFrom(localCursor);
-    localCursor.close();
-    AppMethodBeat.o(117174);
-    return localbi;
-  }
+  public abstract boolean aNo(String paramString);
   
-  public final bi[] fO(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(117183);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ad.e("MicroMsg.LBSVerifyMessageStorage", "getLastRecvLbsMsg fail, talker is null");
-      AppMethodBeat.o(117183);
-      return null;
-    }
-    paramString = "select * from LBSVerifyMessage where isSend = 0 and (sayhiuser = '" + bt.aFQ(paramString) + "' or sayhiencryptuser = '" + bt.aFQ(paramString) + "') order by createTime DESC limit " + paramInt;
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      bi localbi = new bi();
-      localbi.convertFrom(paramString);
-      localArrayList.add(localbi);
-    }
-    paramString.close();
-    paramString = (bi[])localArrayList.toArray(new bi[localArrayList.size()]);
-    AppMethodBeat.o(117183);
-    return paramString;
-  }
+  public abstract ai aNp(String paramString);
   
-  public final int getCount()
+  public abstract Cursor aNq(String paramString);
+  
+  public abstract ai aNr(String paramString);
+  
+  public abstract ai aNs(String paramString);
+  
+  public abstract ai aNt(String paramString);
+  
+  public abstract ai aNu(String paramString);
+  
+  public abstract long aNv(String paramString);
+  
+  public abstract boolean aNw(String paramString);
+  
+  public abstract boolean aNx(String paramString);
+  
+  public abstract byte[] aNy(String paramString);
+  
+  public abstract int aNz(String paramString);
+  
+  public abstract void ad(ai paramai);
+  
+  public abstract boolean ae(ai paramai);
+  
+  public abstract boolean af(ai paramai);
+  
+  public abstract boolean ag(ai paramai);
+  
+  public abstract int ah(ai paramai);
+  
+  public abstract Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract Cursor b(List<String> paramList1, String paramString, List<String> paramList2);
+  
+  public abstract void b(a parama);
+  
+  public abstract int[] b(String paramString1, String paramString2, String[] paramArrayOfString, List<String> paramList);
+  
+  public abstract int[] b(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList);
+  
+  public abstract int c(String paramString, ai paramai);
+  
+  public abstract int c(String[] paramArrayOfString1, String... paramVarArgs);
+  
+  public abstract Cursor c(String paramString1, String paramString2, List<String> paramList);
+  
+  public abstract Cursor c(List<String> paramList1, String paramString, List<String> paramList2);
+  
+  public abstract void c(ai paramai, boolean paramBoolean);
+  
+  public abstract int[] c(String paramString1, String paramString2, String[] paramArrayOfString, List<String> paramList);
+  
+  public abstract int[] c(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList);
+  
+  public abstract int ce(String paramString, long paramLong);
+  
+  public abstract int d(String paramString, ai paramai);
+  
+  public abstract int d(String[] paramArrayOfString1, String... paramVarArgs);
+  
+  public abstract Cursor d(String paramString1, String paramString2, List<String> paramList);
+  
+  public abstract Cursor d(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList);
+  
+  public abstract Cursor e(String paramString1, String paramString2, List<String> paramList);
+  
+  public abstract void e(String paramString, ai paramai);
+  
+  public abstract String f(String paramString1, String paramString2, List<String> paramList);
+  
+  public abstract Cursor faE();
+  
+  public abstract Cursor faF();
+  
+  public abstract Cursor faG();
+  
+  public abstract List<String> fap();
+  
+  public abstract List<String> faq();
+  
+  public abstract Cursor far();
+  
+  public abstract Cursor fas();
+  
+  public abstract Cursor fat();
+  
+  public abstract Cursor fau();
+  
+  public abstract int fav();
+  
+  public abstract Cursor hj(List<String> paramList);
+  
+  public abstract Cursor hk(List<String> paramList);
+  
+  public abstract Cursor hl(List<String> paramList);
+  
+  public abstract Cursor hm(List<String> paramList);
+  
+  public abstract Cursor hp(List<String> paramList);
+  
+  public abstract Cursor hq(List<String> paramList);
+  
+  public abstract Cursor hr(List<String> paramList);
+  
+  public abstract Cursor hs(List<String> paramList);
+  
+  public abstract Cursor ht(List<String> paramList);
+  
+  public abstract List<String> hu(List<String> paramList);
+  
+  public abstract int[] hv(List<String> paramList);
+  
+  public abstract int[] hw(List<String> paramList);
+  
+  public abstract Cursor ly(String paramString1, String paramString2);
+  
+  public abstract int lz(String paramString1, String paramString2);
+  
+  public abstract Cursor p(List<String> paramList, boolean paramBoolean);
+  
+  public static abstract interface a
   {
-    int i = 0;
-    AppMethodBeat.i(117173);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName(), null, 2);
-    if (localCursor.moveToFirst()) {
-      i = localCursor.getInt(0);
-    }
-    localCursor.close();
-    AppMethodBeat.o(117173);
-    return i;
+    public abstract void a(bj parambj, ai paramai);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.bj
  * JD-Core Version:    0.7.0.1
  */

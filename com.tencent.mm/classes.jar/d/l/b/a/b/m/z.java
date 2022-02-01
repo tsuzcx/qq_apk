@@ -10,9 +10,9 @@ import java.util.List;
 public final class z
   extends ay
 {
-  public final as[] JXN;
-  public final av[] JXO;
-  private final boolean JXP;
+  public final as[] LLg;
+  public final av[] LLh;
+  private final boolean LLi;
   
   public z(List<? extends as> paramList, List<? extends av> paramList1)
   {
@@ -23,13 +23,13 @@ public final class z
   public z(as[] paramArrayOfas, av[] paramArrayOfav, boolean paramBoolean)
   {
     AppMethodBeat.i(60752);
-    this.JXN = paramArrayOfas;
-    this.JXO = paramArrayOfav;
-    this.JXP = paramBoolean;
-    if (this.JXN.length <= this.JXO.length) {}
-    for (int i = 1; (aa.JfW) && (i == 0); i = 0)
+    this.LLg = paramArrayOfas;
+    this.LLh = paramArrayOfav;
+    this.LLi = paramBoolean;
+    if (this.LLg.length <= this.LLh.length) {}
+    for (int i = 1; (aa.KTq) && (i == 0); i = 0)
     {
-      paramArrayOfas = (Throwable)new AssertionError("Number of arguments should not be less then number of parameters, but: parameters=" + this.JXN.length + ", args=" + this.JXO.length);
+      paramArrayOfas = (Throwable)new AssertionError("Number of arguments should not be less then number of parameters, but: parameters=" + this.LLg.length + ", args=" + this.LLh.length);
       AppMethodBeat.o(60752);
       throw paramArrayOfas;
     }
@@ -40,7 +40,7 @@ public final class z
   {
     AppMethodBeat.i(60751);
     k.h(paramab, "key");
-    h localh = paramab.fIW().fxM();
+    h localh = paramab.gbz().fQq();
     paramab = localh;
     if (!(localh instanceof as)) {
       paramab = null;
@@ -52,9 +52,9 @@ public final class z
       return null;
     }
     int i = paramab.getIndex();
-    if ((i < this.JXN.length) && (k.g(this.JXN[i].fxs(), paramab.fxs())))
+    if ((i < this.LLg.length) && (k.g(this.LLg[i].fPW(), paramab.fPW())))
     {
-      paramab = this.JXO[i];
+      paramab = this.LLh[i];
       AppMethodBeat.o(60751);
       return paramab;
     }
@@ -62,19 +62,19 @@ public final class z
     return null;
   }
   
-  public final boolean fIY()
+  public final boolean gbB()
   {
-    return this.JXP;
+    return this.LLi;
   }
   
   public final boolean isEmpty()
   {
-    return this.JXO.length == 0;
+    return this.LLh.length == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.z
  * JD-Core Version:    0.7.0.1
  */

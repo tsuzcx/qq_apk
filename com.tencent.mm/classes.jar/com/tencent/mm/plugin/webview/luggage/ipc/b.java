@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.webview.luggage.ipc;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 
@@ -23,13 +23,13 @@ public final class b
         AppMethodBeat.i(78487);
         if (paramAnonymousInt1 == 3456)
         {
-          if ((paramAnonymousIntent == null) || (this.AUQ == null))
+          if ((paramAnonymousIntent == null) || (this.Cnd == null))
           {
             AppMethodBeat.o(78487);
             return;
           }
           paramAnonymousIntent = paramAnonymousIntent.getBundleExtra("input_data");
-          this.AUQ.q(paramAnonymousIntent);
+          this.Cnd.q(paramAnonymousIntent);
         }
         AppMethodBeat.o(78487);
       }

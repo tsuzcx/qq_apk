@@ -11,14 +11,14 @@ final class b$4
   
   public final void run()
   {
-    AppMethodBeat.i(191546);
-    if (this.GAo) {
+    AppMethodBeat.i(196539);
+    if (this.Iaj) {
       Toast.makeText(this.val$context, this.val$context.getString(2131764682), 1).show();
     }
-    if (this.GAp != null) {
-      this.GAp.run();
+    if (this.Iak != null) {
+      this.Iak.run();
     }
-    AppMethodBeat.o(191546);
+    AppMethodBeat.o(196539);
   }
 }
 

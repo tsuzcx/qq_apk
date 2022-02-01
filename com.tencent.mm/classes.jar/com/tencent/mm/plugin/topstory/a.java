@@ -10,18 +10,18 @@ import java.util.Map;
 public final class a
   implements d
 {
-  Map<String, List<Object>> yKX;
+  Map<String, List<Object>> zYQ;
   
   public a()
   {
     AppMethodBeat.i(88416);
-    this.yKX = Collections.synchronizedMap(new HashMap());
+    this.zYQ = Collections.synchronizedMap(new HashMap());
     AppMethodBeat.o(88416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a
  * JD-Core Version:    0.7.0.1
  */

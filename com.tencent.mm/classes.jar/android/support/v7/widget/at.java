@@ -9,29 +9,29 @@ import android.widget.Scroller;
 public abstract class at
   extends RecyclerView.k
 {
-  RecyclerView akA;
-  private final RecyclerView.m apU = new RecyclerView.m()
+  RecyclerView alu;
+  private final RecyclerView.m aqP = new RecyclerView.m()
   {
-    boolean atZ = false;
+    boolean auU = false;
     
     public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
     {
       if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
-        this.atZ = true;
+        this.auU = true;
       }
     }
     
     public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
     {
       super.b(paramAnonymousRecyclerView, paramAnonymousInt);
-      if ((paramAnonymousInt == 0) && (this.atZ))
+      if ((paramAnonymousInt == 0) && (this.auU))
       {
-        this.atZ = false;
-        at.this.lU();
+        this.auU = false;
+        at.this.md();
       }
     }
   };
-  private Scroller atY;
+  private Scroller auT;
   
   public abstract int a(RecyclerView.i parami, int paramInt1, int paramInt2);
   
@@ -41,24 +41,24 @@ public abstract class at
   
   public final boolean aA(int paramInt1, int paramInt2)
   {
-    RecyclerView.i locali = this.akA.getLayoutManager();
+    RecyclerView.i locali = this.alu.getLayoutManager();
     if (locali == null) {}
     for (;;)
     {
       return false;
-      if (this.akA.getAdapter() != null)
+      if (this.alu.getAdapter() != null)
       {
-        int i = this.akA.getMinFlingVelocity();
+        int i = this.alu.getMinFlingVelocity();
         if ((Math.abs(paramInt2) > i) || (Math.abs(paramInt1) > i))
         {
-          if (!(locali instanceof RecyclerView.r.b)) {
+          if (!(locali instanceof RecyclerView.s.b)) {
             paramInt1 = 0;
           }
           while (paramInt1 != 0)
           {
             return true;
-            RecyclerView.r localr = g(locali);
-            if (localr == null)
+            RecyclerView.s locals = g(locali);
+            if (locals == null)
             {
               paramInt1 = 0;
             }
@@ -71,8 +71,8 @@ public abstract class at
               }
               else
               {
-                localr.ard = paramInt1;
-                locali.a(localr);
+                locals.arZ = paramInt1;
+                locali.a(locals);
                 paramInt1 = 1;
               }
             }
@@ -84,72 +84,72 @@ public abstract class at
   
   public final int[] aH(int paramInt1, int paramInt2)
   {
-    this.atY.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
-    return new int[] { this.atY.getFinalX(), this.atY.getFinalY() };
+    this.auT.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
+    return new int[] { this.auT.getFinalX(), this.auT.getFinalY() };
   }
   
   @Deprecated
   protected ae f(RecyclerView.i parami)
   {
-    if (!(parami instanceof RecyclerView.r.b)) {
+    if (!(parami instanceof RecyclerView.s.b)) {
       return null;
     }
-    new ae(this.akA.getContext())
+    new ae(this.alu.getContext())
     {
       protected final float a(DisplayMetrics paramAnonymousDisplayMetrics)
       {
         return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
       }
       
-      protected final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
+      protected final void a(View paramAnonymousView, RecyclerView.t paramAnonymoust, RecyclerView.s.a paramAnonymousa)
       {
-        if (at.this.akA == null) {}
+        if (at.this.alu == null) {}
         int i;
         int j;
         int k;
         do
         {
           return;
-          paramAnonymousView = at.this.a(at.this.akA.getLayoutManager(), paramAnonymousView);
+          paramAnonymousView = at.this.a(at.this.alu.getLayoutManager(), paramAnonymousView);
           i = paramAnonymousView[0];
           j = paramAnonymousView[1];
           k = cd(Math.max(Math.abs(i), Math.abs(j)));
         } while (k <= 0);
-        paramAnonymousa.a(i, j, k, this.SS);
+        paramAnonymousa.a(i, j, k, this.TN);
       }
     };
   }
   
-  protected RecyclerView.r g(RecyclerView.i parami)
+  protected RecyclerView.s g(RecyclerView.i parami)
   {
     return f(parami);
   }
   
   public void j(RecyclerView paramRecyclerView)
   {
-    if (this.akA == paramRecyclerView) {}
+    if (this.alu == paramRecyclerView) {}
     do
     {
       return;
-      if (this.akA != null)
+      if (this.alu != null)
       {
-        this.akA.b(this.apU);
-        this.akA.setOnFlingListener(null);
+        this.alu.b(this.aqP);
+        this.alu.setOnFlingListener(null);
       }
-      this.akA = paramRecyclerView;
-    } while (this.akA == null);
-    if (this.akA.getOnFlingListener() != null) {
+      this.alu = paramRecyclerView;
+    } while (this.alu == null);
+    if (this.alu.getOnFlingListener() != null) {
       throw new IllegalStateException("An instance of OnFlingListener already set.");
     }
-    this.akA.a(this.apU);
-    this.akA.setOnFlingListener(this);
-    this.atY = new Scroller(this.akA.getContext(), new DecelerateInterpolator());
-    lU();
+    this.alu.a(this.aqP);
+    this.alu.setOnFlingListener(this);
+    this.auT = new Scroller(this.alu.getContext(), new DecelerateInterpolator());
+    md();
   }
   
-  final void lU()
+  final void md()
   {
-    if (this.akA == null) {}
+    if (this.alu == null) {}
     Object localObject;
     do
     {
@@ -159,18 +159,18 @@ public abstract class at
         do
         {
           return;
-          localObject = this.akA.getLayoutManager();
+          localObject = this.alu.getLayoutManager();
         } while (localObject == null);
         localView = a((RecyclerView.i)localObject);
       } while (localView == null);
       localObject = a((RecyclerView.i)localObject, localView);
     } while ((localObject[0] == 0) && (localObject[1] == 0));
-    this.akA.a(localObject[0], localObject[1], null);
+    this.alu.a(localObject[0], localObject[1], null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v7.widget.at
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import com.tencent.luggage.bridge.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.a.a;
 
 public class BridgedAndroidWebViewBase
   extends WebView
   implements s
 {
-  private static boolean bZO = false;
+  private static boolean bWL = false;
   
   public BridgedAndroidWebViewBase(Context paramContext)
   {
@@ -42,20 +42,20 @@ public class BridgedAndroidWebViewBase
     AppMethodBeat.o(140354);
   }
   
-  private boolean bQ(String paramString)
+  private boolean bG(String paramString)
   {
     AppMethodBeat.i(140358);
     try
     {
-      Object localObject = a.fU(a.fU(this).aRB("mProvider").object).aRB("mWebViewCore").object;
+      Object localObject = a.gc(a.gc(this).aXB("mProvider").object).aXB("mWebViewCore").object;
       paramString = Message.obtain(null, 194, paramString);
-      a.fU(localObject).x("sendMessage", new Object[] { paramString });
+      a.gc(localObject).y("sendMessage", new Object[] { paramString });
       AppMethodBeat.o(140358);
       return true;
     }
     catch (Exception paramString)
     {
-      ad.e(getClass().getName(), "reflectEvalJS, exception = %s", new Object[] { paramString });
+      ac.e(getClass().getName(), "reflectEvalJS, exception = %s", new Object[] { paramString });
       AppMethodBeat.o(140358);
     }
     return false;
@@ -74,12 +74,12 @@ public class BridgedAndroidWebViewBase
     AppMethodBeat.o(140355);
   }
   
-  public final void bO(final String paramString)
+  public final void bE(final String paramString)
   {
     AppMethodBeat.i(140356);
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      bP(paramString);
+      bF(paramString);
       AppMethodBeat.o(140356);
       return;
     }
@@ -88,19 +88,19 @@ public class BridgedAndroidWebViewBase
       public final void run()
       {
         AppMethodBeat.i(140353);
-        BridgedAndroidWebViewBase.this.bP(paramString);
+        BridgedAndroidWebViewBase.this.bF(paramString);
         AppMethodBeat.o(140353);
       }
     });
     AppMethodBeat.o(140356);
   }
   
-  public final void bP(String paramString)
+  public final void bF(String paramString)
   {
     AppMethodBeat.i(140357);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("BridgedAndroidWebViewBase", "Empty script");
+      ac.e("BridgedAndroidWebViewBase", "Empty script");
       AppMethodBeat.o(140357);
       return;
     }
@@ -110,12 +110,12 @@ public class BridgedAndroidWebViewBase
       AppMethodBeat.o(140357);
       return;
     }
-    if (bZO)
+    if (bWL)
     {
-      if (bQ(paramString)) {
+      if (bG(paramString)) {
         break label82;
       }
-      bZO = false;
+      bWL = false;
     }
     try
     {
@@ -126,7 +126,7 @@ public class BridgedAndroidWebViewBase
     catch (Exception paramString)
     {
       label82:
-      ad.i("BridgedAndroidWebViewBase", "evaluateJavascript failed : %s", new Object[] { paramString });
+      ac.i("BridgedAndroidWebViewBase", "evaluateJavascript failed : %s", new Object[] { paramString });
       AppMethodBeat.o(140357);
     }
     AppMethodBeat.o(140357);

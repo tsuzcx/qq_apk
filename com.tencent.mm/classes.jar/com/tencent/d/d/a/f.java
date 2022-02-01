@@ -9,12 +9,12 @@ import java.io.IOException;
 
 public final class f
 {
-  private static boolean S(File paramFile)
+  private static boolean V(File paramFile)
   {
     AppMethodBeat.i(138351);
     try
     {
-      if ((c.aNH(paramFile.getAbsolutePath()) & 0x800) > 0)
+      if ((c.aTk(paramFile.getAbsolutePath()) & 0x800) > 0)
       {
         AppMethodBeat.o(138351);
         return true;
@@ -30,12 +30,12 @@ public final class f
     return false;
   }
   
-  public static boolean fmf()
+  public static boolean fCw()
   {
     AppMethodBeat.i(138352);
-    if (com.tencent.d.d.b.f.fmh())
+    if (com.tencent.d.d.b.f.fCy())
     {
-      h.fmy();
+      h.fCO();
       AppMethodBeat.o(138352);
       return false;
     }
@@ -44,9 +44,9 @@ public final class f
     File localFile;
     try
     {
-      Object localObject = new String(a.aNG("/proc/mounts"));
+      Object localObject = new String(a.aTj("/proc/mounts"));
       "SetuidBitChecker mounts : ".concat(String.valueOf(localObject));
-      h.eOC();
+      h.feg();
       localObject = ((String)localObject).split("\n");
       j = localObject.length;
       i = 0;
@@ -58,7 +58,7 @@ public final class f
           if (!localFile.contains(",nosuid")) {
             break label109;
           }
-          h.fmy();
+          h.fCO();
         }
       }
       label109:
@@ -83,7 +83,7 @@ public final class f
       return false;
     }
     label126:
-    h.fmy();
+    h.fCO();
     AppMethodBeat.o(138352);
     return false;
     label142:
@@ -95,10 +95,10 @@ public final class f
       while (i < j)
       {
         localFile = arrayOfFile[i];
-        if ((!"run-as".equals(localFile.getName())) && (S(localFile)))
+        if ((!"run-as".equals(localFile.getName())) && (V(localFile)))
         {
           new StringBuilder("SetuidBitChecker s-bit found : ").append(localFile.getAbsolutePath());
-          h.fmy();
+          h.fCO();
           AppMethodBeat.o(138352);
           return true;
         }
@@ -113,24 +113,24 @@ public final class f
       while (i < j)
       {
         localFile = arrayOfFile[i];
-        if (S(localFile))
+        if (V(localFile))
         {
           new StringBuilder("SetuidBitChecker s-bit found : ").append(localFile.getAbsolutePath());
-          h.fmy();
+          h.fCO();
           AppMethodBeat.o(138352);
           return true;
         }
         i += 1;
       }
     }
-    h.fmy();
+    h.fCO();
     AppMethodBeat.o(138352);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.a.f
  * JD-Core Version:    0.7.0.1
  */

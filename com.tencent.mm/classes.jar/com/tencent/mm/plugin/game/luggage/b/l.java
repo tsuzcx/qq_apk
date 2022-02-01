@@ -3,92 +3,64 @@ package com.tencent.mm.plugin.game.luggage.b;
 import android.content.Context;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.d;
 import com.tencent.mm.plugin.game.luggage.d.f;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.HashMap;
+import com.tencent.mm.plugin.wepkg.model.h;
+import com.tencent.mm.plugin.wepkg.model.h.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class l
-  extends bo<f>
+  extends bn<f>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
-  
-  public final void b(com.tencent.luggage.d.a<f>.a parama)
+  public final void a(Context paramContext, String paramString, final bn.a parama)
   {
-    AppMethodBeat.i(83073);
-    ad.i("MicroMsg.JsApiGetWePkgAuthResult", "invoke");
-    if (((f)parama.bZU).ekU())
+    AppMethodBeat.i(83072);
+    ac.i("MicroMsg.JsApiGetLocalWePkgInfo", "invokeInMM");
+    ap.f(new Runnable()
     {
-      ad.i("MicroMsg.JsApiGetWePkgAuthResult", "gettingA8Key");
-      parama.a("auth_result_not_return", null);
-      AppMethodBeat.o(83073);
-      return;
-    }
-    String str = ((f)parama.bZU).ekV();
-    boolean bool = ((f)parama.bZU).rQt;
-    if (bt.isNullOrNil(str)) {
-      if (bt.isNullOrNil(d.rOQ))
+      public final void run()
       {
-        ad.i("MicroMsg.LuggageGameUinKeyHolder", "fullUrl is null");
-        i = 0;
-        if (i == 0) {
-          break label260;
-        }
-        str = d.rOQ;
-      }
-    }
-    label260:
-    for (int i = 1;; i = 0)
-    {
-      if (bt.isNullOrNil(str))
-      {
-        parama.a("full_url_empty", null);
-        AppMethodBeat.o(83073);
-        return;
-        if (com.tencent.mm.plugin.game.commlib.a.cBp() <= 0)
+        AppMethodBeat.i(83071);
+        h.a(new h.a()
         {
-          i = 0;
-          break;
-        }
-        if (System.currentTimeMillis() / 1000L - d.Kk > com.tencent.mm.plugin.game.commlib.a.cBp())
-        {
-          ad.i("MicroMsg.LuggageGameUinKeyHolder", "updateTime bigger that one hour");
-          i = 0;
-          break;
-        }
-        ad.d("MicroMsg.LuggageGameUinKeyHolder", "hasValidCache");
-        i = 1;
-        break;
+          public final void ar(JSONObject paramAnonymous2JSONObject)
+          {
+            AppMethodBeat.i(83070);
+            JSONObject localJSONObject = new JSONObject();
+            try
+            {
+              localJSONObject.put("wepkg_info", paramAnonymous2JSONObject);
+              label21:
+              l.1.this.oKM.f(null, localJSONObject);
+              AppMethodBeat.o(83070);
+              return;
+            }
+            catch (JSONException paramAnonymous2JSONObject)
+            {
+              break label21;
+            }
+          }
+        });
+        AppMethodBeat.o(83071);
       }
-      HashMap localHashMap = new HashMap();
-      if (bool) {
-        localHashMap.put("set_cookie", Integer.valueOf(1));
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          localHashMap.put("used_cache_uinkey", Integer.valueOf(1));
-        }
-        localHashMap.put("full_url", str);
-        parama.c("", localHashMap);
-        AppMethodBeat.o(83073);
-        return;
-        localHashMap.put("set_cookie", Integer.valueOf(0));
-      }
-    }
+    });
+    AppMethodBeat.o(83072);
   }
   
-  public final int bQV()
+  public final void b(a.a parama) {}
+  
+  public final int bYk()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "getWePkgAuthResult";
+    return "getLocalWePkgInfo";
   }
 }
 

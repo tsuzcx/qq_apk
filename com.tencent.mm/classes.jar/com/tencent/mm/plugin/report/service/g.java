@@ -6,56 +6,56 @@ import android.content.Context;
 import android.os.StatFs;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import java.io.File;
 import java.util.HashMap;
 
 public final class g
 {
-  private static SparseArray<Long> vJW;
-  private static SparseArray<HashMap<Integer, Integer>> vJX;
-  private static boolean vJY;
-  private static long vJZ;
-  private static long vKa;
-  private static long vKb;
+  private static SparseArray<Long> wUa;
+  private static SparseArray<HashMap<Integer, Integer>> wUb;
+  private static boolean wUc;
+  private static long wUd;
+  private static long wUe;
+  private static long wUf;
   
   static
   {
     AppMethodBeat.i(143863);
-    vJW = new SparseArray();
-    vJX = new SparseArray();
-    vJY = true;
-    vJZ = 0L;
-    vKa = 0L;
-    vKb = 0L;
+    wUa = new SparseArray();
+    wUb = new SparseArray();
+    wUc = true;
+    wUd = 0L;
+    wUe = 0L;
+    wUf = 0L;
     AppMethodBeat.o(143863);
   }
   
-  public static void KI(int paramInt)
+  public static void MH(int paramInt)
   {
     AppMethodBeat.i(143857);
-    if (!vJY)
+    if (!wUc)
     {
       AppMethodBeat.o(143857);
       return;
     }
-    vJW.put(paramInt, Long.valueOf(bt.eGO()));
-    ad.d("MicroMsg.ReportLogInfo", "ReportLogInfo operationBegin eventID:%d  time:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(bt.eGO()) });
+    wUa.put(paramInt, Long.valueOf(bs.eWj()));
+    ac.d("MicroMsg.ReportLogInfo", "ReportLogInfo operationBegin eventID:%d  time:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(bs.eWj()) });
     AppMethodBeat.o(143857);
   }
   
-  public static void KJ(int paramInt)
+  public static void MI(int paramInt)
   {
     AppMethodBeat.i(143859);
-    if (!vJY)
+    if (!wUc)
     {
       AppMethodBeat.o(143859);
       return;
     }
-    Long localLong = (Long)vJW.get(paramInt);
+    Long localLong = (Long)wUa.get(paramInt);
     if (localLong == null)
     {
       AppMethodBeat.o(143859);
@@ -66,8 +66,8 @@ public final class g
       AppMethodBeat.o(143859);
       return;
     }
-    vJW.put(paramInt, Long.valueOf(-1L));
-    long l = bt.eGO() - localLong.longValue();
+    wUa.put(paramInt, Long.valueOf(-1L));
+    long l = bs.eWj() - localLong.longValue();
     if (l <= 0L)
     {
       AppMethodBeat.o(143859);
@@ -78,66 +78,66 @@ public final class g
     }
     for (;;)
     {
-      ad.i("MicroMsg.ReportLogInfo", "ReportLogInfo operationEnd eventID:%d  time:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(l) });
+      ac.i("MicroMsg.ReportLogInfo", "ReportLogInfo operationEnd eventID:%d  time:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(l) });
       AppMethodBeat.o(143859);
       return;
-      if (aj.EUA)
+      if (ai.GrM)
       {
-        h.vKh.c(23, 4, 5, (int)l, false);
+        h.wUl.c(23, 4, 5, (int)l, false);
       }
       else
       {
-        aq(1, l);
-        ap(227, l);
-        h.vKh.c(23, 1, 2, (int)l, false);
+        ap(1, l);
+        ao(227, l);
+        h.wUl.c(23, 1, 2, (int)l, false);
         continue;
-        aq(3, l);
-        ap(229, l);
-        h.vKh.c(27, 1, 2, (int)l, false);
+        ap(3, l);
+        ao(229, l);
+        h.wUl.c(27, 1, 2, (int)l, false);
         continue;
-        aq(2, l);
-        ap(228, l);
-        h.vKh.c(28, 1, 2, (int)l, false);
+        ap(2, l);
+        ao(228, l);
+        h.wUl.c(28, 1, 2, (int)l, false);
         continue;
-        aq(6, l);
+        ap(6, l);
         continue;
-        aq(7, l);
+        ap(7, l);
         continue;
-        aq(8, l);
+        ap(8, l);
         continue;
-        aq(10, l);
+        ap(10, l);
         continue;
-        aq(14, l);
+        ap(14, l);
         continue;
-        aq(15, l);
+        ap(15, l);
         continue;
-        aq(9, l);
+        ap(9, l);
         continue;
-        aq(11, l);
+        ap(11, l);
         continue;
-        aq(16, l);
+        ap(16, l);
         continue;
-        aq(13, l);
+        ap(13, l);
         continue;
-        aq(12, l);
+        ap(12, l);
       }
     }
   }
   
-  public static void KK(int paramInt)
+  public static void MJ(int paramInt)
   {
     AppMethodBeat.i(143862);
-    if (!vJY)
+    if (!wUc)
     {
       AppMethodBeat.o(143862);
       return;
     }
-    ad.d("MicroMsg.ReportLogInfo", "ReportLogInfo stopOperation stop eventID:%d", new Object[] { Integer.valueOf(paramInt) });
-    vJW.put(paramInt, Long.valueOf(-1L));
+    ac.d("MicroMsg.ReportLogInfo", "ReportLogInfo stopOperation stop eventID:%d", new Object[] { Integer.valueOf(paramInt) });
+    wUa.put(paramInt, Long.valueOf(-1L));
     AppMethodBeat.o(143862);
   }
   
-  private static void ap(int paramInt, long paramLong)
+  private static void ao(int paramInt, long paramLong)
   {
     AppMethodBeat.i(143860);
     if (paramLong <= 0L)
@@ -147,91 +147,91 @@ public final class g
     }
     if (paramLong < 1000L)
     {
-      h.vKh.ao(paramInt, 0, 1);
+      h.wUl.aq(paramInt, 0, 1);
       AppMethodBeat.o(143860);
       return;
     }
     if (paramLong < 2000L)
     {
-      h.vKh.ao(paramInt, 0, 3);
+      h.wUl.aq(paramInt, 0, 3);
       AppMethodBeat.o(143860);
       return;
     }
     if (paramLong < 5000L)
     {
-      h.vKh.ao(paramInt, 0, 5);
+      h.wUl.aq(paramInt, 0, 5);
       AppMethodBeat.o(143860);
       return;
     }
     if (paramLong < 10000L)
     {
-      h.vKh.ao(paramInt, 0, 7);
+      h.wUl.aq(paramInt, 0, 7);
       AppMethodBeat.o(143860);
       return;
     }
-    h.vKh.ao(paramInt, 0, 9);
+    h.wUl.aq(paramInt, 0, 9);
     AppMethodBeat.o(143860);
   }
   
-  private static void aq(int paramInt, long paramLong)
+  private static void ap(int paramInt, long paramLong)
   {
     AppMethodBeat.i(143861);
     long l;
     if (paramInt == 6)
     {
       l = System.currentTimeMillis();
-      if (l < vJZ + 60000L)
+      if (l < wUd + 60000L)
       {
         AppMethodBeat.o(143861);
         return;
       }
-      vJZ = l;
+      wUd = l;
     }
     for (;;)
     {
-      a locala = a.dkO();
+      a locala = a.dyR();
       if (!locala.hasInit) {
         break;
       }
-      h.vKh.a(11335, true, false, new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(locala.vKd), Long.valueOf(locala.vKc[0]), Long.valueOf(locala.vKc[1]), Long.valueOf(locala.vKf) });
+      h.wUl.a(11335, true, false, new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(locala.wUh), Long.valueOf(locala.wUg[0]), Long.valueOf(locala.wUg[1]), Long.valueOf(locala.wUj) });
       AppMethodBeat.o(143861);
       return;
       if (paramInt == 7)
       {
         l = System.currentTimeMillis();
-        if (l < vKa + 60000L)
+        if (l < wUe + 60000L)
         {
           AppMethodBeat.o(143861);
           return;
         }
-        vKa = l;
+        wUe = l;
       }
       else if (paramInt == 8)
       {
         l = System.currentTimeMillis();
-        if (l < vKb + 60000L)
+        if (l < wUf + 60000L)
         {
           AppMethodBeat.o(143861);
           return;
         }
-        vKb = l;
+        wUf = l;
       }
     }
-    h.vKh.a(11335, true, false, new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    h.wUl.a(11335, true, false, new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
     AppMethodBeat.o(143861);
   }
   
   public static final class a
   {
-    public static a vKg;
+    public static a wUk;
     public volatile boolean hasInit;
-    public long[] vKc;
-    public int vKd;
-    public String vKe;
-    public long vKf;
+    public long[] wUg;
+    public int wUh;
+    public String wUi;
+    public long wUj;
     
     /* Error */
-    private static String WI()
+    private static String XG()
     {
       // Byte code:
       //   0: ldc 31
@@ -286,7 +286,7 @@ public final class g
       //   86: ldc 70
       //   88: iconst_0
       //   89: anewarray 4	java/lang/Object
-      //   92: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   92: invokestatic 76	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   95: goto -27 -> 68
       //   98: astore_0
       //   99: ldc 68
@@ -294,7 +294,7 @@ public final class g
       //   102: ldc 70
       //   104: iconst_0
       //   105: anewarray 4	java/lang/Object
-      //   108: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   108: invokestatic 76	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   111: aload_1
       //   112: astore_0
       //   113: goto -38 -> 75
@@ -312,7 +312,7 @@ public final class g
       //   132: ldc 70
       //   134: iconst_0
       //   135: anewarray 4	java/lang/Object
-      //   138: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   138: invokestatic 76	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   141: aload_0
       //   142: ifnull +7 -> 149
       //   145: aload_0
@@ -332,7 +332,7 @@ public final class g
       //   170: ldc 70
       //   172: iconst_0
       //   173: anewarray 4	java/lang/Object
-      //   176: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   176: invokestatic 76	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   179: aload_1
       //   180: astore_0
       //   181: goto -106 -> 75
@@ -342,7 +342,7 @@ public final class g
       //   188: ldc 70
       //   190: iconst_0
       //   191: anewarray 4	java/lang/Object
-      //   194: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   194: invokestatic 76	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   197: goto -48 -> 149
       //   200: astore 5
       //   202: aconst_null
@@ -358,7 +358,7 @@ public final class g
       //   216: ldc 70
       //   218: iconst_0
       //   219: anewarray 4	java/lang/Object
-      //   222: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   222: invokestatic 76	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   225: aload_0
       //   226: ifnull +7 -> 233
       //   229: aload_0
@@ -378,7 +378,7 @@ public final class g
       //   254: ldc 70
       //   256: iconst_0
       //   257: anewarray 4	java/lang/Object
-      //   260: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   260: invokestatic 76	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   263: aload_1
       //   264: astore_0
       //   265: goto -190 -> 75
@@ -388,7 +388,7 @@ public final class g
       //   272: ldc 70
       //   274: iconst_0
       //   275: anewarray 4	java/lang/Object
-      //   278: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   278: invokestatic 76	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   281: goto -48 -> 233
       //   284: astore_1
       //   285: aconst_null
@@ -413,7 +413,7 @@ public final class g
       //   316: ldc 70
       //   318: iconst_0
       //   319: anewarray 4	java/lang/Object
-      //   322: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   322: invokestatic 76	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   325: goto -28 -> 297
       //   328: astore_0
       //   329: ldc 68
@@ -421,7 +421,7 @@ public final class g
       //   332: ldc 70
       //   334: iconst_0
       //   335: anewarray 4	java/lang/Object
-      //   338: invokestatic 76	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   338: invokestatic 76	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   341: goto -36 -> 305
       //   344: astore_1
       //   345: aconst_null
@@ -509,7 +509,38 @@ public final class g
       //   59	64	382	java/io/FileNotFoundException
     }
     
-    private static int WO()
+    public static a dyR()
+    {
+      try
+      {
+        AppMethodBeat.i(143854);
+        if (wUk == null)
+        {
+          locala = new a();
+          wUk = locala;
+          locala.wUh = getNumCores();
+          wUk.wUi = XG();
+          locala = wUk;
+          Object localObject2 = (ActivityManager)ai.getContext().getSystemService("activity");
+          ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+          ((ActivityManager)localObject2).getMemoryInfo(localMemoryInfo);
+          locala.wUj = (localMemoryInfo.availMem >> 10);
+          locala = wUk;
+          localObject2 = new StatFs(com.tencent.mm.compatible.util.g.getDataDirectory().getPath());
+          long l1 = ((StatFs)localObject2).getBlockSize();
+          long l2 = ((StatFs)localObject2).getBlockCount();
+          localObject2 = new StatFs(com.tencent.mm.compatible.util.g.getDataDirectory().getPath());
+          locala.wUg = new long[] { l2 * l1, ((StatFs)localObject2).getBlockSize() * ((StatFs)localObject2).getAvailableBlocks() };
+          wUk.hasInit = true;
+        }
+        a locala = wUk;
+        AppMethodBeat.o(143854);
+        return locala;
+      }
+      finally {}
+    }
+    
+    private static int getNumCores()
     {
       AppMethodBeat.i(143856);
       try
@@ -520,41 +551,10 @@ public final class g
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.ReportLogInfo", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.ReportLogInfo", localException, "", new Object[0]);
         AppMethodBeat.o(143856);
       }
       return 1;
-    }
-    
-    public static a dkO()
-    {
-      try
-      {
-        AppMethodBeat.i(143854);
-        if (vKg == null)
-        {
-          locala = new a();
-          vKg = locala;
-          locala.vKd = WO();
-          vKg.vKe = WI();
-          locala = vKg;
-          Object localObject2 = (ActivityManager)aj.getContext().getSystemService("activity");
-          ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-          ((ActivityManager)localObject2).getMemoryInfo(localMemoryInfo);
-          locala.vKf = (localMemoryInfo.availMem >> 10);
-          locala = vKg;
-          localObject2 = new StatFs(com.tencent.mm.compatible.util.g.getDataDirectory().getPath());
-          long l1 = ((StatFs)localObject2).getBlockSize();
-          long l2 = ((StatFs)localObject2).getBlockCount();
-          localObject2 = new StatFs(com.tencent.mm.compatible.util.g.getDataDirectory().getPath());
-          locala.vKc = new long[] { l2 * l1, ((StatFs)localObject2).getBlockSize() * ((StatFs)localObject2).getAvailableBlocks() };
-          vKg.hasInit = true;
-        }
-        a locala = vKg;
-        AppMethodBeat.o(143854);
-        return locala;
-      }
-      finally {}
     }
   }
 }

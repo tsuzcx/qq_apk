@@ -457,10 +457,10 @@ public class HardCoderJNI
     }
     a locala = hcPerfManager;
     a.c localc = new a.c();
-    localc.fXp = System.currentTimeMillis();
-    localc.aFj = paramInt;
+    localc.gbW = System.currentTimeMillis();
+    localc.aFZ = paramInt;
     if (paramInt != 0) {}
-    for (boolean bool = locala.fXn.offer(localc);; bool = false)
+    for (boolean bool = locala.gbU.offer(localc);; bool = false)
     {
       d.d("Hardcoder.HCPerfManager", String.format("stop ret:%b, hashcode:%x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
       d.i("Hardcoder.HardCoderJNI", String.format("stopPerformance:%d, ret:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));

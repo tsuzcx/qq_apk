@@ -7,28 +7,30 @@ import android.database.sqlite.SQLiteException;
 import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.z;
+import com.tencent.mm.ak.z;
 import com.tencent.mm.b.i;
 import com.tencent.mm.b.p;
 import com.tencent.mm.g.a.cj;
-import com.tencent.mm.g.a.gt;
+import com.tencent.mm.g.a.gu;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.model.av;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.model.ba;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.protocal.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ae.a;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.vfs.o;
 import java.text.SimpleDateFormat;
@@ -43,70 +45,70 @@ import junit.framework.Assert;
 
 public final class a
 {
-  private static boolean gbV;
-  private static boolean gbW;
-  static b gbY;
-  private static String gbZ;
-  private static String gca;
-  private static boolean gcb;
-  private static int gck;
-  private com.tencent.mm.kernel.api.c gbT;
-  private z gbU;
-  byte[] gbX;
-  public com.tencent.mm.model.a gcc;
-  public e.c gcd;
-  public int gce;
-  public boolean gcf;
-  private boolean gcg;
-  public int gch;
-  public int gci;
-  private List<av> gcj;
-  long gcl;
-  private volatile a gcm;
-  public volatile boolean gcn;
-  private String gco;
-  private Map<String, Integer> gcp;
+  private static boolean ggB;
+  private static boolean ggC;
+  static b ggE;
+  private static String ggF;
+  private static String ggG;
+  private static boolean ggH;
+  private static int ggQ;
+  private z ggA;
+  byte[] ggD;
+  public com.tencent.mm.model.a ggI;
+  public e.c ggJ;
+  public int ggK;
+  public boolean ggL;
+  private boolean ggM;
+  public int ggN;
+  public int ggO;
+  private List<av> ggP;
+  long ggR;
+  private volatile a ggS;
+  public volatile boolean ggT;
+  private String ggU;
+  private Map<String, Integer> ggV;
+  private com.tencent.mm.kernel.api.c ggz;
   
   static
   {
     AppMethodBeat.i(132045);
-    gbV = true;
-    gbW = false;
-    gbY = new b();
-    gbZ = "NoResetUinStack";
-    gca = null;
-    gck = -1;
+    ggB = true;
+    ggC = false;
+    ggE = new b();
+    ggF = "NoResetUinStack";
+    ggG = null;
+    ggQ = -1;
     AppMethodBeat.o(132045);
   }
   
   public a(com.tencent.mm.kernel.api.c paramc)
   {
     AppMethodBeat.i(132014);
-    this.gbX = new byte[0];
-    this.gcf = false;
-    this.gcg = false;
-    this.gch = 0;
-    this.gcj = new LinkedList();
-    this.gcm = a.gcr;
-    this.gcn = false;
-    this.gco = "";
-    this.gcp = new HashMap();
-    Assert.assertNotNull(gbY);
-    g.afC();
+    this.ggD = new byte[0];
+    this.ggL = false;
+    this.ggM = false;
+    this.ggN = 0;
+    this.ggP = new LinkedList();
+    this.ggS = a.ggX;
+    this.ggT = false;
+    this.ggU = "";
+    this.ggV = new HashMap();
+    Assert.assertNotNull(ggE);
+    g.agS();
     boolean bool;
-    if (com.tencent.mm.sdk.platformtools.bt.l((Integer)g.afB().gcR.get(17)) != 0)
+    if (bs.m((Integer)g.agR().ghx.get(17)) != 0)
     {
       bool = true;
-      gbV = bool;
-      if (!f.CpT) {
+      ggB = bool;
+      if (!f.DIl) {
         break label144;
       }
     }
     label144:
     for (int i = 763;; i = 702)
     {
-      com.tencent.mm.protocal.j.e.a.Cqp = new ba(i);
-      this.gbT = paramc;
+      com.tencent.mm.protocal.j.e.a.DIH = new ba(i);
+      this.ggz = paramc;
       AppMethodBeat.o(132014);
       return;
       bool = false;
@@ -114,53 +116,115 @@ public final class a
     }
   }
   
-  public static SharedPreferences Yf()
+  public static SharedPreferences Zc()
   {
     AppMethodBeat.i(132035);
-    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("notify_key_pref_settings", com.tencent.mm.compatible.util.g.XN());
+    SharedPreferences localSharedPreferences = ai.getContext().getSharedPreferences("notify_key_pref_settings", com.tencent.mm.compatible.util.g.YK());
     AppMethodBeat.o(132035);
     return localSharedPreferences;
   }
   
-  public static boolean aeB()
+  public static String afE()
   {
-    return gbW;
+    AppMethodBeat.i(132016);
+    String str = new p(b.a(ggE)).toString();
+    AppMethodBeat.o(132016);
+    return str;
   }
   
-  public static boolean aeC()
+  public static final int afF()
+  {
+    AppMethodBeat.i(206877);
+    int i = b.access$100();
+    AppMethodBeat.o(206877);
+    return i;
+  }
+  
+  public static String afG()
+  {
+    return ggG;
+  }
+  
+  public static boolean afH()
+  {
+    return ggH;
+  }
+  
+  public static void afI()
+  {
+    ggH = true;
+  }
+  
+  public static String afJ()
+  {
+    return ggF;
+  }
+  
+  protected static void afK()
+  {
+    AppMethodBeat.i(132017);
+    b.a(ggE, 0);
+    AppMethodBeat.o(132017);
+  }
+  
+  protected static void afL()
+  {
+    AppMethodBeat.i(132018);
+    b.a(ggE, 0);
+    AppMethodBeat.o(132018);
+  }
+  
+  private void afM()
+  {
+    AppMethodBeat.i(132019);
+    this.ggS = a.ggX;
+    this.ggT = false;
+    ac.i("MMKernel.CoreAccount", "mAccountStatus to NotReady");
+    ai.getContext().getSharedPreferences(ai.eUX(), 0).edit().putBoolean("isLogin", false).commit();
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.getDefault());
+    ac.w("MMKernel.CoreAccount", "[arthurdan.AccountNR] account storage reset! uin:%d, resetStack is:%s, resetTime:%s", new Object[] { Integer.valueOf(b.a(ggE)), ggF, localSimpleDateFormat.format(new Date()) });
+    AppMethodBeat.o(132019);
+  }
+  
+  public static boolean afR()
+  {
+    return ggC;
+  }
+  
+  public static boolean afS()
   {
     AppMethodBeat.i(132025);
-    if (gbV)
+    if (ggB)
     {
-      g.afC();
-      if (g.afz() == null) {
-        break label77;
+      g.agS();
+      if (g.agP() == null) {
+        break label80;
       }
-      g.afC();
-      g.afz();
+      g.agS();
+      g.agP();
     }
-    label77:
-    for (String str = p.getString(b.a(gbY));; str = "-1")
+    label80:
+    for (String str = p.getString(b.a(ggE));; str = "-1")
     {
-      ad.w("MMKernel.CoreAccount", "account holded :%s init:%b", new Object[] { str, Boolean.valueOf(g.afz().aeI()) });
-      boolean bool = gbV;
+      ac.w("MMKernel.CoreAccount", "account holded :%s init:%b", new Object[] { str, Boolean.valueOf(g.agP().afY()) });
+      boolean bool = ggB;
       AppMethodBeat.o(132025);
       return bool;
     }
   }
   
-  public static int aeF()
+  public static int afV()
   {
     AppMethodBeat.i(132034);
-    int i = Yf().getInt("notification.user.state", 0);
+    int i = Zc().getInt("notification.user.state", 0);
     AppMethodBeat.o(132034);
     return i;
   }
   
-  public static boolean aeH()
+  public static boolean afX()
   {
     AppMethodBeat.i(132039);
-    if (b.a(gbY) != 0)
+    if (b.a(ggE) != 0)
     {
       AppMethodBeat.o(132039);
       return true;
@@ -169,108 +233,46 @@ public final class a
     return false;
   }
   
-  public static int aeL()
+  public static int agb()
   {
     AppMethodBeat.i(132041);
-    int i = aj.getContext().getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.XN()).getInt("default_uin", 0);
+    int i = ai.getContext().getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.YK()).getInt("default_uin", 0);
     AppMethodBeat.o(132041);
     return i;
   }
   
-  public static String aeM()
+  public static String agc()
   {
     AppMethodBeat.i(132042);
-    g.afC();
-    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(g.afz().gco)) {
-      aeN();
+    g.agS();
+    if (bs.isNullOrNil(g.agP().ggU)) {
+      agd();
     }
-    g.afC();
-    String str = g.afz().gco;
+    g.agS();
+    String str = g.agP().ggU;
     AppMethodBeat.o(132042);
     return str;
   }
   
-  public static void aeN()
+  public static void agd()
   {
     AppMethodBeat.i(132043);
-    g.afC();
-    g.afz().gco = (com.tencent.mm.compatible.deviceinfo.q.Xa() + "_" + System.currentTimeMillis());
-    g.afC();
-    g.afz().gcp.clear();
+    g.agS();
+    g.agP().ggU = (com.tencent.mm.compatible.deviceinfo.q.XX() + "_" + System.currentTimeMillis());
+    g.agS();
+    g.agP().ggV.clear();
     AppMethodBeat.o(132043);
-  }
-  
-  public static String aeo()
-  {
-    AppMethodBeat.i(132016);
-    String str = new p(b.a(gbY)).toString();
-    AppMethodBeat.o(132016);
-    return str;
-  }
-  
-  public static final int aep()
-  {
-    AppMethodBeat.i(192870);
-    int i = b.access$100();
-    AppMethodBeat.o(192870);
-    return i;
-  }
-  
-  public static String aeq()
-  {
-    return gca;
-  }
-  
-  public static boolean aer()
-  {
-    return gcb;
-  }
-  
-  public static void aes()
-  {
-    gcb = true;
-  }
-  
-  public static String aet()
-  {
-    return gbZ;
-  }
-  
-  protected static void aeu()
-  {
-    AppMethodBeat.i(132017);
-    b.a(gbY, 0);
-    AppMethodBeat.o(132017);
-  }
-  
-  protected static void aev()
-  {
-    AppMethodBeat.i(132018);
-    b.a(gbY, 0);
-    AppMethodBeat.o(132018);
-  }
-  
-  private void aew()
-  {
-    AppMethodBeat.i(132019);
-    this.gcm = a.gcr;
-    this.gcn = false;
-    ad.i("MMKernel.CoreAccount", "mAccountStatus to NotReady");
-    aj.getContext().getSharedPreferences(aj.eFD(), 0).edit().putBoolean("isLogin", false).commit();
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.getDefault());
-    ad.w("MMKernel.CoreAccount", "[arthurdan.AccountNR] account storage reset! uin:%d, resetStack is:%s, resetTime:%s", new Object[] { Integer.valueOf(b.a(gbY)), gbZ, localSimpleDateFormat.format(new Date()) });
-    AppMethodBeat.o(132019);
   }
   
   public static void dz(boolean paramBoolean)
   {
-    gbW = paramBoolean;
+    ggC = paramBoolean;
   }
   
   public static int getUin()
   {
     AppMethodBeat.i(132015);
-    int i = b.a(gbY);
+    int i = b.a(ggE);
     AppMethodBeat.o(132015);
     return i;
   }
@@ -278,79 +280,79 @@ public final class a
   public static void hold()
   {
     AppMethodBeat.i(132026);
-    g.afC();
-    if (g.afz() != null)
+    g.agS();
+    if (g.agP() != null)
     {
-      g.afC();
-      g.afz();
+      g.agS();
+      g.agP();
     }
-    for (String str = p.getString(b.a(gbY));; str = "-1")
+    for (String str = p.getString(b.a(ggE));; str = "-1")
     {
-      ad.w("MMKernel.CoreAccount", " HOLD ACCOUNT! uin:%s stack:%s init:%b", new Object[] { str, com.tencent.mm.sdk.platformtools.bt.eGN(), Boolean.valueOf(g.afz().aeI()) });
-      gbV = true;
-      g.afC();
-      g.afB().gcR.set(17, Integer.valueOf(1));
+      ac.w("MMKernel.CoreAccount", " HOLD ACCOUNT! uin:%s stack:%s init:%b", new Object[] { str, bs.eWi(), Boolean.valueOf(g.agP().afY()) });
+      ggB = true;
+      g.agS();
+      g.agR().ghx.set(17, Integer.valueOf(1));
       AppMethodBeat.o(132026);
       return;
     }
   }
   
-  static boolean mn(int paramInt)
+  static boolean mm(int paramInt)
   {
     return paramInt != 0;
   }
   
-  public static void mo(int paramInt)
+  public static void mn(int paramInt)
   {
     AppMethodBeat.i(132033);
-    if ((gck != -1) && (gck == paramInt))
+    if ((ggQ != -1) && (ggQ == paramInt))
     {
       AppMethodBeat.o(132033);
       return;
     }
-    gck = paramInt;
-    Yf().edit().putInt("notification.user.state", paramInt).commit();
-    ad.i("MMKernel.CoreAccount", "[NOTIFICATION SETTINGS]save UserStatus: %d", new Object[] { Integer.valueOf(paramInt) });
+    ggQ = paramInt;
+    Zc().edit().putInt("notification.user.state", paramInt).commit();
+    ac.i("MMKernel.CoreAccount", "[NOTIFICATION SETTINGS]save UserStatus: %d", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(132033);
   }
   
-  public static boolean mp(int paramInt)
+  public static boolean mo(int paramInt)
   {
     return (paramInt & 0x1) != 0;
   }
   
-  public static String qL(String paramString)
+  public static String ua(String paramString)
   {
-    gca = paramString;
+    ggG = paramString;
     return paramString;
   }
   
-  public static void qM(String paramString)
+  public static void ub(String paramString)
   {
-    gbZ = paramString;
+    ggF = paramString;
   }
   
-  public static int qN(String paramString)
+  public static int uc(String paramString)
   {
     AppMethodBeat.i(132044);
-    g.afC();
-    if (g.afz().gcp.get(paramString) == null) {}
+    g.agS();
+    if (g.agP().ggV.get(paramString) == null) {}
     int j;
-    for (int i = 0;; i = ((Integer)g.afz().gcp.get(paramString)).intValue())
+    for (int i = 0;; i = ((Integer)g.agP().ggV.get(paramString)).intValue())
     {
-      j = (int)com.tencent.mm.sdk.platformtools.bt.aGK();
+      j = (int)bs.aNx();
       if (i != 0) {
         break;
       }
-      g.afC();
-      g.afz().gcp.put(paramString, Integer.valueOf(j));
+      g.agS();
+      g.agP().ggV.put(paramString, Integer.valueOf(j));
       AppMethodBeat.o(132044);
       return i;
-      g.afC();
+      g.agS();
     }
     i = j - i;
-    g.afC();
-    g.afz().gcp.put(paramString, Integer.valueOf(j));
+    g.agS();
+    g.agP().ggV.put(paramString, Integer.valueOf(j));
     if (i >= 0)
     {
       AppMethodBeat.o(132044);
@@ -363,18 +365,18 @@ public final class a
   public static void unhold()
   {
     AppMethodBeat.i(132027);
-    g.afC();
-    if (g.afz() != null)
+    g.agS();
+    if (g.agP() != null)
     {
-      g.afC();
-      g.afz();
+      g.agS();
+      g.agP();
     }
-    for (String str = p.getString(b.a(gbY));; str = "-1")
+    for (String str = p.getString(b.a(ggE));; str = "-1")
     {
-      ad.w("MMKernel.CoreAccount", " UN HOLD ACCOUNT! uin:%s init:%b", new Object[] { str, Boolean.valueOf(g.afz().aeI()) });
-      gbV = false;
-      g.afC();
-      g.afB().gcR.set(17, Integer.valueOf(0));
+      ac.w("MMKernel.CoreAccount", " UN HOLD ACCOUNT! uin:%s init:%b", new Object[] { str, Boolean.valueOf(g.agP().afY()) });
+      ggB = false;
+      g.agS();
+      g.agR().ghx.set(17, Integer.valueOf(0));
       AppMethodBeat.o(132027);
       return;
     }
@@ -383,36 +385,84 @@ public final class a
   public final void a(av paramav)
   {
     AppMethodBeat.i(132029);
-    ad.i("MMKernel.CoreAccount", "UserStatusChange: add %s", new Object[] { paramav });
-    synchronized (this.gcj)
+    ac.i("MMKernel.CoreAccount", "UserStatusChange: add %s", new Object[] { paramav });
+    synchronized (this.ggP)
     {
-      if (!this.gcj.contains(paramav)) {
-        this.gcj.add(paramav);
+      if (!this.ggP.contains(paramav)) {
+        this.ggP.add(paramav);
       }
       AppMethodBeat.o(132029);
       return;
     }
   }
   
-  public final z aeA()
+  final void afN()
+  {
+    AppMethodBeat.i(132020);
+    ac.w("MMKernel.CoreAccount", "account storage release  uin:%s thread:%s stack:%s", new Object[] { p.getString(b.a(ggE)), Thread.currentThread().getName(), bs.eWi() });
+    if (!afY())
+    {
+      ac.i("MMKernel.CoreAccount", "Fatal crash error!!! status is not initialized when release(), this callStack is:%s, last reset stack is:%s", new Object[] { bs.eWi().toString(), ggF });
+      AppMethodBeat.o(132020);
+      return;
+    }
+    this.ggz.onAccountRelease();
+    g.agS();
+    g.agR().ro(null);
+    afM();
+    g.agS();
+    g.agR().ghO.clear();
+    AppMethodBeat.o(132020);
+  }
+  
+  public final void afO()
+  {
+    AppMethodBeat.i(132022);
+    if (!this.ggM)
+    {
+      ac.i("MMKernel.CoreAccount", "no need do account initialized notify.");
+      AppMethodBeat.o(132022);
+      return;
+    }
+    this.ggM = false;
+    ac.i("MMKernel.CoreAccount", "summerasyncinit onAccountInitialized tid:%d, stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), bs.eWi() });
+    long l = System.currentTimeMillis();
+    this.ggz.onAccountInitialized(this.ggJ);
+    ac.i("MMKernel.CoreAccount", "summerasyncinit onAccountInitialized run tid[%d] take[%d]ms", new Object[] { Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l) });
+    afP();
+    AppMethodBeat.o(132022);
+  }
+  
+  public final void afP()
+  {
+    AppMethodBeat.i(132023);
+    if ((afY()) && (com.tencent.mm.kernel.a.c.ahe().giV))
+    {
+      ac.i("MMKernel.CoreAccount", "Flush client version.");
+      g.agR().agr();
+    }
+    AppMethodBeat.o(132023);
+  }
+  
+  public final z afQ()
   {
     try
     {
       AppMethodBeat.i(132024);
-      if (this.gbU == null) {
-        this.gbU = new z();
+      if (this.ggA == null) {
+        this.ggA = new z();
       }
-      z localz = this.gbU;
+      z localz = this.ggA;
       AppMethodBeat.o(132024);
       return localz;
     }
     finally {}
   }
   
-  public final void aeD()
+  public final void afT()
   {
     AppMethodBeat.i(132028);
-    if (!aeI())
+    if (!afY())
     {
       com.tencent.mm.model.b localb = new com.tencent.mm.model.b();
       AppMethodBeat.o(132028);
@@ -421,10 +471,10 @@ public final class a
     AppMethodBeat.o(132028);
   }
   
-  public final void aeE()
+  public final void afU()
   {
     AppMethodBeat.i(132031);
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new ao(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
@@ -435,7 +485,7 @@ public final class a
         int i = 0;
         while (i < j)
         {
-          arrayOfav[i].arM();
+          arrayOfav[i].ayD();
           i += 1;
         }
         AppMethodBeat.o(132002);
@@ -444,117 +494,69 @@ public final class a
     AppMethodBeat.o(132031);
   }
   
-  public final boolean aeG()
+  public final boolean afW()
   {
     AppMethodBeat.i(132036);
-    boolean bool = mp(this.gch);
+    boolean bool = mo(this.ggN);
     AppMethodBeat.o(132036);
     return bool;
   }
   
-  public final boolean aeI()
+  public final boolean afY()
   {
-    return this.gcm == a.gcs;
+    return this.ggS == a.ggY;
   }
   
-  public final boolean aeJ()
+  public final boolean afZ()
   {
-    return this.gcn;
+    return this.ggT;
   }
   
-  public final void aeK()
+  public final void aga()
   {
     AppMethodBeat.i(132040);
-    ad.i("MMKernel.CoreAccount", "summerasyncinit setInitializedNotifyAllDone[%b] to true stack[%s]", new Object[] { Boolean.valueOf(this.gcn), com.tencent.mm.sdk.platformtools.bt.eGN() });
-    this.gcn = true;
+    ac.i("MMKernel.CoreAccount", "summerasyncinit setInitializedNotifyAllDone[%b] to true stack[%s]", new Object[] { Boolean.valueOf(this.ggT), bs.eWi() });
+    this.ggT = true;
     long l = SystemClock.elapsedRealtime();
-    ad.i("MMKernel.CoreAccount", "summerhardcoder setInitializedNotifyAllDone [%d %d] take[%d]ms, stack[%s]", new Object[] { Long.valueOf(this.gcl), Long.valueOf(l), Long.valueOf(l - this.gcl), com.tencent.mm.sdk.platformtools.bt.eGN() });
+    ac.i("MMKernel.CoreAccount", "summerhardcoder setInitializedNotifyAllDone [%d %d] take[%d]ms, stack[%s]", new Object[] { Long.valueOf(this.ggR), Long.valueOf(l), Long.valueOf(l - this.ggR), bs.eWi() });
     com.tencent.mm.g.a.ci localci = new com.tencent.mm.g.a.ci();
-    com.tencent.mm.sdk.b.a.ESL.l(localci);
+    com.tencent.mm.sdk.b.a.GpY.l(localci);
     AppMethodBeat.o(132040);
-  }
-  
-  final void aex()
-  {
-    AppMethodBeat.i(132020);
-    ad.w("MMKernel.CoreAccount", "account storage release  uin:%s thread:%s stack:%s", new Object[] { p.getString(b.a(gbY)), Thread.currentThread().getName(), com.tencent.mm.sdk.platformtools.bt.eGN() });
-    if (!aeI())
-    {
-      ad.i("MMKernel.CoreAccount", "Fatal crash error!!! status is not initialized when release(), this callStack is:%s, last reset stack is:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.eGN().toString(), gbZ });
-      AppMethodBeat.o(132020);
-      return;
-    }
-    this.gbT.onAccountRelease();
-    g.afC();
-    g.afB().oi(null);
-    aew();
-    g.afC();
-    g.afB().gdi.clear();
-    AppMethodBeat.o(132020);
-  }
-  
-  public final void aey()
-  {
-    AppMethodBeat.i(132022);
-    if (!this.gcg)
-    {
-      ad.i("MMKernel.CoreAccount", "no need do account initialized notify.");
-      AppMethodBeat.o(132022);
-      return;
-    }
-    this.gcg = false;
-    ad.i("MMKernel.CoreAccount", "summerasyncinit onAccountInitialized tid:%d, stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), com.tencent.mm.sdk.platformtools.bt.eGN() });
-    long l = System.currentTimeMillis();
-    this.gbT.onAccountInitialized(this.gcd);
-    ad.i("MMKernel.CoreAccount", "summerasyncinit onAccountInitialized run tid[%d] take[%d]ms", new Object[] { Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l) });
-    aez();
-    AppMethodBeat.o(132022);
-  }
-  
-  public final void aez()
-  {
-    AppMethodBeat.i(132023);
-    if ((aeI()) && (com.tencent.mm.kernel.a.c.afO().gep))
-    {
-      ad.i("MMKernel.CoreAccount", "Flush client version.");
-      g.afB().afb();
-    }
-    AppMethodBeat.o(132023);
   }
   
   public final void b(av paramav)
   {
     AppMethodBeat.i(132030);
-    ad.i("MMKernel.CoreAccount", "UserStatusChange: remove %s", new Object[] { paramav });
-    synchronized (this.gcj)
+    ac.i("MMKernel.CoreAccount", "UserStatusChange: remove %s", new Object[] { paramav });
+    synchronized (this.ggP)
     {
-      this.gcj.remove(paramav);
+      this.ggP.remove(paramav);
       AppMethodBeat.o(132030);
       return;
     }
   }
   
-  public final void cO(int paramInt1, int paramInt2)
+  public final void cM(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(132032);
-    if ((this.gch != paramInt1) || (this.gci != paramInt2)) {}
+    if ((this.ggN != paramInt1) || (this.ggO != paramInt2)) {}
     for (int i = 1;; i = 0)
     {
-      ad.d("MMKernel.CoreAccount", "online status, %d, %d, %d ,%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.gci), Integer.valueOf(this.gch) });
+      ac.d("MMKernel.CoreAccount", "online status, %d, %d, %d ,%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.ggO), Integer.valueOf(this.ggN) });
       if (i != 0) {
         break;
       }
       AppMethodBeat.o(132032);
       return;
     }
-    this.gch = paramInt1;
-    this.gci = paramInt2;
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    this.ggN = paramInt1;
+    this.ggO = paramInt2;
+    new ao(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(132003);
-        a.this.aeE();
+        a.this.afU();
         AppMethodBeat.o(132003);
       }
     });
@@ -577,32 +579,32 @@ public final class a
       m = WXHardCoderJNI.hcBootIO;
       if (WXHardCoderJNI.hcBootThr)
       {
-        i = g.afE().eFQ();
-        this.gce = WXHardCoderJNI.startPerformance(bool1, j, k, m, i, WXHardCoderJNI.hcBootTimeout, 101, WXHardCoderJNI.hcBootAction, "MMKernel.CoreAccount");
-        ad.i("MMKernel.CoreAccount", "summerhardcoder startPerformance[%s] stack[%s]", new Object[] { Integer.valueOf(this.gce), com.tencent.mm.sdk.platformtools.bt.eGN() });
+        i = g.agU().eVl();
+        this.ggK = WXHardCoderJNI.startPerformance(bool1, j, k, m, i, WXHardCoderJNI.hcBootTimeout, 101, WXHardCoderJNI.hcBootAction, "MMKernel.CoreAccount");
+        ac.i("MMKernel.CoreAccount", "summerhardcoder startPerformance[%s] stack[%s]", new Object[] { Integer.valueOf(this.ggK), bs.eWi() });
       }
     }
     else
     {
-      ad.i("MMKernel.CoreAccount", "UserStatusChange: clear");
+      ac.i("MMKernel.CoreAccount", "UserStatusChange: clear");
     }
     for (;;)
     {
-      synchronized (this.gcj)
+      synchronized (this.ggP)
       {
-        this.gcj.clear();
+        this.ggP.clear();
         long l1 = System.currentTimeMillis();
-        k = b.a(gbY);
-        ad.i("MMKernel.CoreAccount", "dkacc setAccuin %s hash:%d thread:%d[%s] stack:%s", new Object[] { p.getString(k), Integer.valueOf(i.cf(k, 100)), Long.valueOf(Thread.currentThread().getId()), Thread.currentThread().getName(), com.tencent.mm.sdk.platformtools.bt.eGN() });
+        k = b.a(ggE);
+        ac.i("MMKernel.CoreAccount", "dkacc setAccuin %s hash:%d thread:%d[%s] stack:%s", new Object[] { p.getString(k), Integer.valueOf(i.cc(k, 100)), Long.valueOf(Thread.currentThread().getId()), Thread.currentThread().getName(), bs.eWi() });
         if (k != 0)
         {
           i = 1;
           if (i != 0) {
             break;
           }
-          ad.w("MMKernel.CoreAccount", "setAccUin, Reset by MMCore.resetAccUin");
-          ad.i("MMKernel.CoreAccount", "start time check setUinImpl end total time %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-          ad.i("MMKernel.CoreAccount", "mAccountStatus to AccountHasReady");
+          ac.w("MMKernel.CoreAccount", "setAccUin, Reset by MMCore.resetAccUin");
+          ac.i("MMKernel.CoreAccount", "start time check setUinImpl end total time %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+          ac.i("MMKernel.CoreAccount", "mAccountStatus to AccountHasReady");
           AppMethodBeat.o(132021);
           return;
           i = 0;
@@ -611,9 +613,9 @@ public final class a
       i = 0;
     }
     p.getString(k);
-    com.tencent.mm.sdk.a.b.eEN();
-    g.afC();
-    e locale = g.afB();
+    com.tencent.mm.sdk.a.b.eUh();
+    g.agS();
+    e locale = g.agR();
     Object localObject5 = new Runnable()
     {
       public final void run()
@@ -623,105 +625,105 @@ public final class a
         AppMethodBeat.o(132001);
       }
     };
-    aj.getContext().getSharedPreferences(aj.eFD(), 0).edit().putBoolean("isLogin", true).apply();
+    ai.getContext().getSharedPreferences(ai.eUX(), 0).edit().putBoolean("isLogin", true).apply();
     ??? = com.tencent.mm.b.g.getMessageDigest("mm".concat(String.valueOf(k)).getBytes());
     Object localObject3 = e.C(k, (String)???);
-    ad.i("MMKernel.CoreStorage", "uinPath: %s, uinSaltPath: %s", new Object[] { ???, localObject3 });
-    boolean bool4 = com.tencent.mm.compatible.util.e.XG();
-    label412:
+    ac.i("MMKernel.CoreStorage", "uinPath: %s, uinSaltPath: %s", new Object[] { ???, localObject3 });
+    boolean bool4 = com.tencent.mm.compatible.util.e.YD();
+    label411:
     Object localObject4;
-    label462:
+    label461:
     long l2;
-    label514:
+    label513:
     Object localObject6;
     if (localObject3 == null)
     {
-      ad.w("MMKernel.CoreStorage", "Cannot generate account path, skip account renaming!");
+      ac.w("MMKernel.CoreStorage", "Cannot generate account path, skip account renaming!");
       i = 6;
       bool1 = false;
-      locale.gcX = ((String)???);
-      locale.cachePath = (ae.FfH + locale.gcX + '/');
+      locale.ghD = ((String)???);
+      locale.cachePath = (ah.GDu + locale.ghD + '/');
       if (!bool1) {
-        break label1201;
+        break label1200;
       }
       localObject4 = localObject3;
-      locale.gcZ = ((String)localObject4);
-      locale.gcW = (locale.gcV + locale.gcZ + '/');
+      locale.ghF = ((String)localObject4);
+      locale.ghC = (locale.ghB + locale.ghF + '/');
       if (localObject3 != null) {
-        break label1208;
+        break label1207;
       }
       localObject4 = ???;
-      locale.gcY = ((String)localObject4);
-      o.abe(i);
+      locale.ghE = ((String)localObject4);
+      o.adt(i);
       localObject4 = new com.tencent.mm.vfs.e(locale.cachePath);
-      ad.i("MMKernel.CoreStorage", "dkacc cachePath:" + locale.cachePath + " accPath:" + locale.gcW);
+      ac.i("MMKernel.CoreStorage", "dkacc cachePath:" + locale.cachePath + " accPath:" + locale.ghC);
       if (((com.tencent.mm.vfs.e)localObject4).exists()) {
-        break label2983;
+        break label2982;
       }
-      ad.w("MMKernel.CoreStorage", "setUin REBUILD data now ! DO NOT FUCKING TELL ME DB BROKEN !!! uin:%s data:%s sd:%s", new Object[] { p.getString(k), locale.cachePath, locale.gcW });
+      ac.w("MMKernel.CoreStorage", "setUin REBUILD data now ! DO NOT FUCKING TELL ME DB BROKEN !!! uin:%s data:%s sd:%s", new Object[] { p.getString(k), locale.cachePath, locale.ghC });
       ((com.tencent.mm.vfs.e)localObject4).mkdirs();
-      if (!locale.cachePath.equalsIgnoreCase(locale.gcW))
+      if (!locale.cachePath.equalsIgnoreCase(locale.ghC))
       {
         l2 = System.currentTimeMillis();
-        localObject4 = new com.tencent.mm.vfs.e(locale.gcW);
+        localObject4 = new com.tencent.mm.vfs.e(locale.ghC);
         localObject6 = (String)??? + "temp" + System.currentTimeMillis();
-        localObject6 = com.tencent.mm.loader.j.b.aih() + (String)localObject6;
-        ((com.tencent.mm.vfs.e)localObject4).af(new com.tencent.mm.vfs.e((String)localObject6));
-        ad.i("MMKernel.CoreStorage", "find the old files and rename then %s" + (System.currentTimeMillis() - l2), new Object[] { localObject6 });
+        localObject6 = com.tencent.mm.loader.j.b.aph() + (String)localObject6;
+        ((com.tencent.mm.vfs.e)localObject4).ae(new com.tencent.mm.vfs.e((String)localObject6));
+        ac.i("MMKernel.CoreStorage", "find the old files and rename then %s" + (System.currentTimeMillis() - l2), new Object[] { localObject6 });
       }
     }
-    label2189:
-    label2470:
-    label2983:
+    label2188:
+    label2469:
+    label2982:
     for (boolean bool2 = true;; bool2 = false)
     {
-      locale.gdh = new com.tencent.mm.model.ci(locale.cachePath, bool2);
-      locale.afc();
+      locale.ghN = new com.tencent.mm.model.ci(locale.cachePath, bool2);
+      locale.ags();
       localObject4 = locale.cachePath + "MicroMsg.db";
       localObject6 = locale.cachePath + "EnMicroMsg.db";
       String str = locale.cachePath + "EnMicroMsg2.db";
-      locale.oi(null);
-      locale.qQ((String)localObject6);
-      locale.gda = new h(new e.2(locale));
-      Object localObject7 = locale.gda;
+      locale.ro(null);
+      locale.uf((String)localObject6);
+      locale.ghG = new h(new e.2(locale));
+      Object localObject7 = locale.ghG;
       l2 = k;
-      com.tencent.mm.compatible.deviceinfo.q.cG(true);
+      com.tencent.mm.compatible.deviceinfo.q.cF(true);
       if (!((h)localObject7).b((String)localObject4, (String)localObject6, str, l2, e.getBaseDBFactories(), true))
       {
         ??? = new SQLiteException("main db init failed");
         AppMethodBeat.o(132021);
         throw ((Throwable)???);
-        if ((!locale.gcV.startsWith(com.tencent.mm.loader.j.b.aib())) || (!bool4))
+        if ((!locale.ghB.startsWith(com.tencent.mm.loader.j.b.apb())) || (!bool4))
         {
-          ad.w("MMKernel.CoreStorage", "SDCard not available, skip account renaming!");
+          ac.w("MMKernel.CoreStorage", "SDCard not available, skip account renaming!");
           i = 1;
           bool1 = false;
-          break label412;
+          break label411;
         }
-        localObject4 = new com.tencent.mm.vfs.e(locale.gcV + (String)???);
-        localObject6 = new com.tencent.mm.vfs.e(locale.gcV + (String)localObject3);
+        localObject4 = new com.tencent.mm.vfs.e(locale.ghB + (String)???);
+        localObject6 = new com.tencent.mm.vfs.e(locale.ghB + (String)localObject3);
         if (((com.tencent.mm.vfs.e)localObject4).isDirectory())
         {
           if (((com.tencent.mm.vfs.e)localObject6).isDirectory())
           {
-            ad.i("MMKernel.CoreStorage", "Both uinPath exists, migration shall be taken.");
+            ac.i("MMKernel.CoreStorage", "Both uinPath exists, migration shall be taken.");
             i = 2;
             bool1 = true;
-            break label412;
+            break label411;
           }
           ((com.tencent.mm.vfs.e)localObject6).delete();
-          ad.i("MMKernel.CoreStorage", "Move account directory: %s => %s", new Object[] { localObject4, localObject6 });
-          if (!((com.tencent.mm.vfs.e)localObject4).af((com.tencent.mm.vfs.e)localObject6))
+          ac.i("MMKernel.CoreStorage", "Move account directory: %s => %s", new Object[] { localObject4, localObject6 });
+          if (!((com.tencent.mm.vfs.e)localObject4).ae((com.tencent.mm.vfs.e)localObject6))
           {
-            ad.w("MMKernel.CoreStorage", "Failed to move uinPath, use old accPath");
+            ac.w("MMKernel.CoreStorage", "Failed to move uinPath, use old accPath");
             i = 4;
             bool1 = false;
-            break label412;
+            break label411;
           }
-          ad.i("MMKernel.CoreStorage", "Moved to new uinPath");
+          ac.i("MMKernel.CoreStorage", "Moved to new uinPath");
           i = 3;
           bool1 = true;
-          break label412;
+          break label411;
         }
         if (!((com.tencent.mm.vfs.e)localObject6).isDirectory()) {
           ((com.tencent.mm.vfs.e)localObject6).delete();
@@ -729,35 +731,35 @@ public final class a
         ((com.tencent.mm.vfs.e)localObject6).mkdirs();
         i = 5;
         bool1 = true;
-        break label412;
-        label1201:
+        break label411;
+        label1200:
         localObject4 = ???;
-        break label462;
-        label1208:
+        break label461;
+        label1207:
         localObject4 = localObject3;
-        break label514;
+        break label513;
       }
-      localObject7 = locale.gda.FCL;
-      if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil((String)localObject7))
+      localObject7 = locale.ghG.HbO;
+      if (!bs.isNullOrNil((String)localObject7))
       {
-        ad.e("MMKernel.CoreStorage", "dbinit failed :".concat(String.valueOf(localObject7)));
-        com.tencent.mm.sdk.a.b.M("init db Failed: [ " + (String)localObject7 + "]", "DBinit");
+        ac.e("MMKernel.CoreStorage", "dbinit failed :".concat(String.valueOf(localObject7)));
+        com.tencent.mm.sdk.a.b.N("init db Failed: [ " + (String)localObject7 + "]", "DBinit");
       }
-      localObject7 = locale.gda;
-      if (((h)localObject7).FCI != null) {}
-      for (boolean bool3 = ((h)localObject7).FCI.FCf;; bool3 = false)
+      localObject7 = locale.ghG;
+      if (((h)localObject7).HbL != null) {}
+      for (boolean bool3 = ((h)localObject7).HbL.Hbi;; bool3 = false)
       {
         if (bool3) {
-          locale.gdg = true;
+          locale.ghM = true;
         }
-        locale.gdc = new ab(locale.gda);
-        locale.gde = new bz(locale.gda);
-        locale.gda.FCK = new e.3(locale);
-        locale.gdf = locale.gde.eNa();
-        locale.gdb = new h(locale.gcU);
-        localObject7 = locale.gdb;
+        locale.ghI = new ae(locale.ghG);
+        locale.ghK = new cc(locale.ghG);
+        locale.ghG.HbN = new e.3(locale);
+        locale.ghL = locale.ghK.fcE();
+        locale.ghH = new h(locale.ghA);
+        localObject7 = locale.ghH;
         l2 = k;
-        com.tencent.mm.compatible.deviceinfo.q.cG(true);
+        com.tencent.mm.compatible.deviceinfo.q.cF(true);
         if (((h)localObject7).b((String)localObject4, (String)localObject6, str, l2, new HashMap(), true)) {
           break;
         }
@@ -765,235 +767,235 @@ public final class a
         AppMethodBeat.o(132021);
         throw ((Throwable)???);
       }
-      locale.gdd = new com.tencent.mm.storage.bt(locale.gdc);
-      locale.gdd.add(new e.4(locale));
-      locale.gdd.eMT();
+      locale.ghJ = new bw(locale.ghI);
+      locale.ghJ.add(new e.4(locale));
+      locale.ghJ.fcx();
       ((Runnable)localObject5).run();
-      if ((bool4) && (locale.gcV.startsWith(com.tencent.mm.loader.j.b.aib())))
+      if ((bool4) && (locale.ghB.startsWith(com.tencent.mm.loader.j.b.apb())))
       {
         bool3 = true;
-        label1534:
-        localObject5 = com.tencent.mm.vfs.a.gap().gar();
-        localObject6 = ((com.tencent.mm.vfs.a.a)localObject5).lz("account", (String)???).lz("accountSalt", locale.gcY);
+        label1533:
+        localObject5 = com.tencent.mm.vfs.a.ghk().ghm();
+        localObject6 = ((com.tencent.mm.vfs.a.a)localObject5).lW("account", (String)???).lW("accountSalt", locale.ghE);
         if (!bool3) {
-          break label1960;
+          break label1959;
         }
-        localObject4 = locale.gcY;
-        label1577:
-        ((com.tencent.mm.vfs.a.a)localObject6).lz("accountSd", (String)localObject4);
+        localObject4 = locale.ghE;
+        label1576:
+        ((com.tencent.mm.vfs.a.a)localObject6).lW("accountSd", (String)localObject4);
         if (localObject3 == null) {
-          break label1967;
+          break label1966;
         }
         bool4 = true;
-        label1596:
+        label1595:
         o.a((com.tencent.mm.vfs.a.a)localObject5, bool3, bool4);
-        o.a((com.tencent.mm.vfs.a.a)localObject5, locale.gcV, bool1);
-        ((com.tencent.mm.vfs.a.a)localObject5).xf(false);
-        ad.i("VFS.Debug", "SetEnv ${account} = ".concat(String.valueOf(???)));
-        o.xg(bool1);
+        o.a((com.tencent.mm.vfs.a.a)localObject5, locale.ghB, bool1);
+        ((com.tencent.mm.vfs.a.a)localObject5).yo(false);
+        ac.i("VFS.Debug", "SetEnv ${account} = ".concat(String.valueOf(???)));
+        o.yp(bool1);
         if (bool2)
         {
-          l2 = ((Long)locale.gdc.get(ae.a.FmQ, Long.valueOf(0L))).longValue();
-          i = ((Integer)locale.gdc.get(ae.a.FmR, Integer.valueOf(0))).intValue();
+          l2 = ((Long)locale.ghI.get(ah.a.GKF, Long.valueOf(0L))).longValue();
+          i = ((Integer)locale.ghI.get(ah.a.GKG, Integer.valueOf(0))).intValue();
           if (l2 <= 0L) {
-            break label1973;
+            break label1972;
           }
-          ad.w("MMKernel.CoreStorage", "summerinstall new install but firsttime[%d] > 0", new Object[] { Long.valueOf(l2) });
-          label1725:
+          ac.w("MMKernel.CoreStorage", "summerinstall new install but firsttime[%d] > 0", new Object[] { Long.valueOf(l2) });
+          label1724:
           if (i <= 0) {
-            break label1993;
+            break label1992;
           }
-          ad.w("MMKernel.CoreStorage", "summerinstall new install but version[%d] > 0", new Object[] { Integer.valueOf(i) });
-          label1749:
-          ad.i("MMKernel.CoreStorage", "edw setAccUin, summerinstall time[%d]，version[%d], clientversion[%d]", new Object[] { (Long)locale.gdc.get(ae.a.FmQ, Long.valueOf(0L)), (Integer)locale.gdc.get(ae.a.FmR, Integer.valueOf(0)), Integer.valueOf(d.CpK) });
+          ac.w("MMKernel.CoreStorage", "summerinstall new install but version[%d] > 0", new Object[] { Integer.valueOf(i) });
+          label1748:
+          ac.i("MMKernel.CoreStorage", "edw setAccUin, summerinstall time[%d]，version[%d], clientversion[%d]", new Object[] { (Long)locale.ghI.get(ah.a.GKF, Long.valueOf(0L)), (Integer)locale.ghI.get(ah.a.GKG, Integer.valueOf(0)), Integer.valueOf(d.DIc) });
         }
         if (paramBoolean) {
-          break label2018;
+          break label2017;
         }
-        g.afC();
-        ??? = com.tencent.mm.sdk.platformtools.bt.nullAsNil((String)g.afB().afk().get(2, null));
-        ad.i("MMKernel.CoreAccount", "summerinit validateUsername username[%s]", new Object[] { ??? });
+        g.agS();
+        ??? = bs.nullAsNil((String)g.agR().agA().get(2, null));
+        ac.i("MMKernel.CoreAccount", "summerinit validateUsername username[%s]", new Object[] { ??? });
         if (((String)???).length() > 0) {
-          break label2013;
+          break label2012;
         }
-        ad.e("MMKernel.CoreAccount", "username of acc stg not set: uin=" + b.a(gbY));
-        aew();
-        b.a(gbY, 0);
-        gbZ = com.tencent.mm.sdk.platformtools.bt.eGN().toString();
-        aq.f(new Runnable()
+        ac.e("MMKernel.CoreAccount", "username of acc stg not set: uin=" + b.a(ggE));
+        afM();
+        b.a(ggE, 0);
+        ggF = bs.eWi().toString();
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(132004);
-            g.afC().releaseAll();
+            g.agS().releaseAll();
             AppMethodBeat.o(132004);
           }
         });
       }
-      label1960:
-      label1967:
-      label1973:
-      label1993:
-      label2013:
+      label1959:
+      label1966:
+      label1972:
+      label1992:
+      label2012:
       for (i = 0;; i = 1)
       {
         if (i != 0) {
-          break label2018;
+          break label2017;
         }
-        com.tencent.mm.plugin.report.e.vIY.idkeyStat(598L, 21L, 1L, true);
-        ad.w("MMKernel.CoreAccount", "setAccUin, validateUsername false no need initialize!");
+        com.tencent.mm.plugin.report.e.wTc.idkeyStat(598L, 21L, 1L, true);
+        ac.w("MMKernel.CoreAccount", "setAccUin, validateUsername false no need initialize!");
         break;
         bool3 = false;
-        break label1534;
+        break label1533;
         localObject4 = ???;
-        break label1577;
+        break label1576;
         bool4 = false;
-        break label1596;
-        locale.gdc.set(ae.a.FmQ, Long.valueOf(System.currentTimeMillis()));
-        break label1725;
-        locale.gdc.set(ae.a.FmR, Integer.valueOf(d.CpK));
-        break label1749;
+        break label1595;
+        locale.ghI.set(ah.a.GKF, Long.valueOf(System.currentTimeMillis()));
+        break label1724;
+        locale.ghI.set(ah.a.GKG, Integer.valueOf(d.DIc));
+        break label1748;
       }
-      label2018:
+      label2017:
       ??? = new cj();
-      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)???);
-      g.afC();
-      ??? = g.afB();
+      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)???);
+      g.agS();
+      ??? = g.agR();
       localObject3 = new e.c();
-      j = com.tencent.mm.sdk.platformtools.bt.l((Integer)((e)???).gdc.get(14, null));
-      m = d.CpK;
-      ad.d("MMKernel.CoreStorage", "sVer: %s, cVer: %s.", new Object[] { Integer.toHexString(j), Integer.toHexString(m) });
+      j = bs.m((Integer)((e)???).ghI.get(14, null));
+      m = d.DIc;
+      ac.d("MMKernel.CoreStorage", "sVer: %s, cVer: %s.", new Object[] { Integer.toHexString(j), Integer.toHexString(m) });
       if (m == j) {
         paramBoolean = false;
       }
       for (;;)
       {
-        label2113:
+        label2112:
         if (paramBoolean)
         {
-          ((e)???).gdc.set(8197, "");
-          ((e)???).gdc.set(15, Integer.valueOf(0));
+          ((e)???).ghI.set(8197, "");
+          ((e)???).ghI.set(15, Integer.valueOf(0));
         }
         if (j != m)
         {
           bool1 = true;
-          label2153:
+          label2152:
           if ((j > 620822536) || (j == m)) {
-            break label2896;
+            break label2895;
           }
-          ((e)???).gdc.set(274480, Boolean.TRUE);
-          ad.i("MMKernel.CoreStorage", "[initialize] need init emoji");
+          ((e)???).ghI.set(274480, Boolean.TRUE);
+          ac.i("MMKernel.CoreStorage", "[initialize] need init emoji");
           if ((j != 0) && (j < 637599744)) {
-            ((e)???).gdc.set(348162, Boolean.TRUE);
+            ((e)???).ghI.set(348162, Boolean.TRUE);
           }
           if (j == m) {
-            break label2922;
+            break label2921;
           }
           i = 1;
-          label2222:
+          label2221:
           if (i == 0) {
-            break label2927;
+            break label2926;
           }
-          ad.w("MMKernel.CoreStorage", "account storage version changed from " + Integer.toHexString(j) + " to " + Integer.toHexString(m) + ", init=" + paramBoolean);
-          if (((Integer)((e)???).gcR.get(37, Integer.valueOf(0))).intValue() == 0) {
-            ((e)???).gcR.set(37, Integer.valueOf(j));
+          ac.w("MMKernel.CoreStorage", "account storage version changed from " + Integer.toHexString(j) + " to " + Integer.toHexString(m) + ", init=" + paramBoolean);
+          if (((Integer)((e)???).ghx.get(37, Integer.valueOf(0))).intValue() == 0) {
+            ((e)???).ghx.set(37, Integer.valueOf(j));
           }
-          ((e)???).gdc.set(30, Boolean.FALSE);
-          ((e)???).gdc.set(-2046825377, Boolean.FALSE);
-          ((e)???).gdc.set(-2046825369, Boolean.FALSE);
-          ((e)???).gdc.set(54, Boolean.FALSE);
-          ((e)???).gdc.set(-2046825368, Boolean.FALSE);
-          ((e)???).gdc.set(-2046825366, Boolean.TRUE);
-          ((e)???).gdc.set(62, Boolean.TRUE);
-          aj.getContext().getSharedPreferences("update_config_prefs", com.tencent.mm.compatible.util.g.XN()).edit().clear().commit();
+          ((e)???).ghI.set(30, Boolean.FALSE);
+          ((e)???).ghI.set(-2046825377, Boolean.FALSE);
+          ((e)???).ghI.set(-2046825369, Boolean.FALSE);
+          ((e)???).ghI.set(54, Boolean.FALSE);
+          ((e)???).ghI.set(-2046825368, Boolean.FALSE);
+          ((e)???).ghI.set(-2046825366, Boolean.TRUE);
+          ((e)???).ghI.set(62, Boolean.TRUE);
+          ai.getContext().getSharedPreferences("update_config_prefs", com.tencent.mm.compatible.util.g.YK()).edit().clear().commit();
           if (((j & 0xFFFFFF00) == (m & 0xFFFFFF00)) || (j == 0))
           {
-            ad.d("MMKernel.CoreStorage", "lock show_whatsnew from if.");
-            an.aFx("show_whatsnew");
+            ac.d("MMKernel.CoreStorage", "lock show_whatsnew from if.");
+            am.aKO("show_whatsnew");
           }
-          if (((e)???).gdc.getInt(ae.a.FwN, -1) <= 0) {
-            break label2946;
+          if (((e)???).ghI.getInt(ah.a.GVb, -1) <= 0) {
+            break label2945;
           }
           paramBoolean = true;
-          label2487:
-          ad.i("MMKernel.CoreStorage", "unlock show_whatsnew from testWhatsNew, %s.", new Object[] { Boolean.valueOf(paramBoolean) });
+          label2486:
+          ac.i("MMKernel.CoreStorage", "unlock show_whatsnew from testWhatsNew, %s.", new Object[] { Boolean.valueOf(paramBoolean) });
           if (paramBoolean) {
-            an.aFy("show_whatsnew");
+            am.aKP("show_whatsnew");
           }
-          ((e.c)localObject3).gdr = bool1;
-          ((e.c)localObject3).gds = j;
-          this.gcd = ((e.c)localObject3);
-          ad.i("MMKernel.CoreAccount", "check is update :%b ", new Object[] { Boolean.valueOf(((e.c)localObject3).gdr) });
-          this.gcg = true;
-          if (!this.gcf)
+          ((e.c)localObject3).ghX = bool1;
+          ((e.c)localObject3).ghY = j;
+          this.ggJ = ((e.c)localObject3);
+          ac.i("MMKernel.CoreAccount", "check is update :%b ", new Object[] { Boolean.valueOf(((e.c)localObject3).ghX) });
+          this.ggM = true;
+          if (!this.ggL)
           {
-            aey();
-            g.afz().aeK();
+            afO();
+            g.agP().aga();
           }
-          ay.gNa.aD("last_login_uin", p.getString(k));
-          com.tencent.mm.plugin.report.e.vIY.setUin(k);
+          ay.hnA.aL("last_login_uin", p.getString(k));
+          com.tencent.mm.plugin.report.e.wTc.setUin(k);
           if (getClass().getClassLoader() != null) {
-            break label2951;
+            break label2950;
           }
           i = -1;
-          label2615:
+          label2614:
           if (Thread.currentThread().getContextClassLoader() != null) {
-            break label2965;
+            break label2964;
           }
         }
         for (j = -1;; j = Thread.currentThread().getContextClassLoader().hashCode())
         {
-          ad.i("MMKernel.CoreAccount", "SmcLogic.setUin, class loader %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-          this.gcc = new com.tencent.mm.model.a();
-          ad.i("MMKernel.CoreAccount", "setAccUin done :%s", new Object[] { p.getString(k) });
-          ??? = new gt();
-          com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)???);
-          g.afC();
-          if (g.afA().gcy == null) {
+          ac.i("MMKernel.CoreAccount", "SmcLogic.setUin, class loader %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          this.ggI = new com.tencent.mm.model.a();
+          ac.i("MMKernel.CoreAccount", "setAccUin done :%s", new Object[] { p.getString(k) });
+          ??? = new gu();
+          com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)???);
+          g.agS();
+          if (g.agQ().ghe == null) {
             break;
           }
-          g.afC();
-          if (g.afA().gcy.gVH == null) {
+          g.agS();
+          if (g.agQ().ghe.hwg == null) {
             break;
           }
-          g.afC();
-          g.afA().gcy.gVH.ej(true);
-          g.afC();
-          ??? = g.afA().gcy.gVH.avg();
+          g.agS();
+          g.agQ().ghe.hwg.eE(true);
+          g.agS();
+          ??? = g.agQ().ghe.hwg.aBZ();
           if ((k == 0) || (??? == null) || (k == ((com.tencent.mm.network.c)???).getUin())) {
             break;
           }
-          ad.w("MMKernel.CoreAccount", "summerauth update acc info with acc stg: old acc uin=%d, this uin=%d", new Object[] { Integer.valueOf(((com.tencent.mm.network.c)???).getUin()), Integer.valueOf(k) });
-          com.tencent.mm.plugin.report.e.vIY.idkeyStat(148L, 46L, 1L, false);
+          ac.w("MMKernel.CoreAccount", "summerauth update acc info with acc stg: old acc uin=%d, this uin=%d", new Object[] { Integer.valueOf(((com.tencent.mm.network.c)???).getUin()), Integer.valueOf(k) });
+          com.tencent.mm.plugin.report.e.wTc.idkeyStat(148L, 46L, 1L, false);
           ((com.tencent.mm.network.c)???).setUin(k);
           break;
           if ((m > 570425344) && (j <= 570425344))
           {
             paramBoolean = true;
-            break label2113;
+            break label2112;
           }
           if ((m <= 570556456) || (j > 570556456)) {
-            break label2978;
+            break label2977;
           }
           paramBoolean = true;
-          break label2113;
+          break label2112;
           bool1 = false;
-          break label2153;
-          label2896:
-          ((e)???).gdc.set(274480, Boolean.FALSE);
-          ad.i("MMKernel.CoreStorage", "[initialize] need not init emoji");
-          break label2189;
-          label2922:
+          break label2152;
+          label2895:
+          ((e)???).ghI.set(274480, Boolean.FALSE);
+          ac.i("MMKernel.CoreStorage", "[initialize] need not init emoji");
+          break label2188;
+          label2921:
           i = 0;
-          break label2222;
-          label2927:
-          ad.d("MMKernel.CoreStorage", "lock show_whatsnew from else.");
-          an.aFx("show_whatsnew");
-          break label2470;
+          break label2221;
+          label2926:
+          ac.d("MMKernel.CoreStorage", "lock show_whatsnew from else.");
+          am.aKO("show_whatsnew");
+          break label2469;
           paramBoolean = false;
-          break label2487;
+          break label2486;
           i = getClass().getClassLoader().hashCode();
-          break label2615;
+          break label2614;
         }
         paramBoolean = false;
       }
@@ -1003,23 +1005,23 @@ public final class a
   public final void initialize()
   {
     AppMethodBeat.i(132038);
-    if (aeI())
+    if (afY())
     {
       AppMethodBeat.o(132038);
       return;
     }
-    synchronized (this.gbX)
+    synchronized (this.ggD)
     {
-      if (aeI())
+      if (afY())
       {
         AppMethodBeat.o(132038);
         return;
       }
-      int i = b.a(gbY);
+      int i = b.a(ggE);
       if (i != 0)
       {
-        this.gcl = SystemClock.elapsedRealtime();
-        ad.w("MMKernel.CoreAccount", "auto set up account storage uin: %d, stack: %s", new Object[] { Integer.valueOf(i), com.tencent.mm.sdk.platformtools.bt.eGN() });
+        this.ggR = SystemClock.elapsedRealtime();
+        ac.w("MMKernel.CoreAccount", "auto set up account storage uin: %d, stack: %s", new Object[] { Integer.valueOf(i), bs.eWi() });
         dy(false);
       }
       AppMethodBeat.o(132038);
@@ -1030,9 +1032,9 @@ public final class a
   public final void release()
   {
     AppMethodBeat.i(132037);
-    synchronized (this.gbX)
+    synchronized (this.ggD)
     {
-      aex();
+      afN();
       AppMethodBeat.o(132037);
       return;
     }
@@ -1043,9 +1045,9 @@ public final class a
     static
     {
       AppMethodBeat.i(132007);
-      gcr = new a("NotReady", 0);
-      gcs = new a("AccountHasReady", 1);
-      gct = new a[] { gcr, gcs };
+      ggX = new a("NotReady", 0);
+      ggY = new a("AccountHasReady", 1);
+      ggZ = new a[] { ggX, ggY };
       AppMethodBeat.o(132007);
     }
     
@@ -1054,27 +1056,27 @@ public final class a
   
   static final class b
   {
-    private static boolean gcw = true;
-    private boolean gcu = false;
-    private aa gcv;
+    private static boolean ghc = true;
+    private boolean gha = false;
+    private ad ghb;
     private int uin = 0;
     
-    private static void a(aa paramaa, int paramInt)
+    private static void a(ad paramad, int paramInt)
     {
       AppMethodBeat.i(132011);
-      ad.i("MMKernel.CoreAccount", "setSysUin uin: %d, stack: %s", new Object[] { Integer.valueOf(paramInt), com.tencent.mm.sdk.platformtools.bt.eGN() });
-      if (!aj.getContext().getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.XN()).edit().putInt("default_uin", paramInt).commit())
+      ac.i("MMKernel.CoreAccount", "setSysUin uin: %d, stack: %s", new Object[] { Integer.valueOf(paramInt), bs.eWi() });
+      if (!ai.getContext().getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.YK()).edit().putInt("default_uin", paramInt).commit())
       {
-        com.tencent.mm.plugin.report.e.vIY.idkeyStat(148L, 150L, 1L, false);
-        ad.e("MMKernel.CoreAccount", "uin_sp save fail");
+        com.tencent.mm.plugin.report.e.wTc.idkeyStat(148L, 150L, 1L, false);
+        ac.e("MMKernel.CoreAccount", "uin_sp save fail");
       }
-      paramaa.set(1, Integer.valueOf(paramInt));
-      paramaa.eKx();
+      paramad.set(1, Integer.valueOf(paramInt));
+      paramad.eZZ();
       AppMethodBeat.o(132011);
     }
     
     /* Error */
-    private void aeO()
+    private void age()
     {
       // Byte code:
       //   0: iconst_0
@@ -1084,16 +1086,16 @@ public final class a
       //   4: ldc 143
       //   6: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   9: aload_0
-      //   10: getfield 145	com/tencent/mm/kernel/a$b:gcv	Lcom/tencent/mm/storage/aa;
+      //   10: getfield 145	com/tencent/mm/kernel/a$b:ghb	Lcom/tencent/mm/storage/ad;
       //   13: invokestatic 151	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
       //   16: aload_0
-      //   17: getfield 145	com/tencent/mm/kernel/a$b:gcv	Lcom/tencent/mm/storage/aa;
+      //   17: getfield 145	com/tencent/mm/kernel/a$b:ghb	Lcom/tencent/mm/storage/ad;
       //   20: astore 5
       //   22: aload 5
       //   24: ifnonnull +23 -> 47
       //   27: ldc 51
       //   29: ldc 153
-      //   31: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+      //   31: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
       //   34: aload_0
       //   35: iload_1
       //   36: putfield 24	com/tencent/mm/kernel/a$b:uin	I
@@ -1104,7 +1106,7 @@ public final class a
       //   46: return
       //   47: aload 5
       //   49: iconst_1
-      //   50: invokevirtual 160	com/tencent/mm/storage/aa:get	(I)Ljava/lang/Object;
+      //   50: invokevirtual 160	com/tencent/mm/storage/ad:get	(I)Ljava/lang/Object;
       //   53: checkcast 55	java/lang/Integer
       //   56: astore_3
       //   57: aload_3
@@ -1112,15 +1114,15 @@ public final class a
       //   59: aload_3
       //   60: ifnonnull +140 -> 200
       //   63: aload 5
-      //   65: getfield 163	com/tencent/mm/storage/aa:Ffl	Z
+      //   65: getfield 163	com/tencent/mm/storage/ad:GCY	Z
       //   68: ifeq +17 -> 85
-      //   71: getstatic 113	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+      //   71: getstatic 113	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
       //   74: ldc2_w 114
       //   77: ldc2_w 164
       //   80: lconst_1
       //   81: iconst_0
       //   82: invokevirtual 121	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
-      //   85: invokestatic 141	com/tencent/mm/kernel/a$b:aeP	()I
+      //   85: invokestatic 141	com/tencent/mm/kernel/a$b:agf	()I
       //   88: invokestatic 59	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   91: astore 4
       //   93: aload_3
@@ -1142,11 +1144,11 @@ public final class a
       //   117: dup
       //   118: iconst_2
       //   119: aload 5
-      //   121: getfield 163	com/tencent/mm/storage/aa:Ffl	Z
+      //   121: getfield 163	com/tencent/mm/storage/ad:GCY	Z
       //   124: invokestatic 172	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
       //   127: aastore
-      //   128: invokestatic 70	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   131: getstatic 18	com/tencent/mm/kernel/a$b:gcw	Z
+      //   128: invokestatic 70	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   131: getstatic 18	com/tencent/mm/kernel/a$b:ghc	Z
       //   134: ifeq +53 -> 187
       //   137: ldc 51
       //   139: ldc 174
@@ -1158,26 +1160,26 @@ public final class a
       //   149: aastore
       //   150: dup
       //   151: iconst_1
-      //   152: invokestatic 65	com/tencent/mm/sdk/platformtools/bt:eGN	()Lcom/tencent/mm/sdk/platformtools/at;
+      //   152: invokestatic 65	com/tencent/mm/sdk/platformtools/bs:eWi	()Lcom/tencent/mm/sdk/platformtools/as;
       //   155: aastore
-      //   156: invokestatic 176	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   159: getstatic 113	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+      //   156: invokestatic 176	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   159: getstatic 113	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
       //   162: sipush 11911
       //   165: iconst_1
       //   166: anewarray 4	java/lang/Object
       //   169: dup
       //   170: iconst_0
       //   171: aload 4
-      //   173: invokestatic 180	com/tencent/mm/sdk/platformtools/bt:l	(Ljava/lang/Integer;)I
+      //   173: invokestatic 180	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Integer;)I
       //   176: invokestatic 59	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   179: aastore
       //   180: invokevirtual 184	com/tencent/mm/plugin/report/e:f	(I[Ljava/lang/Object;)V
       //   183: iconst_0
-      //   184: putstatic 18	com/tencent/mm/kernel/a$b:gcw	Z
+      //   184: putstatic 18	com/tencent/mm/kernel/a$b:ghc	Z
       //   187: aload 5
       //   189: aload 4
       //   191: invokevirtual 187	java/lang/Integer:intValue	()I
-      //   194: invokestatic 189	com/tencent/mm/kernel/a$b:a	(Lcom/tencent/mm/storage/aa;I)V
+      //   194: invokestatic 189	com/tencent/mm/kernel/a$b:a	(Lcom/tencent/mm/storage/ad;I)V
       //   197: aload 4
       //   199: astore_2
       //   200: ldc 51
@@ -1187,12 +1189,12 @@ public final class a
       //   208: dup
       //   209: iconst_0
       //   210: aload_2
-      //   211: invokestatic 180	com/tencent/mm/sdk/platformtools/bt:l	(Ljava/lang/Integer;)I
+      //   211: invokestatic 180	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Integer;)I
       //   214: invokestatic 59	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   217: aastore
-      //   218: invokestatic 70	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   218: invokestatic 70	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   221: aload_2
-      //   222: invokestatic 180	com/tencent/mm/sdk/platformtools/bt:l	(Ljava/lang/Integer;)I
+      //   222: invokestatic 180	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Integer;)I
       //   225: istore_1
       //   226: goto -192 -> 34
       //   229: astore_2
@@ -1208,7 +1210,7 @@ public final class a
       //   229	4	2	localObject2	Object
       //   56	55	3	localInteger1	Integer
       //   91	107	4	localInteger2	Integer
-      //   20	168	5	localaa	aa
+      //   20	168	5	localad	ad
       // Exception table:
       //   from	to	target	type
       //   4	22	229	finally
@@ -1222,11 +1224,11 @@ public final class a
       //   200	226	229	finally
     }
     
-    private static int aeP()
+    private static int agf()
     {
-      AppMethodBeat.i(192868);
-      int i = aj.getContext().getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.XN()).getInt("default_uin", 0);
-      AppMethodBeat.o(192868);
+      AppMethodBeat.i(206875);
+      int i = ai.getContext().getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.YK()).getInt("default_uin", 0);
+      AppMethodBeat.o(206875);
       return i;
     }
     
@@ -1235,10 +1237,10 @@ public final class a
       try
       {
         AppMethodBeat.i(132008);
-        if (!this.gcu)
+        if (!this.gha)
         {
-          aeO();
-          this.gcu = true;
+          age();
+          this.gha = true;
         }
         int i = this.uin;
         AppMethodBeat.o(132008);
@@ -1252,9 +1254,9 @@ public final class a
       try
       {
         AppMethodBeat.i(132009);
-        ad.i("MMKernel.CoreAccount", "Uin From %s To %s hash:%d thread:%d[%s] stack:%s", new Object[] { p.getString(this.uin), p.getString(paramInt), Integer.valueOf(i.cf(paramInt, 100)), Long.valueOf(Thread.currentThread().getId()), Thread.currentThread().getName(), com.tencent.mm.sdk.platformtools.bt.eGN() });
-        Assert.assertNotNull(this.gcv);
-        a(this.gcv, paramInt);
+        ac.i("MMKernel.CoreAccount", "Uin From %s To %s hash:%d thread:%d[%s] stack:%s", new Object[] { p.getString(this.uin), p.getString(paramInt), Integer.valueOf(i.cc(paramInt, 100)), Long.valueOf(Thread.currentThread().getId()), Thread.currentThread().getName(), bs.eWi() });
+        Assert.assertNotNull(this.ghb);
+        a(this.ghb, paramInt);
         this.uin = paramInt;
         AppMethodBeat.o(132009);
         return;
@@ -1266,17 +1268,17 @@ public final class a
       }
     }
     
-    public final void a(aa paramaa)
+    public final void a(ad paramad)
     {
       try
       {
-        this.gcv = paramaa;
+        this.ghb = paramad;
         return;
       }
       finally
       {
-        paramaa = finally;
-        throw paramaa;
+        paramad = finally;
+        throw paramad;
       }
     }
   }

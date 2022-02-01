@@ -5,53 +5,77 @@ import com.tencent.mm.media.f.c;
 import com.tencent.mm.media.f.d;
 import com.tencent.mm.plugin.voip.model.t;
 import com.tencent.mm.plugin.voip.video.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class e
 {
-  private static e zxX;
-  public d zpx;
-  public AtomicBoolean zxY;
-  public l zxZ;
-  public a zya;
+  private static e AQQ;
+  public d AIm;
+  public AtomicBoolean AQR;
+  public l AQS;
+  public a AQT;
   
   public e()
   {
-    AppMethodBeat.i(192193);
-    this.zxY = new AtomicBoolean(false);
-    this.zpx = null;
-    AppMethodBeat.o(192193);
+    AppMethodBeat.i(208531);
+    this.AQR = new AtomicBoolean(false);
+    this.AIm = null;
+    AppMethodBeat.o(208531);
   }
   
-  public static e dXC()
+  public static e emX()
   {
     AppMethodBeat.i(115738);
-    if (zxX == null) {
-      zxX = new e();
+    if (AQQ == null) {
+      AQQ = new e();
     }
-    e locale = zxX;
+    e locale = AQQ;
     AppMethodBeat.o(115738);
     return locale;
   }
   
-  public final l dXD()
+  public final void emU()
+  {
+    try
+    {
+      AppMethodBeat.i(208533);
+      ac.m("MicroMsg.VoipHardDecodeUtil", "detachGLContext, isContextAttached %s", new Object[] { this.AQR });
+      if (this.AQR.compareAndSet(false, false)) {
+        ac.i("MicroMsg.VoipHardDecodeUtil", "current has attach and it need to detach ");
+      }
+      if ((this.AQR.compareAndSet(true, false)) && (this.AQS != null))
+      {
+        this.AQS.detachFromGLContext();
+        if (this.AIm != null)
+        {
+          this.AIm.close();
+          this.AIm = null;
+        }
+      }
+      AppMethodBeat.o(208533);
+      return;
+    }
+    finally {}
+  }
+  
+  public final l emY()
   {
     try
     {
       AppMethodBeat.i(115739);
-      this.zpx = c.a(false, 14L);
-      Object localObject1 = t.zlN;
-      t.dUb();
-      if (this.zpx.gro <= 0)
+      this.AIm = c.a(false, 14L);
+      Object localObject1 = t.AEB;
+      t.ejn();
+      if (this.AIm.gRW <= 0)
       {
-        localObject1 = t.zlN;
-        t.dUc();
+        localObject1 = t.AEB;
+        t.ejo();
       }
-      this.zxZ = new l(this.zpx.gro);
-      this.zpx.close();
-      this.zpx = null;
-      localObject1 = this.zxZ;
+      this.AQS = new l(this.AIm.gRW);
+      this.AIm.close();
+      this.AIm = null;
+      localObject1 = this.AQS;
       AppMethodBeat.o(115739);
       return localObject1;
     }
@@ -59,81 +83,81 @@ public final class e
   }
   
   /* Error */
-  public final boolean dXE()
+  public final boolean emZ()
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_1
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc 87
+    //   4: ldc 111
     //   6: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: ldc 89
-    //   11: ldc 91
+    //   9: ldc 51
+    //   11: ldc 113
     //   13: iconst_1
     //   14: anewarray 4	java/lang/Object
     //   17: dup
     //   18: iconst_0
     //   19: aload_0
-    //   20: getfield 35	com/tencent/mm/plugin/voip/video/b/e:zxY	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   20: getfield 35	com/tencent/mm/plugin/voip/video/b/e:AQR	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   23: aastore
-    //   24: invokestatic 96	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   24: invokestatic 115	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   27: aload_0
-    //   28: getfield 37	com/tencent/mm/plugin/voip/video/b/e:zpx	Lcom/tencent/mm/media/f/d;
+    //   28: getfield 37	com/tencent/mm/plugin/voip/video/b/e:AIm	Lcom/tencent/mm/media/f/d;
     //   31: ifnonnull +39 -> 70
     //   34: aload_0
     //   35: iconst_0
-    //   36: ldc2_w 51
-    //   39: invokestatic 57	com/tencent/mm/media/f/c:a	(ZJ)Lcom/tencent/mm/media/f/d;
-    //   42: putfield 37	com/tencent/mm/plugin/voip/video/b/e:zpx	Lcom/tencent/mm/media/f/d;
+    //   36: ldc2_w 84
+    //   39: invokestatic 90	com/tencent/mm/media/f/c:a	(ZJ)Lcom/tencent/mm/media/f/d;
+    //   42: putfield 37	com/tencent/mm/plugin/voip/video/b/e:AIm	Lcom/tencent/mm/media/f/d;
     //   45: aload_0
-    //   46: getfield 37	com/tencent/mm/plugin/voip/video/b/e:zpx	Lcom/tencent/mm/media/f/d;
-    //   49: putstatic 99	com/tencent/mm/plugin/voip/model/v2protocal:zpx	Lcom/tencent/mm/media/f/d;
-    //   52: ldc 89
-    //   54: ldc 101
+    //   46: getfield 37	com/tencent/mm/plugin/voip/video/b/e:AIm	Lcom/tencent/mm/media/f/d;
+    //   49: putstatic 118	com/tencent/mm/plugin/voip/model/v2protocal:AIm	Lcom/tencent/mm/media/f/d;
+    //   52: ldc 51
+    //   54: ldc 120
     //   56: iconst_1
     //   57: anewarray 4	java/lang/Object
     //   60: dup
     //   61: iconst_0
     //   62: aload_0
-    //   63: getfield 37	com/tencent/mm/plugin/voip/video/b/e:zpx	Lcom/tencent/mm/media/f/d;
+    //   63: getfield 37	com/tencent/mm/plugin/voip/video/b/e:AIm	Lcom/tencent/mm/media/f/d;
     //   66: aastore
-    //   67: invokestatic 96	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   67: invokestatic 115	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   70: aload_0
-    //   71: getfield 35	com/tencent/mm/plugin/voip/video/b/e:zxY	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   71: getfield 35	com/tencent/mm/plugin/voip/video/b/e:AQR	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   74: iconst_1
     //   75: iconst_0
-    //   76: invokevirtual 105	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   76: invokevirtual 63	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
     //   79: ifeq +19 -> 98
-    //   82: ldc 89
-    //   84: ldc 107
-    //   86: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   89: ldc 87
+    //   82: ldc 51
+    //   84: ldc 122
+    //   86: invokestatic 68	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: ldc 111
     //   91: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   94: aload_0
     //   95: monitorexit
     //   96: iload_1
     //   97: ireturn
     //   98: aload_0
-    //   99: getfield 35	com/tencent/mm/plugin/voip/video/b/e:zxY	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   99: getfield 35	com/tencent/mm/plugin/voip/video/b/e:AQR	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   102: iconst_0
     //   103: iconst_1
-    //   104: invokevirtual 105	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   104: invokevirtual 63	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
     //   107: ifeq +26 -> 133
     //   110: aload_0
-    //   111: getfield 81	com/tencent/mm/plugin/voip/video/b/e:zxZ	Lcom/tencent/mm/plugin/voip/video/l;
+    //   111: getfield 70	com/tencent/mm/plugin/voip/video/b/e:AQS	Lcom/tencent/mm/plugin/voip/video/l;
     //   114: aload_0
-    //   115: getfield 37	com/tencent/mm/plugin/voip/video/b/e:zpx	Lcom/tencent/mm/media/f/d;
-    //   118: getfield 72	com/tencent/mm/media/f/d:gro	I
-    //   121: invokevirtual 113	com/tencent/mm/plugin/voip/video/l:attachToGLContext	(I)V
+    //   115: getfield 37	com/tencent/mm/plugin/voip/video/b/e:AIm	Lcom/tencent/mm/media/f/d;
+    //   118: getfield 103	com/tencent/mm/media/f/d:gRW	I
+    //   121: invokevirtual 125	com/tencent/mm/plugin/voip/video/l:attachToGLContext	(I)V
     //   124: aload_0
-    //   125: getfield 115	com/tencent/mm/plugin/voip/video/b/e:zya	Lcom/tencent/mm/plugin/voip/video/b/e$a;
-    //   128: invokeinterface 118 1 0
+    //   125: getfield 127	com/tencent/mm/plugin/voip/video/b/e:AQT	Lcom/tencent/mm/plugin/voip/video/b/e$a;
+    //   128: invokeinterface 130 1 0
     //   133: aload_0
-    //   134: getfield 35	com/tencent/mm/plugin/voip/video/b/e:zxY	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   137: invokevirtual 121	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   134: getfield 35	com/tencent/mm/plugin/voip/video/b/e:AQR	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   137: invokevirtual 133	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   140: istore_1
-    //   141: ldc 87
+    //   141: ldc 111
     //   143: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: goto -52 -> 94
     //   149: astore_2
@@ -154,33 +178,9 @@ public final class e
     //   133	146	149	finally
   }
   
-  public final void dXz()
-  {
-    try
-    {
-      AppMethodBeat.i(192195);
-      ad.m("MicroMsg.VoipHardDecodeUtil", "detachGLContext, isContextAttached %s", new Object[] { this.zxY });
-      if (this.zxY.compareAndSet(false, false)) {
-        ad.i("MicroMsg.VoipHardDecodeUtil", "current has attach and it need to detach ");
-      }
-      if ((this.zxY.compareAndSet(true, false)) && (this.zxZ != null))
-      {
-        this.zxZ.detachFromGLContext();
-        if (this.zpx != null)
-        {
-          this.zpx.close();
-          this.zpx = null;
-        }
-      }
-      AppMethodBeat.o(192195);
-      return;
-    }
-    finally {}
-  }
-  
   public static abstract interface a
   {
-    public abstract void Ca();
+    public abstract void BE();
   }
 }
 

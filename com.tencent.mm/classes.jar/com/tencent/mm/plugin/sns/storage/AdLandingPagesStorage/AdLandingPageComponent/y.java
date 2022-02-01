@@ -7,25 +7,25 @@ import java.util.List;
 public final class y
   extends x
 {
-  public LinkedList<x> wWO;
-  public int wWP;
+  public LinkedList<x> yjC;
+  public int yjD;
   
   public y()
   {
     AppMethodBeat.i(96322);
-    this.wWO = new LinkedList();
-    this.wWP = 0;
+    this.yjC = new LinkedList();
+    this.yjD = 0;
     AppMethodBeat.o(96322);
   }
   
-  public final List<x> dvE()
+  public final List<x> dKd()
   {
-    return this.wWO;
+    return this.yjC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y
  * JD-Core Version:    0.7.0.1
  */

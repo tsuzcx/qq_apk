@@ -1,5 +1,6 @@
 package com.google.android.gms.common.images;
 
+import android.app.ActivityManager;
 import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.os.Looper;
 import android.os.ParcelFileDescriptor;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
+import android.support.v4.e.h;
 import android.widget.ImageView;
 import com.google.android.gms.common.annotation.KeepName;
 import com.google.android.gms.common.images.internal.PostProcessedResourceCache;
@@ -38,7 +40,7 @@ public final class ImageManager
   private final Context mContext;
   private final Handler mHandler;
   private final ExecutorService zzoz;
-  private final ImageManager.zza zzpa;
+  private final zza zzpa;
   private final PostProcessedResourceCache zzpb;
   private final Map<ImageRequest, ImageReceiver> zzpc;
   private final Map<Uri, ImageReceiver> zzpd;
@@ -60,7 +62,7 @@ public final class ImageManager
     this.zzoz = Executors.newFixedThreadPool(4);
     if (paramBoolean)
     {
-      this.zzpa = new ImageManager.zza(this.mContext);
+      this.zzpa = new zza(this.mContext);
       this.mContext.registerComponentCallbacks(new zzd(this.zzpa));
     }
     for (;;)
@@ -218,6 +220,12 @@ public final class ImageManager
   public static abstract interface OnImageLoadedListener
   {
     public abstract void onImageLoaded(Uri paramUri, Drawable paramDrawable, boolean paramBoolean);
+  }
+  
+  static final class zza
+    extends h<ImageRequest.zza, Bitmap>
+  {
+    public zza(Context paramContext) {}
   }
   
   final class zzb
@@ -533,7 +541,7 @@ public final class ImageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.images.ImageManager
  * JD-Core Version:    0.7.0.1
  */

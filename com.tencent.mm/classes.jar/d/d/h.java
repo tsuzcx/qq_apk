@@ -2,32 +2,31 @@ package d.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.d.a.a;
-import d.d.b.a.e;
 import d.l;
 import d.p.b;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/coroutines/SafeContinuation;", "T", "Lkotlin/coroutines/Continuation;", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "delegate", "(Lkotlin/coroutines/Continuation;)V", "initialResult", "", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "result", "getOrThrow", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "resumeWith", "", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "Companion", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/SafeContinuation;", "T", "Lkotlin/coroutines/Continuation;", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "delegate", "(Lkotlin/coroutines/Continuation;)V", "initialResult", "", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "result", "getOrThrow", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "resumeWith", "", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "Companion", "kotlin-stdlib"})
 public final class h<T>
-  implements e, d<T>
+  implements d.d.b.a.d, d<T>
 {
-  private static final AtomicReferenceFieldUpdater<h<?>, Object> JgH;
+  private static final AtomicReferenceFieldUpdater<h<?>, Object> KUb;
   @Deprecated
-  public static final a JgI;
-  private final d<T> JgG;
+  public static final a KUc;
+  private final d<T> KUa;
   private volatile Object result;
   
   static
   {
     AppMethodBeat.i(129640);
-    JgI = new a((byte)0);
-    JgH = AtomicReferenceFieldUpdater.newUpdater(h.class, Object.class, "result");
+    KUc = new a((byte)0);
+    KUb = AtomicReferenceFieldUpdater.newUpdater(h.class, Object.class, "result");
     AppMethodBeat.o(129640);
   }
   
   public h(d<? super T> paramd)
   {
-    this(paramd, a.JgK);
+    this(paramd, a.KUe);
     AppMethodBeat.i(129639);
     AppMethodBeat.o(129639);
   }
@@ -35,12 +34,12 @@ public final class h<T>
   private h(d<? super T> paramd, Object paramObject)
   {
     AppMethodBeat.i(129638);
-    this.JgG = paramd;
+    this.KUa = paramd;
     this.result = paramObject;
     AppMethodBeat.o(129638);
   }
   
-  public final void eH(Object paramObject)
+  public final void eK(Object paramObject)
   {
     AppMethodBeat.i(129635);
     do
@@ -49,17 +48,17 @@ public final class h<T>
       do
       {
         localObject = this.result;
-        if (localObject != a.JgK) {
+        if (localObject != a.KUe) {
           break;
         }
-      } while (!JgH.compareAndSet(this, a.JgK, paramObject));
+      } while (!KUb.compareAndSet(this, a.KUe, paramObject));
       AppMethodBeat.o(129635);
       return;
-      if (localObject != a.JgJ) {
+      if (localObject != a.KUd) {
         break;
       }
-    } while (!JgH.compareAndSet(this, a.JgJ, a.JgL));
-    this.JgG.eH(paramObject);
+    } while (!KUb.compareAndSet(this, a.KUd, a.KUf));
+    this.KUa.eK(paramObject);
     AppMethodBeat.o(129635);
     return;
     paramObject = (Throwable)new IllegalStateException("Already resumed");
@@ -67,38 +66,38 @@ public final class h<T>
     throw paramObject;
   }
   
-  public final f fvA()
+  public final f fOf()
   {
     AppMethodBeat.i(129634);
-    f localf = this.JgG.fvA();
+    f localf = this.KUa.fOf();
     AppMethodBeat.o(129634);
     return localf;
   }
   
-  public final Object fvB()
+  public final Object fOg()
   {
     AppMethodBeat.i(129636);
     Object localObject2 = this.result;
     Object localObject1 = localObject2;
-    if (localObject2 == a.JgK)
+    if (localObject2 == a.KUe)
     {
-      if (JgH.compareAndSet(this, a.JgK, a.JgJ))
+      if (KUb.compareAndSet(this, a.KUe, a.KUd))
       {
-        localObject1 = a.JgJ;
+        localObject1 = a.KUd;
         AppMethodBeat.o(129636);
         return localObject1;
       }
       localObject1 = this.result;
     }
-    if (localObject1 == a.JgL)
+    if (localObject1 == a.KUf)
     {
-      localObject1 = a.JgJ;
+      localObject1 = a.KUd;
       AppMethodBeat.o(129636);
       return localObject1;
     }
     if ((localObject1 instanceof p.b))
     {
-      localObject1 = ((p.b)localObject1).JfN;
+      localObject1 = ((p.b)localObject1).KTh;
       AppMethodBeat.o(129636);
       throw ((Throwable)localObject1);
     }
@@ -106,17 +105,17 @@ public final class h<T>
     return localObject1;
   }
   
-  public final e fvC()
+  public final d.d.b.a.d fOh()
   {
-    d locald2 = this.JgG;
+    d locald2 = this.KUa;
     d locald1 = locald2;
-    if (!(locald2 instanceof e)) {
+    if (!(locald2 instanceof d.d.b.a.d)) {
       locald1 = null;
     }
-    return (e)locald1;
+    return (d.d.b.a.d)locald1;
   }
   
-  public final StackTraceElement fvD()
+  public final StackTraceElement fOi()
   {
     return null;
   }
@@ -124,17 +123,17 @@ public final class h<T>
   public final String toString()
   {
     AppMethodBeat.i(129637);
-    String str = "SafeContinuation for " + this.JgG;
+    String str = "SafeContinuation for " + this.KUa;
     AppMethodBeat.o(129637);
     return str;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/coroutines/SafeContinuation$Companion;", "", "()V", "RESULT", "Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;", "Lkotlin/coroutines/SafeContinuation;", "kotlin.jvm.PlatformType", "RESULT$annotations", "kotlin-stdlib"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/SafeContinuation$Companion;", "", "()V", "RESULT", "Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;", "Lkotlin/coroutines/SafeContinuation;", "kotlin.jvm.PlatformType", "RESULT$annotations", "kotlin-stdlib"})
   static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.d.h
  * JD-Core Version:    0.7.0.1
  */

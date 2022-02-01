@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class MallIndexBaseUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -20,15 +20,15 @@ final class MallIndexBaseUI$1
     paramMenuItem = new Intent();
     paramMenuItem.addFlags(67108864);
     paramMenuItem.putExtra("preferred_tab", 3);
-    d.e(this.tuc, "com.tencent.mm.ui.LauncherUI", paramMenuItem);
-    this.tuc.finish();
-    if (!e.eBc())
+    d.e(this.uCv, "com.tencent.mm.ui.LauncherUI", paramMenuItem);
+    this.uCv.finish();
+    if (!e.eQw())
     {
-      h.vKh.f(14954, new Object[] { e.eBd(), "open_wcpay_specific_view:ok" });
-      e.eBe();
+      h.wUl.f(14954, new Object[] { e.eQx(), "open_wcpay_specific_view:ok" });
+      e.eQy();
     }
-    h.vKh.f(14419, new Object[] { this.tuc.uuid, Integer.valueOf(6) });
-    ad.i("MicroMsg.MallIndexBaseUI", "set BackBtn");
+    h.wUl.f(14419, new Object[] { this.uCv.uuid, Integer.valueOf(6) });
+    ac.i("MicroMsg.MallIndexBaseUI", "set BackBtn");
     AppMethodBeat.o(66063);
     return true;
   }

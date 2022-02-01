@@ -7,12 +7,12 @@ public final class f
   public static k a(com.tencent.mm.audio.mix.f.d paramd, com.tencent.mm.audio.mix.g.b paramb, boolean paramBoolean)
   {
     AppMethodBeat.i(136821);
-    if (paramb.NW().cTo) {}
+    if (paramb.NT().cQL) {}
     for (paramd = new d(paramd, paramb);; paramd = new e(paramd, paramb))
     {
       paramd.init();
       if (paramBoolean) {
-        paramd.MX();
+        paramd.MV();
       }
       AppMethodBeat.o(136821);
       return paramd;

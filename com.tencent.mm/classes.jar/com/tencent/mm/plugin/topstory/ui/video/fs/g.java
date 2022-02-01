@@ -12,85 +12,85 @@ public class g
   extends h
   implements a
 {
-  public e yRs;
-  public FrameLayout yRt;
+  public e Afh;
+  public FrameLayout Afi;
   
   public g(View paramView, b paramb)
   {
     super(paramView, paramb);
   }
   
-  public final void Ps(int paramInt)
+  public final void Ry(int paramInt)
   {
     AppMethodBeat.i(126328);
-    a(this.yOL, this.yOL.cKW(), this.yRs, paramInt);
+    a(this.AcC, this.AcC.cYC(), this.Afh, paramInt);
     AppMethodBeat.o(126328);
   }
   
-  public final int dOD()
-  {
-    AppMethodBeat.i(202284);
-    int i = ln();
-    AppMethodBeat.o(202284);
-    return i;
-  }
-  
-  public void dPo()
+  public void edO()
   {
     AppMethodBeat.i(126325);
-    if (this.yRs == null)
+    if (this.Afh == null)
     {
-      if (!this.yOL.dOQ()) {
+      if (!this.AcC.edq()) {
         break label133;
       }
-      this.yRs = new k(this.yOL.cKW(), this.yOL, this);
-      this.yRt.removeAllViews();
-      if (!this.yOL.dOQ()) {
+      this.Afh = new k(this.AcC.cYC(), this.AcC, this);
+      this.Afi.removeAllViews();
+      if (!this.AcC.edq()) {
         break label161;
       }
     }
     label133:
     label161:
-    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.yOL.dOK().x, this.yOL.dOK().y);; localLayoutParams = new FrameLayout.LayoutParams(this.yOL.dOK().y, this.yOL.dOK().x))
+    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.AcC.edk().x, this.AcC.edk().y);; localLayoutParams = new FrameLayout.LayoutParams(this.AcC.edk().y, this.AcC.edk().x))
     {
-      this.yRt.addView(this.yRs, localLayoutParams);
-      this.yRs.a(this.yLU, dOD());
+      this.Afi.addView(this.Afh, localLayoutParams);
+      this.Afh.a(this.zZN, edd());
       AppMethodBeat.o(126325);
       return;
-      this.yRs = new e(this.yOL.cKW(), this.yOL, this);
+      this.Afh = new e(this.AcC.cYC(), this.AcC, this);
       break;
     }
   }
   
-  public final com.tencent.mm.plugin.topstory.ui.video.f dPp()
+  public final com.tencent.mm.plugin.topstory.ui.video.f edP()
   {
-    return this.yRs;
+    return this.Afh;
   }
   
-  public final void fd(View paramView)
+  public final int edd()
+  {
+    AppMethodBeat.i(210287);
+    int i = lv();
+    AppMethodBeat.o(210287);
+    return i;
+  }
+  
+  public final void fq(View paramView)
   {
     AppMethodBeat.i(126323);
-    this.yRt = ((FrameLayout)paramView.findViewById(2131306411));
+    this.Afi = ((FrameLayout)paramView.findViewById(2131306411));
     AppMethodBeat.o(126323);
   }
   
   public final View getWowView()
   {
     AppMethodBeat.i(126327);
-    View localView = this.yRs.getControlBar().getWowView();
+    View localView = this.Afh.getControlBar().getWowView();
     AppMethodBeat.o(126327);
     return localView;
   }
   
-  public final void rf(boolean paramBoolean)
+  public final void sd(boolean paramBoolean)
   {
     AppMethodBeat.i(126324);
-    super.rf(paramBoolean);
-    this.yOL.Pi(ln());
-    if (this.yRs.aj(paramBoolean, false))
+    super.sd(paramBoolean);
+    this.AcC.Ro(lv());
+    if (this.Afh.am(paramBoolean, false))
     {
-      dOC();
-      dOB();
+      edc();
+      edb();
     }
     AppMethodBeat.o(126324);
   }

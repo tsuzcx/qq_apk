@@ -2,7 +2,7 @@ package com.tencent.soter.a.g;
 
 public abstract interface a
 {
-  public abstract void fnt();
+  public abstract void fDJ();
   
   public abstract boolean isCancelled();
 }

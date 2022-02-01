@@ -26,11 +26,13 @@ public abstract interface TencentMapComponent
   
   public abstract ITranslateAnimation createTranslateAnimation(LatLng paramLatLng);
   
+  public abstract <T extends TencentMapComponent.Component> T getMapComponent(Class<T> paramClass);
+  
   public abstract TencentMapServiceProtocol getMapServiceProtocol();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMapComponent
  * JD-Core Version:    0.7.0.1
  */

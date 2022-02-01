@@ -8,16 +8,32 @@ public abstract class be
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int exh = "designerUin".hashCode();
-  private static final int exi = "productId".hashCode();
-  private static final int exj = "syncTime".hashCode();
+  private static final int enO;
+  private static final int eol = "updateTime".hashCode();
+  private static final int eot;
+  private static final int ewX = "id".hashCode();
+  private static final int ezx = "cacheKey".hashCode();
+  private static final int ezy;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean exe = true;
-  private boolean exf = true;
-  private boolean exg = true;
-  public int field_designerUin;
-  public String field_productId;
-  public int field_syncTime;
+  private boolean enx = true;
+  private boolean eoi = true;
+  private boolean eop = true;
+  private boolean ewT = true;
+  private boolean ezv = true;
+  private boolean ezw = true;
+  public String field_appId;
+  public String field_cacheKey;
+  public String field_data;
+  public String field_id;
+  public int field_interval;
+  public long field_updateTime;
+  
+  static
+  {
+    enO = "appId".hashCode();
+    eot = "data".hashCode();
+    ezy = "interval".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,10 +48,10 @@ public abstract class be
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (exh != k) {
+      if (ewX != k) {
         break label60;
       }
-      this.field_designerUin = paramCursor.getInt(i);
+      this.field_id = paramCursor.getString(i);
     }
     for (;;)
     {
@@ -43,10 +59,16 @@ public abstract class be
       break label20;
       break;
       label60:
-      if (exi == k) {
-        this.field_productId = paramCursor.getString(i);
-      } else if (exj == k) {
-        this.field_syncTime = paramCursor.getInt(i);
+      if (ezx == k) {
+        this.field_cacheKey = paramCursor.getString(i);
+      } else if (enO == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (eot == k) {
+        this.field_data = paramCursor.getString(i);
+      } else if (ezy == k) {
+        this.field_interval = paramCursor.getInt(i);
+      } else if (eol == k) {
+        this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -56,14 +78,23 @@ public abstract class be
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.exe) {
-      localContentValues.put("designerUin", Integer.valueOf(this.field_designerUin));
+    if (this.ewT) {
+      localContentValues.put("id", this.field_id);
     }
-    if (this.exf) {
-      localContentValues.put("productId", this.field_productId);
+    if (this.ezv) {
+      localContentValues.put("cacheKey", this.field_cacheKey);
     }
-    if (this.exg) {
-      localContentValues.put("syncTime", Integer.valueOf(this.field_syncTime));
+    if (this.enx) {
+      localContentValues.put("appId", this.field_appId);
+    }
+    if (this.eop) {
+      localContentValues.put("data", this.field_data);
+    }
+    if (this.ezw) {
+      localContentValues.put("interval", Integer.valueOf(this.field_interval));
+    }
+    if (this.eoi) {
+      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

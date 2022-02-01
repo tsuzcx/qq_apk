@@ -20,14 +20,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class c
   implements com.tencent.e.d.a
 {
-  final String EPB;
-  private final a EYE;
-  private final Handler.Callback IAb;
-  public boolean IAc;
-  private b IAd;
-  final Handler IyH;
-  AtomicBoolean IyI;
-  public boolean IzH;
+  final String GmO;
+  private final a GvQ;
+  final Handler Kaq;
+  AtomicBoolean Kar;
+  private final Handler.Callback KbK;
+  public boolean KbL;
+  private b KbM;
+  public boolean Kbq;
   
   public c(a parama)
   {
@@ -37,9 +37,9 @@ public class c
   public c(a parama, Handler.Callback paramCallback)
   {
     AppMethodBeat.i(183430);
-    this.IzH = true;
-    this.IyI = new AtomicBoolean();
-    this.IyH = new Handler(Looper.getMainLooper())
+    this.Kbq = true;
+    this.Kar = new AtomicBoolean();
+    this.Kaq = new Handler(Looper.getMainLooper())
     {
       public final void dispatchMessage(Message paramAnonymousMessage)
       {
@@ -58,7 +58,7 @@ public class c
       public final boolean sendMessageAtTime(Message paramAnonymousMessage, long paramAnonymousLong)
       {
         AppMethodBeat.i(183413);
-        paramAnonymousMessage.setTarget(c.this.IyH);
+        paramAnonymousMessage.setTarget(c.this.Kaq);
         boolean bool = c.this.sendMessageAtTime(paramAnonymousMessage, paramAnonymousLong);
         AppMethodBeat.o(183413);
         return bool;
@@ -72,15 +72,15 @@ public class c
         return str;
       }
     };
-    this.IAd = new b(Message.class, "recycleUnchecked", new Class[0]);
+    this.KbM = new b(Message.class, "recycleUnchecked", new Class[0]);
     Objects.requireNonNull(parama);
-    this.EYE = parama;
-    this.EPB = parama.tag;
-    this.IAb = paramCallback;
+    this.GvQ = parama;
+    this.GmO = parama.tag;
+    this.KbK = paramCallback;
     try
     {
-      parama = this.IyH;
-      new com.tencent.e.k.a(Handler.class, "mLooper").et(parama);
+      parama = this.Kaq;
+      new com.tencent.e.k.a(Handler.class, "mLooper").eu(parama);
       AppMethodBeat.o(183430);
       return;
     }
@@ -101,7 +101,7 @@ public class c
       AppMethodBeat.o(183451);
       return;
     }
-    if ((this.IAb != null) && (this.IAb.handleMessage(paramMessage)))
+    if ((this.KbK != null) && (this.KbK.handleMessage(paramMessage)))
     {
       AppMethodBeat.o(183451);
       return;
@@ -113,14 +113,14 @@ public class c
   public void dump(Printer paramPrinter, String paramString)
   {
     AppMethodBeat.i(183461);
-    paramPrinter.println(paramString + this.EYE.IzX.foq().toString());
+    paramPrinter.println(paramString + this.GvQ.KbG.fEG().toString());
     AppMethodBeat.o(183461);
   }
   
   public boolean executeOrSendMessage(Message paramMessage)
   {
     AppMethodBeat.i(183449);
-    if (a.fom() == this.EYE)
+    if (a.fEC() == this.GvQ)
     {
       dispatchMessage(paramMessage);
       AppMethodBeat.o(183449);
@@ -139,7 +139,7 @@ public class c
   public String getMessageName(Message paramMessage)
   {
     AppMethodBeat.i(183431);
-    paramMessage = this.IyH.getMessageName(paramMessage);
+    paramMessage = this.Kaq.getMessageName(paramMessage);
     AppMethodBeat.o(183431);
     return paramMessage;
   }
@@ -151,12 +151,12 @@ public class c
   
   public a getSerial()
   {
-    return this.EYE;
+    return this.GvQ;
   }
   
   public String getSerialTag()
   {
-    return this.EPB;
+    return this.GmO;
   }
   
   public void handleMessage(Message paramMessage) {}
@@ -164,16 +164,16 @@ public class c
   public boolean hasMessages(final int paramInt)
   {
     AppMethodBeat.i(183457);
-    boolean bool = this.EYE.IzX.a(new d.a()
+    boolean bool = this.GvQ.KbG.a(new d.a()
     {
       public final boolean d(e paramAnonymouse)
       {
         AppMethodBeat.i(183423);
-        paramAnonymouse = paramAnonymouse.IzM;
+        paramAnonymouse = paramAnonymouse.Kbv;
         if ((paramAnonymouse instanceof c.a))
         {
           paramAnonymouse = (c.a)paramAnonymouse;
-          if ((paramAnonymouse.IAi == c.this) && (c.a.a(paramAnonymouse).what == paramInt))
+          if ((paramAnonymouse.KbR == c.this) && (c.a.a(paramAnonymouse).what == paramInt))
           {
             AppMethodBeat.o(183423);
             return true;
@@ -192,16 +192,16 @@ public class c
   public boolean hasMessages(int paramInt, final Object paramObject)
   {
     AppMethodBeat.i(183458);
-    boolean bool = this.EYE.IzX.a(new d.a()
+    boolean bool = this.GvQ.KbG.a(new d.a()
     {
       public final boolean d(e paramAnonymouse)
       {
         AppMethodBeat.i(183424);
-        paramAnonymouse = paramAnonymouse.IzM;
+        paramAnonymouse = paramAnonymouse.Kbv;
         if ((paramAnonymouse instanceof c.a))
         {
           paramAnonymouse = (c.a)paramAnonymouse;
-          if ((paramAnonymouse.IAi == c.this) && (c.a.a(paramAnonymouse).obj == paramObject))
+          if ((paramAnonymouse.KbR == c.this) && (c.a.a(paramAnonymouse).obj == paramObject))
           {
             AppMethodBeat.o(183424);
             return true;
@@ -220,7 +220,7 @@ public class c
   public boolean isQuit()
   {
     AppMethodBeat.i(183459);
-    boolean bool = this.IyI.get();
+    boolean bool = this.Kar.get();
     AppMethodBeat.o(183459);
     return bool;
   }
@@ -228,7 +228,7 @@ public class c
   public Message obtainMessage()
   {
     AppMethodBeat.i(183432);
-    Message localMessage = this.IyH.obtainMessage();
+    Message localMessage = this.Kaq.obtainMessage();
     AppMethodBeat.o(183432);
     return localMessage;
   }
@@ -236,7 +236,7 @@ public class c
   public Message obtainMessage(int paramInt)
   {
     AppMethodBeat.i(183433);
-    Message localMessage = this.IyH.obtainMessage(paramInt);
+    Message localMessage = this.Kaq.obtainMessage(paramInt);
     AppMethodBeat.o(183433);
     return localMessage;
   }
@@ -244,7 +244,7 @@ public class c
   public Message obtainMessage(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(183435);
-    Message localMessage = this.IyH.obtainMessage(paramInt1, paramInt2, paramInt3);
+    Message localMessage = this.Kaq.obtainMessage(paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(183435);
     return localMessage;
   }
@@ -252,7 +252,7 @@ public class c
   public Message obtainMessage(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
     AppMethodBeat.i(183436);
-    paramObject = this.IyH.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject);
+    paramObject = this.Kaq.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject);
     AppMethodBeat.o(183436);
     return paramObject;
   }
@@ -260,7 +260,7 @@ public class c
   public Message obtainMessage(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(183434);
-    paramObject = this.IyH.obtainMessage(paramInt, paramObject);
+    paramObject = this.Kaq.obtainMessage(paramInt, paramObject);
     AppMethodBeat.o(183434);
     return paramObject;
   }
@@ -268,7 +268,7 @@ public class c
   public boolean post(Runnable paramRunnable)
   {
     AppMethodBeat.i(183437);
-    boolean bool = this.IyH.post(paramRunnable);
+    boolean bool = this.Kaq.post(paramRunnable);
     AppMethodBeat.o(183437);
     return bool;
   }
@@ -276,7 +276,7 @@ public class c
   public boolean postAtFrontOfQueue(Runnable paramRunnable)
   {
     AppMethodBeat.i(183442);
-    boolean bool = this.IyH.sendMessageAtTime(Message.obtain(this.IyH, paramRunnable), -9223372036854775808L);
+    boolean bool = this.Kaq.sendMessageAtTime(Message.obtain(this.Kaq, paramRunnable), -9223372036854775808L);
     AppMethodBeat.o(183442);
     return bool;
   }
@@ -284,7 +284,7 @@ public class c
   public boolean postAtTime(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(183438);
-    boolean bool = this.IyH.postAtTime(paramRunnable, paramLong);
+    boolean bool = this.Kaq.postAtTime(paramRunnable, paramLong);
     AppMethodBeat.o(183438);
     return bool;
   }
@@ -292,7 +292,7 @@ public class c
   public boolean postAtTime(Runnable paramRunnable, Object paramObject, long paramLong)
   {
     AppMethodBeat.i(183439);
-    boolean bool = this.IyH.postAtTime(paramRunnable, paramObject, paramLong);
+    boolean bool = this.Kaq.postAtTime(paramRunnable, paramObject, paramLong);
     AppMethodBeat.o(183439);
     return bool;
   }
@@ -300,7 +300,7 @@ public class c
   public boolean postDelayed(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(183440);
-    boolean bool = this.IyH.postDelayed(paramRunnable, paramLong);
+    boolean bool = this.Kaq.postDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(183440);
     return bool;
   }
@@ -308,7 +308,7 @@ public class c
   public boolean postDelayed(Runnable paramRunnable, Object paramObject, long paramLong)
   {
     AppMethodBeat.i(183441);
-    paramRunnable = Message.obtain(this.IyH, paramRunnable);
+    paramRunnable = Message.obtain(this.Kaq, paramRunnable);
     paramRunnable.obj = paramObject;
     boolean bool = sendMessageDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(183441);
@@ -318,19 +318,19 @@ public class c
   public boolean quit()
   {
     AppMethodBeat.i(183460);
-    if (this.IyI.compareAndSet(false, true))
+    if (this.Kar.compareAndSet(false, true))
     {
-      this.EYE.IzX.a(new d.b()
+      this.GvQ.KbG.a(new d.b()
       {
         public final boolean c(e paramAnonymouse)
         {
           boolean bool = false;
           AppMethodBeat.i(183425);
-          paramAnonymouse = paramAnonymouse.IzM;
+          paramAnonymouse = paramAnonymouse.Kbv;
           if ((paramAnonymouse instanceof c.a))
           {
             paramAnonymouse = (c.a)paramAnonymouse;
-            if (paramAnonymouse.IAi == c.this) {
+            if (paramAnonymouse.KbR == c.this) {
               bool = true;
             }
             if (bool) {
@@ -353,18 +353,18 @@ public class c
   public void removeCallbacks(final Runnable paramRunnable)
   {
     AppMethodBeat.i(183452);
-    this.EYE.IzX.a(new d.b()
+    this.GvQ.KbG.a(new d.b()
     {
       public final boolean c(e paramAnonymouse)
       {
         boolean bool2 = false;
         AppMethodBeat.i(183418);
-        paramAnonymouse = paramAnonymouse.IzM;
+        paramAnonymouse = paramAnonymouse.Kbv;
         if ((paramAnonymouse instanceof c.a))
         {
           paramAnonymouse = (c.a)paramAnonymouse;
           boolean bool1 = bool2;
-          if (paramAnonymouse.IAi == c.this)
+          if (paramAnonymouse.KbR == c.this)
           {
             bool1 = bool2;
             if (c.a.a(paramAnonymouse).getCallback() == paramRunnable) {
@@ -387,18 +387,18 @@ public class c
   public void removeCallbacks(final Runnable paramRunnable, final Object paramObject)
   {
     AppMethodBeat.i(183453);
-    this.EYE.IzX.a(new d.b()
+    this.GvQ.KbG.a(new d.b()
     {
       public final boolean c(e paramAnonymouse)
       {
         boolean bool2 = false;
         AppMethodBeat.i(183419);
-        paramAnonymouse = paramAnonymouse.IzM;
+        paramAnonymouse = paramAnonymouse.Kbv;
         if ((paramAnonymouse instanceof c.a))
         {
           paramAnonymouse = (c.a)paramAnonymouse;
           boolean bool1 = bool2;
-          if (paramAnonymouse.IAi == c.this)
+          if (paramAnonymouse.KbR == c.this)
           {
             bool1 = bool2;
             if (c.a.a(paramAnonymouse).getCallback() == paramRunnable)
@@ -425,18 +425,18 @@ public class c
   public void removeCallbacksAndMessages(final Object paramObject)
   {
     AppMethodBeat.i(183456);
-    this.EYE.IzX.a(new d.b()
+    this.GvQ.KbG.a(new d.b()
     {
       public final boolean c(e paramAnonymouse)
       {
         boolean bool2 = false;
         AppMethodBeat.i(183422);
-        paramAnonymouse = paramAnonymouse.IzM;
+        paramAnonymouse = paramAnonymouse.Kbv;
         if ((paramAnonymouse instanceof c.a))
         {
           paramAnonymouse = (c.a)paramAnonymouse;
           boolean bool1 = bool2;
-          if (paramAnonymouse.IAi == c.this) {
+          if (paramAnonymouse.KbR == c.this) {
             if (paramObject != null)
             {
               bool1 = bool2;
@@ -463,18 +463,18 @@ public class c
   public void removeMessages(final int paramInt)
   {
     AppMethodBeat.i(183454);
-    this.EYE.IzX.a(new d.b()
+    this.GvQ.KbG.a(new d.b()
     {
       public final boolean c(e paramAnonymouse)
       {
         boolean bool2 = false;
         AppMethodBeat.i(183420);
-        paramAnonymouse = paramAnonymouse.IzM;
+        paramAnonymouse = paramAnonymouse.Kbv;
         if ((paramAnonymouse instanceof c.a))
         {
           paramAnonymouse = (c.a)paramAnonymouse;
           boolean bool1 = bool2;
-          if (paramAnonymouse.IAi == c.this)
+          if (paramAnonymouse.KbR == c.this)
           {
             bool1 = bool2;
             if (c.a.a(paramAnonymouse).what == paramInt) {
@@ -497,18 +497,18 @@ public class c
   public void removeMessages(final int paramInt, final Object paramObject)
   {
     AppMethodBeat.i(183455);
-    this.EYE.IzX.a(new d.b()
+    this.GvQ.KbG.a(new d.b()
     {
       public final boolean c(e paramAnonymouse)
       {
         boolean bool2 = false;
         AppMethodBeat.i(183421);
-        paramAnonymouse = paramAnonymouse.IzM;
+        paramAnonymouse = paramAnonymouse.Kbv;
         if ((paramAnonymouse instanceof c.a))
         {
           paramAnonymouse = (c.a)paramAnonymouse;
           boolean bool1 = bool2;
-          if (paramAnonymouse.IAi == c.this)
+          if (paramAnonymouse.KbR == c.this)
           {
             bool1 = bool2;
             if (c.a.a(paramAnonymouse).what == paramInt)
@@ -535,7 +535,7 @@ public class c
   public boolean sendEmptyMessage(int paramInt)
   {
     AppMethodBeat.i(183444);
-    boolean bool = this.IyH.sendEmptyMessage(paramInt);
+    boolean bool = this.Kaq.sendEmptyMessage(paramInt);
     AppMethodBeat.o(183444);
     return bool;
   }
@@ -543,7 +543,7 @@ public class c
   public boolean sendEmptyMessageAtTime(int paramInt, long paramLong)
   {
     AppMethodBeat.i(183446);
-    boolean bool = this.IyH.sendEmptyMessageAtTime(paramInt, paramLong);
+    boolean bool = this.Kaq.sendEmptyMessageAtTime(paramInt, paramLong);
     AppMethodBeat.o(183446);
     return bool;
   }
@@ -551,7 +551,7 @@ public class c
   public boolean sendEmptyMessageDelayed(int paramInt, long paramLong)
   {
     AppMethodBeat.i(183445);
-    boolean bool = this.IyH.sendEmptyMessageDelayed(paramInt, paramLong);
+    boolean bool = this.Kaq.sendEmptyMessageDelayed(paramInt, paramLong);
     AppMethodBeat.o(183445);
     return bool;
   }
@@ -559,7 +559,7 @@ public class c
   public boolean sendMessage(Message paramMessage)
   {
     AppMethodBeat.i(183443);
-    boolean bool = this.IyH.sendMessage(paramMessage);
+    boolean bool = this.Kaq.sendMessage(paramMessage);
     AppMethodBeat.o(183443);
     return bool;
   }
@@ -567,7 +567,7 @@ public class c
   public boolean sendMessageAtFrontOfQueue(Message paramMessage)
   {
     AppMethodBeat.i(183448);
-    boolean bool = this.IyH.sendMessageAtTime(paramMessage, -9223372036854775808L);
+    boolean bool = this.Kaq.sendMessageAtTime(paramMessage, -9223372036854775808L);
     AppMethodBeat.o(183448);
     return bool;
   }
@@ -578,32 +578,32 @@ public class c
     paramMessage = new a(paramMessage);
     if (isQuit())
     {
-      com.tencent.e.d.IxS.f(paramMessage.IAh, 0, this.EPB);
+      com.tencent.e.d.JZB.f(paramMessage.KbQ, 0, this.GmO);
       AppMethodBeat.o(183450);
       return false;
     }
-    if (h.Iye.isShutdown())
+    if (h.JZN.isShutdown())
     {
-      com.tencent.e.d.IxS.f(paramMessage.IAh, 0, this.EPB);
+      com.tencent.e.d.JZB.f(paramMessage.KbQ, 0, this.GmO);
       AppMethodBeat.o(183450);
       return false;
     }
     if (paramLong == -9223372036854775808L) {
-      if (a.fol() == this.EYE) {
-        h.Iye.aO(paramMessage);
+      if (a.fEB() == this.GvQ) {
+        h.JZN.aR(paramMessage);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(183450);
       return true;
-      h.Iye.g(paramMessage, this.EPB);
+      h.JZN.g(paramMessage, this.GmO);
       continue;
       paramLong -= SystemClock.uptimeMillis();
-      if (a.fol() == this.EYE) {
-        h.Iye.p(paramMessage, paramLong);
+      if (a.fEB() == this.GvQ) {
+        h.JZN.p(paramMessage, paramLong);
       } else {
-        h.Iye.a(paramMessage, paramLong, this.EPB);
+        h.JZN.a(paramMessage, paramLong, this.GmO);
       }
     }
   }
@@ -611,7 +611,7 @@ public class c
   public boolean sendMessageDelayed(Message paramMessage, long paramLong)
   {
     AppMethodBeat.i(183447);
-    boolean bool = this.IyH.sendMessageDelayed(paramMessage, paramLong);
+    boolean bool = this.Kaq.sendMessageDelayed(paramMessage, paramLong);
     AppMethodBeat.o(183447);
     return bool;
   }
@@ -627,10 +627,10 @@ public class c
   final class a
     implements com.tencent.e.i.e, j
   {
-    private Message IAg;
-    String IAh;
-    Object IAi;
-    private Future<?> daz;
+    private Message KbP;
+    String KbQ;
+    Object KbR;
+    private Future<?> cXV;
     
     a(Message paramMessage)
     {
@@ -641,21 +641,21 @@ public class c
         AppMethodBeat.o(183426);
         throw c.this;
       }
-      this.IAg = paramMessage;
-      this.IAh = (c.this.EPB + "#" + c.this.getMessageName(paramMessage));
-      this.IAi = c.this;
+      this.KbP = paramMessage;
+      this.KbQ = (c.this.GmO + "#" + c.this.getMessageName(paramMessage));
+      this.KbR = c.this;
       AppMethodBeat.o(183426);
     }
     
     public final void a(Future paramFuture)
     {
-      this.daz = paramFuture;
+      this.cXV = paramFuture;
     }
     
-    public final boolean adf()
+    public final boolean aev()
     {
       AppMethodBeat.i(183429);
-      boolean bool = c.this.IzH;
+      boolean bool = c.this.Kbq;
       AppMethodBeat.o(183429);
       return bool;
     }
@@ -663,36 +663,36 @@ public class c
     public final boolean cancel()
     {
       AppMethodBeat.i(183428);
-      c.a(c.this, this.IAg);
-      boolean bool = this.daz.cancel(false);
+      c.a(c.this, this.KbP);
+      boolean bool = this.cXV.cancel(false);
       AppMethodBeat.o(183428);
       return bool;
     }
     
     public final String getKey()
     {
-      return this.IAh;
+      return this.KbQ;
     }
     
     public final void run()
     {
       AppMethodBeat.i(183427);
-      if (c.this.IyI.get())
+      if (c.this.Kar.get())
       {
-        this.daz.cancel(false);
-        com.tencent.e.d.IxU.w("SerialHandler", String.format("this handler has quit! %s", new Object[] { this.IAh }), new Object[0]);
+        this.cXV.cancel(false);
+        com.tencent.e.d.JZD.w("SerialHandler", String.format("this handler has quit! %s", new Object[] { this.KbQ }), new Object[0]);
         AppMethodBeat.o(183427);
         return;
       }
-      if ((this.IAg.getTarget() == null) && (this.IAg.obj == null) && (this.IAg.what == 0))
+      if ((this.KbP.getTarget() == null) && (this.KbP.obj == null) && (this.KbP.what == 0))
       {
-        this.daz.cancel(false);
-        com.tencent.e.d.IxU.w("SerialHandler", String.format("maybe it's removed before! %s", new Object[] { this.IAh }), new Object[0]);
+        this.cXV.cancel(false);
+        com.tencent.e.d.JZD.w("SerialHandler", String.format("maybe it's removed before! %s", new Object[] { this.KbQ }), new Object[0]);
         AppMethodBeat.o(183427);
         return;
       }
-      ((Handler)Objects.requireNonNull(this.IAg.getTarget(), "target is null!")).dispatchMessage(this.IAg);
-      c.a(c.this, this.IAg);
+      ((Handler)Objects.requireNonNull(this.KbP.getTarget(), "target is null!")).dispatchMessage(this.KbP);
+      c.a(c.this, this.KbP);
       AppMethodBeat.o(183427);
     }
   }

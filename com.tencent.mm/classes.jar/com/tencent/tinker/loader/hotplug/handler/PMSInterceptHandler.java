@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import com.tencent.tinker.loader.hotplug.IncrementComponentManager;
 import com.tencent.tinker.loader.hotplug.interceptor.ServiceBinderInterceptor.BinderInvocationHandler;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -22,7 +23,7 @@ public class PMSInterceptHandler
       {
         paramObject = paramMethod.invoke(paramObject, paramArrayOfObject);
         if (paramObject == null) {
-          break label145;
+          break label206;
         }
         return paramObject;
       }
@@ -35,25 +36,32 @@ public class PMSInterceptHandler
         if (paramMethod == null) {
           continue;
         }
-        paramObject = paramMethod;
-        throw paramObject;
+        throw paramMethod;
+        paramMethod = paramObject;
         continue;
+        if (paramMethod == null) {
+          continue;
+        }
+        ShareTinkerLog.e("Tinker.PMSIntrcptHndlr", "unexpected exception.", new Object[] { paramMethod });
         return null;
+        paramMethod = paramObject;
+        continue;
       }
       catch (Throwable paramObject)
       {
+        ShareTinkerLog.e("Tinker.PMSIntrcptHndlr", "unexpected exception.", new Object[] { paramObject });
         return null;
       }
       if (i < paramArrayOfObject.length)
       {
         if ((paramArrayOfObject[i] instanceof ComponentName))
         {
-          new StringBuilder("locate componentName field of ").append(paramMethod.getName()).append(" done at idx: ").append(i);
+          ShareTinkerLog.i("Tinker.PMSIntrcptHndlr", "locate componentName field of " + paramMethod.getName() + " done at idx: " + i, new Object[0]);
           paramObject = (ComponentName)paramArrayOfObject[i];
           if (paramObject != null) {
             return IncrementComponentManager.queryActivityInfo(paramObject.getClassName());
           }
-          new StringBuilder("failed to locate componentName field of ").append(paramMethod.getName()).append(", notice any crashes or mistakes after resolve works.");
+          ShareTinkerLog.w("Tinker.PMSIntrcptHndlr", "failed to locate componentName field of " + paramMethod.getName() + ", notice any crashes or mistakes after resolve works.", new Object[0]);
           return null;
         }
       }
@@ -61,7 +69,7 @@ public class PMSInterceptHandler
       {
         paramObject = null;
         continue;
-        label145:
+        label206:
         i = 0;
         continue;
       }
@@ -78,50 +86,52 @@ public class PMSInterceptHandler
       try
       {
         paramObject = paramMethod.invoke(paramObject, paramArrayOfObject);
-        if (paramObject == null) {
-          break label142;
+        if (paramObject != null) {
+          return paramObject;
         }
-        return paramObject;
-      }
-      catch (InvocationTargetException paramObject)
-      {
-        paramMethod = paramObject.getTargetException();
-        if ((arrayOfClass == null) || (arrayOfClass.length <= 0)) {
-          continue;
-        }
-        if (paramMethod == null) {
-          continue;
-        }
-        paramObject = paramMethod;
-        throw paramObject;
-        continue;
-        return null;
-      }
-      catch (Throwable paramObject)
-      {
-        return null;
-      }
-      if (i < paramArrayOfObject.length)
-      {
-        if ((paramArrayOfObject[i] instanceof Intent))
+        ShareTinkerLog.w("Tinker.PMSIntrcptHndlr", "failed to resolve activity in base package, try again in patch package.", new Object[0]);
+        i = 0;
+        if (i < paramArrayOfObject.length)
         {
-          new StringBuilder("locate intent field of ").append(paramMethod.getName()).append(" done at idx: ").append(i);
+          if (!(paramArrayOfObject[i] instanceof Intent)) {
+            break label217;
+          }
+          ShareTinkerLog.i("Tinker.PMSIntrcptHndlr", "locate intent field of " + paramMethod.getName() + " done at idx: " + i, new Object[0]);
           paramObject = (Intent)paramArrayOfObject[i];
           if (paramObject != null) {
             return IncrementComponentManager.resolveIntent(paramObject);
           }
-          new StringBuilder("failed to locate intent field of ").append(paramMethod.getName()).append(", notice any crashes or mistakes after resolve works.");
+          ShareTinkerLog.w("Tinker.PMSIntrcptHndlr", "failed to locate intent field of " + paramMethod.getName() + ", notice any crashes or mistakes after resolve works.", new Object[0]);
           return null;
         }
       }
-      else
+      catch (InvocationTargetException paramObject)
       {
-        paramObject = null;
-        continue;
-        label142:
-        i = 0;
+        paramMethod = paramObject.getTargetException();
+        if ((arrayOfClass != null) && (arrayOfClass.length > 0))
+        {
+          if (paramMethod != null) {
+            throw paramMethod;
+          }
+          paramMethod = paramObject;
+          continue;
+        }
+        if (paramMethod != null)
+        {
+          ShareTinkerLog.e("Tinker.PMSIntrcptHndlr", "unexpected exception.", new Object[] { paramMethod });
+          return null;
+        }
+        paramMethod = paramObject;
         continue;
       }
+      catch (Throwable paramObject)
+      {
+        ShareTinkerLog.e("Tinker.PMSIntrcptHndlr", "unexpected exception.", new Object[] { paramObject });
+        return null;
+      }
+      paramObject = null;
+      continue;
+      label217:
       i += 1;
     }
   }

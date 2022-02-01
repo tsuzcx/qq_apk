@@ -2,45 +2,80 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bge;
-import com.tencent.mm.protocal.protobuf.bxt;
-import com.tencent.mm.protocal.protobuf.bxx;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bjw;
+import com.tencent.mm.protocal.protobuf.cco;
+import com.tencent.mm.protocal.protobuf.ccs;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class c
 {
-  public static bxx WP(String paramString)
+  public static ccs a(ccs paramccs, String paramString, long paramLong)
   {
-    AppMethodBeat.i(190898);
+    AppMethodBeat.i(122149);
+    ccs localccs = new ccs();
+    localccs.sessionId = paramString;
+    localccs.Frd = paramccs.Frd;
+    localccs.Frg = paramccs.Frg;
+    localccs.Frh = false;
+    localccs.hxS = 0;
+    localccs.Fre = paramccs.Fre;
+    localccs.userName = paramccs.userName;
+    localccs.Frf = paramccs.Frf;
+    localccs.Frg = paramccs.Frg;
+    localccs.seq = ckN();
+    localccs.startTime = paramLong;
+    localccs.Fri = paramccs.Fri;
+    AppMethodBeat.o(122149);
+    return localccs;
+  }
+  
+  public static void a(cco paramcco)
+  {
+    AppMethodBeat.i(185586);
+    bjw localbjw2 = ckU();
+    bjw localbjw1 = localbjw2;
+    if (localbjw2 == null) {
+      localbjw1 = new bjw();
+    }
+    localbjw1.EZq.addLast(paramcco);
+    localbjw1.EZr = (localbjw1.EZq.size() - 1);
+    localbjw1.EZu = false;
+    c(localbjw1);
+    AppMethodBeat.o(185586);
+  }
+  
+  public static ccs abm(String paramString)
+  {
+    AppMethodBeat.i(195293);
     if (paramString == null)
     {
-      AppMethodBeat.o(190898);
+      AppMethodBeat.o(195293);
       return null;
     }
-    bge localbge = cdm();
-    if ((localbge == null) || (localbge.DDT.isEmpty()))
+    bjw localbjw = ckU();
+    if ((localbjw == null) || (localbjw.EZo.isEmpty()))
     {
-      AppMethodBeat.o(190898);
+      AppMethodBeat.o(195293);
       return null;
     }
-    int i = localbge.DDT.size() - 1;
+    int i = localbjw.EZo.size() - 1;
     while (i >= 0)
     {
-      bxx localbxx = (bxx)localbge.DDT.get(i);
-      if ((localbxx != null) && (paramString.equals(localbxx.sessionId)) && (i - 1 >= 0))
+      ccs localccs = (ccs)localbjw.EZo.get(i);
+      if ((localccs != null) && (paramString.equals(localccs.sessionId)) && (i - 1 >= 0))
       {
-        paramString = (bxx)localbge.DDT.get(i - 1);
-        AppMethodBeat.o(190898);
+        paramString = (ccs)localbjw.EZo.get(i - 1);
+        AppMethodBeat.o(195293);
         return paramString;
       }
       i -= 1;
     }
-    AppMethodBeat.o(190898);
+    AppMethodBeat.o(195293);
     return null;
   }
   
-  public static void WQ(String paramString)
+  public static void abn(String paramString)
   {
     AppMethodBeat.i(122142);
     if (TextUtils.isEmpty(paramString))
@@ -48,27 +83,27 @@ public final class c
       AppMethodBeat.o(122142);
       return;
     }
-    ad.i("HellSessionDao", "HABBYGE-MALI, HellSessionDao, clearCurSession: %s", new Object[] { paramString });
-    bge localbge = cdm();
-    if ((localbge == null) || (localbge.DDT.isEmpty()))
+    ac.i("HellSessionDao", "HABBYGE-MALI, HellSessionDao, clearCurSession: %s", new Object[] { paramString });
+    bjw localbjw = ckU();
+    if ((localbjw == null) || (localbjw.EZo.isEmpty()))
     {
       AppMethodBeat.o(122142);
       return;
     }
-    int i = localbge.DDT.size();
-    ad.i("HellSessionDao", "HABBYGE-MALI, clearCurSession, length: %s, %d", new Object[] { paramString, Integer.valueOf(i) });
+    int i = localbjw.EZo.size();
+    ac.i("HellSessionDao", "HABBYGE-MALI, clearCurSession, length: %s, %d", new Object[] { paramString, Integer.valueOf(i) });
     i -= 1;
     while (i >= 0)
     {
-      bxx localbxx = (bxx)localbge.DDT.get(i);
-      if (localbxx != null)
+      ccs localccs = (ccs)localbjw.EZo.get(i);
+      if (localccs != null)
       {
-        ad.i("HellSessionDao", "HABBYGE-MALI, clearCurSession, length: %s", new Object[] { localbxx.sessionId });
-        if (paramString.equals(localbxx.sessionId))
+        ac.i("HellSessionDao", "HABBYGE-MALI, clearCurSession, length: %s", new Object[] { localccs.sessionId });
+        if (paramString.equals(localccs.sessionId))
         {
-          localbge.DDT.remove(i);
-          localbge.DDU = (localbge.DDT.size() - 1);
-          c(localbge);
+          localbjw.EZo.remove(i);
+          localbjw.EZp = (localbjw.EZo.size() - 1);
+          c(localbjw);
           AppMethodBeat.o(122142);
           return;
         }
@@ -78,140 +113,105 @@ public final class c
     AppMethodBeat.o(122142);
   }
   
-  public static bxx a(bxx parambxx, String paramString, long paramLong)
-  {
-    AppMethodBeat.i(122149);
-    bxx localbxx = new bxx();
-    localbxx.sessionId = paramString;
-    localbxx.DUq = parambxx.DUq;
-    localbxx.DUt = parambxx.DUt;
-    localbxx.DUu = false;
-    localbxx.gXt = 0;
-    localbxx.DUr = parambxx.DUr;
-    localbxx.userName = parambxx.userName;
-    localbxx.DUs = parambxx.DUs;
-    localbxx.DUt = parambxx.DUt;
-    localbxx.seq = cdf();
-    localbxx.startTime = paramLong;
-    localbxx.DUv = parambxx.DUv;
-    AppMethodBeat.o(122149);
-    return localbxx;
-  }
-  
-  public static void a(bxt parambxt)
-  {
-    AppMethodBeat.i(185586);
-    bge localbge2 = cdm();
-    bge localbge1 = localbge2;
-    if (localbge2 == null) {
-      localbge1 = new bge();
-    }
-    localbge1.DDV.addLast(parambxt);
-    localbge1.DDW = (localbge1.DDV.size() - 1);
-    localbge1.DDZ = false;
-    c(localbge1);
-    AppMethodBeat.o(185586);
-  }
-  
-  public static void b(bge parambge)
+  public static void b(bjw parambjw)
   {
     AppMethodBeat.i(122135);
-    if (parambge == null)
+    if (parambjw == null)
     {
       AppMethodBeat.o(122135);
       return;
     }
-    ad.i("HellSessionDao", "HABBYGE-MALI, HellSessionDao, setHellSession");
-    c(parambge);
+    ac.i("HellSessionDao", "HABBYGE-MALI, HellSessionDao, setHellSession");
+    c(parambjw);
     AppMethodBeat.o(122135);
   }
   
-  public static void b(bxt parambxt)
+  public static void b(cco paramcco)
   {
     AppMethodBeat.i(122140);
-    if (parambxt == null)
+    if (paramcco == null)
     {
       AppMethodBeat.o(122140);
       return;
     }
-    bge localbge = cdm();
-    if (localbge == null)
+    bjw localbjw = ckU();
+    if (localbjw == null)
     {
       AppMethodBeat.o(122140);
       return;
     }
-    if (!e(localbge))
+    if (!e(localbjw))
     {
       AppMethodBeat.o(122140);
       return;
     }
-    localbge.DDV.set(localbge.DDW, parambxt);
-    c(localbge);
+    localbjw.EZq.set(localbjw.EZr, paramcco);
+    c(localbjw);
     AppMethodBeat.o(122140);
   }
   
-  private static void c(bge parambge)
+  private static void c(bjw parambjw)
   {
     AppMethodBeat.i(122144);
-    if (parambge == null)
+    if (parambjw == null)
     {
       AppMethodBeat.o(122144);
       return;
     }
     try
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_key_hell_sessions", parambge.toByteArray());
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_key_hell_sessions", parambjw.toByteArray());
       AppMethodBeat.o(122144);
       return;
     }
-    catch (Exception parambge)
+    catch (Exception parambjw)
     {
-      ad.printErrStackTrace("HellSessionDao", parambge, "HABBYGE-MALI, HellSessionDao._writeBack: %s", new Object[] { parambge.getMessage() });
+      ac.printErrStackTrace("HellSessionDao", parambjw, "HABBYGE-MALI, HellSessionDao._writeBack: %s", new Object[] { parambjw.getMessage() });
       AppMethodBeat.o(122144);
     }
   }
   
-  public static long cdf()
+  public static long ckN()
   {
     AppMethodBeat.i(122130);
-    bge localbge2 = cdm();
-    bge localbge1 = localbge2;
-    if (localbge2 == null) {
-      localbge1 = new bge();
+    bjw localbjw2 = ckU();
+    bjw localbjw1 = localbjw2;
+    if (localbjw2 == null) {
+      localbjw1 = new bjw();
     }
-    long l = localbge1.DDY;
-    localbge1.DDY = (1L + l);
-    c(localbge1);
+    long l = localbjw1.EZt;
+    localbjw1.EZt = (1L + l);
+    c(localbjw1);
     AppMethodBeat.o(122130);
     return l;
   }
   
-  public static void cdg()
+  public static void ckO()
   {
     AppMethodBeat.i(122131);
-    bge localbge = cdm();
-    if (localbge == null)
+    bjw localbjw = ckU();
+    if (localbjw == null)
     {
       AppMethodBeat.o(122131);
       return;
     }
-    localbge.DDY = 0L;
-    c(localbge);
+    localbjw.EZt = 0L;
+    c(localbjw);
     AppMethodBeat.o(122131);
   }
   
-  public static bxx cdh()
+  public static ccs ckP()
   {
     AppMethodBeat.i(122134);
-    Object localObject = cdm();
+    Object localObject = ckU();
     if (localObject == null)
     {
       AppMethodBeat.o(122134);
       return null;
     }
-    if (d((bge)localObject))
+    if (d((bjw)localObject))
     {
-      localObject = (bxx)((bge)localObject).DDT.get(((bge)localObject).DDU);
+      localObject = (ccs)((bjw)localObject).EZo.get(((bjw)localObject).EZp);
       AppMethodBeat.o(122134);
       return localObject;
     }
@@ -219,44 +219,44 @@ public final class c
     return null;
   }
   
-  public static bxx cdi()
+  public static ccs ckQ()
   {
     AppMethodBeat.i(122137);
-    Object localObject = cdm();
-    if ((localObject == null) || (((bge)localObject).DDT.isEmpty()))
+    Object localObject = ckU();
+    if ((localObject == null) || (((bjw)localObject).EZo.isEmpty()))
     {
       AppMethodBeat.o(122137);
       return null;
     }
-    if (d((bge)localObject))
+    if (d((bjw)localObject))
     {
-      localObject = (bxx)((bge)localObject).DDT.get(((bge)localObject).DDU);
+      localObject = (ccs)((bjw)localObject).EZo.get(((bjw)localObject).EZp);
       AppMethodBeat.o(122137);
       return localObject;
     }
-    localObject = (bxx)((bge)localObject).DDT.getLast();
+    localObject = (ccs)((bjw)localObject).EZo.getLast();
     AppMethodBeat.o(122137);
     return localObject;
   }
   
-  public static bxx cdj()
+  public static ccs ckR()
   {
     AppMethodBeat.i(122138);
-    Object localObject = cdm();
-    if ((localObject == null) || (((bge)localObject).DDT.isEmpty()))
+    Object localObject = ckU();
+    if ((localObject == null) || (((bjw)localObject).EZo.isEmpty()))
     {
       AppMethodBeat.o(122138);
       return null;
     }
-    ad.i("HellSessionDao", "HABBYGE-MALI, getLastSession, hellSession: %s", new Object[] { Integer.valueOf(((bge)localObject).DDU) });
-    if (d((bge)localObject))
+    ac.i("HellSessionDao", "HABBYGE-MALI, getLastSession, hellSession: %s", new Object[] { Integer.valueOf(((bjw)localObject).EZp) });
+    if (d((bjw)localObject))
     {
-      if (((bge)localObject).DDU - 1 < 0)
+      if (((bjw)localObject).EZp - 1 < 0)
       {
         AppMethodBeat.o(122138);
         return null;
       }
-      localObject = (bxx)((bge)localObject).DDT.get(((bge)localObject).DDU - 1);
+      localObject = (ccs)((bjw)localObject).EZo.get(((bjw)localObject).EZp - 1);
       AppMethodBeat.o(122138);
       return localObject;
     }
@@ -264,18 +264,18 @@ public final class c
     return null;
   }
   
-  public static bxt cdk()
+  public static cco ckS()
   {
     AppMethodBeat.i(185587);
-    Object localObject = cdm();
+    Object localObject = ckU();
     if (localObject == null)
     {
       AppMethodBeat.o(185587);
       return null;
     }
-    if (e((bge)localObject))
+    if (e((bjw)localObject))
     {
-      localObject = (bxt)((bge)localObject).DDV.get(((bge)localObject).DDW);
+      localObject = (cco)((bjw)localObject).EZq.get(((bjw)localObject).EZr);
       AppMethodBeat.o(185587);
       return localObject;
     }
@@ -283,11 +283,11 @@ public final class c
     return null;
   }
   
-  public static boolean cdl()
+  public static boolean ckT()
   {
     AppMethodBeat.i(122143);
-    bge localbge = cdm();
-    if ((localbge != null) && (localbge.DDZ))
+    bjw localbjw = ckU();
+    if ((localbjw != null) && (localbjw.EZu))
     {
       AppMethodBeat.o(122143);
       return true;
@@ -296,40 +296,40 @@ public final class c
     return false;
   }
   
-  public static bge cdm()
+  public static bjw ckU()
   {
     AppMethodBeat.i(122145);
     byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("mmkv_key_hell_sessions");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
-      ad.e("HellSessionDao", "HABBYGE-MALI, HellSession read(): NULL");
+      ac.e("HellSessionDao", "HABBYGE-MALI, HellSession read(): NULL");
       AppMethodBeat.o(122145);
       return null;
     }
-    bge localbge = new bge();
+    bjw localbjw = new bjw();
     try
     {
-      localbge.parseFrom(arrayOfByte);
+      localbjw.parseFrom(arrayOfByte);
       AppMethodBeat.o(122145);
-      return localbge;
+      return localbjw;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("HellSessionDao", localException, "HABBYGE-MALI, HellSessionDao._read", new Object[0]);
+      ac.printErrStackTrace("HellSessionDao", localException, "HABBYGE-MALI, HellSessionDao._read", new Object[0]);
       AppMethodBeat.o(122145);
     }
     return null;
   }
   
-  private static boolean d(bge parambge)
+  private static boolean d(bjw parambjw)
   {
     AppMethodBeat.i(122147);
-    if (parambge == null)
+    if (parambjw == null)
     {
       AppMethodBeat.o(122147);
       return false;
     }
-    if ((parambge.DDU >= 0) && (parambge.DDU < parambge.DDT.size()))
+    if ((parambjw.EZp >= 0) && (parambjw.EZp < parambjw.EZo.size()))
     {
       AppMethodBeat.o(122147);
       return true;
@@ -338,15 +338,15 @@ public final class c
     return false;
   }
   
-  private static boolean e(bge parambge)
+  private static boolean e(bjw parambjw)
   {
     AppMethodBeat.i(122148);
-    if (parambge == null)
+    if (parambjw == null)
     {
       AppMethodBeat.o(122148);
       return false;
     }
-    if ((parambge.DDW >= 0) && (parambge.DDW < parambge.DDV.size()))
+    if ((parambjw.EZr >= 0) && (parambjw.EZr < parambjw.EZq.size()))
     {
       AppMethodBeat.o(122148);
       return true;
@@ -355,104 +355,104 @@ public final class c
     return false;
   }
   
-  public static void h(bxx parambxx)
+  public static void i(ccs paramccs)
   {
     AppMethodBeat.i(122132);
-    bge localbge = cdm();
-    if (localbge == null) {
-      localbge = new bge();
+    bjw localbjw = ckU();
+    if (localbjw == null) {
+      localbjw = new bjw();
     }
     for (;;)
     {
-      com.tencent.mm.plugin.expt.hellhound.a.f.b.b.e(parambxx);
-      if (!localbge.DDT.isEmpty())
+      com.tencent.mm.plugin.expt.hellhound.a.f.b.b.f(paramccs);
+      if (!localbjw.EZo.isEmpty())
       {
-        bxx localbxx = (bxx)localbge.DDT.getLast();
-        if ((localbxx != null) && (localbxx.gXt != 1))
+        ccs localccs = (ccs)localbjw.EZo.getLast();
+        if ((localccs != null) && (localccs.hxS != 1))
         {
-          String str1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.Wv(localbxx.sessionId);
-          String str2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.Wv(parambxx.sessionId);
+          String str1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aaS(localccs.sessionId);
+          String str2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aaS(paramccs.sessionId);
           if ((str1 != null) && (str1.equals(str2)))
           {
-            localbxx.gXt = 1;
-            localbxx.endTime = System.currentTimeMillis();
-            ad.i("HellSessionDao", "HABBYGE-MALI, onSessionClose-addSession: %s", new Object[] { localbxx.sessionId });
+            localccs.hxS = 1;
+            localccs.endTime = System.currentTimeMillis();
+            ac.i("HellSessionDao", "HABBYGE-MALI, onSessionClose-addSession: %s", new Object[] { localccs.sessionId });
           }
         }
       }
-      localbge.DDT.addLast(parambxx);
-      localbge.DDU = (localbge.DDT.size() - 1);
-      if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.WB(parambxx.sessionId)) {
-        localbge.DDZ = true;
+      localbjw.EZo.addLast(paramccs);
+      localbjw.EZp = (localbjw.EZo.size() - 1);
+      if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aaY(paramccs.sessionId)) {
+        localbjw.EZu = true;
       }
-      ad.i("HellSessionDao", "HABBYGE-MALI, addSession: %s, %b", new Object[] { parambxx.sessionId, Boolean.valueOf(localbge.DDZ) });
-      c(localbge);
+      ac.i("HellSessionDao", "HABBYGE-MALI, addSession: %s, %b", new Object[] { paramccs.sessionId, Boolean.valueOf(localbjw.EZu) });
+      c(localbjw);
       AppMethodBeat.o(122132);
       return;
     }
   }
   
-  public static void i(bxx parambxx)
+  public static void j(ccs paramccs)
   {
     AppMethodBeat.i(122133);
-    bge localbge = cdm();
-    if (localbge == null)
+    bjw localbjw = ckU();
+    if (localbjw == null)
     {
       AppMethodBeat.o(122133);
       return;
     }
-    if (!d(localbge))
+    if (!d(localbjw))
     {
       AppMethodBeat.o(122133);
       return;
     }
-    com.tencent.mm.plugin.expt.hellhound.a.f.b.b.e(parambxx);
-    localbge.DDT.set(localbge.DDU, parambxx);
-    ad.i("HellSessionDao", "HABBYGE-MALI, updateCurSession, newSession: %s, %s, %d", new Object[] { parambxx.sessionId, parambxx.DUq, Integer.valueOf(parambxx.DUr) });
-    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.WB(parambxx.sessionId)) {
-      localbge.DDZ = true;
+    com.tencent.mm.plugin.expt.hellhound.a.f.b.b.f(paramccs);
+    localbjw.EZo.set(localbjw.EZp, paramccs);
+    ac.i("HellSessionDao", "HABBYGE-MALI, updateCurSession, newSession: %s, %s, %d", new Object[] { paramccs.sessionId, paramccs.Frd, Integer.valueOf(paramccs.Fre) });
+    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aaY(paramccs.sessionId)) {
+      localbjw.EZu = true;
     }
-    c(localbge);
+    c(localbjw);
     AppMethodBeat.o(122133);
   }
   
-  public static void j(bxx parambxx)
+  public static void k(ccs paramccs)
   {
     AppMethodBeat.i(122136);
-    if (parambxx == null)
+    if (paramccs == null)
     {
       AppMethodBeat.o(122136);
       return;
     }
-    bge localbge = cdm();
-    if (localbge == null)
+    bjw localbjw = ckU();
+    if (localbjw == null)
     {
       AppMethodBeat.o(122136);
       return;
     }
-    if (!d(localbge))
+    if (!d(localbjw))
     {
       AppMethodBeat.o(122136);
       return;
     }
-    ad.i("HellSessionDao", "HABBYGE-MALI, HellSessionDao, updateSessionOnClose");
-    localbge.DDT.set(localbge.DDU, parambxx);
-    localbge.DDU = -1;
-    c(localbge);
+    ac.i("HellSessionDao", "HABBYGE-MALI, HellSessionDao, updateSessionOnClose");
+    localbjw.EZo.set(localbjw.EZp, paramccs);
+    localbjw.EZp = -1;
+    c(localbjw);
     AppMethodBeat.o(122136);
   }
   
   public static void reset()
   {
     AppMethodBeat.i(122146);
-    ad.i("HellSessionDao", "HABBYGE-MALI, HellSessionDao, reset");
+    ac.i("HellSessionDao", "HABBYGE-MALI, HellSessionDao, reset");
     com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_key_hell_sessions", new byte[0]);
     AppMethodBeat.o(122146);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.c
  * JD-Core Version:    0.7.0.1
  */

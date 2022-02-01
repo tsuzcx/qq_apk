@@ -7,48 +7,48 @@ import java.util.List;
 public final class b
   extends i
 {
-  private final long bVY;
+  private final long bTG;
   
   public b(long paramLong1, n paramn, long paramLong2)
   {
     super(paramLong1, paramn);
-    this.bVY = paramLong2;
+    this.bTG = paramLong2;
   }
   
   public final String toString()
   {
-    return String.format("%s@%d (0x%x)", new Object[] { zW().mClassName, Long.valueOf(Ah()), Long.valueOf(Ah()) });
+    return String.format("%s@%d (0x%x)", new Object[] { zJ().mClassName, Long.valueOf(zU()), Long.valueOf(zU()) });
   }
   
-  public final List<a> zX()
+  public final List<a> zK()
   {
     ArrayList localArrayList = new ArrayList();
-    c localc = zW();
-    Ai().aK(this.bVY);
+    c localc = zJ();
+    zV().aG(this.bTG);
     while (localc != null)
     {
-      d[] arrayOfd = localc.bWd;
+      d[] arrayOfd = localc.bTL;
       int j = arrayOfd.length;
       int i = 0;
       while (i < j)
       {
         d locald = arrayOfd[i];
-        localArrayList.add(new a(locald, a(locald.bVX)));
+        localArrayList.add(new a(locald, a(locald.bTF)));
         i += 1;
       }
-      localc = localc.zZ();
+      localc = localc.zM();
     }
     return localArrayList;
   }
   
   public static final class a
   {
-    public d bVZ;
+    public d bTH;
     public Object mValue;
     
     public a(d paramd, Object paramObject)
     {
-      this.bVZ = paramd;
+      this.bTH = paramd;
       this.mValue = paramObject;
     }
   }

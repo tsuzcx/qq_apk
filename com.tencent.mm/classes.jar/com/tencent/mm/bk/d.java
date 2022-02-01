@@ -1,215 +1,502 @@
 package com.tencent.mm.bk;
 
-import android.database.Cursor;
-import android.os.HandlerThread;
+import android.annotation.TargetApi;
+import android.graphics.Point;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaCodecInfo;
+import android.media.MediaCodecInfo.CodecCapabilities;
+import android.media.MediaCodecList;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.d;
-import com.tencent.mm.g.a.gg;
-import com.tencent.mm.g.a.mn;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.bb;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bl.d;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storagebase.h.b;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mm.compatible.deviceinfo.z;
+import com.tencent.mm.compatible.h.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import java.nio.ByteBuffer;
 
-public class d
-  implements aw
+@TargetApi(16)
+public final class d
+  implements a
 {
-  public static int glx = 0;
-  public static int[] hxD = new int[1000];
-  private final int cNj;
-  private b hxA;
-  private final long hxB;
-  private final int hxC;
-  private com.tencent.mm.sdk.b.c hxE;
-  private e hxz;
+  protected MediaCodec.BufferInfo bufferInfo;
+  protected long bvf;
+  protected c cSi;
+  private int frameCount;
+  private int gNW;
+  protected int gOI;
+  protected z gOr;
+  protected long gOz;
+  protected int gRG;
+  protected String hYr;
+  protected a.a ibJ;
+  protected MediaFormat ibK;
+  private byte[] ibL;
+  protected int sampleSize;
   
-  public d()
+  public d(c paramc, MediaFormat paramMediaFormat, int paramInt)
   {
-    AppMethodBeat.i(20665);
-    this.hxz = new e();
-    this.hxA = new b();
-    this.hxB = 259200000L;
-    this.cNj = 0;
-    this.hxC = 2;
-    this.hxE = new com.tencent.mm.sdk.b.c() {};
-    AppMethodBeat.o(20665);
+    AppMethodBeat.i(127078);
+    this.hYr = null;
+    this.bufferInfo = new MediaCodec.BufferInfo();
+    this.frameCount = 0;
+    this.gNW = -1;
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "create MediaCodecTranscodeDecoder: %s, %s, %s", new Object[] { paramc, paramMediaFormat, Integer.valueOf(paramInt) });
+    this.cSi = paramc;
+    this.ibK = paramMediaFormat;
+    this.gRG = paramInt;
+    AppMethodBeat.o(127078);
   }
   
-  public static void a(cs paramcs, bl.d paramd)
+  private static int a(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
-    AppMethodBeat.i(20672);
-    ad.d("MicroMsg.SubCoreVerify", "saveToLbsVerifyStg, cmdAM, status = " + paramcs.mBi + ", id = " + paramcs.uKZ);
-    bi localbi = new bi();
-    localbi.field_content = z.a(paramcs.Cxz);
-    localbi.field_createtime = bt.aGK();
-    localbi.field_imgpath = "";
-    localbi.field_sayhicontent = paramd.content;
-    localbi.field_sayhiuser = paramd.yGA;
-    localbi.field_scene = paramd.scene;
-    if (paramcs.mBi > 3) {}
-    for (int i = paramcs.mBi;; i = 3)
+    AppMethodBeat.i(127081);
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "selectColorFormat, mimeType: %s, codecInfo: %s", new Object[] { paramString, paramMediaCodecInfo });
+    long l = bs.Gn();
+    paramString = paramMediaCodecInfo.getCapabilitiesForType(paramString);
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(bs.aO(l)) });
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "color format length: %s", new Object[] { Integer.valueOf(paramString.colorFormats.length) });
+    int i = 0;
+    int j = 0;
+    if (i < paramString.colorFormats.length)
     {
-      localbi.field_status = i;
-      localbi.field_svrid = paramcs.uKZ;
-      localbi.field_talker = z.a(paramcs.Cxx);
-      localbi.field_type = paramcs.saz;
-      localbi.field_isSend = 0;
-      localbi.field_sayhiencryptuser = paramd.FAk;
-      localbi.field_ticket = paramd.rso;
-      localbi.field_flag = 1;
-      ((bj)((k)g.ab(k.class)).cOF()).a(localbi);
-      com.tencent.mm.ak.c.ac(localbi.field_sayhiencryptuser, 3);
-      AppMethodBeat.o(20672);
-      return;
+      int n = paramString.colorFormats[i];
+      ac.i("MicroMsg.MediaCodecTranscodeDecoder", "capabilities colorFormat: %s", new Object[] { Integer.valueOf(n) });
+      switch (n)
+      {
+      }
+      for (int m = 0;; m = 1)
+      {
+        int k = j;
+        if (m != 0) {
+          if (n <= j)
+          {
+            k = j;
+            if (n != 21) {}
+          }
+          else
+          {
+            k = n;
+          }
+        }
+        i += 1;
+        j = k;
+        break;
+      }
+    }
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "codec: %s, colorFormat: %s", new Object[] { paramMediaCodecInfo.getName(), Integer.valueOf(j) });
+    AppMethodBeat.o(127081);
+    return j;
+  }
+  
+  private boolean a(c paramc)
+  {
+    AppMethodBeat.i(127082);
+    if (this.gOr == null)
+    {
+      ac.i("MicroMsg.MediaCodecTranscodeDecoder", "input decoder is null");
+      AppMethodBeat.o(127082);
+      return true;
+    }
+    Object localObject = this.gOr.getInputBuffers();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(127082);
+      return false;
+    }
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "decoderInputByteBuffers size: %d", new Object[] { Integer.valueOf(localObject.length) });
+    int i = 0;
+    int j;
+    long l;
+    for (;;)
+    {
+      j = this.gOr.dequeueInputBuffer(60000L);
+      if ((j >= 0) || (i >= 15)) {
+        break;
+      }
+      l = bs.Gn();
+      bool1 = aqv();
+      ac.i("MicroMsg.MediaCodecTranscodeDecoder", "drain cost1 %d", new Object[] { Long.valueOf(bs.aO(l)) });
+      if (bool1)
+      {
+        AppMethodBeat.o(127082);
+        return true;
+      }
+      i += 1;
+    }
+    if (j >= 0)
+    {
+      localObject = localObject[j];
+      ((ByteBuffer)localObject).clear();
+      this.sampleSize = paramc.j((ByteBuffer)localObject);
+      ((ByteBuffer)localObject).position(0);
+      l = paramc.fKr.getSampleTime();
+      ac.i("MicroMsg.MediaCodecTranscodeDecoder", "sampleTime: %s", new Object[] { Long.valueOf(l) });
+      if ((this.sampleSize >= 0) && (l < this.gOz * 1000L)) {
+        break label345;
+      }
+    }
+    label337:
+    label345:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      ac.i("MicroMsg.MediaCodecTranscodeDecoder", "sawInputEOS: %s", new Object[] { Boolean.valueOf(bool1) });
+      paramc = this.gOr;
+      int k = this.sampleSize;
+      if (bool1)
+      {
+        i = 4;
+        paramc.a(j, k, l, i);
+      }
+      for (;;)
+      {
+        l = bs.Gn();
+        boolean bool2 = aqv();
+        ac.i("MicroMsg.MediaCodecTranscodeDecoder", "drain cost2 %d", new Object[] { Long.valueOf(bs.aO(l)) });
+        if (!bool2) {
+          break label337;
+        }
+        AppMethodBeat.o(127082);
+        return true;
+        i = 0;
+        break;
+        ac.w("MicroMsg.MediaCodecTranscodeDecoder", "input buffer not available");
+        bool1 = false;
+      }
+      AppMethodBeat.o(127082);
+      return bool1;
     }
   }
   
-  public static bb aCn()
+  private boolean aqv()
   {
-    AppMethodBeat.i(20666);
-    g.afz().aeD();
-    com.tencent.mm.storage.az localaz = aCo();
-    bb localbb = (bb)((k)g.ab(k.class)).cOH();
-    localbb.add(localaz, g.afE().EUN.getLooper());
-    AppMethodBeat.o(20666);
-    return localbb;
-  }
-  
-  public static com.tencent.mm.storage.az aCo()
-  {
-    AppMethodBeat.i(20667);
-    g.afz().aeD();
-    com.tencent.mm.storage.az localaz = (com.tencent.mm.storage.az)((k)g.ab(k.class)).cOG();
-    AppMethodBeat.o(20667);
-    return localaz;
-  }
-  
-  public static bj aCp()
-  {
-    AppMethodBeat.i(20668);
-    g.afz().aeD();
-    bj localbj = (bj)((k)g.ab(k.class)).cOF();
-    AppMethodBeat.o(20668);
-    return localbj;
-  }
-  
-  public static bv aCq()
-  {
-    AppMethodBeat.i(20669);
-    g.afz().aeD();
-    bv localbv = (bv)((k)g.ab(k.class)).cOE();
-    AppMethodBeat.o(20669);
-    return localbv;
-  }
-  
-  public static void b(cs paramcs, bl.d paramd)
-  {
-    AppMethodBeat.i(20673);
-    ad.d("MicroMsg.SubCoreVerify", "saveToShakeVerifyStg, cmdAM, status = " + paramcs.mBi + ", id = " + paramcs.uKZ);
-    bu localbu = new bu();
-    localbu.field_content = z.a(paramcs.Cxz);
-    localbu.field_createtime = bt.aGK();
-    localbu.field_imgpath = "";
-    localbu.field_sayhicontent = paramd.content;
-    localbu.field_sayhiuser = paramd.yGA;
-    localbu.field_scene = paramd.scene;
-    if (paramcs.mBi > 3) {}
-    for (int i = paramcs.mBi;; i = 3)
+    AppMethodBeat.i(127083);
+    if (this.gOr == null)
     {
-      localbu.field_status = i;
-      localbu.field_svrid = paramcs.uKZ;
-      localbu.field_talker = z.a(paramcs.Cxx);
-      localbu.field_type = paramcs.saz;
-      localbu.field_isSend = 0;
-      ((bv)((k)g.ab(k.class)).cOE()).a(localbu);
-      com.tencent.mm.ak.c.ac(localbu.field_sayhiuser, 3);
-      AppMethodBeat.o(20673);
-      return;
+      ac.e("MicroMsg.MediaCodecTranscodeDecoder", "drainDecoder, decoder is null");
+      AppMethodBeat.o(127083);
+      return true;
+    }
+    Object localObject = this.gOr.getOutputBuffers();
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "decoderOutputByteBuffers length: %s", new Object[] { Integer.valueOf(localObject.length) });
+    int i = this.gOr.dequeueOutputBuffer(this.bufferInfo, 60000L);
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "outputBufferIndex-->".concat(String.valueOf(i)));
+    if (i == -1)
+    {
+      ac.i("MicroMsg.MediaCodecTranscodeDecoder", "no output from decoder available, break");
+      label96:
+      AppMethodBeat.o(127083);
+      return false;
+    }
+    if (i == -3)
+    {
+      localObject = this.gOr.getOutputBuffers();
+      ac.i("MicroMsg.MediaCodecTranscodeDecoder", "decoder output buffers changed");
+    }
+    for (;;)
+    {
+      int j = this.gOr.dequeueOutputBuffer(this.bufferInfo, 60000L);
+      i = j;
+      if (j >= 0) {
+        break;
+      }
+      break label96;
+      if (i == -2)
+      {
+        this.ibK = this.gOr.getOutputFormat();
+        ac.i("MicroMsg.MediaCodecTranscodeDecoder", "decoder output format changed: " + this.ibK);
+      }
+      else if (i < 0)
+      {
+        ac.w("MicroMsg.MediaCodecTranscodeDecoder", "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
+      }
+      else
+      {
+        ac.v("MicroMsg.MediaCodecTranscodeDecoder", "perform decoding");
+        a.a locala = localObject[i];
+        if (locala == null) {
+          break label96;
+        }
+        long l1 = this.bufferInfo.presentationTimeUs;
+        if ((l1 < this.bvf * 1000L) && ((this.bufferInfo.flags & 0x4) == 0))
+        {
+          this.gOr.releaseOutputBuffer(i, false);
+          ac.i("MicroMsg.MediaCodecTranscodeDecoder", "decoder pts: %s, not reach start: %s", new Object[] { Long.valueOf(l1), Long.valueOf(this.bvf * 1000L) });
+          AppMethodBeat.o(127083);
+          return false;
+        }
+        if (this.bufferInfo.size != 0)
+        {
+          locala.position(this.bufferInfo.offset);
+          locala.limit(this.bufferInfo.offset + this.bufferInfo.size);
+          long l2 = bs.Gn();
+          localObject = this.bufferInfo;
+          if (locala == null) {
+            ac.e("MicroMsg.MediaCodecTranscodeDecoder", "processDecodeOutputBuffer error! byteBuffer is null");
+          }
+          for (;;)
+          {
+            ac.v("MicroMsg.MediaCodecTranscodeDecoder", "processDecodeOutputBuffer %s", new Object[] { Long.valueOf(bs.aO(l2)) });
+            this.gOr.releaseOutputBuffer(i, false);
+            if ((this.gOz != 1L) && (l1 >= this.gOz * 1000L))
+            {
+              ac.e("MicroMsg.MediaCodecTranscodeDecoder", "exceed endTimeMs");
+              AppMethodBeat.o(127083);
+              return true;
+              this.frameCount += 1;
+              if ((this.gOI > 1) && (this.frameCount % this.gOI == 0)) {
+                continue;
+              }
+              if (this.ibL == null) {
+                this.ibL = new byte[locala.remaining()];
+              }
+              long l3 = bs.Gn();
+              try
+              {
+                this.ibK = this.gOr.getOutputFormat();
+                locala.get(this.ibL, 0, locala.remaining());
+                ac.i("MicroMsg.MediaCodecTranscodeDecoder", "processDecodeOutputBuffer, byteBuffer: %s, bufferInfo: %s, size: %d cost %d", new Object[] { locala, localObject, Integer.valueOf(((MediaCodec.BufferInfo)localObject).size), Long.valueOf(bs.aO(l3)) });
+                if (this.ibJ != null)
+                {
+                  locala = this.ibJ;
+                  byte[] arrayOfByte = this.ibL;
+                  if ((((MediaCodec.BufferInfo)localObject).flags & 0x4) != 0)
+                  {
+                    bool = true;
+                    locala.a(arrayOfByte, bool, ((MediaCodec.BufferInfo)localObject).presentationTimeUs);
+                  }
+                }
+              }
+              catch (Exception localException2)
+              {
+                for (;;)
+                {
+                  ac.e("MicroMsg.MediaCodecTranscodeDecoder", "get output format error");
+                  continue;
+                  boolean bool = false;
+                }
+              }
+            }
+          }
+          if ((this.bufferInfo.flags & 0x4) != 0)
+          {
+            ac.i("MicroMsg.MediaCodecTranscodeDecoder", "receive end of stream");
+            try
+            {
+              this.gOr.stop();
+              this.gOr.release();
+              this.gOr = null;
+              AppMethodBeat.o(127083);
+              return true;
+            }
+            catch (Exception localException1)
+            {
+              for (;;)
+              {
+                ac.e("MicroMsg.MediaCodecTranscodeDecoder", "stop and release decoder error: %s", new Object[] { localException1.getMessage() });
+              }
+            }
+          }
+          AppMethodBeat.o(127083);
+          return false;
+        }
+        this.gOr.releaseOutputBuffer(i, false);
+      }
     }
   }
   
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.b> getBaseDBFactories()
+  private static MediaCodecInfo selectCodec(String paramString)
   {
+    AppMethodBeat.i(127080);
+    int k = MediaCodecList.getCodecCount();
+    int i = 0;
+    while (i < k)
+    {
+      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+      if (!localMediaCodecInfo.isEncoder())
+      {
+        String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+        int j = 0;
+        while (j < arrayOfString.length)
+        {
+          if (arrayOfString[j].equalsIgnoreCase(paramString))
+          {
+            AppMethodBeat.o(127080);
+            return localMediaCodecInfo;
+          }
+          j += 1;
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(127080);
     return null;
   }
   
-  public void onAccountPostReset(boolean paramBoolean)
+  public final void I(Runnable paramRunnable)
   {
-    int i = 1;
-    AppMethodBeat.i(20671);
-    f.d.a(Integer.valueOf(37), this.hxz);
-    f.d.a(Integer.valueOf(65), this.hxz);
-    f.d.a(Integer.valueOf(40), this.hxA);
-    com.tencent.mm.sdk.b.a.ESL.c(this.hxE);
-    int j = aCo().eLD();
-    long l = System.currentTimeMillis();
-    com.tencent.mm.model.az.arV();
-    l -= bt.a((Long)com.tencent.mm.model.c.afk().get(340225, null), 0L);
-    ad.i("MicroMsg.SubCoreVerify", "timeInterval = ".concat(String.valueOf(l)));
-    if ((l > 259200000L) && (j > 0))
+    AppMethodBeat.i(127084);
+    this.frameCount = 0;
+    while (!a(this.cSi))
     {
-      Object localObject1 = aCo();
-      Object localObject2 = String.format("select %s from %s where isNew = 1 ORDER BY lastModifiedTime DESC limit %d", new Object[] { "contentNickname", "fmessage_conversation", Integer.valueOf(2) });
-      localObject1 = ((com.tencent.mm.storage.az)localObject1).db.a((String)localObject2, null, 2);
-      localObject2 = new ArrayList();
-      while (((Cursor)localObject1).moveToNext()) {
-        ((List)localObject2).add(((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("contentNickname")));
-      }
-      ((Cursor)localObject1).close();
-      j = ((List)localObject2).size();
-      if (j > 0)
-      {
-        localObject1 = (String)((List)localObject2).get(0);
-        while (i < j)
-        {
-          localObject1 = (String)localObject1 + ", " + (String)((List)localObject2).get(i);
-          i += 1;
-        }
-        ad.i("MicroMsg.SubCoreVerify", "title = ".concat(String.valueOf(localObject1)));
-        localObject2 = new mn();
-        ((mn)localObject2).drG.userName = null;
-        ((mn)localObject2).drG.bNK = ((String)localObject1);
-        ((mn)localObject2).drG.type = 0;
-        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
-        com.tencent.mm.model.az.arV();
-        com.tencent.mm.model.c.afk().set(340225, Long.valueOf(System.currentTimeMillis()));
+      this.cSi.fKr.advance();
+      if (this.cSi.fKr.getSampleTrackIndex() != this.gRG) {
+        ac.i("MicroMsg.MediaCodecTranscodeDecoder", "track index not match, break");
       }
     }
-    AppMethodBeat.o(20671);
+    c localc = this.cSi;
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "sendDecoderEOS");
+    Object localObject = this.gOr.getInputBuffers();
+    int i = this.gOr.dequeueInputBuffer(60000L);
+    if (i < 0)
+    {
+      ac.i("MicroMsg.MediaCodecTranscodeDecoder", "check decoder input buffer index = %d count = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(0) });
+      if (aqv()) {}
+    }
+    else if (i >= 0)
+    {
+      localObject = localObject[i];
+      ((ByteBuffer)localObject).clear();
+      this.sampleSize = localc.j((ByteBuffer)localObject);
+      ((ByteBuffer)localObject).position(0);
+      long l = localc.fKr.getSampleTime();
+      if (i < 0) {
+        break label242;
+      }
+      ac.i("MicroMsg.MediaCodecTranscodeDecoder", "send EOS, decoderInputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
+      this.gOr.a(i, 0, l * 1000L, 4);
+    }
+    for (;;)
+    {
+      aqv();
+      ap.n(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(127077);
+          if (d.this.gOr != null)
+          {
+            ac.i("MicroMsg.MediaCodecTranscodeDecoder", "delay to stop decoder");
+            try
+            {
+              d.this.gOr.stop();
+              d.this.gOr.release();
+              d.this.gOr = null;
+              AppMethodBeat.o(127077);
+              return;
+            }
+            catch (Exception localException)
+            {
+              ac.printErrStackTrace("MicroMsg.MediaCodecTranscodeDecoder", localException, "delay to stop decoder error: %s", new Object[] { localException.getMessage() });
+            }
+          }
+          AppMethodBeat.o(127077);
+        }
+      }, 500L);
+      paramRunnable.run();
+      AppMethodBeat.o(127084);
+      return;
+      label242:
+      ac.w("MicroMsg.MediaCodecTranscodeDecoder", "input buffer not available");
+    }
   }
   
-  public void onAccountRelease()
+  public final void a(a.a parama)
   {
-    AppMethodBeat.i(20670);
-    f.d.b(Integer.valueOf(37), this.hxz);
-    f.d.b(Integer.valueOf(65), this.hxz);
-    f.d.b(Integer.valueOf(40), this.hxA);
-    com.tencent.mm.sdk.b.a.ESL.d(this.hxE);
-    com.tencent.mm.model.az.getNotification().TU();
-    AppMethodBeat.o(20670);
+    this.ibJ = parama;
   }
   
-  public void onSdcardMount(boolean paramBoolean) {}
+  public final Point aJY()
+  {
+    AppMethodBeat.i(127086);
+    Point localPoint = new Point(this.ibK.getInteger("width"), this.ibK.getInteger("height"));
+    AppMethodBeat.o(127086);
+    return localPoint;
+  }
+  
+  public final int aJZ()
+  {
+    AppMethodBeat.i(127085);
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "src color format: %s", new Object[] { Integer.valueOf(this.gNW) });
+    switch (this.gNW)
+    {
+    default: 
+      AppMethodBeat.o(127085);
+      return 1;
+    case 19: 
+      AppMethodBeat.o(127085);
+      return 2;
+    }
+    AppMethodBeat.o(127085);
+    return 1;
+  }
+  
+  public final int n(String paramString, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(127079);
+    this.hYr = paramString;
+    this.bvf = paramLong1;
+    this.gOz = paramLong2;
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "initDecoder() called with: format = [" + this.ibK + "]");
+    try
+    {
+      paramString = this.ibK.getString("mime");
+      this.gOr = z.sx(paramString);
+      MediaCodecInfo localMediaCodecInfo = selectCodec(paramString);
+      ac.i("MicroMsg.MediaCodecTranscodeDecoder", "found codec: %s", new Object[] { localMediaCodecInfo });
+      if (localMediaCodecInfo != null)
+      {
+        ac.i("MicroMsg.MediaCodecTranscodeDecoder", "codec name: %s", new Object[] { localMediaCodecInfo.getName() });
+        this.gNW = a(localMediaCodecInfo, paramString);
+        ac.i("MicroMsg.MediaCodecTranscodeDecoder", "found colorFormat: %s", new Object[] { Integer.valueOf(this.gNW) });
+        this.ibK.setInteger("color-format", this.gNW);
+      }
+      this.gOr.a(this.ibK, null, 0);
+      this.gOr.start();
+      AppMethodBeat.o(127079);
+      return 0;
+    }
+    catch (Exception paramString)
+    {
+      ac.printErrStackTrace("MicroMsg.MediaCodecTranscodeDecoder", paramString, "Init decoder failed : %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(127079);
+    }
+    return -1;
+  }
+  
+  public final void pK(int paramInt)
+  {
+    AppMethodBeat.i(127088);
+    ac.i("MicroMsg.MediaCodecTranscodeDecoder", "setFrameDropInterval: %s", new Object[] { Integer.valueOf(paramInt) });
+    this.gOI = paramInt;
+    AppMethodBeat.o(127088);
+  }
+  
+  public final void stop()
+  {
+    AppMethodBeat.i(127087);
+    if (this.gOr != null) {
+      try
+      {
+        ac.i("MicroMsg.MediaCodecTranscodeDecoder", "stop decoder");
+        this.gOr.stop();
+        this.gOr.release();
+        this.gOr = null;
+        AppMethodBeat.o(127087);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ac.printErrStackTrace("MicroMsg.MediaCodecTranscodeDecoder", localException, "stop decoder error: %s", new Object[] { localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(127087);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.bk.d
  * JD-Core Version:    0.7.0.1
  */

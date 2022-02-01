@@ -10,35 +10,35 @@ public class RealNameBundle
   implements Parcelable
 {
   public static final Parcelable.Creator<RealNameBundle> CREATOR;
-  public String AaA;
-  public int AaB;
-  public String AaC;
-  public int AaD;
-  public int AaE;
-  public int AaF;
-  public String AaG;
-  public int AaH;
-  public int AaI;
-  public int AaJ;
-  public String AaK;
-  public String AaL;
-  public String AaM;
-  public String AaN;
-  public String AaO;
-  public int AaP;
-  public int AaQ;
-  public int AaR;
-  public String AaS;
-  public String Aar;
-  public String Aas;
-  public String Aat;
-  public int Aau;
-  public String Aav;
-  public Profession Aaw;
-  public String Aax;
-  public String Aay;
-  public String Aaz;
-  public int evp;
+  public String BsL;
+  public String BsM;
+  public String BsN;
+  public int BsO;
+  public String BsP;
+  public Profession BsQ;
+  public String BsR;
+  public String BsS;
+  public String BsT;
+  public String BsU;
+  public int BsV;
+  public String BsW;
+  public int BsX;
+  public int BsY;
+  public int BsZ;
+  public String Bta;
+  public int Btb;
+  public int Btc;
+  public int Btd;
+  public String Bte;
+  public String Btf;
+  public String Btg;
+  public String Bth;
+  public String Bti;
+  public int Btj;
+  public int Btk;
+  public int Btl;
+  public String Btm;
+  public int exL;
   
   static
   {
@@ -52,56 +52,56 @@ public class RealNameBundle
   protected RealNameBundle(Parcel paramParcel)
   {
     AppMethodBeat.i(70165);
-    this.Aar = paramParcel.readString();
-    this.Aas = paramParcel.readString();
-    this.Aat = paramParcel.readString();
-    this.Aau = paramParcel.readInt();
-    this.Aav = paramParcel.readString();
-    this.Aaw = ((Profession)paramParcel.readParcelable(Profession.class.getClassLoader()));
-    this.Aax = paramParcel.readString();
-    this.Aay = paramParcel.readString();
-    this.Aaz = paramParcel.readString();
-    this.AaA = paramParcel.readString();
-    this.AaB = paramParcel.readInt();
-    this.AaC = paramParcel.readString();
-    this.AaD = paramParcel.readInt();
-    this.AaE = paramParcel.readInt();
-    this.AaF = paramParcel.readInt();
-    this.AaG = paramParcel.readString();
-    this.AaH = paramParcel.readInt();
-    this.AaI = paramParcel.readInt();
-    this.AaJ = paramParcel.readInt();
-    this.AaK = paramParcel.readString();
-    this.AaL = paramParcel.readString();
-    this.AaM = paramParcel.readString();
-    this.AaN = paramParcel.readString();
-    this.AaO = paramParcel.readString();
-    this.AaP = paramParcel.readInt();
-    this.AaQ = paramParcel.readInt();
-    this.AaR = paramParcel.readInt();
-    this.AaS = paramParcel.readString();
-    this.evp = paramParcel.readInt();
+    this.BsL = paramParcel.readString();
+    this.BsM = paramParcel.readString();
+    this.BsN = paramParcel.readString();
+    this.BsO = paramParcel.readInt();
+    this.BsP = paramParcel.readString();
+    this.BsQ = ((Profession)paramParcel.readParcelable(Profession.class.getClassLoader()));
+    this.BsR = paramParcel.readString();
+    this.BsS = paramParcel.readString();
+    this.BsT = paramParcel.readString();
+    this.BsU = paramParcel.readString();
+    this.BsV = paramParcel.readInt();
+    this.BsW = paramParcel.readString();
+    this.BsX = paramParcel.readInt();
+    this.BsY = paramParcel.readInt();
+    this.BsZ = paramParcel.readInt();
+    this.Bta = paramParcel.readString();
+    this.Btb = paramParcel.readInt();
+    this.Btc = paramParcel.readInt();
+    this.Btd = paramParcel.readInt();
+    this.Bte = paramParcel.readString();
+    this.Btf = paramParcel.readString();
+    this.Btg = paramParcel.readString();
+    this.Bth = paramParcel.readString();
+    this.Bti = paramParcel.readString();
+    this.Btj = paramParcel.readInt();
+    this.Btk = paramParcel.readInt();
+    this.Btl = paramParcel.readInt();
+    this.Btm = paramParcel.readString();
+    this.exL = paramParcel.readInt();
     AppMethodBeat.o(70165);
   }
   
-  public final void aM(Map<String, String> paramMap)
+  public final void aQ(Map<String, String> paramMap)
   {
     AppMethodBeat.i(174505);
-    paramMap.put("detail_address", this.AaN);
-    paramMap.put("phone_no", this.AaS);
-    paramMap.put("sex", String.valueOf(this.evp));
-    paramMap.put("nationality", this.AaK);
-    paramMap.put("birth_date", this.AaG);
-    if (this.Aaw != null) {}
-    for (String str = this.Aaw.Aap;; str = "")
+    paramMap.put("detail_address", this.Bth);
+    paramMap.put("phone_no", this.Btm);
+    paramMap.put("sex", String.valueOf(this.exL));
+    paramMap.put("nationality", this.Bte);
+    paramMap.put("birth_date", this.Bta);
+    if (this.BsQ != null) {}
+    for (String str = this.BsQ.BsJ;; str = "")
     {
       paramMap.put("profession_name", str);
-      paramMap.put("user_country", this.Aax);
-      paramMap.put("user_province", this.Aay);
-      paramMap.put("user_city", this.Aaz);
-      paramMap.put("cre_expire_date", this.AaC);
-      paramMap.put("creid_renewal", String.valueOf(this.AaB));
-      paramMap.put("cre_effect_date", this.AaO);
+      paramMap.put("user_country", this.BsR);
+      paramMap.put("user_province", this.BsS);
+      paramMap.put("user_city", this.BsT);
+      paramMap.put("cre_expire_date", this.BsW);
+      paramMap.put("creid_renewal", String.valueOf(this.BsV));
+      paramMap.put("cre_effect_date", this.Bti);
       AppMethodBeat.o(174505);
       return;
     }
@@ -115,35 +115,35 @@ public class RealNameBundle
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70166);
-    paramParcel.writeString(this.Aar);
-    paramParcel.writeString(this.Aas);
-    paramParcel.writeString(this.Aat);
-    paramParcel.writeInt(this.Aau);
-    paramParcel.writeString(this.Aav);
-    paramParcel.writeParcelable(this.Aaw, 1);
-    paramParcel.writeString(this.Aax);
-    paramParcel.writeString(this.Aay);
-    paramParcel.writeString(this.Aaz);
-    paramParcel.writeString(this.AaA);
-    paramParcel.writeInt(this.AaB);
-    paramParcel.writeString(this.AaC);
-    paramParcel.writeInt(this.AaD);
-    paramParcel.writeInt(this.AaE);
-    paramParcel.writeInt(this.AaF);
-    paramParcel.writeString(this.AaG);
-    paramParcel.writeInt(this.AaH);
-    paramParcel.writeInt(this.AaI);
-    paramParcel.writeInt(this.AaJ);
-    paramParcel.writeString(this.AaK);
-    paramParcel.writeString(this.AaL);
-    paramParcel.writeString(this.AaM);
-    paramParcel.writeString(this.AaN);
-    paramParcel.writeString(this.AaO);
-    paramParcel.writeInt(this.AaP);
-    paramParcel.writeInt(this.AaQ);
-    paramParcel.writeInt(this.AaR);
-    paramParcel.writeString(this.AaS);
-    paramParcel.writeInt(this.evp);
+    paramParcel.writeString(this.BsL);
+    paramParcel.writeString(this.BsM);
+    paramParcel.writeString(this.BsN);
+    paramParcel.writeInt(this.BsO);
+    paramParcel.writeString(this.BsP);
+    paramParcel.writeParcelable(this.BsQ, 1);
+    paramParcel.writeString(this.BsR);
+    paramParcel.writeString(this.BsS);
+    paramParcel.writeString(this.BsT);
+    paramParcel.writeString(this.BsU);
+    paramParcel.writeInt(this.BsV);
+    paramParcel.writeString(this.BsW);
+    paramParcel.writeInt(this.BsX);
+    paramParcel.writeInt(this.BsY);
+    paramParcel.writeInt(this.BsZ);
+    paramParcel.writeString(this.Bta);
+    paramParcel.writeInt(this.Btb);
+    paramParcel.writeInt(this.Btc);
+    paramParcel.writeInt(this.Btd);
+    paramParcel.writeString(this.Bte);
+    paramParcel.writeString(this.Btf);
+    paramParcel.writeString(this.Btg);
+    paramParcel.writeString(this.Bth);
+    paramParcel.writeString(this.Bti);
+    paramParcel.writeInt(this.Btj);
+    paramParcel.writeInt(this.Btk);
+    paramParcel.writeInt(this.Btl);
+    paramParcel.writeString(this.Btm);
+    paramParcel.writeInt(this.exL);
     AppMethodBeat.o(70166);
   }
 }

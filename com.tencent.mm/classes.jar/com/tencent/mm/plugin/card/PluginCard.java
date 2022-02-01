@@ -21,7 +21,7 @@ public class PluginCard
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(112560);
-    if (paramg.agu()) {
+    if (paramg.ahL()) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.card.c.b.class, new e(new com.tencent.mm.plugin.card.c.a()));
     }
     AppMethodBeat.o(112560);
@@ -50,7 +50,7 @@ public class PluginCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.PluginCard
  * JD-Core Version:    0.7.0.1
  */

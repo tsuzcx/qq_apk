@@ -15,14 +15,14 @@ final class LaunchAAUI$5
   {
     AppMethodBeat.i(63632);
     paraml.clear();
-    this.idS.setFooterView(null);
-    this.idS.setFooterView(this.idT);
+    this.iEb.setFooterView(null);
+    this.iEb.setFooterView(this.iEc);
     AppMethodBeat.o(63632);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAUI.5
  * JD-Core Version:    0.7.0.1
  */

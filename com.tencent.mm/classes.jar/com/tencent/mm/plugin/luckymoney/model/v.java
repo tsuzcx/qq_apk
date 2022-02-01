@@ -4,32 +4,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.i.c;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.ByteArrayOutputStream;
 
 public final class v
   implements g.a
 {
-  String oXR = null;
-  a teA;
-  String teB;
-  boolean teC = true;
+  String pBc = null;
+  a umP;
+  String umQ;
+  boolean umR = true;
   
   public final int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean)
   {
     AppMethodBeat.i(65240);
-    ad.d("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd:cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
-    if ((paramd != null) && (this.oXR.equals(paramString)) && (!bt.isNullOrNil(paramd.field_fileId)))
+    ac.d("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd:cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
+    if ((paramd != null) && (this.pBc.equals(paramString)) && (!bs.isNullOrNil(paramd.field_fileId)))
     {
-      ad.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer success, sceneResult.field_retCode:" + paramd.field_retCode);
+      ac.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer success, sceneResult.field_retCode:" + paramd.field_retCode);
       if ((paramInt == 0) && (paramd.field_retCode == 0)) {
-        if (this.teC)
+        if (this.umR)
         {
-          ad.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, upload callback success");
-          ad.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd:transfer done, mediaid=%s, completeInfo=%s", new Object[] { paramString, paramd.toString() });
-          if (this.teA != null) {
-            this.teA.bh(this.teB, true);
+          ac.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, upload callback success");
+          ac.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd:transfer done, mediaid=%s, completeInfo=%s", new Object[] { paramString, paramd.toString() });
+          if (this.umP != null) {
+            this.umP.bo(this.umQ, true);
           }
         }
       }
@@ -38,23 +38,23 @@ public final class v
     {
       AppMethodBeat.o(65240);
       return 0;
-      ad.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, download callback success");
+      ac.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, download callback success");
       break;
-      ad.e("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, fail");
-      if (this.teA != null)
+      ac.e("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, fail");
+      if (this.umP != null)
       {
-        this.teA.bh(this.teB, false);
+        this.umP.bo(this.umQ, false);
         continue;
-        if ((paramd != null) && (this.oXR.equals(paramString)) && (paramd.field_retCode != 0))
+        if ((paramd != null) && (this.pBc.equals(paramString)) && (paramd.field_retCode != 0))
         {
-          ad.e("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, fail, sceneResult.field_retCode:" + paramd.field_retCode);
-          if (this.teA != null) {
-            this.teA.bh(this.teB, false);
+          ac.e("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, fail, sceneResult.field_retCode:" + paramd.field_retCode);
+          if (this.umP != null) {
+            this.umP.bo(this.umQ, false);
           }
         }
         else if (paramc != null)
         {
-          ad.d("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: upload progressing....");
+          ac.d("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: upload progressing....");
         }
       }
     }
@@ -69,7 +69,7 @@ public final class v
   
   public static abstract interface a
   {
-    public abstract void bh(String paramString, boolean paramBoolean);
+    public abstract void bo(String paramString, boolean paramBoolean);
   }
 }
 

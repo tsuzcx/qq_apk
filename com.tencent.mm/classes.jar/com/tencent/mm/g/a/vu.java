@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vu
   extends b
 {
-  public a dBr;
+  public a dyG;
   
   public vu()
   {
@@ -15,29 +15,22 @@ public final class vu
   
   private vu(byte paramByte)
   {
-    AppMethodBeat.i(116055);
-    this.dBr = new a();
-    this.ESR = false;
+    AppMethodBeat.i(149892);
+    this.dyG = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116055);
+    AppMethodBeat.o(149892);
   }
   
   public static final class a
   {
-    public String dBj;
-    public byte[] dBl;
-    public String dBs;
-    public int dBt = 0;
-    public String dzt;
-    public String id;
-    public int ret;
-    public String source;
-    public int type;
+    public boolean dyH = false;
+    public boolean dyI = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.vu
  * JD-Core Version:    0.7.0.1
  */

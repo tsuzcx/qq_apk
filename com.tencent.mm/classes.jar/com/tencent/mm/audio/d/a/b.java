@@ -2,35 +2,35 @@ package com.tencent.mm.audio.d.a;
 
 import android.media.AudioRecord;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
 {
-  private AudioRecord cYu;
-  private boolean dai;
+  private AudioRecord cVQ;
+  private boolean cXE;
   
-  public final boolean Ob()
+  public final boolean NX()
   {
     AppMethodBeat.i(146312);
-    if (this.cYu == null) {
-      ad.e("MicroMsg.RecorderPcm", "mAudioRecord is null, return");
+    if (this.cVQ == null) {
+      ac.e("MicroMsg.RecorderPcm", "mAudioRecord is null, return");
     }
     for (int i = 1; i != 0; i = 0)
     {
       AppMethodBeat.o(146312);
       return false;
     }
-    this.dai = false;
+    this.cXE = false;
     try
     {
-      this.cYu.stop();
+      this.cVQ.stop();
       release();
       AppMethodBeat.o(146312);
       return true;
     }
     catch (Exception localException)
     {
-      ad.m("MicroMsg.RecorderPcm", "", new Object[] { localException });
+      ac.m("MicroMsg.RecorderPcm", "", new Object[] { localException });
       AppMethodBeat.o(146312);
     }
     return false;
@@ -39,18 +39,18 @@ public final class b
   public final void release()
   {
     AppMethodBeat.i(146313);
-    if (this.cYu != null)
+    if (this.cVQ != null)
     {
-      this.cYu.setRecordPositionUpdateListener(null);
-      this.cYu.release();
-      this.cYu = null;
+      this.cVQ.setRecordPositionUpdateListener(null);
+      this.cVQ.release();
+      this.cVQ = null;
     }
     AppMethodBeat.o(146313);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.audio.d.a.b
  * JD-Core Version:    0.7.0.1
  */

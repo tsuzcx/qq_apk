@@ -2,13 +2,13 @@ package com.google.android.exoplayer2.b;
 
 public final class d
 {
-  public int aWd;
-  public int aWe;
-  public int aWf;
-  public int aWg;
-  public int aWh;
-  public int aWi;
-  public int aWj;
+  public int aWQ;
+  public int aWR;
+  public int aWS;
+  public int aWT;
+  public int aWU;
+  public int aWV;
+  public int aWW;
 }
 
 

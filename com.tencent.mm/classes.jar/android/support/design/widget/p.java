@@ -5,10 +5,10 @@ import android.view.View;
 
 final class p
 {
-  int tD;
-  private int tE;
-  int tF;
-  int tG;
+  int uE;
+  private int uF;
+  int uG;
+  int uH;
   private final View view;
   
   public p(View paramView)
@@ -18,26 +18,26 @@ final class p
   
   public final boolean G(int paramInt)
   {
-    if (this.tF != paramInt)
+    if (this.uG != paramInt)
     {
-      this.tF = paramInt;
-      cZ();
+      this.uG = paramInt;
+      dg();
       return true;
     }
     return false;
   }
   
-  public final void cY()
+  public final void df()
   {
-    this.tD = this.view.getTop();
-    this.tE = this.view.getLeft();
-    cZ();
+    this.uE = this.view.getTop();
+    this.uF = this.view.getLeft();
+    dg();
   }
   
-  final void cZ()
+  final void dg()
   {
-    t.s(this.view, this.tF - (this.view.getTop() - this.tD));
-    t.u(this.view, this.tG - (this.view.getLeft() - this.tE));
+    t.s(this.view, this.uG - (this.view.getTop() - this.uE));
+    t.u(this.view, this.uH - (this.view.getLeft() - this.uF));
   }
 }
 

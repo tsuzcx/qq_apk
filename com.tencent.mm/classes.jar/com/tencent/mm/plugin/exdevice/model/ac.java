@@ -18,20 +18,20 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.af;
-import com.tencent.mm.aw.a.d.b;
-import com.tencent.mm.g.a.ry;
-import com.tencent.mm.g.a.sb;
+import com.tencent.mm.al.af;
+import com.tencent.mm.av.a.d.b;
+import com.tencent.mm.g.a.sh;
+import com.tencent.mm.g.a.sk;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
 import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.vfs.q;
 import java.io.IOException;
 import java.util.List;
@@ -39,71 +39,71 @@ import java.util.List;
 public final class ac
 {
   private Context context;
-  boolean gqP;
-  private TextView oWA;
-  private TextView oWB;
-  private TextView oWC;
-  private View oWD;
-  boolean oWE;
-  Dialog oWF;
-  private View oWy;
-  private TextView oWz;
+  boolean gRx;
+  private View pzJ;
+  private TextView pzK;
+  private TextView pzL;
+  private TextView pzM;
+  private TextView pzN;
+  private View pzO;
+  boolean pzP;
+  Dialog pzQ;
   private int width;
   
   public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(23448);
-    af.awe();
-    Object localObject = com.tencent.mm.am.e.avD();
+    af.aCW();
+    Object localObject = com.tencent.mm.al.e.aCv();
     String str;
     if (((List)localObject).size() > 0)
     {
       localObject = (String)((List)localObject).get(0);
       WXImageObject localWXImageObject = new WXImageObject();
       localWXImageObject.setImagePath(paramString2);
-      str = v.sh((String)localObject);
+      str = v.wk((String)localObject);
       WXMediaMessage localWXMediaMessage = new WXMediaMessage();
       localWXMediaMessage.mediaObject = localWXImageObject;
       localWXMediaMessage.title = str;
       localWXMediaMessage.description = paramString4;
       localWXMediaMessage.setThumbImage(f.decodeFile(paramString2, null));
-      paramString2 = new ry();
-      paramString2.dxx.doG = localWXMediaMessage;
-      paramString2.dxx.appId = "wx7fa037cc7dfabad5";
-      paramString2.dxx.appName = paramContext.getString(2131758621);
-      paramString2.dxx.toUser = paramString1;
-      paramString2.dxx.dxy = 2;
-      if (!bt.isNullOrNil((String)localObject)) {
+      paramString2 = new sh();
+      paramString2.dvk.dis = localWXMediaMessage;
+      paramString2.dvk.appId = "wx7fa037cc7dfabad5";
+      paramString2.dvk.appName = paramContext.getString(2131758621);
+      paramString2.dvk.toUser = paramString1;
+      paramString2.dvk.dit = 2;
+      if (!bs.isNullOrNil((String)localObject)) {
         break label253;
       }
-      paramString2.dxx.dxB = null;
+      paramString2.dvk.dvn = null;
     }
     for (;;)
     {
-      boolean bool = com.tencent.mm.sdk.b.a.ESL.l(paramString2);
-      if (!bt.isNullOrNil(paramString3))
+      boolean bool = com.tencent.mm.sdk.b.a.GpY.l(paramString2);
+      if (!bs.isNullOrNil(paramString3))
       {
-        paramContext = new sb();
-        paramContext.dxJ.dxK = paramString1;
-        paramContext.dxJ.content = paramString3;
-        paramContext.dxJ.type = w.tq(paramString1);
-        paramContext.dxJ.flags = 0;
-        com.tencent.mm.sdk.b.a.ESL.l(paramContext);
+        paramContext = new sk();
+        paramContext.dvv.dvw = paramString1;
+        paramContext.dvv.content = paramString3;
+        paramContext.dvv.type = w.xt(paramString1);
+        paramContext.dvv.flags = 0;
+        com.tencent.mm.sdk.b.a.GpY.l(paramContext);
       }
       AppMethodBeat.o(23448);
       return bool;
       localObject = null;
       break;
       label253:
-      paramString2.dxx.dxz = ((String)localObject);
-      paramString2.dxx.dxA = str;
+      paramString2.dvk.dvl = ((String)localObject);
+      paramString2.dvk.dvm = str;
     }
   }
   
-  public static final String ev(Context paramContext)
+  public static final String eD(Context paramContext)
   {
     AppMethodBeat.i(23445);
-    paramContext = q.B(new com.tencent.mm.vfs.e(paramContext.getCacheDir(), "sport_share_bitmap.jpg").fhU());
+    paramContext = q.B(new com.tencent.mm.vfs.e(paramContext.getCacheDir(), "sport_share_bitmap.jpg").fxV());
     AppMethodBeat.o(23445);
     return paramContext;
   }
@@ -112,7 +112,7 @@ public final class ac
   {
     AppMethodBeat.i(23447);
     if (paramBitmap != null) {
-      paramBitmap = ai.aC(paramBitmap);
+      paramBitmap = aj.aE(paramBitmap);
     }
     for (;;)
     {
@@ -120,23 +120,23 @@ public final class ac
       PaintDrawable localPaintDrawable = new PaintDrawable();
       localPaintDrawable.setShape(new RectShape());
       localPaintDrawable.setShaderFactory((ShapeDrawable.ShaderFactory)localObject);
-      this.oWD.setBackgroundDrawable(localPaintDrawable);
-      this.oWz.setTextColor(paramBitmap[1]);
-      this.oWA.setTextColor(paramBitmap[1]);
-      this.oWB.setTextColor(paramBitmap[1]);
-      this.oWC.setTextColor(paramBitmap[1]);
+      this.pzO.setBackgroundDrawable(localPaintDrawable);
+      this.pzK.setTextColor(paramBitmap[1]);
+      this.pzL.setTextColor(paramBitmap[1]);
+      this.pzM.setTextColor(paramBitmap[1]);
+      this.pzN.setTextColor(paramBitmap[1]);
       paramBitmap = Bitmap.createBitmap(this.width, this.width, Bitmap.Config.ARGB_8888);
       localObject = new Canvas(paramBitmap);
-      this.oWy.draw((Canvas)localObject);
-      localObject = new com.tencent.mm.vfs.e(ev(this.context));
+      this.pzJ.draw((Canvas)localObject);
+      localObject = new com.tencent.mm.vfs.e(eD(this.context));
       if (((com.tencent.mm.vfs.e)localObject).exists()) {
         ((com.tencent.mm.vfs.e)localObject).delete();
       }
       try
       {
-        f.a(paramBitmap, 100, Bitmap.CompressFormat.JPEG, q.B(((com.tencent.mm.vfs.e)localObject).fhU()), true);
+        f.a(paramBitmap, 100, Bitmap.CompressFormat.JPEG, q.B(((com.tencent.mm.vfs.e)localObject).fxV()), true);
         label174:
-        paramBitmap = q.B(((com.tencent.mm.vfs.e)localObject).fhU());
+        paramBitmap = q.B(((com.tencent.mm.vfs.e)localObject).fxV());
         AppMethodBeat.o(23447);
         return paramBitmap;
         paramBitmap = new int[2];
@@ -156,47 +156,47 @@ public final class ac
   public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, final a parama)
   {
     AppMethodBeat.i(23446);
-    if (this.oWE)
+    if (this.pzP)
     {
       AppMethodBeat.o(23446);
       return;
     }
-    this.oWE = true;
-    this.gqP = false;
-    if ((this.oWF == null) && (!bt.isNullOrNil(paramString3)))
+    this.pzP = true;
+    this.gRx = false;
+    if ((this.pzQ == null) && (!bs.isNullOrNil(paramString3)))
     {
       paramContext.getString(2131755906);
-      this.oWF = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131758606), true, new DialogInterface.OnCancelListener()
+      this.pzQ = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131758606), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          ac.this.gqP = true;
+          ac.this.gRx = true;
         }
       });
-      this.oWF.show();
+      this.pzQ.show();
     }
     this.context = paramContext;
     this.width = 1280;
-    if (this.width > com.tencent.mm.cd.a.hV(paramContext)) {
-      this.width = com.tencent.mm.cd.a.hV(paramContext);
+    if (this.width > com.tencent.mm.cc.a.ig(paramContext)) {
+      this.width = com.tencent.mm.cc.a.ig(paramContext);
     }
-    this.oWy = LayoutInflater.from(paramContext).inflate(2131493894, null);
-    this.oWz = ((TextView)this.oWy.findViewById(2131299586));
-    this.oWA = ((TextView)this.oWy.findViewById(2131299584));
-    this.oWB = ((TextView)this.oWy.findViewById(2131299596));
-    this.oWC = ((TextView)this.oWy.findViewById(2131299595));
-    this.oWD = this.oWy.findViewById(2131297207);
-    this.oWz.setText(paramString1);
-    this.oWB.setText(paramString2);
-    a.b.a((ImageView)this.oWy.findViewById(2131296997), u.aqG(), 0.5F, false);
-    paramContext = (ImageView)this.oWy.findViewById(2131297204);
+    this.pzJ = LayoutInflater.from(paramContext).inflate(2131493894, null);
+    this.pzK = ((TextView)this.pzJ.findViewById(2131299586));
+    this.pzL = ((TextView)this.pzJ.findViewById(2131299584));
+    this.pzM = ((TextView)this.pzJ.findViewById(2131299596));
+    this.pzN = ((TextView)this.pzJ.findViewById(2131299595));
+    this.pzO = this.pzJ.findViewById(2131297207);
+    this.pzK.setText(paramString1);
+    this.pzM.setText(paramString2);
+    a.b.a((ImageView)this.pzJ.findViewById(2131296997), u.axw(), 0.5F, false);
+    paramContext = (ImageView)this.pzJ.findViewById(2131297204);
     paramString1 = new RelativeLayout.LayoutParams(-1, -1);
-    this.oWy.setLayoutParams(paramString1);
-    this.oWy.measure(View.MeasureSpec.makeMeasureSpec(this.width, 1073741824), View.MeasureSpec.makeMeasureSpec(this.width, 1073741824));
-    this.oWy.layout(0, 0, this.width, this.width);
-    if (!bt.isNullOrNil(paramString3))
+    this.pzJ.setLayoutParams(paramString1);
+    this.pzJ.measure(View.MeasureSpec.makeMeasureSpec(this.width, 1073741824), View.MeasureSpec.makeMeasureSpec(this.width, 1073741824));
+    this.pzJ.layout(0, 0, this.width, this.width);
+    if (!bs.isNullOrNil(paramString3))
     {
-      ad.bZJ().a(paramString3, paramContext, new com.tencent.mm.aw.a.c.h()
+      ad.cgS().a(paramString3, paramContext, new com.tencent.mm.av.a.c.h()
       {
         public final Bitmap a(String paramAnonymousString, View paramAnonymousView, b paramAnonymousb)
         {
@@ -208,26 +208,26 @@ public final class ac
         public final void b(String paramAnonymousString, View paramAnonymousView, b paramAnonymousb)
         {
           AppMethodBeat.i(23443);
-          if (ac.this.gqP)
+          if (ac.this.gRx)
           {
-            ac.this.oWE = false;
+            ac.this.pzP = false;
             AppMethodBeat.o(23443);
             return;
           }
-          aq.f(new Runnable()
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(23442);
-              if (ac.this.oWF.isShowing()) {
-                ac.this.oWF.dismiss();
+              if (ac.this.pzQ.isShowing()) {
+                ac.this.pzQ.dismiss();
               }
               AppMethodBeat.o(23442);
             }
           });
           paramAnonymousString = ac.this.U(paramAnonymousb.bitmap);
-          parama.UF(paramAnonymousString);
-          ac.this.oWE = false;
+          parama.YR(paramAnonymousString);
+          ac.this.pzP = false;
           AppMethodBeat.o(23443);
         }
       });
@@ -235,19 +235,19 @@ public final class ac
       return;
     }
     paramContext.setImageResource(2131100204);
-    parama.UF(U(null));
-    this.oWE = false;
+    parama.YR(U(null));
+    this.pzP = false;
     AppMethodBeat.o(23446);
   }
   
   public static abstract interface a
   {
-    public abstract void UF(String paramString);
+    public abstract void YR(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.ac
  * JD-Core Version:    0.7.0.1
  */

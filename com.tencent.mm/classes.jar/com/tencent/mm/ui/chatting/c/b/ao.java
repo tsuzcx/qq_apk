@@ -1,6 +1,6 @@
 package com.tencent.mm.ui.chatting.c.b;
 
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.chatting.c.ab;
 import com.tencent.mm.ui.chatting.d;
@@ -8,21 +8,21 @@ import com.tencent.mm.ui.chatting.d;
 public abstract interface ao
   extends ab
 {
-  public abstract boolean Ny();
+  public abstract boolean Nw();
   
   public abstract void a(MMFragment paramMMFragment, boolean paramBoolean);
   
-  public abstract boolean bM(bl parambl);
+  public abstract boolean bP(bo parambo);
   
-  public abstract boolean bN(bl parambl);
+  public abstract boolean bQ(bo parambo);
   
-  public abstract d eYQ();
+  public abstract d foG();
   
-  public abstract void eYR();
+  public abstract void foH();
   
-  public abstract boolean eYS();
+  public abstract boolean foI();
   
-  public abstract void wj(boolean paramBoolean);
+  public abstract void xn(boolean paramBoolean);
 }
 
 

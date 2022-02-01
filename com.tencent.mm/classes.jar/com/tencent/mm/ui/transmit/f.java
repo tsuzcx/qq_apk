@@ -2,28 +2,28 @@ package com.tencent.mm.ui.transmit;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public final class f
 {
-  boolean Hxv;
-  a Hxw;
+  boolean IXS;
+  a IXT;
   Context context;
-  Runnable jJK;
-  boolean lAJ;
-  boolean lAK;
-  boolean lAL;
-  int lAM;
+  Runnable kkk;
+  boolean mcF;
+  boolean mcG;
+  boolean mcH;
+  int mcI;
   String text;
   p tipDialog;
   
   public f(Context paramContext)
   {
     AppMethodBeat.i(39488);
-    this.Hxv = false;
-    this.jJK = new Runnable()
+    this.IXS = false;
+    this.kkk = new Runnable()
     {
       public final void run()
       {
@@ -31,7 +31,7 @@ public final class f
         if (f.this.tipDialog != null) {
           f.this.tipDialog.dismiss();
         }
-        f.this.bos();
+        f.this.bvo();
         AppMethodBeat.o(39487);
       }
     };
@@ -39,52 +39,52 @@ public final class f
     AppMethodBeat.o(39488);
   }
   
-  private boolean qh()
+  private boolean qr()
   {
-    return this.lAJ & this.lAK;
+    return this.mcF & this.mcG;
   }
   
   public final void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    AppMethodBeat.i(191863);
-    this.lAJ = true;
-    this.lAL = paramBoolean1;
+    AppMethodBeat.i(196978);
+    this.mcF = true;
+    this.mcH = paramBoolean1;
     this.text = paramString;
-    this.lAM = paramInt;
-    this.Hxv = paramBoolean2;
-    if (qh())
+    this.mcI = paramInt;
+    this.IXS = paramBoolean2;
+    if (qr())
     {
-      bos();
-      AppMethodBeat.o(191863);
+      bvo();
+      AppMethodBeat.o(196978);
       return;
     }
     if (paramBoolean1)
     {
       this.tipDialog = h.b(this.context, this.context.getString(2131763073), true, null);
-      aq.n(this.jJK, 5000L);
+      ap.n(this.kkk, 5000L);
     }
-    AppMethodBeat.o(191863);
+    AppMethodBeat.o(196978);
   }
   
-  public final void bos()
+  public final void bvo()
   {
     AppMethodBeat.i(39489);
-    if (this.Hxw != null) {
-      this.Hxw.e(this.lAL, this.text, this.Hxv);
+    if (this.IXT != null) {
+      this.IXT.e(this.mcH, this.text, this.IXS);
     }
     AppMethodBeat.o(39489);
   }
   
-  public final void feB()
+  public final void fuw()
   {
-    AppMethodBeat.i(191862);
-    this.lAK = true;
-    if (qh())
+    AppMethodBeat.i(196977);
+    this.mcG = true;
+    if (qr())
     {
-      aq.az(this.jJK);
-      bos();
+      ap.aB(this.kkk);
+      bvo();
     }
-    AppMethodBeat.o(191862);
+    AppMethodBeat.o(196977);
   }
   
   static abstract interface a
@@ -94,7 +94,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.f
  * JD-Core Version:    0.7.0.1
  */

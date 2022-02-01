@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.subapp.jdbiz;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.n.a;
-import com.tencent.mm.g.a.ir;
-import com.tencent.mm.g.a.jv;
+import com.tencent.mm.g.a.iy;
+import com.tencent.mm.g.a.kd;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.cc;
 import com.tencent.mm.pluginsdk.g.f;
 import com.tencent.mm.pluginsdk.g.f.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,17 +24,17 @@ public class d
   implements aw, f.a
 {
   private n.a appForegroundListener;
-  private com.tencent.mm.sdk.b.c fjL;
-  private a yCE;
-  private c yCF;
-  Map<String, Integer> yCG;
+  private com.tencent.mm.sdk.b.c fnf;
+  private a zPS;
+  private c zPT;
+  Map<String, Integer> zPU;
   
   public d()
   {
     AppMethodBeat.i(28881);
-    this.yCE = null;
-    this.yCF = null;
-    this.yCG = new HashMap();
+    this.zPS = null;
+    this.zPT = null;
+    this.zPU = new HashMap();
     this.appForegroundListener = new n.a()
     {
       public final void onAppBackground(String paramAnonymousString) {}
@@ -42,187 +42,68 @@ public class d
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(28878);
-        if (f.BRH != null)
+        if (f.DjX != null)
         {
-          d.dLT();
-          d.dMa();
+          d.eat();
+          d.eaA();
         }
         AppMethodBeat.o(28878);
       }
     };
-    this.fjL = new com.tencent.mm.sdk.b.c() {};
-    ad.i("MicroMsg.SubCoreJdIP6", "new SubCoreJDBiz this: " + hashCode() + " stack: " + bt.eGN());
+    this.fnf = new com.tencent.mm.sdk.b.c() {};
+    ac.i("MicroMsg.SubCoreJdIP6", "new SubCoreJDBiz this: " + hashCode() + " stack: " + bs.eWi());
     AppMethodBeat.o(28881);
   }
   
   public static void b(c paramc)
   {
     AppMethodBeat.i(28890);
-    com.tencent.mm.kernel.g.afz().aeD();
-    d locald = dLT();
-    if (locald.yCF == null) {
-      locald.yCF = c.dLQ();
+    com.tencent.mm.kernel.g.agP().afT();
+    d locald = eat();
+    if (locald.zPT == null) {
+      locald.zPT = c.eaq();
     }
-    ad.i("MicroMsg.SubCoreJdIP6", "updatejdMsgContent old: %s new: %s", new Object[] { locald.yCF.agO(), paramc.agO() });
-    if (!paramc.a(locald.yCF))
+    ac.i("MicroMsg.SubCoreJdIP6", "updatejdMsgContent old: %s new: %s", new Object[] { locald.zPT.aif(), paramc.aif() });
+    if (!paramc.a(locald.zPT))
     {
-      ad.i("MicroMsg.SubCoreJdIP6", "fo zu baoyou! the activityid is same");
+      ac.i("MicroMsg.SubCoreJdIP6", "fo zu baoyou! the activityid is same");
       AppMethodBeat.o(28890);
       return;
     }
-    if ((!bt.isNullOrNil(paramc.yCr)) || (paramc.yCq))
+    if ((!bs.isNullOrNil(paramc.zPF)) || (paramc.zPE))
     {
-      az.arV();
-      com.tencent.mm.model.c.afk().set(327939, "1");
+      az.ayM();
+      com.tencent.mm.model.c.agA().set(327939, "1");
     }
-    if (paramc.yCp)
+    if (paramc.zPD)
     {
-      az.arV();
-      com.tencent.mm.model.c.afk().set(327938, "1");
+      az.ayM();
+      com.tencent.mm.model.c.agA().set(327938, "1");
     }
     for (;;)
     {
-      locald.yCF = paramc;
-      az.arV();
-      com.tencent.mm.model.c.afk().set(327942, paramc.duk);
-      locald.dLZ();
-      com.tencent.mm.kernel.g.afB().afk().set(ae.a.FvO, Boolean.TRUE);
+      locald.zPT = paramc;
+      az.ayM();
+      com.tencent.mm.model.c.agA().set(327942, paramc.drV);
+      locald.eaz();
+      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GTI, Boolean.TRUE);
       AppMethodBeat.o(28890);
       return;
-      az.arV();
-      com.tencent.mm.model.c.afk().set(327938, "");
+      az.ayM();
+      com.tencent.mm.model.c.agA().set(327938, "");
     }
   }
   
-  public static d dLT()
-  {
-    AppMethodBeat.i(28882);
-    d locald2 = (d)f.BRH;
-    d locald1 = locald2;
-    if (locald2 == null)
-    {
-      locald1 = new d();
-      f.BRH = locald1;
-    }
-    AppMethodBeat.o(28882);
-    return locald1;
-  }
-  
-  public static boolean dLU()
-  {
-    AppMethodBeat.i(28885);
-    az.arV();
-    boolean bool = "1".equals((String)com.tencent.mm.model.c.afk().get(327939, ""));
-    AppMethodBeat.o(28885);
-    return bool;
-  }
-  
-  public static boolean dLV()
-  {
-    AppMethodBeat.i(28886);
-    az.arV();
-    boolean bool = "1".equals((String)com.tencent.mm.model.c.afk().get(327938, ""));
-    AppMethodBeat.o(28886);
-    return bool;
-  }
-  
-  public static void dLW()
-  {
-    AppMethodBeat.i(28887);
-    az.arV();
-    com.tencent.mm.model.c.afk().set(327938, "");
-    AppMethodBeat.o(28887);
-  }
-  
-  public static void dLX()
-  {
-    AppMethodBeat.i(28888);
-    az.arV();
-    com.tencent.mm.model.c.afk().set(327939, "");
-    AppMethodBeat.o(28888);
-  }
-  
-  private void dLZ()
-  {
-    AppMethodBeat.i(28891);
-    new ap(Looper.getMainLooper()).post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(28880);
-        jv localjv = new jv();
-        com.tencent.mm.sdk.b.a.ESL.l(localjv);
-        AppMethodBeat.o(28880);
-      }
-    });
-    AppMethodBeat.o(28891);
-  }
-  
-  public static void dMa()
-  {
-    AppMethodBeat.i(28892);
-    if (az.afw())
-    {
-      dLT();
-      if (!dLU())
-      {
-        dLT();
-        if (!dLV()) {}
-      }
-      else
-      {
-        c localc = dLT().dLY();
-        if (((!bt.isNullOrNil(localc.yCr)) || (localc.yCq)) && (localc.cva()))
-        {
-          ad.i("MicroMsg.SubCoreJdIP6", "clear red dot/friend dot");
-          dLT();
-          dLW();
-          dLT();
-          dLX();
-          dLT().dLZ();
-        }
-      }
-    }
-    AppMethodBeat.o(28892);
-  }
-  
-  public static String dMc()
-  {
-    AppMethodBeat.i(28895);
-    String str;
-    if (ac.eFr()) {
-      str = com.tencent.mm.m.g.Zd().getValue("JDEntranceConfigName");
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(28895);
-      return str;
-      if (ac.eFs()) {
-        str = com.tencent.mm.m.g.Zd().getValue("JDEntranceConfigNameHKTW");
-      } else {
-        str = com.tencent.mm.m.g.Zd().getValue("JDEntranceConfigNameEN");
-      }
-    }
-  }
-  
-  public static String dMd()
-  {
-    AppMethodBeat.i(28896);
-    String str = com.tencent.mm.m.g.Zd().getValue("JDEntranceConfigJumpUrl");
-    AppMethodBeat.o(28896);
-    return str;
-  }
-  
-  public static String eH(String paramString, int paramInt)
+  public static String eP(String paramString, int paramInt)
   {
     AppMethodBeat.i(28893);
     String str = paramString;
     if (-1 == paramString.indexOf('#')) {
       if (-1 != paramString.indexOf('?')) {
-        break label61;
+        break label60;
       }
     }
-    label61:
+    label60:
     for (str = paramString + "?wc_scene=" + paramInt;; str = paramString + "&wc_scene=" + paramInt)
     {
       AppMethodBeat.o(28893);
@@ -230,26 +111,134 @@ public class d
     }
   }
   
-  public void clearPluginData(int paramInt) {}
-  
-  public final c dLY()
+  public static void eaA()
   {
-    AppMethodBeat.i(28889);
-    if (this.yCF == null) {
-      this.yCF = c.dLQ();
+    AppMethodBeat.i(28892);
+    if (az.agM())
+    {
+      eat();
+      if (!eau())
+      {
+        eat();
+        if (!eav()) {}
+      }
+      else
+      {
+        c localc = eat().eay();
+        if (((!bs.isNullOrNil(localc.zPF)) || (localc.zPE)) && (localc.cIm()))
+        {
+          ac.i("MicroMsg.SubCoreJdIP6", "clear red dot/friend dot");
+          eat();
+          eaw();
+          eat();
+          eax();
+          eat().eaz();
+        }
+      }
     }
-    c localc = this.yCF;
-    AppMethodBeat.o(28889);
-    return localc;
+    AppMethodBeat.o(28892);
   }
   
-  public final boolean dMb()
+  public static String eaC()
+  {
+    AppMethodBeat.i(28895);
+    String str;
+    if (ab.eUL()) {
+      str = com.tencent.mm.m.g.ZY().getValue("JDEntranceConfigName");
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(28895);
+      return str;
+      if (ab.eUM()) {
+        str = com.tencent.mm.m.g.ZY().getValue("JDEntranceConfigNameHKTW");
+      } else {
+        str = com.tencent.mm.m.g.ZY().getValue("JDEntranceConfigNameEN");
+      }
+    }
+  }
+  
+  public static String eaD()
+  {
+    AppMethodBeat.i(28896);
+    String str = com.tencent.mm.m.g.ZY().getValue("JDEntranceConfigJumpUrl");
+    AppMethodBeat.o(28896);
+    return str;
+  }
+  
+  public static d eat()
+  {
+    AppMethodBeat.i(28882);
+    d locald2 = (d)f.DjX;
+    d locald1 = locald2;
+    if (locald2 == null)
+    {
+      locald1 = new d();
+      f.DjX = locald1;
+    }
+    AppMethodBeat.o(28882);
+    return locald1;
+  }
+  
+  public static boolean eau()
+  {
+    AppMethodBeat.i(28885);
+    az.ayM();
+    boolean bool = "1".equals((String)com.tencent.mm.model.c.agA().get(327939, ""));
+    AppMethodBeat.o(28885);
+    return bool;
+  }
+  
+  public static boolean eav()
+  {
+    AppMethodBeat.i(28886);
+    az.ayM();
+    boolean bool = "1".equals((String)com.tencent.mm.model.c.agA().get(327938, ""));
+    AppMethodBeat.o(28886);
+    return bool;
+  }
+  
+  public static void eaw()
+  {
+    AppMethodBeat.i(28887);
+    az.ayM();
+    com.tencent.mm.model.c.agA().set(327938, "");
+    AppMethodBeat.o(28887);
+  }
+  
+  public static void eax()
+  {
+    AppMethodBeat.i(28888);
+    az.ayM();
+    com.tencent.mm.model.c.agA().set(327939, "");
+    AppMethodBeat.o(28888);
+  }
+  
+  private void eaz()
+  {
+    AppMethodBeat.i(28891);
+    new ao(Looper.getMainLooper()).post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(28880);
+        kd localkd = new kd();
+        com.tencent.mm.sdk.b.a.GpY.l(localkd);
+        AppMethodBeat.o(28880);
+      }
+    });
+    AppMethodBeat.o(28891);
+  }
+  
+  public void clearPluginData(int paramInt) {}
+  
+  public final boolean eaB()
   {
     AppMethodBeat.i(28894);
-    String str1 = dMc();
-    String str2 = dMd();
-    String str3 = com.tencent.mm.m.g.Zd().getValue("JDEntranceConfigJumpWeAppUsername");
-    if ((!bt.isNullOrNil(str1)) && ((!bt.isNullOrNil(str2)) || (!bt.isNullOrNil(str3))))
+    String str1 = eaC();
+    String str2 = eaD();
+    String str3 = com.tencent.mm.m.g.ZY().getValue("JDEntranceConfigJumpWeAppUsername");
+    if ((!bs.isNullOrNil(str1)) && ((!bs.isNullOrNil(str2)) || (!bs.isNullOrNil(str3))))
     {
       AppMethodBeat.o(28894);
       return true;
@@ -258,20 +247,20 @@ public class d
     return false;
   }
   
-  public final String dMe()
+  public final String eaE()
   {
     int j = 1;
     AppMethodBeat.i(28897);
     Object localObject2 = "";
-    c localc = dLY();
+    c localc = eay();
     int i = j;
     Object localObject1 = localObject2;
-    if (dLU())
+    if (eau())
     {
-      if ((localc.cva()) || (!"3".equals(localc.yCn)) || (bt.isNullOrNil(localc.jumpUrl))) {
+      if ((localc.cIm()) || (!"3".equals(localc.zPB)) || (bs.isNullOrNil(localc.jumpUrl))) {
         break label184;
       }
-      ad.i("MicroMsg.SubCoreJdIP6", "jumpUrl update %s", new Object[] { localc.jumpUrl });
+      ac.i("MicroMsg.SubCoreJdIP6", "jumpUrl update %s", new Object[] { localc.jumpUrl });
       localObject1 = localc.jumpUrl;
       i = 6;
     }
@@ -279,19 +268,19 @@ public class d
     {
       j = i;
       localObject2 = localObject1;
-      if ("2".equals(localc.yCn))
+      if ("2".equals(localc.zPB))
       {
         j = i;
         localObject2 = localObject1;
-        if (!bt.isNullOrNil(localc.jumpUrl))
+        if (!bs.isNullOrNil(localc.jumpUrl))
         {
           j = i;
           localObject2 = localObject1;
-          if (localc.dLR())
+          if (localc.ear())
           {
             j = i;
             localObject2 = localObject1;
-            if (!localc.dLS())
+            if (!localc.eas())
             {
               localObject2 = localc.jumpUrl;
               j = 3;
@@ -299,55 +288,66 @@ public class d
           }
         }
       }
-      if (bt.isNullOrNil((String)localObject2)) {
+      if (bs.isNullOrNil((String)localObject2)) {
         break;
       }
-      localObject1 = eH((String)localObject2, j);
+      localObject1 = eP((String)localObject2, j);
       AppMethodBeat.o(28897);
       return localObject1;
       label184:
       i = j;
       localObject1 = localObject2;
-      if (localc.yCq)
+      if (localc.zPE)
       {
         i = 2;
         localObject1 = localObject2;
       }
     }
-    localObject1 = dMd();
+    localObject1 = eaD();
     AppMethodBeat.o(28897);
     return localObject1;
   }
   
-  public final b dMf()
+  public final b eaF()
   {
     AppMethodBeat.i(28898);
     b localb = new b();
-    Object localObject = dLY();
-    if ((dLU()) && (!((c)localObject).cva()) && ("3".equals(((c)localObject).yCn)))
+    Object localObject = eay();
+    if ((eau()) && (!((c)localObject).cIm()) && ("3".equals(((c)localObject).zPB)))
     {
-      ad.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).yCn, ((c)localObject).yCB, ((c)localObject).yCC, Integer.valueOf(((c)localObject).yCD) });
-      localb.username = ((c)localObject).yCB;
-      localb.path = ((c)localObject).yCC;
-      localb.version = ((c)localObject).yCD;
+      ac.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).zPB, ((c)localObject).zPP, ((c)localObject).zPQ, Integer.valueOf(((c)localObject).zPR) });
+      localb.username = ((c)localObject).zPP;
+      localb.path = ((c)localObject).zPQ;
+      localb.version = ((c)localObject).zPR;
     }
-    if (("2".equals(((c)localObject).yCn)) && (((c)localObject).dLR()) && (!((c)localObject).dLS()))
+    if (("2".equals(((c)localObject).zPB)) && (((c)localObject).ear()) && (!((c)localObject).eas()))
     {
-      ad.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).yCn, ((c)localObject).yCB, ((c)localObject).yCC, Integer.valueOf(((c)localObject).yCD) });
-      localb.username = ((c)localObject).yCB;
-      localb.path = ((c)localObject).yCC;
-      localb.version = ((c)localObject).yCD;
+      ac.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).zPB, ((c)localObject).zPP, ((c)localObject).zPQ, Integer.valueOf(((c)localObject).zPR) });
+      localb.username = ((c)localObject).zPP;
+      localb.path = ((c)localObject).zPQ;
+      localb.version = ((c)localObject).zPR;
     }
     localObject = localb;
     if (!localb.isValid())
     {
       localObject = new b();
-      ((b)localObject).username = com.tencent.mm.m.g.Zd().getValue("JDEntranceConfigJumpWeAppUsername");
-      ((b)localObject).path = com.tencent.mm.m.g.Zd().getValue("JDEntranceConfigJumpWeAppPath");
-      ((b)localObject).version = com.tencent.mm.m.g.Zd().getInt("JDEntranceConfigJumpWeAppVersion", 0);
+      ((b)localObject).username = com.tencent.mm.m.g.ZY().getValue("JDEntranceConfigJumpWeAppUsername");
+      ((b)localObject).path = com.tencent.mm.m.g.ZY().getValue("JDEntranceConfigJumpWeAppPath");
+      ((b)localObject).version = com.tencent.mm.m.g.ZY().getInt("JDEntranceConfigJumpWeAppVersion", 0);
     }
     AppMethodBeat.o(28898);
     return localObject;
+  }
+  
+  public final c eay()
+  {
+    AppMethodBeat.i(28889);
+    if (this.zPT == null) {
+      this.zPT = c.eaq();
+    }
+    c localc = this.zPT;
+    AppMethodBeat.o(28889);
+    return localc;
   }
   
   public HashMap<Integer, h.b> getBaseDBFactories()
@@ -358,30 +358,30 @@ public class d
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(28883);
-    ad.i("MicroMsg.SubCoreJdIP6", "onAccountPostReset");
-    if (this.yCE == null) {
-      this.yCE = new a();
+    ac.i("MicroMsg.SubCoreJdIP6", "onAccountPostReset");
+    if (this.zPS == null) {
+      this.zPS = new a();
     }
     this.appForegroundListener.alive();
-    az.getSysCmdMsgExtension().a("jd", this.yCE, true);
-    com.tencent.mm.sdk.b.a.ESL.c(this.fjL);
+    az.getSysCmdMsgExtension().a("jd", this.zPS, true);
+    com.tencent.mm.sdk.b.a.GpY.c(this.fnf);
     AppMethodBeat.o(28883);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(28884);
-    ad.i("MicroMsg.SubCoreJdIP6", "onAccountRelease");
+    ac.i("MicroMsg.SubCoreJdIP6", "onAccountRelease");
     this.appForegroundListener.dead();
-    if (this.yCE != null)
+    if (this.zPS != null)
     {
-      a locala = this.yCE;
-      com.tencent.mm.sdk.b.a.ESL.d(locala.yCk);
-      az.getSysCmdMsgExtension().b("jd", this.yCE, true);
+      a locala = this.zPS;
+      com.tencent.mm.sdk.b.a.GpY.d(locala.zPy);
+      az.getSysCmdMsgExtension().b("jd", this.zPS, true);
     }
-    this.yCG.clear();
-    this.yCE = null;
-    com.tencent.mm.sdk.b.a.ESL.d(this.fjL);
+    this.zPU.clear();
+    this.zPS = null;
+    com.tencent.mm.sdk.b.a.GpY.d(this.fnf);
     AppMethodBeat.o(28884);
   }
   

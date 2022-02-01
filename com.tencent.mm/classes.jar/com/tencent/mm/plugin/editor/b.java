@@ -15,27 +15,27 @@ import com.tencent.mm.plugin.editor.model.a.l;
 import com.tencent.mm.plugin.editor.model.a.m;
 import com.tencent.mm.plugin.fav.a.ao;
 import com.tencent.mm.plugin.fav.ui.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.af;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class b
 {
-  public static b olb;
-  private static com.tencent.mm.b.f<String, Integer> olc;
+  public static b oOB;
+  private static com.tencent.mm.b.f<String, Integer> oOC;
   
   static
   {
     AppMethodBeat.i(181633);
-    olb = null;
-    olc = new c(30);
+    oOB = null;
+    oOC = new c(30);
     AppMethodBeat.o(181633);
   }
   
-  public static CharSequence C(Context paramContext, int paramInt)
+  public static CharSequence F(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(181628);
     if (paramInt <= 0)
@@ -49,62 +49,62 @@ public final class b
     return paramContext;
   }
   
-  public static Bitmap SS(String paramString)
+  public static Bitmap Xe(String paramString)
   {
     AppMethodBeat.i(181617);
-    paramString = e.aW(paramString, false);
+    paramString = e.aX(paramString, false);
     if (paramString != null)
     {
       AppMethodBeat.o(181617);
       return paramString;
     }
-    if (bt.isNullOrNil(null))
+    if (bs.isNullOrNil(null))
     {
       AppMethodBeat.o(181617);
       return null;
     }
-    paramString = e.aW(null, false);
+    paramString = e.aX(null, false);
     AppMethodBeat.o(181617);
     return paramString;
   }
   
-  public static int ST(String paramString)
+  public static int Xf(String paramString)
   {
     AppMethodBeat.i(181621);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(181621);
       return 0;
     }
-    int i = SV(SY(paramString));
+    int i = Xh(Xk(paramString));
     AppMethodBeat.o(181621);
     return i;
   }
   
-  public static int SU(String paramString)
+  public static int Xg(String paramString)
   {
     AppMethodBeat.i(181623);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(181623);
       return 0;
     }
-    if (olc.aN(paramString))
+    if (oOC.aK(paramString))
     {
-      i = ((Integer)olc.get(paramString)).intValue();
+      i = ((Integer)oOC.get(paramString)).intValue();
       AppMethodBeat.o(181623);
       return i;
     }
-    int i = SV(paramString);
-    olc.put(paramString, Integer.valueOf(i));
+    int i = Xh(paramString);
+    oOC.put(paramString, Integer.valueOf(i));
     AppMethodBeat.o(181623);
     return i;
   }
   
-  private static int SV(String paramString)
+  private static int Xh(String paramString)
   {
     AppMethodBeat.i(181624);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(181624);
       return 0;
@@ -120,7 +120,7 @@ public final class b
     return i;
   }
   
-  public static String SW(String paramString)
+  public static String Xi(String paramString)
   {
     AppMethodBeat.i(181626);
     paramString = Pattern.compile("wx-b>", 2).matcher(paramString).replaceAll("wa-b>");
@@ -132,10 +132,10 @@ public final class b
     return paramString;
   }
   
-  public static ArrayList<String> SX(String paramString)
+  public static ArrayList<String> Xj(String paramString)
   {
     AppMethodBeat.i(181629);
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() == 0))
+    if ((bs.isNullOrNil(paramString)) || (paramString.length() == 0))
     {
       AppMethodBeat.o(181629);
       return null;
@@ -170,10 +170,10 @@ public final class b
     return localArrayList;
   }
   
-  public static String SY(String paramString)
+  public static String Xk(String paramString)
   {
     AppMethodBeat.i(181630);
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() == 0))
+    if ((bs.isNullOrNil(paramString)) || (paramString.length() == 0))
     {
       AppMethodBeat.o(181630);
       return paramString;
@@ -191,11 +191,11 @@ public final class b
     return paramString;
   }
   
-  public static boolean SZ(String paramString)
+  public static boolean Xl(String paramString)
   {
     AppMethodBeat.i(181631);
     int k = "<br/>".length();
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() < k))
+    if ((bs.isNullOrNil(paramString)) || (paramString.length() < k))
     {
       AppMethodBeat.o(181631);
       return false;
@@ -219,11 +219,11 @@ public final class b
     return true;
   }
   
-  public static String Ta(String paramString)
+  public static String Xm(String paramString)
   {
     AppMethodBeat.i(181632);
-    paramString = SY(Pattern.compile("<object[^>]*>", 2).matcher(paramString).replaceAll("#WNNoteNode#<ThisisNoteNodeObj>#WNNoteNode#"));
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() == 0))
+    paramString = Xk(Pattern.compile("<object[^>]*>", 2).matcher(paramString).replaceAll("#WNNoteNode#<ThisisNoteNodeObj>#WNNoteNode#"));
+    if ((bs.isNullOrNil(paramString)) || (paramString.length() == 0))
     {
       AppMethodBeat.o(181632);
       return paramString;
@@ -258,31 +258,31 @@ public final class b
       ((j)localObject1).content = ((j)parama).content;
       continue;
       localObject1 = new h();
-      ((h)localObject1).omG = ((h)parama).omG;
+      ((h)localObject1).oQg = ((h)parama).oQg;
       continue;
       localObject1 = new l();
       Object localObject2 = (l)localObject1;
       Object localObject3 = (l)parama;
       ((l)localObject2).thumbPath = ((l)localObject3).thumbPath;
       ((l)localObject2).duration = ((l)localObject3).duration;
-      ((l)localObject2).omK = ((l)localObject3).omK;
+      ((l)localObject2).oQk = ((l)localObject3).oQk;
       continue;
       localObject1 = new m();
       localObject2 = (m)localObject1;
       localObject3 = (m)parama;
-      ((m)localObject2).omN = ((m)localObject3).omN;
+      ((m)localObject2).oQn = ((m)localObject3).oQn;
       ((m)localObject2).length = ((m)localObject3).length;
-      ((m)localObject2).omM = ((m)localObject3).omM;
-      ((m)localObject2).jUR = ((m)localObject3).jUR;
-      ((m)localObject2).dkk = ((m)localObject3).dkk;
-      ((m)localObject2).dkj = ((m)localObject3).dkj;
-      ((m)localObject2).omK = ((m)localObject3).omK;
+      ((m)localObject2).oQm = ((m)localObject3).oQm;
+      ((m)localObject2).kvC = ((m)localObject3).kvC;
+      ((m)localObject2).dhF = ((m)localObject3).dhF;
+      ((m)localObject2).dhE = ((m)localObject3).dhE;
+      ((m)localObject2).oQk = ((m)localObject3).oQk;
       continue;
       localObject1 = new com.tencent.mm.plugin.editor.model.a.i();
     }
     ((d)localObject1).type = ((d)parama).type;
-    ((d)localObject1).omJ = ((d)parama).omJ;
-    ((d)localObject1).drZ = ((d)parama).drZ;
+    ((d)localObject1).oQj = ((d)parama).oQj;
+    ((d)localObject1).dpK = ((d)parama).dpK;
     AppMethodBeat.o(181618);
     return localObject1;
   }
@@ -346,11 +346,11 @@ public final class b
     }
     if (parama.getType() == 2)
     {
-      parama = ((h)parama).omG;
+      parama = ((h)parama).oQg;
       AppMethodBeat.o(181619);
       return parama;
     }
-    parama = ((d)parama).drZ;
+    parama = ((d)parama).dpK;
     AppMethodBeat.o(181619);
     return parama;
   }
@@ -358,12 +358,12 @@ public final class b
   public static int c(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(181622);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(181622);
       return 0;
     }
-    paramString = com.tencent.mm.plugin.editor.model.nativenote.a.a.Tc(paramString);
+    paramString = com.tencent.mm.plugin.editor.model.nativenote.a.a.Xo(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(181622);
@@ -383,7 +383,7 @@ public final class b
       AppMethodBeat.o(181622);
       return 0;
     }
-    paramInt1 = SV(paramString.toString());
+    paramInt1 = Xh(paramString.toString());
     AppMethodBeat.o(181622);
     return paramInt1;
   }
@@ -398,7 +398,7 @@ public final class b
     }
     if (parama.getType() == 2)
     {
-      parama = ((h)parama).drZ;
+      parama = ((h)parama).dpK;
       AppMethodBeat.o(181620);
       return parama;
     }
@@ -412,26 +412,26 @@ public final class b
     return "";
   }
   
-  public static String eR(String paramString1, String paramString2)
+  public static String fe(String paramString1, String paramString2)
   {
     int j = 1280;
     AppMethodBeat.i(181615);
-    if (bt.isNullOrNil(paramString2))
+    if (bs.isNullOrNil(paramString2))
     {
       paramString2 = g.getMessageDigest(new StringBuilder().append(paramString1).append(System.currentTimeMillis()).toString().getBytes()) + "_HD";
-      paramString2 = ao.cit() + "/" + paramString2;
+      paramString2 = ao.cqa() + "/" + paramString2;
     }
     for (;;)
     {
       BitmapFactory.Options localOptions;
       int k;
       int i;
-      if (!com.tencent.mm.vfs.i.eK(paramString2))
+      if (!com.tencent.mm.vfs.i.eA(paramString2))
       {
-        localOptions = com.tencent.mm.sdk.platformtools.f.aFf(paramString1);
+        localOptions = com.tencent.mm.sdk.platformtools.f.aKw(paramString1);
         if ((localOptions == null) || (localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
         {
-          ad.e("MicroMsg.EditorUtil", "GetImageOptions Error");
+          ac.e("MicroMsg.EditorUtil", "GetImageOptions Error");
           AppMethodBeat.o(181615);
           return null;
         }
@@ -455,7 +455,7 @@ public final class b
         }
         for (;;)
         {
-          if (af.aFv(paramString1) > 0)
+          if (ae.aKM(paramString1) > 0)
           {
             j = localOptions.outHeight;
             i = localOptions.outWidth;
@@ -470,14 +470,14 @@ public final class b
     }
   }
   
-  public static String eS(String paramString1, String paramString2)
+  public static String ff(String paramString1, String paramString2)
   {
     int m = 800;
     AppMethodBeat.i(181616);
-    if (bt.isNullOrNil(paramString2))
+    if (bs.isNullOrNil(paramString2))
     {
       paramString2 = g.getMessageDigest(new StringBuilder().append(paramString1).append(System.currentTimeMillis()).toString().getBytes()) + "_TH";
-      paramString2 = ao.cit() + "/" + paramString2;
+      paramString2 = ao.cqa() + "/" + paramString2;
     }
     for (;;)
     {
@@ -485,12 +485,12 @@ public final class b
       int j;
       int k;
       int i;
-      if (!com.tencent.mm.vfs.i.eK(paramString2))
+      if (!com.tencent.mm.vfs.i.eA(paramString2))
       {
-        localOptions = com.tencent.mm.sdk.platformtools.f.aFf(paramString1);
+        localOptions = com.tencent.mm.sdk.platformtools.f.aKw(paramString1);
         if ((localOptions == null) || (localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
         {
-          ad.e("MicroMsg.EditorUtil", "GetImageOptions Error,use orignal file");
+          ac.e("MicroMsg.EditorUtil", "GetImageOptions Error,use orignal file");
           AppMethodBeat.o(181616);
           return null;
         }
@@ -529,7 +529,7 @@ public final class b
     }
   }
   
-  public static float mI(long paramLong)
+  public static float qw(long paramLong)
   {
     float f1 = 1.0F;
     AppMethodBeat.i(181627);
@@ -554,7 +554,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.b
  * JD-Core Version:    0.7.0.1
  */

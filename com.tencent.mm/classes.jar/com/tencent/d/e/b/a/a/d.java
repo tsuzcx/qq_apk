@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public abstract class d
   implements a
 {
-  private c IsH;
+  private c JUr;
   
   /* Error */
   private int a(Context paramContext, final AtomicReference<IBinder> paramAtomicReference, final AtomicReference<ServiceConnection> paramAtomicReference1)
@@ -89,7 +89,7 @@ public abstract class d
     //   14: invokestatic 55	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   17: invokespecial 58	java/util/concurrent/atomic/AtomicReference:<init>	(Ljava/lang/Object;)V
     //   20: astore 6
-    //   22: getstatic 64	com/tencent/e/h:Iye	Lcom/tencent/e/i;
+    //   22: getstatic 64	com/tencent/e/h:JZN	Lcom/tencent/e/i;
     //   25: new 10	com/tencent/d/e/b/a/a/d$2
     //   28: dup
     //   29: aload_0
@@ -138,7 +138,7 @@ public abstract class d
     //   51	59	80	java/lang/Throwable
   }
   
-  private c kv(Context paramContext)
+  private c kH(Context paramContext)
   {
     int j = -1;
     AtomicReference localAtomicReference1 = new AtomicReference();
@@ -171,17 +171,17 @@ public abstract class d
   
   public abstract Intent getIntent();
   
-  public final c ku(Context paramContext)
+  public final c kG(Context paramContext)
   {
-    if ((this.IsH == null) || (this.IsH.errorCode != 0)) {
-      this.IsH = kv(paramContext);
+    if ((this.JUr == null) || (this.JUr.errorCode != 0)) {
+      this.JUr = kH(paramContext);
     }
-    return this.IsH;
+    return this.JUr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.e.b.a.a.d
  * JD-Core Version:    0.7.0.1
  */

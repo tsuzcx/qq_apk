@@ -96,6 +96,11 @@ public class XWalkExtendTextAreaClient
     return false;
   }
   
+  public boolean performEditorAction(int paramInt)
+  {
+    return true;
+  }
+  
   void reflectionInit()
   {
     AppMethodBeat.i(154727);

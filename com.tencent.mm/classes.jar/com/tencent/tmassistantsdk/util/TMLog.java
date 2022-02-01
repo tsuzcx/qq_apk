@@ -2,7 +2,7 @@ package com.tencent.tmassistantsdk.util;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -34,7 +34,7 @@ public class TMLog
       if (paramString2 == null) {
         str = "............";
       }
-      ad.d(paramString1, str);
+      ac.d(paramString1, str);
     }
     AppMethodBeat.o(102535);
   }
@@ -43,7 +43,7 @@ public class TMLog
   {
     AppMethodBeat.i(102532);
     if ((mDebugFlagForSDK) && (!TextUtils.isEmpty(mDebugFlagForSDKTag))) {
-      ad.e(mDebugFlagForSDKTag, paramString);
+      ac.e(mDebugFlagForSDKTag, paramString);
     }
     AppMethodBeat.o(102532);
   }
@@ -52,7 +52,7 @@ public class TMLog
   {
     AppMethodBeat.i(102531);
     if ((mDebugFlagForSDK) && (!TextUtils.isEmpty(mDebugFlagForSDKTag))) {
-      ad.v(mDebugFlagForSDKTag, paramString);
+      ac.v(mDebugFlagForSDKTag, paramString);
     }
     AppMethodBeat.o(102531);
   }
@@ -66,7 +66,7 @@ public class TMLog
       if (paramString2 == null) {
         str = "............";
       }
-      ad.e(paramString1, str);
+      ac.e(paramString1, str);
     }
     AppMethodBeat.o(102537);
   }
@@ -80,7 +80,7 @@ public class TMLog
       if (paramString2 == null) {
         str = "............";
       }
-      ad.i(paramString1, str);
+      ac.i(paramString1, str);
     }
     AppMethodBeat.o(102534);
   }
@@ -153,7 +153,7 @@ public class TMLog
             localStringBuffer.append(" ");
             i += 1;
           }
-          ad.v(paramString1, localStringBuffer.toString());
+          ac.v(paramString1, localStringBuffer.toString());
           localArrayList.clear();
           paramString2.clear();
         }
@@ -179,7 +179,7 @@ public class TMLog
       if (paramString2 == null) {
         str = "............";
       }
-      ad.v(paramString1, str);
+      ac.v(paramString1, str);
     }
     AppMethodBeat.o(102533);
   }
@@ -193,14 +193,14 @@ public class TMLog
       if (paramString2 == null) {
         str = "............";
       }
-      ad.w(paramString1, str);
+      ac.w(paramString1, str);
     }
     AppMethodBeat.o(102536);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.TMLog
  * JD-Core Version:    0.7.0.1
  */

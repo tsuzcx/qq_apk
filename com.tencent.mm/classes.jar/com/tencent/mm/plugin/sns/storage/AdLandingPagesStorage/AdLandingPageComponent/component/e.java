@@ -19,9 +19,9 @@ import android.webkit.GeolocationPermissions.Callback;
 import android.webkit.ValueCallback;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.x;
-import com.tencent.mm.g.a.tb;
+import com.tencent.mm.g.a.tk;
 import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
 import com.tencent.mm.plugin.sns.ui.widget.ad.ScrollableLayout;
 import com.tencent.mm.plugin.sns.ui.widget.ad.ScrollableLayout.a;
 import com.tencent.mm.plugin.sns.ui.widget.ad.ScrollableLayout.b;
@@ -30,17 +30,16 @@ import com.tencent.mm.plugin.webview.c.l;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.mm.ui.widget.MMWebView.b;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.w;
-import com.tencent.xweb.w.a;
+import com.tencent.xweb.x.a;
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 
@@ -48,136 +47,136 @@ public final class e
   extends k
   implements ScrollableLayout.a, ScrollableLayout.b
 {
-  private c<tb> gQC;
-  MMWebView gQk;
-  ScrollableLayout wZk;
-  View wZl;
-  BaseWebViewController wZm;
-  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e wZn;
-  private a wZo;
-  private boolean wZp;
-  com.tencent.mm.plugin.webview.stub.b wZq;
+  MMWebView hqK;
+  private c<tk> hrc;
+  ScrollableLayout ylY;
+  View ylZ;
+  BaseWebViewController yma;
+  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e ymb;
+  private a ymc;
+  private boolean ymd;
+  com.tencent.mm.plugin.webview.stub.b yme;
   
   public e(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e parame, ViewGroup paramViewGroup)
   {
     super(paramContext, parame, paramViewGroup);
-    AppMethodBeat.i(187358);
-    this.wZp = false;
-    this.wZq = new com.tencent.mm.plugin.webview.stub.b()
+    AppMethodBeat.i(200155);
+    this.ymd = false;
+    this.yme = new com.tencent.mm.plugin.webview.stub.b()
     {
       public final boolean a(final String paramAnonymousString1, final String paramAnonymousString2, final Bundle paramAnonymousBundle, final boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(187343);
-        Object localObject = e.this.wZm;
+        AppMethodBeat.i(200140);
+        Object localObject = e.this.yma;
         if (localObject == null)
         {
-          AppMethodBeat.o(187343);
+          AppMethodBeat.o(200140);
           return false;
         }
         try
         {
           localObject = ((BaseWebViewController)localObject).getJsapi();
-          com.tencent.e.h.Iye.aN(new Runnable()
+          com.tencent.e.h.JZN.aQ(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(187339);
+              AppMethodBeat.i(200136);
               try
               {
-                if (this.wZs != null) {
-                  this.wZs.a(paramAnonymousString1, paramAnonymousString2, l.ap(paramAnonymousBundle), paramAnonymousBoolean);
+                if (this.ymg != null) {
+                  this.ymg.a(paramAnonymousString1, paramAnonymousString2, l.at(paramAnonymousBundle), paramAnonymousBoolean);
                 }
-                AppMethodBeat.o(187339);
+                AppMethodBeat.o(200136);
                 return;
               }
               catch (Throwable localThrowable)
               {
-                com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "In jsapi onHandleEnd method, it happens something unwanted!");
-                AppMethodBeat.o(187339);
+                ac.e("AdLandingFloatWebView", "In jsapi onHandleEnd method, it happens something unwanted!");
+                AppMethodBeat.o(200136);
               }
             }
           });
-          AppMethodBeat.o(187343);
+          AppMethodBeat.o(200140);
           return false;
         }
         catch (Throwable paramAnonymousString1)
         {
           for (;;)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "In onHandleEnd method, it happens something unwanted!");
+            ac.e("AdLandingFloatWebView", "In onHandleEnd method, it happens something unwanted!");
           }
         }
       }
       
-      public final String dvR()
+      public final String dKq()
       {
-        AppMethodBeat.i(187342);
+        AppMethodBeat.i(200139);
         try
         {
-          Object localObject = e.this.wZm;
+          Object localObject = e.this.yma;
           if (localObject != null)
           {
-            localObject = ((BaseWebViewController)localObject).AKK;
-            AppMethodBeat.o(187342);
+            localObject = ((BaseWebViewController)localObject).Cdb;
+            AppMethodBeat.o(200139);
             return localObject;
           }
         }
         catch (Throwable localThrowable)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "callback: getCommitUrl failed");
-          AppMethodBeat.o(187342);
+          ac.e("AdLandingFloatWebView", "callback: getCommitUrl failed");
+          AppMethodBeat.o(200139);
         }
         return "";
       }
       
-      public final boolean f(int paramAnonymousInt, final Bundle paramAnonymousBundle)
+      public final boolean g(int paramAnonymousInt, final Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(187345);
+        AppMethodBeat.i(200142);
         try
         {
-          Object localObject = e.this.wZm;
+          Object localObject = e.this.yma;
           if (localObject == null)
           {
-            AppMethodBeat.o(187345);
+            AppMethodBeat.o(200142);
             return true;
           }
           final f localf = ((BaseWebViewController)localObject).getJsapi();
-          localObject = ((BaseWebViewController)localObject).kxg;
+          localObject = ((BaseWebViewController)localObject).kYu;
           switch (paramAnonymousInt)
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(187345);
+            AppMethodBeat.o(200142);
             return true;
-            com.tencent.e.h.Iye.aN(new Runnable()
+            com.tencent.e.h.JZN.aQ(new Runnable()
             {
               public final void run()
               {
                 boolean bool = true;
-                AppMethodBeat.i(187340);
+                AppMethodBeat.i(200137);
                 try
                 {
-                  if ((!paramAnonymousBundle.containsKey("jsapi_preverify_fun_list")) || (this.wZy == null)) {
-                    if (this.wZy != null) {
-                      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "has JSAPI_CONTROL_BYTES wvPerm %b", new Object[] { Boolean.valueOf(bool) });
+                  if ((!paramAnonymousBundle.containsKey("jsapi_preverify_fun_list")) || (this.ymm == null)) {
+                    if (this.ymm != null) {
+                      ac.e("AdLandingFloatWebView", "has JSAPI_CONTROL_BYTES wvPerm %b", new Object[] { Boolean.valueOf(bool) });
                     }
                   }
                   for (;;)
                   {
-                    localf.ekp();
-                    AppMethodBeat.o(187340);
+                    localf.ezL();
+                    AppMethodBeat.o(200137);
                     return;
                     bool = false;
                     break;
-                    this.wZy.as(paramAnonymousBundle);
+                    this.ymm.ax(paramAnonymousBundle);
                   }
                   return;
                 }
                 catch (Throwable localThrowable)
                 {
-                  com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "In onCallback method, it happens something unwanted!");
-                  AppMethodBeat.o(187340);
+                  ac.e("AdLandingFloatWebView", "In onCallback method, it happens something unwanted!");
+                  AppMethodBeat.o(200137);
                 }
               }
             });
@@ -186,35 +185,35 @@ public final class e
         }
         catch (Throwable paramAnonymousBundle)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "In callback method, it happens something unwanted!");
-          AppMethodBeat.o(187345);
+          ac.e("AdLandingFloatWebView", "In callback method, it happens something unwanted!");
+          AppMethodBeat.o(200142);
         }
       }
       
       public final String getCurrentUrl()
       {
-        AppMethodBeat.i(187341);
+        AppMethodBeat.i(200138);
         try
         {
-          Object localObject = e.this.wZm;
+          Object localObject = e.this.yma;
           if (localObject != null)
           {
             localObject = ((BaseWebViewController)localObject).getCurrentUrl();
-            AppMethodBeat.o(187341);
+            AppMethodBeat.o(200138);
             return localObject;
           }
         }
         catch (Throwable localThrowable)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "callback: getCurrentUrl failed");
-          AppMethodBeat.o(187341);
+          ac.e("AdLandingFloatWebView", "callback: getCurrentUrl failed");
+          AppMethodBeat.o(200138);
         }
         return "";
       }
       
-      public final Bundle j(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      public final Bundle k(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(187344);
+        AppMethodBeat.i(200141);
         Bundle localBundle = new Bundle();
         Object localObject = e.this.context;
         switch (paramAnonymousInt)
@@ -222,7 +221,7 @@ public final class e
         }
         do
         {
-          AppMethodBeat.o(187344);
+          AppMethodBeat.o(200141);
           return localBundle;
         } while ((localObject == null) || (paramAnonymousBundle == null));
         for (;;)
@@ -231,19 +230,19 @@ public final class e
           {
             paramAnonymousBundle.setClassLoader(((Context)localObject).getClassLoader());
             localObject = paramAnonymousBundle.getBundle("open_ui_with_webview_ui_extras");
-            String str1 = y.m(paramAnonymousBundle, "open_ui_with_webview_ui_plugin_name");
-            String str2 = y.m(paramAnonymousBundle, "open_ui_with_webview_ui_plugin_entry");
+            String str1 = com.tencent.mm.sdk.platformtools.x.n(paramAnonymousBundle, "open_ui_with_webview_ui_plugin_name");
+            String str2 = com.tencent.mm.sdk.platformtools.x.n(paramAnonymousBundle, "open_ui_with_webview_ui_plugin_entry");
             Context localContext = e.this.context;
             Intent localIntent = new Intent();
             if (localObject == null) {
               break label140;
             }
             paramAnonymousBundle = (Bundle)localObject;
-            com.tencent.mm.bs.d.b(localContext, str1, str2, localIntent.putExtras(paramAnonymousBundle));
+            com.tencent.mm.br.d.b(localContext, str1, str2, localIntent.putExtras(paramAnonymousBundle));
           }
           catch (Throwable paramAnonymousBundle)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "In invokeAsResult method, it happens something unwanted!");
+            ac.e("AdLandingFloatWebView", "In invokeAsResult method, it happens something unwanted!");
           }
           break;
           label140:
@@ -253,68 +252,72 @@ public final class e
     };
     try
     {
-      this.wZn = parame;
-      if (this.gQC == null)
+      this.ymb = parame;
+      if (this.hrc == null)
       {
-        this.gQC = new c()
+        this.hrc = new c()
         {
-          private boolean a(tb paramAnonymoustb)
+          private boolean a(tk paramAnonymoustk)
           {
-            AppMethodBeat.i(187348);
+            AppMethodBeat.i(200145);
             try
             {
-              e.a(e.this, paramAnonymoustb);
-              AppMethodBeat.o(187348);
+              e.a(e.this, paramAnonymoustk);
+              AppMethodBeat.o(200145);
               return true;
             }
-            catch (Throwable paramAnonymoustb)
+            catch (Throwable paramAnonymoustk)
             {
               for (;;)
               {
-                com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.Sns.AdLandingFloatWebViewComponent", "resizing layout has wrong!");
+                ac.w("AdLandingFloatWebView", "resizing layout has wrong!");
               }
             }
           }
         };
-        this.gQC.alive();
+        this.hrc.alive();
       }
-      AppMethodBeat.o(187358);
+      AppMethodBeat.o(200155);
       return;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(187358);
+      AppMethodBeat.o(200155);
     }
   }
   
-  static boolean aA(Activity paramActivity)
+  static boolean aE(Activity paramActivity)
   {
-    AppMethodBeat.i(187366);
+    AppMethodBeat.i(200163);
     if ((paramActivity != null) && (!paramActivity.isFinishing()) && (!paramActivity.isDestroyed()))
     {
-      AppMethodBeat.o(187366);
+      AppMethodBeat.o(200163);
       return true;
     }
-    AppMethodBeat.o(187366);
+    AppMethodBeat.o(200163);
     return false;
   }
   
-  private String apt(String paramString)
+  private String auE(String paramString)
   {
-    AppMethodBeat.i(187368);
+    AppMethodBeat.i(200165);
     try
     {
-      Object localObject = dwi();
-      str1 = paramString;
-      if (localObject != null)
+      ae localae = dKH();
+      str2 = paramString;
+      if (localae != null)
       {
-        str1 = paramString;
+        str2 = paramString;
         if (!TextUtils.isEmpty(paramString))
         {
-          localObject = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad)localObject).dvK;
-          str1 = paramString;
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            str1 = q.iy(paramString, (String)localObject);
+          str2 = localae.yka;
+          String str1 = str2;
+          if (TextUtils.isEmpty(str2)) {
+            str1 = localae.dtx;
+          }
+          str2 = paramString;
+          if (!TextUtils.isEmpty(str1)) {
+            str2 = q.iV(paramString, str1);
           }
         }
       }
@@ -323,23 +326,22 @@ public final class e
     {
       for (;;)
       {
-        String str1;
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "fill url param occur error!");
+        ac.e("AdLandingFloatWebView", "fill url param occur error!");
         String str2 = paramString;
       }
     }
-    AppMethodBeat.o(187368);
-    return str1;
+    AppMethodBeat.o(200165);
+    return str2;
   }
   
-  private boolean t(ViewGroup paramViewGroup)
+  private boolean u(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(187365);
+    AppMethodBeat.i(200162);
     if (paramViewGroup != null)
     {
       if (paramViewGroup.getScrollY() != 0)
       {
-        AppMethodBeat.o(187365);
+        AppMethodBeat.o(200162);
         return true;
       }
       int i = 0;
@@ -348,37 +350,37 @@ public final class e
         View localView = paramViewGroup.getChildAt(i);
         if ((localView instanceof ViewGroup))
         {
-          if (t((ViewGroup)localView))
+          if (u((ViewGroup)localView))
           {
-            AppMethodBeat.o(187365);
+            AppMethodBeat.o(200162);
             return true;
           }
         }
         else if ((localView != null) && (localView.getScrollY() != 0))
         {
-          AppMethodBeat.o(187365);
+          AppMethodBeat.o(200162);
           return true;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(187365);
+    AppMethodBeat.o(200162);
     return false;
   }
   
-  final int ME(int paramInt)
+  final int OG(int paramInt)
   {
-    AppMethodBeat.i(187367);
+    AppMethodBeat.i(200164);
     try
     {
-      int j = al.fU(this.context)[1];
+      int j = al.gg(this.context)[1];
       i = paramInt;
       if (paramInt == j)
       {
         i = paramInt;
-        if (ai.aF(this.context))
+        if (aj.aG(this.context))
         {
-          i = ai.aE(this.context);
+          i = aj.aF(this.context);
           i = j - i;
         }
       }
@@ -390,17 +392,17 @@ public final class e
         int i = paramInt;
       }
     }
-    AppMethodBeat.o(187367);
+    AppMethodBeat.o(200164);
     return i;
   }
   
-  public final void as(int paramInt, boolean paramBoolean)
+  public final void av(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(187364);
+    AppMethodBeat.i(200161);
     if (paramInt == 0) {}
     try
     {
-      android.support.v4.content.d locald = android.support.v4.content.d.T(this.context);
+      android.support.v4.content.d locald = android.support.v4.content.d.U(this.context);
       Intent localIntent = new Intent("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME");
       if (paramBoolean) {}
       for (paramInt = 1;; paramInt = 2)
@@ -408,124 +410,25 @@ public final class e
         localIntent.putExtra("TRY_PAUSE_OR_RESUME", paramInt);
         localIntent.putExtra("identity", this.context.hashCode());
         locald.b(localIntent);
-        AppMethodBeat.o(187364);
+        AppMethodBeat.o(200161);
         return;
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.Sns.AdLandingFloatWebViewComponent", "onScrollChanged method has something wrong");
-      AppMethodBeat.o(187364);
+      ac.w("AdLandingFloatWebView", "onScrollChanged method has something wrong");
+      AppMethodBeat.o(200161);
     }
   }
   
-  protected final void dvN()
+  public final void dJW()
   {
-    AppMethodBeat.i(187359);
-    try
+    AppMethodBeat.i(200157);
+    super.dJW();
+    if (!this.ymd)
     {
-      if (this.wZm == null)
-      {
-        String str = apt(this.wZn.wVC);
-        Intent localIntent = new Intent();
-        localIntent.putExtra("rawUrl", str);
-        localIntent.putExtra("useJs", true);
-        localIntent.putExtra("type", -255);
-        localIntent.putExtra("geta8key_scene", 2);
-        this.wZm = ((x)com.tencent.mm.kernel.g.ab(x.class)).a(this.gQk);
-        this.wZm.a(new com.tencent.mm.plugin.webview.core.i()
-        {
-          public final void dvS()
-          {
-            AppMethodBeat.i(187346);
-            try
-            {
-              e.this.wZm.kxf.a(e.this.wZq, e.this.wZm.eiZ());
-              AppMethodBeat.o(187346);
-              return;
-            }
-            catch (Throwable localThrowable)
-            {
-              com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "bind webview callback failed");
-              AppMethodBeat.o(187346);
-            }
-          }
-        });
-        this.gQk.setWebChromeClient(new MMWebView.b(new c((Activity)this.context, this.wZm.kxg, this.wZo)));
-        this.wZm.init();
-        this.wZm.an(localIntent);
-      }
-      AppMethodBeat.o(187359);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "bind webview callback failed");
-      AppMethodBeat.o(187359);
-    }
-  }
-  
-  protected final View dvQ()
-  {
-    AppMethodBeat.i(187361);
-    for (;;)
-    {
-      try
-      {
-        this.wZk = new ScrollableLayout(this.context);
-        localObject2 = this.wZn.wVC;
-        localObject1 = null;
-        if (com.tencent.mm.plugin.webview.j.i.ayK((String)localObject2)) {
-          localObject1 = MMWebView.a.kj(this.context);
-        }
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = MMWebView.a.kk(this.context);
-        }
-        this.gQk = ((MMWebView)localObject2);
-        localObject1 = new LinearLayout.LayoutParams(-1, -1);
-        this.wZl = new Space(this.context);
-        this.wZl.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.wZk.addView(this.wZl);
-        this.wZo = new a();
-        this.wZk.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        this.wZk.setDescendantScrollStatusHunter(this);
-        this.wZk.setOnScrollStatusListener(this);
-        localObject1 = new LinearLayout.LayoutParams(-1, -1);
-        localObject2 = this.wZk;
-        localMMWebView = this.gQk;
-      }
-      catch (Throwable localThrowable2)
-      {
-        Object localObject2;
-        Object localObject1;
-        MMWebView localMMWebView;
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.Sns.AdLandingFloatWebViewComponent", "the customLayout method has something wrong");
-        continue;
-      }
-      try
-      {
-        ((ScrollableLayout)localObject2).addView(localMMWebView, (ViewGroup.LayoutParams)localObject1);
-        ((ScrollableLayout)localObject2).xYK = localMMWebView;
-        localObject1 = this.wZk;
-        AppMethodBeat.o(187361);
-        return localObject1;
-      }
-      catch (Throwable localThrowable1)
-      {
-        com.tencent.mm.sdk.platformtools.ad.w("ScrollLinearLayout", "the addView has something wrong!");
-      }
-    }
-  }
-  
-  public final void dvx()
-  {
-    AppMethodBeat.i(187360);
-    super.dvx();
-    if (!this.wZp)
-    {
-      this.wZp = true;
+      this.ymd = true;
       try
       {
         Object localObject = this.contentView;
@@ -536,69 +439,169 @@ public final class e
             ((ViewTreeObserver)localObject).addOnGlobalLayoutListener(new b());
           }
         }
-        AppMethodBeat.o(187360);
+        AppMethodBeat.o(200157);
         return;
       }
       catch (Throwable localThrowable) {}
     }
-    AppMethodBeat.o(187360);
+    AppMethodBeat.o(200157);
   }
   
-  public final void dvy()
+  public final void dJX()
   {
-    AppMethodBeat.i(187362);
-    super.dvy();
+    AppMethodBeat.i(200159);
+    super.dJX();
     try
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingFloatWebViewComponent", "the view is going to destroy");
-      if (this.gQC != null) {
-        this.gQC.dead();
+      ac.i("AdLandingFloatWebView", "the view is going to destroy");
+      if (this.hrc != null) {
+        this.hrc.dead();
       }
-      if (this.wZm != null) {
-        this.wZm.onDestroy();
+      if (this.yma != null) {
+        this.yma.onDestroy();
       }
-      if (this.gQk != null) {
-        this.gQk.destroy();
+      if (this.hqK != null) {
+        this.hqK.destroy();
       }
-      AppMethodBeat.o(187362);
+      AppMethodBeat.o(200159);
       return;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.Sns.AdLandingFloatWebViewComponent", "the destroy method has something wrong");
-      AppMethodBeat.o(187362);
+      ac.w("AdLandingFloatWebView", "the destroy method has something wrong");
+      AppMethodBeat.o(200159);
     }
   }
   
-  public final boolean eu(View paramView)
+  protected final void dKm()
   {
-    AppMethodBeat.i(187363);
+    AppMethodBeat.i(200156);
     try
     {
-      MMWebView localMMWebView = this.gQk;
+      if (this.yma == null)
+      {
+        String str = auE(this.ymb.yiq);
+        Intent localIntent = new Intent();
+        localIntent.putExtra("rawUrl", str);
+        localIntent.putExtra("useJs", true);
+        localIntent.putExtra("type", -255);
+        localIntent.putExtra("geta8key_scene", 2);
+        this.yma = ((com.tencent.mm.api.x)com.tencent.mm.kernel.g.ab(com.tencent.mm.api.x.class)).a(this.hqK);
+        this.yma.a(new com.tencent.mm.plugin.webview.core.i()
+        {
+          public final void dKr()
+          {
+            AppMethodBeat.i(200143);
+            try
+            {
+              e.this.yma.kYt.a(e.this.yme, e.this.yma.eyt());
+              AppMethodBeat.o(200143);
+              return;
+            }
+            catch (Throwable localThrowable)
+            {
+              ac.e("AdLandingFloatWebView", "bind webview callback failed");
+              AppMethodBeat.o(200143);
+            }
+          }
+        });
+        this.hqK.setWebChromeClient(new MMWebView.b(new c((Activity)this.context, this.yma.kYu, this.ymc)));
+        this.yma.init();
+        this.yma.ao(localIntent);
+        ac.d("AdLandingFloatWebView", "url is ".concat(String.valueOf(str)));
+      }
+      AppMethodBeat.o(200156);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ac.e("AdLandingFloatWebView", "bind webview callback failed");
+      AppMethodBeat.o(200156);
+    }
+  }
+  
+  protected final View dKp()
+  {
+    AppMethodBeat.i(200158);
+    for (;;)
+    {
+      try
+      {
+        this.ylY = new ScrollableLayout(this.context);
+        localObject2 = this.ymb.yiq;
+        localObject1 = null;
+        if (com.tencent.mm.plugin.webview.j.i.aEb((String)localObject2)) {
+          localObject1 = MMWebView.a.ku(this.context);
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = MMWebView.a.kv(this.context);
+        }
+        this.hqK = ((MMWebView)localObject2);
+        localObject1 = new LinearLayout.LayoutParams(-1, -1);
+        this.ylZ = new Space(this.context);
+        this.ylZ.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.ylY.addView(this.ylZ);
+        this.ymc = new a();
+        this.ylY.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+        this.ylY.setDescendantScrollStatusHunter(this);
+        this.ylY.setOnScrollStatusListener(this);
+        localObject1 = new LinearLayout.LayoutParams(-1, -1);
+        localObject2 = this.ylY;
+        localMMWebView = this.hqK;
+      }
+      catch (Throwable localThrowable2)
+      {
+        Object localObject2;
+        Object localObject1;
+        MMWebView localMMWebView;
+        ac.w("AdLandingFloatWebView", "the customLayout method has something wrong");
+        continue;
+      }
+      try
+      {
+        ((ScrollableLayout)localObject2).addView(localMMWebView, (ViewGroup.LayoutParams)localObject1);
+        ((ScrollableLayout)localObject2).zlH = localMMWebView;
+        localObject1 = this.ylY;
+        AppMethodBeat.o(200158);
+        return localObject1;
+      }
+      catch (Throwable localThrowable1)
+      {
+        ac.w("ScrollLinearLayout", "the addView has something wrong!");
+      }
+    }
+  }
+  
+  public final boolean eH(View paramView)
+  {
+    AppMethodBeat.i(200160);
+    try
+    {
+      MMWebView localMMWebView = this.hqK;
       if (paramView != localMMWebView)
       {
-        AppMethodBeat.o(187363);
+        AppMethodBeat.o(200160);
         return false;
       }
-      boolean bool = t(this.gQk);
-      AppMethodBeat.o(187363);
+      boolean bool = u(this.hqK);
+      AppMethodBeat.o(200160);
       return bool;
     }
     catch (Throwable paramView)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "hasDescendantScrolled method has something wrong");
-      AppMethodBeat.o(187363);
+      ac.e("AdLandingFloatWebView", "hasDescendantScrolled method has something wrong");
+      AppMethodBeat.o(200160);
     }
     return false;
   }
   
   static final class a
   {
-    ValueCallback<Uri[]> wZA;
-    String wZB;
-    String wZC;
-    ValueCallback<Uri> wZz;
+    ValueCallback<Uri> ymn;
+    ValueCallback<Uri[]> ymo;
+    String ymp;
+    String ymq;
   }
   
   final class b
@@ -608,10 +611,10 @@ public final class e
     
     public final void onGlobalLayout()
     {
-      AppMethodBeat.i(187350);
+      AppMethodBeat.i(200147);
       try
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingFloatWebViewComponent", "viewTreeObserver OnGlobalLayoutListener is called");
+        ac.i("AdLandingFloatWebView", "viewTreeObserver OnGlobalLayoutListener is called");
         Object localObject1 = e.this.contentView;
         if ((localObject1 != null) && (((View)localObject1).getViewTreeObserver().isAlive()))
         {
@@ -628,7 +631,7 @@ public final class e
             if (localObject1 != null) {
               break;
             }
-            AppMethodBeat.o(187350);
+            AppMethodBeat.o(200147);
             return;
             localObject1 = localObject2;
           }
@@ -641,63 +644,63 @@ public final class e
               localObject1 = e.this;
               ((View)localObject2).getWidth();
               int i = ((View)localObject2).getHeight();
-              if ((((e)localObject1).wZl != null) && (((e)localObject1).wZk != null) && (((e)localObject1).gQk != null))
+              if ((((e)localObject1).ylZ != null) && (((e)localObject1).ylY != null) && (((e)localObject1).hqK != null))
               {
-                com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.Sns.AdLandingFloatWebViewComponent", "on event center information: the  height is ".concat(String.valueOf(i)));
-                com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.Sns.AdLandingFloatWebViewComponent", "on event center information: the  height of mPlaceHolderView is " + ((e)localObject1).wZl.getHeight());
-                com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.Sns.AdLandingFloatWebViewComponent", "on event center information: the  height of mScrollableLayout is " + ((e)localObject1).wZk.getHeight());
-                com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.Sns.AdLandingFloatWebViewComponent", "on event center information: the  height of mWebView is " + ((e)localObject1).gQk.getHeight());
-                localObject2 = ((e)localObject1).wZl.getLayoutParams();
+                ac.d("AdLandingFloatWebView", "on event center information: the  height is ".concat(String.valueOf(i)));
+                ac.d("AdLandingFloatWebView", "on event center information: the  height of mPlaceHolderView is " + ((e)localObject1).ylZ.getHeight());
+                ac.d("AdLandingFloatWebView", "on event center information: the  height of mScrollableLayout is " + ((e)localObject1).ylY.getHeight());
+                ac.d("AdLandingFloatWebView", "on event center information: the  height of mWebView is " + ((e)localObject1).hqK.getHeight());
+                localObject2 = ((e)localObject1).ylZ.getLayoutParams();
                 ((ViewGroup.LayoutParams)localObject2).height = i;
-                ((e)localObject1).wZl.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-                localObject2 = ((e)localObject1).gQk.getLayoutParams();
-                ((ViewGroup.LayoutParams)localObject2).height = ((e)localObject1).ME(((e)localObject1).wZk.getHeight());
-                ((e)localObject1).gQk.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-                ((e)localObject1).wZk.setMaxYScrollOffset(i);
-                ((e)localObject1).wZk.requestLayout();
+                ((e)localObject1).ylZ.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                localObject2 = ((e)localObject1).hqK.getLayoutParams();
+                ((ViewGroup.LayoutParams)localObject2).height = ((e)localObject1).OG(((e)localObject1).ylY.getHeight());
+                ((e)localObject1).hqK.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                ((e)localObject1).ylY.setMaxYScrollOffset(i);
+                ((e)localObject1).ylY.requestLayout();
               }
             }
           }
         }
         label334:
-        AppMethodBeat.o(187350);
+        AppMethodBeat.o(200147);
         return;
       }
       catch (Throwable localThrowable)
       {
-        AppMethodBeat.o(187350);
+        AppMethodBeat.o(200147);
       }
     }
   }
   
   static final class c
-    extends w
+    extends com.tencent.xweb.x
   {
-    private Reference<Activity> wZD;
-    private com.tencent.mm.plugin.webview.e.g wZE;
-    private final e.a wZo;
+    private Reference<Activity> xId;
+    private final e.a ymc;
+    private com.tencent.mm.plugin.webview.e.g ymr;
     
     protected c(Activity paramActivity, com.tencent.mm.plugin.webview.e.g paramg, e.a parama)
     {
-      AppMethodBeat.i(187353);
-      this.wZD = new WeakReference(paramActivity);
-      this.wZE = paramg;
-      this.wZo = parama;
-      AppMethodBeat.o(187353);
+      AppMethodBeat.i(200150);
+      this.xId = new WeakReference(paramActivity);
+      this.ymr = paramg;
+      this.ymc = parama;
+      AppMethodBeat.o(200150);
     }
     
     public final void a(WebView paramWebView, int paramInt)
     {
-      AppMethodBeat.i(187354);
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.Sns.AdLandingFloatWebViewComponent", "onProgressChanged %d", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(187354);
+      AppMethodBeat.i(200151);
+      ac.d("AdLandingFloatWebView", "onProgressChanged %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(200151);
     }
     
-    public final boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, w.a parama)
+    public final boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, x.a parama)
     {
       Object localObject2 = null;
       Object localObject1 = null;
-      AppMethodBeat.i(187356);
+      AppMethodBeat.i(200153);
       Activity localActivity;
       String str1;
       Object localObject3;
@@ -705,13 +708,13 @@ public final class e
       {
         try
         {
-          localActivity = (Activity)this.wZD.get();
-          if (((e.aA(localActivity)) && (parama.getMode() == 0)) || (parama.getMode() == 1))
+          localActivity = (Activity)this.xId.get();
+          if (((e.aE(localActivity)) && (parama.getMode() == 0)) || (parama.getMode() == 1))
           {
             if ((parama.getAcceptTypes() == null) || (parama.getAcceptTypes().length <= 0))
             {
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingFloatWebViewComponent", "onShowFileChooser, mode = MODE_OPEN, but params.getAcceptTypes is null");
-              AppMethodBeat.o(187356);
+              ac.i("AdLandingFloatWebView", "onShowFileChooser, mode = MODE_OPEN, but params.getAcceptTypes is null");
+              AppMethodBeat.o(200153);
               return true;
             }
             str1 = parama.getAcceptTypes()[0];
@@ -725,13 +728,13 @@ public final class e
             }
             else
             {
-              localObject3 = this.wZo;
-              parama = this.wZE;
-              if (e.aA(localActivity)) {
+              localObject3 = this.ymc;
+              parama = this.ymr;
+              if (e.aE(localActivity)) {
                 continue;
               }
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingFloatWebViewComponent", "activity is finished.");
-              AppMethodBeat.o(187356);
+              ac.i("AdLandingFloatWebView", "activity is finished.");
+              AppMethodBeat.o(200153);
               return true;
             }
             paramWebView = (WebView)localObject3;
@@ -743,26 +746,26 @@ public final class e
             if (parama != null) {
               break label191;
             }
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "openFileChooser fail, wvPerm is null");
+            ac.e("AdLandingFloatWebView", "openFileChooser fail, wvPerm is null");
             continue;
           }
-          if (parama.emR().mb(56)) {
+          if (parama.eCm().ma(56)) {
             break;
           }
         }
         catch (Throwable paramWebView)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "onShowFileChooser has something wrong");
-          AppMethodBeat.o(187356);
+          ac.e("AdLandingFloatWebView", "onShowFileChooser has something wrong");
+          AppMethodBeat.o(200153);
           return false;
         }
         label191:
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "open file chooser failed, permission fail");
+        ac.e("AdLandingFloatWebView", "open file chooser failed, permission fail");
       }
-      ((e.a)localObject3).wZz = null;
-      ((e.a)localObject3).wZA = paramValueCallback;
-      ((e.a)localObject3).wZB = str1;
-      ((e.a)localObject3).wZC = String.valueOf(System.currentTimeMillis());
+      ((e.a)localObject3).ymn = null;
+      ((e.a)localObject3).ymo = paramValueCallback;
+      ((e.a)localObject3).ymp = str1;
+      ((e.a)localObject3).ymq = String.valueOf(System.currentTimeMillis());
       label266:
       String str2;
       label308:
@@ -772,20 +775,20 @@ public final class e
         parama = paramWebView;
         if (!"environment".equalsIgnoreCase(paramWebView))
         {
-          str2 = ((e.a)localObject3).wZC;
+          str2 = ((e.a)localObject3).ymq;
           localObject3 = new Intent("android.intent.action.GET_CONTENT");
           ((Intent)localObject3).addCategory("android.intent.category.OPENABLE");
-          if (bt.isNullOrNil(str1))
+          if (bs.isNullOrNil(str1))
           {
             ((Intent)localObject3).setType("*/*");
-            if (bt.isNullOrNil(parama)) {
+            if (bs.isNullOrNil(parama)) {
               break label620;
             }
             if (!"camera".equalsIgnoreCase(parama)) {
               break label438;
             }
             paramWebView = new Intent[1];
-            paramWebView[0] = com.tencent.mm.plugin.webview.j.d.awG(str2);
+            paramWebView[0] = com.tencent.mm.plugin.webview.j.d.aBY(str2);
             i = 0;
           }
         }
@@ -799,7 +802,7 @@ public final class e
           {
             paramValueCallback = new Intent("android.intent.action.CHOOSER");
             paramValueCallback.putExtra("android.intent.extra.INITIAL_INTENTS", paramWebView);
-            paramValueCallback.putExtra("android.intent.extra.TITLE", aj.getContext().getString(2131766455));
+            paramValueCallback.putExtra("android.intent.extra.TITLE", ai.getContext().getString(2131766455));
             paramValueCallback.putExtra("android.intent.extra.INTENT", (Parcelable)localObject3);
           }
           for (paramWebView = paramValueCallback;; paramWebView = paramWebView[0])
@@ -808,7 +811,7 @@ public final class e
               break label666;
             }
             com.tencent.mm.pluginsdk.permission.b.b(localActivity, "android.permission.CAMERA", 119);
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "openFileChooser no Permission");
+            ac.e("AdLandingFloatWebView", "openFileChooser no Permission");
             break;
             ((Intent)localObject3).setType(str1);
             break label308;
@@ -816,14 +819,14 @@ public final class e
             if ("camcorder".equalsIgnoreCase(parama))
             {
               paramWebView = new Intent[1];
-              paramWebView[0] = com.tencent.mm.plugin.webview.j.d.emf();
+              paramWebView[0] = com.tencent.mm.plugin.webview.j.d.eBB();
               i = 0;
               break label340;
             }
             if ("microphone".equalsIgnoreCase(parama))
             {
               paramWebView = new Intent[1];
-              paramWebView[0] = com.tencent.mm.plugin.webview.j.d.emg();
+              paramWebView[0] = com.tencent.mm.plugin.webview.j.d.eBC();
               i = 0;
               break label340;
             }
@@ -837,7 +840,7 @@ public final class e
             if (str1.equalsIgnoreCase("image/*"))
             {
               paramWebView = new Intent[1];
-              paramWebView[0] = com.tencent.mm.plugin.webview.j.d.awG(str2);
+              paramWebView[0] = com.tencent.mm.plugin.webview.j.d.aBY(str2);
             }
             for (;;)
             {
@@ -852,7 +855,7 @@ public final class e
               if (str1.equalsIgnoreCase("audio/*"))
               {
                 paramWebView = new Intent[1];
-                paramWebView[0] = com.tencent.mm.plugin.webview.j.d.emg();
+                paramWebView[0] = com.tencent.mm.plugin.webview.j.d.eBC();
               }
               else
               {
@@ -860,18 +863,18 @@ public final class e
                 if (str1.equalsIgnoreCase("video/*"))
                 {
                   paramWebView = new Intent[1];
-                  paramWebView[0] = com.tencent.mm.plugin.webview.j.d.emf();
+                  paramWebView[0] = com.tencent.mm.plugin.webview.j.d.eBB();
                 }
               }
             }
             label620:
             paramValueCallback = localObject2;
-            if (!com.tencent.mm.compatible.util.d.lg(16)) {
+            if (!com.tencent.mm.compatible.util.d.la(16)) {
               break label696;
             }
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebJSSDKUtil", "android API version is below 16.");
+            ac.i("MicroMsg.WebJSSDKUtil", "android API version is below 16.");
             paramWebView = new Intent[1];
-            paramWebView[0] = com.tencent.mm.plugin.webview.j.d.awG(str2);
+            paramWebView[0] = com.tencent.mm.plugin.webview.j.d.aBY(str2);
             i = 0;
             break label340;
           }
@@ -882,7 +885,7 @@ public final class e
           }
           catch (Exception paramWebView)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "openFileChooser e = %s", new Object[] { paramWebView });
+            ac.e("AdLandingFloatWebView", "openFileChooser e = %s", new Object[] { paramWebView });
           }
         }
         break;
@@ -904,24 +907,24 @@ public final class e
     
     public final boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
     {
-      AppMethodBeat.i(187357);
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.Sns.AdLandingFloatWebViewComponent", "onJsConfirm");
+      AppMethodBeat.i(200154);
+      ac.d("AdLandingFloatWebView", "onJsConfirm");
       boolean bool = super.b(paramWebView, paramString1, paramString2, paramJsResult);
-      AppMethodBeat.o(187357);
+      AppMethodBeat.o(200154);
       return bool;
     }
     
     public final void onGeolocationPermissionsShowPrompt(final String paramString, final GeolocationPermissions.Callback paramCallback)
     {
-      AppMethodBeat.i(187355);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingFloatWebViewComponent", "onGeolocationPermissionsShowPrompt, origin = %s", new Object[] { paramString });
+      AppMethodBeat.i(200152);
+      ac.i("AdLandingFloatWebView", "onGeolocationPermissionsShowPrompt, origin = %s", new Object[] { paramString });
       try
       {
-        final Activity localActivity = (Activity)this.wZD.get();
-        if ((!e.aA(localActivity)) || (paramCallback == null))
+        final Activity localActivity = (Activity)this.xId.get();
+        if ((!e.aE(localActivity)) || (paramCallback == null))
         {
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.Sns.AdLandingFloatWebViewComponent", "the activity is finished.");
-          AppMethodBeat.o(187355);
+          ac.w("AdLandingFloatWebView", "the activity is finished.");
+          AppMethodBeat.o(200152);
           return;
         }
         if (com.tencent.mm.pluginsdk.permission.b.o(localActivity, "android.permission.ACCESS_COARSE_LOCATION"))
@@ -930,53 +933,53 @@ public final class e
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(187351);
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingFloatWebViewComponent", "onGeolocationPermissionsShowPrompt ok");
+              AppMethodBeat.i(200148);
+              ac.i("AdLandingFloatWebView", "onGeolocationPermissionsShowPrompt ok");
               try
               {
                 paramCallback.invoke(paramString, true, true);
-                al.aB(localActivity);
-                AppMethodBeat.o(187351);
+                al.aF(localActivity);
+                AppMethodBeat.o(200148);
                 return;
               }
               catch (Throwable paramAnonymousDialogInterface)
               {
-                com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "GeolocationPermissions.Callback has something wrong!");
-                AppMethodBeat.o(187351);
+                ac.e("AdLandingFloatWebView", "GeolocationPermissions.Callback has something wrong!");
+                AppMethodBeat.o(200148);
               }
             }
           }, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(187352);
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingFloatWebViewComponent", "onGeolocationPermissionsShowPrompt cancel");
+              AppMethodBeat.i(200149);
+              ac.i("AdLandingFloatWebView", "onGeolocationPermissionsShowPrompt cancel");
               try
               {
                 paramCallback.invoke(paramString, false, false);
-                al.aB(localActivity);
-                AppMethodBeat.o(187352);
+                al.aF(localActivity);
+                AppMethodBeat.o(200149);
                 return;
               }
               catch (Throwable paramAnonymousDialogInterface)
               {
-                com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.Sns.AdLandingFloatWebViewComponent", "GeolocationPermissions.Callback has something wrong!");
-                AppMethodBeat.o(187352);
+                ac.e("AdLandingFloatWebView", "GeolocationPermissions.Callback has something wrong!");
+                AppMethodBeat.o(200149);
               }
             }
           });
-          AppMethodBeat.o(187355);
+          AppMethodBeat.o(200152);
           return;
         }
       }
       catch (Throwable paramString)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.Sns.AdLandingFloatWebViewComponent", "the application has no geo permission.");
-        AppMethodBeat.o(187355);
+        ac.w("AdLandingFloatWebView", "the application has no geo permission.");
+        AppMethodBeat.o(200152);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.Sns.AdLandingFloatWebViewComponent", "the application has no geo permission.");
-      AppMethodBeat.o(187355);
+      ac.w("AdLandingFloatWebView", "the application has no geo permission.");
+      AppMethodBeat.o(200152);
     }
   }
 }

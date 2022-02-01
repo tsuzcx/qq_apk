@@ -43,24 +43,24 @@ public final class j
     f localf = new f();
     b localb = new b();
     h localh = new h(paramString);
-    localh.bLh = paraml;
-    localh.bLi = paramb1;
-    localh.bLj = paramb2;
+    localh.bIP = paraml;
+    localh.bIQ = paramb1;
+    localh.bIR = paramb2;
     int i;
     if ((paramString.startsWith("[)>\03605\035")) && (paramString.endsWith("\036\004")))
     {
       localh.e('ì');
-      localh.bLn = 2;
+      localh.bIV = 2;
       localh.pos += 7;
       i = j;
     }
-    while (localh.yn())
+    while (localh.ya())
     {
       new g[] { locala, localc, localm, localn, localf, localb }[i].a(localh);
-      if (localh.bLl >= 0)
+      if (localh.bIT >= 0)
       {
-        i = localh.bLl;
-        localh.bLl = -1;
+        i = localh.bIT;
+        localh.bIT = -1;
         continue;
         i = j;
         if (paramString.startsWith("[)>\03606\035"))
@@ -69,20 +69,20 @@ public final class j
           if (paramString.endsWith("\036\004"))
           {
             localh.e('í');
-            localh.bLn = 2;
+            localh.bIV = 2;
             localh.pos += 7;
             i = j;
           }
         }
       }
     }
-    int k = localh.bLk.length();
-    localh.yq();
-    j = localh.bLm.bLv;
+    int k = localh.bIS.length();
+    localh.yd();
+    j = localh.bIU.bJd;
     if ((k < j) && (i != 0) && (i != 5)) {
       localh.e('þ');
     }
-    paramString = localh.bLk;
+    paramString = localh.bIS;
     if (paramString.length() < j) {
       paramString.append('');
     }
@@ -97,7 +97,7 @@ public final class j
         i -= 254;
       }
     }
-    paramString = localh.bLk.toString();
+    paramString = localh.bIS.toString();
     AppMethodBeat.o(12385);
     return paramString;
   }
@@ -154,7 +154,7 @@ public final class j
                 paramCharSequence = new byte[6];
                 arrayOfInt = new int[6];
                 paramInt1 = a(arrayOfFloat, arrayOfInt, 2147483647, paramCharSequence);
-                paramInt2 = y(paramCharSequence);
+                paramInt2 = w(paramCharSequence);
                 if (arrayOfInt[0] == paramInt1)
                 {
                   AppMethodBeat.o(12386);
@@ -244,7 +244,7 @@ public final class j
                 arrayOfInt = new int[6];
                 arrayOfByte = new byte[6];
                 a(arrayOfFloat, arrayOfInt, 2147483647, arrayOfByte);
-                paramInt2 = y(arrayOfByte);
+                paramInt2 = w(arrayOfByte);
                 if ((arrayOfInt[0] >= arrayOfInt[5]) || (arrayOfInt[0] >= arrayOfInt[1]) || (arrayOfInt[0] >= arrayOfInt[2]) || (arrayOfInt[0] >= arrayOfInt[3]) || (arrayOfInt[0] >= arrayOfInt[4])) {
                   break label745;
                 }
@@ -390,7 +390,7 @@ public final class j
     return (paramChar >= '0') && (paramChar <= '9');
   }
   
-  private static int y(byte[] paramArrayOfByte)
+  private static int w(byte[] paramArrayOfByte)
   {
     int j = 0;
     int k;

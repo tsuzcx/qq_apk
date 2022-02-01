@@ -18,16 +18,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet.pwd.a.a;
 import com.tencent.mm.plugin.wallet.pwd.a.t;
 import com.tencent.mm.plugin.wallet_core.d.k;
 import com.tencent.mm.plugin.wallet_core.model.al;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.s;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.MMEditText;
 import com.tencent.mm.wallet_core.c.b;
 import com.tencent.mm.wallet_core.c.p;
@@ -42,65 +41,65 @@ public class WalletForgotPwdVerifyIdUI
   extends WalletBaseUI
   implements View.OnLayoutChangeListener
 {
-  private TextView fQp;
-  private View jGG;
+  private boolean BlP;
+  private MMEditText BlU;
+  private TextView BlV;
+  private WalletFormView BlW;
+  private Button BlX;
+  private TextView BlY;
+  private LinearLayout BlZ;
+  ViewGroup.MarginLayoutParams Bma;
+  ViewGroup.MarginLayoutParams Bmb;
+  private View Bmc;
+  private boolean Bmd = false;
+  private boolean Bme = false;
+  private boolean Bmf = false;
+  private boolean Bmg = false;
+  private TextView fUk;
+  private int kWC = 0;
   private int keyHeight = 0;
-  private int kvo = 0;
-  private MMEditText zTA;
-  private TextView zTB;
-  private WalletFormView zTC;
-  private Button zTD;
-  private TextView zTE;
-  private LinearLayout zTF;
-  ViewGroup.MarginLayoutParams zTG;
-  ViewGroup.MarginLayoutParams zTH;
-  private View zTI;
-  private boolean zTJ = false;
-  private boolean zTK = false;
-  private boolean zTL = false;
-  private boolean zTM = false;
-  private boolean zTv;
+  private View khe;
   
-  private void cE()
+  private void cL()
   {
     AppMethodBeat.i(69691);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", "updateView");
-    int i = s.ebX().edF().field_cre_type;
-    String str1 = s.ebX().edF().field_cre_name;
-    String str2 = s.ebX().edF().field_true_name;
-    this.zTA.setHint(getString(2131765180, new Object[] { e.aNf(str2) }));
-    if (!bt.isNullOrNil(str1)) {
-      this.zTB.setText(str1);
+    ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", "updateView");
+    int i = s.ert().eta().field_cre_type;
+    String str1 = s.ert().eta().field_cre_name;
+    String str2 = s.ert().eta().field_true_name;
+    this.BlU.setHint(getString(2131765180, new Object[] { e.aSI(str2) }));
+    if (!bs.isNullOrNil(str1)) {
+      this.BlV.setText(str1);
     }
     while (i == 1)
     {
-      com.tencent.mm.wallet_core.ui.formview.a.d(this.zTC);
-      setEditFocusListener(this.zTC, 1, false, false, true);
+      com.tencent.mm.wallet_core.ui.formview.a.d(this.BlW);
+      setEditFocusListener(this.BlW, 1, false, false, true);
       AppMethodBeat.o(69691);
       return;
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WalletForgotPwdVerifyIdUI", "creName is null");
+      ac.w("MicroMsg.WalletForgotPwdVerifyIdUI", "creName is null");
     }
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", "no need tenpay keyboard");
+    ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", "no need tenpay keyboard");
     AppMethodBeat.o(69691);
   }
   
-  private void eaR()
+  private void eqn()
   {
     AppMethodBeat.i(69693);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", " setChangParams()");
-    new ap().postDelayed(new Runnable()
+    ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", " setChangParams()");
+    new com.tencent.mm.sdk.platformtools.ao().postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(69684);
         WalletForgotPwdVerifyIdUI.c(WalletForgotPwdVerifyIdUI.this).setVisibility(8);
         WalletForgotPwdVerifyIdUI.d(WalletForgotPwdVerifyIdUI.this).setVisibility(8);
-        WalletForgotPwdVerifyIdUI.this.zTG = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.e(WalletForgotPwdVerifyIdUI.this).getLayoutParams());
-        WalletForgotPwdVerifyIdUI.this.zTG.topMargin = ao.fromDPToPix(WalletForgotPwdVerifyIdUI.this, 47);
-        WalletForgotPwdVerifyIdUI.e(WalletForgotPwdVerifyIdUI.this).setLayoutParams(WalletForgotPwdVerifyIdUI.this.zTG);
-        WalletForgotPwdVerifyIdUI.this.zTH = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.f(WalletForgotPwdVerifyIdUI.this).getLayoutParams());
-        WalletForgotPwdVerifyIdUI.this.zTH.topMargin = ao.fromDPToPix(WalletForgotPwdVerifyIdUI.this, 48);
-        WalletForgotPwdVerifyIdUI.f(WalletForgotPwdVerifyIdUI.this).setLayoutParams(WalletForgotPwdVerifyIdUI.this.zTH);
+        WalletForgotPwdVerifyIdUI.this.Bma = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.e(WalletForgotPwdVerifyIdUI.this).getLayoutParams());
+        WalletForgotPwdVerifyIdUI.this.Bma.topMargin = com.tencent.mm.ui.ao.fromDPToPix(WalletForgotPwdVerifyIdUI.this, 47);
+        WalletForgotPwdVerifyIdUI.e(WalletForgotPwdVerifyIdUI.this).setLayoutParams(WalletForgotPwdVerifyIdUI.this.Bma);
+        WalletForgotPwdVerifyIdUI.this.Bmb = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.f(WalletForgotPwdVerifyIdUI.this).getLayoutParams());
+        WalletForgotPwdVerifyIdUI.this.Bmb.topMargin = com.tencent.mm.ui.ao.fromDPToPix(WalletForgotPwdVerifyIdUI.this, 48);
+        WalletForgotPwdVerifyIdUI.f(WalletForgotPwdVerifyIdUI.this).setLayoutParams(WalletForgotPwdVerifyIdUI.this.Bmb);
         AppMethodBeat.o(69684);
       }
     }, 100L);
@@ -112,9 +111,9 @@ public class WalletForgotPwdVerifyIdUI
     AppMethodBeat.i(69690);
     super.finish();
     getIntent().putExtra("process_id", com.tencent.mm.plugin.wallet.pwd.a.class.hashCode());
-    com.tencent.mm.plugin.wallet.pwd.a locala = (com.tencent.mm.plugin.wallet.pwd.a)com.tencent.mm.wallet_core.a.bo(this);
-    if ((locala != null) && (locala.zRM != null)) {
-      locala.zRM.run(-1);
+    com.tencent.mm.plugin.wallet.pwd.a locala = (com.tencent.mm.plugin.wallet.pwd.a)com.tencent.mm.wallet_core.a.br(this);
+    if ((locala != null) && (locala.Bkg != null)) {
+      locala.Bkg.run(-1);
     }
     AppMethodBeat.o(69690);
   }
@@ -133,64 +132,64 @@ public class WalletForgotPwdVerifyIdUI
   {
     AppMethodBeat.i(69689);
     super.onCreate(paramBundle);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", "onCreate");
+    ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", "onCreate");
     setActionbarColor(getContext().getResources().getColor(2131101179));
     hideActionbarLine();
     setMMTitleVisibility(8);
-    this.zTI = findViewById(2131304246);
-    this.kvo = getWindowManager().getDefaultDisplay().getHeight();
-    this.keyHeight = (this.kvo / 3);
-    this.zTI.addOnLayoutChangeListener(this);
-    this.zTv = getInput().getBoolean("key_is_force_bind", false);
-    if (!this.zTv)
+    this.Bmc = findViewById(2131304246);
+    this.kWC = getWindowManager().getDefaultDisplay().getHeight();
+    this.keyHeight = (this.kWC / 3);
+    this.Bmc.addOnLayoutChangeListener(this);
+    this.BlP = getInput().getBoolean("key_is_force_bind", false);
+    if (!this.BlP)
     {
       doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.ad(null, 6));
       setContentViewVisibility(4);
     }
-    this.zTA = ((MMEditText)findViewById(2131302661));
-    this.zTB = ((TextView)findViewById(2131300911));
-    this.zTC = ((WalletFormView)findViewById(2131300910));
-    this.zTD = ((Button)findViewById(2131302852));
-    this.zTE = ((TextView)findViewById(2131303551));
-    this.jGG = findViewById(2131304239);
-    this.fQp = ((TextView)findViewById(2131305902));
-    this.zTF = ((LinearLayout)findViewById(2131302663));
-    this.zTC.setEnabled(false);
-    this.zTC.setFocusable(false);
-    this.zTD.setOnClickListener(new View.OnClickListener()
+    this.BlU = ((MMEditText)findViewById(2131302661));
+    this.BlV = ((TextView)findViewById(2131300911));
+    this.BlW = ((WalletFormView)findViewById(2131300910));
+    this.BlX = ((Button)findViewById(2131302852));
+    this.BlY = ((TextView)findViewById(2131303551));
+    this.khe = findViewById(2131304239);
+    this.fUk = ((TextView)findViewById(2131305902));
+    this.BlZ = ((LinearLayout)findViewById(2131302663));
+    this.BlW.setEnabled(false);
+    this.BlW.setFocusable(false);
+    this.BlX.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(69682);
         paramAnonymousView = WalletForgotPwdVerifyIdUI.a(WalletForgotPwdVerifyIdUI.this).getText();
-        int i = s.ecc().ecP();
+        int i = s.ery().esk();
         String str = WalletForgotPwdVerifyIdUI.b(WalletForgotPwdVerifyIdUI.this).getText().toString();
-        if ((!bt.isNullOrNil(paramAnonymousView)) && (!bt.isNullOrNil(str)))
+        if ((!bs.isNullOrNil(paramAnonymousView)) && (!bs.isNullOrNil(str)))
         {
           WalletForgotPwdVerifyIdUI.this.getInput().putString("key_identity", paramAnonymousView);
           WalletForgotPwdVerifyIdUI.this.getInput().putInt("key_id_type", i);
           WalletForgotPwdVerifyIdUI.this.getInput().putString("key_true_name", str);
           if (WalletForgotPwdVerifyIdUI.this.getProcess() != null)
           {
-            WalletForgotPwdVerifyIdUI.this.getProcess().dow.putString("key_identity", paramAnonymousView);
-            WalletForgotPwdVerifyIdUI.this.getProcess().dow.putInt("key_id_type", i);
-            WalletForgotPwdVerifyIdUI.this.getProcess().dow.putString("key_true_name", str);
+            WalletForgotPwdVerifyIdUI.this.getProcess().dmf.putString("key_identity", paramAnonymousView);
+            WalletForgotPwdVerifyIdUI.this.getProcess().dmf.putInt("key_id_type", i);
+            WalletForgotPwdVerifyIdUI.this.getProcess().dmf.putString("key_true_name", str);
           }
-          WalletForgotPwdVerifyIdUI.this.getNetController().q(new Object[] { paramAnonymousView, Integer.valueOf(i), str });
+          WalletForgotPwdVerifyIdUI.this.getNetController().s(new Object[] { paramAnonymousView, Integer.valueOf(i), str });
         }
         AppMethodBeat.o(69682);
       }
     });
-    this.zTE.setOnClickListener(new View.OnClickListener()
+    this.BlY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(69683);
-        e.p(WalletForgotPwdVerifyIdUI.this, "https://kf.qq.com/touch/scene_product.html?scene_id=kf3258", false);
+        e.o(WalletForgotPwdVerifyIdUI.this, "https://kf.qq.com/touch/scene_product.html?scene_id=kf3258", false);
         AppMethodBeat.o(69683);
       }
     });
-    cE();
+    cL();
     setTenpayKBStateListener(new com.tencent.mm.wallet_core.ui.a()
     {
       public final void onVisibleStateChange(boolean paramAnonymousBoolean)
@@ -198,35 +197,35 @@ public class WalletForgotPwdVerifyIdUI
         AppMethodBeat.i(69687);
         if (paramAnonymousBoolean)
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", " TenpayKBS visible");
+          ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", " TenpayKBS visible");
           WalletForgotPwdVerifyIdUI.a(WalletForgotPwdVerifyIdUI.this, WalletForgotPwdVerifyIdUI.h(WalletForgotPwdVerifyIdUI.this), WalletForgotPwdVerifyIdUI.a(WalletForgotPwdVerifyIdUI.this));
           WalletForgotPwdVerifyIdUI.i(WalletForgotPwdVerifyIdUI.this);
           AppMethodBeat.o(69687);
           return;
         }
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", " TenpayKBS unvisible");
+        ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", " TenpayKBS unvisible");
         WalletForgotPwdVerifyIdUI.j(WalletForgotPwdVerifyIdUI.this);
         WalletForgotPwdVerifyIdUI.h(WalletForgotPwdVerifyIdUI.this).scrollTo(0, 0);
         AppMethodBeat.o(69687);
       }
     });
-    this.zTA.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.BlU.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(69688);
         if (paramAnonymousBoolean)
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", " has focus");
+          ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", " has focus");
           WalletForgotPwdVerifyIdUI.i(WalletForgotPwdVerifyIdUI.this);
           AppMethodBeat.o(69688);
           return;
         }
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", " lose focus");
+        ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", " lose focus");
         AppMethodBeat.o(69688);
       }
     });
-    this.zTA.addTextChangedListener(new TextWatcher()
+    this.BlU.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -235,7 +234,7 @@ public class WalletForgotPwdVerifyIdUI
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(69685);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", " haveNameext：" + WalletForgotPwdVerifyIdUI.b(WalletForgotPwdVerifyIdUI.this).getText());
+        ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", " haveNameext：" + WalletForgotPwdVerifyIdUI.b(WalletForgotPwdVerifyIdUI.this).getText());
         if ((WalletForgotPwdVerifyIdUI.b(WalletForgotPwdVerifyIdUI.this).getText() == null) || ("".equals(WalletForgotPwdVerifyIdUI.b(WalletForgotPwdVerifyIdUI.this).getText().toString()))) {
           WalletForgotPwdVerifyIdUI.a(WalletForgotPwdVerifyIdUI.this, false);
         }
@@ -248,7 +247,7 @@ public class WalletForgotPwdVerifyIdUI
         }
       }
     });
-    this.zTC.a(new TextWatcher()
+    this.BlW.a(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -277,13 +276,13 @@ public class WalletForgotPwdVerifyIdUI
     AppMethodBeat.i(69694);
     if ((paramInt8 != 0) && (paramInt4 != 0) && (paramInt8 - paramInt4 > this.keyHeight))
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", " up");
-      eaR();
+      ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", " up");
+      eqn();
       AppMethodBeat.o(69694);
       return;
     }
     if ((paramInt8 != 0) && (paramInt4 != 0) && (paramInt4 - paramInt8 > this.keyHeight)) {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", " down");
+      ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", " down");
     }
     AppMethodBeat.o(69694);
   }
@@ -291,13 +290,13 @@ public class WalletForgotPwdVerifyIdUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(69692);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", " errCode: %s errMsg: %s  scene: %s", new Object[] { Integer.valueOf(paramInt2), paramString, paramn });
+    ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", " errCode: %s errMsg: %s  scene: %s", new Object[] { Integer.valueOf(paramInt2), paramString, paramn });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if (!(paramn instanceof com.tencent.mm.plugin.wallet_core.c.ad)) {
         break label67;
       }
-      cE();
+      cL();
       setContentViewVisibility(0);
     }
     for (;;)
@@ -308,35 +307,35 @@ public class WalletForgotPwdVerifyIdUI
       if ((paramn instanceof t))
       {
         paramString = (t)paramn;
-        getInput().putInt("key_is_support_face", paramString.zSz);
+        getInput().putInt("key_is_support_face", paramString.BkT);
         getInput().putInt("key_face_action_scene", paramString.scene);
         getInput().putString("key_face_action_package", paramString.packageName);
-        getInput().putString("key_face_action_package_sign", paramString.dwg);
-        if (paramString.zSA == 1)
+        getInput().putString("key_face_action_package_sign", paramString.dtT);
+        if (paramString.BkU == 1)
         {
-          com.tencent.mm.wallet_core.c.ad.fkc();
+          com.tencent.mm.wallet_core.c.ad.fAs();
           paramn = com.tencent.mm.wallet_core.c.ad.getCrtNo();
-          b.fjR();
+          b.fAg();
           if (!b.isCertExist(paramn))
           {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", "checkInstallCert, crt not installed");
-            doSceneForceProgress(new p(paramString.zSx, paramString.zSy, paramString.dCQ));
+            ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", "checkInstallCert, crt not installed");
+            doSceneForceProgress(new p(paramString.BkR, paramString.BkS, paramString.dAC));
           }
           else
           {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", "already install cert, go to next process");
+            ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", "already install cert, go to next process");
             getProcess().a(this, 0, getInput());
           }
         }
         else
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", "verify realname info finish, go to next process");
+          ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", "verify realname info finish, go to next process");
           getProcess().a(this, 0, getInput());
         }
       }
       else if ((paramn instanceof p))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletForgotPwdVerifyIdUI", "install cert finish, go to next process");
+        ac.i("MicroMsg.WalletForgotPwdVerifyIdUI", "install cert finish, go to next process");
         getProcess().a(this, 0, getInput());
       }
     }

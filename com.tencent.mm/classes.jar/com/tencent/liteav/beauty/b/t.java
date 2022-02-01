@@ -1,16 +1,16 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.j;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.d.k;
+import com.tencent.liteav.basic.d.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 public class t
-  extends g
+  extends h
 {
   private ByteBuffer r;
   public int u;
@@ -28,7 +28,7 @@ public class t
     AppMethodBeat.i(15101);
     this.u = -1;
     this.w = -1;
-    a(j.a, false, true);
+    a(k.a, false, true);
     AppMethodBeat.o(15101);
   }
   
@@ -41,16 +41,16 @@ public class t
     return paramInt1;
   }
   
-  public void a(j paramj, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(k paramk, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(15105);
-    paramj = k.a(paramj, paramBoolean1, paramBoolean2);
+    AppMethodBeat.i(193040);
+    paramk = l.a(paramk, paramBoolean1, paramBoolean2);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
     FloatBuffer localFloatBuffer = localByteBuffer.asFloatBuffer();
-    localFloatBuffer.put(paramj);
+    localFloatBuffer.put(paramk);
     localFloatBuffer.flip();
     this.r = localByteBuffer;
-    AppMethodBeat.o(15105);
+    AppMethodBeat.o(193040);
   }
   
   public boolean b()

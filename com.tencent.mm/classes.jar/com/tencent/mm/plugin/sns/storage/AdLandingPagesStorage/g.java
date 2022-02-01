@@ -10,30 +10,30 @@ import java.util.Map;
 public final class g
 {
   public int id;
-  public String jbK;
-  public boolean rOT;
-  public String xhG;
-  public boolean xhH;
-  public LinkedList<x> xhI;
-  public Map<String, x> xhJ;
-  public boolean xhK;
-  public ArrayList<String> xhL;
-  public boolean xhM;
+  public String jBX;
+  public boolean sWJ;
+  public boolean yuA;
+  public String yuu;
+  public boolean yuv;
+  public LinkedList<x> yuw;
+  public Map<String, x> yux;
+  public boolean yuy;
+  public ArrayList<String> yuz;
   
   public g()
   {
     AppMethodBeat.i(97317);
-    this.xhI = new LinkedList();
-    this.xhJ = new HashMap();
-    this.xhK = true;
-    this.xhL = new ArrayList();
-    this.xhM = false;
+    this.yuw = new LinkedList();
+    this.yux = new HashMap();
+    this.yuy = true;
+    this.yuz = new ArrayList();
+    this.yuA = false;
     AppMethodBeat.o(97317);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g
  * JD-Core Version:    0.7.0.1
  */

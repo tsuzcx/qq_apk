@@ -6,59 +6,59 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  public static d BRF;
-  private ConcurrentHashMap<String, Integer> BRC;
-  private ConcurrentHashMap<String, Long> BRD;
-  private String BRE;
-  private boolean cEP;
+  public static d DjV;
+  private ConcurrentHashMap<String, Integer> DjS;
+  private ConcurrentHashMap<String, Long> DjT;
+  private String DjU;
+  private boolean cBX;
   
   static
   {
     AppMethodBeat.i(151895);
-    BRF = new d("default");
+    DjV = new d("default");
     AppMethodBeat.o(151895);
   }
   
   public d(String paramString)
   {
     AppMethodBeat.i(151893);
-    this.BRC = new ConcurrentHashMap();
-    this.BRD = new ConcurrentHashMap();
-    this.BRE = "";
-    this.cEP = false;
-    if (b.eEQ()) {
-      this.cEP = true;
+    this.DjS = new ConcurrentHashMap();
+    this.DjT = new ConcurrentHashMap();
+    this.DjU = "";
+    this.cBX = false;
+    if (b.eUk()) {
+      this.cBX = true;
     }
-    this.BRE = paramString;
+    this.DjU = paramString;
     AppMethodBeat.o(151893);
   }
   
-  public final void aBe(String paramString)
+  public final void aGw(String paramString)
   {
     AppMethodBeat.i(151894);
-    if (!this.cEP)
+    if (!this.cBX)
     {
       AppMethodBeat.o(151894);
       return;
     }
     int i;
-    if (this.BRC.containsKey(paramString))
+    if (this.DjS.containsKey(paramString))
     {
-      i = ((Integer)this.BRC.get(paramString)).intValue();
+      i = ((Integer)this.DjS.get(paramString)).intValue();
       i += 1;
-      this.BRC.put(paramString, Integer.valueOf(i));
-      if (!this.BRD.containsKey(paramString)) {
+      this.DjS.put(paramString, Integer.valueOf(i));
+      if (!this.DjT.containsKey(paramString)) {
         break label171;
       }
     }
     label171:
-    for (long l = ((Long)this.BRD.get(paramString)).longValue();; l = 0L)
+    for (long l = ((Long)this.DjT.get(paramString)).longValue();; l = 0L)
     {
       if (System.currentTimeMillis() - l > 1000L)
       {
-        new StringBuilder().append(this.BRE).append("user get fps ").append(i).append(" fpswraper: ").append(paramString);
-        this.BRC.put(paramString, Integer.valueOf(0));
-        this.BRD.put(paramString, Long.valueOf(System.currentTimeMillis()));
+        new StringBuilder().append(this.DjU).append("user get fps ").append(i).append(" fpswraper: ").append(paramString);
+        this.DjS.put(paramString, Integer.valueOf(0));
+        this.DjT.put(paramString, Long.valueOf(System.currentTimeMillis()));
       }
       AppMethodBeat.o(151894);
       return;

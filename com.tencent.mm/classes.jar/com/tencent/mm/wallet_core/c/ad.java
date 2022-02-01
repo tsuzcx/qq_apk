@@ -3,10 +3,10 @@ package com.tencent.mm.wallet_core.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.util.Iterator;
 import java.util.Vector;
 import org.json.JSONArray;
@@ -14,43 +14,43 @@ import org.json.JSONObject;
 
 public final class ad
 {
-  private static ad Iei;
-  private int Iec;
-  public String Ied;
-  public String Iee;
-  public String Ief;
-  public String Ieg;
-  public Vector<ac> Ieh;
+  private static ad JFK;
+  private int JFE;
+  public String JFF;
+  public String JFG;
+  public String JFH;
+  public String JFI;
+  public Vector<ac> JFJ;
   public String TAG;
   
   public ad()
   {
     AppMethodBeat.i(72814);
     this.TAG = "MicroMsg.WalletDigCertManager";
-    this.Iec = 0;
-    this.Ied = "";
-    this.Iee = "";
-    this.Ief = "";
-    this.Ieg = "";
-    this.Ieh = new Vector();
+    this.JFE = 0;
+    this.JFF = "";
+    this.JFG = "";
+    this.JFH = "";
+    this.JFI = "";
+    this.JFJ = new Vector();
     AppMethodBeat.o(72814);
   }
   
-  public static void aNa(String paramString)
+  public static void aSD(String paramString)
   {
     AppMethodBeat.i(72812);
-    g.afC();
-    g.afB().afk().set(ae.a.Fmc, paramString);
+    g.agS();
+    g.agR().agA().set(ah.a.GJR, paramString);
     AppMethodBeat.o(72812);
   }
   
-  public static ad fkc()
+  public static ad fAs()
   {
     AppMethodBeat.i(72815);
-    if (Iei == null) {
-      Iei = new ad();
+    if (JFK == null) {
+      JFK = new ad();
     }
-    ad localad = Iei;
+    ad localad = JFK;
     AppMethodBeat.o(72815);
     return localad;
   }
@@ -58,35 +58,35 @@ public final class ad
   public static String getCrtNo()
   {
     AppMethodBeat.i(72813);
-    g.afC();
-    String str = (String)g.afB().afk().get(ae.a.Fmc, "");
+    g.agS();
+    String str = (String)g.agR().agA().get(ah.a.GJR, "");
     AppMethodBeat.o(72813);
     return str;
   }
   
-  public final void aNb(String paramString)
+  public final void aSE(String paramString)
   {
     AppMethodBeat.i(72818);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(72818);
       return;
     }
     if (paramString.equals(getCrtNo()))
     {
-      this.Iec = 0;
-      aNa("");
-      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "clean token %s  stack %s ", new Object[] { paramString, bt.eGN().toString() });
-      b.fjR();
+      this.JFE = 0;
+      aSD("");
+      com.tencent.mm.sdk.platformtools.ac.i(this.TAG, "clean token %s  stack %s ", new Object[] { paramString, bs.eWi().toString() });
+      b.fAg();
       b.clearCert(paramString);
     }
-    Iterator localIterator = this.Ieh.iterator();
+    Iterator localIterator = this.JFJ.iterator();
     while (localIterator.hasNext())
     {
       ac localac = (ac)localIterator.next();
-      if (bt.kU(paramString, localac.EsX))
+      if (bs.lr(paramString, localac.FPZ))
       {
-        this.Ieh.remove(localac);
+        this.JFJ.remove(localac);
         AppMethodBeat.o(72818);
         return;
       }
@@ -94,7 +94,7 @@ public final class ad
     AppMethodBeat.o(72818);
   }
   
-  public final void bA(JSONObject paramJSONObject)
+  public final void bB(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72817);
     Object localObject = paramJSONObject.optJSONObject("cert_info");
@@ -103,15 +103,15 @@ public final class ad
       AppMethodBeat.o(72817);
       return;
     }
-    this.Ieh = new Vector();
+    this.JFJ = new Vector();
     int i = ((JSONObject)localObject).optInt("show_crt_info");
-    this.Iec = ((JSONObject)localObject).optInt("is_crt_install");
-    this.Ieg = ((JSONObject)localObject).optString("crt_item_logo_url");
-    this.Ied = ((JSONObject)localObject).optString("crt_entry_desc");
-    this.Iee = ((JSONObject)localObject).optString("crt_entry_title");
-    this.Ief = ((JSONObject)localObject).optString("crt_status_name");
-    g.afC();
-    g.afB().afk().set(ae.a.Fmd, Integer.valueOf(i));
+    this.JFE = ((JSONObject)localObject).optInt("is_crt_install");
+    this.JFI = ((JSONObject)localObject).optString("crt_item_logo_url");
+    this.JFF = ((JSONObject)localObject).optString("crt_entry_desc");
+    this.JFG = ((JSONObject)localObject).optString("crt_entry_title");
+    this.JFH = ((JSONObject)localObject).optString("crt_status_name");
+    g.agS();
+    g.agR().agA().set(ah.a.GJS, Integer.valueOf(i));
     paramJSONObject = getCrtNo();
     localObject = ((JSONObject)localObject).optJSONArray("crt_list");
     if (localObject != null) {
@@ -124,23 +124,23 @@ public final class ad
         try
         {
           ac localac = new ac(((JSONArray)localObject).getJSONObject(i));
-          if (localac.Ieb == 0) {
+          if (localac.JFD == 0) {
             break label267;
           }
-          if (bt.isNullOrNil(paramJSONObject)) {
-            com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "drop crt list no exist local drop: %s", new Object[] { localac.EsX });
-          } else if (localac.EsX.equals(paramJSONObject)) {
-            this.Ieh.add(localac);
+          if (bs.isNullOrNil(paramJSONObject)) {
+            com.tencent.mm.sdk.platformtools.ac.i(this.TAG, "drop crt list no exist local drop: %s", new Object[] { localac.FPZ });
+          } else if (localac.FPZ.equals(paramJSONObject)) {
+            this.JFJ.add(localac);
           }
         }
         catch (Exception localException)
         {
-          com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "WalletDigCertManager error %s", new Object[] { localException.getMessage() });
+          com.tencent.mm.sdk.platformtools.ac.i(this.TAG, "WalletDigCertManager error %s", new Object[] { localException.getMessage() });
         }
-        com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "drop crt list %s drop: %s", new Object[] { paramJSONObject, localException.EsX });
+        com.tencent.mm.sdk.platformtools.ac.i(this.TAG, "drop crt list %s drop: %s", new Object[] { paramJSONObject, localException.FPZ });
         break label286;
         label267:
-        this.Ieh.add(localException);
+        this.JFJ.add(localException);
       }
       else
       {
@@ -152,12 +152,12 @@ public final class ad
     }
   }
   
-  public final boolean fkd()
+  public final boolean fAt()
   {
     AppMethodBeat.i(72816);
-    if (!bt.isNullOrNil(getCrtNo()))
+    if (!bs.isNullOrNil(getCrtNo()))
     {
-      if (this.Iec > 0)
+      if (this.JFE > 0)
       {
         AppMethodBeat.o(72816);
         return true;

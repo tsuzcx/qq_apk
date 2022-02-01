@@ -10,14 +10,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 
 public class LaunchAAByPersonNameAmountRow
   extends LinearLayout
 {
-  private TextView ibG;
-  private View icB;
-  private TextView icz;
+  private TextView gIk;
+  private TextView iBN;
+  private View iCJ;
   
   public LaunchAAByPersonNameAmountRow(Context paramContext)
   {
@@ -46,25 +46,25 @@ public class LaunchAAByPersonNameAmountRow
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63618);
-    y.js(paramContext).inflate(2131494548, this, true);
-    this.icz = ((TextView)findViewById(2131306252));
-    this.ibG = ((TextView)findViewById(2131296655));
-    this.icB = findViewById(2131299154);
+    z.jD(paramContext).inflate(2131494548, this, true);
+    this.gIk = ((TextView)findViewById(2131306252));
+    this.iBN = ((TextView)findViewById(2131296655));
+    this.iCJ = findViewById(2131299154);
     AppMethodBeat.o(63618);
   }
   
   public final void a(String paramString1, String paramString2, double paramDouble)
   {
     AppMethodBeat.i(63619);
-    this.icz.setText(k.b(getContext(), ((b)g.ab(b.class)).getDisplayName(paramString1, paramString2), this.icz.getTextSize()));
-    this.ibG.setText(getContext().getString(2131755021, new Object[] { Double.valueOf(paramDouble) }));
+    this.gIk.setText(k.b(getContext(), ((b)g.ab(b.class)).getDisplayName(paramString1, paramString2), this.gIk.getTextSize()));
+    this.iBN.setText(getContext().getString(2131755021, new Object[] { Double.valueOf(paramDouble) }));
     AppMethodBeat.o(63619);
   }
   
   public void setDividerVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(63620);
-    View localView = this.icB;
+    View localView = this.iCJ;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -76,7 +76,7 @@ public class LaunchAAByPersonNameAmountRow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonNameAmountRow
  * JD-Core Version:    0.7.0.1
  */

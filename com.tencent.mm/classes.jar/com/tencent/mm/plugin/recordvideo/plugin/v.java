@@ -1,115 +1,175 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.a;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.Window;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.widget.camerarecordview.preview.e;
-import com.tencent.mm.plugin.recordvideo.d.b;
+import com.tencent.mm.g.b.a.eq;
+import com.tencent.mm.g.b.a.fb;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.recordvideo.b.a.a;
+import com.tencent.mm.plugin.recordvideo.b.a.a.a;
+import com.tencent.mm.plugin.recordvideo.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.plugin.xlabeffect.XLabEffectSettingView;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.pluginsdk.ui.tools.q;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.ui.am;
 import d.g.b.k;
 import d.l;
+import java.util.ArrayList;
+import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordBeautifyPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "cameraView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;)V", "backEnable", "", "frontEnable", "isBack", "pluginEnable", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setView", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "initConfig", "", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setEnable", "enable", "setIsUseBackCamera", "isBackCamera", "setVisibility", "visibility", "", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordAlbumPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "enable", "", "scene", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/ImageView;", "setView", "(Landroid/widget/ImageView;)V", "checkOnClickByScene", "", "initConfig", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onClick", "v", "Landroid/view/View;", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"})
 public final class v
-  implements t
+  implements View.OnClickListener, t
 {
-  public boolean iwN;
-  private d vjo;
-  public boolean vkU;
-  public boolean vkV;
-  public boolean vkW;
-  public WeImageView vkX;
-  final e vkY;
+  public static final v.a wtB;
+  public boolean enable;
+  private ImageView qSI;
+  private d rTT;
+  public int scene;
   
-  public v(WeImageView paramWeImageView, d paramd, e parame)
+  static
   {
-    AppMethodBeat.i(182849);
-    this.vkX = paramWeImageView;
-    this.vjo = paramd;
-    this.vkY = parame;
-    this.iwN = true;
-    this.vkW = true;
-    this.vkX.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        boolean bool2 = true;
-        boolean bool1 = true;
-        AppMethodBeat.i(182844);
-        if (this.vkZ.iwN)
-        {
-          paramAnonymousView = this.vkZ;
-          if (!this.vkZ.vkV) {}
-          for (;;)
-          {
-            paramAnonymousView.vkV = bool1;
-            this.vkZ.setEnable(this.vkZ.vkV);
-            AppMethodBeat.o(182844);
-            return;
-            bool1 = false;
-          }
-        }
-        paramAnonymousView = this.vkZ;
-        if (!this.vkZ.vkW) {}
-        for (bool1 = bool2;; bool1 = false)
-        {
-          paramAnonymousView.vkW = bool1;
-          this.vkZ.setEnable(this.vkZ.vkW);
-          AppMethodBeat.o(182844);
-          return;
-        }
-      }
-    });
-    if ((bu.eGT()) || (h.IS_FLAVOR_PURPLE)) {
-      this.vkX.setOnLongClickListener((View.OnLongClickListener)new View.OnLongClickListener()
-      {
-        public final boolean onLongClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(182845);
-          paramAnonymousView = new a(this.vkZ.vkX.getContext());
-          Object localObject = paramAnonymousView.getWindow();
-          if (localObject != null) {
-            ((Window)localObject).clearFlags(2);
-          }
-          localObject = this.vkZ.vkX.getContext();
-          k.g(localObject, "view.context");
-          localObject = new XLabEffectSettingView((Context)localObject);
-          ((XLabEffectSettingView)localObject).setCameraView(this.vkZ.vkY);
-          paramAnonymousView.setContentView((View)localObject);
-          paramAnonymousView.show();
-          AppMethodBeat.o(182845);
-          return true;
-        }
-      });
-    }
-    AppMethodBeat.o(182849);
+    AppMethodBeat.i(75612);
+    wtB = new v.a((byte)0);
+    AppMethodBeat.o(75612);
   }
   
-  public final void apt() {}
+  public v(ImageView paramImageView, d paramd)
+  {
+    AppMethodBeat.i(75611);
+    this.qSI = paramImageView;
+    this.rTT = paramd;
+    this.qSI.setOnClickListener((View.OnClickListener)this);
+    this.qSI.setImageDrawable(am.k(this.qSI.getContext(), 2131690348, -1));
+    this.enable = true;
+    AppMethodBeat.o(75611);
+  }
   
-  public final boolean dia()
+  public final boolean alO()
   {
     return false;
   }
+  
+  public final void awk() {}
   
   public final String name()
   {
     return null;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    ArrayList localArrayList2 = null;
+    AppMethodBeat.i(75610);
+    ac.i("MicroMsg.RecordAlbumPlugin", "onActivityResult requestCode:" + paramInt1 + " resultCode:" + paramInt2 + " data:" + paramIntent);
+    if ((paramInt1 == 1000) && (paramInt2 == -1))
+    {
+      Bundle localBundle = new Bundle();
+      if (paramIntent != null) {}
+      for (ArrayList localArrayList1 = paramIntent.getStringArrayListExtra("key_select_video_list");; localArrayList1 = null)
+      {
+        if (paramIntent != null) {
+          localArrayList2 = paramIntent.getStringArrayListExtra("key_select_image_list");
+        }
+        paramIntent = com.tencent.mm.plugin.recordvideo.activity.a.b.wlE;
+        localBundle.putInt("PARAM_ROUTER_INT", com.tencent.mm.plugin.recordvideo.activity.a.b.a.c(-1, (List)localArrayList2, (List)localArrayList1));
+        localBundle.putStringArrayList("PARAM_VIDEO_LIST", localArrayList1);
+        localBundle.putStringArrayList("PARAM_PHOTO_LIST", localArrayList2);
+        this.rTT.a(d.c.wwc, localBundle);
+        AppMethodBeat.o(75610);
+        return;
+      }
+    }
+    AppMethodBeat.o(75610);
+  }
+  
+  public final void onClick(View paramView)
+  {
+    boolean bool1 = false;
+    AppMethodBeat.i(75608);
+    ac.i("MicroMsg.RecordAlbumPlugin", "click RecordAlbumPlugin");
+    paramView = new Intent();
+    Object localObject;
+    switch (this.scene)
+    {
+    default: 
+      paramView.putExtra("album_business_tag", "album_business_media");
+      localObject = this.qSI.getContext();
+      if (localObject == null)
+      {
+        paramView = new d.v("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(75608);
+        throw paramView;
+      }
+      break;
+    case 3: 
+      paramView.putExtra("key_edit_video_max_time_length", ((a.a)a.wpS.aqp()).wqc);
+      paramView.putExtra("key_edit_text_color", "#0E9CE6");
+      boolean bool2 = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(com.tencent.mm.plugin.expt.a.b.a.pUC, false);
+      localObject = g.agR();
+      k.g(localObject, "storage()");
+      if ((((e)localObject).agA().getInt(ah.a.GQK, 0) == 1) || (bool2)) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          bool1 = true;
+        }
+        paramView.putExtra("key_can_select_video_and_pic", bool1);
+        if (!((a.a)a.wpS.aqp()).wpY) {
+          break label295;
+        }
+        localObject = this.qSI.getContext();
+        if (localObject != null) {
+          break;
+        }
+        paramView = new d.v("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(75608);
+        throw paramView;
+      }
+      q.a((Activity)localObject, 1000, 9, 22, 3, paramView);
+      paramView = c.wyg;
+      c.dwr().iB(0L);
+    }
+    for (;;)
+    {
+      paramView = c.wyg;
+      c.Mo(4);
+      paramView = c.wyg;
+      c.dws().RK();
+      AppMethodBeat.o(75608);
+      return;
+      label295:
+      localObject = this.qSI.getContext();
+      if (localObject == null)
+      {
+        paramView = new d.v("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(75608);
+        throw paramView;
+      }
+      q.a((Activity)localObject, 1000, 1, 22, 2, paramView);
+      break;
+      paramView.putExtra("album_business_tag", "album_business_media");
+      localObject = this.qSI.getContext();
+      if (localObject == null)
+      {
+        paramView = new d.v("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(75608);
+        throw paramView;
+      }
+      q.a((Activity)localObject, 1000, 9, 25, 3, paramView);
+      continue;
+      q.a((Activity)localObject, 1000, 1, 23, 3, paramView);
+    }
+  }
   
   public final void onDetach() {}
   
@@ -117,63 +177,22 @@ public final class v
   
   public final void onResume() {}
   
-  public final void ot(boolean paramBoolean)
-  {
-    AppMethodBeat.i(182847);
-    this.iwN = paramBoolean;
-    if (this.vkU) {
-      if (!this.iwN) {
-        break label40;
-      }
-    }
-    label40:
-    for (paramBoolean = this.vkV;; paramBoolean = this.vkW)
-    {
-      setEnable(paramBoolean);
-      AppMethodBeat.o(182847);
-      return;
-    }
-  }
-  
   public final void release() {}
   
   public final void reset() {}
   
-  public final void setEnable(boolean paramBoolean)
-  {
-    AppMethodBeat.i(182848);
-    Object localObject = b.vpp;
-    b.v("KEY_RECORD_IS_BEAUTIFY", Boolean.valueOf(paramBoolean));
-    localObject = this.vkX;
-    Context localContext;
-    if (paramBoolean)
-    {
-      localContext = this.vkX.getContext();
-      k.g(localContext, "view.context");
-    }
-    for (int i = localContext.getResources().getColor(2131100725);; i = -1)
-    {
-      ((WeImageView)localObject).setIconColor(i);
-      localObject = new Bundle();
-      ((Bundle)localObject).putBoolean("PARAM_BEAUTIFY_ENABLE", paramBoolean);
-      this.vjo.a(d.c.vnC, (Bundle)localObject);
-      AppMethodBeat.o(182848);
-      return;
-    }
-  }
-  
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(182846);
-    if (this.vkU) {
-      this.vkX.setVisibility(paramInt);
+    AppMethodBeat.i(75609);
+    if (this.enable) {
+      this.qSI.setVisibility(paramInt);
     }
-    AppMethodBeat.o(182846);
+    AppMethodBeat.o(75609);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.v
  * JD-Core Version:    0.7.0.1
  */

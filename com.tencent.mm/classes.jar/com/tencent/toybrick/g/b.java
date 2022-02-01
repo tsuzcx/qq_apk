@@ -5,7 +5,7 @@ import com.tencent.toybrick.c.f;
 
 public abstract interface b<R, T extends f>
 {
-  public abstract R fpk();
+  public abstract R fHs();
   
   public static abstract class a<T extends f>
     implements b<Boolean, T>

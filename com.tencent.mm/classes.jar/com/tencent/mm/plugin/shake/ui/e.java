@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.av.a.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.o;
 import com.tencent.mm.plugin.shake.b.f;
 import com.tencent.mm.plugin.shake.b.g;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,26 +24,26 @@ public final class e
       return;
     }
     paramImageView.setImageBitmap(null);
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).gjt = m.yr(paramString);
-      ((c.a)localObject).hjU = true;
-      ((c.a)localObject).gjA = true;
-      ((c.a)localObject).gkG = paramBoolean;
+      ((c.a)localObject).gKe = m.Cw(paramString);
+      ((c.a)localObject).hKx = true;
+      ((c.a)localObject).gKm = true;
+      ((c.a)localObject).gLt = paramBoolean;
       if (paramInt != 0) {
-        ((c.a)localObject).hki = paramInt;
+        ((c.a)localObject).hKL = paramInt;
       }
-      localObject = ((c.a)localObject).azc();
-      o.ayJ().a(paramString, paramImageView, (c)localObject);
+      localObject = ((c.a)localObject).aFT();
+      o.aFB().a(paramString, paramImageView, (c)localObject);
     }
     AppMethodBeat.o(28577);
   }
   
-  public static String dqb()
+  public static String dEl()
   {
     AppMethodBeat.i(28578);
-    Object localObject2 = m.dpc().doT();
+    Object localObject2 = m.dDm().dDd();
     Object localObject1 = new StringBuilder();
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
@@ -58,7 +58,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.e
  * JD-Core Version:    0.7.0.1
  */

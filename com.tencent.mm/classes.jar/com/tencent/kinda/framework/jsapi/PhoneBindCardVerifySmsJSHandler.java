@@ -9,10 +9,10 @@ import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.gen.KindaJSEventType;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kd;
-import com.tencent.mm.g.a.kd.a;
-import com.tencent.mm.g.a.kd.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.a.kl;
+import com.tencent.mm.g.a.kl.a;
+import com.tencent.mm.g.a.kl.b;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 
 public class PhoneBindCardVerifySmsJSHandler
@@ -20,37 +20,37 @@ public class PhoneBindCardVerifySmsJSHandler
 {
   public int type;
   
-  public void handle(final kd paramkd)
+  public void handle(final kl paramkl)
   {
-    AppMethodBeat.i(186430);
+    AppMethodBeat.i(207392);
     KindaJSEvent localKindaJSEvent = new KindaJSEvent();
     localKindaJSEvent.setDelegate(new KindaJSEvent.KindaJsEventDelegate()
     {
       public void kindaCloseWebViewImpl(boolean paramAnonymousBoolean, VoidCallback paramAnonymousVoidCallback)
       {
-        AppMethodBeat.i(186429);
-        if (paramkd.dov.doy == null) {
-          paramkd.dov.doy = new Bundle();
+        AppMethodBeat.i(207391);
+        if (paramkl.dme.dmh == null) {
+          paramkl.dme.dmh = new Bundle();
         }
-        paramkd.dov.doy.putInt("closeWindow", 1);
-        AppMethodBeat.o(186429);
+        paramkl.dme.dmh.putInt("closeWindow", 1);
+        AppMethodBeat.o(207391);
       }
       
       public void kindaEndWithResult(String paramAnonymousString, HashMap<String, String> paramAnonymousHashMap)
       {
-        AppMethodBeat.i(186428);
-        ad.i("PhoneBindCardVerifySmsJSHandler", "callback: %s", new Object[] { paramAnonymousString });
-        if (paramkd.dov.doy == null) {
-          paramkd.dov.doy = new Bundle();
+        AppMethodBeat.i(207390);
+        ac.i("PhoneBindCardVerifySmsJSHandler", "callback: %s", new Object[] { paramAnonymousString });
+        if (paramkl.dme.dmh == null) {
+          paramkl.dme.dmh = new Bundle();
         }
-        paramkd.dov.doy.putString("ret", paramAnonymousString);
-        paramkd.dou.cvK.run();
-        AppMethodBeat.o(186428);
+        paramkl.dme.dmh.putString("ret", paramAnonymousString);
+        paramkl.dmd.csS.run();
+        AppMethodBeat.o(207390);
       }
       
       public KindaJSEventType kindaGetType()
       {
-        if (paramkd.dou.type == 1) {
+        if (paramkl.dmd.type == 1) {
           return KindaJSEventType.WEB;
         }
         return KindaJSEventType.TINYAPP;
@@ -58,23 +58,23 @@ public class PhoneBindCardVerifySmsJSHandler
     });
     ITransmitKvData localITransmitKvData = ITransmitKvData.create();
     localITransmitKvData.putJSEvent("jsEvent", localKindaJSEvent);
-    localITransmitKvData.putString("app_id", paramkd.dou.dow.getString("app_id"));
-    localITransmitKvData.putString("nonce_str", paramkd.dou.dow.getString("nonce_str"));
-    localITransmitKvData.putString("timeStamp", paramkd.dou.dow.getString("timeStamp"));
-    localITransmitKvData.putString("package", paramkd.dou.dow.getString("package"));
-    localITransmitKvData.putString("paySign", paramkd.dou.dow.getString("paySign"));
-    localITransmitKvData.putString("signType", paramkd.dou.dow.getString("signType"));
-    localITransmitKvData.putString("sessionid", paramkd.dou.dow.getString("sessionid"));
-    if (paramkd.dou.type == 1) {
+    localITransmitKvData.putString("app_id", paramkl.dmd.dmf.getString("app_id"));
+    localITransmitKvData.putString("nonce_str", paramkl.dmd.dmf.getString("nonce_str"));
+    localITransmitKvData.putString("timeStamp", paramkl.dmd.dmf.getString("timeStamp"));
+    localITransmitKvData.putString("package", paramkl.dmd.dmf.getString("package"));
+    localITransmitKvData.putString("paySign", paramkl.dmd.dmf.getString("paySign"));
+    localITransmitKvData.putString("signType", paramkl.dmd.dmf.getString("signType"));
+    localITransmitKvData.putString("sessionid", paramkl.dmd.dmf.getString("sessionid"));
+    if (paramkl.dmd.type == 1) {
       localITransmitKvData.putInt("jsApiScene", 1);
     }
     for (;;)
     {
-      ad.d("PhoneBindCardVerifySmsJSHandler", "data: %s", new Object[] { paramkd.dou.dow.toString() });
+      ac.d("PhoneBindCardVerifySmsJSHandler", "data: %s", new Object[] { paramkl.dmd.dmf.toString() });
       KindaApp.appKinda().notifyAllUseCases(localITransmitKvData);
-      AppMethodBeat.o(186430);
+      AppMethodBeat.o(207392);
       return;
-      if (paramkd.dou.type == 0) {
+      if (paramkl.dmd.type == 0) {
         localITransmitKvData.putInt("jsApiScene", 2);
       }
     }

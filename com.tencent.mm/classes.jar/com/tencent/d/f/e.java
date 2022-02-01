@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 public final class e
 {
-  public static byte[] aNK(String paramString)
+  public static byte[] aTn(String paramString)
   {
     AppMethodBeat.i(138474);
     if (paramString == null)
@@ -53,7 +53,7 @@ public final class e
     return paramArrayOfByte;
   }
   
-  public static byte[] cK(byte[] paramArrayOfByte)
+  public static byte[] cJ(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(138476);
     Object localObject = null;

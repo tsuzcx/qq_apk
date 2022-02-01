@@ -9,7 +9,7 @@ import java.io.InputStream;
 public final class m
   extends FilterInputStream
 {
-  private final b aCQ;
+  private final b aDH;
   private volatile byte[] buf;
   private int count;
   private int marklimit;
@@ -26,7 +26,7 @@ public final class m
     super(paramInputStream);
     AppMethodBeat.i(77417);
     this.markpos = -1;
-    this.aCQ = paramb;
+    this.aDH = paramb;
     this.buf = ((byte[])paramb.a(65536, [B.class));
     AppMethodBeat.o(77417);
   }
@@ -55,10 +55,10 @@ public final class m
       if (j > this.marklimit) {
         i = this.marklimit;
       }
-      arrayOfByte = (byte[])this.aCQ.a(i, [B.class);
+      arrayOfByte = (byte[])this.aDH.a(i, [B.class);
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
       this.buf = arrayOfByte;
-      this.aCQ.put(paramArrayOfByte);
+      this.aDH.put(paramArrayOfByte);
       this.pos -= this.markpos;
       this.markpos = 0;
       this.count = 0;
@@ -83,7 +83,7 @@ public final class m
     }
   }
   
-  private static IOException oZ()
+  private static IOException pj()
   {
     AppMethodBeat.i(77419);
     IOException localIOException = new IOException("BufferedInputStream is closed");
@@ -99,7 +99,7 @@ public final class m
       Object localObject1 = this.in;
       if ((this.buf == null) || (localObject1 == null))
       {
-        localObject1 = oZ();
+        localObject1 = pj();
         AppMethodBeat.o(77418);
         throw ((Throwable)localObject1);
       }
@@ -117,7 +117,7 @@ public final class m
     AppMethodBeat.i(77421);
     if (this.buf != null)
     {
-      this.aCQ.put(this.buf);
+      this.aDH.put(this.buf);
       this.buf = null;
     }
     InputStream localInputStream = this.in;
@@ -150,7 +150,7 @@ public final class m
     return true;
   }
   
-  public final void pa()
+  public final void pk()
   {
     try
     {
@@ -175,7 +175,7 @@ public final class m
       Object localObject1 = this.in;
       if ((arrayOfByte == null) || (localObject1 == null))
       {
-        localObject1 = oZ();
+        localObject1 = pj();
         AppMethodBeat.o(77424);
         throw ((Throwable)localObject1);
       }
@@ -194,7 +194,7 @@ public final class m
         localObject2 = arrayOfByte;
         if (arrayOfByte == null)
         {
-          localObject2 = oZ();
+          localObject2 = pj();
           AppMethodBeat.o(77424);
           throw ((Throwable)localObject2);
         }
@@ -222,7 +222,7 @@ public final class m
       localObject2 = this.buf;
       if (localObject2 == null)
       {
-        paramArrayOfByte = oZ();
+        paramArrayOfByte = pj();
         AppMethodBeat.o(77425);
         throw paramArrayOfByte;
       }
@@ -237,7 +237,7 @@ public final class m
     InputStream localInputStream = this.in;
     if (localInputStream == null)
     {
-      paramArrayOfByte = oZ();
+      paramArrayOfByte = pj();
       AppMethodBeat.o(77425);
       throw paramArrayOfByte;
     }
@@ -296,7 +296,7 @@ public final class m
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          paramArrayOfByte = oZ();
+          paramArrayOfByte = pj();
           AppMethodBeat.o(77425);
           throw paramArrayOfByte;
         }
@@ -339,7 +339,7 @@ public final class m
       AppMethodBeat.i(77420);
       if (this.buf != null)
       {
-        this.aCQ.put(this.buf);
+        this.aDH.put(this.buf);
         this.buf = null;
       }
       AppMethodBeat.o(77420);
@@ -387,7 +387,7 @@ public final class m
         Object localObject1 = this.buf;
         if (localObject1 == null)
         {
-          localObject1 = oZ();
+          localObject1 = pj();
           AppMethodBeat.o(77427);
           throw ((Throwable)localObject1);
         }
@@ -397,7 +397,7 @@ public final class m
       IOException localIOException;
       if (localInputStream == null)
       {
-        localIOException = oZ();
+        localIOException = pj();
         AppMethodBeat.o(77427);
         throw localIOException;
       }
@@ -449,7 +449,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.m
  * JD-Core Version:    0.7.0.1
  */

@@ -16,26 +16,26 @@ public class RectView
 {
   private Paint paint;
   private Rect rect;
-  private Paint vTR;
-  private Bitmap vTs;
-  private Bitmap vTt;
-  private Bitmap vTu;
-  private Bitmap vTv;
-  int wbF;
-  int wbG;
+  private Paint xeC;
+  private Bitmap xed;
+  private Bitmap xee;
+  private Bitmap xef;
+  private Bitmap xeg;
+  int xmM;
+  int xmN;
   
   public RectView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(91085);
-    this.vTs = null;
-    this.vTt = null;
-    this.vTu = null;
-    this.vTv = null;
-    this.wbF = 0;
-    this.wbG = 0;
+    this.xed = null;
+    this.xee = null;
+    this.xef = null;
+    this.xeg = null;
+    this.xmM = 0;
+    this.xmN = 0;
     this.paint = new Paint();
-    this.vTR = new Paint();
+    this.xeC = new Paint();
     init();
     AppMethodBeat.o(91085);
   }
@@ -44,14 +44,14 @@ public class RectView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(91086);
-    this.vTs = null;
-    this.vTt = null;
-    this.vTu = null;
-    this.vTv = null;
-    this.wbF = 0;
-    this.wbG = 0;
+    this.xed = null;
+    this.xee = null;
+    this.xef = null;
+    this.xeg = null;
+    this.xmM = 0;
+    this.xmN = 0;
     this.paint = new Paint();
-    this.vTR = new Paint();
+    this.xeC = new Paint();
     init();
     AppMethodBeat.o(91086);
   }
@@ -60,14 +60,14 @@ public class RectView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(91087);
-    this.vTs = null;
-    this.vTt = null;
-    this.vTu = null;
-    this.vTv = null;
-    this.wbF = 0;
-    this.wbG = 0;
+    this.xed = null;
+    this.xee = null;
+    this.xef = null;
+    this.xeg = null;
+    this.xmM = 0;
+    this.xmN = 0;
     this.paint = new Paint();
-    this.vTR = new Paint();
+    this.xeC = new Paint();
     init();
     AppMethodBeat.o(91087);
   }
@@ -75,14 +75,14 @@ public class RectView
   private void init()
   {
     AppMethodBeat.i(91088);
-    this.vTs = BitmapFactory.decodeResource(getResources(), 2131233910);
-    this.vTt = BitmapFactory.decodeResource(getResources(), 2131233911);
-    this.vTu = BitmapFactory.decodeResource(getResources(), 2131233912);
-    this.vTv = BitmapFactory.decodeResource(getResources(), 2131233913);
-    this.wbF = this.vTs.getWidth();
-    this.wbG = this.vTs.getHeight();
+    this.xed = BitmapFactory.decodeResource(getResources(), 2131233910);
+    this.xee = BitmapFactory.decodeResource(getResources(), 2131233911);
+    this.xef = BitmapFactory.decodeResource(getResources(), 2131233912);
+    this.xeg = BitmapFactory.decodeResource(getResources(), 2131233913);
+    this.xmM = this.xed.getWidth();
+    this.xmN = this.xed.getHeight();
     this.paint.setAntiAlias(true);
-    this.vTR.setAntiAlias(true);
+    this.xeC.setAntiAlias(true);
     AppMethodBeat.o(91088);
   }
   
@@ -102,10 +102,10 @@ public class RectView
     paramCanvas.clipRect(this.rect, Region.Op.DIFFERENCE);
     paramCanvas.drawRect(this.rect, this.paint);
     paramCanvas.restore();
-    paramCanvas.drawBitmap(this.vTs, this.rect.left, this.rect.top, this.vTR);
-    paramCanvas.drawBitmap(this.vTt, this.rect.right - this.wbF, this.rect.top, this.vTR);
-    paramCanvas.drawBitmap(this.vTu, this.rect.left, this.rect.bottom - this.wbG, this.vTR);
-    paramCanvas.drawBitmap(this.vTv, this.rect.right - this.wbF, this.rect.bottom - this.wbG, this.vTR);
+    paramCanvas.drawBitmap(this.xed, this.rect.left, this.rect.top, this.xeC);
+    paramCanvas.drawBitmap(this.xee, this.rect.right - this.xmM, this.rect.top, this.xeC);
+    paramCanvas.drawBitmap(this.xef, this.rect.left, this.rect.bottom - this.xmN, this.xeC);
+    paramCanvas.drawBitmap(this.xeg, this.rect.right - this.xmM, this.rect.bottom - this.xmN, this.xeC);
     AppMethodBeat.o(91090);
   }
   
@@ -116,7 +116,7 @@ public class RectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.view.RectView
  * JD-Core Version:    0.7.0.1
  */

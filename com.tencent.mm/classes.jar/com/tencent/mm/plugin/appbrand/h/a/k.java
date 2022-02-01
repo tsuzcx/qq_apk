@@ -5,27 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
   extends e
 {
-  private int jik;
+  private int gpP;
   
   public k(String paramString1, String paramString2, int paramInt)
   {
     super(paramString1, paramString2);
     AppMethodBeat.i(158896);
-    this.jik = paramInt;
-    cs("SOAPACTION", "\"" + paramString2 + "#" + this.jhV + "\"");
+    this.gpP = paramInt;
+    cC("SOAPACTION", "\"" + paramString2 + "#" + this.jIk + "\"");
     AppMethodBeat.o(158896);
   }
   
-  public final String aUD()
+  public final String bbB()
   {
     return "SetVolume";
   }
   
-  public final String aUE()
+  public final String bbC()
   {
     AppMethodBeat.i(158897);
-    int i = this.jik;
-    String str = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?><s:Envelope s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body>" + new StringBuilder("<u:").append(this.jhV).append(" xmlns:u=\"").append(this.jhW).append("\">\n<InstanceID>0</InstanceID>\n<Channel>").append("Master").append("</Channel>\n<DesiredVolume>").append(i).append("</DesiredVolume>\n</u:").append(this.jhV).append(">\n").toString() + "</s:Body></s:Envelope>";
+    int i = this.gpP;
+    String str = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?><s:Envelope s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body>" + new StringBuilder("<u:").append(this.jIk).append(" xmlns:u=\"").append(this.jIl).append("\">\n<InstanceID>0</InstanceID>\n<Channel>").append("Master").append("</Channel>\n<DesiredVolume>").append(i).append("</DesiredVolume>\n</u:").append(this.jIk).append(">\n").toString() + "</s:Body></s:Envelope>";
     AppMethodBeat.o(158897);
     return str;
   }

@@ -6,20 +6,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private int IOi;
-  private ContentResolver bwu;
+  private int KAE;
+  private ContentResolver but;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(153551);
-    this.IOi = 255;
-    this.bwu = paramContext.getContentResolver();
+    this.KAE = 255;
+    this.but = paramContext.getContentResolver();
     AppMethodBeat.o(153551);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.extension.video.a
  * JD-Core Version:    0.7.0.1
  */

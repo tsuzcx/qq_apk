@@ -13,30 +13,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.hf;
-import com.tencent.mm.g.b.a.hw;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.gy;
+import com.tencent.mm.g.b.a.bb;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.plugin.finder.storage.data.h.a;
+import com.tencent.mm.plugin.finder.storage.data.c.a;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference.a;
-import com.tencent.mm.pluginsdk.ui.applet.s.b;
-import com.tencent.mm.protocal.protobuf.bqk;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.bvb;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.r.b;
 import d.g.b.w;
 import d.v;
 import java.util.ArrayList;
@@ -45,140 +39,140 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFriendBlackListUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "clickTabContextId", "", "getClickTabContextId", "()Ljava/lang/String;", "clickTabContextId$delegate", "Lkotlin/Lazy;", "contactList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "contactListPref", "Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference;", "getContactListPref", "()Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference;", "setContactListPref", "(Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference;)V", "contextId", "getContextId", "contextId$delegate", "feedId", "", "getFeedId", "()J", "feedId$delegate", "fromCommentScene", "", "getFromCommentScene", "()I", "fromCommentScene$delegate", "lastAddList", "lastDelList", "listener", "Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference$OnContactItemClickListener;", "getListener", "()Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference$OnContactItemClickListener;", "setListener", "(Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference$OnContactItemClickListener;)V", "md5", "getMd5", "setMd5", "(Ljava/lang/String;)V", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "getScreen", "()Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "setScreen", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;)V", "sessionId", "getSessionId", "sessionId$delegate", "tipDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getTipDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setTipDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "addAndRefresh", "", "addList", "checkBack", "", "checkNetworkAvailable", "checkNetworkAvailableMM", "dealAddMemberBtn", "dealDelChatRoomMember", "userName", "dealOnAddContact", "memBerList", "", "doConfirm", "doConfirmScene", "opList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModContactTypeInfo;", "genMd5", "getResourceId", "initData", "data", "initPreference", "initView", "isContactExit", "onActivityResult", "requestCode", "resultCode", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPreferenceTreeClick", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "publishEvent", "unlike", "refresh", "updateTitle", "count", "Companion", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFriendBlackListUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "clickTabContextId", "", "getClickTabContextId", "()Ljava/lang/String;", "clickTabContextId$delegate", "Lkotlin/Lazy;", "contactList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "contactListPref", "Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference;", "getContactListPref", "()Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference;", "setContactListPref", "(Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference;)V", "contextId", "getContextId", "contextId$delegate", "feedId", "", "getFeedId", "()J", "feedId$delegate", "fromCommentScene", "", "getFromCommentScene", "()I", "fromCommentScene$delegate", "lastAddList", "lastDelList", "listener", "Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference$OnContactItemClickListener;", "getListener", "()Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference$OnContactItemClickListener;", "setListener", "(Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference$OnContactItemClickListener;)V", "md5", "getMd5", "setMd5", "(Ljava/lang/String;)V", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "getScreen", "()Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "setScreen", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;)V", "sessionId", "getSessionId", "sessionId$delegate", "tipDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getTipDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setTipDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "addAndRefresh", "", "addList", "checkBack", "", "checkNetworkAvailable", "checkNetworkAvailableMM", "dealAddMemberBtn", "dealDelChatRoomMember", "userName", "dealOnAddContact", "memBerList", "", "doConfirm", "doConfirmScene", "opList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModContactTypeInfo;", "genMd5", "getResourceId", "initData", "data", "initPreference", "initView", "isContactExit", "onActivityResult", "requestCode", "resultCode", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPreferenceTreeClick", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "publishEvent", "unlike", "refresh", "updateTitle", "count", "Companion", "plugin-finder_release"})
 public final class FinderFriendBlackListUI
   extends MMPreference
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private static final int KRO = 1;
-  public static final a KRP;
   static final String TAG = "Finder.FinderFriendBlackListUI";
-  final ArrayList<String> KRH;
-  final ArrayList<String> KRI;
-  private final d.f KRJ;
-  private final d.f KRK;
-  private final d.f KRL;
-  private final d.f KRM;
-  private final d.f KRN;
-  ContactListExpandPreference fpW;
+  private static final int rpA = 1;
+  public static final FinderFriendBlackListUI.a rpB;
+  ContactListExpandPreference ftA;
   String md5;
-  final ArrayList<String> qHA;
+  final ArrayList<String> rpr;
+  final ArrayList<String> rps;
+  final ArrayList<String> rpt;
+  private final d.f rpu;
+  private final d.f rpv;
+  private final d.f rpw;
+  private final d.f rpx;
+  private final d.f rpy;
+  private ContactListExpandPreference.a rpz;
   com.tencent.mm.ui.base.preference.f screen;
   p tipDialog;
-  private ContactListExpandPreference.a xFd;
   
   static
   {
-    AppMethodBeat.i(198435);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new d.g.b.u(w.bk(FinderFriendBlackListUI.class), "sessionId", "getSessionId()Ljava/lang/String;")), (d.l.k)w.a(new d.g.b.u(w.bk(FinderFriendBlackListUI.class), "contextId", "getContextId()Ljava/lang/String;")), (d.l.k)w.a(new d.g.b.u(w.bk(FinderFriendBlackListUI.class), "clickTabContextId", "getClickTabContextId()Ljava/lang/String;")), (d.l.k)w.a(new d.g.b.u(w.bk(FinderFriendBlackListUI.class), "fromCommentScene", "getFromCommentScene()I")), (d.l.k)w.a(new d.g.b.u(w.bk(FinderFriendBlackListUI.class), "feedId", "getFeedId()J")) };
-    KRP = new a((byte)0);
+    AppMethodBeat.i(202348);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new d.g.b.u(w.bn(FinderFriendBlackListUI.class), "sessionId", "getSessionId()Ljava/lang/String;")), (d.l.k)w.a(new d.g.b.u(w.bn(FinderFriendBlackListUI.class), "contextId", "getContextId()Ljava/lang/String;")), (d.l.k)w.a(new d.g.b.u(w.bn(FinderFriendBlackListUI.class), "clickTabContextId", "getClickTabContextId()Ljava/lang/String;")), (d.l.k)w.a(new d.g.b.u(w.bn(FinderFriendBlackListUI.class), "fromCommentScene", "getFromCommentScene()I")), (d.l.k)w.a(new d.g.b.u(w.bn(FinderFriendBlackListUI.class), "feedId", "getFeedId()J")) };
+    rpB = new FinderFriendBlackListUI.a((byte)0);
     TAG = "Finder.FinderFriendBlackListUI";
-    KRO = 1;
-    AppMethodBeat.o(198435);
+    rpA = 1;
+    AppMethodBeat.o(202348);
   }
   
   public FinderFriendBlackListUI()
   {
-    AppMethodBeat.i(198450);
-    this.qHA = new ArrayList();
-    this.KRH = new ArrayList();
-    this.KRI = new ArrayList();
+    AppMethodBeat.i(202363);
+    this.rpr = new ArrayList();
+    this.rps = new ArrayList();
+    this.rpt = new ArrayList();
     this.md5 = "";
-    this.KRJ = d.g.E((d.g.a.a)l.KRS);
-    this.KRK = d.g.E((d.g.a.a)new d(this));
-    this.KRL = d.g.E((d.g.a.a)new c(this));
-    this.KRM = d.g.E((d.g.a.a)new g(this));
-    this.KRN = d.g.E((d.g.a.a)new f(this));
-    this.xFd = ((ContactListExpandPreference.a)new k(this));
-    AppMethodBeat.o(198450);
+    this.rpu = d.g.K((d.g.a.a)l.rpE);
+    this.rpv = d.g.K((d.g.a.a)new d(this));
+    this.rpw = d.g.K((d.g.a.a)new c(this));
+    this.rpx = d.g.K((d.g.a.a)new g(this));
+    this.rpy = d.g.K((d.g.a.a)new f(this));
+    this.rpz = ((ContactListExpandPreference.a)new k(this));
+    AppMethodBeat.o(202363);
   }
   
-  private final String bQT()
+  private final String QA()
   {
-    AppMethodBeat.i(198437);
-    String str = (String)this.KRK.getValue();
-    AppMethodBeat.o(198437);
+    AppMethodBeat.i(202351);
+    String str = (String)this.rpw.getValue();
+    AppMethodBeat.o(202351);
     return str;
   }
   
-  private final String bsB()
+  private final String Sx()
   {
-    AppMethodBeat.i(198438);
-    String str = (String)this.KRL.getValue();
-    AppMethodBeat.o(198438);
+    AppMethodBeat.i(202350);
+    String str = (String)this.rpv.getValue();
+    AppMethodBeat.o(202350);
     return str;
   }
   
-  private final boolean dOw()
+  private final int cvS()
   {
-    AppMethodBeat.i(198447);
-    if (d.g.b.k.g(fTH(), this.md5))
+    AppMethodBeat.i(202352);
+    int i = ((Number)this.rpx.getValue()).intValue();
+    AppMethodBeat.o(202352);
+    return i;
+  }
+  
+  private final boolean cvU()
+  {
+    AppMethodBeat.i(202360);
+    if (d.g.b.k.g(cvT(), this.md5))
     {
       finish();
-      AppMethodBeat.o(198447);
+      AppMethodBeat.o(202360);
       return true;
     }
     if (this.tipDialog != null) {}
-    for (int i = 2131764274;; i = 2131764205)
+    for (int i = 2131765433;; i = 2131765432)
     {
-      com.tencent.mm.ui.base.h.d((Context)this, getString(i), "", getString(2131764440), getString(2131755691), (DialogInterface.OnClickListener)new b(this), null);
-      AppMethodBeat.o(198447);
+      com.tencent.mm.ui.base.h.d((Context)this, getString(i), "", getString(2131765435), getString(2131755691), (DialogInterface.OnClickListener)new b(this), null);
+      AppMethodBeat.o(202360);
       return false;
     }
   }
   
-  private final int fTG()
-  {
-    AppMethodBeat.i(198439);
-    int i = ((Number)this.KRM.getValue()).intValue();
-    AppMethodBeat.o(198439);
-    return i;
-  }
-  
   private final String getSessionId()
   {
-    AppMethodBeat.i(198436);
-    String str = (String)this.KRJ.getValue();
-    AppMethodBeat.o(198436);
+    AppMethodBeat.i(202349);
+    String str = (String)this.rpu.getValue();
+    AppMethodBeat.o(202349);
     return str;
   }
   
-  public final void aW(ArrayList<String> paramArrayList)
+  public final void DM(int paramInt)
   {
-    AppMethodBeat.i(198445);
+    AppMethodBeat.i(202357);
+    setMMTitle(getString(2131766436, new Object[] { Integer.valueOf(paramInt) }));
+    AppMethodBeat.o(202357);
+  }
+  
+  public final void V(ArrayList<String> paramArrayList)
+  {
+    AppMethodBeat.i(202358);
     d.g.b.k.h(paramArrayList, "addList");
-    ContactListExpandPreference localContactListExpandPreference = this.fpW;
+    ContactListExpandPreference localContactListExpandPreference = this.ftA;
     if (localContactListExpandPreference != null) {
-      localContactListExpandPreference.dX((List)paramArrayList);
+      localContactListExpandPreference.eb((List)paramArrayList);
     }
-    localContactListExpandPreference = this.fpW;
+    localContactListExpandPreference = this.ftA;
     if (localContactListExpandPreference != null) {
       localContactListExpandPreference.refresh();
     }
-    ahl(paramArrayList.size());
-    paramArrayList = this.fpW;
+    DM(paramArrayList.size());
+    paramArrayList = this.ftA;
     if (paramArrayList != null)
     {
       paramArrayList.notifyChanged();
-      AppMethodBeat.o(198445);
+      AppMethodBeat.o(202358);
       return;
     }
-    AppMethodBeat.o(198445);
+    AppMethodBeat.o(202358);
   }
   
-  public final void ahl(int paramInt)
+  public final String cvT()
   {
-    AppMethodBeat.i(198444);
-    setMMTitle(getString(2131766423, new Object[] { Integer.valueOf(paramInt) }));
-    AppMethodBeat.o(198444);
-  }
-  
-  public final String fTH()
-  {
-    AppMethodBeat.i(198446);
-    String str = bt.n((List)this.qHA, ",");
+    AppMethodBeat.i(202359);
+    String str = bs.n((List)this.rpr, ",");
     d.g.b.k.g(str, "Util.listToString(contactList, \",\")");
-    AppMethodBeat.o(198446);
+    AppMethodBeat.o(202359);
     return str;
   }
   
@@ -189,94 +183,94 @@ public final class FinderFriendBlackListUI
   
   public final void initView()
   {
-    AppMethodBeat.i(198441);
+    AppMethodBeat.i(202354);
     setBackBtn((MenuItem.OnMenuItemClickListener)new i(this));
     this.screen = getPreferenceScreen();
     Object localObject = this.screen;
     if (localObject == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
-    localObject = ((com.tencent.mm.ui.base.preference.f)localObject).aKk("roominfo_contact_anchor");
+    localObject = ((com.tencent.mm.ui.base.preference.f)localObject).aPN("roominfo_contact_anchor");
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference");
-      AppMethodBeat.o(198441);
+      AppMethodBeat.o(202354);
       throw ((Throwable)localObject);
     }
-    this.fpW = ((ContactListExpandPreference)localObject);
-    if (this.fpW != null)
+    this.ftA = ((ContactListExpandPreference)localObject);
+    if (this.ftA != null)
     {
-      localObject = this.fpW;
+      localObject = this.ftA;
       if (localObject == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
       com.tencent.mm.ui.base.preference.f localf = this.screen;
-      ContactListExpandPreference localContactListExpandPreference = this.fpW;
+      ContactListExpandPreference localContactListExpandPreference = this.ftA;
       if (localContactListExpandPreference == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
       ((ContactListExpandPreference)localObject).a(localf, localContactListExpandPreference.getKey());
-      localObject = this.fpW;
+      localObject = this.ftA;
       if (localObject == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      ((ContactListExpandPreference)localObject).ub(true).uc(true);
-      localObject = this.fpW;
+      ((ContactListExpandPreference)localObject).vc(true).vd(true);
+      localObject = this.ftA;
       if (localObject == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      ((ContactListExpandPreference)localObject).jd((List)this.qHA);
-      localObject = this.fpW;
+      ((ContactListExpandPreference)localObject).gS((List)this.rpr);
+      localObject = this.ftA;
       if (localObject == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      ((ContactListExpandPreference)localObject).a((s.b)new h(this));
-      localObject = this.fpW;
+      ((ContactListExpandPreference)localObject).a((com.tencent.mm.pluginsdk.ui.applet.s.b)new h(this));
+      localObject = this.ftA;
       if (localObject == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      ((ContactListExpandPreference)localObject).a(this.xFd);
+      ((ContactListExpandPreference)localObject).a(this.rpz);
     }
-    addTextOptionMenu(0, getString(2131755779), (MenuItem.OnMenuItemClickListener)new j(this), null, r.b.FOB);
+    addTextOptionMenu(0, getString(2131755779), (MenuItem.OnMenuItemClickListener)new j(this), null, com.tencent.mm.ui.s.b.Hom);
     enableOptionMenu(false);
-    AppMethodBeat.o(198441);
+    AppMethodBeat.o(202354);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(198442);
+    AppMethodBeat.i(202355);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt2 != -1)
     {
-      AppMethodBeat.o(198442);
+      AppMethodBeat.o(202355);
       return;
     }
     Object localObject;
-    if (paramInt1 == KRO)
+    if (paramInt1 == rpA)
     {
       if (paramIntent == null)
       {
-        AppMethodBeat.o(198442);
+        AppMethodBeat.o(202355);
         return;
       }
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      ad.i(TAG, "onActivityResult %s", new Object[] { paramIntent });
+      ac.i(TAG, "onActivityResult %s", new Object[] { paramIntent });
       d.g.b.k.g(paramIntent, "userName");
-      if (d.g.b.k.g(bt.nullAsNil(com.tencent.mm.model.u.aqG()), paramIntent)) {
+      if (d.g.b.k.g(bs.nullAsNil(com.tencent.mm.model.u.axw()), paramIntent)) {
         paramInt2 = 1;
       }
       while (paramInt2 != 0)
       {
-        com.tencent.mm.ui.base.h.R((Context)this, getString(2131763804), "");
-        AppMethodBeat.o(198442);
+        com.tencent.mm.ui.base.h.Q((Context)this, getString(2131765431), "");
+        AppMethodBeat.o(202355);
         return;
-        if (this.qHA == null)
+        if (this.rpr == null)
         {
           paramInt2 = 0;
         }
         else
         {
-          localObject = this.qHA.iterator();
+          localObject = this.rpr.iterator();
           paramInt1 = 0;
           paramInt2 = paramInt1;
           if (((Iterator)localObject).hasNext())
@@ -297,13 +291,13 @@ public final class FinderFriendBlackListUI
       if (paramIntent == null)
       {
         paramIntent = new v("null cannot be cast to non-null type kotlin.Array<T>");
-        AppMethodBeat.o(198442);
+        AppMethodBeat.o(202355);
         throw paramIntent;
       }
-      paramIntent = bt.S((String[])paramIntent);
+      paramIntent = bs.S((String[])paramIntent);
       if (paramIntent == null)
       {
-        AppMethodBeat.o(198442);
+        AppMethodBeat.o(202355);
         return;
       }
       localObject = (List)paramIntent;
@@ -311,132 +305,132 @@ public final class FinderFriendBlackListUI
       if (localObject != null) {}
       for (paramIntent = Integer.valueOf(((List)localObject).size());; paramIntent = Integer.valueOf(-1))
       {
-        ad.i(str1, "dealOnAddContact %s", new Object[] { paramIntent });
+        ac.i(str1, "dealOnAddContact %s", new Object[] { paramIntent });
         paramIntent = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
         d.g.b.k.g(paramIntent, "MMKernel.service(IMessengerStorage::class.java)");
-        paramIntent = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramIntent).apM();
-        str1 = com.tencent.mm.model.u.aqG();
+        paramIntent = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramIntent).awB();
+        str1 = com.tencent.mm.model.u.axw();
         if (localObject == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str2 = (String)((Iterator)localObject).next();
-          if ((!this.qHA.contains(str2)) && ((d.g.b.k.g(str1, str2) ^ true)))
+          if ((!this.rpr.contains(str2)) && ((d.g.b.k.g(str1, str2) ^ true)))
           {
-            af localaf = paramIntent.aHY(str2);
-            d.g.b.k.g(localaf, "cstg[user]");
-            if (localaf.ZJ())
+            com.tencent.mm.storage.ai localai = paramIntent.aNt(str2);
+            d.g.b.k.g(localai, "cstg[user]");
+            if (localai.aaE())
             {
-              this.qHA.add(str2);
-              this.KRH.add(str2);
+              this.rpr.add(str2);
+              this.rps.add(str2);
             }
           }
         }
       }
-      if (this.qHA.size() > 0)
+      if (this.rpr.size() > 0)
       {
-        paramIntent = this.fpW;
+        paramIntent = this.ftA;
         if (paramIntent == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
-        paramIntent.ub(true).uc(true);
+        paramIntent.vc(true).vd(true);
       }
       for (;;)
       {
-        ahl(this.qHA.size());
-        aW(this.qHA);
-        if (!d.g.b.k.g(fTH(), this.md5)) {
+        DM(this.rpr.size());
+        V(this.rpr);
+        if (!d.g.b.k.g(cvT(), this.md5)) {
           break;
         }
         enableOptionMenu(false);
-        AppMethodBeat.o(198442);
+        AppMethodBeat.o(202355);
         return;
-        paramIntent = this.fpW;
+        paramIntent = this.ftA;
         if (paramIntent == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
-        paramIntent.ub(true).uc(false);
+        paramIntent.vc(true).vd(false);
       }
-      AppMethodBeat.o(198442);
+      AppMethodBeat.o(202355);
       return;
       enableOptionMenu(true);
-      AppMethodBeat.o(198442);
+      AppMethodBeat.o(202355);
       return;
     }
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(198443);
-    dOw();
-    AppMethodBeat.o(198443);
+    AppMethodBeat.i(202356);
+    cvU();
+    AppMethodBeat.o(202356);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(198440);
+    AppMethodBeat.i(202353);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.aeS().a(3528, (com.tencent.mm.al.g)this);
-    com.tencent.mm.kernel.g.aeS().a(3990, (com.tencent.mm.al.g)this);
-    paramBundle = com.tencent.mm.plugin.finder.storage.data.h.KXp;
-    h.a.fVe().onAlive();
+    com.tencent.mm.kernel.g.agi().a(3528, (com.tencent.mm.ak.g)this);
+    com.tencent.mm.kernel.g.agi().a(3990, (com.tencent.mm.ak.g)this);
+    paramBundle = com.tencent.mm.plugin.finder.storage.data.c.rEC;
+    c.a.cBc().onAlive();
     initView();
-    paramBundle = com.tencent.mm.plugin.finder.storage.data.h.KXp;
-    paramBundle = h.a.fVe().fVd();
+    paramBundle = com.tencent.mm.plugin.finder.storage.data.c.rEC;
+    paramBundle = c.a.cBc().cBb();
     d.g.b.k.h(paramBundle, "data");
     if (!paramBundle.isEmpty())
     {
-      this.qHA.clear();
-      this.qHA.addAll((Collection)paramBundle);
-      this.md5 = fTH();
-      aW(this.qHA);
+      this.rpr.clear();
+      this.rpr.addAll((Collection)paramBundle);
+      this.md5 = cvT();
+      V(this.rpr);
     }
-    ad.i(TAG, "onCreate sessionId:" + getSessionId() + " contextId:" + bQT() + " clickTabContextId:" + bsB() + " fromCommentScene:" + fTG());
-    AppMethodBeat.o(198440);
+    ac.i(TAG, "onCreate sessionId:" + getSessionId() + " contextId:" + Sx() + " clickTabContextId:" + QA() + " fromCommentScene:" + cvS());
+    AppMethodBeat.o(202353);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(198449);
-    Object localObject1 = bt.n((List)this.KRH, ";");
-    String str = bt.n((List)this.KRI, ";");
-    dzp localdzp = new dzp();
-    localdzp.sessionId = getSessionId();
-    localdzp.qwV = bQT();
-    localdzp.KHW = bsB();
-    localdzp.qqE = fTG();
-    Object localObject2 = com.tencent.mm.plugin.finder.report.b.qFq;
-    long l = ((Number)this.KRN.getValue()).longValue();
+    AppMethodBeat.i(202362);
+    Object localObject1 = bs.n((List)this.rps, ";");
+    String str = bs.n((List)this.rpt, ";");
+    anm localanm = new anm();
+    localanm.sessionId = getSessionId();
+    localanm.qox = Sx();
+    localanm.qom = QA();
+    localanm.rfR = cvS();
+    Object localObject2 = com.tencent.mm.plugin.finder.report.d.rxr;
+    long l = ((Number)this.rpy.getValue()).longValue();
     d.g.b.k.g(localObject1, "addUsernames");
     d.g.b.k.g(str, "delUsernames");
-    d.g.b.k.h(localdzp, "contextObj");
+    d.g.b.k.h(localanm, "contextObj");
     d.g.b.k.h(localObject1, "addUsernames");
     d.g.b.k.h(str, "delUsernames");
-    localObject2 = new hw();
-    ((hw)localObject2).aSv(localdzp.sessionId);
-    ((hw)localObject2).aSw(localdzp.qwV);
-    ((hw)localObject2).aSx(localdzp.KHW);
-    ((hw)localObject2).zk(localdzp.qqE);
-    ((hw)localObject2).aSA(c.ly(l));
-    ((hw)localObject2).aSy((String)localObject1);
-    ((hw)localObject2).aSz(str);
-    ((hw)localObject2).aBj();
-    com.tencent.mm.plugin.finder.report.b.a((com.tencent.mm.plugin.report.a)localObject2);
-    com.tencent.mm.kernel.g.aeS().b(3528, (com.tencent.mm.al.g)this);
-    com.tencent.mm.kernel.g.aeS().b(3990, (com.tencent.mm.al.g)this);
-    localObject1 = com.tencent.mm.plugin.finder.storage.data.h.KXp;
-    h.a.fVe().onDetach();
-    if ((this.fpW != null) && (this.fpW == null)) {
-      d.g.b.k.fvU();
+    localObject2 = new bb();
+    ((bb)localObject2).iK(localanm.sessionId);
+    ((bb)localObject2).iL(localanm.qox);
+    ((bb)localObject2).iM(localanm.qom);
+    ((bb)localObject2).eV(localanm.rfR);
+    ((bb)localObject2).iP(com.tencent.mm.ac.c.pb(l));
+    ((bb)localObject2).iN((String)localObject1);
+    ((bb)localObject2).iO(str);
+    ((bb)localObject2).aHZ();
+    com.tencent.mm.plugin.finder.report.d.a((com.tencent.mm.plugin.report.a)localObject2);
+    com.tencent.mm.kernel.g.agi().b(3528, (com.tencent.mm.ak.g)this);
+    com.tencent.mm.kernel.g.agi().b(3990, (com.tencent.mm.ak.g)this);
+    localObject1 = com.tencent.mm.plugin.finder.storage.data.c.rEC;
+    c.a.cBc().onDetach();
+    if ((this.ftA != null) && (this.ftA == null)) {
+      d.g.b.k.fOy();
     }
     localObject1 = this.tipDialog;
     if (localObject1 != null) {
       ((p)localObject1).dismiss();
     }
     super.onDestroy();
-    AppMethodBeat.o(198449);
+    AppMethodBeat.o(202362);
   }
   
   public final boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
@@ -444,12 +438,12 @@ public final class FinderFriendBlackListUI
     return false;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
-    AppMethodBeat.i(198448);
-    if ((paramn instanceof ao))
+    AppMethodBeat.i(202361);
+    if ((paramn instanceof com.tencent.mm.plugin.finder.cgi.t))
     {
-      ad.i(TAG, "NetSceneBatchSetBlackList errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+      ac.i(TAG, "NetSceneBatchSetBlackList errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         paramString = this.tipDialog;
@@ -458,11 +452,11 @@ public final class FinderFriendBlackListUI
         }
         finish();
         d.g.b.k.h("", "userName");
-        paramString = new hf();
-        paramString.aaE.Imu = "";
-        paramString.aaE.aBh = 0;
-        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)paramString);
-        AppMethodBeat.o(198448);
+        paramString = new gy();
+        paramString.dhT.dhV = "";
+        paramString.dhT.dhU = 0;
+        com.tencent.mm.sdk.b.a.GpY.l((b)paramString);
+        AppMethodBeat.o(202361);
         return;
       }
       if (paramInt2 == -3500)
@@ -471,17 +465,17 @@ public final class FinderFriendBlackListUI
         if (paramString != null) {
           paramString.dismiss();
         }
-        t.makeText((Context)this, 2131763388, 0).show();
-        AppMethodBeat.o(198448);
+        com.tencent.mm.ui.base.t.makeText((Context)this, 2131764969, 0).show();
+        AppMethodBeat.o(202361);
         return;
       }
       paramString = this.tipDialog;
       if (paramString != null) {
         paramString.dismiss();
       }
-      t.makeText((Context)this, 2131766426, 0).show();
+      com.tencent.mm.ui.base.t.makeText((Context)this, 2131766439, 0).show();
     }
-    AppMethodBeat.o(198448);
+    AppMethodBeat.o(202361);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -490,10 +484,7 @@ public final class FinderFriendBlackListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFriendBlackListUI$Companion;", "", "()V", "REQUEST_CODE_SELECT_CONTACT", "", "getREQUEST_CODE_SELECT_CONTACT", "()I", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
   static final class b
     implements DialogInterface.OnClickListener
   {
@@ -501,13 +492,13 @@ public final class FinderFriendBlackListUI
     
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
-      AppMethodBeat.i(198419);
-      this.KRQ.finish();
-      AppMethodBeat.o(198419);
+      AppMethodBeat.i(202332);
+      this.rpC.finish();
+      AppMethodBeat.o(202332);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.l
     implements d.g.a.a<String>
@@ -518,7 +509,7 @@ public final class FinderFriendBlackListUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class d
     extends d.g.b.l
     implements d.g.a.a<String>
@@ -529,23 +520,7 @@ public final class FinderFriendBlackListUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
-  static final class e
-    implements DialogInterface.OnCancelListener
-  {
-    public static final e KRR;
-    
-    static
-    {
-      AppMethodBeat.i(198422);
-      KRR = new e();
-      AppMethodBeat.o(198422);
-    }
-    
-    public final void onCancel(DialogInterface paramDialogInterface) {}
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class f
     extends d.g.b.l
     implements d.g.a.a<Long>
@@ -556,7 +531,7 @@ public final class FinderFriendBlackListUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class g
     extends d.g.b.l
     implements d.g.a.a<Integer>
@@ -567,28 +542,28 @@ public final class FinderFriendBlackListUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "parent", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "onItemLongClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "parent", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "onItemLongClick"})
   static final class h
-    implements s.b
+    implements com.tencent.mm.pluginsdk.ui.applet.s.b
   {
     h(FinderFriendBlackListUI paramFinderFriendBlackListUI) {}
     
-    public final boolean kL(int paramInt)
+    public final boolean kF(int paramInt)
     {
-      AppMethodBeat.i(198425);
-      ContactListExpandPreference localContactListExpandPreference = this.KRQ.fpW;
+      AppMethodBeat.i(202338);
+      ContactListExpandPreference localContactListExpandPreference = this.rpC.ftA;
       if (localContactListExpandPreference == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      if (!localContactListExpandPreference.UP(paramInt)) {
-        ad.d(FinderFriendBlackListUI.access$getTAG$cp(), "onItemLongClick ".concat(String.valueOf(paramInt)));
+      if (!localContactListExpandPreference.WY(paramInt)) {
+        ac.d(FinderFriendBlackListUI.access$getTAG$cp(), "onItemLongClick ".concat(String.valueOf(paramInt)));
       }
-      AppMethodBeat.o(198425);
+      AppMethodBeat.o(202338);
       return true;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class i
     implements MenuItem.OnMenuItemClickListener
   {
@@ -596,14 +571,14 @@ public final class FinderFriendBlackListUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(198426);
-      FinderFriendBlackListUI.a(this.KRQ);
-      AppMethodBeat.o(198426);
+      AppMethodBeat.i(202339);
+      FinderFriendBlackListUI.a(this.rpC);
+      AppMethodBeat.o(202339);
       return true;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class j
     implements MenuItem.OnMenuItemClickListener
   {
@@ -611,32 +586,32 @@ public final class FinderFriendBlackListUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(198427);
-      paramMenuItem = this.KRQ;
-      Object localObject1 = com.tencent.mm.kernel.g.afy().aeZ();
+      AppMethodBeat.i(202340);
+      paramMenuItem = this.rpC;
+      Object localObject1 = com.tencent.mm.kernel.g.agO().agp();
       d.g.b.k.g(localObject1, "MMKernel.process().current()");
       int i;
-      if (((com.tencent.mm.kernel.b.h)localObject1).agu())
+      if (((com.tencent.mm.kernel.b.h)localObject1).ahL())
       {
-        localObject1 = com.tencent.mm.kernel.g.aeS();
+        localObject1 = com.tencent.mm.kernel.g.agi();
         d.g.b.k.g(localObject1, "MMKernel.getNetSceneQueue()");
-        i = ((q)localObject1).auR();
+        i = ((q)localObject1).aBK();
         if ((i == 4) || (i == 6))
         {
           i = 1;
           if (i != 0) {
             break label123;
           }
-          t.makeText((Context)paramMenuItem, 2131763448, 0).show();
+          com.tencent.mm.ui.base.t.makeText((Context)paramMenuItem, 2131765430, 0).show();
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(198427);
+        AppMethodBeat.o(202340);
         return true;
         i = 0;
         break;
-        if (ay.isConnected(aj.getContext())) {}
+        if (ax.isConnected(com.tencent.mm.sdk.platformtools.ai.getContext())) {}
         for (i = 6;; i = 0)
         {
           if (i != 6) {
@@ -649,7 +624,7 @@ public final class FinderFriendBlackListUI
         i = 0;
         break;
         label123:
-        if (d.g.b.k.g(paramMenuItem.fTH(), paramMenuItem.md5))
+        if (d.g.b.k.g(paramMenuItem.cvT(), paramMenuItem.md5))
         {
           paramMenuItem.finish();
         }
@@ -657,193 +632,193 @@ public final class FinderFriendBlackListUI
         {
           localObject1 = (Context)paramMenuItem;
           paramMenuItem.getString(2131755906);
-          paramMenuItem.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject1, paramMenuItem.getString(2131764319), true, (DialogInterface.OnCancelListener)FinderFriendBlackListUI.e.KRR);
+          paramMenuItem.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject1, paramMenuItem.getString(2131765434), true, (DialogInterface.OnCancelListener)FinderFriendBlackListUI.e.rpD);
           localObject1 = new LinkedList();
-          Object localObject2 = ((Iterable)paramMenuItem.KRH).iterator();
+          Object localObject2 = ((Iterable)paramMenuItem.rps).iterator();
           Object localObject3;
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (String)((Iterator)localObject2).next();
-            ad.d(FinderFriendBlackListUI.TAG, "added user:".concat(String.valueOf(localObject3)));
-            bqk localbqk = new bqk();
-            localbqk.mAQ = ((String)localObject3);
-            localbqk.DOH = com.tencent.mm.plugin.i.a.l.Lmh;
-            localbqk.DOI = 1;
-            ((LinkedList)localObject1).add(localbqk);
+            ac.d(FinderFriendBlackListUI.TAG, "added user:".concat(String.valueOf(localObject3)));
+            bvb localbvb = new bvb();
+            localbvb.ncR = ((String)localObject3);
+            localbvb.FkY = com.tencent.mm.plugin.i.a.d.sjj;
+            localbvb.FkZ = 1;
+            ((LinkedList)localObject1).add(localbvb);
           }
-          paramMenuItem = ((Iterable)paramMenuItem.KRI).iterator();
+          paramMenuItem = ((Iterable)paramMenuItem.rpt).iterator();
           while (paramMenuItem.hasNext())
           {
             localObject2 = (String)paramMenuItem.next();
-            ad.d(FinderFriendBlackListUI.TAG, "deleted user:".concat(String.valueOf(localObject2)));
-            localObject3 = new bqk();
-            ((bqk)localObject3).mAQ = ((String)localObject2);
-            ((bqk)localObject3).DOH = com.tencent.mm.plugin.i.a.l.Lmh;
-            ((bqk)localObject3).DOI = 2;
+            ac.d(FinderFriendBlackListUI.TAG, "deleted user:".concat(String.valueOf(localObject2)));
+            localObject3 = new bvb();
+            ((bvb)localObject3).ncR = ((String)localObject2);
+            ((bvb)localObject3).FkY = com.tencent.mm.plugin.i.a.d.sjj;
+            ((bvb)localObject3).FkZ = 2;
             ((LinkedList)localObject1).add(localObject3);
           }
           d.g.b.k.h(localObject1, "opList");
-          paramMenuItem = new ao((LinkedList)localObject1);
-          com.tencent.mm.kernel.g.aeS().b((com.tencent.mm.al.n)paramMenuItem);
+          paramMenuItem = new com.tencent.mm.plugin.finder.cgi.t((LinkedList)localObject1);
+          com.tencent.mm.kernel.g.agi().b((com.tencent.mm.ak.n)paramMenuItem);
         }
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/feed/ui/FinderFriendBlackListUI$listener$1", "Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference$OnContactItemClickListener;", "onItemAddClick", "", "parent", "Landroid/view/ViewGroup;", "view", "Landroid/view/View;", "position", "", "onItemCancelClick", "onItemDelClick", "onItemMoreClick", "onItemNormalClick", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/feed/ui/FinderFriendBlackListUI$listener$1", "Lcom/tencent/mm/pluginsdk/ui/applet/ContactListExpandPreference$OnContactItemClickListener;", "onItemAddClick", "", "parent", "Landroid/view/ViewGroup;", "view", "Landroid/view/View;", "position", "", "onItemCancelClick", "onItemDelClick", "onItemMoreClick", "onItemNormalClick", "plugin-finder_release"})
   public static final class k
     implements ContactListExpandPreference.a
   {
-    public final void b(ViewGroup paramViewGroup, View paramView, int paramInt)
+    public final void a(ViewGroup paramViewGroup, View paramView, int paramInt)
     {
-      AppMethodBeat.i(198429);
+      AppMethodBeat.i(202342);
       d.g.b.k.h(paramViewGroup, "parent");
       d.g.b.k.h(paramView, "view");
-      paramViewGroup = this.KRQ.fpW;
+      paramViewGroup = this.rpC.ftA;
       if (paramViewGroup == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      paramView = paramViewGroup.US(paramInt);
-      ad.i(FinderFriendBlackListUI.access$getTAG$cp(), "roomPref del " + paramInt + " userName : " + paramView);
-      paramViewGroup = com.tencent.mm.kernel.g.afB();
+      paramView = paramViewGroup.Xb(paramInt);
+      ac.i(FinderFriendBlackListUI.access$getTAG$cp(), "roomPref del " + paramInt + " userName : " + paramView);
+      paramViewGroup = com.tencent.mm.kernel.g.agR();
       d.g.b.k.g(paramViewGroup, "MMKernel.storage()");
-      paramViewGroup = paramViewGroup.afk().get(2);
+      paramViewGroup = paramViewGroup.agA().get(2);
       if (paramViewGroup == null)
       {
         paramViewGroup = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(198429);
+        AppMethodBeat.o(202342);
         throw paramViewGroup;
       }
-      if (d.g.b.k.g(bt.by((String)paramViewGroup, ""), paramView))
+      if (d.g.b.k.g(bs.bG((String)paramViewGroup, ""), paramView))
       {
-        com.tencent.mm.ui.base.h.R((Context)this.KRQ.getContext(), this.KRQ.getString(2131762613), "");
-        AppMethodBeat.o(198429);
+        com.tencent.mm.ui.base.h.Q((Context)this.rpC.getContext(), this.rpC.getString(2131762613), "");
+        AppMethodBeat.o(202342);
         return;
       }
-      paramViewGroup = this.KRQ;
-      ad.i(FinderFriendBlackListUI.TAG, "dealDelChatRoomMember");
+      paramViewGroup = this.rpC;
+      ac.i(FinderFriendBlackListUI.TAG, "dealDelChatRoomMember");
       if ((paramView == null) || (d.g.b.k.g(paramView, "")))
       {
-        if (d.g.b.k.g(this.KRQ.fTH(), this.KRQ.md5))
+        if (d.g.b.k.g(this.rpC.cvT(), this.rpC.md5))
         {
-          this.KRQ.enableOptionMenu(false);
-          AppMethodBeat.o(198429);
+          this.rpC.enableOptionMenu(false);
+          AppMethodBeat.o(202342);
         }
       }
       else
       {
-        if (paramViewGroup.KRH.contains(paramView))
+        if (paramViewGroup.rps.contains(paramView))
         {
-          paramViewGroup.KRH.remove(paramView);
+          paramViewGroup.rps.remove(paramView);
           label236:
-          paramViewGroup.qHA.remove(paramView);
-          if ((paramViewGroup.qHA.size() != 0) || (paramViewGroup.fpW == null)) {
+          paramViewGroup.rpr.remove(paramView);
+          if ((paramViewGroup.rpr.size() != 0) || (paramViewGroup.ftA == null)) {
             break label363;
           }
-          paramView = paramViewGroup.fpW;
+          paramView = paramViewGroup.ftA;
           if (paramView == null) {
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
-          paramView.eyo();
-          paramView = paramViewGroup.fpW;
+          paramView.eNI();
+          paramView = paramViewGroup.ftA;
           if (paramView == null) {
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
-          paramView.ub(true).uc(false);
+          paramView.vc(true).vd(false);
           paramView = paramViewGroup.screen;
           if (paramView == null) {
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
           paramView.notifyDataSetChanged();
         }
         for (;;)
         {
-          paramViewGroup.ahl(paramViewGroup.qHA.size());
-          paramViewGroup.aW(paramViewGroup.qHA);
+          paramViewGroup.DM(paramViewGroup.rpr.size());
+          paramViewGroup.V(paramViewGroup.rpr);
           break;
-          if (!paramViewGroup.qHA.contains(paramView)) {
+          if (!paramViewGroup.rpr.contains(paramView)) {
             break label236;
           }
-          paramViewGroup.KRI.add(paramView);
+          paramViewGroup.rpt.add(paramView);
           break label236;
           label363:
-          if (paramViewGroup.fpW != null)
+          if (paramViewGroup.ftA != null)
           {
-            paramView = paramViewGroup.fpW;
+            paramView = paramViewGroup.ftA;
             if (paramView == null) {
-              d.g.b.k.fvU();
+              d.g.b.k.fOy();
             }
-            paramView.ub(true).uc(true);
+            paramView.vc(true).vd(true);
           }
         }
       }
-      this.KRQ.enableOptionMenu(true);
-      AppMethodBeat.o(198429);
+      this.rpC.enableOptionMenu(true);
+      AppMethodBeat.o(202342);
+    }
+    
+    public final void b(ViewGroup paramViewGroup, View paramView, int paramInt)
+    {
+      AppMethodBeat.i(202344);
+      d.g.b.k.h(paramViewGroup, "parent");
+      d.g.b.k.h(paramView, "view");
+      paramViewGroup = this.rpC.ftA;
+      if (paramViewGroup == null) {
+        d.g.b.k.fOy();
+      }
+      paramViewGroup = paramViewGroup.Xb(paramInt);
+      paramView = new Intent();
+      paramView.putExtra("Contact_User", paramViewGroup);
+      com.tencent.mm.br.d.b((Context)this.rpC, "profile", ".ui.ContactInfoUI", paramView);
+      AppMethodBeat.o(202344);
     }
     
     public final void c(ViewGroup paramViewGroup, View paramView, int paramInt)
     {
-      AppMethodBeat.i(198431);
+      AppMethodBeat.i(202343);
       d.g.b.k.h(paramViewGroup, "parent");
       d.g.b.k.h(paramView, "view");
-      paramViewGroup = this.KRQ.fpW;
-      if (paramViewGroup == null) {
-        d.g.b.k.fvU();
-      }
-      paramViewGroup = paramViewGroup.US(paramInt);
-      paramView = new Intent();
-      paramView.putExtra("Contact_User", paramViewGroup);
-      com.tencent.mm.bs.d.b((Context)this.KRQ, "profile", ".ui.ContactInfoUI", paramView);
-      AppMethodBeat.o(198431);
+      ac.d(FinderFriendBlackListUI.access$getTAG$cp(), "roomPref add ".concat(String.valueOf(paramInt)));
+      FinderFriendBlackListUI.b(this.rpC);
+      AppMethodBeat.o(202343);
     }
     
     public final void d(ViewGroup paramViewGroup, View paramView)
     {
-      AppMethodBeat.i(198428);
+      AppMethodBeat.i(202341);
       d.g.b.k.h(paramViewGroup, "parent");
       d.g.b.k.h(paramView, "view");
-      AppMethodBeat.o(198428);
-    }
-    
-    public final void d(ViewGroup paramViewGroup, View paramView, int paramInt)
-    {
-      AppMethodBeat.i(198430);
-      d.g.b.k.h(paramViewGroup, "parent");
-      d.g.b.k.h(paramView, "view");
-      ad.d(FinderFriendBlackListUI.access$getTAG$cp(), "roomPref add ".concat(String.valueOf(paramInt)));
-      FinderFriendBlackListUI.b(this.KRQ);
-      AppMethodBeat.o(198430);
+      AppMethodBeat.o(202341);
     }
     
     public final void e(ViewGroup paramViewGroup, View paramView)
     {
-      AppMethodBeat.i(198432);
+      AppMethodBeat.i(202345);
       d.g.b.k.h(paramViewGroup, "parent");
       d.g.b.k.h(paramView, "view");
-      if (this.KRQ.fpW != null)
+      if (this.rpC.ftA != null)
       {
-        paramViewGroup = this.KRQ.fpW;
+        paramViewGroup = this.rpC.ftA;
         if (paramViewGroup == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
-        paramViewGroup.eyo();
+        paramViewGroup.eNI();
       }
-      AppMethodBeat.o(198432);
+      AppMethodBeat.o(202345);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class l
     extends d.g.b.l
     implements d.g.a.a<String>
   {
-    public static final l KRS;
+    public static final l rpE;
     
     static
     {
-      AppMethodBeat.i(198434);
-      KRS = new l();
-      AppMethodBeat.o(198434);
+      AppMethodBeat.i(202347);
+      rpE = new l();
+      AppMethodBeat.o(202347);
     }
     
     l()
@@ -854,7 +829,7 @@ public final class FinderFriendBlackListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderFriendBlackListUI
  * JD-Core Version:    0.7.0.1
  */

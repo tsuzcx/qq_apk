@@ -5,9 +5,9 @@ public final class e
 {
   public e(i parami)
   {
-    this.Kik = 2064;
-    this.Kil = 13;
-    this.Kin = parami;
+    this.LVT = 2064;
+    this.LVU = 13;
+    this.LVW = parami;
   }
 }
 

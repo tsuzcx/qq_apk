@@ -12,23 +12,23 @@ import java.io.InputStream;
 public final class g
   implements d.l.b.a.b.d.b.n
 {
-  private final ClassLoader JvF;
+  private final ClassLoader LiY;
   
   public g(ClassLoader paramClassLoader)
   {
     AppMethodBeat.i(57377);
-    this.JvF = paramClassLoader;
+    this.LiY = paramClassLoader;
     AppMethodBeat.o(57377);
   }
   
-  private final n.a aQk(String paramString)
+  private final n.a aWj(String paramString)
   {
     AppMethodBeat.i(57373);
-    paramString = e.a(this.JvF, paramString);
+    paramString = e.a(this.LiY, paramString);
     if (paramString != null)
     {
-      f.a locala = f.JvI;
-      paramString = f.a.br(paramString);
+      f.a locala = f.Ljb;
+      paramString = f.a.bu(paramString);
       if (paramString == null) {}
     }
     for (paramString = new n.a.b((p)paramString);; paramString = null)
@@ -43,10 +43,10 @@ public final class g
   {
     AppMethodBeat.i(57375);
     k.h(paramg, "javaClass");
-    paramg = paramg.fzd();
+    paramg = paramg.fRH();
     if (paramg != null)
     {
-      paramg = paramg.qV();
+      paramg = paramg.rf();
       if (paramg != null) {}
     }
     else
@@ -54,7 +54,7 @@ public final class g
       AppMethodBeat.o(57375);
       return null;
     }
-    paramg = aQk(paramg);
+    paramg = aWj(paramg);
     AppMethodBeat.o(57375);
     return paramg;
   }
@@ -63,15 +63,15 @@ public final class g
   {
     AppMethodBeat.i(57374);
     k.h(parama, "classId");
-    String str = parama.fGX().qV();
+    String str = parama.fZB().rf();
     k.g(str, "relativeClassName.asString()");
     str = d.n.n.a(str, '.', '$');
-    b localb = parama.fGW();
+    b localb = parama.fZA();
     k.g(localb, "packageFqName");
-    if (localb.JLQ.JLV.isEmpty()) {}
-    for (parama = str;; parama = parama.fGW() + '.' + str)
+    if (localb.Lzj.Lzo.isEmpty()) {}
+    for (parama = str;; parama = parama.fZA() + '.' + str)
     {
-      parama = aQk(parama);
+      parama = aWj(parama);
       AppMethodBeat.o(57374);
       return parama;
     }
@@ -81,16 +81,16 @@ public final class g
   {
     AppMethodBeat.i(57376);
     k.h(paramb, "packageFqName");
-    if (!paramb.q(d.l.b.a.b.a.g.JlA))
+    if (!paramb.q(d.l.b.a.b.a.g.KYU))
     {
       AppMethodBeat.o(57376);
       return null;
     }
-    ClassLoader localClassLoader = this.JvF;
-    Object localObject = d.l.b.a.b.k.a.a.a.JVz;
+    ClassLoader localClassLoader = this.LiY;
+    Object localObject = d.l.b.a.b.k.a.a.a.LIS;
     k.h(paramb, "fqName");
     localObject = new StringBuilder();
-    String str = paramb.qV();
+    String str = paramb.rf();
     k.g(str, "fqName.asString()");
     localObject = ((StringBuilder)localObject).append(d.n.n.a(str, '.', '/')).append("/");
     k.h(paramb, "fqName");
@@ -101,7 +101,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.g
  * JD-Core Version:    0.7.0.1
  */

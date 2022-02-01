@@ -56,7 +56,7 @@ public final class ad
     AppMethodBeat.o(65278);
   }
   
-  public final int bOC()
+  public final int bVS()
   {
     return 2;
   }

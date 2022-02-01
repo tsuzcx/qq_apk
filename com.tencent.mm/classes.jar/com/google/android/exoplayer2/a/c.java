@@ -10,14 +10,14 @@ import java.util.Arrays;
 @TargetApi(21)
 public final class c
 {
-  public static final c aTE;
-  final int[] aTF;
-  private final int aTG;
+  public static final c aUw;
+  private final int maxChannelCount;
+  final int[] supportedEncodings;
   
   static
   {
     AppMethodBeat.i(91761);
-    aTE = new c(new int[] { 2 }, 2);
+    aUw = new c(new int[] { 2 }, 2);
     AppMethodBeat.o(91761);
   }
   
@@ -26,25 +26,25 @@ public final class c
     AppMethodBeat.i(91757);
     if (paramArrayOfInt != null)
     {
-      this.aTF = Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length);
-      Arrays.sort(this.aTF);
+      this.supportedEncodings = Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length);
+      Arrays.sort(this.supportedEncodings);
     }
     for (;;)
     {
-      this.aTG = paramInt;
+      this.maxChannelCount = paramInt;
       AppMethodBeat.o(91757);
       return;
-      this.aTF = new int[0];
+      this.supportedEncodings = new int[0];
     }
   }
   
-  public static c ag(Context paramContext)
+  public static c ah(Context paramContext)
   {
     AppMethodBeat.i(91756);
     paramContext = paramContext.registerReceiver(null, new IntentFilter("android.media.action.HDMI_AUDIO_PLUG"));
     if ((paramContext == null) || (paramContext.getIntExtra("android.media.extra.AUDIO_PLUG_STATE", 0) == 0))
     {
-      paramContext = aTE;
+      paramContext = aUw;
       AppMethodBeat.o(91756);
       return paramContext;
     }
@@ -67,7 +67,7 @@ public final class c
       return false;
     }
     paramObject = (c)paramObject;
-    if ((Arrays.equals(this.aTF, paramObject.aTF)) && (this.aTG == paramObject.aTG))
+    if ((Arrays.equals(this.supportedEncodings, paramObject.supportedEncodings)) && (this.maxChannelCount == paramObject.maxChannelCount))
     {
       AppMethodBeat.o(91758);
       return true;
@@ -79,8 +79,8 @@ public final class c
   public final int hashCode()
   {
     AppMethodBeat.i(91759);
-    int i = this.aTG;
-    int j = Arrays.hashCode(this.aTF);
+    int i = this.maxChannelCount;
+    int j = Arrays.hashCode(this.supportedEncodings);
     AppMethodBeat.o(91759);
     return i + j * 31;
   }
@@ -88,7 +88,7 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(91760);
-    String str = "AudioCapabilities[maxChannelCount=" + this.aTG + ", supportedEncodings=" + Arrays.toString(this.aTF) + "]";
+    String str = "AudioCapabilities[maxChannelCount=" + this.maxChannelCount + ", supportedEncodings=" + Arrays.toString(this.supportedEncodings) + "]";
     AppMethodBeat.o(91760);
     return str;
   }

@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class cg
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Name;
-  public String sdb;
+  public String tkV;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -21,7 +21,7 @@ public final class cg
         AppMethodBeat.o(41808);
         throw paramVarArgs;
       }
-      if (this.sdb == null)
+      if (this.tkV == null)
       {
         paramVarArgs = new b("Not all required fields were included: Color");
         AppMethodBeat.o(41808);
@@ -30,8 +30,8 @@ public final class cg
       if (this.Name != null) {
         paramVarArgs.d(1, this.Name);
       }
-      if (this.sdb != null) {
-        paramVarArgs.d(2, this.sdb);
+      if (this.tkV != null) {
+        paramVarArgs.d(2, this.tkV);
       }
       AppMethodBeat.o(41808);
       return 0;
@@ -45,17 +45,17 @@ public final class cg
     for (paramInt = f.a.a.b.b.a.e(1, this.Name) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.sdb != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.sdb);
+      if (this.tkV != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.tkV);
       }
       AppMethodBeat.o(41808);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.Name == null)
@@ -64,7 +64,7 @@ public final class cg
           AppMethodBeat.o(41808);
           throw paramVarArgs;
         }
-        if (this.sdb == null)
+        if (this.tkV == null)
         {
           paramVarArgs = new b("Not all required fields were included: Color");
           AppMethodBeat.o(41808);
@@ -83,11 +83,11 @@ public final class cg
           AppMethodBeat.o(41808);
           return -1;
         case 1: 
-          localcg.Name = locala.KhF.readString();
+          localcg.Name = locala.LVo.readString();
           AppMethodBeat.o(41808);
           return 0;
         }
-        localcg.sdb = locala.KhF.readString();
+        localcg.tkV = locala.LVo.readString();
         AppMethodBeat.o(41808);
         return 0;
       }
@@ -98,7 +98,7 @@ public final class cg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.cg
  * JD-Core Version:    0.7.0.1
  */

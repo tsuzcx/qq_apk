@@ -5,16 +5,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class k
 {
-  static final k[] bLs;
-  private static k[] bLt;
-  private final int bLA;
-  final int bLB;
-  private final boolean bLu;
-  final int bLv;
-  final int bLw;
-  public final int bLx;
-  public final int bLy;
-  private final int bLz;
+  static final k[] bJa;
+  private static k[] bJb;
+  private final boolean bJc;
+  final int bJd;
+  final int bJe;
+  public final int bJf;
+  public final int bJg;
+  private final int bJh;
+  private final int bJi;
+  final int bJj;
   
   static
   {
@@ -50,8 +50,8 @@ public class k
     arrayOfk[27] = new k(false, 1050, 408, 18, 18, 36, 175, 68);
     arrayOfk[28] = new k(false, 1304, 496, 20, 20, 36, 163, 62);
     arrayOfk[29] = new d();
-    bLs = arrayOfk;
-    bLt = arrayOfk;
+    bJa = arrayOfk;
+    bJb = arrayOfk;
     AppMethodBeat.o(12377);
   }
   
@@ -62,26 +62,26 @@ public class k
   
   k(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    this.bLu = paramBoolean;
-    this.bLv = paramInt1;
-    this.bLw = paramInt2;
-    this.bLx = paramInt3;
-    this.bLy = paramInt4;
-    this.bLz = paramInt5;
-    this.bLA = paramInt6;
-    this.bLB = paramInt7;
+    this.bJc = paramBoolean;
+    this.bJd = paramInt1;
+    this.bJe = paramInt2;
+    this.bJf = paramInt3;
+    this.bJg = paramInt4;
+    this.bJh = paramInt5;
+    this.bJi = paramInt6;
+    this.bJj = paramInt7;
   }
   
   public static k a(int paramInt, l paraml, b paramb1, b paramb2)
   {
     AppMethodBeat.i(12369);
-    k[] arrayOfk = bLt;
+    k[] arrayOfk = bJb;
     int j = arrayOfk.length;
     int i = 0;
     while (i < j)
     {
       k localk = arrayOfk[i];
-      if (((paraml != l.bLD) || (!localk.bLu)) && ((paraml != l.bLE) || (localk.bLu)) && ((paramb1 == null) || ((localk.yv() >= paramb1.width) && (localk.yw() >= paramb1.height))) && ((paramb2 == null) || ((localk.yv() <= paramb2.width) && (localk.yw() <= paramb2.height))) && (paramInt <= localk.bLv))
+      if (((paraml != l.bJl) || (!localk.bJc)) && ((paraml != l.bJm) || (localk.bJc)) && ((paramb1 == null) || ((localk.yi() >= paramb1.width) && (localk.yj() >= paramb1.height))) && ((paramb2 == null) || ((localk.yi() <= paramb2.width) && (localk.yj() <= paramb2.height))) && (paramInt <= localk.bJd))
       {
         AppMethodBeat.o(12369);
         return localk;
@@ -93,10 +93,10 @@ public class k
     throw paraml;
   }
   
-  private int yr()
+  private int ye()
   {
     AppMethodBeat.i(12370);
-    switch (this.bLz)
+    switch (this.bJh)
     {
     default: 
       IllegalStateException localIllegalStateException = new IllegalStateException("Cannot handle this number of data regions");
@@ -117,10 +117,10 @@ public class k
     return 6;
   }
   
-  private int ys()
+  private int yf()
   {
     AppMethodBeat.i(12371);
-    switch (this.bLz)
+    switch (this.bJh)
     {
     default: 
       IllegalStateException localIllegalStateException = new IllegalStateException("Cannot handle this number of data regions");
@@ -141,68 +141,68 @@ public class k
     return 6;
   }
   
-  public int gh(int paramInt)
+  public int fT(int paramInt)
   {
-    return this.bLA;
+    return this.bJi;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(12376);
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.bLu) {}
+    if (this.bJc) {}
     for (String str = "Rectangular Symbol:";; str = "Square Symbol:")
     {
-      str = str + " data region " + this.bLx + 'x' + this.bLy + ", symbol size " + yv() + 'x' + yw() + ", symbol data size " + yt() + 'x' + yu() + ", codewords " + this.bLv + '+' + this.bLw;
+      str = str + " data region " + this.bJf + 'x' + this.bJg + ", symbol size " + yi() + 'x' + yj() + ", symbol data size " + yg() + 'x' + yh() + ", codewords " + this.bJd + '+' + this.bJe;
       AppMethodBeat.o(12376);
       return str;
     }
   }
   
-  public int yk()
+  public int xX()
   {
-    return this.bLv / this.bLA;
+    return this.bJd / this.bJi;
   }
   
-  public final int yt()
+  public final int yg()
   {
     AppMethodBeat.i(12372);
-    int i = yr();
-    int j = this.bLx;
+    int i = ye();
+    int j = this.bJf;
     AppMethodBeat.o(12372);
     return i * j;
   }
   
-  public final int yu()
+  public final int yh()
   {
     AppMethodBeat.i(12373);
-    int i = ys();
-    int j = this.bLy;
+    int i = yf();
+    int j = this.bJg;
     AppMethodBeat.o(12373);
     return i * j;
   }
   
-  public final int yv()
+  public final int yi()
   {
     AppMethodBeat.i(12374);
-    int i = yt();
-    int j = yr();
+    int i = yg();
+    int j = ye();
     AppMethodBeat.o(12374);
     return i + (j << 1);
   }
   
-  public final int yw()
+  public final int yj()
   {
     AppMethodBeat.i(12375);
-    int i = yu();
-    int j = ys();
+    int i = yh();
+    int j = yf();
     AppMethodBeat.o(12375);
     return i + (j << 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.c.a.k
  * JD-Core Version:    0.7.0.1
  */

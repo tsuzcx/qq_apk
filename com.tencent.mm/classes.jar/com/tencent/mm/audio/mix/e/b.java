@@ -16,16 +16,16 @@ public final class b
       if (k < paramInt1)
       {
         if (k == 0) {}
-        for (i = this.cVN[k][j];; i = (int)((i + this.cVN[k][j]) / Math.sqrt(2.0D)))
+        for (i = this.cTj[k][j];; i = (int)((i + this.cTj[k][j]) / Math.sqrt(2.0D)))
         {
           k += 1;
           break;
         }
       }
-      this.cVQ[j] = hS(i);
+      this.cTm[j] = hC(i);
       j += 1;
     }
-    byte[] arrayOfByte = cg(paramInt3, paramInt2);
+    byte[] arrayOfByte = ce(paramInt3, paramInt2);
     AppMethodBeat.o(136835);
     return arrayOfByte;
   }

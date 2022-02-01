@@ -12,7 +12,7 @@ public class Appbrand4IPCService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.service.Appbrand4IPCService
  * JD-Core Version:    0.7.0.1
  */

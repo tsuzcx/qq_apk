@@ -8,7 +8,7 @@ import rx.j;
 public abstract class h
 {
   @Deprecated
-  public static <T> Throwable O(Throwable paramThrowable)
+  public static <T> Throwable P(Throwable paramThrowable)
   {
     return paramThrowable;
   }
@@ -39,7 +39,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.d.h
  * JD-Core Version:    0.7.0.1
  */

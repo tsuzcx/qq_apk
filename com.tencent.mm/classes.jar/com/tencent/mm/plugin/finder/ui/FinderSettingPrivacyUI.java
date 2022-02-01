@@ -9,11 +9,11 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.report.b;
-import com.tencent.mm.plugin.i.a.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.plugin.finder.report.d;
+import com.tencent.mm.plugin.i.a.h;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -22,7 +22,7 @@ import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "getResourceId", "", "initNotRecommendBtn", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onNotRecommendClick", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "onResume", "updateView", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "getResourceId", "", "initNotRecommendBtn", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onNotRecommendClick", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "onResume", "updateView", "plugin-finder_release"})
 public final class FinderSettingPrivacyUI
   extends MMPreference
 {
@@ -46,10 +46,10 @@ public final class FinderSettingPrivacyUI
   {
     AppMethodBeat.i(167621);
     if (paramPreference == null) {
-      k.fvU();
+      k.fOy();
     }
     paramf = paramPreference.getKey();
-    ad.i(this.TAG, "click ".concat(String.valueOf(paramf)));
+    ac.i(this.TAG, "click ".concat(String.valueOf(paramf)));
     if (paramf == null) {}
     do
     {
@@ -68,16 +68,16 @@ public final class FinderSettingPrivacyUI
             {
               paramf = new Intent();
               paramf.setClass((Context)this, FinderBlackListUI.class);
-              paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
-              com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              startActivity((Intent)paramf.lS(0));
+              paramf = new com.tencent.mm.hellhoundlib.b.a().ba(paramf);
+              com.tencent.mm.hellhoundlib.a.a.a(this, paramf.aeD(), "com/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              startActivity((Intent)paramf.lR(0));
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSettingPrivacyUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             }
             break;
           }
         }
       } while (!paramf.equals("settings_like_feed_not_recommend"));
-      paramf = getPreferenceScreen().aKk("settings_like_feed_not_recommend");
+      paramf = getPreferenceScreen().aPN("settings_like_feed_not_recommend");
       if (paramf == null)
       {
         paramf = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.CheckBoxPreference");
@@ -87,26 +87,26 @@ public final class FinderSettingPrivacyUI
       paramf = (CheckBoxPreference)paramf;
     } while (paramf == null);
     boolean bool = paramf.isChecked();
-    ad.d(this.TAG, "set if not recommend button send : %s", new Object[] { Boolean.valueOf(bool) });
-    paramf = g.afB();
+    ac.d(this.TAG, "set if not recommend button send : %s", new Object[] { Boolean.valueOf(bool) });
+    paramf = g.agR();
     k.g(paramf, "MMKernel.storage()");
-    int i = paramf.afk().getInt(ae.a.Fwo, 0);
+    int i = paramf.agA().getInt(ah.a.GUq, 0);
     if (bool)
     {
       i |= 0x20;
-      paramf = b.qFq;
-      b.la(2, 1);
+      paramf = d.rxr;
+      d.fy(2, 1);
     }
     for (;;)
     {
-      paramf = g.afB();
+      paramf = g.agR();
       k.g(paramf, "MMKernel.storage()");
-      paramf.afk().set(ae.a.Fwo, Integer.valueOf(i));
-      ((m)g.ab(m.class)).yy(bool);
+      paramf.agA().set(ah.a.GUq, Integer.valueOf(i));
+      ((h)g.ab(h.class)).lr(bool);
       break;
       i &= 0xFFFFFFDF;
-      paramf = b.qFq;
-      b.la(2, 2);
+      paramf = d.rxr;
+      d.fy(2, 2);
     }
   }
   
@@ -114,13 +114,13 @@ public final class FinderSettingPrivacyUI
   {
     AppMethodBeat.i(167620);
     super.onResume();
-    Object localObject = g.afB();
+    Object localObject = g.agR();
     k.g(localObject, "MMKernel.storage()");
-    if ((((e)localObject).afk().getInt(ae.a.Fwo, 0) & 0x20) != 0) {}
+    if ((((e)localObject).agA().getInt(ah.a.GUq, 0) & 0x20) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d(this.TAG, "initNotRecommendBtn:".concat(String.valueOf(bool)));
-      localObject = getPreferenceScreen().aKk("settings_like_feed_not_recommend");
+      ac.d(this.TAG, "initNotRecommendBtn:".concat(String.valueOf(bool)));
+      localObject = getPreferenceScreen().aPN("settings_like_feed_not_recommend");
       if (localObject != null) {
         break;
       }
@@ -130,7 +130,7 @@ public final class FinderSettingPrivacyUI
     }
     localObject = (CheckBoxPreference)localObject;
     ((CheckBoxPreference)localObject).setChecked(bool);
-    ((CheckBoxPreference)localObject).gah();
+    ((CheckBoxPreference)localObject).fjt();
     getPreferenceScreen().notifyDataSetChanged();
     AppMethodBeat.o(167620);
   }
@@ -141,7 +141,7 @@ public final class FinderSettingPrivacyUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -150,7 +150,7 @@ public final class FinderSettingPrivacyUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167618);
-      this.qPP.finish();
+      this.rLE.finish();
       AppMethodBeat.o(167618);
       return true;
     }
@@ -158,7 +158,7 @@ public final class FinderSettingPrivacyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderSettingPrivacyUI
  * JD-Core Version:    0.7.0.1
  */

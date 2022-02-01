@@ -8,16 +8,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 
 public class MMDatePickerView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private Button Hzs;
-  private Button Hzt;
-  private Button Hzu;
-  private MMSpinnerDatePicker nZw;
+  private Button IZP;
+  private Button IZQ;
+  private Button IZR;
+  private MMSpinnerDatePicker oCR;
   
   public MMDatePickerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,14 +38,14 @@ public class MMDatePickerView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(143349);
-    paramContext = y.js(paramContext).inflate(2131494784, this);
-    this.Hzs = ((Button)paramContext.findViewById(2131307139));
-    this.Hzt = ((Button)paramContext.findViewById(2131302451));
-    this.Hzu = ((Button)paramContext.findViewById(2131298936));
-    this.nZw = ((MMSpinnerDatePicker)paramContext.findViewById(2131302321));
-    this.Hzs.setOnClickListener(this);
-    this.Hzt.setOnClickListener(this);
-    this.Hzu.setOnClickListener(this);
+    paramContext = z.jD(paramContext).inflate(2131494784, this);
+    this.IZP = ((Button)paramContext.findViewById(2131307139));
+    this.IZQ = ((Button)paramContext.findViewById(2131302451));
+    this.IZR = ((Button)paramContext.findViewById(2131298936));
+    this.oCR = ((MMSpinnerDatePicker)paramContext.findViewById(2131302321));
+    this.IZP.setOnClickListener(this);
+    this.IZQ.setOnClickListener(this);
+    this.IZR.setOnClickListener(this);
     AppMethodBeat.o(143349);
   }
   
@@ -55,17 +55,17 @@ public class MMDatePickerView
     int i = paramView.getId();
     if (i == 2131307139)
     {
-      this.nZw.setPickerMode(0);
+      this.oCR.setPickerMode(0);
       AppMethodBeat.o(143350);
       return;
     }
     if (i == 2131302451)
     {
-      this.nZw.setPickerMode(1);
+      this.oCR.setPickerMode(1);
       AppMethodBeat.o(143350);
       return;
     }
-    this.nZw.setPickerMode(2);
+    this.oCR.setPickerMode(2);
     AppMethodBeat.o(143350);
   }
 }

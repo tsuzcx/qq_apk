@@ -9,20 +9,20 @@ import java.util.List;
 final class b
   implements d
 {
-  private final com.google.android.exoplayer2.f.a[] buk;
-  private final long[] bul;
+  private final com.google.android.exoplayer2.f.a[] bsi;
+  private final long[] bsj;
   
   public b(com.google.android.exoplayer2.f.a[] paramArrayOfa, long[] paramArrayOfLong)
   {
-    this.buk = paramArrayOfa;
-    this.bul = paramArrayOfLong;
+    this.bsi = paramArrayOfa;
+    this.bsj = paramArrayOfLong;
   }
   
-  public final int am(long paramLong)
+  public final int ai(long paramLong)
   {
     AppMethodBeat.i(92819);
-    int i = x.a(this.bul, paramLong, false, false);
-    if (i < this.bul.length)
+    int i = x.a(this.bsj, paramLong, false, false);
+    if (i < this.bsj.length)
     {
       AppMethodBeat.o(92819);
       return i;
@@ -31,22 +31,22 @@ final class b
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> an(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> aj(long paramLong)
   {
     AppMethodBeat.i(92821);
-    int i = x.a(this.bul, paramLong, false);
-    if ((i == -1) || (this.buk[i] == null))
+    int i = x.a(this.bsj, paramLong, false);
+    if ((i == -1) || (this.bsi[i] == null))
     {
       localList = Collections.emptyList();
       AppMethodBeat.o(92821);
       return localList;
     }
-    List localList = Collections.singletonList(this.buk[i]);
+    List localList = Collections.singletonList(this.bsi[i]);
     AppMethodBeat.o(92821);
     return localList;
   }
   
-  public final long eR(int paramInt)
+  public final long eE(int paramInt)
   {
     boolean bool2 = true;
     AppMethodBeat.i(92820);
@@ -54,7 +54,7 @@ final class b
     {
       bool1 = true;
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      if (paramInt >= this.bul.length) {
+      if (paramInt >= this.bsj.length) {
         break label53;
       }
     }
@@ -62,7 +62,7 @@ final class b
     for (boolean bool1 = bool2;; bool1 = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      long l = this.bul[paramInt];
+      long l = this.bsj[paramInt];
       AppMethodBeat.o(92820);
       return l;
       bool1 = false;
@@ -70,9 +70,9 @@ final class b
     }
   }
   
-  public final int uB()
+  public final int uw()
   {
-    return this.bul.length;
+    return this.bsj.length;
   }
 }
 

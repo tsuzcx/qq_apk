@@ -12,36 +12,36 @@ import java.util.List;
 final class i
   implements d
 {
-  private final List<e> bsj;
-  private final long[] bul;
-  private final int bvB;
-  private final long[] bvC;
+  private final List<e> bqi;
+  private final long[] bsj;
+  private final int btA;
+  private final long[] btB;
   
   public i(List<e> paramList)
   {
     AppMethodBeat.i(92917);
-    this.bsj = paramList;
-    this.bvB = paramList.size();
-    this.bul = new long[this.bvB * 2];
+    this.bqi = paramList;
+    this.btA = paramList.size();
+    this.bsj = new long[this.btA * 2];
     int i = 0;
-    while (i < this.bvB)
+    while (i < this.btA)
     {
       e locale = (e)paramList.get(i);
       int j = i * 2;
-      this.bul[j] = locale.startTime;
-      this.bul[(j + 1)] = locale.endTime;
+      this.bsj[j] = locale.startTime;
+      this.bsj[(j + 1)] = locale.endTime;
       i += 1;
     }
-    this.bvC = Arrays.copyOf(this.bul, this.bul.length);
-    Arrays.sort(this.bvC);
+    this.btB = Arrays.copyOf(this.bsj, this.bsj.length);
+    Arrays.sort(this.btB);
     AppMethodBeat.o(92917);
   }
   
-  public final int am(long paramLong)
+  public final int ai(long paramLong)
   {
     AppMethodBeat.i(92918);
-    int i = x.a(this.bvC, paramLong, false, false);
-    if (i < this.bvC.length)
+    int i = x.a(this.btB, paramLong, false, false);
+    if (i < this.btB.length)
     {
       AppMethodBeat.o(92918);
       return i;
@@ -50,28 +50,28 @@ final class i
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> an(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> aj(long paramLong)
   {
     AppMethodBeat.i(92920);
     int i = 0;
     SpannableStringBuilder localSpannableStringBuilder = null;
     Object localObject1 = null;
     Object localObject3 = null;
-    if (i < this.bvB)
+    if (i < this.btA)
     {
       Object localObject2 = localObject3;
       int j;
-      if (this.bul[(i * 2)] <= paramLong)
+      if (this.bsj[(i * 2)] <= paramLong)
       {
         localObject2 = localObject3;
-        if (paramLong < this.bul[(i * 2 + 1)])
+        if (paramLong < this.bsj[(i * 2 + 1)])
         {
           localObject2 = localObject3;
           if (localObject3 == null) {
             localObject2 = new ArrayList();
           }
-          localObject3 = (e)this.bsj.get(i);
-          if ((((e)localObject3).brG == 1.4E-45F) && (((e)localObject3).brI == 1.4E-45F))
+          localObject3 = (e)this.bqi.get(i);
+          if ((((e)localObject3).bpF == 1.4E-45F) && (((e)localObject3).bpH == 1.4E-45F))
           {
             j = 1;
             label118:
@@ -123,7 +123,7 @@ final class i
     return localObject1;
   }
   
-  public final long eR(int paramInt)
+  public final long eE(int paramInt)
   {
     boolean bool2 = true;
     AppMethodBeat.i(92919);
@@ -131,7 +131,7 @@ final class i
     {
       bool1 = true;
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      if (paramInt >= this.bvC.length) {
+      if (paramInt >= this.btB.length) {
         break label53;
       }
     }
@@ -139,7 +139,7 @@ final class i
     for (boolean bool1 = bool2;; bool1 = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      long l = this.bvC[paramInt];
+      long l = this.btB[paramInt];
       AppMethodBeat.o(92919);
       return l;
       bool1 = false;
@@ -147,9 +147,9 @@ final class i
     }
   }
   
-  public final int uB()
+  public final int uw()
   {
-    return this.bvC.length;
+    return this.btB.length;
   }
 }
 

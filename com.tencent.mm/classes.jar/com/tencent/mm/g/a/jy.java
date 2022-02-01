@@ -1,15 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.model.kv_14609;
-import com.tencent.mm.plugin.appbrand.report.model.kv_14609.a;
 import com.tencent.mm.sdk.b.b;
 
 public final class jy
   extends b
 {
-  public a dod;
-  
   public jy()
   {
     this((byte)0);
@@ -17,17 +12,8 @@ public final class jy
   
   private jy(byte paramByte)
   {
-    AppMethodBeat.i(43441);
-    this.dod = new a();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(43441);
-  }
-  
-  public static final class a
-  {
-    public kv_14609 doe;
-    public kv_14609.a dof;
   }
 }
 

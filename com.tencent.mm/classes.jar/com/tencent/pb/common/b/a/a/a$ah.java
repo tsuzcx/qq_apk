@@ -6,99 +6,99 @@ import com.google.b.a.e;
 public final class a$ah
   extends e
 {
-  public int DlI = 0;
-  public int Imk = 0;
-  public int Iml = 0;
-  public int Imm = 0;
-  public int Imn = 0;
-  public int Imo = 0;
-  public int Imp = -1;
-  public int Imq = 0;
+  public int EFp = 0;
+  public int JNV = 0;
+  public int JNW = 0;
+  public int JNX = 0;
+  public int JNY = 0;
+  public int JNZ = 0;
+  public int JOa = -1;
+  public int JOb = 0;
   public int roomId = 0;
-  public long sAY = 0L;
+  public long tIG = 0L;
   
   public a$ah()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.DlI != 0) {
-      paramb.bz(1, this.DlI);
+    if (this.EFp != 0) {
+      paramb.bw(1, this.EFp);
     }
     if (this.roomId != 0) {
-      paramb.by(2, this.roomId);
+      paramb.bv(2, this.roomId);
     }
-    if (this.sAY != 0L) {
-      paramb.o(3, this.sAY);
+    if (this.tIG != 0L) {
+      paramb.n(3, this.tIG);
     }
-    if (this.Imk != 0) {
-      paramb.bz(4, this.Imk);
+    if (this.JNV != 0) {
+      paramb.bw(4, this.JNV);
     }
-    if (this.Iml != 0) {
-      paramb.bz(5, this.Iml);
+    if (this.JNW != 0) {
+      paramb.bw(5, this.JNW);
     }
-    if (this.Imm != 0) {
-      paramb.bz(6, this.Imm);
+    if (this.JNX != 0) {
+      paramb.bw(6, this.JNX);
     }
-    if (this.Imn != 0) {
-      paramb.bz(7, this.Imn);
+    if (this.JNY != 0) {
+      paramb.bw(7, this.JNY);
     }
-    if (this.Imo != 0) {
-      paramb.bz(8, this.Imo);
+    if (this.JNZ != 0) {
+      paramb.bw(8, this.JNZ);
     }
-    if (this.Imp != -1) {
-      paramb.by(9, this.Imp);
+    if (this.JOa != -1) {
+      paramb.bv(9, this.JOa);
     }
-    if (this.Imq != 0) {
-      paramb.by(10, this.Imq);
+    if (this.JOb != 0) {
+      paramb.bv(10, this.JOb);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.DlI != 0) {
-      i = j + b.bB(1, this.DlI);
+    if (this.EFp != 0) {
+      i = j + b.by(1, this.EFp);
     }
     j = i;
     if (this.roomId != 0) {
-      j = i + b.bA(2, this.roomId);
+      j = i + b.bx(2, this.roomId);
     }
     i = j;
-    if (this.sAY != 0L) {
-      i = j + b.q(3, this.sAY);
+    if (this.tIG != 0L) {
+      i = j + b.p(3, this.tIG);
     }
     j = i;
-    if (this.Imk != 0) {
-      j = i + b.bB(4, this.Imk);
+    if (this.JNV != 0) {
+      j = i + b.by(4, this.JNV);
     }
     i = j;
-    if (this.Iml != 0) {
-      i = j + b.bB(5, this.Iml);
+    if (this.JNW != 0) {
+      i = j + b.by(5, this.JNW);
     }
     j = i;
-    if (this.Imm != 0) {
-      j = i + b.bB(6, this.Imm);
+    if (this.JNX != 0) {
+      j = i + b.by(6, this.JNX);
     }
     i = j;
-    if (this.Imn != 0) {
-      i = j + b.bB(7, this.Imn);
+    if (this.JNY != 0) {
+      i = j + b.by(7, this.JNY);
     }
     j = i;
-    if (this.Imo != 0) {
-      j = i + b.bB(8, this.Imo);
+    if (this.JNZ != 0) {
+      j = i + b.by(8, this.JNZ);
     }
     i = j;
-    if (this.Imp != -1) {
-      i = j + b.bA(9, this.Imp);
+    if (this.JOa != -1) {
+      i = j + b.bx(9, this.JOa);
     }
     j = i;
-    if (this.Imq != 0) {
-      j = i + b.bA(10, this.Imq);
+    if (this.JOb != 0) {
+      j = i + b.bx(10, this.JOb);
     }
     return j;
   }

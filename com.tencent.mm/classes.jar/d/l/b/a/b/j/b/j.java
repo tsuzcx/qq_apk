@@ -15,15 +15,15 @@ import d.o;
 public final class j
   extends g<o<? extends a, ? extends f>>
 {
-  private final a JSe;
-  public final f JSf;
+  private final a LFx;
+  public final f LFy;
   
   public j(a parama, f paramf)
   {
-    super(d.u.P(parama, paramf));
+    super(d.u.Q(parama, paramf));
     AppMethodBeat.i(60065);
-    this.JSe = parama;
-    this.JSf = paramf;
+    this.LFx = parama;
+    this.LFy = paramf;
     AppMethodBeat.o(60065);
   }
   
@@ -31,13 +31,13 @@ public final class j
   {
     AppMethodBeat.i(60063);
     k.h(paramy, "module");
-    paramy = s.b(paramy, this.JSe);
+    paramy = s.b(paramy, this.LFx);
     if (paramy != null)
     {
       if (c.y((l)paramy)) {}
       while (paramy != null)
       {
-        paramy = paramy.fyA();
+        paramy = paramy.fRe();
         if (paramy == null) {
           break;
         }
@@ -47,7 +47,7 @@ public final class j
         paramy = null;
       }
     }
-    paramy = d.l.b.a.b.m.u.aQS("Containing class for error-class based enum entry " + this.JSe + '.' + this.JSf);
+    paramy = d.l.b.a.b.m.u.aWR("Containing class for error-class based enum entry " + this.LFx + '.' + this.LFy);
     k.g(paramy, "ErrorUtils.createErrorTy…mClassId.$enumEntryName\")");
     paramy = (ab)paramy;
     AppMethodBeat.o(60063);
@@ -57,14 +57,14 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(60064);
-    String str = this.JSe.fGY() + '.' + this.JSf;
+    String str = this.LFx.fZC() + '.' + this.LFy;
     AppMethodBeat.o(60064);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.j
  * JD-Core Version:    0.7.0.1
  */

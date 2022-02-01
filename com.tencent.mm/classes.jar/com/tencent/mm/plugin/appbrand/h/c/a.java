@@ -6,18 +6,18 @@ import rx.d.a;
 
 public class a
 {
-  private static a jiT;
+  private static a jJg;
   
-  public static a aUR()
+  public static a bbP()
   {
     AppMethodBeat.i(158949);
-    if (jiT == null) {}
+    if (jJg == null) {}
     try
     {
-      if (jiT == null) {
-        jiT = new a();
+      if (jJg == null) {
+        jJg = new a();
       }
-      a locala = jiT;
+      a locala = jJg;
       AppMethodBeat.o(158949);
       return locala;
     }

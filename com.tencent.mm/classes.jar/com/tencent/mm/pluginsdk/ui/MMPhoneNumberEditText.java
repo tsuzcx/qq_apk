@@ -15,32 +15,32 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.TextView.SavedState;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cf.g;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.ao;
 
 public class MMPhoneNumberEditText
   extends EditText
 {
-  public boolean BVC;
-  public Drawable BVD;
-  private a BVE;
-  public boolean BVF;
-  private boolean BVG;
-  public String mgy;
-  int oow;
-  private View.OnFocusChangeListener uZg;
+  public boolean DnT;
+  public Drawable DnU;
+  private a DnV;
+  public boolean DnW;
+  private boolean DnX;
+  public String mIy;
+  int oRW;
+  private View.OnFocusChangeListener whV;
   
   public MMPhoneNumberEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(31197);
-    this.mgy = "";
-    this.BVC = false;
-    this.BVG = false;
-    this.oow = 0;
-    this.uZg = null;
+    this.mIy = "";
+    this.DnT = false;
+    this.DnX = false;
+    this.oRW = 0;
+    this.whV = null;
     init();
     AppMethodBeat.o(31197);
   }
@@ -49,20 +49,20 @@ public class MMPhoneNumberEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31198);
-    this.mgy = "";
-    this.BVC = false;
-    this.BVG = false;
-    this.oow = 0;
-    this.uZg = null;
+    this.mIy = "";
+    this.DnT = false;
+    this.DnX = false;
+    this.oRW = 0;
+    this.whV = null;
     init();
     AppMethodBeat.o(31198);
   }
   
-  private void aBB(String paramString)
+  private void aGT(String paramString)
   {
     AppMethodBeat.i(31202);
     int i = getSelectionStart();
-    g localg = g.eIa();
+    g localg = g.eXw();
     getContext();
     setText(localg.b(paramString, getTextSize()));
     int j = getText().length() - paramString.length();
@@ -79,27 +79,27 @@ public class MMPhoneNumberEditText
     AppMethodBeat.o(31202);
   }
   
-  private void exv()
+  private void eMP()
   {
     AppMethodBeat.i(31203);
     if (getText().toString().equals(""))
     {
-      exx();
+      eMR();
       AppMethodBeat.o(31203);
       return;
     }
-    exw();
+    eMQ();
     AppMethodBeat.o(31203);
   }
   
-  private void exw()
+  private void eMQ()
   {
     AppMethodBeat.i(31204);
-    setCompoundDrawablesWithIntrinsicBounds(getCompoundDrawables()[0], getCompoundDrawables()[1], this.BVD, getCompoundDrawables()[3]);
+    setCompoundDrawablesWithIntrinsicBounds(getCompoundDrawables()[0], getCompoundDrawables()[1], this.DnU, getCompoundDrawables()[3]);
     AppMethodBeat.o(31204);
   }
   
-  private void exx()
+  private void eMR()
   {
     AppMethodBeat.i(31205);
     setCompoundDrawablesWithIntrinsicBounds(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
@@ -109,11 +109,11 @@ public class MMPhoneNumberEditText
   private void init()
   {
     AppMethodBeat.i(31200);
-    this.BVD = ao.aC(getContext(), 2130968981);
-    this.BVD.setBounds(0, 0, this.BVD.getIntrinsicWidth(), this.BVD.getIntrinsicHeight());
-    ad.d("MicroMsg.MMClearEditText", "imgX width %d height %d", new Object[] { Integer.valueOf(this.BVD.getIntrinsicWidth()), Integer.valueOf(this.BVD.getIntrinsicHeight()) });
-    exv();
-    setHeight(this.BVD.getIntrinsicHeight() + getResources().getDimensionPixelSize(2131165519) * 5);
+    this.DnU = ao.aI(getContext(), 2130968981);
+    this.DnU.setBounds(0, 0, this.DnU.getIntrinsicWidth(), this.DnU.getIntrinsicHeight());
+    ac.d("MicroMsg.MMClearEditText", "imgX width %d height %d", new Object[] { Integer.valueOf(this.DnU.getIntrinsicWidth()), Integer.valueOf(this.DnU.getIntrinsicHeight()) });
+    eMP();
+    setHeight(this.DnU.getIntrinsicHeight() + getResources().getDimensionPixelSize(2131165519) * 5);
     clearFocus();
     setOnTouchListener(new View.OnTouchListener()
     {
@@ -126,7 +126,7 @@ public class MMPhoneNumberEditText
           AppMethodBeat.o(31193);
           return false;
         }
-        if ((paramAnonymousMotionEvent.getAction() == 1) && (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMPhoneNumberEditText.this.BVD.getIntrinsicWidth()))
+        if ((paramAnonymousMotionEvent.getAction() == 1) && (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMPhoneNumberEditText.this.DnU.getIntrinsicWidth()))
         {
           if (!paramAnonymousView.isFocused()) {
             break label90;
@@ -152,7 +152,7 @@ public class MMPhoneNumberEditText
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(31195);
-        if (bt.isNullOrNil(paramAnonymousCharSequence.toString()))
+        if (bs.isNullOrNil(paramAnonymousCharSequence.toString()))
         {
           MMPhoneNumberEditText.a(MMPhoneNumberEditText.this, true);
           AppMethodBeat.o(31195);
@@ -178,12 +178,12 @@ public class MMPhoneNumberEditText
         {
           if ((MMPhoneNumberEditText.b(MMPhoneNumberEditText.this) != null) && (MMPhoneNumberEditText.this.isFocused()))
           {
-            MMPhoneNumberEditText.b(MMPhoneNumberEditText.this).exy();
+            MMPhoneNumberEditText.b(MMPhoneNumberEditText.this).eMS();
             AppMethodBeat.o(31194);
           }
         }
         else if ((MMPhoneNumberEditText.b(MMPhoneNumberEditText.this) != null) && (MMPhoneNumberEditText.this.isFocused())) {
-          MMPhoneNumberEditText.b(MMPhoneNumberEditText.this).exz();
+          MMPhoneNumberEditText.b(MMPhoneNumberEditText.this).eMT();
         }
         AppMethodBeat.o(31194);
       }
@@ -203,14 +203,14 @@ public class MMPhoneNumberEditText
     AppMethodBeat.o(31200);
   }
   
-  public final void exu()
+  public final void eMO()
   {
     AppMethodBeat.i(31199);
-    this.BVF = true;
-    this.BVD = getResources().getDrawable(2131690693);
-    this.BVD.setBounds(0, 0, this.BVD.getIntrinsicWidth(), this.BVD.getIntrinsicHeight());
+    this.DnW = true;
+    this.DnU = getResources().getDrawable(2131690693);
+    this.DnU.setBounds(0, 0, this.DnU.getIntrinsicWidth(), this.DnU.getIntrinsicHeight());
     setFocusable(false);
-    exw();
+    eMQ();
     AppMethodBeat.o(31199);
   }
   
@@ -223,7 +223,7 @@ public class MMPhoneNumberEditText
       AppMethodBeat.o(31206);
       return;
     }
-    if (!this.BVC) {
+    if (!this.DnT) {
       paramParcelable = View.BaseSavedState.EMPTY_STATE;
     }
     super.onRestoreInstanceState(paramParcelable);
@@ -237,12 +237,12 @@ public class MMPhoneNumberEditText
     String str;
     if (paramInt == 16908322)
     {
-      this.oow = 0;
+      this.oRW = 0;
       str = getText().toString();
     }
     try
     {
-      aBB(str);
+      aGT(str);
       AppMethodBeat.o(31201);
       return bool;
     }
@@ -250,15 +250,15 @@ public class MMPhoneNumberEditText
     {
       for (;;)
       {
-        ad.e("MicroMsg.MMClearEditText", "!!MMClearEditText Exception %d", new Object[] { Integer.valueOf(this.oow) });
-        if (this.oow < 3)
+        ac.e("MicroMsg.MMClearEditText", "!!MMClearEditText Exception %d", new Object[] { Integer.valueOf(this.oRW) });
+        if (this.oRW < 3)
         {
-          this.oow += 1;
-          aBB(" ".concat(String.valueOf(str)));
+          this.oRW += 1;
+          aGT(" ".concat(String.valueOf(str)));
         }
         else
         {
-          ad.e("MicroMsg.MMClearEditText", "!!MMClearEditText, IndexOutOfBoundsException cannot fix");
+          ac.e("MicroMsg.MMClearEditText", "!!MMClearEditText, IndexOutOfBoundsException cannot fix");
         }
       }
     }
@@ -266,19 +266,19 @@ public class MMPhoneNumberEditText
   
   public void setCallback(a parama)
   {
-    this.BVE = parama;
+    this.DnV = parama;
   }
   
   public void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.uZg = paramOnFocusChangeListener;
+    this.whV = paramOnFocusChangeListener;
   }
   
   public static abstract interface a
   {
-    public abstract void exy();
+    public abstract void eMS();
     
-    public abstract void exz();
+    public abstract void eMT();
     
     public abstract void f(MMPhoneNumberEditText paramMMPhoneNumberEditText);
     
@@ -287,7 +287,7 @@ public class MMPhoneNumberEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.MMPhoneNumberEditText
  * JD-Core Version:    0.7.0.1
  */

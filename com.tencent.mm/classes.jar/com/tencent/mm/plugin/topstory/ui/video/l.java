@@ -5,38 +5,38 @@ import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.n.a;
 import com.tencent.mm.plugin.topstory.ui.PluginTopStoryUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tinkerboots.sdk.b.a;
 
 public final class l
 {
-  private n.a nKL;
-  public int vZZ;
-  public boolean yPO;
-  com.tencent.mm.plugin.topstory.a.c yPP;
+  public boolean AdF;
+  com.tencent.mm.plugin.topstory.a.c AdG;
+  private n.a onL;
+  public int xlf;
   
   public l()
   {
     AppMethodBeat.i(126108);
-    this.nKL = new n.a()
+    this.onL = new n.a()
     {
       public final void onNetworkChange(final int paramAnonymousInt)
       {
         AppMethodBeat.i(126107);
-        paramAnonymousInt = l.this.vZZ;
-        l.this.vZZ = l.dBC();
-        if (l.this.vZZ != paramAnonymousInt)
+        paramAnonymousInt = l.this.xlf;
+        l.this.xlf = l.dPZ();
+        if (l.this.xlf != paramAnonymousInt)
         {
-          ad.i("MicroMsg.TopStory.TopStoryNetworkMgr", "network change current:%d change:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(l.this.vZZ) });
-          aq.f(new Runnable()
+          ac.i("MicroMsg.TopStory.TopStoryNetworkMgr", "network change current:%d change:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(l.this.xlf) });
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(126106);
-              if (l.this.yPP != null) {
-                l.this.yPP.hJ(paramAnonymousInt, l.this.vZZ);
+              if (l.this.AdG != null) {
+                l.this.AdG.hT(paramAnonymousInt, l.this.xlf);
               }
               AppMethodBeat.o(126106);
             }
@@ -45,23 +45,23 @@ public final class l
         AppMethodBeat.o(126107);
       }
     };
-    this.yPO = false;
-    this.vZZ = dBC();
-    g.afA().a(this.nKL);
+    this.AdF = false;
+    this.xlf = dPZ();
+    g.agQ().a(this.onL);
     AppMethodBeat.o(126108);
   }
   
-  public static int dBC()
+  public static int dPZ()
   {
     AppMethodBeat.i(126110);
-    if (!a.isConnected(aj.getContext()))
+    if (!a.isConnected(ai.getContext()))
     {
       AppMethodBeat.o(126110);
       return 0;
     }
-    if (a.isWifi(aj.getContext()))
+    if (a.isWifi(ai.getContext()))
     {
-      if (((PluginTopStoryUI)g.ad(PluginTopStoryUI.class)).getTopStoryCommand().yMk)
+      if (((PluginTopStoryUI)g.ad(PluginTopStoryUI.class)).getTopStoryCommand().Aac)
       {
         AppMethodBeat.o(126110);
         return 2;
@@ -73,28 +73,28 @@ public final class l
     return 2;
   }
   
-  public final boolean bVA()
+  public final boolean ccN()
   {
-    return this.vZZ == 1;
+    return this.xlf == 1;
   }
   
-  public final boolean dPC()
+  public final boolean eeb()
   {
-    return this.vZZ == 2;
+    return this.xlf == 2;
   }
   
   public final boolean isConnected()
   {
-    return this.vZZ != 0;
+    return this.xlf != 0;
   }
   
   public final void onUIDestroy()
   {
     AppMethodBeat.i(126109);
-    g.afA().b(this.nKL);
-    this.yPP = null;
-    this.vZZ = 0;
-    this.yPO = false;
+    g.agQ().b(this.onL);
+    this.AdG = null;
+    this.xlf = 0;
+    this.AdF = false;
     AppMethodBeat.o(126109);
   }
 }

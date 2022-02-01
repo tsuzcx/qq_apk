@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 public final class h
 {
-  public String Adf;
-  public String Adg;
-  public String Adh;
-  public String doh;
-  public String gHT;
+  public int AYa;
+  public String BvA;
+  public String BvB;
+  public String Bvz;
+  public String dlQ;
+  public String hiu;
   public String id;
-  public String odT;
+  public String oHs;
   public int type;
-  public int zFN;
 }
 
 

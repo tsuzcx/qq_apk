@@ -8,19 +8,19 @@ public abstract class al
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int emf = "updateTime".hashCode();
-  private static final int enU = "openId".hashCode();
-  private static final int erA = "brandUsername".hashCode();
-  private static final int erB = "headImgUrl".hashCode();
-  private static final int erC = "nickname".hashCode();
-  private static final int erD = "kfType".hashCode();
+  private static final int eol = "updateTime".hashCode();
+  private static final int epZ = "openId".hashCode();
+  private static final int etE = "brandUsername".hashCode();
+  private static final int etF = "headImgUrl".hashCode();
+  private static final int etG = "nickname".hashCode();
+  private static final int etH = "kfType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean emc = true;
-  private boolean eny = true;
-  private boolean erw = true;
-  private boolean erx = true;
-  private boolean ery = true;
-  private boolean erz = true;
+  private boolean eoi = true;
+  private boolean epD = true;
+  private boolean etA = true;
+  private boolean etB = true;
+  private boolean etC = true;
+  private boolean etD = true;
   public String field_brandUsername;
   public String field_headImgUrl;
   public int field_kfType;
@@ -41,11 +41,11 @@ public abstract class al
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enU != k) {
+      if (epZ != k) {
         break label65;
       }
       this.field_openId = paramCursor.getString(i);
-      this.eny = true;
+      this.epD = true;
     }
     for (;;)
     {
@@ -53,15 +53,15 @@ public abstract class al
       break label20;
       break;
       label65:
-      if (erA == k) {
+      if (etE == k) {
         this.field_brandUsername = paramCursor.getString(i);
-      } else if (erB == k) {
+      } else if (etF == k) {
         this.field_headImgUrl = paramCursor.getString(i);
-      } else if (erC == k) {
+      } else if (etG == k) {
         this.field_nickname = paramCursor.getString(i);
-      } else if (erD == k) {
+      } else if (etH == k) {
         this.field_kfType = paramCursor.getInt(i);
-      } else if (emf == k) {
+      } else if (eol == k) {
         this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -72,25 +72,25 @@ public abstract class al
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eny) {
+    if (this.epD) {
       localContentValues.put("openId", this.field_openId);
     }
     if (this.field_brandUsername == null) {
       this.field_brandUsername = "";
     }
-    if (this.erw) {
+    if (this.etA) {
       localContentValues.put("brandUsername", this.field_brandUsername);
     }
-    if (this.erx) {
+    if (this.etB) {
       localContentValues.put("headImgUrl", this.field_headImgUrl);
     }
-    if (this.ery) {
+    if (this.etC) {
       localContentValues.put("nickname", this.field_nickname);
     }
-    if (this.erz) {
+    if (this.etD) {
       localContentValues.put("kfType", Integer.valueOf(this.field_kfType));
     }
-    if (this.emc) {
+    if (this.eoi) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.b;
 import com.tencent.mm.ui.base.b.a;
@@ -31,21 +31,21 @@ public class e
     if (((this.activity instanceof MMActivity)) && (((MMActivity)this.activity).getSwipeBackLayout() != null)) {
       ((MMActivity)this.activity).getSwipeBackLayout().setSwipeBackListener(new SwipeBackLayout.b()
       {
-        public final void aJ(float paramAnonymousFloat)
+        public final void aN(float paramAnonymousFloat)
         {
           AppMethodBeat.i(127512);
           if (parama != null) {
-            parama.aK(paramAnonymousFloat);
+            parama.aO(paramAnonymousFloat);
           }
           AppMethodBeat.o(127512);
         }
         
-        public final int bq(boolean paramAnonymousBoolean)
+        public final int bp(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(127514);
           if (parama != null)
           {
-            int i = parama.ic(paramAnonymousBoolean);
+            int i = parama.iC(paramAnonymousBoolean);
             AppMethodBeat.o(127514);
             return i;
           }
@@ -53,11 +53,11 @@ public class e
           return 1;
         }
         
-        public final void m(MotionEvent paramAnonymousMotionEvent)
+        public final void k(MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(127513);
           if (parama != null) {
-            parama.m(paramAnonymousMotionEvent);
+            parama.k(paramAnonymousMotionEvent);
           }
           AppMethodBeat.o(127513);
         }
@@ -69,22 +69,36 @@ public class e
   public void a(final f.b paramb)
   {
     AppMethodBeat.i(127524);
-    ad.i("MicroMsg.FloatBallPageAdapter", "convertToTranslucent");
+    ac.i("MicroMsg.FloatBallPageAdapter", "convertToTranslucent");
     b.a(this.activity, new b.a()
     {
-      public final void ib(boolean paramAnonymousBoolean)
+      public final void iB(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(127515);
         if (paramb != null) {
-          paramb.ib(paramAnonymousBoolean);
+          paramb.iB(paramAnonymousBoolean);
         }
         AppMethodBeat.o(127515);
       }
     });
+    ac.i("MicroMsg.FloatBallPageAdapter", "float ball page convertActivityToTranslucent");
     AppMethodBeat.o(127524);
   }
   
-  public boolean aVX()
+  public ViewGroup bFF()
+  {
+    AppMethodBeat.i(127517);
+    ViewGroup localViewGroup = (ViewGroup)this.activity.getWindow().getDecorView();
+    AppMethodBeat.o(127517);
+    return localViewGroup;
+  }
+  
+  public int bFG()
+  {
+    return -1;
+  }
+  
+  public boolean bcV()
   {
     AppMethodBeat.i(127521);
     if (((this.activity instanceof MMActivity)) && (((MMActivity)this.activity).getSwipeBackLayout() != null))
@@ -96,28 +110,15 @@ public class e
     return false;
   }
   
-  public boolean aWk()
+  public boolean bdi()
   {
     return true;
   }
   
-  public ViewGroup byJ()
-  {
-    AppMethodBeat.i(127517);
-    ViewGroup localViewGroup = (ViewGroup)this.activity.getWindow().getDecorView();
-    AppMethodBeat.o(127517);
-    return localViewGroup;
-  }
-  
-  public int byK()
-  {
-    return -1;
-  }
-  
-  public void fF(boolean paramBoolean)
+  public void gb(boolean paramBoolean)
   {
     AppMethodBeat.i(127523);
-    ad.i("MicroMsg.FloatBallPageAdapter", "finish, withAnimation:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.FloatBallPageAdapter", "finish, withAnimation:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (getIntent() != null)
     {
       if (!paramBoolean) {
@@ -145,7 +146,7 @@ public class e
   public Bitmap getBitmap()
   {
     AppMethodBeat.i(127520);
-    Bitmap localBitmap = com.tencent.mm.sdk.platformtools.f.fz(getMaskView());
+    Bitmap localBitmap = com.tencent.mm.sdk.platformtools.f.fM(getMaskView());
     AppMethodBeat.o(127520);
     return localBitmap;
   }

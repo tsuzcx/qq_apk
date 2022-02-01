@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class y
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String tdq;
-  public String teF;
-  public String teG;
-  public String teH;
-  public String teI;
-  public long tes;
-  public String tet;
+  public String ulF;
+  public long umH;
+  public String umI;
+  public String umU;
+  public String umV;
+  public String umW;
+  public String umX;
   public String userName;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -20,24 +20,24 @@ public final class y
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.teF != null) {
-        paramVarArgs.d(1, this.teF);
+      if (this.umU != null) {
+        paramVarArgs.d(1, this.umU);
       }
-      if (this.teG != null) {
-        paramVarArgs.d(2, this.teG);
+      if (this.umV != null) {
+        paramVarArgs.d(2, this.umV);
       }
-      paramVarArgs.aG(3, this.tes);
-      if (this.tet != null) {
-        paramVarArgs.d(4, this.tet);
+      paramVarArgs.aO(3, this.umH);
+      if (this.umI != null) {
+        paramVarArgs.d(4, this.umI);
       }
-      if (this.teH != null) {
-        paramVarArgs.d(5, this.teH);
+      if (this.umW != null) {
+        paramVarArgs.d(5, this.umW);
       }
-      if (this.tdq != null) {
-        paramVarArgs.d(6, this.tdq);
+      if (this.ulF != null) {
+        paramVarArgs.d(6, this.ulF);
       }
-      if (this.teI != null) {
-        paramVarArgs.d(7, this.teI);
+      if (this.umX != null) {
+        paramVarArgs.d(7, this.umX);
       }
       if (this.userName != null) {
         paramVarArgs.d(8, this.userName);
@@ -46,33 +46,33 @@ public final class y
       return 0;
     }
     if (paramInt == 1) {
-      if (this.teF == null) {
+      if (this.umU == null) {
         break label626;
       }
     }
     label626:
-    for (paramInt = f.a.a.b.b.a.e(1, this.teF) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.umU) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.teG != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.teG);
+      if (this.umV != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.umV);
       }
-      i += f.a.a.b.b.a.q(3, this.tes);
+      i += f.a.a.b.b.a.p(3, this.umH);
       paramInt = i;
-      if (this.tet != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.tet);
+      if (this.umI != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.umI);
       }
       i = paramInt;
-      if (this.teH != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.teH);
+      if (this.umW != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.umW);
       }
       paramInt = i;
-      if (this.tdq != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.tdq);
+      if (this.ulF != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.ulF);
       }
       i = paramInt;
-      if (this.teI != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.teI);
+      if (this.umX != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.umX);
       }
       paramInt = i;
       if (this.userName != null) {
@@ -83,9 +83,9 @@ public final class y
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(91258);
@@ -101,35 +101,35 @@ public final class y
           AppMethodBeat.o(91258);
           return -1;
         case 1: 
-          localy.teF = locala.KhF.readString();
+          localy.umU = locala.LVo.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 2: 
-          localy.teG = locala.KhF.readString();
+          localy.umV = locala.LVo.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 3: 
-          localy.tes = locala.KhF.xT();
+          localy.umH = locala.LVo.xG();
           AppMethodBeat.o(91258);
           return 0;
         case 4: 
-          localy.tet = locala.KhF.readString();
+          localy.umI = locala.LVo.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 5: 
-          localy.teH = locala.KhF.readString();
+          localy.umW = locala.LVo.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 6: 
-          localy.tdq = locala.KhF.readString();
+          localy.ulF = locala.LVo.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 7: 
-          localy.teI = locala.KhF.readString();
+          localy.umX = locala.LVo.readString();
           AppMethodBeat.o(91258);
           return 0;
         }
-        localy.userName = locala.KhF.readString();
+        localy.userName = locala.LVo.readString();
         AppMethodBeat.o(91258);
         return 0;
       }

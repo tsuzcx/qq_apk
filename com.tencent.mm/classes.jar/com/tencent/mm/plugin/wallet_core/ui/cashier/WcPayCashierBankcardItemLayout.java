@@ -13,11 +13,11 @@ import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 public class WcPayCashierBankcardItemLayout
   extends LinearLayout
 {
-  public FavourLayout Amy;
-  public TextView ArB;
-  public TextView ArC;
-  public RadioButton ArD;
-  public CdnImageView nGe;
+  public FavourLayout BET;
+  public TextView BJV;
+  public TextView BJW;
+  public RadioButton BJX;
+  public CdnImageView ojf;
   
   public WcPayCashierBankcardItemLayout(Context paramContext)
   {
@@ -47,11 +47,11 @@ public class WcPayCashierBankcardItemLayout
   {
     AppMethodBeat.i(71323);
     View.inflate(getContext(), 2131496053, this);
-    this.nGe = ((CdnImageView)findViewById(2131307021));
-    this.ArB = ((TextView)findViewById(2131307023));
-    this.ArC = ((TextView)findViewById(2131307024));
-    this.ArD = ((RadioButton)findViewById(2131307028));
-    this.Amy = ((FavourLayout)findViewById(2131307026));
+    this.ojf = ((CdnImageView)findViewById(2131307021));
+    this.BJV = ((TextView)findViewById(2131307023));
+    this.BJW = ((TextView)findViewById(2131307024));
+    this.BJX = ((RadioButton)findViewById(2131307028));
+    this.BET = ((FavourLayout)findViewById(2131307026));
     AppMethodBeat.o(71323);
   }
 }

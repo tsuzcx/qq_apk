@@ -2,8 +2,8 @@ package com.tencent.mm.loader.e;
 
 import com.tencent.mm.b.g;
 import com.tencent.mm.loader.f.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
   implements f
@@ -15,10 +15,10 @@ public final class a
     if (parama != null)
     {
       localObject1 = localObject2;
-      if (!bt.isNullOrNil(parama.toString()))
+      if (!bs.isNullOrNil(parama.toString()))
       {
         localObject1 = g.getMessageDigest(parama.toString().getBytes());
-        ad.d("MicroMsg.Loader.DefaultFileNameCreator", "create image file name :%s", new Object[] { localObject1 });
+        ac.d("MicroMsg.Loader.DefaultFileNameCreator", "create image file name :%s", new Object[] { localObject1 });
       }
     }
     return localObject1;
@@ -31,10 +31,10 @@ public final class a
     if (parama != null)
     {
       localObject1 = localObject2;
-      if (!bt.isNullOrNil(parama.toString()))
+      if (!bs.isNullOrNil(parama.toString()))
       {
         localObject1 = g.getMessageDigest(parama.toString().getBytes());
-        ad.d("MicroMsg.Loader.DefaultFileNameCreator", "create image file name :%s", new Object[] { localObject1 });
+        ac.d("MicroMsg.Loader.DefaultFileNameCreator", "create image file name :%s", new Object[] { localObject1 });
       }
     }
     return (String)localObject1 + ".tmp";
@@ -42,7 +42,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.e.a
  * JD-Core Version:    0.7.0.1
  */

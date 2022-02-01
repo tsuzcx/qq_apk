@@ -7,16 +7,16 @@ import android.graphics.Bitmap;
 import android.util.Base64;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.b.g;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.sb;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.sk;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.emoji.model.EmojiLogic;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.s;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
@@ -49,9 +49,9 @@ public class bh
         public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
         {
           AppMethodBeat.i(78630);
-          ad.i("MicroMsg.JsApiShareEmotion", "mmOnActivityResult, %d", new Object[] { Integer.valueOf(paramAnonymousInt1) });
+          ac.i("MicroMsg.JsApiShareEmotion", "mmOnActivityResult, %d", new Object[] { Integer.valueOf(paramAnonymousInt1) });
           if (paramAnonymousInt1 == (bh.this.hashCode() & 0xFFFF)) {
-            ad.i("MicroMsg.JsApiShareEmotion", "share emmotion resultCode: %d", new Object[] { Integer.valueOf(paramAnonymousInt2) });
+            ac.i("MicroMsg.JsApiShareEmotion", "share emmotion resultCode: %d", new Object[] { Integer.valueOf(paramAnonymousInt2) });
           }
           String str;
           Object localObject2;
@@ -64,18 +64,18 @@ public class bh
             AppMethodBeat.o(78630);
             return;
           case -1: 
-            str = bt.by(paramAnonymousIntent.getStringExtra("Select_Conv_User"), "");
-            localObject2 = bt.by(paramAnonymousIntent.getStringExtra("emoji_thumb_path"), "");
-            localObject1 = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().FyY.aJx((String)localObject2);
+            str = bs.bG(paramAnonymousIntent.getStringExtra("Select_Conv_User"), "");
+            localObject2 = bs.bG(paramAnonymousIntent.getStringExtra("emoji_thumb_path"), "");
+            localObject1 = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().GXZ.aOT((String)localObject2);
             if (localObject1 == null)
             {
-              localObject3 = com.tencent.mm.emoji.d.a.fSR;
-              localObject3 = EmojiLogic.P(com.tencent.mm.emoji.d.a.acD(), "", (String)localObject2);
-              if (i.eK((String)localObject3)) {
-                if (t.aFm((String)localObject3))
+              localObject3 = com.tencent.mm.emoji.d.a.fWM;
+              localObject3 = EmojiLogic.P(com.tencent.mm.emoji.d.a.adJ(), "", (String)localObject2);
+              if (i.eA((String)localObject3)) {
+                if (s.aKD((String)localObject3))
                 {
-                  paramAnonymousInt1 = EmojiInfo.LBY;
-                  localObject1 = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().FyY.b((String)localObject2, "", EmojiInfo.LBQ, paramAnonymousInt1, (int)i.aMN((String)localObject3), null, "");
+                  paramAnonymousInt1 = EmojiInfo.KfZ;
+                  localObject1 = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().GXZ.b((String)localObject2, "", EmojiInfo.Jss, paramAnonymousInt1, (int)i.aSp((String)localObject3), null, "");
                 }
               }
             }
@@ -83,7 +83,7 @@ public class bh
           }
           for (;;)
           {
-            localObject2 = bt.S(bt.by(str, "").split(",")).iterator();
+            localObject2 = bs.S(bs.bG(str, "").split(",")).iterator();
             for (;;)
             {
               if (((Iterator)localObject2).hasNext())
@@ -91,24 +91,24 @@ public class bh
                 localObject3 = (String)((Iterator)localObject2).next();
                 if (localObject1 != null)
                 {
-                  com.tencent.mm.plugin.emoji.model.k.bUZ().a((String)localObject3, (EmojiInfo)localObject1, null);
+                  com.tencent.mm.plugin.emoji.model.k.ccm().a((String)localObject3, (EmojiInfo)localObject1, null);
                   continue;
-                  paramAnonymousInt1 = EmojiInfo.LBX;
+                  paramAnonymousInt1 = EmojiInfo.KfY;
                   break;
                 }
               }
             }
             paramAnonymousIntent = paramAnonymousIntent.getStringExtra("custom_send_text");
-            if (!bt.isNullOrNil(paramAnonymousIntent))
+            if (!bs.isNullOrNil(paramAnonymousIntent))
             {
-              localObject1 = new sb();
-              ((sb)localObject1).dxJ.dxK = str;
-              ((sb)localObject1).dxJ.content = paramAnonymousIntent;
-              ((sb)localObject1).dxJ.type = w.tq(str);
-              ((sb)localObject1).dxJ.flags = 0;
-              com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+              localObject1 = new sk();
+              ((sk)localObject1).dvv.dvw = str;
+              ((sk)localObject1).dvv.content = paramAnonymousIntent;
+              ((sk)localObject1).dvv.type = w.xt(str);
+              ((sk)localObject1).dvv.flags = 0;
+              com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
             }
-            h.cf(paramContext, paramContext.getResources().getString(2131755894));
+            h.cg(paramContext, paramContext.getResources().getString(2131755894));
             break;
             parama.f(null, null);
             AppMethodBeat.o(78630);
@@ -124,20 +124,20 @@ public class bh
   public final void a(final Context paramContext, String paramString, final bn.a parama)
   {
     AppMethodBeat.i(78631);
-    ad.i("MicroMsg.JsApiShareEmotion", "invoke");
-    paramString = com.tencent.mm.plugin.webview.luggage.c.b.HG(paramString);
+    ac.i("MicroMsg.JsApiShareEmotion", "invoke");
+    paramString = com.tencent.mm.plugin.webview.luggage.c.b.LK(paramString);
     if (paramString == null)
     {
-      ad.e("MicroMsg.JsApiShareEmotion", "data is null");
+      ac.e("MicroMsg.JsApiShareEmotion", "data is null");
       parama.f("null_data", null);
       AppMethodBeat.o(78631);
       return;
     }
     Object localObject1 = paramString.optString("base64DataString");
     Object localObject2 = paramString.optString("url");
-    if (!bt.isNullOrNil((String)localObject1))
+    if (!bs.isNullOrNil((String)localObject1))
     {
-      ad.i("MicroMsg.JsApiShareEmotion", "use base64DataString");
+      ac.i("MicroMsg.JsApiShareEmotion", "use base64DataString");
       int i = ((String)localObject1).indexOf(";base64,");
       paramString = "";
       if (i != -1) {
@@ -146,7 +146,7 @@ public class bh
       try
       {
         paramString = Base64.decode(paramString, 0);
-        if (bt.cw(paramString))
+        if (bs.cv(paramString))
         {
           parama.f("fail", null);
           AppMethodBeat.o(78631);
@@ -155,55 +155,55 @@ public class bh
       }
       catch (Exception paramContext)
       {
-        ad.e("MicroMsg.JsApiShareEmotion", "doShareEmoticon error:" + paramContext.getMessage());
+        ac.e("MicroMsg.JsApiShareEmotion", "doShareEmoticon error:" + paramContext.getMessage());
         parama.f("base64_decode_fail", null);
         AppMethodBeat.o(78631);
         return;
       }
       localObject1 = g.getMessageDigest(paramString);
-      localObject2 = com.tencent.mm.emoji.d.a.fSR;
-      localObject2 = EmojiLogic.P(com.tencent.mm.emoji.d.a.acD(), "", (String)localObject1);
-      if ((!i.eK((String)localObject2)) || (!i.aEN((String)localObject2).equalsIgnoreCase((String)localObject1))) {
+      localObject2 = com.tencent.mm.emoji.d.a.fWM;
+      localObject2 = EmojiLogic.P(com.tencent.mm.emoji.d.a.adJ(), "", (String)localObject1);
+      if ((!i.eA((String)localObject2)) || (!i.aKe((String)localObject2).equalsIgnoreCase((String)localObject1))) {
         i.f((String)localObject2, paramString, paramString.length);
       }
       b(paramContext, (String)localObject1, parama);
       AppMethodBeat.o(78631);
       return;
     }
-    ad.i("MicroMsg.JsApiShareEmotion", "doShareEmoticon use url:%s", new Object[] { localObject2 });
+    ac.i("MicroMsg.JsApiShareEmotion", "doShareEmoticon use url:%s", new Object[] { localObject2 });
     paramString = new e(paramContext.getCacheDir(), g.getMessageDigest(((String)localObject2).getBytes()));
     if (paramString.exists())
     {
-      localObject1 = i.aEN(q.B(paramString.mUri));
-      localObject2 = com.tencent.mm.emoji.d.a.fSR;
-      localObject2 = EmojiLogic.P(com.tencent.mm.emoji.d.a.acD(), "", (String)localObject1);
-      if (!i.eK((String)localObject2)) {
-        i.lC(q.B(paramString.fhU()), (String)localObject2);
+      localObject1 = i.aKe(q.B(paramString.mUri));
+      localObject2 = com.tencent.mm.emoji.d.a.fWM;
+      localObject2 = EmojiLogic.P(com.tencent.mm.emoji.d.a.adJ(), "", (String)localObject1);
+      if (!i.eA((String)localObject2)) {
+        i.lZ(q.B(paramString.fxV()), (String)localObject2);
       }
       b(paramContext, (String)localObject1, parama);
       AppMethodBeat.o(78631);
       return;
     }
     localObject1 = new c.a();
-    ((c.a)localObject1).hjU = true;
-    ((c.a)localObject1).gjt = q.B(paramString.fhU());
-    ((c.a)localObject1).hkt = new Object[] { q.B(paramString.fhU()) };
-    paramString = ((c.a)localObject1).azc();
-    com.tencent.mm.plugin.emoji.model.k.bUX().a((String)localObject2, null, paramString, new com.tencent.mm.aw.a.c.k()
+    ((c.a)localObject1).hKx = true;
+    ((c.a)localObject1).gKe = q.B(paramString.fxV());
+    ((c.a)localObject1).hKW = new Object[] { q.B(paramString.fxV()) };
+    paramString = ((c.a)localObject1).aFT();
+    com.tencent.mm.plugin.emoji.model.k.cck().a((String)localObject2, null, paramString, new com.tencent.mm.av.a.c.k()
     {
       public final void a(String paramAnonymousString, View paramAnonymousView, Bitmap paramAnonymousBitmap, Object... paramAnonymousVarArgs)
       {
         AppMethodBeat.i(78629);
-        ad.i("MicroMsg.JsApiShareEmotion", "imageLoaderListener onImageLoadComplete %s", new Object[] { paramAnonymousString });
-        if ((paramAnonymousBitmap != null) && (paramAnonymousVarArgs != null) && (paramAnonymousVarArgs.length > 0) && (paramAnonymousVarArgs[0] != null) && ((paramAnonymousVarArgs[0] instanceof String)) && (paramAnonymousString.equals(this.AUZ)))
+        ac.i("MicroMsg.JsApiShareEmotion", "imageLoaderListener onImageLoadComplete %s", new Object[] { paramAnonymousString });
+        if ((paramAnonymousBitmap != null) && (paramAnonymousVarArgs != null) && (paramAnonymousVarArgs.length > 0) && (paramAnonymousVarArgs[0] != null) && ((paramAnonymousVarArgs[0] instanceof String)) && (paramAnonymousString.equals(this.Cnm)))
         {
           paramAnonymousString = new e(paramAnonymousVarArgs[0].toString());
           if (paramAnonymousString.exists())
           {
-            paramAnonymousView = i.aEN(q.B(paramAnonymousString.mUri));
-            paramAnonymousBitmap = com.tencent.mm.emoji.d.a.fSR;
-            paramAnonymousBitmap = EmojiLogic.P(com.tencent.mm.emoji.d.a.acD(), "", paramAnonymousView);
-            i.lC(q.B(paramAnonymousString.fhU()), paramAnonymousBitmap);
+            paramAnonymousView = i.aKe(q.B(paramAnonymousString.mUri));
+            paramAnonymousBitmap = com.tencent.mm.emoji.d.a.fWM;
+            paramAnonymousBitmap = EmojiLogic.P(com.tencent.mm.emoji.d.a.adJ(), "", paramAnonymousView);
+            i.lZ(q.B(paramAnonymousString.fxV()), paramAnonymousBitmap);
             bh.a(bh.this, paramContext, paramAnonymousView, parama);
             AppMethodBeat.o(78629);
             return;
@@ -218,7 +218,7 @@ public class bh
   
   public final void b(com.tencent.luggage.d.a<com.tencent.mm.plugin.webview.luggage.f>.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 2;
   }

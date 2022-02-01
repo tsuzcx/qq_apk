@@ -26,6 +26,7 @@ import com.tencent.liteav.audio.TXCAudioLocalRecorder.a;
 import com.tencent.liteav.audio.TXCLiveBGMPlayer;
 import com.tencent.liteav.audio.TXCSoundEffectPlayer;
 import com.tencent.liteav.audio.b;
+import com.tencent.liteav.basic.d.o;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
@@ -39,6 +40,7 @@ import com.tencent.liteav.beauty.TXBeautyManager;
 import com.tencent.liteav.c.a;
 import com.tencent.liteav.f.a;
 import com.tencent.liteav.g;
+import com.tencent.liteav.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.trtc.TRTCCloud;
@@ -78,7 +80,7 @@ import org.json.JSONObject;
 
 public class TRTCCloudImpl
   extends TRTCCloud
-  implements SurfaceHolder.Callback, TXCRenderAndDec.b, b, com.tencent.liteav.audio.c, com.tencent.liteav.audio.d, com.tencent.liteav.audio.e, com.tencent.liteav.audio.f, com.tencent.liteav.basic.c.a, c.a, com.tencent.liteav.n
+  implements SurfaceHolder.Callback, TXCRenderAndDec.b, b, com.tencent.liteav.audio.c, com.tencent.liteav.audio.d, com.tencent.liteav.audio.e, com.tencent.liteav.audio.f, com.tencent.liteav.basic.c.a, c.a, n
 {
   private static final int MIN_VOLUME_EVALUATION_INTERVAL_MS = 100;
   private static final int RECV_MODE_AUTO_AUDIO_ONLY = 2;
@@ -311,12 +313,12 @@ public class TRTCCloudImpl
   
   private void addUpStreamType(int paramInt)
   {
-    AppMethodBeat.i(189110);
+    AppMethodBeat.i(193140);
     if (!this.mStreamTypes.contains(Integer.valueOf(paramInt))) {
       this.mStreamTypes.add(Integer.valueOf(paramInt));
     }
     nativeAddUpstream(this.mNativeRtcContext, paramInt);
-    AppMethodBeat.o(189110);
+    AppMethodBeat.o(193140);
   }
   
   private void appendDashboardLog(String paramString1, int paramInt, String paramString2)
@@ -2401,12 +2403,12 @@ public class TRTCCloudImpl
   
   private void removeUpStreamType(int paramInt)
   {
-    AppMethodBeat.i(189111);
+    AppMethodBeat.i(193141);
     if (this.mStreamTypes.contains(Integer.valueOf(paramInt))) {
       this.mStreamTypes.remove(Integer.valueOf(paramInt));
     }
     nativeRemoveUpstream(this.mNativeRtcContext, paramInt);
-    AppMethodBeat.o(189111);
+    AppMethodBeat.o(193141);
   }
   
   private void runOnListenerThread(Runnable paramRunnable, int paramInt)
@@ -6417,7 +6419,7 @@ public class TRTCCloudImpl
         if (paramString == null)
         {
           TRTCCloudImpl.this.apiLog("snapshotLocalView");
-          TRTCCloudImpl.this.mCaptureAndEnc.a(new com.tencent.liteav.basic.d.n()
+          TRTCCloudImpl.this.mCaptureAndEnc.a(new o()
           {
             public void onTakePhotoComplete(final Bitmap paramAnonymous2Bitmap)
             {
@@ -6461,7 +6463,7 @@ public class TRTCCloudImpl
         }
         while (localObject1 != null)
         {
-          ((com.tencent.liteav.renderer.e)localObject1).a(new com.tencent.liteav.basic.d.n()
+          ((com.tencent.liteav.renderer.e)localObject1).a(new o()
           {
             public void onTakePhotoComplete(final Bitmap paramAnonymous2Bitmap)
             {
@@ -6917,11 +6919,11 @@ public class TRTCCloudImpl
         {
           public void run()
           {
-            AppMethodBeat.i(189108);
+            AppMethodBeat.i(193138);
             synchronized (TRTCCloudImpl.this.mNativeLock)
             {
               TRTCCloudImpl.access$8200(TRTCCloudImpl.this, TRTCCloudImpl.this.mNativeRtcContext, TRTCCloudImpl.91.this.val$sdkAppId, TRTCCloudImpl.91.this.val$userId, TRTCCloudImpl.91.this.val$userSig);
-              AppMethodBeat.o(189108);
+              AppMethodBeat.o(193138);
               return;
             }
           }
@@ -7206,12 +7208,12 @@ public class TRTCCloudImpl
           {
             public void run()
             {
-              AppMethodBeat.i(189109);
+              AppMethodBeat.i(193139);
               synchronized (TRTCCloudImpl.this.mNativeLock)
               {
                 TRTCCloudImpl.access$8300(TRTCCloudImpl.this, TRTCCloudImpl.this.mNativeRtcContext);
                 localHandler.getLooper().quit();
-                AppMethodBeat.o(189109);
+                AppMethodBeat.o(193139);
                 return;
               }
             }

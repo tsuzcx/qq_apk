@@ -9,13 +9,13 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final void Lk()
+  public final void Lh()
   {
     AppMethodBeat.i(176885);
     ArrayList localArrayList = new ArrayList();
     IDKey localIDKey = new IDKey();
     localIDKey.SetID(1313);
-    if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+    if (com.tencent.mm.sdk.platformtools.h.gMM) {}
     for (int i = 1;; i = 0)
     {
       localIDKey.SetKey(i);
@@ -23,17 +23,17 @@ final class a$1
       localArrayList.add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(1313);
-      localIDKey.SetKey(a.das());
+      localIDKey.SetKey(a.doa());
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      com.tencent.mm.plugin.report.service.h.vKh.b(localArrayList, false);
-      com.tencent.mm.kernel.g.afC().b(this);
+      com.tencent.mm.plugin.report.service.h.wUl.b(localArrayList, false);
+      com.tencent.mm.kernel.g.agS().b(this);
       AppMethodBeat.o(176885);
       return;
     }
   }
   
-  public final void ce(boolean paramBoolean) {}
+  public final void cf(boolean paramBoolean) {}
 }
 
 

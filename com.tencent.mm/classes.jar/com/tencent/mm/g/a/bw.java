@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class bw
   extends b
 {
-  public a ddY;
+  public a dbu;
   
   public bw()
   {
@@ -16,20 +16,20 @@ public final class bw
   private bw(byte paramByte)
   {
     AppMethodBeat.i(149858);
-    this.ddY = new a();
-    this.ESR = false;
+    this.dbu = new a();
+    this.Gqe = false;
     this.callback = null;
     AppMethodBeat.o(149858);
   }
   
   public static final class a
   {
-    public long ddZ;
+    public long dbv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.bw
  * JD-Core Version:    0.7.0.1
  */

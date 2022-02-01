@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.gallery.ui;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
@@ -9,8 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.RecyclerView.w;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -18,22 +20,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   extends RecyclerView.h
 {
-  private Drawable ajR;
-  private boolean rIY;
-  private int rIZ;
-  private int rJa;
+  private Drawable akL;
+  private boolean sQN;
+  private int sQO;
+  private int sQP;
   
   private c(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(111507);
-    this.rIZ = paramInt1;
-    this.rIY = paramBoolean;
-    this.rJa = paramInt2;
-    this.ajR = new ColorDrawable(paramInt3);
+    this.sQO = paramInt1;
+    this.sQN = paramBoolean;
+    this.sQP = paramInt2;
+    this.akL = new ColorDrawable(paramInt3);
     AppMethodBeat.o(111507);
   }
   
-  private static boolean ad(int paramInt1, int paramInt2, int paramInt3)
+  private static boolean ae(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 % paramInt2 == 0)
     {
@@ -47,14 +49,14 @@ public final class c
     return false;
   }
   
-  private static boolean b(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, int paramInt3)
+  private static boolean c(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(111511);
     paramRecyclerView = paramRecyclerView.getLayoutManager();
     boolean bool;
     if ((paramRecyclerView instanceof GridLayoutManager))
     {
-      bool = ad(paramInt1, paramInt2, paramInt3);
+      bool = ae(paramInt1, paramInt2, paramInt3);
       AppMethodBeat.o(111511);
       return bool;
     }
@@ -62,7 +64,7 @@ public final class c
     {
       if (((StaggeredGridLayoutManager)paramRecyclerView).mOrientation == 1)
       {
-        bool = ad(paramInt1, paramInt2, paramInt3);
+        bool = ae(paramInt1, paramInt2, paramInt3);
         AppMethodBeat.o(111511);
         return bool;
       }
@@ -76,43 +78,43 @@ public final class c
     return false;
   }
   
-  private static int r(RecyclerView paramRecyclerView)
+  private static int z(RecyclerView paramRecyclerView)
   {
     AppMethodBeat.i(111510);
     paramRecyclerView = paramRecyclerView.getLayoutManager();
     int i;
     if ((paramRecyclerView instanceof GridLayoutManager)) {
-      i = ((GridLayoutManager)paramRecyclerView).amN;
+      i = ((GridLayoutManager)paramRecyclerView).anI;
     }
     for (;;)
     {
       AppMethodBeat.o(111510);
       return i;
       if ((paramRecyclerView instanceof StaggeredGridLayoutManager)) {
-        i = ((StaggeredGridLayoutManager)paramRecyclerView).amN;
+        i = ((StaggeredGridLayoutManager)paramRecyclerView).anI;
       } else {
         i = -1;
       }
     }
   }
   
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(111509);
-    int i = r(paramRecyclerView);
+    int i = z(paramRecyclerView);
     int n = paramRecyclerView.getAdapter().getItemCount();
-    int i1 = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).aqL.lm();
+    int i1 = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).arH.lu();
     if (i1 < 0)
     {
       AppMethodBeat.o(111509);
       return;
     }
     int m = i1 % i;
-    int j = this.rJa * m / i;
-    int k = this.rJa;
-    m = (m + 1) * this.rJa / i;
-    if ((b(paramRecyclerView, i1, i, n)) && (!this.rIY)) {}
-    for (i = 0;; i = this.rIZ)
+    int j = this.sQP * m / i;
+    int k = this.sQP;
+    m = (m + 1) * this.sQP / i;
+    if ((c(paramRecyclerView, i1, i, n)) && (!this.sQN)) {}
+    for (i = 0;; i = this.sQO)
     {
       paramRect.set(j, 0, k - m, i);
       AppMethodBeat.o(111509);
@@ -120,7 +122,7 @@ public final class c
     }
   }
   
-  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     int j = 0;
     AppMethodBeat.i(164809);
@@ -134,19 +136,19 @@ public final class c
     int i4;
     while (i < k)
     {
-      params = paramRecyclerView.getChildAt(i);
-      if ((!b(paramRecyclerView, i, r(paramRecyclerView), k)) || (this.rIY))
+      paramt = paramRecyclerView.getChildAt(i);
+      if ((!c(paramRecyclerView, i, z(paramRecyclerView), k)) || (this.sQN))
       {
-        localLayoutParams = (RecyclerView.LayoutParams)params.getLayoutParams();
-        m = params.getLeft();
+        localLayoutParams = (RecyclerView.LayoutParams)paramt.getLayoutParams();
+        m = paramt.getLeft();
         n = localLayoutParams.leftMargin;
-        i1 = params.getRight();
+        i1 = paramt.getRight();
         i2 = localLayoutParams.rightMargin;
-        i3 = params.getBottom();
+        i3 = paramt.getBottom();
         i3 = localLayoutParams.bottomMargin + i3;
-        i4 = this.rIZ;
-        this.ajR.setBounds(m - n, i3, i1 + i2, i4 + i3);
-        this.ajR.draw(paramCanvas);
+        i4 = this.sQO;
+        this.akL.setBounds(m - n, i3, i1 + i2, i4 + i3);
+        this.akL.draw(paramCanvas);
       }
       i += 1;
     }
@@ -154,32 +156,54 @@ public final class c
     i = j;
     while (i < m)
     {
-      params = paramRecyclerView.getChildAt(i);
-      if ((paramRecyclerView.bh(params).ln() + 1) % r(paramRecyclerView) != 0)
+      paramt = paramRecyclerView.getChildAt(i);
+      if ((paramRecyclerView.bh(paramt).lv() + 1) % z(paramRecyclerView) != 0)
       {
-        localLayoutParams = (RecyclerView.LayoutParams)params.getLayoutParams();
-        n = params.getTop();
+        localLayoutParams = (RecyclerView.LayoutParams)paramt.getLayoutParams();
+        n = paramt.getTop();
         i1 = localLayoutParams.topMargin;
-        i2 = params.getBottom();
+        i2 = paramt.getBottom();
         i3 = localLayoutParams.bottomMargin;
-        i4 = this.rIZ;
-        int i5 = params.getRight() + localLayoutParams.rightMargin;
-        k = this.rJa + i5;
+        i4 = this.sQO;
+        int i5 = paramt.getRight() + localLayoutParams.rightMargin;
+        k = this.sQP + i5;
         j = k;
         if (i == m - 1) {
-          j = k - this.rJa;
+          j = k - this.sQP;
         }
-        this.ajR.setBounds(i5, n - i1, j, i2 + i3 + i4);
-        this.ajR.draw(paramCanvas);
+        this.akL.setBounds(i5, n - i1, j, i2 + i3 + i4);
+        this.akL.draw(paramCanvas);
       }
       i += 1;
     }
     AppMethodBeat.o(164809);
   }
+  
+  public static final class a
+  {
+    int mColor;
+    Context mContext;
+    Resources mResources;
+    boolean sQN;
+    int sQO;
+    int sQP;
+    
+    public a(Context paramContext)
+    {
+      AppMethodBeat.i(111506);
+      this.mContext = paramContext;
+      this.mResources = paramContext.getResources();
+      this.sQN = true;
+      this.sQO = 0;
+      this.sQP = 0;
+      this.mColor = -1;
+      AppMethodBeat.o(111506);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.c
  * JD-Core Version:    0.7.0.1
  */

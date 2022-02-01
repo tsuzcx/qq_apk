@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class n$3
   implements View.OnTouchListener
 {
@@ -20,19 +20,19 @@ final class n$3
     k.g(paramMotionEvent, "event");
     if (paramMotionEvent.getAction() == 0)
     {
-      paramView = this.Bvo;
-      if (paramView.BiC != -3) {
+      paramView = this.CNx;
+      if (paramView.CAP != -3) {
         break label46;
       }
-      paramView.Bvm.hideVKB();
+      paramView.CNv.hideVKB();
     }
     for (;;)
     {
       AppMethodBeat.o(82693);
       return true;
       label46:
-      if ((paramView.getSayFooter().erj()) && (paramView.bcB())) {
-        paramView.getSayFooter().dCL();
+      if ((paramView.getSayFooter().eGD()) && (paramView.bjw())) {
+        paramView.getSayFooter().dRi();
       } else {
         paramView.hide();
       }

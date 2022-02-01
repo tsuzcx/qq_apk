@@ -6,42 +6,42 @@ import com.tencent.mm.pluginsdk.model.app.am;
 final class JsApiLaunchApplicationForNative$a
   implements am
 {
-  volatile boolean doI;
-  volatile boolean gWb;
-  a jAT;
-  volatile boolean jxM;
-  volatile boolean jxN;
+  volatile boolean dmq;
+  volatile boolean hwA;
+  volatile boolean jYi;
+  volatile boolean jYj;
+  a kbp;
   
   JsApiLaunchApplicationForNative$a(a parama)
   {
-    this.jAT = parama;
+    this.kbp = parama;
   }
   
-  final void fN(boolean paramBoolean)
+  final void gj(boolean paramBoolean)
   {
     AppMethodBeat.i(45848);
-    this.doI = paramBoolean;
-    this.jxN = true;
-    if ((this.gWb) && (this.jAT != null)) {
-      this.jAT.t(paramBoolean, this.jxM);
+    this.dmq = paramBoolean;
+    this.jYj = true;
+    if ((this.hwA) && (this.kbp != null)) {
+      this.kbp.u(paramBoolean, this.jYi);
     }
     AppMethodBeat.o(45848);
   }
   
-  public final void u(boolean paramBoolean1, boolean paramBoolean2)
+  public final void v(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(195809);
-    this.gWb = true;
-    this.jxM = paramBoolean1;
-    if ((this.jxN) && (this.jAT != null)) {
-      this.jAT.t(this.doI, paramBoolean1);
+    AppMethodBeat.i(186572);
+    this.hwA = true;
+    this.jYi = paramBoolean1;
+    if ((this.jYj) && (this.kbp != null)) {
+      this.kbp.u(this.dmq, paramBoolean1);
     }
-    AppMethodBeat.o(195809);
+    AppMethodBeat.o(186572);
   }
   
   static abstract interface a
   {
-    public abstract void t(boolean paramBoolean1, boolean paramBoolean2);
+    public abstract void u(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 

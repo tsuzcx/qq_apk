@@ -2,13 +2,13 @@ package com.d.a.a.a;
 
 public final class d
 {
-  private final a bVm;
-  private final String bVn;
+  private final a bSU;
+  private final String bSV;
   
   private d(a parama, String paramString)
   {
-    this.bVm = parama;
-    this.bVn = ((String)a.checkNotNull(paramString));
+    this.bSU = parama;
+    this.bSV = ((String)a.checkNotNull(paramString));
   }
 }
 

@@ -5,10 +5,10 @@ import com.tencent.mm.plugin.report.service.h;
 
 public final class b
 {
-  public static void lI(int paramInt)
+  public static void lA(int paramInt)
   {
     AppMethodBeat.i(95176);
-    h.vKh.idkeyStat(270L, paramInt, 1L, true);
+    h.wUl.idkeyStat(270L, paramInt, 1L, true);
     AppMethodBeat.o(95176);
   }
 }

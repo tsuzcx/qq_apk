@@ -1,20 +1,20 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.clt;
-import com.tencent.mm.protocal.protobuf.clu;
-import com.tencent.mm.protocal.protobuf.clz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cra;
+import com.tencent.mm.protocal.protobuf.crb;
+import com.tencent.mm.protocal.protobuf.crg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class r
   extends n
@@ -22,23 +22,23 @@ public final class r
 {
   private g callback;
   private String errMsg;
-  private clu fpc;
+  private crb fsC;
   private final b rr;
   
-  public r(String paramString, int paramInt, clz paramclz)
+  public r(String paramString, int paramInt, crg paramcrg)
   {
     AppMethodBeat.i(182085);
-    ad.i("MicroMsg.roomTodo.NetSceneRoomToolsAlterTodo", "NetSceneRoomToolsAlterTodo chatRoomName:%s op:%s roomToolsTodo%s", new Object[] { bt.by(paramString, ""), Integer.valueOf(paramInt), y.a(paramclz) });
+    ac.i("MicroMsg.roomTodo.NetSceneRoomToolsAlterTodo", "NetSceneRoomToolsAlterTodo chatRoomName:%s op:%s roomToolsTodo%s", new Object[] { bs.bG(paramString, ""), Integer.valueOf(paramInt), y.a(paramcrg) });
     Object localObject = new b.a();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/roomtoolsaltertodo";
     ((b.a)localObject).funcId = 3618;
-    ((b.a)localObject).gUU = new clt();
-    ((b.a)localObject).gUV = new clu();
-    this.rr = ((b.a)localObject).atI();
-    localObject = (clt)this.rr.gUS.gUX;
-    ((clt)localObject).Cxb = bt.by(paramString, "");
-    ((clt)localObject).EgW = paramInt;
-    ((clt)localObject).EgX = paramclz;
+    ((b.a)localObject).hvt = new cra();
+    ((b.a)localObject).hvu = new crb();
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (cra)this.rr.hvr.hvw;
+    ((cra)localObject).DPx = bs.bG(paramString, "");
+    ((cra)localObject).FDV = paramInt;
+    ((cra)localObject).FDW = paramcrg;
     AppMethodBeat.o(182085);
   }
   
@@ -59,8 +59,8 @@ public final class r
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(182087);
-    ad.d("MicroMsg.roomTodo.NetSceneRoomToolsAlterTodo", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.fpc = ((clu)((b)paramq).gUT.gUX);
+    ac.d("MicroMsg.roomTodo.NetSceneRoomToolsAlterTodo", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.fsC = ((crb)((b)paramq).hvs.hvw);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     this.errMsg = paramString;
     AppMethodBeat.o(182087);
@@ -68,7 +68,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.r
  * JD-Core Version:    0.7.0.1
  */

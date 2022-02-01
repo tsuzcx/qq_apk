@@ -11,7 +11,7 @@ import java.io.OutputStream;
 
 public final class e
 {
-  public static byte[] bD(byte[] paramArrayOfByte)
+  public static byte[] bC(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97701);
     Object localObject = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
@@ -28,7 +28,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.e
  * JD-Core Version:    0.7.0.1
  */

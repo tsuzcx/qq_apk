@@ -10,19 +10,19 @@ import java.lang.ref.WeakReference;
 final class j$a
   extends AsyncTask<String, Integer, String>
 {
-  private final WeakReference<Context> sXj;
-  private final WeakReference<View> sXk;
+  private final WeakReference<Context> ufw;
+  private final WeakReference<View> ufx;
   
   j$a(Context paramContext, View paramView)
   {
     AppMethodBeat.i(56163);
-    this.sXj = new WeakReference(paramContext);
-    this.sXk = new WeakReference(paramView);
+    this.ufw = new WeakReference(paramContext);
+    this.ufx = new WeakReference(paramView);
     AppMethodBeat.o(56163);
   }
   
   /* Error */
-  private static String afg(String paramString)
+  private static String aka(String paramString)
   {
     // Byte code:
     //   0: ldc 47
@@ -68,7 +68,7 @@ final class j$a
     //   64: iload_1
     //   65: invokestatic 75	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   68: invokevirtual 78	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   71: invokestatic 84	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   71: invokestatic 84	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   74: aload 4
     //   76: astore_2
     //   77: aload_0
@@ -91,7 +91,7 @@ final class j$a
     //   106: aload_0
     //   107: invokevirtual 95	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   110: aastore
-    //   111: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   111: invokestatic 99	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   114: aload 4
     //   116: astore_2
     //   117: goto -29 -> 88
@@ -113,7 +113,7 @@ final class j$a
     //   141: aload 4
     //   143: invokevirtual 95	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   146: aastore
-    //   147: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   147: invokestatic 99	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   150: aload_3
     //   151: astore_2
     //   152: aload_0
@@ -133,7 +133,7 @@ final class j$a
     //   176: aload_0
     //   177: invokevirtual 95	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   180: aastore
-    //   181: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   181: invokestatic 99	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   184: aload_3
     //   185: astore_2
     //   186: goto -98 -> 88
@@ -156,7 +156,7 @@ final class j$a
     //   216: aload_2
     //   217: invokevirtual 95	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   220: aastore
-    //   221: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   221: invokestatic 99	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   224: goto -26 -> 198
     //   227: astore_2
     //   228: aload 4
@@ -196,7 +196,7 @@ final class j$a
   protected final void onPreExecute()
   {
     AppMethodBeat.i(56164);
-    View localView = (View)this.sXk.get();
+    View localView = (View)this.ufx.get();
     if (localView != null) {
       localView.setVisibility(0);
     }

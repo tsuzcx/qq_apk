@@ -10,33 +10,33 @@ import com.tencent.mm.vfs.q;
 final class d$a
   implements Runnable
 {
-  String yMs;
+  String Aaj;
   
   public d$a(String paramString)
   {
-    this.yMs = paramString;
+    this.Aaj = paramString;
   }
   
   public final void run()
   {
     AppMethodBeat.i(125869);
-    Object localObject = new e(b.aih() + "topstory/trace.info");
+    Object localObject = new e(b.aph() + "topstory/trace.info");
     if ((((e)localObject).exists()) && (((e)localObject).length() > 2048L)) {
       ((e)localObject).delete();
     }
-    if (!((e)localObject).fhT().exists()) {
-      ((e)localObject).fhT().mkdirs();
+    if (!((e)localObject).fxU().exists()) {
+      ((e)localObject).fxU().mkdirs();
     }
-    this.yMs = ("Trace:\n" + h.formatTime("yyyy-MM-dd HH:mm:ss", System.currentTimeMillis() / 1000L) + "\n" + this.yMs);
-    localObject = q.B(((e)localObject).fhU());
-    byte[] arrayOfByte = this.yMs.getBytes();
+    this.Aaj = ("Trace:\n" + h.formatTime("yyyy-MM-dd HH:mm:ss", System.currentTimeMillis() / 1000L) + "\n" + this.Aaj);
+    localObject = q.B(((e)localObject).fxV());
+    byte[] arrayOfByte = this.Aaj.getBytes();
     i.e((String)localObject, arrayOfByte, arrayOfByte.length);
     AppMethodBeat.o(125869);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.d.a
  * JD-Core Version:    0.7.0.1
  */

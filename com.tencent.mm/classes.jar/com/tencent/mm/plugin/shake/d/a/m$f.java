@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.util.Map;
 
 public final class m$f
 {
-  public String bNK;
+  public String bLs;
   public String userName;
-  public String wob;
+  public String xzs;
   
-  public static f anj(String paramString)
+  public static f ass(String paramString)
   {
     AppMethodBeat.i(28346);
-    Map localMap = bw.K(paramString, "bizprofile");
+    Map localMap = bv.L(paramString, "bizprofile");
     if (localMap != null) {}
     for (;;)
     {
       try
       {
         paramString = new f();
-        paramString.bNK = bt.nullAsNil((String)localMap.get(".bizprofile.nickname"));
-        paramString.userName = bt.nullAsNil((String)localMap.get(".bizprofile.username"));
-        paramString.wob = bt.nullAsNil((String)localMap.get(".bizprofile.showchat"));
+        paramString.bLs = bs.nullAsNil((String)localMap.get(".bizprofile.nickname"));
+        paramString.userName = bs.nullAsNil((String)localMap.get(".bizprofile.username"));
+        paramString.xzs = bs.nullAsNil((String)localMap.get(".bizprofile.showchat"));
         AppMethodBeat.o(28346);
         return paramString;
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
         paramString = null;
         continue;
       }

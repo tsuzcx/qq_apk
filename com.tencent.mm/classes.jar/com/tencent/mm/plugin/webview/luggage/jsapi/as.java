@@ -8,21 +8,19 @@ import android.content.Intent;
 import android.widget.Toast;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.g.a.sk;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.aj.d;
+import com.tencent.mm.g.a.st;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.ar.a;
 import com.tencent.mm.model.ar.b;
 import com.tencent.mm.model.ar.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bj;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,7 +37,7 @@ public class as
       localObject2 = ((JSONObject)localObject3).optString("username");
       if ((localObject2 == null) || (((String)localObject2).length() == 0))
       {
-        ad.e("MicroMsg.JsApiProfile", "doProfile fail, username is null");
+        ac.e("MicroMsg.JsApiProfile", "doProfile fail, username is null");
         parama.f("fail", null);
         AppMethodBeat.o(78604);
         return;
@@ -47,19 +45,19 @@ public class as
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiProfile", "parase json fail");
+      ac.e("MicroMsg.JsApiProfile", "parase json fail");
       parama.f("fail", null);
       AppMethodBeat.o(78604);
       return;
     }
-    if (bt.isNullOrNil((String)localObject2))
+    if (bs.isNullOrNil((String)localObject2))
     {
-      com.tencent.mm.ipcinvoker.p.y(new Runnable()
+      com.tencent.mm.ipcinvoker.p.z(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78600);
-          Toast.makeText(aj.getContext(), aj.getContext().getString(2131759562, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
+          Toast.makeText(com.tencent.mm.sdk.platformtools.ai.getContext(), com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131759562, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
           AppMethodBeat.o(78600);
         }
       });
@@ -67,44 +65,44 @@ public class as
       AppMethodBeat.o(78604);
       return;
     }
-    g.afz();
-    if (!com.tencent.mm.kernel.a.aeH())
+    g.agP();
+    if (!com.tencent.mm.kernel.a.afX())
     {
-      ad.e("MicroMsg.JsApiProfile", "doProfile, MMCore.hasCfgDefaultUin() is false");
+      ac.e("MicroMsg.JsApiProfile", "doProfile, MMCore.hasCfgDefaultUin() is false");
       parama.f("fail", null);
       AppMethodBeat.o(78604);
       return;
     }
-    Object localObject1 = ((k)g.ab(k.class)).apM().aHY((String)localObject2);
+    Object localObject1 = ((k)g.ab(k.class)).awB().aNt((String)localObject2);
     if (localObject1 != null)
     {
       paramString = (String)localObject1;
-      if ((int)((com.tencent.mm.n.b)localObject1).fId > 0) {}
+      if ((int)((com.tencent.mm.n.b)localObject1).fLJ > 0) {}
     }
     else
     {
-      paramString = ((k)g.ab(k.class)).apM().aHU((String)localObject2);
+      paramString = ((k)g.ab(k.class)).awB().aNp((String)localObject2);
     }
     localObject1 = new Intent();
     Object localObject3 = ((JSONObject)localObject3).optString("profileReportInfo");
-    if (!bt.isNullOrNil((String)localObject3)) {
+    if (!bs.isNullOrNil((String)localObject3)) {
       ((Intent)localObject1).putExtra("key_add_contact_report_info", (String)localObject3);
     }
-    if ((paramString != null) && ((int)paramString.fId > 0))
+    if ((paramString != null) && ((int)paramString.fLJ > 0))
     {
       ((Intent)localObject1).addFlags(268435456);
       ((Intent)localObject1).putExtra("Contact_User", paramString.field_username);
-      if (paramString.eKB()) {
+      if (paramString.fad()) {
         ((Intent)localObject1).putExtra("Contact_Scene", 42);
       }
-      if (com.tencent.mm.n.b.ls(paramString.field_type))
+      if (com.tencent.mm.n.b.ln(paramString.field_type))
       {
-        localObject2 = new sk();
-        ((sk)localObject2).dxW.intent = ((Intent)localObject1);
-        ((sk)localObject2).dxW.username = paramString.field_username;
-        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
+        localObject2 = new st();
+        ((st)localObject2).dvI.intent = ((Intent)localObject1);
+        ((st)localObject2).dvI.username = paramString.field_username;
+        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject2);
       }
-      com.tencent.mm.plugin.webview.a.a.hYt.c((Intent)localObject1, paramContext);
+      com.tencent.mm.plugin.webview.a.a.iyx.c((Intent)localObject1, paramContext);
       parama.f(null, null);
       AppMethodBeat.o(78604);
       return;
@@ -115,19 +113,19 @@ public class as
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(78601);
-        ar.a.gMW.tX(this.fqK);
+        ar.a.hnw.yd(this.fur);
         parama.f("cancel", null);
         AppMethodBeat.o(78601);
       }
     });
-    ar.a.gMW.a((String)localObject2, "", new ar.b.a()
+    ar.a.hnw.a((String)localObject2, "", new ar.b.a()
     {
       public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(78603);
         if (paramContext == null)
         {
-          ad.w("MicroMsg.JsApiProfile", "getNow callback, msghandler has already been detached!");
+          ac.w("MicroMsg.JsApiProfile", "getNow callback, msghandler has already been detached!");
           parama.f("fail", null);
           AppMethodBeat.o(78603);
           return;
@@ -135,46 +133,46 @@ public class as
         if (paramString != null) {
           paramString.dismiss();
         }
-        af localaf2 = ((k)g.ab(k.class)).apM().aHY(paramAnonymousString);
-        af localaf1;
-        if (localaf2 != null)
+        com.tencent.mm.storage.ai localai2 = ((k)g.ab(k.class)).awB().aNt(paramAnonymousString);
+        com.tencent.mm.storage.ai localai1;
+        if (localai2 != null)
         {
-          localaf1 = localaf2;
-          if ((int)localaf2.fId > 0) {}
+          localai1 = localai2;
+          if ((int)localai2.fLJ > 0) {}
         }
         else
         {
-          localaf1 = ((k)g.ab(k.class)).apM().aHU(paramAnonymousString);
+          localai1 = ((k)g.ab(k.class)).awB().aNp(paramAnonymousString);
         }
-        if ((localaf1 == null) || ((int)localaf1.fId <= 0)) {
+        if ((localai1 == null) || ((int)localai1.fLJ <= 0)) {
           paramAnonymousBoolean = false;
         }
         while (!paramAnonymousBoolean)
         {
-          com.tencent.mm.ipcinvoker.p.y(new Runnable()
+          com.tencent.mm.ipcinvoker.p.z(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(78602);
-              Toast.makeText(aj.getContext(), as.3.this.val$context.getString(2131759562, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
+              Toast.makeText(com.tencent.mm.sdk.platformtools.ai.getContext(), as.3.this.val$context.getString(2131759562, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
               AppMethodBeat.o(78602);
             }
           });
           parama.f("fail", null);
           AppMethodBeat.o(78603);
           return;
-          paramAnonymousString = localaf1.field_username;
+          paramAnonymousString = localai1.field_username;
         }
-        c.ac(paramAnonymousString, 3);
-        com.tencent.mm.ak.p.auH().vP(paramAnonymousString);
+        c.ag(paramAnonymousString, 3);
+        com.tencent.mm.aj.p.aBy().zV(paramAnonymousString);
         this.val$intent.addFlags(268435456);
         this.val$intent.putExtra("Contact_User", paramAnonymousString);
-        if (localaf1.eKB())
+        if (localai1.fad())
         {
-          com.tencent.mm.plugin.report.service.h.vKh.kvStat(10298, localaf1.field_username + ",42");
+          com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, localai1.field_username + ",42");
           this.val$intent.putExtra("Contact_Scene", 42);
         }
-        com.tencent.mm.plugin.webview.a.a.hYt.c(this.val$intent, paramContext);
+        com.tencent.mm.plugin.webview.a.a.iyx.c(this.val$intent, paramContext);
         parama.f(null, null);
         AppMethodBeat.o(78603);
       }
@@ -184,7 +182,7 @@ public class as
   
   public final void b(a.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 2;
   }

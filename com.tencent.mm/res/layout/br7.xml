@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@drawable/tz" android:layout_width="fill_parent" android:layout_height="379.0dip"
+<com.tencent.mm.view.TouchableLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/c5" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/hrz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/hl0" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <TextView android:textSize="@dimen/c0" android:textStyle="bold" android:textColor="@color/FG_2" android:id="@id/hrx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/hkz" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/hrz" />
-    <ImageView android:id="@id/hry" android:layout_width="@dimen/bw" android:layout_height="@dimen/bw" android:layout_marginTop="@dimen/c8" android:src="@drawable/c7h" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/hrx" />
-    <TextView android:textSize="@dimen/c5" android:textColor="@color/c" android:gravity="center" android:id="@id/hrw" android:background="@drawable/ts" android:layout_width="@dimen/c2" android:layout_height="@dimen/cb" android:layout_marginTop="@dimen/cd" android:text="@string/hky" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/hry" />
-</android.support.constraint.ConstraintLayout>
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/f31" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/aix" app:refreshLayout="@layout/bde">
+            <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/g9h" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</com.tencent.mm.view.TouchableLayout>

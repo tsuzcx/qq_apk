@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public com.tencent.mm.sdk.b.c ADg;
-  public com.tencent.mm.sdk.b.c ADh;
-  private com.tencent.mm.sdk.b.c ADi;
-  public com.tencent.mm.sdk.b.c ADj;
+  public com.tencent.mm.sdk.b.c BVB;
+  public com.tencent.mm.sdk.b.c BVC;
+  private com.tencent.mm.sdk.b.c BVD;
+  public com.tencent.mm.sdk.b.c BVE;
   
   public f()
   {
     AppMethodBeat.i(129916);
-    this.ADg = new c();
-    this.ADh = new f.1(this);
-    this.ADi = new f.2(this);
-    this.ADj = new f.3(this);
+    this.BVB = new c();
+    this.BVC = new f.1(this);
+    this.BVD = new f.2(this);
+    this.BVE = new f.3(this);
     AppMethodBeat.o(129916);
   }
 }

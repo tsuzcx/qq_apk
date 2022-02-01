@@ -1,228 +1,74 @@
 package com.tencent.liteav.basic.d;
 
-import android.graphics.Bitmap;
 import android.opengl.GLES20;
-import android.opengl.GLES30;
-import android.opengl.GLUtils;
-import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
 
 public class i
+  extends h
 {
-  public static FloatBuffer a;
-  public static FloatBuffer b;
-  public static FloatBuffer c;
-  public static FloatBuffer d;
-  public static FloatBuffer e;
-  private static float[] f;
-  private static float[] g;
-  private static float[] h;
-  private static float[] i;
-  private static float[] j;
-  private static int k;
+  public boolean r;
+  private float[] s;
+  private int t;
   
-  static
+  public i()
   {
-    AppMethodBeat.i(14582);
-    f = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    g = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-    h = new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F };
-    i = new float[] { 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-    j = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F };
-    a = a(f);
-    b = a(g);
-    c = a(h);
-    d = a(i);
-    e = a(j);
-    k = 2;
-    AppMethodBeat.o(14582);
+    super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nuniform mat4 textureTransform;\nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = (textureTransform * inputTextureCoordinate).xy;\n}", "#extension GL_OES_EGL_image_external : require\n\nvarying lowp vec2 textureCoordinate;\n \nuniform samplerExternalOES inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}");
+    AppMethodBeat.i(193061);
+    this.s = new float[16];
+    this.r = false;
+    this.o = true;
+    AppMethodBeat.o(193061);
   }
   
-  public static final int a()
+  public void a(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
   {
-    return k;
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(14575);
-    paramInt1 = a(paramInt1, paramInt2, paramInt3, paramInt4, null);
-    AppMethodBeat.o(14575);
-    return paramInt1;
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, IntBuffer paramIntBuffer)
-  {
-    AppMethodBeat.i(14574);
-    int m = c();
-    GLES20.glBindTexture(3553, m);
-    GLES20.glTexImage2D(3553, 0, paramInt3, paramInt1, paramInt2, 0, paramInt4, 5121, paramIntBuffer);
-    GLES20.glBindTexture(3553, 0);
-    AppMethodBeat.o(14574);
-    return m;
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(14572);
-    GLES20.glGenTextures(1, paramArrayOfInt, 0);
-    GLES20.glBindTexture(3553, paramArrayOfInt[0]);
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    GLES20.glTexParameteri(3553, 10241, 9728);
-    GLES20.glTexParameteri(3553, 10240, 9729);
-    GLES20.glTexImage2D(3553, 0, paramInt3, paramInt1, paramInt2, 0, paramInt4, 5121, null);
-    paramInt1 = paramArrayOfInt[0];
-    AppMethodBeat.o(14572);
-    return paramInt1;
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(14577);
-    GLES30.glGenBuffers(1, paramArrayOfInt, 0);
-    GLES30.glBindBuffer(35051, paramArrayOfInt[0]);
-    GLES30.glBufferData(35051, paramInt1 * paramInt2 * 4, null, 35049);
-    GLES30.glBindBuffer(35051, 0);
-    paramInt1 = paramArrayOfInt[0];
-    AppMethodBeat.o(14577);
-    return paramInt1;
-  }
-  
-  public static int a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(14576);
-    int[] arrayOfInt = new int[1];
-    if (paramInt == -1)
+    AppMethodBeat.i(193063);
+    GLES20.glUseProgram(this.a);
+    k();
+    if ((!m()) || (this.s == null))
     {
-      GLES20.glGenTextures(1, arrayOfInt, 0);
-      GLES20.glBindTexture(3553, arrayOfInt[0]);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
+      AppMethodBeat.o(193063);
+      return;
     }
-    for (;;)
+    paramFloatBuffer1.position(0);
+    GLES20.glVertexAttribPointer(this.b, 2, 5126, false, 0, paramFloatBuffer1);
+    GLES20.glEnableVertexAttribArray(this.b);
+    paramFloatBuffer2.position(0);
+    GLES20.glVertexAttribPointer(this.d, 2, 5126, false, 0, paramFloatBuffer2);
+    GLES20.glEnableVertexAttribArray(this.d);
+    GLES20.glUniformMatrix4fv(this.t, 1, false, this.s, 0);
+    if (paramInt != -1)
     {
-      if (paramBoolean) {
-        paramBitmap.recycle();
-      }
-      paramInt = arrayOfInt[0];
-      AppMethodBeat.o(14576);
-      return paramInt;
-      GLES20.glBindTexture(3553, paramInt);
-      GLUtils.texSubImage2D(3553, 0, 0, 0, paramBitmap);
-      arrayOfInt[0] = paramInt;
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(36197, paramInt);
+      GLES20.glUniform1i(this.c, 0);
     }
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glDisableVertexAttribArray(this.b);
+    GLES20.glDisableVertexAttribArray(this.d);
+    GLES20.glBindTexture(36197, 0);
+    AppMethodBeat.o(193063);
   }
   
-  public static int a(String paramString, int paramInt)
+  public void a(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(14580);
-    int[] arrayOfInt = new int[1];
-    paramInt = GLES20.glCreateShader(paramInt);
-    GLES20.glShaderSource(paramInt, paramString);
-    GLES20.glCompileShader(paramInt);
-    GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
-    if (arrayOfInt[0] == 0)
+    this.s = paramArrayOfFloat;
+  }
+  
+  public boolean b()
+  {
+    AppMethodBeat.i(193062);
+    boolean bool = super.b();
+    this.t = GLES20.glGetUniformLocation(this.a, "textureTransform");
+    if ((bool) && (GLES20.glGetError() == 0))
     {
-      TXCLog.w("Load Shader Failed", "Compilation\n" + GLES20.glGetShaderInfoLog(paramInt));
-      AppMethodBeat.o(14580);
-      return 0;
+      AppMethodBeat.o(193062);
+      return true;
     }
-    AppMethodBeat.o(14580);
-    return paramInt;
+    AppMethodBeat.o(193062);
+    return false;
   }
-  
-  public static int a(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(14581);
-    int[] arrayOfInt = new int[1];
-    int m = a(paramString1, 35633);
-    if (m == 0)
-    {
-      TXCLog.w("Load Program", "Vertex Shader Failed");
-      AppMethodBeat.o(14581);
-      return 0;
-    }
-    int n = a(paramString2, 35632);
-    if (n == 0)
-    {
-      TXCLog.w("Load Program", "Fragment Shader Failed");
-      AppMethodBeat.o(14581);
-      return 0;
-    }
-    int i1 = GLES20.glCreateProgram();
-    GLES20.glAttachShader(i1, m);
-    GLES20.glAttachShader(i1, n);
-    GLES20.glLinkProgram(i1);
-    GLES20.glGetProgramiv(i1, 35714, arrayOfInt, 0);
-    if (arrayOfInt[0] <= 0)
-    {
-      TXCLog.w("Load Program", "Linking Failed");
-      AppMethodBeat.o(14581);
-      return 0;
-    }
-    GLES20.glDeleteShader(m);
-    GLES20.glDeleteShader(n);
-    AppMethodBeat.o(14581);
-    return i1;
-  }
-  
-  public static FloatBuffer a(float[] paramArrayOfFloat)
-  {
-    AppMethodBeat.i(14573);
-    Object localObject = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4);
-    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-    localObject = ((ByteBuffer)localObject).asFloatBuffer();
-    ((FloatBuffer)localObject).put(paramArrayOfFloat);
-    ((FloatBuffer)localObject).position(0);
-    AppMethodBeat.o(14573);
-    return localObject;
-  }
-  
-  public static void a(int paramInt)
-  {
-    k = paramInt;
-  }
-  
-  public static int b()
-  {
-    AppMethodBeat.i(14578);
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    GLES20.glBindTexture(36197, arrayOfInt[0]);
-    GLES20.glTexParameterf(36197, 10241, 9729.0F);
-    GLES20.glTexParameterf(36197, 10240, 9729.0F);
-    GLES20.glTexParameteri(36197, 10242, 33071);
-    GLES20.glTexParameteri(36197, 10243, 33071);
-    int m = arrayOfInt[0];
-    AppMethodBeat.o(14578);
-    return m;
-  }
-  
-  public static int c()
-  {
-    AppMethodBeat.i(14579);
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    GLES20.glBindTexture(3553, arrayOfInt[0]);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    GLES20.glBindTexture(3553, 0);
-    int m = arrayOfInt[0];
-    AppMethodBeat.o(14579);
-    return m;
-  }
-  
-  public static abstract interface a {}
 }
 
 

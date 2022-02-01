@@ -5,18 +5,18 @@ import d.g.a.a;
 import d.g.b.k;
 import java.io.Serializable;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/UnsafeLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "initializer", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)V", "_value", "", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "toString", "", "writeReplace", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/UnsafeLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "initializer", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)V", "_value", "", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "toString", "", "writeReplace", "kotlin-stdlib"})
 public final class z<T>
   implements f<T>, Serializable
 {
-  private a<? extends T> JfO;
-  private Object JfP;
+  private a<? extends T> KTi;
+  private Object KTj;
   
   public z(a<? extends T> parama)
   {
     AppMethodBeat.i(129284);
-    this.JfO = parama;
-    this.JfP = w.JfU;
+    this.KTi = parama;
+    this.KTj = w.KTo;
     AppMethodBeat.o(129284);
   }
   
@@ -31,16 +31,16 @@ public final class z<T>
   public final T getValue()
   {
     AppMethodBeat.i(129281);
-    if (this.JfP == w.JfU)
+    if (this.KTj == w.KTo)
     {
-      localObject = this.JfO;
+      localObject = this.KTi;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      this.JfP = ((a)localObject).invoke();
-      this.JfO = null;
+      this.KTj = ((a)localObject).invoke();
+      this.KTi = null;
     }
-    Object localObject = this.JfP;
+    Object localObject = this.KTj;
     AppMethodBeat.o(129281);
     return localObject;
   }
@@ -48,7 +48,7 @@ public final class z<T>
   public final String toString()
   {
     AppMethodBeat.i(129282);
-    if (this.JfP != w.JfU) {}
+    if (this.KTj != w.KTo) {}
     for (int i = 1; i != 0; i = 0)
     {
       String str = String.valueOf(getValue());

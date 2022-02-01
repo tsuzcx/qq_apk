@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.service.i;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public class ar
@@ -19,17 +19,17 @@ public class ar
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78599);
-    ad.i("MicroMsg.JsApiPrivateOpenWeappFunctionalPage", "invokeInOwn");
-    Object localObject = parama.bZV.bZb;
+    ac.i("MicroMsg.JsApiPrivateOpenWeappFunctionalPage", "invokeInOwn");
+    Object localObject = parama.bWS.bVY;
     String str = ((JSONObject)localObject).optString("uuid");
     localObject = ((JSONObject)localObject).optString("req_data");
-    ((i)g.ab(i.class)).bS(str, (String)localObject);
+    ((i)g.ab(i.class)).cb(str, (String)localObject);
     parama.a("", null);
-    ((f)parama.bZU).ATw = true;
+    ((f)parama.bWR).ClJ = true;
     AppMethodBeat.o(78599);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 1;
   }

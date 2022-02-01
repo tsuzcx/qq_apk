@@ -1,0 +1,22 @@
+package io.flutter.plugin.a;
+
+import java.nio.ByteBuffer;
+
+public abstract interface l
+{
+  public abstract j J(ByteBuffer paramByteBuffer);
+  
+  public abstract Object K(ByteBuffer paramByteBuffer);
+  
+  public abstract ByteBuffer b(j paramj);
+  
+  public abstract ByteBuffer eE(Object paramObject);
+  
+  public abstract ByteBuffer i(String paramString1, String paramString2, Object paramObject);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     io.flutter.plugin.a.l
+ * JD-Core Version:    0.7.0.1
+ */

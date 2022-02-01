@@ -14,87 +14,87 @@ import com.tencent.mm.plugin.card.d.b;
 import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.MMActivity;
 
 public final class i
   implements k.a
 {
-  View hIZ;
-  View nCt;
-  TextView nCu;
-  ImageView nCv;
-  View nCw;
-  TextView nCx;
-  ImageView nCy;
-  MMActivity nqt;
-  boolean nxn = false;
+  View ijA;
+  MMActivity nTt;
+  boolean oan = false;
+  View ofu;
+  TextView ofv;
+  ImageView ofw;
+  View ofx;
+  TextView ofy;
+  ImageView ofz;
   
   public i(MMActivity paramMMActivity, View paramView)
   {
-    this.nqt = paramMMActivity;
-    this.hIZ = paramView;
+    this.nTt = paramMMActivity;
+    this.ijA = paramView;
   }
   
   public final void a(com.tencent.mm.plugin.card.model.g paramg)
   {
     AppMethodBeat.i(113517);
-    bLi();
+    bSv();
     AppMethodBeat.o(113517);
   }
   
-  final void bLi()
+  final void bSv()
   {
     AppMethodBeat.i(113518);
-    int i = am.bIZ().nrk;
-    if ((i > 0) && (this.nxn))
+    int i = am.bQm().nUk;
+    if ((i > 0) && (this.oan))
     {
-      String str1 = (String)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fhs, "");
-      String str2 = (String)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fht, "");
-      int j = this.nqt.getResources().getDimensionPixelOffset(2131165969);
+      String str1 = (String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GFh, "");
+      String str2 = (String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GFi, "");
+      int j = this.nTt.getResources().getDimensionPixelOffset(2131165969);
       if (!TextUtils.isEmpty(str2))
       {
-        n.a(this.nCv, str2, j, 2131231486, true);
+        n.a(this.ofw, str2, j, 2131231486, true);
         if (TextUtils.isEmpty(str1)) {
           break label186;
         }
-        this.nCu.setText(str1);
+        this.ofv.setText(str1);
         label109:
-        this.nCt.setVisibility(0);
-        if (this.nCw != null)
+        this.ofu.setVisibility(0);
+        if (this.ofx != null)
         {
           if (TextUtils.isEmpty(str2)) {
             break label216;
           }
-          n.a(this.nCy, str2, j, 2131231486, true);
+          n.a(this.ofz, str2, j, 2131231486, true);
           label145:
           if (TextUtils.isEmpty(str1)) {
             break label228;
           }
-          this.nCx.setText(str1);
+          this.ofy.setText(str1);
         }
       }
       for (;;)
       {
-        this.nCw.setVisibility(0);
+        this.ofx.setVisibility(0);
         AppMethodBeat.o(113518);
         return;
-        this.nCv.setImageResource(2131231486);
+        this.ofw.setImageResource(2131231486);
         break;
         label186:
-        this.nCu.setText(this.nqt.getString(2131756895, new Object[] { Integer.valueOf(i) }));
+        this.ofv.setText(this.nTt.getString(2131756895, new Object[] { Integer.valueOf(i) }));
         break label109;
         label216:
-        this.nCy.setImageResource(2131231486);
+        this.ofz.setImageResource(2131231486);
         break label145;
         label228:
-        this.nCx.setText(this.nqt.getString(2131756895, new Object[] { Integer.valueOf(i) }));
+        this.ofy.setText(this.nTt.getString(2131756895, new Object[] { Integer.valueOf(i) }));
       }
     }
-    this.nCt.setVisibility(8);
-    if (this.nCw != null) {
-      this.nCw.setVisibility(8);
+    this.ofu.setVisibility(8);
+    if (this.ofx != null) {
+      this.ofx.setVisibility(8);
     }
     AppMethodBeat.o(113518);
   }

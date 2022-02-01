@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.h.a;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.au;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ax;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public final class d
     super(paramf);
   }
   
-  public final void bUx() {}
+  public final void cbK() {}
   
   public final void clear()
   {
@@ -37,19 +37,19 @@ public final class d
     try
     {
       AppMethodBeat.i(108371);
-      Object localObject1 = k.getEmojiStorageMgr().FyZ.eNt();
-      boolean bool = a.bWs();
+      Object localObject1 = k.getEmojiStorageMgr().GYa.fcX();
+      boolean bool = a.cdF();
       this.mItemList = new ArrayList();
-      ad.v("MicroMsg.emoji.EmojiListMineData", "============= refresh Data By DB");
+      ac.v("MicroMsg.emoji.EmojiListMineData", "============= refresh Data By DB");
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        EmotionSummary localEmotionSummary = ((EmojiGroupInfo)((Iterator)localObject1).next()).fZL();
+        EmotionSummary localEmotionSummary = ((EmojiGroupInfo)((Iterator)localObject1).next()).fdo();
         f localf = new f(localEmotionSummary);
         if ((a.g(localEmotionSummary)) && (bool))
         {
-          au localau = new au(localEmotionSummary.ProductID);
-          this.ouH.put(localEmotionSummary.ProductID, localau);
+          ax localax = new ax(localEmotionSummary.ProductID);
+          this.oYh.put(localEmotionSummary.ProductID, localax);
         }
         localf.setStatus(9);
         this.mItemList.add(localf);
@@ -61,7 +61,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.d
  * JD-Core Version:    0.7.0.1
  */

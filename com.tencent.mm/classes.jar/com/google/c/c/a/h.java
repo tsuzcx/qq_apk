@@ -6,14 +6,14 @@ import java.nio.charset.Charset;
 
 final class h
 {
-  final String bLg;
-  l bLh;
-  b bLi;
-  b bLj;
-  final StringBuilder bLk;
-  int bLl;
-  k bLm;
-  int bLn;
+  final String bIO;
+  l bIP;
+  b bIQ;
+  b bIR;
+  final StringBuilder bIS;
+  int bIT;
+  k bIU;
+  int bIV;
   int pos;
   
   h(String paramString)
@@ -35,57 +35,57 @@ final class h
       localStringBuilder.append(c);
       i += 1;
     }
-    this.bLg = localStringBuilder.toString();
-    this.bLh = l.bLC;
-    this.bLk = new StringBuilder(paramString.length());
-    this.bLl = -1;
+    this.bIO = localStringBuilder.toString();
+    this.bIP = l.bJk;
+    this.bIS = new StringBuilder(paramString.length());
+    this.bIT = -1;
     AppMethodBeat.o(12272);
   }
   
-  private int yo()
+  private int yb()
   {
     AppMethodBeat.i(12277);
-    int i = this.bLg.length();
-    int j = this.bLn;
+    int i = this.bIO.length();
+    int j = this.bIV;
     AppMethodBeat.o(12277);
     return i - j;
   }
   
-  public final void bv(String paramString)
+  public final void bm(String paramString)
   {
     AppMethodBeat.i(12274);
-    this.bLk.append(paramString);
+    this.bIS.append(paramString);
     AppMethodBeat.o(12274);
   }
   
   public final void e(char paramChar)
   {
     AppMethodBeat.i(12275);
-    this.bLk.append(paramChar);
+    this.bIS.append(paramChar);
     AppMethodBeat.o(12275);
   }
   
-  public final void gi(int paramInt)
+  public final void fU(int paramInt)
   {
     AppMethodBeat.i(12280);
-    if ((this.bLm == null) || (paramInt > this.bLm.bLv)) {
-      this.bLm = k.a(paramInt, this.bLh, this.bLi, this.bLj);
+    if ((this.bIU == null) || (paramInt > this.bIU.bJd)) {
+      this.bIU = k.a(paramInt, this.bIP, this.bIQ, this.bIR);
     }
     AppMethodBeat.o(12280);
   }
   
-  public final char ym()
+  public final char xZ()
   {
     AppMethodBeat.i(12273);
-    char c = this.bLg.charAt(this.pos);
+    char c = this.bIO.charAt(this.pos);
     AppMethodBeat.o(12273);
     return c;
   }
   
-  public final boolean yn()
+  public final boolean ya()
   {
     AppMethodBeat.i(12276);
-    if (this.pos < yo())
+    if (this.pos < yb())
     {
       AppMethodBeat.o(12276);
       return true;
@@ -94,19 +94,19 @@ final class h
     return false;
   }
   
-  public final int yp()
+  public final int yc()
   {
     AppMethodBeat.i(12278);
-    int i = yo();
+    int i = yb();
     int j = this.pos;
     AppMethodBeat.o(12278);
     return i - j;
   }
   
-  public final void yq()
+  public final void yd()
   {
     AppMethodBeat.i(12279);
-    gi(this.bLk.length());
+    fU(this.bIS.length());
     AppMethodBeat.o(12279);
   }
 }

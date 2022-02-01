@@ -15,16 +15,16 @@ import java.security.NoSuchAlgorithmException;
 
 public final class j
 {
-  private final f<h, String> aGN;
-  private final l.a<a> aGO;
+  private final f<h, String> aHD;
+  private final l.a<a> aHE;
   
   public j()
   {
     AppMethodBeat.i(77168);
-    this.aGN = new f(1000L);
-    this.aGO = a.a(10, new a.a()
+    this.aHD = new f(1000L);
+    this.aHE = a.a(10, new a.a()
     {
-      private static j.a oE()
+      private static j.a oO()
       {
         AppMethodBeat.i(77165);
         try
@@ -47,16 +47,16 @@ public final class j
   private String d(h paramh)
   {
     AppMethodBeat.i(77170);
-    a locala = (a)i.checkNotNull(this.aGO.acquire(), "Argument must not be null");
+    a locala = (a)i.checkNotNull(this.aHE.acquire(), "Argument must not be null");
     try
     {
-      paramh.a(locala.aGQ);
-      paramh = com.bumptech.glide.h.j.m(locala.aGQ.digest());
+      paramh.a(locala.aHG);
+      paramh = com.bumptech.glide.h.j.m(locala.aHG.digest());
       return paramh;
     }
     finally
     {
-      this.aGO.release(locala);
+      this.aHE.release(locala);
       AppMethodBeat.o(77170);
     }
   }
@@ -64,17 +64,17 @@ public final class j
   public final String c(h paramh)
   {
     AppMethodBeat.i(77169);
-    synchronized (this.aGN)
+    synchronized (this.aHD)
     {
-      ??? = (String)this.aGN.get(paramh);
+      ??? = (String)this.aHD.get(paramh);
       ??? = ???;
       if (??? == null) {
         ??? = d(paramh);
       }
     }
-    synchronized (this.aGN)
+    synchronized (this.aHD)
     {
-      this.aGN.put(paramh, ???);
+      this.aHD.put(paramh, ???);
       AppMethodBeat.o(77169);
       return ???;
       paramh = finally;
@@ -86,26 +86,26 @@ public final class j
   static final class a
     implements a.c
   {
-    private final b aDI;
-    final MessageDigest aGQ;
+    private final b aEz;
+    final MessageDigest aHG;
     
     a(MessageDigest paramMessageDigest)
     {
       AppMethodBeat.i(77167);
-      this.aDI = new b.a();
-      this.aGQ = paramMessageDigest;
+      this.aEz = new b.a();
+      this.aHG = paramMessageDigest;
       AppMethodBeat.o(77167);
     }
     
-    public final b oc()
+    public final b om()
     {
-      return this.aDI;
+      return this.aEz;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.b.j
  * JD-Core Version:    0.7.0.1
  */

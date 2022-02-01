@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.expt.hellhound.a.a.b;
 
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ax;
+import com.tencent.mm.g.b.a.bx;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
-import com.tencent.mm.protocal.protobuf.cwd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dbp;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vending.j.c;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,22 +15,22 @@ import org.json.JSONArray;
 
 public final class b
 {
-  private static int pGg = 0;
+  private static int qla = 0;
   
-  private static List<ax> a(ax paramax)
+  private static List<bx> a(bx parambx)
   {
     AppMethodBeat.i(169321);
     ArrayList localArrayList = new ArrayList();
-    Object localObject3 = paramax.PV().getBytes();
+    Object localObject3 = parambx.PR().getBytes();
     if (localObject3.length <= 5120)
     {
-      paramax.dKD = 0;
-      paramax.dKE = 1;
-      localArrayList.add(paramax);
+      parambx.dJD = 0;
+      parambx.dJE = 1;
+      localArrayList.add(parambx);
       AppMethodBeat.o(169321);
       return localArrayList;
     }
-    Object localObject1 = paramax.dKA;
+    Object localObject1 = parambx.dJA;
     try
     {
       localObject1 = new JSONArray((String)localObject1);
@@ -45,7 +45,7 @@ public final class b
       Object localObject2;
       for (;;)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.SnsReport", localException, "Sns, _spliteLogIfBigger7K-timeline-Exception", new Object[0]);
+        ac.printErrStackTrace("HABBYGE-MALI.SnsReport", localException, "Sns, _spliteLogIfBigger7K-timeline-Exception", new Object[0]);
         localObject2 = null;
       }
       int n = localObject2.length();
@@ -62,14 +62,14 @@ public final class b
       int m = 0;
       while (m < d)
       {
-        localObject3 = new ax();
-        ((ax)localObject3).dKu = paramax.dKu;
-        ((ax)localObject3).hN(paramax.dKv);
-        ((ax)localObject3).hO(paramax.dKw);
-        ((ax)localObject3).dKx = paramax.dKx;
-        ((ax)localObject3).dKy = paramax.dKy;
-        ((ax)localObject3).dKz = paramax.dKz;
-        ((ax)localObject3).dKC = paramax.dKC;
+        localObject3 = new bx();
+        ((bx)localObject3).dJu = parambx.dJu;
+        ((bx)localObject3).jR(parambx.dJv);
+        ((bx)localObject3).jS(parambx.dJw);
+        ((bx)localObject3).dJx = parambx.dJx;
+        ((bx)localObject3).dJy = parambx.dJy;
+        ((bx)localObject3).dJz = parambx.dJz;
+        ((bx)localObject3).dJC = parambx.dJC;
         JSONArray localJSONArray = new JSONArray();
         i = m * i1;
         while ((i < (m + 1) * i1) && (i < n - i2))
@@ -77,34 +77,34 @@ public final class b
           localJSONArray.put(localObject2.opt(i));
           i += 1;
         }
-        ((ax)localObject3).dKA = localJSONArray.toString();
-        ((ax)localObject3).dKB = localJSONArray.length();
-        ((ax)localObject3).dKD = k;
-        ((ax)localObject3).dKE = j;
+        ((bx)localObject3).dJA = localJSONArray.toString();
+        ((bx)localObject3).dJB = localJSONArray.length();
+        ((bx)localObject3).dJD = k;
+        ((bx)localObject3).dJE = j;
         localArrayList.add(localObject3);
         m += 1;
         k += 1;
       }
       if (i2 > 0)
       {
-        localObject3 = new ax();
-        ((ax)localObject3).dKu = paramax.dKu;
-        ((ax)localObject3).hN(paramax.dKv);
-        ((ax)localObject3).hO(paramax.dKw);
-        ((ax)localObject3).dKx = paramax.dKx;
-        ((ax)localObject3).dKy = paramax.dKy;
-        ((ax)localObject3).dKz = paramax.dKz;
-        ((ax)localObject3).dKC = paramax.dKC;
-        paramax = new JSONArray();
+        localObject3 = new bx();
+        ((bx)localObject3).dJu = parambx.dJu;
+        ((bx)localObject3).jR(parambx.dJv);
+        ((bx)localObject3).jS(parambx.dJw);
+        ((bx)localObject3).dJx = parambx.dJx;
+        ((bx)localObject3).dJy = parambx.dJy;
+        ((bx)localObject3).dJz = parambx.dJz;
+        ((bx)localObject3).dJC = parambx.dJC;
+        parambx = new JSONArray();
         while (i < n)
         {
-          paramax.put(localObject2.opt(i));
+          parambx.put(localObject2.opt(i));
           i += 1;
         }
-        ((ax)localObject3).dKA = paramax.toString();
-        ((ax)localObject3).dKB = paramax.length();
-        ((ax)localObject3).dKD = k;
-        ((ax)localObject3).dKE = j;
+        ((bx)localObject3).dJA = parambx.toString();
+        ((bx)localObject3).dJB = parambx.length();
+        ((bx)localObject3).dJD = k;
+        ((bx)localObject3).dJE = j;
         localArrayList.add(localObject3);
       }
       AppMethodBeat.o(169321);
@@ -112,46 +112,46 @@ public final class b
     return localArrayList;
   }
   
-  public static void a(cwd paramcwd, c<String, Integer> paramc)
+  public static void a(dbp paramdbp, c<String, Integer> paramc)
   {
     AppMethodBeat.i(169320);
-    if ((paramcwd == null) || (paramc == null))
+    if ((paramdbp == null) || (paramc == null))
     {
       AppMethodBeat.o(169320);
       return;
     }
-    ax localax1 = new ax();
-    localax1.dKu = Process.myPid();
-    ax localax2 = localax1.hN(((h)com.tencent.mm.kernel.g.afy().aeZ()).mProcessName).hO(paramcwd.dpw);
-    localax2.dKx = paramcwd.EnS;
-    localax2.dKy = paramcwd.EnT;
-    localax2.dKz = paramcwd.EnU;
-    localax2.dKA = ((String)paramc.get(0));
-    localax2.dKB = ((Integer)paramc.get(1)).intValue();
-    int i = pGg;
-    pGg = i + 1;
-    localax2.dKC = i;
-    ad.i("HABBYGE-MALI.SnsReport", "SnsReport-report: " + localax1.PV());
-    paramcwd = a(localax1);
-    if (paramcwd == null)
+    bx localbx1 = new bx();
+    localbx1.dJu = Process.myPid();
+    bx localbx2 = localbx1.jR(((h)com.tencent.mm.kernel.g.agO().agp()).mProcessName).jS(paramdbp.dnh);
+    localbx2.dJx = paramdbp.FKR;
+    localbx2.dJy = paramdbp.FKS;
+    localbx2.dJz = paramdbp.FKT;
+    localbx2.dJA = ((String)paramc.get(0));
+    localbx2.dJB = ((Integer)paramc.get(1)).intValue();
+    int i = qla;
+    qla = i + 1;
+    localbx2.dJC = i;
+    ac.i("HABBYGE-MALI.SnsReport", "SnsReport-report: " + localbx1.PR());
+    paramdbp = a(localbx1);
+    if (paramdbp == null)
     {
       AppMethodBeat.o(169320);
       return;
     }
-    paramcwd = paramcwd.iterator();
-    while (paramcwd.hasNext())
+    paramdbp = paramdbp.iterator();
+    while (paramdbp.hasNext())
     {
-      paramc = (ax)paramcwd.next();
-      paramc.dKA = paramc.dKA.replace(",", "#");
-      paramc.aBj();
-      ad.i("HABBYGE-MALI.SnsReport", "SnsReport-report-sub: " + paramc.PV());
+      paramc = (bx)paramdbp.next();
+      paramc.dJA = paramc.dJA.replace(",", "#");
+      paramc.aHZ();
+      ac.i("HABBYGE-MALI.SnsReport", "SnsReport-report-sub: " + paramc.PR());
     }
     AppMethodBeat.o(169320);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.b.b
  * JD-Core Version:    0.7.0.1
  */

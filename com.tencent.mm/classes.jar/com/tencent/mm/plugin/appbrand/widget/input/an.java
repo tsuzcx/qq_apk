@@ -12,23 +12,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class an
   implements View.OnTouchListener
 {
-  private static final int Mv;
-  private float meA;
-  private float meB;
-  private boolean meC;
-  private final Handler mez;
+  private static final int Ns;
+  private float mGA;
+  private boolean mGB;
+  private final Handler mGy;
+  private float mGz;
   
   static
   {
     AppMethodBeat.i(136611);
-    Mv = ViewConfiguration.getLongPressTimeout();
+    Ns = ViewConfiguration.getLongPressTimeout();
     AppMethodBeat.o(136611);
   }
   
   public an()
   {
     AppMethodBeat.i(136607);
-    this.mez = new Handler(Looper.getMainLooper())
+    this.mGy = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -46,23 +46,23 @@ public class an
         }
       }
     };
-    this.meC = false;
+    this.mGB = false;
     AppMethodBeat.o(136607);
   }
   
-  private void dn(View paramView)
+  private void dp(View paramView)
   {
     AppMethodBeat.i(136609);
     paramView.setPressed(false);
-    this.meC = false;
-    this.mez.removeMessages(1);
-    this.mez.removeMessages(2);
+    this.mGB = false;
+    this.mGy.removeMessages(1);
+    this.mGy.removeMessages(2);
     AppMethodBeat.o(136609);
   }
   
-  protected void bcn() {}
+  protected void bAw() {}
   
-  protected void btw() {}
+  protected void bjj() {}
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
@@ -74,31 +74,31 @@ public class an
     {
       AppMethodBeat.o(136608);
       return true;
-      dn(paramView);
+      dp(paramView);
       continue;
-      if ((!this.meC) && (this.mez.hasMessages(1))) {
-        bcn();
+      if ((!this.mGB) && (this.mGy.hasMessages(1))) {
+        bjj();
       }
-      dn(paramView);
+      dp(paramView);
       continue;
       int i = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       if ((-i > f1) || (f1 > paramView.getWidth() + i) || (-i > f2) || (f2 > i + paramView.getHeight()))
       {
-        this.meC = true;
+        this.mGB = true;
         continue;
         paramView.setPressed(true);
-        this.mez.sendMessageDelayed(Message.obtain(this.mez, 1), Mv);
-        this.meA = paramMotionEvent.getX();
-        this.meB = paramMotionEvent.getY();
+        this.mGy.sendMessageDelayed(Message.obtain(this.mGy, 1), Ns);
+        this.mGz = paramMotionEvent.getX();
+        this.mGA = paramMotionEvent.getY();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.an
  * JD-Core Version:    0.7.0.1
  */

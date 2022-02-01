@@ -1,28 +1,28 @@
 package com.tencent.mm.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public final class c$b$d
 {
-  public String cJa;
+  public String cGh;
   
-  public static d dS(String paramString)
+  public static d dH(String paramString)
   {
     AppMethodBeat.i(116360);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(116360);
       return null;
     }
-    ad.i("MicroMsg.BizInfo", "biz verify info is [%s]", new Object[] { paramString });
+    ac.i("MicroMsg.BizInfo", "biz verify info is [%s]", new Object[] { paramString });
     d locald = new d();
     try
     {
-      locald.cJa = new JSONObject(paramString).optString("VerifyDesc");
-      ad.i("MicroMsg.BizInfo", "desc[%s]", new Object[] { locald.cJa });
+      locald.cGh = new JSONObject(paramString).optString("VerifyDesc");
+      ac.i("MicroMsg.BizInfo", "desc[%s]", new Object[] { locald.cGh });
       AppMethodBeat.o(116360);
       return locald;
     }
@@ -30,7 +30,7 @@ public final class c$b$d
     {
       for (;;)
       {
-        ad.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bt.m(paramString) });
+        ac.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bs.m(paramString) });
       }
     }
   }

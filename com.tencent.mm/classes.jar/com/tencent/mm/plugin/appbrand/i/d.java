@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.i;
 
-import com.tencent.luggage.k.a.a.b.b.34;
+import com.tencent.luggage.k.a.a.b.b.35;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
   implements com.tencent.luggage.k.a.b.c
 {
-  public com.tencent.luggage.k.a.b.b cJ(String paramString)
+  public com.tencent.luggage.k.a.b.b cy(String paramString)
   {
     AppMethodBeat.i(139393);
     int i = -1;
@@ -52,47 +52,47 @@ public class d
       }
     }
     paramString = new com.tencent.luggage.k.a.a.b.b();
-    paramString.cmY = new com.tencent.mm.plugin.appbrand.jsapi.aa.e.c();
-    if (paramString.cmY != null)
+    paramString.cka = new com.tencent.mm.plugin.appbrand.jsapi.z.e.c();
+    if (paramString.cka != null)
     {
-      paramString.cmY.b(paramString);
-      paramString.cmX = paramString.cmY.FB();
-      paramString.cmW = paramString.cmY.FC();
-      paramString.cmU = paramString.cmY.FF();
-      paramString.cmT = paramString.cmY.FE();
-      paramString.cmT.b(paramString);
-      paramString.cmT.a(paramString.cnw);
-      paramString.cmT.a(paramString.ckN);
-      paramString.cmV = paramString.cmY.FD();
-      paramString.cmV.a(new b.34(paramString));
+      paramString.cka.b(paramString);
+      paramString.cjZ = paramString.cka.Fj();
+      paramString.cjY = paramString.cka.Fk();
+      paramString.cjW = paramString.cka.Fn();
+      paramString.cjV = paramString.cka.Fm();
+      paramString.cjV.b(paramString);
+      paramString.cjV.a(paramString.cky);
+      paramString.cjV.a(paramString.chP);
+      paramString.cjX = paramString.cka.Fl();
+      paramString.cjX.a(new b.35(paramString));
     }
     AppMethodBeat.o(139393);
     return paramString;
-    paramString = new com.tencent.mm.plugin.appbrand.jsapi.aa.d.a();
+    paramString = new com.tencent.mm.plugin.appbrand.jsapi.z.d.a();
     AppMethodBeat.o(139393);
     return paramString;
-    paramString = new com.tencent.mm.plugin.appbrand.jsapi.aa.b.a();
+    paramString = new com.tencent.mm.plugin.appbrand.jsapi.z.b.a();
     AppMethodBeat.o(139393);
     return paramString;
-    paramString = new com.tencent.mm.plugin.appbrand.jsapi.aa.a.a();
+    paramString = new com.tencent.mm.plugin.appbrand.jsapi.z.a.a();
     AppMethodBeat.o(139393);
     return paramString;
     paramString = new com.tencent.luggage.k.a.a.a.a.a();
-    paramString.ckt = new com.tencent.mm.plugin.appbrand.jsapi.aa.c.a.a();
-    if (paramString.ckt != null)
+    paramString.chs = new com.tencent.mm.plugin.appbrand.jsapi.z.c.a.a();
+    if (paramString.chs != null)
     {
-      paramString.cks = paramString.ckt.Fi();
-      paramString.ckr = paramString.ckt.Fj();
-      paramString.ckt.b(paramString);
+      paramString.chr = paramString.chs.EQ();
+      paramString.chq = paramString.chs.ER();
+      paramString.chs.b(paramString);
     }
     AppMethodBeat.o(139393);
     return paramString;
     paramString = new com.tencent.luggage.k.a.a.a.b.a();
-    paramString.clN = new com.tencent.mm.plugin.appbrand.jsapi.aa.c.b.a();
-    if (paramString.clN != null)
+    paramString.ciP = new com.tencent.mm.plugin.appbrand.jsapi.z.c.b.a();
+    if (paramString.ciP != null)
     {
-      paramString.clM = paramString.clN.Fl();
-      paramString.clL = paramString.clN.Fm();
+      paramString.ciO = paramString.ciP.ET();
+      paramString.ciN = paramString.ciP.EU();
     }
     AppMethodBeat.o(139393);
     return paramString;
@@ -100,7 +100,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i.d
  * JD-Core Version:    0.7.0.1
  */

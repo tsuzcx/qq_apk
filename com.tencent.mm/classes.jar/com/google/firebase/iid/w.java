@@ -5,11 +5,11 @@ import android.os.Binder;
 public final class w
   extends Binder
 {
-  final zzb bDY;
+  final zzb bBG;
   
   w(zzb paramzzb)
   {
-    this.bDY = paramzzb;
+    this.bBG = paramzzb;
   }
 }
 

@@ -5,44 +5,44 @@ import java.io.OutputStream;
 
 public final class a
 {
-  public int KhZ;
-  public byte[] Ktk;
-  public int Ktl = 0;
-  public int Ktm;
-  public OutputStream Ktn;
+  public int LVI;
+  public byte[] MgT;
+  public int MgU = 0;
+  public int MgV;
+  public OutputStream MgW;
   
-  public final byte agu(int paramInt)
+  public final byte ajq(int paramInt)
   {
-    int i = this.KhZ - paramInt - 1;
+    int i = this.LVI - paramInt - 1;
     paramInt = i;
     if (i < 0) {
-      paramInt = i + this.Ktl;
+      paramInt = i + this.MgU;
     }
-    return this.Ktk[paramInt];
+    return this.MgT[paramInt];
   }
   
-  public final void fOk()
+  public final void gha()
   {
     AppMethodBeat.i(155350);
-    fOl();
-    this.Ktn = null;
+    ghb();
+    this.MgW = null;
     AppMethodBeat.o(155350);
   }
   
-  public final void fOl()
+  public final void ghb()
   {
     AppMethodBeat.i(155351);
-    int i = this.KhZ - this.Ktm;
+    int i = this.LVI - this.MgV;
     if (i == 0)
     {
       AppMethodBeat.o(155351);
       return;
     }
-    this.Ktn.write(this.Ktk, this.Ktm, i);
-    if (this.KhZ >= this.Ktl) {
-      this.KhZ = 0;
+    this.MgW.write(this.MgT, this.MgV, i);
+    if (this.LVI >= this.MgU) {
+      this.LVI = 0;
     }
-    this.Ktm = this.KhZ;
+    this.MgV = this.LVI;
     AppMethodBeat.o(155351);
   }
 }

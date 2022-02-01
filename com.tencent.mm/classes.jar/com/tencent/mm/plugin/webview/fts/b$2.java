@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.a;
-import com.tencent.mm.g.a.ln;
-import com.tencent.mm.g.a.ln.a;
+import com.tencent.mm.ay.a;
+import com.tencent.mm.g.a.lw;
+import com.tencent.mm.g.a.lw.a;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
 import com.tencent.mm.sdk.b.c;
 import java.util.Iterator;
 import java.util.Set;
 
 final class b$2
-  extends c<ln>
+  extends c<lw>
 {
   b$2(b paramb)
   {
     AppMethodBeat.i(160414);
-    this.__eventId = ln.class.getName().hashCode();
+    this.__eventId = lw.class.getName().hashCode();
     AppMethodBeat.o(160414);
   }
   
-  private boolean a(ln paramln)
+  private boolean a(lw paramlw)
   {
     AppMethodBeat.i(77887);
-    com.tencent.mm.az.f localf = paramln.dql.dqf;
+    com.tencent.mm.ay.f localf = paramlw.dnW.dnQ;
     if ((localf != null) && (a.e(localf))) {
-      switch (paramln.dql.action)
+      switch (paramlw.dnW.action)
       {
       }
     }
@@ -32,13 +32,13 @@ final class b$2
     {
       AppMethodBeat.o(77887);
       return false;
-      paramln = this.AOC.AOr.iterator();
-      while (paramln.hasNext()) {
-        g.TO(((Integer)paramln.next()).intValue()).fd(localf.hnp, 0);
+      paramlw = this.CgT.CgJ.iterator();
+      while (paramlw.hasNext()) {
+        g.VW(((Integer)paramlw.next()).intValue()).fl(localf.hNS, 0);
       }
-      paramln = this.AOC.AOr.iterator();
-      while (paramln.hasNext()) {
-        g.TO(((Integer)paramln.next()).intValue()).fd(localf.hnp, 1);
+      paramlw = this.CgT.CgJ.iterator();
+      while (paramlw.hasNext()) {
+        g.VW(((Integer)paramlw.next()).intValue()).fl(localf.hNS, 1);
       }
     }
   }

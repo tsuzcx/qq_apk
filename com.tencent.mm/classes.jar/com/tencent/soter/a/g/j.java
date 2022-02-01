@@ -20,38 +20,38 @@ import java.nio.charset.Charset;
 public class j
   extends d
 {
-  private static final String IwL;
-  private static final String IwM;
-  private boolean IwN;
-  private String IwO;
-  private h.a IwP;
-  private com.tencent.soter.a.f.d Iwa;
-  private String Iwb;
-  private int[] Iwc;
+  private static final String JYu;
+  private static final String JYv;
+  private com.tencent.soter.a.f.d JXJ;
+  private String JXK;
+  private int[] JXL;
+  private boolean JYw;
+  private String JYx;
+  private h.a JYy;
   
   static
   {
     AppMethodBeat.i(112);
-    IwL = "soter_triggered_oom" + com.tencent.soter.core.c.g.getMessageDigest(a.fmX().getBytes(Charset.forName("UTF-8")));
-    IwM = "soter_triggered_oom_count" + com.tencent.soter.core.c.g.getMessageDigest(a.fmX().getBytes(Charset.forName("UTF-8")));
+    JYu = "soter_triggered_oom" + com.tencent.soter.core.c.g.getMessageDigest(a.fDn().getBytes(Charset.forName("UTF-8")));
+    JYv = "soter_triggered_oom_count" + com.tencent.soter.core.c.g.getMessageDigest(a.fDn().getBytes(Charset.forName("UTF-8")));
     AppMethodBeat.o(112);
   }
   
   public j(Context paramContext, e parame)
   {
     AppMethodBeat.i(107);
-    this.IwN = false;
-    this.Iwb = "";
-    this.IwO = "";
-    this.IwP = new h.a()
+    this.JYw = false;
+    this.JXK = "";
+    this.JYx = "";
+    this.JYy = new h.a()
     {
-      public final boolean fnc()
+      public final boolean fDs()
       {
         AppMethodBeat.i(103);
-        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.fno().fnr();
+        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.fDE().fDH();
         if (localSharedPreferences != null)
         {
-          int i = localSharedPreferences.getInt(j.IwM, 0);
+          int i = localSharedPreferences.getInt(j.JYv, 0);
           com.tencent.soter.core.c.d.i("Soter.TaskInit", "soter: is triggered OOM: %b", new Object[] { Integer.valueOf(i) });
           if (i >= 10)
           {
@@ -66,16 +66,16 @@ public class j
       }
       
       @SuppressLint({"ApplySharedPref"})
-      public final void fnd()
+      public final void fDt()
       {
         AppMethodBeat.i(102);
         com.tencent.soter.core.c.d.w("Soter.TaskInit", "soter: on trigger OOM, using wrapper implement", new Object[0]);
-        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.fno().fnr();
+        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.fDE().fDH();
         if (localSharedPreferences != null)
         {
           SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-          int i = localSharedPreferences.getInt(j.IwM, 0);
-          localEditor.putInt(j.IwM, i + 1);
+          int i = localSharedPreferences.getInt(j.JYv, 0);
+          localEditor.putInt(j.JYv, i + 1);
           localEditor.commit();
         }
         AppMethodBeat.o(102);
@@ -84,59 +84,59 @@ public class j
       public final void reset()
       {
         AppMethodBeat.i(104);
-        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.fno().fnr();
+        SharedPreferences localSharedPreferences = com.tencent.soter.a.c.b.fDE().fDH();
         if (localSharedPreferences != null) {
-          localSharedPreferences.edit().putInt(j.IwM, 0).apply();
+          localSharedPreferences.edit().putInt(j.JYv, 0).apply();
         }
         AppMethodBeat.o(104);
       }
     };
-    Object localObject1 = parame.Iwd;
+    Object localObject1 = parame.JXM;
     if (localObject1 != null) {
       com.tencent.soter.core.c.d.a((c)localObject1);
     }
-    localObject1 = parame.Iwf;
+    localObject1 = parame.JXO;
     if (localObject1 != null)
     {
-      localObject2 = g.fnz();
-      if ((((g)localObject2).Iwn != null) && (((g)localObject2).Iwn.isAlive()))
+      localObject2 = g.fDP();
+      if ((((g)localObject2).JXW != null) && (((g)localObject2).JXW.isAlive()))
       {
         com.tencent.soter.core.c.d.i("Soter.SoterTaskThread", "quit the previous thread", new Object[0]);
-        ((g)localObject2).Iwn.quit();
+        ((g)localObject2).JXW.quit();
       }
-      ((g)localObject2).Iwn = ((HandlerThread)localObject1);
-      ((g)localObject2).Iwn.setName("SoterGenKeyHandlerThreadName");
+      ((g)localObject2).JXW = ((HandlerThread)localObject1);
+      ((g)localObject2).JXW.setName("SoterGenKeyHandlerThreadName");
       if (!((HandlerThread)localObject1).isAlive()) {
         ((HandlerThread)localObject1).start();
       }
-      ((g)localObject2).Iwo = new Handler(((g)localObject2).Iwn.getLooper());
+      ((g)localObject2).JXX = new Handler(((g)localObject2).JXW.getLooper());
     }
-    localObject1 = com.tencent.soter.a.c.b.fno();
+    localObject1 = com.tencent.soter.a.c.b.fDE();
     Object localObject2 = paramContext.getSharedPreferences("soter_status", 0);
     try
     {
-      ((com.tencent.soter.a.c.b)localObject1).IvA = ((SharedPreferences)localObject2);
-      h.a(this.IwP);
-      a.fmM();
-      a.kC(paramContext);
-      a.cLD();
+      ((com.tencent.soter.a.c.b)localObject1).JXj = ((SharedPreferences)localObject2);
+      h.a(this.JYy);
+      a.fDc();
+      a.kO(paramContext);
+      a.cZj();
       boolean bool1 = bool2;
-      if (a.fmR()) {
-        if (!a.eO(paramContext))
+      if (a.fDh()) {
+        if (!a.fb(paramContext))
         {
           bool1 = bool2;
-          if (!a.aK(paramContext, 2)) {}
+          if (!a.aQ(paramContext, 2)) {}
         }
         else
         {
           bool1 = true;
         }
       }
-      this.IwN = bool1;
-      this.Iwa = parame.Iwa;
-      this.Iwc = parame.Iwc;
-      this.Iwb = parame.Iwb;
-      this.IwO = parame.Iwe;
+      this.JYw = bool1;
+      this.JXJ = parame.JXJ;
+      this.JXL = parame.JXL;
+      this.JXK = parame.JXK;
+      this.JYx = parame.JXN;
       AppMethodBeat.o(107);
       return;
     }
@@ -158,7 +158,7 @@ public class j
     {
       int k = paramArrayOfInt[i];
       String str = String.format("%suid%d_%s_scene%d", new Object[] { "Wechat", Integer.valueOf(Process.myUid()), com.tencent.soter.core.c.g.nullAsNil(paramString), Integer.valueOf(k) });
-      com.tencent.soter.a.c.b.fno().fnq().put(k, str);
+      com.tencent.soter.a.c.b.fDE().fDG().put(k, str);
       i += 1;
     }
     AppMethodBeat.o(110);
@@ -167,29 +167,29 @@ public class j
   final void execute()
   {
     AppMethodBeat.i(109);
-    if (this.IwN)
+    if (this.JYw)
     {
-      if (this.Iwa == null)
+      if (this.JXJ == null)
       {
-        com.tencent.soter.a.c.b.fno().xv(true);
-        com.tencent.soter.a.c.b.fno().fnp();
+        com.tencent.soter.a.c.b.fDE().yF(true);
+        com.tencent.soter.a.c.b.fDE().fDF();
         c(new com.tencent.soter.a.b.d(0));
         AppMethodBeat.o(109);
         return;
       }
-      String str = a.fmX();
-      this.Iwa.cY(new d.a(str));
-      this.Iwa.a(new com.tencent.soter.a.f.b() {});
-      this.Iwa.execute();
+      String str = a.fDn();
+      this.JXJ.cZ(new d.a(str));
+      this.JXJ.a(new com.tencent.soter.a.f.b() {});
+      this.JXJ.execute();
       AppMethodBeat.o(109);
       return;
     }
-    com.tencent.soter.core.c.d.w("Soter.TaskInit", "soter: TaskInit check isNativeSupport[" + this.IwN + "]", new Object[0]);
+    com.tencent.soter.core.c.d.w("Soter.TaskInit", "soter: TaskInit check isNativeSupport[" + this.JYw + "]", new Object[0]);
     c(new com.tencent.soter.a.b.d(2));
     try
     {
-      com.tencent.soter.a.c.b.fno().xv(false);
-      com.tencent.soter.a.c.b.fno().fnp();
+      com.tencent.soter.a.c.b.fDE().yF(false);
+      com.tencent.soter.a.c.b.fDE().fDF();
       return;
     }
     finally
@@ -198,17 +198,17 @@ public class j
     }
   }
   
-  final boolean fnu()
+  final boolean fDK()
   {
     AppMethodBeat.i(108);
-    if (com.tencent.soter.a.c.b.fno().fnk())
+    if (com.tencent.soter.a.c.b.fDE().fDA())
     {
       com.tencent.soter.core.c.d.e("Soter.TaskInit", "soter: duplicate initialize soter", new Object[0]);
       c(new com.tencent.soter.a.b.d(1028, "soter already have initialized"));
       AppMethodBeat.o(108);
       return true;
     }
-    Object localObject = this.Iwc;
+    Object localObject = this.JXL;
     if ((localObject == null) || (localObject.length <= 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
@@ -217,10 +217,10 @@ public class j
       AppMethodBeat.o(108);
       return true;
     }
-    if (com.tencent.soter.core.c.g.nullAsNil(this.Iwb).length() > 16)
+    if (com.tencent.soter.core.c.g.nullAsNil(this.JXK).length() > 16)
     {
       com.tencent.soter.core.c.d.w("Soter.TaskInit", "soter: the salt string used to distinguish is longer than 24. soter will try to make it compat", new Object[0]);
-      localObject = com.tencent.soter.core.c.g.getMessageDigest(this.Iwb.getBytes(Charset.forName("UTF-8")));
+      localObject = com.tencent.soter.core.c.g.getMessageDigest(this.JXK.getBytes(Charset.forName("UTF-8")));
       if ((!com.tencent.soter.core.c.g.isNullOrNil((String)localObject)) && (((String)localObject).length() >= 16)) {}
       for (localObject = ((String)localObject).substring(0, 16); com.tencent.soter.core.c.g.isNullOrNil((String)localObject); localObject = null)
       {
@@ -229,24 +229,24 @@ public class j
         AppMethodBeat.o(108);
         return true;
       }
-      this.Iwb = ((String)localObject);
+      this.JXK = ((String)localObject);
     }
-    if ((!com.tencent.soter.core.c.g.isNullOrNil(this.IwO)) && (this.IwO.length() > 24))
+    if ((!com.tencent.soter.core.c.g.isNullOrNil(this.JYx)) && (this.JYx.length() > 24))
     {
       com.tencent.soter.core.c.d.e("Soter.TaskInit", "soter: the passed ask name is too long (larger than 24).", new Object[0]);
       c(new com.tencent.soter.a.b.d(1026, "the passed ask name is too long (larger than 24)"));
       AppMethodBeat.o(108);
       return true;
     }
-    if (this.Iwa == null) {
+    if (this.JXJ == null) {
       com.tencent.soter.core.c.d.w("Soter.TaskInit", "soter: it is strongly recommended to check device support from server, so you'd better provider a net wrapper to check it", new Object[0]);
     }
-    if (!com.tencent.soter.core.c.g.isNullOrNil(this.IwO))
+    if (!com.tencent.soter.core.c.g.isNullOrNil(this.JYx))
     {
       com.tencent.soter.core.c.d.i("Soter.TaskInit", "soter: provided valid ASK name", new Object[0]);
-      com.tencent.soter.core.c.e.fna().IuM = this.IwO;
+      com.tencent.soter.core.c.e.fDq().JWv = this.JYx;
     }
-    g.fnz().ae(new Runnable()
+    g.fDP().ag(new Runnable()
     {
       public final void run()
       {
@@ -260,7 +260,7 @@ public class j
     return false;
   }
   
-  final void fnv() {}
+  final void fDL() {}
 }
 
 

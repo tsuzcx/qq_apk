@@ -9,28 +9,28 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class d
-  extends com.tencent.mm.plugin.appbrand.z.c<c>
+  extends com.tencent.mm.plugin.appbrand.y.c<c>
 {
-  public static final String[] gLs;
-  private final e iMV;
+  public static final String[] hlS;
+  private final e jnc;
   
   static
   {
     AppMethodBeat.i(44439);
-    gLs = new String[] { j.getCreateSQLs(c.gLr, "PredownloadCmdGetCodePersistentInfo2"), "DROP TABLE IF EXISTS PredownloadCmdGetCodePersistentInfo" };
+    hlS = new String[] { j.getCreateSQLs(c.hlR, "PredownloadCmdGetCodePersistentInfo2"), "DROP TABLE IF EXISTS PredownloadCmdGetCodePersistentInfo" };
     AppMethodBeat.o(44439);
   }
   
   public d(e parame)
   {
-    super(parame, c.gLr, "PredownloadCmdGetCodePersistentInfo2", c.INDEX_CREATE);
-    this.iMV = parame;
+    super(parame, c.hlR, "PredownloadCmdGetCodePersistentInfo2", c.INDEX_CREATE);
+    this.jnc = parame;
   }
   
   public final List<c> c(String paramString, String... paramVarArgs)
   {
     AppMethodBeat.i(44438);
-    paramString = this.iMV.query("PredownloadCmdGetCodePersistentInfo2", null, paramString, paramVarArgs, null, null, null);
+    paramString = this.jnc.query("PredownloadCmdGetCodePersistentInfo2", null, paramString, paramVarArgs, null, null, null);
     if ((paramString == null) || (paramString.isClosed()))
     {
       paramString = Collections.emptyList();
@@ -53,7 +53,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.b.e.d
  * JD-Core Version:    0.7.0.1
  */

@@ -26,162 +26,162 @@ import java.util.Set;
 
 public final class c
 {
-  private static final String JoM;
-  private static final String JoN;
-  private static final String JoO;
-  private static final String JoP;
-  private static final d.l.b.a.b.f.a JoQ;
-  private static final b JoR;
-  private static final d.l.b.a.b.f.a JoS;
-  private static final HashMap<d.l.b.a.b.f.c, d.l.b.a.b.f.a> JoT;
-  private static final HashMap<d.l.b.a.b.f.c, d.l.b.a.b.f.a> JoU;
-  private static final HashMap<d.l.b.a.b.f.c, b> JoV;
-  static final HashMap<d.l.b.a.b.f.c, b> JoW;
-  private static final List<c.a> JoX;
-  public static final c JoY;
+  private static final String Lcf;
+  private static final String Lcg;
+  private static final String Lch;
+  private static final String Lci;
+  private static final d.l.b.a.b.f.a Lcj;
+  private static final b Lck;
+  private static final d.l.b.a.b.f.a Lcl;
+  private static final HashMap<d.l.b.a.b.f.c, d.l.b.a.b.f.a> Lcm;
+  private static final HashMap<d.l.b.a.b.f.c, d.l.b.a.b.f.a> Lcn;
+  private static final HashMap<d.l.b.a.b.f.c, b> Lco;
+  static final HashMap<d.l.b.a.b.f.c, b> Lcp;
+  private static final List<a> Lcq;
+  public static final c Lcr;
   
   static
   {
     AppMethodBeat.i(56767);
     c localc = new c();
-    JoY = localc;
-    JoM = b.c.Joz.JoE.toString() + "." + b.c.Joz.JoF;
-    JoN = b.c.JoB.JoE.toString() + "." + b.c.JoB.JoF;
-    JoO = b.c.JoA.JoE.toString() + "." + b.c.JoA.JoF;
-    JoP = b.c.JoC.JoE.toString() + "." + b.c.JoC.JoF;
+    Lcr = localc;
+    Lcf = b.c.LbS.LbX.toString() + "." + b.c.LbS.LbY;
+    Lcg = b.c.LbU.LbX.toString() + "." + b.c.LbU.LbY;
+    Lch = b.c.LbT.LbX.toString() + "." + b.c.LbT.LbY;
+    Lci = b.c.LbV.LbX.toString() + "." + b.c.LbV.LbY;
     Object localObject1 = d.l.b.a.b.f.a.p(new b("kotlin.jvm.functions.FunctionN"));
     k.g(localObject1, "ClassId.topLevel(FqName(…vm.functions.FunctionN\"))");
-    JoQ = (d.l.b.a.b.f.a)localObject1;
-    localObject1 = ((d.l.b.a.b.f.a)localObject1).fHb();
+    Lcj = (d.l.b.a.b.f.a)localObject1;
+    localObject1 = ((d.l.b.a.b.f.a)localObject1).fZF();
     k.g(localObject1, "FUNCTION_N_CLASS_ID.asSingleFqName()");
-    JoR = (b)localObject1;
+    Lck = (b)localObject1;
     localObject1 = d.l.b.a.b.f.a.p(new b("kotlin.reflect.KFunction"));
     k.g(localObject1, "ClassId.topLevel(FqName(…tlin.reflect.KFunction\"))");
-    JoS = (d.l.b.a.b.f.a)localObject1;
-    JoT = new HashMap();
-    JoU = new HashMap();
-    JoV = new HashMap();
-    JoW = new HashMap();
-    localObject1 = d.l.b.a.b.f.a.p(g.JlM.JmC);
+    Lcl = (d.l.b.a.b.f.a)localObject1;
+    Lcm = new HashMap();
+    Lcn = new HashMap();
+    Lco = new HashMap();
+    Lcp = new HashMap();
+    localObject1 = d.l.b.a.b.f.a.p(g.KZg.KZW);
     k.g(localObject1, "ClassId.topLevel(FQ_NAMES.iterable)");
-    Object localObject2 = g.JlM.JmK;
+    Object localObject2 = g.KZg.Lae;
     k.g(localObject2, "FQ_NAMES.mutableIterable");
-    Object localObject3 = ((d.l.b.a.b.f.a)localObject1).fGW();
-    Object localObject4 = ((d.l.b.a.b.f.a)localObject1).fGW();
+    Object localObject3 = ((d.l.b.a.b.f.a)localObject1).fZA();
+    Object localObject4 = ((d.l.b.a.b.f.a)localObject1).fZA();
     k.g(localObject4, "kotlinReadOnly.packageFqName");
     localObject2 = new d.l.b.a.b.f.a((b)localObject3, d.l.b.a.b.f.d.b((b)localObject2, (b)localObject4), false);
-    localObject1 = new c.a(localc.bp(Iterable.class), (d.l.b.a.b.f.a)localObject1, (d.l.b.a.b.f.a)localObject2);
-    localObject2 = d.l.b.a.b.f.a.p(g.JlM.JmB);
+    localObject1 = new a(localc.bs(Iterable.class), (d.l.b.a.b.f.a)localObject1, (d.l.b.a.b.f.a)localObject2);
+    localObject2 = d.l.b.a.b.f.a.p(g.KZg.KZV);
     k.g(localObject2, "ClassId.topLevel(FQ_NAMES.iterator)");
-    localObject3 = g.JlM.JmJ;
+    localObject3 = g.KZg.Lad;
     k.g(localObject3, "FQ_NAMES.mutableIterator");
-    localObject4 = ((d.l.b.a.b.f.a)localObject2).fGW();
-    Object localObject5 = ((d.l.b.a.b.f.a)localObject2).fGW();
+    localObject4 = ((d.l.b.a.b.f.a)localObject2).fZA();
+    Object localObject5 = ((d.l.b.a.b.f.a)localObject2).fZA();
     k.g(localObject5, "kotlinReadOnly.packageFqName");
     localObject3 = new d.l.b.a.b.f.a((b)localObject4, d.l.b.a.b.f.d.b((b)localObject3, (b)localObject5), false);
-    localObject2 = new c.a(localc.bp(Iterator.class), (d.l.b.a.b.f.a)localObject2, (d.l.b.a.b.f.a)localObject3);
-    localObject3 = d.l.b.a.b.f.a.p(g.JlM.JmD);
+    localObject2 = new a(localc.bs(Iterator.class), (d.l.b.a.b.f.a)localObject2, (d.l.b.a.b.f.a)localObject3);
+    localObject3 = d.l.b.a.b.f.a.p(g.KZg.KZX);
     k.g(localObject3, "ClassId.topLevel(FQ_NAMES.collection)");
-    localObject4 = g.JlM.JmL;
+    localObject4 = g.KZg.Laf;
     k.g(localObject4, "FQ_NAMES.mutableCollection");
-    localObject5 = ((d.l.b.a.b.f.a)localObject3).fGW();
-    Object localObject6 = ((d.l.b.a.b.f.a)localObject3).fGW();
+    localObject5 = ((d.l.b.a.b.f.a)localObject3).fZA();
+    Object localObject6 = ((d.l.b.a.b.f.a)localObject3).fZA();
     k.g(localObject6, "kotlinReadOnly.packageFqName");
     localObject4 = new d.l.b.a.b.f.a((b)localObject5, d.l.b.a.b.f.d.b((b)localObject4, (b)localObject6), false);
-    localObject3 = new c.a(localc.bp(Collection.class), (d.l.b.a.b.f.a)localObject3, (d.l.b.a.b.f.a)localObject4);
-    localObject4 = d.l.b.a.b.f.a.p(g.JlM.JmE);
+    localObject3 = new a(localc.bs(Collection.class), (d.l.b.a.b.f.a)localObject3, (d.l.b.a.b.f.a)localObject4);
+    localObject4 = d.l.b.a.b.f.a.p(g.KZg.KZY);
     k.g(localObject4, "ClassId.topLevel(FQ_NAMES.list)");
-    localObject5 = g.JlM.JmM;
+    localObject5 = g.KZg.Lag;
     k.g(localObject5, "FQ_NAMES.mutableList");
-    localObject6 = ((d.l.b.a.b.f.a)localObject4).fGW();
-    Object localObject7 = ((d.l.b.a.b.f.a)localObject4).fGW();
+    localObject6 = ((d.l.b.a.b.f.a)localObject4).fZA();
+    Object localObject7 = ((d.l.b.a.b.f.a)localObject4).fZA();
     k.g(localObject7, "kotlinReadOnly.packageFqName");
     localObject5 = new d.l.b.a.b.f.a((b)localObject6, d.l.b.a.b.f.d.b((b)localObject5, (b)localObject7), false);
-    localObject4 = new c.a(localc.bp(List.class), (d.l.b.a.b.f.a)localObject4, (d.l.b.a.b.f.a)localObject5);
-    localObject5 = d.l.b.a.b.f.a.p(g.JlM.JmG);
+    localObject4 = new a(localc.bs(List.class), (d.l.b.a.b.f.a)localObject4, (d.l.b.a.b.f.a)localObject5);
+    localObject5 = d.l.b.a.b.f.a.p(g.KZg.Laa);
     k.g(localObject5, "ClassId.topLevel(FQ_NAMES.set)");
-    localObject6 = g.JlM.JmO;
+    localObject6 = g.KZg.Lai;
     k.g(localObject6, "FQ_NAMES.mutableSet");
-    localObject7 = ((d.l.b.a.b.f.a)localObject5).fGW();
-    Object localObject8 = ((d.l.b.a.b.f.a)localObject5).fGW();
+    localObject7 = ((d.l.b.a.b.f.a)localObject5).fZA();
+    Object localObject8 = ((d.l.b.a.b.f.a)localObject5).fZA();
     k.g(localObject8, "kotlinReadOnly.packageFqName");
     localObject6 = new d.l.b.a.b.f.a((b)localObject7, d.l.b.a.b.f.d.b((b)localObject6, (b)localObject8), false);
-    localObject5 = new c.a(localc.bp(Set.class), (d.l.b.a.b.f.a)localObject5, (d.l.b.a.b.f.a)localObject6);
-    localObject6 = d.l.b.a.b.f.a.p(g.JlM.JmF);
+    localObject5 = new a(localc.bs(Set.class), (d.l.b.a.b.f.a)localObject5, (d.l.b.a.b.f.a)localObject6);
+    localObject6 = d.l.b.a.b.f.a.p(g.KZg.KZZ);
     k.g(localObject6, "ClassId.topLevel(FQ_NAMES.listIterator)");
-    localObject7 = g.JlM.JmN;
+    localObject7 = g.KZg.Lah;
     k.g(localObject7, "FQ_NAMES.mutableListIterator");
-    localObject8 = ((d.l.b.a.b.f.a)localObject6).fGW();
-    Object localObject9 = ((d.l.b.a.b.f.a)localObject6).fGW();
+    localObject8 = ((d.l.b.a.b.f.a)localObject6).fZA();
+    Object localObject9 = ((d.l.b.a.b.f.a)localObject6).fZA();
     k.g(localObject9, "kotlinReadOnly.packageFqName");
     localObject7 = new d.l.b.a.b.f.a((b)localObject8, d.l.b.a.b.f.d.b((b)localObject7, (b)localObject9), false);
-    localObject6 = new c.a(localc.bp(ListIterator.class), (d.l.b.a.b.f.a)localObject6, (d.l.b.a.b.f.a)localObject7);
-    localObject7 = d.l.b.a.b.f.a.p(g.JlM.JmH);
+    localObject6 = new a(localc.bs(ListIterator.class), (d.l.b.a.b.f.a)localObject6, (d.l.b.a.b.f.a)localObject7);
+    localObject7 = d.l.b.a.b.f.a.p(g.KZg.Lab);
     k.g(localObject7, "ClassId.topLevel(FQ_NAMES.map)");
-    localObject8 = g.JlM.JmP;
+    localObject8 = g.KZg.Laj;
     k.g(localObject8, "FQ_NAMES.mutableMap");
-    localObject9 = ((d.l.b.a.b.f.a)localObject7).fGW();
-    b localb1 = ((d.l.b.a.b.f.a)localObject7).fGW();
+    localObject9 = ((d.l.b.a.b.f.a)localObject7).fZA();
+    b localb1 = ((d.l.b.a.b.f.a)localObject7).fZA();
     k.g(localb1, "kotlinReadOnly.packageFqName");
     localObject8 = new d.l.b.a.b.f.a((b)localObject9, d.l.b.a.b.f.d.b((b)localObject8, localb1), false);
-    localObject7 = new c.a(localc.bp(Map.class), (d.l.b.a.b.f.a)localObject7, (d.l.b.a.b.f.a)localObject8);
-    localObject8 = d.l.b.a.b.f.a.p(g.JlM.JmH).o(g.JlM.JmI.fHe());
+    localObject7 = new a(localc.bs(Map.class), (d.l.b.a.b.f.a)localObject7, (d.l.b.a.b.f.a)localObject8);
+    localObject8 = d.l.b.a.b.f.a.p(g.KZg.Lab).o(g.KZg.Lac.fZI());
     k.g(localObject8, "ClassId.topLevel(FQ_NAME…MES.mapEntry.shortName())");
-    localObject9 = g.JlM.JmQ;
+    localObject9 = g.KZg.Lak;
     k.g(localObject9, "FQ_NAMES.mutableMapEntry");
-    localb1 = ((d.l.b.a.b.f.a)localObject8).fGW();
-    b localb2 = ((d.l.b.a.b.f.a)localObject8).fGW();
+    localb1 = ((d.l.b.a.b.f.a)localObject8).fZA();
+    b localb2 = ((d.l.b.a.b.f.a)localObject8).fZA();
     k.g(localb2, "kotlinReadOnly.packageFqName");
     localObject9 = new d.l.b.a.b.f.a(localb1, d.l.b.a.b.f.d.b((b)localObject9, localb2), false);
-    JoX = j.listOf(new c.a[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, new c.a(localc.bp(Map.Entry.class), (d.l.b.a.b.f.a)localObject8, (d.l.b.a.b.f.a)localObject9) });
-    localObject1 = g.JlM.JlQ;
+    Lcq = j.listOf(new a[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, new a(localc.bs(Map.Entry.class), (d.l.b.a.b.f.a)localObject8, (d.l.b.a.b.f.a)localObject9) });
+    localObject1 = g.KZg.KZk;
     k.g(localObject1, "FQ_NAMES.any");
     localc.a(Object.class, (d.l.b.a.b.f.c)localObject1);
-    localObject1 = g.JlM.JlW;
+    localObject1 = g.KZg.KZq;
     k.g(localObject1, "FQ_NAMES.string");
     localc.a(String.class, (d.l.b.a.b.f.c)localObject1);
-    localObject1 = g.JlM.JlV;
+    localObject1 = g.KZg.KZp;
     k.g(localObject1, "FQ_NAMES.charSequence");
     localc.a(CharSequence.class, (d.l.b.a.b.f.c)localObject1);
-    localObject1 = g.JlM.Jmj;
+    localObject1 = g.KZg.KZD;
     k.g(localObject1, "FQ_NAMES.throwable");
     localc.a(Throwable.class, (b)localObject1);
-    localObject1 = g.JlM.JlS;
+    localObject1 = g.KZg.KZm;
     k.g(localObject1, "FQ_NAMES.cloneable");
     localc.a(Cloneable.class, (d.l.b.a.b.f.c)localObject1);
-    localObject1 = g.JlM.Jmg;
+    localObject1 = g.KZg.KZA;
     k.g(localObject1, "FQ_NAMES.number");
     localc.a(Number.class, (d.l.b.a.b.f.c)localObject1);
-    localObject1 = g.JlM.Jmk;
+    localObject1 = g.KZg.KZE;
     k.g(localObject1, "FQ_NAMES.comparable");
     localc.a(Comparable.class, (b)localObject1);
-    localObject1 = g.JlM.Jmh;
+    localObject1 = g.KZg.KZB;
     k.g(localObject1, "FQ_NAMES._enum");
     localc.a(Enum.class, (d.l.b.a.b.f.c)localObject1);
-    localObject1 = g.JlM.Jms;
+    localObject1 = g.KZg.KZM;
     k.g(localObject1, "FQ_NAMES.annotation");
     localc.a(Annotation.class, (b)localObject1);
-    localObject1 = JoX.iterator();
+    localObject1 = Lcq.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (c.a)((Iterator)localObject1).next();
-      localObject3 = ((c.a)localObject2).JoZ;
-      localObject4 = ((c.a)localObject2).Jpa;
-      localObject2 = ((c.a)localObject2).Jpb;
+      localObject2 = (a)((Iterator)localObject1).next();
+      localObject3 = ((a)localObject2).Lcs;
+      localObject4 = ((a)localObject2).Lct;
+      localObject2 = ((a)localObject2).Lcu;
       a((d.l.b.a.b.f.a)localObject3, (d.l.b.a.b.f.a)localObject4);
-      localObject5 = ((d.l.b.a.b.f.a)localObject2).fHb();
+      localObject5 = ((d.l.b.a.b.f.a)localObject2).fZF();
       k.g(localObject5, "mutableClassId.asSingleFqName()");
       a((b)localObject5, (d.l.b.a.b.f.a)localObject3);
-      localObject4 = ((d.l.b.a.b.f.a)localObject4).fHb();
+      localObject4 = ((d.l.b.a.b.f.a)localObject4).fZF();
       k.g(localObject4, "readOnlyClassId.asSingleFqName()");
-      localObject3 = ((d.l.b.a.b.f.a)localObject2).fHb();
+      localObject3 = ((d.l.b.a.b.f.a)localObject2).fZF();
       k.g(localObject3, "mutableClassId.asSingleFqName()");
-      localObject5 = (Map)JoV;
-      localObject2 = ((d.l.b.a.b.f.a)localObject2).fHb().fHc();
+      localObject5 = (Map)Lco;
+      localObject2 = ((d.l.b.a.b.f.a)localObject2).fZF().fZG();
       k.g(localObject2, "mutableClassId.asSingleFqName().toUnsafe()");
       ((Map)localObject5).put(localObject2, localObject4);
-      localObject2 = (Map)JoW;
-      localObject4 = ((b)localObject4).fHc();
+      localObject2 = (Map)Lcp;
+      localObject4 = ((b)localObject4).fZG();
       k.g(localObject4, "readOnlyFqName.toUnsafe()");
       ((Map)localObject2).put(localObject4, localObject3);
     }
@@ -191,21 +191,21 @@ public final class c
     while (i < j)
     {
       localObject3 = localObject1[i];
-      localObject2 = d.l.b.a.b.f.a.p(((d.l.b.a.b.j.e.d)localObject3).fJe());
+      localObject2 = d.l.b.a.b.f.a.p(((d.l.b.a.b.j.e.d)localObject3).gbH());
       k.g(localObject2, "ClassId.topLevel(jvmType.wrapperFqName)");
-      localObject3 = d.l.b.a.b.f.a.p(g.c(((d.l.b.a.b.j.e.d)localObject3).fJc()));
+      localObject3 = d.l.b.a.b.f.a.p(g.c(((d.l.b.a.b.j.e.d)localObject3).gbF()));
       k.g(localObject3, "ClassId.topLevel(KotlinB…e(jvmType.primitiveType))");
       a((d.l.b.a.b.f.a)localObject2, (d.l.b.a.b.f.a)localObject3);
       i += 1;
     }
-    localObject1 = d.l.b.a.b.a.c.Jlx;
-    localObject1 = d.l.b.a.b.a.c.fwT().iterator();
+    localObject1 = d.l.b.a.b.a.c.KYR;
+    localObject1 = d.l.b.a.b.a.c.fPx().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject3 = (d.l.b.a.b.f.a)((Iterator)localObject1).next();
-      localObject2 = d.l.b.a.b.f.a.p(new b("kotlin.jvm.internal." + ((d.l.b.a.b.f.a)localObject3).fGY().qV() + "CompanionObject"));
+      localObject2 = d.l.b.a.b.f.a.p(new b("kotlin.jvm.internal." + ((d.l.b.a.b.f.a)localObject3).fZC().rf() + "CompanionObject"));
       k.g(localObject2, "ClassId.topLevel(FqName(…g() + \"CompanionObject\"))");
-      localObject3 = ((d.l.b.a.b.f.a)localObject3).o(h.JMe);
+      localObject3 = ((d.l.b.a.b.f.a)localObject3).o(h.Lzx);
       k.g(localObject3, "classId.createNestedClas…AME_FOR_COMPANION_OBJECT)");
       a((d.l.b.a.b.f.a)localObject2, (d.l.b.a.b.f.a)localObject3);
     }
@@ -214,23 +214,23 @@ public final class c
     {
       localObject1 = d.l.b.a.b.f.a.p(new b("kotlin.jvm.functions.Function".concat(String.valueOf(i))));
       k.g(localObject1, "ClassId.topLevel(FqName(…m.functions.Function$i\"))");
-      localObject2 = g.adR(i);
+      localObject2 = g.agN(i);
       k.g(localObject2, "KotlinBuiltIns.getFunctionClassId(i)");
       a((d.l.b.a.b.f.a)localObject1, (d.l.b.a.b.f.a)localObject2);
-      a(new b(JoN + i), JoS);
+      a(new b(Lcg + i), Lcl);
       i += 1;
     }
     i = 0;
     while (i < 22)
     {
-      localObject1 = b.c.JoC;
-      localObject1 = ((b.c)localObject1).JoE.toString() + "." + ((b.c)localObject1).JoF;
-      a(new b((String)localObject1 + i), JoS);
+      localObject1 = b.c.LbV;
+      localObject1 = ((b.c)localObject1).LbX.toString() + "." + ((b.c)localObject1).LbY;
+      a(new b((String)localObject1 + i), Lcl);
       i += 1;
     }
-    localObject1 = g.JlM.JlR.fHh();
+    localObject1 = g.KZg.KZl.fZL();
     k.g(localObject1, "FQ_NAMES.nothing.toSafe()");
-    a((b)localObject1, localc.bp(Void.class));
+    a((b)localObject1, localc.bs(Void.class));
     AppMethodBeat.o(56767);
   }
   
@@ -253,11 +253,11 @@ public final class c
   private static void a(d.l.b.a.b.f.a parama1, d.l.b.a.b.f.a parama2)
   {
     AppMethodBeat.i(56757);
-    Map localMap = (Map)JoT;
-    d.l.b.a.b.f.c localc = parama1.fHb().fHc();
+    Map localMap = (Map)Lcm;
+    d.l.b.a.b.f.c localc = parama1.fZF().fZG();
     k.g(localc, "javaClassId.asSingleFqName().toUnsafe()");
     localMap.put(localc, parama2);
-    parama2 = parama2.fHb();
+    parama2 = parama2.fZF();
     k.g(parama2, "kotlinClassId.asSingleFqName()");
     a(parama2, parama1);
     AppMethodBeat.o(56757);
@@ -266,8 +266,8 @@ public final class c
   private static void a(b paramb, d.l.b.a.b.f.a parama)
   {
     AppMethodBeat.i(56760);
-    Map localMap = (Map)JoU;
-    paramb = paramb.fHc();
+    Map localMap = (Map)Lcn;
+    paramb = paramb.fZG();
     k.g(paramb, "kotlinFqNameUnsafe.toUnsafe()");
     localMap.put(paramb, parama);
     AppMethodBeat.o(56760);
@@ -276,7 +276,7 @@ public final class c
   private final void a(Class<?> paramClass, b paramb)
   {
     AppMethodBeat.i(56759);
-    paramClass = bp(paramClass);
+    paramClass = bs(paramClass);
     paramb = d.l.b.a.b.f.a.p(paramb);
     k.g(paramb, "ClassId.topLevel(kotlinFqName)");
     a(paramClass, paramb);
@@ -286,7 +286,7 @@ public final class c
   private final void a(Class<?> paramClass, d.l.b.a.b.f.c paramc)
   {
     AppMethodBeat.i(56758);
-    paramc = paramc.fHh();
+    paramc = paramc.fZL();
     k.g(paramc, "kotlinFqName.toSafe()");
     a(paramClass, paramc);
     AppMethodBeat.o(56758);
@@ -295,16 +295,16 @@ public final class c
   private static boolean a(d.l.b.a.b.f.c paramc, String paramString)
   {
     AppMethodBeat.i(56756);
-    paramc = paramc.qV();
+    paramc = paramc.rf();
     k.g(paramc, "kotlinFqName.asString()");
-    paramc = n.bd(paramc, paramString, "");
+    paramc = n.bi(paramc, paramString, "");
     int i;
     if (((CharSequence)paramc).length() > 0) {
       i = 1;
     }
-    while ((i != 0) && (!n.aG((CharSequence)paramc)))
+    while ((i != 0) && (!n.aH((CharSequence)paramc)))
     {
-      paramc = n.aRf(paramc);
+      paramc = n.aXe(paramc);
       if ((paramc != null) && (paramc.intValue() >= 23))
       {
         AppMethodBeat.o(56756);
@@ -321,11 +321,11 @@ public final class c
     return false;
   }
   
-  private final d.l.b.a.b.f.a bp(Class<?> paramClass)
+  private final d.l.b.a.b.f.a bs(Class<?> paramClass)
   {
     AppMethodBeat.i(56765);
     if ((!paramClass.isPrimitive()) && (!paramClass.isArray())) {}
-    for (int i = 1; (aa.JfW) && (i == 0); i = 0)
+    for (int i = 1; (aa.KTq) && (i == 0); i = 0)
     {
       paramClass = (Throwable)new AssertionError("Invalid class: ".concat(String.valueOf(paramClass)));
       AppMethodBeat.o(56765);
@@ -339,7 +339,7 @@ public final class c
       AppMethodBeat.o(56765);
       return paramClass;
     }
-    paramClass = bp(localClass).o(f.aQC(paramClass.getSimpleName()));
+    paramClass = bs(localClass).o(f.aWB(paramClass.getSimpleName()));
     k.g(paramClass, "classId(outer).createNes…tifier(clazz.simpleName))");
     AppMethodBeat.o(56765);
     return paramClass;
@@ -349,7 +349,7 @@ public final class c
   {
     AppMethodBeat.i(56753);
     k.h(paramb, "fqName");
-    paramb = (d.l.b.a.b.f.a)JoT.get(paramb.fHc());
+    paramb = (d.l.b.a.b.f.a)Lcm.get(paramb.fZG());
     AppMethodBeat.o(56753);
     return paramb;
   }
@@ -358,43 +358,43 @@ public final class c
   {
     AppMethodBeat.i(56755);
     k.h(paramc, "kotlinFqName");
-    if (a(paramc, JoM))
+    if (a(paramc, Lcf))
     {
-      paramc = JoQ;
+      paramc = Lcj;
       AppMethodBeat.o(56755);
       return paramc;
     }
-    if (a(paramc, JoO))
+    if (a(paramc, Lch))
     {
-      paramc = JoQ;
+      paramc = Lcj;
       AppMethodBeat.o(56755);
       return paramc;
     }
-    if (a(paramc, JoN))
+    if (a(paramc, Lcg))
     {
-      paramc = JoS;
+      paramc = Lcl;
       AppMethodBeat.o(56755);
       return paramc;
     }
-    if (a(paramc, JoP))
+    if (a(paramc, Lci))
     {
-      paramc = JoS;
+      paramc = Lcl;
       AppMethodBeat.o(56755);
       return paramc;
     }
-    paramc = (d.l.b.a.b.f.a)JoU.get(paramc);
+    paramc = (d.l.b.a.b.f.a)Lcn.get(paramc);
     AppMethodBeat.o(56755);
     return paramc;
   }
   
-  public static b fxU()
+  public static b fQy()
   {
-    return JoR;
+    return Lck;
   }
   
-  public static List<c.a> fxV()
+  public static List<a> fQz()
   {
-    return JoX;
+    return Lcq;
   }
   
   public static boolean h(e parame)
@@ -402,7 +402,7 @@ public final class c
     AppMethodBeat.i(56761);
     k.h(parame, "mutable");
     parame = d.l.b.a.b.j.c.n((l)parame);
-    Map localMap = (Map)JoV;
+    Map localMap = (Map)Lco;
     if (localMap == null)
     {
       parame = new v("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
@@ -419,7 +419,7 @@ public final class c
     AppMethodBeat.i(56762);
     k.h(parame, "readOnly");
     parame = d.l.b.a.b.j.c.n((l)parame);
-    Map localMap = (Map)JoW;
+    Map localMap = (Map)Lcp;
     if (localMap == null)
     {
       parame = new v("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
@@ -435,7 +435,7 @@ public final class c
   {
     AppMethodBeat.i(56763);
     k.h(parame, "mutable");
-    parame = a(parame, (Map)JoV, "mutable");
+    parame = a(parame, (Map)Lco, "mutable");
     AppMethodBeat.o(56763);
     return parame;
   }
@@ -444,14 +444,86 @@ public final class c
   {
     AppMethodBeat.i(56764);
     k.h(parame, "readOnly");
-    parame = a(parame, (Map)JoW, "read-only");
+    parame = a(parame, (Map)Lcp, "read-only");
     AppMethodBeat.o(56764);
     return parame;
+  }
+  
+  public static final class a
+  {
+    public final d.l.b.a.b.f.a Lcs;
+    final d.l.b.a.b.f.a Lct;
+    final d.l.b.a.b.f.a Lcu;
+    
+    public a(d.l.b.a.b.f.a parama1, d.l.b.a.b.f.a parama2, d.l.b.a.b.f.a parama3)
+    {
+      AppMethodBeat.i(56749);
+      this.Lcs = parama1;
+      this.Lct = parama2;
+      this.Lcu = parama3;
+      AppMethodBeat.o(56749);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(56752);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof a))
+        {
+          paramObject = (a)paramObject;
+          if ((!k.g(this.Lcs, paramObject.Lcs)) || (!k.g(this.Lct, paramObject.Lct)) || (!k.g(this.Lcu, paramObject.Lcu))) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(56752);
+        return true;
+      }
+      AppMethodBeat.o(56752);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      int k = 0;
+      AppMethodBeat.i(56751);
+      d.l.b.a.b.f.a locala = this.Lcs;
+      int i;
+      if (locala != null)
+      {
+        i = locala.hashCode();
+        locala = this.Lct;
+        if (locala == null) {
+          break label80;
+        }
+      }
+      label80:
+      for (int j = locala.hashCode();; j = 0)
+      {
+        locala = this.Lcu;
+        if (locala != null) {
+          k = locala.hashCode();
+        }
+        AppMethodBeat.o(56751);
+        return (j + i * 31) * 31 + k;
+        i = 0;
+        break;
+      }
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(56750);
+      String str = "PlatformMutabilityMapping(javaClass=" + this.Lcs + ", kotlinReadOnly=" + this.Lct + ", kotlinMutable=" + this.Lcu + ")";
+      AppMethodBeat.o(56750);
+      return str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -20,15 +20,15 @@ public class TAVAudioTapProcessor
   
   public TAVAudioTapProcessor(List<TAVAudioConfigurationSegment> paramList)
   {
-    AppMethodBeat.i(204631);
+    AppMethodBeat.i(192003);
     this.audioTapProcessorHashMap = new HashMap();
     this.audioConfigurationSegmentList = paramList;
-    AppMethodBeat.o(204631);
+    AppMethodBeat.o(192003);
   }
   
   public ByteBuffer processAudioPCM(CMTime paramCMTime, ByteBuffer paramByteBuffer, AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(204632);
+    AppMethodBeat.i(192004);
     Iterator localIterator1 = this.audioConfigurationSegmentList.iterator();
     Object localObject = paramByteBuffer;
     while (localIterator1.hasNext())
@@ -63,31 +63,31 @@ public class TAVAudioTapProcessor
         }
       }
     }
-    AppMethodBeat.o(204632);
+    AppMethodBeat.o(192004);
     return localObject;
   }
   
   public void release()
   {
-    AppMethodBeat.i(204633);
+    AppMethodBeat.i(192005);
     Iterator localIterator = this.audioTapProcessorHashMap.values().iterator();
     while (localIterator.hasNext()) {
       ((AudioTapProcessor)localIterator.next()).release();
     }
-    AppMethodBeat.o(204633);
+    AppMethodBeat.o(192005);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(204634);
+    AppMethodBeat.i(192006);
     String str = "TAVAudioTapProcessor{audioConfigurationSegmentList=" + this.audioConfigurationSegmentList + ", audioTapProcessorHashMap=" + this.audioTapProcessorHashMap + '}';
-    AppMethodBeat.o(204634);
+    AppMethodBeat.o(192006);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tavkit.composition.audio.TAVAudioTapProcessor
  * JD-Core Version:    0.7.0.1
  */

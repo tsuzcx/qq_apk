@@ -9,13 +9,13 @@ public abstract interface o
     static
     {
       AppMethodBeat.i(146954);
-      iSO = new a("NONE", 0);
-      iSP = new a("UNKNOWN", 1);
-      iSQ = new a("MISSING_PARAMS", 2);
-      iSR = new a("NO_SUCH_KEY", 3);
-      iSS = new a("QUOTA_REACHED", 4);
-      iST = new a("MEMORY_ISSUE", 5);
-      iSU = new a[] { iSO, iSP, iSQ, iSR, iSS, iST };
+      jsZ = new a("NONE", 0);
+      jta = new a("UNKNOWN", 1);
+      jtb = new a("MISSING_PARAMS", 2);
+      jtc = new a("NO_SUCH_KEY", 3);
+      jtd = new a("QUOTA_REACHED", 4);
+      jte = new a("MEMORY_ISSUE", 5);
+      jtf = new a[] { jsZ, jta, jtb, jtc, jtd, jte };
       AppMethodBeat.o(146954);
     }
     
@@ -24,7 +24,7 @@ public abstract interface o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.o
  * JD-Core Version:    0.7.0.1
  */

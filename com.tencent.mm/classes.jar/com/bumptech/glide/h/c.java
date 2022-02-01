@@ -8,13 +8,13 @@ import java.io.InputStream;
 public final class c
   extends FilterInputStream
 {
-  private final long aLn;
-  private int aLo;
+  private final long aMd;
+  private int aMe;
   
   private c(InputStream paramInputStream, long paramLong)
   {
     super(paramInputStream);
-    this.aLn = paramLong;
+    this.aMd = paramLong;
   }
   
   public static InputStream a(InputStream paramInputStream, long paramLong)
@@ -25,18 +25,18 @@ public final class c
     return paramInputStream;
   }
   
-  private int dw(int paramInt)
+  private int dv(int paramInt)
   {
     AppMethodBeat.i(77733);
     if (paramInt >= 0) {
-      this.aLo += paramInt;
+      this.aMe += paramInt;
     }
-    while (this.aLn - this.aLo <= 0L)
+    while (this.aMd - this.aMe <= 0L)
     {
       AppMethodBeat.o(77733);
       return paramInt;
     }
-    IOException localIOException = new IOException("Failed to read all expected data, expected: " + this.aLn + ", but read: " + this.aLo);
+    IOException localIOException = new IOException("Failed to read all expected data, expected: " + this.aMd + ", but read: " + this.aMe);
     AppMethodBeat.o(77733);
     throw localIOException;
   }
@@ -46,7 +46,7 @@ public final class c
     try
     {
       AppMethodBeat.i(77729);
-      int i = (int)Math.max(this.aLn - this.aLo, this.in.available());
+      int i = (int)Math.max(this.aMd - this.aMe, this.in.available());
       AppMethodBeat.o(77729);
       return i;
     }
@@ -74,7 +74,7 @@ public final class c
     //   17: istore_1
     //   18: aload_0
     //   19: iload_1
-    //   20: invokespecial 84	com/bumptech/glide/h/c:dw	(I)I
+    //   20: invokespecial 84	com/bumptech/glide/h/c:dv	(I)I
     //   23: pop
     //   24: ldc 80
     //   26: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -115,7 +115,7 @@ public final class c
     try
     {
       AppMethodBeat.i(77732);
-      paramInt1 = dw(super.read(paramArrayOfByte, paramInt1, paramInt2));
+      paramInt1 = dv(super.read(paramArrayOfByte, paramInt1, paramInt2));
       AppMethodBeat.o(77732);
       return paramInt1;
     }
@@ -128,7 +128,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.h.c
  * JD-Core Version:    0.7.0.1
  */

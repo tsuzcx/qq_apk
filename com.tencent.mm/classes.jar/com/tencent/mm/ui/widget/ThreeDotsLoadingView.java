@@ -16,29 +16,29 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.l.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class ThreeDotsLoadingView
   extends FrameLayout
 {
-  private static int HCn = -16777216;
-  private boolean CS;
-  private int HCo;
-  private boolean HCp;
-  private ViewGroup HCq;
-  private ImageView HCr;
-  private ImageView HCs;
-  private ImageView HCt;
-  private final Runnable HCu;
+  private static int JcJ = -16777216;
+  private boolean DQ;
+  private int JcK;
+  private boolean JcL;
+  private ViewGroup JcM;
+  private ImageView JcN;
+  private ImageView JcO;
+  private ImageView JcP;
+  private final Runnable JcQ;
   
   public ThreeDotsLoadingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(131603);
-    this.HCo = HCn;
-    this.CS = false;
-    this.HCp = false;
-    this.HCu = new Runnable()
+    this.JcK = JcJ;
+    this.DQ = false;
+    this.JcL = false;
+    this.JcQ = new Runnable()
     {
       public final void run()
       {
@@ -58,10 +58,10 @@ public class ThreeDotsLoadingView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(131604);
-    this.HCo = HCn;
-    this.CS = false;
-    this.HCp = false;
-    this.HCu = new Runnable()
+    this.JcK = JcJ;
+    this.DQ = false;
+    this.JcL = false;
+    this.JcQ = new Runnable()
     {
       public final void run()
       {
@@ -82,7 +82,7 @@ public class ThreeDotsLoadingView
     int i = 0;
     AppMethodBeat.i(131612);
     AnimationDrawable localAnimationDrawable = new AnimationDrawable();
-    ad.i("ThreeDotsLoadingView", "AnimationDrawable hash:" + localAnimationDrawable.hashCode());
+    ac.i("ThreeDotsLoadingView", "AnimationDrawable hash:" + localAnimationDrawable.hashCode());
     localAnimationDrawable.setOneShot(false);
     while (i < 3)
     {
@@ -93,31 +93,31 @@ public class ThreeDotsLoadingView
     return localAnimationDrawable;
   }
   
-  private void ffd()
+  private void fuY()
   {
     AppMethodBeat.i(131611);
-    this.HCr.setImageDrawable(m(this.HCo, 0.5F));
-    this.HCs.setImageDrawable(m(this.HCo, 0.4F));
-    this.HCt.setImageDrawable(m(this.HCo, 0.3F));
+    this.JcN.setImageDrawable(m(this.JcK, 0.5F));
+    this.JcO.setImageDrawable(m(this.JcK, 0.4F));
+    this.JcP.setImageDrawable(m(this.JcK, 0.3F));
     AppMethodBeat.o(131611);
   }
   
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(131605);
-    this.HCq = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131494574, this, true));
-    HCn = paramContext.getResources().getColor(2131100018);
-    this.HCo = HCn;
-    this.HCr = ((ImageView)this.HCq.findViewById(2131301495));
-    this.HCs = ((ImageView)this.HCq.findViewById(2131301496));
-    this.HCt = ((ImageView)this.HCq.findViewById(2131301497));
+    this.JcM = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131494574, this, true));
+    JcJ = paramContext.getResources().getColor(2131100018);
+    this.JcK = JcJ;
+    this.JcN = ((ImageView)this.JcM.findViewById(2131301495));
+    this.JcO = ((ImageView)this.JcM.findViewById(2131301496));
+    this.JcP = ((ImageView)this.JcM.findViewById(2131301497));
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, l.a.ThreeDotsLoadingView);
-      this.HCo = paramContext.getColor(0, HCn);
+      this.JcK = paramContext.getColor(0, JcJ);
       paramContext.recycle();
     }
-    ffd();
+    fuY();
     AppMethodBeat.o(131605);
   }
   
@@ -133,42 +133,42 @@ public class ThreeDotsLoadingView
     return localShapeDrawable;
   }
   
-  public final void ffb()
+  public final void fuW()
   {
     AppMethodBeat.i(131609);
     if (!t.aC(this))
     {
-      this.HCp = true;
+      this.JcL = true;
       AppMethodBeat.o(131609);
       return;
     }
-    if (this.CS)
+    if (this.DQ)
     {
       AppMethodBeat.o(131609);
       return;
     }
-    this.CS = true;
-    ffd();
-    postDelayed(this.HCu, 300L);
+    this.DQ = true;
+    fuY();
+    postDelayed(this.JcQ, 300L);
     AppMethodBeat.o(131609);
   }
   
-  public final void ffc()
+  public final void fuX()
   {
     AppMethodBeat.i(131610);
-    this.HCp = false;
-    if (!this.CS)
+    this.JcL = false;
+    if (!this.DQ)
     {
       AppMethodBeat.o(131610);
       return;
     }
-    this.CS = false;
-    removeCallbacks(this.HCu);
-    if ((this.HCr.getDrawable() instanceof AnimationDrawable))
+    this.DQ = false;
+    removeCallbacks(this.JcQ);
+    if ((this.JcN.getDrawable() instanceof AnimationDrawable))
     {
-      ((AnimationDrawable)this.HCr.getDrawable()).stop();
-      ((AnimationDrawable)this.HCs.getDrawable()).stop();
-      ((AnimationDrawable)this.HCt.getDrawable()).stop();
+      ((AnimationDrawable)this.JcN.getDrawable()).stop();
+      ((AnimationDrawable)this.JcO.getDrawable()).stop();
+      ((AnimationDrawable)this.JcP.getDrawable()).stop();
     }
     AppMethodBeat.o(131610);
   }
@@ -177,10 +177,10 @@ public class ThreeDotsLoadingView
   {
     AppMethodBeat.i(131607);
     super.onAttachedToWindow();
-    if (this.HCp)
+    if (this.JcL)
     {
-      this.HCp = false;
-      ffb();
+      this.JcL = false;
+      fuW();
     }
     AppMethodBeat.o(131607);
   }
@@ -188,9 +188,9 @@ public class ThreeDotsLoadingView
   public void setAlpha(float paramFloat)
   {
     AppMethodBeat.i(131608);
-    this.HCr.setAlpha(paramFloat);
-    this.HCs.setAlpha(paramFloat);
-    this.HCt.setAlpha(paramFloat);
+    this.JcN.setAlpha(paramFloat);
+    this.JcO.setAlpha(paramFloat);
+    this.JcP.setAlpha(paramFloat);
     if (getBackground() != null) {
       getBackground().setAlpha(Math.round(255.0F * paramFloat));
     }
@@ -201,7 +201,7 @@ public class ThreeDotsLoadingView
   {
     AppMethodBeat.i(131606);
     if ((8 == paramInt) || (4 == paramInt)) {
-      ffc();
+      fuX();
     }
     super.setVisibility(paramInt);
     AppMethodBeat.o(131606);
@@ -209,7 +209,7 @@ public class ThreeDotsLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.ThreeDotsLoadingView
  * JD-Core Version:    0.7.0.1
  */

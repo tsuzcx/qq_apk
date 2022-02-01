@@ -19,7 +19,7 @@ public final class p
     localHorizontalListView.setOnItemClickListener(paramOnItemClickListener);
     localHorizontalListView.setBackgroundResource(2131234062);
     paramOnItemClickListener = new o(localView);
-    paramOnItemClickListener.setHeight(com.tencent.mm.cd.a.fromDPToPix(paramContext, 120));
+    paramOnItemClickListener.setHeight(com.tencent.mm.cc.a.fromDPToPix(paramContext, 120));
     int i = 0;
     int j = 0;
     while (i < paramArrayOfString.getCount())
@@ -29,15 +29,15 @@ public final class p
       j += localView.getMeasuredWidth();
       i += 1;
     }
-    paramOnItemClickListener.setWidth(com.tencent.mm.cd.a.fromDPToPix(paramContext, 20) + j);
-    paramOnItemClickListener.showAsDropDown(paramView, (paramView.getWidth() - (com.tencent.mm.cd.a.fromDPToPix(paramContext, 20) + j)) / 2, 0);
+    paramOnItemClickListener.setWidth(com.tencent.mm.cc.a.fromDPToPix(paramContext, 20) + j);
+    paramOnItemClickListener.showAsDropDown(paramView, (paramView.getWidth() - (com.tencent.mm.cc.a.fromDPToPix(paramContext, 20) + j)) / 2, 0);
     AppMethodBeat.o(128472);
     return paramOnItemClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.p
  * JD-Core Version:    0.7.0.1
  */

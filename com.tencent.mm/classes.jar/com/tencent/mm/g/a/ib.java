@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ib
   extends b
 {
-  public a dlR;
-  public b dlS;
+  public a dje;
+  public b djf;
   
   public ib()
   {
@@ -16,22 +16,24 @@ public final class ib
   
   private ib(byte paramByte)
   {
-    AppMethodBeat.i(123477);
-    this.dlR = new a();
-    this.dlS = new b();
-    this.ESR = false;
+    AppMethodBeat.i(89645);
+    this.dje = new a();
+    this.djf = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(123477);
+    AppMethodBeat.o(89645);
   }
   
   public static final class a
   {
+    public int CW = 0;
     public String url;
   }
   
   public static final class b
   {
-    public String dlB;
+    public String djg;
+    public boolean djh = false;
   }
 }
 

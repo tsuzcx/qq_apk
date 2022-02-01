@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.cpv;
-import com.tencent.mm.protocal.protobuf.cpw;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.cvc;
+import com.tencent.mm.protocal.protobuf.cvd;
 
 public final class am
   extends n
@@ -24,14 +24,14 @@ public final class am
   {
     AppMethodBeat.i(131142);
     b.a locala = new b.a();
-    locala.gUU = new cpv();
-    locala.gUV = new cpw();
+    locala.hvt = new cvc();
+    locala.hvu = new cvd();
     locala.uri = "/cgi-bin/micromsg-bin/sendverifyemail";
     locala.funcId = 108;
     locala.reqCmdId = 43;
     locala.respCmdId = 1000000043;
-    this.rr = locala.atI();
-    ((cpv)this.rr.gUS.gUX).Dby = new cmf().aEE(paramString);
+    this.rr = locala.aAz();
+    ((cvc)this.rr.hvr.hvw).EuE = new crm().aJV(paramString);
     AppMethodBeat.o(131142);
   }
   
@@ -59,7 +59,7 @@ public final class am
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.am
  * JD-Core Version:    0.7.0.1
  */

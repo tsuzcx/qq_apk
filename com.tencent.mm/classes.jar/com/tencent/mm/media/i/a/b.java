@@ -2,8 +2,8 @@ package com.tencent.mm.media.i.a;
 
 import android.opengl.GLSurfaceView.EGLContextFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
 import d.g.b.k;
 import d.l;
 import javax.microedition.khronos.egl.EGL10;
@@ -11,7 +11,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.egl.EGLDisplay;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/render/config/RenderContextFactory;", "Landroid/opengl/GLSurfaceView$EGLContextFactory;", "()V", "EGL_CONTEXT_CLIENT_VERSION", "", "TAG", "", "createContext", "Ljavax/microedition/khronos/egl/EGLContext;", "egl", "Ljavax/microedition/khronos/egl/EGL10;", "display", "Ljavax/microedition/khronos/egl/EGLDisplay;", "eglConfig", "Ljavax/microedition/khronos/egl/EGLConfig;", "destroyContext", "", "context", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/render/config/RenderContextFactory;", "Landroid/opengl/GLSurfaceView$EGLContextFactory;", "()V", "EGL_CONTEXT_CLIENT_VERSION", "", "TAG", "", "createContext", "Ljavax/microedition/khronos/egl/EGLContext;", "egl", "Ljavax/microedition/khronos/egl/EGL10;", "display", "Ljavax/microedition/khronos/egl/EGLDisplay;", "eglConfig", "Ljavax/microedition/khronos/egl/EGLConfig;", "destroyContext", "", "context", "plugin-mediaeditor_release"})
 public final class b
   implements GLSurfaceView.EGLContextFactory
 {
@@ -24,8 +24,8 @@ public final class b
     k.h(paramEGL10, "egl");
     k.h(paramEGLDisplay, "display");
     k.h(paramEGLConfig, "eglConfig");
-    ad.w(this.TAG, "creating OpenGL ES 2.0 context");
-    int i = ax.aFC("mmkv_gl_key").decodeInt("support_egl_context_client_version", 3);
+    ac.w(this.TAG, "creating OpenGL ES 2.0 context");
+    int i = aw.aKT("mmkv_gl_key").decodeInt("support_egl_context_client_version", 3);
     int j = this.EGL_CONTEXT_CLIENT_VERSION;
     paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { j, i, 12344 });
     k.g(paramEGL10, "egl.eglCreateContext(dis…_NO_CONTEXT, attrib_list)");
@@ -39,7 +39,7 @@ public final class b
     k.h(paramEGL10, "egl");
     k.h(paramEGLDisplay, "display");
     k.h(paramEGLContext, "context");
-    ad.w(this.TAG, "destroyContext OpenGL ES 2.0 Context");
+    ac.w(this.TAG, "destroyContext OpenGL ES 2.0 Context");
     paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
     AppMethodBeat.o(93852);
   }

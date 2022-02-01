@@ -10,36 +10,36 @@ import com.tencent.mm.ipcinvoker.i;
 import com.tencent.mm.modelappbrand.e;
 import com.tencent.mm.modelappbrand.f;
 import com.tencent.mm.plugin.appbrand.dynamic.widget.IPCDynamicPageView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.Set;
 
 final class b
   implements f
 {
-  e jle;
-  Runnable jlf;
-  Runnable jlg;
-  Runnable jlh;
+  e jLr;
+  Runnable jLs;
+  Runnable jLt;
+  Runnable jLu;
   
   b(e parame)
   {
     AppMethodBeat.i(121219);
-    this.jlf = new Runnable()
+    this.jLs = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121213);
-        i.qq("com.tencent.mm:support");
+        i.tF("com.tencent.mm:support");
         AppMethodBeat.o(121213);
       }
     };
-    this.jlg = new Runnable()
+    this.jLt = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121215);
-        if (!c.ads().qn("com.tencent.mm:support"))
+        if (!c.aeI().tC("com.tencent.mm:support"))
         {
           AppMethodBeat.o(121215);
           return;
@@ -48,12 +48,12 @@ final class b
         AppMethodBeat.o(121215);
       }
     };
-    this.jlh = new Runnable()
+    this.jLu = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121217);
-        if (!c.ads().qn("com.tencent.mm:support"))
+        if (!c.aeI().tC("com.tencent.mm:support"))
         {
           AppMethodBeat.o(121217);
           return;
@@ -64,29 +64,29 @@ final class b
         AppMethodBeat.o(121217);
       }
     };
-    this.jle = parame;
+    this.jLr = parame;
     AppMethodBeat.o(121219);
   }
   
   public final void exit()
   {
     AppMethodBeat.i(121220);
-    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.jlg);
+    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.jLt);
     AppMethodBeat.o(121220);
   }
   
   public final void restart()
   {
     AppMethodBeat.i(121221);
-    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.jlh);
-    com.tencent.mm.plugin.appbrand.dynamic.b.j(this.jlf, 2000L);
+    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.jLu);
+    com.tencent.mm.plugin.appbrand.dynamic.b.j(this.jLs, 2000L);
     AppMethodBeat.o(121221);
   }
   
-  public final void uV(String paramString)
+  public final void zb(String paramString)
   {
     AppMethodBeat.i(121222);
-    paramString = this.jle.bX(paramString);
+    paramString = this.jLr.bV(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(121222);
@@ -98,17 +98,17 @@ final class b
       View localView = (View)paramString.next();
       if ((localView != null) && ((localView instanceof IPCDynamicPageView)))
       {
-        ad.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do pause view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
+        ac.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do pause view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
         ((IPCDynamicPageView)localView).onPause();
       }
     }
     AppMethodBeat.o(121222);
   }
   
-  public final void uW(String paramString)
+  public final void zc(String paramString)
   {
     AppMethodBeat.i(121223);
-    paramString = this.jle.bX(paramString);
+    paramString = this.jLr.bV(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(121223);
@@ -120,16 +120,20 @@ final class b
       View localView = (View)paramString.next();
       if ((localView != null) && ((localView instanceof IPCDynamicPageView)))
       {
-        ad.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do resume view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
+        ac.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do resume view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
         ((IPCDynamicPageView)localView).onResume();
       }
     }
     AppMethodBeat.o(121223);
   }
+  
+  static class a
+    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class db
   extends b
 {
-  public a dfk;
+  public a dcD;
   
   public db()
   {
@@ -15,16 +16,17 @@ public final class db
   
   private db(byte paramByte)
   {
-    AppMethodBeat.i(104412);
-    this.dfk = new a();
-    this.ESR = false;
+    AppMethodBeat.i(104411);
+    this.dcD = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(104412);
+    AppMethodBeat.o(104411);
   }
   
   public static final class a
   {
-    public int state = -1;
+    public EmojiInfo dcE;
+    public int scene;
   }
 }
 

@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.appbrand.game.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.fb;
-import com.tencent.mm.g.b.a.fb.a;
-import com.tencent.mm.g.b.a.fb.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.g.b.a.gt;
+import com.tencent.mm.g.b.a.gt.a;
+import com.tencent.mm.g.b.a.gt.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class e
 {
-  private static volatile e jsy;
-  public int jsA;
-  public int jsB;
-  public int jsC;
-  public String jsD;
-  public int jsE;
-  boolean jsF = false;
-  public int jsG;
-  public String jsz;
+  private static volatile e jSS;
+  public String jST;
+  public int jSU;
+  public int jSV;
+  public int jSW;
+  public String jSX;
+  public int jSY;
+  boolean jSZ = false;
+  public int jTa;
   public int mScene = -1;
   
-  public static e aWX()
+  public static e bdV()
   {
     AppMethodBeat.i(45294);
-    if (jsy == null) {}
+    if (jSS == null) {}
     try
     {
-      if (jsy == null) {
-        jsy = new e();
+      if (jSS == null) {
+        jSS = new e();
       }
-      e locale = jsy;
+      e locale = jSS;
       AppMethodBeat.o(45294);
       return locale;
     }
@@ -44,28 +44,28 @@ public class e
     int i = 1;
     AppMethodBeat.i(45295);
     Object localObject;
-    if ((!bt.isNullOrNil(this.jsD)) && (!bt.isNullOrNil(this.jsz)))
+    if ((!bs.isNullOrNil(this.jSX)) && (!bs.isNullOrNil(this.jST)))
     {
-      localObject = this.jsD;
-      String str = this.jsz;
-      int j = this.jsA;
-      int k = this.jsB;
-      int m = this.jsC;
+      localObject = this.jSX;
+      String str = this.jST;
+      int j = this.jSU;
+      int k = this.jSV;
+      int m = this.jSW;
       int n = this.mScene;
-      if (!this.jsF) {
+      if (!this.jSZ) {
         break label284;
       }
-      ad.v("MicroMsg.WAGamePreloadStatisManager", "instanceId:%s,appId:%s,appVersion:%d,appState:%d,appType:%d,key:%d,value:%d,scene:%d,misDownloadedCode:%d", new Object[] { localObject, str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(n), Integer.valueOf(i) });
-      localObject = new fb();
-      ((fb)localObject).lc(this.jsD);
-      ((fb)localObject).ld(this.jsz);
-      ((fb)localObject).dYT = this.jsA;
-      ((fb)localObject).eaV = fb.a.iJ(this.jsB);
-      ((fb)localObject).eaW = fb.b.iK(this.jsC);
-      ((fb)localObject).eaX = this.jsE;
-      ((fb)localObject).eaY = paramInt1;
-      ((fb)localObject).eaZ = paramInt2;
-      if (!this.jsF) {
+      ac.v("MicroMsg.WAGamePreloadStatisManager", "instanceId:%s,appId:%s,appVersion:%d,appState:%d,appType:%d,key:%d,value:%d,scene:%d,misDownloadedCode:%d", new Object[] { localObject, str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(n), Integer.valueOf(i) });
+      localObject = new gt();
+      ((gt)localObject).oh(this.jSX);
+      ((gt)localObject).oi(this.jST);
+      ((gt)localObject).eaM = this.jSU;
+      ((gt)localObject).edb = gt.a.iH(this.jSV);
+      ((gt)localObject).edc = gt.b.iI(this.jSW);
+      ((gt)localObject).edd = this.jSY;
+      ((gt)localObject).ede = paramInt1;
+      ((gt)localObject).edf = paramInt2;
+      if (!this.jSZ) {
         break label289;
       }
     }
@@ -73,10 +73,10 @@ public class e
     label289:
     for (long l = 1L;; l = 0L)
     {
-      ((fb)localObject).eba = l;
-      ((fb)localObject).dKe = this.mScene;
-      ((fb)localObject).ebb = this.jsG;
-      ((fb)localObject).aBj();
+      ((gt)localObject).edg = l;
+      ((gt)localObject).dHY = this.mScene;
+      ((gt)localObject).edh = this.jTa;
+      ((gt)localObject).aHZ();
       AppMethodBeat.o(45295);
       return;
       i = 0;
@@ -86,7 +86,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.preload.e
  * JD-Core Version:    0.7.0.1
  */

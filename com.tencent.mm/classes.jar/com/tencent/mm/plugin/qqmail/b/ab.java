@@ -7,22 +7,22 @@ import java.util.Map;
 
 public final class ab
 {
-  public String dpv;
-  public String[] uLJ;
-  public String[] uLK;
-  public String[] uLL;
-  public String uLh;
-  public String uMv;
-  public Map<String, String> uMw;
-  public Map<String, String> uMx;
-  public Map<String, String> uMy;
+  public String dng;
+  public String vTY;
+  public String[] vUA;
+  public String[] vUB;
+  public String[] vUz;
+  public String vVl;
+  public Map<String, String> vVm;
+  public Map<String, String> vVn;
+  public Map<String, String> vVo;
   
   public ab()
   {
     AppMethodBeat.i(122769);
-    this.uMw = new HashMap();
-    this.uMx = new LinkedHashMap();
-    this.uMy = new LinkedHashMap();
+    this.vVm = new HashMap();
+    this.vVn = new LinkedHashMap();
+    this.vVo = new LinkedHashMap();
     AppMethodBeat.o(122769);
   }
 }

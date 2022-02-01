@@ -10,12 +10,12 @@ import com.tencent.mm.pointers.PInt;
 
 public final class a
 {
-  private static final b mfu;
+  private static final b mHt;
   
   static
   {
     AppMethodBeat.i(136677);
-    mfu = new b()
+    mHt = new b()
     {
       public final Spannable a(Spannable paramAnonymousSpannable, int paramAnonymousInt, PInt paramAnonymousPInt, Spannable.Factory paramAnonymousFactory)
       {
@@ -35,7 +35,7 @@ public final class a
         return paramAnonymousContext;
       }
       
-      public final b.a ta(int paramAnonymousInt)
+      public final b.a tR(int paramAnonymousInt)
       {
         return null;
       }
@@ -43,13 +43,13 @@ public final class a
     AppMethodBeat.o(136677);
   }
   
-  public static b btV()
+  public static b bAU()
   {
     AppMethodBeat.i(136676);
     b localb = (b)e.K(b.class);
     if (localb == null)
     {
-      localb = mfu;
+      localb = mHt;
       AppMethodBeat.o(136676);
       return localb;
     }
@@ -59,7 +59,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.a.a
  * JD-Core Version:    0.7.0.1
  */

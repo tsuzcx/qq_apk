@@ -3,34 +3,45 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ru
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int CSC;
+  public int Ekd;
+  public int Eke;
+  public String Ekf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50082);
+    AppMethodBeat.i(113972);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).aR(1, this.CSC);
-      AppMethodBeat.o(50082);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.Ekd);
+      paramVarArgs.aR(2, this.Eke);
+      if (this.Ekf != null) {
+        paramVarArgs.d(3, this.Ekf);
+      }
+      AppMethodBeat.o(113972);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bA(1, this.CSC);
-      AppMethodBeat.o(50082);
-      return paramInt + 0;
+      int i = f.a.a.b.b.a.bx(1, this.Ekd) + 0 + f.a.a.b.b.a.bx(2, this.Eke);
+      paramInt = i;
+      if (this.Ekf != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.Ekf);
+      }
+      AppMethodBeat.o(113972);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(50082);
+      AppMethodBeat.o(113972);
       return 0;
     }
     if (paramInt == 3)
@@ -40,20 +51,28 @@ public final class ru
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(50082);
+        AppMethodBeat.o(113972);
         return -1;
+      case 1: 
+        localru.Ekd = locala.LVo.xF();
+        AppMethodBeat.o(113972);
+        return 0;
+      case 2: 
+        localru.Eke = locala.LVo.xF();
+        AppMethodBeat.o(113972);
+        return 0;
       }
-      localru.CSC = locala.KhF.xS();
-      AppMethodBeat.o(50082);
+      localru.Ekf = locala.LVo.readString();
+      AppMethodBeat.o(113972);
       return 0;
     }
-    AppMethodBeat.o(50082);
+    AppMethodBeat.o(113972);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ru
  * JD-Core Version:    0.7.0.1
  */

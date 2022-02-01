@@ -1,521 +1,346 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
+import android.content.Context;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.h;
-import com.tencent.mm.plugin.finder.storage.data.c;
-import com.tencent.mm.plugin.finder.storage.data.c.b;
-import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.ahs;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.plugin.finder.cgi.ax;
+import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
+import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
+import com.tencent.mm.plugin.finder.feed.model.internal.e;
+import com.tencent.mm.plugin.finder.feed.model.internal.f;
+import com.tencent.mm.plugin.finder.feed.model.internal.h;
+import com.tencent.mm.plugin.finder.feed.model.internal.i;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.FinderItem.a;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.akm;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.view.RefreshLoadMoreLayout.c;
 import d.a.j;
-import d.b.a;
 import d.l;
-import d.o;
+import d.v;
+import d.y;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentLoader;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "curFeedId", "", "curRefCommentId", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lkotlin/collections/ArrayList;", "addItem", "", "item", "sort", "", "addItems", "", "itemList", "", "toHead", "toTail", "addLevel2Items", "Lkotlin/Pair;", "rootComment", "down", "clearData", "delItemById", "commentId", "delItemByLocalId", "localCommentId", "filterComment", "", "get", "index", "getData", "getPositionToInsertLevel2Comment", "rootCommentId", "getSize", "hasLevel2Item", "root", "hasLevel2ItemAfter", "level2Comment", "hasLevel2ItemBefore", "onAttach", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "feedId", "refCommentId", "useCache", "onDetach", "pos", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "downContinue", "hasExpand", "sameComment", "comment1", "comment2", "sameParent", "updateItem", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "finderUserName", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "fetchEndCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "refObjectId", "", "getRefObjectId", "()J", "setRefObjectId", "(J)V", "totalCount", "", "getTotalCount", "()I", "setTotalCount", "(I)V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "onFetchDone", "response", "onFetchRefreshDone", "requestLoadMore", "requestRefresh", "Companion", "FinderFavListData", "FinderFavListInit", "FinderFavListRequest", "FinderFavListResponse", "plugin-finder_release"})
 public final class d
+  extends BaseFinderFeedLoader
 {
-  public static final boolean qyx = false;
-  public static final a qyy;
-  public final String TAG;
-  public final ArrayList<h> data;
-  public long qyv;
-  public long qyw;
+  private static final String TAG = "Finder.FinderFavFeedLoader";
+  private static final ConcurrentHashMap<Long, d.a.a> rmG;
+  public static final a rmH;
+  public int fAw;
+  public boolean hasMore;
+  public com.tencent.mm.bw.b lastBuffer;
+  public d.g.a.b<? super IResponse<BaseFinderFeed>, y> rmE;
+  private final String rmF;
   
   static
   {
-    AppMethodBeat.i(166031);
-    qyy = new a((byte)0);
-    AppMethodBeat.o(166031);
+    AppMethodBeat.i(202071);
+    rmH = new a((byte)0);
+    TAG = "Finder.FinderFavFeedLoader";
+    rmG = new ConcurrentHashMap();
+    AppMethodBeat.o(202071);
   }
   
-  public d()
+  public d(String paramString, anm paramanm)
   {
-    AppMethodBeat.i(166030);
-    this.TAG = "Finder.FinderCommentLoader";
-    this.data = new ArrayList();
-    AppMethodBeat.o(166030);
+    super(null, paramanm, 1, null);
+    AppMethodBeat.i(202070);
+    this.rmF = paramString;
+    AppMethodBeat.o(202070);
   }
   
-  public static boolean a(h paramh1, h paramh2)
+  public final e<Object, Object, h> createDataFetch(anm paramanm)
   {
-    AppMethodBeat.i(178290);
-    d.g.b.k.h(paramh1, "comment1");
-    d.g.b.k.h(paramh2, "comment2");
-    if ((paramh1.qDA.field_actionInfo.qoB != 0L) && (paramh1.qDA.field_actionInfo.qoB == paramh2.qDA.field_actionInfo.qoB))
-    {
-      AppMethodBeat.o(178290);
-      return true;
-    }
-    AppMethodBeat.o(178290);
-    return false;
+    AppMethodBeat.i(202065);
+    paramanm = (e)new b(paramanm);
+    AppMethodBeat.o(202065);
+    return paramanm;
   }
   
-  public static boolean b(h paramh1, h paramh2)
+  public final void onFetchDone(IResponse<BaseFinderFeed> paramIResponse)
   {
-    AppMethodBeat.i(178291);
-    d.g.b.k.h(paramh1, "comment1");
-    d.g.b.k.h(paramh2, "comment2");
-    if (paramh1.qDA.field_actionInfo.Dkk.commentId == paramh2.qDA.field_actionInfo.Dkk.commentId)
-    {
-      AppMethodBeat.o(178291);
-      return true;
+    AppMethodBeat.i(202068);
+    d.g.b.k.h(paramIResponse, "response");
+    super.onFetchDone(paramIResponse);
+    if ((paramIResponse instanceof e)) {
+      this.lastBuffer = paramIResponse.getLastBuffer();
     }
-    AppMethodBeat.o(178291);
-    return false;
-  }
-  
-  public final h CG(int paramInt)
-  {
-    AppMethodBeat.i(166026);
-    Object localObject = this.data.get(paramInt);
-    d.g.b.k.g(localObject, "data[index]");
-    localObject = (h)localObject;
-    AppMethodBeat.o(166026);
-    return localObject;
-  }
-  
-  public final int a(h paramh)
-  {
-    int k = 0;
-    AppMethodBeat.i(178286);
-    d.g.b.k.h(paramh, "item");
-    ad.i(this.TAG, "addItem " + paramh.qDA.field_actionInfo.Dkk.commentId + ", sort:true");
-    Iterator localIterator;
-    int j;
-    if (paramh.qDA.field_actionInfo.Dkk.commentId == 0L)
-    {
-      localIterator = ((List)this.data).iterator();
-      i = 0;
-      if (localIterator.hasNext()) {
-        if (((h)localIterator.next()).qDA.field_localCommentId == paramh.qDA.field_localCommentId)
-        {
-          j = 1;
-          label127:
-          if (j == 0) {
-            break label157;
-          }
-        }
-      }
+    if ((paramIResponse.getPullType() == 0) && ((paramIResponse instanceof e))) {
+      this.fAw = ((e)paramIResponse).fAw;
     }
-    for (;;)
+    this.hasMore = paramIResponse.getHasMore();
+    d.g.a.b localb = this.rmE;
+    if (localb != null)
     {
-      if (i < 0) {
-        break label260;
-      }
-      this.data.set(i, paramh);
-      AppMethodBeat.o(178286);
-      return i;
-      j = 0;
-      break label127;
-      label157:
-      i += 1;
-      break;
-      i = -1;
-      continue;
-      localIterator = ((List)this.data).iterator();
-      i = 0;
-      for (;;)
-      {
-        if (!localIterator.hasNext()) {
-          break label255;
-        }
-        if (((h)localIterator.next()).qDA.field_actionInfo.Dkk.commentId == paramh.qDA.field_actionInfo.Dkk.commentId) {}
-        for (j = 1;; j = 0)
-        {
-          if (j == 0) {
-            break label248;
-          }
-          break;
-        }
-        label248:
-        i += 1;
-      }
-      label255:
-      i = -1;
-    }
-    label260:
-    if (paramh.qDA.field_actionInfo.qoB == 0L)
-    {
-      this.data.size();
-      i = k;
-      if (paramh.qDA.field_state != -1)
-      {
-        if (paramh.qDA.field_actionInfo.Dkk.displayid == 0L) {
-          i = k;
-        }
-      }
-      else
-      {
-        this.data.add(i, paramh);
-        AppMethodBeat.o(178286);
-        return i;
-      }
-      localIterator = ((List)this.data).iterator();
-      i = 0;
-      label350:
-      if (localIterator.hasNext()) {
-        if (((h)localIterator.next()).qDA.field_actionInfo.Dkk.displayid <= paramh.qDA.field_actionInfo.Dkk.displayid)
-        {
-          j = 1;
-          if (j == 0) {
-            break label429;
-          }
-        }
-      }
-      label401:
-      for (j = i;; j = -1)
-      {
-        i = j;
-        if (j >= 0) {
-          break;
-        }
-        i = this.data.size();
-        break;
-        j = 0;
-        break label401;
-        label429:
-        i += 1;
-        break label350;
-      }
-    }
-    int i = t(paramh.qDA.field_actionInfo.qoB, true);
-    this.data.add(i, paramh);
-    AppMethodBeat.o(178286);
-    return i;
-  }
-  
-  public final void a(List<? extends h> paramList, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(166028);
-    d.g.b.k.h(paramList, "itemList");
-    List localList = dw(paramList);
-    if (localList.size() > 1) {
-      j.a(localList, (Comparator)new b());
-    }
-    int i = paramList.size();
-    int j = localList.size();
-    ad.i(this.TAG, "reduce size: " + (i - j) + ", data size: " + this.data.size());
-    if (paramBoolean1)
-    {
-      this.data.addAll(0, (Collection)localList);
-      AppMethodBeat.o(166028);
+      localb.ay(paramIResponse);
+      AppMethodBeat.o(202068);
       return;
     }
-    if (paramBoolean2) {
-      this.data.addAll(this.data.size(), (Collection)localList);
-    }
-    AppMethodBeat.o(166028);
+    AppMethodBeat.o(202068);
   }
   
-  public final o<c.b, Boolean> b(long paramLong1, long paramLong2, boolean paramBoolean)
+  public final void onFetchRefreshDone(IResponse<BaseFinderFeed> paramIResponse)
   {
-    AppMethodBeat.i(166025);
-    this.qyv = paramLong1;
-    this.qyw = paramLong2;
-    if (this.data.size() > 0) {
-      this.data.clear();
-    }
-    Object localObject1 = null;
-    boolean bool = false;
-    if (paramBoolean)
+    int i = 0;
+    AppMethodBeat.i(202069);
+    d.g.b.k.h(paramIResponse, "response");
+    RefreshLoadMoreLayout.c localc = new RefreshLoadMoreLayout.c(paramIResponse.getPullType());
+    Object localObject;
+    boolean bool;
+    if ((paramIResponse.getErrType() == 0) && (paramIResponse.getErrCode() == 0))
     {
-      localObject1 = c.qKo.R(paramLong1, paramLong2);
-      paramBoolean = bool;
-      if (localObject1 != null)
-      {
-        ArrayList localArrayList = this.data;
-        Object localObject2 = (Iterable)localObject1;
-        Collection localCollection = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
-        localObject2 = ((Iterable)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext()) {
-          localCollection.add(new h((com.tencent.mm.plugin.finder.storage.k)((Iterator)localObject2).next()));
-        }
-        localArrayList.addAll((Collection)localCollection);
-        ad.i(this.TAG, "onAttach hit datacache, " + ((List)localObject1).size());
-        paramBoolean = true;
-      }
-      localObject1 = c.qKo.S(paramLong1, paramLong2);
-    }
-    for (;;)
-    {
-      if (localObject1 != null) {}
-      for (int i = ((c.b)localObject1).pos; i >= 0; i = -1)
-      {
-        if (localObject1 == null) {
-          d.g.b.k.fvU();
-        }
-        localObject1 = new o(localObject1, Boolean.valueOf(paramBoolean));
-        AppMethodBeat.o(166025);
-        return localObject1;
+      localObject = ai.getContext();
+      d.g.b.k.g(localObject, "MMApplicationContext.getContext()");
+      localc.Jya = ((CharSequence)((Context)localObject).getResources().getString(2131759373));
+      localc.JxZ = 1;
+      if (paramIResponse.getPullType() == 0) {
+        break label266;
       }
       bool = true;
-      if (paramLong2 == 0L) {
-        bool = false;
+      label85:
+      localc.isT = bool;
+      localc.Jyb = paramIResponse.getHasMore();
+      if (((localc.actionType == 0) || (localc.actionType == 4)) && (localc.Jyc > 0)) {
+        localc.Jya = null;
       }
-      ad.i(this.TAG, "miss cache, upContinue:" + bool + ", downContinue:true");
-      localObject1 = new o(new c.b(0, null, bool, true, false), Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(166025);
-      return localObject1;
-      paramBoolean = false;
+      localc.hvK = Integer.valueOf(((e)paramIResponse).fAw);
+      ac.i(getTAG(), "[onFetchRefreshDone]  reason=".concat(String.valueOf(localc)));
+      localObject = paramIResponse.getIncrementList();
+      if (localObject != null) {
+        i = ((List)localObject).size();
+      }
+      if (!paramIResponse.getHasMore()) {
+        break label271;
+      }
+      i = 2;
     }
-  }
-  
-  public final boolean b(h paramh)
-  {
-    AppMethodBeat.i(178289);
-    d.g.b.k.h(paramh, "level2Comment");
-    Iterator localIterator = ((Iterable)this.data).iterator();
-    int i = 0;
-    int j = -1;
-    if (localIterator.hasNext())
-    {
-      Object localObject = localIterator.next();
-      if (i < 0) {
-        j.fvx();
-      }
-      localObject = (h)localObject;
-      if (b((h)localObject, paramh))
-      {
-        ad.d(this.TAG, "hasLevel2ItemAfter cur:" + i + ", before:" + j);
-        if (j < 0) {}
-        while (i <= j)
-        {
-          AppMethodBeat.o(178289);
-          return false;
-        }
-        AppMethodBeat.o(178289);
-        return true;
-      }
-      if (!a((h)localObject, paramh)) {
-        break label158;
-      }
-      j = i;
-    }
-    label158:
     for (;;)
     {
-      i += 1;
+      paramIResponse = new com.tencent.mm.plugin.finder.feed.model.internal.k(i, paramIResponse.getIncrementList(), paramIResponse.isNeedClear(), 8);
+      dispatcher().a(paramIResponse, localc);
+      AppMethodBeat.o(202069);
+      return;
+      localObject = ai.getContext();
+      d.g.b.k.g(localObject, "MMApplicationContext.getContext()");
+      localc.Jya = ((CharSequence)((Context)localObject).getResources().getString(2131759383));
+      localc.JxZ = -1;
       break;
-      AppMethodBeat.o(178289);
-      return false;
-    }
-  }
-  
-  public final List<h> dw(List<? extends h> paramList)
-  {
-    AppMethodBeat.i(178287);
-    List localList = (List)new ArrayList();
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext())
-    {
-      h localh = (h)paramList.next();
-      Object localObject = (List)this.data;
-      int i = 0;
-      localObject = ((List)localObject).iterator();
-      label68:
-      int j;
-      label120:
-      label126:
-      int k;
-      if (((Iterator)localObject).hasNext()) {
-        if (((h)((Iterator)localObject).next()).qDA.field_actionInfo.Dkk.commentId == localh.qDA.field_actionInfo.Dkk.commentId)
-        {
-          j = 1;
-          if (j == 0) {
-            break label272;
-          }
-          j = i;
-          localObject = localList.iterator();
-          i = 0;
-          label137:
-          if (!((Iterator)localObject).hasNext()) {
-            break label297;
-          }
-          if (((h)((Iterator)localObject).next()).qDA.field_actionInfo.Dkk.commentId != localh.qDA.field_actionInfo.Dkk.commentId) {
-            break label284;
-          }
-          k = 1;
-          label190:
-          if (k == 0) {
-            break label290;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (j < 0) {
-          break label302;
-        }
-        this.data.set(j, localh);
-        ad.i(this.TAG, "filter1:" + localh.qDA.field_actionInfo.Dkk.commentId + ", " + localh.qDA.cqy());
-        break;
-        j = 0;
-        break label120;
-        label272:
-        i += 1;
-        break label68;
-        j = -1;
-        break label126;
-        label284:
-        k = 0;
-        break label190;
-        label290:
-        i += 1;
-        break label137;
-        label297:
-        i = -1;
-      }
-      label302:
-      if (i >= 0) {
-        ad.i(this.TAG, "filter2:" + localh.qDA.field_actionInfo.Dkk.commentId);
+      label266:
+      bool = false;
+      break label85;
+      label271:
+      if ((getDataList().size() != 0) && (i != 0) && (getDataList().size() > i)) {
+        i = 4;
       } else {
-        localList.add(localh);
+        i = 6;
       }
     }
-    AppMethodBeat.o(178287);
-    return localList;
   }
   
-  public final void qe(long paramLong)
+  public final void requestLoadMore()
   {
-    AppMethodBeat.i(166029);
-    Object localObject2 = (Iterable)this.data;
-    Object localObject1 = (Collection)new ArrayList();
-    localObject2 = ((Iterable)localObject2).iterator();
-    label93:
-    while (((Iterator)localObject2).hasNext())
-    {
-      Object localObject3 = ((Iterator)localObject2).next();
-      if (((h)localObject3).qDA.field_localCommentId == paramLong) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label93;
-        }
-        ((Collection)localObject1).add(localObject3);
-        break;
-      }
-    }
-    localObject1 = (List)localObject1;
-    this.data.removeAll((Collection)localObject1);
-    AppMethodBeat.o(166029);
+    AppMethodBeat.i(202067);
+    d locald = new d(this.rmF, this.lastBuffer, 2);
+    ac.i(getTAG(), "requestLoadMore ".concat(String.valueOf(locald)));
+    fetchData((i)locald);
+    AppMethodBeat.o(202067);
   }
   
-  public final int t(long paramLong, boolean paramBoolean)
+  public final void requestRefresh()
   {
-    int k = -1;
-    AppMethodBeat.i(178288);
-    Object localObject = ((List)this.data).iterator();
-    int i = 0;
-    int j;
-    if (((Iterator)localObject).hasNext()) {
-      if (((h)((Iterator)localObject).next()).qDA.field_actionInfo.Dkk.commentId == paramLong)
-      {
-        j = 1;
-        label66:
-        if (j == 0) {
-          break label177;
-        }
-        label71:
-        localObject = (List)this.data;
-        localObject = ((List)localObject).listIterator(((List)localObject).size());
-      }
-    }
-    label177:
-    label192:
-    label196:
-    for (;;)
-    {
-      j = k;
-      if (((ListIterator)localObject).hasPrevious()) {
-        if (((h)((ListIterator)localObject).previous()).qDA.field_actionInfo.qoB != paramLong) {
-          break label192;
-        }
-      }
-      for (j = 1;; j = 0)
-      {
-        if (j == 0) {
-          break label196;
-        }
-        j = ((ListIterator)localObject).nextIndex();
-        if ((!paramBoolean) || (j < 0)) {
-          break label198;
-        }
-        AppMethodBeat.o(178288);
-        return j + 1;
-        j = 0;
-        break label66;
-        i += 1;
-        break;
-        i = -1;
-        break label71;
-      }
-    }
-    label198:
-    AppMethodBeat.o(178288);
-    return i + 1;
+    AppMethodBeat.i(202066);
+    d locald = new d(this.rmF, this.lastBuffer, 0);
+    ac.i(getTAG(), "requestLoadMore ".concat(String.valueOf(locald)));
+    fetchData((i)locald);
+    AppMethodBeat.o(202066);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentLoader$Companion;", "", "()V", "debugDisable", "", "clearCache", "", "feedId", "", "putCache", "commentId", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lkotlin/collections/ArrayList;", "plugin-finder_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$Companion;", "", "()V", "TAG", "", "favDataCache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$Companion$FavFeedCache;", "getFavDataCache", "()Ljava/util/concurrent/ConcurrentHashMap;", "clearCache", "", "getCache", "id", "putCache", "dataList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "FavFeedCache", "plugin-finder_release"})
   public static final class a
   {
-    public static void a(long paramLong1, long paramLong2, ArrayList<h> paramArrayList)
+    public static d.a.a ul(long paramLong)
     {
-      AppMethodBeat.i(166023);
-      d.g.b.k.h(paramArrayList, "data");
-      if (d.cmx())
+      AppMethodBeat.i(202057);
+      ac.i(d.access$getTAG$cp(), "getCache " + paramLong + ", exist:" + d.cvA().containsKey(Long.valueOf(paramLong)));
+      d.a.a locala2 = (d.a.a)d.cvA().get(Long.valueOf(paramLong));
+      d.a.a locala1 = locala2;
+      if (locala2 == null) {
+        locala1 = new d.a.a((List)new ArrayList(), null);
+      }
+      AppMethodBeat.o(202057);
+      return locala1;
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$FinderFavListData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$FinderFavListInit;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$FinderFavListRequest;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "favCallBack", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "getFavCallBack", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "setFavCallBack", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;)V", "alive", "", "call", "request", "callback", "callInitData", "", "init", "dead", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+  public static final class b
+    extends e<d.c, d.d, BaseFinderFeed>
+    implements com.tencent.mm.ak.g
+  {
+    private final String TAG = "Finder.FinderFavListData";
+    private com.tencent.mm.plugin.finder.feed.model.internal.d<BaseFinderFeed> rmI;
+    
+    public b(anm paramanm)
+    {
+      super();
+    }
+    
+    public final void alive()
+    {
+      AppMethodBeat.i(202059);
+      com.tencent.mm.kernel.g.agi().a(3966, (com.tencent.mm.ak.g)this);
+      AppMethodBeat.o(202059);
+    }
+    
+    public final void dead()
+    {
+      AppMethodBeat.i(202060);
+      com.tencent.mm.kernel.g.agi().b(3966, (com.tencent.mm.ak.g)this);
+      AppMethodBeat.o(202060);
+    }
+    
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+    {
+      Object localObject1 = null;
+      AppMethodBeat.i(202061);
+      if ((paramn instanceof ax))
       {
-        AppMethodBeat.o(166023);
-        return;
+        if ((paramInt1 == 0) && (paramInt2 == 0))
+        {
+          localObject2 = ((ax)paramn).rr.aBD();
+          if (localObject2 == null)
+          {
+            paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+            AppMethodBeat.o(202061);
+            throw paramString;
+          }
+          if (((akm)localObject2).continueFlag != 0) {}
+        }
+        for (boolean bool1 = false;; bool1 = true)
+        {
+          localObject2 = ((ax)paramn).rr.aBD();
+          if (localObject2 != null) {
+            break;
+          }
+          paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+          AppMethodBeat.o(202061);
+          throw paramString;
+        }
+        Object localObject2 = new d.e(paramInt1, paramInt2, paramString, ((akm)localObject2).fAw);
+        Object localObject3 = (Iterable)((ax)paramn).csC();
+        paramString = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
+        localObject3 = ((Iterable)localObject3).iterator();
+        Object localObject4;
+        Object localObject5;
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (FinderObject)((Iterator)localObject3).next();
+          localObject5 = FinderItem.rDA;
+          localObject4 = FinderItem.a.a((FinderObject)localObject4, 256);
+          localObject5 = com.tencent.mm.plugin.finder.storage.logic.b.rFl;
+          paramString.add(com.tencent.mm.plugin.finder.storage.logic.b.a.i((FinderItem)localObject4));
+        }
+        ((d.e)localObject2).setIncrementList((List)paramString);
+        paramString = com.tencent.mm.plugin.finder.storage.logic.b.rFl;
+        paramString = ((ax)paramn).csC();
+        if (((ax)paramn).pullType != 2) {}
+        for (boolean bool2 = true;; bool2 = false)
+        {
+          com.tencent.mm.plugin.finder.storage.logic.b.a.a(paramString, 256, bool2, null, true, this.contextObj, 40);
+          localObject3 = this.TAG;
+          localObject4 = new StringBuilder("incrementList size: ");
+          localObject5 = ((d.e)localObject2).getIncrementList();
+          paramString = localObject1;
+          if (localObject5 != null) {
+            paramString = Integer.valueOf(((List)localObject5).size());
+          }
+          ac.i((String)localObject3, paramString);
+          ((d.e)localObject2).setPullType(((ax)paramn).pullType);
+          paramString = ((ax)paramn).rr.aBD();
+          if (paramString != null) {
+            break;
+          }
+          paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+          AppMethodBeat.o(202061);
+          throw paramString;
+        }
+        ((d.e)localObject2).setLastBuffer(((akm)paramString).lastBuffer);
+        ((d.e)localObject2).setHasMore(bool1);
+        paramString = this.rmI;
+        if (paramString != null)
+        {
+          paramString.onFetchDone((IResponse)localObject2);
+          AppMethodBeat.o(202061);
+          return;
+        }
       }
-      c localc = c.qKo;
-      Object localObject = (Iterable)paramArrayList;
-      paramArrayList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        paramArrayList.add(((h)((Iterator)localObject).next()).qDA);
-      }
-      localc.a(paramLong1, paramLong2, (List)paramArrayList);
-      AppMethodBeat.o(166023);
+      AppMethodBeat.o(202061);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
-  public static final class b<T>
-    implements Comparator<T>
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$FinderFavListInit;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitRequest;", "cacheId", "", "isTimeLine", "", "initDone", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "(JZLcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;)V", "getCacheId", "()J", "()Z", "plugin-finder_release"})
+  public static final class c
+    extends com.tencent.mm.plugin.finder.feed.model.internal.g
   {
-    public final int compare(T paramT1, T paramT2)
+    final boolean hZi;
+    final long rhr;
+    
+    public c(long paramLong, boolean paramBoolean, f paramf)
     {
-      AppMethodBeat.i(166024);
-      int i = a.a((Comparable)Long.valueOf(((h)paramT2).qDA.field_actionInfo.Dkk.displayid), (Comparable)Long.valueOf(((h)paramT1).qDA.field_actionInfo.Dkk.displayid));
-      AppMethodBeat.o(166024);
-      return i;
+      super();
+      AppMethodBeat.i(202063);
+      this.rhr = paramLong;
+      this.hZi = paramBoolean;
+      AppMethodBeat.o(202063);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
-  public static final class c<T>
-    implements Comparator<T>
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$FinderFavListRequest;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IRequest;", "finderUserName", "", "lastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "(Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;I)V", "getFinderUserName", "()Ljava/lang/String;", "getLastBuff", "()Lcom/tencent/mm/protobuf/ByteString;", "getPullType", "()I", "plugin-finder_release"})
+  public static final class d
+    implements i
   {
-    public final int compare(T paramT1, T paramT2)
+    final int pullType;
+    final String rmF;
+    final com.tencent.mm.bw.b rmJ;
+    
+    public d(String paramString, com.tencent.mm.bw.b paramb, int paramInt)
     {
-      AppMethodBeat.i(178285);
-      int i = a.a((Comparable)Long.valueOf(((h)paramT2).qDA.field_actionInfo.Dkk.displayid), (Comparable)Long.valueOf(((h)paramT1).qDA.field_actionInfo.Dkk.displayid));
-      AppMethodBeat.o(178285);
-      return i;
+      AppMethodBeat.i(202064);
+      this.rmF = paramString;
+      this.rmJ = paramb;
+      this.pullType = paramInt;
+      AppMethodBeat.o(202064);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFavFeedLoader$FinderFavListResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "errType", "", "errCode", "errMsg", "", "totalCount", "(IILjava/lang/String;I)V", "getTotalCount", "()I", "setTotalCount", "(I)V", "plugin-finder_release"})
+  public static final class e
+    extends IResponse<BaseFinderFeed>
+  {
+    int fAw;
+    
+    public e(int paramInt1, int paramInt2, String paramString, int paramInt3)
+    {
+      super(paramInt2, paramString);
+      this.fAw = paramInt3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.d
  * JD-Core Version:    0.7.0.1
  */

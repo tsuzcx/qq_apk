@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class yi
   extends b
 {
-  public a dEU;
+  public a dBW;
   
   public yi()
   {
@@ -15,16 +15,20 @@ public final class yi
   
   private yi(byte paramByte)
   {
-    AppMethodBeat.i(117553);
-    this.dEU = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19849);
+    this.dBW = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(117553);
+    AppMethodBeat.o(19849);
   }
   
   public static final class a
   {
-    public String dld;
+    public String cIZ;
+    public int cZu;
+    public byte[] data;
+    public String dda;
+    public boolean deB;
   }
 }
 

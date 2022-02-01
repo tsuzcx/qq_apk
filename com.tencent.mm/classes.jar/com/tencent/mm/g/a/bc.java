@@ -2,13 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class bc
   extends b
 {
-  public a ddo;
-  public b ddp;
+  public a daL;
   
   public bc()
   {
@@ -17,22 +15,14 @@ public final class bc
   
   private bc(byte paramByte)
   {
-    AppMethodBeat.i(104409);
-    this.ddo = new a();
-    this.ddp = new b();
-    this.ESR = false;
+    AppMethodBeat.i(155365);
+    this.daL = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(104409);
+    AppMethodBeat.o(155365);
   }
   
   public static final class a
-  {
-    public EmojiInfo ddq;
-    public String ddr;
-    public int type;
-  }
-  
-  public static final class b
   {
     public boolean result = false;
   }

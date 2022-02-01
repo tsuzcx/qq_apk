@@ -4,10 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.q;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ax;
 import com.tencent.mm.sdk.platformtools.h;
 import d.g.b.k;
 import d.l;
@@ -15,24 +15,24 @@ import java.net.URLDecoder;
 import java.util.Iterator;
 import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageDownloadUtil;", "", "()V", "TAG", "", "enableImageBlankReport", "", "canReport", "scene", "", "canReportBlank", "getFormattedNetType", "context", "Landroid/content/Context;", "getImageTypeByContentType", "contentType", "getRequestImageTypeByUrl", "url", "isJpeg", "isRequestJpeg", "isRequestWebp", "isRequestWxPic", "isResponseWebp", "isResponseWxPic", "isWebp", "isWxPic", "removeQueryParameter", "uri", "Landroid/net/Uri;", "key", "updateEnableImageBlankReport", "", "plugin-biz_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageDownloadUtil;", "", "()V", "TAG", "", "enableImageBlankReport", "", "canReport", "scene", "", "canReportBlank", "getFormattedNetType", "context", "Landroid/content/Context;", "getImageTypeByContentType", "contentType", "getRequestImageTypeByUrl", "url", "isJpeg", "isRequestJpeg", "isRequestWebp", "isRequestWxPic", "isResponseWebp", "isResponseWxPic", "isWebp", "isWxPic", "removeQueryParameter", "uri", "Landroid/net/Uri;", "key", "updateEnableImageBlankReport", "", "plugin-biz_release"})
 public final class g
 {
-  private static boolean BXP;
-  public static final g BXQ;
+  private static boolean Dqg;
+  public static final g Dqh;
   
   static
   {
     AppMethodBeat.i(124863);
-    BXQ = new g();
-    exS();
+    Dqh = new g();
+    eNm();
     AppMethodBeat.o(124863);
   }
   
-  public static boolean UI(int paramInt)
+  public static boolean WS(int paramInt)
   {
     AppMethodBeat.i(124860);
-    if ((com.tencent.mm.api.b.IT()) && ((paramInt == 1) || (paramInt == 3) || (paramInt == 2)))
+    if ((com.tencent.mm.api.b.IC()) && ((paramInt == 1) || (paramInt == 3) || (paramInt == 2)))
     {
       AppMethodBeat.o(124860);
       return true;
@@ -41,16 +41,16 @@ public final class g
     return false;
   }
   
-  public static boolean UJ(int paramInt)
+  public static boolean WT(int paramInt)
   {
-    return (BXP) && (paramInt == 1);
+    return (Dqg) && (paramInt == 1);
   }
   
-  public static boolean aBP(String paramString)
+  public static boolean aHh(String paramString)
   {
     AppMethodBeat.i(124854);
     k.h(paramString, "url");
-    if ((com.tencent.mm.api.b.IT()) && (com.tencent.mm.api.b.dM(paramString)))
+    if ((com.tencent.mm.api.b.IC()) && (com.tencent.mm.api.b.dB(paramString)))
     {
       AppMethodBeat.o(124854);
       return true;
@@ -59,11 +59,11 @@ public final class g
     return false;
   }
   
-  public static boolean aBQ(String paramString)
+  public static boolean aHi(String paramString)
   {
     AppMethodBeat.i(124856);
     k.h(paramString, "url");
-    if ((q.ayM()) && (com.tencent.mm.api.b.dK(paramString)))
+    if ((q.aFE()) && (com.tencent.mm.api.b.dz(paramString)))
     {
       AppMethodBeat.o(124856);
       return true;
@@ -72,7 +72,7 @@ public final class g
     return false;
   }
   
-  public static boolean aBR(String paramString)
+  public static boolean aHj(String paramString)
   {
     AppMethodBeat.i(124857);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -86,7 +86,7 @@ public final class g
     return false;
   }
   
-  public static int aBS(String paramString)
+  public static int aHk(String paramString)
   {
     AppMethodBeat.i(124859);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -96,12 +96,12 @@ public final class g
       AppMethodBeat.o(124859);
       return -1;
     }
-    if (aBR(paramString))
+    if (aHj(paramString))
     {
       AppMethodBeat.o(124859);
       return 1;
     }
-    if (aqd(paramString))
+    if (avm(paramString))
     {
       AppMethodBeat.o(124859);
       return 2;
@@ -110,7 +110,7 @@ public final class g
     return 0;
   }
   
-  private static boolean aqd(String paramString)
+  private static boolean avm(String paramString)
   {
     AppMethodBeat.i(124858);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -145,18 +145,18 @@ public final class g
     return paramUri;
   }
   
-  public static final void exS()
+  public static final void eNm()
   {
     AppMethodBeat.i(124853);
-    int i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pqZ, 0);
+    int i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pUM, 0);
     boolean bool;
     if ((h.IS_FLAVOR_RED) || (h.DEBUG)) {
       bool = true;
     }
     for (;;)
     {
-      BXP = bool;
-      ad.i("MicroMsg.BizImageDownloadUtil", "alvinluo updateEnableImageBlankReport config: %d, %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(BXP) });
+      Dqg = bool;
+      ac.i("MicroMsg.BizImageDownloadUtil", "alvinluo updateEnableImageBlankReport config: %d, %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(Dqg) });
       AppMethodBeat.o(124853);
       return;
       if (i == 1) {
@@ -167,30 +167,30 @@ public final class g
     }
   }
   
-  public static String hj(Context paramContext)
+  public static String hu(Context paramContext)
   {
     AppMethodBeat.i(124861);
-    if (!ay.isConnected(paramContext))
+    if (!ax.isConnected(paramContext))
     {
       AppMethodBeat.o(124861);
       return "unknow";
     }
-    if (ay.is4G(paramContext))
+    if (ax.is4G(paramContext))
     {
       AppMethodBeat.o(124861);
       return "4G";
     }
-    if (ay.isWifi(paramContext))
+    if (ax.isWifi(paramContext))
     {
       AppMethodBeat.o(124861);
       return "WiFi";
     }
-    if (ay.is3G(paramContext))
+    if (ax.is3G(paramContext))
     {
       AppMethodBeat.o(124861);
       return "3G";
     }
-    if (ay.is2G(paramContext))
+    if (ax.is2G(paramContext))
     {
       AppMethodBeat.o(124861);
       return "2G";
@@ -199,11 +199,11 @@ public final class g
     return "other";
   }
   
-  public static boolean kB(String paramString1, String paramString2)
+  public static boolean kY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(124855);
     k.h(paramString1, "url");
-    if ((q.ayM()) && (aqd(paramString2)) && (com.tencent.mm.api.b.dK(paramString1)))
+    if ((q.aFE()) && (avm(paramString2)) && (com.tencent.mm.api.b.dz(paramString1)))
     {
       AppMethodBeat.o(124855);
       return true;

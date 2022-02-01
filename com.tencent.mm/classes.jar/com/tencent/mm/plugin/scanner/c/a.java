@@ -8,9 +8,9 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.model.s;
 import com.tencent.mm.plugin.scanner.model.t;
-import com.tencent.mm.plugin.scanner.model.w;
+import com.tencent.mm.plugin.scanner.model.y;
 import com.tencent.mm.plugin.scanner.ui.ScanUIRectView.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.f;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
@@ -18,64 +18,64 @@ import java.util.Map;
 
 public final class a
 {
-  private static a vNB;
-  public boolean fFP;
-  public final Object vNC;
-  public a vND;
-  private int vNE;
-  private int vNF;
-  private int[] vNG;
-  private int vNH;
-  private Map vNh;
-  public final Object vNi;
-  public long vNo;
-  private boolean vNq;
+  private static a wXW;
+  public boolean fJw;
+  private Map wXC;
+  public final Object wXD;
+  public long wXJ;
+  private boolean wXL;
+  public final Object wXX;
+  public a wXY;
+  private int wXZ;
+  private int wYa;
+  private int[] wYb;
+  private int wYc;
   
   static
   {
     AppMethodBeat.i(51584);
-    vNB = new a();
+    wXW = new a();
     AppMethodBeat.o(51584);
   }
   
   public a()
   {
     AppMethodBeat.i(51576);
-    this.vNi = new Object();
-    this.vNC = new Object();
-    this.vNh = new HashMap();
-    this.vNE = 0;
-    this.vNF = 0;
-    this.vNG = new int[] { 480, 448, 320, 240 };
-    this.vNH = 2;
+    this.wXD = new Object();
+    this.wXX = new Object();
+    this.wXC = new HashMap();
+    this.wXZ = 0;
+    this.wYa = 0;
+    this.wYb = new int[] { 480, 448, 320, 240 };
+    this.wYc = 2;
     AppMethodBeat.o(51576);
   }
   
-  public static a dln()
+  public static a dzp()
   {
-    return vNB;
+    return wXW;
   }
   
-  private t dlo()
+  private t dzq()
   {
     AppMethodBeat.i(51579);
-    b localb = new b(this.vNo);
+    b localb = new b(this.wXJ);
     AppMethodBeat.o(51579);
     return localb;
   }
   
-  private byte[] el(String paramString, int paramInt)
+  private byte[] et(String paramString, int paramInt)
   {
     AppMethodBeat.i(51577);
     try
     {
-      Bitmap localBitmap = em(paramString, paramInt);
+      Bitmap localBitmap = eu(paramString, paramInt);
       if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
         ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
         localBitmap.compress(Bitmap.CompressFormat.JPEG, 70, localByteArrayOutputStream);
         byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
-        ad.i("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo compressImage decode bitmap width: %d, height: %d, data: %d", new Object[] { Integer.valueOf(localBitmap.getWidth()), Integer.valueOf(localBitmap.getHeight()), Integer.valueOf(arrayOfByte.length) });
+        ac.i("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo compressImage decode bitmap width: %d, height: %d, data: %d", new Object[] { Integer.valueOf(localBitmap.getWidth()), Integer.valueOf(localBitmap.getHeight()), Integer.valueOf(arrayOfByte.length) });
         paramString = arrayOfByte;
         if (arrayOfByte.length > 122880)
         {
@@ -85,7 +85,7 @@ public final class a
             localByteArrayOutputStream.reset();
             localBitmap.compress(Bitmap.CompressFormat.JPEG, 50, localByteArrayOutputStream);
             paramString = localByteArrayOutputStream.toByteArray();
-            ad.i("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo compressImage compressed data: %d", new Object[] { Integer.valueOf(paramString.length) });
+            ac.i("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo compressImage compressed data: %d", new Object[] { Integer.valueOf(paramString.length) });
           }
         }
         localBitmap.recycle();
@@ -96,13 +96,13 @@ public final class a
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.AiScanImageDecodeQueueNew", paramString, "alvinluo compressImage exception", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AiScanImageDecodeQueueNew", paramString, "alvinluo compressImage exception", new Object[0]);
       AppMethodBeat.o(51577);
     }
     return null;
   }
   
-  private Bitmap em(String paramString, int paramInt)
+  private Bitmap eu(String paramString, int paramInt)
   {
     AppMethodBeat.i(51578);
     try
@@ -115,7 +115,7 @@ public final class a
       int i;
       int j;
       if (k > m) {
-        if (this.vNH == 1)
+        if (this.wYc == 1)
         {
           i = (int)(m * 1.0F * paramInt / k);
           j = paramInt;
@@ -126,9 +126,9 @@ public final class a
         Point localPoint = new Point(j, i);
         paramInt = localPoint.x;
         i = localPoint.y;
-        ((BitmapFactory.Options)localObject).inSampleSize = f.M(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight, paramInt, i);
+        ((BitmapFactory.Options)localObject).inSampleSize = f.O(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight, paramInt, i);
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-        ad.i("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo resizeImage width: %d, height: %d, targetWidth: %d, targetHeight: %d, sampleSize: %d", new Object[] { Integer.valueOf(((BitmapFactory.Options)localObject).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject).outHeight), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(((BitmapFactory.Options)localObject).inSampleSize) });
+        ac.i("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo resizeImage width: %d, height: %d, targetWidth: %d, targetHeight: %d, sampleSize: %d", new Object[] { Integer.valueOf(((BitmapFactory.Options)localObject).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject).outHeight), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(((BitmapFactory.Options)localObject).inSampleSize) });
         localObject = f.decodeFile(paramString, (BitmapFactory.Options)localObject);
         paramString = (String)localObject;
         if (localObject != null)
@@ -146,19 +146,19 @@ public final class a
         return paramString;
         i = m;
         j = k;
-        if (this.vNH == 2)
+        if (this.wYc == 2)
         {
           j = (int)(k * 1.0F * paramInt / m);
           i = paramInt;
           continue;
-          if (this.vNH == 1)
+          if (this.wYc == 1)
           {
             j = (int)(k * 1.0F * paramInt / m);
             i = paramInt;
           }
           else
           {
-            int n = this.vNH;
+            int n = this.wYc;
             i = m;
             j = k;
             if (n == 2)
@@ -173,37 +173,37 @@ public final class a
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.AiScanImageDecodeQueueNew", paramString, "alvinluo resizeImage exception", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AiScanImageDecodeQueueNew", paramString, "alvinluo resizeImage exception", new Object[0]);
       AppMethodBeat.o(51578);
     }
   }
   
-  public final void a(final byte[] paramArrayOfByte, final Point paramPoint, final int paramInt1, final int paramInt2)
+  public final void a(final byte[] paramArrayOfByte, final Point paramPoint, final int paramInt1, final int paramInt2, final boolean paramBoolean)
   {
-    AppMethodBeat.i(160998);
-    ad.v("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo addDecodeTask resolution: %s, previewData length: %d, cameraRotation: %d, previewFormat: %d", new Object[] { paramPoint, Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(199495);
+    ac.v("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo addDecodeTask resolution: %s, previewData length: %d, cameraRotation: %d, previewFormat: %d", new Object[] { paramPoint, Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     s.a(new t()
     {
       public final void run()
       {
         AppMethodBeat.i(51572);
-        a.a(a.this, paramArrayOfByte, paramPoint, paramInt1, paramInt2);
+        a.a(a.this, paramArrayOfByte, paramPoint, paramInt1, paramInt2, paramBoolean);
         AppMethodBeat.o(51572);
       }
     });
-    AppMethodBeat.o(160998);
+    AppMethodBeat.o(199495);
   }
   
-  public final void rW(long paramLong)
+  public final void wz(long paramLong)
   {
     AppMethodBeat.i(51580);
-    synchronized (this.vNi)
+    synchronized (this.wXD)
     {
-      if (this.vNo == paramLong)
+      if (this.wXJ == paramLong)
       {
-        this.vNo = 0L;
-        this.vND = null;
-        this.vNh.clear();
+        this.wXJ = 0L;
+        this.wXY = null;
+        this.wXC.clear();
       }
       AppMethodBeat.o(51580);
       return;
@@ -213,21 +213,21 @@ public final class a
   public static abstract interface a
     extends b.a
   {
-    public abstract void a(w paramw);
+    public abstract void a(y paramy);
   }
   
   final class b
     implements t
   {
-    private long dcQ;
-    private int pPJ;
+    private long dao;
     private int pixelFormat;
-    private byte[] vNs;
-    private Point vNt;
+    private int qyr;
+    private byte[] wXN;
+    private Point wXO;
     
     public b(long paramLong)
     {
-      this.dcQ = paramLong;
+      this.dao = paramLong;
     }
     
     /* Error */
@@ -239,57 +239,57 @@ public final class a
       //   3: ldc 34
       //   5: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   8: aload_0
-      //   9: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   9: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   12: invokestatic 44	com/tencent/mm/plugin/scanner/c/a:d	(Lcom/tencent/mm/plugin/scanner/c/a;)Ljava/lang/Object;
       //   15: astore 9
       //   17: aload 9
       //   19: monitorenter
       //   20: aload_0
-      //   21: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   21: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   24: iconst_1
       //   25: invokestatic 48	com/tencent/mm/plugin/scanner/c/a:a	(Lcom/tencent/mm/plugin/scanner/c/a;Z)Z
       //   28: pop
       //   29: aload_0
-      //   30: getfield 29	com/tencent/mm/plugin/scanner/c/a$b:dcQ	J
+      //   30: getfield 29	com/tencent/mm/plugin/scanner/c/a$b:dao	J
       //   33: aload_0
-      //   34: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   34: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   37: invokestatic 52	com/tencent/mm/plugin/scanner/c/a:e	(Lcom/tencent/mm/plugin/scanner/c/a;)J
       //   40: lcmp
-      //   41: ifne +715 -> 756
+      //   41: ifne +723 -> 764
       //   44: aload_0
-      //   45: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   45: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   48: invokestatic 56	com/tencent/mm/plugin/scanner/c/a:f	(Lcom/tencent/mm/plugin/scanner/c/a;)Ljava/util/Map;
       //   51: invokeinterface 62 1 0
       //   56: ifne +108 -> 164
       //   59: aload_0
       //   60: aload_0
-      //   61: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   61: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   64: invokestatic 56	com/tencent/mm/plugin/scanner/c/a:f	(Lcom/tencent/mm/plugin/scanner/c/a;)Ljava/util/Map;
       //   67: ldc 64
       //   69: invokeinterface 68 2 0
       //   74: checkcast 69	[B
       //   77: checkcast 69	[B
-      //   80: putfield 71	com/tencent/mm/plugin/scanner/c/a$b:vNs	[B
+      //   80: putfield 71	com/tencent/mm/plugin/scanner/c/a$b:wXN	[B
       //   83: aload_0
       //   84: aload_0
-      //   85: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   85: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   88: invokestatic 56	com/tencent/mm/plugin/scanner/c/a:f	(Lcom/tencent/mm/plugin/scanner/c/a;)Ljava/util/Map;
       //   91: ldc 73
       //   93: invokeinterface 68 2 0
       //   98: checkcast 75	android/graphics/Point
-      //   101: putfield 77	com/tencent/mm/plugin/scanner/c/a$b:vNt	Landroid/graphics/Point;
+      //   101: putfield 77	com/tencent/mm/plugin/scanner/c/a$b:wXO	Landroid/graphics/Point;
       //   104: aload_0
       //   105: aload_0
-      //   106: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   106: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   109: invokestatic 56	com/tencent/mm/plugin/scanner/c/a:f	(Lcom/tencent/mm/plugin/scanner/c/a;)Ljava/util/Map;
       //   112: ldc 79
       //   114: invokeinterface 68 2 0
       //   119: checkcast 81	java/lang/Integer
       //   122: invokevirtual 85	java/lang/Integer:intValue	()I
-      //   125: putfield 87	com/tencent/mm/plugin/scanner/c/a$b:pPJ	I
+      //   125: putfield 87	com/tencent/mm/plugin/scanner/c/a$b:qyr	I
       //   128: aload_0
       //   129: aload_0
-      //   130: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   130: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   133: invokestatic 56	com/tencent/mm/plugin/scanner/c/a:f	(Lcom/tencent/mm/plugin/scanner/c/a;)Ljava/util/Map;
       //   136: ldc 89
       //   138: invokeinterface 68 2 0
@@ -297,7 +297,7 @@ public final class a
       //   146: invokevirtual 85	java/lang/Integer:intValue	()I
       //   149: putfield 91	com/tencent/mm/plugin/scanner/c/a$b:pixelFormat	I
       //   152: aload_0
-      //   153: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   153: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   156: invokestatic 56	com/tencent/mm/plugin/scanner/c/a:f	(Lcom/tencent/mm/plugin/scanner/c/a;)Ljava/util/Map;
       //   159: invokeinterface 94 1 0
       //   164: aload 9
@@ -305,18 +305,18 @@ public final class a
       //   167: aconst_null
       //   168: astore 9
       //   170: aload_0
-      //   171: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   171: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   174: invokestatic 97	com/tencent/mm/plugin/scanner/c/a:h	(Lcom/tencent/mm/plugin/scanner/c/a;)Ljava/lang/Object;
       //   177: astore 10
       //   179: aload 10
       //   181: monitorenter
       //   182: aload_0
-      //   183: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   183: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   186: invokestatic 100	com/tencent/mm/plugin/scanner/c/a:b	(Lcom/tencent/mm/plugin/scanner/c/a;)Z
-      //   189: ifeq +730 -> 919
+      //   189: ifeq +738 -> 927
       //   192: aload_0
-      //   193: getfield 71	com/tencent/mm/plugin/scanner/c/a$b:vNs	[B
-      //   196: ifnull +723 -> 919
+      //   193: getfield 71	com/tencent/mm/plugin/scanner/c/a$b:wXN	[B
+      //   196: ifnull +731 -> 927
       //   199: ldc 102
       //   201: ldc 104
       //   203: bipush 6
@@ -324,20 +324,20 @@ public final class a
       //   208: dup
       //   209: iconst_0
       //   210: aload_0
-      //   211: getfield 29	com/tencent/mm/plugin/scanner/c/a$b:dcQ	J
+      //   211: getfield 29	com/tencent/mm/plugin/scanner/c/a$b:dao	J
       //   214: invokestatic 110	java/lang/Long:valueOf	(J)Ljava/lang/Long;
       //   217: aastore
       //   218: dup
       //   219: iconst_1
       //   220: aload_0
-      //   221: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   221: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   224: invokestatic 52	com/tencent/mm/plugin/scanner/c/a:e	(Lcom/tencent/mm/plugin/scanner/c/a;)J
       //   227: invokestatic 110	java/lang/Long:valueOf	(J)Ljava/lang/Long;
       //   230: aastore
       //   231: dup
       //   232: iconst_2
       //   233: aload_0
-      //   234: getfield 77	com/tencent/mm/plugin/scanner/c/a$b:vNt	Landroid/graphics/Point;
+      //   234: getfield 77	com/tencent/mm/plugin/scanner/c/a$b:wXO	Landroid/graphics/Point;
       //   237: aastore
       //   238: dup
       //   239: iconst_3
@@ -348,61 +348,61 @@ public final class a
       //   248: dup
       //   249: iconst_4
       //   250: aload_0
-      //   251: getfield 87	com/tencent/mm/plugin/scanner/c/a$b:pPJ	I
+      //   251: getfield 87	com/tencent/mm/plugin/scanner/c/a$b:qyr	I
       //   254: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   257: aastore
       //   258: dup
       //   259: iconst_5
       //   260: aload_0
-      //   261: getfield 71	com/tencent/mm/plugin/scanner/c/a$b:vNs	[B
+      //   261: getfield 71	com/tencent/mm/plugin/scanner/c/a$b:wXN	[B
       //   264: arraylength
       //   265: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   268: aastore
-      //   269: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   269: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   272: aload_0
-      //   273: getfield 71	com/tencent/mm/plugin/scanner/c/a$b:vNs	[B
+      //   273: getfield 71	com/tencent/mm/plugin/scanner/c/a$b:wXN	[B
       //   276: aload_0
       //   277: getfield 91	com/tencent/mm/plugin/scanner/c/a$b:pixelFormat	I
       //   280: aload_0
-      //   281: getfield 87	com/tencent/mm/plugin/scanner/c/a$b:pPJ	I
+      //   281: getfield 87	com/tencent/mm/plugin/scanner/c/a$b:qyr	I
       //   284: invokestatic 124	com/tencent/mm/plugin/scanner/model/s:process	([BII)Lcom/tencent/mm/plugin/scanner/model/ScanFastFocusEngineNative;
       //   287: astore 11
-      //   289: invokestatic 128	com/tencent/mm/plugin/scanner/model/s:dlx	()Lcom/tencent/mm/plugin/scanner/model/w;
+      //   289: invokestatic 128	com/tencent/mm/plugin/scanner/model/s:dzz	()Lcom/tencent/mm/plugin/scanner/model/y;
       //   292: astore 12
       //   294: aload 12
       //   296: ifnull +27 -> 323
       //   299: aload_0
-      //   300: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   300: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   303: invokestatic 131	com/tencent/mm/plugin/scanner/c/a:i	(Lcom/tencent/mm/plugin/scanner/c/a;)Lcom/tencent/mm/plugin/scanner/c/a$a;
       //   306: ifnull +17 -> 323
       //   309: aload_0
-      //   310: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   310: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   313: invokestatic 131	com/tencent/mm/plugin/scanner/c/a:i	(Lcom/tencent/mm/plugin/scanner/c/a;)Lcom/tencent/mm/plugin/scanner/c/a$a;
       //   316: aload 12
       //   318: invokeinterface 136 2 0
       //   323: aload 11
-      //   325: ifnull +469 -> 794
+      //   325: ifnull +477 -> 802
       //   328: aload 11
       //   330: getfield 141	com/tencent/mm/plugin/scanner/model/ScanFastFocusEngineNative:bestImageData	[B
-      //   333: ifnull +461 -> 794
+      //   333: ifnull +469 -> 802
       //   336: aload 11
       //   338: getfield 144	com/tencent/mm/plugin/scanner/model/ScanFastFocusEngineNative:width	I
-      //   341: ifle +453 -> 794
+      //   341: ifle +461 -> 802
       //   344: aload 11
       //   346: getfield 147	com/tencent/mm/plugin/scanner/model/ScanFastFocusEngineNative:height	I
-      //   349: ifle +445 -> 794
+      //   349: ifle +453 -> 802
       //   352: iconst_1
       //   353: istore_1
       //   354: iload_1
-      //   355: ifeq +564 -> 919
+      //   355: ifeq +572 -> 927
       //   358: aload 11
       //   360: getfield 150	com/tencent/mm/plugin/scanner/model/ScanFastFocusEngineNative:result	I
-      //   363: ifle +436 -> 799
+      //   363: ifle +444 -> 807
       //   366: aload 11
       //   368: getfield 150	com/tencent/mm/plugin/scanner/model/ScanFastFocusEngineNative:result	I
       //   371: iconst_2
       //   372: iand
-      //   373: ifeq +426 -> 799
+      //   373: ifeq +434 -> 807
       //   376: iconst_1
       //   377: istore 6
       //   379: aload 11
@@ -421,7 +421,7 @@ public final class a
       //   407: getfield 150	com/tencent/mm/plugin/scanner/model/ScanFastFocusEngineNative:result	I
       //   410: istore 5
       //   412: aload 9
-      //   414: ifnull +391 -> 805
+      //   414: ifnull +399 -> 813
       //   417: aload 9
       //   419: arraylength
       //   420: istore_1
@@ -459,7 +459,7 @@ public final class a
       //   469: iload 4
       //   471: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   474: aastore
-      //   475: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   475: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   478: new 162	android/graphics/YuvImage
       //   481: dup
       //   482: aload 9
@@ -507,13 +507,13 @@ public final class a
       //   567: lsub
       //   568: invokestatic 110	java/lang/Long:valueOf	(J)Ljava/lang/Long;
       //   571: aastore
-      //   572: invokestatic 197	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   572: invokestatic 197	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   575: iload_2
       //   576: istore_1
       //   577: aload 10
       //   579: monitorexit
       //   580: aload_0
-      //   581: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   581: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
       //   584: invokestatic 44	com/tencent/mm/plugin/scanner/c/a:d	(Lcom/tencent/mm/plugin/scanner/c/a;)Ljava/lang/Object;
       //   587: astore 10
       //   589: aload 10
@@ -530,213 +530,217 @@ public final class a
       //   612: ldc 208
       //   614: iconst_1
       //   615: invokevirtual 212	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-      //   618: aload_0
-      //   619: getfield 29	com/tencent/mm/plugin/scanner/c/a$b:dcQ	J
-      //   622: aload_0
-      //   623: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   626: invokestatic 52	com/tencent/mm/plugin/scanner/c/a:e	(Lcom/tencent/mm/plugin/scanner/c/a;)J
-      //   629: lcmp
-      //   630: ifne +270 -> 900
-      //   633: iload 6
-      //   635: ifeq +246 -> 881
-      //   638: aload 9
-      //   640: ifnull +241 -> 881
-      //   643: aload 11
-      //   645: ldc 214
-      //   647: aload 9
-      //   649: invokevirtual 218	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-      //   652: aload 11
-      //   654: ldc 220
-      //   656: iload_1
-      //   657: invokevirtual 212	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+      //   618: aload 11
+      //   620: ldc 214
+      //   622: iconst_0
+      //   623: invokevirtual 212	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+      //   626: aload_0
+      //   627: getfield 29	com/tencent/mm/plugin/scanner/c/a$b:dao	J
+      //   630: aload_0
+      //   631: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   634: invokestatic 52	com/tencent/mm/plugin/scanner/c/a:e	(Lcom/tencent/mm/plugin/scanner/c/a;)J
+      //   637: lcmp
+      //   638: ifne +270 -> 908
+      //   641: iload 6
+      //   643: ifeq +246 -> 889
+      //   646: aload 9
+      //   648: ifnull +241 -> 889
+      //   651: aload 11
+      //   653: ldc 216
+      //   655: aload 9
+      //   657: invokevirtual 220	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
       //   660: aload 11
       //   662: ldc 222
-      //   664: aload_0
-      //   665: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   668: invokestatic 226	com/tencent/mm/plugin/scanner/c/a:j	(Lcom/tencent/mm/plugin/scanner/c/a;)I
-      //   671: invokevirtual 212	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-      //   674: aload 11
-      //   676: ldc 228
-      //   678: aload_0
-      //   679: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   682: invokestatic 231	com/tencent/mm/plugin/scanner/c/a:k	(Lcom/tencent/mm/plugin/scanner/c/a;)I
-      //   685: invokevirtual 212	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-      //   688: invokestatic 235	com/tencent/mm/plugin/scanner/model/s:dly	()Lcom/tencent/mm/protocal/protobuf/GoodsObject;
-      //   691: astore 9
-      //   693: aload 9
-      //   695: ifnull +15 -> 710
-      //   698: aload 11
-      //   700: ldc 237
-      //   702: aload 9
-      //   704: invokevirtual 240	com/tencent/mm/protocal/protobuf/GoodsObject:toByteArray	()[B
-      //   707: invokevirtual 218	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-      //   710: aload_0
-      //   711: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   714: invokestatic 131	com/tencent/mm/plugin/scanner/c/a:i	(Lcom/tencent/mm/plugin/scanner/c/a;)Lcom/tencent/mm/plugin/scanner/c/a$a;
-      //   717: aload_0
-      //   718: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   721: invokestatic 52	com/tencent/mm/plugin/scanner/c/a:e	(Lcom/tencent/mm/plugin/scanner/c/a;)J
-      //   724: aload 11
-      //   726: invokeinterface 243 4 0
-      //   731: aload_0
-      //   732: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   735: iconst_0
-      //   736: invokestatic 48	com/tencent/mm/plugin/scanner/c/a:a	(Lcom/tencent/mm/plugin/scanner/c/a;Z)Z
-      //   739: pop
-      //   740: aload_0
-      //   741: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   744: invokestatic 247	com/tencent/mm/plugin/scanner/c/a:g	(Lcom/tencent/mm/plugin/scanner/c/a;)V
-      //   747: aload 10
-      //   749: monitorexit
-      //   750: ldc 34
-      //   752: invokestatic 250	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   755: return
-      //   756: aload_0
-      //   757: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   760: iconst_0
-      //   761: invokestatic 48	com/tencent/mm/plugin/scanner/c/a:a	(Lcom/tencent/mm/plugin/scanner/c/a;Z)Z
-      //   764: pop
-      //   765: aload_0
-      //   766: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   769: invokestatic 247	com/tencent/mm/plugin/scanner/c/a:g	(Lcom/tencent/mm/plugin/scanner/c/a;)V
-      //   772: aload 9
-      //   774: monitorexit
-      //   775: ldc 34
-      //   777: invokestatic 250	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   780: return
-      //   781: astore 10
-      //   783: aload 9
-      //   785: monitorexit
-      //   786: ldc 34
-      //   788: invokestatic 250	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   791: aload 10
-      //   793: athrow
-      //   794: iconst_0
-      //   795: istore_1
-      //   796: goto -442 -> 354
-      //   799: iconst_0
-      //   800: istore 6
-      //   802: goto -423 -> 379
-      //   805: iconst_m1
-      //   806: istore_1
-      //   807: goto -386 -> 421
-      //   810: astore 11
-      //   812: ldc 102
-      //   814: aload 11
-      //   816: ldc 252
-      //   818: iconst_1
-      //   819: anewarray 4	java/lang/Object
-      //   822: dup
-      //   823: iconst_0
-      //   824: aload 11
-      //   826: invokevirtual 256	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   829: aastore
-      //   830: invokestatic 260	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   833: goto -288 -> 545
-      //   836: astore 9
-      //   838: aload 10
-      //   840: monitorexit
-      //   841: ldc 34
-      //   843: invokestatic 250	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   846: aload 9
-      //   848: athrow
-      //   849: astore 9
-      //   851: ldc 102
-      //   853: aload 9
-      //   855: ldc_w 262
-      //   858: iconst_0
-      //   859: anewarray 4	java/lang/Object
-      //   862: invokestatic 260	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   865: goto -155 -> 710
-      //   868: astore 9
-      //   870: aload 10
-      //   872: monitorexit
-      //   873: ldc 34
-      //   875: invokestatic 250	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   878: aload 9
-      //   880: athrow
-      //   881: aload_0
-      //   882: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   885: iconst_0
-      //   886: invokestatic 48	com/tencent/mm/plugin/scanner/c/a:a	(Lcom/tencent/mm/plugin/scanner/c/a;Z)Z
-      //   889: pop
-      //   890: aload_0
-      //   891: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   894: invokestatic 247	com/tencent/mm/plugin/scanner/c/a:g	(Lcom/tencent/mm/plugin/scanner/c/a;)V
-      //   897: goto -150 -> 747
-      //   900: aload_0
-      //   901: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   904: iconst_0
-      //   905: invokestatic 48	com/tencent/mm/plugin/scanner/c/a:a	(Lcom/tencent/mm/plugin/scanner/c/a;Z)Z
-      //   908: pop
-      //   909: aload_0
-      //   910: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:vNM	Lcom/tencent/mm/plugin/scanner/c/a;
-      //   913: invokestatic 247	com/tencent/mm/plugin/scanner/c/a:g	(Lcom/tencent/mm/plugin/scanner/c/a;)V
-      //   916: goto -169 -> 747
-      //   919: iconst_0
-      //   920: istore_1
-      //   921: goto -344 -> 577
+      //   664: iload_1
+      //   665: invokevirtual 212	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+      //   668: aload 11
+      //   670: ldc 224
+      //   672: aload_0
+      //   673: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   676: invokestatic 228	com/tencent/mm/plugin/scanner/c/a:j	(Lcom/tencent/mm/plugin/scanner/c/a;)I
+      //   679: invokevirtual 212	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+      //   682: aload 11
+      //   684: ldc 230
+      //   686: aload_0
+      //   687: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   690: invokestatic 233	com/tencent/mm/plugin/scanner/c/a:k	(Lcom/tencent/mm/plugin/scanner/c/a;)I
+      //   693: invokevirtual 212	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+      //   696: invokestatic 237	com/tencent/mm/plugin/scanner/model/s:dzA	()Lcom/tencent/mm/protocal/protobuf/GoodsObject;
+      //   699: astore 9
+      //   701: aload 9
+      //   703: ifnull +15 -> 718
+      //   706: aload 11
+      //   708: ldc 239
+      //   710: aload 9
+      //   712: invokevirtual 242	com/tencent/mm/protocal/protobuf/GoodsObject:toByteArray	()[B
+      //   715: invokevirtual 220	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+      //   718: aload_0
+      //   719: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   722: invokestatic 131	com/tencent/mm/plugin/scanner/c/a:i	(Lcom/tencent/mm/plugin/scanner/c/a;)Lcom/tencent/mm/plugin/scanner/c/a$a;
+      //   725: aload_0
+      //   726: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   729: invokestatic 52	com/tencent/mm/plugin/scanner/c/a:e	(Lcom/tencent/mm/plugin/scanner/c/a;)J
+      //   732: aload 11
+      //   734: invokeinterface 245 4 0
+      //   739: aload_0
+      //   740: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   743: iconst_0
+      //   744: invokestatic 48	com/tencent/mm/plugin/scanner/c/a:a	(Lcom/tencent/mm/plugin/scanner/c/a;Z)Z
+      //   747: pop
+      //   748: aload_0
+      //   749: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   752: invokestatic 249	com/tencent/mm/plugin/scanner/c/a:g	(Lcom/tencent/mm/plugin/scanner/c/a;)V
+      //   755: aload 10
+      //   757: monitorexit
+      //   758: ldc 34
+      //   760: invokestatic 252	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   763: return
+      //   764: aload_0
+      //   765: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   768: iconst_0
+      //   769: invokestatic 48	com/tencent/mm/plugin/scanner/c/a:a	(Lcom/tencent/mm/plugin/scanner/c/a;Z)Z
+      //   772: pop
+      //   773: aload_0
+      //   774: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   777: invokestatic 249	com/tencent/mm/plugin/scanner/c/a:g	(Lcom/tencent/mm/plugin/scanner/c/a;)V
+      //   780: aload 9
+      //   782: monitorexit
+      //   783: ldc 34
+      //   785: invokestatic 252	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   788: return
+      //   789: astore 10
+      //   791: aload 9
+      //   793: monitorexit
+      //   794: ldc 34
+      //   796: invokestatic 252	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   799: aload 10
+      //   801: athrow
+      //   802: iconst_0
+      //   803: istore_1
+      //   804: goto -450 -> 354
+      //   807: iconst_0
+      //   808: istore 6
+      //   810: goto -431 -> 379
+      //   813: iconst_m1
+      //   814: istore_1
+      //   815: goto -394 -> 421
+      //   818: astore 11
+      //   820: ldc 102
+      //   822: aload 11
+      //   824: ldc 254
+      //   826: iconst_1
+      //   827: anewarray 4	java/lang/Object
+      //   830: dup
+      //   831: iconst_0
+      //   832: aload 11
+      //   834: invokevirtual 258	java/lang/Exception:getMessage	()Ljava/lang/String;
+      //   837: aastore
+      //   838: invokestatic 262	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   841: goto -296 -> 545
+      //   844: astore 9
+      //   846: aload 10
+      //   848: monitorexit
+      //   849: ldc 34
+      //   851: invokestatic 252	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   854: aload 9
+      //   856: athrow
+      //   857: astore 9
+      //   859: ldc 102
+      //   861: aload 9
+      //   863: ldc_w 264
+      //   866: iconst_0
+      //   867: anewarray 4	java/lang/Object
+      //   870: invokestatic 262	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   873: goto -155 -> 718
+      //   876: astore 9
+      //   878: aload 10
+      //   880: monitorexit
+      //   881: ldc 34
+      //   883: invokestatic 252	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   886: aload 9
+      //   888: athrow
+      //   889: aload_0
+      //   890: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   893: iconst_0
+      //   894: invokestatic 48	com/tencent/mm/plugin/scanner/c/a:a	(Lcom/tencent/mm/plugin/scanner/c/a;Z)Z
+      //   897: pop
+      //   898: aload_0
+      //   899: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   902: invokestatic 249	com/tencent/mm/plugin/scanner/c/a:g	(Lcom/tencent/mm/plugin/scanner/c/a;)V
+      //   905: goto -150 -> 755
+      //   908: aload_0
+      //   909: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   912: iconst_0
+      //   913: invokestatic 48	com/tencent/mm/plugin/scanner/c/a:a	(Lcom/tencent/mm/plugin/scanner/c/a;Z)Z
+      //   916: pop
+      //   917: aload_0
+      //   918: getfield 24	com/tencent/mm/plugin/scanner/c/a$b:wYi	Lcom/tencent/mm/plugin/scanner/c/a;
+      //   921: invokestatic 249	com/tencent/mm/plugin/scanner/c/a:g	(Lcom/tencent/mm/plugin/scanner/c/a;)V
+      //   924: goto -169 -> 755
+      //   927: iconst_0
+      //   928: istore_1
+      //   929: goto -352 -> 577
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	924	0	this	b
-      //   353	568	1	i	int
+      //   0	932	0	this	b
+      //   353	576	1	i	int
       //   391	185	2	j	int
       //   397	105	3	k	int
       //   403	100	4	m	int
       //   410	23	5	n	int
-      //   1	800	6	bool	boolean
+      //   1	808	6	bool	boolean
       //   512	54	7	l	long
-      //   15	769	9	localObject1	Object
-      //   836	11	9	localObject2	Object
-      //   849	5	9	localException1	Exception
-      //   868	11	9	localObject3	Object
-      //   781	90	10	localObject5	Object
-      //   287	438	11	localObject6	Object
-      //   810	15	11	localException2	Exception
+      //   15	777	9	localObject1	Object
+      //   844	11	9	localObject2	Object
+      //   857	5	9	localException1	Exception
+      //   876	11	9	localObject3	Object
+      //   789	90	10	localObject5	Object
+      //   287	446	11	localObject6	Object
+      //   818	15	11	localException2	Exception
       //   292	234	12	localObject7	Object
       // Exception table:
       //   from	to	target	type
-      //   20	164	781	finally
-      //   164	167	781	finally
-      //   756	775	781	finally
-      //   783	786	781	finally
-      //   523	545	810	java/lang/Exception
-      //   182	294	836	finally
-      //   299	323	836	finally
-      //   328	352	836	finally
-      //   358	376	836	finally
-      //   379	412	836	finally
-      //   417	421	836	finally
-      //   421	523	836	finally
-      //   523	545	836	finally
-      //   545	575	836	finally
-      //   577	580	836	finally
-      //   812	833	836	finally
-      //   838	841	836	finally
-      //   688	693	849	java/lang/Exception
-      //   698	710	849	java/lang/Exception
-      //   592	633	868	finally
-      //   643	688	868	finally
-      //   688	693	868	finally
-      //   698	710	868	finally
-      //   710	747	868	finally
-      //   747	750	868	finally
-      //   851	865	868	finally
-      //   870	873	868	finally
-      //   881	897	868	finally
-      //   900	916	868	finally
+      //   20	164	789	finally
+      //   164	167	789	finally
+      //   764	783	789	finally
+      //   791	794	789	finally
+      //   523	545	818	java/lang/Exception
+      //   182	294	844	finally
+      //   299	323	844	finally
+      //   328	352	844	finally
+      //   358	376	844	finally
+      //   379	412	844	finally
+      //   417	421	844	finally
+      //   421	523	844	finally
+      //   523	545	844	finally
+      //   545	575	844	finally
+      //   577	580	844	finally
+      //   820	841	844	finally
+      //   846	849	844	finally
+      //   696	701	857	java/lang/Exception
+      //   706	718	857	java/lang/Exception
+      //   592	641	876	finally
+      //   651	696	876	finally
+      //   696	701	876	finally
+      //   706	718	876	finally
+      //   718	755	876	finally
+      //   755	758	876	finally
+      //   859	873	876	finally
+      //   878	881	876	finally
+      //   889	905	876	finally
+      //   908	924	876	finally
     }
   }
   
   public static abstract interface c
     extends ScanUIRectView.a
   {
-    public abstract void z(long paramLong, String paramString);
+    public abstract void x(long paramLong, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.c.a
  * JD-Core Version:    0.7.0.1
  */

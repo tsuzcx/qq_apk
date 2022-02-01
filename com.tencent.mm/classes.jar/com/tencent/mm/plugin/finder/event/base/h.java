@@ -1,63 +1,58 @@
 package com.tencent.mm.plugin.finder.event.base;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import d.l;
-import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/event/base/MultiEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/MultiEventSubscriber$Behavior;", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "subscribes", "", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;[Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;)V", "eventSubscribes", "Ljava/util/LinkedList;", "proxy", "addSubscriber", "", "subscriber", "addSubscribers", "([Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;)V", "getBehavior", "Behavior", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/event/base/ScrollEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "type", "", "(I)V", "centerFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getCenterFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setCenterFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "centerFeedId", "", "getCenterFeedId", "()J", "setCenterFeedId", "(J)V", "centerFeedPos", "getCenterFeedPos", "()I", "setCenterFeedPos", "centerMediaId", "", "getCenterMediaId", "()Ljava/lang/String;", "setCenterMediaId", "(Ljava/lang/String;)V", "firstCompletelyVisibleItemPosition", "getFirstCompletelyVisibleItemPosition", "setFirstCompletelyVisibleItemPosition", "firstVisibleItemPosition", "getFirstVisibleItemPosition", "setFirstVisibleItemPosition", "itemCount", "getItemCount", "setItemCount", "lastCompletelyVisibleItemPosition", "getLastCompletelyVisibleItemPosition", "setLastCompletelyVisibleItemPosition", "lastVisibleItemPosition", "getLastVisibleItemPosition", "setLastVisibleItemPosition", "newState", "getNewState", "setNewState", "getType", "setType", "toString", "Companion", "plugin-finder_release"})
 public class h
-  extends g<a>
+  extends b
 {
-  protected final LinkedList<g<?>> qsy;
-  protected final d qsz;
+  public static final a rdO;
+  int ahX;
+  int rdG;
+  public int rdH;
+  int rdI;
+  public int rdJ;
+  int rdK;
+  public long rdL;
+  int rdM;
+  String rdN;
+  public BaseFinderFeed rde;
+  public int type;
   
-  public h(d paramd)
+  static
   {
-    super(paramd);
-    AppMethodBeat.i(165567);
-    this.qsy = new LinkedList();
-    this.qsz = new d();
-    this.qsz.a((f)new f()
-    {
-      public final void a(c paramAnonymousc)
-      {
-        AppMethodBeat.i(165565);
-        k.h(paramAnonymousc, "event");
-        ((h.a)new h.b(this.qsA)).c(paramAnonymousc);
-        AppMethodBeat.o(165565);
-      }
-      
-      public final boolean clc()
-      {
-        return false;
-      }
-    });
-    AppMethodBeat.o(165567);
+    AppMethodBeat.i(165569);
+    rdO = new a((byte)0);
+    AppMethodBeat.o(165569);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/event/base/MultiEventSubscriber$Behavior;", "", "onAction", "", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "plugin-finder_release"})
-  public static abstract interface a
+  public h(int paramInt)
   {
-    public abstract void c(c paramc);
+    this.type = paramInt;
+    this.rdG = -1;
+    this.rdH = -1;
+    this.rdI = -1;
+    this.rdJ = -1;
+    this.rdL = -1L;
+    this.rdN = "";
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/event/base/MultiEventSubscriber$getBehavior$1", "Lcom/tencent/mm/plugin/finder/event/base/MultiEventSubscriber$Behavior;", "onAction", "", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "plugin-finder_release"})
-  public static final class b
-    implements h.a
+  public String toString()
   {
-    public final void c(c paramc)
-    {
-      AppMethodBeat.i(165566);
-      k.h(paramc, "event");
-      this.qsA.b(paramc);
-      AppMethodBeat.o(165566);
-    }
+    AppMethodBeat.i(165568);
+    String str = "ScrollEvent(type=" + this.type + ", firstCompletelyVisibleItemPosition=" + this.rdG + ", firstVisibleItemPosition=" + this.rdH + ", lastCompletelyVisibleItemPosition=" + this.rdI + ", lastVisibleItemPosition=" + this.rdJ + ", itemCount=" + this.ahX + ", newState=" + this.rdK + ')';
+    AppMethodBeat.o(165568);
+    return str;
   }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/event/base/ScrollEvent$Companion;", "", "()V", "SCROLL_STATE_ATTACHED", "", "SCROLL_STATE_DRAGGING", "SCROLL_STATE_DRAGGING_DISTANCE", "SCROLL_STATE_IDLE", "SCROLL_STATE_LOW_SPEED_FLING", "SCROLL_STATE_ON_FOCUS_VIEW", "SCROLL_STATE_ON_TAB_VISIBLE", "SCROLL_STATE_SETTLING", "SCROLL_STATE_TERM_CHANGE", "SCROLL_STATE_UNKNOWN", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.event.base.h
  * JD-Core Version:    0.7.0.1
  */

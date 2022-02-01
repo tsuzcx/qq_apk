@@ -18,19 +18,17 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.a.d;
-import com.tencent.mm.am.a.l;
-import com.tencent.mm.am.af;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.al.a.d;
+import com.tencent.mm.al.a.l;
+import com.tencent.mm.al.af;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.o;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MaskLayout;
-import com.tencent.mm.ui.q;
-import com.tencent.mm.ui.tools.r;
 import com.tencent.mm.ui.tools.r.b;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -39,18 +37,18 @@ import java.util.List;
 public class BizChatAtSomeoneUI
   extends MMActivity
 {
-  private static boolean GgF = false;
-  private a GgD;
-  private com.tencent.mm.am.a.c GgE;
-  private String fvG;
-  private String fvH;
-  private r fvI;
-  private ListView iwH;
+  private static boolean HGv = false;
+  private a HGt;
+  private com.tencent.mm.al.a.c HGu;
+  private String fzn;
+  private String fzo;
+  private com.tencent.mm.ui.tools.r fzp;
+  private ListView iWK;
   private String mTitle;
-  private long mUQ;
+  private long nxq;
   private String talker;
   
-  protected static String a(com.tencent.mm.am.a.c paramc, String paramString)
+  protected static String a(com.tencent.mm.al.a.c paramc, String paramString)
   {
     AppMethodBeat.i(33901);
     if (paramc == null)
@@ -58,7 +56,7 @@ public class BizChatAtSomeoneUI
       AppMethodBeat.o(33901);
       return null;
     }
-    paramc = paramc.sh(paramString);
+    paramc = paramc.wk(paramString);
     AppMethodBeat.o(33901);
     return paramc;
   }
@@ -83,53 +81,53 @@ public class BizChatAtSomeoneUI
         return true;
       }
     });
-    this.fvI = new r((byte)0);
-    this.fvI.Htp = new r.b()
+    this.fzp = new com.tencent.mm.ui.tools.r((byte)0);
+    this.fzp.ITM = new r.b()
     {
-      public final boolean BX(String paramAnonymousString)
+      public final boolean Ga(String paramAnonymousString)
       {
         return false;
       }
       
-      public final void BY(String paramAnonymousString)
+      public final void Gb(String paramAnonymousString)
       {
         AppMethodBeat.i(33888);
         BizChatAtSomeoneUI.a locala = BizChatAtSomeoneUI.a(BizChatAtSomeoneUI.this);
-        locala.fvQ = paramAnonymousString;
+        locala.fzx = paramAnonymousString;
         locala.a(null, null);
         AppMethodBeat.o(33888);
       }
       
-      public final void aIj() {}
+      public final void aPa() {}
       
-      public final void aIk() {}
+      public final void aPb() {}
       
-      public final void aIl() {}
+      public final void aPc() {}
       
-      public final void aIm() {}
+      public final void aPd() {}
     };
-    addSearchMenu(true, this.fvI);
-    this.iwH = ((ListView)findViewById(2131297967));
-    com.tencent.mm.am.a.k localk = new com.tencent.mm.am.a.k();
-    com.tencent.mm.am.a.c localc = this.GgE;
+    addSearchMenu(true, this.fzp);
+    this.iWK = ((ListView)findViewById(2131297967));
+    com.tencent.mm.al.a.k localk = new com.tencent.mm.al.a.k();
+    com.tencent.mm.al.a.c localc = this.HGu;
     String[] arrayOfString = null;
-    if (!bt.isNullOrNil(this.fvH))
+    if (!bs.isNullOrNil(this.fzo))
     {
-      arrayOfString = this.fvH.split(";");
-      ad.d("MicroMsg.AtSomeoneUI", "chatroom members name=[%s]", new Object[] { Arrays.toString(arrayOfString) });
+      arrayOfString = this.fzo.split(";");
+      ac.d("MicroMsg.AtSomeoneUI", "chatroom members name=[%s]", new Object[] { Arrays.toString(arrayOfString) });
     }
     Object localObject = new LinkedList();
-    if (!bt.isNullOrNil(this.fvG)) {
-      localObject = bt.S(this.fvG.split(";"));
+    if (!bs.isNullOrNil(this.fzn)) {
+      localObject = bs.S(this.fzn.split(";"));
     }
-    this.GgD = new a(this, localk, localc, arrayOfString, (List)localObject);
-    this.iwH.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.HGt = new a(this, localk, localc, arrayOfString, (List)localObject);
+    this.iWK.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(33889);
         paramAnonymousAdapterView = new Intent();
-        if ((paramAnonymousInt == 0) && (BizChatAtSomeoneUI.GgF))
+        if ((paramAnonymousInt == 0) && (BizChatAtSomeoneUI.HGv))
         {
           paramAnonymousAdapterView.putExtra("Select_Conv_User", BizChatAtSomeoneUI.this.getString(2131756080, new Object[] { "" }));
           paramAnonymousAdapterView.putExtra("select_raw_user_name", "notify@all");
@@ -140,22 +138,22 @@ public class BizChatAtSomeoneUI
           BizChatAtSomeoneUI.this.finish();
           AppMethodBeat.o(33889);
           return;
-          paramAnonymousView = (com.tencent.mm.am.a.k)BizChatAtSomeoneUI.a(BizChatAtSomeoneUI.this).getItem(paramAnonymousInt);
+          paramAnonymousView = (com.tencent.mm.al.a.k)BizChatAtSomeoneUI.a(BizChatAtSomeoneUI.this).getItem(paramAnonymousInt);
           String str = BizChatAtSomeoneUI.a(BizChatAtSomeoneUI.b(BizChatAtSomeoneUI.this), paramAnonymousView.field_userId);
           paramAnonymousAdapterView.putExtra("select_raw_user_name", paramAnonymousView.field_userId);
           paramAnonymousAdapterView.putExtra("Select_Conv_User", str);
         }
       }
     });
-    this.iwH.setAdapter(this.GgD);
-    this.iwH.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.iWK.setAdapter(this.HGt);
+    this.iWK.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
       {
         AppMethodBeat.i(33890);
-        o.ayJ().cq(paramAnonymousInt);
+        o.aFB().cp(paramAnonymousInt);
         AppMethodBeat.o(33890);
       }
     });
@@ -166,21 +164,21 @@ public class BizChatAtSomeoneUI
   {
     AppMethodBeat.i(33897);
     super.onCreate(paramBundle);
-    this.fvG = getIntent().getStringExtra("Block_list");
-    this.fvH = getIntent().getStringExtra("Chatroom_member_list");
+    this.fzn = getIntent().getStringExtra("Block_list");
+    this.fzo = getIntent().getStringExtra("Chatroom_member_list");
     this.talker = getIntent().getStringExtra("Chat_User");
     this.mTitle = getIntent().getStringExtra("Add_address_titile");
-    this.mUQ = getIntent().getLongExtra("key_biz_chat_id", -1L);
-    this.GgE = af.awg().bg(this.mUQ);
-    if (this.GgE == null)
+    this.nxq = getIntent().getLongExtra("key_biz_chat_id", -1L);
+    this.HGu = af.aCY().bd(this.nxq);
+    if (this.HGu == null)
     {
-      ad.w("MicroMsg.AtSomeoneUI", "bizChatInfo is null");
+      ac.w("MicroMsg.AtSomeoneUI", "bizChatInfo is null");
       finish();
       AppMethodBeat.o(33897);
       return;
     }
-    if ((this.GgE != null) && (this.GgE.field_ownerUserId.equals(u.aqG()))) {
-      GgF = true;
+    if ((this.HGu != null) && (this.HGu.field_ownerUserId.equals(u.axw()))) {
+      HGv = true;
     }
     initView();
     AppMethodBeat.o(33897);
@@ -189,7 +187,7 @@ public class BizChatAtSomeoneUI
   public void onDestroy()
   {
     AppMethodBeat.i(33900);
-    this.GgD.cHX();
+    this.HGt.cVi();
     super.onDestroy();
     AppMethodBeat.o(33900);
   }
@@ -198,8 +196,8 @@ public class BizChatAtSomeoneUI
   {
     AppMethodBeat.i(33899);
     super.onPause();
-    if (this.fvI != null) {
-      this.fvI.fdW();
+    if (this.fzp != null) {
+      this.fzp.ftR();
     }
     AppMethodBeat.o(33899);
   }
@@ -211,46 +209,46 @@ public class BizChatAtSomeoneUI
   }
   
   static final class a
-    extends q<com.tencent.mm.am.a.k>
+    extends com.tencent.mm.ui.r<com.tencent.mm.al.a.k>
   {
-    private com.tencent.mm.am.a.c GgE;
-    private String[] GgH;
-    private Bitmap GgI;
-    private List<String> fvP;
-    String fvQ;
-    private com.tencent.mm.aw.a.a.c fvx;
+    private com.tencent.mm.al.a.c HGu;
+    private String[] HGx;
+    private Bitmap HGy;
+    private com.tencent.mm.av.a.a.c fze;
+    private List<String> fzw;
+    String fzx;
     
-    public a(Context paramContext, com.tencent.mm.am.a.k paramk, com.tencent.mm.am.a.c paramc, String[] paramArrayOfString, List<String> paramList)
+    public a(Context paramContext, com.tencent.mm.al.a.k paramk, com.tencent.mm.al.a.c paramc, String[] paramArrayOfString, List<String> paramList)
     {
       super(paramk);
       AppMethodBeat.i(33891);
-      this.fvx = null;
-      this.GgE = paramc;
-      this.GgH = paramArrayOfString;
-      this.fvP = paramList;
+      this.fze = null;
+      this.HGu = paramc;
+      this.HGx = paramArrayOfString;
+      this.fzw = paramList;
       paramk = new c.a();
-      paramk.prefixPath = com.tencent.mm.am.a.e.xs(this.GgE.field_brandUserName);
-      paramk.hjU = true;
-      paramk.gjA = true;
-      paramk.hkf = 2131690013;
-      this.fvx = paramk.azc();
-      this.GgI = f.B(paramContext.getResources().getDrawable(2131689712));
+      paramk.prefixPath = com.tencent.mm.al.a.e.By(this.HGu.field_brandUserName);
+      paramk.hKx = true;
+      paramk.gKm = true;
+      paramk.hKI = 2131690013;
+      this.fze = paramk.aFT();
+      this.HGy = f.A(paramContext.getResources().getDrawable(2131689712));
       AppMethodBeat.o(33891);
     }
     
-    public final boolean EJ(int paramInt)
+    public final boolean GF(int paramInt)
     {
       return false;
     }
     
-    public final void Wd()
+    public final void Xb()
     {
       AppMethodBeat.i(33894);
-      cHX();
-      l locall = af.awi();
-      Object localObject2 = this.GgH;
-      Object localObject1 = this.fvQ;
-      List localList = this.fvP;
+      cVi();
+      l locall = af.aDa();
+      Object localObject2 = this.HGx;
+      Object localObject1 = this.fzx;
+      List localList = this.fzw;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("select *  from BizChatUserInfo where ");
       localObject2 = localStringBuilder.append(l.a((String[])localObject2, localList));
@@ -272,17 +270,17 @@ public class BizChatAtSomeoneUI
       }
     }
     
-    public final void We()
+    public final void Xc()
     {
       AppMethodBeat.i(33895);
-      Wd();
+      Xb();
       AppMethodBeat.o(33895);
     }
     
-    public final int cEn()
+    public final int cRx()
     {
       AppMethodBeat.i(33892);
-      if (BizChatAtSomeoneUI.GgF)
+      if (BizChatAtSomeoneUI.HGv)
       {
         AppMethodBeat.o(33892);
         return 1;
@@ -298,28 +296,28 @@ public class BizChatAtSomeoneUI
       {
         paramView = View.inflate(this.context, 2131493115, null);
         paramViewGroup = new BizChatAtSomeoneUI.b((byte)0);
-        paramViewGroup.fwD = ((MaskLayout)paramView.findViewById(2131296957));
-        paramViewGroup.fsI = ((TextView)paramView.findViewById(2131296958));
+        paramViewGroup.fAk = ((MaskLayout)paramView.findViewById(2131296957));
+        paramViewGroup.fwp = ((TextView)paramView.findViewById(2131296958));
         paramView.setTag(paramViewGroup);
       }
-      while ((paramInt == 0) && (BizChatAtSomeoneUI.GgF))
+      while ((paramInt == 0) && (BizChatAtSomeoneUI.HGv))
       {
-        paramViewGroup.GgJ.setImageBitmap(this.GgI);
-        paramViewGroup.fsI.setText(this.context.getResources().getString(2131756080, new Object[] { "@" }));
+        paramViewGroup.HGz.setImageBitmap(this.HGy);
+        paramViewGroup.fwp.setText(this.context.getResources().getString(2131756080, new Object[] { "@" }));
         AppMethodBeat.o(33893);
         return paramView;
         paramViewGroup = (BizChatAtSomeoneUI.b)paramView.getTag();
       }
-      if (BizChatAtSomeoneUI.GgF) {}
+      if (BizChatAtSomeoneUI.HGv) {}
       for (int i = 1;; i = 0)
       {
-        Object localObject = (com.tencent.mm.am.a.k)getItem(paramInt - i);
-        paramViewGroup.fsI.setTextColor(com.tencent.mm.cd.a.m(this.context, 2131100638));
-        ImageView localImageView = (ImageView)paramViewGroup.fwD.getContentView();
-        o.ayJ().a(((com.tencent.mm.am.a.k)localObject).field_headImageUrl, localImageView, this.fvx);
-        paramViewGroup.fwD.setMaskDrawable(null);
-        localObject = BizChatAtSomeoneUI.a(this.GgE, ((com.tencent.mm.am.a.k)localObject).field_userId);
-        paramViewGroup.fsI.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, (CharSequence)localObject, paramViewGroup.fsI.getTextSize()));
+        Object localObject = (com.tencent.mm.al.a.k)getItem(paramInt - i);
+        paramViewGroup.fwp.setTextColor(com.tencent.mm.cc.a.m(this.context, 2131100638));
+        ImageView localImageView = (ImageView)paramViewGroup.fAk.getContentView();
+        o.aFB().a(((com.tencent.mm.al.a.k)localObject).field_headImageUrl, localImageView, this.fze);
+        paramViewGroup.fAk.setMaskDrawable(null);
+        localObject = BizChatAtSomeoneUI.a(this.HGu, ((com.tencent.mm.al.a.k)localObject).field_userId);
+        paramViewGroup.fwp.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, (CharSequence)localObject, paramViewGroup.fwp.getTextSize()));
         AppMethodBeat.o(33893);
         return paramView;
       }
@@ -328,14 +326,14 @@ public class BizChatAtSomeoneUI
   
   static final class b
   {
-    public ImageView GgJ;
-    public TextView fsI;
-    public MaskLayout fwD;
+    public ImageView HGz;
+    public MaskLayout fAk;
+    public TextView fwp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.BizChatAtSomeoneUI
  * JD-Core Version:    0.7.0.1
  */

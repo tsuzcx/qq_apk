@@ -8,56 +8,56 @@ import java.util.UUID;
 
 final class c
 {
-  public static final ParcelUuid jKE;
-  public static final ParcelUuid jKF;
-  public static final ParcelUuid jKG;
-  public static final ParcelUuid jKH;
-  public static final ParcelUuid jKI;
-  public static final ParcelUuid jKJ;
-  public static final ParcelUuid jKK;
-  public static final ParcelUuid jKL;
-  public static final ParcelUuid jKM;
-  public static final ParcelUuid jKN;
-  public static final ParcelUuid jKO;
-  public static final ParcelUuid jKP;
-  public static final ParcelUuid jKQ;
-  public static final ParcelUuid jKR;
-  public static final ParcelUuid jKS;
-  public static final ParcelUuid jKT;
-  public static final ParcelUuid jKU;
-  public static final ParcelUuid jKV;
-  public static final ParcelUuid jKW;
-  public static final ParcelUuid jKX;
-  public static final ParcelUuid[] jKY;
+  public static final ParcelUuid klf;
+  public static final ParcelUuid klg;
+  public static final ParcelUuid klh;
+  public static final ParcelUuid kli;
+  public static final ParcelUuid klj;
+  public static final ParcelUuid klk;
+  public static final ParcelUuid kll;
+  public static final ParcelUuid klm;
+  public static final ParcelUuid kln;
+  public static final ParcelUuid klo;
+  public static final ParcelUuid klp;
+  public static final ParcelUuid klq;
+  public static final ParcelUuid klr;
+  public static final ParcelUuid kls;
+  public static final ParcelUuid klt;
+  public static final ParcelUuid klu;
+  public static final ParcelUuid klv;
+  public static final ParcelUuid klw;
+  public static final ParcelUuid klx;
+  public static final ParcelUuid kly;
+  public static final ParcelUuid[] klz;
   
   static
   {
     AppMethodBeat.i(144620);
-    jKE = ParcelUuid.fromString("0000110B-0000-1000-8000-00805F9B34FB");
-    jKF = ParcelUuid.fromString("0000110A-0000-1000-8000-00805F9B34FB");
-    jKG = ParcelUuid.fromString("0000110D-0000-1000-8000-00805F9B34FB");
-    jKH = ParcelUuid.fromString("00001108-0000-1000-8000-00805F9B34FB");
-    jKI = ParcelUuid.fromString("00001112-0000-1000-8000-00805F9B34FB");
-    jKJ = ParcelUuid.fromString("0000111E-0000-1000-8000-00805F9B34FB");
-    jKK = ParcelUuid.fromString("0000111F-0000-1000-8000-00805F9B34FB");
-    jKL = ParcelUuid.fromString("0000110E-0000-1000-8000-00805F9B34FB");
-    jKM = ParcelUuid.fromString("0000110C-0000-1000-8000-00805F9B34FB");
-    jKN = ParcelUuid.fromString("00001105-0000-1000-8000-00805f9b34fb");
-    jKO = ParcelUuid.fromString("00001124-0000-1000-8000-00805f9b34fb");
-    jKP = ParcelUuid.fromString("00001812-0000-1000-8000-00805f9b34fb");
-    jKQ = ParcelUuid.fromString("00001115-0000-1000-8000-00805F9B34FB");
-    jKR = ParcelUuid.fromString("00001116-0000-1000-8000-00805F9B34FB");
-    jKS = ParcelUuid.fromString("0000000f-0000-1000-8000-00805F9B34FB");
-    jKT = ParcelUuid.fromString("0000112f-0000-1000-8000-00805F9B34FB");
-    jKU = ParcelUuid.fromString("00001134-0000-1000-8000-00805F9B34FB");
-    jKV = ParcelUuid.fromString("00001133-0000-1000-8000-00805F9B34FB");
-    jKW = ParcelUuid.fromString("00001132-0000-1000-8000-00805F9B34FB");
-    jKX = ParcelUuid.fromString("00000000-0000-1000-8000-00805F9B34FB");
-    jKY = new ParcelUuid[] { jKE, jKF, jKG, jKH, jKJ, jKL, jKM, jKN, jKQ, jKR, jKU, jKV, jKW };
+    klf = ParcelUuid.fromString("0000110B-0000-1000-8000-00805F9B34FB");
+    klg = ParcelUuid.fromString("0000110A-0000-1000-8000-00805F9B34FB");
+    klh = ParcelUuid.fromString("0000110D-0000-1000-8000-00805F9B34FB");
+    kli = ParcelUuid.fromString("00001108-0000-1000-8000-00805F9B34FB");
+    klj = ParcelUuid.fromString("00001112-0000-1000-8000-00805F9B34FB");
+    klk = ParcelUuid.fromString("0000111E-0000-1000-8000-00805F9B34FB");
+    kll = ParcelUuid.fromString("0000111F-0000-1000-8000-00805F9B34FB");
+    klm = ParcelUuid.fromString("0000110E-0000-1000-8000-00805F9B34FB");
+    kln = ParcelUuid.fromString("0000110C-0000-1000-8000-00805F9B34FB");
+    klo = ParcelUuid.fromString("00001105-0000-1000-8000-00805f9b34fb");
+    klp = ParcelUuid.fromString("00001124-0000-1000-8000-00805f9b34fb");
+    klq = ParcelUuid.fromString("00001812-0000-1000-8000-00805f9b34fb");
+    klr = ParcelUuid.fromString("00001115-0000-1000-8000-00805F9B34FB");
+    kls = ParcelUuid.fromString("00001116-0000-1000-8000-00805F9B34FB");
+    klt = ParcelUuid.fromString("0000000f-0000-1000-8000-00805F9B34FB");
+    klu = ParcelUuid.fromString("0000112f-0000-1000-8000-00805F9B34FB");
+    klv = ParcelUuid.fromString("00001134-0000-1000-8000-00805F9B34FB");
+    klw = ParcelUuid.fromString("00001133-0000-1000-8000-00805F9B34FB");
+    klx = ParcelUuid.fromString("00001132-0000-1000-8000-00805F9B34FB");
+    kly = ParcelUuid.fromString("00000000-0000-1000-8000-00805F9B34FB");
+    klz = new ParcelUuid[] { klf, klg, klh, kli, klk, klm, kln, klo, klr, kls, klv, klw, klx };
     AppMethodBeat.o(144620);
   }
   
-  public static ParcelUuid as(byte[] paramArrayOfByte)
+  public static ParcelUuid ar(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(144619);
     if (paramArrayOfByte == null)
@@ -83,7 +83,7 @@ final class c
     if (i == 2) {}
     for (long l = (paramArrayOfByte[0] & 0xFF) + ((paramArrayOfByte[1] & 0xFF) << 8);; l = (paramArrayOfByte[0] & 0xFF) + ((paramArrayOfByte[1] & 0xFF) << 8) + ((paramArrayOfByte[2] & 0xFF) << 16) + ((paramArrayOfByte[3] & 0xFF) << 24))
     {
-      paramArrayOfByte = new ParcelUuid(new UUID(jKX.getUuid().getMostSignificantBits() + (l << 32), jKX.getUuid().getLeastSignificantBits()));
+      paramArrayOfByte = new ParcelUuid(new UUID(kly.getUuid().getMostSignificantBits() + (l << 32), kly.getUuid().getLeastSignificantBits()));
       AppMethodBeat.o(144619);
       return paramArrayOfByte;
     }

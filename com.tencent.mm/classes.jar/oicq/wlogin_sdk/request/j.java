@@ -22,25 +22,25 @@ public final class j
 {
   public j(i parami)
   {
-    this.Kik = 2064;
-    this.Kil = 9;
-    this.Kin = parami;
+    this.LVT = 2064;
+    this.LVU = 9;
+    this.LVW = parami;
   }
   
   public final byte[] a(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, byte[] paramArrayOfByte3)
   {
     AppMethodBeat.i(88081);
-    int i = this.Kin.Kix;
-    this.Kin._uin = paramLong;
+    int i = this.LVW.LWg;
+    this.LVW._uin = paramLong;
     byte[] arrayOfByte3 = super.da(paramArrayOfByte2);
     if (arrayOfByte3 == null)
     {
       AppMethodBeat.o(88081);
       return null;
     }
-    paramArrayOfByte2 = this.Kin.Kiy;
-    byte[] arrayOfByte1 = this.Kin.Kis.fMG();
-    byte[] arrayOfByte2 = this.Kin.KiC;
+    paramArrayOfByte2 = this.LVW.LWh;
+    byte[] arrayOfByte1 = this.LVW.LWb.gfw();
+    byte[] arrayOfByte2 = this.LVW.LWl;
     Object localObject1 = new an();
     Object localObject2 = new b();
     Object localObject9 = new h();
@@ -56,28 +56,28 @@ public final class j
     ag localag = new ag();
     Object localObject6 = new ah();
     aj localaj = new aj();
-    localObject1 = ((an)localObject1).aH(i, paramLong);
+    localObject1 = ((an)localObject1).aP(i, paramLong);
     localObject2 = ((b)localObject2).g(paramLong, paramArrayOfByte1);
-    this.Kin.KiO = super.cZ(arrayOfByte3);
+    this.LVW.LWx = super.cZ(arrayOfByte3);
     int j = arrayOfByte3.length;
-    if (((a)localObject9).KiT + j > ((a)localObject9).KhY)
+    if (((a)localObject9).LWC + j > ((a)localObject9).LVH)
     {
-      ((a)localObject9).KhY = (((a)localObject9).KiT + j + 128);
-      paramArrayOfByte1 = new byte[((a)localObject9).KhY];
-      System.arraycopy(((a)localObject9).Kie, 0, paramArrayOfByte1, 0, ((a)localObject9).KiT);
-      ((a)localObject9).Kie = paramArrayOfByte1;
+      ((a)localObject9).LVH = (((a)localObject9).LWC + j + 128);
+      paramArrayOfByte1 = new byte[((a)localObject9).LVH];
+      System.arraycopy(((a)localObject9).LVN, 0, paramArrayOfByte1, 0, ((a)localObject9).LWC);
+      ((a)localObject9).LVN = paramArrayOfByte1;
     }
-    ((a)localObject9).KhZ = (((a)localObject9).KiT + j);
-    System.arraycopy(arrayOfByte3, 0, ((a)localObject9).Kie, ((a)localObject9).KiT, j);
-    ((a)localObject9).KiU = j;
-    util.W(((a)localObject9).Kie, 0, ((a)localObject9).Kik);
-    util.W(((a)localObject9).Kie, 2, ((a)localObject9).KiU);
-    arrayOfByte3 = ((a)localObject9).fMD();
-    util.mI("req2 a1:", util.dk(arrayOfByte3));
-    localObject3 = ((c)localObject3).agq(i);
-    localObject4 = ((oicq.wlogin_sdk.a.i)localObject4).fMJ();
-    localObject5 = ((r)localObject5).kZ(paramInt1, paramInt2);
-    localObject6 = ((ah)localObject6).dg(this.Kin.Kiy);
+    ((a)localObject9).LVI = (((a)localObject9).LWC + j);
+    System.arraycopy(arrayOfByte3, 0, ((a)localObject9).LVN, ((a)localObject9).LWC, j);
+    ((a)localObject9).LWD = j;
+    util.V(((a)localObject9).LVN, 0, ((a)localObject9).LVT);
+    util.V(((a)localObject9).LVN, 2, ((a)localObject9).LWD);
+    arrayOfByte3 = ((a)localObject9).gft();
+    util.ni("req2 a1:", util.dk(arrayOfByte3));
+    localObject3 = ((c)localObject3).ajm(i);
+    localObject4 = ((oicq.wlogin_sdk.a.i)localObject4).gfz();
+    localObject5 = ((r)localObject5).lp(paramInt1, paramInt2);
+    localObject6 = ((ah)localObject6).dg(this.LVW.LWh);
     if (paramArrayOfByte3.length > 0) {
       paramArrayOfByte1 = ((oicq.wlogin_sdk.a.j)localObject8).dd(paramArrayOfByte3);
     }
@@ -86,12 +86,12 @@ public final class j
       if (paramArrayOfByte2.length > 0) {}
       for (paramArrayOfByte2 = ((k)localObject7).de(paramArrayOfByte2);; paramArrayOfByte2 = new byte[0])
       {
-        paramArrayOfByte3 = util.fMM();
-        localObject7 = util.fMN();
-        paramInt2 = this.Kin.KiB;
-        localObject8 = this.Kin.KiA;
-        localObject9 = this.Kin.KiD;
-        paramArrayOfByte3 = localag.a(paramArrayOfByte2, localy.a(paramArrayOfByte3, (byte[])localObject7, paramInt2, (byte[])localObject8, new byte[0], (byte[])localObject9), localaa.a(this.Kin.KiJ, this.Kin.KiK, this.Kin.KiL, this.Kin.KiH, this.Kin.Kiy), localaj.q(this.Kin.KiF, this.Kin.KiG), this.Kin.Kip);
+        paramArrayOfByte3 = util.gfC();
+        localObject7 = util.gfD();
+        paramInt2 = this.LVW.LWk;
+        localObject8 = this.LVW.LWj;
+        localObject9 = this.LVW.LWm;
+        paramArrayOfByte3 = localag.a(paramArrayOfByte2, localy.a(paramArrayOfByte3, (byte[])localObject7, paramInt2, (byte[])localObject8, new byte[0], (byte[])localObject9), localaa.a(this.LVW.LWs, this.LVW.LWt, this.LVW.LWu, this.LVW.LWq, this.LVW.LWh), localaj.q(this.LVW.LWo, this.LVW.LWp), this.LVW.LVY);
         arrayOfByte2 = localae.df(arrayOfByte2);
         paramInt1 = paramInt1 + 1 + 1;
         if (arrayOfByte1.length > 0)
@@ -124,9 +124,9 @@ public final class j
           paramInt2 += 0;
           System.arraycopy(paramArrayOfByte2, 0, arrayOfByte1, paramInt2, paramArrayOfByte2.length);
           System.arraycopy(localObject6, 0, arrayOfByte1, paramArrayOfByte2.length + paramInt2, localObject6.length);
-          paramArrayOfByte1 = super.P(arrayOfByte1, this.Kil, paramInt1);
-          a(this.Kif, this.Kik, paramLong, this.Kih, this.Kii, i, this.Kij, paramArrayOfByte1);
-          paramArrayOfByte1 = super.fMD();
+          paramArrayOfByte1 = super.O(arrayOfByte1, this.LVU, paramInt1);
+          a(this.LVO, this.LVT, paramLong, this.LVQ, this.LVR, i, this.LVS, paramArrayOfByte1);
+          paramArrayOfByte1 = super.gft();
           AppMethodBeat.o(88081);
           return paramArrayOfByte1;
           paramArrayOfByte2 = new byte[0];
@@ -139,13 +139,13 @@ public final class j
   public final byte[] a(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, byte[] paramArrayOfByte4)
   {
     AppMethodBeat.i(88080);
-    int i = this.Kin.Kix;
-    this.Kin._uin = paramLong;
-    util.mI("IMEI", util.dk(this.Kin.Kiy));
-    byte[] arrayOfByte4 = this.Kin.Kip;
-    byte[] arrayOfByte3 = this.Kin.Kiy;
-    byte[] arrayOfByte1 = this.Kin.Kis.fMG();
-    byte[] arrayOfByte2 = this.Kin.KiC;
+    int i = this.LVW.LWg;
+    this.LVW._uin = paramLong;
+    util.ni("IMEI", util.dk(this.LVW.LWh));
+    byte[] arrayOfByte4 = this.LVW.LVY;
+    byte[] arrayOfByte3 = this.LVW.LWh;
+    byte[] arrayOfByte1 = this.LVW.LWb.gfw();
+    byte[] arrayOfByte2 = this.LVW.LWl;
     Object localObject1 = new an();
     Object localObject2 = new b();
     Object localObject3 = new h();
@@ -161,14 +161,14 @@ public final class j
     ag localag = new ag();
     Object localObject6 = new ah();
     aj localaj = new aj();
-    localObject1 = ((an)localObject1).aH(i, paramLong);
+    localObject1 = ((an)localObject1).aP(i, paramLong);
     localObject2 = ((b)localObject2).g(paramLong, paramArrayOfByte1);
-    paramArrayOfByte3 = ((h)localObject3).a(i, paramLong, paramArrayOfByte2, paramArrayOfByte1, paramArrayOfByte3, arrayOfByte4, this.Kin.KiK, this.Kin.Kiy);
-    this.Kin.KiO = super.cZ(((a)localObject3).fMG());
-    localObject3 = localc.agq(i);
-    localObject4 = ((oicq.wlogin_sdk.a.i)localObject4).fMJ();
-    localObject5 = ((r)localObject5).kZ(paramInt1, paramInt2);
-    localObject6 = ((ah)localObject6).dg(this.Kin.Kiy);
+    paramArrayOfByte3 = ((h)localObject3).a(i, paramLong, paramArrayOfByte2, paramArrayOfByte1, paramArrayOfByte3, arrayOfByte4, this.LVW.LWt, this.LVW.LWh);
+    this.LVW.LWx = super.cZ(((a)localObject3).gfw());
+    localObject3 = localc.ajm(i);
+    localObject4 = ((oicq.wlogin_sdk.a.i)localObject4).gfz();
+    localObject5 = ((r)localObject5).lp(paramInt1, paramInt2);
+    localObject6 = ((ah)localObject6).dg(this.LVW.LWh);
     paramInt1 = 7;
     if (paramArrayOfByte4.length > 0)
     {
@@ -180,12 +180,12 @@ public final class j
       if (arrayOfByte3.length > 0) {}
       for (paramArrayOfByte2 = ((k)localObject7).de(arrayOfByte3);; paramArrayOfByte2 = new byte[0])
       {
-        paramArrayOfByte4 = util.fMM();
-        arrayOfByte3 = util.fMN();
-        paramInt2 = this.Kin.KiB;
-        localObject7 = this.Kin.KiA;
-        localObject8 = this.Kin.KiD;
-        paramArrayOfByte4 = localag.a(paramArrayOfByte2, localy.a(paramArrayOfByte4, arrayOfByte3, paramInt2, (byte[])localObject7, new byte[0], (byte[])localObject8), localaa.a(this.Kin.KiJ, this.Kin.KiK, this.Kin.KiL, this.Kin.KiH, this.Kin.Kiy), localaj.q(this.Kin.KiF, this.Kin.KiG), this.Kin.Kip);
+        paramArrayOfByte4 = util.gfC();
+        arrayOfByte3 = util.gfD();
+        paramInt2 = this.LVW.LWk;
+        localObject7 = this.LVW.LWj;
+        localObject8 = this.LVW.LWm;
+        paramArrayOfByte4 = localag.a(paramArrayOfByte2, localy.a(paramArrayOfByte4, arrayOfByte3, paramInt2, (byte[])localObject7, new byte[0], (byte[])localObject8), localaa.a(this.LVW.LWs, this.LVW.LWt, this.LVW.LWu, this.LVW.LWq, this.LVW.LWh), localaj.q(this.LVW.LWo, this.LVW.LWp), this.LVW.LVY);
         arrayOfByte2 = localae.df(arrayOfByte2);
         paramInt1 = paramInt1 + 1 + 1;
         if (arrayOfByte1.length > 0)
@@ -218,9 +218,9 @@ public final class j
           paramInt2 += 0;
           System.arraycopy(paramArrayOfByte2, 0, arrayOfByte1, paramInt2, paramArrayOfByte2.length);
           System.arraycopy(localObject6, 0, arrayOfByte1, paramArrayOfByte2.length + paramInt2, localObject6.length);
-          paramArrayOfByte1 = super.P(arrayOfByte1, this.Kil, paramInt1);
-          a(this.Kif, this.Kik, paramLong, this.Kih, this.Kii, i, this.Kij, paramArrayOfByte1);
-          paramArrayOfByte1 = super.fMD();
+          paramArrayOfByte1 = super.O(arrayOfByte1, this.LVU, paramInt1);
+          a(this.LVO, this.LVT, paramLong, this.LVQ, this.LVR, i, this.LVS, paramArrayOfByte1);
+          paramArrayOfByte1 = super.gft();
           AppMethodBeat.o(88080);
           return paramArrayOfByte1;
           paramArrayOfByte2 = new byte[0];

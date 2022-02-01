@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static volatile boolean aJg = true;
+  private static volatile boolean aJW = true;
   
   public static Drawable a(Context paramContext, int paramInt, Resources.Theme paramTheme)
   {
@@ -23,7 +23,7 @@ public final class a
     // Byte code:
     //   0: ldc 33
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 10	com/bumptech/glide/c/d/c/a:aJg	Z
+    //   5: getstatic 10	com/bumptech/glide/c/d/c/a:aJW	Z
     //   8: ifeq +45 -> 53
     //   11: aload_3
     //   12: ifnull +30 -> 42
@@ -46,7 +46,7 @@ public final class a
     //   45: goto -19 -> 26
     //   48: astore_0
     //   49: iconst_0
-    //   50: putstatic 10	com/bumptech/glide/c/d/c/a:aJg	Z
+    //   50: putstatic 10	com/bumptech/glide/c/d/c/a:aJW	Z
     //   53: aload_3
     //   54: ifnull +55 -> 109
     //   57: aload_1
@@ -114,7 +114,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.c.a
  * JD-Core Version:    0.7.0.1
  */

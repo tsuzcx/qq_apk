@@ -17,18 +17,18 @@ final class SnsUploadUI$2
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(176363);
-    if (this.xKF[0] != 0)
+    if (this.yXu[0] != 0)
     {
-      this.xKF[0] = false;
-      b.ufs.ajr("ie_sns_upload");
+      this.yXu[0] = false;
+      b.vor.aop("ie_sns_upload");
     }
-    b.ufs.ajs("ie_sns_upload");
+    b.vor.aoq("ie_sns_upload");
     AppMethodBeat.o(176363);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.2
  * JD-Core Version:    0.7.0.1
  */

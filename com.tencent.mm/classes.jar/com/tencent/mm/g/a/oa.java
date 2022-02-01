@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class oa
   extends b
 {
-  public a dti;
-  public b dtj;
+  public a dqw;
   
   public oa()
   {
@@ -16,27 +15,21 @@ public final class oa
   
   private oa(byte paramByte)
   {
-    AppMethodBeat.i(130032);
-    this.dti = new a();
-    this.dtj = new b();
-    this.ESR = false;
+    AppMethodBeat.i(94812);
+    this.dqw = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(130032);
+    AppMethodBeat.o(94812);
   }
   
   public static final class a
   {
-    public int type;
-  }
-  
-  public static final class b
-  {
-    public boolean dth = false;
+    public String dqx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.oa
  * JD-Core Version:    0.7.0.1
  */

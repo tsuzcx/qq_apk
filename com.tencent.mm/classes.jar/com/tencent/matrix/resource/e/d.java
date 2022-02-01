@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public final class d
 {
-  protected final int cAL;
+  protected final int cxU;
   protected final Context mContext;
   
   public d(Context paramContext)
@@ -20,12 +20,12 @@ public final class d
   private d(Context paramContext, byte paramByte)
   {
     this.mContext = paramContext;
-    this.cAL = 5;
+    this.cxU = 5;
   }
   
-  private File HI()
+  private File Ht()
   {
-    File localFile2 = HJ();
+    File localFile2 = Hu();
     File localFile1;
     if ((!localFile2.exists()) && ((!localFile2.mkdirs()) || (!localFile2.canWrite())))
     {
@@ -48,7 +48,7 @@ public final class d
         localFile1 = localFile2;
       } while (arrayOfFile == null);
       localFile1 = localFile2;
-    } while (arrayOfFile.length <= this.cAL);
+    } while (arrayOfFile.length <= this.cxU);
     int j = arrayOfFile.length;
     int i = 0;
     for (;;)
@@ -65,7 +65,7 @@ public final class d
     }
   }
   
-  private File HJ()
+  private File Hu()
   {
     if ("mounted".equals(Environment.getExternalStorageState())) {}
     for (File localFile = this.mContext.getExternalCacheDir();; localFile = this.mContext.getCacheDir())
@@ -76,9 +76,9 @@ public final class d
     }
   }
   
-  public final File HH()
+  public final File Hs()
   {
-    File localFile = HI();
+    File localFile = Ht();
     if (localFile == null) {
       return null;
     }
@@ -88,7 +88,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.e.d
  * JD-Core Version:    0.7.0.1
  */

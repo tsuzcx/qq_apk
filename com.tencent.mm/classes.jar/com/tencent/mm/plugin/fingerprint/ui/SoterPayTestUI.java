@@ -6,16 +6,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import com.tencent.soter.a.b.c;
 
 public class SoterPayTestUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
   public int getLayoutId()
   {
@@ -31,11 +31,11 @@ public class SoterPayTestUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64557);
-        ad.i("MicroMsg.SoterPayTestUI", "hy: start get challenge");
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(1586, SoterPayTestUI.this);
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(new com.tencent.mm.plugin.fingerprint.c.a(0), 0);
+        ac.i("MicroMsg.SoterPayTestUI", "hy: start get challenge");
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(1586, SoterPayTestUI.this);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(new com.tencent.mm.plugin.fingerprint.c.a(0), 0);
         AppMethodBeat.o(64557);
       }
     });
@@ -44,7 +44,7 @@ public class SoterPayTestUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64558);
-        ad.i("MicroMsg.SoterPayTestUI", "hy: regen and upload ask");
+        ac.i("MicroMsg.SoterPayTestUI", "hy: regen and upload ask");
         com.tencent.soter.a.a.a(new com.tencent.soter.a.b.b() {}, false, null);
         AppMethodBeat.o(64558);
       }
@@ -63,10 +63,10 @@ public class SoterPayTestUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(64561);
-    ad.i("MicroMsg.SoterPayTestUI", "hy: on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.SoterPayTestUI", "hy: on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     t.makeText(this, String.format("on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }), 1).show();
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(paramn.getType(), this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(paramn.getType(), this);
     AppMethodBeat.o(64561);
   }
   

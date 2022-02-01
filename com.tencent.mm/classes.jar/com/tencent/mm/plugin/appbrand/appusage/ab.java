@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.c;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.protocal.protobuf.cxb;
-import com.tencent.mm.protocal.protobuf.cxc;
-import com.tencent.mm.protocal.protobuf.dgp;
-import com.tencent.mm.protocal.protobuf.dgq;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.protocal.protobuf.dcn;
+import com.tencent.mm.protocal.protobuf.dco;
+import com.tencent.mm.protocal.protobuf.dme;
+import com.tencent.mm.protocal.protobuf.dmf;
 import com.tencent.mm.sdk.platformtools.h;
 import d.a.e;
 import d.aa;
@@ -17,28 +17,28 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appusage/CgiUpdateWxaStarRecord;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "Lcom/tencent/mm/protocal/protobuf/UpdateWxaStarRecordResponse;", "opList", "", "Lcom/tencent/mm/protocal/protobuf/StarWxaSortOperation;", "opReason", "", "(Ljava/util/List;I)V", "Companion", "UpdateReason", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/CgiUpdateWxaStarRecord;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "Lcom/tencent/mm/protocal/protobuf/UpdateWxaStarRecordResponse;", "opList", "", "Lcom/tencent/mm/protocal/protobuf/StarWxaSortOperation;", "opReason", "", "(Ljava/util/List;I)V", "Companion", "UpdateReason", "plugin-appbrand-integration_release"})
 public final class ab
-  extends c<dgq>
+  extends c<dmf>
 {
-  private static final int[] iVx;
-  public static final a iVy;
+  private static final int[] jvN;
+  public static final a jvO;
   
   static
   {
     AppMethodBeat.i(50288);
-    iVy = new a((byte)0);
-    iVx = new int[] { 1, 2, 3, 4 };
+    jvO = new a((byte)0);
+    jvN = new int[] { 1, 2, 3, 4 };
     AppMethodBeat.o(50288);
   }
   
-  public ab(List<? extends cxc> paramList, int paramInt)
+  public ab(List<? extends dco> paramList, int paramInt)
   {
     AppMethodBeat.i(50287);
-    if (a.aSe())
+    if (a.aZb())
     {
-      if ((!paramList.isEmpty()) && (e.contains(iVx, paramInt))) {}
-      for (int i = 1; (aa.JfW) && (i == 0); i = 0)
+      if ((!paramList.isEmpty()) && (e.contains(jvN, paramInt))) {}
+      for (int i = 1; (aa.KTq) && (i == 0); i = 0)
       {
         paramList = (Throwable)new AssertionError("Assertion failed");
         AppMethodBeat.o(50287);
@@ -46,73 +46,73 @@ public final class ab
       }
     }
     b.a locala = new b.a();
-    locala.d((a)new dgq());
-    locala.wg("/cgi-bin/mmbiz-bin/wxaapp/updatestarrecord");
-    locala.nB(1839);
-    dgp localdgp = new dgp();
-    localdgp.Exd.addAll((Collection)paramList);
-    localdgp.bvJ = paramInt;
-    locala.c((a)localdgp);
-    c(locala.atI());
+    locala.d((a)new dmf());
+    locala.Am("/cgi-bin/mmbiz-bin/wxaapp/updatestarrecord");
+    locala.op(1839);
+    dme localdme = new dme();
+    localdme.FUf.addAll((Collection)paramList);
+    localdme.reason = paramInt;
+    locala.c((a)localdme);
+    c(locala.aAz());
     AppMethodBeat.o(50287);
   }
   
-  public static final cxc a(cxb paramcxb)
+  public static final dco a(dcn paramdcn)
   {
     AppMethodBeat.i(50290);
-    paramcxb = a.a(paramcxb);
+    paramdcn = a.a(paramdcn);
     AppMethodBeat.o(50290);
-    return paramcxb;
+    return paramdcn;
   }
   
-  public static final cxc a(cxb paramcxb1, cxb paramcxb2)
+  public static final dco a(dcn paramdcn1, dcn paramdcn2)
   {
     AppMethodBeat.i(50289);
-    paramcxb1 = a.a(paramcxb1, paramcxb2, null);
+    paramdcn1 = a.a(paramdcn1, paramdcn2, null);
     AppMethodBeat.o(50289);
-    return paramcxb1;
+    return paramdcn1;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appusage/CgiUpdateWxaStarRecord$Companion;", "", "()V", "UpdateWxaRecordReason_CloseStarList", "", "UpdateWxaRecordReason_CloseTask", "UpdateWxaRecordReason_FromHistory", "UpdateWxaRecordReason_Timeout", "legalReasons", "", "add", "Lcom/tencent/mm/protocal/protobuf/StarWxaSortOperation;", "self", "Lcom/tencent/mm/protocal/protobuf/StarWxaInfo;", "prev", "next", "checkParams", "", "delete", "move", "op", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/CgiUpdateWxaStarRecord$Companion;", "", "()V", "UpdateWxaRecordReason_CloseStarList", "", "UpdateWxaRecordReason_CloseTask", "UpdateWxaRecordReason_FromHistory", "UpdateWxaRecordReason_Timeout", "legalReasons", "", "add", "Lcom/tencent/mm/protocal/protobuf/StarWxaSortOperation;", "self", "Lcom/tencent/mm/protocal/protobuf/StarWxaInfo;", "prev", "next", "checkParams", "", "delete", "move", "op", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    private static cxc a(int paramInt, cxb paramcxb1, cxb paramcxb2, cxb paramcxb3)
+    private static dco a(int paramInt, dcn paramdcn1, dcn paramdcn2, dcn paramdcn3)
     {
       AppMethodBeat.i(50283);
-      cxc localcxc = new cxc();
-      localcxc.Epj = paramcxb1;
-      localcxc.Epm = paramInt;
-      localcxc.Epk = paramcxb2;
-      localcxc.Epl = paramcxb3;
+      dco localdco = new dco();
+      localdco.FMi = paramdcn1;
+      localdco.FMl = paramInt;
+      localdco.FMj = paramdcn2;
+      localdco.FMk = paramdcn3;
       AppMethodBeat.o(50283);
-      return localcxc;
+      return localdco;
     }
     
-    public static cxc a(cxb paramcxb)
+    public static dco a(dcn paramdcn)
     {
       AppMethodBeat.i(50282);
-      k.h(paramcxb, "self");
-      paramcxb = a(2, paramcxb, null, null);
+      k.h(paramdcn, "self");
+      paramdcn = a(2, paramdcn, null, null);
       AppMethodBeat.o(50282);
-      return paramcxb;
+      return paramdcn;
     }
     
-    public static cxc a(cxb paramcxb1, cxb paramcxb2, cxb paramcxb3)
+    public static dco a(dcn paramdcn1, dcn paramdcn2, dcn paramdcn3)
     {
       AppMethodBeat.i(50281);
-      k.h(paramcxb1, "self");
-      paramcxb1 = a(1, paramcxb1, paramcxb2, paramcxb3);
+      k.h(paramdcn1, "self");
+      paramdcn1 = a(1, paramdcn1, paramdcn2, paramdcn3);
       AppMethodBeat.o(50281);
-      return paramcxb1;
+      return paramdcn1;
     }
     
-    static boolean aSe()
+    static boolean aZb()
     {
       return h.IS_FLAVOR_RED;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appusage/CgiUpdateWxaStarRecord$UpdateReason;", "", "intValue", "", "(Ljava/lang/String;II)V", "getIntValue", "()I", "None", "Timeout", "ClosePullDown", "CloseCollectionList", "History", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/CgiUpdateWxaStarRecord$UpdateReason;", "", "intValue", "", "(Ljava/lang/String;II)V", "getIntValue", "()I", "None", "Timeout", "ClosePullDown", "CloseCollectionList", "History", "plugin-appbrand-integration_release"})
   public static enum b
   {
     final int intValue;
@@ -121,16 +121,16 @@ public final class ab
     {
       AppMethodBeat.i(50284);
       b localb1 = new b("None", 0, 0);
-      iVz = localb1;
+      jvP = localb1;
       b localb2 = new b("Timeout", 1, 1);
-      iVA = localb2;
+      jvQ = localb2;
       b localb3 = new b("ClosePullDown", 2, 2);
-      iVB = localb3;
+      jvR = localb3;
       b localb4 = new b("CloseCollectionList", 3, 3);
-      iVC = localb4;
+      jvS = localb4;
       b localb5 = new b("History", 4, 4);
-      iVD = localb5;
-      iVE = new b[] { localb1, localb2, localb3, localb4, localb5 };
+      jvT = localb5;
+      jvU = new b[] { localb1, localb2, localb3, localb4, localb5 };
       AppMethodBeat.o(50284);
     }
     
@@ -142,7 +142,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ab
  * JD-Core Version:    0.7.0.1
  */

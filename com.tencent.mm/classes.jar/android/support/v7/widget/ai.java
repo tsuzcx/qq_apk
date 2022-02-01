@@ -2,11 +2,11 @@ package android.support.v7.widget;
 
 final class ai
 {
-  final a aoH;
+  final a apD;
   
   ai(a parama)
   {
-    this.aoH = parama;
+    this.apD = parama;
   }
   
   static abstract interface a

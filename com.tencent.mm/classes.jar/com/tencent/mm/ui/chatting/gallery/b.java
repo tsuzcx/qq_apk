@@ -13,13 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.ai.y;
-import com.tencent.mm.aw.l;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ah.y;
+import com.tencent.mm.av.l;
 import com.tencent.mm.g.a.cs;
 import com.tencent.mm.g.a.cs.b;
 import com.tencent.mm.g.b.a.g.a;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.bk;
 import com.tencent.mm.model.by;
@@ -29,11 +29,11 @@ import com.tencent.mm.platformtools.v;
 import com.tencent.mm.pluginsdk.model.app.m;
 import com.tencent.mm.pluginsdk.model.app.m.a;
 import com.tencent.mm.pluginsdk.permission.PermissionHelper;
-import com.tencent.mm.protocal.protobuf.czj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.dev;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.WxImageView;
 import com.tencent.mm.ui.chatting.ChattingSendDataToDeviceUI;
@@ -52,40 +52,40 @@ import junit.framework.Assert;
 public final class b
   extends com.tencent.mm.ui.base.u
 {
-  public static long mUQ = -1L;
-  public static boolean qbB = false;
-  public ImageGalleryUI GAa;
-  protected a GAb;
-  private String GAc;
-  boolean GAd;
-  public boolean GAe;
-  public d GAf;
-  public j GAg;
-  public i GAh;
-  public c GAi;
-  public boolean GAj;
-  boolean GAk;
-  protected boolean GAl;
-  private com.tencent.mm.g.b.a.g GAm;
-  private String fod;
+  public static long nxq = -1L;
+  public static boolean qKh = false;
+  public ImageGalleryUI HZV;
+  protected a HZW;
+  private String HZX;
+  boolean HZY;
+  public boolean HZZ;
+  public d Iaa;
+  public j Iab;
+  public i Iac;
+  public c Iad;
+  public boolean Iae;
+  boolean Iaf;
+  protected boolean Iag;
+  private com.tencent.mm.g.b.a.g Iah;
   private int fromScene;
-  private ArrayList<bl> qjT;
+  private String frx;
+  private ArrayList<bo> qSv;
   
   public b(ImageGalleryUI paramImageGalleryUI, long paramLong1, String paramString1, boolean paramBoolean1, long paramLong2, boolean paramBoolean2, String paramString2, Boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(35892);
-    this.GAd = true;
-    this.GAe = false;
-    this.GAj = false;
-    this.fod = null;
-    this.GAl = true;
-    this.qjT = new ArrayList();
-    this.GAm = null;
-    this.GAj = paramImageGalleryUI.getIntent().getBooleanExtra("img_gallery_is_mp_video_without_msg", false);
+    this.HZY = true;
+    this.HZZ = false;
+    this.Iae = false;
+    this.frx = null;
+    this.Iag = true;
+    this.qSv = new ArrayList();
+    this.Iah = null;
+    this.Iae = paramImageGalleryUI.getIntent().getBooleanExtra("img_gallery_is_mp_video_without_msg", false);
     String str;
-    if (!this.GAj)
+    if (!this.Iae)
     {
-      str = "MicroMsg.ImageGalleryAdapter, invalid argument, context = " + paramImageGalleryUI + ", currentMsgId = " + paramLong1 + ", talker = " + paramString1 + ", stack = " + bt.eGN();
+      str = "MicroMsg.ImageGalleryAdapter, invalid argument, context = " + paramImageGalleryUI + ", currentMsgId = " + paramLong1 + ", talker = " + paramString1 + ", stack = " + bs.eWi();
       if ((paramLong1 <= 0L) || (paramString1 == null) || (paramString1.length() <= 0)) {
         break label248;
       }
@@ -94,80 +94,91 @@ public final class b
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(str, bool);
-      this.GAa = paramImageGalleryUI;
-      qbB = paramBoolean1;
-      mUQ = paramLong2;
-      this.fod = paramString1;
+      this.HZV = paramImageGalleryUI;
+      qKh = paramBoolean1;
+      nxq = paramLong2;
+      this.frx = paramString1;
       this.fromScene = paramInt;
-      this.GAb = new a(paramLong1, paramString1, this, paramBoolean, paramInt);
-      this.GAe = paramBoolean2;
-      this.GAc = paramString2;
-      this.GAf = new d(this);
-      this.GAg = new j(this);
-      this.GAh = new i(this);
+      this.HZW = new a(paramLong1, paramString1, this, paramBoolean, paramInt);
+      this.HZZ = paramBoolean2;
+      this.HZX = paramString2;
+      this.Iaa = new d(this);
+      this.Iab = new j(this);
+      this.Iac = new i(this);
       AppMethodBeat.o(35892);
       return;
     }
   }
   
-  public static void a(Context paramContext, bl parambl)
+  public static void a(Context paramContext, final bo parambo)
   {
-    AppMethodBeat.i(191553);
-    if ((paramContext == null) || (parambl == null))
+    AppMethodBeat.i(196546);
+    if ((paramContext == null) || (parambo == null))
     {
-      AppMethodBeat.o(191553);
+      AppMethodBeat.o(196546);
       return;
     }
-    parambl = new b.3(paramContext, parambl);
-    b.4 local4 = new b.4(paramContext);
-    if (PermissionHelper.aBd("android.permission.WRITE_EXTERNAL_STORAGE"))
+    parambo = new Runnable()
     {
-      parambl.run();
-      AppMethodBeat.o(191553);
+      public final void run()
+      {
+        AppMethodBeat.i(196538);
+        b.b(this.val$context, parambo, this.Iaj);
+        if (this.Iak != null) {
+          this.Iak.run();
+        }
+        AppMethodBeat.o(196538);
+      }
+    };
+    b.4 local4 = new b.4(paramContext);
+    if (PermissionHelper.aGv("android.permission.WRITE_EXTERNAL_STORAGE"))
+    {
+      parambo.run();
+      AppMethodBeat.o(196546);
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      com.tencent.mm.platformtools.p.a(paramContext, parambl, local4);
-      AppMethodBeat.o(191553);
+      com.tencent.mm.platformtools.p.a(paramContext, parambo, local4);
+      AppMethodBeat.o(196546);
       return;
     }
     local4.run();
-    AppMethodBeat.o(191553);
+    AppMethodBeat.o(196546);
   }
   
-  public static boolean b(Context paramContext, bl parambl, boolean paramBoolean)
+  public static boolean b(Context paramContext, bo parambo, boolean paramBoolean)
   {
     AppMethodBeat.i(35912);
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(35912);
       return false;
     }
-    Object localObject = com.tencent.mm.modelvideo.o.aCI().zO(parambl.field_imgPath);
+    Object localObject = com.tencent.mm.modelvideo.o.aJy().DT(parambo.field_imgPath);
     boolean bool = false;
     if (localObject != null)
     {
       int i = 0;
-      if (w.pF(((s)localObject).getUser())) {
-        i = com.tencent.mm.model.q.rY(((s)localObject).getUser());
+      if (w.sQ(((s)localObject).getUser())) {
+        i = com.tencent.mm.model.q.wb(((s)localObject).getUser());
       }
-      bool = ((s)localObject).aCW();
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(106L, 216L, 1L, false);
-      com.tencent.mm.plugin.report.service.h.vKh.f(12084, new Object[] { Integer.valueOf(((s)localObject).gTY), Integer.valueOf(((s)localObject).gOY * 1000), Integer.valueOf(0), Integer.valueOf(2), ((s)localObject).getUser(), Integer.valueOf(i), s.zM(((s)localObject).aCT()), Long.valueOf(((s)localObject).createTime) });
+      bool = ((s)localObject).aJN();
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(106L, 216L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.wUl.f(12084, new Object[] { Integer.valueOf(((s)localObject).hux), Integer.valueOf(((s)localObject).hpy * 1000), Integer.valueOf(0), Integer.valueOf(2), ((s)localObject).getUser(), Integer.valueOf(i), s.DR(((s)localObject).aJK()), Long.valueOf(((s)localObject).createTime) });
     }
     if (!bool)
     {
-      ad.w("MicroMsg.ImageGalleryAdapter", "do export video but video had not download finish.");
+      ac.w("MicroMsg.ImageGalleryAdapter", "do export video but video had not download finish.");
       if (paramBoolean) {
         Toast.makeText(paramContext, paramContext.getString(2131764682), 1).show();
       }
       AppMethodBeat.o(35912);
       return false;
     }
-    com.tencent.mm.modelvideo.o.aCI();
-    localObject = com.tencent.mm.modelvideo.u.Af(com.tencent.mm.modelvideo.t.zQ(parambl.field_imgPath));
-    if (bt.isNullOrNil((String)localObject))
+    com.tencent.mm.modelvideo.o.aJy();
+    localObject = com.tencent.mm.modelvideo.u.Ek(com.tencent.mm.modelvideo.t.DV(parambo.field_imgPath));
+    if (bs.isNullOrNil((String)localObject))
     {
       if (paramBoolean) {
         Toast.makeText(paramContext, paramContext.getString(2131764682), 1).show();
@@ -176,38 +187,38 @@ public final class b
       return false;
     }
     if (paramBoolean) {
-      Toast.makeText(paramContext, paramContext.getString(2131764683, new Object[] { localObject }), 1).show();
+      Toast.makeText(paramContext, paramContext.getString(2131764683, new Object[] { com.tencent.mm.sdk.f.b.aLU((String)localObject) }), 1).show();
     }
-    String str = com.tencent.mm.vfs.i.aEN((String)localObject);
-    v localv = v.hUC;
-    v.bx(str, bk.uo(parambl.esh));
+    String str = com.tencent.mm.vfs.i.aKe((String)localObject);
+    v localv = v.iuG;
+    v.bF(str, bk.yu(parambo.eul));
     com.tencent.mm.pluginsdk.ui.tools.q.k((String)localObject, paramContext);
     AppMethodBeat.o(35912);
     return true;
   }
   
-  public static boolean b(bl parambl, com.tencent.mm.aw.e parame)
+  public static boolean b(bo parambo, com.tencent.mm.av.e parame)
   {
     AppMethodBeat.i(35903);
-    if ((parambl == null) || (parame == null))
+    if ((parambo == null) || (parame == null))
     {
       AppMethodBeat.o(35903);
       return false;
     }
-    boolean bool = com.tencent.mm.aw.o.ayG().a(parame.deI, parambl.field_msgId, 1);
+    boolean bool = com.tencent.mm.av.o.aFy().a(parame.dcd, parambo.field_msgId, 1);
     AppMethodBeat.o(35903);
     return bool;
   }
   
-  public static boolean bO(bl parambl)
+  public static boolean bR(bo parambo)
   {
     AppMethodBeat.i(35899);
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(35899);
       return false;
     }
-    if (parambl.getType() == 62)
+    if (parambo.getType() == 62)
     {
       AppMethodBeat.o(35899);
       return true;
@@ -216,15 +227,15 @@ public final class b
     return false;
   }
   
-  public static boolean bP(bl parambl)
+  public static boolean bS(bo parambo)
   {
     AppMethodBeat.i(35900);
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(35900);
       return false;
     }
-    if (parambl.getType() == 49)
+    if (parambo.getType() == 49)
     {
       AppMethodBeat.o(35900);
       return true;
@@ -233,15 +244,15 @@ public final class b
     return false;
   }
   
-  public static boolean bQ(bl parambl)
+  public static boolean bT(bo parambo)
   {
     AppMethodBeat.i(35901);
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(35901);
       return false;
     }
-    if (parambl.getType() == 268435505)
+    if (parambo.getType() == 268435505)
     {
       AppMethodBeat.o(35901);
       return true;
@@ -250,73 +261,73 @@ public final class b
     return false;
   }
   
-  public static boolean bR(bl parambl)
+  public static boolean bU(bo parambo)
   {
     AppMethodBeat.i(35902);
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(35902);
       return false;
     }
-    boolean bool = parambl.cjN();
+    boolean bool = parambo.cru();
     AppMethodBeat.o(35902);
     return bool;
   }
   
-  public static b bS(bl parambl)
+  public static b bV(bo parambo)
   {
     AppMethodBeat.i(35906);
-    b localb = b.GAI;
-    if (parambl == null) {
-      localb = b.GAI;
+    b localb = b.IaD;
+    if (parambo == null) {
+      localb = b.IaD;
     }
-    if (bQ(parambl))
+    if (bT(parambo))
     {
-      parambl = b.GAM;
+      parambo = b.IaH;
       AppMethodBeat.o(35906);
-      return parambl;
+      return parambo;
     }
-    if (j(parambl))
+    if (j(parambo))
     {
-      parambl = b.GAJ;
+      parambo = b.IaE;
       AppMethodBeat.o(35906);
-      return parambl;
+      return parambo;
     }
-    if (bT(parambl))
+    if (bW(parambo))
     {
-      parambl = b.GAL;
+      parambo = b.IaG;
       AppMethodBeat.o(35906);
-      return parambl;
+      return parambo;
     }
-    if (m(parambl))
+    if (m(parambo))
     {
-      parambl = b.GAK;
+      parambo = b.IaF;
       AppMethodBeat.o(35906);
-      return parambl;
+      return parambo;
     }
-    if (bO(parambl))
+    if (bR(parambo))
     {
-      parambl = b.GAK;
+      parambo = b.IaF;
       AppMethodBeat.o(35906);
-      return parambl;
+      return parambo;
     }
-    parambl = b.GAI;
+    parambo = b.IaD;
     AppMethodBeat.o(35906);
-    return parambl;
+    return parambo;
   }
   
-  public static boolean bT(bl parambl)
+  public static boolean bW(bo parambo)
   {
     AppMethodBeat.i(35907);
-    if (parambl != null)
+    if (parambo != null)
     {
-      if (parambl.cjN())
+      if (parambo.cru())
       {
         AppMethodBeat.o(35907);
         return false;
       }
-      parambl = com.tencent.mm.modelvideo.u.Ae(parambl.field_imgPath);
-      if ((parambl != null) && (parambl.hAq != null) && ((!bt.isNullOrNil(parambl.hAq.gJv)) || (parambl.hAq.Dim > 0) || (!bt.isNullOrNil(parambl.hAq.gJy)) || (!bt.isNullOrNil(parambl.hAq.gJz)) || (!bt.isNullOrNil(parambl.hAq.gJx)) || (!bt.isNullOrNil(parambl.hAq.gJA)) || (!bt.isNullOrNil(parambl.hAq.gJB)) || (!bt.isNullOrNil(parambl.hAq.gJC))))
+      parambo = com.tencent.mm.modelvideo.u.Ej(parambo.field_imgPath);
+      if ((parambo != null) && (parambo.iaR != null) && ((!bs.isNullOrNil(parambo.iaR.hjV)) || (parambo.iaR.EBs > 0) || (!bs.isNullOrNil(parambo.iaR.hjY)) || (!bs.isNullOrNil(parambo.iaR.hjZ)) || (!bs.isNullOrNil(parambo.iaR.hjX)) || (!bs.isNullOrNil(parambo.iaR.hka)) || (!bs.isNullOrNil(parambo.iaR.hkb)) || (!bs.isNullOrNil(parambo.iaR.hkc))))
       {
         AppMethodBeat.o(35907);
         return true;
@@ -326,15 +337,15 @@ public final class b
     return false;
   }
   
-  public static int c(bl parambl, com.tencent.mm.aw.e parame)
+  public static int c(bo parambo, com.tencent.mm.av.e parame)
   {
     AppMethodBeat.i(35918);
-    if (parambl.field_isSend == 1)
+    if (parambo.field_isSend == 1)
     {
-      if (parame.ayi())
+      if (parame.aFa())
       {
-        parambl = com.tencent.mm.aw.f.a(parame);
-        if ((parambl != null) && (parambl.deI > 0L) && (parambl.ayh()) && (com.tencent.mm.vfs.i.eK(com.tencent.mm.aw.o.ayF().p(parambl.hgj, "", ""))))
+        parambo = com.tencent.mm.av.f.a(parame);
+        if ((parambo != null) && (parambo.dcd > 0L) && (parambo.aEZ()) && (com.tencent.mm.vfs.i.eA(com.tencent.mm.av.o.aFx().p(parambo.hGM, "", ""))))
         {
           AppMethodBeat.o(35918);
           return 1;
@@ -343,12 +354,12 @@ public final class b
       AppMethodBeat.o(35918);
       return 0;
     }
-    if (parame.ayh())
+    if (parame.aEZ())
     {
-      if (parame.ayi())
+      if (parame.aFa())
       {
-        parambl = com.tencent.mm.aw.f.a(parame);
-        if ((parambl != null) && (parambl.deI > 0L) && (parambl.ayh()) && (com.tencent.mm.vfs.i.eK(com.tencent.mm.aw.o.ayF().p(parambl.hgj, "", ""))))
+        parambo = com.tencent.mm.av.f.a(parame);
+        if ((parambo != null) && (parambo.dcd > 0L) && (parambo.aEZ()) && (com.tencent.mm.vfs.i.eA(com.tencent.mm.av.o.aFx().p(parambo.hGM, "", ""))))
         {
           AppMethodBeat.o(35918);
           return 1;
@@ -361,88 +372,99 @@ public final class b
     return 0;
   }
   
-  public static void c(Context paramContext, bl parambl, boolean paramBoolean)
+  public static void c(Context paramContext, final bo parambo, final boolean paramBoolean)
   {
-    AppMethodBeat.i(191554);
-    if ((paramContext == null) || (parambl == null))
+    AppMethodBeat.i(196547);
+    if ((paramContext == null) || (parambo == null))
     {
-      AppMethodBeat.o(191554);
+      AppMethodBeat.o(196547);
       return;
     }
-    parambl = new b.5(paramContext, parambl, paramBoolean);
-    b.6 local6 = new b.6(paramBoolean, paramContext);
-    if (PermissionHelper.aBd("android.permission.WRITE_EXTERNAL_STORAGE"))
+    parambo = new Runnable()
     {
-      parambl.run();
-      AppMethodBeat.o(191554);
+      public final void run()
+      {
+        AppMethodBeat.i(196540);
+        b.d(this.val$context, parambo, paramBoolean);
+        if (this.Iak != null) {
+          this.Iak.run();
+        }
+        AppMethodBeat.o(196540);
+      }
+    };
+    b.6 local6 = new b.6(paramBoolean, paramContext);
+    if (PermissionHelper.aGv("android.permission.WRITE_EXTERNAL_STORAGE"))
+    {
+      parambo.run();
+      AppMethodBeat.o(196547);
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      com.tencent.mm.platformtools.p.a(paramContext, parambl, local6);
-      AppMethodBeat.o(191554);
+      com.tencent.mm.platformtools.p.a(paramContext, parambo, local6);
+      AppMethodBeat.o(196547);
       return;
     }
     local6.run();
-    AppMethodBeat.o(191554);
+    AppMethodBeat.o(196547);
   }
   
-  public static boolean d(Context paramContext, bl parambl, boolean paramBoolean)
+  public static boolean d(Context paramContext, bo parambo, boolean paramBoolean)
   {
     AppMethodBeat.i(35913);
-    if (bQ(parambl)) {}
-    for (Object localObject = l(parambl); (localObject == null) || (((String)localObject).length() == 0); localObject = d.a(parambl, (com.tencent.mm.aw.e)localObject))
+    if (bT(parambo)) {}
+    for (Object localObject = l(parambo); (localObject == null) || (((String)localObject).length() == 0); localObject = d.a(parambo, (com.tencent.mm.av.e)localObject))
     {
-      ad.e("MicroMsg.ImageGalleryAdapter", "doRestransmitMsg fail, bigImgPath is null, msgLocalId = " + parambl.field_msgId);
+      ac.e("MicroMsg.ImageGalleryAdapter", "doRestransmitMsg fail, bigImgPath is null, msgLocalId = " + parambo.field_msgId);
       if (paramBoolean) {
         Toast.makeText(paramContext, paramContext.getString(2131762779), 1).show();
       }
       AppMethodBeat.o(35913);
       return false;
-      if ((parambl == null) || (parambl.field_msgId == 0L))
+      if ((parambo == null) || (parambo.field_msgId == 0L))
       {
-        ad.e("MicroMsg.ImageGalleryAdapter", "msg is null");
+        ac.e("MicroMsg.ImageGalleryAdapter", "msg is null");
         if (paramBoolean) {
           Toast.makeText(paramContext, paramContext.getString(2131762779), 1).show();
         }
         AppMethodBeat.o(35913);
         return false;
       }
-      localObject = d.k(parambl);
-      if ((localObject == null) || (((com.tencent.mm.aw.e)localObject).deI == 0L))
+      localObject = d.k(parambo);
+      if ((localObject == null) || (((com.tencent.mm.av.e)localObject).dcd == 0L))
       {
         StringBuilder localStringBuilder = new StringBuilder("doRestransmitMsg fail, msgLocalId = ");
-        if (parambl == null)
+        if (parambo == null)
         {
-          parambl = "null";
-          localStringBuilder = localStringBuilder.append(parambl).append(", imgLocalId = ");
+          parambo = "null";
+          localStringBuilder = localStringBuilder.append(parambo).append(", imgLocalId = ");
           if (localObject != null) {
             break label244;
           }
         }
         label244:
-        for (parambl = "null";; parambl = Long.valueOf(((com.tencent.mm.aw.e)localObject).deI))
+        for (parambo = "null";; parambo = Long.valueOf(((com.tencent.mm.av.e)localObject).dcd))
         {
-          ad.e("MicroMsg.ImageGalleryAdapter", parambl);
+          ac.e("MicroMsg.ImageGalleryAdapter", parambo);
           if (paramBoolean) {
             Toast.makeText(paramContext, paramContext.getString(2131762779), 1).show();
           }
           AppMethodBeat.o(35913);
           return false;
-          parambl = Long.valueOf(parambl.field_msgId);
+          parambo = Long.valueOf(parambo.field_msgId);
           break;
         }
       }
     }
-    localObject = com.tencent.mm.platformtools.p.H(paramContext, (String)localObject);
-    if (!bt.isNullOrNil((String)localObject))
+    localObject = com.tencent.mm.platformtools.p.I(paramContext, (String)localObject);
+    if (!bs.isNullOrNil((String)localObject))
     {
       if (paramBoolean) {
-        Toast.makeText(paramContext, paramContext.getString(2131757969, new Object[] { com.tencent.mm.sdk.f.b.eAT() }), 1).show();
+        Toast.makeText(paramContext, paramContext.getString(2131757969, new Object[] { com.tencent.mm.sdk.f.b.eQn() }), 1).show();
       }
-      paramContext = com.tencent.mm.vfs.i.aEN((String)localObject);
-      localObject = v.hUC;
-      v.bx(paramContext, bk.uo(parambl.esh));
+      paramContext = com.tencent.mm.vfs.i.aKe((String)localObject);
+      localObject = v.iuG;
+      v.bF(paramContext, bk.yu(parambo.eul));
       AppMethodBeat.o(35913);
       return true;
     }
@@ -453,12 +475,12 @@ public final class b
     return false;
   }
   
-  public static void f(Context paramContext, List<bl> paramList)
+  public static void f(Context paramContext, List<bo> paramList)
   {
-    AppMethodBeat.i(191552);
+    AppMethodBeat.i(196545);
     if ((paramContext == null) || (paramList == null) || (paramList.size() <= 0))
     {
-      AppMethodBeat.o(191552);
+      AppMethodBeat.o(196545);
       return;
     }
     paramList = new b.1(paramList, paramContext);
@@ -466,22 +488,22 @@ public final class b
     if ((paramContext instanceof Activity))
     {
       com.tencent.mm.platformtools.p.a(paramContext, paramList, local2);
-      AppMethodBeat.o(191552);
+      AppMethodBeat.o(196545);
       return;
     }
     local2.run();
-    AppMethodBeat.o(191552);
+    AppMethodBeat.o(196545);
   }
   
-  public static boolean j(bl parambl)
+  public static boolean j(bo parambo)
   {
     AppMethodBeat.i(35897);
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(35897);
       return false;
     }
-    if ((parambl.getType() == 3) || (parambl.getType() == 39) || (parambl.getType() == 13))
+    if ((parambo.getType() == 3) || (parambo.getType() == 39) || (parambo.getType() == 13))
     {
       AppMethodBeat.o(35897);
       return true;
@@ -490,47 +512,47 @@ public final class b
     return false;
   }
   
-  public static String l(bl parambl)
+  public static String l(bo parambo)
   {
     Object localObject1 = null;
     AppMethodBeat.i(35916);
-    Object localObject2 = k.b.rx(parambl.field_content);
+    Object localObject2 = k.b.vA(parambo.field_content);
     if (localObject2 == null)
     {
       AppMethodBeat.o(35916);
       return null;
     }
-    parambl = localObject1;
-    if (((k.b)localObject2).dbA != null)
+    parambo = localObject1;
+    if (((k.b)localObject2).cZa != null)
     {
-      parambl = localObject1;
-      if (((k.b)localObject2).dbA.length() > 0)
+      parambo = localObject1;
+      if (((k.b)localObject2).cZa.length() > 0)
       {
-        localObject2 = com.tencent.mm.pluginsdk.model.app.ap.bxS().aAL(((k.b)localObject2).dbA);
-        parambl = localObject1;
+        localObject2 = com.tencent.mm.pluginsdk.model.app.ap.bEO().aGd(((k.b)localObject2).cZa);
+        parambo = localObject1;
         if (localObject2 != null) {
-          parambl = ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_fileFullPath;
+          parambo = ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_fileFullPath;
         }
       }
     }
     AppMethodBeat.o(35916);
-    return parambl;
+    return parambo;
   }
   
-  public static boolean m(bl parambl)
+  public static boolean m(bo parambo)
   {
     AppMethodBeat.i(35898);
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(35898);
       return false;
     }
-    if (bT(parambl))
+    if (bW(parambo))
     {
       AppMethodBeat.o(35898);
       return false;
     }
-    if ((parambl.getType() == 43) || (parambl.getType() == 486539313) || (parambl.getType() == 44) || (parambl.getType() == 62))
+    if ((parambo.getType() == 43) || (parambo.getType() == 486539313) || (parambo.getType() == 44) || (parambo.getType() == 62))
     {
       AppMethodBeat.o(35898);
       return true;
@@ -542,63 +564,63 @@ public final class b
   private void o(String paramString, int paramInt, long paramLong)
   {
     AppMethodBeat.i(35909);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.ImageGalleryAdapter", "doRestransmitImg fail, imgPath is null");
+      ac.e("MicroMsg.ImageGalleryAdapter", "doRestransmitImg fail, imgPath is null");
       AppMethodBeat.o(35909);
       return;
     }
     Object localObject;
-    if (bt.isNullOrNil(this.GAc))
+    if (bs.isNullOrNil(this.HZX))
     {
-      ad.i("MicroMsg.ImageGalleryAdapter", "directly send user is empty, select one");
-      localObject = new Intent(this.GAa, MsgRetransmitUI.class);
+      ac.i("MicroMsg.ImageGalleryAdapter", "directly send user is empty, select one");
+      localObject = new Intent(this.HZV, MsgRetransmitUI.class);
       ((Intent)localObject).putExtra("Retr_File_Name", paramString);
       ((Intent)localObject).putExtra("Retr_Msg_Id", paramLong);
       ((Intent)localObject).putExtra("Retr_Msg_Type", 0);
       ((Intent)localObject).putExtra("Retr_Compress_Type", paramInt);
-      paramString = this.GAa;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestranmitImg", "(Ljava/lang/String;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      paramString = this.HZV;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestranmitImg", "(Ljava/lang/String;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestranmitImg", "(Ljava/lang/String;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(35909);
       return;
     }
-    ad.i("MicroMsg.ImageGalleryAdapter", "directly send user %s", new Object[] { this.GAc });
-    if (!bt.isNullOrNil(paramString))
+    ac.i("MicroMsg.ImageGalleryAdapter", "directly send user %s", new Object[] { this.HZX });
+    if (!bs.isNullOrNil(paramString))
     {
-      paramString = new l(com.tencent.mm.model.u.aqG(), this.GAc, paramString, paramInt);
-      az.aeS().a(paramString, 0);
-      by.asD().d(by.gPk, null);
+      paramString = new l(com.tencent.mm.model.u.axw(), this.HZX, paramString, paramInt);
+      az.agi().a(paramString, 0);
+      by.azu().d(by.hpK, null);
     }
-    if (this.GAd)
+    if (this.HZY)
     {
-      localObject = new Intent(this.GAa, ChattingUI.class);
+      localObject = new Intent(this.HZV, ChattingUI.class);
       ((Intent)localObject).addFlags(67108864);
-      ((Intent)localObject).putExtra("Chat_User", this.GAc);
-      paramString = this.GAa;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestranmitImg", "(Ljava/lang/String;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      ((Intent)localObject).putExtra("Chat_User", this.HZX);
+      paramString = this.HZV;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestranmitImg", "(Ljava/lang/String;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestranmitImg", "(Ljava/lang/String;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.vKh.f(10424, new Object[] { Integer.valueOf(3), Integer.valueOf(4), this.GAc });
+      com.tencent.mm.plugin.report.service.h.wUl.f(10424, new Object[] { Integer.valueOf(3), Integer.valueOf(4), this.HZX });
       AppMethodBeat.o(35909);
       return;
-      com.tencent.mm.ui.base.h.cf(this.GAa, this.GAa.getString(2131755881));
+      com.tencent.mm.ui.base.h.cg(this.HZV, this.HZV.getString(2131755881));
     }
   }
   
-  public final MultiTouchImageView Ef(int paramInt)
+  public final MultiTouchImageView Gb(int paramInt)
   {
     AppMethodBeat.i(35920);
-    Object localObject = super.OT(paramInt);
+    Object localObject = super.QZ(paramInt);
     if (localObject == null)
     {
-      ad.e("MicroMsg.ImageGalleryAdapter", "position : %s getMultiTouchImageViewByPosition is null", new Object[] { Integer.valueOf(paramInt) });
+      ac.e("MicroMsg.ImageGalleryAdapter", "position : %s getMultiTouchImageViewByPosition is null", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(35920);
       return null;
     }
@@ -613,10 +635,10 @@ public final class b
     return localObject;
   }
   
-  public final WxImageView Eg(int paramInt)
+  public final WxImageView Gc(int paramInt)
   {
     AppMethodBeat.i(35921);
-    Object localObject = super.OT(paramInt);
+    Object localObject = super.QZ(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(35921);
@@ -633,109 +655,172 @@ public final class b
     return localObject;
   }
   
-  public final bl YE(int paramInt)
+  public final void a(bo parambo, com.tencent.mm.av.e parame, int paramInt, g.a parama)
   {
-    AppMethodBeat.i(35894);
-    bl localbl = this.GAb.Zi(paramInt);
-    AppMethodBeat.o(35894);
-    return localbl;
+    AppMethodBeat.i(35934);
+    if (parambo == null)
+    {
+      AppMethodBeat.o(35934);
+      return;
+    }
+    if (this.Iah == null)
+    {
+      AppMethodBeat.o(35934);
+      return;
+    }
+    this.Iah.PW().dEO = parama;
+    long l1 = parambo.field_msgSvrId;
+    if (paramInt == 1) {}
+    for (int i = 1; (this.Iah.dEG != l1) && (this.Iah.dEI != i); i = 0)
+    {
+      ac.w("MicroMsg.ImageGalleryAdapter", "waiting img[%d] download finish but other img[%d] download finish callback don't report", new Object[] { Long.valueOf(this.Iah.dEG), Long.valueOf(l1) });
+      parambo = this.Iah;
+      parambo.dEO = g.a.dEQ;
+      parambo.aHZ();
+      AppMethodBeat.o(35934);
+      return;
+    }
+    long l4 = 0L;
+    long l5 = 0L;
+    long l6 = 0L;
+    long l7 = bs.Gn();
+    long l3 = l6;
+    long l2 = l5;
+    l1 = l4;
+    if (parama == g.a.dEP)
+    {
+      parambo = d.a(parambo, parame);
+      l3 = l6;
+      l2 = l5;
+      l1 = l4;
+      if (!bs.isNullOrNil(parambo))
+      {
+        l1 = com.tencent.mm.vfs.i.aSp(parambo);
+        parambo = d.aQu(parambo);
+        l3 = parambo.outWidth;
+        l2 = parambo.outHeight;
+      }
+    }
+    parambo = this.Iah;
+    parambo.dEJ = l1;
+    parambo.dEL = l2;
+    parambo.dEK = l3;
+    this.Iah.aHZ();
+    ac.i("MicroMsg.ImageGalleryAdapter", "stopWaitingImg [%d] [%s]", new Object[] { Long.valueOf(bs.aO(l7)), this.Iah.PR() });
+    this.Iah = null;
+    AppMethodBeat.o(35934);
   }
   
-  public final void YY(int paramInt)
+  public final void aZ(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(35919);
+    this.Iaa.aZ(paramInt, paramBoolean);
+    AppMethodBeat.o(35919);
+  }
+  
+  public final bo aaP(int paramInt)
+  {
+    AppMethodBeat.i(35894);
+    bo localbo = this.HZW.abu(paramInt);
+    AppMethodBeat.o(35894);
+    return localbo;
+  }
+  
+  public final void abk(int paramInt)
   {
     AppMethodBeat.i(35904);
-    Object localObject1 = YE(paramInt);
-    Object localObject2 = bS((bl)localObject1);
-    switch (8.GAt[localObject2.ordinal()])
+    Object localObject1 = aaP(paramInt);
+    Object localObject2 = bV((bo)localObject1);
+    switch (8.Iao[localObject2.ordinal()])
     {
     default: 
-      bV((bl)localObject1);
+      bY((bo)localObject1);
       AppMethodBeat.o(35904);
       return;
     case 1: 
     case 2: 
-      bU((bl)localObject1);
+      bX((bo)localObject1);
       AppMethodBeat.o(35904);
       return;
     }
-    String str = l((bl)localObject1);
-    localObject2 = new Intent(this.GAa, MsgRetransmitUI.class);
+    String str = l((bo)localObject1);
+    localObject2 = new Intent(this.HZV, MsgRetransmitUI.class);
     ((Intent)localObject2).putExtra("Retr_File_Name", str);
-    ((Intent)localObject2).putExtra("Retr_Msg_Id", ((du)localObject1).field_msgId);
+    ((Intent)localObject2).putExtra("Retr_Msg_Id", ((dy)localObject1).field_msgId);
     ((Intent)localObject2).putExtra("Retr_Msg_Type", 16);
-    ((Intent)localObject2).putExtra("Retr_Msg_content", ((du)localObject1).field_content);
+    ((Intent)localObject2).putExtra("Retr_Msg_content", ((dy)localObject1).field_content);
     ((Intent)localObject2).putExtra("Retr_Compress_Type", 0);
-    localObject1 = this.GAa;
-    localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestransmitAppImg", "(Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((ImageGalleryUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+    localObject1 = this.HZV;
+    localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestransmitAppImg", "(Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((ImageGalleryUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestransmitAppImg", "(Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(35904);
   }
   
-  public final void YZ(int paramInt)
+  public final void abl(int paramInt)
   {
     AppMethodBeat.i(35905);
-    Object localObject1 = YE(paramInt);
-    Object localObject2 = bS((bl)localObject1);
-    switch (8.GAt[localObject2.ordinal()])
+    Object localObject1 = aaP(paramInt);
+    Object localObject2 = bV((bo)localObject1);
+    switch (8.Iao[localObject2.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(35905);
       return;
-      localObject2 = new Intent(this.GAa, ChattingSendDataToDeviceUI.class);
-      ((Intent)localObject2).putExtra("Retr_Msg_Id", ((du)localObject1).field_msgId);
-      localObject1 = this.GAa;
-      localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doSendMsgToDevice", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((ImageGalleryUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+      localObject2 = new Intent(this.HZV, ChattingSendDataToDeviceUI.class);
+      ((Intent)localObject2).putExtra("Retr_Msg_Id", ((dy)localObject1).field_msgId);
+      localObject1 = this.HZV;
+      localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
+      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doSendMsgToDevice", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((ImageGalleryUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doSendMsgToDevice", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }
   
-  public final void Za(int paramInt)
+  public final void abm(int paramInt)
   {
     AppMethodBeat.i(35914);
-    Object localObject1 = YE(paramInt);
-    if (this.GAj)
+    Object localObject1 = aaP(paramInt);
+    if (this.Iae)
     {
-      localObject1 = j.ci((bl)localObject1);
+      localObject1 = j.cl((bo)localObject1);
       if (localObject1 == null)
       {
-        ad.e("MicroMsg.ImageGalleryAdapter", "doFavoriteImage mpShareVideoInfo should not be null");
+        ac.e("MicroMsg.ImageGalleryAdapter", "doFavoriteImage mpShareVideoInfo should not be null");
         AppMethodBeat.o(35914);
         return;
       }
-      localObject2 = com.tencent.mm.plugin.webview.ui.tools.media.e.BsW;
+      localObject2 = com.tencent.mm.plugin.webview.ui.tools.media.e.CLc;
       com.tencent.mm.plugin.webview.ui.tools.media.e.b((y)localObject1);
-      com.tencent.mm.ui.base.h.cf(this.GAa, this.GAa.getString(2131758936));
+      com.tencent.mm.ui.base.h.cg(this.HZV, this.HZV.getString(2131758936));
       AppMethodBeat.o(35914);
       return;
     }
     Object localObject2 = new cs();
-    com.tencent.mm.pluginsdk.model.g.e((cs)localObject2, (bl)localObject1);
-    ((cs)localObject2).deQ.activity = this.GAa;
-    ((cs)localObject2).deQ.deW = 44;
-    com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
-    if (((cs)localObject2).deR.ret == 0)
+    com.tencent.mm.pluginsdk.model.g.e((cs)localObject2, (bo)localObject1);
+    ((cs)localObject2).dck.activity = this.HZV;
+    ((cs)localObject2).dck.dcq = 44;
+    com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject2);
+    if (((cs)localObject2).dcl.ret == 0)
     {
-      if (((bl)localObject1).cjO()) {
-        com.tencent.mm.ui.chatting.a.a(a.c.Gjw, a.d.GjC, (bl)localObject1, 0);
+      if (((bo)localObject1).crv()) {
+        com.tencent.mm.ui.chatting.a.a(a.c.HJl, a.d.HJr, (bo)localObject1, 0);
       }
-      com.tencent.mm.modelstat.b.huc.P((bl)localObject1);
+      com.tencent.mm.modelstat.b.hUE.P((bo)localObject1);
     }
     AppMethodBeat.o(35914);
   }
   
-  public final View Zb(int paramInt)
+  public final View abn(int paramInt)
   {
     AppMethodBeat.i(35922);
-    View localView3 = super.OT(paramInt);
+    View localView3 = super.QZ(paramInt);
     if (localView3 == null)
     {
-      ad.e("MicroMsg.ImageGalleryAdapter", "position : %s getVideoViewByPosition is null", new Object[] { Integer.valueOf(paramInt) });
+      ac.e("MicroMsg.ImageGalleryAdapter", "position : %s getVideoViewByPosition is null", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(35922);
       return null;
     }
@@ -753,205 +838,142 @@ public final class b
     return localView1;
   }
   
-  public final void Zc(int paramInt)
+  public final void abo(int paramInt)
   {
     AppMethodBeat.i(35923);
-    this.GAg.j(YE(paramInt), paramInt);
+    this.Iab.j(aaP(paramInt), paramInt);
     AppMethodBeat.o(35923);
   }
   
-  public final void Zd(int paramInt)
+  public final void abp(int paramInt)
   {
     AppMethodBeat.i(35924);
-    this.GAg.k(YE(paramInt), paramInt);
+    this.Iab.k(aaP(paramInt), paramInt);
     AppMethodBeat.o(35924);
   }
   
-  public final void Ze(int paramInt)
+  public final void abq(int paramInt)
   {
     AppMethodBeat.i(35927);
-    this.GAg.YX(paramInt);
+    this.Iab.abj(paramInt);
     AppMethodBeat.o(35927);
   }
   
-  public final void Zf(int paramInt)
+  public final void abr(int paramInt)
   {
     AppMethodBeat.i(35930);
-    bl localbl = YE(paramInt);
-    if ((localbl == null) || (!j(localbl)))
+    bo localbo = aaP(paramInt);
+    if ((localbo == null) || (!j(localbo)))
     {
       AppMethodBeat.o(35930);
       return;
     }
-    this.GAf.ca(localbl);
+    this.Iaa.cd(localbo);
     AppMethodBeat.o(35930);
   }
   
-  public final void Zg(int paramInt)
+  public final void abs(int paramInt)
   {
     AppMethodBeat.i(35931);
-    this.GAh.Zm(paramInt);
+    this.Iac.aby(paramInt);
     AppMethodBeat.o(35931);
   }
   
-  public final void a(bl parambl, com.tencent.mm.aw.e parame, int paramInt, g.a parama)
-  {
-    AppMethodBeat.i(35934);
-    if (parambl == null)
-    {
-      AppMethodBeat.o(35934);
-      return;
-    }
-    if (this.GAm == null)
-    {
-      AppMethodBeat.o(35934);
-      return;
-    }
-    this.GAm.Qa().dHb = parama;
-    long l1 = parambl.field_msgSvrId;
-    if (paramInt == 1) {}
-    for (int i = 1; (this.GAm.dGT != l1) && (this.GAm.dGV != i); i = 0)
-    {
-      ad.w("MicroMsg.ImageGalleryAdapter", "waiting img[%d] download finish but other img[%d] download finish callback don't report", new Object[] { Long.valueOf(this.GAm.dGT), Long.valueOf(l1) });
-      parambl = this.GAm;
-      parambl.dHb = g.a.dHd;
-      parambl.aBj();
-      AppMethodBeat.o(35934);
-      return;
-    }
-    long l4 = 0L;
-    long l5 = 0L;
-    long l6 = 0L;
-    long l7 = bt.GC();
-    long l3 = l6;
-    long l2 = l5;
-    l1 = l4;
-    if (parama == g.a.dHc)
-    {
-      parambl = d.a(parambl, parame);
-      l3 = l6;
-      l2 = l5;
-      l1 = l4;
-      if (!bt.isNullOrNil(parambl))
-      {
-        l1 = com.tencent.mm.vfs.i.aMN(parambl);
-        parambl = d.aKR(parambl);
-        l3 = parambl.outWidth;
-        l2 = parambl.outHeight;
-      }
-    }
-    parambl = this.GAm;
-    parambl.dGW = l1;
-    parambl.dGY = l2;
-    parambl.dGX = l3;
-    this.GAm.aBj();
-    ad.i("MicroMsg.ImageGalleryAdapter", "stopWaitingImg [%d] [%s]", new Object[] { Long.valueOf(bt.aS(l7)), this.GAm.PV() });
-    this.GAm = null;
-    AppMethodBeat.o(35934);
-  }
-  
-  public final void aV(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(35919);
-    this.GAf.aV(paramInt, paramBoolean);
-    AppMethodBeat.o(35919);
-  }
-  
-  public final void bU(bl parambl)
+  public final void bX(bo parambo)
   {
     int j = 1;
     int i = 1;
     AppMethodBeat.i(35908);
-    az.arV();
+    az.ayM();
     if (!com.tencent.mm.model.c.isSDCardAvailable())
     {
-      com.tencent.mm.ui.base.t.g(this.GAa, null);
+      com.tencent.mm.ui.base.t.g(this.HZV, null);
       AppMethodBeat.o(35908);
       return;
     }
-    if (parambl.cjN())
+    if (parambo.cru())
     {
-      parambl = j.ci(parambl);
-      if (parambl == null)
+      parambo = j.cl(parambo);
+      if (parambo == null)
       {
-        ad.e("MicroMsg.ImageGalleryAdapter", "doRestransmitVideo mpShareVideoInfo should not be null");
+        ac.e("MicroMsg.ImageGalleryAdapter", "doRestransmitVideo mpShareVideoInfo should not be null");
         AppMethodBeat.o(35908);
         return;
       }
-      if (this.GAa.Bit == null) {
-        this.GAa.Bit = new com.tencent.mm.plugin.webview.ui.tools.media.d();
+      if (this.HZV.CAG == null) {
+        this.HZV.CAG = new com.tencent.mm.plugin.webview.ui.tools.media.d();
       }
-      this.GAa.Bit.gGE = parambl;
-      if (this.GAj) {}
+      this.HZV.CAG.hhf = parambo;
+      if (this.Iae) {}
       for (;;)
       {
-        parambl.gLe = this.GAa.GCg.niH;
-        localObject = com.tencent.mm.plugin.webview.ui.tools.media.c.BsS;
-        com.tencent.mm.plugin.webview.ui.tools.media.c.a(this.GAa, parambl.gKD, "", parambl.title, parambl.url, i);
+        parambo.hlE = this.HZV.Ica.nLA;
+        localObject = com.tencent.mm.plugin.webview.ui.tools.media.c.CKY;
+        com.tencent.mm.plugin.webview.ui.tools.media.c.a(this.HZV, parambo.hld, "", parambo.title, parambo.url, i);
         AppMethodBeat.o(35908);
         return;
         i = 0;
       }
     }
-    s locals = com.tencent.mm.modelvideo.u.Ae(parambl.field_imgPath);
+    s locals = com.tencent.mm.modelvideo.u.Ej(parambo.field_imgPath);
     if (locals == null)
     {
-      ad.e("MicroMsg.ImageGalleryAdapter", "videoInfo should not be null");
+      ac.e("MicroMsg.ImageGalleryAdapter", "videoInfo should not be null");
       AppMethodBeat.o(35908);
       return;
     }
-    Object localObject = new Intent(this.GAa, MsgRetransmitUI.class);
-    ((Intent)localObject).putExtra("Retr_length", locals.gOY);
-    ((Intent)localObject).putExtra("Retr_File_Name", parambl.field_imgPath);
-    ((Intent)localObject).putExtra("Retr_video_isexport", locals.hAl);
+    Object localObject = new Intent(this.HZV, MsgRetransmitUI.class);
+    ((Intent)localObject).putExtra("Retr_length", locals.hpy);
+    ((Intent)localObject).putExtra("Retr_File_Name", parambo.field_imgPath);
+    ((Intent)localObject).putExtra("Retr_video_isexport", locals.iaM);
     i = j;
-    if (bO(parambl)) {
+    if (bR(parambo)) {
       i = 11;
     }
     ((Intent)localObject).putExtra("Retr_Msg_Type", i);
-    ((Intent)localObject).putExtra("Retr_Msg_Id", parambl.field_msgId);
+    ((Intent)localObject).putExtra("Retr_Msg_Id", parambo.field_msgId);
     ((Intent)localObject).putExtra("Retr_From", "gallery");
-    parambl = this.GAa;
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(parambl, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestransmitVideo", "(Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    parambl.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
-    com.tencent.mm.hellhoundlib.a.a.a(parambl, "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestransmitVideo", "(Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    parambo = this.HZV;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(parambo, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestransmitVideo", "(Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    parambo.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    com.tencent.mm.hellhoundlib.a.a.a(parambo, "com/tencent/mm/ui/chatting/gallery/ImageGalleryAdapter", "doRestransmitVideo", "(Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(35908);
   }
   
-  public final void bV(bl parambl)
+  public final void bY(bo parambo)
   {
     AppMethodBeat.i(35910);
-    com.tencent.mm.aw.e locale = d.k(parambl);
-    if ((parambl == null) || (parambl.field_msgId == 0L) || (locale == null) || (locale.deI == 0L))
+    com.tencent.mm.av.e locale = d.k(parambo);
+    if ((parambo == null) || (parambo.field_msgId == 0L) || (locale == null) || (locale.dcd == 0L))
     {
       localObject = new StringBuilder("doRestransmitMsg fail, msgLocalId = ");
-      if (parambl == null)
+      if (parambo == null)
       {
-        parambl = "null";
-        localObject = ((StringBuilder)localObject).append(parambl).append(", imgLocalId = ");
+        parambo = "null";
+        localObject = ((StringBuilder)localObject).append(parambo).append(", imgLocalId = ");
         if (locale != null) {
           break label108;
         }
       }
       label108:
-      for (parambl = "null";; parambl = Long.valueOf(locale.deI))
+      for (parambo = "null";; parambo = Long.valueOf(locale.dcd))
       {
-        ad.e("MicroMsg.ImageGalleryAdapter", parambl);
+        ac.e("MicroMsg.ImageGalleryAdapter", parambo);
         AppMethodBeat.o(35910);
         return;
-        parambl = Long.valueOf(parambl.field_msgId);
+        parambo = Long.valueOf(parambo.field_msgId);
         break;
       }
     }
-    Object localObject = d.a(parambl, locale);
-    if (bt.isNullOrNil((String)localObject))
+    Object localObject = d.a(parambo, locale);
+    if (bs.isNullOrNil((String)localObject))
     {
-      ad.e("MicroMsg.ImageGalleryAdapter", "doRestransmitMsg fail, bigImgPath is null, msgLocalId = " + parambl.field_msgId + ", imgLocalId = " + locale.deI);
+      ac.e("MicroMsg.ImageGalleryAdapter", "doRestransmitMsg fail, bigImgPath is null, msgLocalId = " + parambo.field_msgId + ", imgLocalId = " + locale.dcd);
       AppMethodBeat.o(35910);
       return;
     }
-    o((String)localObject, c(parambl, locale), parambl.field_msgId);
+    o((String)localObject, c(parambo, locale), parambo.field_msgId);
     AppMethodBeat.o(35910);
   }
   
@@ -966,14 +988,14 @@ public final class b
   public final void detach()
   {
     AppMethodBeat.i(35917);
-    this.GAf.detach();
-    this.GAg.detach();
-    this.GAh.detach();
-    if (this.GAm != null)
+    this.Iaa.detach();
+    this.Iab.detach();
+    this.Iac.detach();
+    if (this.Iah != null)
     {
-      com.tencent.mm.g.b.a.g localg = this.GAm.Qa();
-      localg.dHb = g.a.dHd;
-      localg.aBj();
+      com.tencent.mm.g.b.a.g localg = this.Iah.PW();
+      localg.dEO = g.a.dEQ;
+      localg.aHZ();
     }
     super.detach();
     AppMethodBeat.o(35917);
@@ -982,29 +1004,29 @@ public final class b
   public final View e(int paramInt, View paramView)
   {
     AppMethodBeat.i(35915);
-    final bl localbl = YE(paramInt);
+    final bo localbo = aaP(paramInt);
     View localView;
     final k localk;
     if (paramView == null)
     {
-      localView = View.inflate(this.GAa, 2131494469, null);
+      localView = View.inflate(this.HZV, 2131494469, null);
       localk = new k(this, localView);
       localView.setTag(localk);
-      paramView = bS(localbl);
+      paramView = bV(localbo);
       localk.mPosition = paramInt;
-      localk.GDC = paramView;
-      k.aD(localk.rLd, 0);
-      switch (k.5.GAt[paramView.ordinal()])
+      localk.Idz = paramView;
+      k.aF(localk.sSS, 0);
+      switch (k.5.Iao[paramView.ordinal()])
       {
       default: 
         label108:
-        k.aD(localk.GEb, 8);
-        k.aD(localk.GEc, 8);
-        k.aD(localk.GDS, 8);
-        k.aD(localk.GDY, 8);
-        k.aD(localk.GDX, 8);
-        ad.d("MicroMsg.ImageGalleryAdapter", "position:%d, type: %s", new Object[] { Integer.valueOf(paramInt), paramView });
-        switch (8.GAt[paramView.ordinal()])
+        k.aF(localk.IdY, 8);
+        k.aF(localk.IdZ, 8);
+        k.aF(localk.IdP, 8);
+        k.aF(localk.IdV, 8);
+        k.aF(localk.IdU, 8);
+        ac.d("MicroMsg.ImageGalleryAdapter", "position:%d, type: %s", new Object[] { Integer.valueOf(paramInt), paramView });
+        switch (8.Iao[paramView.ordinal()])
         {
         }
         break;
@@ -1012,106 +1034,106 @@ public final class b
     }
     for (;;)
     {
-      this.GAl = false;
+      this.Iag = false;
       AppMethodBeat.o(35915);
       return localView;
       localk = (k)paramView.getTag();
       localView = paramView;
       break;
-      k.aD(localk.GDK, 8);
-      k.aD(localk.GDE, 8);
+      k.aF(localk.IdH, 8);
+      k.aF(localk.IdB, 8);
       break label108;
-      localk.fac();
-      k.aD(localk.GDK, 0);
-      k.aD(localk.GDE, 8);
-      if (localk.GDE == null) {
+      localk.fpS();
+      k.aF(localk.IdH, 0);
+      k.aF(localk.IdB, 8);
+      if (localk.IdB == null) {
         break label108;
       }
-      k.aD(localk.GDG, 8);
+      k.aF(localk.IdD, 8);
       break label108;
-      localk.fab();
-      k.aD(localk.GDK, 8);
-      k.aD(localk.GDE, 0);
+      localk.fpR();
+      k.aF(localk.IdH, 8);
+      k.aF(localk.IdB, 0);
       break label108;
-      k.aD(localk.rLd, 8);
-      k.aD(localk.GDK, 8);
-      k.aD(localk.GDE, 8);
+      k.aF(localk.sSS, 8);
+      k.aF(localk.IdH, 8);
+      k.aF(localk.IdB, 8);
       break label108;
-      this.GAf.a(localk, localbl, paramInt);
+      this.Iaa.a(localk, localbo, paramInt);
       if (paramInt == 100000)
       {
-        ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).af(localbl);
+        ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).af(localbo);
         continue;
-        k.aD(localk.GEb, 0);
-        k.aD(localk.GDS, 8);
-        k.aD(localk.GDX, 8);
-        k.aD(localk.GDY, 8);
-        k.aD(localk.GDO, 8);
-        final String str = l(localbl);
+        k.aF(localk.IdY, 0);
+        k.aF(localk.IdP, 8);
+        k.aF(localk.IdU, 8);
+        k.aF(localk.IdV, 8);
+        k.aF(localk.IdL, 8);
+        final String str = l(localbo);
         try
         {
-          paramView = com.tencent.mm.platformtools.u.BB(str);
+          paramView = com.tencent.mm.platformtools.u.FF(str);
           localObject = paramView;
           if (paramView == null)
           {
-            localObject = com.tencent.mm.platformtools.u.BA(com.tencent.mm.aw.o.ayF().Q(localbl.field_imgPath, true));
-            k.aD(localk.GDX, 0);
-            new com.tencent.mm.sdk.platformtools.ap().post(new Runnable()
+            localObject = com.tencent.mm.platformtools.u.FE(com.tencent.mm.av.o.aFx().R(localbo.field_imgPath, true));
+            k.aF(localk.IdU, 0);
+            new ao().post(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(191550);
-                m.a(localbl, new m.a()
+                AppMethodBeat.i(196543);
+                m.a(localbo, new m.a()
                 {
-                  public final void iL(int paramAnonymous2Int1, int paramAnonymous2Int2)
+                  public final void iY(int paramAnonymous2Int1, int paramAnonymous2Int2)
                   {
-                    AppMethodBeat.i(191549);
+                    AppMethodBeat.i(196542);
                     if (paramAnonymous2Int1 == paramAnonymous2Int2)
                     {
-                      ad.d("MicroMsg.ImageGalleryAdapter", "appmsgImg download finish! msgid: %s", new Object[] { Long.valueOf(b.7.this.gLQ.field_msgId) });
-                      k.aD(b.7.this.GAq.GDX, 8);
+                      ac.d("MicroMsg.ImageGalleryAdapter", "appmsgImg download finish! msgid: %s", new Object[] { Long.valueOf(b.7.this.hmq.field_msgId) });
+                      k.aF(b.7.this.Ial.IdU, 8);
                     }
                     try
                     {
-                      Bitmap localBitmap1 = com.tencent.mm.platformtools.u.BB(b.7.this.kkX);
+                      Bitmap localBitmap1 = com.tencent.mm.platformtools.u.FF(b.7.this.kMp);
                       if (localBitmap1 != null)
                       {
-                        b.7.this.GAq.GEb.setEnableHorLongBmpMode(false);
-                        com.tencent.mm.sdk.platformtools.p.z(b.7.this.GAq.GEb, localBitmap1.getWidth(), localBitmap1.getHeight());
-                        b.7.this.GAq.GEb.cH(localBitmap1.getWidth(), localBitmap1.getHeight());
-                        b.7.this.GAq.GEb.setImageBitmap(localBitmap1);
-                        b.7.this.GAq.GEb.invalidate();
+                        b.7.this.Ial.IdY.setEnableHorLongBmpMode(false);
+                        com.tencent.mm.sdk.platformtools.p.z(b.7.this.Ial.IdY, localBitmap1.getWidth(), localBitmap1.getHeight());
+                        b.7.this.Ial.IdY.cF(localBitmap1.getWidth(), localBitmap1.getHeight());
+                        b.7.this.Ial.IdY.setImageBitmap(localBitmap1);
+                        b.7.this.Ial.IdY.invalidate();
                       }
-                      AppMethodBeat.o(191549);
+                      AppMethodBeat.o(196542);
                       return;
                     }
                     catch (OutOfMemoryError localOutOfMemoryError)
                     {
                       for (;;)
                       {
-                        ad.w("MicroMsg.ImageGalleryAdapter", "[tomys] Oops, app img [%s] is too large, use resample version.", new Object[] { b.7.this.kkX });
+                        ac.w("MicroMsg.ImageGalleryAdapter", "[tomys] Oops, app img [%s] is too large, use resample version.", new Object[] { b.7.this.kMp });
                         Runtime.getRuntime().gc();
                         Runtime.getRuntime().runFinalization();
-                        Bitmap localBitmap2 = com.tencent.mm.platformtools.u.BA(b.7.this.kkX);
+                        Bitmap localBitmap2 = com.tencent.mm.platformtools.u.FE(b.7.this.kMp);
                       }
                     }
                   }
                 });
-                AppMethodBeat.o(191550);
+                AppMethodBeat.o(196543);
               }
             });
           }
           if (localObject == null)
           {
-            ad.w("MicroMsg.ImageGalleryAdapter", "get image fail");
-            localk.GEb.setVisibility(8);
-            localk.faa().GDY.setVisibility(0);
-            localk.faa().GEa.setImageResource(2131690686);
-            localk.faa().GDZ.setText(this.GAa.getString(2131760324));
+            ac.w("MicroMsg.ImageGalleryAdapter", "get image fail");
+            localk.IdY.setVisibility(8);
+            localk.fpQ().IdV.setVisibility(0);
+            localk.fpQ().IdX.setImageResource(2131690686);
+            localk.fpQ().IdW.setText(this.HZV.getString(2131760324));
             if (paramInt != 100000) {
               continue;
             }
-            ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).af(localbl);
+            ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).af(localbo);
           }
         }
         catch (OutOfMemoryError paramView)
@@ -1119,128 +1141,128 @@ public final class b
           for (;;)
           {
             Object localObject;
-            ad.w("MicroMsg.ImageGalleryAdapter", "[tomys] Oops, app img [%s] is too large, use resample version.", new Object[] { str });
+            ac.w("MicroMsg.ImageGalleryAdapter", "[tomys] Oops, app img [%s] is too large, use resample version.", new Object[] { str });
             Runtime.getRuntime().gc();
             Runtime.getRuntime().runFinalization();
-            paramView = com.tencent.mm.platformtools.u.BA(str);
+            paramView = com.tencent.mm.platformtools.u.FE(str);
             continue;
-            localk.GEb.setEnableHorLongBmpMode(false);
-            com.tencent.mm.sdk.platformtools.p.z(localk.GEb, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-            localk.GEb.cH(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-            localk.GEb.setImageBitmap((Bitmap)localObject);
-            localk.GEb.invalidate();
+            localk.IdY.setEnableHorLongBmpMode(false);
+            com.tencent.mm.sdk.platformtools.p.z(localk.IdY, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+            localk.IdY.cF(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+            localk.IdY.setImageBitmap((Bitmap)localObject);
+            localk.IdY.invalidate();
           }
         }
-        this.GAg.a(localk, localbl, paramInt);
+        this.Iab.a(localk, localbo, paramInt);
         continue;
-        this.GAh.a(localk, localbl, paramInt);
+        this.Iac.a(localk, localbo, paramInt);
       }
     }
   }
   
-  public final void eZq()
+  public final int firstItemPosForDetermine()
+  {
+    return 100000 - this.HZW.Iaq;
+  }
+  
+  public final void fpf()
   {
     AppMethodBeat.i(35895);
-    this.GAb.eZq();
+    this.HZW.fpf();
     AppMethodBeat.o(35895);
   }
   
-  public final bl eZr()
+  public final bo fpg()
   {
     AppMethodBeat.i(35925);
-    bl localbl = YE(this.GAa.getCurrentItem());
+    bo localbo = aaP(this.HZV.getCurrentItem());
     AppMethodBeat.o(35925);
-    return localbl;
+    return localbo;
   }
   
-  public final k eZs()
+  public final k fph()
   {
     AppMethodBeat.i(35926);
-    Object localObject2 = this.GAf.YW(this.GAa.getCurrentItem());
+    Object localObject2 = this.Iaa.abi(this.HZV.getCurrentItem());
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = this.GAg.YW(this.GAa.getCurrentItem());
+      localObject1 = this.Iab.abi(this.HZV.getCurrentItem());
     }
     localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = this.GAh.YW(this.GAa.getCurrentItem());
+      localObject2 = this.Iac.abi(this.HZV.getCurrentItem());
     }
     AppMethodBeat.o(35926);
     return localObject2;
   }
   
-  public final void eZt()
+  public final void fpi()
   {
     AppMethodBeat.i(35929);
-    this.GAg.onResume();
+    this.Iab.onResume();
     AppMethodBeat.o(35929);
   }
   
-  public final int firstItemPosForDetermine()
+  public final com.tencent.mm.av.e g(bo parambo, boolean paramBoolean)
   {
-    return 100000 - this.GAb.GAv;
+    AppMethodBeat.i(35896);
+    parambo = this.Iaa.g(parambo, paramBoolean);
+    AppMethodBeat.o(35896);
+    return parambo;
   }
   
   public final int getCount()
   {
-    a locala = this.GAb;
-    return locala.fwP - locala.GAv + 100000 + 1;
+    a locala = this.HZW;
+    return locala.fAw - locala.Iaq + 100000 + 1;
   }
   
   public final int getRealCount()
   {
-    return this.GAb.fwP;
+    return this.HZW.fAw;
   }
   
-  public final com.tencent.mm.aw.e h(bl parambl, boolean paramBoolean)
-  {
-    AppMethodBeat.i(35896);
-    parambl = this.GAf.h(parambl, paramBoolean);
-    AppMethodBeat.o(35896);
-    return parambl;
-  }
-  
-  public final void i(bl parambl, boolean paramBoolean)
+  public final void h(bo parambo, boolean paramBoolean)
   {
     int i = 2;
     AppMethodBeat.i(35933);
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(35933);
       return;
     }
-    Object localObject = eZr();
-    if ((localObject == null) || (((du)localObject).field_msgId != parambl.field_msgId))
+    Object localObject = fpg();
+    if ((localObject == null) || (((dy)localObject).field_msgId != parambo.field_msgId))
     {
-      ad.d("MicroMsg.ImageGalleryAdapter", "it is not curr msg[%d] handle nothing. arg msg[%d]", new Object[] { Long.valueOf(((du)localObject).field_msgId), Long.valueOf(parambl.field_msgId) });
+      ac.d("MicroMsg.ImageGalleryAdapter", "it is not curr msg[%d] handle nothing. arg msg[%d]", new Object[] { Long.valueOf(((dy)localObject).field_msgId), Long.valueOf(parambo.field_msgId) });
       AppMethodBeat.o(35933);
       return;
     }
-    long l = parambl.field_msgSvrId;
-    if ((this.GAm != null) && ((this.GAm.dGT != l) || (this.GAm.dGV != paramBoolean)))
+    long l = parambo.field_msgSvrId;
+    if ((this.Iah != null) && ((this.Iah.dEG != l) || (this.Iah.dEI != paramBoolean)))
     {
-      localObject = this.GAm.Qa();
-      ((com.tencent.mm.g.b.a.g)localObject).dHb = g.a.dHd;
-      ((com.tencent.mm.g.b.a.g)localObject).aBj();
+      localObject = this.Iah.PW();
+      ((com.tencent.mm.g.b.a.g)localObject).dEO = g.a.dEQ;
+      ((com.tencent.mm.g.b.a.g)localObject).aHZ();
     }
-    this.GAm = new com.tencent.mm.g.b.a.g();
-    this.GAm.PZ();
-    localObject = this.GAm;
-    ((com.tencent.mm.g.b.a.g)localObject).dGT = l;
-    ((com.tencent.mm.g.b.a.g)localObject).dGU = parambl.field_createTime;
-    ((com.tencent.mm.g.b.a.g)localObject).dGV = paramBoolean;
-    if (w.pF(this.fod)) {
-      i = com.tencent.mm.model.q.rY(this.fod);
+    this.Iah = new com.tencent.mm.g.b.a.g();
+    this.Iah.PV();
+    localObject = this.Iah;
+    ((com.tencent.mm.g.b.a.g)localObject).dEG = l;
+    ((com.tencent.mm.g.b.a.g)localObject).dEH = parambo.field_createTime;
+    ((com.tencent.mm.g.b.a.g)localObject).dEI = paramBoolean;
+    if (w.sQ(this.frx)) {
+      i = com.tencent.mm.model.q.wb(this.frx);
     }
-    parambl = this.GAm;
-    parambl.dGR = parambl.t("ChatName", this.fod, true);
-    parambl.dGS = i;
+    parambo = this.Iah;
+    parambo.dEE = parambo.t("ChatName", this.frx, true);
+    parambo.dEF = i;
     AppMethodBeat.o(35933);
   }
   
   public final int lastItemPosForDetermine()
   {
-    return 100000 - this.GAb.GAv + this.GAb.fwP - 1;
+    return 100000 - this.HZW.Iaq + this.HZW.fAw - 1;
   }
   
   public final void notifyDataSetChanged()
@@ -1253,64 +1275,64 @@ public final class b
   public final void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(35893);
-    if ((this.GAf != null) && (j(YE(paramInt)))) {
-      this.GAf.GBu.onPageSelected(paramInt);
+    if ((this.Iaa != null) && (j(aaP(paramInt)))) {
+      this.Iaa.Ibp.onPageSelected(paramInt);
     }
     AppMethodBeat.o(35893);
   }
   
   public static final class a
   {
-    private b GAA;
-    public HashMap<Long, com.tencent.mm.aw.e> GAB;
-    public HashMap<Long, com.tencent.mm.aw.e> GAC;
-    private List<bl> GAu;
-    int GAv;
-    protected int GAw;
-    protected int GAx;
-    protected int GAy;
-    protected long GAz;
-    protected boolean aRL;
+    private List<bo> Iap;
+    int Iaq;
+    protected int Iar;
+    protected int Ias;
+    protected int Iat;
+    protected long Iau;
+    private b Iav;
+    public HashMap<Long, com.tencent.mm.av.e> Iaw;
+    public HashMap<Long, com.tencent.mm.av.e> Iax;
+    protected boolean aSG;
+    int fAw;
     private int fromScene;
-    int fwP;
-    com.tencent.mm.sdk.platformtools.ap handler;
+    ao handler;
     private int min;
     private String talker;
     
     public a(final long paramLong, String paramString, final b paramb, Boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(35881);
-      this.aRL = false;
-      this.GAB = new HashMap();
-      this.GAC = new HashMap();
-      this.handler = new com.tencent.mm.sdk.platformtools.ap();
+      this.aSG = false;
+      this.Iaw = new HashMap();
+      this.Iax = new HashMap();
+      this.handler = new ao();
       this.talker = paramString;
-      this.GAu = new LinkedList();
-      this.GAA = paramb;
+      this.Iap = new LinkedList();
+      this.Iav = paramb;
       this.fromScene = paramInt;
-      if (paramb.GAj)
+      if (paramb.Iae)
       {
-        paramString = j.b(paramString, paramb.GAa);
-        this.GAu.add(paramString);
+        paramString = j.e(paramString, paramb.HZV);
+        this.Iap.add(paramString);
         AppMethodBeat.o(35881);
         return;
       }
-      az.arV();
-      paramString = com.tencent.mm.model.c.apO().rm(paramLong);
+      az.ayM();
+      paramString = com.tencent.mm.model.c.awD().vP(paramLong);
       if (paramString.field_msgId == 0L)
       {
-        Assert.assertTrue("MicroMsg.AutoList <init>, currentMsg does not exist, currentMsgId = " + paramLong + ", stack = " + bt.eGN(), false);
+        Assert.assertTrue("MicroMsg.AutoList <init>, currentMsg does not exist, currentMsgId = " + paramLong + ", stack = " + bs.eWi(), false);
         AppMethodBeat.o(35881);
         return;
       }
-      this.GAu.add(paramString);
+      this.Iap.add(paramString);
       if (this.fromScene == 1) {}
       for (paramInt = i; paramInt != 0; paramInt = 0)
       {
         AppMethodBeat.o(35881);
         return;
       }
-      az.afE().ax(new Runnable()
+      az.agU().az(new Runnable()
       {
         public final void run()
         {
@@ -1323,8 +1345,8 @@ public final class b
               {
                 AppMethodBeat.i(35878);
                 b.a.a(b.a.this);
-                if (b.a.1.this.GAF.GAi != null) {
-                  b.a.1.this.GAF.GAi.rq();
+                if (b.a.1.this.IaA.Iad != null) {
+                  b.a.1.this.IaA.Iad.rB();
                 }
                 AppMethodBeat.o(35878);
               }
@@ -1333,17 +1355,17 @@ public final class b
           AppMethodBeat.o(35879);
         }
       });
-      paramb.GAa.GCD = new ImageGalleryUI.a()
+      paramb.HZV.Icz = new ImageGalleryUI.a()
       {
         public final void o(Boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(35880);
-          ad.i("MicroMsg.AutoList", "isPlaying : ".concat(String.valueOf(paramAnonymousBoolean)));
+          ac.i("MicroMsg.AutoList", "isPlaying : ".concat(String.valueOf(paramAnonymousBoolean)));
           if (!paramAnonymousBoolean.booleanValue())
           {
             b.a.a(b.a.this);
-            if (paramb.GAi != null) {
-              paramb.GAi.rq();
+            if (paramb.Iad != null) {
+              paramb.Iad.rB();
             }
           }
           AppMethodBeat.o(35880);
@@ -1355,42 +1377,42 @@ public final class b
     private void J(long paramLong, boolean paramBoolean)
     {
       AppMethodBeat.i(35885);
-      ad.i("MicroMsg.AutoList", "start loadMsgInfo, currentMsgId = " + paramLong + ", forward = " + paramBoolean);
-      if (b.qbB) {
-        az.arV();
+      ac.i("MicroMsg.AutoList", "start loadMsgInfo, currentMsgId = " + paramLong + ", forward = " + paramBoolean);
+      if (b.qKh) {
+        az.ayM();
       }
-      for (List localList = com.tencent.mm.model.c.apP().b(this.talker, b.mUQ, paramLong, paramBoolean); (localList == null) || (localList.size() == 0); localList = com.tencent.mm.model.c.apO().g(this.talker, paramLong, paramBoolean))
+      for (List localList = com.tencent.mm.model.c.awE().b(this.talker, b.nxq, paramLong, paramBoolean); (localList == null) || (localList.size() == 0); localList = com.tencent.mm.model.c.awD().g(this.talker, paramLong, paramBoolean))
       {
-        ad.w("MicroMsg.AutoList", "loadMsgInfo fail, addedMsgList is null, forward = ".concat(String.valueOf(paramBoolean)));
+        ac.w("MicroMsg.AutoList", "loadMsgInfo fail, addedMsgList is null, forward = ".concat(String.valueOf(paramBoolean)));
         AppMethodBeat.o(35885);
         return;
-        az.arV();
+        az.ayM();
       }
-      ad.i("MicroMsg.AutoList", "loadMsgInfo done, new added list, size = " + localList.size() + ", forward = " + paramBoolean);
+      ac.i("MicroMsg.AutoList", "loadMsgInfo done, new added list, size = " + localList.size() + ", forward = " + paramBoolean);
       paramLong = System.currentTimeMillis();
-      hG(localList);
-      ad.i("MicroMsg.AutoList", "loadImgInfo spent : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - paramLong) });
+      hT(localList);
+      ac.i("MicroMsg.AutoList", "loadImgInfo spent : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - paramLong) });
       if (paramBoolean)
       {
-        this.GAu.addAll(localList);
+        this.Iap.addAll(localList);
         AppMethodBeat.o(35885);
         return;
       }
-      this.GAu.addAll(0, localList);
+      this.Iap.addAll(0, localList);
       this.min -= localList.size();
       if (this.min < 0)
       {
-        ad.e("MicroMsg.AutoList", "loadMsgInfo fail, min should not be minus, min = " + this.min);
+        ac.e("MicroMsg.AutoList", "loadMsgInfo fail, min should not be minus, min = " + this.min);
         AppMethodBeat.o(35885);
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder("min from ");
       int i = this.min;
-      ad.i("MicroMsg.AutoList", localList.size() + i + " to " + this.min);
+      ac.i("MicroMsg.AutoList", localList.size() + i + " to " + this.min);
       AppMethodBeat.o(35885);
     }
     
-    private void hG(List<bl> paramList)
+    private void hT(List<bo> paramList)
     {
       AppMethodBeat.i(35882);
       ArrayList localArrayList1 = new ArrayList();
@@ -1398,88 +1420,88 @@ public final class b
       int i = 0;
       while (i < paramList.size())
       {
-        if (b.j((bl)paramList.get(i)))
+        if (b.j((bo)paramList.get(i)))
         {
-          localArrayList1.add(Long.valueOf(((bl)paramList.get(i)).field_msgSvrId));
-          if (((bl)paramList.get(i)).field_isSend == 1) {
-            localArrayList2.add(Long.valueOf(((bl)paramList.get(i)).field_msgId));
+          localArrayList1.add(Long.valueOf(((bo)paramList.get(i)).field_msgSvrId));
+          if (((bo)paramList.get(i)).field_isSend == 1) {
+            localArrayList2.add(Long.valueOf(((bo)paramList.get(i)).field_msgId));
           }
         }
         i += 1;
       }
-      this.GAB.putAll(com.tencent.mm.aw.o.ayF().a((Long[])localArrayList1.toArray(new Long[0])));
-      this.GAC.putAll(com.tencent.mm.aw.o.ayF().b((Long[])localArrayList2.toArray(new Long[0])));
+      this.Iaw.putAll(com.tencent.mm.av.o.aFx().a((Long[])localArrayList1.toArray(new Long[0])));
+      this.Iax.putAll(com.tencent.mm.av.o.aFx().b((Long[])localArrayList2.toArray(new Long[0])));
       AppMethodBeat.o(35882);
     }
     
-    public final int Zh(int paramInt)
-    {
-      return paramInt - 100000 + this.GAv;
-    }
-    
-    public final bl Zi(int paramInt)
-    {
-      AppMethodBeat.i(35884);
-      paramInt = Zh(paramInt);
-      int i = this.min + this.GAu.size() - 1;
-      if ((paramInt < this.min) || (paramInt > i))
-      {
-        ad.e("MicroMsg.AutoList", "get, invalid pos " + paramInt + ", min = " + this.min + ", max = " + i);
-        AppMethodBeat.o(35884);
-        return null;
-      }
-      ad.d("MicroMsg.AutoList", "get, pos = ".concat(String.valueOf(paramInt)));
-      if (paramInt == this.min)
-      {
-        localbl = (bl)this.GAu.get(0);
-        if (this.aRL) {
-          J(localbl.field_msgId, false);
-        }
-        AppMethodBeat.o(35884);
-        return localbl;
-      }
-      if ((paramInt == i) && (i < this.fwP - 1))
-      {
-        localbl = (bl)this.GAu.get(this.GAu.size() - 1);
-        if (this.aRL) {
-          J(localbl.field_msgId, true);
-        }
-        AppMethodBeat.o(35884);
-        return localbl;
-      }
-      bl localbl = (bl)this.GAu.get(paramInt - this.min);
-      AppMethodBeat.o(35884);
-      return localbl;
-    }
-    
-    public final void a(long paramLong, com.tencent.mm.aw.e parame, boolean paramBoolean)
+    public final void a(long paramLong, com.tencent.mm.av.e parame, boolean paramBoolean)
     {
       AppMethodBeat.i(35883);
       if (paramBoolean)
       {
-        this.GAB.put(Long.valueOf(paramLong), parame);
+        this.Iaw.put(Long.valueOf(paramLong), parame);
         AppMethodBeat.o(35883);
         return;
       }
-      this.GAC.put(Long.valueOf(paramLong), parame);
+      this.Iax.put(Long.valueOf(paramLong), parame);
       AppMethodBeat.o(35883);
     }
     
-    public final void eZq()
+    public final int abt(int paramInt)
     {
-      this.aRL = false;
+      return paramInt - 100000 + this.Iaq;
+    }
+    
+    public final bo abu(int paramInt)
+    {
+      AppMethodBeat.i(35884);
+      paramInt = abt(paramInt);
+      int i = this.min + this.Iap.size() - 1;
+      if ((paramInt < this.min) || (paramInt > i))
+      {
+        ac.e("MicroMsg.AutoList", "get, invalid pos " + paramInt + ", min = " + this.min + ", max = " + i);
+        AppMethodBeat.o(35884);
+        return null;
+      }
+      ac.d("MicroMsg.AutoList", "get, pos = ".concat(String.valueOf(paramInt)));
+      if (paramInt == this.min)
+      {
+        localbo = (bo)this.Iap.get(0);
+        if (this.aSG) {
+          J(localbo.field_msgId, false);
+        }
+        AppMethodBeat.o(35884);
+        return localbo;
+      }
+      if ((paramInt == i) && (i < this.fAw - 1))
+      {
+        localbo = (bo)this.Iap.get(this.Iap.size() - 1);
+        if (this.aSG) {
+          J(localbo.field_msgId, true);
+        }
+        AppMethodBeat.o(35884);
+        return localbo;
+      }
+      bo localbo = (bo)this.Iap.get(paramInt - this.min);
+      AppMethodBeat.o(35884);
+      return localbo;
+    }
+    
+    public final void fpf()
+    {
+      this.aSG = false;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(35886);
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("AutoList, Size = " + this.GAu.size());
+      ((StringBuilder)localObject).append("AutoList, Size = " + this.Iap.size());
       ((StringBuilder)localObject).append("; Content = {");
-      Iterator localIterator = this.GAu.iterator();
+      Iterator localIterator = this.Iap.iterator();
       while (localIterator.hasNext())
       {
-        ((StringBuilder)localObject).append(((bl)localIterator.next()).field_msgId);
+        ((StringBuilder)localObject).append(((bo)localIterator.next()).field_msgId);
         ((StringBuilder)localObject).append(",");
       }
       ((StringBuilder)localObject).append("}");
@@ -1494,12 +1516,12 @@ public final class b
     static
     {
       AppMethodBeat.i(35891);
-      GAI = new b("unkown", 0);
-      GAJ = new b("image", 1);
-      GAK = new b("video", 2);
-      GAL = new b("sight", 3);
-      GAM = new b("appimage", 4);
-      GAN = new b[] { GAI, GAJ, GAK, GAL, GAM };
+      IaD = new b("unkown", 0);
+      IaE = new b("image", 1);
+      IaF = new b("video", 2);
+      IaG = new b("sight", 3);
+      IaH = new b("appimage", 4);
+      IaI = new b[] { IaD, IaE, IaF, IaG, IaH };
       AppMethodBeat.o(35891);
     }
     
@@ -1508,12 +1530,12 @@ public final class b
   
   public static abstract interface c
   {
-    public abstract void rq();
+    public abstract void rB();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.b
  * JD-Core Version:    0.7.0.1
  */

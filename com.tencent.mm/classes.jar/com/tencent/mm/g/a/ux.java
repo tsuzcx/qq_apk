@@ -1,5 +1,6 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ux
@@ -12,8 +13,10 @@ public final class ux
   
   private ux(byte paramByte)
   {
-    this.ESR = false;
+    AppMethodBeat.i(43443);
+    this.Gqe = false;
     this.callback = null;
+    AppMethodBeat.o(43443);
   }
 }
 

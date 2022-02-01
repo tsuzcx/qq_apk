@@ -9,14 +9,14 @@ public abstract class a
 {
   protected String TAG = "SnsAd.BaseScene";
   protected Context mContext;
-  protected final int xYR = 20;
-  protected int xYS;
-  protected int xYT;
-  protected int xYU;
-  private long xYV = 0L;
-  protected ArrayList<g> xYW = new ArrayList();
+  protected final int zlO = 20;
+  protected int zlP;
+  protected int zlQ;
+  protected int zlR;
+  private long zlS = 0L;
+  protected ArrayList<h> zlT = new ArrayList();
   
-  public static Paint dEq()
+  public static Paint dSO()
   {
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
@@ -26,24 +26,24 @@ public abstract class a
   
   public final void clear()
   {
-    this.xYW.clear();
-    this.xYV = 0L;
+    this.zlT.clear();
+    this.zlS = 0L;
   }
   
-  protected abstract int dEr();
+  protected abstract int dSP();
   
   public final void draw(Canvas paramCanvas)
   {
-    if (this.xYW.isEmpty()) {}
+    if (this.zlT.isEmpty()) {}
     for (;;)
     {
       return;
-      if (this.xYV == 0L) {
-        this.xYV = System.currentTimeMillis();
+      if (this.zlS == 0L) {
+        this.zlS = System.currentTimeMillis();
       }
       System.currentTimeMillis();
-      int j = dEr();
-      int k = this.xYW.size();
+      int j = dSP();
+      int k = this.zlT.size();
       int i = j;
       if (j > k) {
         i = k;
@@ -51,7 +51,7 @@ public abstract class a
       j = 0;
       while (j < i)
       {
-        ((g)this.xYW.get(j)).draw(paramCanvas);
+        ((h)this.zlT.get(j)).draw(paramCanvas);
         j += 1;
       }
     }

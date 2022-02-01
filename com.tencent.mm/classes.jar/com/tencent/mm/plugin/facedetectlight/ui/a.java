@@ -6,31 +6,31 @@ import android.view.ViewGroup;
 
 public abstract class a
 {
-  protected ViewGroup Bf;
+  protected ViewGroup Cd;
   public String TAG = "FaceReflectBaseUI";
-  protected com.tencent.mm.plugin.facedetectlight.ui.container.a pYb;
+  protected com.tencent.mm.plugin.facedetectlight.ui.container.a qGI;
   
   public a(ViewGroup paramViewGroup, com.tencent.mm.plugin.facedetectlight.ui.container.a parama)
   {
-    this.Bf = paramViewGroup;
-    this.pYb = parama;
+    this.Cd = paramViewGroup;
+    this.qGI = parama;
     this.TAG = getClass().getSimpleName();
-    LayoutInflater.from(this.Bf.getContext()).inflate(chg(), this.Bf, true);
+    LayoutInflater.from(this.Cd.getContext()).inflate(coN(), this.Cd, true);
     initView();
   }
   
-  public abstract int chg();
+  public abstract int coN();
   
   public final View findViewById(int paramInt)
   {
-    return this.Bf.findViewById(paramInt);
+    return this.Cd.findViewById(paramInt);
   }
   
   public abstract void initView();
   
   public final void setVisibility(int paramInt)
   {
-    this.Bf.setVisibility(paramInt);
+    this.Cd.setVisibility(paramInt);
   }
 }
 

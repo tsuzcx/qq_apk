@@ -9,38 +9,38 @@ import java.util.concurrent.Executors;
 
 public final class b
 {
-  private static b ItG;
-  public Map<Long, String> Ipf;
-  public Map<Long, Object> Ipg;
-  public Map<String, List<Long>> Iph;
-  private int[] Ipj;
-  private a ItH;
-  public Object vNi;
-  private ExecutorService vNk;
+  private static b JVp;
+  public Map<Long, String> JQP;
+  public Map<Long, Object> JQQ;
+  public Map<String, List<Long>> JQR;
+  private int[] JQT;
+  private a JVq;
+  public Object wXD;
+  private ExecutorService wXF;
   
   static
   {
     AppMethodBeat.i(3557);
-    ItG = new b();
+    JVp = new b();
     AppMethodBeat.o(3557);
   }
   
   private b()
   {
     AppMethodBeat.i(3556);
-    this.Ipj = new int[] { 2, 1 };
-    this.Ipf = new HashMap();
-    this.Ipg = new HashMap();
-    this.Iph = new HashMap();
-    this.vNi = new Object();
-    this.ItH = new a("FileDecodeQueue");
-    this.vNk = Executors.newSingleThreadExecutor();
+    this.JQT = new int[] { 2, 1 };
+    this.JQP = new HashMap();
+    this.JQQ = new HashMap();
+    this.JQR = new HashMap();
+    this.wXD = new Object();
+    this.JVq = new a("FileDecodeQueue");
+    this.wXF = Executors.newSingleThreadExecutor();
     AppMethodBeat.o(3556);
   }
   
-  public static b fmK()
+  public static b fDa()
   {
-    return ItG;
+    return JVp;
   }
 }
 

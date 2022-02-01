@@ -9,17 +9,17 @@ import com.tencent.mm.ui.chatting.c.ab;
 public abstract interface y
   extends ab
 {
-  public abstract void YO(int paramInt);
-  
   public abstract void a(Button paramButton, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2);
   
-  public abstract String aKK(String paramString);
+  public abstract String aQn(String paramString);
   
-  public abstract void bm(Intent paramIntent);
+  public abstract void aaZ(int paramInt);
   
-  public abstract boolean eYj();
+  public abstract void bn(Intent paramIntent);
   
-  public abstract boolean eYk();
+  public abstract boolean fnV();
+  
+  public abstract boolean fnW();
   
   public abstract void g(i parami);
 }

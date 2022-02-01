@@ -10,12 +10,12 @@ import java.util.List;
 public final class c
   implements b
 {
-  private final List<d.a> Iro;
+  private final List<d.a> JSY;
   
   public c()
   {
     AppMethodBeat.i(138344);
-    this.Iro = new ArrayList();
+    this.JSY = new ArrayList();
     AppMethodBeat.o(138344);
   }
   
@@ -27,7 +27,7 @@ public final class c
       AppMethodBeat.o(138345);
       return;
     }
-    if ((TextUtils.isEmpty(parama.Irw)) || (!"u:r:zygote:s0".equals(parama.Irw)))
+    if ((TextUtils.isEmpty(parama.JTg)) || (!"u:r:zygote:s0".equals(parama.JTg)))
     {
       AppMethodBeat.o(138345);
       return;
@@ -38,15 +38,15 @@ public final class c
       return;
     }
     new StringBuilder("JavaProcessAnalyzer match : ").append(parama.toString());
-    h.fmy();
-    this.Iro.add(parama);
+    h.fCO();
+    this.JSY.add(parama);
     AppMethodBeat.o(138345);
   }
   
-  public final boolean fmd()
+  public final boolean fCu()
   {
     AppMethodBeat.i(138346);
-    if (this.Iro.size() > 0)
+    if (this.JSY.size() > 0)
     {
       AppMethodBeat.o(138346);
       return true;
@@ -57,7 +57,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.a.c
  * JD-Core Version:    0.7.0.1
  */

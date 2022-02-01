@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.gif;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class MMWXGFJNI
 {
@@ -18,22 +18,22 @@ public class MMWXGFJNI
     AppMethodBeat.i(104681);
     mIsInit = false;
     mECode = -1;
-    ad.i("MicroMsg.JNI.MMWXGF", "static MMWXGFJNI");
+    ac.i("MicroMsg.JNI.MMWXGF", "static MMWXGFJNI");
     if (!mIsInit)
     {
-      String str = b.ahY() + "lib/libvoipCodec.so";
+      String str = b.aoY() + "lib/libvoipCodec.so";
       int i = nativeInit(str);
       mECode = i;
       if (i >= 0) {}
       for (boolean bool = true;; bool = false)
       {
         mIsInit = bool;
-        ad.i("MicroMsg.JNI.MMWXGF", "native init MMWXGF mECode:%d result:%b :%s", new Object[] { Integer.valueOf(mECode), Boolean.valueOf(mIsInit), str });
+        ac.i("MicroMsg.JNI.MMWXGF", "native init MMWXGF mECode:%d result:%b :%s", new Object[] { Integer.valueOf(mECode), Boolean.valueOf(mIsInit), str });
         AppMethodBeat.o(104681);
         return;
       }
     }
-    ad.d("MicroMsg.JNI.MMWXGF", "MMWXGF has init.");
+    ac.d("MicroMsg.JNI.MMWXGF", "MMWXGF has init.");
     AppMethodBeat.o(104681);
   }
   
@@ -88,7 +88,7 @@ public class MMWXGFJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.MMWXGFJNI
  * JD-Core Version:    0.7.0.1
  */

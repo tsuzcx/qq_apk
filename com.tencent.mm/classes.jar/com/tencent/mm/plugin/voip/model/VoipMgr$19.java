@@ -4,8 +4,8 @@ import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class VoipMgr$19
   extends PhoneStateListener
@@ -14,22 +14,22 @@ final class VoipMgr$19
   
   public final void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
   {
-    AppMethodBeat.i(192029);
+    AppMethodBeat.i(208352);
     super.onSignalStrengthsChanged(paramSignalStrength);
     super.onSignalStrengthsChanged(paramSignalStrength);
     paramSignalStrength = paramSignalStrength.toString().split(" ");
     try
     {
-      if ((VoipMgr.i(this.zlq).getNetworkType() == 13) && (paramSignalStrength.length > 9)) {
-        VoipMgr.aEb()[0] = bt.aGh(paramSignalStrength[9]);
+      if ((VoipMgr.i(this.AEb).getNetworkType() == 13) && (paramSignalStrength.length > 9)) {
+        VoipMgr.aKS()[0] = bs.aLy(paramSignalStrength[9]);
       }
-      AppMethodBeat.o(192029);
+      AppMethodBeat.o(208352);
       return;
     }
     catch (Exception paramSignalStrength)
     {
-      ad.printErrStackTrace("MicroMsg.Voip.VoipMgr", paramSignalStrength, "", new Object[0]);
-      AppMethodBeat.o(192029);
+      ac.printErrStackTrace("MicroMsg.Voip.VoipMgr", paramSignalStrength, "", new Object[0]);
+      AppMethodBeat.o(208352);
     }
   }
 }

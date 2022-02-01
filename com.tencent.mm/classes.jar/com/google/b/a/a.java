@@ -2,249 +2,249 @@ package com.google.b.a;
 
 public final class a
 {
-  private int bIJ;
-  private int bIK;
-  private int bIL;
-  private int bIM;
-  private int bIN = 2147483647;
-  private int bIO;
-  private int bIP = 64;
-  private int bIQ = 67108864;
+  private int bGr;
+  private int bGs;
+  private int bGt;
+  private int bGu;
+  private int bGv = 2147483647;
+  private int bGw;
+  private int bGx = 64;
+  private int bGy = 67108864;
   private final byte[] buffer;
   private int bufferSize;
   
   a(byte[] paramArrayOfByte, int paramInt)
   {
     this.buffer = paramArrayOfByte;
-    this.bIJ = 0;
+    this.bGr = 0;
     this.bufferSize = (paramInt + 0);
-    this.bIL = 0;
+    this.bGt = 0;
   }
   
-  private byte[] fU(int paramInt)
+  private byte[] fG(int paramInt)
   {
     if (paramInt < 0) {
-      throw d.xY();
+      throw d.xL();
     }
-    if (this.bIL + paramInt > this.bIN)
+    if (this.bGt + paramInt > this.bGv)
     {
-      fV(this.bIN - this.bIL);
-      throw d.xX();
+      fH(this.bGv - this.bGt);
+      throw d.xK();
     }
-    if (paramInt <= this.bufferSize - this.bIL)
+    if (paramInt <= this.bufferSize - this.bGt)
     {
       byte[] arrayOfByte = new byte[paramInt];
-      System.arraycopy(this.buffer, this.bIL, arrayOfByte, 0, paramInt);
-      this.bIL += paramInt;
+      System.arraycopy(this.buffer, this.bGt, arrayOfByte, 0, paramInt);
+      this.bGt += paramInt;
       return arrayOfByte;
     }
-    throw d.xX();
+    throw d.xK();
   }
   
-  private void fV(int paramInt)
+  private void fH(int paramInt)
   {
     if (paramInt < 0) {
-      throw d.xY();
+      throw d.xL();
     }
-    if (this.bIL + paramInt > this.bIN)
+    if (this.bGt + paramInt > this.bGv)
     {
-      fV(this.bIN - this.bIL);
-      throw d.xX();
+      fH(this.bGv - this.bGt);
+      throw d.xK();
     }
-    if (paramInt <= this.bufferSize - this.bIL)
+    if (paramInt <= this.bufferSize - this.bGt)
     {
-      this.bIL += paramInt;
+      this.bGt += paramInt;
       return;
     }
-    throw d.xX();
+    throw d.xK();
   }
   
-  private void xU()
+  private void xH()
   {
-    this.bufferSize += this.bIK;
+    this.bufferSize += this.bGs;
     int i = this.bufferSize;
-    if (i > this.bIN)
+    if (i > this.bGv)
     {
-      this.bIK = (i - this.bIN);
-      this.bufferSize -= this.bIK;
+      this.bGs = (i - this.bGv);
+      this.bufferSize -= this.bGs;
       return;
     }
-    this.bIK = 0;
+    this.bGs = 0;
   }
   
-  private byte xW()
+  private byte xJ()
   {
-    if (this.bIL == this.bufferSize) {
-      throw d.xX();
+    if (this.bGt == this.bufferSize) {
+      throw d.xK();
     }
     byte[] arrayOfByte = this.buffer;
-    int i = this.bIL;
-    this.bIL = (i + 1);
+    int i = this.bGt;
+    this.bGt = (i + 1);
     return arrayOfByte[i];
   }
   
   public final void a(e parame)
   {
-    int i = xS();
-    if (this.bIO >= this.bIP) {
-      throw d.yd();
+    int i = xF();
+    if (this.bGw >= this.bGx) {
+      throw d.xQ();
     }
-    i = fR(i);
-    this.bIO += 1;
+    i = fD(i);
+    this.bGw += 1;
     parame.a(this);
-    fP(0);
-    this.bIO -= 1;
-    fS(i);
+    fB(0);
+    this.bGw -= 1;
+    fE(i);
   }
   
-  public final void fP(int paramInt)
+  public final void fB(int paramInt)
   {
-    if (this.bIM != paramInt) {
-      throw d.yb();
+    if (this.bGu != paramInt) {
+      throw d.xO();
     }
   }
   
-  public final boolean fQ(int paramInt)
+  public final boolean fC(int paramInt)
   {
-    switch (g.gb(paramInt))
+    switch (g.fN(paramInt))
     {
     default: 
-      throw d.yc();
+      throw d.xP();
     case 0: 
-      xS();
+      xF();
       return true;
     case 1: 
-      xW();
-      xW();
-      xW();
-      xW();
-      xW();
-      xW();
-      xW();
-      xW();
+      xJ();
+      xJ();
+      xJ();
+      xJ();
+      xJ();
+      xJ();
+      xJ();
+      xJ();
       return true;
     case 2: 
-      fV(xS());
+      fH(xF());
       return true;
     case 3: 
       int i;
       do
       {
-        i = xR();
-      } while ((i != 0) && (fQ(i)));
-      fP(g.bD(g.gc(paramInt), 4));
+        i = xE();
+      } while ((i != 0) && (fC(i)));
+      fB(g.bA(g.fO(paramInt), 4));
       return true;
     case 4: 
       return false;
     }
-    xW();
-    xW();
-    xW();
-    xW();
+    xJ();
+    xJ();
+    xJ();
+    xJ();
     return true;
   }
   
-  public final int fR(int paramInt)
+  public final int fD(int paramInt)
   {
     if (paramInt < 0) {
-      throw d.xY();
+      throw d.xL();
     }
-    paramInt = this.bIL + paramInt;
-    int i = this.bIN;
+    paramInt = this.bGt + paramInt;
+    int i = this.bGv;
     if (paramInt > i) {
-      throw d.xX();
+      throw d.xK();
     }
-    this.bIN = paramInt;
-    xU();
+    this.bGv = paramInt;
+    xH();
     return i;
   }
   
-  public final void fS(int paramInt)
+  public final void fE(int paramInt)
   {
-    this.bIN = paramInt;
-    xU();
+    this.bGv = paramInt;
+    xH();
   }
   
-  public final void fT(int paramInt)
+  public final void fF(int paramInt)
   {
-    if (paramInt > this.bIL - this.bIJ) {
-      throw new IllegalArgumentException("Position " + paramInt + " is beyond current " + (this.bIL - this.bIJ));
+    if (paramInt > this.bGt - this.bGr) {
+      throw new IllegalArgumentException("Position " + paramInt + " is beyond current " + (this.bGt - this.bGr));
     }
     if (paramInt < 0) {
       throw new IllegalArgumentException("Bad position ".concat(String.valueOf(paramInt)));
     }
-    this.bIL = (this.bIJ + paramInt);
+    this.bGt = (this.bGr + paramInt);
   }
   
   public final int getPosition()
   {
-    return this.bIL - this.bIJ;
+    return this.bGt - this.bGr;
   }
   
   public final byte[] readBytes()
   {
-    int i = xS();
-    if ((i <= this.bufferSize - this.bIL) && (i > 0))
+    int i = xF();
+    if ((i <= this.bufferSize - this.bGt) && (i > 0))
     {
       byte[] arrayOfByte = new byte[i];
-      System.arraycopy(this.buffer, this.bIL, arrayOfByte, 0, i);
-      this.bIL = (i + this.bIL);
+      System.arraycopy(this.buffer, this.bGt, arrayOfByte, 0, i);
+      this.bGt = (i + this.bGt);
       return arrayOfByte;
     }
-    return fU(i);
+    return fG(i);
   }
   
   public final String readString()
   {
-    int i = xS();
-    if ((i <= this.bufferSize - this.bIL) && (i > 0))
+    int i = xF();
+    if ((i <= this.bufferSize - this.bGt) && (i > 0))
     {
-      String str = new String(this.buffer, this.bIL, i, "UTF-8");
-      this.bIL = (i + this.bIL);
+      String str = new String(this.buffer, this.bGt, i, "UTF-8");
+      this.bGt = (i + this.bGt);
       return str;
     }
-    return new String(fU(i), "UTF-8");
+    return new String(fG(i), "UTF-8");
   }
   
-  public final int xR()
+  public final int xE()
   {
-    if (this.bIL == this.bufferSize) {}
+    if (this.bGt == this.bufferSize) {}
     for (int i = 1; i != 0; i = 0)
     {
-      this.bIM = 0;
+      this.bGu = 0;
       return 0;
     }
-    this.bIM = xS();
-    if (this.bIM == 0) {
-      throw d.ya();
+    this.bGu = xF();
+    if (this.bGu == 0) {
+      throw d.xN();
     }
-    return this.bIM;
+    return this.bGu;
   }
   
-  public final int xS()
+  public final int xF()
   {
-    int i = xW();
+    int i = xJ();
     if (i >= 0) {}
     int k;
     do
     {
       return i;
       i &= 0x7F;
-      j = xW();
+      j = xJ();
       if (j >= 0) {
         return i | j << 7;
       }
       i |= (j & 0x7F) << 7;
-      j = xW();
+      j = xJ();
       if (j >= 0) {
         return i | j << 14;
       }
       i |= (j & 0x7F) << 14;
-      k = xW();
+      k = xJ();
       if (k >= 0) {
         return i | k << 21;
       }
-      j = xW();
+      j = xJ();
       k = i | (k & 0x7F) << 21 | j << 28;
       i = k;
     } while (j >= 0);
@@ -255,38 +255,38 @@ public final class a
         break label133;
       }
       i = k;
-      if (xW() >= 0) {
+      if (xJ() >= 0) {
         break;
       }
       j += 1;
     }
     label133:
-    throw d.xZ();
+    throw d.xM();
   }
   
-  public final long xT()
+  public final long xG()
   {
     int i = 0;
     long l = 0L;
     while (i < 64)
     {
-      int j = xW();
+      int j = xJ();
       l |= (j & 0x7F) << i;
       if ((j & 0x80) == 0) {
         return l;
       }
       i += 7;
     }
-    throw d.xZ();
+    throw d.xM();
   }
   
-  public final int xV()
+  public final int xI()
   {
-    if (this.bIN == 2147483647) {
+    if (this.bGv == 2147483647) {
       return -1;
     }
-    int i = this.bIL;
-    return this.bIN - i;
+    int i = this.bGt;
+    return this.bGv - i;
   }
 }
 

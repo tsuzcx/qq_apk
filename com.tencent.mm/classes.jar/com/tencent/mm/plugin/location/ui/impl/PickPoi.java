@@ -13,44 +13,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.Addr;
 import com.tencent.mm.modelgeo.c;
 import com.tencent.mm.modelgeo.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class PickPoi
   extends FrameLayout
 {
-  private Animation CN;
+  private Animation DM;
   private Context context;
-  protected c sUf;
-  public c.a sUm;
-  private View sVL;
-  private f sVM;
-  boolean sVN;
-  private e sVO;
-  c.b sVP;
+  protected c ucr;
+  public c.a ucy;
+  private View udX;
+  private f udY;
+  boolean udZ;
+  private e uea;
+  c.b ueb;
   
   public PickPoi(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(56082);
-    this.sVM = new f();
-    this.sVN = true;
-    this.sVO = null;
-    this.sUm = new c.a()
+    this.udY = new f();
+    this.udZ = true;
+    this.uea = null;
+    this.ucy = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(56081);
-        ad.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
+        ac.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
         if (PickPoi.b(PickPoi.this) == null)
         {
-          ad.i("MicroMsg.PickPoi", "error, empty poi!");
+          ac.i("MicroMsg.PickPoi", "error, empty poi!");
           AppMethodBeat.o(56081);
           return;
         }
         if ((PickPoi.b(PickPoi.this).c(paramAnonymousAddr)) && (PickPoi.c(PickPoi.this) != null))
         {
-          if (PickPoi.this.sVP != null) {
-            PickPoi.this.sVP.a(PickPoi.b(PickPoi.this));
+          if (PickPoi.this.ueb != null) {
+            PickPoi.this.ueb.a(PickPoi.b(PickPoi.this));
           }
           PickPoi.c(PickPoi.this).notifyDataSetChanged();
         }
@@ -65,25 +65,25 @@ public class PickPoi
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(56083);
-    this.sVM = new f();
-    this.sVN = true;
-    this.sVO = null;
-    this.sUm = new c.a()
+    this.udY = new f();
+    this.udZ = true;
+    this.uea = null;
+    this.ucy = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(56081);
-        ad.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
+        ac.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
         if (PickPoi.b(PickPoi.this) == null)
         {
-          ad.i("MicroMsg.PickPoi", "error, empty poi!");
+          ac.i("MicroMsg.PickPoi", "error, empty poi!");
           AppMethodBeat.o(56081);
           return;
         }
         if ((PickPoi.b(PickPoi.this).c(paramAnonymousAddr)) && (PickPoi.c(PickPoi.this) != null))
         {
-          if (PickPoi.this.sVP != null) {
-            PickPoi.this.sVP.a(PickPoi.b(PickPoi.this));
+          if (PickPoi.this.ueb != null) {
+            PickPoi.this.ueb.a(PickPoi.b(PickPoi.this));
           }
           PickPoi.c(PickPoi.this).notifyDataSetChanged();
         }
@@ -98,25 +98,25 @@ public class PickPoi
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(56084);
-    this.sVM = new f();
-    this.sVN = true;
-    this.sVO = null;
-    this.sUm = new c.a()
+    this.udY = new f();
+    this.udZ = true;
+    this.uea = null;
+    this.ucy = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(56081);
-        ad.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
+        ac.d("MicroMsg.PickPoi", "onLocationAddr %s", new Object[] { paramAnonymousAddr.toString() });
         if (PickPoi.b(PickPoi.this) == null)
         {
-          ad.i("MicroMsg.PickPoi", "error, empty poi!");
+          ac.i("MicroMsg.PickPoi", "error, empty poi!");
           AppMethodBeat.o(56081);
           return;
         }
         if ((PickPoi.b(PickPoi.this).c(paramAnonymousAddr)) && (PickPoi.c(PickPoi.this) != null))
         {
-          if (PickPoi.this.sVP != null) {
-            PickPoi.this.sVP.a(PickPoi.b(PickPoi.this));
+          if (PickPoi.this.ueb != null) {
+            PickPoi.this.ueb.a(PickPoi.b(PickPoi.this));
           }
           PickPoi.c(PickPoi.this).notifyDataSetChanged();
         }
@@ -131,57 +131,57 @@ public class PickPoi
   {
     AppMethodBeat.i(56085);
     this.context = paramContext;
-    this.sUf = c.axQ();
-    this.CN = AnimationUtils.loadAnimation(paramContext, 2130772163);
+    this.ucr = c.aEI();
+    this.DM = AnimationUtils.loadAnimation(paramContext, 2130772163);
     View localView = LayoutInflater.from(paramContext).inflate(2131494598, this, true);
-    this.sVL = localView.findViewById(2131301523);
+    this.udX = localView.findViewById(2131301523);
     post(new PickPoi.1(this, localView, paramContext));
     AppMethodBeat.o(56085);
   }
   
   public f getPoi()
   {
-    return this.sVM;
+    return this.udY;
   }
   
   public final void l(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(56086);
-    this.sVM = new f();
-    this.sVM.type = 3;
-    this.sVM.mName = this.context.getResources().getString(2131760711);
-    this.sVM.bPI = paramDouble1;
-    this.sVM.bPJ = paramDouble2;
-    this.sVM.sVX = "";
-    this.sUf.a(this.sUm);
-    this.sUf.a(paramDouble1, paramDouble2, this.sUm);
-    this.sVN = true;
+    this.udY = new f();
+    this.udY.type = 3;
+    this.udY.mName = this.context.getResources().getString(2131760711);
+    this.udY.bNq = paramDouble1;
+    this.udY.bNr = paramDouble2;
+    this.udY.uek = "";
+    this.ucr.a(this.ucy);
+    this.ucr.a(paramDouble1, paramDouble2, this.ucy);
+    this.udZ = true;
     AppMethodBeat.o(56086);
   }
   
   public final void play()
   {
     AppMethodBeat.i(182075);
-    this.sVL.clearAnimation();
-    this.sVL.startAnimation(this.CN);
+    this.udX.clearAnimation();
+    this.udX.startAnimation(this.DM);
     AppMethodBeat.o(182075);
   }
   
   public void setAdapter(e parame)
   {
-    this.sVO = parame;
+    this.uea = parame;
   }
   
   public void setLocationArrow(int paramInt)
   {
     AppMethodBeat.i(56087);
-    ((ImageView)this.sVL).setImageResource(paramInt);
+    ((ImageView)this.udX).setImageResource(paramInt);
     AppMethodBeat.o(56087);
   }
   
   public void setOnCurPoiGet(c.b paramb)
   {
-    this.sVP = paramb;
+    this.ueb = paramb;
   }
 }
 

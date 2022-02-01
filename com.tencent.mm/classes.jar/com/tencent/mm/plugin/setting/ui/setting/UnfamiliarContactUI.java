@@ -16,9 +16,9 @@ import com.tencent.mm.ui.base.preference.f;
 public class UnfamiliarContactUI
   extends MMPreference
 {
-  private boolean wdf;
-  private boolean wdg;
-  private boolean wdh;
+  private boolean xot;
+  private boolean xou;
+  private boolean xov;
   
   public int getResourceId()
   {
@@ -40,10 +40,10 @@ public class UnfamiliarContactUI
         return true;
       }
     });
-    ((CheckPreference)getPreferenceScreen().aKk("settings_half_year_not_chat")).Gea = 0;
-    ((CheckPreference)getPreferenceScreen().aKk("settings_has_not_same_chatroom")).Gea = 0;
-    ((CheckPreference)getPreferenceScreen().aKk("settings_half_year_not_response")).Gea = 0;
-    ((TextButtonPreference)getPreferenceScreen().aKk("settings_next_step")).setEnabled(false);
+    ((CheckPreference)getPreferenceScreen().aPN("settings_half_year_not_chat")).HDP = 0;
+    ((CheckPreference)getPreferenceScreen().aPN("settings_has_not_same_chatroom")).HDP = 0;
+    ((CheckPreference)getPreferenceScreen().aPN("settings_half_year_not_response")).HDP = 0;
+    ((TextButtonPreference)getPreferenceScreen().aPN("settings_next_step")).setEnabled(false);
     getPreferenceScreen().notifyDataSetChanged();
     AppMethodBeat.o(74623);
   }
@@ -80,22 +80,22 @@ public class UnfamiliarContactUI
     {
       localCheckPreference = (CheckPreference)paramPreference;
       if (paramPreference.mKey.equals("settings_half_year_not_chat")) {
-        if (!this.wdf)
+        if (!this.xot)
         {
           bool1 = true;
-          localCheckPreference.lG = bool1;
-          if (this.wdf) {
+          localCheckPreference.mF = bool1;
+          if (this.xot) {
             break label123;
           }
           bool1 = true;
           label57:
-          this.wdf = bool1;
+          this.xot = bool1;
           label62:
-          paramPreference = (TextButtonPreference)paramf.aKk("settings_next_step");
-          if ((!this.wdf) && (!this.wdh))
+          paramPreference = (TextButtonPreference)paramf.aPN("settings_next_step");
+          if ((!this.xot) && (!this.xov))
           {
             bool1 = bool2;
-            if (!this.wdg) {}
+            if (!this.xou) {}
           }
           else
           {
@@ -117,19 +117,19 @@ public class UnfamiliarContactUI
       break label57;
       if (paramPreference.mKey.equals("settings_has_not_same_chatroom"))
       {
-        if (!this.wdh)
+        if (!this.xov)
         {
           bool1 = true;
           label149:
-          localCheckPreference.lG = bool1;
-          if (this.wdh) {
+          localCheckPreference.mF = bool1;
+          if (this.xov) {
             break label177;
           }
         }
         label177:
         for (bool1 = true;; bool1 = false)
         {
-          this.wdh = bool1;
+          this.xov = bool1;
           break;
           bool1 = false;
           break label149;
@@ -138,19 +138,19 @@ public class UnfamiliarContactUI
       if (!paramPreference.mKey.equals("settings_half_year_not_response")) {
         break label62;
       }
-      if (!this.wdg)
+      if (!this.xou)
       {
         bool1 = true;
         label203:
-        localCheckPreference.lG = bool1;
-        if (this.wdg) {
+        localCheckPreference.mF = bool1;
+        if (this.xou) {
           break label231;
         }
       }
       label231:
       for (bool1 = true;; bool1 = false)
       {
-        this.wdg = bool1;
+        this.xou = bool1;
         break;
         bool1 = false;
         break label203;
@@ -158,9 +158,9 @@ public class UnfamiliarContactUI
       if (paramPreference.mKey.equals("settings_next_step"))
       {
         paramPreference = new Intent(this, UnfamiliarContactDetailUI.class);
-        paramPreference.putExtra("half_year_not_chat", this.wdf);
-        paramPreference.putExtra("half_year_not_response", this.wdg);
-        paramPreference.putExtra("has_not_same_chatroom", this.wdh);
+        paramPreference.putExtra("half_year_not_chat", this.xot);
+        paramPreference.putExtra("half_year_not_response", this.xou);
+        paramPreference.putExtra("has_not_same_chatroom", this.xov);
         startActivityForResult(paramPreference, 291);
       }
     }

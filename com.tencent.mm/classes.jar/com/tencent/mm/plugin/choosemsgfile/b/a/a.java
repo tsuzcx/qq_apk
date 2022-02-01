@@ -6,17 +6,17 @@ public abstract interface a
 {
   public abstract void a(MsgFile paramMsgFile);
   
-  public abstract void bNo();
+  public abstract void bUA();
   
-  public abstract void bNp();
+  public abstract void bUB();
   
-  public abstract void bNq();
+  public abstract void bUz();
   
-  public abstract void eP(int paramInt1, int paramInt2);
+  public abstract void eS(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a.a
  * JD-Core Version:    0.7.0.1
  */

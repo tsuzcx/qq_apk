@@ -30,7 +30,7 @@ public class c
   protected final m a(IJSRuntime paramIJSRuntime, int paramInt)
   {
     AppMethodBeat.i(144161);
-    paramIJSRuntime = paramIJSRuntime.hE(paramInt);
+    paramIJSRuntime = paramIJSRuntime.ho(paramInt);
     AppMethodBeat.o(144161);
     return paramIJSRuntime;
   }
@@ -38,10 +38,10 @@ public class c
   public final void a(y paramy)
   {
     AppMethodBeat.i(144159);
-    if (this.kDd != null)
+    if (this.lev != null)
     {
-      m localm = this.kDd;
-      localm.cPC.q(new m.9(localm, paramy));
+      m localm = this.lev;
+      localm.cMX.r(new m.9(localm, paramy));
     }
     AppMethodBeat.o(144159);
   }
@@ -56,7 +56,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.c
  * JD-Core Version:    0.7.0.1
  */

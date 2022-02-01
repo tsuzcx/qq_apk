@@ -6,37 +6,37 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.p;
+import com.tencent.mm.aj.d;
+import com.tencent.mm.aj.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.ar.a;
 import com.tencent.mm.model.ar.b;
 import com.tencent.mm.model.ar.b.a;
 import com.tencent.mm.n.b;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class c
   extends Preference
 {
-  String flk;
-  private TextView kEu;
+  String foE;
+  private TextView lfN;
   private Context mContext;
   String mTitle;
   private View mView;
-  private ImageView nVN;
+  private ImageView ozi;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(64187);
     this.mView = null;
-    this.kEu = null;
-    this.nVN = null;
-    this.flk = null;
+    this.lfN = null;
+    this.ozi = null;
+    this.foE = null;
     this.mTitle = null;
     this.mContext = null;
     this.mContext = paramContext;
@@ -49,9 +49,9 @@ public final class c
     super(paramContext);
     AppMethodBeat.i(64188);
     this.mView = null;
-    this.kEu = null;
-    this.nVN = null;
-    this.flk = null;
+    this.lfN = null;
+    this.ozi = null;
+    this.foE = null;
     this.mTitle = null;
     this.mContext = null;
     this.mContext = paramContext;
@@ -75,46 +75,46 @@ public final class c
   {
     AppMethodBeat.i(64190);
     super.onBindView(paramView);
-    this.kEu = ((TextView)paramView.findViewById(16908310));
-    this.nVN = ((ImageView)paramView.findViewById(2131298480));
-    this.kEu.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, this.mTitle, this.kEu.getTextSize()));
-    if (!bt.isNullOrNil(this.flk))
+    this.lfN = ((TextView)paramView.findViewById(16908310));
+    this.ozi = ((ImageView)paramView.findViewById(2131298480));
+    this.lfN.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, this.mTitle, this.lfN.getTextSize()));
+    if (!bs.isNullOrNil(this.foE))
     {
-      this.nVN.setVisibility(0);
-      g.afC();
-      paramView = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHX(this.flk);
-      if ((paramView == null) || ((int)paramView.fId <= 0))
+      this.ozi.setVisibility(0);
+      g.agS();
+      paramView = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNs(this.foE);
+      if ((paramView == null) || ((int)paramView.fLJ <= 0))
       {
-        ad.d("MicroMsg.CollectPayInfoPreference", "Receiver in contactStg and try to get contact");
-        final long l = bt.eGO();
-        ar.a.gMW.a(this.flk, "", new ar.b.a()
+        ac.d("MicroMsg.CollectPayInfoPreference", "Receiver in contactStg and try to get contact");
+        final long l = bs.eWj();
+        ar.a.hnw.a(this.foE, "", new ar.b.a()
         {
           public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(64186);
             if (paramAnonymousBoolean)
             {
-              ad.v("MicroMsg.CollectPayInfoPreference", "getContact suc; cost=" + (bt.eGO() - l) + " ms");
-              com.tencent.mm.ak.c.ac(paramAnonymousString, 3);
-              p.auH().vP(paramAnonymousString);
+              ac.v("MicroMsg.CollectPayInfoPreference", "getContact suc; cost=" + (bs.eWj() - l) + " ms");
+              com.tencent.mm.aj.c.ag(paramAnonymousString, 3);
+              p.aBy().zV(paramAnonymousString);
             }
             for (;;)
             {
               a.b.c(c.a(c.this), c.b(c.this));
               AppMethodBeat.o(64186);
               return;
-              ad.w("MicroMsg.CollectPayInfoPreference", "getContact failed");
+              ac.w("MicroMsg.CollectPayInfoPreference", "getContact failed");
             }
           }
         });
         AppMethodBeat.o(64190);
         return;
       }
-      a.b.c(this.nVN, this.flk);
+      a.b.c(this.ozi, this.foE);
       AppMethodBeat.o(64190);
       return;
     }
-    this.nVN.setVisibility(8);
+    this.ozi.setVisibility(8);
     AppMethodBeat.o(64190);
   }
 }

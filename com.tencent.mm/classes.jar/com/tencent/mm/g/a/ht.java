@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ht
   extends b
 {
-  public a dlv;
+  public a diN;
   
   public ht()
   {
@@ -15,21 +15,21 @@ public final class ht
   
   private ht(byte paramByte)
   {
-    AppMethodBeat.i(89644);
-    this.dlv = new a();
-    this.ESR = false;
+    AppMethodBeat.i(125616);
+    this.diN = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(89644);
+    AppMethodBeat.o(125616);
   }
   
   public static final class a
   {
-    public String dcx;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ht
  * JD-Core Version:    0.7.0.1
  */

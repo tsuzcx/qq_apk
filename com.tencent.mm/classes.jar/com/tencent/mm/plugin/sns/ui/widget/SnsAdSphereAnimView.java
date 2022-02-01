@@ -9,36 +9,38 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.widget.a.a;
-import com.tencent.mm.plugin.sns.ui.widget.a.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.sns.ui.widget.a.e;
+import com.tencent.mm.plugin.sns.ui.widget.a.g;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class SnsAdSphereAnimView
   extends View
 {
-  public static int xXr = 1;
-  public static int xXs = 2;
-  public static int xXt = 3;
-  private long iYB;
+  public static int zkm = 1;
+  public static int zkn = 2;
+  public static int zko = 3;
+  public static int zkp = 4;
+  private long jyR;
   public Context mContext;
-  public Handler xSa;
-  public a xXu;
-  public int xXv;
-  private Runnable xXw;
+  public Handler zeV;
+  public a zkq;
+  public int zkr;
+  private Runnable zks;
   
   public SnsAdSphereAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(179378);
-    this.xXv = 0;
-    this.iYB = 0L;
-    this.xSa = new Handler(Looper.getMainLooper());
-    this.xXw = new Runnable()
+    this.zkr = 0;
+    this.jyR = 0L;
+    this.zeV = new Handler(Looper.getMainLooper());
+    this.zks = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(179377);
+        AppMethodBeat.i(200661);
         SnsAdSphereAnimView.this.invalidate();
-        AppMethodBeat.o(179377);
+        AppMethodBeat.o(200661);
       }
     };
     this.mContext = paramContext;
@@ -49,16 +51,16 @@ public class SnsAdSphereAnimView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(179379);
-    this.xXv = 0;
-    this.iYB = 0L;
-    this.xSa = new Handler(Looper.getMainLooper());
-    this.xXw = new Runnable()
+    this.zkr = 0;
+    this.jyR = 0L;
+    this.zeV = new Handler(Looper.getMainLooper());
+    this.zks = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(179377);
+        AppMethodBeat.i(200661);
         SnsAdSphereAnimView.this.invalidate();
-        AppMethodBeat.o(179377);
+        AppMethodBeat.o(200661);
       }
     };
     this.mContext = paramContext;
@@ -68,12 +70,12 @@ public class SnsAdSphereAnimView
   public final void clear()
   {
     AppMethodBeat.i(179380);
-    ad.i("SnsAdSphereAnimView", "clear");
-    this.xSa.removeCallbacksAndMessages(null);
-    if (this.xXu != null)
+    ac.i("SnsAdSphereAnimView", "clear");
+    this.zeV.removeCallbacksAndMessages(null);
+    if (this.zkq != null)
     {
-      this.xXu.clear();
-      this.xXu = null;
+      this.zkq.clear();
+      this.zkq = null;
     }
     AppMethodBeat.o(179380);
   }
@@ -90,19 +92,19 @@ public class SnsAdSphereAnimView
   {
     AppMethodBeat.i(179383);
     super.onDraw(paramCanvas);
-    if (this.xXu != null)
+    if (this.zkq != null)
     {
-      this.xXu.draw(paramCanvas);
+      this.zkq.draw(paramCanvas);
       long l1 = System.currentTimeMillis();
-      long l2 = l1 - this.iYB;
-      this.iYB = l1;
+      long l2 = l1 - this.jyR;
+      this.jyR = l1;
       if (l2 >= 16L)
       {
         invalidate();
         AppMethodBeat.o(179383);
         return;
       }
-      this.xSa.postDelayed(this.xXw, 16L - l2);
+      this.zeV.postDelayed(this.zks, 16L - l2);
     }
     AppMethodBeat.o(179383);
   }
@@ -112,7 +114,7 @@ public class SnsAdSphereAnimView
     AppMethodBeat.i(179382);
     super.setVisibility(paramInt);
     if (paramInt != 0) {
-      this.xSa.removeCallbacksAndMessages(null);
+      this.zeV.removeCallbacksAndMessages(null);
     }
     AppMethodBeat.o(179382);
   }

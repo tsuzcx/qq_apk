@@ -41,8 +41,8 @@ public class HttpProxyCacheServer
   public HttpProxyCacheServer(Context paramContext)
   {
     this(Builder.access$000(new Builder(paramContext)));
-    AppMethodBeat.i(190286);
-    AppMethodBeat.o(190286);
+    AppMethodBeat.i(192486);
+    AppMethodBeat.o(192486);
   }
   
   private HttpProxyCacheServer(Config paramConfig)
@@ -80,69 +80,69 @@ public class HttpProxyCacheServer
   
   private String appendToProxyUrl(String paramString)
   {
-    AppMethodBeat.i(190294);
+    AppMethodBeat.i(192494);
     paramString = String.format(Locale.US, "http://%s:%d/%s", new Object[] { "127.0.0.1", Integer.valueOf(this.port), ProxyCacheUtils.encode(paramString) });
-    AppMethodBeat.o(190294);
+    AppMethodBeat.o(192494);
     return paramString;
   }
   
   private void closeSocket(Socket paramSocket)
   {
-    AppMethodBeat.i(190302);
+    AppMethodBeat.i(192502);
     try
     {
       if (!paramSocket.isClosed()) {
         paramSocket.close();
       }
-      AppMethodBeat.o(190302);
+      AppMethodBeat.o(192502);
       return;
     }
     catch (IOException paramSocket)
     {
       onError(new ProxyCacheException("Error closing socket", paramSocket));
-      AppMethodBeat.o(190302);
+      AppMethodBeat.o(192502);
     }
   }
   
   private void closeSocketInput(Socket paramSocket)
   {
-    AppMethodBeat.i(190300);
+    AppMethodBeat.i(192500);
     try
     {
       if (!paramSocket.isInputShutdown()) {
         paramSocket.shutdownInput();
       }
-      AppMethodBeat.o(190300);
+      AppMethodBeat.o(192500);
       return;
     }
     catch (SocketException paramSocket)
     {
       Logger.debug("Releasing input stream… Socket is closed by client.");
-      AppMethodBeat.o(190300);
+      AppMethodBeat.o(192500);
       return;
     }
     catch (IOException paramSocket)
     {
       onError(new ProxyCacheException("Error closing socket input stream", paramSocket));
-      AppMethodBeat.o(190300);
+      AppMethodBeat.o(192500);
     }
   }
   
   private void closeSocketOutput(Socket paramSocket)
   {
-    AppMethodBeat.i(190301);
+    AppMethodBeat.i(192501);
     try
     {
       if (!paramSocket.isOutputShutdown()) {
         paramSocket.shutdownOutput();
       }
-      AppMethodBeat.o(190301);
+      AppMethodBeat.o(192501);
       return;
     }
     catch (IOException paramSocket)
     {
       Logger.warn("Failed to close socket on proxy side: {}. It seems client have already closed connection.");
-      AppMethodBeat.o(190301);
+      AppMethodBeat.o(192501);
     }
   }
   
@@ -177,9 +177,9 @@ public class HttpProxyCacheServer
   
   private void onError(Throwable paramThrowable)
   {
-    AppMethodBeat.i(190303);
+    AppMethodBeat.i(192503);
     Logger.error("HttpProxyCacheServer error");
-    AppMethodBeat.o(190303);
+    AppMethodBeat.o(192503);
   }
   
   /* Error */
@@ -310,7 +310,7 @@ public class HttpProxyCacheServer
   
   private void shutdownClients()
   {
-    AppMethodBeat.i(190297);
+    AppMethodBeat.i(192497);
     synchronized (this.clientsLock)
     {
       Iterator localIterator = this.clientsMap.values().iterator();
@@ -319,28 +319,28 @@ public class HttpProxyCacheServer
       }
     }
     this.clientsMap.clear();
-    AppMethodBeat.o(190297);
+    AppMethodBeat.o(192497);
   }
   
   private void touchFileSafely(File paramFile)
   {
-    AppMethodBeat.i(190296);
+    AppMethodBeat.i(192496);
     try
     {
       this.config.diskUsage.touch(paramFile);
-      AppMethodBeat.o(190296);
+      AppMethodBeat.o(192496);
       return;
     }
     catch (IOException localIOException)
     {
       Logger.error("Error touching file ".concat(String.valueOf(paramFile)));
-      AppMethodBeat.o(190296);
+      AppMethodBeat.o(192496);
     }
   }
   
   private void waitForRequest()
   {
-    AppMethodBeat.i(190298);
+    AppMethodBeat.i(192498);
     try
     {
       while (!Thread.currentThread().isInterrupted())
@@ -349,12 +349,12 @@ public class HttpProxyCacheServer
         Logger.debug("Accept new socket ".concat(String.valueOf(localSocket)));
         this.socketProcessor.submit(new SocketProcessorRunnable(localSocket));
       }
-      AppMethodBeat.o(190298);
+      AppMethodBeat.o(192498);
     }
     catch (IOException localIOException)
     {
       onError(new ProxyCacheException("Error during waiting connection", localIOException));
-      AppMethodBeat.o(190298);
+      AppMethodBeat.o(192498);
       return;
     }
   }
@@ -374,55 +374,55 @@ public class HttpProxyCacheServer
   
   public String getProxyUrl(String paramString)
   {
-    AppMethodBeat.i(190287);
+    AppMethodBeat.i(192487);
     paramString = getProxyUrl(paramString, true);
-    AppMethodBeat.o(190287);
+    AppMethodBeat.o(192487);
     return paramString;
   }
   
   public String getProxyUrl(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(190288);
+    AppMethodBeat.i(192488);
     if ((paramBoolean) && (getCacheFile(paramString).exists()))
     {
       paramString = getCacheFile(paramString);
       touchFileSafely(paramString);
       paramString = Uri.fromFile(paramString).toString();
-      AppMethodBeat.o(190288);
+      AppMethodBeat.o(192488);
       return paramString;
     }
     paramString = appendToProxyUrl(paramString);
-    AppMethodBeat.o(190288);
+    AppMethodBeat.o(192488);
     return paramString;
   }
   
   public File getTempCacheFile(String paramString)
   {
-    AppMethodBeat.i(190295);
+    AppMethodBeat.i(192495);
     paramString = new File(this.config.cacheRoot, this.config.fileNameGenerator.generate(paramString) + ".download");
-    AppMethodBeat.o(190295);
+    AppMethodBeat.o(192495);
     return paramString;
   }
   
   public boolean isCached(String paramString)
   {
-    AppMethodBeat.i(190292);
+    AppMethodBeat.i(192492);
     Preconditions.checkNotNull(paramString, "Url can't be null!");
     boolean bool = getCacheFile(paramString).exists();
-    AppMethodBeat.o(190292);
+    AppMethodBeat.o(192492);
     return bool;
   }
   
   public void registerCacheListener(CacheListener paramCacheListener, String paramString)
   {
-    AppMethodBeat.i(190289);
+    AppMethodBeat.i(192489);
     Preconditions.checkAllNotNull(new Object[] { paramCacheListener, paramString });
     synchronized (this.clientsLock)
     {
       try
       {
         getClients(paramString).registerCacheListener(paramCacheListener);
-        AppMethodBeat.o(190289);
+        AppMethodBeat.o(192489);
         return;
       }
       catch (ProxyCacheException paramCacheListener)
@@ -437,7 +437,7 @@ public class HttpProxyCacheServer
   
   public void shutdown()
   {
-    AppMethodBeat.i(190293);
+    AppMethodBeat.i(192493);
     Logger.info("Shutdown proxy server");
     shutdownClients();
     this.config.sourceInfoStorage.release();
@@ -447,19 +447,19 @@ public class HttpProxyCacheServer
       if (!this.serverSocket.isClosed()) {
         this.serverSocket.close();
       }
-      AppMethodBeat.o(190293);
+      AppMethodBeat.o(192493);
       return;
     }
     catch (IOException localIOException)
     {
       onError(new ProxyCacheException("Error shutting down proxy server", localIOException));
-      AppMethodBeat.o(190293);
+      AppMethodBeat.o(192493);
     }
   }
   
   public void unregisterCacheListener(CacheListener paramCacheListener)
   {
-    AppMethodBeat.i(190291);
+    AppMethodBeat.i(192491);
     Preconditions.checkNotNull(paramCacheListener);
     synchronized (this.clientsLock)
     {
@@ -468,19 +468,19 @@ public class HttpProxyCacheServer
         ((HttpProxyCacheServerClients)localIterator.next()).unregisterCacheListener(paramCacheListener);
       }
     }
-    AppMethodBeat.o(190291);
+    AppMethodBeat.o(192491);
   }
   
   public void unregisterCacheListener(CacheListener paramCacheListener, String paramString)
   {
-    AppMethodBeat.i(190290);
+    AppMethodBeat.i(192490);
     Preconditions.checkAllNotNull(new Object[] { paramCacheListener, paramString });
     synchronized (this.clientsLock)
     {
       try
       {
         getClients(paramString).unregisterCacheListener(paramCacheListener);
-        AppMethodBeat.o(190290);
+        AppMethodBeat.o(192490);
         return;
       }
       catch (ProxyCacheException paramCacheListener)
@@ -515,65 +515,65 @@ public class HttpProxyCacheServer
     
     private Config buildConfig()
     {
-      AppMethodBeat.i(190284);
+      AppMethodBeat.i(192484);
       Config localConfig = new Config(this.cacheRoot, this.fileNameGenerator, this.diskUsage, this.sourceInfoStorage, this.headerInjector);
-      AppMethodBeat.o(190284);
+      AppMethodBeat.o(192484);
       return localConfig;
     }
     
     public final HttpProxyCacheServer build()
     {
-      AppMethodBeat.i(190283);
+      AppMethodBeat.i(192483);
       HttpProxyCacheServer localHttpProxyCacheServer = new HttpProxyCacheServer(buildConfig(), null);
-      AppMethodBeat.o(190283);
+      AppMethodBeat.o(192483);
       return localHttpProxyCacheServer;
     }
     
     public final Builder cacheDirectory(File paramFile)
     {
-      AppMethodBeat.i(190277);
+      AppMethodBeat.i(192477);
       this.cacheRoot = ((File)Preconditions.checkNotNull(paramFile));
-      AppMethodBeat.o(190277);
+      AppMethodBeat.o(192477);
       return this;
     }
     
     public final Builder diskUsage(DiskUsage paramDiskUsage)
     {
-      AppMethodBeat.i(190281);
+      AppMethodBeat.i(192481);
       this.diskUsage = ((DiskUsage)Preconditions.checkNotNull(paramDiskUsage));
-      AppMethodBeat.o(190281);
+      AppMethodBeat.o(192481);
       return this;
     }
     
     public final Builder fileNameGenerator(FileNameGenerator paramFileNameGenerator)
     {
-      AppMethodBeat.i(190278);
+      AppMethodBeat.i(192478);
       this.fileNameGenerator = ((FileNameGenerator)Preconditions.checkNotNull(paramFileNameGenerator));
-      AppMethodBeat.o(190278);
+      AppMethodBeat.o(192478);
       return this;
     }
     
     public final Builder headerInjector(HeaderInjector paramHeaderInjector)
     {
-      AppMethodBeat.i(190282);
+      AppMethodBeat.i(192482);
       this.headerInjector = ((HeaderInjector)Preconditions.checkNotNull(paramHeaderInjector));
-      AppMethodBeat.o(190282);
+      AppMethodBeat.o(192482);
       return this;
     }
     
     public final Builder maxCacheFilesCount(int paramInt)
     {
-      AppMethodBeat.i(190280);
+      AppMethodBeat.i(192480);
       this.diskUsage = new TotalCountLruDiskUsage(paramInt);
-      AppMethodBeat.o(190280);
+      AppMethodBeat.o(192480);
       return this;
     }
     
     public final Builder maxCacheSize(long paramLong)
     {
-      AppMethodBeat.i(190279);
+      AppMethodBeat.i(192479);
       this.diskUsage = new TotalSizeLruDiskUsage(paramLong);
-      AppMethodBeat.o(190279);
+      AppMethodBeat.o(192479);
       return this;
     }
   }
@@ -617,7 +617,7 @@ public class HttpProxyCacheServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.danikula.videocache.HttpProxyCacheServer
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 class ad
   implements af
 {
-  protected a AC = new a(paramContext, paramViewGroup, paramView, this);
+  protected a BA = new a(paramContext, paramViewGroup, paramView, this);
   
   ad(Context paramContext, ViewGroup paramViewGroup, View paramView) {}
   
@@ -44,7 +44,7 @@ class ad
       View localView = ((ViewGroup)localObject).getChildAt(i);
       if ((localView instanceof a))
       {
-        return ((a)localView).AH;
+        return ((a)localView).BF;
         if (!(((View)localObject).getParent() instanceof ViewGroup)) {
           break;
         }
@@ -63,13 +63,13 @@ class ad
   
   public final void add(Drawable paramDrawable)
   {
-    a locala = this.AC;
-    if (locala.AG == null) {
-      locala.AG = new ArrayList();
+    a locala = this.BA;
+    if (locala.BE == null) {
+      locala.BE = new ArrayList();
     }
-    if (!locala.AG.contains(paramDrawable))
+    if (!locala.BE.contains(paramDrawable))
     {
-      locala.AG.add(paramDrawable);
+      locala.BE.add(paramDrawable);
       locala.invalidate(paramDrawable.getBounds());
       paramDrawable.setCallback(locala);
     }
@@ -77,10 +77,10 @@ class ad
   
   public final void remove(Drawable paramDrawable)
   {
-    a locala = this.AC;
-    if (locala.AG != null)
+    a locala = this.BA;
+    if (locala.BE != null)
     {
-      locala.AG.remove(paramDrawable);
+      locala.BE.remove(paramDrawable);
       locala.invalidate(paramDrawable.getBounds());
       paramDrawable.setCallback(null);
     }
@@ -89,17 +89,17 @@ class ad
   static final class a
     extends ViewGroup
   {
-    static Method AD;
-    ViewGroup AE;
-    View AF;
-    ArrayList<Drawable> AG = null;
-    ad AH;
+    static Method BB;
+    ViewGroup BC;
+    View BD;
+    ArrayList<Drawable> BE = null;
+    ad BF;
     
     static
     {
       try
       {
-        AD = ViewGroup.class.getDeclaredMethod("invalidateChildInParentFast", new Class[] { Integer.TYPE, Integer.TYPE, Rect.class });
+        BB = ViewGroup.class.getDeclaredMethod("invalidateChildInParentFast", new Class[] { Integer.TYPE, Integer.TYPE, Rect.class });
         return;
       }
       catch (NoSuchMethodException localNoSuchMethodException) {}
@@ -108,12 +108,12 @@ class ad
     a(Context paramContext, ViewGroup paramViewGroup, View paramView, ad paramad)
     {
       super();
-      this.AE = paramViewGroup;
-      this.AF = paramView;
+      this.BC = paramViewGroup;
+      this.BD = paramView;
       setRight(paramViewGroup.getWidth());
       setBottom(paramViewGroup.getHeight());
       paramViewGroup.addView(this);
-      this.AH = paramad;
+      this.BF = paramad;
     }
     
     public final void add(View paramView)
@@ -121,12 +121,12 @@ class ad
       if ((paramView.getParent() instanceof ViewGroup))
       {
         ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-        if ((localViewGroup != this.AE) && (localViewGroup.getParent() != null) && (t.aC(localViewGroup)))
+        if ((localViewGroup != this.BC) && (localViewGroup.getParent() != null) && (t.aC(localViewGroup)))
         {
           int[] arrayOfInt1 = new int[2];
           int[] arrayOfInt2 = new int[2];
           localViewGroup.getLocationOnScreen(arrayOfInt1);
-          this.AE.getLocationOnScreen(arrayOfInt2);
+          this.BC.getLocationOnScreen(arrayOfInt2);
           t.u(paramView, arrayOfInt1[0] - arrayOfInt2[0]);
           t.s(paramView, arrayOfInt1[1] - arrayOfInt2[1]);
         }
@@ -142,18 +142,18 @@ class ad
     {
       int[] arrayOfInt1 = new int[2];
       int[] arrayOfInt2 = new int[2];
-      this.AE.getLocationOnScreen(arrayOfInt1);
-      this.AF.getLocationOnScreen(arrayOfInt2);
+      this.BC.getLocationOnScreen(arrayOfInt1);
+      this.BD.getLocationOnScreen(arrayOfInt2);
       paramCanvas.translate(arrayOfInt2[0] - arrayOfInt1[0], arrayOfInt2[1] - arrayOfInt1[1]);
-      paramCanvas.clipRect(new Rect(0, 0, this.AF.getWidth(), this.AF.getHeight()));
+      paramCanvas.clipRect(new Rect(0, 0, this.BD.getWidth(), this.BD.getHeight()));
       super.dispatchDraw(paramCanvas);
-      if (this.AG == null) {}
-      for (int i = 0;; i = this.AG.size())
+      if (this.BE == null) {}
+      for (int i = 0;; i = this.BE.size())
       {
         int j = 0;
         while (j < i)
         {
-          ((Drawable)this.AG.get(j)).draw(paramCanvas);
+          ((Drawable)this.BE.get(j)).draw(paramCanvas);
           j += 1;
         }
       }
@@ -166,18 +166,18 @@ class ad
     
     public final ViewParent invalidateChildInParent(int[] paramArrayOfInt, Rect paramRect)
     {
-      if (this.AE != null)
+      if (this.BC != null)
       {
         paramRect.offset(paramArrayOfInt[0], paramArrayOfInt[1]);
-        if ((this.AE instanceof ViewGroup))
+        if ((this.BC instanceof ViewGroup))
         {
           paramArrayOfInt[0] = 0;
           paramArrayOfInt[1] = 0;
           int[] arrayOfInt1 = new int[2];
           int[] arrayOfInt2 = new int[2];
           int[] arrayOfInt3 = new int[2];
-          this.AE.getLocationOnScreen(arrayOfInt2);
-          this.AF.getLocationOnScreen(arrayOfInt3);
+          this.BC.getLocationOnScreen(arrayOfInt2);
+          this.BD.getLocationOnScreen(arrayOfInt3);
           arrayOfInt3[0] -= arrayOfInt2[0];
           arrayOfInt3[1] -= arrayOfInt2[1];
           paramRect.offset(arrayOfInt1[0], arrayOfInt1[1]);
@@ -198,11 +198,11 @@ class ad
     public final void remove(View paramView)
     {
       super.removeView(paramView);
-      if ((getChildCount() == 0) && ((this.AG == null) || (this.AG.size() == 0))) {}
+      if ((getChildCount() == 0) && ((this.BE == null) || (this.BE.size() == 0))) {}
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
-          this.AE.removeView(this);
+          this.BC.removeView(this);
         }
         return;
       }
@@ -210,7 +210,7 @@ class ad
     
     protected final boolean verifyDrawable(Drawable paramDrawable)
     {
-      return (super.verifyDrawable(paramDrawable)) || ((this.AG != null) && (this.AG.contains(paramDrawable)));
+      return (super.verifyDrawable(paramDrawable)) || ((this.BE != null) && (this.BE.contains(paramDrawable)));
     }
   }
 }

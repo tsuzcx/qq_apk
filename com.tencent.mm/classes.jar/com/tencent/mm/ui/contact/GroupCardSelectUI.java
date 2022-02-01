@@ -15,19 +15,21 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.aj;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.u;
+import com.tencent.mm.model.w;
 import com.tencent.mm.n.b;
 import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.x;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -37,33 +39,33 @@ import java.util.List;
 public class GroupCardSelectUI
   extends MMActivity
 {
-  private boolean GVA;
-  private ArrayList<String> GVB;
-  private int GVC;
-  private int GVD;
-  private ListView GVE;
-  private m GVF;
-  private HashMap<String, Long> GVG;
-  private List<String> GVw = null;
-  private boolean GVx = false;
-  private boolean GVy = true;
-  private boolean GVz;
+  private List<String> IvK = null;
+  private boolean IvL = false;
+  private boolean IvM = true;
+  private boolean IvN;
+  private boolean IvO;
+  private ArrayList<String> IvP;
+  private int IvQ;
+  private int IvR;
+  private ListView IvS;
+  private m IvT;
+  private HashMap<String, Long> IvU;
   private TextView emptyTipTv;
-  private List<af> fsY;
+  private List<ai> fwF;
   
-  private void VV()
+  private void WT()
   {
     AppMethodBeat.i(37861);
     StringBuilder localStringBuilder;
-    if (this.GVx)
+    if (this.IvL)
     {
       localStringBuilder = new StringBuilder().append(getString(2131755835));
-      if (this.GVw.size() <= 0) {
+      if (this.IvK.size() <= 0) {
         break label85;
       }
     }
     label85:
-    for (String str = String.format("(%s)", new Object[] { Integer.valueOf(this.GVw.size()) });; str = "")
+    for (String str = String.format("(%s)", new Object[] { Integer.valueOf(this.IvK.size()) });; str = "")
     {
       updateOptionMenuText(1, str);
       AppMethodBeat.o(37861);
@@ -71,53 +73,53 @@ public class GroupCardSelectUI
     }
   }
   
-  private void a(int paramInt, af paramaf, long paramLong)
+  private void a(int paramInt, ai paramai, long paramLong)
   {
     AppMethodBeat.i(37860);
     int i = 0;
-    while ((i < paramInt) && (paramLong <= ((Long)this.GVG.get(((af)this.fsY.get(i)).field_username)).longValue())) {
+    while ((i < paramInt) && (paramLong <= ((Long)this.IvU.get(((ai)this.fwF.get(i)).field_username)).longValue())) {
       i += 1;
     }
-    this.fsY.add(i, paramaf);
+    this.fwF.add(i, paramai);
     AppMethodBeat.o(37860);
   }
   
-  private boolean c(af paramaf)
+  private boolean c(ai paramai)
   {
-    AppMethodBeat.i(191667);
-    if (this.GVC == 2147483647)
+    AppMethodBeat.i(196751);
+    if (this.IvQ == 2147483647)
     {
-      AppMethodBeat.o(191667);
+      AppMethodBeat.o(196751);
       return true;
     }
-    if (paramaf == null)
+    if (paramai == null)
     {
-      AppMethodBeat.o(191667);
+      AppMethodBeat.o(196751);
       return false;
     }
-    com.tencent.mm.storage.w localw = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(paramaf.field_username);
-    if (localw == null)
+    x localx = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(paramai.field_username);
+    if (localx == null)
     {
-      ad.e("MicroMsg.GroupCardSelectUI", "isValidByMaxNum %s member is null", new Object[] { paramaf.field_username });
-      AppMethodBeat.o(191667);
+      ac.e("MicroMsg.GroupCardSelectUI", "isValidByMaxNum %s member is null", new Object[] { paramai.field_username });
+      AppMethodBeat.o(196751);
       return false;
     }
-    if (localw.field_memberCount < this.GVC)
+    if (localx.field_memberCount < this.IvQ)
     {
-      AppMethodBeat.o(191667);
+      AppMethodBeat.o(196751);
       return true;
     }
-    AppMethodBeat.o(191667);
+    AppMethodBeat.o(196751);
     return false;
   }
   
-  private void fbw()
+  private void frn()
   {
     AppMethodBeat.i(37859);
-    az.arV();
-    this.GVG = com.tencent.mm.model.c.apR().eLh();
-    this.fsY = new LinkedList();
-    List localList = com.tencent.mm.model.w.ars();
+    az.ayM();
+    this.IvU = com.tencent.mm.model.c.awG().faJ();
+    this.fwF = new LinkedList();
+    List localList = w.ayi();
     if (localList.size() == 0)
     {
       AppMethodBeat.o(37859);
@@ -127,46 +129,46 @@ public class GroupCardSelectUI
     int i = 0;
     while (localIterator.hasNext())
     {
-      af localaf = (af)localIterator.next();
-      if ((!com.tencent.mm.model.w.so(localaf.field_username)) && ((this.GVB == null) || (!this.GVB.contains(localaf.field_username))))
+      ai localai = (ai)localIterator.next();
+      if ((!w.wr(localai.field_username)) && ((this.IvP == null) || (!this.IvP.contains(localai.field_username))))
       {
-        com.tencent.mm.storage.w localw;
-        if (!this.GVG.containsKey(localaf.field_username))
+        x localx;
+        if (!this.IvU.containsKey(localai.field_username))
         {
-          if (!b.ls(localaf.field_type)) {
+          if (!b.ln(localai.field_type)) {
             break label399;
           }
-          if (this.GVA)
+          if (this.IvO)
           {
-            localw = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(localaf.field_username);
-            if (localw == null) {
-              ad.e("MicroMsg.GroupCardSelectUI", "%s member is null", new Object[] { bt.by(localaf.field_username, "") });
-            } else if ((localw.ty(u.aqG())) && (c(localaf))) {
-              this.fsY.add(localaf);
+            localx = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(localai.field_username);
+            if (localx == null) {
+              ac.e("MicroMsg.GroupCardSelectUI", "%s member is null", new Object[] { bs.bG(localai.field_username, "") });
+            } else if ((localx.xB(u.axw())) && (c(localai))) {
+              this.fwF.add(localai);
             }
           }
           else
           {
-            if (!c(localaf)) {
+            if (!c(localai)) {
               break label399;
             }
-            this.fsY.add(localaf);
+            this.fwF.add(localai);
           }
         }
-        else if (this.GVA)
+        else if (this.IvO)
         {
-          localw = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(localaf.field_username);
-          if (localw == null) {
-            ad.e("MicroMsg.GroupCardSelectUI", "%s member is null", new Object[] { bt.by(localaf.field_username, "") });
+          localx = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(localai.field_username);
+          if (localx == null) {
+            ac.e("MicroMsg.GroupCardSelectUI", "%s member is null", new Object[] { bs.bG(localai.field_username, "") });
           } else {
-            if (!localw.ty(u.aqG())) {
+            if (!localx.xB(u.axw())) {
               break;
             }
           }
         }
-        else if (c(localaf))
+        else if (c(localai))
         {
-          a(i, localaf, ((Long)this.GVG.get(localaf.field_username)).longValue());
+          a(i, localai, ((Long)this.IvU.get(localai.field_username)).longValue());
           i += 1;
         }
       }
@@ -189,18 +191,18 @@ public class GroupCardSelectUI
   public void initView()
   {
     AppMethodBeat.i(37858);
-    this.GVE = ((ListView)findViewById(2131300626));
-    this.GVF = new m(this, this.fsY, this.GVw, this.GVx);
-    this.GVE.setAdapter(this.GVF);
-    this.GVE.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.IvS = ((ListView)findViewById(2131300626));
+    this.IvT = new m(this, this.fwF, this.IvK, this.IvL);
+    this.IvS.setAdapter(this.IvT);
+    this.IvS.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(37851);
-        paramAnonymousAdapterView = (af)GroupCardSelectUI.a(GroupCardSelectUI.this).getItem(paramAnonymousInt);
+        paramAnonymousAdapterView = (ai)GroupCardSelectUI.a(GroupCardSelectUI.this).getItem(paramAnonymousInt);
         if (paramAnonymousAdapterView == null)
         {
-          ad.v("MicroMsg.GroupCardSelectUI", "onItemClick contact null");
+          ac.v("MicroMsg.GroupCardSelectUI", "onItemClick contact null");
           AppMethodBeat.o(37851);
           return;
         }
@@ -210,7 +212,7 @@ public class GroupCardSelectUI
       }
     });
     this.emptyTipTv = ((TextView)findViewById(2131300622));
-    if (this.GVF.getCount() <= 0) {
+    if (this.IvT.getCount() <= 0) {
       this.emptyTipTv.setVisibility(0);
     }
     for (;;)
@@ -235,30 +237,30 @@ public class GroupCardSelectUI
   {
     AppMethodBeat.i(37854);
     super.onCreate(paramBundle);
-    this.GVy = getIntent().getBooleanExtra("group_select_type", true);
-    this.GVz = getIntent().getBooleanExtra("group_select_need_result", false);
-    this.GVA = getIntent().getBooleanExtra("group_select_only_need_self_owner", false);
-    this.GVB = getIntent().getStringArrayListExtra("group_select_block_chatroom");
-    this.GVC = getIntent().getIntExtra("group_select_chatroom_max_num", 2147483647);
-    if (this.GVA)
+    this.IvM = getIntent().getBooleanExtra("group_select_type", true);
+    this.IvN = getIntent().getBooleanExtra("group_select_need_result", false);
+    this.IvO = getIntent().getBooleanExtra("group_select_only_need_self_owner", false);
+    this.IvP = getIntent().getStringArrayListExtra("group_select_block_chatroom");
+    this.IvQ = getIntent().getIntExtra("group_select_chatroom_max_num", 2147483647);
+    if (this.IvO)
     {
       setMMTitle(getString(2131755949));
-      this.GVx = getIntent().getBooleanExtra("group_multi_select", false);
-      if (this.GVx)
+      this.IvL = getIntent().getBooleanExtra("group_multi_select", false);
+      if (this.IvL)
       {
         paramBundle = getIntent().getStringExtra("already_select_contact");
-        if (!bt.isNullOrNil(paramBundle)) {
+        if (!bs.isNullOrNil(paramBundle)) {
           break label240;
         }
       }
     }
     label240:
-    for (this.GVw = new LinkedList();; this.GVw = ae.l(paramBundle.split(",")))
+    for (this.IvK = new LinkedList();; this.IvK = ae.j(paramBundle.split(",")))
     {
-      this.GVD = getIntent().getIntExtra("max_limit_num", 0);
-      fbw();
+      this.IvR = getIntent().getIntExtra("max_limit_num", 0);
+      frn();
       initView();
-      if (this.GVx)
+      if (this.IvL)
       {
         addTextOptionMenu(1, getString(2131755835), new MenuItem.OnMenuItemClickListener()
         {
@@ -266,15 +268,15 @@ public class GroupCardSelectUI
           {
             AppMethodBeat.i(37853);
             paramAnonymousMenuItem = new Intent();
-            paramAnonymousMenuItem.putExtra("Select_Conv_User", bt.n(GroupCardSelectUI.c(GroupCardSelectUI.this), ","));
+            paramAnonymousMenuItem.putExtra("Select_Conv_User", bs.n(GroupCardSelectUI.c(GroupCardSelectUI.this), ","));
             GroupCardSelectUI.this.setResult(-1, paramAnonymousMenuItem);
             GroupCardSelectUI.this.finish();
             AppMethodBeat.o(37853);
             return true;
           }
-        }, null, r.b.FOB);
+        }, null, s.b.Hom);
         enableOptionMenu(1, true);
-        VV();
+        WT();
       }
       AppMethodBeat.o(37854);
       return;
@@ -312,15 +314,15 @@ public class GroupCardSelectUI
   
   static final class a
   {
-    TextView GVI;
-    ImageView ikp;
-    TextView sNC;
-    CheckBox uxt;
+    TextView IvW;
+    ImageView iKw;
+    TextView tVh;
+    CheckBox vGm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.GroupCardSelectUI
  * JD-Core Version:    0.7.0.1
  */

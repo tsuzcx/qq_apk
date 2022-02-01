@@ -10,8 +10,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class TextPreference
   extends Preference
 {
-  protected int Hu;
-  protected TextView Tu;
+  protected int Is;
+  protected TextView Up;
   private Context context;
   protected CharSequence mText;
   
@@ -24,25 +24,25 @@ public class TextPreference
     AppMethodBeat.o(142681);
   }
   
-  private void cE()
+  private void cL()
   {
     AppMethodBeat.i(142684);
-    if (this.Tu == null)
+    if (this.Up == null)
     {
       AppMethodBeat.o(142684);
       return;
     }
-    this.Tu.setText(this.mText);
-    this.Tu.setGravity(this.Hu);
+    this.Up.setText(this.mText);
+    this.Up.setGravity(this.Is);
     AppMethodBeat.o(142684);
   }
   
-  public final void al(CharSequence paramCharSequence)
+  public final void am(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142685);
     this.mText = paramCharSequence;
-    this.Hu = 17;
-    cE();
+    this.Is = 17;
+    cL();
     AppMethodBeat.o(142685);
   }
   
@@ -50,8 +50,8 @@ public class TextPreference
   {
     AppMethodBeat.i(142683);
     super.onBindView(paramView);
-    this.Tu = ((TextView)paramView.findViewById(16908310));
-    cE();
+    this.Up = ((TextView)paramView.findViewById(16908310));
+    cL();
     AppMethodBeat.o(142683);
   }
   
@@ -65,7 +65,7 @@ public class TextPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.TextPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.d.b;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ca;
+import com.tencent.mm.g.b.a.do;
 import com.tencent.mm.ipcinvoker.g;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.modelappbrand.u;
@@ -13,80 +13,80 @@ import com.tencent.mm.plugin.appbrand.canvas.widget.a.a;
 import com.tencent.mm.plugin.appbrand.collector.CollectSession;
 import com.tencent.mm.plugin.appbrand.collector.c;
 import com.tencent.mm.plugin.appbrand.dynamic.d.b.a.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
 import org.json.JSONObject;
 
 public final class b
   implements Runnable
 {
-  public String dAM;
-  public com.tencent.mm.ab.b.b.a jmA;
-  public e jmB;
-  public String jmC;
-  public long jmD;
-  public JSONObject jmy;
-  public com.tencent.mm.plugin.appbrand.dynamic.d.b jmz;
+  public String dyy;
+  public JSONObject jML;
+  public com.tencent.mm.plugin.appbrand.dynamic.d.b jMM;
+  public com.tencent.mm.aa.b.b.a jMN;
+  public e jMO;
+  public String jMP;
+  public long jMQ;
   public String process;
   
-  public final void a(String paramString1, String paramString2, JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.dynamic.d.b paramb, com.tencent.mm.ab.b.b.a parama, e parame, String paramString3)
+  public final void a(String paramString1, String paramString2, JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.dynamic.d.b paramb, com.tencent.mm.aa.b.b.a parama, e parame, String paramString3)
   {
     AppMethodBeat.i(121369);
     this.process = paramString1;
-    this.dAM = paramString2;
-    this.jmy = paramJSONObject;
-    this.jmz = paramb;
-    this.jmA = parama;
-    this.jmB = parame;
-    this.jmC = paramString3;
-    this.jmD = System.currentTimeMillis();
+    this.dyy = paramString2;
+    this.jML = paramJSONObject;
+    this.jMM = paramb;
+    this.jMN = parama;
+    this.jMO = parame;
+    this.jMP = paramString3;
+    this.jMQ = System.currentTimeMillis();
     AppMethodBeat.o(121369);
   }
   
   public final void run()
   {
     AppMethodBeat.i(121370);
-    if (this.jmB.Hj(this.jmC))
+    if (this.jMO.Ln(this.jMP))
     {
       u.v("DrawCanvasRunnable", "running draw", new Object[0]);
       Bundle localBundle = new Bundle();
-      localBundle.putString("viewId", this.dAM);
-      localBundle.putInt("drawStrategy", this.jmB.aVB());
-      localBundle.putString("remoteProcess", g.adv());
-      a.cz(this.dAM, this.jmC);
+      localBundle.putString("viewId", this.dyy);
+      localBundle.putInt("drawStrategy", this.jMO.bcz());
+      localBundle.putString("remoteProcess", g.aeL());
+      a.cJ(this.dyy, this.jMP);
       Object localObject1;
-      switch (this.jmB.aVB())
+      switch (this.jMO.bcz())
       {
       default: 
         localObject1 = null;
       }
       for (;;)
       {
-        Object localObject2 = com.tencent.mm.plugin.appbrand.dynamic.h.d.z(this.jmy);
-        CollectSession localCollectSession = c.cn((String)localObject2, "after_jsapi_invoke");
+        Object localObject2 = com.tencent.mm.plugin.appbrand.dynamic.h.d.z(this.jML);
+        CollectSession localCollectSession = c.cx((String)localObject2, "after_jsapi_invoke");
         localBundle.putString("__session_id", (String)localObject2);
         localBundle.putParcelable("__cost_time_session", localCollectSession);
-        v.lI(19);
-        localObject2 = new ca().iI(u.vd(this.dAM));
-        ((ca)localObject2).dQy = u.vb(this.dAM);
-        ((ca)localObject2).dQv = 11L;
-        localObject2 = ((ca)localObject2).iH(this.dAM);
-        ((ca)localObject2).dQw = System.currentTimeMillis();
-        ((ca)localObject2).iJ(ay.iw(aj.getContext())).aBj();
+        v.lA(19);
+        localObject2 = new do().ly(u.zj(this.dyy));
+        ((do)localObject2).dSn = u.zh(this.dyy);
+        ((do)localObject2).dSk = 11L;
+        localObject2 = ((do)localObject2).lx(this.dyy);
+        ((do)localObject2).dSl = System.currentTimeMillis();
+        ((do)localObject2).lz(ax.iH(ai.getContext())).aHZ();
         if (!h.a(this.process, localBundle, a.class, new com.tencent.mm.ipcinvoker.d() {})) {
           break;
         }
-        this.jmB.aVA();
+        this.jMO.bcy();
         AppMethodBeat.o(121370);
         return;
-        localObject1 = (String)this.jmB.c(this.jmy, this.jmC);
-        this.jmB.cr(this.jmC);
+        localObject1 = (String)this.jMO.c(this.jML, this.jMP);
+        this.jMO.cp(this.jMP);
         localBundle.putString("jsApiInvokeData", (String)localObject1);
         localObject1 = null;
         continue;
-        localObject1 = (DrawCanvasArg)this.jmB.c(this.jmy, this.jmC);
-        this.jmB.cr(localObject1);
+        localObject1 = (DrawCanvasArg)this.jMO.c(this.jML, this.jMP);
+        this.jMO.cp(localObject1);
         localBundle.putParcelable("jsApiInvokeDataObj", (Parcelable)localObject1);
       }
       if (localObject1 != null) {
@@ -95,8 +95,8 @@ public final class b
       AppMethodBeat.o(121370);
       return;
     }
-    if ((this.jmA != null) && (this.jmz != null)) {
-      this.jmA.bl(this.jmz.a(true, "same actions with last draw, drop this", null));
+    if ((this.jMN != null) && (this.jMM != null)) {
+      this.jMN.bi(this.jMM.a(true, "same actions with last draw, drop this", null));
     }
     AppMethodBeat.o(121370);
   }
@@ -107,7 +107,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,77 +7,77 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static g.b Ixz;
-  public static boolean cxf;
-  public int Ixs;
-  public int Ixt;
-  public int Ixu;
-  public b Ixv;
-  public h.a Ixw;
-  public d Ixx;
-  public boolean Ixy = true;
-  public long tzy;
+  public static g.b JZi;
+  public static boolean cuo;
+  public int JZb;
+  public int JZc;
+  public int JZd;
+  public b JZe;
+  public h.a JZf;
+  public d JZg;
+  public boolean JZh = true;
+  public long uHV;
   
   static
   {
-    AppMethodBeat.i(186948);
-    cxf = false;
-    Ixz = new g.b()
+    AppMethodBeat.i(191071);
+    cuo = false;
+    JZi = new g.b()
     {
       public final void a(Thread paramAnonymousThread, String paramAnonymousString) {}
       
-      public final boolean daR()
+      public final boolean doB()
       {
         return false;
       }
       
-      public final boolean daS()
+      public final boolean doC()
       {
         return false;
       }
     };
-    AppMethodBeat.o(186948);
+    AppMethodBeat.o(191071);
   }
   
   public static final class a
   {
-    public a IxA;
+    public a JZj;
     
     public a()
     {
       AppMethodBeat.i(183098);
-      this.IxA = new a((byte)0);
+      this.JZj = new a((byte)0);
       AppMethodBeat.o(183098);
     }
     
     public final a a(h.a parama)
     {
-      this.IxA.Ixw = parama;
+      this.JZj.JZf = parama;
       return this;
     }
     
-    public final a abZ(int paramInt)
+    public final a aes(int paramInt)
     {
-      this.IxA.Ixu = paramInt;
+      this.JZj.JZd = paramInt;
       return this;
     }
     
-    public final a fnF()
+    public final a fDV()
     {
-      this.IxA.tzy = 259200000L;
+      this.JZj.uHV = 259200000L;
       return this;
     }
     
-    public final a fnG()
+    public final a fDW()
     {
-      this.IxA.Ixy = true;
+      this.JZj.JZh = true;
       return this;
     }
     
-    public final a kn(int paramInt1, int paramInt2)
+    public final a kA(int paramInt1, int paramInt2)
     {
-      this.IxA.Ixt = paramInt1;
-      this.IxA.Ixs = paramInt2;
+      this.JZj.JZc = paramInt1;
+      this.JZj.JZb = paramInt2;
       return this;
     }
   }

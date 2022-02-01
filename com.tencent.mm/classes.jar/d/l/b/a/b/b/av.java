@@ -9,25 +9,25 @@ public abstract interface av
 {
   public abstract av a(a parama, f paramf, int paramInt);
   
-  public abstract Collection<av> fys();
+  public abstract Collection<av> fQW();
   
-  public abstract a fzs();
+  public abstract a fRW();
   
-  public abstract boolean fzt();
+  public abstract boolean fRX();
   
-  public abstract ab fzu();
+  public abstract ab fRY();
   
-  public abstract av fzv();
+  public abstract av fRZ();
   
-  public abstract boolean fzw();
+  public abstract boolean fSa();
   
-  public abstract boolean fzx();
+  public abstract boolean fSb();
   
   public abstract int getIndex();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.av
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 
 public final class ChattingItemTranslate$a
-  extends bi
+  extends bj
 {
-  public CharSequence GPA;
-  public int nBH = 1;
+  public CharSequence IpC;
+  public int oeH = 1;
   
-  public ChattingItemTranslate$a(bl parambl, boolean paramBoolean, int paramInt)
+  public ChattingItemTranslate$a(bo parambo, boolean paramBoolean, int paramInt)
   {
-    super(parambl, paramBoolean, paramInt, null, '\000');
+    super(parambo, paramBoolean, paramInt, null, '\000');
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate.a
  * JD-Core Version:    0.7.0.1
  */

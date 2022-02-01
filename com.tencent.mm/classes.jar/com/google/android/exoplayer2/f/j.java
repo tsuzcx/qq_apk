@@ -14,150 +14,150 @@ public final class j
   extends com.google.android.exoplayer2.a
   implements Handler.Callback
 {
-  private boolean biL;
-  private boolean biM;
-  private final k bil;
-  private final Handler bjh;
-  private final a brP;
-  private final g brQ;
-  private int brR;
-  private Format brS;
-  private e brT;
-  private h brU;
-  private i brV;
-  private i brW;
-  private int brX;
+  private final k biQ;
+  private final Handler bjM;
+  private boolean bjq;
+  private boolean bjr;
+  private final a bpO;
+  private final g bpP;
+  private int bpQ;
+  private Format bpR;
+  private e bpS;
+  private h bpT;
+  private i bpU;
+  private i bpV;
+  private int bpW;
   
   public j(a parama, Looper paramLooper)
   {
-    this(parama, paramLooper, g.brN);
+    this(parama, paramLooper, g.bpM);
   }
   
   private j(a parama, Looper paramLooper, g paramg)
   {
     super(3);
     AppMethodBeat.i(92825);
-    this.brP = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
+    this.bpO = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
     if (paramLooper == null) {}
     for (parama = null;; parama = new Handler(paramLooper, this))
     {
-      this.bjh = parama;
-      this.brQ = paramg;
-      this.bil = new k();
+      this.bjM = parama;
+      this.bpP = paramg;
+      this.biQ = new k();
       AppMethodBeat.o(92825);
       return;
     }
   }
   
-  private void B(List<a> paramList)
-  {
-    AppMethodBeat.i(92835);
-    if (this.bjh != null)
-    {
-      this.bjh.obtainMessage(0, paramList).sendToTarget();
-      AppMethodBeat.o(92835);
-      return;
-    }
-    C(paramList);
-    AppMethodBeat.o(92835);
-  }
-  
-  private void C(List<a> paramList)
-  {
-    AppMethodBeat.i(92837);
-    this.brP.t(paramList);
-    AppMethodBeat.o(92837);
-  }
-  
   private void releaseDecoder()
   {
     AppMethodBeat.i(92832);
-    uC();
-    this.brT.release();
-    this.brT = null;
-    this.brR = 0;
+    ux();
+    this.bpS.release();
+    this.bpS = null;
+    this.bpQ = 0;
     AppMethodBeat.o(92832);
   }
   
-  private void uC()
+  private void ux()
   {
     AppMethodBeat.i(92831);
-    this.brU = null;
-    this.brX = -1;
-    if (this.brV != null)
+    this.bpT = null;
+    this.bpW = -1;
+    if (this.bpU != null)
     {
-      this.brV.release();
-      this.brV = null;
+      this.bpU.release();
+      this.bpU = null;
     }
-    if (this.brW != null)
+    if (this.bpV != null)
     {
-      this.brW.release();
-      this.brW = null;
+      this.bpV.release();
+      this.bpV = null;
     }
     AppMethodBeat.o(92831);
   }
   
-  private void uE()
+  private void uy()
   {
     AppMethodBeat.i(92833);
     releaseDecoder();
-    this.brT = this.brQ.k(this.brS);
+    this.bpS = this.bpP.k(this.bpR);
     AppMethodBeat.o(92833);
   }
   
-  private long uF()
+  private long uz()
   {
     AppMethodBeat.i(92834);
-    if ((this.brX == -1) || (this.brX >= this.brV.uB()))
+    if ((this.bpW == -1) || (this.bpW >= this.bpU.uw()))
     {
       AppMethodBeat.o(92834);
       return 9223372036854775807L;
     }
-    long l = this.brV.eR(this.brX);
+    long l = this.bpU.eE(this.bpW);
     AppMethodBeat.o(92834);
     return l;
+  }
+  
+  private void w(List<a> paramList)
+  {
+    AppMethodBeat.i(92835);
+    if (this.bjM != null)
+    {
+      this.bjM.obtainMessage(0, paramList).sendToTarget();
+      AppMethodBeat.o(92835);
+      return;
+    }
+    x(paramList);
+    AppMethodBeat.o(92835);
+  }
+  
+  private void x(List<a> paramList)
+  {
+    AppMethodBeat.i(92837);
+    this.bpO.s(paramList);
+    AppMethodBeat.o(92837);
   }
   
   public final void a(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(92828);
-    B(Collections.emptyList());
-    this.biL = false;
-    this.biM = false;
-    if (this.brR != 0)
+    w(Collections.emptyList());
+    this.bjq = false;
+    this.bjr = false;
+    if (this.bpQ != 0)
     {
-      uE();
+      uy();
       AppMethodBeat.o(92828);
       return;
     }
-    uC();
-    this.brT.flush();
+    ux();
+    this.bpS.flush();
     AppMethodBeat.o(92828);
   }
   
   public final void a(Format[] paramArrayOfFormat, long paramLong)
   {
     AppMethodBeat.i(92827);
-    this.brS = paramArrayOfFormat[0];
-    if (this.brT != null)
+    this.bpR = paramArrayOfFormat[0];
+    if (this.bpS != null)
     {
-      this.brR = 1;
+      this.bpQ = 1;
       AppMethodBeat.o(92827);
       return;
     }
-    this.brT = this.brQ.k(this.brS);
+    this.bpS = this.bpP.k(this.bpR);
     AppMethodBeat.o(92827);
   }
   
   public final int b(Format paramFormat)
   {
     AppMethodBeat.i(92826);
-    if (this.brQ.g(paramFormat))
+    if (this.bpP.g(paramFormat))
     {
       AppMethodBeat.o(92826);
       return 4;
     }
-    if (com.google.android.exoplayer2.i.j.aL(paramFormat.aSd))
+    if (com.google.android.exoplayer2.i.j.aG(paramFormat.aSY))
     {
       AppMethodBeat.o(92826);
       return 1;
@@ -169,18 +169,18 @@ public final class j
   public final void e(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(92829);
-    if (this.biM)
+    if (this.bjr)
     {
       AppMethodBeat.o(92829);
       return;
     }
-    if (this.brW == null) {
-      this.brT.al(paramLong1);
+    if (this.bpV == null) {
+      this.bpS.ah(paramLong1);
     }
     Object localObject;
     try
     {
-      this.brW = ((i)this.brT.st());
+      this.bpV = ((i)this.bpS.sC());
       if (this.state != 2)
       {
         AppMethodBeat.o(92829);
@@ -193,32 +193,32 @@ public final class j
       AppMethodBeat.o(92829);
       throw ((Throwable)localObject);
     }
-    if (this.brV != null)
+    if (this.bpU != null)
     {
-      paramLong2 = uF();
+      paramLong2 = uz();
       for (i = 0; paramLong2 <= paramLong1; i = 1)
       {
-        this.brX += 1;
-        paramLong2 = uF();
+        this.bpW += 1;
+        paramLong2 = uz();
       }
     }
     int i = 0;
     int j = i;
-    if (this.brW != null)
+    if (this.bpV != null)
     {
-      if (!this.brW.sq()) {
+      if (!this.bpV.sz()) {
         break label239;
       }
       j = i;
       if (i == 0)
       {
         j = i;
-        if (uF() == 9223372036854775807L)
+        if (uz() == 9223372036854775807L)
         {
-          if (this.brR != 2) {
+          if (this.bpQ != 2) {
             break label223;
           }
-          uE();
+          uy();
           j = i;
         }
       }
@@ -226,70 +226,70 @@ public final class j
     for (;;)
     {
       if (j != 0) {
-        B(this.brV.an(paramLong1));
+        w(this.bpU.aj(paramLong1));
       }
-      if (this.brR != 2) {
+      if (this.bpQ != 2) {
         break;
       }
       AppMethodBeat.o(92829);
       return;
       label223:
-      uC();
-      this.biM = true;
+      ux();
+      this.bjr = true;
       j = i;
       continue;
       label239:
       j = i;
-      if (this.brW.timeUs <= paramLong1)
+      if (this.bpV.timeUs <= paramLong1)
       {
-        if (this.brV != null) {
-          this.brV.release();
+        if (this.bpU != null) {
+          this.bpU.release();
         }
-        this.brV = this.brW;
-        this.brW = null;
-        this.brX = this.brV.am(paramLong1);
+        this.bpU = this.bpV;
+        this.bpV = null;
+        this.bpW = this.bpU.ai(paramLong1);
         j = 1;
       }
     }
     try
     {
-      i = a(this.bil, this.brU, false);
+      i = a(this.biQ, this.bpT, false);
       if (i == -4) {
-        if (this.brU.sq())
+        if (this.bpT.sz())
         {
-          this.biL = true;
-          this.brT.ab(this.brU);
-          this.brU = null;
+          this.bjq = true;
+          this.bpS.ad(this.bpT);
+          this.bpT = null;
         }
       }
       com.google.android.exoplayer2.e locale;
       while (i != -3) {
         for (;;)
         {
-          if (this.biL) {
+          if (this.bjq) {
             break label508;
           }
-          if (this.brU == null)
+          if (this.bpT == null)
           {
-            this.brU = ((h)this.brT.ss());
-            localObject = this.brU;
+            this.bpT = ((h)this.bpS.sB());
+            localObject = this.bpT;
             if (localObject == null)
             {
               AppMethodBeat.o(92829);
               return;
             }
           }
-          if (this.brR != 1) {
+          if (this.bpQ != 1) {
             break;
           }
-          this.brU.flags = 4;
-          this.brT.ab(this.brU);
-          this.brU = null;
-          this.brR = 2;
+          this.bpT.flags = 4;
+          this.bpS.ad(this.bpT);
+          this.bpT = null;
+          this.bpQ = 2;
           AppMethodBeat.o(92829);
           return;
-          this.brU.aSr = this.bil.aSv.aSr;
-          this.brU.sv();
+          this.bpT.aTk = this.biQ.aTo.aTk;
+          this.bpT.sE();
         }
       }
     }
@@ -315,7 +315,7 @@ public final class j
       AppMethodBeat.o(92836);
       throw paramMessage;
     }
-    C((List)paramMessage.obj);
+    x((List)paramMessage.obj);
     AppMethodBeat.o(92836);
     return true;
   }
@@ -325,23 +325,23 @@ public final class j
     return true;
   }
   
-  public final boolean rM()
-  {
-    return this.biM;
-  }
-  
-  public final void rp()
+  public final void rA()
   {
     AppMethodBeat.i(92830);
-    this.brS = null;
-    B(Collections.emptyList());
+    this.bpR = null;
+    w(Collections.emptyList());
     releaseDecoder();
     AppMethodBeat.o(92830);
   }
   
+  public final boolean rX()
+  {
+    return this.bjr;
+  }
+  
   public static abstract interface a
   {
-    public abstract void t(List<a> paramList);
+    public abstract void s(List<a> paramList);
   }
 }
 

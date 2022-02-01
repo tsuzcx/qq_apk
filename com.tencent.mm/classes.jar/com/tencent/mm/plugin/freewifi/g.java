@@ -7,13 +7,13 @@ import com.tencent.mm.pluginsdk.m;
 public final class g
   implements m
 {
-  public static l hYt;
+  public static l iyx;
   
   public final void a(k paramk) {}
   
   public final void a(l paraml)
   {
-    hYt = paraml;
+    iyx = paraml;
   }
 }
 

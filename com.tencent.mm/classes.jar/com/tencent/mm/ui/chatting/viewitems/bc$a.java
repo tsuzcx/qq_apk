@@ -1,29 +1,34 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.d.a;
 
 abstract class bc$a
   extends c
 {
-  public String b(a parama, bl parambl)
+  protected bc.h Iqx;
+  
+  public String b(a parama, bo parambo)
   {
     return parama.getTalkerUserName();
   }
   
-  protected final boolean b(a parama)
+  public boolean fqu()
   {
     return false;
   }
   
-  public boolean faE()
+  protected final bc.h o(a parama)
   {
-    return false;
+    if (this.Iqx == null) {
+      this.Iqx = new bc.h(parama);
+    }
+    return this.Iqx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bc.a
  * JD-Core Version:    0.7.0.1
  */

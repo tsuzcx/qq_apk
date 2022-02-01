@@ -17,35 +17,37 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
 import com.tencent.mm.plugin.scanner.ui.ScannerFlashSwitcher;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.aj;
 import d.g.b.k;
 import d.l;
 import java.util.Timer;
 import java.util.TimerTask;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScanSharedMaskView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "darkCornerMask", "Landroid/widget/ImageView;", "flashSwitcher", "Lcom/tencent/mm/plugin/scanner/ui/ScannerFlashSwitcher;", "galleryButton", "Landroid/view/View;", "isFlashShow", "", "isTitleTimerCancelled", "onFlashSwitcherClickListener", "Landroid/view/View$OnClickListener;", "onGalleryClickListener", "scanTips", "Landroid/widget/TextView;", "scanTitle", "showTitle", "titleTimer", "Ljava/util/Timer;", "animateAlpha", "", "view", "fromAlpha", "", "targetAlpha", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "animateShow", "show", "animateShowScanTips", "cancelTitleAnimation", "cancelTitleTimer", "getFlashSwitcherView", "getGalleryButton", "getScanTipsView", "getScanTitleView", "init", "initTitleTimer", "onFlashStatusChanged", "onPreviewReady", "isSwitchTab", "onScanSuccess", "onViewReady", "release", "setFlashStatus", "setOnFlashSwitcherClickListener", "onClickListener", "setOnGalleryClickListener", "setScanTips", "tips", "", "setScanTitle", "title", "setShowTitle", "startTitleAnimation", "Companion", "plugin-scan_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScanSharedMaskView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "darkCornerMask", "Landroid/widget/ImageView;", "flashSwitcher", "Lcom/tencent/mm/plugin/scanner/ui/ScannerFlashSwitcher;", "galleryButton", "Landroid/view/View;", "isFlashShow", "", "isTitleTimerCancelled", "onFlashSwitcherClickListener", "Landroid/view/View$OnClickListener;", "onGalleryClickListener", "scanRequest", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "scanTips", "Landroid/widget/TextView;", "scanTitle", "showTitle", "titleTimer", "Ljava/util/Timer;", "animateAlpha", "", "view", "fromAlpha", "", "targetAlpha", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "animateShow", "show", "animateShowScanTips", "cancelTitleAnimation", "cancelTitleTimer", "getFlashSwitcherView", "getGalleryButton", "getScanTipsView", "getScanTitleView", "init", "initTitleTimer", "onFlashStatusChanged", "onPreviewReady", "isSwitchTab", "onScanSuccess", "onViewReady", "release", "setFlashStatus", "setOnFlashSwitcherClickListener", "onClickListener", "setOnGalleryClickListener", "setScanRequest", "request", "setScanTips", "tips", "", "setScanTitle", "title", "setShowTitle", "showGalleryButton", "showScanTips", "startTitleAnimation", "Companion", "plugin-scan_release"})
 public final class ScanSharedMaskView
   extends RelativeLayout
 {
-  public static final ScanSharedMaskView.a vZL;
-  public ScannerFlashSwitcher vQG;
-  public TextView vZB;
-  public TextView vZC;
-  private ImageView vZD;
-  public View vZE;
-  private View.OnClickListener vZF;
-  private View.OnClickListener vZG;
-  private Timer vZH;
-  private boolean vZI;
-  public boolean vZJ;
-  public boolean vZK;
+  public static final ScanSharedMaskView.a xkR;
+  public BaseScanRequest xbO;
+  public ScannerFlashSwitcher xbo;
+  public TextView xkH;
+  private TextView xkI;
+  private ImageView xkJ;
+  public View xkK;
+  private View.OnClickListener xkL;
+  private View.OnClickListener xkM;
+  private Timer xkN;
+  private boolean xkO;
+  public boolean xkP;
+  public boolean xkQ;
   
   static
   {
     AppMethodBeat.i(52465);
-    vZL = new ScanSharedMaskView.a((byte)0);
+    xkR = new ScanSharedMaskView.a((byte)0);
     AppMethodBeat.o(52465);
   }
   
@@ -67,38 +69,38 @@ public final class ScanSharedMaskView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(52464);
-    this.vZK = true;
+    this.xkQ = true;
     paramContext = LayoutInflater.from(paramContext).inflate(2131494573, (ViewGroup)this);
     paramAttributeSet = paramContext.findViewById(2131304333);
     k.g(paramAttributeSet, "view.findViewById(R.id.scan_title)");
-    this.vZB = ((TextView)paramAttributeSet);
+    this.xkH = ((TextView)paramAttributeSet);
     paramAttributeSet = paramContext.findViewById(2131304332);
     k.g(paramAttributeSet, "view.findViewById(R.id.scan_tip_tv)");
-    this.vZC = ((TextView)paramAttributeSet);
+    this.xkI = ((TextView)paramAttributeSet);
     paramAttributeSet = paramContext.findViewById(2131298922);
     k.g(paramAttributeSet, "view.findViewById(R.id.dark_corner_mask)");
-    this.vZD = ((ImageView)paramAttributeSet);
+    this.xkJ = ((ImageView)paramAttributeSet);
     paramAttributeSet = paramContext.findViewById(2131304346);
     k.g(paramAttributeSet, "view.findViewById(R.id.scanner_flash_switcher)");
-    this.vQG = ((ScannerFlashSwitcher)paramAttributeSet);
+    this.xbo = ((ScannerFlashSwitcher)paramAttributeSet);
     paramContext = paramContext.findViewById(2131304516);
     k.g(paramContext, "view.findViewById(R.id.select_from_gallery)");
-    this.vZE = paramContext;
-    paramContext = this.vZE;
+    this.xkK = paramContext;
+    paramContext = this.xkK;
     if (paramContext == null) {
-      k.aPZ("galleryButton");
+      k.aVY("galleryButton");
     }
-    paramContext.setOnClickListener((View.OnClickListener)new c(this));
-    paramContext = this.vQG;
+    paramContext.setOnClickListener((View.OnClickListener)new ScanSharedMaskView.c(this));
+    paramContext = this.xbo;
     if (paramContext == null) {
-      k.aPZ("flashSwitcher");
+      k.aVY("flashSwitcher");
     }
-    paramContext.setOnClickListener((View.OnClickListener)new d(this));
-    paramContext = this.vZB;
+    paramContext.setOnClickListener((View.OnClickListener)new ScanSharedMaskView.d(this));
+    paramContext = this.xkH;
     if (paramContext == null) {
-      k.aPZ("scanTitle");
+      k.aVY("scanTitle");
     }
-    ai.a((Paint)paramContext.getPaint(), 0.8F);
+    aj.a((Paint)paramContext.getPaint(), 0.8F);
     AppMethodBeat.o(52464);
   }
   
@@ -140,32 +142,44 @@ public final class ScanSharedMaskView
     AppMethodBeat.o(52461);
   }
   
-  private final void pl(final boolean paramBoolean)
+  private final void qk(final boolean paramBoolean)
   {
     float f2 = 1.0F;
     AppMethodBeat.i(170087);
-    ad.d("MicroMsg.ScanSharedMaskView", "alvinluo animateScanTips show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    Object localObject = this.vZC;
+    ac.d("MicroMsg.ScanSharedMaskView", "alvinluo animateScanTips show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if ((paramBoolean) && (this.xbO != null))
+    {
+      localObject = this.xbO;
+      if (localObject == null) {
+        k.fOy();
+      }
+      if (((BaseScanRequest)localObject).wVY)
+      {
+        AppMethodBeat.o(170087);
+        return;
+      }
+    }
+    Object localObject = this.xkI;
     if (localObject == null) {
-      k.aPZ("scanTips");
+      k.aVY("scanTips");
     }
     if ((((TextView)localObject).getVisibility() == 0) && (paramBoolean))
     {
       AppMethodBeat.o(170087);
       return;
     }
-    localObject = this.vZC;
+    localObject = this.xkI;
     if (localObject == null) {
-      k.aPZ("scanTips");
+      k.aVY("scanTips");
     }
     if ((((TextView)localObject).getVisibility() != 0) && (!paramBoolean))
     {
       AppMethodBeat.o(170087);
       return;
     }
-    localObject = this.vZC;
+    localObject = this.xkI;
     if (localObject == null) {
-      k.aPZ("scanTips");
+      k.aVY("scanTips");
     }
     localObject = ((TextView)localObject).animate();
     if (localObject != null)
@@ -175,45 +189,41 @@ public final class ScanSharedMaskView
         ((ViewPropertyAnimator)localObject).cancel();
       }
     }
-    localObject = this.vZC;
+    localObject = this.xkI;
     if (localObject == null) {
-      k.aPZ("scanTips");
+      k.aVY("scanTips");
     }
     if (paramBoolean)
     {
       f1 = 0.0F;
       ((TextView)localObject).setAlpha(f1);
-      localObject = this.vZC;
+      qg(true);
+      localObject = this.xkI;
       if (localObject == null) {
-        k.aPZ("scanTips");
-      }
-      ((TextView)localObject).setVisibility(0);
-      localObject = this.vZC;
-      if (localObject == null) {
-        k.aPZ("scanTips");
+        k.aVY("scanTips");
       }
       localObject = ((TextView)localObject).animate();
       if (localObject == null) {
-        break label308;
+        break label330;
       }
       if (!paramBoolean) {
-        break label303;
+        break label325;
       }
     }
-    label303:
+    label325:
     for (float f1 = f2;; f1 = 0.0F)
     {
       localObject = ((ViewPropertyAnimator)localObject).alpha(f1);
       if (localObject == null) {
-        break label308;
+        break label330;
       }
       localObject = ((ViewPropertyAnimator)localObject).setDuration(200L);
       if (localObject == null) {
-        break label308;
+        break label330;
       }
       localObject = ((ViewPropertyAnimator)localObject).setListener((Animator.AnimatorListener)new b(this, paramBoolean));
       if (localObject == null) {
-        break label308;
+        break label330;
       }
       ((ViewPropertyAnimator)localObject).start();
       AppMethodBeat.o(170087);
@@ -221,29 +231,29 @@ public final class ScanSharedMaskView
       f1 = 1.0F;
       break;
     }
-    label308:
+    label330:
     AppMethodBeat.o(170087);
   }
   
-  public final void dmW()
+  public final void dBe()
   {
     AppMethodBeat.i(170081);
-    ad.v("MicroMsg.ScanSharedMaskView", "alvinluo initTitleTimer");
-    dmX();
-    this.vZH = new Timer();
-    Timer localTimer = this.vZH;
+    ac.v("MicroMsg.ScanSharedMaskView", "alvinluo initTitleTimer");
+    dBf();
+    this.xkN = new Timer();
+    Timer localTimer = this.xkN;
     if (localTimer != null) {
       localTimer.schedule((TimerTask)new e(this), 2000L);
     }
-    this.vZI = false;
+    this.xkO = false;
     AppMethodBeat.o(170081);
   }
   
-  public final void dmX()
+  public final void dBf()
   {
     AppMethodBeat.i(170082);
-    this.vZI = true;
-    Timer localTimer = this.vZH;
+    this.xkO = true;
+    Timer localTimer = this.xkN;
     if (localTimer != null)
     {
       localTimer.cancel();
@@ -253,13 +263,13 @@ public final class ScanSharedMaskView
     AppMethodBeat.o(170082);
   }
   
-  public final void dmY()
+  public final void dBg()
   {
     AppMethodBeat.i(170084);
-    ad.i("MicroMsg.ScanSharedMaskView", "alvinluo cancelTitleAnimation");
-    Object localObject = this.vZB;
+    ac.i("MicroMsg.ScanSharedMaskView", "alvinluo cancelTitleAnimation");
+    Object localObject = this.xkH;
     if (localObject == null) {
-      k.aPZ("scanTitle");
+      k.aVY("scanTitle");
     }
     localObject = ((TextView)localObject).animate();
     if (localObject != null)
@@ -269,16 +279,16 @@ public final class ScanSharedMaskView
         ((ViewPropertyAnimator)localObject).cancel();
       }
     }
-    dmX();
+    dBf();
     AppMethodBeat.o(170084);
   }
   
   public final ScannerFlashSwitcher getFlashSwitcherView()
   {
     AppMethodBeat.i(52455);
-    ScannerFlashSwitcher localScannerFlashSwitcher = this.vQG;
+    ScannerFlashSwitcher localScannerFlashSwitcher = this.xbo;
     if (localScannerFlashSwitcher == null) {
-      k.aPZ("flashSwitcher");
+      k.aVY("flashSwitcher");
     }
     AppMethodBeat.o(52455);
     return localScannerFlashSwitcher;
@@ -287,9 +297,9 @@ public final class ScanSharedMaskView
   public final View getGalleryButton()
   {
     AppMethodBeat.i(52458);
-    View localView = this.vZE;
+    View localView = this.xkK;
     if (localView == null) {
-      k.aPZ("galleryButton");
+      k.aVY("galleryButton");
     }
     AppMethodBeat.o(52458);
     return localView;
@@ -298,9 +308,9 @@ public final class ScanSharedMaskView
   public final TextView getScanTipsView()
   {
     AppMethodBeat.i(52454);
-    TextView localTextView = this.vZC;
+    TextView localTextView = this.xkI;
     if (localTextView == null) {
-      k.aPZ("scanTips");
+      k.aVY("scanTips");
     }
     AppMethodBeat.o(52454);
     return localTextView;
@@ -309,28 +319,28 @@ public final class ScanSharedMaskView
   public final TextView getScanTitleView()
   {
     AppMethodBeat.i(52452);
-    TextView localTextView = this.vZB;
+    TextView localTextView = this.xkH;
     if (localTextView == null) {
-      k.aPZ("scanTitle");
+      k.aVY("scanTitle");
     }
     AppMethodBeat.o(52452);
     return localTextView;
   }
   
-  public final void pd(boolean paramBoolean)
+  public final void qb(boolean paramBoolean)
   {
     AppMethodBeat.i(52459);
     if (!paramBoolean)
     {
-      Object localObject = this.vZE;
+      Object localObject = this.xkK;
       if (localObject == null) {
-        k.aPZ("galleryButton");
+        k.aVY("galleryButton");
       }
       if (((View)localObject).getVisibility() == 0)
       {
-        localObject = this.vZE;
+        localObject = this.xkK;
         if (localObject == null) {
-          k.aPZ("galleryButton");
+          k.aVY("galleryButton");
         }
         localObject = ((View)localObject).animate();
         if (localObject != null)
@@ -364,22 +374,59 @@ public final class ScanSharedMaskView
     AppMethodBeat.o(52459);
   }
   
-  public final void pi(final boolean paramBoolean)
+  public final void qg(boolean paramBoolean)
+  {
+    int j = 0;
+    int i = 0;
+    AppMethodBeat.i(199675);
+    if ((paramBoolean) && (this.xbO != null))
+    {
+      localTextView = this.xkI;
+      if (localTextView == null) {
+        k.aVY("scanTips");
+      }
+      BaseScanRequest localBaseScanRequest = this.xbO;
+      if (localBaseScanRequest == null) {
+        k.fOy();
+      }
+      if ((!localBaseScanRequest.wVY) && (paramBoolean)) {}
+      for (;;)
+      {
+        localTextView.setVisibility(i);
+        AppMethodBeat.o(199675);
+        return;
+        i = 8;
+      }
+    }
+    TextView localTextView = this.xkI;
+    if (localTextView == null) {
+      k.aVY("scanTips");
+    }
+    if (paramBoolean) {}
+    for (i = j;; i = 8)
+    {
+      localTextView.setVisibility(i);
+      AppMethodBeat.o(199675);
+      return;
+    }
+  }
+  
+  public final void qh(final boolean paramBoolean)
   {
     float f2 = 1.0F;
     AppMethodBeat.i(170083);
-    ad.i("MicroMsg.ScanSharedMaskView", "alvinluo startTitleAnimation show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    Object localObject = this.vZB;
+    ac.i("MicroMsg.ScanSharedMaskView", "alvinluo startTitleAnimation show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    Object localObject = this.xkH;
     if (localObject == null) {
-      k.aPZ("scanTitle");
+      k.aVY("scanTitle");
     }
     if (paramBoolean)
     {
       f1 = 0.0F;
       ((TextView)localObject).setAlpha(f1);
-      localObject = this.vZB;
+      localObject = this.xkH;
       if (localObject == null) {
-        k.aPZ("scanTitle");
+        k.aVY("scanTitle");
       }
       ((TextView)localObject).setVisibility(0);
       if (!paramBoolean) {
@@ -389,14 +436,14 @@ public final class ScanSharedMaskView
     label206:
     for (float f1 = f2;; f1 = 0.0F)
     {
-      localObject = this.vZB;
+      localObject = this.xkH;
       if (localObject == null) {
-        k.aPZ("scanTitle");
+        k.aVY("scanTitle");
       }
       ((TextView)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, getResources().getColor(2131099658));
-      localObject = this.vZB;
+      localObject = this.xkH;
       if (localObject == null) {
-        k.aPZ("scanTitle");
+        k.aVY("scanTitle");
       }
       localObject = ((TextView)localObject).animate();
       if (localObject == null) {
@@ -420,14 +467,14 @@ public final class ScanSharedMaskView
     AppMethodBeat.o(170083);
   }
   
-  public final void pj(boolean paramBoolean)
+  public final void qi(boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(170086);
-    ad.i("MicroMsg.ScanSharedMaskView", "alvinluo onFlashStatusChanged show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (this.vZJ != paramBoolean)
+    ac.i("MicroMsg.ScanSharedMaskView", "alvinluo onFlashStatusChanged show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (this.xkP != paramBoolean)
     {
-      this.vZJ = paramBoolean;
+      this.xkP = paramBoolean;
       if (paramBoolean) {
         break label59;
       }
@@ -435,16 +482,16 @@ public final class ScanSharedMaskView
     label59:
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      pl(paramBoolean);
+      qk(paramBoolean);
       AppMethodBeat.o(170086);
       return;
     }
   }
   
-  public final void pk(boolean paramBoolean)
+  public final void qj(boolean paramBoolean)
   {
     AppMethodBeat.i(52460);
-    ad.v("MicroMsg.ScanSharedMaskView", "alvinluo animateShow show: %b, alpha: %f", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(getAlpha()) });
+    ac.v("MicroMsg.ScanSharedMaskView", "alvinluo animateShow show: %b, alpha: %f", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(getAlpha()) });
     if (paramBoolean)
     {
       if (getAlpha() == 0.0F)
@@ -462,8 +509,8 @@ public final class ScanSharedMaskView
   public final void setFlashStatus(boolean paramBoolean)
   {
     AppMethodBeat.i(170085);
-    ad.d("MicroMsg.ScanSharedMaskView", "alvinluo setFlashStatus show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.vZJ = paramBoolean;
+    ac.d("MicroMsg.ScanSharedMaskView", "alvinluo setFlashStatus show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.xkP = paramBoolean;
     AppMethodBeat.o(170085);
   }
   
@@ -471,7 +518,7 @@ public final class ScanSharedMaskView
   {
     AppMethodBeat.i(52457);
     k.h(paramOnClickListener, "onClickListener");
-    this.vZG = paramOnClickListener;
+    this.xkM = paramOnClickListener;
     AppMethodBeat.o(52457);
   }
   
@@ -479,21 +526,26 @@ public final class ScanSharedMaskView
   {
     AppMethodBeat.i(52456);
     k.h(paramOnClickListener, "onClickListener");
-    this.vZF = paramOnClickListener;
-    paramOnClickListener = this.vZE;
+    this.xkL = paramOnClickListener;
+    paramOnClickListener = this.xkK;
     if (paramOnClickListener == null) {
-      k.aPZ("galleryButton");
+      k.aVY("galleryButton");
     }
-    paramOnClickListener.setOnClickListener(this.vZF);
+    paramOnClickListener.setOnClickListener(this.xkL);
     AppMethodBeat.o(52456);
+  }
+  
+  public final void setScanRequest(BaseScanRequest paramBaseScanRequest)
+  {
+    this.xbO = paramBaseScanRequest;
   }
   
   public final void setScanTips(String paramString)
   {
     AppMethodBeat.i(52453);
-    TextView localTextView = this.vZC;
+    TextView localTextView = this.xkI;
     if (localTextView == null) {
-      k.aPZ("scanTips");
+      k.aVY("scanTips");
     }
     localTextView.setText((CharSequence)paramString);
     AppMethodBeat.o(52453);
@@ -502,9 +554,9 @@ public final class ScanSharedMaskView
   public final void setScanTitle(String paramString)
   {
     AppMethodBeat.i(52451);
-    TextView localTextView = this.vZB;
+    TextView localTextView = this.xkH;
     if (localTextView == null) {
-      k.aPZ("scanTitle");
+      k.aVY("scanTitle");
     }
     localTextView.setText((CharSequence)paramString);
     AppMethodBeat.o(52451);
@@ -512,10 +564,10 @@ public final class ScanSharedMaskView
   
   public final void setShowTitle(boolean paramBoolean)
   {
-    this.vZK = paramBoolean;
+    this.xkQ = paramBoolean;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$animateShowScanTips$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$animateShowScanTips$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class b
     implements Animator.AnimatorListener
   {
@@ -524,27 +576,15 @@ public final class ScanSharedMaskView
     public final void onAnimationCancel(Animator paramAnimator)
     {
       AppMethodBeat.i(170076);
-      paramAnimator = ScanSharedMaskView.i(this.vZM);
-      if (paramBoolean) {}
-      for (int i = 0;; i = 8)
-      {
-        paramAnimator.setVisibility(i);
-        AppMethodBeat.o(170076);
-        return;
-      }
+      ScanSharedMaskView.a(this.xkS, paramBoolean);
+      AppMethodBeat.o(170076);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(170075);
-      paramAnimator = ScanSharedMaskView.i(this.vZM);
-      if (paramBoolean) {}
-      for (int i = 0;; i = 8)
-      {
-        paramAnimator.setVisibility(i);
-        AppMethodBeat.o(170075);
-        return;
-      }
+      ScanSharedMaskView.a(this.xkS, paramBoolean);
+      AppMethodBeat.o(170075);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
@@ -552,58 +592,18 @@ public final class ScanSharedMaskView
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(ScanSharedMaskView paramScanSharedMaskView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(52449);
-      View.OnClickListener localOnClickListener = ScanSharedMaskView.a(this.vZM);
-      if (localOnClickListener != null)
-      {
-        localOnClickListener.onClick(paramView);
-        AppMethodBeat.o(52449);
-        return;
-      }
-      AppMethodBeat.o(52449);
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(ScanSharedMaskView paramScanSharedMaskView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(52450);
-      View.OnClickListener localOnClickListener = ScanSharedMaskView.b(this.vZM);
-      if (localOnClickListener != null)
-      {
-        localOnClickListener.onClick(paramView);
-        AppMethodBeat.o(52450);
-        return;
-      }
-      AppMethodBeat.o(52450);
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$initTitleTimer$1", "Ljava/util/TimerTask;", "run", "", "plugin-scan_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$initTitleTimer$1", "Ljava/util/TimerTask;", "run", "", "plugin-scan_release"})
   public static final class e
     extends TimerTask
   {
     public final void run()
     {
       AppMethodBeat.i(170078);
-      this.vZM.post((Runnable)new a(this));
+      this.xkS.post((Runnable)new a(this));
       AppMethodBeat.o(170078);
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -612,18 +612,18 @@ public final class ScanSharedMaskView
       public final void run()
       {
         AppMethodBeat.i(170077);
-        if (ScanSharedMaskView.c(this.vZN.vZM))
+        if (ScanSharedMaskView.c(this.xkT.xkS))
         {
           AppMethodBeat.o(170077);
           return;
         }
-        ScanSharedMaskView.d(this.vZN.vZM);
+        ScanSharedMaskView.d(this.xkT.xkS);
         AppMethodBeat.o(170077);
       }
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$startTitleAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$startTitleAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class f
     implements Animator.AnimatorListener
   {
@@ -632,7 +632,7 @@ public final class ScanSharedMaskView
     public final void onAnimationCancel(Animator paramAnimator)
     {
       AppMethodBeat.i(170080);
-      ad.v("MicroMsg.ScanSharedMaskView", "alvinluo startTitleAnimation onAnimationCancel show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      ac.v("MicroMsg.ScanSharedMaskView", "alvinluo startTitleAnimation onAnimationCancel show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(170080);
     }
     
@@ -640,8 +640,8 @@ public final class ScanSharedMaskView
     {
       int i = 0;
       AppMethodBeat.i(170079);
-      ad.v("MicroMsg.ScanSharedMaskView", "alvinluo startTitleAnimation onAnimationEnd show: %b, isFlashShow: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(ScanSharedMaskView.e(this.vZM)) });
-      paramAnimator = ScanSharedMaskView.f(this.vZM);
+      ac.v("MicroMsg.ScanSharedMaskView", "alvinluo startTitleAnimation onAnimationEnd show: %b, isFlashShow: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(ScanSharedMaskView.e(this.xkS)) });
+      paramAnimator = ScanSharedMaskView.f(this.xkS);
       if (paramBoolean) {}
       for (;;)
       {
@@ -649,14 +649,14 @@ public final class ScanSharedMaskView
         if (!paramBoolean) {
           break;
         }
-        ScanSharedMaskView.f(this.vZM).invalidate();
-        ScanSharedMaskView.g(this.vZM);
+        ScanSharedMaskView.f(this.xkS).invalidate();
+        ScanSharedMaskView.g(this.xkS);
         AppMethodBeat.o(170079);
         return;
         i = 8;
       }
-      if (!ScanSharedMaskView.e(this.vZM)) {
-        ScanSharedMaskView.h(this.vZM);
+      if (!ScanSharedMaskView.e(this.xkS)) {
+        ScanSharedMaskView.h(this.xkS);
       }
       AppMethodBeat.o(170079);
     }

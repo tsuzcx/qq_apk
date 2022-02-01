@@ -13,10 +13,10 @@ import com.tencent.mm.plugin.downloader_app.api.a.b;
 import com.tencent.mm.plugin.downloader_app.api.b;
 import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,7 +25,7 @@ public final class o
   private static void a(Context paramContext, final long paramLong, final a parama)
   {
     AppMethodBeat.i(89068);
-    final com.tencent.mm.plugin.downloader.g.a locala = d.oq(paramLong);
+    final com.tencent.mm.plugin.downloader.g.a locala = d.sc(paramLong);
     if (locala == null)
     {
       parama.f("fail", null);
@@ -39,7 +39,7 @@ public final class o
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(89053);
-        this.ofY.value = true;
+        this.oJz.value = true;
         o.a(locala, false, parama);
         AppMethodBeat.o(89053);
       }
@@ -48,7 +48,7 @@ public final class o
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(89054);
-        this.ofY.value = true;
+        this.oJz.value = true;
         try
         {
           localJSONObject.put("reserve_for_wifi", 0);
@@ -59,9 +59,9 @@ public final class o
           paramAnonymousDialogInterface.field_reserveInWifi = false;
           d.e(parama);
           if (parama.field_status == 0) {
-            ((c)g.ab(c.class)).pR(parama.field_appId);
+            ((c)g.ab(c.class)).tc(parama.field_appId);
           }
-          this.ofW.f(null, localJSONObject);
+          this.oJx.f(null, localJSONObject);
           AppMethodBeat.o(89054);
           return;
         }
@@ -75,7 +75,7 @@ public final class o
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(89055);
-        if (this.ofY.value)
+        if (this.oJz.value)
         {
           AppMethodBeat.o(89055);
           return;
@@ -92,19 +92,19 @@ public final class o
     AppMethodBeat.i(89066);
     if (paramLong <= 0L)
     {
-      ad.e("MicroMsg.JsApiGameDownloadManager", "fail, invalid downloadId = ".concat(String.valueOf(paramLong)));
+      ac.e("MicroMsg.JsApiGameDownloadManager", "fail, invalid downloadId = ".concat(String.valueOf(paramLong)));
       parama.f("invalid_downloadid", null);
       AppMethodBeat.o(89066);
       return;
     }
-    final com.tencent.mm.plugin.downloader.g.a locala = d.oq(paramLong);
+    final com.tencent.mm.plugin.downloader.g.a locala = d.sc(paramLong);
     if (locala == null)
     {
       parama.f("fail", null);
       AppMethodBeat.o(89066);
       return;
     }
-    Object localObject = f.bQt().oh(locala.field_downloadId);
+    Object localObject = f.bXJ().rT(locala.field_downloadId);
     if (localObject != null)
     {
       if (((FileDownloadTaskInfo)localObject).status == 1)
@@ -121,7 +121,7 @@ public final class o
         return;
       }
     }
-    if (ay.isWifi(paramContext))
+    if (ax.isWifi(paramContext))
     {
       a(locala, false, parama);
       AppMethodBeat.o(89066);
@@ -141,7 +141,7 @@ public final class o
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(89047);
-          this.ofV.value = true;
+          this.oJw.value = true;
           o.a(locala, false, parama);
           AppMethodBeat.o(89047);
         }
@@ -150,7 +150,7 @@ public final class o
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(89048);
-          this.ofV.value = true;
+          this.oJw.value = true;
           o.a(locala, true, parama);
           AppMethodBeat.o(89048);
         }
@@ -159,7 +159,7 @@ public final class o
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(89049);
-          if (this.ofV.value)
+          if (this.oJw.value)
           {
             AppMethodBeat.o(89049);
             return;
@@ -182,7 +182,7 @@ public final class o
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(89050);
-        o.a(this.oeS, false, parama);
+        o.a(this.oIu, false, parama);
         paramAnonymousDialogInterface.dismiss();
         AppMethodBeat.o(89050);
       }
@@ -192,7 +192,7 @@ public final class o
       {
         AppMethodBeat.i(89051);
         paramAnonymousDialogInterface.dismiss();
-        this.ofW.f("fail_network_not_wifi", null);
+        this.oJx.f("fail_network_not_wifi", null);
         AppMethodBeat.o(89051);
       }
     }, 2131101171);
@@ -208,10 +208,10 @@ public final class o
       AppMethodBeat.o(89064);
       return;
     }
-    if (!ay.isNetworkConnected(paramContext))
+    if (!ax.isNetworkConnected(paramContext))
     {
       parama1.f("network_not_connected", null);
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -220,14 +220,14 @@ public final class o
           AppMethodBeat.o(89046);
         }
       });
-      ad.i("MicroMsg.JsApiGameDownloadManager", " fail, network not ready");
+      ac.i("MicroMsg.JsApiGameDownloadManager", " fail, network not ready");
       AppMethodBeat.o(89064);
       return;
     }
-    if (!e.XG())
+    if (!e.YD())
     {
       parama1.f("sdcard_not_ready", null);
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -236,14 +236,14 @@ public final class o
           AppMethodBeat.o(89056);
         }
       });
-      ad.i("MicroMsg.JsApiGameDownloadManager", " fail, sdcard not ready");
+      ac.i("MicroMsg.JsApiGameDownloadManager", " fail, sdcard not ready");
       AppMethodBeat.o(89064);
       return;
     }
-    if ((parama.ohs > 0L) && (!h.oA(parama.ohs)) && (!h.oz(parama.ohs)))
+    if ((parama.oKS > 0L) && (!h.sm(parama.oKS)) && (!h.sl(parama.oKS)))
     {
       parama1.f("has_not_enough_space", null);
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -252,16 +252,16 @@ public final class o
           AppMethodBeat.o(89057);
         }
       });
-      ad.i("MicroMsg.JsApiGameDownloadManager", "fail, not enough space, require size = " + parama.ohs);
+      ac.i("MicroMsg.JsApiGameDownloadManager", "fail, not enough space, require size = " + parama.oKS);
       AppMethodBeat.o(89064);
       return;
     }
-    com.tencent.mm.plugin.downloader.g.a locala = d.Sn(parama.downloadUrl);
+    com.tencent.mm.plugin.downloader.g.a locala = d.Wz(parama.downloadUrl);
     Object localObject = new JSONObject();
     FileDownloadTaskInfo localFileDownloadTaskInfo;
     if (locala != null)
     {
-      localFileDownloadTaskInfo = f.bQt().oh(locala.field_downloadId);
+      localFileDownloadTaskInfo = f.bXJ().rT(locala.field_downloadId);
       if ((localFileDownloadTaskInfo != null) && (localFileDownloadTaskInfo.status != 1)) {}
     }
     try
@@ -281,19 +281,19 @@ public final class o
         parama1.f(null, (JSONObject)localObject);
         AppMethodBeat.o(89064);
         return;
-        if ((parama.ofN) && (locala.field_reserveInWifi) && (!ay.isWifi(paramContext)))
+        if ((parama.oJo) && (locala.field_reserveInWifi) && (!ax.isWifi(paramContext)))
         {
           a(paramContext, locala.field_downloadId, parama1);
           AppMethodBeat.o(89064);
           return;
         }
-        if (ay.isWifi(paramContext))
+        if (ax.isWifi(paramContext))
         {
           a(parama, parama1, false);
           AppMethodBeat.o(89064);
           return;
         }
-        if (parama.ofN)
+        if (parama.oJo)
         {
           localObject = new PBool();
           ((b)g.ab(b.class)).a(paramContext, parama.appId, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
@@ -301,7 +301,7 @@ public final class o
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(89058);
-              this.ofV.value = true;
+              this.oJw.value = true;
               o.a(parama, parama1, false);
               AppMethodBeat.o(89058);
             }
@@ -310,7 +310,7 @@ public final class o
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(89059);
-              this.ofV.value = true;
+              this.oJw.value = true;
               o.a(parama, parama1, true);
               AppMethodBeat.o(89059);
             }
@@ -319,7 +319,7 @@ public final class o
             public final void onCancel(DialogInterface paramAnonymousDialogInterface)
             {
               AppMethodBeat.i(89060);
-              if (this.ofV.value)
+              if (this.oJw.value)
               {
                 AppMethodBeat.o(89060);
                 return;
@@ -336,7 +336,7 @@ public final class o
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(89061);
-            o.a(this.oga, parama1, false);
+            o.a(this.oJB, parama1, false);
             paramAnonymousDialogInterface.dismiss();
             AppMethodBeat.o(89061);
           }
@@ -346,7 +346,7 @@ public final class o
           {
             AppMethodBeat.i(89062);
             paramAnonymousDialogInterface.dismiss();
-            this.ofW.f("network_not_wifi", null);
+            this.oJx.f("network_not_wifi", null);
             AppMethodBeat.o(89062);
           }
         }, 2131101171);
@@ -367,26 +367,26 @@ public final class o
   static void a(com.tencent.mm.plugin.downloader.g.a parama, boolean paramBoolean, final a parama1)
   {
     AppMethodBeat.i(89067);
-    com.tencent.mm.modelstat.d.c(10, "LuggageGameWebViewUI_resumeGameDownloadTask", "JsApiGameDownloadManager".hashCode());
+    com.tencent.mm.modelstat.d.d(10, "LuggageGameWebViewUI_resumeGameDownloadTask", "JsApiGameDownloadManager".hashCode());
     ((c)g.ab(c.class)).a(parama.field_downloadId, paramBoolean, new a.b()
     {
       public final void a(a.a paramAnonymousa, long paramAnonymousLong)
       {
         AppMethodBeat.i(89052);
-        if (paramAnonymousa == a.a.ogO) {
+        if (paramAnonymousa == a.a.oKo) {
           paramAnonymousa = new JSONObject();
         }
         try
         {
           paramAnonymousa.put("download_id", paramAnonymousLong);
-          if ((this.ofX) && (!ay.isWifi(aj.getContext()))) {
+          if ((this.oJy) && (!ax.isWifi(ai.getContext()))) {
             paramAnonymousa.put("reserve_for_wifi", 1);
           }
           label52:
           parama1.f(null, paramAnonymousa);
           AppMethodBeat.o(89052);
           return;
-          if (paramAnonymousa == a.a.ogR)
+          if (paramAnonymousa == a.a.oKr)
           {
             parama1.f("cancel", null);
             AppMethodBeat.o(89052);
@@ -408,54 +408,54 @@ public final class o
   static void a(com.tencent.mm.plugin.downloader_app.a.a parama, a parama1, boolean paramBoolean)
   {
     AppMethodBeat.i(89065);
-    parama.ofN = paramBoolean;
+    parama.oJo = paramBoolean;
     ((c)g.ab(c.class)).a(parama, new a.b()
     {
       public final void a(a.a paramAnonymousa, long paramAnonymousLong)
       {
         AppMethodBeat.i(89063);
         JSONObject localJSONObject = new JSONObject();
-        if (paramAnonymousa == a.a.ogO)
+        if (paramAnonymousa == a.a.oKo)
         {
-          com.tencent.mm.modelstat.d.c(10, "LuggageGameWebViewUI_addGameDownloadTask", "JsApiGameDownloadManager".hashCode());
+          com.tencent.mm.modelstat.d.d(10, "LuggageGameWebViewUI_addGameDownloadTask", "JsApiGameDownloadManager".hashCode());
           try
           {
             localJSONObject.put("download_id", paramAnonymousLong);
-            this.ofW.f(null, localJSONObject);
+            this.oJx.f(null, localJSONObject);
             AppMethodBeat.o(89063);
             return;
           }
           catch (JSONException paramAnonymousa)
           {
-            this.ofW.f(null, null);
+            this.oJx.f(null, null);
             AppMethodBeat.o(89063);
             return;
           }
         }
-        if (paramAnonymousa == a.a.ogQ) {
+        if (paramAnonymousa == a.a.oKq) {
           try
           {
             localJSONObject.put("download_id", paramAnonymousLong);
             localJSONObject.put("reserve_for_wifi", 1);
-            this.ofW.f(null, localJSONObject);
+            this.oJx.f(null, localJSONObject);
             AppMethodBeat.o(89063);
             return;
           }
           catch (JSONException paramAnonymousa)
           {
-            this.ofW.f(null, null);
+            this.oJx.f(null, null);
             AppMethodBeat.o(89063);
             return;
           }
         }
-        if (paramAnonymousa == a.a.ogR)
+        if (paramAnonymousa == a.a.oKr)
         {
-          this.ofW.f("cancel", null);
+          this.oJx.f("cancel", null);
           AppMethodBeat.o(89063);
           return;
         }
-        if (paramAnonymousa == a.a.ogP) {
-          this.ofW.f("fail", null);
+        if (paramAnonymousa == a.a.oKp) {
+          this.oJx.f("fail", null);
         }
         AppMethodBeat.o(89063);
       }

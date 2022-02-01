@@ -4,25 +4,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d<V>
 {
-  private static final d<Object> Kca;
-  private final c<V> Kcb;
+  private static final d<Object> LPv;
+  private final c<V> LPw;
   
   static
   {
     AppMethodBeat.i(61438);
-    Kca = new d(c.KbX);
+    LPv = new d(c.LPs);
     AppMethodBeat.o(61438);
   }
   
   private d(c<V> paramc)
   {
-    this.Kcb = paramc;
+    this.LPw = paramc;
   }
   
   private d<V> a(c<V> paramc)
   {
     AppMethodBeat.i(61435);
-    if (paramc == this.Kcb)
+    if (paramc == this.LPw)
     {
       AppMethodBeat.o(61435);
       return this;
@@ -32,15 +32,15 @@ final class d<V>
     return paramc;
   }
   
-  public static <V> d<V> fKu()
+  public static <V> d<V> gcX()
   {
-    return Kca;
+    return LPv;
   }
   
   public final V get(int paramInt)
   {
     AppMethodBeat.i(61436);
-    Object localObject = this.Kcb.get(paramInt);
+    Object localObject = this.LPw.get(paramInt);
     AppMethodBeat.o(61436);
     return localObject;
   }
@@ -48,14 +48,14 @@ final class d<V>
   public final d<V> s(int paramInt, V paramV)
   {
     AppMethodBeat.i(61437);
-    paramV = a(this.Kcb.e(paramInt, paramV));
+    paramV = a(this.LPw.e(paramInt, paramV));
     AppMethodBeat.o(61437);
     return paramV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.c.d
  * JD-Core Version:    0.7.0.1
  */

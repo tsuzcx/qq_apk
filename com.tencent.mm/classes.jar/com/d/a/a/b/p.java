@@ -6,28 +6,28 @@ import java.util.Iterator;
 abstract class p<F, T>
   implements Iterator<T>
 {
-  final Iterator<? extends F> bVW;
+  final Iterator<? extends F> bTE;
   
   p(Iterator<? extends F> paramIterator)
   {
-    this.bVW = ((Iterator)a.checkNotNull(paramIterator));
+    this.bTE = ((Iterator)a.checkNotNull(paramIterator));
   }
   
   abstract T ao(F paramF);
   
   public final boolean hasNext()
   {
-    return this.bVW.hasNext();
+    return this.bTE.hasNext();
   }
   
   public final T next()
   {
-    return ao(this.bVW.next());
+    return ao(this.bTE.next());
   }
   
   public final void remove()
   {
-    this.bVW.remove();
+    this.bTE.remove();
   }
 }
 

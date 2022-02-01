@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.downloader.c.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int ocT;
-  public boolean ocU;
-  public long ocV;
+  public int oGs;
+  public boolean oGt;
+  public long oGu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,26 +15,26 @@ public final class n
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.ocT);
-      paramVarArgs.bg(2, this.ocU);
-      paramVarArgs.aG(3, this.ocV);
+      paramVarArgs.aR(1, this.oGs);
+      paramVarArgs.bl(2, this.oGt);
+      paramVarArgs.aO(3, this.oGu);
       AppMethodBeat.o(153056);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bA(1, this.ocT);
-      int i = f.a.a.b.b.a.fY(2);
-      int j = f.a.a.b.b.a.q(3, this.ocV);
+      paramInt = f.a.a.b.b.a.bx(1, this.oGs);
+      int i = f.a.a.b.b.a.fK(2);
+      int j = f.a.a.b.b.a.p(3, this.oGu);
       AppMethodBeat.o(153056);
       return paramInt + 0 + (i + 1) + j;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(153056);
@@ -50,15 +50,15 @@ public final class n
         AppMethodBeat.o(153056);
         return -1;
       case 1: 
-        localn.ocT = locala.KhF.xS();
+        localn.oGs = locala.LVo.xF();
         AppMethodBeat.o(153056);
         return 0;
       case 2: 
-        localn.ocU = locala.KhF.fHu();
+        localn.oGt = locala.LVo.fZX();
         AppMethodBeat.o(153056);
         return 0;
       }
-      localn.ocV = locala.KhF.xT();
+      localn.oGu = locala.LVo.xG();
       AppMethodBeat.o(153056);
       return 0;
     }
@@ -68,7 +68,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.a.a.n
  * JD-Core Version:    0.7.0.1
  */

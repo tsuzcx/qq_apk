@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -18,8 +18,8 @@ public final class av
   {
     AppMethodBeat.i(45492);
     paramJSONObject = q.getOAID();
-    ad.i("MicroMsg.JsApiGetOAID", "getOAID, oaid=".concat(String.valueOf(paramJSONObject)));
-    if (bt.isNullOrNil(paramJSONObject))
+    ac.i("MicroMsg.JsApiGetOAID", "getOAID, oaid=".concat(String.valueOf(paramJSONObject)));
+    if (bs.isNullOrNil(paramJSONObject))
     {
       paramc.h(paramInt, e("fail", null));
       AppMethodBeat.o(45492);

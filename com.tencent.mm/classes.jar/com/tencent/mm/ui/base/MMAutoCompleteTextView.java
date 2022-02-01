@@ -12,21 +12,21 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.widget.AutoCompleteTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class MMAutoCompleteTextView
   extends AutoCompleteTextView
 {
-  final Drawable BVD;
-  private a FWm;
+  final Drawable DnU;
+  private a Hwa;
   
   public MMAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141840);
-    this.BVD = getResources().getDrawable(2131232862);
-    this.BVD.setBounds(0, 0, this.BVD.getIntrinsicWidth(), this.BVD.getIntrinsicHeight());
-    exv();
+    this.DnU = getResources().getDrawable(2131232862);
+    this.DnU.setBounds(0, 0, this.DnU.getIntrinsicWidth(), this.DnU.getIntrinsicHeight());
+    eMP();
     setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -43,7 +43,7 @@ public class MMAutoCompleteTextView
           AppMethodBeat.o(141836);
           return false;
         }
-        if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMAutoCompleteTextView.this.BVD.getIntrinsicWidth())
+        if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMAutoCompleteTextView.this.DnU.getIntrinsicWidth())
         {
           paramAnonymousView.setText("");
           MMAutoCompleteTextView.a(MMAutoCompleteTextView.this);
@@ -77,27 +77,27 @@ public class MMAutoCompleteTextView
     AppMethodBeat.o(141840);
   }
   
-  private void exv()
+  private void eMP()
   {
     AppMethodBeat.i(141841);
     if ((getText().toString().equals("")) || (!isFocused()))
     {
-      exx();
+      eMR();
       AppMethodBeat.o(141841);
       return;
     }
-    exw();
+    eMQ();
     AppMethodBeat.o(141841);
   }
   
-  private void exw()
+  private void eMQ()
   {
     AppMethodBeat.i(141842);
-    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.BVD, getCompoundDrawables()[3]);
+    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.DnU, getCompoundDrawables()[3]);
     AppMethodBeat.o(141842);
   }
   
-  private void exx()
+  private void eMR()
   {
     AppMethodBeat.i(141843);
     setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
@@ -107,10 +107,10 @@ public class MMAutoCompleteTextView
   public void setSpilter(String paramString)
   {
     AppMethodBeat.i(141844);
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
-      this.FWm = new a(paramString);
-      addTextChangedListener(this.FWm);
+      this.Hwa = new a(paramString);
+      addTextChangedListener(this.Hwa);
     }
     AppMethodBeat.o(141844);
   }
@@ -118,17 +118,17 @@ public class MMAutoCompleteTextView
   final class a
     implements TextWatcher
   {
-    private String FWo;
+    private String Hwc;
     
     public a(String paramString)
     {
-      this.FWo = paramString;
+      this.Hwc = paramString;
     }
     
     public final void afterTextChanged(Editable paramEditable)
     {
       AppMethodBeat.i(141839);
-      if (paramEditable.toString().endsWith(this.FWo)) {
+      if (paramEditable.toString().endsWith(this.Hwc)) {
         MMAutoCompleteTextView.this.showDropDown();
       }
       AppMethodBeat.o(141839);
@@ -141,7 +141,7 @@ public class MMAutoCompleteTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMAutoCompleteTextView
  * JD-Core Version:    0.7.0.1
  */

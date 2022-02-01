@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import com.tencent.luggage.d.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends f
@@ -15,16 +15,16 @@ public final class a
   {
     super(paramg, null, paramBundle);
     AppMethodBeat.i(83116);
-    Bn();
+    AR();
     ((e)getWebView()).setShouldCleanPkgWhenDestroy(true);
     AppMethodBeat.o(83116);
   }
   
-  public final View AN()
+  public final View Ar()
   {
     AppMethodBeat.i(83117);
-    View localView = super.AN();
-    this.ASW.setBackgroundColor(0);
+    View localView = super.Ar();
+    this.Clj.setBackgroundColor(0);
     AppMethodBeat.o(83117);
     return localView;
   }
@@ -32,43 +32,43 @@ public final class a
   public final void B(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(180135);
-    fF(false);
+    gb(false);
     AppMethodBeat.o(180135);
   }
   
-  public final void acf(String paramString)
+  public final void agX(String paramString)
   {
     AppMethodBeat.i(83119);
-    this.ASV.setPullDownEnabled(false);
+    this.Cli.setPullDownEnabled(false);
     AppMethodBeat.o(83119);
   }
   
-  public final boolean bEZ()
+  public final boolean bMn()
   {
     return false;
   }
   
-  public final void cBz() {}
+  public final void cOK() {}
   
-  public final void dn(String paramString, int paramInt)
+  public final void dt(String paramString, int paramInt)
   {
     AppMethodBeat.i(83120);
-    super.dn("微信游戏", paramInt);
+    super.dt("微信游戏", paramInt);
     AppMethodBeat.o(83120);
   }
   
-  public final void lN(boolean paramBoolean) {}
+  public final void mG(boolean paramBoolean) {}
   
   public final void onForeground()
   {
     AppMethodBeat.i(83118);
-    ad.i("MicroMsg.GameFloatLayerWebPage", "onForeground");
+    ac.i("MicroMsg.GameFloatLayerWebPage", "onForeground");
     super.onForeground();
-    dn("微信游戏", 0);
-    k localk = this.ASV;
+    dt("微信游戏", 0);
+    k localk = this.Cli;
     localk.setPullDownEnabled(false);
-    localk.ATR.setVisibility(8);
-    localk.ATQ.setBackgroundColor(0);
+    localk.Cme.setVisibility(8);
+    localk.Cmd.setBackgroundColor(0);
     localk.setBackgroundColor(0);
     AppMethodBeat.o(83118);
   }

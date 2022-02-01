@@ -10,12 +10,12 @@ import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/popview/SmileyPopupHelper;", "Lcom/tencent/mm/view/popview/BasePopupHelper;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "lastAnchor", "Landroid/view/View;", "smileyPopView", "Lcom/tencent/mm/view/popview/AbstractPopView;", "windowManager", "Landroid/view/WindowManager;", "onLongPress", "", "anchor", "item", "", "onMove", "", "onTouchEnd", "updatePopupView", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/popview/SmileyPopupHelper;", "Lcom/tencent/mm/view/popview/BasePopupHelper;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "lastAnchor", "Landroid/view/View;", "smileyPopView", "Lcom/tencent/mm/view/popview/AbstractPopView;", "windowManager", "Landroid/view/WindowManager;", "onLongPress", "", "anchor", "item", "", "onMove", "", "onTouchEnd", "updatePopupView", "plugin-emojisdk_release"})
 public final class d
   extends a
 {
-  private View IaI;
-  private AbstractPopView Ibe;
+  private AbstractPopView JBU;
+  private View JBy;
   private final Context context;
   private final WindowManager windowManager;
   
@@ -40,12 +40,12 @@ public final class d
     if (((paramObject instanceof ae)) && (paramView.isEnabled()))
     {
       Object localObject;
-      if (this.Ibe == null)
+      if (this.JBU == null)
       {
-        this.Ibe = c.b(this.context, paramObject);
+        this.JBU = c.b(this.context, paramObject);
         WindowManager localWindowManager = this.windowManager;
-        View localView = (View)this.Ibe;
-        localObject = this.Ibe;
+        View localView = (View)this.JBU;
+        localObject = this.JBU;
         if (localObject != null)
         {
           localObject = ((AbstractPopView)localObject).getWindowLayoutParams();
@@ -54,18 +54,18 @@ public final class d
       }
       else
       {
-        localObject = this.Ibe;
+        localObject = this.JBU;
         if (localObject != null) {
           ((AbstractPopView)localObject).setVisibility(0);
         }
-        c.a(this.Ibe, paramObject);
-        paramObject = this.Ibe;
+        c.a(this.JBU, paramObject);
+        paramObject = this.JBU;
         if (paramObject != null) {
-          paramObject.gD(paramView);
+          paramObject.gU(paramView);
         }
         paramObject = this.windowManager;
-        localObject = (View)this.Ibe;
-        paramView = this.Ibe;
+        localObject = (View)this.JBU;
+        paramView = this.JBU;
         if (paramView == null) {
           break label165;
         }
@@ -80,7 +80,7 @@ public final class d
         break;
       }
     }
-    paramView = this.Ibe;
+    paramView = this.JBU;
     if (paramView != null)
     {
       paramView.setVisibility(8);
@@ -96,7 +96,7 @@ public final class d
     k.h(paramView, "anchor");
     if (((paramObject instanceof ae)) && (paramView.isEnabled()))
     {
-      this.IaI = paramView;
+      this.JBy = paramView;
       e(paramView, paramObject);
       AppMethodBeat.o(184004);
       return true;
@@ -109,31 +109,31 @@ public final class d
   {
     AppMethodBeat.i(184005);
     k.h(paramView, "anchor");
-    if (k.g(this.IaI, paramView))
+    if (k.g(this.JBy, paramView))
     {
       AppMethodBeat.o(184005);
       return;
     }
-    this.IaI = paramView;
+    this.JBy = paramView;
     e(paramView, paramObject);
     AppMethodBeat.o(184005);
   }
   
-  public final void dwD()
+  public final void dLc()
   {
     AppMethodBeat.i(184007);
-    this.IaI = null;
-    AbstractPopView localAbstractPopView = this.Ibe;
+    this.JBy = null;
+    AbstractPopView localAbstractPopView = this.JBU;
     if (localAbstractPopView != null) {
       this.windowManager.removeView((View)localAbstractPopView);
     }
-    this.Ibe = null;
+    this.JBU = null;
     AppMethodBeat.o(184007);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.popview.d
  * JD-Core Version:    0.7.0.1
  */

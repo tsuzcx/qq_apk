@@ -43,48 +43,52 @@ public abstract class Interceptor<T_TARGET>
     //   33: aload_0
     //   34: monitorexit
     //   35: return
-    //   36: new 45	java/lang/StringBuilder
-    //   39: dup
-    //   40: ldc 47
-    //   42: invokespecial 50	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   45: aload_1
-    //   46: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   49: ldc 56
-    //   51: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: pop
-    //   55: goto -27 -> 28
-    //   58: astore_1
-    //   59: aload_0
-    //   60: aconst_null
-    //   61: putfield 23	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mTarget	Ljava/lang/Object;
-    //   64: new 61	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException
-    //   67: dup
-    //   68: aload_1
-    //   69: invokespecial 64	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException:<init>	(Ljava/lang/Throwable;)V
-    //   72: athrow
-    //   73: astore_1
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload_1
-    //   77: athrow
+    //   36: ldc 12
+    //   38: new 45	java/lang/StringBuilder
+    //   41: dup
+    //   42: ldc 47
+    //   44: invokespecial 50	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   47: aload_1
+    //   48: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   51: ldc 56
+    //   53: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: iconst_0
+    //   60: anewarray 5	java/lang/Object
+    //   63: invokestatic 69	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   66: goto -38 -> 28
+    //   69: astore_1
+    //   70: aload_0
+    //   71: aconst_null
+    //   72: putfield 23	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mTarget	Ljava/lang/Object;
+    //   75: new 71	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException
+    //   78: dup
+    //   79: aload_1
+    //   80: invokespecial 74	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException:<init>	(Ljava/lang/Throwable;)V
+    //   83: athrow
+    //   84: astore_1
+    //   85: aload_0
+    //   86: monitorexit
+    //   87: aload_1
+    //   88: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	78	0	this	Interceptor
-    //   6	40	1	localObject1	Object
-    //   58	11	1	localThrowable	java.lang.Throwable
-    //   73	4	1	localObject2	Object
+    //   0	89	0	this	Interceptor
+    //   6	42	1	localObject1	Object
+    //   69	11	1	localThrowable	java.lang.Throwable
+    //   84	4	1	localObject2	Object
     //   17	8	2	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   2	18	58	java/lang/Throwable
-    //   23	28	58	java/lang/Throwable
-    //   28	33	58	java/lang/Throwable
-    //   36	55	58	java/lang/Throwable
-    //   2	18	73	finally
-    //   23	28	73	finally
-    //   28	33	73	finally
-    //   36	55	73	finally
-    //   59	73	73	finally
+    //   2	18	69	java/lang/Throwable
+    //   23	28	69	java/lang/Throwable
+    //   28	33	69	java/lang/Throwable
+    //   36	66	69	java/lang/Throwable
+    //   2	18	84	finally
+    //   23	28	84	finally
+    //   28	33	84	finally
+    //   36	66	84	finally
+    //   70	84	84	finally
   }
   
   /* Error */
@@ -112,10 +116,10 @@ public abstract class Interceptor<T_TARGET>
     //   30: monitorexit
     //   31: return
     //   32: astore_2
-    //   33: new 61	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException
+    //   33: new 71	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException
     //   36: dup
     //   37: aload_2
-    //   38: invokespecial 64	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException:<init>	(Ljava/lang/Throwable;)V
+    //   38: invokespecial 74	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException:<init>	(Ljava/lang/Throwable;)V
     //   41: athrow
     //   42: astore_2
     //   43: aload_0

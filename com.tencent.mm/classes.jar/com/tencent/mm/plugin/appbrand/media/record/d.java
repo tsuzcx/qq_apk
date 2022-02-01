@@ -2,47 +2,47 @@ package com.tencent.mm.plugin.appbrand.media.record;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class d
 {
-  public static final Long cUd;
-  public static final Long cUf;
-  public static final Long cUg;
-  public static final Long cUh;
-  private static List<String> cUk;
-  public static long cUl;
-  public static final Long kQF;
-  public static final Long kQG;
+  public static final Long cRA;
+  public static final Long cRC;
+  public static final Long cRD;
+  public static final Long cRE;
+  private static List<String> cRH;
+  public static long cRI;
+  public static final Long lse;
+  public static final Long lsg;
   
   static
   {
     AppMethodBeat.i(146323);
-    cUd = Long.valueOf(259200000L);
-    cUf = Long.valueOf(86400000L);
-    cUg = Long.valueOf(43200000L);
-    cUh = Long.valueOf(240000L);
-    kQF = Long.valueOf(60000L);
-    kQG = cUf;
-    cUl = 0L;
-    cUk = new ArrayList(10);
+    cRA = Long.valueOf(259200000L);
+    cRC = Long.valueOf(86400000L);
+    cRD = Long.valueOf(43200000L);
+    cRE = Long.valueOf(240000L);
+    lse = Long.valueOf(60000L);
+    lsg = cRC;
+    cRI = 0L;
+    cRH = new ArrayList(10);
     AppMethodBeat.o(146323);
   }
   
-  public static void bhN()
+  public static void boH()
   {
     AppMethodBeat.i(146320);
     long l = System.currentTimeMillis();
-    if (l - cUl <= kQG.longValue())
+    if (l - cRI <= lsg.longValue())
     {
-      ad.e("MicroMsg.Record.AudioRecordCacheClean", "The last clean time is in AUDIO_RECORD_NO_SCAN_TIME time");
+      ac.e("MicroMsg.Record.AudioRecordCacheClean", "The last clean time is in AUDIO_RECORD_NO_SCAN_TIME time");
       AppMethodBeat.o(146320);
       return;
     }
-    ad.i("MicroMsg.Record.AudioRecordCacheClean", "start clean audio record file");
-    cUl = l;
+    ac.i("MicroMsg.Record.AudioRecordCacheClean", "start clean audio record file");
+    cRI = l;
     b.c(new Runnable()
     {
       public final void run()
@@ -57,7 +57,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.d
  * JD-Core Version:    0.7.0.1
  */

@@ -31,56 +31,56 @@ public class TAVComposition
   
   public TAVComposition()
   {
-    AppMethodBeat.i(204619);
+    AppMethodBeat.i(191991);
     this.videoChannels = new ArrayList();
     this.audioChannels = new ArrayList();
     this.backgroundColor = -16777216;
-    AppMethodBeat.o(204619);
+    AppMethodBeat.o(191991);
   }
   
   public TAVComposition(List<TAVClip> paramList)
   {
     this(paramList, paramList);
-    AppMethodBeat.i(204617);
-    AppMethodBeat.o(204617);
+    AppMethodBeat.i(191989);
+    AppMethodBeat.o(191989);
   }
   
   public TAVComposition(List<? extends TAVTransitionableVideo> paramList, List<? extends TAVTransitionableAudio> paramList1)
   {
     this();
-    AppMethodBeat.i(204618);
+    AppMethodBeat.i(191990);
     addVideoChannel(paramList);
     addAudioChannel(paramList1);
-    AppMethodBeat.o(204618);
+    AppMethodBeat.o(191990);
   }
   
   public void addAudioChannel(List<? extends TAVTransitionableAudio> paramList)
   {
-    AppMethodBeat.i(204621);
+    AppMethodBeat.i(191993);
     if (this.audioChannels == null) {
       this.audioChannels = new ArrayList();
     }
     this.audioChannels.add(new ArrayList(paramList));
-    AppMethodBeat.o(204621);
+    AppMethodBeat.o(191993);
   }
   
   public void addVideoChannel(List<? extends TAVTransitionableVideo> paramList)
   {
-    AppMethodBeat.i(204620);
+    AppMethodBeat.i(191992);
     if (this.videoChannels == null) {
       this.videoChannels = new ArrayList();
     }
     this.videoChannels.add(new ArrayList(paramList));
-    AppMethodBeat.o(204620);
+    AppMethodBeat.o(191992);
   }
   
   public void attachVideoEffectChain(IVideoEffectContext paramIVideoEffectContext)
   {
-    AppMethodBeat.i(204622);
+    AppMethodBeat.i(191994);
     this.sourceVideoEffect = paramIVideoEffectContext.getSourceVideoEffect();
     this.videoMixEffect = paramIVideoEffectContext.getVideoMixEffect();
     this.globalVideoEffect = paramIVideoEffectContext.getGlobalVideoEffect();
-    AppMethodBeat.o(204622);
+    AppMethodBeat.o(191994);
   }
   
   public List<List<? extends TAVTransitionableAudio>> getAudioChannels()
@@ -100,11 +100,11 @@ public class TAVComposition
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(204623);
+    AppMethodBeat.i(191995);
     if (this.videoChannels == null)
     {
       localObject1 = CMTime.CMTimeZero;
-      AppMethodBeat.o(204623);
+      AppMethodBeat.o(191995);
       return localObject1;
     }
     int j = this.videoChannels.size();
@@ -142,7 +142,7 @@ public class TAVComposition
     {
       i += 1;
       break;
-      AppMethodBeat.o(204623);
+      AppMethodBeat.o(191995);
       return localObject2;
       localObject1 = localObject2;
       break label129;
@@ -247,15 +247,15 @@ public class TAVComposition
   
   public String toString()
   {
-    AppMethodBeat.i(204624);
+    AppMethodBeat.i(191996);
     String str = "TAVComposition{renderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", backgroundColor=" + this.backgroundColor + ", frameDuration=" + this.frameDuration + ", videoChannels=" + this.videoChannels + ", audioChannels=" + this.audioChannels + ", overlays=" + this.overlays + ", audios=" + this.audios + '}';
-    AppMethodBeat.o(204624);
+    AppMethodBeat.o(191996);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tavkit.composition.TAVComposition
  * JD-Core Version:    0.7.0.1
  */

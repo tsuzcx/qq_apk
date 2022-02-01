@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.messenger.foundation.a.q;
 import com.tencent.mm.plugin.newtips.a.i;
 import com.tencent.mm.plugin.newtips.a.l;
 import com.tencent.mm.plugin.newtips.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
@@ -18,12 +18,12 @@ public final class a
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private static a udE;
-  private i udF;
-  private b udG;
-  private com.tencent.mm.plugin.newtips.b.d udH;
-  private com.tencent.mm.plugin.newtips.a.e udI;
-  private l udJ;
+  private static a vmD;
+  private i vmE;
+  private b vmF;
+  private com.tencent.mm.plugin.newtips.b.d vmG;
+  private com.tencent.mm.plugin.newtips.a.e vmH;
+  private l vmI;
   
   static
   {
@@ -51,93 +51,93 @@ public final class a
   {
     super(c.class);
     AppMethodBeat.i(127199);
-    this.udF = null;
-    this.udG = null;
-    this.udH = null;
-    this.udI = null;
-    this.udJ = new l();
+    this.vmE = null;
+    this.vmF = null;
+    this.vmG = null;
+    this.vmH = null;
+    this.vmI = new l();
     AppMethodBeat.o(127199);
   }
   
-  public static a cWr()
+  public static a djZ()
   {
     try
     {
       AppMethodBeat.i(127200);
-      if (udE == null) {
-        udE = new a();
+      if (vmD == null) {
+        vmD = new a();
       }
-      a locala = udE;
+      a locala = vmD;
       AppMethodBeat.o(127200);
       return locala;
     }
     finally {}
   }
   
-  public static i cWs()
+  public static l dka()
+  {
+    AppMethodBeat.i(204964);
+    g.agP().afT();
+    if (djZ().vmE == null) {
+      djZ().vmE = new i();
+    }
+    l locall = djZ().vmI;
+    AppMethodBeat.o(204964);
+    return locall;
+  }
+  
+  public static i dkb()
   {
     AppMethodBeat.i(127203);
-    g.afz().aeD();
-    if (cWr().udF == null) {
-      cWr().udF = new i();
+    g.agP().afT();
+    if (djZ().vmE == null) {
+      djZ().vmE = new i();
     }
-    i locali = cWr().udF;
+    i locali = djZ().vmE;
     AppMethodBeat.o(127203);
     return locali;
   }
   
-  public static b cWt()
+  public static b dkc()
   {
     AppMethodBeat.i(127204);
-    g.afz().aeD();
-    if (cWr().udG == null)
+    g.agP().afT();
+    if (djZ().vmF == null)
     {
-      localObject = cWr();
-      g.afC();
-      ((a)localObject).udG = new b(g.afB().gda);
+      localObject = djZ();
+      g.agS();
+      ((a)localObject).vmF = new b(g.agR().ghG);
     }
-    Object localObject = cWr().udG;
+    Object localObject = djZ().vmF;
     AppMethodBeat.o(127204);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.newtips.b.d cWu()
+  public static com.tencent.mm.plugin.newtips.b.d dkd()
   {
     AppMethodBeat.i(127205);
-    g.afz().aeD();
-    if (cWr().udH == null)
+    g.agP().afT();
+    if (djZ().vmG == null)
     {
-      localObject = cWr();
-      g.afC();
-      ((a)localObject).udH = new com.tencent.mm.plugin.newtips.b.d(g.afB().gda);
+      localObject = djZ();
+      g.agS();
+      ((a)localObject).vmG = new com.tencent.mm.plugin.newtips.b.d(g.agR().ghG);
     }
-    Object localObject = cWr().udH;
+    Object localObject = djZ().vmG;
     AppMethodBeat.o(127205);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.newtips.a.e cWv()
+  public static com.tencent.mm.plugin.newtips.a.e dke()
   {
     AppMethodBeat.i(127206);
-    g.afz().aeD();
-    if (cWr().udI == null) {
-      cWr().udI = new com.tencent.mm.plugin.newtips.a.e();
+    g.agP().afT();
+    if (djZ().vmH == null) {
+      djZ().vmH = new com.tencent.mm.plugin.newtips.a.e();
     }
-    com.tencent.mm.plugin.newtips.a.e locale = cWr().udI;
+    com.tencent.mm.plugin.newtips.a.e locale = djZ().vmH;
     AppMethodBeat.o(127206);
     return locale;
-  }
-  
-  public static l fXX()
-  {
-    AppMethodBeat.i(202386);
-    g.afz().aeD();
-    if (cWr().udF == null) {
-      cWr().udF = new i();
-    }
-    l locall = cWr().udJ;
-    AppMethodBeat.o(202386);
-    return locall;
   }
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
@@ -149,12 +149,12 @@ public final class a
   {
     AppMethodBeat.i(127201);
     super.onAccountInitialized(paramc);
-    ((q)g.ad(q.class)).getSysCmdMsgExtension().a("newtips", this.udJ);
-    cWs();
-    int i = com.tencent.mm.plugin.newtips.a.d.udR;
-    paramc = com.tencent.mm.plugin.newtips.a.d.udY;
-    i.e(i, com.tencent.mm.plugin.newtips.a.d.udQ, "", paramc);
-    ad.i("MicroMsg.NewTips.NewTipsManager", "dancy register dynamic newtips, tipsId:%s, path:%s", new Object[] { Integer.valueOf(i), paramc });
+    ((q)g.ad(q.class)).getSysCmdMsgExtension().a("newtips", this.vmI);
+    dkb();
+    int i = com.tencent.mm.plugin.newtips.a.d.vmQ;
+    paramc = com.tencent.mm.plugin.newtips.a.d.vmX;
+    i.g(i, com.tencent.mm.plugin.newtips.a.d.vmP, "", paramc);
+    ac.i("MicroMsg.NewTips.NewTipsManager", "dancy register dynamic newtips, tipsId:%s, path:%s", new Object[] { Integer.valueOf(i), paramc });
     AppMethodBeat.o(127201);
   }
   
@@ -162,13 +162,13 @@ public final class a
   {
     AppMethodBeat.i(127202);
     super.onAccountRelease();
-    ((q)g.ad(q.class)).getSysCmdMsgExtension().b("newtips", this.udJ);
+    ((q)g.ad(q.class)).getSysCmdMsgExtension().b("newtips", this.vmI);
     AppMethodBeat.o(127202);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a
  * JD-Core Version:    0.7.0.1
  */

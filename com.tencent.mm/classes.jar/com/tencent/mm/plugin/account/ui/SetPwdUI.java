@@ -13,31 +13,31 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.modelsimple.z;
 import com.tencent.mm.plugin.account.a.b.a.a;
 import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.crt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.cxc;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 
 public abstract class SetPwdUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  protected ProgressDialog fpP = null;
-  protected String ixH;
-  protected String ixI;
-  public boolean lA = true;
+  protected ProgressDialog fts = null;
+  protected String iXK;
+  protected String iXL;
+  public boolean mz = true;
   
   protected ProgressDialog a(Context paramContext, String paramString, DialogInterface.OnCancelListener paramOnCancelListener)
   {
@@ -46,93 +46,93 @@ public abstract class SetPwdUI
   
   protected abstract void a(a.a parama);
   
-  protected final void aKH()
-  {
-    this.ixH = aKj();
-    this.ixI = aKk();
-    if (bt.isNullOrNil(this.ixH)) {}
-    do
-    {
-      return;
-      if (!this.ixH.equals(this.ixI))
-      {
-        a(a.a.iox);
-        return;
-      }
-      if (this.ixH.length() > 16)
-      {
-        a(a.a.ioy);
-        return;
-      }
-      if (bt.aFS(this.ixH))
-      {
-        com.tencent.mm.ui.base.h.j(this, 2131762309, 2131762346);
-        return;
-      }
-      if (!bt.aFX(this.ixH))
-      {
-        if ((this.ixH.length() >= 8) && (this.ixH.length() < 16))
-        {
-          a(a.a.ioA);
-          return;
-        }
-        a(a.a.ioz);
-        return;
-      }
-      hideVKB();
-      final n localn = aKi();
-      com.tencent.mm.kernel.g.aeS().a(localn, 0);
-      getString(2131755906);
-      this.fpP = a(this, getString(2131762273), new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(128728);
-          com.tencent.mm.kernel.g.aeS().a(localn);
-          AppMethodBeat.o(128728);
-        }
-      });
-    } while ((!aKt()) || (this.lA));
-    ad.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 0");
-    com.tencent.mm.plugin.report.service.h.vKh.f(11868, new Object[] { Integer.valueOf(0) });
-  }
+  protected abstract n aQZ();
   
-  protected abstract n aKi();
+  protected abstract String aRa();
   
-  protected abstract String aKj();
+  protected abstract String aRb();
   
-  protected abstract String aKk();
-  
-  protected int aKl()
+  protected int aRc()
   {
     return 383;
   }
   
-  protected void aKs()
+  protected void aRj()
   {
-    aKH();
+    aRy();
   }
   
-  public boolean aKt()
+  public boolean aRk()
   {
     return false;
   }
   
+  protected final void aRy()
+  {
+    this.iXK = aRa();
+    this.iXL = aRb();
+    if (bs.isNullOrNil(this.iXK)) {}
+    do
+    {
+      return;
+      if (!this.iXK.equals(this.iXL))
+      {
+        a(a.a.iOD);
+        return;
+      }
+      if (this.iXK.length() > 16)
+      {
+        a(a.a.iOE);
+        return;
+      }
+      if (bs.aLj(this.iXK))
+      {
+        com.tencent.mm.ui.base.h.l(this, 2131762309, 2131762346);
+        return;
+      }
+      if (!bs.aLo(this.iXK))
+      {
+        if ((this.iXK.length() >= 8) && (this.iXK.length() < 16))
+        {
+          a(a.a.iOG);
+          return;
+        }
+        a(a.a.iOF);
+        return;
+      }
+      hideVKB();
+      final n localn = aQZ();
+      com.tencent.mm.kernel.g.agi().a(localn, 0);
+      getString(2131755906);
+      this.fts = a(this, getString(2131762273), new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(128728);
+          com.tencent.mm.kernel.g.agi().a(localn);
+          AppMethodBeat.o(128728);
+        }
+      });
+    } while ((!aRk()) || (this.mz));
+    ac.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 0");
+    com.tencent.mm.plugin.report.service.h.wUl.f(11868, new Object[] { Integer.valueOf(0) });
+  }
+  
   protected final boolean n(int paramInt1, int paramInt2, String paramString)
   {
-    return com.tencent.mm.plugin.account.a.a.hYu.a(getContext(), paramInt1, paramInt2, paramString);
+    return com.tencent.mm.plugin.account.a.a.iyy.a(getContext(), paramInt1, paramInt2, paramString);
   }
   
   protected abstract boolean o(int paramInt1, int paramInt2, String paramString);
   
   public void onBackPressed()
   {
-    if (this.lA)
+    if (this.mz)
     {
-      if (aKt())
+      if (aRk())
       {
-        ad.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 1");
-        com.tencent.mm.plugin.report.service.h.vKh.f(11868, new Object[] { Integer.valueOf(1) });
+        ac.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 1");
+        com.tencent.mm.plugin.report.service.h.wUl.f(11868, new Object[] { Integer.valueOf(1) });
       }
       super.onBackPressed();
     }
@@ -140,28 +140,28 @@ public abstract class SetPwdUI
   
   public void onCreate(Bundle paramBundle)
   {
-    com.tencent.mm.kernel.g.aeS().a(aKl(), this);
+    com.tencent.mm.kernel.g.agi().a(aRc(), this);
     super.onCreate(paramBundle);
     addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(128729);
-        SetPwdUI.this.aKs();
+        SetPwdUI.this.aRj();
         AppMethodBeat.o(128729);
         return true;
       }
-    }, null, r.b.FOB);
+    }, null, s.b.Hom);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(128730);
         paramAnonymousMenuItem = SetPwdUI.this;
-        if ((paramAnonymousMenuItem.aKt()) && (paramAnonymousMenuItem.lA))
+        if ((paramAnonymousMenuItem.aRk()) && (paramAnonymousMenuItem.mz))
         {
-          ad.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 1");
-          com.tencent.mm.plugin.report.service.h.vKh.f(11868, new Object[] { Integer.valueOf(1) });
+          ac.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 1");
+          com.tencent.mm.plugin.report.service.h.wUl.f(11868, new Object[] { Integer.valueOf(1) });
         }
         paramAnonymousMenuItem.hideVKB();
         paramAnonymousMenuItem.setResult(0);
@@ -174,18 +174,18 @@ public abstract class SetPwdUI
   
   public void onDestroy()
   {
-    com.tencent.mm.kernel.g.aeS().b(aKl(), this);
+    com.tencent.mm.kernel.g.agi().b(aRc(), this);
     super.onDestroy();
   }
   
   public void onSceneEnd(final int paramInt1, final int paramInt2, final String paramString, n paramn)
   {
-    if (this.fpP != null)
+    if (this.fts != null)
     {
-      this.fpP.dismiss();
-      this.fpP = null;
+      this.fts.dismiss();
+      this.fts = null;
     }
-    if (paramn.getType() != aKl()) {}
+    if (paramn.getType() != aRc()) {}
     label288:
     do
     {
@@ -197,25 +197,25 @@ public abstract class SetPwdUI
         }
       } while ((paramInt1 != 0) || (paramInt2 != 0));
       String str;
-      if (bt.isNullOrNil((String)com.tencent.mm.kernel.g.afB().afk().get(6, null)))
+      if (bs.isNullOrNil((String)com.tencent.mm.kernel.g.agR().agA().get(6, null)))
       {
-        ad.i("MicroMsg.SetPwdUI", "has not bind mobile");
+        ac.i("MicroMsg.SetPwdUI", "has not bind mobile");
         str = getString(2131761625);
         paramn = (z)paramn;
-        if ((paramn.rr == null) || (paramn.rr.gUT.gUX == null)) {
+        if ((paramn.rr == null) || (paramn.rr.hvs.hvw == null)) {
           break label288;
         }
       }
-      for (paramn = (crt)paramn.rr.gUT.gUX;; paramn = null)
+      for (paramn = (cxc)paramn.rr.hvs.hvw;; paramn = null)
       {
-        if ((paramn != null) && (paramn.CBc != null))
+        if ((paramn != null) && (paramn.DTA != null))
         {
-          paramn = paramn.CBc.getBuffer().toByteArray();
-          SharedPreferences.Editor localEditor = aj.getContext().getSharedPreferences("auth_info_key_prefs", com.tencent.mm.compatible.util.g.XN()).edit();
+          paramn = paramn.DTA.getBuffer().toByteArray();
+          SharedPreferences.Editor localEditor = ai.getContext().getSharedPreferences("auth_info_key_prefs", com.tencent.mm.compatible.util.g.YK()).edit();
           localEditor.putBoolean("key_auth_info_prefs_created", true);
-          localEditor.putInt("key_auth_update_version", d.CpK);
-          localEditor.putString("_auth_key", bt.cy(paramn));
-          com.tencent.mm.kernel.g.afz();
+          localEditor.putInt("key_auth_update_version", d.DIc);
+          localEditor.putString("_auth_key", bs.cx(paramn));
+          com.tencent.mm.kernel.g.agP();
           localEditor.putInt("_auth_uin", com.tencent.mm.kernel.a.getUin());
           localEditor.commit();
         }
@@ -234,7 +234,7 @@ public abstract class SetPwdUI
           }
         });
         return;
-        ad.i("MicroMsg.SetPwdUI", "has bind mobile");
+        ac.i("MicroMsg.SetPwdUI", "has bind mobile");
         str = getString(2131756527);
         break;
       }
@@ -250,7 +250,7 @@ public abstract class SetPwdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.SetPwdUI
  * JD-Core Version:    0.7.0.1
  */

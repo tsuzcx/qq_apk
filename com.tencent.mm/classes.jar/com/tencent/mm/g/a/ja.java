@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
 import com.tencent.mm.sdk.b.b;
 
 public final class ja
   extends b
 {
-  public a dmY;
-  public b dmZ;
+  public a dks;
   
   public ja()
   {
@@ -17,27 +15,21 @@ public final class ja
   
   private ja(byte paramByte)
   {
-    AppMethodBeat.i(125621);
-    this.dmY = new a();
-    this.dmZ = new b();
-    this.ESR = false;
+    AppMethodBeat.i(184504);
+    this.dks = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125621);
+    AppMethodBeat.o(184504);
   }
   
   public static final class a
   {
-    public String dgg;
-  }
-  
-  public static final class b
-  {
-    public TimeLineObject dna;
+    public int dkt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ja
  * JD-Core Version:    0.7.0.1
  */

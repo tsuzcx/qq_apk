@@ -18,7 +18,7 @@ public class a
     AppMethodBeat.o(69202);
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "BindCardForPayProcess";
   }

@@ -14,32 +14,32 @@ public final class i
   public i(h paramh)
   {
     super(paramh);
-    AppMethodBeat.i(191375);
+    AppMethodBeat.i(196231);
     c(getDB(), "appbrandnotifymessage");
     a(new h.b(32, "appbrandnotifymessage", h.b.a(3500001L, 4000000L, 105000001L, 108000000L)));
-    AppMethodBeat.o(191375);
+    AppMethodBeat.o(196231);
   }
   
-  public final String aHk(String paramString)
+  public final String aME(String paramString)
   {
-    AppMethodBeat.i(191376);
+    AppMethodBeat.i(196232);
     if ((paramString != null) && (paramString.length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!w.tn(paramString)) {
+      if (!w.xq(paramString)) {
         break;
       }
-      AppMethodBeat.o(191376);
+      AppMethodBeat.o(196232);
       return "appbrandnotifymessage";
     }
-    AppMethodBeat.o(191376);
+    AppMethodBeat.o(196232);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.i
  * JD-Core Version:    0.7.0.1
  */

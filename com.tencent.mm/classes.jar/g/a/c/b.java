@@ -5,9 +5,9 @@ import java.io.InputStream;
 
 public final class b
 {
-  public int Epz;
-  public int KtT;
-  public InputStream KtU;
+  public int FMB;
+  public int MhC;
+  public InputStream MhD;
   
   public static void c(short[] paramArrayOfShort)
   {
@@ -23,26 +23,26 @@ public final class b
   {
     AppMethodBeat.i(155362);
     int i = paramArrayOfShort[paramInt];
-    int j = (this.KtT >>> 11) * i;
-    if ((this.Epz ^ 0x80000000) < (0x80000000 ^ j))
+    int j = (this.MhC >>> 11) * i;
+    if ((this.FMB ^ 0x80000000) < (0x80000000 ^ j))
     {
-      this.KtT = j;
+      this.MhC = j;
       paramArrayOfShort[paramInt] = ((short)(i + (2048 - i >>> 5)));
-      if ((this.KtT & 0xFF000000) == 0)
+      if ((this.MhC & 0xFF000000) == 0)
       {
-        this.Epz = (this.Epz << 8 | this.KtU.read());
-        this.KtT <<= 8;
+        this.FMB = (this.FMB << 8 | this.MhD.read());
+        this.MhC <<= 8;
       }
       AppMethodBeat.o(155362);
       return 0;
     }
-    this.KtT -= j;
-    this.Epz -= j;
+    this.MhC -= j;
+    this.FMB -= j;
     paramArrayOfShort[paramInt] = ((short)(i - (i >>> 5)));
-    if ((this.KtT & 0xFF000000) == 0)
+    if ((this.MhC & 0xFF000000) == 0)
     {
-      this.Epz = (this.Epz << 8 | this.KtU.read());
-      this.KtT <<= 8;
+      this.FMB = (this.FMB << 8 | this.MhD.read());
+      this.MhC <<= 8;
     }
     AppMethodBeat.o(155362);
     return 1;

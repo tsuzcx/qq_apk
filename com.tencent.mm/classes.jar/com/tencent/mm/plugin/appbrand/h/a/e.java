@@ -7,46 +7,46 @@ import java.util.Map;
 public abstract class e
   implements d
 {
-  protected a jhU;
-  protected String jhV;
-  protected String jhW;
-  protected Map<String, String> jhX = new HashMap();
+  protected a jIj;
+  protected String jIk;
+  protected String jIl;
+  protected Map<String, String> jIm = new HashMap();
   protected String mUrl;
   
   public e(String paramString1, String paramString2)
   {
     this.mUrl = paramString1;
-    this.jhW = paramString2;
-    this.jhV = aUD();
-    this.jhU = a.jhZ;
+    this.jIl = paramString2;
+    this.jIk = bbB();
+    this.jIj = a.jIo;
   }
   
   protected final void a(a parama)
   {
-    this.jhU = parama;
+    this.jIj = parama;
   }
   
-  public abstract String aUD();
+  public abstract String bbB();
   
-  protected final void aUF()
+  protected final void bbD()
   {
-    cs("Content-Type", "text/xml;charset=\"utf-8\"");
-    cs("Connection", "close");
+    cC("Content-Type", "text/xml;charset=\"utf-8\"");
+    cC("Connection", "close");
   }
   
-  public final a aUG()
+  public final a bbE()
   {
-    return this.jhU;
+    return this.jIj;
   }
   
-  public final Map<String, String> aUH()
+  public final Map<String, String> bbF()
   {
-    return this.jhX;
+    return this.jIm;
   }
   
-  public final void cs(String paramString1, String paramString2)
+  public final void cC(String paramString1, String paramString2)
   {
-    this.jhX.put(paramString1, paramString2);
+    this.jIm.put(paramString1, paramString2);
   }
   
   public final String getUrl()
@@ -61,15 +61,15 @@ public abstract class e
     static
     {
       AppMethodBeat.i(158886);
-      jhY = new a("GET", 0, "GET");
-      jhZ = new a("POST", 1, "POST");
-      jia = new a("NOTIFY", 2, "NOTIFY");
-      jib = new a("M_SEARCH", 3, "M-SEARCH");
-      jic = new a("SUBSCRIBE", 4, "SUBSCRIBE");
-      jid = new a("UNSUBSCRIBE", 5, "UNSUBSCRIBE");
-      jie = new a("RENEW_SUBSCRIBE", 6, "SUBSCRIBE");
-      jif = new a("UNKNOWN", 7, "UNKNOWN");
-      jig = new a[] { jhY, jhZ, jia, jib, jic, jid, jie, jif };
+      jIn = new a("GET", 0, "GET");
+      jIo = new a("POST", 1, "POST");
+      jIp = new a("NOTIFY", 2, "NOTIFY");
+      jIq = new a("M_SEARCH", 3, "M-SEARCH");
+      jIr = new a("SUBSCRIBE", 4, "SUBSCRIBE");
+      jIs = new a("UNSUBSCRIBE", 5, "UNSUBSCRIBE");
+      jIt = new a("RENEW_SUBSCRIBE", 6, "SUBSCRIBE");
+      jIu = new a("UNKNOWN", 7, "UNKNOWN");
+      jIv = new a[] { jIn, jIo, jIp, jIq, jIr, jIs, jIt, jIu };
       AppMethodBeat.o(158886);
     }
     

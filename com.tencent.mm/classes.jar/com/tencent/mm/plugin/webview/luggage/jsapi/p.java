@@ -18,18 +18,18 @@ public class p
   public final void b(a.a parama)
   {
     AppMethodBeat.i(78548);
-    JSONObject localJSONObject = parama.bZV.bZb;
+    JSONObject localJSONObject = parama.bWS.bVY;
     String str = localJSONObject.optString("eventName");
     localJSONObject = localJSONObject.optJSONObject("data");
-    Iterator localIterator = i.elk().iterator();
+    Iterator localIterator = i.eAG().iterator();
     while (localIterator.hasNext()) {
-      ((n)localIterator.next()).caI.a(new d.1(str, localJSONObject));
+      ((n)localIterator.next()).bXF.a(new d.1(str, localJSONObject));
     }
     parama.a("", null);
     AppMethodBeat.o(78548);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

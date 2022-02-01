@@ -44,7 +44,6 @@ public final class si
       localPaint2.setStrokeMiter(4.0F);
       localPaint2.setPathEffect(null);
       c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
-      localCanvas.saveLayerAlpha(null, 128, 31);
       localCanvas.save();
       localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 0.333333F, 0.0F, 1.0F, 0.222222F);
       ((Matrix)localObject1).reset();
@@ -70,7 +69,7 @@ public final class si
       localCanvas.restore();
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
-      localPaint1.setColor(-11711155);
+      localPaint1.setColor(-16139513);
       localObject1 = c.n(paramVarArgs);
       ((Path)localObject1).moveTo(94.666664F, 75.727776F);
       ((Path)localObject1).lineTo(94.666664F, 72.727776F);
@@ -112,7 +111,6 @@ public final class si
       ((Path)localObject1).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject1, 2);
       localCanvas.drawPath((Path)localObject1, localPaint1);
-      localCanvas.restore();
       localCanvas.restore();
       localCanvas.restore();
       localCanvas.restore();

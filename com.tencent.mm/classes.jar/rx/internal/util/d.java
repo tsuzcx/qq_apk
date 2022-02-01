@@ -16,10 +16,10 @@ import rx.internal.util.unsafe.UnsafeAccess;
 public abstract class d<T>
   implements j
 {
-  private final long KrD = 67L;
-  private final AtomicReference<Future<?>> KrE = new AtomicReference();
-  Queue<T> aGt;
-  final int hpA = 0;
+  private final long Mfm = 67L;
+  private final AtomicReference<Future<?>> Mfn = new AtomicReference();
+  Queue<T> aHj;
+  final int hQc = 0;
   final int maxSize = 0;
   
   public d()
@@ -30,18 +30,18 @@ public abstract class d<T>
   private d(byte paramByte)
   {
     if (UnsafeAccess.isUnsafeAvailable()) {}
-    for (this.aGt = new MpmcArrayQueue(Math.max(this.maxSize, 1024));; this.aGt = new ConcurrentLinkedQueue())
+    for (this.aHj = new MpmcArrayQueue(Math.max(this.maxSize, 1024));; this.aHj = new ConcurrentLinkedQueue())
     {
       start();
       return;
     }
   }
   
-  protected abstract T fNM();
+  protected abstract T ggC();
   
   public final void shutdown()
   {
-    Future localFuture = (Future)this.KrE.getAndSet(null);
+    Future localFuture = (Future)this.Mfn.getAndSet(null);
     if (localFuture != null) {
       localFuture.cancel(false);
     }
@@ -51,11 +51,11 @@ public abstract class d<T>
   {
     for (;;)
     {
-      if (this.KrE.get() != null) {
+      if (this.Mfn.get() != null) {
         label10:
         return;
       }
-      Object localObject = rx.internal.c.d.fNH();
+      Object localObject = rx.internal.c.d.ggx();
       try
       {
         localObject = ((ScheduledExecutorService)localObject).scheduleAtFixedRate(new Runnable()
@@ -65,13 +65,13 @@ public abstract class d<T>
             int j = 0;
             int i = 0;
             AppMethodBeat.i(90198);
-            int k = d.this.aGt.size();
-            if (k < d.this.hpA)
+            int k = d.this.aHj.size();
+            if (k < d.this.hQc)
             {
               j = d.this.maxSize;
               while (i < j - k)
               {
-                d.this.aGt.add(d.this.fNM());
+                d.this.aHj.add(d.this.ggC());
                 i += 1;
               }
               AppMethodBeat.o(90198);
@@ -83,14 +83,14 @@ public abstract class d<T>
               i = j;
               while (i < k - m)
               {
-                d.this.aGt.poll();
+                d.this.aHj.poll();
                 i += 1;
               }
             }
             AppMethodBeat.o(90198);
           }
-        }, this.KrD, this.KrD, TimeUnit.SECONDS);
-        if (this.KrE.compareAndSet(null, localObject)) {
+        }, this.Mfm, this.Mfm, TimeUnit.SECONDS);
+        if (this.Mfn.compareAndSet(null, localObject)) {
           break label10;
         }
         ((Future)localObject).cancel(false);
@@ -104,7 +104,7 @@ public abstract class d<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.util.d
  * JD-Core Version:    0.7.0.1
  */

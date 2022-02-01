@@ -8,106 +8,105 @@ import android.os.Looper;
 import android.os.Message;
 import com.jg.JgMethodChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fk;
-import com.tencent.mm.g.a.op;
-import com.tencent.mm.g.a.op.a;
+import com.tencent.mm.g.a.fl;
+import com.tencent.mm.g.a.oy;
+import com.tencent.mm.g.a.oy.a;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.bz;
 import com.tencent.mm.model.o;
 import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
-import com.tencent.mm.model.x;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.storagebase.h.b;
+import com.tencent.mm.ui.conversation.h;
 import java.util.HashMap;
 
 public final class b
   implements aw
 {
-  private a pMG;
-  private b pMH;
-  boolean pMI;
-  private n.b pMJ;
-  boolean pMK;
-  long pML;
-  private final long pMM;
-  private final long pMN;
-  private final String pMO;
-  int pMP;
-  private ap pMQ;
+  private a qvo;
+  private b qvp;
+  boolean qvq;
+  private n.b qvr;
+  boolean qvs;
+  long qvt;
+  private final long qvu;
+  private final long qvv;
+  private final String qvw;
+  int qvx;
+  private ao qvy;
   
   public b()
   {
     AppMethodBeat.i(24556);
-    this.pMI = false;
-    this.pMJ = new n.b()
+    this.qvq = false;
+    this.qvr = new n.b()
     {
       public final void a(int paramAnonymousInt, n paramAnonymousn, Object paramAnonymousObject)
       {
         AppMethodBeat.i(24549);
-        ad.d("MicroMsg.SubCoreExtQLauncher", "onNotifyChange");
-        if (b.this.pMI)
+        ac.d("MicroMsg.SubCoreExtQLauncher", "onNotifyChange");
+        if (b.this.qvq)
         {
           AppMethodBeat.o(24549);
           return;
         }
-        az.arV();
-        if (paramAnonymousn != com.tencent.mm.model.c.apR())
+        az.ayM();
+        if (paramAnonymousn != com.tencent.mm.model.c.awG())
         {
           AppMethodBeat.o(24549);
           return;
         }
         if ((paramAnonymousn == null) || (paramAnonymousObject == null))
         {
-          ad.e("MicroMsg.SubCoreExtQLauncher", "onConversationChange, wrong args");
+          ac.e("MicroMsg.SubCoreExtQLauncher", "onConversationChange, wrong args");
           AppMethodBeat.o(24549);
           return;
         }
-        if ((aj.getContext() == null) || (!az.afw()))
+        if ((ai.getContext() == null) || (!az.agM()))
         {
-          ad.w("MicroMsg.SubCoreExtQLauncher", "wrong account status");
+          ac.w("MicroMsg.SubCoreExtQLauncher", "wrong account status");
           AppMethodBeat.o(24549);
           return;
         }
-        b.this.cfo();
+        b.this.cmV();
         AppMethodBeat.o(24549);
       }
     };
-    this.pMK = false;
-    this.pML = 0L;
-    this.pMM = 300000L;
-    this.pMN = 4000L;
-    this.pMO = "fun1";
-    this.pMP = 0;
-    this.pMQ = new ap(Looper.getMainLooper())
+    this.qvs = false;
+    this.qvt = 0L;
+    this.qvu = 300000L;
+    this.qvv = 4000L;
+    this.qvw = "fun1";
+    this.qvx = 0;
+    this.qvy = new ao(Looper.getMainLooper())
     {
       @JgMethodChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.INTENTCHECK})
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(24552);
-        if ((aj.getContext() == null) || (!az.afw()))
+        if ((ai.getContext() == null) || (!az.agM()))
         {
-          ad.w("MicroMsg.SubCoreExtQLauncher", "wrong status");
+          ac.w("MicroMsg.SubCoreExtQLauncher", "wrong status");
           AppMethodBeat.o(24552);
           return;
         }
         if (b.a(b.this))
         {
-          int i = b.cfn();
-          if ((i > 0) || (i < b.this.pMP))
+          int i = b.cmU();
+          if ((i > 0) || (i < b.this.qvx))
           {
-            ad.d("MicroMsg.SubCoreExtQLauncher", "notify unread");
+            ac.d("MicroMsg.SubCoreExtQLauncher", "notify unread");
             paramAnonymousMessage = new Intent("com.tencent.mm.ext.ACTION_EXT_NOTIFY");
             paramAnonymousMessage.putExtra("EXTRA_EXT_NOTIFY_TYPE", "NEW_UNREAD");
-            aj.getContext().sendBroadcast(paramAnonymousMessage);
-            b.this.pMP = i;
+            ai.getContext().sendBroadcast(paramAnonymousMessage);
+            b.this.qvx = i;
           }
         }
         AppMethodBeat.o(24552);
@@ -116,49 +115,49 @@ public final class b
     AppMethodBeat.o(24556);
   }
   
-  public static b cfm()
+  public static b cmT()
   {
     AppMethodBeat.i(24557);
-    az.arP();
-    b localb2 = (b)bz.ut("plugin.extqlauncher");
+    az.ayG();
+    b localb2 = (b)bz.yz("plugin.extqlauncher");
     b localb1 = localb2;
     if (localb2 == null)
     {
       localb1 = new b();
-      az.arP().a("plugin.extqlauncher", localb1);
+      az.ayG().a("plugin.extqlauncher", localb1);
     }
     AppMethodBeat.o(24557);
     return localb1;
   }
   
-  public static int cfn()
+  public static int cmU()
   {
     AppMethodBeat.i(24560);
-    if (!az.afw())
+    if (!az.agM())
     {
-      ad.w("MicroMsg.SubCoreExtQLauncher", "getMMUnread account not ready");
+      ac.w("MicroMsg.SubCoreExtQLauncher", "getMMUnread account not ready");
       AppMethodBeat.o(24560);
       return 0;
     }
-    int j = x.tz(w.gMn);
-    int k = o.aqz();
+    int j = h.fsb();
+    int k = o.axp();
     int i = j;
-    if ((u.aqK() & 0x8000) == 0) {
+    if ((u.axA() & 0x8000) == 0) {
       i = j - k;
     }
     AppMethodBeat.o(24560);
     return i;
   }
   
-  public final void cfo()
+  public final void clearPluginData(int paramInt) {}
+  
+  public final void cmV()
   {
     AppMethodBeat.i(24561);
-    this.pMQ.removeMessages(0);
-    this.pMQ.sendEmptyMessageDelayed(0, 4000L);
+    this.qvy.removeMessages(0);
+    this.qvy.sendEmptyMessageDelayed(0, 4000L);
     AppMethodBeat.o(24561);
   }
-  
-  public final void clearPluginData(int paramInt) {}
   
   public final HashMap<Integer, h.b> getBaseDBFactories()
   {
@@ -168,104 +167,104 @@ public final class b
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(24558);
-    az.arV();
-    com.tencent.mm.model.c.apR().a(this.pMJ);
-    if (this.pMG == null) {
-      this.pMG = new a();
+    az.ayM();
+    com.tencent.mm.model.c.awG().a(this.qvr);
+    if (this.qvo == null) {
+      this.qvo = new a();
     }
-    com.tencent.mm.sdk.b.a.ESL.c(this.pMG);
-    if (this.pMH == null) {
-      this.pMH = new b((byte)0);
+    com.tencent.mm.sdk.b.a.GpY.c(this.qvo);
+    if (this.qvp == null) {
+      this.qvp = new b((byte)0);
     }
-    com.tencent.mm.sdk.b.a.ESL.c(this.pMH);
+    com.tencent.mm.sdk.b.a.GpY.c(this.qvp);
     AppMethodBeat.o(24558);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(24559);
-    if (this.pMG != null) {
-      com.tencent.mm.sdk.b.a.ESL.d(this.pMG);
+    if (this.qvo != null) {
+      com.tencent.mm.sdk.b.a.GpY.d(this.qvo);
     }
-    if (this.pMH != null) {
-      com.tencent.mm.sdk.b.a.ESL.d(this.pMH);
+    if (this.qvp != null) {
+      com.tencent.mm.sdk.b.a.GpY.d(this.qvp);
     }
-    az.arV();
-    com.tencent.mm.model.c.apR().b(this.pMJ);
-    this.pMQ.removeMessages(0);
+    az.ayM();
+    com.tencent.mm.model.c.awG().b(this.qvr);
+    this.qvy.removeMessages(0);
     AppMethodBeat.o(24559);
   }
   
   public final void onSdcardMount(boolean paramBoolean) {}
   
   public static final class a
-    extends com.tencent.mm.sdk.b.c<fk>
+    extends com.tencent.mm.sdk.b.c<fl>
   {
     public a()
     {
       AppMethodBeat.i(161364);
-      this.__eventId = fk.class.getName().hashCode();
+      this.__eventId = fl.class.getName().hashCode();
       AppMethodBeat.o(161364);
     }
   }
   
   final class b
-    extends com.tencent.mm.sdk.b.c<op>
+    extends com.tencent.mm.sdk.b.c<oy>
   {
     private b()
     {
       AppMethodBeat.i(161365);
-      this.__eventId = op.class.getName().hashCode();
+      this.__eventId = oy.class.getName().hashCode();
       AppMethodBeat.o(161365);
     }
     
-    private boolean a(op paramop)
+    private boolean a(oy paramoy)
     {
       AppMethodBeat.i(24554);
       if (!b.a(b.this))
       {
-        ad.e("MicroMsg.SubCoreExtQLauncher", "!isPluginInstall");
+        ac.e("MicroMsg.SubCoreExtQLauncher", "!isPluginInstall");
         AppMethodBeat.o(24554);
         return false;
       }
-      if (aj.getContext() == null)
+      if (ai.getContext() == null)
       {
-        ad.e("MicroMsg.SubCoreExtQLauncher", "MMApplicationContext null");
+        ac.e("MicroMsg.SubCoreExtQLauncher", "MMApplicationContext null");
         AppMethodBeat.o(24554);
         return false;
       }
-      ad.d("MicroMsg.SubCoreExtQLauncher", "GetScanCodeEvent callback flag = %s, url = %s", new Object[] { Integer.valueOf(paramop.dtO.dtM), paramop.dtO.scanResult });
+      ac.d("MicroMsg.SubCoreExtQLauncher", "GetScanCodeEvent callback flag = %s, url = %s", new Object[] { Integer.valueOf(paramoy.drz.drx), paramoy.drz.scanResult });
       do
       {
         try
         {
-          int i = paramop.dtO.dtM;
+          int i = paramoy.drz.drx;
           switch (i)
           {
           }
         }
-        catch (Exception paramop)
+        catch (Exception paramoy)
         {
           for (;;)
           {
             Object localObject;
             Context localContext;
-            ad.e("MicroMsg.SubCoreExtQLauncher", "Exception in ScanCodeResultEvent, %s", new Object[] { paramop.getMessage() });
+            ac.e("MicroMsg.SubCoreExtQLauncher", "Exception in ScanCodeResultEvent, %s", new Object[] { paramoy.getMessage() });
           }
         }
         AppMethodBeat.o(24554);
         return false;
-      } while ((bt.isNullOrNil(paramop.dtO.scanResult)) || (!paramop.dtO.scanResult.startsWith("qlauncher://")));
+      } while ((bs.isNullOrNil(paramoy.drz.scanResult)) || (!paramoy.drz.scanResult.startsWith("qlauncher://")));
       localObject = new Intent("android.intent.action.VIEW");
       ((Intent)localObject).setComponent(new ComponentName("com.tencent.qlauncher", "com.tencent.qlauncher.thirdpartycoop.DispatchActivity"));
-      ((Intent)localObject).setData(Uri.parse(paramop.dtO.scanResult));
+      ((Intent)localObject).setData(Uri.parse(paramoy.drz.scanResult));
       ((Intent)localObject).setFlags(268435456);
-      localContext = aj.getContext();
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/extqlauncher/SubCoreExtQLauncher$GetScanCodeListener", "callback", "(Lcom/tencent/mm/autogen/events/PublishScanCodeResultEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      localContext = ai.getContext();
+      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/extqlauncher/SubCoreExtQLauncher$GetScanCodeListener", "callback", "(Lcom/tencent/mm/autogen/events/PublishScanCodeResultEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/plugin/extqlauncher/SubCoreExtQLauncher$GetScanCodeListener", "callback", "(Lcom/tencent/mm/autogen/events/PublishScanCodeResultEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramop.dtP.ret = 1;
+      paramoy.drA.ret = 1;
       AppMethodBeat.o(24554);
       return true;
     }
@@ -273,7 +272,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.extqlauncher.b
  * JD-Core Version:    0.7.0.1
  */

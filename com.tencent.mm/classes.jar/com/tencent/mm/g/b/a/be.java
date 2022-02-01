@@ -6,141 +6,49 @@ import com.tencent.mm.plugin.report.a;
 public final class be
   extends a
 {
-  public long dMB = 0L;
-  public long dMH = 0L;
-  public long dOA = 0L;
-  public long dOB = 0L;
-  public long dOC = 0L;
-  public long dOD = 0L;
-  public long dOE = 0L;
-  public long dOy = 0L;
-  public long dOz = 0L;
+  private long dCQ;
+  private long dKB;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(120836);
+    AppMethodBeat.i(195023);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dMB);
+    ((StringBuffer)localObject).append(this.dKB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dOy);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dMH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dOz);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dOA);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dOB);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dOC);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dOD);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dOE);
+    ((StringBuffer)localObject).append(this.dCQ);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(120836);
+    arz((String)localObject);
+    AppMethodBeat.o(195023);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(120837);
+    AppMethodBeat.i(195024);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Source:").append(this.dMB);
+    ((StringBuffer)localObject).append("Type:").append(this.dKB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CaptureTime:").append(this.dOy);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Result:").append(this.dMH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadTime:").append(this.dOz);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OCRTranslateTime:").append(this.dOA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TotalTime:").append(this.dOB);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ShowOriginCount:").append(this.dOC);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasSaveResultImage:").append(this.dOD);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasSaveOriginImage:").append(this.dOE);
+    ((StringBuffer)localObject).append("Action:").append(this.dCQ);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(120837);
+    AppMethodBeat.o(195024);
     return localObject;
   }
   
-  public final long Qp()
+  public final be fk(long paramLong)
   {
-    return this.dMH;
-  }
-  
-  public final long Qq()
-  {
-    return this.dOz;
-  }
-  
-  public final long Qr()
-  {
-    return this.dOC;
-  }
-  
-  public final be Qs()
-  {
-    this.dOD = 1L;
+    this.dKB = paramLong;
     return this;
   }
   
-  public final be Qt()
+  public final be fl(long paramLong)
   {
-    this.dOE = 1L;
-    return this;
-  }
-  
-  public final be eN(long paramLong)
-  {
-    this.dMB = paramLong;
-    return this;
-  }
-  
-  public final be eO(long paramLong)
-  {
-    this.dOy = paramLong;
-    return this;
-  }
-  
-  public final be eP(long paramLong)
-  {
-    this.dMH = paramLong;
-    return this;
-  }
-  
-  public final be eQ(long paramLong)
-  {
-    this.dOz = paramLong;
-    return this;
-  }
-  
-  public final be eR(long paramLong)
-  {
-    this.dOA = paramLong;
-    return this;
-  }
-  
-  public final be eS(long paramLong)
-  {
-    this.dOB = paramLong;
-    return this;
-  }
-  
-  public final be eT(long paramLong)
-  {
-    this.dOC = paramLong;
+    this.dCQ = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 15435;
+    return 19952;
   }
 }
 

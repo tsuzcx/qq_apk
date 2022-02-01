@@ -7,44 +7,44 @@ import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/connect/action/GetBLEDeviceRSSIAction;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/model/Action;", "()V", "myTag", "", "doActionImpl", "", "getName", "onReadRemoteRssi", "gatt", "Landroid/bluetooth/BluetoothGatt;", "rssi", "", "status", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/connect/action/GetBLEDeviceRSSIAction;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/model/Action;", "()V", "myTag", "", "doActionImpl", "", "getName", "onReadRemoteRssi", "gatt", "Landroid/bluetooth/BluetoothGatt;", "rssi", "", "status", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class c
   extends com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a
 {
-  private final String jJy;
+  private final String kjY;
   
   public c()
   {
     AppMethodBeat.i(183550);
-    this.jJy = ("MicroMsg.AppBrand.GetBLEDeviceRSSIAction#" + hashCode());
+    this.kjY = ("MicroMsg.AppBrand.GetBLEDeviceRSSIAction#" + hashCode());
     AppMethodBeat.o(183550);
   }
   
-  public final void aYR()
+  public final void bfM()
   {
     AppMethodBeat.i(175636);
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aZd())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bfV())
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w(this.jJy, "Bluetooth is not enable.", new Object[0]);
-      a(j.jKc);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w(this.kjY, "Bluetooth is not enable.", new Object[0]);
+      a(j.kkD);
       done();
       AppMethodBeat.o(175636);
       return;
     }
-    Object localObject = this.jJH;
+    Object localObject = this.kkh;
     k.g(localObject, "worker");
-    localObject = ((d)localObject).aYP();
+    localObject = ((d)localObject).bfL();
     if (localObject == null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w(this.jJy, "bluetoothGatt is null", new Object[0]);
-      a(j.jKh);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w(this.kjY, "bluetoothGatt is null", new Object[0]);
+      a(j.kkI);
       done();
       AppMethodBeat.o(175636);
       return;
     }
     if (!((BluetoothGatt)localObject).readRemoteRssi())
     {
-      a(j.jKj);
+      a(j.kkK);
       done();
     }
     AppMethodBeat.o(175636);
@@ -59,25 +59,25 @@ public final class c
   {
     AppMethodBeat.i(175637);
     super.onReadRemoteRssi(paramBluetoothGatt, paramInt1, paramInt2);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i(this.jJy, "onReadRemoteRssi, rssi: %d, status: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i(this.kjY, "onReadRemoteRssi, rssi: %d, status: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 != 0)
     {
-      a(j.jKa);
+      a(j.kkB);
       done();
       AppMethodBeat.o(175637);
       return;
     }
-    d locald = this.jJH;
+    d locald = this.kkh;
     k.g(locald, "worker");
-    if ((k.g(locald.aYP(), paramBluetoothGatt) ^ true))
+    if ((k.g(locald.bfL(), paramBluetoothGatt) ^ true))
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w(this.jJy, "bluetoothGatt is not match", new Object[0]);
-      a(j.jKa);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w(this.kjY, "bluetoothGatt is not match", new Object[0]);
+      a(j.kkB);
       done();
       AppMethodBeat.o(175637);
       return;
     }
-    a(j.cv(Integer.valueOf(paramInt1)));
+    a(j.ct(Integer.valueOf(paramInt1)));
     done();
     AppMethodBeat.o(175637);
   }

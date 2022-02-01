@@ -20,7 +20,7 @@ public class ProxyCacheUtils
   static void assertBuffer(byte[] paramArrayOfByte, long paramLong, int paramInt)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(190338);
+    AppMethodBeat.i(192538);
     Preconditions.checkNotNull(paramArrayOfByte, "Buffer must be not null!");
     if (paramLong >= 0L)
     {
@@ -34,7 +34,7 @@ public class ProxyCacheUtils
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Preconditions.checkArgument(bool1, "Length must be in range [0..buffer.length]");
-      AppMethodBeat.o(190338);
+      AppMethodBeat.o(192538);
       return;
       bool1 = false;
       break;
@@ -43,7 +43,7 @@ public class ProxyCacheUtils
   
   private static String bytesToHexString(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(190340);
+    AppMethodBeat.i(192540);
     StringBuffer localStringBuffer = new StringBuffer();
     int j = paramArrayOfByte.length;
     int i = 0;
@@ -53,7 +53,7 @@ public class ProxyCacheUtils
       i += 1;
     }
     paramArrayOfByte = localStringBuffer.toString();
-    AppMethodBeat.o(190340);
+    AppMethodBeat.o(192540);
     return paramArrayOfByte;
   }
   
@@ -128,35 +128,35 @@ public class ProxyCacheUtils
   
   static String getSupposablyMime(String paramString)
   {
-    AppMethodBeat.i(190337);
+    AppMethodBeat.i(192537);
     MimeTypeMap localMimeTypeMap = MimeTypeMap.getSingleton();
     paramString = MimeTypeMap.getFileExtensionFromUrl(paramString);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(190337);
+      AppMethodBeat.o(192537);
       return null;
     }
     paramString = localMimeTypeMap.getMimeTypeFromExtension(paramString);
-    AppMethodBeat.o(190337);
+    AppMethodBeat.o(192537);
     return paramString;
   }
   
   static String preview(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(190339);
+    AppMethodBeat.i(192539);
     int i = Math.min(16, Math.max(paramInt, 0));
     String str = Arrays.toString(Arrays.copyOfRange(paramArrayOfByte, 0, i));
     paramArrayOfByte = str;
     if (i < paramInt) {
       paramArrayOfByte = str.substring(0, str.length() - 1) + ", ...]";
     }
-    AppMethodBeat.o(190339);
+    AppMethodBeat.o(192539);
     return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.danikula.videocache.ProxyCacheUtils
  * JD-Core Version:    0.7.0.1
  */

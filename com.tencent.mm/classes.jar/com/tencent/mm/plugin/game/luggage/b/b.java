@@ -41,7 +41,7 @@ public class b
   
   public final void b(a.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 2;
   }

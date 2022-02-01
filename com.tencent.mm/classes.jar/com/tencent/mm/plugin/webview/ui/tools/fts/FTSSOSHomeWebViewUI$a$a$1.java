@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.f.39;
 import com.tencent.mm.plugin.webview.c.l.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class FTSSOSHomeWebViewUI$a$a$1
   implements Runnable
@@ -15,15 +15,15 @@ final class FTSSOSHomeWebViewUI$a$a$1
   public final void run()
   {
     AppMethodBeat.i(80635);
-    f localf = this.Blv.Blu.Bln.getJsapi();
-    if (!localf.yZR)
+    f localf = this.CDH.CDG.CDz.getJsapi();
+    if (!localf.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onFocusSearchInput fail, not ready");
+      ac.e("MicroMsg.JsApiHandler", "onFocusSearchInput fail, not ready");
       AppMethodBeat.o(80635);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onFocusSearchInput success, ready");
-    aq.f(new f.39(localf, l.a.b("onFocusSearchInput", null, localf.ARm, localf.ARn)));
+    ac.i("MicroMsg.JsApiHandler", "onFocusSearchInput success, ready");
+    ap.f(new f.39(localf, l.a.b("onFocusSearchInput", null, localf.Cjz, localf.CjA)));
     AppMethodBeat.o(80635);
   }
 }

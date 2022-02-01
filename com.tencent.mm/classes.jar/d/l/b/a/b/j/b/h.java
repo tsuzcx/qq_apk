@@ -13,25 +13,25 @@ import java.util.List;
 
 public final class h
 {
-  public static final h JSb;
+  public static final h LFu;
   
   static
   {
     AppMethodBeat.i(60059);
-    JSb = new h();
+    LFu = new h();
     AppMethodBeat.o(60059);
   }
   
   private final b a(List<?> paramList, d.l.b.a.b.a.h paramh)
   {
     AppMethodBeat.i(60058);
-    Object localObject1 = (Iterable)j.m((Iterable)paramList);
+    Object localObject1 = (Iterable)j.l((Iterable)paramList);
     paramList = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
-      localObject2 = ((h)this).fn(localObject2);
+      localObject2 = ((h)this).fq(localObject2);
       if (localObject2 != null) {
         paramList.add(localObject2);
       }
@@ -51,7 +51,7 @@ public final class h
     return paramList;
   }
   
-  public final g<?> fn(Object paramObject)
+  public final g<?> fq(Object paramObject)
   {
     AppMethodBeat.i(60057);
     if ((paramObject instanceof Byte))
@@ -110,49 +110,49 @@ public final class h
     }
     if ((paramObject instanceof byte[]))
     {
-      paramObject = (g)a(d.a.e.cQ((byte[])paramObject), d.l.b.a.b.a.h.Jnu);
+      paramObject = (g)a(d.a.e.cQ((byte[])paramObject), d.l.b.a.b.a.h.LaO);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof short[]))
     {
-      paramObject = (g)a(d.a.e.b((short[])paramObject), d.l.b.a.b.a.h.Jnv);
+      paramObject = (g)a(d.a.e.b((short[])paramObject), d.l.b.a.b.a.h.LaP);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof int[]))
     {
-      paramObject = (g)a(d.a.e.P((int[])paramObject), d.l.b.a.b.a.h.Jnw);
+      paramObject = (g)a(d.a.e.P((int[])paramObject), d.l.b.a.b.a.h.LaQ);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof long[]))
     {
-      paramObject = (g)a(d.a.e.f((long[])paramObject), d.l.b.a.b.a.h.Jny);
+      paramObject = (g)a(d.a.e.f((long[])paramObject), d.l.b.a.b.a.h.LaS);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof char[]))
     {
-      paramObject = (g)a(d.a.e.d((char[])paramObject), d.l.b.a.b.a.h.Jnt);
+      paramObject = (g)a(d.a.e.d((char[])paramObject), d.l.b.a.b.a.h.LaN);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof float[]))
     {
-      paramObject = (g)a(d.a.e.s((float[])paramObject), d.l.b.a.b.a.h.Jnx);
+      paramObject = (g)a(d.a.e.s((float[])paramObject), d.l.b.a.b.a.h.LaR);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof double[]))
     {
-      paramObject = (g)a(d.a.e.d((double[])paramObject), d.l.b.a.b.a.h.Jnz);
+      paramObject = (g)a(d.a.e.d((double[])paramObject), d.l.b.a.b.a.h.LaT);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof boolean[]))
     {
-      paramObject = (g)a(d.a.e.d((boolean[])paramObject), d.l.b.a.b.a.h.Jns);
+      paramObject = (g)a(d.a.e.d((boolean[])paramObject), d.l.b.a.b.a.h.LaM);
       AppMethodBeat.o(60057);
       return paramObject;
     }
@@ -188,7 +188,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.h
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.service.m;
 import com.tencent.mm.plugin.appbrand.service.m.a;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 
 public class JsApiChattingTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<JsApiChattingTask> CREATOR;
-  public String jOo;
-  public Runnable jwt;
+  public Runnable jWP;
+  public String koP;
   public String nickname;
   public String username;
   
@@ -40,33 +40,24 @@ public class JsApiChattingTask
     AppMethodBeat.o(46240);
   }
   
-  public final void aEA()
-  {
-    AppMethodBeat.i(46242);
-    if (this.jwt != null) {
-      this.jwt.run();
-    }
-    AppMethodBeat.o(46242);
-  }
-  
-  public final void aEz()
+  public final void aLq()
   {
     AppMethodBeat.i(46241);
-    if (!g.afz().gcn)
+    if (!g.agP().ggT)
     {
-      aXw();
+      bet();
       AppMethodBeat.o(46241);
       return;
     }
-    af localaf = ((k)g.ab(k.class)).apM().aHY(this.username);
-    ad.d("MicroMsg.JsApiChattingTask", "sessionFrom:%s,username:%s,nickname:%s", new Object[] { this.jOo, this.username, this.nickname });
-    if ((localaf == null) || ((int)localaf.fId == 0))
+    ai localai = ((k)g.ab(k.class)).awB().aNt(this.username);
+    ac.d("MicroMsg.JsApiChattingTask", "sessionFrom:%s,username:%s,nickname:%s", new Object[] { this.koP, this.username, this.nickname });
+    if ((localai == null) || ((int)localai.fLJ == 0))
     {
-      localaf = new af(this.username);
-      localaf.setType(0);
-      localaf.nd(this.nickname);
-      ((k)g.ab(k.class)).apM().af(localaf);
-      ad.i("MicroMsg.JsApiChattingTask", "%s save to contact_table", new Object[] { this.username });
+      localai = new ai(this.username);
+      localai.setType(0);
+      localai.qj(this.nickname);
+      ((k)g.ab(k.class)).awB().ag(localai);
+      ac.i("MicroMsg.JsApiChattingTask", "%s save to contact_table", new Object[] { this.username });
     }
     ((m)g.ab(m.class)).b(this.username, new m.a()
     {
@@ -74,7 +65,7 @@ public class JsApiChattingTask
       {
         AppMethodBeat.i(46238);
         if (paramAnonymousWxaAttributes == null) {
-          ad.w("MicroMsg.JsApiChattingTask", "info is null, err");
+          ac.w("MicroMsg.JsApiChattingTask", "info is null, err");
         }
         JsApiChattingTask.a(JsApiChattingTask.this);
         AppMethodBeat.o(46238);
@@ -83,10 +74,19 @@ public class JsApiChattingTask
     AppMethodBeat.o(46241);
   }
   
+  public final void aLr()
+  {
+    AppMethodBeat.i(46242);
+    if (this.jWP != null) {
+      this.jWP.run();
+    }
+    AppMethodBeat.o(46242);
+  }
+  
   public final void e(Parcel paramParcel)
   {
     AppMethodBeat.i(46243);
-    this.jOo = paramParcel.readString();
+    this.koP = paramParcel.readString();
     this.username = paramParcel.readString();
     this.nickname = paramParcel.readString();
     AppMethodBeat.o(46243);
@@ -95,7 +95,7 @@ public class JsApiChattingTask
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(46244);
-    paramParcel.writeString(this.jOo);
+    paramParcel.writeString(this.koP);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.nickname);
     AppMethodBeat.o(46244);
@@ -103,7 +103,7 @@ public class JsApiChattingTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.JsApiChattingTask
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 
 public final class b
 {
-  private static boolean FEo = false;
-  private static boolean FEp = false;
+  private static boolean Hdr = false;
+  private static boolean Hds = false;
   private static boolean mInitialized;
   private static String mPackageName = "";
   
@@ -15,7 +15,15 @@ public final class b
     mInitialized = false;
   }
   
-  private static final Object aJN(String paramString)
+  public static long AU(long paramLong)
+  {
+    AppMethodBeat.i(148761);
+    paramLong = (System.nanoTime() - paramLong) / 1000L;
+    AppMethodBeat.o(148761);
+    return paramLong;
+  }
+  
+  private static final Object aPl(String paramString)
   {
     AppMethodBeat.i(148757);
     try
@@ -56,33 +64,33 @@ public final class b
     }
   }
   
-  public static void eI(String paramString)
+  public static void ey(String paramString)
   {
     mPackageName = paramString;
   }
   
-  public static final boolean eOv()
+  public static final boolean fdZ()
   {
-    return FEp;
+    return Hds;
   }
   
-  public static final boolean eOw()
+  public static final boolean fea()
   {
     AppMethodBeat.i(148758);
     Object localObject;
     if (!mInitialized)
     {
-      localObject = aJN("WxSVGCode");
+      localObject = aPl("WxSVGCode");
       if (localObject != null) {
         break label62;
       }
     }
     label62:
-    for (FEo = false;; FEo = ((Boolean)localObject).booleanValue())
+    for (Hdr = false;; Hdr = ((Boolean)localObject).booleanValue())
     {
-      c.i("MicroMSG.WeChatSVGConfig", "Initialized mUsingWeChatSVGCode %s", new Object[] { Boolean.valueOf(FEo) });
+      c.i("MicroMSG.WeChatSVGConfig", "Initialized mUsingWeChatSVGCode %s", new Object[] { Boolean.valueOf(Hdr) });
       mInitialized = true;
-      if (FEo) {
+      if (Hdr) {
         break;
       }
       AppMethodBeat.o(148758);
@@ -92,10 +100,10 @@ public final class b
     return false;
   }
   
-  public static final Class<?> eOx()
+  public static final Class<?> feb()
   {
     AppMethodBeat.i(148759);
-    Object localObject = aJN("WxSVGRawClass");
+    Object localObject = aPl("WxSVGRawClass");
     if (localObject != null)
     {
       localObject = (Class)localObject;
@@ -106,7 +114,7 @@ public final class b
     return null;
   }
   
-  public static long eOy()
+  public static long fec()
   {
     AppMethodBeat.i(148760);
     long l = System.nanoTime();
@@ -114,17 +122,9 @@ public final class b
     return l;
   }
   
-  public static final void vf(boolean paramBoolean)
+  public static final void wh(boolean paramBoolean)
   {
-    FEp = paramBoolean;
-  }
-  
-  public static long wr(long paramLong)
-  {
-    AppMethodBeat.i(148761);
-    paramLong = (System.nanoTime() - paramLong) / 1000L;
-    AppMethodBeat.o(148761);
-    return paramLong;
+    Hds = paramBoolean;
   }
 }
 

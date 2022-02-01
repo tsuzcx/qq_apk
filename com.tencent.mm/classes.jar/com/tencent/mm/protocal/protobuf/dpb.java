@@ -1,134 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
-public final class dpb
-  extends com.tencent.mm.bx.a
+public class dpb
+  extends cqk
 {
-  public int Cxm;
-  public String DYr;
-  public String Desc;
-  public String EFq;
-  public String ProductID;
-  public String Title;
-  public String sDZ;
+  public String FWt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32508);
+    AppMethodBeat.i(123674);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Title != null) {
-        paramVarArgs.d(1, this.Title);
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(123674);
+        throw paramVarArgs;
       }
-      if (this.DYr != null) {
-        paramVarArgs.d(2, this.DYr);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.sDZ != null) {
-        paramVarArgs.d(3, this.sDZ);
+      if (this.FWt != null) {
+        paramVarArgs.d(2, this.FWt);
       }
-      if (this.Desc != null) {
-        paramVarArgs.d(4, this.Desc);
-      }
-      if (this.EFq != null) {
-        paramVarArgs.d(5, this.EFq);
-      }
-      paramVarArgs.aR(6, this.Cxm);
-      if (this.ProductID != null) {
-        paramVarArgs.d(7, this.ProductID);
-      }
-      AppMethodBeat.o(32508);
+      AppMethodBeat.o(123674);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Title == null) {
-        break label575;
+      if (this.BaseResponse == null) {
+        break label418;
       }
     }
-    label575:
-    for (int i = f.a.a.b.b.a.e(1, this.Title) + 0;; i = 0)
+    label418:
+    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.DYr != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.DYr);
+      int i = paramInt;
+      if (this.FWt != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FWt);
       }
-      i = paramInt;
-      if (this.sDZ != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.sDZ);
-      }
-      paramInt = i;
-      if (this.Desc != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Desc);
-      }
-      i = paramInt;
-      if (this.EFq != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.EFq);
-      }
-      i += f.a.a.b.b.a.bA(6, this.Cxm);
-      paramInt = i;
-      if (this.ProductID != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.ProductID);
-      }
-      AppMethodBeat.o(32508);
-      return paramInt;
+      AppMethodBeat.o(123674);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(32508);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(123674);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(123674);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         dpb localdpb = (dpb)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32508);
+          AppMethodBeat.o(123674);
           return -1;
         case 1: 
-          localdpb.Title = locala.KhF.readString();
-          AppMethodBeat.o(32508);
-          return 0;
-        case 2: 
-          localdpb.DYr = locala.KhF.readString();
-          AppMethodBeat.o(32508);
-          return 0;
-        case 3: 
-          localdpb.sDZ = locala.KhF.readString();
-          AppMethodBeat.o(32508);
-          return 0;
-        case 4: 
-          localdpb.Desc = locala.KhF.readString();
-          AppMethodBeat.o(32508);
-          return 0;
-        case 5: 
-          localdpb.EFq = locala.KhF.readString();
-          AppMethodBeat.o(32508);
-          return 0;
-        case 6: 
-          localdpb.Cxm = locala.KhF.xS();
-          AppMethodBeat.o(32508);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdpb.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(123674);
           return 0;
         }
-        localdpb.ProductID = locala.KhF.readString();
-        AppMethodBeat.o(32508);
+        localdpb.FWt = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(123674);
         return 0;
       }
-      AppMethodBeat.o(32508);
+      AppMethodBeat.o(123674);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dpb
  * JD-Core Version:    0.7.0.1
  */

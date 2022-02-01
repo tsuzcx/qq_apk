@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.h.a;
 
 public abstract interface d
 {
-  public abstract String aUE();
+  public abstract String bbC();
 }
 
 

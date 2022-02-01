@@ -6,12 +6,12 @@ import com.tencent.mm.plugin.game.commlib.e.b.a;
 
 public final class p
 {
-  public static final String rTD;
+  public static final String tbv;
   
   static
   {
     AppMethodBeat.i(41173);
-    rTD = b.b(b.a.rOF) + "haowan/";
+    tbv = b.b(b.a.sWv) + "haowan/";
     AppMethodBeat.o(41173);
   }
 }

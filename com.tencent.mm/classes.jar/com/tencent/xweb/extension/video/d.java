@@ -42,65 +42,65 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.t;
 import com.tencent.xweb.u;
 import com.tencent.xweb.util.g;
+import com.tencent.xweb.v;
 import java.util.Timer;
 import java.util.TimerTask;
 import org.xwalk.core.Log;
 import org.xwalk.core.ReflectMethod;
 
 public final class d
-  implements GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, b, t
+  implements GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, b, u
 {
-  WebView AKr;
-  private int Bsu = -3;
-  ScaleGestureDetector HVz;
-  TextView IOA;
-  ClickableFrameLayout IOB;
-  LinearLayout IOC;
-  ImageView IOD;
-  ImageView IOE;
-  ImageView IOF;
-  c IOG;
-  private WebChromeClient.CustomViewCallback IOH;
-  private boolean IOI;
-  private long IOJ;
-  private double IOK;
-  private double IOL;
-  private final int IOM = 0;
-  private final int ION = 1;
-  private final int IOO = 2;
-  private final int IOP = 3;
-  private boolean IOQ = false;
-  private u IOR;
-  private int IOT = 0;
-  private double IOU = 0.0D;
-  private float IOV = 0.0F;
-  private float IOW = 0.0F;
-  private a IOX;
-  String IOY;
-  private Timer IOZ;
-  private ViewGroup IOt;
-  SurfaceView IOu;
-  private View IOv;
-  ViewGroup IOw;
-  VideoStatusLayout IOx;
-  ProgressBar IOy;
-  TextView IOz;
-  private boolean IPa;
-  private int IPb = 0;
-  private double IPc;
-  private int IPd = 200;
-  private Drawable IPe;
-  private boolean IPf;
-  private boolean IPg;
-  private boolean IPh = false;
-  private int IPi;
-  GestureDetector MQ;
-  private Window Ub;
-  private WindowManager.LayoutParams awZ;
-  private double kAG;
+  private int CKA = -3;
+  WebView CcI;
+  ScaleGestureDetector Jwk;
+  private ViewGroup KAP;
+  SurfaceView KAQ;
+  private View KAR;
+  ViewGroup KAS;
+  VideoStatusLayout KAT;
+  ProgressBar KAU;
+  TextView KAV;
+  TextView KAW;
+  ClickableFrameLayout KAX;
+  LinearLayout KAY;
+  ImageView KAZ;
+  private boolean KBA;
+  private boolean KBB;
+  private boolean KBC = false;
+  private int KBD;
+  ImageView KBa;
+  ImageView KBb;
+  c KBc;
+  private WebChromeClient.CustomViewCallback KBd;
+  private boolean KBe;
+  private long KBf;
+  private double KBg;
+  private double KBh;
+  private final int KBi = 0;
+  private final int KBj = 1;
+  private final int KBk = 2;
+  private final int KBl = 3;
+  private boolean KBm = false;
+  private v KBn;
+  private int KBo = 0;
+  private double KBp = 0.0D;
+  private float KBq = 0.0F;
+  private float KBr = 0.0F;
+  private a KBs;
+  String KBt;
+  private Timer KBu;
+  private boolean KBv;
+  private int KBw = 0;
+  private double KBx;
+  private int KBy = 200;
+  private Drawable KBz;
+  GestureDetector NL;
+  private Window UX;
+  private WindowManager.LayoutParams axT;
+  private double lbY;
   Activity mActivity;
   private AudioManager mAudioManager;
   private float mBrightness = 1.0F;
@@ -108,26 +108,26 @@ public final class d
   private int mMode = 0;
   FrameLayout mRootView;
   
-  private void at(Runnable paramRunnable)
+  private void av(Runnable paramRunnable)
   {
     AppMethodBeat.i(153601);
-    if (this.IOQ)
+    if (this.KBm)
     {
       AppMethodBeat.o(153601);
       return;
     }
-    Activity localActivity = fru();
+    Activity localActivity = fJW();
     if (localActivity != null)
     {
       localActivity.runOnUiThread(paramRunnable);
       AppMethodBeat.o(153601);
       return;
     }
-    this.AKr.getView().post(paramRunnable);
+    this.CcI.getView().post(paramRunnable);
     AppMethodBeat.o(153601);
   }
   
-  private Activity fru()
+  private Activity fJW()
   {
     AppMethodBeat.i(153593);
     if (this.mActivity != null)
@@ -136,7 +136,7 @@ public final class d
       AppMethodBeat.o(153593);
       return localObject;
     }
-    Object localObject = this.AKr.getContext();
+    Object localObject = this.CcI.getContext();
     if ((localObject instanceof Activity))
     {
       localObject = (Activity)localObject;
@@ -169,30 +169,30 @@ public final class d
   }
   
   /* Error */
-  public static String frv()
+  public static String fJX()
   {
     // Byte code:
     //   0: ldc_w 274
     //   3: invokestatic 197	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: ldc_w 276
-    //   9: invokestatic 282	com/tencent/xweb/xwalk/a/g:aOW	(Ljava/lang/String;)Lcom/tencent/xweb/xwalk/a/e;
+    //   9: invokestatic 282	com/tencent/xweb/xwalk/a/g:aUJ	(Ljava/lang/String;)Lcom/tencent/xweb/xwalk/a/f;
     //   12: astore_1
     //   13: aload_1
     //   14: ifnull +436 -> 450
     //   17: aload_1
-    //   18: getfield 287	com/tencent/xweb/xwalk/a/e:IUH	I
+    //   18: getfield 287	com/tencent/xweb/xwalk/a/f:KHj	I
     //   21: iconst_m1
     //   22: if_icmpeq +428 -> 450
     //   25: aload_1
-    //   26: getfield 287	com/tencent/xweb/xwalk/a/e:IUH	I
+    //   26: getfield 287	com/tencent/xweb/xwalk/a/f:KHj	I
     //   29: istore_0
     //   30: new 289	java/io/File
     //   33: dup
     //   34: aload_1
     //   35: aload_1
-    //   36: getfield 287	com/tencent/xweb/xwalk/a/e:IUH	I
+    //   36: getfield 287	com/tencent/xweb/xwalk/a/f:KHj	I
     //   39: iconst_0
-    //   40: invokevirtual 293	com/tencent/xweb/xwalk/a/e:bd	(IZ)Ljava/lang/String;
+    //   40: invokevirtual 293	com/tencent/xweb/xwalk/a/f:bi	(IZ)Ljava/lang/String;
     //   43: invokespecial 296	java/io/File:<init>	(Ljava/lang/String;)V
     //   46: astore_2
     //   47: aload_2
@@ -293,7 +293,7 @@ public final class d
     //   240: invokestatic 364	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   243: ldc_w 366
     //   246: astore_1
-    //   247: invokestatic 371	com/tencent/xweb/util/g:fsJ	()V
+    //   247: invokestatic 371	com/tencent/xweb/util/g:fLm	()V
     //   250: ldc_w 274
     //   253: invokestatic 204	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   256: aload_1
@@ -314,7 +314,7 @@ public final class d
     //   287: goto -217 -> 70
     //   290: aload_1
     //   291: iconst_m1
-    //   292: invokevirtual 378	com/tencent/xweb/xwalk/a/e:adn	(I)Z
+    //   292: invokevirtual 378	com/tencent/xweb/xwalk/a/f:agi	(I)Z
     //   295: pop
     //   296: aconst_null
     //   297: astore_1
@@ -372,7 +372,7 @@ public final class d
     //   396: invokestatic 385	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   399: invokevirtual 389	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   402: invokestatic 364	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   405: invokestatic 392	com/tencent/xweb/util/g:fsI	()V
+    //   405: invokestatic 392	com/tencent/xweb/util/g:fLl	()V
     //   408: goto -158 -> 250
     //   411: astore_1
     //   412: goto -31 -> 381
@@ -456,7 +456,7 @@ public final class d
     //   86	95	438	java/io/IOException
   }
   
-  private SurfaceView gJ(View paramView)
+  private SurfaceView hb(View paramView)
   {
     AppMethodBeat.i(153631);
     if ((paramView instanceof SurfaceView))
@@ -471,7 +471,7 @@ public final class d
       int i = 0;
       while (i < paramView.getChildCount())
       {
-        SurfaceView localSurfaceView = gJ(paramView.getChildAt(i));
+        SurfaceView localSurfaceView = hb(paramView.getChildAt(i));
         if (localSurfaceView != null)
         {
           AppMethodBeat.o(153631);
@@ -502,30 +502,30 @@ public final class d
   {
     AppMethodBeat.i(153597);
     if (this.mAudioManager == null) {
-      this.mAudioManager = ((AudioManager)this.AKr.getContext().getSystemService("audio"));
+      this.mAudioManager = ((AudioManager)this.CcI.getContext().getSystemService("audio"));
     }
-    this.IOT = this.mAudioManager.getStreamMaxVolume(3);
-    this.IOU = this.mAudioManager.getStreamVolume(3);
-    if (this.IOX == null) {
-      this.IOX = new a(this.AKr.getContext());
+    this.KBo = this.mAudioManager.getStreamMaxVolume(3);
+    this.KBp = this.mAudioManager.getStreamVolume(3);
+    if (this.KBs == null) {
+      this.KBs = new a(this.CcI.getContext());
     }
-    if (this.Ub == null)
+    if (this.UX == null)
     {
-      Activity localActivity = fru();
+      Activity localActivity = fJW();
       if (localActivity != null) {
-        this.Ub = localActivity.getWindow();
+        this.UX = localActivity.getWindow();
       }
     }
-    if ((this.Ub != null) && (this.awZ == null)) {
-      this.awZ = this.Ub.getAttributes();
+    if ((this.UX != null) && (this.axT == null)) {
+      this.axT = this.UX.getAttributes();
     }
-    if (this.awZ != null)
+    if (this.axT != null)
     {
-      this.mBrightness = this.awZ.screenBrightness;
+      this.mBrightness = this.axT.screenBrightness;
       if (this.mBrightness == -1.0F) {
         try
         {
-          this.mBrightness = ((float)(Settings.System.getInt(this.AKr.getContext().getContentResolver(), "screen_brightness") / 256.0D));
+          this.mBrightness = ((float)(Settings.System.getInt(this.CcI.getContext().getContentResolver(), "screen_brightness") / 256.0D));
           AppMethodBeat.o(153597);
           return;
         }
@@ -540,23 +540,23 @@ public final class d
   
   private void u(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(194670);
-    if ((this.IOR != null) && (this.IOR.sn(paramInt)))
+    AppMethodBeat.i(208873);
+    if ((this.KBn != null) && (this.KBn.td(paramInt)))
     {
       Log.i("XWebNativeInterface", "setRequestedOrientation by wechat client");
-      AppMethodBeat.o(194670);
+      AppMethodBeat.o(208873);
       return;
     }
     if (paramActivity != null) {
       paramActivity.setRequestedOrientation(paramInt);
     }
-    AppMethodBeat.o(194670);
+    AppMethodBeat.o(208873);
   }
   
-  private void xG(final boolean paramBoolean)
+  private void yX(final boolean paramBoolean)
   {
     AppMethodBeat.i(153609);
-    at(new Runnable()
+    av(new Runnable()
     {
       public final void run()
       {
@@ -574,10 +574,10 @@ public final class d
     AppMethodBeat.o(153609);
   }
   
-  private void xH(boolean paramBoolean)
+  private void yY(boolean paramBoolean)
   {
     AppMethodBeat.i(153632);
-    Activity localActivity = fru();
+    Activity localActivity = fJW();
     if (localActivity == null)
     {
       AppMethodBeat.o(153632);
@@ -587,64 +587,64 @@ public final class d
     {
       if ((localActivity.getWindow().getAttributes().flags & 0x800) != 0)
       {
-        this.IPg = true;
+        this.KBB = true;
         localActivity.getWindow().clearFlags(2048);
-        if (this.IPh) {
+        if (this.KBC) {
           break label174;
         }
         if ((localActivity.getWindow().getAttributes().flags & 0x400) == 0) {
           break label107;
         }
-        this.IPf = true;
+        this.KBA = true;
       }
       for (;;)
       {
-        this.IPh = true;
+        this.KBC = true;
         AppMethodBeat.o(153632);
         return;
-        this.IPg = false;
+        this.KBB = false;
         break;
         label107:
-        this.IPf = false;
+        this.KBA = false;
         localActivity.getWindow().addFlags(1024);
       }
     }
     else
     {
-      if (this.IPg) {
+      if (this.KBB) {
         localActivity.getWindow().addFlags(2048);
       }
-      if (!this.IPf) {
+      if (!this.KBA) {
         localActivity.getWindow().clearFlags(1024);
       }
-      this.IPi = 0;
-      this.IPh = false;
-      this.IOI = false;
+      this.KBD = 0;
+      this.KBC = false;
+      this.KBe = false;
     }
     label174:
     AppMethodBeat.o(153632);
   }
   
-  public final void G(double paramDouble)
+  public final void F(double paramDouble)
   {
     AppMethodBeat.i(153614);
-    this.AKr.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_Seek(%f);", new Object[] { Double.valueOf(paramDouble) }), new ValueCallback() {});
+    this.CcI.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_Seek(%f);", new Object[] { Double.valueOf(paramDouble) }), new ValueCallback() {});
     AppMethodBeat.o(153614);
   }
   
-  public final void aP(boolean paramBoolean1, boolean paramBoolean2)
+  public final void aT(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(153595);
-    if ((this.AKr != null) && (paramBoolean2) && (this.IOY != null))
+    if ((this.CcI != null) && (paramBoolean2) && (this.KBt != null))
     {
       Log.i("XWebNativeInterface", "evaluteJavascript:".concat(String.valueOf(paramBoolean1)));
-      String str = this.IOY;
+      String str = this.KBt;
       if (paramBoolean1)
       {
-        str = this.IOY;
+        str = this.KBt;
         str = "window.addEventListener('DOMContentLoaded', function() {" + str + "});this.xwebReturn = function (){return \"1\";};this.xwebReturn()";
       }
-      this.AKr.evaluateJavascript(str, new ValueCallback() {});
+      this.CcI.evaluateJavascript(str, new ValueCallback() {});
     }
     AppMethodBeat.o(153595);
   }
@@ -652,7 +652,7 @@ public final class d
   public final void e(final double paramDouble, final boolean paramBoolean)
   {
     AppMethodBeat.i(153610);
-    at(new Runnable()
+    av(new Runnable()
     {
       public final void run()
       {
@@ -668,93 +668,93 @@ public final class d
     AppMethodBeat.o(153610);
   }
   
-  public final void ev(Object paramObject)
+  public final void ex(Object paramObject)
   {
     AppMethodBeat.i(153594);
     new ReflectMethod(paramObject, "addJavascriptInterface", new Class[] { Object.class, String.class }).invoke(new Object[] { this, "xwebToNative" });
     AppMethodBeat.o(153594);
   }
   
-  public final boolean ew(Object paramObject)
+  public final boolean ey(Object paramObject)
   {
-    this.IOR = ((u)paramObject);
+    this.KBn = ((v)paramObject);
     return true;
   }
   
-  public final void fqL()
-  {
-    AppMethodBeat.i(153612);
-    this.AKr.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPlay();", new Object[0]), new ValueCallback() {});
-    AppMethodBeat.o(153612);
-  }
-  
-  public final void fqM()
-  {
-    AppMethodBeat.i(153613);
-    this.AKr.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPause();", new Object[0]), new ValueCallback() {});
-    AppMethodBeat.o(153613);
-  }
-  
-  public final boolean fqN()
-  {
-    return true;
-  }
-  
-  public final void frw()
+  public final void fJY()
   {
     AppMethodBeat.i(153602);
-    if (this.IOZ != null)
+    if (this.KBu != null)
     {
-      this.IOZ.cancel();
-      this.IOZ.purge();
-      this.IOZ = null;
+      this.KBu.cancel();
+      this.KBu.purge();
+      this.KBu = null;
     }
-    this.IOZ = new Timer();
-    this.IOZ.schedule(new TimerTask()
+    this.KBu = new Timer();
+    this.KBu.schedule(new TimerTask()
     {
       public final void run()
       {
         AppMethodBeat.i(153590);
-        d.this.frz();
+        d.this.fKb();
         AppMethodBeat.o(153590);
       }
     }, 4000L);
     AppMethodBeat.o(153602);
   }
   
-  public final void frx()
+  public final void fJZ()
   {
     AppMethodBeat.i(153603);
-    if (this.IOZ != null)
+    if (this.KBu != null)
     {
-      this.IOZ.cancel();
-      this.IOZ.purge();
-      this.IOZ = null;
+      this.KBu.cancel();
+      this.KBu.purge();
+      this.KBu = null;
     }
     AppMethodBeat.o(153603);
   }
   
-  public final void fry()
+  public final void fJl()
+  {
+    AppMethodBeat.i(153612);
+    this.CcI.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPlay();", new Object[0]), new ValueCallback() {});
+    AppMethodBeat.o(153612);
+  }
+  
+  public final void fJm()
+  {
+    AppMethodBeat.i(153613);
+    this.CcI.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPause();", new Object[0]), new ValueCallback() {});
+    AppMethodBeat.o(153613);
+  }
+  
+  public final boolean fJn()
+  {
+    return true;
+  }
+  
+  public final void fKa()
   {
     AppMethodBeat.i(153607);
-    at(new Runnable()
+    av(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(153591);
         d.a(d.this, true);
         d.j(d.this).setVisibility(0);
-        d.this.frw();
+        d.this.fJY();
         AppMethodBeat.o(153591);
       }
     });
     AppMethodBeat.o(153607);
   }
   
-  public final void frz()
+  public final void fKb()
   {
     AppMethodBeat.i(153608);
-    at(new Runnable()
+    av(new Runnable()
     {
       public final void run()
       {
@@ -767,17 +767,17 @@ public final class d
     AppMethodBeat.o(153608);
   }
   
-  public final void kB(int paramInt1, int paramInt2)
+  public final void kR(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(153633);
-    Object localObject = fru();
+    Object localObject = fJW();
     if (localObject == null)
     {
       AppMethodBeat.o(153633);
       return;
     }
-    if ((this.Bsu == -3) && (localObject != null)) {
-      this.Bsu = ((Activity)localObject).getRequestedOrientation();
+    if ((this.CKA == -3) && (localObject != null)) {
+      this.CKA = ((Activity)localObject).getRequestedOrientation();
     }
     int i;
     Point localPoint;
@@ -789,10 +789,10 @@ public final class d
       u((Activity)localObject, 1);
       i = 1;
       this.mCurrentOrientation = i;
-      if (this.IOv != null)
+      if (this.KAR != null)
       {
-        localObject = this.IOv;
-        Display localDisplay = ((WindowManager)this.AKr.getContext().getSystemService("window")).getDefaultDisplay();
+        localObject = this.KAR;
+        Display localDisplay = ((WindowManager)this.CcI.getContext().getSystemService("window")).getDefaultDisplay();
         localPoint = new Point(0, 0);
         localDisplay.getSize(localPoint);
         if (i != 0) {
@@ -827,7 +827,7 @@ public final class d
   
   public final boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.IPb = 0;
+    this.KBw = 0;
     return true;
   }
   
@@ -839,23 +839,23 @@ public final class d
   public final void onHideCustomView()
   {
     AppMethodBeat.i(153599);
-    if (this.IOH != null) {
-      this.IOH.onCustomViewHidden();
+    if (this.KBd != null) {
+      this.KBd.onCustomViewHidden();
     }
     Log.i("XWebNativeInterface", "detach");
-    if (!this.IPh)
+    if (!this.KBC)
     {
       Log.i("XWebNativeInterface", "detach has exited fullscreen");
       AppMethodBeat.o(153599);
       return;
     }
-    Activity localActivity = fru();
+    Activity localActivity = fJW();
     if (localActivity != null)
     {
-      if (this.IPe != null)
+      if (this.KBz != null)
       {
-        this.AKr.getView().setBackground(this.IPe);
-        this.IPe = null;
+        this.CcI.getView().setBackground(this.KBz);
+        this.KBz = null;
       }
       for (;;)
       {
@@ -865,24 +865,24 @@ public final class d
         }
         AppMethodBeat.o(153599);
         return;
-        this.AKr.getView().setBackground(new ColorDrawable(0));
+        this.CcI.getView().setBackground(new ColorDrawable(0));
       }
-      if (this.AKr.isXWalkKernel())
+      if (this.CcI.isXWalkKernel())
       {
-        this.mRootView.removeView(this.AKr);
-        this.IOt.addView(this.AKr, 0);
+        this.mRootView.removeView(this.CcI);
+        this.KAP.addView(this.CcI, 0);
       }
-      if (this.IOv != null) {
-        this.mRootView.removeView(this.IOv);
+      if (this.KAR != null) {
+        this.mRootView.removeView(this.KAR);
       }
-      this.mRootView.removeView(this.IOw);
-      this.IOw.setVisibility(8);
-      if (this.Bsu != -3)
+      this.mRootView.removeView(this.KAS);
+      this.KAS.setVisibility(8);
+      if (this.CKA != -3)
       {
-        u(localActivity, this.Bsu);
-        this.Bsu = -3;
+        u(localActivity, this.CKA);
+        this.CKA = -3;
       }
-      xH(false);
+      yY(false);
       if ((this.mRootView.getParent() instanceof ViewGroup)) {
         ((ViewGroup)this.mRootView.getParent()).removeView(this.mRootView);
       }
@@ -895,20 +895,20 @@ public final class d
   public final boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
     AppMethodBeat.i(153606);
-    if ((this.mMode == 1) && (this.IOv != null))
+    if ((this.mMode == 1) && (this.KAR != null))
     {
       float f = paramScaleGestureDetector.getScaleFactor();
-      this.IOv.getLeft();
-      this.IOv.getTop();
-      this.IOv.getBottom();
-      this.IOv.getRight();
-      int i = (int)(this.IOv.getWidth() * f);
-      int j = (int)(f * this.IOv.getHeight());
+      this.KAR.getLeft();
+      this.KAR.getTop();
+      this.KAR.getBottom();
+      this.KAR.getRight();
+      int i = (int)(this.KAR.getWidth() * f);
+      int j = (int)(f * this.KAR.getHeight());
       paramScaleGestureDetector = new FrameLayout.LayoutParams(-2, -2, 17);
       paramScaleGestureDetector.width = i;
       paramScaleGestureDetector.height = j;
-      if (this.IOv != null) {
-        this.IOv.setLayoutParams(paramScaleGestureDetector);
+      if (this.KAR != null) {
+        this.KAR.setLayoutParams(paramScaleGestureDetector);
       }
       AppMethodBeat.o(153606);
       return true;
@@ -935,13 +935,13 @@ public final class d
     float f1 = paramMotionEvent2.getX();
     float f2 = paramMotionEvent1.getX();
     float f3 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
-    if (this.IOw.getHeight() > this.IOw.getWidth())
+    if (this.KAS.getHeight() > this.KAS.getWidth())
     {
-      paramFloat2 = this.IOw.getWidth();
-      paramFloat1 = this.IOw.getHeight();
+      paramFloat2 = this.KAS.getWidth();
+      paramFloat1 = this.KAS.getHeight();
     }
     double d1;
-    switch (this.IPb)
+    switch (this.KBw)
     {
     default: 
     case 0: 
@@ -949,29 +949,29 @@ public final class d
       {
         AppMethodBeat.o(153605);
         return true;
-        paramFloat2 = this.IOw.getHeight();
-        paramFloat1 = this.IOw.getWidth();
+        paramFloat2 = this.KAS.getHeight();
+        paramFloat1 = this.KAS.getWidth();
         break;
         if (Math.abs(f1 - f2) - Math.abs(f3) > 1.0F)
         {
-          this.IPb = 3;
+          this.KBw = 3;
         }
         else
         {
           reset();
-          d1 = Math.ceil(25.0F * this.AKr.getContext().getResources().getDisplayMetrics().density);
-          if ((paramMotionEvent1.getY() < 2.0D * d1) || (paramMotionEvent1.getY() > this.IOw.getHeight() - d1 * 2.0D)) {
-            this.IPb = 0;
-          } else if (paramMotionEvent1.getX() < this.IOw.getWidth() / 2.0F) {
-            this.IPb = 2;
+          d1 = Math.ceil(25.0F * this.CcI.getContext().getResources().getDisplayMetrics().density);
+          if ((paramMotionEvent1.getY() < 2.0D * d1) || (paramMotionEvent1.getY() > this.KAS.getHeight() - d1 * 2.0D)) {
+            this.KBw = 0;
+          } else if (paramMotionEvent1.getX() < this.KAS.getWidth() / 2.0F) {
+            this.KBw = 2;
           } else {
-            this.IPb = 1;
+            this.KBw = 1;
           }
         }
       }
     case 1: 
       paramFloat1 = f3 * -1.0F;
-      d1 = this.IOT * paramFloat1 / paramFloat2 * 1.2F;
+      d1 = this.KBo * paramFloat1 / paramFloat2 * 1.2F;
       int j = (int)d1;
       int i = j;
       if (j == 0)
@@ -985,17 +985,17 @@ public final class d
           i = 1;
         }
       }
-      d1 = this.IOU;
+      d1 = this.KBp;
       double d2 = i + d1;
-      if (d2 > this.IOT) {
-        d1 = this.IOT;
+      if (d2 > this.KBo) {
+        d1 = this.KBo;
       }
       for (;;)
       {
         this.mAudioManager.setStreamVolume(3, (int)d1, 4);
-        i = (int)(d1 / this.IOT * 100.0D);
-        this.IOx.setVolumnProgress(i);
-        this.IOx.show();
+        i = (int)(d1 / this.KBo * 100.0D);
+        this.KAT.setVolumnProgress(i);
+        this.KAT.show();
         break;
         i = j;
         if (paramFloat1 >= 0.0F) {
@@ -1017,10 +1017,10 @@ public final class d
       }
       for (;;)
       {
-        this.awZ.screenBrightness = paramFloat1;
-        this.Ub.setAttributes(this.awZ);
-        this.IOx.setBrightProgress((int)(paramFloat1 * 100.0F));
-        this.IOx.show();
+        this.axT.screenBrightness = paramFloat1;
+        this.UX.setAttributes(this.axT);
+        this.KAT.setBrightProgress((int)(paramFloat1 * 100.0F));
+        this.KAT.show();
         break;
         paramFloat1 = paramFloat2;
         if (paramFloat2 > 1.0F) {
@@ -1029,26 +1029,26 @@ public final class d
       }
     }
     paramFloat2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-    this.IOW = this.IOG.aae;
+    this.KBr = this.KBc.aaZ;
     if (paramFloat2 > 0.0F)
     {
-      f1 = this.IOW;
-      this.IOV = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
-      if (this.IOV > 100.0F) {
-        this.IOV = 100.0F;
+      f1 = this.KBr;
+      this.KBq = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
+      if (this.KBq > 100.0F) {
+        this.KBq = 100.0F;
       }
     }
     for (;;)
     {
-      d1 = this.kAG * this.IOV / 100.0D;
-      this.IOx.setVideoTimeProgress(q(d1, this.kAG) + "/" + q(this.kAG, this.kAG));
-      this.IOx.show();
-      this.IPc = d1;
+      d1 = this.lbY * this.KBq / 100.0D;
+      this.KAT.setVideoTimeProgress(q(d1, this.lbY) + "/" + q(this.lbY, this.lbY));
+      this.KAT.show();
+      this.KBx = d1;
       break;
-      f1 = this.IOW;
-      this.IOV = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
-      if (this.IOV < 0.0F) {
-        this.IOV = 0.0F;
+      f1 = this.KBr;
+      this.KBq = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
+      if (this.KBq < 0.0F) {
+        this.KBq = 0.0F;
       }
     }
   }
@@ -1057,72 +1057,72 @@ public final class d
   {
     AppMethodBeat.i(153598);
     Log.i("XWebNativeInterface", "onShowCustomView");
-    this.IOv = paramView;
-    this.IOH = paramCustomViewCallback;
-    if ((this.IOv != null) || (this.AKr.isXWalkKernel()))
+    this.KAR = paramView;
+    this.KBd = paramCustomViewCallback;
+    if ((this.KAR != null) || (this.CcI.isXWalkKernel()))
     {
-      if (!this.AKr.isXWalkKernel()) {
+      if (!this.CcI.isXWalkKernel()) {
         break label95;
       }
-      g.fsl();
+      g.fKO();
       Log.i("XWebNativeInterface", "attach");
-      if (!this.IPh) {
+      if (!this.KBC) {
         break label111;
       }
       Log.i("XWebNativeInterface", "attach has entered fullscreen");
     }
     for (;;)
     {
-      this.AKr.requestFocus();
+      this.CcI.requestFocus();
       AppMethodBeat.o(153598);
       return;
       label95:
-      if (!this.AKr.isSysKernel()) {
+      if (!this.CcI.isSysKernel()) {
         break;
       }
-      g.fsp();
+      g.fKS();
       break;
       label111:
-      paramView = fru();
+      paramView = fJW();
       if (paramView != null)
       {
         reset();
-        xH(true);
+        yY(true);
         paramView = (FrameLayout)paramView.getWindow().getDecorView();
-        if ((this.AKr.isXWalkKernel()) && (this.mRootView.getParent() == paramView) && (this.IOv != null))
+        if ((this.CcI.isXWalkKernel()) && (this.mRootView.getParent() == paramView) && (this.KAR != null))
         {
-          this.mRootView.addView(this.IOv, 0, new FrameLayout.LayoutParams(-1, -1, 17));
+          this.mRootView.addView(this.KAR, 0, new FrameLayout.LayoutParams(-1, -1, 17));
         }
         else if (this.mRootView.getParent() != paramView)
         {
           paramView.addView(this.mRootView, new FrameLayout.LayoutParams(-1, -1, 17));
-          if (this.IOv != null)
+          if (this.KAR != null)
           {
-            this.mRootView.addView(this.IOv, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
-            if (this.AKr.isSysKernel()) {
-              this.IOv.setVisibility(4);
+            this.mRootView.addView(this.KAR, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
+            if (this.CcI.isSysKernel()) {
+              this.KAR.setVisibility(4);
             }
           }
-          if (this.AKr.isSysKernel())
+          if (this.CcI.isSysKernel())
           {
-            paramView = gJ(this.IOv);
+            paramView = hb(this.KAR);
             if (paramView != null) {
               paramView.setZOrderMediaOverlay(true);
             }
           }
-          if (this.AKr.isXWalkKernel())
+          if (this.CcI.isXWalkKernel())
           {
-            this.IOt = ((ViewGroup)this.AKr.getParent());
-            this.IOt.removeView(this.AKr);
-            this.mRootView.addView(this.AKr, this.mRootView.getChildCount());
+            this.KAP = ((ViewGroup)this.CcI.getParent());
+            this.KAP.removeView(this.CcI);
+            this.mRootView.addView(this.CcI, this.mRootView.getChildCount());
           }
-          this.mRootView.addView(this.IOw, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
-          this.IPe = this.AKr.getView().getBackground();
-          if (this.IPe != null) {
-            this.IPe = this.IPe.getConstantState().newDrawable().mutate();
+          this.mRootView.addView(this.KAS, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
+          this.KBz = this.CcI.getView().getBackground();
+          if (this.KBz != null) {
+            this.KBz = this.KBz.getConstantState().newDrawable().mutate();
           }
-          this.AKr.getView().setBackground(new ColorDrawable(-16777216));
-          if (this.AKr.isSysKernel()) {
+          this.CcI.getView().setBackground(new ColorDrawable(-16777216));
+          if (this.CcI.isSysKernel()) {
             this.mRootView.postDelayed(new Runnable()
             {
               public final void run()
@@ -1133,7 +1133,7 @@ public final class d
                 }
                 AppMethodBeat.o(153585);
               }
-            }, this.IPd);
+            }, this.KBy);
           }
         }
       }
@@ -1145,15 +1145,15 @@ public final class d
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(153604);
-    frx();
-    if (this.IPa) {
-      frz();
+    fJZ();
+    if (this.KBv) {
+      fKb();
     }
     for (;;)
     {
       AppMethodBeat.o(153604);
       return true;
-      fry();
+      fKa();
     }
   }
   
@@ -1163,7 +1163,7 @@ public final class d
   {
     AppMethodBeat.i(153629);
     Log.i("XWebNativeInterface", "onSpecialVideoEnterFullscreen:".concat(String.valueOf(paramInt)));
-    g.bb(paramInt, this.AKr.isXWalkKernel());
+    g.bg(paramInt, this.CcI.isXWalkKernel());
     AppMethodBeat.o(153629);
   }
   
@@ -1173,7 +1173,7 @@ public final class d
   {
     AppMethodBeat.i(153630);
     Log.i("XWebNativeInterface", "onSpecialVideoHook:".concat(String.valueOf(paramInt)));
-    g.bc(paramInt, this.AKr.isXWalkKernel());
+    g.bh(paramInt, this.CcI.isXWalkKernel());
     AppMethodBeat.o(153630);
   }
   
@@ -1182,9 +1182,9 @@ public final class d
   {
     AppMethodBeat.i(153623);
     Log.i("XWebNativeInterface", "onVideoEmptied");
-    if (this.IOR != null)
+    if (this.KBn != null)
     {
-      this.IOR.beC();
+      this.KBn.blw();
       AppMethodBeat.o(153623);
       return true;
     }
@@ -1197,8 +1197,8 @@ public final class d
   {
     AppMethodBeat.i(153622);
     Log.i("XWebNativeInterface", "onVideoEnded");
-    if (this.IOR != null) {
-      this.IOR.onVideoEnded();
+    if (this.KBn != null) {
+      this.KBn.onVideoEnded();
     }
     AppMethodBeat.o(153622);
   }
@@ -1209,25 +1209,25 @@ public final class d
   {
     AppMethodBeat.i(153625);
     Log.i("XWebNativeInterface", "onVideoEnterFullscreen:isVideoTag:" + paramBoolean1 + ",width:" + paramDouble1 + ",height:" + paramDouble2 + ",pause:" + paramBoolean2 + ",seeking:" + paramBoolean3 + ",currentTime:" + paramDouble3 + ",duration:" + paramDouble4);
-    if (this.IOR != null) {
-      this.IOR.onVideoEnterFullscreen(paramBoolean1, paramLong, paramDouble1, paramDouble2, paramBoolean2, paramBoolean3, paramDouble3, paramDouble4, paramArrayOfDouble);
+    if (this.KBn != null) {
+      this.KBn.onVideoEnterFullscreen(paramBoolean1, paramLong, paramDouble1, paramDouble2, paramBoolean2, paramBoolean3, paramDouble3, paramDouble4, paramArrayOfDouble);
     }
-    if (this.AKr.isXWalkKernel())
+    if (this.CcI.isXWalkKernel())
     {
-      g.fsm();
+      g.fKP();
       if (paramBoolean1)
       {
-        if (!this.AKr.isXWalkKernel()) {
+        if (!this.CcI.isXWalkKernel()) {
           break label250;
         }
-        g.fsn();
+        g.fKQ();
         label157:
-        this.IOI = true;
+        this.KBe = true;
       }
-      this.IOJ = paramLong;
-      this.kAG = paramDouble4;
-      this.IOK = paramDouble1;
-      this.IOL = paramDouble2;
+      this.KBf = paramLong;
+      this.lbY = paramDouble4;
+      this.KBg = paramDouble1;
+      this.KBh = paramDouble2;
       if (!paramBoolean3) {
         break label266;
       }
@@ -1235,7 +1235,7 @@ public final class d
     }
     for (;;)
     {
-      at(new Runnable()
+      av(new Runnable()
       {
         public final void run()
         {
@@ -1243,24 +1243,24 @@ public final class d
           if (paramBoolean1) {
             d.q(d.this).setVisibility(0);
           }
-          d.this.kB((int)paramDouble1, (int)this.IPs);
+          d.this.kR((int)paramDouble1, (int)this.KBN);
           AppMethodBeat.o(153582);
         }
       });
       onVideoTimeUpdate(paramDouble3, paramDouble4, paramArrayOfDouble);
-      xG(paramBoolean2);
+      yX(paramBoolean2);
       AppMethodBeat.o(153625);
       return;
-      if (!this.AKr.isSysKernel()) {
+      if (!this.CcI.isSysKernel()) {
         break;
       }
-      g.fsq();
+      g.fKT();
       break;
       label250:
-      if (!this.AKr.isSysKernel()) {
+      if (!this.CcI.isSysKernel()) {
         break label157;
       }
-      g.fsr();
+      g.fKU();
       break label157;
       label266:
       onVideoSeeked();
@@ -1272,8 +1272,8 @@ public final class d
   {
     AppMethodBeat.i(153624);
     Log.i("XWebNativeInterface", "onVideoError");
-    if (this.IOR != null) {
-      this.IOR.onVideoError(paramInt, paramString);
+    if (this.KBn != null) {
+      this.KBn.onVideoError(paramInt, paramString);
     }
     AppMethodBeat.o(153624);
   }
@@ -1284,11 +1284,11 @@ public final class d
   {
     AppMethodBeat.i(153626);
     Log.i("XWebNativeInterface", "onVideoExitFullscreen");
-    if (this.IOR != null) {
-      this.IOR.onVideoExitFullscreen();
+    if (this.KBn != null) {
+      this.KBn.onVideoExitFullscreen();
     }
-    this.IOI = false;
-    at(new Runnable()
+    this.KBe = false;
+    av(new Runnable()
     {
       public final void run()
       {
@@ -1305,12 +1305,12 @@ public final class d
   public final void onVideoGetFrame(long paramLong, double paramDouble, String paramString)
   {
     AppMethodBeat.i(153615);
-    if ((paramLong == this.IOJ) && (this.IPc == paramDouble) && (paramString != null) && (paramString.startsWith("data:image/png;base64,")))
+    if ((paramLong == this.KBf) && (this.KBx == paramDouble) && (paramString != null) && (paramString.startsWith("data:image/png;base64,")))
     {
       paramString = Base64.decode(paramString.substring(22), 0);
       paramString = BitmapFactory.decodeByteArray(paramString, 0, paramString.length);
-      this.IOD.setImageBitmap(paramString);
-      this.IOD.setVisibility(0);
+      this.KAZ.setImageBitmap(paramString);
+      this.KAZ.setVisibility(0);
     }
     AppMethodBeat.o(153615);
   }
@@ -1321,10 +1321,10 @@ public final class d
   {
     AppMethodBeat.i(153621);
     Log.i("XWebNativeInterface", "onVideoPause");
-    if (this.IOR != null) {
-      this.IOR.onVideoPause();
+    if (this.KBn != null) {
+      this.KBn.onVideoPause();
     }
-    xG(true);
+    yX(true);
     AppMethodBeat.o(153621);
   }
   
@@ -1334,10 +1334,10 @@ public final class d
   {
     AppMethodBeat.i(153620);
     Log.i("XWebNativeInterface", "onVideoPlay");
-    if (this.IOR != null) {
-      this.IOR.onVideoPlay();
+    if (this.KBn != null) {
+      this.KBn.onVideoPlay();
     }
-    xG(false);
+    yX(false);
     AppMethodBeat.o(153620);
   }
   
@@ -1347,10 +1347,10 @@ public final class d
   {
     AppMethodBeat.i(153616);
     Log.i("XWebNativeInterface", "onVideoPlaying");
-    if (this.IOR != null) {
-      this.IOR.onVideoPlaying();
+    if (this.KBn != null) {
+      this.KBn.onVideoPlaying();
     }
-    at(new Runnable()
+    av(new Runnable()
     {
       public final void run()
       {
@@ -1368,10 +1368,10 @@ public final class d
   {
     AppMethodBeat.i(153619);
     Log.i("XWebNativeInterface", "onVideoSeeked");
-    if (this.IOR != null) {
-      this.IOR.onVideoSeeked();
+    if (this.KBn != null) {
+      this.KBn.onVideoSeeked();
     }
-    at(new Runnable()
+    av(new Runnable()
     {
       public final void run()
       {
@@ -1389,10 +1389,10 @@ public final class d
   {
     AppMethodBeat.i(153618);
     Log.i("XWebNativeInterface", "onVideoSeeking");
-    if (this.IOR != null) {
-      this.IOR.onVideoSeeking();
+    if (this.KBn != null) {
+      this.KBn.onVideoSeeking();
     }
-    at(new Runnable()
+    av(new Runnable()
     {
       public final void run()
       {
@@ -1409,20 +1409,20 @@ public final class d
   public final void onVideoSizeUpdate(final double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(153628);
-    if (this.IOR != null) {
-      this.IOR.onVideoSizeUpdate(paramDouble1, paramDouble2);
+    if (this.KBn != null) {
+      this.KBn.onVideoSizeUpdate(paramDouble1, paramDouble2);
     }
-    if ((this.IOL != paramDouble2) || (this.IOK != paramDouble1))
+    if ((this.KBh != paramDouble2) || (this.KBg != paramDouble1))
     {
-      this.IOK = paramDouble1;
-      this.IOL = paramDouble2;
+      this.KBg = paramDouble1;
+      this.KBh = paramDouble2;
       Log.i("XWebNativeInterface", "onVideoSizeUpdate width:" + paramDouble1 + ", height:" + paramDouble2);
-      at(new Runnable()
+      av(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(153584);
-          d.this.kB((int)paramDouble1, (int)this.IPs);
+          d.this.kR((int)paramDouble1, (int)this.KBN);
           AppMethodBeat.o(153584);
         }
       });
@@ -1435,19 +1435,19 @@ public final class d
   public final void onVideoTimeUpdate(double paramDouble1, final double paramDouble2, double[] paramArrayOfDouble)
   {
     AppMethodBeat.i(153627);
-    if (this.IOR != null) {
-      this.IOR.onVideoTimeUpdate(paramDouble1, paramDouble2, paramArrayOfDouble);
+    if (this.KBn != null) {
+      this.KBn.onVideoTimeUpdate(paramDouble1, paramDouble2, paramArrayOfDouble);
     }
-    this.kAG = paramDouble2;
+    this.lbY = paramDouble2;
     e(paramDouble1, true);
-    at(new Runnable()
+    av(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(153575);
         c localc = d.l(d.this);
         double d3 = paramDouble2;
-        Object localObject = this.IPo;
+        Object localObject = this.KBJ;
         double d1 = 0.0D;
         int i = 0;
         while (i < localObject.length)
@@ -1456,10 +1456,10 @@ public final class d
           if (localObject.length > i + 1)
           {
             d2 = d1;
-            if (localObject[i] / d3 * 100.0D <= localc.aae)
+            if (localObject[i] / d3 * 100.0D <= localc.aaZ)
             {
               d2 = d1;
-              if (localObject[(i + 1)] / d3 * 100.0D > localc.aae) {
+              if (localObject[(i + 1)] / d3 * 100.0D > localc.aaZ) {
                 d2 = localObject[(i + 1)] / d3 * 100.0D;
               }
             }
@@ -1467,10 +1467,10 @@ public final class d
           i += 2;
           d1 = d2;
         }
-        localObject = (FrameLayout.LayoutParams)localc.ktw.getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject).width = ((int)(d1 / 100.0D * localc.ktf.getWidth()));
-        localc.ktw.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localc.ktw.requestLayout();
+        localObject = (FrameLayout.LayoutParams)localc.kUL.getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject).width = ((int)(d1 / 100.0D * localc.kUu.getWidth()));
+        localc.kUL.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localc.kUL.requestLayout();
         AppMethodBeat.o(153575);
       }
     });
@@ -1483,10 +1483,10 @@ public final class d
   {
     AppMethodBeat.i(153617);
     Log.i("XWebNativeInterface", "onVideoWaiting");
-    if (this.IOR != null) {
-      this.IOR.onVideoWaiting();
+    if (this.KBn != null) {
+      this.KBn.onVideoWaiting();
     }
-    at(new Runnable()
+    av(new Runnable()
     {
       public final void run()
       {
@@ -1498,11 +1498,11 @@ public final class d
     AppMethodBeat.o(153617);
   }
   
-  public final void xF(boolean paramBoolean)
+  public final void yW(boolean paramBoolean)
   {
     AppMethodBeat.i(153600);
     Log.i("XWebNativeInterface", "disableJsCallback:".concat(String.valueOf(paramBoolean)));
-    this.IOQ = paramBoolean;
+    this.KBm = paramBoolean;
     AppMethodBeat.o(153600);
   }
 }

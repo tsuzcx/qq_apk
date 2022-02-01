@@ -7,11 +7,11 @@ public enum b
   static
   {
     AppMethodBeat.i(60266);
-    JTZ = new b("FUNCTION", 0);
-    JUa = new b("PROPERTY", 1);
-    JUb = new b("PROPERTY_GETTER", 2);
-    JUc = new b("PROPERTY_SETTER", 3);
-    JUd = new b[] { JTZ, JUa, JUb, JUc };
+    LHs = new b("FUNCTION", 0);
+    LHt = new b("PROPERTY", 1);
+    LHu = new b("PROPERTY_GETTER", 2);
+    LHv = new b("PROPERTY_SETTER", 3);
+    LHw = new b[] { LHs, LHt, LHu, LHv };
     AppMethodBeat.o(60266);
   }
   
@@ -19,7 +19,7 @@ public enum b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.b
  * JD-Core Version:    0.7.0.1
  */

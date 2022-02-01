@@ -19,14 +19,14 @@ import com.tencent.mm.ui.widget.a.d.a;
 public class AlertActivity
   extends AppCompatActivity
 {
-  private static d.a BYA;
-  private boolean FFU = false;
-  private DialogInterface.OnDismissListener dyr;
-  private DialogInterface.OnCancelListener vQI;
+  private static d.a DqR;
+  private boolean Hfc = false;
+  private DialogInterface.OnDismissListener dwd;
+  private DialogInterface.OnCancelListener xbq;
   
   public static void a(d.a parama)
   {
-    BYA = parama;
+    DqR = parama;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -38,14 +38,14 @@ public class AlertActivity
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setStatusBarColor(getResources().getColor(17170445));
     }
-    this.FFU = getIntent().getBooleanExtra("dialog_show_top", false);
+    this.Hfc = getIntent().getBooleanExtra("dialog_show_top", false);
     Window localWindow;
-    if (BYA != null)
+    if (DqR != null)
     {
-      BYA.mContext = this;
-      this.dyr = BYA.HEO.Vc;
-      this.vQI = BYA.HEO.Vb;
-      BYA.a(new DialogInterface.OnDismissListener()
+      DqR.mContext = this;
+      this.dwd = DqR.Jfi.VX;
+      this.xbq = DqR.Jfi.VW;
+      DqR.a(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -57,7 +57,7 @@ public class AlertActivity
           AppMethodBeat.o(159081);
         }
       });
-      BYA.e(new DialogInterface.OnCancelListener()
+      DqR.e(new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -69,8 +69,8 @@ public class AlertActivity
           AppMethodBeat.o(159082);
         }
       });
-      paramBundle = BYA.fft();
-      if (this.FFU)
+      paramBundle = DqR.fvp();
+      if (this.Hfc)
       {
         localWindow = paramBundle.getWindow();
         if (localWindow != null)
@@ -102,7 +102,7 @@ public class AlertActivity
   {
     AppMethodBeat.i(159085);
     super.onDestroy();
-    BYA = null;
+    DqR = null;
     AppMethodBeat.o(159085);
   }
   

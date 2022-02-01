@@ -19,7 +19,7 @@ import com.tencent.mm.ui.base.MaskLayout;
 public final class z
   extends LinearLayout
 {
-  private String GXN;
+  private String Iyb;
   private Context context;
   
   public z(Context paramContext, String paramString)
@@ -27,7 +27,7 @@ public final class z
     super(paramContext);
     AppMethodBeat.i(37933);
     this.context = paramContext;
-    this.GXN = paramString;
+    this.Iyb = paramString;
     paramContext = View.inflate(getContext(), 2131495058, this);
     paramString = findViewById(2131299501);
     paramContext.setOnClickListener(new View.OnClickListener()
@@ -39,9 +39,9 @@ public final class z
         Object localObject = new Intent(paramAnonymousView, OpenIMAddressUI.class);
         ((Intent)localObject).addFlags(67108864);
         ((Intent)localObject).putExtra("key_openim_acctype_id", z.a(z.this));
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(37931);
       }
@@ -59,11 +59,11 @@ public final class z
       }
     });
     paramContext = (MaskLayout)paramString.findViewById(2131297283);
-    ((b)g.ab(b.class)).b(this.GXN, "openim_acct_type_icon", b.a.hNB);
-    if (this.GXN.equals("cloudim")) {
+    ((b)g.ab(b.class)).b(this.Iyb, "openim_acct_type_icon", b.a.inX);
+    if (this.Iyb.equals("cloudim")) {
       ((ImageView)paramContext.getContentView()).setImageResource(2131689725);
     }
-    paramContext = ((b)g.ab(b.class)).b(this.GXN, "openim_acct_type_title", b.a.hNA);
+    paramContext = ((b)g.ab(b.class)).b(this.Iyb, "openim_acct_type_title", b.a.inW);
     ((TextView)findViewById(2131299502)).setText(paramContext);
     AppMethodBeat.o(37933);
   }

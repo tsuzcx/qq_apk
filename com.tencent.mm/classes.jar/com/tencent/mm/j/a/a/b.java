@@ -3,11 +3,11 @@ package com.tencent.mm.j.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String fyo;
-  public int fyp;
-  public String fyq;
+  public String fBV;
+  public int fBW;
+  public String fBX;
   public String userName;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -19,12 +19,12 @@ public final class b
       if (this.userName != null) {
         paramVarArgs.d(1, this.userName);
       }
-      if (this.fyo != null) {
-        paramVarArgs.d(2, this.fyo);
+      if (this.fBV != null) {
+        paramVarArgs.d(2, this.fBV);
       }
-      paramVarArgs.aR(3, this.fyp);
-      if (this.fyq != null) {
-        paramVarArgs.d(4, this.fyq);
+      paramVarArgs.aR(3, this.fBW);
+      if (this.fBX != null) {
+        paramVarArgs.d(4, this.fBX);
       }
       AppMethodBeat.o(42662);
       return 0;
@@ -38,22 +38,22 @@ public final class b
     for (paramInt = f.a.a.b.b.a.e(1, this.userName) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.fyo != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.fyo);
+      if (this.fBV != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.fBV);
       }
-      i += f.a.a.b.b.a.bA(3, this.fyp);
+      i += f.a.a.b.b.a.bx(3, this.fBW);
       paramInt = i;
-      if (this.fyq != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.fyq);
+      if (this.fBX != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.fBX);
       }
       AppMethodBeat.o(42662);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(42662);
@@ -69,19 +69,19 @@ public final class b
           AppMethodBeat.o(42662);
           return -1;
         case 1: 
-          localb.userName = locala.KhF.readString();
+          localb.userName = locala.LVo.readString();
           AppMethodBeat.o(42662);
           return 0;
         case 2: 
-          localb.fyo = locala.KhF.readString();
+          localb.fBV = locala.LVo.readString();
           AppMethodBeat.o(42662);
           return 0;
         case 3: 
-          localb.fyp = locala.KhF.xS();
+          localb.fBW = locala.LVo.xF();
           AppMethodBeat.o(42662);
           return 0;
         }
-        localb.fyq = locala.KhF.readString();
+        localb.fBX = locala.LVo.readString();
         AppMethodBeat.o(42662);
         return 0;
       }

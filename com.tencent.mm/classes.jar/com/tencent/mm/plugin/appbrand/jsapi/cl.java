@@ -5,15 +5,15 @@ import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.q;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/WxaComponentAdapter;", "", "()V", "asPage", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "asService", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "luggage-wxa-app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/WxaComponentAdapter;", "", "()V", "asPage", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "asService", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "luggage-wxa-app_release"})
 public final class cl
 {
-  public static final cl jAr;
+  public static final cl kaN;
   
   static
   {
     AppMethodBeat.i(135576);
-    jAr = new cl();
+    kaN = new cl();
     AppMethodBeat.o(135576);
   }
   
@@ -51,7 +51,7 @@ public final class cl
     }
     if ((paramc instanceof aa))
     {
-      paramc = ((aa)paramc).Du();
+      paramc = ((aa)paramc).CX();
       AppMethodBeat.o(135575);
       return paramc;
     }
@@ -67,7 +67,7 @@ public final class cl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.cl
  * JD-Core Version:    0.7.0.1
  */

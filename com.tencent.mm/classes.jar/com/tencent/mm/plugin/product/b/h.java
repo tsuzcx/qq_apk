@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aym;
-import com.tencent.mm.protocal.protobuf.ayn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bce;
+import com.tencent.mm.protocal.protobuf.bcf;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.List;
 
 public final class h
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
   private g callback;
   private b rr;
-  public String uwd;
-  public m uwe;
-  public List<n> uwf;
+  public String vEW;
+  public m vEX;
+  public List<n> vEY;
   
   public h(m paramm, String paramString)
   {
     AppMethodBeat.i(66894);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new aym();
-    ((b.a)localObject).gUV = new ayn();
+    ((b.a)localObject).hvt = new bce();
+    ((b.a)localObject).hvu = new bcf();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getproductdetail";
     ((b.a)localObject).funcId = 553;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (aym)this.rr.gUS.gUX;
-    this.uwd = paramString;
-    ((aym)localObject).DwS = paramString;
-    ad.d("MicroMsg.NetSceneMallGetProductDetail", "pid ".concat(String.valueOf(paramString)));
-    ((aym)localObject).Version = 0;
-    this.uwe = paramm;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (bce)this.rr.hvr.hvw;
+    this.vEW = paramString;
+    ((bce)localObject).ESn = paramString;
+    ac.d("MicroMsg.NetSceneMallGetProductDetail", "pid ".concat(String.valueOf(paramString)));
+    ((bce)localObject).Version = 0;
+    this.vEX = paramm;
     AppMethodBeat.o(66894);
   }
   
@@ -62,11 +62,11 @@ public final class h
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66895);
-    paramArrayOfByte = (ayn)((b)paramq).gUT.gUX;
-    if (!bt.isNullOrNil(paramArrayOfByte.DwU))
+    paramArrayOfByte = (bcf)((b)paramq).hvs.hvw;
+    if (!bs.isNullOrNil(paramArrayOfByte.ESp))
     {
-      ad.d("MicroMsg.NetSceneMallGetProductDetail", "resp.ProductInfo " + paramArrayOfByte.DwU);
-      this.uwe = m.a(this.uwe, paramArrayOfByte.DwU);
+      ac.d("MicroMsg.NetSceneMallGetProductDetail", "resp.ProductInfo " + paramArrayOfByte.ESp);
+      this.vEX = m.a(this.vEX, paramArrayOfByte.ESp);
     }
     paramInt1 = paramInt3;
     paramq = paramString;
@@ -74,25 +74,25 @@ public final class h
     {
       paramInt1 = paramInt3;
       paramq = paramString;
-      if (paramArrayOfByte.CEu != 0)
+      if (paramArrayOfByte.DWU != 0)
       {
-        paramInt1 = paramArrayOfByte.CEu;
-        paramq = paramArrayOfByte.CEv;
+        paramInt1 = paramArrayOfByte.DWU;
+        paramq = paramArrayOfByte.DWV;
       }
     }
-    if (!bt.isNullOrNil(paramArrayOfByte.DwV))
+    if (!bs.isNullOrNil(paramArrayOfByte.ESq))
     {
-      ad.d("MicroMsg.NetSceneMallGetProductDetail", "resp.RecommendInfo " + paramArrayOfByte.DwV);
-      this.uwf = n.parse(paramArrayOfByte.DwV);
+      ac.d("MicroMsg.NetSceneMallGetProductDetail", "resp.RecommendInfo " + paramArrayOfByte.ESq);
+      this.vEY = n.parse(paramArrayOfByte.ESq);
     }
-    ad.d("MicroMsg.NetSceneMallGetProductDetail", "errCode " + paramInt1 + ", errMsg " + paramq);
+    ac.d("MicroMsg.NetSceneMallGetProductDetail", "errCode " + paramInt1 + ", errMsg " + paramq);
     this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
     AppMethodBeat.o(66895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.h
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.m.e;
 import com.tencent.mm.plugin.transvoice.ui.a.a;
 import com.tencent.mm.plugin.transvoice.ui.a.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.ap;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,25 +27,25 @@ import java.util.List;
 public class LanguageChoiceLayout
   extends RelativeLayout
 {
-  private Button hJg;
-  private Button hJh;
-  public ViewGroup yWI;
-  private RecyclerView yWJ;
-  public a yWK;
-  private a yWL;
-  private View yqI;
+  private RecyclerView Akx;
+  public a Aky;
+  private a Akz;
+  private Button gAJ;
+  private Button gCY;
+  private View gCi;
+  public ViewGroup gDh;
   
   public LanguageChoiceLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(185271);
-    this.hJg = null;
-    this.hJh = null;
-    this.yqI = null;
-    this.yWI = null;
-    this.yWJ = null;
-    this.yWK = null;
-    this.yWL = null;
+    this.gCY = null;
+    this.gAJ = null;
+    this.gCi = null;
+    this.gDh = null;
+    this.Akx = null;
+    this.Aky = null;
+    this.Akz = null;
     init();
     AppMethodBeat.o(185271);
   }
@@ -54,47 +54,47 @@ public class LanguageChoiceLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(185272);
-    this.hJg = null;
-    this.hJh = null;
-    this.yqI = null;
-    this.yWI = null;
-    this.yWJ = null;
-    this.yWK = null;
-    this.yWL = null;
+    this.gCY = null;
+    this.gAJ = null;
+    this.gCi = null;
+    this.gDh = null;
+    this.Akx = null;
+    this.Aky = null;
+    this.Akz = null;
     init();
     AppMethodBeat.o(185272);
   }
   
-  private void dQH()
+  private void efg()
   {
     AppMethodBeat.i(185274);
     ArrayList localArrayList = new ArrayList();
-    int i = com.tencent.mm.m.g.Zd().getInt("VoiceInputLanguageSupportType", com.tencent.mm.modelvoiceaddr.g.hEm);
-    if (ac.eFq())
+    int i = com.tencent.mm.m.g.ZY().getInt("VoiceInputLanguageSupportType", com.tencent.mm.modelvoiceaddr.g.ieO);
+    if (ab.eUK())
     {
-      localArrayList.add(new a.a(getContext().getString(2131760625), com.tencent.mm.modelvoiceaddr.g.hEm));
-      if ((com.tencent.mm.modelvoiceaddr.g.hEn & i) != 0) {
-        localArrayList.add(new a.a(getContext().getString(2131760623), com.tencent.mm.modelvoiceaddr.g.hEn));
+      localArrayList.add(new a.a(getContext().getString(2131760625), com.tencent.mm.modelvoiceaddr.g.ieO));
+      if ((com.tencent.mm.modelvoiceaddr.g.ieP & i) != 0) {
+        localArrayList.add(new a.a(getContext().getString(2131760623), com.tencent.mm.modelvoiceaddr.g.ieP));
       }
-      if ((com.tencent.mm.modelvoiceaddr.g.hEo & i) != 0) {
-        localArrayList.add(new a.a(getContext().getString(2131760624), com.tencent.mm.modelvoiceaddr.g.hEo));
+      if ((com.tencent.mm.modelvoiceaddr.g.ieQ & i) != 0) {
+        localArrayList.add(new a.a(getContext().getString(2131760624), com.tencent.mm.modelvoiceaddr.g.ieQ));
       }
-      if ((i & com.tencent.mm.modelvoiceaddr.g.hEp) != 0) {
-        localArrayList.add(new a.a(getContext().getString(2131760626), com.tencent.mm.modelvoiceaddr.g.hEp));
+      if ((i & com.tencent.mm.modelvoiceaddr.g.ieR) != 0) {
+        localArrayList.add(new a.a(getContext().getString(2131760626), com.tencent.mm.modelvoiceaddr.g.ieR));
       }
     }
     for (;;)
     {
-      this.yWK.ga(localArrayList);
-      this.yWK.aql.notifyChanged();
+      this.Aky.gh(localArrayList);
+      this.Aky.arg.notifyChanged();
       AppMethodBeat.o(185274);
       return;
-      if (ac.eFu().equals("en"))
+      if (ab.eUO().equals("en"))
       {
-        localArrayList.add(new a.a(getContext().getString(2131760624), com.tencent.mm.modelvoiceaddr.g.hEo));
-        localArrayList.add(new a.a(getContext().getString(2131760625), com.tencent.mm.modelvoiceaddr.g.hEm));
-        if ((i & com.tencent.mm.modelvoiceaddr.g.hEn) != 0) {
-          localArrayList.add(new a.a(getContext().getString(2131760623), com.tencent.mm.modelvoiceaddr.g.hEn));
+        localArrayList.add(new a.a(getContext().getString(2131760624), com.tencent.mm.modelvoiceaddr.g.ieQ));
+        localArrayList.add(new a.a(getContext().getString(2131760625), com.tencent.mm.modelvoiceaddr.g.ieO));
+        if ((i & com.tencent.mm.modelvoiceaddr.g.ieP) != 0) {
+          localArrayList.add(new a.a(getContext().getString(2131760623), com.tencent.mm.modelvoiceaddr.g.ieP));
         }
       }
     }
@@ -104,55 +104,55 @@ public class LanguageChoiceLayout
   {
     AppMethodBeat.i(185273);
     View.inflate(getContext(), 2131495022, this);
-    this.yWI = ((ViewGroup)findViewById(2131302825));
-    this.hJg = ((Button)findViewById(2131302824));
-    this.hJh = ((Button)findViewById(2131302828));
-    this.yqI = findViewById(2131302823);
-    this.yWJ = ((RecyclerView)findViewById(2131302827));
-    this.yWK = new a();
-    RecyclerView localRecyclerView = this.yWJ;
+    this.gDh = ((ViewGroup)findViewById(2131302825));
+    this.gCY = ((Button)findViewById(2131302824));
+    this.gAJ = ((Button)findViewById(2131302828));
+    this.gCi = findViewById(2131302823);
+    this.Akx = ((RecyclerView)findViewById(2131302827));
+    this.Aky = new a();
+    RecyclerView localRecyclerView = this.Akx;
     getContext();
     localRecyclerView.setLayoutManager(new LinearLayoutManager());
-    this.yWJ.setAdapter(this.yWK);
-    dQH();
-    this.yWI.setTranslationY(ap.cf(getContext()).y);
-    this.yqI.setOnClickListener(new View.OnClickListener()
+    this.Akx.setAdapter(this.Aky);
+    efg();
+    this.gDh.setTranslationY(ap.cl(getContext()).y);
+    this.gCi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(185265);
-        LanguageChoiceLayout.this.dQI();
+        LanguageChoiceLayout.this.efh();
         AppMethodBeat.o(185265);
       }
     });
-    this.hJg.setOnClickListener(new View.OnClickListener()
+    this.gCY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(185266);
-        LanguageChoiceLayout.this.dQI();
+        LanguageChoiceLayout.this.efh();
         AppMethodBeat.o(185266);
       }
     });
-    this.hJh.setOnClickListener(new View.OnClickListener()
+    this.gAJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(185267);
         if (LanguageChoiceLayout.a(LanguageChoiceLayout.this) != null) {
-          LanguageChoiceLayout.a(LanguageChoiceLayout.this).PD(LanguageChoiceLayout.b(LanguageChoiceLayout.this).yYJ);
+          LanguageChoiceLayout.a(LanguageChoiceLayout.this).RJ(LanguageChoiceLayout.b(LanguageChoiceLayout.this).Amy);
         }
-        LanguageChoiceLayout.this.dQI();
+        LanguageChoiceLayout.this.efh();
         AppMethodBeat.o(185267);
       }
     });
     AppMethodBeat.o(185273);
   }
   
-  public final void dQI()
+  public final void efh()
   {
     AppMethodBeat.i(185275);
-    this.yWI.animate().translationY(ap.cf(getContext()).y).setDuration(200L).setListener(new AnimatorListenerAdapter()
+    this.gDh.animate().translationY(ap.cl(getContext()).y).setDuration(200L).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -166,23 +166,23 @@ public class LanguageChoiceLayout
   
   public void setSelectLanguageListener(a parama)
   {
-    this.yWL = parama;
+    this.Akz = parama;
   }
   
   public void setSelectedLang(int paramInt)
   {
     AppMethodBeat.i(185276);
-    if (this.yWK != null)
+    if (this.Aky != null)
     {
-      this.yWK.yYJ = paramInt;
-      this.yWK.aql.notifyChanged();
+      this.Aky.Amy = paramInt;
+      this.Aky.arg.notifyChanged();
     }
     AppMethodBeat.o(185276);
   }
   
   public static abstract interface a
   {
-    public abstract void PD(int paramInt);
+    public abstract void RJ(int paramInt);
   }
 }
 

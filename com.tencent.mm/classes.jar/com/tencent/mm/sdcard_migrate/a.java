@@ -6,24 +6,24 @@ import java.util.List;
 
 final class a
 {
-  int EPC;
-  final a EPD;
-  final List<b> oZi;
+  int GmP;
+  final a GmQ;
+  final List<b> pCt;
   
   a(b paramb)
   {
     AppMethodBeat.i(176025);
-    this.oZi = new ArrayList();
-    this.EPC = 0;
-    this.EPD = new a();
-    this.oZi.add(paramb);
+    this.pCt = new ArrayList();
+    this.GmP = 0;
+    this.GmQ = new a();
+    this.pCt.add(paramb);
     AppMethodBeat.o(176025);
   }
   
   public final a a(b paramb)
   {
     AppMethodBeat.i(176024);
-    this.oZi.add(paramb);
+    this.pCt.add(paramb);
     AppMethodBeat.o(176024);
     return this;
   }
@@ -32,14 +32,14 @@ final class a
   {
     public a() {}
     
-    public final void eEb()
+    public final void eTv()
     {
       AppMethodBeat.i(176023);
-      synchronized (a.this.oZi)
+      synchronized (a.this.pCt)
       {
-        a.b localb = (a.b)a.this.oZi.get(a.this.EPC);
+        a.b localb = (a.b)a.this.pCt.get(a.this.GmP);
         a locala = a.this;
-        locala.EPC += 1;
+        locala.GmP += 1;
         localb.a(this);
         AppMethodBeat.o(176023);
         return;

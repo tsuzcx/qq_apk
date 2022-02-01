@@ -19,30 +19,30 @@ import android.widget.TextView;
 public class ListFragment
   extends Fragment
 {
-  private final Runnable DN = new Runnable()
+  private final Runnable EL = new Runnable()
   {
     public final void run()
     {
-      ListFragment.this.DQ.focusableViewAvailable(ListFragment.this.DQ);
+      ListFragment.this.EO.focusableViewAvailable(ListFragment.this.EO);
     }
   };
-  private final AdapterView.OnItemClickListener DO = new AdapterView.OnItemClickListener()
+  private final AdapterView.OnItemClickListener EM = new AdapterView.OnItemClickListener()
   {
     public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong) {}
   };
-  ListAdapter DP;
-  ListView DQ;
-  View DR;
-  TextView DS;
-  View DT;
-  View DU;
-  boolean DV;
+  ListAdapter EN;
+  ListView EO;
+  View EP;
+  TextView EQ;
+  View ER;
+  View ES;
+  boolean ET;
   CharSequence mEmptyText;
   private final Handler mHandler = new Handler();
   
-  private void dJ()
+  private void dQ()
   {
-    if (this.DQ != null) {
+    if (this.EO != null) {
       return;
     }
     Object localObject = getView();
@@ -51,28 +51,28 @@ public class ListFragment
     }
     if ((localObject instanceof ListView))
     {
-      this.DQ = ((ListView)localObject);
-      this.DV = true;
-      this.DQ.setOnItemClickListener(this.DO);
-      if (this.DP == null) {
+      this.EO = ((ListView)localObject);
+      this.ET = true;
+      this.EO.setOnItemClickListener(this.EM);
+      if (this.EN == null) {
         break label254;
       }
-      localObject = this.DP;
-      this.DP = null;
+      localObject = this.EN;
+      this.EN = null;
       setListAdapter((ListAdapter)localObject);
     }
     for (;;)
     {
-      this.mHandler.post(this.DN);
+      this.mHandler.post(this.EL);
       return;
-      this.DS = ((TextView)((View)localObject).findViewById(16711681));
-      if (this.DS == null) {
-        this.DR = ((View)localObject).findViewById(16908292);
+      this.EQ = ((TextView)((View)localObject).findViewById(16711681));
+      if (this.EQ == null) {
+        this.EP = ((View)localObject).findViewById(16908292);
       }
       for (;;)
       {
-        this.DT = ((View)localObject).findViewById(16711682);
-        this.DU = ((View)localObject).findViewById(16711683);
+        this.ER = ((View)localObject).findViewById(16711682);
+        this.ES = ((View)localObject).findViewById(16711683);
         localObject = ((View)localObject).findViewById(16908298);
         if ((localObject instanceof ListView)) {
           break label193;
@@ -81,24 +81,24 @@ public class ListFragment
           break;
         }
         throw new RuntimeException("Your content must have a ListView whose id attribute is 'android.R.id.list'");
-        this.DS.setVisibility(8);
+        this.EQ.setVisibility(8);
       }
       throw new RuntimeException("Content has view with id attribute 'android.R.id.list' that is not a ListView class");
       label193:
-      this.DQ = ((ListView)localObject);
-      if (this.DR != null)
+      this.EO = ((ListView)localObject);
+      if (this.EP != null)
       {
-        this.DQ.setEmptyView(this.DR);
+        this.EO.setEmptyView(this.EP);
         break;
       }
       if (this.mEmptyText == null) {
         break;
       }
-      this.DS.setText(this.mEmptyText);
-      this.DQ.setEmptyView(this.DS);
+      this.EQ.setText(this.mEmptyText);
+      this.EO.setEmptyView(this.EQ);
       break;
       label254:
-      if (this.DT != null) {
+      if (this.ER != null) {
         e(false, false);
       }
     }
@@ -106,56 +106,56 @@ public class ListFragment
   
   private void e(boolean paramBoolean1, boolean paramBoolean2)
   {
-    dJ();
-    if (this.DT == null) {
+    dQ();
+    if (this.ER == null) {
       throw new IllegalStateException("Can't be used with a custom content view");
     }
-    if (this.DV == paramBoolean1) {
+    if (this.ET == paramBoolean1) {
       return;
     }
-    this.DV = paramBoolean1;
+    this.ET = paramBoolean1;
     if (paramBoolean1)
     {
       if (paramBoolean2)
       {
-        this.DT.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
-        this.DU.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
+        this.ER.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
+        this.ES.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
       }
       for (;;)
       {
-        this.DT.setVisibility(8);
-        this.DU.setVisibility(0);
+        this.ER.setVisibility(8);
+        this.ES.setVisibility(0);
         return;
-        this.DT.clearAnimation();
-        this.DU.clearAnimation();
+        this.ER.clearAnimation();
+        this.ES.clearAnimation();
       }
     }
     if (paramBoolean2)
     {
-      this.DT.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
-      this.DU.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
+      this.ER.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
+      this.ES.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
     }
     for (;;)
     {
-      this.DT.setVisibility(0);
-      this.DU.setVisibility(8);
+      this.ER.setVisibility(0);
+      this.ES.setVisibility(8);
       return;
-      this.DT.clearAnimation();
-      this.DU.clearAnimation();
+      this.ER.clearAnimation();
+      this.ES.clearAnimation();
     }
   }
   
   private void setListAdapter(ListAdapter paramListAdapter)
   {
     boolean bool = false;
-    if (this.DP != null) {}
+    if (this.EN != null) {}
     for (int i = 1;; i = 0)
     {
-      this.DP = paramListAdapter;
-      if (this.DQ != null)
+      this.EN = paramListAdapter;
+      if (this.EO != null)
       {
-        this.DQ.setAdapter(paramListAdapter);
-        if ((!this.DV) && (i == 0))
+        this.EO.setAdapter(paramListAdapter);
+        if ((!this.ET) && (i == 0))
         {
           if (getView().getWindowToken() != null) {
             bool = true;
@@ -195,25 +195,25 @@ public class ListFragment
   
   public void onDestroyView()
   {
-    this.mHandler.removeCallbacks(this.DN);
-    this.DQ = null;
-    this.DV = false;
-    this.DU = null;
-    this.DT = null;
-    this.DR = null;
-    this.DS = null;
+    this.mHandler.removeCallbacks(this.EL);
+    this.EO = null;
+    this.ET = false;
+    this.ES = null;
+    this.ER = null;
+    this.EP = null;
+    this.EQ = null;
     super.onDestroyView();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    dJ();
+    dQ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v4.app.ListFragment
  * JD-Core Version:    0.7.0.1
  */

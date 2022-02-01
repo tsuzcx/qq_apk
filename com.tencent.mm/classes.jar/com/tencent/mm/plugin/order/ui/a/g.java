@@ -16,31 +16,31 @@ import com.tencent.mm.ui.base.preference.f;
 public final class g
   extends Preference
 {
-  private static int uqH;
-  private static float uqI = 16.0F;
-  f lxI;
+  private static int vzD;
+  private static float vzE = 16.0F;
+  f lZC;
   private View mView;
-  String uqJ;
-  private String[] uqK;
-  private TextUtils.TruncateAt uqL;
-  private boolean uqM;
+  String vzF;
+  private String[] vzG;
+  private TextUtils.TruncateAt vzH;
+  private boolean vzI;
   
   public g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66820);
     this.mView = null;
-    this.uqM = false;
+    this.vzI = false;
     setLayoutResource(2131494710);
-    uqH = paramContext.getResources().getColor(2131100614);
+    vzD = paramContext.getResources().getColor(2131100614);
     AppMethodBeat.o(66820);
   }
   
   public final void a(String[] paramArrayOfString, TextUtils.TruncateAt paramTruncateAt)
   {
-    this.uqK = paramArrayOfString;
-    this.uqL = paramTruncateAt;
-    this.uqM = true;
+    this.vzG = paramArrayOfString;
+    this.vzH = paramTruncateAt;
+    this.vzI = true;
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
@@ -63,12 +63,12 @@ public final class g
     final TextView localTextView2 = (TextView)paramView.findViewById(2131302039);
     paramView = (LinearLayout)paramView.findViewById(2131302038);
     localTextView1.setText(getTitle());
-    if ((this.uqK == null) || (this.uqK.length <= 1)) {
-      localTextView2.setTextColor(uqH);
+    if ((this.vzG == null) || (this.vzG.length <= 1)) {
+      localTextView2.setTextColor(vzD);
     }
     for (;;)
     {
-      localTextView2.setText(this.uqJ);
+      localTextView2.setText(this.vzF);
       AppMethodBeat.o(66822);
       return;
       localTextView2.setOnClickListener(new View.OnClickListener()

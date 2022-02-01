@@ -9,56 +9,56 @@ import java.util.Arrays;
 public final class a$au
   extends e
 {
-  private static volatile au[] ImB;
-  public int ImC = 0;
-  public int ImD = 0;
-  public byte[] ImE = g.bIZ;
+  private static volatile au[] JOl;
+  public int JOm = 0;
+  public int JOn = 0;
+  public byte[] JOo = g.bGH;
   
   public a$au()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static au[] flx()
+  public static au[] fBO()
   {
-    if (ImB == null) {}
-    synchronized (c.bIR)
+    if (JOl == null) {}
+    synchronized (c.bGz)
     {
-      if (ImB == null) {
-        ImB = new au[0];
+      if (JOl == null) {
+        JOl = new au[0];
       }
-      return ImB;
+      return JOl;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.ImC != 0) {
-      paramb.by(1, this.ImC);
+    if (this.JOm != 0) {
+      paramb.bv(1, this.JOm);
     }
-    if (this.ImD != 0) {
-      paramb.by(2, this.ImD);
+    if (this.JOn != 0) {
+      paramb.bv(2, this.JOn);
     }
-    if (!Arrays.equals(this.ImE, g.bIZ)) {
-      paramb.b(3, this.ImE);
+    if (!Arrays.equals(this.JOo, g.bGH)) {
+      paramb.b(3, this.JOo);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.ImC != 0) {
-      i = j + b.bA(1, this.ImC);
+    if (this.JOm != 0) {
+      i = j + b.bx(1, this.JOm);
     }
     j = i;
-    if (this.ImD != 0) {
-      j = i + b.bA(2, this.ImD);
+    if (this.JOn != 0) {
+      j = i + b.bx(2, this.JOn);
     }
     i = j;
-    if (!Arrays.equals(this.ImE, g.bIZ)) {
-      i = j + b.c(3, this.ImE);
+    if (!Arrays.equals(this.JOo, g.bGH)) {
+      i = j + b.c(3, this.JOo);
     }
     return i;
   }

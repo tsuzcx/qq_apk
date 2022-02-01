@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class d
   implements b.a
 {
-  private final long aSz;
-  private final long aZD;
-  private final long[] aZE;
-  private final long aZF;
-  private final int aZG;
+  private final long aTs;
+  private final long bap;
+  private final long[] baq;
+  private final long bar;
+  private final int bas;
   private final long firstFramePosition;
   
   d(long paramLong1, long paramLong2, long paramLong3)
@@ -21,44 +21,44 @@ final class d
   d(long paramLong1, long paramLong2, long paramLong3, long[] paramArrayOfLong, long paramLong4, int paramInt)
   {
     this.firstFramePosition = paramLong1;
-    this.aSz = paramLong2;
-    this.aZD = paramLong3;
-    this.aZE = paramArrayOfLong;
-    this.aZF = paramLong4;
-    this.aZG = paramInt;
+    this.aTs = paramLong2;
+    this.bap = paramLong3;
+    this.baq = paramArrayOfLong;
+    this.bar = paramLong4;
+    this.bas = paramInt;
   }
   
   private long ed(int paramInt)
   {
-    return this.aSz * paramInt / 100L;
+    return this.aTs * paramInt / 100L;
   }
   
-  public final long K(long paramLong)
+  public final long L(long paramLong)
   {
     float f2 = 256.0F;
     float f3 = 0.0F;
     AppMethodBeat.i(92048);
-    if (!sH())
+    if (!sQ())
     {
       paramLong = this.firstFramePosition;
       AppMethodBeat.o(92048);
       return paramLong;
     }
-    float f4 = (float)paramLong * 100.0F / (float)this.aSz;
+    float f4 = (float)paramLong * 100.0F / (float)this.aTs;
     float f1;
     long l1;
     long l2;
     if (f4 <= 0.0F)
     {
       f1 = 0.0F;
-      l1 = Math.round(f1 * 0.00390625D * this.aZF);
+      l1 = Math.round(f1 * 0.00390625D * this.bar);
       l2 = this.firstFramePosition;
-      if (this.aZD == -1L) {
+      if (this.bap == -1L) {
         break label183;
       }
     }
     label183:
-    for (paramLong = this.aZD - 1L;; paramLong = this.firstFramePosition - this.aZG + this.aZF - 1L)
+    for (paramLong = this.bap - 1L;; paramLong = this.firstFramePosition - this.bas + this.bar - 1L)
     {
       paramLong = Math.min(l2 + l1, paramLong);
       AppMethodBeat.o(92048);
@@ -69,10 +69,10 @@ final class d
       }
       int i = (int)f4;
       if (i == 0) {}
-      for (f1 = f3;; f1 = (float)this.aZE[(i - 1)])
+      for (f1 = f3;; f1 = (float)this.baq[(i - 1)])
       {
         if (i < 99) {
-          f2 = (float)this.aZE[i];
+          f2 = (float)this.baq[i];
         }
         f1 = (f2 - f1) * (f4 - i) + f1;
         break;
@@ -80,16 +80,16 @@ final class d
     }
   }
   
-  public final long M(long paramLong)
+  public final long N(long paramLong)
   {
     AppMethodBeat.i(92049);
-    if ((!sH()) || (paramLong < this.firstFramePosition))
+    if ((!sQ()) || (paramLong < this.firstFramePosition))
     {
       AppMethodBeat.o(92049);
       return 0L;
     }
-    double d1 = 256.0D * (paramLong - this.firstFramePosition) / this.aZF;
-    int i = x.a(this.aZE, d1, false) + 1;
+    double d1 = 256.0D * (paramLong - this.firstFramePosition) / this.bar;
+    int i = x.a(this.baq, d1, false) + 1;
     long l2 = ed(i);
     long l1;
     label87:
@@ -113,9 +113,9 @@ final class d
     {
       AppMethodBeat.o(92049);
       return paramLong + l2;
-      paramLong = this.aZE[(i - 1)];
+      paramLong = this.baq[(i - 1)];
       break;
-      l1 = this.aZE[i];
+      l1 = this.baq[i];
       break label87;
       d2 = l3 - l2;
     }
@@ -123,12 +123,12 @@ final class d
   
   public final long getDurationUs()
   {
-    return this.aSz;
+    return this.aTs;
   }
   
-  public final boolean sH()
+  public final boolean sQ()
   {
-    return this.aZE != null;
+    return this.baq != null;
   }
 }
 

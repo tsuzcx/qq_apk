@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.ar;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/OnBLEPeripheralConnectionStateChanged;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "()V", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/OnBLEPeripheralConnectionStateChanged;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "()V", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
 final class j
   extends ar
 {
   private static final int CTRL_INDEX = 728;
   private static final String NAME = "onBLEPeripheralConnectionStateChanged";
-  public static final a jIt;
+  public static final a kiS;
   
   static
   {
     AppMethodBeat.i(144769);
-    jIt = new a((byte)0);
+    kiS = new a((byte)0);
     NAME = "onBLEPeripheralConnectionStateChanged";
     CTRL_INDEX = 728;
     AppMethodBeat.o(144769);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/OnBLEPeripheralConnectionStateChanged$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-commons-jsapi-connectivity-ext_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/OnBLEPeripheralConnectionStateChanged$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-commons-jsapi-connectivity-ext_release"})
   public static final class a {}
 }
 

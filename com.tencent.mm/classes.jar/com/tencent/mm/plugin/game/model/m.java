@@ -7,16 +7,16 @@ import android.net.Uri;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.p;
-import com.tencent.mm.g.a.yh;
+import com.tencent.mm.g.a.ys;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.api.d;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.luggage.GameFloatLayerInfo;
 import com.tencent.mm.plugin.game.luggage.GameWebViewLaunchParams;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -32,41 +32,41 @@ public final class m
     String str = paramString;
     if (paramo != null)
     {
-      paramo.cDf();
+      paramo.cQp();
       str = paramString;
-      if (!bt.isNullOrNil(paramo.rWu.url))
+      if (!bs.isNullOrNil(paramo.tem.url))
       {
-        dP(paramo.rWu.rWY);
-        str = gy(paramString, "h5FloatLayer=1");
-        ad.i("MicroMsg.GameEntranceChecker", "after checking float, url = %s", new Object[] { str });
+        dT(paramo.tem.teQ);
+        str = gP(paramString, "h5FloatLayer=1");
+        ac.i("MicroMsg.GameEntranceChecker", "after checking float, url = %s", new Object[] { str });
       }
       paramString = str;
-      if (!bt.isNullOrNil(paramo.rWL.rWZ)) {
-        dP(paramo.rWL.rWY);
+      if (!bs.isNullOrNil(paramo.teD.teR)) {
+        dT(paramo.teD.teQ);
       }
     }
     try
     {
-      paramString = gy(str, "h5BannerId=" + p.encode(paramo.rWL.rWZ, "UTF-8"));
-      ad.i("MicroMsg.GameEntranceChecker", "after checking banner, url = %s", new Object[] { paramString });
+      paramString = gP(str, "h5BannerId=" + p.encode(paramo.teD.teR, "UTF-8"));
+      ac.i("MicroMsg.GameEntranceChecker", "after checking banner, url = %s", new Object[] { paramString });
       str = paramString;
-      if (!bt.isNullOrNil(paramo.rWg.mDesc))
+      if (!bs.isNullOrNil(paramo.tdY.mDesc))
       {
         str = paramString;
-        if (!bt.isNullOrNil(paramo.rWg.rXa))
+        if (!bs.isNullOrNil(paramo.tdY.teS))
         {
           str = paramString;
-          if (!bt.isNullOrNil(paramo.rWg.rXb)) {
-            str = gy(paramString, "hasBubble=1");
+          if (!bs.isNullOrNil(paramo.tdY.teT)) {
+            str = gP(paramString, "hasBubble=1");
           }
         }
       }
-      paramString = gy(str, "gameMsgId=" + paramo.field_gameMsgId);
+      paramString = gP(str, "gameMsgId=" + paramo.field_gameMsgId);
       str = paramString;
-      if (!bt.isNullOrNil(paramo.rWT)) {}
+      if (!bs.isNullOrNil(paramo.teL)) {}
       try
       {
-        str = gy(paramString, "business_data=" + URLEncoder.encode(paramo.rWT, "utf-8"));
+        str = gP(paramString, "business_data=" + URLEncoder.encode(paramo.teL, "utf-8"));
         AppMethodBeat.o(41441);
         return str;
       }
@@ -90,25 +90,25 @@ public final class m
   public static void a(Activity paramActivity, String paramString, Intent paramIntent)
   {
     AppMethodBeat.i(41435);
-    if ((bt.isNullOrNil(paramString)) || (paramIntent == null))
+    if ((bs.isNullOrNil(paramString)) || (paramIntent == null))
     {
       AppMethodBeat.o(41435);
       return;
     }
     boolean bool = paramIntent.getBooleanExtra("from_find_more_friend", false);
     int i = paramIntent.getIntExtra("game_report_from_scene", 0);
-    ((d)g.ab(d.class)).cBc();
-    o localo2 = r.cDk();
+    ((d)g.ab(d.class)).cOl();
+    o localo2 = r.cQu();
     o localo1 = localo2;
     if (localo2 == null)
     {
-      ((d)g.ab(d.class)).cBc();
-      localo2 = r.cDo();
+      ((d)g.ab(d.class)).cOl();
+      localo2 = r.cQy();
       localo1 = localo2;
       if (localo2 == null)
       {
-        ((d)g.ab(d.class)).cBc();
-        localo1 = r.cDm();
+        ((d)g.ab(d.class)).cOl();
+        localo1 = r.cQw();
       }
     }
     paramString = a(paramString, localo1);
@@ -117,8 +117,8 @@ public final class m
     {
       a(paramActivity, paramIntent, "game_center_entrance", true, localo1, i);
       b(7, true, paramString);
-      ((d)g.ab(d.class)).cBc();
-      r.cDp();
+      ((d)g.ab(d.class)).cOl();
+      r.cQz();
       AppMethodBeat.o(41435);
       return;
     }
@@ -134,12 +134,12 @@ public final class m
     paramIntent.putExtra("game_check_float", paramBoolean);
     if ((paramBoolean) && (paramo != null))
     {
-      paramo.cDf();
-      if (paramo.rWu.rWX) {
-        paramIntent.putExtra("game_transparent_float_url", paramo.rWu.url);
+      paramo.cQp();
+      if (paramo.tem.teP) {
+        paramIntent.putExtra("game_transparent_float_url", paramo.tem.url);
       }
       paramIntent.putExtra("game_sourceScene", paramInt);
-      paramIntent.putExtra("game_float_layer_url", paramo.rWu.url);
+      paramIntent.putExtra("game_float_layer_url", paramo.tem.url);
     }
     c.x(paramIntent, paramContext);
     AppMethodBeat.o(41438);
@@ -151,8 +151,8 @@ public final class m
     o localo = paramo;
     if (paramo == null)
     {
-      ((d)g.ab(d.class)).cBc();
-      paramo = r.cDk();
+      ((d)g.ab(d.class)).cOl();
+      paramo = r.cQu();
       localo = paramo;
       if (paramo == null)
       {
@@ -160,28 +160,28 @@ public final class m
         return;
       }
     }
-    localo.cDf();
-    ad.i("MicroMsg.GameEntranceChecker", "float layer report");
-    if (!bt.isNullOrNil(localo.rWu.url))
+    localo.cQp();
+    ac.i("MicroMsg.GameEntranceChecker", "float layer report");
+    if (!bs.isNullOrNil(localo.tem.url))
     {
-      paramo = com.tencent.mm.game.report.e.a("resource", String.valueOf(localo.rWe.rXc), localo.rWS, null);
-      com.tencent.mm.game.report.e.a(aj.getContext(), 10, 1006, 1, 1, 0, localo.field_appId, paramInt1, localo.rWQ, localo.field_gameMsgId, localo.rWR, paramo);
+      paramo = com.tencent.mm.game.report.e.a("resource", String.valueOf(localo.tdW.teU), localo.teK, null);
+      com.tencent.mm.game.report.e.a(ai.getContext(), 10, 1006, 1, 1, 0, localo.field_appId, paramInt1, localo.teI, localo.field_gameMsgId, localo.teJ, paramo);
       if (paramInt2 != 1) {
         break label188;
       }
-      h.vKh.idkeyStat(858L, 16L, 1L, false);
+      h.wUl.idkeyStat(858L, 16L, 1L, false);
     }
     for (;;)
     {
       localo.field_isRead = true;
-      ((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().update(localo, new String[0]);
-      ((d)g.ab(d.class)).cBc();
-      r.cDl();
+      ((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().update(localo, new String[0]);
+      ((d)g.ab(d.class)).cOl();
+      r.cQv();
       AppMethodBeat.o(41437);
       return;
       label188:
       if (paramInt2 == 2) {
-        h.vKh.idkeyStat(858L, 17L, 1L, false);
+        h.wUl.idkeyStat(858L, 17L, 1L, false);
       }
     }
   }
@@ -189,8 +189,8 @@ public final class m
   public static void b(int paramInt, boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(183858);
-    ((d)g.ab(d.class)).cBc();
-    o localo = r.cDh();
+    ((d)g.ab(d.class)).cOl();
+    o localo = r.cQr();
     HashMap localHashMap = new HashMap();
     if (paramBoolean) {
       localHashMap.put("luggage", "1");
@@ -202,41 +202,41 @@ public final class m
     {
       localHashMap.put("function_type", "resource");
       localHashMap.put("function_value", "0");
-      com.tencent.mm.game.report.e.a(aj.getContext(), 9, 901, 1, paramInt, 0, com.tencent.mm.plugin.game.e.a.m(localHashMap));
+      com.tencent.mm.game.report.e.a(ai.getContext(), 9, 901, 1, paramInt, 0, com.tencent.mm.plugin.game.e.a.l(localHashMap));
       AppMethodBeat.o(183858);
       return;
     }
-    localo.cDf();
-    paramString = com.tencent.mm.game.report.e.a("resource", String.valueOf(localo.rWe.rXc), localo.rWS, localHashMap);
-    com.tencent.mm.game.report.e.a(aj.getContext(), 9, 901, 1, paramInt, 0, localo.field_appId, 0, localo.rWQ, localo.field_gameMsgId, localo.rWR, paramString);
-    ((d)g.ab(d.class)).cBc();
-    r.cDi();
-    h.vKh.idkeyStat(858L, 3L, 1L, false);
+    localo.cQp();
+    paramString = com.tencent.mm.game.report.e.a("resource", String.valueOf(localo.tdW.teU), localo.teK, localHashMap);
+    com.tencent.mm.game.report.e.a(ai.getContext(), 9, 901, 1, paramInt, 0, localo.field_appId, 0, localo.teI, localo.field_gameMsgId, localo.teJ, paramString);
+    ((d)g.ab(d.class)).cOl();
+    r.cQs();
+    h.wUl.idkeyStat(858L, 3L, 1L, false);
     AppMethodBeat.o(183858);
   }
   
   public static void b(Activity paramActivity, String paramString, Intent paramIntent)
   {
     AppMethodBeat.i(41436);
-    if ((bt.isNullOrNil(paramString)) || (paramIntent == null))
+    if ((bs.isNullOrNil(paramString)) || (paramIntent == null))
     {
       AppMethodBeat.o(41436);
       return;
     }
     boolean bool = paramIntent.getBooleanExtra("from_find_more_friend", false);
     int i = paramIntent.getIntExtra("game_report_from_scene", 0);
-    ((d)g.ab(d.class)).cBc();
-    o localo2 = r.cDk();
+    ((d)g.ab(d.class)).cOl();
+    o localo2 = r.cQu();
     o localo1 = localo2;
     if (localo2 == null)
     {
-      ((d)g.ab(d.class)).cBc();
-      localo2 = r.cDo();
+      ((d)g.ab(d.class)).cOl();
+      localo2 = r.cQy();
       localo1 = localo2;
       if (localo2 == null)
       {
-        ((d)g.ab(d.class)).cBc();
-        localo1 = r.cDm();
+        ((d)g.ab(d.class)).cOl();
+        localo1 = r.cQw();
       }
     }
     paramString = a(paramString, localo1);
@@ -244,19 +244,19 @@ public final class m
     paramIntent.putExtra("from_find_more_friend", true);
     if (bool)
     {
-      ((d)g.ab(d.class)).cBc();
-      localo2 = r.cDh();
+      ((d)g.ab(d.class)).cOl();
+      localo2 = r.cQr();
       if (localo2 != null)
       {
-        localo2.cDf();
-        if (localo2.rWQ == 107) {
+        localo2.cQp();
+        if (localo2.teI == 107) {
           paramIntent.putExtra("from_download_floagt_ball_shutdown_entrance", true);
         }
       }
       b(paramActivity, paramIntent, "game_center_entrance", true, localo1, i);
       b(7, true, paramString);
-      ((d)g.ab(d.class)).cBc();
-      r.cDp();
+      ((d)g.ab(d.class)).cOl();
+      r.cQz();
       AppMethodBeat.o(41436);
       return;
     }
@@ -274,14 +274,14 @@ public final class m
     int i;
     if ((paramBoolean) && (paramo != null))
     {
-      paramo.cDf();
-      if ((paramo.rWu != null) && (!bt.isNullOrNil(paramo.rWu.url)))
+      paramo.cQp();
+      if ((paramo.tem != null) && (!bs.isNullOrNil(paramo.tem.url)))
       {
         paramString = new GameFloatLayerInfo();
-        paramString.url = gx((String)localObject, paramo.rWu.url);
-        paramString.rOL = paramo.rWu.rOL;
+        paramString.url = gO((String)localObject, paramo.tem.url);
+        paramString.sWB = paramo.tem.sWB;
         i = -1;
-        switch (paramo.rWu.orientation)
+        switch (paramo.tem.orientation)
         {
         }
       }
@@ -290,9 +290,9 @@ public final class m
     {
       paramString.orientation = i;
       localObject = new GameWebViewLaunchParams();
-      ((GameWebViewLaunchParams)localObject).rOO = paramString;
+      ((GameWebViewLaunchParams)localObject).sWE = paramString;
       paramIntent.putExtra("launchParams", (Parcelable)localObject);
-      paramIntent.putExtra("game_float_layer_url", paramo.rWu.url);
+      paramIntent.putExtra("game_float_layer_url", paramo.tem.url);
       c.y(paramIntent, paramContext);
       a(paramo, paramInt, 1);
       AppMethodBeat.o(41439);
@@ -303,42 +303,42 @@ public final class m
     }
   }
   
-  private static void dP(List paramList)
+  private static void dT(List paramList)
   {
     AppMethodBeat.i(41442);
-    if (bt.gL(paramList))
+    if (bs.gY(paramList))
     {
       AppMethodBeat.o(41442);
       return;
     }
-    yh localyh = new yh();
-    localyh.dEN.dbV = 8;
-    localyh.dEN.scene = 1;
-    localyh.dEN.dET = paramList;
-    com.tencent.mm.sdk.b.a.ESL.l(localyh);
+    ys localys = new ys();
+    localys.dCz.cZu = 8;
+    localys.dCz.scene = 1;
+    localys.dCz.dCF = paramList;
+    com.tencent.mm.sdk.b.a.GpY.l(localys);
     AppMethodBeat.o(41442);
   }
   
-  private static String gx(String paramString1, String paramString2)
+  private static String gO(String paramString1, String paramString2)
   {
     AppMethodBeat.i(41440);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(41440);
       return paramString2;
     }
     paramString1 = Uri.parse(paramString1).getQueryParameter("nav_color");
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(41440);
       return paramString2;
     }
-    paramString1 = gy(paramString2, "nav_color=".concat(String.valueOf(paramString1)));
+    paramString1 = gP(paramString2, "nav_color=".concat(String.valueOf(paramString1)));
     AppMethodBeat.o(41440);
     return paramString1;
   }
   
-  private static String gy(String paramString1, String paramString2)
+  private static String gP(String paramString1, String paramString2)
   {
     AppMethodBeat.i(41443);
     Uri localUri = Uri.parse(paramString1);
@@ -355,7 +355,7 @@ public final class m
       }
       catch (URISyntaxException paramString2)
       {
-        ad.printErrStackTrace("MicroMsg.GameEntranceChecker", paramString2, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.GameEntranceChecker", paramString2, "", new Object[0]);
         continue;
       }
       AppMethodBeat.o(41443);

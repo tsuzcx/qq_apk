@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.appbrand.launching.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.co.f;
-import com.tencent.mm.co.g;
-import com.tencent.mm.protocal.protobuf.bkw;
-import com.tencent.mm.protocal.protobuf.bkx;
-import com.tencent.mm.protocal.protobuf.dty;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.cn.f;
+import com.tencent.mm.cn.g;
+import com.tencent.mm.protocal.protobuf.bos;
+import com.tencent.mm.protocal.protobuf.bot;
+import com.tencent.mm.protocal.protobuf.dzp;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vending.g.c.a;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/launching/data_prefetch/CgiPrefetchLaunchWxaApp;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "username", "", "enterPath", "(Ljava/lang/String;Ljava/lang/String;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/data_prefetch/CgiPrefetchLaunchWxaApp;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "username", "", "enterPath", "(Ljava/lang/String;Ljava/lang/String;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "plugin-appbrand-integration_release"})
 public final class b
-  extends com.tencent.mm.al.a<bkx>
+  extends com.tencent.mm.ak.a<bot>
 {
-  private final String iJb;
+  private final String jjf;
   private final String username;
   
   public b(String paramString1, String paramString2)
   {
     this.username = paramString1;
-    this.iJb = paramString2;
+    this.jjf = paramString2;
   }
   
-  public final f<a.a<bkx>> auK()
+  public final f<a.a<bot>> aBB()
   {
     AppMethodBeat.i(50783);
     Object localObject = (CharSequence)this.username;
@@ -37,27 +37,27 @@ public final class b
       AppMethodBeat.o(50783);
       return localObject;
     }
-    ad.i("MicroMsg.AppBrand.CgiPrefetchLaunchWxaApp", "run() with username[" + this.username + "] enterPath[" + this.iJb + "] instance[" + hashCode() + ']');
-    localObject = new com.tencent.mm.al.b.a();
-    bkw localbkw = new bkw();
-    localbkw.DII = this.username;
-    dty localdty = new dty();
-    localdty.DKY = this.iJb;
-    localbkw.DIA = localdty;
-    localbkw.DAR = true;
-    localbkw.DAS = true;
-    ((com.tencent.mm.al.b.a)localObject).c((com.tencent.mm.bx.a)localbkw);
-    ((com.tencent.mm.al.b.a)localObject).nB(1122);
-    ((com.tencent.mm.al.b.a)localObject).wg("/cgi-bin/mmbiz-bin/wxaattr/launchwxaapp");
-    ((com.tencent.mm.al.b.a)localObject).d((com.tencent.mm.bx.a)new bkx());
-    c(((com.tencent.mm.al.b.a)localObject).atI());
-    localObject = super.auK();
+    ac.i("MicroMsg.AppBrand.CgiPrefetchLaunchWxaApp", "run() with username[" + this.username + "] enterPath[" + this.jjf + "] instance[" + hashCode() + ']');
+    localObject = new com.tencent.mm.ak.b.a();
+    bos localbos = new bos();
+    localbos.Fed = this.username;
+    dzp localdzp = new dzp();
+    localdzp.Fhn = this.jjf;
+    localbos.FdV = localdzp;
+    localbos.EWn = true;
+    localbos.EWo = true;
+    ((com.tencent.mm.ak.b.a)localObject).c((com.tencent.mm.bw.a)localbos);
+    ((com.tencent.mm.ak.b.a)localObject).op(1122);
+    ((com.tencent.mm.ak.b.a)localObject).Am("/cgi-bin/mmbiz-bin/wxaattr/launchwxaapp");
+    ((com.tencent.mm.ak.b.a)localObject).d((com.tencent.mm.bw.a)new bot());
+    c(((com.tencent.mm.ak.b.a)localObject).aAz());
+    localObject = super.aBB();
     k.g(localObject, "super.run()");
     AppMethodBeat.o(50783);
     return localObject;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "kotlin.jvm.PlatformType", "call"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class a<_Ret>
     implements c.a<_Var>
   {
@@ -66,7 +66,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.b.b
  * JD-Core Version:    0.7.0.1
  */

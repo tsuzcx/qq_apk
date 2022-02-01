@@ -62,11 +62,11 @@ public abstract interface p
   
   public abstract boolean i(m paramm);
   
-  public abstract g iQ(List<? extends g> paramList);
-  
   public abstract int j(m paramm);
   
   public abstract k j(i parami);
+  
+  public abstract g jg(List<? extends g> paramList);
   
   public abstract Collection<g> k(m paramm);
   
@@ -113,7 +113,7 @@ public abstract interface p
         AppMethodBeat.o(61238);
         return i;
       }
-      paramp = (Throwable)new IllegalStateException(("unknown type argument list type: " + paramk + ", " + w.bk(paramk.getClass())).toString());
+      paramp = (Throwable)new IllegalStateException(("unknown type argument list type: " + paramk + ", " + w.bn(paramk.getClass())).toString());
       AppMethodBeat.o(61238);
       throw paramp;
     }
@@ -135,7 +135,7 @@ public abstract interface p
         localObject = paramp;
         if (paramp == null)
         {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
           localObject = paramp;
         }
       }
@@ -177,7 +177,7 @@ public abstract interface p
         AppMethodBeat.o(61237);
         return paramp;
       }
-      paramp = (Throwable)new IllegalStateException(("unknown type argument list type: " + paramk + ", " + w.bk(paramk.getClass())).toString());
+      paramp = (Throwable)new IllegalStateException(("unknown type argument list type: " + paramk + ", " + w.bn(paramk.getClass())).toString());
       AppMethodBeat.o(61237);
       throw paramp;
     }
@@ -208,7 +208,7 @@ public abstract interface p
         localObject = paramp;
         if (paramp == null)
         {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
           localObject = paramp;
         }
       }
@@ -307,7 +307,7 @@ public abstract interface p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.c.p
  * JD-Core Version:    0.7.0.1
  */

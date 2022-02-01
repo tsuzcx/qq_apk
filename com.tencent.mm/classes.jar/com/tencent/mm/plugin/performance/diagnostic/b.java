@@ -7,16 +7,16 @@ import java.util.Map;
 public final class b
   extends a
 {
-  protected final void ao(Map<String, String> paramMap)
+  protected final void aq(Map<String, String> paramMap)
   {
     AppMethodBeat.i(124913);
-    if ((paramMap.containsKey(".cmd.diagnostic.report" + ".memory")) && ((MemoryHookLogic)com.tencent.mm.plugin.performance.a.a.urg.aQ(MemoryHookLogic.class) != null)) {
+    if ((paramMap.containsKey(".cmd.diagnostic.report" + ".memory")) && ((MemoryHookLogic)com.tencent.mm.plugin.performance.a.a.vAc.aR(MemoryHookLogic.class) != null)) {
       MemoryHookLogic.report();
     }
     AppMethodBeat.o(124913);
   }
   
-  public final String dat()
+  public final String dob()
   {
     return ".cmd.diagnostic.report";
   }

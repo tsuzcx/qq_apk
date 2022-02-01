@@ -11,47 +11,47 @@ import com.tencent.mm.plugin.mmsight.model.a.d.a;
 import com.tencent.mm.plugin.mmsight.model.a.j;
 import com.tencent.mm.plugin.mmsight.model.g;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 
 public class a
 {
-  private static volatile a pTR;
-  private static final String pUg;
-  public static final String pUh;
-  private static final String pUi;
-  public com.tencent.mm.remoteservice.d fLo;
-  private com.tencent.mm.plugin.mmsight.model.a.d iBe;
+  private static final String qCL;
+  public static final String qCM;
+  private static final String qCN;
+  private static volatile a qCw;
+  public com.tencent.mm.remoteservice.d fPa;
+  private com.tencent.mm.plugin.mmsight.model.a.d jbf;
   private String mFilePath;
   private final Object mLock;
-  public ap pTS;
-  private final int pTT;
-  private final int pTU;
-  private final int pTV;
-  private a pTW;
-  private int pTX;
-  private boolean pTY;
-  private int pTZ;
-  public boolean pUa;
-  private b pUb;
-  private int pUc;
-  private int pUd;
-  private String pUe;
-  public b pUf;
-  private d.b pUj;
-  private d.a pUk;
+  private final int qCA;
+  private a.a qCB;
+  private int qCC;
+  private boolean qCD;
+  private int qCE;
+  public boolean qCF;
+  private b qCG;
+  private int qCH;
+  private int qCI;
+  private String qCJ;
+  public b qCK;
+  private d.b qCO;
+  private d.a qCP;
+  public ao qCx;
+  private final int qCy;
+  private final int qCz;
   
   static
   {
     AppMethodBeat.i(104090);
-    pTR = null;
-    pUg = p.cfZ() + '/' + "fdv_";
-    pUh = p.cfZ() + '/' + "video_temp_test.mp4";
-    pUi = p.cfZ() + '/' + "fdv_t_";
+    qCw = null;
+    qCL = p.cnG() + '/' + "fdv_";
+    qCM = p.cnG() + '/' + "video_temp_test.mp4";
+    qCN = p.cnG() + '/' + "fdv_t_";
     AppMethodBeat.o(104090);
   }
   
@@ -59,42 +59,42 @@ public class a
   {
     AppMethodBeat.i(104078);
     this.mLock = new Object();
-    this.pTS = null;
-    this.pTT = 960;
-    this.pTU = 540;
-    this.pTV = 15;
-    this.pTW = a.pUC;
-    this.pTX = 0;
-    this.pTY = false;
-    this.pTZ = 0;
-    this.pUa = false;
-    this.pUb = null;
-    this.pUc = -1;
-    this.pUd = -1;
+    this.qCx = null;
+    this.qCy = 960;
+    this.qCz = 540;
+    this.qCA = 15;
+    this.qCB = a.a.qDh;
+    this.qCC = 0;
+    this.qCD = false;
+    this.qCE = 0;
+    this.qCF = false;
+    this.qCG = null;
+    this.qCH = -1;
+    this.qCI = -1;
     this.mFilePath = "";
-    this.pUe = "";
-    this.fLo = new com.tencent.mm.remoteservice.d(aj.getContext());
-    this.pUf = b.tBr.aLh();
-    this.pUj = new d.b()
+    this.qCJ = "";
+    this.fPa = new com.tencent.mm.remoteservice.d(ai.getContext());
+    this.qCK = b.uJO.aRY();
+    this.qCO = new d.b()
     {
-      public final void bk(byte[] paramAnonymousArrayOfByte)
+      public final void bj(byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(104073);
-        a.this.bl(paramAnonymousArrayOfByte);
+        a.this.bk(paramAnonymousArrayOfByte);
         AppMethodBeat.o(104073);
       }
       
-      public final com.tencent.mm.memory.a<byte[]> cfD()
+      public final com.tencent.mm.memory.a<byte[]> cnk()
       {
-        return j.tEA;
+        return j.uMV;
       }
     };
-    this.pUk = new d.a()
+    this.qCP = new d.a()
     {
-      public final void aLq()
+      public final void aSh()
       {
         AppMethodBeat.i(104063);
-        ad.e("MicroMsg.FaceVideoRecorder", "hy: video capture error: %d", new Object[] { Integer.valueOf(1) });
+        ac.e("MicroMsg.FaceVideoRecorder", "hy: video capture error: %d", new Object[] { Integer.valueOf(1) });
         a.s(a.this).postToWorker(new Runnable()
         {
           /* Error */
@@ -104,41 +104,41 @@ public class a
             //   0: ldc 28
             //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
             //   5: aload_0
-            //   6: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:pUw	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   9: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:pUt	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   6: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:qDb	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   9: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:qCY	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   12: invokestatic 44	com/tencent/mm/plugin/facedetect/e/a:g	(Lcom/tencent/mm/plugin/facedetect/e/a;)Lcom/tencent/mm/plugin/mmsight/model/a/d;
             //   15: ifnull +18 -> 33
             //   18: aload_0
-            //   19: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:pUw	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   22: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:pUt	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   19: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:qDb	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   22: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:qCY	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   25: invokestatic 44	com/tencent/mm/plugin/facedetect/e/a:g	(Lcom/tencent/mm/plugin/facedetect/e/a;)Lcom/tencent/mm/plugin/mmsight/model/a/d;
             //   28: invokeinterface 49 1 0
             //   33: aload_0
-            //   34: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:pUw	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   37: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:pUt	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   34: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:qDb	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   37: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:qCY	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   40: invokestatic 53	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
             //   43: aload_0
-            //   44: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:pUw	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   47: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:pUt	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   44: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:qDb	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   47: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:qCY	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   50: invokestatic 57	com/tencent/mm/plugin/facedetect/e/a:a	(Lcom/tencent/mm/plugin/facedetect/e/a;)Ljava/lang/Object;
             //   53: astore_1
             //   54: aload_1
             //   55: monitorenter
             //   56: aload_0
-            //   57: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:pUw	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   60: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:pUt	Lcom/tencent/mm/plugin/facedetect/e/a;
-            //   63: getstatic 63	com/tencent/mm/plugin/facedetect/e/a$a:pUD	Lcom/tencent/mm/plugin/facedetect/e/a$a;
+            //   57: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:qDb	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   60: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:qCY	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   63: getstatic 63	com/tencent/mm/plugin/facedetect/e/a$a:qDi	Lcom/tencent/mm/plugin/facedetect/e/a$a;
             //   66: invokestatic 66	com/tencent/mm/plugin/facedetect/e/a:a	(Lcom/tencent/mm/plugin/facedetect/e/a;Lcom/tencent/mm/plugin/facedetect/e/a$a;)Lcom/tencent/mm/plugin/facedetect/e/a$a;
             //   69: pop
             //   70: aload_1
             //   71: monitorexit
-            //   72: invokestatic 72	com/tencent/mm/plugin/facedetect/model/FaceContextData:cfE	()Lcom/tencent/mm/plugin/facedetect/model/FaceContextData;
+            //   72: invokestatic 72	com/tencent/mm/plugin/facedetect/model/FaceContextData:cnl	()Lcom/tencent/mm/plugin/facedetect/model/FaceContextData;
             //   75: ifnull +17 -> 92
-            //   78: invokestatic 72	com/tencent/mm/plugin/facedetect/model/FaceContextData:cfE	()Lcom/tencent/mm/plugin/facedetect/model/FaceContextData;
-            //   81: getfield 76	com/tencent/mm/plugin/facedetect/model/FaceContextData:pOI	J
+            //   78: invokestatic 72	com/tencent/mm/plugin/facedetect/model/FaceContextData:cnl	()Lcom/tencent/mm/plugin/facedetect/model/FaceContextData;
+            //   81: getfield 76	com/tencent/mm/plugin/facedetect/model/FaceContextData:qxq	J
             //   84: iconst_2
             //   85: aload_0
-            //   86: getfield 21	com/tencent/mm/plugin/facedetect/e/a$2$1:ixL	I
+            //   86: getfield 21	com/tencent/mm/plugin/facedetect/e/a$2$1:iXO	I
             //   89: invokestatic 82	com/tencent/mm/plugin/facedetect/model/FaceDetectReporter:h	(JII)V
             //   92: ldc 28
             //   94: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -153,16 +153,16 @@ public class a
             //   109: aload_1
             //   110: invokevirtual 93	java/lang/Exception:getMessage	()Ljava/lang/String;
             //   113: aastore
-            //   114: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+            //   114: invokestatic 99	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
             //   117: aload_0
-            //   118: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:pUw	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   121: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:pUt	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   118: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:qDb	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   121: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:qCY	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   124: invokestatic 53	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
             //   127: goto -84 -> 43
             //   130: astore_1
             //   131: aload_0
-            //   132: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:pUw	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   135: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:pUt	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   132: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:qDb	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   135: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:qCY	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   138: invokestatic 53	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
             //   141: ldc 28
             //   143: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -193,39 +193,39 @@ public class a
         AppMethodBeat.o(104063);
       }
     };
-    this.pTS = new ap("face_video_handler");
+    this.qCx = new ao("face_video_handler");
     AppMethodBeat.o(104078);
   }
   
-  private VideoTransPara aXb()
+  private VideoTransPara bdZ()
   {
     AppMethodBeat.i(104086);
     VideoTransPara localVideoTransPara = new VideoTransPara();
     localVideoTransPara.isDefault = true;
-    localVideoTransPara.width = this.pUc;
-    localVideoTransPara.height = this.pUd;
+    localVideoTransPara.width = this.qCH;
+    localVideoTransPara.height = this.qCI;
     localVideoTransPara.fps = 30;
     localVideoTransPara.videoBitrate = 1200000;
-    localVideoTransPara.hbW = 10;
+    localVideoTransPara.hCy = 10;
     localVideoTransPara.audioBitrate = 64000;
-    localVideoTransPara.hbX = 2;
-    localVideoTransPara.hbY = 1;
+    localVideoTransPara.hCz = 2;
+    localVideoTransPara.hCA = 1;
     localVideoTransPara.audioSampleRate = 16000;
     localVideoTransPara.duration = 15;
     AppMethodBeat.o(104086);
     return localVideoTransPara;
   }
   
-  public static a cgJ()
+  public static a coq()
   {
     AppMethodBeat.i(104079);
-    if (pTR == null) {
+    if (qCw == null) {
       try
       {
-        if (pTR == null) {
-          pTR = new a();
+        if (qCw == null) {
+          qCw = new a();
         }
-        a locala1 = pTR;
+        a locala1 = qCw;
         return locala1;
       }
       finally
@@ -233,39 +233,39 @@ public class a
         AppMethodBeat.o(104079);
       }
     }
-    a locala2 = pTR;
+    a locala2 = qCw;
     AppMethodBeat.o(104079);
     return locala2;
   }
   
-  public final boolean Ok()
+  public final boolean Og()
   {
     AppMethodBeat.i(104082);
-    ad.e("MicroMsg.FaceVideoRecorder", "carson: start Record Video");
-    this.pTS.postToWorker(new Runnable()
+    ac.e("MicroMsg.FaceVideoRecorder", "carson: start Record Video");
+    this.qCx.postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104069);
         synchronized (a.a(a.this))
         {
-          if (a.n(a.this) == a.a.pUC)
+          if (a.n(a.this) == a.a.qDh)
           {
-            ad.e("MicroMsg.FaceVideoRecorder", "hy: not started. should not happen");
+            ac.e("MicroMsg.FaceVideoRecorder", "hy: not started. should not happen");
             a.d(a.this);
             AppMethodBeat.o(104069);
             return;
           }
-          if (a.n(a.this) == a.a.pUE)
+          if (a.n(a.this) == a.a.qDj)
           {
-            ad.w("MicroMsg.FaceVideoRecorder", "hy: already started or wait start");
+            ac.w("MicroMsg.FaceVideoRecorder", "hy: already started or wait start");
             AppMethodBeat.o(104069);
             return;
           }
-          ad.i("MicroMsg.FaceVideoRecorder", "hy: startRecord record");
-          com.tencent.mm.plugin.facedetect.model.d.cfC().a(a.o(a.this));
+          ac.i("MicroMsg.FaceVideoRecorder", "hy: startRecord record");
+          com.tencent.mm.plugin.facedetect.model.d.cnj().a(a.o(a.this));
           a.g(a.this).b(a.k(a.this), a.p(a.this), a.q(a.this));
-          a.a(a.this, a.a.pUE);
+          a.a(a.this, a.a.qDj);
           AppMethodBeat.o(104069);
           return;
         }
@@ -278,8 +278,8 @@ public class a
   public final void a(final b paramb)
   {
     AppMethodBeat.i(104084);
-    ad.e("MicroMsg.FaceVideoRecorder", "carson: stop Record Video");
-    this.pTS.postToWorker(new Runnable()
+    ac.e("MicroMsg.FaceVideoRecorder", "carson: stop Record Video");
+    this.qCx.postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -287,56 +287,56 @@ public class a
         synchronized (a.a(a.this))
         {
           a.a(a.this, paramb);
-          if (a.n(a.this) == a.a.pUC)
+          if (a.n(a.this) == a.a.qDh)
           {
-            ad.e("MicroMsg.FaceVideoRecorder", "hy: not initialized. should not happen");
+            ac.e("MicroMsg.FaceVideoRecorder", "hy: not initialized. should not happen");
             a.d(a.this);
             if (a.r(a.this) != null) {
-              a.r(a.this).XM(null);
+              a.r(a.this).acj(null);
             }
             AppMethodBeat.o(104072);
             return;
           }
-          if ((a.n(a.this) == a.a.pUH) || (a.n(a.this) == a.a.pUD))
+          if ((a.n(a.this) == a.a.qDm) || (a.n(a.this) == a.a.qDi))
           {
-            ad.w("MicroMsg.FaceVideoRecorder", "hy: cancelled or not started capturing.");
+            ac.w("MicroMsg.FaceVideoRecorder", "hy: cancelled or not started capturing.");
             a.d(a.this);
             if (a.r(a.this) != null) {
-              a.r(a.this).XM(null);
+              a.r(a.this).acj(null);
             }
             AppMethodBeat.o(104072);
             return;
           }
-          if (a.n(a.this) == a.a.pUG)
+          if (a.n(a.this) == a.a.qDl)
           {
-            ad.i("MicroMsg.FaceVideoRecorder", "hy: already stopped");
+            ac.i("MicroMsg.FaceVideoRecorder", "hy: already stopped");
             if (a.r(a.this) != null) {
-              a.r(a.this).XM(a.g(a.this).getFilePath());
+              a.r(a.this).acj(a.g(a.this).getFilePath());
             }
             AppMethodBeat.o(104072);
             return;
           }
-          if (a.n(a.this) == a.a.pUF)
+          if (a.n(a.this) == a.a.qDk)
           {
-            ad.i("MicroMsg.FaceVideoRecorder", "hy: stopping. wait");
+            ac.i("MicroMsg.FaceVideoRecorder", "hy: stopping. wait");
             AppMethodBeat.o(104072);
             return;
           }
-          ad.i("MicroMsg.FaceVideoRecorder", "hy: stop record and release" + Thread.currentThread().getName());
-          com.tencent.mm.plugin.facedetect.model.d.cfC().b(a.o(a.this));
-          a.a(a.this, a.a.pUF);
-          a.g(a.this).C(new Runnable()
+          ac.i("MicroMsg.FaceVideoRecorder", "hy: stop record and release" + Thread.currentThread().getName());
+          com.tencent.mm.plugin.facedetect.model.d.cnj().b(a.o(a.this));
+          a.a(a.this, a.a.qDk);
+          a.g(a.this).E(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(104071);
               synchronized (a.a(a.this))
               {
-                ad.i("MicroMsg.FaceVideoRecorder", "carson: begin to stop" + a.g(a.this).getFilePath());
-                a.a(a.this, a.a.pUG);
+                ac.i("MicroMsg.FaceVideoRecorder", "carson: begin to stop" + a.g(a.this).getFilePath());
+                a.a(a.this, a.a.qDl);
                 i.deleteFile(a.h(a.this));
                 if (a.r(a.this) != null) {
-                  a.r(a.this).XM(a.g(a.this).getFilePath());
+                  a.r(a.this).acj(a.g(a.this).getFilePath());
                 }
                 AppMethodBeat.o(104071);
                 return;
@@ -354,35 +354,35 @@ public class a
   public final boolean a(final int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4, final int paramInt5, final boolean paramBoolean)
   {
     AppMethodBeat.i(104080);
-    ad.i("MicroMsg.FaceVideoRecorder", "hy: init record");
-    ad.i("MicroMsg.FaceVideoRecorder", "hy: cameraOrientation: %d, previewWidth: %d, previewHeight: %d,isLandscape: %b,  degree: %d, acceptVoiceFromOutside: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.FALSE, Integer.valueOf(0), Boolean.valueOf(paramBoolean) });
-    VideoTransPara localVideoTransPara = aXb();
-    this.pUf.a(this.fLo, localVideoTransPara);
-    this.pTS.postToWorker(new Runnable()
+    ac.i("MicroMsg.FaceVideoRecorder", "hy: init record");
+    ac.i("MicroMsg.FaceVideoRecorder", "hy: cameraOrientation: %d, previewWidth: %d, previewHeight: %d,isLandscape: %b,  degree: %d, acceptVoiceFromOutside: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.FALSE, Integer.valueOf(0), Boolean.valueOf(paramBoolean) });
+    VideoTransPara localVideoTransPara = bdZ();
+    this.qCK.a(this.fPa, localVideoTransPara);
+    this.qCx.postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104061);
         if ((paramInt1 == 90) || (paramInt1 == 270))
         {
-          ad.i("MicroMsg.FaceVideoRecorder", "hy: need make width and height upside down");
+          ac.i("MicroMsg.FaceVideoRecorder", "hy: need make width and height upside down");
           a.a(a.this, paramInt3);
           a.b(a.this, paramInt2);
         }
         synchronized (a.a(a.this))
         {
           a.c(a.this, paramInt1);
-          a.a(a.this, this.pUo);
-          a.d(a.this, this.pUp);
+          a.a(a.this, this.qCT);
+          a.d(a.this, this.qCU);
           a.b(a.this);
           a.c(a.this);
           a.d(a.this);
-          aq.f(new Runnable()
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(104060);
-              final long l = bt.GC();
+              final long l = bs.Gn();
               a.m(a.this).connect(new Runnable()
               {
                 public final void run()
@@ -390,17 +390,17 @@ public class a
                   AppMethodBeat.i(104059);
                   synchronized (a.a(a.this))
                   {
-                    ad.i("MicroMsg.FaceVideoRecorder", "hy: connect cost %s ms", new Object[] { Long.valueOf(bt.aS(l)) });
-                    long l = bt.GC();
-                    a.a(a.this, a.e(a.this).aLg());
+                    ac.i("MicroMsg.FaceVideoRecorder", "hy: connect cost %s ms", new Object[] { Long.valueOf(bs.aO(l)) });
+                    long l = bs.Gn();
+                    a.a(a.this, a.e(a.this).aRX());
                     a.g(a.this).setFilePath(a.f(a.this));
-                    a.g(a.this).ru(a.h(a.this));
-                    a.g(a.this).dV(a.1.this.pUq);
-                    a.g(a.this).s(a.i(a.this), a.j(a.this), a.1.this.pUr, a.1.this.pUs);
-                    a.g(a.this).mQ(a.k(a.this));
+                    a.g(a.this).vx(a.h(a.this));
+                    a.g(a.this).eq(a.1.this.qCV);
+                    a.g(a.this).s(a.i(a.this), a.j(a.this), a.1.this.qCW, a.1.this.qCX);
+                    a.g(a.this).nE(a.k(a.this));
                     a.g(a.this).a(a.l(a.this));
-                    a.a(a.this, a.a.pUD);
-                    ad.i("MicroMsg.FaceVideoRecorder", "hy: init in main thread cost %d ms", new Object[] { Long.valueOf(bt.aS(l)) });
+                    a.a(a.this, a.a.qDi);
+                    ac.i("MicroMsg.FaceVideoRecorder", "hy: init in main thread cost %d ms", new Object[] { Long.valueOf(bs.aO(l)) });
                     AppMethodBeat.o(104059);
                     return;
                   }
@@ -420,17 +420,17 @@ public class a
     return true;
   }
   
-  public final void bl(final byte[] paramArrayOfByte)
+  public final void bk(final byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(104085);
-    this.pTS.postToWorker(new Runnable()
+    this.qCx.postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104074);
         SightVideoJNI.mirrorCameraData(paramArrayOfByte, a.i(a.this), a.j(a.this), false);
         if (a.g(a.this).getFrameDataCallback() != null) {
-          a.g(a.this).getFrameDataCallback().W(paramArrayOfByte);
+          a.g(a.this).getFrameDataCallback().V(paramArrayOfByte);
         }
         AppMethodBeat.o(104074);
       }
@@ -438,43 +438,43 @@ public class a
     AppMethodBeat.o(104085);
   }
   
-  public final c.a cgK()
+  public final c.a cor()
   {
     AppMethodBeat.i(104081);
-    if (this.iBe != null)
+    if (this.jbf != null)
     {
-      c.a locala = this.iBe.aow();
+      c.a locala = this.jbf.avm();
       AppMethodBeat.o(104081);
       return locala;
     }
-    ad.w("MicroMsg.FaceVideoRecorder", "hy: no media recorder");
+    ac.w("MicroMsg.FaceVideoRecorder", "hy: no media recorder");
     AppMethodBeat.o(104081);
     return null;
   }
   
-  public final void cgL()
+  public final void cos()
   {
     AppMethodBeat.i(104083);
-    ad.e("MicroMsg.FaceVideoRecorder", "carson: cancel Record Video");
-    this.pTS.postToWorker(new Runnable()
+    ac.e("MicroMsg.FaceVideoRecorder", "carson: cancel Record Video");
+    this.qCx.postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104070);
         synchronized (a.a(a.this))
         {
-          if (a.n(a.this) == a.a.pUC)
+          if (a.n(a.this) == a.a.qDh)
           {
-            ad.e("MicroMsg.FaceVideoRecorder", "hy: not started when cancel. should not happen");
+            ac.e("MicroMsg.FaceVideoRecorder", "hy: not started when cancel. should not happen");
             a.d(a.this);
             AppMethodBeat.o(104070);
             return;
           }
-          ad.i("MicroMsg.FaceVideoRecorder", "hy: cancel record");
+          ac.i("MicroMsg.FaceVideoRecorder", "hy: cancel record");
           a.g(a.this).cancel();
           a.d(a.this);
-          com.tencent.mm.plugin.facedetect.model.d.cfC().b(a.o(a.this));
-          a.a(a.this, a.a.pUH);
+          com.tencent.mm.plugin.facedetect.model.d.cnj().b(a.o(a.this));
+          a.a(a.this, a.a.qDm);
           a.m(a.this).release();
           AppMethodBeat.o(104070);
           return;
@@ -484,11 +484,11 @@ public class a
     AppMethodBeat.o(104083);
   }
   
-  public final a cgM()
+  public final a.a cot()
   {
     synchronized (this.mLock)
     {
-      a locala = this.pTW;
+      a.a locala = this.qCB;
       return locala;
     }
   }
@@ -499,7 +499,7 @@ public class a
     {
       synchronized (this.mLock)
       {
-        if (this.pTW == a.pUE)
+        if (this.qCB == a.a.qDj)
         {
           bool = true;
           return bool;
@@ -509,32 +509,14 @@ public class a
     }
   }
   
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(104077);
-      pUC = new a("UNINITIALIZED", 0);
-      pUD = new a("INITIALIZED", 1);
-      pUE = new a("STARTED", 2);
-      pUF = new a("STOPPING", 3);
-      pUG = new a("STOPPED", 4);
-      pUH = new a("CANCELLED", 5);
-      pUI = new a[] { pUC, pUD, pUE, pUF, pUG, pUH };
-      AppMethodBeat.o(104077);
-    }
-    
-    private a() {}
-  }
-  
   public static abstract interface b
   {
-    public abstract void XM(String paramString);
+    public abstract void acj(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.e.a
  * JD-Core Version:    0.7.0.1
  */

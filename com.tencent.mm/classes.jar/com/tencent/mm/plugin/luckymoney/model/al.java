@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ public final class al
     AppMethodBeat.o(65295);
   }
   
-  public final String bOB()
+  public final String bVR()
   {
     return "/cgi-bin/mmpay-bin/deletelistwxhb";
   }
@@ -35,7 +35,7 @@ public final class al
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(65296);
-    ad.i("NetSceneLuckyMoneyMyRecordDelete", "onGYNetEnd");
+    ac.i("NetSceneLuckyMoneyMyRecordDelete", "onGYNetEnd");
     AppMethodBeat.o(65296);
   }
 }

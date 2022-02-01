@@ -9,19 +9,19 @@ import java.util.Map;
 
 public final class a
 {
-  private static a fXS;
-  private static g fXW = null;
-  private static c fXX = null;
-  private final e fXT;
-  private final f fXU;
-  public d fXV;
+  private static g gcD = null;
+  private static c gcE = null;
+  private static a gcz;
+  private final e gcA;
+  private final f gcB;
+  public d gcC;
   
   private a()
   {
     AppMethodBeat.i(55504);
-    this.fXT = new e() {};
-    this.fXU = new f() {};
-    this.fXV = null;
+    this.gcA = new e() {};
+    this.gcB = new f() {};
+    this.gcC = null;
     AppMethodBeat.o(55504);
   }
   
@@ -72,16 +72,16 @@ public final class a
     AppMethodBeat.o(55510);
   }
   
-  public static a adm()
+  public static a aeC()
   {
     AppMethodBeat.i(55503);
-    if (fXS == null) {}
+    if (gcz == null) {}
     try
     {
-      if (fXS == null) {
-        fXS = new a();
+      if (gcz == null) {
+        gcz = new a();
       }
-      a locala = fXS;
+      a locala = gcz;
       AppMethodBeat.o(55503);
       return locala;
     }
@@ -143,22 +143,22 @@ public final class a
   public final void a(Object paramObject, Intent paramIntent)
   {
     AppMethodBeat.i(55506);
-    if (!b.aW(paramObject))
+    if (!b.aT(paramObject))
     {
       AppMethodBeat.o(55506);
       return;
     }
-    if (this.fXV != null) {
-      this.fXV.b(paramObject, paramIntent);
+    if (this.gcC != null) {
+      this.gcC.b(paramObject, paramIntent);
     }
     AppMethodBeat.o(55506);
   }
   
-  public final void aV(Object paramObject)
+  public final void aS(Object paramObject)
   {
     AppMethodBeat.i(55508);
-    if (((paramObject instanceof Activity)) && (this.fXV != null)) {
-      this.fXV.x((Activity)paramObject);
+    if (((paramObject instanceof Activity)) && (this.gcC != null)) {
+      this.gcC.x((Activity)paramObject);
     }
     AppMethodBeat.o(55508);
   }
@@ -173,33 +173,33 @@ public final class a
     {
       AppMethodBeat.o(55505);
       return;
-      if (this.fXV != null)
+      if (this.gcC != null)
       {
-        this.fXV.aX(paramObject);
+        this.gcC.aU(paramObject);
         AppMethodBeat.o(55505);
         return;
-        if (this.fXV != null)
+        if (this.gcC != null)
         {
-          this.fXV.aY(paramObject);
+          this.gcC.aV(paramObject);
           AppMethodBeat.o(55505);
           return;
-          if (this.fXV != null)
+          if (this.gcC != null)
           {
-            this.fXV.aZ(paramObject);
+            this.gcC.aW(paramObject);
             AppMethodBeat.o(55505);
             return;
-            if (this.fXV != null)
+            if (this.gcC != null)
             {
-              this.fXV.ba(paramObject);
+              this.gcC.aX(paramObject);
               AppMethodBeat.o(55505);
               return;
-              if (this.fXV != null)
+              if (this.gcC != null)
               {
-                this.fXV.bb(paramObject);
+                this.gcC.aY(paramObject);
                 AppMethodBeat.o(55505);
                 return;
-                if (this.fXV != null) {
-                  this.fXV.bc(paramObject);
+                if (this.gcC != null) {
+                  this.gcC.aZ(paramObject);
                 }
               }
             }

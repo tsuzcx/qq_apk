@@ -23,7 +23,7 @@ public final class t
   public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(128881);
-    e.jQn.execute(new Runnable()
+    e.kqZ.execute(new Runnable()
     {
       public final void run()
       {
@@ -33,7 +33,7 @@ public final class t
           AppMethodBeat.o(128880);
           return;
         }
-        Object localObject = paramc.Ee().aRh();
+        Object localObject = paramc.DH().aYc();
         JSONArray localJSONArray = new JSONArray();
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
@@ -45,7 +45,7 @@ public final class t
             {
               JSONObject localJSONObject = new JSONObject();
               localJSONObject.put("filePath", locala.getFileName());
-              localJSONObject.put("size", locala.aRb());
+              localJSONObject.put("size", locala.aXW());
               localJSONObject.put("createTime", TimeUnit.MILLISECONDS.toSeconds(locala.lastModified()));
               localJSONArray.put(localJSONObject);
             }
@@ -61,14 +61,14 @@ public final class t
     AppMethodBeat.o(128881);
   }
   
-  public final boolean aXA()
+  public final boolean bex()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.t
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.gallery.picker;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/gallery/picker/GalleryPickerFragment$ISelectedMediaChange;", "", "onChange", "", "size", "", "plugin-gallery_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/gallery/picker/GalleryPickerFragment$ISelectedMediaChange;", "", "onChange", "", "size", "", "plugin-gallery_release"})
 public abstract interface GalleryPickerFragment$b {}
 
 

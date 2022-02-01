@@ -9,9 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject.HelpCenter;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,9 +21,9 @@ public final class j
 {
   View.OnClickListener mOnClickListener;
   private View mView;
-  List<MallOrderDetailObject.HelpCenter> unQ;
-  String uqU;
-  View.OnClickListener uqV;
+  List<MallOrderDetailObject.HelpCenter> vwM;
+  String vzQ;
+  View.OnClickListener vzR;
   
   public j(Context paramContext)
   {
@@ -31,8 +31,8 @@ public final class j
     AppMethodBeat.i(66831);
     this.mView = null;
     this.mOnClickListener = null;
-    this.uqV = null;
-    this.unQ = new LinkedList();
+    this.vzR = null;
+    this.vwM = new LinkedList();
     setLayoutResource(2131494718);
     AppMethodBeat.o(66831);
   }
@@ -55,15 +55,15 @@ public final class j
     super.onBindView(paramView);
     paramView = (LinearLayout)paramView.findViewById(2131302068);
     paramView.removeAllViews();
-    if (this.unQ == null)
+    if (this.vwM == null)
     {
       AppMethodBeat.o(66833);
       return;
     }
     int i;
-    if ((!bt.isNullOrNil(this.uqU)) && (this.uqV != null))
+    if ((!bs.isNullOrNil(this.vzQ)) && (this.vzR != null))
     {
-      i = this.unQ.size();
+      i = this.vwM.size();
       if (i != 0) {
         break label455;
       }
@@ -77,12 +77,12 @@ public final class j
       Object localObject;
       for (;;)
       {
-        if (j < this.unQ.size())
+        if (j < this.vwM.size())
         {
-          localObject = (MallOrderDetailObject.HelpCenter)this.unQ.get(j);
+          localObject = (MallOrderDetailObject.HelpCenter)this.vwM.get(j);
           TextView localTextView = new TextView(this.mContext);
           localTextView.setTextColor(this.mContext.getResources().getColor(2131100711));
-          localTextView.setTextSize(0, a.ao(this.mContext, 2131165517));
+          localTextView.setTextSize(0, a.au(this.mContext, 2131165517));
           localTextView.setIncludeFontPadding(false);
           localTextView.setText(((MallOrderDetailObject.HelpCenter)localObject).name);
           localTextView.setTag(localObject);
@@ -96,24 +96,24 @@ public final class j
           {
             localObject = new View(this.mContext);
             ((View)localObject).setBackgroundColor(this.mContext.getResources().getColor(2131100886));
-            paramView.addView((View)localObject, new LinearLayout.LayoutParams(a.ao(this.mContext, 2131165270), -1));
+            paramView.addView((View)localObject, new LinearLayout.LayoutParams(a.au(this.mContext, 2131165270), -1));
           }
           k += 1;
           j += 1;
           continue;
-          i = this.unQ.size() - 1;
+          i = this.vwM.size() - 1;
           break;
         }
       }
-      if ((!bt.isNullOrNil(this.uqU)) && (this.uqV != null))
+      if ((!bs.isNullOrNil(this.vzQ)) && (this.vzR != null))
       {
         localObject = new TextView(this.mContext);
         ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131100711));
-        ((TextView)localObject).setTextSize(0, a.ao(this.mContext, 2131165517));
+        ((TextView)localObject).setTextSize(0, a.au(this.mContext, 2131165517));
         ((TextView)localObject).setIncludeFontPadding(false);
-        ((TextView)localObject).setText(this.uqU);
+        ((TextView)localObject).setText(this.vzQ);
         ((TextView)localObject).setGravity(17);
-        ((TextView)localObject).setOnClickListener(this.uqV);
+        ((TextView)localObject).setOnClickListener(this.vzR);
         if (k == i) {
           ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131100464));
         }
@@ -126,7 +126,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.j
  * JD-Core Version:    0.7.0.1
  */

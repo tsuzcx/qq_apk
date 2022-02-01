@@ -4,20 +4,14 @@ import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.map.tools.json.JsonComposer;
-import com.tencent.map.tools.json.annotation.Json;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.json.JSONObject;
 
 public class LatLng
-  extends JsonComposer
   implements Parcelable
 {
   public static final Parcelable.Creator<LatLng> CREATOR;
   public double altitude;
-  @Json(name="lat")
   public double latitude;
-  @Json(name="lng")
   public double longitude;
   
   static
@@ -144,13 +138,6 @@ public class LatLng
     return (i * 31 + j) * 31 + k;
   }
   
-  public void parse(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(181061);
-    super.parse(paramJSONObject);
-    AppMethodBeat.o(181061);
-  }
-  
   public void setAltitude(double paramDouble)
   {
     this.altitude = paramDouble;
@@ -223,7 +210,7 @@ public class LatLng
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.LatLng
  * JD-Core Version:    0.7.0.1
  */

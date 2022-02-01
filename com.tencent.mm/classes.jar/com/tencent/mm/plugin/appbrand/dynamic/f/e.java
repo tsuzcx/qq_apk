@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.b.c;
+import com.tencent.mm.aa.b.c;
 import org.json.JSONObject;
 
 public final class e
@@ -27,7 +27,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.e
  * JD-Core Version:    0.7.0.1
  */

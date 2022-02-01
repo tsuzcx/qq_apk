@@ -8,16 +8,16 @@ public class a
   public static final int CTRL_INDEX = 585;
   public static final String NAME = "hideSplashScreen";
   
-  protected boolean BC()
+  protected boolean Bg()
   {
     return false;
   }
   
-  protected void BD() {}
+  protected void Bh() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.d.a
  * JD-Core Version:    0.7.0.1
  */

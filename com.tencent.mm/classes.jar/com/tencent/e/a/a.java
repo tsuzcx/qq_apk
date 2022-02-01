@@ -9,6 +9,19 @@ import java.util.concurrent.TimeUnit;
 
 public final class a
 {
+  private static long BW(long paramLong)
+  {
+    AppMethodBeat.i(183192);
+    long l = System.nanoTime();
+    if (paramLong < 4611686018427387903L) {}
+    for (;;)
+    {
+      AppMethodBeat.o(183192);
+      return l + paramLong;
+      paramLong = 4611686018427387903L;
+    }
+  }
+  
   public static long a(long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(183191);
@@ -22,7 +35,7 @@ public final class a
     if (paramLong < 0L) {
       l = 0L;
     }
-    paramLong = xm(paramTimeUnit.toNanos(l));
+    paramLong = BW(paramTimeUnit.toNanos(l));
     AppMethodBeat.o(183191);
     return paramLong;
   }
@@ -32,53 +45,40 @@ public final class a
     AppMethodBeat.i(183190);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      paramCallable = new k(paramCallable, a(paramLong, TimeUnit.MILLISECONDS), er(paramCallable));
+      paramCallable = new k(paramCallable, a(paramLong, TimeUnit.MILLISECONDS), es(paramCallable));
       AppMethodBeat.o(183190);
       return paramCallable;
     }
-    paramCallable = new e(paramCallable, a(paramLong, TimeUnit.MILLISECONDS), paramString, er(paramCallable));
+    paramCallable = new e(paramCallable, a(paramLong, TimeUnit.MILLISECONDS), paramString, es(paramCallable));
     AppMethodBeat.o(183190);
     return paramCallable;
   }
   
-  public static k<?> b(Runnable paramRunnable, long paramLong, String paramString)
+  public static k<?> d(Runnable paramRunnable, long paramLong, String paramString)
   {
     AppMethodBeat.i(183189);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      paramRunnable = new k(paramRunnable, a(paramLong, TimeUnit.MILLISECONDS), er(paramRunnable));
+      paramRunnable = new k(paramRunnable, a(paramLong, TimeUnit.MILLISECONDS), es(paramRunnable));
       AppMethodBeat.o(183189);
       return paramRunnable;
     }
-    paramRunnable = new e(paramRunnable, a(paramLong, TimeUnit.MILLISECONDS), paramString, er(paramRunnable));
+    paramRunnable = new e(paramRunnable, a(paramLong, TimeUnit.MILLISECONDS), paramString, es(paramRunnable));
     AppMethodBeat.o(183189);
     return paramRunnable;
   }
   
-  public static boolean er(Object paramObject)
+  public static boolean es(Object paramObject)
   {
     AppMethodBeat.i(183193);
     if ((paramObject instanceof j))
     {
-      boolean bool = ((j)paramObject).adf();
+      boolean bool = ((j)paramObject).aev();
       AppMethodBeat.o(183193);
       return bool;
     }
     AppMethodBeat.o(183193);
     return true;
-  }
-  
-  private static long xm(long paramLong)
-  {
-    AppMethodBeat.i(183192);
-    long l = System.nanoTime();
-    if (paramLong < 4611686018427387903L) {}
-    for (;;)
-    {
-      AppMethodBeat.o(183192);
-      return l + paramLong;
-      paramLong = 4611686018427387903L;
-    }
   }
 }
 

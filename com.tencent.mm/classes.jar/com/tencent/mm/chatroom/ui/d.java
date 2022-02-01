@@ -11,20 +11,20 @@ import java.util.Iterator;
 public final class d
   extends TouchDelegate
 {
-  private static final Rect fxL;
-  ArrayList<TouchDelegate> fxM;
-  TouchDelegate fxN;
+  private static final Rect fBs;
+  ArrayList<TouchDelegate> fBt;
+  TouchDelegate fBu;
   
   static
   {
     AppMethodBeat.i(13003);
-    fxL = new Rect();
+    fBs = new Rect();
     AppMethodBeat.o(13003);
   }
   
   public d(View paramView)
   {
-    super(fxL, paramView);
+    super(fBs, paramView);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -43,26 +43,26 @@ public final class d
       }
       AppMethodBeat.o(13002);
       return false;
-      if (this.fxM == null) {
+      if (this.fBt == null) {
         break;
       }
-      localObject = this.fxM.iterator();
+      localObject = this.fBt.iterator();
       while (((Iterator)localObject).hasNext())
       {
         TouchDelegate localTouchDelegate = (TouchDelegate)((Iterator)localObject).next();
         if ((localTouchDelegate != null) && (localTouchDelegate.onTouchEvent(paramMotionEvent)))
         {
-          this.fxN = localTouchDelegate;
+          this.fBu = localTouchDelegate;
           AppMethodBeat.o(13002);
           return true;
         }
       }
       localObject = null;
       continue;
-      localObject = this.fxN;
+      localObject = this.fBu;
       continue;
-      localObject = this.fxN;
-      this.fxN = null;
+      localObject = this.fBu;
+      this.fBu = null;
     }
     label143:
     boolean bool = ((TouchDelegate)localObject).onTouchEvent(paramMotionEvent);
@@ -72,7 +72,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.d
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ import com.tencent.mm.pluginsdk.ui.span.k;
 public class BankRemitDetailItemView
   extends LinearLayout
 {
-  private TextView kEu;
-  private TextView kFd;
-  private boolean vvO;
+  private TextView lfN;
+  private TextView lgw;
+  private boolean wFT;
   
   public BankRemitDetailItemView(Context paramContext)
   {
@@ -23,7 +23,7 @@ public class BankRemitDetailItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67502);
-    this.vvO = false;
+    this.wFT = false;
     init();
     AppMethodBeat.o(67502);
   }
@@ -32,7 +32,7 @@ public class BankRemitDetailItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(67503);
-    this.vvO = false;
+    this.wFT = false;
     init();
     AppMethodBeat.o(67503);
   }
@@ -41,8 +41,8 @@ public class BankRemitDetailItemView
   {
     super(paramContext);
     AppMethodBeat.i(67501);
-    this.vvO = false;
-    this.vvO = paramBoolean;
+    this.wFT = false;
+    this.wFT = paramBoolean;
     init();
     AppMethodBeat.o(67501);
   }
@@ -50,13 +50,13 @@ public class BankRemitDetailItemView
   private void init()
   {
     AppMethodBeat.i(67504);
-    if (this.vvO) {
+    if (this.wFT) {
       inflate(getContext(), 2131493152, this);
     }
     for (;;)
     {
-      this.kEu = ((TextView)findViewById(2131297519));
-      this.kFd = ((TextView)findViewById(2131297518));
+      this.lfN = ((TextView)findViewById(2131297519));
+      this.lgw = ((TextView)findViewById(2131297518));
       AppMethodBeat.o(67504);
       return;
       inflate(getContext(), 2131493151, this);
@@ -66,14 +66,14 @@ public class BankRemitDetailItemView
   public final void a(String paramString, CharSequence paramCharSequence, boolean paramBoolean)
   {
     AppMethodBeat.i(67505);
-    this.kEu.setText(paramString);
+    this.lfN.setText(paramString);
     if (paramBoolean)
     {
-      this.kFd.setText(k.b(getContext(), paramCharSequence, this.kFd.getTextSize()));
+      this.lgw.setText(k.b(getContext(), paramCharSequence, this.lgw.getTextSize()));
       AppMethodBeat.o(67505);
       return;
     }
-    this.kFd.setText(paramCharSequence);
+    this.lgw.setText(paramCharSequence);
     AppMethodBeat.o(67505);
   }
   

@@ -6,30 +6,30 @@ import com.tencent.mm.plugin.freewifi.g.b;
 import com.tencent.mm.plugin.freewifi.model.j;
 import com.tencent.mm.pluginsdk.ui.tools.x;
 import com.tencent.mm.protocal.protobuf.af;
-import com.tencent.mm.protocal.protobuf.yb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.yw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class h
 {
-  private b rfw;
+  private b soo;
   private String userAgent;
   
   private h()
   {
     AppMethodBeat.i(24660);
-    this.rfw = j.cvZ();
+    this.soo = j.cJl();
     AppMethodBeat.o(24660);
   }
   
-  private void Ds(int paramInt)
+  private void Fo(int paramInt)
   {
     try
     {
       AppMethodBeat.i(24664);
-      if (paramInt > bt.getInt(a.rfx.rfD, 0)) {
-        j.cvZ().gi(a.rfx.key, String.valueOf(paramInt));
+      if (paramInt > bs.getInt(a.sop.sov, 0)) {
+        j.cJl().gz(a.sop.key, String.valueOf(paramInt));
       }
       AppMethodBeat.o(24664);
       return;
@@ -37,31 +37,31 @@ public final class h
     finally {}
   }
   
-  private static void Dt(int paramInt)
+  private static void Fp(int paramInt)
   {
     AppMethodBeat.i(24666);
     if (paramInt > 0) {
-      j.cvZ().gi(a.rfy.key, String.valueOf(paramInt));
+      j.cJl().gz(a.soq.key, String.valueOf(paramInt));
     }
     AppMethodBeat.o(24666);
   }
   
-  private void Du(int paramInt)
+  private void Fq(int paramInt)
   {
     AppMethodBeat.i(24668);
     if (paramInt > 0) {
-      this.rfw.gi(a.rfz.key, String.valueOf(paramInt));
+      this.soo.gz(a.sor.key, String.valueOf(paramInt));
     }
     AppMethodBeat.o(24668);
   }
   
-  private void aao(String paramString)
+  private void afg(String paramString)
   {
     AppMethodBeat.i(24670);
     if (("0".equals(paramString)) || ("1".equals(paramString))) {
       try
       {
-        this.rfw.gi(a.rfA.key, paramString);
+        this.soo.gz(a.sos.key, paramString);
         AppMethodBeat.o(24670);
         return;
       }
@@ -70,14 +70,14 @@ public final class h
     AppMethodBeat.o(24670);
   }
   
-  private void aap(String paramString)
+  private void afh(String paramString)
   {
     AppMethodBeat.i(24672);
-    if (!m.dq(paramString)) {
+    if (!m.cX(paramString)) {
       try
       {
         Uri.parse(paramString);
-        this.rfw.gi(a.rfB.key, paramString);
+        this.soo.gz(a.sot.key, paramString);
         AppMethodBeat.o(24672);
         return;
       }
@@ -86,14 +86,14 @@ public final class h
     AppMethodBeat.o(24672);
   }
   
-  private void aaq(String paramString)
+  private void afi(String paramString)
   {
     AppMethodBeat.i(24674);
-    if (!m.dq(paramString)) {
+    if (!m.cX(paramString)) {
       try
       {
         Uri.parse(paramString);
-        this.rfw.gi(a.rfC.key, paramString);
+        this.soo.gz(a.sou.key, paramString);
         AppMethodBeat.o(24674);
         return;
       }
@@ -102,22 +102,22 @@ public final class h
     AppMethodBeat.o(24674);
   }
   
-  private void cvi()
+  private void cIu()
   {
     try
     {
       AppMethodBeat.i(24662);
       try
       {
-        String str = this.rfw.aaG(a.rfx.key);
-        if ((!m.dq(str)) && (Integer.valueOf(str).intValue() < Integer.valueOf(a.rfx.rfD).intValue()))
+        String str = this.soo.afy(a.sop.key);
+        if ((!m.cX(str)) && (Integer.valueOf(str).intValue() < Integer.valueOf(a.sop.sov).intValue()))
         {
-          Dt(Integer.valueOf(a.rfy.rfD).intValue());
-          Du(Integer.valueOf(a.rfz.rfD).intValue());
-          aap(a.rfB.rfD);
-          aao(a.rfA.rfD);
-          aaq(a.rfC.rfD);
-          Ds(Integer.valueOf(a.rfx.rfD).intValue());
+          Fp(Integer.valueOf(a.soq.sov).intValue());
+          Fq(Integer.valueOf(a.sor.sov).intValue());
+          afh(a.sot.sov);
+          afg(a.sos.sov);
+          afi(a.sou.sov);
+          Fo(Integer.valueOf(a.sop.sov).intValue());
         }
         AppMethodBeat.o(24662);
       }
@@ -125,7 +125,7 @@ public final class h
       {
         for (;;)
         {
-          ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "updateDiskDbCacheIfLowerThanDefault exception. " + m.m(localException));
+          ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "updateDiskDbCacheIfLowerThanDefault exception. " + m.m(localException));
           AppMethodBeat.o(24662);
         }
       }
@@ -141,48 +141,48 @@ public final class h
       try
       {
         AppMethodBeat.i(24661);
-        cvi();
-        if ((paramaf == null) || (paramaf.CtF == null))
+        cIu();
+        if ((paramaf == null) || (paramaf.DLW == null))
         {
-          ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config is null.");
+          ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config is null.");
           AppMethodBeat.o(24661);
           return;
         }
-        this.rfw.cwx();
-        if (paramaf.CtF.version == -1)
+        this.soo.cJJ();
+        if (paramaf.DLW.version == -1)
         {
-          this.rfw.aSi();
-          ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "all local config data deleted.");
-          this.rfw.cwx();
+          this.soo.aZf();
+          ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "all local config data deleted.");
+          this.soo.cJJ();
           AppMethodBeat.o(24661);
           continue;
         }
-        if (paramaf.CtF.version <= cvj()) {
+        if (paramaf.DLW.version <= cIv()) {
           break label384;
         }
       }
       finally {}
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version is %d, local version is %d.", new Object[] { Integer.valueOf(paramaf.CtF.version), Integer.valueOf(cvj()) });
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version = %d " + paramaf.CtF.version);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpConnectTimeoutMillis = %d " + paramaf.CtF.Dac);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpReadTimeoutMillis = %d " + paramaf.CtF.Dad);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingUrl = %s " + paramaf.CtF.ddT);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingEnabled = %s " + paramaf.CtF.ddS);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.ThreeTwoBlackUrl = %s " + paramaf.CtF.Dae);
-      Dt(paramaf.CtF.Dac);
-      Du(paramaf.CtF.Dad);
-      aap(paramaf.CtF.ddT);
-      aao(paramaf.CtF.ddS);
-      aaq(paramaf.CtF.Dae);
-      Ds(paramaf.CtF.version);
-      ad.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "local config data changed.");
-      this.rfw.cwx();
+      ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version is %d, local version is %d.", new Object[] { Integer.valueOf(paramaf.DLW.version), Integer.valueOf(cIv()) });
+      ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version = %d " + paramaf.DLW.version);
+      ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpConnectTimeoutMillis = %d " + paramaf.DLW.EsZ);
+      ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpReadTimeoutMillis = %d " + paramaf.DLW.Eta);
+      ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingUrl = %s " + paramaf.DLW.dbp);
+      ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingEnabled = %s " + paramaf.DLW.dbo);
+      ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.ThreeTwoBlackUrl = %s " + paramaf.DLW.Etb);
+      Fp(paramaf.DLW.EsZ);
+      Fq(paramaf.DLW.Eta);
+      afh(paramaf.DLW.dbp);
+      afg(paramaf.DLW.dbo);
+      afi(paramaf.DLW.Etb);
+      Fo(paramaf.DLW.version);
+      ac.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "local config data changed.");
+      this.soo.cJJ();
       label384:
       AppMethodBeat.o(24661);
     }
   }
   
-  public final int cvj()
+  public final int cIv()
   {
     for (;;)
     {
@@ -190,21 +190,21 @@ public final class h
       try
       {
         AppMethodBeat.i(24663);
-        cvi();
+        cIu();
       }
       finally {}
       try
       {
-        str = this.rfw.aaG(a.rfx.key);
-        if (!m.dq(str)) {
+        str = this.soo.afy(a.sop.key);
+        if (!m.cX(str)) {
           continue;
         }
-        i = Integer.valueOf(a.rfx.rfD).intValue();
+        i = Integer.valueOf(a.sop.sov).intValue();
         AppMethodBeat.o(24663);
       }
       catch (Exception localException)
       {
-        i = bt.getInt(a.rfx.rfD, 0);
+        i = bs.getInt(a.sop.sov, 0);
         AppMethodBeat.o(24663);
         continue;
       }
@@ -214,17 +214,17 @@ public final class h
     }
   }
   
-  public final int cvk()
+  public final int cIw()
   {
     AppMethodBeat.i(24665);
-    cvi();
+    cIu();
     int i;
     try
     {
-      String str = this.rfw.aaG(a.rfy.key);
-      if (m.dq(str))
+      String str = this.soo.afy(a.soq.key);
+      if (m.cX(str))
       {
-        i = Integer.valueOf(a.rfy.rfD).intValue();
+        i = Integer.valueOf(a.soq.sov).intValue();
         AppMethodBeat.o(24665);
         return i;
       }
@@ -234,23 +234,23 @@ public final class h
     }
     catch (Exception localException)
     {
-      i = bt.getInt(a.rfy.rfD, 0);
+      i = bs.getInt(a.soq.sov, 0);
       AppMethodBeat.o(24665);
     }
     return i;
   }
   
-  public final int cvl()
+  public final int cIx()
   {
     AppMethodBeat.i(24667);
-    cvi();
+    cIu();
     int i;
     try
     {
-      String str = this.rfw.aaG(a.rfz.key);
-      if (m.dq(str))
+      String str = this.soo.afy(a.sor.key);
+      if (m.cX(str))
       {
-        i = Integer.valueOf(a.rfz.rfD).intValue();
+        i = Integer.valueOf(a.sor.sov).intValue();
         AppMethodBeat.o(24667);
         return i;
       }
@@ -260,19 +260,19 @@ public final class h
     }
     catch (Exception localException)
     {
-      i = bt.getInt(a.rfz.rfD, 0);
+      i = bs.getInt(a.sor.sov, 0);
       AppMethodBeat.o(24667);
     }
     return i;
   }
   
-  public final String cvm()
+  public final String cIy()
   {
     AppMethodBeat.i(24669);
-    cvi();
+    cIu();
     try
     {
-      if ("0".equals(this.rfw.aaG(a.rfA.key)))
+      if ("0".equals(this.soo.afy(a.sos.key)))
       {
         AppMethodBeat.o(24669);
         return "0";
@@ -282,22 +282,22 @@ public final class h
     }
     catch (Exception localException)
     {
-      String str = a.rfA.rfD;
+      String str = a.sos.sov;
       AppMethodBeat.o(24669);
       return str;
     }
   }
   
-  public final String cvn()
+  public final String cIz()
   {
     AppMethodBeat.i(24673);
-    cvi();
+    cIu();
     try
     {
-      String str1 = this.rfw.aaG(a.rfC.key);
-      if (m.dq(str1))
+      String str1 = this.soo.afy(a.sou.key);
+      if (m.cX(str1))
       {
-        str1 = a.rfC.rfD;
+        str1 = a.sou.sov;
         AppMethodBeat.o(24673);
         return str1;
       }
@@ -307,7 +307,7 @@ public final class h
     }
     catch (Exception localException)
     {
-      String str2 = a.rfC.rfD;
+      String str2 = a.sou.sov;
       AppMethodBeat.o(24673);
       return str2;
     }
@@ -316,13 +316,13 @@ public final class h
   public final String getPingUrl()
   {
     AppMethodBeat.i(24671);
-    cvi();
+    cIu();
     try
     {
-      String str1 = this.rfw.aaG(a.rfB.key);
-      if (m.dq(str1))
+      String str1 = this.soo.afy(a.sot.key);
+      if (m.cX(str1))
       {
-        str1 = a.rfB.rfD;
+        str1 = a.sot.sov;
         AppMethodBeat.o(24671);
         return str1;
       }
@@ -332,7 +332,7 @@ public final class h
     }
     catch (Exception localException)
     {
-      String str2 = a.rfB.rfD;
+      String str2 = a.sot.sov;
       AppMethodBeat.o(24671);
       return str2;
     }
@@ -341,8 +341,8 @@ public final class h
   public final String getUserAgent()
   {
     AppMethodBeat.i(24675);
-    if (m.dq(this.userAgent)) {
-      this.userAgent = x.bR(aj.getContext(), null).toLowerCase();
+    if (m.cX(this.userAgent)) {
+      this.userAgent = x.bS(ai.getContext(), null).toLowerCase();
     }
     String str = this.userAgent;
     AppMethodBeat.o(24675);
@@ -352,43 +352,31 @@ public final class h
   static enum a
   {
     String key;
-    String rfD;
+    String sov;
     
     static
     {
       AppMethodBeat.i(24658);
-      rfx = new a("version", 0, "version", "2");
-      rfy = new a("httpConnectTimeoutMillis", 1, "httpConnectTimeoutMillis", "5000");
-      rfz = new a("httpReadTimeoutMillis", 2, "httpReadTimeoutMillis", "5000");
-      rfA = new a("pingEnabled", 3, "pingEnabled", "1");
-      rfB = new a("pingUrl", 4, "pingUrl", "http://o2o.gtimg.com/wifi/echo");
-      rfC = new a("threeTwoBlackUrl", 5, "threeTwoBlackUrl", "http://o2o.gtimg.com/wifi/echo.html");
-      rfE = new a[] { rfx, rfy, rfz, rfA, rfB, rfC };
+      sop = new a("version", 0, "version", "2");
+      soq = new a("httpConnectTimeoutMillis", 1, "httpConnectTimeoutMillis", "5000");
+      sor = new a("httpReadTimeoutMillis", 2, "httpReadTimeoutMillis", "5000");
+      sos = new a("pingEnabled", 3, "pingEnabled", "1");
+      sot = new a("pingUrl", 4, "pingUrl", "http://o2o.gtimg.com/wifi/echo");
+      sou = new a("threeTwoBlackUrl", 5, "threeTwoBlackUrl", "http://o2o.gtimg.com/wifi/echo.html");
+      sow = new a[] { sop, soq, sor, sos, sot, sou };
       AppMethodBeat.o(24658);
     }
     
     private a(String paramString1, String paramString2)
     {
       this.key = paramString1;
-      this.rfD = paramString2;
-    }
-  }
-  
-  public static final class b
-  {
-    private static h rfF;
-    
-    static
-    {
-      AppMethodBeat.i(24659);
-      rfF = new h((byte)0);
-      AppMethodBeat.o(24659);
+      this.sov = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.h
  * JD-Core Version:    0.7.0.1
  */

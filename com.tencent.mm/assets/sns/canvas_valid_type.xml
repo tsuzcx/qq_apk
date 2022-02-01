@@ -33,6 +33,7 @@
 		<subtype val="13" ios="1" android="1" desc="智能中转电话" />
 		<subtype val="14" ios="1" android="1" desc="红包封面领取按钮" />
 		<subtype val="15" ios="1" android="1" desc="QRCode按钮,点击之后相当于识别二维码的效果" />
+		<subtype val="16" ios="1" android="1" desc="扫一扫识别" />
 	</componenttype>
 	<componenttype val="41" ios="1" android="1" desc="纯图类型">
 		<subtype val="0" ios="1" android="1" desc="纯图default类型" />

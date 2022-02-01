@@ -20,74 +20,76 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.extension.reddot.b.a;
-import com.tencent.mm.plugin.finder.extension.reddot.d;
-import com.tencent.mm.plugin.finder.extension.reddot.d.a;
+import com.tencent.mm.plugin.finder.extension.reddot.c;
+import com.tencent.mm.plugin.finder.extension.reddot.c.a;
+import com.tencent.mm.plugin.finder.extension.reddot.f;
+import com.tencent.mm.plugin.finder.extension.reddot.f.a;
+import com.tencent.mm.plugin.finder.storage.b;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import com.tencent.mm.view.HardTouchableLayout;
 import com.tencent.mm.view.HardTouchableLayout.b;
 import d.g.b.k;
-import d.l;
 import java.util.Iterator;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderHomeActionBarUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "isCurrentResume", "", "lastExposeFollowTipsId", "", "lastExposeFriendTipsId", "lastExposeLbsTipsId", "lastExposeMachineTipsId", "lastExposePersonalCenterTipsId", "buildTab", "", "checkPersonCenterRedDotReport", "action", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "onResume", "registerRedDot", "setTabIndex", "index", "findByTag", "Landroid/support/design/widget/TabLayout$Tab;", "Landroid/support/design/widget/TabLayout;", "any", "", "Companion", "FinderTab", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderHomeActionBarUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "isCurrentResume", "", "lastExposeFollowTipsId", "", "lastExposeFriendTipsId", "lastExposeLbsTipsId", "lastExposeMachineTipsId", "lastExposePersonalCenterTipsId", "buildTab", "", "checkPersonCenterRedDotReport", "action", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "onResume", "registerRedDot", "setTabIndex", "index", "findByTag", "Landroid/support/design/widget/TabLayout$Tab;", "Landroid/support/design/widget/TabLayout;", "any", "", "Companion", "FinderTab", "plugin-finder_release"})
 public final class FinderHomeActionBarUIC
   extends UIComponent
 {
-  public static final a Lig;
-  private String Lia;
-  private boolean Lib;
-  private String Lic;
-  private String Lid;
-  private String Lie;
-  private String Lif;
+  public static final FinderHomeActionBarUIC.a sdJ;
+  private String sdD;
+  private boolean sdE;
+  private String sdF;
+  private String sdG;
+  private String sdH;
+  private String sdI;
   
   static
   {
-    AppMethodBeat.i(200408);
-    Lig = new a((byte)0);
-    AppMethodBeat.o(200408);
+    AppMethodBeat.i(204533);
+    sdJ = new FinderHomeActionBarUIC.a((byte)0);
+    AppMethodBeat.o(204533);
   }
   
   public FinderHomeActionBarUIC(MMActivity paramMMActivity)
   {
     super(paramMMActivity);
-    AppMethodBeat.i(200407);
-    this.Lia = "";
-    this.Lic = "";
-    this.Lid = "";
-    this.Lie = "";
-    this.Lif = "";
-    AppMethodBeat.o(200407);
+    AppMethodBeat.i(204532);
+    this.sdD = "";
+    this.sdF = "";
+    this.sdG = "";
+    this.sdH = "";
+    this.sdI = "";
+    AppMethodBeat.o(204532);
   }
   
-  private final void ahS(int paramInt)
+  private final void EZ(int paramInt)
   {
-    AppMethodBeat.i(200403);
-    Object localObject = FinderReporterUIC.Ljl;
-    localObject = FinderReporterUIC.a.lB((Context)getActivity());
+    AppMethodBeat.i(204528);
+    Object localObject = FinderReporterUIC.seQ;
+    localObject = FinderReporterUIC.a.eV((Context)getActivity());
     if (localObject != null) {}
-    for (localObject = ((FinderReporterUIC)localObject).fXs();; localObject = null)
+    for (localObject = ((FinderReporterUIC)localObject).cGb();; localObject = null)
     {
-      b.a locala = com.tencent.mm.plugin.finder.extension.reddot.b.qtb;
-      this.Lia = b.a.a(paramInt, (dzp)localObject, this.Lia);
-      AppMethodBeat.o(200403);
+      c.a locala = c.rem;
+      this.sdD = c.a.a(paramInt, (anm)localObject, this.sdD);
+      AppMethodBeat.o(204528);
       return;
     }
   }
   
-  public final void ahT(int paramInt)
+  public final void Fa(int paramInt)
   {
-    AppMethodBeat.i(200404);
+    AppMethodBeat.i(204529);
     TabLayout.f localf = ((TabLayout)((FragmentActivity)getActivity()).findViewById(2131305596)).ad(paramInt);
     if (localf != null)
     {
@@ -95,168 +97,165 @@ public final class FinderHomeActionBarUIC
       if (!localf.isSelected()) {
         localf.select();
       }
-      AppMethodBeat.o(200404);
+      AppMethodBeat.o(204529);
       return;
     }
-    AppMethodBeat.o(200404);
+    AppMethodBeat.o(204529);
   }
   
   public final void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(200402);
+    AppMethodBeat.i(204527);
     paramBundle = getActivity().getSupportActionBar();
     if (paramBundle != null) {
       paramBundle.hide();
     }
-    ((LinearLayout)((FragmentActivity)getActivity()).findViewById(2131307263)).setOnClickListener((View.OnClickListener)new d(this));
-    ((WeImageView)((FragmentActivity)getActivity()).findViewById(2131307410)).setOnClickListener((View.OnClickListener)new e(this));
-    ((LinearLayout)((FragmentActivity)getActivity()).findViewById(2131307318)).setOnClickListener((View.OnClickListener)f.Lik);
-    ((HardTouchableLayout)((FragmentActivity)getActivity()).findViewById(2131307884)).setOnDoubleClickListener((HardTouchableLayout.b)new g(this));
-    ((WeImageView)((FragmentActivity)getActivity()).findViewById(2131307817)).setOnClickListener((View.OnClickListener)new h(this));
+    ((LinearLayout)((FragmentActivity)getActivity()).findViewById(2131307276)).setOnClickListener((View.OnClickListener)new d(this));
+    ((WeImageView)((FragmentActivity)getActivity()).findViewById(2131307486)).setOnClickListener((View.OnClickListener)new e(this));
+    ((LinearLayout)((FragmentActivity)getActivity()).findViewById(2131307387)).setOnClickListener((View.OnClickListener)FinderHomeActionBarUIC.f.sdN);
+    ((HardTouchableLayout)((FragmentActivity)getActivity()).findViewById(2131308021)).setOnDoubleClickListener((HardTouchableLayout.b)new g(this));
+    ((WeImageView)((FragmentActivity)getActivity()).findViewById(2131307909)).setOnClickListener((View.OnClickListener)new h(this));
     paramBundle = (TabLayout)((FragmentActivity)getActivity()).findViewById(2131305596);
-    Object localObject1 = com.tencent.mm.ui.component.a.LCX;
-    localObject1 = ((Iterable)((FinderHomeUIC)com.tencent.mm.ui.component.a.s(getActivity()).get(FinderHomeUIC.class)).fragments).iterator();
+    Object localObject1 = com.tencent.mm.ui.component.a.IrY;
+    localObject1 = ((Iterable)((FinderHomeUIC)com.tencent.mm.ui.component.a.q(getActivity()).get(FinderHomeUIC.class)).fragments).iterator();
     int i = 0;
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
       if (i < 0) {
-        d.a.j.fvx();
+        d.a.j.fOc();
       }
       Object localObject3 = (FinderHomeTabFragment)localObject2;
-      localObject2 = paramBundle.cx();
+      localObject2 = paramBundle.cE();
       k.g(localObject2, "tabLayout.newTab()");
-      localObject2 = new b((TabLayout.f)localObject2, ((FinderHomeTabFragment)localObject3).IoU);
+      localObject2 = new b((TabLayout.f)localObject2, ((FinderHomeTabFragment)localObject3).diw);
       int j = ((FinderHomeTabFragment)localObject3).title;
       localObject3 = ((b)localObject2).titleTv;
       if (localObject3 != null)
       {
-        Object localObject4 = com.tencent.mm.plugin.finder.storage.b.qJA;
-        int k = ((b)localObject2).IoU;
-        localObject4 = ((b)localObject2).sr.getCustomView();
+        Object localObject4 = b.rCU;
+        int k = ((b)localObject2).diw;
+        localObject4 = ((b)localObject2).tq.getCustomView();
         if (localObject4 == null) {
-          k.fvU();
+          k.fOy();
         }
         k.g(localObject4, "tab.customView!!");
         localObject4 = ((View)localObject4).getContext();
         k.g(localObject4, "tab.customView!!.context");
         localObject4 = ((Context)localObject4).getResources().getString(j);
         k.g(localObject4, "tab.customView!!.context.resources.getString(id)");
-        ((TextView)localObject3).setText((CharSequence)com.tencent.mm.plugin.finder.storage.b.cU(k, (String)localObject4));
+        ((TextView)localObject3).setText((CharSequence)b.aX(k, (String)localObject4));
       }
       ((b)localObject2).index = i;
-      paramBundle.a(((b)localObject2).sr, false);
+      paramBundle.a(((b)localObject2).tq, false);
       i += 1;
     }
     paramBundle.a((TabLayout.b)new c(this));
     paramBundle = (TabLayout)((FragmentActivity)getActivity()).findViewById(2131305596);
-    localObject1 = d.qtG;
-    localObject1 = d.qtG;
-    d.a(d.cls(), (LifecycleOwner)getActivity(), (Observer)new i(this));
-    localObject1 = d.qtG;
-    localObject1 = d.qtG;
-    d.a(d.fSM(), (LifecycleOwner)getActivity(), (Observer)new j(this, paramBundle));
-    localObject1 = d.qtG;
-    localObject1 = d.qtG;
-    d.a(d.fSN(), (LifecycleOwner)getActivity(), (Observer)new k(this, paramBundle));
-    localObject1 = d.qtG;
-    localObject1 = d.qtG;
-    d.a(d.fSP(), (LifecycleOwner)getActivity(), (Observer)new l(this, paramBundle));
-    paramBundle = d.qtG;
-    paramBundle = d.qtG;
-    d.a(d.fSQ(), (LifecycleOwner)getActivity(), (Observer)new m(this));
-    ahS(1);
-    AppMethodBeat.o(200402);
+    localObject1 = f.rfl;
+    localObject1 = f.rfl;
+    f.a(f.ctO(), (LifecycleOwner)getActivity(), (Observer)new i(this));
+    localObject1 = f.rfl;
+    localObject1 = f.rfl;
+    f.a(f.ctQ(), (LifecycleOwner)getActivity(), (Observer)new j(this, paramBundle));
+    localObject1 = f.rfl;
+    localObject1 = f.rfl;
+    f.a(f.ctR(), (LifecycleOwner)getActivity(), (Observer)new k(this, paramBundle));
+    localObject1 = f.rfl;
+    localObject1 = f.rfl;
+    f.a(f.ctT(), (LifecycleOwner)getActivity(), (Observer)new l(this, paramBundle));
+    paramBundle = f.rfl;
+    paramBundle = f.rfl;
+    f.a(f.ctU(), (LifecycleOwner)getActivity(), (Observer)new m(this));
+    EZ(1);
+    AppMethodBeat.o(204527);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(200406);
+    AppMethodBeat.i(204531);
     super.onPause();
-    this.Lib = false;
-    AppMethodBeat.o(200406);
+    this.sdE = false;
+    AppMethodBeat.o(204531);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(200405);
+    AppMethodBeat.i(204530);
     super.onResume();
-    this.Lib = true;
-    AppMethodBeat.o(200405);
+    this.sdE = true;
+    AppMethodBeat.o(204530);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderHomeActionBarUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderHomeActionBarUIC$FinderTab;", "", "tab", "Landroid/support/design/widget/TabLayout$Tab;", "tabType", "", "(Landroid/support/design/widget/TabLayout$Tab;I)V", "index", "getIndex", "()I", "setIndex", "(I)V", "getTab", "()Landroid/support/design/widget/TabLayout$Tab;", "setTab", "(Landroid/support/design/widget/TabLayout$Tab;)V", "tabRedIv", "Landroid/widget/ImageView;", "getTabRedIv", "()Landroid/widget/ImageView;", "setTabRedIv", "(Landroid/widget/ImageView;)V", "getTabType", "setTabType", "titleIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getTitleIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setTitleIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "setTextBold", "", "isBold", "", "setTextColor", "id", "setTitle", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderHomeActionBarUIC$FinderTab;", "", "tab", "Landroid/support/design/widget/TabLayout$Tab;", "tabType", "", "(Landroid/support/design/widget/TabLayout$Tab;I)V", "index", "getIndex", "()I", "setIndex", "(I)V", "getTab", "()Landroid/support/design/widget/TabLayout$Tab;", "setTab", "(Landroid/support/design/widget/TabLayout$Tab;)V", "tabRedIv", "Landroid/widget/ImageView;", "getTabRedIv", "()Landroid/widget/ImageView;", "setTabRedIv", "(Landroid/widget/ImageView;)V", "getTabType", "setTabType", "titleIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getTitleIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setTitleIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "setTextBold", "", "isBold", "", "setTextColor", "id", "setTitle", "plugin-finder_release"})
   public static final class b
   {
-    int IoU;
-    WeImageView Lih;
-    ImageView Lii;
+    int diw;
     int index;
-    TabLayout.f sr;
+    WeImageView sdK;
+    ImageView sdL;
     TextView titleTv;
+    TabLayout.f tq;
     
     @SuppressLint({"ResourceType"})
     public b(TabLayout.f paramf, int paramInt)
     {
-      AppMethodBeat.i(200387);
-      this.sr = paramf;
-      this.IoU = paramInt;
-      this.sr.gb(this);
-      if (this.IoU == 1)
+      AppMethodBeat.i(204512);
+      this.tq = paramf;
+      this.diw = paramInt;
+      this.tq.f(this);
+      if (this.diw == 1)
       {
-        this.sr.ak(2131496214);
-        paramf = this.sr.getCustomView();
+        this.tq.ak(2131496215);
+        paramf = this.tq.getCustomView();
         if (paramf != null)
         {
-          paramf = (TextView)paramf.findViewById(2131307886);
+          paramf = (TextView)paramf.findViewById(2131308023);
           if (paramf == null) {
-            k.fvU();
+            k.fOy();
           }
           this.titleTv = paramf;
           paramf = this.titleTv;
           if (paramf != null) {
             paramf.setTextSize(1, 15.0F);
           }
-          paramf = this.sr.getCustomView();
+          paramf = this.tq.getCustomView();
           if (paramf == null) {
             break label230;
           }
-          paramf = (WeImageView)paramf.findViewById(2131307887);
+          paramf = (WeImageView)paramf.findViewById(2131308024);
           label124:
           if (paramf == null) {
-            k.fvU();
+            k.fOy();
           }
-          this.Lih = paramf;
-          paramf = this.sr.getCustomView();
+          this.sdK = paramf;
+          paramf = this.tq.getCustomView();
           if (paramf == null) {
             break label235;
           }
         }
         label230:
         label235:
-        for (paramf = (ImageView)paramf.findViewById(2131307888);; paramf = null)
+        for (paramf = (ImageView)paramf.findViewById(2131308025);; paramf = null)
         {
           if (paramf == null) {
-            k.fvU();
+            k.fOy();
           }
-          this.Lii = paramf;
-          paramf = this.Lih;
+          this.sdL = paramf;
+          paramf = this.sdK;
           if (paramf != null) {
-            paramf.setImageResource(2131691506);
+            paramf.setImageResource(2131691517);
           }
-          paramf = this.Lih;
+          paramf = this.sdK;
           if (paramf == null) {
             break label240;
           }
-          WeImageView localWeImageView = this.Lih;
+          WeImageView localWeImageView = this.sdK;
           if (localWeImageView == null) {
-            k.fvU();
+            k.fOy();
           }
           paramf.setIconColor(localWeImageView.getResources().getColor(2131100212));
-          AppMethodBeat.o(200387);
+          AppMethodBeat.o(204512);
           return;
           paramf = null;
           break;
@@ -264,76 +263,56 @@ public final class FinderHomeActionBarUIC
           break label124;
         }
         label240:
-        AppMethodBeat.o(200387);
+        AppMethodBeat.o(204512);
         return;
       }
-      if ((this.IoU == 3) || (this.IoU == 4))
+      if ((this.diw == 3) || (this.diw == 4))
       {
-        this.sr.ak(2131496213);
-        paramf = this.sr.getCustomView();
+        this.tq.ak(2131496214);
+        paramf = this.tq.getCustomView();
         if (paramf != null)
         {
-          paramf = (TextView)paramf.findViewById(2131307886);
+          paramf = (TextView)paramf.findViewById(2131308023);
           if (paramf == null) {
-            k.fvU();
+            k.fOy();
           }
           this.titleTv = paramf;
           paramf = this.titleTv;
           if (paramf != null) {
             paramf.setTextSize(1, 15.0F);
           }
-          paramf = this.sr.getCustomView();
+          paramf = this.tq.getCustomView();
           if (paramf == null) {
             break label367;
           }
         }
         label367:
-        for (paramf = (ImageView)paramf.findViewById(2131307885);; paramf = null)
+        for (paramf = (ImageView)paramf.findViewById(2131308022);; paramf = null)
         {
           if (paramf == null) {
-            k.fvU();
+            k.fOy();
           }
-          this.Lii = paramf;
-          AppMethodBeat.o(200387);
+          this.sdL = paramf;
+          AppMethodBeat.o(204512);
           return;
           paramf = null;
           break;
         }
       }
-      k.g(this.sr.ak(2131496211), "tab.setCustomView(R.layo…finder_home_ui_tab_empty)");
-      AppMethodBeat.o(200387);
+      k.g(this.tq.ak(2131496212), "tab.setCustomView(R.layo…finder_home_ui_tab_empty)");
+      AppMethodBeat.o(204512);
     }
     
-    public final void setTextColor(int paramInt)
+    public final void me(boolean paramBoolean)
     {
-      AppMethodBeat.i(200385);
-      TextView localTextView = this.titleTv;
-      if (localTextView != null)
-      {
-        Object localObject = this.sr.getCustomView();
-        if (localObject == null) {
-          k.fvU();
-        }
-        k.g(localObject, "tab.customView!!");
-        localObject = ((View)localObject).getContext();
-        k.g(localObject, "tab.customView!!.context");
-        localTextView.setTextColor(((Context)localObject).getResources().getColor(paramInt));
-        AppMethodBeat.o(200385);
-        return;
-      }
-      AppMethodBeat.o(200385);
-    }
-    
-    public final void yS(boolean paramBoolean)
-    {
-      AppMethodBeat.i(200386);
+      AppMethodBeat.i(204511);
       Object localObject = this.titleTv;
       if (localObject != null)
       {
         if (paramBoolean)
         {
-          ai.a((Paint)((TextView)localObject).getPaint(), 0.8F);
-          AppMethodBeat.o(200386);
+          aj.a((Paint)((TextView)localObject).getPaint(), 0.8F);
+          AppMethodBeat.o(204511);
           return;
         }
         TextPaint localTextPaint = ((TextView)localObject).getPaint();
@@ -342,97 +321,117 @@ public final class FinderHomeActionBarUIC
         localObject = ((TextView)localObject).getPaint();
         k.g(localObject, "it.paint");
         ((TextPaint)localObject).setStrokeWidth(0.0F);
-        AppMethodBeat.o(200386);
+        AppMethodBeat.o(204511);
         return;
       }
-      AppMethodBeat.o(200386);
+      AppMethodBeat.o(204511);
+    }
+    
+    public final void setTextColor(int paramInt)
+    {
+      AppMethodBeat.i(204510);
+      TextView localTextView = this.titleTv;
+      if (localTextView != null)
+      {
+        Object localObject = this.tq.getCustomView();
+        if (localObject == null) {
+          k.fOy();
+        }
+        k.g(localObject, "tab.customView!!");
+        localObject = ((View)localObject).getContext();
+        k.g(localObject, "tab.customView!!.context");
+        localTextView.setTextColor(((Context)localObject).getResources().getColor(paramInt));
+        AppMethodBeat.o(204510);
+        return;
+      }
+      AppMethodBeat.o(204510);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/viewmodel/component/FinderHomeActionBarUIC$buildTab$2", "Landroid/support/design/widget/TabLayout$BaseOnTabSelectedListener;", "Landroid/support/design/widget/TabLayout$Tab;", "onTabReselected", "", "t", "onTabSelected", "onTabUnselected", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/viewmodel/component/FinderHomeActionBarUIC$buildTab$2", "Landroid/support/design/widget/TabLayout$BaseOnTabSelectedListener;", "Landroid/support/design/widget/TabLayout$Tab;", "onTabReselected", "", "t", "onTabSelected", "onTabUnselected", "plugin-finder_release"})
   public static final class c
     implements TabLayout.b<TabLayout.f>
   {
     @SuppressLint({"ResourceType"})
     public final void f(TabLayout.f paramf)
     {
-      AppMethodBeat.i(200390);
+      AppMethodBeat.i(204515);
       k.h(paramf, "t");
       paramf = paramf.getTag();
       if ((paramf instanceof FinderHomeActionBarUIC.b))
       {
         ((FinderHomeActionBarUIC.b)paramf).setTextColor(2131100711);
-        ((FinderHomeActionBarUIC.b)paramf).yS(true);
-        com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.LCX;
-        ((FinderHomeUIC)com.tencent.mm.ui.component.a.s(this.Lij.getActivity()).get(FinderHomeUIC.class)).ahU(((FinderHomeActionBarUIC.b)paramf).IoU);
-        switch (((FinderHomeActionBarUIC.b)paramf).IoU)
+        ((FinderHomeActionBarUIC.b)paramf).me(true);
+        com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.IrY;
+        ((FinderHomeUIC)com.tencent.mm.ui.component.a.q(this.sdM.getActivity()).get(FinderHomeUIC.class)).Fb(((FinderHomeActionBarUIC.b)paramf).diw);
+        switch (((FinderHomeActionBarUIC.b)paramf).diw)
         {
         }
       }
       do
       {
-        AppMethodBeat.o(200390);
+        AppMethodBeat.o(204515);
         return;
-        paramf = ((FinderHomeActionBarUIC.b)paramf).Lih;
+        paramf = ((FinderHomeActionBarUIC.b)paramf).sdK;
         if (paramf != null)
         {
           paramf.setImageResource(2131690422);
-          AppMethodBeat.o(200390);
+          AppMethodBeat.o(204515);
           return;
         }
-        AppMethodBeat.o(200390);
+        AppMethodBeat.o(204515);
         return;
-        paramf = ((FinderHomeActionBarUIC.b)paramf).Lih;
+        paramf = ((FinderHomeActionBarUIC.b)paramf).sdK;
       } while (paramf == null);
-      paramf.setImageResource(2131691506);
+      paramf.setImageResource(2131691517);
       paramf.setIconColor(paramf.getResources().getColor(2131100711));
-      AppMethodBeat.o(200390);
+      AppMethodBeat.o(204515);
     }
     
     @SuppressLint({"ResourceType"})
     public final void g(TabLayout.f paramf)
     {
-      AppMethodBeat.i(200389);
+      AppMethodBeat.i(204514);
       k.h(paramf, "t");
       paramf = paramf.getTag();
       if ((paramf instanceof FinderHomeActionBarUIC.b))
       {
         ((FinderHomeActionBarUIC.b)paramf).setTextColor(2131100212);
-        ((FinderHomeActionBarUIC.b)paramf).yS(false);
-        switch (((FinderHomeActionBarUIC.b)paramf).IoU)
+        ((FinderHomeActionBarUIC.b)paramf).me(false);
+        switch (((FinderHomeActionBarUIC.b)paramf).diw)
         {
         }
       }
       do
       {
-        AppMethodBeat.o(200389);
+        AppMethodBeat.o(204514);
         return;
-        paramf = ((FinderHomeActionBarUIC.b)paramf).Lih;
+        paramf = ((FinderHomeActionBarUIC.b)paramf).sdK;
         if (paramf != null)
         {
           paramf.setImageResource(2131690589);
-          AppMethodBeat.o(200389);
+          AppMethodBeat.o(204514);
           return;
         }
-        AppMethodBeat.o(200389);
+        AppMethodBeat.o(204514);
         return;
-        paramf = ((FinderHomeActionBarUIC.b)paramf).Lih;
+        paramf = ((FinderHomeActionBarUIC.b)paramf).sdK;
       } while (paramf == null);
-      paramf.setImageResource(2131691521);
+      paramf.setImageResource(2131691536);
       paramf.setIconColor(paramf.getResources().getColor(2131100212));
-      AppMethodBeat.o(200389);
+      AppMethodBeat.o(204514);
     }
     
     @SuppressLint({"ResourceType"})
     public final void h(TabLayout.f paramf)
     {
-      AppMethodBeat.i(200388);
+      AppMethodBeat.i(204513);
       k.h(paramf, "t");
-      AppMethodBeat.o(200388);
+      AppMethodBeat.o(204513);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -440,13 +439,13 @@ public final class FinderHomeActionBarUIC
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(200391);
-      this.Lij.getActivity().finish();
-      AppMethodBeat.o(200391);
+      AppMethodBeat.i(204516);
+      this.sdM.getActivity().finish();
+      AppMethodBeat.o(204516);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
     implements View.OnClickListener
   {
@@ -454,46 +453,30 @@ public final class FinderHomeActionBarUIC
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(200392);
+      AppMethodBeat.i(204517);
       paramView = new Intent();
-      Object localObject = FinderReporterUIC.Ljl;
-      FinderReporterUIC.a.a((Context)this.Lij.getActivity(), paramView, 0L, 0, true, 60);
-      localObject = com.tencent.mm.plugin.finder.utils.a.qSb;
-      com.tencent.mm.plugin.finder.utils.a.b(this.Lij.getActivity(), paramView);
-      AppMethodBeat.o(200392);
+      Object localObject = FinderReporterUIC.seQ;
+      FinderReporterUIC.a.a((Context)this.sdM.getActivity(), paramView, 0L, 0, true, 60);
+      localObject = com.tencent.mm.plugin.finder.utils.a.rOv;
+      com.tencent.mm.plugin.finder.utils.a.b(this.sdM.getActivity(), paramView);
+      AppMethodBeat.o(204517);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class f
-    implements View.OnClickListener
-  {
-    public static final f Lik;
-    
-    static
-    {
-      AppMethodBeat.i(200393);
-      Lik = new f();
-      AppMethodBeat.o(200393);
-    }
-    
-    public final void onClick(View paramView) {}
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/viewmodel/component/FinderHomeActionBarUIC$onCreate$4", "Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;", "onDoubleClick", "", "view", "Landroid/view/View;", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/viewmodel/component/FinderHomeActionBarUIC$onCreate$4", "Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;", "onDoubleClick", "", "view", "Landroid/view/View;", "plugin-finder_release"})
   public static final class g
     implements HardTouchableLayout.b
   {
-    public final void dQ(View paramView)
+    public final void dU(View paramView)
     {
-      AppMethodBeat.i(200395);
+      AppMethodBeat.i(204520);
       k.h(paramView, "view");
-      ad.i("Finder.HomeActionBarUIC", "onDoubleClick ...");
-      com.tencent.e.h.Iye.aN((Runnable)new a(this));
-      AppMethodBeat.o(200395);
+      ac.i("Finder.HomeActionBarUIC", "onDoubleClick ...");
+      h.JZN.aQ((Runnable)new a(this));
+      AppMethodBeat.o(204520);
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -501,15 +484,15 @@ public final class FinderHomeActionBarUIC
       
       public final void run()
       {
-        AppMethodBeat.i(200394);
-        com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.LCX;
-        ((FinderHomeUIC)com.tencent.mm.ui.component.a.s(this.Lil.Lij.getActivity()).get(FinderHomeUIC.class)).getActiveFragment().fVI();
-        AppMethodBeat.o(200394);
+        AppMethodBeat.i(204519);
+        com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.IrY;
+        ((FinderHomeUIC)com.tencent.mm.ui.component.a.q(this.sdO.sdM.getActivity()).get(FinderHomeUIC.class)).getActiveFragment().cCp();
+        AppMethodBeat.o(204519);
       }
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class h
     implements View.OnClickListener
   {
@@ -517,58 +500,58 @@ public final class FinderHomeActionBarUIC
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(200396);
-      FinderHomeActionBarUIC.a(this.Lij, 2);
+      AppMethodBeat.i(204521);
+      FinderHomeActionBarUIC.a(this.sdM, 2);
       paramView = new Intent();
-      Object localObject = FinderReporterUIC.Ljl;
-      FinderReporterUIC.a.a((Context)this.Lij.getActivity(), paramView, 0L, 0, false, 124);
-      localObject = com.tencent.mm.plugin.finder.utils.a.qSb;
-      com.tencent.mm.plugin.finder.utils.a.x((Context)this.Lij.getActivity(), paramView);
-      paramView = g.ad(com.tencent.mm.plugin.i.a.j.class);
+      Object localObject = FinderReporterUIC.seQ;
+      FinderReporterUIC.a.a((Context)this.sdM.getActivity(), paramView, 0L, 0, false, 124);
+      localObject = com.tencent.mm.plugin.finder.utils.a.rOv;
+      com.tencent.mm.plugin.finder.utils.a.x((Context)this.sdM.getActivity(), paramView);
+      paramView = g.ad(com.tencent.mm.plugin.i.a.l.class);
       k.g(paramView, "MMKernel.plugin(IPluginFinder::class.java)");
-      ((com.tencent.mm.plugin.i.a.j)paramView).getRedDotManager().YU("TLPersonalCenter");
-      AppMethodBeat.o(200396);
+      ((com.tencent.mm.plugin.i.a.l)paramView).getRedDotManager().adv("TLPersonalCenter");
+      AppMethodBeat.o(204521);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
   static final class i<T>
-    implements Observer<d.a>
+    implements Observer<f.a>
   {
     i(FinderHomeActionBarUIC paramFinderHomeActionBarUIC) {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
   static final class j<T>
-    implements Observer<d.a>
+    implements Observer<f.a>
   {
     j(FinderHomeActionBarUIC paramFinderHomeActionBarUIC, TabLayout paramTabLayout) {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
   static final class k<T>
-    implements Observer<d.a>
+    implements Observer<f.a>
   {
     k(FinderHomeActionBarUIC paramFinderHomeActionBarUIC, TabLayout paramTabLayout) {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
   static final class l<T>
-    implements Observer<d.a>
+    implements Observer<f.a>
   {
     l(FinderHomeActionBarUIC paramFinderHomeActionBarUIC, TabLayout paramTabLayout) {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "onChanged"})
   static final class m<T>
-    implements Observer<d.a>
+    implements Observer<f.a>
   {
     m(FinderHomeActionBarUIC paramFinderHomeActionBarUIC) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.FinderHomeActionBarUIC
  * JD-Core Version:    0.7.0.1
  */

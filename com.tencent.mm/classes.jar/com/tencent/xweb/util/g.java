@@ -7,7 +7,7 @@ import com.tencent.xweb.JsRuntime;
 import com.tencent.xweb.JsRuntime.JsRuntimeType;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.WebView.c;
-import com.tencent.xweb.ad;
+import com.tencent.xweb.af;
 import com.tencent.xweb.internal.c;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,46 +17,123 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class g
 {
-  public static String INp = "";
-  private static boolean IRD = false;
-  static WebView.c IRE = WebView.c.INB;
-  static ad IRF = null;
-  static boolean IRG = false;
+  private static boolean KDZ = false;
+  static WebView.c KEa = WebView.c.KzY;
+  static af KEb = null;
+  static boolean KEc = false;
+  public static String KzM;
   public static String sessionId = "";
+  
+  static
+  {
+    KzM = "";
+  }
+  
+  public static void Cf(long paramLong)
+  {
+    AppMethodBeat.i(157020);
+    if (KEb != null) {
+      KEb.n(577L, paramLong, 1L);
+    }
+    AppMethodBeat.o(157020);
+  }
+  
+  public static void Cg(long paramLong)
+  {
+    AppMethodBeat.i(157026);
+    if ((KEb != null) && (paramLong > 0L) && (paramLong < 300000L)) {
+      KEb.aT(2, 3, (int)paramLong);
+    }
+    AppMethodBeat.o(157026);
+  }
+  
+  public static void Ch(long paramLong)
+  {
+    AppMethodBeat.i(157029);
+    if ((KEb != null) && (paramLong > 0L) && (paramLong < 300000L)) {
+      KEb.aT(48, 49, (int)paramLong);
+    }
+    AppMethodBeat.o(157029);
+  }
+  
+  public static void Ci(long paramLong)
+  {
+    AppMethodBeat.i(157032);
+    if ((KEb != null) && (paramLong > 0L) && (paramLong < 300000L)) {
+      KEb.aT(44, 45, (int)paramLong);
+    }
+    AppMethodBeat.o(157032);
+  }
+  
+  public static void Cj(long paramLong)
+  {
+    AppMethodBeat.i(157049);
+    if ((KEb != null) && (KEb != null) && (paramLong > 0L) && (paramLong < 600000L)) {
+      KEb.aT(11, 12, (int)paramLong);
+    }
+    AppMethodBeat.o(157049);
+  }
+  
+  public static void Ck(long paramLong)
+  {
+    AppMethodBeat.i(157054);
+    if ((KEb != null) && (KEb != null) && (paramLong > 0L) && (paramLong < 600000L)) {
+      KEb.aT(22, 23, (int)paramLong);
+    }
+    AppMethodBeat.o(157054);
+  }
+  
+  public static void Cl(long paramLong)
+  {
+    AppMethodBeat.i(157057);
+    if ((KEb != null) && (KEb != null) && (paramLong > 0L) && (paramLong < 600000L)) {
+      KEb.aT(27, 28, (int)paramLong);
+    }
+    AppMethodBeat.o(157057);
+  }
+  
+  public static void Cm(long paramLong)
+  {
+    AppMethodBeat.i(157061);
+    if ((KEb != null) && (KEb != null) && (paramLong > 0L) && (paramLong < 120000L)) {
+      KEb.aT(16, 17, (int)paramLong);
+    }
+    AppMethodBeat.o(157061);
+  }
   
   public static void a(WebView.c paramc, int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(175651);
     a locala;
-    if (c.aPn("kv_" + b.a.ID + paramc.toString() + "_" + paramInt))
+    if (c.aVg("kv_" + b.a.ID + paramc.toString() + "_" + paramInt))
     {
       locala = new a(b.a.ID);
-      locala.ex(Integer.valueOf(paramInt));
-      if (paramc != WebView.c.INC) {
+      locala.ez(Integer.valueOf(paramInt));
+      if (paramc != WebView.c.KzZ) {
         break label149;
       }
-      locala.ex(Integer.valueOf(XWalkEnvironment.getInstalledNewstVersionForCurAbi()));
-      locala.ex(Integer.valueOf(200502));
+      locala.ez(Integer.valueOf(XWalkEnvironment.getInstalledNewstVersionForCurAbi()));
+      locala.ez(Integer.valueOf(200601));
       if (!"armeabi-v7a".equalsIgnoreCase(XWalkEnvironment.getRuntimeAbi())) {
         break label222;
       }
-      locala.ex(Integer.valueOf(b.a.IRK));
+      locala.ez(Integer.valueOf(b.a.KEg));
     }
     for (;;)
     {
       for (;;)
       {
-        locala.ex(Integer.valueOf(paramc.ordinal()));
-        cR(locala.IRH, locala.bvd.toString());
+        locala.ez(Integer.valueOf(paramc.ordinal()));
+        cU(locala.KEd, locala.btc.toString());
         AppMethodBeat.o(175651);
         return;
         label149:
-        if (paramc == WebView.c.IND) {
+        if (paramc == WebView.c.KAa) {
           try
           {
             paramInt = WebView.getInstalledTbsCoreVersion(XWalkEnvironment.getApplicationContext());
-            locala.ex(Integer.valueOf(paramInt));
+            locala.ez(Integer.valueOf(paramInt));
           }
           catch (Exception localException)
           {
@@ -68,23 +145,23 @@ public final class g
           }
         }
       }
-      if (paramc == WebView.c.INE)
+      if (paramc == WebView.c.KAb)
       {
-        locala.ex(Integer.valueOf(XWalkEnvironment.safeGetChromiunVersion()));
+        locala.ez(Integer.valueOf(XWalkEnvironment.safeGetChromiunVersion()));
         break;
       }
-      locala.ex(Integer.valueOf(0));
+      locala.ez(Integer.valueOf(0));
       break;
       label222:
       if ("arm64-v8a".equalsIgnoreCase(XWalkEnvironment.getRuntimeAbi())) {
-        locala.ex(Integer.valueOf(b.a.IRL));
+        locala.ez(Integer.valueOf(b.a.KEh));
       }
     }
   }
   
-  public static void a(ad paramad)
+  public static void a(af paramaf)
   {
-    IRF = paramad;
+    KEb = paramaf;
   }
   
   public static void a(String paramString, WebView paramWebView)
@@ -96,91 +173,91 @@ public final class g
       try
       {
         AppMethodBeat.i(175650);
-        if (IRF == null)
+        if (KEb == null)
         {
           AppMethodBeat.o(175650);
           return;
         }
-        if (!IRG)
+        if (!KEc)
         {
-          if ("toolsmp".equals(INp))
+          if ("toolsmp".equals(KzM))
           {
-            if (!fsb()) {
+            if (!fKE()) {
               break label255;
             }
-            kC(903, 106);
+            kS(903, 106);
           }
-          i = fse();
+          i = fKH();
           j = WebView.getCurWebType().ordinal() - 1;
           if ((i >= 30) && (j >= 0))
           {
-            IRG = true;
-            kC(903, i + 3 + j);
+            KEc = true;
+            kS(903, i + 3 + j);
           }
         }
         if (paramWebView.isX5WrappedSysKernel())
         {
-          if (!INp.equals("mm")) {
+          if (!KzM.equals("mm")) {
             break label272;
           }
           i = 79;
           j = 74;
           if (j != 0) {
-            IRF.m(903L, j, 1L);
+            KEb.n(903L, j, 1L);
           }
           if (i != 0) {
-            kC(903, i);
+            kS(903, i);
           }
         }
         if ((paramString != null) && ("https://servicewechat.com/preload/page-frame.html".equalsIgnoreCase(paramString.trim()))) {
-          IRF.m(903L, 102L, 1L);
+          KEb.n(903L, 102L, 1L);
         }
-        i = fse();
+        i = fKH();
         j = WebView.getCurWebType().ordinal() - 1;
         if ((i >= 30) && (j >= 0)) {
-          IRF.m(903L, i + 0 + j, 1L);
+          KEb.n(903L, i + 0 + j, 1L);
         }
-        if (!"toolsmp".equals(INp)) {
+        if (!"toolsmp".equals(KzM)) {
           break label371;
         }
-        if (!fsb()) {
+        if (!fKE()) {
           break label352;
         }
-        IRF.m(903L, 107L, 1L);
+        KEb.n(903L, 107L, 1L);
         AppMethodBeat.o(175650);
         continue;
-        if (!fsc()) {
+        if (!fKF()) {
           continue;
         }
       }
       finally {}
       label255:
-      kC(903, 108);
+      kS(903, 108);
       continue;
       label272:
-      if (INp.equals("tools"))
+      if (KzM.equals("tools"))
       {
         i = 75;
         j = 70;
       }
-      else if (INp.equals("toolsmp"))
+      else if (KzM.equals("toolsmp"))
       {
         i = 75;
         j = 71;
       }
-      else if (INp.equals("appbrand"))
+      else if (KzM.equals("appbrand"))
       {
         i = 77;
         j = 72;
       }
-      else if (INp.equals("support"))
+      else if (KzM.equals("support"))
       {
         i = 78;
         j = 73;
         continue;
         label352:
-        if (fsc()) {
-          IRF.m(903L, 109L, 1L);
+        if (fKF()) {
+          KEb.n(903L, 109L, 1L);
         }
         label371:
         AppMethodBeat.o(175650);
@@ -193,98 +270,34 @@ public final class g
     }
   }
   
-  public static void aPA(String paramString)
-  {
-    AppMethodBeat.i(157080);
-    if ((paramString == null) || (paramString.isEmpty()) || (IRF == null))
-    {
-      AppMethodBeat.o(157080);
-      return;
-    }
-    if ((paramString.equalsIgnoreCase("ppt")) || (paramString.equalsIgnoreCase("pptx")))
-    {
-      IRF.m(1068L, 67L, 1L);
-      AppMethodBeat.o(157080);
-      return;
-    }
-    if (paramString.equalsIgnoreCase("pdf"))
-    {
-      IRF.m(1071L, 67L, 1L);
-      AppMethodBeat.o(157080);
-      return;
-    }
-    if ((paramString.equalsIgnoreCase("doc")) || (paramString.equalsIgnoreCase("docx")))
-    {
-      IRF.m(1069L, 67L, 1L);
-      AppMethodBeat.o(157080);
-      return;
-    }
-    if ((paramString.equalsIgnoreCase("xls")) || (paramString.equalsIgnoreCase("xlsx"))) {
-      IRF.m(1070L, 67L, 1L);
-    }
-    AppMethodBeat.o(157080);
-  }
-  
-  public static void aPB(String paramString)
-  {
-    AppMethodBeat.i(157081);
-    if ((paramString == null) || (paramString.isEmpty()) || (IRF == null))
-    {
-      AppMethodBeat.o(157081);
-      return;
-    }
-    if ((paramString.equalsIgnoreCase("ppt")) || (paramString.equalsIgnoreCase("pptx")))
-    {
-      IRF.m(1068L, 68L, 1L);
-      AppMethodBeat.o(157081);
-      return;
-    }
-    if (paramString.equalsIgnoreCase("pdf"))
-    {
-      IRF.m(1071L, 68L, 1L);
-      AppMethodBeat.o(157081);
-      return;
-    }
-    if ((paramString.equalsIgnoreCase("doc")) || (paramString.equalsIgnoreCase("docx")))
-    {
-      IRF.m(1069L, 68L, 1L);
-      AppMethodBeat.o(157081);
-      return;
-    }
-    if ((paramString.equalsIgnoreCase("xls")) || (paramString.equalsIgnoreCase("xlsx"))) {
-      IRF.m(1070L, 68L, 1L);
-    }
-    AppMethodBeat.o(157081);
-  }
-  
-  public static void aPv(String paramString)
+  public static void aVo(String paramString)
   {
     if (paramString != null) {
-      INp = paramString;
+      KzM = paramString;
     }
   }
   
-  public static void aPw(String paramString)
+  public static void aVp(String paramString)
   {
     int j = 73;
     AppMethodBeat.i(157022);
     int i;
-    if (IRF != null)
+    if (KEb != null)
     {
-      IRF.m(577L, 0L, 1L);
-      if ((INp.equals("toolsmp")) && (paramString != null) && (aPx(paramString) == 2)) {
-        IRF.m(903L, 101L, 1L);
+      KEb.n(577L, 0L, 1L);
+      if ((KzM.equals("toolsmp")) && (paramString != null) && (aVq(paramString) == 2)) {
+        KEb.n(903L, 101L, 1L);
       }
-      if (!INp.equals("toolsmp")) {
+      if (!KzM.equals("toolsmp")) {
         break label179;
       }
-      if (WebView.getCurWebType() != WebView.c.INC) {
+      if (WebView.getCurWebType() != WebView.c.KzZ) {
         break label154;
       }
-      IRF.m(903L, 105L, 1L);
-      if (!IRD)
+      KEb.n(903L, 105L, 1L);
+      if (!KDZ)
       {
-        if (!INp.equals("tools")) {
+        if (!KzM.equals("tools")) {
           break label218;
         }
         i = 70;
@@ -295,36 +308,36 @@ public final class g
       j = WebView.getCurWebType().ordinal() - 1;
       if ((i >= 70) && (j >= 0))
       {
-        IRD = true;
-        kC(577, i + j);
+        KDZ = true;
+        kS(577, i + j);
       }
       AppMethodBeat.o(157022);
       return;
       label154:
-      if (WebView.getCurWebType() != WebView.c.IND) {
+      if (WebView.getCurWebType() != WebView.c.KAa) {
         break;
       }
-      IRF.m(903L, 104L, 1L);
+      KEb.n(903L, 104L, 1L);
       break;
       label179:
-      if ((!INp.equals("tools")) || (paramString == null) || (aPx(paramString) != 1)) {
+      if ((!KzM.equals("tools")) || (paramString == null) || (aVq(paramString) != 1)) {
         break;
       }
-      IRF.m(903L, 103L, 1L);
+      KEb.n(903L, 103L, 1L);
       break;
       label218:
       i = j;
-      if (!INp.equals("appbrand"))
+      if (!KzM.equals("appbrand"))
       {
         i = j;
-        if (!INp.equals("support")) {
+        if (!KzM.equals("support")) {
           i = -1;
         }
       }
     }
   }
   
-  public static int aPx(String paramString)
+  public static int aVq(String paramString)
   {
     AppMethodBeat.i(157036);
     if (paramString.startsWith("https://servicewechat.com/"))
@@ -341,86 +354,150 @@ public final class g
     return 2;
   }
   
-  public static void aPy(String paramString)
+  public static void aVr(String paramString)
   {
-    AppMethodBeat.i(195188);
-    if (IRF == null)
+    AppMethodBeat.i(205101);
+    if (KEb == null)
     {
-      AppMethodBeat.o(195188);
+      AppMethodBeat.o(205101);
       return;
     }
     if ("XFilesPPTReader".equals(paramString))
     {
-      IRF.m(1068L, 57L, 1L);
-      AppMethodBeat.o(195188);
+      KEb.n(1068L, 57L, 1L);
+      AppMethodBeat.o(205101);
       return;
     }
     if ("XFilesPDFReader".equals(paramString))
     {
-      IRF.m(1071L, 57L, 1L);
-      AppMethodBeat.o(195188);
+      KEb.n(1071L, 57L, 1L);
+      AppMethodBeat.o(205101);
       return;
     }
     if ("XFilesWordReader".equals(paramString))
     {
-      IRF.m(1069L, 57L, 1L);
-      AppMethodBeat.o(195188);
+      KEb.n(1069L, 57L, 1L);
+      AppMethodBeat.o(205101);
       return;
     }
     if ("XFilesExcelReader".equals(paramString)) {
-      IRF.m(1070L, 57L, 1L);
+      KEb.n(1070L, 57L, 1L);
     }
-    AppMethodBeat.o(195188);
+    AppMethodBeat.o(205101);
   }
   
-  public static void aPz(String paramString)
+  public static void aVs(String paramString)
   {
     AppMethodBeat.i(157079);
-    if (IRF == null)
+    if (KEb == null)
     {
       AppMethodBeat.o(157079);
       return;
     }
     if ("XFilesPPTReader".equals(paramString))
     {
-      IRF.m(1068L, 66L, 1L);
+      KEb.n(1068L, 66L, 1L);
       AppMethodBeat.o(157079);
       return;
     }
     if ("XFilesPDFReader".equals(paramString))
     {
-      IRF.m(1071L, 66L, 1L);
+      KEb.n(1071L, 66L, 1L);
       AppMethodBeat.o(157079);
       return;
     }
     if ("XFilesWordReader".equals(paramString))
     {
-      IRF.m(1069L, 66L, 1L);
+      KEb.n(1069L, 66L, 1L);
       AppMethodBeat.o(157079);
       return;
     }
     if ("XFilesExcelReader".equals(paramString)) {
-      IRF.m(1070L, 66L, 1L);
+      KEb.n(1070L, 66L, 1L);
     }
     AppMethodBeat.o(157079);
   }
   
-  public static boolean ade(int paramInt)
+  public static void aVt(String paramString)
+  {
+    AppMethodBeat.i(157080);
+    if ((paramString == null) || (paramString.isEmpty()) || (KEb == null))
+    {
+      AppMethodBeat.o(157080);
+      return;
+    }
+    if ((paramString.equalsIgnoreCase("ppt")) || (paramString.equalsIgnoreCase("pptx")))
+    {
+      KEb.n(1068L, 67L, 1L);
+      AppMethodBeat.o(157080);
+      return;
+    }
+    if (paramString.equalsIgnoreCase("pdf"))
+    {
+      KEb.n(1071L, 67L, 1L);
+      AppMethodBeat.o(157080);
+      return;
+    }
+    if ((paramString.equalsIgnoreCase("doc")) || (paramString.equalsIgnoreCase("docx")))
+    {
+      KEb.n(1069L, 67L, 1L);
+      AppMethodBeat.o(157080);
+      return;
+    }
+    if ((paramString.equalsIgnoreCase("xls")) || (paramString.equalsIgnoreCase("xlsx"))) {
+      KEb.n(1070L, 67L, 1L);
+    }
+    AppMethodBeat.o(157080);
+  }
+  
+  public static void aVu(String paramString)
+  {
+    AppMethodBeat.i(157081);
+    if ((paramString == null) || (paramString.isEmpty()) || (KEb == null))
+    {
+      AppMethodBeat.o(157081);
+      return;
+    }
+    if ((paramString.equalsIgnoreCase("ppt")) || (paramString.equalsIgnoreCase("pptx")))
+    {
+      KEb.n(1068L, 68L, 1L);
+      AppMethodBeat.o(157081);
+      return;
+    }
+    if (paramString.equalsIgnoreCase("pdf"))
+    {
+      KEb.n(1071L, 68L, 1L);
+      AppMethodBeat.o(157081);
+      return;
+    }
+    if ((paramString.equalsIgnoreCase("doc")) || (paramString.equalsIgnoreCase("docx")))
+    {
+      KEb.n(1069L, 68L, 1L);
+      AppMethodBeat.o(157081);
+      return;
+    }
+    if ((paramString.equalsIgnoreCase("xls")) || (paramString.equalsIgnoreCase("xlsx"))) {
+      KEb.n(1070L, 68L, 1L);
+    }
+    AppMethodBeat.o(157081);
+  }
+  
+  public static boolean agb(int paramInt)
   {
     return (paramInt == 15625) || (paramInt == 15626);
   }
   
-  public static void adf(int paramInt)
+  public static void agc(int paramInt)
   {
     AppMethodBeat.i(157083);
-    if (!"toolsmp".equals(INp))
+    if (!"toolsmp".equals(KzM))
     {
       AppMethodBeat.o(157083);
       return;
     }
     int j;
     int i;
-    if (WebView.getCurWebType() == WebView.c.INC)
+    if (WebView.getCurWebType() == WebView.c.KzZ)
     {
       j = 200;
       if (paramInt >= 0) {
@@ -433,7 +510,7 @@ public final class g
       r(903L, j + i, 1L);
       AppMethodBeat.o(157083);
       return;
-      if (WebView.getCurWebType() == WebView.c.IND)
+      if (WebView.getCurWebType() == WebView.c.KAa)
       {
         j = 220;
         break;
@@ -450,46 +527,46 @@ public final class g
   
   public static void az(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(195183);
+    AppMethodBeat.i(205096);
     Log.i("WXWebReporter", "report idkey id = " + paramLong1 + " key = " + paramLong2 + " value = 1");
-    if (IRF != null) {
-      IRF.m(paramLong1, paramLong2, 1L);
+    if (KEb != null) {
+      KEb.n(paramLong1, paramLong2, 1L);
     }
-    AppMethodBeat.o(195183);
+    AppMethodBeat.o(205096);
   }
   
   public static void b(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
     AppMethodBeat.i(157034);
-    ad localad;
+    af localaf;
     int j;
     int k;
-    if (IRF != null)
+    if (KEb != null)
     {
-      fsf();
-      IRF.m(577L, 5L, 1L);
-      IRF.kvStat(15003, "");
-      localad = IRF;
+      fKI();
+      KEb.n(577L, 5L, 1L);
+      KEb.kvStat(15003, "");
+      localaf = KEb;
       j = XWalkEnvironment.getAvailableVersion();
-      k = aPx(paramString);
+      k = aVq(paramString);
       paramString = sessionId;
-      if (JsRuntime.fqF() != null) {
+      if (JsRuntime.fJf() != null) {
         break label94;
       }
     }
     label94:
-    for (int i = 100;; i = JsRuntime.fqF().ordinal())
+    for (int i = 100;; i = JsRuntime.fJf().ordinal())
     {
-      localad.a(j, k, paramString, i, 1, paramInt1, (int)paramLong, paramInt2);
+      localaf.a(j, k, paramString, i, 1, paramInt1, (int)paramLong, paramInt2);
       AppMethodBeat.o(157034);
       return;
     }
   }
   
-  public static void bb(int paramInt, boolean paramBoolean)
+  public static void bg(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(157045);
-    if (IRF != null)
+    if (KEb != null)
     {
       int i = 0;
       switch (paramInt)
@@ -501,7 +578,7 @@ public final class g
     for (;;)
     {
       if (paramInt > 0) {
-        IRF.m(577L, paramInt, 1L);
+        KEb.n(577L, paramInt, 1L);
       }
       AppMethodBeat.o(157045);
       return;
@@ -540,10 +617,10 @@ public final class g
     }
   }
   
-  public static void bc(int paramInt, boolean paramBoolean)
+  public static void bh(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(157046);
-    if (IRF != null)
+    if (KEb != null)
     {
       int i = 0;
       switch (paramInt)
@@ -555,7 +632,7 @@ public final class g
     for (;;)
     {
       if (paramInt > 0) {
-        IRF.m(577L, paramInt, 1L);
+        KEb.n(577L, paramInt, 1L);
       }
       AppMethodBeat.o(157046);
       return;
@@ -594,351 +671,222 @@ public final class g
     }
   }
   
-  public static void bgD()
+  public static void bnx()
   {
     AppMethodBeat.i(157056);
-    if (IRF != null) {
-      IRF.m(577L, 25L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 25L, 1L);
     }
     AppMethodBeat.o(157056);
   }
   
-  public static void cR(int paramInt, String paramString)
+  public static void cU(int paramInt, String paramString)
   {
     AppMethodBeat.i(157019);
-    if (IRF != null) {
-      IRF.kvStat(paramInt, paramString);
+    if (KEb != null) {
+      KEb.kvStat(paramInt, paramString);
     }
     AppMethodBeat.o(157019);
   }
   
-  public static void db(String paramString, boolean paramBoolean)
+  public static void dg(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(195184);
-    if (IRF == null)
+    AppMethodBeat.i(205097);
+    if (KEb == null)
     {
-      AppMethodBeat.o(195184);
+      AppMethodBeat.o(205097);
       return;
     }
     if (paramBoolean) {}
     for (int i = 51; "FullScreenVideo".equals(paramString); i = 60)
     {
-      IRF.m(577L, 185L, 1L);
-      AppMethodBeat.o(195184);
+      KEb.n(577L, 185L, 1L);
+      AppMethodBeat.o(205097);
       return;
     }
     if ("XFilesPPTReader".equals(paramString))
     {
-      IRF.m(1068L, i, 1L);
-      AppMethodBeat.o(195184);
+      KEb.n(1068L, i, 1L);
+      AppMethodBeat.o(205097);
       return;
     }
     if ("XFilesPDFReader".equals(paramString))
     {
-      IRF.m(1071L, i, 1L);
-      AppMethodBeat.o(195184);
+      KEb.n(1071L, i, 1L);
+      AppMethodBeat.o(205097);
       return;
     }
     if ("XFilesWordReader".equals(paramString))
     {
-      IRF.m(1069L, i, 1L);
-      AppMethodBeat.o(195184);
+      KEb.n(1069L, i, 1L);
+      AppMethodBeat.o(205097);
       return;
     }
     if ("XFilesExcelReader".equals(paramString)) {
-      IRF.m(1070L, i, 1L);
+      KEb.n(1070L, i, 1L);
     }
-    AppMethodBeat.o(195184);
+    AppMethodBeat.o(205097);
   }
   
-  public static void dc(String paramString, boolean paramBoolean)
+  public static void dh(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(195185);
-    if (IRF == null)
+    AppMethodBeat.i(205098);
+    if (KEb == null)
     {
-      AppMethodBeat.o(195185);
+      AppMethodBeat.o(205098);
       return;
     }
     if (paramBoolean) {}
     for (int i = 52; "FullScreenVideo".equals(paramString); i = 61)
     {
-      IRF.m(577L, 186L, 1L);
-      AppMethodBeat.o(195185);
+      KEb.n(577L, 186L, 1L);
+      AppMethodBeat.o(205098);
       return;
     }
     if ("XFilesPPTReader".equals(paramString))
     {
-      IRF.m(1068L, i, 1L);
-      AppMethodBeat.o(195185);
+      KEb.n(1068L, i, 1L);
+      AppMethodBeat.o(205098);
       return;
     }
     if ("XFilesPDFReader".equals(paramString))
     {
-      IRF.m(1071L, i, 1L);
-      AppMethodBeat.o(195185);
+      KEb.n(1071L, i, 1L);
+      AppMethodBeat.o(205098);
       return;
     }
     if ("XFilesWordReader".equals(paramString))
     {
-      IRF.m(1069L, i, 1L);
-      AppMethodBeat.o(195185);
+      KEb.n(1069L, i, 1L);
+      AppMethodBeat.o(205098);
       return;
     }
     if ("XFilesExcelReader".equals(paramString)) {
-      IRF.m(1070L, i, 1L);
+      KEb.n(1070L, i, 1L);
     }
-    AppMethodBeat.o(195185);
+    AppMethodBeat.o(205098);
   }
   
-  public static boolean dch()
+  public static void di(String paramString, boolean paramBoolean)
   {
-    return IRF != null;
-  }
-  
-  public static void dd(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(195186);
-    if (IRF == null)
+    AppMethodBeat.i(205099);
+    if (KEb == null)
     {
-      AppMethodBeat.o(195186);
+      AppMethodBeat.o(205099);
       return;
     }
     if (paramBoolean) {}
     for (int i = 54; "FullScreenVideo".equals(paramString); i = 62)
     {
-      IRF.m(577L, 187L, 1L);
-      AppMethodBeat.o(195186);
+      KEb.n(577L, 187L, 1L);
+      AppMethodBeat.o(205099);
       return;
     }
     if ("XFilesPPTReader".equals(paramString))
     {
-      IRF.m(1068L, i, 1L);
-      AppMethodBeat.o(195186);
+      KEb.n(1068L, i, 1L);
+      AppMethodBeat.o(205099);
       return;
     }
     if ("XFilesPDFReader".equals(paramString))
     {
-      IRF.m(1071L, i, 1L);
-      AppMethodBeat.o(195186);
+      KEb.n(1071L, i, 1L);
+      AppMethodBeat.o(205099);
       return;
     }
     if ("XFilesWordReader".equals(paramString))
     {
-      IRF.m(1069L, i, 1L);
-      AppMethodBeat.o(195186);
+      KEb.n(1069L, i, 1L);
+      AppMethodBeat.o(205099);
       return;
     }
     if ("XFilesExcelReader".equals(paramString)) {
-      IRF.m(1070L, i, 1L);
+      KEb.n(1070L, i, 1L);
     }
-    AppMethodBeat.o(195186);
+    AppMethodBeat.o(205099);
   }
   
-  public static void de(String paramString, boolean paramBoolean)
+  public static void dj(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(195187);
-    if (IRF == null)
+    AppMethodBeat.i(205100);
+    if (KEb == null)
     {
-      AppMethodBeat.o(195187);
+      AppMethodBeat.o(205100);
       return;
     }
     if (paramBoolean) {}
     for (int i = 55; "FullScreenVideo".equals(paramString); i = 63)
     {
-      IRF.m(577L, 188L, 1L);
-      AppMethodBeat.o(195187);
+      KEb.n(577L, 188L, 1L);
+      AppMethodBeat.o(205100);
       return;
     }
     if ("XFilesPPTReader".equals(paramString))
     {
-      IRF.m(1068L, i, 1L);
-      AppMethodBeat.o(195187);
+      KEb.n(1068L, i, 1L);
+      AppMethodBeat.o(205100);
       return;
     }
     if ("XFilesPDFReader".equals(paramString))
     {
-      IRF.m(1071L, i, 1L);
-      AppMethodBeat.o(195187);
+      KEb.n(1071L, i, 1L);
+      AppMethodBeat.o(205100);
       return;
     }
     if ("XFilesWordReader".equals(paramString))
     {
-      IRF.m(1069L, i, 1L);
-      AppMethodBeat.o(195187);
+      KEb.n(1069L, i, 1L);
+      AppMethodBeat.o(205100);
       return;
     }
     if ("XFilesExcelReader".equals(paramString)) {
-      IRF.m(1070L, i, 1L);
+      KEb.n(1070L, i, 1L);
     }
-    AppMethodBeat.o(195187);
+    AppMethodBeat.o(205100);
   }
   
-  public static void df(String paramString, boolean paramBoolean)
+  public static void dk(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(195189);
-    if (IRF == null)
+    AppMethodBeat.i(205102);
+    if (KEb == null)
     {
-      AppMethodBeat.o(195189);
+      AppMethodBeat.o(205102);
       return;
     }
     if (paramBoolean) {}
     for (int i = 59; "XFilesPPTReader".equals(paramString); i = 65)
     {
-      IRF.m(1068L, i, 1L);
-      AppMethodBeat.o(195189);
+      KEb.n(1068L, i, 1L);
+      AppMethodBeat.o(205102);
       return;
     }
     if ("XFilesPDFReader".equals(paramString))
     {
-      IRF.m(1071L, i, 1L);
-      AppMethodBeat.o(195189);
+      KEb.n(1071L, i, 1L);
+      AppMethodBeat.o(205102);
       return;
     }
     if ("XFilesWordReader".equals(paramString))
     {
-      IRF.m(1069L, i, 1L);
-      AppMethodBeat.o(195189);
+      KEb.n(1069L, i, 1L);
+      AppMethodBeat.o(205102);
       return;
     }
     if ("XFilesExcelReader".equals(paramString)) {
-      IRF.m(1070L, i, 1L);
+      KEb.n(1070L, i, 1L);
     }
-    AppMethodBeat.o(195189);
+    AppMethodBeat.o(205102);
   }
   
-  public static void fsA()
+  public static boolean dpP()
   {
-    AppMethodBeat.i(157060);
-    if (IRF != null) {
-      IRF.m(577L, 15L, 1L);
-    }
-    AppMethodBeat.o(157060);
+    return KEb != null;
   }
   
-  public static void fsB()
-  {
-    AppMethodBeat.i(157062);
-    if (IRF == null)
-    {
-      AppMethodBeat.o(157062);
-      return;
-    }
-    IRF.m(577L, 83L, 1L);
-    AppMethodBeat.o(157062);
-  }
-  
-  public static void fsC()
-  {
-    AppMethodBeat.i(157064);
-    if (IRF == null)
-    {
-      AppMethodBeat.o(157064);
-      return;
-    }
-    IRF.m(577L, 87L, 1L);
-    AppMethodBeat.o(157064);
-  }
-  
-  public static void fsD()
-  {
-    AppMethodBeat.i(157066);
-    if (IRF != null) {
-      IRF.m(577L, 180L, 1L);
-    }
-    AppMethodBeat.o(157066);
-  }
-  
-  public static void fsE()
-  {
-    AppMethodBeat.i(157067);
-    if (IRF != null) {
-      IRF.m(577L, 181L, 1L);
-    }
-    AppMethodBeat.o(157067);
-  }
-  
-  public static void fsF()
-  {
-    AppMethodBeat.i(157068);
-    if (IRF != null) {
-      IRF.m(577L, 182L, 1L);
-    }
-    AppMethodBeat.o(157068);
-  }
-  
-  public static void fsG()
-  {
-    AppMethodBeat.i(157069);
-    if (IRF != null) {
-      IRF.m(577L, 183L, 1L);
-    }
-    AppMethodBeat.o(157069);
-  }
-  
-  public static void fsH()
-  {
-    AppMethodBeat.i(157070);
-    if (IRF != null) {
-      IRF.m(577L, 184L, 1L);
-    }
-    AppMethodBeat.o(157070);
-  }
-  
-  public static void fsI()
-  {
-    AppMethodBeat.i(157071);
-    if (IRF != null) {
-      IRF.m(577L, 189L, 1L);
-    }
-    AppMethodBeat.o(157071);
-  }
-  
-  public static void fsJ()
-  {
-    AppMethodBeat.i(157072);
-    if (IRF != null) {
-      IRF.m(577L, 190L, 1L);
-    }
-    AppMethodBeat.o(157072);
-  }
-  
-  public static void fsK()
-  {
-    AppMethodBeat.i(157082);
-    if (IRF == null)
-    {
-      AppMethodBeat.o(157082);
-      return;
-    }
-    IRF.m(577L, 88L, 1L);
-    AppMethodBeat.o(157082);
-  }
-  
-  public static void fsL()
-  {
-    AppMethodBeat.i(157085);
-    r(938L, 89L, 1L);
-    AppMethodBeat.o(157085);
-  }
-  
-  public static void fsM()
-  {
-    AppMethodBeat.i(157086);
-    r(938L, 90L, 1L);
-    AppMethodBeat.o(157086);
-  }
-  
-  public static void fsN()
-  {
-    AppMethodBeat.i(157087);
-    r(938L, 91L, 1L);
-    AppMethodBeat.o(157087);
-  }
-  
-  private static boolean fsb()
+  private static boolean fKE()
   {
     AppMethodBeat.i(157015);
-    if ((IRE == WebView.c.INC) && (WebView.getCurWebType() != IRE))
+    if ((KEa == WebView.c.KzZ) && (WebView.getCurWebType() != KEa))
     {
       AppMethodBeat.o(157015);
       return true;
@@ -947,10 +895,10 @@ public final class g
     return false;
   }
   
-  private static boolean fsc()
+  private static boolean fKF()
   {
     AppMethodBeat.i(157016);
-    if ((WebView.getCurWebType() == WebView.c.INC) && (WebView.getCurWebType() != IRE))
+    if ((WebView.getCurWebType() == WebView.c.KzZ) && (WebView.getCurWebType() != KEa))
     {
       AppMethodBeat.o(157016);
       return true;
@@ -959,9 +907,9 @@ public final class g
     return false;
   }
   
-  public static void fsd()
+  public static void fKG()
   {
-    AppMethodBeat.i(195182);
+    AppMethodBeat.i(205095);
     String str2 = XWalkEnvironment.getRuntimeAbi();
     String str1;
     int i;
@@ -972,8 +920,8 @@ public final class g
       i = XWalkEnvironment.getInstalledNewstVersion(str2);
       j = XWalkEnvironment.getInstalledNewstVersion(str1);
       Log.i("WXWebReporter", "reportCoreInstalled cur abi ver = " + i + ", predown ver = " + j);
-      boolean bool = c.mf("report_core_ver", String.valueOf(i));
-      if ((c.aPn("report_core_daily")) || (bool))
+      boolean bool = c.mG("report_core_ver", String.valueOf(i));
+      if ((c.aVg("report_core_daily")) || (bool))
       {
         if (i > 0) {
           break label187;
@@ -981,8 +929,8 @@ public final class g
         az(1367L, 251L);
       }
       label105:
-      bool = c.mf("report_core_ver_predown", String.valueOf(j));
-      if ((c.aPn("report_core_daily_predown")) || (bool))
+      bool = c.mG("report_core_ver_predown", String.valueOf(j));
+      if ((c.aVg("report_core_daily_predown")) || (bool))
       {
         if (j > 0) {
           break label203;
@@ -997,8 +945,8 @@ public final class g
         str1 = XWalkEnvironment.getDeviceAbi();
         if ("armeabi-v7a".equalsIgnoreCase(str1))
         {
-          kC(1367, 253);
-          AppMethodBeat.o(195182);
+          kS(1367, 253);
+          AppMethodBeat.o(205095);
           return;
           str1 = "armeabi-v7a";
           break;
@@ -1010,248 +958,377 @@ public final class g
           continue;
         }
         if ("arm64-v8a".equalsIgnoreCase(str1)) {
-          kC(1367, 254);
+          kS(1367, 254);
         }
       }
     }
-    AppMethodBeat.o(195182);
+    AppMethodBeat.o(205095);
   }
   
-  private static int fse()
+  private static int fKH()
   {
     AppMethodBeat.i(157023);
     int i = -1;
-    if (INp.equals("mm")) {
+    if (KzM.equals("mm")) {
       i = 30;
     }
     for (;;)
     {
       AppMethodBeat.o(157023);
       return i;
-      if (INp.equals("tools")) {
+      if (KzM.equals("tools")) {
         i = 36;
-      } else if (INp.equals("toolsmp")) {
+      } else if (KzM.equals("toolsmp")) {
         i = 42;
-      } else if (INp.equals("appbrand")) {
+      } else if (KzM.equals("appbrand")) {
         i = 48;
-      } else if (INp.equals("support")) {
+      } else if (KzM.equals("support")) {
         i = 54;
       }
     }
   }
   
-  public static void fsf()
+  public static void fKI()
   {
     AppMethodBeat.i(157025);
-    if (IRF != null) {
-      IRF.m(577L, 1L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 1L, 1L);
     }
     AppMethodBeat.o(157025);
   }
   
-  public static void fsg()
+  public static void fKJ()
   {
     AppMethodBeat.i(157027);
-    if (IRF != null) {
-      IRF.m(577L, 46L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 46L, 1L);
     }
     AppMethodBeat.o(157027);
   }
   
-  public static void fsh()
+  public static void fKK()
   {
     AppMethodBeat.i(157028);
-    if (IRF != null) {
-      IRF.m(577L, 47L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 47L, 1L);
     }
     AppMethodBeat.o(157028);
   }
   
-  public static void fsi()
+  public static void fKL()
   {
     AppMethodBeat.i(157030);
-    if (IRF != null) {
-      IRF.m(577L, 42L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 42L, 1L);
     }
     AppMethodBeat.o(157030);
   }
   
-  public static void fsj()
+  public static void fKM()
   {
     AppMethodBeat.i(157031);
-    if (IRF != null) {
-      IRF.m(577L, 43L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 43L, 1L);
     }
     AppMethodBeat.o(157031);
   }
   
-  public static void fsk()
+  public static void fKN()
   {
     AppMethodBeat.i(157037);
-    if (IRF != null) {
-      IRF.m(577L, 52L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 52L, 1L);
     }
     AppMethodBeat.o(157037);
   }
   
-  public static void fsl()
+  public static void fKO()
   {
     AppMethodBeat.i(157038);
-    if (IRF != null) {
-      IRF.m(577L, 53L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 53L, 1L);
     }
     AppMethodBeat.o(157038);
   }
   
-  public static void fsm()
+  public static void fKP()
   {
     AppMethodBeat.i(157039);
-    if (IRF != null) {
-      IRF.m(577L, 54L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 54L, 1L);
     }
     AppMethodBeat.o(157039);
   }
   
-  public static void fsn()
+  public static void fKQ()
   {
     AppMethodBeat.i(157040);
-    if (IRF != null) {
-      IRF.m(577L, 55L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 55L, 1L);
     }
     AppMethodBeat.o(157040);
   }
   
-  public static void fso()
+  public static void fKR()
   {
     AppMethodBeat.i(157041);
-    if (IRF != null) {
-      IRF.m(577L, 56L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 56L, 1L);
     }
     AppMethodBeat.o(157041);
   }
   
-  public static void fsp()
+  public static void fKS()
   {
     AppMethodBeat.i(157042);
-    if (IRF != null) {
-      IRF.m(577L, 57L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 57L, 1L);
     }
     AppMethodBeat.o(157042);
   }
   
-  public static void fsq()
+  public static void fKT()
   {
     AppMethodBeat.i(157043);
-    if (IRF != null) {
-      IRF.m(577L, 58L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 58L, 1L);
     }
     AppMethodBeat.o(157043);
   }
   
-  public static void fsr()
+  public static void fKU()
   {
     AppMethodBeat.i(157044);
-    if (IRF != null) {
-      IRF.m(577L, 59L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 59L, 1L);
     }
     AppMethodBeat.o(157044);
   }
   
-  public static void fss()
+  public static void fKV()
   {
     AppMethodBeat.i(157047);
-    if (IRF != null) {
-      IRF.m(577L, 167L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 167L, 1L);
     }
     AppMethodBeat.o(157047);
   }
   
-  public static void fst()
+  public static void fKW()
   {
     AppMethodBeat.i(157048);
-    if (IRF != null) {
-      IRF.m(577L, 9L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 9L, 1L);
     }
     AppMethodBeat.o(157048);
   }
   
-  public static void fsu()
+  public static void fKX()
   {
     AppMethodBeat.i(157050);
-    if (IRF != null) {
-      IRF.m(577L, 10L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 10L, 1L);
     }
     AppMethodBeat.o(157050);
   }
   
-  public static void fsv()
+  public static void fKY()
   {
     AppMethodBeat.i(157051);
-    if (IRF != null) {
-      IRF.m(577L, 60L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 60L, 1L);
     }
     AppMethodBeat.o(157051);
   }
   
-  public static void fsw()
+  public static void fKZ()
   {
     AppMethodBeat.i(157053);
-    if (IRF != null) {
-      IRF.m(577L, 20L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 20L, 1L);
     }
     AppMethodBeat.o(157053);
   }
   
-  public static void fsx()
+  public static void fLa()
   {
     AppMethodBeat.i(157055);
-    if (IRF != null) {
-      IRF.m(577L, 21L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 21L, 1L);
     }
     AppMethodBeat.o(157055);
   }
   
-  public static void fsy()
+  public static void fLb()
   {
     AppMethodBeat.i(157058);
-    if (IRF != null) {
-      IRF.m(577L, 26L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 26L, 1L);
     }
     AppMethodBeat.o(157058);
   }
   
-  public static void fsz()
+  public static void fLc()
   {
     AppMethodBeat.i(157059);
-    if (IRF != null) {
-      IRF.m(577L, 14L, 1L);
+    if (KEb != null) {
+      KEb.n(577L, 14L, 1L);
     }
     AppMethodBeat.o(157059);
   }
   
-  public static void gF(String paramString, int paramInt)
+  public static void fLd()
+  {
+    AppMethodBeat.i(157060);
+    if (KEb != null) {
+      KEb.n(577L, 15L, 1L);
+    }
+    AppMethodBeat.o(157060);
+  }
+  
+  public static void fLe()
+  {
+    AppMethodBeat.i(157062);
+    if (KEb == null)
+    {
+      AppMethodBeat.o(157062);
+      return;
+    }
+    KEb.n(577L, 83L, 1L);
+    AppMethodBeat.o(157062);
+  }
+  
+  public static void fLf()
+  {
+    AppMethodBeat.i(157064);
+    if (KEb == null)
+    {
+      AppMethodBeat.o(157064);
+      return;
+    }
+    KEb.n(577L, 87L, 1L);
+    AppMethodBeat.o(157064);
+  }
+  
+  public static void fLg()
+  {
+    AppMethodBeat.i(157066);
+    if (KEb != null) {
+      KEb.n(577L, 180L, 1L);
+    }
+    AppMethodBeat.o(157066);
+  }
+  
+  public static void fLh()
+  {
+    AppMethodBeat.i(157067);
+    if (KEb != null) {
+      KEb.n(577L, 181L, 1L);
+    }
+    AppMethodBeat.o(157067);
+  }
+  
+  public static void fLi()
+  {
+    AppMethodBeat.i(157068);
+    if (KEb != null) {
+      KEb.n(577L, 182L, 1L);
+    }
+    AppMethodBeat.o(157068);
+  }
+  
+  public static void fLj()
+  {
+    AppMethodBeat.i(157069);
+    if (KEb != null) {
+      KEb.n(577L, 183L, 1L);
+    }
+    AppMethodBeat.o(157069);
+  }
+  
+  public static void fLk()
+  {
+    AppMethodBeat.i(157070);
+    if (KEb != null) {
+      KEb.n(577L, 184L, 1L);
+    }
+    AppMethodBeat.o(157070);
+  }
+  
+  public static void fLl()
+  {
+    AppMethodBeat.i(157071);
+    if (KEb != null) {
+      KEb.n(577L, 189L, 1L);
+    }
+    AppMethodBeat.o(157071);
+  }
+  
+  public static void fLm()
+  {
+    AppMethodBeat.i(157072);
+    if (KEb != null) {
+      KEb.n(577L, 190L, 1L);
+    }
+    AppMethodBeat.o(157072);
+  }
+  
+  public static void fLn()
+  {
+    AppMethodBeat.i(157082);
+    if (KEb == null)
+    {
+      AppMethodBeat.o(157082);
+      return;
+    }
+    KEb.n(577L, 88L, 1L);
+    AppMethodBeat.o(157082);
+  }
+  
+  public static void fLo()
+  {
+    AppMethodBeat.i(157085);
+    r(938L, 89L, 1L);
+    AppMethodBeat.o(157085);
+  }
+  
+  public static void fLp()
+  {
+    AppMethodBeat.i(157086);
+    r(938L, 90L, 1L);
+    AppMethodBeat.o(157086);
+  }
+  
+  public static void fLq()
+  {
+    AppMethodBeat.i(157087);
+    r(938L, 91L, 1L);
+    AppMethodBeat.o(157087);
+  }
+  
+  public static void gL(String paramString, int paramInt)
   {
     AppMethodBeat.i(157033);
-    ad localad;
+    af localaf;
     int j;
     int k;
-    if (IRF != null)
+    if (KEb != null)
     {
-      aPw(paramString);
+      aVp(paramString);
       sessionId = UUID.randomUUID().toString().replace("-", "");
-      IRF.m(577L, 4L, 1L);
-      localad = IRF;
+      KEb.n(577L, 4L, 1L);
+      localaf = KEb;
       j = XWalkEnvironment.getAvailableVersion();
-      k = aPx(paramString);
+      k = aVq(paramString);
       paramString = sessionId;
-      if (JsRuntime.fqF() != null) {
+      if (JsRuntime.fJf() != null) {
         break label95;
       }
     }
     label95:
-    for (int i = 100;; i = JsRuntime.fqF().ordinal())
+    for (int i = 100;; i = JsRuntime.fJf().ordinal())
     {
-      localad.a(j, k, paramString, i, 0, 0, 0, paramInt);
+      localaf.a(j, k, paramString, i, 0, 0, 0, paramInt);
       AppMethodBeat.o(157033);
       return;
     }
@@ -1259,13 +1336,13 @@ public final class g
   
   public static void h(WebView.c paramc)
   {
-    IRE = paramc;
+    KEa = paramc;
   }
   
   public static void i(WebView.c paramc)
   {
     AppMethodBeat.i(157018);
-    if (IRF == null)
+    if (KEb == null)
     {
       AppMethodBeat.o(157018);
       return;
@@ -1275,7 +1352,7 @@ public final class g
     label36:
     String str3;
     String str2;
-    if (paramc == WebView.c.INC)
+    if (paramc == WebView.c.KzZ)
     {
       i = 1;
       if (i == 0) {
@@ -1292,7 +1369,7 @@ public final class g
     label304:
     for (;;)
     {
-      if (paramc == WebView.c.INC)
+      if (paramc == WebView.c.KzZ)
       {
         i = XWalkEnvironment.getSharedPreferences().getInt("REPORT_XWEB_APK_VER", 0);
         int j = XWalkEnvironment.getAvailableVersion();
@@ -1308,7 +1385,7 @@ public final class g
         }
         if ((j != i) || (!str3.equals(str2)))
         {
-          IRF.m(577L, j % 50 + 100, 1L);
+          KEb.n(577L, j % 50 + 100, 1L);
           XWalkEnvironment.getSharedPreferences().edit().putInt("REPORT_XWEB_APK_VER", j).commit();
         }
       }
@@ -1317,7 +1394,7 @@ public final class g
         AppMethodBeat.o(157018);
         return;
       }
-      if (paramc == WebView.c.INC)
+      if (paramc == WebView.c.KzZ)
       {
         if (XWalkEnvironment.getAvailableVersion() <= 0)
         {
@@ -1328,17 +1405,17 @@ public final class g
       }
       for (;;)
       {
-        IRF.m(577L, i, 1L);
+        KEb.n(577L, i, 1L);
         XWalkEnvironment.getSharedPreferences().edit().putString(str1, str3).commit();
         AppMethodBeat.o(157018);
         return;
-        if (paramc == WebView.c.INE)
+        if (paramc == WebView.c.KAb)
         {
           i = 97;
         }
         else
         {
-          if (paramc != WebView.c.IND) {
+          if (paramc != WebView.c.KAa) {
             break;
           }
           i = 98;
@@ -1352,15 +1429,15 @@ public final class g
   public static void j(WebView.c paramc)
   {
     AppMethodBeat.i(157052);
-    if (IRF == null)
+    if (KEb == null)
     {
       AppMethodBeat.o(157052);
       return;
     }
-    if (paramc == WebView.c.INC)
+    if (paramc == WebView.c.KzZ)
     {
-      IRF.m(577L, 61L, 1L);
-      kC(577, 62);
+      KEb.n(577L, 61L, 1L);
+      kS(577, 62);
     }
     AppMethodBeat.o(157052);
   }
@@ -1368,13 +1445,13 @@ public final class g
   public static void k(WebView.c paramc)
   {
     AppMethodBeat.i(157063);
-    if (IRF == null)
+    if (KEb == null)
     {
       AppMethodBeat.o(157063);
       return;
     }
     int i;
-    switch (g.1.lCQ[paramc.ordinal()])
+    switch (g.1.meK[paramc.ordinal()])
     {
     default: 
       AppMethodBeat.o(157063);
@@ -1384,7 +1461,7 @@ public final class g
     }
     for (;;)
     {
-      IRF.m(577L, i, 1L);
+      KEb.n(577L, i, 1L);
       AppMethodBeat.o(157063);
       return;
       i = 81;
@@ -1393,10 +1470,10 @@ public final class g
     }
   }
   
-  public static void kC(int paramInt1, int paramInt2)
+  public static void kS(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(157017);
-    if (IRF == null)
+    if (KEb == null)
     {
       AppMethodBeat.o(157017);
       return;
@@ -1409,7 +1486,7 @@ public final class g
       AppMethodBeat.o(157017);
       return;
     }
-    IRF.m(paramInt1, paramInt2, 1L);
+    KEb.n(paramInt1, paramInt2, 1L);
     localSharedPreferences.edit().putString(str1, str2).commit();
     AppMethodBeat.o(157017);
   }
@@ -1417,13 +1494,13 @@ public final class g
   public static void l(WebView.c paramc)
   {
     AppMethodBeat.i(157065);
-    if (IRF == null)
+    if (KEb == null)
     {
       AppMethodBeat.o(157065);
       return;
     }
     int i;
-    switch (g.1.lCQ[paramc.ordinal()])
+    switch (g.1.meK[paramc.ordinal()])
     {
     default: 
       AppMethodBeat.o(157065);
@@ -1433,7 +1510,7 @@ public final class g
     }
     for (;;)
     {
-      IRF.m(577L, i, 1L);
+      KEb.n(577L, i, 1L);
       AppMethodBeat.o(157065);
       return;
       i = 85;
@@ -1445,25 +1522,25 @@ public final class g
   public static void q(String paramString, long paramLong, int paramInt)
   {
     AppMethodBeat.i(157035);
-    xt(paramLong);
-    ad localad;
+    Cg(paramLong);
+    af localaf;
     int j;
     int k;
-    if ((IRF != null) && (paramLong > 0L) && (paramLong < 300000L))
+    if ((KEb != null) && (paramLong > 0L) && (paramLong < 300000L))
     {
-      IRF.aR(6, 7, (int)paramLong);
-      localad = IRF;
+      KEb.aT(6, 7, (int)paramLong);
+      localaf = KEb;
       j = XWalkEnvironment.getAvailableVersion();
-      k = aPx(paramString);
+      k = aVq(paramString);
       paramString = sessionId;
-      if (JsRuntime.fqF() != null) {
+      if (JsRuntime.fJf() != null) {
         break label96;
       }
     }
     label96:
-    for (int i = 100;; i = JsRuntime.fqF().ordinal())
+    for (int i = 100;; i = JsRuntime.fJf().ordinal())
     {
-      localad.a(j, k, paramString, i, 1, 0, (int)paramLong, paramInt);
+      localaf.a(j, k, paramString, i, 1, 0, (int)paramLong, paramInt);
       AppMethodBeat.o(157035);
       return;
     }
@@ -1472,16 +1549,16 @@ public final class g
   public static void r(long paramLong1, long paramLong2, long paramLong3)
   {
     AppMethodBeat.i(157021);
-    if (IRF != null) {
-      IRF.m(paramLong1, paramLong2, paramLong3);
+    if (KEb != null) {
+      KEb.n(paramLong1, paramLong2, paramLong3);
     }
     AppMethodBeat.o(157021);
   }
   
-  public static void xI(boolean paramBoolean)
+  public static void za(boolean paramBoolean)
   {
     AppMethodBeat.i(157084);
-    if (!"toolsmp".equals(INp))
+    if (!"toolsmp".equals(KzM))
     {
       AppMethodBeat.o(157084);
       return;
@@ -1490,7 +1567,7 @@ public final class g
     if (paramBoolean)
     {
       i = 0;
-      if (WebView.getCurWebType() != WebView.c.INC) {
+      if (WebView.getCurWebType() != WebView.c.KzZ) {
         break label66;
       }
     }
@@ -1502,7 +1579,7 @@ public final class g
       i = 1;
       break;
       label66:
-      if (WebView.getCurWebType() != WebView.c.IND) {
+      if (WebView.getCurWebType() != WebView.c.KAa) {
         break label82;
       }
     }
@@ -1510,99 +1587,27 @@ public final class g
     AppMethodBeat.o(157084);
   }
   
-  public static void xs(long paramLong)
-  {
-    AppMethodBeat.i(157020);
-    if (IRF != null) {
-      IRF.m(577L, paramLong, 1L);
-    }
-    AppMethodBeat.o(157020);
-  }
-  
-  public static void xt(long paramLong)
-  {
-    AppMethodBeat.i(157026);
-    if ((IRF != null) && (paramLong > 0L) && (paramLong < 300000L)) {
-      IRF.aR(2, 3, (int)paramLong);
-    }
-    AppMethodBeat.o(157026);
-  }
-  
-  public static void xu(long paramLong)
-  {
-    AppMethodBeat.i(157029);
-    if ((IRF != null) && (paramLong > 0L) && (paramLong < 300000L)) {
-      IRF.aR(48, 49, (int)paramLong);
-    }
-    AppMethodBeat.o(157029);
-  }
-  
-  public static void xv(long paramLong)
-  {
-    AppMethodBeat.i(157032);
-    if ((IRF != null) && (paramLong > 0L) && (paramLong < 300000L)) {
-      IRF.aR(44, 45, (int)paramLong);
-    }
-    AppMethodBeat.o(157032);
-  }
-  
-  public static void xw(long paramLong)
-  {
-    AppMethodBeat.i(157049);
-    if ((IRF != null) && (IRF != null) && (paramLong > 0L) && (paramLong < 600000L)) {
-      IRF.aR(11, 12, (int)paramLong);
-    }
-    AppMethodBeat.o(157049);
-  }
-  
-  public static void xx(long paramLong)
-  {
-    AppMethodBeat.i(157054);
-    if ((IRF != null) && (IRF != null) && (paramLong > 0L) && (paramLong < 600000L)) {
-      IRF.aR(22, 23, (int)paramLong);
-    }
-    AppMethodBeat.o(157054);
-  }
-  
-  public static void xy(long paramLong)
-  {
-    AppMethodBeat.i(157057);
-    if ((IRF != null) && (IRF != null) && (paramLong > 0L) && (paramLong < 600000L)) {
-      IRF.aR(27, 28, (int)paramLong);
-    }
-    AppMethodBeat.o(157057);
-  }
-  
-  public static void xz(long paramLong)
-  {
-    AppMethodBeat.i(157061);
-    if ((IRF != null) && (IRF != null) && (paramLong > 0L) && (paramLong < 120000L)) {
-      IRF.aR(16, 17, (int)paramLong);
-    }
-    AppMethodBeat.o(157061);
-  }
-  
   public static final class a
   {
-    int IRH;
-    StringBuilder bvd;
+    int KEd;
+    StringBuilder btc;
     
     public a(int paramInt)
     {
       AppMethodBeat.i(175648);
-      this.bvd = new StringBuilder();
-      this.IRH = 0;
-      this.IRH = paramInt;
+      this.btc = new StringBuilder();
+      this.KEd = 0;
+      this.KEd = paramInt;
       AppMethodBeat.o(175648);
     }
     
-    public final a ex(Object paramObject)
+    public final a ez(Object paramObject)
     {
       AppMethodBeat.i(175649);
-      if (this.bvd.length() > 0) {
-        this.bvd.append(",");
+      if (this.btc.length() > 0) {
+        this.btc.append(",");
       }
-      this.bvd.append(paramObject.toString());
+      this.btc.append(paramObject.toString());
       AppMethodBeat.o(175649);
       return this;
     }
@@ -1611,10 +1616,10 @@ public final class g
   public static final class b$a
   {
     public static int ID = 19307;
-    public static int IRI = 1;
-    public static int IRJ = 2;
-    public static int IRK = 1;
-    public static int IRL = 2;
+    public static int KEe = 1;
+    public static int KEf = 2;
+    public static int KEg = 1;
+    public static int KEh = 2;
   }
 }
 

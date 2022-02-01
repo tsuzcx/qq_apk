@@ -4,8 +4,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class ScanCodeSheetItemLogic$3
   implements View.OnClickListener
@@ -16,10 +16,10 @@ final class ScanCodeSheetItemLogic$3
   {
     AppMethodBeat.i(151568);
     long l = System.currentTimeMillis();
-    String str = bt.u("%d,%d", new Object[] { Integer.valueOf(this.vLN), Long.valueOf(l) });
-    ad.i("MicroMsg.ScanCodeSheetItemLogic", "18684 report:".concat(String.valueOf(str)));
-    h.vKh.kvStat(18684, str);
-    this.vLO.onClick(paramView);
+    String str = bs.u("%d,%d", new Object[] { Integer.valueOf(this.wVO), Long.valueOf(l) });
+    ac.i("MicroMsg.ScanCodeSheetItemLogic", "18684 report:".concat(String.valueOf(str)));
+    h.wUl.kvStat(18684, str);
+    this.wVP.onClick(paramView);
     AppMethodBeat.o(151568);
   }
 }

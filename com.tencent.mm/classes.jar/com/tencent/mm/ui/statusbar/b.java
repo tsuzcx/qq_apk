@@ -13,47 +13,47 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class b
   extends FrameLayout
   implements c.a
 {
-  protected static final boolean Hln = c.HlA;
-  private c Hlo;
-  private int Hlp;
-  private int Hlq;
-  private boolean Hlr;
-  private boolean Hls;
-  private boolean Hlt;
-  private final int[] Hlu;
-  private boolean apo;
-  private volatile int lDk;
+  protected static final boolean ILI = c.ILV;
+  private c ILJ;
+  private int ILK;
+  private int ILL;
+  private boolean ILM;
+  private boolean ILN;
+  private boolean ILO;
+  private final int[] ILP;
+  private boolean aqk;
   private Activity mActivity;
   private Paint mPaint;
+  private volatile int mfe;
   
   public b(Context paramContext)
   {
-    super(a.kc(paramContext));
+    super(a.kn(paramContext));
     AppMethodBeat.i(133806);
-    this.Hlp = 0;
-    this.Hlq = 0;
-    this.Hlr = false;
-    this.apo = false;
-    this.Hls = false;
-    this.Hlt = false;
-    this.Hlu = new int[2];
+    this.ILK = 0;
+    this.ILL = 0;
+    this.ILM = false;
+    this.aqk = false;
+    this.ILN = false;
+    this.ILO = false;
+    this.ILP = new int[2];
     if (Looper.getMainLooper() != Looper.myLooper())
     {
       paramContext = new RuntimeException("Should be called on main-thread");
       AppMethodBeat.o(133806);
       throw paramContext;
     }
-    fdo();
+    ftj();
     if ((getContext() instanceof a)) {
-      ((a)getContext()).Hlz = new b.a.a()
+      ((a)getContext()).ILU = new b.a.a()
       {
-        public final void fds()
+        public final void ftn()
         {
           AppMethodBeat.i(133800);
           if (Looper.getMainLooper() != Looper.myLooper())
@@ -78,14 +78,14 @@ public class b
     AppMethodBeat.o(133806);
   }
   
-  private void aZ(final int paramInt, boolean paramBoolean)
+  private void bd(final int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(192570);
-    getLocationInWindow(this.Hlu);
-    ad.d("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight height[%d] mFrozen[%b] mLocationInWindow[%d.%d]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.apo), Integer.valueOf(this.Hlu[0]), Integer.valueOf(this.Hlu[1]) });
-    if (this.Hlu[1] < 0)
+    AppMethodBeat.i(205121);
+    getLocationInWindow(this.ILP);
+    ac.d("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight height[%d] mFrozen[%b] mLocationInWindow[%d.%d]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.aqk), Integer.valueOf(this.ILP[0]), Integer.valueOf(this.ILP[1]) });
+    if (this.ILP[1] < 0)
     {
-      ad.w("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight: [%d,%d,%d]", new Object[] { Integer.valueOf(this.Hlu[0]), Integer.valueOf(this.Hlu[1]), Integer.valueOf(paramInt) });
+      ac.w("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight: [%d,%d,%d]", new Object[] { Integer.valueOf(this.ILP[0]), Integer.valueOf(this.ILP[1]), Integer.valueOf(paramInt) });
       if (paramBoolean) {
         post(new Runnable()
         {
@@ -98,18 +98,18 @@ public class b
         });
       }
     }
-    this.lDk = Math.max(0, paramInt - this.Hlu[1]);
-    if (this.apo)
+    this.mfe = Math.max(0, paramInt - this.ILP[1]);
+    if (this.aqk)
     {
-      this.Hls = true;
-      AppMethodBeat.o(192570);
+      this.ILN = true;
+      AppMethodBeat.o(205121);
       return;
     }
     for (;;)
     {
       try
       {
-        if (!this.Hlr) {
+        if (!this.ILM) {
           continue;
         }
         paramInt = 0;
@@ -117,22 +117,22 @@ public class b
       }
       catch (IllegalStateException localIllegalStateException)
       {
-        ad.w("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight setPadding e=%s", new Object[] { localIllegalStateException.getMessage() });
+        ac.w("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight setPadding e=%s", new Object[] { localIllegalStateException.getMessage() });
         continue;
       }
       if (isLayoutRequested()) {
-        fdq();
+        ftl();
       }
-      AppMethodBeat.o(192570);
+      AppMethodBeat.o(205121);
       return;
-      paramInt = this.lDk;
+      paramInt = this.mfe;
     }
   }
   
-  private void fdo()
+  private void ftj()
   {
     AppMethodBeat.i(133807);
-    if (!Hln)
+    if (!ILI)
     {
       this.mActivity = null;
       this.mPaint = null;
@@ -140,11 +140,11 @@ public class b
       return;
     }
     setPadding(0, 0, 0, 0);
-    this.lDk = 0;
-    if (this.Hlo != null) {
-      this.Hlo.b(this);
+    this.mfe = 0;
+    if (this.ILJ != null) {
+      this.ILJ.b(this);
     }
-    this.mActivity = a.iV(getContext());
+    this.mActivity = a.jg(getContext());
     if (this.mActivity == null)
     {
       this.mPaint = null;
@@ -152,8 +152,8 @@ public class b
       AppMethodBeat.o(133807);
       return;
     }
-    c localc = c.bj(this.mActivity);
-    this.Hlo = localc;
+    c localc = c.bm(this.mActivity);
+    this.ILJ = localc;
     localc.a(this);
     this.mPaint = new Paint(0);
     this.mPaint.setStyle(Paint.Style.FILL);
@@ -161,22 +161,22 @@ public class b
     AppMethodBeat.o(133807);
   }
   
-  private void fdp()
+  private void ftk()
   {
     AppMethodBeat.i(175985);
-    if (this.Hlo == null)
+    if (this.ILJ == null)
     {
       AppMethodBeat.o(175985);
       return;
     }
-    sG(this.Hlo.HlD);
+    tx(this.ILJ.ILY);
     AppMethodBeat.o(175985);
   }
   
-  private void fdq()
+  private void ftl()
   {
     AppMethodBeat.i(133809);
-    if (fdr())
+    if (ftm())
     {
       invalidate();
       AppMethodBeat.o(133809);
@@ -186,7 +186,7 @@ public class b
     AppMethodBeat.o(133809);
   }
   
-  private static boolean fdr()
+  private static boolean ftm()
   {
     AppMethodBeat.i(175988);
     if (Looper.getMainLooper() == Looper.myLooper())
@@ -208,33 +208,33 @@ public class b
   protected void dispatchDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(133814);
-    if ((this.lDk <= 0) || (!Hln) || (this.Hlr) || (willNotDraw())) {}
+    if ((this.mfe <= 0) || (!ILI) || (this.ILM) || (willNotDraw())) {}
     for (;;)
     {
       super.dispatchDraw(paramCanvas);
-      if ((this.lDk > 0) && (Hln) && (this.Hlr) && (!willNotDraw())) {
+      if ((this.mfe > 0) && (ILI) && (this.ILM) && (!willNotDraw())) {
         break;
       }
       AppMethodBeat.o(133814);
       return;
       if (this.mPaint == null)
       {
-        ad.e("MicroMsg.DrawStatusBarFrameLayout", "drawStatusBarBackground NULL paint");
+        ac.e("MicroMsg.DrawStatusBarFrameLayout", "drawStatusBarBackground NULL paint");
       }
       else
       {
-        this.mPaint.setColor(this.Hlp);
-        paramCanvas.drawRect(0.0F, 0.0F, getWidth(), this.lDk, this.mPaint);
+        this.mPaint.setColor(this.ILK);
+        paramCanvas.drawRect(0.0F, 0.0F, getWidth(), this.mfe, this.mPaint);
       }
     }
     if (this.mPaint == null)
     {
-      ad.e("MicroMsg.DrawStatusBarFrameLayout", "drawStatusBarForeground NULL paint");
+      ac.e("MicroMsg.DrawStatusBarFrameLayout", "drawStatusBarForeground NULL paint");
       AppMethodBeat.o(133814);
       return;
     }
-    this.mPaint.setColor(this.Hlq);
-    paramCanvas.drawRect(0.0F, 0.0F, getWidth(), this.lDk, this.mPaint);
+    this.mPaint.setColor(this.ILL);
+    paramCanvas.drawRect(0.0F, 0.0F, getWidth(), this.mfe, this.mPaint);
     AppMethodBeat.o(133814);
   }
   
@@ -242,14 +242,14 @@ public class b
   {
     AppMethodBeat.i(175986);
     super.dispatchSystemUiVisibilityChanged(paramInt);
-    fdp();
+    ftk();
     AppMethodBeat.o(175986);
   }
   
   public int getDrawnStatusBarHeight()
   {
     AppMethodBeat.i(175983);
-    int i = Math.max(0, this.lDk);
+    int i = Math.max(0, this.mfe);
     AppMethodBeat.o(175983);
     return i;
   }
@@ -257,10 +257,10 @@ public class b
   public final void h(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(133813);
-    int j = this.Hlp;
-    int k = this.Hlq;
-    this.Hlp = paramInt;
-    if ((!Hln) || (this.mActivity == null))
+    int j = this.ILK;
+    int k = this.ILL;
+    this.ILK = paramInt;
+    if ((!ILI) || (this.mActivity == null))
     {
       AppMethodBeat.o(133813);
       return;
@@ -272,7 +272,7 @@ public class b
       if (!d.c((Window)localObject, paramBoolean1)) {
         break label122;
       }
-      this.Hlp = paramInt;
+      this.ILK = paramInt;
     }
     label168:
     label202:
@@ -281,35 +281,35 @@ public class b
       paramInt = 0;
       for (localObject = this;; localObject = this)
       {
-        ((b)localObject).Hlq = paramInt;
+        ((b)localObject).ILL = paramInt;
         label122:
         do
         {
-          if ((this.Hlp != 0) || (this.Hlq != 0)) {
+          if ((this.ILK != 0) || (this.ILL != 0)) {
             break label168;
           }
           super.setWillNotDraw(true);
-          fdq();
+          ftl();
           AppMethodBeat.o(133813);
           return;
-          if (d.eQT()) {
+          if (d.fgC()) {
             break;
           }
         } while (Build.VERSION.SDK_INT < 21);
         int i = paramInt;
         if (paramBoolean1) {
-          i = d.Ts(paramInt);
+          i = d.VA(paramInt);
         }
-        this.Hlp = i;
+        this.ILK = i;
         if (!paramBoolean1) {
           break label202;
         }
         paramInt = Color.argb(51, 0, 0, 0);
       }
-      if ((j != this.Hlp) || (k != this.Hlq))
+      if ((j != this.ILK) || (k != this.ILL))
       {
         super.setWillNotDraw(false);
-        fdq();
+        ftl();
       }
       AppMethodBeat.o(133813);
       return;
@@ -320,16 +320,16 @@ public class b
   {
     AppMethodBeat.i(175987);
     super.onAttachedToWindow();
-    fdp();
+    ftk();
     AppMethodBeat.o(175987);
   }
   
   public void requestLayout()
   {
     AppMethodBeat.i(133810);
-    if (this.apo)
+    if (this.aqk)
     {
-      this.Hlt = true;
+      this.ILO = true;
       AppMethodBeat.o(133810);
       return;
     }
@@ -337,40 +337,33 @@ public class b
     AppMethodBeat.o(133810);
   }
   
-  public void sG(int paramInt)
-  {
-    AppMethodBeat.i(133804);
-    aZ(paramInt, true);
-    AppMethodBeat.o(133804);
-  }
-  
   public void setLayoutFrozen(final boolean paramBoolean)
   {
     AppMethodBeat.i(133815);
-    if (!fdr())
+    if (!ftm())
     {
       post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(192569);
+          AppMethodBeat.i(205120);
           b.this.setLayoutFrozen(paramBoolean);
-          AppMethodBeat.o(192569);
+          AppMethodBeat.o(205120);
         }
       });
       AppMethodBeat.o(133815);
       return;
     }
-    ad.d("MicroMsg.DrawStatusBarFrameLayout", "setLayoutFrozen frozen[%b], mFrozen[%b], mDeferLayout[%b], mDeferInvalidate[%b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.apo), Boolean.valueOf(this.Hlt), Boolean.valueOf(this.Hls) });
-    if (paramBoolean != this.apo) {}
+    ac.d("MicroMsg.DrawStatusBarFrameLayout", "setLayoutFrozen frozen[%b], mFrozen[%b], mDeferLayout[%b], mDeferInvalidate[%b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.aqk), Boolean.valueOf(this.ILO), Boolean.valueOf(this.ILN) });
+    if (paramBoolean != this.aqk) {}
     for (int i = 1;; i = 0)
     {
-      this.apo = paramBoolean;
-      if ((i != 0) && (!paramBoolean) && ((this.Hlt) || (this.Hls)))
+      this.aqk = paramBoolean;
+      if ((i != 0) && (!paramBoolean) && ((this.ILO) || (this.ILN)))
       {
-        aZ(this.lDk, true);
-        this.Hlt = false;
-        this.Hls = false;
+        bd(this.mfe, true);
+        this.ILO = false;
+        this.ILN = false;
       }
       AppMethodBeat.o(133815);
       return;
@@ -380,7 +373,7 @@ public class b
   public void setStatusBarColor(int paramInt)
   {
     AppMethodBeat.i(133811);
-    if (!Hln)
+    if (!ILI)
     {
       AppMethodBeat.o(133811);
       return;
@@ -397,12 +390,11 @@ public class b
   
   public final void setWillNotDraw(boolean paramBoolean) {}
   
-  public final void wD(boolean paramBoolean)
+  public void tx(int paramInt)
   {
-    AppMethodBeat.i(133805);
-    this.Hlr = paramBoolean;
-    aZ(this.lDk, true);
-    AppMethodBeat.o(133805);
+    AppMethodBeat.i(133804);
+    bd(paramInt, true);
+    AppMethodBeat.o(133804);
   }
   
   public final boolean willNotDraw()
@@ -413,18 +405,26 @@ public class b
     return bool;
   }
   
+  public final void xK(boolean paramBoolean)
+  {
+    AppMethodBeat.i(133805);
+    this.ILM = paramBoolean;
+    bd(this.mfe, true);
+    AppMethodBeat.o(133805);
+  }
+  
   static final class a
     extends MutableContextWrapper
   {
-    private boolean Hly = true;
-    a Hlz;
+    private boolean ILT = true;
+    a ILU;
     
     private a(MutableContextWrapper paramMutableContextWrapper)
     {
       super();
     }
     
-    public static Context kc(Context paramContext)
+    public static Context kn(Context paramContext)
     {
       AppMethodBeat.i(133803);
       if ((paramContext instanceof MutableContextWrapper))
@@ -440,7 +440,7 @@ public class b
     public final void setBaseContext(Context paramContext)
     {
       AppMethodBeat.i(133802);
-      if (this.Hly)
+      if (this.ILT)
       {
         if (paramContext == getBaseContext())
         {
@@ -448,9 +448,9 @@ public class b
           return;
         }
         ((MutableContextWrapper)getBaseContext()).setBaseContext(paramContext);
-        if (this.Hlz != null)
+        if (this.ILU != null)
         {
-          this.Hlz.fds();
+          this.ILU.ftn();
           AppMethodBeat.o(133802);
         }
       }
@@ -463,7 +463,7 @@ public class b
     
     static abstract interface a
     {
-      public abstract void fds();
+      public abstract void ftn();
     }
   }
 }

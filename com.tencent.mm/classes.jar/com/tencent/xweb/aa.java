@@ -1,23 +1,45 @@
 package com.tencent.xweb;
 
-import android.view.MotionEvent;
-import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.internal.IWebStorage;
+import com.tencent.xweb.internal.j;
+import com.tencent.xweb.internal.j.a;
+import org.xwalk.core.Log;
 
-public abstract interface aa
+public final class aa
 {
-  public abstract boolean B(MotionEvent paramMotionEvent);
+  static aa KzK = null;
+  public IWebStorage KzJ;
   
-  public abstract boolean C(MotionEvent paramMotionEvent);
+  private aa()
+  {
+    AppMethodBeat.i(156798);
+    this.KzJ = null;
+    IWebStorage localIWebStorage = j.g(WebView.getCurWebType()).createWebviewStorage();
+    if (localIWebStorage == null)
+    {
+      Log.e("WebStorage", "create WebStorage failed webStg is null, cur core kind is " + WebView.getCurWebType());
+      AppMethodBeat.o(156798);
+      return;
+    }
+    this.KzJ = localIWebStorage;
+    AppMethodBeat.o(156798);
+  }
   
-  public abstract boolean D(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean);
-  
-  public abstract void beA();
-  
-  public abstract void d(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView);
+  public static aa fJK()
+  {
+    try
+    {
+      AppMethodBeat.i(156797);
+      if (KzK == null) {
+        KzK = new aa();
+      }
+      aa localaa = KzK;
+      AppMethodBeat.o(156797);
+      return localaa;
+    }
+    finally {}
+  }
 }
 
 

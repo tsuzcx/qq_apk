@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.plugin.wallet_core.model.s;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import com.tencent.mm.wallet_core.ui.e;
@@ -25,18 +25,18 @@ import org.json.JSONObject;
 public final class y
   extends m
 {
+  public List<ElementQuery> BoS;
+  public ElementQuery BoT;
+  private int BoU;
+  private int BoV;
+  private int BoW;
+  public int BoX;
+  public String[] BoY;
+  public ArrayList<a> BoZ;
   public String mBankType;
   public Profession[] mProfessions;
   public String mTimeStamp;
-  public String nqb;
-  private int zWA;
-  private int zWB;
-  private int zWC;
-  public int zWD;
-  public String[] zWE;
-  public ArrayList<a> zWF;
-  public List<ElementQuery> zWy;
-  public ElementQuery zWz;
+  public String nTb;
   
   public y()
   {
@@ -61,16 +61,16 @@ public final class y
   private y(String paramString1, String paramString2, PayInfo paramPayInfo, String paramString3, int paramInt1, int paramInt2, int paramInt3, byte paramByte)
   {
     AppMethodBeat.i(69943);
-    this.zWy = null;
-    this.zWz = null;
+    this.BoS = null;
+    this.BoT = null;
     this.mTimeStamp = null;
-    this.nqb = null;
+    this.nTb = null;
     this.mBankType = null;
-    this.zWA = 3;
+    this.BoU = 3;
     this.mProfessions = null;
-    this.zWE = null;
-    this.nqb = paramString2;
-    this.zWA = 3;
+    this.BoY = null;
+    this.nTb = paramString2;
+    this.BoU = 3;
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     setPayInfo(paramPayInfo, localHashMap1, localHashMap2);
@@ -80,7 +80,7 @@ public final class y
     if (paramInt2 > 0)
     {
       localHashMap1.put("realname_scene", String.valueOf(paramInt2));
-      ad.i("MicroMsg.NetSenceTenPayBase", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt2) });
+      ac.i("MicroMsg.NetSenceTenPayBase", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt2) });
     }
     if (paramInt1 == 8) {
       localHashMap1.put("scene", "1003");
@@ -89,23 +89,23 @@ public final class y
     localHashMap1.put("token", paramString3);
     localHashMap1.put("newrealname", String.valueOf(paramInt3));
     setRequestData(localHashMap1);
-    if (z.fjX())
+    if (z.fAn())
     {
       localHashMap2.put("uuid_for_bindcard", z.getBindCardUuid());
-      localHashMap2.put("bindcard_scene", z.fjY());
+      localHashMap2.put("bindcard_scene", z.fAo());
     }
     setWXRequestData(localHashMap2);
     AppMethodBeat.o(69943);
   }
   
-  public final boolean ebm()
+  public final boolean eqI()
   {
-    return this.zWB == 1;
+    return this.BoV == 1;
   }
   
-  public final boolean ebn()
+  public final boolean eqJ()
   {
-    return this.zWC == 1;
+    return this.BoW == 1;
   }
   
   public final int getFuncId()
@@ -126,7 +126,7 @@ public final class y
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69944);
-    this.zWy = new ArrayList();
+    this.BoS = new ArrayList();
     label65:
     Object localObject2;
     Object localObject3;
@@ -137,7 +137,7 @@ public final class y
       {
         this.mTimeStamp = paramJSONObject.optString("time_stamp");
         paramString = paramJSONObject.optString("bank_type");
-        if (bt.isNullOrNil(this.mBankType)) {
+        if (bs.isNullOrNil(this.mBankType)) {
           break label1212;
         }
         paramString = this.mBankType;
@@ -149,70 +149,70 @@ public final class y
         }
         localObject2 = ((JSONArray)localObject1).getJSONObject(paramInt);
         localObject3 = new ElementQuery();
-        ((ElementQuery)localObject3).cIj = ((JSONObject)localObject2);
-        ((ElementQuery)localObject3).szi = ((JSONObject)localObject2).optString("bank_name");
-        ((ElementQuery)localObject3).dca = ((JSONObject)localObject2).optString("bank_type");
-        ((ElementQuery)localObject3).AdF = ((JSONObject)localObject2).optString("bankacc_type_name");
-        ((ElementQuery)localObject3).AdH = ((JSONObject)localObject2).optString("bank_phone");
-        ((ElementQuery)localObject3).AdK = ((JSONObject)localObject2).optString("forbid_word");
-        ((ElementQuery)localObject3).AdJ = ((JSONObject)localObject2).optString("bank_recommend_desc");
-        ((ElementQuery)localObject3).AdI = ((JSONObject)localObject2).optString("bank_app_user_name");
-        ((ElementQuery)localObject3).AdE = ((JSONObject)localObject2).optInt("bankacc_type", 1);
-        ((ElementQuery)localObject3).Adw = e.m((JSONObject)localObject2, "canModifyName");
-        ((ElementQuery)localObject3).Adx = e.m((JSONObject)localObject2, "canModifyCreID");
-        ((ElementQuery)localObject3).AdC = "0".equals(((JSONObject)localObject2).optString("is_sure"));
-        ((ElementQuery)localObject3).Ady = "1".equals(((JSONObject)localObject2).optString("needCVV"));
-        ((ElementQuery)localObject3).Adz = "1".equals(((JSONObject)localObject2).optString("needValiDate"));
-        ((ElementQuery)localObject3).Adv = ((JSONObject)localObject2).optString("time_stamp");
-        ((ElementQuery)localObject3).AdB = ((JSONObject)localObject2).optString("uesr_name");
-        ((ElementQuery)localObject3).AdG = ((JSONObject)localObject2).optString("bank_flag");
-        ((ElementQuery)localObject3).AdL = e.m((JSONObject)localObject2, "needFirstName");
-        ((ElementQuery)localObject3).AdM = e.m((JSONObject)localObject2, "needLastName");
-        ((ElementQuery)localObject3).AdN = e.m((JSONObject)localObject2, "needCountry");
-        ((ElementQuery)localObject3).AdO = e.m((JSONObject)localObject2, "needArea");
-        ((ElementQuery)localObject3).AdP = e.m((JSONObject)localObject2, "needCity");
-        ((ElementQuery)localObject3).AdQ = e.m((JSONObject)localObject2, "needAddress");
-        ((ElementQuery)localObject3).AdR = e.m((JSONObject)localObject2, "needZip");
-        ((ElementQuery)localObject3).AdS = e.m((JSONObject)localObject2, "needPhone");
-        ((ElementQuery)localObject3).AdT = e.m((JSONObject)localObject2, "needEmail");
-        ((ElementQuery)localObject3).AdW = e.m((JSONObject)localObject2, "needShowProtocol");
-        ((ElementQuery)localObject3).AdU = ((JSONObject)localObject2).optString("support_cre_type");
-        ((ElementQuery)localObject3).AdA = ((JSONObject)localObject2).optString("cre_id");
-        ((ElementQuery)localObject3).zWA = ((JSONObject)localObject2).optInt("bank_card_tag", 1);
-        if (((ElementQuery)localObject3).zWA != 1) {
+        ((ElementQuery)localObject3).cFq = ((JSONObject)localObject2);
+        ((ElementQuery)localObject3).tGS = ((JSONObject)localObject2).optString("bank_name");
+        ((ElementQuery)localObject3).cZz = ((JSONObject)localObject2).optString("bank_type");
+        ((ElementQuery)localObject3).BvZ = ((JSONObject)localObject2).optString("bankacc_type_name");
+        ((ElementQuery)localObject3).Bwb = ((JSONObject)localObject2).optString("bank_phone");
+        ((ElementQuery)localObject3).Bwe = ((JSONObject)localObject2).optString("forbid_word");
+        ((ElementQuery)localObject3).Bwd = ((JSONObject)localObject2).optString("bank_recommend_desc");
+        ((ElementQuery)localObject3).Bwc = ((JSONObject)localObject2).optString("bank_app_user_name");
+        ((ElementQuery)localObject3).BvY = ((JSONObject)localObject2).optInt("bankacc_type", 1);
+        ((ElementQuery)localObject3).BvQ = e.m((JSONObject)localObject2, "canModifyName");
+        ((ElementQuery)localObject3).BvR = e.m((JSONObject)localObject2, "canModifyCreID");
+        ((ElementQuery)localObject3).BvW = "0".equals(((JSONObject)localObject2).optString("is_sure"));
+        ((ElementQuery)localObject3).BvS = "1".equals(((JSONObject)localObject2).optString("needCVV"));
+        ((ElementQuery)localObject3).BvT = "1".equals(((JSONObject)localObject2).optString("needValiDate"));
+        ((ElementQuery)localObject3).BvP = ((JSONObject)localObject2).optString("time_stamp");
+        ((ElementQuery)localObject3).BvV = ((JSONObject)localObject2).optString("uesr_name");
+        ((ElementQuery)localObject3).Bwa = ((JSONObject)localObject2).optString("bank_flag");
+        ((ElementQuery)localObject3).Bwf = e.m((JSONObject)localObject2, "needFirstName");
+        ((ElementQuery)localObject3).Bwg = e.m((JSONObject)localObject2, "needLastName");
+        ((ElementQuery)localObject3).Bwh = e.m((JSONObject)localObject2, "needCountry");
+        ((ElementQuery)localObject3).Bwi = e.m((JSONObject)localObject2, "needArea");
+        ((ElementQuery)localObject3).Bwj = e.m((JSONObject)localObject2, "needCity");
+        ((ElementQuery)localObject3).Bwk = e.m((JSONObject)localObject2, "needAddress");
+        ((ElementQuery)localObject3).Bwl = e.m((JSONObject)localObject2, "needZip");
+        ((ElementQuery)localObject3).Bwm = e.m((JSONObject)localObject2, "needPhone");
+        ((ElementQuery)localObject3).Bwn = e.m((JSONObject)localObject2, "needEmail");
+        ((ElementQuery)localObject3).Bwq = e.m((JSONObject)localObject2, "needShowProtocol");
+        ((ElementQuery)localObject3).Bwo = ((JSONObject)localObject2).optString("support_cre_type");
+        ((ElementQuery)localObject3).BvU = ((JSONObject)localObject2).optString("cre_id");
+        ((ElementQuery)localObject3).BoU = ((JSONObject)localObject2).optInt("bank_card_tag", 1);
+        if (((ElementQuery)localObject3).BoU != 1) {
           break label682;
         }
         if (!e.m((JSONObject)localObject2, "IsSaveYfq"))
         {
-          ((ElementQuery)localObject3).AdD = 0;
+          ((ElementQuery)localObject3).BvX = 0;
           str = ((JSONObject)localObject2).optString("support_micropay");
           if (!TextUtils.isEmpty(str)) {
             break label712;
           }
-          ((ElementQuery)localObject3).Aea = true;
-          ((ElementQuery)localObject3).Abm = ((JSONObject)localObject2).optString("arrive_type");
-          ((ElementQuery)localObject3).AdX = ((JSONObject)localObject2).optString("pre_auth_word");
-          ((ElementQuery)localObject3).AdY = ((JSONObject)localObject2).optInt("support_foreign_mobile", 0);
-          ((ElementQuery)localObject3).AdZ = ElementQuery.aX((JSONObject)localObject2);
-          if (Bankcard.ih(this.zWA, ((ElementQuery)localObject3).zWA)) {
-            this.zWy.add(localObject3);
+          ((ElementQuery)localObject3).Bwu = true;
+          ((ElementQuery)localObject3).BtG = ((JSONObject)localObject2).optString("arrive_type");
+          ((ElementQuery)localObject3).Bwr = ((JSONObject)localObject2).optString("pre_auth_word");
+          ((ElementQuery)localObject3).Bws = ((JSONObject)localObject2).optInt("support_foreign_mobile", 0);
+          ((ElementQuery)localObject3).Bwt = ElementQuery.aY((JSONObject)localObject2);
+          if (Bankcard.iw(this.BoU, ((ElementQuery)localObject3).BoU)) {
+            this.BoS.add(localObject3);
           }
-          if ((paramString == null) || (!paramString.equals(((ElementQuery)localObject3).dca))) {
+          if ((paramString == null) || (!paramString.equals(((ElementQuery)localObject3).cZz))) {
             break label1215;
           }
-          this.zWz = ((ElementQuery)localObject3);
+          this.BoT = ((ElementQuery)localObject3);
           break label1215;
         }
         if (e.m((JSONObject)localObject2, "canReturnYfq"))
         {
-          ((ElementQuery)localObject3).AdD = 4;
+          ((ElementQuery)localObject3).BvX = 4;
           continue;
         }
-        ((ElementQuery)localObject3).AdD = 3;
+        ((ElementQuery)localObject3).BvX = 3;
       }
       catch (JSONException paramString)
       {
-        ad.printErrStackTrace("MicroMsg.NetSenceTenPayBase", paramString, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.NetSenceTenPayBase", paramString, "", new Object[0]);
         AppMethodBeat.o(69944);
         return;
       }
@@ -220,17 +220,17 @@ public final class y
       label682:
       if (((JSONObject)localObject2).optInt("auth_mode") == 1)
       {
-        ((ElementQuery)localObject3).AdD = 1;
+        ((ElementQuery)localObject3).BvX = 1;
       }
       else
       {
-        ((ElementQuery)localObject3).AdD = 2;
+        ((ElementQuery)localObject3).BvX = 2;
         continue;
         label712:
         if ("1".equals(str)) {
-          ((ElementQuery)localObject3).Aea = true;
+          ((ElementQuery)localObject3).Bwu = true;
         } else if ("0".equals(str)) {
-          ((ElementQuery)localObject3).Aea = false;
+          ((ElementQuery)localObject3).Bwu = false;
         }
       }
     }
@@ -249,13 +249,13 @@ public final class y
     }
     else
     {
-      this.zWB = paramJSONObject.optInt("need_area");
-      this.zWC = paramJSONObject.optInt("need_profession");
-      if ((this.zWz != null) && (this.zWz.zWA != 1))
+      this.BoV = paramJSONObject.optInt("need_area");
+      this.BoW = paramJSONObject.optInt("need_profession");
+      if ((this.BoT != null) && (this.BoT.BoU != 1))
       {
-        ad.i("MicroMsg.NetSenceTenPayBase", "oversea card, no need area and profession");
-        this.zWB = 0;
-        this.zWC = 0;
+        ac.i("MicroMsg.NetSenceTenPayBase", "oversea card, no need area and profession");
+        this.BoV = 0;
+        this.BoW = 0;
       }
       localObject1 = paramJSONObject.optJSONArray("profession_array");
       if (localObject1 != null)
@@ -271,33 +271,33 @@ public final class y
           }
           localObject3 = ((JSONObject)localObject2).optString("profession_name");
           i = ((JSONObject)localObject2).optInt("profession_type");
-          if (!bt.isNullOrNil((String)localObject3))
+          if (!bs.isNullOrNil((String)localObject3))
           {
             localObject2 = new Profession((String)localObject3, i);
             this.mProfessions[paramInt] = localObject2;
             break label1229;
           }
-          ad.i("MicroMsg.NetSenceTenPayBase", "empty profession_name!");
+          ac.i("MicroMsg.NetSenceTenPayBase", "empty profession_name!");
           break label1229;
         }
       }
-      this.zWD = paramJSONObject.optInt("need_nationality", 0);
+      this.BoX = paramJSONObject.optInt("need_nationality", 0);
       localObject1 = paramJSONObject.optJSONArray("nationality_exclude_array");
       if (localObject1 != null)
       {
-        this.zWE = new String[((JSONArray)localObject1).length()];
+        this.BoY = new String[((JSONArray)localObject1).length()];
         paramInt = 0;
         while (paramInt < ((JSONArray)localObject1).length())
         {
           localObject2 = ((JSONArray)localObject1).optString(paramInt);
-          this.zWE[paramInt] = localObject2;
+          this.BoY[paramInt] = localObject2;
           paramInt += 1;
         }
       }
       paramJSONObject = paramJSONObject.optJSONArray("bank_card_info");
       if (paramJSONObject != null)
       {
-        this.zWF = new ArrayList();
+        this.BoZ = new ArrayList();
         paramInt = 0;
       }
     }
@@ -309,20 +309,20 @@ public final class y
         if (localObject1 != null)
         {
           localObject2 = new a();
-          ((a)localObject2).dca = ((JSONObject)localObject1).optString("bank_type");
-          ((a)localObject2).zZT = ((JSONObject)localObject1).optString("mobile_hint");
-          ((a)localObject2).zZU = ((JSONObject)localObject1).optString("mobile_tips");
-          this.zWF.add(localObject2);
+          ((a)localObject2).cZz = ((JSONObject)localObject1).optString("bank_type");
+          ((a)localObject2).Bsn = ((JSONObject)localObject1).optString("mobile_hint");
+          ((a)localObject2).Bso = ((JSONObject)localObject1).optString("mobile_tips");
+          this.BoZ.add(localObject2);
         }
       }
       else
       {
-        paramJSONObject = s.eck();
-        localObject1 = this.zWy;
-        localObject2 = this.zWF;
-        paramJSONObject.AhB = paramString;
-        paramJSONObject.zWy = ((List)localObject1);
-        paramJSONObject.AhC = ((List)localObject2);
+        paramJSONObject = s.erG();
+        localObject1 = this.BoS;
+        localObject2 = this.BoZ;
+        paramJSONObject.BzV = paramString;
+        paramJSONObject.BoS = ((List)localObject1);
+        paramJSONObject.BzW = ((List)localObject2);
         AppMethodBeat.o(69944);
         return;
         label1212:

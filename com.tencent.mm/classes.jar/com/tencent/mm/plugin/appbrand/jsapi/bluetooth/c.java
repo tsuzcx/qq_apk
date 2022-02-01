@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
 import com.tencent.luggage.a.e;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.u.a;
+import com.tencent.mm.plugin.appbrand.t.a;
 import java.util.ArrayList;
 
 public final class c
@@ -26,7 +26,7 @@ public final class c
     AppMethodBeat.o(144492);
   }
   
-  public static void lI(int paramInt)
+  public static void lA(int paramInt)
   {
     AppMethodBeat.i(144491);
     ((a)e.L(a.class)).idkeyStat(762L, paramInt, 1L, false);

@@ -15,25 +15,25 @@ import java.util.ArrayList;
 public class PhotosContent
   extends MMFrameLayout
 {
-  private int cbk;
-  public ArrayList<TagImageView> xqy;
-  private float xqz;
+  private int bYh;
+  public ArrayList<TagImageView> yDo;
+  private float yDp;
   
   public PhotosContent(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98153);
-    this.xqy = new ArrayList();
-    this.cbk = 120;
+    this.yDo = new ArrayList();
+    this.bYh = 120;
     AppMethodBeat.o(98153);
   }
   
-  public final TagImageView No(int paramInt)
+  public final TagImageView Pr(int paramInt)
   {
     AppMethodBeat.i(98152);
-    if (paramInt < this.xqy.size())
+    if (paramInt < this.yDo.size())
     {
-      TagImageView localTagImageView = (TagImageView)this.xqy.get(paramInt);
+      TagImageView localTagImageView = (TagImageView)this.yDo.get(paramInt);
       AppMethodBeat.o(98152);
       return localTagImageView;
     }
@@ -44,14 +44,14 @@ public class PhotosContent
   public final void a(TagImageView paramTagImageView)
   {
     AppMethodBeat.i(98150);
-    this.xqy.add(paramTagImageView);
+    this.yDo.add(paramTagImageView);
     AppMethodBeat.o(98150);
   }
   
-  public final void dzX()
+  public final void dOu()
   {
     AppMethodBeat.i(98149);
-    this.xqy.clear();
+    this.yDo.clear();
     AppMethodBeat.o(98149);
   }
   
@@ -70,34 +70,34 @@ public class PhotosContent
       AppMethodBeat.o(98151);
       return;
     }
-    this.xqz = getResources().getDisplayMetrics().density;
-    this.cbk = ((int)(this.cbk * this.xqz));
-    if (paramInt < this.cbk) {}
+    this.yDp = getResources().getDisplayMetrics().density;
+    this.bYh = ((int)(this.bYh * this.yDp));
+    if (paramInt < this.bYh) {}
     Object localObject1;
     for (;;)
     {
       i = 0;
-      while (i < this.xqy.size())
+      while (i < this.yDo.size())
       {
         localObject1 = getChildAt(i);
         Object localObject2 = new ViewGroup.MarginLayoutParams(((View)localObject1).getLayoutParams());
         ((ViewGroup.MarginLayoutParams)localObject2).width = paramInt;
         ((ViewGroup.MarginLayoutParams)localObject2).height = paramInt;
-        ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = ((int)(i % 3 * (paramInt + this.xqz * 3.0F)));
-        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ((int)(i / 3 * (paramInt + this.xqz * 3.0F)));
+        ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = ((int)(i % 3 * (paramInt + this.yDp * 3.0F)));
+        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ((int)(i / 3 * (paramInt + this.yDp * 3.0F)));
         localObject2 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject2);
         ((FrameLayout.LayoutParams)localObject2).gravity = 51;
         ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         i += 1;
       }
-      paramInt = this.cbk;
+      paramInt = this.bYh;
     }
-    int i = this.xqy.size() / 3;
+    int i = this.yDo.size() / 3;
     if (i > 0)
     {
       localObject1 = (ViewGroup.MarginLayoutParams)getLayoutParams();
       float f1 = paramInt * i;
-      float f2 = this.xqz;
+      float f2 = this.yDp;
       ((ViewGroup.MarginLayoutParams)localObject1).height = ((int)((i - 1) * (f2 * 3.0F) + f1));
       setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.b;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.b;
 import java.util.Map;
 
 public abstract interface o

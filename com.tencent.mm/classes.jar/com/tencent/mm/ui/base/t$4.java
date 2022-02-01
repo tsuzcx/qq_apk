@@ -15,26 +15,26 @@ final class t$4
 {
   t$4(Context paramContext) {}
   
-  public final void aXO()
+  public final void beL()
   {
     AppMethodBeat.i(164155);
-    if (!android.support.v4.app.a.a((Activity)this.jOj, "android.permission.WRITE_EXTERNAL_STORAGE"))
+    if (!android.support.v4.app.a.a((Activity)this.koK, "android.permission.WRITE_EXTERNAL_STORAGE"))
     {
-      h.a(this.jOj, this.jOj.getString(2131761883), this.jOj.getString(2131761885), this.jOj.getString(2131760598), this.jOj.getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      h.a(this.koK, this.koK.getString(2131761883), this.koK.getString(2131761885), this.koK.getString(2131760598), this.koK.getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(164153);
           paramAnonymousDialogInterface.dismiss();
           Object localObject = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-          ((Intent)localObject).setData(Uri.fromParts("package", t.4.this.jOj.getPackageName(), null));
+          ((Intent)localObject).setData(Uri.fromParts("package", t.4.this.koK.getPackageName(), null));
           ((Intent)localObject).addFlags(268435456);
-          paramAnonymousDialogInterface = t.4.this.jOj;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/base/MMToast$14$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          paramAnonymousDialogInterface = t.4.this.koK;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/base/MMToast$14$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/ui/base/MMToast$14$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          e.vIY.idkeyStat(462L, 23L, 1L, true);
+          e.wTc.idkeyStat(462L, 23L, 1L, true);
           AppMethodBeat.o(164153);
         }
       }, new DialogInterface.OnClickListener()
@@ -49,8 +49,8 @@ final class t$4
       AppMethodBeat.o(164155);
       return;
     }
-    e.vIY.idkeyStat(462L, 22L, 1L, true);
-    android.support.v4.app.a.a((Activity)this.jOj, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" }, 32767);
+    e.wTc.idkeyStat(462L, 22L, 1L, true);
+    android.support.v4.app.a.a((Activity)this.koK, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" }, 32767);
     AppMethodBeat.o(164155);
   }
 }

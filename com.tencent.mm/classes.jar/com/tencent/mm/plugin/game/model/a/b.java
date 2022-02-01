@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader_app.a.a;
 import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.io.IOException;
 
 public final class b
@@ -19,24 +19,24 @@ public final class b
     a locala = new a();
     locala.appId = paramd.field_appId;
     locala.downloadUrl = paramd.field_downloadUrl;
-    locala.ohq = paramd.field_SecondaryUrl;
+    locala.oKQ = paramd.field_SecondaryUrl;
     locala.packageName = paramd.field_packageName;
-    locala.ohs = paramd.field_size;
-    locala.kNB = paramd.field_md5;
-    locala.oht = false;
+    locala.oKS = paramd.field_size;
+    locala.lpa = paramd.field_md5;
+    locala.oKT = false;
     locala.scene = 7001;
-    locala.ohu = true;
+    locala.oKU = true;
     if (paramd.field_sectionMd5Byte != null) {}
     try
     {
       q localq = new q();
       localq.parseFrom(paramd.field_sectionMd5Byte);
-      locala.ohw = localq.odm;
+      locala.oKW = localq.oGL;
       label124:
-      locala.appName = h.a(aj.getContext(), h.j(paramd.field_appId, true, false), null);
-      locala.dlp = paramInt;
+      locala.appName = h.a(ai.getContext(), h.k(paramd.field_appId, true, false), null);
+      locala.diX = paramInt;
       long l = ((c)g.ab(c.class)).a(locala, null);
-      ad.i("MicroMsg.GameSilentDownload.GameDownloadHelper", "add downloadTask id:%d, downloaderType:%d", new Object[] { Long.valueOf(l), Integer.valueOf(paramInt) });
+      ac.i("MicroMsg.GameSilentDownload.GameDownloadHelper", "add downloadTask id:%d, downloaderType:%d", new Object[] { Long.valueOf(l), Integer.valueOf(paramInt) });
       AppMethodBeat.o(41661);
       return l;
     }
@@ -46,11 +46,11 @@ public final class b
     }
   }
   
-  public static boolean oi(long paramLong)
+  public static boolean rU(long paramLong)
   {
     AppMethodBeat.i(41662);
-    f.bQt().ofk = true;
-    boolean bool = f.bQt().oi(paramLong);
+    f.bXJ().oIL = true;
+    boolean bool = f.bXJ().rU(paramLong);
     AppMethodBeat.o(41662);
     return bool;
   }

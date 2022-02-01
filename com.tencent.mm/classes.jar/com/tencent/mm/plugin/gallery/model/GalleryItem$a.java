@@ -6,13 +6,13 @@ public final class GalleryItem$a
 {
   public String key;
   public String path;
-  public String rBn;
-  public int rBo;
+  public String sKf;
+  public int sKg;
   
   public final String toString()
   {
     AppMethodBeat.i(173737);
-    String str = "key: " + this.key + " path: " + this.path + " defaultName: " + this.rBn + " bucketID: " + this.rBo;
+    String str = "key: " + this.key + " path: " + this.path + " defaultName: " + this.sKf + " bucketID: " + this.sKg;
     AppMethodBeat.o(173737);
     return str;
   }

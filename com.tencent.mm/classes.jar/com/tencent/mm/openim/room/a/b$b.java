@@ -1,8 +1,8 @@
 package com.tencent.mm.openim.room.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bvk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cac;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -10,63 +10,63 @@ import java.util.List;
 
 public final class b$b
 {
-  public final List<String> dqE;
-  public final List<String> dqG;
-  public final List<String> dqH;
-  public final List<String> foI;
-  public final List<String> foJ;
-  public final List<String> foK;
+  public final List<String> dop;
+  public final List<String> dor;
+  public final List<String> dos;
+  public final List<String> fsi;
+  public final List<String> fsj;
+  public final List<String> fsk;
   
   public b$b()
   {
     AppMethodBeat.i(151320);
-    this.foI = new ArrayList();
-    this.dqE = new ArrayList();
-    this.foJ = new ArrayList();
-    this.dqG = new ArrayList();
-    this.dqH = new ArrayList();
-    this.foK = new ArrayList();
+    this.fsi = new ArrayList();
+    this.dop = new ArrayList();
+    this.fsj = new ArrayList();
+    this.dor = new ArrayList();
+    this.dos = new ArrayList();
+    this.fsk = new ArrayList();
     AppMethodBeat.o(151320);
   }
   
-  public final void q(LinkedList<bvk> paramLinkedList)
+  public final void q(LinkedList<cac> paramLinkedList)
   {
     AppMethodBeat.i(151321);
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      bvk localbvk = (bvk)paramLinkedList.next();
-      int i = localbvk.status;
+      cac localcac = (cac)paramLinkedList.next();
+      int i = localcac.status;
       if (i == 0)
       {
-        this.foI.add(localbvk.userName);
+        this.fsi.add(localcac.userName);
       }
       else if (i == 3)
       {
-        ad.d("OpenIMChatRoomMember.Classifier", " blacklist : " + localbvk.userName);
-        this.foJ.add(localbvk.userName);
+        ac.d("OpenIMChatRoomMember.Classifier", " blacklist : " + localcac.userName);
+        this.fsj.add(localcac.userName);
       }
       else if (i == 1)
       {
-        ad.d("OpenIMChatRoomMember.Classifier", " not user : " + localbvk.userName);
-        this.dqG.add(localbvk.userName);
+        ac.d("OpenIMChatRoomMember.Classifier", " not user : " + localcac.userName);
+        this.dor.add(localcac.userName);
       }
       else if (i == 2)
       {
-        ad.d("OpenIMChatRoomMember.Classifier", " invalid username : " + localbvk.userName);
-        this.dqE.add(localbvk.userName);
+        ac.d("OpenIMChatRoomMember.Classifier", " invalid username : " + localcac.userName);
+        this.dop.add(localcac.userName);
       }
       else if (i == 4)
       {
-        ad.d("OpenIMChatRoomMember.Classifier", " verify user : " + localbvk.userName);
-        this.dqH.add(localbvk.userName);
+        ac.d("OpenIMChatRoomMember.Classifier", " verify user : " + localcac.userName);
+        this.dos.add(localcac.userName);
       }
       else if (i != 5)
       {
         if (i == 6) {
-          this.foK.add(localbvk.userName);
+          this.fsk.add(localcac.userName);
         } else {
-          ad.w("OpenIMChatRoomMember.Classifier", "unknown member status : status = ".concat(String.valueOf(i)));
+          ac.w("OpenIMChatRoomMember.Classifier", "unknown member status : status = ".concat(String.valueOf(i)));
         }
       }
     }
@@ -75,7 +75,7 @@ public final class b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.openim.room.a.b.b
  * JD-Core Version:    0.7.0.1
  */

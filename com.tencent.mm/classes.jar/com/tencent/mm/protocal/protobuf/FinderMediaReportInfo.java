@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FinderMediaReportInfo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int fileSize;
   public int height;
@@ -27,20 +27,20 @@ public class FinderMediaReportInfo
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bA(1, this.videoDuration);
-      int i = f.a.a.b.b.a.bA(2, this.videoBitrate);
-      int j = f.a.a.b.b.a.bA(3, this.width);
-      int k = f.a.a.b.b.a.bA(4, this.height);
-      int m = f.a.a.b.b.a.bA(5, this.fileSize);
+      paramInt = f.a.a.b.b.a.bx(1, this.videoDuration);
+      int i = f.a.a.b.b.a.bx(2, this.videoBitrate);
+      int j = f.a.a.b.b.a.bx(3, this.width);
+      int k = f.a.a.b.b.a.bx(4, this.height);
+      int m = f.a.a.b.b.a.bx(5, this.fileSize);
       AppMethodBeat.o(169007);
       return paramInt + 0 + i + j + k + m;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(169007);
@@ -56,23 +56,23 @@ public class FinderMediaReportInfo
         AppMethodBeat.o(169007);
         return -1;
       case 1: 
-        localFinderMediaReportInfo.videoDuration = locala.KhF.xS();
+        localFinderMediaReportInfo.videoDuration = locala.LVo.xF();
         AppMethodBeat.o(169007);
         return 0;
       case 2: 
-        localFinderMediaReportInfo.videoBitrate = locala.KhF.xS();
+        localFinderMediaReportInfo.videoBitrate = locala.LVo.xF();
         AppMethodBeat.o(169007);
         return 0;
       case 3: 
-        localFinderMediaReportInfo.width = locala.KhF.xS();
+        localFinderMediaReportInfo.width = locala.LVo.xF();
         AppMethodBeat.o(169007);
         return 0;
       case 4: 
-        localFinderMediaReportInfo.height = locala.KhF.xS();
+        localFinderMediaReportInfo.height = locala.LVo.xF();
         AppMethodBeat.o(169007);
         return 0;
       }
-      localFinderMediaReportInfo.fileSize = locala.KhF.xS();
+      localFinderMediaReportInfo.fileSize = locala.LVo.xF();
       AppMethodBeat.o(169007);
       return 0;
     }
@@ -82,7 +82,7 @@ public class FinderMediaReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.FinderMediaReportInfo
  * JD-Core Version:    0.7.0.1
  */

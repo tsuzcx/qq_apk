@@ -8,12 +8,12 @@ public enum q
   {
     AppMethodBeat.i(58126);
     q localq1 = new q("FLEXIBLE_LOWER", 0);
-    JDN = localq1;
+    Lrg = localq1;
     q localq2 = new q("FLEXIBLE_UPPER", 1);
-    JDO = localq2;
+    Lrh = localq2;
     q localq3 = new q("INFLEXIBLE", 2);
-    JDP = localq3;
-    JDQ = new q[] { localq1, localq2, localq3 };
+    Lri = localq3;
+    Lrj = new q[] { localq1, localq2, localq3 };
     AppMethodBeat.o(58126);
   }
   

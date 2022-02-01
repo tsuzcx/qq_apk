@@ -15,25 +15,25 @@ import java.lang.reflect.Method;
 
 public final class e
 {
-  private static boolean MR = false;
-  private static Method MS = null;
-  private static boolean MT = false;
-  private static Field MU = null;
+  private static boolean NM = false;
+  private static Method NN = null;
+  private static boolean NO = false;
+  private static Field NP = null;
   
   private static DialogInterface.OnKeyListener a(Dialog paramDialog)
   {
-    if (!MT) {}
+    if (!NO) {}
     try
     {
       Field localField = Dialog.class.getDeclaredField("mOnKeyListener");
-      MU = localField;
+      NP = localField;
       localField.setAccessible(true);
       label23:
-      MT = true;
-      if (MU != null) {
+      NO = true;
+      if (NP != null) {
         try
         {
-          paramDialog = (DialogInterface.OnKeyListener)MU.get(paramDialog);
+          paramDialog = (DialogInterface.OnKeyListener)NP.get(paramDialog);
           return paramDialog;
         }
         catch (IllegalAccessException paramDialog) {}
@@ -48,16 +48,16 @@ public final class e
   
   private static boolean a(ActionBar paramActionBar, KeyEvent paramKeyEvent)
   {
-    if (!MR) {}
+    if (!NM) {}
     try
     {
-      MS = paramActionBar.getClass().getMethod("onMenuKeyEvent", new Class[] { KeyEvent.class });
+      NN = paramActionBar.getClass().getMethod("onMenuKeyEvent", new Class[] { KeyEvent.class });
       label27:
-      MR = true;
-      if (MS != null) {}
+      NM = true;
+      if (NN != null) {}
       try
       {
-        boolean bool = ((Boolean)MS.invoke(paramActionBar, new Object[] { paramKeyEvent })).booleanValue();
+        boolean bool = ((Boolean)NN.invoke(paramActionBar, new Object[] { paramKeyEvent })).booleanValue();
         return bool;
       }
       catch (InvocationTargetException paramActionBar)

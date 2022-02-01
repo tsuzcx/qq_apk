@@ -1,16 +1,16 @@
 package com.tencent.mm.ui.chatting.c.b;
 
 import android.view.MenuItem;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.c.ab;
 import com.tencent.mm.ui.chatting.d.a;
 
 public abstract interface n
   extends ab
 {
-  public abstract boolean a(MenuItem paramMenuItem, a parama, bl parambl);
+  public abstract boolean a(MenuItem paramMenuItem, a parama, bo parambo);
   
-  public abstract boolean bD(bl parambl);
+  public abstract boolean bF(bo parambo);
 }
 
 

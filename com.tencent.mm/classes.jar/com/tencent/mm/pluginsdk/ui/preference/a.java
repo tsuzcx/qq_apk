@@ -14,33 +14,33 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bk.d;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bj.d;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.messenger.foundation.a.a.l;
 import com.tencent.mm.pluginsdk.model.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ba;
-import com.tencent.mm.storage.bb;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bl.d;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bd;
+import com.tencent.mm.storage.be;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.bo.d;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public final class a
   extends LinearLayout
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private static a Cih;
-  private Button Cii;
+  private static a DAy;
+  private Button DAz;
   private Context context;
-  private TextView izX;
+  private TextView gIq;
   private p tipDialog;
   
   public a(Context paramContext)
@@ -49,9 +49,9 @@ public final class a
     AppMethodBeat.i(31814);
     this.context = paramContext;
     paramContext = View.inflate(this.context, 2131494158, this);
-    this.izX = ((TextView)paramContext.findViewById(2131300168));
-    this.Cii = ((Button)paramContext.findViewById(2131300169));
-    this.Cii.setOnClickListener(new View.OnClickListener()
+    this.gIq = ((TextView)paramContext.findViewById(2131300168));
+    this.DAz = ((Button)paramContext.findViewById(2131300169));
+    this.DAz.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -63,13 +63,13 @@ public final class a
         localTextView.setText("50");
         final EditText localEditText = (EditText)paramAnonymousView.findViewById(2131304590);
         localEditText.setSingleLine(false);
-        com.tencent.mm.ui.tools.b.c.d(localEditText).aaj(100).a(null);
+        com.tencent.mm.ui.tools.b.c.d(localEditText).acw(100).a(null);
         localEditText.addTextChangedListener(new TextWatcher()
         {
           public final void afterTextChanged(Editable paramAnonymous2Editable)
           {
             AppMethodBeat.i(31809);
-            int i = com.tencent.mm.ui.tools.f.cJ(100, paramAnonymous2Editable.toString());
+            int i = com.tencent.mm.ui.tools.f.cM(100, paramAnonymous2Editable.toString());
             if (localTextView != null) {
               localTextView.setText(String.valueOf(i));
             }
@@ -95,7 +95,7 @@ public final class a
               }
               catch (ArrayIndexOutOfBoundsException paramAnonymous2DialogInterface)
               {
-                ad.printErrStackTrace("MicroMsg.FMessageItemView", paramAnonymous2DialogInterface, "", new Object[0]);
+                ac.printErrStackTrace("MicroMsg.FMessageItemView", paramAnonymous2DialogInterface, "", new Object[0]);
                 if ((a.b(a.this) != null) && (a.b(a.this).isShowing())) {
                   a.b(a.this).dismiss();
                 }
@@ -121,16 +121,16 @@ public final class a
     AppMethodBeat.o(31814);
   }
   
-  private static int aCh(String paramString)
+  private static int aHz(String paramString)
   {
     AppMethodBeat.i(31816);
     if (paramString == null)
     {
-      ad.d("MicroMsg.FMessageItemView", "getOpCodeFromVerify fail, xml is null");
+      ac.d("MicroMsg.FMessageItemView", "getOpCodeFromVerify fail, xml is null");
       AppMethodBeat.o(31816);
       return 6;
     }
-    switch (bl.d.aIR(paramString).djq)
+    switch (bo.d.aOn(paramString).dgL)
     {
     case 3: 
     case 4: 
@@ -148,13 +148,13 @@ public final class a
   
   public static void setFMessageArgs(a parama)
   {
-    Cih = parama;
+    DAy = parama;
   }
   
   public final void detach()
   {
     AppMethodBeat.i(31815);
-    az.aeS().b(30, this);
+    az.agi().b(30, this);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
@@ -169,24 +169,24 @@ public final class a
       AppMethodBeat.o(31819);
       return;
     }
-    ad.d("MicroMsg.FMessageItemView", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    ac.d("MicroMsg.FMessageItemView", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramInt1 = ((o)paramn).djq;
-      paramString = ((o)paramn).BOX;
-      ad.d("MicroMsg.FMessageItemView", "onSceneEnd, pre insert fmsg, opcode = " + paramInt1 + ", verifyContent = " + paramString);
-      ad.d("MicroMsg.FMessageItemView", "onSceneEnd, type = " + Cih.type);
-      switch (Cih.type)
+      paramInt1 = ((o)paramn).dgL;
+      paramString = ((o)paramn).Dhl;
+      ac.d("MicroMsg.FMessageItemView", "onSceneEnd, pre insert fmsg, opcode = " + paramInt1 + ", verifyContent = " + paramString);
+      ac.d("MicroMsg.FMessageItemView", "onSceneEnd, type = " + DAy.type);
+      switch (DAy.type)
       {
       default: 
-        paramn = new ba();
-        paramn.field_createTime = com.tencent.mm.bk.c.y(Cih.talker, 0L);
+        paramn = new bd();
+        paramn.field_createTime = com.tencent.mm.bj.c.z(DAy.talker, 0L);
         paramn.field_isSend = 1;
         paramn.field_msgContent = paramString;
-        paramn.field_talker = Cih.talker;
+        paramn.field_talker = DAy.talker;
         if (paramInt1 != 5) {
           break;
         }
@@ -194,31 +194,31 @@ public final class a
       for (paramInt1 = 2;; paramInt1 = 3)
       {
         paramn.field_type = paramInt1;
-        ad.d("MicroMsg.FMessageItemView", "onSceneEnd, insert fmsg, ret = ".concat(String.valueOf(d.aCn().b(paramn))));
+        ac.d("MicroMsg.FMessageItemView", "onSceneEnd, insert fmsg, ret = ".concat(String.valueOf(d.aJd().b(paramn))));
         for (;;)
         {
-          az.aeS().b(30, this);
+          az.agi().b(30, this);
           AppMethodBeat.o(31819);
           return;
-          paramn = new bi();
-          paramn.field_createtime = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOF().agk(Cih.talker);
+          paramn = new bl();
+          paramn.field_createtime = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dco().ale(DAy.talker);
           paramn.field_isSend = 1;
           paramn.field_content = paramString;
           paramn.field_talker = "fmessage";
-          paramn.field_sayhiuser = Cih.talker;
+          paramn.field_sayhiuser = DAy.talker;
           paramn.field_svrid = System.currentTimeMillis();
           paramn.field_status = 4;
-          d.aCp().a(paramn);
+          d.aJf().a(paramn);
           continue;
-          paramn = new bu();
-          paramn.field_createtime = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOE().agk(Cih.talker);
+          paramn = new bx();
+          paramn.field_createtime = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcn().ale(DAy.talker);
           paramn.field_isSend = 1;
           paramn.field_content = paramString;
           paramn.field_talker = "fmessage";
-          paramn.field_sayhiuser = Cih.talker;
+          paramn.field_sayhiuser = DAy.talker;
           paramn.field_svrid = System.currentTimeMillis();
           paramn.field_status = 4;
-          ad.d("MicroMsg.FMessageItemView", "onSceneEnd, insert shake, ret = ".concat(String.valueOf(d.aCq().a(paramn))));
+          ac.d("MicroMsg.FMessageItemView", "onSceneEnd, insert shake, ret = ".concat(String.valueOf(d.aJg().a(paramn))));
         }
       }
     }
@@ -236,7 +236,7 @@ public final class a
       else if ((paramInt1 == 4) && (paramInt2 == -24))
       {
         paramn = paramString;
-        if (!bt.isNullOrNil(paramString)) {}
+        if (!bs.isNullOrNil(paramString)) {}
       }
       else
       {
@@ -248,8 +248,8 @@ public final class a
   public final void setBtnVisibility(int paramInt)
   {
     AppMethodBeat.i(31818);
-    if (this.Cii != null) {
-      this.Cii.setVisibility(paramInt);
+    if (this.DAz != null) {
+      this.DAz.setVisibility(paramInt);
     }
     AppMethodBeat.o(31818);
   }
@@ -257,21 +257,21 @@ public final class a
   public final void setContentText(String paramString)
   {
     AppMethodBeat.i(31817);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      this.izX.setVisibility(8);
+      this.gIq.setVisibility(8);
       AppMethodBeat.o(31817);
       return;
     }
-    this.izX.setVisibility(0);
-    this.izX.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, bt.nullAsNil(paramString), this.izX.getTextSize()));
+    this.gIq.setVisibility(0);
+    this.gIq.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, bs.nullAsNil(paramString), this.gIq.getTextSize()));
     AppMethodBeat.o(31817);
   }
   
   public static final class a
   {
-    public String Cin;
-    public String rso;
+    public String DAE;
+    public String sBi;
     public int scene;
     public String talker;
     public int type;
@@ -279,7 +279,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.a
  * JD-Core Version:    0.7.0.1
  */

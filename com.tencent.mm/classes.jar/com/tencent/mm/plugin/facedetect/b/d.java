@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import android.os.Bundle;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 
 public abstract interface d
 {
@@ -11,11 +11,11 @@ public abstract interface d
   
   public abstract void n(String paramString, Bundle paramBundle);
   
-  public abstract void u(double paramDouble);
+  public abstract void t(double paramDouble);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.d
  * JD-Core Version:    0.7.0.1
  */

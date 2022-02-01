@@ -6,185 +6,142 @@ import com.tencent.mm.plugin.report.a;
 public final class z
   extends a
 {
-  private String dHr;
-  private String dJL;
-  private long dKf;
-  private long dKg;
-  private String dKh;
-  private String dKi;
-  private long dKj;
-  private long dKk;
-  private String dKl;
-  private long dKm;
-  private long dKn;
-  private long dKo;
-  private long dKp;
+  private String dFe;
+  private String dHM;
+  private long dHN;
+  private long dHO;
+  private long dHP;
+  private String dHQ;
+  private long dHR;
+  private long dHS;
+  private long dHT;
+  private long dHU;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(184152);
+    AppMethodBeat.i(194882);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dKf);
+    ((StringBuffer)localObject).append(this.dFe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKg);
+    ((StringBuffer)localObject).append(this.dHM);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHr);
+    ((StringBuffer)localObject).append(this.dHN);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dJL);
+    ((StringBuffer)localObject).append(this.dHO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKh);
+    ((StringBuffer)localObject).append(this.dHP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKi);
+    ((StringBuffer)localObject).append(this.dHQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKj);
+    ((StringBuffer)localObject).append(this.dHR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKk);
+    ((StringBuffer)localObject).append(this.dHS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKl);
+    ((StringBuffer)localObject).append(this.dHT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKm);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKn);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKo);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKp);
+    ((StringBuffer)localObject).append(this.dHU);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(184152);
+    arz((String)localObject);
+    AppMethodBeat.o(194882);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(184153);
+    AppMethodBeat.i(194883);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ExpandType:").append(this.dKf);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExpandCommentCount:").append(this.dKg);
+    ((StringBuffer)localObject).append("FeedId:").append(this.dHM);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dHr);
+    ((StringBuffer)localObject).append("FeedLikeCount:").append(this.dHN);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedId:").append(this.dJL);
+    ((StringBuffer)localObject).append("FeedCommentCount:").append(this.dHO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedUsername:").append(this.dKh);
+    ((StringBuffer)localObject).append("FeedFriLikeCount:").append(this.dHP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentUsername:").append(this.dKi);
+    ((StringBuffer)localObject).append("CurrentPageName:").append(this.dHQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentLikeCount:").append(this.dKj);
+    ((StringBuffer)localObject).append("scene:").append(this.dHR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ActionTime:").append(this.dKk);
+    ((StringBuffer)localObject).append("FeedType:").append(this.dHS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentId:").append(this.dKl);
+    ((StringBuffer)localObject).append("CommentScene:").append(this.dHT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SubCommentCount:").append(this.dKm);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Role:").append(this.dKn);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentRole:").append(this.dKo);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedScene:").append(this.dKp);
+    ((StringBuffer)localObject).append("InnerVersion:").append(this.dHU);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184153);
+    AppMethodBeat.o(194883);
     return localObject;
   }
   
-  public final z cA(long paramLong)
+  public final z cg(long paramLong)
   {
-    this.dKm = paramLong;
+    this.dHN = paramLong;
     return this;
   }
   
-  public final z cB(long paramLong)
+  public final z ch(long paramLong)
   {
-    this.dKn = paramLong;
+    this.dHO = paramLong;
     return this;
   }
   
-  public final z cC(long paramLong)
+  public final z ci(long paramLong)
   {
-    this.dKo = paramLong;
+    this.dHP = paramLong;
     return this;
   }
   
-  public final z cD(long paramLong)
+  public final z cj(long paramLong)
   {
-    this.dKp = paramLong;
+    this.dHR = paramLong;
     return this;
   }
   
-  public final z cw(long paramLong)
+  public final z ck(long paramLong)
   {
-    this.dKf = paramLong;
+    this.dHS = paramLong;
     return this;
   }
   
-  public final z cx(long paramLong)
+  public final z cl(long paramLong)
   {
-    this.dKg = paramLong;
+    this.dHT = paramLong;
     return this;
   }
   
-  public final z cy(long paramLong)
+  public final z fX(String paramString)
   {
-    this.dKj = paramLong;
+    AppMethodBeat.i(194879);
+    this.dFe = t("SessionId", paramString, true);
+    AppMethodBeat.o(194879);
     return this;
   }
   
-  public final z cz(long paramLong)
+  public final z fY(String paramString)
   {
-    this.dKk = paramLong;
+    AppMethodBeat.i(194880);
+    this.dHM = t("FeedId", paramString, true);
+    AppMethodBeat.o(194880);
+    return this;
+  }
+  
+  public final z fZ(String paramString)
+  {
+    AppMethodBeat.i(194881);
+    this.dHQ = t("CurrentPageName", paramString, true);
+    AppMethodBeat.o(194881);
     return this;
   }
   
   public final int getId()
   {
-    return 19421;
-  }
-  
-  public final z gr(String paramString)
-  {
-    AppMethodBeat.i(184147);
-    this.dHr = t("SessionId", paramString, true);
-    AppMethodBeat.o(184147);
-    return this;
-  }
-  
-  public final z gs(String paramString)
-  {
-    AppMethodBeat.i(184148);
-    this.dJL = t("FeedId", paramString, true);
-    AppMethodBeat.o(184148);
-    return this;
-  }
-  
-  public final z gt(String paramString)
-  {
-    AppMethodBeat.i(184149);
-    this.dKh = t("FeedUsername", paramString, true);
-    AppMethodBeat.o(184149);
-    return this;
-  }
-  
-  public final z gu(String paramString)
-  {
-    AppMethodBeat.i(184150);
-    this.dKi = t("CommentUsername", paramString, true);
-    AppMethodBeat.o(184150);
-    return this;
-  }
-  
-  public final z gv(String paramString)
-  {
-    AppMethodBeat.i(184151);
-    this.dKl = t("CommentId", paramString, true);
-    AppMethodBeat.o(184151);
-    return this;
+    return 19185;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.z
  * JD-Core Version:    0.7.0.1
  */

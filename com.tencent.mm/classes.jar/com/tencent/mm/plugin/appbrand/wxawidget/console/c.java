@@ -6,12 +6,12 @@ import com.tencent.mm.ipcinvoker.d.d;
 public final class c
   extends d
 {
-  public static final c mnJ;
+  public static final c mPK;
   
   static
   {
     AppMethodBeat.i(121616);
-    mnJ = new c();
+    mPK = new c();
     AppMethodBeat.o(121616);
   }
   
@@ -22,7 +22,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.c
  * JD-Core Version:    0.7.0.1
  */

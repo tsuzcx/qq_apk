@@ -6,14 +6,14 @@ import com.tencent.mm.plugin.appbrand.d.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class JsApiPausePlayVoice
   extends a<q>
 {
   public static final int CTRL_INDEX = 34;
   public static final String NAME = "pauseVoice";
-  private PausePlayVoice jCd;
+  private PausePlayVoice kcz;
   
   static class PausePlayVoice
     extends MainProcessTask
@@ -27,15 +27,15 @@ public final class JsApiPausePlayVoice
       AppMethodBeat.o(45948);
     }
     
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(45947);
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(45945);
-          b localb = b.jaW;
+          b localb = b.jBj;
           b.pause();
           AppMethodBeat.o(45945);
         }

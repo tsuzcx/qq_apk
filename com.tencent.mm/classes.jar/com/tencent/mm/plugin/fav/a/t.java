@@ -13,11 +13,11 @@ public abstract interface t
   
   public abstract boolean a(f paramf, String... paramVarArgs);
   
-  public abstract List<f> chX();
+  public abstract List<f> cpE();
   
-  public abstract f pR(long paramLong);
+  public abstract f tG(long paramLong);
   
-  public abstract void y(long paramLong, int paramInt);
+  public abstract void z(long paramLong, int paramInt);
 }
 
 

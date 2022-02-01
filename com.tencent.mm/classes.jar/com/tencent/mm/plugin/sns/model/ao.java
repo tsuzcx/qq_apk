@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.ba;
-import com.tencent.mm.g.a.tr;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.bb;
+import com.tencent.mm.g.a.ua;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.sns.model.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Date;
 
 public final class ao
 {
-  boolean hzc;
-  boolean hzd;
-  long wIY;
-  private boolean wIZ;
-  int wJa;
-  int wJb;
-  c<tr> wJc;
-  c wJd;
-  c wJe;
+  boolean hZD;
+  boolean hZE;
+  long xVt;
+  private boolean xVu;
+  int xVv;
+  int xVw;
+  c<ua> xVx;
+  c xVy;
+  c xVz;
   
   ao()
   {
     AppMethodBeat.i(95927);
-    this.wIY = 0L;
-    this.hzc = false;
-    this.hzd = false;
-    this.wIZ = false;
-    this.wJa = 0;
-    this.wJb = 1440;
-    this.wJc = new c()
+    this.xVt = 0L;
+    this.hZD = false;
+    this.hZE = false;
+    this.xVu = false;
+    this.xVv = 0;
+    this.xVw = 1440;
+    this.xVx = new c()
     {
-      private boolean dua()
+      private boolean dIy()
       {
         AppMethodBeat.i(95923);
         ao localao = ao.this;
         try
         {
-          if (localao.dtZ())
+          if (localao.dIx())
           {
             Date localDate = new Date();
             i = localDate.getHours();
             i = localDate.getMinutes() + i * 60;
-            if ((i >= localao.wJa) && (i <= localao.wJb))
+            if ((i >= localao.xVv) && (i <= localao.xVw))
             {
-              ad.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked,  %d in [%d, %d]", new Object[] { Integer.valueOf(i), Integer.valueOf(localao.wJa), Integer.valueOf(localao.wJb) });
+              ac.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked,  %d in [%d, %d]", new Object[] { Integer.valueOf(i), Integer.valueOf(localao.xVv), Integer.valueOf(localao.xVw) });
               AppMethodBeat.o(95923);
               return false;
             }
@@ -57,51 +57,51 @@ public final class ao
         {
           for (;;)
           {
-            int i = com.tencent.mm.m.g.Zd().getInt("SnsImgPreLoadingSmallImage", 1);
-            int k = com.tencent.mm.m.g.Zd().getInt("SnsImgPreLoadingBigImage", 1);
-            int m = a.duH();
-            int j = a.duG();
-            ad.i("MicroMsg.SnsPreTimelineService", " preloadingSamllImage %d preloadingBigImage %d preloadingVideo %d preloadingInterval %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j) });
+            int i = com.tencent.mm.m.g.ZY().getInt("SnsImgPreLoadingSmallImage", 1);
+            int k = com.tencent.mm.m.g.ZY().getInt("SnsImgPreLoadingBigImage", 1);
+            int m = a.dJh();
+            int j = a.dJg();
+            ac.i("MicroMsg.SnsPreTimelineService", " preloadingSamllImage %d preloadingBigImage %d preloadingVideo %d preloadingInterval %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j) });
             if ((i > 0) || (k > 0) || (m > 0))
             {
               i = j;
               if (j <= 0) {
                 i = 1200;
               }
-              if ((localao.hzc) || (localao.hzd) || (bt.lZ(localao.wIY) < i))
+              if ((localao.hZD) || (localao.hZE) || (bs.pN(localao.xVt) < i))
               {
-                ad.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked,  isInChatting:%b, isInSnsTimeline:%b", new Object[] { Boolean.valueOf(localao.hzc), Boolean.valueOf(localao.hzd) });
+                ac.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked,  isInChatting:%b, isInSnsTimeline:%b", new Object[] { Boolean.valueOf(localao.hZD), Boolean.valueOf(localao.hZE) });
               }
-              else if (!x.aow("@__weixintimtline"))
+              else if (!x.atI("@__weixintimtline"))
               {
-                ad.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked: doing timeline");
+                ac.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked: doing timeline");
               }
               else
               {
-                com.tencent.mm.kernel.g.afC();
-                if (!com.tencent.mm.kernel.g.afA().gcy.a(new s(), 0))
+                com.tencent.mm.kernel.g.agS();
+                if (!com.tencent.mm.kernel.g.agQ().ghe.a(new s(), 0))
                 {
-                  ad.i("MicroMsg.SnsPreTimelineService", "newObjectSync triggered");
-                  x.aox("@__weixintimtline");
+                  ac.i("MicroMsg.SnsPreTimelineService", "newObjectSync triggered");
+                  x.atJ("@__weixintimtline");
                 }
-                localao.wIY = bt.aGK();
+                localao.xVt = bs.aNx();
               }
             }
           }
         }
       }
     };
-    this.wJd = new c() {};
-    this.wJe = new c() {};
+    this.xVy = new c() {};
+    this.xVz = new c() {};
     AppMethodBeat.o(95927);
   }
   
-  final boolean dtZ()
+  final boolean dIx()
   {
     AppMethodBeat.i(95928);
-    Object localObject = com.tencent.mm.m.g.Zd().getValue("SnsImgPreLoadingTimeLimit");
-    ad.i("MicroMsg.SnsPreTimelineService", "preloadLimit:%s", new Object[] { localObject });
-    if (bt.isNullOrNil((String)localObject))
+    Object localObject = com.tencent.mm.m.g.ZY().getValue("SnsImgPreLoadingTimeLimit");
+    ac.i("MicroMsg.SnsPreTimelineService", "preloadLimit:%s", new Object[] { localObject });
+    if (bs.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(95928);
       return false;
@@ -110,12 +110,12 @@ public final class ao
     {
       localObject = ((String)localObject).split("-");
       String[] arrayOfString = localObject[0].split(":");
-      int i = bt.aGh(arrayOfString[0]);
-      this.wJa = (bt.aGh(arrayOfString[1]) + i * 60);
+      int i = bs.aLy(arrayOfString[0]);
+      this.xVv = (bs.aLy(arrayOfString[1]) + i * 60);
       localObject = localObject[1].split(":");
-      i = bt.aGh(localObject[0]);
-      this.wJb = (bt.aGh(localObject[1]) + i * 60);
-      ad.d("MicroMsg.SnsPreTimelineService", "preloadLimit:%d-%d", new Object[] { Integer.valueOf(this.wJa), Integer.valueOf(this.wJb) });
+      i = bs.aLy(localObject[0]);
+      this.xVw = (bs.aLy(localObject[1]) + i * 60);
+      ac.d("MicroMsg.SnsPreTimelineService", "preloadLimit:%d-%d", new Object[] { Integer.valueOf(this.xVv), Integer.valueOf(this.xVw) });
       AppMethodBeat.o(95928);
       return true;
     }
@@ -128,7 +128,7 @@ public final class ao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ao
  * JD-Core Version:    0.7.0.1
  */

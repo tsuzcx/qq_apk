@@ -6,12 +6,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class GameFeedModuleTitle
   extends LinearLayout
 {
-  private TextView kEu;
+  private TextView lfN;
   
   public GameFeedModuleTitle(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,21 +22,21 @@ public class GameFeedModuleTitle
   {
     AppMethodBeat.i(42113);
     super.onFinishInflate();
-    this.kEu = ((TextView)findViewById(2131300440));
+    this.lfN = ((TextView)findViewById(2131300440));
     AppMethodBeat.o(42113);
   }
   
   public void setData(d paramd)
   {
     AppMethodBeat.i(42114);
-    if ((paramd == null) || (bt.isNullOrNil(paramd.rVn)))
+    if ((paramd == null) || (bs.isNullOrNil(paramd.tdf)))
     {
       setVisibility(8);
       AppMethodBeat.o(42114);
       return;
     }
     setVisibility(0);
-    this.kEu.setText(paramd.rVn);
+    this.lfN.setText(paramd.tdf);
     AppMethodBeat.o(42114);
   }
 }

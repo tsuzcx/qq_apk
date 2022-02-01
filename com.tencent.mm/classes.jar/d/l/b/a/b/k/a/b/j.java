@@ -23,23 +23,23 @@ public final class j
   extends aa
   implements c
 {
-  private final i JUG;
-  public final f JUH;
-  private g.a JVD;
-  public final a.m Jis;
-  public final d.l.b.a.b.e.b.c Jiu;
-  public final h Jiv;
+  public final a.m KVM;
+  public final d.l.b.a.b.e.b.c KVO;
+  public final h KVP;
+  private final i LHZ;
+  private g.a LIW;
+  public final f LIa;
   
   public j(l paraml, ah paramah, g paramg, w paramw, ba paramba, boolean paramBoolean1, d.l.b.a.b.f.f paramf, d.l.b.a.b.b.b.a parama, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, a.m paramm, d.l.b.a.b.e.b.c paramc, h paramh, i parami, f paramf1)
   {
-    super(paraml, paramah, paramg, paramw, paramba, paramBoolean1, paramf, parama, an.JqJ, paramBoolean2, paramBoolean3, paramBoolean6, false, paramBoolean4, paramBoolean5);
+    super(paraml, paramah, paramg, paramw, paramba, paramBoolean1, paramf, parama, an.Lec, paramBoolean2, paramBoolean3, paramBoolean6, false, paramBoolean4, paramBoolean5);
     AppMethodBeat.i(60477);
-    this.Jis = paramm;
-    this.Jiu = paramc;
-    this.Jiv = paramh;
-    this.JUG = parami;
-    this.JUH = paramf1;
-    this.JVD = g.a.JVY;
+    this.KVM = paramm;
+    this.KVO = paramc;
+    this.KVP = paramh;
+    this.LHZ = parami;
+    this.LIa = paramf1;
+    this.LIW = g.a.LJr;
     AppMethodBeat.o(60477);
   }
   
@@ -52,7 +52,7 @@ public final class j
     k.h(parama, "kind");
     k.h(paramf, "newName");
     k.h(paraman, "source");
-    paraml = (aa)new j(paraml, paramah, fxF(), paramw, paramba, this.Jvz, paramf, parama, this.JuT, fzA(), fxE(), this.JuV, this.JtN, this.Jis, this.Jiu, this.Jiv, this.JUG, this.JUH);
+    paraml = (aa)new j(paraml, paramah, fQj(), paramw, paramba, this.LiS, paramf, parama, this.Lim, fSe(), fQi(), this.Lio, this.Lhg, this.KVM, this.KVO, this.KVP, this.LHZ, this.LIa);
     AppMethodBeat.o(60475);
     return paraml;
   }
@@ -62,34 +62,34 @@ public final class j
     AppMethodBeat.i(60474);
     k.h(parama, "isExperimentalCoroutineInReleaseEnvironment");
     super.a(paramab, paramaj, paramr1, paramr2);
-    paramab = y.JfV;
-    this.JVD = parama;
+    paramab = y.KTp;
+    this.LIW = parama;
     AppMethodBeat.o(60474);
   }
   
-  public final d.l.b.a.b.e.b.c fJC()
-  {
-    return this.Jiu;
-  }
-  
-  public final h fJD()
-  {
-    return this.Jiv;
-  }
-  
-  public final boolean fxE()
+  public final boolean fQi()
   {
     AppMethodBeat.i(60476);
-    Boolean localBoolean = b.JKt.afn(this.Jis.JGd);
+    Boolean localBoolean = b.LxM.aij(this.KVM.Ltw);
     k.g(localBoolean, "Flags.IS_EXTERNAL_PROPERTY.get(proto.flags)");
     boolean bool = localBoolean.booleanValue();
     AppMethodBeat.o(60476);
     return bool;
   }
+  
+  public final d.l.b.a.b.e.b.c gcf()
+  {
+    return this.KVO;
+  }
+  
+  public final h gcg()
+  {
+    return this.KVP;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.b.j
  * JD-Core Version:    0.7.0.1
  */

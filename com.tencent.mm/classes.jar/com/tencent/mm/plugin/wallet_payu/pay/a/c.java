@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet_payu.pay.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.List;
 
@@ -12,23 +12,23 @@ public final class c
   public static Orders a(Orders paramOrders, String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(72086);
-    if ((paramOrders == null) || (paramOrders.Afx == null) || (paramOrders.Afx.size() <= 0))
+    if ((paramOrders == null) || (paramOrders.BxR == null) || (paramOrders.BxR.size() <= 0))
     {
-      ad.d("MicroMsg.OrdersWrapper", "hy: params error");
+      ac.d("MicroMsg.OrdersWrapper", "hy: params error");
       AppMethodBeat.o(72086);
       return paramOrders;
     }
-    Iterator localIterator = paramOrders.Afx.iterator();
+    Iterator localIterator = paramOrders.BxR.iterator();
     if (localIterator.hasNext())
     {
       Orders.Commodity localCommodity = (Orders.Commodity)localIterator.next();
-      localCommodity.uol = paramInt;
+      localCommodity.vxh = paramInt;
       if (paramString1.equals("1")) {}
       for (String str = "2";; str = "1")
       {
-        localCommodity.uoi = str;
-        localCommodity.uoj = paramString2;
-        localCommodity.uon = paramString3;
+        localCommodity.vxe = str;
+        localCommodity.vxf = paramString2;
+        localCommodity.vxj = paramString3;
         break;
       }
     }

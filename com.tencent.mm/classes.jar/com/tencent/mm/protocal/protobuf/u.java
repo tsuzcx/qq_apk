@@ -3,12 +3,12 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class u
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String CsC;
-  public long CsD;
-  public int CsE;
-  public long Csv;
+  public long DKN;
+  public String DKT;
+  public long DKU;
+  public int DKV;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -16,34 +16,34 @@ public final class u
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.CsC != null) {
-        paramVarArgs.d(1, this.CsC);
+      if (this.DKT != null) {
+        paramVarArgs.d(1, this.DKT);
       }
-      paramVarArgs.aG(2, this.Csv);
-      paramVarArgs.aG(3, this.CsD);
-      paramVarArgs.aR(4, this.CsE);
+      paramVarArgs.aO(2, this.DKN);
+      paramVarArgs.aO(3, this.DKU);
+      paramVarArgs.aR(4, this.DKV);
       AppMethodBeat.o(91332);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CsC == null) {
+      if (this.DKT == null) {
         break label350;
       }
     }
     label350:
-    for (paramInt = f.a.a.b.b.a.e(1, this.CsC) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.DKT) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.q(2, this.Csv);
-      int j = f.a.a.b.b.a.q(3, this.CsD);
-      int k = f.a.a.b.b.a.bA(4, this.CsE);
+      int i = f.a.a.b.b.a.p(2, this.DKN);
+      int j = f.a.a.b.b.a.p(3, this.DKU);
+      int k = f.a.a.b.b.a.bx(4, this.DKV);
       AppMethodBeat.o(91332);
       return paramInt + i + j + k;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(91332);
@@ -59,19 +59,19 @@ public final class u
           AppMethodBeat.o(91332);
           return -1;
         case 1: 
-          localu.CsC = locala.KhF.readString();
+          localu.DKT = locala.LVo.readString();
           AppMethodBeat.o(91332);
           return 0;
         case 2: 
-          localu.Csv = locala.KhF.xT();
+          localu.DKN = locala.LVo.xG();
           AppMethodBeat.o(91332);
           return 0;
         case 3: 
-          localu.CsD = locala.KhF.xT();
+          localu.DKU = locala.LVo.xG();
           AppMethodBeat.o(91332);
           return 0;
         }
-        localu.CsE = locala.KhF.xS();
+        localu.DKV = locala.LVo.xF();
         AppMethodBeat.o(91332);
         return 0;
       }
@@ -82,7 +82,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.u
  * JD-Core Version:    0.7.0.1
  */

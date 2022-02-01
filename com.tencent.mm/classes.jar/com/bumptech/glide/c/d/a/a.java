@@ -12,22 +12,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a<DataType>
   implements k<DataType, BitmapDrawable>
 {
-  private final Resources aHZ;
-  private final k<DataType, Bitmap> aIk;
+  private final Resources aIP;
+  private final k<DataType, Bitmap> aJa;
   
   public a(Resources paramResources, k<DataType, Bitmap> paramk)
   {
     AppMethodBeat.i(77348);
-    this.aHZ = ((Resources)i.checkNotNull(paramResources, "Argument must not be null"));
-    this.aIk = ((k)i.checkNotNull(paramk, "Argument must not be null"));
+    this.aIP = ((Resources)i.checkNotNull(paramResources, "Argument must not be null"));
+    this.aJa = ((k)i.checkNotNull(paramk, "Argument must not be null"));
     AppMethodBeat.o(77348);
   }
   
   public final u<BitmapDrawable> a(DataType paramDataType, int paramInt1, int paramInt2, j paramj)
   {
     AppMethodBeat.i(77350);
-    paramDataType = this.aIk.a(paramDataType, paramInt1, paramInt2, paramj);
-    paramDataType = l.a(this.aHZ, paramDataType);
+    paramDataType = this.aJa.a(paramDataType, paramInt1, paramInt2, paramj);
+    paramDataType = l.a(this.aIP, paramDataType);
     AppMethodBeat.o(77350);
     return paramDataType;
   }
@@ -35,14 +35,14 @@ public final class a<DataType>
   public final boolean a(DataType paramDataType, j paramj)
   {
     AppMethodBeat.i(77349);
-    boolean bool = this.aIk.a(paramDataType, paramj);
+    boolean bool = this.aJa.a(paramDataType, paramj);
     AppMethodBeat.o(77349);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.a
  * JD-Core Version:    0.7.0.1
  */

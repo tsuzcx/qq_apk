@@ -5,17 +5,17 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class bv
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Title;
-  public String scK;
-  public String scL;
-  public LinkedList<bw> scO;
+  public String tkE;
+  public String tkF;
+  public LinkedList<bw> tkI;
   
   public bv()
   {
     AppMethodBeat.i(41793);
-    this.scO = new LinkedList();
+    this.tkI = new LinkedList();
     AppMethodBeat.o(41793);
   }
   
@@ -34,12 +34,12 @@ public final class bv
       if (this.Title != null) {
         paramVarArgs.d(1, this.Title);
       }
-      paramVarArgs.e(2, 8, this.scO);
-      if (this.scK != null) {
-        paramVarArgs.d(3, this.scK);
+      paramVarArgs.e(2, 8, this.tkI);
+      if (this.tkE != null) {
+        paramVarArgs.d(3, this.tkE);
       }
-      if (this.scL != null) {
-        paramVarArgs.d(4, this.scL);
+      if (this.tkF != null) {
+        paramVarArgs.d(4, this.tkF);
       }
       AppMethodBeat.o(41794);
       return 0;
@@ -52,25 +52,25 @@ public final class bv
     label526:
     for (paramInt = f.a.a.b.b.a.e(1, this.Title) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.a.c(2, 8, this.scO);
+      int i = paramInt + f.a.a.a.c(2, 8, this.tkI);
       paramInt = i;
-      if (this.scK != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.scK);
+      if (this.tkE != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.tkE);
       }
       i = paramInt;
-      if (this.scL != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.scL);
+      if (this.tkF != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.tkF);
       }
       AppMethodBeat.o(41794);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.scO.clear();
+        this.tkI.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.Title == null)
@@ -93,11 +93,11 @@ public final class bv
           AppMethodBeat.o(41794);
           return -1;
         case 1: 
-          localbv.Title = ((f.a.a.a.a)localObject1).KhF.readString();
+          localbv.Title = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(41794);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -105,18 +105,18 @@ public final class bv
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new bw();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((bw)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbv.scO.add(localObject1);
+            for (boolean bool = true; bool; bool = ((bw)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbv.tkI.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(41794);
           return 0;
         case 3: 
-          localbv.scK = ((f.a.a.a.a)localObject1).KhF.readString();
+          localbv.tkE = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(41794);
           return 0;
         }
-        localbv.scL = ((f.a.a.a.a)localObject1).KhF.readString();
+        localbv.tkF = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(41794);
         return 0;
       }
@@ -127,7 +127,7 @@ public final class bv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.bv
  * JD-Core Version:    0.7.0.1
  */

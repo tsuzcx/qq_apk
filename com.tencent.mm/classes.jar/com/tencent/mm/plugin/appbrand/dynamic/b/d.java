@@ -35,24 +35,24 @@ public final class d
   static final class a
     implements ac.a
   {
-    private ArrayList<IDKey> iMk;
-    private long iMl = 0L;
-    private long iMm = 0L;
-    private final bn jlw;
-    private a jlx;
+    private final bn jLJ;
+    private a jLK;
+    private ArrayList<IDKey> jmr;
+    private long jms = 0L;
+    private long jmt = 0L;
     
     private a(bn parambn)
     {
-      this.jlw = parambn;
+      this.jLJ = parambn;
     }
     
-    private void aPI()
+    private void aWA()
     {
       AppMethodBeat.i(121262);
       try
       {
-        com.tencent.mm.plugin.report.e.vIY.b(this.iMk, false);
-        this.iMk.clear();
+        com.tencent.mm.plugin.report.e.wTc.b(this.jmr, false);
+        this.jmr.clear();
         AppMethodBeat.o(121262);
         return;
       }
@@ -62,13 +62,13 @@ public final class d
       }
     }
     
-    private void qZ(int paramInt)
+    private void rM(int paramInt)
     {
       AppMethodBeat.i(121261);
-      if (this.iMk == null) {
-        this.iMk = new ArrayList();
+      if (this.jmr == null) {
+        this.jmr = new ArrayList();
       }
-      this.iMk.add(new IDKey(640, paramInt, 1));
+      this.jmr.add(new IDKey(640, paramInt, 1));
       AppMethodBeat.o(121261);
     }
     
@@ -77,23 +77,23 @@ public final class d
       int k = 1;
       int j = 2;
       AppMethodBeat.i(121266);
-      long l = SystemClock.elapsedRealtime() - this.iMl;
+      long l = SystemClock.elapsedRealtime() - this.jms;
       if (l <= 1000L)
       {
         i = 0;
         label31:
-        com.tencent.mm.plugin.report.e.vIY.idkeyStat(665L, i, 1L, false);
-        com.tencent.mm.plugin.report.e.vIY.idkeyStat(665L, 6L, 1L, false);
+        com.tencent.mm.plugin.report.e.wTc.idkeyStat(665L, i, 1L, false);
+        com.tencent.mm.plugin.report.e.wTc.idkeyStat(665L, 6L, 1L, false);
         if ((paramm == null) || (paramm.status != 2)) {
           break label179;
         }
       }
       label179:
       for (int i = k;; i = 0) {
-        switch (d.1.jlv[this.jlx.ordinal()])
+        switch (d.1.jLI[this.jLK.ordinal()])
         {
         default: 
-          aPI();
+          aWA();
           AppMethodBeat.o(121266);
           return;
           if (l <= 2000L)
@@ -123,47 +123,47 @@ public final class d
       if (i != 0) {}
       for (i = j;; i = 3)
       {
-        qZ(i);
+        rM(i);
         break;
       }
       if (i != 0) {}
       for (i = 11;; i = 12)
       {
-        qZ(i);
+        rM(i);
         break;
       }
     }
     
-    public final void aPi()
+    public final void aWa()
     {
       int j = 0;
       AppMethodBeat.i(121263);
       Object localObject;
-      if (j.a.qD(this.jlw.dkC))
+      if (j.a.rq(this.jLJ.dib))
       {
-        if (((com.tencent.mm.plugin.appbrand.a.e)g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aOk() == null) {
+        if (((com.tencent.mm.plugin.appbrand.a.e)g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aVa() == null) {
           i = 1;
         }
         while (i > 1)
         {
-          localObject = a.jlz;
+          localObject = a.jLM;
           label47:
-          this.jlx = ((a)localObject);
+          this.jLK = ((a)localObject);
           label52:
-          switch (d.1.jlv[this.jlx.ordinal()])
+          switch (d.1.jLI[this.jLK.ordinal()])
           {
           default: 
             i = j;
             label86:
-            qZ(i);
-            this.iMl = SystemClock.elapsedRealtime();
+            rM(i);
+            this.jms = SystemClock.elapsedRealtime();
             AppMethodBeat.o(121263);
             return;
-            localObject = ((com.tencent.mm.plugin.appbrand.a.e)g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aOk();
-            String str1 = this.jlw.appId;
-            i = this.jlw.dkC;
+            localObject = ((com.tencent.mm.plugin.appbrand.a.e)g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aVa();
+            String str1 = this.jLJ.appId;
+            i = this.jLJ.dib;
             String str2 = String.format(Locale.US, "select count(%s) from %s where %s=? and %s=?", new Object[] { "version", "AppBrandWxaPkgManifestRecord", "appId", "debugType" });
-            localObject = ((bf)localObject).iOE.a(str2, new String[] { str1, String.valueOf(i) }, 2);
+            localObject = ((bf)localObject).joN.a(str2, new String[] { str1, String.valueOf(i) }, 2);
             if (localObject == null) {
               i = 0;
             } else {
@@ -180,9 +180,9 @@ public final class d
       {
         ((Cursor)localObject).close();
         break;
-        localObject = a.jly;
+        localObject = a.jLL;
         break label47;
-        this.jlx = a.jly;
+        this.jLK = a.jLL;
         break label52;
         i = 1;
         break label86;
@@ -191,58 +191,58 @@ public final class d
       }
     }
     
-    public final void aPj()
+    public final void aWb()
     {
       AppMethodBeat.i(121264);
-      qZ(32);
+      rM(32);
       AppMethodBeat.o(121264);
     }
     
-    public final void aPk()
+    public final void aWc()
     {
       AppMethodBeat.i(121265);
-      qZ(31);
+      rM(31);
       AppMethodBeat.o(121265);
     }
     
-    public final void aPl() {}
+    public final void aWd() {}
     
-    public final void aPm() {}
+    public final void aWe() {}
     
-    public final void aPn()
+    public final void aWf()
     {
       AppMethodBeat.i(121267);
-      this.iMm = SystemClock.elapsedRealtime();
-      switch (d.1.jlv[this.jlx.ordinal()])
+      this.jmt = SystemClock.elapsedRealtime();
+      switch (d.1.jLI[this.jLK.ordinal()])
       {
       }
       for (;;)
       {
         AppMethodBeat.o(121267);
         return;
-        qZ(5);
+        rM(5);
         AppMethodBeat.o(121267);
         return;
-        qZ(14);
+        rM(14);
       }
     }
     
-    public final void aPo() {}
+    public final void aWg() {}
     
-    public final void fj(boolean paramBoolean)
+    public final void fF(boolean paramBoolean)
     {
       AppMethodBeat.i(121268);
       SystemClock.elapsedRealtime();
       int i;
-      switch (d.1.jlv[this.jlx.ordinal()])
+      switch (d.1.jLI[this.jLK.ordinal()])
       {
       default: 
         i = 0;
       }
       for (;;)
       {
-        qZ(i);
-        aPI();
+        rM(i);
+        aWA();
         AppMethodBeat.o(121268);
         return;
         if (paramBoolean)
@@ -262,18 +262,18 @@ public final class d
       }
     }
     
-    public final void fk(boolean paramBoolean) {}
+    public final void fG(boolean paramBoolean) {}
     
-    public final void qE(int paramInt) {}
+    public final void rr(int paramInt) {}
     
     static enum a
     {
       static
       {
         AppMethodBeat.i(121260);
-        jly = new a("DOWNLOAD", 0);
-        jlz = new a("UPDATE", 1);
-        jlA = new a[] { jly, jlz };
+        jLL = new a("DOWNLOAD", 0);
+        jLM = new a("UPDATE", 1);
+        jLN = new a[] { jLL, jLM };
         AppMethodBeat.o(121260);
       }
       
@@ -283,7 +283,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.d
  * JD-Core Version:    0.7.0.1
  */

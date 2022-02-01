@@ -6,18 +6,18 @@ import android.graphics.Color;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class q
   extends o
 {
-  private a Apn;
+  private a BHH;
   
   public q(int paramInt, a parama)
   {
     super(paramInt, null);
-    this.Apn = parama;
+    this.BHH = parama;
   }
   
   public q(a parama)
@@ -29,8 +29,8 @@ public final class q
   {
     this(2, parama);
     AppMethodBeat.i(71104);
-    if (!bt.isNullOrNil(paramString)) {
-      setColor(Color.parseColor(paramString), aj.getContext().getResources().getColor(2131100913));
+    if (!bs.isNullOrNil(paramString)) {
+      setColor(Color.parseColor(paramString), ai.getContext().getResources().getColor(2131100913));
     }
     AppMethodBeat.o(71104);
   }
@@ -38,8 +38,8 @@ public final class q
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(71105);
-    if (this.Apn != null) {
-      this.Apn.dI(paramView);
+    if (this.BHH != null) {
+      this.BHH.dK(paramView);
     }
     AppMethodBeat.o(71105);
   }
@@ -47,7 +47,7 @@ public final class q
   public final void setColorConfig(int paramInt)
   {
     AppMethodBeat.i(71106);
-    Context localContext = aj.getContext();
+    Context localContext = ai.getContext();
     super.setColorConfig(paramInt);
     if (paramInt == 5) {
       setColor(localContext.getResources().getColor(2131101179), localContext.getResources().getColor(2131100913));
@@ -57,7 +57,7 @@ public final class q
   
   public static abstract interface a
   {
-    public abstract void dI(View paramView);
+    public abstract void dK(View paramView);
   }
 }
 

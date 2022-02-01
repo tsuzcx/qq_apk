@@ -1,131 +1,144 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import android.text.TextUtils;
-import com.tencent.mm.ac.i;
-import com.tencent.mm.plugin.appbrand.aa.d;
+import com.tencent.mm.ab.i;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.d;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.InputStream;
 import java.util.Locale;
 
 public abstract class AbsReader
   implements ICommLibReader
 {
-  private volatile String iLa;
-  private volatile String iLb;
-  private volatile i iLc;
+  private volatile String jlh;
+  private volatile String jli;
+  private volatile i jlj;
   private volatile String versionName;
   
   /* Error */
-  private i aOZ()
+  private i aVR()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:iLc	Lcom/tencent/mm/ac/i;
-    //   4: ifnonnull +41 -> 45
+    //   1: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:jlj	Lcom/tencent/mm/ab/i;
+    //   4: ifnonnull +66 -> 70
     //   7: aload_0
     //   8: monitorenter
     //   9: aload_0
-    //   10: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:iLc	Lcom/tencent/mm/ac/i;
-    //   13: ifnonnull +30 -> 43
+    //   10: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:jlj	Lcom/tencent/mm/ab/i;
+    //   13: ifnonnull +55 -> 68
     //   16: aload_0
     //   17: ldc 25
-    //   19: invokevirtual 29	com/tencent/mm/plugin/appbrand/appcache/AbsReader:DH	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: invokevirtual 29	com/tencent/mm/plugin/appbrand/appcache/AbsReader:HL	(Ljava/lang/String;)Ljava/lang/String;
     //   22: astore_2
     //   23: aload_2
     //   24: invokestatic 35	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   27: ifeq +23 -> 50
-    //   30: new 37	com/tencent/mm/ac/i
-    //   33: dup
-    //   34: invokespecial 38	com/tencent/mm/ac/i:<init>	()V
-    //   37: astore_1
-    //   38: aload_0
-    //   39: aload_1
-    //   40: putfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:iLc	Lcom/tencent/mm/ac/i;
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_0
-    //   46: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:iLc	Lcom/tencent/mm/ac/i;
-    //   49: areturn
-    //   50: new 37	com/tencent/mm/ac/i
-    //   53: dup
-    //   54: aload_2
-    //   55: invokespecial 41	com/tencent/mm/ac/i:<init>	(Ljava/lang/String;)V
-    //   58: astore_1
-    //   59: goto -21 -> 38
+    //   27: ifeq +21 -> 48
+    //   30: ldc 37
+    //   32: ldc 39
+    //   34: iconst_1
+    //   35: anewarray 4	java/lang/Object
+    //   38: dup
+    //   39: iconst_0
+    //   40: aload_0
+    //   41: invokevirtual 43	com/tencent/mm/plugin/appbrand/appcache/AbsReader:aVV	()Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;
+    //   44: aastore
+    //   45: invokestatic 49	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   48: aload_2
+    //   49: invokestatic 35	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   52: ifeq +23 -> 75
+    //   55: new 51	com/tencent/mm/ab/i
+    //   58: dup
+    //   59: invokespecial 52	com/tencent/mm/ab/i:<init>	()V
     //   62: astore_1
-    //   63: ldc 43
-    //   65: aload_1
-    //   66: ldc 45
-    //   68: iconst_1
-    //   69: anewarray 4	java/lang/Object
-    //   72: dup
-    //   73: iconst_0
-    //   74: aload_2
-    //   75: aastore
-    //   76: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   79: new 37	com/tencent/mm/ac/i
-    //   82: dup
-    //   83: invokespecial 38	com/tencent/mm/ac/i:<init>	()V
-    //   86: astore_1
-    //   87: aload_0
-    //   88: monitorexit
-    //   89: aload_1
-    //   90: areturn
-    //   91: astore_1
-    //   92: aload_0
-    //   93: monitorexit
-    //   94: aload_1
-    //   95: athrow
+    //   63: aload_0
+    //   64: aload_1
+    //   65: putfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:jlj	Lcom/tencent/mm/ab/i;
+    //   68: aload_0
+    //   69: monitorexit
+    //   70: aload_0
+    //   71: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:jlj	Lcom/tencent/mm/ab/i;
+    //   74: areturn
+    //   75: new 51	com/tencent/mm/ab/i
+    //   78: dup
+    //   79: aload_2
+    //   80: invokespecial 55	com/tencent/mm/ab/i:<init>	(Ljava/lang/String;)V
+    //   83: astore_1
+    //   84: goto -21 -> 63
+    //   87: astore_1
+    //   88: ldc 37
+    //   90: aload_1
+    //   91: ldc 57
+    //   93: iconst_1
+    //   94: anewarray 4	java/lang/Object
+    //   97: dup
+    //   98: iconst_0
+    //   99: aload_2
+    //   100: aastore
+    //   101: invokestatic 61	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   104: new 51	com/tencent/mm/ab/i
+    //   107: dup
+    //   108: invokespecial 52	com/tencent/mm/ab/i:<init>	()V
+    //   111: astore_1
+    //   112: aload_0
+    //   113: monitorexit
+    //   114: aload_1
+    //   115: areturn
+    //   116: astore_1
+    //   117: aload_0
+    //   118: monitorexit
+    //   119: aload_1
+    //   120: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	96	0	this	AbsReader
-    //   37	22	1	locali1	i
-    //   62	4	1	localg	com.tencent.mm.ac.g
-    //   86	4	1	locali2	i
-    //   91	4	1	localObject	Object
-    //   22	53	2	str	String
+    //   0	121	0	this	AbsReader
+    //   62	22	1	locali1	i
+    //   87	4	1	localg	com.tencent.mm.ab.g
+    //   111	4	1	locali2	i
+    //   116	4	1	localObject	Object
+    //   22	78	2	str	String
     // Exception table:
     //   from	to	target	type
-    //   23	38	62	com/tencent/mm/ac/g
-    //   38	43	62	com/tencent/mm/ac/g
-    //   50	59	62	com/tencent/mm/ac/g
-    //   9	23	91	finally
-    //   23	38	91	finally
-    //   38	43	91	finally
-    //   43	45	91	finally
-    //   50	59	91	finally
-    //   63	89	91	finally
-    //   92	94	91	finally
+    //   48	63	87	com/tencent/mm/ab/g
+    //   63	68	87	com/tencent/mm/ab/g
+    //   75	84	87	com/tencent/mm/ab/g
+    //   9	48	116	finally
+    //   48	63	116	finally
+    //   63	68	116	finally
+    //   68	70	116	finally
+    //   75	84	116	finally
+    //   88	114	116	finally
+    //   117	119	116	finally
   }
   
-  public final String DH(String paramString)
+  public final String HL(String paramString)
   {
     InputStream localInputStream = openRead(paramString);
     if (localInputStream == null) {
       return null;
     }
-    long l = bt.GC();
+    long l = bs.Gn();
     String str = d.convertStreamToString(localInputStream);
-    bt.d(localInputStream);
-    ad.v("MicroMsg.AppBrand.AbsReader", "readAsString(%s), cost %dms", new Object[] { paramString, Long.valueOf(bt.GC() - l) });
+    bs.d(localInputStream);
+    ac.v("MicroMsg.AppBrand.AbsReader", "readAsString(%s), cost %dms", new Object[] { paramString, Long.valueOf(bs.Gn() - l) });
     return str;
   }
   
-  public final String DI(String paramString)
+  public final String HM(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     i locali;
     do
     {
       return null;
-      locali = aOZ().qK("features");
+      locali = aVR().tZ("features");
     } while (locali == null);
     return locali.optString(paramString, null);
   }
   
-  public final String aPa()
+  public final String aVS()
   {
     String str2;
     String str1;
@@ -139,7 +152,7 @@ public abstract class AbsReader
     }
     try
     {
-      i locali = aOZ();
+      i locali = aVR();
       str1 = str2;
       localObject1 = localObject2;
       localObject2 = locali.getString("version");
@@ -148,7 +161,7 @@ public abstract class AbsReader
       str2 = locali.getString("updateTime");
       str1 = str2;
       localObject1 = localObject2;
-      ad.i("MicroMsg.AppBrand.AbsReader", "AbsReader version parsed wx.version[%s | %s]", new Object[] { localObject2, str2 });
+      ac.i("MicroMsg.AppBrand.AbsReader", "AbsReader version parsed wx.version[%s | %s]", new Object[] { localObject2, str2 });
       localObject1 = localObject2;
       str1 = str2;
     }
@@ -156,7 +169,7 @@ public abstract class AbsReader
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrand.AbsReader", localException, "get WAVersion.json failed.", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.AppBrand.AbsReader", localException, "get WAVersion.json failed.", new Object[0]);
       }
     }
     Object localObject2 = localObject1;
@@ -164,25 +177,25 @@ public abstract class AbsReader
       localObject2 = "";
     }
     this.versionName = ((String)localObject2);
-    this.iLa = str1;
-    this.iLb = String.format(Locale.US, "%s (%s)", new Object[] { this.versionName, this.iLa });
+    this.jlh = str1;
+    this.jli = String.format(Locale.US, "%s (%s)", new Object[] { this.versionName, this.jlh });
     return this.versionName;
   }
   
-  public final String aPb()
+  public final String aVT()
   {
-    aPa();
-    return bt.nullAsNil(this.iLb);
+    aVS();
+    return bs.nullAsNil(this.jli);
   }
   
-  public final int aPc()
+  public final int aVU()
   {
-    return aPd().pkgVersion();
+    return aVV().pkgVersion();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.AbsReader
  * JD-Core Version:    0.7.0.1
  */

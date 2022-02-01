@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 public final class b
 {
-  private static final ThreadLocal<double[]> GQ = new ThreadLocal();
+  private static final ThreadLocal<double[]> HN = new ThreadLocal();
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, float[] paramArrayOfFloat)
   {
@@ -48,12 +48,12 @@ public final class b
   
   private static double aw(int paramInt)
   {
-    double[] arrayOfDouble2 = (double[])GQ.get();
+    double[] arrayOfDouble2 = (double[])HN.get();
     double[] arrayOfDouble1 = arrayOfDouble2;
     if (arrayOfDouble2 == null)
     {
       arrayOfDouble1 = new double[3];
-      GQ.set(arrayOfDouble1);
+      HN.set(arrayOfDouble1);
     }
     int i = Color.red(paramInt);
     int j = Color.green(paramInt);

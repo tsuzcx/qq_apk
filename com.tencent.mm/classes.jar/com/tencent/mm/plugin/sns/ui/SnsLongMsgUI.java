@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 
 public class SnsLongMsgUI
   extends MMActivity
 {
-  private Button xau;
+  private Button ynj;
   
   public int getLayoutId()
   {
@@ -28,8 +28,8 @@ public class SnsLongMsgUI
     AppMethodBeat.i(98851);
     super.onCreate(paramBundle);
     setTitleVisibility(8);
-    this.xau = ((Button)findViewById(2131301272));
-    this.xau.setOnClickListener(new View.OnClickListener()
+    this.ynj = ((Button)findViewById(2131301272));
+    this.ynj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -37,13 +37,13 @@ public class SnsLongMsgUI
         Object localObject = new Intent();
         ((Intent)localObject).setClass(SnsLongMsgUI.this, SnsUploadUI.class);
         ((Intent)localObject).putExtra("KSnsPostManu", true);
-        ((Intent)localObject).putExtra("KTouchCameraTime", bt.aGK());
+        ((Intent)localObject).putExtra("KTouchCameraTime", bs.aNx());
         ((Intent)localObject).putExtra("sns_comment_type", 1);
         ((Intent)localObject).putExtra("Ksnsupload_type", 9);
         paramAnonymousView = SnsLongMsgUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/sns/ui/SnsLongMsgUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/sns/ui/SnsLongMsgUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/sns/ui/SnsLongMsgUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         SnsLongMsgUI.this.finish();
         AppMethodBeat.o(98849);
@@ -67,12 +67,12 @@ public class SnsLongMsgUI
       paramKeyEvent = new Intent();
       paramKeyEvent.setClass(this, SnsUploadUI.class);
       paramKeyEvent.putExtra("KSnsPostManu", true);
-      paramKeyEvent.putExtra("KTouchCameraTime", bt.aGK());
+      paramKeyEvent.putExtra("KTouchCameraTime", bs.aNx());
       paramKeyEvent.putExtra("sns_comment_type", 1);
       paramKeyEvent.putExtra("Ksnsupload_type", 9);
-      paramKeyEvent = new com.tencent.mm.hellhoundlib.b.a().bd(paramKeyEvent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramKeyEvent.adn(), "com/tencent/mm/plugin/sns/ui/SnsLongMsgUI", "onKeyDown", "(ILandroid/view/KeyEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramKeyEvent.lS(0));
+      paramKeyEvent = new com.tencent.mm.hellhoundlib.b.a().ba(paramKeyEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramKeyEvent.aeD(), "com/tencent/mm/plugin/sns/ui/SnsLongMsgUI", "onKeyDown", "(ILandroid/view/KeyEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramKeyEvent.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsLongMsgUI", "onKeyDown", "(ILandroid/view/KeyEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       finish();
       AppMethodBeat.o(98852);

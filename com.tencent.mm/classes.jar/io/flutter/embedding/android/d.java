@@ -1,14 +1,21 @@
 package io.flutter.embedding.android;
 
-import io.flutter.embedding.engine.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface d
+public final class d
 {
-  public abstract void a(a parama);
+  static final String tWq;
+  
+  static
+  {
+    AppMethodBeat.i(192889);
+    tWq = d.a.KKz.name();
+    AppMethodBeat.o(192889);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     io.flutter.embedding.android.d
  * JD-Core Version:    0.7.0.1
  */

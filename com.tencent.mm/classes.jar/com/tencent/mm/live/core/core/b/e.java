@@ -3,137 +3,146 @@ package com.tencent.mm.live.core.core.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.live.core.core.c.c;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import d.g.b.k;
 import d.l;
 import java.util.ArrayList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/core/core/model/LiveStatus;", "", "()V", "anchorID", "", "availableAudioUsers", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "isDebugMode", "", "()Z", "setDebugMode", "(Z)V", "isFloatMode", "linkMicStatus", "Lcom/tencent/mm/live/core/core/model/LiveStatus$LinkMicStatus;", "liveID", "", "liveRoomStatus", "Lcom/tencent/mm/live/core/core/model/LiveStatus$LiveRoomStatus;", "networkQuality", "", "selfSdkID", "getSelfSdkID", "()Ljava/lang/String;", "setSelfSdkID", "(Ljava/lang/String;)V", "videoMicID", "addAvailableAudioUser", "", "sdkID", "audioLinkMic", "changeToFloatMode", "changeToNormalMode", "checkInRoom", "currentRoomID", "enterRoom", "exitRoom", "getAnchorID", "getNetworkQuality", "getVideoMicID", "isEnterRoom", "isInAudioLinkMic", "isInRoom", "(Ljava/lang/Long;)Z", "isInVideoLinkMic", "noLinkMic", "removeAvailableAudioUser", "setAnchorID", "id", "setVideoMicID", "updateNetworkQuality", "quality", "updateStart", "status", "videoLinkMic", "Companion", "LinkMicStatus", "LiveRoomStatus", "plugin-core_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/core/model/LiveStatus;", "", "()V", "anchorID", "", "availableAudioUsers", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "floatMode", "Lcom/tencent/mm/live/core/core/model/LiveStatus$MiniWindowMode;", "isDebugMode", "", "()Z", "setDebugMode", "(Z)V", "linkMicStatus", "Lcom/tencent/mm/live/core/core/model/LiveStatus$LinkMicStatus;", "liveID", "", "liveRoomStatus", "Lcom/tencent/mm/live/core/core/model/LiveStatus$LiveRoomStatus;", "networkQuality", "", "resumeFromPermissionCheck", "selfSdkID", "getSelfSdkID", "()Ljava/lang/String;", "setSelfSdkID", "(Ljava/lang/String;)V", "videoMicID", "addAvailableAudioUser", "", "sdkID", "audioLinkMic", "changeToFloatMode", "changeToNormalMode", "changeToPermissionMode", "checkInRoom", "currentRoomID", "enterRoom", "exitRoom", "getAnchorID", "getNetworkQuality", "getVideoMicID", "isEnterRoom", "isFloatMode", "isInAudioLinkMic", "isInRoom", "(Ljava/lang/Long;)Z", "isInVideoLinkMic", "isNormalMode", "isResumeFromPermissionCheck", "noLinkMic", "removeAvailableAudioUser", "setAnchorID", "id", "setResumeFromPermissionCheck", "value", "setVideoMicID", "updateNetworkQuality", "quality", "updateStart", "status", "videoLinkMic", "Companion", "LinkMicStatus", "LiveRoomStatus", "MiniWindowMode", "plugin-core_release"})
 public final class e
 {
-  public static final a qAO;
+  public static final e.a goj;
+  public boolean gnZ;
+  public e.c goa;
+  public b gob;
+  public d goc;
+  public long god;
+  public String goe;
+  public String gof;
+  public String gog;
+  private ArrayList<String> goh;
+  public int goi;
   public boolean isDebugMode;
-  public String qAd;
-  public String qAh;
-  private ArrayList<String> qAn;
-  public c qzN;
-  public b qzO;
-  public boolean qzP;
-  public long qzQ;
-  public String qzR;
-  public int zCj;
   
   static
   {
-    AppMethodBeat.i(205641);
-    qAO = new a((byte)0);
-    AppMethodBeat.o(205641);
+    AppMethodBeat.i(209177);
+    goj = new e.a((byte)0);
+    AppMethodBeat.o(209177);
   }
   
   public e()
   {
-    AppMethodBeat.i(205640);
-    this.qzN = c.qBA;
-    this.qzO = b.qAR;
-    this.qzQ = -1L;
-    this.qzR = "";
-    this.qAd = "";
-    this.qAn = new ArrayList();
-    Object localObject = c.c.qyj;
-    this.zCj = c.c.cmA();
-    localObject = g.afB();
+    AppMethodBeat.i(209176);
+    this.goa = e.c.goo;
+    this.gob = b.gok;
+    this.goc = d.got;
+    this.god = -1L;
+    this.goe = "";
+    this.gof = "";
+    this.goh = new ArrayList();
+    Object localObject = c.c.gnz;
+    this.goi = c.c.aiI();
+    localObject = g.agR();
     k.g(localObject, "MMKernel.storage()");
-    if (((com.tencent.mm.kernel.e)localObject).afk().getInt(ae.a.LBD, 0) == 1) {}
+    if (((com.tencent.mm.kernel.e)localObject).agA().getInt(ah.a.GWc, 0) == 1) {}
     for (;;)
     {
       this.isDebugMode = bool;
-      AppMethodBeat.o(205640);
+      AppMethodBeat.o(209176);
       return;
       bool = false;
     }
   }
   
-  private final boolean cnv()
+  private final boolean aiR()
   {
-    return this.qzN == c.qCR;
+    return this.goa == e.c.goq;
   }
   
-  public final boolean cnw()
+  public final boolean aiQ()
   {
-    return this.qzO == b.qAY;
+    return this.goc == d.got;
   }
   
-  public final boolean cnx()
+  public final boolean aiS()
   {
-    return this.qzO == b.qAX;
+    return this.gob == b.gom;
   }
   
-  public final boolean h(Long paramLong)
+  public final boolean aiT()
   {
-    AppMethodBeat.i(205639);
+    return this.gob == b.gol;
+  }
+  
+  public final boolean b(Long paramLong)
+  {
+    AppMethodBeat.i(209175);
     boolean bool;
     if (paramLong == null)
     {
-      bool = cnv();
-      AppMethodBeat.o(205639);
+      bool = aiR();
+      AppMethodBeat.o(209175);
       return bool;
     }
-    long l = this.qzQ;
+    long l = this.god;
     if (paramLong.longValue() == l)
     {
-      bool = cnv();
-      AppMethodBeat.o(205639);
+      bool = aiR();
+      AppMethodBeat.o(209175);
       return bool;
     }
-    AppMethodBeat.o(205639);
+    AppMethodBeat.o(209175);
     return false;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/core/core/model/LiveStatus$Companion;", "", "()V", "LIVE_DEFAULT", "", "plugin-core_release"})
-  public static final class a {}
+  public final boolean isFloatMode()
+  {
+    return this.goc == d.gou;
+  }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/core/core/model/LiveStatus$LinkMicStatus;", "", "(Ljava/lang/String;I)V", "NO_LINK_MIC", "AUDIO_LINK_MIC", "VIDEO_LINK_MIC", "plugin-core_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/core/model/LiveStatus$LinkMicStatus;", "", "(Ljava/lang/String;I)V", "NO_LINK_MIC", "AUDIO_LINK_MIC", "VIDEO_LINK_MIC", "plugin-core_release"})
   public static enum b
   {
     static
     {
-      AppMethodBeat.i(205633);
+      AppMethodBeat.i(209166);
       b localb1 = new b("NO_LINK_MIC", 0);
-      qAR = localb1;
+      gok = localb1;
       b localb2 = new b("AUDIO_LINK_MIC", 1);
-      qAX = localb2;
+      gol = localb2;
       b localb3 = new b("VIDEO_LINK_MIC", 2);
-      qAY = localb3;
-      qBz = new b[] { localb1, localb2, localb3 };
-      AppMethodBeat.o(205633);
+      gom = localb3;
+      gon = new b[] { localb1, localb2, localb3 };
+      AppMethodBeat.o(209166);
     }
     
     private b() {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/core/core/model/LiveStatus$LiveRoomStatus;", "", "(Ljava/lang/String;I)V", "LIVE_OUT_ROOM", "LIVE_IN_ROOM", "LIVE_JOIN_ROOM", "plugin-core_release"})
-  public static enum c
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/core/model/LiveStatus$MiniWindowMode;", "", "(Ljava/lang/String;I)V", "NORMAL_MODE", "FLOAT_MODE", "PERMISSION_MODE", "plugin-core_release"})
+  public static enum d
   {
     static
     {
-      AppMethodBeat.i(205636);
-      c localc1 = new c("LIVE_OUT_ROOM", 0);
-      qBA = localc1;
-      c localc2 = new c("LIVE_IN_ROOM", 1);
-      qCR = localc2;
-      c localc3 = new c("LIVE_JOIN_ROOM", 2);
-      qCT = localc3;
-      qDh = new c[] { localc1, localc2, localc3 };
-      AppMethodBeat.o(205636);
+      AppMethodBeat.i(209172);
+      d locald1 = new d("NORMAL_MODE", 0);
+      got = locald1;
+      d locald2 = new d("FLOAT_MODE", 1);
+      gou = locald2;
+      d locald3 = new d("PERMISSION_MODE", 2);
+      gov = locald3;
+      gow = new d[] { locald1, locald2, locald3 };
+      AppMethodBeat.o(209172);
     }
     
-    private c() {}
+    private d() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.core.b.e
  * JD-Core Version:    0.7.0.1
  */

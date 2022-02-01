@@ -4,35 +4,35 @@ import com.tencent.e.j.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ah.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  private static int tDs = 4;
-  static int tDt = 4;
-  ap handler;
+  private static int sjk = 4;
+  static int uLP = 4;
+  ao handler;
   boolean stop;
-  b.a tDA;
-  ap[] tDu;
-  int tDv;
-  private int tDw;
-  private LinkedList<b> tDx;
-  private a tDy;
+  ao[] uLQ;
+  int uLR;
+  private int uLS;
+  private LinkedList<b> uLT;
+  private a uLU;
+  b.a uLV;
   
   public a(a parama)
   {
     AppMethodBeat.i(89465);
-    this.tDv = 0;
-    this.tDw = 0;
-    this.tDx = new LinkedList();
+    this.uLR = 0;
+    this.uLS = 0;
+    this.uLT = new LinkedList();
     this.stop = false;
-    this.tDA = new b.a()
+    this.uLV = new b.a()
     {
       public final void a(final b paramAnonymousb)
       {
@@ -49,54 +49,54 @@ public final class a
         AppMethodBeat.o(89464);
       }
     };
-    this.tDy = parama;
-    tDt = -1;
+    this.uLU = parama;
+    uLP = -1;
     if (CaptureMMProxy.getInstance() != null) {
-      tDt = CaptureMMProxy.getInstance().getInt(ae.a.Fmw, -1);
+      uLP = CaptureMMProxy.getInstance().getInt(ah.a.GKl, -1);
     }
-    if (tDt == -1)
+    if (uLP == -1)
     {
-      tDt = Runtime.getRuntime().availableProcessors();
-      tDt = Math.min(tDs, tDt);
-      ad.i("MicroMsg.ForwardMgr", "ForwardMgr THREAD_COUNT from runtime %d, availableProcessors: %s", new Object[] { Integer.valueOf(tDt), Integer.valueOf(Runtime.getRuntime().availableProcessors()) });
+      uLP = Runtime.getRuntime().availableProcessors();
+      uLP = Math.min(sjk, uLP);
+      ac.i("MicroMsg.ForwardMgr", "ForwardMgr THREAD_COUNT from runtime %d, availableProcessors: %s", new Object[] { Integer.valueOf(uLP), Integer.valueOf(Runtime.getRuntime().availableProcessors()) });
     }
     for (;;)
     {
-      this.tDu = new ap[tDt];
-      SightVideoJNI.initScaleAndRoateBuffer(tDt);
+      this.uLQ = new ao[uLP];
+      SightVideoJNI.initScaleAndRoateBuffer(uLP);
       int i = 0;
-      while (i < this.tDu.length)
+      while (i < this.uLQ.length)
       {
-        this.tDu[i] = new ap("BigSightMediaCodecMP4MuxRecorder_FrameBufProcessMgr_".concat(String.valueOf(i)));
+        this.uLQ[i] = new ao("BigSightMediaCodecMP4MuxRecorder_FrameBufProcessMgr_".concat(String.valueOf(i)));
         i += 1;
       }
-      ad.i("MicroMsg.ForwardMgr", "ForwardMgr THREAD_COUNT from config %d", new Object[] { Integer.valueOf(tDt) });
+      ac.i("MicroMsg.ForwardMgr", "ForwardMgr THREAD_COUNT from config %d", new Object[] { Integer.valueOf(uLP) });
     }
     this.stop = false;
     AppMethodBeat.o(89465);
   }
   
-  private void cQc()
+  private void ddK()
   {
     AppMethodBeat.i(89466);
-    ad.i("MicroMsg.ForwardMgr", "processBufList %d %d", new Object[] { Integer.valueOf(this.tDx.size()), Integer.valueOf(this.tDw) });
+    ac.i("MicroMsg.ForwardMgr", "processBufList %d %d", new Object[] { Integer.valueOf(this.uLT.size()), Integer.valueOf(this.uLS) });
     for (;;)
     {
-      if (this.tDx.size() == 0)
+      if (this.uLT.size() == 0)
       {
         AppMethodBeat.o(89466);
         return;
       }
-      ad.i("MicroMsg.ForwardMgr", "loop processBufList %d %d", new Object[] { Integer.valueOf(this.tDx.size()), Integer.valueOf(this.tDw) });
-      Iterator localIterator = this.tDx.iterator();
+      ac.i("MicroMsg.ForwardMgr", "loop processBufList %d %d", new Object[] { Integer.valueOf(this.uLT.size()), Integer.valueOf(this.uLS) });
+      Iterator localIterator = this.uLT.iterator();
       while (localIterator.hasNext())
       {
         b localb = (b)localIterator.next();
-        if (this.tDw == localb.tDH)
+        if (this.uLS == localb.uMc)
         {
-          this.tDw += 1;
-          this.tDy.output(localb.tDF);
-          this.tDx.remove(localb);
+          this.uLS += 1;
+          this.uLU.output(localb.uMa);
+          this.uLT.remove(localb);
         }
       }
       for (int i = 1; i == 0; i = 0)
@@ -107,9 +107,9 @@ public final class a
     }
   }
   
-  public final boolean cQd()
+  public final boolean ddL()
   {
-    return this.tDw == this.tDv;
+    return this.uLS == this.uLR;
   }
   
   protected final void finalize()
@@ -133,17 +133,17 @@ public final class a
   {
     int i = 0;
     AppMethodBeat.i(89467);
-    ad.i("MicroMsg.ForwardMgr", "stop FrameBufProcessMgr %s", new Object[] { bt.eGN().toString() });
-    while (i < this.tDu.length)
+    ac.i("MicroMsg.ForwardMgr", "stop FrameBufProcessMgr %s", new Object[] { bs.eWi().toString() });
+    while (i < this.uLQ.length)
     {
-      if (this.tDu[i] != null)
+      if (this.uLQ[i] != null)
       {
-        this.tDu[i].getSerial().IzX.quit();
-        this.tDu[i] = null;
+        this.uLQ[i].getSerial().KbG.quit();
+        this.uLQ[i] = null;
       }
       i += 1;
     }
-    SightVideoJNI.releaseScaleAndRoateBuffer(tDt);
+    SightVideoJNI.releaseScaleAndRoateBuffer(uLP);
     this.stop = true;
     AppMethodBeat.o(89467);
   }

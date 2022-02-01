@@ -12,19 +12,19 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 
 public class GameMenuImageButton
   extends LinearLayout
 {
-  private ImageView djK;
-  public boolean nkH;
+  private ImageView dhf;
+  public boolean nNH;
   
   public GameMenuImageButton(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(80958);
-    aL(paramContext);
+    aM(paramContext);
     AppMethodBeat.o(80958);
   }
   
@@ -32,7 +32,7 @@ public class GameMenuImageButton
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(80959);
-    aL(paramContext);
+    aM(paramContext);
     AppMethodBeat.o(80959);
   }
   
@@ -40,20 +40,20 @@ public class GameMenuImageButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(80960);
-    aL(paramContext);
+    aM(paramContext);
     AppMethodBeat.o(80960);
   }
   
-  private void aL(Context paramContext)
+  private void aM(Context paramContext)
   {
     AppMethodBeat.i(80961);
-    this.djK = new ImageView(paramContext);
-    this.djK.setLayoutParams(new ViewGroup.LayoutParams(a.ap(paramContext, 2131166405), a.ap(paramContext, 2131166405)));
-    this.djK.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.djK.setImageResource(2131232530);
+    this.dhf = new ImageView(paramContext);
+    this.dhf.setLayoutParams(new ViewGroup.LayoutParams(a.av(paramContext, 2131166405), a.av(paramContext, 2131166405)));
+    this.dhf.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.dhf.setImageResource(2131232530);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, a.ap(paramContext, 2131166404), a.ap(paramContext, 2131166404), 0);
-    addView(this.djK, localLayoutParams);
+    localLayoutParams.setMargins(0, a.av(paramContext, 2131166404), a.av(paramContext, 2131166404), 0);
+    addView(this.dhf, localLayoutParams);
     AppMethodBeat.o(80961);
   }
   
@@ -66,26 +66,26 @@ public class GameMenuImageButton
       localLayoutParams.gravity = 53;
       paramFrameLayout.addView(this, localLayoutParams);
     }
-    if (this.djK != null) {
-      this.djK.setOnClickListener(new View.OnClickListener()
+    if (this.dhf != null) {
+      this.dhf.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(80957);
           if (parama != null) {
-            parama.cBO();
+            parama.cOZ();
           }
           AppMethodBeat.o(80957);
         }
       });
     }
-    this.nkH = true;
+    this.nNH = true;
     AppMethodBeat.o(80962);
   }
   
   public static abstract interface a
   {
-    public abstract void cBO();
+    public abstract void cOZ();
   }
 }
 

@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$a
 {
-  static final long cJP;
-  public int cJQ = 0;
+  static final long cGW;
+  public int cGX = 0;
   
   static
   {
     AppMethodBeat.i(959);
-    cJP = "Micromsg".hashCode();
+    cGW = "Micromsg".hashCode();
     AppMethodBeat.o(959);
   }
   
   public a$a(int paramInt)
   {
-    this.cJQ = paramInt;
+    this.cGX = paramInt;
   }
   
-  public static a I(byte[] paramArrayOfByte)
+  public static a G(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(960);
     long l;
@@ -29,7 +29,7 @@ public final class a$a
       l = 0L;
       i = 0;
       if (i >= paramArrayOfByte.length) {
-        if (l >> 32 != cJP) {
+        if (l >> 32 != cGW) {
           break label75;
         }
       }
@@ -45,7 +45,7 @@ public final class a$a
     }
   }
   
-  static byte[] bh(long paramLong)
+  static byte[] be(long paramLong)
   {
     byte[] arrayOfByte = new byte[8];
     int i = 0;
@@ -61,7 +61,7 @@ public final class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.d.a.a
  * JD-Core Version:    0.7.0.1
  */

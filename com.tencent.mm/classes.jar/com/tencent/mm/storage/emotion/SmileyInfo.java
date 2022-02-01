@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fh;
+import com.tencent.mm.g.c.fl;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class SmileyInfo
-  extends fh
+  extends fl
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyInfo> CREATOR;
@@ -20,48 +20,48 @@ public class SmileyInfo
   {
     AppMethodBeat.i(105142);
     c.a locala = new c.a();
-    locala.EYt = new Field[10];
+    locala.GvF = new Field[10];
     locala.columns = new String[11];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.EYv.put("key", "TEXT PRIMARY KEY ");
+    locala.GvH.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "key";
+    locala.GvG = "key";
     locala.columns[1] = "cnValue";
-    locala.EYv.put("cnValue", "TEXT");
+    locala.GvH.put("cnValue", "TEXT");
     localStringBuilder.append(" cnValue TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "qqValue";
-    locala.EYv.put("qqValue", "TEXT");
+    locala.GvH.put("qqValue", "TEXT");
     localStringBuilder.append(" qqValue TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "twValue";
-    locala.EYv.put("twValue", "TEXT");
+    locala.GvH.put("twValue", "TEXT");
     localStringBuilder.append(" twValue TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "enValue";
-    locala.EYv.put("enValue", "TEXT");
+    locala.GvH.put("enValue", "TEXT");
     localStringBuilder.append(" enValue TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "thValue";
-    locala.EYv.put("thValue", "TEXT");
+    locala.GvH.put("thValue", "TEXT");
     localStringBuilder.append(" thValue TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "fileName";
-    locala.EYv.put("fileName", "TEXT");
+    locala.GvH.put("fileName", "TEXT");
     localStringBuilder.append(" fileName TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "eggIndex";
-    locala.EYv.put("eggIndex", "INTEGER default '-1' ");
+    locala.GvH.put("eggIndex", "INTEGER default '-1' ");
     localStringBuilder.append(" eggIndex INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "position";
-    locala.EYv.put("position", "INTEGER default '-1' ");
+    locala.GvH.put("position", "INTEGER default '-1' ");
     localStringBuilder.append(" position INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "flag";
-    locala.EYv.put("flag", "INTEGER");
+    locala.GvH.put("flag", "INTEGER");
     localStringBuilder.append(" flag INTEGER");
     locala.columns[10] = "rowid";
     locala.sql = localStringBuilder.toString();

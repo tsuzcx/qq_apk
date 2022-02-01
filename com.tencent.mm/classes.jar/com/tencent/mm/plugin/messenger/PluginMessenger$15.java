@@ -1,30 +1,31 @@
 package com.tencent.mm.plugin.messenger;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.bi;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.plugin.messenger.a.f.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import java.util.Map;
 
 final class PluginMessenger$15
-  implements f.c
+  implements f.a
 {
-  PluginMessenger$15(PluginMessenger paramPluginMessenger, String paramString1, String paramString2) {}
+  PluginMessenger$15(PluginMessenger paramPluginMessenger) {}
   
-  public final void d(boolean paramBoolean, String paramString)
+  public final String e(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(203903);
-    paramString = new bi();
-    paramString.ib(this.hzx);
-    paramString.ic(this.kTn);
-    paramString.dPx = 1L;
-    paramString.dPy = 1L;
-    paramString.dPA = 1L;
-    paramString.aBj();
-    AppMethodBeat.o(203903);
+    AppMethodBeat.i(90719);
+    if (paramMap == null)
+    {
+      AppMethodBeat.o(90719);
+      return null;
+    }
+    paramMap = bs.nullAsNil((String)paramMap.get(paramString + ".title"));
+    AppMethodBeat.o(90719);
+    return paramMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.PluginMessenger.15
  * JD-Core Version:    0.7.0.1
  */

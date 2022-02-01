@@ -5,12 +5,12 @@ import com.tencent.mm.b.p;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -28,14 +28,14 @@ public final class m
         AppMethodBeat.i(123211);
         try
         {
-          m.b(this.Cns);
+          m.b(this.DFL);
           AppMethodBeat.o(123211);
           return;
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace("MicroMsg.QQMailUnreadHelper", localException, "", new Object[0]);
-          ad.e("MicroMsg.QQMailUnreadHelper", "getUnreadCountAsync exception");
+          ac.printErrStackTrace("MicroMsg.QQMailUnreadHelper", localException, "", new Object[0]);
+          ac.e("MicroMsg.QQMailUnreadHelper", "getUnreadCountAsync exception");
           AppMethodBeat.o(123211);
         }
       }
@@ -46,19 +46,19 @@ public final class m
   public static void b(a parama)
   {
     AppMethodBeat.i(123217);
-    ad.i("MicroMsg.QQMailUnreadHelper", "dz[getUnreadCount]");
-    String str = (String)g.afB().afk().get(-1535680990, "");
-    long l = new p(bt.l((Integer)g.afB().afk().get(9, null))).longValue();
-    if ((bt.isNullOrNil(str)) || (l == 0L))
+    ac.i("MicroMsg.QQMailUnreadHelper", "dz[getUnreadCount]");
+    String str = (String)g.agR().agA().get(-1535680990, "");
+    long l = new p(bs.m((Integer)g.agR().agA().get(9, null))).longValue();
+    if ((bs.isNullOrNil(str)) || (l == 0L))
     {
-      g.afB().afk().set(ae.a.Fhb, Integer.valueOf(-1));
-      ad.w("MicroMsg.QQMailUnreadHelper", "dz[getUnreadEmailCountAndSet: authkey or uin is null]");
-      aq.f(new Runnable()
+      g.agR().agA().set(ah.a.GEP, Integer.valueOf(-1));
+      ac.w("MicroMsg.QQMailUnreadHelper", "dz[getUnreadEmailCountAndSet: authkey or uin is null]");
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(123212);
-          this.Cns.dej();
+          this.DFL.drR();
           AppMethodBeat.o(123212);
         }
       });
@@ -74,13 +74,13 @@ public final class m
       {
         ((HttpURLConnection)localObject).getInputStream().close();
         ((HttpURLConnection)localObject).disconnect();
-        ad.w("MicroMsg.QQMailUnreadHelper", "dz[getUnreadCount http 300]");
-        aq.f(new Runnable()
+        ac.w("MicroMsg.QQMailUnreadHelper", "dz[getUnreadCount http 300]");
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(123213);
-            this.Cns.dej();
+            this.DFL.drR();
             AppMethodBeat.o(123213);
           }
         });
@@ -91,33 +91,33 @@ public final class m
       {
         for (;;)
         {
-          ad.e("MicroMsg.QQMailUnreadHelper", localException.getMessage());
+          ac.e("MicroMsg.QQMailUnreadHelper", localException.getMessage());
         }
       }
     }
-    localObject = bw.K(bt.convertStreamToString(((HttpURLConnection)localObject).getInputStream()), "Response");
-    if ((localObject != null) && (bt.getInt((String)((Map)localObject).get(".Response.error.code"), -1) == 0)) {}
-    for (final int i = bt.getInt((String)((Map)localObject).get(".Response.result.UnreadCount"), -1); i < 0; i = -1)
+    localObject = bv.L(bs.convertStreamToString(((HttpURLConnection)localObject).getInputStream()), "Response");
+    if ((localObject != null) && (bs.getInt((String)((Map)localObject).get(".Response.error.code"), -1) == 0)) {}
+    for (final int i = bs.getInt((String)((Map)localObject).get(".Response.result.UnreadCount"), -1); i < 0; i = -1)
     {
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(123214);
-          this.Cns.dej();
+          this.DFL.drR();
           AppMethodBeat.o(123214);
         }
       });
       AppMethodBeat.o(123217);
       return;
     }
-    g.afB().afk().set(ae.a.Fhb, Integer.valueOf(i));
-    aq.f(new Runnable()
+    g.agR().agA().set(ah.a.GEP, Integer.valueOf(i));
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(123215);
-        this.Cns.onSuccess(i);
+        this.DFL.onSuccess(i);
         AppMethodBeat.o(123215);
       }
     });
@@ -126,14 +126,14 @@ public final class m
   
   public static abstract interface a
   {
-    public abstract void dej();
+    public abstract void drR();
     
     public abstract void onSuccess(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class kr
   extends b
 {
-  public a dpk;
+  public a dmv;
   
   public kr()
   {
@@ -15,17 +16,16 @@ public final class kr
   
   private kr(byte paramByte)
   {
-    AppMethodBeat.i(116031);
-    this.dpk = new a();
-    this.ESR = false;
+    AppMethodBeat.i(121050);
+    this.dmv = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116031);
+    AppMethodBeat.o(121050);
   }
   
   public static final class a
   {
-    public int bvJ = 0;
-    public int status = 0;
+    public Intent dmw;
   }
 }
 

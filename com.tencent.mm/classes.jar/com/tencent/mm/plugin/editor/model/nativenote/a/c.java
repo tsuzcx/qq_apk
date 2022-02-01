@@ -16,7 +16,7 @@ import com.tencent.mm.plugin.editor.model.nativenote.spans.d;
 import com.tencent.mm.plugin.editor.model.nativenote.spans.k;
 import com.tencent.mm.plugin.editor.model.nativenote.spans.o;
 import com.tencent.mm.plugin.editor.model.nativenote.spans.s;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Locale;
@@ -28,51 +28,51 @@ import org.xml.sax.XMLReader;
 public final class c
   implements Html.TagHandler
 {
-  private static final Pattern buq;
-  private static final Pattern omZ;
-  private static HashMap<String, Integer> ona;
-  private Stack<a> omX;
-  final HashMap<String, String> omY;
+  private static final Pattern bso;
+  private static HashMap<String, Integer> oQA;
+  private static final Pattern oQz;
+  private Stack<a> oQx;
+  final HashMap<String, String> oQy;
   
   static
   {
     AppMethodBeat.i(181712);
-    buq = Pattern.compile("\\d+");
-    omZ = Pattern.compile("#[a-f0-9]+");
+    bso = Pattern.compile("\\d+");
+    oQz = Pattern.compile("#[a-f0-9]+");
     HashMap localHashMap = new HashMap();
-    ona = localHashMap;
+    oQA = localHashMap;
     localHashMap.put("aqua", Integer.valueOf(65535));
-    ona.put("black", Integer.valueOf(0));
-    ona.put("blue", Integer.valueOf(255));
-    ona.put("fuchsia", Integer.valueOf(16711935));
-    ona.put("green", Integer.valueOf(32768));
-    ona.put("grey", Integer.valueOf(8421504));
-    ona.put("lime", Integer.valueOf(65280));
-    ona.put("maroon", Integer.valueOf(8388608));
-    ona.put("navy", Integer.valueOf(128));
-    ona.put("olive", Integer.valueOf(8421376));
-    ona.put("purple", Integer.valueOf(8388736));
-    ona.put("red", Integer.valueOf(16711680));
-    ona.put("silver", Integer.valueOf(12632256));
-    ona.put("teal", Integer.valueOf(32896));
-    ona.put("white", Integer.valueOf(16777215));
-    ona.put("yellow", Integer.valueOf(16776960));
+    oQA.put("black", Integer.valueOf(0));
+    oQA.put("blue", Integer.valueOf(255));
+    oQA.put("fuchsia", Integer.valueOf(16711935));
+    oQA.put("green", Integer.valueOf(32768));
+    oQA.put("grey", Integer.valueOf(8421504));
+    oQA.put("lime", Integer.valueOf(65280));
+    oQA.put("maroon", Integer.valueOf(8388608));
+    oQA.put("navy", Integer.valueOf(128));
+    oQA.put("olive", Integer.valueOf(8421376));
+    oQA.put("purple", Integer.valueOf(8388736));
+    oQA.put("red", Integer.valueOf(16711680));
+    oQA.put("silver", Integer.valueOf(12632256));
+    oQA.put("teal", Integer.valueOf(32896));
+    oQA.put("white", Integer.valueOf(16777215));
+    oQA.put("yellow", Integer.valueOf(16776960));
     AppMethodBeat.o(181712);
   }
   
   public c()
   {
     AppMethodBeat.i(181704);
-    this.omX = new Stack();
-    this.omY = new HashMap();
+    this.oQx = new Stack();
+    this.oQy = new HashMap();
     AppMethodBeat.o(181704);
   }
   
   @SuppressLint({"DefaultLocale"})
-  private static int Td(String paramString)
+  private static int Xp(String paramString)
   {
     AppMethodBeat.i(181711);
-    Integer localInteger = (Integer)ona.get(paramString.toLowerCase());
+    Integer localInteger = (Integer)oQA.get(paramString.toLowerCase());
     int i;
     if (localInteger != null)
     {
@@ -170,25 +170,25 @@ public final class c
   {
     AppMethodBeat.i(181707);
     if (paramBoolean) {
-      paramo = o.oqm;
+      paramo = o.oTM;
     }
-    if (this.omX.isEmpty()) {}
-    for (a locala = null; locala == null; locala = (a)this.omX.peek())
+    if (this.oQx.isEmpty()) {}
+    for (a locala = null; locala == null; locala = (a)this.oQx.peek())
     {
       paramo = new a(paramo, 1, 1);
-      this.omX.push(paramo);
+      this.oQx.push(paramo);
       AppMethodBeat.o(181707);
       return;
     }
-    if (locala.opS == paramo)
+    if (locala.oTs == paramo)
     {
-      locala.opT += 1;
-      locala.opU += 1;
+      locala.oTt += 1;
+      locala.oTu += 1;
       AppMethodBeat.o(181707);
       return;
     }
-    paramo = new a(paramo, locala.opT + 1, 1);
-    this.omX.push(paramo);
+    paramo = new a(paramo, locala.oTt + 1, 1);
+    this.oQx.push(paramo);
     AppMethodBeat.o(181707);
   }
   
@@ -207,28 +207,28 @@ public final class c
     AppMethodBeat.o(181706);
   }
   
-  private void jq(boolean paramBoolean)
+  private void jT(boolean paramBoolean)
   {
     AppMethodBeat.i(181708);
-    while (!this.omX.isEmpty())
+    while (!this.oQx.isEmpty())
     {
-      a locala = (a)this.omX.peek();
-      o localo = locala.opS;
-      if (((paramBoolean) && (localo.bTC())) || ((!paramBoolean) && (localo.bTB())) || ((!paramBoolean) && (localo.bTD())))
+      a locala = (a)this.oQx.peek();
+      o localo = locala.oTs;
+      if (((paramBoolean) && (localo.caQ())) || ((!paramBoolean) && (localo.caP())) || ((!paramBoolean) && (localo.caR())))
       {
-        int i = locala.opU;
+        int i = locala.oTu;
         if (i > 1)
         {
-          locala.opU = (i - 1);
-          locala.opT -= 1;
+          locala.oTu = (i - 1);
+          locala.oTt -= 1;
           AppMethodBeat.o(181708);
           return;
         }
-        this.omX.pop();
+        this.oQx.pop();
         AppMethodBeat.o(181708);
         return;
       }
-      this.omX.pop();
+      this.oQx.pop();
     }
     AppMethodBeat.o(181708);
   }
@@ -240,7 +240,7 @@ public final class c
     boolean bool2 = true;
     boolean bool1 = false;
     AppMethodBeat.i(181705);
-    this.omY.clear();
+    this.oQy.clear();
     Object localObject;
     Field localField;
     int k;
@@ -262,7 +262,7 @@ public final class c
       i = 0;
       while (i < k)
       {
-        this.omY.put(localObject[(i * 5 + 1)], localObject[(i * 5 + 4)]);
+        this.oQy.put(localObject[(i * 5 + 1)], localObject[(i * 5 + 4)]);
         i += 1;
       }
       if (!paramBoolean) {
@@ -271,7 +271,7 @@ public final class c
     }
     catch (Exception paramXMLReader) {}
     if (paramString.equalsIgnoreCase("wx-ul")) {
-      a(false, o.oql);
+      a(false, o.oTL);
     }
     label393:
     label663:
@@ -280,45 +280,45 @@ public final class c
     label1697:
     for (;;)
     {
-      a.omV = paramEditable;
+      a.oQv = paramEditable;
       AppMethodBeat.o(181705);
       return;
       label1574:
       if (paramString.equalsIgnoreCase("wx-ol")) {
-        a(true, o.oqm);
+        a(true, o.oTM);
       } else {
         label1449:
         label1578:
         if (paramString.equalsIgnoreCase("wn-todo"))
         {
-          paramString = new a(o.oqn, 1, 1);
-          this.omX.push(paramString);
-          paramString = (String)this.omY.get("checked");
+          paramString = new a(o.oTN, 1, 1);
+          this.oQx.push(paramString);
+          paramString = (String)this.oQy.get("checked");
           paramBoolean = bool1;
-          if (!bt.isNullOrNil(paramString))
+          if (!bs.isNullOrNil(paramString))
           {
             paramBoolean = bool1;
             if (paramString.equals("1")) {
               paramBoolean = true;
             }
           }
-          a(paramEditable, new e(((a)this.omX.peek()).opT, paramBoolean));
+          a(paramEditable, new e(((a)this.oQx.peek()).oTt, paramBoolean));
         }
         else
         {
           if (paramString.equalsIgnoreCase("wx-li"))
           {
-            paramString = (String)this.omY.get("done");
-            if ((!bt.isNullOrNil(paramString)) && (paramString.equals("true")))
+            paramString = (String)this.oQy.get("done");
+            if ((!bs.isNullOrNil(paramString)) && (paramString.equals("true")))
             {
               paramBoolean = bool2;
-              if (this.omX.isEmpty()) {
+              if (this.oQx.isEmpty()) {
                 break label504;
               }
-              paramString = (a)this.omX.peek();
-              paramXMLReader = paramString.opS;
-              i = paramString.opT;
-              if (!paramXMLReader.bTC()) {
+              paramString = (a)this.oQx.peek();
+              paramXMLReader = paramString.oTs;
+              i = paramString.oTt;
+              if (!paramXMLReader.caQ()) {
                 break label461;
               }
               paramString = new d(i);
@@ -335,11 +335,11 @@ public final class c
             paramBoolean = false;
             break label393;
             label461:
-            if (paramXMLReader.bTB())
+            if (paramXMLReader.caP())
             {
               paramString = new f(i);
             }
-            else if (paramXMLReader.bTD())
+            else if (paramXMLReader.caR())
             {
               paramString = new e(i, paramBoolean);
               continue;
@@ -350,7 +350,7 @@ public final class c
               if ((paramString.equalsIgnoreCase("wx-font")) || (paramString.equalsIgnoreCase("span")))
               {
                 i = -2147483648;
-                paramString = (String)this.omY.get("style");
+                paramString = (String)this.oQy.get("style");
                 if (paramString == null) {
                   break label1686;
                 }
@@ -366,7 +366,7 @@ public final class c
                   int n;
                   if (localField.startsWith("font-size"))
                   {
-                    localMatcher = buq.matcher(localField);
+                    localMatcher = bso.matcher(localField);
                     if (localMatcher.find(0))
                     {
                       k = localMatcher.start();
@@ -385,7 +385,7 @@ public final class c
                     continue;
                     if (localNumberFormatException.startsWith("color"))
                     {
-                      localMatcher = omZ.matcher(localNumberFormatException);
+                      localMatcher = oQz.matcher(localNumberFormatException);
                       if (localMatcher.find(0)) {
                         paramString = localNumberFormatException.substring(localMatcher.start(), localMatcher.end());
                       }
@@ -395,7 +395,7 @@ public final class c
                       if (!localNumberFormatException.startsWith("background-color")) {
                         break label1683;
                       }
-                      localMatcher = omZ.matcher(localNumberFormatException);
+                      localMatcher = oQz.matcher(localNumberFormatException);
                       if (!localMatcher.find(0)) {
                         break label1683;
                       }
@@ -406,17 +406,17 @@ public final class c
               }
               for (;;)
               {
-                localObject = (String)this.omY.get("face");
+                localObject = (String)this.oQy.get("face");
                 j = paramEditable.length();
                 b localb = new b((byte)0);
                 localb.mSize = i;
-                localb.onb = paramString;
-                localb.onc = paramXMLReader;
+                localb.oQB = paramString;
+                localb.oQC = paramXMLReader;
                 paramEditable.setSpan(b.a(localb, (String)localObject), j, j, 17);
                 break;
                 if (paramString.equalsIgnoreCase("wx-b"))
                 {
-                  a(paramEditable, new a((byte)0));
+                  a(paramEditable, new c.a((byte)0));
                   break;
                 }
                 if (paramString.equalsIgnoreCase("wx-p"))
@@ -430,15 +430,15 @@ public final class c
                 d(paramEditable);
                 break;
                 if (paramString.equalsIgnoreCase("wx-ul")) {
-                  jq(false);
+                  jT(false);
                 }
                 for (;;)
                 {
-                  this.omY.clear();
+                  this.oQy.clear();
                   break;
                   if (paramString.equalsIgnoreCase("wx-ol"))
                   {
-                    jq(true);
+                    jT(true);
                   }
                   else if (paramString.equalsIgnoreCase("wn-todo"))
                   {
@@ -450,10 +450,10 @@ public final class c
                       }
                       i = paramEditable.getSpanStart(paramString);
                       j = paramEditable.length();
-                      if (!paramString.onf)
+                      if (!paramString.oQF)
                       {
-                        k = f.bSG();
-                        bool1 = ((e)paramString).lG;
+                        k = f.bZV();
+                        bool1 = ((e)paramString).mF;
                         if (i != j) {
                           break label1097;
                         }
@@ -476,9 +476,9 @@ public final class c
                       }
                       i = paramEditable.getSpanStart(paramXMLReader);
                       j = paramEditable.length();
-                      if (!paramXMLReader.onf)
+                      if (!paramXMLReader.oQF)
                       {
-                        k = f.bSG();
+                        k = f.bZV();
                         if (!(paramXMLReader instanceof d)) {
                           break label1256;
                         }
@@ -514,12 +514,12 @@ public final class c
                       if (m != k)
                       {
                         paramString = (b)paramString;
-                        if (!TextUtils.isEmpty(paramString.ond))
+                        if (!TextUtils.isEmpty(paramString.oQD))
                         {
                           i = 1;
                           label1367:
                           if (i != 0) {
-                            paramEditable.setSpan(new TypefaceSpan(paramString.ond), m, k, 33);
+                            paramEditable.setSpan(new TypefaceSpan(paramString.oQD), m, k, 33);
                           }
                           if (paramString.mSize <= 0) {
                             break label1562;
@@ -527,20 +527,20 @@ public final class c
                           i = 1;
                           label1405:
                           if (i != 0) {
-                            paramEditable.setSpan(new AbsoluteSizeSpan(f.Ad(paramString.mSize)), m, k, 33);
+                            paramEditable.setSpan(new AbsoluteSizeSpan(f.AV(paramString.mSize)), m, k, 33);
                           }
-                          if (TextUtils.isEmpty(paramString.onb)) {
+                          if (TextUtils.isEmpty(paramString.oQB)) {
                             break label1568;
                           }
                           i = 1;
                           if (i != 0)
                           {
-                            i = Td(paramString.onb);
+                            i = Xp(paramString.oQB);
                             if (i != -1) {
                               paramEditable.setSpan(new ForegroundColorSpan(i | 0xFF000000), m, k, 33);
                             }
                           }
-                          if (TextUtils.isEmpty(paramString.onc)) {
+                          if (TextUtils.isEmpty(paramString.oQC)) {
                             break label1574;
                           }
                         }
@@ -549,7 +549,7 @@ public final class c
                           if (i == 0) {
                             break label1578;
                           }
-                          i = Td(paramString.onc);
+                          i = Xp(paramString.oQC);
                           if (i == -1) {
                             break;
                           }
@@ -569,7 +569,7 @@ public final class c
                   {
                     paramString = new BoldSpan();
                     i = paramEditable.length();
-                    paramXMLReader = a(paramEditable, a.class);
+                    paramXMLReader = a(paramEditable, c.a.class);
                     j = paramEditable.getSpanStart(paramXMLReader);
                     paramEditable.removeSpan(paramXMLReader);
                     if (j != i) {
@@ -600,25 +600,23 @@ public final class c
     }
   }
   
-  static class a {}
-  
   static class b
   {
     int mSize = -2147483648;
-    String onb;
-    String onc;
-    String ond;
+    String oQB;
+    String oQC;
+    String oQD;
   }
   
   static abstract class c
   {
-    int one;
-    boolean onf;
+    int oQE;
+    boolean oQF;
     
     c(int paramInt)
     {
-      this.one = paramInt;
-      this.onf = false;
+      this.oQE = paramInt;
+      this.oQF = false;
     }
   }
   
@@ -634,12 +632,12 @@ public final class c
   static final class e
     extends c.c
   {
-    boolean lG = false;
+    boolean mF = false;
     
     e(int paramInt, boolean paramBoolean)
     {
       super();
-      this.lG = paramBoolean;
+      this.mF = paramBoolean;
     }
   }
   
@@ -654,7 +652,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.a.c
  * JD-Core Version:    0.7.0.1
  */

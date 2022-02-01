@@ -1,77 +1,50 @@
 package io.flutter.embedding.engine;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.Lifecycle.State;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LifecycleRegistry;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
+import java.util.Map;
 
-final class b
-  extends LifecycleRegistry
+public final class b
 {
-  private Lifecycle IYt;
-  private final LifecycleObserver IYu;
-  private boolean aJO;
+  private static b KLy;
+  private final Map<String, a> KLz;
   
-  b(LifecycleOwner paramLifecycleOwner)
+  b()
   {
-    super(paramLifecycleOwner);
-    AppMethodBeat.i(10121);
-    this.aJO = false;
-    this.IYu = new FlutterEngineAndroidLifecycle.1(this);
-    AppMethodBeat.o(10121);
+    AppMethodBeat.i(10117);
+    this.KLz = new HashMap();
+    AppMethodBeat.o(10117);
   }
   
-  private void fuD()
+  public static b fNd()
   {
-    AppMethodBeat.i(10125);
-    if (this.aJO)
-    {
-      IllegalStateException localIllegalStateException = new IllegalStateException("Tried to invoke a method on a destroyed FlutterEngineAndroidLifecycle.");
-      AppMethodBeat.o(10125);
-      throw localIllegalStateException;
+    AppMethodBeat.i(10116);
+    if (KLy == null) {
+      KLy = new b();
     }
-    AppMethodBeat.o(10125);
+    b localb = KLy;
+    AppMethodBeat.o(10116);
+    return localb;
   }
   
-  public final void a(Lifecycle paramLifecycle)
+  public final a aVH(String paramString)
   {
-    AppMethodBeat.i(10122);
-    fuD();
-    if (this.IYt != null) {
-      this.IYt.removeObserver(this.IYu);
-    }
-    handleLifecycleEvent(Lifecycle.Event.ON_STOP);
-    this.IYt = paramLifecycle;
-    if (this.IYt != null) {
-      paramLifecycle.addObserver(this.IYu);
-    }
-    AppMethodBeat.o(10122);
+    AppMethodBeat.i(10118);
+    paramString = (a)this.KLz.get(paramString);
+    AppMethodBeat.o(10118);
+    return paramString;
   }
   
-  public final void destroy()
+  public final void aVI(String paramString)
   {
-    AppMethodBeat.i(10124);
-    fuD();
-    a(null);
-    markState(Lifecycle.State.DESTROYED);
-    this.aJO = true;
-    AppMethodBeat.o(10124);
-  }
-  
-  public final void handleLifecycleEvent(Lifecycle.Event paramEvent)
-  {
-    AppMethodBeat.i(10123);
-    fuD();
-    super.handleLifecycleEvent(paramEvent);
-    AppMethodBeat.o(10123);
+    AppMethodBeat.i(10119);
+    this.KLz.remove(paramString);
+    AppMethodBeat.o(10119);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.embedding.engine.b
  * JD-Core Version:    0.7.0.1
  */

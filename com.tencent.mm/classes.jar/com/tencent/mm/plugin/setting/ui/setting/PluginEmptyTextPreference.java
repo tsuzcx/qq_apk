@@ -12,7 +12,7 @@ public final class PluginEmptyTextPreference
   extends Preference
 {
   private Context context;
-  private TextView ful;
+  private TextView fxS;
   private String text;
   
   public PluginEmptyTextPreference(Context paramContext)
@@ -27,7 +27,7 @@ public final class PluginEmptyTextPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73907);
-    this.ful = null;
+    this.fxS = null;
     this.context = paramContext;
     setLayoutResource(2131495094);
     AppMethodBeat.o(73907);
@@ -37,8 +37,8 @@ public final class PluginEmptyTextPreference
   {
     AppMethodBeat.i(73909);
     super.onBindView(paramView);
-    this.ful = ((TextView)paramView.findViewById(2131299477));
-    this.ful.setText(this.text);
+    this.fxS = ((TextView)paramView.findViewById(2131299477));
+    this.fxS.setText(this.text);
     AppMethodBeat.o(73909);
   }
   

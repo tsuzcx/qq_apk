@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i<TResult>
 {
-  final h<TResult> azv;
+  final h<TResult> aAp;
   
   public i()
   {
     AppMethodBeat.i(53005);
-    this.azv = new h();
+    this.aAp = new h();
     AppMethodBeat.o(53005);
   }
   
   private boolean b(Exception paramException)
   {
     AppMethodBeat.i(53007);
-    boolean bool = this.azv.b(paramException);
+    boolean bool = this.aAp.b(paramException);
     AppMethodBeat.o(53007);
     return bool;
   }
@@ -24,7 +24,7 @@ public final class i<TResult>
   private boolean trySetResult(TResult paramTResult)
   {
     AppMethodBeat.i(53006);
-    boolean bool = this.azv.trySetResult(paramTResult);
+    boolean bool = this.aAp.trySetResult(paramTResult);
     AppMethodBeat.o(53006);
     return bool;
   }
@@ -41,10 +41,10 @@ public final class i<TResult>
     AppMethodBeat.o(53010);
   }
   
-  public final void ng()
+  public final void nq()
   {
     AppMethodBeat.i(53008);
-    if (!this.azv.nf())
+    if (!this.aAp.np())
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Cannot cancel a completed task.");
       AppMethodBeat.o(53008);
@@ -67,7 +67,7 @@ public final class i<TResult>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     a.i
  * JD-Core Version:    0.7.0.1
  */

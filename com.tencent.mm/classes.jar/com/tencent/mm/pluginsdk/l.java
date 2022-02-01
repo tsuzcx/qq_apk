@@ -15,7 +15,7 @@ import com.tencent.mm.ui.widget.a.d;
 @Deprecated
 public abstract interface l
 {
-  public abstract void Lo();
+  public abstract void Lm();
   
   public abstract void a(Activity paramActivity, Intent paramIntent, int paramInt);
   
@@ -53,15 +53,15 @@ public abstract interface l
   
   public abstract boolean b(Context paramContext, String paramString, Bundle paramBundle);
   
-  public abstract Intent bA(Context paramContext);
-  
   public abstract void bB(Context paramContext);
   
-  public abstract void bC(Context paramContext);
+  public abstract d bC(Context paramContext);
   
-  public abstract void by(Context paramContext);
+  public abstract Intent bD(Context paramContext);
   
-  public abstract d bz(Context paramContext);
+  public abstract void bE(Context paramContext);
+  
+  public abstract void bF(Context paramContext);
   
   public abstract void c(Intent paramIntent, Context paramContext);
   
@@ -117,7 +117,7 @@ public abstract interface l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.l
  * JD-Core Version:    0.7.0.1
  */

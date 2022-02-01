@@ -2,9 +2,9 @@ package com.tencent.mm.model;
 
 public abstract interface ah
 {
-  public abstract void Tj();
+  public abstract void Ud();
   
-  public abstract void Tk();
+  public abstract void Ue();
   
   public abstract void a(ai paramai);
   
@@ -12,7 +12,7 @@ public abstract interface ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.ah
  * JD-Core Version:    0.7.0.1
  */

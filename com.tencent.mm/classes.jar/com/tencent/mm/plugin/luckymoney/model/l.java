@@ -4,53 +4,53 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class l
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int dDN;
-  public int dDO;
-  public int dDP;
-  public long dEb;
-  public int nTB;
+  public int dBA;
+  public int dBB;
+  public long dBN;
+  public int dBz;
+  public int owW;
   public int resourceId;
-  public String sYt;
-  public String sZn;
-  public String taA;
-  public int tax;
-  public String tay;
-  public String taz;
-  public String tdA;
-  public int tdB;
-  public LinkedList<y> tdC;
-  public String tdD;
-  public String tdE;
-  public int tdF;
-  public String tdG;
-  public String tdH;
-  public String tdh;
-  public String tdi;
-  public String tdj;
-  public String tdk;
-  public String tdl;
-  public String tdm;
-  public long tdn;
-  public long tdo;
-  public long tdp;
-  public String tdq;
-  public int tdr;
-  public int tds;
-  public int tdt;
-  public String tdu;
-  public int tdv;
-  public f tdw;
-  public LinkedList<au> tdx;
-  public au tdy;
-  public String tdz;
+  public String ugH;
+  public String uhB;
+  public int uiM;
+  public String uiN;
+  public String uiO;
+  public String uiP;
+  public String ulA;
+  public String ulB;
+  public long ulC;
+  public long ulD;
+  public long ulE;
+  public String ulF;
+  public int ulG;
+  public int ulH;
+  public int ulI;
+  public String ulJ;
+  public int ulK;
+  public f ulL;
+  public LinkedList<au> ulM;
+  public au ulN;
+  public String ulO;
+  public String ulP;
+  public int ulQ;
+  public LinkedList<y> ulR;
+  public String ulS;
+  public String ulT;
+  public int ulU;
+  public String ulV;
+  public String ulW;
+  public String ulw;
+  public String ulx;
+  public String uly;
+  public String ulz;
   
   public l()
   {
     AppMethodBeat.i(91253);
-    this.tdx = new LinkedList();
-    this.tdC = new LinkedList();
+    this.ulM = new LinkedList();
+    this.ulR = new LinkedList();
     AppMethodBeat.o(91253);
   }
   
@@ -60,90 +60,90 @@ public final class l
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.dDN);
-      paramVarArgs.aR(2, this.dDO);
-      if (this.tdh != null) {
-        paramVarArgs.d(3, this.tdh);
+      paramVarArgs.aR(1, this.dBz);
+      paramVarArgs.aR(2, this.dBA);
+      if (this.ulw != null) {
+        paramVarArgs.d(3, this.ulw);
       }
-      if (this.tdi != null) {
-        paramVarArgs.d(4, this.tdi);
+      if (this.ulx != null) {
+        paramVarArgs.d(4, this.ulx);
       }
-      if (this.sYt != null) {
-        paramVarArgs.d(5, this.sYt);
+      if (this.ugH != null) {
+        paramVarArgs.d(5, this.ugH);
       }
-      if (this.tdj != null) {
-        paramVarArgs.d(6, this.tdj);
+      if (this.uly != null) {
+        paramVarArgs.d(6, this.uly);
       }
-      if (this.tdk != null) {
-        paramVarArgs.d(7, this.tdk);
+      if (this.ulz != null) {
+        paramVarArgs.d(7, this.ulz);
       }
-      if (this.sZn != null) {
-        paramVarArgs.d(8, this.sZn);
+      if (this.uhB != null) {
+        paramVarArgs.d(8, this.uhB);
       }
-      if (this.tdl != null) {
-        paramVarArgs.d(9, this.tdl);
+      if (this.ulA != null) {
+        paramVarArgs.d(9, this.ulA);
       }
-      if (this.tdm != null) {
-        paramVarArgs.d(10, this.tdm);
+      if (this.ulB != null) {
+        paramVarArgs.d(10, this.ulB);
       }
-      paramVarArgs.aG(11, this.dEb);
-      paramVarArgs.aG(12, this.tdn);
-      paramVarArgs.aG(13, this.tdo);
-      paramVarArgs.aR(14, this.nTB);
-      paramVarArgs.aG(15, this.tdp);
-      if (this.tdq != null) {
-        paramVarArgs.d(16, this.tdq);
+      paramVarArgs.aO(11, this.dBN);
+      paramVarArgs.aO(12, this.ulC);
+      paramVarArgs.aO(13, this.ulD);
+      paramVarArgs.aR(14, this.owW);
+      paramVarArgs.aO(15, this.ulE);
+      if (this.ulF != null) {
+        paramVarArgs.d(16, this.ulF);
       }
-      paramVarArgs.aR(17, this.tdr);
-      paramVarArgs.aR(18, this.tds);
-      paramVarArgs.aR(19, this.tdt);
-      if (this.tdu != null) {
-        paramVarArgs.d(20, this.tdu);
+      paramVarArgs.aR(17, this.ulG);
+      paramVarArgs.aR(18, this.ulH);
+      paramVarArgs.aR(19, this.ulI);
+      if (this.ulJ != null) {
+        paramVarArgs.d(20, this.ulJ);
       }
-      paramVarArgs.aR(21, this.dDP);
-      paramVarArgs.aR(22, this.tdv);
-      if (this.tdw != null)
+      paramVarArgs.aR(21, this.dBB);
+      paramVarArgs.aR(22, this.ulK);
+      if (this.ulL != null)
       {
-        paramVarArgs.kX(23, this.tdw.computeSize());
-        this.tdw.writeFields(paramVarArgs);
+        paramVarArgs.ln(23, this.ulL.computeSize());
+        this.ulL.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(24, this.tax);
-      if (this.taz != null) {
-        paramVarArgs.d(25, this.taz);
+      paramVarArgs.aR(24, this.uiM);
+      if (this.uiO != null) {
+        paramVarArgs.d(25, this.uiO);
       }
-      paramVarArgs.e(26, 8, this.tdx);
-      if (this.tdy != null)
+      paramVarArgs.e(26, 8, this.ulM);
+      if (this.ulN != null)
       {
-        paramVarArgs.kX(27, this.tdy.computeSize());
-        this.tdy.writeFields(paramVarArgs);
+        paramVarArgs.ln(27, this.ulN.computeSize());
+        this.ulN.writeFields(paramVarArgs);
       }
-      if (this.tdz != null) {
-        paramVarArgs.d(28, this.tdz);
+      if (this.ulO != null) {
+        paramVarArgs.d(28, this.ulO);
       }
-      if (this.tdA != null) {
-        paramVarArgs.d(29, this.tdA);
+      if (this.ulP != null) {
+        paramVarArgs.d(29, this.ulP);
       }
-      paramVarArgs.aR(30, this.tdB);
+      paramVarArgs.aR(30, this.ulQ);
       paramVarArgs.aR(31, this.resourceId);
-      if (this.taA != null) {
-        paramVarArgs.d(32, this.taA);
+      if (this.uiP != null) {
+        paramVarArgs.d(32, this.uiP);
       }
-      paramVarArgs.e(33, 8, this.tdC);
-      if (this.tay != null) {
-        paramVarArgs.d(34, this.tay);
+      paramVarArgs.e(33, 8, this.ulR);
+      if (this.uiN != null) {
+        paramVarArgs.d(34, this.uiN);
       }
-      if (this.tdD != null) {
-        paramVarArgs.d(35, this.tdD);
+      if (this.ulS != null) {
+        paramVarArgs.d(35, this.ulS);
       }
-      if (this.tdE != null) {
-        paramVarArgs.d(36, this.tdE);
+      if (this.ulT != null) {
+        paramVarArgs.d(36, this.ulT);
       }
-      paramVarArgs.aR(37, this.tdF);
-      if (this.tdG != null) {
-        paramVarArgs.d(38, this.tdG);
+      paramVarArgs.aR(37, this.ulU);
+      if (this.ulV != null) {
+        paramVarArgs.d(38, this.ulV);
       }
-      if (this.tdH != null) {
-        paramVarArgs.d(39, this.tdH);
+      if (this.ulW != null) {
+        paramVarArgs.d(39, this.ulW);
       }
       AppMethodBeat.o(91254);
       return 0;
@@ -151,98 +151,98 @@ public final class l
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.bA(1, this.dDN) + 0 + f.a.a.b.b.a.bA(2, this.dDO);
+      i = f.a.a.b.b.a.bx(1, this.dBz) + 0 + f.a.a.b.b.a.bx(2, this.dBA);
       paramInt = i;
-      if (this.tdh != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.tdh);
+      if (this.ulw != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.ulw);
       }
       i = paramInt;
-      if (this.tdi != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.tdi);
+      if (this.ulx != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.ulx);
       }
       paramInt = i;
-      if (this.sYt != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.sYt);
+      if (this.ugH != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.ugH);
       }
       i = paramInt;
-      if (this.tdj != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.tdj);
+      if (this.uly != null) {
+        i = paramInt + f.a.a.b.b.a.e(6, this.uly);
       }
       paramInt = i;
-      if (this.tdk != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.tdk);
+      if (this.ulz != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.ulz);
       }
       i = paramInt;
-      if (this.sZn != null) {
-        i = paramInt + f.a.a.b.b.a.e(8, this.sZn);
+      if (this.uhB != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.uhB);
       }
       paramInt = i;
-      if (this.tdl != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.tdl);
+      if (this.ulA != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.ulA);
       }
       i = paramInt;
-      if (this.tdm != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.tdm);
+      if (this.ulB != null) {
+        i = paramInt + f.a.a.b.b.a.e(10, this.ulB);
       }
-      i = i + f.a.a.b.b.a.q(11, this.dEb) + f.a.a.b.b.a.q(12, this.tdn) + f.a.a.b.b.a.q(13, this.tdo) + f.a.a.b.b.a.bA(14, this.nTB) + f.a.a.b.b.a.q(15, this.tdp);
+      i = i + f.a.a.b.b.a.p(11, this.dBN) + f.a.a.b.b.a.p(12, this.ulC) + f.a.a.b.b.a.p(13, this.ulD) + f.a.a.b.b.a.bx(14, this.owW) + f.a.a.b.b.a.p(15, this.ulE);
       paramInt = i;
-      if (this.tdq != null) {
-        paramInt = i + f.a.a.b.b.a.e(16, this.tdq);
+      if (this.ulF != null) {
+        paramInt = i + f.a.a.b.b.a.e(16, this.ulF);
       }
-      i = paramInt + f.a.a.b.b.a.bA(17, this.tdr) + f.a.a.b.b.a.bA(18, this.tds) + f.a.a.b.b.a.bA(19, this.tdt);
+      i = paramInt + f.a.a.b.b.a.bx(17, this.ulG) + f.a.a.b.b.a.bx(18, this.ulH) + f.a.a.b.b.a.bx(19, this.ulI);
       paramInt = i;
-      if (this.tdu != null) {
-        paramInt = i + f.a.a.b.b.a.e(20, this.tdu);
+      if (this.ulJ != null) {
+        paramInt = i + f.a.a.b.b.a.e(20, this.ulJ);
       }
-      i = paramInt + f.a.a.b.b.a.bA(21, this.dDP) + f.a.a.b.b.a.bA(22, this.tdv);
+      i = paramInt + f.a.a.b.b.a.bx(21, this.dBB) + f.a.a.b.b.a.bx(22, this.ulK);
       paramInt = i;
-      if (this.tdw != null) {
-        paramInt = i + f.a.a.a.kW(23, this.tdw.computeSize());
+      if (this.ulL != null) {
+        paramInt = i + f.a.a.a.lm(23, this.ulL.computeSize());
       }
-      i = paramInt + f.a.a.b.b.a.bA(24, this.tax);
+      i = paramInt + f.a.a.b.b.a.bx(24, this.uiM);
       paramInt = i;
-      if (this.taz != null) {
-        paramInt = i + f.a.a.b.b.a.e(25, this.taz);
+      if (this.uiO != null) {
+        paramInt = i + f.a.a.b.b.a.e(25, this.uiO);
       }
-      i = paramInt + f.a.a.a.c(26, 8, this.tdx);
+      i = paramInt + f.a.a.a.c(26, 8, this.ulM);
       paramInt = i;
-      if (this.tdy != null) {
-        paramInt = i + f.a.a.a.kW(27, this.tdy.computeSize());
+      if (this.ulN != null) {
+        paramInt = i + f.a.a.a.lm(27, this.ulN.computeSize());
       }
       i = paramInt;
-      if (this.tdz != null) {
-        i = paramInt + f.a.a.b.b.a.e(28, this.tdz);
+      if (this.ulO != null) {
+        i = paramInt + f.a.a.b.b.a.e(28, this.ulO);
       }
       paramInt = i;
-      if (this.tdA != null) {
-        paramInt = i + f.a.a.b.b.a.e(29, this.tdA);
+      if (this.ulP != null) {
+        paramInt = i + f.a.a.b.b.a.e(29, this.ulP);
       }
-      i = paramInt + f.a.a.b.b.a.bA(30, this.tdB) + f.a.a.b.b.a.bA(31, this.resourceId);
+      i = paramInt + f.a.a.b.b.a.bx(30, this.ulQ) + f.a.a.b.b.a.bx(31, this.resourceId);
       paramInt = i;
-      if (this.taA != null) {
-        paramInt = i + f.a.a.b.b.a.e(32, this.taA);
+      if (this.uiP != null) {
+        paramInt = i + f.a.a.b.b.a.e(32, this.uiP);
       }
-      i = paramInt + f.a.a.a.c(33, 8, this.tdC);
+      i = paramInt + f.a.a.a.c(33, 8, this.ulR);
       paramInt = i;
-      if (this.tay != null) {
-        paramInt = i + f.a.a.b.b.a.e(34, this.tay);
+      if (this.uiN != null) {
+        paramInt = i + f.a.a.b.b.a.e(34, this.uiN);
       }
       i = paramInt;
-      if (this.tdD != null) {
-        i = paramInt + f.a.a.b.b.a.e(35, this.tdD);
+      if (this.ulS != null) {
+        i = paramInt + f.a.a.b.b.a.e(35, this.ulS);
       }
       paramInt = i;
-      if (this.tdE != null) {
-        paramInt = i + f.a.a.b.b.a.e(36, this.tdE);
+      if (this.ulT != null) {
+        paramInt = i + f.a.a.b.b.a.e(36, this.ulT);
       }
-      i = paramInt + f.a.a.b.b.a.bA(37, this.tdF);
+      i = paramInt + f.a.a.b.b.a.bx(37, this.ulU);
       paramInt = i;
-      if (this.tdG != null) {
-        paramInt = i + f.a.a.b.b.a.e(38, this.tdG);
+      if (this.ulV != null) {
+        paramInt = i + f.a.a.b.b.a.e(38, this.ulV);
       }
       i = paramInt;
-      if (this.tdH != null) {
-        i = paramInt + f.a.a.b.b.a.e(39, this.tdH);
+      if (this.ulW != null) {
+        i = paramInt + f.a.a.b.b.a.e(39, this.ulW);
       }
       AppMethodBeat.o(91254);
       return i;
@@ -250,12 +250,12 @@ public final class l
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.tdx.clear();
-      this.tdC.clear();
+      this.ulM.clear();
+      this.ulR.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(91254);
@@ -274,95 +274,95 @@ public final class l
         AppMethodBeat.o(91254);
         return -1;
       case 1: 
-        locall.dDN = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.dBz = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 2: 
-        locall.dDO = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.dBA = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 3: 
-        locall.tdh = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulw = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 4: 
-        locall.tdi = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulx = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 5: 
-        locall.sYt = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ugH = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 6: 
-        locall.tdj = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.uly = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 7: 
-        locall.tdk = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulz = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 8: 
-        locall.sZn = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.uhB = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 9: 
-        locall.tdl = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulA = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 10: 
-        locall.tdm = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulB = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 11: 
-        locall.dEb = ((f.a.a.a.a)localObject1).KhF.xT();
+        locall.dBN = ((f.a.a.a.a)localObject1).LVo.xG();
         AppMethodBeat.o(91254);
         return 0;
       case 12: 
-        locall.tdn = ((f.a.a.a.a)localObject1).KhF.xT();
+        locall.ulC = ((f.a.a.a.a)localObject1).LVo.xG();
         AppMethodBeat.o(91254);
         return 0;
       case 13: 
-        locall.tdo = ((f.a.a.a.a)localObject1).KhF.xT();
+        locall.ulD = ((f.a.a.a.a)localObject1).LVo.xG();
         AppMethodBeat.o(91254);
         return 0;
       case 14: 
-        locall.nTB = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.owW = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 15: 
-        locall.tdp = ((f.a.a.a.a)localObject1).KhF.xT();
+        locall.ulE = ((f.a.a.a.a)localObject1).LVo.xG();
         AppMethodBeat.o(91254);
         return 0;
       case 16: 
-        locall.tdq = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulF = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 17: 
-        locall.tdr = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.ulG = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 18: 
-        locall.tds = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.ulH = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 19: 
-        locall.tdt = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.ulI = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 20: 
-        locall.tdu = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulJ = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 21: 
-        locall.dDP = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.dBB = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 22: 
-        locall.tdv = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.ulK = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 23: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -370,22 +370,22 @@ public final class l
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new f();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((f)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          locall.tdw = ((f)localObject1);
+          for (bool = true; bool; bool = ((f)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          locall.ulL = ((f)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(91254);
         return 0;
       case 24: 
-        locall.tax = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.uiM = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 25: 
-        locall.taz = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.uiO = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 26: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -393,14 +393,14 @@ public final class l
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new au();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((au)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          locall.tdx.add(localObject1);
+          for (bool = true; bool; bool = ((au)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          locall.ulM.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(91254);
         return 0;
       case 27: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -408,34 +408,34 @@ public final class l
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new au();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((au)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          locall.tdy = ((au)localObject1);
+          for (bool = true; bool; bool = ((au)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          locall.ulN = ((au)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(91254);
         return 0;
       case 28: 
-        locall.tdz = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulO = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 29: 
-        locall.tdA = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulP = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 30: 
-        locall.tdB = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.ulQ = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 31: 
-        locall.resourceId = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.resourceId = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 32: 
-        locall.taA = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.uiP = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 33: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -443,34 +443,34 @@ public final class l
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new y();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((y)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          locall.tdC.add(localObject1);
+          for (bool = true; bool; bool = ((y)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          locall.ulR.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(91254);
         return 0;
       case 34: 
-        locall.tay = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.uiN = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 35: 
-        locall.tdD = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulS = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 36: 
-        locall.tdE = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulT = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 37: 
-        locall.tdF = ((f.a.a.a.a)localObject1).KhF.xS();
+        locall.ulU = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(91254);
         return 0;
       case 38: 
-        locall.tdG = ((f.a.a.a.a)localObject1).KhF.readString();
+        locall.ulV = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91254);
         return 0;
       }
-      locall.tdH = ((f.a.a.a.a)localObject1).KhF.readString();
+      locall.ulW = ((f.a.a.a.a)localObject1).LVo.readString();
       AppMethodBeat.o(91254);
       return 0;
     }

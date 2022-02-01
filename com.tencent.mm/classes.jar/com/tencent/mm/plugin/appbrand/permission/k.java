@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.a.f;
 import com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiGetBackgroundAudioState;
 import com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiGetMusicPlayerState;
 import com.tencent.mm.plugin.appbrand.jsapi.audio.d;
 import com.tencent.mm.plugin.appbrand.jsapi.audio.e;
 import com.tencent.mm.plugin.appbrand.jsapi.audio.g;
 import com.tencent.mm.plugin.appbrand.jsapi.audio.l;
-import com.tencent.mm.plugin.appbrand.jsapi.b.f;
 import com.tencent.mm.plugin.appbrand.jsapi.j.g.a;
-import com.tencent.mm.plugin.appbrand.jsapi.u.b.a;
-import com.tencent.mm.plugin.appbrand.jsapi.u.c.a;
+import com.tencent.mm.plugin.appbrand.jsapi.t.b.a;
+import com.tencent.mm.plugin.appbrand.jsapi.t.c.a;
 import java.util.Collection;
 import java.util.HashSet;
 
 public class k
   implements h
 {
-  public static final k ljd;
-  protected Collection<Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b>> lje;
-  protected Collection<Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b>> ljf;
+  public static final k lIV;
+  protected Collection<Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b>> lIW;
+  protected Collection<Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b>> lIX;
   
   static
   {
     AppMethodBeat.i(147665);
-    ljd = new k();
+    lIV = new k();
     AppMethodBeat.o(147665);
   }
   
   protected k()
   {
     AppMethodBeat.i(147662);
-    this.lje = new HashSet();
-    this.ljf = new HashSet();
-    this.lje.add(b.a.class);
-    this.lje.add(c.a.class);
-    this.lje.add(g.a.class);
-    this.ljf.add(f.class);
-    this.ljf.add(com.tencent.mm.plugin.appbrand.jsapi.l.b.class);
-    this.ljf.add(g.class);
-    this.ljf.add(JsApiGetMusicPlayerState.class);
-    this.ljf.add(JsApiGetBackgroundAudioState.class);
-    this.ljf.add(d.class);
-    this.ljf.add(e.class);
-    this.ljf.add(g.class);
-    this.ljf.add(l.class);
-    this.ljf.add(com.tencent.mm.plugin.appbrand.jsapi.audio.h.class);
+    this.lIW = new HashSet();
+    this.lIX = new HashSet();
+    this.lIW.add(b.a.class);
+    this.lIW.add(c.a.class);
+    this.lIW.add(g.a.class);
+    this.lIX.add(f.class);
+    this.lIX.add(com.tencent.mm.plugin.appbrand.jsapi.k.b.class);
+    this.lIX.add(g.class);
+    this.lIX.add(JsApiGetMusicPlayerState.class);
+    this.lIX.add(JsApiGetBackgroundAudioState.class);
+    this.lIX.add(d.class);
+    this.lIX.add(e.class);
+    this.lIX.add(g.class);
+    this.lIX.add(l.class);
+    this.lIX.add(com.tencent.mm.plugin.appbrand.jsapi.audio.h.class);
     AppMethodBeat.o(147662);
   }
   
@@ -70,7 +70,7 @@ public class k
       AppMethodBeat.o(147664);
       return false;
     }
-    if ((this.ljf.contains(paramClass)) || (this.lje.contains(paramClass)))
+    if ((this.lIX.contains(paramClass)) || (this.lIW.contains(paramClass)))
     {
       AppMethodBeat.o(147664);
       return true;
@@ -81,7 +81,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.k
  * JD-Core Version:    0.7.0.1
  */

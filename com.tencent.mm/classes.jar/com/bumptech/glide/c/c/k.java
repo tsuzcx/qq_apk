@@ -45,7 +45,7 @@ public final class k
   static final class b
     implements d<File>
   {
-    private static final String[] aHD = { "_data" };
+    private static final String[] aIt = { "_data" };
     private final Context context;
     private final Uri uri;
     
@@ -60,7 +60,7 @@ public final class k
       paramg = null;
       Object localObject = null;
       AppMethodBeat.i(77256);
-      Cursor localCursor = this.context.getContentResolver().query(this.uri, aHD, null, null, null);
+      Cursor localCursor = this.context.getContentResolver().query(this.uri, aIt, null, null, null);
       if (localCursor != null) {
         paramg = localObject;
       }
@@ -82,7 +82,7 @@ public final class k
         localCursor.close();
         AppMethodBeat.o(77256);
       }
-      parama.P(new File(paramg));
+      parama.R(new File(paramg));
       AppMethodBeat.o(77256);
     }
     
@@ -90,20 +90,20 @@ public final class k
     
     public final void cleanup() {}
     
-    public final Class<File> nK()
+    public final Class<File> nU()
     {
       return File.class;
     }
     
-    public final a nL()
+    public final a nV()
     {
-      return a.aBX;
+      return a.aCP;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.k
  * JD-Core Version:    0.7.0.1
  */

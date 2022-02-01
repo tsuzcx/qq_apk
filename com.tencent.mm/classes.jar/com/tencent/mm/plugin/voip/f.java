@@ -6,25 +6,25 @@ import com.tencent.mm.r.a;
 
 public final class f
 {
-  public static boolean cd(Context paramContext)
+  public static boolean cg(Context paramContext)
   {
-    AppMethodBeat.i(204991);
-    boolean bool = a.cd(paramContext);
-    AppMethodBeat.o(204991);
+    AppMethodBeat.i(210511);
+    boolean bool = a.cg(paramContext);
+    AppMethodBeat.o(210511);
     return bool;
   }
   
-  public static boolean ce(Context paramContext)
+  public static boolean ci(Context paramContext)
   {
-    AppMethodBeat.i(204992);
-    boolean bool = a.ce(paramContext);
-    AppMethodBeat.o(204992);
+    AppMethodBeat.i(210512);
+    boolean bool = a.ci(paramContext);
+    AppMethodBeat.o(210512);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.f
  * JD-Core Version:    0.7.0.1
  */

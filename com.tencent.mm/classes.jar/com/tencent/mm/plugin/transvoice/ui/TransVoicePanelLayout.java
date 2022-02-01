@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.transvoice.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.widget.InputPanelFrameLayout;
 
 public class TransVoicePanelLayout
   extends InputPanelFrameLayout
 {
-  a yYI;
+  a Amx;
   
   public TransVoicePanelLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,16 +25,16 @@ public class TransVoicePanelLayout
   {
     AppMethodBeat.i(102632);
     super.g(paramBoolean, paramInt);
-    ad.d("TransVoicePanelLayout", "isKeyboardShow: %s, keyboardHeight: %d.", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    if (this.yYI != null) {
-      this.yYI.g(paramBoolean, paramInt);
+    ac.d("TransVoicePanelLayout", "isKeyboardShow: %s, keyboardHeight: %d.", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    if (this.Amx != null) {
+      this.Amx.g(paramBoolean, paramInt);
     }
     AppMethodBeat.o(102632);
   }
   
   void setOnInputPanelChange(a parama)
   {
-    this.yYI = parama;
+    this.Amx = parama;
   }
   
   static abstract interface a

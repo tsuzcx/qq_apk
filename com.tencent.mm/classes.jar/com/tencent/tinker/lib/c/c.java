@@ -26,7 +26,7 @@ public class c
     //   35: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   38: iconst_0
     //   39: anewarray 4	java/lang/Object
-    //   42: invokestatic 35	com/tencent/tinker/lib/f/a:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   42: invokestatic 35	com/tencent/tinker/loader/shareutil/ShareTinkerLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   45: new 37	java/io/BufferedInputStream
     //   48: dup
     //   49: aload_0
@@ -89,7 +89,7 @@ public class c
     //   163: iload 7
     //   165: invokestatic 88	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   168: aastore
-    //   169: invokestatic 35	com/tencent/tinker/lib/f/a:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   169: invokestatic 35	com/tencent/tinker/loader/shareutil/ShareTinkerLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   172: iload 7
     //   174: ifne +45 -> 219
     //   177: aload_2
@@ -109,7 +109,7 @@ public class c
     //   209: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   212: iconst_0
     //   213: anewarray 4	java/lang/Object
-    //   216: invokestatic 100	com/tencent/tinker/lib/f/a:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   216: invokestatic 100	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   219: iload 5
     //   221: iconst_1
     //   222: iadd
@@ -159,7 +159,7 @@ public class c
     //   59	76	255	finally
   }
   
-  public static int acP(int paramInt)
+  public static int afL(int paramInt)
   {
     if (paramInt == 3) {
       return -3;
@@ -175,7 +175,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.c.c
  * JD-Core Version:    0.7.0.1
  */

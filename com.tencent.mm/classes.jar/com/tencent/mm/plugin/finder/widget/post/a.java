@@ -5,59 +5,50 @@ import android.os.Bundle;
 import com.tencent.mm.plugin.finder.storage.logic.b.a;
 import com.tencent.mm.protocal.protobuf.FinderMedia;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.akf;
-import com.tencent.mm.protocal.protobuf.bmc;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.amq;
+import com.tencent.mm.protocal.protobuf.bqr;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;", "Lcom/tencent/mm/plugin/finder/widget/post/IPostMediaWidget;", "activity", "Landroid/content/Context;", "(Landroid/content/Context;)V", "context", "getContext", "()Landroid/content/Context;", "data", "Landroid/os/Bundle;", "getData", "()Landroid/os/Bundle;", "setData", "(Landroid/os/Bundle;)V", "refFeed", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "getRefFeed", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "setRefFeed", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "refFeedContent", "Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "getRefFeedContent", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "setRefFeedContent", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;)V", "setMediaData", "", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;", "Lcom/tencent/mm/plugin/finder/widget/post/IPostMediaWidget;", "activity", "Landroid/content/Context;", "(Landroid/content/Context;)V", "context", "getContext", "()Landroid/content/Context;", "data", "Landroid/os/Bundle;", "getData", "()Landroid/os/Bundle;", "setData", "(Landroid/os/Bundle;)V", "refFeed", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "getRefFeed", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "setRefFeed", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "refFeedContent", "Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "getRefFeedContent", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "setRefFeedContent", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;)V", "setMediaData", "", "Companion", "plugin-finder_release"})
 public abstract class a
   implements b
 {
-  private static final String LlM = "POST_ORIGINAL_FLAG";
-  private static final String qZU = "post_location";
-  private static final String qZV = "post_extend_reading";
-  private static final String qZW = "post_ref_feed_info";
-  private static final String qZX = "post_ref_feed_content";
-  private static final String qZY = "post_from_camera";
-  public static final a qZZ = new a((byte)0);
+  private static final String shX = "post_location";
+  private static final String shY = "post_extend_reading";
+  private static final String shZ = "post_ref_feed_info";
+  private static final String sia = "post_ref_feed_content";
+  private static final String sib = "post_from_camera";
+  private static final String sic = "POST_ORIGINAL_FLAG";
+  public static final a.a sid = new a.a((byte)0);
   final Context context;
-  Bundle dow;
-  akf qOO;
-  bmc qZS;
-  
-  static
-  {
-    qZU = "post_location";
-    qZV = "post_extend_reading";
-    qZW = "post_ref_feed_info";
-    qZX = "post_ref_feed_content";
-    qZY = "post_from_camera";
-  }
+  Bundle dmf;
+  amq shV;
+  bqr shW;
   
   public a(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  public final void Y(Bundle paramBundle)
+  public final void ab(Bundle paramBundle)
   {
     k.h(paramBundle, "data");
-    this.dow = paramBundle;
-    Object localObject2 = paramBundle.getByteArray(qZW);
-    Object localObject1 = paramBundle.getByteArray(qZX);
+    this.dmf = paramBundle;
+    Object localObject2 = paramBundle.getByteArray(shZ);
+    Object localObject1 = paramBundle.getByteArray(sia);
     if ((localObject2 != null) && (localObject1 != null))
     {
-      paramBundle = (com.tencent.mm.bx.a)new akf();
+      paramBundle = (com.tencent.mm.bw.a)new amq();
       try
       {
         paramBundle.parseFrom((byte[])localObject2);
-        this.qOO = ((akf)paramBundle);
-        this.qZS = new bmc();
-        paramBundle = (com.tencent.mm.bx.a)new FinderObjectDesc();
+        this.shV = ((amq)paramBundle);
+        this.shW = new bqr();
+        paramBundle = (com.tencent.mm.bw.a)new FinderObjectDesc();
       }
       catch (Exception paramBundle)
       {
@@ -74,19 +65,19 @@ public abstract class a
               while (paramBundle.hasNext())
               {
                 localObject1 = (FinderMedia)paramBundle.next();
-                localObject2 = this.qZS;
+                localObject2 = this.shW;
                 if (localObject2 != null)
                 {
-                  localObject2 = ((bmc)localObject2).mediaList;
+                  localObject2 = ((bqr)localObject2).mediaList;
                   if (localObject2 != null)
                   {
-                    b.a locala = com.tencent.mm.plugin.finder.storage.logic.b.qKG;
+                    b.a locala = com.tencent.mm.plugin.finder.storage.logic.b.rFl;
                     int i = ((FinderMedia)localObject1).mediaType;
                     k.g(localObject1, "svrMedia");
                     ((LinkedList)localObject2).add(b.a.a(i, (FinderMedia)localObject1));
                     continue;
                     paramBundle = paramBundle;
-                    ad.l("safeParser", "", new Object[] { paramBundle });
+                    ac.l("safeParser", "", new Object[] { paramBundle });
                     paramBundle = null;
                   }
                 }
@@ -98,20 +89,17 @@ public abstract class a
         {
           for (;;)
           {
-            ad.l("safeParser", "", new Object[] { paramBundle });
+            ac.l("safeParser", "", new Object[] { paramBundle });
             paramBundle = null;
           }
         }
       }
     }
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget$Companion;", "", "()V", "POST_EXTEND_READING", "", "getPOST_EXTEND_READING", "()Ljava/lang/String;", "POST_FROM_CAMERA", "getPOST_FROM_CAMERA", "POST_LOCATION", "getPOST_LOCATION", "POST_ORIGINAL_FLAG", "getPOST_ORIGINAL_FLAG", "POST_REF_FEED_CONTENT", "getPOST_REF_FEED_CONTENT", "POST_REF_FEED_INFO", "getPOST_REF_FEED_INFO", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.widget.post.a
  * JD-Core Version:    0.7.0.1
  */

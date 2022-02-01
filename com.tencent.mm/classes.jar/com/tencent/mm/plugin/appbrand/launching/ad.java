@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.h;
-import com.tencent.mm.al.c.a;
-import com.tencent.mm.al.y;
+import com.tencent.mm.ab.h;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.ak.y;
 import com.tencent.mm.b.p;
-import com.tencent.mm.co.f;
-import com.tencent.mm.plugin.appbrand.aa.i;
+import com.tencent.mm.cn.f;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
@@ -19,15 +18,17 @@ import com.tencent.mm.plugin.appbrand.au;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionModuleInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaWidgetInfo;
+import com.tencent.mm.plugin.appbrand.z.i;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.protocal.protobuf.ate;
-import com.tencent.mm.protocal.protobuf.atf;
-import com.tencent.mm.protocal.protobuf.bmj;
-import com.tencent.mm.protocal.protobuf.ckp;
-import com.tencent.mm.protocal.protobuf.duo;
-import com.tencent.mm.protocal.protobuf.ji;
-import com.tencent.mm.protocal.protobuf.jj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.awi;
+import com.tencent.mm.protocal.protobuf.awj;
+import com.tencent.mm.protocal.protobuf.bqz;
+import com.tencent.mm.protocal.protobuf.cpw;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jo;
+import com.tencent.mm.protocal.protobuf.jp;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -40,56 +41,56 @@ public class ad
   implements x
 {
   final String appId;
-  final int gXn;
-  List<WxaAttributes.WxaWidgetInfo> huK;
-  final int kJQ;
-  List<WxaAttributes.WxaPluginCodeInfo> kJR;
-  LinkedHashMap<String, i<WxaPkgWrappingInfo>> kJS;
-  private final String kJT;
-  private final AtomicInteger kJU;
-  private volatile boolean kJV;
-  private com.tencent.mm.plugin.appbrand.launching.f.a kJW;
-  private PBool kJX;
-  List<u> kJY;
+  List<WxaAttributes.WxaWidgetInfo> hVm;
+  final int hxM;
+  final int llm;
+  List<WxaAttributes.WxaPluginCodeInfo> lln;
+  LinkedHashMap<String, i<WxaPkgWrappingInfo>> llo;
+  private final String llp;
+  private final AtomicInteger llq;
+  private volatile boolean llr;
+  private com.tencent.mm.plugin.appbrand.launching.f.a lls;
+  private PBool llt;
+  List<u> llu;
   List<WxaAttributes.WxaVersionModuleInfo> moduleList;
   
   ad(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, List<WxaAttributes.WxaVersionModuleInfo> paramList, List<WxaAttributes.WxaPluginCodeInfo> paramList1, List<WxaAttributes.WxaWidgetInfo> paramList2, PBool paramPBool)
   {
     AppMethodBeat.i(174962);
-    this.kJS = new LinkedHashMap();
-    this.kJU = new AtomicInteger(0);
-    this.kJV = false;
-    this.kJY = new LinkedList();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "appId:%s,versionType:%s,desirePkgVersion:%s,instanceId:%s,scene:%d", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2, Integer.valueOf(paramInt3) });
+    this.llo = new LinkedHashMap();
+    this.llq = new AtomicInteger(0);
+    this.llr = false;
+    this.llu = new LinkedList();
+    ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "appId:%s,versionType:%s,desirePkgVersion:%s,instanceId:%s,scene:%d", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2, Integer.valueOf(paramInt3) });
     this.appId = paramString1;
-    this.gXn = paramInt1;
-    this.kJQ = paramInt2;
-    this.kJR = paramList1;
-    this.huK = paramList2;
-    this.kJW = new com.tencent.mm.plugin.appbrand.launching.f.a(paramString1, paramInt2, paramInt1, paramString2, paramInt3, this.kJR);
-    this.kJX = paramPBool;
-    this.kJT = paramString2;
+    this.hxM = paramInt1;
+    this.llm = paramInt2;
+    this.lln = paramList1;
+    this.hVm = paramList2;
+    this.lls = new com.tencent.mm.plugin.appbrand.launching.f.a(paramString1, paramInt2, paramInt1, paramString2, paramInt3, this.lln);
+    this.llt = paramPBool;
+    this.llp = paramString2;
     this.moduleList = paramList;
     AppMethodBeat.o(174962);
   }
   
-  private WxaPkgWrappingInfo aVF()
+  private WxaPkgWrappingInfo bcD()
   {
     AppMethodBeat.i(174963);
     Object localObject1 = new i();
     int j = 13;
     int i = j;
     Object localObject2;
-    if (this.huK != null)
+    if (this.hVm != null)
     {
       i = j;
-      if (this.huK.size() > 0)
+      if (this.hVm.size() > 0)
       {
-        localObject2 = this.huK.iterator();
+        localObject2 = this.hVm.iterator();
         i = 13;
         if (((Iterator)localObject2).hasNext())
         {
-          j = ((WxaAttributes.WxaWidgetInfo)((Iterator)localObject2).next()).deP;
+          j = ((WxaAttributes.WxaWidgetInfo)((Iterator)localObject2).next()).dcj;
           if (j != 23) {
             break label2286;
           }
@@ -105,14 +106,14 @@ public class ad
     for (;;)
     {
       break;
-      localObject2 = m.b(this.appId, "__APP__", i, this.kJQ, this.gXn);
+      localObject2 = m.b(this.appId, "__APP__", i, this.llm, this.hxM);
       if (localObject2 != null)
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "mainModulePkgInfo exists!");
+        ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "mainModulePkgInfo exists!");
         ((i)localObject1).value = localObject2;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "mainModulePkgType:%d", new Object[] { Integer.valueOf(i) });
+        ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "mainModulePkgType:%d", new Object[] { Integer.valueOf(i) });
         localObject2 = (WxaPkgWrappingInfo)((i)localObject1).value;
-        localObject3 = this.kJR.iterator();
+        localObject3 = this.lln.iterator();
       }
       Object localObject5;
       Object localObject4;
@@ -126,50 +127,50 @@ public class ad
         localObject4 = ((WxaAttributes.WxaPluginCodeInfo)localObject5).provider;
         localObject6 = ((WxaAttributes.WxaPluginCodeInfo)localObject5).md5;
         i = ((WxaAttributes.WxaPluginCodeInfo)localObject5).version;
-        this.kJS.put(localObject6, new i());
+        this.llo.put(localObject6, new i());
         localObject5 = m.b((String)localObject4, "__PLUGINCODE__", 6, i, 0);
         if (localObject5 != null)
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "pluginPkgInfo exists!");
-          ((i)this.kJS.get(((WxaPkgWrappingInfo)localObject5).md5)).value = localObject5;
-          sI(3);
+          ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "pluginPkgInfo exists!");
+          ((i)this.llo.get(((WxaPkgWrappingInfo)localObject5).md5)).value = localObject5;
+          tz(3);
           continue;
           localObject2 = new u();
-          localObject3 = new ckp();
-          ((ckp)localObject3).dlB = this.appId;
-          if (j.a.qD(this.gXn)) {
-            ((u)localObject2).kIJ = m.Kh(new ab(this.appId, "__APP__", i).toString());
+          localObject3 = new cpw();
+          ((cpw)localObject3).djj = this.appId;
+          if (j.a.rq(this.hxM)) {
+            ((u)localObject2).lkf = m.Oo(new ab(this.appId, "__APP__", i).toString());
           }
-          ((ckp)localObject3).CLK = this.gXn;
-          ((ckp)localObject3).DyU = i;
-          ((ckp)localObject3).DyR = "__APP__";
-          ((u)localObject2).kII = ((ckp)localObject3);
-          ((u)localObject2).kIK = this.kJQ;
-          this.kJY.add(localObject2);
+          ((cpw)localObject3).Een = this.hxM;
+          ((cpw)localObject3).EUq = i;
+          ((cpw)localObject3).EUn = "__APP__";
+          ((u)localObject2).lke = ((cpw)localObject3);
+          ((u)localObject2).lkg = this.llm;
+          this.llu.add(localObject2);
           break;
         }
         localObject5 = new u();
-        localObject6 = new ckp();
-        ((ckp)localObject6).dlB = ((String)localObject4);
-        ((ckp)localObject6).CLK = 0;
-        ((ckp)localObject6).DyU = 6;
-        ((u)localObject5).kII = ((ckp)localObject6);
-        ((u)localObject5).kIJ = m.bF(new ab((String)localObject4, "/__plugin__/", 6).toString(), i);
-        ((u)localObject5).kIK = i;
-        this.kJY.add(localObject5);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "pluginCode localPkgVersion:%d", new Object[] { Integer.valueOf(((u)localObject5).kIJ) });
+        localObject6 = new cpw();
+        ((cpw)localObject6).djj = ((String)localObject4);
+        ((cpw)localObject6).Een = 0;
+        ((cpw)localObject6).EUq = 6;
+        ((u)localObject5).lke = ((cpw)localObject6);
+        ((u)localObject5).lkf = m.bJ(new ab((String)localObject4, "/__plugin__/", 6).toString(), i);
+        ((u)localObject5).lkg = i;
+        this.llu.add(localObject5);
+        ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "pluginCode localPkgVersion:%d", new Object[] { Integer.valueOf(((u)localObject5).lkf) });
       }
       label509:
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "todoDownloadPkgList size:%d", new Object[] { Integer.valueOf(this.kJY.size()) });
-      if (this.kJY.size() == 0)
+      ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "todoDownloadPkgList size:%d", new Object[] { Integer.valueOf(this.llu.size()) });
+      if (this.llu.size() == 0)
       {
         i = 0;
-        if (i < this.kJR.size())
+        if (i < this.lln.size())
         {
-          localObject1 = (WxaAttributes.WxaPluginCodeInfo)this.kJR.get(i);
-          localObject3 = (i)this.kJS.get(((WxaAttributes.WxaPluginCodeInfo)localObject1).md5);
+          localObject1 = (WxaAttributes.WxaPluginCodeInfo)this.lln.get(i);
+          localObject3 = (i)this.llo.get(((WxaAttributes.WxaPluginCodeInfo)localObject1).md5);
           if (localObject3 == null) {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "wxaPkgInfoPointer null!");
+            ac.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "wxaPkgInfoPointer null!");
           }
           for (;;)
           {
@@ -178,19 +179,19 @@ public class ad
             localObject3 = (WxaPkgWrappingInfo)((i)localObject3).value;
             if (localObject3 == null)
             {
-              com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "wxaPkgInfoPointer value null!");
+              ac.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "wxaPkgInfoPointer value null!");
             }
-            else if (bt.isNullOrNil(((WxaAttributes.WxaPluginCodeInfo)localObject1).md5))
+            else if (bs.isNullOrNil(((WxaAttributes.WxaPluginCodeInfo)localObject1).md5))
             {
-              com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "pluginInfo md5 null!");
+              ac.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "pluginInfo md5 null!");
             }
             else
             {
               localObject4 = new ModulePkgInfo();
               ((ModulePkgInfo)localObject4).name = ("/__plugin__/" + ((WxaAttributes.WxaPluginCodeInfo)localObject1).provider);
-              ((ModulePkgInfo)localObject4).md5 = ((WxaAttributes.WxaPluginCodeInfo)this.kJR.get(i)).md5;
+              ((ModulePkgInfo)localObject4).md5 = ((WxaAttributes.WxaPluginCodeInfo)this.lln.get(i)).md5;
               ((ModulePkgInfo)localObject4).pkgPath = ((WxaPkgWrappingInfo)localObject3).pkgPath;
-              ((WxaPkgWrappingInfo)localObject2).iOT.add(localObject4);
+              ((WxaPkgWrappingInfo)localObject2).jpd.add(localObject4);
             }
           }
         }
@@ -201,61 +202,61 @@ public class ad
           if (!"__APP__".equals(((WxaAttributes.WxaVersionModuleInfo)localObject3).name))
           {
             localObject3 = au.a((WxaAttributes.WxaVersionModuleInfo)localObject3);
-            ((WxaPkgWrappingInfo)localObject2).iOT.add(localObject3);
+            ((WxaPkgWrappingInfo)localObject2).jpd.add(localObject3);
           }
         }
-        this.kJX.value = true;
+        this.llt.value = true;
         AppMethodBeat.o(174963);
         return localObject2;
       }
-      localObject2 = new ji();
-      Object localObject3 = this.kJY.iterator();
+      localObject2 = new jo();
+      Object localObject3 = this.llu.iterator();
       Object localObject7;
       while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (u)((Iterator)localObject3).next();
-        localObject5 = ((u)localObject4).kII;
-        localObject6 = new bmj();
-        ((bmj)localObject6).CLL = ((u)localObject4).kIJ;
-        ((bmj)localObject6).DAQ = 0;
-        localObject7 = new ate();
-        ((ate)localObject7).Dth = ((ckp)localObject5);
-        ((ate)localObject7).Dti = ((bmj)localObject6);
-        ((ate)localObject7).Dtj = 0;
-        ((ate)localObject7).CLL = ((u)localObject4).kIK;
+        localObject5 = ((u)localObject4).lke;
+        localObject6 = new bqz();
+        ((bqz)localObject6).Eeo = ((u)localObject4).lkf;
+        ((bqz)localObject6).EWm = 0;
+        localObject7 = new awi();
+        ((awi)localObject7).EOl = ((cpw)localObject5);
+        ((awi)localObject7).EOm = ((bqz)localObject6);
+        ((awi)localObject7).EOn = 0;
+        ((awi)localObject7).Eeo = ((u)localObject4).lkg;
         String str;
-        if (((ckp)localObject5).CLK == 1) {
-          str = ((t)j.T(t.class)).bG(this.appId, this.gXn);
+        if (((cpw)localObject5).Een == 1) {
+          str = ((t)j.T(t.class)).bK(this.appId, this.hxM);
         }
         try
         {
-          long l = h.qE(str).optLong("dev_key");
-          ((ate)localObject7).Dtm = new p(l).intValue();
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "uinL:%d", new Object[] { Long.valueOf(l) });
-          if (((ckp)localObject5).CLK == 0)
+          long l = h.tT(str).optLong("dev_key");
+          ((awi)localObject7).EOq = new p(l).intValue();
+          ac.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "uinL:%d", new Object[] { Long.valueOf(l) });
+          if (((cpw)localObject5).Een == 0)
           {
-            ((ate)localObject7).Dtl = true;
-            ((ji)localObject2).CEF.add(localObject7);
-            localObject7 = new ate();
-            ((ate)localObject7).Dth = ((ckp)localObject5);
-            ((ate)localObject7).Dti = ((bmj)localObject6);
-            ((ate)localObject7).Dtj = 0;
-            ((ate)localObject7).CLL = ((u)localObject4).kIK;
-            ((ate)localObject7).Dtl = false;
-            ((ji)localObject2).CEF.add(localObject7);
+            ((awi)localObject7).EOp = true;
+            ((jo)localObject2).DXf.add(localObject7);
+            localObject7 = new awi();
+            ((awi)localObject7).EOl = ((cpw)localObject5);
+            ((awi)localObject7).EOm = ((bqz)localObject6);
+            ((awi)localObject7).EOn = 0;
+            ((awi)localObject7).Eeo = ((u)localObject4).lkg;
+            ((awi)localObject7).EOp = false;
+            ((jo)localObject2).DXf.add(localObject7);
           }
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "opt devKey %s", new Object[] { localException });
+            ac.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "opt devKey %s", new Object[] { localException });
           }
-          ((ate)localObject7).Dtl = false;
-          ((ji)localObject2).CEF.add(localObject7);
+          ((awi)localObject7).EOp = false;
+          ((jo)localObject2).DXf.add(localObject7);
         }
       }
-      localObject2 = y.a(new com.tencent.mm.plugin.appbrand.appcache.g((ji)localObject2));
+      localObject2 = y.a(new com.tencent.mm.plugin.appbrand.appcache.g((jo)localObject2));
       if ((localObject2 == null) || (((c.a)localObject2).errType != 0) || (((c.a)localObject2).errCode != 0))
       {
         if (localObject2 == null)
@@ -267,38 +268,38 @@ public class ad
         }
         for (j = -1;; j = ((c.a)localObject2).errCode)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", " cgi failed, %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          ac.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", " cgi failed, %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
           AppMethodBeat.o(174963);
           return null;
           i = ((c.a)localObject2).errType;
           break;
         }
       }
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "back.resp.resp_list size:%d", new Object[] { Integer.valueOf(((jj)((c.a)localObject2).gUK).CEG.size()) });
-      localObject2 = ((jj)((c.a)localObject2).gUK).CEG.iterator();
+      ac.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "back.resp.resp_list size:%d", new Object[] { Integer.valueOf(((jp)((c.a)localObject2).hvj).DXg.size()) });
+      localObject2 = ((jp)((c.a)localObject2).hvj).DXg.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        Object localObject8 = (atf)((Iterator)localObject2).next();
-        if (((atf)localObject8).dhR == 0)
+        Object localObject8 = (awj)((Iterator)localObject2).next();
+        if (((awj)localObject8).dfm == 0)
         {
-          localObject3 = ((atf)localObject8).md5;
-          localObject4 = ((atf)localObject8).url;
-          localObject5 = ((atf)localObject8).Dth;
-          localObject6 = ((ckp)localObject5).dlB;
-          localObject7 = ((ckp)localObject5).DyR;
-          i = ((ckp)localObject5).DyU;
-          j = ((ckp)localObject5).CLK;
-          int k = ((atf)localObject8).CLL;
-          boolean bool1 = ((atf)localObject8).Dtn;
-          boolean bool2 = ((atf)localObject8).Dto;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "appid:%s,modulename:%s,pkgType:%d,md5:%s,url:%s,isPatch:%b,isZstd:%b", new Object[] { localObject6, localObject7, Integer.valueOf(i), localObject3, localObject4, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+          localObject3 = ((awj)localObject8).md5;
+          localObject4 = ((awj)localObject8).url;
+          localObject5 = ((awj)localObject8).EOl;
+          localObject6 = ((cpw)localObject5).djj;
+          localObject7 = ((cpw)localObject5).EUn;
+          i = ((cpw)localObject5).EUq;
+          j = ((cpw)localObject5).Een;
+          int k = ((awj)localObject8).Eeo;
+          boolean bool1 = ((awj)localObject8).EOr;
+          boolean bool2 = ((awj)localObject8).EOs;
+          ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "appid:%s,modulename:%s,pkgType:%d,md5:%s,url:%s,isPatch:%b,isZstd:%b", new Object[] { localObject6, localObject7, Integer.valueOf(i), localObject3, localObject4, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
           if (j == 0)
           {
-            localObject8 = new duo();
-            ((duo)localObject8).EIW = ((String)localObject3);
-            ((duo)localObject8).CHC = k;
-            j.aOK().a(new ab((String)localObject6, (String)localObject7, i).toString(), (duo)localObject8);
-            localObject6 = this.kJY.iterator();
+            localObject8 = new eaf();
+            ((eaf)localObject8).Ggi = ((String)localObject3);
+            ((eaf)localObject8).Eae = k;
+            j.aVC().a(new ab((String)localObject6, (String)localObject7, i).toString(), (eaf)localObject8);
+            localObject6 = this.llu.iterator();
           }
           for (;;)
           {
@@ -306,14 +307,14 @@ public class ad
               break label1796;
             }
             localObject7 = (u)((Iterator)localObject6).next();
-            localObject8 = ((u)localObject7).kII;
+            localObject8 = ((u)localObject7).lke;
             if ((localObject8 != null) && (localObject5 != null))
             {
               j = 0;
-              if ((bt.isNullOrNil(((ckp)localObject8).DyR)) && (bt.isNullOrNil(((ckp)localObject5).DyR)))
+              if ((bs.isNullOrNil(((cpw)localObject8).EUn)) && (bs.isNullOrNil(((cpw)localObject5).EUn)))
               {
                 i = 1;
-                if ((!((ckp)localObject8).dlB.equals(((ckp)localObject5).dlB)) || (((ckp)localObject8).DyU != ((ckp)localObject5).DyU) || (i == 0) || (((ckp)localObject8).CLK != ((ckp)localObject5).CLK)) {
+                if ((!((cpw)localObject8).djj.equals(((cpw)localObject5).djj)) || (((cpw)localObject8).EUq != ((cpw)localObject5).EUq) || (i == 0) || (((cpw)localObject8).Een != ((cpw)localObject5).Een)) {
                   break label1763;
                 }
                 i = 1;
@@ -328,25 +329,25 @@ public class ad
               if (!bool1) {
                 break label1773;
               }
-              ((u)localObject7).kIN = ((String)localObject4);
+              ((u)localObject7).lkj = ((String)localObject4);
               break label1509;
-              localObject6 = j.aOK().a(new ab(this.appId, (String)localObject7, i).toString(), j, new String[] { "versionMd5", "downloadURL" });
+              localObject6 = j.aVC().a(new ab(this.appId, (String)localObject7, i).toString(), j, new String[] { "versionMd5", "downloadURL" });
               ((bb)localObject6).field_versionMd5 = ((String)localObject3);
               if (localObject6 == null) {
                 break;
               }
-              j.aOK().e((bb)localObject6);
+              j.aVC().e((bb)localObject6);
               break;
               i = j;
-              if (bt.isNullOrNil(((ckp)localObject8).DyR)) {
+              if (bs.isNullOrNil(((cpw)localObject8).EUn)) {
                 break label1574;
               }
               i = j;
-              if (bt.isNullOrNil(((ckp)localObject5).DyR)) {
+              if (bs.isNullOrNil(((cpw)localObject5).EUn)) {
                 break label1574;
               }
               i = j;
-              if (!((ckp)localObject8).DyR.equals(((ckp)localObject5).DyR)) {
+              if (!((cpw)localObject8).EUn.equals(((cpw)localObject5).EUn)) {
                 break label1574;
               }
               i = 1;
@@ -357,51 +358,51 @@ public class ad
             }
             continue;
             if (bool2) {
-              ((u)localObject7).kIM = ((String)localObject4);
+              ((u)localObject7).lki = ((String)localObject4);
             } else {
-              ((u)localObject7).kIL = ((String)localObject4);
+              ((u)localObject7).lkh = ((String)localObject4);
             }
           }
         }
         else
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "batch cgi error errcode:%d!", new Object[] { Integer.valueOf(((atf)localObject8).dhR) });
+          ac.e("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "batch cgi error errcode:%d!", new Object[] { Integer.valueOf(((awj)localObject8).dfm) });
         }
       }
-      localObject2 = new CountDownLatch(this.kJY.size());
-      localObject3 = this.kJY.iterator();
+      localObject2 = new CountDownLatch(this.llu.size());
+      localObject3 = this.llu.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (u)((Iterator)localObject3).next();
         localObject5 = aa.c.a((u)localObject4);
-        ((aa)localObject5).a(k.Kf(this.kJT));
+        ((aa)localObject5).a(k.Om(this.llp));
         ((aa)localObject5).a(new aa.e()
         {
-          public final void bgC()
+          public final void bnw()
           {
             AppMethodBeat.i(174955);
-            if (this.kJZ.kII.DyU == 6) {
+            if (this.llv.lke.EUq == 6) {
               ad.a(ad.this, 3);
             }
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "plugin already downloaded, engineId[%s] version[%d]", new Object[] { this.kJZ.kII.dlB, Integer.valueOf(this.kJZ.kII.CLK) });
+            ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "plugin already downloaded, engineId[%s] version[%d]", new Object[] { this.llv.lke.djj, Integer.valueOf(this.llv.lke.Een) });
             AppMethodBeat.o(174955);
           }
           
-          public final void bgD()
+          public final void bnx()
           {
             AppMethodBeat.i(174956);
-            if (this.kJZ.kII.DyU == 6) {
+            if (this.llv.lke.EUq == 6) {
               ad.a(ad.this, 4);
             }
-            com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "onPatchDownload");
+            ac.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "onPatchDownload");
             AppMethodBeat.o(174956);
           }
           
-          public final void bgE()
+          public final void bny()
           {
             AppMethodBeat.i(174957);
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "onIntegrateDownload");
-            if (this.kJZ.kII.DyU == 6) {
+            ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "onIntegrateDownload");
+            if (this.llv.lke.EUq == 6) {
               ad.a(ad.this, 2);
             }
             AppMethodBeat.o(174957);
@@ -412,10 +413,10 @@ public class ad
             AppMethodBeat.i(174958);
             if (paramAnonymousWxaPkgWrappingInfo != null)
             {
-              if (ad.this.kJS.containsKey(paramAnonymousWxaPkgWrappingInfo.md5))
+              if (ad.this.llo.containsKey(paramAnonymousWxaPkgWrappingInfo.md5))
               {
-                ((i)ad.this.kJS.get(paramAnonymousWxaPkgWrappingInfo.md5)).value = paramAnonymousWxaPkgWrappingInfo;
-                com.tencent.mm.co.g.fkM().i(new com.tencent.mm.vending.c.a() {}).fhm();
+                ((i)ad.this.llo.get(paramAnonymousWxaPkgWrappingInfo.md5)).value = paramAnonymousWxaPkgWrappingInfo;
+                com.tencent.mm.cn.g.fBc().i(new com.tencent.mm.vending.c.a() {}).fxo();
               }
             }
             else
@@ -428,10 +429,10 @@ public class ad
             label113:
             for (paramAnonymousWxaPkgWrappingInfo = paramAnonymousWxaPkgWrappingInfo.toString();; paramAnonymousWxaPkgWrappingInfo = "null")
             {
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "downloadPkgInfo :%s", new Object[] { paramAnonymousWxaPkgWrappingInfo });
+              ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "downloadPkgInfo :%s", new Object[] { paramAnonymousWxaPkgWrappingInfo });
               AppMethodBeat.o(174958);
               return;
-              this.kKb.value = paramAnonymousWxaPkgWrappingInfo;
+              this.llx.value = paramAnonymousWxaPkgWrappingInfo;
               break;
             }
           }
@@ -441,71 +442,71 @@ public class ad
             AppMethodBeat.i(174959);
             if (paramAnonymousWxaPkgWrappingInfo != null)
             {
-              if (ad.this.kJS.containsKey(paramAnonymousWxaPkgWrappingInfo.md5))
+              if (ad.this.llo.containsKey(paramAnonymousWxaPkgWrappingInfo.md5))
               {
-                ad.sK(0);
+                ad.tB(0);
                 AppMethodBeat.o(174959);
                 return;
               }
-              ad.sK(9);
+              ad.tB(9);
               AppMethodBeat.o(174959);
               return;
             }
-            if (ad.this.kJS.containsKey(this.kJZ.md5))
+            if (ad.this.llo.containsKey(this.llv.md5))
             {
-              ad.sK(1);
+              ad.tB(1);
               AppMethodBeat.o(174959);
               return;
             }
-            ad.sK(10);
+            ad.tB(10);
             AppMethodBeat.o(174959);
           }
         });
         ((aa)localObject5).a(new a((CountDownLatch)localObject2, (u)localObject4)
         {
-          final long bgF()
+          final String bnA()
+          {
+            AppMethodBeat.i(174961);
+            String str = "appId=" + ad.this.appId + " provider=" + this.llv.lke.djj;
+            AppMethodBeat.o(174961);
+            return str;
+          }
+          
+          final long bnz()
           {
             AppMethodBeat.i(174960);
             long l = this.val$latch.getCount();
             AppMethodBeat.o(174960);
             return l;
           }
-          
-          final String bgG()
-          {
-            AppMethodBeat.i(174961);
-            String str = "appId=" + ad.this.appId + " provider=" + this.kJZ.kII.dlB;
-            AppMethodBeat.o(174961);
-            return str;
-          }
         });
         ((aa)localObject5).prepareAsync();
       }
       ((CountDownLatch)localObject2).await();
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "both downloaded");
-      if (this.kJV) {
-        bgq();
+      ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "both downloaded");
+      if (this.llr) {
+        bnk();
       }
-      if ((((i)localObject1).value == null) || (this.kJS.size() <= 0))
+      if ((((i)localObject1).value == null) || (this.llo.size() <= 0))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "mainModule value or pluginCodeList result null!!");
+        ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "mainModule value or pluginCodeList result null!!");
         AppMethodBeat.o(174963);
         return null;
       }
-      this.kJW.report();
+      this.lls.report();
       localObject1 = (WxaPkgWrappingInfo)((i)localObject1).value;
       i = 0;
-      while (i < this.kJR.size())
+      while (i < this.lln.size())
       {
-        localObject2 = (WxaAttributes.WxaPluginCodeInfo)this.kJR.get(i);
-        localObject3 = (WxaPkgWrappingInfo)((i)this.kJS.get(((WxaAttributes.WxaPluginCodeInfo)this.kJR.get(i)).md5)).value;
-        if ((localObject3 != null) && (!bt.isNullOrNil(((WxaAttributes.WxaPluginCodeInfo)this.kJR.get(i)).md5)))
+        localObject2 = (WxaAttributes.WxaPluginCodeInfo)this.lln.get(i);
+        localObject3 = (WxaPkgWrappingInfo)((i)this.llo.get(((WxaAttributes.WxaPluginCodeInfo)this.lln.get(i)).md5)).value;
+        if ((localObject3 != null) && (!bs.isNullOrNil(((WxaAttributes.WxaPluginCodeInfo)this.lln.get(i)).md5)))
         {
           localObject4 = new ModulePkgInfo();
           ((ModulePkgInfo)localObject4).name = ("/__plugin__/" + ((WxaAttributes.WxaPluginCodeInfo)localObject2).provider);
-          ((ModulePkgInfo)localObject4).md5 = ((WxaAttributes.WxaPluginCodeInfo)this.kJR.get(i)).md5;
+          ((ModulePkgInfo)localObject4).md5 = ((WxaAttributes.WxaPluginCodeInfo)this.lln.get(i)).md5;
           ((ModulePkgInfo)localObject4).pkgPath = ((WxaPkgWrappingInfo)localObject3).pkgPath;
-          ((WxaPkgWrappingInfo)localObject1).iOT.add(localObject4);
+          ((WxaPkgWrappingInfo)localObject1).jpd.add(localObject4);
         }
         i += 1;
       }
@@ -516,61 +517,61 @@ public class ad
         if (!"__APP__".equals(((WxaAttributes.WxaVersionModuleInfo)localObject3).name))
         {
           localObject3 = au.a((WxaAttributes.WxaVersionModuleInfo)localObject3);
-          ((WxaPkgWrappingInfo)localObject1).iOT.add(localObject3);
+          ((WxaPkgWrappingInfo)localObject1).jpd.add(localObject3);
         }
       }
-      this.kJX.value = true;
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "module rerange ok!");
+      this.llt.value = true;
+      ac.d("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", "module rerange ok!");
       AppMethodBeat.o(174963);
       return localObject1;
     }
   }
   
-  private void sI(int paramInt)
+  private void tz(int paramInt)
   {
     AppMethodBeat.i(174964);
-    this.kJW.sV(paramInt);
+    this.lls.tM(paramInt);
     AppMethodBeat.o(174964);
   }
   
-  public void bgi() {}
+  public void bnc() {}
   
-  public void bgq() {}
+  public void bnk() {}
   
   public void onDownloadProgress(int paramInt) {}
   
   abstract class a
     implements aa.b
   {
-    private int kKd = 0;
+    private int llz = 0;
     
     private a() {}
     
-    public final void b(WxaPkgLoadProgress paramWxaPkgLoadProgress)
+    public final void a(WxaPkgLoadProgress paramWxaPkgLoadProgress)
     {
       ad.a(ad.this);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", bgG() + " progress=" + paramWxaPkgLoadProgress.progress);
-      long l = bgF();
+      ac.i("MicroMsg.AppBrand.LaunchCheckMultiPkgInfoModuleHandler", bnA() + " progress=" + paramWxaPkgLoadProgress.progress);
+      long l = bnz();
       if (l == 0L) {
         ad.b(ad.this).set(100);
       }
       for (;;)
       {
-        this.kKd = paramWxaPkgLoadProgress.progress;
+        this.llz = paramWxaPkgLoadProgress.progress;
         ad.c(ad.this);
         return;
-        ad.b(ad.this).addAndGet(Math.round(Math.max(0, paramWxaPkgLoadProgress.progress - this.kKd) / (float)l));
+        ad.b(ad.this).addAndGet(Math.round(Math.max(0, paramWxaPkgLoadProgress.progress - this.llz) / (float)l));
       }
     }
     
-    abstract long bgF();
+    abstract String bnA();
     
-    abstract String bgG();
+    abstract long bnz();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ad
  * JD-Core Version:    0.7.0.1
  */

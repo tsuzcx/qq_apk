@@ -9,27 +9,22 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap.CompressFormat;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.dv;
+import com.tencent.mm.g.b.a.fl;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.modelsimple.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.applet.SecurityImage;
@@ -40,46 +35,46 @@ import com.tencent.mm.vfs.i;
 
 public class RegByMobileSendSmsUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private String bNK;
+  private String bLs;
   private int countDown;
-  private String dgo;
-  private String dom;
-  private dv iqH;
-  private String iqi;
-  private String irb;
-  private String irc;
-  private g irj;
-  private ProgressDialog irk;
-  private int irl;
-  private Button irm;
-  private av irp;
-  private int itU;
-  private int itW;
-  private String itd;
-  private String iuO;
-  private boolean ivp;
-  private SecurityImage ivs;
-  private Button iwc;
+  private String ddJ;
+  private String dlV;
+  private fl iQO;
+  private String iQp;
+  private String iRh;
+  private String iRi;
+  private g iRp;
+  private ProgressDialog iRq;
+  private int iRr;
+  private Button iRs;
+  private au iRv;
+  private int iTZ;
+  private String iTi;
+  private String iUT;
+  private int iUb;
+  private boolean iVt;
+  private SecurityImage iVw;
+  private Button iWg;
   
   public RegByMobileSendSmsUI()
   {
     AppMethodBeat.i(128577);
-    this.irb = "";
-    this.iqi = "";
-    this.irc = "";
-    this.itd = "";
+    this.iRh = "";
+    this.iQp = "";
+    this.iRi = "";
+    this.iTi = "";
     this.countDown = 15;
-    this.iqH = new dv();
+    this.iQO = new fl();
     AppMethodBeat.o(128577);
   }
   
-  private com.tencent.mm.pluginsdk.ui.span.l CC(String paramString)
+  private com.tencent.mm.pluginsdk.ui.span.l GF(String paramString)
   {
     AppMethodBeat.i(128580);
     com.tencent.mm.pluginsdk.ui.span.l locall = new com.tencent.mm.pluginsdk.ui.span.l(paramString);
-    ad.d("MicroMsg.RegByMobileSendSmsUI", "content: %s", new Object[] { paramString });
+    ac.d("MicroMsg.RegByMobileSendSmsUI", "content: %s", new Object[] { paramString });
     int i = paramString.indexOf(' ') + 1;
     locall.setSpan(new AbsoluteSizeSpan(getResources().getDimensionPixelSize(2131165469)), i, paramString.length(), 33);
     locall.setSpan(new ForegroundColorSpan(getResources().getColor(2131100464)), i, paramString.length(), 33);
@@ -106,11 +101,11 @@ public class RegByMobileSendSmsUI
   private void stopTimer()
   {
     AppMethodBeat.i(128584);
-    if (this.irp != null) {
-      this.irp.stopTimer();
+    if (this.iRv != null) {
+      this.iRv.stopTimer();
     }
-    this.iwc.setText(2131762330);
-    this.iwc.setEnabled(true);
+    this.iWg.setText(2131762330);
+    this.iWg.setEnabled(true);
     AppMethodBeat.o(128584);
   }
   
@@ -123,73 +118,30 @@ public class RegByMobileSendSmsUI
   {
     AppMethodBeat.i(128579);
     super.initView();
-    ((TextView)findViewById(2131304584)).setText(getString(2131762336, new Object[] { this.irb }));
-    ((TextView)findViewById(2131304581)).setText(CC(getString(2131762335, new Object[] { this.iqi })));
-    ((TextView)findViewById(2131304585)).setText(CC(getString(2131762338, new Object[] { this.irc })));
-    this.irm = ((Button)findViewById(2131304580));
-    this.iwc = ((Button)findViewById(2131302852));
-    if (bt.T(new String[] { this.irb, this.irc, this.iqi }))
+    ((TextView)findViewById(2131304584)).setText(getString(2131762336, new Object[] { this.iRh }));
+    ((TextView)findViewById(2131304581)).setText(GF(getString(2131762335, new Object[] { this.iQp })));
+    ((TextView)findViewById(2131304585)).setText(GF(getString(2131762338, new Object[] { this.iRi })));
+    this.iRs = ((Button)findViewById(2131304580));
+    this.iWg = ((Button)findViewById(2131302852));
+    if (bs.T(new String[] { this.iRh, this.iRi, this.iQp }))
     {
-      this.irm.setEnabled(false);
-      this.iwc.setEnabled(false);
-      if (!bt.isNullOrNil(com.tencent.mm.compatible.deviceinfo.q.getSimCountryIso())) {
+      this.iRs.setEnabled(false);
+      this.iWg.setEnabled(false);
+      if (!bs.isNullOrNil(com.tencent.mm.compatible.deviceinfo.q.getSimCountryIso())) {
         break label248;
       }
-      this.irm.setVisibility(8);
+      this.iRs.setVisibility(8);
     }
     for (;;)
     {
       setMMTitle(2131762337);
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(128571);
-          RegByMobileSendSmsUI.d(RegByMobileSendSmsUI.this);
-          AppMethodBeat.o(128571);
-          return true;
-        }
-      });
+      setBackBtn(new RegByMobileSendSmsUI.10(this));
       AppMethodBeat.o(128579);
       return;
-      this.iwc.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(128562);
-          RegByMobileSendSmsUI.a(RegByMobileSendSmsUI.this);
-          AppMethodBeat.o(128562);
-        }
-      });
+      this.iWg.setOnClickListener(new RegByMobileSendSmsUI.1(this));
       break;
       label248:
-      this.irm.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(128570);
-          Object localObject = new Intent();
-          ((Intent)localObject).setAction("android.intent.action.SENDTO");
-          ((Intent)localObject).setData(Uri.parse("smsto:" + RegByMobileSendSmsUI.b(RegByMobileSendSmsUI.this)));
-          ((Intent)localObject).putExtra("sms_body", RegByMobileSendSmsUI.c(RegByMobileSendSmsUI.this));
-          try
-          {
-            paramAnonymousView = RegByMobileSendSmsUI.this;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            RegByMobileSendSmsUI.this.overridePendingTransition(2130772144, 2130772141);
-            AppMethodBeat.o(128570);
-            return;
-          }
-          catch (Exception paramAnonymousView)
-          {
-            ad.e("MicroMsg.RegByMobileSendSmsUI", paramAnonymousView.getMessage());
-            AppMethodBeat.o(128570);
-          }
-        }
-      });
+      this.iRs.setOnClickListener(new RegByMobileSendSmsUI.9(this));
     }
   }
   
@@ -197,16 +149,16 @@ public class RegByMobileSendSmsUI
   {
     AppMethodBeat.i(128578);
     super.onCreate(paramBundle);
-    this.itU = getIntent().getIntExtra("key_reg_style", 1);
-    this.irb = bt.nullAsNil(getIntent().getStringExtra("from_mobile"));
-    this.irc = bt.nullAsNil(getIntent().getStringExtra("to_mobile"));
-    this.iqi = bt.nullAsNil(getIntent().getStringExtra("verify_code"));
-    this.itd = bt.nullAsNil(getIntent().getStringExtra("regsession_id"));
-    this.iuO = bt.nullAsNil(getIntent().getStringExtra("reg_3d_app_ticket"));
-    this.bNK = bt.nullAsNil(getIntent().getStringExtra("kintent_nickname"));
-    this.dom = bt.nullAsNil(getIntent().getStringExtra("kintent_password"));
-    this.ivp = getIntent().getBooleanExtra("kintent_hasavatar", false);
-    this.itW = getIntent().getIntExtra("reg_3d_app_type", 0);
+    this.iTZ = getIntent().getIntExtra("key_reg_style", 1);
+    this.iRh = bs.nullAsNil(getIntent().getStringExtra("from_mobile"));
+    this.iRi = bs.nullAsNil(getIntent().getStringExtra("to_mobile"));
+    this.iQp = bs.nullAsNil(getIntent().getStringExtra("verify_code"));
+    this.iTi = bs.nullAsNil(getIntent().getStringExtra("regsession_id"));
+    this.iUT = bs.nullAsNil(getIntent().getStringExtra("reg_3d_app_ticket"));
+    this.bLs = bs.nullAsNil(getIntent().getStringExtra("kintent_nickname"));
+    this.dlV = bs.nullAsNil(getIntent().getStringExtra("kintent_password"));
+    this.iVt = getIntent().getBooleanExtra("kintent_hasavatar", false);
+    this.iUb = getIntent().getIntExtra("reg_3d_app_type", 0);
     initView();
     AppMethodBeat.o(128578);
   }
@@ -229,42 +181,42 @@ public class RegByMobileSendSmsUI
   {
     AppMethodBeat.i(128581);
     super.onResume();
-    com.tencent.mm.kernel.g.aeS().a(145, this);
-    com.tencent.mm.kernel.g.aeS().a(701, this);
-    com.tencent.mm.kernel.g.aeS().a(252, this);
+    com.tencent.mm.kernel.g.agi().a(145, this);
+    com.tencent.mm.kernel.g.agi().a(701, this);
+    com.tencent.mm.kernel.g.agi().a(252, this);
     AppMethodBeat.o(128581);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, final com.tencent.mm.al.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, final com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(128583);
-    ad.i("MicroMsg.RegByMobileSendSmsUI", "errType %s, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.irk != null) {
-      this.irk.dismiss();
+    ac.i("MicroMsg.RegByMobileSendSmsUI", "errType %s, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.iRq != null) {
+      this.iRq.dismiss();
     }
-    if ((paramn.getType() == 145) && (((com.tencent.mm.modelfriend.a)paramn).JJ() == 15))
+    if ((paramn.getType() == 145) && (((com.tencent.mm.modelfriend.a)paramn).Js() == 15))
     {
       paramn = (com.tencent.mm.modelfriend.a)paramn;
-      this.dgo = paramn.axz();
+      this.ddJ = paramn.aEr();
       if (paramInt2 == 0)
       {
         stopTimer();
-        if (this.itU == 1)
+        if (this.iTZ == 1)
         {
-          com.tencent.mm.kernel.g.aeS().a(126, this);
-          paramString = new u("", this.dom, this.bNK, 0, "", this.irb, "", "", this.dgo, 1, "", "", "", true, this.ivp);
-          paramString.zd(this.itd);
-          paramString.ze(this.iuO);
-          paramString.oC(1);
-          com.tencent.mm.kernel.g.aeS().a(paramString, 0);
+          com.tencent.mm.kernel.g.agi().a(126, this);
+          paramString = new u("", this.dlV, this.bLs, 0, "", this.iRh, "", "", this.ddJ, 1, "", "", "", true, this.iVt);
+          paramString.Di(this.iTi);
+          paramString.Dj(this.iUT);
+          paramString.pq(1);
+          com.tencent.mm.kernel.g.agi().a(paramString, 0);
           getString(2131755906);
-          this.irk = h.b(this, getString(2131762385), true, new DialogInterface.OnCancelListener()
+          this.iRq = h.b(this, getString(2131762385), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymousDialogInterface)
             {
               AppMethodBeat.i(128572);
-              com.tencent.mm.kernel.g.aeS().a(paramString);
-              com.tencent.mm.kernel.g.aeS().b(126, RegByMobileSendSmsUI.this);
+              com.tencent.mm.kernel.g.agi().a(paramString);
+              com.tencent.mm.kernel.g.agi().b(126, RegByMobileSendSmsUI.this);
               AppMethodBeat.o(128572);
             }
           });
@@ -272,19 +224,19 @@ public class RegByMobileSendSmsUI
           return;
         }
         paramString = new Intent();
-        paramString.putExtra("regsetinfo_ticket", this.dgo);
-        paramString.putExtra("regsetinfo_user", this.irb);
-        paramString.putExtra("regsession_id", this.itd);
-        paramString.putExtra("reg_3d_app_ticket", this.iuO);
-        paramString.putExtra("reg_3d_app_type", this.itW);
+        paramString.putExtra("regsetinfo_ticket", this.ddJ);
+        paramString.putExtra("regsetinfo_user", this.iRh);
+        paramString.putExtra("regsession_id", this.iTi);
+        paramString.putExtra("reg_3d_app_ticket", this.iUT);
+        paramString.putExtra("reg_3d_app_type", this.iUb);
         paramString.putExtra("mobile_check_type", 1);
         paramString.putExtra("regsetinfo_ismobile", 4);
-        paramString.putExtra("regsetinfo_NextControl", paramn.axG());
-        paramString.putExtra("key_reg_style", this.itU);
+        paramString.putExtra("regsetinfo_NextControl", paramn.aEy());
+        paramString.putExtra("key_reg_style", this.iTZ);
         paramString.setClass(this, RegSetInfoUI.class);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.adn(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramString.lS(0));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.aeD(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(128583);
         return;
@@ -292,10 +244,10 @@ public class RegByMobileSendSmsUI
       if (paramInt2 == -35)
       {
         stopTimer();
-        paramString = com.tencent.mm.h.a.oG(paramString);
-        this.iqH.dVG = this.itW;
-        this.iqH.dFd = 7L;
-        this.iqH.aBj();
+        paramString = com.tencent.mm.h.a.rM(paramString);
+        this.iQO.dXB = this.iUb;
+        this.iQO.dCQ = 7L;
+        this.iQO.aHZ();
         if (paramString != null)
         {
           paramString.a(this, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
@@ -303,12 +255,12 @@ public class RegByMobileSendSmsUI
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(128573);
-              com.tencent.mm.kernel.g.aeS().a(701, RegByMobileSendSmsUI.this);
-              com.tencent.mm.kernel.g.aeS().a(252, RegByMobileSendSmsUI.this);
-              RegByMobileSendSmsUI.a(RegByMobileSendSmsUI.this, paramn.getUsername(), paramn.axy());
-              RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).dVG = RegByMobileSendSmsUI.e(RegByMobileSendSmsUI.this);
-              RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).dFd = 8L;
-              RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).aBj();
+              com.tencent.mm.kernel.g.agi().a(701, RegByMobileSendSmsUI.this);
+              com.tencent.mm.kernel.g.agi().a(252, RegByMobileSendSmsUI.this);
+              RegByMobileSendSmsUI.a(RegByMobileSendSmsUI.this, paramn.getUsername(), paramn.aEq());
+              RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).dXB = RegByMobileSendSmsUI.e(RegByMobileSendSmsUI.this);
+              RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).dCQ = 8L;
+              RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).aHZ();
               AppMethodBeat.o(128573);
             }
           }, new DialogInterface.OnClickListener()
@@ -323,10 +275,10 @@ public class RegByMobileSendSmsUI
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(128574);
-            RegByMobileSendSmsUI.a(RegByMobileSendSmsUI.this, paramn.getUsername(), paramn.axy());
-            RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).dVG = RegByMobileSendSmsUI.e(RegByMobileSendSmsUI.this);
-            RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).dFd = 8L;
-            RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).aBj();
+            RegByMobileSendSmsUI.a(RegByMobileSendSmsUI.this, paramn.getUsername(), paramn.aEq());
+            RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).dXB = RegByMobileSendSmsUI.e(RegByMobileSendSmsUI.this);
+            RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).dCQ = 8L;
+            RegByMobileSendSmsUI.f(RegByMobileSendSmsUI.this).aHZ();
             AppMethodBeat.o(128574);
           }
         }, new DialogInterface.OnClickListener()
@@ -340,31 +292,31 @@ public class RegByMobileSendSmsUI
       {
         stopTimer();
         paramString = new Intent(this, MobileLoginOrForceReg.class);
-        paramString.putExtra("ticket", this.dgo);
-        paramString.putExtra("moble", this.irb);
-        paramString.putExtra("regsession_id", this.itd);
-        paramString.putExtra("reg_3d_app_ticket", this.iuO);
-        paramString.putExtra("reg_3d_app_type", this.itW);
-        paramString.putExtra("next_controll", paramn.axG());
+        paramString.putExtra("ticket", this.ddJ);
+        paramString.putExtra("moble", this.iRh);
+        paramString.putExtra("regsession_id", this.iTi);
+        paramString.putExtra("reg_3d_app_ticket", this.iUT);
+        paramString.putExtra("reg_3d_app_type", this.iUb);
+        paramString.putExtra("next_controll", paramn.aEy());
         paramString.putExtra("username", paramn.getUsername());
-        paramString.putExtra("password", paramn.axy());
-        paramString.putExtra("nickname", paramn.axM());
-        paramString.putExtra("avatar_url", paramn.axL());
+        paramString.putExtra("password", paramn.aEq());
+        paramString.putExtra("nickname", paramn.aEE());
+        paramString.putExtra("avatar_url", paramn.aED());
         paramString.putExtra("mobile_check_type", 1);
-        paramString.putExtra("kintent_hasavatar", this.ivp);
-        paramString.putExtra("kintent_nickname", this.bNK);
-        paramString.putExtra("kintent_password", this.dom);
-        paramString.putExtra("key_reg_style", this.itU);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.adn(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramString.lS(0));
+        paramString.putExtra("kintent_hasavatar", this.iVt);
+        paramString.putExtra("kintent_nickname", this.bLs);
+        paramString.putExtra("kintent_password", this.dlV);
+        paramString.putExtra("key_reg_style", this.iTZ);
+        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.aeD(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(128583);
         return;
       }
-      if ((!bt.isNullOrNil(paramString)) && (this.irl >= 4))
+      if ((!bs.isNullOrNil(paramString)) && (this.iRr >= 4))
       {
-        paramString = com.tencent.mm.h.a.oG(paramString);
+        paramString = com.tencent.mm.h.a.rM(paramString);
         if ((paramString != null) && (paramString.a(this, null, null)))
         {
           AppMethodBeat.o(128583);
@@ -379,18 +331,18 @@ public class RegByMobileSendSmsUI
       final u localu = (u)paramn;
       if ((paramInt2 == -6) || (paramInt2 == -311) || (paramInt2 == -310))
       {
-        if (this.ivs == null)
+        if (this.iVw == null)
         {
-          this.ivs = SecurityImage.a.a(this, 0, localu.aAL(), localu.aAK(), "", new DialogInterface.OnClickListener()
+          this.iVw = SecurityImage.a.a(this, 0, localu.aHB(), localu.aHA(), "", new DialogInterface.OnClickListener()
           {
             public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(128576);
-              paramAnonymousDialogInterface = new u("", RegByMobileSendSmsUI.g(RegByMobileSendSmsUI.this), RegByMobileSendSmsUI.h(RegByMobileSendSmsUI.this), 0, "", RegByMobileSendSmsUI.i(RegByMobileSendSmsUI.this), "", "", RegByMobileSendSmsUI.j(RegByMobileSendSmsUI.this), 1, "", localu.aAK(), RegByMobileSendSmsUI.k(RegByMobileSendSmsUI.this).getSecImgCode(), true, RegByMobileSendSmsUI.l(RegByMobileSendSmsUI.this));
-              paramAnonymousDialogInterface.zd(RegByMobileSendSmsUI.m(RegByMobileSendSmsUI.this));
-              paramAnonymousDialogInterface.ze(RegByMobileSendSmsUI.n(RegByMobileSendSmsUI.this));
-              paramAnonymousDialogInterface.oC(1);
-              com.tencent.mm.kernel.g.aeS().a(paramAnonymousDialogInterface, 0);
+              paramAnonymousDialogInterface = new u("", RegByMobileSendSmsUI.g(RegByMobileSendSmsUI.this), RegByMobileSendSmsUI.h(RegByMobileSendSmsUI.this), 0, "", RegByMobileSendSmsUI.i(RegByMobileSendSmsUI.this), "", "", RegByMobileSendSmsUI.j(RegByMobileSendSmsUI.this), 1, "", localu.aHA(), RegByMobileSendSmsUI.k(RegByMobileSendSmsUI.this).getSecImgCode(), true, RegByMobileSendSmsUI.l(RegByMobileSendSmsUI.this));
+              paramAnonymousDialogInterface.Di(RegByMobileSendSmsUI.m(RegByMobileSendSmsUI.this));
+              paramAnonymousDialogInterface.Dj(RegByMobileSendSmsUI.n(RegByMobileSendSmsUI.this));
+              paramAnonymousDialogInterface.pq(1);
+              com.tencent.mm.kernel.g.agi().a(paramAnonymousDialogInterface, 0);
               RegByMobileSendSmsUI localRegByMobileSendSmsUI = RegByMobileSendSmsUI.this;
               AppCompatActivity localAppCompatActivity = RegByMobileSendSmsUI.this.getContext();
               RegByMobileSendSmsUI.this.getString(2131755906);
@@ -399,7 +351,7 @@ public class RegByMobileSendSmsUI
                 public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                 {
                   AppMethodBeat.i(128575);
-                  com.tencent.mm.kernel.g.aeS().a(paramAnonymousDialogInterface);
+                  com.tencent.mm.kernel.g.agi().a(paramAnonymousDialogInterface);
                   AppMethodBeat.o(128575);
                 }
               }));
@@ -415,60 +367,60 @@ public class RegByMobileSendSmsUI
             }
           }, new SecurityImage.b()
           {
-            public final void aIs()
+            public final void aPj()
             {
               AppMethodBeat.i(128564);
               RegByMobileSendSmsUI.this.hideVKB();
-              u localu = new u("", RegByMobileSendSmsUI.g(RegByMobileSendSmsUI.this), RegByMobileSendSmsUI.h(RegByMobileSendSmsUI.this), 0, "", RegByMobileSendSmsUI.i(RegByMobileSendSmsUI.this), "", "", RegByMobileSendSmsUI.j(RegByMobileSendSmsUI.this), 1, "", localu.aAK(), RegByMobileSendSmsUI.k(RegByMobileSendSmsUI.this).getSecImgCode(), true, RegByMobileSendSmsUI.l(RegByMobileSendSmsUI.this));
-              localu.zd(RegByMobileSendSmsUI.m(RegByMobileSendSmsUI.this));
-              localu.ze(RegByMobileSendSmsUI.n(RegByMobileSendSmsUI.this));
-              localu.oC(1);
-              com.tencent.mm.kernel.g.aeS().a(localu, 0);
+              u localu = new u("", RegByMobileSendSmsUI.g(RegByMobileSendSmsUI.this), RegByMobileSendSmsUI.h(RegByMobileSendSmsUI.this), 0, "", RegByMobileSendSmsUI.i(RegByMobileSendSmsUI.this), "", "", RegByMobileSendSmsUI.j(RegByMobileSendSmsUI.this), 1, "", localu.aHA(), RegByMobileSendSmsUI.k(RegByMobileSendSmsUI.this).getSecImgCode(), true, RegByMobileSendSmsUI.l(RegByMobileSendSmsUI.this));
+              localu.Di(RegByMobileSendSmsUI.m(RegByMobileSendSmsUI.this));
+              localu.Dj(RegByMobileSendSmsUI.n(RegByMobileSendSmsUI.this));
+              localu.pq(1);
+              com.tencent.mm.kernel.g.agi().a(localu, 0);
               AppMethodBeat.o(128564);
             }
           });
           AppMethodBeat.o(128583);
           return;
         }
-        this.ivs.b(0, ((u)paramn).aAL(), ((u)paramn).aAK(), "");
+        this.iVw.b(0, ((u)paramn).aHB(), ((u)paramn).aHA(), "");
         AppMethodBeat.o(128583);
         return;
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = this.irb;
-        this.iqH.dVG = this.itW;
-        this.iqH.dFd = 6L;
-        this.iqH.aBj();
+        paramString = this.iRh;
+        this.iQO.dXB = this.iUb;
+        this.iQO.dCQ = 6L;
+        this.iQO.aHZ();
         com.tencent.mm.kernel.a.unhold();
         com.tencent.mm.kernel.a.dz(true);
-        if (this.ivp)
+        if (this.iVt)
         {
-          paramn = b.aio() + "temp.avatar";
-          String str = b.aio() + "temp.avatar.hd";
-          i.lD(paramn, str);
+          paramn = b.apo() + "temp.avatar";
+          String str = b.apo() + "temp.avatar.hd";
+          i.ma(paramn, str);
           i.deleteFile(paramn);
-          f.c(str, 96, 96, Bitmap.CompressFormat.JPEG, 90, paramn);
-          new com.tencent.mm.ak.n(this, b.aio() + "temp.avatar").a(new Runnable()new Runnable
+          f.c(str, 156, 156, Bitmap.CompressFormat.JPEG, 90, paramn);
+          new com.tencent.mm.aj.n(this, b.apo() + "temp.avatar").a(new Runnable()new Runnable
           {
             public final void run()
             {
               AppMethodBeat.i(128565);
-              RegByMobileSendSmsUI.a(RegByMobileSendSmsUI.this, localu.aAU());
-              ay.gNa.aD("login_user_name", paramString);
-              i.deleteFile(b.aio() + "temp.avatar");
-              Object localObject2 = com.tencent.mm.plugin.account.a.a.hYt.bA(RegByMobileSendSmsUI.this);
+              RegByMobileSendSmsUI.a(RegByMobileSendSmsUI.this, localu.aHK());
+              ay.hnA.aL("login_user_name", paramString);
+              i.deleteFile(b.apo() + "temp.avatar");
+              Object localObject2 = com.tencent.mm.plugin.account.a.a.iyx.bD(RegByMobileSendSmsUI.this);
               ((Intent)localObject2).addFlags(67108864);
               Object localObject1 = RegByMobileSendSmsUI.this;
-              localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
-              com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI$12", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              ((RegByMobileSendSmsUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+              localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
+              com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI$12", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ((RegByMobileSendSmsUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
               com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI$12", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               localObject1 = new StringBuilder();
-              com.tencent.mm.kernel.g.afz();
-              localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.aeM()).append(",").append(getClass().getName()).append(",R200_600,");
-              com.tencent.mm.kernel.g.afz();
-              com.tencent.mm.plugin.b.a.pj(com.tencent.mm.kernel.a.qN("R200_600") + ",4");
+              com.tencent.mm.kernel.g.agP();
+              localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.agc()).append(",").append(getClass().getName()).append(",R200_600,");
+              com.tencent.mm.kernel.g.agP();
+              com.tencent.mm.plugin.b.a.sv(com.tencent.mm.kernel.a.uc("R200_600") + ",4");
               RegByMobileSendSmsUI.this.finish();
               AppMethodBeat.o(128565);
             }
@@ -477,20 +429,20 @@ public class RegByMobileSendSmsUI
             public final void run()
             {
               AppMethodBeat.i(128566);
-              RegByMobileSendSmsUI.a(RegByMobileSendSmsUI.this, localu.aAU());
-              ay.gNa.aD("login_user_name", paramString);
-              Object localObject2 = com.tencent.mm.plugin.account.a.a.hYt.bA(RegByMobileSendSmsUI.this);
+              RegByMobileSendSmsUI.a(RegByMobileSendSmsUI.this, localu.aHK());
+              ay.hnA.aL("login_user_name", paramString);
+              Object localObject2 = com.tencent.mm.plugin.account.a.a.iyx.bD(RegByMobileSendSmsUI.this);
               ((Intent)localObject2).addFlags(67108864);
               Object localObject1 = RegByMobileSendSmsUI.this;
-              localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
-              com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI$13", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              ((RegByMobileSendSmsUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+              localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
+              com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI$13", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ((RegByMobileSendSmsUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
               com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI$13", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               localObject1 = new StringBuilder();
-              com.tencent.mm.kernel.g.afz();
-              localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.aeM()).append(",").append(getClass().getName()).append(",R200_600,");
-              com.tencent.mm.kernel.g.afz();
-              com.tencent.mm.plugin.b.a.pj(com.tencent.mm.kernel.a.qN("R200_600") + ",4");
+              com.tencent.mm.kernel.g.agP();
+              localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.agc()).append(",").append(getClass().getName()).append(",R200_600,");
+              com.tencent.mm.kernel.g.agP();
+              com.tencent.mm.plugin.b.a.sv(com.tencent.mm.kernel.a.uc("R200_600") + ",4");
               RegByMobileSendSmsUI.this.finish();
               AppMethodBeat.o(128566);
             }
@@ -498,26 +450,26 @@ public class RegByMobileSendSmsUI
           AppMethodBeat.o(128583);
           return;
         }
-        this.dgo = localu.aAU();
-        ay.gNa.aD("login_user_name", paramString);
-        paramString = com.tencent.mm.plugin.account.a.a.hYt.bA(this);
+        this.ddJ = localu.aHK();
+        ay.hnA.aL("login_user_name", paramString);
+        paramString = com.tencent.mm.plugin.account.a.a.iyx.bD(this);
         paramString.addFlags(67108864);
         paramString.putExtra("LauncherUI.enter_from_reg", true);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.adn(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramString.lS(0));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.aeD(), "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileSendSmsUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         finish();
-        com.tencent.mm.plugin.b.a.aUz("RE900_100");
+        com.tencent.mm.plugin.b.a.IL("RE900_100");
         paramString = new StringBuilder();
-        com.tencent.mm.kernel.g.afz();
-        paramString = paramString.append(com.tencent.mm.kernel.a.aeM()).append(",").append(getClass().getName()).append(",R200_600,");
-        com.tencent.mm.kernel.g.afz();
-        com.tencent.mm.plugin.b.a.K(false, com.tencent.mm.kernel.a.qN("R200_600") + ",4");
+        com.tencent.mm.kernel.g.agP();
+        paramString = paramString.append(com.tencent.mm.kernel.a.agc()).append(",").append(getClass().getName()).append(",R200_600,");
+        com.tencent.mm.kernel.g.agP();
+        com.tencent.mm.plugin.b.a.h(false, com.tencent.mm.kernel.a.uc("R200_600") + ",4");
         AppMethodBeat.o(128583);
         return;
       }
-      paramString = com.tencent.mm.h.a.oG(paramString);
+      paramString = com.tencent.mm.h.a.rM(paramString);
       if (paramString != null)
       {
         paramString.a(this, null, null);
@@ -533,9 +485,9 @@ public class RegByMobileSendSmsUI
     AppMethodBeat.i(128582);
     super.onStop();
     stopTimer();
-    com.tencent.mm.kernel.g.aeS().b(145, this);
-    com.tencent.mm.kernel.g.aeS().b(701, this);
-    com.tencent.mm.kernel.g.aeS().b(252, this);
+    com.tencent.mm.kernel.g.agi().b(145, this);
+    com.tencent.mm.kernel.g.agi().b(701, this);
+    com.tencent.mm.kernel.g.agi().b(252, this);
     AppMethodBeat.o(128582);
   }
   
@@ -547,7 +499,7 @@ public class RegByMobileSendSmsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileSendSmsUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.subapp.jdbiz;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ae;
 import java.util.Map;
 
 public final class c
 {
-  public String duk = "";
-  public long huV = 0L;
+  public String drV = "";
+  public long hVx = 0L;
   public String iconUrl = "";
   public String jumpUrl = "";
   public long startTime;
   public String title = "";
-  public String yCA = "";
-  public String yCB = "";
-  public String yCC = "";
-  public int yCD = 0;
-  public String yCn = "";
-  public String yCo = "";
-  public boolean yCp = false;
-  public boolean yCq = false;
-  public String yCr = "";
-  public String yCs = "";
-  public long yCt;
-  public long yCu;
-  public long yCv;
-  public long yCw;
-  public String yCx = "";
-  public String yCy = "";
-  public String yCz = "";
+  public String zPB = "";
+  public String zPC = "";
+  public boolean zPD = false;
+  public boolean zPE = false;
+  public String zPF = "";
+  public String zPG = "";
+  public long zPH;
+  public long zPI;
+  public long zPJ;
+  public long zPK;
+  public String zPL = "";
+  public String zPM = "";
+  public String zPN = "";
+  public String zPO = "";
+  public String zPP = "";
+  public String zPQ = "";
+  public int zPR = 0;
   
-  private void aH(Map<String, String> paramMap)
+  private void aL(Map<String, String> paramMap)
   {
     AppMethodBeat.i(28871);
     if (paramMap == null)
@@ -42,57 +42,57 @@ public final class c
       AppMethodBeat.o(28871);
       return;
     }
-    this.yCn = bt.by((String)paramMap.get(".sysmsg.biztype"), "");
-    this.yCx = bt.by((String)paramMap.get(".sysmsg.alert"), "");
-    this.yCo = bt.by((String)paramMap.get(".sysmsg.activityid"), "");
-    this.startTime = bt.aGi((String)paramMap.get(".sysmsg.starttime"));
-    this.huV = bt.aGi((String)paramMap.get(".sysmsg.expiretime"));
-    this.title = bt.by((String)paramMap.get(".sysmsg.content.title"), "");
-    this.iconUrl = bt.by((String)paramMap.get(".sysmsg.content.icon"), "");
-    this.jumpUrl = bt.by((String)paramMap.get(".sysmsg.content.jumpurl"), "");
-    this.yCB = bt.by((String)paramMap.get(".sysmsg.content.jumpweapp.username"), "");
-    this.yCC = bt.by((String)paramMap.get(".sysmsg.content.jumpweapp.path"), "");
-    this.yCD = bt.aGh((String)paramMap.get(".sysmsg.content.jumpweapp.version"));
-    this.yCt = bt.aGi((String)paramMap.get(".sysmsg.content.urlstarttime"));
-    this.yCu = bt.aGi((String)paramMap.get(".sysmsg.content.urlexpiretime"));
-    this.yCr = bt.by((String)paramMap.get(".sysmsg.content.jdcelltitle"), "");
-    this.yCs = bt.by((String)paramMap.get(".sysmsg.content.jdcellicon"), "");
-    this.yCv = bt.aGi((String)paramMap.get(".sysmsg.content.titlestarttime"));
-    this.yCw = bt.aGi((String)paramMap.get(".sysmsg.content.titleexpiretime"));
-    this.yCp = "1".equals(paramMap.get(".sysmsg.content.findshowreddot"));
-    this.yCq = "1".equals(paramMap.get(".sysmsg.content.jdcellshowred"));
-    this.yCy = bt.by((String)paramMap.get(".sysmsg.content.alertviewtitle"), "");
-    this.yCz = bt.by((String)paramMap.get(".sysmsg.content.alertviewconfirm"), "");
-    this.yCA = bt.by((String)paramMap.get(".sysmsg.content.alertviewcancel"), "");
+    this.zPB = bs.bG((String)paramMap.get(".sysmsg.biztype"), "");
+    this.zPL = bs.bG((String)paramMap.get(".sysmsg.alert"), "");
+    this.zPC = bs.bG((String)paramMap.get(".sysmsg.activityid"), "");
+    this.startTime = bs.aLz((String)paramMap.get(".sysmsg.starttime"));
+    this.hVx = bs.aLz((String)paramMap.get(".sysmsg.expiretime"));
+    this.title = bs.bG((String)paramMap.get(".sysmsg.content.title"), "");
+    this.iconUrl = bs.bG((String)paramMap.get(".sysmsg.content.icon"), "");
+    this.jumpUrl = bs.bG((String)paramMap.get(".sysmsg.content.jumpurl"), "");
+    this.zPP = bs.bG((String)paramMap.get(".sysmsg.content.jumpweapp.username"), "");
+    this.zPQ = bs.bG((String)paramMap.get(".sysmsg.content.jumpweapp.path"), "");
+    this.zPR = bs.aLy((String)paramMap.get(".sysmsg.content.jumpweapp.version"));
+    this.zPH = bs.aLz((String)paramMap.get(".sysmsg.content.urlstarttime"));
+    this.zPI = bs.aLz((String)paramMap.get(".sysmsg.content.urlexpiretime"));
+    this.zPF = bs.bG((String)paramMap.get(".sysmsg.content.jdcelltitle"), "");
+    this.zPG = bs.bG((String)paramMap.get(".sysmsg.content.jdcellicon"), "");
+    this.zPJ = bs.aLz((String)paramMap.get(".sysmsg.content.titlestarttime"));
+    this.zPK = bs.aLz((String)paramMap.get(".sysmsg.content.titleexpiretime"));
+    this.zPD = "1".equals(paramMap.get(".sysmsg.content.findshowreddot"));
+    this.zPE = "1".equals(paramMap.get(".sysmsg.content.jdcellshowred"));
+    this.zPM = bs.bG((String)paramMap.get(".sysmsg.content.alertviewtitle"), "");
+    this.zPN = bs.bG((String)paramMap.get(".sysmsg.content.alertviewconfirm"), "");
+    this.zPO = bs.bG((String)paramMap.get(".sysmsg.content.alertviewcancel"), "");
     AppMethodBeat.o(28871);
   }
   
-  public static c dLQ()
+  public static c eaq()
   {
     AppMethodBeat.i(28869);
-    az.arV();
-    String str = (String)com.tencent.mm.model.c.afk().get(327942, "");
+    az.ayM();
+    String str = (String)com.tencent.mm.model.c.agA().get(327942, "");
     c localc = new c();
-    ad.i("MicroMsg.JdMsgContent", " create xml : ".concat(String.valueOf(str)));
-    localc.apq(str);
+    ac.i("MicroMsg.JdMsgContent", " create xml : ".concat(String.valueOf(str)));
+    localc.auB(str);
     AppMethodBeat.o(28869);
     return localc;
   }
   
   private void init()
   {
-    this.yCn = "";
-    this.yCo = "";
-    this.huV = 0L;
-    this.yCr = "";
-    this.yCp = false;
-    this.yCq = false;
-    this.yCy = "";
-    this.yCz = "";
-    this.yCA = "";
-    this.yCx = "";
+    this.zPB = "";
+    this.zPC = "";
+    this.hVx = 0L;
+    this.zPF = "";
+    this.zPD = false;
+    this.zPE = false;
+    this.zPM = "";
+    this.zPN = "";
+    this.zPO = "";
+    this.zPL = "";
     this.jumpUrl = "";
-    this.duk = "";
+    this.drV = "";
   }
   
   public final boolean a(c paramc)
@@ -103,7 +103,7 @@ public final class c
       AppMethodBeat.o(28876);
       return true;
     }
-    if (!bt.by(this.yCo, "").equals(bt.by(paramc.yCo, "")))
+    if (!bs.bG(this.zPC, "").equals(bs.bG(paramc.zPC, "")))
     {
       AppMethodBeat.o(28876);
       return true;
@@ -112,33 +112,33 @@ public final class c
     return false;
   }
   
-  public final String agO()
+  public final String aif()
   {
     AppMethodBeat.i(28877);
-    String str = bt.by(this.duk, "");
+    String str = bs.bG(this.drV, "");
     AppMethodBeat.o(28877);
     return str;
   }
   
-  public final void apq(String paramString)
+  public final void auB(String paramString)
   {
     AppMethodBeat.i(28870);
     init();
-    this.duk = paramString;
-    if (bt.isNullOrNil(paramString))
+    this.drV = paramString;
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(28870);
       return;
     }
-    ad.i("MicroMsg.JdMsgContent", "feed xml %s", new Object[] { paramString });
-    aH(bw.K(paramString, "sysmsg"));
+    ac.i("MicroMsg.JdMsgContent", "feed xml %s", new Object[] { paramString });
+    aL(bv.L(paramString, "sysmsg"));
     AppMethodBeat.o(28870);
   }
   
-  public final boolean cva()
+  public final boolean cIm()
   {
     AppMethodBeat.i(28873);
-    if ((this.huV != 0L) && (this.huV < System.currentTimeMillis() / 1000L))
+    if ((this.hVx != 0L) && (this.hVx < System.currentTimeMillis() / 1000L))
     {
       AppMethodBeat.o(28873);
       return true;
@@ -147,10 +147,10 @@ public final class c
     return false;
   }
   
-  public final boolean dLR()
+  public final boolean ear()
   {
     AppMethodBeat.i(28874);
-    if (this.yCt < System.currentTimeMillis() / 1000L)
+    if (this.zPH < System.currentTimeMillis() / 1000L)
     {
       AppMethodBeat.o(28874);
       return true;
@@ -159,10 +159,10 @@ public final class c
     return false;
   }
   
-  public final boolean dLS()
+  public final boolean eas()
   {
     AppMethodBeat.i(28875);
-    if ((this.yCu != 0L) && (this.yCu < System.currentTimeMillis() / 1000L))
+    if ((this.zPI != 0L) && (this.zPI < System.currentTimeMillis() / 1000L))
     {
       AppMethodBeat.o(28875);
       return true;

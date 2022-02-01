@@ -5,7 +5,7 @@ import java.util.Locale;
 
 public final class b
 {
-  public static byte[] Rd(String paramString)
+  public static byte[] Vp(String paramString)
   {
     AppMethodBeat.i(138450);
     int j = paramString.length() / 2;
@@ -20,7 +20,7 @@ public final class b
     return arrayOfByte;
   }
   
-  public static String cH(byte[] paramArrayOfByte)
+  public static String cG(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(138449);
     StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
@@ -41,7 +41,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.e.b.a.a.b.b
  * JD-Core Version:    0.7.0.1
  */

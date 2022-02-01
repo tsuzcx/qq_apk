@@ -23,7 +23,7 @@ public class m$a
     AppMethodBeat.o(140640);
   }
   
-  public a q(String paramString, Object paramObject)
+  public a p(String paramString, Object paramObject)
   {
     AppMethodBeat.i(140641);
     this.values.put(paramString, paramObject);
@@ -31,7 +31,7 @@ public class m$a
     return this;
   }
   
-  public a z(Map<String, Object> paramMap)
+  public a y(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(140642);
     if (paramMap != null) {
@@ -43,7 +43,7 @@ public class m$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.m.a
  * JD-Core Version:    0.7.0.1
  */

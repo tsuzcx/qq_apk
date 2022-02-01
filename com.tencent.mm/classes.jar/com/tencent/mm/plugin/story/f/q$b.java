@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.story.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper$ContentObjTAG;", "", "()V", "XML_MEDIALIST", "", "getXML_MEDIALIST", "()Ljava/lang/String;", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper$ContentObjTAG;", "", "()V", "XML_MEDIALIST", "", "getXML_MEDIALIST", "()Ljava/lang/String;", "plugin-story_release"})
 public final class q$b
 {
-  public static final b yfA;
-  private static final String yfz = ".mediaList";
+  public static final b zsA;
+  private static final String zsz = ".mediaList";
   
   static
   {
     AppMethodBeat.i(118773);
-    yfA = new b();
-    yfz = ".mediaList";
+    zsA = new b();
+    zsz = ".mediaList";
     AppMethodBeat.o(118773);
   }
   
-  public static String dHy()
+  public static String dVZ()
   {
-    return yfz;
+    return zsz;
   }
 }
 

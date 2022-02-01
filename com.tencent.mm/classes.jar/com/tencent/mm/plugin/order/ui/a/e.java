@@ -13,7 +13,7 @@ public final class e
 {
   public View.OnClickListener mOnClickListener;
   private View mView;
-  public String uqC;
+  public String vzy;
   
   public e(Context paramContext)
   {
@@ -42,14 +42,14 @@ public final class e
     AppMethodBeat.i(66813);
     super.onBindView(paramView);
     paramView = (TextView)paramView.findViewById(2131302031);
-    paramView.setText(this.uqC);
+    paramView.setText(this.vzy);
     paramView.setOnClickListener(this.mOnClickListener);
     AppMethodBeat.o(66813);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.e
  * JD-Core Version:    0.7.0.1
  */

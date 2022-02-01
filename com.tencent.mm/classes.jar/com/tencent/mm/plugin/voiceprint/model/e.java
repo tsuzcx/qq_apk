@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.a;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.n.a;
+import com.tencent.mm.ak.n.b;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.ba;
 import com.tencent.mm.model.be.a;
@@ -12,31 +12,29 @@ import com.tencent.mm.model.be.b;
 import com.tencent.mm.modelsimple.l;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.bcq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.protocal.protobuf.bgi;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class e
   extends n
   implements k
 {
   g callback;
-  String fsw;
-  private int gVE;
-  private final q gVZ;
+  String fwd;
+  private int hwd;
+  private final q hwy;
   
   public e(String paramString)
   {
     AppMethodBeat.i(29764);
-    this.fsw = "";
-    this.gVE = 2;
-    this.gVZ = new b();
-    be.a locala = (be.a)this.gVZ.getReqObj();
-    locala.gNA.mAQ = paramString;
-    locala.gNA.DAc = 1;
-    ad.i("MicroMsg.NetSceneGetVoiceprintTicketRsa", "sceneType %d %s", new Object[] { Integer.valueOf(1), paramString });
+    this.fwd = "";
+    this.hwd = 2;
+    this.hwy = new b();
+    be.a locala = (be.a)this.hwy.getReqObj();
+    locala.hoa.ncR = paramString;
+    locala.hoa.EVy = 1;
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.NetSceneGetVoiceprintTicketRsa", "sceneType %d %s", new Object[] { Integer.valueOf(1), paramString });
     AppMethodBeat.o(29764);
   }
   
@@ -44,7 +42,7 @@ public final class e
   {
     AppMethodBeat.i(29765);
     this.callback = paramg;
-    int i = dispatch(parame, this.gVZ, this);
+    int i = dispatch(parame, this.hwy, this);
     AppMethodBeat.o(29765);
     return i;
   }
@@ -58,20 +56,20 @@ public final class e
   {
     AppMethodBeat.i(29766);
     paramArrayOfByte = (be.b)paramq.getRespObj();
-    this.fsw = paramArrayOfByte.gNB.DAd;
-    ad.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " mTicket: " + this.fsw);
+    this.fwd = paramArrayOfByte.hob.EVz;
+    com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " mTicket: " + this.fwd);
     if ((paramInt2 == 4) && (paramInt3 == -301))
     {
-      ba.a(true, paramArrayOfByte.gNB.CGh, paramArrayOfByte.gNB.CGi, paramArrayOfByte.gNB.CGg);
-      this.gVE -= 1;
-      if (this.gVE <= 0)
+      ba.a(true, paramArrayOfByte.hob.DYH, paramArrayOfByte.hob.DYI, paramArrayOfByte.hob.DYG);
+      this.hwd -= 1;
+      if (this.hwd <= 0)
       {
-        ad.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "reach redirect limit, invoke callback");
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "reach redirect limit, invoke callback");
         this.callback.onSceneEnd(3, -1, "", this);
         AppMethodBeat.o(29766);
         return;
       }
-      ad.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "redirect IDC");
+      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "redirect IDC");
       doScene(dispatcher(), this.callback);
       AppMethodBeat.o(29766);
       return;
@@ -79,8 +77,8 @@ public final class e
     if ((paramInt2 == 4) && (paramInt3 == -102))
     {
       paramInt1 = paramq.getReqObj().getRsaInfo().ver;
-      ad.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      az.afE().ax(new Runnable()
+      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
+      az.agU().az(new Runnable()
       {
         public final void run()
         {
@@ -90,7 +88,7 @@ public final class e
             public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
             {
               AppMethodBeat.i(29762);
-              ad.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
               if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
               {
                 e.this.callback.onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", e.this);
@@ -124,14 +122,14 @@ public final class e
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.gVB;
+    return n.b.hwa;
   }
   
   public final void setSecurityCheckError(n.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.e
  * JD-Core Version:    0.7.0.1
  */

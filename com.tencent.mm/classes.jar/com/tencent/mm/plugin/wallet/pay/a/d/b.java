@@ -9,75 +9,75 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Map;
 import org.json.JSONObject;
 
 public class b
   extends g
 {
-  private boolean zPS;
-  private boolean zPT;
+  private boolean Bim;
+  private boolean Bin;
   
   public b(u paramu, Orders paramOrders)
   {
     super(paramu, paramOrders);
     AppMethodBeat.i(69284);
-    this.zPS = false;
-    eab();
+    this.Bim = false;
+    epx();
     AppMethodBeat.o(69284);
   }
   
-  private void eab()
+  private void epx()
   {
     AppMethodBeat.i(69285);
-    this.zPS = false;
-    s.dZT();
-    if ((s.dZU().Ain != null) && (this.zPU.uXi != null))
+    this.Bim = false;
+    s.epp();
+    if ((s.epq().BAI != null) && (this.Bio.wfX != null))
     {
-      String str = this.zPU.dca;
-      s.dZT();
-      if (str.equals(s.dZU().Ain.field_bankcardType))
+      String str = this.Bio.cZz;
+      s.epp();
+      if (str.equals(s.epq().BAI.field_bankcardType))
       {
-        if ((this.zPU.uXi.dtb != 31) && (this.zPU.uXi.dtb != 32) && (this.zPU.uXi.dtb != 33) && (this.zPU.uXi.dtb != 42) && (this.zPU.uXi.dtb != 37) && (this.zPU.uXi.dtb != 56)) {
+        if ((this.Bio.wfX.dqL != 31) && (this.Bio.wfX.dqL != 32) && (this.Bio.wfX.dqL != 33) && (this.Bio.wfX.dqL != 42) && (this.Bio.wfX.dqL != 37) && (this.Bio.wfX.dqL != 56)) {
           break label193;
         }
-        this.zPS = true;
+        this.Bim = true;
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.NetSceneTenpayPayVertify", "isLqtSns: %s, isLqtTs: %s", new Object[] { Boolean.valueOf(this.zPS), Boolean.valueOf(this.zPT) });
+      ac.i("MicroMsg.NetSceneTenpayPayVertify", "isLqtSns: %s, isLqtTs: %s", new Object[] { Boolean.valueOf(this.Bim), Boolean.valueOf(this.Bin) });
       AppMethodBeat.o(69285);
       return;
       label193:
-      this.zPT = true;
+      this.Bin = true;
     }
   }
   
-  protected void aL(Map<String, String> paramMap)
+  protected void aP(Map<String, String> paramMap)
   {
     AppMethodBeat.i(69286);
-    eab();
-    if ((this.zPS) || (this.zPT)) {
-      paramMap.put("busi_scene", this.zPU.dca);
+    epx();
+    if ((this.Bim) || (this.Bin)) {
+      paramMap.put("busi_scene", this.Bio.cZz);
     }
     AppMethodBeat.o(69286);
   }
   
-  public int doScene(e parame, com.tencent.mm.al.g paramg)
+  public int doScene(e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(69289);
-    if (this.zPS) {
-      h.vKh.idkeyStat(663L, 26L, 1L, false);
+    if (this.Bim) {
+      h.wUl.idkeyStat(663L, 26L, 1L, false);
     }
     for (;;)
     {
       int i = super.doScene(parame, paramg);
       AppMethodBeat.o(69289);
       return i;
-      if (this.zPT) {
-        h.vKh.idkeyStat(663L, 22L, 1L, false);
+      if (this.Bin) {
+        h.wUl.idkeyStat(663L, 22L, 1L, false);
       }
     }
   }
@@ -85,13 +85,13 @@ public class b
   public int getFuncId()
   {
     AppMethodBeat.i(69287);
-    eab();
-    if (this.zPS)
+    epx();
+    if (this.Bim)
     {
       AppMethodBeat.o(69287);
       return 1281;
     }
-    if (this.zPT)
+    if (this.Bin)
     {
       AppMethodBeat.o(69287);
       return 1305;
@@ -108,13 +108,13 @@ public class b
   public String getUri()
   {
     AppMethodBeat.i(69288);
-    eab();
-    if (this.zPS)
+    epx();
+    if (this.Bim)
     {
       AppMethodBeat.o(69288);
       return "/cgi-bin/mmpay-bin/tenpay/snslqtpaybindverify";
     }
-    if (this.zPT)
+    if (this.Bin)
     {
       AppMethodBeat.o(69288);
       return "/cgi-bin/mmpay-bin/tenpay/lqtpaybindverify";
@@ -129,14 +129,14 @@ public class b
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     if (paramInt != 0)
     {
-      if (this.zPS)
+      if (this.Bim)
       {
-        h.vKh.idkeyStat(663L, 27L, 1L, false);
+        h.wUl.idkeyStat(663L, 27L, 1L, false);
         AppMethodBeat.o(69290);
         return;
       }
-      if (this.zPT) {
-        h.vKh.idkeyStat(663L, 23L, 1L, false);
+      if (this.Bin) {
+        h.wUl.idkeyStat(663L, 23L, 1L, false);
       }
     }
     AppMethodBeat.o(69290);

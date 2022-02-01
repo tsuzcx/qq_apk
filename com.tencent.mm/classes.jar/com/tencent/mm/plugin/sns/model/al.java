@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -14,29 +14,29 @@ import java.util.Map.Entry;
 public final class al<K, O>
 {
   private int maxSize;
-  Map<K, al<K, O>.b<O>> wIF;
-  private a wIG;
+  Map<K, al<K, O>.b<O>> xVa;
+  private a xVb;
   
   public al(int paramInt, a parama)
   {
     AppMethodBeat.i(95892);
-    this.wIF = null;
-    this.wIG = null;
+    this.xVa = null;
+    this.xVb = null;
     this.maxSize = paramInt;
-    this.wIF = new HashMap();
-    this.wIG = parama;
+    this.xVa = new HashMap();
+    this.xVb = parama;
     AppMethodBeat.o(95892);
   }
   
-  public final void dtU()
+  public final void dIs()
   {
     AppMethodBeat.i(95893);
     int i;
-    if (this.wIF.size() > this.maxSize)
+    if (this.xVa.size() > this.maxSize)
     {
-      Object localObject1 = new ArrayList(this.wIF.entrySet());
+      Object localObject1 = new ArrayList(this.xVa.entrySet());
       Collections.sort((List)localObject1, new Comparator() {});
-      i = this.wIF.size() - this.maxSize;
+      i = this.xVa.size() - this.maxSize;
       if (i <= 0)
       {
         AppMethodBeat.o(95893);
@@ -47,10 +47,10 @@ public final class al<K, O>
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject1).next();
         Object localObject2 = localEntry.getKey();
-        if (!this.wIG.dC(localObject2)) {
+        if (!this.xVb.dD(localObject2)) {
           break label164;
         }
-        ad.d("MicroMsg.SnsLRUMap", " remove targetKey: " + localEntry.getKey());
+        ac.d("MicroMsg.SnsLRUMap", " remove targetKey: " + localEntry.getKey());
         i -= 1;
       }
     }
@@ -68,27 +68,27 @@ public final class al<K, O>
   
   public static abstract interface a
   {
-    public abstract boolean dC(Object paramObject);
+    public abstract boolean dD(Object paramObject);
   }
   
   public final class b<OO>
   {
     public OO obj;
-    public Long wII;
+    public Long xVd;
     
     public b()
     {
       AppMethodBeat.i(95890);
       Object localObject;
       this.obj = localObject;
-      dtV();
+      dIt();
       AppMethodBeat.o(95890);
     }
     
-    public final void dtV()
+    public final void dIt()
     {
       AppMethodBeat.i(95891);
-      this.wII = Long.valueOf(System.currentTimeMillis());
+      this.xVd = Long.valueOf(System.currentTimeMillis());
       AppMethodBeat.o(95891);
     }
   }

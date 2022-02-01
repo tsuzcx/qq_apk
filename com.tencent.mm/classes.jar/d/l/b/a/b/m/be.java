@@ -22,7 +22,7 @@ public final class be
     k.h(paramab, "$this$getEnhancement");
     if ((paramab instanceof bd))
     {
-      paramab = ((bd)paramab).fJU();
+      paramab = ((bd)paramab).gcx();
       AppMethodBeat.o(60903);
       return paramab;
     }
@@ -58,7 +58,7 @@ public final class be
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.be
  * JD-Core Version:    0.7.0.1
  */

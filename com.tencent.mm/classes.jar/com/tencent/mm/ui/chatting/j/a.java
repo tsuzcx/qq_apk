@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.os.Looper;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -17,18 +17,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.av.o;
 import com.tencent.mm.model.az;
 import com.tencent.mm.modelappbrand.a.b.k;
 import com.tencent.mm.modelappbrand.k;
-import com.tencent.mm.plugin.appbrand.aa.e;
-import com.tencent.mm.plugin.appbrand.aa.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.plugin.appbrand.z.e;
+import com.tencent.mm.plugin.appbrand.z.m;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.chatting.a.c.b;
 import com.tencent.mm.ui.chatting.a.c.e;
@@ -41,18 +41,18 @@ import java.util.LinkedList;
 public final class a
   extends b
 {
-  com.tencent.mm.aw.a.a.c GFr;
-  private int fyi;
+  com.tencent.mm.av.a.a.c Ifn;
+  private int fBP;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(36457);
-    this.fyi = -1;
-    paramContext = new com.tencent.mm.aw.a.a.c.a();
-    paramContext.hkf = 2131689599;
-    paramContext.de(com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 50), com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 50)).hjS = true;
-    this.GFr = paramContext.azc();
+    this.fBP = -1;
+    paramContext = new com.tencent.mm.av.a.a.c.a();
+    paramContext.hKI = 2131689599;
+    paramContext.de(com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 50), com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 50)).hKv = true;
+    this.Ifn = paramContext.aFT();
     AppMethodBeat.o(36457);
   }
   
@@ -66,7 +66,7 @@ public final class a
     {
       AppMethodBeat.o(36464);
       return null;
-      paramString = com.tencent.mm.pluginsdk.model.app.h.j(paramString, true, false);
+      paramString = com.tencent.mm.pluginsdk.model.app.h.k(paramString, true, false);
       if (paramString == null) {
         paramString = null;
       } else {
@@ -81,7 +81,7 @@ public final class a
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandHistoryListPresenter", paramContext, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AppBrandHistoryListPresenter", paramContext, "", new Object[0]);
       AppMethodBeat.o(36464);
     }
     return null;
@@ -91,35 +91,35 @@ public final class a
   {
     AppMethodBeat.i(36463);
     parama = (b)parama;
-    final a locala = (a)YJ(paramInt);
-    com.tencent.mm.ai.a locala1 = (com.tencent.mm.ai.a)locala.duP.ao(com.tencent.mm.ai.a.class);
-    if ((locala1 != null) && (locala1.gFB == 1))
+    final a locala = (a)aaU(paramInt);
+    com.tencent.mm.ah.a locala1 = (com.tencent.mm.ah.a)locala.dsB.ao(com.tencent.mm.ah.a.class);
+    if ((locala1 != null) && (locala1.hgc == 1))
     {
-      parama.qkB.setVisibility(0);
-      if (!bt.isNullOrNil(locala.desc)) {
+      parama.qTd.setVisibility(0);
+      if (!bs.isNullOrNil(locala.desc)) {
         break label113;
       }
-      parama.hJe.setVisibility(8);
+      parama.ijE.setVisibility(8);
     }
     label113:
     do
     {
-      o.ayJ().a(locala.imagePath, parama.kXS, this.GFr);
+      o.aFB().a(locala.imagePath, parama.lzC, this.Ifn);
       AppMethodBeat.o(36463);
       return;
-      parama.qkB.setVisibility(8);
+      parama.qTd.setVisibility(8);
       break;
-      parama.hJe.setVisibility(0);
-      parama.hJe.setText(parama.ica.getText());
-      parama.ica.setText(locala.desc);
-      b.d(parama.hJe, this.GFz.Gsj);
-    } while (bt.isNullOrNil(locala.lLO));
-    com.tencent.mm.modelappbrand.a.b.aub().a(new b.k()
+      parama.ijE.setVisibility(0);
+      parama.ijE.setText(parama.iCg.getText());
+      parama.iCg.setText(locala.desc);
+      b.d(parama.ijE, this.Ifv.HSb);
+    } while (bs.isNullOrNil(locala.mnL));
+    com.tencent.mm.modelappbrand.a.b.aAS().a(new b.k()
     {
-      public final String AL()
+      public final String Ap()
       {
         AppMethodBeat.i(36454);
-        String str = "SEARCH#" + m.cF(this);
+        String str = "SEARCH#" + m.cE(this);
         AppMethodBeat.o(36454);
         return str;
       }
@@ -129,27 +129,27 @@ public final class a
         AppMethodBeat.i(36452);
         if ((paramAnonymousBitmap != null) && (!paramAnonymousBitmap.isRecycled()))
         {
-          parama.kXS.setImageBitmap(paramAnonymousBitmap);
+          parama.lzC.setImageBitmap(paramAnonymousBitmap);
           AppMethodBeat.o(36452);
           return;
         }
-        o.ayJ().a(locala.imagePath, parama.kXS, a.this.GFr);
+        o.aFB().a(locala.imagePath, parama.lzC, a.this.Ifn);
         AppMethodBeat.o(36452);
       }
       
-      public final void auj() {}
+      public final void aBa() {}
       
-      public final void nV()
+      public final void of()
       {
         AppMethodBeat.i(36453);
-        o.ayJ().a(locala.imagePath, parama.kXS, a.this.GFr);
+        o.aFB().a(locala.imagePath, parama.lzC, a.this.Ifn);
         AppMethodBeat.o(36453);
       }
-    }, locala.lLO, null, ((k)com.tencent.mm.kernel.g.ab(k.class)).dc(45, 45));
+    }, locala.mnL, null, ((k)com.tencent.mm.kernel.g.ab(k.class)).dc(45, 45));
     AppMethodBeat.o(36463);
   }
   
-  public final String aHv()
+  public final String aOk()
   {
     AppMethodBeat.i(36459);
     String str = this.mContext.getString(2131762906);
@@ -157,13 +157,13 @@ public final class a
     return str;
   }
   
-  public final void eZk()
+  public final void foZ()
   {
     AppMethodBeat.i(36458);
-    ad.i("MicroMsg.AppBrandHistoryListPresenter", "[loadData] isFirst:%s", new Object[] { Boolean.TRUE });
-    this.GFy.eZo();
-    com.tencent.mm.plugin.appbrand.aa.c.reset();
-    com.tencent.mm.plugin.appbrand.aa.c.a(this.fwd, new com.tencent.mm.plugin.appbrand.aa.c.a()
+    ac.i("MicroMsg.AppBrandHistoryListPresenter", "[loadData] isFirst:%s", new Object[] { Boolean.TRUE });
+    this.Ifu.fpd();
+    com.tencent.mm.plugin.appbrand.z.c.reset();
+    com.tencent.mm.plugin.appbrand.z.c.a(this.fzK, new com.tencent.mm.plugin.appbrand.z.c.a()
     {
       public final void A(final LinkedList<e> paramAnonymousLinkedList)
       {
@@ -173,7 +173,7 @@ public final class a
           public final void run()
           {
             AppMethodBeat.i(36447);
-            if (!bt.gL(paramAnonymousLinkedList))
+            if (!bs.gY(paramAnonymousLinkedList))
             {
               Iterator localIterator = paramAnonymousLinkedList.iterator();
               while (localIterator.hasNext())
@@ -181,21 +181,21 @@ public final class a
                 Object localObject = (e)localIterator.next();
                 if (localObject != null)
                 {
-                  localObject = new a.a(a.this, ((e)localObject).timestamp, ((e)localObject).type, ((e)localObject).title, ((e)localObject).msgId, ((e)localObject).username, ((e)localObject).nickname, ((e)localObject).bNL, ((e)localObject).lLN, ((e)localObject).gJF, ((e)localObject).duP, ((e)localObject).drA, ((e)localObject).desc, ((e)localObject).imagePath, ((e)localObject).lLO);
-                  a.this.hIH.add(localObject);
+                  localObject = new a.a(a.this, ((e)localObject).timestamp, ((e)localObject).type, ((e)localObject).title, ((e)localObject).msgId, ((e)localObject).username, ((e)localObject).nickname, ((e)localObject).bLt, ((e)localObject).mnK, ((e)localObject).hkf, ((e)localObject).dsB, ((e)localObject).dpl, ((e)localObject).desc, ((e)localObject).imagePath, ((e)localObject).mnL);
+                  a.this.ijj.add(localObject);
                 }
               }
             }
-            a.this.GFA = a.this.hIH;
-            if (a.this.GFy != null) {
-              a.this.GFy.A(a.1.this.nMD, a.this.hIH.size());
+            a.this.Ifw = a.this.ijj;
+            if (a.this.Ifu != null) {
+              a.this.Ifu.B(a.1.this.opD, a.this.ijj.size());
             }
             AppMethodBeat.o(36447);
           }
         };
         if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
         {
-          aq.f(paramAnonymousLinkedList);
+          ap.f(paramAnonymousLinkedList);
           AppMethodBeat.o(36448);
           return;
         }
@@ -206,7 +206,7 @@ public final class a
     AppMethodBeat.o(36458);
   }
   
-  public final c.e eZl()
+  public final c.e fpa()
   {
     AppMethodBeat.i(36461);
     c.e local2 = new c.e()
@@ -214,7 +214,7 @@ public final class a
       public final void a(View paramAnonymousView, int paramAnonymousInt, c.b paramAnonymousb)
       {
         AppMethodBeat.i(36450);
-        ad.i("MicroMsg.AppBrandHistoryListPresenter", "[onItemClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ac.i("MicroMsg.AppBrandHistoryListPresenter", "[onItemClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
         a.a(a.this, (a.a)paramAnonymousb);
         AppMethodBeat.o(36450);
       }
@@ -222,7 +222,7 @@ public final class a
       public final void b(View paramAnonymousView, int paramAnonymousInt, final c.b paramAnonymousb)
       {
         AppMethodBeat.i(36451);
-        ad.i("MicroMsg.AppBrandHistoryListPresenter", "[onItemLongClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ac.i("MicroMsg.AppBrandHistoryListPresenter", "[onItemLongClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
         new l(paramAnonymousView.getContext()).b(paramAnonymousView, new View.OnCreateContextMenuListener()new n.d
         {
           public final void onCreateContextMenu(ContextMenu paramAnonymous2ContextMenu, View paramAnonymous2View, ContextMenu.ContextMenuInfo paramAnonymous2ContextMenuInfo) {}
@@ -231,9 +231,9 @@ public final class a
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
             AppMethodBeat.i(36449);
-            az.arV();
-            bl localbl = com.tencent.mm.model.c.apO().rm(paramAnonymousb.msgId);
-            a.this.d(paramAnonymous2MenuItem.getItemId(), localbl);
+            az.ayM();
+            bo localbo = com.tencent.mm.model.c.awD().vP(paramAnonymousb.msgId);
+            a.this.d(paramAnonymous2MenuItem.getItemId(), localbo);
             AppMethodBeat.o(36449);
           }
         });
@@ -244,7 +244,7 @@ public final class a
     return local2;
   }
   
-  public final String eZn()
+  public final String fpc()
   {
     AppMethodBeat.i(36460);
     String str = this.mContext.getString(2131762906);
@@ -257,7 +257,7 @@ public final class a
     return 33;
   }
   
-  public final RecyclerView.v y(ViewGroup paramViewGroup)
+  public final RecyclerView.w z(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(36462);
     paramViewGroup = new b(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493096, paramViewGroup, false));
@@ -269,43 +269,43 @@ public final class a
     extends c.b
   {
     public String desc;
-    public long drA;
-    public k.b duP;
-    public String gJF;
+    public long dpl;
+    public k.b dsB;
+    public String hkf;
     public String imagePath;
-    public String lLO;
+    public String mnL;
     
     public a(long paramLong1, int paramInt, String paramString1, long paramLong2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, k.b paramb, long paramLong3, String paramString7, String paramString8, String paramString9)
     {
       super(paramInt, paramString1, paramLong2, paramString2, paramString3, paramString4, paramString5);
-      this.gJF = paramString6;
-      this.duP = paramb;
-      this.drA = paramLong3;
+      this.hkf = paramString6;
+      this.dsB = paramb;
+      this.dpl = paramLong3;
       this.desc = paramString7;
       this.imagePath = paramString8;
-      this.lLO = paramString9;
+      this.mnL = paramString9;
     }
     
-    public final boolean aKD(String paramString)
+    public final boolean aQg(String paramString)
     {
       AppMethodBeat.i(36455);
       if (paramString != null)
       {
         paramString = paramString.toLowerCase();
-        if (!aKE(paramString))
+        if (!aQh(paramString))
         {
-          if ((!bt.isNullOrNil(this.desc)) && (lq(paramString, this.desc.toLowerCase())))
+          if ((!bs.isNullOrNil(this.desc)) && (lN(paramString, this.desc.toLowerCase())))
           {
             AppMethodBeat.o(36455);
             return true;
           }
         }
-        else if ((!bt.isNullOrNil(this.desc)) && (this.desc.toLowerCase().contains(paramString)))
+        else if ((!bs.isNullOrNil(this.desc)) && (this.desc.toLowerCase().contains(paramString)))
         {
           AppMethodBeat.o(36455);
           return true;
         }
-        boolean bool = super.aKD(paramString);
+        boolean bool = super.aQg(paramString);
         AppMethodBeat.o(36455);
         return bool;
       }
@@ -322,28 +322,28 @@ public final class a
   final class b
     extends com.tencent.mm.ui.chatting.a.c.a
   {
-    TextView hJe;
-    ImageView kXS;
-    ImageView qkB;
-    TextView qkL;
+    TextView ijE;
+    ImageView lzC;
+    ImageView qTd;
+    TextView qTn;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(36456);
-      this.kXS = ((ImageView)paramView.findViewById(2131299794));
-      this.qkB = ((ImageView)paramView.findViewById(2131299798));
-      this.hJe = ((TextView)paramView.findViewById(2131299778));
-      this.qkL = ((TextView)paramView.findViewById(2131299825));
-      this.qkL.setVisibility(8);
-      this.qkB.setVisibility(8);
+      this.lzC = ((ImageView)paramView.findViewById(2131299794));
+      this.qTd = ((ImageView)paramView.findViewById(2131299798));
+      this.ijE = ((TextView)paramView.findViewById(2131299778));
+      this.qTn = ((TextView)paramView.findViewById(2131299825));
+      this.qTn.setVisibility(8);
+      this.qTd.setVisibility(8);
       AppMethodBeat.o(36456);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.j.a
  * JD-Core Version:    0.7.0.1
  */

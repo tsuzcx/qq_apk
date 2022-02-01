@@ -10,15 +10,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class HeaderContainer
   extends FrameLayout
 {
-  private i FKE;
-  private ab FKF;
-  private Rect lTn;
+  private i HjM;
+  private ac HjN;
+  private Rect mvp;
   
   public HeaderContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33167);
-    this.lTn = new Rect();
+    this.mvp = new Rect();
     init(paramContext);
     AppMethodBeat.o(33167);
   }
@@ -27,7 +27,7 @@ public class HeaderContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33168);
-    this.lTn = new Rect();
+    this.mvp = new Rect();
     init(paramContext);
     AppMethodBeat.o(33168);
   }
@@ -35,22 +35,22 @@ public class HeaderContainer
   private void init(Context paramContext)
   {
     AppMethodBeat.i(33171);
-    this.FKF = new ab(paramContext);
-    this.FKF.setHeaderContainer(this);
-    this.FKF.setId(2131302489);
+    this.HjN = new ac(paramContext);
+    this.HjN.setHeaderContainer(this);
+    this.HjN.setId(2131302489);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
-    addView(this.FKF, paramContext);
+    addView(this.HjN, paramContext);
     AppMethodBeat.o(33171);
   }
   
   public Rect getBackUpFooterRect()
   {
-    return this.lTn;
+    return this.mvp;
   }
   
-  public ab getHeaderView()
+  public ac getHeaderView()
   {
-    return this.FKF;
+    return this.HjN;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -63,9 +63,9 @@ public class HeaderContainer
   public void setAnimController(i parami)
   {
     AppMethodBeat.i(33169);
-    this.FKE = parami;
-    if ((this.FKF != null) && (this.FKE != null)) {
-      this.FKE.a(this.FKF);
+    this.HjM = parami;
+    if ((this.HjN != null) && (this.HjM != null)) {
+      this.HjM.a(this.HjN);
     }
     AppMethodBeat.o(33169);
   }

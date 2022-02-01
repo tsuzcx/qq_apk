@@ -1,52 +1,40 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
 
 public final class dde
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public b CMO;
-  public int CMP;
-  public int Evk;
-  public int Evl;
+  public int FMQ;
+  public boolean FMR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91718);
+    AppMethodBeat.i(116476);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(7, this.Evk);
-      if (this.CMO != null) {
-        paramVarArgs.c(8, this.CMO);
-      }
-      paramVarArgs.aR(9, this.CMP);
-      paramVarArgs.aR(10, this.Evl);
-      AppMethodBeat.o(91718);
+      paramVarArgs.aR(1, this.FMQ);
+      paramVarArgs.bl(2, this.FMR);
+      AppMethodBeat.o(116476);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(7, this.Evk) + 0;
-      paramInt = i;
-      if (this.CMO != null) {
-        paramInt = i + f.a.a.b.b.a.b(8, this.CMO);
-      }
-      i = f.a.a.b.b.a.bA(9, this.CMP);
-      int j = f.a.a.b.b.a.bA(10, this.Evl);
-      AppMethodBeat.o(91718);
-      return paramInt + i + j;
+      paramInt = f.a.a.b.b.a.bx(1, this.FMQ);
+      int i = f.a.a.b.b.a.fK(2);
+      AppMethodBeat.o(116476);
+      return paramInt + 0 + (i + 1);
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(91718);
+      AppMethodBeat.o(116476);
       return 0;
     }
     if (paramInt == 3)
@@ -56,26 +44,18 @@ public final class dde
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(91718);
+        AppMethodBeat.o(116476);
         return -1;
-      case 7: 
-        localdde.Evk = locala.KhF.xS();
-        AppMethodBeat.o(91718);
-        return 0;
-      case 8: 
-        localdde.CMO = locala.KhF.fMu();
-        AppMethodBeat.o(91718);
-        return 0;
-      case 9: 
-        localdde.CMP = locala.KhF.xS();
-        AppMethodBeat.o(91718);
+      case 1: 
+        localdde.FMQ = locala.LVo.xF();
+        AppMethodBeat.o(116476);
         return 0;
       }
-      localdde.Evl = locala.KhF.xS();
-      AppMethodBeat.o(91718);
+      localdde.FMR = locala.LVo.fZX();
+      AppMethodBeat.o(116476);
       return 0;
     }
-    AppMethodBeat.o(91718);
+    AppMethodBeat.o(116476);
     return -1;
   }
 }

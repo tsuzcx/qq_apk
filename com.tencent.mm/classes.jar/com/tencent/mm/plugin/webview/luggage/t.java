@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.webview.luggage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 
 public final class t
 {
-  public f ASM;
-  public final HashMap<String, String> AUG;
-  public final HashMap<String, a.d> AUH;
-  public final HashMap<String, String> AUI;
+  public f CkZ;
+  public final HashMap<String, String> CmT;
+  public final HashMap<String, a.d> CmU;
+  public final HashMap<String, String> CmV;
   
   public t(f paramf)
   {
     AppMethodBeat.i(78474);
-    this.AUG = new HashMap();
-    this.AUH = new HashMap();
-    this.AUI = new HashMap();
-    this.ASM = paramf;
+    this.CmT = new HashMap();
+    this.CmU = new HashMap();
+    this.CmV = new HashMap();
+    this.CkZ = paramf;
     AppMethodBeat.o(78474);
   }
   
-  public static String awm(String paramString)
+  public static String aBE(String paramString)
   {
     AppMethodBeat.i(78476);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(78476);
       return paramString;
@@ -41,16 +41,16 @@ public final class t
     return paramString;
   }
   
-  public final String elv()
+  public final String eAR()
   {
     AppMethodBeat.i(78477);
     String str = getAppId();
-    if (bt.isNullOrNil(str))
+    if (bs.isNullOrNil(str))
     {
       AppMethodBeat.o(78477);
       return null;
     }
-    str = (String)this.AUI.get(str);
+    str = (String)this.CmV.get(str);
     AppMethodBeat.o(78477);
     return str;
   }
@@ -58,14 +58,14 @@ public final class t
   public final String getAppId()
   {
     AppMethodBeat.i(78475);
-    String str = this.ASM.getUrl();
-    if (bt.isNullOrNil(str))
+    String str = this.CkZ.getUrl();
+    if (bs.isNullOrNil(str))
     {
       AppMethodBeat.o(78475);
       return null;
     }
-    str = awm(str);
-    str = (String)this.AUG.get(str);
+    str = aBE(str);
+    str = (String)this.CmT.get(str);
     AppMethodBeat.o(78475);
     return str;
   }

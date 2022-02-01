@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.protocal.protobuf.ry;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
@@ -15,10 +15,22 @@ public final class e
     super(paramMMActivity);
   }
   
-  public final boolean bLH()
+  public final boolean bSM()
+  {
+    AppMethodBeat.i(113646);
+    if ((super.bSM()) && (this.nTp.bPe()) && (!this.ogU) && (!bSJ()) && (!bSK()))
+    {
+      AppMethodBeat.o(113646);
+      return true;
+    }
+    AppMethodBeat.o(113646);
+    return false;
+  }
+  
+  public final boolean bSU()
   {
     AppMethodBeat.i(113641);
-    if ((this.nqp.bHC()) && (!l.zp(this.nzk.fsv)) && (this.nqp.bHR()) && (!this.nDT))
+    if ((this.nTp.bOP()) && (!l.Ag(this.ocl.fwc)) && (this.nTp.bPe()) && (!this.ogU))
     {
       AppMethodBeat.o(113641);
       return false;
@@ -27,10 +39,10 @@ public final class e
     return true;
   }
   
-  public final boolean bLL()
+  public final boolean bSY()
   {
     AppMethodBeat.i(113642);
-    if ((this.nqp.bHC()) && (!l.zp(this.nzk.fsv)) && (this.nqp.bHR()) && (!this.nDT))
+    if ((this.nTp.bOP()) && (!l.Ag(this.ocl.fwc)) && (this.nTp.bPe()) && (!this.ogU))
     {
       AppMethodBeat.o(113642);
       return true;
@@ -39,15 +51,15 @@ public final class e
     return false;
   }
   
-  public final boolean bLM()
+  public final boolean bSZ()
   {
-    return this.nDT;
+    return this.ogU;
   }
   
-  public final boolean bLO()
+  public final boolean bTb()
   {
     AppMethodBeat.i(113647);
-    if ((this.nqp.bHV() != null) && (this.nqp.bHV().CSk))
+    if ((this.nTp.bPi() != null) && (this.nTp.bPi().EkV))
     {
       AppMethodBeat.o(113647);
       return true;
@@ -56,10 +68,10 @@ public final class e
     return false;
   }
   
-  public final boolean bLP()
+  public final boolean bTc()
   {
     AppMethodBeat.i(113643);
-    if ((super.bLP()) || ((this.nqp.bHR()) && (!this.nDT) && ((bLw()) || (bLx()))))
+    if ((super.bTc()) || ((this.nTp.bPe()) && (!this.ogU) && ((bSJ()) || (bSK()))))
     {
       AppMethodBeat.o(113643);
       return true;
@@ -68,10 +80,10 @@ public final class e
     return false;
   }
   
-  public final boolean bLU()
+  public final boolean bTh()
   {
     AppMethodBeat.i(113645);
-    if ((this.nqp.bHR()) && (super.bLU()) && (!bLO()))
+    if ((this.nTp.bPe()) && (super.bTh()) && (!bTb()))
     {
       AppMethodBeat.o(113645);
       return true;
@@ -80,27 +92,15 @@ public final class e
     return false;
   }
   
-  public final boolean bLY()
+  public final boolean bTl()
   {
     AppMethodBeat.i(113644);
-    if ((this.nqp.bHC()) && (this.nqp.bHV().CRW != null) && (this.nqp.bHR()) && (!this.nDT) && (!bLw()) && (!bLx()))
+    if ((this.nTp.bOP()) && (this.nTp.bPi().EkH != null) && (this.nTp.bPe()) && (!this.ogU) && (!bSJ()) && (!bSK()))
     {
       AppMethodBeat.o(113644);
       return true;
     }
     AppMethodBeat.o(113644);
-    return false;
-  }
-  
-  public final boolean bLz()
-  {
-    AppMethodBeat.i(113646);
-    if ((super.bLz()) && (this.nqp.bHR()) && (!this.nDT) && (!bLw()) && (!bLx()))
-    {
-      AppMethodBeat.o(113646);
-      return true;
-    }
-    AppMethodBeat.o(113646);
     return false;
   }
 }

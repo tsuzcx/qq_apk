@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.f;
-import com.tencent.mm.protocal.protobuf.dqw;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.dwn;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.io.IOException;
 import java.util.List;
 
@@ -24,15 +24,15 @@ public final class e
   protected final void send()
   {
     AppMethodBeat.i(30125);
-    int i = ((k)com.tencent.mm.kernel.g.ab(k.class)).cOI().cOT().size();
-    dqw localdqw = new dqw();
-    localdqw.sdO = a.egT().auM(u.aqG()).id;
-    localdqw.Title = aj.getContext().getString(2131755822);
-    localdqw.gKr = aj.getContext().getString(2131761657, new Object[] { Integer.valueOf(i) });
+    int i = ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().dcC().size();
+    dwn localdwn = new dwn();
+    localdwn.tlI = a.ewn().aAd(u.axw()).id;
+    localdwn.Title = ai.getContext().getString(2131755822);
+    localdwn.hkR = ai.getContext().getString(2131761657, new Object[] { Integer.valueOf(i) });
     try
     {
-      a.egZ();
-      r.a(20005, localdqw.toByteArray(), true);
+      a.ewt();
+      r.a(20005, localdwn.toByteArray(), true);
       AppMethodBeat.o(30125);
       return;
     }
@@ -44,7 +44,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.e
  * JD-Core Version:    0.7.0.1
  */

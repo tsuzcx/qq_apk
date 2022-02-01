@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
 {
-  public final m.a aYO;
-  public final boolean bds;
-  public final String bdt;
-  public final int bdu;
-  public final byte[] bdv;
+  public final m.a aZA;
+  public final boolean bee;
+  public final String bef;
+  public final int beg;
+  public final byte[] beh;
   
   public k(boolean paramBoolean, String paramString, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2)
   {
@@ -26,10 +26,10 @@ public final class k
       j = 1;
       label30:
       a.checkArgument(j ^ i);
-      this.bds = paramBoolean;
-      this.bdt = paramString;
-      this.bdu = paramInt1;
-      this.bdv = paramArrayOfByte2;
+      this.bee = paramBoolean;
+      this.bef = paramString;
+      this.beg = paramInt1;
+      this.beh = paramArrayOfByte2;
       if (paramString != null) {
         break label104;
       }
@@ -38,7 +38,7 @@ public final class k
     for (;;)
     {
       label67:
-      this.aYO = new m.a(i, paramArrayOfByte1, paramInt2, paramInt3);
+      this.aZA = new m.a(i, paramArrayOfByte1, paramInt2, paramInt3);
       AppMethodBeat.o(92129);
       return;
       i = 0;

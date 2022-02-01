@@ -10,46 +10,47 @@ import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.page.ae;
 import com.tencent.mm.plugin.appbrand.report.AppBrandIDKeyBatchReport;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.protocal.protobuf.dum;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.report.g;
+import com.tencent.mm.protocal.protobuf.ead;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class m
 {
-  private static final m lrL;
+  private static final m lTG;
   public String appId;
-  public int dbs;
-  public String dbt;
-  public String dbu;
-  public int dzS;
-  public String dzT;
-  private final h kPx;
-  public int lpL;
-  private final boolean lrh;
-  public String lrl;
-  public int lrq;
+  public int cYO;
+  public String cYP;
+  public String cYQ;
+  public int dxE;
+  public String dxF;
+  public int lRH;
+  private final boolean lTc;
+  public String lTg;
+  public int lTl;
+  private final h lqW;
   public int scene;
   public String sessionId;
   
   static
   {
     AppMethodBeat.i(48155);
-    lrL = new m(true, h.lqT);
+    lTG = new m(true, h.lSO);
     AppMethodBeat.o(48155);
   }
   
   private m(boolean paramBoolean, h paramh)
   {
-    this.lrh = paramBoolean;
-    this.kPx = paramh;
+    this.lTc = paramBoolean;
+    this.lqW = paramh;
   }
   
-  private static String MC(String paramString)
+  private static String QL(String paramString)
   {
     AppMethodBeat.i(48153);
     String str = paramString;
-    if (bt.nullAsNil(paramString).length() > 1024) {
+    if (bs.nullAsNil(paramString).length() > 1024) {
       str = paramString.substring(0, 1024);
     }
     AppMethodBeat.o(48153);
@@ -64,13 +65,13 @@ public final class m
     {
       paramh.sessionId = paramString;
       paramh.appId = paramo.mAppId;
-      paramString = paramo.DZ().cfo;
+      paramString = paramo.DC().ccl;
       paramh.scene = paramString.scene;
-      paramh.dbt = paramString.dbt;
-      paramh.dzS = paramString.dzS;
-      paramh.dzT = paramString.dzT;
-      paramh.lpL = paramString.lpL;
-      paramh.dbs = (paramo.aNc().iOP + 1);
+      paramh.cYP = paramString.cYP;
+      paramh.dxE = paramString.dxE;
+      paramh.dxF = paramString.dxF;
+      paramh.lRH = paramString.lRH;
+      paramh.cYO = (paramo.aTS().joY + 1);
       AppMethodBeat.o(48150);
       return paramh;
     }
@@ -78,53 +79,53 @@ public final class m
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrand.Report.kv_14004", paramo, "Kv_14004 protect the npe", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.AppBrand.Report.kv_14004", paramo, "Kv_14004 protect the npe", new Object[0]);
       }
     }
   }
   
-  public static m bmB()
+  public static m btx()
   {
-    return lrL;
+    return lTG;
   }
   
   private void report()
   {
     AppMethodBeat.i(48152);
-    if (this.lrh)
+    if (this.lTc)
     {
       AppMethodBeat.o(48152);
       return;
     }
-    this.dbu = MC(this.dbu);
-    this.lrl = MC(this.lrl);
-    dum localdum = new dum();
-    localdum.mBH = 1;
-    localdum.hnC = this.appId;
-    localdum.EIO = this.dbu;
-    localdum.vJz = 0;
-    localdum.oXH = ((int)bt.aGK());
-    localdum.vJA = 1;
-    localdum.EIP = "";
-    localdum.DoL = this.dbs;
-    localdum.CzY = this.sessionId;
-    localdum.EIQ = com.tencent.mm.plugin.appbrand.report.h.getNetworkType(aj.getContext());
-    localdum.APo = this.scene;
-    localdum.EIR = this.lpL;
-    localdum.DcD = this.dbt;
-    localdum.lrl = this.lrl;
-    localdum.dzS = this.dzS;
-    localdum.dzT = this.dzT;
-    localdum.lrq = this.lrq;
-    AppBrandIDKeyBatchReport.a(localdum);
-    ad.i("MicroMsg.AppBrand.Report.kv_14004", "report " + toString());
+    this.cYQ = QL(this.cYQ);
+    this.lTg = QL(this.lTg);
+    ead localead = new ead();
+    localead.ndI = 1;
+    localead.hOf = this.appId;
+    localead.Gga = this.cYQ;
+    localead.wTD = 0;
+    localead.pAS = ((int)bs.aNx());
+    localead.wTE = 1;
+    localead.Ggb = "";
+    localead.EJL = this.cYO;
+    localead.DSu = this.sessionId;
+    localead.Ggc = g.getNetworkType(ai.getContext());
+    localead.ChE = this.scene;
+    localead.Ggd = this.lRH;
+    localead.EvK = this.cYP;
+    localead.lTg = this.lTg;
+    localead.dxE = this.dxE;
+    localead.dxF = this.dxF;
+    localead.lTl = this.lTl;
+    AppBrandIDKeyBatchReport.a(localead);
+    ac.i("MicroMsg.AppBrand.Report.kv_14004", "report " + toString());
     AppMethodBeat.o(48152);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(48154);
-    String str = "kv_14004{appId='" + this.appId + '\'' + ", sessionId='" + this.sessionId + '\'' + ", scene=" + this.scene + ", sceneNote='" + this.dbt + '\'' + ", preScene=" + this.dzS + ", preSceneNote='" + this.dzT + '\'' + ", pagePath='" + this.dbu + '\'' + ", usedState=" + this.lpL + ", appState=" + this.dbs + ", referPagePath='" + this.lrl + '\'' + ", isEntrance=" + this.lrq + '}';
+    String str = "kv_14004{appId='" + this.appId + '\'' + ", sessionId='" + this.sessionId + '\'' + ", scene=" + this.scene + ", sceneNote='" + this.cYP + '\'' + ", preScene=" + this.dxE + ", preSceneNote='" + this.dxF + '\'' + ", pagePath='" + this.cYQ + '\'' + ", usedState=" + this.lRH + ", appState=" + this.cYO + ", referPagePath='" + this.lTg + '\'' + ", isEntrance=" + this.lTl + '}';
     AppMethodBeat.o(48154);
     return str;
   }
@@ -132,20 +133,20 @@ public final class m
   public final void v(ae paramae)
   {
     AppMethodBeat.i(48151);
-    this.dbu = paramae.kWX;
-    paramae = this.kPx.q(paramae);
-    if ((paramae != null) && (paramae.lqW != null))
+    this.cYQ = paramae.lyH;
+    paramae = this.lqW.q(paramae);
+    if ((paramae != null) && (paramae.lSR != null))
     {
-      paramae = paramae.lqW.path;
-      this.lrl = paramae;
-      if (!this.kPx.My(this.dbu)) {
+      paramae = paramae.lSR.path;
+      this.lTg = paramae;
+      if (!this.lqW.QH(this.cYQ)) {
         break label88;
       }
     }
     label88:
     for (int i = 1;; i = 0)
     {
-      this.lrq = i;
+      this.lTl = i;
       report();
       AppMethodBeat.o(48151);
       return;
@@ -156,7 +157,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.m
  * JD-Core Version:    0.7.0.1
  */

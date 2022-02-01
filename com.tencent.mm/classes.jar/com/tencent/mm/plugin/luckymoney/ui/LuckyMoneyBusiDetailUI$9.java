@@ -12,13 +12,13 @@ final class LuckyMoneyBusiDetailUI$9
   public final void onBack()
   {
     AppMethodBeat.i(65458);
-    if (LuckyMoneyBusiDetailUI.f(this.tkt).getVisibility() == 0)
+    if (LuckyMoneyBusiDetailUI.f(this.usM).getVisibility() == 0)
     {
-      LuckyMoneyBusiDetailUI.f(this.tkt).setVisibility(8);
+      LuckyMoneyBusiDetailUI.f(this.usM).setVisibility(8);
       AppMethodBeat.o(65458);
       return;
     }
-    this.tkt.getContext().finish();
+    this.usM.getContext().finish();
     AppMethodBeat.o(65458);
   }
 }

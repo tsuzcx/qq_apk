@@ -1,47 +1,47 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.k.a;
+import com.tencent.mm.ak.k.a;
 import com.tencent.mm.audio.b.a;
 import com.tencent.mm.audio.b.b;
 import com.tencent.mm.audio.b.b.a;
 import com.tencent.mm.audio.b.c;
 import com.tencent.mm.compatible.b.c.a;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class v
   implements a
 {
-  private static int cZR = 100;
-  private b cZP;
+  private static int cXn = 100;
+  private b cXl;
   String fileName;
-  private k.a hDD;
+  private k.a ief;
   private int status;
   
   public v(c.a parama)
   {
     AppMethodBeat.i(148500);
     this.fileName = "";
-    this.hDD = null;
+    this.ief = null;
     this.status = 0;
-    this.cZP = new b(parama);
+    this.cXl = new b(parama);
     AppMethodBeat.o(148500);
   }
   
-  public final boolean Ob()
+  public final boolean NX()
   {
     AppMethodBeat.i(148502);
-    if (this.cZP == null)
+    if (this.cXl == null)
     {
       AppMethodBeat.o(148502);
       return true;
     }
     try
     {
-      this.cZP.Ft();
-      this.cZP.release();
+      this.cXl.Fb();
+      this.cXl.release();
       this.fileName = "";
       this.status = 0;
       AppMethodBeat.o(148502);
@@ -49,47 +49,47 @@ public final class v
     }
     catch (Exception localException)
     {
-      ad.e("VoiceRecorder", "StopRecord File[" + this.fileName + "] ErrMsg[" + localException.getMessage() + "]");
+      ac.e("VoiceRecorder", "StopRecord File[" + this.fileName + "] ErrMsg[" + localException.getMessage() + "]");
       this.status = -1;
       AppMethodBeat.o(148502);
     }
     return false;
   }
   
-  public final int Oc()
+  public final int NY()
   {
-    b localb = this.cZP;
-    if (((localb.cXJ == c.a.fyF) || (localb.cXJ == c.a.fyH)) && (localb.cXI != null)) {
-      return localb.cXI.cYA;
+    b localb = this.cXl;
+    if (((localb.cVf == c.a.fCm) || (localb.cVf == c.a.fCo)) && (localb.cVe != null)) {
+      return localb.cVe.cVW;
     }
     return 1;
   }
   
   public final void a(k.a parama)
   {
-    this.hDD = parama;
+    this.ief = parama;
   }
   
-  public final boolean fO(String paramString)
+  public final boolean fE(String paramString)
   {
     AppMethodBeat.i(148501);
-    if (bt.isNullOrNil(paramString)) {}
+    if (bs.isNullOrNil(paramString)) {}
     f.a locala;
     for (int i = 0;; i = paramString.length())
     {
-      ad.i("VoiceRecorder", "[startRecord] fileName:%s size:%s", new Object[] { paramString, Integer.valueOf(i) });
+      ac.i("VoiceRecorder", "[startRecord] fileName:%s size:%s", new Object[] { paramString, Integer.valueOf(i) });
       locala = new f.a();
-      if ((bt.isNullOrNil(this.fileName)) || (this.fileName.length() <= 0)) {
+      if ((bs.isNullOrNil(this.fileName)) || (this.fileName.length() <= 0)) {
         break;
       }
-      ad.e("VoiceRecorder", "Duplicate Call startRecord , maybe Stop Fail Before");
+      ac.e("VoiceRecorder", "Duplicate Call startRecord , maybe Stop Fail Before");
       AppMethodBeat.o(148501);
       return false;
     }
     this.fileName = paramString;
     try
     {
-      this.cZP.a(new b.a()
+      this.cXl.a(new b.a()
       {
         public final void onError()
         {
@@ -106,26 +106,26 @@ public final class v
           }
           catch (Exception localException)
           {
-            ad.e("VoiceRecorder", "setErrorListener File[" + v.this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+            ac.e("VoiceRecorder", "setErrorListener File[" + v.this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
             AppMethodBeat.o(148499);
           }
         }
       });
-      this.cZP.Oe();
-      this.cZP.Of();
-      this.cZP.Od();
-      this.cZP.setOutputFile(this.fileName);
-      this.cZP.setMaxDuration(70000);
-      this.cZP.prepare();
-      this.cZP.start();
-      ad.d("VoiceRecorder", "StartRecord File[" + this.fileName + "] start time:" + locala.XK());
+      this.cXl.Oa();
+      this.cXl.Ob();
+      this.cXl.NZ();
+      this.cXl.setOutputFile(this.fileName);
+      this.cXl.setMaxDuration(70000);
+      this.cXl.prepare();
+      this.cXl.start();
+      ac.d("VoiceRecorder", "StartRecord File[" + this.fileName + "] start time:" + locala.YH());
       this.status = 1;
       AppMethodBeat.o(148501);
       return true;
     }
     catch (Exception paramString)
     {
-      ad.e("VoiceRecorder", "StartRecord File[" + this.fileName + "] ErrMsg[" + paramString.getMessage() + "]");
+      ac.e("VoiceRecorder", "StartRecord File[" + this.fileName + "] ErrMsg[" + paramString.getMessage() + "]");
       this.status = -1;
       AppMethodBeat.o(148501);
     }
@@ -137,11 +137,11 @@ public final class v
     AppMethodBeat.i(148503);
     if (this.status == 1)
     {
-      int i = this.cZP.getMaxAmplitude();
-      if (i > cZR) {
-        cZR = i;
+      int i = this.cXl.getMaxAmplitude();
+      if (i > cXn) {
+        cXn = i;
       }
-      i = i * 100 / cZR;
+      i = i * 100 / cXn;
       AppMethodBeat.o(148503);
       return i;
     }
@@ -156,7 +156,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelvoice.v
  * JD-Core Version:    0.7.0.1
  */

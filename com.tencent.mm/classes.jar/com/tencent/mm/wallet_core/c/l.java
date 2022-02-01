@@ -4,27 +4,22 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uj;
-import com.tencent.mm.protocal.protobuf.bjt;
-import com.tencent.mm.protocal.protobuf.bkg;
-import com.tencent.mm.protocal.protobuf.civ;
-import com.tencent.mm.protocal.protobuf.ciw;
-import com.tencent.mm.protocal.protobuf.dn;
-import com.tencent.mm.protocal.protobuf.we;
+import com.tencent.mm.g.a.ut;
+import com.tencent.mm.protocal.protobuf.bnn;
+import com.tencent.mm.protocal.protobuf.boa;
+import com.tencent.mm.protocal.protobuf.coc;
+import com.tencent.mm.protocal.protobuf.cod;
+import com.tencent.mm.protocal.protobuf.dp;
+import com.tencent.mm.protocal.protobuf.wo;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.wallet_core.ui.WalletTextView;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -33,26 +28,26 @@ import org.json.JSONObject;
 
 public final class l
 {
-  public static String a(bjt parambjt)
+  public static String a(bnn parambnn)
   {
     AppMethodBeat.i(72749);
-    if (parambjt == null)
+    if (parambnn == null)
     {
       AppMethodBeat.o(72749);
       return "JumpItem{null}";
     }
-    parambjt = "JumpItem{wording='" + parambjt.doh + '\'' + ", action=" + parambjt.action + ", url='" + parambjt.url + '\'' + ", username='" + parambjt.username + '\'' + ", pagepath='" + parambjt.vBP + '\'' + '}';
+    parambnn = "JumpItem{wording='" + parambnn.dlQ + '\'' + ", action=" + parambnn.action + ", url='" + parambnn.url + '\'' + ", username='" + parambnn.username + '\'' + ", pagepath='" + parambnn.wLU + '\'' + '}';
     AppMethodBeat.o(72749);
-    return parambjt;
+    return parambnn;
   }
   
-  public static <InputType> void a(Context paramContext, bjt parambjt, InputType paramInputType, a<InputType> parama)
+  public static <InputType> void a(Context paramContext, bnn parambnn, InputType paramInputType, a<InputType> parama)
   {
     AppMethodBeat.i(72754);
     String str1;
-    if (parambjt == null)
+    if (parambnn == null)
     {
-      str1 = a(parambjt);
+      str1 = a(parambnn);
       if (parama != null) {
         break label61;
       }
@@ -60,8 +55,8 @@ public final class l
     label61:
     for (String str2 = "null";; str2 = "no null")
     {
-      ad.i("MicroMsg.JumpItemUtil", "handleAction() jumpItem:%s iJumpItemCallback:%s", new Object[] { str1, str2 });
-      if (parambjt != null) {
+      ac.i("MicroMsg.JumpItemUtil", "handleAction() jumpItem:%s iJumpItemCallback:%s", new Object[] { str1, str2 });
+      if (parambnn != null) {
         break label68;
       }
       AppMethodBeat.o(72754);
@@ -70,57 +65,57 @@ public final class l
       break;
     }
     label68:
-    switch (parambjt.action)
+    switch (parambnn.action)
     {
     }
     for (;;)
     {
       if (parama != null) {
-        parama.djG();
+        parama.dxI();
       }
       AppMethodBeat.o(72754);
       return;
       if (parama != null)
       {
-        parama.djE();
+        parama.dxG();
         continue;
         if (parama != null)
         {
-          parama.djL();
+          parama.dxN();
           continue;
           if (parama != null)
           {
-            parama.dB(paramInputType);
+            parama.dC(paramInputType);
             continue;
             paramInputType = new Intent();
-            paramInputType.putExtra("rawUrl", parambjt.url);
-            e.X(paramContext, paramInputType);
+            paramInputType.putExtra("rawUrl", parambnn.url);
+            e.al(paramContext, paramInputType);
             continue;
             for (;;)
             {
               try
               {
-                paramInputType = new uj();
-                paramInputType.dzH.userName = parambjt.username;
-                paramInputType.dzH.dzJ = parambjt.vBP;
+                paramInputType = new ut();
+                paramInputType.dxt.userName = parambnn.username;
+                paramInputType.dxt.dxv = parambnn.wLU;
                 if (parama == null) {
                   break label291;
                 }
-                paramInputType.dzH.scene = parama.djF();
-                paramInputType.dzH.dzK = 0;
-                paramInputType.dzH.context = paramContext;
-                a.ESL.l(paramInputType);
+                paramInputType.dxt.scene = parama.dxH();
+                paramInputType.dxt.dxw = 0;
+                paramInputType.dxt.context = paramContext;
+                a.GpY.l(paramInputType);
               }
               catch (Exception paramContext)
               {
-                ad.e("MicroMsg.JumpItemUtil", "handleAction() Exception: %s", new Object[] { paramContext.getMessage() });
+                ac.e("MicroMsg.JumpItemUtil", "handleAction() Exception: %s", new Object[] { paramContext.getMessage() });
               }
               break;
               label291:
-              paramInputType.dzH.scene = 1000;
+              paramInputType.dxt.scene = 1000;
             }
             if (parama != null) {
-              parama.djH();
+              parama.dxJ();
             }
           }
         }
@@ -128,68 +123,76 @@ public final class l
     }
   }
   
-  public static <InputType> void a(Context paramContext, final civ paramciv, final InputType paramInputType, final a<InputType> parama)
+  public static <InputType> void a(Context paramContext, final coc paramcoc, final InputType paramInputType, final a<InputType> parama)
   {
     AppMethodBeat.i(72755);
-    if (paramciv == null)
+    if (paramcoc == null)
     {
-      ad.i("MicroMsg.JumpItemUtil", "showRemindWin() remindWin == null");
+      ac.i("MicroMsg.JumpItemUtil", "showRemindWin() remindWin == null");
       AppMethodBeat.o(72755);
       return;
     }
-    h.a(paramContext, paramciv.doh, "", paramciv.Avk.doh, paramContext.getString(2131755691), false, new DialogInterface.OnClickListener()new l.2
+    h.a(paramContext, paramcoc.dlQ, "", paramcoc.BNE.dlQ, paramContext.getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(72743);
-        ad.i("MicroMsg.JumpItemUtil", "showRemindWin() ok click!");
-        l.a(this.val$context, paramciv.Avk, paramInputType, parama);
+        ac.i("MicroMsg.JumpItemUtil", "showRemindWin() ok click!");
+        l.a(this.val$context, paramcoc.BNE, paramInputType, parama);
         AppMethodBeat.o(72743);
       }
-    }, new l.2()).show();
+    }, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(72744);
+        ac.i("MicroMsg.JumpItemUtil", "showRemindWin() cancel click!");
+        AppMethodBeat.o(72744);
+      }
+    }).show();
     AppMethodBeat.o(72755);
   }
   
-  public static <InputType> void a(Context paramContext, final we paramwe, final InputType paramInputType, final a<InputType> parama, final a parama1)
+  public static <InputType> void a(Context paramContext, final wo paramwo, final InputType paramInputType, final a<InputType> parama, final a parama1)
   {
     AppMethodBeat.i(72756);
-    if (paramwe == null)
+    if (paramwo == null)
     {
-      ad.i("MicroMsg.JumpItemUtil", "showCheckWin() checkWin == null");
+      ac.i("MicroMsg.JumpItemUtil", "showCheckWin() checkWin == null");
       AppMethodBeat.o(72756);
       return;
     }
-    if ((paramwe.Avj == null) || (paramwe.Avk == null))
+    if ((paramwo.BND == null) || (paramwo.BNE == null))
     {
-      ad.i("MicroMsg.JumpItemUtil", "showCheckWin() left_button == null || right_button == null");
+      ac.i("MicroMsg.JumpItemUtil", "showCheckWin() left_button == null || right_button == null");
       AppMethodBeat.o(72756);
       return;
     }
-    if ((paramwe.CYg == null) || (paramwe.CYg.isEmpty()))
+    if ((paramwo.EqP == null) || (paramwo.EqP.isEmpty()))
     {
-      ad.i("MicroMsg.JumpItemUtil", "showCheckWin() check_item == null || check_item.isEmpty()");
+      ac.i("MicroMsg.JumpItemUtil", "showCheckWin() check_item == null || check_item.isEmpty()");
       AppMethodBeat.o(72756);
       return;
     }
     View localView1 = LayoutInflater.from(paramContext).inflate(2131493528, null);
-    ((TextView)localView1.findViewById(2131305529)).setText(paramwe.subtitle);
+    ((TextView)localView1.findViewById(2131305529)).setText(paramwo.subtitle);
     LinearLayout localLinearLayout = (LinearLayout)localView1.findViewById(2131301144);
     int i = 0;
-    while (i < paramwe.CYg.size())
+    while (i < paramwo.EqP.size())
     {
       View localView2 = LayoutInflater.from(paramContext).inflate(2131493527, null);
-      ((TextView)localView2.findViewById(2131301158)).setText(((bkg)paramwe.CYg.get(i)).key);
-      ((TextView)localView2.findViewById(2131301201)).setText(((bkg)paramwe.CYg.get(i)).value);
+      ((TextView)localView2.findViewById(2131301158)).setText(((boa)paramwo.EqP.get(i)).key);
+      ((TextView)localView2.findViewById(2131301201)).setText(((boa)paramwo.EqP.get(i)).value);
       localLinearLayout.addView(localView2);
       i += 1;
     }
-    h.a(paramContext, false, paramwe.title, localView1, paramwe.Avk.doh, paramwe.Avj.doh, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    h.a(paramContext, false, paramwo.title, localView1, paramwo.BNE.dlQ, paramwo.BND.dlQ, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(72745);
-        ad.i("MicroMsg.JumpItemUtil", "showCheckWin() right_button click!");
-        l.a(this.val$context, paramwe.Avk, paramInputType, parama1);
+        ac.i("MicroMsg.JumpItemUtil", "showCheckWin() right_button click!");
+        l.a(this.val$context, paramwo.BNE, paramInputType, parama1);
         AppMethodBeat.o(72745);
       }
     }, new DialogInterface.OnClickListener()
@@ -197,55 +200,55 @@ public final class l
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(72746);
-        ad.i("MicroMsg.JumpItemUtil", "showCheckWin() left_button click!");
-        l.a(this.val$context, paramwe.Avj, paramInputType, parama);
+        ac.i("MicroMsg.JumpItemUtil", "showCheckWin() left_button click!");
+        l.a(this.val$context, paramwo.BND, paramInputType, parama);
         AppMethodBeat.o(72746);
       }
     }).show();
     AppMethodBeat.o(72756);
   }
   
-  public static bjt aMZ(String paramString)
+  public static bnn aSC(String paramString)
   {
     AppMethodBeat.i(72752);
     try
     {
-      paramString = by(new JSONObject(paramString));
+      paramString = bz(new JSONObject(paramString));
       AppMethodBeat.o(72752);
       return paramString;
     }
     catch (JSONException paramString)
     {
-      ad.e("MicroMsg.JumpItemUtil", "createFromJSONObject() Exception:%s", new Object[] { paramString.getMessage() });
+      ac.e("MicroMsg.JumpItemUtil", "createFromJSONObject() Exception:%s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(72752);
     }
     return null;
   }
   
-  public static JSONObject b(bjt parambjt)
+  public static JSONObject b(bnn parambnn)
   {
     AppMethodBeat.i(72751);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("wording", parambjt.doh);
-      localJSONObject.put("action", parambjt.action);
-      localJSONObject.put("url", parambjt.url);
-      localJSONObject.put("username", parambjt.username);
-      localJSONObject.put("pagepath", parambjt.vBP);
+      localJSONObject.put("wording", parambnn.dlQ);
+      localJSONObject.put("action", parambnn.action);
+      localJSONObject.put("url", parambnn.url);
+      localJSONObject.put("username", parambnn.username);
+      localJSONObject.put("pagepath", parambnn.wLU);
       AppMethodBeat.o(72751);
       return localJSONObject;
     }
-    catch (JSONException parambjt)
+    catch (JSONException parambnn)
     {
       for (;;)
       {
-        ad.e("MicroMsg.JumpItemUtil", "getJSONObject() Exception: %s", new Object[] { parambjt.getMessage() });
+        ac.e("MicroMsg.JumpItemUtil", "getJSONObject() Exception: %s", new Object[] { parambnn.getMessage() });
       }
     }
   }
   
-  public static String bm(LinkedList<bjt> paramLinkedList)
+  public static String bt(LinkedList<bnn> paramLinkedList)
   {
     AppMethodBeat.i(72750);
     if (paramLinkedList == null)
@@ -257,7 +260,7 @@ public final class l
     localStringBuilder.append("LinkedList<JumpItem>{");
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext()) {
-      localStringBuilder.append(a((bjt)paramLinkedList.next())).append(", ");
+      localStringBuilder.append(a((bnn)paramLinkedList.next())).append(", ");
     }
     localStringBuilder.append("}");
     paramLinkedList = localStringBuilder.toString();
@@ -265,43 +268,43 @@ public final class l
     return paramLinkedList;
   }
   
-  public static bjt by(JSONObject paramJSONObject)
+  public static bnn bz(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72753);
     if (paramJSONObject == null)
     {
-      ad.w("MicroMsg.JumpItemUtil", "createFromJSONObject() jsonObject == null");
+      ac.w("MicroMsg.JumpItemUtil", "createFromJSONObject() jsonObject == null");
       AppMethodBeat.o(72753);
       return null;
     }
-    bjt localbjt = new bjt();
-    localbjt.doh = paramJSONObject.optString("wording");
-    localbjt.action = paramJSONObject.optInt("action");
-    localbjt.url = paramJSONObject.optString("url");
-    localbjt.username = paramJSONObject.optString("username");
-    localbjt.vBP = paramJSONObject.optString("pagepath");
+    bnn localbnn = new bnn();
+    localbnn.dlQ = paramJSONObject.optString("wording");
+    localbnn.action = paramJSONObject.optInt("action");
+    localbnn.url = paramJSONObject.optString("url");
+    localbnn.username = paramJSONObject.optString("username");
+    localbnn.wLU = paramJSONObject.optString("pagepath");
     AppMethodBeat.o(72753);
-    return localbjt;
+    return localbnn;
   }
   
   public static abstract interface a<InputType>
   {
-    public abstract void dB(InputType paramInputType);
+    public abstract void dC(InputType paramInputType);
     
-    public abstract void djE();
+    public abstract void dxG();
     
-    public abstract int djF();
+    public abstract int dxH();
     
-    public abstract void djG();
+    public abstract void dxI();
     
-    public abstract void djH();
+    public abstract void dxJ();
     
-    public abstract void djL();
+    public abstract void dxN();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.l
  * JD-Core Version:    0.7.0.1
  */

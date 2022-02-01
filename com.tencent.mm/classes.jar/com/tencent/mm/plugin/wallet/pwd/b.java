@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet.pwd.a.l;
 import com.tencent.mm.plugin.wallet.pwd.ui.WalletPasswordSettingUI;
 import com.tencent.mm.plugin.wallet_core.c.w;
@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.d;
@@ -60,12 +60,12 @@ public class b
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(69498);
           String str = (String)paramAnonymousVarArgs[0];
           paramAnonymousVarArgs = (String)paramAnonymousVarArgs[1];
-          this.Ieo.a(new w(str, 3, paramAnonymousVarArgs), true, 1);
+          this.JFQ.a(new w(str, 3, paramAnonymousVarArgs), true, 1);
           AppMethodBeat.o(69498);
           return true;
         }
@@ -85,7 +85,7 @@ public class b
             if ((paramAnonymousn instanceof l))
             {
               b.this.a(this.activity, 0, b.a(b.this));
-              h.cf(this.activity, this.activity.getString(2131765625));
+              h.cg(this.activity, this.activity.getString(2131765625));
             }
             AppMethodBeat.o(69501);
             return true;
@@ -108,12 +108,12 @@ public class b
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(69502);
           paramAnonymousVarArgs = (u)paramAnonymousVarArgs[0];
           String str = b.b(b.this).getString("key_pwd1");
-          this.Ieo.a(new l(str, paramAnonymousVarArgs.ijt), true, 1);
+          this.JFQ.a(new l(str, paramAnonymousVarArgs.iJA), true, 1);
           AppMethodBeat.o(69502);
           return true;
         }
@@ -129,7 +129,7 @@ public class b
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(69504);
-    ad.d("MicroMsg.ProcessManager", "start Process : ModifyPwdProcess");
+    ac.d("MicroMsg.ProcessManager", "start Process : ModifyPwdProcess");
     b(paramActivity, WalletCheckPwdUI.class, paramBundle);
     AppMethodBeat.o(69504);
     return this;
@@ -194,7 +194,7 @@ public class b
     return false;
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "ModifyPwdProcess";
   }

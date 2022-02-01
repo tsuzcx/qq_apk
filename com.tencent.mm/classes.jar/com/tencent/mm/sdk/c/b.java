@@ -1,9 +1,9 @@
 package com.tencent.mm.sdk.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ public abstract class b
 {
   protected final String userAgent = "weixin/android";
   
-  public static Map<String, String> akU(String paramString)
+  public static Map<String, String> apT(String paramString)
   {
     HashMap localHashMap = new HashMap();
     if ((paramString == null) || (paramString.length() == 0)) {}
@@ -45,40 +45,40 @@ public abstract class b
   
   public static final class b
   {
-    public String ESX;
-    public b.a ESY = null;
+    public String Gqk;
+    public b.a Gql = null;
     public String host;
     public int timeout;
-    public int uLt = 0;
-    public Map<String, String> uLu = null;
-    public Map<String, String> uLv = null;
     public String uri;
+    public int vUk = 0;
+    public Map<String, String> vUl = null;
+    public Map<String, String> vUm = null;
     
     public final String getUrl()
     {
       AppMethodBeat.i(157522);
       StringBuilder localStringBuilder = new StringBuilder();
       if ((!this.uri.startsWith("http://")) && (!this.uri.startsWith("https://"))) {
-        localStringBuilder.append(this.ESX + this.host);
+        localStringBuilder.append(this.Gqk + this.host);
       }
       localStringBuilder.append(this.uri);
-      if (this.uLu == null)
+      if (this.vUl == null)
       {
         str1 = localStringBuilder.toString();
         AppMethodBeat.o(157522);
         return str1;
       }
       localStringBuilder.append('?');
-      Iterator localIterator = this.uLu.keySet().iterator();
+      Iterator localIterator = this.vUl.keySet().iterator();
       int i = 1;
       if (localIterator.hasNext())
       {
         String str2 = (String)localIterator.next();
-        String str3 = (String)this.uLu.get(str2);
+        String str3 = (String)this.vUl.get(str2);
         if (i != 0) {}
         for (str1 = "";; str1 = "&")
         {
-          localStringBuilder.append(str1).append(URLEncoder.encode(str2, "utf-8")).append('=').append(URLEncoder.encode(bt.nullAsNil(str3), "utf-8"));
+          localStringBuilder.append(str1).append(URLEncoder.encode(str2, "utf-8")).append('=').append(URLEncoder.encode(bs.nullAsNil(str3), "utf-8"));
           i = 0;
           break;
         }
@@ -99,7 +99,7 @@ public abstract class b
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        ad.printErrStackTrace("MicroMsg.HttpWrapperBase", localUnsupportedEncodingException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.HttpWrapperBase", localUnsupportedEncodingException, "", new Object[0]);
         AppMethodBeat.o(157523);
       }
       return "";
@@ -108,10 +108,10 @@ public abstract class b
   
   public static class c
   {
-    public b.a ESY;
+    public b.a Gql;
     public String content;
     public int status = 0;
-    public Map<String, String> uLv = null;
+    public Map<String, String> vUm = null;
     
     public c(String paramString)
     {
@@ -125,9 +125,9 @@ public abstract class b
       AppMethodBeat.i(157524);
       StringBuilder localStringBuilder = new StringBuilder("Response status:").append(this.status).append(", cookie:");
       Object localObject;
-      if (this.uLv != null)
+      if (this.vUm != null)
       {
-        localObject = this.uLv;
+        localObject = this.vUm;
         localObject = localStringBuilder.append(localObject).append(", content length :");
         if (this.content == null) {
           break label87;
@@ -147,7 +147,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.c.b
  * JD-Core Version:    0.7.0.1
  */

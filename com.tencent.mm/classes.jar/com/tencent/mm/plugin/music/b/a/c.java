@@ -4,8 +4,8 @@ import android.text.TextUtils;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,36 +16,36 @@ import java.util.Set;
 public final class c
   implements d
 {
-  private static volatile int tUG;
-  private static volatile int tUH;
-  private static volatile int tUI;
-  private static volatile int tUJ;
-  private static volatile int tUK;
-  private static volatile int tUL;
-  private static volatile int tUM;
-  private static volatile HashMap<String, Integer> tUN;
-  private static volatile HashMap<String, Integer> tUO;
-  private static volatile HashMap<String, a> tUP;
-  private static volatile HashMap<String, List<Long>> tUQ;
-  private static volatile HashMap<String, List<Long>> tUR;
-  private static volatile HashMap<String, List<Long>> tUS;
+  private static volatile HashMap<String, List<Long>> vdA;
+  private static volatile int vdo;
+  private static volatile int vdp;
+  private static volatile int vdq;
+  private static volatile int vdr;
+  private static volatile int vds;
+  private static volatile int vdt;
+  private static volatile int vdu;
+  private static volatile HashMap<String, Integer> vdv;
+  private static volatile HashMap<String, Integer> vdw;
+  private static volatile HashMap<String, a> vdx;
+  private static volatile HashMap<String, List<Long>> vdy;
+  private static volatile HashMap<String, List<Long>> vdz;
   
   static
   {
     AppMethodBeat.i(62961);
-    tUG = 0;
-    tUH = 0;
-    tUI = 0;
-    tUJ = 0;
-    tUK = 0;
-    tUL = 0;
-    tUM = 0;
-    tUN = new HashMap();
-    tUO = new HashMap();
-    tUP = new HashMap();
-    tUQ = new HashMap();
-    tUR = new HashMap();
-    tUS = new HashMap();
+    vdo = 0;
+    vdp = 0;
+    vdq = 0;
+    vdr = 0;
+    vds = 0;
+    vdt = 0;
+    vdu = 0;
+    vdv = new HashMap();
+    vdw = new HashMap();
+    vdx = new HashMap();
+    vdy = new HashMap();
+    vdz = new HashMap();
+    vdA = new HashMap();
     AppMethodBeat.o(62961);
   }
   
@@ -190,8 +190,8 @@ public final class c
     {
       localIDKey2.SetKey(paramInt1);
       localArrayList.add(localIDKey2);
-      h.vKh.b(localArrayList, true);
-      a.B(localArrayList);
+      h.wUl.b(localArrayList, true);
+      a.G(localArrayList);
       AppMethodBeat.o(62957);
       return;
       if ((3L < paramLong1) && (paramLong1 <= 6L))
@@ -817,10 +817,10 @@ public final class c
     }
   }
   
-  public final void Hs(int paramInt)
+  public final void Jr(int paramInt)
   {
     AppMethodBeat.i(62946);
-    ad.d("MicroMsg.Audio.AudioPlayIdKeyReport", "idKeyReportQQAudioPlayerSum scene:%d", new Object[] { Integer.valueOf(paramInt) });
+    ac.d("MicroMsg.Audio.AudioPlayIdKeyReport", "idKeyReportQQAudioPlayerSum scene:%d", new Object[] { Integer.valueOf(paramInt) });
     ArrayList localArrayList = new ArrayList();
     IDKey localIDKey1 = new IDKey();
     localIDKey1.SetID(688);
@@ -828,7 +828,7 @@ public final class c
     localIDKey1.SetValue(1L);
     IDKey localIDKey2 = new IDKey();
     localIDKey2.SetID(688);
-    ad.d("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerSumIdKeyByScene, scene:".concat(String.valueOf(paramInt)));
+    ac.d("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerSumIdKeyByScene, scene:".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     }
@@ -836,11 +836,11 @@ public final class c
     localIDKey2.SetValue(1L);
     localArrayList.add(localIDKey1);
     localArrayList.add(localIDKey2);
-    h.vKh.b(localArrayList, true);
+    h.wUl.b(localArrayList, true);
     AppMethodBeat.o(62946);
   }
   
-  public final void Ht(int paramInt)
+  public final void Js(int paramInt)
   {
     AppMethodBeat.i(62948);
     IDKey localIDKey = new IDKey();
@@ -854,7 +854,7 @@ public final class c
       localIDKey.SetValue(1L);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localIDKey);
-      h.vKh.b(localArrayList, true);
+      h.wUl.b(localArrayList, true);
       AppMethodBeat.o(62948);
       return;
       if (paramInt == 3) {
@@ -877,21 +877,21 @@ public final class c
     }
   }
   
-  public final void Hu(int paramInt)
+  public final void Jt(int paramInt)
   {
     AppMethodBeat.i(62949);
-    ad.d("MicroMsg.Audio.AudioPlayIdKeyReport", "idKeyReportAudioMixPlayerSum scene:%d", new Object[] { Integer.valueOf(paramInt) });
+    ac.d("MicroMsg.Audio.AudioPlayIdKeyReport", "idKeyReportAudioMixPlayerSum scene:%d", new Object[] { Integer.valueOf(paramInt) });
     ArrayList localArrayList = new ArrayList();
     IDKey localIDKey = new IDKey();
     localIDKey.SetID(688);
     localIDKey.SetKey(90);
     localIDKey.SetValue(1L);
     localArrayList.add(localIDKey);
-    h.vKh.b(localArrayList, true);
+    h.wUl.b(localArrayList, true);
     AppMethodBeat.o(62949);
   }
   
-  public final void Hv(int paramInt)
+  public final void Ju(int paramInt)
   {
     AppMethodBeat.i(62950);
     IDKey localIDKey1 = new IDKey();
@@ -900,17 +900,17 @@ public final class c
     localIDKey1.SetValue(1L);
     IDKey localIDKey2 = new IDKey();
     localIDKey2.SetID(688);
-    localIDKey2.SetKey(b.Hr(paramInt));
+    localIDKey2.SetKey(b.Jq(paramInt));
     localIDKey2.SetValue(1L);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localIDKey1);
     localArrayList.add(localIDKey2);
-    h.vKh.b(localArrayList, true);
-    b.B(localArrayList);
+    h.wUl.b(localArrayList, true);
+    b.G(localArrayList);
     AppMethodBeat.o(62950);
   }
   
-  public final void Hw(int paramInt)
+  public final void Jv(int paramInt)
   {
     AppMethodBeat.i(62951);
     IDKey localIDKey1 = new IDKey();
@@ -919,13 +919,13 @@ public final class c
     localIDKey1.SetValue(1L);
     IDKey localIDKey2 = new IDKey();
     localIDKey2.SetID(688);
-    localIDKey2.SetKey(b.Hr(paramInt));
+    localIDKey2.SetKey(b.Jq(paramInt));
     localIDKey2.SetValue(1L);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localIDKey1);
     localArrayList.add(localIDKey2);
-    h.vKh.b(localArrayList, true);
-    b.B(localArrayList);
+    h.wUl.b(localArrayList, true);
+    b.G(localArrayList);
     AppMethodBeat.o(62951);
   }
   
@@ -939,75 +939,75 @@ public final class c
   public final void a(final String paramString1, final String paramString2, final long paramLong1, long paramLong2, final long paramLong3, boolean paramBoolean, final String paramString3, final long paramLong4, final long paramLong5, long paramLong6)
   {
     AppMethodBeat.i(62955);
-    com.tencent.mm.cj.a.post(new Runnable()
+    com.tencent.mm.ci.a.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(62944);
-        Object localObject1 = paramString1 + "-" + ai.du(paramString2);
+        Object localObject1 = paramString1 + "-" + ah.dg(paramString2);
         for (;;)
         {
-          synchronized (c.tUO)
+          synchronized (c.vdw)
           {
-            if (!c.tUO.containsKey(localObject1)) {
+            if (!c.vdw.containsKey(localObject1)) {
               break label307;
             }
-            c.a(c.cUp(), (String)localObject1, paramLong1);
-            c.a(c.bSD(), (String)localObject1, paramLong3);
-            c.a(c.cUq(), (String)localObject1, paramString3);
-            int i = ((Integer)c.tUO.get(localObject1)).intValue() - 1;
+            c.a(c.dhV(), (String)localObject1, paramLong1);
+            c.a(c.bZS(), (String)localObject1, paramLong3);
+            c.a(c.dhW(), (String)localObject1, paramString3);
+            int i = ((Integer)c.vdw.get(localObject1)).intValue() - 1;
             if (i > 0)
             {
-              c.tUO.put(localObject1, Integer.valueOf(i));
+              c.vdw.put(localObject1, Integer.valueOf(i));
               if (!paramLong5)
               {
-                c.Hx(1);
-                c.cUr();
-                if (c.biV().containsKey(localObject1))
+                c.Jw(1);
+                c.dhX();
+                if (c.vdv.containsKey(localObject1))
                 {
-                  i = ((Integer)c.biV().get(localObject1)).intValue() - 1;
+                  i = ((Integer)c.vdv.get(localObject1)).intValue() - 1;
                   if (i <= 0) {
                     break label335;
                   }
-                  c.biV().put(localObject1, Integer.valueOf(i));
+                  c.vdv.put(localObject1, Integer.valueOf(i));
                 }
                 if ((!paramLong5) && (!TextUtils.isEmpty(paramLong4)))
                 {
-                  if (!c.cUt().containsKey(paramLong4)) {
+                  if (!c.dhZ().containsKey(paramLong4)) {
                     break label346;
                   }
-                  localObject1 = (c.a)c.cUt().get(paramLong4);
+                  localObject1 = (c.a)c.dhZ().get(paramLong4);
                   if (localObject1 != null) {
-                    ((c.a)localObject1).tVe += 1;
+                    ((c.a)localObject1).vdM += 1;
                   }
-                  ((c.a)localObject1).tVf = this.tUZ;
-                  ((c.a)localObject1).fileSize = this.tVa;
+                  ((c.a)localObject1).vdN = this.vdH;
+                  ((c.a)localObject1).fileSize = this.vdI;
                   ((c.a)localObject1).duration = this.val$duration;
-                  c.cUt().put(paramLong4, localObject1);
+                  c.dhZ().put(paramLong4, localObject1);
                 }
                 AppMethodBeat.o(62944);
               }
             }
             else
             {
-              c.tUO.remove(localObject1);
+              c.vdw.remove(localObject1);
             }
           }
-          c.cUs();
+          c.dhY();
           continue;
           label307:
-          ad.d("MicroMsg.Audio.AudioReportService", "leonlaudio not exist audioKey, audioId:%s, audioSrc:%s", new Object[] { paramString1, paramString2 });
+          ac.d("MicroMsg.Audio.AudioReportService", "leonlaudio not exist audioKey, audioId:%s, audioSrc:%s", new Object[] { paramString1, paramString2 });
           continue;
           label335:
-          c.biV().remove(localObject2);
+          c.vdv.remove(localObject2);
           continue;
           label346:
           c.a locala = new c.a(c.this);
-          locala.tVe = 1;
-          locala.tVf = this.tUZ;
-          locala.fileSize = this.tVa;
+          locala.vdM = 1;
+          locala.vdN = this.vdH;
+          locala.fileSize = this.vdI;
           locala.duration = this.val$duration;
-          c.cUt().put(paramLong4, locala);
+          c.dhZ().put(paramLong4, locala);
         }
       }
     });
@@ -1017,7 +1017,7 @@ public final class c
   public final void c(final String paramString, final long paramLong1, long paramLong2, final long paramLong3)
   {
     AppMethodBeat.i(62956);
-    com.tencent.mm.cj.a.post(new Runnable()
+    com.tencent.mm.ci.a.post(new Runnable()
     {
       public final void run()
       {
@@ -1025,11 +1025,11 @@ public final class c
         label1163:
         for (;;)
         {
-          synchronized (c.tUO)
+          synchronized (c.vdw)
           {
-            ad.d("MicroMsg.Audio.AudioReportService", "leonlaudio clear appId:%s", new Object[] { paramString });
+            ac.d("MicroMsg.Audio.AudioReportService", "leonlaudio clear appId:%s", new Object[] { paramString });
             int k = 0;
-            Object localObject4 = c.biV().entrySet().iterator();
+            Object localObject4 = c.vdv.entrySet().iterator();
             int i = 0;
             Object localObject1 = "";
             if (((Iterator)localObject4).hasNext())
@@ -1042,11 +1042,11 @@ public final class c
               }
               i = ((Integer)((Map.Entry)localObject5).getValue()).intValue();
               localObject1 = localObject3;
-              ad.d("MicroMsg.Audio.AudioReportService", "leonlaudio clear real invoke audioKey:%s, lostCount:%s", new Object[] { localObject3, ((Map.Entry)localObject5).getValue() });
+              ac.d("MicroMsg.Audio.AudioReportService", "leonlaudio clear real invoke audioKey:%s, lostCount:%s", new Object[] { localObject3, ((Map.Entry)localObject5).getValue() });
               continue;
             }
-            c.biV().clear();
-            Object localObject5 = c.tUO.entrySet().iterator();
+            c.vdv.clear();
+            Object localObject5 = c.vdw.entrySet().iterator();
             int j = 0;
             Object localObject3 = "";
             int m = 0;
@@ -1061,47 +1061,47 @@ public final class c
               {
                 j = ((Integer)((Map.Entry)localObject6).getValue()).intValue();
                 localObject3 = localObject4;
-                ad.d("MicroMsg.Audio.AudioReportService", "leonlaudio clear audioKey:%s, lostCount:%s", new Object[] { localObject4, ((Map.Entry)localObject6).getValue() });
+                ac.d("MicroMsg.Audio.AudioReportService", "leonlaudio clear audioKey:%s, lostCount:%s", new Object[] { localObject4, ((Map.Entry)localObject6).getValue() });
                 m += n;
               }
             }
             else
             {
-              c.tUO.clear();
+              c.vdw.clear();
               localObject4 = new c.b(c.this);
               localObject5 = new c.b(c.this);
               localObject6 = new c.b(c.this);
-              c.a((c.b)localObject4, c.cUp());
-              c.a((c.b)localObject5, c.bSD());
-              c.a((c.b)localObject6, c.cUq());
-              c.cUp().clear();
-              c.bSD().clear();
-              c.cUq().clear();
-              ad.d("MicroMsg.Audio.AudioReportService", "leonlaudio clear invokeTotalLostCount:%s, invokeMaxLostCount:%s, invokeMaxLostKey:%s, totalCostCount:%s, totalCostTime:%s, averageCostTime:%s, totalJsCostCount:%s, totalJSCostTime:%s, averageJSCostTime:%s,totalInvokeCostCount:%s, totalInvokeCostTime:%s, averageInvokeCostTime:%s,totalLostCount:%s, maxLostCount:%s, maxLostKey:%s, realInvokeTotalCount:%s, reachMaxPlayerCount:%s, audioPlayerType:%s, useQQAudioPlayerCount:%s, useAudioMixPlayerCount:%s, mixAverageTime:%s, maxCacheBufferSize:%s, realCacheBufferSize:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), localObject1, Integer.valueOf(((c.b)localObject4).tVg), Long.valueOf(((c.b)localObject4).ceC), Long.valueOf(((c.b)localObject4).tVh), Integer.valueOf(((c.b)localObject5).tVg), Long.valueOf(((c.b)localObject5).ceC), Long.valueOf(((c.b)localObject5).tVh), Integer.valueOf(((c.b)localObject6).tVg), Long.valueOf(((c.b)localObject6).ceC), Long.valueOf(((c.b)localObject6).tVh), Integer.valueOf(m), Integer.valueOf(j), localObject3, Integer.valueOf(c.tUH), Integer.valueOf(c.cUu()), Integer.valueOf(c.aDt()), Integer.valueOf(c.aSD()), Integer.valueOf(c.aSC()), Long.valueOf(paramLong1), Long.valueOf(paramLong3), Long.valueOf(this.tVd) });
-              ad.d("MicroMsg.Audio.AudioReportService", "leonlaudio clear invokeQQAudioPlayerPlayCount:%s, invokeMixPlayerPlayCount:%s, useQQAudioPlayerPlayLostCount:%s, useMixPlayerPlayLostCount:%s, ", new Object[] { Integer.valueOf(c.tUJ), Integer.valueOf(c.tUK), Integer.valueOf(c.tUJ - c.aSD() + c.cUu()), Integer.valueOf(c.tUK - c.aSC()) });
-              if ((((c.b)localObject4).tVg > 0) && (((c.b)localObject5).tVg > 0) && (((c.b)localObject6).tVg > 0))
+              c.a((c.b)localObject4, c.dhV());
+              c.a((c.b)localObject5, c.bZS());
+              c.a((c.b)localObject6, c.dhW());
+              c.dhV().clear();
+              c.bZS().clear();
+              c.dhW().clear();
+              ac.d("MicroMsg.Audio.AudioReportService", "leonlaudio clear invokeTotalLostCount:%s, invokeMaxLostCount:%s, invokeMaxLostKey:%s, totalCostCount:%s, totalCostTime:%s, averageCostTime:%s, totalJsCostCount:%s, totalJSCostTime:%s, averageJSCostTime:%s,totalInvokeCostCount:%s, totalInvokeCostTime:%s, averageInvokeCostTime:%s,totalLostCount:%s, maxLostCount:%s, maxLostKey:%s, realInvokeTotalCount:%s, reachMaxPlayerCount:%s, audioPlayerType:%s, useQQAudioPlayerCount:%s, useAudioMixPlayerCount:%s, mixAverageTime:%s, maxCacheBufferSize:%s, realCacheBufferSize:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), localObject1, Integer.valueOf(((c.b)localObject4).vdO), Long.valueOf(((c.b)localObject4).cbz), Long.valueOf(((c.b)localObject4).vdP), Integer.valueOf(((c.b)localObject5).vdO), Long.valueOf(((c.b)localObject5).cbz), Long.valueOf(((c.b)localObject5).vdP), Integer.valueOf(((c.b)localObject6).vdO), Long.valueOf(((c.b)localObject6).cbz), Long.valueOf(((c.b)localObject6).vdP), Integer.valueOf(m), Integer.valueOf(j), localObject3, Integer.valueOf(c.vdp), Integer.valueOf(c.dia()), Integer.valueOf(c.aKk()), Integer.valueOf(c.aZA()), Integer.valueOf(c.aZz()), Long.valueOf(paramLong1), Long.valueOf(paramLong3), Long.valueOf(this.vdL) });
+              ac.d("MicroMsg.Audio.AudioReportService", "leonlaudio clear invokeQQAudioPlayerPlayCount:%s, invokeMixPlayerPlayCount:%s, useQQAudioPlayerPlayLostCount:%s, useMixPlayerPlayLostCount:%s, ", new Object[] { Integer.valueOf(c.vdr), Integer.valueOf(c.vds), Integer.valueOf(c.vdr - c.aZA() + c.dia()), Integer.valueOf(c.vds - c.aZz()) });
+              if ((((c.b)localObject4).vdO > 0) && (((c.b)localObject5).vdO > 0) && (((c.b)localObject6).vdO > 0))
               {
-                h.vKh.f(15686, new Object[] { paramString, Integer.valueOf(k), Integer.valueOf(i), localObject1, Integer.valueOf(((c.b)localObject4).tVg), Long.valueOf(((c.b)localObject4).ceC), Long.valueOf(((c.b)localObject4).tVh), Integer.valueOf(((c.b)localObject5).tVg), Long.valueOf(((c.b)localObject5).ceC), Long.valueOf(((c.b)localObject5).tVh), Integer.valueOf(((c.b)localObject6).tVg), Long.valueOf(((c.b)localObject6).ceC), Long.valueOf(((c.b)localObject6).tVh), Integer.valueOf(m), Integer.valueOf(j), localObject3, Integer.valueOf(c.tUH), Integer.valueOf(c.cUu()), Integer.valueOf(c.aDt()), Integer.valueOf(c.aSD()), Integer.valueOf(c.aSC()), Long.valueOf(paramLong1), Long.valueOf(paramLong3), Long.valueOf(this.tVd), Integer.valueOf(c.tUJ - c.aSD() + c.cUu()), Integer.valueOf(c.tUK - c.aSC()) });
-                i = c.aDt();
-                long l1 = ((c.b)localObject5).tVh;
-                long l2 = ((c.b)localObject6).tVh;
-                long l3 = ((c.b)localObject4).tVh;
-                j = c.cUu();
+                h.wUl.f(15686, new Object[] { paramString, Integer.valueOf(k), Integer.valueOf(i), localObject1, Integer.valueOf(((c.b)localObject4).vdO), Long.valueOf(((c.b)localObject4).cbz), Long.valueOf(((c.b)localObject4).vdP), Integer.valueOf(((c.b)localObject5).vdO), Long.valueOf(((c.b)localObject5).cbz), Long.valueOf(((c.b)localObject5).vdP), Integer.valueOf(((c.b)localObject6).vdO), Long.valueOf(((c.b)localObject6).cbz), Long.valueOf(((c.b)localObject6).vdP), Integer.valueOf(m), Integer.valueOf(j), localObject3, Integer.valueOf(c.vdp), Integer.valueOf(c.dia()), Integer.valueOf(c.aKk()), Integer.valueOf(c.aZA()), Integer.valueOf(c.aZz()), Long.valueOf(paramLong1), Long.valueOf(paramLong3), Long.valueOf(this.vdL), Integer.valueOf(c.vdr - c.aZA() + c.dia()), Integer.valueOf(c.vds - c.aZz()) });
+                i = c.aKk();
+                long l1 = ((c.b)localObject5).vdP;
+                long l2 = ((c.b)localObject6).vdP;
+                long l3 = ((c.b)localObject4).vdP;
+                j = c.dia();
                 long l4 = paramLong3;
-                long l5 = this.tVd;
-                n = c.tUJ;
-                int i1 = c.aSD();
-                c.a(i, l1, l2, l3, m + j, k, l4, l5, c.cUu() + (n - i1), c.tUK - c.aSC());
+                long l5 = this.vdL;
+                n = c.vdr;
+                int i1 = c.aZA();
+                c.a(i, l1, l2, l3, m + j, k, l4, l5, c.dia() + (n - i1), c.vds - c.aZz());
               }
-              c.cUv();
-              c.cUw();
-              c.Hx(0);
-              c.cUx();
-              c.bwN();
-              c.cUy();
-              c.cUz();
-              c.ail(paramString);
-              c.cUt().clear();
+              c.dib();
+              c.dic();
+              c.Jw(0);
+              c.did();
+              c.bDJ();
+              c.die();
+              c.dif();
+              c.ang(paramString);
+              c.dhZ().clear();
               AppMethodBeat.o(62945);
               return;
             }
@@ -1112,16 +1112,16 @@ public final class c
     AppMethodBeat.o(62956);
   }
   
-  public final void cUm()
+  public final void dhS()
   {
-    synchronized (tUO)
+    synchronized (vdw)
     {
-      tUI += 1;
+      vdq += 1;
       return;
     }
   }
   
-  public final void gi(int paramInt1, int paramInt2)
+  public final void gp(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(62947);
     IDKey localIDKey1 = new IDKey();
@@ -1130,7 +1130,7 @@ public final class c
     localIDKey1.SetValue(1L);
     IDKey localIDKey2 = new IDKey();
     localIDKey2.SetID(688);
-    ad.d("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrSceneIdKey, scene:".concat(String.valueOf(paramInt1)));
+    ac.d("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrSceneIdKey, scene:".concat(String.valueOf(paramInt1)));
     switch (paramInt1)
     {
     }
@@ -1138,7 +1138,7 @@ public final class c
     localIDKey2.SetValue(1L);
     IDKey localIDKey3 = new IDKey();
     localIDKey3.SetID(688);
-    ad.i("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt2)));
+    ac.i("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt2)));
     switch (paramInt2)
     {
     default: 
@@ -1152,7 +1152,7 @@ public final class c
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
       localArrayList.add(localIDKey3);
-      h.vKh.b(localArrayList, true);
+      h.wUl.b(localArrayList, true);
       AppMethodBeat.o(62947);
       return;
       paramInt1 = 17;
@@ -1195,25 +1195,25 @@ public final class c
     }
   }
   
-  public final void hA(final String paramString1, final String paramString2)
+  public final void hT(final String paramString1, final String paramString2)
   {
     AppMethodBeat.i(62952);
-    com.tencent.mm.cj.a.post(new Runnable()
+    com.tencent.mm.ci.a.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(62942);
-        String str = paramString1 + "-" + ai.du(paramString2);
-        synchronized (c.tUO)
+        String str = paramString1 + "-" + ah.dg(paramString2);
+        synchronized (c.vdw)
         {
-          if (c.biV().containsKey(str))
+          if (c.vdv.containsKey(str))
           {
-            c.biV().put(str, Integer.valueOf(((Integer)c.biV().get(str)).intValue() + 1));
-            c.cUn();
+            c.vdv.put(str, Integer.valueOf(((Integer)c.vdv.get(str)).intValue() + 1));
+            c.dhT();
             AppMethodBeat.o(62942);
             return;
           }
-          c.biV().put(str, Integer.valueOf(1));
+          c.vdv.put(str, Integer.valueOf(1));
         }
       }
     });
@@ -1223,31 +1223,31 @@ public final class c
   public final void r(final String paramString1, final String paramString2, final boolean paramBoolean)
   {
     AppMethodBeat.i(62953);
-    com.tencent.mm.cj.a.post(new Runnable()
+    com.tencent.mm.ci.a.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(62943);
-        String str = paramString1 + "-" + ai.du(paramString2);
+        String str = paramString1 + "-" + ah.dg(paramString2);
         for (;;)
         {
-          synchronized (c.tUO)
+          synchronized (c.vdw)
           {
-            if (c.tUO.containsKey(str))
+            if (c.vdw.containsKey(str))
             {
-              c.tUO.put(str, Integer.valueOf(((Integer)c.tUO.get(str)).intValue() + 1));
+              c.vdw.put(str, Integer.valueOf(((Integer)c.vdw.get(str)).intValue() + 1));
               if (!paramBoolean)
               {
-                c.aCE();
+                c.aJu();
                 AppMethodBeat.o(62943);
               }
             }
             else
             {
-              c.tUO.put(str, Integer.valueOf(1));
+              c.vdw.put(str, Integer.valueOf(1));
             }
           }
-          c.cUo();
+          c.dhU();
         }
       }
     });
@@ -1258,17 +1258,17 @@ public final class c
   {
     long duration = 0L;
     long fileSize = 0L;
-    int tVe = 0;
-    long tVf = 0L;
+    int vdM = 0;
+    long vdN = 0L;
     
     a() {}
   }
   
   final class b
   {
-    long ceC = 0L;
-    int tVg = 0;
-    long tVh = 0L;
+    long cbz = 0L;
+    int vdO = 0;
+    long vdP = 0L;
     
     b() {}
   }

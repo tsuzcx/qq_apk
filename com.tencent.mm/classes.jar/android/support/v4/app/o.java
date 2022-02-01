@@ -10,11 +10,11 @@ public abstract interface o
   
   public abstract void b(String paramString1, int paramInt, String paramString2);
   
-  public abstract void s(String paramString);
+  public abstract void t(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v4.app.o
  * JD-Core Version:    0.7.0.1
  */

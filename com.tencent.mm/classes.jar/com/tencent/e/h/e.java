@@ -13,16 +13,16 @@ import java.util.concurrent.TimeUnit;
 
 public final class e
 {
-  public final b IzC;
-  public final c IzD;
-  public final f IzE;
+  public final b Kbl;
+  public final c Kbm;
+  public final f Kbn;
   
   public e(com.tencent.e.a parama)
   {
     AppMethodBeat.i(183363);
-    this.IzC = new b(parama.Ixt, parama.Ixs);
-    this.IzD = new c(parama.Ixu);
-    this.IzE = new f();
+    this.Kbl = new b(parama.JZc, parama.JZb);
+    this.Kbm = new c(parama.JZd);
+    this.Kbn = new f();
     AppMethodBeat.o(183363);
   }
   
@@ -34,7 +34,7 @@ public final class e
     if ((paramk instanceof com.tencent.e.j.e))
     {
       paramd = (com.tencent.e.j.e)paramk;
-      com.tencent.e.j.d locald = paramd.EYE.IzX;
+      com.tencent.e.j.d locald = paramd.GvQ.KbG;
       if (paramBoolean)
       {
         l = -2147483648L;
@@ -47,32 +47,32 @@ public final class e
       return paramk;
       l = paramk.getDelay(TimeUnit.MILLISECONDS);
       break;
-      paramk.IzP.h(paramk);
+      paramk.Kby.h(paramk);
     }
   }
   
   private d l(k<?> paramk)
   {
     AppMethodBeat.i(183367);
-    if (com.tencent.e.c.b.IyG != null)
+    if (com.tencent.e.c.b.Kap != null)
     {
-      if (com.tencent.e.c.b.IyG.aNY(paramk.getKey()))
+      if (com.tencent.e.c.b.Kap.aTB(paramk.getKey()))
       {
-        paramk = this.IzC;
+        paramk = this.Kbl;
         AppMethodBeat.o(183367);
         return paramk;
       }
-      paramk = this.IzD;
+      paramk = this.Kbm;
       AppMethodBeat.o(183367);
       return paramk;
     }
-    if (this.IzD.isBusy())
+    if (this.Kbm.isBusy())
     {
-      paramk = this.IzC;
+      paramk = this.Kbl;
       AppMethodBeat.o(183367);
       return paramk;
     }
-    paramk = this.IzD;
+    paramk = this.Kbm;
     AppMethodBeat.o(183367);
     return paramk;
   }
@@ -85,21 +85,21 @@ public final class e
     return paramk;
   }
   
-  public final Map<String, List<String>> fnM()
+  public final Map<String, List<String>> fEc()
   {
     AppMethodBeat.i(183366);
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    Object localObject1 = this.IzE.IzF;
+    Object localObject1 = this.Kbn.Kbo;
     Object localObject2 = new LinkedList();
-    ((f.a)localObject1).azU.dump(new f.a.2((f.a)localObject1, (List)localObject2), "");
+    ((f.a)localObject1).aAO.dump(new f.a.2((f.a)localObject1, (List)localObject2), "");
     localLinkedHashMap.put("UIPool", localObject2);
-    localLinkedHashMap.put("HotPool", this.IzD.fof());
-    localLinkedHashMap.put("ColdPool", this.IzC.fof());
-    localObject1 = com.tencent.e.j.a.fop().iterator();
+    localLinkedHashMap.put("HotPool", this.Kbm.fEv());
+    localLinkedHashMap.put("ColdPool", this.Kbl.fEv());
+    localObject1 = com.tencent.e.j.a.fEF().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (com.tencent.e.j.a)((Iterator)localObject1).next();
-      List localList = ((com.tencent.e.j.a)localObject2).IzX.foq();
+      List localList = ((com.tencent.e.j.a)localObject2).KbG.fEG();
       if (localList.size() > 0) {
         localLinkedHashMap.put(((com.tencent.e.j.a)localObject2).tag, localList);
       }
@@ -110,9 +110,9 @@ public final class e
   
   public final <V> com.tencent.e.i.d<V> k(k<V> paramk)
   {
-    AppMethodBeat.i(186959);
-    paramk = a(paramk, false, this.IzD);
-    AppMethodBeat.o(186959);
+    AppMethodBeat.i(191087);
+    paramk = a(paramk, false, this.Kbm);
+    AppMethodBeat.o(191087);
     return paramk;
   }
 }

@@ -1,37 +1,22 @@
 package com.tencent.mm.plugin.freewifi.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public final class a
 {
-  private Map<String, b> aLt;
-  private boolean rgI;
+  private Map<String, b> aMj;
+  private boolean spA;
   
   private a()
   {
     AppMethodBeat.i(24740);
-    this.rgI = false;
-    this.aLt = new LinkedHashMap()
-    {
-      protected final boolean removeEldestEntry(Map.Entry paramAnonymousEntry)
-      {
-        AppMethodBeat.i(24738);
-        if (size() > 512)
-        {
-          AppMethodBeat.o(24738);
-          return true;
-        }
-        AppMethodBeat.o(24738);
-        return false;
-      }
-    };
+    this.spA = false;
+    this.aMj = new a.1(this);
     AppMethodBeat.o(24740);
   }
   
-  private static String ge(String paramString1, String paramString2)
+  private static String gv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(24741);
     paramString1 = paramString1 + "-" + paramString2;
@@ -46,15 +31,15 @@ public final class a
     //   0: aload_0
     //   1: monitorenter
     //   2: sipush 24742
-    //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
-    //   9: invokestatic 63	com/tencent/mm/plugin/freewifi/m:dq	(Ljava/lang/String;)Z
+    //   9: invokestatic 63	com/tencent/mm/plugin/freewifi/m:cX	(Ljava/lang/String;)Z
     //   12: ifne +30 -> 42
     //   15: aload_2
-    //   16: invokestatic 63	com/tencent/mm/plugin/freewifi/m:dq	(Ljava/lang/String;)Z
+    //   16: invokestatic 63	com/tencent/mm/plugin/freewifi/m:cX	(Ljava/lang/String;)Z
     //   19: ifne +23 -> 42
     //   22: aload_3
-    //   23: invokestatic 63	com/tencent/mm/plugin/freewifi/m:dq	(Ljava/lang/String;)Z
+    //   23: invokestatic 63	com/tencent/mm/plugin/freewifi/m:cX	(Ljava/lang/String;)Z
     //   26: ifne +16 -> 42
     //   29: iload 4
     //   31: iconst_4
@@ -67,21 +52,21 @@ public final class a
     //   48: aload_0
     //   49: monitorexit
     //   50: return
-    //   51: new 11	com/tencent/mm/plugin/freewifi/b/a$b
+    //   51: new 9	com/tencent/mm/plugin/freewifi/b/a$b
     //   54: dup
     //   55: invokespecial 64	com/tencent/mm/plugin/freewifi/b/a$b:<init>	()V
     //   58: astore 5
     //   60: aload 5
     //   62: aload_3
-    //   63: putfield 68	com/tencent/mm/plugin/freewifi/b/a$b:ddU	Ljava/lang/String;
+    //   63: putfield 68	com/tencent/mm/plugin/freewifi/b/a$b:dbq	Ljava/lang/String;
     //   66: aload 5
     //   68: iload 4
-    //   70: putfield 72	com/tencent/mm/plugin/freewifi/b/a$b:rfL	I
+    //   70: putfield 72	com/tencent/mm/plugin/freewifi/b/a$b:soD	I
     //   73: aload_0
-    //   74: getfield 34	com/tencent/mm/plugin/freewifi/b/a:aLt	Ljava/util/Map;
+    //   74: getfield 34	com/tencent/mm/plugin/freewifi/b/a:aMj	Ljava/util/Map;
     //   77: aload_1
     //   78: aload_2
-    //   79: invokestatic 74	com/tencent/mm/plugin/freewifi/b/a:ge	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   79: invokestatic 74	com/tencent/mm/plugin/freewifi/b/a:gv	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   82: aload 5
     //   84: invokeinterface 80 3 0
     //   89: pop
@@ -109,18 +94,18 @@ public final class a
   }
   
   /* Error */
-  public final b gf(String paramString1, String paramString2)
+  public final b gw(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: sipush 24743
-    //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
-    //   9: invokestatic 63	com/tencent/mm/plugin/freewifi/m:dq	(Ljava/lang/String;)Z
+    //   9: invokestatic 63	com/tencent/mm/plugin/freewifi/m:cX	(Ljava/lang/String;)Z
     //   12: ifne +10 -> 22
     //   15: aload_2
-    //   16: invokestatic 63	com/tencent/mm/plugin/freewifi/m:dq	(Ljava/lang/String;)Z
+    //   16: invokestatic 63	com/tencent/mm/plugin/freewifi/m:cX	(Ljava/lang/String;)Z
     //   19: ifeq +15 -> 34
     //   22: aconst_null
     //   23: astore_1
@@ -131,12 +116,12 @@ public final class a
     //   32: aload_1
     //   33: areturn
     //   34: aload_0
-    //   35: getfield 34	com/tencent/mm/plugin/freewifi/b/a:aLt	Ljava/util/Map;
+    //   35: getfield 34	com/tencent/mm/plugin/freewifi/b/a:aMj	Ljava/util/Map;
     //   38: aload_1
     //   39: aload_2
-    //   40: invokestatic 74	com/tencent/mm/plugin/freewifi/b/a:ge	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   40: invokestatic 74	com/tencent/mm/plugin/freewifi/b/a:gv	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   43: invokeinterface 86 2 0
-    //   48: checkcast 11	com/tencent/mm/plugin/freewifi/b/a$b
+    //   48: checkcast 9	com/tencent/mm/plugin/freewifi/b/a$b
     //   51: astore_1
     //   52: sipush 24743
     //   55: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -163,7 +148,7 @@ public final class a
     try
     {
       AppMethodBeat.i(24744);
-      int i = this.aLt.size();
+      int i = this.aMj.size();
       AppMethodBeat.o(24744);
       return i;
     }
@@ -176,25 +161,25 @@ public final class a
   
   static final class a
   {
-    private static a rgK;
+    private static a spC;
     
     static
     {
       AppMethodBeat.i(24739);
-      rgK = new a((byte)0);
+      spC = new a((byte)0);
       AppMethodBeat.o(24739);
     }
   }
   
   public static final class b
   {
-    String ddU;
-    int rfL;
+    String dbq;
+    int soD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.b.a
  * JD-Core Version:    0.7.0.1
  */

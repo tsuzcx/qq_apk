@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ge
   extends b
 {
-  public a djk;
+  public a dgB;
   
   public ge()
   {
@@ -16,18 +16,19 @@ public final class ge
   
   private ge(byte paramByte)
   {
-    AppMethodBeat.i(163527);
-    this.djk = new a();
-    this.ESR = false;
+    AppMethodBeat.i(63288);
+    this.dgB = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(163527);
+    AppMethodBeat.o(63288);
   }
   
   public static final class a
   {
-    public Activity djj;
-    public String djl;
-    public int djm;
+    public String dgC;
+    public int dgD = 0;
+    public Activity dgE;
+    public int mRequestCode;
   }
 }
 

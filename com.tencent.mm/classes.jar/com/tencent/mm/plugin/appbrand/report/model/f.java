@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.appbrand.report.model;
 
 import android.content.Intent;
 import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.page.by;
+import com.tencent.mm.plugin.appbrand.page.bt;
 
 public abstract interface f
   extends g
 {
   public abstract void H(Intent paramIntent);
   
-  public abstract void a(long paramLong, by paramby);
+  public abstract void a(long paramLong, bt parambt);
   
-  public abstract p bhA();
+  public abstract void bor();
   
-  public abstract q bhB();
+  public abstract h bos();
   
-  public abstract void bhC();
+  public abstract Intent bot();
   
-  public abstract void bhx();
+  public abstract p bou();
   
-  public abstract h bhy();
+  public abstract q bov();
   
-  public abstract Intent bhz();
+  public abstract void bow();
   
   public abstract void c(ae paramae);
   
@@ -29,7 +29,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.f
  * JD-Core Version:    0.7.0.1
  */

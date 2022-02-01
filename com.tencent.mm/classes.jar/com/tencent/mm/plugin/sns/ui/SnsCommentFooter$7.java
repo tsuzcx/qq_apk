@@ -5,10 +5,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.model.u;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.MMActivity;
 
 final class SnsCommentFooter$7
@@ -19,16 +19,16 @@ final class SnsCommentFooter$7
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(98643);
-    if (com.tencent.mm.m.g.Zd().getInt("SnsAdAtFriendRedDot", 0) == 1) {
-      com.tencent.mm.kernel.g.afB().afk().set(ae.a.FuL, Boolean.FALSE);
+    if (com.tencent.mm.m.g.ZY().getInt("SnsAdAtFriendRedDot", 0) == 1) {
+      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GSF, Boolean.FALSE);
     }
-    SnsCommentFooter.g(this.xyx).setVisibility(8);
+    SnsCommentFooter.g(this.yLl).setVisibility(8);
     paramView = new Intent();
     paramView.putExtra("list_attr", 16391);
-    paramView.putExtra("block_contact", u.aqG());
+    paramView.putExtra("block_contact", u.axw());
     paramView.putExtra("max_limit_num", 1);
-    paramView.putExtra("titile", SnsCommentFooter.h(this.xyx).getString(2131763747));
-    d.c(SnsCommentFooter.h(this.xyx), ".ui.contact.SelectContactUI", paramView, 2333);
+    paramView.putExtra("titile", SnsCommentFooter.h(this.yLl).getString(2131763747));
+    d.c(SnsCommentFooter.h(this.yLl), ".ui.contact.SelectContactUI", paramView, 2333);
     AppMethodBeat.o(98643);
   }
 }

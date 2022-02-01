@@ -1,97 +1,117 @@
 package com.tencent.mm.plugin.sns.e;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.b;
-import com.tencent.mm.memory.l;
-import com.tencent.mm.memory.n;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.msgsubscription.SubscribeMsgRequestDialogUiData;
+import com.tencent.mm.msgsubscription.SubscribeMsgRequestResult;
+import com.tencent.mm.msgsubscription.SubscribeMsgRequestResult.a;
+import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.b;
+import com.tencent.mm.plugin.sns.storage.b.b;
+import com.tencent.mm.plugin.sns.storage.y;
+import com.tencent.mm.plugin.sns.ui.ap.a;
+import com.tencent.mm.protocal.protobuf.dfh;
+import com.tencent.mm.protocal.protobuf.dfj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.b;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public final class a
 {
-  public static Bitmap b(String paramString, BitmapFactory.Options paramOptions)
-  {
-    AppMethodBeat.i(95064);
-    long l = System.currentTimeMillis();
-    try
-    {
-      Bitmap localBitmap = l.aoZ().a(paramString, paramOptions);
-      paramOptions = localBitmap;
-      if (localBitmap != null) {
-        paramOptions = q.u(paramString, localBitmap);
-      }
-      ad.d("MicroMsg.SnsBitmapUtil", "decodeWithRotateByExif used %dms bitmap: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramOptions });
-      AppMethodBeat.o(95064);
-      return paramOptions;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      b.eOL();
-      ad.e("MicroMsg.SnsBitmapUtil", "OutOfMemoryError e " + paramString.getMessage());
-      AppMethodBeat.o(95064);
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      ad.printErrStackTrace("MicroMsg.SnsBitmapUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(95064);
-    }
-    return null;
-  }
+  com.tencent.mm.ui.base.p mbX;
+  public volatile boolean xMj;
+  com.tencent.mm.ak.g xMk;
   
-  public static n c(String paramString, BitmapFactory.Options paramOptions)
+  public a()
   {
-    AppMethodBeat.i(95063);
-    long l = System.currentTimeMillis();
-    try
+    AppMethodBeat.i(179077);
+    this.xMj = false;
+    this.mbX = null;
+    this.xMk = new com.tencent.mm.ak.g()
     {
-      Bitmap localBitmap = l.aoZ().a(paramString, paramOptions);
-      paramOptions = localBitmap;
-      if (localBitmap != null) {
-        paramOptions = q.u(paramString, localBitmap);
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      {
+        AppMethodBeat.i(179067);
+        ac.i("HalfSubscribeController", "onSceneEnd errType %d,errCode %d,errMsg %s,scene %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Integer.valueOf(paramAnonymousn.getType()) });
+        try
+        {
+          Object localObject;
+          g.b localb;
+          if ((paramAnonymousn instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g))
+          {
+            localObject = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g)paramAnonymousn;
+            localb = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g)localObject).ysm;
+            if (localb != null)
+            {
+              if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+              {
+                bs.nullAsNil(paramAnonymousString);
+                localb.c(null);
+                com.tencent.mm.kernel.g.agi().b(paramAnonymousn.getType(), a.this.xMk);
+                AppMethodBeat.o(179067);
+                return;
+              }
+              localObject = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g)localObject).getReqResp();
+              if ((localObject instanceof com.tencent.mm.ak.b))
+              {
+                localObject = (com.tencent.mm.ak.b)localObject;
+                if ((((com.tencent.mm.ak.b)localObject).hvs.hvw instanceof dfj)) {
+                  localObject = (dfj)((com.tencent.mm.ak.b)localObject).hvs.hvw;
+                }
+              }
+            }
+          }
+          StringBuilder localStringBuilder;
+          SubscribeMsgRequestResult.a locala;
+          AppMethodBeat.o(179067);
+        }
+        catch (Throwable paramAnonymousString)
+        {
+          try
+          {
+            localStringBuilder = new StringBuilder("rr = ");
+            locala = SubscribeMsgRequestResult.igU;
+            ac.i("HalfSubscribeController", SubscribeMsgRequestResult.a.a((dfj)localObject));
+            bs.nullAsNil(paramAnonymousString);
+            paramAnonymousString = SubscribeMsgRequestResult.igU;
+            localb.c(SubscribeMsgRequestResult.a.a((dfj)localObject));
+            com.tencent.mm.kernel.g.agi().b(paramAnonymousn.getType(), a.this.xMk);
+            AppMethodBeat.o(179067);
+            return;
+          }
+          catch (Exception paramAnonymousString)
+          {
+            ac.e("HalfSubscribeController", paramAnonymousString.toString());
+          }
+          paramAnonymousString = paramAnonymousString;
+          ac.e("HalfSubscribeController", paramAnonymousString.toString());
+          AppMethodBeat.o(179067);
+          return;
+        }
       }
-      ad.d("MicroMsg.SnsBitmapUtil", "decodeWithRotateByExif used %dms bitmap: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramOptions });
-      paramString = n.D(paramOptions);
-      AppMethodBeat.o(95063);
-      return paramString;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      b.eOL();
-      ad.e("MicroMsg.SnsBitmapUtil", "OutOfMemoryError e " + paramString.getMessage());
-      AppMethodBeat.o(95063);
-    }
-    return null;
-  }
-  
-  public static Bitmap l(String paramString, float paramFloat)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(187247);
-    long l = System.currentTimeMillis();
-    Bitmap localBitmap = l.aoZ().a(paramString, null);
-    if (paramFloat == 0.0F)
-    {
-      ad.d("MicroMsg.SnsBitmapUtil", "decode used %dms %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), localBitmap });
-      AppMethodBeat.o(187247);
-      return localBitmap;
-    }
-    paramString = localObject;
-    if (localBitmap != null)
-    {
-      paramString = f.a(localBitmap, true, localBitmap.getWidth() * paramFloat);
-      ad.d("MicroMsg.SnsBitmapUtil", "decode used %dms %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), localBitmap });
-    }
-    AppMethodBeat.o(187247);
-    return paramString;
+    };
+    AppMethodBeat.o(179077);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.e.a
  * JD-Core Version:    0.7.0.1
  */

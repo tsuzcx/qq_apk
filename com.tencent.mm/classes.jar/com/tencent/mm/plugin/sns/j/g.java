@@ -1,74 +1,23 @@
 package com.tencent.mm.plugin.sns.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class g
-  extends com.tencent.mm.bx.a
 {
-  public String postId;
-  public int wOc;
-  
-  public final int op(int paramInt, Object... paramVarArgs)
+  public static void r(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(96158);
-    if (paramInt == 0)
-    {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.postId != null) {
-        paramVarArgs.d(1, this.postId);
-      }
-      paramVarArgs.aR(2, this.wOc);
-      AppMethodBeat.o(96158);
-      return 0;
-    }
-    if (paramInt == 1) {
-      if (this.postId == null) {
-        break label258;
-      }
-    }
-    label258:
-    for (paramInt = f.a.a.b.b.a.e(1, this.postId) + 0;; paramInt = 0)
-    {
-      int i = f.a.a.b.b.a.bA(2, this.wOc);
-      AppMethodBeat.o(96158);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
-          }
-        }
-        AppMethodBeat.o(96158);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        g localg = (g)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(96158);
-          return -1;
-        case 1: 
-          localg.postId = locala.KhF.readString();
-          AppMethodBeat.o(96158);
-          return 0;
-        }
-        localg.wOc = locala.KhF.xS();
-        AppMethodBeat.o(96158);
-        return 0;
-      }
-      AppMethodBeat.o(96158);
-      return -1;
-    }
+    AppMethodBeat.i(125685);
+    paramString = String.format("%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()) });
+    ac.i("MicroMsg.SNS.SnsReportLogic", "snsRedDotAction 16172 report %s", new Object[] { paramString });
+    e.wTc.kvStat(16172, paramString);
+    AppMethodBeat.o(125685);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.j.g
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public class AdLandingControlView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void MK(int paramInt)
+  public final void ON(int paramInt)
   {
     AppMethodBeat.i(96829);
     removeAllViews();
@@ -34,33 +34,33 @@ public class AdLandingControlView
     int i = 0;
     if (i < j)
     {
-      this.djK = null;
+      this.dhf = null;
       if (paramInt == i)
       {
         if (this.map.size() > i) {
-          this.djK = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.dhf = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.djK == null)
+        if (this.dhf == null)
         {
-          this.djK = ((ImageView)View.inflate(this.context, this.FYA, null).findViewById(2131302343));
-          this.map.put(Integer.valueOf(i), this.djK);
+          this.dhf = ((ImageView)View.inflate(this.context, this.Hyp, null).findViewById(2131302343));
+          this.map.put(Integer.valueOf(i), this.dhf);
         }
-        this.djK.setSelected(true);
+        this.dhf.setSelected(true);
       }
       for (;;)
       {
-        addView(this.djK);
+        addView(this.dhf);
         i += 1;
         break;
         if (this.map.size() > i) {
-          this.djK = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.dhf = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.djK == null)
+        if (this.dhf == null)
         {
-          this.djK = ((ImageView)View.inflate(this.context, this.FYA, null).findViewById(2131302343));
-          this.map.put(Integer.valueOf(i), this.djK);
+          this.dhf = ((ImageView)View.inflate(this.context, this.Hyp, null).findViewById(2131302343));
+          this.map.put(Integer.valueOf(i), this.dhf);
         }
-        this.djK.setSelected(false);
+        this.dhf.setSelected(false);
       }
     }
     AppMethodBeat.o(96829);

@@ -23,14 +23,14 @@ public class ServicePreference
   extends Preference
 {
   private Context context;
-  private boolean toE;
-  List<g> whn;
-  b yFH;
-  AdapterView.OnItemClickListener yFo;
-  private AdapterView.OnItemClickListener yFp;
-  private View.OnClickListener yFq;
-  private int yFr;
-  private int yFs;
+  private boolean uwW;
+  List<g> xsD;
+  AdapterView.OnItemClickListener zSC;
+  private AdapterView.OnItemClickListener zSD;
+  private View.OnClickListener zSE;
+  private int zSF;
+  private int zSG;
+  b zSV;
   
   public ServicePreference(Context paramContext)
   {
@@ -46,30 +46,30 @@ public class ServicePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29177);
-    this.yFo = null;
-    this.yFp = null;
-    this.yFq = null;
-    this.toE = false;
-    this.yFs = 0;
+    this.zSC = null;
+    this.zSD = null;
+    this.zSE = null;
+    this.uwW = false;
+    this.zSG = 0;
     this.context = paramContext;
     setLayoutResource(2131493087);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.AppPreference);
-    this.yFr = paramContext.getInt(0, 8);
-    this.toE = paramContext.getBoolean(1, false);
-    this.yFs = paramContext.getResourceId(2, 0);
+    this.zSF = paramContext.getInt(0, 8);
+    this.uwW = paramContext.getBoolean(1, false);
+    this.zSG = paramContext.getResourceId(2, 0);
     paramContext.recycle();
     AppMethodBeat.o(29177);
   }
   
-  public final g OU(int paramInt)
+  public final g Ra(int paramInt)
   {
     AppMethodBeat.i(29179);
-    if ((paramInt < 0) || (paramInt >= this.yFH.getCount()))
+    if ((paramInt < 0) || (paramInt >= this.zSV.getCount()))
     {
       AppMethodBeat.o(29179);
       return null;
     }
-    g localg = (g)this.yFH.getItem(paramInt);
+    g localg = (g)this.zSV.getItem(paramInt);
     AppMethodBeat.o(29179);
     return localg;
   }
@@ -84,22 +84,22 @@ public class ServicePreference
       AppMethodBeat.o(29178);
       return;
     }
-    this.yFH = new b(this.context, this.whn);
-    ap.cZQ().remove(this.yFH);
-    ap.cZQ().add(this.yFH);
-    localMMGridView.setAdapter(this.yFH);
+    this.zSV = new b(this.context, this.xsD);
+    ap.dny().remove(this.zSV);
+    ap.dny().add(this.zSV);
+    localMMGridView.setAdapter(this.zSV);
     localMMGridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(29175);
-        if (ServicePreference.a(ServicePreference.this).EJ(paramAnonymousInt))
+        if (ServicePreference.a(ServicePreference.this).GF(paramAnonymousInt))
         {
-          ServicePreference.a(ServicePreference.this).qZ(false);
+          ServicePreference.a(ServicePreference.this).rX(false);
           AppMethodBeat.o(29175);
           return;
         }
-        if (ServicePreference.a(ServicePreference.this).yFk)
+        if (ServicePreference.a(ServicePreference.this).zSy)
         {
           if (ServicePreference.b(ServicePreference.this) != null)
           {
@@ -113,24 +113,24 @@ public class ServicePreference
         AppMethodBeat.o(29175);
       }
     });
-    if (this.toE) {
+    if (this.uwW) {
       localMMGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(29176);
           paramAnonymousAdapterView = ServicePreference.this;
-          if (paramAnonymousAdapterView.yFH != null)
+          if (paramAnonymousAdapterView.zSV != null)
           {
-            paramAnonymousView = paramAnonymousAdapterView.yFH;
-            if (paramAnonymousAdapterView.yFH.yFk) {
+            paramAnonymousView = paramAnonymousAdapterView.zSV;
+            if (paramAnonymousAdapterView.zSV.zSy) {
               break label50;
             }
           }
           label50:
           for (boolean bool = true;; bool = false)
           {
-            paramAnonymousView.qZ(bool);
+            paramAnonymousView.rX(bool);
             AppMethodBeat.o(29176);
             return true;
           }
@@ -138,17 +138,17 @@ public class ServicePreference
       });
     }
     TextView localTextView = (TextView)paramView.findViewById(2131299477);
-    if (this.yFH.getCount() == 0)
+    if (this.zSV.getCount() == 0)
     {
       localTextView.setVisibility(0);
-      localTextView.setText(this.yFs);
+      localTextView.setText(this.zSG);
       localMMGridView.setVisibility(8);
     }
     for (;;)
     {
       paramView = (Button)paramView.findViewById(2131297574);
-      paramView.setVisibility(this.yFr);
-      paramView.setOnClickListener(this.yFq);
+      paramView.setVisibility(this.zSF);
+      paramView.setOnClickListener(this.zSE);
       AppMethodBeat.o(29178);
       return;
       localTextView.setVisibility(8);
@@ -159,8 +159,8 @@ public class ServicePreference
   public final void onPause()
   {
     AppMethodBeat.i(29181);
-    if (this.yFH != null) {
-      ap.cZQ().remove(this.yFH);
+    if (this.zSV != null) {
+      ap.dny().remove(this.zSV);
     }
     AppMethodBeat.o(29181);
   }
@@ -168,15 +168,15 @@ public class ServicePreference
   public final void onResume()
   {
     AppMethodBeat.i(29180);
-    if (this.yFH != null) {
-      ap.cZQ().add(this.yFH);
+    if (this.zSV != null) {
+      ap.dny().add(this.zSV);
     }
     AppMethodBeat.o(29180);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.ServicePreference
  * JD-Core Version:    0.7.0.1
  */

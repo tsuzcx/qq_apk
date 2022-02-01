@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.e;
 
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Set;
@@ -9,121 +9,101 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class a
   implements c
 {
-  protected int ksb = 0;
-  private volatile boolean ksc;
-  protected b.d ksd;
-  protected b.c kse;
-  protected b.e ksf;
-  protected b.b ksg;
-  protected b.f ksh;
-  protected b.a ksi;
-  protected b.g ksj;
-  private final Set<b.e> ksk = Collections.newSetFromMap(new ConcurrentHashMap());
-  private final Set<b.f> ksl = Collections.newSetFromMap(new ConcurrentHashMap());
-  private final Set<b.b> ksm = Collections.newSetFromMap(new ConcurrentHashMap());
+  private final Set<b.e> kTA = Collections.newSetFromMap(new ConcurrentHashMap());
+  private final Set<b.f> kTB = Collections.newSetFromMap(new ConcurrentHashMap());
+  private final Set<b.b> kTC = Collections.newSetFromMap(new ConcurrentHashMap());
+  protected int kTr = 0;
+  private volatile boolean kTs;
+  protected b.d kTt;
+  protected b.c kTu;
+  protected b.e kTv;
+  protected b.b kTw;
+  protected b.f kTx;
+  protected b.a kTy;
+  protected b.g kTz;
   
   public final void a(b.a parama)
   {
-    this.ksi = parama;
+    this.kTy = parama;
   }
   
   public final void a(b.b paramb)
   {
-    this.ksg = paramb;
+    this.kTw = paramb;
   }
   
   public final void a(b.c paramc)
   {
-    this.kse = paramc;
+    this.kTu = paramc;
   }
   
   public final void a(b.d paramd)
   {
-    this.ksd = paramd;
+    this.kTt = paramd;
   }
   
   public final void a(b.e parame)
   {
-    this.ksf = parame;
+    this.kTv = parame;
   }
   
   public final void a(b.f paramf)
   {
-    this.ksh = paramf;
+    this.kTx = paramf;
   }
   
   public final void a(b.g paramg)
   {
-    this.ksj = paramg;
+    this.kTz = paramg;
   }
   
   public final void b(b.b paramb)
   {
-    this.ksm.add(paramb);
+    this.kTC.add(paramb);
   }
   
   public final void b(b.e parame)
   {
-    this.ksk.add(parame);
+    this.kTA.add(parame);
   }
   
   public final void b(b.f paramf)
   {
-    this.ksl.add(paramf);
+    this.kTB.add(paramf);
   }
   
-  protected final void bdF()
+  protected final void bkA()
   {
-    ad.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnPrepared");
+    ac.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnCompletion");
     try
     {
-      if (this.ksc) {
+      if (this.kTs) {
         return;
       }
-      if (this.ksf != null) {
-        this.ksf.a(this);
+      if (this.kTw != null) {
+        this.kTw.Fh();
       }
-      Iterator localIterator = this.ksk.iterator();
+      Iterator localIterator = this.kTC.iterator();
       while (localIterator.hasNext()) {
-        ((b.e)localIterator.next()).a(this);
+        ((b.b)localIterator.next()).Fh();
       }
       return;
     }
     finally {}
   }
   
-  protected final void bdG()
+  protected final void bkB()
   {
-    ad.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnCompletion");
+    ac.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnSeekComplete");
     try
     {
-      if (this.ksc) {
+      if (this.kTs) {
         return;
       }
-      if (this.ksg != null) {
-        this.ksg.Fz();
+      if (this.kTx != null) {
+        this.kTx.b(this);
       }
-      Iterator localIterator = this.ksm.iterator();
-      while (localIterator.hasNext()) {
-        ((b.b)localIterator.next()).Fz();
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  protected final void bdH()
-  {
-    ad.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnSeekComplete");
-    try
-    {
-      if (this.ksc) {
-        return;
-      }
-      if (this.ksh != null) {
-        this.ksh.b(this);
-      }
-      Iterator localIterator = this.ksl.iterator();
+      Iterator localIterator = this.kTB.iterator();
       while (localIterator.hasNext()) {
         ((b.f)localIterator.next()).b(this);
       }
@@ -132,32 +112,52 @@ public abstract class a
     finally {}
   }
   
-  public final void dT(int paramInt1, int paramInt2)
+  protected final void bkz()
   {
-    ad.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnVideoSizeChanged, width:%d, height:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnPrepared");
     try
     {
-      if (this.ksc) {
+      if (this.kTs) {
         return;
       }
-      if (this.ksj != null)
+      if (this.kTv != null) {
+        this.kTv.a(this);
+      }
+      Iterator localIterator = this.kTA.iterator();
+      while (localIterator.hasNext()) {
+        ((b.e)localIterator.next()).a(this);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public final void dU(int paramInt1, int paramInt2)
+  {
+    ac.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnVideoSizeChanged, width:%d, height:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    try
+    {
+      if (this.kTs) {
+        return;
+      }
+      if (this.kTz != null)
       {
-        this.ksj.a(this, paramInt1, paramInt2);
+        this.kTz.a(this, paramInt1, paramInt2);
         return;
       }
     }
     finally {}
   }
   
-  public final boolean dU(int paramInt1, int paramInt2)
+  public final boolean dV(int paramInt1, int paramInt2)
   {
-    ad.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnError, what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnError, what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     try
     {
-      if (this.ksc) {
+      if (this.kTs) {
         return false;
       }
-      if ((this.kse != null) && (this.kse.cc(paramInt1, paramInt2))) {
+      if ((this.kTu != null) && (this.kTu.bZ(paramInt1, paramInt2))) {
         return true;
       }
     }
@@ -165,15 +165,15 @@ public abstract class a
     return false;
   }
   
-  public final boolean dV(int paramInt1, int paramInt2)
+  public final boolean dW(int paramInt1, int paramInt2)
   {
-    ad.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnInfo, what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.SameLayer.BaseMediaPlayer", "notifyOnInfo, what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     try
     {
-      if (this.ksc) {
+      if (this.kTs) {
         return false;
       }
-      if ((this.ksd != null) && (this.ksd.cb(paramInt1, paramInt2))) {
+      if ((this.kTt != null) && (this.kTt.bY(paramInt1, paramInt2))) {
         return true;
       }
     }
@@ -183,24 +183,24 @@ public abstract class a
   
   public final int getState()
   {
-    return this.ksb;
+    return this.kTr;
   }
   
   public void release()
   {
-    this.ksc = true;
+    this.kTs = true;
   }
   
-  public final void sj(int paramInt)
+  public final void sZ(int paramInt)
   {
     try
     {
-      if (this.ksc) {
+      if (this.kTs) {
         return;
       }
-      if (this.ksi != null)
+      if (this.kTy != null)
       {
-        this.ksi.gX(paramInt);
+        this.kTy.gH(paramInt);
         return;
       }
     }
@@ -209,7 +209,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.a
  * JD-Core Version:    0.7.0.1
  */

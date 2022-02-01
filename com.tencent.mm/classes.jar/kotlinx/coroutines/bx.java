@@ -1,32 +1,91 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.f;
+import d.g.b.k;
 import d.l;
-import d.y;
+import d.v;
+import kotlinx.coroutines.internal.g;
+import kotlinx.coroutines.internal.i;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/StandaloneCoroutine;", "Lkotlinx/coroutines/AbstractCoroutine;", "", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "handleJobException", "exception", "", "kotlinx-coroutines-core"})
-class bx
-  extends a<y>
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/NodeList;", "Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "Lkotlinx/coroutines/Incomplete;", "()V", "isActive", "", "()Z", "list", "getList", "()Lkotlinx/coroutines/NodeList;", "getString", "", "state", "toString", "kotlinx-coroutines-core"})
+public final class bx
+  extends g
+  implements bj
 {
-  public bx(f paramf, boolean paramBoolean)
+  public final bx gdQ()
   {
-    super(paramf, paramBoolean);
-    AppMethodBeat.i(118146);
-    AppMethodBeat.o(118146);
+    return this;
   }
   
-  protected final boolean z(Throwable paramThrowable)
+  public final String getString(String paramString)
   {
-    AppMethodBeat.i(189981);
-    aa.b(this.Kdd, paramThrowable);
-    AppMethodBeat.o(189981);
+    AppMethodBeat.i(118248);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("List{");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("}[");
+    int i = 1;
+    g localg = (g)this;
+    paramString = localg.geA();
+    if (paramString == null)
+    {
+      paramString = new v("null cannot be cast to non-null type kotlinx.coroutines.internal.Node /* = kotlinx.coroutines.internal.LockFreeLinkedListNode */");
+      AppMethodBeat.o(118248);
+      throw paramString;
+    }
+    paramString = (i)paramString;
+    if ((k.g(paramString, localg) ^ true))
+    {
+      int j = i;
+      br localbr;
+      if ((paramString instanceof br))
+      {
+        localbr = (br)paramString;
+        if (i == 0) {
+          break label129;
+        }
+        i = 0;
+      }
+      for (;;)
+      {
+        localStringBuilder.append(localbr);
+        j = i;
+        paramString = paramString.geB();
+        i = j;
+        break;
+        label129:
+        localStringBuilder.append(", ");
+      }
+    }
+    localStringBuilder.append("]");
+    paramString = localStringBuilder.toString();
+    k.g(paramString, "StringBuilder().apply(builderAction).toString()");
+    AppMethodBeat.o(118248);
+    return paramString;
+  }
+  
+  public final boolean isActive()
+  {
     return true;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(118249);
+    if (al.getDEBUG())
+    {
+      str = getString("Active");
+      AppMethodBeat.o(118249);
+      return str;
+    }
+    String str = super.toString();
+    AppMethodBeat.o(118249);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.bx
  * JD-Core Version:    0.7.0.1
  */

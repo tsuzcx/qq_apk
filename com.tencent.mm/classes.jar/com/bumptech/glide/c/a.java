@@ -7,12 +7,12 @@ public enum a
   static
   {
     AppMethodBeat.i(76835);
-    aBX = new a("LOCAL", 0);
-    aBY = new a("REMOTE", 1);
-    aBZ = new a("DATA_DISK_CACHE", 2);
-    aCa = new a("RESOURCE_DISK_CACHE", 3);
-    aCb = new a("MEMORY_CACHE", 4);
-    aCc = new a[] { aBX, aBY, aBZ, aCa, aCb };
+    aCP = new a("LOCAL", 0);
+    aCQ = new a("REMOTE", 1);
+    aCR = new a("DATA_DISK_CACHE", 2);
+    aCS = new a("RESOURCE_DISK_CACHE", 3);
+    aCT = new a("MEMORY_CACHE", 4);
+    aCU = new a[] { aCP, aCQ, aCR, aCS, aCT };
     AppMethodBeat.o(76835);
   }
   
@@ -20,7 +20,7 @@ public enum a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.a
  * JD-Core Version:    0.7.0.1
  */

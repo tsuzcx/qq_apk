@@ -1,9 +1,9 @@
 package com.tencent.mm.console;
 
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.au.a;
 
 final class b$11$1
-  implements av.a
+  implements au.a
 {
   b$11$1(b.11 param11) {}
   
@@ -14,7 +14,7 @@ final class b$11$1
     //   0: sipush 20123
     //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: bipush 23
-    //   8: invokestatic 36	com/tencent/mm/compatible/util/d:lf	(I)Z
+    //   8: invokestatic 36	com/tencent/mm/compatible/util/d:kZ	(I)Z
     //   11: ifeq +282 -> 293
     //   14: ldc 38
     //   16: ldc 40
@@ -24,7 +24,7 @@ final class b$11$1
     //   23: iconst_0
     //   24: invokestatic 46	android/os/Debug:getRuntimeStats	()Ljava/util/Map;
     //   27: aastore
-    //   28: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   28: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   31: invokestatic 55	android/os/Debug:getPss	()J
     //   34: lstore_1
     //   35: new 57	android/os/Debug$MemoryInfo
@@ -34,7 +34,7 @@ final class b$11$1
     //   43: aload_3
     //   44: invokestatic 62	android/os/Debug:getMemoryInfo	(Landroid/os/Debug$MemoryInfo;)V
     //   47: bipush 23
-    //   49: invokestatic 36	com/tencent/mm/compatible/util/d:lf	(I)Z
+    //   49: invokestatic 36	com/tencent/mm/compatible/util/d:kZ	(I)Z
     //   52: ifeq +273 -> 325
     //   55: ldc 38
     //   57: ldc 64
@@ -50,7 +50,7 @@ final class b$11$1
     //   72: aload_3
     //   73: invokevirtual 73	android/os/Debug$MemoryInfo:getMemoryStats	()Ljava/util/Map;
     //   76: aastore
-    //   77: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   77: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   80: invokestatic 79	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
     //   83: ldc 81
     //   85: invokevirtual 85	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
@@ -80,7 +80,7 @@ final class b$11$1
     //   139: astore_3
     //   140: ldc 38
     //   142: aload 6
-    //   144: invokestatic 114	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   144: invokestatic 114	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   147: goto -36 -> 111
     //   150: astore 5
     //   152: aload 4
@@ -94,7 +94,7 @@ final class b$11$1
     //   165: aload 5
     //   167: invokevirtual 119	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   170: aastore
-    //   171: invokestatic 122	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   171: invokestatic 122	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   174: aload 4
     //   176: ifnull +8 -> 184
     //   179: aload 4
@@ -108,7 +108,7 @@ final class b$11$1
     //   194: invokestatic 132	java/lang/Thread:activeCount	()I
     //   197: invokestatic 137	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   200: aastore
-    //   201: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   201: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   204: invokestatic 140	java/lang/Thread:getAllStackTraces	()Ljava/util/Map;
     //   207: astore_3
     //   208: aload_3
@@ -141,9 +141,9 @@ final class b$11$1
     //   273: aload 5
     //   275: invokeinterface 180 2 0
     //   280: checkcast 182	[Ljava/lang/StackTraceElement;
-    //   283: invokestatic 188	com/tencent/mm/sdk/platformtools/at:stackTraceToString	([Ljava/lang/StackTraceElement;)Ljava/lang/String;
+    //   283: invokestatic 188	com/tencent/mm/sdk/platformtools/as:stackTraceToString	([Ljava/lang/StackTraceElement;)Ljava/lang/String;
     //   286: aastore
-    //   287: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   287: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   290: goto -69 -> 221
     //   293: ldc 38
     //   295: ldc 190
@@ -159,7 +159,7 @@ final class b$11$1
     //   312: invokestatic 196	android/os/Debug:getThreadGcInvocationCount	()I
     //   315: invokestatic 137	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   318: aastore
-    //   319: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   319: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   322: goto -291 -> 31
     //   325: ldc 38
     //   327: ldc 198
@@ -176,7 +176,7 @@ final class b$11$1
     //   343: getfield 202	android/os/Debug$MemoryInfo:nativePss	I
     //   346: invokestatic 137	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   349: aastore
-    //   350: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   350: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   353: goto -273 -> 80
     //   356: aload 4
     //   358: astore_3
@@ -200,7 +200,7 @@ final class b$11$1
     //   392: aload_3
     //   393: invokevirtual 119	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   396: aastore
-    //   397: invokestatic 122	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   397: invokestatic 122	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   400: goto -216 -> 184
     //   403: astore_3
     //   404: ldc 38
@@ -212,7 +212,7 @@ final class b$11$1
     //   414: aload_3
     //   415: invokevirtual 119	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   418: aastore
-    //   419: invokestatic 122	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   419: invokestatic 122	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   422: goto -238 -> 184
     //   425: astore 4
     //   427: aconst_null
@@ -235,7 +235,7 @@ final class b$11$1
     //   457: aload_3
     //   458: invokevirtual 119	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   461: aastore
-    //   462: invokestatic 122	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   462: invokestatic 122	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   465: goto -28 -> 437
     //   468: sipush 20123
     //   471: invokestatic 213	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -287,7 +287,7 @@ final class b$11$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.console.b.11.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,35 +9,35 @@ public enum c
   implements Choreographer.FrameCallback
 {
   private Choreographer choreographer;
-  public long fWt;
-  public int fWu;
-  double fWv;
-  private int fWw;
-  public boolean fWx;
+  public long gba;
+  public int gbb;
+  double gbc;
+  private int gbd;
+  public boolean gbe;
   private final Object lock;
   
   static
   {
     AppMethodBeat.i(49855);
-    lYe = new c("INSTANCE");
-    lYf = new c[] { lYe };
+    mAg = new c("INSTANCE");
+    mAh = new c[] { mAg };
     AppMethodBeat.o(49855);
   }
   
   private c()
   {
     AppMethodBeat.i(49853);
-    this.fWt = 0L;
-    this.fWu = 0;
-    this.fWv = 0.0D;
-    this.fWw = 500;
-    this.fWx = false;
+    this.gba = 0L;
+    this.gbb = 0;
+    this.gbc = 0.0D;
+    this.gbd = 500;
+    this.gbe = false;
     this.lock = new Object();
     AppMethodBeat.o(49853);
   }
   
   /* Error */
-  public final Choreographer adb()
+  public final Choreographer aes()
   {
     // Byte code:
     //   0: ldc 94
@@ -127,29 +127,29 @@ public enum c
   {
     AppMethodBeat.i(49854);
     paramLong = TimeUnit.NANOSECONDS.toMillis(paramLong);
-    if (this.fWt > 0L)
+    if (this.gba > 0L)
     {
-      long l = paramLong - this.fWt;
-      this.fWu += 1;
-      if (l > this.fWw)
+      long l = paramLong - this.gba;
+      this.gbb += 1;
+      if (l > this.gbd)
       {
-        this.fWv = (this.fWu * 1000 / l);
-        this.fWt = paramLong;
-        this.fWu = 0;
+        this.gbc = (this.gbb * 1000 / l);
+        this.gba = paramLong;
+        this.gbb = 0;
       }
     }
     for (;;)
     {
-      adb().postFrameCallback(this);
+      aes().postFrameCallback(this);
       AppMethodBeat.o(49854);
       return;
-      this.fWt = paramLong;
+      this.gba = paramLong;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.c.c
  * JD-Core Version:    0.7.0.1
  */

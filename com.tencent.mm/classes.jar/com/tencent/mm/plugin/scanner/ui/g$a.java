@@ -8,9 +8,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
-import com.tencent.mm.plugin.scanner.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.scanner.i;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.sdk.platformtools.f;
 import java.io.IOException;
 
@@ -24,15 +24,13 @@ final class g$a
     this.mPicUrl = paramString;
   }
   
-  public final void Z(String paramString, boolean paramBoolean) {}
-  
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(51830);
-    if (s.a.hUk == parama) {}
+    if (s.a.iuo == parama) {}
     try
     {
-      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aGy(), false);
+      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aNl(), false);
       AppMethodBeat.o(51830);
       return paramBitmap;
     }
@@ -40,60 +38,62 @@ final class g$a
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.ProductGridPreference", parama, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.ProductGridPreference", parama, "", new Object[0]);
       }
     }
   }
   
   public final void a(s.a parama, String paramString) {}
   
-  public final String aGA()
-  {
-    return this.mPicUrl;
-  }
-  
-  public final boolean aGB()
-  {
-    return false;
-  }
-  
-  public final boolean aGC()
-  {
-    return false;
-  }
-  
-  public final Bitmap aGD()
-  {
-    AppMethodBeat.i(51831);
-    if (aj.getContext() == null)
-    {
-      AppMethodBeat.o(51831);
-      return null;
-    }
-    Bitmap localBitmap = BitmapFactory.decodeResource(aj.getContext().getResources(), 2131233476);
-    AppMethodBeat.o(51831);
-    return localBitmap;
-  }
-  
-  public final void aGE() {}
-  
-  public final s.b aGx()
+  public final s.b aNk()
   {
     return null;
   }
   
-  public final String aGy()
+  public final String aNl()
   {
     AppMethodBeat.i(51829);
-    String str = h.dkY().ir(this.mPicUrl, "@S");
+    String str = i.dza().iL(this.mPicUrl, "@S");
     AppMethodBeat.o(51829);
     return str;
   }
   
-  public final String aGz()
+  public final String aNm()
   {
     return this.mPicUrl;
   }
+  
+  public final String aNn()
+  {
+    return this.mPicUrl;
+  }
+  
+  public final boolean aNo()
+  {
+    return false;
+  }
+  
+  public final boolean aNp()
+  {
+    return false;
+  }
+  
+  public final Bitmap aNq()
+  {
+    AppMethodBeat.i(51831);
+    if (ai.getContext() == null)
+    {
+      AppMethodBeat.o(51831);
+      return null;
+    }
+    Bitmap localBitmap = BitmapFactory.decodeResource(ai.getContext().getResources(), 2131233476);
+    AppMethodBeat.o(51831);
+    return localBitmap;
+  }
+  
+  public final void aNr() {}
+  
+  public final void aa(String paramString, boolean paramBoolean) {}
   
   public final String getCacheKey()
   {
@@ -102,7 +102,7 @@ final class g$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.g.a
  * JD-Core Version:    0.7.0.1
  */

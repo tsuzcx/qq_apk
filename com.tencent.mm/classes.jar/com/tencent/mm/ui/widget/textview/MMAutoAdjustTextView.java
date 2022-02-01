@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.a.a;
+import com.tencent.mm.cl.a.a;
 import com.tencent.mm.ui.ao;
 
 public class MMAutoAdjustTextView
@@ -15,7 +15,7 @@ public class MMAutoAdjustTextView
 {
   private float scale;
   private float textSize;
-  private Paint vw;
+  private Paint wv;
   
   public MMAutoAdjustTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,7 +35,7 @@ public class MMAutoAdjustTextView
     AppMethodBeat.o(159843);
   }
   
-  private void abc(int paramInt)
+  private void ado(int paramInt)
   {
     AppMethodBeat.i(159846);
     if (paramInt <= 0)
@@ -68,9 +68,9 @@ public class MMAutoAdjustTextView
   {
     AppMethodBeat.i(159844);
     this.textSize = getTextSize();
-    this.scale = ao.dT(getContext());
-    this.vw = new Paint();
-    this.vw.set(getPaint());
+    this.scale = ao.eb(getContext());
+    this.wv = new Paint();
+    this.wv.set(getPaint());
     AppMethodBeat.o(159844);
   }
   
@@ -81,7 +81,7 @@ public class MMAutoAdjustTextView
     if (paramInt1 != paramInt3)
     {
       getText().toString();
-      abc(paramInt1);
+      ado(paramInt1);
     }
     AppMethodBeat.o(159848);
   }
@@ -91,13 +91,13 @@ public class MMAutoAdjustTextView
     AppMethodBeat.i(159847);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     paramCharSequence.toString();
-    abc(getWidth());
+    ado(getWidth());
     AppMethodBeat.o(159847);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView
  * JD-Core Version:    0.7.0.1
  */

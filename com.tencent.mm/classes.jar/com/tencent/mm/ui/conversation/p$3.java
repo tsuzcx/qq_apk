@@ -1,17 +1,17 @@
 package com.tencent.mm.ui.conversation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oz;
+import com.tencent.mm.g.a.pi;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 
 final class p$3
-  extends c<oz>
+  extends c<pi>
 {
-  p$3(p paramp, ap paramap)
+  p$3(p paramp, ao paramao)
   {
     AppMethodBeat.i(161574);
-    this.__eventId = oz.class.getName().hashCode();
+    this.__eventId = pi.class.getName().hashCode();
     AppMethodBeat.o(161574);
   }
 }

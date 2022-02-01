@@ -28,7 +28,7 @@ final class v
       if ((paramList.capabilities != null) && (!paramList.capabilities.contains("IBSS"))) {
         try
         {
-          String str1 = new BigInteger(bE(paramList.BSSID), 16).toString();
+          String str1 = new BigInteger(bv(paramList.BSSID), 16).toString();
           String str2 = String.valueOf(paramList.level);
           if (paramBoolean) {}
           for (paramList = "&WD[]=";; paramList = "|WD,")
@@ -82,7 +82,7 @@ final class v
     return false;
   }
   
-  private static String bE(String paramString)
+  private static String bv(String paramString)
   {
     AppMethodBeat.i(87912);
     if (paramString == null)
@@ -109,7 +109,7 @@ final class v
     }
   }
   
-  static String bF(String paramString)
+  static String bw(String paramString)
   {
     AppMethodBeat.i(87915);
     if (paramString == null)
@@ -122,7 +122,7 @@ final class v
     return paramString;
   }
   
-  static String bG(String paramString)
+  static String bx(String paramString)
   {
     AppMethodBeat.i(87916);
     if (paramString == null)
@@ -137,7 +137,7 @@ final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.c.a.a.v
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
-import android.content.Intent;
-import com.tencent.luggage.h.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.y;
+import org.json.JSONObject;
 
 public final class e
-  extends a<aa>
+  extends y
 {
-  public static final int CTRL_INDEX = 402;
-  public static final String NAME = "openRealnameAuth";
+  public static final int CTRL_INDEX = 401;
+  public static final String NAME = "canvasToTempFilePathSync";
+  
+  public final String a(c paramc, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(145534);
+    paramc = e("fail:not supported", null);
+    AppMethodBeat.o(145534);
+    return paramc;
+  }
 }
 
 

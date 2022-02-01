@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.a.i;
 import com.tencent.mm.plugin.fts.ui.a.l;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,64 +21,64 @@ public final class j
     super(paramContext, paramb, paramInt);
   }
   
-  public final com.tencent.mm.plugin.fts.a.a.a a(ap paramap, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.a a(ao paramao, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(112200);
-    this.rxh = false;
+    this.sFZ = false;
     com.tencent.mm.plugin.fts.a.a.j localj = new com.tencent.mm.plugin.fts.a.a.j();
     localj.query = this.query;
-    localj.rpM = paramHashSet;
-    localj.rpO = this;
-    localj.handler = paramap;
-    paramap = ((n)g.ad(n.class)).search(3, localj);
+    localj.syG = paramHashSet;
+    localj.syI = this;
+    localj.handler = paramao;
+    paramao = ((n)g.ad(n.class)).search(3, localj);
     AppMethodBeat.o(112200);
-    return paramap;
+    return paramao;
   }
   
   public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
     AppMethodBeat.i(112202);
-    int i = paramInt - parama.rqs;
-    if (parama.rqt) {
+    int i = paramInt - parama.szm;
+    if (parama.szn) {
       i -= 1;
     }
     for (;;)
     {
       com.tencent.mm.plugin.fts.a.a.m localm = null;
       Object localObject = localm;
-      if (i < parama.kLN.size())
+      if (i < parama.lnk.size())
       {
         localObject = localm;
         if (i >= 0)
         {
-          localm = (com.tencent.mm.plugin.fts.a.a.m)parama.kLN.get(i);
-          if (!localm.roN.equals("create_talker_message​")) {
+          localm = (com.tencent.mm.plugin.fts.a.a.m)parama.lnk.get(i);
+          if (!localm.sxG.equals("create_talker_message​")) {
             break label130;
           }
           localObject = new i(paramInt);
-          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).rqz = false;
-          this.rxh = true;
+          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).szt = false;
+          this.sFZ = true;
         }
       }
       for (;;)
       {
         if (localObject != null)
         {
-          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).rqB = (i + 1);
-          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).roS = parama.roS;
+          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).szv = (i + 1);
+          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).sxM = parama.sxM;
         }
         AppMethodBeat.o(112202);
         return localObject;
         label130:
-        if (localm.roN.equals("no_result​"))
+        if (localm.sxG.equals("no_result​"))
         {
           localObject = new l(paramInt);
         }
         else
         {
           localObject = new com.tencent.mm.plugin.fts.ui.a.m(paramInt);
-          ((com.tencent.mm.plugin.fts.ui.a.m)localObject).jpy = localm;
-          ((com.tencent.mm.plugin.fts.ui.a.m)localObject).fI(localm.type, localm.roM);
+          ((com.tencent.mm.plugin.fts.ui.a.m)localObject).jPN = localm;
+          ((com.tencent.mm.plugin.fts.ui.a.m)localObject).fP(localm.type, localm.sxF);
         }
       }
     }
@@ -87,44 +87,44 @@ public final class j
   public final void a(com.tencent.mm.plugin.fts.a.a.k paramk, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(112201);
-    paramHashSet = paramk.rpQ;
+    paramHashSet = paramk.syK;
     Object localObject;
-    if (dF(paramHashSet))
+    if (dJ(paramHashSet))
     {
       if (paramHashSet.size() > 0)
       {
         localObject = (com.tencent.mm.plugin.fts.a.a.m)paramHashSet.get(0);
-        if (((com.tencent.mm.plugin.fts.a.a.m)localObject).roN.equals("create_talker_message​"))
+        if (((com.tencent.mm.plugin.fts.a.a.m)localObject).sxG.equals("create_talker_message​"))
         {
           e.a locala = new e.a();
-          locala.rqt = false;
-          locala.kLN = new ArrayList();
-          locala.kLN.add(localObject);
-          locala.roS = paramk.roS;
+          locala.szn = false;
+          locala.lnk = new ArrayList();
+          locala.lnk.add(localObject);
+          locala.sxM = paramk.sxM;
           locala.businessType = -2;
-          this.rsD.add(locala);
+          this.sBx.add(locala);
           paramHashSet.remove(0);
         }
       }
       localObject = new e.a();
       ((e.a)localObject).businessType = -2;
-      ((e.a)localObject).roS = paramk.roS;
+      ((e.a)localObject).sxM = paramk.sxM;
       if (paramHashSet.size() != 0) {
         break label213;
       }
-      ((e.a)localObject).rqt = false;
+      ((e.a)localObject).szn = false;
       paramk = new com.tencent.mm.plugin.fts.a.a.m();
-      paramk.roN = "no_result​";
-      ((e.a)localObject).kLN = new ArrayList();
-      ((e.a)localObject).kLN.add(paramk);
+      paramk.sxG = "no_result​";
+      ((e.a)localObject).lnk = new ArrayList();
+      ((e.a)localObject).lnk.add(paramk);
     }
     for (;;)
     {
-      this.rsD.add(localObject);
+      this.sBx.add(localObject);
       AppMethodBeat.o(112201);
       return;
       label213:
-      ((e.a)localObject).kLN = paramHashSet;
+      ((e.a)localObject).lnk = paramHashSet;
     }
   }
   
@@ -135,7 +135,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.d.j
  * JD-Core Version:    0.7.0.1
  */

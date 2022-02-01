@@ -1,6 +1,6 @@
 package com.tencent.matrix.mrs.core;
 
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class MatrixUploadIssue
 {
@@ -11,7 +11,7 @@ public class MatrixUploadIssue
   private int dataType = 0;
   private String desKey = "";
   private String filePath = "";
-  private long id = bt.eGO();
+  private long id = bs.eWj();
   private boolean needDeleteFileAfterSucc = false;
   private String tag = "";
   private int type = 0;

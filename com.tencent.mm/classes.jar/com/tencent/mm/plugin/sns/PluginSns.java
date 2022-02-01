@@ -6,55 +6,55 @@ import android.support.v4.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.sns.a.a.b;
-import com.tencent.mm.plugin.sns.c.j;
-import com.tencent.mm.plugin.sns.c.n;
+import com.tencent.mm.plugin.sns.ad.b.b;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.b.n;
 import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.ui.album.SnsAlbumUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMFragment;
 
 public class PluginSns
   extends f
-  implements com.tencent.mm.plugin.sns.c.c
+  implements com.tencent.mm.plugin.sns.b.c
 {
-  l wvR;
-  a wvS;
-  o wvT;
-  com.tencent.mm.plugin.sns.a.a wvU;
+  l xHh;
+  a xHi;
+  o xHj;
+  com.tencent.mm.plugin.sns.ad.a xHk;
   
   public PluginSns()
   {
     AppMethodBeat.i(94896);
-    this.wvR = new l();
-    this.wvS = new a();
-    this.wvT = new o();
-    this.wvU = new com.tencent.mm.plugin.sns.a.a();
+    this.xHh = new l();
+    this.xHi = new a();
+    this.xHj = new o();
+    this.xHk = new com.tencent.mm.plugin.sns.ad.a();
     AppMethodBeat.o(94896);
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(94898);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.b(j.class, this.wvR);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.sns.c.d.class, this.wvU);
-    com.tencent.mm.plugin.sns.a.a locala = this.wvU;
-    locala.a(new com.tencent.mm.plugin.sns.a.a.e());
-    locala.a(new com.tencent.mm.plugin.sns.a.a.d());
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.b(j.class, this.xHh);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.sns.b.d.class, this.xHk);
+    com.tencent.mm.plugin.sns.ad.a locala = this.xHk;
+    locala.a(new com.tencent.mm.plugin.sns.ad.b.e());
+    locala.a(new com.tencent.mm.plugin.sns.ad.b.d());
     locala.a(new b());
-    locala.a(new com.tencent.mm.plugin.sns.a.a.c());
-    if (paramg.agu())
+    locala.a(new com.tencent.mm.plugin.sns.ad.b.c());
+    if (paramg.ahL())
     {
-      ad.i("MicroMsg.PluginSns", "PluginSns configure");
-      com.tencent.mm.vfs.o.b("sns", "sns", 604800000L, 19, true);
-      com.tencent.mm.vfs.o.b("sns_ad_landingpages", "sns_ad_landingpages", 2592000000L, 103, false);
+      ac.i("MicroMsg.PluginSns", "PluginSns configure");
+      com.tencent.mm.vfs.o.md("sns", "sns");
+      com.tencent.mm.vfs.o.b("sns_ad_landingpages", "sns_ad_landingpages", 2592000000L, 103);
       pin(new t(af.class));
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.sns.c.a.class, this.wvS);
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.b(n.class, this.wvT);
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.sns.b.a.class, this.xHi);
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.b(n.class, this.xHj);
     }
     AppMethodBeat.o(94898);
   }
@@ -70,14 +70,14 @@ public class PluginSns
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(94899);
-    com.tencent.mm.bs.c.aCW("sns");
+    com.tencent.mm.br.c.aIn("sns");
     AppMethodBeat.o(94899);
   }
   
   public String getAccSnsPath()
   {
     AppMethodBeat.i(179063);
-    String str = com.tencent.mm.kernel.g.afB().gcW + "sns/";
+    String str = com.tencent.mm.kernel.g.agR().ghC + "sns/";
     AppMethodBeat.o(179063);
     return str;
   }
@@ -85,7 +85,7 @@ public class PluginSns
   public String getAccSnsTmpPath()
   {
     AppMethodBeat.i(179064);
-    String str = com.tencent.mm.kernel.g.afB().gcW + "sns/temp/";
+    String str = com.tencent.mm.kernel.g.agR().ghC + "sns/temp/";
     AppMethodBeat.o(179064);
     return str;
   }
@@ -93,15 +93,15 @@ public class PluginSns
   public String getSnsAdPath()
   {
     AppMethodBeat.i(179065);
-    String str = com.tencent.mm.kernel.g.afB().gcW + "sns/sns_ad//";
+    String str = com.tencent.mm.kernel.g.agR().ghC + "sns/sns_ad//";
     AppMethodBeat.o(179065);
     return str;
   }
   
-  public com.tencent.mm.plugin.sns.c.p getUIManager()
+  public com.tencent.mm.plugin.sns.b.p getUIManager()
   {
     AppMethodBeat.i(94901);
-    p localp = p.drl();
+    p localp = p.dFu();
     AppMethodBeat.o(94901);
     return localp;
   }
@@ -116,7 +116,7 @@ public class PluginSns
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.PluginSns
  * JD-Core Version:    0.7.0.1
  */

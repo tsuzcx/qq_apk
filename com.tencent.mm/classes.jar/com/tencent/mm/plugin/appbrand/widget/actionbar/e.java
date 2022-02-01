@@ -11,26 +11,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.page.a.a;
 import com.tencent.mm.plugin.appbrand.page.a.b;
 import com.tencent.mm.plugin.appbrand.page.a.c.a;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandCapsuleBarWorkaroundImpl;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/BaseBlinkingCapsuleBarPart;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBar;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarBlinkingPart$BlinkHandler;", "()V", "mAnimator", "Landroid/animation/Animator;", "mButton", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandOptionButton;", "applyDescription", "", "description", "", "applyLogo", "logo", "Landroid/graphics/drawable/Drawable;", "applyStatus", "status", "", "blink", "clearAnimation", "destroy", "dismiss", "getContext", "Landroid/content/Context;", "pause", "resume", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "setDescription", "resId", "setLogo", "drawable", "setStatus", "setStyle", "style", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarColoredStylePart$Style;", "wrap", "button", "luggage-wxa-app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandCapsuleBarWorkaroundImpl;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/BaseBlinkingCapsuleBarPart;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBar;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarBlinkingPart$BlinkHandler;", "()V", "mAnimator", "Landroid/animation/Animator;", "mButton", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandOptionButton;", "applyDescription", "", "description", "", "applyLogo", "logo", "Landroid/graphics/drawable/Drawable;", "applyStatus", "status", "", "blink", "clearAnimation", "destroy", "dismiss", "getContext", "Landroid/content/Context;", "pause", "resume", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "setDescription", "resId", "setLogo", "drawable", "setStatus", "setStyle", "style", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarColoredStylePart$Style;", "wrap", "button", "luggage-wxa-app_release"})
 public final class e
   extends a
   implements b, c.a
 {
-  private Animator Cj;
-  AppBrandOptionButton lRx;
+  private Animator Di;
+  AppBrandOptionButton mtA;
   
   private final void clearAnimation()
   {
     AppMethodBeat.i(135623);
-    Object localObject = this.Cj;
+    Object localObject = this.Di;
     if (localObject != null) {
       ((Animator)localObject).cancel();
     }
-    localObject = this.lRx;
+    localObject = this.mtA;
     if (localObject != null)
     {
       localObject = ((AppBrandOptionButton)localObject).getButtonImage();
@@ -46,14 +46,14 @@ public final class e
   
   public final void A(CharSequence paramCharSequence) {}
   
-  public final void L(Runnable paramRunnable)
+  public final void N(Runnable paramRunnable)
   {
     AppMethodBeat.i(160942);
-    aq.f(paramRunnable);
+    ap.f(paramRunnable);
     AppMethodBeat.o(160942);
   }
   
-  public final c.a bkL()
+  public final c.a brA()
   {
     return (c.a)this;
   }
@@ -62,7 +62,7 @@ public final class e
   {
     AppMethodBeat.i(135618);
     clearAnimation();
-    this.lRx = null;
+    this.mtA = null;
     AppMethodBeat.o(135618);
   }
   
@@ -76,9 +76,9 @@ public final class e
   public final Context getContext()
   {
     AppMethodBeat.i(135622);
-    Object localObject = this.lRx;
+    Object localObject = this.mtA;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     localObject = ((AppBrandOptionButton)localObject).getContext();
     k.g(localObject, "mButton!!.context");
@@ -89,7 +89,7 @@ public final class e
   public final void pause()
   {
     AppMethodBeat.i(135620);
-    Animator localAnimator = this.Cj;
+    Animator localAnimator = this.Di;
     if (localAnimator != null)
     {
       localAnimator.pause();
@@ -102,7 +102,7 @@ public final class e
   public final void resume()
   {
     AppMethodBeat.i(135619);
-    Animator localAnimator = this.Cj;
+    Animator localAnimator = this.Di;
     if (localAnimator != null)
     {
       localAnimator.resume();
@@ -123,16 +123,16 @@ public final class e
   
   public final void setStatus(int paramInt) {}
   
-  public final void tC(int paramInt) {}
+  public final void ug(int paramInt) {}
   
-  public final void tp(int paramInt) {}
+  public final void us(int paramInt) {}
   
   public final void x(final Drawable paramDrawable)
   {
     AppMethodBeat.i(135621);
-    AppBrandOptionButton localAppBrandOptionButton = this.lRx;
+    AppBrandOptionButton localAppBrandOptionButton = this.mtA;
     if (localAppBrandOptionButton == null) {
-      k.fvU();
+      k.fOy();
     }
     clearAnimation();
     if (paramDrawable == null)
@@ -142,7 +142,7 @@ public final class e
       return;
     }
     localAppBrandOptionButton.getButtonImage().setImageDrawable(paramDrawable);
-    Animator localAnimator = cH((View)localAppBrandOptionButton.getButtonImage());
+    Animator localAnimator = cJ((View)localAppBrandOptionButton.getButtonImage());
     if (!(localAnimator instanceof ValueAnimator)) {}
     for (Object localObject = null;; localObject = localAnimator)
     {
@@ -151,13 +151,13 @@ public final class e
         ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new a(localAppBrandOptionButton, paramDrawable));
       }
       localAnimator.start();
-      this.Cj = localAnimator;
+      this.Di = localAnimator;
       AppMethodBeat.o(135621);
       return;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandCapsuleBarWorkaroundImpl$applyLogo$1$1"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandCapsuleBarWorkaroundImpl$applyLogo$1$1"})
   static final class a
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -166,14 +166,14 @@ public final class e
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
       AppMethodBeat.i(135615);
-      this.lRy.getButtonImage().setImageDrawable(paramDrawable);
+      this.mtB.getButtonImage().setImageDrawable(paramDrawable);
       AppMethodBeat.o(135615);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.e
  * JD-Core Version:    0.7.0.1
  */

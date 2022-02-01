@@ -15,16 +15,16 @@ public abstract class n
   extends o
 {
   protected Activity activity;
-  int jvX;
+  int jWt;
   
   public n(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
   {
     super(paramm, paramq, paramaa, paramJSONObject, paramInt);
-    this.activity = a.iV(paramq.getRuntime().mContext);
+    this.activity = a.jg(paramq.getRuntime().mContext);
     if (this.activity == null) {
       throw new IllegalArgumentException("JsApiActivityResultRequest. Activity is null");
     }
-    this.jvX = (paramm.hashCode() & 0xFFFF);
+    this.jWt = (paramm.hashCode() & 0xFFFF);
   }
   
   protected abstract void C(Intent paramIntent);
@@ -33,7 +33,7 @@ public abstract class n
   
   public final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jvX != paramInt1) {
+    if (this.jWt != paramInt1) {
       return;
     }
     if (paramInt2 == -1)
@@ -53,12 +53,12 @@ public abstract class n
   
   public final void run()
   {
-    e.az(this.activity).b(new e.b()
+    e.aA(this.activity).b(new e.b()
     {
       public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(174747);
-        if (paramAnonymousInt1 == n.this.jvX)
+        if (paramAnonymousInt1 == n.this.jWt)
         {
           n.this.c(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
           AppMethodBeat.o(174747);
@@ -68,7 +68,7 @@ public abstract class n
         return false;
       }
     });
-    if (!a(this.activity, aXJ(), this.jvX)) {
+    if (!a(this.activity, beG(), this.jWt)) {
       onError(-1, "fail:system error {{launch fail}}");
     }
   }

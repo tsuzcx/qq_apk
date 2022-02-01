@@ -11,14 +11,14 @@ import java.util.concurrent.locks.ReentrantLock;
 
 final class c
 {
-  final Map<String, a> aGp;
-  final b aGq;
+  final Map<String, a> aHf;
+  final b aHg;
   
   c()
   {
     AppMethodBeat.i(77147);
-    this.aGp = new HashMap();
-    this.aGq = new b();
+    this.aHf = new HashMap();
+    this.aHg = new b();
     AppMethodBeat.o(77147);
   }
   
@@ -28,10 +28,10 @@ final class c
     a locala1;
     try
     {
-      locala1 = (a)i.checkNotNull(this.aGp.get(???), "Argument must not be null");
-      if (locala1.aGs <= 0)
+      locala1 = (a)i.checkNotNull(this.aHf.get(???), "Argument must not be null");
+      if (locala1.aHi <= 0)
       {
-        ??? = new IllegalStateException("Cannot release a lock that is not held, safeKey: " + ??? + ", interestedThreads: " + locala1.aGs);
+        ??? = new IllegalStateException("Cannot release a lock that is not held, safeKey: " + ??? + ", interestedThreads: " + locala1.aHi);
         AppMethodBeat.o(77148);
         throw ???;
       }
@@ -40,26 +40,26 @@ final class c
     {
       AppMethodBeat.o(77148);
     }
-    locala1.aGs -= 1;
+    locala1.aHi -= 1;
     a locala2;
     b localb;
-    if (locala1.aGs == 0)
+    if (locala1.aHi == 0)
     {
-      locala2 = (a)this.aGp.remove(???);
+      locala2 = (a)this.aHf.remove(???);
       if (!locala2.equals(locala1))
       {
         ??? = new IllegalStateException("Removed the wrong lock, expected to remove: " + locala1 + ", but actually removed: " + locala2 + ", safeKey: " + ???);
         AppMethodBeat.o(77148);
         throw ???;
       }
-      localb = this.aGq;
+      localb = this.aHg;
     }
-    synchronized (localb.aGt)
+    synchronized (localb.aHj)
     {
-      if (localb.aGt.size() < 10) {
-        localb.aGt.offer(locala2);
+      if (localb.aHj.size() < 10) {
+        localb.aHj.offer(locala2);
       }
-      locala1.aGr.unlock();
+      locala1.aHh.unlock();
       AppMethodBeat.o(77148);
       return;
     }
@@ -67,34 +67,34 @@ final class c
   
   static final class a
   {
-    final Lock aGr;
-    int aGs;
+    final Lock aHh;
+    int aHi;
     
     a()
     {
       AppMethodBeat.i(77144);
-      this.aGr = new ReentrantLock();
+      this.aHh = new ReentrantLock();
       AppMethodBeat.o(77144);
     }
   }
   
   static final class b
   {
-    final Queue<c.a> aGt;
+    final Queue<c.a> aHj;
     
     b()
     {
       AppMethodBeat.i(77145);
-      this.aGt = new ArrayDeque();
+      this.aHj = new ArrayDeque();
       AppMethodBeat.o(77145);
     }
     
-    final c.a oz()
+    final c.a oJ()
     {
       AppMethodBeat.i(77146);
-      synchronized (this.aGt)
+      synchronized (this.aHj)
       {
-        c.a locala = (c.a)this.aGt.poll();
+        c.a locala = (c.a)this.aHj.poll();
         ??? = locala;
         if (locala == null) {
           ??? = new c.a();
@@ -107,7 +107,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.b.c
  * JD-Core Version:    0.7.0.1
  */

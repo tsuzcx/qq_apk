@@ -10,14 +10,14 @@ import java.io.InputStream;
 public final class u<Data>
   implements n<String, Data>
 {
-  private final n<Uri, Data> aHY;
+  private final n<Uri, Data> aIO;
   
   public u(n<Uri, Data> paramn)
   {
-    this.aHY = paramn;
+    this.aIO = paramn;
   }
   
-  private static Uri Q(String paramString)
+  private static Uri S(String paramString)
   {
     AppMethodBeat.i(77306);
     paramString = Uri.fromFile(new File(paramString));
@@ -63,7 +63,7 @@ public final class u<Data>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.u
  * JD-Core Version:    0.7.0.1
  */

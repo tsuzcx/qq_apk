@@ -9,8 +9,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,23 +18,23 @@ import java.util.LinkedList;
 
 public final class f
 {
-  private static HashMap<String, a> fSr;
-  private static HashMap<String, k> rPb;
-  private static LinkedList<String> rPc;
+  private static HashMap<String, a> fWm;
+  private static HashMap<String, k> sWR;
+  private static LinkedList<String> sWS;
   
   static
   {
     AppMethodBeat.i(83024);
-    rPb = new HashMap();
-    fSr = new HashMap();
-    rPc = new LinkedList();
+    sWR = new HashMap();
+    fWm = new HashMap();
+    sWS = new LinkedList();
     AppMethodBeat.o(83024);
   }
   
   public static void a(Class<? extends com.tencent.luggage.webview.a> paramClass, final String paramString, final a parama)
   {
     AppMethodBeat.i(83020);
-    if ((!aj.eFJ()) && (!aj.eFK()))
+    if ((!ai.eVd()) && (!ai.eVe()))
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("action_id", 1);
@@ -44,29 +44,29 @@ public final class f
       AppMethodBeat.o(83020);
       return;
     }
-    if (rPc.contains(paramString))
+    if (sWS.contains(paramString))
     {
-      ad.i("MicroMsg.PreloadGameWebCoreHelp", "preload ing, return");
-      parama.AI();
+      ac.i("MicroMsg.PreloadGameWebCoreHelp", "preload ing, return");
+      parama.Am();
       AppMethodBeat.o(83020);
       return;
     }
-    rPc.add(paramString);
-    p.y(new Runnable()
+    sWS.add(paramString);
+    p.z(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(83017);
-        k localk = new k(aj.getContext(), this.rPe);
-        f.rPb.put(paramString, localk);
-        f.bGx().remove(paramString);
+        k localk = new k(ai.getContext(), this.sWU);
+        f.sWR.put(paramString, localk);
+        f.bNK().remove(paramString);
         if (!TextUtils.isEmpty(paramString))
         {
-          ad.i("MicroMsg.PreloadGameWebCoreHelp", "loadUrl: %s", new Object[] { paramString });
+          ac.i("MicroMsg.PreloadGameWebCoreHelp", "loadUrl: %s", new Object[] { paramString });
           localk.loadUrl(paramString);
         }
         if (parama != null) {
-          parama.AI();
+          parama.Am();
         }
         AppMethodBeat.o(83017);
       }
@@ -74,18 +74,18 @@ public final class f
     AppMethodBeat.o(83020);
   }
   
-  public static k ace(String paramString)
+  public static k agW(String paramString)
   {
     AppMethodBeat.i(83022);
-    paramString = (k)rPb.get(paramString);
+    paramString = (k)sWR.get(paramString);
     AppMethodBeat.o(83022);
     return paramString;
   }
   
-  public static k aq(Context paramContext, String paramString)
+  public static k ar(Context paramContext, String paramString)
   {
     AppMethodBeat.i(83021);
-    paramString = (k)rPb.remove(paramString);
+    paramString = (k)sWR.remove(paramString);
     if (paramString != null) {
       paramString.setContext(paramContext);
     }
@@ -96,13 +96,13 @@ public final class f
   public static void destroy()
   {
     AppMethodBeat.i(83023);
-    if ((aj.eFJ()) || (aj.eFK()))
+    if ((ai.eVd()) || (ai.eVe()))
     {
-      localObject = rPb.values().iterator();
+      localObject = sWR.values().iterator();
       while (((Iterator)localObject).hasNext()) {
         ((k)((Iterator)localObject).next()).destroy();
       }
-      rPb.clear();
+      sWR.clear();
       AppMethodBeat.o(83023);
       return;
     }
@@ -114,7 +114,7 @@ public final class f
   
   public static abstract interface a
   {
-    public abstract void AI();
+    public abstract void Am();
   }
   
   static class b

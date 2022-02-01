@@ -1,56 +1,39 @@
 package com.tencent.mm.plugin.sns.a;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.c.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class a
-  implements d
 {
-  private Map<Integer, com.tencent.mm.plugin.sns.a.a.a> wwK;
-  
-  public a()
+  public static final class a
   {
-    AppMethodBeat.i(94962);
-    this.wwK = new HashMap();
-    AppMethodBeat.o(94962);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(94964);
-    com.tencent.mm.plugin.sns.a.a.a locala = (com.tencent.mm.plugin.sns.a.a.a)this.wwK.get(Integer.valueOf(paramInt1));
-    if (locala == null)
+    public static String ba(Context paramContext, String paramString)
     {
-      ad.w("SnsAdReportService", "can not find %s implementation for kv %d", new Object[] { com.tencent.mm.plugin.sns.a.a.a.class, Integer.valueOf(paramInt1) });
-      AppMethodBeat.o(94964);
-      return;
+      AppMethodBeat.i(200028);
+      if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
+      {
+        AppMethodBeat.o(200028);
+        return "";
+      }
+      try
+      {
+        paramContext = paramContext.getPackageManager();
+        paramContext = paramContext.getApplicationLabel(paramContext.getApplicationInfo(paramString, 128));
+        if (paramContext != null)
+        {
+          paramContext = paramContext.toString();
+          AppMethodBeat.o(200028);
+          return paramContext;
+        }
+      }
+      catch (Throwable paramContext)
+      {
+        AppMethodBeat.o(200028);
+      }
+      return "";
     }
-    locala.f(paramInt2, paramVarArgs);
-    AppMethodBeat.o(94964);
-  }
-  
-  public final void a(com.tencent.mm.plugin.sns.a.a.a parama)
-  {
-    AppMethodBeat.i(94963);
-    this.wwK.put(Integer.valueOf(parama.dgb()), parama);
-    AppMethodBeat.o(94963);
-  }
-  
-  public final void f(int paramInt, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(94965);
-    com.tencent.mm.plugin.sns.a.a.a locala = (com.tencent.mm.plugin.sns.a.a.a)this.wwK.get(Integer.valueOf(paramInt));
-    if (locala == null)
-    {
-      ad.w("SnsAdReportService", "can not find %s implementation for kv %d", new Object[] { com.tencent.mm.plugin.sns.a.a.a.class, Integer.valueOf(paramInt) });
-      AppMethodBeat.o(94965);
-      return;
-    }
-    locala.u(paramVarArgs);
-    AppMethodBeat.o(94965);
   }
 }
 

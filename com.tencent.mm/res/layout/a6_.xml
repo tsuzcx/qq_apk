@@ -3,8 +3,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.plugin.finder.view.FinderPostFooter android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/bzy" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ce">
         <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ce">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hrj" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@raw/finder_outlined_tag" android:layout_marginStart="@dimen/c8" app:iconColor="@color/FG_0" />
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/had" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@raw/finder_outline_at" android:layout_toRightOf="@id/hrj" android:layout_marginStart="@dimen/c5" app:iconColor="@color/FG_0" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hvb" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@raw/finder_outlined_tag" android:layout_marginStart="@dimen/c8" app:iconColor="@color/FG_0" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/haj" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@raw/finder_outline_at" android:layout_toRightOf="@id/hvb" android:layout_marginStart="@dimen/c5" app:iconColor="@color/FG_0" />
             <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fjv" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@raw/icons_outlined_emoji" android:layout_alignParentRight="true" android:layout_marginEnd="@dimen/c8" app:iconColor="@color/FG_0" />
         </RelativeLayout>
     </com.tencent.mm.plugin.finder.view.FinderPostFooter>

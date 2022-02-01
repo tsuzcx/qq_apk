@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.nearlife.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.avp;
-import com.tencent.mm.protocal.protobuf.avq;
-import com.tencent.mm.protocal.protobuf.blc;
-import com.tencent.mm.protocal.protobuf.bld;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ayv;
+import com.tencent.mm.protocal.protobuf.ayw;
+import com.tencent.mm.protocal.protobuf.boy;
+import com.tencent.mm.protocal.protobuf.boz;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,60 +27,60 @@ public final class d
   extends n
   implements k
 {
-  public static Vector<String> ubI;
+  public static Vector<String> vkG;
   private g callback;
-  public String dct;
-  public int diR;
-  public String jko;
-  final com.tencent.mm.al.b rr;
-  public int sOL;
-  public String ubJ;
-  public List<b> ubK;
-  public boolean ubL;
+  public int dgm;
+  public String jKB;
+  final com.tencent.mm.ak.b rr;
+  public int tWY;
+  public String vkH;
+  public String vkI;
+  public List<b> vkJ;
+  public boolean vkK;
   
   static
   {
     AppMethodBeat.i(26558);
-    ubI = new Vector();
+    vkG = new Vector();
     AppMethodBeat.o(26558);
   }
   
   public d(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3, int paramInt4, String paramString1, String paramString2, SKBuiltinBuffer_t paramSKBuiltinBuffer_t, String paramString3, int paramInt5, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(26554);
-    this.diR = 0;
-    this.ubJ = "";
-    this.dct = "";
-    this.jko = "";
-    this.ubJ = paramString3;
+    this.dgm = 0;
+    this.vkH = "";
+    this.vkI = "";
+    this.jKB = "";
+    this.vkH = paramString3;
     if ((paramInt1 != 0) && (paramInt1 != 1)) {
-      ad.e("MicroMsg.NetSceneGetLbsLifeList", "OpCode Error :".concat(String.valueOf(paramInt1)));
+      ac.e("MicroMsg.NetSceneGetLbsLifeList", "OpCode Error :".concat(String.valueOf(paramInt1)));
     }
-    this.diR = paramInt1;
+    this.dgm = paramInt1;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new avp();
-    ((b.a)localObject).gUV = new avq();
+    ((b.a)localObject).hvt = new ayv();
+    ((b.a)localObject).hvu = new ayw();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getlbslifelist";
     ((b.a)localObject).funcId = 603;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (avp)this.rr.gUS.gUX;
-    bld localbld = new bld();
-    localbld.DfG = paramString2;
-    localbld.DfH = paramInt4;
-    localbld.COJ = paramFloat2;
-    localbld.COI = paramFloat1;
-    localbld.DfF = paramString1;
-    localbld.DfE = paramInt3;
-    ((avp)localObject).Dbk = localbld;
-    ((avp)localObject).Dop = paramString3;
-    ((avp)localObject).Scene = paramInt2;
-    ((avp)localObject).Dvb = paramInt5;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (ayv)this.rr.hvr.hvw;
+    boz localboz = new boz();
+    localboz.EyM = paramString2;
+    localboz.EyN = paramInt4;
+    localboz.Ehu = paramFloat2;
+    localboz.Eht = paramFloat1;
+    localboz.EyL = paramString1;
+    localboz.EyK = paramInt3;
+    ((ayv)localObject).Euj = localboz;
+    ((ayv)localObject).EJp = paramString3;
+    ((ayv)localObject).Scene = paramInt2;
+    ((ayv)localObject).EQk = paramInt5;
     if (paramSKBuiltinBuffer_t == null)
     {
-      ((avp)localObject).Dva = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
-      ((avp)localObject).CCB = paramInt1;
+      ((ayv)localObject).EQj = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+      ((ayv)localObject).DUY = paramInt1;
       if (!paramBoolean2) {
         break label427;
       }
@@ -88,60 +88,60 @@ public final class d
     label427:
     for (int i = 1;; i = 0)
     {
-      ((avp)localObject).Dvc = i;
-      this.ubL = paramBoolean1;
-      ad.d("MicroMsg.NetSceneGetLbsLifeList", "Req: opcode:" + paramInt1 + " lon:" + paramFloat1 + " lat:" + paramFloat2 + " pre:" + paramInt3 + " gpsSource:" + paramInt4 + " mac" + paramString1 + " cell:" + paramString2 + " scene: " + paramInt2 + " entryTime: " + paramInt5);
-      ad.d("MicroMsg.NetSceneGetLbsLifeList", "isLoadMore: %s, buf: %s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(((avp)localObject).Dva.getILen()) });
+      ((ayv)localObject).EQl = i;
+      this.vkK = paramBoolean1;
+      ac.d("MicroMsg.NetSceneGetLbsLifeList", "Req: opcode:" + paramInt1 + " lon:" + paramFloat1 + " lat:" + paramFloat2 + " pre:" + paramInt3 + " gpsSource:" + paramInt4 + " mac" + paramString1 + " cell:" + paramString2 + " scene: " + paramInt2 + " entryTime: " + paramInt5);
+      ac.d("MicroMsg.NetSceneGetLbsLifeList", "isLoadMore: %s, buf: %s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(((ayv)localObject).EQj.getILen()) });
       AppMethodBeat.o(26554);
       return;
-      ((avp)localObject).Dva = paramSKBuiltinBuffer_t;
+      ((ayv)localObject).EQj = paramSKBuiltinBuffer_t;
       break;
     }
   }
   
-  public d(bld parambld)
+  public d(boz paramboz)
   {
     AppMethodBeat.i(163197);
-    this.diR = 0;
-    this.ubJ = "";
-    this.dct = "";
-    this.jko = "";
-    this.diR = 0;
+    this.dgm = 0;
+    this.vkH = "";
+    this.vkI = "";
+    this.jKB = "";
+    this.dgm = 0;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new avp();
-    ((b.a)localObject).gUV = new avq();
+    ((b.a)localObject).hvt = new ayv();
+    ((b.a)localObject).hvu = new ayw();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getlbslifelist";
     ((b.a)localObject).funcId = 603;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (avp)this.rr.gUS.gUX;
-    ((avp)localObject).Dbk = parambld;
-    ((avp)localObject).Dop = this.ubJ;
-    ((avp)localObject).Scene = 6;
-    ((avp)localObject).Dva = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
-    ((avp)localObject).CCB = 0;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (ayv)this.rr.hvr.hvw;
+    ((ayv)localObject).Euj = paramboz;
+    ((ayv)localObject).EJp = this.vkH;
+    ((ayv)localObject).Scene = 6;
+    ((ayv)localObject).EQj = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+    ((ayv)localObject).DUY = 0;
     AppMethodBeat.o(163197);
   }
   
-  public static boolean Ig(int paramInt)
+  public static boolean Kf(int paramInt)
   {
     AppMethodBeat.i(26551);
     String str = String.valueOf(paramInt);
-    if (ubI.contains(str))
+    if (vkG.contains(str))
     {
       AppMethodBeat.o(26551);
       return false;
     }
-    ubI.add(str);
+    vkG.add(str);
     AppMethodBeat.o(26551);
     return true;
   }
   
-  public static boolean Ih(int paramInt)
+  public static boolean Kg(int paramInt)
   {
     AppMethodBeat.i(26552);
-    ubI.remove(String.valueOf(paramInt));
+    vkG.remove(String.valueOf(paramInt));
     AppMethodBeat.o(26552);
     return true;
   }
@@ -149,14 +149,19 @@ public final class d
   public static void clear()
   {
     AppMethodBeat.i(26553);
-    ubI.clear();
+    vkG.clear();
     AppMethodBeat.o(26553);
   }
   
-  public final SKBuiltinBuffer_t cWh()
+  public final int csz()
+  {
+    return ((ayw)this.rr.hvs.hvw).EfS;
+  }
+  
+  public final SKBuiltinBuffer_t djP()
   {
     AppMethodBeat.i(26557);
-    SKBuiltinBuffer_t localSKBuiltinBuffer_t = ((avq)this.rr.gUT.gUX).Dva;
+    SKBuiltinBuffer_t localSKBuiltinBuffer_t = ((ayw)this.rr.hvs.hvw).EQj;
     if (localSKBuiltinBuffer_t == null)
     {
       localSKBuiltinBuffer_t = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
@@ -165,11 +170,6 @@ public final class d
     }
     AppMethodBeat.o(26557);
     return localSKBuiltinBuffer_t;
-  }
-  
-  public final int ckO()
-  {
-    return ((avq)this.rr.gUT.gUX).CNq;
   }
   
   public final int doScene(e parame, g paramg)
@@ -189,11 +189,11 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26556);
-    ad.d("MicroMsg.NetSceneGetLbsLifeList", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramq = (avq)((com.tencent.mm.al.b)paramq).gUT.gUX;
-    this.jko = paramq.CNs;
-    this.sOL = paramq.Dvk;
-    ad.d("MicroMsg.NetSceneGetLbsLifeList", "resp " + paramq.Dvh + "searchId " + this.jko);
+    ac.d("MicroMsg.NetSceneGetLbsLifeList", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramq = (ayw)((com.tencent.mm.ak.b)paramq).hvs.hvw;
+    this.jKB = paramq.EfU;
+    this.tWY = paramq.EQt;
+    ac.d("MicroMsg.NetSceneGetLbsLifeList", "resp " + paramq.EQq + "searchId " + this.jKB);
     if ((paramInt3 == 0) || (paramInt3 == 101)) {}
     for (paramInt1 = 1; (paramInt2 != 0) && (paramInt1 == 0); paramInt1 = 0)
     {
@@ -201,35 +201,35 @@ public final class d
       AppMethodBeat.o(26556);
       return;
     }
-    ad.d("MicroMsg.NetSceneGetLbsLifeList", "continueFlag %d lifeCount %d linkCount %d %s", new Object[] { Integer.valueOf(paramq.CNq), Integer.valueOf(paramq.Dvh), Integer.valueOf(paramq.Dvf), paramq.Dvj });
-    this.dct = bt.by(paramq.Dvj, "");
-    this.ubK = new ArrayList();
-    paramArrayOfByte = paramq.Dvi.iterator();
+    ac.d("MicroMsg.NetSceneGetLbsLifeList", "continueFlag %d lifeCount %d linkCount %d %s", new Object[] { Integer.valueOf(paramq.EfS), Integer.valueOf(paramq.EQq), Integer.valueOf(paramq.EQo), paramq.EQs });
+    this.vkI = bs.bG(paramq.EQs, "");
+    this.vkJ = new ArrayList();
+    paramArrayOfByte = paramq.EQr.iterator();
     Object localObject;
     while (paramArrayOfByte.hasNext())
     {
-      localObject = (blc)paramArrayOfByte.next();
-      localObject = new b(paramq.CNs, (blc)localObject);
-      this.ubK.add(localObject);
+      localObject = (boy)paramArrayOfByte.next();
+      localObject = new b(paramq.EfU, (boy)localObject);
+      this.vkJ.add(localObject);
     }
-    if (paramq.Dvh > 0)
+    if (paramq.EQq > 0)
     {
-      paramArrayOfByte = (blc)paramq.Dvi.get(0);
+      paramArrayOfByte = (boy)paramq.EQr.get(0);
       paramq = new StringBuffer();
-      paramq.append(" Bid " + paramArrayOfByte.ubw);
+      paramq.append(" Bid " + paramArrayOfByte.vku);
       paramq.append(" title " + paramArrayOfByte.Title);
-      paramq.append(" link " + paramArrayOfByte.ubD);
-      paramq.append(" price " + paramArrayOfByte.ubx);
-      paramq.append(" rate " + paramArrayOfByte.ubC);
-      paramq.append(" type " + paramArrayOfByte.mBH);
+      paramq.append(" link " + paramArrayOfByte.vkB);
+      paramq.append(" price " + paramArrayOfByte.vkv);
+      paramq.append(" rate " + paramArrayOfByte.vkA);
+      paramq.append(" type " + paramArrayOfByte.ndI);
       paramq.append(" desc : ");
-      paramArrayOfByte = paramArrayOfByte.ubB.iterator();
+      paramArrayOfByte = paramArrayOfByte.vkz.iterator();
       while (paramArrayOfByte.hasNext())
       {
-        localObject = (cmf)paramArrayOfByte.next();
-        paramq.append(((cmf)localObject).Ehn + "-");
+        localObject = (crm)paramArrayOfByte.next();
+        paramq.append(((crm)localObject).FEm + "-");
       }
-      ad.d("MicroMsg.NetSceneGetLbsLifeList", "resp one %s ", new Object[] { paramq.toString() });
+      ac.d("MicroMsg.NetSceneGetLbsLifeList", "resp one %s ", new Object[] { paramq.toString() });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(26556);
@@ -237,7 +237,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.b.d
  * JD-Core Version:    0.7.0.1
  */

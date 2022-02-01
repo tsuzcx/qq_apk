@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public final class a$a
 {
-  public int mgf;
-  public int mgg;
-  public String mgh;
-  public ArrayList<a.b> mgi;
+  public int mIf;
+  public int mIg;
+  public String mIh;
+  public ArrayList<a.b> mIi;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.a.a
  * JD-Core Version:    0.7.0.1
  */

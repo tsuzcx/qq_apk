@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.editor.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.g.a.gs;
-import com.tencent.mm.g.a.gs.b;
+import com.tencent.mm.g.a.gt;
+import com.tencent.mm.g.a.gt.b;
 import com.tencent.mm.plugin.editor.model.a.i;
 import com.tencent.mm.plugin.editor.model.a.j;
-import com.tencent.mm.protocal.protobuf.afy;
+import com.tencent.mm.protocal.protobuf.agx;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b
 {
-  public static String Tb(String paramString)
+  public static String Xn(String paramString)
   {
     AppMethodBeat.i(181670);
     paramString = g.getMessageDigest((paramString + 18 + System.currentTimeMillis()).getBytes());
@@ -21,16 +21,16 @@ public final class b
     return paramString;
   }
   
-  public static String a(afy paramafy)
+  public static String a(agx paramagx)
   {
     AppMethodBeat.i(181671);
-    gs localgs = new gs();
-    localgs.dkc.type = 27;
-    localgs.dkc.dke = paramafy;
-    com.tencent.mm.sdk.b.a.ESL.l(localgs);
-    paramafy = localgs.dkd.thumbPath;
+    gt localgt = new gt();
+    localgt.dhx.type = 27;
+    localgt.dhx.dhz = paramagx;
+    com.tencent.mm.sdk.b.a.GpY.l(localgt);
+    paramagx = localgt.dhy.thumbPath;
     AppMethodBeat.o(181671);
-    return paramafy;
+    return paramagx;
   }
   
   public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> a(Object paramObject, List<String> paramList)
@@ -59,8 +59,8 @@ public final class b
       if (((String)localObject1).trim().equals("<ThisisNoteNodeHrObj>"))
       {
         localObject1 = new i();
-        ((i)localObject1).omv = false;
-        ((i)localObject1).omB = false;
+        ((i)localObject1).oPV = false;
+        ((i)localObject1).oQb = false;
         if (i < localArrayList.size()) {
           localArrayList.add(i, localObject1);
         }
@@ -75,9 +75,9 @@ public final class b
         {
           localObject2 = new j();
           ((j)localObject2).content = ((String)localObject1);
-          ((j)localObject2).omv = false;
-          ((j)localObject2).omB = false;
-          ((j)localObject2).dkb = Tb(localObject2.toString());
+          ((j)localObject2).oPV = false;
+          ((j)localObject2).oQb = false;
+          ((j)localObject2).dhw = Xn(localObject2.toString());
           if (i < localArrayList.size()) {
             localArrayList.add(i, localObject2);
           } else {
@@ -92,19 +92,19 @@ public final class b
     return localArrayList;
   }
   
-  public static String b(afy paramafy)
+  public static String b(agx paramagx)
   {
     AppMethodBeat.i(181672);
-    gs localgs = new gs();
-    localgs.dkc.type = 27;
-    localgs.dkc.dke = paramafy;
-    com.tencent.mm.sdk.b.a.ESL.l(localgs);
-    paramafy = localgs.dkd.path;
+    gt localgt = new gt();
+    localgt.dhx.type = 27;
+    localgt.dhx.dhz = paramagx;
+    com.tencent.mm.sdk.b.a.GpY.l(localgt);
+    paramagx = localgt.dhy.path;
     AppMethodBeat.o(181672);
-    return paramafy;
+    return paramagx;
   }
   
-  public static float mI(long paramLong)
+  public static float qw(long paramLong)
   {
     float f1 = 1.0F;
     AppMethodBeat.i(181669);
@@ -121,7 +121,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,16 +7,16 @@ import android.os.Looper;
 import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
+import com.tencent.mm.ac.c;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.b;
-import com.tencent.mm.plugin.brandservice.ui.timeline.preload.g;
-import com.tencent.mm.plugin.brandservice.ui.timeline.preload.g.a;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.h;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.h.a;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController;
-import com.tencent.mm.protocal.protobuf.dch;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dhu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.vfs.i;
 import com.tencent.xweb.WebView;
@@ -28,29 +28,29 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewManager;", "", "()V", "TAG", "", "cacheControllers", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController;", "contentBuff", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV$NativeBuffer;", "priorityWebView", "", "startredControllers", "createWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "context", "Landroid/content/Context;", "createWebViewController", "tmplParams", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "contextWrapper", "Landroid/content/MutableContextWrapper;", "getNativeBuffer", "size", "getWebViewFromCache", "tmplType", "intent", "Landroid/content/Intent;", "onStartCreate", "", "obtainPreloadTmplWebView", "obtainTmplWebView", "pick", "preloadWebViewInner", "", "tryPreloadAllTmplWebview", "tryPreloadTmplWebview", "updateTmplWebview", "clear", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebView;", "MPWebView", "plugin-brandservice_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewManager;", "", "()V", "TAG", "", "cacheControllers", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController;", "contentBuff", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV$NativeBuffer;", "priorityWebView", "", "startredControllers", "createWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "context", "Landroid/content/Context;", "createWebViewController", "tmplParams", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "contextWrapper", "Landroid/content/MutableContextWrapper;", "getNativeBuffer", "size", "getWebViewFromCache", "tmplType", "intent", "Landroid/content/Intent;", "onStartCreate", "", "obtainPreloadTmplWebView", "obtainTmplWebView", "pick", "preloadWebViewInner", "", "tryPreloadAllTmplWebview", "tryPreloadTmplWebview", "updateTmplWebview", "clear", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebView;", "MPWebView", "plugin-brandservice_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.Preload.TmplWebViewManager";
-  private static final ConcurrentHashMap<Integer, MpWebViewController> nia;
-  private static final ConcurrentHashMap<Integer, MpWebViewController> nib;
-  private static boolean nic;
-  private static ax.a nid;
-  public static final a nie;
+  private static final ConcurrentHashMap<Integer, MpWebViewController> nKT;
+  private static final ConcurrentHashMap<Integer, MpWebViewController> nKU;
+  private static boolean nKV;
+  private static aw.a nKW;
+  public static final a nKX;
   
   static
   {
     AppMethodBeat.i(6940);
-    nie = new a();
+    nKX = new a();
     TAG = "MicroMsg.Preload.TmplWebViewManager";
-    nia = new ConcurrentHashMap();
-    nib = new ConcurrentHashMap();
-    nid = new ax.a();
+    nKT = new ConcurrentHashMap();
+    nKU = new ConcurrentHashMap();
+    nKW = new aw.a();
     AppMethodBeat.o(6940);
   }
   
   /* Error */
-  public static final MpWebViewController a(Context paramContext, dch paramdch)
+  public static final MpWebViewController a(Context paramContext, dhu paramdhu)
   {
     // Byte code:
     //   0: ldc 2
@@ -71,31 +71,31 @@ public final class a
     //   31: ldc 121
     //   33: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   36: aload_1
-    //   37: getfield 130	com/tencent/mm/protocal/protobuf/dch:nee	I
+    //   37: getfield 130	com/tencent/mm/protocal/protobuf/dhu:nGQ	I
     //   40: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   43: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: invokestatic 144	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: invokestatic 144	com/tencent/mm/sdk/platformtools/ac:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   49: aload_1
     //   50: new 146	android/content/MutableContextWrapper
     //   53: dup
     //   54: aload_0
     //   55: invokespecial 149	android/content/MutableContextWrapper:<init>	(Landroid/content/Context;)V
-    //   58: invokestatic 152	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:a	(Lcom/tencent/mm/protocal/protobuf/dch;Landroid/content/MutableContextWrapper;)Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController;
+    //   58: invokestatic 152	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:a	(Lcom/tencent/mm/protocal/protobuf/dhu;Landroid/content/MutableContextWrapper;)Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController;
     //   61: astore_0
     //   62: aload_0
     //   63: ifnull +41 -> 104
     //   66: aload_0
-    //   67: getfield 157	com/tencent/mm/plugin/webview/core/BaseWebViewController:nhy	Lcom/tencent/mm/ui/widget/MMWebView;
+    //   67: getfield 157	com/tencent/mm/plugin/webview/core/BaseWebViewController:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
     //   70: invokevirtual 163	com/tencent/mm/ui/widget/MMWebView:getPerformanceHelper	()Lcom/tencent/mm/pluginsdk/q;
     //   73: ldc 165
     //   75: lload_2
-    //   76: invokevirtual 171	com/tencent/mm/pluginsdk/q:bG	(Ljava/lang/String;J)V
+    //   76: invokevirtual 171	com/tencent/mm/pluginsdk/q:bI	(Ljava/lang/String;J)V
     //   79: aload_0
-    //   80: getfield 157	com/tencent/mm/plugin/webview/core/BaseWebViewController:nhy	Lcom/tencent/mm/ui/widget/MMWebView;
+    //   80: getfield 157	com/tencent/mm/plugin/webview/core/BaseWebViewController:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
     //   83: invokevirtual 163	com/tencent/mm/ui/widget/MMWebView:getPerformanceHelper	()Lcom/tencent/mm/pluginsdk/q;
     //   86: ldc 173
     //   88: invokestatic 117	java/lang/System:currentTimeMillis	()J
-    //   91: invokevirtual 171	com/tencent/mm/pluginsdk/q:bG	(Ljava/lang/String;J)V
+    //   91: invokevirtual 171	com/tencent/mm/pluginsdk/q:bI	(Ljava/lang/String;J)V
     //   94: ldc 103
     //   96: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: ldc 2
@@ -115,7 +115,7 @@ public final class a
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	120	0	paramContext	Context
-    //   0	120	1	paramdch	dch
+    //   0	120	1	paramdhu	dhu
     //   23	53	2	l	long
     // Exception table:
     //   from	to	target	type
@@ -125,7 +125,7 @@ public final class a
   }
   
   /* Error */
-  public static final MpWebViewController a(Context paramContext, dch paramdch, Intent paramIntent)
+  public static final MpWebViewController a(Context paramContext, dhu paramdhu, Intent paramIntent)
   {
     // Byte code:
     //   0: ldc 2
@@ -149,13 +149,13 @@ public final class a
     //   37: ldc 178
     //   39: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   42: aload_1
-    //   43: getfield 130	com/tencent/mm/protocal/protobuf/dch:nee	I
+    //   43: getfield 130	com/tencent/mm/protocal/protobuf/dhu:nGQ	I
     //   46: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   49: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   52: invokestatic 144	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;)V
-    //   55: getstatic 82	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:nie	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a;
+    //   52: invokestatic 144	com/tencent/mm/sdk/platformtools/ac:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   55: getstatic 82	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:nKX	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a;
     //   58: aload_1
-    //   59: getfield 130	com/tencent/mm/protocal/protobuf/dch:nee	I
+    //   59: getfield 130	com/tencent/mm/protocal/protobuf/dhu:nGQ	I
     //   62: aload_2
     //   63: invokespecial 182	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:c	(ILandroid/content/Intent;)Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController;
     //   66: astore_1
@@ -163,23 +163,23 @@ public final class a
     //   68: ifnull +55 -> 123
     //   71: getstatic 84	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:TAG	Ljava/lang/String;
     //   74: ldc 184
-    //   76: invokestatic 144	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: invokestatic 144	com/tencent/mm/sdk/platformtools/ac:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   79: aload_1
-    //   80: getfield 157	com/tencent/mm/plugin/webview/core/BaseWebViewController:nhy	Lcom/tencent/mm/ui/widget/MMWebView;
+    //   80: getfield 157	com/tencent/mm/plugin/webview/core/BaseWebViewController:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
     //   83: astore_2
     //   84: aload_2
     //   85: invokevirtual 163	com/tencent/mm/ui/widget/MMWebView:getPerformanceHelper	()Lcom/tencent/mm/pluginsdk/q;
     //   88: ldc 165
     //   90: lload_3
-    //   91: invokevirtual 171	com/tencent/mm/pluginsdk/q:bG	(Ljava/lang/String;J)V
+    //   91: invokevirtual 171	com/tencent/mm/pluginsdk/q:bI	(Ljava/lang/String;J)V
     //   94: aload_2
     //   95: aload_0
-    //   96: invokevirtual 187	com/tencent/mm/ui/widget/MMWebView:av	(Landroid/content/Context;)V
+    //   96: invokevirtual 187	com/tencent/mm/ui/widget/MMWebView:aw	(Landroid/content/Context;)V
     //   99: aload_2
     //   100: invokevirtual 163	com/tencent/mm/ui/widget/MMWebView:getPerformanceHelper	()Lcom/tencent/mm/pluginsdk/q;
     //   103: ldc 173
     //   105: invokestatic 117	java/lang/System:currentTimeMillis	()J
-    //   108: invokevirtual 171	com/tencent/mm/pluginsdk/q:bG	(Ljava/lang/String;J)V
+    //   108: invokevirtual 171	com/tencent/mm/pluginsdk/q:bI	(Ljava/lang/String;J)V
     //   111: ldc 175
     //   113: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   116: aload_1
@@ -201,7 +201,7 @@ public final class a
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	139	0	paramContext	Context
-    //   0	139	1	paramdch	dch
+    //   0	139	1	paramdhu	dhu
     //   0	139	2	paramIntent	Intent
     //   29	62	3	l	long
     // Exception table:
@@ -211,31 +211,31 @@ public final class a
     //   125	130	133	finally
   }
   
-  private static MpWebViewController a(dch paramdch, MutableContextWrapper paramMutableContextWrapper)
+  private static MpWebViewController a(dhu paramdhu, MutableContextWrapper paramMutableContextWrapper)
   {
-    AppMethodBeat.i(193336);
-    if (paramdch.nee == -1)
+    AppMethodBeat.i(199139);
+    if (paramdhu.nGQ == -1)
     {
-      ad.w(TAG, "[preloadWebViewInner] empty tmplType %d", new Object[] { Integer.valueOf(paramdch.nee) });
-      AppMethodBeat.o(193336);
+      ac.w(TAG, "[preloadWebViewInner] empty tmplType %d", new Object[] { Integer.valueOf(paramdhu.nGQ) });
+      AppMethodBeat.o(199139);
       return null;
     }
-    if (bt.isNullOrNil(paramdch.ASo))
+    if (bs.isNullOrNil(paramdhu.CkB))
     {
-      ad.w(TAG, "[preloadWebViewInner] initUrl " + paramdch.ASo + " is empty");
-      AppMethodBeat.o(193336);
+      ac.w(TAG, "[preloadWebViewInner] initUrl " + paramdhu.CkB + " is empty");
+      AppMethodBeat.o(199139);
       return null;
     }
-    if (!i.eK(paramdch.EtM))
+    if (!i.eA(paramdhu.FQO))
     {
-      ad.w(TAG, "[preloadWebViewInner] filePath %s isn't exist", new Object[] { paramdch.EtM });
-      AppMethodBeat.o(193336);
+      ac.w(TAG, "[preloadWebViewInner] filePath %s isn't exist", new Object[] { paramdhu.FQO });
+      AppMethodBeat.o(199139);
       return null;
     }
-    paramdch = new MpWebViewController(paramdch, ek((Context)paramMutableContextWrapper));
-    paramdch.init();
-    AppMethodBeat.o(193336);
-    return paramdch;
+    paramdhu = new MpWebViewController(paramdhu, es((Context)paramMutableContextWrapper));
+    paramdhu.init();
+    AppMethodBeat.o(199139);
+    return paramdhu;
   }
   
   /* Error */
@@ -251,7 +251,7 @@ public final class a
     //   10: aload_0
     //   11: ldc 176
     //   13: invokestatic 110	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   16: getstatic 256	com/tencent/mm/ui/e$m:FIj	Ljava/lang/String;
+    //   16: getstatic 256	com/tencent/mm/ui/e$m:Hhr	Ljava/lang/String;
     //   19: astore_3
     //   20: aload_3
     //   21: ldc_w 258
@@ -279,15 +279,15 @@ public final class a
     //   58: invokevirtual 273	java/lang/Class:newInstance	()Ljava/lang/Object;
     //   61: astore 4
     //   63: aload 4
-    //   65: checkcast 275	com/tencent/mm/bx/a
+    //   65: checkcast 275	com/tencent/mm/bw/a
     //   68: aload_3
-    //   69: invokevirtual 279	com/tencent/mm/bx/a:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   69: invokevirtual 279	com/tencent/mm/bw/a:parseFrom	([B)Lcom/tencent/mm/bw/a;
     //   72: pop
     //   73: aload 4
-    //   75: checkcast 275	com/tencent/mm/bx/a
+    //   75: checkcast 275	com/tencent/mm/bw/a
     //   78: astore_3
     //   79: aload_3
-    //   80: checkcast 126	com/tencent/mm/protocal/protobuf/dch
+    //   80: checkcast 126	com/tencent/mm/protocal/protobuf/dhu
     //   83: astore 4
     //   85: aload 4
     //   87: astore_3
@@ -318,10 +318,10 @@ public final class a
     //   141: invokestatic 300	com/tencent/mm/plugin/brandservice/ui/timeline/preload/d:ae	(Landroid/content/Intent;)Ljava/lang/String;
     //   144: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   147: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   150: invokestatic 303	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   150: invokestatic 303	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   153: sipush 152
-    //   156: invokestatic 308	com/tencent/mm/plugin/webview/g/a:SW	(I)V
-    //   159: getstatic 314	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
+    //   156: invokestatic 308	com/tencent/mm/plugin/webview/g/a:Ve	(I)V
+    //   159: getstatic 314	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
     //   162: sipush 17260
     //   165: iconst_2
     //   166: anewarray 4	java/lang/Object
@@ -341,9 +341,9 @@ public final class a
     //   188: aload_3
     //   189: ifnull +244 -> 433
     //   192: aload_3
-    //   193: getfield 130	com/tencent/mm/protocal/protobuf/dch:nee	I
+    //   193: getfield 130	com/tencent/mm/protocal/protobuf/dhu:nGQ	I
     //   196: istore_1
-    //   197: getstatic 89	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:nia	Ljava/util/concurrent/ConcurrentHashMap;
+    //   197: getstatic 89	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:nKT	Ljava/util/concurrent/ConcurrentHashMap;
     //   200: iload_1
     //   201: invokestatic 196	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   204: invokevirtual 322	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
@@ -352,18 +352,18 @@ public final class a
     //   211: aload_3
     //   212: ifnull +191 -> 403
     //   215: aload_3
-    //   216: getstatic 325	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:nhl	I
-    //   219: invokevirtual 329	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:Ss	(I)Z
+    //   216: getstatic 325	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:nKd	I
+    //   219: invokevirtual 329	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:UA	(I)Z
     //   222: ifeq +145 -> 367
-    //   225: getstatic 89	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:nia	Ljava/util/concurrent/ConcurrentHashMap;
+    //   225: getstatic 89	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:nKT	Ljava/util/concurrent/ConcurrentHashMap;
     //   228: iload_1
     //   229: invokestatic 196	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   232: invokevirtual 332	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   235: pop
     //   236: aload_3
     //   237: aload_0
-    //   238: invokevirtual 335	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:an	(Landroid/content/Intent;)V
-    //   241: getstatic 91	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:nib	Ljava/util/concurrent/ConcurrentHashMap;
+    //   238: invokevirtual 335	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:ao	(Landroid/content/Intent;)V
+    //   241: getstatic 91	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:nKU	Ljava/util/concurrent/ConcurrentHashMap;
     //   244: iload_1
     //   245: invokestatic 196	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   248: invokevirtual 332	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
@@ -373,7 +373,7 @@ public final class a
     //   256: ifnull +7 -> 263
     //   259: aload_0
     //   260: invokevirtual 338	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:destroy	()V
-    //   263: getstatic 91	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:nib	Ljava/util/concurrent/ConcurrentHashMap;
+    //   263: getstatic 91	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:nKU	Ljava/util/concurrent/ConcurrentHashMap;
     //   266: checkcast 340	java/util/Map
     //   269: astore_0
     //   270: aload_3
@@ -395,10 +395,10 @@ public final class a
     //   306: ldc_w 350
     //   309: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   312: aload_3
-    //   313: invokevirtual 354	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:eiZ	()I
+    //   313: invokevirtual 354	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:eyt	()I
     //   316: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   319: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   322: invokestatic 356	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   322: invokestatic 356	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   325: ldc 251
     //   327: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   330: ldc 2
@@ -417,7 +417,7 @@ public final class a
     //   352: ldc_w 360
     //   355: iconst_0
     //   356: anewarray 4	java/lang/Object
-    //   359: invokestatic 364	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   359: invokestatic 364	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   362: aconst_null
     //   363: astore_3
     //   364: goto -285 -> 79
@@ -431,16 +431,16 @@ public final class a
     //   384: ldc_w 350
     //   387: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   390: aload_3
-    //   391: invokevirtual 354	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:eiZ	()I
+    //   391: invokevirtual 354	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController:eyt	()I
     //   394: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   397: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   400: invokestatic 218	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   400: invokestatic 218	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   403: getstatic 84	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/a:TAG	Ljava/lang/String;
     //   406: ldc_w 368
     //   409: iload_1
     //   410: invokestatic 373	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   413: invokevirtual 377	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   416: invokestatic 218	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   416: invokestatic 218	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   419: ldc 251
     //   421: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   424: goto -94 -> 330
@@ -488,10 +488,10 @@ public final class a
     //   433	438	427	finally
   }
   
-  public static final void bFl()
+  public static final void bMy()
   {
     AppMethodBeat.i(6929);
-    ys(-1);
+    zj(-1);
     AppMethodBeat.o(6929);
   }
   
@@ -501,24 +501,24 @@ public final class a
     {
       try
       {
-        AppMethodBeat.i(193335);
-        MpWebViewController localMpWebViewController = (MpWebViewController)nib.get(Integer.valueOf(paramInt));
+        AppMethodBeat.i(199138);
+        MpWebViewController localMpWebViewController = (MpWebViewController)nKU.get(Integer.valueOf(paramInt));
         if (localMpWebViewController != null)
         {
           k.h(paramIntent, "intent");
-          if (localMpWebViewController.Ss(localMpWebViewController.ALf))
+          if (localMpWebViewController.UA(localMpWebViewController.Cdw))
           {
             paramIntent = paramIntent.getStringExtra("rawUrl");
             k.g(paramIntent, "intent.getStringExtra(Co…antsUI.WebViewUI.KRawUrl)");
-            if (k.g(n.bb(paramIntent, "http://", "https://"), localMpWebViewController.bEx()))
+            if (k.g(n.bg(paramIntent, "http://", "https://"), localMpWebViewController.bLL()))
             {
               i = 1;
               if (i == 0) {
                 continue;
               }
-              ad.i(TAG, "pick started:" + paramInt + ", " + localMpWebViewController.eiZ());
-              nib.remove(Integer.valueOf(paramInt));
-              AppMethodBeat.o(193335);
+              ac.i(TAG, "pick started:" + paramInt + ", " + localMpWebViewController.eyt());
+              nKU.remove(Integer.valueOf(paramInt));
+              AppMethodBeat.o(199138);
               paramIntent = localMpWebViewController;
               return paramIntent;
             }
@@ -526,41 +526,41 @@ public final class a
           int i = 0;
           continue;
         }
-        paramIntent = (MpWebViewController)nia.get(Integer.valueOf(paramInt));
+        paramIntent = (MpWebViewController)nKT.get(Integer.valueOf(paramInt));
         if (paramIntent != null)
         {
-          if (paramIntent.Ss(MpWebViewController.nhl))
+          if (paramIntent.UA(MpWebViewController.nKd))
           {
-            nia.remove(Integer.valueOf(paramInt));
-            ad.i(TAG, "pick cached:" + paramInt + ", " + paramIntent.eiZ());
-            AppMethodBeat.o(193335);
+            nKT.remove(Integer.valueOf(paramInt));
+            ac.i(TAG, "pick cached:" + paramInt + ", " + paramIntent.eyt());
+            AppMethodBeat.o(199138);
             continue;
           }
-          ad.w(TAG, "pick null when tmpl not ready:" + paramInt + ", " + paramIntent.eiZ());
+          ac.w(TAG, "pick null when tmpl not ready:" + paramInt + ", " + paramIntent.eyt());
         }
       }
       finally {}
-      ad.w(TAG, "pick null:".concat(String.valueOf(paramInt)));
+      ac.w(TAG, "pick null:".concat(String.valueOf(paramInt)));
       paramIntent = null;
-      AppMethodBeat.o(193335);
+      AppMethodBeat.o(199138);
     }
   }
   
-  private static MMWebView ek(Context paramContext)
+  private static MMWebView es(Context paramContext)
   {
-    AppMethodBeat.i(193337);
-    WebView.c localc = MMWebView.HAC;
+    AppMethodBeat.i(199140);
+    WebView.c localc = MMWebView.JaZ;
     String str;
-    if (aj.cbe()) {
+    if (ai.cin()) {
       str = "mm";
     }
     for (;;)
     {
       WebView.initWebviewCore(paramContext, localc, str, null);
       paramContext = (MMWebView)new a(paramContext);
-      AppMethodBeat.o(193337);
+      AppMethodBeat.o(199140);
       return paramContext;
-      if (aj.eFK()) {
+      if (ai.eVe()) {
         str = "toolsmp";
       } else {
         str = "tools";
@@ -568,56 +568,56 @@ public final class a
     }
   }
   
-  public static void ys(int paramInt)
+  public static void zj(int paramInt)
   {
     AppMethodBeat.i(6930);
-    g.a locala = g.ndS;
-    if (g.a.bDH())
+    h.a locala = h.nGE;
+    if (h.a.bKU())
     {
       AppMethodBeat.o(6930);
       return;
     }
-    if (nic)
+    if (nKV)
     {
       AppMethodBeat.o(6930);
       return;
     }
-    ad.i(TAG, "tryPreloadTmplWebview:".concat(String.valueOf(paramInt)));
+    ac.i(TAG, "tryPreloadTmplWebview:".concat(String.valueOf(paramInt)));
     c.g((d.g.a.a)new c(paramInt));
     AppMethodBeat.o(6930);
   }
   
-  private final void yt(final int paramInt)
+  private final void zk(final int paramInt)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(6931);
-        ad.i(TAG, "[preloadWebViewInner]tmplParams: ".concat(String.valueOf(paramInt)));
-        Object localObject1 = b.yo(paramInt);
+        ac.i(TAG, "[preloadWebViewInner]tmplParams: ".concat(String.valueOf(paramInt)));
+        Object localObject1 = b.zf(paramInt);
         if (localObject1 == null) {
           break label208;
         }
-        if (!nia.containsKey(Integer.valueOf(paramInt)))
+        if (!nKT.containsKey(Integer.valueOf(paramInt)))
         {
-          localObject1 = a((dch)localObject1, new MutableContextWrapper(aj.getContext()));
+          localObject1 = a((dhu)localObject1, new MutableContextWrapper(ai.getContext()));
           if (localObject1 != null)
           {
-            ((Map)nia).put(Integer.valueOf(paramInt), localObject1);
-            Object localObject3 = MpWebViewController.nhv;
-            int i = MpWebViewController.bEQ();
+            ((Map)nKT).put(Integer.valueOf(paramInt), localObject1);
+            Object localObject3 = MpWebViewController.nKn;
+            int i = MpWebViewController.bMe();
             localObject3 = (d.g.a.a)new b((MpWebViewController)localObject1, paramInt);
             k.h(localObject3, "callback");
-            ((BaseWebViewController)localObject1).Sq(i).add(localObject3);
-            ad.i(TAG, "preload:" + paramInt + ", " + ((MpWebViewController)localObject1).eiZ());
+            ((BaseWebViewController)localObject1).Uy(i).add(localObject3);
+            ac.i(TAG, "preload:" + paramInt + ", " + ((MpWebViewController)localObject1).eyt());
             AppMethodBeat.o(6931);
             return;
           }
           AppMethodBeat.o(6931);
           continue;
         }
-        ad.i(TAG, "preload skip when exist:".concat(String.valueOf(paramInt)));
+        ac.i(TAG, "preload skip when exist:".concat(String.valueOf(paramInt)));
       }
       finally {}
       AppMethodBeat.o(6931);
@@ -627,51 +627,51 @@ public final class a
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewManager$MPWebView;", "Lcom/tencent/mm/ui/widget/MMWebView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "currentUrlProxy", "Lkotlin/Function0;", "", "getCurrentUrlProxy", "()Lkotlin/jvm/functions/Function0;", "setCurrentUrlProxy", "(Lkotlin/jvm/functions/Function0;)V", "getUrl", "plugin-brandservice_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewManager$MPWebView;", "Lcom/tencent/mm/ui/widget/MMWebView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "currentUrlProxy", "Lkotlin/Function0;", "", "getCurrentUrlProxy", "()Lkotlin/jvm/functions/Function0;", "setCurrentUrlProxy", "(Lkotlin/jvm/functions/Function0;)V", "getUrl", "plugin-brandservice_release"})
   public static final class a
     extends MMWebView
   {
-    private d.g.a.a<String> nif;
+    private d.g.a.a<String> nKY;
     
     public a(Context paramContext)
     {
       super();
-      AppMethodBeat.i(193330);
-      this.fFP = true;
+      AppMethodBeat.i(199133);
+      this.fJw = true;
       this.isX5Kernel = getIsX5Kernel();
-      AppMethodBeat.o(193330);
+      AppMethodBeat.o(199133);
     }
     
     public final d.g.a.a<String> getCurrentUrlProxy()
     {
-      return this.nif;
+      return this.nKY;
     }
     
     public final String getUrl()
     {
-      AppMethodBeat.i(193329);
-      if (this.nif != null)
+      AppMethodBeat.i(199132);
+      if (this.nKY != null)
       {
-        localObject = this.nif;
+        localObject = this.nKY;
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
         localObject = (String)((d.g.a.a)localObject).invoke();
-        AppMethodBeat.o(193329);
+        AppMethodBeat.o(199132);
         return localObject;
       }
       Object localObject = super.getUrl();
-      AppMethodBeat.o(193329);
+      AppMethodBeat.o(199132);
       return localObject;
     }
     
     public final void setCurrentUrlProxy(d.g.a.a<String> parama)
     {
-      this.nif = parama;
+      this.nKY = parama;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewManager$preloadWebViewInner$1$1$1", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewManager$$special$$inlined$also$lambda$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewManager$preloadWebViewInner$1$1$1", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewManager$$special$$inlined$also$lambda$1"})
   static final class b
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -682,7 +682,7 @@ public final class a
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -692,7 +692,7 @@ public final class a
       super();
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/kt/CommonKt$idle$1", "Landroid/os/MessageQueue$IdleHandler;", "queueIdle", "", "libktcomm_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/kt/CommonKt$idle$1", "Landroid/os/MessageQueue$IdleHandler;", "queueIdle", "", "libktcomm_release"})
     public static final class a
       implements MessageQueue.IdleHandler
     {
@@ -700,23 +700,23 @@ public final class a
       
       public final boolean queueIdle()
       {
-        AppMethodBeat.i(193332);
+        AppMethodBeat.i(199135);
         Looper.myQueue().removeIdleHandler((MessageQueue.IdleHandler)this);
-        if (this.nij.nii == -1)
+        if (this.nLc.nLb == -1)
         {
-          Object localObject = b.ngH;
-          localObject = b.bEq();
+          Object localObject = b.nJx;
+          localObject = b.bLE();
           int j = localObject.length;
           int i = 0;
           while (i < j)
           {
             int k = ((Number)localObject[i]).intValue();
-            a.a(a.nie, k);
+            a.a(a.nKX, k);
             i += 1;
           }
         }
-        a.a(a.nie, this.nij.nii);
-        AppMethodBeat.o(193332);
+        a.a(a.nKX, this.nLc.nLb);
+        AppMethodBeat.o(199135);
         return false;
       }
     }

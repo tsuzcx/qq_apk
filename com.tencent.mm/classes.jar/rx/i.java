@@ -3,10 +3,10 @@ package rx;
 public abstract class i<T>
   implements e<T>, j
 {
-  public final rx.internal.util.i KoC;
-  private final i<?> KoD;
-  private f KoE;
-  private long KoF = -9223372036854775808L;
+  public final rx.internal.util.i Mcl;
+  private final i<?> Mcm;
+  private f Mcn;
+  private long Mco = -9223372036854775808L;
   
   protected i()
   {
@@ -20,12 +20,43 @@ public abstract class i<T>
   
   private i(i<?> parami, boolean paramBoolean)
   {
-    this.KoD = parami;
+    this.Mcm = parami;
     if ((paramBoolean) && (parami != null)) {}
-    for (parami = parami.KoC;; parami = new rx.internal.util.i())
+    for (parami = parami.Mcl;; parami = new rx.internal.util.i())
     {
-      this.KoC = parami;
+      this.Mcl = parami;
       return;
+    }
+  }
+  
+  protected final void CI(long paramLong)
+  {
+    if (paramLong < 0L) {
+      throw new IllegalArgumentException("number requested cannot be negative: ".concat(String.valueOf(paramLong)));
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.Mcn != null)
+        {
+          f localf = this.Mcn;
+          localf.CI(paramLong);
+          return;
+        }
+        if (this.Mco == -9223372036854775808L)
+        {
+          this.Mco = paramLong;
+          return;
+        }
+      }
+      finally {}
+      paramLong = this.Mco + paramLong;
+      if (paramLong < 0L) {
+        this.Mco = 9223372036854775807L;
+      } else {
+        this.Mco = paramLong;
+      }
     }
   }
   
@@ -35,10 +66,10 @@ public abstract class i<T>
     long l;
     try
     {
-      l = this.KoF;
-      this.KoE = paramf;
+      l = this.Mco;
+      this.Mcn = paramf;
       int i = j;
-      if (this.KoD != null)
+      if (this.Mcm != null)
       {
         i = j;
         if (l == -9223372036854775808L) {
@@ -47,70 +78,39 @@ public abstract class i<T>
       }
       if (i != 0)
       {
-        this.KoD.a(this.KoE);
+        this.Mcm.a(this.Mcn);
         return;
       }
     }
     finally {}
     if (l == -9223372036854775808L)
     {
-      this.KoE.xU(9223372036854775807L);
+      this.Mcn.CI(9223372036854775807L);
       return;
     }
-    this.KoE.xU(l);
+    this.Mcn.CI(l);
   }
   
   public final void b(j paramj)
   {
-    this.KoC.b(paramj);
+    this.Mcl.b(paramj);
   }
   
-  public final void fNw()
+  public final void ggm()
   {
-    this.KoC.fNw();
+    this.Mcl.ggm();
   }
   
-  public final boolean fNx()
+  public final boolean ggn()
   {
-    return this.KoC.KrX;
+    return this.Mcl.MfG;
   }
   
   public void onStart() {}
-  
-  protected final void xU(long paramLong)
-  {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("number requested cannot be negative: ".concat(String.valueOf(paramLong)));
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.KoE != null)
-        {
-          f localf = this.KoE;
-          localf.xU(paramLong);
-          return;
-        }
-        if (this.KoF == -9223372036854775808L)
-        {
-          this.KoF = paramLong;
-          return;
-        }
-      }
-      finally {}
-      paramLong = this.KoF + paramLong;
-      if (paramLong < 0L) {
-        this.KoF = 9223372036854775807L;
-      } else {
-        this.KoF = paramLong;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.i
  * JD-Core Version:    0.7.0.1
  */

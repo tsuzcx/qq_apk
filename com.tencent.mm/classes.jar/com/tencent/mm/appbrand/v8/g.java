@@ -10,30 +10,30 @@ import java.util.concurrent.BlockingDeque;
 public final class g
   implements c
 {
-  private c.a cPg;
-  private final a cPh;
-  k cPi;
+  private c.a cMB;
+  private final a cMC;
+  k cMD;
   private final Looper mLooper;
   
   g(Looper paramLooper)
   {
     AppMethodBeat.i(144002);
-    this.cPg = null;
-    this.cPi = new k();
+    this.cMB = null;
+    this.cMD = new k();
     this.mLooper = paramLooper;
-    this.cPh = new a(paramLooper);
+    this.cMC = new a(paramLooper);
     AppMethodBeat.o(144002);
   }
   
-  public final String Br()
+  public final String AV()
   {
     AppMethodBeat.i(185101);
-    String str = (String)this.cPi.cPy.peek();
+    String str = (String)this.cMD.cMT.peek();
     AppMethodBeat.o(185101);
     return str;
   }
   
-  public final boolean LJ()
+  public final boolean LH()
   {
     AppMethodBeat.i(144004);
     if (this.mLooper.getThread().getId() == Thread.currentThread().getId())
@@ -47,28 +47,28 @@ public final class g
   
   public final void a(c.a parama)
   {
-    this.cPg = parama;
+    this.cMB = parama;
   }
   
   public final void b(Runnable paramRunnable, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(193481);
-    this.cPh.post(paramRunnable);
-    AppMethodBeat.o(193481);
+    AppMethodBeat.i(200807);
+    this.cMC.post(paramRunnable);
+    AppMethodBeat.o(200807);
   }
   
   final void c(V8ScriptException paramV8ScriptException)
   {
     AppMethodBeat.i(144008);
-    if (this.cPg != null) {
-      this.cPg.b(paramV8ScriptException);
+    if (this.cMB != null) {
+      this.cMB.b(paramV8ScriptException);
     }
     AppMethodBeat.o(144008);
   }
   
-  public final void cg(boolean paramBoolean)
+  public final void ci(boolean paramBoolean)
   {
-    this.cPi.enable = paramBoolean;
+    this.cMD.enable = paramBoolean;
   }
   
   public final void loop()
@@ -89,22 +89,22 @@ public final class g
   
   public final void resume() {}
   
-  public final void t(Runnable paramRunnable)
+  public final void u(Runnable paramRunnable)
   {
-    AppMethodBeat.i(193480);
+    AppMethodBeat.i(200806);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(193480);
+      AppMethodBeat.o(200806);
       return;
     }
     if (Thread.currentThread().getId() == this.mLooper.getThread().getId()) {
       try
       {
         paramRunnable.run();
-        if (this.cPi.enable) {
-          this.cPi.cPy.remove(null);
+        if (this.cMD.enable) {
+          this.cMD.cMT.remove(null);
         }
-        AppMethodBeat.o(193480);
+        AppMethodBeat.o(200806);
         return;
       }
       catch (V8ScriptException paramRunnable)
@@ -115,8 +115,8 @@ public final class g
         }
       }
     }
-    this.cPh.post(paramRunnable);
-    AppMethodBeat.o(193480);
+    this.cMC.post(paramRunnable);
+    AppMethodBeat.o(200806);
   }
   
   final class a
@@ -133,8 +133,8 @@ public final class g
       try
       {
         super.dispatchMessage(paramMessage);
-        if (g.this.cPi.enable) {
-          g.this.cPi.cPy.pollFirst();
+        if (g.this.cMD.enable) {
+          g.this.cMD.cMT.pollFirst();
         }
         AppMethodBeat.o(144001);
         return;
@@ -151,7 +151,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.g
  * JD-Core Version:    0.7.0.1
  */

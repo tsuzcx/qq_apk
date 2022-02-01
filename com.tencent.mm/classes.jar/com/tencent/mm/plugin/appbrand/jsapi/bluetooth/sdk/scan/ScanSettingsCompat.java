@@ -9,9 +9,9 @@ public class ScanSettingsCompat
   implements Parcelable
 {
   public static final Parcelable.Creator<ScanSettingsCompat> CREATOR;
-  final int jLu;
-  private final int jLv;
-  final long jLw;
+  final int klV;
+  private final int klW;
+  final long klX;
   
   static
   {
@@ -22,17 +22,17 @@ public class ScanSettingsCompat
   
   private ScanSettingsCompat(int paramInt, long paramLong)
   {
-    this.jLu = paramInt;
-    this.jLv = 1;
-    this.jLw = paramLong;
+    this.klV = paramInt;
+    this.klW = 1;
+    this.klX = paramLong;
   }
   
   private ScanSettingsCompat(Parcel paramParcel)
   {
     AppMethodBeat.i(144650);
-    this.jLu = paramParcel.readInt();
-    this.jLv = paramParcel.readInt();
-    this.jLw = paramParcel.readLong();
+    this.klV = paramParcel.readInt();
+    this.klW = paramParcel.readInt();
+    this.klX = paramParcel.readLong();
     AppMethodBeat.o(144650);
   }
   
@@ -44,27 +44,27 @@ public class ScanSettingsCompat
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(144651);
-    paramParcel.writeInt(this.jLu);
-    paramParcel.writeInt(this.jLv);
-    paramParcel.writeLong(this.jLw);
+    paramParcel.writeInt(this.klV);
+    paramParcel.writeInt(this.klW);
+    paramParcel.writeLong(this.klX);
     AppMethodBeat.o(144651);
   }
   
   public static final class a
   {
-    private int jLu = 0;
-    private final int jLv = 1;
-    private long jLw = 0L;
+    private int klV = 0;
+    private final int klW = 1;
+    private long klX = 0L;
     
-    public final ScanSettingsCompat aYX()
+    public final ScanSettingsCompat bfP()
     {
       AppMethodBeat.i(144649);
-      ScanSettingsCompat localScanSettingsCompat = new ScanSettingsCompat(this.jLu, this.jLw, (byte)0);
+      ScanSettingsCompat localScanSettingsCompat = new ScanSettingsCompat(this.klV, this.klX, (byte)0);
       AppMethodBeat.o(144649);
       return localScanSettingsCompat;
     }
     
-    public final a rD(int paramInt)
+    public final a ss(int paramInt)
     {
       AppMethodBeat.i(144648);
       if ((paramInt < 0) || (paramInt > 2))
@@ -73,7 +73,7 @@ public class ScanSettingsCompat
         AppMethodBeat.o(144648);
         throw localIllegalArgumentException;
       }
-      this.jLu = paramInt;
+      this.klV = paramInt;
       AppMethodBeat.o(144648);
       return this;
     }

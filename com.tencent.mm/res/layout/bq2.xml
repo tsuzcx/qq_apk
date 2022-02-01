@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.view.TouchableLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/hd1" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginTop="@dimen/ci" android:indeterminateDrawable="@drawable/a7e" />
-</FrameLayout>
+    <ListView android:id="@id/he9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:layout_gravity="center_horizontal" android:id="@id/bm5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cg" android:text="@string/dbp" style="@style/hn" />
+    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center_horizontal" android:id="@id/hqc" android:background="@drawable/zj" android:visibility="gone" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/cg" />
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/hss" android:paddingTop="@dimen/cg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cee" />
+</com.tencent.mm.view.TouchableLayout>

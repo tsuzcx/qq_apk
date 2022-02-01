@@ -6,7 +6,7 @@ public abstract interface s
   
   public abstract void onTransferStart();
   
-  public abstract void sc(int paramInt);
+  public abstract void sS(int paramInt);
 }
 
 

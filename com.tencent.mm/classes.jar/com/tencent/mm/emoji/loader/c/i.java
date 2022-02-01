@@ -1,18 +1,20 @@
 package com.tencent.mm.emoji.loader.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.emoji.a.m;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.b.k;
+import d.l;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"checkUseCdn", "", "fetcherType", "", "checkUseEncrypt", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "checkUseTpUrl", "checkUseWxam", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"checkUseCdn", "", "fetcherType", "", "checkUseEncrypt", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "checkUseTpUrl", "checkUseWxam", "plugin-emojisdk_release"})
 public final class i
 {
   public static final boolean h(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105444);
     k.h(paramEmojiInfo, "emojiInfo");
-    if (!bt.isNullOrNil(paramEmojiInfo.field_tpurl))
+    if (!bs.isNullOrNil(paramEmojiInfo.field_tpurl))
     {
       AppMethodBeat.o(105444);
       return true;
@@ -25,7 +27,7 @@ public final class i
   {
     AppMethodBeat.i(105445);
     k.h(paramEmojiInfo, "emojiInfo");
-    if ((com.tencent.mm.emoji.a.l.abx()) && (!bt.isNullOrNil(paramEmojiInfo.field_externUrl)) && (!bt.isNullOrNil(paramEmojiInfo.field_aeskey)))
+    if ((m.acw()) && (!bs.isNullOrNil(paramEmojiInfo.field_externUrl)) && (!bs.isNullOrNil(paramEmojiInfo.field_aeskey)))
     {
       AppMethodBeat.o(105445);
       return true;
@@ -38,7 +40,7 @@ public final class i
   {
     AppMethodBeat.i(105446);
     k.h(paramEmojiInfo, "emojiInfo");
-    if ((!bt.isNullOrNil(paramEmojiInfo.field_encrypturl)) && (!bt.isNullOrNil(paramEmojiInfo.field_aeskey)))
+    if ((!bs.isNullOrNil(paramEmojiInfo.field_encrypturl)) && (!bs.isNullOrNil(paramEmojiInfo.field_aeskey)))
     {
       AppMethodBeat.o(105446);
       return true;
@@ -49,7 +51,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.c.i
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,11 @@ import d.l;
 import java.util.Arrays;
 import java.util.Locale;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/magicbrush/FpsInfo;", "", "()V", "fps", "", "exceedFps", "(FF)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "lib-magicbrush-nano_release"})
+@l(fNY={1, 1, 13}, fNZ={""}, fOa={"Lcom/tencent/magicbrush/FpsInfo;", "", "()V", "fps", "", "exceedFps", "(FF)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "lib-magicbrush-nano_release"})
 public final class a
 {
-  public float coh = 0.0F;
-  public float coi = 0.0F;
+  public float clj = 0.0F;
+  public float clk = 0.0F;
   
   private a() {}
   
@@ -27,7 +27,7 @@ public final class a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((Float.compare(this.coh, paramObject.coh) != 0) || (Float.compare(this.coi, paramObject.coi) != 0)) {}
+        if ((Float.compare(this.clj, paramObject.clj) != 0) || (Float.compare(this.clk, paramObject.clk) != 0)) {}
       }
     }
     else
@@ -42,8 +42,8 @@ public final class a
   public final int hashCode()
   {
     AppMethodBeat.i(140078);
-    int i = Float.floatToIntBits(this.coh);
-    int j = Float.floatToIntBits(this.coi);
+    int i = Float.floatToIntBits(this.clj);
+    int j = Float.floatToIntBits(this.clk);
     AppMethodBeat.o(140078);
     return i * 31 + j;
   }
@@ -53,7 +53,7 @@ public final class a
     AppMethodBeat.i(140077);
     Object localObject = Locale.ENGLISH;
     k.g(localObject, "Locale.ENGLISH");
-    localObject = String.format((Locale)localObject, "fps(%.2f, %.2f)", Arrays.copyOf(new Object[] { Float.valueOf(this.coh), Float.valueOf(this.coi) }, 2));
+    localObject = String.format((Locale)localObject, "fps(%.2f, %.2f)", Arrays.copyOf(new Object[] { Float.valueOf(this.clj), Float.valueOf(this.clk) }, 2));
     k.g(localObject, "java.lang.String.format(locale, this, *args)");
     AppMethodBeat.o(140077);
     return localObject;
@@ -61,7 +61,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.a
  * JD-Core Version:    0.7.0.1
  */

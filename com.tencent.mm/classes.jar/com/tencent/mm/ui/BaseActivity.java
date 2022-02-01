@@ -31,32 +31,32 @@ import java.util.LinkedList;
 public abstract class BaseActivity
   extends AppCompatActivity
 {
-  private TextView FGF;
-  private View FGG;
-  private View FGH;
-  private int FGI = 0;
-  private WeImageView FGJ;
-  private WeImageView FGK;
-  private TextView FGL;
-  private MenuItem FGM;
-  private MenuItem FGN;
-  private int FGO;
-  private int FGP;
-  private c FGQ;
-  private a FGR = a.FHa;
-  private boolean FGS = false;
-  private int FGT;
-  private int FGU;
-  private LinkedList<b> FGV = new LinkedList();
+  private TextView HfN;
+  private View HfO;
+  private View HfP;
+  private int HfQ = 0;
+  private WeImageView HfR;
+  private WeImageView HfS;
+  private TextView HfT;
+  private MenuItem HfU;
+  private MenuItem HfV;
+  private int HfW;
+  private int HfX;
+  private c HfY;
+  private BaseActivity.a HfZ = BaseActivity.a.Hgi;
+  private boolean Hga = false;
+  private int Hgb;
+  private int Hgc;
+  private LinkedList<b> Hgd = new LinkedList();
   private View actionbarView;
-  private int bAg = this.FGT;
-  private ImageView lEt;
-  private TextView lWE;
+  private int bxO = this.Hgb;
   private ActionBar mActionBar;
   private Context mContext;
+  private ImageView mgn;
+  private TextView myG;
   private int theme;
   
-  private void a(final MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, int paramInt, a parama)
+  private void a(final MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, int paramInt, BaseActivity.a parama)
   {
     if (this.mActionBar == null) {
       return;
@@ -64,33 +64,33 @@ public abstract class BaseActivity
     if (paramOnMenuItemClickListener == null)
     {
       this.mActionBar.setDisplayHomeAsUpEnabled(false);
-      this.FGR = parama;
+      this.HfZ = parama;
       if (paramInt != 0) {
-        this.FGO = paramInt;
+        this.HfW = paramInt;
       }
-      if (this.FGR == a.FHc) {
-        this.FGO = 0;
+      if (this.HfZ == BaseActivity.a.Hgk) {
+        this.HfW = 0;
       }
-      if (this.FGR != a.FHa) {
+      if (this.HfZ != BaseActivity.a.Hgi) {
         break label141;
       }
-      this.FGO = 2131230842;
+      this.HfW = 2131230842;
     }
     for (;;)
     {
-      if ((this.lEt != null) && (this.FGO != 0))
+      if ((this.mgn != null) && (this.HfW != 0))
       {
-        ePi();
-        this.lEt.setImageResource(this.FGO);
+        feM();
+        this.mgn.setImageResource(this.HfW);
       }
-      ePm();
+      feQ();
       return;
       this.mActionBar.setDisplayHomeAsUpEnabled(false);
-      if (this.FGH == null) {
+      if (this.HfP == null) {
         break;
       }
-      this.FGH.setVisibility(0);
-      this.FGH.setOnClickListener(new View.OnClickListener()
+      this.HfP.setVisibility(0);
+      this.HfP.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -101,21 +101,21 @@ public abstract class BaseActivity
       });
       break;
       label141:
-      if (this.FGR == a.FHb) {
-        this.FGO = 2131230844;
+      if (this.HfZ == BaseActivity.a.Hgj) {
+        this.HfW = 2131230844;
       }
     }
   }
   
-  private void ePi()
+  private void feM()
   {
-    if (this.lEt == null) {
+    if (this.mgn == null) {
       return;
     }
-    this.lEt.setVisibility(0);
+    this.mgn.setVisibility(0);
   }
   
-  private void ePj()
+  private void feN()
   {
     View localView;
     int i;
@@ -123,7 +123,7 @@ public abstract class BaseActivity
     {
       localView = getWindow().getDecorView();
       i = localView.getSystemUiVisibility();
-      if (!this.FGS) {
+      if (!this.Hga) {
         break label40;
       }
       i &= 0xFFFFDFFF;
@@ -137,64 +137,64 @@ public abstract class BaseActivity
     }
   }
   
-  private void ePk()
+  private void feO()
   {
-    if (this.FGQ == c.FHl) {
-      if (this.FGL != null) {}
+    if (this.HfY == c.Hgt) {
+      if (this.HfT != null) {}
     }
     for (;;)
     {
       return;
-      if (this.FGS)
+      if (this.Hga)
       {
-        this.FGL.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+        this.HfT.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
         return;
       }
-      this.FGL.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
+      this.HfT.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
       return;
-      if (this.FGQ == c.FHn) {
-        this.FGP = 2131230841;
+      if (this.HfY == c.Hgv) {
+        this.HfX = 2131230841;
       }
-      while ((this.FGJ != null) && (this.FGP != 0))
+      while ((this.HfR != null) && (this.HfX != 0))
       {
-        this.FGJ.setImageResource(this.FGP);
-        if (!this.FGS) {
+        this.HfR.setImageResource(this.HfX);
+        if (!this.Hga) {
           break label166;
         }
-        this.FGJ.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+        this.HfR.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
         return;
-        if (this.FGQ == c.FHo) {
-          this.FGP = 2131230845;
-        } else if (this.FGQ == c.FHp) {
-          this.FGP = 2131230846;
+        if (this.HfY == c.Hgw) {
+          this.HfX = 2131230845;
+        } else if (this.HfY == c.Hgx) {
+          this.HfX = 2131230846;
         }
       }
     }
     label166:
-    this.FGJ.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+    this.HfR.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
   }
   
-  private void ePl()
+  private void feP()
   {
-    if (this.FGK == null) {
+    if (this.HfS == null) {
       return;
     }
-    if (this.FGS)
+    if (this.Hga)
     {
-      this.FGK.setImageResource(2131230854);
+      this.HfS.setImageResource(2131230854);
       return;
     }
-    this.FGK.setImageResource(2131230846);
+    this.HfS.setImageResource(2131230846);
   }
   
-  private void ePm()
+  private void feQ()
   {
-    if (this.FGS)
+    if (this.Hga)
     {
-      this.lEt.setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+      this.mgn.setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
       return;
     }
-    this.lEt.setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+    this.mgn.setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
   }
   
   public static void showVKB(Activity paramActivity)
@@ -215,49 +215,49 @@ public abstract class BaseActivity
   
   private void updateTitle()
   {
-    if (this.lWE == null) {
+    if (this.myG == null) {
       return;
     }
-    if (this.FGS)
+    if (this.Hga)
     {
-      this.lWE.setTextColor(this.mContext.getResources().getColor(2131099886));
+      this.myG.setTextColor(this.mContext.getResources().getColor(2131099886));
       return;
     }
-    this.lWE.setTextColor(this.mContext.getResources().getColor(2131099885));
+    this.myG.setTextColor(this.mContext.getResources().getColor(2131099885));
   }
   
   public final void a(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    a(paramOnMenuItemClickListener, 2131689492, a.FGZ);
+    a(paramOnMenuItemClickListener, 2131689492, BaseActivity.a.Hgh);
   }
   
   public final void a(String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, c paramc)
   {
     b localb = new b();
-    localb.FHe = 0;
-    localb.FHf = 0;
+    localb.Hgm = 0;
+    localb.Hgn = 0;
     localb.text = paramString;
-    localb.ioW = paramOnMenuItemClickListener;
-    localb.qhH = null;
-    localb.FHj = paramc;
-    if ((localb.FHf == 2131230845) && ((paramString == null) || (paramString.length() <= 0))) {
+    localb.iPc = paramOnMenuItemClickListener;
+    localb.qQj = null;
+    localb.Hgr = paramc;
+    if ((localb.Hgn == 2131230845) && ((paramString == null) || (paramString.length() <= 0))) {
       localb.text = getString(2131755127);
     }
-    int j = localb.FHe;
+    int j = localb.Hgm;
     int i = 0;
     for (;;)
     {
-      if (i < this.FGV.size())
+      if (i < this.Hgd.size())
       {
-        if (((b)this.FGV.get(i)).FHe == j)
+        if (((b)this.Hgd.get(i)).Hgm == j)
         {
           an.d("BaseActivity", "match menu, id ：" + j + ", remove it", new Object[0]);
-          this.FGV.remove(i);
+          this.Hgd.remove(i);
         }
       }
       else
       {
-        this.FGV.add(localb);
+        this.Hgd.add(localb);
         new Handler().postDelayed(new Runnable()
         {
           public final void run()
@@ -296,22 +296,22 @@ public abstract class BaseActivity
       if (this.mActionBar != null)
       {
         this.mActionBar.setLogo(new ColorDrawable(getResources().getColor(17170445)));
-        this.mActionBar.fM();
+        this.mActionBar.fU();
         this.mActionBar.setDisplayHomeAsUpEnabled(false);
-        this.mActionBar.fL();
-        this.mActionBar.fN();
+        this.mActionBar.fT();
+        this.mActionBar.fV();
         paramBundle = LayoutInflater.from(this).inflate(2131492926, null);
         this.mActionBar.setCustomView(paramBundle);
-        if (this.FGI == 0) {
-          this.FGI = ao.aD(this.mContext, 2130968653);
+        if (this.HfQ == 0) {
+          this.HfQ = ao.aJ(this.mContext, 2130968653);
         }
-        this.FGS = am.XC(this.FGI);
-        this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.FGI));
-        this.lWE = ((TextView)findViewById(16908308));
-        this.FGF = ((TextView)findViewById(16908309));
-        this.FGG = findViewById(2131305937);
-        this.FGH = findViewById(2131296416);
-        this.lEt = ((ImageView)findViewById(2131296417));
+        this.Hga = am.ZN(this.HfQ);
+        this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.HfQ));
+        this.myG = ((TextView)findViewById(16908308));
+        this.HfN = ((TextView)findViewById(16908309));
+        this.HfO = findViewById(2131305937);
+        this.HfP = findViewById(2131296416);
+        this.mgn = ((ImageView)findViewById(2131296417));
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -323,18 +323,18 @@ public abstract class BaseActivity
           }
         });
       }
-      this.FGT = ao.ap(this.mContext, 2131165252);
-      this.FGU = ao.ap(this.mContext, 2131165559);
+      this.Hgb = ao.av(this.mContext, 2131165252);
+      this.Hgc = ao.av(this.mContext, 2131165559);
       if (Build.VERSION.SDK_INT >= 21)
       {
-        if (this.FGI == 0) {
-          this.FGI = ao.aD(this.mContext, 2130968653);
+        if (this.HfQ == 0) {
+          this.HfQ = ao.aJ(this.mContext, 2130968653);
         }
         paramBundle = getWindow();
         paramBundle.clearFlags(201326592);
         paramBundle.addFlags(-2147483648);
-        paramBundle.setStatusBarColor(this.FGI);
-        ePj();
+        paramBundle.setStatusBarColor(this.HfQ);
+        feN();
       }
       return;
       this.theme = 2131821548;
@@ -345,23 +345,23 @@ public abstract class BaseActivity
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    an.d("BaseActivity", "on create option menu, menuCache size:%d", new Object[] { Integer.valueOf(this.FGV.size()) });
-    if ((this.mActionBar == null) || (this.FGV.size() == 0)) {
-      an.w("BaseActivity", "error, mActionBar is null or cache size:%d", new Object[] { Integer.valueOf(this.FGV.size()) });
+    an.d("BaseActivity", "on create option menu, menuCache size:%d", new Object[] { Integer.valueOf(this.Hgd.size()) });
+    if ((this.mActionBar == null) || (this.Hgd.size() == 0)) {
+      an.w("BaseActivity", "error, mActionBar is null or cache size:%d", new Object[] { Integer.valueOf(this.Hgd.size()) });
     }
     for (int i = 0; i != 0; i = 1)
     {
       return true;
-      Iterator localIterator = this.FGV.iterator();
+      Iterator localIterator = this.Hgd.iterator();
       while (localIterator.hasNext())
       {
         final b localb = (b)localIterator.next();
-        if (localb.FHe != 16908332)
+        if (localb.Hgm != 16908332)
         {
           Object localObject;
-          if (localb.FHj == c.FHp)
+          if (localb.Hgr == c.Hgx)
           {
-            this.FGM = paramMenu.add(0, localb.FHe, 0, localb.text);
+            this.HfU = paramMenu.add(0, localb.Hgm, 0, localb.text);
             localObject = new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
@@ -371,21 +371,21 @@ public abstract class BaseActivity
                 AppMethodBeat.o(159088);
               }
             };
-            if (localb.FHi == null) {
-              localb.FHi = View.inflate(this.mContext, 2131492920, null);
+            if (localb.Hgq == null) {
+              localb.Hgq = View.inflate(this.mContext, 2131492920, null);
             }
-            this.FGK = ((WeImageView)localb.FHi.findViewById(2131296376));
-            this.FGK.setVisibility(0);
-            ePl();
-            this.FGK.setOnClickListener((View.OnClickListener)localObject);
-            this.FGK.setEnabled(localb.enable);
-            this.FGM.setActionView(localb.FHi);
-            this.FGM.setEnabled(localb.enable);
-            this.FGM.setVisible(localb.visible);
+            this.HfS = ((WeImageView)localb.Hgq.findViewById(2131296376));
+            this.HfS.setVisibility(0);
+            feP();
+            this.HfS.setOnClickListener((View.OnClickListener)localObject);
+            this.HfS.setEnabled(localb.enable);
+            this.HfU.setActionView(localb.Hgq);
+            this.HfU.setEnabled(localb.enable);
+            this.HfU.setVisible(localb.visible);
           }
           else
           {
-            this.FGN = paramMenu.add(0, localb.FHe, 0, localb.text);
+            this.HfV = paramMenu.add(0, localb.Hgm, 0, localb.text);
             localObject = new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
@@ -405,61 +405,61 @@ public abstract class BaseActivity
                 return bool;
               }
             };
-            this.FGQ = localb.FHj;
-            if ((localb.FHj == c.FHm) || (localb.FHj == c.FHl))
+            this.HfY = localb.Hgr;
+            if ((localb.Hgr == c.Hgu) || (localb.Hgr == c.Hgt))
             {
-              if (localb.FHg == null) {
-                localb.FHg = View.inflate(this.mContext, 2131492920, null);
+              if (localb.Hgo == null) {
+                localb.Hgo = View.inflate(this.mContext, 2131492920, null);
               }
-              this.FGL = ((TextView)localb.FHg.findViewById(2131296377));
-              this.FGL.setVisibility(0);
-              this.FGL.setText(localb.text);
-              if (localb.FHj == c.FHm)
+              this.HfT = ((TextView)localb.Hgo.findViewById(2131296377));
+              this.HfT.setVisibility(0);
+              this.HfT.setText(localb.text);
+              if (localb.Hgr == c.Hgu)
               {
-                this.FGL.setTextColor(this.mContext.getResources().getColorStateList(2131100038));
+                this.HfT.setTextColor(this.mContext.getResources().getColorStateList(2131100038));
                 label454:
-                this.FGL.setOnClickListener((View.OnClickListener)localObject);
-                this.FGL.setOnLongClickListener(local5);
-                this.FGL.setEnabled(localb.enable);
-                this.FGN.setActionView(localb.FHg);
+                this.HfT.setOnClickListener((View.OnClickListener)localObject);
+                this.HfT.setOnLongClickListener(local5);
+                this.HfT.setEnabled(localb.enable);
+                this.HfV.setActionView(localb.Hgo);
               }
             }
             for (;;)
             {
-              this.FGN.setEnabled(localb.enable);
-              this.FGN.setVisible(localb.visible);
-              if (this.FGN == null) {
+              this.HfV.setEnabled(localb.enable);
+              this.HfV.setVisible(localb.visible);
+              if (this.HfV == null) {
                 break;
               }
-              this.FGN.setShowAsAction(2);
+              this.HfV.setShowAsAction(2);
               break;
-              ePk();
+              feO();
               break label454;
-              if (localb.FHf != 0) {
-                this.FGP = localb.FHf;
+              if (localb.Hgn != 0) {
+                this.HfX = localb.Hgn;
               }
-              if (localb.FHj == c.FHq) {
-                this.FGP = 0;
+              if (localb.Hgr == c.Hgy) {
+                this.HfX = 0;
               }
-              if (localb.FHh == null) {
-                localb.FHh = View.inflate(this.mContext, 2131492920, null);
+              if (localb.Hgp == null) {
+                localb.Hgp = View.inflate(this.mContext, 2131492920, null);
               }
-              this.FGJ = ((WeImageView)localb.FHh.findViewById(2131296376));
-              ePk();
-              if (this.FGP != 0)
+              this.HfR = ((WeImageView)localb.Hgp.findViewById(2131296376));
+              feO();
+              if (this.HfX != 0)
               {
-                this.FGJ.setVisibility(0);
-                this.FGJ.setOnClickListener((View.OnClickListener)localObject);
-                this.FGJ.setOnLongClickListener(local5);
-                this.FGJ.setEnabled(localb.enable);
-                this.FGN.setActionView(localb.FHh);
+                this.HfR.setVisibility(0);
+                this.HfR.setOnClickListener((View.OnClickListener)localObject);
+                this.HfR.setOnLongClickListener(local5);
+                this.HfR.setEnabled(localb.enable);
+                this.HfV.setActionView(localb.Hgp);
               }
             }
           }
         }
       }
-      if (this.FGM != null) {
-        this.FGM.setShowAsAction(2);
+      if (this.HfU != null) {
+        this.HfU.setShowAsAction(2);
       }
     }
     return super.onCreateOptionsMenu(paramMenu);
@@ -473,10 +473,10 @@ public abstract class BaseActivity
   
   public final void removeAllOptionMenu()
   {
-    if (this.FGV.isEmpty()) {
+    if (this.Hgd.isEmpty()) {
       return;
     }
-    this.FGV.clear();
+    this.Hgd.clear();
     supportInvalidateOptionsMenu();
   }
   
@@ -485,73 +485,57 @@ public abstract class BaseActivity
     if (this.mActionBar == null) {
       return;
     }
-    this.FGI = paramInt;
-    this.FGS = am.XC(this.FGI);
-    this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.FGI));
+    this.HfQ = paramInt;
+    this.Hga = am.ZN(this.HfQ);
+    this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.HfQ));
     if (Build.VERSION.SDK_INT >= 21) {
-      getWindow().setStatusBarColor(this.FGI);
+      getWindow().setStatusBarColor(this.HfQ);
     }
-    ePj();
-    ePm();
-    ePk();
+    feN();
+    feQ();
+    feO();
     updateTitle();
-    if (this.FGF != null)
+    if (this.HfN != null)
     {
-      if (!this.FGS) {
+      if (!this.Hga) {
         break label116;
       }
-      this.FGF.setTextColor(this.mContext.getResources().getColor(2131099883));
+      this.HfN.setTextColor(this.mContext.getResources().getColor(2131099883));
     }
     for (;;)
     {
-      ePl();
+      feP();
       return;
       label116:
-      this.FGF.setTextColor(this.mContext.getResources().getColor(2131099882));
+      this.HfN.setTextColor(this.mContext.getResources().getColor(2131099882));
     }
   }
   
   public final void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    a(paramOnMenuItemClickListener, 0, a.FHa);
+    a(paramOnMenuItemClickListener, 0, BaseActivity.a.Hgi);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if ((this.mActionBar == null) || (this.lWE == null)) {
+    if ((this.mActionBar == null) || (this.myG == null)) {
       return;
     }
-    this.lWE.setText(paramCharSequence.toString());
+    this.myG.setText(paramCharSequence.toString());
     updateTitle();
-  }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(159094);
-      FGZ = new a("CUSTOM", 0);
-      FHa = new a("BACK", 1);
-      FHb = new a("CLOSE", 2);
-      FHc = new a("NONE", 3);
-      FHd = new a[] { FGZ, FHa, FHb, FHc };
-      AppMethodBeat.o(159094);
-    }
-    
-    private a() {}
   }
   
   public static final class b
   {
-    int FHe = -1;
-    int FHf;
-    View FHg;
-    View FHh;
-    View FHi;
-    BaseActivity.c FHj = BaseActivity.c.FHk;
+    int Hgm = -1;
+    int Hgn;
+    View Hgo;
+    View Hgp;
+    View Hgq;
+    BaseActivity.c Hgr = BaseActivity.c.Hgs;
     boolean enable = true;
-    MenuItem.OnMenuItemClickListener ioW;
-    View.OnLongClickListener qhH;
+    MenuItem.OnMenuItemClickListener iPc;
+    View.OnLongClickListener qQj;
     String text;
     boolean visible = true;
   }
@@ -561,14 +545,14 @@ public abstract class BaseActivity
     static
     {
       AppMethodBeat.i(159097);
-      FHk = new c("CUSTOM", 0);
-      FHl = new c("TEXT", 1);
-      FHm = new c("GREEN_TEXT", 2);
-      FHn = new c("ADD", 3);
-      FHo = new c("MORE", 4);
-      FHp = new c("SEARCH", 5);
-      FHq = new c("NONE", 6);
-      FHr = new c[] { FHk, FHl, FHm, FHn, FHo, FHp, FHq };
+      Hgs = new c("CUSTOM", 0);
+      Hgt = new c("TEXT", 1);
+      Hgu = new c("GREEN_TEXT", 2);
+      Hgv = new c("ADD", 3);
+      Hgw = new c("MORE", 4);
+      Hgx = new c("SEARCH", 5);
+      Hgy = new c("NONE", 6);
+      Hgz = new c[] { Hgs, Hgt, Hgu, Hgv, Hgw, Hgx, Hgy };
       AppMethodBeat.o(159097);
     }
     
@@ -577,7 +561,7 @@ public abstract class BaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.BaseActivity
  * JD-Core Version:    0.7.0.1
  */

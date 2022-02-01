@@ -4,7 +4,7 @@ import android.util.ArrayMap;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.a.a;
 import d.g.a.b;
 import d.g.b.k;
@@ -19,42 +19,42 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimePkgMergeDirReader;", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "closed", "", "filesMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader$FileEntry;", "filesMapInitialized", "hostWxaAppId", "kotlin.jvm.PlatformType", "lock", "Ljava/util/concurrent/locks/ReentrantReadWriteLock;", "modulesMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appcache/ModulePkgInfo;", "pkgWrappingInfo", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;", "pkgsMap", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg;", "canAccessFile", "reqURL", "close", "", "findAppropriateModuleInfo", "resourcePath", "getMainPkgInfo", "", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info;", "getModuleList", "guardedMergeModule", "module", "guardedMergePlugin", "hostModule", "plugin", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPluginPkgInfo;", "guardedObtainPkgInstance", "name", "lazyCreator", "Lkotlin/Function0;", "listAllFilenames", "mergeNewComingPkgList", "_pkgList", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "openReadPartialInfo", "openReadStream", "Ljava/io/InputStream;", "refreshModuleList", "requireRead", "T", "block", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "requireWrite", "openRead", "toFileEntry", "wxaPkg", "Companion", "luggage-wechat-full-sdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimePkgMergeDirReader;", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "closed", "", "filesMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader$FileEntry;", "filesMapInitialized", "hostWxaAppId", "kotlin.jvm.PlatformType", "lock", "Ljava/util/concurrent/locks/ReentrantReadWriteLock;", "modulesMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appcache/ModulePkgInfo;", "pkgWrappingInfo", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;", "pkgsMap", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg;", "canAccessFile", "reqURL", "close", "", "findAppropriateModuleInfo", "resourcePath", "getMainPkgInfo", "", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info;", "getModuleList", "guardedMergeModule", "module", "guardedMergePlugin", "hostModule", "plugin", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPluginPkgInfo;", "guardedObtainPkgInstance", "name", "lazyCreator", "Lkotlin/Function0;", "listAllFilenames", "mergeNewComingPkgList", "_pkgList", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "openReadPartialInfo", "openReadStream", "Ljava/io/InputStream;", "refreshModuleList", "requireRead", "T", "block", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "requireWrite", "openRead", "toFileEntry", "wxaPkg", "Companion", "luggage-wechat-full-sdk_release"})
 public final class bl
   implements q
 {
-  public static final a iPj;
+  public static final a jpt;
   public volatile boolean closed;
-  private final String iPd;
-  private final WxaPkgWrappingInfo iPe;
-  private ArrayMap<String, ModulePkgInfo> iPf;
-  private final ConcurrentHashMap<String, WxaPkg> iPg;
-  private final ConcurrentHashMap<String, q.a> iPh;
-  private boolean iPi;
+  private final String jpn;
+  private final WxaPkgWrappingInfo jpo;
+  private ArrayMap<String, ModulePkgInfo> jpp;
+  private final ConcurrentHashMap<String, WxaPkg> jpq;
+  private final ConcurrentHashMap<String, q.a> jpr;
+  private boolean jps;
   private final ReentrantReadWriteLock lock;
   
   static
   {
     AppMethodBeat.i(183032);
-    iPj = new a((byte)0);
+    jpt = new a((byte)0);
     AppMethodBeat.o(183032);
   }
   
   public bl(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(183031);
-    this.iPd = paramAppBrandRuntime.getAppId();
+    this.jpn = paramAppBrandRuntime.getAppId();
     paramAppBrandRuntime = paramAppBrandRuntime.c(AppBrandSysConfigLU.class, false);
     if (paramAppBrandRuntime == null) {
-      k.fvU();
+      k.fOy();
     }
-    paramAppBrandRuntime = ((AppBrandSysConfigLU)paramAppBrandRuntime).jdS;
+    paramAppBrandRuntime = ((AppBrandSysConfigLU)paramAppBrandRuntime).jEg;
     if (paramAppBrandRuntime == null) {
-      k.fvU();
+      k.fOy();
     }
-    this.iPe = paramAppBrandRuntime;
-    this.iPg = new ConcurrentHashMap();
-    this.iPh = new ConcurrentHashMap(100);
+    this.jpo = paramAppBrandRuntime;
+    this.jpq = new ConcurrentHashMap();
+    this.jpr = new ConcurrentHashMap(100);
     this.lock = new ReentrantReadWriteLock();
     AppMethodBeat.o(183031);
   }
@@ -71,38 +71,38 @@ public final class bl
   {
     AppMethodBeat.i(183030);
     q.a locala = new q.a();
-    locala.iLP = paramWxaPkg;
-    locala.iLQ = paramWxaPkg.aQf();
+    locala.jlW = paramWxaPkg;
+    locala.jlX = paramWxaPkg.aWX();
     locala.fileName = paramInfo.fileName;
-    locala.iLR = paramInfo.iLR;
-    locala.iLS = paramInfo.iLS;
+    locala.jlY = paramInfo.jlY;
+    locala.jlZ = paramInfo.jlZ;
     AppMethodBeat.o(183030);
     return locala;
   }
   
-  private final WxaPkg d(String paramString, a<WxaPkg> parama)
+  private final WxaPkg h(String paramString, a<WxaPkg> parama)
   {
-    AppMethodBeat.i(186855);
-    WxaPkg localWxaPkg2 = (WxaPkg)this.iPg.get(paramString);
+    AppMethodBeat.i(206209);
+    WxaPkg localWxaPkg2 = (WxaPkg)this.jpq.get(paramString);
     WxaPkg localWxaPkg1 = localWxaPkg2;
     if (localWxaPkg2 == null)
     {
       parama = (WxaPkg)parama.invoke();
       if (parama != null)
       {
-        parama.aPe();
-        ad.i("Luggage.FULL.WxaRuntimePkgMergeDirReader", "guardedObtainPkgInstance, appId:" + this.iPd + ", name:" + paramString + ", pkgInnerVersion:" + parama.version());
-        ((Map)this.iPg).put(paramString, parama);
-        AppMethodBeat.o(186855);
+        parama.aVW();
+        ac.i("Luggage.FULL.WxaRuntimePkgMergeDirReader", "guardedObtainPkgInstance, appId:" + this.jpn + ", name:" + paramString + ", pkgInnerVersion:" + parama.version());
+        ((Map)this.jpq).put(paramString, parama);
+        AppMethodBeat.o(206209);
         return parama;
       }
       localWxaPkg1 = null;
     }
-    AppMethodBeat.o(186855);
+    AppMethodBeat.o(206209);
     return localWxaPkg1;
   }
   
-  private final <T> T m(a<? extends T> parama)
+  private final <T> T q(a<? extends T> parama)
   {
     AppMethodBeat.i(183019);
     this.lock.readLock().lock();
@@ -112,7 +112,7 @@ public final class bl
     return parama;
   }
   
-  public final WxaPkg DO(final String paramString)
+  public final WxaPkg HR(final String paramString)
   {
     AppMethodBeat.i(183022);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -122,18 +122,18 @@ public final class bl
       AppMethodBeat.o(183022);
       return null;
     }
-    paramString = (WxaPkg)m((a)new c(this, paramString));
+    paramString = (WxaPkg)q((a)new c(this, paramString));
     AppMethodBeat.o(183022);
     return paramString;
   }
   
-  public final InputStream DP(String paramString)
+  public final InputStream HS(String paramString)
   {
     AppMethodBeat.i(183025);
-    paramString = DQ(paramString);
+    paramString = HT(paramString);
     if (paramString != null)
     {
-      paramString = paramString.iLP.DM(paramString.fileName);
+      paramString = paramString.jlW.HP(paramString.fileName);
       AppMethodBeat.o(183025);
       return paramString;
     }
@@ -141,7 +141,7 @@ public final class bl
     return null;
   }
   
-  public final q.a DQ(final String paramString)
+  public final q.a HT(final String paramString)
   {
     AppMethodBeat.i(183026);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -151,15 +151,15 @@ public final class bl
       AppMethodBeat.o(183026);
       return null;
     }
-    paramString = (q.a)m((a)new k(this, paramString));
+    paramString = (q.a)q((a)new k(this, paramString));
     AppMethodBeat.o(183026);
     return paramString;
   }
   
-  public final boolean DR(String paramString)
+  public final boolean HU(String paramString)
   {
     AppMethodBeat.i(183023);
-    if (DQ(paramString) != null)
+    if (HT(paramString) != null)
     {
       AppMethodBeat.o(183023);
       return true;
@@ -168,54 +168,54 @@ public final class bl
     return false;
   }
   
-  public final List<String> aPA()
-  {
-    AppMethodBeat.i(186856);
-    List localList = (List)m((a)new i(this));
-    AppMethodBeat.o(186856);
-    return localList;
-  }
-  
-  public final List<WxaPkg.Info> aPx()
+  public final List<WxaPkg.Info> aWp()
   {
     AppMethodBeat.i(183024);
-    List localList = (List)m((a)new d(this));
+    List localList = (List)q((a)new d(this));
     AppMethodBeat.o(183024);
     return localList;
   }
   
-  public final void aPy()
+  public final void aWq()
   {
     AppMethodBeat.i(183021);
-    if (this.iPi)
+    if (this.jps)
     {
       AppMethodBeat.o(183021);
       return;
     }
-    l((a)new l(this));
-    this.iPi = true;
+    p((a)new l(this));
+    this.jps = true;
     AppMethodBeat.o(183021);
   }
   
-  public final List<ModulePkgInfo> aPz()
+  public final List<ModulePkgInfo> aWr()
   {
     AppMethodBeat.i(183028);
-    Object localObject = this.iPe.iOT;
+    Object localObject = this.jpo.jpd;
     k.g(localObject, "pkgWrappingInfo.moduleList");
     localObject = (List)localObject;
     AppMethodBeat.o(183028);
     return localObject;
   }
   
+  public final List<String> aWs()
+  {
+    AppMethodBeat.i(206210);
+    List localList = (List)q((a)new i(this));
+    AppMethodBeat.o(206210);
+    return localList;
+  }
+  
   public final void close()
   {
     AppMethodBeat.i(183027);
-    l((a)new b(this));
+    p((a)new b(this));
     this.closed = true;
     AppMethodBeat.o(183027);
   }
   
-  public final <T> T l(a<? extends T> parama)
+  public final <T> T p(a<? extends T> parama)
   {
     AppMethodBeat.i(183018);
     this.lock.writeLock().lock();
@@ -225,7 +225,7 @@ public final class bl
     return parama;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimePkgMergeDirReader$Companion;", "", "()V", "TAG", "", "getPluginFileAccessPrefixMergedWithModule", "hostModule", "plugin", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPluginPkgInfo;", "getMergeDirReader", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimePkgMergeDirReader;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "realPrefixForRuntimeAccess", "luggage-wechat-full-sdk_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimePkgMergeDirReader$Companion;", "", "()V", "TAG", "", "getPluginFileAccessPrefixMergedWithModule", "hostModule", "plugin", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPluginPkgInfo;", "getMergeDirReader", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimePkgMergeDirReader;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "realPrefixForRuntimeAccess", "luggage-wechat-full-sdk_release"})
   public static final class a
   {
     public static bl V(AppBrandRuntime paramAppBrandRuntime)
@@ -239,7 +239,7 @@ public final class bl
       }
       paramAppBrandRuntime = (be)paramAppBrandRuntime;
       if (paramAppBrandRuntime != null) {}
-      for (paramAppBrandRuntime = paramAppBrandRuntime.aQw();; paramAppBrandRuntime = null)
+      for (paramAppBrandRuntime = paramAppBrandRuntime.aXo();; paramAppBrandRuntime = null)
       {
         localObject = paramAppBrandRuntime;
         if (!(paramAppBrandRuntime instanceof bl)) {
@@ -291,7 +291,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.l
     implements a<y>
@@ -302,7 +302,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg;", "invoke"})
   static final class c
     extends d.g.b.l
     implements a<WxaPkg>
@@ -313,7 +313,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info;", "kotlin.jvm.PlatformType", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg$Info;", "kotlin.jvm.PlatformType", "", "invoke"})
   static final class d
     extends d.g.b.l
     implements a<List<WxaPkg.Info>>
@@ -324,7 +324,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader$FileEntry;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader$FileEntry;", "invoke"})
   static final class e
     extends d.g.b.l
     implements b<q.a, y>
@@ -335,7 +335,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg;", "invoke"})
   static final class f
     extends d.g.b.l
     implements a<WxaPkg>
@@ -346,7 +346,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader$FileEntry;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader$FileEntry;", "invoke"})
   static final class g
     extends d.g.b.l
     implements b<q.a, y>
@@ -357,7 +357,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg;", "invoke"})
   static final class h
     extends d.g.b.l
     implements a<WxaPkg>
@@ -368,7 +368,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
   static final class i
     extends d.g.b.l
     implements a<LinkedList<String>>
@@ -379,7 +379,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   public static final class j
     extends d.g.b.l
     implements a<y>
@@ -390,7 +390,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader$FileEntry;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader$FileEntry;", "invoke"})
   static final class k
     extends d.g.b.l
     implements a<q.a>
@@ -401,7 +401,7 @@ public final class bl
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class l
     extends d.g.b.l
     implements a<y>
@@ -414,7 +414,7 @@ public final class bl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bl
  * JD-Core Version:    0.7.0.1
  */

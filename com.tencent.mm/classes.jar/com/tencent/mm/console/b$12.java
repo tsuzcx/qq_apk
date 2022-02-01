@@ -14,7 +14,7 @@ final class b$12
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(20125);
-    ((ClipboardManager)this.fHE.getSystemService("clipboard")).setText(this.fHG);
+    ((ClipboardManager)this.fLk.getSystemService("clipboard")).setText(this.fLm);
     AppMethodBeat.o(20125);
   }
 }

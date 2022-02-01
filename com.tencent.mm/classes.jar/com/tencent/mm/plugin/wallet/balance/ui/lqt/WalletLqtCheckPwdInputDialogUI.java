@@ -7,14 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.secinforeport.a.d;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
 import com.tencent.mm.plugin.wallet_core.ui.cashier.WcPayCashierDialog;
 import com.tencent.mm.plugin.wallet_core.ui.cashier.WcPayCashierDialog.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -24,21 +24,21 @@ import com.tencent.mm.wallet_core.ui.e;
 public class WalletLqtCheckPwdInputDialogUI
   extends WalletBaseUI
 {
+  private String AXY;
+  private String AYp = "";
+  private WcPayCashierDialog AYq;
   private String mTitle = "";
-  private String zFL;
-  private String zGc = "";
-  private WcPayCashierDialog zGd;
   
   private void showDialog()
   {
     AppMethodBeat.i(68785);
-    if ((this.zGd != null) && (this.zGd.isShowing())) {
-      this.zGd.dismiss();
+    if ((this.AYq != null) && (this.AYq.isShowing())) {
+      this.AYq.dismiss();
     }
-    this.zGc = e.E(bt.getDouble(this.zGc, 0.0D));
-    this.zGd = new WcPayCashierDialog(getContext());
-    this.zGd.a(this.mTitle, this.zGc, "", null);
-    this.zGd.Asv = new WcPayCashierDialog.a()
+    this.AYp = e.D(bs.getDouble(this.AYp, 0.0D));
+    this.AYq = new WcPayCashierDialog(getContext());
+    this.AYq.a(this.mTitle, this.AYp, "", null);
+    this.AYq.BKP = new WcPayCashierDialog.a()
     {
       public final void a(String paramAnonymousString, FavorPayInfo paramAnonymousFavorPayInfo, Bankcard paramAnonymousBankcard)
       {
@@ -51,18 +51,18 @@ public class WalletLqtCheckPwdInputDialogUI
         AppMethodBeat.o(68782);
       }
       
-      public final void dYS() {}
+      public final void eoo() {}
       
       public final void onCancel()
       {
         AppMethodBeat.i(68783);
-        ad.i("MicroMsg.WalletLqtCheckPwdInputDialogUI", "hy: dialog cancel. finish");
+        ac.i("MicroMsg.WalletLqtCheckPwdInputDialogUI", "hy: dialog cancel. finish");
         WalletLqtCheckPwdInputDialogUI.this.finish();
         AppMethodBeat.o(68783);
       }
     };
-    this.zGd.show();
-    addDialog(this.zGd);
+    this.AYq.show();
+    addDialog(this.AYq);
     AppMethodBeat.o(68785);
   }
   
@@ -93,10 +93,10 @@ public class WalletLqtCheckPwdInputDialogUI
     super.onCreate(paramBundle);
     setContentViewVisibility(4);
     this.mTitle = getIntent().getStringExtra("lqt_fetch_pwd_title");
-    this.zGc = getIntent().getStringExtra("lqt_fetch_pwd_money");
-    this.zFL = getIntent().getStringExtra("lqt_redeem_listid");
-    ad.i("MicroMsg.WalletLqtCheckPwdInputDialogUI", "hy: money : %s, title : %s, redeemListId: %s", new Object[] { bt.nullAsNil(this.zGc), bt.nullAsNil(this.mTitle), this.zFL });
-    if ((!bt.isNullOrNil(this.mTitle)) && (!bt.isNullOrNil(this.zGc))) {}
+    this.AYp = getIntent().getStringExtra("lqt_fetch_pwd_money");
+    this.AXY = getIntent().getStringExtra("lqt_redeem_listid");
+    ac.i("MicroMsg.WalletLqtCheckPwdInputDialogUI", "hy: money : %s, title : %s, redeemListId: %s", new Object[] { bs.nullAsNil(this.AYp), bs.nullAsNil(this.mTitle), this.AXY });
+    if ((!bs.isNullOrNil(this.mTitle)) && (!bs.isNullOrNil(this.AYp))) {}
     while (i == 0)
     {
       h.a(getContext(), 2131765550, 0, new DialogInterface.OnClickListener()
@@ -113,7 +113,7 @@ public class WalletLqtCheckPwdInputDialogUI
       i = 0;
     }
     getWindow().setBackgroundDrawableResource(2131101053);
-    d.wcE.asyncReportPaySecurityInfoThroughCgi();
+    d.xnP.asyncReportPaySecurityInfoThroughCgi();
     showDialog();
     AppMethodBeat.o(68784);
   }

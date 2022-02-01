@@ -4,54 +4,47 @@ import android.os.SystemClock;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.aw;
 import d.g.b.k;
 import d.l;
 import d.o;
 import java.util.concurrent.TimeUnit;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ipc/util/JsApiIpcBigDataTransfer;", "", "()V", "BUFF_MAX_LIMIT", "", "CLEAN_CHECK_INTERVAL", "", "MMKV_FILE_DANGER_SIZE", "MMKV_NANE", "", "TAG", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "get", "", "key", "clear", "", "save", "Lkotlin/Pair;", "data", "tryCleanInvalidData", "", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ipc/util/JsApiIpcBigDataTransfer;", "", "()V", "BUFF_MAX_LIMIT", "", "CLEAN_CHECK_INTERVAL", "", "MMKV_FILE_DANGER_SIZE", "MMKV_NANE", "", "TAG", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "get", "", "key", "clear", "", "save", "Lkotlin/Pair;", "data", "tryCleanInvalidData", "", "plugin-appbrand-integration_release"})
 public final class a
 {
-  private static final ax ctt;
-  private static final long jvs;
-  public static final a jvt;
+  private static final aw cqB;
+  private static final long jVO;
+  public static final a jVP;
   
   static
   {
     AppMethodBeat.i(50403);
-    jvt = new a();
-    jvs = TimeUnit.DAYS.toMillis(1L);
-    ctt = ax.aFC("jsapi_ipc_big_data_transfer");
+    jVP = new a();
+    jVO = TimeUnit.DAYS.toMillis(1L);
+    cqB = aw.aKT("jsapi_ipc_big_data_transfer");
     AppMethodBeat.o(50403);
   }
   
-  public static byte[] HE(String paramString)
+  public static byte[] LI(String paramString)
   {
     AppMethodBeat.i(50401);
     k.h(paramString, "key");
-    byte[] arrayOfByte = ctt.decodeBytes(paramString);
-    ctt.remove(paramString);
+    byte[] arrayOfByte = cqB.decodeBytes(paramString);
+    cqB.remove(paramString);
     k.g(arrayOfByte, "mmkv.decodeBytes(key).al…mkv.remove(key)\n        }");
     AppMethodBeat.o(50401);
     return arrayOfByte;
   }
   
-  public static void aXx()
-  {
-    AppMethodBeat.i(50402);
-    h.Iye.aP((Runnable)a.jvu);
-    AppMethodBeat.o(50402);
-  }
-  
-  public static o<Boolean, String> ar(byte[] paramArrayOfByte)
+  public static o<Boolean, String> aq(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(50400);
     k.h(paramArrayOfByte, "data");
     if (paramArrayOfByte.length >= 102400)
     {
       String str = String.valueOf(SystemClock.elapsedRealtimeNanos());
-      ctt.encode(str, paramArrayOfByte);
+      cqB.encode(str, paramArrayOfByte);
       paramArrayOfByte = new o(Boolean.TRUE, str);
       AppMethodBeat.o(50400);
       return paramArrayOfByte;
@@ -61,16 +54,23 @@ public final class a
     return paramArrayOfByte;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  public static void beu()
+  {
+    AppMethodBeat.i(50402);
+    h.JZN.aS((Runnable)a.jVQ);
+    AppMethodBeat.o(50402);
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
-    public static final a jvu;
+    public static final a jVQ;
     
     static
     {
       AppMethodBeat.i(50399);
-      jvu = new a();
+      jVQ = new a();
       AppMethodBeat.o(50399);
     }
     
@@ -82,22 +82,22 @@ public final class a
       //   1: istore_1
       //   2: ldc 44
       //   4: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   7: invokestatic 50	com/tencent/mm/kernel/g:afB	()Lcom/tencent/mm/kernel/e;
+      //   7: invokestatic 50	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
       //   10: astore 8
       //   12: aload 8
       //   14: ldc 52
       //   16: invokestatic 58	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
       //   19: aload 8
-      //   21: invokevirtual 64	com/tencent/mm/kernel/e:afk	()Lcom/tencent/mm/storage/ab;
-      //   24: getstatic 70	com/tencent/mm/storage/ae$a:Fmm	Lcom/tencent/mm/storage/ae$a;
+      //   21: invokevirtual 64	com/tencent/mm/kernel/e:agA	()Lcom/tencent/mm/storage/ae;
+      //   24: getstatic 70	com/tencent/mm/storage/ah$a:GKb	Lcom/tencent/mm/storage/ah$a;
       //   27: lconst_0
-      //   28: invokevirtual 76	com/tencent/mm/storage/ab:a	(Lcom/tencent/mm/storage/ae$a;J)J
+      //   28: invokevirtual 76	com/tencent/mm/storage/ae:a	(Lcom/tencent/mm/storage/ah$a;J)J
       //   31: lstore_2
-      //   32: getstatic 80	com/tencent/mm/plugin/appbrand/ipc/a/a:jvt	Lcom/tencent/mm/plugin/appbrand/ipc/a/a;
+      //   32: getstatic 80	com/tencent/mm/plugin/appbrand/ipc/a/a:jVP	Lcom/tencent/mm/plugin/appbrand/ipc/a/a;
       //   35: astore 8
-      //   37: invokestatic 84	com/tencent/mm/plugin/appbrand/ipc/a/a:aXy	()J
+      //   37: invokestatic 84	com/tencent/mm/plugin/appbrand/ipc/a/a:bev	()J
       //   40: lstore 4
-      //   42: invokestatic 89	com/tencent/mm/sdk/platformtools/bt:eGO	()J
+      //   42: invokestatic 89	com/tencent/mm/sdk/platformtools/bs:eWj	()J
       //   45: lstore 6
       //   47: lload_2
       //   48: lload 4
@@ -105,10 +105,10 @@ public final class a
       //   51: lload 6
       //   53: lcmp
       //   54: ifgt +149 -> 203
-      //   57: getstatic 80	com/tencent/mm/plugin/appbrand/ipc/a/a:jvt	Lcom/tencent/mm/plugin/appbrand/ipc/a/a;
+      //   57: getstatic 80	com/tencent/mm/plugin/appbrand/ipc/a/a:jVP	Lcom/tencent/mm/plugin/appbrand/ipc/a/a;
       //   60: astore 8
-      //   62: invokestatic 93	com/tencent/mm/plugin/appbrand/ipc/a/a:aXz	()Lcom/tencent/mm/sdk/platformtools/ax;
-      //   65: invokevirtual 98	com/tencent/mm/sdk/platformtools/ax:totalSize	()J
+      //   62: invokestatic 93	com/tencent/mm/plugin/appbrand/ipc/a/a:bew	()Lcom/tencent/mm/sdk/platformtools/aw;
+      //   65: invokevirtual 98	com/tencent/mm/sdk/platformtools/aw:totalSize	()J
       //   68: ldc2_w 99
       //   71: lcmp
       //   72: iflt +71 -> 143
@@ -121,24 +121,24 @@ public final class a
       //   85: iload_1
       //   86: invokestatic 110	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
       //   89: aastore
-      //   90: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   90: invokestatic 115	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   93: iload_1
       //   94: ifeq +14 -> 108
-      //   97: getstatic 80	com/tencent/mm/plugin/appbrand/ipc/a/a:jvt	Lcom/tencent/mm/plugin/appbrand/ipc/a/a;
+      //   97: getstatic 80	com/tencent/mm/plugin/appbrand/ipc/a/a:jVP	Lcom/tencent/mm/plugin/appbrand/ipc/a/a;
       //   100: astore 8
-      //   102: invokestatic 93	com/tencent/mm/plugin/appbrand/ipc/a/a:aXz	()Lcom/tencent/mm/sdk/platformtools/ax;
-      //   105: invokevirtual 118	com/tencent/mm/sdk/platformtools/ax:clearAll	()V
-      //   108: invokestatic 50	com/tencent/mm/kernel/g:afB	()Lcom/tencent/mm/kernel/e;
+      //   102: invokestatic 93	com/tencent/mm/plugin/appbrand/ipc/a/a:bew	()Lcom/tencent/mm/sdk/platformtools/aw;
+      //   105: invokevirtual 118	com/tencent/mm/sdk/platformtools/aw:clearAll	()V
+      //   108: invokestatic 50	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
       //   111: astore 8
       //   113: aload 8
       //   115: ldc 52
       //   117: invokestatic 58	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
       //   120: aload 8
-      //   122: invokevirtual 64	com/tencent/mm/kernel/e:afk	()Lcom/tencent/mm/storage/ab;
-      //   125: getstatic 70	com/tencent/mm/storage/ae$a:Fmm	Lcom/tencent/mm/storage/ae$a;
-      //   128: invokestatic 89	com/tencent/mm/sdk/platformtools/bt:eGO	()J
+      //   122: invokevirtual 64	com/tencent/mm/kernel/e:agA	()Lcom/tencent/mm/storage/ae;
+      //   125: getstatic 70	com/tencent/mm/storage/ah$a:GKb	Lcom/tencent/mm/storage/ah$a;
+      //   128: invokestatic 89	com/tencent/mm/sdk/platformtools/bs:eWj	()J
       //   131: invokestatic 123	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-      //   134: invokevirtual 127	com/tencent/mm/storage/ab:set	(Lcom/tencent/mm/storage/ae$a;Ljava/lang/Object;)V
+      //   134: invokevirtual 127	com/tencent/mm/storage/ae:set	(Lcom/tencent/mm/storage/ah$a;Ljava/lang/Object;)V
       //   137: ldc 44
       //   139: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   142: return
@@ -154,18 +154,18 @@ public final class a
       //   159: iconst_0
       //   160: aload 8
       //   162: aastore
-      //   163: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   166: invokestatic 50	com/tencent/mm/kernel/g:afB	()Lcom/tencent/mm/kernel/e;
+      //   163: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   166: invokestatic 50	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
       //   169: astore 8
       //   171: aload 8
       //   173: ldc 52
       //   175: invokestatic 58	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
       //   178: aload 8
-      //   180: invokevirtual 64	com/tencent/mm/kernel/e:afk	()Lcom/tencent/mm/storage/ab;
-      //   183: getstatic 70	com/tencent/mm/storage/ae$a:Fmm	Lcom/tencent/mm/storage/ae$a;
-      //   186: invokestatic 89	com/tencent/mm/sdk/platformtools/bt:eGO	()J
+      //   180: invokevirtual 64	com/tencent/mm/kernel/e:agA	()Lcom/tencent/mm/storage/ae;
+      //   183: getstatic 70	com/tencent/mm/storage/ah$a:GKb	Lcom/tencent/mm/storage/ah$a;
+      //   186: invokestatic 89	com/tencent/mm/sdk/platformtools/bs:eWj	()J
       //   189: invokestatic 123	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-      //   192: invokevirtual 127	com/tencent/mm/storage/ab:set	(Lcom/tencent/mm/storage/ae$a;Ljava/lang/Object;)V
+      //   192: invokevirtual 127	com/tencent/mm/storage/ae:set	(Lcom/tencent/mm/storage/ah$a;Ljava/lang/Object;)V
       //   195: ldc 44
       //   197: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   200: return
@@ -174,17 +174,17 @@ public final class a
       //   205: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   208: return
       //   209: astore 8
-      //   211: invokestatic 50	com/tencent/mm/kernel/g:afB	()Lcom/tencent/mm/kernel/e;
+      //   211: invokestatic 50	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
       //   214: astore 9
       //   216: aload 9
       //   218: ldc 52
       //   220: invokestatic 58	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
       //   223: aload 9
-      //   225: invokevirtual 64	com/tencent/mm/kernel/e:afk	()Lcom/tencent/mm/storage/ab;
-      //   228: getstatic 70	com/tencent/mm/storage/ae$a:Fmm	Lcom/tencent/mm/storage/ae$a;
-      //   231: invokestatic 89	com/tencent/mm/sdk/platformtools/bt:eGO	()J
+      //   225: invokevirtual 64	com/tencent/mm/kernel/e:agA	()Lcom/tencent/mm/storage/ae;
+      //   228: getstatic 70	com/tencent/mm/storage/ah$a:GKb	Lcom/tencent/mm/storage/ah$a;
+      //   231: invokestatic 89	com/tencent/mm/sdk/platformtools/bs:eWj	()J
       //   234: invokestatic 123	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-      //   237: invokevirtual 127	com/tencent/mm/storage/ab:set	(Lcom/tencent/mm/storage/ae$a;Ljava/lang/Object;)V
+      //   237: invokevirtual 127	com/tencent/mm/storage/ae:set	(Lcom/tencent/mm/storage/ah$a;Ljava/lang/Object;)V
       //   240: ldc 44
       //   242: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   245: aload 8

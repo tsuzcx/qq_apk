@@ -17,12 +17,12 @@ import java.io.PipedOutputStream;
 public final class LuggageMMLocalResourceProvider
   implements c
 {
-  public final String Eu()
+  public final String DX()
   {
     return "weixin://resourceid/.*";
   }
   
-  public final WebResourceResponse bW(String paramString)
+  public final WebResourceResponse bM(String paramString)
   {
     AppMethodBeat.i(78221);
     final PipedOutputStream localPipedOutputStream = new PipedOutputStream();
@@ -30,14 +30,14 @@ public final class LuggageMMLocalResourceProvider
     {
       PipedInputStream localPipedInputStream = new PipedInputStream(localPipedOutputStream);
       final GetLocalResourceInfoTask localGetLocalResourceInfoTask = new GetLocalResourceInfoTask((byte)0);
-      localGetLocalResourceInfoTask.diQ = paramString;
+      localGetLocalResourceInfoTask.dgl = paramString;
       localGetLocalResourceInfoTask.infoType = 1;
-      localGetLocalResourceInfoTask.kiJ = new Runnable()
+      localGetLocalResourceInfoTask.kKa = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78214);
-          h.Iye.aP(new Runnable()
+          h.JZN.aS(new Runnable()
           {
             public final void run()
             {
@@ -46,10 +46,10 @@ public final class LuggageMMLocalResourceProvider
               Object localObject1 = null;
               try
               {
-                InputStream localInputStream = com.tencent.mm.vfs.i.openRead(LuggageMMLocalResourceProvider.1.this.ASP.path);
+                InputStream localInputStream = com.tencent.mm.vfs.i.openRead(LuggageMMLocalResourceProvider.1.this.Clc.path);
                 localObject1 = localInputStream;
                 localObject3 = localInputStream;
-                PipedOutputStream localPipedOutputStream = LuggageMMLocalResourceProvider.1.this.ASQ;
+                PipedOutputStream localPipedOutputStream = LuggageMMLocalResourceProvider.1.this.Cld;
                 localObject1 = localInputStream;
                 localObject3 = localInputStream;
                 byte[] arrayOfByte = new byte[1024];
@@ -68,7 +68,7 @@ public final class LuggageMMLocalResourceProvider
                 try
                 {
                   localException3.close();
-                  LuggageMMLocalResourceProvider.1.this.ASQ.close();
+                  LuggageMMLocalResourceProvider.1.this.Cld.close();
                 }
                 catch (Exception localException4)
                 {
@@ -81,7 +81,7 @@ public final class LuggageMMLocalResourceProvider
                 try
                 {
                   localObject1.close();
-                  LuggageMMLocalResourceProvider.1.this.ASQ.close();
+                  LuggageMMLocalResourceProvider.1.this.Cld.close();
                   AppMethodBeat.o(78213);
                   return;
                 }
@@ -94,7 +94,7 @@ public final class LuggageMMLocalResourceProvider
                 try
                 {
                   localInputStream.close();
-                  LuggageMMLocalResourceProvider.1.this.ASQ.close();
+                  LuggageMMLocalResourceProvider.1.this.Cld.close();
                   AppMethodBeat.o(78213);
                   return;
                 }
@@ -132,9 +132,9 @@ public final class LuggageMMLocalResourceProvider
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetLocalResourceInfoTask> CREATOR;
-    String diQ;
+    String dgl;
     int infoType;
-    Runnable kiJ;
+    Runnable kKa;
     String path;
     
     static
@@ -144,16 +144,7 @@ public final class LuggageMMLocalResourceProvider
       AppMethodBeat.o(78220);
     }
     
-    public final void aEA()
-    {
-      AppMethodBeat.i(78217);
-      if (this.kiJ != null) {
-        this.kiJ.run();
-      }
-      AppMethodBeat.o(78217);
-    }
-    
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(78216);
       switch (this.infoType)
@@ -161,19 +152,28 @@ public final class LuggageMMLocalResourceProvider
       }
       for (;;)
       {
-        aXw();
+        bet();
         AppMethodBeat.o(78216);
         return;
-        this.path = aw.awI(this.diQ);
+        this.path = aw.aCa(this.dgl);
         continue;
-        this.path = aw.awJ(this.diQ);
+        this.path = aw.aCb(this.dgl);
       }
+    }
+    
+    public final void aLr()
+    {
+      AppMethodBeat.i(78217);
+      if (this.kKa != null) {
+        this.kKa.run();
+      }
+      AppMethodBeat.o(78217);
     }
     
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(78219);
-      this.diQ = paramParcel.readString();
+      this.dgl = paramParcel.readString();
       this.infoType = paramParcel.readInt();
       this.path = paramParcel.readString();
       AppMethodBeat.o(78219);
@@ -182,7 +182,7 @@ public final class LuggageMMLocalResourceProvider
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(78218);
-      paramParcel.writeString(this.diQ);
+      paramParcel.writeString(this.dgl);
       paramParcel.writeInt(this.infoType);
       paramParcel.writeString(this.path);
       AppMethodBeat.o(78218);

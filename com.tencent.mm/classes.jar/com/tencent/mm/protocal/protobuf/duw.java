@@ -3,43 +3,34 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class duw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int dhR;
-  public String dhS;
+  public int ID;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(40111);
+    AppMethodBeat.i(32512);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.dhR);
-      if (this.dhS != null) {
-        paramVarArgs.d(2, this.dhS);
-      }
-      AppMethodBeat.o(40111);
+      ((f.a.a.c.a)paramVarArgs[0]).aR(1, this.ID);
+      AppMethodBeat.o(32512);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.dhR) + 0;
-      paramInt = i;
-      if (this.dhS != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dhS);
-      }
-      AppMethodBeat.o(40111);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bx(1, this.ID);
+      AppMethodBeat.o(32512);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(40111);
+      AppMethodBeat.o(32512);
       return 0;
     }
     if (paramInt == 3)
@@ -49,18 +40,14 @@ public final class duw
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(40111);
+        AppMethodBeat.o(32512);
         return -1;
-      case 1: 
-        localduw.dhR = locala.KhF.xS();
-        AppMethodBeat.o(40111);
-        return 0;
       }
-      localduw.dhS = locala.KhF.readString();
-      AppMethodBeat.o(40111);
+      localduw.ID = locala.LVo.xF();
+      AppMethodBeat.o(32512);
       return 0;
     }
-    AppMethodBeat.o(40111);
+    AppMethodBeat.o(32512);
     return -1;
   }
 }

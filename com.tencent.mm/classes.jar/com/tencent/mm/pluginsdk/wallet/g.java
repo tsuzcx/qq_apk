@@ -5,21 +5,21 @@ import java.util.HashMap;
 
 public final class g
 {
-  public HashMap<String, Object> CoP;
+  public HashMap<String, Object> DHh;
   
   private g()
   {
     AppMethodBeat.i(117596);
-    this.CoP = new HashMap();
+    this.DHh = new HashMap();
     AppMethodBeat.o(117596);
   }
   
-  public static g eBg()
+  public static g eQA()
   {
     try
     {
       AppMethodBeat.i(117597);
-      g localg = a.eBh();
+      g localg = a.eQB();
       AppMethodBeat.o(117597);
       return localg;
     }
@@ -33,9 +33,9 @@ public final class g
   public final Object get(String paramString, Object paramObject)
   {
     AppMethodBeat.i(117598);
-    if (this.CoP.containsKey(paramString))
+    if (this.DHh.containsKey(paramString))
     {
-      paramString = this.CoP.get(paramString);
+      paramString = this.DHh.get(paramString);
       AppMethodBeat.o(117598);
       return paramString;
     }
@@ -45,19 +45,19 @@ public final class g
   
   static final class a
   {
-    private static final g CoQ;
+    private static final g DHi;
     
     static
     {
       AppMethodBeat.i(117595);
-      CoQ = new g((byte)0);
+      DHi = new g((byte)0);
       AppMethodBeat.o(117595);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.wallet.g
  * JD-Core Version:    0.7.0.1
  */

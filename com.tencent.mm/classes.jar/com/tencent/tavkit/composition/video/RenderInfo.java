@@ -27,15 +27,15 @@ public class RenderInfo
   
   public Object getParam(String paramString)
   {
-    AppMethodBeat.i(204737);
+    AppMethodBeat.i(192109);
     RenderContextParams localRenderContextParams = this.ciContext.getRenderContext().getParams();
     if (localRenderContextParams != null)
     {
       paramString = localRenderContextParams.getParam(paramString);
-      AppMethodBeat.o(204737);
+      AppMethodBeat.o(192109);
       return paramString;
     }
-    AppMethodBeat.o(204737);
+    AppMethodBeat.o(192109);
     return null;
   }
   
@@ -61,17 +61,17 @@ public class RenderInfo
   
   public void putParam(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(204736);
+    AppMethodBeat.i(192108);
     RenderContextParams localRenderContextParams = this.ciContext.getRenderContext().getParams();
     if (localRenderContextParams != null) {
       localRenderContextParams.putParam(paramString, paramObject);
     }
-    AppMethodBeat.o(204736);
+    AppMethodBeat.o(192108);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.RenderInfo
  * JD-Core Version:    0.7.0.1
  */

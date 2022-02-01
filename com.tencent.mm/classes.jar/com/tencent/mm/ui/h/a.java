@@ -15,16 +15,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static b HjL;
-  private static b HjM;
+  private static b IKe;
+  private static b IKf;
   
   @TargetApi(11)
   public static void b(Activity paramActivity, View paramView)
   {
     AppMethodBeat.i(142857);
     View localView = paramActivity.getWindow().getDecorView();
-    HjL = b.kb(paramActivity);
-    HjM = b.kb(paramActivity);
+    IKe = b.km(paramActivity);
+    IKf = b.km(paramActivity);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
@@ -32,35 +32,35 @@ public final class a
     int i = localRect.top;
     int j = ((AppCompatActivity)paramActivity).getSupportActionBar().getHeight();
     int k = arrayOfInt[1];
-    HjL.setHeight(k - i - j);
-    k = et(paramActivity)[1];
+    IKe.setHeight(k - i - j);
+    k = eB(paramActivity)[1];
     int m = arrayOfInt[1];
     int n = paramView.getHeight();
-    HjM.setHeight(k - m - n);
-    HjL.showAtLocation(localView, 48, 0, j + i);
-    HjM.showAtLocation(localView, 80, 0, 0);
+    IKf.setHeight(k - m - n);
+    IKe.showAtLocation(localView, 48, 0, j + i);
+    IKf.showAtLocation(localView, 80, 0, 0);
     AppMethodBeat.o(142857);
   }
   
   public static void dismiss()
   {
     AppMethodBeat.i(142858);
-    if (HjL != null)
+    if (IKe != null)
     {
-      HjL.setAnimationStyle(-1);
-      HjL.dismiss();
-      HjL = null;
+      IKe.setAnimationStyle(-1);
+      IKe.dismiss();
+      IKe = null;
     }
-    if (HjM != null)
+    if (IKf != null)
     {
-      HjM.setAnimationStyle(-1);
-      HjM.dismiss();
-      HjM = null;
+      IKf.setAnimationStyle(-1);
+      IKf.dismiss();
+      IKf = null;
     }
     AppMethodBeat.o(142858);
   }
   
-  private static int[] et(Context paramContext)
+  private static int[] eB(Context paramContext)
   {
     AppMethodBeat.i(142859);
     int[] arrayOfInt = new int[2];
@@ -83,7 +83,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.h.a
  * JD-Core Version:    0.7.0.1
  */

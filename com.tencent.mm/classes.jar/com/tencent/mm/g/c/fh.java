@@ -8,45 +8,47 @@ public abstract class fh
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDj = "fileName".hashCode();
-  private static final int eWV;
-  private static final int eWW;
-  private static final int eWX;
-  private static final int eWY;
-  private static final int eWZ;
-  private static final int eXa = "eggIndex".hashCode();
-  private static final int eXb = "position".hashCode();
-  private static final int eoK = "flag".hashCode();
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int eBs = "svrid".hashCode();
+  private static final int eMo;
+  private static final int eOn = "sayhiuser".hashCode();
+  private static final int eOo = "sayhicontent".hashCode();
+  private static final int eOp = "imgpath".hashCode();
+  private static final int elV = "status".hashCode();
+  private static final int eng;
+  private static final int env;
+  private static final int erG = "isSend".hashCode();
+  private static final int etX;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean eCG = true;
-  private boolean eWO = true;
-  private boolean eWP = true;
-  private boolean eWQ = true;
-  private boolean eWR = true;
-  private boolean eWS = true;
-  private boolean eWT = true;
-  private boolean eWU = true;
-  private boolean eoI = true;
-  public String field_cnValue;
-  public int field_eggIndex;
-  public String field_enValue;
-  public String field_fileName;
-  public int field_flag;
-  public String field_key;
-  public int field_position;
-  public String field_qqValue;
-  public String field_thValue;
-  public String field_twValue;
+  private static final int type_HASHCODE = "type".hashCode();
+  private boolean __hadSettype = true;
+  private boolean eAG = true;
+  private boolean eMf = true;
+  private boolean eOj = true;
+  private boolean eOk = true;
+  private boolean eOl = true;
+  private boolean elS = true;
+  private boolean emI = true;
+  private boolean ent = true;
+  private boolean err = true;
+  private boolean etJ = true;
+  public String field_content;
+  public long field_createtime;
+  public String field_imgpath;
+  public int field_isSend;
+  public String field_sayhicontent;
+  public String field_sayhiuser;
+  public int field_scene;
+  public int field_status;
+  public long field_svrid;
+  public String field_talker;
+  public int field_type;
   
   static
   {
-    eWV = "cnValue".hashCode();
-    eWW = "qqValue".hashCode();
-    eWX = "twValue".hashCode();
-    eWY = "enValue".hashCode();
-    eWZ = "thValue".hashCode();
+    env = "scene".hashCode();
+    eMo = "createtime".hashCode();
+    etX = "talker".hashCode();
+    eng = "content".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -62,11 +64,11 @@ public abstract class fh
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
+      if (eBs != k) {
         break label65;
       }
-      this.field_key = paramCursor.getString(i);
-      this.__hadSetkey = true;
+      this.field_svrid = paramCursor.getLong(i);
+      this.eAG = true;
     }
     for (;;)
     {
@@ -74,24 +76,26 @@ public abstract class fh
       break label20;
       break;
       label65:
-      if (eWV == k) {
-        this.field_cnValue = paramCursor.getString(i);
-      } else if (eWW == k) {
-        this.field_qqValue = paramCursor.getString(i);
-      } else if (eWX == k) {
-        this.field_twValue = paramCursor.getString(i);
-      } else if (eWY == k) {
-        this.field_enValue = paramCursor.getString(i);
-      } else if (eWZ == k) {
-        this.field_thValue = paramCursor.getString(i);
-      } else if (eDj == k) {
-        this.field_fileName = paramCursor.getString(i);
-      } else if (eXa == k) {
-        this.field_eggIndex = paramCursor.getInt(i);
-      } else if (eXb == k) {
-        this.field_position = paramCursor.getInt(i);
-      } else if (eoK == k) {
-        this.field_flag = paramCursor.getInt(i);
+      if (elV == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (env == k) {
+        this.field_scene = paramCursor.getInt(i);
+      } else if (eMo == k) {
+        this.field_createtime = paramCursor.getLong(i);
+      } else if (etX == k) {
+        this.field_talker = paramCursor.getString(i);
+      } else if (eng == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (eOn == k) {
+        this.field_sayhiuser = paramCursor.getString(i);
+      } else if (eOo == k) {
+        this.field_sayhicontent = paramCursor.getString(i);
+      } else if (eOp == k) {
+        this.field_imgpath = paramCursor.getString(i);
+      } else if (erG == k) {
+        this.field_isSend = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -101,35 +105,38 @@ public abstract class fh
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.eAG) {
+      localContentValues.put("svrid", Long.valueOf(this.field_svrid));
     }
-    if (this.eWO) {
-      localContentValues.put("cnValue", this.field_cnValue);
+    if (this.elS) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eWP) {
-      localContentValues.put("qqValue", this.field_qqValue);
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eWQ) {
-      localContentValues.put("twValue", this.field_twValue);
+    if (this.ent) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.eWR) {
-      localContentValues.put("enValue", this.field_enValue);
+    if (this.eMf) {
+      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
-    if (this.eWS) {
-      localContentValues.put("thValue", this.field_thValue);
+    if (this.etJ) {
+      localContentValues.put("talker", this.field_talker);
     }
-    if (this.eCG) {
-      localContentValues.put("fileName", this.field_fileName);
+    if (this.emI) {
+      localContentValues.put("content", this.field_content);
     }
-    if (this.eWT) {
-      localContentValues.put("eggIndex", Integer.valueOf(this.field_eggIndex));
+    if (this.eOj) {
+      localContentValues.put("sayhiuser", this.field_sayhiuser);
     }
-    if (this.eWU) {
-      localContentValues.put("position", Integer.valueOf(this.field_position));
+    if (this.eOk) {
+      localContentValues.put("sayhicontent", this.field_sayhicontent);
     }
-    if (this.eoI) {
-      localContentValues.put("flag", Integer.valueOf(this.field_flag));
+    if (this.eOl) {
+      localContentValues.put("imgpath", this.field_imgpath);
+    }
+    if (this.err) {
+      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ae
   extends b
 {
+  public a cZv;
+  
   public ae()
   {
     this((byte)0);
@@ -12,13 +15,21 @@ public final class ae
   
   private ae(byte paramByte)
   {
-    this.ESR = false;
+    AppMethodBeat.i(19790);
+    this.cZv = new a();
+    this.Gqe = false;
     this.callback = null;
+    AppMethodBeat.o(19790);
+  }
+  
+  public static final class a
+  {
+    public Object cZw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ae
  * JD-Core Version:    0.7.0.1
  */

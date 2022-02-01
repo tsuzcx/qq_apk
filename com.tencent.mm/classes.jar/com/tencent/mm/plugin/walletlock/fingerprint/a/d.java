@@ -12,7 +12,7 @@ public abstract interface d
   
   public static abstract interface a
   {
-    public abstract void aU(int paramInt, String paramString);
+    public abstract void aZ(int paramInt, String paramString);
   }
 }
 

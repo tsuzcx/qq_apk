@@ -4,16 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.j;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.kernel.i;
 import com.tencent.mm.plugin.story.h.h;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.base.CustomViewPager;
 import java.util.HashMap;
 
@@ -21,18 +20,18 @@ import java.util.HashMap;
 public class AlbumUI
   extends MMActivity
 {
-  private DoubleTabView FFQ;
-  private HashMap<Integer, MMFragment> FFR;
-  private boolean FFS;
+  private DoubleTabView HeY;
+  private HashMap<Integer, MMFragment> HeZ;
+  private boolean Hfa;
   private CustomViewPager mViewPager;
   
   public AlbumUI()
   {
     AppMethodBeat.i(32932);
-    this.FFQ = null;
+    this.HeY = null;
     this.mViewPager = null;
-    this.FFR = new HashMap();
-    this.FFS = false;
+    this.HeZ = new HashMap();
+    this.Hfa = false;
     AppMethodBeat.o(32932);
   }
   
@@ -40,15 +39,15 @@ public class AlbumUI
   {
     AppMethodBeat.i(32934);
     super.dealContentView(paramView);
-    this.FFS = getIntent().getBooleanExtra("story_dot", false);
-    this.FFQ = ((DoubleTabView)findViewById(2131296623));
+    this.Hfa = getIntent().getBooleanExtra("story_dot", false);
+    this.HeY = ((DoubleTabView)findViewById(2131296623));
     this.mViewPager = ((CustomViewPager)findViewById(2131296628));
-    this.FFQ.setFirstTabString(getResources().getString(2131755249));
-    this.FFQ.setSecondTabString(getResources().getString(2131755250));
-    if (this.FFS) {
-      this.FFQ.vm(true);
+    this.HeY.setFirstTabString(getResources().getString(2131755249));
+    this.HeY.setSecondTabString(getResources().getString(2131755250));
+    if (this.Hfa) {
+      this.HeY.wo(true);
     }
-    this.FFQ.setOnTabClickListener(new DoubleTabView.a()
+    this.HeY.setOnTabClickListener(new DoubleTabView.a()
     {
       public final void onTabClick(int paramAnonymousInt)
       {
@@ -75,30 +74,30 @@ public class AlbumUI
         h localh;
         if (paramAnonymousInt == 0)
         {
-          localh = h.ynv;
-          h.dJn().dUt = 3L;
+          localh = h.zAU;
+          h.dXO().dWf = 3L;
         }
         for (;;)
         {
-          localh = h.ynv;
-          h.dJo();
+          localh = h.zAU;
+          h.dXP();
           AppMethodBeat.o(32930);
           return;
-          localh = h.ynv;
-          h.dJn().dUt = 2L;
+          localh = h.zAU;
+          h.dXO().dWf = 2L;
           if (AlbumUI.c(AlbumUI.this))
           {
-            AlbumUI.b(AlbumUI.this).vm(false);
-            com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fvn, Boolean.FALSE);
+            AlbumUI.b(AlbumUI.this).wo(false);
+            g.agR().agA().set(ah.a.GTh, Boolean.FALSE);
           }
         }
       }
     });
-    this.mViewPager.setAdapter(new a(getSupportFragmentManager()));
-    paramView = h.ynv;
-    h.dJn().dUt = 3L;
-    paramView = h.ynv;
-    h.dJo();
+    this.mViewPager.setAdapter(new AlbumUI.a(this, getSupportFragmentManager()));
+    paramView = h.zAU;
+    h.dXO().dWf = 3L;
+    paramView = h.zAU;
+    h.dXP();
     AppMethodBeat.o(32934);
   }
   
@@ -121,32 +120,10 @@ public class AlbumUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  final class a
-    extends j
-  {
-    public a(android.support.v4.app.g paramg)
-    {
-      super();
-    }
-    
-    public final int getCount()
-    {
-      return 2;
-    }
-    
-    public final Fragment getItem(int paramInt)
-    {
-      AppMethodBeat.i(32931);
-      MMFragment localMMFragment = AlbumUI.a(AlbumUI.this, paramInt);
-      AppMethodBeat.o(32931);
-      return localMMFragment;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.AlbumUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.wallet;
 
 public abstract interface b$a
 {
-  public abstract void IK(String paramString);
+  public abstract void ML(String paramString);
   
   public abstract void onSuccess(String paramString);
 }

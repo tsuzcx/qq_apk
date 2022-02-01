@@ -5,8 +5,7 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public final class f
@@ -20,7 +19,7 @@ public final class f
       return false;
     }
     Object localObject = paramJSONObject.optString("type");
-    if (bt.isNullOrNil((String)localObject))
+    if (bs.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(177123);
       return false;
@@ -39,14 +38,14 @@ public final class f
         AppMethodBeat.o(177123);
         return true;
       }
-      localObject = ((AppBrandRuntime)localObject).iDT;
+      localObject = ((AppBrandRuntime)localObject).jdT;
       if (localObject == null)
       {
         paramc.h(paramInt, paramm.e("fail", null));
         AppMethodBeat.o(177123);
         return true;
       }
-      if (((aj)localObject).tv(paramJSONObject.optInt("viewId"))) {}
+      if (((com.tencent.mm.plugin.appbrand.pip.f)localObject).uu(paramJSONObject.optInt("viewId"))) {}
       for (paramJSONObject = "ok";; paramJSONObject = "fail")
       {
         paramc.h(paramInt, paramm.e(paramJSONObject, null));
@@ -58,7 +57,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a.f
  * JD-Core Version:    0.7.0.1
  */

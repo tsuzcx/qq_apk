@@ -10,18 +10,18 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/collections/ArrayAsCollection;", "T", "", "values", "", "isVarargs", "", "([Ljava/lang/Object;Z)V", "()Z", "size", "", "getSize", "()I", "getValues", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "contains", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/ArrayAsCollection;", "T", "", "values", "", "isVarargs", "", "([Ljava/lang/Object;Z)V", "()Z", "size", "", "getSize", "()I", "getValues", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "contains", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "kotlin-stdlib"})
 final class d<T>
   implements a, Collection<T>
 {
-  private final boolean Jgd;
-  private final T[] amI;
+  private final boolean KTx;
+  private final T[] anD;
   
   public d(T[] paramArrayOfT, boolean paramBoolean)
   {
     AppMethodBeat.i(129067);
-    this.amI = paramArrayOfT;
-    this.Jgd = paramBoolean;
+    this.anD = paramArrayOfT;
+    this.KTx = paramBoolean;
     AppMethodBeat.o(129067);
   }
   
@@ -52,7 +52,7 @@ final class d<T>
   public final boolean contains(Object paramObject)
   {
     AppMethodBeat.i(129063);
-    boolean bool = e.contains(this.amI, paramObject);
+    boolean bool = e.contains(this.anD, paramObject);
     AppMethodBeat.o(129063);
     return bool;
   }
@@ -79,13 +79,13 @@ final class d<T>
   
   public final boolean isEmpty()
   {
-    return this.amI.length == 0;
+    return this.anD.length == 0;
   }
   
   public final Iterator<T> iterator()
   {
     AppMethodBeat.i(129065);
-    Iterator localIterator = b.ab(this.amI);
+    Iterator localIterator = b.ad(this.anD);
     AppMethodBeat.o(129065);
     return localIterator;
   }
@@ -117,8 +117,8 @@ final class d<T>
   public final Object[] toArray()
   {
     AppMethodBeat.i(129066);
-    Object[] arrayOfObject = this.amI;
-    boolean bool = this.Jgd;
+    Object[] arrayOfObject = this.anD;
+    boolean bool = this.KTx;
     k.h(arrayOfObject, "$this$copyToArrayOfAny");
     if ((bool) && (k.g(arrayOfObject.getClass(), [Ljava.lang.Object.class)))
     {

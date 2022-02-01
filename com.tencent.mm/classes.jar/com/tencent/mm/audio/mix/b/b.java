@@ -6,30 +6,30 @@ import java.util.ArrayList;
 
 public class b
 {
-  private static b cTy;
-  private long cTA;
-  public volatile ArrayList<c> cTz;
+  private static b cQV;
+  public volatile ArrayList<c> cQW;
+  private long cQX;
   private volatile int count;
   
   private b()
   {
     AppMethodBeat.i(182541);
-    this.cTz = new ArrayList();
-    this.cTA = 50L;
+    this.cQW = new ArrayList();
+    this.cQX = 50L;
     this.count = 0;
     AppMethodBeat.o(182541);
   }
   
-  public static b MH()
+  public static b MF()
   {
     AppMethodBeat.i(182542);
-    if (cTy == null) {}
+    if (cQV == null) {}
     try
     {
-      if (cTy == null) {
-        cTy = new b();
+      if (cQV == null) {
+        cQV = new b();
       }
-      b localb = cTy;
+      b localb = cQV;
       AppMethodBeat.o(182542);
       return localb;
     }
@@ -39,7 +39,7 @@ public class b
     }
   }
   
-  public final c MI()
+  public final c MG()
   {
     for (;;)
     {
@@ -47,13 +47,13 @@ public class b
       {
         AppMethodBeat.i(182543);
         c localc1;
-        if (this.cTz.size() > 0)
+        if (this.cQW.size() > 0)
         {
-          localc1 = (c)this.cTz.remove(this.cTz.size() - 1);
+          localc1 = (c)this.cQW.remove(this.cQW.size() - 1);
           AppMethodBeat.o(182543);
           return localc1;
         }
-        if (this.count >= this.cTA)
+        if (this.count >= this.cQX)
         {
           com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioOutputMixBufferPool", "size >= FIX_SIZE, size:%d", new Object[] { Integer.valueOf(this.count) });
           localc1 = null;

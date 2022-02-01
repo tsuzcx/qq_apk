@@ -22,13 +22,13 @@ import java.lang.reflect.Method;
 
 public final class ap
 {
-  public static int M(Context paramContext, int paramInt)
+  public static int Q(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(159136);
-    int i = aE(paramContext, paramInt);
+    int i = aK(paramContext, paramInt);
     if (i > 0)
     {
-      paramInt = aB(paramContext, i);
+      paramInt = aH(paramContext, i);
       AppMethodBeat.o(159136);
       return paramInt;
     }
@@ -43,7 +43,7 @@ public final class ap
     }
   }
   
-  private static int aB(Context paramContext, int paramInt)
+  private static int aH(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(159138);
     if ((paramContext instanceof Activity))
@@ -67,14 +67,14 @@ public final class ap
     return paramInt;
   }
   
-  private static int aE(Context paramContext, int paramInt)
+  private static int aK(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(159137);
     try
     {
       Class localClass = Class.forName("com.android.internal.R$dimen");
       Object localObject = localClass.newInstance();
-      int i = aq.ep(localClass.getField("status_bar_height").get(localObject).toString());
+      int i = aq.ee(localClass.getField("status_bar_height").get(localObject).toString());
       i = paramContext.getResources().getDimensionPixelSize(i);
       paramInt = i;
     }
@@ -90,7 +90,7 @@ public final class ap
     return paramInt;
   }
   
-  public static Point cf(Context paramContext)
+  public static Point cl(Context paramContext)
   {
     AppMethodBeat.i(159139);
     Point localPoint = new Point();
@@ -127,7 +127,7 @@ public final class ap
     }
   }
   
-  public static int dL(Context paramContext)
+  public static int dT(Context paramContext)
   {
     AppMethodBeat.i(159133);
     if (paramContext == null) {
@@ -160,17 +160,17 @@ public final class ap
     }
   }
   
-  public static int eb(Context paramContext)
+  public static int ej(Context paramContext)
   {
     int i = 0;
     AppMethodBeat.i(159144);
-    if (ju(paramContext))
+    if (jF(paramContext))
     {
       int j = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
       if (j > 0) {
         i = Resources.getSystem().getDimensionPixelSize(j);
       }
-      int k = jv(paramContext);
+      int k = jG(paramContext);
       j = i;
       if (k != 0)
       {
@@ -186,23 +186,53 @@ public final class ap
     return 0;
   }
   
-  public static int iX(Context paramContext)
+  @TargetApi(17)
+  public static boolean jF(Context paramContext)
   {
-    AppMethodBeat.i(159135);
-    int i = M(paramContext, ao.fromDPToPix(paramContext, 25));
-    AppMethodBeat.o(159135);
-    return i;
+    AppMethodBeat.i(159140);
+    if (jG(paramContext) > 0)
+    {
+      AppMethodBeat.o(159140);
+      return true;
+    }
+    AppMethodBeat.o(159140);
+    return false;
   }
   
-  public static int jA(Context paramContext)
+  public static int jG(Context paramContext)
+  {
+    AppMethodBeat.i(159141);
+    Object localObject2 = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    Object localObject1 = new Point();
+    ((Display)localObject2).getSize((Point)localObject1);
+    localObject2 = cl(paramContext);
+    int i = Math.max(((Point)localObject1).y, ((Point)localObject1).x);
+    if (jM(paramContext)) {
+      i = ((Point)localObject1).y;
+    }
+    int j = Math.max(((Point)localObject2).y, ((Point)localObject2).x);
+    localObject1 = new Rect();
+    if ((paramContext instanceof Activity))
+    {
+      ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
+      i = Math.max(((Rect)localObject1).bottom, ((Rect)localObject1).right);
+      if (jM(paramContext)) {
+        i = ((Rect)localObject1).bottom;
+      }
+    }
+    AppMethodBeat.o(159141);
+    return j - i;
+  }
+  
+  public static int jL(Context paramContext)
   {
     AppMethodBeat.i(159134);
-    int i = aE(paramContext, ao.fromDPToPix(paramContext, 25));
+    int i = aK(paramContext, ao.fromDPToPix(paramContext, 25));
     AppMethodBeat.o(159134);
     return i;
   }
   
-  private static boolean jB(Context paramContext)
+  private static boolean jM(Context paramContext)
   {
     AppMethodBeat.i(159142);
     if (paramContext.getResources().getConfiguration().orientation == 1)
@@ -214,7 +244,7 @@ public final class ap
     return false;
   }
   
-  public static boolean jC(Context paramContext)
+  public static boolean jN(Context paramContext)
   {
     AppMethodBeat.i(159143);
     if ((paramContext instanceof Activity))
@@ -231,42 +261,12 @@ public final class ap
     return true;
   }
   
-  @TargetApi(17)
-  public static boolean ju(Context paramContext)
+  public static int ji(Context paramContext)
   {
-    AppMethodBeat.i(159140);
-    if (jv(paramContext) > 0)
-    {
-      AppMethodBeat.o(159140);
-      return true;
-    }
-    AppMethodBeat.o(159140);
-    return false;
-  }
-  
-  public static int jv(Context paramContext)
-  {
-    AppMethodBeat.i(159141);
-    Object localObject2 = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    Object localObject1 = new Point();
-    ((Display)localObject2).getSize((Point)localObject1);
-    localObject2 = cf(paramContext);
-    int i = Math.max(((Point)localObject1).y, ((Point)localObject1).x);
-    if (jB(paramContext)) {
-      i = ((Point)localObject1).y;
-    }
-    int j = Math.max(((Point)localObject2).y, ((Point)localObject2).x);
-    localObject1 = new Rect();
-    if ((paramContext instanceof Activity))
-    {
-      ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
-      i = Math.max(((Rect)localObject1).bottom, ((Rect)localObject1).right);
-      if (jB(paramContext)) {
-        i = ((Rect)localObject1).bottom;
-      }
-    }
-    AppMethodBeat.o(159141);
-    return j - i;
+    AppMethodBeat.i(159135);
+    int i = Q(paramContext, ao.fromDPToPix(paramContext, 25));
+    AppMethodBeat.o(159135);
+    return i;
   }
 }
 

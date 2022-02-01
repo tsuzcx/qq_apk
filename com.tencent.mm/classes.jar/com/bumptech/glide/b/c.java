@@ -6,13 +6,13 @@ import java.util.List;
 
 public final class c
 {
-  boolean aBA;
-  int aBB;
-  int aBC;
-  int aBD;
-  int[] aBx;
-  b aBy;
-  final List<b> aBz;
+  int[] aCq;
+  b aCr;
+  final List<b> aCs;
+  boolean aCt;
+  int aCu;
+  int aCv;
+  int aCw;
   int bgColor;
   public int frameCount;
   public int height;
@@ -23,17 +23,17 @@ public final class c
   public c()
   {
     AppMethodBeat.i(3467);
-    this.aBx = null;
+    this.aCq = null;
     this.status = 0;
     this.frameCount = 0;
-    this.aBz = new ArrayList();
+    this.aCs = new ArrayList();
     this.loopCount = -1;
     AppMethodBeat.o(3467);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.b.c
  * JD-Core Version:    0.7.0.1
  */

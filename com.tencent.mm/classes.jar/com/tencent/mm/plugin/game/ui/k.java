@@ -13,20 +13,20 @@ import com.tencent.mm.game.report.e;
 import com.tencent.mm.plugin.game.d.bx;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class k
   implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-  protected int rXI = 0;
+  protected int tfA = 0;
   
   private void a(Context paramContext, com.tencent.mm.plugin.game.model.c paramc)
   {
     AppMethodBeat.i(42196);
     int i = 0;
     if (paramc.type == 1) {
-      i = com.tencent.mm.plugin.game.f.c.ax(paramContext, paramc.rUV);
+      i = com.tencent.mm.plugin.game.f.c.ay(paramContext, paramc.tcN);
     }
     for (;;)
     {
@@ -34,38 +34,38 @@ public final class k
       AppMethodBeat.o(42196);
       return;
       if (paramc.type == 0) {
-        if ((paramc.cCJ()) && (!bt.isNullOrNil(paramc.rVm.rZo)) && (!h.a(paramContext, paramc)))
+        if ((paramc.cPT()) && (!bs.isNullOrNil(paramc.tde.thh)) && (!h.a(paramContext, paramc)))
         {
-          i = com.tencent.mm.plugin.game.f.c.ax(paramContext, paramc.rVm.rZo);
+          i = com.tencent.mm.plugin.game.f.c.ay(paramContext, paramc.tde.thh);
         }
         else
         {
-          if ((bt.isNullOrNil(paramc.eom)) || (paramc.eop != 4)) {
+          if ((bs.isNullOrNil(paramc.eqq)) || (paramc.eqt != 4)) {
             break;
           }
-          ad.i("MicroMsg.GameItemClickListener", "Download via Google Play");
-          r.bK(paramContext, paramc.eom);
+          ac.i("MicroMsg.GameItemClickListener", "Download via Google Play");
+          r.bL(paramContext, paramc.eqq);
           i = 25;
         }
       }
     }
     Bundle localBundle = new Bundle();
     localBundle.putCharSequence("game_app_id", paramc.field_appId);
-    if (paramc.dvS == 1601) {
-      localBundle.putInt("game_report_from_scene", this.rXI);
+    if (paramc.dtF == 1601) {
+      localBundle.putInt("game_report_from_scene", this.tfA);
     }
     for (;;)
     {
-      i = com.tencent.mm.plugin.game.f.c.a(paramContext, paramc.field_appId, paramc.rUV, localBundle);
+      i = com.tencent.mm.plugin.game.f.c.a(paramContext, paramc.field_appId, paramc.tcN, localBundle);
       break;
-      localBundle.putInt("game_report_from_scene", paramc.dvS);
+      localBundle.putInt("game_report_from_scene", paramc.dtF);
     }
   }
   
   private void a(Context paramContext, com.tencent.mm.plugin.game.model.c paramc, int paramInt)
   {
     AppMethodBeat.i(42197);
-    e.a(paramContext, paramc.scene, paramc.dvS, paramc.position, paramInt, paramc.field_appId, this.rXI, paramc.dcC, paramc.rVj);
+    e.a(paramContext, paramc.scene, paramc.dtF, paramc.position, paramInt, paramc.field_appId, this.tfA, paramc.daa, paramc.tdb);
     AppMethodBeat.o(42197);
   }
   
@@ -92,7 +92,7 @@ public final class k
       return;
     }
     paramAdapterView = (com.tencent.mm.plugin.game.model.c)paramAdapterView;
-    if (bt.isNullOrNil(paramAdapterView.field_appId))
+    if (bs.isNullOrNil(paramAdapterView.field_appId))
     {
       AppMethodBeat.o(42194);
       return;
@@ -103,7 +103,7 @@ public final class k
   
   public final void setSourceScene(int paramInt)
   {
-    this.rXI = paramInt;
+    this.tfA = paramInt;
   }
 }
 

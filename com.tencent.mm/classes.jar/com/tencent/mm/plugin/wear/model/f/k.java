@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.drr;
+import com.tencent.mm.protocal.protobuf.dxi;
 import java.io.IOException;
 
 public final class k
   extends c
 {
-  private String bLg;
+  private String bIO;
   private int code;
   
   public k(int paramInt, String paramString)
   {
     this.code = paramInt;
-    this.bLg = paramString;
+    this.bIO = paramString;
   }
   
   public final String getName()
@@ -26,17 +26,17 @@ public final class k
   protected final void send()
   {
     AppMethodBeat.i(30133);
-    drr localdrr = new drr();
+    dxi localdxi = new dxi();
     switch (this.code)
     {
     }
     for (;;)
     {
-      localdrr.Eit = this.bLg;
+      localdxi.FFr = this.bIO;
       try
       {
-        a.egZ();
-        r.a(20016, localdrr.toByteArray(), true);
+        a.ewt();
+        r.a(20016, localdxi.toByteArray(), true);
         AppMethodBeat.o(30133);
         return;
       }
@@ -44,21 +44,21 @@ public final class k
       {
         AppMethodBeat.o(30133);
       }
-      localdrr.Epz = 0;
+      localdxi.FMB = 0;
       continue;
-      localdrr.Epz = 196610;
+      localdxi.FMB = 196610;
       continue;
-      localdrr.Epz = 196613;
+      localdxi.FMB = 196613;
       continue;
-      localdrr.Epz = 196614;
+      localdxi.FMB = 196614;
       continue;
-      localdrr.Epz = 196615;
+      localdxi.FMB = 196615;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.k
  * JD-Core Version:    0.7.0.1
  */

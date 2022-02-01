@@ -5,32 +5,32 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.websearch.api.af;
-import com.tencent.mm.plugin.websearch.api.i;
-import com.tencent.mm.protocal.protobuf.cnh;
-import com.tencent.mm.protocal.protobuf.cni;
+import com.tencent.mm.plugin.websearch.api.ad;
+import com.tencent.mm.plugin.websearch.api.h;
+import com.tencent.mm.protocal.protobuf.cso;
+import com.tencent.mm.protocal.protobuf.csp;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.storage.ae;
 
 public final class b
-  implements i
+  implements h
 {
-  private static String AFB = "websearch_";
-  private static String AFC;
-  private static String AFD;
-  private Runnable AFA;
-  private Runnable AFz;
+  private static String BXU = "websearch_";
+  private static String BXV;
+  private static String BXW;
+  private Runnable BXS;
+  private Runnable BXT;
   
-  private static void bs(Context paramContext, String paramString)
+  private static void bt(Context paramContext, String paramString)
   {
     AppMethodBeat.i(116547);
     Intent localIntent = new Intent();
@@ -40,38 +40,38 @@ public final class b
     AppMethodBeat.o(116547);
   }
   
-  private static SharedPreferences ehv()
+  private static SharedPreferences ewP()
   {
     AppMethodBeat.i(116539);
     init();
-    ad.i("WebSearchPrivacyMgr", " sp name %s ", new Object[] { AFB });
-    SharedPreferences localSharedPreferences = aw.s(aj.getContext(), AFB, 0);
+    ac.i("WebSearchPrivacyMgr", " sp name %s ", new Object[] { BXU });
+    SharedPreferences localSharedPreferences = av.s(ai.getContext(), BXU, 0);
     AppMethodBeat.o(116539);
     return localSharedPreferences;
   }
   
-  public static void ehw()
+  public static void ewQ()
   {
     AppMethodBeat.i(116541);
-    ad.i("WebSearchPrivacyMgr", "reInit");
+    ac.i("WebSearchPrivacyMgr", "reInit");
     Object localObject1 = new StringBuilder("websearch_");
-    g.afz();
-    AFB = com.tencent.mm.kernel.a.aeo();
-    Object localObject2 = g.afB().afk().get(274436, "");
+    g.agP();
+    BXU = com.tencent.mm.kernel.a.afE();
+    Object localObject2 = g.agR().agA().get(274436, "");
     localObject1 = "en";
     if (localObject2 != null) {
       localObject1 = localObject2.toString();
     }
-    AFC = String.format("https://weixin.qq.com/cgi-bin/newreadtemplate?t=gdpr/confirm&business=search&lang=%s&cc=%s&autoCloseWindow=1", new Object[] { ac.eFu(), localObject1 });
-    AFD = String.format("https://weixin.qq.com/cgi-bin/newreadtemplate?t=gdpr/close&business=search&lang=%s&cc=%s&autoCloseWindow=1", new Object[] { ac.eFu(), localObject1 });
+    BXV = String.format("https://weixin.qq.com/cgi-bin/newreadtemplate?t=gdpr/confirm&business=search&lang=%s&cc=%s&autoCloseWindow=1", new Object[] { ab.eUO(), localObject1 });
+    BXW = String.format("https://weixin.qq.com/cgi-bin/newreadtemplate?t=gdpr/close&business=search&lang=%s&cc=%s&autoCloseWindow=1", new Object[] { ab.eUO(), localObject1 });
     AppMethodBeat.o(116541);
   }
   
   public static void init()
   {
     AppMethodBeat.i(116540);
-    if (AFC == null) {
-      ehw();
+    if (BXV == null) {
+      ewQ();
     }
     AppMethodBeat.o(116540);
   }
@@ -80,10 +80,10 @@ public final class b
   {
     AppMethodBeat.i(116545);
     init();
-    if ((!ehz()) && (com.tencent.mm.ax.b.yL((String)g.afB().afk().get(274436, null))))
+    if ((!ewT()) && (com.tencent.mm.aw.b.CQ((String)g.agR().agA().get(274436, null))))
     {
-      this.AFz = paramRunnable;
-      bs(paramContext, AFC);
+      this.BXS = paramRunnable;
+      bt(paramContext, BXV);
       AppMethodBeat.o(116545);
       return;
     }
@@ -95,10 +95,10 @@ public final class b
   {
     AppMethodBeat.i(116546);
     init();
-    if (com.tencent.mm.ax.b.yL((String)g.afB().afk().get(274436, null)))
+    if (com.tencent.mm.aw.b.CQ((String)g.agR().agA().get(274436, null)))
     {
-      this.AFA = paramRunnable;
-      bs(paramContext, AFD);
+      this.BXT = paramRunnable;
+      bt(paramContext, BXW);
       AppMethodBeat.o(116546);
       return true;
     }
@@ -107,31 +107,31 @@ public final class b
     return false;
   }
   
-  public final void ehx()
+  public final void ewR()
   {
     AppMethodBeat.i(116542);
-    ad.i("WebSearchPrivacyMgr", "openSearch ");
+    ac.i("WebSearchPrivacyMgr", "openSearch ");
     init();
-    if (this.AFz != null)
+    if (this.BXS != null)
     {
-      this.AFz.run();
-      if (this.AFz == this.AFz) {
-        this.AFz = null;
+      this.BXS.run();
+      if (this.BXS == this.BXS) {
+        this.BXS = null;
       }
     }
-    ehv().edit().putBoolean("websearch_confirmed", true).commit();
-    cnh localcnh = new cnh();
-    localcnh.EhP = 1;
-    localcnh.Timestamp = ((int)(System.currentTimeMillis() / 1000L));
-    localcnh.fVE = 1;
+    ewP().edit().putBoolean("websearch_confirmed", true).commit();
+    cso localcso = new cso();
+    localcso.FEN = 1;
+    localcso.Timestamp = ((int)(System.currentTimeMillis() / 1000L));
+    localcso.fZz = 1;
     b.a locala = new b.a();
-    locala.gUU = localcnh;
-    locala.gUV = new cni();
+    locala.hvt = localcso;
+    locala.hvu = new csp();
     locala.uri = "/cgi-bin/mmsearch-bin/searchconfirm";
     locala.funcId = 2957;
-    x.a(locala.atI(), new x.a()
+    x.a(locala.aAz(), new x.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb, com.tencent.mm.al.n paramAnonymousn)
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, com.tencent.mm.ak.n paramAnonymousn)
       {
         return 0;
       }
@@ -139,48 +139,48 @@ public final class b
     AppMethodBeat.o(116542);
   }
   
-  public final void ehy()
+  public final void ewS()
   {
     AppMethodBeat.i(116543);
-    ad.i("WebSearchPrivacyMgr", "closeSearch ");
+    ac.i("WebSearchPrivacyMgr", "closeSearch ");
     init();
-    if (this.AFA != null)
+    if (this.BXT != null)
     {
-      this.AFA.run();
-      if (this.AFA == this.AFA) {
-        this.AFA = null;
+      this.BXT.run();
+      if (this.BXT == this.BXT) {
+        this.BXT = null;
       }
     }
-    ehv().edit().putBoolean("websearch_confirmed", false).commit();
-    Object localObject = new cnh();
-    ((cnh)localObject).EhP = 1;
-    ((cnh)localObject).Timestamp = ((int)(System.currentTimeMillis() / 1000L));
-    ((cnh)localObject).fVE = 2;
+    ewP().edit().putBoolean("websearch_confirmed", false).commit();
+    Object localObject = new cso();
+    ((cso)localObject).FEN = 1;
+    ((cso)localObject).Timestamp = ((int)(System.currentTimeMillis() / 1000L));
+    ((cso)localObject).fZz = 2;
     b.a locala = new b.a();
-    locala.gUU = ((com.tencent.mm.bx.a)localObject);
-    locala.gUV = new cni();
+    locala.hvt = ((com.tencent.mm.bw.a)localObject);
+    locala.hvu = new csp();
     locala.uri = "/cgi-bin/mmsearch-bin/searchconfirm";
     locala.funcId = 2957;
-    x.a(locala.atI(), new x.a()
+    x.a(locala.aAz(), new x.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb, com.tencent.mm.al.n paramAnonymousn)
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, com.tencent.mm.ak.n paramAnonymousn)
       {
         return 0;
       }
     });
     ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).deleteSOSHistory();
-    if (af.AGQ != null) {
-      af.AGQ = null;
+    if (ad.BZi != null) {
+      ad.BZi = null;
     }
-    localObject = af.bdo();
-    aj.getContext().getSharedPreferences("fts_recent_biz_sp", 0).edit().remove((String)localObject).commit();
+    localObject = ad.bkj();
+    ai.getContext().getSharedPreferences("fts_recent_biz_sp", 0).edit().remove((String)localObject).commit();
     AppMethodBeat.o(116543);
   }
   
-  public final boolean ehz()
+  public final boolean ewT()
   {
     AppMethodBeat.i(116544);
-    boolean bool = ehv().getBoolean("websearch_confirmed", false);
+    boolean bool = ewP().getBoolean("websearch_confirmed", false);
     AppMethodBeat.o(116544);
     return bool;
   }

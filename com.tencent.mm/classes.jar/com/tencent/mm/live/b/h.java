@@ -1,530 +1,686 @@
 package com.tencent.mm.live.b;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.os.Parcelable;
+import android.telephony.TelephonyManager;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vt;
+import com.tencent.mm.g.a.vt.b;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.live.api.LiveConfig;
-import com.tencent.mm.live.b.a.m;
-import com.tencent.mm.live.b.a.o;
-import com.tencent.mm.live.b.a.p;
-import com.tencent.mm.live.b.a.r;
-import com.tencent.mm.live.b.a.s;
-import com.tencent.mm.live.b.a.t;
-import com.tencent.mm.live.b.b.a.a;
-import com.tencent.mm.model.ce;
-import com.tencent.mm.model.u;
-import com.tencent.mm.protocal.protobuf.eal;
-import com.tencent.mm.protocal.protobuf.eaq;
-import com.tencent.mm.protocal.protobuf.eas;
-import com.tencent.mm.protocal.protobuf.eaw;
-import com.tencent.mm.protocal.protobuf.ebp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.live.api.LiveConfig.a;
+import com.tencent.mm.live.b.c.c;
+import com.tencent.mm.live.ui.dialog.LiveVisitorGuideView;
+import com.tencent.mm.protocal.protobuf.bqa;
+import com.tencent.mm.protocal.protobuf.bqd;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.widget.a.f.c;
 import d.g.b.k;
-import java.util.ArrayList;
-import java.util.List;
+import d.g.b.v.f;
+import d.v;
+import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveRoomOperation;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "getMessageTask", "Ljava/lang/Runnable;", "isAnchor", "", "keepAliveTask", "micKeepAliveTask", "doBanComment", "", "enableComment", "doCheckExitRoomReason", "doCloseLive", "doGetLiveInfo", "doGetLiveMessage", "delay", "", "doGetLiveOnlineByRoom", "wechatRoomId", "doGetLiveStateByRoom", "doKeepAlive", "doKickMember", "username", "doLikeLive", "likeCount", "", "doLoadOnlineMembers", "userList", "", "doMicKeepAlive", "doOpenReplay", "enableOpenReplay", "doPostComment", "content", "msgType", "doSetAnchorStatus", "status", "doShareLive", "doVisitorOfflineNotify", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "startLive", "stopMicKeepAlive", "plugin-logic_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/LiveEntranceJumperImpl;", "Lcom/tencent/mm/live/api/ILiveEntranceJumper;", "()V", "TAG", "", "gotoAnchorLive", "", "context", "Landroid/content/Context;", "configProvider", "Lcom/tencent/mm/live/api/LiveConfig;", "gotoVisitLive", "jumpToAnchorUI", "", "jumpToEntranceUI", "jumpToLiveUIA", "jumpToReplayUI", "jumpToVisitorUI", "LiveChecker", "plugin-logic_release"})
 public final class h
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.live.api.a
 {
-  private static final String TAG = "MicroMsg.LiveRoomOperation";
-  private static boolean aWl;
-  private static final Runnable wJp;
-  private static final Runnable wXm;
-  static final Runnable xcd;
-  public static final h xfu;
+  private static final String TAG = "MicroMsg.LiveEntranceJumper";
+  public static final h guS;
   
   static
   {
-    AppMethodBeat.i(202678);
-    xfu = new h();
-    TAG = "MicroMsg.LiveRoomOperation";
-    aWl = true;
-    wJp = (Runnable)b.yZY;
-    wXm = (Runnable)a.yIg;
-    xcd = (Runnable)c.zaJ;
-    AppMethodBeat.o(202678);
+    AppMethodBeat.i(189834);
+    guS = new h();
+    TAG = "MicroMsg.LiveEntranceJumper";
+    AppMethodBeat.o(189834);
   }
   
-  private static void Bg(long paramLong)
+  private static void e(final Context paramContext, final LiveConfig paramLiveConfig)
   {
-    AppMethodBeat.i(202656);
-    com.tencent.mm.ad.c.aW(wXm);
-    com.tencent.mm.ad.c.c(paramLong, wXm);
-    AppMethodBeat.o(202656);
-  }
-  
-  public static void a(LiveConfig paramLiveConfig)
-  {
-    AppMethodBeat.i(202674);
-    k.h(paramLiveConfig, "config");
-    if (paramLiveConfig.ckz() == LiveConfig.qsH) {}
-    for (boolean bool = true;; bool = false)
+    int j = 1;
+    AppMethodBeat.i(189831);
+    Object localObject1 = g.guG;
+    g.alx();
+    Object localObject2;
+    if (bt.eWo())
     {
-      aWl = bool;
-      AppMethodBeat.o(202674);
-      return;
-    }
-  }
-  
-  public static void aUp(String paramString)
-  {
-    AppMethodBeat.i(202664);
-    k.h(paramString, "wechatRoomId");
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new com.tencent.mm.live.b.a.c(f.eNG().LwA, paramString));
-    AppMethodBeat.o(202664);
-  }
-  
-  public static void aUq(String paramString)
-  {
-    AppMethodBeat.i(202665);
-    k.h(paramString, "wechatRoomId");
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new com.tencent.mm.live.b.a.d(f.eNG().LwA, paramString));
-    AppMethodBeat.o(202665);
-  }
-  
-  public static void aUr(String paramString)
-  {
-    AppMethodBeat.i(202668);
-    k.h(paramString, "wechatRoomId");
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new t(f.eNG().LwA, paramString));
-    AppMethodBeat.o(202668);
-  }
-  
-  public static void aUs(String paramString)
-  {
-    AppMethodBeat.i(202670);
-    k.h(paramString, "username");
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    long l = f.eNG().LwA;
-    localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new o(l, f.eNB(), paramString));
-    AppMethodBeat.o(202670);
-  }
-  
-  public static void agI(int paramInt)
-  {
-    AppMethodBeat.i(202660);
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    long l = f.eNG().LwA;
-    localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new p(l, f.eNB(), paramInt));
-    AppMethodBeat.o(202660);
-  }
-  
-  public static void agJ(int paramInt)
-  {
-    AppMethodBeat.i(202672);
-    eaq localeaq = new eaq();
-    localeaq.LyY = paramInt;
-    localeaq.LyX = ce.asR();
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new com.tencent.mm.live.b.a.f(f.eNG().LwA, localeaq));
-    AppMethodBeat.o(202672);
-  }
-  
-  public static void bG(List<String> paramList)
-  {
-    AppMethodBeat.i(202673);
-    k.h(paramList, "userList");
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new m(f.eNG().LwA, paramList));
-    AppMethodBeat.o(202673);
-  }
-  
-  public static void fOF()
-  {
-    AppMethodBeat.i(202658);
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    long l = f.eNG().LwA;
-    localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new com.tencent.mm.live.b.a.l(l, f.eNB(), true));
-    AppMethodBeat.o(202658);
-  }
-  
-  public static void fOG()
-  {
-    AppMethodBeat.i(202661);
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    long l = f.eNG().LwA;
-    localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new com.tencent.mm.live.b.a.a(l, f.eNB()));
-    AppMethodBeat.o(202661);
-  }
-  
-  public static void fOH()
-  {
-    AppMethodBeat.i(202666);
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    long l = f.eNG().LwA;
-    localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new com.tencent.mm.live.b.a.b(l, f.eNB()));
-    AppMethodBeat.o(202666);
-  }
-  
-  public static void gQ(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(202659);
-    k.h(paramString, "content");
-    Object localObject1 = u.aqG();
-    k.g(localObject1, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    localObject1 = new com.tencent.mm.live.view.a.a((String)localObject1, "", (CharSequence)paramString, paramInt, ce.asT());
-    Object localObject2 = f.rGw;
-    f.eNE().add(localObject1);
-    localObject1 = c.qYi;
-    c.dRj();
-    localObject1 = com.tencent.mm.kernel.g.afA();
-    k.g(localObject1, "MMKernel.network()");
-    com.tencent.mm.al.q localq = ((com.tencent.mm.kernel.b)localObject1).aeS();
-    localObject1 = f.rGw;
-    long l = f.eNG().LwA;
-    localObject1 = f.rGw;
-    localObject2 = f.eNF();
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new byte[0];
-    }
-    localObject2 = f.rGw;
-    localq.b((com.tencent.mm.al.n)new r(paramString, paramInt, l, (byte[])localObject1, f.eNB()));
-    AppMethodBeat.o(202659);
-  }
-  
-  public static void ng(boolean paramBoolean)
-  {
-    AppMethodBeat.i(202667);
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    long l = f.eNG().LwA;
-    localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new com.tencent.mm.live.b.a.h(l, f.eNB(), paramBoolean));
-    AppMethodBeat.o(202667);
-  }
-  
-  public static void rm(boolean paramBoolean)
-  {
-    AppMethodBeat.i(202669);
-    Object localObject = com.tencent.mm.kernel.g.afA();
-    k.g(localObject, "MMKernel.network()");
-    localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-    f localf = f.rGw;
-    long l = f.eNG().LwA;
-    localf = f.rGw;
-    ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new com.tencent.mm.live.b.a.q(l, f.eNB(), paramBoolean));
-    AppMethodBeat.o(202669);
-  }
-  
-  public final void Bh(long paramLong)
-  {
-    AppMethodBeat.i(202662);
-    ad.i(TAG, "doKeepAlive delay:".concat(String.valueOf(paramLong)));
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.afA();
-    k.g(localb, "MMKernel.network()");
-    localb.aeS().a(3797, (com.tencent.mm.al.g)this);
-    com.tencent.mm.ad.c.aW(wJp);
-    com.tencent.mm.ad.c.c(paramLong, wJp);
-    AppMethodBeat.o(202662);
-  }
-  
-  public final void Bi(long paramLong)
-  {
-    AppMethodBeat.i(202671);
-    ad.i(TAG, "doMicKeepLive delay:".concat(String.valueOf(paramLong)));
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.afA();
-    k.g(localb, "MMKernel.network()");
-    localb.aeS().a(760, (com.tencent.mm.al.g)this);
-    com.tencent.mm.ad.c.aW(xcd);
-    com.tencent.mm.ad.c.c(paramLong, xcd);
-    AppMethodBeat.o(202671);
-  }
-  
-  public final void fOI()
-  {
-    AppMethodBeat.i(202675);
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.afA();
-    k.g(localb, "MMKernel.network()");
-    localb.aeS().a(3767, (com.tencent.mm.al.g)this);
-    AppMethodBeat.o(202675);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
-  {
-    AppMethodBeat.i(202677);
-    long l;
-    if ((paramn instanceof com.tencent.mm.live.b.a.l))
-    {
-      l = ((com.tencent.mm.live.b.a.l)paramn).duration;
-      paramString = e.h.rFD;
-      if (l > e.h.eNw()) {}
-      for (l = 0L;; l = e.h.eNw())
+      localObject1 = f.e.gtA;
+      localObject1 = aw.aKU(f.e.akp());
+      localObject2 = f.g.gtG;
+      if (((aw)localObject1).getBoolean(f.g.aku(), false))
       {
-        ad.i(TAG, "NetSceneLiveGetLiveMessage duration:" + ((com.tencent.mm.live.b.a.l)paramn).duration + ", delay:" + l);
-        Bg(l);
-        AppMethodBeat.o(202677);
-        return;
-        paramString = e.h.rFD;
+        i = 1;
+        localObject1 = com.tencent.mm.kernel.g.agR();
+        k.g(localObject1, "MMKernel.storage()");
+        localObject1 = ((e)localObject1).agA().get(6);
+        if (localObject1 != null) {
+          break label245;
+        }
+        localObject1 = null;
+        label85:
+        if (i == 0) {
+          break label255;
+        }
+        if (paramLiveConfig != null) {
+          LiveConfig.dB(false);
+        }
+        label97:
+        localObject1 = g.guG;
+        if (!g.akV().guJ) {
+          break label336;
+        }
+        localObject1 = com.tencent.mm.kernel.g.agR();
+        k.g(localObject1, "MMKernel.storage()");
+        if (((e)localObject1).agA().getInt(ah.a.GWE, 1) != 1) {
+          break label320;
+        }
       }
     }
-    String str;
-    if ((paramn instanceof com.tencent.mm.live.b.a.n))
+    label304:
+    label309:
+    label320:
+    for (int i = j;; i = 0)
     {
-      paramString = com.tencent.mm.kernel.g.afA();
-      k.g(paramString, "MMKernel.network()");
-      paramString.aeS().b(3797, (com.tencent.mm.al.g)this);
-      if ((paramInt1 == 0) && (paramInt2 == 0))
+      if (i == 0) {
+        break label325;
+      }
+      localObject1 = new com.tencent.mm.ui.widget.a.g(paramContext, 0, 0);
+      ((com.tencent.mm.ui.widget.a.g)localObject1).setHeight(ap.cl(paramContext).y * 3 / 4);
+      localObject2 = new LiveVisitorGuideView(paramContext);
+      ((LiveVisitorGuideView)localObject2).setOnHideListener((d.g.a.a)new b((com.tencent.mm.ui.widget.a.g)localObject1));
+      ((LiveVisitorGuideView)localObject2).setOnOkListener((d.g.a.a)new c((com.tencent.mm.ui.widget.a.g)localObject1, paramContext, paramLiveConfig));
+      ((com.tencent.mm.ui.widget.a.g)localObject1).setCustomView((View)localObject2);
+      ((com.tencent.mm.ui.widget.a.g)localObject1).cED();
+      AppMethodBeat.o(189831);
+      return;
+      i = 0;
+      break;
+      label245:
+      localObject1 = (String)localObject1;
+      break label85;
+      label255:
+      localObject2 = g.guG;
+      if (g.akV().guI)
       {
-        paramString = ((com.tencent.mm.live.b.a.n)paramn).zcc;
-        if (paramString != null)
+        if (localObject1 != null) {
+          if (((CharSequence)localObject1).length() != 0) {
+            break label304;
+          }
+        }
+        for (i = 1;; i = 0)
         {
-          paramString = paramString.LyW;
-          if (paramString == null) {
-            break label580;
+          if (i == 0) {
+            break label309;
           }
-          paramn = f.rGw;
-          f.a(paramString);
-          ad.i(TAG, "doKeepAlive updatePrivateMapKey");
-          if (!aWl) {
-            break label329;
+          if (paramLiveConfig == null) {
+            break;
           }
-          paramn = com.tencent.mm.live.core.core.a.b.qym;
-          paramn = aj.getContext();
-          k.g(paramn, "MMApplicationContext.getContext()");
-          paramn = com.tencent.mm.live.core.core.a.b.a.eG(paramn);
-          str = paramString.Lzu.eBA();
-          k.g(str, "liveSdkInfo.sdk_private_map_key.toStringUtf8()");
-          paramn.aTV(str);
-          label240:
-          paramn = f.rGw;
-          paramn = f.eNK();
-          if (paramn != null)
+          LiveConfig.dB(true);
+          break;
+        }
+      }
+      if (paramLiveConfig == null) {
+        break label97;
+      }
+      LiveConfig.dB(false);
+      break label97;
+    }
+    label325:
+    f(paramContext, paramLiveConfig);
+    AppMethodBeat.o(189831);
+    return;
+    label336:
+    f(paramContext, paramLiveConfig);
+    AppMethodBeat.o(189831);
+  }
+  
+  private static void f(Context paramContext, LiveConfig paramLiveConfig)
+  {
+    AppMethodBeat.i(189832);
+    if (paramLiveConfig != null) {
+      c.getLiveTipsBarStorage().t(paramLiveConfig.aij(), paramLiveConfig.ail());
+    }
+    Intent localIntent = new Intent(paramContext, Class.forName("com.tencent.mm.live.ui.LiveUIA"));
+    localIntent.putExtra("KEY_PARAMS_CONFIG", (Parcelable)paramLiveConfig);
+    localIntent.addFlags(268435456);
+    paramLiveConfig = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLiveConfig.aeD(), "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToLiveUIA", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramLiveConfig.lR(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToLiveUIA", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(189832);
+  }
+  
+  private static void g(Context paramContext, LiveConfig paramLiveConfig)
+  {
+    AppMethodBeat.i(189833);
+    Object localObject = g.guG;
+    g.alx();
+    localObject = new Intent(paramContext, Class.forName("com.tencent.mm.live.ui.LiveUIA"));
+    ((Intent)localObject).putExtra("KEY_PARAMS_CONFIG", (Parcelable)paramLiveConfig);
+    ((Intent)localObject).addFlags(268435456);
+    paramLiveConfig = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLiveConfig.aeD(), "com/tencent/mm/live/model/LiveEntranceJumperImpl", "gotoAnchorLive", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramLiveConfig.lR(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/live/model/LiveEntranceJumperImpl", "gotoAnchorLive", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(189833);
+  }
+  
+  public final boolean a(Context paramContext, LiveConfig paramLiveConfig)
+  {
+    AppMethodBeat.i(189827);
+    k.h(paramContext, "context");
+    try
+    {
+      Intent localIntent = new Intent(paramContext, Class.forName("com.tencent.mm.live.ui.LiveUIF"));
+      localIntent.putExtra("KEY_PARAMS_CONFIG", (Parcelable)paramLiveConfig);
+      paramLiveConfig = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLiveConfig.aeD(), "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToEntranceUI", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramLiveConfig.lR(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToEntranceUI", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      bool = true;
+    }
+    catch (ClassNotFoundException paramContext)
+    {
+      for (;;)
+      {
+        ac.printErrStackTrace(TAG, (Throwable)paramContext, "jumpToEntranceUI failed!", new Object[0]);
+        boolean bool = false;
+      }
+    }
+    AppMethodBeat.o(189827);
+    return bool;
+  }
+  
+  public final boolean b(Context paramContext, LiveConfig paramLiveConfig)
+  {
+    AppMethodBeat.i(189828);
+    k.h(paramContext, "context");
+    for (;;)
+    {
+      try
+      {
+        a locala = a.guT;
+        k.h(paramContext, "context");
+        v.f localf = new v.f();
+        localObject = paramContext.getResources();
+        if (localObject == null) {
+          continue;
+        }
+        localObject = ((Resources)localObject).getString(2131766655);
+        localf.KUQ = localObject;
+        localObject = new v.f();
+        ((v.f)localObject).KUQ = paramContext.getResources().getString(2131755792);
+        locala = locala.k((d.g.a.a)new h.a.f(paramContext, (v.f)localObject));
+        if (locala != null)
+        {
+          locala = locala.j((d.g.a.a)new h.a.g(paramContext, (v.f)localObject));
+          if (locala != null)
           {
-            paramn = paramn.qzq;
-            if (paramn != null) {
-              paramn.privateMapKey = paramString.Lzu.eBA();
+            locala = locala.l((d.g.a.a)new h.a.h(paramContext, (v.f)localObject));
+            if ((locala != null) && (locala.a(paramLiveConfig, (d.g.a.a)new h.a.i(paramContext, (v.f)localObject, paramLiveConfig, localf)) != null))
+            {
+              localObject = com.tencent.mm.live.core.core.a.b.gnC;
+              if (!com.tencent.mm.live.core.core.a.b.a.aiN()) {
+                continue;
+              }
+              localObject = com.tencent.mm.live.core.core.a.b.gnC;
+              com.tencent.mm.live.core.core.a.b.a.ct(paramContext);
+              if (paramLiveConfig != null)
+              {
+                long l = paramLiveConfig.ail();
+                localObject = g.guG;
+                if (l == g.akF().DMV) {}
+              }
+              else
+              {
+                localObject = g.guG;
+                g.WN();
+              }
+              e(paramContext, paramLiveConfig);
             }
           }
-          paramString = f.rGw;
-          paramString = f.eNH();
-          if (paramString == null) {
-            break label381;
-          }
         }
-        label329:
-        label381:
-        for (l = paramString.Lzy;; l = 0L)
-        {
-          Bh(d.k.h.aH((l - 60L) * 1000L, 60000L));
-          AppMethodBeat.o(202677);
-          return;
-          paramString = null;
-          break;
-          paramn = com.tencent.mm.live.core.core.c.b.qOk;
-          paramn = aj.getContext();
-          k.g(paramn, "MMApplicationContext.getContext()");
-          paramn = com.tencent.mm.live.core.core.c.b.a.eH(paramn);
-          str = paramString.Lzu.eBA();
-          k.g(str, "liveSdkInfo.sdk_private_map_key.toStringUtf8()");
-          paramn.aTV(str);
-          break label240;
-        }
+        bool = true;
       }
-    }
-    else if ((paramn instanceof s))
-    {
-      paramString = com.tencent.mm.kernel.g.afA();
-      k.g(paramString, "MMKernel.network()");
-      paramString.aeS().b(760, (com.tencent.mm.al.g)this);
-      if ((paramInt1 == 0) && (paramInt2 == 0))
+      catch (ClassNotFoundException paramContext)
       {
-        paramString = ((s)paramn).Agy;
-        if (paramString == null) {
-          break label587;
-        }
+        Object localObject;
+        ac.printErrStackTrace(TAG, (Throwable)paramContext, "jumpToEntranceUI failed!", new Object[0]);
+        boolean bool = false;
+        continue;
       }
-    }
-    label580:
-    label587:
-    for (paramString = paramString.LyW;; paramString = null)
-    {
-      if (paramString != null)
+      AppMethodBeat.o(189828);
+      return bool;
+      localObject = null;
+      continue;
+      localObject = com.tencent.mm.live.core.core.c.b.gqt;
+      if (com.tencent.mm.live.core.core.c.b.a.aiN())
       {
-        paramn = f.rGw;
-        f.a(paramString);
-        ad.i(TAG, "doMicKeepAlive updatePrivateMapKey");
-        paramn = com.tencent.mm.live.core.core.c.b.qOk;
-        paramn = aj.getContext();
-        k.g(paramn, "MMApplicationContext.getContext()");
-        paramn = com.tencent.mm.live.core.core.c.b.a.eH(paramn);
-        str = paramString.Lzu.eBA();
-        k.g(str, "liveSdkInfo.sdk_private_map_key.toStringUtf8()");
-        paramn.aTV(str);
-        paramn = f.rGw;
-        paramn = f.eNK();
-        if (paramn != null)
-        {
-          paramn = paramn.qzq;
-          if (paramn != null) {
-            paramn.privateMapKey = paramString.Lzu.eBA();
-          }
-        }
-        paramString = f.rGw;
-        Bi(d.k.h.aH((f.eNL() - 60L) * 1000L, 60000L));
+        localObject = com.tencent.mm.live.core.core.c.b.gqt;
+        com.tencent.mm.live.core.core.c.b.a.cu(paramContext);
       }
-      AppMethodBeat.o(202677);
-      return;
     }
   }
   
-  public final void release()
+  public final boolean c(Context paramContext, LiveConfig paramLiveConfig)
   {
-    AppMethodBeat.i(202676);
-    com.tencent.mm.ad.c.aW(wJp);
-    com.tencent.mm.ad.c.aW(wXm);
-    com.tencent.mm.ad.c.aW(xcd);
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.afA();
-    k.g(localb, "MMKernel.network()");
-    localb.aeS().b(3767, (com.tencent.mm.al.g)this);
-    localb = com.tencent.mm.kernel.g.afA();
-    k.g(localb, "MMKernel.network()");
-    localb.aeS().b(3797, (com.tencent.mm.al.g)this);
-    localb = com.tencent.mm.kernel.g.afA();
-    k.g(localb, "MMKernel.network()");
-    localb.aeS().b(760, (com.tencent.mm.al.g)this);
-    AppMethodBeat.o(202676);
+    AppMethodBeat.i(189830);
+    k.h(paramContext, "context");
+    for (;;)
+    {
+      try
+      {
+        Object localObject2 = a.guT;
+        k.h(paramContext, "context");
+        localObject1 = new v.f();
+        ((v.f)localObject1).KUQ = paramContext.getResources().getString(2131755792);
+        localObject2 = ((a)localObject2).k((d.g.a.a)new h.a.a(paramContext, (v.f)localObject1));
+        if (localObject2 != null)
+        {
+          localObject2 = ((a)localObject2).j((d.g.a.a)new h.a.b(paramContext, (v.f)localObject1));
+          if (localObject2 != null)
+          {
+            localObject2 = ((a)localObject2).l((d.g.a.a)new h.a.c(paramContext, (v.f)localObject1));
+            if (localObject2 != null)
+            {
+              localObject1 = ((a)localObject2).a(paramLiveConfig, (d.g.a.a)new h.a.d(paramContext, (v.f)localObject1, paramLiveConfig));
+              if (localObject1 != null)
+              {
+                localObject2 = (d.g.a.b)new h.a.e(paramContext, paramLiveConfig);
+                Object localObject3 = com.tencent.mm.live.b.c.a.gxp;
+                localObject3 = com.tencent.mm.live.b.c.a.alJ();
+                if ((paramLiveConfig == null) || (paramLiveConfig.getScene() != LiveConfig.gmH) || (((bqa)localObject3).DMV == 0L)) {
+                  continue;
+                }
+                ((d.g.a.b)localObject2).ay(localObject3);
+                localObject1 = null;
+                if (localObject1 != null)
+                {
+                  localObject1 = com.tencent.mm.live.core.core.a.b.gnC;
+                  if (!com.tencent.mm.live.core.core.a.b.a.aiN()) {
+                    continue;
+                  }
+                  localObject1 = com.tencent.mm.live.core.core.a.b.gnC;
+                  com.tencent.mm.live.core.core.a.b.a.ct(paramContext);
+                  if (paramLiveConfig != null)
+                  {
+                    long l = paramLiveConfig.ail();
+                    localObject1 = g.guG;
+                    if (l == g.akF().DMV) {}
+                  }
+                  else
+                  {
+                    localObject1 = g.guG;
+                    g.WN();
+                  }
+                  g(paramContext, paramLiveConfig);
+                }
+              }
+            }
+          }
+        }
+        bool = true;
+      }
+      catch (ClassNotFoundException paramContext)
+      {
+        Object localObject1;
+        ac.printErrStackTrace(TAG, (Throwable)paramContext, "jumpToAnchorUI failed!", new Object[0]);
+        boolean bool = false;
+        continue;
+      }
+      AppMethodBeat.o(189830);
+      return bool;
+      continue;
+      localObject1 = com.tencent.mm.live.core.core.c.b.gqt;
+      if (com.tencent.mm.live.core.core.c.b.a.aiN())
+      {
+        localObject1 = com.tencent.mm.live.core.core.c.b.gqt;
+        com.tencent.mm.live.core.core.c.b.a.cu(paramContext);
+      }
+    }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
+  public final boolean d(Context paramContext, LiveConfig paramLiveConfig)
   {
-    public static final a yIg;
+    AppMethodBeat.i(189829);
+    k.h(paramContext, "context");
+    try
+    {
+      Intent localIntent = new Intent(paramContext, Class.forName("com.tencent.mm.live.ui.LiveUID"));
+      localIntent.putExtra("KEY_PARAMS_CONFIG", (Parcelable)paramLiveConfig);
+      localIntent.addFlags(268435456);
+      localIntent.putExtra("FROM_SENCE", 1);
+      paramLiveConfig = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramLiveConfig.aeD(), "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToReplayUI", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramLiveConfig.lR(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/live/model/LiveEntranceJumperImpl", "jumpToReplayUI", "(Landroid/content/Context;Lcom/tencent/mm/live/api/LiveConfig;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      bool = true;
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        ac.printErrStackTrace(TAG, (Throwable)paramContext, "jumpToReplayUI failed!", new Object[0]);
+        boolean bool = false;
+      }
+    }
+    AppMethodBeat.o(189829);
+    return bool;
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/LiveEntranceJumperImpl$LiveChecker;", "", "()V", "checkAnchorLiving", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "errorCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/LiveAnchorInfo;", "Lkotlin/ParameterName;", "name", "liveAnchorInfo", "", "checkIsUsePhone", "Lkotlin/Function0;", "checkLiveInfo", "checkNetwork", "checkTalkRoom", "goAnchorUIWithCheck", "context", "Landroid/content/Context;", "goVisitorUIWithCheck", "plugin-logic_release"})
+  public static final class a
+  {
+    public static final a guT;
     
     static
     {
-      AppMethodBeat.i(202651);
-      yIg = new a();
-      AppMethodBeat.o(202651);
+      AppMethodBeat.i(189824);
+      guT = new a();
+      AppMethodBeat.o(189824);
     }
     
-    public final void run()
+    final a a(LiveConfig paramLiveConfig, d.g.a.a<y> parama)
     {
-      AppMethodBeat.i(202650);
-      Object localObject = com.tencent.mm.kernel.g.afA();
-      k.g(localObject, "MMKernel.network()");
-      localObject = ((com.tencent.mm.kernel.b)localObject).aeS();
-      f localf = f.rGw;
-      long l = f.eNG().LwA;
-      localf = f.rGw;
-      ((com.tencent.mm.al.q)localObject).b((com.tencent.mm.al.n)new com.tencent.mm.live.b.a.l(l, f.eNB()));
-      AppMethodBeat.o(202650);
+      AppMethodBeat.i(189820);
+      Object localObject1 = g.guG;
+      int i;
+      if (g.akF().DMV != 0L)
+      {
+        localObject1 = h.guS;
+        String str = h.alz();
+        localObject1 = new StringBuilder("curLiveId:");
+        Object localObject2 = g.guG;
+        localObject2 = ((StringBuilder)localObject1).append(g.akF().DMV).append(" newLiveId:");
+        if (paramLiveConfig != null)
+        {
+          localObject1 = Long.valueOf(paramLiveConfig.ail());
+          ac.i(str, localObject1);
+          localObject1 = g.guG;
+          if (!g.akT().guQ)
+          {
+            localObject1 = g.guG;
+            if (!g.akT().guO) {
+              break label147;
+            }
+          }
+          i = 1;
+        }
+      }
+      for (;;)
+      {
+        if (i != 0) {
+          break label269;
+        }
+        parama.invoke();
+        AppMethodBeat.o(189820);
+        return null;
+        localObject1 = null;
+        break;
+        label147:
+        if ((paramLiveConfig != null) && (paramLiveConfig.ail() == 0L))
+        {
+          localObject1 = g.guG;
+          localObject1 = (CharSequence)g.akA();
+          if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+          for (i = 1;; i = 0)
+          {
+            if (i == 0)
+            {
+              localObject1 = g.guG;
+              if (!bs.lr(g.akA(), paramLiveConfig.aij())) {}
+            }
+            else
+            {
+              if (paramLiveConfig.getScene() != LiveConfig.gmH) {
+                break label259;
+              }
+            }
+            i = 0;
+            break;
+          }
+        }
+        localObject1 = g.guG;
+        long l = g.akF().DMV;
+        if ((paramLiveConfig != null) && (l == paramLiveConfig.ail())) {
+          label259:
+          i = 1;
+        } else {
+          i = 0;
+        }
+      }
+      label269:
+      AppMethodBeat.o(189820);
+      return this;
+    }
+    
+    final a j(d.g.a.a<y> parama)
+    {
+      AppMethodBeat.i(189821);
+      int i;
+      try
+      {
+        Object localObject1 = ai.getContext().getSystemService("phone");
+        if (localObject1 != null) {
+          break label86;
+        }
+        localObject1 = new v("null cannot be cast to non-null type android.telephony.TelephonyManager");
+        AppMethodBeat.o(189821);
+        throw ((Throwable)localObject1);
+      }
+      catch (Exception localException1)
+      {
+        i = 0;
+      }
+      h localh = h.guS;
+      ac.e(h.alz(), "get callState error , errMsg is %s", new Object[] { localException1.getLocalizedMessage() });
+      for (;;)
+      {
+        if (i != 0)
+        {
+          parama.invoke();
+          AppMethodBeat.o(189821);
+          return null;
+          label86:
+          Object localObject2 = (TelephonyManager)localException1;
+          if (localObject2 != null)
+          {
+            int j = ((TelephonyManager)localObject2).getCallState();
+            switch (j)
+            {
+            default: 
+              i = 0;
+            }
+            for (;;)
+            {
+              try
+              {
+                localObject2 = h.guS;
+                ac.i(h.alz(), "TelephoneManager.callState is %d", new Object[] { Integer.valueOf(j) });
+              }
+              catch (Exception localException2) {}
+              break;
+              i = 0;
+              continue;
+              i = 1;
+            }
+          }
+        }
+        else
+        {
+          AppMethodBeat.o(189821);
+          return this;
+        }
+        i = 0;
+      }
+    }
+    
+    final a k(d.g.a.a<y> parama)
+    {
+      AppMethodBeat.i(189822);
+      if (!ax.isConnected(ai.getContext()))
+      {
+        parama.invoke();
+        AppMethodBeat.o(189822);
+        return null;
+      }
+      AppMethodBeat.o(189822);
+      return this;
+    }
+    
+    final a l(d.g.a.a<y> parama)
+    {
+      AppMethodBeat.i(189823);
+      vt localvt = new vt();
+      localvt.dyB.dyD = true;
+      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localvt);
+      if (!bs.isNullOrNil(localvt.dyC.dyF))
+      {
+        parama.invoke();
+        AppMethodBeat.o(189823);
+        return null;
+      }
+      AppMethodBeat.o(189823);
+      return this;
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+    static final class a
+      extends d.g.b.l
+      implements d.g.a.a<y>
+    {
+      a(Context paramContext, v.f paramf)
+      {
+        super();
+      }
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+    static final class b
+      extends d.g.b.l
+      implements d.g.a.a<y>
+    {
+      b(Context paramContext, v.f paramf)
+      {
+        super();
+      }
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+    static final class c
+      extends d.g.b.l
+      implements d.g.a.a<y>
+    {
+      c(Context paramContext, v.f paramf)
+      {
+        super();
+      }
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+    static final class d
+      extends d.g.b.l
+      implements d.g.a.a<y>
+    {
+      d(Context paramContext, v.f paramf, LiveConfig paramLiveConfig)
+      {
+        super();
+      }
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "liveAnchorInfo", "Lcom/tencent/mm/protocal/protobuf/LiveAnchorInfo;", "invoke"})
+    static final class e
+      extends d.g.b.l
+      implements d.g.a.b<bqa, y>
+    {
+      e(Context paramContext, LiveConfig paramLiveConfig)
+      {
+        super();
+      }
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+    static final class f
+      extends d.g.b.l
+      implements d.g.a.a<y>
+    {
+      f(Context paramContext, v.f paramf)
+      {
+        super();
+      }
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+    static final class g
+      extends d.g.b.l
+      implements d.g.a.a<y>
+    {
+      g(Context paramContext, v.f paramf)
+      {
+        super();
+      }
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+    static final class h
+      extends d.g.b.l
+      implements d.g.a.a<y>
+    {
+      h(Context paramContext, v.f paramf)
+      {
+        super();
+      }
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+    static final class i
+      extends d.g.b.l
+      implements d.g.a.a<y>
+    {
+      i(Context paramContext, v.f paramf1, LiveConfig paramLiveConfig, v.f paramf2)
+      {
+        super();
+      }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class b
-    implements Runnable
+    extends d.g.b.l
+    implements d.g.a.a<y>
   {
-    public static final b yZY;
-    
-    static
+    b(com.tencent.mm.ui.widget.a.g paramg)
     {
-      AppMethodBeat.i(202653);
-      yZY = new b();
-      AppMethodBeat.o(202653);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(202652);
-      Object localObject1 = com.tencent.mm.kernel.g.afA();
-      k.g(localObject1, "MMKernel.network()");
-      localObject1 = ((com.tencent.mm.kernel.b)localObject1).aeS();
-      Object localObject2 = f.rGw;
-      long l = f.eNG().LwA;
-      localObject2 = f.rGw;
-      localObject2 = f.eNB();
-      f localf = f.rGw;
-      ((com.tencent.mm.al.q)localObject1).b((com.tencent.mm.al.n)new com.tencent.mm.live.b.a.n(l, (String)localObject2, f.eNF()));
-      AppMethodBeat.o(202652);
+      super();
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class c
-    implements Runnable
+    extends d.g.b.l
+    implements d.g.a.a<y>
   {
-    public static final c zaJ;
-    
-    static
+    c(com.tencent.mm.ui.widget.a.g paramg, Context paramContext, LiveConfig paramLiveConfig)
     {
-      AppMethodBeat.i(202655);
-      zaJ = new c();
-      AppMethodBeat.o(202655);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(202654);
-      Object localObject = com.tencent.mm.kernel.g.afA();
-      k.g(localObject, "MMKernel.network()");
-      com.tencent.mm.al.q localq = ((com.tencent.mm.kernel.b)localObject).aeS();
-      localObject = f.rGw;
-      long l = f.eNG().LwA;
-      localObject = f.rGw;
-      String str2 = f.eNB();
-      localObject = f.rGw;
-      localObject = f.fOz().BMx;
-      if (localObject != null)
-      {
-        String str1 = ((a.a)localObject).BQP;
-        localObject = str1;
-        if (str1 != null) {}
-      }
-      else
-      {
-        localObject = "";
-      }
-      localq.b((com.tencent.mm.al.n)new s(l, str2, (String)localObject));
-      AppMethodBeat.o(202654);
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.b.h
  * JD-Core Version:    0.7.0.1
  */

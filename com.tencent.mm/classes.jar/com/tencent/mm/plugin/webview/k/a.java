@@ -8,10 +8,10 @@ import d.l;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"forEachIndexed", "", "Lcom/tencent/mm/json/JSONArray;", "block", "Lkotlin/Function2;", "", "htmlEncode", "", "kotlin.jvm.PlatformType", "map", "", "T", "toJsString", "webview-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"forEachIndexed", "", "Lcom/tencent/mm/json/JSONArray;", "block", "Lkotlin/Function2;", "", "htmlEncode", "", "kotlin.jvm.PlatformType", "map", "", "T", "toJsString", "webview-sdk_release"})
 public final class a
 {
-  public static final <T> List<T> a(com.tencent.mm.ac.f paramf, m<? super Integer, ? super com.tencent.mm.ac.f, ? extends T> paramm)
+  public static final <T> List<T> a(com.tencent.mm.ab.f paramf, m<? super Integer, ? super com.tencent.mm.ab.f, ? extends T> paramm)
   {
     AppMethodBeat.i(82768);
     k.h(paramf, "$this$map");
@@ -29,11 +29,11 @@ public final class a
     return paramf;
   }
   
-  public static final String ayN(String paramString)
+  public static final String aEe(String paramString)
   {
     AppMethodBeat.i(82770);
     k.h(paramString, "$this$toJsString");
-    paramString = "'" + org.apache.commons.b.f.aRq(paramString) + '\'';
+    paramString = "'" + org.apache.commons.b.f.aXq(paramString) + '\'';
     AppMethodBeat.o(82770);
     return paramString;
   }

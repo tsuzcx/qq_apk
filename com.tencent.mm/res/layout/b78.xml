@@ -9,13 +9,13 @@
     <LinearLayout android:orientation="vertical" android:id="@id/e__" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
         <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/b_c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" android:singleLine="true" android:lineSpacingExtra="5.0dip" />
         <TextView android:textSize="14.0sp" android:textColor="@color/y4" android:id="@id/b_d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:lineSpacingExtra="5.0dip" />
-        <com.tencent.mm.plugin.sns.ui.widget.SnsCardAdTagListView android:orientation="horizontal" android:id="@id/abw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" />
         <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ace" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginTop="12.0dip">
             <Button android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/fm" android:id="@id/acf" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="11.0dip" android:layout_weight="1.0" android:textAllCaps="false" style="@style/th" />
             <Button android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/fm" android:id="@id/acg" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:textAllCaps="false" style="@style/th" />
         </LinearLayout>
         <include layout="@layout/b77" />
         <include layout="@layout/b79" />
+        <com.tencent.mm.plugin.sns.ui.widget.SnsCardAdTagListView android:orientation="horizontal" android:id="@id/abw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" />
     </LinearLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/ah5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" />

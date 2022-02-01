@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.luckymoney.model;
 public abstract class ac
   extends ab
 {
-  public final String bOB()
+  public final String bVR()
   {
     return "/cgi-bin/mmpay-bin/businesshongbao";
   }

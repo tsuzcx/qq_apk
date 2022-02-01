@@ -1,19 +1,19 @@
 package com.tencent.mm.ui.matrix.recyclerview;
 
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 
-public abstract class a<VH extends RecyclerView.v>
+public abstract class a<VH extends RecyclerView.w>
   extends RecyclerView.a<VH>
 {
-  public static int Hkj = -7198823;
-  public static int Hkk = -12929718;
-  public static int Hkl = -14308638;
-  public static int Hkm = -425344;
-  public static int Hkn = -10038571;
-  public static int Hko = -1091275;
-  public static int Hkp = -11905697;
-  public static float Hkq = 12.0F;
+  public static int IKC = -7198823;
+  public static int IKD = -12929718;
+  public static int IKE = -14308638;
+  public static int IKF = -425344;
+  public static int IKG = -10038571;
+  public static int IKH = -1091275;
+  public static int IKI = -11905697;
+  public static float IKJ = 12.0F;
 }
 
 

@@ -7,20 +7,20 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.rd;
-import com.tencent.mm.protocal.protobuf.ro;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.rn;
+import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class e
   extends i
 {
-  private View nHY;
+  private View okY;
   
-  public final void bMB()
+  public final void bTM()
   {
     AppMethodBeat.i(113670);
-    if (this.nHY != null) {
-      this.nHY.setVisibility(8);
+    if (this.okY != null) {
+      this.okY.setVisibility(8);
     }
     AppMethodBeat.o(113670);
   }
@@ -30,26 +30,26 @@ public final class e
   public final void update()
   {
     AppMethodBeat.i(113669);
-    b localb = this.nIg.bKt();
-    rd localrd = localb.bHV().CRS;
-    if (localrd != null)
+    b localb = this.olg.bRG();
+    rn localrn = localb.bPi().EkD;
+    if (localrn != null)
     {
-      ad.i("MicroMsg.CardAnnoucementView", "card tp annoucement  endtime: " + localrd.wmA);
-      ad.i("MicroMsg.CardAnnoucementView", "card tp annoucement  text: " + localrd.text);
-      ad.i("MicroMsg.CardAnnoucementView", "card tp annoucement  thumb_url: " + localrd.CQW);
+      ac.i("MicroMsg.CardAnnoucementView", "card tp annoucement  endtime: " + localrn.xxQ);
+      ac.i("MicroMsg.CardAnnoucementView", "card tp annoucement  text: " + localrn.text);
+      ac.i("MicroMsg.CardAnnoucementView", "card tp annoucement  thumb_url: " + localrn.EjH);
     }
-    if ((localrd != null) && (!TextUtils.isEmpty(localrd.text)) && (localb.bHT()))
+    if ((localrn != null) && (!TextUtils.isEmpty(localrn.text)) && (localb.bPg()))
     {
-      if (this.nHY == null) {
-        this.nHY = ((ViewStub)findViewById(2131297731)).inflate();
+      if (this.okY == null) {
+        this.okY = ((ViewStub)findViewById(2131297731)).inflate();
       }
-      ((TextView)this.nHY.findViewById(2131303541)).setText(localrd.text);
-      this.nHY.setOnClickListener(this.nIg.bKx());
+      ((TextView)this.okY.findViewById(2131303541)).setText(localrn.text);
+      this.okY.setOnClickListener(this.olg.bRK());
       AppMethodBeat.o(113669);
       return;
     }
-    if (this.nHY != null) {
-      this.nHY.setVisibility(8);
+    if (this.okY != null) {
+      this.okY.setVisibility(8);
     }
     AppMethodBeat.o(113669);
   }

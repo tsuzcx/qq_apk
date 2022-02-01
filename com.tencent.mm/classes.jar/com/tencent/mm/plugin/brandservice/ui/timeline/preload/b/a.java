@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.c;
-import com.tencent.mm.protocal.protobuf.vr;
-import com.tencent.mm.protocal.protobuf.vs;
-import com.tencent.mm.protocal.protobuf.vt;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.protocal.protobuf.wb;
+import com.tencent.mm.protocal.protobuf.wc;
+import com.tencent.mm.protocal.protobuf.wd;
 import java.util.LinkedList;
 
 public final class a
-  extends c<vt>
+  extends c<wd>
 {
-  public a(LinkedList<vr> paramLinkedList, int paramInt, String paramString)
+  public a(LinkedList<wb> paramLinkedList, int paramInt, String paramString)
   {
     AppMethodBeat.i(6200);
     b.a locala = new b.a();
@@ -19,13 +19,13 @@ public final class a
     locala.uri = "/cgi-bin/mmbiz-bin/checktmplver";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    vs localvs = new vs();
-    localvs.Scene = paramInt;
-    localvs.nlG = paramString;
-    localvs.CXO = paramLinkedList;
-    locala.gUU = localvs;
-    locala.gUV = new vt();
-    this.rr = locala.atI();
+    wc localwc = new wc();
+    localwc.Scene = paramInt;
+    localwc.nOG = paramString;
+    localwc.Eqx = paramLinkedList;
+    locala.hvt = localwc;
+    locala.hvu = new wd();
+    this.rr = locala.aAz();
     AppMethodBeat.o(6200);
   }
 }

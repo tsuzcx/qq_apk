@@ -7,15 +7,15 @@ import com.tencent.smtt.sdk.JsContext;
 import com.tencent.smtt.sdk.JsContext.ExceptionHandler;
 import com.tencent.smtt.sdk.JsError;
 import com.tencent.xweb.internal.IJsRuntime;
-import com.tencent.xweb.m;
+import com.tencent.xweb.n;
 import org.xwalk.core.Log;
 
 public final class h
   implements IJsRuntime
 {
-  private JsContext ISc;
-  private h.a ISd;
-  private m ISe;
+  private h.a KEA;
+  private n KEB;
+  private JsContext KEz;
   private Context mContext;
   
   public h(Context paramContext)
@@ -29,11 +29,11 @@ public final class h
   public final void init(int paramInt)
   {
     AppMethodBeat.i(153867);
-    this.ISc = new JsContext(this.mContext);
-    this.ISd = new h.a();
-    this.ISc.addJavascriptInterface(this.ISd, "nativeBufferCompat");
-    this.ISc.evaluateJavascript("function getNativeBufferId() {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBufferId();   }   return -1;}function setNativeBuffer(id, bytes) {   if (nativeBufferCompat) {       return nativeBufferCompat.setNativeBuffer(id, bytes);   }}function getNativeBuffer(id) {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBuffer(id);   }}", new a.d(new ValueCallback() {}));
-    this.ISc.setExceptionHandler(new JsContext.ExceptionHandler()
+    this.KEz = new JsContext(this.mContext);
+    this.KEA = new h.a();
+    this.KEz.addJavascriptInterface(this.KEA, "nativeBufferCompat");
+    this.KEz.evaluateJavascript("function getNativeBufferId() {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBufferId();   }   return -1;}function setNativeBuffer(id, bytes) {   if (nativeBufferCompat) {       return nativeBufferCompat.setNativeBuffer(id, bytes);   }}function getNativeBuffer(id) {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBuffer(id);   }}", new a.d(new ValueCallback() {}));
+    this.KEz.setExceptionHandler(new JsContext.ExceptionHandler()
     {
       public final void handleException(JsContext paramAnonymousJsContext, JsError paramAnonymousJsError)
       {

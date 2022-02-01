@@ -6,22 +6,22 @@ import java.util.List;
 
 public final class af
 {
-  public final i JqA;
-  public final List<av> JqB;
-  public final af JqC;
+  public final i LdT;
+  public final List<av> LdU;
+  public final af LdV;
   
   public af(i parami, List<? extends av> paramList, af paramaf)
   {
     AppMethodBeat.i(56878);
-    this.JqA = parami;
-    this.JqB = paramList;
-    this.JqC = paramaf;
+    this.LdT = parami;
+    this.LdU = paramList;
+    this.LdV = paramaf;
     AppMethodBeat.o(56878);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.af
  * JD-Core Version:    0.7.0.1
  */

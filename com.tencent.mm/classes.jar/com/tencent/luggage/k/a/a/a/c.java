@@ -2,7 +2,7 @@ package com.tencent.luggage.k.a.a.a;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.math.BigDecimal;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +27,7 @@ public final class c
           ((Bundle)localObject).putString("playUrl", paramJSONObject.getString("playUrl"));
         }
       }
-      catch (JSONException localJSONException18)
+      catch (JSONException localJSONException19)
       {
         try
         {
@@ -35,7 +35,7 @@ public final class c
             ((Bundle)localObject).putInt("mode", paramJSONObject.getInt("mode"));
           }
         }
-        catch (JSONException localJSONException18)
+        catch (JSONException localJSONException19)
         {
           try
           {
@@ -43,7 +43,7 @@ public final class c
               ((Bundle)localObject).putBoolean("autoplay", paramJSONObject.getBoolean("autoplay"));
             }
           }
-          catch (JSONException localJSONException18)
+          catch (JSONException localJSONException19)
           {
             try
             {
@@ -51,7 +51,7 @@ public final class c
                 ((Bundle)localObject).putBoolean("muted", paramJSONObject.getBoolean("muted"));
               }
             }
-            catch (JSONException localJSONException18)
+            catch (JSONException localJSONException19)
             {
               try
               {
@@ -59,7 +59,7 @@ public final class c
                   ((Bundle)localObject).putBoolean("muteAudio", paramJSONObject.getBoolean("muteAudio"));
                 }
               }
-              catch (JSONException localJSONException18)
+              catch (JSONException localJSONException19)
               {
                 try
                 {
@@ -67,7 +67,7 @@ public final class c
                     ((Bundle)localObject).putBoolean("muteVideo", paramJSONObject.getBoolean("muteVideo"));
                   }
                 }
-                catch (JSONException localJSONException18)
+                catch (JSONException localJSONException19)
                 {
                   try
                   {
@@ -75,7 +75,7 @@ public final class c
                       ((Bundle)localObject).putString("orientation", paramJSONObject.getString("orientation"));
                     }
                   }
-                  catch (JSONException localJSONException18)
+                  catch (JSONException localJSONException19)
                   {
                     try
                     {
@@ -83,7 +83,7 @@ public final class c
                         ((Bundle)localObject).putString("objectFit", paramJSONObject.getString("objectFit"));
                       }
                     }
-                    catch (JSONException localJSONException18)
+                    catch (JSONException localJSONException19)
                     {
                       try
                       {
@@ -91,7 +91,7 @@ public final class c
                           ((Bundle)localObject).putBoolean("backgroundMute", paramJSONObject.getBoolean("backgroundMute"));
                         }
                       }
-                      catch (JSONException localJSONException18)
+                      catch (JSONException localJSONException19)
                       {
                         try
                         {
@@ -99,7 +99,7 @@ public final class c
                             ((Bundle)localObject).putFloat("minCache", BigDecimal.valueOf(paramJSONObject.getDouble("minCache")).floatValue());
                           }
                         }
-                        catch (JSONException localJSONException18)
+                        catch (JSONException localJSONException19)
                         {
                           try
                           {
@@ -107,7 +107,7 @@ public final class c
                               ((Bundle)localObject).putFloat("maxCache", BigDecimal.valueOf(paramJSONObject.getDouble("maxCache")).floatValue());
                             }
                           }
-                          catch (JSONException localJSONException18)
+                          catch (JSONException localJSONException19)
                           {
                             try
                             {
@@ -115,7 +115,7 @@ public final class c
                                 ((Bundle)localObject).putBoolean("enableRecvMessage", paramJSONObject.getBoolean("enableRecvMessage"));
                               }
                             }
-                            catch (JSONException localJSONException18)
+                            catch (JSONException localJSONException19)
                             {
                               try
                               {
@@ -123,7 +123,7 @@ public final class c
                                   ((Bundle)localObject).putBoolean("needEvent", paramJSONObject.getBoolean("needEvent"));
                                 }
                               }
-                              catch (JSONException localJSONException18)
+                              catch (JSONException localJSONException19)
                               {
                                 try
                                 {
@@ -131,7 +131,7 @@ public final class c
                                     ((Bundle)localObject).putBoolean("needAudioVolume", paramJSONObject.getBoolean("needAudioVolume"));
                                   }
                                 }
-                                catch (JSONException localJSONException18)
+                                catch (JSONException localJSONException19)
                                 {
                                   try
                                   {
@@ -139,7 +139,7 @@ public final class c
                                       ((Bundle)localObject).putBoolean("debug", paramJSONObject.getBoolean("debug"));
                                     }
                                   }
-                                  catch (JSONException localJSONException18)
+                                  catch (JSONException localJSONException19)
                                   {
                                     try
                                     {
@@ -147,7 +147,7 @@ public final class c
                                         ((Bundle)localObject).putString("soundMode", paramJSONObject.getString("soundMode"));
                                       }
                                     }
-                                    catch (JSONException localJSONException18)
+                                    catch (JSONException localJSONException19)
                                     {
                                       try
                                       {
@@ -155,7 +155,7 @@ public final class c
                                           ((Bundle)localObject).putBoolean("autoPauseIfNavigate", paramJSONObject.getBoolean("autoPauseIfNavigate"));
                                         }
                                       }
-                                      catch (JSONException localJSONException18)
+                                      catch (JSONException localJSONException19)
                                       {
                                         try
                                         {
@@ -163,79 +163,91 @@ public final class c
                                             ((Bundle)localObject).putBoolean("autoPauseIfOpenNative", paramJSONObject.getBoolean("autoPauseIfOpenNative"));
                                           }
                                         }
-                                        catch (JSONException localJSONException18)
+                                        catch (JSONException localJSONException19)
                                         {
                                           try
                                           {
-                                            for (;;)
-                                            {
-                                              if (paramJSONObject.has("referrer")) {
-                                                ((Bundle)localObject).putString("referrer", paramJSONObject.getString("referrer"));
-                                              }
-                                              AppMethodBeat.o(138811);
-                                              return localObject;
-                                              localObject = "";
-                                              break;
-                                              localJSONException1 = localJSONException1;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "playUrl", localJSONException1.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException2 = localJSONException2;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "mode", localJSONException2.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException3 = localJSONException3;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "autoplay", localJSONException3.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException4 = localJSONException4;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "muted", localJSONException4.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException5 = localJSONException5;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "muteAudio", localJSONException5.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException6 = localJSONException6;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "muteVideo", localJSONException6.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException7 = localJSONException7;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "orientation", localJSONException7.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException8 = localJSONException8;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "objectFit", localJSONException8.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException9 = localJSONException9;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "backgroundMute", localJSONException9.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException10 = localJSONException10;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "minCache", localJSONException10.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException11 = localJSONException11;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "maxCache", localJSONException11.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException12 = localJSONException12;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "enableRecvMessage", localJSONException12.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException13 = localJSONException13;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "needEvent", localJSONException13.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException14 = localJSONException14;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "needAudioVolume", localJSONException14.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException15 = localJSONException15;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "debug", localJSONException15.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException16 = localJSONException16;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "soundMode", localJSONException16.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException17 = localJSONException17;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "autoPauseIfNavigate", localJSONException17.getLocalizedMessage() });
-                                              continue;
-                                              localJSONException18 = localJSONException18;
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "autoPauseIfOpenNative", localJSONException18.getLocalizedMessage() });
+                                            if (paramJSONObject.has("referrer")) {
+                                              ((Bundle)localObject).putString("referrer", paramJSONObject.getString("referrer"));
                                             }
                                           }
-                                          catch (JSONException paramJSONObject)
+                                          catch (JSONException localJSONException19)
                                           {
-                                            for (;;)
+                                            try
                                             {
-                                              ad.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "referrer", paramJSONObject.getLocalizedMessage() });
+                                              for (;;)
+                                              {
+                                                if (paramJSONObject.has("isInForeground")) {
+                                                  ((Bundle)localObject).putBoolean("isInForeground", paramJSONObject.getBoolean("isInForeground"));
+                                                }
+                                                AppMethodBeat.o(138811);
+                                                return localObject;
+                                                localObject = "";
+                                                break;
+                                                localJSONException1 = localJSONException1;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "playUrl", localJSONException1.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException2 = localJSONException2;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "mode", localJSONException2.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException3 = localJSONException3;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "autoplay", localJSONException3.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException4 = localJSONException4;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "muted", localJSONException4.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException5 = localJSONException5;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "muteAudio", localJSONException5.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException6 = localJSONException6;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "muteVideo", localJSONException6.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException7 = localJSONException7;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "orientation", localJSONException7.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException8 = localJSONException8;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "objectFit", localJSONException8.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException9 = localJSONException9;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "backgroundMute", localJSONException9.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException10 = localJSONException10;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "minCache", localJSONException10.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException11 = localJSONException11;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "maxCache", localJSONException11.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException12 = localJSONException12;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "enableRecvMessage", localJSONException12.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException13 = localJSONException13;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "needEvent", localJSONException13.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException14 = localJSONException14;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "needAudioVolume", localJSONException14.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException15 = localJSONException15;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "debug", localJSONException15.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException16 = localJSONException16;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "soundMode", localJSONException16.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException17 = localJSONException17;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "autoPauseIfNavigate", localJSONException17.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException18 = localJSONException18;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "autoPauseIfOpenNative", localJSONException18.getLocalizedMessage() });
+                                                continue;
+                                                localJSONException19 = localJSONException19;
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "referrer", localJSONException19.getLocalizedMessage() });
+                                              }
+                                            }
+                                            catch (JSONException paramJSONObject)
+                                            {
+                                              for (;;)
+                                              {
+                                                ac.i("MicroMsg.TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "isInForeground", paramJSONObject.getLocalizedMessage() });
+                                              }
                                             }
                                           }
                                         }
@@ -571,119 +583,119 @@ public final class c
                                                                                   localObject = "";
                                                                                   break;
                                                                                   localJSONException1 = localJSONException1;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "pushUrl", localJSONException1.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "pushUrl", localJSONException1.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException2 = localJSONException2;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "mode", localJSONException2.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "mode", localJSONException2.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException3 = localJSONException3;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "autopush", localJSONException3.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "autopush", localJSONException3.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException4 = localJSONException4;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "audioQuality", localJSONException4.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "audioQuality", localJSONException4.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException5 = localJSONException5;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "muted", localJSONException5.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "muted", localJSONException5.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException6 = localJSONException6;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableCamera", localJSONException6.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableCamera", localJSONException6.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException7 = localJSONException7;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableMic", localJSONException7.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableMic", localJSONException7.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException8 = localJSONException8;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableAGC", localJSONException8.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableAGC", localJSONException8.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException9 = localJSONException9;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableANS", localJSONException9.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableANS", localJSONException9.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException10 = localJSONException10;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableEarMonitor", localJSONException10.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableEarMonitor", localJSONException10.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException11 = localJSONException11;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "audioVolumeType", localJSONException11.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "audioVolumeType", localJSONException11.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException12 = localJSONException12;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "audioReverbType", localJSONException12.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "audioReverbType", localJSONException12.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException13 = localJSONException13;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "videoWidth", localJSONException13.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "videoWidth", localJSONException13.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException14 = localJSONException14;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "videoHeight", localJSONException14.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "videoHeight", localJSONException14.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException15 = localJSONException15;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "focusMode", localJSONException15.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "focusMode", localJSONException15.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException16 = localJSONException16;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "orientation", localJSONException16.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "orientation", localJSONException16.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException17 = localJSONException17;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "beauty", localJSONException17.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "beauty", localJSONException17.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException18 = localJSONException18;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "beautyStyle", localJSONException18.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "beautyStyle", localJSONException18.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException19 = localJSONException19;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "filterImage", localJSONException19.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "filterImage", localJSONException19.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException20 = localJSONException20;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "filterImageMd5", localJSONException20.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "filterImageMd5", localJSONException20.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException21 = localJSONException21;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "whiteness", localJSONException21.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "whiteness", localJSONException21.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException22 = localJSONException22;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "aspect", localJSONException22.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "aspect", localJSONException22.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException23 = localJSONException23;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "minBitrate", localJSONException23.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "minBitrate", localJSONException23.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException24 = localJSONException24;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "maxBitrate", localJSONException24.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "maxBitrate", localJSONException24.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException25 = localJSONException25;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "backgroundMute", localJSONException25.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "backgroundMute", localJSONException25.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException26 = localJSONException26;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "zoom", localJSONException26.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "zoom", localJSONException26.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException27 = localJSONException27;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "needEvent", localJSONException27.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "needEvent", localJSONException27.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException28 = localJSONException28;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "debug", localJSONException28.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "debug", localJSONException28.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException29 = localJSONException29;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "mirror", localJSONException29.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "mirror", localJSONException29.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException30 = localJSONException30;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "remoteMirror", localJSONException30.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "remoteMirror", localJSONException30.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException31 = localJSONException31;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "localMirror", localJSONException31.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "localMirror", localJSONException31.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException32 = localJSONException32;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "watermarkLeft", localJSONException32.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "watermarkLeft", localJSONException32.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException33 = localJSONException33;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "watermarkTop", localJSONException33.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "watermarkTop", localJSONException33.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException34 = localJSONException34;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "watermarkWidth", localJSONException34.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "watermarkWidth", localJSONException34.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException35 = localJSONException35;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "devicePosition", localJSONException35.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "devicePosition", localJSONException35.getLocalizedMessage() });
                                                                                   continue;
                                                                                   localJSONException36 = localJSONException36;
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "needBGMEvent", localJSONException36.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "needBGMEvent", localJSONException36.getLocalizedMessage() });
                                                                                 }
                                                                               }
                                                                               catch (JSONException paramJSONObject)
                                                                               {
                                                                                 for (;;)
                                                                                 {
-                                                                                  ad.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "needAudioVolume", paramJSONObject.getLocalizedMessage() });
+                                                                                  ac.i("MicroMsg.TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "needAudioVolume", paramJSONObject.getLocalizedMessage() });
                                                                                 }
                                                                               }
                                                                             }
@@ -727,7 +739,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a.a.c
  * JD-Core Version:    0.7.0.1
  */

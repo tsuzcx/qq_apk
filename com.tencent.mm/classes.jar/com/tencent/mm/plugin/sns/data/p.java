@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.sns.data;
 public final class p
 {
   public String desc = "";
-  public int dzf;
+  public int dwR;
   public int fileSize = 0;
   public int height = -1;
   public String path = "";
   public String thumbPath = "";
   public int type;
-  public int wBk = 0;
-  public int wBl;
-  public int wBm;
-  public String wBn = "";
-  public String wBo = "";
-  public String wBp = "";
-  public boolean wBq = false;
   public int width = -1;
+  public int xNF = 0;
+  public int xNG;
+  public int xNH;
+  public String xNI = "";
+  public String xNJ = "";
+  public String xNK = "";
+  public boolean xNL = false;
   
   public p() {}
   
   public p(int paramInt1, int paramInt2)
   {
-    this.dzf = paramInt1;
+    this.dwR = paramInt1;
     this.type = paramInt2;
     this.path = "";
   }
@@ -31,7 +31,7 @@ public final class p
   {
     this.path = paramString;
     this.type = paramInt;
-    this.dzf = -1;
+    this.dwR = -1;
   }
 }
 

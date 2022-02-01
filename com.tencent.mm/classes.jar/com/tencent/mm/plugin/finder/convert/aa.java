@@ -2,224 +2,90 @@ package com.tencent.mm.plugin.finder.convert;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.z;
-import com.tencent.mm.plugin.finder.utils.a;
-import com.tencent.mm.plugin.finder.utils.i;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.protocal.protobuf.dzd;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.loader.d;
+import com.tencent.mm.plugin.finder.loader.f;
+import com.tencent.mm.plugin.finder.loader.h;
+import com.tencent.mm.plugin.finder.loader.h.a;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.model.b;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.m;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.ui.am;
 import com.tencent.mm.view.recyclerview.e;
+import d.a.j;
 import d.g.b.k;
 import d.l;
-import d.y;
+import java.util.LinkedList;
+import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedFriendLikeConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLike;", "feedId", "", "(J)V", "getFeedId", "()J", "onBlackClickListener", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "", "getOnBlackClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnBlackClickListener", "(Lkotlin/jvm/functions/Function1;)V", "onLikeClickListener", "getOnLikeClickListener", "setOnLikeClickListener", "clickLike", "vh", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "likeInfo", "clickUnLike", "getLayoutId", "", "initLikeView", "contact", "initUnLikeView", "onBindViewHolder", "holder", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "setLikeGray", "setLikeRed", "setUnLikeBlack", "setUnLikeGray", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/convert/FinderMixFeedImageRoundCornerConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMixFeedRoundCornerConvert;", "()V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "baseItem", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
 public final class aa
-  extends com.tencent.mm.view.recyclerview.b<z>
+  extends ab
 {
-  public d.g.a.b<? super dzd, y> KKO;
-  public d.g.a.b<? super dzd, y> KKP;
-  final long feedId;
-  
-  public aa(long paramLong)
+  public final void a(e parame, b paramb, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    this.feedId = paramLong;
-  }
-  
-  public static void a(e parame)
-  {
-    AppMethodBeat.i(197414);
+    AppMethodBeat.i(201334);
     k.h(parame, "holder");
-    ((WeImageView)parame.abq(2131307335)).setImageResource(2131690419);
-    WeImageView localWeImageView = (WeImageView)parame.abq(2131307335);
-    parame = parame.getContext();
-    k.g(parame, "holder.context");
-    localWeImageView.setIconColor(parame.getResources().getColor(2131099803));
-    AppMethodBeat.o(197414);
-  }
-  
-  public static void b(e parame)
-  {
-    AppMethodBeat.i(197415);
-    k.h(parame, "holder");
-    ((WeImageView)parame.abq(2131307335)).setImageResource(2131690587);
-    WeImageView localWeImageView = (WeImageView)parame.abq(2131307335);
-    parame = parame.getContext();
-    k.g(parame, "holder.context");
-    localWeImageView.setIconColor(parame.getResources().getColor(2131099735));
-    AppMethodBeat.o(197415);
-  }
-  
-  public static void c(e parame)
-  {
-    AppMethodBeat.i(197416);
-    k.h(parame, "holder");
-    ((WeImageView)parame.abq(2131307370)).setImageResource(2131690398);
-    WeImageView localWeImageView = (WeImageView)parame.abq(2131307370);
-    parame = parame.getContext();
-    k.g(parame, "holder.context");
-    localWeImageView.setIconColor(parame.getResources().getColor(2131099732));
-    AppMethodBeat.o(197416);
-  }
-  
-  public static void d(e parame)
-  {
-    AppMethodBeat.i(197417);
-    k.h(parame, "holder");
-    ((WeImageView)parame.abq(2131307370)).setImageResource(2131690569);
-    WeImageView localWeImageView = (WeImageView)parame.abq(2131307370);
-    parame = parame.getContext();
-    k.g(parame, "holder.context");
-    localWeImageView.setIconColor(parame.getResources().getColor(2131099735));
-    AppMethodBeat.o(197417);
-  }
-  
-  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
-  {
-    AppMethodBeat.i(197412);
-    k.h(paramRecyclerView, "recyclerView");
-    k.h(parame, "holder");
-    AppMethodBeat.o(197412);
-  }
-  
-  public final int getLayoutId()
-  {
-    return 2131496222;
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(aa paramaa, e parame, dzd paramdzd) {}
-    
-    public final void onClick(View paramView)
+    k.h(paramb, "baseItem");
+    super.a(parame, paramb, paramInt1, paramInt2, paramBoolean, paramList);
+    paramb = paramb.rux;
+    if (paramb != null)
     {
-      AppMethodBeat.i(197409);
-      Object localObject = this.KKQ;
-      e locale = this.nGG;
-      paramView = this.KKR;
-      k.h(locale, "vh");
-      k.h(paramView, "likeInfo");
-      if (paramView.likeFlag == 1) {
-        aa.b(locale);
+      paramList = (ImageView)parame.adJ(2131302222);
+      if (paramb.feedObject.getMediaList().size() > 1)
+      {
+        k.g(paramList, "mediaIcon");
+        paramList.setImageDrawable(am.k(paramList.getContext(), 2131690348, a.n(paramList.getContext(), 2131099828)));
+        paramList.setVisibility(0);
       }
       for (;;)
       {
-        paramView.likeFlag = ((paramView.likeFlag + 1) % 2);
-        localObject = ((aa)localObject).KKO;
-        if (localObject == null) {
-          break;
-        }
-        ((d.g.a.b)localObject).aA(paramView);
-        AppMethodBeat.o(197409);
-        return;
-        aa.a(locale);
-      }
-      AppMethodBeat.o(197409);
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(aa paramaa, e parame, dzd paramdzd) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(197410);
-      Object localObject = this.KKQ;
-      e locale = this.nGG;
-      paramView = this.KKR;
-      k.h(locale, "vh");
-      k.h(paramView, "likeInfo");
-      if (paramView.LxF == 1) {
-        aa.d(locale);
-      }
-      for (;;)
-      {
-        paramView.LxF = ((paramView.LxF + 1) % 2);
-        localObject = ((aa)localObject).KKP;
-        if (localObject == null) {
-          break;
-        }
-        ((d.g.a.b)localObject).aA(paramView);
-        AppMethodBeat.o(197410);
-        return;
-        aa.c(locale);
-      }
-      AppMethodBeat.o(197410);
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(aa paramaa, dzd paramdzd, e parame, z paramz) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(197411);
-      paramView = i.qTa;
-      long l;
-      if (!i.isFriend(this.KKR.hKD))
-      {
-        paramView = i.qTa;
-        if (!i.ZS(this.KKR.hKD)) {}
-      }
-      else
-      {
-        paramView = a.qSb;
-        paramView = this.KKR.hKD;
-        k.g(paramView, "likedUser.wxUsername");
-        Object localObject = this.nGG.getContext();
-        k.g(localObject, "holder.context");
-        a.d(paramView, (Context)localObject);
-        paramView = FinderReporterUIC.Ljl;
-        paramView = this.nGG.getContext();
-        k.g(paramView, "holder.context");
-        paramView = FinderReporterUIC.a.lB(paramView);
-        if (paramView != null)
+        paramList = (bqs)j.iO((List)paramb.feedObject.getMediaList());
+        paramb = (ImageView)parame.adJ(2131305798);
+        k.g(paramb, "thumbIv");
+        Object localObject1 = paramb.getLayoutParams();
+        Object localObject2 = parame.getContext();
+        k.g(localObject2, "holder.context");
+        localObject2 = ((Context)localObject2).getResources();
+        k.g(localObject2, "holder.context.resources");
+        paramInt1 = ((Resources)localObject2).getDisplayMetrics().widthPixels;
+        parame = parame.getContext();
+        k.g(parame, "holder.context");
+        int i = (paramInt1 - (int)parame.getResources().getDimension(2131165284)) / 2;
+        if (i > 0)
         {
-          localObject = com.tencent.mm.plugin.finder.report.b.qFq;
-          paramView = paramView.fXs();
-          l = this.KKQ.feedId;
-          localObject = this.KKR.hKD;
-          k.g(localObject, "likedUser.wxUsername");
-          com.tencent.mm.plugin.finder.report.b.b(paramView, l, 6, (String)localObject);
+          paramInt2 = (int)(paramList.height * i / paramList.width);
+          paramInt1 = paramInt2;
+          if (paramInt2 > i * 1.166666666666667D) {
+            paramInt1 = (int)(i * 1.166666666666667D);
+          }
+          ((ViewGroup.LayoutParams)localObject1).width = i;
+          ((ViewGroup.LayoutParams)localObject1).height = paramInt1;
+          paramb.setLayoutParams((ViewGroup.LayoutParams)localObject1);
         }
-        paramView = FinderReporterUIC.Ljl;
-        paramView = this.nGG.getContext();
-        k.g(paramView, "holder.context");
-        paramView = FinderReporterUIC.a.lB(paramView);
-        if (paramView == null) {
-          break label224;
-        }
-      }
-      label224:
-      for (int i = paramView.qqE;; i = 0)
-      {
-        paramView = com.tencent.mm.plugin.finder.report.b.qFq;
-        l = this.KKQ.feedId;
-        paramView = this.KKS.KTs.hKD;
-        k.g(paramView, "item.likeObj.wxUsername");
-        com.tencent.mm.plugin.finder.report.b.a(2, l, i, 2, paramView);
-        AppMethodBeat.o(197411);
+        parame = h.rtK;
+        parame = h.cwn();
+        paramList = new f(paramList, m.rDR);
+        localObject1 = h.rtK;
+        parame.a(paramList, paramb, h.a(h.a.rtL));
+        AppMethodBeat.o(201334);
         return;
+        k.g(paramList, "mediaIcon");
+        paramList.setVisibility(8);
       }
     }
+    AppMethodBeat.o(201334);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.aa
  * JD-Core Version:    0.7.0.1
  */

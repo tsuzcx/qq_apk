@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.tencent.d.a.c;
 import com.tencent.d.a.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class RiskScannerReqBufferProvider
   extends ContentProvider
@@ -23,20 +23,20 @@ public class RiskScannerReqBufferProvider
     AppMethodBeat.o(138303);
   }
   
-  private Bundle cl(Context paramContext)
+  private Bundle cr(Context paramContext)
   {
     AppMethodBeat.i(138302);
     final Bundle[] arrayOfBundle = new Bundle[1];
     arrayOfBundle[0] = null;
     try
     {
-      a.agP();
+      a.aig();
       c.a(paramContext, new c.a()
       {
         public final void g(int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
         {
           AppMethodBeat.i(138299);
-          a.my(paramAnonymousInt);
+          a.mx(paramAnonymousInt);
           Bundle[] arrayOfBundle = arrayOfBundle;
           Bundle localBundle = new Bundle();
           arrayOfBundle[0] = localBundle;
@@ -66,12 +66,12 @@ public class RiskScannerReqBufferProvider
     AppMethodBeat.i(138301);
     if ("prepareReqBuffer".equals(paramString1))
     {
-      ad.i("MicroMsg.RiskScannerReqBufferProvider", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
-      paramString1 = cl(getContext());
+      ac.i("MicroMsg.RiskScannerReqBufferProvider", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
+      paramString1 = cr(getContext());
       AppMethodBeat.o(138301);
       return paramString1;
     }
-    ad.w("MicroMsg.RiskScannerReqBufferProvider", "unknown method: %s", new Object[] { paramString1 });
+    ac.w("MicroMsg.RiskScannerReqBufferProvider", "unknown method: %s", new Object[] { paramString1 });
     paramString1 = new Bundle[] { null }[0];
     AppMethodBeat.o(138301);
     return paramString1;
@@ -95,7 +95,7 @@ public class RiskScannerReqBufferProvider
   public boolean onCreate()
   {
     AppMethodBeat.i(138300);
-    ad.i("MicroMsg.RiskScannerReqBufferProvider", "onCreate called.");
+    ac.i("MicroMsg.RiskScannerReqBufferProvider", "onCreate called.");
     AppMethodBeat.o(138300);
     return true;
   }
@@ -112,7 +112,7 @@ public class RiskScannerReqBufferProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.lib.riskscanner.RiskScannerReqBufferProvider
  * JD-Core Version:    0.7.0.1
  */

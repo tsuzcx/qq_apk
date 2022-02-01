@@ -8,44 +8,13 @@ public abstract class bn
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eAm = "exptId".hashCode();
-  private static final int eAn;
-  private static final int eAo;
-  private static final int eAp;
-  private static final int eAq = "exptCheckSum".hashCode();
-  private static final int ekd;
-  private static final int eke;
-  private static final int elk;
-  private static final int ezi = "groupId".hashCode();
+  private static final int eAf = "productID".hashCode();
+  private static final int eng = "content".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAh = true;
-  private boolean eAi = true;
-  private boolean eAj = true;
-  private boolean eAk = true;
-  private boolean eAl = true;
-  private boolean ejW = true;
-  private boolean ejX = true;
-  private boolean ekN = true;
-  private boolean eyw = true;
-  public long field_endTime;
-  public String field_exptCheckSum;
-  public String field_exptContent;
-  public int field_exptId;
-  public int field_exptSeq;
-  public int field_exptType;
-  public int field_groupId;
-  public long field_startTime;
-  public int field_subType;
-  
-  static
-  {
-    eAn = "exptSeq".hashCode();
-    eAo = "exptContent".hashCode();
-    ekd = "startTime".hashCode();
-    eke = "endTime".hashCode();
-    eAp = "exptType".hashCode();
-    elk = "subType".hashCode();
-  }
+  private boolean emI = true;
+  private boolean ezF = true;
+  public byte[] field_content;
+  public String field_productID;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -60,11 +29,11 @@ public abstract class bn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eAm != k) {
+      if (eAf != k) {
         break label65;
       }
-      this.field_exptId = paramCursor.getInt(i);
-      this.eAh = true;
+      this.field_productID = paramCursor.getString(i);
+      this.ezF = true;
     }
     for (;;)
     {
@@ -72,22 +41,8 @@ public abstract class bn
       break label20;
       break;
       label65:
-      if (ezi == k) {
-        this.field_groupId = paramCursor.getInt(i);
-      } else if (eAn == k) {
-        this.field_exptSeq = paramCursor.getInt(i);
-      } else if (eAo == k) {
-        this.field_exptContent = paramCursor.getString(i);
-      } else if (ekd == k) {
-        this.field_startTime = paramCursor.getLong(i);
-      } else if (eke == k) {
-        this.field_endTime = paramCursor.getLong(i);
-      } else if (eAp == k) {
-        this.field_exptType = paramCursor.getInt(i);
-      } else if (elk == k) {
-        this.field_subType = paramCursor.getInt(i);
-      } else if (eAq == k) {
-        this.field_exptCheckSum = paramCursor.getString(i);
+      if (eng == k) {
+        this.field_content = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -97,32 +52,11 @@ public abstract class bn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eAh) {
-      localContentValues.put("exptId", Integer.valueOf(this.field_exptId));
+    if (this.ezF) {
+      localContentValues.put("productID", this.field_productID);
     }
-    if (this.eyw) {
-      localContentValues.put("groupId", Integer.valueOf(this.field_groupId));
-    }
-    if (this.eAi) {
-      localContentValues.put("exptSeq", Integer.valueOf(this.field_exptSeq));
-    }
-    if (this.eAj) {
-      localContentValues.put("exptContent", this.field_exptContent);
-    }
-    if (this.ejW) {
-      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
-    }
-    if (this.ejX) {
-      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
-    }
-    if (this.eAk) {
-      localContentValues.put("exptType", Integer.valueOf(this.field_exptType));
-    }
-    if (this.ekN) {
-      localContentValues.put("subType", Integer.valueOf(this.field_subType));
-    }
-    if (this.eAl) {
-      localContentValues.put("exptCheckSum", this.field_exptCheckSum);
+    if (this.emI) {
+      localContentValues.put("content", this.field_content);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

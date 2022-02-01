@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/hpl" android:background="@color/aak" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/hpk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:layout_alignParentTop="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hpj" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:src="@raw/icons_verify_back" android:layout_marginStart="@dimen/c5" android:layout_alignParentStart="true" app:iconColor="@color/BW_100_Alpha_0_8" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/hpi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hpk">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hpe" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginTop="@dimen/cd" android:src="@raw/icons_live_logo" android:layout_centerHorizontal="true" app:iconColor="@color/BW_50" />
+        <TextView android:textSize="22.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center_horizontal" android:id="@id/hph" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:text="@string/hqk" android:layout_below="@id/hpe" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center_horizontal" android:id="@id/hpd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c_" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c_" android:text="@string/hql" android:layout_below="@id/hph" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/hpc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/hpi">
+        <Button android:enabled="false" android:textSize="17.0dip" android:textColor="@drawable/c6o" android:id="@id/hpg" android:background="@drawable/c6n" android:layout_width="@dimen/c2" android:layout_height="@dimen/cb" android:layout_marginBottom="@dimen/bx" android:text="@string/hqj" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hpb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c5" android:layout_above="@id/hpg" android:layout_centerHorizontal="true">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/hpf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/c6v" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:text="@string/hqi" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/hpa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqg" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

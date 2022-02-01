@@ -13,10 +13,10 @@ import java.util.concurrent.Executors;
 public abstract class zzb
   extends Service
 {
-  final ExecutorService bDO;
-  private Binder bDP;
-  private int bDQ;
-  private int bDR;
+  final ExecutorService bBw;
+  private Binder bBx;
+  private int bBy;
+  private int bBz;
   private final Object lock;
   
   public zzb()
@@ -25,9 +25,9 @@ public abstract class zzb
     if (str.length() != 0) {}
     for (str = "Firebase-".concat(str);; str = new String("Firebase-"))
     {
-      this.bDO = Executors.newSingleThreadExecutor(new NamedThreadFactory(str));
+      this.bBw = Executors.newSingleThreadExecutor(new NamedThreadFactory(str));
       this.lock = new Object();
-      this.bDR = 0;
+      this.bBz = 0;
       return;
     }
   }
@@ -39,9 +39,9 @@ public abstract class zzb
     }
     synchronized (this.lock)
     {
-      this.bDR -= 1;
-      if (this.bDR == 0) {
-        stopSelfResult(this.bDQ);
+      this.bBz -= 1;
+      if (this.bBz == 0) {
+        stopSelfResult(this.bBy);
       }
       return;
     }
@@ -64,10 +64,10 @@ public abstract class zzb
     try
     {
       Log.isLoggable("EnhancedIntentService", 3);
-      if (this.bDP == null) {
-        this.bDP = new w(this);
+      if (this.bBx == null) {
+        this.bBx = new w(this);
       }
-      paramIntent = this.bDP;
+      paramIntent = this.bBx;
       return paramIntent;
     }
     finally {}
@@ -77,8 +77,8 @@ public abstract class zzb
   {
     synchronized (this.lock)
     {
-      this.bDQ = paramInt2;
-      this.bDR += 1;
+      this.bBy = paramInt2;
+      this.bBz += 1;
       ??? = e(paramIntent);
       if (??? == null)
       {
@@ -91,7 +91,7 @@ public abstract class zzb
       g(paramIntent);
       return 2;
     }
-    this.bDO.execute(new t(this, (Intent)???, paramIntent));
+    this.bBw.execute(new t(this, (Intent)???, paramIntent));
     return 3;
   }
 }

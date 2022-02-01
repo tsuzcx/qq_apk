@@ -39,7 +39,7 @@ public final class b
     }
   }
   
-  public final String AL()
+  public final String Ap()
   {
     AppMethodBeat.i(48319);
     String str = String.format("Transformation_w%s_h%s", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });

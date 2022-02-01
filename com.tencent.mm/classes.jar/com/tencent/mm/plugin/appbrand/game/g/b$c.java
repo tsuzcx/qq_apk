@@ -7,9 +7,9 @@ public enum b$c
   static
   {
     AppMethodBeat.i(45361);
-    jtH = new c("Software", 0);
-    jtI = new c("Hardware", 1);
-    jtJ = new c[] { jtH, jtI };
+    jUc = new c("Software", 0);
+    jUd = new c("Hardware", 1);
+    jUe = new c[] { jUc, jUd };
     AppMethodBeat.o(45361);
   }
   

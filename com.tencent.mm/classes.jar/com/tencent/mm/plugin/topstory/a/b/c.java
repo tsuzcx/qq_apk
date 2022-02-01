@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.topstory.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ddb;
+import com.tencent.mm.protocal.protobuf.dio;
 
 public final class c
 {
-  public boolean qHI;
-  public long rwE;
-  public ddb yLU;
-  public boolean yLV;
+  public boolean rAJ;
+  public long sFw;
+  public dio zZN;
+  public boolean zZO;
   
-  public c(ddb paramddb)
+  public c(dio paramdio)
   {
     AppMethodBeat.i(91003);
-    this.yLU = paramddb;
-    this.rwE = System.currentTimeMillis();
+    this.zZN = paramdio;
+    this.sFw = System.currentTimeMillis();
     AppMethodBeat.o(91003);
   }
   
@@ -27,7 +27,7 @@ public final class c
       return false;
     }
     paramObject = (c)paramObject;
-    boolean bool = this.yLU.rNP.equals(paramObject.yLU.rNP);
+    boolean bool = this.zZN.sVF.equals(paramObject.zZN.sVF);
     AppMethodBeat.o(91004);
     return bool;
   }

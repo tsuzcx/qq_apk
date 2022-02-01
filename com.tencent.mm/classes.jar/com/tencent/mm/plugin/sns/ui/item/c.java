@@ -11,16 +11,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.sns.data.j;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
-import com.tencent.mm.plugin.sns.storage.b.f;
+import com.tencent.mm.plugin.sns.storage.b.g;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import org.json.JSONObject;
 
 public final class c
@@ -39,13 +36,13 @@ public final class c
       localJSONObject1.put("uxinfo", paramString1);
       localJSONObject1.put("snsId", paramString2);
       localJSONObject1.put("scene", paramInt2);
-      j.ix("16552", localJSONObject1.toString());
+      j.iU("16552", localJSONObject1.toString());
       AppMethodBeat.o(176418);
       return;
     }
     catch (Exception paramString1)
     {
-      ad.e("FullCardAdUtils", "gestureCgiReport exp=" + paramString1.toString());
+      ac.e("FullCardAdUtils", "gestureCgiReport exp=" + paramString1.toString());
       AppMethodBeat.o(176418);
     }
   }
@@ -55,7 +52,7 @@ public final class c
     AppMethodBeat.i(179353);
     try
     {
-      ad.i("FullCardAdUtils", "openGestureLandingPage, source=" + paramInt + ", snsId=" + paramp.field_snsId);
+      ac.i("FullCardAdUtils", "openGestureLandingPage, source=" + paramInt + ", snsId=" + paramp.field_snsId);
       int[] arrayOfInt = new int[2];
       paramView.getLocationInWindow(arrayOfInt);
       Intent localIntent = new Intent();
@@ -64,10 +61,10 @@ public final class c
       localIntent.putExtra("img_gallery_width", paramView.getWidth());
       localIntent.putExtra("img_gallery_height", paramView.getHeight());
       localIntent.putExtra("sns_landing_pages_share_sns_id", paramp.getSnsId());
-      localIntent.putExtra("sns_landing_pages_rawSnsId", paramp.dxy().Id);
-      localIntent.putExtra("sns_landing_pages_ux_info", paramp.dyg());
-      paramView = paramp.dxs().dvu();
-      if (!i.jb(paramp.dxs().dsv, "adFullCardGestureCanvasInfo")) {
+      localIntent.putExtra("sns_landing_pages_rawSnsId", paramp.dLV().Id);
+      localIntent.putExtra("sns_landing_pages_ux_info", paramp.dMD());
+      paramView = paramp.dFR().dJT();
+      if (!i.jz(paramp.dFR().dqf, "adFullCardGestureCanvasInfo")) {
         paramView.replaceAll("(?s)<adFullCardGestureCanvasInfo[^>]*>.*?</adFullCardGestureCanvasInfo>", "");
       }
       localIntent.putExtra("sns_landing_pages_xml", paramView);
@@ -76,9 +73,9 @@ public final class c
       localIntent.putExtra("sns_landing_pages_xml_prefix", "adxml");
       localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", true);
       localIntent.putExtra("sns_landing_is_native_sight_ad", true);
-      paramView = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramView.adn(), "com/tencent/mm/plugin/sns/ui/item/FullCardAdItemUtils", "openGestureLandingPage", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramView.lS(0));
+      paramView = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramView.aeD(), "com/tencent/mm/plugin/sns/ui/item/FullCardAdItemUtils", "openGestureLandingPage", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramView.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/sns/ui/item/FullCardAdItemUtils", "openGestureLandingPage", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       if ((paramContext instanceof Activity)) {
         ((Activity)paramContext).overridePendingTransition(0, 0);
@@ -88,94 +85,94 @@ public final class c
     }
     catch (Exception paramContext)
     {
-      ad.e("FullCardAdUtils", "openGestureLandingPage, exp=" + paramContext.toString());
+      ac.e("FullCardAdUtils", "openGestureLandingPage, exp=" + paramContext.toString());
       AppMethodBeat.o(179353);
     }
   }
   
-  public static void a(final b.f paramf, int paramInt, final ImageView paramImageView1, final ImageView paramImageView2)
+  public static void a(final b.g paramg, int paramInt, final ImageView paramImageView1, final ImageView paramImageView2)
   {
     AppMethodBeat.i(100072);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(100070);
-        ad.d("FullCardAdUtils", "curPlayTime:" + this.xRU + ", disppear=" + paramf.wUp + ", appear=" + paramf.wUr);
+        AppMethodBeat.i(200658);
+        ac.d("FullCardAdUtils", "curPlayTime:" + this.zeP + ", disppear=" + paramg.yhd + ", appear=" + paramg.yhf);
         for (;;)
         {
           try
           {
-            if (!TextUtils.isEmpty(paramf.wUo))
+            if (!TextUtils.isEmpty(paramg.yhc))
             {
-              c.h(paramf.wUo, paramImageView1);
-              if ((this.xRU >= this.xRX) && (this.xRX > 0))
+              com.tencent.mm.plugin.sns.ad.e.a.h(paramg.yhc, paramImageView1);
+              if ((this.zeP >= this.zeS) && (this.zeS > 0))
               {
                 ImageView localImageView = paramImageView1;
                 AlphaAnimation localAlphaAnimation;
                 if (localImageView.getVisibility() == 0)
                 {
-                  ad.d("FullCardAdUtils", "animHideView:" + localImageView.hashCode());
+                  ac.d("FullCardAdUtils", "animHideView:" + localImageView.hashCode());
                   localImageView.setVisibility(4);
                   localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
                   localAlphaAnimation.setDuration(300L);
                   localImageView.startAnimation(localAlphaAnimation);
                 }
-                if (TextUtils.isEmpty(paramf.wUq)) {
+                if (TextUtils.isEmpty(paramg.yhe)) {
                   break label414;
                 }
-                c.h(paramf.wUq, paramImageView2);
-                if (this.xRU < this.xRZ) {
+                com.tencent.mm.plugin.sns.ad.e.a.h(paramg.yhe, paramImageView2);
+                if (this.zeP < this.zeU) {
                   break;
                 }
                 localImageView = paramImageView2;
                 if (localImageView.getVisibility() != 0)
                 {
-                  ad.d("FullCardAdUtils", "animShowView:" + localImageView.hashCode());
+                  ac.d("FullCardAdUtils", "animShowView:" + localImageView.hashCode());
                   localImageView.setVisibility(0);
                   localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
                   localAlphaAnimation.setDuration(300L);
                   localImageView.startAnimation(localAlphaAnimation);
                 }
-                AppMethodBeat.o(100070);
+                AppMethodBeat.o(200658);
                 return;
               }
               if (paramImageView1.getVisibility() == 0) {
                 continue;
               }
               paramImageView1.setVisibility(0);
-              ad.d("FullCardAdUtils", "show frontCoverIv, hash=" + paramImageView1.hashCode());
+              ac.d("FullCardAdUtils", "show frontCoverIv, hash=" + paramImageView1.hashCode());
               continue;
             }
-            c.i(paramImageView1);
+            c.j(paramImageView1);
           }
           catch (Exception localException)
           {
-            ad.e("FullCardAdUtils", "checkCoverImageState exp=" + localException.toString());
-            AppMethodBeat.o(100070);
+            ac.e("FullCardAdUtils", "checkCoverImageState exp=" + localException.toString());
+            AppMethodBeat.o(200658);
             return;
           }
         }
         if (paramImageView2.getVisibility() == 0)
         {
           paramImageView2.setVisibility(4);
-          ad.d("FullCardAdUtils", "hide endCoverIv, hash=" + paramImageView2.hashCode());
-          AppMethodBeat.o(100070);
+          ac.d("FullCardAdUtils", "hide endCoverIv, hash=" + paramImageView2.hashCode());
+          AppMethodBeat.o(200658);
           return;
           label414:
-          c.i(paramImageView2);
+          c.j(paramImageView2);
         }
-        AppMethodBeat.o(100070);
+        AppMethodBeat.o(200658);
       }
     });
     AppMethodBeat.o(100072);
   }
   
-  public static boolean dDp()
+  public static boolean dRN()
   {
     AppMethodBeat.i(179354);
-    int i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pjq, 0);
-    ad.i("FullCardAdUtils", "isExptUseNewPlayer, value=".concat(String.valueOf(i)));
+    int i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pMH, 0);
+    ac.i("FullCardAdUtils", "isExptUseNewPlayer, value=".concat(String.valueOf(i)));
     if (i > 0)
     {
       AppMethodBeat.o(179354);
@@ -185,32 +182,12 @@ public final class c
     return false;
   }
   
-  public static void h(String paramString, ImageView paramImageView)
-  {
-    AppMethodBeat.i(100071);
-    if (!paramString.equals((String)paramImageView.getTag(2131304892)))
-    {
-      paramImageView.setImageDrawable(null);
-      loadImage(paramString, paramImageView);
-    }
-    AppMethodBeat.o(100071);
-  }
-  
-  static void i(ImageView paramImageView)
-  {
-    AppMethodBeat.i(160748);
-    paramImageView.setVisibility(4);
-    paramImageView.setImageDrawable(null);
-    paramImageView.setTag(2131304892, "");
-    AppMethodBeat.o(160748);
-  }
-  
   public static void i(String paramString, ImageView paramImageView)
   {
     AppMethodBeat.i(160749);
     if (TextUtils.isEmpty(paramString))
     {
-      i(paramImageView);
+      j(paramImageView);
       AppMethodBeat.o(160749);
       return;
     }
@@ -220,67 +197,13 @@ public final class c
     AppMethodBeat.o(160749);
   }
   
-  public static void loadImage(final String paramString, ImageView paramImageView)
+  static void j(ImageView paramImageView)
   {
-    AppMethodBeat.i(176417);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(176417);
-      return;
-    }
-    ad.d("FullCardAdUtils", "loadImage, hash=" + paramImageView.hashCode() + ", url=" + paramString);
-    paramImageView.setTag(2131304892, paramString);
-    h.a(paramString, new f.a()
-    {
-      public final void apm(String paramAnonymousString)
-      {
-        AppMethodBeat.i(100069);
-        try
-        {
-          String str = (String)this.rmn.getTag(2131304892);
-          if (TextUtils.isEmpty(str)) {
-            str = "";
-          }
-          while ((!TextUtils.isEmpty(paramAnonymousString)) && (paramAnonymousString.equals(str)))
-          {
-            paramAnonymousString = f.decodeFile(paramAnonymousString, null);
-            if (paramAnonymousString != null)
-            {
-              this.rmn.setImageBitmap(paramAnonymousString);
-              ad.d("FullCardAdUtils", "onDownloaded succ, hash=" + this.rmn.hashCode());
-              AppMethodBeat.o(100069);
-              return;
-              str = h.iU("adId", str);
-            }
-            else
-            {
-              ad.e("FullCardAdUtils", "onDownloaded, bitmap==null");
-              AppMethodBeat.o(100069);
-              return;
-            }
-          }
-        }
-        catch (Throwable paramAnonymousString)
-        {
-          ad.e("FullCardAdUtils", "onDownloaded, exp=" + paramAnonymousString.toString());
-          AppMethodBeat.o(100069);
-          return;
-        }
-        ad.d("FullCardAdUtils", "onDownloaded, url changed");
-        AppMethodBeat.o(100069);
-      }
-      
-      public final void dsA()
-      {
-        AppMethodBeat.i(100068);
-        this.rmn.setTag(2131304892, "");
-        ad.e("FullCardAdUtils", "onDownloadError, hash=" + this.rmn.hashCode() + ", url=" + paramString);
-        AppMethodBeat.o(100068);
-      }
-      
-      public final void duP() {}
-    });
-    AppMethodBeat.o(176417);
+    AppMethodBeat.i(160748);
+    paramImageView.setVisibility(4);
+    paramImageView.setImageDrawable(null);
+    paramImageView.setTag(2131304892, "");
+    AppMethodBeat.o(160748);
   }
 }
 

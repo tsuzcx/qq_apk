@@ -11,24 +11,24 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.k.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class MyLocationButton
   extends FrameLayout
 {
   private Context context;
-  public b.a fjJ;
-  private ImageButton sQG;
-  private LinearLayout sQH;
-  private com.tencent.mm.plugin.k.d sQI;
-  private boolean sQJ;
+  public b.a fnd;
+  private ImageButton tYT;
+  private LinearLayout tYU;
+  private com.tencent.mm.plugin.k.d tYV;
+  private boolean tYW;
   
   public MyLocationButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55828);
-    this.sQJ = true;
-    this.fjJ = new b.a()
+    this.tYW = true;
+    this.fnd = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -47,12 +47,12 @@ public class MyLocationButton
             MyLocationButton.c(MyLocationButton.this).getIController().setZoom(15);
           }
         }
-        new ap(Looper.getMainLooper()).post(new Runnable()
+        new ao(Looper.getMainLooper()).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(55825);
-            com.tencent.mm.modelgeo.d.axT().c(MyLocationButton.e(MyLocationButton.this));
+            com.tencent.mm.modelgeo.d.aEL().c(MyLocationButton.e(MyLocationButton.this));
             AppMethodBeat.o(55825);
           }
         });
@@ -69,8 +69,8 @@ public class MyLocationButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(55827);
-    this.sQJ = true;
-    this.fjJ = new b.a()
+    this.tYW = true;
+    this.fnd = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -89,12 +89,12 @@ public class MyLocationButton
             MyLocationButton.c(MyLocationButton.this).getIController().setZoom(15);
           }
         }
-        new ap(Looper.getMainLooper()).post(new Runnable()
+        new ao(Looper.getMainLooper()).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(55825);
-            com.tencent.mm.modelgeo.d.axT().c(MyLocationButton.e(MyLocationButton.this));
+            com.tencent.mm.modelgeo.d.aEL().c(MyLocationButton.e(MyLocationButton.this));
             AppMethodBeat.o(55825);
           }
         });
@@ -111,54 +111,54 @@ public class MyLocationButton
   {
     AppMethodBeat.i(55829);
     View localView = View.inflate(this.context, 2131494990, this);
-    this.sQG = ((ImageButton)localView.findViewById(2131301519));
-    this.sQH = ((LinearLayout)localView.findViewById(2131303518));
+    this.tYT = ((ImageButton)localView.findViewById(2131301519));
+    this.tYU = ((LinearLayout)localView.findViewById(2131303518));
     AppMethodBeat.o(55829);
   }
   
-  public final void cJE()
+  public final void cXj()
   {
     AppMethodBeat.i(55830);
-    this.sQG.setImageResource(2131233629);
+    this.tYT.setImageResource(2131233629);
     AppMethodBeat.o(55830);
   }
   
-  public final void cJF()
+  public final void cXk()
   {
     AppMethodBeat.i(55831);
-    this.sQG.setImageResource(2131233630);
+    this.tYT.setImageResource(2131233630);
     AppMethodBeat.o(55831);
   }
   
   public ImageButton getMyLocationBtn()
   {
-    return this.sQG;
+    return this.tYT;
   }
   
   public LinearLayout getProgressBar()
   {
-    return this.sQH;
+    return this.tYU;
   }
   
   public void setAnimToSelf(boolean paramBoolean)
   {
-    this.sQJ = paramBoolean;
+    this.tYW = paramBoolean;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55832);
-    this.sQG.setOnClickListener(paramOnClickListener);
+    this.tYT.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55832);
   }
   
   public void setProgressBar(com.tencent.mm.plugin.k.d paramd)
   {
     AppMethodBeat.i(55833);
-    this.sQI = paramd;
-    this.sQH.setVisibility(0);
-    this.sQG.setVisibility(8);
-    com.tencent.mm.modelgeo.d.axT().b(this.fjJ, true);
+    this.tYV = paramd;
+    this.tYU.setVisibility(0);
+    this.tYT.setVisibility(8);
+    com.tencent.mm.modelgeo.d.aEL().b(this.fnd, true);
     AppMethodBeat.o(55833);
   }
 }

@@ -7,64 +7,64 @@ import com.google.b.a.e;
 public final class a$ap
   extends e
 {
-  private static volatile ap[] Imt;
-  public int CrQ = 0;
-  public String Imu = "";
-  public int Imv = 0;
-  public int nPB = 0;
+  private static volatile ap[] JOe;
+  public int DKi = 0;
+  public int JOf = 0;
+  public String dhV = "";
+  public int osF = 0;
   
   public a$ap()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static ap[] flv()
+  public static ap[] fBM()
   {
-    if (Imt == null) {}
-    synchronized (c.bIR)
+    if (JOe == null) {}
+    synchronized (c.bGz)
     {
-      if (Imt == null) {
-        Imt = new ap[0];
+      if (JOe == null) {
+        JOe = new ap[0];
       }
-      return Imt;
+      return JOe;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.nPB != 0) {
-      paramb.bz(1, this.nPB);
+    if (this.osF != 0) {
+      paramb.bw(1, this.osF);
     }
-    if (!this.Imu.equals("")) {
-      paramb.d(2, this.Imu);
+    if (!this.dhV.equals("")) {
+      paramb.d(2, this.dhV);
     }
-    if (this.CrQ != 0) {
-      paramb.bz(3, this.CrQ);
+    if (this.DKi != 0) {
+      paramb.bw(3, this.DKi);
     }
-    if (this.Imv != 0) {
-      paramb.bz(4, this.Imv);
+    if (this.JOf != 0) {
+      paramb.bw(4, this.JOf);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.nPB != 0) {
-      i = j + b.bB(1, this.nPB);
+    if (this.osF != 0) {
+      i = j + b.by(1, this.osF);
     }
     j = i;
-    if (!this.Imu.equals("")) {
-      j = i + b.e(2, this.Imu);
+    if (!this.dhV.equals("")) {
+      j = i + b.e(2, this.dhV);
     }
     i = j;
-    if (this.CrQ != 0) {
-      i = j + b.bB(3, this.CrQ);
+    if (this.DKi != 0) {
+      i = j + b.by(3, this.DKi);
     }
     j = i;
-    if (this.Imv != 0) {
-      j = i + b.bB(4, this.Imv);
+    if (this.JOf != 0) {
+      j = i + b.by(4, this.JOf);
     }
     return j;
   }

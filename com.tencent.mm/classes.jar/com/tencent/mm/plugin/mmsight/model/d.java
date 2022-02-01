@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.mmsight.model;
 import android.content.Context;
 import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class d
   extends OrientationEventListener
 {
-  private int iHo = -1;
+  private int gud = -1;
   private int orientation = -1;
-  private int tBW = -1;
-  private long tBX = 0L;
-  private long tBY = 0L;
-  public a tBZ;
+  private int uKt = -1;
+  private long uKu = 0L;
+  private long uKv = 0L;
+  public a uKw;
   
   public d(Context paramContext)
   {
@@ -28,19 +28,19 @@ public final class d
   
   public final void a(a parama)
   {
-    this.tBZ = parama;
+    this.uKw = parama;
   }
   
-  public final boolean aov()
+  public final boolean aly()
   {
     AppMethodBeat.i(89359);
-    if (!k.tCK)
+    if (!k.uLh)
     {
       AppMethodBeat.o(89359);
       return false;
     }
-    long l = bt.aS(this.tBY);
-    ad.i("MicroMsg.DeviceOrientationListener", "isLandscape, tickToNow: %s, orientation: %s", new Object[] { Long.valueOf(l), Integer.valueOf(this.orientation) });
+    long l = bs.aO(this.uKv);
+    ac.i("MicroMsg.DeviceOrientationListener", "isLandscape, tickToNow: %s, orientation: %s", new Object[] { Long.valueOf(l), Integer.valueOf(this.orientation) });
     if (l < 2000L)
     {
       AppMethodBeat.o(89359);
@@ -60,7 +60,7 @@ public final class d
     return false;
   }
   
-  public final int cPE()
+  public final int ddn()
   {
     AppMethodBeat.i(89358);
     int i = getOrientation();
@@ -84,18 +84,18 @@ public final class d
   public final void enable()
   {
     AppMethodBeat.i(89357);
-    ad.i("MicroMsg.DeviceOrientationListener", "enable, config isEnableLandscapeMode: %s", new Object[] { Boolean.valueOf(k.tCK) });
-    if (k.tCK)
+    ac.i("MicroMsg.DeviceOrientationListener", "enable, config isEnableLandscapeMode: %s", new Object[] { Boolean.valueOf(k.uLh) });
+    if (k.uLh)
     {
       super.enable();
-      this.tBY = bt.GC();
+      this.uKv = bs.Gn();
     }
     AppMethodBeat.o(89357);
   }
   
   public final int getOrientation()
   {
-    if (!k.tCK) {
+    if (!k.uLh) {
       return 0;
     }
     return this.orientation;
@@ -104,27 +104,27 @@ public final class d
   public final void onOrientationChanged(int paramInt)
   {
     AppMethodBeat.i(89356);
-    if (!k.tCK)
+    if (!k.uLh)
     {
       AppMethodBeat.o(89356);
       return;
     }
-    if (bt.aS(this.tBY) < 2000L)
+    if (bs.aO(this.uKv) < 2000L)
     {
-      ad.v("MicroMsg.DeviceOrientationListener", "onOrientationChanged, not reach DETECT_THRESHOLD");
+      ac.v("MicroMsg.DeviceOrientationListener", "onOrientationChanged, not reach DETECT_THRESHOLD");
       AppMethodBeat.o(89356);
       return;
     }
     if ((paramInt < 0) || (paramInt > 360))
     {
-      ad.d("MicroMsg.DeviceOrientationListener", "orientation out of range, ignore");
+      ac.d("MicroMsg.DeviceOrientationListener", "orientation out of range, ignore");
       AppMethodBeat.o(89356);
       return;
     }
-    if ((Math.abs(this.tBW - paramInt) >= 30) || (bt.aS(this.tBX) >= 300L))
+    if ((Math.abs(this.uKt - paramInt) >= 30) || (bs.aO(this.uKu) >= 300L))
     {
-      this.tBW = paramInt;
-      this.tBX = bt.GC();
+      this.uKt = paramInt;
+      this.uKu = bs.Gn();
       if ((paramInt > 60) && (paramInt < 300)) {
         break label165;
       }
@@ -134,8 +134,8 @@ public final class d
     }
     for (;;)
     {
-      if (this.tBZ != null) {
-        this.tBZ.wy(this.orientation);
+      if (this.uKw != null) {
+        this.uKw.nm(this.orientation);
       }
       AppMethodBeat.o(89356);
       return;
@@ -161,21 +161,21 @@ public final class d
   public final void reset()
   {
     AppMethodBeat.i(89360);
-    ad.i("MicroMsg.DeviceOrientationListener", "reset");
-    this.iHo = -1;
+    ac.i("MicroMsg.DeviceOrientationListener", "reset");
+    this.gud = -1;
     this.orientation = -1;
-    this.tBW = -1;
+    this.uKt = -1;
     AppMethodBeat.o(89360);
   }
   
   public static abstract interface a
   {
-    public abstract void wy(int paramInt);
+    public abstract void nm(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.d
  * JD-Core Version:    0.7.0.1
  */

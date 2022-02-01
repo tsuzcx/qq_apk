@@ -6,34 +6,34 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.al.x;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.br.d;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
-import com.tencent.mm.protocal.protobuf.vn;
-import com.tencent.mm.protocal.protobuf.vo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.vx;
+import com.tencent.mm.protocal.protobuf.vy;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class CheckSmsCanAddCardUI
   extends MMActivity
   implements g
 {
-  private String FHL;
+  private String HgT;
   private b rr;
   
-  private void ePt()
+  private void feX()
   {
     AppMethodBeat.i(32989);
     Toast.makeText(this, getString(2131764651), 1).show();
-    LauncherUI.jk(this);
+    LauncherUI.jv(this);
     finish();
     AppMethodBeat.o(32989);
   }
@@ -48,7 +48,7 @@ public class CheckSmsCanAddCardUI
     AppMethodBeat.i(32986);
     super.onCreate(paramBundle);
     hideTitleView();
-    if ((!az.arW()) || (az.aeC()))
+    if ((!az.ayN()) || (az.afS()))
     {
       MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent());
       finish();
@@ -59,37 +59,37 @@ public class CheckSmsCanAddCardUI
     if (paramBundle != null)
     {
       String str = paramBundle.getHost();
-      if ((!bt.isNullOrNil(str)) && (str.equals("cardpackage"))) {
+      if ((!bs.isNullOrNil(str)) && (str.equals("cardpackage"))) {
         break label224;
       }
-      ad.e("MicroMsg.CheckSmsCanAddCardUI", "err host, host = %s", new Object[] { str });
+      ac.e("MicroMsg.CheckSmsCanAddCardUI", "err host, host = %s", new Object[] { str });
     }
     for (int i = 0;; i = 1)
     {
       if (i == 0) {
         break label267;
       }
-      az.aeS().a(1038, this);
+      az.agi().a(1038, this);
       paramBundle = new b.a();
-      paramBundle.gUU = new vn();
-      paramBundle.gUV = new vo();
+      paramBundle.hvt = new vx();
+      paramBundle.hvu = new vy();
       paramBundle.funcId = 1038;
       paramBundle.uri = "/cgi-bin/mmbiz-bin/api/checksmscanaddcard";
-      this.rr = paramBundle.atI();
-      ((vn)this.rr.gUS.gUX).CXF = this.FHL;
-      ad.i("MicroMsg.CheckSmsCanAddCardUI", "encry value is %s", new Object[] { this.FHL });
+      this.rr = paramBundle.aAz();
+      ((vx)this.rr.hvr.hvw).Eqo = this.HgT;
+      ac.i("MicroMsg.CheckSmsCanAddCardUI", "encry value is %s", new Object[] { this.HgT });
       this.rr = x.d(this.rr);
       AppMethodBeat.o(32986);
       return;
       label224:
-      this.FHL = paramBundle.getQueryParameter("encrystr");
-      ad.i("MicroMsg.CheckSmsCanAddCardUI", "encryptCardInfo = %s", new Object[] { this.FHL });
-      if (bt.isNullOrNil(this.FHL)) {
+      this.HgT = paramBundle.getQueryParameter("encrystr");
+      ac.i("MicroMsg.CheckSmsCanAddCardUI", "encryptCardInfo = %s", new Object[] { this.HgT });
+      if (bs.isNullOrNil(this.HgT)) {
         break;
       }
     }
     label267:
-    ePt();
+    feX();
     AppMethodBeat.o(32986);
   }
   
@@ -97,20 +97,20 @@ public class CheckSmsCanAddCardUI
   {
     AppMethodBeat.i(32987);
     super.onDestroy();
-    az.aeS().b(1038, this);
+    az.agi().b(1038, this);
     AppMethodBeat.o(32987);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(32988);
-    ad.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramn = (vo)this.rr.gUT.gUX;
-      paramString = paramn.dyc;
-      paramn = paramn.dyd;
-      ad.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd cardid:%s extMsg:%s", new Object[] { paramString, paramn });
+      paramn = (vy)this.rr.hvs.hvw;
+      paramString = paramn.dvO;
+      paramn = paramn.dvP;
+      ac.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd cardid:%s extMsg:%s", new Object[] { paramString, paramn });
       Intent localIntent = new Intent();
       localIntent.putExtra("key_card_id", paramString);
       localIntent.putExtra("key_card_ext", paramn);
@@ -121,7 +121,7 @@ public class CheckSmsCanAddCardUI
       AppMethodBeat.o(32988);
       return;
     }
-    ePt();
+    feX();
     AppMethodBeat.o(32988);
   }
   
@@ -133,7 +133,7 @@ public class CheckSmsCanAddCardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.CheckSmsCanAddCardUI
  * JD-Core Version:    0.7.0.1
  */

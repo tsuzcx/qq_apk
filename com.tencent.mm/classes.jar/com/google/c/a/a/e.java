@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   extends g
 {
-  private final short bJW;
+  private final short bHE;
   private final short value;
   
   e(g paramg, int paramInt1, int paramInt2)
@@ -14,14 +14,14 @@ final class e
     super(paramg);
     AppMethodBeat.i(12202);
     this.value = ((short)paramInt1);
-    this.bJW = ((short)paramInt2);
+    this.bHE = ((short)paramInt2);
     AppMethodBeat.o(12202);
   }
   
   final void a(a parama, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12203);
-    parama.bI(this.value, this.bJW);
+    parama.bF(this.value, this.bHE);
     AppMethodBeat.o(12203);
   }
   
@@ -29,16 +29,16 @@ final class e
   {
     AppMethodBeat.i(12204);
     int i = this.value;
-    int j = this.bJW;
-    int k = this.bJW;
-    String str = "<" + Integer.toBinaryString(i & (1 << j) - 1 | 1 << k | 1 << this.bJW).substring(1) + '>';
+    int j = this.bHE;
+    int k = this.bHE;
+    String str = "<" + Integer.toBinaryString(i & (1 << j) - 1 | 1 << k | 1 << this.bHE).substring(1) + '>';
     AppMethodBeat.o(12204);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.a.a.e
  * JD-Core Version:    0.7.0.1
  */

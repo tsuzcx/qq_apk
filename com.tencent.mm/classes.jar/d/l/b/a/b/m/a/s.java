@@ -16,12 +16,12 @@ import java.util.List;
 public final class s
   implements c
 {
-  public static final s JZg;
+  public static final s LMz;
   
   static
   {
     AppMethodBeat.i(61092);
-    JZg = new s();
+    LMz = new s();
     AppMethodBeat.o(61092);
   }
   
@@ -353,15 +353,6 @@ public final class s
     return bool;
   }
   
-  public final g iQ(List<? extends g> paramList)
-  {
-    AppMethodBeat.i(61131);
-    d.g.b.k.h(paramList, "types");
-    paramList = c.a.iR(paramList);
-    AppMethodBeat.o(61131);
-    return paramList;
-  }
-  
   public final int j(m paramm)
   {
     AppMethodBeat.i(61119);
@@ -378,6 +369,15 @@ public final class s
     parami = c.a.r(parami);
     AppMethodBeat.o(61125);
     return parami;
+  }
+  
+  public final g jg(List<? extends g> paramList)
+  {
+    AppMethodBeat.i(61131);
+    d.g.b.k.h(paramList, "types");
+    paramList = c.a.jh(paramList);
+    AppMethodBeat.o(61131);
+    return paramList;
   }
   
   public final g k(g paramg)
@@ -526,7 +526,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.s
  * JD-Core Version:    0.7.0.1
  */

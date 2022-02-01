@@ -4,10 +4,11 @@ import android.content.Context;
 import android.media.AudioManager;
 import com.tencent.e.h;
 import com.tencent.e.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.audio.d.c;
 import com.tencent.mm.plugin.audio.d.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.l;
 import d.v;
@@ -15,74 +16,74 @@ import d.y;
 import java.util.ArrayList;
 import java.util.Stack;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "", "()V", "audioManager", "Landroid/media/AudioManager;", "getAudioManager", "()Landroid/media/AudioManager;", "setAudioManager", "(Landroid/media/AudioManager;)V", "currentAudioMode", "", "isACLConnected", "", "isBluetoothRequestOk", "Lkotlin/Function1;", "", "()Lkotlin/jvm/functions/Function1;", "setBluetoothRequestOk", "(Lkotlin/jvm/functions/Function1;)V", "value", "isBluetoothRequesting", "()Z", "setBluetoothRequesting", "(Z)V", "isScoConnected", "setScoConnected", "mAudioDeviceRequester", "Ljava/util/ArrayList;", "", "getMAudioDeviceRequester", "()Ljava/util/ArrayList;", "setMAudioDeviceRequester", "(Ljava/util/ArrayList;)V", "mCurrentAudioDeviceState", "mDeviceQueue", "Ljava/util/Stack;", "mSetmodeErrorcode", "getMSetmodeErrorcode", "()I", "setMSetmodeErrorcode", "(I)V", "autoPluggingNewDeviceNext", "currentDevice", "checkIfSomeRequestAvailable", "type", "closePrevAudioPlayingDevice", "device", "getBluetoothScoStreamType", "getCurrentPlayingDevice", "getMode", "getSetModeErrorCodeAndReset", "getStatsString", "getStreamMaxVolume", "StreamType", "getStreamMode", "speakerOn", "getStreamVolume", "getSystemAudioManager", "hasRequestBluetooth", "hasRequestHeadSet", "initAudioPlayingResource", "isBluetoothScoOn", "isHeadsetPlugged", "isSomeOneDevicePlugged", "isSpeakerphoneOn", "isStreamMute", "streamType", "isUsingExternalAudioDevice", "onAudioDeviceStateChanged", "status", "pauseMusic", "refreshAudioPlayingDevice", "isPlugged", "releaseAudioPlayingOrRecordingResource", "requestAudioPlayingOrRecordingResource", "targetDevice", "(Ljava/lang/String;Ljava/lang/Integer;)I", "requestBluetoothOn", "requestEarPieceOn", "requestHeadSetOn", "requestRingSpeakerOn", "requestSpeakerOn", "resetSpeaker", "resumeMusic", "setMode", "mode", "setModeCallBack", "Lkotlin/Function0;", "setStreamVolume", "index", "flags", "shiftSpeaker", "beSpeakerphoneOn", "ignoreBluetooth", "startCurrentAudioPlayingDevice", "volumeDown", "volumeUp", "Companion", "plugin-audio_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "", "()V", "audioManager", "Landroid/media/AudioManager;", "getAudioManager", "()Landroid/media/AudioManager;", "setAudioManager", "(Landroid/media/AudioManager;)V", "currentAudioMode", "", "isACLConnected", "", "isBluetoothRequestOk", "Lkotlin/Function1;", "", "()Lkotlin/jvm/functions/Function1;", "setBluetoothRequestOk", "(Lkotlin/jvm/functions/Function1;)V", "value", "isBluetoothRequesting", "()Z", "setBluetoothRequesting", "(Z)V", "isScoConnected", "setScoConnected", "mAudioDeviceRequester", "Ljava/util/ArrayList;", "", "getMAudioDeviceRequester", "()Ljava/util/ArrayList;", "setMAudioDeviceRequester", "(Ljava/util/ArrayList;)V", "mCurrentAudioDeviceState", "mDeviceQueue", "Ljava/util/Stack;", "mSetmodeErrorcode", "getMSetmodeErrorcode", "()I", "setMSetmodeErrorcode", "(I)V", "autoPluggingNewDeviceNext", "currentDevice", "checkIfSomeRequestAvailable", "type", "closePrevAudioPlayingDevice", "device", "getBluetoothScoStreamType", "getCurrentPlayingDevice", "getMode", "getSetModeErrorCodeAndReset", "getStatsString", "getStreamMaxVolume", "StreamType", "getStreamMode", "speakerOn", "getStreamVolume", "getSystemAudioManager", "hasRequestBluetooth", "hasRequestHeadSet", "initAudioPlayingResource", "isBluetoothScoOn", "isHeadsetPlugged", "isSomeOneDevicePlugged", "isSpeakerphoneOn", "isStreamMute", "streamType", "isUsingExternalAudioDevice", "onAudioDeviceStateChanged", "status", "pauseMusic", "refreshAudioPlayingDevice", "isPlugged", "releaseAudioPlayingOrRecordingResource", "requestAudioPlayingOrRecordingResource", "targetDevice", "(Ljava/lang/String;Ljava/lang/Integer;)I", "requestBluetoothOn", "requestEarPieceOn", "requestHeadSetOn", "requestRingSpeakerOn", "requestSpeakerOn", "resetSpeaker", "resumeMusic", "setMode", "mode", "setModeCallBack", "Lkotlin/Function0;", "setStreamVolume", "index", "flags", "shiftSpeaker", "beSpeakerphoneOn", "ignoreBluetooth", "startCurrentAudioPlayingDevice", "volumeDown", "volumeUp", "Companion", "plugin-audio_release"})
 public abstract class a
 {
-  public static final a.a mph = new a.a((byte)0);
+  public static final a.a mRi = new a.a((byte)0);
   public AudioManager audioManager;
-  private boolean fyO;
-  public boolean fyP;
-  public int fyS;
-  private int mpb = -1;
-  private int mpc = -1;
-  protected ArrayList<String> mpd = new ArrayList();
-  private Stack<Integer> mpe;
-  public d.g.a.b<? super Boolean, y> mpf;
-  protected boolean mpg;
+  private boolean fCv;
+  public boolean fCw;
+  public int fCz;
+  private int mRc = -1;
+  private int mRd = -1;
+  protected ArrayList<String> mRe = new ArrayList();
+  private Stack<Integer> mRf;
+  public d.g.a.b<? super Boolean, y> mRg;
+  protected boolean mRh;
   
   public a()
   {
-    Object localObject = aj.getContext().getSystemService("audio");
+    Object localObject = ai.getContext().getSystemService("audio");
     if (localObject == null) {
       throw new v("null cannot be cast to non-null type android.media.AudioManager");
     }
     this.audioManager = ((AudioManager)localObject);
-    this.mpe = new Stack();
+    this.mRf = new Stack();
   }
   
-  public static void bvt()
+  public static void bCp()
   {
-    com.tencent.mm.plugin.audio.d.a.bvI();
-    c.bvI();
+    com.tencent.mm.plugin.audio.d.a.bCE();
+    c.bCE();
   }
   
-  public static boolean bvz()
+  public static boolean bCv()
   {
-    com.tencent.mm.plugin.audio.d.a.bvI();
-    c.bvI();
-    Object localObject = com.tencent.mm.plugin.audio.d.a.mpy;
-    if (!com.tencent.mm.plugin.audio.d.a.bvH()) {
-      localObject = c.mpA;
+    com.tencent.mm.plugin.audio.d.a.bCE();
+    c.bCE();
+    Object localObject = com.tencent.mm.plugin.audio.d.a.mRz;
+    if (!com.tencent.mm.plugin.audio.d.a.bCD()) {
+      localObject = c.mRB;
     }
-    return c.bvH();
+    return c.bCD();
   }
   
-  private void hK(boolean paramBoolean)
+  private void ii(boolean paramBoolean)
   {
-    this.mpg = paramBoolean;
-    d.g.a.b localb = this.mpf;
+    this.mRh = paramBoolean;
+    d.g.a.b localb = this.mRg;
     if (localb != null) {
-      localb.aA(Boolean.valueOf(paramBoolean));
+      localb.ay(Boolean.valueOf(paramBoolean));
     }
   }
   
-  private final int v(boolean paramBoolean, int paramInt)
+  private final int w(boolean paramBoolean, int paramInt)
   {
-    ad.m("MicroMsg.BaseAudioManager", "current refresh audio playing isPlugged %s, and device is  %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    ac.m("MicroMsg.BaseAudioManager", "current refresh audio playing isPlugged %s, and device is  %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     int i = -1;
     Object localObject;
     Integer localInteger;
-    if ((!this.mpe.isEmpty()) && (this.mpe.size() > 1))
+    if ((!this.mRf.isEmpty()) && (this.mRf.size() > 1))
     {
-      localObject = (Integer)this.mpe.get(this.mpe.size() - 1);
-      localInteger = (Integer)this.mpe.lastElement();
+      localObject = (Integer)this.mRf.get(this.mRf.size() - 1);
+      localInteger = (Integer)this.mRf.lastElement();
       if (paramBoolean) {
         if (localObject == null)
         {
           k.g(localObject, "prevDevice");
-          vM(((Integer)localObject).intValue());
-          label106:
-          paramInt = vN(paramInt);
+          wD(((Integer)localObject).intValue());
+          label107:
+          paramInt = wE(paramInt);
         }
       }
     }
@@ -93,14 +94,14 @@ public abstract class a
       {
         return paramInt;
         if (((Integer)localObject).intValue() == paramInt) {
-          break label106;
+          break label107;
         }
         break;
-        vM(paramInt);
+        wD(paramInt);
         if (localInteger == null) {
           k.g(localInteger, "nextDevice");
         }
-        for (paramInt = vN(localInteger.intValue());; paramInt = -1)
+        for (paramInt = wE(localInteger.intValue());; paramInt = -1)
         {
           return paramInt;
           if (paramInt != localInteger.intValue()) {
@@ -108,31 +109,31 @@ public abstract class a
           }
         }
         if (paramBoolean) {
-          return vN(paramInt);
+          return wE(paramInt);
         }
-        vM(paramInt);
+        wD(paramInt);
         switch (paramInt)
         {
         default: 
           return -1;
         }
-        localObject = com.tencent.mm.plugin.audio.d.a.mpy;
-        if (!com.tencent.mm.plugin.audio.d.a.bvE()) {
+        localObject = com.tencent.mm.plugin.audio.d.a.mRz;
+        if (!com.tencent.mm.plugin.audio.d.a.bCA()) {
           break label230;
         }
-        localObject = com.tencent.mm.plugin.audio.d.a.mpy;
+        localObject = com.tencent.mm.plugin.audio.d.a.mRz;
         paramInt = i;
-      } while (com.tencent.mm.plugin.audio.d.a.bvH());
-      localObject = c.mpA;
+      } while (com.tencent.mm.plugin.audio.d.a.bCD());
+      localObject = c.mRB;
       paramInt = i;
     } while (c.e(this.audioManager));
-    bvu();
+    bCq();
     return -1;
   }
   
-  private final void vM(int paramInt)
+  private final void wD(int paramInt)
   {
-    ad.m("MicroMsg.BaseAudioManager", "close prev audio playing device %s", new Object[] { Integer.valueOf(paramInt) });
+    ac.m("MicroMsg.BaseAudioManager", "close prev audio playing device %s", new Object[] { Integer.valueOf(paramInt) });
     Object localObject;
     switch (paramInt)
     {
@@ -140,23 +141,23 @@ public abstract class a
     default: 
       return;
     case 4: 
-      this.fyP = false;
-      localObject = com.tencent.mm.plugin.audio.d.a.mpy;
-      com.tencent.mm.plugin.audio.d.a.hP(false);
+      this.fCw = false;
+      localObject = com.tencent.mm.plugin.audio.d.a.mRz;
+      com.tencent.mm.plugin.audio.d.a.ip(false);
       com.tencent.mm.plugin.audio.d.a.b(this.audioManager);
       return;
     case 3: 
-      localObject = c.mpA;
-      c.hP(false);
+      localObject = c.mRB;
+      c.ip(false);
       return;
     }
     this.audioManager.setSpeakerphoneOn(false);
   }
   
-  private final int vN(int paramInt)
+  private final int wE(int paramInt)
   {
     boolean bool2 = true;
-    ad.m("MicroMsg.BaseAudioManager", "start current audio playing device %s", new Object[] { Integer.valueOf(paramInt) });
+    ac.m("MicroMsg.BaseAudioManager", "start current audio playing device %s", new Object[] { Integer.valueOf(paramInt) });
     Object localObject;
     switch (paramInt)
     {
@@ -165,21 +166,21 @@ public abstract class a
       do
       {
         return -1;
-      } while (this.fyP);
+      } while (this.fCw);
       paramInt = com.tencent.mm.plugin.audio.d.a.a(this.audioManager);
-      h.Iye.aNW("delayConnectBluetooth");
+      h.JZN.aTz("delayConnectBluetooth");
       if (paramInt == 1)
       {
         bool1 = true;
-        this.fyP = bool1;
-        localObject = com.tencent.mm.plugin.audio.d.a.mpy;
+        this.fCw = bool1;
+        localObject = com.tencent.mm.plugin.audio.d.a.mRz;
         if (paramInt != 1) {
           break label116;
         }
       }
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        com.tencent.mm.plugin.audio.d.a.hP(bool1);
+        com.tencent.mm.plugin.audio.d.a.ip(bool1);
         return paramInt;
         bool1 = false;
         break;
@@ -189,66 +190,57 @@ public abstract class a
       return -1;
     case 3: 
       label116:
-      if (this.mpe.contains(Integer.valueOf(4))) {
-        vM(4);
+      if (this.mRf.contains(Integer.valueOf(4))) {
+        wD(4);
       }
-      localObject = c.mpA;
-      c.hP(true);
+      localObject = c.mRB;
+      c.ip(true);
       return -1;
     }
     this.audioManager.setSpeakerphoneOn(true);
     return -1;
   }
   
-  public static boolean vQ(int paramInt)
+  public static boolean wH(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return true;
     case 4: 
-      localObject = com.tencent.mm.plugin.audio.d.a.mpy;
-      return com.tencent.mm.plugin.audio.d.a.bvH();
+      localObject = com.tencent.mm.plugin.audio.d.a.mRz;
+      return com.tencent.mm.plugin.audio.d.a.bCD();
     }
-    Object localObject = c.mpA;
-    return c.bvH();
+    Object localObject = c.mRB;
+    return c.bCD();
   }
   
-  public final void Oc(String paramString)
+  public final void Sl(String paramString)
   {
     k.h(paramString, "type");
-    ad.m("MicroMsg.BaseAudioManager", "releaseAudioPlayingOrRecordingResource type ".concat(String.valueOf(paramString)), new Object[0]);
-    if ((this.mpd.contains(paramString)) && (this.mpe.contains(Integer.valueOf(4)))) {}
+    ac.m("MicroMsg.BaseAudioManager", "releaseAudioPlayingOrRecordingResource type ".concat(String.valueOf(paramString)), new Object[0]);
+    if ((this.mRe.contains(paramString)) && (this.mRf.contains(Integer.valueOf(4)))) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        hM(false);
+        ik(false);
       }
-      this.mpe.clear();
-      this.mpd.remove(paramString);
+      this.mRf.clear();
+      this.mRe.remove(paramString);
       return;
     }
-  }
-  
-  public final void a(int paramInt, d.g.a.a<y> parama)
-  {
-    ad.m("MicroMsg.BaseAudioManager", "set mode from %d to %d", new Object[] { Integer.valueOf(this.audioManager.getMode()), Integer.valueOf(paramInt) });
-    if ((this.mpc == -1) || (this.mpc != paramInt)) {
-      h.Iye.f((Runnable)new a.c(this, paramInt, parama), "reset speaker");
-    }
-    this.mpc = paramInt;
   }
   
   public final int b(String paramString, Integer paramInteger)
   {
     k.h(paramString, "type");
-    ad.m("MicroMsg.BaseAudioManager", "requestAudioPlayingOrRecordingResource type " + paramString + " adn target device " + paramInteger, new Object[0]);
-    com.tencent.mm.plugin.audio.d.a.bvI();
-    c.bvI();
-    if (this.mpd.contains(paramString)) {
-      this.mpd.remove(paramString);
+    ac.m("MicroMsg.BaseAudioManager", "requestAudioPlayingOrRecordingResource type " + paramString + " adn target device " + paramInteger, new Object[0]);
+    com.tencent.mm.plugin.audio.d.a.bCE();
+    c.bCE();
+    if (this.mRe.contains(paramString)) {
+      this.mRe.remove(paramString);
     }
-    this.mpd.add(paramString);
+    this.mRe.add(paramString);
     if (paramInteger == null)
     {
       if (paramInteger != null) {
@@ -271,86 +263,95 @@ public abstract class a
       if (paramInteger.intValue() != 4) {
         break;
       }
-      return hM(true);
+      return ik(true);
       if (paramInteger.intValue() != 3) {
         break label86;
       }
-      hN(true);
+      il(true);
       return -1;
       if (paramInteger.intValue() != 2) {
         break label90;
       }
-      bvu();
+      bCq();
       return -1;
     }
     label139:
-    ck(true);
+    cm(true);
     return -1;
   }
   
-  public final String bvA()
+  public final void b(final int paramInt, final d.g.a.a<y> parama)
   {
-    int i = this.audioManager.getMode();
-    StringBuilder localStringBuilder = new StringBuilder("mode:").append(i).append(" isSpeakerphoneOn:").append(isSpeakerphoneOn()).append(" isBluetoothOn:");
-    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.mpy;
-    return com.tencent.mm.plugin.audio.d.a.bvC();
+    ac.m("MicroMsg.BaseAudioManager", "set mode from %d to %d", new Object[] { Integer.valueOf(this.audioManager.getMode()), Integer.valueOf(paramInt) });
+    if ((this.mRd == -1) || (this.mRd != paramInt)) {
+      h.JZN.f((Runnable)new c(this, paramInt, parama), "reset speaker");
+    }
+    this.mRd = paramInt;
   }
   
-  public final void bvu()
+  public final void bCq()
   {
-    if (com.tencent.mm.plugin.audio.d.b.c(this.mpe))
+    if (com.tencent.mm.plugin.audio.d.b.c(this.mRf))
     {
-      vM(1);
-      v(true, 2);
+      wD(1);
+      w(true, 2);
     }
   }
   
-  public final void bvv()
+  public final void bCr()
   {
-    ad.i("MicroMsg.BaseAudioManager", "reset speaker to normal");
-    a(0, null);
+    ac.i("MicroMsg.BaseAudioManager", "reset speaker to normal");
+    b(0, null);
   }
   
-  public final boolean bvw()
+  public final boolean bCs()
   {
-    c localc = c.mpA;
+    c localc = c.mRB;
     return c.e(this.audioManager);
   }
   
-  public final int bvx()
+  public final int bCt()
   {
-    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.mpy;
+    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.mRz;
     return com.tencent.mm.plugin.audio.d.a.c(this.audioManager);
   }
   
-  public final int bvy()
+  public final int bCu()
   {
-    if (this.mpe.empty()) {
+    if (this.mRf.empty()) {
       return -1;
     }
-    Object localObject = this.mpe.lastElement();
+    Object localObject = this.mRf.lastElement();
     k.g(localObject, "mDeviceQueue.lastElement()");
     return ((Number)localObject).intValue();
   }
   
-  public void ck(boolean paramBoolean)
+  public final String bCw()
   {
-    ad.m("MicroMsg.BaseAudioManager", "request speaker on value %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    int i = this.audioManager.getMode();
+    StringBuilder localStringBuilder = new StringBuilder("mode:").append(i).append(" isSpeakerphoneOn:").append(isSpeakerphoneOn()).append(" isBluetoothOn:");
+    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.mRz;
+    return com.tencent.mm.plugin.audio.d.a.bCy();
+  }
+  
+  public void cm(boolean paramBoolean)
+  {
+    ac.m("MicroMsg.BaseAudioManager", "request speaker on value %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      if ((d.f(this.mpe)) && (!isSpeakerphoneOn())) {
-        v(true, 1);
+      if ((d.f(this.mRf)) && (!isSpeakerphoneOn())) {
+        w(true, 1);
       }
       return;
     }
-    d.g(this.mpe);
-    y localy = y.JfV;
-    v(false, 1);
+    d.g(this.mRf);
+    y localy = y.KTp;
+    w(false, 1);
   }
   
-  public final void ex(int paramInt1, int paramInt2)
+  public final void eA(int paramInt1, int paramInt2)
   {
-    ad.i("MicroMsg.BaseAudioManager", "setStreamVolume streamType:%s,index:%s,flags:%s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0) });
+    ac.i("MicroMsg.BaseAudioManager", "setStreamVolume streamType:%s,index:%s,flags:%s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0) });
     com.tencent.mm.compatible.b.a.b(this.audioManager, paramInt1, paramInt2);
   }
   
@@ -364,30 +365,25 @@ public abstract class a
     return this.audioManager.getStreamVolume(paramInt);
   }
   
-  public abstract boolean hJ(boolean paramBoolean);
-  
-  public void hL(int paramInt)
+  public void hv(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder("onAudioDeviceStateChanged mstatus is ").append(paramInt).append(" and  mCurrentAudioDeviceState = status ");
     boolean bool;
-    if (this.mpb == paramInt)
+    if (this.mRc == paramInt)
     {
       bool = true;
-      ad.i("MicroMsg.BaseAudioManager", bool);
-      if (this.mpb != paramInt) {
+      ac.i("MicroMsg.BaseAudioManager", bool);
+      if (this.mRc != paramInt) {
         break label58;
       }
     }
     label58:
-    while ((this.mpd.isEmpty()) && ((paramInt != 9) || (paramInt != 8)))
+    while ((this.mRe.isEmpty()) && ((paramInt != 9) || (paramInt != 8)))
     {
       return;
       bool = false;
       break;
     }
-    localStringBuilder = new StringBuilder("isBluetoothOn ");
-    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.mpy;
-    ad.i("MicroMsg.BaseAudioManager", com.tencent.mm.plugin.audio.d.a.bvC() + " and isBluetoothScoOn " + isBluetoothScoOn() + 65289);
     switch (paramInt)
     {
     case 4: 
@@ -395,95 +391,141 @@ public abstract class a
       return;
     case 0: 
     case 5: 
-      this.fyO = true;
-      h.Iye.a((Runnable)new a.b(this), 1000L, "delayConnectBluetooth");
+      this.fCv = true;
+      h.JZN.a((Runnable)new b(this), 1000L, "delayConnectBluetooth");
       return;
     case 1: 
     case 6: 
     case 7: 
-      this.fyO = false;
-      hM(false);
+      this.fCv = false;
+      ik(false);
       return;
     case 2: 
-      hK(false);
-      hM(true);
+      ii(false);
+      ik(true);
       return;
     case 3: 
-      hM(false);
+      ik(false);
       return;
     case 8: 
-      hN(true);
+      il(true);
       return;
     }
-    hN(false);
+    il(false);
   }
   
-  public final void hL(boolean paramBoolean)
+  public abstract boolean ih(boolean paramBoolean);
+  
+  public final void ij(boolean paramBoolean)
   {
     this.audioManager.setSpeakerphoneOn(paramBoolean);
   }
   
-  public final int hM(boolean paramBoolean)
+  public final int ik(boolean paramBoolean)
   {
-    ad.m("MicroMsg.BaseAudioManager", "request bluetooth on value %s", new Object[] { Boolean.valueOf(paramBoolean) });
     int i = -1;
-    if (paramBoolean)
-    {
-      hK(true);
-      if (com.tencent.mm.plugin.audio.d.a.a(this.mpe)) {
-        i = v(true, 4);
+    ac.m("MicroMsg.BaseAudioManager", "request bluetooth on value %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {
+      if (com.tencent.mm.plugin.audio.d.a.a(this.mRf))
+      {
+        i = w(true, 4);
+        if (i != -1)
+        {
+          paramBoolean = true;
+          ii(paramBoolean);
+        }
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.BaseAudioManager", "request bluetooth failed %s", new Object[] { Integer.valueOf(i) });
+      ac.i("MicroMsg.BaseAudioManager", "request bluetooth failed %s", new Object[] { Integer.valueOf(i) });
       return i;
-      hK(false);
-      com.tencent.mm.plugin.audio.d.a.b(this.mpe);
-      y localy = y.JfV;
-      v(false, 4);
+      paramBoolean = false;
+      break;
+      ii(false);
+      continue;
+      ii(false);
+      com.tencent.mm.plugin.audio.d.a.b(this.mRf);
+      y localy = y.KTp;
+      w(false, 4);
     }
   }
   
-  public final void hN(boolean paramBoolean)
+  public final void il(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (c.d(this.mpe)) {
-        v(true, 3);
+      if (c.d(this.mRf)) {
+        w(true, 3);
       }
       return;
     }
-    c.e(this.mpe);
-    y localy = y.JfV;
-    v(false, 3);
+    c.e(this.mRf);
+    y localy = y.KTp;
+    w(false, 3);
   }
   
   public final boolean isBluetoothScoOn()
   {
-    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.mpy;
+    com.tencent.mm.plugin.audio.d.a locala = com.tencent.mm.plugin.audio.d.a.mRz;
     return com.tencent.mm.plugin.audio.d.a.d(this.audioManager);
   }
   
   public final boolean isSpeakerphoneOn()
   {
-    d locald = d.mpB;
+    d locald = d.mRC;
     return d.f(this.audioManager);
   }
   
-  public final void vO(int paramInt)
+  public final void wF(int paramInt)
   {
     com.tencent.mm.compatible.b.a.a(this.audioManager, paramInt, 1);
   }
   
-  public final void vP(int paramInt)
+  public final void wG(int paramInt)
   {
     com.tencent.mm.compatible.b.a.a(this.audioManager, paramInt, -1);
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(a parama) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(198345);
+      ac.i("MicroMsg.BaseAudioManager", "dkbt post delay BLUETOOTH_SCO_CONNECTED ");
+      com.tencent.mm.plugin.audio.d.a.a(this.mRj.audioManager);
+      AppMethodBeat.o(198345);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(a parama, int paramInt, d.g.a.a parama1) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(198346);
+      this.mRj.audioManager.setMode(paramInt);
+      d.g.a.a locala = parama;
+      if (locala != null)
+      {
+        locala.invoke();
+        AppMethodBeat.o(198346);
+        return;
+      }
+      AppMethodBeat.o(198346);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.audio.b.a
  * JD-Core Version:    0.7.0.1
  */

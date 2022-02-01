@@ -38,15 +38,15 @@ public abstract interface a
   {
     public abstract WebResourceResponse a(WebResourceRequest paramWebResourceRequest, Bundle paramBundle);
     
-    public abstract boolean bT(String paramString);
+    public abstract boolean bJ(String paramString);
     
-    public abstract void bU(String paramString);
+    public abstract void bK(String paramString);
     
-    public abstract void bV(String paramString);
+    public abstract void bL(String paramString);
     
-    public abstract WebResourceResponse bW(String paramString);
+    public abstract WebResourceResponse bM(String paramString);
     
-    public abstract String bX(String paramString);
+    public abstract String bN(String paramString);
   }
 }
 

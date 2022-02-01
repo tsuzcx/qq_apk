@@ -26,25 +26,25 @@ public final class f
     {
       paramView = this.mInflater.inflate(2131494650, paramViewGroup, false);
       paramViewGroup = new a();
-      paramViewGroup.kEu = ((TextView)paramView.findViewById(2131301859));
-      paramViewGroup.kFd = ((TextView)paramView.findViewById(2131301857));
-      paramViewGroup.sYS = ((TextView)paramView.findViewById(2131301858));
-      paramViewGroup.sYT = ((TextView)paramView.findViewById(2131301856));
-      paramViewGroup.LZ = paramInt;
+      paramViewGroup.lfN = ((TextView)paramView.findViewById(2131301859));
+      paramViewGroup.lgw = ((TextView)paramView.findViewById(2131301857));
+      paramViewGroup.uhg = ((TextView)paramView.findViewById(2131301858));
+      paramViewGroup.uhh = ((TextView)paramView.findViewById(2131301856));
+      paramViewGroup.MW = paramInt;
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      t localt = Gb(paramInt);
-      paramViewGroup.kEu.setText(localt.teu);
-      paramViewGroup.sYS.setText(localt.tev);
-      paramViewGroup.sYT.setText(this.mContext.getString(2131760831, new Object[] { com.tencent.mm.wallet_core.ui.e.D(localt.tdp / 100.0D) }));
-      String str2 = this.mContext.getString(2131760961, new Object[] { Long.valueOf(localt.tdn), Long.valueOf(localt.tew) });
+      t localt = HW(paramInt);
+      paramViewGroup.lfN.setText(localt.umJ);
+      paramViewGroup.uhg.setText(localt.umK);
+      paramViewGroup.uhh.setText(this.mContext.getString(2131760831, new Object[] { com.tencent.mm.wallet_core.ui.e.C(localt.ulE / 100.0D) }));
+      String str2 = this.mContext.getString(2131760961, new Object[] { Long.valueOf(localt.ulC), Long.valueOf(localt.umL) });
       String str1 = str2;
       if (localt.status == 5) {
         str1 = this.mContext.getString(2131760962) + " " + str2;
       }
-      paramViewGroup.kFd.setText(str1);
+      paramViewGroup.lgw.setText(str1);
       AppMethodBeat.o(65660);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
@@ -53,11 +53,11 @@ public final class f
   
   final class a
   {
-    int LZ;
-    TextView kEu;
-    TextView kFd;
-    TextView sYS;
-    TextView sYT;
+    int MW;
+    TextView lfN;
+    TextView lgw;
+    TextView uhg;
+    TextView uhh;
     
     a() {}
   }

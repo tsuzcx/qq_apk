@@ -7,8 +7,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.ah;
 import com.tencent.mm.plugin.appbrand.widget.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.widget.a.d;
 
 public final class h
@@ -21,7 +21,7 @@ public final class h
     {
       try
       {
-        if (((ah)g.ab(ah.class)).aT(paramString, paramInt))
+        if (((ah)g.ab(ah.class)).aX(paramString, paramInt))
         {
           new c(paramContext).H(paramContext.getResources().getString(2131755674)).show();
           AppMethodBeat.o(49041);
@@ -33,7 +33,7 @@ public final class h
       {
         int i;
         d locald1;
-        ad.e("MicroMsg.CollectionModifyInteractLogic", "performClick, (%s %d) added = %b, modify e = %s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), localException });
+        ac.e("MicroMsg.CollectionModifyInteractLogic", "performClick, (%s %d) added = %b, modify e = %s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), localException });
         t(paramContext, paramBoolean);
         continue;
         if (i != -3) {
@@ -44,14 +44,14 @@ public final class h
           continue;
         }
         locald2.setCanceledOnTouchOutside(false);
-        locald2.wU(true);
+        locald2.yc(true);
         continue;
         t(paramContext, paramBoolean);
         continue;
       }
       AppMethodBeat.o(49041);
       return false;
-      i = ((ah)g.ab(ah.class)).aS(paramString, paramInt);
+      i = ((ah)g.ab(ah.class)).aW(paramString, paramInt);
       if (i == 0)
       {
         new c(paramContext).H(paramContext.getResources().getString(2131755673)).show();
@@ -61,12 +61,12 @@ public final class h
       if (i != -2) {
         continue;
       }
-      i = ((ah)g.ab(ah.class)).aRv();
+      i = ((ah)g.ab(ah.class)).aYq();
       locald1 = com.tencent.mm.ui.base.h.a(paramContext, paramContext.getResources().getString(2131755380, new Object[] { Integer.valueOf(i) }), "", paramContext.getResources().getString(2131755835), null);
       if (locald1 != null)
       {
         locald1.setCanceledOnTouchOutside(false);
-        locald1.wU(true);
+        locald1.yc(true);
       }
     }
   }
@@ -74,7 +74,7 @@ public final class h
   private static void t(Context paramContext, final boolean paramBoolean)
   {
     AppMethodBeat.i(49042);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {

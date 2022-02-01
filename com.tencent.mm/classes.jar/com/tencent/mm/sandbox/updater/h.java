@@ -6,19 +6,19 @@ abstract interface h
 {
   public abstract void a(c paramc);
   
-  public abstract void apm(String paramString);
+  public abstract void asD(String paramString);
   
-  public abstract void duP();
+  public abstract void dFC();
   
-  public abstract void eDD();
+  public abstract void eSX();
   
-  public abstract void eDE();
+  public abstract void eSY();
   
-  public abstract void eS(int paramInt1, int paramInt2);
+  public abstract void eV(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.h
  * JD-Core Version:    0.7.0.1
  */

@@ -6,26 +6,26 @@ import android.view.WindowId;
 final class an
   implements ao
 {
-  private final WindowId Bp;
+  private final WindowId Cn;
   
   an(View paramView)
   {
-    this.Bp = paramView.getWindowId();
+    this.Cn = paramView.getWindowId();
   }
   
   public final boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof an)) && (((an)paramObject).Bp.equals(this.Bp));
+    return ((paramObject instanceof an)) && (((an)paramObject).Cn.equals(this.Cn));
   }
   
   public final int hashCode()
   {
-    return this.Bp.hashCode();
+    return this.Cn.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.an
  * JD-Core Version:    0.7.0.1
  */

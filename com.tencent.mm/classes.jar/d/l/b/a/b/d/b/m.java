@@ -8,22 +8,22 @@ import d.n.n;
 final class m
   implements l<k>
 {
-  public static final m JEL;
+  public static final m Lse;
   
   static
   {
     AppMethodBeat.i(58216);
-    JEL = new m();
+    Lse = new m();
     AppMethodBeat.o(58216);
   }
   
-  private k aQs(String paramString)
+  private k aWr(String paramString)
   {
     int k = 0;
     AppMethodBeat.i(58209);
     d.g.b.k.h(paramString, "representation");
     if (((CharSequence)paramString).length() > 0) {}
-    for (int i = 1; (aa.JfW) && (i == 0); i = 0)
+    for (int i = 1; (aa.KTq) && (i == 0); i = 0)
     {
       paramString = (Throwable)new AssertionError("empty string as JvmType");
       AppMethodBeat.o(58209);
@@ -73,7 +73,7 @@ final class m
           i = 1;
         }
       }
-      if ((aa.JfW) && (i == 0))
+      if ((aa.KTq) && (i == 0))
       {
         paramString = (Throwable)new AssertionError("Type that is not primitive nor array should be Object, but '" + paramString + "' was found");
         AppMethodBeat.o(58209);
@@ -88,7 +88,7 @@ final class m
       label157:
       paramString = paramString.substring(1);
       d.g.b.k.g(paramString, "(this as java.lang.String).substring(startIndex)");
-      paramString = (k)new k.a(aQs(paramString));
+      paramString = (k)new k.a(aWr(paramString));
       AppMethodBeat.o(58209);
       return paramString;
     }
@@ -99,7 +99,7 @@ final class m
     return paramString;
   }
   
-  private static k.b aQt(String paramString)
+  private static k.b aWs(String paramString)
   {
     AppMethodBeat.i(58211);
     d.g.b.k.h(paramString, "internalName");
@@ -114,13 +114,13 @@ final class m
     d.g.b.k.h(paramk, "type");
     if ((paramk instanceof k.a))
     {
-      paramk = "[" + a(((k.a)paramk).JEI);
+      paramk = "[" + a(((k.a)paramk).Lsb);
       AppMethodBeat.o(58213);
       return paramk;
     }
     if ((paramk instanceof k.c))
     {
-      paramk = ((k.c)paramk).JEK;
+      paramk = ((k.c)paramk).Lsd;
       if (paramk != null)
       {
         paramk = paramk.getDesc();
@@ -136,7 +136,7 @@ final class m
     {
       if ((paramk instanceof k.b))
       {
-        paramk = "L" + ((k.b)paramk).JEJ + ";";
+        paramk = "L" + ((k.b)paramk).Lsc + ";";
         AppMethodBeat.o(58213);
         return paramk;
       }
@@ -150,7 +150,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.m
  * JD-Core Version:    0.7.0.1
  */

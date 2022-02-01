@@ -11,13 +11,13 @@ public abstract interface e
   
   public abstract void g(Bitmap paramBitmap);
   
-  public abstract void os();
+  public abstract void oC();
   
   public abstract void trimMemory(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.a.e
  * JD-Core Version:    0.7.0.1
  */

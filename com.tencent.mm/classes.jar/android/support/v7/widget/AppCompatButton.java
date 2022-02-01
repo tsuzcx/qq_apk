@@ -17,8 +17,8 @@ public class AppCompatButton
   extends Button
   implements s, b
 {
-  private final e ahe = new e(this);
-  private final l ahf;
+  private final e ahY = new e(this);
+  private final l ahZ;
   
   public AppCompatButton(Context paramContext)
   {
@@ -32,95 +32,95 @@ public class AppCompatButton
   
   public AppCompatButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ab(paramContext), paramAttributeSet, paramInt);
-    this.ahe.a(paramAttributeSet, paramInt);
-    this.ahf = new l(this);
-    this.ahf.a(paramAttributeSet, paramInt);
-    this.ahf.iH();
+    super(aw.ac(paramContext), paramAttributeSet, paramInt);
+    this.ahY.a(paramAttributeSet, paramInt);
+    this.ahZ = new l(this);
+    this.ahZ.a(paramAttributeSet, paramInt);
+    this.ahZ.iP();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.ahe != null) {
-      this.ahe.iz();
+    if (this.ahY != null) {
+      this.ahY.iH();
     }
-    if (this.ahf != null) {
-      this.ahf.iH();
+    if (this.ahZ != null) {
+      this.ahZ.iP();
     }
   }
   
   public int getAutoSizeMaxTextSize()
   {
-    if (PF) {
+    if (QA) {
       return super.getAutoSizeMaxTextSize();
     }
-    if (this.ahf != null) {
-      return Math.round(this.ahf.ais.aiE);
+    if (this.ahZ != null) {
+      return Math.round(this.ahZ.ajm.ajy);
     }
     return -1;
   }
   
   public int getAutoSizeMinTextSize()
   {
-    if (PF) {
+    if (QA) {
       return super.getAutoSizeMinTextSize();
     }
-    if (this.ahf != null) {
-      return Math.round(this.ahf.ais.aiD);
+    if (this.ahZ != null) {
+      return Math.round(this.ahZ.ajm.ajx);
     }
     return -1;
   }
   
   public int getAutoSizeStepGranularity()
   {
-    if (PF) {
+    if (QA) {
       return super.getAutoSizeStepGranularity();
     }
-    if (this.ahf != null) {
-      return Math.round(this.ahf.ais.aiC);
+    if (this.ahZ != null) {
+      return Math.round(this.ahZ.ajm.ajw);
     }
     return -1;
   }
   
   public int[] getAutoSizeTextAvailableSizes()
   {
-    if (PF) {
+    if (QA) {
       return super.getAutoSizeTextAvailableSizes();
     }
-    if (this.ahf != null) {
-      return this.ahf.ais.aiF;
+    if (this.ahZ != null) {
+      return this.ahZ.ajm.ajz;
     }
     return new int[0];
   }
   
   public int getAutoSizeTextType()
   {
-    if (PF)
+    if (QA)
     {
       if (super.getAutoSizeTextType() == 1) {
         return 1;
       }
       return 0;
     }
-    if (this.ahf != null) {
-      return this.ahf.ais.aiA;
+    if (this.ahZ != null) {
+      return this.ahZ.ajm.aju;
     }
     return 0;
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.ahe != null) {
-      return this.ahe.getSupportBackgroundTintList();
+    if (this.ahY != null) {
+      return this.ahY.getSupportBackgroundTintList();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.ahe != null) {
-      return this.ahe.getSupportBackgroundTintMode();
+    if (this.ahY != null) {
+      return this.ahY.getSupportBackgroundTintMode();
     }
     return null;
   }
@@ -140,65 +140,65 @@ public class AppCompatButton
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.ahf != null) {
-      this.ahf.iI();
+    if (this.ahZ != null) {
+      this.ahZ.iQ();
     }
   }
   
   protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    if ((this.ahf != null) && (!PF) && (this.ahf.ais.iO())) {
-      this.ahf.ais.iM();
+    if ((this.ahZ != null) && (!QA) && (this.ahZ.ajm.iW())) {
+      this.ahZ.ajm.iU();
     }
   }
   
   public void setAutoSizeTextTypeUniformWithConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (PF) {
+    if (QA) {
       super.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    while (this.ahf == null) {
+    while (this.ahZ == null) {
       return;
     }
-    this.ahf.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.ahZ.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setAutoSizeTextTypeUniformWithPresetSizes(int[] paramArrayOfInt, int paramInt)
   {
-    if (PF) {
+    if (QA) {
       super.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
     }
-    while (this.ahf == null) {
+    while (this.ahZ == null) {
       return;
     }
-    this.ahf.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
+    this.ahZ.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
   }
   
   public void setAutoSizeTextTypeWithDefaults(int paramInt)
   {
-    if (PF) {
+    if (QA) {
       super.setAutoSizeTextTypeWithDefaults(paramInt);
     }
-    while (this.ahf == null) {
+    while (this.ahZ == null) {
       return;
     }
-    this.ahf.setAutoSizeTextTypeWithDefaults(paramInt);
+    this.ahZ.setAutoSizeTextTypeWithDefaults(paramInt);
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.ahe != null) {
-      this.ahe.iy();
+    if (this.ahY != null) {
+      this.ahY.iG();
     }
   }
   
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.ahe != null) {
-      this.ahe.bG(paramInt);
+    if (this.ahY != null) {
+      this.ahY.bG(paramInt);
     }
   }
   
@@ -209,42 +209,42 @@ public class AppCompatButton
   
   public void setSupportAllCaps(boolean paramBoolean)
   {
-    if (this.ahf != null) {
-      this.ahf.setAllCaps(paramBoolean);
+    if (this.ahZ != null) {
+      this.ahZ.setAllCaps(paramBoolean);
     }
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.ahe != null) {
-      this.ahe.setSupportBackgroundTintList(paramColorStateList);
+    if (this.ahY != null) {
+      this.ahY.setSupportBackgroundTintList(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ahe != null) {
-      this.ahe.setSupportBackgroundTintMode(paramMode);
+    if (this.ahY != null) {
+      this.ahY.setSupportBackgroundTintMode(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.ahf != null) {
-      this.ahf.u(paramContext, paramInt);
+    if (this.ahZ != null) {
+      this.ahZ.u(paramContext, paramInt);
     }
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    if (PF) {
+    if (QA) {
       super.setTextSize(paramInt, paramFloat);
     }
-    while (this.ahf == null) {
+    while (this.ahZ == null) {
       return;
     }
-    this.ahf.setTextSize(paramInt, paramFloat);
+    this.ahZ.setTextSize(paramInt, paramFloat);
   }
 }
 

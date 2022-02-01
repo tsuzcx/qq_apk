@@ -22,7 +22,7 @@
             <TextView android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="1.0px" />
             <com.tencent.mm.plugin.finder.view.FinderExtendReadingView android:id="@id/bqh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <TextView android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="1.0px" />
-            <com.tencent.mm.plugin.finder.view.FinderChooseOriginalView android:id="@id/haq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.mm.plugin.finder.view.FinderChooseOriginalView android:id="@id/hbb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <TextView android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="1.0px" />
             <View android:id="@id/a5x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
         </LinearLayout>

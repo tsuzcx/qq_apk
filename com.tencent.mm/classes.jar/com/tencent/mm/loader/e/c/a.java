@@ -7,13 +7,13 @@ import com.tencent.mm.loader.h.e<TT;>;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "T", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;", "transcoder", "(Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;)V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "source", "when", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder$WHENIF;", "asResourceName", "", "ishasTransCoderWhenDownload", "", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "T", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;", "transcoder", "(Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;)V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "source", "when", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder$WHENIF;", "asResourceName", "", "ishasTransCoderWhenDownload", "", "libimageloader_release"})
 public final class a<T>
   extends b<T>
 {
   public a(b<T> paramb)
   {
-    c(paramb);
+    b(paramb);
   }
   
   public final e<? extends T> a(g<?> paramg, f<?, T> paramf, e<T> parame)
@@ -30,7 +30,7 @@ public final class a<T>
     k.h(paramf, "reaper");
     k.h(parame, "source");
     k.h(paramb, "when");
-    Object localObject1 = ((a)this).gkv;
+    Object localObject1 = ((a)this).gLi;
     Object localObject2 = localObject1;
     if (!(localObject1 instanceof b)) {
       localObject2 = null;
@@ -39,7 +39,7 @@ public final class a<T>
     localObject1 = parame;
     if (localObject2 == null)
     {
-      localObject1 = ((a)this).gkv;
+      localObject1 = ((a)this).gLi;
       localObject2 = localObject1;
       if (!(localObject1 instanceof b)) {
         localObject2 = null;
@@ -49,7 +49,7 @@ public final class a<T>
       if (localObject2 == null)
       {
         localObject1 = parame;
-        parame = ((a)this).gkv;
+        parame = ((a)this).gLi;
         localObject2 = parame;
         if (!(parame instanceof b)) {
           localObject2 = null;
@@ -66,10 +66,10 @@ public final class a<T>
     {
       label136:
       parame = (e<T>)localObject1;
-      if (localObject3.gkw == b.a.gkA)
+      if (localObject3.gLj == b.a.gLn)
       {
         parame = (e<T>)localObject1;
-        if (paramb == localObject3.gkx) {
+        if (paramb == localObject3.gLk) {
           if ((localObject1 instanceof e)) {
             break label499;
           }
@@ -82,7 +82,7 @@ public final class a<T>
     for (parame = null;; parame = (e<T>)localObject1)
     {
       if (parame == null) {
-        k.fvU();
+        k.fOy();
       }
       localObject2 = localObject3.a(paramg, paramf, parame);
       parame = (e<T>)localObject2;
@@ -94,7 +94,7 @@ public final class a<T>
       }
       for (;;)
       {
-        localObject1 = localObject3.gkv;
+        localObject1 = localObject3.gLi;
         localObject2 = localObject1;
         if (!(localObject1 instanceof b)) {
           localObject2 = null;
@@ -107,10 +107,10 @@ public final class a<T>
         break;
         label247:
         parame = (e<T>)localObject1;
-        if (localObject3.gkw == b.a.gkz)
+        if (localObject3.gLj == b.a.gLm)
         {
           parame = (e<T>)localObject1;
-          if (paramb == localObject3.gkx) {
+          if (paramb == localObject3.gLk) {
             if ((localObject1 instanceof e)) {
               break label490;
             }
@@ -119,7 +119,7 @@ public final class a<T>
         for (parame = null;; parame = (e<T>)localObject1)
         {
           if (parame == null) {
-            k.fvU();
+            k.fOy();
           }
           localObject2 = localObject3.a(paramg, paramf, parame);
           parame = (e<T>)localObject2;
@@ -131,7 +131,7 @@ public final class a<T>
           }
           for (;;)
           {
-            localObject1 = localObject3.gkv;
+            localObject1 = localObject3.gLi;
             localObject2 = localObject1;
             if (!(localObject1 instanceof b)) {
               localObject2 = null;
@@ -144,10 +144,10 @@ public final class a<T>
             localObject1 = parame;
             break;
             localObject2 = parame;
-            if (localObject3.gkw == b.a.gky)
+            if (localObject3.gLj == b.a.gLl)
             {
               localObject2 = parame;
-              if (paramb == localObject3.gkx) {
+              if (paramb == localObject3.gLk) {
                 if ((parame instanceof e)) {
                   break label481;
                 }
@@ -156,7 +156,7 @@ public final class a<T>
             for (localObject1 = null;; localObject1 = parame)
             {
               if (localObject1 == null) {
-                k.fvU();
+                k.fOy();
               }
               localObject2 = localObject3.a(paramg, paramf, (e)localObject1);
               localObject1 = localObject2;
@@ -166,7 +166,7 @@ public final class a<T>
               if (localObject1 == null) {}
               for (localObject2 = parame;; localObject2 = localObject1)
               {
-                parame = localObject3.gkv;
+                parame = localObject3.gLi;
                 localObject1 = parame;
                 if (!(parame instanceof b)) {
                   localObject1 = null;
@@ -185,15 +185,15 @@ public final class a<T>
     }
   }
   
-  public final String rg(String paramString)
+  public final String vi(String paramString)
   {
     k.h(paramString, "source");
-    b localb2 = ((a)this).gkv;
+    b localb2 = ((a)this).gLi;
     b localb1 = localb2;
     String str = paramString;
     if (localb2 == null)
     {
-      localb2 = ((a)this).gkv;
+      localb2 = ((a)this).gLi;
       localb1 = localb2;
       str = paramString;
       if (localb2 != null) {
@@ -202,7 +202,7 @@ public final class a<T>
     }
     for (;;)
     {
-      localb2 = ((a)this).gkv;
+      localb2 = ((a)this).gLi;
       localb1 = localb2;
       str = paramString;
       if (localb2 != null) {
@@ -212,14 +212,14 @@ public final class a<T>
       do
       {
         paramString = str;
-        if (localb1.gkw == b.a.gkA)
+        if (localb1.gLj == b.a.gLn)
         {
           paramString = str;
-          if (b.b.gkD == localb1.gkx) {
-            paramString = str + localb1.rg(str);
+          if (b.b.gLq == localb1.gLk) {
+            paramString = str + localb1.vi(str);
           }
         }
-        localb2 = localb1.gkv;
+        localb2 = localb1.gLi;
         localb1 = localb2;
         str = paramString;
       } while (localb2 != null);
@@ -228,14 +228,14 @@ public final class a<T>
       do
       {
         paramString = str;
-        if (localb1.gkw == b.a.gkz)
+        if (localb1.gLj == b.a.gLm)
         {
           paramString = str;
-          if (b.b.gkD == localb1.gkx) {
-            paramString = str + localb1.rg(str);
+          if (b.b.gLq == localb1.gLk) {
+            paramString = str + localb1.vi(str);
           }
         }
-        localb2 = localb1.gkv;
+        localb2 = localb1.gLi;
         localb1 = localb2;
         str = paramString;
       } while (localb2 != null);
@@ -244,14 +244,14 @@ public final class a<T>
     do
     {
       paramString = str;
-      if (localb1.gkw == b.a.gky)
+      if (localb1.gLj == b.a.gLl)
       {
         paramString = str;
-        if (b.b.gkD == localb1.gkx) {
-          paramString = str + localb1.rg(str);
+        if (b.b.gLq == localb1.gLk) {
+          paramString = str + localb1.vi(str);
         }
       }
-      localb2 = localb1.gkv;
+      localb2 = localb1.gLi;
       localb1 = localb2;
       str = paramString;
     } while (localb2 != null);
@@ -260,7 +260,7 @@ public final class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.e.c.a
  * JD-Core Version:    0.7.0.1
  */

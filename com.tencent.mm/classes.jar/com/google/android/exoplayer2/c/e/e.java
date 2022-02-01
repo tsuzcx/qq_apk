@@ -9,31 +9,31 @@ import java.io.EOFException;
 
 final class e
 {
-  private static final int bel;
-  private final m aXj;
-  public int aZG;
-  public int bem;
-  public long ben;
-  public long beo;
-  public long bep;
-  public long beq;
-  public int ber;
-  public int bes;
-  public final int[] bet;
+  private static final int beX;
+  private final m aXV;
+  public int bas;
+  public int beY;
+  public long beZ;
+  public long bfa;
+  public long bfb;
+  public long bfc;
+  public int bfd;
+  public int bfe;
+  public final int[] bff;
   public int type;
   
   static
   {
     AppMethodBeat.i(92159);
-    bel = x.aY("OggS");
+    beX = x.aQ("OggS");
     AppMethodBeat.o(92159);
   }
   
   e()
   {
     AppMethodBeat.i(92157);
-    this.bet = new int['ÿ'];
-    this.aXj = new m(255);
+    this.bff = new int['ÿ'];
+    this.aXV = new m(255);
     AppMethodBeat.o(92157);
   }
   
@@ -41,12 +41,12 @@ final class e
   {
     int j = 0;
     AppMethodBeat.i(92158);
-    this.aXj.reset();
+    this.aXV.reset();
     reset();
-    if ((paramf.getLength() == -1L) || (paramf.getLength() - paramf.sJ() >= 27L)) {
+    if ((paramf.getLength() == -1L) || (paramf.getLength() - paramf.sS() >= 27L)) {
       i = 1;
     }
-    while ((i == 0) || (!paramf.b(this.aXj.data, 0, 27, true))) {
+    while ((i == 0) || (!paramf.b(this.aXV.data, 0, 27, true))) {
       if (paramBoolean)
       {
         AppMethodBeat.o(92158);
@@ -60,7 +60,7 @@ final class e
         throw paramf;
       }
     }
-    if (this.aXj.df() != bel)
+    if (this.aXV.dm() != beX)
     {
       if (paramBoolean)
       {
@@ -71,8 +71,8 @@ final class e
       AppMethodBeat.o(92158);
       throw paramf;
     }
-    this.bem = this.aXj.readUnsignedByte();
-    if (this.bem != 0)
+    this.beY = this.aXV.readUnsignedByte();
+    if (this.beY != 0)
     {
       if (paramBoolean)
       {
@@ -83,20 +83,20 @@ final class e
       AppMethodBeat.o(92158);
       throw paramf;
     }
-    this.type = this.aXj.readUnsignedByte();
-    this.ben = this.aXj.vO();
-    this.beo = this.aXj.vM();
-    this.bep = this.aXj.vM();
-    this.beq = this.aXj.vM();
-    this.ber = this.aXj.readUnsignedByte();
-    this.aZG = (this.ber + 27);
-    this.aXj.reset();
-    paramf.b(this.aXj.data, 0, this.ber);
+    this.type = this.aXV.readUnsignedByte();
+    this.beZ = this.aXV.vD();
+    this.bfa = this.aXV.vB();
+    this.bfb = this.aXV.vB();
+    this.bfc = this.aXV.vB();
+    this.bfd = this.aXV.readUnsignedByte();
+    this.bas = (this.bfd + 27);
+    this.aXV.reset();
+    paramf.b(this.aXV.data, 0, this.bfd);
     int i = j;
-    while (i < this.ber)
+    while (i < this.bfd)
     {
-      this.bet[i] = this.aXj.readUnsignedByte();
-      this.bes += this.bet[i];
+      this.bff[i] = this.aXV.readUnsignedByte();
+      this.bfe += this.bff[i];
       i += 1;
     }
     AppMethodBeat.o(92158);
@@ -105,15 +105,15 @@ final class e
   
   public final void reset()
   {
-    this.bem = 0;
+    this.beY = 0;
     this.type = 0;
-    this.ben = 0L;
-    this.beo = 0L;
-    this.bep = 0L;
-    this.beq = 0L;
-    this.ber = 0;
-    this.aZG = 0;
-    this.bes = 0;
+    this.beZ = 0L;
+    this.bfa = 0L;
+    this.bfb = 0L;
+    this.bfc = 0L;
+    this.bfd = 0;
+    this.bas = 0;
+    this.bfe = 0;
   }
 }
 

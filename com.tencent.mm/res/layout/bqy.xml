@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:padding="@dimen/ci" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/c5i" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hup" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/icons_filled_done2" android:contentDescription="@string/hrf" />
+</merge>

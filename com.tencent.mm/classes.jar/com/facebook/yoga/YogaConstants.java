@@ -4,13 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class YogaConstants
 {
-  public static final float UNDEFINED = 1.0E+021F;
-  public static boolean shouldUseFastMath = false;
+  public static final float UNDEFINED = (0.0F / 0.0F);
+  
+  public static float getUndefined()
+  {
+    return (0.0F / 0.0F);
+  }
   
   public static boolean isUndefined(float paramFloat)
   {
     AppMethodBeat.i(18063);
-    if ((Float.compare(paramFloat, 1.0E+009F) >= 0) || (Float.compare(paramFloat, -1.0E+009F) <= 0))
+    if (Float.compare(paramFloat, (0.0F / 0.0F)) == 0)
     {
       AppMethodBeat.o(18063);
       return true;
@@ -26,7 +30,7 @@ public class YogaConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.facebook.yoga.YogaConstants
  * JD-Core Version:    0.7.0.1
  */

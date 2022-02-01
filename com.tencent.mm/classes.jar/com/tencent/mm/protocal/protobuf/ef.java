@@ -1,59 +1,56 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class ef
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String dlB;
-  public int status;
+  public int DQO;
+  public String DQP;
+  public String hOf;
+  public int ndI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122485);
+    AppMethodBeat.i(123539);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dlB == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: appid");
-        AppMethodBeat.o(122485);
-        throw paramVarArgs;
+      if (this.hOf != null) {
+        paramVarArgs.d(1, this.hOf);
       }
-      if (this.dlB != null) {
-        paramVarArgs.d(1, this.dlB);
+      paramVarArgs.aR(2, this.ndI);
+      paramVarArgs.aR(3, this.DQO);
+      if (this.DQP != null) {
+        paramVarArgs.d(4, this.DQP);
       }
-      paramVarArgs.aR(2, this.status);
-      AppMethodBeat.o(122485);
+      AppMethodBeat.o(123539);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dlB == null) {
-        break label306;
+      if (this.hOf == null) {
+        break label362;
       }
     }
-    label306:
-    for (paramInt = f.a.a.b.b.a.e(1, this.dlB) + 0;; paramInt = 0)
+    label362:
+    for (paramInt = f.a.a.b.b.a.e(1, this.hOf) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bA(2, this.status);
-      AppMethodBeat.o(122485);
-      return paramInt + i;
+      int i = paramInt + f.a.a.b.b.a.bx(2, this.ndI) + f.a.a.b.b.a.bx(3, this.DQO);
+      paramInt = i;
+      if (this.DQP != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.DQP);
+      }
+      AppMethodBeat.o(123539);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.dlB == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: appid");
-          AppMethodBeat.o(122485);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(122485);
+        AppMethodBeat.o(123539);
         return 0;
       }
       if (paramInt == 3)
@@ -63,18 +60,26 @@ public final class ef
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(122485);
+          AppMethodBeat.o(123539);
           return -1;
         case 1: 
-          localef.dlB = locala.KhF.readString();
-          AppMethodBeat.o(122485);
+          localef.hOf = locala.LVo.readString();
+          AppMethodBeat.o(123539);
+          return 0;
+        case 2: 
+          localef.ndI = locala.LVo.xF();
+          AppMethodBeat.o(123539);
+          return 0;
+        case 3: 
+          localef.DQO = locala.LVo.xF();
+          AppMethodBeat.o(123539);
           return 0;
         }
-        localef.status = locala.KhF.xS();
-        AppMethodBeat.o(122485);
+        localef.DQP = locala.LVo.readString();
+        AppMethodBeat.o(123539);
         return 0;
       }
-      AppMethodBeat.o(122485);
+      AppMethodBeat.o(123539);
       return -1;
     }
   }

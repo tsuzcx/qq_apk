@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
 final class FinderPostPickerUI$g
   implements Runnable
 {
@@ -17,30 +17,30 @@ final class FinderPostPickerUI$g
   public final void run()
   {
     AppMethodBeat.i(167490);
-    Object localObject = FinderPostPickerUI.e(this.qOr);
+    Object localObject = FinderPostPickerUI.e(this.rJF);
     if (localObject != null)
     {
       ((Dialog)localObject).show();
       AppMethodBeat.o(167490);
       return;
     }
-    localObject = this.qOr;
+    localObject = this.rJF;
     Context localContext = (Context)localObject;
     ((FinderPostPickerUI)localObject).getString(2131755906);
-    FinderPostPickerUI.a((FinderPostPickerUI)localObject, (Dialog)h.b(localContext, ((FinderPostPickerUI)localObject).getString(2131755936), false, (DialogInterface.OnCancelListener)a.qOv));
+    FinderPostPickerUI.a((FinderPostPickerUI)localObject, (Dialog)h.b(localContext, ((FinderPostPickerUI)localObject).getString(2131755936), false, (DialogInterface.OnCancelListener)a.rJJ));
     AppMethodBeat.o(167490);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class a
     implements DialogInterface.OnCancelListener
   {
-    public static final a qOv;
+    public static final a rJJ;
     
     static
     {
       AppMethodBeat.i(167489);
-      qOv = new a();
+      rJJ = new a();
       AppMethodBeat.o(167489);
     }
     

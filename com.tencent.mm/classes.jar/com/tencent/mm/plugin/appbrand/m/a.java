@@ -8,13 +8,13 @@ import java.util.List;
 
 final class a
 {
-  static final String[] jtV;
+  static final String[] jUq;
   
   static
   {
     AppMethodBeat.i(138799);
     LinkedList localLinkedList = new LinkedList();
-    Field[] arrayOfField = android.support.d.a.class.getDeclaredFields();
+    Field[] arrayOfField = android.support.e.a.class.getDeclaredFields();
     int j = arrayOfField.length;
     int i = 0;
     for (;;)
@@ -31,7 +31,7 @@ final class a
         label85:
         i += 1;
         continue;
-        jtV = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
+        jUq = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
         AppMethodBeat.o(138799);
         return;
       }
@@ -42,10 +42,10 @@ final class a
     }
   }
   
-  static void a(android.support.d.a parama1, android.support.d.a parama2)
+  static void a(android.support.e.a parama1, android.support.e.a parama2)
   {
     AppMethodBeat.i(138798);
-    String[] arrayOfString = jtV;
+    String[] arrayOfString = jUq;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -63,7 +63,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,19 +7,19 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIEnterAnimationCompleteIPCNotify;", "", "()V", "doNotify", "", "processName", "", "appBrandUiName", "IPC_Notify", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIEnterAnimationCompleteIPCNotify;", "", "()V", "doNotify", "", "processName", "", "appBrandUiName", "IPC_Notify", "plugin-appbrand-integration_release"})
 public final class n
 {
-  public static final n lDa;
+  public static final n meU;
   
   static
   {
     AppMethodBeat.i(51152);
-    lDa = new n();
+    meU = new n();
     AppMethodBeat.o(51152);
   }
   
-  public static void dU(String paramString1, String paramString2)
+  public static void eg(String paramString1, String paramString2)
   {
     AppMethodBeat.i(51151);
     Object localObject = (CharSequence)paramString1;
@@ -37,7 +37,7 @@ public final class n
     AppMethodBeat.o(51151);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIEnterAnimationCompleteIPCNotify$IPC_Notify;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIEnterAnimationCompleteIPCNotify$IPC_Notify;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
   static final class a
     implements b<IPCString, IPCVoid>
   {}

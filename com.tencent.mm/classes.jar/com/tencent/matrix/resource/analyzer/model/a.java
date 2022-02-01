@@ -8,21 +8,21 @@ import org.json.JSONObject;
 public final class a
   extends b
 {
-  public final boolean cxI;
-  public final boolean cxJ;
-  public final h cxK;
-  public final Throwable cxL;
-  public final long cxM;
+  public final boolean cuR;
+  public final boolean cuS;
+  public final h cuT;
+  public final Throwable cuU;
+  public final long cuV;
   public final String mClassName;
   
   private a(boolean paramBoolean, String paramString, h paramh, Throwable paramThrowable, long paramLong)
   {
-    this.cxI = paramBoolean;
-    this.cxJ = false;
+    this.cuR = paramBoolean;
+    this.cuS = false;
     this.mClassName = paramString;
-    this.cxK = paramh;
-    this.cxL = paramThrowable;
-    this.cxM = paramLong;
+    this.cuT = paramh;
+    this.cuU = paramThrowable;
+    this.cuV = paramLong;
   }
   
   public static a a(String paramString, h paramh, long paramLong)
@@ -35,7 +35,7 @@ public final class a
     return new a(false, null, null, paramThrowable, paramLong);
   }
   
-  public static a aU(long paramLong)
+  public static a aQ(long paramLong)
   {
     return new a(false, null, null, null, paramLong);
   }
@@ -43,22 +43,22 @@ public final class a
   public final void m(JSONObject paramJSONObject)
   {
     JSONArray localJSONArray = new JSONArray();
-    if (this.cxK != null)
+    if (this.cuT != null)
     {
-      Iterator localIterator = this.cxK.elements.iterator();
+      Iterator localIterator = this.cuT.elements.iterator();
       while (localIterator.hasNext()) {
         localJSONArray.put(((j)localIterator.next()).toString());
       }
     }
-    paramJSONObject.put("leakFound", this.cxI).put("excludedLeak", this.cxJ).put("className", this.mClassName).put("failure", String.valueOf(this.cxL)).put("analysisDurationMs", this.cxM).put("referenceChain", localJSONArray);
+    paramJSONObject.put("leakFound", this.cuR).put("excludedLeak", this.cuS).put("className", this.mClassName).put("failure", String.valueOf(this.cuU)).put("analysisDurationMs", this.cuV).put("referenceChain", localJSONArray);
   }
   
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("Leak Reference:");
-    if (this.cxK != null)
+    if (this.cuT != null)
     {
-      Iterator localIterator = this.cxK.elements.iterator();
+      Iterator localIterator = this.cuT.elements.iterator();
       while (localIterator.hasNext()) {
         localStringBuilder.append(((j)localIterator.next()).toString()).append(";");
       }
@@ -68,7 +68,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.a
  * JD-Core Version:    0.7.0.1
  */

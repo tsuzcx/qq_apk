@@ -41,7 +41,7 @@ public class ShareSecurityCheck
         }
         catch (Exception localException)
         {
-          paramFile.getAbsolutePath();
+          ShareTinkerLog.e("Tinker.SecurityCheck", paramFile.getAbsolutePath(), new Object[] { localException });
           i -= 1;
         }
       }
@@ -108,164 +108,208 @@ public class ShareSecurityCheck
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 160	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:isLegalFile	(Ljava/io/File;)Z
+    //   1: invokestatic 166	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:isLegalFile	(Ljava/io/File;)Z
     //   4: ifne +5 -> 9
     //   7: iconst_0
     //   8: ireturn
-    //   9: new 162	java/util/jar/JarFile
+    //   9: new 168	java/util/jar/JarFile
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 165	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
+    //   14: invokespecial 171	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
     //   17: astore 4
     //   19: aload 4
-    //   21: invokevirtual 169	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
-    //   24: astore_3
-    //   25: aload_3
-    //   26: invokeinterface 174 1 0
-    //   31: ifeq +103 -> 134
-    //   34: aload_3
-    //   35: invokeinterface 178 1 0
-    //   40: checkcast 180	java/util/jar/JarEntry
-    //   43: astore 5
+    //   21: astore_3
+    //   22: aload 4
+    //   24: invokevirtual 175	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
+    //   27: astore 5
+    //   29: aload 4
+    //   31: astore_3
+    //   32: aload 5
+    //   34: invokeinterface 180 1 0
+    //   39: ifeq +137 -> 176
+    //   42: aload 4
+    //   44: astore_3
     //   45: aload 5
-    //   47: ifnull -22 -> 25
-    //   50: aload 5
-    //   52: invokevirtual 183	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   47: invokeinterface 184 1 0
+    //   52: checkcast 186	java/util/jar/JarEntry
     //   55: astore 6
     //   57: aload 6
-    //   59: ldc 185
-    //   61: invokevirtual 141	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   64: ifne -39 -> 25
-    //   67: aload 6
-    //   69: ldc 187
-    //   71: invokevirtual 190	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   74: ifeq -49 -> 25
-    //   77: aload_0
-    //   78: getfield 31	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:metaContentMap	Ljava/util/HashMap;
-    //   81: aload 6
-    //   83: aload 4
-    //   85: aload 5
-    //   87: invokestatic 194	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:loadDigestes	(Ljava/util/jar/JarFile;Ljava/util/jar/JarEntry;)Ljava/lang/String;
-    //   90: invokevirtual 153	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   93: pop
-    //   94: aload 5
-    //   96: invokevirtual 198	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
-    //   99: astore 5
-    //   101: aload 5
-    //   103: ifnull +15 -> 118
-    //   106: aload_0
-    //   107: aload_1
-    //   108: aload 5
-    //   110: invokespecial 200	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:check	(Ljava/io/File;[Ljava/security/cert/Certificate;)Z
-    //   113: istore_2
-    //   114: iload_2
-    //   115: ifne -90 -> 25
+    //   59: ifnull -30 -> 29
+    //   62: aload 4
+    //   64: astore_3
+    //   65: aload 6
+    //   67: invokevirtual 189	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   70: astore 7
+    //   72: aload 4
+    //   74: astore_3
+    //   75: aload 7
+    //   77: ldc 191
+    //   79: invokevirtual 147	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   82: ifne -53 -> 29
+    //   85: aload 4
+    //   87: astore_3
+    //   88: aload 7
+    //   90: ldc 193
+    //   92: invokevirtual 196	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   95: ifeq -66 -> 29
+    //   98: aload 4
+    //   100: astore_3
+    //   101: aload_0
+    //   102: getfield 31	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:metaContentMap	Ljava/util/HashMap;
+    //   105: aload 7
+    //   107: aload 4
+    //   109: aload 6
+    //   111: invokestatic 200	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:loadDigestes	(Ljava/util/jar/JarFile;Ljava/util/jar/JarEntry;)Ljava/lang/String;
+    //   114: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   117: pop
     //   118: aload 4
-    //   120: invokevirtual 203	java/util/jar/JarFile:close	()V
-    //   123: iconst_0
-    //   124: ireturn
-    //   125: astore_3
-    //   126: aload_1
-    //   127: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   130: pop
-    //   131: goto -8 -> 123
-    //   134: aload 4
-    //   136: invokevirtual 203	java/util/jar/JarFile:close	()V
-    //   139: iconst_1
-    //   140: ireturn
-    //   141: astore_3
-    //   142: aload_1
-    //   143: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   146: pop
-    //   147: goto -8 -> 139
-    //   150: astore 4
-    //   152: aconst_null
-    //   153: astore_3
-    //   154: new 95	com/tencent/tinker/loader/TinkerRuntimeException
-    //   157: dup
-    //   158: ldc 205
-    //   160: iconst_2
-    //   161: anewarray 4	java/lang/Object
-    //   164: dup
-    //   165: iconst_0
-    //   166: aload_1
-    //   167: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   170: aastore
-    //   171: dup
-    //   172: iconst_1
-    //   173: aload_1
-    //   174: invokevirtual 208	java/io/File:length	()J
-    //   177: invokestatic 214	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   180: aastore
-    //   181: invokestatic 218	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   184: aload 4
-    //   186: invokespecial 105	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   189: athrow
-    //   190: astore 5
-    //   192: aload_3
-    //   193: astore 4
-    //   195: aload 5
-    //   197: astore_3
-    //   198: aload 4
-    //   200: ifnull +8 -> 208
-    //   203: aload 4
-    //   205: invokevirtual 203	java/util/jar/JarFile:close	()V
-    //   208: aload_3
-    //   209: athrow
-    //   210: astore 4
-    //   212: aload_1
-    //   213: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   216: pop
-    //   217: goto -9 -> 208
-    //   220: astore_3
-    //   221: aconst_null
-    //   222: astore 4
-    //   224: goto -26 -> 198
-    //   227: astore_3
-    //   228: goto -30 -> 198
-    //   231: astore 5
-    //   233: aload 4
-    //   235: astore_3
-    //   236: aload 5
-    //   238: astore 4
-    //   240: goto -86 -> 154
+    //   120: astore_3
+    //   121: aload 6
+    //   123: invokevirtual 204	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
+    //   126: astore 6
+    //   128: aload 6
+    //   130: ifnull +18 -> 148
+    //   133: aload 4
+    //   135: astore_3
+    //   136: aload_0
+    //   137: aload_1
+    //   138: aload 6
+    //   140: invokespecial 206	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:check	(Ljava/io/File;[Ljava/security/cert/Certificate;)Z
+    //   143: istore_2
+    //   144: iload_2
+    //   145: ifne -116 -> 29
+    //   148: aload 4
+    //   150: invokevirtual 209	java/util/jar/JarFile:close	()V
+    //   153: iconst_0
+    //   154: ireturn
+    //   155: astore_3
+    //   156: ldc 8
+    //   158: aload_1
+    //   159: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   162: iconst_1
+    //   163: anewarray 4	java/lang/Object
+    //   166: dup
+    //   167: iconst_0
+    //   168: aload_3
+    //   169: aastore
+    //   170: invokestatic 70	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   173: goto -20 -> 153
+    //   176: aload 4
+    //   178: invokevirtual 209	java/util/jar/JarFile:close	()V
+    //   181: iconst_1
+    //   182: ireturn
+    //   183: astore_3
+    //   184: ldc 8
+    //   186: aload_1
+    //   187: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   190: iconst_1
+    //   191: anewarray 4	java/lang/Object
+    //   194: dup
+    //   195: iconst_0
+    //   196: aload_3
+    //   197: aastore
+    //   198: invokestatic 70	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   201: goto -20 -> 181
+    //   204: astore 5
+    //   206: aconst_null
+    //   207: astore_3
+    //   208: new 101	com/tencent/tinker/loader/TinkerRuntimeException
+    //   211: dup
+    //   212: ldc 211
+    //   214: iconst_2
+    //   215: anewarray 4	java/lang/Object
+    //   218: dup
+    //   219: iconst_0
+    //   220: aload_1
+    //   221: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   224: aastore
+    //   225: dup
+    //   226: iconst_1
+    //   227: aload_1
+    //   228: invokevirtual 214	java/io/File:length	()J
+    //   231: invokestatic 220	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   234: aastore
+    //   235: invokestatic 224	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   238: aload 5
+    //   240: invokespecial 111	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   243: athrow
+    //   244: astore 5
+    //   246: aload_3
+    //   247: astore 4
+    //   249: aload 5
+    //   251: astore_3
+    //   252: aload 4
+    //   254: ifnull +8 -> 262
+    //   257: aload 4
+    //   259: invokevirtual 209	java/util/jar/JarFile:close	()V
+    //   262: aload_3
+    //   263: athrow
+    //   264: astore 4
+    //   266: ldc 8
+    //   268: aload_1
+    //   269: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   272: iconst_1
+    //   273: anewarray 4	java/lang/Object
+    //   276: dup
+    //   277: iconst_0
+    //   278: aload 4
+    //   280: aastore
+    //   281: invokestatic 70	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   284: goto -22 -> 262
+    //   287: astore_3
+    //   288: aconst_null
+    //   289: astore 4
+    //   291: goto -39 -> 252
+    //   294: astore 5
+    //   296: aload 4
+    //   298: astore_3
+    //   299: goto -91 -> 208
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	243	0	this	ShareSecurityCheck
-    //   0	243	1	paramFile	File
-    //   113	2	2	bool	boolean
-    //   24	11	3	localEnumeration	java.util.Enumeration
-    //   125	1	3	localIOException1	java.io.IOException
-    //   141	1	3	localIOException2	java.io.IOException
-    //   153	56	3	localObject1	Object
-    //   220	1	3	localObject2	Object
-    //   227	1	3	localObject3	Object
-    //   235	1	3	localObject4	Object
-    //   17	118	4	localJarFile	java.util.jar.JarFile
-    //   150	35	4	localException1	Exception
-    //   193	11	4	localObject5	Object
-    //   210	1	4	localIOException3	java.io.IOException
-    //   222	17	4	localObject6	Object
-    //   43	66	5	localObject7	Object
-    //   190	6	5	localObject8	Object
-    //   231	6	5	localException2	Exception
-    //   55	27	6	str	String
+    //   0	302	0	this	ShareSecurityCheck
+    //   0	302	1	paramFile	File
+    //   143	2	2	bool	boolean
+    //   21	115	3	localObject1	Object
+    //   155	14	3	localIOException1	java.io.IOException
+    //   183	14	3	localIOException2	java.io.IOException
+    //   207	56	3	localObject2	Object
+    //   287	1	3	localObject3	Object
+    //   298	1	3	localObject4	Object
+    //   17	241	4	localObject5	Object
+    //   264	15	4	localIOException3	java.io.IOException
+    //   289	8	4	localObject6	Object
+    //   27	19	5	localEnumeration	java.util.Enumeration
+    //   204	35	5	localException1	Exception
+    //   244	6	5	localObject7	Object
+    //   294	1	5	localException2	Exception
+    //   55	84	6	localObject8	Object
+    //   70	36	7	str	String
     // Exception table:
     //   from	to	target	type
-    //   118	123	125	java/io/IOException
-    //   134	139	141	java/io/IOException
-    //   9	19	150	java/lang/Exception
-    //   154	190	190	finally
-    //   203	208	210	java/io/IOException
-    //   9	19	220	finally
-    //   19	25	227	finally
-    //   25	45	227	finally
-    //   50	101	227	finally
-    //   106	114	227	finally
-    //   19	25	231	java/lang/Exception
-    //   25	45	231	java/lang/Exception
-    //   50	101	231	java/lang/Exception
-    //   106	114	231	java/lang/Exception
+    //   148	153	155	java/io/IOException
+    //   176	181	183	java/io/IOException
+    //   9	19	204	java/lang/Exception
+    //   22	29	244	finally
+    //   32	42	244	finally
+    //   45	57	244	finally
+    //   65	72	244	finally
+    //   75	85	244	finally
+    //   88	98	244	finally
+    //   101	118	244	finally
+    //   121	128	244	finally
+    //   136	144	244	finally
+    //   208	244	244	finally
+    //   257	262	264	java/io/IOException
+    //   9	19	287	finally
+    //   22	29	294	java/lang/Exception
+    //   32	42	294	java/lang/Exception
+    //   45	57	294	java/lang/Exception
+    //   65	72	294	java/lang/Exception
+    //   75	85	294	java/lang/Exception
+    //   88	98	294	java/lang/Exception
+    //   101	118	294	java/lang/Exception
+    //   121	128	294	java/lang/Exception
+    //   136	144	294	java/lang/Exception
   }
 }
 

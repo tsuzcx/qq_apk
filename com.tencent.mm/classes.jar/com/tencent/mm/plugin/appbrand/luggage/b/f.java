@@ -5,10 +5,10 @@ import android.content.pm.PackageInfo;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.plugin.appbrand.aa.b;
-import com.tencent.mm.plugin.appbrand.aa.o.a;
+import com.tencent.mm.plugin.appbrand.z.b;
+import com.tencent.mm.plugin.appbrand.z.o.a;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.sdk.platformtools.i;
 
 public final class f
@@ -22,7 +22,7 @@ public final class f
     this.mContext = paramContext;
   }
   
-  public final String CU()
+  public final String Cx()
   {
     return " MicroMessenger/";
   }
@@ -39,15 +39,15 @@ public final class f
     }
     try
     {
-      localObject = b.getPackageInfo(this.mContext, aj.getPackageName());
+      localObject = b.getPackageInfo(this.mContext, ai.getPackageName());
       if (localObject != null)
       {
-        this.version += i.au(null, d.CpK);
+        this.version += i.aA(null, d.DIc);
         this.version = (this.version + "." + ((PackageInfo)localObject).versionCode);
-        this.version = (this.version + "(" + String.format("0x%08X", new Object[] { Integer.valueOf(d.CpK) }) + ")");
+        this.version = (this.version + "(" + String.format("0x%08X", new Object[] { Integer.valueOf(d.DIc) }) + ")");
         StringBuilder localStringBuilder = new StringBuilder().append(this.version).append(" Process/");
-        localObject = aj.getPackageName().trim().toLowerCase();
-        str2 = aj.getProcessName().trim().toLowerCase();
+        localObject = ai.getPackageName().trim().toLowerCase();
+        str2 = ai.getProcessName().trim().toLowerCase();
         if (!str2.equals(localObject)) {
           break label312;
         }
@@ -59,7 +59,7 @@ public final class f
         }
         localObject = "arm64";
         this.version = ((String)localObject);
-        if (i.eFb()) {
+        if (i.eUv()) {
           this.version += " GPVersion/1";
         }
       }

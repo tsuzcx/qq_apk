@@ -15,8 +15,8 @@ import com.tencent.kinda.gen.KImageView;
 import com.tencent.kinda.gen.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class MMKImageView
   extends MMKView<CdnImageView>
@@ -100,7 +100,7 @@ public class MMKImageView
       this.defaultImage = new MMKImage();
     }
     this.defaultImage.setUrl(paramString);
-    if (((this.image == null) || (bt.isNullOrNil(this.image.getUrl()))) && (!bt.isNullOrNil(this.defaultImage.getUrl())))
+    if (((this.image == null) || (bs.isNullOrNil(this.image.getUrl()))) && (!bs.isNullOrNil(this.defaultImage.getUrl())))
     {
       if (!this.defaultImage.isNetworkImage()) {
         break label104;
@@ -136,7 +136,7 @@ public class MMKImageView
       label63:
       if (this.image.getBitmap() != null)
       {
-        paramKImage = new BitmapDrawable(aj.getContext().getResources(), this.image.getBitmap());
+        paramKImage = new BitmapDrawable(ai.getContext().getResources(), this.image.getBitmap());
         if (ColorUtil.getColorByMode(this.tintColor) != 0L) {
           paramKImage.setColorFilter((int)ColorUtil.getColorByMode(this.tintColor), PorterDuff.Mode.SRC_ATOP);
         }
@@ -224,7 +224,7 @@ public class MMKImageView
       label60:
       if (this.image.getBitmap() != null)
       {
-        paramString = new BitmapDrawable(aj.getContext().getResources(), this.image.getBitmap());
+        paramString = new BitmapDrawable(ai.getContext().getResources(), this.image.getBitmap());
         if (ColorUtil.getColorByMode(this.tintColor) != 0L) {
           paramString.setColorFilter((int)ColorUtil.getColorByMode(this.tintColor), PorterDuff.Mode.SRC_ATOP);
         }
@@ -243,7 +243,7 @@ public class MMKImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKImageView
  * JD-Core Version:    0.7.0.1
  */

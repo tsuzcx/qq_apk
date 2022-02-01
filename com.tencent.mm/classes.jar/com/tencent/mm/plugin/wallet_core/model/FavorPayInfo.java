@@ -12,12 +12,12 @@ public class FavorPayInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<FavorPayInfo> CREATOR;
-  public String Aeb;
-  public int Aec;
-  public String Aed;
-  public String Aee;
-  public String Aef;
-  public List<String> Aeg;
+  public List<String> BwA;
+  public String Bwv;
+  public int Bww;
+  public String Bwx;
+  public String Bwy;
+  public String Bwz;
   
   static
   {
@@ -29,20 +29,20 @@ public class FavorPayInfo
   public FavorPayInfo()
   {
     AppMethodBeat.i(70276);
-    this.Aeg = new LinkedList();
+    this.BwA = new LinkedList();
     AppMethodBeat.o(70276);
   }
   
   public FavorPayInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70277);
-    this.Aeg = new LinkedList();
-    this.Aeb = paramParcel.readString();
-    this.Aec = paramParcel.readInt();
-    this.Aed = paramParcel.readString();
-    this.Aee = paramParcel.readString();
-    this.Aef = paramParcel.readString();
-    this.Aeg = paramParcel.createStringArrayList();
+    this.BwA = new LinkedList();
+    this.Bwv = paramParcel.readString();
+    this.Bww = paramParcel.readInt();
+    this.Bwx = paramParcel.readString();
+    this.Bwy = paramParcel.readString();
+    this.Bwz = paramParcel.readString();
+    this.BwA = paramParcel.createStringArrayList();
     AppMethodBeat.o(70277);
   }
   
@@ -54,11 +54,11 @@ public class FavorPayInfo
   public String toString()
   {
     AppMethodBeat.i(70279);
-    Object localObject = new StringBuffer(String.format("FavorPayInfo %s isNeedBankPay %s needBankType %s defaultFavorCompId %s changeBankcardTips %s", new Object[] { this.Aeb, Integer.valueOf(this.Aec), this.Aed, this.Aee, this.Aef }));
-    if (this.Aeg != null)
+    Object localObject = new StringBuffer(String.format("FavorPayInfo %s isNeedBankPay %s needBankType %s defaultFavorCompId %s changeBankcardTips %s", new Object[] { this.Bwv, Integer.valueOf(this.Bww), this.Bwx, this.Bwy, this.Bwz }));
+    if (this.BwA != null)
     {
       ((StringBuffer)localObject).append("bind_serial_list :");
-      Iterator localIterator = this.Aeg.iterator();
+      Iterator localIterator = this.BwA.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
@@ -73,12 +73,12 @@ public class FavorPayInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70278);
-    paramParcel.writeString(this.Aeb);
-    paramParcel.writeInt(this.Aec);
-    paramParcel.writeString(this.Aed);
-    paramParcel.writeString(this.Aee);
-    paramParcel.writeString(this.Aef);
-    paramParcel.writeStringList(this.Aeg);
+    paramParcel.writeString(this.Bwv);
+    paramParcel.writeInt(this.Bww);
+    paramParcel.writeString(this.Bwx);
+    paramParcel.writeString(this.Bwy);
+    paramParcel.writeString(this.Bwz);
+    paramParcel.writeStringList(this.BwA);
     AppMethodBeat.o(70278);
   }
 }

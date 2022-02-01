@@ -5,36 +5,36 @@ import java.util.List;
 
 final class a
 {
-  public List<a> buB;
+  public List<a> bsA;
   public int end;
-  public a rqg;
-  public boolean rqh;
   public int start;
+  public a sza;
+  public boolean szb;
   
   public a(int paramInt1, int paramInt2, a parama)
   {
     this.start = paramInt1;
     this.end = paramInt2;
-    this.rqg = parama;
+    this.sza = parama;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(131719);
-    if (this.rqg == null)
+    if (this.sza == null)
     {
       str = String.format("[%d,%d]", new Object[] { Integer.valueOf(this.start), Integer.valueOf(this.end) });
       AppMethodBeat.o(131719);
       return str;
     }
-    String str = String.format("%s [%d,%d]", new Object[] { this.rqg, Integer.valueOf(this.start), Integer.valueOf(this.end) });
+    String str = String.format("%s [%d,%d]", new Object[] { this.sza, Integer.valueOf(this.start), Integer.valueOf(this.end) });
     AppMethodBeat.o(131719);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.b.a
  * JD-Core Version:    0.7.0.1
  */

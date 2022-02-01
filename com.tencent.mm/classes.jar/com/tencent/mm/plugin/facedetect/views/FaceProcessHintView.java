@@ -15,14 +15,14 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.h;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class FaceProcessHintView
   extends LinearLayout
 {
-  private int Zo;
-  private h pWj;
-  private Animation pWk;
+  private int aaj;
+  private h qEO;
+  private Animation qEP;
   
   public FaceProcessHintView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,13 +33,13 @@ public class FaceProcessHintView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104182);
-    this.pWj = null;
-    this.Zo = 0;
-    this.pWk = null;
+    this.qEO = null;
+    this.aaj = 0;
+    this.qEP = null;
     setOrientation(0);
     setMinimumHeight(BackwardSupportUtil.b.g(getContext(), 36.0F));
-    this.pWk = AnimationUtils.loadAnimation(paramContext, 2130772037);
-    this.pWk.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.qEP = AnimationUtils.loadAnimation(paramContext, 2130772037);
+    this.qEP.setInterpolator(new AccelerateDecelerateInterpolator());
     AppMethodBeat.o(104182);
   }
   
@@ -56,16 +56,16 @@ public class FaceProcessHintView
   public void setDataAndInvalidate(h paramh)
   {
     AppMethodBeat.i(104183);
-    this.pWj = paramh;
-    if ((this.pWj == null) || (this.pWj.pOS <= 0))
+    this.qEO = paramh;
+    if ((this.qEO == null) || (this.qEO.qxA <= 0))
     {
-      ad.e("MicroMsg.FaceProcessHintView", "hy: model invalid");
+      ac.e("MicroMsg.FaceProcessHintView", "hy: model invalid");
       AppMethodBeat.o(104183);
       return;
     }
     removeAllViews();
     int i = 0;
-    while (i < this.pWj.pOS)
+    while (i < this.qEO.qxA)
     {
       paramh = LayoutInflater.from(getContext()).inflate(2131493919, null, false);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -1);

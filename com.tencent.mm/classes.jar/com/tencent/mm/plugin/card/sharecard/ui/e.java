@@ -10,115 +10,115 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
 {
-  private ImageView dnd;
-  private MMActivity nqt;
-  View nwH;
-  b nwI;
-  protected LinearLayout nwJ;
-  protected LinearLayout nwK;
-  private TextView nwL;
+  private ImageView dkL;
+  private MMActivity nTt;
+  View nZH;
+  b nZI;
+  protected LinearLayout nZJ;
+  protected LinearLayout nZK;
+  private TextView nZL;
   
   public e(MMActivity paramMMActivity)
   {
-    this.nqt = paramMMActivity;
+    this.nTt = paramMMActivity;
   }
   
-  private void bJL()
+  private void bQY()
   {
     AppMethodBeat.i(113085);
-    this.nwJ.setVisibility(8);
-    this.nwK.setVisibility(8);
+    this.nZJ.setVisibility(8);
+    this.nZK.setVisibility(8);
     AppMethodBeat.o(113085);
   }
   
-  private void bJO()
+  private void bRb()
   {
     AppMethodBeat.i(113088);
-    this.nwJ.setVisibility(8);
-    this.nwK.setVisibility(8);
+    this.nZJ.setVisibility(8);
+    this.nZK.setVisibility(8);
     AppMethodBeat.o(113088);
   }
   
-  public final void bJK()
+  public final void bQX()
   {
     AppMethodBeat.i(113084);
-    if (this.nwH == null)
+    if (this.nZH == null)
     {
-      this.nwH = View.inflate(this.nqt, 2131493327, null);
-      this.dnd = ((ImageView)this.nwH.findViewById(2131296594));
-      this.nwL = ((TextView)this.nwH.findViewById(2131304789));
-      this.nwJ = ((LinearLayout)this.nwH.findViewById(2131301504));
-      this.nwK = ((LinearLayout)this.nwH.findViewById(2131301499));
-      this.nwJ.setVisibility(8);
-      this.nwK.setVisibility(8);
+      this.nZH = View.inflate(this.nTt, 2131493327, null);
+      this.dkL = ((ImageView)this.nZH.findViewById(2131296594));
+      this.nZL = ((TextView)this.nZH.findViewById(2131304789));
+      this.nZJ = ((LinearLayout)this.nZH.findViewById(2131301504));
+      this.nZK = ((LinearLayout)this.nZH.findViewById(2131301499));
+      this.nZJ.setVisibility(8);
+      this.nZK.setVisibility(8);
       RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
       localRotateAnimation.setDuration(1000L);
       localRotateAnimation.setRepeatCount(-1);
       localRotateAnimation.setInterpolator(new LinearInterpolator());
-      this.dnd.startAnimation(localRotateAnimation);
+      this.dkL.startAnimation(localRotateAnimation);
     }
-    cE();
+    cL();
     AppMethodBeat.o(113084);
   }
   
-  public final void bJM()
+  public final void bQZ()
   {
     AppMethodBeat.i(113086);
-    this.nwJ.setVisibility(0);
-    this.nwK.setVisibility(8);
+    this.nZJ.setVisibility(0);
+    this.nZK.setVisibility(8);
     AppMethodBeat.o(113086);
   }
   
-  public final void bJN()
+  public final void bRa()
   {
     AppMethodBeat.i(113087);
-    this.nwJ.setVisibility(8);
+    this.nZJ.setVisibility(8);
     AppMethodBeat.o(113087);
   }
   
-  public final void bJP()
+  public final void bRc()
   {
     AppMethodBeat.i(113089);
-    bJO();
-    this.nwL.setVisibility(8);
+    bRb();
+    this.nZL.setVisibility(8);
     AppMethodBeat.o(113089);
   }
   
-  public final void cE()
+  public final void cL()
   {
     AppMethodBeat.i(113090);
-    Integer localInteger2 = (Integer)am.bJa().getValue("key_share_card_show_type");
+    Integer localInteger2 = (Integer)am.bQn().getValue("key_share_card_show_type");
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(0);
     }
-    if ((this.nwI != null) && (b.bJD()) && ((localInteger1.intValue() == 1) || (localInteger1.intValue() == 4)) && (b.bJA()))
+    if ((this.nZI != null) && (b.bQQ()) && ((localInteger1.intValue() == 1) || (localInteger1.intValue() == 4)) && (b.bQN()))
     {
-      this.nwL.setVisibility(0);
-      bJO();
+      this.nZL.setVisibility(0);
+      bRb();
     }
     do
     {
       AppMethodBeat.o(113090);
       return;
-      this.nwL.setVisibility(8);
-      if (this.nwI == null) {
+      this.nZL.setVisibility(8);
+      if (this.nZI == null) {
         break;
       }
-      ad.d("MicroMsg.ShareCardFooterController", "updateView isLocalEnd %s isOtherEnd %s ", new Object[] { Boolean.valueOf(b.bJD()), Boolean.valueOf(b.bJE()) });
-      if ((!b.bJD()) || (!b.bJE()))
+      ac.d("MicroMsg.ShareCardFooterController", "updateView isLocalEnd %s isOtherEnd %s ", new Object[] { Boolean.valueOf(b.bQQ()), Boolean.valueOf(b.bQR()) });
+      if ((!b.bQQ()) || (!b.bQR()))
       {
-        bJM();
+        bQZ();
         AppMethodBeat.o(113090);
         return;
       }
-    } while ((!b.bJD()) || (!b.bJE()));
-    bJL();
+    } while ((!b.bQQ()) || (!b.bQR()));
+    bQY();
     AppMethodBeat.o(113090);
   }
 }

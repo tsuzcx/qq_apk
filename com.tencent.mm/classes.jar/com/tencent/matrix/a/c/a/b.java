@@ -21,13 +21,13 @@ import java.util.LinkedList;
 public final class b
   implements Handler.Callback, a
 {
-  private static boolean cva;
-  private static long cvh;
-  private static long cvi = 900000L;
+  private static boolean csi;
+  private static long csp;
+  private static long csq = 900000L;
   private static byte[] sBuffer = new byte[2048];
-  private c cvj = null;
-  private com.tencent.matrix.a.c.a cvk;
-  private b cvl = new b((byte)0);
+  private c csr = null;
+  private com.tencent.matrix.a.c.a css;
+  private b cst = new b((byte)0);
   private Handler handler;
   
   private static void a(String paramString, d paramd)
@@ -90,7 +90,7 @@ public final class b
               k += 1;
             }
             paramString = new String(sBuffer, i, k);
-            paramd.cvu += d.dv(paramString);
+            paramd.csC += d.dk(paramString);
             i = j;
             break;
           }
@@ -156,7 +156,7 @@ public final class b
   }
   
   /* Error */
-  private java.util.Set<d> hh(int paramInt)
+  private java.util.Set<d> gQ(int paramInt)
   {
     // Byte code:
     //   0: new 135	java/util/HashSet
@@ -309,30 +309,30 @@ public final class b
     //   86	96	256	java/lang/Exception
   }
   
-  public final void Hc() {}
+  public final void GN() {}
   
-  public final void Hd()
+  public final void GO()
   {
     this.handler.removeCallbacksAndMessages(null);
   }
   
-  public final int He()
+  public final int GP()
   {
     return 2147483647;
   }
   
   public final void a(com.tencent.matrix.a.c.a parama)
   {
-    this.cvk = parama;
-    this.handler = new Handler(com.tencent.matrix.g.b.Ip().getLooper(), this);
-    cvh = parama.cuU.cuY;
-    cvi = parama.cuU.cuZ;
-    cva = parama.cuU.cva;
+    this.css = parama;
+    this.handler = new Handler(com.tencent.matrix.g.b.HY().getLooper(), this);
+    csp = parama.csc.csg;
+    csq = parama.csc.csh;
+    csi = parama.csc.csi;
   }
   
-  public final void bS(boolean paramBoolean)
+  public final void bT(boolean paramBoolean)
   {
-    if (!com.tencent.matrix.b.GE()) {
+    if (!com.tencent.matrix.b.Gp()) {
       c.e("Matrix.JiffiesMonitorPlugin", "Matrix was not installed yet, just ignore the event", new Object[0]);
     }
     label132:
@@ -345,19 +345,19 @@ public final class b
         this.handler.removeCallbacksAndMessages(null);
         localMessage = Message.obtain(this.handler);
         localMessage.what = 1;
-        this.handler.sendMessageDelayed(localMessage, cvh);
+        this.handler.sendMessageDelayed(localMessage, csp);
       }
       for (;;)
       {
         if (!paramBoolean) {
           break label132;
         }
-        this.handler.removeCallbacks(this.cvl);
-        if (!cva) {
+        this.handler.removeCallbacks(this.cst);
+        if (!csi) {
           break;
         }
-        this.cvl.cvq = 1;
-        this.handler.post(this.cvl);
+        this.cst.csy = 1;
+        this.handler.post(this.cst);
         return;
         if (!this.handler.hasMessages(1))
         {
@@ -376,57 +376,57 @@ public final class b
     {
       localObject1 = new c((byte)0);
       ((c)localObject1).pid = Process.myPid();
-      if (com.tencent.matrix.b.GE()) {}
-      for (paramMessage = d.getProcessName(com.tencent.matrix.b.GF().application);; paramMessage = "default")
+      if (com.tencent.matrix.b.Gp()) {}
+      for (paramMessage = d.getProcessName(com.tencent.matrix.b.Gq().application);; paramMessage = "default")
       {
         ((c)localObject1).name = paramMessage;
-        ((c)localObject1).cvt.addAll(hh(((c)localObject1).pid));
-        ((c)localObject1).cvs = SystemClock.uptimeMillis();
+        ((c)localObject1).csB.addAll(gQ(((c)localObject1).pid));
+        ((c)localObject1).csA = SystemClock.uptimeMillis();
         ((c)localObject1).time = System.currentTimeMillis();
-        this.cvj = ((c)localObject1);
-        if (this.cvk.cuU.cuW != null) {
-          this.cvk.cuU.cuW.GZ();
+        this.csr = ((c)localObject1);
+        if (this.css.csc.cse != null) {
+          this.css.csc.cse.GK();
         }
         return true;
       }
     }
     if (paramMessage.what == 2)
     {
-      if (this.cvj == null) {
+      if (this.csr == null) {
         return true;
       }
-      if (this.cvk.cuU.cuW != null) {
-        this.cvk.cuU.cuW.Ha();
+      if (this.css.csc.cse != null) {
+        this.css.csc.cse.GL();
       }
       c localc = new c((byte)0);
       localc.pid = Process.myPid();
-      if (com.tencent.matrix.b.GE()) {}
+      if (com.tencent.matrix.b.Gp()) {}
       long l2;
       SparseArray localSparseArray;
       long l1;
       d locald;
       e locale;
-      for (localObject1 = d.getProcessName(com.tencent.matrix.b.GF().application);; localObject1 = "default")
+      for (localObject1 = d.getProcessName(com.tencent.matrix.b.Gq().application);; localObject1 = "default")
       {
         localc.name = ((String)localObject1);
-        localc.cvt.addAll(hh(localc.pid));
-        localc.cvs = SystemClock.uptimeMillis();
+        localc.csB.addAll(gQ(localc.pid));
+        localc.csA = SystemClock.uptimeMillis();
         localc.time = System.currentTimeMillis();
-        localObject1 = this.cvj;
+        localObject1 = this.csr;
         l2 = 0L;
         localSparseArray = new SparseArray();
-        localObject2 = localc.cvt.iterator();
+        localObject2 = localc.csB.iterator();
         l1 = 0L;
         while (((Iterator)localObject2).hasNext())
         {
           locald = (d)((Iterator)localObject2).next();
-          l1 += locald.cvu;
+          l1 += locald.csC;
           locale = e.a(locald, 1);
-          locale.cvw = locald.cvu;
+          locale.csE = locald.csC;
           localSparseArray.put(locald.tid, locale);
         }
       }
-      Object localObject2 = ((c)localObject1).cvt.iterator();
+      Object localObject2 = ((c)localObject1).csB.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         locald = (d)((Iterator)localObject2).next();
@@ -437,30 +437,30 @@ public final class b
         }
         else
         {
-          l2 += locald.cvu;
-          locale.cvx = 2;
-          locale.cvw = (locale.cvv.cvu - locald.cvu);
+          l2 += locald.csC;
+          locale.csF = 2;
+          locale.csE = (locale.csD.csC - locald.csC);
         }
       }
       localObject2 = new a();
-      ((a)localObject2).cvm = (l1 - l2);
-      ((a)localObject2).cvn = (localc.time - ((c)localObject1).time);
-      ((a)localObject2).cvo = (localc.cvs - ((c)localObject1).cvs);
+      ((a)localObject2).csu = (l1 - l2);
+      ((a)localObject2).csv = (localc.time - ((c)localObject1).time);
+      ((a)localObject2).csw = (localc.csA - ((c)localObject1).csA);
       int i = 0;
       while (i < localSparseArray.size())
       {
-        ((a)localObject2).cvp.add(localSparseArray.valueAt(i));
+        ((a)localObject2).csx.add(localSparseArray.valueAt(i));
         i += 1;
       }
-      Collections.sort(((a)localObject2).cvp);
+      Collections.sort(((a)localObject2).csx);
       if (paramMessage.arg1 == 1) {}
       for (boolean bool = true;; bool = false)
       {
-        ((a)localObject2).ctF = bool;
-        if (this.cvk.cuU.cuW != null) {
-          this.cvk.cuU.cuW.a((a)localObject2);
+        ((a)localObject2).cqM = bool;
+        if (this.css.csc.cse != null) {
+          this.css.csc.cse.a((a)localObject2);
         }
-        this.cvj = null;
+        this.csr = null;
         return true;
       }
     }
@@ -469,17 +469,17 @@ public final class b
   
   public static final class a
   {
-    public boolean ctF;
-    public long cvm;
-    public long cvn;
-    public long cvo;
-    public LinkedList<b.e> cvp = new LinkedList();
+    public boolean cqM;
+    public long csu;
+    public long csv;
+    public long csw;
+    public LinkedList<b.e> csx = new LinkedList();
   }
   
   final class b
     implements Runnable
   {
-    int cvq = 1;
+    int csy = 1;
     
     private b() {}
     
@@ -487,14 +487,14 @@ public final class b
     {
       int i = 1;
       Message localMessage = Message.obtain(b.a(b.this));
-      localMessage.what = this.cvq;
+      localMessage.what = this.csy;
       localMessage.arg1 = 1;
       b.a(b.this).sendMessageAtFrontOfQueue(localMessage);
-      if (this.cvq == 2) {}
+      if (this.csy == 2) {}
       for (;;)
       {
-        this.cvq = i;
-        b.a(b.this).postDelayed(this, b.Hf());
+        this.csy = i;
+        b.a(b.this).postDelayed(this, b.GQ());
         return;
         i = 2;
       }
@@ -503,8 +503,8 @@ public final class b
   
   final class c
   {
-    long cvs;
-    LinkedList<b.d> cvt = new LinkedList();
+    long csA;
+    LinkedList<b.d> csB = new LinkedList();
     String name;
     int pid;
     long time;
@@ -513,13 +513,13 @@ public final class b
     
     public final String toString()
     {
-      return "process:" + this.name + "(" + this.pid + ") thread size:" + this.cvt.size();
+      return "process:" + this.name + "(" + this.pid + ") thread size:" + this.csB.size();
     }
   }
   
   public final class d
   {
-    public long cvu;
+    public long csC;
     public String name;
     public int tid;
     
@@ -527,21 +527,21 @@ public final class b
     
     public final String toString()
     {
-      return "thread:" + this.name + "(" + this.tid + ") " + this.cvu;
+      return "thread:" + this.name + "(" + this.tid + ") " + this.csC;
     }
   }
   
   public static final class e
     implements Comparable<e>
   {
-    public b.d cvv;
-    public long cvw;
-    int cvx = 1;
+    public b.d csD;
+    public long csE;
+    int csF = 1;
     
     private e(b.d paramd, int paramInt)
     {
-      this.cvv = paramd;
-      this.cvx = paramInt;
+      this.csD = paramd;
+      this.csF = paramInt;
     }
     
     static e a(b.d paramd, int paramInt)
@@ -553,14 +553,14 @@ public final class b
     {
       StringBuilder localStringBuilder = new StringBuilder();
       String str;
-      if (this.cvx == 1) {
+      if (this.csF == 1) {
         str = "+";
       }
       for (;;)
       {
-        localStringBuilder.append("(").append(str).append(")").append(this.cvv.name).append("(").append(this.cvv.tid).append(")\t").append(this.cvw).append(" jiffies");
+        localStringBuilder.append("(").append(str).append(")").append(this.csD.name).append("(").append(this.csD.tid).append(")\t").append(this.csE).append(" jiffies");
         return localStringBuilder.toString();
-        if (this.cvx == 2) {
+        if (this.csF == 2) {
           str = "~";
         } else {
           str = "-";

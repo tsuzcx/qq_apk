@@ -8,7 +8,7 @@ import android.os.Process;
 import com.tencent.luggage.h.e;
 import com.tencent.luggage.h.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity.a;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
@@ -19,11 +19,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class AppBrandProxyTransparentUIProcessTask
   implements Parcelable
 {
-  private static final Set<Object> juM = new HashSet();
-  private static Map<String, WeakReference<AppBrandProxyTransparentUIProcessTask>> jud = new ConcurrentHashMap();
-  private String hLO = Process.myPid() + hashCode();
-  private int juN = -1;
-  private MMActivity.a juO = new MMActivity.a()
+  private static Map<String, WeakReference<AppBrandProxyTransparentUIProcessTask>> jUy = new ConcurrentHashMap();
+  private static final Set<Object> jVh = new HashSet();
+  private String imk = Process.myPid() + hashCode();
+  private int jVi = -1;
+  private MMActivity.a jVj = new MMActivity.a()
   {
     public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
     {
@@ -36,16 +36,16 @@ public abstract class AppBrandProxyTransparentUIProcessTask
           return;
         }
         AppBrandProxyTransparentUIProcessTask localAppBrandProxyTransparentUIProcessTask = (AppBrandProxyTransparentUIProcessTask)paramAnonymousIntent.getParcelableExtra("task_object");
-        paramAnonymousIntent = AppBrandProxyTransparentUIProcessTask.HB(paramAnonymousIntent.getStringExtra("task_id"));
+        paramAnonymousIntent = AppBrandProxyTransparentUIProcessTask.LF(paramAnonymousIntent.getStringExtra("task_id"));
         if (paramAnonymousIntent == null)
         {
-          ad.e("MicroMsg.AppBrandProxyTransparentUIProcessTask", "task is null");
+          ac.e("MicroMsg.AppBrandProxyTransparentUIProcessTask", "task is null");
           AppMethodBeat.o(45411);
           return;
         }
         AppBrandProxyTransparentUIProcessTask.a(localAppBrandProxyTransparentUIProcessTask, paramAnonymousIntent);
-        paramAnonymousIntent.aXn();
-        paramAnonymousIntent.aEA();
+        paramAnonymousIntent.bek();
+        paramAnonymousIntent.aLr();
         AppBrandProxyTransparentUIProcessTask.this.mContext = null;
       }
       AppMethodBeat.o(45411);
@@ -62,21 +62,21 @@ public abstract class AppBrandProxyTransparentUIProcessTask
   
   public abstract void a(Context paramContext, AppBrandProxyTransparentUIProcessTask.a parama);
   
-  public void aEA() {}
+  public void aLr() {}
   
-  public final void aXl()
+  public final void bei()
   {
     if (this.mContext == null) {
       return;
     }
-    jud.put(this.hLO, new WeakReference(this));
+    jUy.put(this.imk, new WeakReference(this));
     Intent localIntent = new Intent();
     localIntent.setClass(this.mContext, AppBrandProxyTransparentUI.class);
     localIntent.putExtra("task_object", this);
     localIntent.putExtra("task_class_name", getClass().getName());
-    localIntent.putExtra("task_id", this.hLO);
-    localIntent.putExtra("orientation", this.juN);
-    e.az(this.mContext).a(localIntent, new e.a()
+    localIntent.putExtra("task_id", this.imk);
+    localIntent.putExtra("orientation", this.jVi);
+    e.aA(this.mContext).a(localIntent, new e.a()
     {
       public final void a(int paramAnonymousInt, Intent paramAnonymousIntent)
       {
@@ -87,14 +87,14 @@ public abstract class AppBrandProxyTransparentUIProcessTask
     });
   }
   
-  public final void aXm()
+  public final void bej()
   {
-    juM.add(this);
+    jVh.add(this);
   }
   
-  public final void aXn()
+  public final void bek()
   {
-    juM.remove(this);
+    jVh.remove(this);
   }
   
   public int describeContents()

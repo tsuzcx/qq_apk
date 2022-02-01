@@ -2,7 +2,7 @@ package com.tencent.mm.model;
 
 public abstract interface av
 {
-  public abstract void arM();
+  public abstract void ayD();
 }
 
 

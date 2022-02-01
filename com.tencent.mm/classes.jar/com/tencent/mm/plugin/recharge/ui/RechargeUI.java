@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -17,8 +16,6 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -35,20 +32,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.xk;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.xv;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.recharge.model.MallRechargeProduct;
 import com.tencent.mm.plugin.recharge.model.e;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallNews;
 import com.tencent.mm.pluginsdk.wallet.f;
-import com.tencent.mm.protocal.protobuf.ame;
-import com.tencent.mm.protocal.protobuf.avn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aph;
+import com.tencent.mm.protocal.protobuf.ayt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.ListViewInScrollView;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
@@ -60,61 +57,61 @@ import java.util.Map;
 
 public class RechargeUI
   extends MMActivity
-  implements com.tencent.mm.al.g, u.a, MallEditText.b
+  implements com.tencent.mm.ak.g, u.a, MallEditText.b
 {
-  private Button iwY;
-  private boolean ktI;
+  private Button iXb;
+  private boolean kUX;
   protected Dialog tipDialog;
-  private TextView uYA;
-  private int uYB;
-  private MallRechargeProduct uYC;
-  private String uYD;
-  private MallNews uYE;
-  private boolean uYF;
-  private Map<String, Integer> uYG;
-  private String uYH;
-  public String uYI;
-  private String uYJ;
-  public String uYK;
-  private MallFunction uYa;
-  private TextView uYp;
-  private TextView uYq;
-  private TextView uYr;
-  private TextView uYs;
-  private FrameLayout uYt;
-  private ImageView uYu;
-  private ImageView uYv;
-  private LinearLayout uYw;
-  private a uYx;
-  private a uYy;
-  private MallEditText uYz;
-  private com.tencent.mm.sdk.b.c uxB;
-  private boolean uxy;
+  private boolean vGr;
+  private com.tencent.mm.sdk.b.c vGu;
+  private MallFunction wgP;
+  private TextView whe;
+  private TextView whf;
+  private TextView whg;
+  private TextView whh;
+  private FrameLayout whi;
+  private ImageView whj;
+  private ImageView whk;
+  private LinearLayout whl;
+  private a whm;
+  private a whn;
+  private MallEditText who;
+  private TextView whp;
+  private int whq;
+  private MallRechargeProduct whr;
+  private String whs;
+  private MallNews wht;
+  private boolean whu;
+  private Map<String, Integer> whv;
+  private String whw;
+  public String whx;
+  private String why;
+  public String whz;
   
   public RechargeUI()
   {
     AppMethodBeat.i(67240);
-    this.iwY = null;
-    this.uYp = null;
-    this.uYq = null;
-    this.uYr = null;
-    this.uYs = null;
-    this.uYt = null;
-    this.uYu = null;
-    this.uYv = null;
-    this.uYw = null;
-    this.uYx = null;
-    this.uYy = null;
+    this.iXb = null;
+    this.whe = null;
+    this.whf = null;
+    this.whg = null;
+    this.whh = null;
+    this.whi = null;
+    this.whj = null;
+    this.whk = null;
+    this.whl = null;
+    this.whm = null;
+    this.whn = null;
     this.tipDialog = null;
-    this.uYa = null;
-    this.uYC = null;
-    this.uYD = null;
-    this.uYE = null;
-    this.uxy = false;
-    this.uYF = false;
-    this.ktI = true;
-    this.uYG = new HashMap();
-    this.uxB = new com.tencent.mm.sdk.b.c() {};
+    this.wgP = null;
+    this.whr = null;
+    this.whs = null;
+    this.wht = null;
+    this.vGr = false;
+    this.whu = false;
+    this.kUX = true;
+    this.whv = new HashMap();
+    this.vGu = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(67240);
   }
   
@@ -141,150 +138,101 @@ public class RechargeUI
       AppMethodBeat.o(67246);
       return paramMallRechargeProduct;
     }
-    if ((paramMallRechargeProduct.uWH != paramMallRechargeProduct.uWI) || ((dfU()) && (this.uYC.uWM)))
+    if ((paramMallRechargeProduct.wfw != paramMallRechargeProduct.wfx) || ((dtB()) && (this.whr.wfB)))
     {
       AppMethodBeat.o(67246);
       return "";
     }
-    paramMallRechargeProduct = String.format(getString(2131761163), new Object[] { Float.valueOf(paramMallRechargeProduct.uWH) });
+    paramMallRechargeProduct = String.format(getString(2131761163), new Object[] { Float.valueOf(paramMallRechargeProduct.wfw) });
     AppMethodBeat.o(67246);
     return paramMallRechargeProduct;
   }
   
-  private boolean aKT()
+  private boolean aRK()
   {
     AppMethodBeat.i(67249);
-    if (!this.uYz.dfH()) {}
+    if (!this.who.dto()) {}
     for (int i = 0;; i = 1)
     {
-      if ((i != 0) && (this.uYC != null) && (this.uYC.isValid()))
+      if ((i != 0) && (this.whr != null) && (this.whr.isValid()))
       {
-        if ((dfU()) && (this.uYC.uWM)) {
-          m(new com.tencent.mm.plugin.recharge.model.d(this.uYC.gOH, this.uYa.uWF, this.uYC.dft, this.uYC.appId, dfS(), dfT()));
+        if ((dtB()) && (this.whr.wfB)) {
+          l(new com.tencent.mm.plugin.recharge.model.d(this.whr.hph, this.wgP.wfu, this.whr.dcO, this.whr.appId, dtz(), dtA()));
         }
         hideVKB();
-        this.iwY.setEnabled(true);
-        this.iwY.setClickable(true);
-        ad.d("MicroMsg.MallRechargeUI", "checkInfo : true");
+        this.iXb.setEnabled(true);
+        this.iXb.setClickable(true);
+        ac.d("MicroMsg.MallRechargeUI", "checkInfo : true");
         AppMethodBeat.o(67249);
         return true;
       }
-      this.iwY.setEnabled(false);
-      this.iwY.setClickable(false);
-      ad.d("MicroMsg.MallRechargeUI", "checkInfo : false");
+      this.iXb.setEnabled(false);
+      this.iXb.setClickable(false);
+      ac.d("MicroMsg.MallRechargeUI", "checkInfo : false");
       AppMethodBeat.o(67249);
       return false;
     }
   }
   
-  private void cE()
+  private void cL()
   {
     AppMethodBeat.i(67243);
-    ad.d("MicroMsg.MallRechargeUI", "mCheckedProduct " + this.uYC);
-    if (this.uYC != null)
+    ac.d("MicroMsg.MallRechargeUI", "mCheckedProduct " + this.whr);
+    if (this.whr != null)
     {
-      this.uYA.setText(this.uYC.oEN);
-      this.uYr.setText(a(this.uYC));
+      this.whp.setText(this.whr.pio);
+      this.whg.setText(a(this.whr));
     }
-    if ((this.uYE != null) && (this.uYa.AiC != null) && (this.uYE.equals(this.uYa.AiC)) && (!"1".equals(this.uYE.AiI)))
+    if ((this.wht != null) && (this.wgP.BAX != null) && (this.wht.equals(this.wgP.BAX)) && (!"1".equals(this.wht.BBd)))
     {
-      this.uYt.setVisibility(8);
-      ad.d("MicroMsg.MallRechargeUI", "dismiss banner!, news->" + this.uYE.toString());
-      this.uYq.setVisibility(4);
-      if (!aKT()) {
+      this.whi.setVisibility(8);
+      ac.d("MicroMsg.MallRechargeUI", "dismiss banner!, news->" + this.wht.toString());
+      this.whf.setVisibility(4);
+      if (!aRK()) {
         break label335;
       }
-      if ((this.uYC != null) && (!dfU()))
+      if ((this.whr != null) && (!dtB()))
       {
-        this.uYp.setText(this.uYC.uWG);
-        this.uYp.setTextColor(getResources().getColor(2131100490));
+        this.whe.setText(this.whr.wfv);
+        this.whe.setTextColor(getResources().getColor(2131100490));
       }
     }
     for (;;)
     {
-      dfQ();
-      dfR();
+      dtx();
+      dty();
       AppMethodBeat.o(67243);
       return;
-      if ((this.uYa.AiC != null) && (!bt.isNullOrNil(this.uYa.AiC.AiM)))
+      if ((this.wgP.BAX != null) && (!bs.isNullOrNil(this.wgP.BAX.BBh)))
       {
-        this.uYD = this.uYa.AiC.AiM;
-        Bitmap localBitmap = com.tencent.mm.platformtools.u.a(new com.tencent.mm.plugin.recharge.b.a(this.uYD));
-        this.uYu.setImageBitmap(localBitmap);
-        this.uYt.setVisibility(0);
-        ad.d("MicroMsg.MallRechargeUI", "Show banner!");
+        this.whs = this.wgP.BAX.BBh;
+        Bitmap localBitmap = com.tencent.mm.platformtools.u.a(new com.tencent.mm.plugin.recharge.b.a(this.whs));
+        this.whj.setImageBitmap(localBitmap);
+        this.whi.setVisibility(0);
+        ac.d("MicroMsg.MallRechargeUI", "Show banner!");
         break;
       }
-      this.uYt.setVisibility(8);
-      ad.d("MicroMsg.MallRechargeUI", "dismiss banner!");
+      this.whi.setVisibility(8);
+      ac.d("MicroMsg.MallRechargeUI", "dismiss banner!");
       break;
       label335:
-      this.uYp.setText("");
+      this.whe.setText("");
     }
   }
   
-  private void dfQ()
-  {
-    AppMethodBeat.i(67244);
-    String str = getString(2131761152);
-    if (!TextUtils.isEmpty(this.uYI)) {
-      str = this.uYI;
-    }
-    if (!bt.isNullOrNil(this.uYH)) {
-      addTextOptionMenu(0, str, new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(67232);
-          paramAnonymousMenuItem = new Intent();
-          paramAnonymousMenuItem.putExtra("rawUrl", RechargeUI.j(RechargeUI.this));
-          com.tencent.mm.bs.d.b(RechargeUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousMenuItem);
-          AppMethodBeat.o(67232);
-          return true;
-        }
-      });
-    }
-    AppMethodBeat.o(67244);
-  }
-  
-  private void dfR()
-  {
-    AppMethodBeat.i(67245);
-    if (!bt.isNullOrNil(this.uYJ)) {
-      this.uYs.setVisibility(0);
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(this.uYK)) {
-        this.uYs.setText(this.uYK);
-      }
-      AppMethodBeat.o(67245);
-      return;
-      this.uYs.setVisibility(8);
-    }
-  }
-  
-  private String dfS()
-  {
-    AppMethodBeat.i(67250);
-    String str = "mobile=" + com.tencent.mm.plugin.recharge.model.b.CD(this.uYz.getText());
-    AppMethodBeat.o(67250);
-    return str;
-  }
-  
-  private String dfT()
+  private String dtA()
   {
     AppMethodBeat.i(67251);
-    String str = com.tencent.mm.plugin.recharge.model.b.CD(this.uYz.getText());
+    String str = com.tencent.mm.plugin.recharge.model.b.GG(this.who.getText());
     AppMethodBeat.o(67251);
     return str;
   }
   
-  private boolean dfU()
+  private boolean dtB()
   {
     AppMethodBeat.i(67253);
-    String str = H(this.uYC.gOH, this.uYC.dft, dfT());
-    if (!this.uYG.containsKey(str))
+    String str = H(this.whr.hph, this.whr.dcO, dtA());
+    if (!this.whv.containsKey(str))
     {
       AppMethodBeat.o(67253);
       return true;
@@ -293,7 +241,45 @@ public class RechargeUI
     return false;
   }
   
-  private void eF(List<MallRechargeProduct> paramList)
+  private void dtx()
+  {
+    AppMethodBeat.i(67244);
+    String str = getString(2131761152);
+    if (!TextUtils.isEmpty(this.whx)) {
+      str = this.whx;
+    }
+    if (!bs.isNullOrNil(this.whw)) {
+      addTextOptionMenu(0, str, new RechargeUI.18(this));
+    }
+    AppMethodBeat.o(67244);
+  }
+  
+  private void dty()
+  {
+    AppMethodBeat.i(67245);
+    if (!bs.isNullOrNil(this.why)) {
+      this.whh.setVisibility(0);
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(this.whz)) {
+        this.whh.setText(this.whz);
+      }
+      AppMethodBeat.o(67245);
+      return;
+      this.whh.setVisibility(8);
+    }
+  }
+  
+  private String dtz()
+  {
+    AppMethodBeat.i(67250);
+    String str = "mobile=" + com.tencent.mm.plugin.recharge.model.b.GG(this.who.getText());
+    AppMethodBeat.o(67250);
+    return str;
+  }
+  
+  private void eJ(List<MallRechargeProduct> paramList)
   {
     AppMethodBeat.i(67259);
     if (paramList != null)
@@ -305,13 +291,13 @@ public class RechargeUI
       {
         MallRechargeProduct localMallRechargeProduct = (MallRechargeProduct)paramList.get(k);
         j = i;
-        if (localMallRechargeProduct.gOH == 2)
+        if (localMallRechargeProduct.hph == 2)
         {
           j = i;
-          if (this.uYC != null)
+          if (this.whr != null)
           {
             j = i;
-            if (localMallRechargeProduct.dft.equals(this.uYC.dft))
+            if (localMallRechargeProduct.dcO.equals(this.whr.dcO))
             {
               localMallRechargeProduct.isDefault = true;
               j = 1;
@@ -324,15 +310,15 @@ public class RechargeUI
       if ((i == 0) && (localArrayList.size() > 0)) {
         ((MallRechargeProduct)localArrayList.get(0)).isDefault = true;
       }
-      this.uYy.eG(localArrayList);
+      this.whn.eK(localArrayList);
       AppMethodBeat.o(67259);
       return;
     }
-    this.uYy.eG(new ArrayList());
+    this.whn.eK(new ArrayList());
     AppMethodBeat.o(67259);
   }
   
-  private static List<MallRechargeProduct> g(int paramInt, List<MallRechargeProduct> paramList)
+  private static List<MallRechargeProduct> j(int paramInt, List<MallRechargeProduct> paramList)
   {
     AppMethodBeat.i(67247);
     ArrayList localArrayList = new ArrayList();
@@ -344,7 +330,7 @@ public class RechargeUI
       {
         MallRechargeProduct localMallRechargeProduct = (MallRechargeProduct)paramList.get(i);
         k = j;
-        if (localMallRechargeProduct.gOH == paramInt)
+        if (localMallRechargeProduct.hph == paramInt)
         {
           localArrayList.add(localMallRechargeProduct);
           k = j;
@@ -366,50 +352,41 @@ public class RechargeUI
     return localArrayList;
   }
   
-  private void m(final n paramn)
+  private void l(n paramn)
   {
     AppMethodBeat.i(67248);
     if ((paramn.getType() == 497) || (paramn.getType() == 1555))
     {
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afA().gcy.a(paramn, 0);
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agQ().ghe.a(paramn, 0);
       AppMethodBeat.o(67248);
       return;
     }
-    if (!this.ktI)
+    if (!this.kUX)
     {
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afA().gcy.a(paramn, 0);
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agQ().ghe.a(paramn, 0);
       AppMethodBeat.o(67248);
       return;
     }
     if ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))) {
-      this.tipDialog = com.tencent.mm.wallet_core.ui.g.a(getContext(), true, new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(67218);
-          com.tencent.mm.kernel.g.afC();
-          com.tencent.mm.kernel.g.afA().gcy.a(paramn);
-          AppMethodBeat.o(67218);
-        }
-      });
+      this.tipDialog = com.tencent.mm.wallet_core.ui.g.a(getContext(), true, new RechargeUI.3(this, paramn));
     }
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(paramn, 0);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(paramn, 0);
     AppMethodBeat.o(67248);
   }
   
-  public final void dfI()
+  public final void dtp()
   {
     AppMethodBeat.i(67255);
-    if ((bt.isNullOrNil(this.uYz.getText())) || (this.uYz.aKX()))
+    if ((bs.isNullOrNil(this.who.getText())) || (this.who.aRO()))
     {
-      this.uYz.setInfoTvImageResource(2131233803);
+      this.who.setInfoTvImageResource(2131233803);
       AppMethodBeat.o(67255);
       return;
     }
-    this.uYz.setInfoTvImageResource(2131232862);
+    this.who.setInfoTvImageResource(2131232862);
     AppMethodBeat.o(67255);
   }
   
@@ -421,7 +398,7 @@ public class RechargeUI
   public void hideVKB()
   {
     AppMethodBeat.i(67264);
-    ad.d("MicroMsg.MallRechargeUI", "hideVKB");
+    ac.d("MicroMsg.MallRechargeUI", "hideVKB");
     InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
     if (localInputMethodManager == null)
     {
@@ -447,54 +424,24 @@ public class RechargeUI
   public void initView()
   {
     AppMethodBeat.i(67242);
-    setMMTitle(this.uYa.dAn);
-    ad.v("MicroMsg.MallRechargeUI", "initView");
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(67216);
-        RechargeUI.this.hideVKB();
-        RechargeUI.this.finish();
-        AppMethodBeat.o(67216);
-        return true;
-      }
-    });
-    this.uYp = ((TextView)findViewById(2131302086));
-    this.uYq = ((TextView)findViewById(2131302134));
-    this.uYr = ((TextView)findViewById(2131302136));
-    this.iwY = ((Button)findViewById(2131302852));
-    this.uYw = ((LinearLayout)findViewById(2131302021));
-    this.uYs = ((TextView)findViewById(2131302135));
-    this.uYs.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(67225);
-        paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("rawUrl", RechargeUI.a(RechargeUI.this));
-        com.tencent.mm.bs.d.b(RechargeUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousView);
-        AppMethodBeat.o(67225);
-      }
-    });
-    this.iwY.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(67226);
-        if ((RechargeUI.b(RechargeUI.this)) && (RechargeUI.c(RechargeUI.this))) {
-          RechargeUI.d(RechargeUI.this);
-        }
-        AppMethodBeat.o(67226);
-      }
-    });
-    this.uYz = ((MallEditText)findViewById(2131302024));
-    this.uYz.setInfoTvOnClickListener(new View.OnClickListener()
+    setMMTitle(this.wgP.dxZ);
+    ac.v("MicroMsg.MallRechargeUI", "initView");
+    setBackBtn(new RechargeUI.1(this));
+    this.whe = ((TextView)findViewById(2131302086));
+    this.whf = ((TextView)findViewById(2131302134));
+    this.whg = ((TextView)findViewById(2131302136));
+    this.iXb = ((Button)findViewById(2131302852));
+    this.whl = ((LinearLayout)findViewById(2131302021));
+    this.whh = ((TextView)findViewById(2131302135));
+    this.whh.setOnClickListener(new RechargeUI.11(this));
+    this.iXb.setOnClickListener(new RechargeUI.12(this));
+    this.who = ((MallEditText)findViewById(2131302024));
+    this.who.setInfoTvOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67227);
-        if (RechargeUI.e(RechargeUI.this).uXl)
+        if (RechargeUI.e(RechargeUI.this).wga)
         {
           RechargeUI.e(RechargeUI.this).setInput(null);
           AppMethodBeat.o(67227);
@@ -505,19 +452,19 @@ public class RechargeUI
         AppMethodBeat.o(67227);
       }
     });
-    this.uYA = ((TextView)findViewById(2131302091));
+    this.whp = ((TextView)findViewById(2131302091));
     Object localObject = getIntent().getParcelableArrayListExtra("key_product_list");
-    List localList = g(0, (List)localObject);
-    localObject = g(2, (List)localObject);
+    List localList = j(0, (List)localObject);
+    localObject = j(2, (List)localObject);
     if (localList.size() > ((List)localObject).size()) {}
     for (int i = localList.size();; i = ((List)localObject).size())
     {
-      this.uYB = i;
-      this.uYx = new a((byte)0);
-      this.uYx.eG(localList);
-      this.uYy = new a((byte)0);
-      this.uYy.eG((List)localObject);
-      this.uYw.setOnClickListener(new View.OnClickListener()
+      this.whq = i;
+      this.whm = new a((byte)0);
+      this.whm.eK(localList);
+      this.whn = new a((byte)0);
+      this.whn.eK((List)localObject);
+      this.whl.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -528,47 +475,47 @@ public class RechargeUI
           AppMethodBeat.o(67228);
         }
       });
-      this.uYt = ((FrameLayout)findViewById(2131302131));
-      this.uYu = ((ImageView)findViewById(2131302133));
-      this.uYv = ((ImageView)findViewById(2131302132));
-      this.uYv.setOnClickListener(new View.OnClickListener()
+      this.whi = ((FrameLayout)findViewById(2131302131));
+      this.whj = ((ImageView)findViewById(2131302133));
+      this.whk = ((ImageView)findViewById(2131302132));
+      this.whk.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(67229);
-          paramAnonymousView = com.tencent.mm.plugin.wallet_core.model.mall.c.eds();
-          Object localObject = RechargeUI.h(RechargeUI.this).uWF;
-          ad.d("MicroMsg.MallNewsManager", "removeNewsInIndexUI : ".concat(String.valueOf(localObject)));
-          if ((!bt.isNullOrNil((String)localObject)) && (paramAnonymousView.AiT.containsKey(localObject)))
+          paramAnonymousView = com.tencent.mm.plugin.wallet_core.model.mall.c.esN();
+          Object localObject = RechargeUI.h(RechargeUI.this).wfu;
+          ac.d("MicroMsg.MallNewsManager", "removeNewsInIndexUI : ".concat(String.valueOf(localObject)));
+          if ((!bs.isNullOrNil((String)localObject)) && (paramAnonymousView.BBo.containsKey(localObject)))
           {
-            localObject = (MallNews)paramAnonymousView.AiT.get(localObject);
-            if ("1".equals(((MallNews)localObject).AiI))
+            localObject = (MallNews)paramAnonymousView.BBo.get(localObject);
+            if ("1".equals(((MallNews)localObject).BBd))
             {
-              ((MallNews)localObject).AiI = "2";
-              paramAnonymousView.dbD();
+              ((MallNews)localObject).BBd = "2";
+              paramAnonymousView.dpl();
             }
           }
           RechargeUI.i(RechargeUI.this).setVisibility(8);
           AppMethodBeat.o(67229);
         }
       });
-      this.uYt.setOnClickListener(new View.OnClickListener()
+      this.whi.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(67230);
-          if (!bt.isNullOrNil(RechargeUI.h(RechargeUI.this).AiC.AiL))
+          if (!bs.isNullOrNil(RechargeUI.h(RechargeUI.this).BAX.BBg))
           {
             paramAnonymousView = new Intent();
-            paramAnonymousView.putExtra("rawUrl", RechargeUI.h(RechargeUI.this).AiC.AiL);
-            paramAnonymousView.putExtra("geta8key_username", com.tencent.mm.model.u.aqG());
-            com.tencent.mm.bs.d.b(RechargeUI.this, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramAnonymousView);
+            paramAnonymousView.putExtra("rawUrl", RechargeUI.h(RechargeUI.this).BAX.BBg);
+            paramAnonymousView.putExtra("geta8key_username", com.tencent.mm.model.u.axw());
+            com.tencent.mm.br.d.b(RechargeUI.this, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramAnonymousView);
           }
           AppMethodBeat.o(67230);
         }
       });
-      this.uYz.setOnInputValidChangeListener(this);
-      this.uYz.setOnClickListener(new View.OnClickListener()
+      this.who.setOnInputValidChangeListener(this);
+      this.who.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -577,31 +524,31 @@ public class RechargeUI
           if (RechargeUI.e(RechargeUI.this).getInputRecord().sourceType == 2) {
             RechargeUI.e(RechargeUI.this).setInput(null);
           }
-          if (bt.isNullOrNil(RechargeUI.e(RechargeUI.this).getText().toString())) {
-            RechargeUI.e(RechargeUI.this).uXk.showDropDown();
+          if (bs.isNullOrNil(RechargeUI.e(RechargeUI.this).getText().toString())) {
+            RechargeUI.e(RechargeUI.this).wfZ.showDropDown();
           }
           RechargeUI.this.showVKB();
           AppMethodBeat.o(67231);
         }
       });
-      dfI();
+      dtp();
       com.tencent.mm.platformtools.u.a(this);
-      cE();
+      cL();
       AppMethodBeat.o(67242);
       return;
     }
   }
   
-  public final void l(String paramString, final Bitmap paramBitmap)
+  public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(67262);
-    if (this.uYD == null)
+    if (this.whs == null)
     {
       AppMethodBeat.o(67262);
       return;
     }
-    if (paramString.equals(this.uYD)) {
-      this.uYu.post(new Runnable()
+    if (paramString.equals(this.whs)) {
+      this.whj.post(new Runnable()
       {
         public final void run()
         {
@@ -635,13 +582,13 @@ public class RechargeUI
       localObject1 = paramIntent.getData();
       if (localObject1 == null)
       {
-        ad.e("MicroMsg.MallRechargeUI", "uri == null");
+        ac.e("MicroMsg.MallRechargeUI", "uri == null");
         AppMethodBeat.o(67260);
         return;
       }
       if (!com.tencent.mm.pluginsdk.permission.b.o(this, "android.permission.READ_CONTACTS"))
       {
-        ad.e("MicroMsg.MallRechargeUI", "no contact permission");
+        ac.e("MicroMsg.MallRechargeUI", "no contact permission");
         AppMethodBeat.o(67260);
         return;
       }
@@ -668,18 +615,18 @@ public class RechargeUI
               int j = localCursor2.getColumnIndex("display_name");
               localObject2 = localCursor2.getString(i);
               str1 = localCursor2.getString(j);
-              ad.d("MicroMsg.MallRechargeUI", "username : ".concat(String.valueOf(str1)));
+              ac.d("MicroMsg.MallRechargeUI", "username : ".concat(String.valueOf(str1)));
               if (localObject2 == null) {
                 break label583;
               }
-              ad.d("MicroMsg.MallRechargeUI", "phoneNumber : ".concat(String.valueOf(localObject2)));
-              localObject2 = com.tencent.mm.plugin.recharge.model.b.CD((String)localObject2);
-              ad.d("MicroMsg.MallRechargeUI", "phoneNumber : ".concat(String.valueOf(localObject2)));
+              ac.d("MicroMsg.MallRechargeUI", "phoneNumber : ".concat(String.valueOf(localObject2)));
+              localObject2 = com.tencent.mm.plugin.recharge.model.b.GG((String)localObject2);
+              ac.d("MicroMsg.MallRechargeUI", "phoneNumber : ".concat(String.valueOf(localObject2)));
               if (!PhoneNumberUtils.isGlobalPhoneNumber((String)localObject2)) {
                 break label580;
               }
               localObject1 = localObject2;
-              ad.d("MicroMsg.MallRechargeUI", "phoneResult : ".concat(String.valueOf(localObject1)));
+              ac.d("MicroMsg.MallRechargeUI", "phoneResult : ".concat(String.valueOf(localObject1)));
               localCursor2.moveToNext();
             }
           }
@@ -703,27 +650,27 @@ public class RechargeUI
       }
       if (PhoneNumberUtils.isGlobalPhoneNumber((String)localObject1))
       {
-        this.uYG.clear();
-        this.uYz.setInput(new com.tencent.mm.plugin.recharge.model.a((String)localObject1, str2, 1));
-        this.uYp.setText("");
-        this.uYq.setVisibility(4);
-        aKT();
+        this.whv.clear();
+        this.who.setInput(new com.tencent.mm.plugin.recharge.model.a((String)localObject1, str2, 1));
+        this.whe.setText("");
+        this.whf.setVisibility(4);
+        aRK();
         break;
       }
       showDialog(2);
       break;
       if (paramInt2 == -1)
       {
-        if (this.uxy) {
+        if (this.vGr) {
           break;
         }
-        ad.i("MicroMsg.MallRechargeUI", "MallRecharge pay result : ok");
-        com.tencent.mm.plugin.recharge.a.a.dfC().a(this.uYz.getInputRecord());
+        ac.i("MicroMsg.MallRechargeUI", "MallRecharge pay result : ok");
+        com.tencent.mm.plugin.recharge.a.a.dtj().a(this.who.getInputRecord());
         finish();
-        this.uxy = true;
+        this.vGr = true;
         break;
       }
-      ad.i("MicroMsg.MallRechargeUI", "MallRecharge pay result : cancel");
+      ac.i("MicroMsg.MallRechargeUI", "MallRecharge pay result : cancel");
       break;
       label580:
       break label363;
@@ -738,40 +685,40 @@ public class RechargeUI
     AppMethodBeat.i(67241);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
-    this.uYa = ((MallFunction)paramBundle.getParcelableExtra("key_func_info"));
+    this.wgP = ((MallFunction)paramBundle.getParcelableExtra("key_func_info"));
     ArrayList localArrayList = paramBundle.getParcelableArrayListExtra("key_product_list");
     if (!paramBundle.getBooleanExtra("key_is_hide_progress", false)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.ktI = bool;
-      if (this.uYa != null) {
+      this.kUX = bool;
+      if (this.wgP != null) {
         break;
       }
-      ad.e("MicroMsg.MallRechargeUI", "function info is null");
+      ac.e("MicroMsg.MallRechargeUI", "function info is null");
       t.makeText(this, "function info is null", 1).show();
       AppMethodBeat.o(67241);
       return;
     }
     if (localArrayList == null)
     {
-      ad.d("MicroMsg.MallRechargeUI", "function info : " + this.uYa.dAn);
-      m(new e(this.uYa.uWF));
+      ac.d("MicroMsg.MallRechargeUI", "function info : " + this.wgP.dxZ);
+      l(new e(this.wgP.wfu));
     }
     for (;;)
     {
-      ad.i("MicroMsg.MallRechargeUI", "onCreate()");
-      this.uYE = com.tencent.mm.plugin.wallet_core.model.mall.c.eds().aua(this.uYa.uWF);
+      ac.i("MicroMsg.MallRechargeUI", "onCreate()");
+      this.wht = com.tencent.mm.plugin.wallet_core.model.mall.c.esN().azs(this.wgP.wfu);
       initView();
       AppMethodBeat.o(67241);
       return;
-      this.uYC = a.eE(localArrayList);
+      this.whr = a.eI(localArrayList);
     }
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(67261);
-    com.tencent.mm.sdk.b.a.ESL.d(this.uxB);
+    com.tencent.mm.sdk.b.a.GpY.d(this.vGu);
     super.onDestroy();
     AppMethodBeat.o(67261);
   }
@@ -781,11 +728,11 @@ public class RechargeUI
     AppMethodBeat.i(67254);
     if (!paramBoolean)
     {
-      this.uYG.clear();
-      this.uYp.setText("");
-      this.uYq.setVisibility(4);
+      this.whv.clear();
+      this.whe.setText("");
+      this.whf.setVisibility(4);
     }
-    aKT();
+    aRK();
     AppMethodBeat.o(67254);
   }
   
@@ -793,14 +740,14 @@ public class RechargeUI
   {
     AppMethodBeat.i(67258);
     super.onPause();
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(496, this);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(497, this);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(498, this);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(1555, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(496, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(497, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(498, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(1555, this);
     AppMethodBeat.o(67258);
   }
   
@@ -808,21 +755,21 @@ public class RechargeUI
   {
     AppMethodBeat.i(67257);
     super.onResume();
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(496, this);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(497, this);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(498, this);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(1555, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(496, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(497, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(498, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(1555, this);
     AppMethodBeat.o(67257);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(67256);
-    ad.d("MicroMsg.MallRechargeUI", "onSceneEnd errType = " + paramInt1 + ", errCode = " + paramInt2);
+    ac.d("MicroMsg.MallRechargeUI", "onSceneEnd errType = " + paramInt1 + ", errCode = " + paramInt2);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing()) && (paramn.getType() != 497))
     {
       this.tipDialog.dismiss();
@@ -833,104 +780,104 @@ public class RechargeUI
       if ((paramn instanceof e))
       {
         paramn = (e)paramn;
-        paramString = paramn.uWR;
+        paramString = paramn.wfG;
         if (paramString != null)
         {
-          this.uYC = a.eE(paramString);
-          ad.d("MicroMsg.MallRechargeUI", "mCheckedProduct again" + this.uYC);
+          this.whr = a.eI(paramString);
+          ac.d("MicroMsg.MallRechargeUI", "mCheckedProduct again" + this.whr);
         }
-        this.uYH = paramn.uWS;
-        this.uYI = paramn.uWT;
-        this.uYJ = paramn.uWU;
-        this.uYK = paramn.uWV;
-        ad.d("MicroMsg.MallRechargeUI", "mProductList ".concat(String.valueOf(paramString)));
-        cE();
-        paramn = g(0, paramString);
-        paramString = g(2, paramString);
+        this.whw = paramn.wfH;
+        this.whx = paramn.wfI;
+        this.why = paramn.wfJ;
+        this.whz = paramn.wfK;
+        ac.d("MicroMsg.MallRechargeUI", "mProductList ".concat(String.valueOf(paramString)));
+        cL();
+        paramn = j(0, paramString);
+        paramString = j(2, paramString);
         if (paramn.size() > paramString.size()) {}
         for (paramInt1 = paramn.size();; paramInt1 = paramString.size())
         {
-          this.uYB = paramInt1;
-          this.uYx.eG(paramn);
-          this.uYy.eG(paramString);
+          this.whq = paramInt1;
+          this.whm.eK(paramn);
+          this.whn.eK(paramString);
           AppMethodBeat.o(67256);
           return;
         }
       }
       if ((paramn instanceof com.tencent.mm.plugin.recharge.model.d))
       {
-        ad.d("MicroMsg.MallRechargeUI", "checkProduct: " + this.uYC);
+        ac.d("MicroMsg.MallRechargeUI", "checkProduct: " + this.whr);
         paramn = (com.tencent.mm.plugin.recharge.model.d)paramn;
-        if ((this.uYC != null) && (this.uYC.dft != null) && (paramn.uWO != null) && (((this.uYC.dft.equals(paramn.uWO.dft)) && (dfT().equals(paramn.ioa))) || (paramn.gOH != 2)))
+        if ((this.whr != null) && (this.whr.dcO != null) && (paramn.wfD != null) && (((this.whr.dcO.equals(paramn.wfD.dcO)) && (dtA().equals(paramn.iOg))) || (paramn.hph != 2)))
         {
-          MallRechargeProduct.a(paramn.uWO, this.uYC);
-          this.uYC.isDefault = true;
-          String str = H(paramn.gOH, paramn.uWO.dft, paramn.ioa);
-          this.uYG.put(str, Integer.valueOf(1));
-          cE();
-          this.uYq.setText(paramString);
-          this.uYq.setVisibility(0);
-          this.uYq.setTextColor(getResources().getColor(2131100468));
+          MallRechargeProduct.a(paramn.wfD, this.whr);
+          this.whr.isDefault = true;
+          String str = H(paramn.hph, paramn.wfD.dcO, paramn.iOg);
+          this.whv.put(str, Integer.valueOf(1));
+          cL();
+          this.whf.setText(paramString);
+          this.whf.setVisibility(0);
+          this.whf.setTextColor(getResources().getColor(2131100468));
         }
-        if (paramn.gOH == 2)
+        if (paramn.hph == 2)
         {
-          if ((this.uYC == null) || (!this.uYC.dft.equals(paramn.uWQ)) || (!dfT().equals(paramn.ioa))) {
+          if ((this.whr == null) || (!this.whr.dcO.equals(paramn.wfF)) || (!dtA().equals(paramn.iOg))) {
             break label725;
           }
-          if ((((avn)paramn.rr.gUT.gUX).Dnm == 0) && (this.uYC.dft.equals(paramn.uWO.dft))) {
+          if ((((ayt)paramn.rr.hvs.hvw).EIm == 0) && (this.whr.dcO.equals(paramn.wfD.dcO))) {
             break label682;
           }
-          this.iwY.setEnabled(false);
-          this.iwY.setClickable(false);
-          this.uYq.setText(((avn)paramn.rr.gUT.gUX).Dnn);
-          this.uYq.setVisibility(0);
-          this.uYq.setTextColor(getResources().getColor(2131100798));
+          this.iXb.setEnabled(false);
+          this.iXb.setClickable(false);
+          this.whf.setText(((ayt)paramn.rr.hvs.hvw).EIn);
+          this.whf.setVisibility(0);
+          this.whf.setTextColor(getResources().getColor(2131100798));
         }
         for (;;)
         {
-          eF(paramn.uWP);
-          ad.d("MicroMsg.MallRechargeUI", "NetSceneGetLatestPayProductInfo  mCheckedProduct " + this.uYC);
+          eJ(paramn.wfE);
+          ac.d("MicroMsg.MallRechargeUI", "NetSceneGetLatestPayProductInfo  mCheckedProduct " + this.whr);
           AppMethodBeat.o(67256);
           return;
           label682:
-          m(new com.tencent.mm.plugin.recharge.model.c(this.uYC.uWF, dfT(), this.uYC.oEN, this.uYC.appId, dfS()));
+          l(new com.tencent.mm.plugin.recharge.model.c(this.whr.wfu, dtA(), this.whr.pio, this.whr.appId, dtz()));
           continue;
           label725:
-          this.iwY.setEnabled(true);
-          this.iwY.setClickable(true);
-          this.uYq.setText(null);
+          this.iXb.setEnabled(true);
+          this.iXb.setClickable(true);
+          this.whf.setText(null);
         }
       }
       if ((paramn instanceof com.tencent.mm.plugin.recharge.model.g))
       {
-        paramString = ((com.tencent.mm.plugin.recharge.model.g)paramn).uXi;
-        paramString.dtb = 6;
-        paramString.Cop = 100;
+        paramString = ((com.tencent.mm.plugin.recharge.model.g)paramn).wfX;
+        paramString.dqL = 6;
+        paramString.DGI = 100;
         f.a(this, paramString, 2);
-        com.tencent.mm.sdk.b.a.ESL.c(this.uxB);
+        com.tencent.mm.sdk.b.a.GpY.c(this.vGu);
         AppMethodBeat.o(67256);
         return;
       }
       if ((paramn instanceof com.tencent.mm.plugin.recharge.model.c))
       {
         paramString = (com.tencent.mm.plugin.recharge.model.c)paramn;
-        if ((this.uYC != null) && (this.uYC.oEN.equals(paramString.oEN)) && (dfT().equals(paramString.dpO)))
+        if ((this.whr != null) && (this.whr.pio.equals(paramString.pio)) && (dtA().equals(paramString.dnz)))
         {
-          if (((ame)paramString.rr.gUT.gUX).Dnm != 0)
+          if (((aph)paramString.rr.hvs.hvw).EIm != 0)
           {
-            this.iwY.setEnabled(false);
-            this.iwY.setClickable(false);
-            this.uYq.setText(((ame)paramString.rr.gUT.gUX).Dnn);
-            this.uYq.setVisibility(0);
-            this.uYq.setTextColor(getResources().getColor(2131100798));
+            this.iXb.setEnabled(false);
+            this.iXb.setClickable(false);
+            this.whf.setText(((aph)paramString.rr.hvs.hvw).EIn);
+            this.whf.setVisibility(0);
+            this.whf.setTextColor(getResources().getColor(2131100798));
             AppMethodBeat.o(67256);
           }
         }
         else
         {
-          this.iwY.setEnabled(true);
-          this.iwY.setClickable(true);
-          this.uYq.setText(null);
+          this.iXb.setEnabled(true);
+          this.iXb.setClickable(true);
+          this.whf.setText(null);
         }
         AppMethodBeat.o(67256);
       }
@@ -941,25 +888,25 @@ public class RechargeUI
       {
         if (paramInt2 == 100)
         {
-          this.iwY.setEnabled(true);
-          this.iwY.setClickable(true);
+          this.iXb.setEnabled(true);
+          this.iXb.setClickable(true);
         }
         for (;;)
         {
-          eF(((com.tencent.mm.plugin.recharge.model.d)paramn).uWP);
-          this.uYq.setText(paramString);
-          this.uYq.setVisibility(0);
-          this.uYq.setTextColor(getResources().getColor(2131100798));
-          this.uYp.setText(((com.tencent.mm.plugin.recharge.model.d)paramn).uWG);
-          this.uYp.setTextColor(getResources().getColor(2131100798));
+          eJ(((com.tencent.mm.plugin.recharge.model.d)paramn).wfE);
+          this.whf.setText(paramString);
+          this.whf.setVisibility(0);
+          this.whf.setTextColor(getResources().getColor(2131100798));
+          this.whe.setText(((com.tencent.mm.plugin.recharge.model.d)paramn).wfv);
+          this.whe.setTextColor(getResources().getColor(2131100798));
           AppMethodBeat.o(67256);
           return;
-          this.iwY.setEnabled(false);
-          this.iwY.setClickable(false);
+          this.iXb.setEnabled(false);
+          this.iXb.setClickable(false);
         }
       }
       paramn = paramString;
-      if (bt.isNullOrNil(paramString)) {
+      if (bs.isNullOrNil(paramString)) {
         paramn = getString(2131765901);
       }
       h.a(this, paramn, null, false, new DialogInterface.OnClickListener()
@@ -979,8 +926,8 @@ public class RechargeUI
   public void showVKB()
   {
     AppMethodBeat.i(67263);
-    ad.d("MicroMsg.MallRechargeUI", "showVKB");
-    this.uYz.setInfoTvImageResource(2131232862);
+    ac.d("MicroMsg.MallRechargeUI", "showVKB");
+    this.who.setInfoTvImageResource(2131232862);
     InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
     if (localInputMethodManager == null)
     {
@@ -1005,35 +952,35 @@ public class RechargeUI
   final class a
     extends BaseAdapter
   {
-    private List<MallRechargeProduct> uWP = null;
+    private List<MallRechargeProduct> wfE = null;
     
     private a() {}
     
-    public final void JY(int paramInt)
+    public final void LX(int paramInt)
     {
       AppMethodBeat.i(67234);
       int i = 0;
-      while (i < this.uWP.size())
+      while (i < this.wfE.size())
       {
-        ((MallRechargeProduct)this.uWP.get(i)).isDefault = false;
+        ((MallRechargeProduct)this.wfE.get(i)).isDefault = false;
         i += 1;
       }
-      ((MallRechargeProduct)this.uWP.get(paramInt)).isDefault = true;
+      ((MallRechargeProduct)this.wfE.get(paramInt)).isDefault = true;
       AppMethodBeat.o(67234);
     }
     
-    public final MallRechargeProduct JZ(int paramInt)
+    public final MallRechargeProduct LY(int paramInt)
     {
       AppMethodBeat.i(67236);
-      MallRechargeProduct localMallRechargeProduct = (MallRechargeProduct)this.uWP.get(paramInt);
+      MallRechargeProduct localMallRechargeProduct = (MallRechargeProduct)this.wfE.get(paramInt);
       AppMethodBeat.o(67236);
       return localMallRechargeProduct;
     }
     
-    public final void eG(List<MallRechargeProduct> paramList)
+    public final void eK(List<MallRechargeProduct> paramList)
     {
       AppMethodBeat.i(67233);
-      this.uWP = paramList;
+      this.wfE = paramList;
       notifyDataSetChanged();
       AppMethodBeat.o(67233);
     }
@@ -1041,12 +988,12 @@ public class RechargeUI
     public final int getCount()
     {
       AppMethodBeat.i(67235);
-      if (this.uWP == null)
+      if (this.wfE == null)
       {
         AppMethodBeat.o(67235);
         return 0;
       }
-      int i = this.uWP.size();
+      int i = this.wfE.size();
       AppMethodBeat.o(67235);
       return i;
     }
@@ -1060,8 +1007,8 @@ public class RechargeUI
     {
       AppMethodBeat.i(67238);
       paramView = (CheckedTextView)View.inflate(RechargeUI.this, 2131495208, null);
-      paramViewGroup = JZ(paramInt);
-      paramView.setText(paramViewGroup.oEN);
+      paramViewGroup = LY(paramInt);
+      paramView.setText(paramViewGroup.pio);
       paramView.setEnabled(paramViewGroup.isValid());
       if (paramViewGroup.isDefault) {
         paramView.setChecked(true);
@@ -1077,7 +1024,7 @@ public class RechargeUI
     public final boolean isEnabled(int paramInt)
     {
       AppMethodBeat.i(67237);
-      if (!JZ(paramInt).isValid())
+      if (!LY(paramInt).isValid())
       {
         AppMethodBeat.o(67237);
         return false;
@@ -1090,7 +1037,7 @@ public class RechargeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.RechargeUI
  * JD-Core Version:    0.7.0.1
  */

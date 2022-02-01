@@ -6,7 +6,7 @@ import android.content.ClipData.Item;
 import android.content.ClipboardManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class b
 {
@@ -14,15 +14,15 @@ final class b
   public static void b(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
     AppMethodBeat.i(151889);
-    ((ClipboardManager)aj.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(paramCharSequence1, paramCharSequence2));
+    ((ClipboardManager)ai.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(paramCharSequence1, paramCharSequence2));
     AppMethodBeat.o(151889);
   }
   
   @TargetApi(11)
-  public static CharSequence ewb()
+  public static CharSequence eLv()
   {
     AppMethodBeat.i(151890);
-    Object localObject = ((ClipboardManager)aj.getContext().getSystemService("clipboard")).getPrimaryClip();
+    Object localObject = ((ClipboardManager)ai.getContext().getSystemService("clipboard")).getPrimaryClip();
     if ((localObject == null) || (((ClipData)localObject).getItemCount() <= 0))
     {
       AppMethodBeat.o(151890);
@@ -41,7 +41,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g.b
  * JD-Core Version:    0.7.0.1
  */

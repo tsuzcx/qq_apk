@@ -30,12 +30,12 @@ public final class e
   {
     super(paramContext, 2131820966);
     AppMethodBeat.i(80990);
-    gl();
+    gt();
     this.mContext = paramContext;
     AppMethodBeat.o(80990);
   }
   
-  private boolean aov()
+  private boolean aly()
   {
     AppMethodBeat.i(80997);
     DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
@@ -54,7 +54,7 @@ public final class e
     Object localObject1 = getWindow();
     Object localObject2;
     View localView;
-    if (aov())
+    if (aly())
     {
       ((Window)localObject1).setGravity(5);
       ((Window)localObject1).setWindowAnimations(2131821249);
@@ -73,7 +73,7 @@ public final class e
           localObject1 = getLayoutInflater().inflate(paramInt, (ViewGroup)localObject2, false);
         }
       }
-      if (!aov()) {
+      if (!aly()) {
         break label201;
       }
       paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131302250);
@@ -86,7 +86,7 @@ public final class e
     }
     for (;;)
     {
-      if (eqd()) {
+      if (eFx()) {
         localView.setOnClickListener(new e.1(this));
       }
       AppMethodBeat.o(80995);
@@ -102,7 +102,7 @@ public final class e
     }
   }
   
-  private boolean eqd()
+  private boolean eFx()
   {
     AppMethodBeat.i(80996);
     if (Build.VERSION.SDK_INT < 11)
@@ -156,7 +156,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.game.menu.e
  * JD-Core Version:    0.7.0.1
  */

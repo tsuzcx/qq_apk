@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.recordvideo.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.i.b.e;
+import com.tencent.mm.media.i.b.f;
 import com.tencent.mm.plugin.recordvideo.jumper.XEffectConfig;
 import com.tencent.mm.plugin.xlabeffect.XLabEffect;
 import d.g.a.m;
@@ -10,104 +11,104 @@ import d.l;
 import d.y;
 import java.nio.IntBuffer;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/render/XEffectRenderer;", "Lcom/tencent/mm/media/render/SurfaceTextureRenderer;", "()V", "beautyEnable", "", "currentFilter", "", "filterOutputTextureObj", "Lcom/tencent/mm/media/globject/GLTextureObject;", "filterProcess", "", "inputRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "onDrawViewSizeUpdate", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "width", "height", "", "getOnDrawViewSizeUpdate", "()Lkotlin/jvm/functions/Function2;", "setOnDrawViewSizeUpdate", "(Lkotlin/jvm/functions/Function2;)V", "outputRenderProc", "useCpuCrop", "getUseCpuCrop", "()Z", "setUseCpuCrop", "(Z)V", "xEffectConfig", "Lcom/tencent/mm/plugin/recordvideo/jumper/XEffectConfig;", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "doInitRenderProc", "getOutputTexture", "getSnapHeight", "getSnapWidth", "getXEffect", "release", "shouldDestroySurfaceTexture", "render", "setBeautyConfig", "config", "setBeautyEnable", "enable", "setFilter", "filterPath", "setOnRGBDataAvailableListener", "listener", "Lkotlin/Function1;", "Ljava/nio/IntBuffer;", "buffer", "takePhoto", "updateDrawViewSize", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/render/XEffectRenderer;", "Lcom/tencent/mm/media/render/SurfaceTextureRenderer;", "()V", "beautyEnable", "", "currentFilter", "", "filterOutputTextureObj", "Lcom/tencent/mm/media/globject/GLTextureObject;", "filterProcess", "", "inputRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "onDrawViewSizeUpdate", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "width", "height", "", "getOnDrawViewSizeUpdate", "()Lkotlin/jvm/functions/Function2;", "setOnDrawViewSizeUpdate", "(Lkotlin/jvm/functions/Function2;)V", "outputRenderProc", "useCpuCrop", "getUseCpuCrop", "()Z", "setUseCpuCrop", "(Z)V", "xEffectConfig", "Lcom/tencent/mm/plugin/recordvideo/jumper/XEffectConfig;", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "doInitRenderProc", "getOutputTexture", "getSnapHeight", "getSnapWidth", "getXEffect", "release", "shouldDestroySurfaceTexture", "render", "setBeautyConfig", "config", "setBeautyEnable", "enable", "setFilter", "filterPath", "setOnRGBDataAvailableListener", "listener", "Lkotlin/Function1;", "Ljava/nio/IntBuffer;", "buffer", "takePhoto", "updateDrawViewSize", "plugin-recordvideo_release"})
 public final class b
   extends com.tencent.mm.media.i.d
 {
-  private String LoM;
-  private float LoN;
-  public XLabEffect fVU;
-  private boolean gwB;
-  private com.tencent.mm.media.i.b.a oSu;
-  public com.tencent.mm.media.f.d oSx;
-  private XEffectConfig vif;
-  private com.tencent.mm.media.i.b.a vpe;
-  private boolean vpf;
-  public m<? super Integer, ? super Integer, y> vpg;
+  public XLabEffect fZP;
+  private boolean gWY;
+  private com.tencent.mm.media.i.b.a pvF;
+  public com.tencent.mm.media.f.d pvI;
+  private XEffectConfig wqP;
+  private com.tencent.mm.media.i.b.a wxR;
+  private boolean wxS;
+  public m<? super Integer, ? super Integer, y> wxT;
+  private String wxU;
+  private float wxV;
   
   public b()
   {
     super(1);
     AppMethodBeat.i(182865);
-    this.vif = new XEffectConfig();
+    this.wqP = new XEffectConfig();
     AppMethodBeat.o(182865);
   }
   
   public final void a(XEffectConfig paramXEffectConfig)
   {
-    AppMethodBeat.i(204235);
+    AppMethodBeat.i(199354);
     k.h(paramXEffectConfig, "config");
-    this.vif = paramXEffectConfig;
-    paramXEffectConfig = this.fVU;
+    this.wqP = paramXEffectConfig;
+    paramXEffectConfig = this.fZP;
     if (paramXEffectConfig != null)
     {
-      paramXEffectConfig.j(this.vif.vil, this.vif.vim, this.vif.vin, this.vif.vio, this.vif.vip);
-      AppMethodBeat.o(204235);
+      paramXEffectConfig.j(this.wqP.wqV, this.wqP.wqW, this.wqP.wqX, this.wqP.wqY, this.wqP.wqZ);
+      AppMethodBeat.o(199354);
       return;
     }
-    AppMethodBeat.o(204235);
+    AppMethodBeat.o(199354);
   }
   
-  public final com.tencent.mm.media.i.b.a akj()
+  public final com.tencent.mm.media.i.b.a ajF()
   {
     AppMethodBeat.i(182860);
-    if (this.gwB) {}
-    for (com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new e(this.guI, this.guJ, this.guK, this.guL, 2, this.scaleType);; locala = (com.tencent.mm.media.i.b.a)new com.tencent.mm.media.i.b.c(this.guI, this.guJ, this.guK, this.guL, 2, this.scaleType))
+    if (this.gWY) {}
+    for (com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new f(this.gqZ, this.gra, this.grV, this.grW, 2, this.scaleType);; locala = (com.tencent.mm.media.i.b.a)new com.tencent.mm.media.i.b.c(this.gqZ, this.gra, this.grV, this.grW, 2, this.scaleType))
     {
-      this.oSu = locala;
-      Object localObject = this.oSu;
+      this.pvF = locala;
+      Object localObject = this.pvF;
       if (localObject != null) {
-        ((com.tencent.mm.media.i.b.a)localObject).guY = true;
+        ((com.tencent.mm.media.i.b.a)localObject).gVv = true;
       }
-      localObject = this.vpe;
+      localObject = this.wxR;
       if (localObject != null) {
         ((com.tencent.mm.media.i.b.a)localObject).release();
       }
-      this.vpe = ((com.tencent.mm.media.i.b.a)new com.tencent.mm.media.i.b.d(this.guK, this.guL, this.guK, this.guL, this.guM, 1));
-      localObject = this.fVU;
+      this.wxR = ((com.tencent.mm.media.i.b.a)new e(this.grV, this.grW, this.grV, this.grW, this.gVm, 1));
+      localObject = this.fZP;
       if (localObject != null) {
         ((XLabEffect)localObject).destroy();
       }
-      this.fVU = new XLabEffect(0, 0, 0, false, 15);
-      localObject = this.fVU;
+      this.fZP = new XLabEffect(0, 0, 0, false, 15);
+      localObject = this.fZP;
       if (localObject != null) {
-        ((XLabEffect)localObject).j(this.vif.vil, this.vif.vim, this.vif.vin, this.vif.vio, this.vif.vip);
+        ((XLabEffect)localObject).j(this.wqP.wqV, this.wqP.wqW, this.wqP.wqX, this.wqP.wqY, this.wqP.wqZ);
       }
-      localObject = this.fVU;
+      localObject = this.fZP;
       if (localObject != null) {
-        ((XLabEffect)localObject).tN(this.vpf);
+        ((XLabEffect)localObject).pt(this.wxS);
       }
-      localObject = this.fVU;
+      localObject = this.fZP;
       if (localObject != null) {
-        ((XLabEffect)localObject).m(this.LoM, this.LoN);
+        ((XLabEffect)localObject).m(this.wxU, this.wxV);
       }
-      localObject = this.fVU;
+      localObject = this.fZP;
       if (localObject != null) {
-        ((XLabEffect)localObject).tP(false);
+        ((XLabEffect)localObject).uQ(false);
       }
-      localObject = this.fVU;
+      localObject = this.fZP;
       if (localObject != null) {
-        ((XLabEffect)localObject).setSize(this.guK, this.guL);
+        ((XLabEffect)localObject).setSize(this.grV, this.grW);
       }
-      localObject = this.oSx;
+      localObject = this.pvI;
       if (localObject != null) {
         ((com.tencent.mm.media.f.d)localObject).close();
       }
-      this.oSx = com.tencent.mm.media.f.c.a(true, 16L);
+      this.pvI = com.tencent.mm.media.f.c.a(true, 16L);
       AppMethodBeat.o(182860);
       return locala;
     }
   }
   
-  public final void akk()
+  public final void ajG()
   {
     Object localObject3 = null;
     AppMethodBeat.i(182863);
-    super.akk();
-    Object localObject1 = this.oSu;
+    super.ajG();
+    Object localObject1 = this.pvF;
     if (localObject1 != null)
     {
-      localObject1 = ((com.tencent.mm.media.i.b.a)localObject1).guU;
+      localObject1 = ((com.tencent.mm.media.i.b.a)localObject1).gVr;
       if (localObject1 != null) {}
     }
     else
@@ -115,19 +116,19 @@ public final class b
       AppMethodBeat.o(182863);
       return;
     }
-    Object localObject2 = this.fVU;
+    Object localObject2 = this.fZP;
     if (localObject2 != null) {
       XLabEffect.a((XLabEffect)localObject2, (com.tencent.mm.media.f.d)localObject1);
     }
-    localObject2 = this.oSx;
+    localObject2 = this.pvI;
     if (localObject2 != null) {
-      com.tencent.mm.media.f.d.a((com.tencent.mm.media.f.d)localObject2, this.guK, this.guL, 0, null, 0, 0, 60);
+      com.tencent.mm.media.f.d.a((com.tencent.mm.media.f.d)localObject2, this.grV, this.grW, 0, null, 0, 0, 60);
     }
-    com.tencent.mm.media.f.d locald = this.oSx;
+    com.tencent.mm.media.f.d locald = this.pvI;
     localObject2 = localObject1;
     if (locald != null)
     {
-      XLabEffect localXLabEffect = this.fVU;
+      XLabEffect localXLabEffect = this.fZP;
       localObject2 = localObject3;
       if (localXLabEffect != null) {
         localObject2 = Integer.valueOf(XLabEffect.a(localXLabEffect, (com.tencent.mm.media.f.d)localObject1, locald, false, 60));
@@ -138,15 +139,15 @@ public final class b
     }
     else
     {
-      localObject1 = this.vpe;
+      localObject1 = this.wxR;
       if (localObject1 != null) {
-        ((com.tencent.mm.media.i.b.a)localObject1).mA(((com.tencent.mm.media.f.d)localObject2).gro);
+        ((com.tencent.mm.media.i.b.a)localObject1).no(((com.tencent.mm.media.f.d)localObject2).gRW);
       }
-      localObject1 = this.vpe;
+      localObject1 = this.wxR;
       if (localObject1 == null) {
         break label174;
       }
-      ((com.tencent.mm.media.i.b.a)localObject1).akk();
+      ((com.tencent.mm.media.i.b.a)localObject1).ajG();
       AppMethodBeat.o(182863);
       return;
     }
@@ -163,49 +164,54 @@ public final class b
     }
   }
   
-  public final void akm()
+  public final com.tencent.mm.media.f.d ajH()
   {
-    com.tencent.mm.media.i.b.a locala = this.vpe;
+    return this.pvI;
+  }
+  
+  public final void ari()
+  {
+    com.tencent.mm.media.i.b.a locala = this.wxR;
     if (locala != null) {
-      locala.gvc = true;
+      locala.gVz = true;
     }
   }
   
-  public final int akn()
+  public final int arj()
   {
-    com.tencent.mm.media.i.b.a locala = this.vpe;
+    com.tencent.mm.media.i.b.a locala = this.wxR;
     if (locala != null) {
-      return locala.gve;
-    }
-    return 0;
-  }
-  
-  public final int ako()
-  {
-    com.tencent.mm.media.i.b.a locala = this.vpe;
-    if (locala != null) {
-      return locala.gvf;
+      return locala.gVB;
     }
     return 0;
   }
   
-  public final void cT(int paramInt1, int paramInt2)
+  public final int ark()
+  {
+    com.tencent.mm.media.i.b.a locala = this.wxR;
+    if (locala != null) {
+      return locala.gVC;
+    }
+    return 0;
+  }
+  
+  public final void cR(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(182862);
-    super.cT(paramInt1, paramInt2);
-    Object localObject = this.vpe;
+    super.cR(paramInt1, paramInt2);
+    Object localObject = this.wxR;
     if (localObject != null) {
-      ((com.tencent.mm.media.i.b.a)localObject).cS(this.guK, this.guL);
+      ((com.tencent.mm.media.i.b.a)localObject).cS(this.grV, this.grW);
     }
-    localObject = this.vpe;
+    localObject = this.wxR;
     if (localObject != null) {
-      ((com.tencent.mm.media.i.b.a)localObject).cT(this.guK, this.guL);
+      ((com.tencent.mm.media.i.b.a)localObject).cR(this.grV, this.grW);
     }
-    localObject = this.fVU;
+    localObject = this.fZP;
     if (localObject != null) {
-      ((XLabEffect)localObject).setSize(this.guK, this.guL);
+      ((XLabEffect)localObject).setSize(this.grV, this.grW);
     }
-    localObject = this.vpg;
+    localObject = this.wxT;
     if (localObject != null)
     {
       ((m)localObject).n(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
@@ -215,59 +221,54 @@ public final class b
     AppMethodBeat.o(182862);
   }
   
-  public final com.tencent.mm.media.f.d czI()
-  {
-    return this.oSx;
-  }
-  
-  public final void g(d.g.a.b<? super IntBuffer, y> paramb)
+  public final void l(d.g.a.b<? super IntBuffer, y> paramb)
   {
     AppMethodBeat.i(182861);
     k.h(paramb, "listener");
-    com.tencent.mm.media.i.b.a locala = this.vpe;
+    com.tencent.mm.media.i.b.a locala = this.wxR;
     if (locala != null)
     {
-      locala.gva = paramb;
+      locala.gVx = paramb;
       AppMethodBeat.o(182861);
       return;
     }
     AppMethodBeat.o(182861);
   }
   
+  public final void pt(boolean paramBoolean)
+  {
+    AppMethodBeat.i(199355);
+    this.wxS = paramBoolean;
+    XLabEffect localXLabEffect = this.fZP;
+    if (localXLabEffect != null)
+    {
+      localXLabEffect.pt(this.wxS);
+      AppMethodBeat.o(199355);
+      return;
+    }
+    AppMethodBeat.o(199355);
+  }
+  
   public final void release(boolean paramBoolean)
   {
     AppMethodBeat.i(182864);
     super.release(paramBoolean);
-    Object localObject = this.vpe;
+    Object localObject = this.wxR;
     if (localObject != null) {
       ((com.tencent.mm.media.i.b.a)localObject).release();
     }
-    this.vpe = null;
-    localObject = this.fVU;
+    this.wxR = null;
+    localObject = this.fZP;
     if (localObject != null) {
       ((XLabEffect)localObject).destroy();
     }
-    this.fVU = null;
-    localObject = this.oSx;
+    this.fZP = null;
+    localObject = this.pvI;
     if (localObject != null) {
       ((com.tencent.mm.media.f.d)localObject).close();
     }
-    this.oSx = null;
+    this.pvI = null;
     AppMethodBeat.o(182864);
-  }
-  
-  public final void tN(boolean paramBoolean)
-  {
-    AppMethodBeat.i(204236);
-    this.vpf = paramBoolean;
-    XLabEffect localXLabEffect = this.fVU;
-    if (localXLabEffect != null)
-    {
-      localXLabEffect.tN(this.vpf);
-      AppMethodBeat.o(204236);
-      return;
-    }
-    AppMethodBeat.o(204236);
   }
 }
 

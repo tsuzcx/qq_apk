@@ -12,42 +12,42 @@ import com.tencent.toybrick.g.b.d;
 public final class c
   extends g<c, a>
 {
-  public static final int IGe = 2131495269;
-  private Drawable IGf;
-  private b.b<c> IGg;
-  private Drawable IGr;
-  private b.b<c> IGs;
-  private b.d<c> IGt;
-  private boolean IGu;
-  private b<Boolean, c> IGv;
-  private b<Boolean, c> IGw;
-  private CharSequence uEo;
+  public static final int Ksp = 2131495269;
+  private Drawable KsC;
+  private b.b<c> KsD;
+  private b.d<c> KsE;
+  private boolean KsF;
+  private b<Boolean, c> KsG;
+  private b<Boolean, c> KsH;
+  private Drawable Ksq;
+  private b.b<c> Ksr;
+  private CharSequence vNf;
   
   public final int getLayoutResource()
   {
-    return IGe;
+    return Ksp;
   }
   
   public final class a
     extends d.a
   {
-    ImageView IGA;
-    TextView IGB;
-    View IGC;
-    ImageView IGy;
-    ImageView IGz;
-    ImageView wYW;
+    ImageView KsJ;
+    ImageView KsK;
+    ImageView KsL;
+    TextView KsM;
+    View KsN;
+    ImageView ylK;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(159942);
-      this.IGy = ((ImageView)paramView.findViewById(2131300959));
-      this.IGB = ((TextView)paramView.findViewById(2131304182));
-      this.IGz = ((ImageView)paramView.findViewById(2131304190));
-      this.IGC = paramView.findViewById(2131304191);
-      this.wYW = ((ImageView)paramView.findViewById(2131304172));
-      this.IGA = ((ImageView)paramView.findViewById(2131304181));
+      this.KsJ = ((ImageView)paramView.findViewById(2131300959));
+      this.KsM = ((TextView)paramView.findViewById(2131304182));
+      this.KsK = ((ImageView)paramView.findViewById(2131304190));
+      this.KsN = paramView.findViewById(2131304191);
+      this.ylK = ((ImageView)paramView.findViewById(2131304172));
+      this.KsL = ((ImageView)paramView.findViewById(2131304181));
       AppMethodBeat.o(159942);
     }
   }

@@ -8,7 +8,7 @@ import java.util.zip.CRC32;
 
 public final class a
 {
-  private static long T(InputStream paramInputStream)
+  private static long S(InputStream paramInputStream)
   {
     CRC32 localCRC32 = new CRC32();
     byte[] arrayOfByte = new byte[4096];
@@ -23,7 +23,7 @@ public final class a
     return localCRC32.getValue();
   }
   
-  public static long V(File paramFile)
+  public static long Z(File paramFile)
   {
     try
     {
@@ -35,7 +35,7 @@ public final class a
     {
       try
       {
-        l = T(localBufferedInputStream);
+        l = S(localBufferedInputStream);
         b.closeQuietly(localBufferedInputStream);
         return l;
       }
@@ -48,7 +48,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.c.b.a
  * JD-Core Version:    0.7.0.1
  */

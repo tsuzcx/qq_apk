@@ -10,64 +10,64 @@ public class Logger
   
   public static void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(202001);
+    AppMethodBeat.i(198062);
     if (logger != null) {
       logger.d(paramString1, paramString2);
     }
-    AppMethodBeat.o(202001);
+    AppMethodBeat.o(198062);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(202003);
+    AppMethodBeat.i(198064);
     if (logger != null) {
       logger.e(paramString1, paramString2);
     }
-    AppMethodBeat.o(202003);
+    AppMethodBeat.o(198064);
   }
   
   public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(202005);
+    AppMethodBeat.i(198066);
     if (logger != null) {
       logger.e(paramString1, paramString2, paramThrowable);
     }
-    AppMethodBeat.o(202005);
+    AppMethodBeat.o(198066);
   }
   
   public static void e(String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(202004);
+    AppMethodBeat.i(198065);
     if (logger != null)
     {
       logger.e(paramString, paramThrowable);
-      AppMethodBeat.o(202004);
+      AppMethodBeat.o(198065);
       return;
     }
     if (DEBUG) {
       new StringBuilder().append(paramThrowable.getMessage());
     }
-    AppMethodBeat.o(202004);
+    AppMethodBeat.o(198065);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(202002);
+    AppMethodBeat.i(198063);
     if (logger != null)
     {
       logger.i(paramString1, paramString2, paramVarArgs);
-      AppMethodBeat.o(202002);
+      AppMethodBeat.o(198063);
       return;
     }
     if (DEBUG) {
       String.format(paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(202002);
+    AppMethodBeat.o(198063);
   }
   
   public static void longlogd(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(202008);
+    AppMethodBeat.i(198069);
     int m = paramString2.length();
     int i = 4096;
     int j = 0;
@@ -83,11 +83,11 @@ public class Logger
       else
       {
         d(paramString1, paramString2.substring(k, m));
-        AppMethodBeat.o(202008);
+        AppMethodBeat.o(198069);
         return;
       }
     }
-    AppMethodBeat.o(202008);
+    AppMethodBeat.o(198069);
   }
   
   public static void setLogAble(boolean paramBoolean)
@@ -102,25 +102,25 @@ public class Logger
   
   public static void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(202006);
+    AppMethodBeat.i(198067);
     if (logger != null) {
       logger.v(paramString1, paramString2);
     }
-    AppMethodBeat.o(202006);
+    AppMethodBeat.o(198067);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(202007);
+    AppMethodBeat.i(198068);
     if (logger != null) {
       logger.w(paramString1, paramString2);
     }
-    AppMethodBeat.o(202007);
+    AppMethodBeat.o(198068);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.logger.Logger
  * JD-Core Version:    0.7.0.1
  */

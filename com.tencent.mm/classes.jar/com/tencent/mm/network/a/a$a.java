@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a$a
 {
   public long beginTime = 0L;
-  public long cin = 0L;
+  public long cfj = 0L;
   public String clientIp = "";
   public long count = 0L;
   public long endTime = 0L;
@@ -13,15 +13,15 @@ public final class a$a
   public int errType = 0;
   public long expand1 = 0L;
   public long expand2 = 0L;
-  public c hMZ;
-  public boolean hNa = false;
-  public long hNb = 0L;
-  public long hNc = 0L;
-  public int hNe = 0;
-  public int hNf = 0;
-  public long hNg = 0L;
-  public long hNh = 0L;
-  public long hNi = 0L;
+  public int inA = 0;
+  public int inB = 0;
+  public long inC = 0L;
+  public long inD = 0L;
+  public long inE = 0L;
+  public c inw;
+  public boolean inx = false;
+  public long iny = 0L;
+  public long inz = 0L;
   public long netSignal = 0L;
   public int netType = 0;
   public int retryCount = 0;
@@ -35,12 +35,12 @@ public final class a$a
     long l3 = this.endTime;
     long l4 = this.endTime;
     long l5 = this.beginTime;
-    long l6 = this.cin;
+    long l6 = this.cfj;
     long l7 = this.count;
-    if (this.hMZ == null) {}
-    for (String str = "null";; str = this.hMZ.toString())
+    if (this.inw == null) {}
+    for (String str = "null";; str = this.inw.toString())
     {
-      str = String.format("rtType:%d begin:%d, end:%d time:%d cost:%d count:%d ipInfo:%s socket:%b netType:%d err:(%d,%d) tx:%d rx:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4 - l5), Long.valueOf(l6), Long.valueOf(l7), str, Boolean.valueOf(this.hNa), Integer.valueOf(this.netType), Integer.valueOf(this.errType), Integer.valueOf(this.errCode), Long.valueOf(this.hNb), Long.valueOf(this.hNc) });
+      str = String.format("rtType:%d begin:%d, end:%d time:%d cost:%d count:%d ipInfo:%s socket:%b netType:%d err:(%d,%d) tx:%d rx:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4 - l5), Long.valueOf(l6), Long.valueOf(l7), str, Boolean.valueOf(this.inx), Integer.valueOf(this.netType), Integer.valueOf(this.errType), Integer.valueOf(this.errCode), Long.valueOf(this.iny), Long.valueOf(this.inz) });
       AppMethodBeat.o(132962);
       return str;
     }
@@ -48,7 +48,7 @@ public final class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.network.a.a.a
  * JD-Core Version:    0.7.0.1
  */

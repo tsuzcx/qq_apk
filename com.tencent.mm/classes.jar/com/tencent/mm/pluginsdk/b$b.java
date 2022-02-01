@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "", "invoke"})
 final class b$b
   extends d.g.b.l
   implements a<ConcurrentLinkedDeque<String>>
 {
-  public static final b BMZ;
+  public static final b Dfj;
   
   static
   {
     AppMethodBeat.i(124764);
-    BMZ = new b();
+    Dfj = new b();
     AppMethodBeat.o(124764);
   }
   

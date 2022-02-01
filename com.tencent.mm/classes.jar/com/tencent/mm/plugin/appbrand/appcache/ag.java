@@ -7,29 +7,29 @@ import com.tencent.mm.sdk.e.j;
 public final class ag
   extends j<af>
 {
-  public static final String[] gLs;
+  public static final String[] hlS;
   final e db;
   
   static
   {
     AppMethodBeat.i(44317);
-    gLs = new String[] { j.getCreateSQLs(af.iMP, "PkgUsageLRURecord") };
+    hlS = new String[] { j.getCreateSQLs(af.jmW, "PkgUsageLRURecord") };
     AppMethodBeat.o(44317);
   }
   
   public ag(e parame)
   {
-    super(parame, af.iMP, "PkgUsageLRURecord", af.INDEX_CREATE);
+    super(parame, af.jmW, "PkgUsageLRURecord", af.INDEX_CREATE);
     this.db = parame;
   }
   
-  public final void aD(String paramString, int paramInt)
+  public final void aH(String paramString, int paramInt)
   {
     AppMethodBeat.i(44316);
     af localaf = new af();
     localaf.field_appId = paramString;
     localaf.field_type = paramInt;
-    super.delete(localaf, af.iLd);
+    super.delete(localaf, af.jlk);
     AppMethodBeat.o(44316);
   }
 }

@@ -6,23 +6,23 @@ import java.util.Collections;
 
 public final class y
 {
-  public final ArrayList<Object> cTm;
+  public final ArrayList<Object> cQJ;
   
   public y(int paramInt)
   {
     AppMethodBeat.i(128982);
-    this.cTm = new ArrayList(paramInt);
+    this.cQJ = new ArrayList(paramInt);
     AppMethodBeat.o(128982);
   }
   
   public final void add(Object paramObject)
   {
     AppMethodBeat.i(128984);
-    this.cTm.add(paramObject);
+    this.cQJ.add(paramObject);
     AppMethodBeat.o(128984);
   }
   
-  public final void eI(Object paramObject)
+  public final void eL(Object paramObject)
   {
     AppMethodBeat.i(128983);
     if (paramObject == null)
@@ -35,8 +35,8 @@ public final class y
       paramObject = (Object[])paramObject;
       if (paramObject.length > 0)
       {
-        this.cTm.ensureCapacity(this.cTm.size() + paramObject.length);
-        Collections.addAll(this.cTm, paramObject);
+        this.cQJ.ensureCapacity(this.cQJ.size() + paramObject.length);
+        Collections.addAll(this.cQJ, paramObject);
       }
       AppMethodBeat.o(128983);
       return;
@@ -49,7 +49,7 @@ public final class y
   public final Object[] toArray(Object[] paramArrayOfObject)
   {
     AppMethodBeat.i(128985);
-    paramArrayOfObject = this.cTm.toArray(paramArrayOfObject);
+    paramArrayOfObject = this.cQJ.toArray(paramArrayOfObject);
     AppMethodBeat.o(128985);
     return paramArrayOfObject;
   }

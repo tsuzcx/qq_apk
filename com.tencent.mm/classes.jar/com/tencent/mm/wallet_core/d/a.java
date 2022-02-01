@@ -1,11 +1,11 @@
 package com.tencent.mm.wallet_core.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.s;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.tenpay.model.c;
 import com.tencent.mm.wallet_core.tenpay.model.d;
 import com.tencent.mm.wallet_core.tenpay.model.e;
@@ -18,75 +18,75 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public final class a
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private com.tencent.mm.wallet_core.tenpay.model.n Iej;
-  private com.tencent.mm.wallet_core.tenpay.model.g Iek;
-  int Iel = 0;
-  private com.tencent.mm.al.g Iem;
+  private com.tencent.mm.wallet_core.tenpay.model.n JFL;
+  private com.tencent.mm.wallet_core.tenpay.model.g JFM;
+  int JFN = 0;
+  private com.tencent.mm.ak.g JFO;
   
-  public a(com.tencent.mm.al.g paramg)
+  public a(com.tencent.mm.ak.g paramg)
   {
-    this.Iem = paramg;
+    this.JFO = paramg;
   }
   
   private void a(int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject, com.tencent.mm.wallet_core.tenpay.model.g paramg)
   {
     AppMethodBeat.i(72832);
-    ad.i("MicroMsg.DelayQueryOrderHelper", "doRealCallback errCode = " + paramInt2 + "errType = " + paramInt1);
-    if ((this.Iej != null) && (paramJSONObject != null) && (paramInt1 == 0) && (paramInt2 == 0))
+    ac.i("MicroMsg.DelayQueryOrderHelper", "doRealCallback errCode = " + paramInt2 + "errType = " + paramInt1);
+    if ((this.JFL != null) && (paramJSONObject != null) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      ad.i("MicroMsg.DelayQueryOrderHelper", "doRealCallback mScene !=null");
-      this.Iej.onGYNetEnd(paramInt2, paramString, paramJSONObject);
-      this.Iem.onSceneEnd(paramInt1, paramInt2, paramString, this.Iej);
-      if (this.Iel == 1) {
-        com.tencent.mm.plugin.report.service.h.vKh.m(965L, 4L, 1L);
+      ac.i("MicroMsg.DelayQueryOrderHelper", "doRealCallback mScene !=null");
+      this.JFL.onGYNetEnd(paramInt2, paramString, paramJSONObject);
+      this.JFO.onSceneEnd(paramInt1, paramInt2, paramString, this.JFL);
+      if (this.JFN == 1) {
+        com.tencent.mm.plugin.report.service.h.wUl.n(965L, 4L, 1L);
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.DelayQueryOrderHelper", "doRealCallback reset");
-      this.Iel = 0;
+      ac.i("MicroMsg.DelayQueryOrderHelper", "doRealCallback reset");
+      this.JFN = 0;
       AppMethodBeat.o(72832);
       return;
-      if (this.Iel == 2)
+      if (this.JFN == 2)
       {
-        com.tencent.mm.plugin.report.service.h.vKh.m(965L, 5L, 1L);
+        com.tencent.mm.plugin.report.service.h.wUl.n(965L, 5L, 1L);
       }
-      else if (this.Iel == 3)
+      else if (this.JFN == 3)
       {
-        com.tencent.mm.plugin.report.service.h.vKh.m(965L, 6L, 1L);
+        com.tencent.mm.plugin.report.service.h.wUl.n(965L, 6L, 1L);
         continue;
-        if (this.Iem != null)
+        if (this.JFO != null)
         {
-          ad.i("MicroMsg.DelayQueryOrderHelper", "doRealCallback mRealCallback !=null");
-          this.Iem.onSceneEnd(paramInt1, paramInt2, paramString, this.Iej);
-          if (this.Iel == 1) {
-            com.tencent.mm.plugin.report.service.h.vKh.m(965L, 7L, 1L);
+          ac.i("MicroMsg.DelayQueryOrderHelper", "doRealCallback mRealCallback !=null");
+          this.JFO.onSceneEnd(paramInt1, paramInt2, paramString, this.JFL);
+          if (this.JFN == 1) {
+            com.tencent.mm.plugin.report.service.h.wUl.n(965L, 7L, 1L);
           }
           for (;;)
           {
             if (paramg.checkRecSrvResp()) {
               break label305;
             }
-            if (this.Iel != 1) {
+            if (this.JFN != 1) {
               break label307;
             }
-            com.tencent.mm.plugin.report.service.h.vKh.m(965L, 15L, 1L);
+            com.tencent.mm.plugin.report.service.h.wUl.n(965L, 15L, 1L);
             break;
-            if (this.Iel == 2) {
-              com.tencent.mm.plugin.report.service.h.vKh.m(965L, 8L, 1L);
-            } else if (this.Iel == 3) {
-              com.tencent.mm.plugin.report.service.h.vKh.m(965L, 9L, 1L);
+            if (this.JFN == 2) {
+              com.tencent.mm.plugin.report.service.h.wUl.n(965L, 8L, 1L);
+            } else if (this.JFN == 3) {
+              com.tencent.mm.plugin.report.service.h.wUl.n(965L, 9L, 1L);
             }
           }
           label305:
           continue;
           label307:
-          if (this.Iel == 2) {
-            com.tencent.mm.plugin.report.service.h.vKh.m(965L, 16L, 1L);
-          } else if (this.Iel == 3) {
-            com.tencent.mm.plugin.report.service.h.vKh.m(965L, 17L, 1L);
+          if (this.JFN == 2) {
+            com.tencent.mm.plugin.report.service.h.wUl.n(965L, 16L, 1L);
+          } else if (this.JFN == 3) {
+            com.tencent.mm.plugin.report.service.h.wUl.n(965L, 17L, 1L);
           }
         }
       }
@@ -96,41 +96,41 @@ public final class a
   private void b(com.tencent.mm.wallet_core.tenpay.model.n paramn)
   {
     AppMethodBeat.i(72829);
-    this.Iej = paramn;
-    this.Iej.setHasRetried(true);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(385, this);
-    int i = s.ecc().edh();
-    this.Iel += 1;
-    this.Iek = bO(this.Iej.fks());
-    this.Iek.IeB = true;
-    int j = s.ecc().mRetryCount;
-    paramn = this.Iek;
-    if (this.Iel >= j) {}
+    this.JFL = paramn;
+    this.JFL.setHasRetried(true);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(385, this);
+    int i = s.ery().esC();
+    this.JFN += 1;
+    this.JFM = bT(this.JFL.fAI());
+    this.JFM.JGd = true;
+    int j = s.ery().mRetryCount;
+    paramn = this.JFM;
+    if (this.JFN >= j) {}
     for (boolean bool = true;; bool = false)
     {
-      paramn.W(bool, this.Iel);
-      ad.i("MicroMsg.DelayQueryOrderHelper", "doLoopDelayScene,delay = %s queryOrderCount %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afA().gcy.a(this.Iek, i);
+      paramn.Z(bool, this.JFN);
+      ac.i("MicroMsg.DelayQueryOrderHelper", "doLoopDelayScene,delay = %s queryOrderCount %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agQ().ghe.a(this.JFM, i);
       AppMethodBeat.o(72829);
       return;
     }
   }
   
-  private static com.tencent.mm.wallet_core.tenpay.model.g bO(Map<String, String> paramMap)
+  private static com.tencent.mm.wallet_core.tenpay.model.g bT(Map<String, String> paramMap)
   {
     AppMethodBeat.i(72830);
     String str = (String)paramMap.get("req_key");
-    if (bt.isNullOrNil(str))
+    if (bs.isNullOrNil(str))
     {
-      ad.i("MicroMsg.DelayQueryOrderHelper", "no reqKey");
+      ac.i("MicroMsg.DelayQueryOrderHelper", "no reqKey");
       paramMap = new com.tencent.mm.wallet_core.tenpay.model.g(paramMap);
       AppMethodBeat.o(72830);
       return paramMap;
     }
-    ad.i("MicroMsg.DelayQueryOrderHelper", "payorder reqKey: %s", new Object[] { str });
-    ad.i("MicroMsg.DelayQueryOrderHelper", "delayquery go new split cgi");
+    ac.i("MicroMsg.DelayQueryOrderHelper", "payorder reqKey: %s", new Object[] { str });
+    ac.i("MicroMsg.DelayQueryOrderHelper", "delayquery go new split cgi");
     if (str.startsWith("sns_aa_"))
     {
       paramMap = new com.tencent.mm.wallet_core.tenpay.model.b(paramMap);
@@ -199,8 +199,8 @@ public final class a
   public final void a(com.tencent.mm.wallet_core.tenpay.model.n paramn)
   {
     AppMethodBeat.i(72828);
-    ad.i("MicroMsg.DelayQueryOrderHelper", "startDelayScene");
-    this.Iel = 0;
+    ac.i("MicroMsg.DelayQueryOrderHelper", "startDelayScene");
+    this.JFN = 0;
     b(paramn);
     AppMethodBeat.o(72828);
   }
@@ -208,107 +208,107 @@ public final class a
   public final void destory()
   {
     AppMethodBeat.i(72831);
-    this.Iem = null;
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(385, this);
+    this.JFO = null;
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(385, this);
     AppMethodBeat.o(72831);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(72833);
-    ad.d("MicroMsg.DelayQueryOrderHelper", "errType: %d, errCode: %d, errMsg: %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
-    if (((paramn instanceof com.tencent.mm.wallet_core.tenpay.model.g)) && (this.Iek.equals(paramn)))
+    ac.d("MicroMsg.DelayQueryOrderHelper", "errType: %d, errCode: %d, errMsg: %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
+    if (((paramn instanceof com.tencent.mm.wallet_core.tenpay.model.g)) && (this.JFM.equals(paramn)))
     {
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afA().gcy.b(385, this);
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agQ().ghe.b(385, this);
       paramn = (com.tencent.mm.wallet_core.tenpay.model.g)paramn;
-      ad.d("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder errType: %d, errCode: %d, errMsg: %s scene %s  errmsgtype %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn, Integer.valueOf(paramn.IeA) });
-      if (paramn.IeA == 1)
+      ac.d("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder errType: %d, errCode: %d, errMsg: %s scene %s  errmsgtype %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn, Integer.valueOf(paramn.JGc) });
+      if (paramn.JGc == 1)
       {
-        ad.i("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder step A");
-        a(paramInt1, paramInt2, paramString, paramn.fkr(), paramn);
+        ac.i("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder step A");
+        a(paramInt1, paramInt2, paramString, paramn.fAH(), paramn);
         AppMethodBeat.o(72833);
         return;
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        ad.i("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder step B");
-        if (paramn.IeA == 2)
+        ac.i("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder step B");
+        if (paramn.JGc == 2)
         {
-          a(this.Iej.IeG, this.Iej.IeH, this.Iej.IeI, this.Iej.IeJ, paramn);
+          a(this.JFL.JGi, this.JFL.JGj, this.JFL.JGk, this.JFL.JGl, paramn);
           AppMethodBeat.o(72833);
           return;
         }
-        a(paramInt1, paramInt2, paramString, paramn.fkr(), paramn);
+        a(paramInt1, paramInt2, paramString, paramn.fAH(), paramn);
         AppMethodBeat.o(72833);
         return;
       }
-      if ((!paramn.checkRecSrvResp()) && (this.Iel < s.ecc().mRetryCount))
+      if ((!paramn.checkRecSrvResp()) && (this.JFN < s.ery().mRetryCount))
       {
-        ad.i("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder step C");
-        ad.i("MicroMsg.DelayQueryOrderHelper", "PaySuccess error %s", new Object[] { s.ecc().Aiu });
-        com.tencent.mm.plugin.report.service.h.vKh.m(965L, 0L, 1L);
-        b(this.Iej);
+        ac.i("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder step C");
+        ac.i("MicroMsg.DelayQueryOrderHelper", "PaySuccess error %s", new Object[] { s.ery().BAP });
+        com.tencent.mm.plugin.report.service.h.wUl.n(965L, 0L, 1L);
+        b(this.JFL);
         AppMethodBeat.o(72833);
         return;
       }
-      com.tencent.mm.wallet_core.tenpay.model.n localn = this.Iej;
-      int i = s.ecc().mRetryCount;
-      ad.i("MicroMsg.DelayQueryOrderHelper", " isServerDelayQuery %s mDelayQueryTime %s ", new Object[] { Boolean.valueOf(localn.fkt()), Integer.valueOf(this.Iel) });
-      if (this.Iel < i) {}
+      com.tencent.mm.wallet_core.tenpay.model.n localn = this.JFL;
+      int i = s.ery().mRetryCount;
+      ac.i("MicroMsg.DelayQueryOrderHelper", " isServerDelayQuery %s mDelayQueryTime %s ", new Object[] { Boolean.valueOf(localn.fAJ()), Integer.valueOf(this.JFN) });
+      if (this.JFN < i) {}
       for (i = 1; i != 0; i = 0)
       {
-        ad.i("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder step D doLoopDelayScene");
-        b(this.Iej);
+        ac.i("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder step D doLoopDelayScene");
+        b(this.JFL);
         AppMethodBeat.o(72833);
         return;
       }
-      ad.i("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder step D fail, retmsg_type: %s", new Object[] { Integer.valueOf(paramn.IeA) });
-      if (paramn.IeA == 1)
+      ac.i("MicroMsg.DelayQueryOrderHelper", "handlerLoopQueryOrder step D fail, retmsg_type: %s", new Object[] { Integer.valueOf(paramn.JGc) });
+      if (paramn.JGc == 1)
       {
-        a(paramInt1, paramInt2, paramString, paramn.fkr(), paramn);
+        a(paramInt1, paramInt2, paramString, paramn.fAH(), paramn);
         AppMethodBeat.o(72833);
         return;
       }
-      if (paramn.IeA == 2)
+      if (paramn.JGc == 2)
       {
-        a(this.Iej.IeG, this.Iej.IeH, this.Iej.IeI, this.Iej.IeJ, paramn);
+        a(this.JFL.JGi, this.JFL.JGj, this.JFL.JGk, this.JFL.JGl, paramn);
         AppMethodBeat.o(72833);
         return;
       }
-      paramString = s.ecc().Aiu;
-      if (!bt.isNullOrNil(this.Iej.IeI)) {
-        paramString = this.Iej.IeI;
+      paramString = s.ery().BAP;
+      if (!bs.isNullOrNil(this.JFL.JGk)) {
+        paramString = this.JFL.JGk;
       }
-      ad.i("MicroMsg.DelayQueryOrderHelper", "PaySuccess error %s", new Object[] { paramString });
-      a(this.Iej.IeG, this.Iej.IeH, paramString, this.Iej.IeJ, paramn);
+      ac.i("MicroMsg.DelayQueryOrderHelper", "PaySuccess error %s", new Object[] { paramString });
+      a(this.JFL.JGi, this.JFL.JGj, paramString, this.JFL.JGl, paramn);
       AppMethodBeat.o(72833);
       return;
     }
-    if (((paramn instanceof com.tencent.mm.wallet_core.tenpay.model.n)) && (this.Iej.equals(paramn)))
+    if (((paramn instanceof com.tencent.mm.wallet_core.tenpay.model.n)) && (this.JFL.equals(paramn)))
     {
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afA().gcy.b(385, this);
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agQ().ghe.b(385, this);
       if (((com.tencent.mm.wallet_core.tenpay.model.n)paramn).ishasCGiRetried())
       {
-        if (this.Iej.checkPaySuccess())
+        if (this.JFL.checkPaySuccess())
         {
-          ad.i("MicroMsg.DelayQueryOrderHelper", "PaySuccess ok");
-          a(paramInt1, paramInt2, paramString, ((com.tencent.mm.wallet_core.tenpay.model.n)paramn).IeJ, this.Iek);
+          ac.i("MicroMsg.DelayQueryOrderHelper", "PaySuccess ok");
+          a(paramInt1, paramInt2, paramString, ((com.tencent.mm.wallet_core.tenpay.model.n)paramn).JGl, this.JFM);
           AppMethodBeat.o(72833);
           return;
         }
-        if (this.Iej.fkt())
+        if (this.JFL.fAJ())
         {
-          ad.i("MicroMsg.DelayQueryOrderHelper", "try isServerDelayQuery true");
-          b(this.Iej);
+          ac.i("MicroMsg.DelayQueryOrderHelper", "try isServerDelayQuery true");
+          b(this.JFL);
           AppMethodBeat.o(72833);
           return;
         }
-        paramString = s.ecc().Aiu;
-        ad.i("MicroMsg.DelayQueryOrderHelper", "PaySuccess error %s", new Object[] { paramString });
-        a(paramInt1, paramInt2, paramString, ((com.tencent.mm.wallet_core.tenpay.model.n)paramn).IeJ, this.Iek);
+        paramString = s.ery().BAP;
+        ac.i("MicroMsg.DelayQueryOrderHelper", "PaySuccess error %s", new Object[] { paramString });
+        a(paramInt1, paramInt2, paramString, ((com.tencent.mm.wallet_core.tenpay.model.n)paramn).JGl, this.JFM);
       }
     }
     AppMethodBeat.o(72833);

@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.wallet_core.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public final class an
 {
-  public static boolean bcB()
+  public static boolean bjw()
   {
     AppMethodBeat.i(70534);
-    g.afC();
-    if (((Boolean)g.afB().afk().get(ae.a.FsX, Boolean.FALSE)).booleanValue())
+    g.agS();
+    if (((Boolean)g.agR().agA().get(ah.a.GQQ, Boolean.FALSE)).booleanValue())
     {
       AppMethodBeat.o(70534);
       return false;

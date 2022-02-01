@@ -15,9 +15,9 @@ public final class DrmInitData
   implements Parcelable, Comparator<SchemeData>
 {
   public static final Parcelable.Creator<DrmInitData> CREATOR;
-  private int aFj;
-  public final SchemeData[] aWx;
-  public final int aWy;
+  private int aFZ;
+  public final SchemeData[] aXj;
+  public final int aXk;
   
   static
   {
@@ -29,8 +29,8 @@ public final class DrmInitData
   DrmInitData(Parcel paramParcel)
   {
     AppMethodBeat.i(91876);
-    this.aWx = ((SchemeData[])paramParcel.createTypedArray(SchemeData.CREATOR));
-    this.aWy = this.aWx.length;
+    this.aXj = ((SchemeData[])paramParcel.createTypedArray(SchemeData.CREATOR));
+    this.aXk = this.aXj.length;
     AppMethodBeat.o(91876);
   }
   
@@ -61,8 +61,8 @@ public final class DrmInitData
         }
         i += 1;
       }
-      this.aWx = paramVarArgs;
-      this.aWy = paramVarArgs.length;
+      this.aXj = paramVarArgs;
+      this.aXk = paramVarArgs.length;
       AppMethodBeat.o(91875);
       return;
     }
@@ -73,10 +73,10 @@ public final class DrmInitData
     this(true, paramVarArgs);
   }
   
-  public final DrmInitData al(String paramString)
+  public final DrmInitData an(String paramString)
   {
     AppMethodBeat.i(91877);
-    Object localObject = this.aWx;
+    Object localObject = this.aXj;
     int j = localObject.length;
     int i = 0;
     if (i < j) {
@@ -86,12 +86,12 @@ public final class DrmInitData
     {
       if (i != 0)
       {
-        SchemeData[] arrayOfSchemeData = new SchemeData[this.aWx.length];
+        SchemeData[] arrayOfSchemeData = new SchemeData[this.aXj.length];
         i = 0;
         label54:
         if (i < arrayOfSchemeData.length)
         {
-          localObject = this.aWx[i];
+          localObject = this.aXj[i];
           if (x.g(((SchemeData)localObject).type, paramString)) {}
           for (;;)
           {
@@ -100,7 +100,7 @@ public final class DrmInitData
             break label54;
             i += 1;
             break;
-            localObject = new SchemeData(((SchemeData)localObject).uuid, paramString, ((SchemeData)localObject).mimeType, ((SchemeData)localObject).data, ((SchemeData)localObject).aWz);
+            localObject = new SchemeData(((SchemeData)localObject).uuid, paramString, ((SchemeData)localObject).mimeType, ((SchemeData)localObject).data, ((SchemeData)localObject).aXl);
           }
         }
         paramString = new DrmInitData(arrayOfSchemeData);
@@ -130,7 +130,7 @@ public final class DrmInitData
       AppMethodBeat.o(91879);
       return false;
     }
-    boolean bool = Arrays.equals(this.aWx, ((DrmInitData)paramObject).aWx);
+    boolean bool = Arrays.equals(this.aXj, ((DrmInitData)paramObject).aXj);
     AppMethodBeat.o(91879);
     return bool;
   }
@@ -138,10 +138,10 @@ public final class DrmInitData
   public final int hashCode()
   {
     AppMethodBeat.i(91878);
-    if (this.aFj == 0) {
-      this.aFj = Arrays.hashCode(this.aWx);
+    if (this.aFZ == 0) {
+      this.aFZ = Arrays.hashCode(this.aXj);
     }
-    int i = this.aFj;
+    int i = this.aFZ;
     AppMethodBeat.o(91878);
     return i;
   }
@@ -149,7 +149,7 @@ public final class DrmInitData
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(91880);
-    paramParcel.writeTypedArray(this.aWx, 0);
+    paramParcel.writeTypedArray(this.aXj, 0);
     AppMethodBeat.o(91880);
   }
   
@@ -157,8 +157,8 @@ public final class DrmInitData
     implements Parcelable
   {
     public static final Parcelable.Creator<SchemeData> CREATOR;
-    private int aFj;
-    public final boolean aWz;
+    private int aFZ;
+    public final boolean aXl;
     public final byte[] data;
     public final String mimeType;
     public final String type;
@@ -181,7 +181,7 @@ public final class DrmInitData
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.aWz = bool;
+        this.aXl = bool;
         AppMethodBeat.o(91869);
         return;
       }
@@ -194,7 +194,7 @@ public final class DrmInitData
       this.type = paramString1;
       this.mimeType = ((String)a.checkNotNull(paramString2));
       this.data = ((byte[])a.checkNotNull(paramArrayOfByte));
-      this.aWz = paramBoolean;
+      this.aXl = paramBoolean;
       AppMethodBeat.o(91868);
     }
     
@@ -235,7 +235,7 @@ public final class DrmInitData
     {
       AppMethodBeat.i(91871);
       int j;
-      if (this.aFj == 0)
+      if (this.aFZ == 0)
       {
         j = this.uuid.hashCode();
         if (this.type != null) {
@@ -245,8 +245,8 @@ public final class DrmInitData
       label73:
       for (int i = 0;; i = this.type.hashCode())
       {
-        this.aFj = (((i + j * 31) * 31 + this.mimeType.hashCode()) * 31 + Arrays.hashCode(this.data));
-        i = this.aFj;
+        this.aFZ = (((i + j * 31) * 31 + this.mimeType.hashCode()) * 31 + Arrays.hashCode(this.data));
+        i = this.aFZ;
         AppMethodBeat.o(91871);
         return i;
       }
@@ -260,7 +260,7 @@ public final class DrmInitData
       paramParcel.writeString(this.type);
       paramParcel.writeString(this.mimeType);
       paramParcel.writeByteArray(this.data);
-      if (this.aWz) {}
+      if (this.aXl) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);

@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.crashfix.d.a.d;
 import com.tencent.mm.plugin.crashfix.d.b;
 import com.tencent.mm.plugin.crashfix.d.c;
 import com.tencent.mm.plugin.crashfix.d.c.1;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -31,28 +31,28 @@ public class PluginSystemCrashFix
   public void execute(g paramg)
   {
     AppMethodBeat.i(145616);
-    ad.i("MicroMsg.SystemCrashFixPatch", "api level : " + Build.VERSION.SDK_INT);
+    ac.i("MicroMsg.SystemCrashFixPatch", "api level : " + Build.VERSION.SDK_INT);
     paramg = new Handler(Looper.myLooper());
-    if (c.nZG == null)
+    if (c.oDb == null)
     {
       localObject = new ArrayList();
-      c.nZG = (List)localObject;
+      c.oDb = (List)localObject;
       ((List)localObject).add(new d());
-      c.nZG.add(new com.tencent.mm.plugin.crashfix.d.b.a());
+      c.oDb.add(new com.tencent.mm.plugin.crashfix.d.b.a());
     }
-    Object localObject = c.nZG.iterator();
+    Object localObject = c.oDb.iterator();
     while (((Iterator)localObject).hasNext())
     {
       b localb = (b)((Iterator)localObject).next();
-      if (localb.zM(Build.VERSION.SDK_INT)) {
+      if (localb.AE(Build.VERSION.SDK_INT)) {
         if ((localb instanceof com.tencent.mm.plugin.crashfix.d.a))
         {
           paramg.postDelayed(new c.1((com.tencent.mm.plugin.crashfix.d.a)localb, localb), 0L);
         }
         else
         {
-          boolean bool = localb.bPL();
-          ad.i("MicroMsg.SystemCrashFixPatch", localb.getClass().getCanonicalName() + " : " + bool);
+          boolean bool = localb.bXb();
+          ac.i("MicroMsg.SystemCrashFixPatch", localb.getClass().getCanonicalName() + " : " + bool);
         }
       }
     }
@@ -68,7 +68,7 @@ public class PluginSystemCrashFix
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.PluginSystemCrashFix
  * JD-Core Version:    0.7.0.1
  */

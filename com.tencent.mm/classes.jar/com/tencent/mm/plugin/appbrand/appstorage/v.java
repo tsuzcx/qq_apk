@@ -4,21 +4,21 @@ public final class v
   extends FileStructStat
   implements p.a
 {
-  public final String iSZ;
+  public final String jtk;
   
   public v(String paramString)
   {
-    this.iSZ = paramString;
+    this.jtk = paramString;
   }
   
-  public final long aRb()
+  public final long aXW()
   {
     return this.st_size;
   }
   
   public final String getFileName()
   {
-    return this.iSZ;
+    return this.jtk;
   }
   
   public final long lastModified()
@@ -28,7 +28,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.v
  * JD-Core Version:    0.7.0.1
  */

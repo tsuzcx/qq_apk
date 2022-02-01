@@ -34,28 +34,28 @@ public class ImageDecoder
   
   static
   {
-    AppMethodBeat.i(201805);
+    AppMethodBeat.i(197866);
     IMAGE_DECODE_SIZE = new CGSize(720.0F, 1280.0F);
-    AppMethodBeat.o(201805);
+    AppMethodBeat.o(197866);
   }
   
   public ImageDecoder()
   {
-    AppMethodBeat.i(201792);
+    AppMethodBeat.i(197853);
     this.preferRotation = 0;
     this.currentDecoderTime = CMTime.CMTimeInvalid;
     this.frameDuration = new CMTime(1L, 30);
     this.threadId = -1L;
-    AppMethodBeat.o(201792);
+    AppMethodBeat.o(197853);
   }
   
   private void checkThread()
   {
-    AppMethodBeat.i(201798);
+    AppMethodBeat.i(197859);
     if (this.threadId != Thread.currentThread().getId()) {
       Logger.e("ImageDecoder", "Thread wrong!! ", new RuntimeException());
     }
-    AppMethodBeat.o(201798);
+    AppMethodBeat.o(197859);
   }
   
   private TextureInfo createTexture()
@@ -64,12 +64,12 @@ public class ImageDecoder
     {
       try
       {
-        AppMethodBeat.i(201802);
+        AppMethodBeat.i(197863);
         Object localObject1;
         if ((this.textureInfo != null) && (!this.textureInfo.isReleased()))
         {
           localObject1 = this.textureInfo;
-          AppMethodBeat.o(201802);
+          AppMethodBeat.o(197863);
           return localObject1;
         }
         if (this.bitmap == null)
@@ -86,20 +86,20 @@ public class ImageDecoder
           GLUtils.texImage2D(3553, 0, this.bitmap, 0);
           GLES20.glBindTexture(3553, 0);
           localObject1 = this.textureInfo;
-          AppMethodBeat.o(201802);
+          AppMethodBeat.o(197863);
           continue;
         }
         Object localObject3 = null;
       }
       finally {}
-      AppMethodBeat.o(201802);
+      AppMethodBeat.o(197863);
     }
   }
   
   private Bitmap decodeBitmap(String paramString, CGSize paramCGSize)
   {
     int i = 1;
-    AppMethodBeat.i(201800);
+    AppMethodBeat.i(197861);
     BitmapFactory.Options localOptions1 = new BitmapFactory.Options();
     localOptions1.inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, localOptions1);
@@ -109,13 +109,13 @@ public class ImageDecoder
     }
     localOptions2.inSampleSize = i;
     paramString = BitmapFactory.decodeFile(paramString, localOptions2);
-    AppMethodBeat.o(201800);
+    AppMethodBeat.o(197861);
     return paramString;
   }
   
   public static CGSize getDefaultOutputImageSize(String paramString)
   {
-    AppMethodBeat.i(201801);
+    AppMethodBeat.i(197862);
     BitmapFactory.Options localOptions1 = new BitmapFactory.Options();
     localOptions1.inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, localOptions1);
@@ -128,27 +128,27 @@ public class ImageDecoder
     if (readImagePreferRotation(paramString) % 2 == 1)
     {
       paramString = new CGSize(j, i);
-      AppMethodBeat.o(201801);
+      AppMethodBeat.o(197862);
       return paramString;
     }
     paramString = new CGSize(i, j);
-    AppMethodBeat.o(201801);
+    AppMethodBeat.o(197862);
     return paramString;
   }
   
   private Matrix getImageTextureMatrix()
   {
-    AppMethodBeat.i(201803);
+    AppMethodBeat.i(197864);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F });
-    AppMethodBeat.o(201803);
+    AppMethodBeat.o(197864);
     return localMatrix;
   }
   
   private static int readImagePreferRotation(String paramString)
   {
     int i = 1;
-    AppMethodBeat.i(201804);
+    AppMethodBeat.i(197865);
     try
     {
       int j = new ExifInterface(paramString).getAttributeInt("Orientation", 1);
@@ -162,7 +162,7 @@ public class ImageDecoder
       }
       for (;;)
       {
-        AppMethodBeat.o(201804);
+        AppMethodBeat.o(197865);
         return i;
         i = 3;
         continue;
@@ -173,7 +173,7 @@ public class ImageDecoder
     catch (IOException paramString)
     {
       Logger.e("ImageDecoder", "readImagePreferRotation", paramString);
-      AppMethodBeat.o(201804);
+      AppMethodBeat.o(197865);
     }
   }
   
@@ -205,9 +205,9 @@ public class ImageDecoder
   
   public CMTime nextFrameTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(201796);
+    AppMethodBeat.i(197857);
     paramCMTime = paramCMTime.add(this.frameDuration);
-    AppMethodBeat.o(201796);
+    AppMethodBeat.o(197857);
     return paramCMTime;
   }
   
@@ -223,9 +223,9 @@ public class ImageDecoder
   
   public CMTime readSample()
   {
-    AppMethodBeat.i(201795);
+    AppMethodBeat.i(197856);
     CMTime localCMTime = readSample(this.currentDecoderTime.add(this.frameDuration));
-    AppMethodBeat.o(201795);
+    AppMethodBeat.o(197856);
     return localCMTime;
   }
   
@@ -278,7 +278,7 @@ public class ImageDecoder
   {
     try
     {
-      AppMethodBeat.i(201799);
+      AppMethodBeat.i(197860);
       checkThread();
       if (this.textureInfo != null)
       {
@@ -290,7 +290,7 @@ public class ImageDecoder
         this.bitmap.recycle();
         this.bitmap = null;
       }
-      AppMethodBeat.o(201799);
+      AppMethodBeat.o(197860);
       return;
     }
     finally {}
@@ -302,29 +302,29 @@ public class ImageDecoder
   
   public void start(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(201793);
+    AppMethodBeat.i(197854);
     start(paramCMTimeRange, CMTime.CMTimeZero);
-    AppMethodBeat.o(201793);
+    AppMethodBeat.o(197854);
   }
   
   public void start(CMTimeRange paramCMTimeRange, CMTime paramCMTime)
   {
-    AppMethodBeat.i(201794);
+    AppMethodBeat.i(197855);
     if (paramCMTimeRange == null)
     {
       this.timeRange = new CMTimeRange(CMTime.CMTimeZero, this.frameDuration);
-      AppMethodBeat.o(201794);
+      AppMethodBeat.o(197855);
       return;
     }
     this.timeRange = new CMTimeRange(paramCMTimeRange.getStart(), paramCMTimeRange.getDuration());
-    AppMethodBeat.o(201794);
+    AppMethodBeat.o(197855);
   }
   
   public void switchFrame() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.ImageDecoder
  * JD-Core Version:    0.7.0.1
  */

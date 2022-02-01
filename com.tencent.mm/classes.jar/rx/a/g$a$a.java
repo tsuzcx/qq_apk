@@ -6,7 +6,7 @@ import java.util.Set;
 
 final class g$a$a
 {
-  static final Set<Class<?>> KoI;
+  static final Set<Class<?>> Mcr;
   
   static
   {
@@ -20,7 +20,7 @@ final class g$a$a
     localHashSet.add(Long.class);
     localHashSet.add(Float.class);
     localHashSet.add(Double.class);
-    KoI = localHashSet;
+    Mcr = localHashSet;
     AppMethodBeat.o(90052);
   }
 }

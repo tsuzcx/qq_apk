@@ -6,38 +6,38 @@ import android.content.Intent;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class FreeWifiNetworkReceiver
   extends BroadcastReceiver
 {
-  public b rhB;
-  public a rhC;
+  public b squ;
+  public a sqv;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(24806);
     if (paramIntent == null)
     {
-      ad.e("MicroMsg.FreeWifi.WifiStateChangedReceiver", "intent is null");
+      ac.e("MicroMsg.FreeWifi.WifiStateChangedReceiver", "intent is null");
       AppMethodBeat.o(24806);
       return;
     }
     paramContext = paramIntent.getAction();
-    ad.i("MicroMsg.FreeWifi.WifiStateChangedReceiver", "FreeWifiNetworkReceiver action : %s", new Object[] { paramContext });
-    if (bt.isNullOrNil(paramContext))
+    ac.i("MicroMsg.FreeWifi.WifiStateChangedReceiver", "FreeWifiNetworkReceiver action : %s", new Object[] { paramContext });
+    if (bs.isNullOrNil(paramContext))
     {
-      ad.e("MicroMsg.FreeWifi.WifiStateChangedReceiver", "action is null");
+      ac.e("MicroMsg.FreeWifi.WifiStateChangedReceiver", "action is null");
       AppMethodBeat.o(24806);
       return;
     }
     if (paramContext.equals("android.net.wifi.WIFI_STATE_CHANGED"))
     {
       int i = paramIntent.getIntExtra("wifi_state", 0);
-      ad.i("MicroMsg.FreeWifi.WifiStateChangedReceiver", "now wifi state : %d", new Object[] { Integer.valueOf(i) });
-      if (this.rhB != null) {
-        this.rhB.Dy(i);
+      ac.i("MicroMsg.FreeWifi.WifiStateChangedReceiver", "now wifi state : %d", new Object[] { Integer.valueOf(i) });
+      if (this.squ != null) {
+        this.squ.Fu(i);
       }
       AppMethodBeat.o(24806);
       return;
@@ -48,8 +48,8 @@ public class FreeWifiNetworkReceiver
       if (paramContext != null)
       {
         paramContext = (NetworkInfo)paramContext;
-        if ((paramContext != null) && (this.rhC != null)) {
-          this.rhC.a(paramContext.getState());
+        if ((paramContext != null) && (this.sqv != null)) {
+          this.sqv.a(paramContext.getState());
         }
       }
     }
@@ -63,12 +63,12 @@ public class FreeWifiNetworkReceiver
   
   public static abstract interface b
   {
-    public abstract void Dy(int paramInt);
+    public abstract void Fu(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.model.FreeWifiNetworkReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -17,20 +17,21 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.loader.d;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.u;
+import com.tencent.mm.platformtools.p.a;
 import com.tencent.mm.plugin.finder.api.b.a;
-import com.tencent.mm.plugin.finder.cgi.z;
+import com.tencent.mm.plugin.finder.cgi.ar;
 import com.tencent.mm.plugin.finder.loader.h;
 import com.tencent.mm.plugin.finder.loader.h.a;
-import com.tencent.mm.plugin.finder.utils.g.a;
+import com.tencent.mm.plugin.finder.utils.k.a;
+import com.tencent.mm.plugin.finder.utils.p;
 import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
-import com.tencent.mm.protocal.protobuf.aks;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ane;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.am;
 import com.tencent.mm.ui.ao;
@@ -42,47 +43,47 @@ import d.v;
 import d.y;
 import java.util.HashMap;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/ui/FinderSelfQRCodeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MENU_ID_MORE_BTN", "", "MENU_ID_SAVE_TO_GALLERY", "MENU_ID_SHARE_TO_FRIEND", "TAG", "", "authIcon", "Landroid/widget/ImageView;", "authJob", "Landroid/widget/TextView;", "avatarIv", "loading", "Landroid/widget/ProgressBar;", "nickTv", "qrcode", "qrcodeContainer", "Landroid/view/View;", "refreshArea", "refreshIcon", "doExportImg", "", "filePath", "doGetQRCodeScene", "username", "genQRCodeBitmap", "Landroid/graphics/Bitmap;", "url", "getCommentScene", "getLayoutId", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/FinderSelfQRCodeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MENU_ID_MORE_BTN", "", "MENU_ID_SAVE_TO_GALLERY", "MENU_ID_SHARE_TO_FRIEND", "TAG", "", "authIcon", "Landroid/widget/ImageView;", "authJob", "Landroid/widget/TextView;", "avatarIv", "loading", "Landroid/widget/ProgressBar;", "nickTv", "qrcode", "qrcodeContainer", "Landroid/view/View;", "refreshArea", "refreshIcon", "doExportImg", "", "filePath", "doGetQRCodeScene", "username", "genQRCodeBitmap", "Landroid/graphics/Bitmap;", "url", "getCommentScene", "getLayoutId", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
 public final class FinderSelfQRCodeUI
   extends MMFinderUI
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
   private final String TAG = "Finder.FinderSelfQRCodeUI";
   private HashMap _$_findViewCache;
-  private ImageView fuj;
-  private TextView inR;
-  private ProgressBar kuP;
-  private View nvH;
-  private ImageView qAi;
-  private TextView qKL;
-  private final int qPA = 100001;
-  private final int qPB = 100002;
-  private final int qPC = 100003;
-  private ImageView qPx;
-  private View qPy;
-  private ImageView qPz;
+  private ImageView fxQ;
+  private TextView iNX;
+  private ProgressBar kWd;
+  private View nYH;
+  private TextView rFt;
+  private ImageView rLb;
+  private View rLc;
+  private ImageView rLd;
+  private final int rLe = 100001;
+  private final int rLf = 100002;
+  private final int rLg = 100003;
+  private ImageView rqZ;
   
-  private final void ZD(String paramString)
+  private final void aep(String paramString)
   {
     AppMethodBeat.i(167577);
-    Object localObject = this.kuP;
+    Object localObject = this.kWd;
     if (localObject == null) {
-      d.g.b.k.aPZ("loading");
+      d.g.b.k.aVY("loading");
     }
     ((ProgressBar)localObject).setVisibility(0);
-    localObject = this.qPy;
+    localObject = this.rLc;
     if (localObject == null) {
-      d.g.b.k.aPZ("refreshArea");
+      d.g.b.k.aVY("refreshArea");
     }
     ((View)localObject).setVisibility(8);
-    paramString = new z(paramString);
-    com.tencent.mm.kernel.g.aeS().b((n)paramString);
+    paramString = new ar(paramString);
+    com.tencent.mm.kernel.g.agi().b((n)paramString);
     AppMethodBeat.o(167577);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(199369);
+    AppMethodBeat.i(203342);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -93,11 +94,11 @@ public final class FinderSelfQRCodeUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(199369);
+    AppMethodBeat.o(203342);
     return localView1;
   }
   
-  public final int getCommentScene()
+  public final int cuI()
   {
     return 10;
   }
@@ -112,59 +113,59 @@ public final class FinderSelfQRCodeUI
     AppMethodBeat.i(167576);
     Object localObject1 = findViewById(2131299971);
     d.g.b.k.g(localObject1, "findViewById(R.id.finder_avatar)");
-    this.fuj = ((ImageView)localObject1);
+    this.fxQ = ((ImageView)localObject1);
     localObject1 = findViewById(2131300017);
     d.g.b.k.g(localObject1, "findViewById(R.id.finder_nickname)");
-    this.inR = ((TextView)localObject1);
+    this.iNX = ((TextView)localObject1);
     localObject1 = findViewById(2131296977);
     d.g.b.k.g(localObject1, "findViewById(R.id.auth_icon)");
-    this.qAi = ((ImageView)localObject1);
+    this.rqZ = ((ImageView)localObject1);
     localObject1 = findViewById(2131296980);
     d.g.b.k.g(localObject1, "findViewById(R.id.auth_job)");
-    this.qKL = ((TextView)localObject1);
+    this.rFt = ((TextView)localObject1);
     localObject1 = findViewById(2131300062);
     d.g.b.k.g(localObject1, "findViewById(R.id.finder_qrcode)");
-    this.qPx = ((ImageView)localObject1);
+    this.rLb = ((ImageView)localObject1);
     localObject1 = findViewById(2131303615);
     d.g.b.k.g(localObject1, "findViewById(R.id.qrcode_container)");
-    this.nvH = ((View)localObject1);
+    this.nYH = ((View)localObject1);
     localObject1 = findViewById(2131301509);
     d.g.b.k.g(localObject1, "findViewById(R.id.loading_progress_bar)");
-    this.kuP = ((ProgressBar)localObject1);
+    this.kWd = ((ProgressBar)localObject1);
     localObject1 = findViewById(2131300063);
     d.g.b.k.g(localObject1, "findViewById(R.id.finder_refresh_qrcode)");
-    this.qPy = ((View)localObject1);
+    this.rLc = ((View)localObject1);
     localObject1 = findViewById(2131300064);
     d.g.b.k.g(localObject1, "findViewById(R.id.finder_refresh_qrcode_icon)");
-    this.qPz = ((ImageView)localObject1);
-    localObject1 = com.tencent.mm.plugin.finder.api.b.qnX;
-    localObject1 = u.aqO();
+    this.rLd = ((ImageView)localObject1);
+    localObject1 = com.tencent.mm.plugin.finder.api.b.qWt;
+    localObject1 = u.axE();
     d.g.b.k.g(localObject1, "ConfigStorageLogic.getMyFinderUsername()");
-    final com.tencent.mm.plugin.finder.api.f localf = b.a.YL((String)localObject1);
+    final com.tencent.mm.plugin.finder.api.f localf = b.a.adh((String)localObject1);
     if (localf != null)
     {
-      localObject1 = h.qCF;
-      localObject1 = h.cmV();
-      Object localObject2 = new com.tencent.mm.plugin.finder.loader.a(localf.cks());
-      Object localObject3 = this.fuj;
+      localObject1 = h.rtK;
+      localObject1 = h.cwo();
+      Object localObject2 = new com.tencent.mm.plugin.finder.loader.a(localf.crZ());
+      Object localObject3 = this.fxQ;
       if (localObject3 == null) {
-        d.g.b.k.aPZ("avatarIv");
+        d.g.b.k.aVY("avatarIv");
       }
-      h localh = h.qCF;
-      ((d)localObject1).a(localObject2, (ImageView)localObject3, h.a(h.a.qCI));
-      localObject1 = this.inR;
+      h localh = h.rtK;
+      ((com.tencent.mm.loader.d)localObject1).a(localObject2, (ImageView)localObject3, h.a(h.a.rtN));
+      localObject1 = this.iNX;
       if (localObject1 == null) {
-        d.g.b.k.aPZ("nickTv");
+        d.g.b.k.aVY("nickTv");
       }
-      ((TextView)localObject1).setText((CharSequence)localf.Su());
+      ((TextView)localObject1).setText((CharSequence)localf.Tn());
       localObject1 = localf.field_authInfo;
       int i;
       if (localObject1 != null)
       {
         i = ((FinderAuthInfo)localObject1).authIconType;
-        localObject1 = this.qKL;
+        localObject1 = this.rFt;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("authJob");
+          d.g.b.k.aVY("authJob");
         }
         ((TextView)localObject1).setVisibility(8);
         if (i <= 0) {
@@ -176,43 +177,43 @@ public final class FinderSelfQRCodeUI
       }
       for (;;)
       {
-        com.tencent.mm.kernel.g.aeS().a(258, (com.tencent.mm.al.g)this);
-        ZD(localf.getUsername());
-        localObject1 = this.qPz;
+        com.tencent.mm.kernel.g.agi().a(258, (com.tencent.mm.ak.g)this);
+        aep(localf.getUsername());
+        localObject1 = this.rLd;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("refreshIcon");
+          d.g.b.k.aVY("refreshIcon");
         }
         ((ImageView)localObject1).setOnClickListener((View.OnClickListener)new b(this, localf));
         localObject1 = new com.tencent.mm.ui.widget.a.e((Context)this, 1, false);
         ((com.tencent.mm.ui.widget.a.e)localObject1).a((n.c)new c(this, localf));
         ((com.tencent.mm.ui.widget.a.e)localObject1).a((n.d)new d(this, localf));
-        ((com.tencent.mm.ui.widget.a.e)localObject1).b((e.b)e.qPF);
-        addIconOptionMenu(this.qPA, 2131230845, (MenuItem.OnMenuItemClickListener)new f((com.tencent.mm.ui.widget.a.e)localObject1));
+        ((com.tencent.mm.ui.widget.a.e)localObject1).b((e.b)e.rLj);
+        addIconOptionMenu(this.rLe, 2131230845, (MenuItem.OnMenuItemClickListener)new f((com.tencent.mm.ui.widget.a.e)localObject1));
         AppMethodBeat.o(167576);
         return;
         i = 0;
         break;
-        localObject1 = this.qAi;
+        localObject1 = this.rqZ;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("authIcon");
+          d.g.b.k.aVY("authIcon");
         }
         ((ImageView)localObject1).setVisibility(0);
-        localObject1 = this.qKL;
+        localObject1 = this.rFt;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("authJob");
+          d.g.b.k.aVY("authJob");
         }
         ((TextView)localObject1).setVisibility(0);
-        localObject1 = this.qAi;
+        localObject1 = this.rqZ;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("authIcon");
+          d.g.b.k.aVY("authIcon");
         }
         localObject2 = (Context)getContext();
         localObject3 = getContext();
         d.g.b.k.g(localObject3, "context");
-        ((ImageView)localObject1).setImageDrawable(am.i((Context)localObject2, 2131690481, ((AppCompatActivity)localObject3).getResources().getColor(2131099777)));
-        localObject2 = this.qKL;
+        ((ImageView)localObject1).setImageDrawable(am.k((Context)localObject2, 2131690481, ((AppCompatActivity)localObject3).getResources().getColor(2131099777)));
+        localObject2 = this.rFt;
         if (localObject2 == null) {
-          d.g.b.k.aPZ("authJob");
+          d.g.b.k.aVY("authJob");
         }
         localObject1 = localf.field_authInfo;
         if (localObject1 != null)
@@ -225,40 +226,40 @@ public final class FinderSelfQRCodeUI
           ((TextView)localObject2).setText((CharSequence)localObject1);
           break;
         }
-        localObject1 = this.qAi;
+        localObject1 = this.rqZ;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("authIcon");
+          d.g.b.k.aVY("authIcon");
         }
         ((ImageView)localObject1).setVisibility(0);
-        localObject1 = this.qAi;
+        localObject1 = this.rqZ;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("authIcon");
+          d.g.b.k.aVY("authIcon");
         }
         localObject2 = (Context)getContext();
         localObject3 = getContext();
         d.g.b.k.g(localObject3, "context");
-        ((ImageView)localObject1).setImageDrawable(am.i((Context)localObject2, 2131690481, ((AppCompatActivity)localObject3).getResources().getColor(2131099689)));
+        ((ImageView)localObject1).setImageDrawable(am.k((Context)localObject2, 2131690481, ((AppCompatActivity)localObject3).getResources().getColor(2131099689)));
         continue;
-        localObject1 = this.qAi;
+        localObject1 = this.rqZ;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("authIcon");
+          d.g.b.k.aVY("authIcon");
         }
         ((ImageView)localObject1).setVisibility(8);
-        localObject1 = this.qKL;
+        localObject1 = this.rFt;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("authJob");
+          d.g.b.k.aVY("authJob");
         }
         ((TextView)localObject1).setVisibility(8);
         continue;
         label798:
-        localObject1 = this.qAi;
+        localObject1 = this.rqZ;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("authIcon");
+          d.g.b.k.aVY("authIcon");
         }
         ((ImageView)localObject1).setVisibility(8);
-        localObject1 = this.qKL;
+        localObject1 = this.rFt;
         if (localObject1 == null) {
-          d.g.b.k.aPZ("authJob");
+          d.g.b.k.aVY("authJob");
         }
         ((TextView)localObject1).setVisibility(8);
       }
@@ -272,7 +273,7 @@ public final class FinderSelfQRCodeUI
     super.onCreate(paramBundle);
     setMMTitle("");
     initView();
-    setBackBtn((MenuItem.OnMenuItemClickListener)new FinderSelfQRCodeUI.g(this));
+    setBackBtn((MenuItem.OnMenuItemClickListener)new g(this));
     AppMethodBeat.o(167575);
   }
   
@@ -280,17 +281,17 @@ public final class FinderSelfQRCodeUI
   {
     AppMethodBeat.i(167578);
     super.onDestroy();
-    com.tencent.mm.kernel.g.aeS().b(258, (com.tencent.mm.al.g)this);
+    com.tencent.mm.kernel.g.agi().b(258, (com.tencent.mm.ak.g)this);
     AppMethodBeat.o(167578);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(167579);
-    ad.i(this.TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
-    ProgressBar localProgressBar = this.kuP;
+    ac.i(this.TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+    ProgressBar localProgressBar = this.kWd;
     if (localProgressBar == null) {
-      d.g.b.k.aPZ("loading");
+      d.g.b.k.aVY("loading");
     }
     localProgressBar.setVisibility(8);
     if ((paramInt1 == 0) && (paramInt2 == 0))
@@ -301,40 +302,40 @@ public final class FinderSelfQRCodeUI
         AppMethodBeat.o(167579);
         throw paramString;
       }
-      paramString = ((z)paramn).qpm;
+      paramString = ((ar)paramn).qYo;
       if (paramString != null) {}
-      for (paramString = paramString.auM(); paramString == null; paramString = null)
+      for (paramString = paramString.aBD(); paramString == null; paramString = null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderQRCodeResponse");
         AppMethodBeat.o(167579);
         throw paramString;
       }
-      paramString = ((aks)paramString).Dmn;
+      paramString = ((ane)paramString).EGl;
       if (paramString != null)
       {
         paramString = paramString.getBytes();
-        paramString = com.tencent.mm.sdk.platformtools.f.cl(paramString);
-        ad.i(this.TAG, "qrcode url " + ((z)paramn).ckW());
+        paramString = com.tencent.mm.sdk.platformtools.f.ck(paramString);
+        ac.i(this.TAG, "qrcode url " + ((ar)paramn).csP());
         if (paramString != null) {
           break label461;
         }
-        if (bt.isNullOrNil(((z)paramn).ckW())) {
+        if (bs.isNullOrNil(((ar)paramn).csP())) {
           break label458;
         }
-        paramString = ((z)paramn).ckW();
+        paramString = ((ar)paramn).csP();
         if (paramString == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
-        paramn = c.vL(u.aqO());
+        paramn = c.zR(u.axE());
         d.g.b.k.g(paramn, "avatarBitmap");
         paramn = com.tencent.mm.sdk.platformtools.f.a(paramn, false, 0.5F * paramn.getWidth());
-        float f = ao.ap((Context)this, 2131165299);
+        float f = ao.av((Context)this, 2131165299);
         d.g.b.k.g(paramn, "tempBitmap");
         f = f * 1.0F / paramn.getWidth();
-        paramn = com.tencent.mm.sdk.platformtools.f.c(com.tencent.mm.sdk.platformtools.f.b(paramn, 0.0F, f, f), com.tencent.mm.sdk.platformtools.f.B(getResources().getDrawable(2131232371)));
-        paramString = com.tencent.mm.bz.a.a.b((Context)this, paramn, paramString);
+        paramn = com.tencent.mm.sdk.platformtools.f.c(com.tencent.mm.sdk.platformtools.f.b(paramn, 0.0F, f, f), com.tencent.mm.sdk.platformtools.f.A(getResources().getDrawable(2131232371)));
+        paramString = com.tencent.mm.by.a.a.b((Context)this, paramn, paramString);
         label345:
-        paramn = y.JfV;
+        paramn = y.KTp;
       }
     }
     label458:
@@ -343,9 +344,9 @@ public final class FinderSelfQRCodeUI
     {
       if (paramString != null)
       {
-        paramn = this.qPx;
+        paramn = this.rLb;
         if (paramn == null) {
-          d.g.b.k.aPZ("qrcode");
+          d.g.b.k.aVY("qrcode");
         }
         paramn.setImageBitmap(paramString);
         AppMethodBeat.o(167579);
@@ -355,12 +356,12 @@ public final class FinderSelfQRCodeUI
       }
       AppMethodBeat.o(167579);
       return;
-      paramn = this.qPy;
+      paramn = this.rLc;
       if (paramn == null) {
-        d.g.b.k.aPZ("refreshArea");
+        d.g.b.k.aVY("refreshArea");
       }
       paramn.setVisibility(0);
-      if (bt.isNullOrNil(paramString)) {
+      if (bs.isNullOrNil(paramString)) {
         paramString = getString(2131760707);
       }
       for (;;)
@@ -379,7 +380,30 @@ public final class FinderSelfQRCodeUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/ui/FinderSelfQRCodeUI$initView$1$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSelfQRCodeUI$doExportImg$1", "Lcom/tencent/mm/platformtools/ExportFileUtil$ExportResultCallback;", "onExportFail", "", "srcPath", "", "destPath", "onExportSuccess", "plugin-finder_release"})
+  public static final class a
+    implements p.a
+  {
+    public final void bD(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(203340);
+      d.g.b.k.h(paramString1, "srcPath");
+      d.g.b.k.h(paramString2, "destPath");
+      Toast.makeText((Context)this.rLh, (CharSequence)this.rLh.getString(2131760319, new Object[] { paramString2 }), 1).show();
+      AppMethodBeat.o(203340);
+    }
+    
+    public final void bE(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(203341);
+      d.g.b.k.h(paramString1, "srcPath");
+      d.g.b.k.h(paramString2, "destPath");
+      Toast.makeText((Context)this.rLh, (CharSequence)this.rLh.getString(2131762779), 1).show();
+      AppMethodBeat.o(203341);
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/ui/FinderSelfQRCodeUI$initView$1$1"})
   static final class b
     implements View.OnClickListener
   {
@@ -388,12 +412,12 @@ public final class FinderSelfQRCodeUI
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(167569);
-      FinderSelfQRCodeUI.a(this.qPD, localf.getUsername());
+      FinderSelfQRCodeUI.a(this.rLh, localf.getUsername());
       AppMethodBeat.o(167569);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu", "com/tencent/mm/plugin/finder/ui/FinderSelfQRCodeUI$initView$1$2"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu", "com/tencent/mm/plugin/finder/ui/FinderSelfQRCodeUI$initView$1$2"})
   static final class c
     implements n.c
   {
@@ -403,16 +427,16 @@ public final class FinderSelfQRCodeUI
     {
       AppMethodBeat.i(167570);
       d.g.b.k.g(paraml, "it");
-      if (paraml.eSQ())
+      if (paraml.fiA())
       {
-        paraml.jj(FinderSelfQRCodeUI.a(this.qPD), 2131759322);
-        paraml.jj(FinderSelfQRCodeUI.b(this.qPD), 2131759331);
+        paraml.jw(FinderSelfQRCodeUI.a(this.rLh), 2131759322);
+        paraml.jw(FinderSelfQRCodeUI.b(this.rLh), 2131759331);
       }
       AppMethodBeat.o(167570);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected", "com/tencent/mm/plugin/finder/ui/FinderSelfQRCodeUI$initView$1$3"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected", "com/tencent/mm/plugin/finder/ui/FinderSelfQRCodeUI$initView$1$3"})
   static final class d
     implements n.d
   {
@@ -423,49 +447,49 @@ public final class FinderSelfQRCodeUI
       AppMethodBeat.i(167571);
       d.g.b.k.g(paramMenuItem, "menuItem");
       paramInt = paramMenuItem.getItemId();
-      if (paramInt == FinderSelfQRCodeUI.a(this.qPD))
+      if (paramInt == FinderSelfQRCodeUI.a(this.rLh))
       {
-        g.a.a(com.tencent.mm.plugin.finder.utils.g.qSw, (MMActivity)this.qPD, localf);
+        k.a.a(com.tencent.mm.plugin.finder.utils.k.rPa, (MMActivity)this.rLh, localf);
         AppMethodBeat.o(167571);
         return;
       }
-      if (paramInt == FinderSelfQRCodeUI.b(this.qPD))
+      if (paramInt == FinderSelfQRCodeUI.b(this.rLh))
       {
-        paramMenuItem = com.tencent.mm.sdk.platformtools.f.fy(FinderSelfQRCodeUI.c(this.qPD));
+        paramMenuItem = com.tencent.mm.sdk.platformtools.f.fL(FinderSelfQRCodeUI.c(this.rLh));
         if (paramMenuItem != null)
         {
-          Object localObject = com.tencent.mm.plugin.finder.utils.k.qTp;
-          localObject = com.tencent.mm.plugin.finder.utils.k.csa();
+          Object localObject = p.rQw;
+          localObject = p.cDs();
           com.tencent.mm.sdk.platformtools.f.a(paramMenuItem, 80, Bitmap.CompressFormat.JPEG, (String)localObject, true);
-          FinderSelfQRCodeUI.b(this.qPD, (String)localObject);
-          com.tencent.mm.plugin.report.e.vIY.idkeyStat(1278L, 7L, 1L, false);
-          paramMenuItem = com.tencent.mm.plugin.finder.report.b.qFq;
-          paramMenuItem = u.aqO();
+          FinderSelfQRCodeUI.b(this.rLh, (String)localObject);
+          com.tencent.mm.plugin.report.e.wTc.idkeyStat(1278L, 7L, 1L, false);
+          paramMenuItem = com.tencent.mm.plugin.finder.report.d.rxr;
+          paramMenuItem = u.axE();
           d.g.b.k.g(paramMenuItem, "ConfigStorageLogic.getMyFinderUsername()");
-          com.tencent.mm.plugin.finder.report.b.Zi(paramMenuItem);
+          com.tencent.mm.plugin.finder.report.d.adO(paramMenuItem);
         }
       }
       AppMethodBeat.o(167571);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "onDismiss"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onDismiss"})
   static final class e
     implements e.b
   {
-    public static final e qPF;
+    public static final e rLj;
     
     static
     {
       AppMethodBeat.i(167572);
-      qPF = new e();
+      rLj = new e();
       AppMethodBeat.o(167572);
     }
     
     public final void onDismiss() {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class f
     implements MenuItem.OnMenuItemClickListener
   {
@@ -474,15 +498,30 @@ public final class FinderSelfQRCodeUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167573);
-      this.qBK.csG();
+      this.rsL.cED();
       AppMethodBeat.o(167573);
+      return true;
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  static final class g
+    implements MenuItem.OnMenuItemClickListener
+  {
+    g(FinderSelfQRCodeUI paramFinderSelfQRCodeUI) {}
+    
+    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    {
+      AppMethodBeat.i(167574);
+      this.rLh.finish();
+      AppMethodBeat.o(167574);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderSelfQRCodeUI
  * JD-Core Version:    0.7.0.1
  */

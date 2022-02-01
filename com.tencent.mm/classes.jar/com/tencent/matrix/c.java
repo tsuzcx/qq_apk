@@ -6,7 +6,7 @@ import com.tencent.matrix.mrs.core.MrsLogic;
 import com.tencent.matrix.report.h.b;
 import com.tencent.mm.app.AppForegroundDelegate;
 import com.tencent.mm.app.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Objects;
@@ -45,40 +45,40 @@ public final class c
     }
     Objects.requireNonNull(parama);
     parama.a(paramApplication);
-    b.a(parama.GG());
-    AppForegroundDelegate.cKE.a(parama.GK());
+    b.a(parama.Gr());
+    AppForegroundDelegate.cHM.a(parama.Gv());
     MrsLogic.setStrategyCaller(new com.tencent.matrix.strategy.b());
-    Object localObject = parama.GI();
-    com.tencent.matrix.report.h localh = parama.GH();
-    localh.cxj = parama.GJ();
+    Object localObject = parama.Gt();
+    com.tencent.matrix.report.h localh = parama.Gs();
+    localh.cus = parama.Gu();
     b.a locala = new b.a(paramApplication);
     locala.pluginListener = localh;
     parama.a(paramApplication, locala, (f)localObject);
     if (locala.pluginListener == null) {
       locala.pluginListener = new a(locala.application);
     }
-    b.a(new b(locala.application, locala.pluginListener, locala.ctc, (byte)0));
-    paramApplication = b.GF().ctc.iterator();
+    b.a(new b(locala.application, locala.pluginListener, locala.cqk, (byte)0));
+    paramApplication = b.Gq().cqk.iterator();
     while (paramApplication.hasNext())
     {
       localObject = (com.tencent.matrix.e.b)paramApplication.next();
-      ad.i("MicroMsg.MatrixDelegate", "[onInitialize] start plugin: ".concat(String.valueOf(localObject)));
+      ac.i("MicroMsg.MatrixDelegate", "[onInitialize] start plugin: ".concat(String.valueOf(localObject)));
       ((com.tencent.matrix.e.b)localObject).start();
     }
-    parama.b(b.GF());
+    parama.b(b.Gq());
   }
   
   public static abstract interface a
   {
-    public abstract com.tencent.matrix.g.c.a GG();
+    public abstract com.tencent.matrix.g.c.a Gr();
     
-    public abstract com.tencent.matrix.report.h GH();
+    public abstract com.tencent.matrix.report.h Gs();
     
-    public abstract f GI();
+    public abstract f Gt();
     
-    public abstract h.b GJ();
+    public abstract h.b Gu();
     
-    public abstract n GK();
+    public abstract n Gv();
     
     public abstract void a(Application paramApplication);
     

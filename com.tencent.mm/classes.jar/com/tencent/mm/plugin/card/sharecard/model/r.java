@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public final class r
 {
-  public String nrr = "";
-  public String nvC = "";
-  public int nvD = 0;
-  public ArrayList<String> nvE;
-  public boolean nvF = false;
-  public boolean nvG = false;
+  public String nUr = "";
+  public String nYC = "";
+  public int nYD = 0;
+  public ArrayList<String> nYE;
+  public boolean nYF = false;
+  public boolean nYG = false;
 }
 
 

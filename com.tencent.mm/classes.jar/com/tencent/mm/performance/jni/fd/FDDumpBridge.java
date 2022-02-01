@@ -1,21 +1,21 @@
 package com.tencent.mm.performance.jni.fd;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.performance.jni.b;
+import com.tencent.mm.performance.jni.LibWxPerfManager;
 
 public class FDDumpBridge
 {
   static
   {
     AppMethodBeat.i(73330);
-    b.hQi.init();
+    LibWxPerfManager.INSTANCE.init();
     AppMethodBeat.o(73330);
   }
   
-  public static String Bn(String paramString)
+  public static String getFdPathName(String paramString)
   {
     AppMethodBeat.i(73329);
-    if (!b.hQi.hQj)
+    if (!LibWxPerfManager.INSTANCE.initOk())
     {
       AppMethodBeat.o(73329);
       return null;

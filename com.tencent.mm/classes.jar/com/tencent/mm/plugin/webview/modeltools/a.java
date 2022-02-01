@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.model.q;
 import com.tencent.mm.pluginsdk.model.t;
 import com.tencent.mm.pluginsdk.ui.tools.AppChooserUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.i;
 
 public final class a
@@ -45,20 +45,20 @@ public final class a
         str = paramIntent.getStringExtra("selectpkg");
         localBundle = paramIntent.getBundleExtra("transferback");
         bool = paramIntent.getBooleanExtra("isalways", false);
-        ad.i("MicroMsg.BrowserChooserHelper", "App Chooser Browser is %s", new Object[] { str });
-        t.evt();
-        paramIntent = (q)t.A(0, null);
-        if (!paramIntent.aAD(str)) {
+        ac.i("MicroMsg.BrowserChooserHelper", "App Chooser Browser is %s", new Object[] { str });
+        t.eKN();
+        paramIntent = (q)t.z(0, null);
+        if (!paramIntent.aFV(str)) {
           break label266;
         }
-        if (!paramIntent.gX(paramActivity)) {
+        if (!paramIntent.hi(paramActivity)) {
           break label141;
         }
-        q.bG(paramActivity, localBundle.getString("targeturl"));
+        q.bH(paramActivity, localBundle.getString("targeturl"));
         if (!bool) {
           break label236;
         }
-        h.vKh.f(10998, new Object[] { Integer.valueOf(4), Integer.valueOf(2) });
+        h.wUl.f(10998, new Object[] { Integer.valueOf(4), Integer.valueOf(2) });
       }
       for (;;)
       {
@@ -68,13 +68,13 @@ public final class a
         paramIntent = new Intent((Intent)localBundle.getParcelable("targetintent"));
         paramIntent.setPackage(str);
         paramIntent.addFlags(524288);
-        paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.adn(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramActivity.startActivity((Intent)paramIntent.lS(0));
+        paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.aeD(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramActivity.startActivity((Intent)paramIntent.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         break;
         label236:
-        h.vKh.f(10998, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
+        h.wUl.f(10998, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
         continue;
         label266:
         paramIntent = new Intent((Intent)localBundle.getParcelable("targetintent"));
@@ -82,22 +82,22 @@ public final class a
         paramIntent.addFlags(524288);
         try
         {
-          paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
-          com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.adn(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramActivity.startActivity((Intent)paramIntent.lS(0));
+          paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
+          com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.aeD(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramActivity.startActivity((Intent)paramIntent.lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "onActivityResult", "(Landroid/app/Activity;IILandroid/content/Intent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          h.vKh.f(10998, new Object[] { Integer.valueOf(5) });
+          h.wUl.f(10998, new Object[] { Integer.valueOf(5) });
           if (bool) {
-            h.vKh.f(10998, new Object[] { Integer.valueOf(5), Integer.valueOf(2) });
+            h.wUl.f(10998, new Object[] { Integer.valueOf(5), Integer.valueOf(2) });
           }
         }
         catch (Exception paramActivity)
         {
           for (;;)
           {
-            ad.w("MicroMsg.BrowserChooserHelper", "onActivityResult err:%s", new Object[] { paramActivity.getMessage() });
+            ac.w("MicroMsg.BrowserChooserHelper", "onActivityResult err:%s", new Object[] { paramActivity.getMessage() });
           }
-          h.vKh.f(10998, new Object[] { Integer.valueOf(5), Integer.valueOf(1) });
+          h.wUl.f(10998, new Object[] { Integer.valueOf(5), Integer.valueOf(1) });
         }
       }
     }
@@ -108,7 +108,7 @@ public final class a
   public static void h(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(79107);
-    if ((paramActivity == null) || (paramActivity.isFinishing()) || (bt.isNullOrNil(paramString)))
+    if ((paramActivity == null) || (paramActivity.isFinishing()) || (bs.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(79107);
       return;
@@ -124,11 +124,11 @@ public final class a
     paramString = new Intent("android.intent.action.VIEW", Uri.parse(str));
     try
     {
-      if ((bt.iP(paramActivity)) || (i.eFb()))
+      if ((bs.ja(paramActivity)) || (i.eUv()))
       {
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString.adn(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "showAndOpenInBrowser", "(Landroid/app/Activity;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramActivity.startActivity((Intent)paramString.lS(0));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString.aeD(), "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "showAndOpenInBrowser", "(Landroid/app/Activity;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramActivity.startActivity((Intent)paramString.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/webview/modeltools/BrowserChooserHelper", "showAndOpenInBrowser", "(Landroid/app/Activity;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(79107);
         return;
@@ -136,7 +136,7 @@ public final class a
     }
     catch (Exception paramActivity)
     {
-      ad.e("MicroMsg.BrowserChooserHelper", "open in browser failed : %s", new Object[] { paramActivity.getMessage() });
+      ac.e("MicroMsg.BrowserChooserHelper", "open in browser failed : %s", new Object[] { paramActivity.getMessage() });
       AppMethodBeat.o(79107);
       return;
     }

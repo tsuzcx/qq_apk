@@ -18,7 +18,7 @@ public final class a
       public final void run()
       {
         AppMethodBeat.i(147228);
-        ((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).cs(paramh.getAppId()).R(paramInt, paramh.getAppId());
+        ((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).ch(paramh.getAppId()).S(paramInt, paramh.getAppId());
         AppMethodBeat.o(147228);
       }
     }, "JsApiClearStorage");
@@ -27,7 +27,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.a
  * JD-Core Version:    0.7.0.1
  */

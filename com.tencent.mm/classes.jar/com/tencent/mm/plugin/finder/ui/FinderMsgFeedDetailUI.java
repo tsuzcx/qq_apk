@@ -6,40 +6,44 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gw;
-import com.tencent.mm.plugin.finder.event.c.b;
-import com.tencent.mm.plugin.finder.feed.d.b;
+import com.tencent.mm.g.a.gx;
+import com.tencent.mm.plugin.finder.event.a.b;
+import com.tencent.mm.plugin.finder.feed.i.a;
+import com.tencent.mm.plugin.finder.feed.i.b;
 import com.tencent.mm.plugin.finder.feed.ui.FinderBaseFeedUI;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.logic.d;
-import com.tencent.mm.plugin.finder.utils.i;
+import com.tencent.mm.plugin.finder.storage.logic.b;
+import com.tencent.mm.plugin.finder.storage.logic.b.a;
+import com.tencent.mm.plugin.finder.storage.u;
+import com.tencent.mm.plugin.finder.utils.n;
 import com.tencent.mm.plugin.finder.view.FinderLikeDrawer;
-import com.tencent.mm.plugin.finder.view.f;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import d.g.b.k;
 import d.y;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/ui/FinderMsgFeedDetailUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$Presenter;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "feedDeleteListener", "com/tencent/mm/plugin/finder/ui/FinderMsgFeedDetailUI$feedDeleteListener$1", "Lcom/tencent/mm/plugin/finder/ui/FinderMsgFeedDetailUI$feedDeleteListener$1;", "fromCommentUI", "", "getFromCommentUI", "()Z", "setFromCommentUI", "(Z)V", "hasShowTopComment", "isSelf", "setSelf", "mentionId", "", "getMentionId", "()J", "setMentionId", "(J)V", "objectId", "getObjectId", "setObjectId", "objectNonceId", "getObjectNonceId", "setObjectNonceId", "presenter", "scene", "", "getScene", "()I", "setScene", "(I)V", "username", "viewCallback", "getCommentScene", "getLayoutId", "getPresenter", "getReportType", "getViewCallback", "initAfterAttach", "", "initData", "initOnCreate", "initViews", "onBackPressed", "onDestroy", "onResume", "openLikeDrawer", "setTopComment", "refCommentId", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/FinderMsgFeedDetailUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$Presenter;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "createTime", "", "getCreateTime", "()I", "setCreateTime", "(I)V", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "feedDeleteListener", "com/tencent/mm/plugin/finder/ui/FinderMsgFeedDetailUI$feedDeleteListener$1", "Lcom/tencent/mm/plugin/finder/ui/FinderMsgFeedDetailUI$feedDeleteListener$1;", "fromCommentUI", "", "getFromCommentUI", "()Z", "setFromCommentUI", "(Z)V", "hasShowTopComment", "isSelf", "setSelf", "mentionId", "", "getMentionId", "()J", "setMentionId", "(J)V", "objectId", "getObjectId", "setObjectId", "objectNonceId", "getObjectNonceId", "setObjectNonceId", "presenter", "scene", "getScene", "setScene", "username", "viewCallback", "getCommentScene", "getLayoutId", "getPresenter", "getReportType", "getViewCallback", "initAfterAttach", "", "initData", "initOnCreate", "initViews", "onBackPressed", "onDestroy", "onResume", "openLikeDrawer", "setTopComment", "refCommentId", "plugin-finder_release"})
 public final class FinderMsgFeedDetailUI
-  extends FinderBaseFeedUI<d.b, com.tencent.mm.plugin.finder.feed.d.a>
+  extends FinderBaseFeedUI<i.b, i.a>
 {
-  private boolean KYH;
   String TAG;
   private HashMap _$_findViewCache;
-  private boolean diE;
-  long objectId;
+  private boolean dfZ;
+  private int hGU;
   private String objectNonceId;
-  BaseFinderFeed qHv;
-  private com.tencent.mm.plugin.finder.feed.d.a qNS;
-  private d.b qNT;
-  private long qNU;
-  private final a qNV;
-  private boolean qNW;
+  long qXP;
+  private i.a rJo;
+  private i.b rJp;
+  private boolean rJq;
+  private final a rJr;
+  private boolean rJs;
+  BaseFinderFeed rdD;
+  private long roS;
   private int scene;
   private String username;
   
@@ -48,21 +52,22 @@ public final class FinderMsgFeedDetailUI
     AppMethodBeat.i(167470);
     this.TAG = "Finder.FinderMsgFeedDetailUI";
     this.objectNonceId = "";
-    this.qNU = -1L;
-    this.qNV = new a(this);
+    this.roS = -1L;
+    this.hGU = -1;
+    this.rJr = new a(this);
     AppMethodBeat.o(167470);
   }
   
-  private final void qK(final long paramLong)
+  private final void vh(final long paramLong)
   {
     AppMethodBeat.i(167465);
-    getContentView().post((Runnable)new b(this, paramLong));
+    getContentView().post((Runnable)new c(this, paramLong));
     AppMethodBeat.o(167465);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(199278);
+    AppMethodBeat.i(203249);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -73,34 +78,34 @@ public final class FinderMsgFeedDetailUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(199278);
+    AppMethodBeat.o(203249);
     return localView1;
   }
   
-  public final void cmB()
+  public final int cuI()
   {
-    AppMethodBeat.i(167467);
-    setMMTitle(2131759376);
-    AppMethodBeat.o(167467);
+    AppMethodBeat.i(203248);
+    int i = getIntent().getIntExtra("from_scene", 2);
+    n localn = n.rPN;
+    if (n.EB(i))
+    {
+      AppMethodBeat.o(203248);
+      return 7;
+    }
+    AppMethodBeat.o(203248);
+    return 5;
   }
   
-  public final int fTB()
+  public final int cvJ()
   {
     return 2;
   }
   
-  public final int getCommentScene()
+  public final void cvL()
   {
-    AppMethodBeat.i(199277);
-    int i = getIntent().getIntExtra("from_scene", 2);
-    i locali = i.qTa;
-    if (i.Di(i))
-    {
-      AppMethodBeat.o(199277);
-      return 7;
-    }
-    AppMethodBeat.o(199277);
-    return 5;
+    AppMethodBeat.i(167467);
+    setMMTitle(2131759376);
+    AppMethodBeat.o(167467);
   }
   
   public final int getLayoutId()
@@ -112,7 +117,7 @@ public final class FinderMsgFeedDetailUI
   {
     AppMethodBeat.i(167466);
     this.username = getIntent().getStringExtra("feed_username");
-    this.objectId = getIntent().getLongExtra("feed_object_id", -1L);
+    this.qXP = getIntent().getLongExtra("feed_object_id", -1L);
     Object localObject2 = getIntent().getStringExtra("feed_object_nonceid");
     Object localObject1 = localObject2;
     if (localObject2 == null) {
@@ -120,76 +125,77 @@ public final class FinderMsgFeedDetailUI
     }
     this.objectNonceId = ((String)localObject1);
     this.scene = getIntent().getIntExtra("from_scene", 2);
-    this.diE = getIntent().getBooleanExtra("feed_is_self", false);
-    this.qNU = getIntent().getLongExtra("mention_id", -1L);
-    if (this.objectId == 0L)
+    this.dfZ = getIntent().getBooleanExtra("feed_is_self", false);
+    this.roS = getIntent().getLongExtra("mention_id", -1L);
+    this.hGU = getIntent().getIntExtra("mention_create_time", -1);
+    if (this.qXP == 0L)
     {
-      ad.w(this.TAG, "objectId 0, finish");
+      ac.w(this.TAG, "objectId 0, finish");
       finish();
     }
-    this.KYH = getIntent().getBooleanExtra("from_comment_ui", false);
-    this.qNS = new com.tencent.mm.plugin.finder.feed.d.a(this.scene, (MMActivity)this, false, this.diE, 4);
+    this.rJq = getIntent().getBooleanExtra("from_comment_ui", false);
+    this.rJo = new i.a(this.scene, (MMActivity)this, false, this.dfZ, 4);
     localObject1 = (MMActivity)this;
-    localObject2 = this.qNS;
+    localObject2 = this.rJo;
     if (localObject2 == null) {
-      k.aPZ("presenter");
+      k.aVY("presenter");
     }
-    this.qNT = new d.b((MMActivity)localObject1, (com.tencent.mm.plugin.finder.feed.d.a)localObject2, this.scene, getCommentScene(), false);
-    localObject1 = com.tencent.mm.plugin.finder.storage.data.b.qKl;
-    localObject1 = com.tencent.mm.plugin.finder.storage.data.b.a.qC(this.objectId);
+    this.rJp = new i.b((MMActivity)localObject1, (i.a)localObject2, this.scene, cuI(), false);
+    localObject1 = com.tencent.mm.plugin.finder.storage.data.d.rEF;
+    localObject1 = com.tencent.mm.plugin.finder.storage.data.d.a.uS(this.qXP);
     if (localObject1 != null)
     {
-      localObject2 = com.tencent.mm.plugin.finder.storage.logic.b.qKG;
-      this.qHv = com.tencent.mm.plugin.finder.storage.logic.b.a.h((FinderItem)localObject1);
-      localObject1 = this.qNS;
+      localObject2 = b.rFl;
+      this.rdD = b.a.i((FinderItem)localObject1);
+      localObject1 = this.rJo;
       if (localObject1 == null) {
-        k.aPZ("presenter");
+        k.aVY("presenter");
       }
-      localObject1 = ((com.tencent.mm.plugin.finder.feed.d.a)localObject1).feedList;
+      localObject1 = ((i.a)localObject1).feedList;
       if (localObject1 != null)
       {
-        localObject2 = this.qHv;
+        localObject2 = this.rdD;
         if (localObject2 == null) {
-          k.fvU();
+          k.fOy();
         }
         ((ArrayList)localObject1).add(localObject2);
       }
     }
-    if (this.qHv == null)
+    if (this.rdD == null)
     {
-      ad.w(this.TAG, "feed null, finish");
+      ac.w(this.TAG, "feed null, finish");
       finish();
     }
-    this.qNV.alive();
+    this.rJr.alive();
     AppMethodBeat.o(167466);
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(199276);
-    d.b localb = this.qNT;
+    AppMethodBeat.i(203247);
+    i.b localb = this.rJp;
     if (localb == null) {
-      k.aPZ("viewCallback");
+      k.aVY("viewCallback");
     }
-    if (localb.fSZ().fiQ())
+    if (localb.cuA().cEG())
     {
-      localb = this.qNT;
+      localb = this.rJp;
       if (localb == null) {
-        k.aPZ("viewCallback");
+        k.aVY("viewCallback");
       }
-      localb.fSZ().csJ();
-      AppMethodBeat.o(199276);
+      localb.cuA().cEF();
+      AppMethodBeat.o(203247);
       return;
     }
     super.onBackPressed();
-    AppMethodBeat.o(199276);
+    AppMethodBeat.o(203247);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(167464);
     super.onDestroy();
-    this.qNV.dead();
+    this.rJr.dead();
     AppMethodBeat.o(167464);
   }
   
@@ -197,33 +203,33 @@ public final class FinderMsgFeedDetailUI
   {
     AppMethodBeat.i(167463);
     super.onResume();
-    if ((this.qNW) || (this.KYH))
+    if ((this.rJs) || (this.rJq))
     {
       AppMethodBeat.o(167463);
       return;
     }
-    this.qNW = true;
-    if (this.qHv != null)
+    this.rJs = true;
+    if (this.rdD != null)
     {
-      if (this.qNU > 0L)
+      if (this.roS > 0L)
       {
-        Object localObject = d.qKK;
-        localObject = com.tencent.mm.plugin.finder.storage.logic.d.a.an(this.qNU, this.scene);
+        Object localObject = com.tencent.mm.plugin.finder.storage.logic.d.rFp;
+        localObject = com.tencent.mm.plugin.finder.storage.logic.d.a.k(this.roS, this.hGU, this.scene);
         if (localObject != null)
         {
-          if ((((com.tencent.mm.plugin.finder.storage.l)localObject).field_type == 3) || (((com.tencent.mm.plugin.finder.storage.l)localObject).field_commentId != 0L))
+          if ((((u)localObject).field_type == 3) || (((u)localObject).field_commentId != 0L))
           {
-            qK(((com.tencent.mm.plugin.finder.storage.l)localObject).field_commentId);
+            vh(((u)localObject).field_commentId);
             AppMethodBeat.o(167463);
             return;
           }
-          if (((com.tencent.mm.plugin.finder.storage.l)localObject).field_type == 2)
+          if (((u)localObject).field_type == 2)
           {
-            localObject = this.qNT;
+            localObject = this.rJp;
             if (localObject == null) {
-              k.aPZ("viewCallback");
+              k.aVY("viewCallback");
             }
-            ((d.b)localObject).fSZ().post((Runnable)new FinderMsgFeedDetailUI.c(this));
+            ((i.b)localObject).cuA().post((Runnable)new b(this));
           }
           AppMethodBeat.o(167463);
           return;
@@ -231,7 +237,7 @@ public final class FinderMsgFeedDetailUI
         AppMethodBeat.o(167463);
         return;
       }
-      qK(0L);
+      vh(0L);
     }
     AppMethodBeat.o(167463);
   }
@@ -242,40 +248,60 @@ public final class FinderMsgFeedDetailUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderMsgFeedDetailUI$feedDeleteListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedDeleteEvent;", "callback", "", "event", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderMsgFeedDetailUI$feedDeleteListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedDeleteEvent;", "callback", "", "event", "plugin-finder_release"})
   public static final class a
-    extends com.tencent.mm.sdk.b.c<gw>
+    extends c<gx>
   {
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/ui/FinderMsgFeedDetailUI$feedDeleteListener$1$callback$1$1"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/ui/FinderMsgFeedDetailUI$feedDeleteListener$1$callback$1$1"})
     static final class a
       extends d.g.b.l
       implements d.g.a.a<y>
     {
-      a(FinderMsgFeedDetailUI.a parama, gw paramgw)
+      a(FinderMsgFeedDetailUI.a parama, gx paramgx)
       {
         super();
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
-    b(FinderMsgFeedDetailUI paramFinderMsgFeedDetailUI, long paramLong) {}
+    b(FinderMsgFeedDetailUI paramFinderMsgFeedDetailUI) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(203246);
+      BaseFinderFeed localBaseFinderFeed = this.rJt.rdD;
+      if (localBaseFinderFeed != null)
+      {
+        FinderMsgFeedDetailUI.a(this.rJt).cuA().p(localBaseFinderFeed.feedObject);
+        AppMethodBeat.o(203246);
+        return;
+      }
+      AppMethodBeat.o(203246);
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(FinderMsgFeedDetailUI paramFinderMsgFeedDetailUI, long paramLong) {}
     
     public final void run()
     {
       AppMethodBeat.i(167462);
-      BaseFinderFeed localBaseFinderFeed = this.qNX.qHv;
+      BaseFinderFeed localBaseFinderFeed = this.rJt.rdD;
       if (localBaseFinderFeed != null)
       {
-        Object localObject = com.tencent.mm.ui.component.a.LCX;
-        localObject = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this.qNX).get(FinderReporterUIC.class));
+        Object localObject = com.tencent.mm.ui.component.a.IrY;
+        localObject = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.q((MMActivity)this.rJt).get(FinderReporterUIC.class));
         if (localObject != null) {
-          ((com.tencent.mm.plugin.finder.event.c)localObject).fSl().Bw(localBaseFinderFeed.bMs());
+          ((com.tencent.mm.plugin.finder.event.a)localObject).ctb().tU(localBaseFinderFeed.lx());
         }
-        f.a(FinderMsgFeedDetailUI.b(this.qNX).fSY(), localBaseFinderFeed.feedObject, paramLong);
+        com.tencent.mm.plugin.finder.view.d.a(FinderMsgFeedDetailUI.a(this.rJt).cuz(), localBaseFinderFeed.feedObject, paramLong);
         AppMethodBeat.o(167462);
         return;
       }
@@ -285,7 +311,7 @@ public final class FinderMsgFeedDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderMsgFeedDetailUI
  * JD-Core Version:    0.7.0.1
  */

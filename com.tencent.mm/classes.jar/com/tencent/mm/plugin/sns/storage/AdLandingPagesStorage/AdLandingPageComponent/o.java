@@ -4,8 +4,8 @@ public final class o
   extends x
 {
   public String jumpUrl;
-  public String wVU;
-  public int wVV;
+  public String yiI;
+  public int yiJ;
 }
 
 

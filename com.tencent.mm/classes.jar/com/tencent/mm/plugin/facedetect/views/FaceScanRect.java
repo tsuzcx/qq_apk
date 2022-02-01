@@ -12,30 +12,30 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class FaceScanRect
   extends RelativeLayout
 {
-  private b pWA;
-  private ViewGroup pWB;
-  public View pWC;
-  public FaceScanRect.a pWD;
-  public View pWl;
-  private ImageView pWm;
-  private ImageView pWn;
-  private ImageView pWo;
-  private ImageView pWp;
-  private ImageView pWq;
-  private ImageView pWr;
-  private ImageView pWs;
-  private ImageView pWt;
-  public ImageView[] pWu;
-  private ScaleAnimation pWv;
-  private ScaleAnimation pWw;
-  private ScaleAnimation pWx;
-  private ScaleAnimation pWy;
-  public TranslateAnimation pWz;
+  public View qEQ;
+  private ImageView qER;
+  private ImageView qES;
+  private ImageView qET;
+  private ImageView qEU;
+  private ImageView qEV;
+  private ImageView qEW;
+  private ImageView qEX;
+  private ImageView qEY;
+  public ImageView[] qEZ;
+  private ScaleAnimation qFa;
+  private ScaleAnimation qFb;
+  private ScaleAnimation qFc;
+  private ScaleAnimation qFd;
+  public TranslateAnimation qFe;
+  private b qFf;
+  private ViewGroup qFg;
+  public View qFh;
+  public FaceScanRect.a qFi;
   
   public FaceScanRect(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,42 +46,42 @@ public class FaceScanRect
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104189);
-    this.pWl = null;
-    this.pWm = null;
-    this.pWn = null;
-    this.pWo = null;
-    this.pWp = null;
-    this.pWq = null;
-    this.pWr = null;
-    this.pWs = null;
-    this.pWt = null;
-    this.pWu = null;
-    this.pWv = null;
-    this.pWw = null;
-    this.pWx = null;
-    this.pWy = null;
-    this.pWz = null;
-    this.pWA = null;
-    this.pWB = null;
-    this.pWC = null;
+    this.qEQ = null;
+    this.qER = null;
+    this.qES = null;
+    this.qET = null;
+    this.qEU = null;
+    this.qEV = null;
+    this.qEW = null;
+    this.qEX = null;
+    this.qEY = null;
+    this.qEZ = null;
+    this.qFa = null;
+    this.qFb = null;
+    this.qFc = null;
+    this.qFd = null;
+    this.qFe = null;
+    this.qFf = null;
+    this.qFg = null;
+    this.qFh = null;
     LayoutInflater.from(paramContext).inflate(2131493923, this, true);
-    this.pWl = findViewById(2131299716);
-    this.pWm = ((ImageView)findViewById(2131299714));
-    this.pWn = ((ImageView)findViewById(2131299715));
-    this.pWo = ((ImageView)findViewById(2131299711));
-    this.pWp = ((ImageView)findViewById(2131299710));
-    this.pWq = ((ImageView)findViewById(2131299713));
-    this.pWr = ((ImageView)findViewById(2131299712));
-    this.pWs = ((ImageView)findViewById(2131299708));
-    this.pWt = ((ImageView)findViewById(2131299709));
-    this.pWC = findViewById(2131299671);
-    this.pWB = ((ViewGroup)findViewById(2131299661));
-    this.pWu = new ImageView[] { this.pWm, this.pWn, this.pWo, this.pWp, this.pWq, this.pWr, this.pWs, this.pWt };
-    this.pWD = FaceScanRect.a.pWG;
-    this.pWz = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
-    this.pWz.setRepeatCount(-1);
-    this.pWz.setRepeatMode(1);
-    this.pWz.setDuration(1000L);
+    this.qEQ = findViewById(2131299716);
+    this.qER = ((ImageView)findViewById(2131299714));
+    this.qES = ((ImageView)findViewById(2131299715));
+    this.qET = ((ImageView)findViewById(2131299711));
+    this.qEU = ((ImageView)findViewById(2131299710));
+    this.qEV = ((ImageView)findViewById(2131299713));
+    this.qEW = ((ImageView)findViewById(2131299712));
+    this.qEX = ((ImageView)findViewById(2131299708));
+    this.qEY = ((ImageView)findViewById(2131299709));
+    this.qFh = findViewById(2131299671);
+    this.qFg = ((ViewGroup)findViewById(2131299661));
+    this.qEZ = new ImageView[] { this.qER, this.qES, this.qET, this.qEU, this.qEV, this.qEW, this.qEX, this.qEY };
+    this.qFi = FaceScanRect.a.qFl;
+    this.qFe = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
+    this.qFe.setRepeatCount(-1);
+    this.qFe.setRepeatMode(1);
+    this.qFe.setDuration(1000L);
     AppMethodBeat.o(104189);
   }
   
@@ -94,56 +94,56 @@ public class FaceScanRect
     int m = getResources().getDimensionPixelSize(2131166281);
     float f1 = (i - k * 2 - m * 2 + m) / m;
     float f2 = (j - k * 2 - m * 2 + m) / m;
-    ad.i("MicroMsg.FaceScanRect", "hy: horizontalScale : %f, verticalScale : %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
-    this.pWv = new ScaleAnimation(1.0F, f1, 1.0F, 1.0F, 1, 0.0F, 1, 0.0F);
-    this.pWv.setFillAfter(true);
-    this.pWv.setDuration(1500L);
-    this.pWv.setInterpolator(getContext(), 17563654);
-    this.pWv.setAnimationListener(paramAnimationListener);
-    this.pWw = new ScaleAnimation(1.0F, f1, 1.0F, 1.0F, 1, 1.0F, 1, 0.0F);
-    this.pWw.setFillAfter(true);
-    this.pWw.setDuration(1500L);
-    this.pWw.setInterpolator(getContext(), 17563654);
-    this.pWx = new ScaleAnimation(1.0F, 1.0F, 1.0F, f2, 1, 0.0F, 1, 0.0F);
-    this.pWx.setFillAfter(true);
-    this.pWx.setDuration(1500L);
-    this.pWx.setInterpolator(getContext(), 17563654);
-    this.pWy = new ScaleAnimation(1.0F, 1.0F, 1.0F, f2, 1, 0.0F, 1, 1.0F);
-    this.pWy.setFillAfter(true);
-    this.pWy.setDuration(1500L);
-    this.pWy.setInterpolator(getContext(), 17563654);
+    ac.i("MicroMsg.FaceScanRect", "hy: horizontalScale : %f, verticalScale : %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
+    this.qFa = new ScaleAnimation(1.0F, f1, 1.0F, 1.0F, 1, 0.0F, 1, 0.0F);
+    this.qFa.setFillAfter(true);
+    this.qFa.setDuration(1500L);
+    this.qFa.setInterpolator(getContext(), 17563654);
+    this.qFa.setAnimationListener(paramAnimationListener);
+    this.qFb = new ScaleAnimation(1.0F, f1, 1.0F, 1.0F, 1, 1.0F, 1, 0.0F);
+    this.qFb.setFillAfter(true);
+    this.qFb.setDuration(1500L);
+    this.qFb.setInterpolator(getContext(), 17563654);
+    this.qFc = new ScaleAnimation(1.0F, 1.0F, 1.0F, f2, 1, 0.0F, 1, 0.0F);
+    this.qFc.setFillAfter(true);
+    this.qFc.setDuration(1500L);
+    this.qFc.setInterpolator(getContext(), 17563654);
+    this.qFd = new ScaleAnimation(1.0F, 1.0F, 1.0F, f2, 1, 0.0F, 1, 1.0F);
+    this.qFd.setFillAfter(true);
+    this.qFd.setDuration(1500L);
+    this.qFd.setInterpolator(getContext(), 17563654);
     AppMethodBeat.o(104192);
   }
   
-  private void cgZ()
+  private void coG()
   {
     AppMethodBeat.i(104190);
-    this.pWC.setVisibility(8);
-    this.pWl.setBackground(null);
-    this.pWC.clearAnimation();
+    this.qFh.setVisibility(8);
+    this.qEQ.setBackground(null);
+    this.qFh.clearAnimation();
     AppMethodBeat.o(104190);
   }
   
   public final void b(Animation.AnimationListener paramAnimationListener)
   {
     AppMethodBeat.i(104191);
-    if (this.pWD == FaceScanRect.a.pWF)
+    if (this.qFi == FaceScanRect.a.qFk)
     {
-      ad.w("MicroMsg.FaceScanRect", "hy: already closed");
+      ac.w("MicroMsg.FaceScanRect", "hy: already closed");
       if (paramAnimationListener != null) {
         paramAnimationListener.onAnimationEnd(null);
       }
       AppMethodBeat.o(104191);
       return;
     }
-    this.pWD = FaceScanRect.a.pWF;
+    this.qFi = FaceScanRect.a.qFk;
     c(paramAnimationListener);
-    this.pWm.startAnimation(this.pWv);
-    this.pWp.startAnimation(this.pWy);
-    this.pWq.startAnimation(this.pWx);
-    this.pWt.startAnimation(this.pWw);
-    cgZ();
-    paramAnimationListener = this.pWu;
+    this.qER.startAnimation(this.qFa);
+    this.qEU.startAnimation(this.qFd);
+    this.qEV.startAnimation(this.qFc);
+    this.qEY.startAnimation(this.qFb);
+    coG();
+    paramAnimationListener = this.qEZ;
     int j = paramAnimationListener.length;
     int i = 0;
     while (i < j)
@@ -156,32 +156,32 @@ public class FaceScanRect
   
   public ViewGroup getCenterHintHolder()
   {
-    return this.pWB;
+    return this.qFg;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(104193);
     super.onMeasure(paramInt1, paramInt2);
-    if (this.pWA != null) {
-      this.pWA.cgG();
+    if (this.qFf != null) {
+      this.qFf.con();
     }
     AppMethodBeat.o(104193);
   }
   
   public void setOnRefreshRectListener(b paramb)
   {
-    this.pWA = paramb;
+    this.qFf = paramb;
   }
   
   public static abstract interface b
   {
-    public abstract void cgG();
+    public abstract void con();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceScanRect
  * JD-Core Version:    0.7.0.1
  */

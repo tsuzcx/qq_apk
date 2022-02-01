@@ -6,37 +6,50 @@ import com.tencent.mm.plugin.report.a;
 public final class cz
   extends a
 {
-  public String dGR;
-  public long dSZ = 0L;
+  public long dCQ = 0L;
+  public long dRB = 0L;
+  private String dRC;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(110295);
+    AppMethodBeat.i(163177);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dGR);
+    ((StringBuffer)localObject).append(this.dCQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSZ);
+    ((StringBuffer)localObject).append(this.dRB);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dRC);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(110295);
+    arz((String)localObject);
+    AppMethodBeat.o(163177);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(110296);
+    AppMethodBeat.i(163178);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ChatName:").append(this.dGR);
+    ((StringBuffer)localObject).append("Action:").append(this.dCQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OperateType:").append(this.dSZ);
+    ((StringBuffer)localObject).append("IsRedDot:").append(this.dRB);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AppList:").append(this.dRC);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(110296);
+    AppMethodBeat.o(163178);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18257;
+    return 19194;
+  }
+  
+  public final cz lb(String paramString)
+  {
+    AppMethodBeat.i(163176);
+    this.dRC = t("AppList", paramString, true);
+    AppMethodBeat.o(163176);
+    return this;
   }
 }
 

@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ry;
-import com.tencent.mm.g.a.ry.a;
-import com.tencent.mm.g.a.sb;
+import com.tencent.mm.g.a.sh;
+import com.tencent.mm.g.a.sh.a;
+import com.tencent.mm.g.a.sk;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.model.w;
 import com.tencent.mm.model.y.b;
@@ -15,9 +15,9 @@ import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
 import com.tencent.mm.pluginsdk.model.app.z;
 import com.tencent.mm.pluginsdk.model.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import d.g.b.k;
 import d.l;
@@ -25,16 +25,16 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MPVideoTransmit;", "", "()V", "TAG", "", "doSendAppMsg", "", "data", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "", "toUser", "msgInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "appendText", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Landroid/os/Bundle;", "transmitMpVideoMsg", "context", "Landroid/content/Context;", "imgUrl", "desc", "title", "url", "fromScene", "", "IPCInvoke_SendAppMsg", "plugin-webview_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MPVideoTransmit;", "", "()V", "TAG", "", "doSendAppMsg", "", "data", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "", "toUser", "msgInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "appendText", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Landroid/os/Bundle;", "transmitMpVideoMsg", "context", "Landroid/content/Context;", "imgUrl", "desc", "title", "url", "fromScene", "", "IPCInvoke_SendAppMsg", "plugin-webview_release"})
 public final class c
 {
-  public static final c BsS;
+  public static final c CKY;
   private static final String TAG = "MicroMsg.MPVideoTransmit";
   
   static
   {
     AppMethodBeat.i(82657);
-    BsS = new c();
+    CKY = new c();
     TAG = "MicroMsg.MPVideoTransmit";
     AppMethodBeat.o(82657);
   }
@@ -45,22 +45,22 @@ public final class c
     k.h(paramContext, "context");
     HashMap localHashMap = new HashMap();
     Map localMap = (Map)localHashMap;
-    paramString1 = bt.nullAsNil(paramString1);
+    paramString1 = bs.nullAsNil(paramString1);
     k.g(paramString1, "Util.nullAsNil(imgUrl)");
     localMap.put("img_url", paramString1);
     paramString1 = (Map)localHashMap;
-    paramString2 = bt.nullAsNil(paramString2);
+    paramString2 = bs.nullAsNil(paramString2);
     k.g(paramString2, "Util.nullAsNil(desc)");
     paramString1.put("desc", paramString2);
     paramString1 = (Map)localHashMap;
-    paramString2 = bt.nullAsNil(paramString3);
+    paramString2 = bs.nullAsNil(paramString3);
     k.g(paramString2, "Util.nullAsNil(title)");
     paramString1.put("title", paramString2);
     paramString1 = (Map)localHashMap;
-    paramString2 = bt.by(paramString4, "https://support.weixin.qq.com/update/");
+    paramString2 = bs.bG(paramString4, "https://support.weixin.qq.com/update/");
     k.g(paramString2, "Util.nullAs(url, Constan…ewUI.MP_VIDEO_UPDATE_URL)");
     paramString1.put("url", paramString2);
-    ad.i(TAG, "transmitMpVideoMsg, img_url=%s, desc=%s, title=%s, url=%s", new Object[] { localHashMap.get("img_url"), localHashMap.get("desc"), localHashMap.get("title"), paramString4 });
+    ac.i(TAG, "transmitMpVideoMsg, img_url=%s, desc=%s, title=%s, url=%s", new Object[] { localHashMap.get("img_url"), localHashMap.get("desc"), localHashMap.get("title"), paramString4 });
     paramString1 = new Intent();
     paramString1.putExtra("Select_Conv_Type", 3);
     paramString1.putExtra("scene_from", paramInt);
@@ -68,7 +68,7 @@ public final class c
     paramString1.putExtra("Retr_Msg_Type", 1);
     paramString1.putExtra("mutil_select_is_ret", true);
     paramString1.putExtra("webview_params", (Serializable)localHashMap);
-    com.tencent.mm.bs.d.c(paramContext, ".ui.transmit.SelectConversationUI", paramString1, 3);
+    com.tencent.mm.br.d.c(paramContext, ".ui.transmit.SelectConversationUI", paramString1, 3);
     AppMethodBeat.o(82654);
   }
   
@@ -76,72 +76,72 @@ public final class c
   {
     AppMethodBeat.i(82656);
     k.h(paramMpVideoDataParcelable, "data");
-    Object localObject1 = paramMpVideoDataParcelable.BsY;
+    Object localObject1 = paramMpVideoDataParcelable.CLe;
     if (localObject1 == null)
     {
-      ad.w(TAG, "doSendAppMsg msgInfo is null");
+      ac.w(TAG, "doSendAppMsg msgInfo is null");
       AppMethodBeat.o(82656);
       return false;
     }
     Object localObject2 = new z();
-    ((z)localObject2).webpageUrl = ((com.tencent.mm.ai.y)localObject1).url;
+    ((z)localObject2).webpageUrl = ((com.tencent.mm.ah.y)localObject1).url;
     Object localObject3 = new WXMediaMessage();
     ((WXMediaMessage)localObject3).mediaObject = ((WXMediaMessage.IMediaObject)localObject2);
-    ((WXMediaMessage)localObject3).title = ((com.tencent.mm.ai.y)localObject1).title;
-    com.tencent.mm.plugin.webview.a.a.ae((Runnable)new b((com.tencent.mm.ai.y)localObject1));
-    localObject2 = new ry();
-    ((ry)localObject2).dxx.doG = ((WXMediaMessage)localObject3);
-    ((ry)localObject2).dxx.toUser = paramMpVideoDataParcelable.toUser;
-    ((ry)localObject2).dxx.dxy = 2;
-    ((ry)localObject2).dxx.dxz = ((com.tencent.mm.ai.y)localObject1).dfT;
-    ((ry)localObject2).dxx.dxA = ((com.tencent.mm.ai.y)localObject1).gKv;
+    ((WXMediaMessage)localObject3).title = ((com.tencent.mm.ah.y)localObject1).title;
+    com.tencent.mm.plugin.webview.a.a.ag((Runnable)new b((com.tencent.mm.ah.y)localObject1));
+    localObject2 = new sh();
+    ((sh)localObject2).dvk.dis = ((WXMediaMessage)localObject3);
+    ((sh)localObject2).dvk.toUser = paramMpVideoDataParcelable.toUser;
+    ((sh)localObject2).dvk.dit = 2;
+    ((sh)localObject2).dvk.dvl = ((com.tencent.mm.ah.y)localObject1).ddo;
+    ((sh)localObject2).dvk.dvm = ((com.tencent.mm.ah.y)localObject1).hkV;
     try
     {
-      ((ry)localObject2).dxx.dxF = bt.nullAsNil(((com.tencent.mm.ai.y)localObject1).gKw);
-      localObject3 = com.tencent.mm.model.y.tD(((ry)localObject2).dxx.dxF);
-      y.b localb = com.tencent.mm.model.y.arz().E((String)localObject3, true);
+      ((sh)localObject2).dvk.dvr = bs.nullAsNil(((com.tencent.mm.ah.y)localObject1).hkW);
+      localObject3 = com.tencent.mm.model.y.xJ(((sh)localObject2).dvk.dvr);
+      y.b localb = com.tencent.mm.model.y.ayq().F((String)localObject3, true);
       if (localb == null) {
-        k.fvU();
+        k.fOy();
       }
-      localb.m("sendAppMsgScene", Integer.valueOf(2));
-      localb.m("preChatName", ((com.tencent.mm.ai.y)localObject1).dEz);
-      localb.m("prePublishId", ((com.tencent.mm.ai.y)localObject1).gKw);
-      localb.m("preUsername", ((com.tencent.mm.ai.y)localObject1).dEy);
-      localb.m("_DATA_CENTER_ITEM_SHOW_TYPE", Integer.valueOf(-1));
-      localb.m("_tmpl_webview_transfer_scene", Integer.valueOf(11));
-      localb.m("_DATA_CENTER_VID", ((com.tencent.mm.ai.y)localObject1).CEg);
-      localb.m("_DATA_CENTER__DULATION", Integer.valueOf(((com.tencent.mm.ai.y)localObject1).videoDuration));
-      localb.m("_DATA_CENTER_VIDEO_WIDTH", Integer.valueOf(((com.tencent.mm.ai.y)localObject1).width));
-      localb.m("_DATA_CENTER_VIDEO_HEIGHT", Integer.valueOf(((com.tencent.mm.ai.y)localObject1).height));
-      localb.m("_DATA_CENTER_COVER_URL", ((com.tencent.mm.ai.y)localObject1).gKD);
-      localb.m("_DATA_CENTER_VIDEO_PLAY_URL", ((com.tencent.mm.ai.y)localObject1).videoUrl);
-      localb.m("_DATA_CENTER_VIDEO_MP_URL", ((com.tencent.mm.ai.y)localObject1).CEf);
-      localb.m("_DATA_CENTER_IS_MP_SHARE_VIDEO", Boolean.TRUE);
-      ((ry)localObject2).dxx.sessionId = ((String)localObject3);
+      localb.l("sendAppMsgScene", Integer.valueOf(2));
+      localb.l("preChatName", ((com.tencent.mm.ah.y)localObject1).dCl);
+      localb.l("prePublishId", ((com.tencent.mm.ah.y)localObject1).hkW);
+      localb.l("preUsername", ((com.tencent.mm.ah.y)localObject1).dCk);
+      localb.l("_DATA_CENTER_ITEM_SHOW_TYPE", Integer.valueOf(-1));
+      localb.l("_tmpl_webview_transfer_scene", Integer.valueOf(11));
+      localb.l("_DATA_CENTER_VID", ((com.tencent.mm.ah.y)localObject1).DWG);
+      localb.l("_DATA_CENTER__DULATION", Integer.valueOf(((com.tencent.mm.ah.y)localObject1).videoDuration));
+      localb.l("_DATA_CENTER_VIDEO_WIDTH", Integer.valueOf(((com.tencent.mm.ah.y)localObject1).width));
+      localb.l("_DATA_CENTER_VIDEO_HEIGHT", Integer.valueOf(((com.tencent.mm.ah.y)localObject1).height));
+      localb.l("_DATA_CENTER_COVER_URL", ((com.tencent.mm.ah.y)localObject1).hld);
+      localb.l("_DATA_CENTER_VIDEO_PLAY_URL", ((com.tencent.mm.ah.y)localObject1).videoUrl);
+      localb.l("_DATA_CENTER_VIDEO_MP_URL", ((com.tencent.mm.ah.y)localObject1).DWF);
+      localb.l("_DATA_CENTER_IS_MP_SHARE_VIDEO", Boolean.TRUE);
+      ((sh)localObject2).dvk.sessionId = ((String)localObject3);
     }
     catch (Exception localException)
     {
       for (;;)
       {
         boolean bool;
-        ad.e(TAG, "init bunddata failed : %s", new Object[] { localException.getMessage() });
+        ac.e(TAG, "init bunddata failed : %s", new Object[] { localException.getMessage() });
       }
     }
-    bool = com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
-    if (!bt.isNullOrNil(paramMpVideoDataParcelable.kkB))
+    bool = com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject2);
+    if (!bs.isNullOrNil(paramMpVideoDataParcelable.kLS))
     {
-      localObject1 = new sb();
-      ((sb)localObject1).dxJ.dxK = paramMpVideoDataParcelable.toUser;
-      ((sb)localObject1).dxJ.content = paramMpVideoDataParcelable.kkB;
-      ((sb)localObject1).dxJ.type = w.tq(paramMpVideoDataParcelable.toUser);
-      ((sb)localObject1).dxJ.flags = 0;
-      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+      localObject1 = new sk();
+      ((sk)localObject1).dvv.dvw = paramMpVideoDataParcelable.toUser;
+      ((sk)localObject1).dvv.content = paramMpVideoDataParcelable.kLS;
+      ((sk)localObject1).dvv.type = w.xt(paramMpVideoDataParcelable.toUser);
+      ((sk)localObject1).dvv.flags = 0;
+      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
     }
     AppMethodBeat.o(82656);
     return bool;
   }
   
-  public static void b(String paramString1, com.tencent.mm.ai.y paramy, String paramString2, com.tencent.mm.ipcinvoker.d<Bundle> paramd)
+  public static void b(String paramString1, com.tencent.mm.ah.y paramy, String paramString2, com.tencent.mm.ipcinvoker.d<Bundle> paramd)
   {
     AppMethodBeat.i(82655);
     k.h(paramString1, "toUser");
@@ -149,33 +149,33 @@ public final class c
     k.h(paramd, "callback");
     MpVideoDataParcelable localMpVideoDataParcelable = new MpVideoDataParcelable();
     localMpVideoDataParcelable.toUser = paramString1;
-    localMpVideoDataParcelable.kkB = paramString2;
-    localMpVideoDataParcelable.BsY = paramy;
+    localMpVideoDataParcelable.kLS = paramString2;
+    localMpVideoDataParcelable.CLe = paramy;
     h.a("com.tencent.mm", (Parcelable)localMpVideoDataParcelable, a.class, paramd);
     AppMethodBeat.o(82655);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MPVideoTransmit$IPCInvoke_SendAppMsg;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MPVideoTransmit$IPCInvoke_SendAppMsg;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"})
   static final class a
     implements com.tencent.mm.ipcinvoker.b<MpVideoDataParcelable, Bundle>
   {}
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
-    b(com.tencent.mm.ai.y paramy) {}
+    b(com.tencent.mm.ah.y paramy) {}
     
     public final void run()
     {
       AppMethodBeat.i(82653);
-      ax localax = ax.fF("MpShareVideoImage", 2);
-      byte[] arrayOfByte = localax.decodeBytes(this.BsT.CEg);
-      String str = r.aAK(this.BsT.gKD);
+      aw localaw = aw.fK("MpShareVideoImage", 2);
+      byte[] arrayOfByte = localaw.decodeBytes(this.CKZ.DWG);
+      String str = r.aGc(this.CKZ.hld);
       if (arrayOfByte != null) {
         i.B(str, arrayOfByte);
       }
-      localax.clearAll();
+      localaw.clearAll();
       AppMethodBeat.o(82653);
     }
   }

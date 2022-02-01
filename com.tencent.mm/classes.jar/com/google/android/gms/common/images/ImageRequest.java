@@ -27,14 +27,14 @@ public abstract class ImageRequest
   protected ImageManager.OnImageLoadedListener mOnImageLoadedListener;
   protected int mPostProcessingFlags;
   protected boolean mUseNewDrawable = false;
-  final ImageRequest.zza zzpk;
+  final zza zzpk;
   private boolean zzpl = true;
   private boolean zzpm = false;
   private boolean zzpn = true;
   
   public ImageRequest(Uri paramUri, int paramInt)
   {
-    this.zzpk = new ImageRequest.zza(paramUri);
+    this.zzpk = new zza(paramUri);
     this.mNoDataPlaceholderResId = paramInt;
   }
   
@@ -496,10 +496,46 @@ public abstract class ImageRequest
       }
     }
   }
+  
+  static final class zza
+  {
+    public final Uri uri;
+    
+    public zza(Uri paramUri)
+    {
+      this.uri = paramUri;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(11734);
+      if (!(paramObject instanceof zza))
+      {
+        AppMethodBeat.o(11734);
+        return false;
+      }
+      if (this == paramObject)
+      {
+        AppMethodBeat.o(11734);
+        return true;
+      }
+      boolean bool = Objects.equal(((zza)paramObject).uri, this.uri);
+      AppMethodBeat.o(11734);
+      return bool;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(11733);
+      int i = Objects.hashCode(new Object[] { this.uri });
+      AppMethodBeat.o(11733);
+      return i;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.images.ImageRequest
  * JD-Core Version:    0.7.0.1
  */

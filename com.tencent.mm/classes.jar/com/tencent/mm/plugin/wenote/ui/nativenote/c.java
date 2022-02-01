@@ -4,122 +4,128 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.j;
+import com.tencent.mm.br.d;
 import com.tencent.mm.compatible.b.c.a;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelvoice.m;
-import com.tencent.mm.plugin.fav.a.ao;
 import com.tencent.mm.plugin.wenote.model.a.l;
 import com.tencent.mm.plugin.wenote.model.f;
 import com.tencent.mm.plugin.wenote.model.k.1;
 import com.tencent.mm.plugin.wenote.model.k.2;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.u;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public final class c
   implements com.tencent.mm.plugin.wenote.model.b.a, com.tencent.mm.plugin.wenote.model.nativenote.b.b
 {
-  ImageButton BGd;
-  LinearLayout BGe;
-  ImageButton BGf;
-  ImageButton BGg;
-  ImageButton BGh;
-  ImageButton BGi;
-  LinearLayout BGj;
-  LinearLayout BGk;
-  LinearLayout BGl;
-  LinearLayout BGm;
-  LinearLayout BGn;
-  c BGo;
-  View iAQ;
-  String omm;
-  public boolean oqS;
-  boolean oqU;
-  boolean oqV;
-  boolean oqW;
-  boolean oqX;
+  ImageButton CYk;
+  LinearLayout CYl;
+  ImageButton CYm;
+  ImageButton CYn;
+  ImageButton CYo;
+  ImageButton CYp;
+  LinearLayout CYq;
+  LinearLayout CYr;
+  LinearLayout CYs;
+  LinearLayout CYt;
+  LinearLayout CYu;
+  c CYv;
+  View jaR;
+  String oPM;
+  public boolean oUs;
+  boolean oUu;
+  boolean oUv;
+  boolean oUw;
+  boolean oUx;
   
   public c()
   {
     AppMethodBeat.i(30825);
-    this.oqS = false;
-    this.omm = "";
-    this.oqX = false;
-    this.oqU = false;
-    this.oqV = false;
-    this.oqW = false;
-    this.BGo = this;
+    this.oUs = false;
+    this.oPM = "";
+    this.oUx = false;
+    this.oUu = false;
+    this.oUv = false;
+    this.oUw = false;
+    this.CYv = this;
     AppMethodBeat.o(30825);
   }
   
   public final void a(com.tencent.mm.plugin.wenote.model.nativenote.b.a parama)
   {
     AppMethodBeat.i(30828);
-    this.BGi.setImageResource(2131234782);
-    if (!this.oqS)
+    this.CYp.setImageResource(2131234782);
+    if (!this.oUs)
     {
       AppMethodBeat.o(30828);
       return;
     }
-    this.oqS = false;
-    com.tencent.mm.plugin.wenote.model.k.esA().bSc();
-    String str = com.tencent.mm.plugin.wenote.model.k.esA().bSd();
-    int i = (int)com.tencent.mm.plugin.wenote.model.k.esA().duration;
-    int j = (int)com.tencent.mm.bm.a.mI(i);
-    int k = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().bSv();
-    com.tencent.mm.plugin.wenote.model.a.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().TZ(k);
-    if (!com.tencent.mm.vfs.i.eK(str))
+    this.oUs = false;
+    com.tencent.mm.plugin.wenote.model.k.eHT().bZr();
+    String str = com.tencent.mm.plugin.wenote.model.k.eHT().bZs();
+    int i = (int)com.tencent.mm.plugin.wenote.model.k.eHT().duration;
+    int j = (int)com.tencent.mm.bl.a.qw(i);
+    int k = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().bZK();
+    com.tencent.mm.plugin.wenote.model.a.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().Wh(k);
+    if (!com.tencent.mm.vfs.i.eA(str))
     {
-      ad.e("MicroMsg.WNNoteFootPannel", "voicePath not exist, remove data from datalist and ui");
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().W(k, false);
+      ac.e("MicroMsg.WNNoteFootPannel", "voicePath not exist, remove data from datalist and ui");
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().W(k, false);
       if (parama != null) {
-        parama.zX(k);
+        parama.AP(k);
       }
       parama = new com.tencent.mm.plugin.wenote.model.a.i();
       parama.content = "";
-      parama.omv = true;
-      parama.omB = false;
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().a(k, parama);
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().eZ(k - 1, k + 1);
+      parama.oPV = true;
+      parama.oQb = false;
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().a(k, parama);
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().fc(k - 1, k + 1);
       AppMethodBeat.o(30828);
       return;
     }
     if ((k != -1) && (localc != null) && (localc.getType() == 4))
     {
-      ((l)localc).omS = Boolean.FALSE;
+      ((l)localc).oQs = Boolean.FALSE;
       ((l)localc).type = 4;
-      ((l)localc).omJ = true;
-      ((l)localc).omN = "";
+      ((l)localc).oQj = true;
+      ((l)localc).oQn = "";
       ((l)localc).length = j;
-      ((l)localc).omM = com.tencent.mm.bm.a.C(aj.getContext(), j).toString();
-      ((l)localc).jUR = (ao.cip() + "/fav_fileicon_recording.png");
-      ((l)localc).drZ = str;
-      ((l)localc).dkk = i;
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().Ac(k);
+      ((l)localc).oQm = com.tencent.mm.bl.a.F(ai.getContext(), j).toString();
+      ((l)localc).kvC = (com.tencent.mm.plugin.fav.a.ao.cpW() + "/fav_fileicon_recording.png");
+      ((l)localc).dpK = str;
+      ((l)localc).dhF = i;
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().AU(k);
     }
     AppMethodBeat.o(30828);
   }
   
-  public final void bSj()
+  public final void bZy()
   {
     AppMethodBeat.i(30827);
     a(null);
     AppMethodBeat.o(30827);
   }
   
-  public final void bSk()
+  public final void bZz()
   {
     AppMethodBeat.i(30826);
-    com.tencent.mm.ui.base.h.a(this.BGi.getContext(), this.BGi.getContext().getString(2131761648), "", true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.ui.base.h.a(this.CYp.getContext(), this.CYp.getContext().getString(2131761648), "", true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -134,41 +140,41 @@ public final class c
     AppMethodBeat.o(30826);
   }
   
-  public final void jr(boolean paramBoolean)
+  public final void jU(boolean paramBoolean)
   {
     AppMethodBeat.i(30829);
-    this.oqX = paramBoolean;
-    this.BGj.setPressed(paramBoolean);
+    this.oUx = paramBoolean;
+    this.CYq.setPressed(paramBoolean);
     AppMethodBeat.o(30829);
   }
   
-  public final void js(boolean paramBoolean)
+  public final void jV(boolean paramBoolean)
   {
     AppMethodBeat.i(30830);
-    this.oqU = paramBoolean;
-    this.BGk.setPressed(paramBoolean);
+    this.oUu = paramBoolean;
+    this.CYr.setPressed(paramBoolean);
     AppMethodBeat.o(30830);
   }
   
-  public final void jt(boolean paramBoolean)
+  public final void jW(boolean paramBoolean)
   {
     AppMethodBeat.i(30831);
-    this.oqV = paramBoolean;
-    this.BGl.setPressed(paramBoolean);
+    this.oUv = paramBoolean;
+    this.CYs.setPressed(paramBoolean);
     AppMethodBeat.o(30831);
   }
   
-  public final void ju(boolean paramBoolean)
+  public final void jX(boolean paramBoolean)
   {
     AppMethodBeat.i(30832);
-    this.oqW = paramBoolean;
-    this.BGn.setPressed(paramBoolean);
+    this.oUw = paramBoolean;
+    this.CYu.setPressed(paramBoolean);
     AppMethodBeat.o(30832);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.c
  * JD-Core Version:    0.7.0.1
  */

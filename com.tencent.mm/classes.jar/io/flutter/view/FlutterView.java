@@ -1,11 +1,14 @@
 package io.flutter.view;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Insets;
 import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
@@ -15,29 +18,30 @@ import android.os.LocaleList;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowManager;
 import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityNodeProvider;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.a.a.c.a;
-import io.flutter.a.a.c.b;
-import io.flutter.a.c.g;
 import io.flutter.embedding.engine.FlutterJNI;
 import io.flutter.embedding.engine.c.d;
 import io.flutter.embedding.engine.c.e;
-import io.flutter.embedding.engine.c.h;
+import io.flutter.embedding.engine.c.f;
 import io.flutter.embedding.engine.c.h.a;
 import io.flutter.embedding.engine.c.h.b;
 import io.flutter.embedding.engine.c.j;
 import io.flutter.embedding.engine.dart.DartExecutor;
+import io.flutter.plugin.a.c.b;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -46,31 +50,31 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class FlutterView
   extends SurfaceView
-  implements io.flutter.a.a.c, f
+  implements io.flutter.plugin.a.c, c
 {
-  public FlutterNativeView IWP;
-  private final io.flutter.embedding.engine.b.a IXG;
-  private boolean IXO;
-  private final io.flutter.embedding.android.a IXQ;
-  private final io.flutter.embedding.android.b IXR;
-  private final a.e IXU;
-  private final io.flutter.embedding.engine.c.b IXa;
-  private final DartExecutor IYe;
-  public final io.flutter.embedding.engine.c.c IYi;
-  private final d IYj;
-  public final e IYk;
-  private final io.flutter.embedding.engine.c.f IYm;
-  private final h IYn;
-  public final j IYo;
-  private final AtomicLong IZd;
-  private final InputMethodManager JbG;
-  private final io.flutter.a.b.b Jff;
-  private a Jfg;
-  public final SurfaceHolder.Callback Jfh;
-  private final d Jfi;
-  private final List<io.flutter.a.a.a> Jfj;
-  public final List<a> Jfk;
-  private boolean Jfl;
+  private final io.flutter.embedding.engine.b.a KKO;
+  private final io.flutter.embedding.android.a KKW;
+  private final io.flutter.embedding.android.b KKX;
+  public FlutterNativeView KKa;
+  private final io.flutter.embedding.engine.c.b KKl;
+  private final a.e KLa;
+  private final DartExecutor KLk;
+  public final io.flutter.embedding.engine.c.c KLn;
+  private final d KLo;
+  public final e KLp;
+  private final f KLq;
+  private final io.flutter.embedding.engine.c.h KLs;
+  public final j KLt;
+  private final AtomicLong KMG;
+  private final InputMethodManager KPk;
+  private a KSA;
+  public final SurfaceHolder.Callback KSB;
+  private final d KSC;
+  private final List<io.flutter.plugin.a.a> KSD;
+  public final List<a> KSE;
+  private boolean KSF;
+  private boolean KSG;
+  private final io.flutter.plugin.b.b KSz;
   
   public FlutterView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -81,19 +85,19 @@ public class FlutterView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(9698);
-    this.IZd = new AtomicLong(0L);
-    this.Jfl = false;
-    this.IXO = false;
-    this.IXU = new a.e()
+    this.KMG = new AtomicLong(0L);
+    this.KSF = false;
+    this.KSG = false;
+    this.KLa = new a.e()
     {
-      public final void aR(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+      public final void aV(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
         AppMethodBeat.i(9829);
         FlutterView.a(FlutterView.this, paramAnonymousBoolean1, paramAnonymousBoolean2);
         AppMethodBeat.o(9829);
       }
     };
-    paramAttributeSet = lk(getContext());
+    paramAttributeSet = lz(getContext());
     if (paramAttributeSet == null)
     {
       paramContext = new IllegalArgumentException("Bad context");
@@ -101,22 +105,22 @@ public class FlutterView
       throw paramContext;
     }
     if (paramFlutterNativeView == null) {}
-    for (this.IWP = new FlutterNativeView(paramAttributeSet.getApplicationContext());; this.IWP = paramFlutterNativeView)
+    for (this.KKa = new FlutterNativeView(paramAttributeSet.getApplicationContext());; this.KKa = paramFlutterNativeView)
     {
-      this.IYe = this.IWP.IYe;
-      this.IXG = new io.flutter.embedding.engine.b.a(this.IWP.getFlutterJNI());
-      this.Jfl = FlutterJNI.nativeGetIsSoftwareRenderingEnabled();
-      this.Jfi = new d();
-      this.Jfi.IZi = paramContext.getResources().getDisplayMetrics().density;
+      this.KLk = this.KKa.KLk;
+      this.KKO = new io.flutter.embedding.engine.b.a(this.KKa.getFlutterJNI());
+      this.KSF = this.KKa.getFlutterJNI().nativeGetIsSoftwareRenderingEnabled();
+      this.KSC = new d();
+      this.KSC.KML = paramContext.getResources().getDisplayMetrics().density;
       setFocusable(true);
       setFocusableInTouchMode(true);
-      paramContext = this.IWP;
-      paramContext.IWQ = this;
-      paramContext = paramContext.JeY;
-      paramContext.IWQ = this;
+      paramContext = this.KKa;
+      paramContext.KKb = this;
+      paramContext = paramContext.KSs;
+      paramContext.KKb = this;
       paramContext.mActivity = paramAttributeSet;
-      paramContext.IWR.a(paramAttributeSet, this, getDartExecutor());
-      this.Jfh = new SurfaceHolder.Callback()
+      paramContext.KKc.a(paramAttributeSet, this, getDartExecutor());
+      this.KSB = new SurfaceHolder.Callback()
       {
         public final void surfaceChanged(SurfaceHolder paramAnonymousSurfaceHolder, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
@@ -142,44 +146,44 @@ public class FlutterView
           AppMethodBeat.o(9801);
         }
       };
-      getHolder().addCallback(this.Jfh);
-      this.Jfj = new ArrayList();
-      this.Jfk = new ArrayList();
-      this.IYk = new e(this.IYe);
-      this.IXa = new io.flutter.embedding.engine.c.b(this.IYe);
-      this.IYi = new io.flutter.embedding.engine.c.c(this.IYe);
-      this.IYj = new d(this.IYe);
-      this.IYm = new io.flutter.embedding.engine.c.f(this.IYe);
-      this.IYo = new j(this.IYe);
-      this.IYn = new h(this.IYe);
-      paramContext = new io.flutter.a.a.a()
+      getHolder().addCallback(this.KSB);
+      this.KSD = new ArrayList();
+      this.KSE = new ArrayList();
+      this.KLp = new e(this.KLk);
+      this.KKl = new io.flutter.embedding.engine.c.b(this.KLk);
+      this.KLn = new io.flutter.embedding.engine.c.c(this.KLk);
+      this.KLo = new d(this.KLk);
+      this.KLq = new f(this.KLk);
+      this.KLt = new j(this.KLk);
+      this.KLs = new io.flutter.embedding.engine.c.h(this.KLk);
+      paramContext = new io.flutter.plugin.a.a()
       {
         public final void onPostResume()
         {
           AppMethodBeat.i(9680);
-          this.Jfn.fve();
+          this.KSI.fNK();
           AppMethodBeat.o(9680);
         }
       };
-      this.Jfj.add(paramContext);
-      this.JbG = ((InputMethodManager)getContext().getSystemService("input_method"));
-      paramContext = this.IWP.JeY.IWR;
-      this.Jff = new io.flutter.a.b.b(this, this.IYe, paramContext);
-      this.IXQ = new io.flutter.embedding.android.a(this.IXa, this.Jff);
-      this.IXR = new io.flutter.embedding.android.b(this.IXG);
-      this.IWP.JeY.IWR.IXb = this.Jff;
-      j(getResources().getConfiguration());
-      fvp();
+      this.KSD.add(paramContext);
+      this.KPk = ((InputMethodManager)getContext().getSystemService("input_method"));
+      paramContext = this.KKa.KSs.KKc;
+      this.KSz = new io.flutter.plugin.b.b(this, this.KLk, paramContext);
+      this.KKW = new io.flutter.embedding.android.a(this.KKl, this.KSz);
+      this.KKX = new io.flutter.embedding.android.b(this.KKO);
+      this.KKa.KSs.KKc.KKm = this.KSz;
+      k(getResources().getConfiguration());
+      fNV();
       AppMethodBeat.o(9698);
       return;
     }
   }
   
-  private void aQ(boolean paramBoolean1, boolean paramBoolean2)
+  private void aU(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool2 = false;
     AppMethodBeat.i(9724);
-    if (!this.Jfl)
+    if (!this.KSF)
     {
       boolean bool1 = bool2;
       if (!paramBoolean1)
@@ -197,21 +201,26 @@ public class FlutterView
     AppMethodBeat.o(9724);
   }
   
-  private void fvp()
+  private void fNV()
   {
     AppMethodBeat.i(9704);
+    if (!isAttached())
+    {
+      AppMethodBeat.o(9704);
+      return;
+    }
     int i;
     if ((getResources().getConfiguration().uiMode & 0x30) == 32)
     {
       i = 1;
       if (i == 0) {
-        break label83;
+        break label97;
       }
     }
-    label83:
-    for (h.b localb = h.b.JaC;; localb = h.b.JaB)
+    label97:
+    for (h.b localb = h.b.KOf;; localb = h.b.KOe)
     {
-      this.IYn.fva().bT(getResources().getConfiguration().fontScale).xQ(DateFormat.is24HourFormat(getContext())).a(localb).send();
+      this.KLs.fNG().ci(getResources().getConfiguration().fontScale).zi(DateFormat.is24HourFormat(getContext())).a(localb).send();
       AppMethodBeat.o(9704);
       return;
       i = 0;
@@ -219,7 +228,7 @@ public class FlutterView
     }
   }
   
-  private void fvr()
+  private void fNX()
   {
     AppMethodBeat.i(9720);
     if (!isAttached())
@@ -227,13 +236,18 @@ public class FlutterView
       AppMethodBeat.o(9720);
       return;
     }
-    this.IWP.getFlutterJNI().setViewportMetrics(this.Jfi.IZi, this.Jfi.Jfp, this.Jfi.Jfq, this.Jfi.Jfr, this.Jfi.Jfs, this.Jfi.Jft, this.Jfi.Jfu, this.Jfi.Jfv, this.Jfi.Jfw, this.Jfi.Jfx, this.Jfi.Jfy, this.Jfi.IZn, this.Jfi.IZo, this.Jfi.IZp, this.Jfi.IZq);
+    this.KKa.getFlutterJNI().setViewportMetrics(this.KSC.KML, this.KSC.KSK, this.KSC.KSL, this.KSC.KSM, this.KSC.KSN, this.KSC.KSO, this.KSC.KSP, this.KSC.KSQ, this.KSC.KSR, this.KSC.KSS, this.KSC.KST, this.KSC.KMQ, this.KSC.KMR, this.KSC.KMS, this.KSC.KMT);
     AppMethodBeat.o(9720);
   }
   
-  private void j(Configuration paramConfiguration)
+  private void k(Configuration paramConfiguration)
   {
     AppMethodBeat.i(9705);
+    if (!isAttached())
+    {
+      AppMethodBeat.o(9705);
+      return;
+    }
     ArrayList localArrayList = new ArrayList();
     if (Build.VERSION.SDK_INT >= 24)
     {
@@ -247,11 +261,11 @@ public class FlutterView
       }
     }
     localArrayList.add(paramConfiguration.locale);
-    this.IYj.it(localArrayList);
+    this.KLo.iI(localArrayList);
     AppMethodBeat.o(9705);
   }
   
-  private static Activity lk(Context paramContext)
+  private static Activity lz(Context paramContext)
   {
     AppMethodBeat.i(9699);
     for (;;)
@@ -276,19 +290,19 @@ public class FlutterView
     return null;
   }
   
-  public final void a(c paramc)
+  public final void a(b paramb)
   {
     AppMethodBeat.i(9718);
     assertAttached();
-    fvq();
-    this.IWP.a(paramc);
+    fNW();
+    this.KKa.a(paramb);
     AppMethodBeat.o(9718);
   }
   
-  public final void a(String paramString, c.a parama)
+  public final void a(String paramString, io.flutter.plugin.a.c.a parama)
   {
     AppMethodBeat.i(9728);
-    this.IWP.a(paramString, parama);
+    this.KKa.a(paramString, parama);
     AppMethodBeat.o(9728);
   }
   
@@ -307,7 +321,7 @@ public class FlutterView
       AppMethodBeat.o(9727);
       return;
     }
-    this.IWP.a(paramString, paramByteBuffer, paramb);
+    this.KKa.a(paramString, paramByteBuffer, paramb);
     AppMethodBeat.o(9727);
   }
   
@@ -326,7 +340,7 @@ public class FlutterView
   public boolean checkInputConnectionProxy(View paramView)
   {
     AppMethodBeat.i(9709);
-    boolean bool = this.IWP.JeY.IWR.checkInputConnectionProxy(paramView);
+    boolean bool = this.KKa.KSs.KKc.checkInputConnectionProxy(paramView);
     AppMethodBeat.o(9709);
     return bool;
   }
@@ -339,10 +353,30 @@ public class FlutterView
       AppMethodBeat.o(9707);
       return;
     }
-    getHolder().removeCallback(this.Jfh);
-    this.IWP.destroy();
-    this.IWP = null;
+    getHolder().removeCallback(this.KSB);
+    this.KKa.destroy();
+    this.KKa = null;
     AppMethodBeat.o(9707);
+  }
+  
+  final void fNW()
+  {
+    AppMethodBeat.i(9717);
+    if (this.KSA != null) {
+      this.KSA.reset();
+    }
+    AppMethodBeat.o(9717);
+  }
+  
+  public final c.a fNv()
+  {
+    AppMethodBeat.i(9729);
+    SurfaceTexture localSurfaceTexture = new SurfaceTexture(0);
+    localSurfaceTexture.detachFromGLContext();
+    c localc = new c(this.KMG.getAndIncrement(), localSurfaceTexture);
+    this.KKa.getFlutterJNI().registerTexture(localc.id, localSurfaceTexture);
+    AppMethodBeat.o(9729);
+    return localc;
   }
   
   protected boolean fitSystemWindows(Rect paramRect)
@@ -350,15 +384,15 @@ public class FlutterView
     AppMethodBeat.i(9714);
     if (Build.VERSION.SDK_INT <= 19)
     {
-      this.Jfi.Jfr = paramRect.top;
-      this.Jfi.Jfs = paramRect.right;
-      this.Jfi.Jft = 0;
-      this.Jfi.Jfu = paramRect.left;
-      this.Jfi.Jfv = 0;
-      this.Jfi.Jfw = 0;
-      this.Jfi.Jfx = paramRect.bottom;
-      this.Jfi.Jfy = 0;
-      fvr();
+      this.KSC.KSM = paramRect.top;
+      this.KSC.KSN = paramRect.right;
+      this.KSC.KSO = 0;
+      this.KSC.KSP = paramRect.left;
+      this.KSC.KSQ = 0;
+      this.KSC.KSR = 0;
+      this.KSC.KSS = paramRect.bottom;
+      this.KSC.KST = 0;
+      fNX();
       AppMethodBeat.o(9714);
       return true;
     }
@@ -367,32 +401,12 @@ public class FlutterView
     return bool;
   }
   
-  public final f.a fuS()
-  {
-    AppMethodBeat.i(9729);
-    SurfaceTexture localSurfaceTexture = new SurfaceTexture(0);
-    localSurfaceTexture.detachFromGLContext();
-    c localc = new c(this.IZd.getAndIncrement(), localSurfaceTexture);
-    this.IWP.getFlutterJNI().registerTexture(localc.id, localSurfaceTexture);
-    AppMethodBeat.o(9729);
-    return localc;
-  }
-  
-  final void fvq()
-  {
-    AppMethodBeat.i(9717);
-    if (this.Jfg != null) {
-      this.Jfg.reset();
-    }
-    AppMethodBeat.o(9717);
-  }
-  
   public AccessibilityNodeProvider getAccessibilityNodeProvider()
   {
     AppMethodBeat.i(9725);
-    if ((this.Jfg != null) && (this.Jfg.kI.isEnabled()))
+    if ((this.KSA != null) && (this.KSA.lH.isEnabled()))
     {
-      a locala = this.Jfg;
+      a locala = this.KSA;
       AppMethodBeat.o(9725);
       return locala;
     }
@@ -404,35 +418,35 @@ public class FlutterView
   {
     AppMethodBeat.i(9719);
     assertAttached();
-    Bitmap localBitmap = this.IWP.getFlutterJNI().getBitmap();
+    Bitmap localBitmap = this.KKa.getFlutterJNI().getBitmap();
     AppMethodBeat.o(9719);
     return localBitmap;
   }
   
   public DartExecutor getDartExecutor()
   {
-    return this.IYe;
+    return this.KLk;
   }
   
   float getDevicePixelRatio()
   {
-    return this.Jfi.IZi;
+    return this.KSC.KML;
   }
   
   public FlutterNativeView getFlutterNativeView()
   {
-    return this.IWP;
+    return this.KKa;
   }
   
   public io.flutter.app.c getPluginRegistry()
   {
-    return this.IWP.JeY;
+    return this.KKa.KSs;
   }
   
   public final boolean isAttached()
   {
     AppMethodBeat.i(9715);
-    if ((this.IWP != null) && (this.IWP.JeZ.isAttached()))
+    if ((this.KKa != null) && (this.KKa.KSt.isAttached()))
     {
       AppMethodBeat.o(9715);
       return true;
@@ -441,14 +455,137 @@ public class FlutterView
     return false;
   }
   
+  @SuppressLint({"InlinedApi", "NewApi"})
+  @TargetApi(20)
+  public final WindowInsets onApplyWindowInsets(WindowInsets paramWindowInsets)
+  {
+    AppMethodBeat.i(192789);
+    int j;
+    int i;
+    label28:
+    Object localObject;
+    int m;
+    if ((getWindowSystemUiVisibility() & 0x4) != 0)
+    {
+      j = 1;
+      if ((getWindowSystemUiVisibility() & 0x2) == 0) {
+        break label327;
+      }
+      i = 1;
+      localObject = e.KSU;
+      if (i != 0)
+      {
+        localObject = (Activity)getContext();
+        int k = ((Activity)localObject).getResources().getConfiguration().orientation;
+        m = ((Activity)localObject).getWindowManager().getDefaultDisplay().getRotation();
+        if (k != 2) {
+          break label381;
+        }
+        if (m != 1) {
+          break label332;
+        }
+        localObject = e.KSW;
+      }
+      label91:
+      d locald = this.KSC;
+      if (j == 0) {
+        break label389;
+      }
+      j = 0;
+      label103:
+      locald.KSM = j;
+      locald = this.KSC;
+      if ((localObject != e.KSW) && (localObject != e.KSX)) {
+        break label397;
+      }
+      j = 0;
+      label133:
+      locald.KSN = j;
+      this.KSC.KSO = 0;
+      locald = this.KSC;
+      if ((localObject != e.KSV) && (localObject != e.KSX)) {
+        break label405;
+      }
+      j = 0;
+      label171:
+      locald.KSP = j;
+      this.KSC.KSQ = 0;
+      this.KSC.KSR = 0;
+      localObject = this.KSC;
+      if (i == 0) {
+        break label421;
+      }
+      i = getRootView().getHeight();
+      if (paramWindowInsets.getSystemWindowInsetBottom() >= i * 0.18D) {
+        break label413;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      ((d)localObject).KSS = i;
+      this.KSC.KST = 0;
+      if (Build.VERSION.SDK_INT >= 29)
+      {
+        localObject = paramWindowInsets.getSystemGestureInsets();
+        this.KSC.KMQ = ((Insets)localObject).top;
+        this.KSC.KMR = ((Insets)localObject).right;
+        this.KSC.KMS = ((Insets)localObject).bottom;
+        this.KSC.KMT = ((Insets)localObject).left;
+      }
+      fNX();
+      paramWindowInsets = super.onApplyWindowInsets(paramWindowInsets);
+      AppMethodBeat.o(192789);
+      return paramWindowInsets;
+      j = 0;
+      break;
+      label327:
+      i = 0;
+      break label28;
+      label332:
+      if (m == 3)
+      {
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+          localObject = e.KSV;
+          break label91;
+        }
+        localObject = e.KSW;
+        break label91;
+      }
+      if ((m == 0) || (m == 2))
+      {
+        localObject = e.KSX;
+        break label91;
+      }
+      label381:
+      localObject = e.KSU;
+      break label91;
+      label389:
+      j = paramWindowInsets.getSystemWindowInsetTop();
+      break label103;
+      label397:
+      j = paramWindowInsets.getSystemWindowInsetRight();
+      break label133;
+      label405:
+      j = paramWindowInsets.getSystemWindowInsetLeft();
+      break label171;
+      label413:
+      i = paramWindowInsets.getSystemWindowInsetBottom();
+      continue;
+      label421:
+      i = paramWindowInsets.getSystemWindowInsetBottom();
+    }
+  }
+  
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(9722);
     super.onAttachedToWindow();
-    g localg = getPluginRegistry().IWR;
-    this.Jfg = new a(this, new io.flutter.embedding.engine.c.a(this.IYe, getFlutterNativeView().getFlutterJNI()), (AccessibilityManager)getContext().getSystemService("accessibility"), getContext().getContentResolver(), localg);
-    this.Jfg.IXU = this.IXU;
-    aQ(this.Jfg.kI.isEnabled(), this.Jfg.kI.isTouchExplorationEnabled());
+    io.flutter.plugin.platform.h localh = getPluginRegistry().KKc;
+    this.KSA = new a(this, new io.flutter.embedding.engine.c.a(this.KLk, getFlutterNativeView().getFlutterJNI()), (AccessibilityManager)getContext().getSystemService("accessibility"), getContext().getContentResolver(), localh);
+    this.KSA.KLa = this.KLa;
+    aU(this.KSA.lH.isEnabled(), this.KSA.lH.isTouchExplorationEnabled());
     AppMethodBeat.o(9722);
   }
   
@@ -456,15 +593,15 @@ public class FlutterView
   {
     AppMethodBeat.i(9706);
     super.onConfigurationChanged(paramConfiguration);
-    j(paramConfiguration);
-    fvp();
+    k(paramConfiguration);
+    fNV();
     AppMethodBeat.o(9706);
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
     AppMethodBeat.i(9708);
-    paramEditorInfo = this.Jff.a(this, paramEditorInfo);
+    paramEditorInfo = this.KSz.a(this, paramEditorInfo);
     AppMethodBeat.o(9708);
     return paramEditorInfo;
   }
@@ -473,16 +610,16 @@ public class FlutterView
   {
     AppMethodBeat.i(9723);
     super.onDetachedFromWindow();
-    this.Jfg.release();
-    this.Jfg = null;
+    this.KSA.release();
+    this.KSA = null;
     AppMethodBeat.o(9723);
   }
   
   public void onFirstFrame()
   {
     AppMethodBeat.i(9721);
-    this.IXO = true;
-    Iterator localIterator = new ArrayList(this.Jfk).iterator();
+    this.KSG = true;
+    Iterator localIterator = new ArrayList(this.KSE).iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).onFirstFrame();
     }
@@ -492,7 +629,7 @@ public class FlutterView
   public boolean onGenericMotionEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9712);
-    if ((isAttached()) && (this.IXR.onGenericMotionEvent(paramMotionEvent))) {}
+    if ((isAttached()) && (this.KKX.onGenericMotionEvent(paramMotionEvent))) {}
     for (int i = 1; i != 0; i = 0)
     {
       AppMethodBeat.o(9712);
@@ -512,7 +649,7 @@ public class FlutterView
       AppMethodBeat.o(9711);
       return bool;
     }
-    boolean bool = this.Jfg.an(paramMotionEvent);
+    boolean bool = this.KSA.an(paramMotionEvent);
     AppMethodBeat.o(9711);
     return bool;
   }
@@ -526,7 +663,7 @@ public class FlutterView
       AppMethodBeat.o(9701);
       return bool;
     }
-    this.IXQ.j(paramKeyEvent);
+    this.KKW.j(paramKeyEvent);
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
     AppMethodBeat.o(9701);
     return bool;
@@ -541,7 +678,7 @@ public class FlutterView
       AppMethodBeat.o(9700);
       return bool;
     }
-    this.IXQ.i(paramKeyEvent);
+    this.KKW.i(paramKeyEvent);
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(9700);
     return bool;
@@ -550,20 +687,20 @@ public class FlutterView
   public void onPostResume()
   {
     AppMethodBeat.i(9702);
-    Iterator localIterator = this.Jfj.iterator();
+    Iterator localIterator = this.KSD.iterator();
     while (localIterator.hasNext()) {
-      ((io.flutter.a.a.a)localIterator.next()).onPostResume();
+      ((io.flutter.plugin.a.a)localIterator.next()).onPostResume();
     }
-    this.IYi.fuW();
+    this.KLn.fNA();
     AppMethodBeat.o(9702);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(9713);
-    this.Jfi.Jfp = paramInt1;
-    this.Jfi.Jfq = paramInt2;
-    fvr();
+    this.KSC.KSK = paramInt1;
+    this.KSC.KSL = paramInt2;
+    fNX();
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(9713);
   }
@@ -580,7 +717,7 @@ public class FlutterView
     if (Build.VERSION.SDK_INT >= 21) {
       requestUnbufferedDispatch(paramMotionEvent);
     }
-    boolean bool = this.IXR.onTouchEvent(paramMotionEvent);
+    boolean bool = this.KKX.onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(9710);
     return bool;
   }
@@ -588,7 +725,7 @@ public class FlutterView
   public void setInitialRoute(String paramString)
   {
     AppMethodBeat.i(9703);
-    this.IYk.setInitialRoute(paramString);
+    this.KLp.setInitialRoute(paramString);
     AppMethodBeat.o(9703);
   }
   
@@ -600,9 +737,9 @@ public class FlutterView
   public static abstract interface b {}
   
   final class c
-    implements f.a
+    implements c.a
   {
-    private SurfaceTexture.OnFrameAvailableListener IZg;
+    private SurfaceTexture.OnFrameAvailableListener KMJ;
     final long id;
     boolean released;
     private final SurfaceTexture surfaceTexture;
@@ -610,7 +747,7 @@ public class FlutterView
     c(long paramLong, SurfaceTexture paramSurfaceTexture)
     {
       AppMethodBeat.i(9779);
-      this.IZg = new SurfaceTexture.OnFrameAvailableListener()
+      this.KMJ = new SurfaceTexture.OnFrameAvailableListener()
       {
         public final void onFrameAvailable(SurfaceTexture paramAnonymousSurfaceTexture)
         {
@@ -628,15 +765,15 @@ public class FlutterView
       this.surfaceTexture = paramSurfaceTexture;
       if (Build.VERSION.SDK_INT >= 21)
       {
-        this.surfaceTexture.setOnFrameAvailableListener(this.IZg, new Handler());
+        this.surfaceTexture.setOnFrameAvailableListener(this.KMJ, new Handler());
         AppMethodBeat.o(9779);
         return;
       }
-      this.surfaceTexture.setOnFrameAvailableListener(this.IZg);
+      this.surfaceTexture.setOnFrameAvailableListener(this.KMJ);
       AppMethodBeat.o(9779);
     }
     
-    public final long fuU()
+    public final long fNy()
     {
       return this.id;
     }
@@ -664,26 +801,42 @@ public class FlutterView
   
   static final class d
   {
-    float IZi = 1.0F;
-    int IZn = 0;
-    int IZo = 0;
-    int IZp = 0;
-    int IZq = 0;
-    int Jfp = 0;
-    int Jfq = 0;
-    int Jfr = 0;
-    int Jfs = 0;
-    int Jft = 0;
-    int Jfu = 0;
-    int Jfv = 0;
-    int Jfw = 0;
-    int Jfx = 0;
-    int Jfy = 0;
+    float KML = 1.0F;
+    int KMQ = 0;
+    int KMR = 0;
+    int KMS = 0;
+    int KMT = 0;
+    int KSK = 0;
+    int KSL = 0;
+    int KSM = 0;
+    int KSN = 0;
+    int KSO = 0;
+    int KSP = 0;
+    int KSQ = 0;
+    int KSR = 0;
+    int KSS = 0;
+    int KST = 0;
+  }
+  
+  static enum e
+  {
+    static
+    {
+      AppMethodBeat.i(192782);
+      KSU = new e("NONE", 0);
+      KSV = new e("LEFT", 1);
+      KSW = new e("RIGHT", 2);
+      KSX = new e("BOTH", 3);
+      KSY = new e[] { KSU, KSV, KSW, KSX };
+      AppMethodBeat.o(192782);
+    }
+    
+    private e() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.view.FlutterView
  * JD-Core Version:    0.7.0.1
  */

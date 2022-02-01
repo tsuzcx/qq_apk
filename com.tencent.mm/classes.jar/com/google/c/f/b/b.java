@@ -5,32 +5,32 @@ import java.lang.reflect.Array;
 
 public final class b
 {
-  final byte[][] bNi;
+  final byte[][] bKQ;
   public final int height;
   public final int width;
   
   public b(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12242);
-    this.bNi = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { paramInt2, paramInt1 }));
+    this.bKQ = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { paramInt2, paramInt1 }));
     this.width = paramInt1;
     this.height = paramInt2;
     AppMethodBeat.o(12242);
   }
   
-  public final byte bP(int paramInt1, int paramInt2)
+  public final byte bM(int paramInt1, int paramInt2)
   {
-    return this.bNi[paramInt2][paramInt1];
+    return this.bKQ[paramInt2][paramInt1];
   }
   
   public final void set(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.bNi[paramInt2][paramInt1] = ((byte)paramInt3);
+    this.bKQ[paramInt2][paramInt1] = ((byte)paramInt3);
   }
   
   public final void set(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    byte[] arrayOfByte = this.bNi[paramInt2];
+    byte[] arrayOfByte = this.bKQ[paramInt2];
     if (paramBoolean) {}
     for (paramInt2 = 1;; paramInt2 = 0)
     {
@@ -49,7 +49,7 @@ public final class b
       int j = 0;
       if (j < this.width)
       {
-        switch (this.bNi[i][j])
+        switch (this.bKQ[i][j])
         {
         default: 
           ((StringBuilder)localObject).append("  ");
@@ -73,7 +73,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.f.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.IJSRuntime;
 import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -12,13 +12,13 @@ public abstract class a
   extends d
   implements i, k, m, p, t, u, v
 {
-  private final IJSRuntime cQa = g(paramConfig);
-  final com.tencent.mm.appbrand.v8.m kDd;
-  private final e kDe;
-  private ArrayList<m.a> kDf = new ArrayList();
-  private final Object kDg = new byte[0];
-  private ArrayList<p.a> kDh = new ArrayList();
-  private final boolean kDi;
+  private final IJSRuntime cNv = g(paramConfig);
+  private final boolean leA;
+  final com.tencent.mm.appbrand.v8.m lev;
+  private final e lew;
+  private ArrayList<m.a> lex = new ArrayList();
+  private final Object ley = new byte[0];
+  private ArrayList<p.a> lez = new ArrayList();
   
   public a()
   {
@@ -32,12 +32,12 @@ public abstract class a
   
   public a(IJSRuntime.Config paramConfig)
   {
-    if ((paramConfig != null) && (paramConfig.cPa)) {}
+    if ((paramConfig != null) && (paramConfig.cMv)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.kDi = bool;
-      this.kDd = a(this.cQa, e.bfF());
-      this.cQa.q(new Runnable()
+      this.leA = bool;
+      this.lev = a(this.cNv, e.bmz());
+      this.cNv.r(new Runnable()
       {
         public final void run()
         {
@@ -55,26 +55,26 @@ public abstract class a
           AppMethodBeat.o(144154);
         }
       });
-      this.kDe = new e(new e.a()
+      this.lew = new e(new e.a()
       {
-        public final com.tencent.mm.appbrand.v8.m sD(int paramAnonymousInt)
+        public final com.tencent.mm.appbrand.v8.m tu(int paramAnonymousInt)
         {
           AppMethodBeat.i(144155);
-          com.tencent.mm.appbrand.v8.m localm = a.d(a.this).hE(paramAnonymousInt);
+          com.tencent.mm.appbrand.v8.m localm = a.d(a.this).ho(paramAnonymousInt);
           AppMethodBeat.o(144155);
           return localm;
         }
       });
-      paramConfig = this.kDe;
-      ad.i("MicroMsg.AppBrandJ2V8ContextMgr", "setMainContext id:%d", new Object[] { Integer.valueOf(1) });
-      paramConfig.kDs.put(1, this);
+      paramConfig = this.lew;
+      ac.i("MicroMsg.AppBrandJ2V8ContextMgr", "setMainContext id:%d", new Object[] { Integer.valueOf(1) });
+      paramConfig.leK.put(1, this);
       return;
     }
   }
   
   public final <T extends j> T P(Class<T> paramClass)
   {
-    if ((paramClass == n.class) && (!this.kDi)) {
+    if ((paramClass == n.class) && (!this.leA)) {
       return null;
     }
     return super.P(paramClass);
@@ -86,7 +86,7 @@ public abstract class a
   {
     try
     {
-      this.kDf.add(parama);
+      this.lex.add(parama);
       return;
     }
     finally
@@ -98,48 +98,48 @@ public abstract class a
   
   public final void a(p.a parama)
   {
-    synchronized (this.kDg)
+    synchronized (this.ley)
     {
-      if (this.kDh != null) {
-        this.kDh.add(parama);
+      if (this.lez != null) {
+        this.lez.add(parama);
       }
       return;
     }
   }
   
-  protected final com.tencent.mm.appbrand.v8.m bfA()
+  protected final IJSRuntime bmt()
   {
-    return this.kDd;
+    return this.cNv;
   }
   
-  public final boolean bfB()
+  protected final com.tencent.mm.appbrand.v8.m bmu()
+  {
+    return this.lev;
+  }
+  
+  public final boolean bmv()
   {
     return true;
   }
   
-  public final int bfC()
+  public final int bmw()
   {
-    return e.bfF();
+    return e.bmz();
   }
   
-  public final g bfD()
+  public final g bmx()
   {
-    return this.kDe.sy(1);
+    return this.lew.tp(1);
   }
   
-  public final g bfE()
+  public final g bmy()
   {
-    return this.kDe.bfE();
-  }
-  
-  protected final IJSRuntime bfz()
-  {
-    return this.cQa;
+    return this.lew.bmy();
   }
   
   public void destroy()
   {
-    this.kDd.cPC.s(new Runnable()
+    this.lev.cMX.t(new Runnable()
     {
       public final void run()
       {
@@ -175,31 +175,31 @@ public abstract class a
         AppMethodBeat.o(144156);
       }
     });
-    e locale = this.kDe;
-    SparseArray localSparseArray = locale.kDs;
+    e locale = this.lew;
+    SparseArray localSparseArray = locale.leK;
     int i = 0;
     for (;;)
     {
       try
       {
-        if (i < locale.kDs.size())
+        if (i < locale.leK.size())
         {
-          int j = locale.kDs.keyAt(i);
+          int j = locale.leK.keyAt(i);
           if (j == 1) {
             break label163;
           }
-          ad.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d", new Object[] { Integer.valueOf(j) });
-          if (locale.kDs.get(j) == null) {
-            ad.w("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d null", new Object[] { Integer.valueOf(j) });
+          ac.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d", new Object[] { Integer.valueOf(j) });
+          if (locale.leK.get(j) == null) {
+            ac.w("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d null", new Object[] { Integer.valueOf(j) });
           } else {
-            ((d)locale.kDs.get(j)).destroy();
+            ((d)locale.leK.get(j)).destroy();
           }
         }
       }
       finally {}
-      localObject.kDs.clear();
+      localObject.leK.clear();
       super.destroy();
-      this.cQa.quit();
+      this.cNv.quit();
       return;
       label163:
       i += 1;
@@ -210,22 +210,22 @@ public abstract class a
   
   public void setJsExceptionHandler(h paramh)
   {
-    this.kDd.a(e.bfF(), paramh);
+    this.lev.a(e.bmz(), paramh);
   }
   
-  public final g sy(int paramInt)
+  public final g tp(int paramInt)
   {
-    return this.kDe.sy(paramInt);
+    return this.lew.tp(paramInt);
   }
   
-  public final void sz(int paramInt)
+  public final void tq(int paramInt)
   {
-    e locale = this.kDe;
-    ad.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyJsContext id:%d", new Object[] { Integer.valueOf(paramInt) });
-    synchronized (locale.kDs)
+    e locale = this.lew;
+    ac.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyJsContext id:%d", new Object[] { Integer.valueOf(paramInt) });
+    synchronized (locale.leK)
     {
-      d locald = (d)locale.kDs.get(paramInt);
-      locale.kDs.delete(paramInt);
+      d locald = (d)locale.leK.get(paramInt);
+      locale.leK.delete(paramInt);
       if (locald != null) {
         locald.destroy();
       }
@@ -235,7 +235,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.a
  * JD-Core Version:    0.7.0.1
  */

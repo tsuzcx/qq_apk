@@ -8,33 +8,16 @@ public abstract class da
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eKA = "rankID".hashCode();
-  private static final int eKB = "appusername".hashCode();
-  private static final int eKE = "score".hashCode();
-  private static final int eKK;
-  private static final int eKL = "likecount".hashCode();
-  private static final int eKM = "selfLikeState".hashCode();
-  private static final int eme = "username".hashCode();
+  private static final int eNt = "appusername".hashCode();
+  private static final int eNw = "score".hashCode();
+  private static final int eqK = "title".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eKD = true;
-  private boolean eKH = true;
-  private boolean eKI = true;
-  private boolean eKJ = true;
-  private boolean eKx = true;
-  private boolean eKy = true;
-  private boolean emb = true;
+  private boolean eNq;
+  private boolean eNv;
+  private boolean eqH;
   public String field_appusername;
-  public int field_likecount;
-  public String field_rankID;
-  public int field_ranknum;
   public int field_score;
-  public int field_selfLikeState;
-  public String field_username;
-  
-  static
-  {
-    eKK = "ranknum".hashCode();
-  }
+  public String field_title;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -49,10 +32,10 @@ public abstract class da
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eKA != k) {
+      if (eNt != k) {
         break label60;
       }
-      this.field_rankID = paramCursor.getString(i);
+      this.field_appusername = paramCursor.getString(i);
     }
     for (;;)
     {
@@ -60,18 +43,10 @@ public abstract class da
       break label20;
       break;
       label60:
-      if (eKB == k) {
-        this.field_appusername = paramCursor.getString(i);
-      } else if (eme == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (eKK == k) {
-        this.field_ranknum = paramCursor.getInt(i);
-      } else if (eKE == k) {
+      if (eqK == k) {
+        this.field_title = paramCursor.getString(i);
+      } else if (eNw == k) {
         this.field_score = paramCursor.getInt(i);
-      } else if (eKL == k) {
-        this.field_likecount = paramCursor.getInt(i);
-      } else if (eKM == k) {
-        this.field_selfLikeState = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -81,26 +56,14 @@ public abstract class da
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eKx) {
-      localContentValues.put("rankID", this.field_rankID);
-    }
-    if (this.eKy) {
+    if (this.eNq) {
       localContentValues.put("appusername", this.field_appusername);
     }
-    if (this.emb) {
-      localContentValues.put("username", this.field_username);
+    if (this.eqH) {
+      localContentValues.put("title", this.field_title);
     }
-    if (this.eKH) {
-      localContentValues.put("ranknum", Integer.valueOf(this.field_ranknum));
-    }
-    if (this.eKD) {
+    if (this.eNv) {
       localContentValues.put("score", Integer.valueOf(this.field_score));
-    }
-    if (this.eKI) {
-      localContentValues.put("likecount", Integer.valueOf(this.field_likecount));
-    }
-    if (this.eKJ) {
-      localContentValues.put("selfLikeState", Integer.valueOf(this.field_selfLikeState));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

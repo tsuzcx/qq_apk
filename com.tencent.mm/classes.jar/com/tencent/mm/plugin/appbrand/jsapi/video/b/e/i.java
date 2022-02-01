@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.b.e;
 
 public abstract interface i<T>
 {
-  public abstract boolean ae(T paramT);
+  public abstract boolean av(byte[] paramArrayOfByte);
   
-  public abstract boolean aw(byte[] paramArrayOfByte);
+  public abstract boolean evaluate(T paramT);
 }
 
 

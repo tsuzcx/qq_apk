@@ -8,15 +8,15 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
+import com.tencent.mm.ae.a.a;
 import java.util.LinkedList;
 
 public class FlowLayout
   extends ViewGroup
 {
-  private int FUZ;
-  int FVa;
-  LinkedList<Integer> FVb;
+  private int HuN;
+  int HuO;
+  LinkedList<Integer> HuP;
   
   static
   {
@@ -34,9 +34,9 @@ public class FlowLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141630);
-    this.FUZ = 0;
-    this.FVa = 0;
-    this.FVb = new LinkedList();
+    this.HuN = 0;
+    this.HuO = 0;
+    this.HuP = new LinkedList();
     d(paramContext, paramAttributeSet);
     AppMethodBeat.o(141630);
   }
@@ -45,9 +45,9 @@ public class FlowLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141631);
-    this.FUZ = 0;
-    this.FVa = 0;
-    this.FVb = new LinkedList();
+    this.HuN = 0;
+    this.HuO = 0;
+    this.HuP = new LinkedList();
     d(paramContext, paramAttributeSet);
     AppMethodBeat.o(141631);
   }
@@ -58,8 +58,8 @@ public class FlowLayout
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FlowLayout);
     try
     {
-      this.FUZ = paramContext.getDimensionPixelSize(0, 0);
-      this.FVa = paramContext.getDimensionPixelSize(3, 0);
+      this.HuN = paramContext.getDimensionPixelSize(0, 0);
+      this.HuO = paramContext.getDimensionPixelSize(3, 0);
       return;
     }
     finally
@@ -101,7 +101,7 @@ public class FlowLayout
   public int getLineCount()
   {
     AppMethodBeat.i(141633);
-    int i = this.FVb.size();
+    int i = this.HuP.size();
     AppMethodBeat.o(141633);
     return i;
   }
@@ -132,16 +132,16 @@ public class FlowLayout
           break label220;
         }
         i = getPaddingLeft();
-        paramInt2 += ((Integer)this.FVb.get(paramInt4)).intValue() + this.FVa;
+        paramInt2 += ((Integer)this.HuP.get(paramInt4)).intValue() + this.HuO;
         paramInt4 += 1;
       }
     }
     label220:
     for (;;)
     {
-      n = (((Integer)this.FVb.get(paramInt4)).intValue() - m) / 2;
+      n = (((Integer)this.HuP.get(paramInt4)).intValue() - m) / 2;
       localView.layout(i, paramInt2 + n, i + k, n + paramInt2 + m);
-      n = this.FUZ + k + i;
+      n = this.HuN + k + i;
       k = paramInt2;
       m = paramInt4;
       j += 1;
@@ -167,7 +167,7 @@ public class FlowLayout
     int i5 = View.MeasureSpec.getSize(paramInt1) - getPaddingLeft() - getPaddingRight();
     int i4 = View.MeasureSpec.getSize(paramInt2) - getPaddingTop() - getPaddingBottom();
     int i6 = getChildCount();
-    this.FVb.clear();
+    this.HuP.clear();
     int k = 0;
     int j = 0;
     int i = 0;
@@ -191,12 +191,12 @@ public class FlowLayout
           if (k + i7 > i5)
           {
             i2 = 0;
-            m = j + (this.FVa + i);
-            this.FVb.add(Integer.valueOf(i));
+            m = j + (this.HuO + i);
+            this.HuP.add(Integer.valueOf(i));
             i3 = 0;
           }
           i3 = Math.max(i3, ((View)localObject).getMeasuredHeight());
-          i2 += this.FUZ + i7;
+          i2 += this.HuN + i7;
         }
         i1 += 1;
         i = i3;
@@ -204,7 +204,7 @@ public class FlowLayout
         k = i2;
       }
     }
-    this.FVb.add(Integer.valueOf(i));
+    this.HuP.add(Integer.valueOf(i));
     if (View.MeasureSpec.getMode(paramInt2) == 0) {
       paramInt2 = j + i + getPaddingTop() + getPaddingBottom();
     }
@@ -223,7 +223,7 @@ public class FlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.FlowLayout
  * JD-Core Version:    0.7.0.1
  */

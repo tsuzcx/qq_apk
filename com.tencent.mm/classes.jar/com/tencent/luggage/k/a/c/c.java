@@ -7,7 +7,7 @@ import com.tencent.luggage.k.a.a;
 
 public abstract interface c
 {
-  public abstract com.tencent.luggage.k.a.c FJ();
+  public abstract com.tencent.luggage.k.a.c Fr();
   
   public abstract String a(String paramString, int paramInt, a parama);
   
@@ -27,7 +27,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.c.c
  * JD-Core Version:    0.7.0.1
  */

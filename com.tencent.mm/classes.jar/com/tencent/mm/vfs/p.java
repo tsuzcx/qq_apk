@@ -3,54 +3,54 @@ package com.tencent.mm.vfs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.sdcard_migrate.b;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.aw;
 
 public final class p
 {
-  private static Boolean HTI = null;
-  private static Boolean HTJ = null;
-  private static Boolean HTK = null;
-  private static Boolean HTL = null;
-  private static Boolean HTM = null;
+  private static Boolean Juq = null;
+  private static Boolean Jur = null;
+  private static Boolean Jus = null;
+  private static Boolean Jut = null;
+  private static Boolean Juu = null;
   
-  public static void bmJ()
+  public static void btF()
   {
     AppMethodBeat.i(182929);
-    ax localax = ax.aFC("VFSStrategy");
-    long l1 = localax.getLong("VFSSwitchReportTime", 0L);
+    aw localaw = aw.aKT("VFSStrategy");
+    long l1 = localaw.getLong("VFSSwitchReportTime", 0L);
     long l2 = System.currentTimeMillis();
     if ((l1 <= 0L) || (l2 - l1 >= 259200000L))
     {
-      localax.encode("VFSSwitchReportTime", l2);
-      e.vIY.idkeyStat(1317L, 0L, 1L, true);
-      if (fii()) {
-        e.vIY.idkeyStat(1317L, 1L, 1L, true);
+      localaw.encode("VFSSwitchReportTime", l2);
+      e.wTc.idkeyStat(1317L, 0L, 1L, true);
+      if (fyv()) {
+        e.wTc.idkeyStat(1317L, 1L, 1L, true);
       }
-      if (fij()) {
-        e.vIY.idkeyStat(1317L, 3L, 1L, true);
+      if (fyw()) {
+        e.wTc.idkeyStat(1317L, 3L, 1L, true);
       }
-      if (fil()) {
-        e.vIY.idkeyStat(1317L, 5L, 1L, true);
+      if (fyy()) {
+        e.wTc.idkeyStat(1317L, 5L, 1L, true);
       }
-      if (fik()) {
-        e.vIY.idkeyStat(1317L, 7L, 1L, true);
+      if (fyx()) {
+        e.wTc.idkeyStat(1317L, 7L, 1L, true);
       }
-      if (fim()) {
-        e.vIY.idkeyStat(1317L, 9L, 1L, true);
+      if (fyz()) {
+        e.wTc.idkeyStat(1317L, 9L, 1L, true);
       }
     }
     AppMethodBeat.o(182929);
   }
   
-  public static boolean fii()
+  public static boolean fyv()
   {
     try
     {
       AppMethodBeat.i(182930);
-      if (HTM == null) {
-        HTM = Boolean.valueOf(b.eEw());
+      if (Juu == null) {
+        Juu = Boolean.valueOf(b.eTQ());
       }
-      boolean bool = HTM.booleanValue();
+      boolean bool = Juu.booleanValue();
       AppMethodBeat.o(182930);
       return bool;
     }
@@ -58,7 +58,7 @@ public final class p
   }
   
   /* Error */
-  public static boolean fij()
+  public static boolean fyw()
   {
     // Byte code:
     //   0: iconst_1
@@ -67,47 +67,47 @@ public final class p
     //   4: monitorenter
     //   5: ldc 112
     //   7: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: getstatic 14	com/tencent/mm/vfs/p:HTI	Ljava/lang/Boolean;
+    //   10: getstatic 14	com/tencent/mm/vfs/p:Juq	Ljava/lang/Boolean;
     //   13: ifnonnull +113 -> 126
     //   16: ldc 33
     //   18: ldc 114
-    //   20: invokestatic 118	com/tencent/mm/vfs/p:lH	(Ljava/lang/String;Ljava/lang/String;)[Z
+    //   20: invokestatic 118	com/tencent/mm/vfs/p:me	(Ljava/lang/String;Ljava/lang/String;)[Z
     //   23: astore_1
     //   24: aload_1
     //   25: iconst_0
     //   26: baload
     //   27: invokestatic 108	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   30: putstatic 14	com/tencent/mm/vfs/p:HTI	Ljava/lang/Boolean;
+    //   30: putstatic 14	com/tencent/mm/vfs/p:Juq	Ljava/lang/Boolean;
     //   33: aload_1
     //   34: iconst_1
     //   35: baload
     //   36: ifeq +12 -> 48
     //   39: ldc2_w 64
     //   42: ldc2_w 119
-    //   45: invokestatic 126	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:at	(JJ)V
-    //   48: getstatic 14	com/tencent/mm/vfs/p:HTI	Ljava/lang/Boolean;
+    //   45: invokestatic 126	com/tencent/mm/sdcard_migrate/ExtStorageMigrateMonitor:as	(JJ)V
+    //   48: getstatic 14	com/tencent/mm/vfs/p:Juq	Ljava/lang/Boolean;
     //   51: invokevirtual 111	java/lang/Boolean:booleanValue	()Z
     //   54: ifne +72 -> 126
-    //   57: invokestatic 132	com/tencent/mm/plugin/expt/e/b:ceD	()Lcom/tencent/mm/plugin/expt/e/b;
+    //   57: invokestatic 132	com/tencent/mm/plugin/expt/e/b:cmk	()Lcom/tencent/mm/plugin/expt/e/b;
     //   60: ldc 134
     //   62: ldc 136
     //   64: iconst_0
     //   65: iconst_1
     //   66: invokevirtual 140	com/tencent/mm/plugin/expt/e/b:b	(Ljava/lang/String;Ljava/lang/String;ZZ)Ljava/lang/String;
     //   69: iconst_0
-    //   70: invokestatic 146	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   70: invokestatic 146	com/tencent/mm/sdk/platformtools/bs:getInt	(Ljava/lang/String;I)I
     //   73: ifle +70 -> 143
     //   76: iload_0
     //   77: invokestatic 108	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   80: astore_1
     //   81: aload_1
-    //   82: putstatic 14	com/tencent/mm/vfs/p:HTI	Ljava/lang/Boolean;
+    //   82: putstatic 14	com/tencent/mm/vfs/p:Juq	Ljava/lang/Boolean;
     //   85: aload_1
     //   86: invokevirtual 111	java/lang/Boolean:booleanValue	()Z
     //   89: ifeq +37 -> 126
     //   92: ldc 33
     //   94: ldc 114
-    //   96: invokestatic 150	com/tencent/mm/vfs/p:lI	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   96: invokestatic 150	com/tencent/mm/vfs/p:mf	(Ljava/lang/String;Ljava/lang/String;)Z
     //   99: pop
     //   100: ldc 152
     //   102: ldc 154
@@ -117,13 +117,13 @@ public final class p
     //   109: iconst_0
     //   110: ldc 33
     //   112: ldc 114
-    //   114: invokestatic 118	com/tencent/mm/vfs/p:lH	(Ljava/lang/String;Ljava/lang/String;)[Z
+    //   114: invokestatic 118	com/tencent/mm/vfs/p:me	(Ljava/lang/String;Ljava/lang/String;)[Z
     //   117: iconst_0
     //   118: baload
     //   119: invokestatic 108	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   122: aastore
-    //   123: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   126: getstatic 14	com/tencent/mm/vfs/p:HTI	Ljava/lang/Boolean;
+    //   123: invokestatic 159	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   126: getstatic 14	com/tencent/mm/vfs/p:Juq	Ljava/lang/Boolean;
     //   129: invokevirtual 111	java/lang/Boolean:booleanValue	()Z
     //   132: istore_0
     //   133: ldc 112
@@ -154,37 +154,37 @@ public final class p
     //   126	138	148	finally
   }
   
-  public static boolean fik()
+  public static boolean fyx()
   {
     try
     {
       AppMethodBeat.i(182932);
-      if (HTJ == null) {
-        HTJ = Boolean.valueOf(b.eEF());
+      if (Jur == null) {
+        Jur = Boolean.valueOf(b.eTZ());
       }
-      boolean bool = HTJ.booleanValue();
+      boolean bool = Jur.booleanValue();
       AppMethodBeat.o(182932);
       return bool;
     }
     finally {}
   }
   
-  public static boolean fil()
+  public static boolean fyy()
   {
     try
     {
       AppMethodBeat.i(182933);
-      if (HTK == null) {
-        HTK = Boolean.valueOf(fij());
+      if (Jus == null) {
+        Jus = Boolean.valueOf(fyw());
       }
-      boolean bool = HTK.booleanValue();
+      boolean bool = Jus.booleanValue();
       AppMethodBeat.o(182933);
       return bool;
     }
     finally {}
   }
   
-  public static boolean fim()
+  public static boolean fyz()
   {
     label64:
     for (;;)
@@ -192,20 +192,20 @@ public final class p
       try
       {
         AppMethodBeat.i(182934);
-        if (HTL == null)
+        if (Jut == null)
         {
-          if (fij()) {
+          if (fyw()) {
             break label64;
           }
-          if (fik())
+          if (fyx())
           {
             break label64;
-            HTL = Boolean.valueOf(bool);
+            Jut = Boolean.valueOf(bool);
           }
         }
         else
         {
-          bool = HTL.booleanValue();
+          bool = Jut.booleanValue();
           AppMethodBeat.o(182934);
           return bool;
         }
@@ -217,14 +217,14 @@ public final class p
     }
   }
   
-  public static boolean[] lH(String paramString1, String paramString2)
+  public static boolean[] me(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192930);
+    AppMethodBeat.i(206989);
     Object localObject = paramString1 + "@@1";
-    paramString1 = ax.aFC(paramString1);
-    localObject = ax.aFC((String)localObject);
+    paramString1 = aw.aKT(paramString1);
+    localObject = aw.aKT((String)localObject);
     boolean bool1 = paramString1.decodeBool(paramString2, false);
-    boolean bool2 = ((ax)localObject).decodeBool(paramString2, false);
+    boolean bool2 = ((aw)localObject).decodeBool(paramString2, false);
     int i;
     if ((bool1) || (bool2))
     {
@@ -240,13 +240,13 @@ public final class p
       label82:
       if (!bool2)
       {
-        bool1 = ((ax)localObject).containsKey(paramString2);
-        ((ax)localObject).encode(paramString2, true);
+        bool1 = ((aw)localObject).containsKey(paramString2);
+        ((aw)localObject).encode(paramString2, true);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(192930);
+      AppMethodBeat.o(206989);
       return new boolean[] { i, bool1 };
       i = 0;
       break;
@@ -258,17 +258,17 @@ public final class p
     }
   }
   
-  public static boolean lI(String paramString1, String paramString2)
+  public static boolean mf(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192931);
-    boolean bool1 = ax.aFC(paramString1).encode(paramString2, true);
-    boolean bool2 = ax.aFC(paramString1 + "@@1").encode(paramString2, true);
+    AppMethodBeat.i(206990);
+    boolean bool1 = aw.aKT(paramString1).encode(paramString2, true);
+    boolean bool2 = aw.aKT(paramString1 + "@@1").encode(paramString2, true);
     if ((bool1) || (bool2))
     {
-      AppMethodBeat.o(192931);
+      AppMethodBeat.o(206990);
       return true;
     }
-    AppMethodBeat.o(192931);
+    AppMethodBeat.o(206990);
     return false;
   }
 }

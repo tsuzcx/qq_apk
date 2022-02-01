@@ -13,9 +13,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class MatrixSettingSeekBarPreference
   extends Preference
 {
-  int CKE = 700;
-  MatrixSettingSeekBarPreference.a Hkd;
-  private SeekBar mhD;
+  int Edg = 700;
+  MatrixSettingSeekBarPreference.a IKw;
+  private SeekBar mJE;
   
   public MatrixSettingSeekBarPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,11 +31,11 @@ public class MatrixSettingSeekBarPreference
   {
     AppMethodBeat.i(38885);
     super.onBindView(paramView);
-    this.mhD = ((SeekBar)paramView.findViewById(2131305791));
-    this.mhD.setProgress((int)(100.0F * this.CKE / 5000.0F));
+    this.mJE = ((SeekBar)paramView.findViewById(2131305791));
+    this.mJE.setProgress((int)(100.0F * this.Edg / 5000.0F));
     paramView = (TextView)paramView.findViewById(2131301227);
-    paramView.setText(this.mContext.getResources().getString(2131761200, new Object[] { Integer.valueOf(this.CKE) }));
-    this.mhD.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+    paramView.setText(this.mContext.getResources().getString(2131761200, new Object[] { Integer.valueOf(this.Edg) }));
+    this.mJE.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
     {
       public final void onProgressChanged(SeekBar paramAnonymousSeekBar, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
@@ -51,7 +51,7 @@ public class MatrixSettingSeekBarPreference
       {
         AppMethodBeat.i(38884);
         if (MatrixSettingSeekBarPreference.b(MatrixSettingSeekBarPreference.this) != null) {
-          MatrixSettingSeekBarPreference.b(MatrixSettingSeekBarPreference.this).aad(MatrixSettingSeekBarPreference.a(MatrixSettingSeekBarPreference.this));
+          MatrixSettingSeekBarPreference.b(MatrixSettingSeekBarPreference.this).acq(MatrixSettingSeekBarPreference.a(MatrixSettingSeekBarPreference.this));
         }
         AppMethodBeat.o(38884);
       }
@@ -61,7 +61,7 @@ public class MatrixSettingSeekBarPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.MatrixSettingSeekBarPreference
  * JD-Core Version:    0.7.0.1
  */

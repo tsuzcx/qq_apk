@@ -6,9 +6,9 @@ import java.util.List;
 public abstract class a
   extends com.tencent.mm.ui.base.sortview.a
 {
-  protected c.b mTO;
-  protected List<String> mVI;
-  protected int mVJ;
+  protected c.b nwg;
+  protected List<String> nyi;
+  protected int nyj;
   protected int position;
   
   public a(int paramInt, Object paramObject)
@@ -16,14 +16,14 @@ public abstract class a
     super(paramInt, paramObject);
   }
   
-  public final c.b bCF()
+  public final c.b bJN()
   {
-    return this.mTO;
+    return this.nwg;
   }
   
-  public final int bCG()
+  public final int bJO()
   {
-    return this.mVJ;
+    return this.nyj;
   }
   
   public final int getPosition()
@@ -38,17 +38,17 @@ public abstract class a
   
   public final void setReporter(c.b paramb)
   {
-    this.mTO = paramb;
+    this.nwg = paramb;
   }
   
-  public final void xO(int paramInt)
+  public final void yF(int paramInt)
   {
-    this.mVJ = paramInt;
+    this.nyj = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.base.a
  * JD-Core Version:    0.7.0.1
  */

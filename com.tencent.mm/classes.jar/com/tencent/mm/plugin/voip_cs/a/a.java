@@ -6,212 +6,212 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.c.a;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/voip_cs/audio/VoIPCSAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseVoIPAudioManager;", "()V", "audioPlayDevCallBack", "Lcom/tencent/mm/plugin/voip/model/AudioPlayDevCallBack;", "mPcmRecListener", "com/tencent/mm/plugin/voip_cs/audio/VoIPCSAudioManager$mPcmRecListener$1", "Lcom/tencent/mm/plugin/voip_cs/audio/VoIPCSAudioManager$mPcmRecListener$1;", "player", "Lcom/tencent/mm/plugin/voip/model/AudioPlayer;", "recorder", "Lcom/tencent/mm/audio/recorder/MMPcmRecorder;", "enableSpeaker", "", "speakerOn", "", "getAudioPlayVolume", "", "getAudioPlayerStreamType", "getAudioRecordReadNum", "getCurrentStreamType", "isRingStop", "iniRecord", "initPlayer", "onAudioDeviceStateChanged", "status", "releaseAudioPlayingDevice", "requestAudioPlayingDevice", "startPlayAudio", "startRecordAudio", "stop", "switchSpeakerPhone", "unInit", "Companion", "plugin-voip-cs_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/voip_cs/audio/VoIPCSAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseVoIPAudioManager;", "()V", "audioPlayDevCallBack", "Lcom/tencent/mm/plugin/voip/model/AudioPlayDevCallBack;", "mPcmRecListener", "com/tencent/mm/plugin/voip_cs/audio/VoIPCSAudioManager$mPcmRecListener$1", "Lcom/tencent/mm/plugin/voip_cs/audio/VoIPCSAudioManager$mPcmRecListener$1;", "player", "Lcom/tencent/mm/plugin/voip/model/AudioPlayer;", "recorder", "Lcom/tencent/mm/audio/recorder/MMPcmRecorder;", "enableSpeaker", "", "speakerOn", "", "getAudioPlayVolume", "", "getAudioPlayerStreamType", "getAudioRecordReadNum", "getCurrentStreamType", "isRingStop", "iniRecord", "initPlayer", "onAudioDeviceStateChanged", "status", "releaseAudioPlayingDevice", "requestAudioPlayingDevice", "startPlayAudio", "startRecordAudio", "stop", "switchSpeakerPhone", "unInit", "Companion", "plugin-voip-cs_release"})
 public final class a
   extends com.tencent.mm.plugin.audio.b.e
 {
-  public static final a.a zBK;
-  public com.tencent.mm.audio.b.c nPF;
-  private final com.tencent.mm.plugin.voip.model.b tOv;
-  private final c zBJ;
-  public com.tencent.mm.plugin.voip.model.c zjI;
+  public static final a.a ATY;
+  public com.tencent.mm.plugin.voip.model.c ACs;
+  private final c ATX;
+  public com.tencent.mm.audio.b.c osJ;
+  private final com.tencent.mm.plugin.voip.model.b uWY;
   
   static
   {
-    AppMethodBeat.i(190849);
-    zBK = new a.a((byte)0);
-    AppMethodBeat.o(190849);
+    AppMethodBeat.i(205760);
+    ATY = new a.a((byte)0);
+    AppMethodBeat.o(205760);
   }
   
   public a()
   {
-    AppMethodBeat.i(190848);
-    com.tencent.mm.plugin.audio.d.a.bvI();
-    com.tencent.mm.plugin.audio.d.c.bvI();
-    this.nPF = new com.tencent.mm.audio.b.c(v2protocal.VOICE_SAMPLERATE, 1, 1);
-    Object localObject = this.nPF;
+    AppMethodBeat.i(205759);
+    this.uWY = ((com.tencent.mm.plugin.voip.model.b)b.ATZ);
+    this.ATX = new c();
+    com.tencent.mm.plugin.audio.d.a.bCE();
+    com.tencent.mm.plugin.audio.d.c.bCE();
+    this.osJ = new com.tencent.mm.audio.b.c(v2protocal.VOICE_SAMPLERATE, 1, 1);
+    Object localObject = this.osJ;
     if (localObject != null) {
-      ((com.tencent.mm.audio.b.c)localObject).hX(20);
+      ((com.tencent.mm.audio.b.c)localObject).hH(20);
     }
-    localObject = this.nPF;
+    localObject = this.osJ;
     if (localObject != null) {
-      ((com.tencent.mm.audio.b.c)localObject).cs(true);
+      ((com.tencent.mm.audio.b.c)localObject).ct(true);
     }
-    localObject = this.nPF;
+    localObject = this.osJ;
     if (localObject != null) {
-      ((com.tencent.mm.audio.b.c)localObject).Oi();
+      ((com.tencent.mm.audio.b.c)localObject).Oe();
     }
-    localObject = this.nPF;
+    localObject = this.osJ;
     if (localObject != null) {
       ((com.tencent.mm.audio.b.c)localObject).t(1, false);
     }
-    localObject = this.nPF;
+    localObject = this.osJ;
     if (localObject != null) {
-      ((com.tencent.mm.audio.b.c)localObject).cr(true);
+      ((com.tencent.mm.audio.b.c)localObject).cs(true);
     }
-    localObject = this.nPF;
+    localObject = this.osJ;
     if (localObject != null) {
-      ((com.tencent.mm.audio.b.c)localObject).a((c.a)this.zBJ);
+      ((com.tencent.mm.audio.b.c)localObject).a((c.a)this.ATX);
     }
-    this.zjI = new com.tencent.mm.plugin.voip.model.c();
-    localObject = this.zjI;
+    this.ACs = new com.tencent.mm.plugin.voip.model.c();
+    localObject = this.ACs;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.voip.model.c)localObject).K(v2protocal.VOICE_SAMPLERATE, 1, 20, 0);
+      ((com.tencent.mm.plugin.voip.model.c)localObject).M(v2protocal.VOICE_SAMPLERATE, 1, 20, 0);
     }
-    localObject = this.zjI;
+    localObject = this.ACs;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.voip.model.c)localObject).z(aj.getContext(), false);
+      ((com.tencent.mm.plugin.voip.model.c)localObject).A(ai.getContext(), false);
     }
-    localObject = this.zjI;
+    localObject = this.ACs;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.voip.model.c)localObject).a(this.tOv);
+      ((com.tencent.mm.plugin.voip.model.c)localObject).a(this.uWY);
     }
-    localObject = com.tencent.mm.plugin.audio.c.a.mpv;
+    localObject = com.tencent.mm.plugin.audio.c.a.mRw;
     com.tencent.mm.plugin.audio.c.a.a.a((com.tencent.mm.plugin.audio.b.a)this, "voipcs");
-    this.zBJ = new c();
-    this.tOv = ((com.tencent.mm.plugin.voip.model.b)b.zBL);
-    AppMethodBeat.o(190848);
+    AppMethodBeat.o(205759);
   }
   
-  public static void NX()
+  private final void sN(boolean paramBoolean)
   {
-    AppMethodBeat.i(190842);
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.mpv;
-    com.tencent.mm.plugin.audio.c.a.a.Oe("voipcs");
-    AppMethodBeat.o(190842);
-  }
-  
-  private final void rM(boolean paramBoolean)
-  {
-    AppMethodBeat.i(190844);
-    ad.l("MicroMsg.cs.VoIPCsAudioManager", "enableSpeaker: ".concat(String.valueOf(paramBoolean)), new Object[0]);
-    ad.d("MicroMsg.cs.VoIPCsAudioManager", "MMCore.getAudioManager() " + bvA());
-    Object localObject = com.tencent.mm.plugin.audio.c.a.mpv;
-    localObject = com.tencent.mm.plugin.audio.d.a.mpy;
-    if (com.tencent.mm.plugin.audio.d.a.bvC()) {}
+    AppMethodBeat.i(205755);
+    ac.l("MicroMsg.cs.VoIPCsAudioManager", "enableSpeaker: ".concat(String.valueOf(paramBoolean)), new Object[0]);
+    ac.d("MicroMsg.cs.VoIPCsAudioManager", "MMCore.getAudioManager() " + bCw());
+    Object localObject = com.tencent.mm.plugin.audio.c.a.mRw;
+    localObject = com.tencent.mm.plugin.audio.d.a.mRz;
+    if (com.tencent.mm.plugin.audio.d.a.bCy()) {}
     for (boolean bool = false;; bool = paramBoolean)
     {
-      if (ae.fFx.fzm)
+      if (ae.fJe.fCT)
       {
-        ae.fFx.dump();
-        if (ae.fFx.fzn > 0) {
-          rr(bool);
+        ae.fJe.dump();
+        if (ae.fJe.fCU > 0) {
+          ss(bool);
         }
       }
-      if ((ae.fFx.fzP >= 0) || (ae.fFx.fzQ >= 0)) {
-        rr(paramBoolean);
+      if ((ae.fJe.fDw >= 0) || (ae.fJe.fDx >= 0)) {
+        ss(paramBoolean);
       }
-      if (this.zjI != null)
+      if (this.ACs != null)
       {
-        localObject = this.zjI;
+        localObject = this.ACs;
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        a(paramBoolean, ((com.tencent.mm.plugin.voip.model.c)localObject).aDs(), false);
-        com.tencent.mm.plugin.voip_cs.c.c.dYg().rD(paramBoolean);
+        a(paramBoolean, ((com.tencent.mm.plugin.voip.model.c)localObject).aKj(), false);
+        com.tencent.mm.plugin.voip_cs.c.c.enC().sE(paramBoolean);
       }
-      AppMethodBeat.o(190844);
+      AppMethodBeat.o(205755);
       return;
     }
   }
   
-  private final boolean rr(boolean paramBoolean)
+  private final boolean ss(boolean paramBoolean)
   {
-    AppMethodBeat.i(190843);
-    if (this.zjI != null)
+    AppMethodBeat.i(205754);
+    if (this.ACs != null)
     {
-      com.tencent.mm.plugin.voip.model.c localc = this.zjI;
+      com.tencent.mm.plugin.voip.model.c localc = this.ACs;
       if (localc == null) {
-        k.fvU();
+        k.fOy();
       }
-      paramBoolean = localc.rr(paramBoolean);
-      AppMethodBeat.o(190843);
+      paramBoolean = localc.ss(paramBoolean);
+      AppMethodBeat.o(205754);
       return paramBoolean;
     }
-    AppMethodBeat.o(190843);
+    AppMethodBeat.o(205754);
     return false;
   }
   
-  public final void Mu()
+  public static void unInit()
   {
-    AppMethodBeat.i(190846);
-    if (!bvw())
+    AppMethodBeat.i(205753);
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.mRw;
+    com.tencent.mm.plugin.audio.c.a.a.So("voipcs");
+    AppMethodBeat.o(205753);
+  }
+  
+  public final void Ms()
+  {
+    AppMethodBeat.i(205757);
+    if (!bCs())
     {
-      Object localObject = com.tencent.mm.plugin.audio.c.a.mpv;
-      localObject = com.tencent.mm.plugin.audio.d.a.mpy;
-      if (!com.tencent.mm.plugin.audio.d.a.bvC()) {}
+      Object localObject = com.tencent.mm.plugin.audio.c.a.mRw;
+      localObject = com.tencent.mm.plugin.audio.d.a.mRz;
+      if (!com.tencent.mm.plugin.audio.d.a.bCy()) {}
     }
     else
     {
       b("voipcs", Integer.valueOf(4));
-      rM(false);
-      AppMethodBeat.o(190846);
+      sN(false);
+      AppMethodBeat.o(205757);
       return;
     }
     b("voipcs", Integer.valueOf(1));
-    rM(true);
-    AppMethodBeat.o(190846);
+    sN(true);
+    AppMethodBeat.o(205757);
   }
   
-  public final void hL(int paramInt)
+  public final void hv(int paramInt)
   {
-    AppMethodBeat.i(190847);
-    super.hL(paramInt);
+    AppMethodBeat.i(205758);
+    super.hv(paramInt);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(190847);
+      AppMethodBeat.o(205758);
       return;
-      Oc("voipcs");
-      rM(true);
-      AppMethodBeat.o(190847);
+      Sl("voipcs");
+      sN(true);
+      AppMethodBeat.o(205758);
       return;
-      rM(false);
-      AppMethodBeat.o(190847);
+      sN(false);
+      AppMethodBeat.o(205758);
       return;
-      rM(false);
-      Toast.makeText(aj.getContext(), (CharSequence)aj.getContext().getString(2131764936), 0).show();
-      AppMethodBeat.o(190847);
+      sN(false);
+      Toast.makeText(ai.getContext(), (CharSequence)ai.getContext().getString(2131764936), 0).show();
+      AppMethodBeat.o(205758);
       return;
-      rM(true);
-      Toast.makeText(aj.getContext(), (CharSequence)aj.getContext().getString(2131764937), 0).show();
+      sN(true);
+      Toast.makeText(ai.getContext(), (CharSequence)ai.getContext().getString(2131764937), 0).show();
     }
   }
   
-  public final int sc(boolean paramBoolean)
+  public final int td(boolean paramBoolean)
   {
     int i = 2;
-    AppMethodBeat.i(190845);
-    Object localObject = com.tencent.mm.plugin.audio.c.a.mpv;
-    localObject = com.tencent.mm.plugin.audio.d.a.mpy;
-    if (com.tencent.mm.plugin.audio.d.a.bvC())
+    AppMethodBeat.i(205756);
+    Object localObject = com.tencent.mm.plugin.audio.c.a.mRw;
+    localObject = com.tencent.mm.plugin.audio.d.a.mRz;
+    if (com.tencent.mm.plugin.audio.d.a.bCy())
     {
-      localObject = com.tencent.mm.plugin.audio.c.a.mpv;
-      i = com.tencent.mm.plugin.audio.c.a.a.bvB().bvx();
+      localObject = com.tencent.mm.plugin.audio.c.a.mRw;
+      i = com.tencent.mm.plugin.audio.c.a.a.bCx().bCt();
     }
     for (;;)
     {
-      ad.d("MicroMsg.cs.VoIPCsAudioManager", "Current StreamType:%d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(190845);
+      ac.d("MicroMsg.cs.VoIPCsAudioManager", "Current StreamType:%d", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(205756);
       return i;
       if (!paramBoolean)
       {
-        localObject = com.tencent.mm.plugin.voip_cs.c.c.dYh();
+        localObject = com.tencent.mm.plugin.voip_cs.c.c.enD();
         k.g(localObject, "SubCoreVoipCS.getVoipCSService()");
-        if ((((com.tencent.mm.plugin.voip_cs.c.e)localObject).dYn() != 2) && (this.zjI != null))
+        if ((((com.tencent.mm.plugin.voip_cs.c.e)localObject).enJ() != 2) && (this.ACs != null))
         {
-          localObject = this.zjI;
+          localObject = this.ACs;
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
-          i = ((com.tencent.mm.plugin.voip.model.c)localObject).aDs();
+          i = ((com.tencent.mm.plugin.voip.model.c)localObject).aKj();
         }
         else
         {
@@ -221,71 +221,71 @@ public final class a
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "pcm", "", "kotlin.jvm.PlatformType", "len", "PlayDevDataCallBack"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "pcm", "", "kotlin.jvm.PlatformType", "len", "PlayDevDataCallBack"})
   static final class b
     implements com.tencent.mm.plugin.voip.model.b
   {
-    public static final b zBL;
+    public static final b ATZ;
     
     static
     {
-      AppMethodBeat.i(190839);
-      zBL = new b();
-      AppMethodBeat.o(190839);
+      AppMethodBeat.i(205750);
+      ATZ = new b();
+      AppMethodBeat.o(205750);
     }
     
-    public final int Q(byte[] paramArrayOfByte, int paramInt)
+    public final int O(byte[] paramArrayOfByte, int paramInt)
     {
-      AppMethodBeat.i(190838);
-      ad.d("MicroMsg.cs.VoIPCsAudioManager", "PlayDevDataCallBack,pcm data len:" + paramArrayOfByte.length);
-      com.tencent.mm.plugin.voip_cs.c.b.a locala = com.tencent.mm.plugin.voip_cs.c.c.dYg();
+      AppMethodBeat.i(205749);
+      ac.d("MicroMsg.cs.VoIPCsAudioManager", "PlayDevDataCallBack,pcm data len:" + paramArrayOfByte.length);
+      com.tencent.mm.plugin.voip_cs.c.b.a locala = com.tencent.mm.plugin.voip_cs.c.c.enC();
       k.g(locala, "SubCoreVoipCS.getVoipCSEngine()");
-      paramInt = locala.dYB().playCallback(paramArrayOfByte, paramInt);
+      paramInt = locala.enX().playCallback(paramArrayOfByte, paramInt);
       if (paramInt != 0) {
-        ad.d("MicroMsg.cs.VoIPCsAudioManager", "PlayDevDataCallBack is failure! pc data:" + paramArrayOfByte.length + ",ret:" + paramInt);
+        ac.d("MicroMsg.cs.VoIPCsAudioManager", "PlayDevDataCallBack is failure! pc data:" + paramArrayOfByte.length + ",ret:" + paramInt);
       }
       if (paramInt != 0)
       {
-        AppMethodBeat.o(190838);
+        AppMethodBeat.o(205749);
         return 1;
       }
-      AppMethodBeat.o(190838);
+      AppMethodBeat.o(205749);
       return 0;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/voip_cs/audio/VoIPCSAudioManager$mPcmRecListener$1", "Lcom/tencent/mm/audio/recorder/MMPcmRecorder$OnPcmRecListener;", "onRecError", "", "state", "", "detailState", "onRecPcmDataReady", "pcm", "", "len", "plugin-voip-cs_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/voip_cs/audio/VoIPCSAudioManager$mPcmRecListener$1", "Lcom/tencent/mm/audio/recorder/MMPcmRecorder$OnPcmRecListener;", "onRecError", "", "state", "", "detailState", "onRecPcmDataReady", "pcm", "", "len", "plugin-voip-cs_release"})
   public static final class c
     implements c.a
   {
-    public final void ch(int paramInt1, int paramInt2)
+    public final void cf(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(190841);
-      ad.i("MicroMsg.cs.VoIPCsAudioManager", "OnPcmRecListener onRecError %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(190841);
+      AppMethodBeat.i(205752);
+      ac.i("MicroMsg.cs.VoIPCsAudioManager", "OnPcmRecListener onRecError %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(205752);
     }
     
-    public final void w(byte[] paramArrayOfByte, int paramInt)
+    public final void u(byte[] paramArrayOfByte, int paramInt)
     {
-      AppMethodBeat.i(190840);
+      AppMethodBeat.i(205751);
       k.h(paramArrayOfByte, "pcm");
       if (paramInt <= 0)
       {
-        ad.e("MicroMsg.cs.VoIPCsAudioManager", "pcm data len <= 0");
-        AppMethodBeat.o(190840);
+        ac.e("MicroMsg.cs.VoIPCsAudioManager", "pcm data len <= 0");
+        AppMethodBeat.o(205751);
         return;
       }
-      ad.d("MicroMsg.cs.VoIPCsAudioManager", "onRecPcmDataReady,pcm data len:" + paramArrayOfByte.length);
-      com.tencent.mm.plugin.voip_cs.c.b.a locala = com.tencent.mm.plugin.voip_cs.c.c.dYg();
+      ac.d("MicroMsg.cs.VoIPCsAudioManager", "onRecPcmDataReady,pcm data len:" + paramArrayOfByte.length);
+      com.tencent.mm.plugin.voip_cs.c.b.a locala = com.tencent.mm.plugin.voip_cs.c.c.enC();
       k.g(locala, "SubCoreVoipCS.getVoipCSEngine()");
-      ad.d("MicroMsg.cs.VoIPCsAudioManager", "recordCallback,ret:".concat(String.valueOf(locala.dYB().recordCallback(paramArrayOfByte, paramInt, 200))));
-      AppMethodBeat.o(190840);
+      ac.d("MicroMsg.cs.VoIPCsAudioManager", "recordCallback,ret:".concat(String.valueOf(locala.enX().recordCallback(paramArrayOfByte, paramInt, 200))));
+      AppMethodBeat.o(205751);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.a.a
  * JD-Core Version:    0.7.0.1
  */

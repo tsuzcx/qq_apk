@@ -13,27 +13,27 @@ import rx.j;
 public final class i
   implements j
 {
-  public List<j> KrW;
-  public volatile boolean KrX;
+  public List<j> MfF;
+  public volatile boolean MfG;
   
   public i() {}
   
   public i(j paramj)
   {
     AppMethodBeat.i(90120);
-    this.KrW = new LinkedList();
-    this.KrW.add(paramj);
+    this.MfF = new LinkedList();
+    this.MfF.add(paramj);
     AppMethodBeat.o(90120);
   }
   
   public i(j... paramVarArgs)
   {
     AppMethodBeat.i(90119);
-    this.KrW = new LinkedList(Arrays.asList(paramVarArgs));
+    this.MfF = new LinkedList(Arrays.asList(paramVarArgs));
     AppMethodBeat.o(90119);
   }
   
-  private static void x(Collection<j> paramCollection)
+  private static void y(Collection<j> paramCollection)
   {
     AppMethodBeat.i(90123);
     if (paramCollection == null)
@@ -52,7 +52,7 @@ public final class i
       localj = (j)localIterator.next();
       try
       {
-        localj.fNw();
+        localj.ggm();
       }
       catch (Throwable localThrowable)
       {
@@ -68,7 +68,7 @@ public final class i
     {
       paramCollection.add(localThrowable);
       break;
-      b.iV(paramCollection);
+      b.jl(paramCollection);
       AppMethodBeat.o(90123);
       return;
     }
@@ -77,27 +77,27 @@ public final class i
   public final void b(j paramj)
   {
     AppMethodBeat.i(90121);
-    if (paramj.fNx())
+    if (paramj.ggn())
     {
       AppMethodBeat.o(90121);
       return;
     }
-    if (!this.KrX) {}
+    if (!this.MfG) {}
     try
     {
-      if (!this.KrX)
+      if (!this.MfG)
       {
-        List localList = this.KrW;
+        List localList = this.MfF;
         Object localObject = localList;
         if (localList == null)
         {
           localObject = new LinkedList();
-          this.KrW = ((List)localObject);
+          this.MfF = ((List)localObject);
         }
         ((List)localObject).add(paramj);
         return;
       }
-      paramj.fNw();
+      paramj.ggm();
       AppMethodBeat.o(90121);
       return;
     }
@@ -107,19 +107,19 @@ public final class i
     }
   }
   
-  public final void fNw()
+  public final void ggm()
   {
     AppMethodBeat.i(90122);
-    if (!this.KrX) {}
+    if (!this.MfG) {}
     try
     {
-      if (this.KrX) {
+      if (this.MfG) {
         return;
       }
-      this.KrX = true;
-      List localList = this.KrW;
-      this.KrW = null;
-      x(localList);
+      this.MfG = true;
+      List localList = this.MfF;
+      this.MfF = null;
+      y(localList);
       AppMethodBeat.o(90122);
       return;
     }
@@ -129,14 +129,14 @@ public final class i
     }
   }
   
-  public final boolean fNx()
+  public final boolean ggn()
   {
-    return this.KrX;
+    return this.MfG;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.util.i
  * JD-Core Version:    0.7.0.1
  */

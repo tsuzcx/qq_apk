@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.notification.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wc;
+import com.tencent.mm.g.a.wn;
 import com.tencent.mm.sdk.b.c;
 
 final class a$1
-  extends c<wc>
+  extends c<wn>
 {
   a$1(a parama)
   {
     AppMethodBeat.i(161396);
-    this.__eventId = wc.class.getName().hashCode();
+    this.__eventId = wn.class.getName().hashCode();
     AppMethodBeat.o(161396);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.c.a.1
  * JD-Core Version:    0.7.0.1
  */

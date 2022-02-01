@@ -2,7 +2,7 @@ package com.tencent.luggage.k.a;
 
 public abstract interface a$a
 {
-  public abstract void gP(int paramInt);
+  public abstract void gz(int paramInt);
   
   public abstract void onDestroy();
   

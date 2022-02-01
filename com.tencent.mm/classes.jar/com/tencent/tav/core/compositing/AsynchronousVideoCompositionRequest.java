@@ -6,7 +6,6 @@ import com.tencent.tav.core.AssetExtension;
 import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.ErrorMsg;
-import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,91 +19,91 @@ public class AsynchronousVideoCompositionRequest
   private VideoCompositionRenderContext renderContext;
   private SparseArray<CMSampleBuffer> sampleBuffers;
   private List<Integer> sourceTrackIDs;
-  @RequestStatus
+  @AsynchronousVideoCompositionRequest.RequestStatus
   private volatile int status;
   private IVideoCompositionInstruction videoCompositionInstruction;
   
   public AsynchronousVideoCompositionRequest(Object paramObject, AssetExtension paramAssetExtension)
   {
-    AppMethodBeat.i(201612);
+    AppMethodBeat.i(197673);
     this.sourceTrackIDs = new ArrayList();
     this.composedVideoFrame = null;
     this.status = -2147483648;
     this.sampleBuffers = new SparseArray();
     this.authorComposition = paramObject;
     this.assetExtension = paramAssetExtension;
-    AppMethodBeat.o(201612);
+    AppMethodBeat.o(197673);
   }
   
   private void notifyFinish()
   {
-    AppMethodBeat.i(201617);
+    AppMethodBeat.i(197678);
     if (this.authorComposition != null) {
       synchronized (this.authorComposition)
       {
         this.authorComposition.notifyAll();
-        AppMethodBeat.o(201617);
+        AppMethodBeat.o(197678);
         return;
       }
     }
-    AppMethodBeat.o(201617);
+    AppMethodBeat.o(197678);
   }
   
   public void appendCMSampleBuffer(CMSampleBuffer paramCMSampleBuffer, int paramInt)
   {
-    AppMethodBeat.i(201618);
+    AppMethodBeat.i(197679);
     this.sampleBuffers.put(paramInt, paramCMSampleBuffer);
     this.sourceTrackIDs.add(Integer.valueOf(paramInt));
-    AppMethodBeat.o(201618);
+    AppMethodBeat.o(197679);
   }
   
   public void finishCancelledRequest()
   {
-    AppMethodBeat.i(201616);
+    AppMethodBeat.i(197677);
     try
     {
       this.status = 1;
       notifyFinish();
-      AppMethodBeat.o(201616);
+      AppMethodBeat.o(197677);
       return;
     }
     finally
     {
-      AppMethodBeat.o(201616);
+      AppMethodBeat.o(197677);
     }
   }
   
   public void finishWithComposedVideoFrame(CMSampleBuffer paramCMSampleBuffer)
   {
-    AppMethodBeat.i(201614);
+    AppMethodBeat.i(197675);
     try
     {
       this.composedVideoFrame = paramCMSampleBuffer;
       this.status = 0;
       notifyFinish();
-      AppMethodBeat.o(201614);
+      AppMethodBeat.o(197675);
       return;
     }
     finally
     {
-      AppMethodBeat.o(201614);
+      AppMethodBeat.o(197675);
     }
   }
   
   public void finishWithError(ErrorMsg paramErrorMsg)
   {
-    AppMethodBeat.i(201615);
+    AppMethodBeat.i(197676);
     try
     {
       this.error = paramErrorMsg;
       this.status = -1;
       notifyFinish();
-      AppMethodBeat.o(201615);
+      AppMethodBeat.o(197676);
       return;
     }
     finally
     {
-      AppMethodBeat.o(201615);
+      AppMethodBeat.o(197676);
     }
   }
   
@@ -142,7 +141,7 @@ public class AsynchronousVideoCompositionRequest
     return this.sourceTrackIDs;
   }
   
-  @RequestStatus
+  @AsynchronousVideoCompositionRequest.RequestStatus
   public int getStatus()
   {
     try
@@ -179,36 +178,28 @@ public class AsynchronousVideoCompositionRequest
   
   public CMSampleBuffer sourceFrameByTrackID(int paramInt)
   {
-    AppMethodBeat.i(201613);
+    AppMethodBeat.i(197674);
     if (this.sampleBuffers != null)
     {
       CMSampleBuffer localCMSampleBuffer = (CMSampleBuffer)this.sampleBuffers.get(paramInt);
-      AppMethodBeat.o(201613);
+      AppMethodBeat.o(197674);
       return localCMSampleBuffer;
     }
-    AppMethodBeat.o(201613);
+    AppMethodBeat.o(197674);
     return null;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(201619);
+    AppMethodBeat.i(197680);
     String str = "AsynchronousVideoCompositionRequest{renderContext=" + this.renderContext + ", compositionTime=" + this.compositionTime + ", videoCompositionInstruction=" + this.videoCompositionInstruction + ", sampleBuffers=" + this.sampleBuffers + '}';
-    AppMethodBeat.o(201619);
+    AppMethodBeat.o(197680);
     return str;
-  }
-  
-  public static @interface RequestStatus
-  {
-    public static final int Cancel = 1;
-    public static final int Error = -1;
-    public static final int Success = 0;
-    public static final int UnKnow = -2147483648;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.core.compositing.AsynchronousVideoCompositionRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static final int[] bMX;
-  private static final c[] bMY;
-  public final int bMZ;
-  private final int[] bNa;
-  private final b[] bNb;
-  public final int bNc;
+  private static final int[] bKF;
+  private static final c[] bKG;
+  public final int bKH;
+  private final int[] bKI;
+  private final b[] bKJ;
+  public final int bKK;
   
   static
   {
     AppMethodBeat.i(12313);
-    bMX = new int[] { 31892, 34236, 39577, 42195, 48118, 51042, 55367, 58893, 63784, 68472, 70749, 76311, 79154, 84390, 87683, 92361, 96236, 102084, 102881, 110507, 110734, 117786, 119615, 126325, 127568, 133589, 136944, 141498, 145311, 150283, 152622, 158308, 161089, 167017 };
-    bMY = yz();
+    bKF = new int[] { 31892, 34236, 39577, 42195, 48118, 51042, 55367, 58893, 63784, 68472, 70749, 76311, 79154, 84390, 87683, 92361, 96236, 102084, 102881, 110507, 110734, 117786, 119615, 126325, 127568, 133589, 136944, 141498, 145311, 150283, 152622, 158308, 161089, 167017 };
+    bKG = ym();
     AppMethodBeat.o(12313);
   }
   
   private c(int paramInt, int[] paramArrayOfInt, b... paramVarArgs)
   {
     AppMethodBeat.i(12308);
-    this.bMZ = paramInt;
-    this.bNa = paramArrayOfInt;
-    this.bNb = paramVarArgs;
-    int j = paramVarArgs[0].bNe;
-    paramArrayOfInt = paramVarArgs[0].bNf;
+    this.bKH = paramInt;
+    this.bKI = paramArrayOfInt;
+    this.bKJ = paramVarArgs;
+    int j = paramVarArgs[0].bKM;
+    paramArrayOfInt = paramVarArgs[0].bKN;
     int k = paramArrayOfInt.length;
     int i = 0;
     int m;
@@ -35,14 +35,14 @@ public final class c
     {
       paramVarArgs = paramArrayOfInt[i];
       m = paramVarArgs.count;
-      n = paramVarArgs.bNd;
+      n = paramVarArgs.bKL;
       i += 1;
     }
-    this.bNc = paramInt;
+    this.bKK = paramInt;
     AppMethodBeat.o(12308);
   }
   
-  public static c gk(int paramInt)
+  public static c fW(int paramInt)
   {
     AppMethodBeat.i(12310);
     if ((paramInt <= 0) || (paramInt > 40))
@@ -51,12 +51,12 @@ public final class c
       AppMethodBeat.o(12310);
       throw ((Throwable)localObject);
     }
-    Object localObject = bMY[(paramInt - 1)];
+    Object localObject = bKG[(paramInt - 1)];
     AppMethodBeat.o(12310);
     return localObject;
   }
   
-  private static c[] yz()
+  private static c[] ym()
   {
     AppMethodBeat.i(12312);
     Object localObject1 = new b(7, new a[] { new a(1, 19) });
@@ -266,7 +266,7 @@ public final class c
   public final b a(a parama)
   {
     AppMethodBeat.i(12309);
-    parama = this.bNb[parama.ordinal()];
+    parama = this.bKJ[parama.ordinal()];
     AppMethodBeat.o(12309);
     return parama;
   }
@@ -274,37 +274,37 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(12311);
-    int i = this.bMZ;
+    int i = this.bKH;
     AppMethodBeat.o(12311);
     return String.valueOf(i);
   }
   
   public static final class a
   {
-    final int bNd;
+    final int bKL;
     final int count;
     
     a(int paramInt1, int paramInt2)
     {
       this.count = paramInt1;
-      this.bNd = paramInt2;
+      this.bKL = paramInt2;
     }
   }
   
   public static final class b
   {
-    final int bNe;
-    final c.a[] bNf;
+    final int bKM;
+    final c.a[] bKN;
     
     b(int paramInt, c.a... paramVarArgs)
     {
-      this.bNe = paramInt;
-      this.bNf = paramVarArgs;
+      this.bKM = paramInt;
+      this.bKN = paramVarArgs;
     }
     
-    public final int yA()
+    public final int yn()
     {
-      c.a[] arrayOfa = this.bNf;
+      c.a[] arrayOfa = this.bKN;
       int k = arrayOfa.length;
       int j = 0;
       int m;
@@ -316,11 +316,11 @@ public final class c
       return i;
     }
     
-    public final int yB()
+    public final int yo()
     {
       AppMethodBeat.i(12241);
-      int i = this.bNe;
-      int j = yA();
+      int i = this.bKM;
+      int j = yn();
       AppMethodBeat.o(12241);
       return i * j;
     }
@@ -328,7 +328,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.f.a.c
  * JD-Core Version:    0.7.0.1
  */

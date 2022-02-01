@@ -8,15 +8,15 @@ public abstract class aq
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS CardQrCodeDataInfo_card_id_index ON CardQrCodeDataInfo(card_id)" };
-  private static final int ejR = "status".hashCode();
-  private static final int esK;
-  private static final int eto = "code_id".hashCode();
-  private static final int etp;
+  private static final int elV = "status".hashCode();
+  private static final int euO;
+  private static final int evs = "code_id".hashCode();
+  private static final int evt;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ejO = true;
-  private boolean esr = true;
-  private boolean etm = true;
-  private boolean etn = true;
+  private boolean elS = true;
+  private boolean euv = true;
+  private boolean evq = true;
+  private boolean evr = true;
   public String field_card_id;
   public String field_code;
   public String field_code_id;
@@ -24,8 +24,8 @@ public abstract class aq
   
   static
   {
-    esK = "card_id".hashCode();
-    etp = "code".hashCode();
+    euO = "card_id".hashCode();
+    evt = "code".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -41,7 +41,7 @@ public abstract class aq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eto != k) {
+      if (evs != k) {
         break label60;
       }
       this.field_code_id = paramCursor.getString(i);
@@ -52,11 +52,11 @@ public abstract class aq
       break label20;
       break;
       label60:
-      if (esK == k) {
+      if (euO == k) {
         this.field_card_id = paramCursor.getString(i);
-      } else if (etp == k) {
+      } else if (evt == k) {
         this.field_code = paramCursor.getString(i);
-      } else if (ejR == k) {
+      } else if (elV == k) {
         this.field_status = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -67,16 +67,16 @@ public abstract class aq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.etm) {
+    if (this.evq) {
       localContentValues.put("code_id", this.field_code_id);
     }
-    if (this.esr) {
+    if (this.euv) {
       localContentValues.put("card_id", this.field_card_id);
     }
-    if (this.etn) {
+    if (this.evr) {
       localContentValues.put("code", this.field_code);
     }
-    if (this.ejO) {
+    if (this.elS) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
     if (this.systemRowid > 0L) {

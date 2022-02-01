@@ -13,36 +13,36 @@ import com.tencent.mm.plugin.webview.luggage.j;
 public final class l
   extends j
 {
-  private a rSw;
+  private a tao;
   
   public l(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void bkk()
+  public final void bqZ()
   {
     AppMethodBeat.i(41068);
-    super.bkk();
-    if (this.rSw != null) {
-      this.rSw.cCn();
+    super.bqZ();
+    if (this.tao != null) {
+      this.tao.cPy();
     }
     AppMethodBeat.o(41068);
   }
   
-  public final void bkl()
+  public final void bra()
   {
     AppMethodBeat.i(41066);
-    if (this.rSw != null) {
-      this.rSw.bkl();
+    if (this.tao != null) {
+      this.tao.bra();
     }
     AppMethodBeat.o(41066);
   }
   
-  public final void cCm()
+  public final void cPx()
   {
     AppMethodBeat.i(41067);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.ldx, "translationY", new float[] { 0.0F, getStayHeight() });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.lDo, "translationY", new float[] { 0.0F, getStayHeight() });
     localObjectAnimator.setDuration(250L);
     localObjectAnimator.setInterpolator(new DecelerateInterpolator());
     localObjectAnimator.start();
@@ -52,11 +52,11 @@ public final class l
       {
         AppMethodBeat.i(41063);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        l.this.tw((int)f);
+        l.this.um((int)f);
         AppMethodBeat.o(41063);
       }
     });
-    bkl();
+    bra();
     AppMethodBeat.o(41067);
   }
   
@@ -70,28 +70,28 @@ public final class l
   
   public final void setOnPullDownListener(a parama)
   {
-    this.rSw = parama;
+    this.tao = parama;
   }
   
-  public final void tw(int paramInt)
+  public final void um(int paramInt)
   {
     AppMethodBeat.i(41065);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.ldv.getLayoutParams();
-    localLayoutParams.topMargin = (paramInt - this.ldv.getHeight());
-    this.ldv.setLayoutParams(localLayoutParams);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lDm.getLayoutParams();
+    localLayoutParams.topMargin = (paramInt - this.lDm.getHeight());
+    this.lDm.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(41065);
   }
   
   static abstract interface a
   {
-    public abstract void bkl();
+    public abstract void bra();
     
-    public abstract void cCn();
+    public abstract void cPy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.l
  * JD-Core Version:    0.7.0.1
  */

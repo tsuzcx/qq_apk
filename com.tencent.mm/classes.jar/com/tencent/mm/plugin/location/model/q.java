@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.location.model;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.b;
+import com.tencent.mm.ak.b.b;
 import com.tencent.mm.model.u;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.location.model.a.c;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.adw;
-import com.tencent.mm.protocal.protobuf.cbf;
-import com.tencent.mm.protocal.protobuf.cii;
-import com.tencent.mm.protocal.protobuf.ddj;
-import com.tencent.mm.protocal.protobuf.div;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aev;
+import com.tencent.mm.protocal.protobuf.cgf;
+import com.tencent.mm.protocal.protobuf.cno;
+import com.tencent.mm.protocal.protobuf.diy;
+import com.tencent.mm.protocal.protobuf.dok;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -24,61 +24,61 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class q
-  implements com.tencent.mm.al.g, com.tencent.mm.bj.b
+  implements com.tencent.mm.ak.g, com.tencent.mm.bi.b
 {
-  public boolean cOA;
-  public b.a fjJ;
-  public com.tencent.mm.modelgeo.d gXu;
+  public boolean cLV;
+  public b.a fnd;
+  public com.tencent.mm.modelgeo.d hxT;
   public boolean isStart;
-  ap mHandler;
-  private int nUh;
-  private String sOt;
-  public double sOv;
-  public double sOw;
-  public int sOx;
-  private int sPF;
-  private int sPG;
-  public k sPH;
-  public HashSet<WeakReference<b>> sPI;
-  public int sPJ;
-  public div sPK;
-  public LocationInfo sPL;
-  public boolean sPM;
-  public boolean sPN;
-  public int sPO;
-  public String sPP;
-  boolean sPQ;
-  public q.a sPR;
-  public int sPS;
-  public boolean sPT;
-  public long sPU;
-  long sPV;
-  public k.a sPW;
+  ao mHandler;
+  private int oxC;
+  private String tWG;
+  public double tWI;
+  public double tWJ;
+  public int tWK;
+  private int tXS;
+  private int tXT;
+  public k tXU;
+  public HashSet<WeakReference<b>> tXV;
+  public int tXW;
+  public dok tXX;
+  public LocationInfo tXY;
+  public boolean tXZ;
+  public boolean tYa;
+  public int tYb;
+  public String tYc;
+  boolean tYd;
+  public a tYe;
+  public int tYf;
+  public boolean tYg;
+  public long tYh;
+  long tYi;
+  public k.a tYj;
   
   public q()
   {
     AppMethodBeat.i(55760);
-    this.sPF = 0;
-    this.sPG = 1000;
-    this.sPI = new HashSet();
-    this.sPJ = 1;
-    this.sPL = new LocationInfo((byte)0);
-    this.sPM = false;
-    this.sPN = false;
+    this.tXS = 0;
+    this.tXT = 1000;
+    this.tXV = new HashSet();
+    this.tXW = 1;
+    this.tXY = new LocationInfo((byte)0);
+    this.tXZ = false;
+    this.tYa = false;
     this.isStart = false;
-    this.sPO = this.sPJ;
-    this.sPP = "";
-    this.cOA = false;
-    this.sPQ = false;
-    this.sPR = null;
-    this.sPS = -1;
-    this.sPT = true;
-    this.sPU = 0L;
-    this.sPV = 0L;
-    this.sOv = -1000.0D;
-    this.sOw = -1000.0D;
-    this.sOx = -1;
-    this.mHandler = new ap(Looper.getMainLooper())
+    this.tYb = this.tXW;
+    this.tYc = "";
+    this.cLV = false;
+    this.tYd = false;
+    this.tYe = null;
+    this.tYf = -1;
+    this.tYg = true;
+    this.tYh = 0L;
+    this.tYi = 0L;
+    this.tWI = -1000.0D;
+    this.tWJ = -1000.0D;
+    this.tWK = -1;
+    this.mHandler = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -97,11 +97,11 @@ public final class q
         {
           AppMethodBeat.o(55758);
           return;
-          localq.cJz();
+          localq.cXe();
         }
       }
     };
-    this.fjJ = new b.a()
+    this.fnd = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -111,114 +111,102 @@ public final class q
           AppMethodBeat.o(55759);
           return false;
         }
-        ad.d("MicorMsg.TrackRefreshManager", "onGetlocatoin fLongitude:%f, fLatitude:%f, locType:%d, speed:%f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Integer.valueOf(paramAnonymousInt), Double.valueOf(paramAnonymousDouble1) });
-        if (q.this.sPT)
+        ac.d("MicorMsg.TrackRefreshManager", "onGetlocatoin fLongitude:%f, fLatitude:%f, locType:%d, speed:%f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Integer.valueOf(paramAnonymousInt), Double.valueOf(paramAnonymousDouble1) });
+        if (q.this.tYg)
         {
-          q.this.sPT = false;
-          q.this.sPV = System.currentTimeMillis();
-          long l = q.this.sPV - q.this.sPU;
-          ad.d("MicorMsg.TrackRefreshManager", "locate time:%d", new Object[] { Long.valueOf(l) });
-          h.vKh.f(10997, new Object[] { "10", "", Integer.valueOf(0), Long.valueOf(l) });
+          q.this.tYg = false;
+          q.this.tYi = System.currentTimeMillis();
+          long l = q.this.tYi - q.this.tYh;
+          ac.d("MicorMsg.TrackRefreshManager", "locate time:%d", new Object[] { Long.valueOf(l) });
+          h.wUl.f(10997, new Object[] { "10", "", Integer.valueOf(0), Long.valueOf(l) });
         }
-        if ((q.this.sPK != null) && (q.this.sPK.Eze != null))
+        if ((q.this.tXX != null) && (q.this.tXX.FWg != null))
         {
-          q.this.sPK.Eze.CJE = paramAnonymousFloat2;
-          q.this.sPK.Eze.CJD = paramAnonymousFloat1;
+          q.this.tXX.FWg.Ecg = paramAnonymousFloat2;
+          q.this.tXX.FWg.Ecf = paramAnonymousFloat1;
         }
         AppMethodBeat.o(55759);
         return true;
       }
     };
-    this.sPW = new k.a()
+    this.tYj = new k.a()
     {
-      public final void x(double paramAnonymousDouble)
+      public final void w(double paramAnonymousDouble)
       {
-        if (q.this.sPK != null) {
-          q.this.sPK.Eze.DXx = paramAnonymousDouble;
+        if (q.this.tXX != null) {
+          q.this.tXX.FWg.Fur = paramAnonymousDouble;
         }
       }
     };
     AppMethodBeat.o(55760);
   }
   
-  private void cJv()
+  private void cXa()
   {
     AppMethodBeat.i(55765);
-    ad.d("MicorMsg.TrackRefreshManager", "trigerRefresh");
-    if (cJA())
+    ac.d("MicorMsg.TrackRefreshManager", "trigerRefresh");
+    if (cXf())
     {
-      ad.d("MicorMsg.TrackRefreshManager", "trigerRefresh, joinSuccess");
-      this.gXu = com.tencent.mm.modelgeo.d.axT();
-      this.gXu.b(this.fjJ, true);
-      if (this.sPH == null) {
-        this.sPH = n.cJs();
+      ac.d("MicorMsg.TrackRefreshManager", "trigerRefresh, joinSuccess");
+      this.hxT = com.tencent.mm.modelgeo.d.aEL();
+      this.hxT.b(this.fnd, true);
+      if (this.tXU == null) {
+        this.tXU = n.cWX();
       }
-      this.sPH.a(this.sPW);
-      cJz();
+      this.tXU.a(this.tYj);
+      cXe();
     }
     AppMethodBeat.o(55765);
   }
   
-  private void dB(String paramString, int paramInt)
+  private void dH(String paramString, int paramInt)
   {
     AppMethodBeat.i(55763);
-    ad.d("MicorMsg.TrackRefreshManager", "exitTrack, scene=%d", new Object[] { Integer.valueOf(paramInt) });
+    ac.d("MicorMsg.TrackRefreshManager", "exitTrack, scene=%d", new Object[] { Integer.valueOf(paramInt) });
     paramString = new com.tencent.mm.plugin.location.model.a.a(paramString);
-    ((adw)paramString.rr.gUS.gUX).Scene = paramInt;
-    com.tencent.mm.kernel.g.aeS().a(paramString, 0);
-    this.sOt = "";
+    ((aev)paramString.rr.hvr.hvw).Scene = paramInt;
+    com.tencent.mm.kernel.g.agi().a(paramString, 0);
+    this.tWG = "";
     AppMethodBeat.o(55763);
   }
   
-  public final void FF(int paramInt)
+  public final void HA(int paramInt)
   {
     AppMethodBeat.i(55764);
-    ad.i("MicorMsg.TrackRefreshManager", "track endTrack");
-    if (cJA()) {
-      dB(this.sOt, paramInt);
+    ac.i("MicorMsg.TrackRefreshManager", "track endTrack");
+    if (cXf()) {
+      dH(this.tWG, paramInt);
     }
-    if (!bt.isNullOrNil(this.sPP))
+    if (!bs.isNullOrNil(this.tYc))
     {
-      com.tencent.mm.plugin.location.a.a locala = n.cJr().aeU(this.sPP);
+      com.tencent.mm.plugin.location.a.a locala = n.cWW().ajO(this.tYc);
       if (locala != null)
       {
-        locala.dqL.remove(u.aqG());
-        n.cJr().a(this.sPP, locala.dqL, locala.latitude, locala.longitude, locala.sOr, null, null);
+        locala.dow.remove(u.axw());
+        n.cWW().a(this.tYc, locala.dow, locala.latitude, locala.longitude, locala.tWE, null, null);
       }
     }
-    n.cJr().aeV("");
-    this.sOt = "";
-    this.sPP = "";
-    this.sPM = false;
-    this.sPN = false;
-    this.sOv = -1000.0D;
-    this.sOw = -1000.0D;
-    this.sOx = -1;
-    this.sPS = -1;
+    n.cWW().ajP("");
+    this.tWG = "";
+    this.tYc = "";
+    this.tXZ = false;
+    this.tYa = false;
+    this.tWI = -1000.0D;
+    this.tWJ = -1000.0D;
+    this.tWK = -1;
+    this.tYf = -1;
     AppMethodBeat.o(55764);
   }
   
-  public final String aCm()
+  public final String aJc()
   {
-    return this.sPP;
+    return this.tYc;
   }
   
-  public final boolean cJA()
-  {
-    AppMethodBeat.i(55769);
-    if (!bt.isNullOrNil(this.sOt))
-    {
-      AppMethodBeat.o(55769);
-      return true;
-    }
-    AppMethodBeat.o(55769);
-    return false;
-  }
-  
-  public final boolean cJu()
+  public final boolean cWZ()
   {
     AppMethodBeat.i(55762);
-    if ((cJA()) && (this.sPM))
+    if ((cXf()) && (this.tXZ))
     {
       AppMethodBeat.o(55762);
       return true;
@@ -227,81 +215,81 @@ public final class q
     return false;
   }
   
-  public final void cJw()
+  public final void cXb()
   {
     AppMethodBeat.i(55766);
-    ad.d("MicorMsg.TrackRefreshManager", "resume refresh");
-    this.sPQ = false;
-    cJv();
+    ac.d("MicorMsg.TrackRefreshManager", "resume refresh");
+    this.tYd = false;
+    cXa();
     AppMethodBeat.o(55766);
   }
   
-  public final List<String> cJx()
+  public final List<String> cXc()
   {
     AppMethodBeat.i(55767);
-    LinkedList localLinkedList = n.cJr().zz(this.sPP);
+    LinkedList localLinkedList = n.cWW().DE(this.tYc);
     AppMethodBeat.o(55767);
     return localLinkedList;
   }
   
-  public final void cJy()
+  public final void cXd()
   {
-    if (this.sPJ == 1) {
-      this.sPJ = 3;
+    if (this.tXW == 1) {
+      this.tXW = 3;
     }
-    while (this.sPJ != 3) {
+    while (this.tXW != 3) {
       return;
     }
-    this.sPJ = 2;
+    this.tXW = 2;
   }
   
-  public final void cJz()
+  public final void cXe()
   {
     boolean bool = true;
     AppMethodBeat.i(55768);
-    if ((!this.isStart) || (!this.sPM) || (this.sPL == null))
+    if ((!this.isStart) || (!this.tXZ) || (this.tXY == null))
     {
-      localObject1 = new StringBuilder("error to exit refresh isStart: ").append(this.isStart).append(" isShared: ").append(this.sPM).append(" ");
-      if (this.sPL == null) {}
+      localObject1 = new StringBuilder("error to exit refresh isStart: ").append(this.isStart).append(" isShared: ").append(this.tXZ).append(" ");
+      if (this.tXY == null) {}
       for (;;)
       {
-        ad.e("MicorMsg.TrackRefreshManager", bool);
+        ac.e("MicorMsg.TrackRefreshManager", bool);
         AppMethodBeat.o(55768);
         return;
         bool = false;
       }
     }
-    if ((this.sPK == null) || (this.sPK.Eze.CJE == -1000.0D) || (this.sPK.Eze.CJD == -1000.0D))
+    if ((this.tXX == null) || (this.tXX.FWg.Ecg == -1000.0D) || (this.tXX.FWg.Ecf == -1000.0D))
     {
-      ad.e("MicorMsg.TrackRefreshManager", "error to get my location ");
-      this.mHandler.sendEmptyMessageDelayed(1, this.sPG);
+      ac.e("MicorMsg.TrackRefreshManager", "error to get my location ");
+      this.mHandler.sendEmptyMessageDelayed(1, this.tXT);
       AppMethodBeat.o(55768);
       return;
     }
-    Object localObject2 = u.aqG();
-    Object localObject1 = new ddj();
-    ((ddj)localObject1).DTI = this.sPL.sOy;
-    ((ddj)localObject1).CJE = this.sPL.sOv;
-    ((ddj)localObject1).CJD = this.sPL.sOw;
-    ((ddj)localObject1).Name = ((String)localObject2);
-    this.sPK.Username = ((String)localObject2);
-    this.sPK.Eze.DXx = n.cJs().cJk();
+    Object localObject2 = u.axw();
+    Object localObject1 = new diy();
+    ((diy)localObject1).Fqw = this.tXY.tWL;
+    ((diy)localObject1).Ecg = this.tXY.tWI;
+    ((diy)localObject1).Ecf = this.tXY.tWJ;
+    ((diy)localObject1).Name = ((String)localObject2);
+    this.tXX.Username = ((String)localObject2);
+    this.tXX.FWg.Fur = n.cWX().cWP();
     localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append("refreshLoopImpl, [trackRoomId:" + this.sOt + "]");
-    switch (this.sPJ)
+    ((StringBuffer)localObject2).append("refreshLoopImpl, [trackRoomId:" + this.tWG + "]");
+    switch (this.tXW)
     {
     }
     for (;;)
     {
-      ((StringBuffer)localObject2).append("[ mMyPosiItem " + this.sPK.Eze.CJE + " " + this.sPK.Eze.CJD + " " + this.sPK.Eze.DXx + " ]");
-      ad.d("MicorMsg.TrackRefreshManager", ((StringBuffer)localObject2).toString());
-      localObject2 = this.sOt;
-      int i = this.sPJ;
-      div localdiv = this.sPK;
-      int j = this.nUh + 1;
-      this.nUh = j;
-      localObject1 = new c((String)localObject2, i, localdiv, j, (ddj)localObject1);
-      com.tencent.mm.kernel.g.aeS().a((com.tencent.mm.al.n)localObject1, 0);
+      ((StringBuffer)localObject2).append("[ mMyPosiItem " + this.tXX.FWg.Ecg + " " + this.tXX.FWg.Ecf + " " + this.tXX.FWg.Fur + " ]");
+      ac.d("MicorMsg.TrackRefreshManager", ((StringBuffer)localObject2).toString());
+      localObject2 = this.tWG;
+      int i = this.tXW;
+      dok localdok = this.tXX;
+      int j = this.oxC + 1;
+      this.oxC = j;
+      localObject1 = new c((String)localObject2, i, localdok, j, (diy)localObject1);
+      com.tencent.mm.kernel.g.agi().a((com.tencent.mm.ak.n)localObject1, 0);
       AppMethodBeat.o(55768);
       return;
       ((StringBuffer)localObject2).append("track upload_status  MMRefreshTrackRoomUpload ");
@@ -311,66 +299,78 @@ public final class q
       ((StringBuffer)localObject2).append("track upload_status  MMRefreshTrackRoomUploadAndDownLoad ");
       continue;
       ((StringBuffer)localObject2).append("track upload_status  MMRefreshTrackRoomFirstUpload ");
-      ((StringBuffer)localObject2).append("[ trackItem " + ((ddj)localObject1).CJE + " " + ((ddj)localObject1).CJD + " ]");
+      ((StringBuffer)localObject2).append("[ trackItem " + ((diy)localObject1).Ecg + " " + ((diy)localObject1).Ecf + " ]");
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final boolean cXf()
+  {
+    AppMethodBeat.i(55769);
+    if (!bs.isNullOrNil(this.tWG))
+    {
+      AppMethodBeat.o(55769);
+      return true;
+    }
+    AppMethodBeat.o(55769);
+    return false;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(55770);
-    ad.d("MicorMsg.TrackRefreshManager", "onSceneEnd scene type %d errType %d errCode %d", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.d("MicorMsg.TrackRefreshManager", "onSceneEnd scene type %d errType %d errCode %d", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     WeakReference localWeakReference;
     if (paramn.getType() == 490)
     {
       if ((paramInt2 == 0) || (paramInt2 >= 1000))
       {
-        this.sOt = ((com.tencent.mm.plugin.location.model.a.b)paramn).sOt;
-        n.cJr().aeV(this.sOt);
-        if (cJA())
+        this.tWG = ((com.tencent.mm.plugin.location.model.a.b)paramn).tWG;
+        n.cWW().ajP(this.tWG);
+        if (cXf())
         {
-          ad.i("MicorMsg.TrackRefreshManager", "join sucess %s", new Object[] { this.sOt });
-          paramString = com.tencent.mm.bj.d.hxx.zz(this.sPP);
-          paramString.add(u.aqG());
-          if (this.sPL != null) {
-            com.tencent.mm.bj.d.hxx.a(this.sPP, paramString, this.sPL.sOv, this.sPL.sOw, this.sPL.sOy, "", "");
+          ac.i("MicorMsg.TrackRefreshManager", "join sucess %s", new Object[] { this.tWG });
+          paramString = com.tencent.mm.bi.d.hXY.DE(this.tYc);
+          paramString.add(u.axw());
+          if (this.tXY != null) {
+            com.tencent.mm.bi.d.hXY.a(this.tYc, paramString, this.tXY.tWI, this.tXY.tWJ, this.tXY.tWL, "", "");
           }
-          while (this.sPI != null)
+          while (this.tXV != null)
           {
-            paramString = this.sPI.iterator();
+            paramString = this.tXV.iterator();
             while (paramString.hasNext())
             {
               paramn = (WeakReference)paramString.next();
               if ((paramn != null) && (paramn.get() != null)) {
-                ((b)paramn.get()).cJB();
+                ((b)paramn.get()).cXg();
               }
             }
-            com.tencent.mm.bj.d.hxx.a(this.sPP, paramString, -1000.0D, -1000.0D, "", "", "");
+            com.tencent.mm.bi.d.hXY.a(this.tYc, paramString, -1000.0D, -1000.0D, "", "", "");
           }
-          cJz();
+          cXe();
           AppMethodBeat.o(55770);
         }
       }
       else
       {
-        if ((paramInt2 == 17) && (this.sPI != null))
+        if ((paramInt2 == 17) && (this.tXV != null))
         {
-          paramString = this.sPI.iterator();
+          paramString = this.tXV.iterator();
           while (paramString.hasNext())
           {
             localWeakReference = (WeakReference)paramString.next();
             if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((b)localWeakReference.get()).cJC();
+              ((b)localWeakReference.get()).cXh();
             }
           }
         }
-        if (this.sPI != null)
+        if (this.tXV != null)
         {
-          paramString = this.sPI.iterator();
+          paramString = this.tXV.iterator();
           while (paramString.hasNext())
           {
             localWeakReference = (WeakReference)paramString.next();
             if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((b)localWeakReference.get()).onError(0, ((com.tencent.mm.plugin.location.model.a.b)paramn).jwH);
+              ((b)localWeakReference.get()).onError(0, ((com.tencent.mm.plugin.location.model.a.b)paramn).jXd);
             }
           }
           AppMethodBeat.o(55770);
@@ -381,47 +381,47 @@ public final class q
     {
       if (paramn.getType() == 492)
       {
-        this.sPF += 1;
+        this.tXS += 1;
         this.mHandler.removeMessages(1);
-        if (this.sPF >= 10)
+        if (this.tXS >= 10)
         {
           this.mHandler.removeMessages(1);
-          if (this.sPI != null)
+          if (this.tXV != null)
           {
-            paramString = this.sPI.iterator();
+            paramString = this.tXV.iterator();
             while (paramString.hasNext())
             {
               localWeakReference = (WeakReference)paramString.next();
               if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-                ((b)localWeakReference.get()).onError(1, ((c)paramn).jwH);
+                ((b)localWeakReference.get()).onError(1, ((c)paramn).jXd);
               }
             }
             AppMethodBeat.o(55770);
           }
         }
-        else if ((cJA()) && (!this.sPQ))
+        else if ((cXf()) && (!this.tYd))
         {
-          paramString = ((c)paramn).sQg;
+          paramString = ((c)paramn).tYt;
           if ((paramString != null) && (paramString.BaseResponse != null))
           {
             if (paramString.BaseResponse.Ret != 12) {
               break label696;
             }
-            this.cOA = true;
-            if (this.sPR != null) {
-              this.sPR.blP();
+            this.cLV = true;
+            if (this.tYe != null) {
+              this.tYe.bsL();
             }
           }
           for (;;)
           {
-            ad.d("MicorMsg.TrackRefreshManager", "refresh track room, in error status, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.cOA), Integer.valueOf(paramString.BaseResponse.Ret) });
-            if (!this.cOA) {
-              this.mHandler.sendEmptyMessageDelayed(1, this.sPG);
+            ac.d("MicorMsg.TrackRefreshManager", "refresh track room, in error status, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.cLV), Integer.valueOf(paramString.BaseResponse.Ret) });
+            if (!this.cLV) {
+              this.mHandler.sendEmptyMessageDelayed(1, this.tXT);
             }
             AppMethodBeat.o(55770);
             return;
             label696:
-            this.cOA = false;
+            this.cLV = false;
           }
         }
       }
@@ -430,56 +430,56 @@ public final class q
     {
       if (paramn.getType() == 492)
       {
-        paramString = ((c)paramn).sQg;
+        paramString = ((c)paramn).tYt;
         if ((paramString != null) && (paramString.BaseResponse != null))
         {
           if (paramString.BaseResponse.Ret != 12) {
             break label964;
           }
-          this.cOA = true;
-          if (this.sPR != null) {
-            this.sPR.blP();
+          this.cLV = true;
+          if (this.tYe != null) {
+            this.tYe.bsL();
           }
         }
         for (;;)
         {
-          ad.d("MicorMsg.TrackRefreshManager", "refresh track room, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.cOA), Integer.valueOf(paramString.BaseResponse.Ret) });
-          if (this.sPF > 0) {
-            h.vKh.f(10997, new Object[] { "9", "", Integer.valueOf(this.sPF), Integer.valueOf(0) });
+          ac.d("MicorMsg.TrackRefreshManager", "refresh track room, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.cLV), Integer.valueOf(paramString.BaseResponse.Ret) });
+          if (this.tXS > 0) {
+            h.wUl.f(10997, new Object[] { "9", "", Integer.valueOf(this.tXS), Integer.valueOf(0) });
           }
-          this.sPF = 0;
-          this.sPG = ((c)paramn).sQd;
-          paramInt1 = ((c)paramn).sQh;
-          if ((this.sPI == null) || ((paramInt1 != 2) && (paramInt1 != 1) && (paramInt1 != 3))) {
+          this.tXS = 0;
+          this.tXT = ((c)paramn).tYq;
+          paramInt1 = ((c)paramn).tYu;
+          if ((this.tXV == null) || ((paramInt1 != 2) && (paramInt1 != 1) && (paramInt1 != 3))) {
             break;
           }
-          paramString = this.sPI.iterator();
+          paramString = this.tXV.iterator();
           while (paramString.hasNext())
           {
             localWeakReference = (WeakReference)paramString.next();
             if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((b)localWeakReference.get()).a(((c)paramn).sQg);
+              ((b)localWeakReference.get()).a(((c)paramn).tYt);
             }
           }
           label964:
-          this.cOA = false;
+          this.cLV = false;
         }
-        if (this.sPJ == 1) {}
+        if (this.tXW == 1) {}
         for (paramInt1 = 1;; paramInt1 = 0)
         {
           if (paramInt1 == 0) {
-            cJy();
+            cXd();
           }
           this.mHandler.removeMessages(1);
-          if ((cJA()) && (!this.sPQ) && (!this.cOA)) {
-            this.mHandler.sendEmptyMessageDelayed(1, this.sPG);
+          if ((cXf()) && (!this.tYd) && (!this.cLV)) {
+            this.mHandler.sendEmptyMessageDelayed(1, this.tXT);
           }
           AppMethodBeat.o(55770);
           return;
         }
       }
       if (paramn.getType() == 491) {
-        n.cJr().aeV("");
+        n.cWW().ajP("");
       }
     }
     AppMethodBeat.o(55770);
@@ -488,29 +488,34 @@ public final class q
   public final void stop()
   {
     AppMethodBeat.i(55761);
-    ad.i("MicorMsg.TrackRefreshManager", "stop location");
-    if (this.gXu != null) {
-      this.gXu.c(this.fjJ);
+    ac.i("MicorMsg.TrackRefreshManager", "stop location");
+    if (this.hxT != null) {
+      this.hxT.c(this.fnd);
     }
-    if (this.sPH != null) {
-      this.sPH.b(this.sPW);
+    if (this.tXU != null) {
+      this.tXU.b(this.tYj);
     }
-    com.tencent.mm.kernel.g.aeS().b(492, this);
-    com.tencent.mm.kernel.g.aeS().b(490, this);
-    com.tencent.mm.kernel.g.aeS().b(491, this);
-    this.sPJ = 1;
+    com.tencent.mm.kernel.g.agi().b(492, this);
+    com.tencent.mm.kernel.g.agi().b(490, this);
+    com.tencent.mm.kernel.g.agi().b(491, this);
+    this.tXW = 1;
     this.isStart = false;
-    this.sPS = -1;
+    this.tYf = -1;
     AppMethodBeat.o(55761);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bsL();
   }
   
   public static abstract interface b
   {
-    public abstract void a(cii paramcii);
+    public abstract void a(cno paramcno);
     
-    public abstract void cJB();
+    public abstract void cXg();
     
-    public abstract void cJC();
+    public abstract void cXh();
     
     public abstract void onError(int paramInt, String paramString);
   }

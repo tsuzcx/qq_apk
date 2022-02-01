@@ -7,29 +7,29 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class k
   implements GestureDetector.OnGestureListener
 {
-  public a HrC;
-  private final float HrD;
-  private final float HrE;
-  private final int Mt;
-  private final int Mu;
-  public final GestureDetector aNb;
+  public a IRZ;
+  private final float ISa;
+  private final float ISb;
+  private final int Nq;
+  private final int Nr;
+  public final GestureDetector aNR;
   private final Context context;
   
   public k(Context paramContext)
   {
     AppMethodBeat.i(143111);
     this.context = paramContext;
-    this.aNb = new GestureDetector(this.context, this);
+    this.aNR = new GestureDetector(this.context, this);
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(paramContext);
-    this.Mt = localViewConfiguration.getScaledMinimumFlingVelocity();
-    this.Mu = localViewConfiguration.getScaledMaximumFlingVelocity();
-    this.HrD = BackwardSupportUtil.b.g(paramContext, 70.0F);
-    this.HrE = BackwardSupportUtil.b.g(paramContext, 50.0F);
+    this.Nq = localViewConfiguration.getScaledMinimumFlingVelocity();
+    this.Nr = localViewConfiguration.getScaledMaximumFlingVelocity();
+    this.ISa = BackwardSupportUtil.b.g(paramContext, 70.0F);
+    this.ISb = BackwardSupportUtil.b.g(paramContext, 50.0F);
     AppMethodBeat.o(143111);
   }
   
@@ -41,30 +41,30 @@ public final class k
   public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(143112);
-    if (this.HrC == null)
+    if (this.IRZ == null)
     {
       AppMethodBeat.o(143112);
       return true;
     }
-    ad.v("MicroMsg.MMGestureDetector", "lastX:%f, curX:%f, lastY:%f, curY:%f, vX:%f, vY:%f", new Object[] { Float.valueOf(paramMotionEvent1.getX()), Float.valueOf(paramMotionEvent2.getX()), Float.valueOf(paramMotionEvent1.getY()), Float.valueOf(paramMotionEvent2.getY()), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+    ac.v("MicroMsg.MMGestureDetector", "lastX:%f, curX:%f, lastY:%f, curY:%f, vX:%f, vY:%f", new Object[] { Float.valueOf(paramMotionEvent1.getX()), Float.valueOf(paramMotionEvent2.getX()), Float.valueOf(paramMotionEvent1.getY()), Float.valueOf(paramMotionEvent2.getY()), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
     float f1 = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
     float f2 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-    if ((f1 < this.HrE) && (paramFloat1 > 800.0F) && (f2 > this.HrD))
+    if ((f1 < this.ISb) && (paramFloat1 > 800.0F) && (f2 > this.ISa))
     {
       AppMethodBeat.o(143112);
       return true;
     }
-    if ((f1 < this.HrE) && (paramFloat1 < -800.0F) && (f2 < -this.HrD))
+    if ((f1 < this.ISb) && (paramFloat1 < -800.0F) && (f2 < -this.ISa))
     {
       AppMethodBeat.o(143112);
       return true;
     }
-    if ((f2 < this.HrE) && (paramFloat2 > 800.0F))
+    if ((f2 < this.ISb) && (paramFloat2 > 800.0F))
     {
       AppMethodBeat.o(143112);
       return true;
     }
-    if ((f2 < this.HrE) && (paramFloat2 < -800.0F))
+    if ((f2 < this.ISb) && (paramFloat2 < -800.0F))
     {
       AppMethodBeat.o(143112);
       return true;

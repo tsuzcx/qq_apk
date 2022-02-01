@@ -42,30 +42,30 @@ class GetRequest
   
   private long findRangeOffset(String paramString)
   {
-    AppMethodBeat.i(190272);
+    AppMethodBeat.i(192472);
     paramString = RANGE_HEADER_PATTERN.matcher(paramString);
     if (paramString.find())
     {
       long l = Long.parseLong(paramString.group(1));
-      AppMethodBeat.o(190272);
+      AppMethodBeat.o(192472);
       return l;
     }
-    AppMethodBeat.o(190272);
+    AppMethodBeat.o(192472);
     return -1L;
   }
   
   private String findUri(String paramString)
   {
-    AppMethodBeat.i(190273);
+    AppMethodBeat.i(192473);
     Matcher localMatcher = URL_PATTERN.matcher(paramString);
     if (localMatcher.find())
     {
       paramString = localMatcher.group(1);
-      AppMethodBeat.o(190273);
+      AppMethodBeat.o(192473);
       return paramString;
     }
     paramString = new IllegalArgumentException("Invalid request `" + paramString + "`: url not found!");
-    AppMethodBeat.o(190273);
+    AppMethodBeat.o(192473);
     throw paramString;
   }
   
@@ -97,7 +97,7 @@ class GetRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.danikula.videocache.GetRequest
  * JD-Core Version:    0.7.0.1
  */

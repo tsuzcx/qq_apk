@@ -14,8 +14,8 @@ import android.widget.NumberPicker.OnValueChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.g.h;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.picker.OptionPicker;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,70 +23,70 @@ import java.util.List;
 
 public final class c
 {
-  ArrayList<Long> GHA;
-  OptionPicker GHx;
-  OptionPicker GHy;
-  public a GHz;
-  private Button hJg;
-  private Button hJh;
-  private View jGG;
-  private int kBk;
-  private BottomSheetBehavior kBl;
+  OptionPicker Iht;
+  OptionPicker Ihu;
+  public a Ihv;
+  ArrayList<Long> Ihw;
+  private Button gAJ;
+  private Button gCY;
+  private View khe;
+  private int lcC;
+  private BottomSheetBehavior lcD;
   Context mContext;
-  android.support.design.widget.a sri;
+  android.support.design.widget.a tyZ;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(36725);
-    this.GHA = new ArrayList(42);
+    this.Ihw = new ArrayList(42);
     this.mContext = paramContext;
-    this.jGG = View.inflate(this.mContext, 2131495247, null);
-    this.sri = new android.support.design.widget.a(this.mContext);
-    this.sri.setContentView(this.jGG);
-    this.sri.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.khe = View.inflate(this.mContext, 2131495247, null);
+    this.tyZ = new android.support.design.widget.a(this.mContext);
+    this.tyZ.setContentView(this.khe);
+    this.tyZ.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        c.this.sri = null;
+        c.this.tyZ = null;
       }
     });
-    this.GHx = ((OptionPicker)this.jGG.findViewById(2131303043));
-    this.GHy = ((OptionPicker)this.jGG.findViewById(2131303045));
-    this.GHx.setValue(0);
-    this.GHx.setMinWidth(com.tencent.mm.cd.a.fromDPToPix(this.mContext, 60));
-    this.GHy.setMinWidth(com.tencent.mm.cd.a.fromDPToPix(this.mContext, 60));
-    this.GHx.setOptionsArray(faC());
-    this.GHy.setOptionsArray(Zz(0));
-    this.GHx.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+    this.Iht = ((OptionPicker)this.khe.findViewById(2131303043));
+    this.Ihu = ((OptionPicker)this.khe.findViewById(2131303045));
+    this.Iht.setValue(0);
+    this.Iht.setMinWidth(com.tencent.mm.cc.a.fromDPToPix(this.mContext, 60));
+    this.Ihu.setMinWidth(com.tencent.mm.cc.a.fromDPToPix(this.mContext, 60));
+    this.Iht.setOptionsArray(fqs());
+    this.Ihu.setOptionsArray(abL(0));
+    this.Iht.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
     {
       public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(36722);
-        ad.d("MicroMsg.MMRemindDatePicker", "[onValueChange] oldVal:%s newVal:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        c.this.GHy.setOptionsArray(c.this.Zz(paramAnonymousInt2));
+        ac.d("MicroMsg.MMRemindDatePicker", "[onValueChange] oldVal:%s newVal:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        c.this.Ihu.setOptionsArray(c.this.abL(paramAnonymousInt2));
         paramAnonymousInt1 = Calendar.getInstance().get(11);
         if (paramAnonymousInt2 == 0)
         {
-          c.this.GHy.setValue(0);
+          c.this.Ihu.setValue(0);
           AppMethodBeat.o(36722);
           return;
         }
-        c.this.GHy.setValue(paramAnonymousInt1);
+        c.this.Ihu.setValue(paramAnonymousInt1);
         AppMethodBeat.o(36722);
       }
     });
-    paramContext = (FrameLayout.LayoutParams)this.jGG.getLayoutParams();
-    paramContext.height = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 288);
-    this.jGG.setLayoutParams(paramContext);
-    this.kBk = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 350);
-    this.kBl = BottomSheetBehavior.l((View)this.jGG.getParent());
-    if (this.kBl != null)
+    paramContext = (FrameLayout.LayoutParams)this.khe.getLayoutParams();
+    paramContext.height = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 288);
+    this.khe.setLayoutParams(paramContext);
+    this.lcC = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 350);
+    this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
+    if (this.lcD != null)
     {
-      this.kBl.J(this.kBk);
-      this.kBl.lh = false;
+      this.lcD.J(this.lcC);
+      this.lcD.mg = false;
     }
-    this.hJh = ((Button)this.jGG.findViewById(2131302999));
-    this.hJh.setOnClickListener(new View.OnClickListener()
+    this.gAJ = ((Button)this.khe.findViewById(2131302999));
+    this.gAJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -95,43 +95,43 @@ public final class c
         long l;
         int i;
         int j;
-        if (c.this.GHz != null)
+        if (c.this.Ihv != null)
         {
-          paramAnonymousView = c.this.GHz;
+          paramAnonymousView = c.this.Ihv;
           localc = c.this;
           l = System.currentTimeMillis();
-          i = localc.GHx.getValue();
-          j = localc.GHy.getValue();
+          i = localc.Iht.getValue();
+          j = localc.Ihu.getValue();
           if (i != 0) {
             break label151;
           }
-          if (!b.eEQ()) {
+          if (!b.eUk()) {
             break label135;
           }
           l += 360000L;
         }
         for (;;)
         {
-          ad.i("MicroMsg.MMRemindDatePicker", "[getTimestamp] date:%s", new Object[] { h.formatTime(localc.mContext.getString(2131759518) + "HH:mm", l / 1000L) });
-          paramAnonymousView.wz(l);
+          ac.i("MicroMsg.MMRemindDatePicker", "[getTimestamp] date:%s", new Object[] { h.formatTime(localc.mContext.getString(2131759518) + "HH:mm", l / 1000L) });
+          paramAnonymousView.Bc(l);
           AppMethodBeat.o(36723);
           return;
           label135:
           l += (j + 1) * 3600000L;
           continue;
           label151:
-          l = ((Long)localc.GHA.get(i)).longValue() + (j + 1) * 3600000L;
+          l = ((Long)localc.Ihw.get(i)).longValue() + (j + 1) * 3600000L;
         }
       }
     });
-    this.hJg = ((Button)this.jGG.findViewById(2131297690));
-    this.hJg.setOnClickListener(new View.OnClickListener()
+    this.gCY = ((Button)this.khe.findViewById(2131297690));
+    this.gCY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(36724);
-        if (c.this.GHz != null) {
-          c.this.GHz.onCancel();
+        if (c.this.Ihv != null) {
+          c.this.Ihv.onCancel();
         }
         AppMethodBeat.o(36724);
       }
@@ -139,27 +139,27 @@ public final class c
     AppMethodBeat.o(36725);
   }
   
-  private String[] faC()
+  private String[] fqs()
   {
     int j = 0;
     AppMethodBeat.i(36729);
-    this.GHA.clear();
+    this.Ihw.clear();
     Object localObject = new ArrayList();
     Calendar localCalendar = Calendar.getInstance();
     int i = 0;
     if (i < localCalendar.getActualMaximum(5))
     {
-      if ((b.eEQ()) && (i == 0))
+      if ((b.eUk()) && (i == 0))
       {
         ((ArrayList)localObject).add("test");
-        this.GHA.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        this.Ihw.add(Long.valueOf(localCalendar.getTimeInMillis()));
       }
       label109:
       String str;
       if (i == 0)
       {
         localCalendar.setTimeInMillis(System.currentTimeMillis() + 86400000L * i);
-        this.GHA.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        this.Ihw.add(Long.valueOf(localCalendar.getTimeInMillis()));
         str = h.formatTime(this.mContext.getString(2131759498), localCalendar.getTimeInMillis() / 1000L);
         if (i != 0) {
           break label227;
@@ -175,7 +175,7 @@ public final class c
         localCalendar.set(12, 0);
         localCalendar.set(13, 0);
         localCalendar.set(14, 0);
-        this.GHA.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        this.Ihw.add(Long.valueOf(localCalendar.getTimeInMillis()));
         break label109;
         label227:
         if (i == 1) {
@@ -183,7 +183,7 @@ public final class c
         } else if (i == 2) {
           ((ArrayList)localObject).add(str + " " + this.mContext.getResources().getString(2131759533));
         } else {
-          ((ArrayList)localObject).add(str + " " + h.ai(this.mContext, localCalendar.get(7)));
+          ((ArrayList)localObject).add(str + " " + h.ao(this.mContext, localCalendar.get(7)));
         }
       }
     }
@@ -200,26 +200,26 @@ public final class c
       for (;;)
       {
         localCalendar.set(5, 1);
-        this.GHA.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        this.Ihw.add(Long.valueOf(localCalendar.getTimeInMillis()));
         ((ArrayList)localObject).add(String.valueOf(h.formatTime(this.mContext.getString(2131759518), localCalendar.getTimeInMillis() / 1000L)));
         i += 1;
         break;
         localCalendar.set(2, m + i);
       }
     }
-    localObject = bt.gK((List)localObject);
+    localObject = bs.gX((List)localObject);
     AppMethodBeat.o(36729);
     return localObject;
   }
   
-  final String[] Zz(int paramInt)
+  final String[] abL(int paramInt)
   {
     AppMethodBeat.i(36728);
     ArrayList localArrayList = new ArrayList();
     int i;
     label50:
     StringBuilder localStringBuilder;
-    if (b.eEQ())
+    if (b.eUk())
     {
       i = 1;
       switch (paramInt - i)
@@ -247,7 +247,7 @@ public final class c
       localArrayList.add("after 6 min");
       for (;;)
       {
-        localObject = bt.gK(localArrayList);
+        localObject = bs.gX(localArrayList);
         AppMethodBeat.o(36728);
         return localObject;
         i = Calendar.getInstance().get(11);
@@ -264,8 +264,8 @@ public final class c
   public final void hide()
   {
     AppMethodBeat.i(36727);
-    if (this.sri != null) {
-      this.sri.dismiss();
+    if (this.tyZ != null) {
+      this.tyZ.dismiss();
     }
     AppMethodBeat.o(36727);
   }
@@ -273,17 +273,17 @@ public final class c
   public final void show()
   {
     AppMethodBeat.i(36726);
-    if (this.sri != null) {
-      this.sri.show();
+    if (this.tyZ != null) {
+      this.tyZ.show();
     }
     AppMethodBeat.o(36726);
   }
   
   public static abstract interface a
   {
-    public abstract void onCancel();
+    public abstract void Bc(long paramLong);
     
-    public abstract void wz(long paramLong);
+    public abstract void onCancel();
   }
 }
 

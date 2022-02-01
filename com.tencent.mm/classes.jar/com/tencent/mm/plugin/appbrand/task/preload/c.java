@@ -12,15 +12,15 @@ public class c
 {
   public static void a(Intent paramIntent, d<IPCVoid> paramd)
   {
-    AppMethodBeat.i(196136);
+    AppMethodBeat.i(186981);
     AppBrandTaskPreloadReceiver.c("PreloadIPCTaskImpl", paramIntent);
-    paramd.bf(IPCVoid.fZS);
-    AppMethodBeat.o(196136);
+    paramd.bc(IPCVoid.gey);
+    AppMethodBeat.o(186981);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.preload.c
  * JD-Core Version:    0.7.0.1
  */

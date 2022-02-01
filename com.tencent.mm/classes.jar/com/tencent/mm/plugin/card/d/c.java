@@ -9,15 +9,15 @@ public enum c
   static
   {
     AppMethodBeat.i(113753);
-    nIX = new c("CARDCODEREFRESHACTION_UNSHOWN_TIMEOUT", 0, 0);
-    nIY = new c("CARDCODEREFRESHACTION_SHOWING_TIMEOUT", 1, 1);
-    nIZ = new c("CARDCODEREFRESHACTION_SNAPSHOT", 2, 2);
-    nJa = new c("CARDCODEREFRESHACTION_DOREFRESH", 3, 3);
-    nJb = new c("CARDCODEREFRESHACTION_ENTERFOREGROUND", 4, 4);
-    nJc = new c("CARDCODEREFRESHACTION_BANCODE", 5, 5);
-    nJd = new c("CARDCODEREFRESHACTION_UPDATECHANGE", 6, 6);
-    nJe = new c("CARDCODEREFRESHACTION_ENTERCHANGE", 7, 7);
-    nJf = new c[] { nIX, nIY, nIZ, nJa, nJb, nJc, nJd, nJe };
+    olX = new c("CARDCODEREFRESHACTION_UNSHOWN_TIMEOUT", 0, 0);
+    olY = new c("CARDCODEREFRESHACTION_SHOWING_TIMEOUT", 1, 1);
+    olZ = new c("CARDCODEREFRESHACTION_SNAPSHOT", 2, 2);
+    oma = new c("CARDCODEREFRESHACTION_DOREFRESH", 3, 3);
+    omb = new c("CARDCODEREFRESHACTION_ENTERFOREGROUND", 4, 4);
+    omc = new c("CARDCODEREFRESHACTION_BANCODE", 5, 5);
+    omd = new c("CARDCODEREFRESHACTION_UPDATECHANGE", 6, 6);
+    ome = new c("CARDCODEREFRESHACTION_ENTERCHANGE", 7, 7);
+    omf = new c[] { olX, olY, olZ, oma, omb, omc, omd, ome };
     AppMethodBeat.o(113753);
   }
   

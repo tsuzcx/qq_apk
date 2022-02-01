@@ -9,12 +9,10 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.liteav.basic.d.g;
 import com.tencent.liteav.basic.d.h;
-import com.tencent.liteav.basic.d.i.a;
+import com.tencent.liteav.basic.d.j.a;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.beauty.b.j;
 import com.tencent.liteav.beauty.b.k;
 import com.tencent.liteav.beauty.b.l;
 import com.tencent.liteav.beauty.b.m;
@@ -101,19 +99,19 @@ class b
   private m ao;
   private n ap;
   private x aq;
-  private j ar;
+  private com.tencent.liteav.beauty.b.j ar;
   private com.tencent.liteav.beauty.b.i as;
-  private g at;
+  private h at;
   private l au;
-  private h av;
-  private g aw;
+  private com.tencent.liteav.basic.d.i av;
+  private h aw;
   private final Queue<Runnable> ax;
   private boolean ay;
   private Object az;
   protected int[] b;
   private d ba;
   private WeakReference<com.tencent.liteav.basic.c.a> bb;
-  private i.a bc;
+  private j.a bc;
   protected int[] c;
   com.tencent.liteav.beauty.b.a d;
   com.tencent.liteav.beauty.b.a e;
@@ -240,7 +238,7 @@ class b
     this.d = new com.tencent.liteav.beauty.b.a();
     this.e = new com.tencent.liteav.beauty.b.a();
     this.f = new com.tencent.liteav.beauty.b.a();
-    this.bc = new i.a() {};
+    this.bc = new j.a() {};
     this.E = paramContext;
     this.aB = new Handler(this.E.getMainLooper());
     this.ay = paramBoolean;
@@ -276,7 +274,7 @@ class b
         NativeLoad.getInstance();
         NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, this.aV);
         continue;
-        if (3 == com.tencent.liteav.basic.d.i.a())
+        if (3 == com.tencent.liteav.basic.d.j.a())
         {
           if (0L == this.aO) {
             this.aO = TXCTimeUtil.getTimeTick();
@@ -471,7 +469,7 @@ class b
     //   37: invokevirtual 483	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   40: invokestatic 488	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   43: aload_0
-    //   44: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
+    //   44: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/h;
     //   47: ifnonnull +67 -> 114
     //   50: iload_1
     //   51: iload 4
@@ -490,33 +488,33 @@ class b
     //   80: invokestatic 424	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: return
     //   84: aload_0
-    //   85: new 611	com/tencent/liteav/basic/d/g
+    //   85: new 611	com/tencent/liteav/basic/d/h
     //   88: dup
-    //   89: invokespecial 612	com/tencent/liteav/basic/d/g:<init>	()V
-    //   92: putfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
+    //   89: invokespecial 612	com/tencent/liteav/basic/d/h:<init>	()V
+    //   92: putfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/h;
     //   95: iconst_1
     //   96: aload_0
-    //   97: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
-    //   100: invokevirtual 613	com/tencent/liteav/basic/d/g:a	()Z
+    //   97: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/h;
+    //   100: invokevirtual 613	com/tencent/liteav/basic/d/h:a	()Z
     //   103: if_icmpne +49 -> 152
     //   106: aload_0
-    //   107: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
+    //   107: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/h;
     //   110: iconst_1
-    //   111: invokevirtual 614	com/tencent/liteav/basic/d/g:a	(Z)V
+    //   111: invokevirtual 614	com/tencent/liteav/basic/d/h:a	(Z)V
     //   114: aload_0
-    //   115: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
+    //   115: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/h;
     //   118: iload 4
     //   120: iload 5
-    //   122: invokevirtual 615	com/tencent/liteav/basic/d/g:a	(II)V
+    //   122: invokevirtual 615	com/tencent/liteav/basic/d/h:a	(II)V
     //   125: aload_0
-    //   126: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/g;
+    //   126: getfield 312	com/tencent/liteav/beauty/b:at	Lcom/tencent/liteav/basic/d/h;
     //   129: sipush 720
     //   132: iload_3
     //   133: isub
     //   134: sipush 360
     //   137: irem
     //   138: aconst_null
-    //   139: invokevirtual 618	com/tencent/liteav/basic/d/g:a	(ILjava/nio/FloatBuffer;)V
+    //   139: invokevirtual 618	com/tencent/liteav/basic/d/h:a	(ILjava/nio/FloatBuffer;)V
     //   142: aload 7
     //   144: monitorexit
     //   145: sipush 15170
@@ -674,7 +672,7 @@ class b
   {
     AppMethodBeat.i(15184);
     GLES20.glGenFramebuffers(1, paramArrayOfInt1, 0);
-    paramArrayOfInt2[0] = com.tencent.liteav.basic.d.i.a(paramInt1, paramInt2, 6408, 6408, paramArrayOfInt2);
+    paramArrayOfInt2[0] = com.tencent.liteav.basic.d.j.a(paramInt1, paramInt2, 6408, 6408, paramArrayOfInt2);
     GLES20.glBindFramebuffer(36160, paramArrayOfInt1[0]);
     GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramArrayOfInt2[0], 0);
     GLES20.glBindFramebuffer(36160, 0);
@@ -762,7 +760,7 @@ class b
     if (this.aw == null)
     {
       TXCLog.i("TXCFilterDrawer", "createRecoverScaleFilter");
-      this.aw = new g();
+      this.aw = new h();
       if (true != this.aw.a()) {
         break label74;
       }
@@ -879,7 +877,7 @@ class b
       this.c = new int[1];
       label526:
       a(this.b, this.c, this.R, this.S);
-      if (3 == com.tencent.liteav.basic.d.i.a())
+      if (3 == com.tencent.liteav.basic.d.j.a())
       {
         if (this.aT != null) {
           break label639;
@@ -890,7 +888,7 @@ class b
     for (;;)
     {
       TXCLog.i("TXCFilterDrawer", "opengl es 3.0, use PBO");
-      com.tencent.liteav.basic.d.i.a(this.K, this.L, this.aT);
+      com.tencent.liteav.basic.d.j.a(this.K, this.L, this.aT);
       TXCLog.i("TXCFilterDrawer", "come out initInternal");
       AppMethodBeat.o(15182);
       return true;

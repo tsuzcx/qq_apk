@@ -2,63 +2,147 @@ package com.tencent.mm.plugin.music.b;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.v;
+import com.tencent.mm.g.a.w;
 import com.tencent.mm.plugin.music.f.a.d;
 import com.tencent.mm.plugin.music.f.a.d.a;
 import com.tencent.mm.plugin.music.f.a.e;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bc;
-import com.tencent.mm.sdk.platformtools.bc.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bb;
+import com.tencent.mm.sdk.platformtools.bb.a;
 
 public abstract class g
   implements d
 {
-  protected c tUh = null;
-  bc tUo;
-  protected boolean tUp;
-  protected d.a tUq;
+  protected c vcP = null;
+  bb vcW;
+  protected boolean vcX;
+  protected d.a vcY;
   
-  public final void Hp(int paramInt)
+  public final void EM() {}
+  
+  public final void Jo(int paramInt)
   {
-    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent with errCode:%d", new Object[] { Integer.valueOf(paramInt) });
-    v localv = new v();
-    localv.dbN.action = 4;
-    localv.dbN.state = "error";
-    localv.dbN.errCode = e.HZ(paramInt);
-    localv.dbN.errMsg = e.te(paramInt);
-    localv.dbN.cTr = cTR();
-    localv.dbN.appId = getAppId();
-    a.ESL.a(localv, Looper.getMainLooper());
-    if (this.tUh != null) {
-      this.tUh.onError(cTR());
+    ac.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent with errCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    w localw = new w();
+    localw.cZm.action = 4;
+    localw.cZm.state = "error";
+    localw.cZm.errCode = e.JY(paramInt);
+    localw.cZm.errMsg = e.tV(paramInt);
+    localw.cZm.cQO = dhy();
+    localw.cZm.appId = getAppId();
+    a.GpY.a(localw, Looper.getMainLooper());
+    if (this.vcP != null) {
+      this.vcP.onError(dhy());
     }
   }
   
   public final void a(c paramc)
   {
-    this.tUh = paramc;
+    this.vcP = paramc;
   }
   
-  public final void a(d.a parama)
-  {
-    this.tUq = parama;
-  }
-  
-  public final boolean azG()
+  public final boolean aGw()
   {
     return false;
   }
   
-  protected final void cTN()
+  public final void dhA()
+  {
+    ac.i("MicroMsg.Audio.BaseAudioPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(aGv()) });
+    w localw = new w();
+    localw.cZm.action = 0;
+    localw.cZm.state = "play";
+    localw.cZm.cQO = dhy();
+    localw.cZm.appId = getAppId();
+    a.GpY.a(localw, Looper.getMainLooper());
+    if (this.vcP != null) {
+      this.vcP.onStart(dhy());
+    }
+  }
+  
+  public final void dhB()
+  {
+    ac.i("MicroMsg.Audio.BaseAudioPlayer", "onResumeEvent");
+    w localw = new w();
+    localw.cZm.action = 1;
+    localw.cZm.state = "play";
+    localw.cZm.cQO = dhy();
+    localw.cZm.appId = getAppId();
+    a.GpY.a(localw, Looper.getMainLooper());
+    if (this.vcP != null) {
+      this.vcP.onStart(dhy());
+    }
+  }
+  
+  public final void dhC()
+  {
+    ac.i("MicroMsg.Audio.BaseAudioPlayer", "onPauseEvent");
+    w localw = new w();
+    localw.cZm.action = 2;
+    localw.cZm.state = "pause";
+    localw.cZm.cQO = dhy();
+    localw.cZm.appId = getAppId();
+    a.GpY.a(localw, Looper.getMainLooper());
+    if (this.vcP != null) {
+      this.vcP.amK(dhy());
+    }
+  }
+  
+  public final void dhD()
+  {
+    ac.i("MicroMsg.Audio.BaseAudioPlayer", "onStopEvent");
+    w localw = new w();
+    localw.cZm.action = 3;
+    localw.cZm.state = "stop";
+    localw.cZm.cQO = dhy();
+    localw.cZm.appId = getAppId();
+    a.GpY.a(localw, Looper.getMainLooper());
+    if (this.vcP != null) {
+      this.vcP.acj(dhy());
+    }
+  }
+  
+  public final void dhE()
+  {
+    ac.i("MicroMsg.Audio.BaseAudioPlayer", "onSeekToEvent");
+    w localw = new w();
+    localw.cZm.action = 6;
+    localw.cZm.state = "seeked";
+    localw.cZm.cQO = dhy();
+    localw.cZm.appId = getAppId();
+    a.GpY.a(localw, Looper.getMainLooper());
+  }
+  
+  public final void dhF()
+  {
+    ac.i("MicroMsg.Audio.BaseAudioPlayer", "onStopEvent");
+    w localw = new w();
+    localw.cZm.action = 5;
+    localw.cZm.state = "ended";
+    localw.cZm.cQO = dhy();
+    localw.cZm.appId = getAppId();
+    a.GpY.a(localw, Looper.getMainLooper());
+    if (this.vcP != null) {
+      this.vcP.fh(dhy());
+    }
+  }
+  
+  public final void dhG()
+  {
+    ac.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent");
+    Jo(-1);
+  }
+  
+  protected final void dhv()
   {
     try
     {
-      if (this.tUo != null)
+      if (this.vcW != null)
       {
-        this.tUo.end();
-        this.tUo.eGl();
-        this.tUo = null;
+        this.vcW.end();
+        this.vcW.eVG();
+        this.vcW = null;
       }
       return;
     }
@@ -69,117 +153,28 @@ public abstract class g
     }
   }
   
-  public final void cTO() {}
-  
-  public boolean cTP()
+  public boolean dhw()
   {
     return false;
   }
   
-  public final com.tencent.mm.az.c cTQ()
+  public final com.tencent.mm.ay.c dhx()
   {
     return null;
   }
   
-  public abstract String cTR();
+  public abstract String dhy();
   
-  public final void cTS()
+  public final void dhz()
   {
-    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onPrepareEvent");
-    v localv = new v();
-    localv.dbN.action = 7;
-    localv.dbN.state = "canplay";
-    localv.dbN.duration = getDuration();
-    localv.dbN.cTr = cTR();
-    localv.dbN.appId = getAppId();
-    a.ESL.a(localv, Looper.getMainLooper());
-  }
-  
-  public final void cTT()
-  {
-    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(azF()) });
-    v localv = new v();
-    localv.dbN.action = 0;
-    localv.dbN.state = "play";
-    localv.dbN.cTr = cTR();
-    localv.dbN.appId = getAppId();
-    a.ESL.a(localv, Looper.getMainLooper());
-    if (this.tUh != null) {
-      this.tUh.onStart(cTR());
-    }
-  }
-  
-  public final void cTU()
-  {
-    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onResumeEvent");
-    v localv = new v();
-    localv.dbN.action = 1;
-    localv.dbN.state = "play";
-    localv.dbN.cTr = cTR();
-    localv.dbN.appId = getAppId();
-    a.ESL.a(localv, Looper.getMainLooper());
-    if (this.tUh != null) {
-      this.tUh.onStart(cTR());
-    }
-  }
-  
-  public final void cTV()
-  {
-    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onPauseEvent");
-    v localv = new v();
-    localv.dbN.action = 2;
-    localv.dbN.state = "pause";
-    localv.dbN.cTr = cTR();
-    localv.dbN.appId = getAppId();
-    a.ESL.a(localv, Looper.getMainLooper());
-    if (this.tUh != null) {
-      this.tUh.ahP(cTR());
-    }
-  }
-  
-  public final void cTW()
-  {
-    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onStopEvent");
-    v localv = new v();
-    localv.dbN.action = 3;
-    localv.dbN.state = "stop";
-    localv.dbN.cTr = cTR();
-    localv.dbN.appId = getAppId();
-    a.ESL.a(localv, Looper.getMainLooper());
-    if (this.tUh != null) {
-      this.tUh.XM(cTR());
-    }
-  }
-  
-  public final void cTX()
-  {
-    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onSeekToEvent");
-    v localv = new v();
-    localv.dbN.action = 6;
-    localv.dbN.state = "seeked";
-    localv.dbN.cTr = cTR();
-    localv.dbN.appId = getAppId();
-    a.ESL.a(localv, Looper.getMainLooper());
-  }
-  
-  public final void cTY()
-  {
-    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onStopEvent");
-    v localv = new v();
-    localv.dbN.action = 5;
-    localv.dbN.state = "ended";
-    localv.dbN.cTr = cTR();
-    localv.dbN.appId = getAppId();
-    a.ESL.a(localv, Looper.getMainLooper());
-    if (this.tUh != null) {
-      this.tUh.fr(cTR());
-    }
-  }
-  
-  public final void cTZ()
-  {
-    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent");
-    Hp(-1);
+    ac.i("MicroMsg.Audio.BaseAudioPlayer", "onPrepareEvent");
+    w localw = new w();
+    localw.cZm.action = 7;
+    localw.cZm.state = "canplay";
+    localw.cZm.duration = getDuration();
+    localw.cZm.cQO = dhy();
+    localw.cZm.appId = getAppId();
+    a.GpY.a(localw, Looper.getMainLooper());
   }
   
   public abstract String getAppId();

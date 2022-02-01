@@ -7,15 +7,15 @@ import com.tencent.mm.plugin.walletlock.a.b.a;
 import com.tencent.mm.plugin.walletlock.a.b.b;
 import com.tencent.mm.plugin.walletlock.gesture.a.c;
 import com.tencent.mm.plugin.walletlock.ui.WalletLockSettingUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class a
   implements com.tencent.mm.plugin.walletlock.a.b
 {
-  protected static int aH(Activity paramActivity)
+  protected static int aL(Activity paramActivity)
   {
     AppMethodBeat.i(129888);
-    ad.i("MicroMsg.BaseWalletLockImpl", "alvinluo activity %s", new Object[] { paramActivity.getClass().getSimpleName() });
+    ac.i("MicroMsg.BaseWalletLockImpl", "alvinluo activity %s", new Object[] { paramActivity.getClass().getSimpleName() });
     if (paramActivity.getClass().getSimpleName().equals("MallIndexUI"))
     {
       AppMethodBeat.o(129888);
@@ -30,7 +30,7 @@ public class a
     return -1;
   }
   
-  public void RK(int paramInt) {}
+  public void TU(int paramInt) {}
   
   public void a(Activity paramActivity, b.b paramb, b.a parama) {}
   
@@ -39,12 +39,12 @@ public class a
     return false;
   }
   
-  public void aF(Activity paramActivity) {}
+  public void aJ(Activity paramActivity) {}
   
   public void b(Activity paramActivity, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(129891);
-    ad.i("MicroMsg.BaseWalletLockImpl", "alvinluo enterNewWalletLockProcessForResult walletLockType: %d, requestCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.BaseWalletLockImpl", "alvinluo enterNewWalletLockProcessForResult walletLockType: %d, requestCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 1)
     {
       new c().b(paramActivity, paramInt1, paramInt2);
@@ -57,13 +57,13 @@ public class a
     AppMethodBeat.o(129891);
   }
   
-  public void b(Activity paramActivity, Intent paramIntent)
+  public void c(Activity paramActivity, Intent paramIntent)
   {
     AppMethodBeat.i(129892);
     paramIntent.setClass(paramActivity, WalletLockSettingUI.class);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.adn(), "com/tencent/mm/plugin/walletlock/model/BaseWalletLockImpl", "startWalletLockManagerUI", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramIntent.lS(0));
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.aeD(), "com/tencent/mm/plugin/walletlock/model/BaseWalletLockImpl", "startWalletLockManagerUI", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramIntent.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/walletlock/model/BaseWalletLockImpl", "startWalletLockManagerUI", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(129892);
   }
@@ -76,17 +76,17 @@ public class a
     AppMethodBeat.o(129893);
   }
   
-  public b.b efN()
+  public b.b evh()
   {
     return null;
   }
   
-  public boolean efO()
+  public boolean evi()
   {
     return false;
   }
   
-  public boolean efP()
+  public boolean evj()
   {
     return false;
   }
@@ -94,14 +94,14 @@ public class a
   public void init()
   {
     AppMethodBeat.i(129889);
-    g.ADl.RP(0);
+    g.BVG.TZ(0);
     AppMethodBeat.o(129889);
   }
   
   public void l(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(129890);
-    ad.i("MicroMsg.BaseWalletLockImpl", "alvinluo enterNewWalletLockProcess walletLockType: %d", new Object[] { Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.BaseWalletLockImpl", "alvinluo enterNewWalletLockProcess walletLockType: %d", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt == 1)
     {
       new c().l(paramActivity, paramInt);

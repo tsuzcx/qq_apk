@@ -9,27 +9,27 @@ import com.tencent.mm.ui.chatting.j.c;
 public abstract interface b$a
   extends c<b.b>
 {
-  public abstract String aHv();
+  public abstract String aOk();
   
-  public abstract RecyclerView.a aKQ(String paramString);
+  public abstract RecyclerView.a aQt(String paramString);
   
-  public abstract <T extends RecyclerView.i> T bNL();
+  public abstract <T extends RecyclerView.i> T bUW();
   
-  public abstract RecyclerView.h eZj();
+  public abstract RecyclerView.h foY();
   
-  public abstract void eZk();
+  public abstract void foZ();
   
-  public abstract c.e eZl();
+  public abstract c.e fpa();
   
-  public abstract com.tencent.mm.modelvoiceaddr.ui.b.a eZm();
+  public abstract com.tencent.mm.modelvoiceaddr.ui.b.a fpb();
   
-  public abstract String eZn();
+  public abstract String fpc();
   
   public abstract int getType();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.e.b.a
  * JD-Core Version:    0.7.0.1
  */

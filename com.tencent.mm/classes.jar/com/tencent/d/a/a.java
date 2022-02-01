@@ -5,11 +5,11 @@ import java.io.Serializable;
 public final class a
   implements Serializable
 {
-  public String IpN;
-  public String IpO;
-  public String IpP;
+  public String JRx;
+  public String JRy;
+  public String JRz;
   public int appType;
-  public String dvP;
+  public String dtC;
   public long fileSize;
   public int versionCode;
   public String versionName;

@@ -7,10 +7,10 @@ public enum MultiTalkVideoView$b
   static
   {
     AppMethodBeat.i(114761);
-    tTx = new b("Avatar", 0);
-    tTy = new b("Video", 1);
-    tTz = new b("None", 2);
-    tTA = new b[] { tTx, tTy, tTz };
+    vcf = new b("Avatar", 0);
+    vcg = new b("Video", 1);
+    vch = new b("None", 2);
+    vci = new b[] { vcf, vcg, vch };
     AppMethodBeat.o(114761);
   }
   

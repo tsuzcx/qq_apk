@@ -37,18 +37,18 @@ class SegmentDecoderThread
   
   SegmentDecoderThread(CachedVideoDecoderTrack paramCachedVideoDecoderTrack, IDecoderTrack paramIDecoderTrack)
   {
-    AppMethodBeat.i(201990);
+    AppMethodBeat.i(198051);
     this.cancel = false;
     this.started = false;
     this.cachedVideoDecoderTrack = paramCachedVideoDecoderTrack;
     this.decoderTrack = paramIDecoderTrack;
     this.texturePool = new TexturePool();
-    AppMethodBeat.o(201990);
+    AppMethodBeat.o(198051);
   }
   
   private void decoder(DecoderFrameMsg paramDecoderFrameMsg)
   {
-    AppMethodBeat.i(201997);
+    AppMethodBeat.i(198058);
     ??? = paramDecoderFrameMsg.time;
     if (this.cachedVideoDecoderTrack.revert) {
       ??? = this.decoderTrack.getDuration().sub(paramDecoderFrameMsg.time);
@@ -84,19 +84,19 @@ class SegmentDecoderThread
         synchronized (paramDecoderFrameMsg.finishWait)
         {
           paramDecoderFrameMsg.finishWait.countDown();
-          AppMethodBeat.o(201997);
+          AppMethodBeat.o(198058);
           return;
           label286:
           ??? = this.texturePool.popTexture(3553, ((RenderContext)???).width(), ((RenderContext)???).height());
         }
       }
     }
-    AppMethodBeat.o(201997);
+    AppMethodBeat.o(198058);
   }
   
   private void decoder(DecoderSegmentMsg paramDecoderSegmentMsg)
   {
-    AppMethodBeat.i(201996);
+    AppMethodBeat.i(198057);
     label793:
     label799:
     label805:
@@ -175,13 +175,13 @@ class SegmentDecoderThread
       {
         paramDecoderSegmentMsg.callbackObject.setFinish(true);
         paramDecoderSegmentMsg.callbackObject.notifyAll();
-        AppMethodBeat.o(201996);
+        AppMethodBeat.o(198057);
         return;
         paramDecoderSegmentMsg = finally;
-        AppMethodBeat.o(201996);
+        AppMethodBeat.o(198057);
         throw paramDecoderSegmentMsg;
       }
-      AppMethodBeat.o(201996);
+      AppMethodBeat.o(198057);
       return;
       ??? = localObject3;
     }
@@ -189,7 +189,7 @@ class SegmentDecoderThread
   
   private void quit()
   {
-    AppMethodBeat.i(201995);
+    AppMethodBeat.i(198056);
     if ((this.seekSampleBuffer != null) && (this.seekSampleBuffer.getTextureInfo() != null)) {
       this.seekSampleBuffer.getTextureInfo().release();
     }
@@ -199,56 +199,56 @@ class SegmentDecoderThread
     this.context.release();
     this.decoderHandler.removeCallbacksAndMessages(null);
     this.decoderThread.quit();
-    AppMethodBeat.o(201995);
+    AppMethodBeat.o(198056);
   }
   
   private void start()
   {
-    AppMethodBeat.i(201991);
+    AppMethodBeat.i(198052);
     this.decoderThread = new HandlerThread("SegmentDecoder");
     this.decoderThread.start();
     this.decoderHandler = new Handler(this.decoderThread.getLooper(), this);
-    AppMethodBeat.o(201991);
+    AppMethodBeat.o(198052);
   }
   
   private void startDecoder()
   {
-    AppMethodBeat.i(201994);
+    AppMethodBeat.i(198055);
     this.context = new RenderContext(this.cachedVideoDecoderTrack.renderContext.width(), this.cachedVideoDecoderTrack.renderContext.height(), null, this.cachedVideoDecoderTrack.renderContext.eglContext());
     this.decoderTrack.start(this.context, this.cachedVideoDecoderTrack.validTimeRange);
     this.started = true;
     this.context.makeCurrent();
     this.filter = new CopyFilter();
-    AppMethodBeat.o(201994);
+    AppMethodBeat.o(198055);
   }
   
   void decoderSegment(CMTime paramCMTime, CountDownLatch paramCountDownLatch)
   {
-    AppMethodBeat.i(201993);
+    AppMethodBeat.i(198054);
     this.cancel = true;
     this.decoderHandler.removeCallbacksAndMessages(null);
     this.decoderHandler.obtainMessage(3, new DecoderFrameMsg(paramCMTime, paramCountDownLatch)).sendToTarget();
-    AppMethodBeat.o(201993);
+    AppMethodBeat.o(198054);
   }
   
   void decoderSegment(CacheSegment paramCacheSegment, RequestStatus paramRequestStatus)
   {
-    AppMethodBeat.i(201992);
+    AppMethodBeat.i(198053);
     this.cancel = true;
     this.decoderHandler.removeCallbacksAndMessages(null);
     this.decoderHandler.obtainMessage(2, new DecoderSegmentMsg(paramCacheSegment, paramRequestStatus)).sendToTarget();
-    AppMethodBeat.o(201992);
+    AppMethodBeat.o(198053);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(201999);
+    AppMethodBeat.i(198060);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(201999);
+      AppMethodBeat.o(198060);
       return false;
       startDecoder();
       continue;
@@ -262,19 +262,19 @@ class SegmentDecoderThread
   
   void release()
   {
-    AppMethodBeat.i(202000);
+    AppMethodBeat.i(198061);
     this.cancel = true;
     if (this.decoderThread != null)
     {
       this.decoderHandler.removeCallbacksAndMessages(null);
       this.decoderHandler.sendEmptyMessage(1000);
     }
-    AppMethodBeat.o(202000);
+    AppMethodBeat.o(198061);
   }
   
   void startForReady()
   {
-    AppMethodBeat.i(201998);
+    AppMethodBeat.i(198059);
     start();
     this.decoderHandler.sendEmptyMessage(1);
     while (!this.started) {
@@ -284,12 +284,12 @@ class SegmentDecoderThread
       }
       catch (InterruptedException localInterruptedException) {}
     }
-    AppMethodBeat.o(201998);
+    AppMethodBeat.o(198059);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.decodecache.SegmentDecoderThread
  * JD-Core Version:    0.7.0.1
  */

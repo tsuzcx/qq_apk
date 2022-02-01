@@ -6,29 +6,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a HQW;
-  public HandlerThread HQV;
+  private static a Jrr;
+  public HandlerThread Jrq;
   private Handler mHandler;
   
   static
   {
     AppMethodBeat.i(74941);
-    HQW = new a();
+    Jrr = new a();
     AppMethodBeat.o(74941);
   }
   
   private a()
   {
     AppMethodBeat.i(74940);
-    this.HQV = new HandlerThread("Vending-HeavyWorkThread", 10);
-    this.HQV.start();
-    this.mHandler = new Handler(this.HQV.getLooper());
+    this.Jrq = new HandlerThread("Vending-HeavyWorkThread", 10);
+    this.Jrq.start();
+    this.mHandler = new Handler(this.Jrq.getLooper());
     AppMethodBeat.o(74940);
   }
   
-  public static a fhv()
+  public static a fxx()
   {
-    return HQW;
+    return Jrr;
   }
 }
 

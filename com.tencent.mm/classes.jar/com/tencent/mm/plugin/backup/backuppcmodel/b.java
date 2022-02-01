@@ -5,44 +5,44 @@ import android.os.Looper;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
 
 public final class b
   extends com.tencent.mm.plugin.backup.b.d
 {
-  private static b mvo;
-  private com.tencent.mm.plugin.backup.c.a msx;
-  private c mvp;
-  private e mvq;
-  private d mvr;
-  private a mvs;
+  private static b mXp;
+  private com.tencent.mm.plugin.backup.c.a mUy;
+  private c mXq;
+  private e mXr;
+  private d mXs;
+  private a mXt;
   private PowerManager.WakeLock wakeLock = null;
   
-  public static b bxe()
+  public static b bEa()
   {
     AppMethodBeat.i(21549);
-    if (mvo == null)
+    if (mXp == null)
     {
       localb = new b();
-      mvo = localb;
+      mXp = localb;
       a(localb);
     }
-    b localb = mvo;
+    b localb = mXp;
     AppMethodBeat.o(21549);
     return localb;
   }
   
-  public final void bvO()
+  public final void bCK()
   {
-    mvo = null;
+    mXp = null;
   }
   
-  public final void bvU()
+  public final void bCQ()
   {
     AppMethodBeat.i(21556);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -51,7 +51,7 @@ public final class b
         {
           if (b.a(b.this) == null)
           {
-            PowerManager localPowerManager = (PowerManager)aj.getContext().getSystemService("power");
+            PowerManager localPowerManager = (PowerManager)ai.getContext().getSystemService("power");
             b.a(b.this, localPowerManager.newWakeLock(26, "BackupPc Lock"));
           }
           if (!b.a(b.this).isHeld()) {
@@ -69,10 +69,10 @@ public final class b
     AppMethodBeat.o(21556);
   }
   
-  public final void bvV()
+  public final void bCR()
   {
     AppMethodBeat.i(21557);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -94,67 +94,67 @@ public final class b
     AppMethodBeat.o(21557);
   }
   
-  public final com.tencent.mm.plugin.backup.c.a bwD()
+  public final com.tencent.mm.plugin.backup.c.a bDz()
   {
     AppMethodBeat.i(21551);
-    if (this.msx == null) {
-      this.msx = new com.tencent.mm.plugin.backup.c.a();
+    if (this.mUy == null) {
+      this.mUy = new com.tencent.mm.plugin.backup.c.a();
     }
-    com.tencent.mm.plugin.backup.c.a locala = this.msx;
+    com.tencent.mm.plugin.backup.c.a locala = this.mUy;
     AppMethodBeat.o(21551);
     return locala;
   }
   
-  public final c bxf()
+  public final c bEb()
   {
     AppMethodBeat.i(21552);
-    if (this.mvp == null) {
-      this.mvp = new c();
+    if (this.mXq == null) {
+      this.mXq = new c();
     }
-    c localc = this.mvp;
+    c localc = this.mXq;
     AppMethodBeat.o(21552);
     return localc;
   }
   
-  public final e bxg()
+  public final e bEc()
   {
     AppMethodBeat.i(21553);
-    if (this.mvq == null) {
-      this.mvq = new e();
+    if (this.mXr == null) {
+      this.mXr = new e();
     }
-    e locale = this.mvq;
+    e locale = this.mXr;
     AppMethodBeat.o(21553);
     return locale;
   }
   
-  public final d bxh()
+  public final d bEd()
   {
     AppMethodBeat.i(21554);
-    if (this.mvr == null) {
-      this.mvr = new d();
+    if (this.mXs == null) {
+      this.mXs = new d();
     }
-    d locald = this.mvr;
+    d locald = this.mXs;
     AppMethodBeat.o(21554);
     return locald;
   }
   
-  public final a bxi()
+  public final a bEe()
   {
     AppMethodBeat.i(21555);
-    if (this.mvs == null) {
-      this.mvs = new a();
+    if (this.mXt == null) {
+      this.mXt = new a();
     }
-    a locala = this.mvs;
+    a locala = this.mXt;
     AppMethodBeat.o(21555);
     return locala;
   }
   
-  public final void o(Object... paramVarArgs)
+  public final void p(Object... paramVarArgs)
   {
     AppMethodBeat.i(21550);
     ((Boolean)paramVarArgs[0]).booleanValue();
-    paramVarArgs = bxe().bxf();
-    new ap(Looper.getMainLooper()).postDelayed(new c.5(paramVarArgs), 100L);
+    paramVarArgs = bEa().bEb();
+    new ao(Looper.getMainLooper()).postDelayed(new c.5(paramVarArgs), 100L);
     AppMethodBeat.o(21550);
   }
 }

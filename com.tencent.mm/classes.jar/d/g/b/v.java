@@ -8,54 +8,54 @@ public final class v
   public static final class a
     implements Serializable
   {
-    public boolean Jhs;
+    public boolean KUL;
     
     public final String toString()
     {
       AppMethodBeat.i(128956);
-      boolean bool = this.Jhs;
+      boolean bool = this.KUL;
       AppMethodBeat.o(128956);
       return String.valueOf(bool);
-    }
-  }
-  
-  public static final class c
-    implements Serializable
-  {
-    public int Jhu;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128942);
-      int i = this.Jhu;
-      AppMethodBeat.o(128942);
-      return String.valueOf(i);
     }
   }
   
   public static final class d
     implements Serializable
   {
-    public long Jhv;
+    public int KUO;
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(128942);
+      int i = this.KUO;
+      AppMethodBeat.o(128942);
+      return String.valueOf(i);
+    }
+  }
+  
+  public static final class e
+    implements Serializable
+  {
+    public long KUP;
     
     public final String toString()
     {
       AppMethodBeat.i(128957);
-      long l = this.Jhv;
+      long l = this.KUP;
       AppMethodBeat.o(128957);
       return String.valueOf(l);
     }
   }
   
-  public static final class e<T>
+  public static final class f<T>
     implements Serializable
   {
-    public T Jhw;
+    public T KUQ;
     
     public final String toString()
     {
       AppMethodBeat.i(128972);
-      String str = String.valueOf(this.Jhw);
+      String str = String.valueOf(this.KUQ);
       AppMethodBeat.o(128972);
       return str;
     }

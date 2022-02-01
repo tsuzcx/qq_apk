@@ -16,19 +16,19 @@ import java.util.Map;
 
 final class a
 {
-  final Map<h, b> aDa;
-  o.a aDb;
-  ReferenceQueue<o<?>> aDc;
-  private Thread aDd;
-  volatile boolean aDe;
-  volatile a aDf;
-  private final boolean azS;
-  final Handler azU;
+  private final boolean aAM;
+  final Handler aAO;
+  final Map<h, b> aDR;
+  o.a aDS;
+  ReferenceQueue<o<?>> aDT;
+  private Thread aDU;
+  volatile boolean aDV;
+  volatile a aDW;
   
   a(boolean paramBoolean)
   {
     AppMethodBeat.i(76918);
-    this.azU = new Handler(Looper.getMainLooper(), new Handler.Callback()
+    this.aAO = new Handler(Looper.getMainLooper(), new Handler.Callback()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
@@ -43,46 +43,46 @@ final class a
         return false;
       }
     });
-    this.aDa = new HashMap();
-    this.azS = paramBoolean;
+    this.aDR = new HashMap();
+    this.aAM = paramBoolean;
     AppMethodBeat.o(76918);
   }
   
   final void a(b paramb)
   {
     AppMethodBeat.i(76920);
-    j.pQ();
-    this.aDa.remove(paramb.aDh);
-    if ((!paramb.aDi) || (paramb.aDj == null))
+    j.qa();
+    this.aDR.remove(paramb.aDY);
+    if ((!paramb.aDZ) || (paramb.aEa == null))
     {
       AppMethodBeat.o(76920);
       return;
     }
-    o localo = new o(paramb.aDj, true, false);
-    localo.a(paramb.aDh, this.aDb);
-    this.aDb.b(paramb.aDh, localo);
+    o localo = new o(paramb.aEa, true, false);
+    localo.a(paramb.aDY, this.aDS);
+    this.aDS.b(paramb.aDY, localo);
     AppMethodBeat.o(76920);
   }
   
   final void a(h paramh, o<?> paramo)
   {
     AppMethodBeat.i(76919);
-    if (this.aDc == null)
+    if (this.aDT == null)
     {
-      this.aDc = new ReferenceQueue();
-      this.aDd = new Thread(new Runnable()
+      this.aDT = new ReferenceQueue();
+      this.aDU = new Thread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(76915);
           Process.setThreadPriority(10);
           a locala = a.this;
-          while (!locala.aDe) {
+          while (!locala.aDV) {
             try
             {
-              Object localObject = (a.b)locala.aDc.remove();
-              locala.azU.obtainMessage(1, localObject).sendToTarget();
-              localObject = locala.aDf;
+              Object localObject = (a.b)locala.aDT.remove();
+              locala.aAO.obtainMessage(1, localObject).sendToTarget();
+              localObject = locala.aDW;
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -92,10 +92,10 @@ final class a
           AppMethodBeat.o(76915);
         }
       }, "glide-active-resources");
-      this.aDd.start();
+      this.aDU.start();
     }
-    paramo = new b(paramh, paramo, this.aDc, this.azS);
-    paramh = (b)this.aDa.put(paramh, paramo);
+    paramo = new b(paramh, paramo, this.aDT, this.aAM);
+    paramh = (b)this.aDR.put(paramh, paramo);
     if (paramh != null) {
       paramh.reset();
     }
@@ -107,20 +107,20 @@ final class a
   static final class b
     extends WeakReference<o<?>>
   {
-    final h aDh;
-    final boolean aDi;
-    u<?> aDj;
+    final h aDY;
+    final boolean aDZ;
+    u<?> aEa;
     
     b(h paramh, o<?> paramo, ReferenceQueue<? super o<?>> paramReferenceQueue, boolean paramBoolean)
     {
       super(paramReferenceQueue);
       AppMethodBeat.i(76916);
-      this.aDh = ((h)i.checkNotNull(paramh, "Argument must not be null"));
-      if ((paramo.aDi) && (paramBoolean)) {}
-      for (paramh = (u)i.checkNotNull(paramo.aDj, "Argument must not be null");; paramh = null)
+      this.aDY = ((h)i.checkNotNull(paramh, "Argument must not be null"));
+      if ((paramo.aDZ) && (paramBoolean)) {}
+      for (paramh = (u)i.checkNotNull(paramo.aEa, "Argument must not be null");; paramh = null)
       {
-        this.aDj = paramh;
-        this.aDi = paramo.aDi;
+        this.aEa = paramh;
+        this.aDZ = paramo.aDZ;
         AppMethodBeat.o(76916);
         return;
       }
@@ -129,7 +129,7 @@ final class a
     final void reset()
     {
       AppMethodBeat.i(76917);
-      this.aDj = null;
+      this.aEa = null;
       clear();
       AppMethodBeat.o(76917);
     }
@@ -137,7 +137,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ public enum a
   static
   {
     AppMethodBeat.i(143524);
-    HFU = new a("AROUND", 0);
-    HFV = new a("UP_AND_DOWN", 1);
-    HFW = new a("LEFT_AND_RIGHT", 2);
-    HFX = new a[] { HFU, HFV, HFW };
+    Jgr = new a("AROUND", 0);
+    Jgs = new a("UP_AND_DOWN", 1);
+    Jgt = new a("LEFT_AND_RIGHT", 2);
+    Jgu = new a[] { Jgr, Jgs, Jgt };
     AppMethodBeat.o(143524);
   }
   

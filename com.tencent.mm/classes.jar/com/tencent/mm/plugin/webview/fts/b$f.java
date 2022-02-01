@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.fts.a.a.j;
 public final class b$f
   extends j
 {
-  public int AOQ;
+  public int Chg;
   
   private b$f(b paramb) {}
 }

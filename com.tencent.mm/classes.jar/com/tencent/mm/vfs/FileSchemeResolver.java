@@ -21,7 +21,7 @@ public class FileSchemeResolver
     AppMethodBeat.o(13101);
   }
   
-  private static String aMI(String paramString)
+  private static String aSk(String paramString)
   {
     AppMethodBeat.i(13100);
     paramString = new File(paramString);
@@ -39,15 +39,15 @@ public class FileSchemeResolver
     return paramString;
   }
   
-  public static FileSchemeResolver fhD()
+  public static FileSchemeResolver fxF()
   {
-    return a.HRy;
+    return a.Jsd;
   }
   
   public final Pair<FileSystem, String> a(SchemeResolver.a parama, Uri paramUri)
   {
     AppMethodBeat.i(13099);
-    Object localObject = ((c)parama).HSS;
+    Object localObject = ((c)parama).Jto;
     paramUri = paramUri.getPath();
     if ((paramUri == null) || (paramUri.isEmpty())) {
       paramUri = null;
@@ -62,7 +62,7 @@ public class FileSchemeResolver
       {
         AppMethodBeat.o(13099);
         return null;
-        str = aMI(paramUri);
+        str = aSk(paramUri);
         i = Collections.binarySearch((List)localObject, str);
         if (i >= 0)
         {
@@ -84,14 +84,14 @@ public class FileSchemeResolver
     {
       if (i >= 0)
       {
-        paramUri = str.substring(locala.HSX.length() + 1);
+        paramUri = str.substring(locala.basePath.length() + 1);
         localObject = locala;
         break;
         locala = (c.a)((List)localObject).get(i);
-        if ((str.startsWith(locala.HSX)) && (str.charAt(locala.HSX.length()) == '/')) {
+        if ((str.startsWith(locala.basePath)) && (str.charAt(locala.basePath.length()) == '/')) {
           break label281;
         }
-        i = locala.HSZ;
+        i = locala.Jtu;
         break label98;
       }
       paramUri = str;
@@ -108,7 +108,7 @@ public class FileSchemeResolver
       localObject = locala;
       break;
       if (paramUri.first == null) {}
-      for (parama = parama.fhQ();; parama = ((c.a)paramUri.first).HRC)
+      for (parama = parama.fxR();; parama = ((c.a)paramUri.first).Jsh)
       {
         parama = new Pair(parama, paramUri.second);
         AppMethodBeat.o(13099);
@@ -120,12 +120,12 @@ public class FileSchemeResolver
   static final class a
     implements Parcelable.Creator<FileSchemeResolver>
   {
-    static final FileSchemeResolver HRy;
+    static final FileSchemeResolver Jsd;
     
     static
     {
       AppMethodBeat.i(13098);
-      HRy = new FileSchemeResolver((byte)0);
+      Jsd = new FileSchemeResolver((byte)0);
       AppMethodBeat.o(13098);
     }
   }

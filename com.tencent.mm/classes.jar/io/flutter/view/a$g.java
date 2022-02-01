@@ -7,30 +7,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(9687);
-    JeH = new g("UNKNOWN", 0);
-    JeI = new g("LTR", 1);
-    JeJ = new g("RTL", 2);
-    JeK = new g[] { JeH, JeI, JeJ };
+    KSi = new g("UNKNOWN", 0);
+    KSj = new g("LTR", 1);
+    KSk = new g("RTL", 2);
+    KSl = new g[] { KSi, KSj, KSk };
     AppMethodBeat.o(9687);
   }
   
   private a$g() {}
   
-  public static g adK(int paramInt)
+  public static g agG(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return JeH;
+      return KSi;
     case 1: 
-      return JeJ;
+      return KSk;
     }
-    return JeI;
+    return KSj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     io.flutter.view.a.g
  * JD-Core Version:    0.7.0.1
  */

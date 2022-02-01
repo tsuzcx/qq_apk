@@ -11,9 +11,9 @@ import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.service.a;
 import com.tencent.mm.plugin.ball.ui.FloatBallProxyUI;
 import com.tencent.mm.plugin.ball.ui.FloatBallProxyUI.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,20 +21,20 @@ import org.json.JSONObject;
 public final class f
   extends a
 {
-  private static f Cmq;
-  String joX = "";
+  private static f DEH;
+  String jPj = "";
   String mFileName = "";
   public String mFilePath = "";
-  public int nNu = 0;
+  public int oqw = 0;
   
   static
   {
     AppMethodBeat.i(109560);
-    Cmq = new f();
+    DEH = new f();
     AppMethodBeat.o(109560);
   }
   
-  public static void B(Context paramContext, boolean paramBoolean)
+  public static void C(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(109558);
     Intent localIntent = new Intent("com.tencent.QQBrowser.action.sdk.document.receiver");
@@ -62,20 +62,20 @@ public final class f
     }
     catch (Exception paramContext)
     {
-      ad.e("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "updateQbFloatBallMenu() Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
+      ac.e("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "updateQbFloatBallMenu() Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
       AppMethodBeat.o(109558);
     }
   }
   
-  public static String RK(String paramString)
+  public static String VW(String paramString)
   {
     AppMethodBeat.i(109556);
-    paramString = i.RK(awa(paramString));
+    paramString = i.VW(aBs(paramString));
     AppMethodBeat.o(109556);
     return paramString;
   }
   
-  private static String awa(String paramString)
+  private static String aBs(String paramString)
   {
     AppMethodBeat.i(109557);
     try
@@ -91,7 +91,7 @@ public final class f
     {
       for (;;)
       {
-        ad.e("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "get file name error " + paramString.getMessage());
+        ac.e("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "get file name error " + paramString.getMessage());
         paramString = " ";
         continue;
         int i = 0;
@@ -102,58 +102,58 @@ public final class f
     return paramString;
   }
   
-  private void eAF()
+  private void ePZ()
   {
     AppMethodBeat.i(109554);
-    Integer localInteger2 = d.OK(this.joX);
+    Integer localInteger2 = d.SU(this.jPj);
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
-      localInteger1 = d.OK("unknown");
+      localInteger1 = d.SU("unknown");
     }
-    this.mDH.kYl = localInteger1.intValue();
-    if (bt.isNullOrNil(this.mDH.name))
+    this.nfN.lzV = localInteger1.intValue();
+    if (bs.isNullOrNil(this.nfN.name))
     {
-      if (bt.isNullOrNil(this.mFileName)) {
-        this.mFileName = awa(this.mFilePath);
+      if (bs.isNullOrNil(this.mFileName)) {
+        this.mFileName = aBs(this.mFilePath);
       }
-      this.mDH.name = this.mFileName;
+      this.nfN.name = this.mFileName;
     }
-    bzv();
+    bGr();
     AppMethodBeat.o(109554);
   }
   
-  public static f eAG()
+  public static f eQa()
   {
-    return Cmq;
+    return DEH;
   }
   
-  private void eAH()
+  private void eQb()
   {
     AppMethodBeat.i(109559);
-    bzz().mDz = 4;
-    bzz().mDy = this.nNu;
-    bzv();
+    bGv().nfG = 4;
+    bGv().nfF = this.oqw;
+    bGr();
     AppMethodBeat.o(109559);
   }
   
-  public final void H(String paramString1, String paramString2, int paramInt)
+  public final void I(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(109551);
     j(paramString1, paramString2, "", paramInt);
     AppMethodBeat.o(109551);
   }
   
-  public final boolean aCy(String paramString)
+  public final boolean aHQ(String paramString)
   {
     AppMethodBeat.i(109555);
-    BallInfo localBallInfo = new BallInfo(4, b.OJ(paramString));
+    BallInfo localBallInfo = new BallInfo(4, b.ST(paramString));
     paramString = null;
-    if (this.mDJ != null) {
-      paramString = this.mDJ.g(localBallInfo);
+    if (this.nfP != null) {
+      paramString = this.nfP.h(localBallInfo);
     }
     if (paramString != null)
     {
-      ad.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "ifExistFloatBall, ball already exists, replace current ball");
+      ac.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "ifExistFloatBall, ball already exists, replace current ball");
       AppMethodBeat.o(109555);
       return true;
     }
@@ -161,73 +161,73 @@ public final class f
     return false;
   }
   
-  public final boolean aVX()
+  public final boolean bcV()
   {
     return false;
   }
   
-  public final boolean aVY()
+  public final boolean bcW()
   {
     return true;
   }
   
-  public final void aWb()
+  public final void bcZ()
   {
     AppMethodBeat.i(109549);
-    ad.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, filePath:%s", new Object[] { this.mFilePath });
-    super.aWb();
+    ac.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, filePath:%s", new Object[] { this.mFilePath });
+    super.bcZ();
     AppMethodBeat.o(109549);
   }
   
-  public final void aWc()
+  public final void bda()
   {
     AppMethodBeat.i(109550);
-    ad.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onReceivedBallInfoRemovedEvent, filePath:%s", new Object[] { this.mFilePath });
-    super.aWc();
-    B(aj.getContext(), false);
+    ac.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onReceivedBallInfoRemovedEvent, filePath:%s", new Object[] { this.mFilePath });
+    super.bda();
+    C(ai.getContext(), false);
     AppMethodBeat.o(109550);
   }
   
-  public final boolean aWg()
+  public final boolean bde()
   {
     return true;
   }
   
-  public final void eAI()
+  public final void eQc()
   {
-    AppMethodBeat.i(192553);
-    ad.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "alvinluo checkAndAddMessageBall qbFileViewPage: %b, contentType: %d", new Object[] { Boolean.valueOf(this.mDJ.byR()), Integer.valueOf(this.mDH.aTB) });
-    if ((this.mDJ != null) && (this.mDH.aTB == 4))
+    AppMethodBeat.i(207478);
+    if ((this.nfP != null) && (this.nfN != null) && (this.nfN.aUt == 4))
     {
-      long l1 = this.mDJ.byS();
+      ac.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "alvinluo checkAndAddMessageBall qbFileViewPage: %b, contentType: %d", new Object[] { Boolean.valueOf(this.nfP.bFN()), Integer.valueOf(this.nfN.aUt) });
+      long l1 = this.nfP.bFO();
       long l2 = System.currentTimeMillis();
-      this.mDJ.nt(0L);
-      ad.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "alvinluo checkAndAddMessageBall enterChatting: %d, now: %d, canAddMessageBall: %b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bzm()) });
-      if ((d.L(l1, l2)) && (bzm())) {
-        bzy();
+      this.nfP.rf(0L);
+      ac.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "alvinluo checkAndAddMessageBall enterChatting: %d, now: %d, canAddMessageBall: %b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bGi()) });
+      if ((d.H(l1, l2)) && (bGi())) {
+        bGu();
       }
     }
-    AppMethodBeat.o(192553);
+    AppMethodBeat.o(207478);
   }
   
-  public final void fE(boolean paramBoolean)
+  public final void ga(boolean paramBoolean)
   {
     AppMethodBeat.i(109548);
     if (paramBoolean)
     {
-      ad.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onMenuFloatBallSelected, enter float ball");
-      in(false);
-      if (!bzr())
+      ac.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onMenuFloatBallSelected, enter float ball");
+      iN(false);
+      if (!bGn())
       {
-        FloatBallProxyUI.a(aj.getContext(), this.mDH, bzm(), new FloatBallProxyUI.a()
+        FloatBallProxyUI.a(ai.getContext(), this.nfN, bGi(), new FloatBallProxyUI.a()
         {
-          public final void wC(int paramAnonymousInt)
+          public final void xt(int paramAnonymousInt)
           {
             AppMethodBeat.i(109547);
-            ad.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onMenuFloatBallSelected, can not add ball, callback:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            ac.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onMenuFloatBallSelected, can not add ball, callback:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
             if (paramAnonymousInt == 1)
             {
-              ad.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onMenuFloatBallSelected, show float menu view");
+              ac.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onMenuFloatBallSelected, show float menu view");
               f.this.a(f.a(f.this));
             }
             AppMethodBeat.o(109547);
@@ -236,9 +236,9 @@ public final class f
         AppMethodBeat.o(109548);
         return;
       }
-      bzu();
-      byU();
-      Context localContext = aj.getContext();
+      bGq();
+      bFQ();
+      Context localContext = ai.getContext();
       Intent localIntent = new Intent("com.tencent.QQBrowser.action.sdk.document.receiver");
       localIntent.setPackage("com.tencent.mtt");
       localIntent.putExtra("key_reader_sdk_window_close", true);
@@ -250,21 +250,21 @@ public final class f
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "closeQb() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        ac.e("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "closeQb() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         AppMethodBeat.o(109548);
         return;
       }
     }
-    ad.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onMenuFloatBallSelected, exit float ball");
-    bzt();
+    ac.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onMenuFloatBallSelected, exit float ball");
+    bGp();
     AppMethodBeat.o(109548);
   }
   
-  public final void ik(boolean paramBoolean)
+  public final void iK(boolean paramBoolean)
   {
     AppMethodBeat.i(109553);
-    if (this.mDJ != null) {
-      this.mDJ.ik(paramBoolean);
+    if (this.nfP != null) {
+      this.nfP.iK(paramBoolean);
     }
     AppMethodBeat.o(109553);
   }
@@ -272,28 +272,28 @@ public final class f
   public final void j(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(109552);
-    ad.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onCreate, filePath:%s fileExt:%s fileName:%s sence:%s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt) });
-    super.Z(4, b.OJ(paramString1));
+    ac.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onCreate, filePath:%s fileExt:%s fileName:%s sence:%s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt) });
+    super.aa(4, b.ST(paramString1));
     this.mFilePath = paramString1;
-    this.joX = paramString2;
+    this.jPj = paramString2;
     this.mFileName = paramString3;
-    this.nNu = paramInt;
-    eAH();
-    if (this.mDH.hsl != null)
+    this.oqw = paramInt;
+    eQb();
+    if (this.nfN.hSN != null)
     {
-      this.mDH.hsl.putBoolean("ifAppAttachDownloadUI", false);
-      this.mDH.hsl.putString("filePath", paramString1);
-      this.mDH.hsl.putString("fileExt", paramString2);
-      this.mDH.hsl.putInt("sence", paramInt);
-      bzv();
+      this.nfN.hSN.putBoolean("ifAppAttachDownloadUI", false);
+      this.nfN.hSN.putString("filePath", paramString1);
+      this.nfN.hSN.putString("fileExt", paramString2);
+      this.nfN.hSN.putInt("sence", paramInt);
+      bGr();
     }
-    eAF();
+    ePZ();
     AppMethodBeat.o(109552);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.f
  * JD-Core Version:    0.7.0.1
  */

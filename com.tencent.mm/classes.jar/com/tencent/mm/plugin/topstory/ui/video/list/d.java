@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.video.list;
 
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.support.v7.widget.aj;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -21,8 +21,8 @@ public final class d
     while (i < paramb.getRecyclerView().getChildCount())
     {
       View localView = paramb.getRecyclerView().getChildAt(i);
-      RecyclerView.v localv = paramb.getRecyclerView().bh(localView);
-      if ((localView.getTag() != null) && (localView.getTag().equals("video")) && (localView.getTop() > 0) && (localv.ln() >= 0))
+      RecyclerView.w localw = paramb.getRecyclerView().bh(localView);
+      if ((localView.getTag() != null) && (localView.getTag().equals("video")) && (localView.getTop() > 0) && (localw.lv() >= 0))
       {
         AppMethodBeat.o(126420);
         return localView;
@@ -33,7 +33,7 @@ public final class d
     return null;
   }
   
-  public static RecyclerView.v f(b paramb)
+  public static RecyclerView.w f(b paramb)
   {
     AppMethodBeat.i(126421);
     View localView = e(paramb);
@@ -60,11 +60,11 @@ public final class d
       if (localObject == null) {
         break label177;
       }
-      i = ((h)localObject).dOD();
-      if ((i != paramb.dOM()) && (paramb.dOJ().yQs)) {
-        paramb.dOJ().stopPlay();
+      i = ((h)localObject).edd();
+      if ((i != paramb.edm()) && (paramb.edj().Aei)) {
+        paramb.edj().stopPlay();
       }
-      paramb.dOC();
+      paramb.edc();
       j = 0;
       label84:
       if (j >= localRecyclerView.getChildCount()) {
@@ -74,13 +74,13 @@ public final class d
       if (((View)localObject).getTag() != null)
       {
         localObject = (h)paramb.getRecyclerView().bh((View)localObject);
-        if (((h)localObject).dOD() != i) {
+        if (((h)localObject).edd() != i) {
           break label182;
         }
-        ((h)localObject).dQa();
-        ((h)localObject).dOB();
-        if (!paramb.dOJ().yQs) {
-          ((h)localObject).ySj.dPa();
+        ((h)localObject).eez();
+        ((h)localObject).edb();
+        if (!paramb.edj().Aei) {
+          ((h)localObject).AfY.edA();
         }
       }
     }
@@ -94,8 +94,8 @@ public final class d
       i = -1;
       break;
       label182:
-      ((h)localObject).dPZ();
-      ((h)localObject).ySj.dPb();
+      ((h)localObject).eey();
+      ((h)localObject).AfY.edB();
     }
     label198:
     AppMethodBeat.o(126417);
@@ -122,8 +122,8 @@ public final class d
     }
     if (localView2 != null)
     {
-      paramInt = paramb.dOL().bn(localView2);
-      i = paramb.dOS();
+      paramInt = paramb.edl().bn(localView2);
+      i = paramb.eds();
       paramb.getRecyclerView().a(0, paramInt - i, null);
     }
     AppMethodBeat.o(126419);
@@ -136,26 +136,26 @@ public final class d
     if ((localObject instanceof h))
     {
       localObject = (h)localObject;
-      if (!paramb.dOJ().yQs)
+      if (!paramb.edj().Aei)
       {
-        if (!paramb.dOE().isConnected()) {
+        if (!paramb.ede().isConnected()) {
           break label86;
         }
-        ((h)localObject).rf(true);
+        ((h)localObject).sd(true);
       }
     }
     for (;;)
     {
-      ((h)localObject).dOB();
-      paramb.Pi(((h)localObject).dOD());
-      paramb.dOF().dPI();
+      ((h)localObject).edb();
+      paramb.Ro(((h)localObject).edd());
+      paramb.edf().eeh();
       AppMethodBeat.o(126418);
       return;
       AppMethodBeat.o(126418);
       return;
       label86:
-      ((h)localObject).ySj.dPe();
-      paramb.dOJ().stopPlay();
+      ((h)localObject).AfY.edE();
+      paramb.edj().stopPlay();
     }
   }
 }

@@ -6,10 +6,9 @@ import android.content.res.AssetManager;
 import com.tencent.luggage.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -20,9 +19,9 @@ import org.json.JSONObject;
 public final class aw
 {
   public static final int VERSION;
-  public static final String[] iNs;
-  static final a iNt;
-  private static Boolean iNu;
+  public static final String[] jnA;
+  static final a jnB;
+  private static Boolean jnC;
   
   static
   {
@@ -30,13 +29,13 @@ public final class aw
     AppMethodBeat.i(139836);
     try
     {
-      String str = aQb();
+      String str = aWT();
       i = j;
-      if (!bt.isNullOrNil(str))
+      if (!bs.isNullOrNil(str))
       {
         i = j;
-        if (i.eK(str)) {
-          i = new JSONObject(i.aMP(str)).optInt("version");
+        if (i.eA(str)) {
+          i = new JSONObject(i.aSr(str)).optInt("version");
         }
       }
     }
@@ -50,22 +49,22 @@ public final class aw
     if (i > 0)
     {
       VERSION = i;
-      iNs = a.cjx;
+      jnA = a.cgt;
     }
-    for (iNt = a.iNy;; iNt = a.iNy)
+    for (jnB = a.jnG;; jnB = a.jnG)
     {
-      iNu = null;
+      jnC = null;
       AppMethodBeat.o(139836);
       return;
       VERSION = 407;
-      iNs = a.cjx;
+      jnA = a.cgt;
     }
   }
   
-  private static InputStream DY(String paramString)
+  private static InputStream Ib(String paramString)
   {
     AppMethodBeat.i(139834);
-    Object localObject = aj.getContext().getAssets();
+    Object localObject = ai.getContext().getAssets();
     try
     {
       localObject = ((AssetManager)localObject).open(paramString, 3);
@@ -74,71 +73,71 @@ public final class aw
     }
     catch (Exception localException)
     {
-      ad.v("MicroMsg.AppBrand.WxaLocalLibPkg", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, localException });
+      ac.v("MicroMsg.AppBrand.WxaLocalLibPkg", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, localException });
       AppMethodBeat.o(139834);
     }
     return null;
   }
   
-  public static void aQa()
+  public static void aWS()
   {
     AppMethodBeat.i(139829);
-    i.deleteFile(aQb());
+    i.deleteFile(aWT());
     AppMethodBeat.o(139829);
   }
   
-  static String aQb()
+  static String aWT()
   {
     AppMethodBeat.i(139830);
-    String str = q.B(new e(aj.getContext().getCacheDir().getAbsolutePath() + "/MockLibInfo.json").fhU());
+    String str = q.B(new e(ai.getContext().getCacheDir().getAbsolutePath() + "/MockLibInfo.json").fxV());
     AppMethodBeat.o(139830);
     return str;
   }
   
-  public static boolean aQc()
+  public static boolean aWU()
   {
     AppMethodBeat.i(139831);
-    if (iNu == null) {
-      iNu = Boolean.FALSE;
+    if (jnC == null) {
+      jnC = Boolean.FALSE;
     }
-    boolean bool = iNu.booleanValue();
+    boolean bool = jnC.booleanValue();
     AppMethodBeat.o(139831);
     return bool;
   }
   
-  public static WxaPkgWrappingInfo aQd()
+  public static WxaPkgWrappingInfo aWV()
   {
     AppMethodBeat.i(139835);
     WxaPkgWrappingInfo localWxaPkgWrappingInfo = new WxaPkgWrappingInfo();
     localWxaPkgWrappingInfo.pkgVersion = VERSION;
-    localWxaPkgWrappingInfo.iOS = true;
+    localWxaPkgWrappingInfo.jpc = true;
     AppMethodBeat.o(139835);
     return localWxaPkgWrappingInfo;
   }
   
-  public static void fn(boolean paramBoolean)
+  public static void fJ(boolean paramBoolean)
   {
     AppMethodBeat.i(139832);
-    ax.aFC("__appbrand_comm_lib__prefs").putBoolean("disable_develop_lib", paramBoolean).commit();
+    com.tencent.mm.sdk.platformtools.aw.aKT("__appbrand_comm_lib__prefs").putBoolean("disable_develop_lib", paramBoolean).commit();
     AppMethodBeat.o(139832);
   }
   
   public static InputStream openRead(String paramString)
   {
     AppMethodBeat.i(139833);
-    paramString = m.EV(paramString);
-    switch (1.iNv[iNt.ordinal()])
+    paramString = m.IY(paramString);
+    switch (1.jnD[jnB.ordinal()])
     {
     default: 
-      paramString = DY("wxa_library".concat(String.valueOf(paramString)));
+      paramString = Ib("wxa_library".concat(String.valueOf(paramString)));
       AppMethodBeat.o(139833);
       return paramString;
     case 1: 
-      paramString = DY("wxa_library/custom".concat(String.valueOf(paramString)));
+      paramString = Ib("wxa_library/custom".concat(String.valueOf(paramString)));
       AppMethodBeat.o(139833);
       return paramString;
     }
-    paramString = DY("wxa_library/develop".concat(String.valueOf(paramString)));
+    paramString = Ib("wxa_library/develop".concat(String.valueOf(paramString)));
     AppMethodBeat.o(139833);
     return paramString;
   }
@@ -148,10 +147,10 @@ public final class aw
     static
     {
       AppMethodBeat.i(139828);
-      iNw = new a("CUSTOM", 0);
-      iNx = new a("DEVELOP", 1);
-      iNy = new a("STABLE", 2);
-      iNz = new a[] { iNw, iNx, iNy };
+      jnE = new a("CUSTOM", 0);
+      jnF = new a("DEVELOP", 1);
+      jnG = new a("STABLE", 2);
+      jnH = new a[] { jnE, jnF, jnG };
       AppMethodBeat.o(139828);
     }
     
@@ -160,7 +159,7 @@ public final class aw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.aw
  * JD-Core Version:    0.7.0.1
  */

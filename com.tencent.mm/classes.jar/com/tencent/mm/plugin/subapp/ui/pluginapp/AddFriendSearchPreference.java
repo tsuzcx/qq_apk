@@ -14,12 +14,12 @@ public class AddFriendSearchPreference
   extends Preference
 {
   private Context context;
-  private TextView itt;
-  private String yFJ;
-  String yFK;
-  private View.OnClickListener yFL;
-  View.OnClickListener yFM;
-  private View yFN;
+  private TextView iTy;
+  private String zSX;
+  String zSY;
+  private View.OnClickListener zSZ;
+  View.OnClickListener zTa;
+  private View zTb;
   
   public AddFriendSearchPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,12 +30,12 @@ public class AddFriendSearchPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29186);
-    this.yFJ = "";
-    this.yFK = "";
-    this.yFL = null;
-    this.yFM = null;
-    this.itt = null;
-    this.yFN = null;
+    this.zSX = "";
+    this.zSY = "";
+    this.zSZ = null;
+    this.zTa = null;
+    this.iTy = null;
+    this.zTb = null;
     this.context = paramContext;
     setLayoutResource(2131494820);
     AppMethodBeat.o(29186);
@@ -52,11 +52,11 @@ public class AddFriendSearchPreference
         return true;
       }
     });
-    this.itt = ((TextView)paramView.findViewById(2131304596));
-    this.itt.setText(this.yFK);
-    this.yFN = paramView.findViewById(2131304432);
-    if (this.yFM != null) {
-      this.yFN.setOnTouchListener(new View.OnTouchListener()
+    this.iTy = ((TextView)paramView.findViewById(2131304596));
+    this.iTy.setText(this.zSY);
+    this.zTb = paramView.findViewById(2131304432);
+    if (this.zTa != null) {
+      this.zTb.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -69,13 +69,13 @@ public class AddFriendSearchPreference
         }
       });
     }
-    Yb(8);
+    aam(8);
     AppMethodBeat.o(29187);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendSearchPreference
  * JD-Core Version:    0.7.0.1
  */

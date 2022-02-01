@@ -14,17 +14,17 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.a;
+import com.tencent.mm.ah.k.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.ch;
 import com.tencent.mm.modelappbrand.k;
 import com.tencent.mm.modelappbrand.k.b;
-import com.tencent.mm.plugin.appbrand.aa.m;
+import com.tencent.mm.plugin.appbrand.z.m;
 import com.tencent.mm.pluginsdk.i;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
@@ -36,8 +36,8 @@ import java.util.HashMap;
 public class AppBrandProcessShareMessageProxyUI
   extends MMActivity
 {
-  private d lAE;
-  private a lAF;
+  private d mcA;
+  private a mcB;
   
   public void finish()
   {
@@ -67,7 +67,7 @@ public class AppBrandProcessShareMessageProxyUI
       return;
     }
     String str1 = getIntent().getStringExtra("key_dialog_touser");
-    if (bt.isNullOrNil(str1))
+    if (bs.isNullOrNil(str1))
     {
       i = 0;
       if (i == 0) {
@@ -77,7 +77,7 @@ public class AppBrandProcessShareMessageProxyUI
       return;
     }
     Object localObject1 = (HashMap)getIntent().getSerializableExtra("key_dialog_params");
-    boolean bool1 = ch.bW(((HashMap)localObject1).get("is_video"));
+    boolean bool1 = ch.bU(((HashMap)localObject1).get("is_video"));
     int i = ch.getInt(((HashMap)localObject1).get("type"), 1);
     String str2 = ch.c(((HashMap)localObject1).get("title"), "");
     String str3 = ch.c(((HashMap)localObject1).get("img_url"), null);
@@ -99,8 +99,8 @@ public class AppBrandProcessShareMessageProxyUI
       str6 = ch.c(((HashMap)localObject1).get("path"), null);
       str7 = ch.c(((HashMap)localObject1).get("delay_load_img_path"), null);
       str8 = ch.c(((HashMap)localObject1).get("nickname"), "");
-      bool2 = ch.bW(((HashMap)localObject1).get("is_dynamic"));
-      k = ch.getInt(((HashMap)localObject1).get("biz"), k.a.gGZ.ordinal());
+      bool2 = ch.bU(((HashMap)localObject1).get("is_dynamic"));
+      k = ch.getInt(((HashMap)localObject1).get("biz"), k.a.hhA.ordinal());
       if (!k.a.isValid(k)) {
         break label763;
       }
@@ -111,12 +111,12 @@ public class AppBrandProcessShareMessageProxyUI
       paramBundle.putString("key_footer_text_default", str8);
       paramBundle.putString("key_footer_text", k.a.b(k, (String)localObject2, getContext()));
       paramBundle.putString("key_footer_icon", str9);
-      ad.d("MicroMsg.AppBrandProcessShareMessageProxyUI", "defaultFooterTxt: %s, tailLang: %s.", new Object[] { str8, localObject2 });
+      ac.d("MicroMsg.AppBrandProcessShareMessageProxyUI", "defaultFooterTxt: %s, tailLang: %s.", new Object[] { str8, localObject2 });
     }
     for (;;)
     {
       paramBundle = ((k)g.ab(k.class)).a(this, paramBundle, false, null);
-      str8 = m.cF(this);
+      str8 = m.cE(this);
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("app_id", str4);
       ((Bundle)localObject2).putString("msg_id", String.format("%d-%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
@@ -137,12 +137,12 @@ public class AppBrandProcessShareMessageProxyUI
         ((Bundle)localObject2).putString("video_thumb_path", (String)localObject1);
       }
       localObject1 = new c(this);
-      ((c)localObject1).lAN = new b()
+      ((c)localObject1).mcJ = new b()
       {
         public final void e(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
         {
           AppMethodBeat.i(48687);
-          ad.i("MicroMsg.AppBrandProcessShareMessageProxyUI", "onProcessDone, result:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          ac.i("MicroMsg.AppBrandProcessShareMessageProxyUI", "onProcessDone, result:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
           if (AppBrandProcessShareMessageProxyUI.a(AppBrandProcessShareMessageProxyUI.this) != null) {
             AppBrandProcessShareMessageProxyUI.a(AppBrandProcessShareMessageProxyUI.this).a(paramAnonymousBoolean, paramAnonymousString, paramAnonymousInt);
           }
@@ -152,32 +152,32 @@ public class AppBrandProcessShareMessageProxyUI
       };
       ((k)g.ab(k.class)).a(str8, paramBundle, (Bundle)localObject2, new k.b()
       {
-        public final void ny(int paramAnonymousInt)
+        public final void om(int paramAnonymousInt)
         {
           AppMethodBeat.i(48688);
-          ad.i("MicroMsg.AppBrandProcessShareMessageProxyUI", "onLoadImageResult, result:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          AppBrandProcessShareMessageProxyUI.c localc = this.lAI;
-          localc.lAK = true;
-          if (localc.qh())
+          ac.i("MicroMsg.AppBrandProcessShareMessageProxyUI", "onLoadImageResult, result:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          AppBrandProcessShareMessageProxyUI.c localc = this.mcE;
+          localc.mcG = true;
+          if (localc.qr())
           {
-            aq.az(localc.jJK);
-            localc.bos();
+            ap.aB(localc.kkk);
+            localc.bvo();
           }
           AppMethodBeat.o(48688);
         }
       });
-      this.lAF = new a();
-      this.lAE = ((i)g.ab(i.class)).a(this, str1, paramBundle, getResources().getString(2131756050), new y.a()
+      this.mcB = new a();
+      this.mcA = ((i)g.ab(i.class)).a(this, str1, paramBundle, getResources().getString(2131756050), new y.a()
       {
         public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
         {
           AppMethodBeat.i(48689);
           AppBrandProcessShareMessageProxyUI.this.hideVKB();
-          this.lAI.f(paramAnonymousBoolean, paramAnonymousString, paramAnonymousInt);
+          this.mcE.f(paramAnonymousBoolean, paramAnonymousString, paramAnonymousInt);
           AppMethodBeat.o(48689);
         }
       });
-      this.lAE.setOnDismissListener(new DialogInterface.OnDismissListener()
+      this.mcA.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -187,21 +187,21 @@ public class AppBrandProcessShareMessageProxyUI
           AppMethodBeat.o(48690);
         }
       });
-      this.lAE.setOnKeyListener(new DialogInterface.OnKeyListener()
+      this.mcA.setOnKeyListener(new DialogInterface.OnKeyListener()
       {
         public final boolean onKey(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
         {
           AppMethodBeat.i(48691);
           if ((paramAnonymousInt == 4) && (paramAnonymousKeyEvent.getAction() == 1))
           {
-            this.lAI.f(false, null, 0);
+            this.mcE.f(false, null, 0);
             paramAnonymousDialogInterface.dismiss();
           }
           AppMethodBeat.o(48691);
           return false;
         }
       });
-      this.lAE.show();
+      this.mcA.show();
       i = 1;
       break;
       label763:
@@ -216,7 +216,7 @@ public class AppBrandProcessShareMessageProxyUI
       }
       else
       {
-        ad.w("MicroMsg.AppBrandProcessShareMessageProxyUI", "fake native share msg biz invalidate, biz: %d.", new Object[] { Integer.valueOf(k) });
+        ac.w("MicroMsg.AppBrandProcessShareMessageProxyUI", "fake native share msg biz invalidate, biz: %d.", new Object[] { Integer.valueOf(k) });
         paramBundle = null;
       }
     }
@@ -234,11 +234,11 @@ public class AppBrandProcessShareMessageProxyUI
   {
     AppMethodBeat.i(48702);
     super.onDestroy();
-    if ((this.lAE != null) && (this.lAE.isShowing()))
+    if ((this.mcA != null) && (this.mcA.isShowing()))
     {
-      this.lAE.dismiss();
-      this.lAE = null;
-      this.lAF = null;
+      this.mcA.dismiss();
+      this.mcA = null;
+      this.mcB = null;
     }
     AppMethodBeat.o(48702);
   }
@@ -262,24 +262,24 @@ public class AppBrandProcessShareMessageProxyUI
   final class a
     implements y.a
   {
-    private boolean juI = false;
+    private boolean jVd = false;
     
     a() {}
     
-    private void aq(int paramInt, String paramString)
+    private void ar(int paramInt, String paramString)
     {
       AppMethodBeat.i(48693);
-      if (this.juI)
+      if (this.jVd)
       {
         AppMethodBeat.o(48693);
         return;
       }
-      this.juI = true;
+      this.jVd = true;
       ResultReceiver localResultReceiver = (ResultReceiver)AppBrandProcessShareMessageProxyUI.this.getIntent().getParcelableExtra("key_result_receiver");
       if (localResultReceiver != null)
       {
         Bundle localBundle = null;
-        if (!bt.isNullOrNil(paramString))
+        if (!bs.isNullOrNil(paramString))
         {
           localBundle = new Bundle();
           localBundle.putString("message", paramString);
@@ -294,11 +294,11 @@ public class AppBrandProcessShareMessageProxyUI
       AppMethodBeat.i(48692);
       if (paramBoolean)
       {
-        aq(-1, paramString);
+        ar(-1, paramString);
         AppMethodBeat.o(48692);
         return;
       }
-      aq(-2, null);
+      ar(-2, null);
       AppMethodBeat.o(48692);
     }
   }
@@ -311,19 +311,19 @@ public class AppBrandProcessShareMessageProxyUI
   final class c
   {
     private Context context;
-    Runnable jJK;
-    private boolean lAJ;
-    boolean lAK;
-    private boolean lAL;
-    private int lAM;
-    AppBrandProcessShareMessageProxyUI.b lAN;
+    Runnable kkk;
+    private boolean mcF;
+    boolean mcG;
+    private boolean mcH;
+    private int mcI;
+    AppBrandProcessShareMessageProxyUI.b mcJ;
     private String text;
     p tipDialog;
     
     public c(Context paramContext)
     {
       AppMethodBeat.i(48695);
-      this.jJK = new Runnable()
+      this.kkk = new Runnable()
       {
         public final void run()
         {
@@ -331,7 +331,7 @@ public class AppBrandProcessShareMessageProxyUI
           if (AppBrandProcessShareMessageProxyUI.c.this.tipDialog != null) {
             AppBrandProcessShareMessageProxyUI.c.this.tipDialog.dismiss();
           }
-          AppBrandProcessShareMessageProxyUI.c.this.bos();
+          AppBrandProcessShareMessageProxyUI.c.this.bvo();
           AppMethodBeat.o(48694);
         }
       };
@@ -339,11 +339,11 @@ public class AppBrandProcessShareMessageProxyUI
       AppMethodBeat.o(48695);
     }
     
-    public final void bos()
+    public final void bvo()
     {
       AppMethodBeat.i(48697);
-      if (this.lAN != null) {
-        this.lAN.e(this.lAL, this.text, this.lAM);
+      if (this.mcJ != null) {
+        this.mcJ.e(this.mcH, this.text, this.mcI);
       }
       AppMethodBeat.o(48697);
     }
@@ -351,33 +351,33 @@ public class AppBrandProcessShareMessageProxyUI
     public final void f(boolean paramBoolean, String paramString, int paramInt)
     {
       AppMethodBeat.i(48696);
-      this.lAJ = true;
-      this.lAL = paramBoolean;
+      this.mcF = true;
+      this.mcH = paramBoolean;
       this.text = paramString;
-      this.lAM = paramInt;
-      if (qh())
+      this.mcI = paramInt;
+      if (qr())
       {
-        bos();
+        bvo();
         AppMethodBeat.o(48696);
         return;
       }
       if (paramBoolean)
       {
         this.tipDialog = h.b(this.context, this.context.getString(2131755886), true, null);
-        aq.n(this.jJK, 5000L);
+        ap.n(this.kkk, 5000L);
       }
       AppMethodBeat.o(48696);
     }
     
-    public final boolean qh()
+    public final boolean qr()
     {
-      return (this.lAJ) && (this.lAK);
+      return (this.mcF) && (this.mcG);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandProcessShareMessageProxyUI
  * JD-Core Version:    0.7.0.1
  */

@@ -3,55 +3,55 @@ package com.tencent.mm.emoji.panel.a;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelSizeResolver;", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "()V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "minSpaceSize", "getMinSpaceSize", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelSizeResolver;", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "()V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "minSpaceSize", "getMinSpaceSize", "plugin-emojisdk_release"})
 public final class j
   extends o
 {
-  private static final float fQk;
-  private static final float fQl;
-  private static final float fQm;
-  private static final float fQn;
-  public static final j fQo;
+  private static final float fUf;
+  private static final float fUg;
+  private static final float fUh;
+  private static final float fUi;
+  public static final j fUj;
   
   static
   {
     AppMethodBeat.i(105668);
     j localj = new j();
-    fQo = localj;
-    Object localObject = aj.getContext();
+    fUj = localj;
+    Object localObject = ai.getContext();
     k.g(localObject, "context");
     localObject = ((Context)localObject).getResources();
-    fQk = ((Resources)localObject).getDimension(2131166241);
-    fQl = ((Resources)localObject).getDimension(2131165289);
-    fQm = ((Resources)localObject).getDimension(2131165284) - 1.0F;
-    fQn = ((Resources)localObject).getDimension(2131165274);
-    localj.aqI = 5;
-    localj.ach();
+    fUf = ((Resources)localObject).getDimension(2131166241);
+    fUg = ((Resources)localObject).getDimension(2131165289);
+    fUh = ((Resources)localObject).getDimension(2131165284) - 1.0F;
+    fUi = ((Resources)localObject).getDimension(2131165274);
+    localj.arE = 5;
+    localj.adn();
     AppMethodBeat.o(105668);
   }
   
-  public final float ace()
+  public final float adk()
   {
-    return fQk;
+    return fUf;
   }
   
-  public final float acf()
+  public final float adl()
   {
-    return fQl;
+    return fUg;
   }
   
-  public final float acg()
+  public final float adm()
   {
-    return fQm;
+    return fUh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -18,18 +18,18 @@ import android.widget.TextView;
 public class PagerTabStrip
   extends PagerTitleStrip
 {
-  private int Ne = this.mTextColor;
-  private int Nf;
-  private int Ng;
-  private int Nh;
-  private int Ni;
-  private int Nj;
-  private final Paint Nk = new Paint();
-  private int Nl = 255;
-  private boolean Nm = false;
-  private boolean Nn = false;
-  private int No;
-  private boolean Np;
+  private int NZ = this.mTextColor;
+  private int Oa;
+  private int Ob;
+  private int Oc;
+  private int Od;
+  private int Oe;
+  private final Paint Of = new Paint();
+  private int Og = 255;
+  private boolean Oh = false;
+  private boolean Oi = false;
+  private int Oj;
+  private boolean Ok;
   private float mInitialMotionX;
   private float mInitialMotionY;
   private final Rect mTempRect = new Rect();
@@ -38,36 +38,36 @@ public class PagerTabStrip
   public PagerTabStrip(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.Nk.setColor(this.Ne);
+    this.Of.setColor(this.NZ);
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.Nf = ((int)(3.0F * f + 0.5F));
-    this.Ng = ((int)(6.0F * f + 0.5F));
-    this.Nh = ((int)(64.0F * f));
-    this.Nj = ((int)(16.0F * f + 0.5F));
-    this.No = ((int)(1.0F * f + 0.5F));
-    this.Ni = ((int)(f * 32.0F + 0.5F));
+    this.Oa = ((int)(3.0F * f + 0.5F));
+    this.Ob = ((int)(6.0F * f + 0.5F));
+    this.Oc = ((int)(64.0F * f));
+    this.Oe = ((int)(16.0F * f + 0.5F));
+    this.Oj = ((int)(1.0F * f + 0.5F));
+    this.Od = ((int)(f * 32.0F + 0.5F));
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
     setTextSpacing(getTextSpacing());
     setWillNotDraw(false);
-    this.Ns.setFocusable(true);
-    this.Ns.setOnClickListener(new View.OnClickListener()
+    this.On.setFocusable(true);
+    this.On.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        PagerTabStrip.this.Nr.setCurrentItem(PagerTabStrip.this.Nr.getCurrentItem() - 1);
+        PagerTabStrip.this.Om.setCurrentItem(PagerTabStrip.this.Om.getCurrentItem() - 1);
       }
     });
-    this.Nu.setFocusable(true);
-    this.Nu.setOnClickListener(new View.OnClickListener()
+    this.Op.setFocusable(true);
+    this.Op.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        PagerTabStrip.this.Nr.setCurrentItem(PagerTabStrip.this.Nr.getCurrentItem() + 1);
+        PagerTabStrip.this.Om.setCurrentItem(PagerTabStrip.this.Om.getCurrentItem() + 1);
       }
     });
     if (getBackground() == null) {
-      this.Nm = true;
+      this.Oh = true;
     }
   }
   
@@ -75,55 +75,55 @@ public class PagerTabStrip
   {
     Rect localRect = this.mTempRect;
     int i = getHeight();
-    int j = this.Nt.getLeft();
-    int k = this.Nj;
-    int m = this.Nt.getRight();
-    int n = this.Nj;
-    int i1 = i - this.Nf;
+    int j = this.Oo.getLeft();
+    int k = this.Oe;
+    int m = this.Oo.getRight();
+    int n = this.Oe;
+    int i1 = i - this.Oa;
     localRect.set(j - k, i1, m + n, i);
     super.a(paramInt, paramFloat, paramBoolean);
-    this.Nl = ((int)(Math.abs(paramFloat - 0.5F) * 2.0F * 255.0F));
-    localRect.union(this.Nt.getLeft() - this.Nj, i1, this.Nt.getRight() + this.Nj, i);
+    this.Og = ((int)(Math.abs(paramFloat - 0.5F) * 2.0F * 255.0F));
+    localRect.union(this.Oo.getLeft() - this.Oe, i1, this.Oo.getRight() + this.Oe, i);
     invalidate(localRect);
   }
   
   public boolean getDrawFullUnderline()
   {
-    return this.Nm;
+    return this.Oh;
   }
   
   int getMinHeight()
   {
-    return Math.max(super.getMinHeight(), this.Ni);
+    return Math.max(super.getMinHeight(), this.Od);
   }
   
   public int getTabIndicatorColor()
   {
-    return this.Ne;
+    return this.NZ;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getHeight();
-    int j = this.Nt.getLeft();
-    int k = this.Nj;
-    int m = this.Nt.getRight();
-    int n = this.Nj;
-    int i1 = this.Nf;
-    this.Nk.setColor(this.Nl << 24 | this.Ne & 0xFFFFFF);
-    paramCanvas.drawRect(j - k, i - i1, m + n, i, this.Nk);
-    if (this.Nm)
+    int j = this.Oo.getLeft();
+    int k = this.Oe;
+    int m = this.Oo.getRight();
+    int n = this.Oe;
+    int i1 = this.Oa;
+    this.Of.setColor(this.Og << 24 | this.NZ & 0xFFFFFF);
+    paramCanvas.drawRect(j - k, i - i1, m + n, i, this.Of);
+    if (this.Oh)
     {
-      this.Nk.setColor(0xFF000000 | this.Ne & 0xFFFFFF);
-      paramCanvas.drawRect(getPaddingLeft(), i - this.No, getWidth() - getPaddingRight(), i, this.Nk);
+      this.Of.setColor(0xFF000000 | this.NZ & 0xFFFFFF);
+      paramCanvas.drawRect(getPaddingLeft(), i - this.Oj, getWidth() - getPaddingRight(), i, this.Of);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    if ((i != 0) && (this.Np)) {
+    if ((i != 0) && (this.Ok)) {
       return false;
     }
     float f1 = paramMotionEvent.getX();
@@ -136,16 +136,16 @@ public class PagerTabStrip
       return true;
       this.mInitialMotionX = f1;
       this.mInitialMotionY = f2;
-      this.Np = false;
+      this.Ok = false;
       continue;
       if ((Math.abs(f1 - this.mInitialMotionX) > this.mTouchSlop) || (Math.abs(f2 - this.mInitialMotionY) > this.mTouchSlop))
       {
-        this.Np = true;
+        this.Ok = true;
         continue;
-        if (f1 < this.Nt.getLeft() - this.Nj) {
-          this.Nr.setCurrentItem(this.Nr.getCurrentItem() - 1);
-        } else if (f1 > this.Nt.getRight() + this.Nj) {
-          this.Nr.setCurrentItem(this.Nr.getCurrentItem() + 1);
+        if (f1 < this.Oo.getLeft() - this.Oe) {
+          this.Om.setCurrentItem(this.Om.getCurrentItem() - 1);
+        } else if (f1 > this.Oo.getRight() + this.Oe) {
+          this.Om.setCurrentItem(this.Om.getCurrentItem() + 1);
         }
       }
     }
@@ -154,7 +154,7 @@ public class PagerTabStrip
   public void setBackgroundColor(int paramInt)
   {
     super.setBackgroundColor(paramInt);
-    if (!this.Nn) {
+    if (!this.Oi) {
       if ((0xFF000000 & paramInt) != 0) {
         break label27;
       }
@@ -162,7 +162,7 @@ public class PagerTabStrip
     label27:
     for (boolean bool = true;; bool = false)
     {
-      this.Nm = bool;
+      this.Oh = bool;
       return;
     }
   }
@@ -170,7 +170,7 @@ public class PagerTabStrip
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (!this.Nn) {
+    if (!this.Oi) {
       if (paramDrawable != null) {
         break label24;
       }
@@ -178,7 +178,7 @@ public class PagerTabStrip
     label24:
     for (boolean bool = true;; bool = false)
     {
-      this.Nm = bool;
+      this.Oh = bool;
       return;
     }
   }
@@ -186,7 +186,7 @@ public class PagerTabStrip
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (!this.Nn) {
+    if (!this.Oi) {
       if (paramInt != 0) {
         break label24;
       }
@@ -194,31 +194,31 @@ public class PagerTabStrip
     label24:
     for (boolean bool = true;; bool = false)
     {
-      this.Nm = bool;
+      this.Oh = bool;
       return;
     }
   }
   
   public void setDrawFullUnderline(boolean paramBoolean)
   {
-    this.Nm = paramBoolean;
-    this.Nn = true;
+    this.Oh = paramBoolean;
+    this.Oi = true;
     invalidate();
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = paramInt4;
-    if (paramInt4 < this.Ng) {
-      i = this.Ng;
+    if (paramInt4 < this.Ob) {
+      i = this.Ob;
     }
     super.setPadding(paramInt1, paramInt2, paramInt3, i);
   }
   
   public void setTabIndicatorColor(int paramInt)
   {
-    this.Ne = paramInt;
-    this.Nk.setColor(this.Ne);
+    this.NZ = paramInt;
+    this.Of.setColor(this.NZ);
     invalidate();
   }
   
@@ -230,15 +230,15 @@ public class PagerTabStrip
   public void setTextSpacing(int paramInt)
   {
     int i = paramInt;
-    if (paramInt < this.Nh) {
-      i = this.Nh;
+    if (paramInt < this.Oc) {
+      i = this.Oc;
     }
     super.setTextSpacing(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.view.PagerTabStrip
  * JD-Core Version:    0.7.0.1
  */

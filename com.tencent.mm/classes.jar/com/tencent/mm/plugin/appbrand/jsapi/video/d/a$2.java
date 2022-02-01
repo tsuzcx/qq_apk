@@ -11,14 +11,14 @@ final class a$2
   
   public final void onForeground()
   {
-    AppMethodBeat.i(194061);
-    this.krX.onUIResume();
-    AppMethodBeat.o(194061);
+    AppMethodBeat.i(194406);
+    this.kTn.onUIResume();
+    AppMethodBeat.o(194406);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.d.a.2
  * JD-Core Version:    0.7.0.1
  */

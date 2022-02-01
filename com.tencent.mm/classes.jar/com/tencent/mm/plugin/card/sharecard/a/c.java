@@ -4,8 +4,8 @@ public final class c
 {
   public final class a
   {
-    public String dyc;
-    public int nvh;
+    public String dvO;
+    public int nYh;
     public String username;
     
     public a() {}
@@ -13,7 +13,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.a.c
  * JD-Core Version:    0.7.0.1
  */

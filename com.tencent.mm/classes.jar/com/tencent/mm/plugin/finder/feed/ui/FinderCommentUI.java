@@ -23,30 +23,32 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.feed.b;
+import com.tencent.mm.plugin.finder.loader.f;
+import com.tencent.mm.plugin.finder.loader.h;
 import com.tencent.mm.plugin.finder.loader.h.a;
 import com.tencent.mm.plugin.finder.presenter.contract.CommentDrawerContract.CloseDrawerCallback;
 import com.tencent.mm.plugin.finder.presenter.contract.CommentDrawerContract.NPresenter;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.m;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.plugin.finder.view.FinderCommentDrawer;
 import com.tencent.mm.plugin.finder.view.FinderCommentDrawer.a;
 import com.tencent.mm.plugin.finder.view.FinderCommentDrawer.b;
 import com.tencent.mm.plugin.finder.view.FinderTouchLayout;
 import com.tencent.mm.plugin.finder.view.FinderTouchLayout.a;
-import com.tencent.mm.plugin.finder.view.f.a;
-import com.tencent.mm.plugin.finder.view.f.a.a;
-import com.tencent.mm.plugin.finder.view.f.a.b;
-import com.tencent.mm.plugin.finder.view.f.a.c;
+import com.tencent.mm.plugin.finder.view.builder.b;
+import com.tencent.mm.plugin.finder.view.d.a;
+import com.tencent.mm.plugin.finder.view.d.a.a;
+import com.tencent.mm.plugin.finder.view.d.a.b;
+import com.tencent.mm.plugin.finder.view.d.a.c;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.protocal.protobuf.bmd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import d.a.j;
 import d.o;
 import java.util.HashMap;
@@ -55,27 +57,28 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @com.tencent.mm.ui.base.a(3)
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderCommentUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "DRAG_CLOSE_THRESHOLD", "", "DRAG_START_X", "", "DRAG_START_Y", "DURATION", "", "TAG", "", "builder", "Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "getBuilder", "()Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "setBuilder", "(Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;)V", "containerView", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "getContainerView", "()Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "setContainerView", "(Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;)V", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "setDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;)V", "fromMsg", "", "getFromMsg", "()Z", "setFromMsg", "(Z)V", "isFinish", "mentionId", "getMentionId", "()J", "setMentionId", "(J)V", "requestData", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerOpenData;", "getRequestData", "()Lkotlin/Pair;", "setRequestData", "(Lkotlin/Pair;)V", "finish", "", "getLayoutId", "initBuilder", "showTopItem", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "scene", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onResume", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderCommentUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "DRAG_CLOSE_THRESHOLD", "", "DRAG_START_X", "", "DRAG_START_Y", "DURATION", "", "TAG", "", "builder", "Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "getBuilder", "()Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "setBuilder", "(Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;)V", "containerView", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "getContainerView", "()Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "setContainerView", "(Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;)V", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "setDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;)V", "fromMsg", "", "getFromMsg", "()Z", "setFromMsg", "(Z)V", "isFinish", "mentionCreateTime", "getMentionCreateTime", "()I", "setMentionCreateTime", "(I)V", "mentionId", "getMentionId", "()J", "setMentionId", "(J)V", "requestData", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerOpenData;", "getRequestData", "()Lkotlin/Pair;", "setRequestData", "(Lkotlin/Pair;)V", "finish", "", "getLayoutId", "initBuilder", "showTopItem", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "scene", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "plugin-finder_release"})
 public final class FinderCommentUI
   extends MMFinderUI
 {
-  private final int KRe = 50;
-  private final int KRf = 300;
-  private final float KRg = 0.3F;
-  public FinderTouchLayout KRh;
-  public FinderCommentDrawer KRi;
-  public o<f.a.a, f.a.b> KRj;
-  public com.tencent.mm.plugin.finder.view.builder.a KRk;
-  private boolean KRl;
   private final String TAG = "Finder.FinderCommentUI";
   private HashMap _$_findViewCache;
-  private boolean gPQ;
-  private final long jTY = 300L;
-  private long qNU;
+  private boolean hqq;
+  private final long kuJ = 300L;
+  private final int roK = 50;
+  private final int roL = 300;
+  private final float roM = 0.3F;
+  public FinderTouchLayout roN;
+  public FinderCommentDrawer roO;
+  public o<d.a.a, d.a.b> roP;
+  public b roQ;
+  private boolean roR;
+  private long roS;
+  private int roT;
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(198393);
+    AppMethodBeat.i(202305);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -86,145 +89,162 @@ public final class FinderCommentUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(198393);
+    AppMethodBeat.o(202305);
     return localView1;
   }
   
-  public final FinderTouchLayout fTD()
+  public final FinderTouchLayout cvP()
   {
-    AppMethodBeat.i(198387);
-    FinderTouchLayout localFinderTouchLayout = this.KRh;
+    AppMethodBeat.i(202299);
+    FinderTouchLayout localFinderTouchLayout = this.roN;
     if (localFinderTouchLayout == null) {
-      d.g.b.k.aPZ("containerView");
+      d.g.b.k.aVY("containerView");
     }
-    AppMethodBeat.o(198387);
+    AppMethodBeat.o(202299);
     return localFinderTouchLayout;
   }
   
-  public final FinderCommentDrawer fTE()
+  public final FinderCommentDrawer cvQ()
   {
-    AppMethodBeat.i(198388);
-    FinderCommentDrawer localFinderCommentDrawer = this.KRi;
+    AppMethodBeat.i(202300);
+    FinderCommentDrawer localFinderCommentDrawer = this.roO;
     if (localFinderCommentDrawer == null) {
-      d.g.b.k.aPZ("drawer");
+      d.g.b.k.aVY("drawer");
     }
-    AppMethodBeat.o(198388);
+    AppMethodBeat.o(202300);
     return localFinderCommentDrawer;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(198390);
+    AppMethodBeat.i(202302);
     hideVKB();
     super.finish();
     overridePendingTransition(0, 0);
-    AppMethodBeat.o(198390);
+    AppMethodBeat.o(202302);
   }
   
   public final int getLayoutId()
   {
-    return 2131496174;
+    return 2131496175;
   }
   
   public final void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(198389);
+    AppMethodBeat.i(202301);
     setTheme(2131821145);
     super.onCreate(paramBundle);
     if (getSupportActionBar() != null)
     {
       paramBundle = getSupportActionBar();
       if (paramBundle == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
       paramBundle.setBackgroundDrawable((Drawable)new ColorDrawable(0));
       paramBundle = getSupportActionBar();
       if (paramBundle == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
       paramBundle.hide();
     }
-    paramBundle = com.tencent.mm.plugin.finder.view.f.LeE;
+    paramBundle = com.tencent.mm.plugin.finder.view.d.rVR;
     paramBundle = getIntent();
     d.g.b.k.g(paramBundle, "intent");
     d.g.b.k.h(paramBundle, "intent");
     long l = paramBundle.getLongExtra("COMMENT_REQUEST_KEY", 0L);
-    paramBundle = (o)com.tencent.mm.plugin.finder.view.f.fWG().remove(Long.valueOf(l));
+    paramBundle = (o)com.tencent.mm.plugin.finder.view.d.cEH().remove(Long.valueOf(l));
     if (paramBundle == null)
     {
       finish();
-      AppMethodBeat.o(198389);
+      AppMethodBeat.o(202301);
       return;
     }
-    this.KRj = paramBundle;
-    paramBundle = com.tencent.mm.plugin.finder.view.f.LeE;
+    this.roP = paramBundle;
+    paramBundle = com.tencent.mm.plugin.finder.view.d.rVR;
     paramBundle = getIntent();
     d.g.b.k.g(paramBundle, "intent");
     d.g.b.k.h(paramBundle, "intent");
-    this.KRl = paramBundle.getBooleanExtra("FROM_MSG", false);
-    paramBundle = com.tencent.mm.plugin.finder.view.f.LeE;
+    this.roR = paramBundle.getBooleanExtra("FROM_MSG", false);
+    paramBundle = com.tencent.mm.plugin.finder.view.d.rVR;
     paramBundle = getIntent();
     d.g.b.k.g(paramBundle, "intent");
     d.g.b.k.h(paramBundle, "intent");
-    this.qNU = paramBundle.getLongExtra("MENTION_ID", 0L);
-    paramBundle = this.KRj;
+    this.roS = paramBundle.getLongExtra("MENTION_ID", 0L);
+    paramBundle = com.tencent.mm.plugin.finder.view.d.rVR;
+    paramBundle = getIntent();
+    d.g.b.k.g(paramBundle, "intent");
+    d.g.b.k.h(paramBundle, "intent");
+    this.roT = paramBundle.getIntExtra("MENTION_CREATE_TIME", 0);
+    paramBundle = this.roP;
     if (paramBundle == null) {
-      d.g.b.k.aPZ("requestData");
+      d.g.b.k.aVY("requestData");
     }
-    Object localObject1 = (f.a.a)paramBundle.first;
-    paramBundle = this.KRj;
+    Object localObject1 = (d.a.a)paramBundle.first;
+    paramBundle = this.roP;
     if (paramBundle == null) {
-      d.g.b.k.aPZ("requestData");
+      d.g.b.k.aVY("requestData");
     }
-    paramBundle = (f.a.b)paramBundle.second;
-    Object localObject2 = findViewById(2131307279);
+    paramBundle = (d.a.b)paramBundle.second;
+    Object localObject2 = findViewById(2131307301);
     d.g.b.k.g(localObject2, "findViewById(R.id.comment_ui_container)");
-    this.KRh = ((FinderTouchLayout)localObject2);
-    this.KRk = ((com.tencent.mm.plugin.finder.view.builder.a)new a(this, this.KRl, paramBundle.quu, this.qNU, ((f.a.a)localObject1).scene, (CommentDrawerContract.NPresenter)new b((Context)this)));
-    localObject2 = com.tencent.mm.ui.component.a.LCX;
-    localObject2 = (FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class);
-    Object localObject3 = com.tencent.mm.ui.component.a.LCX;
-    ((FinderReporterUIC)localObject2).qqE = ((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class)).LiL;
-    localObject2 = FinderCommentDrawer.qVJ;
+    this.roN = ((FinderTouchLayout)localObject2);
+    this.roQ = ((b)new a(this, this.roR, paramBundle.rgw, this.roS, this.roT, ((d.a.a)localObject1).scene, (CommentDrawerContract.NPresenter)new com.tencent.mm.plugin.finder.feed.d((Context)this)));
+    localObject2 = com.tencent.mm.ui.component.a.IrY;
+    localObject2 = (FinderReporterUIC)com.tencent.mm.ui.component.a.q((MMActivity)this).get(FinderReporterUIC.class);
+    Object localObject3 = com.tencent.mm.ui.component.a.IrY;
+    ((FinderReporterUIC)localObject2).rfR = ((FinderReporterUIC)com.tencent.mm.ui.component.a.q((MMActivity)this).get(FinderReporterUIC.class)).seo;
+    localObject2 = FinderCommentDrawer.rVZ;
     localObject2 = (MMActivity)this;
     localObject3 = getWindow();
     d.g.b.k.g(localObject3, "window");
     localObject3 = ((Window)localObject3).getDecorView();
     d.g.b.k.g(localObject3, "window.decorView");
-    int i = ((f.a.a)localObject1).scene;
-    com.tencent.mm.plugin.finder.view.builder.a locala = this.KRk;
-    if (locala == null) {
-      d.g.b.k.aPZ("builder");
+    int i = ((d.a.a)localObject1).scene;
+    b localb = this.roQ;
+    if (localb == null) {
+      d.g.b.k.aVY("builder");
     }
-    this.KRi = FinderCommentDrawer.b.a((MMActivity)localObject2, (View)localObject3, i, (FinderCommentDrawer.a)locala, ((f.a.a)localObject1).qqF, true);
-    localObject1 = this.KRi;
+    this.roO = FinderCommentDrawer.b.a((MMActivity)localObject2, (View)localObject3, i, (FinderCommentDrawer.a)localb, ((d.a.a)localObject1).ran, true);
+    localObject1 = this.roO;
     if (localObject1 == null) {
-      d.g.b.k.aPZ("drawer");
+      d.g.b.k.aVY("drawer");
     }
-    ((FinderCommentDrawer)localObject1).setInterceptClose((d.g.a.a)b.KRr);
-    localObject1 = this.KRi;
+    ((FinderCommentDrawer)localObject1).setInterceptClose((d.g.a.a)FinderCommentUI.b.rpa);
+    localObject1 = this.roO;
     if (localObject1 == null) {
-      d.g.b.k.aPZ("drawer");
+      d.g.b.k.aVY("drawer");
     }
     ((FinderCommentDrawer)localObject1).setOnCloseDrawerCallback((CommentDrawerContract.CloseDrawerCallback)new c(this));
-    localObject1 = this.KRh;
+    localObject1 = this.roN;
     if (localObject1 == null) {
-      d.g.b.k.aPZ("containerView");
+      d.g.b.k.aVY("containerView");
     }
     ((FinderTouchLayout)localObject1).post((Runnable)new d(this, paramBundle));
-    paramBundle = this.KRh;
+    paramBundle = this.roN;
     if (paramBundle == null) {
-      d.g.b.k.aPZ("containerView");
+      d.g.b.k.aVY("containerView");
     }
     paramBundle.setTouchListener((FinderTouchLayout.a)new e(this));
-    AppMethodBeat.o(198389);
+    AppMethodBeat.o(202301);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(210185);
+    FinderCommentDrawer localFinderCommentDrawer = this.roO;
+    if (localFinderCommentDrawer == null) {
+      d.g.b.k.aVY("drawer");
+    }
+    localFinderCommentDrawer.cMT();
+    super.onDestroy();
+    AppMethodBeat.o(210185);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(198391);
+    AppMethodBeat.i(202303);
     super.onResume();
-    AppMethodBeat.o(198391);
+    AppMethodBeat.o(202303);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -233,60 +253,60 @@ public final class FinderCommentUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$initBuilder$1", "Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "onBuildDrawerHeader", "", "context", "Landroid/content/Context;", "headerLayout", "Landroid/widget/FrameLayout;", "fullScreen", "", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$initBuilder$1", "Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "onBuildDrawerHeader", "", "context", "Landroid/content/Context;", "headerLayout", "Landroid/widget/FrameLayout;", "fullScreen", "", "plugin-finder_release"})
   public static final class a
-    extends com.tencent.mm.plugin.finder.view.builder.a
+    extends b
   {
-    a(boolean paramBoolean, FinderItem paramFinderItem, long paramLong, int paramInt, CommentDrawerContract.NPresenter paramNPresenter)
+    a(boolean paramBoolean, FinderItem paramFinderItem, long paramLong, int paramInt1, int paramInt2, CommentDrawerContract.NPresenter paramNPresenter)
     {
       super();
     }
     
     public final void a(final Context paramContext, FrameLayout paramFrameLayout, boolean paramBoolean)
     {
-      AppMethodBeat.i(198378);
+      AppMethodBeat.i(202290);
       d.g.b.k.h(paramContext, "context");
       d.g.b.k.h(paramFrameLayout, "headerLayout");
       super.a(paramContext, paramFrameLayout, paramBoolean);
-      if (this.KRn)
+      if (this.roV)
       {
-        View localView = paramFrameLayout.findViewById(2131307393);
+        View localView = paramFrameLayout.findViewById(2131307462);
         if (localView == null)
         {
-          AppMethodBeat.o(198378);
+          AppMethodBeat.o(202290);
           return;
         }
         localView.setVisibility(0);
         localView.setOnClickListener((View.OnClickListener)new a(this, paramContext));
-        Object localObject1 = (ImageView)paramFrameLayout.findViewById(2131307395);
-        Object localObject3 = (bmd)j.iz((List)this.KRo.getMediaList());
+        Object localObject1 = (ImageView)paramFrameLayout.findViewById(2131307464);
+        Object localObject3 = (bqs)j.iP((List)this.roW.getMediaList());
         Object localObject2;
-        com.tencent.mm.plugin.finder.loader.h localh;
+        h localh;
         if (localObject3 != null)
         {
-          if (((bmd)localObject3).mediaType == 4)
+          if (((bqs)localObject3).mediaType == 4)
           {
-            localObject2 = new com.tencent.mm.plugin.finder.loader.f((bmd)localObject3, com.tencent.mm.plugin.finder.storage.h.qJZ);
-            localObject3 = com.tencent.mm.plugin.finder.loader.h.qCF;
-            localObject3 = com.tencent.mm.plugin.finder.loader.h.cmU();
+            localObject2 = new f((bqs)localObject3, m.rDR);
+            localObject3 = h.rtK;
+            localObject3 = h.cwn();
             d.g.b.k.g(localObject1, "thumbIv");
-            localh = com.tencent.mm.plugin.finder.loader.h.qCF;
-            ((d)localObject3).a(localObject2, (ImageView)localObject1, com.tencent.mm.plugin.finder.loader.h.a(h.a.qCG));
+            localh = h.rtK;
+            ((com.tencent.mm.loader.d)localObject3).a(localObject2, (ImageView)localObject1, h.a(h.a.rtL));
           }
         }
         else
         {
-          localObject1 = (TextView)paramFrameLayout.findViewById(2131307396);
+          localObject1 = (TextView)paramFrameLayout.findViewById(2131307465);
           d.g.b.k.g(localObject1, "titleTv");
-          ai.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
-          ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c(paramContext, (CharSequence)paramContext.getString(2131759222, new Object[] { this.KRo.getNickName() })));
-          paramFrameLayout = (TextView)paramFrameLayout.findViewById(2131307394);
-          if (bt.isNullOrNil(this.KRo.getDescription())) {
+          aj.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
+          ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c(paramContext, (CharSequence)paramContext.getString(2131759222, new Object[] { this.roW.getNickName() })));
+          paramFrameLayout = (TextView)paramFrameLayout.findViewById(2131307463);
+          if (bs.isNullOrNil(this.roW.getDescription())) {
             break label383;
           }
           d.g.b.k.g(paramFrameLayout, "descTv");
           paramFrameLayout.setVisibility(0);
-          if (!bt.isNullOrNil(this.KRo.getDescription())) {
+          if (!bs.isNullOrNil(this.roW.getDescription())) {
             break label360;
           }
           paramContext = (CharSequence)"";
@@ -295,35 +315,35 @@ public final class FinderCommentUI
         }
         for (;;)
         {
-          csX().gV(localView);
-          AppMethodBeat.o(198378);
+          cFp().gT(localView);
+          AppMethodBeat.o(202290);
           return;
-          localObject2 = com.tencent.mm.plugin.finder.loader.h.qCF;
-          localObject2 = com.tencent.mm.plugin.finder.loader.h.cmU();
-          localObject3 = new com.tencent.mm.plugin.finder.loader.f((bmd)localObject3, com.tencent.mm.plugin.finder.storage.h.qJZ);
+          localObject2 = h.rtK;
+          localObject2 = h.cwn();
+          localObject3 = new f((bqs)localObject3, m.rDR);
           d.g.b.k.g(localObject1, "thumbIv");
-          localh = com.tencent.mm.plugin.finder.loader.h.qCF;
-          ((d)localObject2).a(localObject3, (ImageView)localObject1, com.tencent.mm.plugin.finder.loader.h.a(h.a.qCG));
+          localh = h.rtK;
+          ((com.tencent.mm.loader.d)localObject2).a(localObject3, (ImageView)localObject1, h.a(h.a.rtL));
           break;
           label360:
-          paramContext = (CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c(aj.getContext(), (CharSequence)this.KRo.getDescription());
+          paramContext = (CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c(ai.getContext(), (CharSequence)this.roW.getDescription());
           break label286;
           label383:
           d.g.b.k.g(paramFrameLayout, "descTv");
           paramFrameLayout.setVisibility(8);
         }
       }
-      paramContext = paramFrameLayout.findViewById(2131307393);
+      paramContext = paramFrameLayout.findViewById(2131307462);
       if (paramContext != null)
       {
         paramContext.setVisibility(8);
-        AppMethodBeat.o(198378);
+        AppMethodBeat.o(202290);
         return;
       }
-      AppMethodBeat.o(198378);
+      AppMethodBeat.o(202290);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -331,69 +351,50 @@ public final class FinderCommentUI
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(198377);
+        AppMethodBeat.i(202289);
         paramView = new Intent();
-        paramView.putExtra("feed_object_id", this.KRq.KRo.getId());
-        paramView.putExtra("mention_id", this.KRq.KRp);
-        paramView.putExtra("from_scene", this.KRq.gZZ);
+        paramView.putExtra("feed_object_id", this.roZ.roW.getId());
+        paramView.putExtra("mention_id", this.roZ.roX);
+        paramView.putExtra("mention_create_time", this.roZ.roY);
+        paramView.putExtra("from_scene", this.roZ.hAy);
         paramView.putExtra("from_comment_ui", true);
-        Object localObject = FinderReporterUIC.Ljl;
+        Object localObject = FinderReporterUIC.seQ;
         FinderReporterUIC.a.a(paramContext, paramView, 0L, 0, false, 124);
-        localObject = com.tencent.mm.plugin.finder.utils.a.qSb;
-        com.tencent.mm.plugin.finder.utils.a.B((Context)this.KRq.KRm, paramView);
-        AppMethodBeat.o(198377);
+        localObject = com.tencent.mm.plugin.finder.utils.a.rOv;
+        com.tencent.mm.plugin.finder.utils.a.E((Context)this.roZ.roU, paramView);
+        AppMethodBeat.o(202289);
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class b
-    extends d.g.b.l
-    implements d.g.a.a<Boolean>
-  {
-    public static final b KRr;
-    
-    static
-    {
-      AppMethodBeat.i(198379);
-      KRr = new b();
-      AppMethodBeat.o(198379);
-    }
-    
-    b()
-    {
-      super();
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$onCreate$2", "Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "onClose", "", "commentCount", "", "data", "", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$onCreate$2", "Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "onClose", "", "commentCount", "", "data", "", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "plugin-finder_release"})
   public static final class c
     implements CommentDrawerContract.CloseDrawerCallback
   {
-    public final void o(int paramInt, List<? extends com.tencent.mm.plugin.finder.model.h> paramList)
+    public final void g(int paramInt, List<? extends com.tencent.mm.plugin.finder.model.l> paramList)
     {
-      AppMethodBeat.i(198381);
+      AppMethodBeat.i(202293);
       d.g.b.k.h(paramList, "data");
-      if (FinderCommentUI.a(this.KRm))
+      if (FinderCommentUI.a(this.roU))
       {
-        AppMethodBeat.o(198381);
+        AppMethodBeat.o(202293);
         return;
       }
-      FinderCommentUI.b(this.KRm);
+      FinderCommentUI.b(this.roU);
       Intent localIntent = new Intent();
-      f.a locala = com.tencent.mm.plugin.finder.view.f.LeE;
-      paramList = new f.a.c(paramInt, paramList);
+      d.a locala = com.tencent.mm.plugin.finder.view.d.rVR;
+      paramList = new d.a.c(paramInt, paramList);
       d.g.b.k.h(localIntent, "intent");
       d.g.b.k.h(paramList, "resultData");
       long l = System.currentTimeMillis();
       localIntent.putExtra("COMMENT_RESULT_KEY", l);
-      ((Map)com.tencent.mm.plugin.finder.view.f.fWH()).put(Long.valueOf(l), paramList);
-      this.KRm.setResult(0, localIntent);
-      FinderCommentUI.c(this.KRm).postDelayed((Runnable)new a(this), FinderCommentUI.d(this.KRm));
-      AppMethodBeat.o(198381);
+      ((Map)com.tencent.mm.plugin.finder.view.d.cEI()).put(Long.valueOf(l), paramList);
+      this.roU.setResult(0, localIntent);
+      FinderCommentUI.c(this.roU).postDelayed((Runnable)new a(this), FinderCommentUI.d(this.roU));
+      AppMethodBeat.o(202293);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -401,87 +402,87 @@ public final class FinderCommentUI
       
       public final void run()
       {
-        AppMethodBeat.i(198380);
-        this.KRs.KRm.finish();
-        AppMethodBeat.o(198380);
+        AppMethodBeat.i(202292);
+        this.rpb.roU.finish();
+        AppMethodBeat.o(202292);
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
-    d(FinderCommentUI paramFinderCommentUI, f.a.b paramb) {}
+    d(FinderCommentUI paramFinderCommentUI, d.a.b paramb) {}
     
     public final void run()
     {
-      AppMethodBeat.i(198382);
-      this.KRm.fTE().a(paramBundle.quu, paramBundle.quB, paramBundle.qoE, paramBundle.quC, paramBundle.qVF, paramBundle.qVH);
-      AppMethodBeat.o(198382);
+      AppMethodBeat.i(202294);
+      this.roU.cvQ().a(paramBundle.rgw, paramBundle.rgD, paramBundle.qXy, paramBundle.rgE, paramBundle.rVS, paramBundle.rVT);
+      AppMethodBeat.o(202294);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$onCreate$4", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "ratio", "", "getRatio", "()F", "setRatio", "(F)V", "interceptDown", "", "event", "Landroid/view/MotionEvent;", "onScrollX", "", "x", "onTouchUp", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$onCreate$4", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "ratio", "", "getRatio", "()F", "setRatio", "(F)V", "interceptDown", "", "event", "Landroid/view/MotionEvent;", "onScrollX", "", "x", "onTouchUp", "plugin-finder_release"})
   public static final class e
     implements FinderTouchLayout.a
   {
-    private float rQP;
+    private float rcc;
     
     e()
     {
-      AppMethodBeat.i(198386);
+      AppMethodBeat.i(202298);
       Resources localResources2 = localResources1.getResources();
       d.g.b.k.g(localResources2, "resources");
       float f = localResources2.getDisplayMetrics().heightPixels;
       Resources localResources1 = localResources1.getResources();
       d.g.b.k.g(localResources1, "resources");
-      this.rQP = (f / localResources1.getDisplayMetrics().widthPixels);
-      AppMethodBeat.o(198386);
+      this.rcc = (f / localResources1.getDisplayMetrics().widthPixels);
+      AppMethodBeat.o(202298);
     }
     
-    public final void bZ(float paramFloat)
+    public final boolean T(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(198384);
-      this.KRm.fTD().setTranslationY(this.rQP * paramFloat);
-      ad.i(FinderCommentUI.g(this.KRm), "distanceX " + paramFloat + ", translationY " + this.KRm.fTD().getTranslationY());
-      AppMethodBeat.o(198384);
-    }
-    
-    public final boolean i(MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(198383);
+      AppMethodBeat.i(202295);
       d.g.b.k.h(paramMotionEvent, "event");
-      if ((paramMotionEvent.getRawX() <= FinderCommentUI.e(this.KRm)) && (paramMotionEvent.getRawY() > FinderCommentUI.f(this.KRm)))
+      if ((paramMotionEvent.getRawX() <= FinderCommentUI.e(this.roU)) && (paramMotionEvent.getRawY() > FinderCommentUI.f(this.roU)))
       {
-        AppMethodBeat.o(198383);
+        AppMethodBeat.o(202295);
         return true;
       }
-      AppMethodBeat.o(198383);
+      AppMethodBeat.o(202295);
       return false;
     }
     
-    public final void j(MotionEvent paramMotionEvent)
+    public final void U(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(198385);
+      AppMethodBeat.i(202297);
       d.g.b.k.h(paramMotionEvent, "event");
-      ad.i(FinderCommentUI.g(this.KRm), "translationY " + this.KRm.fTD().getTranslationY() + ", height:" + this.KRm.fTD().getHeight());
-      if (this.KRm.fTD().getTranslationY() > FinderCommentUI.h(this.KRm) * this.KRm.fTD().getHeight())
+      ac.i(FinderCommentUI.g(this.roU), "translationY " + this.roU.cvP().getTranslationY() + ", height:" + this.roU.cvP().getHeight());
+      if (this.roU.cvP().getTranslationY() > FinderCommentUI.h(this.roU) * this.roU.cvP().getHeight())
       {
-        this.KRm.fTE().csJ();
-        AppMethodBeat.o(198385);
+        this.roU.cvQ().cEF();
+        AppMethodBeat.o(202297);
         return;
       }
-      this.KRm.fTD().clearAnimation();
-      this.KRm.fTD().animate().cancel();
-      this.KRm.fTD().animate().setInterpolator((TimeInterpolator)new DecelerateInterpolator(1.5F)).translationY(0.0F).setDuration(FinderCommentUI.d(this.KRm)).start();
-      AppMethodBeat.o(198385);
+      this.roU.cvP().clearAnimation();
+      this.roU.cvP().animate().cancel();
+      this.roU.cvP().animate().setInterpolator((TimeInterpolator)new DecelerateInterpolator(1.5F)).translationY(0.0F).setDuration(FinderCommentUI.d(this.roU)).start();
+      AppMethodBeat.o(202297);
+    }
+    
+    public final void aY(float paramFloat)
+    {
+      AppMethodBeat.i(202296);
+      this.roU.cvP().setTranslationY(this.rcc * paramFloat);
+      ac.i(FinderCommentUI.g(this.roU), "distanceX " + paramFloat + ", translationY " + this.roU.cvP().getTranslationY());
+      AppMethodBeat.o(202296);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderCommentUI
  * JD-Core Version:    0.7.0.1
  */

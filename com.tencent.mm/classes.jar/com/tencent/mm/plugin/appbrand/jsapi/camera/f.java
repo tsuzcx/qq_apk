@@ -10,24 +10,24 @@ import com.tencent.mm.plugin.appbrand.jsapi.f.d;
 public abstract interface f
   extends f.b, f.c, f.d
 {
-  public static final f jMA = new f()
+  public static final f knb = new f()
   {
-    public final void aZj() {}
+    public final void ao(String paramAnonymousString, boolean paramAnonymousBoolean) {}
     
-    public final void aZl() {}
-    
-    public final void aZm() {}
-    
-    public final void aZs() {}
-    
-    public final void aZt() {}
-    
-    public final void an(String paramAnonymousString, boolean paramAnonymousBoolean) {}
-    
-    public final float as(float paramAnonymousFloat)
+    public final float aw(float paramAnonymousFloat)
     {
       return 0.0F;
     }
+    
+    public final void bgb() {}
+    
+    public final void bgd() {}
+    
+    public final void bge() {}
+    
+    public final void bgk() {}
+    
+    public final void bgl() {}
     
     public final boolean dM(int paramAnonymousInt1, int paramAnonymousInt2)
     {
@@ -89,19 +89,19 @@ public abstract interface f
     public final void w(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4) {}
   };
   
-  public abstract void aZj();
+  public abstract void ao(String paramString, boolean paramBoolean);
   
-  public abstract void aZl();
+  public abstract float aw(float paramFloat);
   
-  public abstract void aZm();
+  public abstract void bgb();
   
-  public abstract void aZs();
+  public abstract void bgd();
   
-  public abstract void aZt();
+  public abstract void bge();
   
-  public abstract void an(String paramString, boolean paramBoolean);
+  public abstract void bgk();
   
-  public abstract float as(float paramFloat);
+  public abstract void bgl();
   
   public abstract boolean dM(int paramInt1, int paramInt2);
   
@@ -149,7 +149,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.f
  * JD-Core Version:    0.7.0.1
  */

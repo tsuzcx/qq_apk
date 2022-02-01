@@ -2,15 +2,16 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 
 import android.graphics.Bitmap;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface e
 {
-  public abstract boolean aXf();
+  public abstract boolean aB(float paramFloat);
   
-  public abstract boolean ax(float paramFloat);
+  public abstract boolean bed();
   
-  public abstract void bcc();
+  public abstract void biX();
   
   public abstract void c(boolean paramBoolean, String paramString, int paramInt);
   
@@ -30,13 +31,13 @@ public abstract interface e
   
   public abstract boolean isPlaying();
   
+  public abstract boolean o(double paramDouble);
+  
   public abstract void onUIDestroy();
   
   public abstract void onUIPause();
   
   public abstract void onUIResume();
-  
-  public abstract boolean p(double paramDouble);
   
   public abstract boolean pause();
   
@@ -60,13 +61,90 @@ public abstract interface e
   
   public abstract void stop();
   
+  public static abstract interface a
+  {
+    public abstract void a(e.f paramf);
+    
+    public abstract void bha();
+    
+    public abstract void biZ();
+    
+    public abstract void bjA();
+    
+    public abstract void bjB();
+    
+    public abstract void bjC();
+    
+    public abstract void bjD();
+    
+    public abstract boolean bjE();
+    
+    public abstract boolean bjt();
+    
+    public abstract void bju();
+    
+    public abstract void bjv();
+    
+    public abstract boolean bjw();
+    
+    public abstract void bjx();
+    
+    public abstract boolean bjy();
+    
+    public abstract boolean bjz();
+    
+    public abstract void hide();
+    
+    public abstract void onDestroy();
+    
+    public abstract void seek(int paramInt);
+    
+    public abstract void setDanmakuBtnOnClickListener(e.g paramg);
+    
+    public abstract void setDanmakuBtnOpen(boolean paramBoolean);
+    
+    public abstract void setExitFullScreenBtnOnClickListener(View.OnClickListener paramOnClickListener);
+    
+    public abstract void setFullScreenBtnOnClickListener(View.OnClickListener paramOnClickListener);
+    
+    public abstract void setIplaySeekCallback(e.d paramd);
+    
+    public abstract void setIsPlay(boolean paramBoolean);
+    
+    public abstract void setMuteBtnOnClickListener(View.OnClickListener paramOnClickListener);
+    
+    public abstract void setMuteBtnState(boolean paramBoolean);
+    
+    public abstract void setOnPlayButtonClickListener(View.OnClickListener paramOnClickListener);
+    
+    public abstract void setOnUpdateProgressLenListener(e.e parame);
+    
+    public abstract void setPlayBtnInCenterPosition(boolean paramBoolean);
+    
+    public abstract void setShowControlProgress(boolean paramBoolean);
+    
+    public abstract void setShowDanmakuBtn(boolean paramBoolean);
+    
+    public abstract void setShowFullScreenBtn(boolean paramBoolean);
+    
+    public abstract void setShowMuteBtn(boolean paramBoolean);
+    
+    public abstract void setShowPlayBtn(boolean paramBoolean);
+    
+    public abstract void setShowProgress(boolean paramBoolean);
+    
+    public abstract void setStatePorter(e.i parami);
+    
+    public abstract void setTitle(String paramString);
+  }
+  
   public static abstract interface b
   {
+    public abstract void gL(boolean paramBoolean);
+    
     public abstract int getVideoTotalTime();
     
-    public abstract void gp(boolean paramBoolean);
-    
-    public abstract void sa(int paramInt);
+    public abstract void sQ(int paramInt);
     
     public abstract void setVideoTotalTime(int paramInt);
   }
@@ -77,17 +155,39 @@ public abstract interface e
     
     public abstract void d(String paramString1, String paramString2, int paramInt1, int paramInt2);
     
-    public abstract void db(String paramString1, String paramString2);
+    public abstract void jdMethod_do(String paramString1, String paramString2);
     
-    public abstract void dc(String paramString1, String paramString2);
+    public abstract void dp(String paramString1, String paramString2);
     
-    public abstract void dd(String paramString1, String paramString2);
+    public abstract void dq(String paramString1, String paramString2);
     
-    public abstract void de(String paramString1, String paramString2);
+    public abstract void dr(String paramString1, String paramString2);
     
-    public abstract void dg(String paramString1, String paramString2);
+    public abstract void ds(String paramString1, String paramString2);
     
-    public abstract void dh(String paramString1, String paramString2);
+    public abstract void dt(String paramString1, String paramString2);
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void anR();
+    
+    public abstract void nn(int paramInt);
+  }
+  
+  public static abstract interface e
+  {
+    public abstract void onProgressChanged(int paramInt1, int paramInt2);
+  }
+  
+  public static abstract interface f
+  {
+    public abstract void onVisibilityChanged(boolean paramBoolean);
+  }
+  
+  public static abstract interface g
+  {
+    public abstract void gK(boolean paramBoolean);
   }
   
   public static enum h
@@ -95,20 +195,27 @@ public abstract interface e
     static
     {
       AppMethodBeat.i(137806);
-      knP = new h("DEFAULT", 0);
-      knQ = new h("FILL", 1);
-      knR = new h("CONTAIN", 2);
-      knS = new h("COVER", 3);
-      knT = new h[] { knP, knQ, knR, knS };
+      kPj = new h("DEFAULT", 0);
+      kPk = new h("FILL", 1);
+      kPl = new h("CONTAIN", 2);
+      kPm = new h("COVER", 3);
+      kPn = new h[] { kPj, kPk, kPl, kPm };
       AppMethodBeat.o(137806);
     }
     
     private h() {}
   }
+  
+  public static abstract interface i
+  {
+    public abstract int bjh();
+    
+    public abstract int bji();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e
  * JD-Core Version:    0.7.0.1
  */

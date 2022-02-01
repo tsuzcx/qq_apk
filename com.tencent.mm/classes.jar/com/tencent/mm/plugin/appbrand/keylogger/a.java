@@ -5,8 +5,8 @@ import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser;
 import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser.StepLogInfo;
 import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser.a;
 import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -19,9 +19,9 @@ import java.util.regex.Pattern;
 public final class a
   implements IKeyStepAnalyser
 {
-  static List<IKeyStepAnalyser.b> bv(List<IKeyStepAnalyser.StepLogInfo> paramList)
+  static List<IKeyStepAnalyser.b> bu(List<IKeyStepAnalyser.StepLogInfo> paramList)
   {
-    AppMethodBeat.i(194805);
+    AppMethodBeat.i(200960);
     ArrayList localArrayList = new ArrayList();
     HashMap localHashMap = new HashMap();
     int j = 0;
@@ -31,8 +31,8 @@ public final class a
     if (j < paramList.size())
     {
       localStepLogInfo = (IKeyStepAnalyser.StepLogInfo)paramList.get(j);
-      ad.v("MicroMsg.KeyStepAnalyser", "sortOutResult time:%d step:%s", new Object[] { Long.valueOf(localStepLogInfo.time), localStepLogInfo.kER });
-      if (!"Start".equals(localStepLogInfo.kER)) {
+      ac.v("MicroMsg.KeyStepAnalyser", "sortOutResult time:%d step:%s", new Object[] { Long.valueOf(localStepLogInfo.time), localStepLogInfo.lgk });
+      if (!"Start".equals(localStepLogInfo.lgk)) {
         break label377;
       }
       if (localObject != null) {
@@ -46,17 +46,17 @@ public final class a
       if (localObject != null)
       {
         if ("stepStart".equals(localStepLogInfo.errMsg)) {
-          localHashMap.put(localStepLogInfo.kER, Long.valueOf(localStepLogInfo.time));
+          localHashMap.put(localStepLogInfo.lgk, Long.valueOf(localStepLogInfo.time));
         }
       }
       else
       {
         label180:
-        if ((!localStepLogInfo.bfX()) || (localObject == null)) {
+        if ((!localStepLogInfo.bmR()) || (localObject == null)) {
           break label380;
         }
         if (localHashMap.containsKey("Start")) {
-          localStepLogInfo.cin = (localStepLogInfo.time - ((Long)localHashMap.get("Start")).longValue());
+          localStepLogInfo.cfj = (localStepLogInfo.time - ((Long)localHashMap.get("Start")).longValue());
         }
         localArrayList.add(0, localObject);
         i = 1;
@@ -70,21 +70,21 @@ public final class a
     {
       j += 1;
       break;
-      if ("CollectKeyInfo".equals(localStepLogInfo.kER))
+      if ("CollectKeyInfo".equals(localStepLogInfo.lgk))
       {
-        String str = localStepLogInfo.kET;
-        ((IKeyStepAnalyser.b)localObject).kEQ.append(str).append("\n");
+        String str = localStepLogInfo.lgm;
+        ((IKeyStepAnalyser.b)localObject).lgj.append(str).append("\n");
         break label180;
       }
-      if (localHashMap.containsKey(localStepLogInfo.kER)) {
-        localStepLogInfo.cin = (localStepLogInfo.time - ((Long)localHashMap.get(localStepLogInfo.kER)).longValue());
+      if (localHashMap.containsKey(localStepLogInfo.lgk)) {
+        localStepLogInfo.cfj = (localStepLogInfo.time - ((Long)localHashMap.get(localStepLogInfo.lgk)).longValue());
       }
-      ((IKeyStepAnalyser.b)localObject).kEP.add(localStepLogInfo);
+      ((IKeyStepAnalyser.b)localObject).lgi.add(localStepLogInfo);
       break label180;
       if ((i == 0) && (localObject != null)) {
         localArrayList.add(0, localObject);
       }
-      AppMethodBeat.o(194805);
+      AppMethodBeat.o(200960);
       return localArrayList;
       break label142;
     }
@@ -104,7 +104,7 @@ public final class a
     //   14: iconst_0
     //   15: aload_0
     //   16: aastore
-    //   17: invokestatic 154	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   17: invokestatic 154	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   20: new 29	java/util/ArrayList
     //   23: dup
     //   24: invokespecial 30	java/util/ArrayList:<init>	()V
@@ -127,7 +127,7 @@ public final class a
     //   57: aload_2
     //   58: astore_0
     //   59: aload 4
-    //   61: invokestatic 174	com/tencent/mm/plugin/appbrand/keylogger/c:JX	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/keylogger/base/IKeyStepAnalyser$StepLogInfo;
+    //   61: invokestatic 174	com/tencent/mm/plugin/appbrand/keylogger/c:Oe	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/keylogger/base/IKeyStepAnalyser$StepLogInfo;
     //   64: astore 4
     //   66: aload 4
     //   68: ifnull -24 -> 44
@@ -162,7 +162,7 @@ public final class a
     //   124: iconst_0
     //   125: aload_1
     //   126: aastore
-    //   127: invokestatic 194	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   127: invokestatic 194	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   130: aload_2
     //   131: ifnull +7 -> 138
     //   134: aload_2
@@ -189,7 +189,7 @@ public final class a
     //   170: iconst_0
     //   171: aload_1
     //   172: aastore
-    //   173: invokestatic 194	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   173: invokestatic 194	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   176: aload_2
     //   177: ifnull -39 -> 138
     //   180: aload_2
@@ -257,26 +257,26 @@ public final class a
   
   public final void a(final String paramString, final Pattern paramPattern, final long paramLong, IKeyStepAnalyser.a parama)
   {
-    AppMethodBeat.i(194802);
-    new ap(String.format(Locale.ENGLISH, "KeyStepAnalyser:%s", new Object[] { paramString })).post(new Runnable()
+    AppMethodBeat.i(200957);
+    new ao(String.format(Locale.ENGLISH, "KeyStepAnalyser:%s", new Object[] { paramString })).post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(194801);
+        AppMethodBeat.i(200956);
         a locala = a.this;
         Object localObject = paramString;
         Pattern localPattern = paramPattern;
         long l = paramLong;
-        IKeyStepAnalyser.a locala1 = this.kDP;
-        ad.i("MicroMsg.KeyStepAnalyser", "doAnalyse processName:%s sessionIdPattern:%s", new Object[] { localObject, localPattern.pattern() });
+        IKeyStepAnalyser.a locala1 = this.lfi;
+        ac.i("MicroMsg.KeyStepAnalyser", "doAnalyse processName:%s sessionIdPattern:%s", new Object[] { localObject, localPattern.pattern() });
         if (locala1 != null)
         {
-          localObject = c.bfP().N((String)localObject, l);
+          localObject = c.bmJ().O((String)localObject, l);
           if ((localObject == null) || (((List)localObject).isEmpty()))
           {
-            ad.i("MicroMsg.KeyStepAnalyser", "no keystep logs");
-            locala1.ac(new ArrayList());
-            AppMethodBeat.o(194801);
+            ac.i("MicroMsg.KeyStepAnalyser", "no keystep logs");
+            locala1.bv(new ArrayList());
+            AppMethodBeat.o(200956);
             return;
           }
           ArrayList localArrayList = new ArrayList();
@@ -291,22 +291,22 @@ public final class a
           }
           if (localArrayList.isEmpty())
           {
-            ad.i("MicroMsg.KeyStepAnalyser", "no keystep logs");
-            locala1.ac(new ArrayList());
-            AppMethodBeat.o(194801);
+            ac.i("MicroMsg.KeyStepAnalyser", "no keystep logs");
+            locala1.bv(new ArrayList());
+            AppMethodBeat.o(200956);
             return;
           }
-          locala1.ac(a.bv(locala.bu(localArrayList)));
+          locala1.bv(a.bu(locala.bt(localArrayList)));
         }
-        AppMethodBeat.o(194801);
+        AppMethodBeat.o(200956);
       }
     });
-    AppMethodBeat.o(194802);
+    AppMethodBeat.o(200957);
   }
   
-  final List<IKeyStepAnalyser.StepLogInfo> bu(List<List<IKeyStepAnalyser.StepLogInfo>> paramList)
+  final List<IKeyStepAnalyser.StepLogInfo> bt(List<List<IKeyStepAnalyser.StepLogInfo>> paramList)
   {
-    AppMethodBeat.i(194804);
+    AppMethodBeat.i(200959);
     ArrayList localArrayList = new ArrayList();
     PriorityQueue localPriorityQueue = new PriorityQueue(paramList.size(), new Comparator() {});
     int j = 0;
@@ -318,9 +318,9 @@ public final class a
       if (!((List)paramList.get(j)).isEmpty())
       {
         localObject = new a((byte)0);
-        ((a)localObject).kDR = ((IKeyStepAnalyser.StepLogInfo)((List)paramList.get(j)).get(0));
+        ((a)localObject).lfk = ((IKeyStepAnalyser.StepLogInfo)((List)paramList.get(j)).get(0));
         ((a)localObject).indexInArray = 0;
-        ((a)localObject).kDS = j;
+        ((a)localObject).lfl = j;
         localPriorityQueue.add(localObject);
         k = i + ((List)paramList.get(j)).size();
       }
@@ -330,46 +330,46 @@ public final class a
     if (j < i)
     {
       localObject = (a)localPriorityQueue.poll();
-      localArrayList.add(((a)localObject).kDR);
-      List localList = (List)paramList.get(((a)localObject).kDS);
+      localArrayList.add(((a)localObject).lfk);
+      List localList = (List)paramList.get(((a)localObject).lfl);
       k = ((a)localObject).indexInArray + 1;
       if (k >= localList.size())
       {
-        if (a.kDT == null)
+        if (a.lfm == null)
         {
-          a.kDT = new a();
+          a.lfm = new a();
           localObject = new IKeyStepAnalyser.StepLogInfo();
           ((IKeyStepAnalyser.StepLogInfo)localObject).time = 9223372036854775807L;
-          a.kDT.kDR = ((IKeyStepAnalyser.StepLogInfo)localObject);
+          a.lfm.lfk = ((IKeyStepAnalyser.StepLogInfo)localObject);
         }
-        localPriorityQueue.add(a.kDT);
+        localPriorityQueue.add(a.lfm);
       }
       for (;;)
       {
         j += 1;
         break;
         a locala = new a((byte)0);
-        locala.kDR = ((IKeyStepAnalyser.StepLogInfo)localList.get(k));
+        locala.lfk = ((IKeyStepAnalyser.StepLogInfo)localList.get(k));
         locala.indexInArray = k;
-        locala.kDS = ((a)localObject).kDS;
+        locala.lfl = ((a)localObject).lfl;
         localPriorityQueue.add(locala);
       }
     }
-    AppMethodBeat.o(194804);
+    AppMethodBeat.o(200959);
     return localArrayList;
   }
   
   static final class a
   {
-    static a kDT;
+    static a lfm;
     int indexInArray;
-    IKeyStepAnalyser.StepLogInfo kDR;
-    int kDS;
+    IKeyStepAnalyser.StepLogInfo lfk;
+    int lfl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.a
  * JD-Core Version:    0.7.0.1
  */

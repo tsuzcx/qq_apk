@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.f;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b.e;
-import com.tencent.mm.protocal.protobuf.bge;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bjw;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,31 +12,31 @@ import org.json.JSONObject;
 
 final class a
 {
-  static void f(bge parambge)
+  static void f(bjw parambjw)
   {
     AppMethodBeat.i(122215);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.cbn()) || (com.tencent.mm.plugin.expt.hellhound.core.b.getUin() == 0))
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.ciw()) || (com.tencent.mm.plugin.expt.hellhound.core.b.getUin() == 0))
     {
       AppMethodBeat.o(122215);
       return;
     }
-    parambge = g(parambge);
-    if (TextUtils.isEmpty(parambge))
+    parambjw = g(parambjw);
+    if (TextUtils.isEmpty(parambjw))
     {
       AppMethodBeat.o(122215);
       return;
     }
-    ad.i("AsyncBizReport", "HABBYGE-MALI, doReport: %s", new Object[] { parambge });
-    d.aL(17648, parambge);
+    ac.i("AsyncBizReport", "HABBYGE-MALI, doReport: %s", new Object[] { parambjw });
+    d.aO(17648, parambjw);
     AppMethodBeat.o(122215);
   }
   
-  private static String g(bge parambge)
+  private static String g(bjw parambjw)
   {
     AppMethodBeat.i(122216);
     try
     {
-      Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.d.WS(com.tencent.mm.plugin.expt.hellhound.a.f.c.a.cdb());
+      Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.d.abp(com.tencent.mm.plugin.expt.hellhound.a.f.c.a.ckJ());
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         boolean bool = "-1".equals(localObject);
@@ -57,30 +57,30 @@ final class a
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("tbe", parambge.DDR);
-        long l = parambge.DDS - parambge.DDR;
+        localJSONObject.put("tbe", parambjw.EZm);
+        long l = parambjw.EZn - parambjw.EZm;
         if (l > 0L) {}
         for (;;)
         {
           localJSONObject.put("in", l);
           localJSONObject.put("vv", "2.0");
           localJSONObject.put("content", localObject);
-          parambge = localJSONObject.toString();
+          parambjw = localJSONObject.toString();
           AppMethodBeat.o(122216);
-          return parambge;
+          return parambjw;
           l = 0L;
         }
         return null;
       }
-      catch (JSONException parambge)
+      catch (JSONException parambjw)
       {
-        ad.printErrStackTrace("AsyncBizReport", parambge, "HABBYGE-MALI, AsyncBizReport, toJsons: %s", new Object[] { parambge.getMessage() });
+        ac.printErrStackTrace("AsyncBizReport", parambjw, "HABBYGE-MALI, AsyncBizReport, toJsons: %s", new Object[] { parambjw.getMessage() });
         AppMethodBeat.o(122216);
       }
     }
-    catch (JSONException parambge)
+    catch (JSONException parambjw)
     {
-      ad.printErrStackTrace("AsyncBizReport", parambge, "HABBYGE-MALI, AsyncBizReport, getParamsJSONArray: %s", new Object[] { parambge.getMessage() });
+      ac.printErrStackTrace("AsyncBizReport", parambjw, "HABBYGE-MALI, AsyncBizReport, getParamsJSONArray: %s", new Object[] { parambjw.getMessage() });
       AppMethodBeat.o(122216);
       return null;
     }
@@ -101,10 +101,10 @@ final class a
       return null;
     }
     JSONArray localJSONArray = new JSONArray();
-    List localList = com.tencent.mm.plugin.expt.hellhound.a.f.c.a.cdc();
+    List localList = com.tencent.mm.plugin.expt.hellhound.a.f.c.a.ckK();
     if ((localList == null) || (localList.isEmpty()))
     {
-      ad.e("AsyncBizReport", "HABBYGE-MALI, AsyncBizReport, filterBySessionPage, bizIdOfCloudConfig is NULL !!");
+      ac.e("AsyncBizReport", "HABBYGE-MALI, AsyncBizReport, filterBySessionPage, bizIdOfCloudConfig is NULL !!");
       AppMethodBeat.o(122217);
       return null;
     }
@@ -117,8 +117,8 @@ final class a
         String str = localJSONObject.optString("businessId");
         if (!TextUtils.isEmpty(str))
         {
-          e.ccZ();
-          if ((!e.ccV()) || (localList.contains(str)))
+          e.ckH();
+          if ((!e.ckD()) || (localList.contains(str)))
           {
             localJSONArray.put(localJSONObject);
             localList.remove(str);
@@ -142,14 +142,14 @@ final class a
       AppMethodBeat.o(122217);
       return localJSONArray;
       label201:
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.a.cV(localList);
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.a.cW(localList);
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.a.cX(localList);
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.a.cY(localList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.f.a
  * JD-Core Version:    0.7.0.1
  */

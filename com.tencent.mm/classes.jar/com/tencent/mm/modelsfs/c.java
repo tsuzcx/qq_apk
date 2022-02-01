@@ -2,19 +2,19 @@ package com.tencent.mm.modelsfs;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.imgenc.MMIMAGEENCJNI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class c
   extends SFSInputStream
 {
-  private a hrd;
+  private a hRF;
   
   public c(long paramLong1, long paramLong2)
   {
     super(paramLong1);
     AppMethodBeat.i(155985);
-    this.hrd = new a(paramLong2);
+    this.hRF = new a(paramLong2);
     AppMethodBeat.o(155985);
   }
   
@@ -22,8 +22,8 @@ public final class c
   {
     AppMethodBeat.i(155991);
     super.close();
-    if (this.hrd != null) {
-      this.hrd.free();
+    if (this.hRF != null) {
+      this.hRF.free();
     }
     AppMethodBeat.o(155991);
   }
@@ -32,8 +32,8 @@ public final class c
   {
     AppMethodBeat.i(155986);
     super.mark(paramInt);
-    a locala = this.hrd;
-    locala.hrc = locala.hra;
+    a locala = this.hRF;
+    locala.hRE = locala.hRC;
     AppMethodBeat.o(155986);
   }
   
@@ -54,7 +54,7 @@ public final class c
       AppMethodBeat.o(155989);
       return paramInt1;
     }
-    this.hrd.B(paramArrayOfByte, paramInt2);
+    this.hRF.z(paramArrayOfByte, paramInt2);
     AppMethodBeat.o(155989);
     return paramInt1;
   }
@@ -63,19 +63,19 @@ public final class c
   {
     AppMethodBeat.i(155987);
     super.reset();
-    a locala = this.hrd;
-    ad.i("MicroMsg.EncEngine", "reset " + bt.eGN());
+    a locala = this.hRF;
+    ac.i("MicroMsg.EncEngine", "reset " + bs.eWi());
     locala.free();
-    if (locala.hrc == 0L)
+    if (locala.hRE == 0L)
     {
       locala.init();
-      locala.hra = 0L;
+      locala.hRC = 0L;
       AppMethodBeat.o(155987);
       return;
     }
     locala.init();
-    MMIMAGEENCJNI.seek(locala.mNativePtr, locala.hrc, 1);
-    locala.hra = locala.hrc;
+    MMIMAGEENCJNI.seek(locala.mNativePtr, locala.hRE, 1);
+    locala.hRC = locala.hRE;
     AppMethodBeat.o(155987);
   }
   
@@ -83,8 +83,8 @@ public final class c
   {
     AppMethodBeat.i(155990);
     long l = super.skip(paramLong);
-    a locala = this.hrd;
-    locala.hra = paramLong;
+    a locala = this.hRF;
+    locala.hRC = paramLong;
     MMIMAGEENCJNI.seek(locala.mNativePtr, paramLong, 1);
     AppMethodBeat.o(155990);
     return l;
@@ -92,7 +92,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelsfs.c
  * JD-Core Version:    0.7.0.1
  */

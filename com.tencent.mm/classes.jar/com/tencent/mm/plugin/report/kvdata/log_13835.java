@@ -5,7 +5,7 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public class log_13835
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int clientVersion_;
   public String currChatName_;
@@ -37,10 +37,10 @@ public class log_13835
       }
       paramVarArgs.aR(1, this.import_ds_);
       paramVarArgs.aR(2, this.ds_);
-      paramVarArgs.aG(3, this.uin_);
+      paramVarArgs.aO(3, this.uin_);
       paramVarArgs.aR(4, this.device_);
       paramVarArgs.aR(5, this.clientVersion_);
-      paramVarArgs.aG(6, this.time_stamp_);
+      paramVarArgs.aO(6, this.time_stamp_);
       if (this.currChatName_ != null) {
         paramVarArgs.d(7, this.currChatName_);
       }
@@ -51,7 +51,7 @@ public class log_13835
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.bA(1, this.import_ds_) + 0 + f.a.a.b.b.a.bA(2, this.ds_) + f.a.a.b.b.a.q(3, this.uin_) + f.a.a.b.b.a.bA(4, this.device_) + f.a.a.b.b.a.bA(5, this.clientVersion_) + f.a.a.b.b.a.q(6, this.time_stamp_);
+      i = f.a.a.b.b.a.bx(1, this.import_ds_) + 0 + f.a.a.b.b.a.bx(2, this.ds_) + f.a.a.b.b.a.p(3, this.uin_) + f.a.a.b.b.a.bx(4, this.device_) + f.a.a.b.b.a.bx(5, this.clientVersion_) + f.a.a.b.b.a.p(6, this.time_stamp_);
       paramInt = i;
       if (this.currChatName_ != null) {
         paramInt = i + f.a.a.b.b.a.e(7, this.currChatName_);
@@ -65,9 +65,9 @@ public class log_13835
       paramVarArgs = (byte[])paramVarArgs[0];
       this.oplist_.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       if (this.currChatName_ == null)
@@ -90,35 +90,35 @@ public class log_13835
         AppMethodBeat.o(151546);
         return -1;
       case 1: 
-        locallog_13835.import_ds_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        locallog_13835.import_ds_ = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(151546);
         return 0;
       case 2: 
-        locallog_13835.ds_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        locallog_13835.ds_ = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(151546);
         return 0;
       case 3: 
-        locallog_13835.uin_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        locallog_13835.uin_ = ((f.a.a.a.a)localObject1).LVo.xG();
         AppMethodBeat.o(151546);
         return 0;
       case 4: 
-        locallog_13835.device_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        locallog_13835.device_ = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(151546);
         return 0;
       case 5: 
-        locallog_13835.clientVersion_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        locallog_13835.clientVersion_ = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(151546);
         return 0;
       case 6: 
-        locallog_13835.time_stamp_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        locallog_13835.time_stamp_ = ((f.a.a.a.a)localObject1).LVo.xG();
         AppMethodBeat.o(151546);
         return 0;
       case 7: 
-        locallog_13835.currChatName_ = ((f.a.a.a.a)localObject1).KhF.readString();
+        locallog_13835.currChatName_ = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(151546);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
@@ -126,7 +126,7 @@ public class log_13835
         Object localObject2 = (byte[])paramVarArgs.get(paramInt);
         localObject1 = new IMBehavior();
         localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((IMBehavior)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        for (boolean bool = true; bool; bool = ((IMBehavior)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
         locallog_13835.oplist_.add(localObject1);
         paramInt += 1;
       }
@@ -139,7 +139,7 @@ public class log_13835
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.log_13835
  * JD-Core Version:    0.7.0.1
  */

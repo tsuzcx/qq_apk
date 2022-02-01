@@ -11,7 +11,7 @@ import d.l;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageIPC;", "Lcom/tencent/mm/sdk/storage/MStorage;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "()V", "addCollection", "", "username", "", "versionType", "getCount", "getCountLimit", "isCollection", "", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "count", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "refreshOnPullDownOpen", "", "refreshOnPullDownOpenAnimationEnd", "removeCollection", "reorder", "reorderList", "reason", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageIPC;", "Lcom/tencent/mm/sdk/storage/MStorage;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "()V", "addCollection", "", "username", "", "versionType", "getCount", "getCountLimit", "isCollection", "", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "count", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "refreshOnPullDownOpen", "", "refreshOnPullDownOpenAnimationEnd", "removeCollection", "reorder", "reorderList", "reason", "plugin-appbrand-integration_release"})
 public final class g
   extends k
   implements ah
@@ -41,7 +41,7 @@ public final class g
     return parama;
   }
   
-  public final boolean aR(String paramString, int paramInt)
+  public final boolean aV(String paramString, int paramInt)
   {
     AppMethodBeat.i(50268);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -62,24 +62,7 @@ public final class g
     return false;
   }
   
-  public final void aRu() {}
-  
-  public final int aRv()
-  {
-    AppMethodBeat.i(50272);
-    IPCInteger localIPCInteger = (IPCInteger)XIPCInvoker.a("com.tencent.mm", IPCVoid.fZS, ak.class);
-    if (localIPCInteger != null)
-    {
-      i = localIPCInteger.value;
-      AppMethodBeat.o(50272);
-      return i;
-    }
-    int i = v.aSb();
-    AppMethodBeat.o(50272);
-    return i;
-  }
-  
-  public final int aS(String paramString, int paramInt)
+  public final int aW(String paramString, int paramInt)
   {
     AppMethodBeat.i(50266);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -100,7 +83,7 @@ public final class g
     return -1;
   }
   
-  public final boolean aT(String paramString, int paramInt)
+  public final boolean aX(String paramString, int paramInt)
   {
     AppMethodBeat.i(50267);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -121,6 +104,23 @@ public final class g
     return false;
   }
   
+  public final void aYp() {}
+  
+  public final int aYq()
+  {
+    AppMethodBeat.i(50272);
+    IPCInteger localIPCInteger = (IPCInteger)XIPCInvoker.a("com.tencent.mm", IPCVoid.gey, ak.class);
+    if (localIPCInteger != null)
+    {
+      i = localIPCInteger.value;
+      AppMethodBeat.o(50272);
+      return i;
+    }
+    int i = v.aYW();
+    AppMethodBeat.o(50272);
+    return i;
+  }
+  
   public final boolean g(List<LocalUsageInfo> paramList, int paramInt)
   {
     return false;
@@ -129,7 +129,7 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(50271);
-    IPCInteger localIPCInteger = (IPCInteger)XIPCInvoker.a("com.tencent.mm", IPCVoid.fZS, ae.class);
+    IPCInteger localIPCInteger = (IPCInteger)XIPCInvoker.a("com.tencent.mm", IPCVoid.gey, ae.class);
     if (localIPCInteger != null)
     {
       int i = localIPCInteger.value;
@@ -142,7 +142,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.g
  * JD-Core Version:    0.7.0.1
  */

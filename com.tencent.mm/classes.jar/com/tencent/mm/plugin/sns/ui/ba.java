@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ap;
-import com.tencent.mm.plugin.sns.model.ap.b;
+import com.tencent.mm.plugin.sns.model.aq;
+import com.tencent.mm.plugin.sns.model.aq.b;
 import com.tencent.mm.pluginsdk.ui.c.a;
 
 public final class ba
   implements a
 {
-  public String diQ;
-  public String dpC;
+  public String dgl;
+  public String dnn;
   public int scene;
   public String userName;
-  public boolean xCS = false;
-  public boolean xCT = false;
+  public boolean yPG = false;
+  public boolean yPH = false;
   
   public ba(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.dpC = paramString1;
-    this.xCS = paramBoolean1;
-    this.xCT = paramBoolean2;
+    this.dnn = paramString1;
+    this.yPG = paramBoolean1;
+    this.yPH = paramBoolean2;
     this.scene = paramInt;
-    this.diQ = paramString2;
+    this.dgl = paramString2;
   }
   
-  public final boolean dBG()
+  public final boolean dQd()
   {
     int i = 2;
     AppMethodBeat.i(98984);
     if (this.scene == 1) {}
     for (;;)
     {
-      ap.b localb = ap.aoL(this.dpC);
-      if ((localb != null) && (localb.gPQ) && (!localb.aEj) && ((i & localb.evt) != 0))
+      aq.b localb = aq.atX(this.dnn);
+      if ((localb != null) && (localb.hqq) && (!localb.aEZ) && ((i & localb.exP) != 0))
       {
         AppMethodBeat.o(98984);
         return true;

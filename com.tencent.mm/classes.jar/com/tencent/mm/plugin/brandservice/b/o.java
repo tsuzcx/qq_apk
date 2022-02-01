@@ -1,90 +1,67 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aj;
-import com.tencent.mm.protocal.protobuf.cqy;
-import com.tencent.mm.protocal.protobuf.cqz;
-import com.tencent.mm.protocal.protobuf.oh;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.Iterator;
+import com.tencent.mm.protocal.protobuf.bsb;
+import com.tencent.mm.protocal.protobuf.bse;
+import com.tencent.mm.protocal.protobuf.bsf;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class o
   extends n
   implements k
 {
   private g callback;
-  private final com.tencent.mm.al.b rr;
+  public b rr;
   
-  public o(List<oh> paramList)
+  public o(String paramString, LinkedList<bsb> paramLinkedList)
   {
-    AppMethodBeat.i(5593);
+    AppMethodBeat.i(5596);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new cqy();
-    ((b.a)localObject).gUV = new cqz();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/setapplist";
-    ((b.a)localObject).funcId = 386;
+    ((b.a)localObject).hvt = new bse();
+    ((b.a)localObject).hvu = new bsf();
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/setrecvtmpmsgoption";
+    ((b.a)localObject).funcId = 1030;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (cqy)this.rr.gUS.gUX;
-    LinkedList localLinkedList = new LinkedList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      oh localoh = (oh)paramList.next();
-      aj localaj = new aj();
-      localaj.mAQ = localoh.userName;
-      localLinkedList.add(localaj);
-    }
-    ((cqy)localObject).mAK = localLinkedList.size();
-    ((cqy)localObject).mAL = localLinkedList;
-    ad.i("MicroMsg.BrandService.NetSceneSetAppList", "info: upload size %d, toString %s", new Object[] { Integer.valueOf(localLinkedList.size()), localLinkedList.toString() });
-    AppMethodBeat.o(5593);
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (bse)this.rr.hvr.hvw;
+    ((bse)localObject).Fap = paramString;
+    ((bse)localObject).Fhj = paramLinkedList;
+    AppMethodBeat.o(5596);
   }
   
   public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(5595);
+    AppMethodBeat.i(5598);
     this.callback = paramg;
-    ad.i("MicroMsg.BrandService.NetSceneSetAppList", "do scene");
+    ac.i("MicroMsg.brandservice.NetSceneSetRecvTmpMsgOption", "do scene");
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(5595);
+    AppMethodBeat.o(5598);
     return i;
   }
   
   public final int getType()
   {
-    return 386;
+    return 1030;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(5594);
-    ad.i("MicroMsg.BrandService.NetSceneSetAppList", "on scene end code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramq = (cqz)this.rr.gUT.gUX;
-      ad.i("MicroMsg.BrandService.NetSceneSetAppList", "ok, hash code is %d", new Object[] { Integer.valueOf(paramq.Dqu) });
-      com.tencent.mm.plugin.brandservice.b.j(196610, Integer.valueOf(paramq.Dqu));
-      com.tencent.mm.plugin.brandservice.b.j(196611, Boolean.FALSE);
-    }
-    for (;;)
-    {
+    AppMethodBeat.i(5597);
+    ac.d("MicroMsg.brandservice.NetSceneSetRecvTmpMsgOption", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(5594);
-      return;
-      com.tencent.mm.plugin.brandservice.b.j(196611, Boolean.TRUE);
     }
+    AppMethodBeat.o(5597);
   }
 }
 

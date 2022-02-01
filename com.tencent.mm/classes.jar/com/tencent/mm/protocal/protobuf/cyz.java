@@ -1,129 +1,88 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 import java.util.LinkedList;
 
 public final class cyz
-  extends com.tencent.mm.bx.a
+  extends cqk
 {
-  public cza EqX;
-  public cza EqY;
-  public long Id;
-  public int mBH;
+  public String FhN;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(118471);
+    AppMethodBeat.i(117926);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.EqX == null)
+      if (this.BaseResponse != null)
       {
-        paramVarArgs = new b("Not all required fields were included: SyncMsgDetail");
-        AppMethodBeat.o(118471);
-        throw paramVarArgs;
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aG(1, this.Id);
-      paramVarArgs.aR(2, this.mBH);
-      if (this.EqX != null)
-      {
-        paramVarArgs.kX(3, this.EqX.computeSize());
-        this.EqX.writeFields(paramVarArgs);
+      if (this.FhN != null) {
+        paramVarArgs.d(2, this.FhN);
       }
-      if (this.EqY != null)
-      {
-        paramVarArgs.kX(4, this.EqY.computeSize());
-        this.EqY.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(118471);
+      AppMethodBeat.o(117926);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label370;
+      }
+    }
+    label370:
+    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      i = f.a.a.b.b.a.q(1, this.Id) + 0 + f.a.a.b.b.a.bA(2, this.mBH);
-      paramInt = i;
-      if (this.EqX != null) {
-        paramInt = i + f.a.a.a.kW(3, this.EqX.computeSize());
+      int i = paramInt;
+      if (this.FhN != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FhN);
       }
-      i = paramInt;
-      if (this.EqY != null) {
-        i = paramInt + f.a.a.a.kW(4, this.EqY.computeSize());
-      }
-      AppMethodBeat.o(118471);
+      AppMethodBeat.o(117926);
       return i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
         }
-      }
-      if (this.EqX == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: SyncMsgDetail");
-        AppMethodBeat.o(118471);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(118471);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      cyz localcyz = (cyz)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      Object localObject2;
-      boolean bool;
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(118471);
-        return -1;
-      case 1: 
-        localcyz.Id = ((f.a.a.a.a)localObject1).KhF.xT();
-        AppMethodBeat.o(118471);
+        AppMethodBeat.o(117926);
         return 0;
-      case 2: 
-        localcyz.mBH = ((f.a.a.a.a)localObject1).KhF.xS();
-        AppMethodBeat.o(118471);
-        return 0;
-      case 3: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        cyz localcyz = (cyz)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new cza();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((cza)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localcyz.EqX = ((cza)localObject1);
-          paramInt += 1;
+        default: 
+          AppMethodBeat.o(117926);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcyz.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(117926);
+          return 0;
         }
-        AppMethodBeat.o(118471);
+        localcyz.FhN = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(117926);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new cza();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (bool = true; bool; bool = ((cza)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localcyz.EqY = ((cza)localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(118471);
-      return 0;
+      AppMethodBeat.o(117926);
+      return -1;
     }
-    AppMethodBeat.o(118471);
-    return -1;
   }
 }
 

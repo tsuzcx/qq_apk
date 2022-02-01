@@ -9,16 +9,16 @@ public final class h
   extends LinearLayout
 {
   private Context context;
-  private int mRc;
-  private int xkV;
-  private LinearLayout xkW;
+  private int nts;
+  private int yxN;
+  private LinearLayout yxO;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(97792);
-    this.mRc = 0;
-    this.xkV = 6;
+    this.nts = 0;
+    this.yxN = 6;
     this.context = paramContext;
     setOrientation(1);
     AppMethodBeat.o(97792);
@@ -27,26 +27,26 @@ public final class h
   public final void addView(View paramView)
   {
     AppMethodBeat.i(97793);
-    if (this.mRc % this.xkV == 0)
+    if (this.nts % this.yxN == 0)
     {
-      this.xkW = new LinearLayout(this.context);
-      this.xkW.setOrientation(0);
-      this.xkW.addView(paramView);
-      super.addView(this.xkW);
+      this.yxO = new LinearLayout(this.context);
+      this.yxO.setOrientation(0);
+      this.yxO.addView(paramView);
+      super.addView(this.yxO);
     }
     for (;;)
     {
-      this.mRc += 1;
+      this.nts += 1;
       AppMethodBeat.o(97793);
       return;
-      this.xkW.addView(paramView);
+      this.yxO.addView(paramView);
     }
   }
   
   public final void setLineMaxCounte(int paramInt)
   {
     if (paramInt > 0) {
-      this.xkV = paramInt;
+      this.yxN = paramInt;
     }
   }
 }

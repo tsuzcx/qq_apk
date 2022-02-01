@@ -7,10 +7,8 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewStub;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -20,84 +18,81 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.fav.a.ac;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.ak;
 import com.tencent.mm.plugin.fav.a.al;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.r;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.plugin.fav.a.z;
+import com.tencent.mm.plugin.fav.ui.a.a;
 import com.tencent.mm.plugin.fav.ui.widget.c;
 import com.tencent.mm.plugin.fav.ui.widget.c.a;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.y;
 
 public abstract class FavBaseUI
   extends MMActivity
   implements AdapterView.OnItemClickListener
 {
-  protected ap gAC = new ap(Looper.getMainLooper());
+  protected TextView gDf;
+  protected ao gox = new ao(Looper.getMainLooper());
   private final Object lockObj = new Object();
-  protected ap pXi;
-  private boolean qcA = false;
-  private long qcB = 0L;
-  protected ListView qcC;
-  protected TextView qcD;
-  protected View qcE;
-  private View qcF;
-  protected c qcG;
-  protected View qcH;
-  protected o qcI;
-  protected c.a qcJ = null;
-  private com.tencent.mm.al.g qcK = new com.tencent.mm.al.g()
+  protected ao qFN;
+  private boolean qLe = false;
+  protected boolean qLf = false;
+  private boolean qLg = false;
+  private long qLh = 0L;
+  protected ListView qLi;
+  protected View qLj;
+  private View qLk;
+  protected c qLl;
+  protected View qLm;
+  protected o qLn;
+  protected c.a qLo = null;
+  private com.tencent.mm.ak.g qLp = new com.tencent.mm.ak.g()
   {
     public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
     {
       AppMethodBeat.i(106618);
-      ad.i("MicroMsg.FavoriteBaseUI", "on fav sync end");
-      if (((ak)paramAnonymousn).qaY)
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "on fav sync end");
+      if (((ak)paramAnonymousn).qJE)
       {
-        ad.i("MicroMsg.FavoriteBaseUI", "need batch get return");
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "need batch get return");
         AppMethodBeat.o(106618);
         return;
       }
-      ad.i("MicroMsg.FavoriteBaseUI", "dismiss loading dialog");
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "dismiss loading dialog");
       if (FavBaseUI.c(FavBaseUI.this)) {
         FavBaseUI.d(FavBaseUI.this);
       }
-      FavBaseUI.this.kA(false);
-      FavBaseUI.this.ciN();
+      FavBaseUI.this.le(false);
+      FavBaseUI.this.cqu();
       AppMethodBeat.o(106618);
     }
   };
-  private com.tencent.mm.al.g qcL = new com.tencent.mm.al.g()
+  private com.tencent.mm.ak.g qLq = new com.tencent.mm.ak.g()
   {
     public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
     {
       AppMethodBeat.i(106619);
-      ad.i("MicroMsg.FavoriteBaseUI", "on batch get end");
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "on batch get end");
       if (FavBaseUI.c(FavBaseUI.this))
       {
-        ad.i("MicroMsg.FavoriteBaseUI", "init currently, dismiss dialog");
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "init currently, dismiss dialog");
         FavBaseUI.d(FavBaseUI.this);
-        FavBaseUI.this.kA(false);
+        FavBaseUI.this.le(false);
       }
       AppMethodBeat.o(106619);
     }
   };
-  private Runnable qcM = new com.tencent.e.i.h()
+  private Runnable qLr = new com.tencent.e.i.h()
   {
     public final String getKey()
     {
@@ -107,41 +102,41 @@ public abstract class FavBaseUI
     public final void run()
     {
       AppMethodBeat.i(106620);
-      com.tencent.mm.plugin.fav.ui.a.a locala = FavBaseUI.this.ciI();
-      locala.aJq();
-      locala.cjq();
-      FavBaseUI.this.ciN();
+      a locala = FavBaseUI.this.cqp();
+      locala.aQh();
+      locala.cqX();
+      FavBaseUI.this.cqu();
       AppMethodBeat.o(106620);
     }
   };
-  protected Runnable qcN = new Runnable()
+  protected Runnable qLs = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(106621);
-      com.tencent.mm.plugin.fav.ui.a.a locala = FavBaseUI.this.ciI();
+      a locala = FavBaseUI.this.cqp();
       if ((!locala.isEmpty()) && (SystemClock.elapsedRealtime() - FavBaseUI.e(FavBaseUI.this) < 400L))
       {
-        ad.d("MicroMsg.FavoriteBaseUI", "try refresh, time limit, now %d last %d delay %d", new Object[] { Long.valueOf(SystemClock.elapsedRealtime()), Long.valueOf(FavBaseUI.e(FavBaseUI.this)), Integer.valueOf(400) });
-        FavBaseUI.this.gAC.postDelayed(this, 200L);
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.FavoriteBaseUI", "try refresh, time limit, now %d last %d delay %d", new Object[] { Long.valueOf(SystemClock.elapsedRealtime()), Long.valueOf(FavBaseUI.e(FavBaseUI.this)), Integer.valueOf(400) });
+        FavBaseUI.this.gox.postDelayed(this, 200L);
         AppMethodBeat.o(106621);
         return;
       }
       FavBaseUI.f(FavBaseUI.this);
       FavBaseUI.a(FavBaseUI.this, SystemClock.elapsedRealtime());
-      ad.v("MicroMsg.FavoriteBaseUI", "do refresh job");
+      com.tencent.mm.sdk.platformtools.ac.v("MicroMsg.FavoriteBaseUI", "do refresh job");
       locala.notifyDataSetChanged();
       FavBaseUI.this.a(locala);
-      if (FavBaseUI.this.qcz)
+      if (FavBaseUI.this.qLf)
       {
-        ad.v("MicroMsg.FavoriteBaseUI", "do scroll to first");
-        FavBaseUI.this.qcC.setSelection(0);
-        FavBaseUI.this.qcz = false;
+        com.tencent.mm.sdk.platformtools.ac.v("MicroMsg.FavoriteBaseUI", "do scroll to first");
+        FavBaseUI.this.qLi.setSelection(0);
+        FavBaseUI.this.qLf = false;
       }
       AppMethodBeat.o(106621);
     }
   };
-  private Runnable qcO = new com.tencent.e.i.h()
+  private Runnable qLt = new com.tencent.e.i.h()
   {
     public final String getKey()
     {
@@ -153,97 +148,76 @@ public abstract class FavBaseUI
       AppMethodBeat.i(106612);
       synchronized (FavBaseUI.g(FavBaseUI.this))
       {
-        FavBaseUI.this.ciJ();
-        FavBaseUI.this.ciI().cjq();
-        FavBaseUI.this.ciN();
+        FavBaseUI.this.cqq();
+        FavBaseUI.this.cqp().cqX();
+        FavBaseUI.this.cqu();
         AppMethodBeat.o(106612);
         return;
       }
     }
   };
-  private k.a qcP = new k.a()
-  {
-    long qcR = 0L;
-    
-    public final void a(String paramAnonymousString, m paramAnonymousm)
-    {
-      AppMethodBeat.i(106613);
-      ad.i("MicroMsg.FavoriteBaseUI", "[onNotifyChange] event=%s", new Object[] { paramAnonymousString });
-      FavBaseUI.this.pXi.removeCallbacks(FavBaseUI.h(FavBaseUI.this));
-      if (bt.aS(this.qcR) > 200L)
-      {
-        this.qcR = bt.GC();
-        FavBaseUI.this.pXi.post(FavBaseUI.h(FavBaseUI.this));
-        AppMethodBeat.o(106613);
-        return;
-      }
-      FavBaseUI.this.pXi.postDelayed(FavBaseUI.h(FavBaseUI.this), 200L);
-      AppMethodBeat.o(106613);
-    }
-  };
-  private boolean qcy = false;
-  protected boolean qcz = false;
+  private k.a qLu = new FavBaseUI.3(this);
   
-  private void kB(boolean paramBoolean)
+  private void lf(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.qcD == null) {
-        this.qcD = ((TextView)((ViewStub)findViewById(2131299479)).inflate().findViewById(2131299464));
+      if (this.gDf == null) {
+        this.gDf = ((TextView)((ViewStub)findViewById(2131299479)).inflate().findViewById(2131299464));
       }
-      this.qcD.setVisibility(0);
+      this.gDf.setVisibility(0);
     }
-    while (this.qcD == null) {
+    while (this.gDf == null) {
       return;
     }
-    this.qcD.setVisibility(8);
+    this.gDf.setVisibility(8);
   }
   
-  protected final void a(com.tencent.mm.plugin.fav.ui.a.a parama)
+  protected final void a(a parama)
   {
     if (parama == null) {
-      ad.w("MicroMsg.FavoriteBaseUI", "handle empty view fail, adapter is null");
+      com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.FavoriteBaseUI", "handle empty view fail, adapter is null");
     }
     do
     {
       return;
       if (parama.isEmpty()) {
-        if (ciK())
+        if (cqr())
         {
-          kA(true);
-          kB(false);
+          le(true);
+          lf(false);
         }
       }
-      while ((parama.isEmpty()) || (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().z(parama.cjo(), parama.getType())))
+      while ((parama.isEmpty()) || (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().A(parama.cqV(), parama.getType())))
       {
-        this.qcC.removeFooterView(this.qcE);
+        this.qLi.removeFooterView(this.qLj);
         return;
-        kA(false);
-        kB(true);
-        ciL();
+        le(false);
+        lf(true);
+        cqs();
         continue;
-        kA(false);
-        kB(false);
+        le(false);
+        lf(false);
       }
-    } while (this.qcC.getFooterViewsCount() != 0);
-    this.qcC.addFooterView(this.qcE);
+    } while (this.qLi.getFooterViewsCount() != 0);
+    this.qLi.addFooterView(this.qLj);
   }
   
-  public abstract com.tencent.mm.plugin.fav.ui.a.a ciI();
+  public abstract a cqp();
   
-  protected abstract void ciJ();
+  protected abstract void cqq();
   
-  protected abstract boolean ciK();
+  protected abstract boolean cqr();
   
-  protected abstract void ciL();
+  protected abstract void cqs();
   
-  protected abstract View.OnClickListener ciM();
+  protected abstract View.OnClickListener cqt();
   
-  protected void ciN()
+  protected void cqu()
   {
-    ad.i("MicroMsg.FavoriteBaseUI", "on storage change, try refresh job");
-    this.gAC.removeCallbacks(this.qcN);
-    this.gAC.post(this.qcN);
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "on storage change, try refresh job");
+    this.gox.removeCallbacks(this.qLs);
+    this.gox.post(this.qLs);
   }
   
   public int getLayoutId()
@@ -253,23 +227,23 @@ public abstract class FavBaseUI
   
   protected void initHeaderView()
   {
-    this.qcG = new c(getContext());
-    this.qcG.setCleanFavSpace(this.qcJ);
-    this.qcG.kK(false);
-    this.qcG.qlO.setVisibility(8);
-    this.qcG.qlP.setVisibility(8);
-    ad.d("MicroMsg.FavoriteBaseUI", "padding %s, %s", new Object[] { Integer.valueOf(this.qcG.getPaddingTop()), Integer.valueOf(this.qcG.getPaddingBottom()) });
-    this.qcC.addHeaderView(this.qcG);
-    this.qcH = View.inflate(getContext(), 2131493983, null);
-    TextView localTextView1 = (TextView)this.qcH.findViewById(2131299838);
-    final TextView localTextView2 = (TextView)this.qcH.findViewById(2131299833);
-    TextView localTextView3 = (TextView)this.qcH.findViewById(2131299839);
-    TextView localTextView4 = (TextView)this.qcH.findViewById(2131299835);
-    TextView localTextView5 = (TextView)this.qcH.findViewById(2131299834);
-    TextView localTextView6 = (TextView)this.qcH.findViewById(2131299832);
-    final TextView localTextView7 = (TextView)this.qcH.findViewById(2131299837);
-    TextView localTextView8 = (TextView)this.qcH.findViewById(2131299836);
-    View.OnClickListener localOnClickListener = ciM();
+    this.qLl = new c(getContext());
+    this.qLl.setCleanFavSpace(this.qLo);
+    this.qLl.lo(false);
+    this.qLl.qUq.setVisibility(8);
+    this.qLl.qUr.setVisibility(8);
+    com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.FavoriteBaseUI", "padding %s, %s", new Object[] { Integer.valueOf(this.qLl.getPaddingTop()), Integer.valueOf(this.qLl.getPaddingBottom()) });
+    this.qLi.addHeaderView(this.qLl);
+    this.qLm = View.inflate(getContext(), 2131493983, null);
+    TextView localTextView1 = (TextView)this.qLm.findViewById(2131299838);
+    final TextView localTextView2 = (TextView)this.qLm.findViewById(2131299833);
+    TextView localTextView3 = (TextView)this.qLm.findViewById(2131299839);
+    TextView localTextView4 = (TextView)this.qLm.findViewById(2131299835);
+    TextView localTextView5 = (TextView)this.qLm.findViewById(2131299834);
+    TextView localTextView6 = (TextView)this.qLm.findViewById(2131299832);
+    final TextView localTextView7 = (TextView)this.qLm.findViewById(2131299837);
+    TextView localTextView8 = (TextView)this.qLm.findViewById(2131299836);
+    View.OnClickListener localOnClickListener = cqt();
     localTextView1.setOnClickListener(localOnClickListener);
     localTextView1.setTag(Integer.valueOf(5));
     localTextView2.setOnClickListener(localOnClickListener);
@@ -286,13 +260,13 @@ public abstract class FavBaseUI
     localTextView7.setTag(Integer.valueOf(17));
     localTextView8.setOnClickListener(localOnClickListener);
     localTextView8.setTag(Integer.valueOf(18));
-    this.qcH.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    this.qLm.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(106617);
-        FavBaseUI.this.qcH.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        int i = FavBaseUI.this.qcH.findViewById(2131299854).getWidth() / 4;
+        FavBaseUI.this.qLm.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        int i = FavBaseUI.this.qLm.findViewById(2131299854).getWidth() / 4;
         if ((i > 0) && (localTextView2.getWidth() < i))
         {
           localTextView2.setWidth(i);
@@ -301,31 +275,18 @@ public abstract class FavBaseUI
         AppMethodBeat.o(106617);
       }
     });
-    this.qcC.addHeaderView(this.qcH);
+    this.qLi.addHeaderView(this.qLm);
   }
   
   public void initView()
   {
     long l = System.currentTimeMillis();
-    this.qcC = ((ListView)findViewById(2131299867));
-    this.qcC.setDrawingCacheEnabled(false);
-    setToTop(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(106614);
-        paramAnonymousView = FavBaseUI.this.qcC;
-        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousView);
-        Object localObject = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.adn(), "com/tencent/mm/plugin/fav/ui/FavBaseUI$2", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-        BackwardSupportUtil.c.b((ListView)paramAnonymousView.lS(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/fav/ui/FavBaseUI$2", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-        AppMethodBeat.o(106614);
-      }
-    });
+    this.qLi = ((ListView)findViewById(2131299867));
+    this.qLi.setDrawingCacheEnabled(false);
+    setToTop(new FavBaseUI.4(this));
     initHeaderView();
-    this.qcE = y.js(this).inflate(2131493968, null);
-    this.qcC.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.qLj = com.tencent.mm.ui.z.jD(this).inflate(2131493968, null);
+    this.qLi.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
@@ -334,85 +295,76 @@ public abstract class FavBaseUI
         AppMethodBeat.i(106615);
         if (paramAnonymousInt == 0)
         {
-          if (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().z(FavBaseUI.this.ciI().cjo(), FavBaseUI.this.ciI().getType()))
+          if (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().A(FavBaseUI.this.cqp().cqV(), FavBaseUI.this.cqp().getType()))
           {
-            ad.v("MicroMsg.FavoriteBaseUI", "has shown all, do not load data");
+            com.tencent.mm.sdk.platformtools.ac.v("MicroMsg.FavoriteBaseUI", "has shown all, do not load data");
             AppMethodBeat.o(106615);
             return;
           }
           if (FavBaseUI.a(FavBaseUI.this))
           {
-            ad.i("MicroMsg.FavoriteBaseUI", "force bottom load data");
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "force bottom load data");
             FavBaseUI.b(FavBaseUI.this);
           }
         }
         AppMethodBeat.o(106615);
       }
     });
-    this.qcC.setOnItemClickListener(this);
-    this.qcC.setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(106616);
-        FavBaseUI.this.hideVKB();
-        AppMethodBeat.o(106616);
-        return false;
-      }
-    });
-    this.qcC.setAdapter(ciI());
-    a(ciI());
-    ad.d("MicroMsg.FavoriteBaseUI", "init view use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    this.qLi.setOnItemClickListener(this);
+    this.qLi.setOnTouchListener(new FavBaseUI.6(this));
+    this.qLi.setAdapter(cqp());
+    a(cqp());
+    com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.FavoriteBaseUI", "init view use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
   }
   
-  protected final void kA(boolean paramBoolean)
+  protected final void le(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.qcF == null)
+      if (this.qLk == null)
       {
         localViewStub = (ViewStub)findViewById(2131299466);
         if (localViewStub != null) {
-          this.qcF = localViewStub.inflate();
+          this.qLk = localViewStub.inflate();
         }
       }
-      this.qcF.setVisibility(0);
+      this.qLk.setVisibility(0);
     }
-    while (this.qcF == null)
+    while (this.qLk == null)
     {
       ViewStub localViewStub;
       return;
     }
-    this.qcF.setVisibility(8);
+    this.qLk.setVisibility(8);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     long l = System.currentTimeMillis();
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.FavoriteBaseUI", "onCreate MMCore.accHasReady[%b]", new Object[] { Boolean.valueOf(com.tencent.mm.kernel.g.afw()) });
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "onCreate MMCore.accHasReady[%b]", new Object[] { Boolean.valueOf(com.tencent.mm.kernel.g.agM()) });
     paramBundle = new al();
-    com.tencent.mm.kernel.g.aeS().a(paramBundle, 0);
-    ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().add(this.qcP);
-    com.tencent.mm.kernel.g.aeS().a(400, this.qcK);
-    com.tencent.mm.kernel.g.aeS().a(402, this.qcL);
-    this.pXi = new ap(getClass().getName() + "_handlerThread_" + System.currentTimeMillis());
-    this.qcI = new o(getContext(), 64);
+    com.tencent.mm.kernel.g.agi().a(paramBundle, 0);
+    ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().add(this.qLu);
+    com.tencent.mm.kernel.g.agi().a(400, this.qLp);
+    com.tencent.mm.kernel.g.agi().a(402, this.qLq);
+    this.qFN = new ao(getClass().getName() + "_handlerThread_" + System.currentTimeMillis());
+    this.qLn = new o(getContext(), 64);
     initView();
     setActionbarColor(getContext().getResources().getColor(2131100705));
-    if (bt.l((Integer)com.tencent.mm.kernel.g.afB().afk().get(8217, null)) == 0)
+    if (bs.m((Integer)com.tencent.mm.kernel.g.agR().agA().get(8217, null)) == 0)
     {
-      ad.i("MicroMsg.FavoriteBaseUI", "do init data for first time");
-      this.qcA = true;
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "do init data for first time");
+      this.qLg = true;
       paramBundle = new ak();
-      com.tencent.mm.kernel.g.aeS().a(paramBundle, 0);
-      if (this.qcA)
+      com.tencent.mm.kernel.g.agi().a(paramBundle, 0);
+      if (this.qLg)
       {
-        ad.i("MicroMsg.FavoriteBaseUI", "show loading dialog");
-        if ((ciI() == null) || (ciI().isEmpty())) {
-          kA(true);
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "show loading dialog");
+        if ((cqp() == null) || (cqp().isEmpty())) {
+          le(true);
         }
-        kB(false);
+        lf(false);
       }
     }
     for (;;)
@@ -421,28 +373,28 @@ public abstract class FavBaseUI
       ((af)com.tencent.mm.kernel.g.ad(af.class)).getCheckCdnService().run();
       ((af)com.tencent.mm.kernel.g.ad(af.class)).getSendService().run();
       ((af)com.tencent.mm.kernel.g.ad(af.class)).getModService().run();
-      com.tencent.mm.kernel.g.afE().ax(new Runnable()
+      com.tencent.mm.kernel.g.agU().az(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(106611);
-          b.chq();
+          b.coX();
           AppMethodBeat.o(106611);
         }
       });
-      ad.d("MicroMsg.FavoriteBaseUI", "on create use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.FavoriteBaseUI", "on create use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       return;
       b.startSync();
-      if (ciI().isEmpty())
+      if (cqp().isEmpty())
       {
-        kA(true);
-        kB(false);
-        this.qcE.setVisibility(8);
+        le(true);
+        lf(false);
+        this.qLj.setVisibility(8);
       }
       else
       {
-        kA(false);
-        kB(false);
+        le(false);
+        lf(false);
       }
     }
   }
@@ -450,30 +402,30 @@ public abstract class FavBaseUI
   public void onDestroy()
   {
     super.onDestroy();
-    ad.i("MicroMsg.FavoriteBaseUI", "[onDestroy]");
-    if (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().chY() == null)
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FavoriteBaseUI", "[onDestroy]");
+    if (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cpF() == null)
     {
-      ad.e("MicroMsg.FavoriteBaseUI", "[onDestroy] return getBaseDB is null");
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.FavoriteBaseUI", "[onDestroy] return getBaseDB is null");
       return;
     }
-    this.qcI.destory();
-    this.qcI = null;
-    ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().remove(this.qcP);
-    com.tencent.mm.kernel.g.aeS().b(400, this.qcK);
-    com.tencent.mm.kernel.g.aeS().b(402, this.qcL);
-    this.pXi.quit();
+    this.qLn.destory();
+    this.qLn = null;
+    ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().remove(this.qLu);
+    com.tencent.mm.kernel.g.agi().b(400, this.qLp);
+    com.tencent.mm.kernel.g.agi().b(402, this.qLq);
+    this.qFN.quit();
   }
   
   public void onPause()
   {
     super.onPause();
-    ciI();
+    cqp();
   }
   
   public void onResume()
   {
     super.onResume();
-    com.tencent.mm.pluginsdk.wallet.h.Vs(5);
+    com.tencent.mm.pluginsdk.wallet.h.XB(5);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -484,7 +436,7 @@ public abstract class FavBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavBaseUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class g$8
   implements Runnable
@@ -12,14 +12,14 @@ final class g$8
   public final void run()
   {
     AppMethodBeat.i(23326);
-    ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "releaseWCLanDeviceLib...");
+    ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "releaseWCLanDeviceLib...");
     Java2CExDevice.releaseWCLanDeviceLib();
     AppMethodBeat.o(23326);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.g.8
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ public final class bk
   public static void clear(String paramString)
   {
     AppMethodBeat.i(90662);
-    String str2 = g.afB().cachePath;
+    String str2 = g.agR().cachePath;
     String str1 = str2;
     if (!str2.endsWith("/")) {
       str1 = str2 + "/";
     }
     paramString = new com.tencent.mm.vfs.e(str1 + "appbrand/loadingurl/" + paramString);
     if ((paramString.exists()) && (paramString.isDirectory())) {
-      i.cO(q.B(paramString.mUri), true);
+      i.cU(q.B(paramString.mUri), true);
     }
     str1 = Environment.getExternalStorageDirectory().getAbsolutePath();
     paramString = str1;
@@ -28,7 +28,7 @@ public final class bk
     }
     paramString = new com.tencent.mm.vfs.e(paramString + "tencent/MicroMsg/appbrand/loadingurl");
     if ((paramString.exists()) && (paramString.isDirectory())) {
-      i.cO(q.B(paramString.mUri), true);
+      i.cU(q.B(paramString.mUri), true);
     }
     AppMethodBeat.o(90662);
   }

@@ -10,7 +10,7 @@ public abstract class h
   {
     k.h(paramb, "member");
     k.h(paramCollection, "overridden");
-    paramb.s(paramCollection);
+    paramb.t(paramCollection);
   }
   
   public abstract void b(b paramb1, b paramb2);
@@ -21,7 +21,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.h
  * JD-Core Version:    0.7.0.1
  */

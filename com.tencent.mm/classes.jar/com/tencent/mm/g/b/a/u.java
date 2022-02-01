@@ -2,125 +2,88 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.Arrays;
 
 public final class u
   extends a
 {
-  private String dJA;
-  private String dJB;
-  public long dJw;
-  public int dJx;
-  public int dJy;
-  private String dJz;
+  private int dHr;
+  public int dHs;
+  private String dHt;
+  public int dHu;
+  private String dHv;
   
-  public u() {}
-  
-  public u(String paramString)
+  public final String PR()
   {
-    AppMethodBeat.i(108282);
-    if (paramString != null)
-    {
-      paramString = paramString.split(",");
-      if (paramString != null)
-      {
-        if (paramString.length >= 6) {
-          break label120;
-        }
-        String[] arrayOfString = new String[6];
-        Arrays.fill(arrayOfString, 0, 6, "");
-        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
-        paramString = arrayOfString;
-      }
-    }
-    label120:
-    for (;;)
-    {
-      this.dJw = bt.getLong(paramString[0], 0L);
-      this.dJx = bt.getInt(paramString[1], 0);
-      this.dJy = bt.getInt(paramString[2], 0);
-      gb(paramString[3]);
-      gc(paramString[4]);
-      gd(paramString[5]);
-      AppMethodBeat.o(108282);
-      return;
-    }
-  }
-  
-  public final String PV()
-  {
-    AppMethodBeat.i(108286);
+    AppMethodBeat.i(183914);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dJw);
+    ((StringBuffer)localObject).append(this.dHr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dJx);
+    ((StringBuffer)localObject).append(this.dHs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dJy);
+    ((StringBuffer)localObject).append(this.dHt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dJz);
+    ((StringBuffer)localObject).append(this.dHu);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dJA);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dJB);
+    ((StringBuffer)localObject).append(this.dHv);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(108286);
+    arz((String)localObject);
+    AppMethodBeat.o(183914);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(108287);
+    AppMethodBeat.i(183915);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("EnterTime:").append(this.dJw);
+    ((StringBuffer)localObject).append("Action:").append(this.dHr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scene:").append(this.dJx);
+    ((StringBuffer)localObject).append("IsRed:").append(this.dHs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("action:").append(this.dJy);
+    ((StringBuffer)localObject).append("EnterPid:").append(this.dHt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("pid:").append(this.dJz);
+    ((StringBuffer)localObject).append("Index:").append(this.dHu);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("info:").append(this.dJA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("index:").append(this.dJB);
+    ((StringBuffer)localObject).append("Pid:").append(this.dHv);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(108287);
+    AppMethodBeat.o(183915);
     return localObject;
   }
   
-  public final u gb(String paramString)
+  public final u fO(String paramString)
   {
-    AppMethodBeat.i(108283);
-    this.dJz = t("pid", paramString, true);
-    AppMethodBeat.o(108283);
+    AppMethodBeat.i(183912);
+    this.dHt = t("EnterPid", paramString, true);
+    AppMethodBeat.o(183912);
     return this;
   }
   
-  public final u gc(String paramString)
+  public final u fP(String paramString)
   {
-    AppMethodBeat.i(108284);
-    this.dJA = t("info", paramString, true);
-    AppMethodBeat.o(108284);
-    return this;
-  }
-  
-  public final u gd(String paramString)
-  {
-    AppMethodBeat.i(108285);
-    this.dJB = t("index", paramString, true);
-    AppMethodBeat.o(108285);
+    AppMethodBeat.i(183913);
+    this.dHv = t("Pid", paramString, true);
+    AppMethodBeat.o(183913);
     return this;
   }
   
   public final int getId()
   {
-    return 18662;
+    return 19435;
+  }
+  
+  public final int getIndex()
+  {
+    return this.dHu;
+  }
+  
+  public final u hY(int paramInt)
+  {
+    this.dHr = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.u
  * JD-Core Version:    0.7.0.1
  */

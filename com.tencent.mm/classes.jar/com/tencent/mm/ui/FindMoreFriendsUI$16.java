@@ -14,7 +14,7 @@ final class FindMoreFriendsUI$16
   public final void run()
   {
     AppMethodBeat.i(33049);
-    ((n)g.ab(n.class)).a(this.FJN.getContext(), this.FJR.username, "", 0, this.FJR.version, this.FJR.path, this.lVo);
+    ((n)g.ab(n.class)).a(this.HiV.getContext(), this.HiZ.username, "", 0, this.HiZ.version, this.HiZ.path, this.mxq);
     AppMethodBeat.o(33049);
   }
 }

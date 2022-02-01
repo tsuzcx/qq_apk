@@ -12,9 +12,9 @@ public abstract interface a
   
   public abstract boolean isPlaying();
   
-  public abstract void pause();
+  public abstract void p(double paramDouble);
   
-  public abstract void q(double paramDouble);
+  public abstract void pause();
   
   public abstract void setMute(boolean paramBoolean);
   
@@ -36,38 +36,38 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract void dY(int paramInt1, int paramInt2);
+    public abstract void dZ(int paramInt1, int paramInt2);
     
     public abstract void onCompletion();
     
     public abstract void onError(int paramInt1, int paramInt2);
     
-    public abstract void rq();
+    public abstract void rB();
   }
   
   public static abstract interface b
   {
-    public abstract void dZ(int paramInt1, int paramInt2);
+    public abstract void ea(int paramInt1, int paramInt2);
   }
   
   public static abstract interface c
   {
-    public abstract void ey(boolean paramBoolean);
+    public abstract void eS(boolean paramBoolean);
   }
   
   public static abstract interface d
   {
-    public abstract void aCw();
+    public abstract void aJn();
   }
   
   public static abstract interface e
   {
-    public abstract void beo();
+    public abstract void bli();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a
  * JD-Core Version:    0.7.0.1
  */

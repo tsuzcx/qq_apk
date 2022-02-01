@@ -10,9 +10,9 @@ import java.util.Set;
 public final class s
   implements b
 {
-  private final Set<Class<?>> bCQ;
-  private final Set<Class<?>> bCR;
-  private final b bCS;
+  private final b bAA;
+  private final Set<Class<?>> bAy;
+  private final Set<Class<?>> bAz;
   
   public s(Iterable<f> paramIterable, b paramb)
   {
@@ -23,28 +23,28 @@ public final class s
     while (paramIterable.hasNext())
     {
       f localf = (f)paramIterable.next();
-      if (localf.wI()) {
-        localHashSet1.add(localf.bCA);
+      if (localf.wv()) {
+        localHashSet1.add(localf.bAi);
       } else {
-        localHashSet2.add(localf.bCA);
+        localHashSet2.add(localf.bAi);
       }
     }
-    this.bCQ = Collections.unmodifiableSet(localHashSet1);
-    this.bCR = Collections.unmodifiableSet(localHashSet2);
-    this.bCS = paramb;
+    this.bAy = Collections.unmodifiableSet(localHashSet1);
+    this.bAz = Collections.unmodifiableSet(localHashSet2);
+    this.bAA = paramb;
     AppMethodBeat.o(4099);
   }
   
   public final <T> T w(Class<T> paramClass)
   {
     AppMethodBeat.i(4100);
-    if (!this.bCQ.contains(paramClass))
+    if (!this.bAy.contains(paramClass))
     {
       paramClass = new IllegalArgumentException(String.format("Requesting %s is not allowed.", new Object[] { paramClass }));
       AppMethodBeat.o(4100);
       throw paramClass;
     }
-    paramClass = this.bCS.w(paramClass);
+    paramClass = this.bAA.w(paramClass);
     AppMethodBeat.o(4100);
     return paramClass;
   }
@@ -52,20 +52,20 @@ public final class s
   public final <T> a<T> y(Class<T> paramClass)
   {
     AppMethodBeat.i(4101);
-    if (!this.bCR.contains(paramClass))
+    if (!this.bAz.contains(paramClass))
     {
       paramClass = new IllegalArgumentException(String.format("Requesting Provider<%s> is not allowed.", new Object[] { paramClass }));
       AppMethodBeat.o(4101);
       throw paramClass;
     }
-    paramClass = this.bCS.y(paramClass);
+    paramClass = this.bAA.y(paramClass);
     AppMethodBeat.o(4101);
     return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.components.s
  * JD-Core Version:    0.7.0.1
  */

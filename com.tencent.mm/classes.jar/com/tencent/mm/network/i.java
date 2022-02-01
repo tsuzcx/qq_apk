@@ -5,11 +5,11 @@ import android.os.IInterface;
 public abstract interface i
   extends IInterface
 {
-  public abstract int aEJ();
+  public abstract int aLA();
   
-  public abstract void aEK();
+  public abstract void aLB();
   
-  public abstract long aEL();
+  public abstract long aLC();
   
   public abstract boolean c(n paramn);
   

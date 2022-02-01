@@ -10,7 +10,7 @@ public final class l
   private static String a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(157533);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(157533);
       return null;
@@ -22,32 +22,32 @@ public final class l
     }
     String str = "";
     if (paramInt == 1) {
-      str = aFk(paramString3);
+      str = aKB(paramString3);
     }
-    while (bt.isNullOrNil(str))
+    while (bs.isNullOrNil(str))
     {
       AppMethodBeat.o(157533);
       return null;
       if (paramInt == 2) {
-        if (bt.isNullOrNil(paramString3)) {
+        if (bs.isNullOrNil(paramString3)) {
           str = null;
         } else {
-          str = aFk(g.getMessageDigest(paramString3.getBytes()));
+          str = aKB(g.getMessageDigest(paramString3.getBytes()));
         }
       }
     }
     paramString1 = paramString1 + str;
-    if ((paramBoolean) && (!aAk(paramString1)))
+    if ((paramBoolean) && (!aFC(paramString1)))
     {
       AppMethodBeat.o(157533);
       return null;
     }
-    paramString1 = paramString1 + bt.nullAsNil(paramString2) + paramString3 + bt.nullAsNil(paramString4);
+    paramString1 = paramString1 + bs.nullAsNil(paramString2) + paramString3 + bs.nullAsNil(paramString4);
     AppMethodBeat.o(157533);
     return paramString1;
   }
   
-  public static boolean aAk(String paramString)
+  public static boolean aFC(String paramString)
   {
     AppMethodBeat.i(157532);
     try
@@ -68,7 +68,7 @@ public final class l
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.FilePathGenerator", paramString, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.FilePathGenerator", paramString, "", new Object[0]);
         }
       }
       return false;
@@ -79,10 +79,10 @@ public final class l
     }
   }
   
-  private static String aFk(String paramString)
+  private static String aKB(String paramString)
   {
     AppMethodBeat.i(157531);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(157531);
       return null;
@@ -102,7 +102,7 @@ public final class l
     AppMethodBeat.i(157535);
     paramString1 = paramString1 + paramString3 + paramString4 + paramString5;
     paramString2 = a(paramString2, paramString3, paramString4, paramString5, 1, paramBoolean);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(157535);
       return null;

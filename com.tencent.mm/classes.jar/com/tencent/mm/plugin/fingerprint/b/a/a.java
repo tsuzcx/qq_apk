@@ -3,33 +3,33 @@ package com.tencent.mm.plugin.fingerprint.b.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fingerprint.b.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public abstract class a
   implements i
 {
-  public final boolean cum()
+  public final boolean cHy()
   {
-    return d.cug();
+    return d.cHs();
   }
   
-  public final boolean cun()
+  public final boolean cHz()
   {
-    return ((Boolean)g.afB().afk().get(ae.a.FtI, Boolean.FALSE)).booleanValue();
+    return ((Boolean)g.agR().agA().get(ah.a.GRC, Boolean.FALSE)).booleanValue();
   }
   
-  public final void lv(boolean paramBoolean)
+  public final void mn(boolean paramBoolean)
   {
-    ad.i("MicroMsg.AbstractBiometricPayManager", "hy: set isOpenFp: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    d.lr(paramBoolean);
+    ac.i("MicroMsg.AbstractBiometricPayManager", "hy: set isOpenFp: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    d.mj(paramBoolean);
   }
   
-  public final void lw(boolean paramBoolean)
+  public final void mo(boolean paramBoolean)
   {
-    ad.i("MicroMsg.AbstractBiometricPayManager", "set is open faceid: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    g.afB().afk().set(ae.a.FtI, Boolean.valueOf(paramBoolean));
+    ac.i("MicroMsg.AbstractBiometricPayManager", "set is open faceid: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    g.agR().agA().set(ah.a.GRC, Boolean.valueOf(paramBoolean));
   }
 }
 

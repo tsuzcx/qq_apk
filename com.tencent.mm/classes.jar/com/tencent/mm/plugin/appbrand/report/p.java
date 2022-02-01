@@ -1,75 +1,48 @@
 package com.tencent.mm.plugin.appbrand.report;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.jsapi.u.f;
+import com.tencent.mm.plugin.appbrand.jsapi.u.f.c;
+import com.tencent.mm.sdk.platformtools.ai;
+import d.g.b.k;
+import d.l;
 
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/report/ReportUtilKt;", "", "()V", "getNetworkTypeForReport", "", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
 public final class p
 {
-  private static String Mw(String paramString)
+  public static final p lRW;
+  
+  static
   {
-    AppMethodBeat.i(48072);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(48072);
-      return "";
-    }
-    try
-    {
-      String str = bt.nullAsNil(com.tencent.mm.compatible.util.p.encode(paramString));
-      AppMethodBeat.o(48072);
-      return str;
-    }
-    catch (Exception localException)
-    {
-      ad.e("MicroMsg.AppBrand.ReportUtil", "safeEncode, given %s, e %s", new Object[] { paramString, localException });
-      AppMethodBeat.o(48072);
-    }
-    return "";
+    AppMethodBeat.i(51027);
+    lRW = new p();
+    AppMethodBeat.o(51027);
   }
   
-  public static Object[] k(Object... paramVarArgs)
+  public static final String dL(Context paramContext)
   {
-    AppMethodBeat.i(48073);
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
-    {
-      AppMethodBeat.o(48073);
-      return new Object[0];
+    AppMethodBeat.i(51026);
+    Context localContext = paramContext;
+    if (paramContext == null) {
+      localContext = ai.getContext();
     }
-    Object[] arrayOfObject = new Object[paramVarArgs.length];
-    int k = paramVarArgs.length;
-    int j = 0;
-    int i = 0;
-    if (j < k)
+    paramContext = f.dv(localContext);
+    switch (q.cfA[paramContext.ordinal()])
     {
-      Object localObject2 = paramVarArgs[j];
-      Object localObject1;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      for (;;)
-      {
-        arrayOfObject[i] = String.valueOf(localObject1);
-        j += 1;
-        i += 1;
-        break;
-        localObject1 = localObject2;
-        if ((localObject2 instanceof String))
-        {
-          localObject1 = localObject2;
-          if (((String)localObject2).contains(",")) {
-            localObject1 = Mw((String)localObject2);
-          }
-        }
-      }
+    default: 
+      paramContext = paramContext.value;
+      k.g(paramContext, "type.value");
+      AppMethodBeat.o(51026);
+      return paramContext;
     }
-    AppMethodBeat.o(48073);
-    return arrayOfObject;
+    AppMethodBeat.o(51026);
+    return "offline";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.p
  * JD-Core Version:    0.7.0.1
  */

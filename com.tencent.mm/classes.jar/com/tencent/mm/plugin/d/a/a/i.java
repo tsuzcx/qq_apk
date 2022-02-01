@@ -13,7 +13,7 @@ public final class i
     return localBigDecimal;
   }
   
-  public static double u(int[] paramArrayOfInt)
+  public static double v(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(22470);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
@@ -37,7 +37,7 @@ public final class i
     return d1;
   }
   
-  public static double v(int[] paramArrayOfInt)
+  public static double w(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(22471);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
@@ -46,7 +46,7 @@ public final class i
       AppMethodBeat.o(22471);
       throw paramArrayOfInt;
     }
-    double d = u(paramArrayOfInt);
+    double d = v(paramArrayOfInt);
     BigDecimal localBigDecimal = new BigDecimal(0.0D);
     int j = paramArrayOfInt.length;
     int i = 0;

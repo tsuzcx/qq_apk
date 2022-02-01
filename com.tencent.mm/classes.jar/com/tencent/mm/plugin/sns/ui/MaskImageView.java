@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class MaskImageView
   extends TagImageView
@@ -19,8 +19,8 @@ public class MaskImageView
   private boolean enable;
   private int g;
   private int r;
-  private ap xkC;
-  private Runnable xkD;
+  private ao yxu;
+  private Runnable yxv;
   
   public MaskImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,8 +31,8 @@ public class MaskImageView
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.xkC = new ap(Looper.getMainLooper());
-    this.xkD = new Runnable()
+    this.yxu = new ao(Looper.getMainLooper());
+    this.yxv = new Runnable()
     {
       public final void run()
       {
@@ -73,9 +73,9 @@ public class MaskImageView
       return true;
       paramView.setPressed(true);
       paramView.invalidate();
-      this.xkC.removeCallbacks(this.xkD);
+      this.yxu.removeCallbacks(this.yxv);
       continue;
-      this.xkC.post(this.xkD);
+      this.yxu.post(this.yxv);
     }
     AppMethodBeat.o(97962);
     return false;

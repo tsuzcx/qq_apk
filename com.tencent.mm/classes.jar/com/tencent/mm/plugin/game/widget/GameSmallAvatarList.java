@@ -11,7 +11,7 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.f.e;
 import com.tencent.mm.plugin.game.f.e.a.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public class GameSmallAvatarList
@@ -25,7 +25,7 @@ public class GameSmallAvatarList
   public void setData(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(42620);
-    if (bt.gL(paramLinkedList))
+    if (bs.gY(paramLinkedList))
     {
       setVisibility(8);
       AppMethodBeat.o(42620);
@@ -51,8 +51,8 @@ public class GameSmallAvatarList
         break;
       }
       localObject = new e.a.a();
-      ((e.a.a)localObject).gkG = true;
-      e.cEB().a((ImageView)getChildAt(i), (String)paramLinkedList.get(i), ((e.a.a)localObject).cEC());
+      ((e.a.a)localObject).gLt = true;
+      e.cRL().a((ImageView)getChildAt(i), (String)paramLinkedList.get(i), ((e.a.a)localObject).cRM());
       getChildAt(i).setVisibility(0);
       i += 1;
     }

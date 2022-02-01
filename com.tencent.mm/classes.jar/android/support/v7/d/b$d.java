@@ -6,56 +6,56 @@ import java.util.Arrays;
 
 public final class b$d
 {
-  private final int YE;
-  private final int YF;
-  private final int YG;
-  public final int YH;
-  private boolean YI;
-  private int YJ;
-  private int YK;
-  private float[] YL;
-  final int Yj;
+  private final int ZA;
+  private final int ZB;
+  public final int ZC;
+  private boolean ZD;
+  private int ZE;
+  private int ZF;
+  private float[] ZG;
+  final int Ze;
+  private final int Zz;
   
   public b$d(int paramInt1, int paramInt2)
   {
-    this.YE = Color.red(paramInt1);
-    this.YF = Color.green(paramInt1);
-    this.YG = Color.blue(paramInt1);
-    this.YH = paramInt1;
-    this.Yj = paramInt2;
+    this.Zz = Color.red(paramInt1);
+    this.ZA = Color.green(paramInt1);
+    this.ZB = Color.blue(paramInt1);
+    this.ZC = paramInt1;
+    this.Ze = paramInt2;
   }
   
-  private void gH()
+  private void gP()
   {
     int j;
-    if (!this.YI)
+    if (!this.ZD)
     {
-      i = b.d(-1, this.YH, 4.5F);
-      j = b.d(-1, this.YH, 3.0F);
+      i = b.d(-1, this.ZC, 4.5F);
+      j = b.d(-1, this.ZC, 3.0F);
       if ((i != -1) && (j != -1))
       {
-        this.YK = b.q(-1, i);
-        this.YJ = b.q(-1, j);
-        this.YI = true;
+        this.ZF = b.q(-1, i);
+        this.ZE = b.q(-1, j);
+        this.ZD = true;
       }
     }
     else
     {
       return;
     }
-    int m = b.d(-16777216, this.YH, 4.5F);
-    int k = b.d(-16777216, this.YH, 3.0F);
+    int m = b.d(-16777216, this.ZC, 4.5F);
+    int k = b.d(-16777216, this.ZC, 3.0F);
     if ((m != -1) && (k != -1))
     {
-      this.YK = b.q(-16777216, m);
-      this.YJ = b.q(-16777216, k);
-      this.YI = true;
+      this.ZF = b.q(-16777216, m);
+      this.ZE = b.q(-16777216, k);
+      this.ZD = true;
       return;
     }
     if (i != -1)
     {
       i = b.q(-1, i);
-      this.YK = i;
+      this.ZF = i;
       if (j == -1) {
         break label175;
       }
@@ -63,8 +63,8 @@ public final class b$d
     label175:
     for (int i = b.q(-1, j);; i = b.q(-16777216, k))
     {
-      this.YJ = i;
-      this.YI = true;
+      this.ZE = i;
+      this.ZD = true;
       return;
       i = b.q(-16777216, m);
       break;
@@ -81,40 +81,40 @@ public final class b$d
         return false;
       }
       paramObject = (d)paramObject;
-    } while ((this.Yj == paramObject.Yj) && (this.YH == paramObject.YH));
+    } while ((this.Ze == paramObject.Ze) && (this.ZC == paramObject.ZC));
     return false;
   }
   
-  public final float[] gF()
+  public final float[] gN()
   {
-    if (this.YL == null) {
-      this.YL = new float[3];
+    if (this.ZG == null) {
+      this.ZG = new float[3];
     }
-    b.a(this.YE, this.YF, this.YG, this.YL);
-    return this.YL;
+    b.a(this.Zz, this.ZA, this.ZB, this.ZG);
+    return this.ZG;
   }
   
-  public final int gG()
+  public final int gO()
   {
-    gH();
-    return this.YK;
+    gP();
+    return this.ZF;
   }
   
   public final int hashCode()
   {
-    return this.YH * 31 + this.Yj;
+    return this.ZC * 31 + this.Ze;
   }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(getClass().getSimpleName()).append(" [RGB: #").append(Integer.toHexString(this.YH)).append(']').append(" [HSL: ").append(Arrays.toString(gF())).append(']').append(" [Population: ").append(this.Yj).append(']').append(" [Title Text: #");
-    gH();
-    return Integer.toHexString(this.YJ) + ']' + " [Body Text: #" + Integer.toHexString(gG()) + ']';
+    StringBuilder localStringBuilder = new StringBuilder(getClass().getSimpleName()).append(" [RGB: #").append(Integer.toHexString(this.ZC)).append(']').append(" [HSL: ").append(Arrays.toString(gN())).append(']').append(" [Population: ").append(this.Ze).append(']').append(" [Title Text: #");
+    gP();
+    return Integer.toHexString(this.ZE) + ']' + " [Body Text: #" + Integer.toHexString(gO()) + ']';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v7.d.b.d
  * JD-Core Version:    0.7.0.1
  */

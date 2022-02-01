@@ -8,9 +8,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
 import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.aj;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,31 +23,31 @@ public class k
   protected int backgroundColor;
   protected View contentView;
   protected Context context;
-  long dsf;
-  protected int kvn;
-  protected int kvo;
-  protected x xab;
-  int xac;
-  private long xad;
-  boolean xae;
-  protected ViewGroup xaf;
+  long dpQ;
+  protected int kWB;
+  protected int kWC;
+  protected x ymQ;
+  int ymR;
+  private long ymS;
+  boolean ymT;
+  protected ViewGroup ymU;
   
   public k(Context paramContext, x paramx, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(96466);
-    this.xac = 0;
-    this.xad = 0L;
-    this.dsf = 0L;
-    this.xae = false;
+    this.ymR = 0;
+    this.ymS = 0L;
+    this.dpQ = 0L;
+    this.ymT = false;
     this.contentView = null;
     this.context = paramContext;
-    this.xab = paramx;
-    this.xaf = paramViewGroup;
-    paramx = al.fU(paramContext);
-    this.kvn = paramx[0];
-    this.kvo = paramx[1];
-    if (ai.aF(paramContext)) {
-      this.kvo -= ai.aE(paramContext);
+    this.ymQ = paramx;
+    this.ymU = paramViewGroup;
+    paramx = al.gg(paramContext);
+    this.kWB = paramx[0];
+    this.kWC = paramx[1];
+    if (aj.aG(paramContext)) {
+      this.kWC -= aj.aF(paramContext);
     }
     AppMethodBeat.o(96466);
   }
@@ -58,7 +60,7 @@ public class k
   public void a(x paramx)
   {
     AppMethodBeat.i(96467);
-    x localx = this.xab;
+    x localx = this.ymQ;
     if (localx == paramx)
     {
       AppMethodBeat.o(96467);
@@ -69,104 +71,88 @@ public class k
       AppMethodBeat.o(96467);
       return;
     }
-    this.xab = paramx;
-    dvN();
-    dwf();
+    this.ymQ = paramx;
+    dKm();
+    dKE();
     AppMethodBeat.o(96467);
   }
   
-  public void aF(Map<String, Object> paramMap) {}
-  
-  public boolean aG(JSONObject paramJSONObject)
+  public boolean aH(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(96475);
-    if (this.xac == 0)
+    if (this.ymR == 0)
     {
       AppMethodBeat.o(96475);
       return false;
     }
-    if (this.xab.wWN)
+    if (this.ymQ.yjB)
     {
       AppMethodBeat.o(96475);
       return false;
     }
     try
     {
-      paramJSONObject.put("cid", this.xab.wWE);
-      paramJSONObject.put("exposureCount", this.xac);
-      paramJSONObject.put("stayTime", this.dsf);
+      paramJSONObject.put("cid", this.ymQ.yjs);
+      paramJSONObject.put("exposureCount", this.ymR);
+      paramJSONObject.put("stayTime", this.dpQ);
       AppMethodBeat.o(96475);
       return true;
     }
     catch (JSONException paramJSONObject)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.Sns.AdLandingPageBaseComponent", paramJSONObject, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.Sns.AdLandingPageBaseComponent", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(96475);
     }
     return false;
   }
   
-  public void dvA()
-  {
-    AppMethodBeat.i(96471);
-    if (!this.xae)
-    {
-      AppMethodBeat.o(96471);
-      return;
-    }
-    this.xae = false;
-    if (this.xad > 0L) {
-      this.dsf += System.currentTimeMillis() - this.xad;
-    }
-    this.xad = 0L;
-    AppMethodBeat.o(96471);
-  }
+  public void aJ(Map<String, Object> paramMap) {}
   
-  public void dvB() {}
+  public void dJW() {}
   
-  protected void dvN()
-  {
-    AppMethodBeat.i(96469);
-    com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.Sns.AdLandingPageBaseComponent", "for component reuse, subclass must implement this method");
-    AppMethodBeat.o(96469);
-  }
-  
-  protected View dvQ()
-  {
-    return null;
-  }
-  
-  protected void dvT() {}
-  
-  public void dvx() {}
-  
-  public void dvy()
+  public void dJX()
   {
     AppMethodBeat.i(96474);
-    dvA();
+    dJZ();
     AppMethodBeat.o(96474);
   }
   
-  public void dvz()
+  public void dJY()
   {
     AppMethodBeat.i(96470);
-    if (this.xae)
+    if (this.ymT)
     {
       AppMethodBeat.o(96470);
       return;
     }
-    this.xae = true;
-    this.xad = System.currentTimeMillis();
-    this.xac += 1;
+    this.ymT = true;
+    this.ymS = System.currentTimeMillis();
+    this.ymR += 1;
     AppMethodBeat.o(96470);
   }
   
-  public final x dwb()
+  public void dJZ()
   {
-    return this.xab;
+    AppMethodBeat.i(96471);
+    if (!this.ymT)
+    {
+      AppMethodBeat.o(96471);
+      return;
+    }
+    this.ymT = false;
+    if (this.ymS > 0L) {
+      this.dpQ += System.currentTimeMillis() - this.ymS;
+    }
+    this.ymS = 0L;
+    AppMethodBeat.o(96471);
   }
   
-  public final int dwc()
+  public final x dKA()
+  {
+    return this.ymQ;
+  }
+  
+  public final int dKB()
   {
     AppMethodBeat.i(96472);
     View localView = getView();
@@ -174,9 +160,9 @@ public class k
     localView.getLocationOnScreen(arrayOfInt);
     int k = arrayOfInt[1];
     int j = localView.getHeight() + k;
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.Sns.AdLandingPageBaseComponent", "comp %s , top %d,bottom %d ", new Object[] { this, Integer.valueOf(k), Integer.valueOf(j) });
+    ac.d("MicroMsg.Sns.AdLandingPageBaseComponent", "comp %s , top %d,bottom %d ", new Object[] { this, Integer.valueOf(k), Integer.valueOf(j) });
     int i;
-    if ((k >= 0) && (j <= this.kvo)) {
+    if ((k >= 0) && (j <= this.kWC)) {
       i = localView.getHeight();
     }
     for (;;)
@@ -186,15 +172,15 @@ public class k
       if ((k < 0) && (j > 0))
       {
         i = j;
-        if (j <= this.kvo) {}
+        if (j <= this.kWC) {}
       }
-      else if ((k < 0) && (j > this.kvo))
+      else if ((k < 0) && (j > this.kWC))
       {
-        i = this.kvo;
+        i = this.kWC;
       }
-      else if ((k < this.kvo) && (j > this.kvo))
+      else if ((k < this.kWC) && (j > this.kWC))
       {
-        i = this.kvo - k;
+        i = this.kWC - k;
       }
       else
       {
@@ -203,10 +189,10 @@ public class k
     }
   }
   
-  public boolean dwd()
+  public boolean dKC()
   {
     AppMethodBeat.i(96473);
-    if (dwc() >= Math.min(getView().getHeight() >>> 1, this.kvo >>> 1))
+    if (dKB() >= Math.min(getView().getHeight() >>> 1, this.kWC >>> 1))
     {
       AppMethodBeat.o(96473);
       return true;
@@ -215,12 +201,12 @@ public class k
     return false;
   }
   
-  public final String dwe()
+  public final String dKD()
   {
-    return this.xab.wWE;
+    return this.ymQ.yjs;
   }
   
-  public final void dwf()
+  public final void dKE()
   {
     AppMethodBeat.i(96476);
     Object localObject1;
@@ -230,16 +216,16 @@ public class k
       AppMethodBeat.o(96476);
       throw ((Throwable)localObject1);
     }
-    if (this.xab != null)
+    if (this.ymQ != null)
     {
       localObject1 = this.contentView.getLayoutParams();
       if (localObject1 != null)
       {
-        if (this.xab.wWG != 2.147484E+009F) {
-          ((ViewGroup.LayoutParams)localObject1).width = ((int)this.xab.wWG);
+        if (this.ymQ.yju != 2.147484E+009F) {
+          ((ViewGroup.LayoutParams)localObject1).width = ((int)this.ymQ.yju);
         }
-        if (this.xab.wWH != 2.147484E+009F) {
-          ((ViewGroup.LayoutParams)localObject1).height = ((int)this.xab.wWH);
+        if (this.ymQ.yjv != 2.147484E+009F) {
+          ((ViewGroup.LayoutParams)localObject1).height = ((int)this.ymQ.yjv);
         }
         Object localObject2;
         int i;
@@ -266,37 +252,53 @@ public class k
           }
         }
       }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.Sns.AdLandingPageBaseComponent", this + " has no layoutParams in container " + this.xaf);
+      ac.i("MicroMsg.Sns.AdLandingPageBaseComponent", this + " has no layoutParams in container " + this.ymU);
     }
     AppMethodBeat.o(96476);
   }
   
-  public void dwg() {}
+  public void dKF() {}
   
-  protected final <T> T dwh()
+  protected final <T> T dKG()
   {
     try
     {
-      x localx = this.xab;
+      x localx = this.ymQ;
       return localx;
     }
     catch (Exception localException) {}
     return null;
   }
   
-  public final com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad dwi()
+  public final ae dKH()
   {
     AppMethodBeat.i(96477);
     if ((this.context instanceof SnsAdNativeLandingPagesUI))
     {
-      localad = ((SnsAdNativeLandingPagesUI)this.context).dwi();
+      localae = ((SnsAdNativeLandingPagesUI)this.context).dKH();
       AppMethodBeat.o(96477);
-      return localad;
+      return localae;
     }
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad localad = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad();
+    ae localae = new ae();
     AppMethodBeat.o(96477);
-    return localad;
+    return localae;
   }
+  
+  public void dKa() {}
+  
+  protected void dKm()
+  {
+    AppMethodBeat.i(96469);
+    ac.w("MicroMsg.Sns.AdLandingPageBaseComponent", "for component reuse, subclass must implement this method");
+    AppMethodBeat.o(96469);
+  }
+  
+  protected View dKp()
+  {
+    return null;
+  }
+  
+  protected void dKs() {}
   
   public final View getContentView()
   {
@@ -306,12 +308,12 @@ public class k
   public final int getGravity()
   {
     int i = 0;
-    switch (this.xab.wWK)
+    switch (this.ymQ.yjy)
     {
     }
     for (;;)
     {
-      switch (this.xab.wWL)
+      switch (this.ymQ.yjz)
       {
       default: 
         return i;
@@ -345,27 +347,27 @@ public class k
     {
       int i = getLayout();
       if (i != 2147483647) {
-        this.contentView = ((LayoutInflater)this.context.getSystemService("layout_inflater")).inflate(i, this.xaf, false);
+        this.contentView = ((LayoutInflater)this.context.getSystemService("layout_inflater")).inflate(i, this.ymU, false);
       }
       while (this.contentView == null)
       {
         localObject = new IllegalStateException("implement getLayout() or customLayout() to get a valid root view");
         AppMethodBeat.o(96468);
         throw ((Throwable)localObject);
-        this.contentView = dvQ();
+        this.contentView = dKp();
         if ((this.contentView != null) && (this.contentView.getLayoutParams() == null))
         {
-          this.xaf.addView(this.contentView);
+          this.ymU.addView(this.contentView);
           localObject = this.contentView.getLayoutParams();
-          this.xaf.removeView(this.contentView);
+          this.ymU.removeView(this.contentView);
           this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
       }
     }
-    dvx();
-    dvN();
-    dvT();
-    dwf();
+    dJW();
+    dKm();
+    dKs();
+    dKE();
     Object localObject = this.contentView;
     AppMethodBeat.o(96468);
     return localObject;
@@ -378,7 +380,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.k
  * JD-Core Version:    0.7.0.1
  */

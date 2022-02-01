@@ -25,7 +25,7 @@ import com.tencent.mm.plugin.qqmail.b.w.c;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.model.q;
 import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
 import com.tencent.mm.ui.ao;
@@ -38,42 +38,42 @@ import java.util.Map;
 public class AttachDownloadPage
   extends MMActivity
 {
-  private TextView fxX;
-  private int hxS = 0;
-  private long hyD = 0L;
-  private TextView lAi;
-  private long mqq;
-  private Button oAT;
+  private TextView fBE;
+  private int hYt = 0;
+  private long hZe = 0L;
+  private long mSs;
+  private TextView mce;
+  private Button pet;
   private ProgressBar progressBar;
-  private Button qhp;
-  private View qhs;
+  private Button qPR;
+  private View qPU;
   private int retryCount = 0;
-  private String uLP;
-  private String uLc;
-  private long uMU;
-  private MMImageView uNe;
-  private ImageView uNf;
-  private ImageView uNg;
-  private TextView uNh;
-  private LinearLayout uNi;
-  private String uNj;
-  private int uNk;
-  private boolean uNl = false;
-  private String uNm;
-  private boolean uNn = true;
+  private String vTT;
+  private String vUF;
+  private long vVK;
+  private MMImageView vVU;
+  private ImageView vVV;
+  private ImageView vVW;
+  private TextView vVX;
+  private LinearLayout vVY;
+  private String vVZ;
+  private int vWa;
+  private boolean vWb = false;
+  private String vWc;
+  private boolean vWd = true;
   
-  private void dek()
+  private void drS()
   {
     AppMethodBeat.i(122873);
-    this.qhs.setVisibility(0);
-    this.oAT.setVisibility(8);
-    this.qhp.setVisibility(8);
-    this.uNf.setVisibility(0);
-    this.uNg.setVisibility(8);
-    this.uNh.setVisibility(8);
-    this.fxX.setVisibility(8);
-    this.lAi.setVisibility(8);
-    this.uNf.setOnClickListener(new View.OnClickListener()
+    this.qPU.setVisibility(0);
+    this.pet.setVisibility(8);
+    this.qPR.setVisibility(8);
+    this.vVV.setVisibility(0);
+    this.vVW.setVisibility(8);
+    this.vVX.setVisibility(8);
+    this.fBE.setVisibility(8);
+    this.mce.setVisibility(8);
+    this.vVV.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -85,7 +85,7 @@ public class AttachDownloadPage
         AppMethodBeat.o(122859);
       }
     });
-    this.uNg.setOnClickListener(new View.OnClickListener()
+    this.vVW.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -98,36 +98,36 @@ public class AttachDownloadPage
     AppMethodBeat.o(122873);
   }
   
-  private void del()
+  private void drT()
   {
     AppMethodBeat.i(122874);
-    if (this.uNk == 1)
+    if (this.vWa == 1)
     {
-      if (FileExplorerUI.aCw(this.uNm))
+      if (FileExplorerUI.aHO(this.vWc))
       {
-        if (this.hxS == 3)
+        if (this.hYt == 3)
         {
-          dem();
+          drU();
           AppMethodBeat.o(122874);
           return;
         }
-        if ((this.hxS == 0) || (this.uNn))
+        if ((this.hYt == 0) || (this.vWd))
         {
           this.retryCount = 0;
-          this.uNn = false;
-          den();
-          dek();
+          this.vWd = false;
+          drV();
+          drS();
           AppMethodBeat.o(122874);
           return;
         }
       }
-      this.qhs.setVisibility(8);
-      this.fxX.setVisibility(0);
-      this.uNh.setVisibility(8);
-      this.oAT.setVisibility(0);
-      this.qhp.setVisibility(8);
-      this.lAi.setVisibility(0);
-      this.oAT.setOnClickListener(new View.OnClickListener()
+      this.qPU.setVisibility(8);
+      this.fBE.setVisibility(0);
+      this.vVX.setVisibility(8);
+      this.pet.setVisibility(0);
+      this.qPR.setVisibility(8);
+      this.mce.setVisibility(0);
+      this.pet.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -136,11 +136,11 @@ public class AttachDownloadPage
           AppMethodBeat.o(122861);
         }
       });
-      if (this.hxS == 3)
+      if (this.hYt == 3)
       {
-        this.fxX.setText(2131761031);
-        this.lAi.setText(2131761028);
-        this.lAi.setOnClickListener(new View.OnClickListener()
+        this.fBE.setText(2131761031);
+        this.mce.setText(2131761028);
+        this.mce.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -153,13 +153,13 @@ public class AttachDownloadPage
         AppMethodBeat.o(122874);
         return;
       }
-      this.fxX.setText(2131761031);
-      if (this.hxS == 2) {
-        this.lAi.setText(2131761030);
+      this.fBE.setText(2131761031);
+      if (this.hYt == 2) {
+        this.mce.setText(2131761030);
       }
       for (;;)
       {
-        this.lAi.setOnClickListener(new View.OnClickListener()
+        this.mce.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -172,27 +172,27 @@ public class AttachDownloadPage
         });
         AppMethodBeat.o(122874);
         return;
-        this.lAi.setText(2131761029);
+        this.mce.setText(2131761029);
       }
     }
-    if (this.uNk == 0)
+    if (this.vWa == 0)
     {
-      this.qhs.setVisibility(8);
-      this.oAT.setVisibility(8);
-      this.qhp.setVisibility(0);
-      this.uNh.setVisibility(8);
-      this.fxX.setVisibility(0);
-      this.lAi.setVisibility(8);
-      if (this.hxS != 3) {
+      this.qPU.setVisibility(8);
+      this.pet.setVisibility(8);
+      this.qPR.setVisibility(0);
+      this.vVX.setVisibility(8);
+      this.fBE.setVisibility(0);
+      this.mce.setVisibility(8);
+      if (this.hYt != 3) {
         break label380;
       }
-      this.qhp.setText(2131761025);
+      this.qPR.setText(2131761025);
       enableOptionMenu(true);
     }
     for (;;)
     {
-      this.fxX.setText(2131761024);
-      this.qhp.setOnClickListener(new View.OnClickListener()
+      this.fBE.setText(2131761024);
+      this.qPR.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -212,50 +212,50 @@ public class AttachDownloadPage
       AppMethodBeat.o(122874);
       return;
       label380:
-      if (this.hxS == 2) {
-        this.qhp.setText(2131761032);
+      if (this.hYt == 2) {
+        this.qPR.setText(2131761032);
       } else {
-        this.qhp.setText(2131761023);
+        this.qPR.setText(2131761023);
       }
     }
   }
   
-  private void dem()
+  private void drU()
   {
     AppMethodBeat.i(122875);
     Intent localIntent = new Intent();
     localIntent.putExtra("key_favorite", true);
     localIntent.putExtra("key_favorite_source_type", 9);
-    localIntent.putExtra("key_image_path", of(false));
-    com.tencent.mm.plugin.qqmail.a.a.hYt.d(getContext(), localIntent);
+    localIntent.putExtra("key_image_path", oZ(false));
+    com.tencent.mm.plugin.qqmail.a.a.iyx.d(getContext(), localIntent);
     finish();
     AppMethodBeat.o(122875);
   }
   
-  private void den()
+  private void drV()
   {
     AppMethodBeat.i(122876);
-    deq();
-    if (this.hxS == 4) {
+    drY();
+    if (this.hYt == 4) {
       if (this.retryCount < 5)
       {
         this.retryCount += 1;
-        den();
+        drV();
       }
     }
     for (;;)
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("mailid", this.uLc);
-      localHashMap.put("attachid", this.uLP);
+      localHashMap.put("mailid", this.vTT);
+      localHashMap.put("attachid", this.vUF);
       localHashMap.put("username", "");
-      localHashMap.put("offset", this.hyD);
-      localHashMap.put("datalen", this.mqq);
-      localHashMap.put("default_attach_name", deo() + ".temp");
+      localHashMap.put("offset", this.hZe);
+      localHashMap.put("datalen", this.mSs);
+      localHashMap.put("default_attach_name", drW() + ".temp");
       w.c localc = new w.c();
-      localc.uMh = false;
-      localc.uMi = false;
-      this.uMU = ((o)g.ad(o.class)).getNormalMailAppService().a("/cgi-bin/mmdownload", localHashMap, localc, new w.a()
+      localc.vUX = false;
+      localc.vUY = false;
+      this.vVK = ((o)g.ad(o.class)).getNormalMailAppService().a("/cgi-bin/mmdownload", localHashMap, localc, new w.a()
       {
         public final void onComplete() {}
         
@@ -277,7 +277,7 @@ public class AttachDownloadPage
         public final void onProgress(int paramAnonymousInt)
         {
           AppMethodBeat.i(122865);
-          ad.d("MicroMsg.AttachDownloadPage", "download progress : ".concat(String.valueOf(paramAnonymousInt)));
+          ac.d("MicroMsg.AttachDownloadPage", "download progress : ".concat(String.valueOf(paramAnonymousInt)));
           AttachDownloadPage.j(AttachDownloadPage.this);
           AttachDownloadPage.a(AttachDownloadPage.this, 1);
           AppMethodBeat.o(122865);
@@ -286,7 +286,7 @@ public class AttachDownloadPage
         public final void onSuccess(String paramAnonymousString, Map<String, String> paramAnonymousMap)
         {
           AppMethodBeat.i(122866);
-          i.aQ(AttachDownloadPage.k(AttachDownloadPage.this), AttachDownloadPage.l(AttachDownloadPage.this) + ".temp", AttachDownloadPage.l(AttachDownloadPage.this));
+          i.aT(AttachDownloadPage.k(AttachDownloadPage.this), AttachDownloadPage.l(AttachDownloadPage.this) + ".temp", AttachDownloadPage.l(AttachDownloadPage.this));
           AttachDownloadPage.a(AttachDownloadPage.this, 3);
           Toast.makeText(AttachDownloadPage.this, AttachDownloadPage.this.getString(2131758120) + " : " + AttachDownloadPage.a(AttachDownloadPage.this), 5000).show();
           AttachDownloadPage.d(AttachDownloadPage.this);
@@ -295,28 +295,28 @@ public class AttachDownloadPage
       });
       AppMethodBeat.o(122876);
       return;
-      del();
+      drT();
       continue;
-      if (this.hxS == 3)
+      if (this.hYt == 3)
       {
-        i.aQ(this.uNj, deo() + ".temp", deo());
-        this.hxS = 3;
-        del();
+        i.aT(this.vVZ, drW() + ".temp", drW());
+        this.hYt = 3;
+        drT();
       }
     }
   }
   
-  private String deo()
+  private String drW()
   {
     AppMethodBeat.i(122878);
-    int i = this.uLP.hashCode();
-    int j = this.uNm.lastIndexOf(".");
+    int i = this.vUF.hashCode();
+    int j = this.vWc.lastIndexOf(".");
     String str2 = "";
     String str1;
     if (j != -1)
     {
-      str1 = this.uNm.substring(0, j);
-      str2 = this.uNm;
+      str1 = this.vWc.substring(0, j);
+      str2 = this.vWc;
       str2 = str2.substring(j, str2.length());
     }
     for (;;)
@@ -324,65 +324,65 @@ public class AttachDownloadPage
       str1 = String.format("%s_%d%s", new Object[] { str1, Integer.valueOf(i & 0xFFFF), str2 });
       AppMethodBeat.o(122878);
       return str1;
-      str1 = this.uNm;
+      str1 = this.vWc;
     }
   }
   
-  private String dep()
+  private String drX()
   {
     AppMethodBeat.i(122880);
-    String str = this.uNj + this.uNm;
+    String str = this.vVZ + this.vWc;
     AppMethodBeat.o(122880);
     return str;
   }
   
-  private void deq()
+  private void drY()
   {
     AppMethodBeat.i(122881);
-    if (i.eK(of(true)))
+    if (i.eA(oZ(true)))
     {
-      this.hyD = i.aMN(of(true));
-      this.hxS = 2;
+      this.hZe = i.aSp(oZ(true));
+      this.hYt = 2;
       AppMethodBeat.o(122881);
       return;
     }
-    if (i.eK(of(false)))
+    if (i.eA(oZ(false)))
     {
-      this.hxS = 3;
+      this.hYt = 3;
       AppMethodBeat.o(122881);
       return;
     }
-    if (i.eK(dep()))
+    if (i.eA(drX()))
     {
-      if (i.aMN(dep()) == this.mqq)
+      if (i.aSp(drX()) == this.mSs)
       {
-        i.aQ(this.uNj, this.uNm, deo());
-        this.hxS = 3;
+        i.aT(this.vVZ, this.vWc, drW());
+        this.hYt = 3;
         AppMethodBeat.o(122881);
         return;
       }
-      if (i.aMN(dep()) > this.mqq)
+      if (i.aSp(drX()) > this.mSs)
       {
-        i.deleteFile(dep());
-        this.hyD = 0L;
-        this.hxS = 4;
+        i.deleteFile(drX());
+        this.hZe = 0L;
+        this.hYt = 4;
         AppMethodBeat.o(122881);
         return;
       }
-      this.hyD = 0L;
-      this.hxS = 0;
+      this.hZe = 0L;
+      this.hYt = 0;
       AppMethodBeat.o(122881);
       return;
     }
-    this.hyD = 0L;
-    this.hxS = 0;
+    this.hZe = 0L;
+    this.hYt = 0;
     AppMethodBeat.o(122881);
   }
   
-  private String of(boolean paramBoolean)
+  private String oZ(boolean paramBoolean)
   {
     AppMethodBeat.i(122879);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.uNj).append(deo());
+    StringBuilder localStringBuilder = new StringBuilder().append(this.vVZ).append(drW());
     if (!paramBoolean) {}
     for (String str = "";; str = ".temp")
     {
@@ -400,19 +400,19 @@ public class AttachDownloadPage
   public void initView()
   {
     AppMethodBeat.i(122872);
-    this.uNe = ((MMImageView)findViewById(2131299226));
-    this.qhs = findViewById(2131299216);
+    this.vVU = ((MMImageView)findViewById(2131299226));
+    this.qPU = findViewById(2131299216);
     this.progressBar = ((ProgressBar)findViewById(2131299214));
-    this.uNf = ((ImageView)findViewById(2131299221));
-    this.uNg = ((ImageView)findViewById(2131299219));
-    this.uNh = ((TextView)findViewById(2131296961));
-    this.oAT = ((Button)findViewById(2131296963));
-    this.qhp = ((Button)findViewById(2131296960));
-    this.uNi = ((LinearLayout)findViewById(2131296959));
-    this.fxX = ((TextView)findViewById(2131296962));
-    this.lAi = ((TextView)findViewById(2131296964));
-    if (FileExplorerUI.aCw(this.uNm)) {
-      this.uNe.setBackgroundResource(2131690066);
+    this.vVV = ((ImageView)findViewById(2131299221));
+    this.vVW = ((ImageView)findViewById(2131299219));
+    this.vVX = ((TextView)findViewById(2131296961));
+    this.pet = ((Button)findViewById(2131296963));
+    this.qPR = ((Button)findViewById(2131296960));
+    this.vVY = ((LinearLayout)findViewById(2131296959));
+    this.fBE = ((TextView)findViewById(2131296962));
+    this.mce = ((TextView)findViewById(2131296964));
+    if (FileExplorerUI.aHO(this.vWc)) {
+      this.vVU.setBackgroundResource(2131690066);
     }
     for (;;)
     {
@@ -435,7 +435,7 @@ public class AttachDownloadPage
           String str = AttachDownloadPage.this.getString(2131761941);
           h.c local1 = new h.c()
           {
-            public final void kM(int paramAnonymous2Int)
+            public final void kG(int paramAnonymous2Int)
             {
               AppMethodBeat.i(122857);
               switch (paramAnonymous2Int)
@@ -455,28 +455,28 @@ public class AttachDownloadPage
         }
       });
       enableOptionMenu(false);
-      deq();
-      if (this.hxS != 1) {
+      drY();
+      if (this.hYt != 1) {
         break;
       }
-      dek();
+      drS();
       AppMethodBeat.o(122872);
       return;
-      if (FileExplorerUI.aCx(this.uNm))
+      if (FileExplorerUI.aHP(this.vWc))
       {
-        this.uNe.setImageResource(2131689581);
+        this.vVU.setImageResource(2131689581);
       }
       else
       {
-        int i = q.aAJ(i.RK(this.uNm));
+        int i = q.aGb(i.VW(this.vWc));
         if (i > 0) {
-          this.uNe.setImageResource(i);
+          this.vVU.setImageResource(i);
         } else {
-          this.uNe.setImageResource(2131689577);
+          this.vVU.setImageResource(2131689577);
         }
       }
     }
-    del();
+    drT();
     AppMethodBeat.o(122872);
   }
   
@@ -493,13 +493,13 @@ public class AttachDownloadPage
     AppMethodBeat.i(122882);
     super.onConfigurationChanged(paramConfiguration);
     int i = getResources().getConfiguration().orientation;
-    paramConfiguration = (FrameLayout.LayoutParams)this.uNi.getLayoutParams();
+    paramConfiguration = (FrameLayout.LayoutParams)this.vVY.getLayoutParams();
     if (i == 2) {
       paramConfiguration.bottomMargin = ao.fromDPToPix(getContext(), 60);
     }
     for (;;)
     {
-      this.uNi.setLayoutParams(paramConfiguration);
+      this.vVY.setLayoutParams(paramConfiguration);
       AppMethodBeat.o(122882);
       return;
       if (i == 1) {
@@ -512,15 +512,15 @@ public class AttachDownloadPage
   {
     AppMethodBeat.i(122868);
     super.onCreate(paramBundle);
-    this.uNk = getIntent().getIntExtra("is_preview", 0);
-    this.uNl = getIntent().getBooleanExtra("is_compress", false);
-    this.uNm = getIntent().getStringExtra("attach_name");
-    this.uLc = getIntent().getStringExtra("mail_id");
-    this.uLP = getIntent().getStringExtra("attach_id");
-    this.mqq = getIntent().getLongExtra("total_size", 0L);
+    this.vWa = getIntent().getIntExtra("is_preview", 0);
+    this.vWb = getIntent().getBooleanExtra("is_compress", false);
+    this.vWc = getIntent().getStringExtra("attach_name");
+    this.vTT = getIntent().getStringExtra("mail_id");
+    this.vUF = getIntent().getStringExtra("attach_id");
+    this.mSs = getIntent().getLongExtra("total_size", 0L);
     ((o)g.ad(o.class)).getNormalMailAppService();
-    this.uNj = w.getDownloadPath();
-    setMMTitle(this.uNm);
+    this.vVZ = w.getDownloadPath();
+    setMMTitle(this.vWc);
     initView();
     AppMethodBeat.o(122868);
   }
@@ -529,7 +529,7 @@ public class AttachDownloadPage
   {
     AppMethodBeat.i(122871);
     super.onDestroy();
-    ((o)g.ad(o.class)).getNormalMailAppService().cancel(this.uMU);
+    ((o)g.ad(o.class)).getNormalMailAppService().cancel(this.vVK);
     AppMethodBeat.o(122871);
   }
   
@@ -555,7 +555,7 @@ public class AttachDownloadPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.AttachDownloadPage
  * JD-Core Version:    0.7.0.1
  */

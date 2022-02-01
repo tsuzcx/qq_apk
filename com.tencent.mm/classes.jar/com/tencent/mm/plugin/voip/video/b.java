@@ -9,34 +9,34 @@ final class b
   implements GLTextureView.e
 {
   private static int EGL_OPENGL_ES2_BIT = 4;
-  private static int[] guQ = { 12324, 4, 12323, 4, 12322, 4, 12352, EGL_OPENGL_ES2_BIT, 12344 };
-  protected int fJA;
-  protected int fJB;
-  protected int fJC;
-  private int[] fJw;
-  protected int fJx;
-  protected int fJy;
-  protected int fJz;
+  private static int[] gVp = { 12324, 4, 12323, 4, 12322, 4, 12352, EGL_OPENGL_ES2_BIT, 12344 };
+  private int[] fNc;
+  protected int fNd;
+  protected int fNe;
+  protected int fNf;
+  protected int fNg;
+  protected int fNh;
+  protected int fNi;
   
   public b()
   {
     AppMethodBeat.i(115569);
-    this.fJw = new int[1];
-    this.fJx = 5;
-    this.fJy = 6;
-    this.fJz = 5;
-    this.fJA = 0;
-    this.fJB = 0;
-    this.fJC = 0;
+    this.fNc = new int[1];
+    this.fNd = 5;
+    this.fNe = 6;
+    this.fNf = 5;
+    this.fNg = 0;
+    this.fNh = 0;
+    this.fNi = 0;
     AppMethodBeat.o(115569);
   }
   
   private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt)
   {
     AppMethodBeat.i(115572);
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.fJw))
+    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.fNc))
     {
-      paramInt = this.fJw[0];
+      paramInt = this.fNc[0];
       AppMethodBeat.o(115572);
       return paramInt;
     }
@@ -54,13 +54,13 @@ final class b
       EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
       int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
       int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
-      if ((k >= this.fJB) && (m >= this.fJC))
+      if ((k >= this.fNh) && (m >= this.fNi))
       {
         k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
         m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
         int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
         int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
-        if ((k == this.fJx) && (m == this.fJy) && (n == this.fJz) && (i1 == this.fJA))
+        if ((k == this.fNd) && (m == this.fNe) && (n == this.fNf) && (i1 == this.fNg))
         {
           AppMethodBeat.o(115571);
           return localEGLConfig;
@@ -76,7 +76,7 @@ final class b
   {
     AppMethodBeat.i(115570);
     int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, guQ, null, 0, arrayOfInt);
+    paramEGL10.eglChooseConfig(paramEGLDisplay, gVp, null, 0, arrayOfInt);
     int i = arrayOfInt[0];
     if (i <= 0)
     {
@@ -85,7 +85,7 @@ final class b
       throw paramEGL10;
     }
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, guQ, arrayOfEGLConfig, i, arrayOfInt);
+    paramEGL10.eglChooseConfig(paramEGLDisplay, gVp, arrayOfEGLConfig, i, arrayOfInt);
     paramEGL10 = b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
     AppMethodBeat.o(115570);
     return paramEGL10;

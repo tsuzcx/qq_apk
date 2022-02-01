@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.finder.video;
 import android.arch.lifecycle.LifecycleOwner;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ac.c;
 import com.tencent.mm.app.AppForegroundDelegate;
 import com.tencent.mm.app.n;
 import com.tencent.mm.plugin.finder.life.UILifecycleObserver;
@@ -13,7 +14,7 @@ import d.g.a.a;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/video/FinderVideoCore$onInitialize$2", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroid/arch/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/video/FinderVideoCore$onInitialize$2", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroid/arch/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"})
 public final class FinderVideoCore$onInitialize$2
   implements UILifecycleObserver
 {
@@ -30,7 +31,7 @@ public final class FinderVideoCore$onInitialize$2
   {
     AppMethodBeat.i(168035);
     k.h(paramLifecycleOwner, "var1");
-    AppForegroundDelegate.cKE.b((n)this.qTN);
+    AppForegroundDelegate.cHM.b((n)this.rSw);
     AppMethodBeat.o(168035);
   }
   
@@ -38,7 +39,7 @@ public final class FinderVideoCore$onInitialize$2
   {
     AppMethodBeat.i(168033);
     k.h(paramLifecycleOwner, "var1");
-    this.qTN.fWq().lD((Context)this.qSd);
+    this.rSw.cDX().eX((Context)this.rOB);
     AppMethodBeat.o(168033);
   }
   
@@ -46,7 +47,7 @@ public final class FinderVideoCore$onInitialize$2
   {
     AppMethodBeat.i(168032);
     k.h(paramLifecycleOwner, "var1");
-    com.tencent.mm.ad.c.g((a)new FinderVideoRecycler.q(this.qTN.fWq(), (Context)this.qSd));
+    c.g((a)new FinderVideoRecycler.q(this.rSw.cDX(), (Context)this.rOB));
     AppMethodBeat.o(168032);
   }
   
@@ -66,7 +67,7 @@ public final class FinderVideoCore$onInitialize$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.FinderVideoCore.onInitialize.2
  * JD-Core Version:    0.7.0.1
  */

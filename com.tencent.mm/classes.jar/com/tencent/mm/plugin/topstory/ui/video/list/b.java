@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.topstory.ui.video.list;
 public abstract interface b
   extends com.tencent.mm.plugin.topstory.ui.video.b
 {
-  public abstract void bcC();
+  public abstract void bjx();
 }
 
 

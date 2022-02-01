@@ -3,71 +3,41 @@ package com.tencent.mm.plugin.luckymoney.story;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
 
 public final class a
 {
-  public static String openId;
-  public static String sXK;
-  public static String sessionId;
-  public static long startTime;
-  public static int tje;
-  public static Set<String> tjf;
-  public static int tjg;
-  public static int tjh;
-  public static int tji;
-  public static int tjj;
-  public static int tjk;
-  public static int tjl;
-  public static int tjm;
-  public static int tjn;
+  public static int dxw;
+  private static long enterTime;
+  public static String frx;
+  public static int scene;
+  public static String urv;
+  public static int urw = 1;
   
-  static
+  public static void l(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(163682);
-    tjf = new HashSet();
-    AppMethodBeat.o(163682);
+    AppMethodBeat.i(207107);
+    scene = paramInt1;
+    frx = paramString;
+    dxw = paramInt2;
+    enterTime = SystemClock.elapsedRealtime();
+    AppMethodBeat.o(207107);
   }
   
-  public static void k(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public static void tn(int paramInt)
   {
-    AppMethodBeat.i(163680);
-    openId = paramString1;
-    sXK = paramString2;
-    tji = paramInt1;
-    tjj = paramInt2;
-    sessionId = UUID.randomUUID().toString();
-    startTime = SystemClock.elapsedRealtime() / 1000L;
-    AppMethodBeat.o(163680);
-  }
-  
-  public static void sw(int paramInt)
-  {
-    AppMethodBeat.i(163681);
-    if ((!bt.isNullOrNil(openId)) && (!bt.isNullOrNil(sessionId)))
+    AppMethodBeat.i(207108);
+    if (enterTime > 0L)
     {
-      long l1 = SystemClock.elapsedRealtime() / 1000L;
-      long l2 = startTime;
-      h.vKh.f(18994, new Object[] { Integer.valueOf(paramInt), sXK, Integer.valueOf(0), Integer.valueOf(tje), Integer.valueOf(tjf.size()), Integer.valueOf(tjg), Integer.valueOf(tjh), Integer.valueOf(tji), Integer.valueOf(tjj), sessionId, openId, Long.valueOf(l1 - l2), Integer.valueOf(tjk), Integer.valueOf(tjl), Integer.valueOf(tjm), Integer.valueOf(tjn) });
-      sXK = null;
-      tje = 0;
-      tjf.clear();
-      tjg = 0;
-      tjh = 0;
-      tji = 0;
-      tjj = 0;
-      openId = null;
-      startTime = 0L;
-      tjk = 0;
-      tjl = 0;
-      tjm = 0;
-      tjn = 0;
-      sessionId = null;
+      long l = (SystemClock.elapsedRealtime() - enterTime) / 1000L;
+      h.wUl.f(20255, new Object[] { Integer.valueOf(scene), frx, Integer.valueOf(dxw), Integer.valueOf(0), urv, Integer.valueOf(urw), Integer.valueOf(paramInt), Long.valueOf(l) });
     }
-    AppMethodBeat.o(163681);
+    scene = 0;
+    enterTime = -1L;
+    frx = null;
+    dxw = 0;
+    urv = null;
+    urw = 1;
+    AppMethodBeat.o(207108);
   }
 }
 

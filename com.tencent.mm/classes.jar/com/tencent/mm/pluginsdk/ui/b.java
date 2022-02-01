@@ -7,11 +7,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.by.a.a.a;
+import com.tencent.mm.aj.e.a;
+import com.tencent.mm.bx.a.a.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.sdk.platformtools.f;
 import java.io.IOException;
 
@@ -19,24 +19,24 @@ public final class b
   extends a
   implements e.a
 {
-  private float BUy;
-  int[] BUz;
-  Bitmap mVW;
+  private float DmO;
+  int[] DmP;
+  Bitmap nyv;
   
   private b(String paramString)
   {
-    super(a.b.exg(), paramString);
+    super(a.b.eMA(), paramString);
     AppMethodBeat.i(152111);
-    this.BUy = 0.5F;
-    this.mVW = null;
-    this.BUz = new int[2];
+    this.DmO = 0.5F;
+    this.nyv = null;
+    this.DmP = new int[2];
     AppMethodBeat.o(152111);
   }
   
   public b(String paramString, float paramFloat)
   {
     this(paramString);
-    this.BUy = paramFloat;
+    this.DmO = paramFloat;
   }
   
   private void a(Canvas paramCanvas, Bitmap paramBitmap)
@@ -44,20 +44,27 @@ public final class b
     AppMethodBeat.i(152114);
     Rect localRect2 = getBounds();
     Rect localRect1 = null;
-    if ((this.BVz > 1.0F) || (this.tFD))
+    if ((this.DnQ > 1.0F) || (this.uNY))
     {
       int i = paramBitmap.getHeight() / 15 / 2;
       int j = paramBitmap.getWidth() / 15 / 2;
       localRect1 = new Rect(j, i, paramBitmap.getWidth() - j, paramBitmap.getHeight() - i);
     }
-    paramCanvas.drawBitmap(paramBitmap, localRect1, localRect2, this.gFc);
+    paramCanvas.drawBitmap(paramBitmap, localRect1, localRect2, this.hfD);
     AppMethodBeat.o(152114);
   }
   
-  public final void UD(int paramInt)
+  public final void Af(String paramString)
+  {
+    AppMethodBeat.i(152112);
+    super.Af(paramString);
+    AppMethodBeat.o(152112);
+  }
+  
+  public final void WN(int paramInt)
   {
     AppMethodBeat.i(152115);
-    this.gFc.setAlpha(paramInt);
+    this.hfD.setAlpha(paramInt);
     AppMethodBeat.o(152115);
   }
   
@@ -65,10 +72,10 @@ public final class b
   {
     Bitmap localBitmap = null;
     AppMethodBeat.i(152113);
-    String str = this.tag + "-" + this.BUy;
-    com.tencent.mm.by.a.a locala = a.a.EKY;
+    String str = this.tag + "-" + this.DmO;
+    com.tencent.mm.bx.a.a locala = a.a.Gik;
     if (locala != null) {
-      localBitmap = a.a.EKY.aeS(str);
+      localBitmap = a.a.Gik.ajM(str);
     }
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
@@ -76,12 +83,12 @@ public final class b
       AppMethodBeat.o(152113);
       return;
     }
-    if (this.BVv) {}
-    for (localBitmap = this.uIa.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1); localBitmap != null; localBitmap = this.uIa.ew(this.tag))
+    if (this.DnM) {}
+    for (localBitmap = this.vQR.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1); localBitmap != null; localBitmap = this.vQR.el(this.tag))
     {
-      localBitmap = f.a(localBitmap, false, this.BUy * localBitmap.getWidth());
+      localBitmap = f.a(localBitmap, false, this.DmO * localBitmap.getWidth());
       if (locala != null) {
-        locala.q(str, localBitmap);
+        locala.p(str, localBitmap);
       }
       if ((localBitmap == null) || (localBitmap.isRecycled())) {
         break label271;
@@ -90,12 +97,12 @@ public final class b
       AppMethodBeat.o(152113);
       return;
     }
-    if (((localBitmap != null) && (!localBitmap.isRecycled())) || (this.mVW == null)) {}
+    if (((localBitmap != null) && (!localBitmap.isRecycled())) || (this.nyv == null)) {}
     try
     {
-      this.mVW = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cd.a.getDensity(null));
-      this.mVW = f.a(this.mVW, false, this.BUy * this.mVW.getWidth());
-      localBitmap = this.mVW;
+      this.nyv = BackwardSupportUtil.b.b(ai.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cc.a.getDensity(null));
+      this.nyv = f.a(this.nyv, false, this.DmO * this.nyv.getWidth());
+      localBitmap = this.nyv;
       if ((localBitmap != null) && (!localBitmap.isRecycled())) {
         a(paramCanvas, localBitmap);
       }
@@ -107,21 +114,14 @@ public final class b
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AvatarRoundDrawable", localIOException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.AvatarRoundDrawable", localIOException, "", new Object[0]);
       }
     }
-  }
-  
-  public final void vZ(String paramString)
-  {
-    AppMethodBeat.i(152112);
-    super.vZ(paramString);
-    AppMethodBeat.o(152112);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.b
  * JD-Core Version:    0.7.0.1
  */

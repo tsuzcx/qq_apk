@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.qqmail.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.v;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -12,18 +12,18 @@ import java.util.Set;
 public final class ag
   extends n
 {
-  private v uMT;
+  private v vVJ;
   
   private static void a(n.b paramb, OutputStream paramOutputStream)
   {
     AppMethodBeat.i(122798);
-    if (paramb.uLu == null)
+    if (paramb.vUl == null)
     {
       AppMethodBeat.o(122798);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramb.uLu.keySet().iterator();
+    Iterator localIterator = paramb.vUl.keySet().iterator();
     int i = 1;
     if (localIterator.hasNext())
     {
@@ -31,7 +31,7 @@ public final class ag
       if (i != 0) {}
       for (String str1 = "";; str1 = "&")
       {
-        localStringBuilder.append(str1).append(URLEncoder.encode(str2, "utf-8")).append('=').append(URLEncoder.encode((String)paramb.uLu.get(str2), "utf-8"));
+        localStringBuilder.append(str1).append(URLEncoder.encode(str2, "utf-8")).append('=').append(URLEncoder.encode((String)paramb.vUl.get(str2), "utf-8"));
         i = 0;
         break;
       }
@@ -58,7 +58,7 @@ public final class ag
     //   25: aload_3
     //   26: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   29: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 116	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: invokestatic 116	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   35: aconst_null
     //   36: astore 12
     //   38: aconst_null
@@ -70,88 +70,88 @@ public final class ag
     //   47: aconst_null
     //   48: astore 10
     //   50: aload_3
-    //   51: getfield 120	com/tencent/mm/plugin/qqmail/b/n$b:uLt	I
+    //   51: getfield 120	com/tencent/mm/plugin/qqmail/b/n$b:vUk	I
     //   54: ifne +684 -> 738
     //   57: aload_3
-    //   58: getfield 21	com/tencent/mm/plugin/qqmail/b/n$b:uLu	Ljava/util/Map;
+    //   58: getfield 21	com/tencent/mm/plugin/qqmail/b/n$b:vUl	Ljava/util/Map;
     //   61: astore 8
     //   63: aload_0
     //   64: aload_1
     //   65: aload_2
     //   66: aload 8
-    //   68: invokestatic 123	com/tencent/mm/plugin/qqmail/b/ag:d	(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+    //   68: invokestatic 124	com/tencent/mm/plugin/qqmail/b/ag:f	(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
     //   71: aconst_null
-    //   72: invokestatic 128	com/tencent/mm/network/b:a	(Ljava/lang/String;Lcom/tencent/mm/network/b$b;)Lcom/tencent/mm/network/v;
-    //   75: putfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
+    //   72: invokestatic 129	com/tencent/mm/network/b:a	(Ljava/lang/String;Lcom/tencent/mm/network/b$b;)Lcom/tencent/mm/network/v;
+    //   75: putfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
     //   78: aload_0
-    //   79: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   82: getstatic 133	com/tencent/mm/plugin/qqmail/b/ag:timeout	I
-    //   85: invokevirtual 138	com/tencent/mm/network/v:setConnectTimeout	(I)V
+    //   79: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   82: getstatic 134	com/tencent/mm/plugin/qqmail/b/ag:timeout	I
+    //   85: invokevirtual 139	com/tencent/mm/network/v:setConnectTimeout	(I)V
     //   88: aload_0
-    //   89: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
+    //   89: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
     //   92: astore 8
     //   94: aload_3
-    //   95: getfield 120	com/tencent/mm/plugin/qqmail/b/n$b:uLt	I
+    //   95: getfield 120	com/tencent/mm/plugin/qqmail/b/n$b:vUk	I
     //   98: ifne +646 -> 744
-    //   101: ldc 140
+    //   101: ldc 141
     //   103: astore_1
     //   104: aload 8
     //   106: aload_1
-    //   107: invokevirtual 143	com/tencent/mm/network/v:setRequestMethod	(Ljava/lang/String;)V
+    //   107: invokevirtual 144	com/tencent/mm/network/v:setRequestMethod	(Ljava/lang/String;)V
     //   110: aload_0
-    //   111: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   114: invokevirtual 146	com/tencent/mm/network/v:aEQ	()V
+    //   111: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   114: invokevirtual 147	com/tencent/mm/network/v:aLH	()V
     //   117: aload_0
-    //   118: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   121: invokevirtual 149	com/tencent/mm/network/v:aER	()V
+    //   118: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   121: invokevirtual 150	com/tencent/mm/network/v:aLI	()V
     //   124: aload_0
-    //   125: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
+    //   125: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
     //   128: iconst_0
-    //   129: invokevirtual 153	com/tencent/mm/network/v:setUseCaches	(Z)V
+    //   129: invokevirtual 154	com/tencent/mm/network/v:setUseCaches	(Z)V
     //   132: aload_0
-    //   133: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   136: ldc 155
-    //   138: getstatic 159	com/tencent/mm/plugin/qqmail/b/ag:userAgent	Ljava/lang/String;
-    //   141: invokevirtual 162	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   133: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   136: ldc 156
+    //   138: getstatic 160	com/tencent/mm/plugin/qqmail/b/ag:userAgent	Ljava/lang/String;
+    //   141: invokevirtual 163	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   144: aload_0
-    //   145: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   148: ldc 164
-    //   150: getstatic 167	com/tencent/mm/plugin/qqmail/b/ag:host	Ljava/lang/String;
-    //   153: invokevirtual 162	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   156: ldc 169
-    //   158: ldc 171
-    //   160: invokestatic 176	java/lang/System:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   145: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   148: ldc 165
+    //   150: getstatic 168	com/tencent/mm/plugin/qqmail/b/ag:host	Ljava/lang/String;
+    //   153: invokevirtual 163	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   156: ldc 170
+    //   158: ldc 172
+    //   160: invokestatic 177	java/lang/System:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   163: pop
     //   164: aload_0
-    //   165: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   168: ldc 178
+    //   165: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   168: ldc 179
     //   170: ldc 62
-    //   172: invokevirtual 162	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   172: invokevirtual 163	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   175: aload_0
-    //   176: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   179: ldc 180
-    //   181: ldc 182
-    //   183: invokevirtual 162	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   176: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   179: ldc 181
+    //   181: ldc 183
+    //   183: invokevirtual 163	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   186: aload_0
-    //   187: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   190: ldc 184
+    //   187: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   190: ldc 185
     //   192: aload_3
-    //   193: getfield 187	com/tencent/mm/plugin/qqmail/b/n$b:uLv	Ljava/util/Map;
-    //   196: invokestatic 191	com/tencent/mm/plugin/qqmail/b/ag:as	(Ljava/util/Map;)Ljava/lang/String;
-    //   199: invokevirtual 162	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   193: getfield 188	com/tencent/mm/plugin/qqmail/b/n$b:vUm	Ljava/util/Map;
+    //   196: invokestatic 192	com/tencent/mm/plugin/qqmail/b/ag:au	(Ljava/util/Map;)Ljava/lang/String;
+    //   199: invokevirtual 163	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   202: aload_0
-    //   203: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   206: invokevirtual 194	com/tencent/mm/network/v:connect	()V
+    //   203: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   206: invokevirtual 195	com/tencent/mm/network/v:connect	()V
     //   209: aload_0
-    //   210: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   213: invokevirtual 198	com/tencent/mm/network/v:getOutputStream	()Ljava/io/OutputStream;
+    //   210: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   213: invokevirtual 199	com/tencent/mm/network/v:getOutputStream	()Ljava/io/OutputStream;
     //   216: astore_1
     //   217: aload 14
     //   219: astore 9
     //   221: aload_1
     //   222: astore 12
     //   224: aload_3
-    //   225: getfield 120	com/tencent/mm/plugin/qqmail/b/n$b:uLt	I
+    //   225: getfield 120	com/tencent/mm/plugin/qqmail/b/n$b:vUk	I
     //   228: iconst_1
     //   229: if_icmpne +15 -> 244
     //   232: aload 14
@@ -160,20 +160,20 @@ public final class ag
     //   237: astore 12
     //   239: aload_3
     //   240: aload_1
-    //   241: invokestatic 200	com/tencent/mm/plugin/qqmail/b/ag:a	(Lcom/tencent/mm/plugin/qqmail/b/n$b;Ljava/io/OutputStream;)V
+    //   241: invokestatic 201	com/tencent/mm/plugin/qqmail/b/ag:a	(Lcom/tencent/mm/plugin/qqmail/b/n$b;Ljava/io/OutputStream;)V
     //   244: aload 14
     //   246: astore 9
     //   248: aload_1
     //   249: astore 12
     //   251: aload_1
-    //   252: invokevirtual 203	java/io/OutputStream:flush	()V
+    //   252: invokevirtual 204	java/io/OutputStream:flush	()V
     //   255: aload 14
     //   257: astore 9
     //   259: aload_1
     //   260: astore 12
     //   262: aload_0
-    //   263: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   266: invokevirtual 207	com/tencent/mm/network/v:getResponseCode	()I
+    //   263: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   266: invokevirtual 208	com/tencent/mm/network/v:getResponseCode	()I
     //   269: istore 5
     //   271: aload 10
     //   273: astore 13
@@ -182,9 +182,9 @@ public final class ag
     //   279: aload_1
     //   280: astore 12
     //   282: aload_0
-    //   283: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   286: ldc 209
-    //   288: invokevirtual 213	com/tencent/mm/network/v:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   283: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   286: ldc 210
+    //   288: invokevirtual 214	com/tencent/mm/network/v:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   291: astore 15
     //   293: aload 10
     //   295: astore 13
@@ -193,9 +193,9 @@ public final class ag
     //   301: aload_1
     //   302: astore 12
     //   304: aload_0
-    //   305: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   308: ldc 215
-    //   310: invokevirtual 213	com/tencent/mm/network/v:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   305: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   308: ldc 216
+    //   310: invokevirtual 214	com/tencent/mm/network/v:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   313: astore 11
     //   315: aload 10
     //   317: astore 13
@@ -204,9 +204,9 @@ public final class ag
     //   323: aload_1
     //   324: astore 12
     //   326: aload_0
-    //   327: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   330: ldc 217
-    //   332: invokevirtual 213	com/tencent/mm/network/v:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   327: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   330: ldc 218
+    //   332: invokevirtual 214	com/tencent/mm/network/v:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   335: astore 8
     //   337: aload 8
     //   339: ifnull +412 -> 751
@@ -217,8 +217,8 @@ public final class ag
     //   350: aload_1
     //   351: astore 12
     //   353: aload 8
-    //   355: ldc 219
-    //   357: invokevirtual 223	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   355: ldc 220
+    //   357: invokevirtual 224	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   360: ifeq +391 -> 751
     //   363: aload 10
     //   365: astore 13
@@ -227,8 +227,8 @@ public final class ag
     //   371: aload_1
     //   372: astore 12
     //   374: aload_2
-    //   375: ldc 225
-    //   377: invokevirtual 223	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   375: ldc 226
+    //   377: invokevirtual 224	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   380: ifeq +371 -> 751
     //   383: iconst_1
     //   384: istore 6
@@ -239,19 +239,19 @@ public final class ag
     //   394: aload_1
     //   395: astore 12
     //   397: aload_0
-    //   398: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   401: invokevirtual 229	com/tencent/mm/network/v:getInputStream	()Ljava/io/InputStream;
+    //   398: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   401: invokevirtual 230	com/tencent/mm/network/v:getInputStream	()Ljava/io/InputStream;
     //   404: astore 8
     //   406: aload 11
     //   408: ifnull +962 -> 1370
     //   411: aload 11
-    //   413: ldc 231
-    //   415: invokevirtual 223	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   413: ldc 232
+    //   415: invokevirtual 224	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   418: ifeq +952 -> 1370
-    //   421: new 233	java/util/zip/GZIPInputStream
+    //   421: new 234	java/util/zip/GZIPInputStream
     //   424: dup
     //   425: aload 8
-    //   427: invokespecial 236	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   427: invokespecial 237	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   430: astore 9
     //   432: aload 9
     //   434: astore 8
@@ -265,7 +265,7 @@ public final class ag
     //   449: astore 11
     //   451: aload 12
     //   453: astore 10
-    //   455: getstatic 239	com/tencent/mm/plugin/qqmail/b/ag:uLs	Ljava/lang/String;
+    //   455: getstatic 240	com/tencent/mm/plugin/qqmail/b/ag:vUj	Ljava/lang/String;
     //   458: astore 13
     //   460: aload 9
     //   462: astore 11
@@ -280,31 +280,31 @@ public final class ag
     //   481: aload 12
     //   483: astore 10
     //   485: aload_3
-    //   486: getfield 21	com/tencent/mm/plugin/qqmail/b/n$b:uLu	Ljava/util/Map;
-    //   489: ldc 241
+    //   486: getfield 21	com/tencent/mm/plugin/qqmail/b/n$b:vUl	Ljava/util/Map;
+    //   489: ldc 242
     //   491: invokeinterface 75 2 0
     //   496: ifnonnull +261 -> 757
     //   499: aload 9
     //   501: astore 11
     //   503: aload 12
     //   505: astore 10
-    //   507: invokestatic 245	java/lang/System:currentTimeMillis	()J
-    //   510: invokestatic 251	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   507: invokestatic 246	java/lang/System:currentTimeMillis	()J
+    //   510: invokestatic 252	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   513: astore_3
     //   514: aload 9
     //   516: astore 11
     //   518: aload 12
     //   520: astore 10
-    //   522: new 253	com/tencent/mm/vfs/e
+    //   522: new 254	com/tencent/mm/vfs/e
     //   525: dup
     //   526: aload 13
     //   528: aload 14
     //   530: aload_3
     //   531: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   534: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   537: invokespecial 255	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   537: invokespecial 256	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   540: iconst_1
-    //   541: invokestatic 260	com/tencent/mm/vfs/i:d	(Lcom/tencent/mm/vfs/e;Z)Ljava/io/OutputStream;
+    //   541: invokestatic 261	com/tencent/mm/vfs/i:d	(Lcom/tencent/mm/vfs/e;Z)Ljava/io/OutputStream;
     //   544: astore_3
     //   545: aload_3
     //   546: astore 11
@@ -319,7 +319,7 @@ public final class ag
     //   562: astore 10
     //   564: aload 8
     //   566: aload 9
-    //   568: invokevirtual 266	java/io/InputStream:read	([B)I
+    //   568: invokevirtual 267	java/io/InputStream:read	([B)I
     //   571: istore 7
     //   573: iload 7
     //   575: ifle +227 -> 802
@@ -331,19 +331,19 @@ public final class ag
     //   585: aload 9
     //   587: iconst_0
     //   588: iload 7
-    //   590: invokevirtual 269	java/io/OutputStream:write	([BII)V
+    //   590: invokevirtual 270	java/io/OutputStream:write	([BII)V
     //   593: aload_3
     //   594: astore 11
     //   596: aload_3
     //   597: astore 10
     //   599: aload_3
-    //   600: invokevirtual 203	java/io/OutputStream:flush	()V
+    //   600: invokevirtual 204	java/io/OutputStream:flush	()V
     //   603: aload_3
     //   604: astore 11
     //   606: aload_3
     //   607: astore 10
     //   609: aload 4
-    //   611: invokeinterface 274 1 0
+    //   611: invokeinterface 275 1 0
     //   616: goto -58 -> 558
     //   619: astore_2
     //   620: aload 11
@@ -352,20 +352,20 @@ public final class ag
     //   626: aload_2
     //   627: ldc 56
     //   629: iconst_0
-    //   630: anewarray 276	java/lang/Object
-    //   633: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   630: anewarray 277	java/lang/Object
+    //   633: invokestatic 281	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   636: iload 5
     //   638: ifne +375 -> 1013
     //   641: sipush 503
     //   644: istore 6
     //   646: aload 11
     //   648: astore 10
-    //   650: new 282	com/tencent/mm/plugin/qqmail/b/n$c
+    //   650: new 283	com/tencent/mm/plugin/qqmail/b/n$c
     //   653: dup
     //   654: iload 6
     //   656: aconst_null
     //   657: aconst_null
-    //   658: invokespecial 285	com/tencent/mm/plugin/qqmail/b/n$c:<init>	(ILjava/util/Map;Ljava/lang/String;)V
+    //   658: invokespecial 286	com/tencent/mm/plugin/qqmail/b/n$c:<init>	(ILjava/util/Map;Ljava/lang/String;)V
     //   661: astore_2
     //   662: aload 11
     //   664: ifnull +35 -> 699
@@ -376,7 +376,7 @@ public final class ag
     //   675: aload_1
     //   676: astore 12
     //   678: aload 11
-    //   680: invokevirtual 203	java/io/OutputStream:flush	()V
+    //   680: invokevirtual 204	java/io/OutputStream:flush	()V
     //   683: aload 8
     //   685: astore 13
     //   687: aload 8
@@ -384,21 +384,21 @@ public final class ag
     //   691: aload_1
     //   692: astore 12
     //   694: aload 11
-    //   696: invokevirtual 288	java/io/OutputStream:close	()V
+    //   696: invokevirtual 289	java/io/OutputStream:close	()V
     //   699: aload_1
     //   700: ifnull +7 -> 707
     //   703: aload_1
-    //   704: invokevirtual 288	java/io/OutputStream:close	()V
+    //   704: invokevirtual 289	java/io/OutputStream:close	()V
     //   707: aload 8
     //   709: ifnull +8 -> 717
     //   712: aload 8
-    //   714: invokevirtual 289	java/io/InputStream:close	()V
+    //   714: invokevirtual 290	java/io/InputStream:close	()V
     //   717: aload_0
-    //   718: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
+    //   718: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
     //   721: ifnull +10 -> 731
     //   724: aload_0
-    //   725: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   728: invokevirtual 292	com/tencent/mm/network/v:disconnect	()V
+    //   725: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   728: invokevirtual 293	com/tencent/mm/network/v:disconnect	()V
     //   731: ldc 98
     //   733: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   736: aload_2
@@ -406,7 +406,7 @@ public final class ag
     //   738: aconst_null
     //   739: astore 8
     //   741: goto -678 -> 63
-    //   744: ldc_w 294
+    //   744: ldc_w 295
     //   747: astore_1
     //   748: goto -644 -> 104
     //   751: iconst_0
@@ -417,19 +417,19 @@ public final class ag
     //   761: aload 12
     //   763: astore 10
     //   765: aload_3
-    //   766: getfield 21	com/tencent/mm/plugin/qqmail/b/n$b:uLu	Ljava/util/Map;
-    //   769: ldc 241
+    //   766: getfield 21	com/tencent/mm/plugin/qqmail/b/n$b:vUl	Ljava/util/Map;
+    //   769: ldc 242
     //   771: invokeinterface 75 2 0
-    //   776: checkcast 296	java/io/Serializable
+    //   776: checkcast 297	java/io/Serializable
     //   779: astore_3
     //   780: goto -266 -> 514
     //   783: aload 9
     //   785: astore 11
     //   787: aload 12
     //   789: astore 10
-    //   791: new 298	java/io/ByteArrayOutputStream
+    //   791: new 299	java/io/ByteArrayOutputStream
     //   794: dup
-    //   795: invokespecial 299	java/io/ByteArrayOutputStream:<init>	()V
+    //   795: invokespecial 300	java/io/ByteArrayOutputStream:<init>	()V
     //   798: astore_3
     //   799: goto -254 -> 545
     //   802: aload_3
@@ -437,7 +437,7 @@ public final class ag
     //   805: aload_3
     //   806: astore 10
     //   808: aload 15
-    //   810: invokestatic 303	com/tencent/mm/plugin/qqmail/b/ag:akU	(Ljava/lang/String;)Ljava/util/Map;
+    //   810: invokestatic 304	com/tencent/mm/plugin/qqmail/b/ag:apT	(Ljava/lang/String;)Ljava/util/Map;
     //   813: astore 9
     //   815: iload 6
     //   817: ifeq +139 -> 956
@@ -447,12 +447,12 @@ public final class ag
     //   825: astore 11
     //   827: aload_3
     //   828: astore 10
-    //   830: new 282	com/tencent/mm/plugin/qqmail/b/n$c
+    //   830: new 283	com/tencent/mm/plugin/qqmail/b/n$c
     //   833: dup
     //   834: iload 5
     //   836: aload 9
     //   838: aload 4
-    //   840: invokespecial 285	com/tencent/mm/plugin/qqmail/b/n$c:<init>	(ILjava/util/Map;Ljava/lang/String;)V
+    //   840: invokespecial 286	com/tencent/mm/plugin/qqmail/b/n$c:<init>	(ILjava/util/Map;Ljava/lang/String;)V
     //   843: astore 4
     //   845: aload_3
     //   846: astore 11
@@ -470,7 +470,7 @@ public final class ag
     //   871: aload 4
     //   873: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   876: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   879: invokestatic 116	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   879: invokestatic 116	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   882: aload_3
     //   883: ifnull +33 -> 916
     //   886: aload 8
@@ -480,7 +480,7 @@ public final class ag
     //   894: aload_1
     //   895: astore 12
     //   897: aload_3
-    //   898: invokevirtual 203	java/io/OutputStream:flush	()V
+    //   898: invokevirtual 204	java/io/OutputStream:flush	()V
     //   901: aload 8
     //   903: astore 13
     //   905: aload 8
@@ -488,21 +488,21 @@ public final class ag
     //   909: aload_1
     //   910: astore 12
     //   912: aload_3
-    //   913: invokevirtual 288	java/io/OutputStream:close	()V
+    //   913: invokevirtual 289	java/io/OutputStream:close	()V
     //   916: aload_1
     //   917: ifnull +7 -> 924
     //   920: aload_1
-    //   921: invokevirtual 288	java/io/OutputStream:close	()V
+    //   921: invokevirtual 289	java/io/OutputStream:close	()V
     //   924: aload 8
     //   926: ifnull +8 -> 934
     //   929: aload 8
-    //   931: invokevirtual 289	java/io/InputStream:close	()V
+    //   931: invokevirtual 290	java/io/InputStream:close	()V
     //   934: aload_0
-    //   935: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
+    //   935: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
     //   938: ifnull +10 -> 948
     //   941: aload_0
-    //   942: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   945: invokevirtual 292	com/tencent/mm/network/v:disconnect	()V
+    //   942: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   945: invokevirtual 293	com/tencent/mm/network/v:disconnect	()V
     //   948: ldc 98
     //   950: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   953: aload 4
@@ -514,9 +514,9 @@ public final class ag
     //   962: new 54	java/lang/String
     //   965: dup
     //   966: aload_3
-    //   967: checkcast 298	java/io/ByteArrayOutputStream
-    //   970: invokevirtual 306	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   973: invokespecial 308	java/lang/String:<init>	([B)V
+    //   967: checkcast 299	java/io/ByteArrayOutputStream
+    //   970: invokevirtual 307	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   973: invokespecial 309	java/lang/String:<init>	([B)V
     //   976: astore 4
     //   978: goto -154 -> 824
     //   981: astore_1
@@ -524,16 +524,16 @@ public final class ag
     //   984: aload_1
     //   985: ldc 56
     //   987: iconst_0
-    //   988: anewarray 276	java/lang/Object
-    //   991: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   988: anewarray 277	java/lang/Object
+    //   991: invokestatic 281	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   994: goto -70 -> 924
     //   997: astore_1
     //   998: ldc 100
     //   1000: aload_1
     //   1001: ldc 56
     //   1003: iconst_0
-    //   1004: anewarray 276	java/lang/Object
-    //   1007: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1004: anewarray 277	java/lang/Object
+    //   1007: invokestatic 281	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1010: goto -76 -> 934
     //   1013: sipush 500
     //   1016: istore 6
@@ -543,16 +543,16 @@ public final class ag
     //   1024: aload_1
     //   1025: ldc 56
     //   1027: iconst_0
-    //   1028: anewarray 276	java/lang/Object
-    //   1031: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1028: anewarray 277	java/lang/Object
+    //   1031: invokestatic 281	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1034: goto -327 -> 707
     //   1037: astore_1
     //   1038: ldc 100
     //   1040: aload_1
     //   1041: ldc 56
     //   1043: iconst_0
-    //   1044: anewarray 276	java/lang/Object
-    //   1047: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1044: anewarray 277	java/lang/Object
+    //   1047: invokestatic 281	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1050: goto -333 -> 717
     //   1053: astore_2
     //   1054: aload 10
@@ -564,7 +564,7 @@ public final class ag
     //   1067: aload_1
     //   1068: astore 12
     //   1070: aload 10
-    //   1072: invokevirtual 203	java/io/OutputStream:flush	()V
+    //   1072: invokevirtual 204	java/io/OutputStream:flush	()V
     //   1075: aload 8
     //   1077: astore 13
     //   1079: aload 8
@@ -572,7 +572,7 @@ public final class ag
     //   1083: aload_1
     //   1084: astore 12
     //   1086: aload 10
-    //   1088: invokevirtual 288	java/io/OutputStream:close	()V
+    //   1088: invokevirtual 289	java/io/OutputStream:close	()V
     //   1091: aload 8
     //   1093: astore 13
     //   1095: aload 8
@@ -600,8 +600,8 @@ public final class ag
     //   1132: aload_3
     //   1133: ldc 56
     //   1135: iconst_0
-    //   1136: anewarray 276	java/lang/Object
-    //   1139: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1136: anewarray 277	java/lang/Object
+    //   1139: invokestatic 281	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1142: iload 5
     //   1144: ifne +63 -> 1207
     //   1147: sipush 503
@@ -610,27 +610,27 @@ public final class ag
     //   1153: astore 9
     //   1155: aload_1
     //   1156: astore 12
-    //   1158: new 282	com/tencent/mm/plugin/qqmail/b/n$c
+    //   1158: new 283	com/tencent/mm/plugin/qqmail/b/n$c
     //   1161: dup
     //   1162: iload 5
     //   1164: aconst_null
     //   1165: aconst_null
-    //   1166: invokespecial 285	com/tencent/mm/plugin/qqmail/b/n$c:<init>	(ILjava/util/Map;Ljava/lang/String;)V
+    //   1166: invokespecial 286	com/tencent/mm/plugin/qqmail/b/n$c:<init>	(ILjava/util/Map;Ljava/lang/String;)V
     //   1169: astore_3
     //   1170: aload_1
     //   1171: ifnull +7 -> 1178
     //   1174: aload_1
-    //   1175: invokevirtual 288	java/io/OutputStream:close	()V
+    //   1175: invokevirtual 289	java/io/OutputStream:close	()V
     //   1178: aload_2
     //   1179: ifnull +7 -> 1186
     //   1182: aload_2
-    //   1183: invokevirtual 289	java/io/InputStream:close	()V
+    //   1183: invokevirtual 290	java/io/InputStream:close	()V
     //   1186: aload_0
-    //   1187: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
+    //   1187: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
     //   1190: ifnull +10 -> 1200
     //   1193: aload_0
-    //   1194: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   1197: invokevirtual 292	com/tencent/mm/network/v:disconnect	()V
+    //   1194: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   1197: invokevirtual 293	com/tencent/mm/network/v:disconnect	()V
     //   1200: ldc 98
     //   1202: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1205: aload_3
@@ -643,16 +643,16 @@ public final class ag
     //   1218: aload_1
     //   1219: ldc 56
     //   1221: iconst_0
-    //   1222: anewarray 276	java/lang/Object
-    //   1225: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1222: anewarray 277	java/lang/Object
+    //   1225: invokestatic 281	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1228: goto -50 -> 1178
     //   1231: astore_1
     //   1232: ldc 100
     //   1234: aload_1
     //   1235: ldc 56
     //   1237: iconst_0
-    //   1238: anewarray 276	java/lang/Object
-    //   1241: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1238: anewarray 277	java/lang/Object
+    //   1241: invokestatic 281	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1244: goto -58 -> 1186
     //   1247: astore_1
     //   1248: aload 12
@@ -660,17 +660,17 @@ public final class ag
     //   1251: aload_2
     //   1252: ifnull +7 -> 1259
     //   1255: aload_2
-    //   1256: invokevirtual 288	java/io/OutputStream:close	()V
+    //   1256: invokevirtual 289	java/io/OutputStream:close	()V
     //   1259: aload 9
     //   1261: ifnull +8 -> 1269
     //   1264: aload 9
-    //   1266: invokevirtual 289	java/io/InputStream:close	()V
+    //   1266: invokevirtual 290	java/io/InputStream:close	()V
     //   1269: aload_0
-    //   1270: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
+    //   1270: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
     //   1273: ifnull +10 -> 1283
     //   1276: aload_0
-    //   1277: getfield 130	com/tencent/mm/plugin/qqmail/b/ag:uMT	Lcom/tencent/mm/network/v;
-    //   1280: invokevirtual 292	com/tencent/mm/network/v:disconnect	()V
+    //   1277: getfield 131	com/tencent/mm/plugin/qqmail/b/ag:vVJ	Lcom/tencent/mm/network/v;
+    //   1280: invokevirtual 293	com/tencent/mm/network/v:disconnect	()V
     //   1283: ldc 98
     //   1285: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1288: aload_1
@@ -680,16 +680,16 @@ public final class ag
     //   1293: aload_2
     //   1294: ldc 56
     //   1296: iconst_0
-    //   1297: anewarray 276	java/lang/Object
-    //   1300: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1297: anewarray 277	java/lang/Object
+    //   1300: invokestatic 281	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1303: goto -44 -> 1259
     //   1306: astore_2
     //   1307: ldc 100
     //   1309: aload_2
     //   1310: ldc 56
     //   1312: iconst_0
-    //   1313: anewarray 276	java/lang/Object
-    //   1316: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1313: anewarray 277	java/lang/Object
+    //   1316: invokestatic 281	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1319: goto -50 -> 1269
     //   1322: astore_1
     //   1323: aload 12
@@ -835,16 +835,16 @@ public final class ag
   public final void cancel()
   {
     AppMethodBeat.i(122797);
-    ad.d("MicroMsg.URLConnectionUtil", "cancel conection.");
-    if (this.uMT != null) {
-      this.uMT.disconnect();
+    ac.d("MicroMsg.URLConnectionUtil", "cancel conection.");
+    if (this.vVJ != null) {
+      this.vVJ.disconnect();
     }
     AppMethodBeat.o(122797);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.ag
  * JD-Core Version:    0.7.0.1
  */

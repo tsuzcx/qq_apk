@@ -8,14 +8,14 @@ import java.util.List;
 
 public class a
 {
-  protected int Iov;
-  protected QbarNative Iow;
+  protected int JQg;
+  protected QbarNative JQh;
   
   public a()
   {
     AppMethodBeat.i(88393);
-    this.Iov = -1;
-    this.Iow = new QbarNative();
+    this.JQg = -1;
+    this.JQh = new QbarNative();
     AppMethodBeat.o(88393);
   }
   
@@ -35,15 +35,15 @@ public class a
     return str;
   }
   
-  public int G(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public int F(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88397);
     try
     {
-      if (this.Iov < 0) {
+      if (this.JQg < 0) {
         return -1;
       }
-      paramInt1 = this.Iow.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.Iov);
+      paramInt1 = this.JQh.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.JQg);
       return paramInt1;
     }
     finally
@@ -62,7 +62,7 @@ public class a
       int j;
       try
       {
-        if (this.Iov < 0) {
+        if (this.JQg < 0) {
           return 0;
         }
         QbarNative.QBarCodeDetectInfo[] arrayOfQBarCodeDetectInfo = new QbarNative.QBarCodeDetectInfo[3];
@@ -77,7 +77,7 @@ public class a
         }
         paramList.clear();
         paramList1.clear();
-        this.Iow.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.Iov);
+        this.JQh.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.JQg);
         i = 0;
         j = k;
         if (i < 3)
@@ -118,11 +118,11 @@ public class a
     AppMethodBeat.i(88395);
     try
     {
-      if (this.Iov < 0) {
-        this.Iov = this.Iow.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
+      if (this.JQg < 0) {
+        this.JQg = this.JQh.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
       }
-      System.out.println("qbarId:" + this.Iov);
-      if (this.Iov < 0) {
+      System.out.println("qbarId:" + this.JQg);
+      if (this.JQg < 0) {
         return -1;
       }
       return 0;
@@ -133,7 +133,7 @@ public class a
     }
   }
   
-  public final List<a> flK()
+  public final List<a> fCb()
   {
     int j = 0;
     AppMethodBeat.i(88399);
@@ -142,7 +142,7 @@ public class a
       int i;
       try
       {
-        if (this.Iov < 0) {
+        if (this.JQg < 0) {
           return null;
         }
         QbarNative.QBarResultJNI[] arrayOfQBarResultJNI = new QbarNative.QBarResultJNI[3];
@@ -156,7 +156,7 @@ public class a
           i += 1;
           continue;
         }
-        this.Iow.GetResults(arrayOfQBarResultJNI, this.Iov);
+        this.JQh.GetResults(arrayOfQBarResultJNI, this.JQg);
         ArrayList localArrayList = new ArrayList();
         i = j;
         if (i < 3)
@@ -198,16 +198,16 @@ public class a
     }
   }
   
-  public final QbarNative.QBarZoomInfo flL()
+  public final QbarNative.QBarZoomInfo fCc()
   {
     AppMethodBeat.i(88400);
     try
     {
-      if (this.Iov < 0) {
+      if (this.JQg < 0) {
         return null;
       }
       QbarNative.QBarZoomInfo localQBarZoomInfo = new QbarNative.QBarZoomInfo();
-      this.Iow.GetZoomInfo(localQBarZoomInfo, this.Iov);
+      this.JQh.GetZoomInfo(localQBarZoomInfo, this.JQg);
       return localQBarZoomInfo;
     }
     finally
@@ -216,15 +216,15 @@ public class a
     }
   }
   
-  public final int i(int[] paramArrayOfInt, int paramInt)
+  public final int l(int[] paramArrayOfInt, int paramInt)
   {
     AppMethodBeat.i(88396);
     try
     {
-      if (this.Iov < 0) {
+      if (this.JQg < 0) {
         return -1;
       }
-      paramInt = this.Iow.SetReaders(paramArrayOfInt, paramInt, this.Iov);
+      paramInt = this.JQh.SetReaders(paramArrayOfInt, paramInt, this.JQg);
       return paramInt;
     }
     finally
@@ -238,11 +238,11 @@ public class a
     AppMethodBeat.i(88398);
     try
     {
-      if (this.Iov < 0) {
+      if (this.JQg < 0) {
         return 0;
       }
-      int i = this.Iow.Release(this.Iov);
-      this.Iov = -1;
+      int i = this.JQh.Release(this.JQg);
+      this.JQg = -1;
       return i;
     }
     finally

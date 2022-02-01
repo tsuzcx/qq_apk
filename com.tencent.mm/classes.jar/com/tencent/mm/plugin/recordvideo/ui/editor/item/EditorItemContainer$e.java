@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-final class EditorItemContainer$e
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+public final class EditorItemContainer$e
   extends d.g.b.l
   implements a<y>
 {
-  public static final e vtp;
+  public static final e wDp;
   
   static
   {
     AppMethodBeat.i(76088);
-    vtp = new e();
+    wDp = new e();
     AppMethodBeat.o(76088);
   }
   

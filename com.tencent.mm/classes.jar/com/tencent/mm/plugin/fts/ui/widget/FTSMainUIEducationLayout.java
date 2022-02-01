@@ -12,12 +12,12 @@ import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.fts.ui.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -32,30 +32,30 @@ import org.json.JSONObject;
 public class FTSMainUIEducationLayout
   extends LinearLayout
 {
-  private float cEZ;
-  private float cFa;
-  private float kvF;
-  protected View.OnClickListener ruG;
-  protected List<LinearLayout> rxp;
-  protected Map<Integer, TextView> rxq;
-  private String rxr;
-  private long rxs;
-  private boolean rxt;
-  private TextView rxu;
-  protected boolean rxv;
-  private boolean rxw;
-  public View.OnClickListener rxx;
-  private View.OnClickListener rxy;
+  private float cCh;
+  private float cCi;
+  private float kWT;
+  protected View.OnClickListener sDy;
+  protected List<LinearLayout> sGh;
+  protected Map<Integer, TextView> sGi;
+  private String sGj;
+  private long sGk;
+  private boolean sGl;
+  private TextView sGm;
+  protected boolean sGn;
+  private boolean sGo;
+  public View.OnClickListener sGp;
+  private View.OnClickListener sGq;
   
   public FTSMainUIEducationLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(112267);
-    this.rxq = new HashMap();
-    this.rxr = "";
-    this.kvF = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.rxt = true;
-    this.rxv = true;
+    this.sGi = new HashMap();
+    this.sGj = "";
+    this.kWT = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    this.sGl = true;
+    this.sGn = true;
     initView();
     AppMethodBeat.o(112267);
   }
@@ -64,57 +64,57 @@ public class FTSMainUIEducationLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(112268);
-    this.rxq = new HashMap();
-    this.rxr = "";
-    this.kvF = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.rxt = true;
-    this.rxv = true;
+    this.sGi = new HashMap();
+    this.sGj = "";
+    this.kWT = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    this.sGl = true;
+    this.sGn = true;
     initView();
     AppMethodBeat.o(112268);
   }
   
-  private void cyo()
+  private void cLA()
   {
     AppMethodBeat.i(112272);
-    Iterator localIterator = this.rxp.iterator();
+    Iterator localIterator = this.sGh.iterator();
     while (localIterator.hasNext()) {
       removeView((LinearLayout)localIterator.next());
     }
-    this.rxp.clear();
-    this.rxq.clear();
-    this.rxr = "";
+    this.sGh.clear();
+    this.sGi.clear();
+    this.sGj = "";
     AppMethodBeat.o(112272);
   }
   
-  private void cyp()
+  private void cLB()
   {
     AppMethodBeat.i(112274);
-    a(getContext().getString(2131762942), null, getContext().getString(2131762938), null, getContext().getString(2131762939), null, a.ao(getContext(), 2131165517));
-    cyq();
+    a(getContext().getString(2131762942), null, getContext().getString(2131762938), null, getContext().getString(2131762939), null, a.au(getContext(), 2131165517));
+    cLC();
     AppMethodBeat.o(112274);
   }
   
-  private void dd(Object paramObject)
+  private void df(Object paramObject)
   {
     AppMethodBeat.i(112276);
     String str;
     if ((paramObject != null) && ((paramObject instanceof JSONObject)))
     {
       str = ((JSONObject)paramObject).optString("businessType");
-      if (!bt.isNullOrNil(str)) {
-        if (this.rxr != null) {
+      if (!bs.isNullOrNil(str)) {
+        if (this.sGj != null) {
           break label115;
         }
       }
     }
     label115:
-    for (paramObject = "";; paramObject = this.rxr)
+    for (paramObject = "";; paramObject = this.sGj)
     {
-      this.rxr = paramObject;
-      if (this.rxr.length() > 0) {
-        this.rxr += "|";
+      this.sGj = paramObject;
+      if (this.sGj.length() > 0) {
+        this.sGj += "|";
       }
-      this.rxr += str;
+      this.sGj += str;
       AppMethodBeat.o(112276);
       return;
     }
@@ -124,14 +124,14 @@ public class FTSMainUIEducationLayout
   {
     AppMethodBeat.i(112269);
     setOrientation(1);
-    this.rxp = new ArrayList();
+    this.sGh = new ArrayList();
     AppMethodBeat.o(112269);
   }
   
   public final void V(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(112278);
-    ad.v("MicroMsg.FTS.FTSMainUIEducationLayout", "action %d", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
+    ac.v("MicroMsg.FTS.FTSMainUIEducationLayout", "action %d", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
     switch (paramMotionEvent.getAction())
     {
     }
@@ -139,7 +139,7 @@ public class FTSMainUIEducationLayout
     {
       AppMethodBeat.o(112278);
       return;
-      Iterator localIterator = this.rxq.values().iterator();
+      Iterator localIterator = this.sGi.values().iterator();
       TextView localTextView;
       int[] arrayOfInt;
       do
@@ -153,26 +153,26 @@ public class FTSMainUIEducationLayout
       } while (!new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + localTextView.getWidth(), arrayOfInt[1] + localTextView.getHeight()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
       while (localTextView != null)
       {
-        this.rxu = localTextView;
-        this.cEZ = paramMotionEvent.getRawX();
-        this.cFa = paramMotionEvent.getRawY();
-        this.rxs = System.currentTimeMillis();
+        this.sGm = localTextView;
+        this.cCh = paramMotionEvent.getRawX();
+        this.cCi = paramMotionEvent.getRawY();
+        this.sGk = System.currentTimeMillis();
         AppMethodBeat.o(112278);
         return;
         localTextView = null;
       }
-      if (this.rxu != null)
+      if (this.sGm != null)
       {
-        float f1 = paramMotionEvent.getRawX() - this.cEZ;
-        float f2 = paramMotionEvent.getRawY() - this.cFa;
-        ad.v("MicroMsg.FTS.FTSMainUIEducationLayout", "action up deltaX %f, deltaY %f, time interval %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Long.valueOf(System.currentTimeMillis() - this.rxs) });
-        if ((Math.abs(f1) <= this.kvF) && (Math.abs(f2) <= this.kvF) && (System.currentTimeMillis() - this.rxs < 200L) && (this.ruG != null)) {
-          this.ruG.onClick(this.rxu);
+        float f1 = paramMotionEvent.getRawX() - this.cCh;
+        float f2 = paramMotionEvent.getRawY() - this.cCi;
+        ac.v("MicroMsg.FTS.FTSMainUIEducationLayout", "action up deltaX %f, deltaY %f, time interval %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Long.valueOf(System.currentTimeMillis() - this.sGk) });
+        if ((Math.abs(f1) <= this.kWT) && (Math.abs(f2) <= this.kWT) && (System.currentTimeMillis() - this.sGk < 200L) && (this.sDy != null)) {
+          this.sDy.onClick(this.sGm);
         }
-        this.rxu = null;
+        this.sGm = null;
         AppMethodBeat.o(112278);
         return;
-        this.rxu = null;
+        this.sGm = null;
       }
     }
   }
@@ -180,47 +180,47 @@ public class FTSMainUIEducationLayout
   protected final void a(String paramString1, Object paramObject1, String paramString2, Object paramObject2, String paramString3, Object paramObject3, int paramInt)
   {
     AppMethodBeat.i(112275);
-    ad.i("MicroMsg.FTS.FTSMainUIEducationLayout", "addCellLayout %s %s %s", new Object[] { paramString1, paramString2, paramString3 });
-    if (!bt.isNullOrNil(paramString1))
+    ac.i("MicroMsg.FTS.FTSMainUIEducationLayout", "addCellLayout %s %s %s", new Object[] { paramString1, paramString2, paramString3 });
+    if (!bs.isNullOrNil(paramString1))
     {
       LinearLayout localLinearLayout = (LinearLayout)inflate(getContext(), 2131494210, null);
       TextView localTextView = (TextView)localLinearLayout.findViewById(2131305755);
       localTextView.setText(paramString1);
       localTextView.setTag(paramObject1);
       localTextView.setVisibility(0);
-      localTextView.setOnClickListener(this.ruG);
-      localTextView.setClickable(this.rxt);
-      this.rxq.put(Integer.valueOf(m.a((JSONObject)paramObject1, paramString1, getContext())), localTextView);
-      dd(paramObject1);
-      if (!bt.isNullOrNil(paramString2))
+      localTextView.setOnClickListener(this.sDy);
+      localTextView.setClickable(this.sGl);
+      this.sGi.put(Integer.valueOf(m.a((JSONObject)paramObject1, paramString1, getContext())), localTextView);
+      df(paramObject1);
+      if (!bs.isNullOrNil(paramString2))
       {
         paramString1 = (TextView)localLinearLayout.findViewById(2131305756);
         paramString1.setText(paramString2);
         paramString1.setTag(paramObject2);
         paramString1.setVisibility(0);
-        paramString1.setOnClickListener(this.ruG);
-        paramString1.setClickable(this.rxt);
+        paramString1.setOnClickListener(this.sDy);
+        paramString1.setClickable(this.sGl);
         paramObject1 = localLinearLayout.findViewById(2131299157);
         paramObject1.getLayoutParams().height = paramInt;
         paramObject1.setVisibility(0);
-        this.rxq.put(Integer.valueOf(m.a((JSONObject)paramObject2, paramString2, getContext())), paramString1);
-        dd(paramObject2);
-        if (!bt.isNullOrNil(paramString3))
+        this.sGi.put(Integer.valueOf(m.a((JSONObject)paramObject2, paramString2, getContext())), paramString1);
+        df(paramObject2);
+        if (!bs.isNullOrNil(paramString3))
         {
           paramString1 = (TextView)localLinearLayout.findViewById(2131305757);
           paramString1.setText(paramString3);
           paramString1.setTag(paramObject3);
           paramString1.setVisibility(0);
-          paramString1.setOnClickListener(this.ruG);
-          paramString1.setClickable(this.rxt);
+          paramString1.setOnClickListener(this.sDy);
+          paramString1.setClickable(this.sGl);
           paramObject1 = localLinearLayout.findViewById(2131299158);
           paramObject1.getLayoutParams().height = paramInt;
           paramObject1.setVisibility(0);
-          this.rxq.put(Integer.valueOf(m.a((JSONObject)paramObject3, paramString3, getContext())), paramString1);
-          dd(paramObject3);
+          this.sGi.put(Integer.valueOf(m.a((JSONObject)paramObject3, paramString3, getContext())), paramString1);
+          df(paramObject3);
         }
       }
-      this.rxp.add(localLinearLayout);
+      this.sGh.add(localLinearLayout);
       addView(localLinearLayout);
     }
     AppMethodBeat.o(112275);
@@ -229,18 +229,18 @@ public class FTSMainUIEducationLayout
   public final void ap(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(112271);
-    cyo();
+    cLA();
     try
     {
       if (!aq(paramJSONObject)) {
-        cyp();
+        cLB();
       }
       AppMethodBeat.o(112271);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      cyp();
+      cLB();
       AppMethodBeat.o(112271);
     }
   }
@@ -267,9 +267,9 @@ public class FTSMainUIEducationLayout
     String str;
     label87:
     JSONObject localJSONObject;
-    if (ac.ir(aj.getContext()).equalsIgnoreCase("en"))
+    if (ab.iC(ai.getContext()).equalsIgnoreCase("en"))
     {
-      i = a.ao(getContext(), 2131165197);
+      i = a.au(getContext(), 2131165197);
       j = 0;
       localObject2 = null;
       localObject1 = null;
@@ -289,7 +289,7 @@ public class FTSMainUIEducationLayout
     {
       j += 1;
       break label87;
-      i = a.ao(getContext(), 2131165517);
+      i = a.au(getContext(), 2131165517);
       break;
       label148:
       if (j % 3 == 1)
@@ -315,25 +315,25 @@ public class FTSMainUIEducationLayout
   }
   
   /* Error */
-  public final void cE()
+  public final void cL()
   {
     // Byte code:
     //   0: ldc_w 400
     //   3: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokespecial 355	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:cyo	()V
+    //   7: invokespecial 355	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:cLA	()V
     //   10: aload_0
     //   11: ldc_w 402
-    //   14: invokestatic 408	com/tencent/mm/plugin/websearch/api/ac:ave	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   14: invokestatic 408	com/tencent/mm/plugin/websearch/api/ab:aAv	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   17: invokevirtual 359	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:aq	(Lorg/json/JSONObject;)Z
     //   20: ifne +7 -> 27
     //   23: aload_0
-    //   24: invokespecial 361	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:cyp	()V
+    //   24: invokespecial 361	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:cLB	()V
     //   27: aload_0
-    //   28: getfield 70	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:rxv	Z
+    //   28: getfield 70	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:sGn	Z
     //   31: ifeq +91 -> 122
     //   34: ldc_w 410
-    //   37: invokestatic 408	com/tencent/mm/plugin/websearch/api/ac:ave	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   37: invokestatic 408	com/tencent/mm/plugin/websearch/api/ab:aAv	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   40: ldc_w 366
     //   43: invokevirtual 370	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   46: iconst_0
@@ -342,7 +342,7 @@ public class FTSMainUIEducationLayout
     //   53: invokevirtual 147	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   56: astore_2
     //   57: aload_2
-    //   58: invokestatic 153	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   58: invokestatic 153	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   61: ifne +61 -> 122
     //   64: aload_0
     //   65: invokevirtual 54	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:getContext	()Landroid/content/Context;
@@ -359,7 +359,7 @@ public class FTSMainUIEducationLayout
     //   90: invokevirtual 299	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   93: aload_3
     //   94: aload_0
-    //   95: getfield 414	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:rxx	Landroid/view/View$OnClickListener;
+    //   95: getfield 414	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:sGp	Landroid/view/View$OnClickListener;
     //   98: invokevirtual 415	android/widget/LinearLayout:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   101: aload_3
     //   102: aload_2
@@ -368,12 +368,12 @@ public class FTSMainUIEducationLayout
     //   107: aload_3
     //   108: invokevirtual 348	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:addView	(Landroid/view/View;)V
     //   111: aload_0
-    //   112: getfield 85	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:rxp	Ljava/util/List;
+    //   112: getfield 85	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:sGh	Ljava/util/List;
     //   115: aload_3
     //   116: invokeinterface 345 2 0
     //   121: pop
     //   122: aload_0
-    //   123: getfield 418	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:rxw	Z
+    //   123: getfield 418	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:sGo	Z
     //   126: ifeq +446 -> 572
     //   129: ldc_w 420
     //   132: invokestatic 426	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
@@ -381,10 +381,10 @@ public class FTSMainUIEducationLayout
     //   138: invokeinterface 430 1 0
     //   143: astore_3
     //   144: aload_3
-    //   145: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:gQr	Ljava/util/List;
+    //   145: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:hqR	Ljava/util/List;
     //   148: ifnull +424 -> 572
     //   151: aload_3
-    //   152: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:gQr	Ljava/util/List;
+    //   152: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:hqR	Ljava/util/List;
     //   155: invokeinterface 438 1 0
     //   160: ifle +412 -> 572
     //   163: aload_0
@@ -399,7 +399,7 @@ public class FTSMainUIEducationLayout
     //   182: invokevirtual 295	android/widget/LinearLayout:findViewById	(I)Landroid/view/View;
     //   185: checkcast 213	android/widget/TextView
     //   188: aload_3
-    //   189: getfield 443	com/tencent/mm/plugin/appbrand/service/r$a:doh	Ljava/lang/String;
+    //   189: getfield 443	com/tencent/mm/plugin/appbrand/service/r$a:dlQ	Ljava/lang/String;
     //   192: invokevirtual 299	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   195: iconst_4
     //   196: anewarray 445	android/widget/ImageView
@@ -441,37 +441,37 @@ public class FTSMainUIEducationLayout
     //   270: istore_1
     //   271: iload_1
     //   272: aload_3
-    //   273: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:gQr	Ljava/util/List;
+    //   273: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:hqR	Ljava/util/List;
     //   276: invokeinterface 438 1 0
     //   281: if_icmpge +116 -> 397
     //   284: iload_1
     //   285: iconst_4
     //   286: if_icmpge +111 -> 397
     //   289: aload_3
-    //   290: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:gQr	Ljava/util/List;
+    //   290: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:hqR	Ljava/util/List;
     //   293: iload_1
     //   294: invokeinterface 453 2 0
     //   299: checkcast 455	com/tencent/mm/plugin/appbrand/service/r$b
     //   302: astore 6
-    //   304: new 457	com/tencent/mm/aw/a/a/c$a
+    //   304: new 457	com/tencent/mm/av/a/a/c$a
     //   307: dup
-    //   308: invokespecial 458	com/tencent/mm/aw/a/a/c$a:<init>	()V
+    //   308: invokespecial 458	com/tencent/mm/av/a/a/c$a:<init>	()V
     //   311: astore 7
     //   313: aload 7
     //   315: ldc_w 459
-    //   318: putfield 462	com/tencent/mm/aw/a/a/c$a:hkf	I
+    //   318: putfield 462	com/tencent/mm/av/a/a/c$a:hKI	I
     //   321: aload 7
     //   323: iconst_1
-    //   324: putfield 465	com/tencent/mm/aw/a/a/c$a:gkG	Z
-    //   327: invokestatic 471	com/tencent/mm/aw/o:ayJ	()Lcom/tencent/mm/aw/a/a;
+    //   324: putfield 465	com/tencent/mm/av/a/a/c$a:gLt	Z
+    //   327: invokestatic 471	com/tencent/mm/av/o:aFB	()Lcom/tencent/mm/av/a/a;
     //   330: aload 6
-    //   332: getfield 474	com/tencent/mm/plugin/appbrand/service/r$b:iVP	Ljava/lang/String;
+    //   332: getfield 474	com/tencent/mm/plugin/appbrand/service/r$b:jwf	Ljava/lang/String;
     //   335: aload 4
     //   337: iload_1
     //   338: aaload
     //   339: aload 7
-    //   341: invokevirtual 478	com/tencent/mm/aw/a/a/c$a:azc	()Lcom/tencent/mm/aw/a/a/c;
-    //   344: invokevirtual 483	com/tencent/mm/aw/a/a:a	(Ljava/lang/String;Landroid/widget/ImageView;Lcom/tencent/mm/aw/a/a/c;)V
+    //   341: invokevirtual 478	com/tencent/mm/av/a/a/c$a:aFT	()Lcom/tencent/mm/av/a/a/c;
+    //   344: invokevirtual 483	com/tencent/mm/av/a/a:a	(Ljava/lang/String;Landroid/widget/ImageView;Lcom/tencent/mm/av/a/a/c;)V
     //   347: aload 4
     //   349: iload_1
     //   350: aaload
@@ -483,13 +483,13 @@ public class FTSMainUIEducationLayout
     //   359: aload 6
     //   361: invokevirtual 485	android/widget/ImageView:setTag	(Ljava/lang/Object;)V
     //   364: aload_0
-    //   365: getfield 487	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:rxy	Landroid/view/View$OnClickListener;
+    //   365: getfield 487	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:sGq	Landroid/view/View$OnClickListener;
     //   368: ifnull +14 -> 382
     //   371: aload 4
     //   373: iload_1
     //   374: aaload
     //   375: aload_0
-    //   376: getfield 487	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:rxy	Landroid/view/View$OnClickListener;
+    //   376: getfield 487	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:sGq	Landroid/view/View$OnClickListener;
     //   379: invokevirtual 488	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   382: iload_1
     //   383: iconst_1
@@ -498,10 +498,10 @@ public class FTSMainUIEducationLayout
     //   386: goto -115 -> 271
     //   389: astore_2
     //   390: aload_0
-    //   391: invokespecial 361	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:cyp	()V
+    //   391: invokespecial 361	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:cLB	()V
     //   394: goto -367 -> 27
     //   397: aload_3
-    //   398: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:gQr	Ljava/util/List;
+    //   398: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:hqR	Ljava/util/List;
     //   401: invokeinterface 438 1 0
     //   406: ifle +26 -> 432
     //   409: aload 5
@@ -512,18 +512,18 @@ public class FTSMainUIEducationLayout
     //   420: invokevirtual 485	android/widget/ImageView:setTag	(Ljava/lang/Object;)V
     //   423: aload 5
     //   425: aload_0
-    //   426: getfield 487	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:rxy	Landroid/view/View$OnClickListener;
+    //   426: getfield 487	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:sGq	Landroid/view/View$OnClickListener;
     //   429: invokevirtual 488	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   432: aload_0
     //   433: aload_2
     //   434: invokevirtual 348	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:addView	(Landroid/view/View;)V
     //   437: aload_0
-    //   438: getfield 85	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:rxp	Ljava/util/List;
+    //   438: getfield 85	com/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout:sGh	Ljava/util/List;
     //   441: aload_2
     //   442: invokeinterface 345 2 0
     //   447: pop
     //   448: aload_3
-    //   449: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:gQr	Ljava/util/List;
+    //   449: getfield 435	com/tencent/mm/plugin/appbrand/service/r$a:hqR	Ljava/util/List;
     //   452: invokeinterface 91 1 0
     //   457: astore 4
     //   459: ldc 48
@@ -548,19 +548,19 @@ public class FTSMainUIEducationLayout
     //   509: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   512: astore_2
     //   513: goto -51 -> 462
-    //   516: getstatic 501	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
+    //   516: getstatic 501	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
     //   519: sipush 14630
     //   522: iconst_5
     //   523: anewarray 187	java/lang/Object
     //   526: dup
     //   527: iconst_0
-    //   528: getstatic 506	com/tencent/mm/plugin/fts/a/e:rob	J
+    //   528: getstatic 506	com/tencent/mm/plugin/fts/a/e:swV	J
     //   531: invokestatic 265	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   534: aastore
     //   535: dup
     //   536: iconst_1
     //   537: aload_3
-    //   538: getfield 443	com/tencent/mm/plugin/appbrand/service/r$a:doh	Ljava/lang/String;
+    //   538: getfield 443	com/tencent/mm/plugin/appbrand/service/r$a:dlQ	Ljava/lang/String;
     //   541: aastore
     //   542: dup
     //   543: iconst_2
@@ -569,7 +569,7 @@ public class FTSMainUIEducationLayout
     //   546: dup
     //   547: iconst_3
     //   548: aload_3
-    //   549: getfield 509	com/tencent/mm/plugin/appbrand/service/r$a:luJ	I
+    //   549: getfield 509	com/tencent/mm/plugin/appbrand/service/r$a:lWD	I
     //   552: invokestatic 198	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   555: aastore
     //   556: dup
@@ -597,57 +597,57 @@ public class FTSMainUIEducationLayout
     //   199	274	4	localObject3	Object
     //   267	229	5	localObject4	Object
     //   302	58	6	localb	com.tencent.mm.plugin.appbrand.service.r.b
-    //   311	29	7	locala	com.tencent.mm.aw.a.a.c.a
+    //   311	29	7	locala	com.tencent.mm.av.a.a.c.a
     // Exception table:
     //   from	to	target	type
     //   10	27	389	java/lang/Exception
     //   27	122	579	java/lang/Exception
   }
   
-  protected void cyq() {}
+  protected void cLC() {}
   
   public String getVertBizTypes()
   {
-    if (this.rxr == null) {
+    if (this.sGj == null) {
       return "";
     }
-    return this.rxr;
+    return this.sGj;
   }
   
   public void setCellClickable(boolean paramBoolean)
   {
-    this.rxt = paramBoolean;
+    this.sGl = paramBoolean;
   }
   
   public void setNeedHotWord(boolean paramBoolean)
   {
-    this.rxv = paramBoolean;
+    this.sGn = paramBoolean;
   }
   
   public void setNeedWXAPP(boolean paramBoolean)
   {
-    this.rxw = paramBoolean;
+    this.sGo = paramBoolean;
   }
   
   public void setOnCellClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.ruG = paramOnClickListener;
+    this.sDy = paramOnClickListener;
   }
   
   public void setOnHotwordClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.rxx = paramOnClickListener;
+    this.sGp = paramOnClickListener;
   }
   
   public void setOnWxAppClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.rxy = paramOnClickListener;
+    this.sGq = paramOnClickListener;
   }
   
   public void setSelected(int paramInt)
   {
     AppMethodBeat.i(112277);
-    Iterator localIterator = this.rxq.entrySet().iterator();
+    Iterator localIterator = this.sGi.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -662,7 +662,7 @@ public class FTSMainUIEducationLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.FTSMainUIEducationLayout
  * JD-Core Version:    0.7.0.1
  */

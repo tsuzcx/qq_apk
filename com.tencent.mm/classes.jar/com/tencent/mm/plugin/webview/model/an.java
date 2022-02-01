@@ -1,92 +1,92 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public final class an
 {
-  private static an AYv;
-  HashMap<String, WebViewJSSDKFileItem> AYw;
+  private static an CqI;
+  HashMap<String, WebViewJSSDKFileItem> CqJ;
   
   static
   {
     AppMethodBeat.i(79009);
-    AYv = new an();
+    CqI = new an();
     AppMethodBeat.o(79009);
   }
   
   public an()
   {
     AppMethodBeat.i(79005);
-    this.AYw = new HashMap();
+    this.CqJ = new HashMap();
     AppMethodBeat.o(79005);
   }
   
-  public static final an emc()
+  public static final an eBy()
   {
-    return AYv;
+    return CqI;
   }
   
   public final void a(WebViewJSSDKFileItem paramWebViewJSSDKFileItem)
   {
     AppMethodBeat.i(79006);
-    if ((paramWebViewJSSDKFileItem == null) || (bt.isNullOrNil(paramWebViewJSSDKFileItem.diQ)))
+    if ((paramWebViewJSSDKFileItem == null) || (bs.isNullOrNil(paramWebViewJSSDKFileItem.dgl)))
     {
-      ad.e("MicroMsg.WebViewJSSDKFileItemManager", "item is null or local id is null, ignore this add");
+      ac.e("MicroMsg.WebViewJSSDKFileItemManager", "item is null or local id is null, ignore this add");
       AppMethodBeat.o(79006);
       return;
     }
-    ad.i("MicroMsg.WebViewJSSDKFileItemManager", "add jssdk file item, local id : %s, file path : %s", new Object[] { paramWebViewJSSDKFileItem.diQ, paramWebViewJSSDKFileItem.jau });
-    this.AYw.put(paramWebViewJSSDKFileItem.diQ, paramWebViewJSSDKFileItem);
+    ac.i("MicroMsg.WebViewJSSDKFileItemManager", "add jssdk file item, local id : %s, file path : %s", new Object[] { paramWebViewJSSDKFileItem.dgl, paramWebViewJSSDKFileItem.jAH });
+    this.CqJ.put(paramWebViewJSSDKFileItem.dgl, paramWebViewJSSDKFileItem);
     AppMethodBeat.o(79006);
   }
   
-  public final void awB(String paramString)
+  public final void aBT(String paramString)
   {
-    AppMethodBeat.i(187912);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(188339);
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.WebViewJSSDKFileItemManager", "removeJSSDKFileItem, local id is null");
-      AppMethodBeat.o(187912);
+      ac.e("MicroMsg.WebViewJSSDKFileItemManager", "removeJSSDKFileItem, local id is null");
+      AppMethodBeat.o(188339);
       return;
     }
-    ad.i("MicroMsg.WebViewJSSDKFileItemManager", "removeJSSDKFileItem, localId:%s", new Object[] { paramString });
-    this.AYw.remove(paramString);
-    AppMethodBeat.o(187912);
+    ac.i("MicroMsg.WebViewJSSDKFileItemManager", "removeJSSDKFileItem, localId:%s", new Object[] { paramString });
+    this.CqJ.remove(paramString);
+    AppMethodBeat.o(188339);
   }
   
-  public final WebViewJSSDKFileItem awC(String paramString)
+  public final WebViewJSSDKFileItem aBU(String paramString)
   {
     AppMethodBeat.i(79007);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.WebViewJSSDKFileItemManager", "get by local id error, local id is null or nil");
+      ac.e("MicroMsg.WebViewJSSDKFileItemManager", "get by local id error, local id is null or nil");
       AppMethodBeat.o(79007);
       return null;
     }
-    paramString = (WebViewJSSDKFileItem)this.AYw.get(paramString);
+    paramString = (WebViewJSSDKFileItem)this.CqJ.get(paramString);
     AppMethodBeat.o(79007);
     return paramString;
   }
   
-  public final WebViewJSSDKFileItem awD(String paramString)
+  public final WebViewJSSDKFileItem aBV(String paramString)
   {
     AppMethodBeat.i(79008);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.WebViewJSSDKFileItemManager", "getItemByServerId error, media id is null or nil");
+      ac.e("MicroMsg.WebViewJSSDKFileItemManager", "getItemByServerId error, media id is null or nil");
       AppMethodBeat.o(79008);
       return null;
     }
-    Iterator localIterator = this.AYw.values().iterator();
+    Iterator localIterator = this.CqJ.values().iterator();
     while (localIterator.hasNext())
     {
       WebViewJSSDKFileItem localWebViewJSSDKFileItem = (WebViewJSSDKFileItem)localIterator.next();
-      if (bt.nullAsNil(localWebViewJSSDKFileItem.jav).equals(paramString))
+      if (bs.nullAsNil(localWebViewJSSDKFileItem.jAI).equals(paramString))
       {
         AppMethodBeat.o(79008);
         return localWebViewJSSDKFileItem;

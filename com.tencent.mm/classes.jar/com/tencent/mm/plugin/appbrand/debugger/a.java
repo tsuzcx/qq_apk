@@ -6,23 +6,23 @@ import java.util.List;
 
 final class a
 {
-  static final List<DebuggerShell.a> jge;
+  static final List<DebuggerShell.a> jGt;
   
   static
   {
     AppMethodBeat.i(44936);
     LinkedList localLinkedList = new LinkedList();
-    jge = localLinkedList;
+    jGt = localLinkedList;
     localLinkedList.add(new c());
-    jge.add(new d());
-    jge.add(new f());
-    jge.add(new g());
+    jGt.add(new d());
+    jGt.add(new f());
+    jGt.add(new g());
     AppMethodBeat.o(44936);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.a
  * JD-Core Version:    0.7.0.1
  */

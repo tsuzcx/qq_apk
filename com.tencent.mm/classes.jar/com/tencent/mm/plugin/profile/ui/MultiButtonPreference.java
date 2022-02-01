@@ -6,18 +6,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class MultiButtonPreference
   extends Preference
 {
-  private String uCA;
-  public String uCB;
-  private String uCC;
-  private View.OnClickListener uCD;
-  public View.OnClickListener uCE;
-  private View.OnClickListener uCF;
+  private String vLt;
+  public String vLu;
+  private String vLv;
+  private View.OnClickListener vLw;
+  public View.OnClickListener vLx;
+  private View.OnClickListener vLy;
   
   public MultiButtonPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,8 +37,8 @@ public class MultiButtonPreference
   
   public final void a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    this.uCA = paramString;
-    this.uCD = paramOnClickListener;
+    this.vLt = paramString;
+    this.vLw = paramOnClickListener;
   }
   
   public final void onBindView(View paramView)
@@ -51,37 +51,37 @@ public class MultiButtonPreference
     View localView2 = paramView.findViewById(2131297637);
     Button localButton3 = (Button)paramView.findViewById(2131297638);
     paramView.setBackgroundColor(0);
-    if (!bt.isNullOrNil(this.uCA))
+    if (!bs.isNullOrNil(this.vLt))
     {
       localButton1.setVisibility(0);
-      localButton1.setText(this.uCA);
-      if (bt.isNullOrNil(this.uCB)) {
+      localButton1.setText(this.vLt);
+      if (bs.isNullOrNil(this.vLu)) {
         break label219;
       }
-      if (!bt.isNullOrNil(this.uCA)) {
+      if (!bs.isNullOrNil(this.vLt)) {
         break label211;
       }
       localView1.setVisibility(8);
       label112:
       localButton2.setVisibility(0);
-      localButton2.setText(this.uCB);
+      localButton2.setText(this.vLu);
       label127:
-      if (bt.isNullOrNil(this.uCC)) {
+      if (bs.isNullOrNil(this.vLv)) {
         break label244;
       }
-      if (!bt.isNullOrNil(this.uCB)) {
+      if (!bs.isNullOrNil(this.vLu)) {
         break label235;
       }
       localView2.setVisibility(8);
       label154:
       localButton3.setVisibility(0);
-      localButton3.setText(this.uCC);
+      localButton3.setText(this.vLv);
     }
     for (;;)
     {
-      localButton1.setOnClickListener(this.uCD);
-      localButton2.setOnClickListener(this.uCE);
-      localButton3.setOnClickListener(this.uCF);
+      localButton1.setOnClickListener(this.vLw);
+      localButton2.setOnClickListener(this.vLx);
+      localButton3.setOnClickListener(this.vLy);
       AppMethodBeat.o(27264);
       return;
       localButton1.setVisibility(8);
@@ -104,7 +104,7 @@ public class MultiButtonPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.MultiButtonPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -11,67 +11,67 @@ import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.e.a;
 import com.tencent.mm.plugin.card.ui.n;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.csx;
-import com.tencent.mm.protocal.protobuf.ro;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.protocal.protobuf.cyg;
+import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.MMActivity;
 
 public final class o
   extends i
 {
-  private TextView nIA;
-  private View nIx;
-  private ImageView nIy;
-  private TextView nIz;
+  private TextView olA;
+  private View olx;
+  private ImageView oly;
+  private TextView olz;
   
-  public final void bMB()
+  public final void bTM()
   {
     AppMethodBeat.i(113701);
-    this.nIx.setVisibility(8);
+    this.olx.setVisibility(8);
     AppMethodBeat.o(113701);
   }
   
   public final void initView()
   {
     AppMethodBeat.i(113699);
-    this.nIx = findViewById(2131300308);
-    this.nIy = ((ImageView)findViewById(2131300306));
-    this.nIz = ((TextView)findViewById(2131300310));
-    this.nIA = ((TextView)findViewById(2131300309));
-    this.nIx.setVisibility(8);
+    this.olx = findViewById(2131300308);
+    this.oly = ((ImageView)findViewById(2131300306));
+    this.olz = ((TextView)findViewById(2131300310));
+    this.olA = ((TextView)findViewById(2131300309));
+    this.olx.setVisibility(8);
     AppMethodBeat.o(113699);
   }
   
   public final void update()
   {
     AppMethodBeat.i(113700);
-    b localb = this.nIg.bKt();
-    MMActivity localMMActivity = this.nIg.bKw();
-    e.a locala = this.nIg.bKA();
-    this.nIx.setVisibility(0);
-    this.nIz.setText(com.tencent.mm.pluginsdk.ui.span.k.b(localMMActivity, ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(locala.nys).ZW(), this.nIz.getTextSize()));
-    if ((localb.bHX() != null) && (!TextUtils.isEmpty(localb.bHX().Ekz))) {
-      this.nIA.setText(com.tencent.mm.pluginsdk.ui.span.k.b(localMMActivity, localb.bHX().Ekz, this.nIA.getTextSize()));
+    b localb = this.olg.bRG();
+    MMActivity localMMActivity = this.olg.bRJ();
+    e.a locala = this.olg.bRN();
+    this.olx.setVisibility(0);
+    this.olz.setText(com.tencent.mm.pluginsdk.ui.span.k.b(localMMActivity, ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(locala.obt).aaR(), this.olz.getTextSize()));
+    if ((localb.bPk() != null) && (!TextUtils.isEmpty(localb.bPk().FHx))) {
+      this.olA.setText(com.tencent.mm.pluginsdk.ui.span.k.b(localMMActivity, localb.bPk().FHx, this.olA.getTextSize()));
     }
     for (;;)
     {
-      a.b.c(this.nIy, locala.nys);
-      this.nIy.setOnClickListener(this.nIg.bKx());
+      a.b.c(this.oly, locala.obt);
+      this.oly.setOnClickListener(this.olg.bRK());
       AppMethodBeat.o(113700);
       return;
-      if (!TextUtils.isEmpty(localb.bHV().nsJ))
+      if (!TextUtils.isEmpty(localb.bPi().nVJ))
       {
-        if (localb.bHG()) {
-          this.nIA.setText(localMMActivity.getString(2131756907, new Object[] { localb.bHV().nsJ }));
+        if (localb.bOT()) {
+          this.olA.setText(localMMActivity.getString(2131756907, new Object[] { localb.bPi().nVJ }));
         } else {
-          this.nIA.setText(localMMActivity.getString(2131756870, new Object[] { localb.bHV().nsJ }));
+          this.olA.setText(localMMActivity.getString(2131756870, new Object[] { localb.bPi().nVJ }));
         }
       }
-      else if (localb.bHG()) {
-        this.nIA.setText(localMMActivity.getString(2131756907, new Object[] { this.nIg.bKB().getTitle() }));
+      else if (localb.bOT()) {
+        this.olA.setText(localMMActivity.getString(2131756907, new Object[] { this.olg.bRO().getTitle() }));
       } else {
-        this.nIA.setText(localMMActivity.getString(2131756870, new Object[] { this.nIg.bKB().getTitle() }));
+        this.olA.setText(localMMActivity.getString(2131756870, new Object[] { this.olg.bRO().getTitle() }));
       }
     }
   }

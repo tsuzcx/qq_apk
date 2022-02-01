@@ -9,18 +9,18 @@ import d.l.b.a.b.e.b.c;
 
 public final class h
 {
-  final a.b JUg;
-  final a JUh;
-  final an JUi;
-  final c Jiu;
+  final c KVO;
+  final a LHA;
+  final an LHB;
+  final a.b LHz;
   
   public h(c paramc, a.b paramb, a parama, an paraman)
   {
     AppMethodBeat.i(60288);
-    this.Jiu = paramc;
-    this.JUg = paramb;
-    this.JUh = parama;
-    this.JUi = paraman;
+    this.KVO = paramc;
+    this.LHz = paramb;
+    this.LHA = parama;
+    this.LHB = paraman;
     AppMethodBeat.o(60288);
   }
   
@@ -32,7 +32,7 @@ public final class h
       if ((paramObject instanceof h))
       {
         paramObject = (h)paramObject;
-        if ((!k.g(this.Jiu, paramObject.Jiu)) || (!k.g(this.JUg, paramObject.JUg)) || (!k.g(this.JUh, paramObject.JUh)) || (!k.g(this.JUi, paramObject.JUi))) {}
+        if ((!k.g(this.KVO, paramObject.KVO)) || (!k.g(this.LHz, paramObject.LHz)) || (!k.g(this.LHA, paramObject.LHA)) || (!k.g(this.LHB, paramObject.LHB))) {}
       }
     }
     else
@@ -48,19 +48,19 @@ public final class h
   {
     int m = 0;
     AppMethodBeat.i(60290);
-    Object localObject = this.Jiu;
+    Object localObject = this.KVO;
     int i;
     int j;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.JUg;
+      localObject = this.LHz;
       if (localObject == null) {
         break label105;
       }
       j = localObject.hashCode();
       label42:
-      localObject = this.JUh;
+      localObject = this.LHA;
       if (localObject == null) {
         break label110;
       }
@@ -69,7 +69,7 @@ public final class h
     label110:
     for (int k = localObject.hashCode();; k = 0)
     {
-      localObject = this.JUi;
+      localObject = this.LHB;
       if (localObject != null) {
         m = localObject.hashCode();
       }
@@ -85,14 +85,14 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(60289);
-    String str = "ClassData(nameResolver=" + this.Jiu + ", classProto=" + this.JUg + ", metadataVersion=" + this.JUh + ", sourceElement=" + this.JUi + ")";
+    String str = "ClassData(nameResolver=" + this.KVO + ", classProto=" + this.LHz + ", metadataVersion=" + this.LHA + ", sourceElement=" + this.LHB + ")";
     AppMethodBeat.o(60289);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.h
  * JD-Core Version:    0.7.0.1
  */

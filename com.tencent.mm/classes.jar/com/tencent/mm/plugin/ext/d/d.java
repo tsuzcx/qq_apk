@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.ext.d;
 import android.graphics.Rect;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 
 public final class d
 {
-  private static SparseArray<byte[]> pLU;
+  private static SparseArray<byte[]> quC;
   
   static
   {
     AppMethodBeat.i(24494);
-    pLU = new SparseArray(1);
+    quC = new SparseArray(1);
     AppMethodBeat.o(24494);
   }
   
-  private static int bi(byte[] paramArrayOfByte)
+  private static int bh(byte[] paramArrayOfByte)
   {
     return paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24;
   }
   
-  static c cfh()
+  static c cmO()
   {
     AppMethodBeat.i(24492);
     a locala = new a();
@@ -33,16 +33,16 @@ public final class d
   public static final class a
     implements d.c
   {
-    public final d.b aU(String paramString, boolean paramBoolean)
+    public final d.b aV(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(24490);
-      if (!i.eK(paramString))
+      if (!i.eA(paramString))
       {
-        ad.w("MicroMsg.ExtQbarYuvRetrieverFactory", "hy: handle not exist");
+        ac.w("MicroMsg.ExtQbarYuvRetrieverFactory", "hy: handle not exist");
         AppMethodBeat.o(24490);
         return null;
       }
-      paramString = d.c(i.aR(paramString, 0, -1), paramBoolean);
+      paramString = d.c(i.aU(paramString, 0, -1), paramBoolean);
       AppMethodBeat.o(24490);
       return paramString;
     }
@@ -50,20 +50,20 @@ public final class d
   
   public static final class b
   {
-    int aMk;
-    int aMl;
-    byte[] dwn;
-    int dwp;
+    int aNa;
+    int aNb;
+    byte[] dua;
+    int duc;
     public String md5;
-    Rect pLV;
+    Rect quD;
     
     public b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, Rect paramRect, String paramString)
     {
-      this.dwn = paramArrayOfByte;
-      this.aMk = paramInt1;
-      this.aMl = paramInt2;
-      this.dwp = paramInt3;
-      this.pLV = paramRect;
+      this.dua = paramArrayOfByte;
+      this.aNa = paramInt1;
+      this.aNb = paramInt2;
+      this.duc = paramInt3;
+      this.quD = paramRect;
       this.md5 = paramString;
     }
     
@@ -71,10 +71,10 @@ public final class d
     {
       AppMethodBeat.i(24491);
       StringBuilder localStringBuilder = new StringBuilder("RetrieveResult{yuvDataLength=");
-      if (this.dwn != null) {}
-      for (Object localObject = Integer.valueOf(this.dwn.length);; localObject = "null")
+      if (this.dua != null) {}
+      for (Object localObject = Integer.valueOf(this.dua.length);; localObject = "null")
       {
-        localObject = localObject + ", previewWidth=" + this.aMk + ", previewHeight=" + this.aMl + ", rotate=" + this.dwp + ", scanRect=" + this.pLV + ", md5=" + this.md5 + '}';
+        localObject = localObject + ", previewWidth=" + this.aNa + ", previewHeight=" + this.aNb + ", rotate=" + this.duc + ", scanRect=" + this.quD + ", md5=" + this.md5 + '}';
         AppMethodBeat.o(24491);
         return localObject;
       }
@@ -83,12 +83,12 @@ public final class d
   
   static abstract interface c
   {
-    public abstract d.b aU(String paramString, boolean paramBoolean);
+    public abstract d.b aV(String paramString, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.d.d
  * JD-Core Version:    0.7.0.1
  */

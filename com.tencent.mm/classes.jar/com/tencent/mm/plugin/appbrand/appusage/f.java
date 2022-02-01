@@ -5,54 +5,55 @@ import android.support.v7.h.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.c.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.aa.l.a;
 import com.tencent.mm.plugin.appbrand.config.d;
 import com.tencent.mm.plugin.appbrand.config.p.a;
 import com.tencent.mm.plugin.appbrand.task.e;
 import com.tencent.mm.plugin.appbrand.task.preload.d.a;
+import com.tencent.mm.plugin.appbrand.z.l.a;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bu;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import junit.framework.Assert;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport;", "Lcom/tencent/mm/sdk/storage/MStorage;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "Lcom/tencent/mm/kernel/service/IServiceLifeCycle;", "()V", "mCalculatingDiff", "Ljava/util/concurrent/atomic/AtomicBoolean;", "add", "", "listener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "looper", "Landroid/os/Looper;", "addCollection", "", "username", "", "versionType", "getCount", "getCountLimit", "isCollection", "", "onRegister", "onUnregister", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "count", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "refreshOnPullDownOpen", "refreshOnPullDownOpenAnimationEnd", "remove", "removeCollection", "reorder", "reorderList", "reason", "reorderWithCallback", "", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$ReorderCallback;", "restoreNotfityMsgRefuseStatus", "info", "Companion", "ReorderCallback", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport;", "Lcom/tencent/mm/sdk/storage/MStorage;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "Lcom/tencent/mm/kernel/service/IServiceLifeCycle;", "()V", "mCalculatingDiff", "Ljava/util/concurrent/atomic/AtomicBoolean;", "add", "", "listener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "looper", "Landroid/os/Looper;", "addCollection", "", "username", "", "versionType", "getCount", "getCountLimit", "isCollection", "", "onRegister", "onUnregister", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "count", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "refreshOnPullDownOpen", "refreshOnPullDownOpenAnimationEnd", "remove", "removeCollection", "reorder", "reorderList", "reason", "reorderWithCallback", "", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$ReorderCallback;", "restoreNotfityMsgRefuseStatus", "info", "Companion", "ReorderCallback", "plugin-appbrand-integration_release"})
 public final class f
   extends com.tencent.mm.sdk.e.k
   implements b, ah
 {
-  private static f iUf;
-  public static final a iUg;
-  private final AtomicBoolean iUe;
+  private static f jur;
+  public static final a jus;
+  private final AtomicBoolean juq;
   
   static
   {
     AppMethodBeat.i(50264);
-    iUg = new a((byte)0);
+    jus = new a((byte)0);
     AppMethodBeat.o(50264);
   }
   
   public f()
   {
     AppMethodBeat.i(50263);
-    this.iUe = new AtomicBoolean(false);
+    this.juq = new AtomicBoolean(false);
     AppMethodBeat.o(50263);
   }
   
   public static void e(LocalUsageInfo paramLocalUsageInfo)
   {
-    AppMethodBeat.i(196238);
+    AppMethodBeat.i(187103);
     d.g.b.k.h(paramLocalUsageInfo, "info");
-    String str = com.tencent.mm.plugin.appbrand.app.j.Dh().get(p.a.FV(paramLocalUsageInfo.appId), "true");
+    String str = com.tencent.mm.plugin.appbrand.app.j.CK().get(p.a.JZ(paramLocalUsageInfo.appId), "true");
     if (str == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
     if (!Boolean.parseBoolean(str)) {
-      com.tencent.mm.plugin.appbrand.app.j.Dh().vv(p.a.FV(paramLocalUsageInfo.appId));
+      com.tencent.mm.plugin.appbrand.app.j.CK().zB(p.a.JZ(paramLocalUsageInfo.appId));
     }
-    AppMethodBeat.o(196238);
+    AppMethodBeat.o(187103);
   }
   
   public final List<? extends LocalUsageInfo> a(int paramInt, ah.a parama)
@@ -86,18 +87,18 @@ public final class f
     AppMethodBeat.i(50253);
     if (paramList == null)
     {
-      if (bu.eGT()) {
+      if (bt.eWo()) {
         Assert.assertTrue("reorderList is NULL", false);
       }
     }
     else
     {
-      this.iUe.set(true);
+      this.juq.set(true);
       paramList = (Runnable)new e(this, paramList, paramb);
-      if (!aq.isMainThread()) {
+      if (!ap.isMainThread()) {
         break label71;
       }
-      com.tencent.mm.plugin.appbrand.aa.l.bqm().postToWorker(paramList);
+      com.tencent.mm.plugin.appbrand.z.l.bxj().postToWorker(paramList);
     }
     for (;;)
     {
@@ -110,7 +111,7 @@ public final class f
     }
   }
   
-  public final boolean aR(String paramString, int paramInt)
+  public final boolean aV(String paramString, int paramInt)
   {
     AppMethodBeat.i(50250);
     Object localObject = (CharSequence)paramString;
@@ -122,38 +123,14 @@ public final class f
     }
     localObject = (u)com.tencent.mm.plugin.appbrand.app.j.T(u.class);
     if (paramString == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
-    boolean bool = ((u)localObject).aV(paramString, paramInt);
+    boolean bool = ((u)localObject).aZ(paramString, paramInt);
     AppMethodBeat.o(50250);
     return bool;
   }
   
-  public final void aRu()
-  {
-    AppMethodBeat.i(50249);
-    if (this.iUe.get())
-    {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandCollectionStorageExport[collection]", "refreshOnPullDownOpen, skip fetch when calculating diff");
-      AppMethodBeat.o(50249);
-      return;
-    }
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandCollectionStorageExport[collection]", "refreshOnPullDownOpen, fetch");
-    j.aRE().a(bt.eGO(), true, null, 6, 0);
-    com.tencent.mm.plugin.appbrand.task.f.a(e.lwx, d.a.lxs);
-    com.tencent.mm.plugin.appbrand.task.f.a(e.lwy, d.a.lxs);
-    AppMethodBeat.o(50249);
-  }
-  
-  public final int aRv()
-  {
-    AppMethodBeat.i(50259);
-    int i = v.aSb();
-    AppMethodBeat.o(50259);
-    return i;
-  }
-  
-  public final int aS(String paramString, int paramInt)
+  public final int aW(String paramString, int paramInt)
   {
     AppMethodBeat.i(50251);
     Object localObject = (CharSequence)paramString;
@@ -165,14 +142,14 @@ public final class f
     }
     localObject = (u)com.tencent.mm.plugin.appbrand.app.j.T(u.class);
     if (paramString == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
-    paramInt = ((u)localObject).aW(paramString, paramInt);
+    paramInt = ((u)localObject).ba(paramString, paramInt);
     AppMethodBeat.o(50251);
     return paramInt;
   }
   
-  public final boolean aT(String paramString, int paramInt)
+  public final boolean aX(String paramString, int paramInt)
   {
     AppMethodBeat.i(50252);
     Object localObject = (CharSequence)paramString;
@@ -184,11 +161,35 @@ public final class f
     }
     localObject = (u)com.tencent.mm.plugin.appbrand.app.j.T(u.class);
     if (paramString == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
-    boolean bool = ((u)localObject).aX(paramString, paramInt);
+    boolean bool = ((u)localObject).bb(paramString, paramInt);
     AppMethodBeat.o(50252);
     return bool;
+  }
+  
+  public final void aYp()
+  {
+    AppMethodBeat.i(50249);
+    if (this.juq.get())
+    {
+      ac.i("MicroMsg.AppBrandCollectionStorageExport[collection]", "refreshOnPullDownOpen, skip fetch when calculating diff");
+      AppMethodBeat.o(50249);
+      return;
+    }
+    ac.i("MicroMsg.AppBrandCollectionStorageExport[collection]", "refreshOnPullDownOpen, fetch");
+    j.aYz().a(bs.eWj(), true, null, 6, 0);
+    com.tencent.mm.plugin.appbrand.task.f.a(e.lYr, d.a.lZm);
+    com.tencent.mm.plugin.appbrand.task.f.a(e.lYs, d.a.lZm);
+    AppMethodBeat.o(50249);
+  }
+  
+  public final int aYq()
+  {
+    AppMethodBeat.i(50259);
+    int i = v.aYW();
+    AppMethodBeat.o(50259);
+    return i;
   }
   
   public final void add(k.a parama)
@@ -202,24 +203,24 @@ public final class f
   {
     AppMethodBeat.i(50261);
     ((u)com.tencent.mm.plugin.appbrand.app.j.T(u.class)).add(parama, paramLooper);
-    com.tencent.mm.plugin.appbrand.app.j.aOC().add(parama, paramLooper);
+    com.tencent.mm.plugin.appbrand.app.j.aVu().add(parama, paramLooper);
     AppMethodBeat.o(50261);
   }
   
-  public final void agv()
+  public final void ahM()
   {
-    iUf = (f)this;
+    jur = (f)this;
   }
   
-  public final void agw()
+  public final void ahN()
   {
-    iUf = null;
+    jur = null;
   }
   
   public final boolean g(List<LocalUsageInfo> paramList, int paramInt)
   {
     AppMethodBeat.i(50255);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandCollectionStorageExport[collection]", "reorder reason = ".concat(String.valueOf(paramInt)));
+    ac.i("MicroMsg.AppBrandCollectionStorageExport[collection]", "reorder reason = ".concat(String.valueOf(paramInt)));
     b localb;
     switch (paramInt)
     {
@@ -242,7 +243,7 @@ public final class f
     AppMethodBeat.i(50258);
     Object localObject = com.tencent.mm.plugin.appbrand.app.j.T(u.class);
     d.g.b.k.g(localObject, "SubCoreAppBrand.getStora…arAppStorage::class.java)");
-    int i = ((u)localObject).aRX();
+    int i = ((u)localObject).aYS();
     AppMethodBeat.o(50258);
     return i;
   }
@@ -251,18 +252,18 @@ public final class f
   {
     AppMethodBeat.i(50262);
     ((u)com.tencent.mm.plugin.appbrand.app.j.T(u.class)).remove(parama);
-    com.tencent.mm.plugin.appbrand.app.j.aOC().remove(parama);
+    com.tencent.mm.plugin.appbrand.app.j.aVu().remove(parama);
     AppMethodBeat.o(50262);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$Companion;", "", "()V", "STORAGE", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport;", "getSTORAGE", "()Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport;", "setSTORAGE", "(Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport;)V", "TAG", "", "plugin-appbrand-integration_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$Companion;", "", "()V", "STORAGE", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport;", "getSTORAGE", "()Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport;", "setSTORAGE", "(Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport;)V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$ReorderCallback;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionModifyQueue$OnModifiedCallback;", "()V", "onInsert", "", "info", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "onMoved", "prev", "next", "onRemoved", "onReorderEnd", "plugin-appbrand-integration_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$ReorderCallback;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionModifyQueue$OnModifiedCallback;", "()V", "onInsert", "", "info", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "onMoved", "prev", "next", "onRemoved", "onReorderEnd", "plugin-appbrand-integration_release"})
   public static class b
     implements c.b
   {
-    public void aRx() {}
+    public void aYs() {}
     
     public void b(LocalUsageInfo paramLocalUsageInfo)
     {
@@ -286,49 +287,49 @@ public final class f
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$reorder$callback$1", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$ReorderCallback;", "onInsert", "", "info", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "onReorderEnd", "plugin-appbrand-integration_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$reorder$callback$1", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$ReorderCallback;", "onInsert", "", "info", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "onReorderEnd", "plugin-appbrand-integration_release"})
   public static final class c
     extends f.b
   {
-    public final void aRx()
+    public final void aYs()
     {
       AppMethodBeat.i(50246);
-      ((c)g.ab(c.class)).a(ab.b.iVB);
+      ((c)g.ab(c.class)).a(ab.b.jvR);
       AppMethodBeat.o(50246);
     }
     
     public final void b(LocalUsageInfo paramLocalUsageInfo)
     {
-      AppMethodBeat.i(196236);
+      AppMethodBeat.i(187101);
       d.g.b.k.h(paramLocalUsageInfo, "info");
       super.b(paramLocalUsageInfo);
       f.e(paramLocalUsageInfo);
-      AppMethodBeat.o(196236);
+      AppMethodBeat.o(187101);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$reorder$callback$2", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$ReorderCallback;", "onInsert", "", "info", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "onReorderEnd", "plugin-appbrand-integration_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$reorder$callback$2", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$ReorderCallback;", "onInsert", "", "info", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "onReorderEnd", "plugin-appbrand-integration_release"})
   public static final class d
     extends f.b
   {
-    public final void aRx()
+    public final void aYs()
     {
       AppMethodBeat.i(50247);
-      ((c)g.ab(c.class)).a(ab.b.iVA);
+      ((c)g.ab(c.class)).a(ab.b.jvQ);
       AppMethodBeat.o(50247);
     }
     
     public final void b(LocalUsageInfo paramLocalUsageInfo)
     {
-      AppMethodBeat.i(196237);
+      AppMethodBeat.i(187102);
       d.g.b.k.h(paramLocalUsageInfo, "info");
       super.b(paramLocalUsageInfo);
       f.e(paramLocalUsageInfo);
-      AppMethodBeat.o(196237);
+      AppMethodBeat.o(187102);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -337,30 +338,30 @@ public final class f
     public final void run()
     {
       AppMethodBeat.i(50248);
-      Object localObject2 = f.a(this.iUh);
+      Object localObject2 = f.a(this.jut);
       Object localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = (List)d.a.v.Jgl;
+        localObject1 = (List)d.a.v.KTF;
       }
       localObject2 = android.support.v7.h.c.a((c.a)new ad((List)localObject1, paramList), true);
       c localc = (c)g.ab(c.class);
       d.g.b.k.g(localObject2, "diff");
-      localObject1 = d.a.j.m((Iterable)localObject1);
+      localObject1 = d.a.j.l((Iterable)localObject1);
       List localList = paramList;
       if (localList == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      boolean bool = localc.a((android.support.v7.h.c.b)localObject2, (List)localObject1, d.a.j.m((Iterable)localList), (c.b)paramb);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandCollectionStorageExport[collection]", "[collection] reorderWithCallback, changed = ".concat(String.valueOf(bool)));
+      boolean bool = localc.a((android.support.v7.h.c.b)localObject2, (List)localObject1, d.a.j.l((Iterable)localList), (c.b)paramb);
+      ac.i("MicroMsg.AppBrandCollectionStorageExport[collection]", "[collection] reorderWithCallback, changed = ".concat(String.valueOf(bool)));
       if (bool) {
         ((u)com.tencent.mm.plugin.appbrand.app.j.T(u.class)).a(LocalUsageInfo.class, paramList, null);
       }
-      f.b(this.iUh).set(false);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandCollectionStorageExport[collection]", "[collection] reorderWithCallback, before run callback");
+      f.b(this.jut).set(false);
+      ac.i("MicroMsg.AppBrandCollectionStorageExport[collection]", "[collection] reorderWithCallback, before run callback");
       localObject1 = paramb;
       if (localObject1 != null)
       {
-        ((f.b)localObject1).aRx();
+        ((f.b)localObject1).aYs();
         AppMethodBeat.o(50248);
         return;
       }
@@ -370,7 +371,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.f
  * JD-Core Version:    0.7.0.1
  */

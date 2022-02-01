@@ -9,17 +9,17 @@ import java.util.Map;
 public final class c
 {
   private boolean enable;
-  private String jjd;
-  private int jje;
-  Map<String, com.tencent.mm.plugin.appbrand.h.c.b.c> jjf;
-  Map<String, com.tencent.mm.plugin.appbrand.h.c.b.c> jjg;
-  private a jjh;
+  private String jJq;
+  private int jJr;
+  Map<String, com.tencent.mm.plugin.appbrand.h.c.b.c> jJs;
+  Map<String, com.tencent.mm.plugin.appbrand.h.c.b.c> jJt;
+  private a jJu;
   
   private c()
   {
     AppMethodBeat.i(158965);
     this.enable = false;
-    this.jjh = new a()
+    this.jJu = new a()
     {
       public final boolean b(com.tencent.mm.plugin.appbrand.h.c.b.d paramAnonymousd)
       {
@@ -29,16 +29,16 @@ public final class c
           int i;
           try
           {
-            String str1 = paramAnonymousd.jjR.get("SID");
+            String str1 = paramAnonymousd.jKe.get("SID");
             com.tencent.mm.plugin.appbrand.h.c.b.c localc = null;
-            String str2 = paramAnonymousd.jjQ;
+            String str2 = paramAnonymousd.jKd;
             i = -1;
             switch (str2.hashCode())
             {
             case -2006516997: 
-              if ((localc != null) && (localc.jjP != null))
+              if ((localc != null) && (localc.jKc != null))
               {
-                boolean bool = localc.jjP.a(paramAnonymousd);
+                boolean bool = localc.jKc.a(paramAnonymousd);
                 return bool;
                 if (!str2.equals("avtEvent")) {
                   break label190;
@@ -51,9 +51,9 @@ public final class c
               {
                 i = 1;
                 break label190;
-                localc = (com.tencent.mm.plugin.appbrand.h.c.b.c)c.this.jjf.get(str1);
+                localc = (com.tencent.mm.plugin.appbrand.h.c.b.c)c.this.jJs.get(str1);
                 continue;
-                localc = (com.tencent.mm.plugin.appbrand.h.c.b.c)c.this.jjg.get(str1);
+                localc = (com.tencent.mm.plugin.appbrand.h.c.b.c)c.this.jJt.get(str1);
                 continue;
                 return true;
               }
@@ -71,23 +71,23 @@ public final class c
         }
       }
     };
-    this.jjf = new HashMap();
-    this.jjg = new HashMap();
+    this.jJs = new HashMap();
+    this.jJt = new HashMap();
     AppMethodBeat.o(158965);
   }
   
-  public static c aUT()
+  public static c bbR()
   {
-    AppMethodBeat.i(202380);
-    c localc = b.aUU();
-    AppMethodBeat.o(202380);
+    AppMethodBeat.i(210497);
+    c localc = b.bbS();
+    AppMethodBeat.o(210497);
     return localc;
   }
   
-  public final String GM(String paramString)
+  public final String KQ(String paramString)
   {
     AppMethodBeat.i(158969);
-    paramString = "http://" + this.jjd + ":" + this.jje + paramString;
+    paramString = "http://" + this.jJq + ":" + this.jJr + paramString;
     AppMethodBeat.o(158969);
     return paramString;
   }
@@ -96,11 +96,11 @@ public final class c
   {
     AppMethodBeat.i(158968);
     this.enable = false;
-    d locald = d.c.aUV();
-    locald.jjh = null;
+    d locald = d.c.bbT();
+    locald.jJu = null;
     locald.stop();
-    this.jjf.clear();
-    this.jjg.clear();
+    this.jJs.clear();
+    this.jJt.clear();
     AppMethodBeat.o(158968);
     return true;
   }
@@ -109,11 +109,11 @@ public final class c
   {
     AppMethodBeat.i(158967);
     this.enable = true;
-    d locald = d.c.aUV();
-    locald.jjh = this.jjh;
+    d locald = d.c.bbT();
+    locald.jJu = this.jJu;
     locald.start();
-    this.jjd = locald.ip;
-    this.jje = locald.port;
+    this.jJq = locald.ip;
+    this.jJr = locald.port;
     AppMethodBeat.o(158967);
     return true;
   }
@@ -125,12 +125,12 @@ public final class c
   
   public static final class b
   {
-    private static c jjn;
+    private static c jJA;
     
     static
     {
       AppMethodBeat.i(158964);
-      jjn = new c((byte)0);
+      jJA = new c((byte)0);
       AppMethodBeat.o(158964);
     }
   }

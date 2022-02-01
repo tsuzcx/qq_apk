@@ -5,10 +5,10 @@ import d.g.b.w;
 
 public final class b
 {
-  static final String fs(Object paramObject)
+  static final String fv(Object paramObject)
   {
     AppMethodBeat.i(60987);
-    paramObject = "ClassicTypeCheckerContext couldn't handle " + w.bk(paramObject.getClass()) + ' ' + paramObject;
+    paramObject = "ClassicTypeCheckerContext couldn't handle " + w.bn(paramObject.getClass()) + ' ' + paramObject;
     AppMethodBeat.o(60987);
     return paramObject;
   }

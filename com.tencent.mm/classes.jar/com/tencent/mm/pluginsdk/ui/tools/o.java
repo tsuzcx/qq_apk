@@ -3,7 +3,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.compatible.util.p;
 import com.tencent.mm.model.w;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
@@ -16,16 +16,16 @@ import com.tencent.mm.opensdk.modelmsg.WXVideoObject;
 import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.x;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class o
 {
-  public static int Cnu = 2;
+  public static int DFN = 2;
   
   public static void a(int paramInt, g paramg, WXMediaMessage paramWXMediaMessage, LinkedList<String> paramLinkedList)
   {
@@ -39,11 +39,11 @@ public final class o
       int i;
       label52:
       int k;
-      if (paramg.CZ())
+      if (paramg.CC())
       {
         i = 1;
         k = paramWXMediaMessage.getType();
-        if (!w.pF(str1)) {
+        if (!w.sQ(str1)) {
           break label406;
         }
       }
@@ -52,16 +52,16 @@ public final class o
       {
         try
         {
-          String str4 = p.encode(bt.nullAsNil(b(paramWXMediaMessage)), "UTF-8");
-          String str5 = p.encode(bt.nullAsNil(c(paramWXMediaMessage)), "UTF-8");
-          String str6 = p.encode(bt.nullAsNil(paramWXMediaMessage.title), "UTF-8");
-          String str7 = p.encode(bt.nullAsNil(paramWXMediaMessage.description), "UTF-8");
-          ad.i("MicroMsg.ShareReport", paramInt + "," + str2 + "," + str3 + "," + i + "," + k + "," + j + ",1," + str1 + "," + str6 + "," + str7 + "," + str4 + "," + "" + "," + "" + "," + "" + "," + str5);
-          com.tencent.mm.plugin.report.service.h.vKh.f(16492, new Object[] { Integer.valueOf(paramInt), str2, str3, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(1), str1, str6, str7, str4, "", "", "", str5 });
+          String str4 = p.encode(bs.nullAsNil(b(paramWXMediaMessage)), "UTF-8");
+          String str5 = p.encode(bs.nullAsNil(c(paramWXMediaMessage)), "UTF-8");
+          String str6 = p.encode(bs.nullAsNil(paramWXMediaMessage.title), "UTF-8");
+          String str7 = p.encode(bs.nullAsNil(paramWXMediaMessage.description), "UTF-8");
+          ac.i("MicroMsg.ShareReport", paramInt + "," + str2 + "," + str3 + "," + i + "," + k + "," + j + ",1," + str1 + "," + str6 + "," + str7 + "," + str4 + "," + "" + "," + "" + "," + "" + "," + str5);
+          com.tencent.mm.plugin.report.service.h.wUl.f(16492, new Object[] { Integer.valueOf(paramInt), str2, str3, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(1), str1, str6, str7, str4, "", "", "", str5 });
         }
         catch (UnsupportedEncodingException localUnsupportedEncodingException)
         {
-          ad.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
+          ac.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
         }
         break;
         i = 0;
@@ -83,11 +83,11 @@ public final class o
       int i;
       label56:
       int k;
-      if (paramg.CZ())
+      if (paramg.CC())
       {
         i = 1;
         k = paramWXMediaMessage.getType();
-        if (!w.pF(str1)) {
+        if (!w.sQ(str1)) {
           break label418;
         }
       }
@@ -96,18 +96,18 @@ public final class o
       {
         try
         {
-          String str4 = p.encode(bt.nullAsNil(paramWXMiniProgramObject.webpageUrl), "UTF-8");
-          String str5 = p.encode(bt.nullAsNil(paramWXMediaMessage.title), "UTF-8");
-          String str6 = p.encode(bt.nullAsNil(paramWXMediaMessage.description), "UTF-8");
+          String str4 = p.encode(bs.nullAsNil(paramWXMiniProgramObject.webpageUrl), "UTF-8");
+          String str5 = p.encode(bs.nullAsNil(paramWXMediaMessage.title), "UTF-8");
+          String str6 = p.encode(bs.nullAsNil(paramWXMediaMessage.description), "UTF-8");
           String str7 = paramWxaAttributes.field_appId;
-          String str8 = p.encode(bt.nullAsNil(paramWXMiniProgramObject.path), "UTF-8");
+          String str8 = p.encode(bs.nullAsNil(paramWXMiniProgramObject.path), "UTF-8");
           int m = paramWXMiniProgramObject.miniprogramType;
-          ad.i("MicroMsg.ShareReport", paramInt + "," + str2 + "," + str3 + "," + i + "," + k + "," + j + ",1," + str1 + "," + str5 + "," + str6 + "," + str4 + "," + str7 + "," + str8 + "," + m);
-          com.tencent.mm.plugin.report.service.h.vKh.f(16492, new Object[] { Integer.valueOf(paramInt), str2, str3, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(1), str1, str5, str6, str4, str7, str8, Integer.valueOf(m), "" });
+          ac.i("MicroMsg.ShareReport", paramInt + "," + str2 + "," + str3 + "," + i + "," + k + "," + j + ",1," + str1 + "," + str5 + "," + str6 + "," + str4 + "," + str7 + "," + str8 + "," + m);
+          com.tencent.mm.plugin.report.service.h.wUl.f(16492, new Object[] { Integer.valueOf(paramInt), str2, str3, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(1), str1, str5, str6, str4, str7, str8, Integer.valueOf(m), "" });
         }
         catch (UnsupportedEncodingException localUnsupportedEncodingException)
         {
-          ad.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
+          ac.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
         }
         break;
         i = 0;
@@ -120,7 +120,7 @@ public final class o
   public static void a(int paramInt, String paramString, WXMediaMessage paramWXMediaMessage)
   {
     AppMethodBeat.i(152423);
-    Object localObject = com.tencent.mm.pluginsdk.model.app.h.j(paramString, true, false);
+    Object localObject = com.tencent.mm.pluginsdk.model.app.h.k(paramString, true, false);
     if (localObject == null)
     {
       AppMethodBeat.o(152423);
@@ -128,30 +128,30 @@ public final class o
     }
     paramString = ((g)localObject).field_appId;
     String str1 = ((g)localObject).field_appName;
-    if (((g)localObject).CZ()) {}
+    if (((g)localObject).CC()) {}
     for (int i = 1;; i = 0)
     {
       int j = paramWXMediaMessage.getType();
       try
       {
-        localObject = p.encode(bt.nullAsNil(b(paramWXMediaMessage)), "UTF-8");
-        String str2 = p.encode(bt.nullAsNil(c(paramWXMediaMessage)), "UTF-8");
-        String str3 = p.encode(bt.nullAsNil(paramWXMediaMessage.title), "UTF-8");
-        paramWXMediaMessage = p.encode(bt.nullAsNil(paramWXMediaMessage.description), "UTF-8");
-        ad.i("MicroMsg.ShareReport", paramInt + "," + paramString + "," + str1 + "," + i + "," + j + ",3,1," + "" + "," + str3 + "," + paramWXMediaMessage + "," + (String)localObject + "," + str2);
-        com.tencent.mm.plugin.report.service.h.vKh.f(16492, new Object[] { Integer.valueOf(paramInt), paramString, str1, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(3), Integer.valueOf(1), "", str3, paramWXMediaMessage, localObject, "", "", "", str2 });
+        localObject = p.encode(bs.nullAsNil(b(paramWXMediaMessage)), "UTF-8");
+        String str2 = p.encode(bs.nullAsNil(c(paramWXMediaMessage)), "UTF-8");
+        String str3 = p.encode(bs.nullAsNil(paramWXMediaMessage.title), "UTF-8");
+        paramWXMediaMessage = p.encode(bs.nullAsNil(paramWXMediaMessage.description), "UTF-8");
+        ac.i("MicroMsg.ShareReport", paramInt + "," + paramString + "," + str1 + "," + i + "," + j + ",3,1," + "" + "," + str3 + "," + paramWXMediaMessage + "," + (String)localObject + "," + str2);
+        com.tencent.mm.plugin.report.service.h.wUl.f(16492, new Object[] { Integer.valueOf(paramInt), paramString, str1, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(3), Integer.valueOf(1), "", str3, paramWXMediaMessage, localObject, "", "", "", str2 });
         AppMethodBeat.o(152423);
         return;
       }
       catch (UnsupportedEncodingException paramString)
       {
-        ad.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
+        ac.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
         AppMethodBeat.o(152423);
       }
     }
   }
   
-  public static void aX(Intent paramIntent)
+  public static void aY(Intent paramIntent)
   {
     AppMethodBeat.i(152422);
     Object localObject1 = paramIntent.getBundleExtra("Ksnsupload_timeline");
@@ -160,11 +160,11 @@ public final class o
       AppMethodBeat.o(152422);
       return;
     }
-    String str1 = y.getStringExtra(paramIntent, "Ksnsupload_appid");
-    String str2 = y.getStringExtra(paramIntent, "Ksnsupload_appname");
-    int k = y.getIntExtra(paramIntent, "Ksnsupload_open_sdk_version", 0);
-    boolean bool1 = y.getBooleanExtra(paramIntent, "KThrid_app", false);
-    boolean bool2 = y.getBooleanExtra(paramIntent, "Ksnsupload_app_is_game", false);
+    String str1 = x.getStringExtra(paramIntent, "Ksnsupload_appid");
+    String str2 = x.getStringExtra(paramIntent, "Ksnsupload_appname");
+    int k = x.getIntExtra(paramIntent, "Ksnsupload_open_sdk_version", 0);
+    boolean bool1 = x.getBooleanExtra(paramIntent, "KThrid_app", false);
+    boolean bool2 = x.getBooleanExtra(paramIntent, "Ksnsupload_app_is_game", false);
     paramIntent = new SendMessageToWX.Req();
     paramIntent.fromBundle((Bundle)localObject1);
     paramIntent = paramIntent.message;
@@ -175,10 +175,10 @@ public final class o
     }
     try
     {
-      localObject1 = p.encode(bt.nullAsNil(b(paramIntent)), "UTF-8");
-      String str3 = p.encode(bt.nullAsNil(c(paramIntent)), "UTF-8");
-      String str4 = p.encode(bt.nullAsNil(paramIntent.title), "UTF-8");
-      String str5 = p.encode(bt.nullAsNil(paramIntent.description), "UTF-8");
+      localObject1 = p.encode(bs.nullAsNil(b(paramIntent)), "UTF-8");
+      String str3 = p.encode(bs.nullAsNil(c(paramIntent)), "UTF-8");
+      String str4 = p.encode(bs.nullAsNil(paramIntent.title), "UTF-8");
+      String str5 = p.encode(bs.nullAsNil(paramIntent.description), "UTF-8");
       Object localObject2 = new StringBuilder().append(k).append(",").append(str1).append(",").append(str2).append(",");
       int i;
       label228:
@@ -191,8 +191,8 @@ public final class o
           break label426;
         }
         i = 1;
-        ad.i("MicroMsg.ShareReport", i + ",," + str4 + "," + str5 + "," + (String)localObject1 + "," + str3);
-        localObject2 = com.tencent.mm.plugin.report.service.h.vKh;
+        ac.i("MicroMsg.ShareReport", i + ",," + str4 + "," + str5 + "," + (String)localObject1 + "," + str3);
+        localObject2 = com.tencent.mm.plugin.report.service.h.wUl;
         if (!bool2) {
           break label431;
         }
@@ -222,7 +222,7 @@ public final class o
     }
     catch (UnsupportedEncodingException paramIntent)
     {
-      ad.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
+      ac.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
       AppMethodBeat.o(152422);
     }
   }
@@ -232,7 +232,7 @@ public final class o
     AppMethodBeat.i(152424);
     if (paramWXMediaMessage == null)
     {
-      ad.w("MicroMsg.ShareReport", "sendImgMsg msg not img");
+      ac.w("MicroMsg.ShareReport", "sendImgMsg msg not img");
       AppMethodBeat.o(152424);
       return null;
     }
@@ -281,16 +281,16 @@ public final class o
     return "";
   }
   
-  public static void kF(String paramString1, String paramString2)
+  public static void lc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(152421);
-    paramString1 = k.b.rw(bt.aGg(paramString1));
+    paramString1 = k.b.vz(bs.aLx(paramString1));
     if (paramString1 == null)
     {
       AppMethodBeat.o(152421);
       return;
     }
-    Object localObject = com.tencent.mm.pluginsdk.model.app.h.j(paramString1.appId, true, false);
+    Object localObject = com.tencent.mm.pluginsdk.model.app.h.k(paramString1.appId, true, false);
     if (localObject == null)
     {
       AppMethodBeat.o(152421);
@@ -303,40 +303,40 @@ public final class o
     int j;
     label87:
     int m;
-    if (((g)localObject).CZ())
+    if (((g)localObject).CC())
     {
       i = 1;
       k = paramString1.type;
-      if (!w.pF(paramString2)) {
+      if (!w.sQ(paramString2)) {
         break label456;
       }
       j = 1;
-      m = Cnu;
+      m = DFN;
     }
     for (;;)
     {
       try
       {
-        localObject = p.encode(bt.nullAsNil(paramString1.url), "UTF-8");
-        String str3 = p.encode(bt.nullAsNil(paramString1.title), "UTF-8");
-        String str4 = p.encode(bt.nullAsNil(paramString1.description), "UTF-8");
-        String str5 = paramString1.gJF;
-        String str6 = paramString1.gJD;
-        int n = paramString1.gJQ;
+        localObject = p.encode(bs.nullAsNil(paramString1.url), "UTF-8");
+        String str3 = p.encode(bs.nullAsNil(paramString1.title), "UTF-8");
+        String str4 = p.encode(bs.nullAsNil(paramString1.description), "UTF-8");
+        String str5 = paramString1.hkf;
+        String str6 = paramString1.hkd;
+        int n = paramString1.hkq;
         paramString1 = (b)paramString1.ao(b.class);
-        if ((paramString1 == null) || (bt.isNullOrNil(paramString1.songAlbumUrl))) {
+        if ((paramString1 == null) || (bs.isNullOrNil(paramString1.songAlbumUrl))) {
           break label476;
         }
         paramString1 = p.encode(paramString1.songAlbumUrl, "UTF-8");
-        ad.i("MicroMsg.ShareReport", "," + str1 + "," + str2 + "," + i + "," + k + "," + j + "," + m + "," + paramString2 + "," + str3 + "," + str4 + "," + (String)localObject + "," + str5 + "," + str6 + "," + n + "," + paramString1);
-        com.tencent.mm.plugin.report.service.h.vKh.f(16492, new Object[] { "", str1, str2, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(m), paramString2, str3, str4, localObject, str5, str6, Integer.valueOf(n), paramString1 });
+        ac.i("MicroMsg.ShareReport", "," + str1 + "," + str2 + "," + i + "," + k + "," + j + "," + m + "," + paramString2 + "," + str3 + "," + str4 + "," + (String)localObject + "," + str5 + "," + str6 + "," + n + "," + paramString1);
+        com.tencent.mm.plugin.report.service.h.wUl.f(16492, new Object[] { "", str1, str2, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(m), paramString2, str3, str4, localObject, str5, str6, Integer.valueOf(n), paramString1 });
         AppMethodBeat.o(152421);
         return;
       }
       catch (UnsupportedEncodingException paramString1)
       {
         label456:
-        ad.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
+        ac.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
         AppMethodBeat.o(152421);
         return;
       }
@@ -351,7 +351,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.o
  * JD-Core Version:    0.7.0.1
  */

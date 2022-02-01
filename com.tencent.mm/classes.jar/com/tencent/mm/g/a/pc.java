@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pc
   extends b
 {
-  public a duH;
+  public a drL;
   
   public pc()
   {
@@ -15,25 +15,31 @@ public final class pc
   
   private pc(byte paramByte)
   {
-    AppMethodBeat.i(91213);
-    this.duH = new a();
-    this.ESR = false;
+    AppMethodBeat.i(89649);
+    this.drL = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91213);
+    AppMethodBeat.o(89649);
   }
   
   public static final class a
   {
+    public String appId;
+    public String appName;
+    public int cZX = 0;
     public String content;
-    public String dpv;
-    public String duI;
-    public String toUser;
-    public int type;
+    public String daa;
+    public String drM;
+    public int drN;
+    public int drO;
+    public boolean drP;
+    public long msgId;
+    public int msgType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.pc
  * JD-Core Version:    0.7.0.1
  */

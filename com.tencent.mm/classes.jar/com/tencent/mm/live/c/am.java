@@ -11,121 +11,138 @@ import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/plugin/LiveMinimizePlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "isLiving", "", "minimizeBtn", "Landroid/widget/ImageView;", "minimizeBtnClickArea", "Landroid/widget/RelativeLayout;", "statusChange", "", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveMinimizePlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "isLiving", "", "minimizeBtn", "Landroid/widget/ImageView;", "minimizeBtnClickArea", "Landroid/widget/RelativeLayout;", "statusChange", "", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
 public final class am
   extends a
 {
-  final b IIs;
-  boolean KwA;
-  private final ImageView KwB;
-  private final RelativeLayout KwC;
   Context context;
+  boolean gCP;
+  private final ImageView gCQ;
+  private final RelativeLayout gCR;
+  final b gzb;
   
-  public am(ViewGroup paramViewGroup, b paramb)
+  public am(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(203023);
-    this.IIs = paramb;
+    AppMethodBeat.i(190257);
+    this.gzb = paramb;
     this.context = paramViewGroup.getContext();
-    paramb = paramViewGroup.findViewById(2131307632);
+    paramb = paramViewGroup.findViewById(2131307715);
     k.g(paramb, "root.findViewById(R.id.live_minimiza_icon_btn)");
-    this.KwB = ((ImageView)paramb);
-    paramb = paramViewGroup.findViewById(2131307633);
+    this.gCQ = ((ImageView)paramb);
+    paramb = paramViewGroup.findViewById(2131307716);
     k.g(paramb, "root.findViewById(R.id.l…miza_icon_btn_click_area)");
-    this.KwC = ((RelativeLayout)paramb);
-    agK(4);
-    paramb = this.KwB;
-    paramViewGroup = paramViewGroup.getContext();
-    k.g(paramViewGroup, "root.context");
-    paramb.setImageDrawable(com.tencent.mm.ui.am.e(paramViewGroup.getResources().getDrawable(2131691516), -1));
-    this.KwC.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gCR = ((RelativeLayout)paramb);
+    nj(4);
+    paramb = this.gCQ;
+    Context localContext = paramViewGroup.getContext();
+    k.g(localContext, "root.context");
+    paramb.setImageDrawable(com.tencent.mm.ui.am.e(localContext.getResources().getDrawable(2131691528), -1));
+    this.gCR.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(203020);
-        if (!com.tencent.mm.compatible.d.b.bZ(aj.getContext()))
+        AppMethodBeat.i(190254);
+        if (!com.tencent.mm.compatible.d.b.cc(ai.getContext()))
         {
-          ad.e("MicroMsg.LiveCoreMini", "showVideoTalking, permission denied");
-          b.b.a(this.KwD.IIs, b.c.FBm);
-          RequestFloatWindowPermissionDialog.a(this.KwD.context, this.KwD.context.getString(2131766673), (RequestFloatWindowPermissionDialog.a)new RequestFloatWindowPermissionDialog.a()
+          ac.e("MicroMsg.LiveCoreMini", "showVideoTalking, permission denied");
+          b.b.a(this.gCS.gzb, b.c.gya);
+          RequestFloatWindowPermissionDialog.a(this.gCS.context, this.gCS.context.getString(2131766708), (RequestFloatWindowPermissionDialog.a)new RequestFloatWindowPermissionDialog.a()
           {
             public final void a(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(203017);
+              AppMethodBeat.i(190251);
               k.h(paramAnonymous2RequestFloatWindowPermissionDialog, "dialog");
               paramAnonymous2RequestFloatWindowPermissionDialog.finish();
-              if (this.KwE.KwD.KwA) {
-                b.b.a(this.KwE.KwD.IIs, b.c.FBk);
+              if (this.gCT.gCS.gCP)
+              {
+                if (this.gCT.gCS.gzb.getLiveRole() != 1) {
+                  break label101;
+                }
+                paramAnonymous2RequestFloatWindowPermissionDialog = com.tencent.mm.live.core.core.a.b.gnC;
+                paramAnonymous2RequestFloatWindowPermissionDialog = this.gCT.gzm.getContext();
+                k.g(paramAnonymous2RequestFloatWindowPermissionDialog, "root.context");
               }
-              AppMethodBeat.o(203017);
+              for (com.tencent.mm.live.core.core.a.b.a.ct(paramAnonymous2RequestFloatWindowPermissionDialog).goL.gnZ = true;; com.tencent.mm.live.core.core.c.b.a.cu(paramAnonymous2RequestFloatWindowPermissionDialog).goL.gnZ = true)
+              {
+                b.b.a(this.gCT.gCS.gzb, b.c.gxY);
+                AppMethodBeat.o(190251);
+                return;
+                label101:
+                paramAnonymous2RequestFloatWindowPermissionDialog = com.tencent.mm.live.core.core.c.b.gqt;
+                paramAnonymous2RequestFloatWindowPermissionDialog = this.gCT.gzm.getContext();
+                k.g(paramAnonymous2RequestFloatWindowPermissionDialog, "root.context");
+              }
             }
             
             public final void b(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(203018);
+              AppMethodBeat.i(190252);
               k.h(paramAnonymous2RequestFloatWindowPermissionDialog, "dialog");
               paramAnonymous2RequestFloatWindowPermissionDialog.finish();
-              AppMethodBeat.o(203018);
+              b.b.a(this.gCT.gCS.gzb, b.c.gyb);
+              AppMethodBeat.o(190252);
             }
             
             public final void c(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(203019);
+              AppMethodBeat.i(190253);
               k.h(paramAnonymous2RequestFloatWindowPermissionDialog, "dialog");
-              AppMethodBeat.o(203019);
+              b.b.a(this.gCT.gCS.gzb, b.c.gyc);
+              AppMethodBeat.o(190253);
             }
-          }, false, com.tencent.mm.br.a.Ye());
-          AppMethodBeat.o(203020);
+          }, false, com.tencent.mm.bq.a.Zb());
+          AppMethodBeat.o(190254);
           return;
         }
-        b.b.a(this.KwD.IIs, b.c.FBk);
-        AppMethodBeat.o(203020);
+        b.b.a(this.gCS.gzb, b.c.gxY);
+        AppMethodBeat.o(190254);
       }
     });
-    AppMethodBeat.o(203023);
+    AppMethodBeat.o(190257);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(203022);
+    AppMethodBeat.i(190256);
     k.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (an.ciE[paramc.ordinal()])
+    switch (an.cfA[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(203022);
+      AppMethodBeat.o(190256);
       return;
-      agK(4);
-      this.KwA = false;
-      AppMethodBeat.o(203022);
+      nj(4);
+      this.gCP = false;
+      AppMethodBeat.o(190256);
       return;
-      agK(0);
-      this.KwA = true;
-      AppMethodBeat.o(203022);
+      nj(0);
+      this.gCP = true;
+      AppMethodBeat.o(190256);
       return;
-      if (this.IIs.getLiveRole() == 0)
+      if (this.gzb.getLiveRole() == 0)
       {
         if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
         {
-          agK(4);
-          AppMethodBeat.o(203022);
+          nj(4);
+          AppMethodBeat.o(190256);
           return;
         }
-        agK(0);
+        nj(0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.am
  * JD-Core Version:    0.7.0.1
  */

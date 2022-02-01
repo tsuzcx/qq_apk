@@ -11,8 +11,8 @@ public final class j
     static
     {
       AppMethodBeat.i(90230);
-      KrY = new a("INSTANCE");
-      KrZ = new a[] { KrY };
+      MfH = new a("INSTANCE");
+      MfI = new a[] { MfH };
       AppMethodBeat.o(90230);
     }
     

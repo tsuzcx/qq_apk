@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.exdevice.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.eg;
+import com.tencent.mm.g.a.eh;
 import com.tencent.mm.plugin.exdevice.service.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends n.a
 {
-  private static final a oTA;
+  private static final a pwL;
   
   static
   {
     AppMethodBeat.i(23196);
-    oTA = new a();
+    pwL = new a();
     AppMethodBeat.o(23196);
   }
   
-  public static a bZk()
+  public static a cgt()
   {
-    return oTA;
+    return pwL;
   }
   
-  public final Bundle n(int paramInt, Bundle paramBundle)
+  public final Bundle o(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(23195);
-    ad.i("MicroMsg.exdevice.ExDeviceInvokerHandler", "onExdeviceInvoke, action code = %d", new Object[] { Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.exdevice.ExDeviceInvokerHandler", "onExdeviceInvoke, action code = %d", new Object[] { Integer.valueOf(paramInt) });
     if (paramBundle == null)
     {
-      ad.e("MicroMsg.exdevice.ExDeviceInvokerHandler", "null == aData");
+      ac.e("MicroMsg.exdevice.ExDeviceInvokerHandler", "null == aData");
       AppMethodBeat.o(23195);
       return null;
     }
@@ -40,24 +40,24 @@ public final class a
       return null;
     }
     if (paramBundle == null) {
-      ad.e("MicroMsg.exdevice.ExDeviceInvokerHandler", "null == aData");
+      ac.e("MicroMsg.exdevice.ExDeviceInvokerHandler", "null == aData");
     }
     for (;;)
     {
       AppMethodBeat.o(23195);
       return null;
       paramInt = paramBundle.getInt("key_state");
-      ad.i("MicroMsg.exdevice.ExDeviceInvokerHandler", "handleOnBluetoothStateChange, state = %d", new Object[] { Integer.valueOf(paramInt) });
+      ac.i("MicroMsg.exdevice.ExDeviceInvokerHandler", "handleOnBluetoothStateChange, state = %d", new Object[] { Integer.valueOf(paramInt) });
       if (-1 == paramInt)
       {
-        ad.e("MicroMsg.exdevice.ExDeviceInvokerHandler", "invalid state, just leave!!!");
+        ac.e("MicroMsg.exdevice.ExDeviceInvokerHandler", "invalid state, just leave!!!");
       }
       else
       {
-        paramBundle = new eg();
-        paramBundle.dgM.dgN = paramInt;
-        if (!com.tencent.mm.sdk.b.a.ESL.l(paramBundle)) {
-          ad.e("MicroMsg.exdevice.ExDeviceInvokerHandler", "EventCenter.instance.publish failed!!!");
+        paramBundle = new eh();
+        paramBundle.deh.dei = paramInt;
+        if (!com.tencent.mm.sdk.b.a.GpY.l(paramBundle)) {
+          ac.e("MicroMsg.exdevice.ExDeviceInvokerHandler", "EventCenter.instance.publish failed!!!");
         }
       }
     }

@@ -8,27 +8,27 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 
 public class CardTagTextView
   extends TextView
 {
   private int fillColor;
-  private Paint nFF;
-  private RectF nJu;
-  private int nJv;
-  private int nJw;
-  private int nxr;
+  private int oar;
+  private Paint oiG;
+  private RectF omu;
+  private int omv;
+  private int omw;
   
   public CardTagTextView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(113879);
-    this.nJu = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.nFF = new Paint();
-    this.nxr = 3;
-    this.nJv = 9;
-    this.nJw = 0;
+    this.omu = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.oiG = new Paint();
+    this.oar = 3;
+    this.omv = 9;
+    this.omw = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113879);
@@ -38,11 +38,11 @@ public class CardTagTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(113880);
-    this.nJu = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.nFF = new Paint();
-    this.nxr = 3;
-    this.nJv = 9;
-    this.nJw = 0;
+    this.omu = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.oiG = new Paint();
+    this.oar = 3;
+    this.omv = 9;
+    this.omw = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113880);
@@ -52,11 +52,11 @@ public class CardTagTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(113881);
-    this.nJu = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.nFF = new Paint();
-    this.nxr = 3;
-    this.nJv = 9;
-    this.nJw = 0;
+    this.omu = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.oiG = new Paint();
+    this.oar = 3;
+    this.omv = 9;
+    this.omw = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113881);
@@ -65,30 +65,30 @@ public class CardTagTextView
   private void init()
   {
     AppMethodBeat.i(113882);
-    this.nxr = Math.round(a.getDensity(getContext()) * 0.5F);
-    this.nJv = a.fromDPToPix(getContext(), 3);
-    this.nJw = getCurrentTextColor();
+    this.oar = Math.round(a.getDensity(getContext()) * 0.5F);
+    this.omv = a.fromDPToPix(getContext(), 3);
+    this.omw = getCurrentTextColor();
     AppMethodBeat.o(113882);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(113884);
-    this.nJu.left = this.nJv;
-    this.nJu.top = this.nxr;
-    this.nJu.right = (getWidth() - this.nJv);
-    this.nJu.bottom = (getHeight() - this.nxr);
-    this.nFF.setAntiAlias(true);
+    this.omu.left = this.omv;
+    this.omu.top = this.oar;
+    this.omu.right = (getWidth() - this.omv);
+    this.omu.bottom = (getHeight() - this.oar);
+    this.oiG.setAntiAlias(true);
     if (this.fillColor != 0)
     {
-      this.nFF.setColor(this.fillColor);
-      this.nFF.setStyle(Paint.Style.FILL);
-      paramCanvas.drawRoundRect(this.nJu, getHeight() / 2 - this.nxr, getHeight() / 2 - this.nxr, this.nFF);
+      this.oiG.setColor(this.fillColor);
+      this.oiG.setStyle(Paint.Style.FILL);
+      paramCanvas.drawRoundRect(this.omu, getHeight() / 2 - this.oar, getHeight() / 2 - this.oar, this.oiG);
     }
-    this.nFF.setColor(this.nJw);
-    this.nFF.setStrokeWidth(this.nxr);
-    this.nFF.setStyle(Paint.Style.STROKE);
-    paramCanvas.drawRoundRect(this.nJu, getHeight() / 2 - this.nxr, getHeight() / 2 - this.nxr, this.nFF);
+    this.oiG.setColor(this.omw);
+    this.oiG.setStrokeWidth(this.oar);
+    this.oiG.setStyle(Paint.Style.STROKE);
+    paramCanvas.drawRoundRect(this.omu, getHeight() / 2 - this.oar, getHeight() / 2 - this.oar, this.oiG);
     super.onDraw(paramCanvas);
     AppMethodBeat.o(113884);
   }
@@ -101,14 +101,14 @@ public class CardTagTextView
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(113883);
-    this.nJw = paramInt;
+    this.omw = paramInt;
     super.setTextColor(paramInt);
     AppMethodBeat.o(113883);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.CardTagTextView
  * JD-Core Version:    0.7.0.1
  */

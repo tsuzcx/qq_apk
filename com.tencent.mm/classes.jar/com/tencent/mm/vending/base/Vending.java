@@ -24,9 +24,9 @@ public abstract class Vending<_Struct, _Index, _Change>
   private g<_Index, i<_Struct, _Index>> mArray = new g();
   private byte[] mArrayDataLock = new byte[0];
   private AtomicBoolean mCallDestroyed = new AtomicBoolean(false);
-  private volatile com.tencent.mm.vending.b.c mDataChangedCallback = new com.tencent.mm.vending.b.c(d.HQL) {};
-  private volatile com.tencent.mm.vending.b.c mDataResolvedCallback = new com.tencent.mm.vending.b.c(d.HQL) {};
-  private c<_Index> mDeadlock = new c((byte)0);
+  private volatile com.tencent.mm.vending.b.c mDataChangedCallback = new com.tencent.mm.vending.b.c(d.Jrg) {};
+  private volatile com.tencent.mm.vending.b.c mDataResolvedCallback = new com.tencent.mm.vending.b.c(d.Jrg) {};
+  private Vending.c<_Index> mDeadlock = new Vending.c((byte)0);
   private boolean mFreezeDataChange = false;
   private boolean mHasPendingDataChange = false;
   private f mLoader;
@@ -47,10 +47,10 @@ public abstract class Vending<_Struct, _Index, _Change>
   public Vending(Looper paramLooper)
   {
     this.mSubscriberLooper = paramLooper;
-    this.mVendingLooper = com.tencent.mm.vending.i.b.fhw().HQX.getLooper();
-    this.mArray.HPy = new b()
+    this.mVendingLooper = com.tencent.mm.vending.i.b.fxy().Jrs.getLooper();
+    this.mArray.JpT = new b()
     {
-      public final void fhd()
+      public final void fxf()
       {
         AppMethodBeat.i(177471);
         com.tencent.mm.vending.f.a.i("Vending", "SafeSparseArray fusing.", new Object[0]);
@@ -59,17 +59,17 @@ public abstract class Vending<_Struct, _Index, _Change>
       }
     };
     this.mVendingSync = new c(this.mSubscriberLooper, this.mVendingLooper);
-    this.mVendingSync.HPG = new c.a()
+    this.mVendingSync.Jqb = new c.a()
     {
-      public final void fhe()
+      public final void fxg()
       {
         AppMethodBeat.i(74956);
         com.tencent.mm.vending.f.a.i("Vending", "%s beforeSynchronize", new Object[] { Vending.this });
-        Vending.this.mLoader.fhg();
+        Vending.this.mLoader.fxi();
         AppMethodBeat.o(74956);
       }
       
-      public final void fhf()
+      public final void fxh()
       {
         AppMethodBeat.i(74958);
         com.tencent.mm.vending.f.a.i("Vending", "%s afterSynchronize", new Object[] { Vending.this });
@@ -84,7 +84,7 @@ public abstract class Vending<_Struct, _Index, _Change>
         AppMethodBeat.i(74957);
         com.tencent.mm.vending.f.a.i("Vending", "%s synchronizing", new Object[] { Vending.this });
         Vending.this.mVendingDeferring.clear();
-        Vending.this.mLoader.fhg();
+        Vending.this.mLoader.fxi();
         Vending.this.mSubscriberHandler.removeCallbacksAndMessages(null);
         if (paramAnonymousInt == 2) {
           paramAnonymousObject = Vending.this.prepareVendingDataAsynchronous();
@@ -110,7 +110,7 @@ public abstract class Vending<_Struct, _Index, _Change>
           AppMethodBeat.o(74963);
           return;
           paramAnonymousMessage = (Vending.i)paramAnonymousMessage.obj;
-          Vending.this.onDataResolved(paramAnonymousMessage.HPz, paramAnonymousMessage.HPA);
+          Vending.this.onDataResolved(paramAnonymousMessage.JpU, paramAnonymousMessage.JpV);
         }
       }
     };
@@ -143,12 +143,12 @@ public abstract class Vending<_Struct, _Index, _Change>
         AppMethodBeat.o(74966);
       }
       
-      public final void dZ(_Index paramAnonymous_Index)
+      public final void ea(_Index paramAnonymous_Index)
       {
         AppMethodBeat.i(74965);
         Vending.i locali = Vending.this.getLock(paramAnonymous_Index);
         boolean bool = Vending.this.loadFromVending(locali, paramAnonymous_Index);
-        if (locali.HOZ)
+        if (locali.Jpu)
         {
           com.tencent.mm.vending.f.a.d("Vending", "This lock is defer to return %s %s", new Object[] { locali, paramAnonymous_Index });
           AppMethodBeat.o(74965);
@@ -177,14 +177,14 @@ public abstract class Vending<_Struct, _Index, _Change>
   
   private void deadlock()
   {
-    if (this.mDeadlock.HPo.object != null)
+    if (this.mDeadlock.JpJ.object != null)
     {
-      com.tencent.mm.vending.f.a.e("Vending", "Catch deadlock! Tell Carl! .. " + this.mDeadlock.HPo.object, new Object[0]);
-      if (this.mDeadlock.HPp == null) {}
+      com.tencent.mm.vending.f.a.e("Vending", "Catch deadlock! Tell Carl! .. " + this.mDeadlock.JpJ.object, new Object[0]);
+      if (this.mDeadlock.JpK == null) {}
     }
-    synchronized (this.mDeadlock.HPp.mLock)
+    synchronized (this.mDeadlock.JpK.mLock)
     {
-      this.mDeadlock.HPp.mLock.notify();
+      this.mDeadlock.JpK.mLock.notify();
       this.mDeadlock.reset();
       return;
     }
@@ -198,7 +198,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     i locali = getLock(param_Index);
     synchronized (locali.mLock)
     {
-      locali.HOZ = false;
+      locali.Jpu = false;
       lockResolved(locali, param_Index, param_Struct);
       notifyDataLoadedIfNeed(locali);
       return;
@@ -207,7 +207,7 @@ public abstract class Vending<_Struct, _Index, _Change>
   
   private i<_Struct, _Index> forSubscriberSync(i<_Struct, _Index> parami, _Index param_Index)
   {
-    if (!com.tencent.mm.vending.i.b.fhw().HQX.isAlive())
+    if (!com.tencent.mm.vending.i.b.fxy().Jrs.isAlive())
     {
       com.tencent.mm.vending.f.a.e("Vending", "Vending thread is not running!", new Object[0]);
       return parami;
@@ -215,15 +215,15 @@ public abstract class Vending<_Struct, _Index, _Change>
     synchronized (parami.mLock)
     {
       boolean bool = requestIndex(parami, param_Index);
-      if ((parami.gfn) && (!parami.asr)) {
+      if ((parami.gjT) && (!parami.atm)) {
         break label157;
       }
       if (!bool) {
         return parami;
       }
     }
-    this.mDeadlock.HPo.object = param_Index;
-    this.mDeadlock.HPp = parami;
+    this.mDeadlock.JpJ.object = param_Index;
+    this.mDeadlock.JpK = parami;
     com.tencent.mm.vending.f.a.i("Vending", "%s waiting %s", new Object[] { this, param_Index });
     long l = System.nanoTime();
     try
@@ -249,8 +249,8 @@ public abstract class Vending<_Struct, _Index, _Change>
     {
       return null;
       locali = getLock(param_Index);
-    } while ((!requestIndex(locali, param_Index)) || (locali.asr));
-    return locali.HPA;
+    } while ((!requestIndex(locali, param_Index)) || (locali.atm));
+    return locali.JpV;
   }
   
   private _Struct getSync(_Index param_Index)
@@ -264,25 +264,25 @@ public abstract class Vending<_Struct, _Index, _Change>
     }
     i locali = getLock(param_Index);
     if (invalidIndex(param_Index)) {
-      return locali.HPA;
+      return locali.JpV;
     }
     if (localLooper == this.mSubscriberLooper) {
-      return forSubscriberSync(locali, param_Index).HPA;
+      return forSubscriberSync(locali, param_Index).JpV;
     }
     loadFromVending(locali, param_Index);
-    return locali.HPA;
+    return locali.JpV;
   }
   
   private boolean loadFromVending(i<_Struct, _Index> parami, _Index param_Index)
   {
     synchronized (parami.mLock)
     {
-      if ((!parami.gfn) || (parami.asr) || (parami.HPB))
+      if ((!parami.gjT) || (parami.atm) || (parami.JpW))
       {
         this.mResolveFromVending = true;
         Object localObject = resolveAsynchronous(param_Index);
         this.mResolveFromVending = false;
-        if (parami.HOZ) {
+        if (parami.Jpu) {
           return false;
         }
         lockResolved(parami, param_Index, localObject);
@@ -294,22 +294,22 @@ public abstract class Vending<_Struct, _Index, _Change>
   
   private void lockResolved(i<_Struct, _Index> parami, _Index param_Index, _Struct param_Struct)
   {
-    parami.HPA = param_Struct;
-    parami.HPz = param_Index;
-    parami.asr = false;
-    parami.HPB = false;
-    parami.gfn = true;
-    if (this.mDeadlock.HPp == parami) {
-      parami.HPC = true;
+    parami.JpV = param_Struct;
+    parami.JpU = param_Index;
+    parami.atm = false;
+    parami.JpW = false;
+    parami.gjT = true;
+    if (this.mDeadlock.JpK == parami) {
+      parami.JpX = true;
     }
     parami.mLock.notify();
   }
   
   private void notifyDataLoadedIfNeed(i<_Struct, _Index> parami)
   {
-    if (parami.HPC)
+    if (parami.JpX)
     {
-      parami.HPC = false;
+      parami.JpX = false;
       return;
     }
     this.mSubscriberHandler.sendMessage(this.mSubscriberHandler.obtainMessage(1, parami));
@@ -360,7 +360,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     while (this.mDataResolvedCallback == null) {
       return;
     }
-    this.mDataResolvedCallback.a(g.ef(param_Index));
+    this.mDataResolvedCallback.a(g.eg(param_Index));
   }
   
   private void refillImpl(_Index param_Index, boolean paramBoolean)
@@ -372,10 +372,10 @@ public abstract class Vending<_Struct, _Index, _Change>
     i locali = getLock(param_Index);
     synchronized (locali.mLock)
     {
-      if (locali.gfn)
+      if (locali.gjT)
       {
         if (paramBoolean) {
-          locali.asr = true;
+          locali.atm = true;
         }
       }
       else
@@ -383,7 +383,7 @@ public abstract class Vending<_Struct, _Index, _Change>
         getAsync(param_Index);
         return;
       }
-      locali.HPB = true;
+      locali.JpW = true;
     }
   }
   
@@ -398,10 +398,10 @@ public abstract class Vending<_Struct, _Index, _Change>
       return false;
     }
     f localf = this.mLoader;
-    if (!localf.iQZ.get()) {}
-    synchronized (localf.HPs)
+    if (!localf.jrj.get()) {}
+    synchronized (localf.JpN)
     {
-      localf.HPq.put(param_Index, Vending.f.b.HPv);
+      localf.JpL.put(param_Index, Vending.f.b.JpQ);
       localf.mVendingHandler.sendMessageAtFrontOfQueue(localf.mVendingHandler.obtainMessage(0, param_Index));
       requestIndexImpl(parami, param_Index);
       return true;
@@ -410,12 +410,12 @@ public abstract class Vending<_Struct, _Index, _Change>
   
   public com.tencent.mm.vending.b.b<d> addVendingDataChangedCallback(d paramd)
   {
-    return this.mDataChangedCallback.bv(paramd);
+    return this.mDataChangedCallback.bs(paramd);
   }
   
   public com.tencent.mm.vending.b.b<e> addVendingDataResolvedCallback(e parame)
   {
-    return this.mDataResolvedCallback.bv(parame);
+    return this.mDataResolvedCallback.bs(parame);
   }
   
   protected abstract void applyChangeSynchronized(_Change param_Change);
@@ -427,8 +427,8 @@ public abstract class Vending<_Struct, _Index, _Change>
     this.mCallDestroyed.set(true);
     this.mVendingHandler.removeCallbacksAndMessages(null);
     this.mSubscriberHandler.removeCallbacksAndMessages(null);
-    this.mLoader.iQZ.set(true);
-    this.mLoader.fhg();
+    this.mLoader.jrj.set(true);
+    this.mLoader.fxi();
     this.mVendingHandler.sendMessage(this.mVendingHandler.obtainMessage(2));
   }
   
@@ -440,7 +440,7 @@ public abstract class Vending<_Struct, _Index, _Change>
       com.tencent.mm.vending.f.a.w("Vending", "Please call defer in resolveAsynchronous()", new Object[0]);
       return null;
     }
-    getLock(param_Index).HOZ = true;
+    getLock(param_Index).Jpu = true;
     param_Index = new h(param_Index);
     this.mVendingDeferring.add(param_Index);
     return param_Index;
@@ -539,8 +539,8 @@ public abstract class Vending<_Struct, _Index, _Change>
         return null;
       } while (invalidIndex(param_Index));
       param_Index = peekLock(param_Index);
-    } while ((param_Index == null) || (param_Index.asr));
-    return param_Index.HPA;
+    } while ((param_Index == null) || (param_Index.atm));
+    return param_Index.JpV;
   }
   
   protected i<_Struct, _Index> peekLock(_Index param_Index)
@@ -606,83 +606,53 @@ public abstract class Vending<_Struct, _Index, _Change>
     }
   }
   
-  static final class a<T>
-  {
-    volatile T object;
-    
-    private a()
-    {
-      AppMethodBeat.i(74964);
-      AppMethodBeat.o(74964);
-    }
-  }
-  
   static abstract interface b
   {
-    public abstract void fhd();
-  }
-  
-  static final class c<_Index>
-  {
-    Vending.a<_Index> HPo;
-    Vending.i HPp;
-    
-    private c()
-    {
-      AppMethodBeat.i(177472);
-      this.HPo = new Vending.a((byte)0);
-      AppMethodBeat.o(177472);
-    }
-    
-    public final void reset()
-    {
-      this.HPo.object = null;
-      this.HPp = null;
-    }
+    public abstract void fxf();
   }
   
   public static abstract interface d
   {
-    public abstract void dCq();
+    public abstract void dQM();
   }
   
   public static abstract interface e<_Index>
   {
-    public abstract void dY(_Index param_Index);
+    public abstract void dZ(_Index param_Index);
   }
   
   public static final class f<_Index>
   {
-    HashMap<_Index, Vending.f.b> HPq;
-    a<_Index> HPr;
-    byte[] HPs;
-    AtomicBoolean iQZ;
+    HashMap<_Index, Vending.f.b> JpL;
+    a<_Index> JpM;
+    byte[] JpN;
+    AtomicBoolean jrj;
     Handler mVendingHandler;
     
     protected f(Looper paramLooper, a<_Index> parama)
     {
       AppMethodBeat.i(74947);
-      this.HPq = new HashMap();
-      this.HPr = null;
-      this.iQZ = new AtomicBoolean(false);
-      this.HPs = new byte[0];
-      this.HPr = parama;
+      this.JpL = new HashMap();
+      this.JpM = null;
+      this.jrj = new AtomicBoolean(false);
+      this.JpN = new byte[0];
+      this.JpM = parama;
       this.mVendingHandler = new Handler(paramLooper)
       {
         public final void handleMessage(Message arg1)
         {
           AppMethodBeat.i(74961);
-          if (Vending.f.this.iQZ.get())
+          if (Vending.f.this.jrj.get())
           {
-            Vending.f.this.HPr.cancel();
+            Vending.f.this.JpM.cancel();
             AppMethodBeat.o(74961);
             return;
           }
           Object localObject1 = ???.obj;
-          Vending.f.this.HPr.dZ(localObject1);
-          synchronized (Vending.f.this.HPs)
+          Vending.f.this.JpM.ea(localObject1);
+          synchronized (Vending.f.this.JpN)
           {
-            Vending.f.this.HPq.put(localObject1, Vending.f.b.HPw);
+            Vending.f.this.JpL.put(localObject1, Vending.f.b.JpR);
             AppMethodBeat.o(74961);
             return;
           }
@@ -691,15 +661,15 @@ public abstract class Vending<_Struct, _Index, _Change>
       AppMethodBeat.o(74947);
     }
     
-    protected final void fhg()
+    protected final void fxi()
     {
       AppMethodBeat.i(74948);
       this.mVendingHandler.removeCallbacksAndMessages(null);
       com.tencent.mm.vending.f.a.i("Vending.Loader", "clear()", new Object[0]);
-      synchronized (this.HPs)
+      synchronized (this.JpN)
       {
-        this.HPq.clear();
-        this.HPr.cancel();
+        this.JpL.clear();
+        this.JpM.cancel();
         AppMethodBeat.o(74948);
         return;
       }
@@ -709,21 +679,21 @@ public abstract class Vending<_Struct, _Index, _Change>
     {
       public abstract void cancel();
       
-      public abstract void dZ(_Index param_Index);
+      public abstract void ea(_Index param_Index);
     }
   }
   
   static final class g<K, V>
     extends HashMap<K, V>
   {
-    Vending.b HPy = null;
+    Vending.b JpT = null;
     
     public final void clear()
     {
       AppMethodBeat.i(177473);
       super.clear();
-      if (this.HPy != null) {
-        this.HPy.fhd();
+      if (this.JpT != null) {
+        this.JpT.fxf();
       }
       AppMethodBeat.o(177473);
     }
@@ -731,35 +701,35 @@ public abstract class Vending<_Struct, _Index, _Change>
   
   public final class h
   {
-    private _Index HPz;
+    private _Index JpU;
     
     h()
     {
       Object localObject;
-      this.HPz = localObject;
+      this.JpU = localObject;
     }
   }
   
   static final class i<_Struct, _Index>
   {
-    boolean HOZ;
-    _Struct HPA;
-    boolean HPB;
-    boolean HPC;
-    _Index HPz;
-    boolean asr;
-    boolean gfn;
+    _Index JpU;
+    _Struct JpV;
+    boolean JpW;
+    boolean JpX;
+    boolean Jpu;
+    boolean atm;
+    boolean gjT;
     byte[] mLock;
     
     i()
     {
       AppMethodBeat.i(177474);
       this.mLock = new byte[0];
-      this.asr = false;
-      this.HPB = false;
-      this.gfn = false;
-      this.HOZ = false;
-      this.HPC = false;
+      this.atm = false;
+      this.JpW = false;
+      this.gjT = false;
+      this.Jpu = false;
+      this.JpX = false;
       AppMethodBeat.o(177474);
     }
   }

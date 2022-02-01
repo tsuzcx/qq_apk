@@ -6,12 +6,12 @@ import com.tencent.mm.loader.j.b;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sns.data.m;
 import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.k.d;
+import com.tencent.mm.plugin.sns.j.d;
 import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.storage.u;
 import com.tencent.mm.sdk.platformtools.MMNativeJpeg;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 
 public final class e
@@ -22,7 +22,7 @@ public final class e
     super(parama, parama1);
   }
   
-  public final boolean duv()
+  public final boolean dIV()
   {
     AppMethodBeat.i(96071);
     long l1 = -1L;
@@ -33,14 +33,14 @@ public final class e
     Object localObject;
     label124:
     long l3;
-    if ((!bt.isNullOrNil(this.wLz.wBe)) && (!bt.isNullOrNil(this.wLz.wBf)))
+    if ((!bs.isNullOrNil(this.xYf.xNz)) && (!bs.isNullOrNil(this.xYf.xNA)))
     {
       i = 1;
       if (i == 0) {
         break label622;
       }
-      str1 = this.wLz.wBf;
-      String str2 = this.wLz.getPath() + this.wLz.dut();
+      str1 = this.xYf.xNA;
+      String str2 = this.xYf.getPath() + this.xYf.dIT();
       localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
       com.tencent.mm.sdk.platformtools.f.decodeFile(str2, localOptions);
@@ -48,8 +48,8 @@ public final class e
         break label634;
       }
       localObject = localOptions.outMimeType.toLowerCase();
-      l3 = i.aMN(str2);
-      if ((!this.wMa) && (!((String)localObject).contains("webp"))) {
+      l3 = i.aSp(str2);
+      if ((!this.xYG) && (!((String)localObject).contains("webp"))) {
         break label641;
       }
       i = 0;
@@ -68,10 +68,10 @@ public final class e
         if (i == 0)
         {
           bool = true;
-          ad.i("MicroMsg.SnsDownloadImage", bool);
-          l2 = i.aMN(this.wLz.getPath() + str1);
-          h.vKh.f(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l1), Long.valueOf(l2), Thread.currentThread().getName(), af.dtK(), b.aib() });
-          if (this.wLz.wLu == 3) {
+          ac.i("MicroMsg.SnsDownloadImage", bool);
+          l2 = i.aSp(this.xYf.getPath() + str1);
+          h.wUl.f(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l1), Long.valueOf(l2), Thread.currentThread().getName(), af.dIi(), b.apb() });
+          if (this.xYf.xYa == 3) {
             break label1469;
           }
         }
@@ -82,31 +82,31 @@ public final class e
       for (i = 1;; i = 0)
       {
         int j = i;
-        if (this.wLz.wAv != null)
+        if (this.xYf.xMO != null)
         {
           j = i;
-          if (this.wLz.wAv.wBd != 4)
+          if (this.xYf.xMO.xNy != 4)
           {
             j = i;
-            if (this.wLz.wAv.wBd != 5) {
+            if (this.xYf.xMO.xNy != 5) {
               j = 0;
             }
           }
         }
         if (j != 0)
         {
-          localObject = q.d(this.dyS);
-          if (i.eK(this.wLz.getPath() + (String)localObject)) {
-            i.deleteFile(this.wLz.getPath() + (String)localObject);
+          localObject = q.d(this.dwE);
+          if (i.eA(this.xYf.getPath() + (String)localObject)) {
+            i.deleteFile(this.xYf.getPath() + (String)localObject);
           }
-          l1 = bt.GC();
-          u.a(this.wLz.getPath(), str1, (String)localObject, af.dtF());
-          l1 = bt.aS(l1);
-          i.aMN(this.wLz.getPath() + (String)localObject);
-          h.vKh.f(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l1), Long.valueOf(l2), Thread.currentThread().getName(), af.dtK(), b.aib() });
-          localObject = q.e(this.dyS);
-          if (!i.eK(this.wLz.getPath() + (String)localObject)) {
-            u.b(this.wLz.getPath(), str1, (String)localObject, af.dtE());
+          l1 = bs.Gn();
+          u.a(this.xYf.getPath(), str1, (String)localObject, af.dId());
+          l1 = bs.aO(l1);
+          i.aSp(this.xYf.getPath() + (String)localObject);
+          h.wUl.f(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l1), Long.valueOf(l2), Thread.currentThread().getName(), af.dIi(), b.apb() });
+          localObject = q.e(this.dwE);
+          if (!i.eA(this.xYf.getPath() + (String)localObject)) {
+            u.b(this.xYf.getPath(), str1, (String)localObject, af.dIc());
           }
         }
         AppMethodBeat.o(96071);
@@ -114,12 +114,12 @@ public final class e
         i = 0;
         break;
         label622:
-        str1 = q.k(this.dyS);
+        str1 = q.k(this.dwE);
         break label51;
         label634:
         localObject = "";
         break label124;
-        if ((this.wMb) || (((String)localObject).contains("vcodec")))
+        if ((this.xYH) || (((String)localObject).contains("vcodec")))
         {
           i = 1;
           break label150;
@@ -129,48 +129,48 @@ public final class e
         }
         i = 3;
         break label150;
-        h.vKh.idkeyStat(22L, 64L, 1L, true);
-        i.deleteFile(this.wLz.getPath() + str1);
-        l1 = bt.GC();
-        u.d(this.wLz.getPath(), this.wLz.getPath() + this.wLz.dut(), str1, false);
-        l2 = bt.aS(l1);
-        i.deleteFile(this.wLz.getPath() + this.wLz.dut());
-        l1 = bt.aS(l1);
-        d.a(this.wLz.getPath() + str1, this.wLz.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, -1, l3, l2);
+        h.wUl.idkeyStat(22L, 64L, 1L, true);
+        i.deleteFile(this.xYf.getPath() + str1);
+        l1 = bs.Gn();
+        u.d(this.xYf.getPath(), this.xYf.getPath() + this.xYf.dIT(), str1, false);
+        l2 = bs.aO(l1);
+        i.deleteFile(this.xYf.getPath() + this.xYf.dIT());
+        l1 = bs.aO(l1);
+        d.a(this.xYf.getPath() + str1, this.xYf.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, -1, l3, l2);
         break label180;
-        ad.i("MicroMsg.SnsDownloadImage", "found vcodec:%s, reencoded.", new Object[] { this.wLz.getPath() + this.wLz.dut() });
-        i.deleteFile(this.wLz.getPath() + str1);
-        l1 = bt.GC();
-        u.d(this.wLz.getPath(), this.wLz.getPath() + this.wLz.dut(), str1, false);
-        l2 = bt.aS(l1);
-        i.deleteFile(this.wLz.getPath() + this.wLz.dut());
-        l1 = bt.aS(l1);
-        d.a(this.wLz.getPath() + str1, this.wLz.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, -1, l3, l2);
+        ac.i("MicroMsg.SnsDownloadImage", "found vcodec:%s, reencoded.", new Object[] { this.xYf.getPath() + this.xYf.dIT() });
+        i.deleteFile(this.xYf.getPath() + str1);
+        l1 = bs.Gn();
+        u.d(this.xYf.getPath(), this.xYf.getPath() + this.xYf.dIT(), str1, false);
+        l2 = bs.aO(l1);
+        i.deleteFile(this.xYf.getPath() + this.xYf.dIT());
+        l1 = bs.aO(l1);
+        d.a(this.xYf.getPath() + str1, this.xYf.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, -1, l3, l2);
         break label180;
         l2 = -1L;
-        if (q.anQ(this.wLz.getPath() + this.wLz.dut()))
+        if (q.atc(this.xYf.getPath() + this.xYf.dIT()))
         {
-          ad.w("MicroMsg.SnsDownloadImage", "the " + this.wLz.mediaId + " is too max ! " + this.wLz.url);
-          i.deleteFile(this.wLz.getPath() + str1);
-          l1 = bt.GC();
-          u.d(this.wLz.getPath(), this.wLz.getPath() + this.wLz.dut(), str1, false);
-          l2 = bt.aS(l1);
-          i.deleteFile(this.wLz.getPath() + this.wLz.dut());
+          ac.w("MicroMsg.SnsDownloadImage", "the " + this.xYf.mediaId + " is too max ! " + this.xYf.url);
+          i.deleteFile(this.xYf.getPath() + str1);
+          l1 = bs.Gn();
+          u.d(this.xYf.getPath(), this.xYf.getPath() + this.xYf.dIT(), str1, false);
+          l2 = bs.aO(l1);
+          i.deleteFile(this.xYf.getPath() + this.xYf.dIT());
         }
-        for (l1 = bt.aS(l1);; l1 = 0L)
+        for (l1 = bs.aO(l1);; l1 = 0L)
         {
           j = -1;
           if ((((String)localObject).contains("jpg")) || (((String)localObject).contains("jpeg")))
           {
-            int k = MMNativeJpeg.queryQuality(this.wLz.getPath() + str1);
+            int k = MMNativeJpeg.queryQuality(this.xYf.getPath() + str1);
             j = k;
             if (k == 0) {
               j = -1;
             }
           }
-          d.a(this.wLz.getPath() + str1, this.wLz.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, j, l3, l2);
+          d.a(this.xYf.getPath() + str1, this.xYf.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, j, l3, l2);
           break;
-          i.aQ(this.wLz.getPath(), this.wLz.dut(), str1);
+          i.aT(this.xYf.getPath(), this.xYf.dIT(), str1);
         }
         bool = false;
         break label198;

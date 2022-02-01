@@ -10,7 +10,7 @@ final class WalletOfflineCoinPurseUI$27
   public final void run()
   {
     AppMethodBeat.i(184856);
-    WalletOfflineCoinPurseUI.n(this.umB);
+    WalletOfflineCoinPurseUI.n(this.vvx);
     AppMethodBeat.o(184856);
   }
 }

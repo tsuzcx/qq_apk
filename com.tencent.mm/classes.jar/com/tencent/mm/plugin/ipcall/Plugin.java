@@ -10,24 +10,24 @@ import com.tencent.mm.pluginsdk.m;
 public class Plugin
   implements d
 {
-  b szG;
+  b tHq;
   
   public Plugin()
   {
     AppMethodBeat.i(25326);
-    this.szG = new b();
+    this.tHq = new b();
     AppMethodBeat.o(25326);
   }
   
   public m createApplication()
   {
-    return this.szG;
+    return this.tHq;
   }
   
   public aw createSubCore()
   {
     AppMethodBeat.i(25327);
-    i locali = i.cHi();
+    i locali = i.cUt();
     AppMethodBeat.o(25327);
     return locali;
   }
@@ -39,7 +39,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.Plugin
  * JD-Core Version:    0.7.0.1
  */

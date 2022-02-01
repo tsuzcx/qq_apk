@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.sns.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.g;
 import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 
 public final class ah
@@ -22,12 +22,12 @@ public final class ah
   public final boolean a(final n paramn)
   {
     AppMethodBeat.i(95852);
-    if ((paramn == null) || (bt.isNullOrNil(paramn.field_userName)))
+    if ((paramn == null) || (bs.isNullOrNil(paramn.field_userName)))
     {
       AppMethodBeat.o(95852);
       return false;
     }
-    af.dhI().post(new Runnable()
+    af.dvq().post(new Runnable()
     {
       public final void run()
       {
@@ -40,7 +40,7 @@ public final class ah
     return true;
   }
   
-  public final n aoF(String paramString)
+  public final n atR(String paramString)
   {
     AppMethodBeat.i(95849);
     paramString = (n)this.cache.get(paramString);
@@ -48,10 +48,10 @@ public final class ah
     return paramString;
   }
   
-  public final boolean dtN()
+  public final boolean dIl()
   {
     AppMethodBeat.i(95850);
-    af.dhI().post(new Runnable()
+    af.dvq().post(new Runnable()
     {
       public final void run()
       {
@@ -66,10 +66,10 @@ public final class ah
     return true;
   }
   
-  public final boolean dtO()
+  public final boolean dIm()
   {
     AppMethodBeat.i(95851);
-    af.dhI().post(new Runnable()
+    af.dvq().post(new Runnable()
     {
       public final void run()
       {

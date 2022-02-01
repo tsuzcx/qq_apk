@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.emojicapture.proxy;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.remoteservice.d;
 import com.tencent.mm.remoteservice.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import d.g.a.b;
 import d.l;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/proxy/CgiEmojiTextSpamProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "TAG", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "shouldBlock", "", "getCallback", "()Lkotlin/jvm/functions/Function1;", "setCallback", "(Lkotlin/jvm/functions/Function1;)V", "cgiEmojiTextSpam", "text", "cgiEmojiTextSpamCallback", "cgiEmojiTextSpamRemote", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/proxy/CgiEmojiTextSpamProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "TAG", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "shouldBlock", "", "getCallback", "()Lkotlin/jvm/functions/Function1;", "setCallback", "(Lkotlin/jvm/functions/Function1;)V", "cgiEmojiTextSpam", "text", "cgiEmojiTextSpamCallback", "cgiEmojiTextSpamRemote", "plugin-emojicapture_release"})
 public final class CgiEmojiTextSpamProxy
   extends com.tencent.mm.remoteservice.a
 {
   private final String TAG = "MicroMsg.CgiEmojiTextSpamProxy";
-  private b<? super Boolean, y> fLy;
+  private b<? super Boolean, y> fPk;
   
   public CgiEmojiTextSpamProxy(d paramd)
   {
@@ -24,9 +24,9 @@ public final class CgiEmojiTextSpamProxy
   public final void cgiEmojiTextSpam(String paramString, b<? super Boolean, y> paramb)
   {
     AppMethodBeat.i(378);
-    ad.i(this.TAG, "cgiEmojiTextSpam ".concat(String.valueOf(paramString)));
+    ac.i(this.TAG, "cgiEmojiTextSpam ".concat(String.valueOf(paramString)));
     REMOTE_CALL("cgiEmojiTextSpamRemote", new Object[] { paramString });
-    this.fLy = paramb;
+    this.fPk = paramb;
     AppMethodBeat.o(378);
   }
   
@@ -34,11 +34,11 @@ public final class CgiEmojiTextSpamProxy
   public final void cgiEmojiTextSpamCallback(boolean paramBoolean)
   {
     AppMethodBeat.i(379);
-    ad.i(this.TAG, "cgiEmojiTextSpamCallback ".concat(String.valueOf(paramBoolean)));
-    b localb = this.fLy;
+    ac.i(this.TAG, "cgiEmojiTextSpamCallback ".concat(String.valueOf(paramBoolean)));
+    b localb = this.fPk;
     if (localb != null)
     {
-      localb.aA(Boolean.valueOf(paramBoolean));
+      localb.ay(Boolean.valueOf(paramBoolean));
       AppMethodBeat.o(379);
       return;
     }
@@ -49,21 +49,21 @@ public final class CgiEmojiTextSpamProxy
   public final void cgiEmojiTextSpamRemote(final String paramString)
   {
     AppMethodBeat.i(380);
-    aq.f((Runnable)new a(this, paramString));
+    ap.f((Runnable)new a(this, paramString));
     AppMethodBeat.o(380);
   }
   
   public final b<Boolean, y> getCallback()
   {
-    return this.fLy;
+    return this.fPk;
   }
   
   public final void setCallback(b<? super Boolean, y> paramb)
   {
-    this.fLy = paramb;
+    this.fPk = paramb;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -72,7 +72,7 @@ public final class CgiEmojiTextSpamProxy
     public final void run()
     {
       AppMethodBeat.i(377);
-      new com.tencent.mm.plugin.emojicapture.a.a(paramString).auK().g((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {});
+      new com.tencent.mm.plugin.emojicapture.a.a(paramString).aBB().g((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {});
       AppMethodBeat.o(377);
     }
   }

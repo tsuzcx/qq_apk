@@ -6,8 +6,8 @@ import com.tencent.mm.model.ce;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,13 +16,13 @@ public final class b
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  public static final Long fpK;
+  public static final Long ftn;
   private e db;
   
   static
   {
     AppMethodBeat.i(182146);
-    fpK = Long.valueOf(604800000L);
+    ftn = Long.valueOf(604800000L);
     SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "GroupTodo") };
     INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS todoIdIndex ON GroupTodo ( todoid )", "CREATE INDEX IF NOT EXISTS todoIdRoomNameIndex ON GroupTodo ( todoid,roomname )", "CREATE INDEX IF NOT EXISTS roomNameIndex ON GroupTodo ( roomname )" };
     AppMethodBeat.o(182146);
@@ -34,12 +34,12 @@ public final class b
     this.db = parame;
   }
   
-  public final boolean UZ()
+  public final boolean VV()
   {
     AppMethodBeat.i(182144);
     try
     {
-      i = this.db.delete("GroupTodo", "createtime<?", new String[] { ce.asR() - fpK.longValue() });
+      i = this.db.delete("GroupTodo", "createtime<?", new String[] { ce.azI() - ftn.longValue() });
       if (i > 0)
       {
         AppMethodBeat.o(182144);
@@ -50,7 +50,7 @@ public final class b
     {
       for (;;)
       {
-        ad.e("MicroMsg.roomTodo.GroupTodoStorage", "deleteExpireData  Exception：[%s %s]", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        ac.e("MicroMsg.roomTodo.GroupTodoStorage", "deleteExpireData  Exception：[%s %s]", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         int i = 0;
       }
       AppMethodBeat.o(182144);
@@ -58,10 +58,10 @@ public final class b
     return false;
   }
   
-  public final a ac(String paramString1, String paramString2)
+  public final a af(String paramString1, String paramString2)
   {
     AppMethodBeat.i(182140);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(182140);
       return null;
@@ -143,7 +143,7 @@ public final class b
     }
     if (parama.systemRowid == -1L)
     {
-      a locala = ac(parama.field_roomname, parama.field_todoid);
+      a locala = af(parama.field_roomname, parama.field_todoid);
       if (locala == null)
       {
         AppMethodBeat.o(182142);
@@ -156,17 +156,17 @@ public final class b
     return bool;
   }
   
-  public final List<a> oP(String paramString)
+  public final List<a> sa(String paramString)
   {
     AppMethodBeat.i(182143);
     ArrayList localArrayList = new ArrayList();
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(182143);
       return localArrayList;
     }
-    long l = ce.asT();
-    paramString = this.db.query("GroupTodo", a.info.columns, "roomname=? and createtime>=? AND state IN (0,1)", new String[] { paramString, l - fpK.longValue() }, null, null, "updatetime DESC limit 20");
+    long l = ce.azK();
+    paramString = this.db.query("GroupTodo", a.info.columns, "roomname=? and createtime>=? AND state IN (0,1)", new String[] { paramString, l - ftn.longValue() }, null, null, "updatetime DESC limit 20");
     if (paramString == null)
     {
       AppMethodBeat.o(182143);
@@ -191,7 +191,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.b
  * JD-Core Version:    0.7.0.1
  */

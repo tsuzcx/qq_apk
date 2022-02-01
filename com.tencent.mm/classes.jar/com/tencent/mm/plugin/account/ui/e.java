@@ -2,16 +2,20 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.MenuItem;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.d;
 
 public final class e
 {
-  public static void P(Context paramContext, String paramString)
+  public static void Q(Context paramContext, String paramString)
   {
     AppMethodBeat.i(128020);
     Intent localIntent = new Intent();
@@ -20,10 +24,10 @@ public final class e
     localIntent.putExtra("show_bottom", false);
     localIntent.putExtra("needRedirect", false);
     localIntent.putExtra("neverGetA8Key", true);
-    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Cqe);
-    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Cqa);
+    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.DIw);
+    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.DIs);
     localIntent.putExtra("KFromLoginHistory", false);
-    d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+    com.tencent.mm.br.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(128020);
   }
 }

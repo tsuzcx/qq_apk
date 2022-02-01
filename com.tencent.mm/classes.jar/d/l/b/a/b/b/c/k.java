@@ -11,46 +11,46 @@ public abstract class k
   extends j
   implements m
 {
-  private final an Jrj;
-  private final l Jtl;
+  private final an LeC;
+  private final l LgE;
   
   protected k(l paraml, g paramg, f paramf, an paraman)
   {
     super(paramg, paramf);
-    this.Jtl = paraml;
-    this.Jrj = paraman;
+    this.LgE = paraml;
+    this.LeC = paraman;
   }
   
-  public an fxG()
+  public l fPU()
   {
-    an localan = this.Jrj;
-    if (localan == null) {
-      adP(6);
-    }
-    return localan;
-  }
-  
-  public l fxq()
-  {
-    l locall = this.Jtl;
+    l locall = this.LgE;
     if (locall == null) {
-      adP(5);
+      agL(5);
     }
     return locall;
   }
   
-  public o fzN()
+  public an fQk()
   {
-    o localo = (o)super.fyy();
+    an localan = this.LeC;
+    if (localan == null) {
+      agL(6);
+    }
+    return localan;
+  }
+  
+  public o fSr()
+  {
+    o localo = (o)super.fRc();
     if (localo == null) {
-      adP(4);
+      agL(4);
     }
     return localo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.k
  * JD-Core Version:    0.7.0.1
  */

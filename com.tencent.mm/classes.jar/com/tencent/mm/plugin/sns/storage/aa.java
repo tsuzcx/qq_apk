@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fz;
+import com.tencent.mm.g.c.gd;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class aa
-  extends fz
+  extends gd
 {
   protected static c.a info;
   
@@ -15,24 +15,24 @@ public final class aa
   {
     AppMethodBeat.i(97651);
     c.a locala = new c.a();
-    locala.EYt = new Field[4];
+    locala.GvF = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "canvasId";
-    locala.EYv.put("canvasId", "TEXT PRIMARY KEY ");
+    locala.GvH.put("canvasId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" canvasId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "canvasId";
+    locala.GvG = "canvasId";
     locala.columns[1] = "canvasXml";
-    locala.EYv.put("canvasXml", "TEXT");
+    locala.GvH.put("canvasXml", "TEXT");
     localStringBuilder.append(" canvasXml TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "createTime";
-    locala.EYv.put("createTime", "LONG");
+    locala.GvH.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "canvasExt";
-    locala.EYv.put("canvasExt", "TEXT");
+    locala.GvH.put("canvasExt", "TEXT");
     localStringBuilder.append(" canvasExt TEXT");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();

@@ -7,7 +7,7 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 import com.tencent.mm.vending.c.a;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"askScreenStatus", "", "context", "Landroid/content/Context;", "onScreenStatusGot", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isScreenOn", "runIfDrawStatusBarLayoutPresent", "activity", "Lcom/tencent/mm/ui/MMActivity;", "function", "Lcom/tencent/mm/vending/functional/Functional;", "Ljava/lang/Void;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"askScreenStatus", "", "context", "Landroid/content/Context;", "onScreenStatusGot", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isScreenOn", "runIfDrawStatusBarLayoutPresent", "activity", "Lcom/tencent/mm/ui/MMActivity;", "function", "Lcom/tencent/mm/vending/functional/Functional;", "Ljava/lang/Void;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "plugin-appbrand-integration_release"})
 public final class s
 {
   public static final void a(MMActivity paramMMActivity, a<Void, b> parama)

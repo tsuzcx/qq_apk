@@ -10,7 +10,7 @@ class SnsTextUtil
   static String getReceiverText(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(18718);
-    String str = e.sh(paramString1);
+    String str = e.wk(paramString1);
     paramString1 = str;
     if (str != null)
     {
@@ -23,7 +23,7 @@ class SnsTextUtil
     {
       paramContext = paramString2;
       if (!Util.isNullOrNil(paramString1)) {
-        paramContext = e.aNf(paramString2);
+        paramContext = e.aSI(paramString2);
       }
     }
     for (paramContext = paramString1 + "(" + paramContext + ")";; paramContext = paramString1)
@@ -35,7 +35,7 @@ class SnsTextUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.SnsTextUtil
  * JD-Core Version:    0.7.0.1
  */

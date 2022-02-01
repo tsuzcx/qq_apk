@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.cl;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class RedirectToQrCodeStubUI
   extends HellActivity
@@ -16,17 +16,17 @@ public class RedirectToQrCodeStubUI
   {
     AppMethodBeat.i(24516);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.RedirectToQrCodeStubUI", "hy: start to handle qrcode string");
+    ac.i("MicroMsg.RedirectToQrCodeStubUI", "hy: start to handle qrcode string");
     paramBundle = getIntent().getStringExtra("K_STR");
     int i = getIntent().getIntExtra("K_TYPE", -1);
     int j = getIntent().getIntExtra("K_VERSION", -1);
     cl localcl = new cl();
-    localcl.deA.activity = this;
-    localcl.deA.dcO = paramBundle;
-    localcl.deA.deB = i;
-    localcl.deA.deC = j;
-    localcl.deA.scene = 47;
-    a.ESL.l(localcl);
+    localcl.dbW.activity = this;
+    localcl.dbW.dam = paramBundle;
+    localcl.dbW.dbX = i;
+    localcl.dbW.dbY = j;
+    localcl.dbW.scene = 47;
+    a.GpY.l(localcl);
     finish();
     AppMethodBeat.o(24516);
   }
@@ -39,7 +39,7 @@ public class RedirectToQrCodeStubUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.ui.RedirectToQrCodeStubUI
  * JD-Core Version:    0.7.0.1
  */

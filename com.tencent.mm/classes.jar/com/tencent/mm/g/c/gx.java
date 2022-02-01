@@ -3,21 +3,39 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class gx
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS WxaAttrVersionServerNotifyRecordAppVersionIndex ON WxaAttrVersionServerNotifyRecord(appVersion)" };
-  private static final int eme = "username".hashCode();
-  private static final int emv = "appVersion".hashCode();
-  private static final int enk = "reportId".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int euN = "time".hashCode();
+  private static final int fji = "weSeeUri".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean emb = true;
-  private boolean emr = true;
-  private boolean enf = true;
-  public int field_appVersion;
-  public int field_reportId;
-  public String field_username;
+  private boolean euu = true;
+  public long field_time;
+  public String field_weSeeUri;
+  private boolean fjh = true;
+  
+  public static c.a Th()
+  {
+    c.a locala = new c.a();
+    locala.GvF = new Field[2];
+    locala.columns = new String[3];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "weSeeUri";
+    locala.GvH.put("weSeeUri", "TEXT");
+    localStringBuilder.append(" weSeeUri TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "time";
+    locala.GvH.put("time", "LONG");
+    localStringBuilder.append(" time LONG");
+    locala.columns[2] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,22 +50,19 @@ public abstract class gx
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eme != k) {
-        break label65;
+      if (fji != k) {
+        break label60;
       }
-      this.field_username = paramCursor.getString(i);
-      this.emb = true;
+      this.field_weSeeUri = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (emv == k) {
-        this.field_appVersion = paramCursor.getInt(i);
-      } else if (enk == k) {
-        this.field_reportId = paramCursor.getInt(i);
+      label60:
+      if (euN == k) {
+        this.field_time = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,14 +72,11 @@ public abstract class gx
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.emb) {
-      localContentValues.put("username", this.field_username);
+    if (this.fjh) {
+      localContentValues.put("weSeeUri", this.field_weSeeUri);
     }
-    if (this.emr) {
-      localContentValues.put("appVersion", Integer.valueOf(this.field_appVersion));
-    }
-    if (this.enf) {
-      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
+    if (this.euu) {
+      localContentValues.put("time", Long.valueOf(this.field_time));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

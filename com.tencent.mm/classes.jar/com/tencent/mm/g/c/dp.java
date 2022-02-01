@@ -2,51 +2,48 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.mm.protocal.protobuf.dzf;
+import com.tencent.mm.protocal.protobuf.dzh;
+import com.tencent.mm.protocal.protobuf.ecl;
+import com.tencent.mm.protocal.protobuf.vg;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.io.IOException;
 
 public abstract class dp
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eNX;
-  private static final int eNY = "corp_name".hashCode();
-  private static final int eNZ = "action_type".hashCode();
-  private static final int eOa = "action_url".hashCode();
-  private static final int eOb = "action_app_username".hashCode();
-  private static final int eOc = "action_app_nickname".hashCode();
-  private static final int eOd = "packet_id".hashCode();
-  private static final int eOe = "update_time".hashCode();
-  private static final int eoG = "title".hashCode();
-  private static final int eoH;
-  private static final int esI = "logo_url".hashCode();
+  private static final int eQf = "appIdHash".hashCode();
+  private static final int eQg = "launchAction".hashCode();
+  private static final int eQq;
+  private static final int eQr;
+  private static final int eQs = "jsApiInfo".hashCode();
+  private static final int eQt = "versionInfo".hashCode();
+  private static final int eQu = "widgetSetting".hashCode();
+  private static final int enO = "appId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eNP = true;
-  private boolean eNQ = true;
-  private boolean eNR = true;
-  private boolean eNS = true;
-  private boolean eNT = true;
-  private boolean eNU = true;
-  private boolean eNV = true;
-  private boolean eNW = true;
-  private boolean eoD = true;
-  private boolean eoE = true;
-  private boolean esp = true;
-  public String field_action_app_nickname;
-  public String field_action_app_username;
-  public int field_action_type;
-  public String field_action_url;
-  public String field_corp_name;
-  public String field_description;
-  public String field_logo_md5;
-  public String field_logo_url;
-  public String field_packet_id;
-  public String field_title;
-  public long field_update_time;
+  private boolean ePZ = true;
+  private boolean eQa = true;
+  private boolean eQl = true;
+  private boolean eQm = true;
+  private boolean eQn = true;
+  private boolean eQo = true;
+  private boolean eQp = true;
+  private boolean enx = true;
+  public String field_appId;
+  public int field_appIdHash;
+  public vg field_jsApiInfo;
+  public dzf field_launchAction;
+  public int field_pkgType;
+  public dzh field_versionInfo;
+  public ecl field_widgetSetting;
+  public int field_widgetType;
   
   static
   {
-    eNX = "logo_md5".hashCode();
-    eoH = "description".hashCode();
+    eQq = "pkgType".hashCode();
+    eQr = "widgetType".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -55,17 +52,17 @@ public abstract class dp
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eoG != k) {
+      if (eQf != k) {
         break label60;
       }
-      this.field_title = paramCursor.getString(i);
+      this.field_appIdHash = paramCursor.getInt(i);
     }
     for (;;)
     {
@@ -73,49 +70,65 @@ public abstract class dp
       break label20;
       break;
       label60:
-      if (esI == k)
-      {
-        this.field_logo_url = paramCursor.getString(i);
-      }
-      else if (eNX == k)
-      {
-        this.field_logo_md5 = paramCursor.getString(i);
-      }
-      else if (eoH == k)
-      {
-        this.field_description = paramCursor.getString(i);
-      }
-      else if (eNY == k)
-      {
-        this.field_corp_name = paramCursor.getString(i);
-      }
-      else if (eNZ == k)
-      {
-        this.field_action_type = paramCursor.getInt(i);
-      }
-      else if (eOa == k)
-      {
-        this.field_action_url = paramCursor.getString(i);
-      }
-      else if (eOb == k)
-      {
-        this.field_action_app_username = paramCursor.getString(i);
-      }
-      else if (eOc == k)
-      {
-        this.field_action_app_nickname = paramCursor.getString(i);
-      }
-      else if (eOd == k)
-      {
-        this.field_packet_id = paramCursor.getString(i);
-        this.eNV = true;
-      }
-      else if (eOe == k)
-      {
-        this.field_update_time = paramCursor.getLong(i);
-      }
-      else if (rowid_HASHCODE == k)
-      {
+      if (enO == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (eQq == k) {
+        this.field_pkgType = paramCursor.getInt(i);
+      } else if (eQr == k) {
+        this.field_widgetType = paramCursor.getInt(i);
+      } else if (eQg == k) {
+        try
+        {
+          byte[] arrayOfByte1 = paramCursor.getBlob(i);
+          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
+            continue;
+          }
+          this.field_launchAction = ((dzf)new dzf().parseFrom(arrayOfByte1));
+        }
+        catch (IOException localIOException1)
+        {
+          ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException1.getMessage());
+        }
+      } else if (eQs == k) {
+        try
+        {
+          byte[] arrayOfByte2 = paramCursor.getBlob(i);
+          if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
+            continue;
+          }
+          this.field_jsApiInfo = ((vg)new vg().parseFrom(arrayOfByte2));
+        }
+        catch (IOException localIOException2)
+        {
+          ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException2.getMessage());
+        }
+      } else if (eQt == k) {
+        try
+        {
+          byte[] arrayOfByte3 = paramCursor.getBlob(i);
+          if ((arrayOfByte3 == null) || (arrayOfByte3.length <= 0)) {
+            continue;
+          }
+          this.field_versionInfo = ((dzh)new dzh().parseFrom(arrayOfByte3));
+        }
+        catch (IOException localIOException3)
+        {
+          ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException3.getMessage());
+        }
+      } else if (eQu == k) {
+        try
+        {
+          byte[] arrayOfByte4 = paramCursor.getBlob(i);
+          if ((arrayOfByte4 == null) || (arrayOfByte4.length <= 0)) {
+            continue;
+          }
+          this.field_widgetSetting = ((ecl)new ecl().parseFrom(arrayOfByte4));
+        }
+        catch (IOException localIOException4)
+        {
+          ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException4.getMessage());
+        }
+      } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
     }
@@ -124,48 +137,73 @@ public abstract class dp
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoD) {
-      localContentValues.put("title", this.field_title);
+    if (this.ePZ) {
+      localContentValues.put("appIdHash", Integer.valueOf(this.field_appIdHash));
     }
-    if (this.esp) {
-      localContentValues.put("logo_url", this.field_logo_url);
+    if (this.enx) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.eNP) {
-      localContentValues.put("logo_md5", this.field_logo_md5);
+    if (this.eQl) {
+      localContentValues.put("pkgType", Integer.valueOf(this.field_pkgType));
     }
-    if (this.eoE) {
-      localContentValues.put("description", this.field_description);
+    if (this.eQm) {
+      localContentValues.put("widgetType", Integer.valueOf(this.field_widgetType));
     }
-    if (this.eNQ) {
-      localContentValues.put("corp_name", this.field_corp_name);
+    if ((this.eQa) && (this.field_launchAction != null)) {}
+    try
+    {
+      localContentValues.put("launchAction", this.field_launchAction.toByteArray());
+      if ((!this.eQn) || (this.field_jsApiInfo == null)) {}
     }
-    if (this.eNR) {
-      localContentValues.put("action_type", Integer.valueOf(this.field_action_type));
+    catch (IOException localIOException3)
+    {
+      try
+      {
+        localContentValues.put("jsApiInfo", this.field_jsApiInfo.toByteArray());
+        if ((!this.eQo) || (this.field_versionInfo == null)) {}
+      }
+      catch (IOException localIOException3)
+      {
+        try
+        {
+          localContentValues.put("versionInfo", this.field_versionInfo.toByteArray());
+          if ((!this.eQp) || (this.field_widgetSetting == null)) {}
+        }
+        catch (IOException localIOException3)
+        {
+          try
+          {
+            for (;;)
+            {
+              localContentValues.put("widgetSetting", this.field_widgetSetting.toByteArray());
+              if (this.systemRowid > 0L) {
+                localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+              }
+              return localContentValues;
+              localIOException1 = localIOException1;
+              ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException1.getMessage());
+              continue;
+              localIOException2 = localIOException2;
+              ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException2.getMessage());
+            }
+            localIOException3 = localIOException3;
+            ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException3.getMessage());
+          }
+          catch (IOException localIOException4)
+          {
+            for (;;)
+            {
+              ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException4.getMessage());
+            }
+          }
+        }
+      }
     }
-    if (this.eNS) {
-      localContentValues.put("action_url", this.field_action_url);
-    }
-    if (this.eNT) {
-      localContentValues.put("action_app_username", this.field_action_app_username);
-    }
-    if (this.eNU) {
-      localContentValues.put("action_app_nickname", this.field_action_app_nickname);
-    }
-    if (this.eNV) {
-      localContentValues.put("packet_id", this.field_packet_id);
-    }
-    if (this.eNW) {
-      localContentValues.put("update_time", Long.valueOf(this.field_update_time));
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.dp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class jx
   extends b
 {
-  public a dob;
+  public a dlw;
   
   public jx()
   {
@@ -16,23 +16,23 @@ public final class jx
   
   private jx(byte paramByte)
   {
-    AppMethodBeat.i(91208);
-    this.dob = new a();
-    this.ESR = false;
+    AppMethodBeat.i(114792);
+    this.dlw = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91208);
+    AppMethodBeat.o(114792);
   }
   
   public static final class a
   {
-    public int bRZ;
-    public Intent doc;
-    public int requestCode;
+    public Context dlx;
+    public long dly;
+    public boolean dlz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.jx
  * JD-Core Version:    0.7.0.1
  */

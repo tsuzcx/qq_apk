@@ -13,13 +13,13 @@ import android.widget.OverScroller;
 public abstract class HeaderBehavior<V extends View>
   extends ViewOffsetBehavior<V>
 {
-  private VelocityTracker lr;
-  private int ls = -1;
-  private Runnable oZ;
-  OverScroller pa;
-  private boolean pb;
-  private int pc;
-  private int pd = -1;
+  private VelocityTracker mq;
+  private int mr = -1;
+  private Runnable pY;
+  OverScroller pZ;
+  private boolean qa;
+  private int qb;
+  private int qc = -1;
   
   public HeaderBehavior() {}
   
@@ -28,16 +28,16 @@ public abstract class HeaderBehavior<V extends View>
     super(paramContext, paramAttributeSet);
   }
   
-  private void co()
+  private void cv()
   {
-    if (this.lr == null) {
-      this.lr = VelocityTracker.obtain();
+    if (this.mq == null) {
+      this.mq = VelocityTracker.obtain();
     }
   }
   
   int a(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt1, int paramInt2, int paramInt3)
   {
-    int k = bv();
+    int k = bC();
     int j = 0;
     int i = j;
     if (paramInt2 != 0)
@@ -65,8 +65,8 @@ public abstract class HeaderBehavior<V extends View>
   
   public boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
   {
-    if (this.pd < 0) {
-      this.pd = ViewConfiguration.get(paramCoordinatorLayout.getContext()).getScaledTouchSlop();
+    if (this.qc < 0) {
+      this.qc = ViewConfiguration.get(paramCoordinatorLayout.getContext()).getScaledTouchSlop();
     }
     int i;
     int j;
@@ -76,79 +76,79 @@ public abstract class HeaderBehavior<V extends View>
     case 0: 
       for (;;)
       {
-        if (this.lr != null) {
-          this.lr.addMovement(paramMotionEvent);
+        if (this.mq != null) {
+          this.mq.addMovement(paramMotionEvent);
         }
         return true;
         i = (int)paramMotionEvent.getX();
         j = (int)paramMotionEvent.getY();
-        if ((!paramCoordinatorLayout.d(paramV, i, j)) || (!bt())) {
+        if ((!paramCoordinatorLayout.d(paramV, i, j)) || (!bA())) {
           break;
         }
-        this.pc = j;
-        this.ls = paramMotionEvent.getPointerId(0);
-        co();
+        this.qb = j;
+        this.mr = paramMotionEvent.getPointerId(0);
+        cv();
       }
       return false;
     case 2: 
-      i = paramMotionEvent.findPointerIndex(this.ls);
+      i = paramMotionEvent.findPointerIndex(this.mr);
       if (i == -1) {
         return false;
       }
       int k = (int)paramMotionEvent.getY(i);
-      j = this.pc - k;
+      j = this.qb - k;
       i = j;
-      if (!this.pb)
+      if (!this.qa)
       {
         i = j;
-        if (Math.abs(j) > this.pd)
+        if (Math.abs(j) > this.qc)
         {
-          this.pb = true;
+          this.qa = true;
           if (j <= 0) {
             break label243;
           }
         }
       }
-      for (i = j - this.pd; this.pb; i = j + this.pd)
+      for (i = j - this.qc; this.qa; i = j + this.qc)
       {
-        this.pc = k;
+        this.qb = k;
         b(paramCoordinatorLayout, paramV, i, g(paramV), 0);
         break;
       }
     case 1: 
       label243:
-      if (this.lr != null)
+      if (this.mq != null)
       {
-        this.lr.addMovement(paramMotionEvent);
-        this.lr.computeCurrentVelocity(1000);
-        float f = this.lr.getYVelocity(this.ls);
+        this.mq.addMovement(paramMotionEvent);
+        this.mq.computeCurrentVelocity(1000);
+        float f = this.mq.getYVelocity(this.mr);
         i = -f(paramV);
-        if (this.oZ != null)
+        if (this.pY != null)
         {
-          paramV.removeCallbacks(this.oZ);
-          this.oZ = null;
+          paramV.removeCallbacks(this.pY);
+          this.pY = null;
         }
-        if (this.pa == null) {
-          this.pa = new OverScroller(paramV.getContext());
+        if (this.pZ == null) {
+          this.pZ = new OverScroller(paramV.getContext());
         }
-        this.pa.fling(0, bv(), 0, Math.round(f), 0, 0, i, 0);
-        if (!this.pa.computeScrollOffset()) {
+        this.pZ.fling(0, bC(), 0, Math.round(f), 0, 0, i, 0);
+        if (!this.pZ.computeScrollOffset()) {
           break label431;
         }
-        this.oZ = new a(paramCoordinatorLayout, paramV);
-        t.b(paramV, this.oZ);
+        this.pY = new a(paramCoordinatorLayout, paramV);
+        t.b(paramV, this.pY);
       }
       break;
     }
     for (;;)
     {
-      this.pb = false;
-      this.ls = -1;
-      if (this.lr == null) {
+      this.qa = false;
+      this.mr = -1;
+      if (this.mq == null) {
         break;
       }
-      this.lr.recycle();
-      this.lr = null;
+      this.mq.recycle();
+      this.mq = null;
       break;
       label431:
       a(paramCoordinatorLayout, paramV);
@@ -162,15 +162,15 @@ public abstract class HeaderBehavior<V extends View>
   
   final int b(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt1, int paramInt2, int paramInt3)
   {
-    return a(paramCoordinatorLayout, paramV, bs() - paramInt1, paramInt2, paramInt3);
+    return a(paramCoordinatorLayout, paramV, bz() - paramInt1, paramInt2, paramInt3);
   }
   
   public final boolean b(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
   {
-    if (this.pd < 0) {
-      this.pd = ViewConfiguration.get(paramCoordinatorLayout.getContext()).getScaledTouchSlop();
+    if (this.qc < 0) {
+      this.qc = ViewConfiguration.get(paramCoordinatorLayout.getContext()).getScaledTouchSlop();
     }
-    if ((paramMotionEvent.getAction() == 2) && (this.pb)) {
+    if ((paramMotionEvent.getAction() == 2) && (this.qa)) {
       return true;
     }
     switch (paramMotionEvent.getActionMasked())
@@ -178,37 +178,37 @@ public abstract class HeaderBehavior<V extends View>
     }
     for (;;)
     {
-      if (this.lr != null) {
-        this.lr.addMovement(paramMotionEvent);
+      if (this.mq != null) {
+        this.mq.addMovement(paramMotionEvent);
       }
-      return this.pb;
-      this.pb = false;
+      return this.qa;
+      this.qa = false;
       int i = (int)paramMotionEvent.getX();
       int j = (int)paramMotionEvent.getY();
-      if ((bt()) && (paramCoordinatorLayout.d(paramV, i, j)))
+      if ((bA()) && (paramCoordinatorLayout.d(paramV, i, j)))
       {
-        this.pc = j;
-        this.ls = paramMotionEvent.getPointerId(0);
-        co();
+        this.qb = j;
+        this.mr = paramMotionEvent.getPointerId(0);
+        cv();
         continue;
-        i = this.ls;
+        i = this.mr;
         if (i != -1)
         {
           i = paramMotionEvent.findPointerIndex(i);
           if (i != -1)
           {
             i = (int)paramMotionEvent.getY(i);
-            if (Math.abs(i - this.pc) > this.pd)
+            if (Math.abs(i - this.qb) > this.qc)
             {
-              this.pb = true;
-              this.pc = i;
+              this.qa = true;
+              this.qb = i;
               continue;
-              this.pb = false;
-              this.ls = -1;
-              if (this.lr != null)
+              this.qa = false;
+              this.mr = -1;
+              if (this.mq != null)
               {
-                this.lr.recycle();
-                this.lr = null;
+                this.mq.recycle();
+                this.mq = null;
               }
             }
           }
@@ -217,14 +217,14 @@ public abstract class HeaderBehavior<V extends View>
     }
   }
   
-  int bs()
-  {
-    return bv();
-  }
-  
-  boolean bt()
+  boolean bA()
   {
     return false;
+  }
+  
+  int bz()
+  {
+    return bC();
   }
   
   int f(V paramV)
@@ -240,30 +240,30 @@ public abstract class HeaderBehavior<V extends View>
   final class a
     implements Runnable
   {
-    private final CoordinatorLayout pe;
-    private final V pf;
+    private final CoordinatorLayout qd;
+    private final V qe;
     
     a(V paramV)
     {
-      this.pe = paramV;
+      this.qd = paramV;
       Object localObject;
-      this.pf = localObject;
+      this.qe = localObject;
     }
     
     public final void run()
     {
-      if ((this.pf != null) && (HeaderBehavior.this.pa != null))
+      if ((this.qe != null) && (HeaderBehavior.this.pZ != null))
       {
-        if (HeaderBehavior.this.pa.computeScrollOffset())
+        if (HeaderBehavior.this.pZ.computeScrollOffset())
         {
-          HeaderBehavior.this.b(this.pe, this.pf, HeaderBehavior.this.pa.getCurrY());
-          t.b(this.pf, this);
+          HeaderBehavior.this.b(this.qd, this.qe, HeaderBehavior.this.pZ.getCurrY());
+          t.b(this.qe, this);
         }
       }
       else {
         return;
       }
-      HeaderBehavior.this.a(this.pe, this.pf);
+      HeaderBehavior.this.a(this.qd, this.qe);
     }
   }
 }

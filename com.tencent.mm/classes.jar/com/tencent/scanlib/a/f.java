@@ -9,19 +9,19 @@ public abstract interface f
 {
   public abstract void a(Camera.PreviewCallback paramPreviewCallback);
   
-  public abstract void abO(int paramInt);
+  public abstract void aeh(int paramInt);
   
   public abstract void autoFocus(Camera.AutoFocusCallback paramAutoFocusCallback);
   
-  public abstract boolean cPP();
+  public abstract boolean cDz();
   
   public abstract void close();
   
-  public abstract Point fmC();
+  public abstract Point fCS();
   
-  public abstract Point fmD();
+  public abstract Point fCT();
   
-  public abstract float fmE();
+  public abstract float fCU();
   
   public abstract int getCameraRotation();
   
@@ -29,7 +29,7 @@ public abstract interface f
   
   public abstract boolean isOpen();
   
-  public abstract void j(Point paramPoint);
+  public abstract void l(Point paramPoint);
   
   public abstract void p(SurfaceTexture paramSurfaceTexture);
   

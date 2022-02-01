@@ -7,12 +7,12 @@ final class a$a
   extends d.g.b.l
   implements m<d.l.b.a.b.b.l, d.l.b.a.b.b.l, Boolean>
 {
-  public static final a JQT;
+  public static final a LEm;
   
   static
   {
     AppMethodBeat.i(59873);
-    JQT = new a();
+    LEm = new a();
     AppMethodBeat.o(59873);
   }
   

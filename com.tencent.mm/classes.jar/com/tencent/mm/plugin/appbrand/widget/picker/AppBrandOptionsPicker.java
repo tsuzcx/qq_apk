@@ -8,17 +8,17 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.ui.widget.picker.f;
 
 public class AppBrandOptionsPicker
   extends NumberPicker
-  implements com.tencent.mm.plugin.appbrand.jsapi.n.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.m.c<String>
 {
+  private String[] mKp;
+  private int mKq;
   private int mMaxWidth;
   private int mMinWidth;
-  private String[] mip;
-  private int miq;
   
   @Keep
   public AppBrandOptionsPicker(Context paramContext)
@@ -30,19 +30,19 @@ public class AppBrandOptionsPicker
     f.f(this);
     d.a(this);
     this.mMinWidth = a.fromDPToPix(paramContext, 100);
-    this.miq = a.fromDPToPix(paramContext, 20);
+    this.mKq = a.fromDPToPix(paramContext, 20);
     AppMethodBeat.o(138018);
   }
   
   public final String currentValue()
   {
     AppMethodBeat.i(138024);
-    if ((this.mip == null) || (this.mip.length <= 0))
+    if ((this.mKp == null) || (this.mKp.length <= 0))
     {
       AppMethodBeat.o(138024);
       return "";
     }
-    String str = this.mip[getValue()];
+    String str = this.mKp[getValue()];
     AppMethodBeat.o(138024);
     return str;
   }
@@ -79,7 +79,7 @@ public class AppBrandOptionsPicker
       AppMethodBeat.o(138022);
       return;
     }
-    paramInt2 = getMeasuredWidth() + this.miq * 2;
+    paramInt2 = getMeasuredWidth() + this.mKq * 2;
     paramInt1 = paramInt2;
     if (this.mMaxWidth > 0) {
       if (this.mMaxWidth <= paramInt2) {
@@ -108,7 +108,7 @@ public class AppBrandOptionsPicker
   public final void setExtraPadding(int paramInt)
   {
     AppMethodBeat.i(138020);
-    this.miq = Math.max(paramInt, 0);
+    this.mKq = Math.max(paramInt, 0);
     AppMethodBeat.o(138020);
   }
   
@@ -130,7 +130,7 @@ public class AppBrandOptionsPicker
       AppMethodBeat.o(138019);
       return;
     }
-    this.mip = paramArrayOfString;
+    this.mKp = paramArrayOfString;
     setDisplayedValues(null);
     setMinValue(0);
     setMaxValue(Math.max(paramArrayOfString.length - 1, 0));
@@ -144,7 +144,7 @@ public class AppBrandOptionsPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandOptionsPicker
  * JD-Core Version:    0.7.0.1
  */

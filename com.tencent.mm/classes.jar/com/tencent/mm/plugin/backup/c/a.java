@@ -9,33 +9,33 @@ import com.tencent.mm.plugin.backup.g.b;
 import com.tencent.mm.plugin.backup.g.b.a;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.IOException;
 
 public final class a
   implements b.a
 {
-  public static final byte[] mqF;
+  public static final byte[] mSH;
+  private int mSI;
+  public ao mSJ = null;
+  public a mSK;
   private int mode = 0;
-  private int mqG;
-  public ap mqH = null;
-  public a mqI;
   private String peerIP;
   
   static
   {
     AppMethodBeat.i(21224);
-    mqF = "GSMW".getBytes();
+    mSH = "GSMW".getBytes();
     AppMethodBeat.o(21224);
   }
   
   private void a(final boolean paramBoolean, final int paramInt1, final int paramInt2, final byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21221);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -51,23 +51,23 @@ public final class a
   {
     AppMethodBeat.i(21216);
     this.mode = 0;
-    ad.i("MicroMsg.BackupCEngine", "listen, before server.stop");
+    ac.i("MicroMsg.BackupCEngine", "listen, before server.stop");
     Server.Java2C.stop();
-    ad.i("MicroMsg.BackupCEngine", "listen, before server.start listener");
-    com.tencent.mm.lan_cs.Server.ghF = new Server.a()
+    ac.i("MicroMsg.BackupCEngine", "listen, before server.start listener");
+    com.tencent.mm.lan_cs.Server.gmm = new Server.a()
     {
-      public final void agN()
+      public final void aie()
       {
         AppMethodBeat.i(21209);
         a.a(a.this, 10011, "listen server onDisconnect".getBytes());
         AppMethodBeat.o(21209);
       }
       
-      public final void mx(int paramAnonymousInt)
+      public final void mw(int paramAnonymousInt)
       {
         AppMethodBeat.i(21207);
         if (a.a(a.this) == 1) {
-          b.wi(paramAnonymousInt);
+          b.wZ(paramAnonymousInt);
         }
         AppMethodBeat.o(21207);
       }
@@ -101,11 +101,11 @@ public final class a
     Object[] arrayOfObject = Server.Java2C.access$000();
     if ((arrayOfObject == null) || (arrayOfObject.length != 3))
     {
-      ad.e("MicroMsg.BackupCEngine", "listen error");
+      ac.e("MicroMsg.BackupCEngine", "listen error");
       AppMethodBeat.o(21216);
       return false;
     }
-    ad.i("MicroMsg.BackupCEngine", "listen, result[%d, %s, %d]", new Object[] { arrayOfObject[0], arrayOfObject[1], arrayOfObject[2] });
+    ac.i("MicroMsg.BackupCEngine", "listen, result[%d, %s, %d]", new Object[] { arrayOfObject[0], arrayOfObject[1], arrayOfObject[2] });
     if (((Integer)arrayOfObject[0]).intValue() != 1)
     {
       AppMethodBeat.o(21216);
@@ -123,10 +123,10 @@ public final class a
     AppMethodBeat.i(21217);
     this.mode = 2;
     this.peerIP = paramString;
-    this.mqG = paramInt;
-    com.tencent.mm.lan_cs.Client.ghE = new Client.a()
+    this.mSI = paramInt;
+    com.tencent.mm.lan_cs.Client.gml = new Client.a()
     {
-      public final void agN()
+      public final void aie()
       {
         AppMethodBeat.i(21212);
         a.a(a.this, 10011, "client onDisconnect".getBytes());
@@ -157,23 +157,23 @@ public final class a
   public final void l(final int paramInt, final byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21219);
-    final long l = bt.eGO();
-    ad.v("MicroMsg.BackupCEngine", "send seq:%d buff:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(bt.cx(paramArrayOfByte)) });
-    if ((this.mqH == null) || (this.mqH.isQuit()))
+    final long l = bs.eWj();
+    ac.v("MicroMsg.BackupCEngine", "send seq:%d buff:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(bs.cw(paramArrayOfByte)) });
+    if ((this.mSJ == null) || (this.mSJ.isQuit()))
     {
-      this.mqH = new ap("BackupCEngine_sendHandler");
-      ad.w("MicroMsg.BackupCEngine", "BackupCEngine send");
+      this.mSJ = new ao("BackupCEngine_sendHandler");
+      ac.w("MicroMsg.BackupCEngine", "BackupCEngine send");
     }
-    this.mqH.post(new Runnable()
+    this.mSJ.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(21214);
-        long l = bt.eGO();
-        ad.i("MicroMsg.BackupCEngine", "before send server mode:%d  seq:%d  buff:%d time:[%d]", new Object[] { Integer.valueOf(a.a(a.this)), Integer.valueOf(paramInt), Integer.valueOf(bt.cx(paramArrayOfByte)), Long.valueOf(l - l) });
+        long l = bs.eWj();
+        ac.i("MicroMsg.BackupCEngine", "before send server mode:%d  seq:%d  buff:%d time:[%d]", new Object[] { Integer.valueOf(a.a(a.this)), Integer.valueOf(paramInt), Integer.valueOf(bs.cw(paramArrayOfByte)), Long.valueOf(l - l) });
         if (a.a(a.this) == 0)
         {
-          ad.i("MicroMsg.BackupCEngine", "sendImp err mode!!");
+          ac.i("MicroMsg.BackupCEngine", "sendImp err mode!!");
           AppMethodBeat.o(21214);
           return;
         }
@@ -186,8 +186,8 @@ public final class a
         }
         for (;;)
         {
-          b.wi(bt.cx(paramArrayOfByte));
-          ad.i("MicroMsg.BackupCEngine", "send result[%d], seq[%d], buff[%d], time[%d,%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(bt.cx(paramArrayOfByte)), Long.valueOf(bt.vM(l)), Long.valueOf(bt.vM(l)) });
+          b.wZ(bs.cw(paramArrayOfByte));
+          ac.i("MicroMsg.BackupCEngine", "send result[%d], seq[%d], buff[%d], time[%d,%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(bs.cw(paramArrayOfByte)), Long.valueOf(bs.Ap(l)), Long.valueOf(bs.Ap(l)) });
           AppMethodBeat.o(21214);
           return;
           if (a.a(a.this) == 2) {
@@ -204,20 +204,20 @@ public final class a
   public final int m(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21220);
-    long l = bt.eGO();
+    long l = bs.eWj();
     int i;
     if (this.mode == 1) {
-      i = Server.Java2C.send(this.peerIP, this.mqG, paramArrayOfByte);
+      i = Server.Java2C.send(this.peerIP, this.mSI, paramArrayOfByte);
     }
     for (;;)
     {
-      ad.i("MicroMsg.BackupCEngine", "sendSameThread, result[%d], seq[%d], buflen[%d], send time[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(bt.cx(paramArrayOfByte)), Long.valueOf(bt.vM(l)) });
+      ac.i("MicroMsg.BackupCEngine", "sendSameThread, result[%d], seq[%d], buflen[%d], send time[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(bs.cw(paramArrayOfByte)), Long.valueOf(bs.Ap(l)) });
       AppMethodBeat.o(21220);
       return i;
       if (this.mode == 2)
       {
-        i = Client.Java2C.send(this.peerIP, this.mqG, paramArrayOfByte);
-        b.wi(bt.cx(paramArrayOfByte));
+        i = Client.Java2C.send(this.peerIP, this.mSI, paramArrayOfByte);
+        b.wZ(bs.cw(paramArrayOfByte));
       }
       else
       {
@@ -229,11 +229,11 @@ public final class a
   public final void stop()
   {
     AppMethodBeat.i(21218);
-    ad.i("MicroMsg.BackupCEngine", "BackupCEngine stop.");
+    ac.i("MicroMsg.BackupCEngine", "BackupCEngine stop.");
     if (this.mode == 1)
     {
       Server.Java2C.stop();
-      b.bwQ();
+      b.bDM();
       this.mode = 0;
       AppMethodBeat.o(21218);
       return;
@@ -241,7 +241,7 @@ public final class a
     if (this.mode == 2)
     {
       Client.Java2C.disconnect();
-      b.bwQ();
+      b.bDM();
       this.mode = 0;
       AppMethodBeat.o(21218);
       return;

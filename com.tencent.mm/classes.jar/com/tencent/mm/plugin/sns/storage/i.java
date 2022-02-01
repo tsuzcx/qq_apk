@@ -5,40 +5,40 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.yk;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public final class i
 {
-  public static void e(Long paramLong)
+  public static void f(Long paramLong)
   {
     AppMethodBeat.i(97449);
-    g.afB().afk().set(ae.a.Fty, paramLong);
+    g.agR().agA().set(ah.a.GRs, paramLong);
     AppMethodBeat.o(97449);
   }
   
-  public static boolean ta(long paramLong)
+  public static boolean xD(long paramLong)
   {
     int i = 2;
     int j = 0;
     AppMethodBeat.i(97447);
-    Object localObject = af.dtu().th(paramLong);
+    Object localObject = af.dHR().xK(paramLong);
     if (localObject == null)
     {
       AppMethodBeat.o(97447);
       return false;
     }
-    String[] arrayOfString = ((String)g.afB().afk().get(ae.a.Ftx, "")).split("&");
+    String[] arrayOfString = ((String)g.agR().agA().get(ah.a.GRr, "")).split("&");
     boolean bool1;
-    if ((arrayOfString.length > 0) && (bt.getBoolean(arrayOfString[0], false)))
+    if ((arrayOfString.length > 0) && (bs.getBoolean(arrayOfString[0], false)))
     {
       bool1 = true;
-      if ((arrayOfString.length < 2) || (!bt.getBoolean(arrayOfString[1], false))) {
+      if ((arrayOfString.length < 2) || (!bs.getBoolean(arrayOfString[1], false))) {
         break label154;
       }
     }
@@ -49,7 +49,7 @@ public final class i
       localArrayList = new ArrayList();
       while (i < arrayOfString.length)
       {
-        long l = bt.getLong(arrayOfString[i], 0L);
+        long l = bs.getLong(arrayOfString[i], 0L);
         if (l != 0L) {
           localArrayList.add(Long.valueOf(l));
         }
@@ -58,7 +58,7 @@ public final class i
       bool1 = false;
       break;
     }
-    if (((p)localObject).dxy().Etm.DaB == 15) {
+    if (((p)localObject).dLV().FQo.Ety == 15) {
       if (!bool1) {
         bool1 = true;
       }
@@ -77,7 +77,7 @@ public final class i
       }
       AppMethodBeat.o(97447);
       return false;
-      if (((p)localObject).dxy().Etm.DaB != 1) {
+      if (((p)localObject).dLV().FQo.Ety != 1) {
         break label313;
       }
       if (bool2) {
@@ -90,23 +90,23 @@ public final class i
     label313:
     AppMethodBeat.o(97447);
     return false;
-    g.afB().afk().set(ae.a.Ftx, ((StringBuilder)localObject).toString());
-    e(Long.valueOf(paramLong));
+    g.agR().agA().set(ah.a.GRr, ((StringBuilder)localObject).toString());
+    f(Long.valueOf(paramLong));
     AppMethodBeat.o(97447);
     return true;
   }
   
-  public static void tb(long paramLong)
+  public static void xE(long paramLong)
   {
     boolean bool2 = true;
     int j = 0;
     AppMethodBeat.i(97448);
-    Object localObject = ((String)g.afB().afk().get(ae.a.Ftx, "")).split("&");
+    Object localObject = ((String)g.agR().agA().get(ah.a.GRr, "")).split("&");
     boolean bool1;
-    if ((localObject.length > 0) && (bt.getBoolean(localObject[0], false)))
+    if ((localObject.length > 0) && (bs.getBoolean(localObject[0], false)))
     {
       bool1 = true;
-      if ((localObject.length < 2) || (!bt.getBoolean(localObject[1], false))) {
+      if ((localObject.length < 2) || (!bs.getBoolean(localObject[1], false))) {
         break label133;
       }
     }
@@ -118,7 +118,7 @@ public final class i
       i = 2;
       while (i < localObject.length)
       {
-        long l = bt.getLong(localObject[i], 0L);
+        long l = bs.getLong(localObject[i], 0L);
         if (l != 0L) {
           localArrayList.add(Long.valueOf(l));
         }
@@ -134,7 +134,7 @@ public final class i
     if (localArrayList.size() > 0) {}
     for (localObject = (Long)localArrayList.get(0);; localObject = null)
     {
-      e((Long)localObject);
+      f((Long)localObject);
       localObject = new StringBuilder().append(bool1).append("&").append(bool2);
       i = j;
       while (i < localArrayList.size())
@@ -143,13 +143,13 @@ public final class i
         i += 1;
       }
     }
-    g.afB().afk().set(ae.a.Ftx, ((StringBuilder)localObject).toString());
+    g.agR().agA().set(ah.a.GRr, ((StringBuilder)localObject).toString());
     AppMethodBeat.o(97448);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.i
  * JD-Core Version:    0.7.0.1
  */

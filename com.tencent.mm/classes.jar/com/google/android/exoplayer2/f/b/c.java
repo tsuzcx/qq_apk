@@ -7,29 +7,29 @@ import java.util.List;
 final class c
   implements d
 {
-  private final List<a> bsj;
+  private final List<a> bqi;
   
   public c(List<a> paramList)
   {
-    this.bsj = paramList;
+    this.bqi = paramList;
   }
   
-  public final int am(long paramLong)
+  public final int ai(long paramLong)
   {
     return -1;
   }
   
-  public final List<a> an(long paramLong)
+  public final List<a> aj(long paramLong)
   {
-    return this.bsj;
+    return this.bqi;
   }
   
-  public final long eR(int paramInt)
+  public final long eE(int paramInt)
   {
     return 0L;
   }
   
-  public final int uB()
+  public final int uw()
   {
     return 1;
   }

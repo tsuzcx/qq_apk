@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import com.facebook.yoga.YogaNode;
+import com.facebook.yoga.YogaNodeFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,7 +27,7 @@ public class VirtualYogaLayout
     AppMethodBeat.i(18223);
     this.mChildren = new LinkedList();
     this.mYogaNodes = new HashMap();
-    this.mYogaNode = new YogaNode();
+    this.mYogaNode = YogaNodeFactory.create();
     AppMethodBeat.o(18223);
   }
   
@@ -41,7 +42,7 @@ public class VirtualYogaLayout
     AppMethodBeat.i(18224);
     this.mChildren = new LinkedList();
     this.mYogaNodes = new HashMap();
-    this.mYogaNode = new YogaNode();
+    this.mYogaNode = YogaNodeFactory.create();
     YogaLayout.applyLayoutParams(new YogaLayout.LayoutParams(paramContext, paramAttributeSet), this.mYogaNode, this);
     AppMethodBeat.o(18224);
   }
@@ -57,7 +58,7 @@ public class VirtualYogaLayout
       AppMethodBeat.o(18225);
       return;
     }
-    YogaNode localYogaNode = new YogaNode();
+    YogaNode localYogaNode = YogaNodeFactory.create();
     YogaLayout.applyLayoutParams(new YogaLayout.LayoutParams(paramLayoutParams), localYogaNode, paramView);
     localYogaNode.setData(paramView);
     localYogaNode.setMeasureFunction(new YogaLayout.ViewMeasureFunction());
@@ -148,7 +149,7 @@ public class VirtualYogaLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.facebook.yoga.android.VirtualYogaLayout
  * JD-Core Version:    0.7.0.1
  */

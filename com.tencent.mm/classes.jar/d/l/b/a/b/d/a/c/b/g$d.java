@@ -8,12 +8,12 @@ final class g$d
   extends l
   implements b<String, String>
 {
-  public static final d JCA;
+  public static final d LpT;
   
   static
   {
     AppMethodBeat.i(57998);
-    JCA = new d();
+    LpT = new d();
     AppMethodBeat.o(57998);
   }
   

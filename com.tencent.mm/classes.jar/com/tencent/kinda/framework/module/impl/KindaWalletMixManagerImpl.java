@@ -8,14 +8,14 @@ import com.tencent.kinda.gen.KindaWalletMixManager;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.kinda.gen.VoidITransmitKvDataCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.xk;
-import com.tencent.mm.g.a.xk.a;
-import com.tencent.mm.protocal.protobuf.dpt;
-import com.tencent.mm.protocal.protobuf.qb;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.xv;
+import com.tencent.mm.g.a.xv.a;
+import com.tencent.mm.protocal.protobuf.dvk;
+import com.tencent.mm.protocal.protobuf.ql;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class KindaWalletMixManagerImpl
   implements KindaWalletMixManager
@@ -23,17 +23,17 @@ public class KindaWalletMixManagerImpl
   private static final String TAG = "KindaWalletMixManagerImpl";
   private VoidCallback mCancelCallback;
   private VoidITransmitKvDataCallback mSuccessCallback;
-  private c<xk> mWalletPayResultEventIListener;
+  private c<xv> mWalletPayResultEventIListener;
   
   public KindaWalletMixManagerImpl()
   {
     AppMethodBeat.i(18662);
     this.mWalletPayResultEventIListener = new c()
     {
-      public boolean callback(xk paramAnonymousxk)
+      public boolean callback(xv paramAnonymousxv)
       {
         AppMethodBeat.i(18660);
-        int i = paramAnonymousxk.dDy.result;
+        int i = paramAnonymousxv.dBk.result;
         if (i == 0) {
           if (KindaWalletMixManagerImpl.this.mCancelCallback != null) {
             KindaWalletMixManagerImpl.this.mCancelCallback.call();
@@ -47,9 +47,9 @@ public class KindaWalletMixManagerImpl
           if ((i == -1) && (KindaWalletMixManagerImpl.this.mSuccessCallback != null))
           {
             ITransmitKvData localITransmitKvData = ITransmitKvData.create();
-            paramAnonymousxk = paramAnonymousxk.dDy.intent;
-            if (paramAnonymousxk != null) {
-              localITransmitKvData.putBool("is_jsapi_close_page", "1".equals(paramAnonymousxk.getStringExtra("is_jsapi_close_page")));
+            paramAnonymousxv = paramAnonymousxv.dBk.intent;
+            if (paramAnonymousxv != null) {
+              localITransmitKvData.putBool("is_jsapi_close_page", "1".equals(paramAnonymousxv.getStringExtra("is_jsapi_close_page")));
             }
             KindaWalletMixManagerImpl.this.mSuccessCallback.call(localITransmitKvData);
           }
@@ -59,7 +59,7 @@ public class KindaWalletMixManagerImpl
     AppMethodBeat.o(18662);
   }
   
-  private dpt genWalletMixSpGenPrePayRespFromUrl(String paramString, ITransmitKvData paramITransmitKvData)
+  private dvk genWalletMixSpGenPrePayRespFromUrl(String paramString, ITransmitKvData paramITransmitKvData)
   {
     AppMethodBeat.i(18664);
     if ((TextUtils.isEmpty(paramString)) || (paramITransmitKvData == null))
@@ -67,44 +67,44 @@ public class KindaWalletMixManagerImpl
       AppMethodBeat.o(18664);
       return null;
     }
-    dpt localdpt = new dpt();
-    localdpt.EFF = paramString;
-    localdpt.EFH = false;
-    localdpt.EFI = "";
-    localdpt.EFG = null;
+    dvk localdvk = new dvk();
+    localdvk.GcR = paramString;
+    localdvk.GcT = false;
+    localdvk.GcU = "";
+    localdvk.GcS = null;
     if (paramITransmitKvData.getBool("hasCallbackRetryConf"))
     {
-      localdpt.EFG = new qb();
-      localdpt.EFG.COZ = paramITransmitKvData.getInt("maxCount");
-      localdpt.EFG.COY = paramITransmitKvData.getInt("intevalTime");
-      localdpt.EFG.CPa = paramITransmitKvData.getString("defaultWording");
+      localdvk.GcS = new ql();
+      localdvk.GcS.EhK = paramITransmitKvData.getInt("maxCount");
+      localdvk.GcS.EhJ = paramITransmitKvData.getInt("intevalTime");
+      localdvk.GcS.EhL = paramITransmitKvData.getString("defaultWording");
     }
     AppMethodBeat.o(18664);
-    return localdpt;
+    return localdvk;
   }
   
   public void startWalletMixUseCaseImpl(String paramString, ITransmitKvData paramITransmitKvData, VoidITransmitKvDataCallback paramVoidITransmitKvDataCallback, VoidCallback paramVoidCallback1, VoidCallback paramVoidCallback2)
   {
     AppMethodBeat.i(18663);
     paramString = genWalletMixSpGenPrePayRespFromUrl(paramString, paramITransmitKvData);
-    if ((paramString != null) && (!bt.isNullOrNil(paramString.EFF)))
+    if ((paramString != null) && (!bs.isNullOrNil(paramString.GcR)))
     {
       paramVoidCallback2 = KindaContext.getTopOrUIPageFragmentActivity();
       if (paramVoidCallback2 == null)
       {
-        ad.e("KindaWalletMixManagerImpl", "KindaWalletMixManagerImpl startWalletMixUseCaseImpl() KindaContext.getTopOrUIPageFragmentActivity() return null!");
+        ac.e("KindaWalletMixManagerImpl", "KindaWalletMixManagerImpl startWalletMixUseCaseImpl() KindaContext.getTopOrUIPageFragmentActivity() return null!");
         AppMethodBeat.o(18663);
         return;
       }
       Intent localIntent = new Intent();
       localIntent.putExtra("prepayId", paramITransmitKvData.getString("prepayId"));
       localIntent.putExtra("is_jsapi_offline_pay", false);
-      localIntent.putExtra("pay_gate_url", paramString.EFF);
-      localIntent.putExtra("need_dialog", paramString.EFH);
-      localIntent.putExtra("dialog_text", paramString.EFI);
-      localIntent.putExtra("max_count", paramString.EFG.COZ);
-      localIntent.putExtra("inteval_time", paramString.EFG.COY);
-      localIntent.putExtra("default_wording", paramString.EFG.CPa);
+      localIntent.putExtra("pay_gate_url", paramString.GcR);
+      localIntent.putExtra("need_dialog", paramString.GcT);
+      localIntent.putExtra("dialog_text", paramString.GcU);
+      localIntent.putExtra("max_count", paramString.GcS.EhK);
+      localIntent.putExtra("inteval_time", paramString.GcS.EhJ);
+      localIntent.putExtra("default_wording", paramString.GcS.EhL);
       d.c(paramVoidCallback2, "wallet_core", ".ui.WalletMixOrderInfoUI", localIntent);
     }
     this.mSuccessCallback = paramVoidITransmitKvDataCallback;

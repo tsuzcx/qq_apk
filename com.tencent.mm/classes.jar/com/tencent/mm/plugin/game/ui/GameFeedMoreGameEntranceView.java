@@ -13,14 +13,14 @@ import com.tencent.mm.plugin.game.d.cn;
 import com.tencent.mm.plugin.game.e.a;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class GameFeedMoreGameEntranceView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private TextView Tu;
-  private d sfe;
+  private TextView Up;
+  private d tmX;
   
   public GameFeedMoreGameEntranceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,15 +30,15 @@ public class GameFeedMoreGameEntranceView
   public void onClick(View paramView)
   {
     AppMethodBeat.i(42118);
-    if ((this.sfe == null) || (this.sfe.rVo == null))
+    if ((this.tmX == null) || (this.tmX.tdg == null))
     {
       AppMethodBeat.o(42118);
       return;
     }
-    if (!bt.isNullOrNil(this.sfe.rVo.rZo))
+    if (!bs.isNullOrNil(this.tmX.tdg.thh))
     {
-      int i = c.ax(getContext(), this.sfe.rVo.rZo);
-      e.a(getContext(), 10, 1024, this.sfe.position, i, this.sfe.rVo.hnC, GameIndexListView.getSourceScene(), a.ad(this.sfe.rVo.rZW, "clickType", "card"));
+      int i = c.ay(getContext(), this.tmX.tdg.thh);
+      e.a(getContext(), 10, 1024, this.tmX.position, i, this.tmX.tdg.hOf, GameIndexListView.getSourceScene(), a.ae(this.tmX.tdg.thP, "clickType", "card"));
     }
     AppMethodBeat.o(42118);
   }
@@ -47,7 +47,7 @@ public class GameFeedMoreGameEntranceView
   {
     AppMethodBeat.i(42116);
     super.onFinishInflate();
-    this.Tu = ((TextView)findViewById(2131302471));
+    this.Up = ((TextView)findViewById(2131302471));
     setOnClickListener(this);
     AppMethodBeat.o(42116);
   }
@@ -55,19 +55,19 @@ public class GameFeedMoreGameEntranceView
   public void setData(d paramd)
   {
     AppMethodBeat.i(42117);
-    if ((paramd == null) || (paramd.rVo == null) || (paramd.rVo.saT == null))
+    if ((paramd == null) || (paramd.tdg == null) || (paramd.tdg.tiN == null))
     {
       setVisibility(8);
       AppMethodBeat.o(42117);
       return;
     }
-    this.sfe = paramd;
+    this.tmX = paramd;
     setVisibility(0);
-    this.Tu.setText(paramd.rVo.saT.Desc);
-    if (!this.sfe.rVq)
+    this.Up.setText(paramd.tdg.tiN.Desc);
+    if (!this.tmX.tdi)
     {
-      a.a(getContext(), 10, 1024, this.sfe.position, this.sfe.rVo.hnC, GameIndexListView.getSourceScene(), a.qh(this.sfe.rVo.rZW));
-      this.sfe.rVq = true;
+      a.a(getContext(), 10, 1024, this.tmX.position, this.tmX.tdg.hOf, GameIndexListView.getSourceScene(), a.tu(this.tmX.tdg.thP));
+      this.tmX.tdi = true;
     }
     AppMethodBeat.o(42117);
   }

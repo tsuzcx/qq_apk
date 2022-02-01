@@ -7,34 +7,34 @@ import java.util.List;
 public class p
   extends x
 {
-  public float buK;
-  public float qs;
+  public float bsJ;
+  public float rs;
   public int textAlignment;
   public String title;
-  public int wVW;
-  public String wVX;
-  public String wVY;
-  public String wVZ;
-  public float wWa;
-  public int wWb;
-  public String wWc;
-  public String wWd;
-  public String wWe;
-  public int wWf;
-  public int wWg;
-  public int wWh;
-  public int wWi;
-  public String wWj = "";
-  public String wWk = "";
-  public String wWl = "";
-  public x wWm;
+  public int yiK;
+  public String yiL;
+  public String yiM;
+  public String yiN;
+  public float yiO;
+  public int yiP;
+  public String yiQ;
+  public String yiR;
+  public String yiS;
+  public int yiT;
+  public int yiU;
+  public int yiV;
+  public int yiW;
+  public String yiX = "";
+  public String yiY = "";
+  public String yiZ = "";
+  public x yja;
   
-  protected final List<x> dvE()
+  protected final List<x> dKd()
   {
     AppMethodBeat.i(96318);
-    ArrayList localArrayList = new ArrayList(super.dvE());
-    if (this.wWm != null) {
-      localArrayList.add(this.wWm);
+    ArrayList localArrayList = new ArrayList(super.dKd());
+    if (this.yja != null) {
+      localArrayList.add(this.yja);
     }
     AppMethodBeat.o(96318);
     return localArrayList;
@@ -42,7 +42,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.p
  * JD-Core Version:    0.7.0.1
  */

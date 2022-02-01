@@ -2,86 +2,86 @@ package com.tencent.mm.plugin.walletlock.c;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public enum i
 {
-  private boolean ADq;
-  private boolean ADr;
-  private Object ADs;
-  public HashSet<WeakReference<Activity>> ADt;
+  private boolean BVL;
+  private boolean BVM;
+  private Object BVN;
+  public HashSet<WeakReference<Activity>> BVO;
   
   static
   {
     AppMethodBeat.i(129945);
-    ADp = new i("INSTANCE");
-    ADu = new i[] { ADp };
+    BVK = new i("INSTANCE");
+    BVP = new i[] { BVK };
     AppMethodBeat.o(129945);
   }
   
   private i()
   {
     AppMethodBeat.i(129942);
-    this.ADq = false;
-    this.ADr = false;
-    this.ADs = new Object();
-    this.ADt = new HashSet();
+    this.BVL = false;
+    this.BVM = false;
+    this.BVN = new Object();
+    this.BVO = new HashSet();
     AppMethodBeat.o(129942);
   }
   
   public final void d(WeakReference<Activity> paramWeakReference)
   {
     AppMethodBeat.i(129943);
-    if (this.ADt != null)
+    if (this.BVO != null)
     {
       if (paramWeakReference.get() != null) {
-        ad.v("MicroMsg.WalletLockStatusManager", "alvinluo addProtectActivity %s", new Object[] { ((Activity)paramWeakReference.get()).getClass().getName() });
+        ac.v("MicroMsg.WalletLockStatusManager", "alvinluo addProtectActivity %s", new Object[] { ((Activity)paramWeakReference.get()).getClass().getName() });
       }
-      this.ADt.add(paramWeakReference);
+      this.BVO.add(paramWeakReference);
     }
     AppMethodBeat.o(129943);
   }
   
-  public final boolean egI()
+  public final boolean ewc()
   {
-    synchronized (this.ADs)
+    synchronized (this.BVN)
     {
-      boolean bool = this.ADq;
+      boolean bool = this.BVL;
       return bool;
     }
   }
   
-  public final boolean egJ()
+  public final boolean ewd()
   {
-    synchronized (this.ADs)
+    synchronized (this.BVN)
     {
-      boolean bool = this.ADr;
+      boolean bool = this.BVM;
       return bool;
     }
   }
   
-  public final void egK()
+  public final void ewe()
   {
-    synchronized (this.ADs)
+    synchronized (this.BVN)
     {
-      this.ADr = true;
+      this.BVM = true;
       return;
     }
   }
   
-  public final void egL()
+  public final void ewf()
   {
     AppMethodBeat.i(129944);
-    Iterator localIterator = this.ADt.iterator();
+    Iterator localIterator = this.BVO.iterator();
     while (localIterator.hasNext())
     {
       Activity localActivity = (Activity)((WeakReference)localIterator.next()).get();
       if ((localActivity != null) && (!localActivity.isFinishing()))
       {
-        ad.v("MicroMsg.WalletLockStatusManager", "alvinluo finish %s", new Object[] { localActivity.getClass().getName() });
+        ac.v("MicroMsg.WalletLockStatusManager", "alvinluo finish %s", new Object[] { localActivity.getClass().getName() });
         localActivity.finish();
       }
       localIterator.remove();
@@ -89,20 +89,20 @@ public enum i
     AppMethodBeat.o(129944);
   }
   
-  public final void sZ(boolean paramBoolean)
+  public final void ua(boolean paramBoolean)
   {
-    synchronized (this.ADs)
+    synchronized (this.BVN)
     {
-      this.ADq = paramBoolean;
+      this.BVL = paramBoolean;
       return;
     }
   }
   
-  public final void ta(boolean paramBoolean)
+  public final void ub(boolean paramBoolean)
   {
-    synchronized (this.ADs)
+    synchronized (this.BVN)
     {
-      this.ADr = paramBoolean;
+      this.BVM = paramBoolean;
       return;
     }
   }

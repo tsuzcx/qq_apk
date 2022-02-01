@@ -14,10 +14,10 @@ import com.tencent.mm.ui.MMActivity;
 public class FreeWifiErrorUI
   extends MMActivity
 {
-  private ImageView rkd;
-  private TextView rke;
-  private TextView rkf;
-  private TextView rkg;
+  private ImageView ssW;
+  private TextView ssX;
+  private TextView ssY;
+  private TextView ssZ;
   
   public int getForceOrientation()
   {
@@ -34,24 +34,24 @@ public class FreeWifiErrorUI
     AppMethodBeat.i(25017);
     super.onCreate(paramBundle);
     setMMTitle(2131759653);
-    this.rkd = ((ImageView)findViewById(2131300262));
+    this.ssW = ((ImageView)findViewById(2131300262));
     if (getIntent().getIntExtra("free_wifi_show_detail_error", 0) == 1) {
-      this.rkd.setImageResource(2131232426);
+      this.ssW.setImageResource(2131232426);
     }
-    this.rke = ((TextView)findViewById(2131300261));
-    this.rkf = ((TextView)findViewById(2131300259));
-    this.rkg = ((TextView)findViewById(2131300260));
+    this.ssX = ((TextView)findViewById(2131300261));
+    this.ssY = ((TextView)findViewById(2131300259));
+    this.ssZ = ((TextView)findViewById(2131300260));
     paramBundle = getIntent().getStringExtra("free_wifi_error_ui_error_msg");
     String str1 = getIntent().getStringExtra("free_wifi_error_ui_error_msg_detail1");
     String str2 = getIntent().getStringExtra("free_wifi_error_ui_error_msg_detail12");
-    if (!m.dq(paramBundle)) {
-      this.rke.setText(paramBundle);
+    if (!m.cX(paramBundle)) {
+      this.ssX.setText(paramBundle);
     }
-    if (!m.dq(str1)) {
-      this.rkf.setText(str1);
+    if (!m.cX(str1)) {
+      this.ssY.setText(str1);
     }
-    if (!m.dq(str2)) {
-      this.rkg.setText(str2);
+    if (!m.cX(str2)) {
+      this.ssZ.setText(str2);
     }
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -74,7 +74,7 @@ public class FreeWifiErrorUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiErrorUI
  * JD-Core Version:    0.7.0.1
  */

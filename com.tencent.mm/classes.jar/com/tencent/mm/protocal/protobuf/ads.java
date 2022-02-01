@@ -1,93 +1,224 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import f.a.a.b;
 
 public final class ads
-  extends ckq
+  extends com.tencent.mm.bw.a
 {
-  public String Dej;
+  public String ActivityID;
+  public String AesKey;
+  public String EncryptUrl;
+  public String Ewv;
+  public String Eww;
+  public String Ewx;
+  public String Ewy;
+  public String ExternMd5;
+  public String ExternUrl;
+  public String Md5;
+  public String ProductID;
+  public String ThumbUrl;
+  public String Url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82398);
+    AppMethodBeat.i(104759);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.Md5 == null)
       {
-        paramVarArgs.kX(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: Md5");
+        AppMethodBeat.o(104759);
+        throw paramVarArgs;
       }
-      if (this.Dej != null) {
-        paramVarArgs.d(2, this.Dej);
+      if (this.Md5 != null) {
+        paramVarArgs.d(1, this.Md5);
       }
-      AppMethodBeat.o(82398);
+      if (this.Url != null) {
+        paramVarArgs.d(2, this.Url);
+      }
+      if (this.ThumbUrl != null) {
+        paramVarArgs.d(3, this.ThumbUrl);
+      }
+      if (this.Ewv != null) {
+        paramVarArgs.d(4, this.Ewv);
+      }
+      if (this.EncryptUrl != null) {
+        paramVarArgs.d(5, this.EncryptUrl);
+      }
+      if (this.AesKey != null) {
+        paramVarArgs.d(6, this.AesKey);
+      }
+      if (this.ProductID != null) {
+        paramVarArgs.d(7, this.ProductID);
+      }
+      if (this.ExternUrl != null) {
+        paramVarArgs.d(8, this.ExternUrl);
+      }
+      if (this.ExternMd5 != null) {
+        paramVarArgs.d(9, this.ExternMd5);
+      }
+      if (this.ActivityID != null) {
+        paramVarArgs.d(10, this.ActivityID);
+      }
+      if (this.Eww != null) {
+        paramVarArgs.d(11, this.Eww);
+      }
+      if (this.Ewx != null) {
+        paramVarArgs.d(12, this.Ewx);
+      }
+      if (this.Ewy != null) {
+        paramVarArgs.d(13, this.Ewy);
+      }
+      AppMethodBeat.o(104759);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label370;
+      if (this.Md5 == null) {
+        break label998;
       }
     }
-    label370:
-    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label998:
+    for (int i = f.a.a.b.b.a.e(1, this.Md5) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.Dej != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Dej);
+      paramInt = i;
+      if (this.Url != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Url);
       }
-      AppMethodBeat.o(82398);
+      i = paramInt;
+      if (this.ThumbUrl != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.ThumbUrl);
+      }
+      paramInt = i;
+      if (this.Ewv != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Ewv);
+      }
+      i = paramInt;
+      if (this.EncryptUrl != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.EncryptUrl);
+      }
+      paramInt = i;
+      if (this.AesKey != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.AesKey);
+      }
+      i = paramInt;
+      if (this.ProductID != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.ProductID);
+      }
+      paramInt = i;
+      if (this.ExternUrl != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.ExternUrl);
+      }
+      i = paramInt;
+      if (this.ExternMd5 != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.ExternMd5);
+      }
+      paramInt = i;
+      if (this.ActivityID != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.ActivityID);
+      }
+      i = paramInt;
+      if (this.Eww != null) {
+        i = paramInt + f.a.a.b.b.a.e(11, this.Eww);
+      }
+      paramInt = i;
+      if (this.Ewx != null) {
+        paramInt = i + f.a.a.b.b.a.e(12, this.Ewx);
+      }
+      i = paramInt;
+      if (this.Ewy != null) {
+        i = paramInt + f.a.a.b.b.a.e(13, this.Ewy);
+      }
+      AppMethodBeat.o(104759);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(82398);
+        if (this.Md5 == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Md5");
+          AppMethodBeat.o(104759);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(104759);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         ads localads = (ads)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(82398);
+          AppMethodBeat.o(104759);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ip();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localads.BaseRequest = ((ip)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(82398);
+          localads.Md5 = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 2: 
+          localads.Url = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 3: 
+          localads.ThumbUrl = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 4: 
+          localads.Ewv = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 5: 
+          localads.EncryptUrl = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 6: 
+          localads.AesKey = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 7: 
+          localads.ProductID = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 8: 
+          localads.ExternUrl = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 9: 
+          localads.ExternMd5 = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 10: 
+          localads.ActivityID = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 11: 
+          localads.Eww = locala.LVo.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 12: 
+          localads.Ewx = locala.LVo.readString();
+          AppMethodBeat.o(104759);
           return 0;
         }
-        localads.Dej = ((f.a.a.a.a)localObject1).KhF.readString();
-        AppMethodBeat.o(82398);
+        localads.Ewy = locala.LVo.readString();
+        AppMethodBeat.o(104759);
         return 0;
       }
-      AppMethodBeat.o(82398);
+      AppMethodBeat.o(104759);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ads
  * JD-Core Version:    0.7.0.1
  */

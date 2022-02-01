@@ -19,11 +19,11 @@ public abstract class AbsStoryPreference
   
   public abstract void a(d paramd);
   
-  public abstract void dFZ();
+  public abstract void dUA();
   
-  public abstract void dGa();
+  public abstract void dUB();
   
-  public abstract void dGb();
+  public abstract void dUC();
   
   public abstract void onCreate(String paramString);
   
@@ -31,7 +31,7 @@ public abstract class AbsStoryPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.AbsStoryPreference
  * JD-Core Version:    0.7.0.1
  */

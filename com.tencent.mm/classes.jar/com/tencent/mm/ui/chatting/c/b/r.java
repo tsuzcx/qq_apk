@@ -5,9 +5,9 @@ import com.tencent.mm.ui.chatting.c.ab;
 public abstract interface r
   extends ab
 {
-  public abstract boolean eXF();
+  public abstract boolean fnr();
   
-  public abstract void eXG();
+  public abstract void fns();
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mm.model.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storage.c;
 import java.io.ByteArrayInputStream;
 import java.io.StringWriter;
@@ -28,7 +28,7 @@ import org.xml.sax.InputSource;
 
 public final class a
 {
-  private static DocumentBuilder gQq = null;
+  private static DocumentBuilder hqQ = null;
   
   private static String a(Node paramNode)
   {
@@ -47,20 +47,20 @@ public final class a
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.ABTestParser", paramNode, "nodeToString", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.ABTestParser", paramNode, "nodeToString", new Object[0]);
       }
     }
   }
   
-  public static a.a uL(String paramString)
+  public static a yR(String paramString)
   {
     AppMethodBeat.i(153105);
-    a.a locala = new a.a();
-    ad.d("MicroMsg.ABTestParser", "ABTest msg content: %s", new Object[] { paramString });
-    Object localObject1 = uN(paramString);
+    a locala = new a();
+    ac.d("MicroMsg.ABTestParser", "ABTest msg content: %s", new Object[] { paramString });
+    Object localObject1 = yT(paramString);
     if (localObject1 == null)
     {
-      ad.e("MicroMsg.ABTestParser", "Msg parsing failed, msg: %s", new Object[] { paramString });
+      ac.e("MicroMsg.ABTestParser", "Msg parsing failed, msg: %s", new Object[] { paramString });
       AppMethodBeat.o(153105);
       return locala;
     }
@@ -84,7 +84,7 @@ public final class a
       paramString = ((Element)localObject1).getElementsByTagName("prioritylevel");
       if (paramString.getLength() > 0)
       {
-        i = bt.getInt(paramString.item(0).getTextContent(), 1);
+        i = bs.getInt(paramString.item(0).getTextContent(), 1);
         localObject1 = ((Element)localObject1).getChildNodes();
         int j = 0;
         if (j < ((NodeList)localObject1).getLength())
@@ -105,19 +105,19 @@ public final class a
             }
             catch (Exception paramString)
             {
-              ad.printErrStackTrace("MicroMsg.ABTestParser", paramString, "parseExp", new Object[0]);
+              ac.printErrStackTrace("MicroMsg.ABTestParser", paramString, "parseExp", new Object[0]);
               continue;
-              paramString.field_sequence = bt.getLong(((NodeList)localObject4).item(0).getTextContent(), 0L);
+              paramString.field_sequence = bs.getLong(((NodeList)localObject4).item(0).getTextContent(), 0L);
               localObject4 = ((Element)localObject3).getElementsByTagName("prioritylevel");
               if (((NodeList)localObject4).getLength() <= 0) {
                 continue;
               }
-              paramString.field_prioritylevel = bt.getInt(((NodeList)localObject4).item(0).getTextContent(), 0);
+              paramString.field_prioritylevel = bs.getInt(((NodeList)localObject4).item(0).getTextContent(), 0);
               localObject4 = ((Element)localObject3).getElementsByTagName("starttime");
               if (((NodeList)localObject4).getLength() <= 0) {
                 continue;
               }
-              paramString.field_startTime = bt.getLong(((NodeList)localObject4).item(0).getTextContent(), 0L);
+              paramString.field_startTime = bs.getLong(((NodeList)localObject4).item(0).getTextContent(), 0L);
               if (paramString.field_startTime != 0L) {
                 continue;
               }
@@ -126,7 +126,7 @@ public final class a
               if (((NodeList)localObject4).getLength() <= 0) {
                 continue;
               }
-              paramString.field_endTime = bt.getLong(((NodeList)localObject4).item(0).getTextContent(), 0L);
+              paramString.field_endTime = bs.getLong(((NodeList)localObject4).item(0).getTextContent(), 0L);
               if (paramString.field_endTime != 0L) {
                 continue;
               }
@@ -135,7 +135,7 @@ public final class a
               if (((NodeList)localObject4).getLength() <= 0) {
                 continue;
               }
-              if (bt.getInt(((NodeList)localObject4).item(0).getTextContent(), 0) != 0) {
+              if (bs.getInt(((NodeList)localObject4).item(0).getTextContent(), 0) != 0) {
                 continue;
               }
               bool = true;
@@ -159,18 +159,18 @@ public final class a
               }
               paramString = null;
               continue;
-              l3 = bt.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
+              l3 = bs.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
               localObject3 = ((Element)localObject4).getElementsByTagName("starttime");
               if (((NodeList)localObject3).getLength() <= 0) {
                 continue;
               }
-              l1 = bt.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
+              l1 = bs.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
               if (l1 != 0L) {
                 break label1289;
               }
               l1 = System.currentTimeMillis() / 1000L;
             }
-            locala.gQr.add(paramString);
+            locala.hqR.add(paramString);
             if ((((Node)localObject2).getNodeType() == 1) && (((Node)localObject2).getNodeName().equals("expinfo"))) {}
             try
             {
@@ -187,11 +187,11 @@ public final class a
               Object localObject5;
               long l3;
               long l1;
-              ad.e("MicroMsg.ABTestParser", paramString.getMessage());
+              ac.e("MicroMsg.ABTestParser", paramString.getMessage());
               continue;
               continue;
             }
-            locala.gQs.addAll(paramString);
+            locala.hqS.addAll(paramString);
             j += 1;
             break;
             localObject5 = ((NamedNodeMap)localObject4).getNamedItem("layerid");
@@ -225,7 +225,7 @@ public final class a
                 if (((NodeList)localObject3).getLength() <= 0) {
                   break label1297;
                 }
-                l2 = bt.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
+                l2 = bs.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
                 if (l2 == 0L) {
                   break label1297;
                 }
@@ -241,7 +241,7 @@ public final class a
       localObject3 = ((Element)localObject4).getElementsByTagName("noreport");
       if (((NodeList)localObject3).getLength() > 0)
       {
-        if (bt.getInt(((NodeList)localObject3).item(0).getTextContent(), 0) != 1) {
+        if (bs.getInt(((NodeList)localObject3).item(0).getTextContent(), 0) != 1) {
           break label1315;
         }
         bool = true;
@@ -310,14 +310,14 @@ public final class a
     }
   }
   
-  public static Map<String, String> uM(String paramString)
+  public static Map<String, String> yS(String paramString)
   {
     AppMethodBeat.i(153106);
     HashMap localHashMap = new HashMap();
-    Object localObject1 = uN(paramString);
+    Object localObject1 = yT(paramString);
     if (localObject1 == null)
     {
-      ad.e("MicroMsg.ABTestParser", "Raw XML string parsing failed, xml: %s", new Object[] { paramString });
+      ac.e("MicroMsg.ABTestParser", "Raw XML string parsing failed, xml: %s", new Object[] { paramString });
       AppMethodBeat.o(153106);
       return localHashMap;
     }
@@ -344,14 +344,14 @@ public final class a
     return localHashMap;
   }
   
-  private static Element uN(String paramString)
+  private static Element yT(String paramString)
   {
     AppMethodBeat.i(153107);
     try
     {
       InputSource localInputSource = new InputSource(new ByteArrayInputStream(paramString.getBytes()));
-      if (gQq != null) {
-        paramString = gQq;
+      if (hqQ != null) {
+        paramString = hqQ;
       }
       for (;;)
       {
@@ -361,14 +361,28 @@ public final class a
         AppMethodBeat.o(153107);
         return paramString;
         paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        gQq = paramString;
+        hqQ = paramString;
       }
       return null;
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.ABTestParser", paramString.toString());
+      ac.e("MicroMsg.ABTestParser", paramString.toString());
       AppMethodBeat.o(153107);
+    }
+  }
+  
+  public static final class a
+  {
+    public List<c> hqR;
+    public List<com.tencent.mm.storage.a> hqS;
+    
+    public a()
+    {
+      AppMethodBeat.i(153104);
+      this.hqR = new LinkedList();
+      this.hqS = new LinkedList();
+      AppMethodBeat.o(153104);
     }
   }
 }

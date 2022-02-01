@@ -16,13 +16,13 @@ public class VerticalStepView
   extends LinearLayout
   implements VerticalStepViewIndicator.a
 {
-  private TextView Tu;
-  private RelativeLayout kFg;
-  public VerticalStepViewIndicator kFh;
-  public List<c> kFi;
-  private int kFj;
-  private int kFk;
-  private int kFl;
+  private TextView Up;
+  public VerticalStepViewIndicator lgA;
+  public List<c> lgB;
+  private int lgC;
+  private int lgD;
+  private int lgE;
+  private RelativeLayout lgz;
   private int mTextSize;
   
   public VerticalStepView(Context paramContext, AttributeSet paramAttributeSet)
@@ -33,62 +33,62 @@ public class VerticalStepView
   public VerticalStepView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(194897);
-    this.kFk = b.n(getContext(), 2131101194);
-    this.kFl = b.n(getContext(), 17170443);
+    AppMethodBeat.i(201052);
+    this.lgD = b.n(getContext(), 2131101194);
+    this.lgE = b.n(getContext(), 17170443);
     this.mTextSize = 14;
     paramContext = LayoutInflater.from(getContext()).inflate(2131496163, this);
-    this.kFh = ((VerticalStepViewIndicator)paramContext.findViewById(2131307251));
-    this.kFh.setOnDrawListener(this);
-    this.kFg = ((RelativeLayout)paramContext.findViewById(2131307238));
-    AppMethodBeat.o(194897);
+    this.lgA = ((VerticalStepViewIndicator)paramContext.findViewById(2131307251));
+    this.lgA.setOnDrawListener(this);
+    this.lgz = ((RelativeLayout)paramContext.findViewById(2131307238));
+    AppMethodBeat.o(201052);
   }
   
-  public final void bgc()
+  public final void bmW()
   {
-    AppMethodBeat.i(194899);
-    if (this.kFg != null)
+    AppMethodBeat.i(201054);
+    if (this.lgz != null)
     {
-      this.kFg.removeAllViews();
-      List localList = this.kFh.getCircleCenterPointPositionList();
-      if ((this.kFi != null) && (localList != null) && (localList.size() > 0))
+      this.lgz.removeAllViews();
+      List localList = this.lgA.getCircleCenterPointPositionList();
+      if ((this.lgB != null) && (localList != null) && (localList.size() > 0))
       {
         int i = 0;
-        if (i < this.kFi.size())
+        if (i < this.lgB.size())
         {
-          this.Tu = new TextView(getContext());
-          this.Tu.setTextSize(2, this.mTextSize);
-          this.Tu.setText(((c)this.kFi.get(i)).kFf);
-          this.Tu.setY(((Float)localList.get(i)).floatValue() - this.kFh.getCircleRadius() / 2.0F);
-          this.Tu.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-          if (i <= this.kFj)
+          this.Up = new TextView(getContext());
+          this.Up.setTextSize(2, this.mTextSize);
+          this.Up.setText(((c)this.lgB.get(i)).lgy);
+          this.Up.setY(((Float)localList.get(i)).floatValue() - this.lgA.getCircleRadius() / 2.0F);
+          this.Up.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+          if (i <= this.lgC)
           {
-            this.Tu.setTypeface(null, 1);
-            this.Tu.setTextColor(this.kFl);
+            this.Up.setTypeface(null, 1);
+            this.Up.setTextColor(this.lgE);
           }
           for (;;)
           {
-            this.kFg.addView(this.Tu);
+            this.lgz.addView(this.Up);
             i += 1;
             break;
-            this.Tu.setTextColor(this.kFk);
+            this.Up.setTextColor(this.lgD);
           }
         }
       }
     }
-    AppMethodBeat.o(194899);
+    AppMethodBeat.o(201054);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194898);
+    AppMethodBeat.i(201053);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(194898);
+    AppMethodBeat.o(201053);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.stepview.VerticalStepView
  * JD-Core Version:    0.7.0.1
  */

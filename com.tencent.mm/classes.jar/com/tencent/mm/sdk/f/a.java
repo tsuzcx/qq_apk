@@ -6,12 +6,12 @@ import android.content.ContextWrapper;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.reflect.Field;
 
 public final class a
 {
-  public static void gi(Context paramContext)
+  public static void gu(Context paramContext)
   {
     AppMethodBeat.i(153459);
     if (paramContext == null)
@@ -83,7 +83,7 @@ public final class a
       }
       catch (Throwable localThrowable)
       {
-        ad.printErrStackTrace("Luggage.AndroidContextUtil", localThrowable, "fixInputMethodManagerLeak", new Object[0]);
+        ac.printErrStackTrace("Luggage.AndroidContextUtil", localThrowable, "fixInputMethodManagerLeak", new Object[0]);
         break label223;
       }
       AppMethodBeat.o(153459);
@@ -103,7 +103,7 @@ public final class a
     }
   }
   
-  public static Activity iV(Context paramContext)
+  public static Activity jg(Context paramContext)
   {
     AppMethodBeat.i(153458);
     for (;;)

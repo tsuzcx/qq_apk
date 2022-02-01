@@ -12,34 +12,34 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class CustomFitTextView
   extends TextView
 {
-  private String Hnt;
-  private Rect Hnu;
-  private LinkedList<String> Hnv;
-  public int Hnw;
-  private Drawable Hnx;
-  public boolean Hny;
-  private int Hnz;
-  private Paint bOr;
-  private boolean iBz;
+  private String INO;
+  private Rect INP;
+  private LinkedList<String> INQ;
+  public int INR;
+  private Drawable INS;
+  public boolean INU;
+  private int INV;
+  private Paint bLZ;
+  private boolean jbA;
   public int maxLines;
   
   public CustomFitTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143056);
-    this.Hnu = new Rect();
-    this.Hnv = new LinkedList();
-    this.iBz = true;
-    this.Hnz = 0;
+    this.INP = new Rect();
+    this.INQ = new LinkedList();
+    this.jbA = true;
+    this.INV = 0;
     AppMethodBeat.o(143056);
   }
   
@@ -47,24 +47,24 @@ public class CustomFitTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143057);
-    this.Hnu = new Rect();
-    this.Hnv = new LinkedList();
-    this.iBz = true;
-    this.Hnz = 0;
+    this.INP = new Rect();
+    this.INQ = new LinkedList();
+    this.jbA = true;
+    this.INV = 0;
     AppMethodBeat.o(143057);
   }
   
   private void appendText(String paramString)
   {
     AppMethodBeat.i(143061);
-    if (this.Hnv != null)
+    if (this.INQ != null)
     {
       if ((paramString == null) || ("".equals(paramString)))
       {
         AppMethodBeat.o(143061);
         return;
       }
-      this.Hnv.add(paramString);
+      this.INQ.add(paramString);
     }
     AppMethodBeat.o(143061);
   }
@@ -97,7 +97,7 @@ public class CustomFitTextView
     }
     paramInt2 = Math.min(j, i) - 1;
     paramInt1 = paramInt2;
-    while ((paramInt1 >= 0) && (bt.F(paramString.charAt(paramInt1)))) {
+    while ((paramInt1 >= 0) && (bs.D(paramString.charAt(paramInt1)))) {
       paramInt1 -= 1;
     }
     if ((paramInt1 < 0) || (paramInt1 == paramInt2))
@@ -109,36 +109,36 @@ public class CustomFitTextView
     return paramInt1 + 1;
   }
   
-  private int fdM()
+  private int ftH()
   {
     AppMethodBeat.i(143059);
     Paint.FontMetrics localFontMetrics = getPaint().getFontMetrics();
-    float f1 = this.Hnv.size();
+    float f1 = this.INQ.size();
     float f2 = localFontMetrics.bottom;
     float f3 = localFontMetrics.top;
     int i = (int)((localFontMetrics.leading + (f2 - f3)) * f1 + getPaddingTop() + getPaddingBottom());
-    int j = Math.max(0, this.Hnv.size() - 1);
-    int k = this.Hnz;
+    int j = Math.max(0, this.INQ.size() - 1);
+    int k = this.INV;
     AppMethodBeat.o(143059);
     return i + j * k;
   }
   
-  private boolean gh(String paramString, int paramInt)
+  private boolean gl(String paramString, int paramInt)
   {
     AppMethodBeat.i(143060);
     int k;
     int n;
     int i1;
     int i;
-    if ((this.iBz) && (paramInt > 0) && (paramString != null) && (!"".equals(paramString)))
+    if ((this.jbA) && (paramInt > 0) && (paramString != null) && (!"".equals(paramString)))
     {
-      this.Hnv.clear();
+      this.INQ.clear();
       k = 0;
       n = paramString.length();
       i1 = paramInt - getPaddingLeft() - getPaddingRight();
-      if (this.Hny)
+      if (this.INU)
       {
-        paramInt = this.Hnx.getIntrinsicWidth();
+        paramInt = this.INS.getIntrinsicWidth();
         float f = getPaint().measureText(paramString, 0, n);
         f = paramInt + f;
         i = this.maxLines;
@@ -168,7 +168,7 @@ public class CustomFitTextView
         appendText(paramString.substring(k, m).trim());
         if (m >= n)
         {
-          ad.w("MicroMsg.CustomFitTextView", "not match last line, but match text length end");
+          ac.w("MicroMsg.CustomFitTextView", "not match last line, but match text length end");
           AppMethodBeat.o(143060);
           return true;
           AppMethodBeat.o(143060);
@@ -183,41 +183,41 @@ public class CustomFitTextView
   {
     AppMethodBeat.i(143058);
     this.maxLines = paramInt1;
-    this.Hnt = paramString;
-    if (this.Hnt == null)
+    this.INO = paramString;
+    if (this.INO == null)
     {
-      ad.w("MicroMsg.CustomFitTextView", "ori text is null");
-      this.Hnt = "";
+      ac.w("MicroMsg.CustomFitTextView", "ori text is null");
+      this.INO = "";
     }
     if (this.maxLines <= 0)
     {
-      ad.w("MicroMsg.CustomFitTextView", "maxLines is invalid");
+      ac.w("MicroMsg.CustomFitTextView", "maxLines is invalid");
       this.maxLines = 2;
     }
-    this.Hnz = getResources().getDimensionPixelSize(2131165187);
-    this.Hny = paramBoolean;
-    this.Hnw = paramInt2;
-    if (this.Hny) {
-      this.Hnx = getResources().getDrawable(this.Hnw);
+    this.INV = getResources().getDimensionPixelSize(2131165187);
+    this.INU = paramBoolean;
+    this.INR = paramInt2;
+    if (this.INU) {
+      this.INS = getResources().getDrawable(this.INR);
     }
-    this.bOr = new Paint();
-    this.bOr.set(getPaint());
-    this.bOr.setAntiAlias(true);
-    this.bOr.setColor(paramInt3);
-    gh(this.Hnt, getWidth());
-    setHeight(Math.max(fdM(), a.fromDPToPix(getContext(), 32)));
+    this.bLZ = new Paint();
+    this.bLZ.set(getPaint());
+    this.bLZ.setAntiAlias(true);
+    this.bLZ.setColor(paramInt3);
+    gl(this.INO, getWidth());
+    setHeight(Math.max(ftH(), a.fromDPToPix(getContext(), 32)));
     AppMethodBeat.o(143058);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(143063);
-    if (!this.iBz)
+    if (!this.jbA)
     {
       AppMethodBeat.o(143063);
       return;
     }
-    if ((this.Hnt == null) || ("".equals(this.Hnt)) || (this.Hnv.size() == 0))
+    if ((this.INO == null) || ("".equals(this.INO)) || (this.INQ.size() == 0))
     {
       AppMethodBeat.o(143063);
       return;
@@ -226,22 +226,22 @@ public class CustomFitTextView
     float f2 = localFontMetrics.descent - localFontMetrics.ascent;
     float f3 = getPaddingLeft();
     float f1 = getPaddingTop();
-    Iterator localIterator = this.Hnv.iterator();
+    Iterator localIterator = this.INQ.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       f1 = localFontMetrics.leading + f2 + f1;
-      paramCanvas.drawText(str, f3, f1, this.bOr);
+      paramCanvas.drawText(str, f3, f1, this.bLZ);
     }
-    if (this.Hny)
+    if (this.INU)
     {
-      getPaint().getTextBounds((String)this.Hnv.getLast(), 0, ((String)this.Hnv.getLast()).length(), this.Hnu);
-      int i = getPaddingLeft() + this.Hnu.right;
-      int j = this.Hnx.getIntrinsicWidth();
+      getPaint().getTextBounds((String)this.INQ.getLast(), 0, ((String)this.INQ.getLast()).length(), this.INP);
+      int i = getPaddingLeft() + this.INP.right;
+      int j = this.INS.getIntrinsicWidth();
       int k = (int)(f1 - f2 - localFontMetrics.leading);
-      int m = this.Hnx.getIntrinsicHeight();
-      this.Hnx.setBounds(i, k, j + i, m + k);
-      this.Hnx.draw(paramCanvas);
+      int m = this.INS.getIntrinsicHeight();
+      this.INS.setBounds(i, k, j + i, m + k);
+      this.INS.draw(paramCanvas);
     }
     AppMethodBeat.o(143063);
   }
@@ -253,8 +253,8 @@ public class CustomFitTextView
     int i = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = a.fromDPToPix(getContext(), 32);
     paramInt1 = paramInt2;
-    if (gh(this.Hnt, i)) {
-      paramInt1 = Math.max(fdM(), paramInt2);
+    if (gl(this.INO, i)) {
+      paramInt1 = Math.max(ftH(), paramInt2);
     }
     setMeasuredDimension(i, paramInt1);
     AppMethodBeat.o(143065);
@@ -266,9 +266,9 @@ public class CustomFitTextView
     if ((paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.iBz = bool;
-      if (this.iBz) {
-        gh(this.Hnt, paramInt1);
+      this.jbA = bool;
+      if (this.jbA) {
+        gl(this.INO, paramInt1);
       }
       AppMethodBeat.o(143064);
       return;
@@ -277,7 +277,7 @@ public class CustomFitTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CustomFitTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -11,34 +11,34 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.c;
 import com.tencent.mm.plugin.editor.model.nativenote.spans.u;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class f
   extends a
 {
-  private WXRTEditText olG;
+  private WXRTEditText oPg;
   
   public f(View paramView, com.tencent.mm.plugin.editor.model.nativenote.manager.j paramj)
   {
     super(paramView, paramj);
     AppMethodBeat.i(181659);
-    this.olG = ((WXRTEditText)paramView.findViewById(2131304265));
-    if (!this.okB.ooL)
+    this.oPg = ((WXRTEditText)paramView.findViewById(2131304265));
+    if (!this.oOb.oSl)
     {
-      this.olG.setKeyListener(null);
-      this.olG.setFocusable(false);
-      this.olG.setClickable(true);
+      this.oPg.setKeyListener(null);
+      this.oPg.setFocusable(false);
+      this.oPg.setClickable(true);
     }
-    this.olG.oob = this;
-    this.olG.setEditTextType(0);
-    this.okB.q(this.olG);
-    this.olG.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    this.oPg.oRB = this;
+    this.oPg.setEditTextType(0);
+    this.oOb.q(this.oPg);
+    this.oPg.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(181656);
-        com.tencent.mm.kernel.g.afE().ax(new Runnable()
+        com.tencent.mm.kernel.g.agU().az(new Runnable()
         {
           public final void run()
           {
@@ -56,81 +56,81 @@ public final class f
   public final void a(final com.tencent.mm.plugin.editor.model.a.a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(181660);
-    this.olG.setPosInDataList(paramInt1);
+    this.oPg.setPosInDataList(paramInt1);
     parama = (com.tencent.mm.plugin.editor.model.a.j)parama;
-    parama.omA = this.olG;
-    parama.omy = null;
-    parama.omz = null;
-    Object localObject = c.bSq().Aa(paramInt1 - 1);
+    parama.oQa = this.oPg;
+    parama.oPY = null;
+    parama.oPZ = null;
+    Object localObject = c.bZF().AS(paramInt1 - 1);
     if ((localObject != null) && (((com.tencent.mm.plugin.editor.model.a.a)localObject).getType() == 1))
     {
-      localObject = (LinearLayout.LayoutParams)this.olG.getLayoutParams();
+      localObject = (LinearLayout.LayoutParams)this.oPg.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = 0;
-      this.olG.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.oPg.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    localObject = c.bSq().Aa(paramInt1 + 1);
+    localObject = c.bZF().AS(paramInt1 + 1);
     if ((localObject != null) && (((com.tencent.mm.plugin.editor.model.a.a)localObject).getType() == 1))
     {
-      localObject = (LinearLayout.LayoutParams)this.olG.getLayoutParams();
+      localObject = (LinearLayout.LayoutParams)this.oPg.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
-      this.olG.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.oPg.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    if (!this.okB.ooL)
+    if (!this.oOb.oSl)
     {
-      this.olG.setRichTextEditing(parama.content);
-      k.v(this.olG);
+      this.oPg.setRichTextEditing(parama.content);
+      k.v(this.oPg);
     }
     for (;;)
     {
-      ad.i("MicroMsg.Note.EditorTextItemHolder", "TextItemHolder position is " + lm());
+      ac.i("MicroMsg.Note.EditorTextItemHolder", "TextItemHolder position is " + lu());
       AppMethodBeat.o(181660);
       return;
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(181658);
           f.a(f.this).setRichTextEditing(parama.content);
-          f.a(f.this).bSJ();
-          f.a(f.this).bSL();
+          f.a(f.this).bZY();
+          f.a(f.this).caa();
           k.v(f.a(f.this));
-          f.a(f.this).bSM();
-          f.a(f.this).bSK();
-          if (parama.omv) {
-            if ((parama.omx != -1) && (parama.omx < f.a(f.this).getText().toString().length()))
+          f.a(f.this).cab();
+          f.a(f.this).bZZ();
+          if (parama.oPV) {
+            if ((parama.oPX != -1) && (parama.oPX < f.a(f.this).getText().toString().length()))
             {
-              f.a(f.this).setSelection(parama.omx);
+              f.a(f.this).setSelection(parama.oPX);
               f.a(f.this).requestFocus();
-              aq.n(new Runnable()
+              ap.n(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(181657);
-                  if (f.2.this.olJ.omE != 0)
+                  if (f.2.this.oPj.oQe != 0)
                   {
-                    int i = f.a(f.this).getSelection().asw;
-                    if (i == f.2.this.olJ.content.length())
+                    int i = f.a(f.this).getSelection().atr;
+                    if (i == f.2.this.oPj.content.length())
                     {
-                      f.a(f.this).bSJ();
+                      f.a(f.this).bZY();
                       f.a(f.this).getText().append("\n");
-                      f.a(f.this).bSK();
+                      f.a(f.this).bZZ();
                       f.a(f.this).setSelection(i);
                     }
-                    f.2.this.olJ.omE = 0;
-                    if (f.2.this.olJ.omF == 1)
+                    f.2.this.oPj.oQe = 0;
+                    if (f.2.this.oPj.oQf == 1)
                     {
-                      f.a(f.this).a(u.oqE, Boolean.TRUE);
+                      f.a(f.this).a(u.oUe, Boolean.TRUE);
                       AppMethodBeat.o(181657);
                       return;
                     }
-                    if (f.2.this.olJ.omF == 3)
+                    if (f.2.this.oPj.oQf == 3)
                     {
-                      f.a(f.this).a(u.oqD, Boolean.TRUE);
+                      f.a(f.this).a(u.oUd, Boolean.TRUE);
                       AppMethodBeat.o(181657);
                       return;
                     }
-                    if (f.2.this.olJ.omF == 2) {
-                      f.a(f.this).a(u.oqF, Boolean.TRUE);
+                    if (f.2.this.oPj.oQf == 2) {
+                      f.a(f.this).a(u.oUf, Boolean.TRUE);
                     }
                   }
                   AppMethodBeat.o(181657);
@@ -140,10 +140,10 @@ public final class f
           }
           for (;;)
           {
-            if (parama.omD)
+            if (parama.oQd)
             {
-              parama.omD = false;
-              f.a(f.this).omD = true;
+              parama.oQd = false;
+              f.a(f.this).oQd = true;
               f.a(f.this).onTextContextMenuItem(16908322);
             }
             AppMethodBeat.o(181658);
@@ -159,14 +159,14 @@ public final class f
     }
   }
   
-  public final int bSa()
+  public final int bZp()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.f
  * JD-Core Version:    0.7.0.1
  */

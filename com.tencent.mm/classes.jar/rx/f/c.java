@@ -7,12 +7,12 @@ import rx.j;
 public final class c
   implements j
 {
-  final AtomicReference<a> Kti;
+  final AtomicReference<a> MgR;
   
   public c()
   {
     AppMethodBeat.i(90449);
-    this.Kti = new AtomicReference(new a(false, d.fOi()));
+    this.MgR = new AtomicReference(new a(false, d.ggY()));
     AppMethodBeat.o(90449);
   }
   
@@ -25,14 +25,14 @@ public final class c
       AppMethodBeat.o(90452);
       throw paramj;
     }
-    AtomicReference localAtomicReference = this.Kti;
+    AtomicReference localAtomicReference = this.MgR;
     a locala;
     do
     {
       locala = (a)localAtomicReference.get();
-      if (locala.KqK)
+      if (locala.Met)
       {
-        paramj.fNw();
+        paramj.ggm();
         AppMethodBeat.o(90452);
         return;
       }
@@ -40,63 +40,63 @@ public final class c
     AppMethodBeat.o(90452);
   }
   
-  public final void fNw()
+  public final void ggm()
   {
     AppMethodBeat.i(90451);
-    AtomicReference localAtomicReference = this.Kti;
+    AtomicReference localAtomicReference = this.MgR;
     a locala;
     do
     {
       locala = (a)localAtomicReference.get();
-      if (locala.KqK)
+      if (locala.Met)
       {
         AppMethodBeat.o(90451);
         return;
       }
-    } while (!localAtomicReference.compareAndSet(locala, locala.fOh()));
-    locala.Kra.fNw();
+    } while (!localAtomicReference.compareAndSet(locala, locala.ggX()));
+    locala.MeJ.ggm();
     AppMethodBeat.o(90451);
   }
   
-  public final boolean fNx()
+  public final boolean ggn()
   {
     AppMethodBeat.i(90450);
-    boolean bool = ((a)this.Kti.get()).KqK;
+    boolean bool = ((a)this.MgR.get()).Met;
     AppMethodBeat.o(90450);
     return bool;
   }
   
   static final class a
   {
-    final boolean KqK;
-    final j Kra;
+    final j MeJ;
+    final boolean Met;
     
     a(boolean paramBoolean, j paramj)
     {
-      this.KqK = paramBoolean;
-      this.Kra = paramj;
-    }
-    
-    final a fOh()
-    {
-      AppMethodBeat.i(90447);
-      a locala = new a(true, this.Kra);
-      AppMethodBeat.o(90447);
-      return locala;
+      this.Met = paramBoolean;
+      this.MeJ = paramj;
     }
     
     final a g(j paramj)
     {
       AppMethodBeat.i(90448);
-      paramj = new a(this.KqK, paramj);
+      paramj = new a(this.Met, paramj);
       AppMethodBeat.o(90448);
       return paramj;
+    }
+    
+    final a ggX()
+    {
+      AppMethodBeat.i(90447);
+      a locala = new a(true, this.MeJ);
+      AppMethodBeat.o(90447);
+      return locala;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.f.c
  * JD-Core Version:    0.7.0.1
  */

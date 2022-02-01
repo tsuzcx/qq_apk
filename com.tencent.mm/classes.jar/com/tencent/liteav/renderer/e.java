@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.liteav.basic.d.n;
+import com.tencent.liteav.basic.d.o;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.module.TXCKeyPointReportProxy;
@@ -45,7 +45,7 @@ public class e
   protected int n;
   protected f o;
   WeakReference<com.tencent.liteav.basic.c.a> p;
-  private com.tencent.liteav.basic.d.d q;
+  private com.tencent.liteav.basic.d.e q;
   private h r;
   private Surface s;
   private int t;
@@ -492,9 +492,9 @@ public class e
     AppMethodBeat.o(16796);
   }
   
-  public void a(final n paramn)
+  public void a(final o paramo)
   {
-    AppMethodBeat.i(16794);
+    AppMethodBeat.i(193137);
     final TextureView localTextureView = this.d;
     if (localTextureView != null) {
       try
@@ -526,14 +526,14 @@ public class e
                   TXCLog.w("TXCVideoRender", "takePhoto error ".concat(String.valueOf(localError)));
                 }
               }
-              if (paramn != null) {
-                paramn.onTakePhotoComplete(localObject);
+              if (paramo != null) {
+                paramo.onTakePhotoComplete(localObject);
               }
               AppMethodBeat.o(16755);
             }
           });
         }
-        AppMethodBeat.o(16794);
+        AppMethodBeat.o(193137);
         return;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -552,18 +552,18 @@ public class e
         {
           AppMethodBeat.i(16920);
           if (e.a(e.this) != null) {
-            e.a(e.this).a(paramn);
+            e.a(e.this).a(paramo);
           }
           AppMethodBeat.o(16920);
         }
       });
-      AppMethodBeat.o(16794);
+      AppMethodBeat.o(193137);
       return;
     }
-    if (paramn != null) {
-      paramn.onTakePhotoComplete(null);
+    if (paramo != null) {
+      paramo.onTakePhotoComplete(null);
     }
-    AppMethodBeat.o(16794);
+    AppMethodBeat.o(193137);
   }
   
   public void a(TXSVideoFrame paramTXSVideoFrame, int paramInt1, int paramInt2, int paramInt3)
@@ -613,7 +613,7 @@ public class e
             }
             if ((this.q == null) && (this.l == 1))
             {
-              this.q = new com.tencent.liteav.basic.d.d();
+              this.q = new com.tencent.liteav.basic.d.e();
               TXCLog.i("TXCVideoRender", "surface-render: onDrawTextureToSurface start render thread " + this.q);
               this.q.a(paramEGLContext, this.s);
             }
@@ -739,11 +739,11 @@ public class e
             AppMethodBeat.i(182260);
             e.this.m = paramInt1;
             e.this.n = paramInt2;
-            com.tencent.liteav.basic.d.d locald;
+            com.tencent.liteav.basic.d.e locale;
             int i;
             if (e.a(e.this) != null)
             {
-              locald = e.a(e.this);
+              locale = e.a(e.this);
               i = e.b(e.this)[0];
               if (e.b(e.this)[3] != 1) {
                 break label125;
@@ -752,7 +752,7 @@ public class e
             label125:
             for (boolean bool = true;; bool = false)
             {
-              locald.a(i, bool, e.b(e.this)[4], e.this.m, e.this.n, e.b(e.this)[1], e.b(e.this)[2], true, false);
+              locale.a(i, bool, e.b(e.this)[4], e.this.m, e.this.n, e.b(e.this)[1], e.b(e.this)[2], true, false);
               AppMethodBeat.o(182260);
               return;
             }

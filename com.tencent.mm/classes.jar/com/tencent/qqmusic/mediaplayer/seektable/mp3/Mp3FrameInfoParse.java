@@ -19,13 +19,13 @@ class Mp3FrameInfoParse
   
   static
   {
-    int[] arrayOfInt1 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 };
-    int[] arrayOfInt2 = { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
-    int[] arrayOfInt3 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 };
-    int[] arrayOfInt4 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
-    int[] arrayOfInt5 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
-    BitrateTable = new int[][][] { { { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 }, arrayOfInt1, arrayOfInt2 }, { arrayOfInt3, arrayOfInt4, arrayOfInt5 } };
-    SAMPLE_RATE_TABLE = new int[][] { { 11025, 12000, 8000 }, { 0, 0, 0 }, { 22050, 24000, 16000 }, { 44100, 48000, 32000 } };
+    Object localObject = { { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 }, { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 }, { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 } };
+    int[] arrayOfInt1 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
+    int[] arrayOfInt2 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
+    BitrateTable = new int[][][] { localObject, { { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, arrayOfInt1, arrayOfInt2 } };
+    localObject = new int[] { 0, 0, 0 };
+    arrayOfInt1 = new int[] { 22050, 24000, 16000 };
+    SAMPLE_RATE_TABLE = new int[][] { { 11025, 12000, 8000 }, localObject, arrayOfInt1, { 44100, 48000, 32000 } };
   }
   
   private static boolean IsMp3Header(TrackPositionDataSource paramTrackPositionDataSource, byte[] paramArrayOfByte, int paramInt1, int paramInt2, Mp3Info paramMp3Info)

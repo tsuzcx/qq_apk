@@ -9,7 +9,7 @@ final class n
 {
   public final void initStatic()
   {
-    ao.asj = new ao.a()
+    ao.ate = new ao.a()
     {
       public final void a(Canvas paramAnonymousCanvas, RectF paramAnonymousRectF, float paramAnonymousFloat, Paint paramAnonymousPaint)
       {

@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
+import com.tencent.mm.ae.a.a;
 
 public final class ImagePreference
   extends Preference
 {
-  private e GeW;
-  private ImageView uCn;
+  private e HEL;
+  private ImageView vLg;
   
   public ImagePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,18 +24,18 @@ public final class ImagePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142569);
-    this.uCn = null;
-    this.GeW = new e();
+    this.vLg = null;
+    this.HEL = new e();
     setLayoutResource(2131494861);
     setWidgetLayoutResource(2131494884);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ImagePreference);
     paramInt = paramContext.getResourceId(0, 0);
     if (paramInt > 0)
     {
-      paramAttributeSet = this.GeW;
+      paramAttributeSet = this.HEL;
       paramAttributeSet.resId = paramInt;
       paramAttributeSet.bitmap = null;
-      this.GeW.l(this.uCn);
+      this.HEL.m(this.vLg);
     }
     paramContext.recycle();
     AppMethodBeat.o(142569);
@@ -45,8 +45,8 @@ public final class ImagePreference
   {
     AppMethodBeat.i(142571);
     super.onBindView(paramView);
-    this.uCn = ((ImageView)paramView.findViewById(2131300943));
-    this.GeW.l(this.uCn);
+    this.vLg = ((ImageView)paramView.findViewById(2131300943));
+    this.HEL.m(this.vLg);
     AppMethodBeat.o(142571);
   }
   
@@ -63,7 +63,7 @@ public final class ImagePreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.ImagePreference
  * JD-Core Version:    0.7.0.1
  */

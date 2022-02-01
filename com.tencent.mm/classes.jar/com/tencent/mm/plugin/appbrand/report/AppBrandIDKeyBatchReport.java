@@ -4,19 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.protocal.protobuf.dui;
-import com.tencent.mm.protocal.protobuf.dum;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dzz;
+import com.tencent.mm.protocal.protobuf.ead;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.l;
 import com.tencent.mm.vfs.i;
 import java.io.ByteArrayInputStream;
@@ -29,48 +29,48 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
 public final class AppBrandIDKeyBatchReport
 {
-  private static volatile IDKeyBatchReportTask loI;
+  private static volatile IDKeyBatchReportTask lQI;
   
-  public static void a(dum paramdum)
+  public static void a(ead paramead)
   {
     AppMethodBeat.i(48037);
-    if (aj.cbv())
+    if (ai.ciE())
     {
-      b.c(paramdum);
+      b.c(paramead);
       AppMethodBeat.o(48037);
       return;
     }
-    a.b(paramdum);
+    a.b(paramead);
     AppMethodBeat.o(48037);
   }
   
-  public static IDKeyBatchReportTask bma()
+  public static IDKeyBatchReportTask bsW()
   {
     AppMethodBeat.i(48035);
-    if (loI == null) {
-      loI = new IDKeyBatchReportTask();
+    if (lQI == null) {
+      lQI = new IDKeyBatchReportTask();
     }
-    IDKeyBatchReportTask localIDKeyBatchReportTask = loI;
+    IDKeyBatchReportTask localIDKeyBatchReportTask = lQI;
     AppMethodBeat.o(48035);
     return localIDKeyBatchReportTask;
   }
   
-  static String bmb()
+  static String bsX()
   {
     AppMethodBeat.i(48036);
-    if (!g.afw())
+    if (!g.agM())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(48036);
       throw ((Throwable)localObject);
     }
-    String str = g.afB().cachePath;
+    String str = g.agR().cachePath;
     Object localObject = str;
     if (!str.endsWith("/")) {
       localObject = str + "/";
     }
     localObject = (String)localObject + "appbrand/report/";
-    l.aAk((String)localObject);
+    l.aFC((String)localObject);
     AppMethodBeat.o(48036);
     return localObject;
   }
@@ -79,11 +79,11 @@ public final class AppBrandIDKeyBatchReport
     extends MainProcessTask
   {
     public static final Parcelable.Creator<IDKeyBatchReportTask> CREATOR;
-    public int loK;
-    int loL;
-    public String loM;
-    public int loN;
-    dum loO;
+    public int lQK;
+    int lQL;
+    public String lQM;
+    public int lQN;
+    ead lQO;
     
     static
     {
@@ -101,36 +101,36 @@ public final class AppBrandIDKeyBatchReport
       AppMethodBeat.o(48017);
     }
     
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(48018);
-      if (1 == this.loK)
+      if (1 == this.lQK)
       {
-        if ((!bt.isNullOrNil(this.loM)) && (g.afz().gcn))
+        if ((!bs.isNullOrNil(this.lQM)) && (g.agP().ggT))
         {
-          Pair localPair = ((com.tencent.mm.plugin.appbrand.appcache.b.e.b)j.T(com.tencent.mm.plugin.appbrand.appcache.b.e.b.class)).F(this.loM, 5, this.loN);
+          Pair localPair = ((com.tencent.mm.plugin.appbrand.appcache.b.e.b)j.T(com.tencent.mm.plugin.appbrand.appcache.b.e.b.class)).E(this.lQM, 5, this.lQN);
           if (((Boolean)localPair.first).booleanValue())
           {
-            ad.i("MicroMsg.AppBrandIDKeyBatchReport", "report blocked by appid(%s) scene(%d) ", new Object[] { this.loM, Integer.valueOf(this.loN) });
-            com.tencent.mm.plugin.appbrand.appcache.b.c.a locala = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
-            com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(((Integer)localPair.second).intValue(), 167L);
+            ac.i("MicroMsg.AppBrandIDKeyBatchReport", "report blocked by appid(%s) scene(%d) ", new Object[] { this.lQM, Integer.valueOf(this.lQN) });
+            com.tencent.mm.plugin.appbrand.appcache.b.c.a locala = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
+            com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(((Integer)localPair.second).intValue(), 167L);
             AppMethodBeat.o(48018);
             return;
           }
         }
-        AppBrandIDKeyBatchReport.b.nu(0);
+        AppBrandIDKeyBatchReport.b.oi(0);
         AppBrandIDKeyBatchReport.b.access$300();
         AppMethodBeat.o(48018);
         return;
       }
-      if (2 == this.loK)
+      if (2 == this.lQK)
       {
-        AppBrandIDKeyBatchReport.b.Le();
+        AppBrandIDKeyBatchReport.b.Lc();
         AppMethodBeat.o(48018);
         return;
       }
-      if (3 == this.loK) {
-        AppBrandIDKeyBatchReport.b.c(this.loO);
+      if (3 == this.lQK) {
+        AppBrandIDKeyBatchReport.b.c(this.lQO);
       }
       AppMethodBeat.o(48018);
     }
@@ -138,22 +138,22 @@ public final class AppBrandIDKeyBatchReport
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(48019);
-      this.loK = paramParcel.readInt();
-      this.loL = paramParcel.readInt();
-      this.loM = paramParcel.readString();
-      this.loN = paramParcel.readInt();
-      if (3 == this.loK) {
+      this.lQK = paramParcel.readInt();
+      this.lQL = paramParcel.readInt();
+      this.lQM = paramParcel.readString();
+      this.lQN = paramParcel.readInt();
+      if (3 == this.lQK) {
         try
         {
-          this.loO = new dum();
-          this.loO.parseFrom(paramParcel.createByteArray());
+          this.lQO = new ead();
+          this.lQO.parseFrom(paramParcel.createByteArray());
           AppMethodBeat.o(48019);
           return;
         }
         catch (Exception paramParcel)
         {
-          ad.e("MicroMsg.AppBrandIDKeyBatchReport", "parse WxaAppRecord from parcel, e = %s", new Object[] { paramParcel });
-          this.loO = null;
+          ac.e("MicroMsg.AppBrandIDKeyBatchReport", "parse WxaAppRecord from parcel, e = %s", new Object[] { paramParcel });
+          this.lQO = null;
         }
       }
       AppMethodBeat.o(48019);
@@ -162,20 +162,20 @@ public final class AppBrandIDKeyBatchReport
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(48020);
-      paramParcel.writeInt(this.loK);
-      paramParcel.writeInt(this.loL);
-      paramParcel.writeString(this.loM);
-      paramParcel.writeInt(this.loN);
-      if (3 == this.loK) {
+      paramParcel.writeInt(this.lQK);
+      paramParcel.writeInt(this.lQL);
+      paramParcel.writeString(this.lQM);
+      paramParcel.writeInt(this.lQN);
+      if (3 == this.lQK) {
         try
         {
-          paramParcel.writeByteArray(this.loO.toByteArray());
+          paramParcel.writeByteArray(this.lQO.toByteArray());
           AppMethodBeat.o(48020);
           return;
         }
         catch (Exception paramParcel)
         {
-          ad.e("MicroMsg.AppBrandIDKeyBatchReport", "write WxaAppRecord to parcel, e = %s", new Object[] { paramParcel });
+          ac.e("MicroMsg.AppBrandIDKeyBatchReport", "write WxaAppRecord to parcel, e = %s", new Object[] { paramParcel });
         }
       }
       AppMethodBeat.o(48020);
@@ -184,64 +184,64 @@ public final class AppBrandIDKeyBatchReport
   
   static final class a
   {
-    private static final byte[] loJ = new byte[0];
+    private static final byte[] lQJ = new byte[0];
   }
   
   static final class b
   {
-    private static final ReentrantReadWriteLock loP;
-    private static volatile av loQ;
-    private static volatile av loR;
-    private static volatile int loS;
+    private static final ReentrantReadWriteLock lQP;
+    private static volatile au lQQ;
+    private static volatile au lQR;
+    private static volatile int lQS;
     
     static
     {
       AppMethodBeat.i(48034);
-      loP = new ReentrantReadWriteLock();
-      loQ = null;
-      loR = null;
+      lQP = new ReentrantReadWriteLock();
+      lQQ = null;
+      lQR = null;
       AppMethodBeat.o(48034);
     }
     
-    private static void bmd()
+    private static void bsZ()
     {
       AppMethodBeat.i(48026);
-      if (loQ != null)
+      if (lQQ != null)
       {
-        loQ.stopTimer();
-        loQ = null;
+        lQQ.stopTimer();
+        lQQ = null;
       }
       AppMethodBeat.o(48026);
     }
     
-    private static LinkedList<dum> bme()
+    private static LinkedList<ead> bta()
     {
       AppMethodBeat.i(48027);
-      loP.readLock().lock();
+      lQP.readLock().lock();
       for (;;)
       {
         try
         {
-          Object localObject2 = new com.tencent.mm.vfs.e(AppBrandIDKeyBatchReport.bmc());
+          Object localObject2 = new com.tencent.mm.vfs.e(AppBrandIDKeyBatchReport.bsY());
           if (!((com.tencent.mm.vfs.e)localObject2).exists())
           {
-            ad.d("MicroMsg.AppBrandIDKeyBatchReport", "reportFile not exist!");
+            ac.d("MicroMsg.AppBrandIDKeyBatchReport", "reportFile not exist!");
             return null;
           }
           LinkedList localLinkedList = new LinkedList();
           long l = ((com.tencent.mm.vfs.e)localObject2).length();
           int i = 0;
-          localObject2 = i.aR(AppBrandIDKeyBatchReport.bmc(), i, 4);
+          localObject2 = i.aU(AppBrandIDKeyBatchReport.bsY(), i, 4);
           if (localObject2 == null)
           {
-            ad.e("MicroMsg.AppBrandIDKeyBatchReport", "preData is null!");
+            ac.e("MicroMsg.AppBrandIDKeyBatchReport", "preData is null!");
             return null;
           }
           int j = new DataInputStream(new ByteArrayInputStream((byte[])localObject2)).readInt();
-          localObject2 = i.aR(AppBrandIDKeyBatchReport.bmc(), i + 4, j);
-          if (!bt.cw((byte[])localObject2))
+          localObject2 = i.aU(AppBrandIDKeyBatchReport.bsY(), i + 4, j);
+          if (!bs.cv((byte[])localObject2))
           {
-            localLinkedList.add((dum)new dum().parseFrom((byte[])localObject2));
+            localLinkedList.add((ead)new ead().parseFrom((byte[])localObject2));
             i = j + 4 + i;
             if (i < l) {}
           }
@@ -252,34 +252,34 @@ public final class AppBrandIDKeyBatchReport
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.AppBrandIDKeyBatchReport", "read file error %s", new Object[] { localException.getMessage() });
-          ad.printErrStackTrace("MicroMsg.AppBrandIDKeyBatchReport", localException, "readReportData()", new Object[0]);
+          ac.e("MicroMsg.AppBrandIDKeyBatchReport", "read file error %s", new Object[] { localException.getMessage() });
+          ac.printErrStackTrace("MicroMsg.AppBrandIDKeyBatchReport", localException, "readReportData()", new Object[0]);
           return null;
         }
         catch (OutOfMemoryError localOutOfMemoryError)
         {
-          ad.printErrStackTrace("MicroMsg.AppBrandIDKeyBatchReport", localOutOfMemoryError, "readReportData()", new Object[0]);
-          loP.readLock().unlock();
+          ac.printErrStackTrace("MicroMsg.AppBrandIDKeyBatchReport", localOutOfMemoryError, "readReportData()", new Object[0]);
+          lQP.readLock().unlock();
           AppMethodBeat.o(48027);
           return null;
         }
         finally
         {
-          loP.readLock().unlock();
-          bmf();
+          lQP.readLock().unlock();
+          btb();
           AppMethodBeat.o(48027);
         }
       }
     }
     
-    private static void bmf()
+    private static void btb()
     {
       AppMethodBeat.i(48028);
-      loP.writeLock().lock();
+      lQP.writeLock().lock();
       try
       {
-        i.deleteFile(AppBrandIDKeyBatchReport.bmc());
-        loP.writeLock().unlock();
+        i.deleteFile(AppBrandIDKeyBatchReport.bsY());
+        lQP.writeLock().unlock();
         AppMethodBeat.o(48028);
         return;
       }
@@ -287,7 +287,7 @@ public final class AppBrandIDKeyBatchReport
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AppBrandIDKeyBatchReport", localException, "removeFile()", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.AppBrandIDKeyBatchReport", localException, "removeFile()", new Object[0]);
         }
       }
     }
@@ -295,7 +295,7 @@ public final class AppBrandIDKeyBatchReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.AppBrandIDKeyBatchReport
  * JD-Core Version:    0.7.0.1
  */

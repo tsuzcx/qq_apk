@@ -8,22 +8,19 @@ public abstract class eq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eTb = "pkgMd5".hashCode();
-  private static final int elJ = "appId".hashCode();
-  private static final int emV = "version".hashCode();
-  private static final int emX = "pkgPath".hashCode();
+  private static final int eVS = "hit".hashCode();
+  private static final int eVT = "hitTimeMS".hashCode();
+  private static final int enO = "appId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
   private boolean __hadSettype = true;
-  private boolean eSS = true;
-  private boolean els = true;
-  private boolean emQ = true;
-  private boolean emS = true;
+  private boolean eVQ = true;
+  private boolean eVR = true;
+  private boolean enx = true;
   public String field_appId;
-  public String field_pkgMd5;
-  public String field_pkgPath;
+  public int field_hit;
+  public long field_hitTimeMS;
   public int field_type;
-  public int field_version;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,7 +35,7 @@ public abstract class eq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
+      if (enO != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -49,14 +46,12 @@ public abstract class eq
       break label20;
       break;
       label60:
-      if (emV == k) {
-        this.field_version = paramCursor.getInt(i);
-      } else if (type_HASHCODE == k) {
+      if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eTb == k) {
-        this.field_pkgMd5 = paramCursor.getString(i);
-      } else if (emX == k) {
-        this.field_pkgPath = paramCursor.getString(i);
+      } else if (eVS == k) {
+        this.field_hit = paramCursor.getInt(i);
+      } else if (eVT == k) {
+        this.field_hitTimeMS = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -66,20 +61,17 @@ public abstract class eq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
-    }
-    if (this.emQ) {
-      localContentValues.put("version", Integer.valueOf(this.field_version));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eSS) {
-      localContentValues.put("pkgMd5", this.field_pkgMd5);
+    if (this.eVQ) {
+      localContentValues.put("hit", Integer.valueOf(this.field_hit));
     }
-    if (this.emS) {
-      localContentValues.put("pkgPath", this.field_pkgPath);
+    if (this.eVR) {
+      localContentValues.put("hitTimeMS", Long.valueOf(this.field_hitTimeMS));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

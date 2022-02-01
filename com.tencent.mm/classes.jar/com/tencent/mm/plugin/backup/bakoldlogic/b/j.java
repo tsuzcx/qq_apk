@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.b;
 
 import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.protocal.protobuf.hu;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.hy;
+import com.tencent.mm.storage.bo;
 import java.util.LinkedList;
 
 public abstract interface j
 {
-  public abstract int a(hu paramhu, bl parambl, LinkedList<u> paramLinkedList);
+  public abstract int a(hy paramhy, bo parambo, LinkedList<u> paramLinkedList);
   
-  public abstract int a(String paramString, hu paramhu, bl parambl);
+  public abstract int a(String paramString, hy paramhy, bo parambo);
 }
 
 

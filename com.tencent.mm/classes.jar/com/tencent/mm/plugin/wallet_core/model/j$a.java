@@ -5,10 +5,10 @@ import org.json.JSONObject;
 
 public final class j$a
 {
-  public Orders.ShowInfo Aej;
+  public Orders.ShowInfo BwD;
   public int id;
   
-  public static a aZ(JSONObject paramJSONObject)
+  public static a ba(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70281);
     if (paramJSONObject == null)
@@ -24,10 +24,10 @@ public final class j$a
       Orders.ShowInfo localShowInfo = new Orders.ShowInfo();
       localShowInfo.name = paramJSONObject.optString("name");
       localShowInfo.value = paramJSONObject.optString("value");
-      localShowInfo.AgR = paramJSONObject.optInt("value_attr");
-      localShowInfo.rVi = paramJSONObject.optString("name_color");
-      localShowInfo.AgM = paramJSONObject.optString("value_color");
-      locala.Aej = localShowInfo;
+      localShowInfo.Bzl = paramJSONObject.optInt("value_attr");
+      localShowInfo.tda = paramJSONObject.optString("name_color");
+      localShowInfo.Bzg = paramJSONObject.optString("value_color");
+      locala.BwD = localShowInfo;
     }
     AppMethodBeat.o(70281);
     return locala;

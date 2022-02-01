@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 public final class c
 {
-  public String AbF;
-  public String uns;
+  public String BtZ;
+  public String vwo;
 }
 
 

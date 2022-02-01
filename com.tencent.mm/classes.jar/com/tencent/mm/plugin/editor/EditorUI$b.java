@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(181553);
-    okY = new b("TYPE_THUMB", 0);
-    okZ = new b("TYPE_FILE", 1);
-    ola = new b[] { okY, okZ };
+    oOy = new b("TYPE_THUMB", 0);
+    oOz = new b("TYPE_FILE", 1);
+    oOA = new b[] { oOy, oOz };
     AppMethodBeat.o(181553);
   }
   

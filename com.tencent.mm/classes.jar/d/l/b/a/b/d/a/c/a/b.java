@@ -11,9 +11,9 @@ import java.util.Set;
 
 public abstract interface b
 {
-  public abstract Set<f> fBD();
+  public abstract Set<f> fUh();
   
-  public abstract Set<f> fBE();
+  public abstract Set<f> fUi();
   
   public abstract Collection<q> j(f paramf);
   
@@ -22,23 +22,23 @@ public abstract interface b
   public static final class a
     implements b
   {
-    public static final a JAJ;
+    public static final a Loc;
     
     static
     {
       AppMethodBeat.i(57780);
-      JAJ = new a();
+      Loc = new a();
       AppMethodBeat.o(57780);
     }
     
-    public final Set<f> fBD()
+    public final Set<f> fUh()
     {
-      return (Set)x.Jgn;
+      return (Set)x.KTH;
     }
     
-    public final Set<f> fBE()
+    public final Set<f> fUi()
     {
-      return (Set)x.Jgn;
+      return (Set)x.KTH;
     }
     
     public final n k(f paramf)
@@ -52,7 +52,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a.b
  * JD-Core Version:    0.7.0.1
  */

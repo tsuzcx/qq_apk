@@ -9,8 +9,8 @@ public class Profession
   implements Parcelable
 {
   public static final Parcelable.Creator<Profession> CREATOR;
-  public String Aap;
-  public int Aaq;
+  public String BsJ;
+  public int BsK;
   
   static
   {
@@ -22,15 +22,15 @@ public class Profession
   protected Profession(Parcel paramParcel)
   {
     AppMethodBeat.i(70161);
-    this.Aap = paramParcel.readString();
-    this.Aaq = paramParcel.readInt();
+    this.BsJ = paramParcel.readString();
+    this.BsK = paramParcel.readInt();
     AppMethodBeat.o(70161);
   }
   
   public Profession(String paramString, int paramInt)
   {
-    this.Aap = paramString;
-    this.Aaq = paramInt;
+    this.BsJ = paramString;
+    this.BsK = paramInt;
   }
   
   public int describeContents()
@@ -41,8 +41,8 @@ public class Profession
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70162);
-    paramParcel.writeString(this.Aap);
-    paramParcel.writeInt(this.Aaq);
+    paramParcel.writeString(this.BsJ);
+    paramParcel.writeInt(this.BsK);
     AppMethodBeat.o(70162);
   }
 }

@@ -7,9 +7,9 @@ public enum SportChartView$a
   static
   {
     AppMethodBeat.i(103528);
-    ycJ = new a("WEEK", 0);
-    ycK = new a("MONTH", 1);
-    ycL = new a[] { ycJ, ycK };
+    zpJ = new a("WEEK", 0);
+    zpK = new a("MONTH", 1);
+    zpL = new a[] { zpJ, zpK };
     AppMethodBeat.o(103528);
   }
   

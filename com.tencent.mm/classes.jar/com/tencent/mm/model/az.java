@@ -1,11 +1,10 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.am.p;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.ay;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.al.p;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.a.b.a.a;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.network.n;
@@ -19,30 +18,27 @@ import com.tencent.mm.protocal.k.a;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.n.a;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.acr;
-import com.tencent.mm.protocal.protobuf.adh;
-import com.tencent.mm.protocal.protobuf.adi;
-import com.tencent.mm.protocal.protobuf.ase;
-import com.tencent.mm.protocal.protobuf.azu;
-import com.tencent.mm.protocal.protobuf.baw;
-import com.tencent.mm.protocal.protobuf.bci;
-import com.tencent.mm.protocal.protobuf.bcl;
-import com.tencent.mm.protocal.protobuf.bcp;
-import com.tencent.mm.protocal.protobuf.bkc;
-import com.tencent.mm.protocal.protobuf.dkb;
-import com.tencent.mm.protocal.protobuf.la;
-import com.tencent.mm.protocal.protobuf.wi;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.ax;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bg.a;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bh.a;
-import com.tencent.mm.storage.bh.b;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.adq;
+import com.tencent.mm.protocal.protobuf.aeg;
+import com.tencent.mm.protocal.protobuf.aeh;
+import com.tencent.mm.protocal.protobuf.avi;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.protocal.protobuf.beo;
+import com.tencent.mm.protocal.protobuf.bga;
+import com.tencent.mm.protocal.protobuf.bgd;
+import com.tencent.mm.protocal.protobuf.bgh;
+import com.tencent.mm.protocal.protobuf.bnw;
+import com.tencent.mm.protocal.protobuf.dpq;
+import com.tencent.mm.protocal.protobuf.lg;
+import com.tencent.mm.protocal.protobuf.wt;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.ba;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bj.a;
+import com.tencent.mm.storage.bk.a;
+import com.tencent.mm.storage.bk.b;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.storage.i;
 import com.tencent.mm.storage.m;
 import com.tencent.mm.storagebase.h.b;
@@ -53,181 +49,181 @@ import junit.framework.Assert;
 
 public final class az
 {
-  private static az gNd;
-  private static final bz gNf;
-  private final c gMT;
-  private final ap gNc;
-  private com.tencent.mm.compatible.b.g gNe;
-  private final int gNg;
-  final c.a gNh;
-  private cd gNi;
-  private bv gNj;
-  private e gNk;
-  private cg gNl;
-  private z gNm;
-  private bg.a gNn;
-  private bh.a gNo;
-  private bh.a gNp;
-  private f gNq;
+  private static az hnD;
+  private static final bz hnF;
+  private final ap hnC;
+  private com.tencent.mm.compatible.b.g hnE;
+  private final int hnG;
+  final c.a hnH;
+  private cd hnI;
+  private bv hnJ;
+  private e hnK;
+  private cg hnL;
+  private z hnM;
+  private bj.a hnN;
+  private bk.a hnO;
+  private bk.a hnP;
+  private f hnQ;
+  private final c hnt;
   
   static
   {
     AppMethodBeat.i(20360);
-    gNd = null;
-    gNf = new bz();
+    hnD = null;
+    hnF = new bz();
     AppMethodBeat.o(20360);
   }
   
-  private az(ap paramap, com.tencent.mm.al.q.a parama)
+  private az(ap paramap, com.tencent.mm.ak.q.a parama)
   {
     AppMethodBeat.i(20341);
-    this.gNe = null;
-    this.gNg = 1;
-    this.gNi = new cd();
-    this.gNj = new bv();
-    this.gNk = new e();
-    this.gNl = new cg();
-    this.gNm = new z();
-    this.gNn = new bg.a()
+    this.hnE = null;
+    this.hnG = 1;
+    this.hnI = new cd();
+    this.hnJ = new bv();
+    this.hnK = new e();
+    this.hnL = new cg();
+    this.hnM = new z();
+    this.hnN = new bj.a()
     {
-      public final void a(bg paramAnonymousbg, com.tencent.mm.storage.af paramAnonymousaf)
+      public final void a(bj paramAnonymousbj, com.tencent.mm.storage.ai paramAnonymousai)
       {
         AppMethodBeat.i(20325);
-        String str = paramAnonymousaf.field_username;
-        if (com.tencent.mm.storage.af.st(paramAnonymousaf.field_username)) {
-          paramAnonymousaf.setUsername(com.tencent.mm.storage.af.aHM(paramAnonymousaf.field_username));
+        String str = paramAnonymousai.field_username;
+        if (com.tencent.mm.storage.ai.ww(paramAnonymousai.field_username)) {
+          paramAnonymousai.setUsername(com.tencent.mm.storage.ai.aNh(paramAnonymousai.field_username));
         }
-        if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramAnonymousaf.Sv())) {
-          paramAnonymousaf.ne(com.tencent.mm.platformtools.f.Bs(paramAnonymousaf.field_nickname));
+        if (bs.isNullOrNil(paramAnonymousai.To())) {
+          paramAnonymousai.qk(com.tencent.mm.platformtools.f.Fw(paramAnonymousai.field_nickname));
         }
-        if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramAnonymousaf.Sw())) {
-          paramAnonymousaf.nf(com.tencent.mm.platformtools.f.Br(paramAnonymousaf.field_nickname));
+        if (bs.isNullOrNil(paramAnonymousai.Tp())) {
+          paramAnonymousai.ql(com.tencent.mm.platformtools.f.Fv(paramAnonymousai.field_nickname));
         }
-        if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramAnonymousaf.field_conRemarkPYShort)) {
-          paramAnonymousaf.ni(com.tencent.mm.platformtools.f.Bs(paramAnonymousaf.field_conRemark));
+        if (bs.isNullOrNil(paramAnonymousai.field_conRemarkPYShort)) {
+          paramAnonymousai.qo(com.tencent.mm.platformtools.f.Fw(paramAnonymousai.field_conRemark));
         }
-        if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramAnonymousaf.field_conRemarkPYFull)) {
-          paramAnonymousaf.nh(com.tencent.mm.platformtools.f.Br(paramAnonymousaf.field_conRemark));
+        if (bs.isNullOrNil(paramAnonymousai.field_conRemarkPYFull)) {
+          paramAnonymousai.qn(com.tencent.mm.platformtools.f.Fv(paramAnonymousai.field_conRemark));
         }
-        if (w.i(paramAnonymousaf))
+        if (w.i(paramAnonymousai))
         {
-          paramAnonymousaf.jD(43);
-          paramAnonymousaf.ne(com.tencent.mm.platformtools.f.Bs(paramAnonymousaf.ZW()));
-          paramAnonymousaf.nf(com.tencent.mm.platformtools.f.Br(paramAnonymousaf.ZW()));
-          paramAnonymousaf.nh(com.tencent.mm.platformtools.f.Br(paramAnonymousaf.ZX()));
-          paramAnonymousaf.ni(paramAnonymousaf.ZX());
+          paramAnonymousai.jB(43);
+          paramAnonymousai.qk(com.tencent.mm.platformtools.f.Fw(paramAnonymousai.aaR()));
+          paramAnonymousai.ql(com.tencent.mm.platformtools.f.Fv(paramAnonymousai.aaR()));
+          paramAnonymousai.qn(com.tencent.mm.platformtools.f.Fv(paramAnonymousai.aaS()));
+          paramAnonymousai.qo(paramAnonymousai.aaS());
           AppMethodBeat.o(20325);
           return;
         }
-        if (w.to(str))
+        if (w.xr(str))
         {
-          paramAnonymousaf.Zk();
-          paramAnonymousaf.jI(4);
-          paramAnonymousaf.jD(33);
-          if (paramAnonymousaf != null) {
+          paramAnonymousai.aaf();
+          paramAnonymousai.jG(4);
+          paramAnonymousai.jB(33);
+          if (paramAnonymousai != null) {
             break label336;
           }
         }
         label336:
-        for (paramAnonymousbg = new com.tencent.mm.storage.af();; paramAnonymousbg = paramAnonymousaf)
+        for (paramAnonymousbj = new com.tencent.mm.storage.ai();; paramAnonymousbj = paramAnonymousai)
         {
-          paramAnonymousbg.setUsername(str);
-          paramAnonymousbg.Zk();
-          ae.E(paramAnonymousbg);
-          paramAnonymousbg.Zt();
-          if (paramAnonymousaf.ZO()) {
-            paramAnonymousaf.jD(paramAnonymousaf.Zh());
+          paramAnonymousbj.setUsername(str);
+          paramAnonymousbj.aaf();
+          ae.F(paramAnonymousbj);
+          paramAnonymousbj.aao();
+          if (paramAnonymousai.aaJ()) {
+            paramAnonymousai.jB(paramAnonymousai.aac());
           }
-          if (w.td(str))
+          if (w.xg(str))
           {
-            ad.i("MicroMsg.MMCore", "update official account helper showhead %d", new Object[] { Integer.valueOf(31) });
-            paramAnonymousaf.jD(31);
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMCore", "update official account helper showhead %d", new Object[] { Integer.valueOf(31) });
+            paramAnonymousai.jB(31);
           }
-          if (paramAnonymousaf.ZM())
+          if (paramAnonymousai.aaH())
           {
-            az.arV();
-            c.apR().c(new String[] { str }, "@blacklist");
+            az.ayM();
+            c.awG().c(new String[] { str }, "@blacklist");
           }
-          ad.d("MicroMsg.MMCore", "onPreInsertContact2: %s, %s", new Object[] { paramAnonymousaf.field_username, paramAnonymousaf.Sv() });
+          com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.MMCore", "onPreInsertContact2: %s, %s", new Object[] { paramAnonymousai.field_username, paramAnonymousai.To() });
           AppMethodBeat.o(20325);
           return;
         }
       }
     };
-    this.gNo = new bh.a()
+    this.hnO = new bk.a()
     {
-      public final void a(am paramAnonymousam, bh paramAnonymousbh)
+      public final void a(com.tencent.mm.storage.ap paramAnonymousap, com.tencent.mm.storage.bk paramAnonymousbk)
       {
         AppMethodBeat.i(20326);
-        if (paramAnonymousam == null)
+        if (paramAnonymousap == null)
         {
           AppMethodBeat.o(20326);
           return;
         }
-        if ((!com.tencent.mm.storage.af.aHE(paramAnonymousam.field_username)) && (!com.tencent.mm.storage.af.aHG(paramAnonymousam.field_username)) && (!com.tencent.mm.storage.af.st(paramAnonymousam.field_username)) && (!w.sE(paramAnonymousam.field_username)) && (!com.tencent.mm.storage.af.aHH(paramAnonymousam.field_username)))
+        if ((!com.tencent.mm.storage.ai.aMZ(paramAnonymousap.field_username)) && (!com.tencent.mm.storage.ai.aNb(paramAnonymousap.field_username)) && (!com.tencent.mm.storage.ai.ww(paramAnonymousap.field_username)) && (!w.wH(paramAnonymousap.field_username)) && (!com.tencent.mm.storage.ai.aNc(paramAnonymousap.field_username)))
         {
           AppMethodBeat.o(20326);
           return;
         }
-        if (com.tencent.mm.storage.af.st(paramAnonymousam.field_username))
+        if (com.tencent.mm.storage.ai.ww(paramAnonymousap.field_username))
         {
-          paramAnonymousam = paramAnonymousbh.aIn("floatbottle");
-          if (paramAnonymousam != null) {
+          paramAnonymousap = paramAnonymousbk.aNI("floatbottle");
+          if (paramAnonymousap != null) {
             break label472;
           }
-          paramAnonymousam = new am("floatbottle");
+          paramAnonymousap = new com.tencent.mm.storage.ap("floatbottle");
         }
         label472:
         for (int i = 1;; i = 0)
         {
-          paramAnonymousam.jU(1);
-          paramAnonymousam.jT(o.aqz());
-          az.arV();
-          bl localbl = c.apO().ags(" and not ( type = 10000 and isSend != 2 ) ");
-          if ((localbl != null) && (localbl.field_msgId > 0L))
+          paramAnonymousap.jS(1);
+          paramAnonymousap.jR(o.axp());
+          az.ayM();
+          bo localbo = c.awD().alm(" and not ( type = 10000 and isSend != 2 ) ");
+          if ((localbo != null) && (localbo.field_msgId > 0L))
           {
-            paramAnonymousam.aG(localbl);
-            paramAnonymousam.setContent(com.tencent.mm.storage.af.aHM(localbl.field_talker) + ":" + localbl.field_content);
-            paramAnonymousam.nK(Integer.toString(localbl.getType()));
-            bh.b localb = paramAnonymousbh.Lu();
+            paramAnonymousap.aI(localbo);
+            paramAnonymousap.setContent(com.tencent.mm.storage.ai.aNh(localbo.field_talker) + ":" + localbo.field_content);
+            paramAnonymousap.qQ(Integer.toString(localbo.getType()));
+            bk.b localb = paramAnonymousbk.Ls();
             if (localb != null)
             {
               PString localPString1 = new PString();
               PString localPString2 = new PString();
               PInt localPInt = new PInt();
-              localbl.nY("floatbottle");
-              localbl.setContent(paramAnonymousam.field_content);
-              localb.a(localbl, localPString1, localPString2, localPInt, false);
-              paramAnonymousam.nL(localPString1.value);
-              paramAnonymousam.nM(localPString2.value);
-              paramAnonymousam.jW(localPInt.value);
+              localbo.re("floatbottle");
+              localbo.setContent(paramAnonymousap.field_content);
+              localb.a(localbo, localPString1, localPString2, localPInt, false);
+              paramAnonymousap.qR(localPString1.value);
+              paramAnonymousap.qS(localPString2.value);
+              paramAnonymousap.jU(localPInt.value);
             }
           }
           while (i != 0)
           {
-            paramAnonymousbh.e(paramAnonymousam);
+            paramAnonymousbk.e(paramAnonymousap);
             AppMethodBeat.o(20326);
             return;
-            paramAnonymousam.eLf();
+            paramAnonymousap.faH();
           }
-          paramAnonymousbh.a(paramAnonymousam, paramAnonymousam.field_username);
+          paramAnonymousbk.a(paramAnonymousap, paramAnonymousap.field_username);
           AppMethodBeat.o(20326);
           return;
-          if ((com.tencent.mm.storage.af.aHE(paramAnonymousam.field_username)) || (com.tencent.mm.storage.af.aHG(paramAnonymousam.field_username)))
+          if ((com.tencent.mm.storage.ai.aMZ(paramAnonymousap.field_username)) || (com.tencent.mm.storage.ai.aNb(paramAnonymousap.field_username)))
           {
             AppMethodBeat.o(20326);
             return;
           }
           com.tencent.mm.kernel.g.ab(p.class);
-          com.tencent.mm.storage.q.b(paramAnonymousam, paramAnonymousbh);
-          if ("@blacklist".equals(paramAnonymousam.field_parentRef))
+          com.tencent.mm.storage.q.b(paramAnonymousap, paramAnonymousbk);
+          if ("@blacklist".equals(paramAnonymousap.field_parentRef))
           {
-            az.arV();
-            paramAnonymousbh = c.apM().aHY(paramAnonymousam.field_username);
-            if ((paramAnonymousbh != null) && (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramAnonymousbh.field_username)) && (!paramAnonymousbh.ZM()))
+            az.ayM();
+            paramAnonymousbk = c.awB().aNt(paramAnonymousap.field_username);
+            if ((paramAnonymousbk != null) && (!bs.isNullOrNil(paramAnonymousbk.field_username)) && (!paramAnonymousbk.aaH()))
             {
-              az.arV();
-              c.apR().c(new String[] { paramAnonymousam.field_username }, "");
+              az.ayM();
+              c.awG().c(new String[] { paramAnonymousap.field_username }, "");
             }
           }
           AppMethodBeat.o(20326);
@@ -235,81 +231,81 @@ public final class az
         }
       }
     };
-    this.gNp = new bh.a()
+    this.hnP = new bk.a()
     {
-      public final void a(am paramAnonymousam, bh paramAnonymousbh)
+      public final void a(com.tencent.mm.storage.ap paramAnonymousap, com.tencent.mm.storage.bk paramAnonymousbk)
       {
-        if (paramAnonymousam == null) {}
+        if (paramAnonymousap == null) {}
       }
     };
-    this.gNq = new f();
-    this.gNc = paramap;
-    this.gNh = new c.a()
+    this.hnQ = new f();
+    this.hnC = paramap;
+    this.hnH = new c.a()
     {
-      public final void dZ(boolean paramAnonymousBoolean)
+      public final void eu(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(20322);
-        ad.i("MicroMsg.MMCore", "summeranrt2 onAccountPostReset tid:%d stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), com.tencent.mm.sdk.platformtools.bt.eGN() });
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMCore", "summeranrt2 onAccountPostReset tid:%d stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), bs.eWi() });
         az.b(az.this);
         long l1 = System.currentTimeMillis();
-        az.arV();
-        long l2 = c.afg().rb(Thread.currentThread().getId());
+        az.ayM();
+        long l2 = c.agw().vE(Thread.currentThread().getId());
         az.a(az.this);
         Object localObject;
-        com.tencent.mm.storage.af localaf1;
-        com.tencent.mm.storage.af localaf2;
+        com.tencent.mm.storage.ai localai1;
+        com.tencent.mm.storage.ai localai2;
         if (paramAnonymousBoolean)
         {
-          ad.i("MicroMsg.MMCore", "[doAccountPostReset] updated is true");
-          c.apM().aIf("readerapp");
-          c.afk().set(256, Boolean.TRUE);
-          ad.i("MicroMsg.MMCore", "[doAccountPostReset] begin to updated HardCodeUpdate");
-          localObject = w.arw();
-          ad.i("MicroMsg.HardCodeUpdateTask", "[updateHelperIndexFor50] size:%s", new Object[] { Integer.valueOf(((List)localObject).size()) });
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMCore", "[doAccountPostReset] updated is true");
+          c.awB().aNA("readerapp");
+          c.agA().set(256, Boolean.TRUE);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMCore", "[doAccountPostReset] begin to updated HardCodeUpdate");
+          localObject = w.aym();
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.HardCodeUpdateTask", "[updateHelperIndexFor50] size:%s", new Object[] { Integer.valueOf(((List)localObject).size()) });
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
-            localaf1 = (com.tencent.mm.storage.af)((Iterator)localObject).next();
-            if ((localaf1 != null) && ((int)localaf1.fId != 0) && (localaf1.field_showHead == 32))
+            localai1 = (com.tencent.mm.storage.ai)((Iterator)localObject).next();
+            if ((localai1 != null) && ((int)localai1.fLJ != 0) && (localai1.field_showHead == 32))
             {
-              localaf1.jD(localaf1.Zh());
-              ad.d("MicroMsg.HardCodeUpdateTask", "contact to updatefavour " + localaf1.field_username);
-              az.arV();
-              c.apM().c(localaf1.field_username, localaf1);
+              localai1.jB(localai1.aac());
+              com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.HardCodeUpdateTask", "contact to updatefavour " + localai1.field_username);
+              az.ayM();
+              c.awB().c(localai1.field_username, localai1);
             }
           }
-          localObject = w.gMw;
+          localObject = w.hmW;
           int j = localObject.length;
           int i = 0;
           while (i < j)
           {
-            localaf1 = localObject[i];
-            localaf2 = c.apM().aHY(localaf1);
-            if ((localaf2 != null) && (((int)localaf2.fId != 0) || (com.tencent.mm.n.b.ls(localaf2.field_type))))
+            localai1 = localObject[i];
+            localai2 = c.awB().aNt(localai1);
+            if ((localai2 != null) && (((int)localai2.fLJ != 0) || (com.tencent.mm.n.b.ln(localai2.field_type))))
             {
-              localaf2.Zt();
-              c.apM().c(localaf1, localaf2);
+              localai2.aao();
+              c.awB().c(localai1, localai2);
             }
             i += 1;
           }
-          af.arB();
-          bk.un("ver" + com.tencent.mm.protocal.d.CpK);
+          af.ays();
+          bk.yt("ver" + com.tencent.mm.protocal.d.DIc);
         }
         new ae(az.a(az.this));
         if (paramAnonymousBoolean)
         {
-          ae.D(c.apM().aHY("filehelper"));
-          localObject = u.aqG();
-          if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil((String)localObject))
+          ae.E(c.awB().aNt("filehelper"));
+          localObject = u.axw();
+          if (!bs.isNullOrNil((String)localObject))
           {
-            localaf1 = c.apM().aHY((String)localObject);
-            if ((int)localaf1.fId != 0) {
+            localai1 = c.awB().aNt((String)localObject);
+            if ((int)localai1.fLJ != 0) {
               break label1435;
             }
-            localaf1.setUsername((String)localObject);
-            localaf1.Zk();
-            az.arV();
-            c.apM().af(localaf1);
+            localai1.setUsername((String)localObject);
+            localai1.aaf();
+            az.ayM();
+            c.awB().ag(localai1);
           }
           ae.a(paramAnonymousBoolean, "qqmail", false);
           ae.a(paramAnonymousBoolean, "floatbottle", false);
@@ -317,195 +313,195 @@ public final class az
           ae.a(paramAnonymousBoolean, "lbsapp", false);
           ae.a(paramAnonymousBoolean, "medianote", false);
           ae.a(paramAnonymousBoolean, "newsapp", true);
-          c.apR().aIl("blogapp");
-          c.apO().agw("blogapp");
-          c.apM().aIf("blogapp");
+          c.awG().aNG("blogapp");
+          c.awD().alq("blogapp");
+          c.awB().aNA("blogapp");
           ae.a(paramAnonymousBoolean, "facebookapp", true);
           ae.a(paramAnonymousBoolean, "qqfriend", false);
           ae.a(paramAnonymousBoolean, "masssendapp", true);
           ae.a(paramAnonymousBoolean, "feedsapp", true);
-          c.apR().aIl("tmessage");
-          c.apM().aIf("tmessage");
-          localaf2 = c.apM().aHY("voip");
-          localaf1 = c.apM().aHY("voipapp");
-          localObject = localaf1;
-          if (localaf1 == null) {
-            localObject = new com.tencent.mm.storage.af();
+          c.awG().aNG("tmessage");
+          c.awB().aNA("tmessage");
+          localai2 = c.awB().aNt("voip");
+          localai1 = c.awB().aNt("voipapp");
+          localObject = localai1;
+          if (localai1 == null) {
+            localObject = new com.tencent.mm.storage.ai();
           }
-          if ((localaf2 != null) && ((int)localaf2.fId != 0)) {
-            c.apM().aIf("voip");
+          if ((localai2 != null) && ((int)localai2.fLJ != 0)) {
+            c.awB().aNA("voip");
           }
-          if ((int)((com.tencent.mm.n.b)localObject).fId != 0) {
+          if ((int)((com.tencent.mm.n.b)localObject).fLJ != 0) {
             break label1471;
           }
-          ((com.tencent.mm.storage.af)localObject).setUsername("voipapp");
-          ((com.tencent.mm.storage.af)localObject).Zk();
-          ae.E((com.tencent.mm.storage.af)localObject);
-          ((com.tencent.mm.storage.af)localObject).jI(4);
-          ((com.tencent.mm.storage.af)localObject).Zt();
-          c.apM().ag((com.tencent.mm.storage.af)localObject);
+          ((com.tencent.mm.storage.ai)localObject).setUsername("voipapp");
+          ((com.tencent.mm.storage.ai)localObject).aaf();
+          ae.F((com.tencent.mm.storage.ai)localObject);
+          ((com.tencent.mm.storage.ai)localObject).jG(4);
+          ((com.tencent.mm.storage.ai)localObject).aao();
+          c.awB().ah((com.tencent.mm.storage.ai)localObject);
           label724:
-          localaf1 = c.apM().aHY("officialaccounts");
-          localObject = localaf1;
-          if (localaf1 == null) {
-            localObject = new com.tencent.mm.storage.af();
+          localai1 = c.awB().aNt("officialaccounts");
+          localObject = localai1;
+          if (localai1 == null) {
+            localObject = new com.tencent.mm.storage.ai();
           }
-          ad.i("MicroMsg.HardCodeHelper", "hardcodeOfficialAccounts:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.n.b)localObject).fId) });
-          if ((int)((com.tencent.mm.n.b)localObject).fId != 0) {
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.HardCodeHelper", "hardcodeOfficialAccounts:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.n.b)localObject).fLJ) });
+          if ((int)((com.tencent.mm.n.b)localObject).fLJ != 0) {
             break label1497;
           }
-          ((com.tencent.mm.storage.af)localObject).setUsername("officialaccounts");
-          ((com.tencent.mm.storage.af)localObject).Zl();
-          ae.E((com.tencent.mm.storage.af)localObject);
-          ((com.tencent.mm.storage.af)localObject).jI(3);
-          c.apM().ag((com.tencent.mm.storage.af)localObject);
+          ((com.tencent.mm.storage.ai)localObject).setUsername("officialaccounts");
+          ((com.tencent.mm.storage.ai)localObject).aag();
+          ae.F((com.tencent.mm.storage.ai)localObject);
+          ((com.tencent.mm.storage.ai)localObject).jG(3);
+          c.awB().ah((com.tencent.mm.storage.ai)localObject);
           label831:
-          localaf2 = c.apM().aHY("voipaudio");
-          localaf1 = c.apM().aHY("voicevoipapp");
-          localObject = localaf1;
-          if (localaf1 == null) {
-            localObject = new com.tencent.mm.storage.af();
+          localai2 = c.awB().aNt("voipaudio");
+          localai1 = c.awB().aNt("voicevoipapp");
+          localObject = localai1;
+          if (localai1 == null) {
+            localObject = new com.tencent.mm.storage.ai();
           }
-          if ((localaf2 != null) && ((int)localaf2.fId != 0)) {
-            c.apM().aIf("voipaudio");
+          if ((localai2 != null) && ((int)localai2.fLJ != 0)) {
+            c.awB().aNA("voipaudio");
           }
-          if ((int)((com.tencent.mm.n.b)localObject).fId != 0) {
+          if ((int)((com.tencent.mm.n.b)localObject).fLJ != 0) {
             break label1532;
           }
-          ((com.tencent.mm.storage.af)localObject).setUsername("voicevoipapp");
-          ((com.tencent.mm.storage.af)localObject).Zk();
-          ae.E((com.tencent.mm.storage.af)localObject);
-          ((com.tencent.mm.storage.af)localObject).jI(4);
-          ((com.tencent.mm.storage.af)localObject).Zt();
-          c.apM().ag((com.tencent.mm.storage.af)localObject);
+          ((com.tencent.mm.storage.ai)localObject).setUsername("voicevoipapp");
+          ((com.tencent.mm.storage.ai)localObject).aaf();
+          ae.F((com.tencent.mm.storage.ai)localObject);
+          ((com.tencent.mm.storage.ai)localObject).jG(4);
+          ((com.tencent.mm.storage.ai)localObject).aao();
+          c.awB().ah((com.tencent.mm.storage.ai)localObject);
           label950:
           ae.a(paramAnonymousBoolean, "voiceinputapp", false);
           ae.a(paramAnonymousBoolean, "linkedinplugin", false);
-          localaf1 = c.apM().aHY("notifymessage");
-          localObject = localaf1;
-          if (localaf1 == null) {
-            localObject = new com.tencent.mm.storage.af();
+          localai1 = c.awB().aNt("notifymessage");
+          localObject = localai1;
+          if (localai1 == null) {
+            localObject = new com.tencent.mm.storage.ai();
           }
-          ad.i("MicroMsg.HardCodeHelper", "hardcodeOfficialAccounts:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.n.b)localObject).fId) });
-          if ((int)((com.tencent.mm.n.b)localObject).fId != 0) {
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.HardCodeHelper", "hardcodeOfficialAccounts:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.n.b)localObject).fLJ) });
+          if ((int)((com.tencent.mm.n.b)localObject).fLJ != 0) {
             break label1558;
           }
-          ((com.tencent.mm.storage.af)localObject).setUsername("notifymessage");
-          ((com.tencent.mm.storage.af)localObject).Zl();
-          ae.E((com.tencent.mm.storage.af)localObject);
-          ((com.tencent.mm.storage.af)localObject).jI(3);
-          c.apM().ag((com.tencent.mm.storage.af)localObject);
+          ((com.tencent.mm.storage.ai)localObject).setUsername("notifymessage");
+          ((com.tencent.mm.storage.ai)localObject).aag();
+          ae.F((com.tencent.mm.storage.ai)localObject);
+          ((com.tencent.mm.storage.ai)localObject).jG(3);
+          c.awB().ah((com.tencent.mm.storage.ai)localObject);
           label1075:
-          localaf1 = c.apM().aHY("appbrandcustomerservicemsg");
-          localObject = localaf1;
-          if (localaf1 == null) {
-            localObject = new com.tencent.mm.storage.af();
+          localai1 = c.awB().aNt("appbrandcustomerservicemsg");
+          localObject = localai1;
+          if (localai1 == null) {
+            localObject = new com.tencent.mm.storage.ai();
           }
-          ad.i("MicroMsg.HardCodeHelper", "hardcodeAppBrandServiceMessage:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.n.b)localObject).fId) });
-          if ((int)((com.tencent.mm.n.b)localObject).fId != 0) {
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.HardCodeHelper", "hardcodeAppBrandServiceMessage:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.n.b)localObject).fLJ) });
+          if ((int)((com.tencent.mm.n.b)localObject).fLJ != 0) {
             break label1593;
           }
-          ((com.tencent.mm.storage.af)localObject).setUsername("appbrandcustomerservicemsg");
-          ((com.tencent.mm.storage.af)localObject).Zl();
-          ae.E((com.tencent.mm.storage.af)localObject);
-          ((com.tencent.mm.storage.af)localObject).setType(0);
-          ((com.tencent.mm.storage.af)localObject).jI(3);
-          c.apM().ag((com.tencent.mm.storage.af)localObject);
+          ((com.tencent.mm.storage.ai)localObject).setUsername("appbrandcustomerservicemsg");
+          ((com.tencent.mm.storage.ai)localObject).aag();
+          ae.F((com.tencent.mm.storage.ai)localObject);
+          ((com.tencent.mm.storage.ai)localObject).setType(0);
+          ((com.tencent.mm.storage.ai)localObject).jG(3);
+          c.awB().ah((com.tencent.mm.storage.ai)localObject);
           label1188:
-          localaf1 = c.apM().aHY("appbrand_notify_message");
-          localObject = localaf1;
-          if (localaf1 == null) {
-            localObject = new com.tencent.mm.storage.af();
+          localai1 = c.awB().aNt("appbrand_notify_message");
+          localObject = localai1;
+          if (localai1 == null) {
+            localObject = new com.tencent.mm.storage.ai();
           }
-          ad.i("MicroMsg.HardCodeHelper", "hardcodeAppBrandNotifyMessage:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.n.b)localObject).fId) });
-          if ((int)((com.tencent.mm.n.b)localObject).fId != 0) {
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.HardCodeHelper", "hardcodeAppBrandNotifyMessage:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.n.b)localObject).fLJ) });
+          if ((int)((com.tencent.mm.n.b)localObject).fLJ != 0) {
             break label1628;
           }
-          ((com.tencent.mm.storage.af)localObject).setUsername("appbrand_notify_message");
-          ((com.tencent.mm.storage.af)localObject).Zl();
-          ae.E((com.tencent.mm.storage.af)localObject);
-          ((com.tencent.mm.storage.af)localObject).jI(3);
-          c.apM().ag((com.tencent.mm.storage.af)localObject);
+          ((com.tencent.mm.storage.ai)localObject).setUsername("appbrand_notify_message");
+          ((com.tencent.mm.storage.ai)localObject).aag();
+          ae.F((com.tencent.mm.storage.ai)localObject);
+          ((com.tencent.mm.storage.ai)localObject).jG(3);
+          c.awB().ah((com.tencent.mm.storage.ai)localObject);
         }
         for (;;)
         {
           ae.a(paramAnonymousBoolean, "downloaderapp", true);
           if (paramAnonymousBoolean)
           {
-            az.arV();
-            c.apR().aIl("Weixin");
-            az.arV();
-            c.apM().aIf("Weixin");
+            az.ayM();
+            c.awG().aNG("Weixin");
+            az.ayM();
+            c.awB().aNA("Weixin");
           }
-          az.arV();
-          c.afg().mX(l2);
-          ad.i("MicroMsg.MMCore", "summeranrt dkwt set forceManual :%b, tid[%d], take[%s]ms, stack[%s]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l1), com.tencent.mm.sdk.platformtools.bt.eGN() });
+          az.ayM();
+          c.agw().qL(l2);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMCore", "summeranrt dkwt set forceManual :%b, tid[%d], take[%s]ms, stack[%s]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l1), bs.eWi() });
           az.a(az.this);
-          c.apR().a(az.c(az.arY()).Lu());
+          c.awG().a(az.c(az.ayP()).Ls());
           AppMethodBeat.o(20322);
           return;
           label1435:
-          if (com.tencent.mm.n.b.ls(localaf1.field_type)) {
+          if (com.tencent.mm.n.b.ln(localai1.field_type)) {
             break;
           }
-          localaf1.Zk();
-          az.arV();
-          c.apM().c((String)localObject, localaf1);
+          localai1.aaf();
+          az.ayM();
+          c.awB().c((String)localObject, localai1);
           break;
           label1471:
           if (!paramAnonymousBoolean) {
             break label724;
           }
-          ((com.tencent.mm.storage.af)localObject).Zt();
-          c.apM().c("voipapp", (com.tencent.mm.storage.af)localObject);
+          ((com.tencent.mm.storage.ai)localObject).aao();
+          c.awB().c("voipapp", (com.tencent.mm.storage.ai)localObject);
           break label724;
           label1497:
           if (!paramAnonymousBoolean) {
             break label831;
           }
-          ad.i("MicroMsg.HardCodeHelper", "do update hardcode official accounts");
-          ((com.tencent.mm.storage.af)localObject).Zl();
-          c.apM().c("officialaccounts", (com.tencent.mm.storage.af)localObject);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.HardCodeHelper", "do update hardcode official accounts");
+          ((com.tencent.mm.storage.ai)localObject).aag();
+          c.awB().c("officialaccounts", (com.tencent.mm.storage.ai)localObject);
           break label831;
           label1532:
           if (!paramAnonymousBoolean) {
             break label950;
           }
-          ((com.tencent.mm.storage.af)localObject).Zt();
-          c.apM().c("voicevoipapp", (com.tencent.mm.storage.af)localObject);
+          ((com.tencent.mm.storage.ai)localObject).aao();
+          c.awB().c("voicevoipapp", (com.tencent.mm.storage.ai)localObject);
           break label950;
           label1558:
           if (!paramAnonymousBoolean) {
             break label1075;
           }
-          ad.i("MicroMsg.HardCodeHelper", "do update hardcode official accounts");
-          ((com.tencent.mm.storage.af)localObject).Zl();
-          c.apM().c("notifymessage", (com.tencent.mm.storage.af)localObject);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.HardCodeHelper", "do update hardcode official accounts");
+          ((com.tencent.mm.storage.ai)localObject).aag();
+          c.awB().c("notifymessage", (com.tencent.mm.storage.ai)localObject);
           break label1075;
           label1593:
           if (!paramAnonymousBoolean) {
             break label1188;
           }
-          ad.i("MicroMsg.HardCodeHelper", "do update app brand service message accunt");
-          ((com.tencent.mm.storage.af)localObject).Zl();
-          c.apM().c("appbrandcustomerservicemsg", (com.tencent.mm.storage.af)localObject);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.HardCodeHelper", "do update app brand service message accunt");
+          ((com.tencent.mm.storage.ai)localObject).aag();
+          c.awB().c("appbrandcustomerservicemsg", (com.tencent.mm.storage.ai)localObject);
           break label1188;
           label1628:
           if (paramAnonymousBoolean)
           {
-            ad.i("MicroMsg.HardCodeHelper", "do update app brand service message accunt");
-            ((com.tencent.mm.storage.af)localObject).Zl();
-            c.apM().c("appbrand_notify_message", (com.tencent.mm.storage.af)localObject);
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.HardCodeHelper", "do update app brand service message accunt");
+            ((com.tencent.mm.storage.ai)localObject).aag();
+            c.awB().c("appbrand_notify_message", (com.tencent.mm.storage.ai)localObject);
           }
         }
       }
     };
-    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.agS();
     com.tencent.mm.kernel.g.b(a.class, new a());
-    com.tencent.mm.kernel.g.afC().gdD.bv(parama);
-    this.gMT = new c();
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(99L, 142L, 1L, false);
-    com.tencent.mm.al.u.a(new com.tencent.mm.plugin.zero.a.e()
+    com.tencent.mm.kernel.g.agS().gij.bs(parama);
+    this.hnt = new c();
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(99L, 142L, 1L, false);
+    com.tencent.mm.ak.u.a(new com.tencent.mm.plugin.zero.a.e()
     {
       public final byte[] a(l.d paramAnonymousd, int paramAnonymousInt)
       {
@@ -516,66 +512,66 @@ public final class az
           AppMethodBeat.o(20323);
           return null;
         case 722: 
-          paramAnonymousd = ((com.tencent.mm.protocal.q.a)paramAnonymousd).CqI.DdW.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((com.tencent.mm.protocal.q.a)paramAnonymousd).DJa.Exc.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 145: 
-          paramAnonymousd = ((n.a)paramAnonymousd).CqA.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((n.a)paramAnonymousd).DIS.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 107: 
-          paramAnonymousd = ((v.a)paramAnonymousd).ikJ.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((v.a)paramAnonymousd).iKQ.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 429: 
-          paramAnonymousd = ((u.a)paramAnonymousd).ikH.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((u.a)paramAnonymousd).iKO.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 499: 
-          paramAnonymousd = ((com.tencent.mm.plugin.report.b.c.a)paramAnonymousd).vJk.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((com.tencent.mm.plugin.report.c.c.a)paramAnonymousd).wTo.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 694: 
-          paramAnonymousd = ((com.tencent.mm.plugin.report.b.b.a)paramAnonymousd).vJk.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((com.tencent.mm.plugin.report.c.b.a)paramAnonymousd).wTo.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 989: 
-          paramAnonymousd = ((ase)((b.b)paramAnonymousd).gUX).CYn.toByteArray();
+          paramAnonymousd = ((avi)((b.b)paramAnonymousd).hvw).EqX.toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 987: 
         case 997: 
-          paramAnonymousd = ((wi)((b.b)paramAnonymousd).gUX).CYn.toByteArray();
+          paramAnonymousd = ((wt)((b.b)paramAnonymousd).hvw).EqX.toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 481: 
-          paramAnonymousd = ((s.a)paramAnonymousd).ikE.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((s.a)paramAnonymousd).iKL.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 572: 
-          paramAnonymousd = ((t.a)paramAnonymousd).ikG.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((t.a)paramAnonymousd).iKN.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 616: 
-          paramAnonymousd = ((bd.a)paramAnonymousd).gNy.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((bd.a)paramAnonymousd).hnY.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 617: 
-          paramAnonymousd = ((bf.a)paramAnonymousd).gNC.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((bf.a)paramAnonymousd).hoc.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         case 618: 
-          paramAnonymousd = ((be.a)paramAnonymousd).gNA.CFU.getBuffer().toByteArray();
+          paramAnonymousd = ((be.a)paramAnonymousd).hoa.DYu.getBuffer().toByteArray();
           AppMethodBeat.o(20323);
           return paramAnonymousd;
         }
-        paramAnonymousd = ((k.a)paramAnonymousd).Cqv;
+        paramAnonymousd = ((k.a)paramAnonymousd).DIN;
         AppMethodBeat.o(20323);
         return paramAnonymousd;
       }
     });
-    com.tencent.mm.kernel.g.afC();
-    paramap = com.tencent.mm.kernel.g.afA();
+    com.tencent.mm.kernel.g.agS();
+    paramap = com.tencent.mm.kernel.g.agQ();
     parama = new com.tencent.mm.kernel.api.d()
     {
       public final void b(com.tencent.mm.network.e paramAnonymouse)
@@ -586,14 +582,14 @@ public final class az
         AppMethodBeat.o(20324);
       }
     };
-    paramap.gcx.bv(parama);
+    paramap.ghd.bs(parama);
     AppMethodBeat.o(20341);
   }
   
-  public static ah Lv()
+  public static ah Lt()
   {
     AppMethodBeat.i(20340);
-    ah localah = arS().gNc.Lv();
+    ah localah = ayJ().hnC.Lt();
     AppMethodBeat.o(20340);
     return localah;
   }
@@ -605,138 +601,138 @@ public final class az
     AppMethodBeat.o(20333);
   }
   
-  public static void a(ap paramap, com.tencent.mm.al.q.a parama)
+  public static void a(ap paramap, com.tencent.mm.ak.q.a parama)
   {
     AppMethodBeat.i(20338);
-    gNd = new az(paramap, parama);
-    com.tencent.mm.modelstat.o.cE(aj.getContext());
+    hnD = new az(paramap, parama);
+    com.tencent.mm.modelstat.o.cN(com.tencent.mm.sdk.platformtools.ai.getContext());
     AppMethodBeat.o(20338);
   }
   
   public static void a(n paramn)
   {
     AppMethodBeat.i(20331);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().a(paramn);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().a(paramn);
     AppMethodBeat.o(20331);
   }
   
-  public static boolean aeC()
-  {
-    AppMethodBeat.i(20353);
-    boolean bool = com.tencent.mm.kernel.a.aeC();
-    AppMethodBeat.o(20353);
-    return bool;
-  }
-  
-  public static String aeM()
-  {
-    AppMethodBeat.i(20346);
-    String str = com.tencent.mm.kernel.a.aeM();
-    AppMethodBeat.o(20346);
-    return str;
-  }
-  
-  public static com.tencent.mm.al.q aeS()
-  {
-    AppMethodBeat.i(20349);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.al.q localq = com.tencent.mm.kernel.g.afA().gcy;
-    AppMethodBeat.o(20349);
-    return localq;
-  }
-  
-  public static String aeq()
+  public static String afG()
   {
     AppMethodBeat.i(20356);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afz();
-    String str = com.tencent.mm.kernel.a.aeq();
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agP();
+    String str = com.tencent.mm.kernel.a.afG();
     AppMethodBeat.o(20356);
     return str;
   }
   
-  @Deprecated
-  public static com.tencent.mm.sdk.platformtools.aq afE()
+  public static boolean afS()
   {
-    AppMethodBeat.i(20344);
-    com.tencent.mm.sdk.platformtools.aq localaq = com.tencent.mm.kernel.g.afE();
-    AppMethodBeat.o(20344);
-    return localaq;
+    AppMethodBeat.i(20353);
+    boolean bool = com.tencent.mm.kernel.a.afS();
+    AppMethodBeat.o(20353);
+    return bool;
   }
   
-  public static boolean afw()
+  public static boolean agM()
   {
     AppMethodBeat.i(20352);
-    if (!aj.cbv())
+    if (!com.tencent.mm.sdk.platformtools.ai.ciE())
     {
       AppMethodBeat.o(20352);
       return false;
     }
-    boolean bool = com.tencent.mm.kernel.g.afw();
+    boolean bool = com.tencent.mm.kernel.g.agM();
     AppMethodBeat.o(20352);
     return bool;
   }
   
-  public static boolean arO()
+  @Deprecated
+  public static com.tencent.mm.sdk.platformtools.ap agU()
   {
-    return gNd == null;
+    AppMethodBeat.i(20344);
+    com.tencent.mm.sdk.platformtools.ap localap = com.tencent.mm.kernel.g.agU();
+    AppMethodBeat.o(20344);
+    return localap;
   }
   
-  public static bz arP()
+  public static String agc()
+  {
+    AppMethodBeat.i(20346);
+    String str = com.tencent.mm.kernel.a.agc();
+    AppMethodBeat.o(20346);
+    return str;
+  }
+  
+  public static com.tencent.mm.ak.q agi()
+  {
+    AppMethodBeat.i(20349);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.ak.q localq = com.tencent.mm.kernel.g.agQ().ghe;
+    AppMethodBeat.o(20349);
+    return localq;
+  }
+  
+  public static boolean ayF()
+  {
+    return hnD == null;
+  }
+  
+  public static bz ayG()
   {
     AppMethodBeat.i(20335);
-    arS();
-    bz localbz = gNf;
+    ayJ();
+    bz localbz = hnF;
     AppMethodBeat.o(20335);
     return localbz;
   }
   
-  public static boolean arQ()
+  public static boolean ayH()
   {
     AppMethodBeat.i(20336);
-    boolean bool = com.tencent.mm.kernel.a.aeB();
+    boolean bool = com.tencent.mm.kernel.a.afR();
     AppMethodBeat.o(20336);
     return bool;
   }
   
-  public static void arR()
+  public static void ayI()
   {
     AppMethodBeat.i(20337);
     com.tencent.mm.kernel.a.dz(false);
     AppMethodBeat.o(20337);
   }
   
-  private static az arS()
+  private static az ayJ()
   {
     AppMethodBeat.i(20342);
-    Assert.assertNotNull("MMCore not initialized by MMApplication", gNd);
-    az localaz = gNd;
+    Assert.assertNotNull("MMCore not initialized by MMApplication", hnD);
+    az localaz = hnD;
     AppMethodBeat.o(20342);
     return localaz;
   }
   
-  public static aa arT()
+  public static ad ayK()
   {
     AppMethodBeat.i(20343);
-    com.tencent.mm.kernel.g.afC();
-    aa localaa = com.tencent.mm.kernel.g.afB().gcR;
+    com.tencent.mm.kernel.g.agS();
+    ad localad = com.tencent.mm.kernel.g.agR().ghx;
     AppMethodBeat.o(20343);
-    return localaa;
+    return localad;
   }
   
-  public static void arU()
+  public static void ayL()
   {
     AppMethodBeat.i(20347);
-    com.tencent.mm.g.a.ab localab = new com.tencent.mm.g.a.ab();
-    com.tencent.mm.sdk.b.a.ESL.l(localab);
+    com.tencent.mm.g.a.ac localac = new com.tencent.mm.g.a.ac();
+    com.tencent.mm.sdk.b.a.GpY.l(localac);
     AppMethodBeat.o(20347);
   }
   
-  public static c arV()
+  public static c ayM()
   {
     AppMethodBeat.i(20348);
-    c localc = arS().gMT;
+    c localc = ayJ().hnt;
     if (localc != null) {}
     for (boolean bool = true;; bool = false)
     {
@@ -746,19 +742,19 @@ public final class az
     }
   }
   
-  public static boolean arW()
+  public static boolean ayN()
   {
     AppMethodBeat.i(20351);
-    com.tencent.mm.kernel.g.afz();
-    boolean bool = com.tencent.mm.kernel.a.aeH();
+    com.tencent.mm.kernel.g.agP();
+    boolean bool = com.tencent.mm.kernel.a.afX();
     AppMethodBeat.o(20351);
     return bool;
   }
   
-  public static f arX()
+  public static f ayO()
   {
     AppMethodBeat.i(20357);
-    f localf = arS().gNq;
+    f localf = ayJ().hnQ;
     AppMethodBeat.o(20357);
     return localf;
   }
@@ -766,15 +762,15 @@ public final class az
   public static void b(n paramn)
   {
     AppMethodBeat.i(20332);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().b(paramn);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().b(paramn);
     AppMethodBeat.o(20332);
   }
   
   public static aq getNotification()
   {
     AppMethodBeat.i(20339);
-    aq localaq = arS().gNc.getNotification();
+    aq localaq = ayJ().hnC.getNotification();
     AppMethodBeat.o(20339);
     return localaq;
   }
@@ -794,10 +790,10 @@ public final class az
     AppMethodBeat.o(20354);
   }
   
-  public static void qM(String paramString)
+  public static void ub(String paramString)
   {
     AppMethodBeat.i(20334);
-    com.tencent.mm.kernel.a.qM(paramString);
+    com.tencent.mm.kernel.a.ub(paramString);
     AppMethodBeat.o(20334);
   }
   
@@ -816,7 +812,7 @@ public final class az
     public HashMap<Integer, h.b> collectDatabaseFactory()
     {
       AppMethodBeat.i(20330);
-      ad.i("MicroMsg.MMCore", "collectDatabaseFactory ");
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMCore", "collectDatabaseFactory ");
       HashMap localHashMap = new HashMap();
       localHashMap.putAll(c.baseDBFactories);
       AppMethodBeat.o(20330);
@@ -826,41 +822,41 @@ public final class az
     public void onAccountInitialized(e.c paramc)
     {
       AppMethodBeat.i(20327);
-      if (paramc.gdr) {
-        com.tencent.mm.z.c.adr().w(262145, false);
+      if (paramc.ghX) {
+        com.tencent.mm.y.c.aeH().w(262145, false);
       }
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(598L, 13L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(598L, 13L, 1L, false);
       long l = System.currentTimeMillis();
-      ad.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized start tid[%d]", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized start tid[%d]", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
       Object localObject1 = az.a(az.this);
-      com.tencent.mm.storagebase.h localh = com.tencent.mm.kernel.g.afB().gda;
-      com.tencent.mm.kernel.g.afB();
-      com.tencent.mm.plugin.messenger.foundation.a.a.h localh1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOI();
-      localh1.a(new ax(localh1));
+      com.tencent.mm.storagebase.h localh = com.tencent.mm.kernel.g.agR().ghG;
+      com.tencent.mm.kernel.g.agR();
+      com.tencent.mm.plugin.messenger.foundation.a.a.h localh1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr();
+      localh1.a(new ba(localh1));
       Object localObject2 = new com.tencent.mm.storage.h(localh1);
-      ((c)localObject1).gLA = ((com.tencent.mm.storage.h)localObject2);
+      ((c)localObject1).hma = ((com.tencent.mm.storage.h)localObject2);
       localh1.a((com.tencent.mm.storage.e)localObject2);
       localObject2 = new i(localh1);
-      ((c)localObject1).gLB = ((i)localObject2);
+      ((c)localObject1).hmb = ((i)localObject2);
       localh1.a((com.tencent.mm.storage.e)localObject2);
-      ((c)localObject1).gLy = new bu(localh, ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR());
-      ((c)localObject1).gLz = new bt(localh, ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM());
-      ((c)localObject1).gLC = new com.tencent.mm.model.b.c();
-      ((c)localObject1).gLD = new com.tencent.mm.model.b.d();
-      ((c)localObject1).gLH = new com.tencent.mm.model.b.b();
-      ((c)localObject1).gLE = new com.tencent.mm.storage.k(localh);
-      ((c)localObject1).gLF = new com.tencent.mm.storage.o(localh);
-      ((c)localObject1).gLG = new m(localh);
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(598L, 14L, 1L, false);
-      ad.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized done initDB take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      localObject1 = az.this.gNh;
+      ((c)localObject1).hlY = new bu(localh, ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG());
+      ((c)localObject1).hlZ = new bt(localh, ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB());
+      ((c)localObject1).hmc = new com.tencent.mm.model.b.c();
+      ((c)localObject1).hmd = new com.tencent.mm.model.b.d();
+      ((c)localObject1).hmh = new com.tencent.mm.model.b.b();
+      ((c)localObject1).hme = new com.tencent.mm.storage.k(localh);
+      ((c)localObject1).hmf = new com.tencent.mm.storage.o(localh);
+      ((c)localObject1).hmg = new m(localh);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(598L, 14L, 1L, false);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized done initDB take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      localObject1 = az.this.hnH;
       az.a(az.this);
-      ((c.a)localObject1).dZ(paramc.gdr);
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(598L, 15L, 1L, false);
-      ad.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized done onAccountPostReset take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      com.tencent.mm.compatible.util.e.XG();
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(598L, 16L, 1L, false);
-      ad.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized done all take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      ((c.a)localObject1).eu(paramc.ghX);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(598L, 15L, 1L, false);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized done onAccountPostReset take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      com.tencent.mm.compatible.util.e.YD();
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(598L, 16L, 1L, false);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized done all take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(20327);
     }
     
@@ -878,14 +874,14 @@ public final class az
     public void parallelsDependency()
     {
       AppMethodBeat.i(20328);
-      com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bB(com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class));
+      com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).by(com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class));
       AppMethodBeat.o(20328);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.az
  * JD-Core Version:    0.7.0.1
  */

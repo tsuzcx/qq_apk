@@ -13,56 +13,56 @@ import java.util.Map;
 
 public final class g
 {
-  private final List<t> bFd;
-  private com.google.a.b.d bFe;
-  private final Map<Type, h<?>> bFg;
-  private boolean bFh;
-  private boolean bFi;
-  private boolean bFj;
-  private boolean bFl;
-  private boolean bFm;
-  private boolean bFn;
-  private String bFo;
-  private int bFp;
-  private int bFq;
-  private r bFr;
-  private e bFx;
-  private final List<t> bFy;
-  private boolean bFz;
+  private final List<t> bCL;
+  private com.google.a.b.d bCM;
+  private final Map<Type, h<?>> bCO;
+  private boolean bCP;
+  private boolean bCQ;
+  private boolean bCR;
+  private boolean bCT;
+  private boolean bCU;
+  private boolean bCV;
+  private String bCW;
+  private int bCX;
+  private int bCY;
+  private r bCZ;
+  private e bDf;
+  private final List<t> bDg;
+  private boolean bDh;
   
   public g()
   {
     AppMethodBeat.i(108127);
-    this.bFe = com.google.a.b.d.bFW;
-    this.bFr = r.bFD;
-    this.bFx = d.bER;
-    this.bFg = new HashMap();
-    this.bFd = new ArrayList();
-    this.bFy = new ArrayList();
-    this.bFh = false;
-    this.bFp = 2;
-    this.bFq = 2;
-    this.bFi = false;
-    this.bFn = false;
-    this.bFz = true;
-    this.bFl = false;
-    this.bFj = false;
-    this.bFm = false;
+    this.bCM = com.google.a.b.d.bDE;
+    this.bCZ = r.bDl;
+    this.bDf = d.bCz;
+    this.bCO = new HashMap();
+    this.bCL = new ArrayList();
+    this.bDg = new ArrayList();
+    this.bCP = false;
+    this.bCX = 2;
+    this.bCY = 2;
+    this.bCQ = false;
+    this.bCV = false;
+    this.bDh = true;
+    this.bCT = false;
+    this.bCR = false;
+    this.bCU = false;
     AppMethodBeat.o(108127);
   }
   
-  public final f xl()
+  public final f wY()
   {
     AppMethodBeat.i(108128);
-    ArrayList localArrayList = new ArrayList(this.bFd.size() + this.bFy.size() + 3);
-    localArrayList.addAll(this.bFd);
+    ArrayList localArrayList = new ArrayList(this.bCL.size() + this.bDg.size() + 3);
+    localArrayList.addAll(this.bCL);
     Collections.reverse(localArrayList);
-    Object localObject1 = new ArrayList(this.bFy);
+    Object localObject1 = new ArrayList(this.bDg);
     Collections.reverse((List)localObject1);
     localArrayList.addAll((Collection)localObject1);
-    Object localObject2 = this.bFo;
-    int i = this.bFp;
-    int j = this.bFq;
+    Object localObject2 = this.bCW;
+    int i = this.bCX;
+    int j = this.bCY;
     a locala;
     if ((localObject2 != null) && (!"".equals(((String)localObject2).trim())))
     {
@@ -76,7 +76,7 @@ public final class g
       localArrayList.add(m.a(java.sql.Date.class, (s)localObject2));
       do
       {
-        localObject1 = new f(this.bFe, this.bFx, this.bFg, this.bFh, this.bFi, this.bFj, this.bFz, this.bFl, this.bFm, this.bFn, this.bFr, this.bFo, this.bFp, this.bFq, this.bFd, this.bFy, localArrayList);
+        localObject1 = new f(this.bCM, this.bDf, this.bCO, this.bCP, this.bCQ, this.bCR, this.bDh, this.bCT, this.bCU, this.bCV, this.bCZ, this.bCW, this.bCX, this.bCY, this.bCL, this.bDg, localArrayList);
         AppMethodBeat.o(108128);
         return localObject1;
       } while ((i == 2) || (j == 2));
@@ -87,7 +87,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.g
  * JD-Core Version:    0.7.0.1
  */

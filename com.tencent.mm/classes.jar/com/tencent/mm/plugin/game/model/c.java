@@ -3,44 +3,44 @@ package com.tencent.mm.plugin.game.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.d.bx;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public final class c
   extends g
 {
   public int appType;
-  public String dcC;
-  public int dlp;
-  public int dvS;
-  public boolean hHQ;
-  public String iVP;
-  public long lrU;
+  public String daa;
+  public int diX;
+  public int dtF;
+  public boolean iis;
+  public String jwf;
+  public long lTP;
   public String name;
   public int position;
-  public String rUS;
-  public String rUT;
-  public String rUU;
-  public String rUV;
-  public String rUW;
-  public String rUX;
-  public String rUY;
-  public String rUZ;
-  public LinkedList<String> rVa;
-  public String rVb;
-  public LinkedList<String> rVc;
-  public boolean rVd;
-  public boolean rVe;
-  public String rVf;
-  public String rVg;
-  public String rVh;
-  public String rVi;
-  public String rVj;
-  public boolean rVk;
-  public String rVl;
-  public bx rVm;
   public int scene;
   public int status;
+  public String tcK;
+  public String tcL;
+  public String tcM;
+  public String tcN;
+  public String tcO;
+  public String tcP;
+  public String tcQ;
+  public String tcR;
+  public LinkedList<String> tcS;
+  public String tcT;
+  public LinkedList<String> tcU;
+  public boolean tcV;
+  public boolean tcW;
+  public String tcX;
+  public String tcY;
+  public String tcZ;
+  public String tda;
+  public String tdb;
+  public boolean tdc;
+  public String tdd;
+  public bx tde;
   public int type;
   public int versionCode;
   
@@ -49,44 +49,44 @@ public final class c
     AppMethodBeat.i(41356);
     this.status = 0;
     this.type = 0;
-    this.rUS = "";
-    this.rUT = "";
-    this.rUU = "#929292";
-    this.rUV = "";
-    this.rUW = "";
-    this.dcC = "";
-    this.hHQ = false;
+    this.tcK = "";
+    this.tcL = "";
+    this.tcM = "#929292";
+    this.tcN = "";
+    this.tcO = "";
+    this.daa = "";
+    this.iis = false;
     this.scene = 0;
-    this.dvS = 0;
+    this.dtF = 0;
     this.position = 1;
     this.versionCode = 0;
-    this.rUX = "";
-    this.rUY = "";
-    this.rUZ = "";
-    this.rVa = new LinkedList();
-    this.rVb = "";
-    this.rVc = new LinkedList();
-    this.rVd = false;
-    this.rVe = false;
-    this.rVf = "";
-    this.rVg = "#fca28a";
-    this.rVh = "";
-    this.iVP = "";
+    this.tcP = "";
+    this.tcQ = "";
+    this.tcR = "";
+    this.tcS = new LinkedList();
+    this.tcT = "";
+    this.tcU = new LinkedList();
+    this.tcV = false;
+    this.tcW = false;
+    this.tcX = "";
+    this.tcY = "#fca28a";
+    this.tcZ = "";
+    this.jwf = "";
     this.name = "";
-    this.rVi = "#222222";
-    this.rVj = "";
-    this.rVk = false;
-    this.rVl = "";
-    this.lrU = 0L;
-    this.dlp = 0;
+    this.tda = "#222222";
+    this.tdb = "";
+    this.tdc = false;
+    this.tdd = "";
+    this.lTP = 0L;
+    this.diX = 0;
     this.appType = 0;
     AppMethodBeat.o(41356);
   }
   
-  public final boolean cCJ()
+  public final boolean cPT()
   {
     AppMethodBeat.i(41357);
-    if (((this.appType == 1) || (this.appType == 2)) && (this.rVm != null) && (!bt.isNullOrNil(this.rVm.scQ)))
+    if (((this.appType == 1) || (this.appType == 2)) && (this.tde != null) && (!bs.isNullOrNil(this.tde.tkK)))
     {
       AppMethodBeat.o(41357);
       return true;

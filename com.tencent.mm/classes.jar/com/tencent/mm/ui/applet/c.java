@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public static void jD(Context paramContext)
+  public static void jO(Context paramContext)
   {
     AppMethodBeat.i(33836);
     new c.a(paramContext, LayoutInflater.from(paramContext).inflate(2131495800, null)).show();
@@ -15,7 +15,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.applet.c
  * JD-Core Version:    0.7.0.1
  */

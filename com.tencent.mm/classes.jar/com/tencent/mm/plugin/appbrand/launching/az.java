@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.m.e;
 import com.tencent.mm.m.g;
 import com.tencent.mm.plugin.appbrand.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class az
 {
@@ -20,14 +20,14 @@ final class az
     this.appId = paramString;
   }
   
-  final boolean bgN()
+  final boolean bnH()
   {
     AppMethodBeat.i(47307);
-    if (g.Zd().getInt("WeAppForbiddenSwitch", 0) == 1)
+    if (g.ZY().getInt("WeAppForbiddenSwitch", 0) == 1)
     {
-      ad.i("MicroMsg.AppBrand.PreLaunchCheckForOversea", "startApp, WeAppForbiddenSwitch == 1, go webview, appId %s", new Object[] { this.appId });
-      Intent localIntent = new Intent().putExtra("rawUrl", u.Ds(this.appId)).putExtra("forceHideShare", true);
-      Context localContext = aj.getContext();
+      ac.i("MicroMsg.AppBrand.PreLaunchCheckForOversea", "startApp, WeAppForbiddenSwitch == 1, go webview, appId %s", new Object[] { this.appId });
+      Intent localIntent = new Intent().putExtra("rawUrl", u.Hv(this.appId)).putExtra("forceHideShare", true);
+      Context localContext = ai.getContext();
       if (!(localContext instanceof Activity)) {
         localIntent.addFlags(268435456);
       }

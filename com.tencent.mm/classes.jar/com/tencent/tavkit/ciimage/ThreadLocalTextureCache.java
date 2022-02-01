@@ -15,34 +15,34 @@ public class ThreadLocalTextureCache
   
   static
   {
-    AppMethodBeat.i(204491);
+    AppMethodBeat.i(191863);
     TEXTURE_CACHE = new ThreadLocal()
     {
       protected final ThreadLocalTextureCache initialValue()
       {
-        AppMethodBeat.i(204483);
+        AppMethodBeat.i(191855);
         ThreadLocalTextureCache localThreadLocalTextureCache = new ThreadLocalTextureCache(null);
-        AppMethodBeat.o(204483);
+        AppMethodBeat.o(191855);
         return localThreadLocalTextureCache;
       }
     };
-    AppMethodBeat.o(204491);
+    AppMethodBeat.o(191863);
   }
   
   private ThreadLocalTextureCache()
   {
-    AppMethodBeat.i(204486);
+    AppMethodBeat.i(191858);
     this.TAG = ("ThreadLocalTextureCache@" + Integer.toHexString(hashCode()));
     Logger.d(this.TAG, "ThreadLocalTextureCache() called, thread = " + Thread.currentThread().getName());
     this.textureCache = new HashMap();
-    AppMethodBeat.o(204486);
+    AppMethodBeat.o(191858);
   }
   
   public static ThreadLocalTextureCache getInstance()
   {
-    AppMethodBeat.i(204485);
+    AppMethodBeat.i(191857);
     ThreadLocalTextureCache localThreadLocalTextureCache = (ThreadLocalTextureCache)TEXTURE_CACHE.get();
-    AppMethodBeat.o(204485);
+    AppMethodBeat.o(191857);
     return localThreadLocalTextureCache;
   }
   
@@ -50,9 +50,9 @@ public class ThreadLocalTextureCache
   {
     try
     {
-      AppMethodBeat.i(204488);
+      AppMethodBeat.i(191860);
       paramString = (TextureInfo)this.textureCache.get(paramString);
-      AppMethodBeat.o(204488);
+      AppMethodBeat.o(191860);
       return paramString;
     }
     finally
@@ -66,10 +66,10 @@ public class ThreadLocalTextureCache
   {
     try
     {
-      AppMethodBeat.i(204487);
+      AppMethodBeat.i(191859);
       Logger.d(this.TAG, "putTextureInfo() called with: key = [" + paramString + "], textureInfo = [" + paramTextureInfo + "]");
       this.textureCache.put(paramString, paramTextureInfo);
-      AppMethodBeat.o(204487);
+      AppMethodBeat.o(191859);
       return;
     }
     finally
@@ -83,7 +83,7 @@ public class ThreadLocalTextureCache
   {
     try
     {
-      AppMethodBeat.i(204490);
+      AppMethodBeat.i(191862);
       Logger.d(this.TAG, "release() called, textureCache = " + this.textureCache);
       Iterator localIterator = this.textureCache.values().iterator();
       while (localIterator.hasNext()) {
@@ -92,16 +92,16 @@ public class ThreadLocalTextureCache
       this.textureCache.clear();
     }
     finally {}
-    AppMethodBeat.o(204490);
+    AppMethodBeat.o(191862);
   }
   
   public void remove(String paramString)
   {
     try
     {
-      AppMethodBeat.i(204489);
+      AppMethodBeat.i(191861);
       this.textureCache.remove(paramString);
-      AppMethodBeat.o(204489);
+      AppMethodBeat.o(191861);
       return;
     }
     finally
@@ -113,7 +113,7 @@ public class ThreadLocalTextureCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.ThreadLocalTextureCache
  * JD-Core Version:    0.7.0.1
  */

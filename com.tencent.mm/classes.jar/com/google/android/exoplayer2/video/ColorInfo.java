@@ -10,11 +10,11 @@ public final class ColorInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ColorInfo> CREATOR;
-  private int aFj;
-  public final int aYU;
-  public final int aYV;
-  public final int aYW;
-  public final byte[] bzA;
+  private int aFZ;
+  public final int aZG;
+  public final int aZH;
+  public final int aZI;
+  public final byte[] bxi;
   
   static
   {
@@ -25,18 +25,18 @@ public final class ColorInfo
   
   public ColorInfo(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
-    this.aYU = paramInt1;
-    this.aYW = paramInt2;
-    this.aYV = paramInt3;
-    this.bzA = paramArrayOfByte;
+    this.aZG = paramInt1;
+    this.aZI = paramInt2;
+    this.aZH = paramInt3;
+    this.bxi = paramArrayOfByte;
   }
   
   ColorInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(93253);
-    this.aYU = paramParcel.readInt();
-    this.aYW = paramParcel.readInt();
-    this.aYV = paramParcel.readInt();
+    this.aZG = paramParcel.readInt();
+    this.aZI = paramParcel.readInt();
+    this.aZH = paramParcel.readInt();
     int i;
     if (paramParcel.readInt() != 0)
     {
@@ -48,7 +48,7 @@ public final class ColorInfo
     label67:
     for (paramParcel = paramParcel.createByteArray();; paramParcel = null)
     {
-      this.bzA = paramParcel;
+      this.bxi = paramParcel;
       AppMethodBeat.o(93253);
       return;
       i = 0;
@@ -75,7 +75,7 @@ public final class ColorInfo
       return false;
     }
     paramObject = (ColorInfo)paramObject;
-    if ((this.aYU != paramObject.aYU) || (this.aYW != paramObject.aYW) || (this.aYV != paramObject.aYV) || (!Arrays.equals(this.bzA, paramObject.bzA)))
+    if ((this.aZG != paramObject.aZG) || (this.aZI != paramObject.aZI) || (this.aZH != paramObject.aZH) || (!Arrays.equals(this.bxi, paramObject.bxi)))
     {
       AppMethodBeat.o(93254);
       return false;
@@ -87,10 +87,10 @@ public final class ColorInfo
   public final int hashCode()
   {
     AppMethodBeat.i(93256);
-    if (this.aFj == 0) {
-      this.aFj = ((((this.aYU + 527) * 31 + this.aYW) * 31 + this.aYV) * 31 + Arrays.hashCode(this.bzA));
+    if (this.aFZ == 0) {
+      this.aFZ = ((((this.aZG + 527) * 31 + this.aZI) * 31 + this.aZH) * 31 + Arrays.hashCode(this.bxi));
     }
-    int i = this.aFj;
+    int i = this.aFZ;
     AppMethodBeat.o(93256);
     return i;
   }
@@ -98,8 +98,8 @@ public final class ColorInfo
   public final String toString()
   {
     AppMethodBeat.i(93255);
-    Object localObject = new StringBuilder("ColorInfo(").append(this.aYU).append(", ").append(this.aYW).append(", ").append(this.aYV).append(", ");
-    if (this.bzA != null) {}
+    Object localObject = new StringBuilder("ColorInfo(").append(this.aZG).append(", ").append(this.aZI).append(", ").append(this.aZH).append(", ");
+    if (this.bxi != null) {}
     for (boolean bool = true;; bool = false)
     {
       localObject = bool + ")";
@@ -111,15 +111,15 @@ public final class ColorInfo
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(93257);
-    paramParcel.writeInt(this.aYU);
-    paramParcel.writeInt(this.aYW);
-    paramParcel.writeInt(this.aYV);
-    if (this.bzA != null) {}
+    paramParcel.writeInt(this.aZG);
+    paramParcel.writeInt(this.aZI);
+    paramParcel.writeInt(this.aZH);
+    if (this.bxi != null) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      if (this.bzA != null) {
-        paramParcel.writeByteArray(this.bzA);
+      if (this.bxi != null) {
+        paramParcel.writeByteArray(this.bxi);
       }
       AppMethodBeat.o(93257);
       return;
@@ -128,7 +128,7 @@ public final class ColorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.exoplayer2.video.ColorInfo
  * JD-Core Version:    0.7.0.1
  */

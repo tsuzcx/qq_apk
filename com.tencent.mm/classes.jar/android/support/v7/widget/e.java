@@ -12,42 +12,42 @@ import android.view.View;
 
 final class e
 {
-  private final g ahg;
-  private int ahh = -1;
-  private ax ahi;
-  private ax ahj;
-  private ax ahk;
+  private final g aia;
+  private int aib = -1;
+  private ax aic;
+  private ax aid;
+  private ax aie;
   private final View mView;
   
   e(View paramView)
   {
     this.mView = paramView;
-    this.ahg = g.iD();
+    this.aia = g.iL();
   }
   
   private void f(ColorStateList paramColorStateList)
   {
     if (paramColorStateList != null)
     {
-      if (this.ahi == null) {
-        this.ahi = new ax();
+      if (this.aic == null) {
+        this.aic = new ax();
       }
-      this.ahi.Hr = paramColorStateList;
-      this.ahi.ZV = true;
+      this.aic.Ip = paramColorStateList;
+      this.aic.aaQ = true;
     }
     for (;;)
     {
-      iz();
+      iH();
       return;
-      this.ahi = null;
+      this.aic = null;
     }
   }
   
-  private boolean iA()
+  private boolean iI()
   {
     int i = Build.VERSION.SDK_INT;
     if (i > 21) {
-      if (this.ahi == null) {}
+      if (this.aic == null) {}
     }
     while (i == 21)
     {
@@ -59,24 +59,24 @@ final class e
   
   private boolean p(Drawable paramDrawable)
   {
-    if (this.ahk == null) {
-      this.ahk = new ax();
+    if (this.aie == null) {
+      this.aie = new ax();
     }
-    ax localax = this.ahk;
+    ax localax = this.aie;
     localax.clear();
     Object localObject = t.at(this.mView);
     if (localObject != null)
     {
-      localax.ZV = true;
-      localax.Hr = ((ColorStateList)localObject);
+      localax.aaQ = true;
+      localax.Ip = ((ColorStateList)localObject);
     }
     localObject = t.au(this.mView);
     if (localObject != null)
     {
-      localax.ZW = true;
-      localax.vo = ((PorterDuff.Mode)localObject);
+      localax.aaR = true;
+      localax.wn = ((PorterDuff.Mode)localObject);
     }
-    if ((localax.ZV) || (localax.ZW))
+    if ((localax.aaQ) || (localax.aaR))
     {
       g.a(paramDrawable, localax, this.mView.getDrawableState());
       return true;
@@ -91,8 +91,8 @@ final class e
     {
       if (paramAttributeSet.hasValue(0))
       {
-        this.ahh = paramAttributeSet.getResourceId(0, -1);
-        ColorStateList localColorStateList = this.ahg.s(this.mView.getContext(), this.ahh);
+        this.aib = paramAttributeSet.getResourceId(0, -1);
+        ColorStateList localColorStateList = this.aia.s(this.mView.getContext(), this.aib);
         if (localColorStateList != null) {
           f(localColorStateList);
         }
@@ -107,79 +107,79 @@ final class e
     }
     finally
     {
-      paramAttributeSet.avP.recycle();
+      paramAttributeSet.awJ.recycle();
     }
   }
   
   final void bG(int paramInt)
   {
-    this.ahh = paramInt;
-    if (this.ahg != null) {}
-    for (ColorStateList localColorStateList = this.ahg.s(this.mView.getContext(), paramInt);; localColorStateList = null)
+    this.aib = paramInt;
+    if (this.aia != null) {}
+    for (ColorStateList localColorStateList = this.aia.s(this.mView.getContext(), paramInt);; localColorStateList = null)
     {
       f(localColorStateList);
-      iz();
+      iH();
       return;
     }
   }
   
   final ColorStateList getSupportBackgroundTintList()
   {
-    if (this.ahj != null) {
-      return this.ahj.Hr;
+    if (this.aid != null) {
+      return this.aid.Ip;
     }
     return null;
   }
   
   final PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.ahj != null) {
-      return this.ahj.vo;
+    if (this.aid != null) {
+      return this.aid.wn;
     }
     return null;
   }
   
-  final void iy()
+  final void iG()
   {
-    this.ahh = -1;
+    this.aib = -1;
     f(null);
-    iz();
+    iH();
   }
   
-  final void iz()
+  final void iH()
   {
     Drawable localDrawable = this.mView.getBackground();
-    if ((localDrawable == null) || ((iA()) && (p(localDrawable)))) {}
+    if ((localDrawable == null) || ((iI()) && (p(localDrawable)))) {}
     do
     {
       return;
-      if (this.ahj != null)
+      if (this.aid != null)
       {
-        g.a(localDrawable, this.ahj, this.mView.getDrawableState());
+        g.a(localDrawable, this.aid, this.mView.getDrawableState());
         return;
       }
-    } while (this.ahi == null);
-    g.a(localDrawable, this.ahi, this.mView.getDrawableState());
+    } while (this.aic == null);
+    g.a(localDrawable, this.aic, this.mView.getDrawableState());
   }
   
   final void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.ahj == null) {
-      this.ahj = new ax();
+    if (this.aid == null) {
+      this.aid = new ax();
     }
-    this.ahj.Hr = paramColorStateList;
-    this.ahj.ZV = true;
-    iz();
+    this.aid.Ip = paramColorStateList;
+    this.aid.aaQ = true;
+    iH();
   }
   
   final void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ahj == null) {
-      this.ahj = new ax();
+    if (this.aid == null) {
+      this.aid = new ax();
     }
-    this.ahj.vo = paramMode;
-    this.ahj.ZW = true;
-    iz();
+    this.aid.wn = paramMode;
+    this.aid.aaR = true;
+    iH();
   }
 }
 

@@ -17,40 +17,40 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ax.b;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.wf;
+import com.tencent.mm.aw.b;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.wq;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.account.friend.ui.i;
 import com.tencent.mm.plugin.account.friend.ui.i.a;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BindMContactVerifyUI
   extends MMWizardActivity
 {
-  private String dpO;
+  private String dnz;
   private int fromScene = 0;
-  private boolean ifG = false;
-  private EditText igP;
-  private TextView igQ;
-  private Button igR;
-  private i igS;
+  private boolean iFP = false;
+  private EditText iGY;
+  private TextView iGZ;
+  private Button iHa;
+  private i iHb;
   private SharedPreferences sp;
   private int status;
   
   private void goBack()
   {
     AppMethodBeat.i(109917);
-    if (this.igS != null) {
-      this.igS.recycle();
+    if (this.iHb != null) {
+      this.iHb.recycle();
     }
-    Xo(1);
+    ZA(1);
     AppMethodBeat.o(109917);
   }
   
@@ -62,37 +62,37 @@ public class BindMContactVerifyUI
   public void initView()
   {
     AppMethodBeat.i(109915);
-    this.dpO = ((String)g.afB().afk().get(4097, null));
-    this.igP = ((EditText)findViewById(2131297252));
-    this.ifG = getIntent().getBooleanExtra("KEnterFromBanner", false);
+    this.dnz = ((String)g.agR().agA().get(4097, null));
+    this.iGY = ((EditText)findViewById(2131297252));
+    this.iFP = getIntent().getBooleanExtra("KEnterFromBanner", false);
     this.fromScene = getIntent().getIntExtra("bind_scene", 0);
     Button localButton = (Button)findViewById(2131297249);
-    if ((this.dpO == null) || (this.dpO.equals(""))) {
-      this.dpO = ((String)g.afB().afk().get(6, null));
+    if ((this.dnz == null) || (this.dnz.equals(""))) {
+      this.dnz = ((String)g.agR().agA().get(6, null));
     }
     InputFilter local1 = new InputFilter()
     {
       public final CharSequence filter(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, Spanned paramAnonymousSpanned, int paramAnonymousInt3, int paramAnonymousInt4)
       {
         AppMethodBeat.i(109906);
-        paramAnonymousCharSequence = bt.aj(paramAnonymousCharSequence);
+        paramAnonymousCharSequence = bs.ak(paramAnonymousCharSequence);
         AppMethodBeat.o(109906);
         return paramAnonymousCharSequence;
       }
     };
-    this.igP.setFilters(new InputFilter[] { local1 });
-    this.igR = ((Button)findViewById(2131297254));
-    this.igQ = ((TextView)findViewById(2131297250));
-    this.igQ.setText(getString(2131756476, new Object[] { this.dpO }));
+    this.iGY.setFilters(new InputFilter[] { local1 });
+    this.iHa = ((Button)findViewById(2131297254));
+    this.iGZ = ((TextView)findViewById(2131297250));
+    this.iGZ.setText(getString(2131756476, new Object[] { this.dnz }));
     localButton.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(109907);
         paramAnonymousView = BindMContactVerifyUI.a(BindMContactVerifyUI.this).getText().toString().trim();
-        if (bt.isNullOrNil(paramAnonymousView))
+        if (bs.isNullOrNil(paramAnonymousView))
         {
-          com.tencent.mm.ui.base.h.j(BindMContactVerifyUI.this, 2131756515, 2131755906);
+          com.tencent.mm.ui.base.h.l(BindMContactVerifyUI.this, 2131756515, 2131755906);
           AppMethodBeat.o(109907);
           return;
         }
@@ -111,12 +111,12 @@ public class BindMContactVerifyUI
         return true;
       }
     });
-    localButton = this.igR;
-    if (b.yJ(this.dpO)) {}
+    localButton = this.iHa;
+    if (b.CO(this.dnz)) {}
     for (int i = 0;; i = 8)
     {
       localButton.setVisibility(i);
-      this.igR.setOnClickListener(new View.OnClickListener()
+      this.iHa.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -127,7 +127,7 @@ public class BindMContactVerifyUI
           localBundle.putString("bindmcontact_mobile", BindMContactVerifyUI.c(BindMContactVerifyUI.this));
           localBundle.putInt("voice_verify_type", 4);
           paramAnonymousView.putExtras(localBundle);
-          com.tencent.mm.plugin.account.a.a.hYt.f(BindMContactVerifyUI.this, paramAnonymousView);
+          com.tencent.mm.plugin.account.a.a.iyx.f(BindMContactVerifyUI.this, paramAnonymousView);
           AppMethodBeat.o(109909);
         }
       });
@@ -142,7 +142,7 @@ public class BindMContactVerifyUI
     super.onCreate(paramBundle);
     setMMTitle(2131756490);
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
-    this.status = u.aqK();
+    this.status = u.axA();
     initView();
     AppMethodBeat.o(109913);
   }
@@ -176,7 +176,7 @@ public class BindMContactVerifyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactVerifyUI
  * JD-Core Version:    0.7.0.1
  */

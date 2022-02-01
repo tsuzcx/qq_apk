@@ -10,26 +10,26 @@ class f
   extends ImageView
   implements e
 {
-  private boolean kPn;
+  private boolean lqM;
   
   public f(Context paramContext)
   {
     super(paramContext);
   }
   
-  public boolean aYz()
+  public boolean bfw()
   {
-    return this.kPn;
+    return this.lqM;
   }
   
   public void setInterceptEvent(boolean paramBoolean)
   {
-    this.kPn = paramBoolean;
+    this.lqM = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.b.f
  * JD-Core Version:    0.7.0.1
  */

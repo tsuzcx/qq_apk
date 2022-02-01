@@ -6,11 +6,11 @@ import d.l;
 import java.util.Iterator;
 import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"buildSet", "", "E", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptySet", "T", "hashSetOf", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/HashSet;", "linkedSetOf", "Ljava/util/LinkedHashSet;", "Lkotlin/collections/LinkedHashSet;", "([Ljava/lang/Object;)Ljava/util/LinkedHashSet;", "mutableSetOf", "([Ljava/lang/Object;)Ljava/util/Set;", "setOf", "optimizeReadOnlySet", "orEmpty", "kotlin-stdlib"}, fvw=1)
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"buildSet", "", "E", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptySet", "T", "hashSetOf", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/HashSet;", "linkedSetOf", "Ljava/util/LinkedHashSet;", "Lkotlin/collections/LinkedHashSet;", "([Ljava/lang/Object;)Ljava/util/LinkedHashSet;", "mutableSetOf", "([Ljava/lang/Object;)Ljava/util/Set;", "setOf", "optimizeReadOnlySet", "orEmpty", "kotlin-stdlib"}, fOb=1)
 public class am
   extends al
 {
-  public static final <T> Set<T> l(Set<? extends T> paramSet)
+  public static final <T> Set<T> m(Set<? extends T> paramSet)
   {
     AppMethodBeat.i(129118);
     k.h(paramSet, "$this$optimizeReadOnlySet");
@@ -20,7 +20,7 @@ public class am
       AppMethodBeat.o(129118);
       return paramSet;
     case 0: 
-      paramSet = (Set)x.Jgn;
+      paramSet = (Set)x.KTH;
       AppMethodBeat.o(129118);
       return paramSet;
     }
@@ -35,11 +35,11 @@ public class am
     k.h(paramVarArgs, "elements");
     if (paramVarArgs.length > 0)
     {
-      paramVarArgs = e.V(paramVarArgs);
+      paramVarArgs = e.X(paramVarArgs);
       AppMethodBeat.o(129117);
       return paramVarArgs;
     }
-    paramVarArgs = (Set)x.Jgn;
+    paramVarArgs = (Set)x.KTH;
     AppMethodBeat.o(129117);
     return paramVarArgs;
   }

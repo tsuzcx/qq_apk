@@ -12,7 +12,7 @@ final class MallIndexBaseUI$3
 {
   MallIndexBaseUI$3(MallIndexBaseUI paramMallIndexBaseUI) {}
   
-  public final void cv(int paramInt1, int paramInt2)
+  public final void ct(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(66066);
     switch (paramInt2)
@@ -22,18 +22,18 @@ final class MallIndexBaseUI$3
     {
       AppMethodBeat.o(66066);
       return;
-      h.vKh.f(11458, new Object[] { Integer.valueOf(2) });
-      if (u.aqV())
+      h.wUl.f(11458, new Object[] { Integer.valueOf(2) });
+      if (u.axL())
       {
-        a.b(this.tuc.getContext(), "PayURemittanceProcess", null);
+        a.b(this.uCv.getContext(), "PayURemittanceProcess", null);
         AppMethodBeat.o(66066);
         return;
       }
-      a.b(this.tuc.getContext(), "RemittanceProcess", null);
+      a.b(this.uCv.getContext(), "RemittanceProcess", null);
       AppMethodBeat.o(66066);
       return;
-      h.vKh.f(11458, new Object[] { Integer.valueOf(3) });
-      f.al(this.tuc, 2);
+      h.wUl.f(11458, new Object[] { Integer.valueOf(3) });
+      f.ar(this.uCv, 2);
     }
   }
 }

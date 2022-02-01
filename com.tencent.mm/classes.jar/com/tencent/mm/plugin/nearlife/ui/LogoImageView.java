@@ -6,17 +6,17 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.vfs.i;
 
 public class LogoImageView
   extends ImageView
 {
-  int gnh;
-  int gni;
-  ap handler;
+  int gNU;
+  int gNV;
+  ao handler;
   String imagePath;
   String url;
   
@@ -25,7 +25,7 @@ public class LogoImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(26595);
     this.url = null;
-    this.handler = new ap()
+    this.handler = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -33,13 +33,13 @@ public class LogoImageView
         byte[] arrayOfByte = (byte[])paramAnonymousMessage.obj;
         if ((arrayOfByte == null) || (arrayOfByte.length == 0))
         {
-          ad.e("MicroMsg.LogoImageView", "handleMsg fail, data is null");
+          ac.e("MicroMsg.LogoImageView", "handleMsg fail, data is null");
           AppMethodBeat.o(26593);
           return;
         }
-        paramAnonymousMessage = f.cl(arrayOfByte);
+        paramAnonymousMessage = f.ck(arrayOfByte);
         String str = LogoImageView.a(LogoImageView.this) + g.getMessageDigest(LogoImageView.b(LogoImageView.this).getBytes());
-        ad.d("MicroMsg.LogoImageView", "filePath  %s", new Object[] { str });
+        ac.d("MicroMsg.LogoImageView", "filePath  %s", new Object[] { str });
         i.f(str, arrayOfByte, arrayOfByte.length);
         if ((paramAnonymousMessage != null) && (LogoImageView.c(LogoImageView.this) > 0) && (LogoImageView.d(LogoImageView.this) > 0)) {
           paramAnonymousMessage = f.a(paramAnonymousMessage, LogoImageView.d(LogoImageView.this), LogoImageView.c(LogoImageView.this), true, false);
@@ -57,7 +57,7 @@ public class LogoImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.LogoImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,44 +2,44 @@ package com.tencent.mm.plugin.d.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class e
 {
-  private final g mMe;
-  public final h mMf;
+  private final g noq;
+  public final h nor;
   
   public e()
   {
     AppMethodBeat.i(22442);
-    this.mMe = new g();
-    this.mMf = new h();
+    this.noq = new g();
+    this.nor = new h();
     AppMethodBeat.o(22442);
   }
   
-  public final boolean aF(byte[] paramArrayOfByte)
+  public final boolean aE(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(22443);
-    if (bt.cw(paramArrayOfByte))
+    if (bs.cv(paramArrayOfByte))
     {
-      ad.e("MicroMsg.exdevice.IBeaconProtocal", "dataIn is null or nil");
+      ac.e("MicroMsg.exdevice.IBeaconProtocal", "dataIn is null or nil");
       AppMethodBeat.o(22443);
       return false;
     }
     a locala = new a(paramArrayOfByte.length);
-    locala.U(paramArrayOfByte, paramArrayOfByte.length);
-    boolean bool = this.mMe.a(locala);
+    locala.S(paramArrayOfByte, paramArrayOfByte.length);
+    boolean bool = this.noq.a(locala);
     if (!bool)
     {
-      ad.d("MicroMsg.exdevice.IBeaconProtocal", "mSectionA.ParseTLV Failed!!!");
+      ac.d("MicroMsg.exdevice.IBeaconProtocal", "mSectionA.ParseTLV Failed!!!");
       AppMethodBeat.o(22443);
       return bool;
     }
-    bool = this.mMf.a(locala);
+    bool = this.nor.a(locala);
     if (!bool)
     {
-      ad.d("MicroMsg.exdevice.IBeaconProtocal", "mSectionB.ParseTLV Failed!!!");
+      ac.d("MicroMsg.exdevice.IBeaconProtocal", "mSectionB.ParseTLV Failed!!!");
       AppMethodBeat.o(22443);
       return bool;
     }
@@ -49,7 +49,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.a.e
  * JD-Core Version:    0.7.0.1
  */

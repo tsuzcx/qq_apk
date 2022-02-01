@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="layout" name="brg">false</item>
-    <item type="layout" name="bs0">false</item>
-    <item type="layout" name="bs6">false</item>
-    <item type="layout" name="bsj">false</item>
-    <item type="layout" name="bsk">false</item>
-    <item type="layout" name="bsr">false</item>
+    <item type="layout" name="brp">false</item>
+    <item type="layout" name="brt">false</item>
+    <item type="layout" name="bs1">false</item>
+    <item type="layout" name="bs2">false</item>
+    <item type="layout" name="bs3">false</item>
+    <item type="layout" name="bs_">false</item>
+    <item type="layout" name="bsf">false</item>
+    <item type="layout" name="bss">false</item>
+    <item type="layout" name="bst">false</item>
+    <item type="layout" name="bt0">false</item>
 </resources>

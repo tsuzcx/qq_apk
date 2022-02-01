@@ -2,7 +2,7 @@ package com.tencent.mm.audio.mix.c;
 
 public abstract interface h
 {
-  public abstract byte[] L(byte[] paramArrayOfByte);
+  public abstract byte[] J(byte[] paramArrayOfByte);
   
   public abstract boolean j(String paramString, int paramInt1, int paramInt2);
   

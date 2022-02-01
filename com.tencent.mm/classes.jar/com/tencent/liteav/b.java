@@ -7,8 +7,8 @@ import android.graphics.SurfaceTexture;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import com.tencent.liteav.basic.d.l;
 import com.tencent.liteav.basic.d.m;
+import com.tencent.liteav.basic.d.n;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.module.TXCStatus;
@@ -20,7 +20,7 @@ import java.util.List;
 import javax.microedition.khronos.egl.EGLContext;
 
 public class b
-  implements com.tencent.liteav.basic.c.a, m, com.tencent.liteav.capturer.b, j
+  implements com.tencent.liteav.basic.c.a, n, com.tencent.liteav.capturer.b, j
 {
   WeakReference<com.tencent.liteav.basic.c.a> a;
   private Context b;
@@ -29,7 +29,7 @@ public class b
   private boolean e;
   private f f;
   private int g;
-  private l h;
+  private m h;
   private boolean i;
   private long j;
   private long k;
@@ -41,9 +41,9 @@ public class b
   private String q;
   private boolean r;
   
-  public b(Context paramContext, f paramf, l paraml, boolean paramBoolean)
+  public b(Context paramContext, f paramf, m paramm, boolean paramBoolean)
   {
-    AppMethodBeat.i(16690);
+    AppMethodBeat.i(193043);
     this.c = null;
     this.g = 0;
     this.h = null;
@@ -61,10 +61,10 @@ public class b
     {
       this.f = ((f)paramf.clone());
       this.b = paramContext;
-      this.h = paraml;
+      this.h = paramm;
       this.h.setSurfaceTextureListener(this);
       this.f.W = paramBoolean;
-      AppMethodBeat.o(16690);
+      AppMethodBeat.o(193043);
       return;
     }
     catch (CloneNotSupportedException paramf)
@@ -268,12 +268,12 @@ public class b
     AppMethodBeat.i(16691);
     Monitor.a(2, String.format("VideoCapture[%d]: start camera", new Object[] { Integer.valueOf(hashCode()) }), "", 0);
     TXCLog.i("CameraCapture", "start->enter with getSurfaceTexture:" + this.h.getSurfaceTexture());
-    l locall = this.h;
+    m localm = this.h;
     int i1 = this.f.h;
     if (!this.f.W) {}
     for (;;)
     {
-      locall.a(i1, bool);
+      localm.a(i1, bool);
       c(this.h.getSurfaceTexture());
       AppMethodBeat.o(16691);
       return;

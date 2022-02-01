@@ -7,12 +7,12 @@ import java.util.HashMap;
 
 public final class a
 {
-  private static HashMap<Class, a> Ivw;
+  private static HashMap<Class, a> JXf;
   
   static
   {
     AppMethodBeat.i(15);
-    Ivw = new HashMap();
+    JXf = new HashMap();
     AppMethodBeat.o(15);
   }
   
@@ -24,24 +24,24 @@ public final class a
       AppMethodBeat.o(14);
       return false;
     }
-    a locala = (a)Ivw.get(paramClass);
+    a locala = (a)JXf.get(paramClass);
     if (locala == null)
     {
       locala = new a((byte)0);
       locala.a(paramf);
-      Ivw.put(paramClass, locala);
+      JXf.put(paramClass, locala);
       paramClass = locala;
     }
     for (;;)
     {
-      d.d("Soter.RemoveASKStrategy", "error counter: %s", new Object[] { Integer.valueOf(paramClass.fnF) });
+      d.d("Soter.RemoveASKStrategy", "error counter: %s", new Object[] { Integer.valueOf(paramClass.fqZ) });
       AppMethodBeat.o(14);
       return false;
       if ((paramf.errCode == locala.errCode) && (paramf.errMsg.equals(locala.errMsg)))
       {
-        locala.fnF += 1;
+        locala.fqZ += 1;
         paramClass = locala;
-        if (locala.fnF >= 2)
+        if (locala.fqZ >= 2)
         {
           AppMethodBeat.o(14);
           return true;
@@ -59,13 +59,13 @@ public final class a
   {
     int errCode;
     String errMsg;
-    int fnF;
+    int fqZ;
     
     public final void a(f paramf)
     {
       this.errCode = paramf.errCode;
       this.errMsg = paramf.errMsg;
-      this.fnF = 1;
+      this.fqZ = 1;
     }
   }
 }

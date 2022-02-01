@@ -6,15 +6,15 @@ import java.util.List;
 public final class aa
 {
   public String appId;
-  public String cJl;
-  public int cfU;
-  public int cfd;
-  public int cfk;
-  public String dkD;
-  public String jdh;
-  private String jfW = null;
-  public List<WxaAttributes.WxaEntryInfo> jfb;
-  public List<Pair<String, String>> jfo;
+  public String cGs;
+  public int ccR;
+  public int cca;
+  public int ccg;
+  public String dic;
+  public String jDu;
+  public List<Pair<String, String>> jFD;
+  public List<WxaAttributes.WxaEntryInfo> jFq;
+  private String jGl = null;
   public String nickname;
   public int originalFlag;
   public String signature;
@@ -22,7 +22,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.aa
  * JD-Core Version:    0.7.0.1
  */

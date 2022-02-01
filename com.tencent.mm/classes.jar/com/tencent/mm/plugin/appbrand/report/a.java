@@ -5,11 +5,11 @@ import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.dx;
-import com.tencent.mm.protocal.protobuf.dy;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.protocal.protobuf.dz;
+import com.tencent.mm.protocal.protobuf.ea;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 import d.g.b.k;
 import d.l;
 import d.y;
@@ -17,19 +17,19 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandCrossProcessSafeReporter;", "", "()V", "DEFAULT_REPORT_INTERVAL", "", "TAG", "", "periodReportTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "reportCacheList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportStruct;", "kvStat", "", "logID", "", "vals", "", "(I[Ljava/lang/Object;)V", "isReportNow", "", "isImportant", "ignoreFreqLimit", "(IZZZ[Ljava/lang/Object;)V", "reportAll", "report", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportListStruct;", "IPC_reportKvSafe", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandCrossProcessSafeReporter;", "", "()V", "DEFAULT_REPORT_INTERVAL", "", "TAG", "", "periodReportTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "reportCacheList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportStruct;", "kvStat", "", "logID", "", "vals", "", "(I[Ljava/lang/Object;)V", "isReportNow", "", "isImportant", "ignoreFreqLimit", "(IZZZ[Ljava/lang/Object;)V", "reportAll", "report", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportListStruct;", "IPC_reportKvSafe", "plugin-appbrand-integration_release"})
 public final class a
 {
-  private static final LinkedList<dy> low;
-  private static final av lox;
-  public static final a loy;
+  private static final LinkedList<ea> lQw;
+  private static final au lQx;
+  public static final a lQy;
   
   static
   {
     AppMethodBeat.i(51002);
-    loy = new a();
-    low = new LinkedList();
-    lox = new av("MicroMsg.AppBrandCrossProcessSafeReporter.TimerLooper", (av.a)new b(), true);
+    lQy = new a();
+    lQw = new LinkedList();
+    lQx = new au("MicroMsg.AppBrandCrossProcessSafeReporter.TimerLooper", (au.a)new b(), true);
     AppMethodBeat.o(51002);
   }
   
@@ -37,39 +37,39 @@ public final class a
   {
     AppMethodBeat.i(51000);
     k.h(paramVarArgs, "vals");
-    if (aj.cbe())
+    if (ai.cin())
     {
-      h.vKh.a(paramInt, false, false, paramBoolean, new Object[] { paramVarArgs });
+      h.wUl.a(paramInt, false, false, paramBoolean, new Object[] { paramVarArgs });
       AppMethodBeat.o(51000);
       return;
     }
-    if (lox.eFX()) {
-      lox.vE(10000L);
+    if (lQx.eVs()) {
+      lQx.Ah(10000L);
     }
     y localy = null;
-    synchronized (low)
+    synchronized (lQw)
     {
-      LinkedList localLinkedList2 = low;
-      dy localdy = new dy();
-      localdy.Crn = paramInt;
-      h localh = h.vKh;
-      localdy.value = h.t(Arrays.copyOf(paramVarArgs, paramVarArgs.length));
-      localdy.vJT = false;
-      localdy.vJx = false;
-      localdy.vJU = paramBoolean;
-      localLinkedList2.add(localdy);
+      LinkedList localLinkedList2 = lQw;
+      ea localea = new ea();
+      localea.DJF = paramInt;
+      h localh = h.wUl;
+      localea.value = h.v(Arrays.copyOf(paramVarArgs, paramVarArgs.length));
+      localea.wTX = false;
+      localea.wTB = false;
+      localea.wTY = paramBoolean;
+      localLinkedList2.add(localea);
       paramVarArgs = localy;
-      if (low.size() >= 1000)
+      if (lQw.size() >= 1000)
       {
-        paramVarArgs = new dx();
-        paramVarArgs.fyl.addAll((Collection)low);
-        low.clear();
+        paramVarArgs = new dz();
+        paramVarArgs.fBS.addAll((Collection)lQw);
+        lQw.clear();
       }
-      localy = y.JfV;
+      localy = y.KTp;
       if (paramVarArgs != null)
       {
         if (a(paramVarArgs) == true) {
-          lox.vE(10000L);
+          lQx.Ah(10000L);
         }
         AppMethodBeat.o(51000);
         return;
@@ -78,17 +78,17 @@ public final class a
     AppMethodBeat.o(51000);
   }
   
-  private static boolean a(dx paramdx)
+  private static boolean a(dz paramdz)
   {
     AppMethodBeat.i(50999);
-    Collection localCollection = (Collection)paramdx.fyl;
+    Collection localCollection = (Collection)paramdz.fBS;
     if ((localCollection == null) || (localCollection.isEmpty())) {}
     for (int i = 1; i != 0; i = 0)
     {
       AppMethodBeat.o(50999);
       return false;
     }
-    XIPCInvoker.a("com.tencent.mm", paramdx, a.class, null);
+    XIPCInvoker.a("com.tencent.mm", paramdz, a.class, null);
     AppMethodBeat.o(50999);
     return true;
   }
@@ -101,20 +101,20 @@ public final class a
     AppMethodBeat.o(51001);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandCrossProcessSafeReporter$IPC_reportKvSafe;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportListStruct;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandCrossProcessSafeReporter$IPC_reportKvSafe;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportListStruct;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
   static final class a
-    implements b<dx, IPCVoid>
+    implements b<dz, IPCVoid>
   {}
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/appbrand/report/AppBrandCrossProcessSafeReporter$periodReportTimer$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/report/AppBrandCrossProcessSafeReporter$periodReportTimer$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-appbrand-integration_release"})
   public static final class b
-    implements av.a
+    implements au.a
   {
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(50998);
-      a locala = a.loy;
-      a.blZ();
+      a locala = a.lQy;
+      a.bsV();
       AppMethodBeat.o(50998);
       return true;
     }
@@ -122,7 +122,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.a
  * JD-Core Version:    0.7.0.1
  */

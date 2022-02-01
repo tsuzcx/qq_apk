@@ -12,12 +12,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/view/RoundEmojiView;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "getPath", "()Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "getRect", "()Landroid/graphics/RectF;", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/view/RoundEmojiView;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "getPath", "()Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "getRect", "()Landroid/graphics/RectF;", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-emojisdk_release"})
 public final class RoundEmojiView
   extends BaseEmojiView
 {
-  private final RectF cbB;
-  private final Path ja;
+  private final RectF bYy;
+  private final Path jZ;
   
   public RoundEmojiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,19 +28,19 @@ public final class RoundEmojiView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(105816);
-    this.ja = new Path();
-    this.cbB = new RectF();
+    this.jZ = new Path();
+    this.bYy = new RectF();
     AppMethodBeat.o(105816);
   }
   
   public final Path getPath()
   {
-    return this.ja;
+    return this.jZ;
   }
   
   public final RectF getRect()
   {
-    return this.cbB;
+    return this.bYy;
   }
   
   protected final void onDraw(Canvas paramCanvas)
@@ -66,7 +66,7 @@ public final class RoundEmojiView
       k.g(localObject, "drawable");
       if (i >= ((Drawable)localObject).getBounds().bottom)
       {
-        localObject = this.cbB;
+        localObject = this.bYy;
         i = getMeasuredWidth();
         localDrawable = getDrawable();
         k.g(localDrawable, "drawable");
@@ -93,12 +93,12 @@ public final class RoundEmojiView
     }
     for (;;)
     {
-      this.ja.addRoundRect(this.cbB, getMeasuredWidth() / 10.0F, getMeasuredHeight() / 10.0F, Path.Direction.CW);
+      this.jZ.addRoundRect(this.bYy, getMeasuredWidth() / 10.0F, getMeasuredHeight() / 10.0F, Path.Direction.CW);
       if (paramCanvas != null) {
         paramCanvas.save();
       }
       if (paramCanvas != null) {
-        paramCanvas.clipPath(this.ja);
+        paramCanvas.clipPath(this.jZ);
       }
       super.onDraw(paramCanvas);
       if (paramCanvas == null) {
@@ -112,7 +112,7 @@ public final class RoundEmojiView
       k.g(localObject, "drawable");
       if (i >= ((Drawable)localObject).getBounds().right)
       {
-        localObject = this.cbB;
+        localObject = this.bYy;
         i = getMeasuredWidth();
         localDrawable = getDrawable();
         k.g(localDrawable, "drawable");
@@ -132,7 +132,7 @@ public final class RoundEmojiView
         k.g(localObject, "drawable");
         if (i >= ((Drawable)localObject).getBounds().bottom)
         {
-          localObject = this.cbB;
+          localObject = this.bYy;
           i = getMeasuredHeight();
           localDrawable = getDrawable();
           k.g(localDrawable, "drawable");
@@ -148,7 +148,7 @@ public final class RoundEmojiView
         }
         else
         {
-          this.cbB.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+          this.bYy.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
         }
       }
     }
@@ -157,7 +157,7 @@ public final class RoundEmojiView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.view.RoundEmojiView
  * JD-Core Version:    0.7.0.1
  */

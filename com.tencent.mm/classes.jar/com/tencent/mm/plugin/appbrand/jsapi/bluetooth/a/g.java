@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -15,14 +15,14 @@ public final class g
   
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    boolean bool1 = false;
+    boolean bool2 = false;
     AppMethodBeat.i(144500);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lI(126);
-    ad.i("MicroMsg.JsApiGetBluetoothAdapterState", "appId:%s getBluetoothAdapterState", new Object[] { paramc.getAppId() });
-    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.HS(paramc.getAppId());
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(126);
+    ac.i("MicroMsg.JsApiGetBluetoothAdapterState", "appId:%s getBluetoothAdapterState", new Object[] { paramc.getAppId() });
+    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.LX(paramc.getAppId());
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiGetBluetoothAdapterState", "bleWorker is null, may not open ble");
+      ac.e("MicroMsg.JsApiGetBluetoothAdapterState", "bleWorker is null, may not open ble");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10000));
       paramc.h(paramInt, k("fail:not init", paramJSONObject));
@@ -30,17 +30,22 @@ public final class g
       AppMethodBeat.o(144500);
       return;
     }
-    boolean bool2 = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aZd();
-    paramJSONObject = paramJSONObject.aYI();
-    if (paramJSONObject != null) {
-      bool1 = paramJSONObject.jJc.jKv.get();
+    boolean bool3 = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bfV();
+    boolean bool1 = bool2;
+    if (paramJSONObject.kid != null)
+    {
+      paramJSONObject = paramJSONObject.kid;
+      bool1 = bool2;
+      if (paramJSONObject.kjD != null) {
+        bool1 = paramJSONObject.kjD.kkW.get();
+      }
     }
-    ad.i("MicroMsg.JsApiGetBluetoothAdapterState", "availableState : " + bool2 + ",discoveringState : " + bool1);
+    ac.i("MicroMsg.JsApiGetBluetoothAdapterState", "availableState : " + bool3 + ",discoveringState : " + bool1);
     paramJSONObject = new HashMap();
-    paramJSONObject.put("available", Boolean.valueOf(bool2));
+    paramJSONObject.put("available", Boolean.valueOf(bool3));
     paramJSONObject.put("discovering", Boolean.valueOf(bool1));
     paramc.h(paramInt, k("ok", paramJSONObject));
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lI(127);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(127);
     AppMethodBeat.o(144500);
   }
 }

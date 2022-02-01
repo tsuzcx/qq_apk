@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.c;
-import com.tencent.mm.protocal.protobuf.axy;
-import com.tencent.mm.protocal.protobuf.axz;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.protocal.protobuf.bbq;
+import com.tencent.mm.protocal.protobuf.bbr;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
-  extends c<axz>
+  extends c<bbr>
 {
   public b(int paramInt)
   {
     AppMethodBeat.i(65988);
-    axy localaxy = new axy();
-    localaxy.CEs = paramInt;
-    localaxy.CEt = 0;
-    localaxy.DwI = 1;
+    bbq localbbq = new bbq();
+    localbbq.DWS = paramInt;
+    localbbq.DWT = 0;
+    localbbq.ESd = 1;
     b.a locala = new b.a();
-    locala.gUU = localaxy;
-    locala.gUV = new axz();
+    locala.hvt = localbbq;
+    locala.hvu = new bbr();
     locala.funcId = 2680;
     locala.uri = "/cgi-bin/micromsg-bin/getpayfunctionswitchlist";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ad.i("MicroMsg.CgiGetPayFunctionSwitchList", "TpaCountry: %s", new Object[] { Integer.valueOf(paramInt) });
+    this.rr = locala.aAz();
+    ac.i("MicroMsg.CgiGetPayFunctionSwitchList", "TpaCountry: %s", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(65988);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.b
  * JD-Core Version:    0.7.0.1
  */

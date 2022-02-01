@@ -9,19 +9,19 @@ import java.util.List;
 abstract class b
   extends a
 {
-  private z bON;
+  private z bMv;
   
   b()
   {
-    super(new d[] { ab.zz(), r.zc(), u.zt(), k.yY() });
+    super(new d[] { ab.zm(), r.yP(), u.zg(), k.yL() });
   }
   
   private void b(p paramp)
   {
-    if (this.bON != null) {}
+    if (this.bMv != null) {}
     try
     {
-      this.bON.execute(new a(this, paramp, (byte)0));
+      this.bMv.execute(new a(this, paramp, (byte)0));
       return;
     }
     catch (Exception paramp) {}
@@ -32,7 +32,7 @@ abstract class b
     if (parama == null) {
       return null;
     }
-    return new k.a(Math.max(parama.bOU, 10000L));
+    return new k.a(Math.max(parama.bMC, 10000L));
   }
   
   abstract void a(double paramDouble1, double paramDouble2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat, long paramLong1, long paramLong2);
@@ -50,7 +50,7 @@ abstract class b
       }
       finally {}
     }
-    this.bON = z.b(paramHandler);
+    this.bMv = z.b(paramHandler);
     super.a(paramHandler, parama);
   }
   
@@ -77,7 +77,7 @@ abstract class b
     default: 
       return;
     case 101: 
-      a(((ab.a)paramp).bVi, paramp.bRC, paramp.bRD);
+      a(((ab.a)paramp).bSQ, paramp.bPk, paramp.bPl);
       return;
     case 201: 
       b(paramp);
@@ -87,11 +87,11 @@ abstract class b
       return;
     case 301: 
       paramp = (u.e)paramp;
-      a(paramp.x, paramp.y, paramp.bUc, paramp.bUa, paramp.bUb, paramp.aSD, paramp.bRD);
+      a(paramp.x, paramp.y, paramp.bRK, paramp.bRI, paramp.bRJ, paramp.aTw, paramp.bPl);
       return;
     }
     paramp = (k.b)paramp;
-    a(paramp.lat, paramp.lng, Double.valueOf(paramp.bQK).intValue(), Math.round(paramp.bQL), Math.round(paramp.aSD), paramp.bQN, paramp.bQO, paramp.bQM, paramp.bQP, paramp.bRD);
+    a(paramp.lat, paramp.lng, Double.valueOf(paramp.bOs).intValue(), Math.round(paramp.bOt), Math.round(paramp.aTw), paramp.bOv, paramp.bOw, paramp.bOu, paramp.bOx, paramp.bPl);
   }
   
   abstract void a(x paramx, long paramLong1, long paramLong2);
@@ -101,8 +101,8 @@ abstract class b
   static final class a
     implements Runnable
   {
-    private final WeakReference<b> bOO;
-    private final p bOP;
+    private final WeakReference<b> bMw;
+    private final p bMx;
     
     private a(b paramb, p paramp)
     {
@@ -113,17 +113,17 @@ abstract class b
         AppMethodBeat.o(88017);
         throw paramb;
       }
-      this.bOO = new WeakReference(paramb);
-      this.bOP = paramp;
+      this.bMw = new WeakReference(paramb);
+      this.bMx = paramp;
       AppMethodBeat.o(88017);
     }
     
     public final void run()
     {
       AppMethodBeat.i(88018);
-      b localb = (b)this.bOO.get();
+      b localb = (b)this.bMw.get();
       if (localb != null) {
-        switch (this.bOP.what)
+        switch (this.bMx.what)
         {
         }
       }
@@ -131,14 +131,14 @@ abstract class b
       {
         AppMethodBeat.o(88018);
         return;
-        r.f localf = (r.f)this.bOP;
-        if (localf.bRZ == 1)
+        r.f localf = (r.f)this.bMx;
+        if (localf.bPH == 1)
         {
-          localb.a(localf.bSa, localf.bRC, localf.bRD);
+          localb.a(localf.bPI, localf.bPk, localf.bPl);
           AppMethodBeat.o(88018);
           return;
         }
-        localb.a(localf.bRZ, localf.message, localf.bRC, localf.bRD);
+        localb.a(localf.bPH, localf.message, localf.bPk, localf.bPl);
       }
     }
   }

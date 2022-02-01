@@ -10,7 +10,7 @@ public final class b
   public final void execute(Runnable paramRunnable)
   {
     AppMethodBeat.i(183279);
-    h.Iye.aR(paramRunnable);
+    h.JZN.aU(paramRunnable);
     AppMethodBeat.o(183279);
   }
   

@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.IBinder;
 import android.os.IBinder.DeathRecipient;
 import android.os.Process;
@@ -20,6 +21,7 @@ import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.d;
 import com.tencent.mm.sdcard_migrate.util.ExtStorageMigrateException;
+import com.tencent.mm.sdk.platformtools.aw;
 import com.tencent.tinker.entry.ApplicationLike;
 import java.io.File;
 import java.util.Iterator;
@@ -30,7 +32,7 @@ public final class ExtStorageMigrateRoutine
 {
   static final String AUXUI_ACTION_DO_MIGRATE_ROUTINE = "auxui_action_do_migrate_routine";
   static final String AUXUI_PARAM_IS_MIGRAION_END = "auxui_param_is_migration_end";
-  static final ExtStorageMigrateConfig DEFAULT_CONFIG = ExtStorageMigrateConfig.EQf;
+  static final ExtStorageMigrateConfig DEFAULT_CONFIG = ExtStorageMigrateConfig.Gns;
   private static final String LAUNCHER_UI_CLASS_NAME = "com.tencent.mm.ui.LauncherUI";
   static final int NOTIFICATION_TASK_ID = 1027;
   static final int PENDING_INTENT_REQUEST_CANCEL_MIGRATION = 3843;
@@ -53,17 +55,17 @@ public final class ExtStorageMigrateRoutine
   
   static boolean bindMigrationService(Context paramContext, ServiceConnection paramServiceConnection)
   {
-    AppMethodBeat.i(196819);
+    AppMethodBeat.i(195839);
     Intent localIntent = new Intent("service_action_startup");
     localIntent.setClassName(paramContext, "com.tencent.mm.sdcard_migrate.ExtStorageMigrateService");
     boolean bool = paramContext.bindService(localIntent, paramServiceConnection, 0);
-    AppMethodBeat.o(196819);
+    AppMethodBeat.o(195839);
     return bool;
   }
   
   static void cancelMigration(Context paramContext)
   {
-    AppMethodBeat.i(196821);
+    AppMethodBeat.i(195841);
     if (isMigrateServiceRunning(paramContext))
     {
       Intent localIntent = new Intent();
@@ -71,32 +73,47 @@ public final class ExtStorageMigrateRoutine
       localIntent.setAction("service_action_cancel_migrate");
       paramContext.startService(localIntent);
     }
-    AppMethodBeat.o(196821);
+    AppMethodBeat.o(195841);
+  }
+  
+  private static boolean isDeviceChangedUnexpectly()
+  {
+    AppMethodBeat.i(195833);
+    aw localaw = aw.aKT("extstg_migrate_preconditions");
+    String str = localaw.getString("last_fingerprint", "");
+    if ((str == null) || (!str.equals(Build.FINGERPRINT)))
+    {
+      localaw.encode("last_fingerprint", Build.FINGERPRINT);
+      AppMethodBeat.o(195833);
+      return true;
+    }
+    AppMethodBeat.o(195833);
+    return false;
   }
   
   private static boolean isMainProcess(String paramString)
   {
-    AppMethodBeat.i(196823);
+    AppMethodBeat.i(195843);
     if (paramString.indexOf(':') < 0)
     {
-      AppMethodBeat.o(196823);
+      AppMethodBeat.o(195843);
       return true;
     }
-    AppMethodBeat.o(196823);
+    AppMethodBeat.o(195843);
     return false;
   }
   
   private static boolean isMigrateServiceProcess(String paramString)
   {
-    AppMethodBeat.i(196824);
+    AppMethodBeat.i(195844);
     boolean bool = paramString.endsWith(":extmig");
-    AppMethodBeat.o(196824);
+    AppMethodBeat.o(195844);
     return bool;
   }
   
   private static boolean isMigrateServiceRunning(Context paramContext)
   {
-    AppMethodBeat.i(196816);
+    AppMethodBeat.i(195836);
     paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(2147483647);
     if (paramContext != null)
     {
@@ -106,18 +123,18 @@ public final class ExtStorageMigrateRoutine
         ActivityManager.RunningServiceInfo localRunningServiceInfo = (ActivityManager.RunningServiceInfo)paramContext.next();
         if ((localRunningServiceInfo.uid == Process.myUid()) && (localRunningServiceInfo.service.getClassName().equals("com.tencent.mm.sdcard_migrate.ExtStorageMigrateService")))
         {
-          AppMethodBeat.o(196816);
+          AppMethodBeat.o(195836);
           return true;
         }
       }
     }
-    AppMethodBeat.o(196816);
+    AppMethodBeat.o(195836);
     return false;
   }
   
   private static boolean isStartWithActivity(Context paramContext)
   {
-    AppMethodBeat.i(196817);
+    AppMethodBeat.i(195837);
     Object localObject1 = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(2147483647);
     if (localObject1 != null)
     {
@@ -131,47 +148,53 @@ public final class ExtStorageMigrateRoutine
           localObject2 = ((ActivityManager.RunningTaskInfo)localObject2).topActivity;
           if ((localObject2 != null) && (str.equals(((ComponentName)localObject2).getPackageName())))
           {
-            AppMethodBeat.o(196817);
+            AppMethodBeat.o(195837);
             return true;
           }
         }
       }
     }
-    AppMethodBeat.o(196817);
+    AppMethodBeat.o(195837);
     return false;
   }
   
   static boolean needsToDoMigrate(Context paramContext)
   {
-    AppMethodBeat.i(196813);
-    if (!b.eEF())
+    AppMethodBeat.i(195832);
+    if (!b.eTZ())
     {
-      ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Sync migrate switch is off, do not trigger questionnaire.", new Object[0]);
-      ExtStorageMigrateMonitor.at(1315L, 101L);
-      AppMethodBeat.o(196813);
+      ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Sync migrate switch is off, do not trigger questionnaire.", new Object[0]);
+      ExtStorageMigrateMonitor.as(1315L, 101L);
+      AppMethodBeat.o(195832);
       return false;
     }
-    ExtStorageMigrateMonitor.at(1315L, 102L);
-    if (b.aEU(DEFAULT_CONFIG.sourceDir))
+    ExtStorageMigrateMonitor.as(1315L, 102L);
+    if (b.aKl(DEFAULT_CONFIG.sourceDir))
     {
-      ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Already migrated, do not need to migrate", new Object[0]);
-      AppMethodBeat.o(196813);
+      ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Already migrated, do not need to migrate", new Object[0]);
+      AppMethodBeat.o(195832);
       return false;
     }
     if (!new File(DEFAULT_CONFIG.sourceDir).exists())
     {
-      ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Old external storage directory does not exist, do not need to migrate.", new Object[0]);
-      AppMethodBeat.o(196813);
+      ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Old external storage directory does not exist, do not need to migrate.", new Object[0]);
+      AppMethodBeat.o(195832);
       return false;
     }
-    ExtStorageMigrateMonitor.at(1315L, 100L);
-    AppMethodBeat.o(196813);
+    if (isDeviceChangedUnexpectly())
+    {
+      ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] External tools may move us into a new device or OTA happened, skip migrate this time.", new Object[0]);
+      AppMethodBeat.o(195832);
+      return false;
+    }
+    ExtStorageMigrateMonitor.as(1315L, 100L);
+    AppMethodBeat.o(195832);
     return true;
   }
   
   private static void startMigrateQuestionnaire(Context paramContext)
   {
-    AppMethodBeat.i(196814);
+    AppMethodBeat.i(195834);
     Object localObject = new Intent(paramContext, ExtStorageMigrateAuxActivity.class);
     ((Intent)localObject).setAction("auxui_action_do_migrate_routine");
     ((Intent)localObject).addFlags(268435456);
@@ -179,34 +202,34 @@ public final class ExtStorageMigrateRoutine
     try
     {
       ((PendingIntent)localObject).send();
-      AppMethodBeat.o(196814);
+      AppMethodBeat.o(195834);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ExtStorageMigrateMonitor.eEi().printErrStackTrace("MicroMsg.ExtStorageMigrateRoutine", localThrowable, "[-] startMigrateQuestionnaire failed, just do normal startup next.", new Object[0]);
+      ExtStorageMigrateMonitor.eTC().printErrStackTrace("MicroMsg.ExtStorageMigrateRoutine", localThrowable, "[-] startMigrateQuestionnaire failed, just do normal startup next.", new Object[0]);
       startWeChat(paramContext);
-      AppMethodBeat.o(196814);
+      AppMethodBeat.o(195834);
     }
   }
   
   static void startMigration(Context paramContext, final ExtStorageMigrateConfig paramExtStorageMigrateConfig, MigrateResultCallback paramMigrateResultCallback)
   {
-    AppMethodBeat.i(196820);
+    AppMethodBeat.i(195840);
     startupMigrationService(paramContext);
     bindMigrationService(paramContext, new ServiceConnection()
     {
-      private IBinder EQt;
-      private IBinder.DeathRecipient EQu;
+      private IBinder GnG;
+      private IBinder.DeathRecipient GnH;
       
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
-        AppMethodBeat.i(196810);
-        this.EQt = paramAnonymousIBinder;
+        AppMethodBeat.i(195829);
+        this.GnG = paramAnonymousIBinder;
         paramAnonymousComponentName = e.a.M(paramAnonymousIBinder);
         try
         {
-          paramAnonymousIBinder.linkToDeath(this.EQu, 0);
+          paramAnonymousIBinder.linkToDeath(this.GnH, 0);
         }
         catch (RemoteException paramAnonymousIBinder)
         {
@@ -214,30 +237,30 @@ public final class ExtStorageMigrateRoutine
           {
             try
             {
-              paramAnonymousComponentName.a(this.EQv);
+              paramAnonymousComponentName.a(this.GnI);
               paramAnonymousComponentName.a(paramExtStorageMigrateConfig);
-              AppMethodBeat.o(196810);
+              AppMethodBeat.o(195829);
               return;
             }
             catch (RemoteException paramAnonymousComponentName)
             {
-              ExtStorageMigrateMonitor.eEi().printErrStackTrace("MicroMsg.ExtStorageMigrateRoutine", paramAnonymousComponentName, "[-] Exception occurred.", new Object[0]);
+              ExtStorageMigrateMonitor.eTC().printErrStackTrace("MicroMsg.ExtStorageMigrateRoutine", paramAnonymousComponentName, "[-] Exception occurred.", new Object[0]);
               try
               {
-                this.EQv.b(5, new ExtStorageMigrateException(paramAnonymousComponentName));
-                AppMethodBeat.o(196810);
+                this.GnI.b(5, new ExtStorageMigrateException(paramAnonymousComponentName));
+                AppMethodBeat.o(195829);
                 return;
               }
               catch (RemoteException paramAnonymousComponentName)
               {
-                AppMethodBeat.o(196810);
+                AppMethodBeat.o(195829);
               }
             }
             paramAnonymousIBinder = paramAnonymousIBinder;
-            ExtStorageMigrateMonitor.eEi().printErrStackTrace("MicroMsg.ExtStorageMigrateRoutine", paramAnonymousIBinder, "[-] Exception occurred.", new Object[0]);
+            ExtStorageMigrateMonitor.eTC().printErrStackTrace("MicroMsg.ExtStorageMigrateRoutine", paramAnonymousIBinder, "[-] Exception occurred.", new Object[0]);
             try
             {
-              this.EQv.b(6, null);
+              this.GnI.b(6, null);
             }
             catch (RemoteException paramAnonymousIBinder) {}
           }
@@ -246,19 +269,19 @@ public final class ExtStorageMigrateRoutine
       
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
-        AppMethodBeat.i(196811);
-        ExtStorageMigrateMonitor.eEi().w("MicroMsg.ExtStorageMigrateRoutine", "[!] Service [%s] disconnected.", new Object[] { paramAnonymousComponentName });
-        AppMethodBeat.o(196811);
+        AppMethodBeat.i(195830);
+        ExtStorageMigrateMonitor.eTC().w("MicroMsg.ExtStorageMigrateRoutine", "[!] Service [%s] disconnected.", new Object[] { paramAnonymousComponentName });
+        AppMethodBeat.o(195830);
       }
     });
-    AppMethodBeat.o(196820);
+    AppMethodBeat.o(195840);
   }
   
   @SuppressLint({"NewApi"})
   static void startWeChat(Context paramContext)
   {
-    AppMethodBeat.i(196815);
-    b.eEy();
+    AppMethodBeat.i(195835);
+    b.eTS();
     Object localObject2 = paramContext.getApplicationContext().getPackageManager().getLaunchIntentForPackage(paramContext.getPackageName());
     localObject1 = localObject2;
     if (localObject2 == null) {}
@@ -277,120 +300,120 @@ public final class ExtStorageMigrateRoutine
       try
       {
         ((PendingIntent)localObject2).send();
-        AppMethodBeat.o(196815);
+        AppMethodBeat.o(195835);
         return;
       }
       catch (Throwable localThrowable)
       {
-        ExtStorageMigrateMonitor.eEi().printErrStackTrace("MicroMsg.ExtStorageMigrateRoutine", localThrowable, "[-] startWeChat failed, retry with normal way.", new Object[0]);
+        ExtStorageMigrateMonitor.eTC().printErrStackTrace("MicroMsg.ExtStorageMigrateRoutine", localThrowable, "[-] startWeChat failed, retry with normal way.", new Object[0]);
         if (!(paramContext instanceof Activity)) {
           break label152;
         }
         ((Intent)localObject1).removeFlags(268435456);
-        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).adn(), "com/tencent/mm/sdcard_migrate/ExtStorageMigrateRoutine", "startWeChat", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lS(0));
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aeD(), "com/tencent/mm/sdcard_migrate/ExtStorageMigrateRoutine", "startWeChat", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/sdcard_migrate/ExtStorageMigrateRoutine", "startWeChat", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(196815);
+        AppMethodBeat.o(195835);
       }
       paramContext = paramContext;
       paramContext = new IllegalStateException("Should not be here.");
-      AppMethodBeat.o(196815);
+      AppMethodBeat.o(195835);
       throw paramContext;
     }
   }
   
   static void startupMigrationService(Context paramContext)
   {
-    AppMethodBeat.i(196818);
+    AppMethodBeat.i(195838);
     Intent localIntent = new Intent("service_action_startup");
     localIntent.setClassName(paramContext, "com.tencent.mm.sdcard_migrate.ExtStorageMigrateService");
     paramContext.startService(localIntent);
-    ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] startupMigrationService called.", new Object[0]);
-    AppMethodBeat.o(196818);
+    ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] startupMigrationService called.", new Object[0]);
+    AppMethodBeat.o(195838);
   }
   
   private static void suicide()
   {
-    AppMethodBeat.i(196825);
+    AppMethodBeat.i(195845);
     Process.killProcess(Process.myPid());
-    AppMethodBeat.o(196825);
+    AppMethodBeat.o(195845);
   }
   
   public static void triggerMediaRescanOnDemand()
   {
-    AppMethodBeat.i(196822);
-    Application localApplication = d.cKY.getApplication();
-    String str = d.cvL;
+    AppMethodBeat.i(195842);
+    Application localApplication = d.cIg.getApplication();
+    String str = d.csT;
     if (!localApplication.getPackageName().equals(str))
     {
-      AppMethodBeat.o(196822);
+      AppMethodBeat.o(195842);
       return;
     }
-    if (!b.eEC())
+    if (!b.eTW())
     {
-      AppMethodBeat.o(196822);
+      AppMethodBeat.o(195842);
       return;
     }
-    com.tencent.mm.sdk.f.b.o(com.tencent.mm.loader.j.b.aiq(), localApplication);
-    com.tencent.mm.sdk.f.b.o(com.tencent.mm.loader.j.b.air(), localApplication);
-    b.eEE();
-    AppMethodBeat.o(196822);
+    com.tencent.mm.sdk.f.b.o(com.tencent.mm.loader.j.b.apq(), localApplication);
+    com.tencent.mm.sdk.f.b.o(com.tencent.mm.loader.j.b.apr(), localApplication);
+    b.eTY();
+    AppMethodBeat.o(195842);
   }
   
   @Keep
   static boolean triggerOnDemand(Context paramContext)
   {
-    AppMethodBeat.i(196812);
-    String str = d.cvL;
+    AppMethodBeat.i(195831);
+    String str = d.csT;
     if (isMigrateServiceProcess(str))
     {
-      ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Migrate Service Process, skip rest logic in appLike.", new Object[0]);
-      AppMethodBeat.o(196812);
+      ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Migrate Service Process, skip rest logic in appLike.", new Object[0]);
+      AppMethodBeat.o(195831);
       return true;
     }
     if (!isMainProcess(str))
     {
-      ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Not in main process, startup normally.", new Object[0]);
-      AppMethodBeat.o(196812);
+      ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Not in main process, startup normally.", new Object[0]);
+      AppMethodBeat.o(195831);
       return false;
     }
-    if (b.eEx())
+    if (b.eTR())
     {
-      ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Last migrate routine indicates that we should startup normally this time.", new Object[0]);
-      b.eEz();
-      AppMethodBeat.o(196812);
+      ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Last migrate routine indicates that we should startup normally this time.", new Object[0]);
+      b.eTT();
+      AppMethodBeat.o(195831);
       return false;
     }
     if (!isMigrateServiceRunning(paramContext))
     {
-      ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Migrate service is not running, check if we have external storage permission next.", new Object[0]);
+      ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Migrate service is not running, check if we have external storage permission next.", new Object[0]);
       if (com.tencent.mm.pluginsdk.permission.b.e(paramContext, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" }))
       {
-        ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] We have external storage permission, do not need to migrate.", new Object[0]);
-        AppMethodBeat.o(196812);
+        ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] We have external storage permission, do not need to migrate.", new Object[0]);
+        AppMethodBeat.o(195831);
         return false;
       }
     }
     else
     {
-      ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Migrate service is running, check if we are doing migrating next.", new Object[0]);
+      ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Migrate service is running, check if we are doing migrating next.", new Object[0]);
     }
     if (!isStartWithActivity(paramContext))
     {
-      ExtStorageMigrateMonitor.eEi().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Start up without any activities, let it continue normally.", new Object[0]);
-      AppMethodBeat.o(196812);
+      ExtStorageMigrateMonitor.eTC().i("MicroMsg.ExtStorageMigrateRoutine", "[+] Start up without any activities, let it continue normally.", new Object[0]);
+      AppMethodBeat.o(195831);
       return false;
     }
     if (!needsToDoMigrate(paramContext))
     {
-      AppMethodBeat.o(196812);
+      AppMethodBeat.o(195831);
       return false;
     }
     startMigrateQuestionnaire(paramContext);
-    ExtStorageMigrateMonitor.eEl();
+    ExtStorageMigrateMonitor.eTF();
     suicide();
-    AppMethodBeat.o(196812);
+    AppMethodBeat.o(195831);
     return true;
   }
 }

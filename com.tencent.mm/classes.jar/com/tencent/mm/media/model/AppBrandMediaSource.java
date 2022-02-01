@@ -9,8 +9,8 @@ public class AppBrandMediaSource
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandMediaSource> CREATOR;
-  public String gsf;
-  public String gsg;
+  public String gSN;
+  public String gSO;
   public String url;
   
   static
@@ -23,19 +23,19 @@ public class AppBrandMediaSource
   public AppBrandMediaSource()
   {
     this.url = "";
-    this.gsf = "";
-    this.gsg = "";
+    this.gSN = "";
+    this.gSO = "";
   }
   
   public AppBrandMediaSource(Parcel paramParcel)
   {
     AppMethodBeat.i(184248);
     this.url = "";
-    this.gsf = "";
-    this.gsg = "";
+    this.gSN = "";
+    this.gSO = "";
     this.url = paramParcel.readString();
-    this.gsf = paramParcel.readString();
-    this.gsg = paramParcel.readString();
+    this.gSN = paramParcel.readString();
+    this.gSO = paramParcel.readString();
     AppMethodBeat.o(184248);
   }
   
@@ -48,8 +48,8 @@ public class AppBrandMediaSource
   {
     AppMethodBeat.i(184249);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.gsf);
-    paramParcel.writeString(this.gsg);
+    paramParcel.writeString(this.gSN);
+    paramParcel.writeString(this.gSO);
     AppMethodBeat.o(184249);
   }
 }

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.freewifi.b;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class b$1
   implements Runnable
@@ -15,11 +15,11 @@ final class b$1
   {
     AppMethodBeat.i(24745);
     Intent localIntent = new Intent();
-    localIntent.putExtra("free_wifi_ap_key", this.rgB);
-    localIntent.putExtra("free_wifi_sessionkey", m.cvu());
+    localIntent.putExtra("free_wifi_ap_key", this.spt);
+    localIntent.putExtra("free_wifi_sessionkey", m.cIG());
     localIntent.putExtra("free_wifi_source", 6);
     localIntent.addFlags(67108864);
-    d.b(aj.getContext(), "freewifi", ".ui.FreeWifiEntryUI", localIntent);
+    d.b(ai.getContext(), "freewifi", ".ui.FreeWifiEntryUI", localIntent);
     AppMethodBeat.o(24745);
   }
 }

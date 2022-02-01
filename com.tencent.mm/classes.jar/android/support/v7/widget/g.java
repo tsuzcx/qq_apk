@@ -12,8 +12,8 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build.VERSION;
-import android.support.c.a.c;
-import android.support.c.a.i;
+import android.support.d.a.c;
+import android.support.d.a.i;
 import android.support.v4.e.h;
 import android.support.v4.e.o;
 import android.util.AttributeSet;
@@ -26,21 +26,21 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public final class g
 {
-  private static final int[] ahA = { 2131230746, 2131230751 };
-  private static final PorterDuff.Mode ahs = PorterDuff.Mode.SRC_IN;
-  private static g aht;
-  private static final c ahu = new c();
-  private static final int[] ahv = { 2131230830, 2131230828, 2131230743 };
-  private static final int[] ahw = { 2131230765, 2131230807, 2131230772, 2131230767, 2131230768, 2131230771, 2131230770 };
-  private static final int[] ahx = { 2131230827, 2131230829, 2131230758, 2131230820, 2131230821, 2131230823, 2131230825, 2131230822, 2131230824, 2131230826 };
-  private static final int[] ahy = { 2131230797, 2131230756, 2131230796 };
-  private static final int[] ahz = { 2131230818, 2131230831 };
-  private WeakHashMap<Context, o<ColorStateList>> ahB;
-  private android.support.v4.e.a<String, d> ahC;
-  private o<String> ahD;
-  private final WeakHashMap<Context, android.support.v4.e.g<WeakReference<Drawable.ConstantState>>> ahE = new WeakHashMap(0);
-  private TypedValue ahF;
-  private boolean ahG;
+  private static final PorterDuff.Mode aim = PorterDuff.Mode.SRC_IN;
+  private static g ain;
+  private static final c aio = new c();
+  private static final int[] aip = { 2131230830, 2131230828, 2131230743 };
+  private static final int[] aiq = { 2131230765, 2131230807, 2131230772, 2131230767, 2131230768, 2131230771, 2131230770 };
+  private static final int[] air = { 2131230827, 2131230829, 2131230758, 2131230820, 2131230821, 2131230823, 2131230825, 2131230822, 2131230824, 2131230826 };
+  private static final int[] ais = { 2131230797, 2131230756, 2131230796 };
+  private static final int[] ait = { 2131230818, 2131230831 };
+  private static final int[] aiu = { 2131230746, 2131230751 };
+  private boolean aiA;
+  private WeakHashMap<Context, o<ColorStateList>> aiv;
+  private android.support.v4.e.a<String, d> aiw;
+  private o<String> aix;
+  private final WeakHashMap<Context, android.support.v4.e.g<WeakReference<Drawable.ConstantState>>> aiy = new WeakHashMap(0);
+  private TypedValue aiz;
   
   private static long a(TypedValue paramTypedValue)
   {
@@ -74,17 +74,17 @@ public final class g
         if (paramInt == 2131230808)
         {
           localObject = (LayerDrawable)paramDrawable;
-          a(((LayerDrawable)localObject).findDrawableByLayerId(16908288), av.v(paramContext, 2130968807), ahs);
-          a(((LayerDrawable)localObject).findDrawableByLayerId(16908303), av.v(paramContext, 2130968807), ahs);
-          a(((LayerDrawable)localObject).findDrawableByLayerId(16908301), av.v(paramContext, 2130968805), ahs);
+          a(((LayerDrawable)localObject).findDrawableByLayerId(16908288), av.v(paramContext, 2130968807), aim);
+          a(((LayerDrawable)localObject).findDrawableByLayerId(16908303), av.v(paramContext, 2130968807), aim);
+          a(((LayerDrawable)localObject).findDrawableByLayerId(16908301), av.v(paramContext, 2130968805), aim);
           return paramDrawable;
         }
         if ((paramInt == 2131230799) || (paramInt == 2131230798) || (paramInt == 2131230800))
         {
           localObject = (LayerDrawable)paramDrawable;
-          a(((LayerDrawable)localObject).findDrawableByLayerId(16908288), av.x(paramContext, 2130968807), ahs);
-          a(((LayerDrawable)localObject).findDrawableByLayerId(16908303), av.v(paramContext, 2130968805), ahs);
-          a(((LayerDrawable)localObject).findDrawableByLayerId(16908301), av.v(paramContext, 2130968805), ahs);
+          a(((LayerDrawable)localObject).findDrawableByLayerId(16908288), av.x(paramContext, 2130968807), aim);
+          a(((LayerDrawable)localObject).findDrawableByLayerId(16908303), av.v(paramContext, 2130968805), aim);
+          a(((LayerDrawable)localObject).findDrawableByLayerId(16908301), av.v(paramContext, 2130968805), aim);
           return paramDrawable;
         }
         localObject = paramDrawable;
@@ -101,7 +101,7 @@ public final class g
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 109	android/support/v7/widget/g:ahE	Ljava/util/WeakHashMap;
+    //   3: getfield 109	android/support/v7/widget/g:aiy	Ljava/util/WeakHashMap;
     //   6: aload_1
     //   7: invokevirtual 187	java/util/WeakHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   10: checkcast 189	android/support/v4/e/g
@@ -135,7 +135,7 @@ public final class g
     //   67: astore_1
     //   68: goto -46 -> 22
     //   71: aload 5
-    //   73: getfield 213	android/support/v4/e/g:LU	[J
+    //   73: getfield 213	android/support/v4/e/g:MR	[J
     //   76: aload 5
     //   78: getfield 216	android/support/v4/e/g:mSize	I
     //   81: lload_2
@@ -144,19 +144,19 @@ public final class g
     //   87: iload 4
     //   89: iflt +34 -> 123
     //   92: aload 5
-    //   94: getfield 225	android/support/v4/e/g:LV	[Ljava/lang/Object;
+    //   94: getfield 225	android/support/v4/e/g:MS	[Ljava/lang/Object;
     //   97: iload 4
     //   99: aaload
-    //   100: getstatic 229	android/support/v4/e/g:LS	Ljava/lang/Object;
+    //   100: getstatic 229	android/support/v4/e/g:MP	Ljava/lang/Object;
     //   103: if_acmpeq +20 -> 123
     //   106: aload 5
-    //   108: getfield 225	android/support/v4/e/g:LV	[Ljava/lang/Object;
+    //   108: getfield 225	android/support/v4/e/g:MS	[Ljava/lang/Object;
     //   111: iload 4
-    //   113: getstatic 229	android/support/v4/e/g:LS	Ljava/lang/Object;
+    //   113: getstatic 229	android/support/v4/e/g:MP	Ljava/lang/Object;
     //   116: aastore
     //   117: aload 5
     //   119: iconst_1
-    //   120: putfield 232	android/support/v4/e/g:LT	Z
+    //   120: putfield 232	android/support/v4/e/g:MQ	Z
     //   123: aconst_null
     //   124: astore_1
     //   125: goto -103 -> 22
@@ -191,7 +191,7 @@ public final class g
     }
     paramDrawable = paramMode;
     if (paramMode == null) {
-      paramDrawable = ahs;
+      paramDrawable = aim;
     }
     localDrawable.setColorFilter(b(paramInt, paramDrawable));
   }
@@ -210,14 +210,14 @@ public final class g
       return;
       ColorStateList localColorStateList;
       Object localObject1;
-      if ((paramax.ZV) || (paramax.ZW)) {
-        if (paramax.ZV)
+      if ((paramax.aaQ) || (paramax.aaR)) {
+        if (paramax.aaQ)
         {
-          localColorStateList = paramax.Hr;
-          if (!paramax.ZW) {
+          localColorStateList = paramax.Ip;
+          if (!paramax.aaR) {
             break label97;
           }
-          paramax = paramax.vo;
+          paramax = paramax.wn;
           localObject1 = localObject2;
           if (localColorStateList != null)
           {
@@ -238,7 +238,7 @@ public final class g
         return;
         localColorStateList = null;
         break;
-        paramax = ahs;
+        paramax = aim;
         break label57;
         localObject1 = b(localColorStateList.getColorForState(paramArrayOfInt, 0), paramax);
         break label73;
@@ -249,18 +249,18 @@ public final class g
   
   private void a(String paramString, d paramd)
   {
-    if (this.ahC == null) {
-      this.ahC = new android.support.v4.e.a();
+    if (this.aiw == null) {
+      this.aiw = new android.support.v4.e.a();
     }
-    this.ahC.put(paramString, paramd);
+    this.aiw.put(paramString, paramd);
   }
   
   static boolean a(Context paramContext, int paramInt, Drawable paramDrawable)
   {
     int j = 16842801;
-    PorterDuff.Mode localMode = ahs;
+    PorterDuff.Mode localMode = aim;
     int i;
-    if (c(ahv, paramInt))
+    if (c(aip, paramInt))
     {
       j = 2130968807;
       paramInt = -1;
@@ -279,14 +279,14 @@ public final class g
           localDrawable.setAlpha(paramInt);
         }
         return true;
-        if (c(ahx, paramInt))
+        if (c(air, paramInt))
         {
           j = 2130968805;
           paramInt = -1;
           i = 1;
           continue;
         }
-        if (c(ahy, paramInt))
+        if (c(ais, paramInt))
         {
           localMode = PorterDuff.Mode.MULTIPLY;
           paramInt = -1;
@@ -328,7 +328,7 @@ public final class g
     //   9: aload 7
     //   11: ifnull +68 -> 79
     //   14: aload_0
-    //   15: getfield 109	android/support/v7/widget/g:ahE	Ljava/util/WeakHashMap;
+    //   15: getfield 109	android/support/v7/widget/g:aiy	Ljava/util/WeakHashMap;
     //   18: aload_1
     //   19: invokevirtual 187	java/util/WeakHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   22: checkcast 189	android/support/v4/e/g
@@ -342,7 +342,7 @@ public final class g
     //   40: invokespecial 308	android/support/v4/e/g:<init>	()V
     //   43: astore 4
     //   45: aload_0
-    //   46: getfield 109	android/support/v7/widget/g:ahE	Ljava/util/WeakHashMap;
+    //   46: getfield 109	android/support/v7/widget/g:aiy	Ljava/util/WeakHashMap;
     //   49: aload_1
     //   50: aload 4
     //   52: invokevirtual 309	java/util/WeakHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -389,12 +389,12 @@ public final class g
   {
     try
     {
-      PorterDuffColorFilter localPorterDuffColorFilter2 = (PorterDuffColorFilter)ahu.get(Integer.valueOf(c.c(paramInt, paramMode)));
+      PorterDuffColorFilter localPorterDuffColorFilter2 = (PorterDuffColorFilter)aio.get(Integer.valueOf(c.c(paramInt, paramMode)));
       PorterDuffColorFilter localPorterDuffColorFilter1 = localPorterDuffColorFilter2;
       if (localPorterDuffColorFilter2 == null)
       {
         localPorterDuffColorFilter1 = new PorterDuffColorFilter(paramInt, paramMode);
-        ahu.put(Integer.valueOf(c.c(paramInt, paramMode)), localPorterDuffColorFilter1);
+        aio.put(Integer.valueOf(c.c(paramInt, paramMode)), localPorterDuffColorFilter1);
       }
       return localPorterDuffColorFilter1;
     }
@@ -431,14 +431,14 @@ public final class g
     }
   }
   
-  public static g iD()
+  public static g iL()
   {
     try
     {
-      if (aht == null)
+      if (ain == null)
       {
         localg = new g();
-        aht = localg;
+        ain = localg;
         if (Build.VERSION.SDK_INT < 24)
         {
           localg.a("vector", new e());
@@ -446,7 +446,7 @@ public final class g
           localg.a("animated-selector", new a());
         }
       }
-      g localg = aht;
+      g localg = ain;
       return localg;
     }
     finally {}
@@ -454,12 +454,12 @@ public final class g
   
   private Drawable r(Context paramContext, int paramInt)
   {
-    if ((this.ahC != null) && (!this.ahC.isEmpty()))
+    if ((this.aiw != null) && (!this.aiw.isEmpty()))
     {
-      if (this.ahD != null)
+      if (this.aix != null)
       {
-        localObject1 = (String)this.ahD.get(paramInt, null);
-        if (("appcompat_skip_skip".equals(localObject1)) || ((localObject1 != null) && (this.ahC.get(localObject1) == null)))
+        localObject1 = (String)this.aix.get(paramInt, null);
+        if (("appcompat_skip_skip".equals(localObject1)) || ((localObject1 != null) && (this.aiw.get(localObject1) == null)))
         {
           localObject1 = null;
           return localObject1;
@@ -467,12 +467,12 @@ public final class g
       }
       else
       {
-        this.ahD = new o();
+        this.aix = new o();
       }
-      if (this.ahF == null) {
-        this.ahF = new TypedValue();
+      if (this.aiz == null) {
+        this.aiz = new TypedValue();
       }
-      TypedValue localTypedValue = this.ahF;
+      TypedValue localTypedValue = this.aiz;
       Object localObject1 = paramContext.getResources();
       ((Resources)localObject1).getValue(paramInt, localTypedValue, true);
       long l = a(localTypedValue);
@@ -515,14 +515,14 @@ public final class g
         if (paramContext != null) {
           break;
         }
-        this.ahD.append(paramInt, "appcompat_skip_skip");
+        this.aix.append(paramInt, "appcompat_skip_skip");
         return paramContext;
         localObject2 = localDrawable;
         localObject1 = localXmlResourceParser.getName();
         localObject2 = localDrawable;
-        this.ahD.append(paramInt, localObject1);
+        this.aix.append(paramInt, localObject1);
         localObject2 = localDrawable;
-        d locald = (d)this.ahC.get(localObject1);
+        d locald = (d)this.aiw.get(localObject1);
         localObject1 = localDrawable;
         if (locald != null)
         {
@@ -545,25 +545,12 @@ public final class g
   {
     int k = av.v(paramContext, 2130968806);
     int i = av.x(paramContext, 2130968804);
-    paramContext = av.hl;
+    paramContext = av.il;
     int[] arrayOfInt1 = av.PRESSED_STATE_SET;
     int j = android.support.v4.graphics.b.o(k, paramInt);
     int[] arrayOfInt2 = av.FOCUSED_STATE_SET;
     k = android.support.v4.graphics.b.o(k, paramInt);
     return new ColorStateList(new int[][] { paramContext, arrayOfInt1, arrayOfInt2, av.EMPTY_STATE_SET }, new int[] { i, j, k, paramInt });
-  }
-  
-  public final void Z(Context paramContext)
-  {
-    try
-    {
-      paramContext = (android.support.v4.e.g)this.ahE.get(paramContext);
-      if (paramContext != null) {
-        paramContext.clear();
-      }
-      return;
-    }
-    finally {}
   }
   
   /* Error */
@@ -575,7 +562,7 @@ public final class g
     //   2: aload_0
     //   3: aload_1
     //   4: iload_3
-    //   5: invokespecial 478	android/support/v7/widget/g:r	(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+    //   5: invokespecial 474	android/support/v7/widget/g:r	(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
     //   8: astore 5
     //   10: aload 5
     //   12: astore 4
@@ -583,7 +570,7 @@ public final class g
     //   16: ifnonnull +10 -> 26
     //   19: aload_2
     //   20: iload_3
-    //   21: invokevirtual 483	android/support/v7/widget/be:df	(I)Landroid/graphics/drawable/Drawable;
+    //   21: invokevirtual 479	android/support/v7/widget/be:de	(I)Landroid/graphics/drawable/Drawable;
     //   24: astore 4
     //   26: aload 4
     //   28: ifnull +17 -> 45
@@ -592,7 +579,7 @@ public final class g
     //   33: iload_3
     //   34: iconst_0
     //   35: aload 4
-    //   37: invokespecial 485	android/support/v7/widget/g:a	(Landroid/content/Context;IZLandroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+    //   37: invokespecial 481	android/support/v7/widget/g:a	(Landroid/content/Context;IZLandroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
     //   40: astore_1
     //   41: aload_0
     //   42: monitorexit
@@ -621,6 +608,19 @@ public final class g
     //   31	41	50	finally
   }
   
+  public final void aa(Context paramContext)
+  {
+    try
+    {
+      paramContext = (android.support.v4.e.g)this.aiy.get(paramContext);
+      if (paramContext != null) {
+        paramContext.clear();
+      }
+      return;
+    }
+    finally {}
+  }
+  
   final Drawable b(Context paramContext, int paramInt, boolean paramBoolean)
   {
     int i = 0;
@@ -629,9 +629,9 @@ public final class g
       Object localObject1;
       try
       {
-        if (!this.ahG)
+        if (!this.aiA)
         {
-          this.ahG = true;
+          this.aiA = true;
           localObject1 = l(paramContext, 2131230832);
           if (localObject1 != null)
           {
@@ -643,7 +643,7 @@ public final class g
             }
             break label282;
           }
-          this.ahG = false;
+          this.aiA = false;
           throw new IllegalStateException("This app has been built with an incorrect configuration. Please configure your build for VectorDrawableCompat.");
         }
       }
@@ -656,10 +656,10 @@ public final class g
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          if (this.ahF == null) {
-            this.ahF = new TypedValue();
+          if (this.aiz == null) {
+            this.aiz = new TypedValue();
           }
-          TypedValue localTypedValue = this.ahF;
+          TypedValue localTypedValue = this.aiz;
           paramContext.getResources().getValue(paramInt, localTypedValue, true);
           long l = a(localTypedValue);
           localObject2 = a(paramContext, l);
@@ -717,9 +717,9 @@ public final class g
       Object localObject2;
       try
       {
-        if (this.ahB != null)
+        if (this.aiv != null)
         {
-          localObject1 = (o)this.ahB.get(paramContext);
+          localObject1 = (o)this.aiv.get(paramContext);
           if (localObject1 != null)
           {
             localObject1 = (ColorStateList)((o)localObject1).get(paramInt, null);
@@ -731,15 +731,15 @@ public final class g
                 localObject1 = android.support.v7.c.a.a.m(paramContext, 2131099865);
                 if (localObject1 != null)
                 {
-                  if (this.ahB == null) {
-                    this.ahB = new WeakHashMap();
+                  if (this.aiv == null) {
+                    this.aiv = new WeakHashMap();
                   }
-                  localObject3 = (o)this.ahB.get(paramContext);
+                  localObject3 = (o)this.aiv.get(paramContext);
                   localObject2 = localObject3;
                   if (localObject3 == null)
                   {
                     localObject2 = new o();
-                    this.ahB.put(paramContext, localObject2);
+                    this.aiv.put(paramContext, localObject2);
                   }
                   ((o)localObject2).append(paramInt, localObject1);
                 }
@@ -774,20 +774,20 @@ public final class g
         Object localObject3 = av.w(paramContext, 2130968821);
         if ((localObject3 != null) && (((ColorStateList)localObject3).isStateful()))
         {
-          localObject1[0] = av.hl;
+          localObject1[0] = av.il;
           localObject2[0] = ((ColorStateList)localObject3).getColorForState(localObject1[0], 0);
-          localObject1[1] = av.gZ;
+          localObject1[1] = av.hY;
           localObject2[1] = av.v(paramContext, 2130968805);
           localObject1[2] = av.EMPTY_STATE_SET;
           localObject2[2] = ((ColorStateList)localObject3).getDefaultColor();
           localObject1 = new ColorStateList((int[][])localObject1, (int[])localObject2);
           continue;
         }
-        localObject1[0] = av.hl;
+        localObject1[0] = av.il;
       }
       finally {}
       localObject2[0] = av.x(paramContext, 2130968821);
-      localObject1[1] = av.gZ;
+      localObject1[1] = av.hY;
       localObject2[1] = av.v(paramContext, 2130968805);
       localObject1[2] = av.EMPTY_STATE_SET;
       localObject2[2] = av.v(paramContext, 2130968821);
@@ -816,17 +816,17 @@ public final class g
       break;
       do
       {
-        if (c(ahw, paramInt))
+        if (c(aiq, paramInt))
         {
           localObject1 = av.w(paramContext, 2130968807);
           break;
         }
-        if (c(ahz, paramInt))
+        if (c(ait, paramInt))
         {
           localObject1 = android.support.v7.c.a.a.m(paramContext, 2131099864);
           break;
         }
-        if (c(ahA, paramInt))
+        if (c(aiu, paramInt))
         {
           localObject1 = android.support.v7.c.a.a.m(paramContext, 2131099863);
           break;

@@ -7,19 +7,19 @@ import java.io.Serializable;
 public class g
   implements Serializable
 {
-  public int Mc;
-  public int asw;
+  public int MZ;
+  public int atr;
   
   public g(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(181779);
-    this.asw = paramInt1;
-    this.Mc = paramInt2;
-    if (this.asw > this.Mc)
+    this.atr = paramInt1;
+    this.MZ = paramInt2;
+    if (this.atr > this.MZ)
     {
-      paramInt1 = this.Mc;
-      this.Mc = this.asw;
-      this.asw = paramInt1;
+      paramInt1 = this.MZ;
+      this.MZ = this.atr;
+      this.atr = paramInt1;
     }
     AppMethodBeat.o(181779);
   }
@@ -31,31 +31,31 @@ public class g
     AppMethodBeat.o(181780);
   }
   
-  public final g fa(int paramInt1, int paramInt2)
+  public final g fd(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(181781);
-    this.asw = Math.max(0, this.asw - paramInt1);
-    this.Mc += paramInt2;
+    this.atr = Math.max(0, this.atr - paramInt1);
+    this.MZ += paramInt2;
     AppMethodBeat.o(181781);
     return this;
   }
   
   public final boolean isEmpty()
   {
-    return this.asw == this.Mc;
+    return this.atr == this.MZ;
   }
   
   public String toString()
   {
     AppMethodBeat.i(181782);
-    String str = "[" + this.asw + ", " + this.Mc + "]";
+    String str = "[" + this.atr + ", " + this.MZ + "]";
     AppMethodBeat.o(181782);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.manager.g
  * JD-Core Version:    0.7.0.1
  */

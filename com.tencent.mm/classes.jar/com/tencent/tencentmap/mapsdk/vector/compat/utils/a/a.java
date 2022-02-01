@@ -13,14 +13,14 @@ public class a
   
   public a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    AppMethodBeat.i(190504);
+    AppMethodBeat.i(192323);
     this.a = paramDouble1;
     this.b = paramDouble3;
     this.c = paramDouble2;
     this.d = paramDouble4;
     this.e = ((paramDouble1 + paramDouble2) / 2.0D);
     this.f = ((paramDouble3 + paramDouble4) / 2.0D);
-    AppMethodBeat.o(190504);
+    AppMethodBeat.o(192323);
   }
   
   public boolean a(double paramDouble1, double paramDouble2)
@@ -35,17 +35,17 @@ public class a
   
   public boolean a(a parama)
   {
-    AppMethodBeat.i(190506);
+    AppMethodBeat.i(192325);
     boolean bool = a(parama.a, parama.c, parama.b, parama.d);
-    AppMethodBeat.o(190506);
+    AppMethodBeat.o(192325);
     return bool;
   }
   
   public boolean a(b paramb)
   {
-    AppMethodBeat.i(190505);
+    AppMethodBeat.i(192324);
     boolean bool = a(paramb.a, paramb.b);
-    AppMethodBeat.o(190505);
+    AppMethodBeat.o(192324);
     return bool;
   }
   
@@ -56,7 +56,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.a.a
  * JD-Core Version:    0.7.0.1
  */

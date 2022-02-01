@@ -791,11 +791,11 @@ public class XWalkUIClient
   
   public boolean onShowFileChooser(XWalkView paramXWalkView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    AppMethodBeat.i(194726);
+    AppMethodBeat.i(208975);
     try
     {
       boolean bool = ((Boolean)this.onShowFileChooserXWalkViewInternalValueCallbackStringStringMethod.invoke(new Object[] { paramXWalkView.getBridge(), paramValueCallback, paramFileChooserParams })).booleanValue();
-      AppMethodBeat.o(194726);
+      AppMethodBeat.o(208975);
       return bool;
     }
     catch (UnsupportedOperationException paramXWalkView)
@@ -803,11 +803,11 @@ public class XWalkUIClient
       if (this.coreWrapper == null)
       {
         paramXWalkView = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(194726);
+        AppMethodBeat.o(208975);
         throw paramXWalkView;
       }
       XWalkCoreWrapper.handleRuntimeError(paramXWalkView);
-      AppMethodBeat.o(194726);
+      AppMethodBeat.o(208975);
     }
     return false;
   }

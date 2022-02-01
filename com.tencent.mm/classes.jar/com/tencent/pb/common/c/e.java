@@ -12,10 +12,10 @@ import java.util.Set;
 
 public final class e
 {
-  private static HashMap<String, String> Iod = new HashMap();
+  private static HashMap<String, String> JPO = new HashMap();
   private static Object sLock = new Object();
   
-  public static void R(int paramInt1, int paramInt2, String paramString)
+  public static void Q(int paramInt1, int paramInt2, String paramString)
   {
     if (paramString == null)
     {
@@ -30,7 +30,7 @@ public final class e
       localStringBuffer.append(paramInt2);
       synchronized (sLock)
       {
-        String str = (String)Iod.get(localStringBuffer.toString());
+        String str = (String)JPO.get(localStringBuffer.toString());
         Object localObject1 = paramString;
         if (str != null)
         {
@@ -43,7 +43,7 @@ public final class e
             localObject1 = ((StringBuffer)localObject1).toString();
           }
         }
-        Iod.put(localStringBuffer.toString(), localObject1);
+        JPO.put(localStringBuffer.toString(), localObject1);
         return;
       }
       return;
@@ -54,7 +54,7 @@ public final class e
     }
   }
   
-  private static void aR(ArrayList<a.x> paramArrayList)
+  private static void bd(ArrayList<a.x> paramArrayList)
   {
     for (;;)
     {
@@ -64,7 +64,7 @@ public final class e
       String str;
       synchronized (sLock)
       {
-        Object localObject2 = Iod.keySet();
+        Object localObject2 = JPO.keySet();
         if ((localObject2 == null) || (((Set)localObject2).size() <= 0)) {
           return;
         }
@@ -83,7 +83,7 @@ public final class e
       }
       synchronized (sLock)
       {
-        localObject4 = (String)Iod.get(localObject4);
+        localObject4 = (String)JPO.get(localObject4);
         if ((localObject4 != null) && (((String)localObject4).length() != 0))
         {
           localObject4 = ((String)localObject4).split("---");
@@ -101,12 +101,12 @@ public final class e
                   ??? = localObject5[1];
                 }
                 localObject5 = new a.x();
-                ((a.x)localObject5).IlT = localObject3;
+                ((a.x)localObject5).JNE = localObject3;
                 localStringBuffer.setLength(0);
                 localStringBuffer.append(str);
                 localStringBuffer.append("%");
                 localStringBuffer.append((String)???);
-                ((a.x)localObject5).IlU = localStringBuffer.toString();
+                ((a.x)localObject5).JNF = localStringBuffer.toString();
                 paramArrayList.add(localObject5);
               }
               i += 1;
@@ -123,12 +123,12 @@ public final class e
   {
     synchronized (sLock)
     {
-      Iod.clear();
+      JPO.clear();
       return;
     }
   }
   
-  public static void flD()
+  public static void fBU()
   {
     if (!h.isNetworkConnected())
     {
@@ -136,14 +136,14 @@ public final class e
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    aR(localArrayList);
+    bd(localArrayList);
     a.c localc;
     if (localArrayList.size() > 0)
     {
       localc = new a.c();
       a.x[] arrayOfx = new a.x[localArrayList.size()];
       localArrayList.toArray(arrayOfx);
-      localc.IkC = arrayOfx;
+      localc.JMn = arrayOfx;
     }
     while (localc == null)
     {
@@ -152,9 +152,9 @@ public final class e
       localc = null;
     }
     b.w("yunying", new Object[] { "reportStatisticsData" });
-    b.d("StatisticsUtil", new Object[] { "reportStatisticsData start ret: ", Integer.valueOf(f.flo().a(new a()
+    b.d("StatisticsUtil", new Object[] { "reportStatisticsData start ret: ", Integer.valueOf(f.fBF().a(new a()
     {
-      public final void gp(String paramAnonymousString, int paramAnonymousInt)
+      public final void gt(String paramAnonymousString, int paramAnonymousInt)
       {
         if ("CsCmd.Cmd_CSClientReportReq".equals(paramAnonymousString))
         {

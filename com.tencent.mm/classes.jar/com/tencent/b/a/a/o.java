@@ -12,22 +12,22 @@ public final class o
     super(paramContext);
   }
   
-  protected final boolean Is()
+  protected final boolean Ib()
   {
     AppMethodBeat.i(87617);
-    boolean bool = s.p(this.context, "android.permission.WRITE_SETTINGS");
+    boolean bool = s.checkPermission(this.context, "android.permission.WRITE_SETTINGS");
     AppMethodBeat.o(87617);
     return bool;
   }
   
-  protected final a It()
+  protected final a Ic()
   {
     AppMethodBeat.i(87620);
     try
     {
       a locala = new a(Settings.System.getString(this.context.getContentResolver(), s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U=")));
       new StringBuilder("read readCheckEntity from Settings.System:").append(locala.toString());
-      s.IB();
+      s.Ik();
       return locala;
     }
     finally
@@ -42,8 +42,8 @@ public final class o
     try
     {
       new StringBuilder("write CheckEntity to Settings.System:").append(parama.toString());
-      s.IB();
-      p.aV(this.context).H(s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U="), parama.toString());
+      s.Ik();
+      p.aW(this.context).J(s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U="), parama.toString());
       return;
     }
     finally
@@ -57,7 +57,7 @@ public final class o
     AppMethodBeat.i(87618);
     try
     {
-      s.IB();
+      s.Ik();
       String str = Settings.System.getString(this.context.getContentResolver(), s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="));
       return str;
     }
@@ -72,8 +72,8 @@ public final class o
     AppMethodBeat.i(87619);
     try
     {
-      s.IB();
-      p.aV(this.context).H(s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="), paramString);
+      s.Ik();
+      p.aW(this.context).J(s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="), paramString);
       return;
     }
     finally
@@ -84,7 +84,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.b.a.a.o
  * JD-Core Version:    0.7.0.1
  */

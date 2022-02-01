@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.downloader.a;
 
 public final class b
 {
-  public static int ocl = 0;
-  public static int ocm = 1;
-  public static int ocn = 2;
+  public static int oFK = 0;
+  public static int oFL = 1;
+  public static int oFM = 2;
 }
 
 

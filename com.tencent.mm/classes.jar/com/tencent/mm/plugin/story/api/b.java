@@ -7,17 +7,17 @@ public abstract interface b
 {
   public abstract void c(WeakReference<c> paramWeakReference);
   
-  public abstract int dGc();
+  public abstract int dUD();
   
-  public abstract void dGd();
+  public abstract void dUE();
   
-  public abstract List<String> dGe();
+  public abstract List<String> dUF();
   
-  public abstract void fR(List<String> paramList);
+  public abstract void fZ(List<String> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.b
  * JD-Core Version:    0.7.0.1
  */

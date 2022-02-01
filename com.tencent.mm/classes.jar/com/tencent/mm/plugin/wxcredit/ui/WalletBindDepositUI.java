@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.c.y;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCardSelectUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.g;
@@ -23,37 +23,37 @@ import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 public class WalletBindDepositUI
   extends WalletBaseUI
 {
-  private WalletFormView AjL;
-  private WalletFormView Alw;
-  private WalletFormView BKJ;
-  private Button ftn;
+  private WalletFormView BCh;
+  private WalletFormView BDR;
+  private ElementQuery Bqm;
+  private WalletFormView DcR;
+  private Button fwU;
   private boolean isFirst;
-  private ElementQuery zXS;
   
   public WalletBindDepositUI()
   {
     AppMethodBeat.i(72318);
     this.isFirst = true;
-    this.zXS = new ElementQuery();
+    this.Bqm = new ElementQuery();
     AppMethodBeat.o(72318);
   }
   
-  private void cE()
+  private void cL()
   {
     AppMethodBeat.i(72321);
-    if (bt.isNullOrNil(this.zXS.szi))
+    if (bs.isNullOrNil(this.Bqm.tGS))
     {
-      this.Alw.setText("");
+      this.BDR.setText("");
       AppMethodBeat.o(72321);
       return;
     }
-    if (2 == this.zXS.AdE)
+    if (2 == this.Bqm.BvY)
     {
-      this.Alw.setText(this.zXS.szi + " " + getString(2131765221));
+      this.BDR.setText(this.Bqm.tGS + " " + getString(2131765221));
       AppMethodBeat.o(72321);
       return;
     }
-    this.Alw.setText(this.zXS.szi + " " + getString(2131765241));
+    this.BDR.setText(this.Bqm.tGS + " " + getString(2131765241));
     AppMethodBeat.o(72321);
   }
   
@@ -71,47 +71,47 @@ public class WalletBindDepositUI
   {
     AppMethodBeat.i(72320);
     setMMTitle(2131765068);
-    this.AjL = ((WalletFormView)findViewById(2131306700));
-    com.tencent.mm.wallet_core.ui.formview.a.b(this.AjL);
-    this.Alw = ((WalletFormView)findViewById(2131306717));
-    this.BKJ = ((WalletFormView)findViewById(2131302346));
-    com.tencent.mm.wallet_core.ui.formview.a.c(this, this.BKJ);
-    this.ftn = ((Button)findViewById(2131302852));
-    setEditFocusListener(this.AjL, 0, false);
-    setEditFocusListener(this.BKJ, 0, false);
-    this.Alw.setOnClickListener(new View.OnClickListener()
+    this.BCh = ((WalletFormView)findViewById(2131306700));
+    com.tencent.mm.wallet_core.ui.formview.a.b(this.BCh);
+    this.BDR = ((WalletFormView)findViewById(2131306717));
+    this.DcR = ((WalletFormView)findViewById(2131302346));
+    com.tencent.mm.wallet_core.ui.formview.a.c(this, this.DcR);
+    this.fwU = ((Button)findViewById(2131302852));
+    setEditFocusListener(this.BCh, 0, false);
+    setEditFocusListener(this.DcR, 0, false);
+    this.BDR.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72316);
         paramAnonymousView = WalletBindDepositUI.a(WalletBindDepositUI.this).getText();
-        if (bt.isNullOrNil(paramAnonymousView))
+        if (bs.isNullOrNil(paramAnonymousView))
         {
           AppMethodBeat.o(72316);
           return;
         }
         if (WalletBindDepositUI.b(WalletBindDepositUI.this))
         {
-          WalletBindDepositUI.this.getNetController().y(new Object[] { paramAnonymousView });
+          WalletBindDepositUI.this.getNetController().A(new Object[] { paramAnonymousView });
           WalletBindDepositUI.c(WalletBindDepositUI.this);
           AppMethodBeat.o(72316);
           return;
         }
         paramAnonymousView = new Bundle();
         paramAnonymousView.putInt("key_support_bankcard", 1);
-        paramAnonymousView.putString("key_bank_type", WalletBindDepositUI.d(WalletBindDepositUI.this).dca);
+        paramAnonymousView.putString("key_bank_type", WalletBindDepositUI.d(WalletBindDepositUI.this).cZz);
         paramAnonymousView.putInt("key_bankcard_type", 1);
-        com.tencent.mm.wallet_core.a.bo(WalletBindDepositUI.this).a(WalletBindDepositUI.this, WalletCardSelectUI.class, paramAnonymousView, 1);
+        com.tencent.mm.wallet_core.a.br(WalletBindDepositUI.this).a(WalletBindDepositUI.this, WalletCardSelectUI.class, paramAnonymousView, 1);
         AppMethodBeat.o(72316);
       }
     });
-    this.ftn.setOnClickListener(new View.OnClickListener()
+    this.fwU.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72317);
         if (WalletBindDepositUI.e(WalletBindDepositUI.this)) {
-          WalletBindDepositUI.this.getNetController().q(new Object[] { WalletBindDepositUI.a(WalletBindDepositUI.this).getText(), WalletBindDepositUI.d(WalletBindDepositUI.this).dca, WalletBindDepositUI.f(WalletBindDepositUI.this).getText(), WalletBindDepositUI.d(WalletBindDepositUI.this).AdH, Boolean.FALSE });
+          WalletBindDepositUI.this.getNetController().s(new Object[] { WalletBindDepositUI.a(WalletBindDepositUI.this).getText(), WalletBindDepositUI.d(WalletBindDepositUI.this).cZz, WalletBindDepositUI.f(WalletBindDepositUI.this).getText(), WalletBindDepositUI.d(WalletBindDepositUI.this).Bwb, Boolean.FALSE });
         }
         AppMethodBeat.o(72317);
       }
@@ -122,7 +122,7 @@ public class WalletBindDepositUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(72322);
-    ad.i("MicroMsg.WalletBindDepositUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    ac.i("MicroMsg.WalletBindDepositUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
     if (paramInt2 != -1)
     {
       AppMethodBeat.o(72322);
@@ -136,14 +136,14 @@ public class WalletBindDepositUI
       AppMethodBeat.o(72322);
       return;
       paramIntent = (ElementQuery)paramIntent.getParcelableExtra("elemt_query");
-      if (paramIntent.ebL())
+      if (paramIntent.erh())
       {
-        this.zXS = paramIntent;
-        cE();
+        this.Bqm = paramIntent;
+        cL();
         AppMethodBeat.o(72322);
         return;
       }
-      h.j(this, 2131765066, 2131755906);
+      h.l(this, 2131765066, 2131755906);
     }
   }
   
@@ -162,62 +162,62 @@ public class WalletBindDepositUI
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof y)))
     {
       paramString = (y)paramn;
-      if (paramString.zWz != null)
+      if (paramString.BoT != null)
       {
-        if (!paramString.zWz.ebL())
+        if (!paramString.BoT.erh())
         {
-          h.j(this, 2131765066, 2131755906);
+          h.l(this, 2131765066, 2131755906);
           AppMethodBeat.o(72323);
           return true;
         }
-        this.zXS = paramString.zWz;
-        cE();
-        if ((this.zXS.AdC) && (this.zXS.isError()))
+        this.Bqm = paramString.BoT;
+        cL();
+        if ((this.Bqm.BvW) && (this.Bqm.isError()))
         {
-          h.j(this, 2131765036, 2131755906);
+          h.l(this, 2131765036, 2131755906);
           AppMethodBeat.o(72323);
           return true;
         }
-        paramString = com.tencent.mm.wallet_core.a.bo(this);
+        paramString = com.tencent.mm.wallet_core.a.br(this);
         if (paramString != null)
         {
-          paramInt1 = this.zXS.zWA;
+          paramInt1 = this.Bqm.BoU;
           if (paramString == null)
           {
             if (bool) {
               break label238;
             }
-            if (!paramString.eez()) {
+            if (!paramString.etU()) {
               break label217;
             }
-            ad.w("MicroMsg.WalletBindDepositUI", "Overseas user try to bind domestic card!");
-            h.j(this, 2131764966, 2131755906);
+            ac.w("MicroMsg.WalletBindDepositUI", "Overseas user try to bind domestic card!");
+            h.l(this, 2131764966, 2131755906);
           }
           for (;;)
           {
-            this.AjL.dga();
+            this.BCh.dtH();
             AppMethodBeat.o(72323);
             return true;
-            if (!paramString.dow.containsKey("key_support_bankcard"))
+            if (!paramString.dmf.containsKey("key_support_bankcard"))
             {
               bool = true;
               break;
             }
-            paramInt2 = paramString.fjq();
+            paramInt2 = paramString.fzF();
             if (paramInt2 == 0)
             {
               bool = true;
               break;
             }
-            bool = Bankcard.ih(paramInt2, paramInt1);
+            bool = Bankcard.iw(paramInt2, paramInt1);
             break;
             label217:
-            ad.w("MicroMsg.WalletBindDepositUI", "Domestic user try to bind international card!");
-            h.j(this, 2131764965, 2131755906);
+            ac.w("MicroMsg.WalletBindDepositUI", "Domestic user try to bind international card!");
+            h.l(this, 2131764965, 2131755906);
           }
         }
         label238:
-        cE();
+        cL();
         AppMethodBeat.o(72323);
         return true;
       }

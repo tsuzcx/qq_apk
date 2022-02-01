@@ -12,20 +12,20 @@ public class b
   extends d
 {
   public final Context context;
-  private final long cwS;
-  private final SharedPreferences.Editor cwT;
-  private final HashMap<String, Long> cwU;
+  private final long cub;
+  private final SharedPreferences.Editor cuc;
+  private final HashMap<String, Long> cud;
   private final SharedPreferences sharedPreferences;
   
   public b(Context paramContext, String paramString, d.a parama)
   {
     super(parama);
     this.context = paramContext;
-    this.cwS = 86400000L;
+    this.cub = 86400000L;
     this.sharedPreferences = paramContext.getSharedPreferences(paramString + com.tencent.matrix.g.d.getProcessName(paramContext), 0);
-    this.cwU = new HashMap();
+    this.cud = new HashMap();
     long l1 = System.currentTimeMillis();
-    this.cwT = this.sharedPreferences.edit();
+    this.cuc = this.sharedPreferences.edit();
     paramContext = null;
     if (this.sharedPreferences.getAll() != null) {
       paramContext = new HashSet(this.sharedPreferences.getAll().keySet());
@@ -37,19 +37,19 @@ public class b
       {
         paramString = (String)paramContext.next();
         long l2 = this.sharedPreferences.getLong(paramString, 0L);
-        if ((l2 <= 0L) || (l1 - l2 > this.cwS)) {
-          this.cwT.remove(paramString);
+        if ((l2 <= 0L) || (l1 - l2 > this.cub)) {
+          this.cuc.remove(paramString);
         } else {
-          this.cwU.put(paramString, Long.valueOf(l2));
+          this.cud.put(paramString, Long.valueOf(l2));
         }
       }
     }
-    if (this.cwT != null) {
-      this.cwT.apply();
+    if (this.cuc != null) {
+      this.cuc.apply();
     }
   }
   
-  public final void cW(String paramString)
+  public final void cL(String paramString)
   {
     if (paramString == null) {}
     do
@@ -57,27 +57,27 @@ public class b
       do
       {
         return;
-      } while (this.cwU.containsKey(paramString));
+      } while (this.cud.containsKey(paramString));
       long l = System.currentTimeMillis();
-      this.cwU.put(paramString, Long.valueOf(l));
-      paramString = this.cwT.putLong(paramString, l);
+      this.cud.put(paramString, Long.valueOf(l));
+      paramString = this.cuc.putLong(paramString, l);
     } while (paramString == null);
     paramString.apply();
   }
   
-  public final boolean cX(String paramString)
+  public final boolean cM(String paramString)
   {
-    if (!this.cwU.containsKey(paramString)) {
+    if (!this.cud.containsKey(paramString)) {
       return false;
     }
-    long l = ((Long)this.cwU.get(paramString)).longValue();
-    if ((l <= 0L) || (System.currentTimeMillis() - l > this.cwS))
+    long l = ((Long)this.cud.get(paramString)).longValue();
+    if ((l <= 0L) || (System.currentTimeMillis() - l > this.cub))
     {
-      SharedPreferences.Editor localEditor = this.cwT.remove(paramString);
+      SharedPreferences.Editor localEditor = this.cuc.remove(paramString);
       if (localEditor != null) {
         localEditor.apply();
       }
-      this.cwU.remove(paramString);
+      this.cud.remove(paramString);
       return false;
     }
     return true;

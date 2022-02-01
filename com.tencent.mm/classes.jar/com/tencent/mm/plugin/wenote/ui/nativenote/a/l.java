@@ -13,23 +13,23 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 public final class l
   extends j
 {
-  private View olE;
+  private View oPe;
   
   public l(View paramView, k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30873);
-    this.oln.setVisibility(8);
-    this.djK.setVisibility(8);
-    this.irQ.setVisibility(8);
-    this.oln.setOnClickListener(null);
-    this.ols.setOnClickListener(new View.OnClickListener()
+    this.oON.setVisibility(8);
+    this.dhf.setVisibility(8);
+    this.iRV.setVisibility(8);
+    this.oON.setOnClickListener(null);
+    this.oOS.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30872);
-        l.this.BGF.bSH();
-        l.this.BGF.requestFocus();
+        l.this.CYM.bZW();
+        l.this.CYM.requestFocus();
         AppMethodBeat.o(30872);
       }
     });
@@ -45,23 +45,23 @@ public final class l
       AppMethodBeat.o(30874);
       return;
     }
-    paramc = (RelativeLayout.LayoutParams)this.olt.getLayoutParams();
+    paramc = (RelativeLayout.LayoutParams)this.oOT.getLayoutParams();
     paramc.bottomMargin = 0;
     paramc.topMargin = 0;
-    this.olt.setLayoutParams(paramc);
-    this.ols.setVisibility(0);
-    this.olE = this.arI.findViewById(2131302940);
+    this.oOT.setLayoutParams(paramc);
+    this.oOS.setVisibility(0);
+    this.oPe = this.asD.findViewById(2131302940);
     AppMethodBeat.o(30874);
   }
   
-  public final int bSa()
+  public final int bZp()
   {
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.l
  * JD-Core Version:    0.7.0.1
  */

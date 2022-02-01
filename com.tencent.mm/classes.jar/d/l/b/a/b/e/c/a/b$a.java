@@ -16,12 +16,12 @@ final class b$a
     super(2);
   }
   
-  public final void mx(String paramString1, String paramString2)
+  public final void mY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(59227);
     k.h(paramString1, "kotlinSimpleName");
     k.h(paramString2, "javaInternalName");
-    this.JLx.put("kotlin/".concat(String.valueOf(paramString1)), "L" + paramString2 + ';');
+    this.LyQ.put("kotlin/".concat(String.valueOf(paramString1)), "L" + paramString2 + ';');
     AppMethodBeat.o(59227);
   }
 }

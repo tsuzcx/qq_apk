@@ -1,40 +1,9 @@
 package com.tencent.mm.plugin.sns.b;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-public final class a
+public abstract interface a
+  extends com.tencent.mm.kernel.c.a
 {
-  public static final class a
-  {
-    public static String aZ(Context paramContext, String paramString)
-    {
-      AppMethodBeat.i(187243);
-      if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
-      {
-        AppMethodBeat.o(187243);
-        return "";
-      }
-      try
-      {
-        paramContext = paramContext.getPackageManager();
-        paramContext = paramContext.getApplicationLabel(paramContext.getApplicationInfo(paramString, 128));
-        if (paramContext != null)
-        {
-          paramContext = paramContext.toString();
-          AppMethodBeat.o(187243);
-          return paramContext;
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        AppMethodBeat.o(187243);
-      }
-      return "";
-    }
-  }
+  public abstract void p(int paramInt1, String paramString, int paramInt2);
 }
 
 

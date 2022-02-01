@@ -11,16 +11,16 @@ public class Md5FileNameGenerator
   
   private String getExtension(String paramString)
   {
-    AppMethodBeat.i(190355);
+    AppMethodBeat.i(192555);
     int i = paramString.lastIndexOf('.');
     int j = paramString.lastIndexOf('/');
     if ((i != -1) && (i > j) && (i + 2 + 4 > paramString.length()))
     {
       paramString = paramString.substring(i + 1, paramString.length());
-      AppMethodBeat.o(190355);
+      AppMethodBeat.o(192555);
       return paramString;
     }
-    AppMethodBeat.o(190355);
+    AppMethodBeat.o(192555);
     return "";
   }
   
@@ -41,7 +41,7 @@ public class Md5FileNameGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.danikula.videocache.file.Md5FileNameGenerator
  * JD-Core Version:    0.7.0.1
  */

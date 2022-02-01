@@ -5,28 +5,28 @@ import java.lang.reflect.AccessibleObject;
 
 public abstract class b
 {
-  private static final b bIy;
+  private static final b bGg;
   
   static
   {
-    if (e.xz() < 9) {}
+    if (e.xm() < 9) {}
     for (Object localObject = new a();; localObject = new c())
     {
-      bIy = (b)localObject;
+      bGg = (b)localObject;
       return;
     }
   }
   
-  public static b xJ()
+  public static b xw()
   {
-    return bIy;
+    return bGg;
   }
   
   public abstract void a(AccessibleObject paramAccessibleObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.b.b.b
  * JD-Core Version:    0.7.0.1
  */

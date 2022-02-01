@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.websearch.widget;
 
-import com.tencent.mm.plugin.websearch.api.l;
+import com.tencent.mm.plugin.websearch.api.k;
 
 public final class c
-  implements l
+  implements k
 {}
 
 

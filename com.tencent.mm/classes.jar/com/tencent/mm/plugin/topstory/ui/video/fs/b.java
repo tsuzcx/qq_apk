@@ -1,11 +1,15 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
+import android.content.Context;
 import android.graphics.PointF;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.r.b;
+import android.support.v7.widget.RecyclerView.s.a;
+import android.support.v7.widget.RecyclerView.s.b;
+import android.support.v7.widget.RecyclerView.t;
 import android.support.v7.widget.ae;
 import android.support.v7.widget.aj;
+import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.widget.f;
@@ -13,8 +17,8 @@ import com.tencent.mm.plugin.topstory.ui.widget.f;
 public final class b
   extends f
 {
-  private aj anY;
-  private aj anZ;
+  private aj aoT;
+  private aj aoU;
   
   private static int a(RecyclerView.i parami, View paramView, aj paramaj)
   {
@@ -22,7 +26,7 @@ public final class b
     int j = paramaj.bn(paramView);
     int k = paramaj.br(paramView) / 2;
     if (parami.getClipToPadding()) {}
-    for (int i = paramaj.kd() + paramaj.kf() / 2;; i = paramaj.getEnd() / 2)
+    for (int i = paramaj.kl() + paramaj.kn() / 2;; i = paramaj.getEnd() / 2)
     {
       AppMethodBeat.o(126240);
       return k + j - i;
@@ -43,7 +47,7 @@ public final class b
     int k;
     if (parami.getClipToPadding())
     {
-      j = paramaj.kd() + paramaj.kf() / 2;
+      j = paramaj.kl() + paramaj.kn() / 2;
       int i = 2147483647;
       k = 0;
       label51:
@@ -74,10 +78,10 @@ public final class b
   private aj b(RecyclerView.i parami)
   {
     AppMethodBeat.i(126243);
-    if ((this.anY == null) || (this.anY.getLayoutManager() != parami)) {
-      this.anY = aj.e(parami);
+    if ((this.aoT == null) || (this.aoT.getLayoutManager() != parami)) {
+      this.aoT = aj.e(parami);
     }
-    parami = this.anY;
+    parami = this.aoT;
     AppMethodBeat.o(126243);
     return parami;
   }
@@ -85,10 +89,10 @@ public final class b
   private aj c(RecyclerView.i parami)
   {
     AppMethodBeat.i(126244);
-    if ((this.anZ == null) || (this.anZ.getLayoutManager() != parami)) {
-      this.anZ = aj.d(parami);
+    if ((this.aoU == null) || (this.aoU.getLayoutManager() != parami)) {
+      this.aoU = aj.d(parami);
     }
-    parami = this.anZ;
+    parami = this.aoU;
     AppMethodBeat.o(126244);
     return parami;
   }
@@ -141,14 +145,14 @@ public final class b
       return -1;
     }
     View localView = null;
-    if (parami.jF()) {
+    if (parami.jN()) {
       localView = c(parami, b(parami));
     }
     while (localView == null)
     {
       AppMethodBeat.o(126238);
       return -1;
-      if (parami.jE()) {
+      if (parami.jM()) {
         localView = c(parami, c(parami));
       }
     }
@@ -158,7 +162,7 @@ public final class b
       AppMethodBeat.o(126238);
       return -1;
     }
-    if (parami.jE()) {
+    if (parami.jM()) {
       if (paramInt1 > 0) {
         paramInt1 = 1;
       }
@@ -166,9 +170,9 @@ public final class b
     for (;;)
     {
       paramInt2 = i;
-      if ((parami instanceof RecyclerView.r.b))
+      if ((parami instanceof RecyclerView.s.b))
       {
-        parami = ((RecyclerView.r.b)parami).bZ(k - 1);
+        parami = ((RecyclerView.s.b)parami).bZ(k - 1);
         paramInt2 = i;
         if (parami != null) {
           if (parami.x >= 0.0F)
@@ -213,13 +217,13 @@ public final class b
   public final View a(RecyclerView.i parami)
   {
     AppMethodBeat.i(126237);
-    if (parami.jF())
+    if (parami.jN())
     {
       parami = a(parami, b(parami));
       AppMethodBeat.o(126237);
       return parami;
     }
-    if (parami.jE())
+    if (parami.jM())
     {
       parami = a(parami, c(parami));
       AppMethodBeat.o(126237);
@@ -233,10 +237,10 @@ public final class b
   {
     AppMethodBeat.i(126236);
     int[] arrayOfInt = new int[2];
-    if (parami.jE())
+    if (parami.jM())
     {
       arrayOfInt[0] = a(parami, paramView, c(parami));
-      if (!parami.jF()) {
+      if (!parami.jN()) {
         break label63;
       }
       arrayOfInt[1] = a(parami, paramView, b(parami));
@@ -255,12 +259,39 @@ public final class b
   public final ae f(RecyclerView.i parami)
   {
     AppMethodBeat.i(126239);
-    if (!(parami instanceof RecyclerView.r.b))
+    if (!(parami instanceof RecyclerView.s.b))
     {
       AppMethodBeat.o(126239);
       return null;
     }
-    parami = new b.1(this, this.akA.getContext());
+    parami = new ae(this.alu.getContext())
+    {
+      public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
+      {
+        return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
+      }
+      
+      public final void a(View paramAnonymousView, RecyclerView.t paramAnonymoust, RecyclerView.s.a paramAnonymousa)
+      {
+        AppMethodBeat.i(126234);
+        paramAnonymousView = b.this.a(b.this.alu.getLayoutManager(), paramAnonymousView);
+        int i = paramAnonymousView[0];
+        int j = paramAnonymousView[1];
+        int k = cd(Math.max(Math.abs(i), Math.abs(j)));
+        if (k > 0) {
+          paramAnonymousa.a(i, j, k, this.TN);
+        }
+        AppMethodBeat.o(126234);
+      }
+      
+      public final int ce(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(126235);
+        paramAnonymousInt = Math.min(100, super.ce(paramAnonymousInt));
+        AppMethodBeat.o(126235);
+        return paramAnonymousInt;
+      }
+    };
     AppMethodBeat.o(126239);
     return parami;
   }

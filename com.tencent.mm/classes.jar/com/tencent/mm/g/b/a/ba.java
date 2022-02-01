@@ -2,110 +2,141 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.Arrays;
 
 public final class ba
   extends a
 {
-  public String dNH;
-  public long dNI;
-  public long dNJ;
-  public long dNK;
+  private String dFY;
+  private String dFe;
+  private String dHM;
+  private long dHT;
+  private String dHX;
+  private long dIM;
+  private String dLB;
+  private long dLC;
+  private String dLD;
   
-  public ba()
+  public final String PR()
   {
-    this.dNH = "";
-    this.dNI = 0L;
-    this.dNJ = 0L;
-    this.dNK = 0L;
-  }
-  
-  public ba(String paramString)
-  {
-    AppMethodBeat.i(121753);
-    this.dNH = "";
-    this.dNI = 0L;
-    this.dNJ = 0L;
-    this.dNK = 0L;
-    if (paramString != null)
-    {
-      paramString = paramString.split(",");
-      if (paramString != null)
-      {
-        if (paramString.length >= 4) {
-          break label123;
-        }
-        String[] arrayOfString = new String[4];
-        Arrays.fill(arrayOfString, 0, 4, "");
-        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
-        paramString = arrayOfString;
-      }
-    }
-    label123:
-    for (;;)
-    {
-      hU(paramString[0]);
-      this.dNI = bt.getLong(paramString[1], 0L);
-      ey(bt.getLong(paramString[2], 0L));
-      this.dNK = bt.getLong(paramString[3], 0L);
-      AppMethodBeat.o(121753);
-      return;
-    }
-  }
-  
-  public final String PV()
-  {
-    AppMethodBeat.i(121756);
+    AppMethodBeat.i(195006);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dNH);
+    ((StringBuffer)localObject).append(this.dFe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNI);
+    ((StringBuffer)localObject).append(this.dFY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNJ);
+    ((StringBuffer)localObject).append(this.dHX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNK);
+    ((StringBuffer)localObject).append(this.dLB);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dIM);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHM);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHT);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dLC);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dLD);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(121756);
+    arz((String)localObject);
+    AppMethodBeat.o(195006);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(121757);
+    AppMethodBeat.i(195007);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Name:").append(this.dNH);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Type:").append(this.dNI);
+    ((StringBuffer)localObject).append("ContextId:").append(this.dFY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TimeStampMs:").append(this.dNJ);
+    ((StringBuffer)localObject).append("ClickTabContextId:").append(this.dHX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HashCode:").append(this.dNK);
+    ((StringBuffer)localObject).append("ExposeItems:").append(this.dLB);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsCgiEnd:").append(this.dIM);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FeedId:").append(this.dHM);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CommentScene:").append(this.dHT);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("TotalFriendLikeCnt:").append(this.dLC);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("EnterContextId:").append(this.dLD);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(121757);
+    AppMethodBeat.o(195007);
     return localObject;
   }
   
-  public final ba ey(long paramLong)
+  public final ba eS(long paramLong)
   {
-    AppMethodBeat.i(121755);
-    this.dNJ = paramLong;
-    super.bb("TimeStampMs", this.dNJ);
-    AppMethodBeat.o(121755);
+    this.dIM = paramLong;
+    return this;
+  }
+  
+  public final ba eT(long paramLong)
+  {
+    this.dHT = paramLong;
+    return this;
+  }
+  
+  public final ba eU(long paramLong)
+  {
+    this.dLC = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 0;
+    return 19955;
   }
   
-  public final ba hU(String paramString)
+  public final ba iE(String paramString)
   {
-    AppMethodBeat.i(121754);
-    this.dNH = t("Name", paramString, true);
-    AppMethodBeat.o(121754);
+    AppMethodBeat.i(195000);
+    this.dFe = t("SessionId", paramString, true);
+    AppMethodBeat.o(195000);
+    return this;
+  }
+  
+  public final ba iF(String paramString)
+  {
+    AppMethodBeat.i(195001);
+    this.dFY = t("ContextId", paramString, true);
+    AppMethodBeat.o(195001);
+    return this;
+  }
+  
+  public final ba iG(String paramString)
+  {
+    AppMethodBeat.i(195002);
+    this.dHX = t("ClickTabContextId", paramString, true);
+    AppMethodBeat.o(195002);
+    return this;
+  }
+  
+  public final ba iH(String paramString)
+  {
+    AppMethodBeat.i(195003);
+    this.dLB = t("ExposeItems", paramString, true);
+    AppMethodBeat.o(195003);
+    return this;
+  }
+  
+  public final ba iI(String paramString)
+  {
+    AppMethodBeat.i(195004);
+    this.dHM = t("FeedId", paramString, true);
+    AppMethodBeat.o(195004);
+    return this;
+  }
+  
+  public final ba iJ(String paramString)
+  {
+    AppMethodBeat.i(195005);
+    this.dLD = t("EnterContextId", paramString, true);
+    AppMethodBeat.o(195005);
     return this;
   }
 }

@@ -5,42 +5,47 @@ import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.e.i.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
 abstract class bb<T>
   implements g, Callable<T>
 {
-  protected volatile long kMg = 0L;
-  protected volatile long kMh = 0L;
-  protected volatile long kMi = 0L;
-  private boolean kMj = true;
+  protected volatile long lnD = 0L;
+  protected volatile long lnE = 0L;
+  protected volatile long lnF = 0L;
+  private boolean lnG = true;
   
-  public final void Kj(String paramString)
+  public final void Oq(String paramString)
   {
-    if (!this.kMj)
+    if (!this.lnG)
     {
-      ad.e(getTag(), "silent toast: %s", new Object[] { paramString });
+      ac.e(getTag(), "silent toast: %s", new Object[] { paramString });
       return;
     }
-    bc.Kj(paramString);
+    bc.Oq(paramString);
   }
   
-  final Future<T> bgQ()
+  final Future<T> bnK()
   {
-    return h.Iye.d(new a());
+    return h.JZN.d(new a());
   }
   
-  final T bgR()
+  final T bnL()
   {
-    this.kMg = bt.eGO();
+    this.lnD = bs.eWj();
     Object localObject = call();
-    this.kMh = bt.eGO();
-    this.kMi = (this.kMh - this.kMg);
+    this.lnE = bs.eWj();
+    this.lnF = (this.lnE - this.lnD);
     return localObject;
+  }
+  
+  public void gS(boolean paramBoolean)
+  {
+    this.lnG = paramBoolean;
   }
   
   public final String getKey()
@@ -50,14 +55,9 @@ abstract class bb<T>
   
   abstract String getTag();
   
-  public void gv(boolean paramBoolean)
+  public final void tG(int paramInt)
   {
-    this.kMj = paramBoolean;
-  }
-  
-  public final void sP(int paramInt)
-  {
-    Kj(aj.getResources().getString(paramInt));
+    Oq(ai.getResources().getString(paramInt));
   }
   
   final class a
@@ -67,8 +67,8 @@ abstract class bb<T>
     
     public final T call()
     {
-      AppMethodBeat.i(196019);
-      bb.this.kMg = bt.eGO();
+      AppMethodBeat.i(186843);
+      bb.this.lnD = bs.eWj();
       try
       {
         Object localObject1 = bb.this.call();
@@ -76,24 +76,24 @@ abstract class bb<T>
       }
       finally
       {
-        bb.this.kMh = bt.eGO();
-        bb.this.kMi = (bb.this.kMh - bb.this.kMg);
-        AppMethodBeat.o(196019);
+        bb.this.lnE = bs.eWj();
+        bb.this.lnF = (bb.this.lnE - bb.this.lnD);
+        AppMethodBeat.o(186843);
       }
     }
     
     public final String getKey()
     {
-      AppMethodBeat.i(196018);
+      AppMethodBeat.i(186842);
       String str = bb.this.getTag();
-      AppMethodBeat.o(196018);
+      AppMethodBeat.o(186842);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.bb
  * JD-Core Version:    0.7.0.1
  */

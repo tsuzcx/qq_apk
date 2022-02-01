@@ -33,7 +33,7 @@ public class AssetReaderVideoCompositionOutput
   
   public AssetReaderVideoCompositionOutput(List<AssetTrack> paramList, Map<String, Object> paramMap, AssetExtension paramAssetExtension)
   {
-    AppMethodBeat.i(201473);
+    AppMethodBeat.i(197534);
     this.customVideoCompositor = new VideoCompositor();
     this.frameRate = -1;
     this.decoderStarted = false;
@@ -45,12 +45,12 @@ public class AssetReaderVideoCompositionOutput
     if ((paramMap != null) && (paramMap.containsKey("frame-rate"))) {
       this.frameRate = ((Integer)paramMap.get("frame-rate")).intValue();
     }
-    AppMethodBeat.o(201473);
+    AppMethodBeat.o(197534);
   }
   
   private void tryStartDecoder()
   {
-    AppMethodBeat.i(201474);
+    AppMethodBeat.i(197535);
     IDecoderTrack localIDecoderTrack;
     if (!this.decoderStarted)
     {
@@ -66,7 +66,7 @@ public class AssetReaderVideoCompositionOutput
     {
       localIDecoderTrack.start((IDecoderTrack.SurfaceCreator)localObject);
       this.videoDecoderTrack.seekTo(this.assetReader.getTimeRange().getStart(), false, true);
-      AppMethodBeat.o(201474);
+      AppMethodBeat.o(197535);
       return;
     }
   }
@@ -94,7 +94,7 @@ public class AssetReaderVideoCompositionOutput
     {
       try
       {
-        AppMethodBeat.i(201475);
+        AppMethodBeat.i(197536);
         if (this.videoDecoderTrack != null)
         {
           tryStartDecoder();
@@ -103,7 +103,7 @@ public class AssetReaderVideoCompositionOutput
             localCMSampleBuffer1 = new CMSampleBuffer(VideoDecoder.SAMPLE_TIME_UNSTART);
             if (localCMSampleBuffer1.getTime().smallThan(this.assetReader.getTimeRange().getStart()))
             {
-              AppMethodBeat.o(201475);
+              AppMethodBeat.o(197536);
               return localCMSampleBuffer1;
             }
           }
@@ -116,17 +116,17 @@ public class AssetReaderVideoCompositionOutput
           {
             this.videoDecoderTrack.asyncReadNextSample(localCMSampleBuffer1.getTime());
             localCMSampleBuffer1 = new CMSampleBuffer(localCMSampleBuffer1.getTime().sub(this.assetReader.getTimeRange().getStart()), localCMSampleBuffer1.getTextureInfo(), localCMSampleBuffer1.isNewFrame());
-            AppMethodBeat.o(201475);
+            AppMethodBeat.o(197536);
             continue;
           }
           CMSampleBuffer localCMSampleBuffer1 = new CMSampleBuffer(VideoDecoder.SAMPLE_TIME_FINISH);
-          AppMethodBeat.o(201475);
+          AppMethodBeat.o(197536);
           continue;
         }
         CMSampleBuffer localCMSampleBuffer2 = new CMSampleBuffer(VideoDecoder.SAMPLE_TIME_UNSTART);
       }
       finally {}
-      AppMethodBeat.o(201475);
+      AppMethodBeat.o(197536);
     }
   }
   
@@ -134,11 +134,11 @@ public class AssetReaderVideoCompositionOutput
   {
     try
     {
-      AppMethodBeat.i(201477);
+      AppMethodBeat.i(197538);
       if (this.videoDecoderTrack != null) {
         this.videoDecoderTrack.release();
       }
-      AppMethodBeat.o(201477);
+      AppMethodBeat.o(197538);
       return;
     }
     finally {}
@@ -163,7 +163,7 @@ public class AssetReaderVideoCompositionOutput
   
   void start(IContextCreate paramIContextCreate, AssetReader paramAssetReader)
   {
-    AppMethodBeat.i(201476);
+    AppMethodBeat.i(197537);
     this.assetReader = paramAssetReader;
     paramAssetReader = new VideoCompositionDecoderTrack(paramAssetReader.getAsset(), this.assetExtension, 1);
     int i = this.frameRate;
@@ -196,19 +196,19 @@ public class AssetReaderVideoCompositionOutput
           break;
         }
         this.videoDecoderTrack = new CachedVideoDecoderTrack(paramAssetReader, true);
-        AppMethodBeat.o(201476);
+        AppMethodBeat.o(197537);
         return;
         i = 30;
       }
       this.videoDecoderTrack = paramAssetReader;
-      AppMethodBeat.o(201476);
+      AppMethodBeat.o(197537);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.core.AssetReaderVideoCompositionOutput
  * JD-Core Version:    0.7.0.1
  */

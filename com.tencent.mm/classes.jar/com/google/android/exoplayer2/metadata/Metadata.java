@@ -11,7 +11,7 @@ public final class Metadata
   implements Parcelable
 {
   public static final Parcelable.Creator<Metadata> CREATOR;
-  public final Entry[] bjd;
+  public final Entry[] bjI;
   
   static
   {
@@ -23,11 +23,11 @@ public final class Metadata
   Metadata(Parcel paramParcel)
   {
     AppMethodBeat.i(92464);
-    this.bjd = new Entry[paramParcel.readInt()];
+    this.bjI = new Entry[paramParcel.readInt()];
     int i = 0;
-    while (i < this.bjd.length)
+    while (i < this.bjI.length)
     {
-      this.bjd[i] = ((Entry)paramParcel.readParcelable(Entry.class.getClassLoader()));
+      this.bjI[i] = ((Entry)paramParcel.readParcelable(Entry.class.getClassLoader()));
       i += 1;
     }
     AppMethodBeat.o(92464);
@@ -36,14 +36,14 @@ public final class Metadata
   public Metadata(List<? extends Entry> paramList)
   {
     AppMethodBeat.i(92463);
-    this.bjd = new Entry[paramList.size()];
-    paramList.toArray(this.bjd);
+    this.bjI = new Entry[paramList.size()];
+    paramList.toArray(this.bjI);
     AppMethodBeat.o(92463);
   }
   
   public Metadata(Entry... paramVarArgs)
   {
-    this.bjd = paramVarArgs;
+    this.bjI = paramVarArgs;
   }
   
   public final int describeContents()
@@ -65,7 +65,7 @@ public final class Metadata
       return false;
     }
     paramObject = (Metadata)paramObject;
-    boolean bool = Arrays.equals(this.bjd, paramObject.bjd);
+    boolean bool = Arrays.equals(this.bjI, paramObject.bjI);
     AppMethodBeat.o(92465);
     return bool;
   }
@@ -73,7 +73,7 @@ public final class Metadata
   public final int hashCode()
   {
     AppMethodBeat.i(92466);
-    int i = Arrays.hashCode(this.bjd);
+    int i = Arrays.hashCode(this.bjI);
     AppMethodBeat.o(92466);
     return i;
   }
@@ -81,8 +81,8 @@ public final class Metadata
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92467);
-    paramParcel.writeInt(this.bjd.length);
-    Entry[] arrayOfEntry = this.bjd;
+    paramParcel.writeInt(this.bjI.length);
+    Entry[] arrayOfEntry = this.bjI;
     int i = arrayOfEntry.length;
     paramInt = 0;
     while (paramInt < i)

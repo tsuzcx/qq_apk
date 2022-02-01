@@ -6,81 +6,87 @@ import com.tencent.mm.plugin.report.a;
 public final class ex
   extends a
 {
-  private String dTK;
-  private String eag;
-  private String eav;
-  public long eaw;
-  public long eax;
+  private long dWa = 0L;
+  private long dWb = 0L;
+  private long dWc = 0L;
+  private long dWd = 0L;
+  private int dWe = 0;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(174645);
+    AppMethodBeat.i(118500);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eag);
+    ((StringBuffer)localObject).append(this.dWa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eav);
+    ((StringBuffer)localObject).append(this.dWb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTK);
+    ((StringBuffer)localObject).append(this.dWc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaw);
+    ((StringBuffer)localObject).append(this.dWd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eax);
+    ((StringBuffer)localObject).append(this.dWe);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(174645);
+    arz((String)localObject);
+    AppMethodBeat.o(118500);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(174646);
+    AppMethodBeat.i(118501);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("AppId:").append(this.eag);
+    ((StringBuffer)localObject).append("StartZipTime:").append(this.dWa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PagePath:").append(this.eav);
+    ((StringBuffer)localObject).append("Enable:").append(this.dWb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoUrl:").append(this.dTK);
+    ((StringBuffer)localObject).append("Exceed:").append(this.dWc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EventId:").append(this.eaw);
+    ((StringBuffer)localObject).append("Cost:").append(this.dWd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EventNote:").append(this.eax);
+    ((StringBuffer)localObject).append("Result:").append(this.dWe);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(174646);
+    AppMethodBeat.o(118501);
     return localObject;
+  }
+  
+  public final ex Rs()
+  {
+    this.dWc = 1L;
+    return this;
   }
   
   public final int getId()
   {
-    return 18837;
+    return 17654;
   }
   
-  public final ex kU(String paramString)
+  public final ex it(int paramInt)
   {
-    AppMethodBeat.i(174642);
-    this.eag = t("AppId", paramString, true);
-    AppMethodBeat.o(174642);
+    this.dWe = paramInt;
     return this;
   }
   
-  public final ex kV(String paramString)
+  public final ex jh(long paramLong)
   {
-    AppMethodBeat.i(174643);
-    this.eav = t("PagePath", paramString, true);
-    AppMethodBeat.o(174643);
+    this.dWa = paramLong;
     return this;
   }
   
-  public final ex kW(String paramString)
+  public final ex ji(long paramLong)
   {
-    AppMethodBeat.i(174644);
-    this.dTK = t("VideoUrl", paramString, true);
-    AppMethodBeat.o(174644);
+    this.dWb = paramLong;
+    return this;
+  }
+  
+  public final ex jj(long paramLong)
+  {
+    this.dWd = paramLong;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ex
  * JD-Core Version:    0.7.0.1
  */

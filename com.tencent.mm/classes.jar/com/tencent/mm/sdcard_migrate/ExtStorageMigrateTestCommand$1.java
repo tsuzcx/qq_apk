@@ -4,33 +4,33 @@ import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdcard_migrate.util.ExtStorageMigrateException;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 class ExtStorageMigrateTestCommand$1
   extends MigrateResultCallbackAdapter
 {
   ExtStorageMigrateTestCommand$1(c paramc, Context paramContext) {}
   
-  protected final void VU(int paramInt)
+  protected final void Yd(int paramInt)
   {
-    AppMethodBeat.i(196826);
+    AppMethodBeat.i(195846);
     Toast.makeText(this.val$context, "Cancelled, reason: ".concat(String.valueOf(paramInt)), 1).show();
-    AppMethodBeat.o(196826);
+    AppMethodBeat.o(195846);
   }
   
   protected final void a(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException)
   {
-    AppMethodBeat.i(196827);
-    ad.printErrStackTrace("MicroMsg.ExtStorageMigrateTestCommand", paramExtStorageMigrateException, "[-] Failure.", new Object[0]);
+    AppMethodBeat.i(195847);
+    ac.printErrStackTrace("MicroMsg.ExtStorageMigrateTestCommand", paramExtStorageMigrateException, "[-] Failure.", new Object[0]);
     Toast.makeText(this.val$context, "Failure, reason: ".concat(String.valueOf(paramInt)), 1).show();
-    AppMethodBeat.o(196827);
+    AppMethodBeat.o(195847);
   }
   
-  protected final void eEg()
+  protected final void eTA()
   {
-    AppMethodBeat.i(196828);
+    AppMethodBeat.i(195848);
     Toast.makeText(this.val$context, "Done.", 1).show();
-    AppMethodBeat.o(196828);
+    AppMethodBeat.o(195848);
   }
 }
 

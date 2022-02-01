@@ -8,11 +8,11 @@ public abstract interface h
 {
   public abstract void a(a parama);
   
-  public abstract List<AppBrandBackgroundRunningApp> aSH();
+  public abstract List<AppBrandBackgroundRunningApp> aZE();
   
-  public abstract void aSI();
+  public abstract void aZF();
   
-  public abstract void aSJ();
+  public abstract void aZG();
   
   public abstract void b(a parama);
   
@@ -25,7 +25,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.h
  * JD-Core Version:    0.7.0.1
  */

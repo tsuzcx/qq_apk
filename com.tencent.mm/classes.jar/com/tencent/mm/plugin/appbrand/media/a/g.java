@@ -4,14 +4,14 @@ import android.os.Build.VERSION;
 
 public final class g
 {
-  public static boolean bhJ()
+  public static boolean boD()
   {
     return Build.VERSION.SDK_INT <= 19;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.a.g
  * JD-Core Version:    0.7.0.1
  */

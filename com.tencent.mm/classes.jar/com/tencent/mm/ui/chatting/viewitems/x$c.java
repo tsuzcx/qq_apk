@@ -11,24 +11,23 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.j;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.bs.d.a;
-import com.tencent.mm.g.a.xq;
-import com.tencent.mm.g.a.xq.b;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ah.j;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.br.d;
+import com.tencent.mm.br.d.a;
+import com.tencent.mm.g.a.yb;
+import com.tencent.mm.g.a.yb.b;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.ae;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.mm.ui.chatting.c.b.i;
@@ -36,17 +35,17 @@ import com.tencent.mm.ui.chatting.c.b.i;
 public final class x$c
   extends c
 {
-  private com.tencent.mm.ui.chatting.d.a Gob;
+  private com.tencent.mm.ui.chatting.d.a HNS;
   
   private static void a(x.a parama)
   {
     AppMethodBeat.i(37053);
-    parama.naN.getPaddingLeft();
-    parama.naN.getPaddingTop();
-    parama.naN.getPaddingRight();
-    parama.naN.getPaddingBottom();
-    parama.naN.setBackgroundResource(2131231395);
-    parama.naN.setPadding(0, 0, 0, 0);
+    parama.nDl.getPaddingLeft();
+    parama.nDl.getPaddingTop();
+    parama.nDl.getPaddingRight();
+    parama.nDl.getPaddingBottom();
+    parama.nDl.setBackgroundResource(2131231395);
+    parama.nDl.setPadding(0, 0, 0, 0);
     AppMethodBeat.o(37053);
   }
   
@@ -61,62 +60,63 @@ public final class x$c
     }
     else
     {
-      localObject = new af(paramLayoutInflater, 2131493490);
-      ((View)localObject).setTag(new x.a().ga((View)localObject));
+      localObject = new ag(paramLayoutInflater, 2131493490);
+      ((View)localObject).setTag(new x.a().gn((View)localObject));
     }
     AppMethodBeat.o(37051);
     return localObject;
   }
   
-  public final void a(c.a parama, int paramInt, com.tencent.mm.ui.chatting.d.a parama1, bl parambl, String paramString)
+  public final void a(c.a parama, int paramInt, com.tencent.mm.ui.chatting.d.a parama1, bo parambo, String paramString)
   {
     AppMethodBeat.i(37052);
-    this.Gob = parama1;
+    this.HNS = parama1;
     x.a locala = (x.a)parama;
-    parama = parambl.field_content;
+    parama = parambo.field_content;
     if (parama != null) {}
-    for (paramString = k.b.ar(parama, parambl.field_reserved);; paramString = null)
+    label400:
+    label664:
+    label1184:
+    for (paramString = k.b.az(parama, parambo.field_reserved);; paramString = null)
     {
       boolean bool;
-      label400:
       Object localObject;
       if (paramString != null)
       {
-        x.a.aE(locala.naN, locala.GJV);
-        locala.naN.setBackgroundResource(2131231390);
-        locala.naN.setPadding(0, 0, 0, 0);
-        locala.GMr.setSingleLine(true);
-        parama = new xq();
-        parama.dDQ.dnZ = paramString.gIn;
-        com.tencent.mm.sdk.b.a.ESL.l(parama);
-        bool = parama.dDR.dDS;
-        if (parama.dDR.status == -2) {
+        x.a.aG(locala.nDl, locala.IjS);
+        locala.nDl.setBackgroundResource(2131231390);
+        locala.nDl.setPadding(0, 0, 0, 0);
+        locala.Imo.setSingleLine(true);
+        parama = new yb();
+        parama.dBC.dlI = paramString.hiO;
+        com.tencent.mm.sdk.b.a.GpY.l(parama);
+        bool = parama.dBD.dBE;
+        if (parama.dBD.status == -2) {
           bool = false;
         }
-        int j = parama.dDR.status;
+        int j = parama.dBD.status;
         int i = j;
         if (j <= 0) {
-          i = paramString.gIk;
+          i = paramString.hiL;
         }
         switch (i)
         {
-        case 2: 
         default: 
-          locala.GMq.setImageResource(2131689850);
-          locala.GMr.setSingleLine(false);
-          locala.GMr.setMaxLines(2);
-          locala.GMs.setText(null);
-          locala.GMr.setText(paramString.description);
-          locala.naN.setOnClickListener(d(parama1));
-          locala.naN.setOnLongClickListener(c(parama1));
-          locala.naN.setOnTouchListener(((i)parama1.be(i.class)).eWp());
-          parama = new bi(parambl, this.Gob.eZb(), paramInt, null, '\000');
-          locala.naN.setTag(parama);
-          if (locala.nCB != null) {
-            if (ai.Eq())
+          locala.Imn.setImageResource(2131689850);
+          locala.Imo.setSingleLine(false);
+          locala.Imo.setMaxLines(2);
+          locala.Imp.setText(null);
+          locala.Imo.setText(paramString.description);
+          locala.nDl.setOnClickListener(d(parama1));
+          locala.nDl.setOnLongClickListener(c(parama1));
+          locala.nDl.setOnTouchListener(((i)parama1.bf(i.class)).fmb());
+          parama = new bj(parambo, this.HNS.foQ(), paramInt, null, '\000');
+          locala.nDl.setTag(parama);
+          if (locala.ofC != null) {
+            if (aj.DT())
             {
-              locala.nCB.setBackground(null);
-              locala.GMt.setVisibility(0);
+              locala.ofC.setBackground(null);
+              locala.Imq.setVisibility(0);
               AppMethodBeat.o(37052);
               return;
             }
@@ -124,209 +124,212 @@ public final class x$c
           break;
         case 1: 
         case 7: 
-          az.arV();
-          parama = com.tencent.mm.model.c.apM().aHX(parambl.field_talker);
+          az.ayM();
+          parama = com.tencent.mm.model.c.awB().aNs(parambo.field_talker);
           if (parama != null)
           {
-            parama = parama.ZX();
-            if (!ae.isNullOrNil(paramString.gJu)) {
+            parama = parama.aaS();
+            if (!ae.isNullOrNil(paramString.hjU)) {
               break label634;
             }
-            localObject = parama1.GzJ.getMMResources().getString(2131757197, new Object[] { ae.nullAsNil(parama) });
-            locala.GMr.setText(k.b(parama1.GzJ.getContext(), (CharSequence)localObject, locala.GMr.getTextSize()));
+            localObject = parama1.HZF.getMMResources().getString(2131757197, new Object[] { ae.nullAsNil(parama) });
+            locala.Imo.setText(k.b(parama1.HZF.getContext(), (CharSequence)localObject, locala.Imo.getTextSize()));
             label465:
             localObject = (j)paramString.ao(j.class);
-            if (!ae.isNullOrNil(paramString.gJu)) {
+            if (!ae.isNullOrNil(paramString.hjU)) {
               break label694;
             }
-            parama = parama1.GzJ.getMMResources().getString(2131757197, new Object[] { ae.nullAsNil(parama) });
-            if (!bt.iY(((j)localObject).gGW, 1)) {
-              break label1536;
+            parama = parama1.HZF.getMMResources().getString(2131757197, new Object[] { ae.nullAsNil(parama) });
+            if (!bs.jl(((j)localObject).hhx, 1)) {
+              break label1638;
             }
             if (parama.length() <= 5) {
               break label664;
             }
-            parama = parama.substring(0, 5) + "..." + aj.getContext().getString(2131757199);
+            parama = parama.substring(0, 5) + "..." + ai.getContext().getString(2131757199);
           }
           break;
         }
       }
-      label1536:
+      label694:
+      label1638:
       for (;;)
       {
-        locala.GMr.setText(k.b(parama1.GzJ.getContext(), parama, locala.GMr.getTextSize()));
-        locala.GMs.setText(paramString.gIl);
-        locala.GMq.setImageResource(2131689850);
+        locala.Imo.setText(k.b(parama1.HZF.getContext(), parama, locala.Imo.getTextSize()));
+        locala.Imp.setText(paramString.hiM);
+        locala.Imn.setImageResource(2131689850);
         break;
-        parama = parambl.field_talker;
+        parama = parambo.field_talker;
         break label400;
         label634:
-        localObject = k.c(parama1.GzJ.getContext(), paramString.gJu);
-        locala.GMr.setText((CharSequence)localObject);
+        localObject = k.c(parama1.HZF.getContext(), paramString.hjU);
+        locala.Imo.setText((CharSequence)localObject);
         break label465;
-        label664:
-        parama = parama + aj.getContext().getString(2131757199);
+        parama = parama + ai.getContext().getString(2131757199);
         continue;
-        label694:
-        if (bt.iY(((j)localObject).gGW, 1)) {
-          if (paramString.gJu.length() > 5) {
-            parama = paramString.gJu.substring(0, 5) + "..." + aj.getContext().getString(2131757199);
+        if (bs.jl(((j)localObject).hhx, 1)) {
+          if (paramString.hjU.length() > 5) {
+            parama = paramString.hjU.substring(0, 5) + "..." + ai.getContext().getString(2131757199);
           }
         }
         label760:
-        for (parama = k.c(parama1.GzJ.getContext(), parama);; parama = k.c(parama1.GzJ.getContext(), paramString.gJu))
+        for (parama = k.c(parama1.HZF.getContext(), parama);; parama = k.c(parama1.HZF.getContext(), paramString.hjU))
         {
-          locala.GMr.setText(parama);
+          locala.Imo.setText(parama);
           break;
-          parama = paramString.gJu + parama1.GzJ.getContext().getString(2131757199);
+          parama = paramString.hjU + parama1.HZF.getContext().getString(2131757199);
           break label760;
         }
         if (bool) {
-          if (bt.iY(((j)paramString.ao(j.class)).gGW, 1)) {
-            if (ae.isNullOrNil(paramString.gJu))
+          if (bs.jl(((j)paramString.ao(j.class)).hhx, 1)) {
+            if (ae.isNullOrNil(paramString.hjU))
             {
-              parama = aj.getContext().getString(2131757188) + aj.getContext().getString(2131757199);
-              label913:
-              locala.GMr.setText(k.c(parama1.GzJ.getContext(), parama));
+              parama = ai.getContext().getString(2131757188) + ai.getContext().getString(2131757199);
+              locala.Imo.setText(k.c(parama1.HZF.getContext(), parama));
             }
           }
         }
         for (;;)
         {
-          locala.GMs.setText(paramString.gIl);
-          locala.GMq.setImageResource(2131689851);
+          locala.Imp.setText(paramString.hiM);
+          locala.Imn.setImageResource(2131689851);
           a(locala);
           break;
-          localObject = aj.getContext().getString(2131757188) + "-" + paramString.gJu;
+          localObject = ai.getContext().getString(2131757188) + "-" + paramString.hjU;
           parama = (c.a)localObject;
           if (((String)localObject).length() <= 5) {
             break label913;
           }
-          parama = ((String)localObject).substring(0, 5) + "..." + aj.getContext().getString(2131757199);
+          parama = ((String)localObject).substring(0, 5) + "..." + ai.getContext().getString(2131757199);
           break label913;
-          if (ae.isNullOrNil(paramString.gJu))
+          if (ae.isNullOrNil(paramString.hjU))
           {
-            parama = aj.getContext().getString(2131757188);
+            parama = ai.getContext().getString(2131757188);
             break label913;
           }
-          parama = aj.getContext().getString(2131757188) + "-" + paramString.gJu;
+          parama = ai.getContext().getString(2131757188) + "-" + paramString.hjU;
           break label913;
-          locala.GMr.setText(2131757189);
+          locala.Imo.setText(2131757189);
         }
-        locala.GMs.setText(paramString.gIl);
-        locala.GMq.setImageResource(2131689852);
+        locala.Imp.setText(paramString.hiM);
+        locala.Imn.setImageResource(2131689852);
         if (bool) {
-          if (ae.isNullOrNil(paramString.gJu))
+          if (ae.isNullOrNil(paramString.hjU))
           {
-            parama = aj.getContext().getString(2131757201);
-            label1184:
-            locala.GMr.setText(k.c(parama1.GzJ.getContext(), parama));
+            parama = ai.getContext().getString(2131757201);
+            locala.Imo.setText(k.c(parama1.HZF.getContext(), parama));
           }
         }
         for (;;)
         {
           a(locala);
           break;
-          parama = aj.getContext().getString(2131757201) + "-" + paramString.gJu;
+          parama = ai.getContext().getString(2131757201) + "-" + paramString.hjU;
           break label1184;
-          locala.GMr.setText(2131757200);
+          locala.Imo.setText(2131757200);
         }
         if (bool) {
-          if (ae.isNullOrNil(paramString.gJu))
+          if (ae.isNullOrNil(paramString.hjU))
           {
-            parama = aj.getContext().getString(2131757195);
-            label1291:
-            locala.GMr.setText(k.c(parama1.GzJ.getContext(), parama));
+            parama = ai.getContext().getString(2131757195);
+            locala.Imo.setText(k.c(parama1.HZF.getContext(), parama));
           }
         }
         for (;;)
         {
-          locala.GMs.setText(paramString.gIl);
-          locala.GMq.setImageResource(2131689851);
+          locala.Imp.setText(paramString.hiM);
+          locala.Imn.setImageResource(2131689851);
           a(locala);
           break;
-          parama = aj.getContext().getString(2131757195) + "-" + paramString.gJu;
+          parama = ai.getContext().getString(2131757195) + "-" + paramString.hjU;
           break label1291;
-          locala.GMr.setText(2131757196);
+          locala.Imo.setText(2131757196);
         }
-        if (ae.isNullOrNil(paramString.gJu)) {
-          locala.GMr.setText(2131757190);
+        if (ae.isNullOrNil(paramString.hjU)) {
+          locala.Imo.setText(2131761041);
         }
         for (;;)
         {
-          locala.GMs.setText(paramString.gIl);
-          locala.GMq.setImageResource(2131689849);
+          locala.Imp.setText(paramString.hiM);
+          locala.Imn.setImageResource(2131689850);
           a(locala);
           break;
-          parama = aj.getContext().getString(2131757190) + "-" + paramString.gJu;
-          locala.GMr.setText(parama);
+          parama = ai.getContext().getString(2131761041) + "-" + paramString.hjU;
+          locala.Imo.setText(parama);
         }
-        locala.nCB.setBackground(parama1.GzJ.getMMResources().getDrawable(2131231681));
-        locala.GMt.setVisibility(8);
+        if (ae.isNullOrNil(paramString.hjU)) {
+          locala.Imo.setText(2131757190);
+        }
+        for (;;)
+        {
+          locala.Imp.setText(paramString.hiM);
+          locala.Imn.setImageResource(2131689849);
+          a(locala);
+          break;
+          parama = ai.getContext().getString(2131757190) + "-" + paramString.hjU;
+          locala.Imo.setText(parama);
+        }
+        locala.ofC.setBackground(parama1.HZF.getMMResources().getDrawable(2131231681));
+        locala.Imq.setVisibility(8);
         AppMethodBeat.o(37052);
         return;
       }
     }
   }
   
-  public final boolean a(ContextMenu paramContextMenu, View paramView, bl parambl)
+  public final boolean a(ContextMenu paramContextMenu, View paramView, bo parambo)
   {
     AppMethodBeat.i(37054);
-    int i = ((bi)paramView.getTag()).position;
-    String str = parambl.field_content;
+    int i = ((bj)paramView.getTag()).position;
+    String str = parambo.field_content;
     paramView = null;
     if (str != null) {
-      paramView = k.b.ar(str, parambl.field_reserved);
+      paramView = k.b.az(str, parambo.field_reserved);
     }
     if (paramView != null) {
-      paramContextMenu.add(i, 100, 0, this.Gob.GzJ.getMMResources().getString(2131757221));
+      paramContextMenu.add(i, 100, 0, this.HNS.HZF.getMMResources().getString(2131757221));
     }
     AppMethodBeat.o(37054);
     return false;
   }
   
-  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.d.a parama, bl parambl)
+  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.d.a parama, bo parambo)
   {
     return false;
   }
   
-  public final boolean aX(int paramInt, boolean paramBoolean)
-  {
-    return (paramBoolean) && (paramInt == 419430449);
-  }
-  
-  public final boolean b(View paramView, final com.tencent.mm.ui.chatting.d.a parama, bl parambl)
+  public final boolean b(View paramView, final com.tencent.mm.ui.chatting.d.a parama, bo parambo)
   {
     AppMethodBeat.i(37055);
-    ((com.tencent.mm.plugin.comm.a.b)g.ab(com.tencent.mm.plugin.comm.a.b.class)).Sa(parambl.field_talker);
-    Object localObject = parambl.field_content;
+    ((com.tencent.mm.plugin.comm.a.b)g.ab(com.tencent.mm.plugin.comm.a.b.class)).Wm(parambo.field_talker);
+    Object localObject = parambo.field_content;
     paramView = null;
     if (localObject != null) {
-      paramView = k.b.ar((String)localObject, parambl.field_reserved);
+      paramView = k.b.az((String)localObject, parambo.field_reserved);
     }
     if (paramView != null)
     {
       localObject = new Intent();
-      ((Intent)localObject).putExtra("sender_name", parambl.field_talker);
-      switch (paramView.gIk)
+      ((Intent)localObject).putExtra("sender_name", parambo.field_talker);
+      switch (paramView.hiL)
       {
       case 2: 
       default: 
-        ad.w("MicroMsg.ChattingItemAppMsgRemittanceTo", "Unrecognized type %d, probably version to low & check update!", new Object[] { Integer.valueOf(paramView.gIk) });
-        ae.cW(parama.GzJ.getContext());
+        ac.w("MicroMsg.ChattingItemAppMsgRemittanceTo", "Unrecognized type %d, probably version to low & check update!", new Object[] { Integer.valueOf(paramView.hiL) });
+        ae.df(parama.HZF.getContext());
       }
       for (;;)
       {
         AppMethodBeat.o(37055);
         return true;
-        ((Intent)localObject).putExtra("invalid_time", paramView.gIo);
+        ((Intent)localObject).putExtra("invalid_time", paramView.hiP);
         ((Intent)localObject).putExtra("is_sender", true);
-        ((Intent)localObject).putExtra("appmsg_type", paramView.gIk);
-        ((Intent)localObject).putExtra("transfer_id", paramView.gIn);
-        ((Intent)localObject).putExtra("transaction_id", paramView.gIm);
-        ((Intent)localObject).putExtra("effective_date", paramView.gIp);
-        ((Intent)localObject).putExtra("total_fee", paramView.dvC);
-        ((Intent)localObject).putExtra("fee_type", paramView.dem);
+        ((Intent)localObject).putExtra("appmsg_type", paramView.hiL);
+        ((Intent)localObject).putExtra("transfer_id", paramView.hiO);
+        ((Intent)localObject).putExtra("transaction_id", paramView.hiN);
+        ((Intent)localObject).putExtra("effective_date", paramView.hiQ);
+        ((Intent)localObject).putExtra("total_fee", paramView.dto);
+        ((Intent)localObject).putExtra("fee_type", paramView.dbI);
         paramView = new d.a()
         {
           public final void onActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -340,8 +343,8 @@ public final class x$c
                 return;
               }
               paramAnonymousIntent = paramAnonymousIntent.getStringExtra("result_msg");
-              if (!bt.isNullOrNil(paramAnonymousIntent)) {
-                h.c(parama.GzJ.getContext(), paramAnonymousIntent, "", false);
+              if (!bs.isNullOrNil(paramAnonymousIntent)) {
+                h.c(parama.HZF.getContext(), paramAnonymousIntent, "", false);
               }
               AppMethodBeat.o(37050);
               return;
@@ -349,24 +352,24 @@ public final class x$c
             AppMethodBeat.o(37050);
           }
         };
-        if (u.aqV())
+        if (u.axL())
         {
-          d.a(parama.GzG, "wallet_payu", ".remittance.ui.PayURemittanceDetailUI", (Intent)localObject, 221, paramView);
+          d.a(parama.HZC, "wallet_payu", ".remittance.ui.PayURemittanceDetailUI", (Intent)localObject, 221, paramView);
         }
         else
         {
-          d.a(parama.GzG, "remittance", ".ui.RemittanceDetailUI", (Intent)localObject, 221, paramView);
+          d.a(parama.HZC, "remittance", ".ui.RemittanceDetailUI", (Intent)localObject, 221, paramView);
           continue;
-          ((Intent)localObject).putExtra("appmsg_type", paramView.gIk);
-          ((Intent)localObject).putExtra("transfer_id", paramView.gIn);
-          ((Intent)localObject).putExtra("transaction_id", paramView.gIm);
-          ((Intent)localObject).putExtra("effective_date", paramView.gIp);
-          ((Intent)localObject).putExtra("total_fee", paramView.dvC);
-          ((Intent)localObject).putExtra("fee_type", paramView.dem);
-          if (u.aqV()) {
-            d.b(parama.GzJ.getContext(), "wallet_payu", ".remittance.ui.PayURemittanceDetailUI", (Intent)localObject);
+          ((Intent)localObject).putExtra("appmsg_type", paramView.hiL);
+          ((Intent)localObject).putExtra("transfer_id", paramView.hiO);
+          ((Intent)localObject).putExtra("transaction_id", paramView.hiN);
+          ((Intent)localObject).putExtra("effective_date", paramView.hiQ);
+          ((Intent)localObject).putExtra("total_fee", paramView.dto);
+          ((Intent)localObject).putExtra("fee_type", paramView.dbI);
+          if (u.axL()) {
+            d.b(parama.HZF.getContext(), "wallet_payu", ".remittance.ui.PayURemittanceDetailUI", (Intent)localObject);
           } else {
-            d.b(parama.GzJ.getContext(), "remittance", ".ui.RemittanceDetailUI", (Intent)localObject);
+            d.b(parama.HZF.getContext(), "remittance", ".ui.RemittanceDetailUI", (Intent)localObject);
           }
         }
       }
@@ -375,14 +378,19 @@ public final class x$c
     return false;
   }
   
-  public final boolean faE()
+  public final boolean bb(int paramInt, boolean paramBoolean)
+  {
+    return (paramBoolean) && (paramInt == 419430449);
+  }
+  
+  public final boolean fqu()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.x.c
  * JD-Core Version:    0.7.0.1
  */

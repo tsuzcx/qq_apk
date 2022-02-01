@@ -4,20 +4,20 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.ComponentCallbacks;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.g;
+import com.tencent.mm.plugin.appbrand.utils.h;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/task/preload/PreloadMemoryStressReceiver;", "Lcom/tencent/mm/plugin/appbrand/utils/ApplicationTrimMemoryListener;", "()V", "onTrimMemory", "", "level", "", "setup", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/task/preload/PreloadMemoryStressReceiver;", "Lcom/tencent/mm/plugin/appbrand/utils/ApplicationTrimMemoryListener;", "()V", "onTrimMemory", "", "level", "", "setup", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
 public final class f
-  extends g
+  extends h
 {
-  public static final f lxD;
+  public static final f lZx;
   
   static
   {
     AppMethodBeat.i(51092);
-    lxD = new f();
+    lZx = new f();
     AppMethodBeat.o(51092);
   }
   
@@ -25,7 +25,7 @@ public final class f
   {
     AppMethodBeat.i(51090);
     k.h(paramApplication, "app");
-    paramApplication.registerComponentCallbacks((ComponentCallbacks)lxD);
+    paramApplication.registerComponentCallbacks((ComponentCallbacks)lZx);
     AppMethodBeat.o(51090);
   }
   
@@ -46,7 +46,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.preload.f
  * JD-Core Version:    0.7.0.1
  */

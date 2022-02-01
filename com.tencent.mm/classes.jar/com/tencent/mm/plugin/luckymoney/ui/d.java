@@ -29,20 +29,20 @@ public final class d
     {
       paramView = this.mInflater.inflate(2131494648, paramViewGroup, false);
       paramViewGroup = new a();
-      paramViewGroup.siX = ((TextView)paramView.findViewById(2131301854));
-      paramViewGroup.sYS = ((TextView)paramView.findViewById(2131301855));
-      paramViewGroup.sYT = ((TextView)paramView.findViewById(2131301850));
-      paramViewGroup.sZe = ((ImageView)paramView.findViewById(2131301852));
+      paramViewGroup.tqQ = ((TextView)paramView.findViewById(2131301854));
+      paramViewGroup.uhg = ((TextView)paramView.findViewById(2131301855));
+      paramViewGroup.uhh = ((TextView)paramView.findViewById(2131301850));
+      paramViewGroup.uhs = ((ImageView)paramView.findViewById(2131301852));
       paramView.setTag(paramViewGroup);
-      localt = Gb(paramInt);
-      z.a(this.mContext, paramViewGroup.siX, localt.ter);
-      paramViewGroup.sYS.setText(localt.tet);
-      paramViewGroup.sYT.setText(this.mContext.getString(2131760940, new Object[] { com.tencent.mm.wallet_core.ui.e.D(localt.tes / 100.0D) }));
-      if (localt.dDN != 1) {
+      localt = HW(paramInt);
+      z.a(this.mContext, paramViewGroup.tqQ, localt.umG);
+      paramViewGroup.uhg.setText(localt.umI);
+      paramViewGroup.uhh.setText(this.mContext.getString(2131760940, new Object[] { com.tencent.mm.wallet_core.ui.e.C(localt.umH / 100.0D) }));
+      if (localt.dBz != 1) {
         break label202;
       }
-      paramViewGroup.sZe.setImageResource(2131233028);
-      paramViewGroup.sZe.setVisibility(0);
+      paramViewGroup.uhs.setImageResource(2131233028);
+      paramViewGroup.uhs.setVisibility(0);
     }
     for (;;)
     {
@@ -51,24 +51,24 @@ public final class d
       paramViewGroup = (a)paramView.getTag();
       break;
       label202:
-      if (localt.dDN == 2)
+      if (localt.dBz == 2)
       {
-        paramViewGroup.sZe.setImageResource(2131233017);
-        paramViewGroup.sZe.setVisibility(0);
+        paramViewGroup.uhs.setImageResource(2131233017);
+        paramViewGroup.uhs.setVisibility(0);
       }
       else
       {
-        paramViewGroup.sZe.setVisibility(8);
+        paramViewGroup.uhs.setVisibility(8);
       }
     }
   }
   
   final class a
   {
-    TextView sYS;
-    TextView sYT;
-    ImageView sZe;
-    TextView siX;
+    TextView tqQ;
+    TextView uhg;
+    TextView uhh;
+    ImageView uhs;
     
     a() {}
   }

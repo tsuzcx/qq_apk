@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +29,7 @@ public final class g
     this.db = parame;
   }
   
-  public final Cursor LJ(int paramInt)
+  public final Cursor NJ(int paramInt)
   {
     AppMethodBeat.i(28130);
     Object localObject = "SELECT * FROM " + getTableName() + " ORDER BY rowid DESC LIMIT " + paramInt;
@@ -43,7 +43,7 @@ public final class g
     AppMethodBeat.i(28129);
     if (paramf == null)
     {
-      ad.e("MicroMsg.ShakeMessageStorage", "insert fail, shakeMsg is null");
+      ac.e("MicroMsg.ShakeMessageStorage", "insert fail, shakeMsg is null");
       AppMethodBeat.o(28129);
       return false;
     }
@@ -57,7 +57,7 @@ public final class g
     return false;
   }
   
-  public final int bIR()
+  public final int bQe()
   {
     AppMethodBeat.i(28131);
     Cursor localCursor = this.db.a("select count(*) from " + getTableName() + " where status != 1", null, 2);
@@ -75,7 +75,7 @@ public final class g
     }
   }
   
-  public final f doS()
+  public final f dDc()
   {
     f localf = null;
     AppMethodBeat.i(28132);
@@ -96,7 +96,7 @@ public final class g
     return localf;
   }
   
-  public final List<f> doT()
+  public final List<f> dDd()
   {
     AppMethodBeat.i(28133);
     ArrayList localArrayList = new ArrayList();
@@ -118,7 +118,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.g
  * JD-Core Version:    0.7.0.1
  */

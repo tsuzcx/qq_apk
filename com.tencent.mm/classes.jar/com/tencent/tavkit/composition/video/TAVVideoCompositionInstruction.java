@@ -21,14 +21,14 @@ public class TAVVideoCompositionInstruction
   
   public TAVVideoCompositionInstruction(List<Integer> paramList, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(204754);
+    AppMethodBeat.i(192126);
     this.requiredSourceTrackIDs = paramList;
     this.timeRange = paramCMTimeRange;
     this.enablePostProcessing = false;
     this.backgroundColor = -16777216;
     this.channelLayers = new ArrayList();
     this.overlayLayers = new ArrayList();
-    AppMethodBeat.o(204754);
+    AppMethodBeat.o(192126);
   }
   
   public int getBackgroundColor()
@@ -48,14 +48,14 @@ public class TAVVideoCompositionInstruction
   
   public List<TAVVideoCompositionLayerInstruction> getLayerInstructions()
   {
-    AppMethodBeat.i(204755);
+    AppMethodBeat.i(192127);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.channelLayers.iterator();
     while (localIterator.hasNext()) {
       localArrayList.addAll((List)localIterator.next());
     }
     localArrayList.addAll(this.overlayLayers);
-    AppMethodBeat.o(204755);
+    AppMethodBeat.o(192127);
     return localArrayList;
   }
   
@@ -109,10 +109,10 @@ public class TAVVideoCompositionInstruction
   
   public void setOverlayLayers(List<TAVVideoCompositionLayerInstruction> paramList)
   {
-    AppMethodBeat.i(204756);
+    AppMethodBeat.i(192128);
     if (paramList == null)
     {
-      AppMethodBeat.o(204756);
+      AppMethodBeat.o(192128);
       return;
     }
     this.overlayLayers = paramList;
@@ -123,7 +123,7 @@ public class TAVVideoCompositionInstruction
       VideoCompositionLayerInstruction localVideoCompositionLayerInstruction = (VideoCompositionLayerInstruction)paramList.next();
       this.requiredSourceTrackIDs.add(Integer.valueOf(localVideoCompositionLayerInstruction.getTrackID()));
     }
-    AppMethodBeat.o(204756);
+    AppMethodBeat.o(192128);
   }
   
   public void setSourceVideoEffect(TAVVideoEffect paramTAVVideoEffect)
@@ -138,15 +138,15 @@ public class TAVVideoCompositionInstruction
   
   public String toString()
   {
-    AppMethodBeat.i(204757);
+    AppMethodBeat.i(192129);
     String str = "TAVVideoCompositionInstruction{timeRange=" + this.timeRange.toSimpleString() + ", backgroundColor=" + this.backgroundColor + ", overlayLayers=" + this.overlayLayers + '}';
-    AppMethodBeat.o(204757);
+    AppMethodBeat.o(192129);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.TAVVideoCompositionInstruction
  * JD-Core Version:    0.7.0.1
  */

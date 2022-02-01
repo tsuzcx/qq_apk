@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.apf;
-import com.tencent.mm.protocal.protobuf.apg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.asj;
+import com.tencent.mm.protocal.protobuf.ask;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class m
   extends n
   implements k
 {
   private g callback;
-  public final b fUF;
+  public final b fYA;
   
   public m(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78876);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new apf();
-    ((b.a)localObject).gUV = new apg();
+    ((b.a)localObject).hvt = new asj();
+    ((b.a)localObject).hvu = new ask();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/getappticket";
     ((b.a)localObject).funcId = 1097;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.fUF = ((b.a)localObject).atI();
-    localObject = (apf)this.fUF.gUS.gUX;
-    ((apf)localObject).dlB = paramString1;
-    ((apf)localObject).signature = paramString2;
+    this.fYA = ((b.a)localObject).aAz();
+    localObject = (asj)this.fYA.hvr.hvw;
+    ((asj)localObject).djj = paramString1;
+    ((asj)localObject).signature = paramString2;
     AppMethodBeat.o(78876);
   }
   
@@ -41,7 +41,7 @@ public final class m
   {
     AppMethodBeat.i(78877);
     this.callback = paramg;
-    int i = dispatch(parame, this.fUF, this);
+    int i = dispatch(parame, this.fYA, this);
     AppMethodBeat.o(78877);
     return i;
   }
@@ -54,7 +54,7 @@ public final class m
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(78878);
-    ad.i("MicroMsg.NetSceneGetAppTicket", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    ac.i("MicroMsg.NetSceneGetAppTicket", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(78878);
   }

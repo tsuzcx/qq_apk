@@ -12,21 +12,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.protocal.protobuf.ro;
-import com.tencent.mm.protocal.protobuf.xo;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.protocal.protobuf.yg;
 import com.tencent.mm.ui.MMActivity;
 
 public final class u
   extends i
 {
-  private View nIB;
+  private View olB;
   
-  public final void bMB()
+  public final void bTM()
   {
     AppMethodBeat.i(113708);
-    if (this.nIB != null) {
-      this.nIB.setVisibility(8);
+    if (this.olB != null) {
+      this.olB.setVisibility(8);
     }
     AppMethodBeat.o(113708);
   }
@@ -36,33 +36,33 @@ public final class u
   public final void update()
   {
     AppMethodBeat.i(113707);
-    if (this.nIB == null) {
-      this.nIB = ((ViewStub)findViewById(2131297868)).inflate();
+    if (this.olB == null) {
+      this.olB = ((ViewStub)findViewById(2131297868)).inflate();
     }
-    b localb = this.nIg.bKt();
-    MMActivity localMMActivity = this.nIg.bKw();
-    Object localObject = localb.bHW().CPC;
+    b localb = this.olg.bRG();
+    MMActivity localMMActivity = this.olg.bRJ();
+    Object localObject = localb.bPj().Ein;
     TextView localTextView1;
     TextView localTextView2;
     LinearLayout localLinearLayout;
     LinearLayout.LayoutParams localLayoutParams1;
     LinearLayout.LayoutParams localLayoutParams2;
-    if (this.nIB != null)
+    if (this.olB != null)
     {
-      localTextView1 = (TextView)this.nIB.findViewById(2131297869);
-      localTextView1.setText(((xo)localObject).title);
-      localTextView1.setTextColor(l.Rm(localb.bHV().gHT));
-      localTextView2 = (TextView)this.nIB.findViewById(2131297867);
-      localLinearLayout = (LinearLayout)this.nIB.findViewById(2131297922);
+      localTextView1 = (TextView)this.olB.findViewById(2131297869);
+      localTextView1.setText(((yg)localObject).title);
+      localTextView1.setTextColor(l.Vy(localb.bPi().hiu));
+      localTextView2 = (TextView)this.olB.findViewById(2131297867);
+      localLinearLayout = (LinearLayout)this.olB.findViewById(2131297922);
       localLayoutParams1 = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
-      if (!localb.bHC()) {
+      if (!localb.bOP()) {
         break label418;
       }
       localLayoutParams2 = (LinearLayout.LayoutParams)localTextView1.getLayoutParams();
-      if (TextUtils.isEmpty(((xo)localObject).nrt)) {
+      if (TextUtils.isEmpty(((yg)localObject).nUt)) {
         break label394;
       }
-      localTextView2.setText(((xo)localObject).nrt);
+      localTextView2.setText(((yg)localObject).nUt);
       localTextView2.setVisibility(0);
       localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(2131165980);
       localLayoutParams2.bottomMargin = localMMActivity.getResources().getDimensionPixelSize(2131165187);
@@ -77,14 +77,14 @@ public final class u
       localTextView1.setLayoutParams(localLayoutParams2);
       localTextView1.invalidate();
       int i = localMMActivity.getResources().getDimensionPixelSize(2131165984);
-      localTextView1.setBackgroundDrawable(l.h(localMMActivity, localb.bHV().gHT, i));
-      localTextView1.setTextColor(l.af(localMMActivity, localb.bHV().gHT));
+      localTextView1.setBackgroundDrawable(l.h(localMMActivity, localb.bPi().hiu, i));
+      localTextView1.setTextColor(l.ag(localMMActivity, localb.bPi().hiu));
       localLinearLayout.setBackgroundDrawable(null);
-      localTextView1.setOnClickListener(this.nIg.bKx());
+      localTextView1.setOnClickListener(this.olg.bRK());
       localLinearLayout.setLayoutParams(localLayoutParams1);
       localLinearLayout.invalidate();
-      this.nIB.invalidate();
-      if (localb.bHC()) {
+      this.olB.invalidate();
+      if (localb.bOP()) {
         localLinearLayout.getLayoutParams();
       }
       AppMethodBeat.o(113707);
@@ -94,14 +94,14 @@ public final class u
       localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(2131165981);
     }
     label418:
-    if (!TextUtils.isEmpty(((xo)localObject).nrt))
+    if (!TextUtils.isEmpty(((yg)localObject).nUt))
     {
-      localTextView2.setText(((xo)localObject).nrt);
+      localTextView2.setText(((yg)localObject).nUt);
       localTextView2.setVisibility(0);
     }
     for (localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(2131165994);; localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(2131165995))
     {
-      localLinearLayout.setOnClickListener(this.nIg.bKx());
+      localLinearLayout.setOnClickListener(this.olg.bRK());
       break;
       localTextView2.setVisibility(8);
     }

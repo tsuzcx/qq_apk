@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class at
   extends av
@@ -18,7 +18,7 @@ public final class at
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        ad.i("MiroMsg.WxaManufacturerShortcutEntry", "invalid scene ");
+        ac.i("MiroMsg.WxaManufacturerShortcutEntry", "invalid scene ");
       }
       if ((i != 0) || (!paramBoolean)) {
         break;

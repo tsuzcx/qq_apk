@@ -7,31 +7,31 @@ import d.l.b.a.b.f.f;
 
 public final class h$a
 {
-  private static final b<f, Boolean> JTD;
+  private static final b<f, Boolean> LGW;
   
   static
   {
     AppMethodBeat.i(60215);
-    JTE = new a();
-    JTD = (b)a.JTF;
+    LGX = new a();
+    LGW = (b)a.LGY;
     AppMethodBeat.o(60215);
   }
   
-  public static b<f, Boolean> fJs()
+  public static b<f, Boolean> gbV()
   {
-    return JTD;
+    return LGW;
   }
   
   static final class a
     extends l
     implements b<f, Boolean>
   {
-    public static final a JTF;
+    public static final a LGY;
     
     static
     {
       AppMethodBeat.i(60214);
-      JTF = new a();
+      LGY = new a();
       AppMethodBeat.o(60214);
     }
     

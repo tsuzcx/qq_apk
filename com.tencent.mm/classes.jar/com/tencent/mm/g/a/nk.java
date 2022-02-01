@@ -2,12 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.lang.ref.WeakReference;
 
 public final class nk
   extends b
 {
-  public a dsx;
+  public a dpP;
   
   public nk()
   {
@@ -16,22 +15,23 @@ public final class nk
   
   private nk(byte paramByte)
   {
-    AppMethodBeat.i(130927);
-    this.dsx = new a();
-    this.ESR = false;
+    AppMethodBeat.i(131793);
+    this.dpP = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(130927);
+    AppMethodBeat.o(131793);
   }
   
   public static final class a
   {
-    public WeakReference aLG;
-    public int scene;
+    public int action = 0;
+    public long dpQ;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.nk
  * JD-Core Version:    0.7.0.1
  */

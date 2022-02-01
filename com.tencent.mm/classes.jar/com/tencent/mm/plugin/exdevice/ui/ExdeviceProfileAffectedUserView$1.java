@@ -7,8 +7,8 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class ExdeviceProfileAffectedUserView$1
   implements AdapterView.OnItemClickListener
@@ -19,19 +19,19 @@ final class ExdeviceProfileAffectedUserView$1
   {
     AppMethodBeat.i(24079);
     paramView = (String)paramAdapterView.getAdapter().getItem(paramInt);
-    ad.d("MicroMsg.ExdeviceProfileAffectedUserView", "onItemClick, username : %s", new Object[] { paramView });
-    if (bt.isNullOrNil(paramView))
+    ac.d("MicroMsg.ExdeviceProfileAffectedUserView", "onItemClick, username : %s", new Object[] { paramView });
+    if (bs.isNullOrNil(paramView))
     {
-      ad.w("MicroMsg.ExdeviceProfileAffectedUserView", "username is null.");
+      ac.w("MicroMsg.ExdeviceProfileAffectedUserView", "username is null.");
       AppMethodBeat.o(24079);
       return;
     }
     paramAdapterView = new Intent(this.val$context, ExdeviceProfileUI.class);
     paramAdapterView.putExtra("username", paramView);
     paramView = this.val$context;
-    paramAdapterView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAdapterView);
-    com.tencent.mm.hellhoundlib.a.a.a(paramView, paramAdapterView.adn(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramView.startActivity((Intent)paramAdapterView.lS(0));
+    paramAdapterView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAdapterView);
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, paramAdapterView.aeD(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)paramAdapterView.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileAffectedUserView$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(24079);
   }

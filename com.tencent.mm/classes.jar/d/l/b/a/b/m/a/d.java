@@ -12,29 +12,29 @@ public final class d
   {
     AppMethodBeat.i(61044);
     k.h(parambh, "$this$convertVariance");
-    switch (e.fPQ[parambh.ordinal()])
+    switch (e.fTL[parambh.ordinal()])
     {
     default: 
       parambh = new m();
       AppMethodBeat.o(61044);
       throw parambh;
     case 1: 
-      parambh = s.JZG;
+      parambh = s.LMZ;
       AppMethodBeat.o(61044);
       return parambh;
     case 2: 
-      parambh = s.JZE;
+      parambh = s.LMX;
       AppMethodBeat.o(61044);
       return parambh;
     }
-    parambh = s.JZF;
+    parambh = s.LMY;
     AppMethodBeat.o(61044);
     return parambh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.d
  * JD-Core Version:    0.7.0.1
  */

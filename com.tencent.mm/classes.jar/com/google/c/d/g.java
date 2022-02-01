@@ -5,14 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   extends n
 {
-  private static final char[] bLG;
-  static final int[] bLH;
-  private static final int bLT;
+  private static final int bJB;
+  private static final char[] bJo;
+  static final int[] bJp;
   
   static
   {
     AppMethodBeat.i(12286);
-    bLG = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%abcd*".toCharArray();
+    bJo = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%abcd*".toCharArray();
     int[] arrayOfInt = new int[48];
     arrayOfInt[0] = 276;
     arrayOfInt[1] = 328;
@@ -63,14 +63,14 @@ public final class g
     arrayOfInt[46] = 306;
     arrayOfInt[47] = 350;
     arrayOfInt;
-    bLH = arrayOfInt;
-    bLT = arrayOfInt[47];
+    bJp = arrayOfInt;
+    bJB = arrayOfInt[47];
     AppMethodBeat.o(12286);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.d.g
  * JD-Core Version:    0.7.0.1
  */

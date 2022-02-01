@@ -8,38 +8,38 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.List;
 
 public final class c
   extends s
 {
-  private final a BOA;
-  private final Intent BOB;
-  private final x BOC;
+  private final a DgO;
+  private final Intent DgP;
+  private final x DgQ;
   
   public c(Bundle paramBundle)
   {
     AppMethodBeat.i(109457);
-    this.BOC = new x();
+    this.DgQ = new x();
     if ((paramBundle == null) || (paramBundle.getParcelable("key_target_intent") == null)) {
-      this.BOA = a.BOE;
+      this.DgO = a.DgS;
     }
-    while (this.BOA == a.BOE)
+    while (this.DgO == a.DgS)
     {
-      this.BOB = null;
+      this.DgP = null;
       AppMethodBeat.o(109457);
       return;
-      a locala = a.Uf(paramBundle.getInt("key_map_app", a.BOE.code));
-      if (a(aj.getContext(), locala, null) == null) {
-        this.BOA = a.BOE;
+      a locala = a.Wp(paramBundle.getInt("key_map_app", a.DgS.code));
+      if (a(ai.getContext(), locala, null) == null) {
+        this.DgO = a.DgS;
       } else {
-        this.BOA = locala;
+        this.DgO = locala;
       }
     }
-    this.BOB = ((Intent)paramBundle.getParcelable("key_target_intent"));
+    this.DgP = ((Intent)paramBundle.getParcelable("key_target_intent"));
     AppMethodBeat.o(109457);
   }
   
@@ -51,7 +51,7 @@ public final class c
       localIntent = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Float.valueOf(0.0F), Float.valueOf(0.0F) })));
     }
     paramContext = paramContext.getPackageManager().queryIntentActivities(localIntent, 0);
-    if (bt.gL(paramContext))
+    if (bs.gY(paramContext))
     {
       AppMethodBeat.o(109458);
       return null;
@@ -73,65 +73,65 @@ public final class c
   public final String a(Context paramContext, ResolveInfo paramResolveInfo)
   {
     AppMethodBeat.i(109462);
-    paramContext = this.BOC.a(paramContext, paramResolveInfo);
+    paramContext = this.DgQ.a(paramContext, paramResolveInfo);
     AppMethodBeat.o(109462);
     return paramContext;
   }
   
-  public final boolean aAD(String paramString)
+  public final boolean aFV(String paramString)
   {
     AppMethodBeat.i(109460);
-    boolean bool = this.BOA.getPackage().equals(paramString);
+    boolean bool = this.DgO.getPackage().equals(paramString);
     AppMethodBeat.o(109460);
     return bool;
   }
   
-  public final String aGz()
+  public final String aNm()
   {
-    if (this.BOA == a.BOE) {
+    if (this.DgO == a.DgS) {
       return "http://softroute.map.qq.com/downloadfile?cid=00008&referer=wx_client";
     }
     return null;
   }
   
-  public final String eve()
+  public final String eKy()
   {
-    if (this.BOA == a.BOE) {
+    if (this.DgO == a.DgS) {
       return "TencentMap.apk";
     }
     return null;
   }
   
-  public final t.a evf()
+  public final t.a eKz()
   {
     AppMethodBeat.i(109461);
-    if (this.BOA == a.BOE)
+    if (this.DgO == a.DgS)
     {
-      locala = this.BOC.evf();
+      locala = this.DgQ.eKz();
       AppMethodBeat.o(109461);
       return locala;
     }
     t.a locala = new t.a();
-    locala.BPp = -1;
-    locala.BPm = -1;
-    ResolveInfo localResolveInfo = a(aj.getContext(), this.BOA, this.BOB);
+    locala.DhD = -1;
+    locala.DhA = -1;
+    ResolveInfo localResolveInfo = a(ai.getContext(), this.DgO, this.DgP);
     if (localResolveInfo != null) {
-      locala.BPq = a(aj.getContext(), localResolveInfo);
+      locala.DhE = a(ai.getContext(), localResolveInfo);
     }
     AppMethodBeat.o(109461);
     return locala;
   }
   
-  public final boolean gX(Context paramContext)
+  public final boolean hi(Context paramContext)
   {
     AppMethodBeat.i(109459);
-    if (this.BOA == a.BOE)
+    if (this.DgO == a.DgS)
     {
-      boolean bool = this.BOC.gX(paramContext);
+      boolean bool = this.DgQ.hi(paramContext);
       AppMethodBeat.o(109459);
       return bool;
     }
-    if (a(paramContext, this.BOA, this.BOB) != null)
+    if (a(paramContext, this.DgO, this.DgP) != null)
     {
       AppMethodBeat.o(109459);
       return true;
@@ -147,12 +147,12 @@ public final class c
     static
     {
       AppMethodBeat.i(109456);
-      BOE = new a("TencentMap", 0, 0);
-      BOF = new a("GoogleMap", 1, 1);
-      BOG = new a("SogouMap", 2, 2);
-      BOH = new a("BaiduMap", 3, 3);
-      BOI = new a("AutonaviMap", 4, 4);
-      BOJ = new a[] { BOE, BOF, BOG, BOH, BOI };
+      DgS = new a("TencentMap", 0, 0);
+      DgT = new a("GoogleMap", 1, 1);
+      DgU = new a("SogouMap", 2, 2);
+      DgV = new a("BaiduMap", 3, 3);
+      DgW = new a("AutonaviMap", 4, 4);
+      DgX = new a[] { DgS, DgT, DgU, DgV, DgW };
       AppMethodBeat.o(109456);
     }
     
@@ -161,28 +161,28 @@ public final class c
       this.code = paramInt;
     }
     
-    public static a Uf(int paramInt)
+    public static a Wp(int paramInt)
     {
       switch (paramInt)
       {
       default: 
-        return BOE;
+        return DgS;
       case 0: 
-        return BOE;
+        return DgS;
       case 1: 
-        return BOF;
+        return DgT;
       case 2: 
-        return BOG;
+        return DgU;
       case 3: 
-        return BOH;
+        return DgV;
       }
-      return BOI;
+      return DgW;
     }
     
     public final String getPackage()
     {
       AppMethodBeat.i(109455);
-      switch (c.1.BOD[ordinal()])
+      switch (c.1.DgR[ordinal()])
       {
       default: 
         AppMethodBeat.o(109455);

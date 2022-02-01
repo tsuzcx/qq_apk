@@ -2,78 +2,76 @@ package com.tencent.mm.plugin.card.b;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.plugin.card.model.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  List<WeakReference<a>> nqa;
-  String nqb;
-  public LinkedList<String> nqc;
-  public int nqd;
-  private int nqe;
-  private int nqf;
-  private int nqg;
-  private int nqh;
-  private boolean nqi;
-  private av nqj;
-  private av nqk;
+  List<WeakReference<a>> nTa;
+  String nTb;
+  public LinkedList<String> nTc;
+  public int nTd;
+  private int nTe;
+  private int nTf;
+  private int nTg;
+  private int nTh;
+  private boolean nTi;
+  private au nTj;
+  private au nTk;
   
   public c()
   {
     AppMethodBeat.i(112583);
-    this.nqa = new ArrayList();
-    this.nqb = "";
-    this.nqc = new LinkedList();
-    this.nqh = 60;
-    this.nqi = false;
-    this.nqj = new av(new av.a()
+    this.nTa = new ArrayList();
+    this.nTb = "";
+    this.nTc = new LinkedList();
+    this.nTh = 60;
+    this.nTi = false;
+    this.nTj = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(112581);
-        ad.i("MicroMsg.CardCodeMgr", "onTimerExpired, do request code");
-        c.this.Qj(c.this.nqb);
-        c.this.bIl();
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "onTimerExpired, do request code");
+        c.this.Uv(c.this.nTb);
+        c.this.bPy();
         AppMethodBeat.o(112581);
         return true;
       }
     }, false);
-    this.nqk = new av(new av.a()
+    this.nTk = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(112582);
-        ad.i("MicroMsg.CardCodeMgr", "onTimerExpired, do refresh code one minute");
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "onTimerExpired, do refresh code one minute");
         c localc = c.this;
-        ad.i("MicroMsg.CardCodeMgr", "onCodeChange()");
-        if (localc.nqa != null)
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "onCodeChange()");
+        if (localc.nTa != null)
         {
           int i = 0;
-          while (i < localc.nqa.size())
+          while (i < localc.nTa.size())
           {
-            Object localObject = (WeakReference)localc.nqa.get(i);
+            Object localObject = (WeakReference)localc.nTa.get(i);
             if (localObject != null)
             {
               localObject = (c.a)((WeakReference)localObject).get();
               if (localObject != null) {
-                ((c.a)localObject).bIp();
+                ((c.a)localObject).bPC();
               }
             }
             i += 1;
           }
         }
-        c.this.bIn();
+        c.this.bPA();
         AppMethodBeat.o(112582);
         return true;
       }
@@ -81,24 +79,24 @@ public final class c
     AppMethodBeat.o(112583);
   }
   
-  private void Qi(String paramString)
+  private void Uu(String paramString)
   {
     AppMethodBeat.i(112588);
-    ad.i("MicroMsg.CardCodeMgr", "onFail()");
-    if (this.nqa == null)
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "onFail()");
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112588);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      Object localObject = (WeakReference)this.nqa.get(i);
+      Object localObject = (WeakReference)this.nTa.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
         if (localObject != null) {
-          ((a)localObject).Qi(paramString);
+          ((a)localObject).Uu(paramString);
         }
       }
       i += 1;
@@ -106,20 +104,20 @@ public final class c
     AppMethodBeat.o(112588);
   }
   
-  private void bIk()
+  private void bPx()
   {
     AppMethodBeat.i(112592);
-    ac localac = new ac(this.nqb);
-    com.tencent.mm.kernel.g.afA().gcy.a(localac, 0);
+    com.tencent.mm.plugin.card.model.ac localac = new com.tencent.mm.plugin.card.model.ac(this.nTb);
+    com.tencent.mm.kernel.g.agQ().ghe.a(localac, 0);
     AppMethodBeat.o(112592);
   }
   
-  private void bIm()
+  private void bPz()
   {
     AppMethodBeat.i(112595);
-    ad.i("MicroMsg.CardCodeMgr", "stopRequestCodeTimer!");
-    if (!this.nqj.eFX()) {
-      this.nqj.stopTimer();
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "stopRequestCodeTimer!");
+    if (!this.nTj.eVs()) {
+      this.nTj.stopTimer();
     }
     AppMethodBeat.o(112595);
   }
@@ -127,16 +125,16 @@ public final class c
   private void onSuccess()
   {
     AppMethodBeat.i(112587);
-    ad.i("MicroMsg.CardCodeMgr", "onSuccess()");
-    if (this.nqa == null)
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "onSuccess()");
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112587);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      Object localObject = (WeakReference)this.nqa.get(i);
+      Object localObject = (WeakReference)this.nTa.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -149,56 +147,56 @@ public final class c
     AppMethodBeat.o(112587);
   }
   
-  public final void Qj(String paramString)
+  public final void Uv(String paramString)
   {
     AppMethodBeat.i(112591);
-    if (this.nqi)
+    if (this.nTi)
     {
-      ad.e("MicroMsg.CardCodeMgr", "doGetCardCodes(), is doing get codes");
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.CardCodeMgr", "doGetCardCodes(), is doing get codes");
       AppMethodBeat.o(112591);
       return;
     }
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.CardCodeMgr", "doGetCardCodes(), mCardId is empty!");
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.CardCodeMgr", "doGetCardCodes(), mCardId is empty!");
       AppMethodBeat.o(112591);
       return;
     }
-    ad.i("MicroMsg.CardCodeMgr", "doGetCardCodes() do get codes, card id ".concat(String.valueOf(paramString)));
-    this.nqi = true;
-    this.nqb = paramString;
-    bIk();
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "doGetCardCodes() do get codes, card id ".concat(String.valueOf(paramString)));
+    this.nTi = true;
+    this.nTb = paramString;
+    bPx();
     AppMethodBeat.o(112591);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(112585);
-    if (this.nqa == null) {
-      this.nqa = new ArrayList();
+    if (this.nTa == null) {
+      this.nTa = new ArrayList();
     }
-    this.nqa.add(new WeakReference(parama));
+    this.nTa.add(new WeakReference(parama));
     AppMethodBeat.o(112585);
   }
   
   public final void b(a parama)
   {
     AppMethodBeat.i(112586);
-    if (this.nqa == null)
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112586);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      WeakReference localWeakReference = (WeakReference)this.nqa.get(i);
+      WeakReference localWeakReference = (WeakReference)this.nTa.get(i);
       if (localWeakReference != null)
       {
         a locala = (a)localWeakReference.get();
         if ((locala != null) && (locala.equals(parama)))
         {
-          this.nqa.remove(localWeakReference);
+          this.nTa.remove(localWeakReference);
           AppMethodBeat.o(112586);
           return;
         }
@@ -208,80 +206,80 @@ public final class c
     AppMethodBeat.o(112586);
   }
   
-  public final void bIl()
-  {
-    AppMethodBeat.i(112594);
-    bIm();
-    ad.i("MicroMsg.CardCodeMgr", "startRequestCodeTimer() request_time:" + this.nqe);
-    if ((this.nqe > 0) && (!TextUtils.isEmpty(this.nqb)))
-    {
-      av localav = this.nqj;
-      long l = this.nqe * 1000;
-      localav.av(l, l);
-      ad.i("MicroMsg.CardCodeMgr", "start request code timer!");
-      AppMethodBeat.o(112594);
-      return;
-    }
-    ad.e("MicroMsg.CardCodeMgr", "not to start request code timer!");
-    AppMethodBeat.o(112594);
-  }
-  
-  public final void bIn()
+  public final void bPA()
   {
     AppMethodBeat.i(112596);
-    bIo();
-    ad.i("MicroMsg.CardCodeMgr", "startRefreshCodeTimer() refresh_interval:" + this.nqg);
-    if (this.nqg > 0)
+    bPB();
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "startRefreshCodeTimer() refresh_interval:" + this.nTg);
+    if (this.nTg > 0)
     {
-      localav = this.nqk;
-      l = this.nqg * 1000;
-      localav.av(l, l);
-      ad.i("MicroMsg.CardCodeMgr", "start refresh code timer!");
+      localau = this.nTk;
+      l = this.nTg * 1000;
+      localau.au(l, l);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "start refresh code timer!");
       AppMethodBeat.o(112596);
       return;
     }
-    av localav = this.nqk;
-    long l = this.nqh * 1000;
-    localav.av(l, l);
-    ad.e("MicroMsg.CardCodeMgr", "not to start refresh code timer!");
+    au localau = this.nTk;
+    long l = this.nTh * 1000;
+    localau.au(l, l);
+    com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.CardCodeMgr", "not to start refresh code timer!");
     AppMethodBeat.o(112596);
   }
   
-  public final void bIo()
+  public final void bPB()
   {
     AppMethodBeat.i(112597);
-    ad.i("MicroMsg.CardCodeMgr", "stopRefreshCodeTimer()!");
-    if (!this.nqk.eFX()) {
-      this.nqk.stopTimer();
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "stopRefreshCodeTimer()!");
+    if (!this.nTk.eVs()) {
+      this.nTk.stopTimer();
     }
     AppMethodBeat.o(112597);
+  }
+  
+  public final void bPy()
+  {
+    AppMethodBeat.i(112594);
+    bPz();
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "startRequestCodeTimer() request_time:" + this.nTe);
+    if ((this.nTe > 0) && (!TextUtils.isEmpty(this.nTb)))
+    {
+      au localau = this.nTj;
+      long l = this.nTe * 1000;
+      localau.au(l, l);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "start request code timer!");
+      AppMethodBeat.o(112594);
+      return;
+    }
+    com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.CardCodeMgr", "not to start request code timer!");
+    AppMethodBeat.o(112594);
   }
   
   public final String getCode()
   {
     AppMethodBeat.i(112589);
-    if ((this.nqc == null) || (this.nqc.size() == 0))
+    if ((this.nTc == null) || (this.nTc.size() == 0))
     {
-      ad.e("MicroMsg.CardCodeMgr", "getCode, codes is empty");
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.CardCodeMgr", "getCode, codes is empty");
       AppMethodBeat.o(112589);
       return "";
     }
-    if (this.nqd >= this.nqc.size())
+    if (this.nTd >= this.nTc.size())
     {
-      ad.e("MicroMsg.CardCodeMgr", "getCode, all codes has show! ");
-      Qj(this.nqb);
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.CardCodeMgr", "getCode, all codes has show! ");
+      Uv(this.nTb);
       AppMethodBeat.o(112589);
       return "";
     }
-    if (this.nqf >= this.nqc.size() - this.nqd)
+    if (this.nTf >= this.nTc.size() - this.nTd)
     {
-      ad.i("MicroMsg.CardCodeMgr", "do request code, because the request_count >= than (codes.size() - show_count)");
-      Qj(this.nqb);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "do request code, because the request_count >= than (codes.size() - show_count)");
+      Uv(this.nTb);
     }
-    ad.i("MicroMsg.CardCodeMgr", "getCode, show_count:" + this.nqd + " request_count:" + this.nqf + " codes size:" + this.nqc.size());
-    Object localObject = this.nqc;
-    int i = this.nqd;
-    this.nqd = (i + 1);
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "getCode, show_count:" + this.nTd + " request_count:" + this.nTf + " codes size:" + this.nTc.size());
+    Object localObject = this.nTc;
+    int i = this.nTd;
+    this.nTd = (i + 1);
     localObject = (String)((LinkedList)localObject).get(i);
     AppMethodBeat.o(112589);
     return localObject;
@@ -290,15 +288,15 @@ public final class c
   public final boolean isEmpty()
   {
     AppMethodBeat.i(112590);
-    if ((this.nqc == null) || (this.nqc.size() == 0))
+    if ((this.nTc == null) || (this.nTc.size() == 0))
     {
-      ad.e("MicroMsg.CardCodeMgr", "getCode, codes is empty");
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.CardCodeMgr", "getCode, codes is empty");
       AppMethodBeat.o(112590);
       return true;
     }
-    if (this.nqd >= this.nqc.size())
+    if (this.nTd >= this.nTc.size())
     {
-      ad.e("MicroMsg.CardCodeMgr", "getCode, all codes has show! ");
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.CardCodeMgr", "getCode, all codes has show! ");
       AppMethodBeat.o(112590);
       return true;
     }
@@ -309,36 +307,36 @@ public final class c
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(112593);
-    ad.i("MicroMsg.CardCodeMgr", "onSceneEnd, errType = " + paramInt1 + " errCode = " + paramInt2);
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.CardCodeMgr", "onSceneEnd, errType = " + paramInt1 + " errCode = " + paramInt2);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramn instanceof ac))
+      if ((paramn instanceof com.tencent.mm.plugin.card.model.ac))
       {
-        this.nqi = false;
-        ad.e("MicroMsg.CardCodeMgr", "get codes success for card id " + this.nqb);
-        paramString = (ac)paramn;
-        this.nqe = paramString.nqe;
-        this.nqf = paramString.nqf;
-        this.nqg = paramString.nqg;
-        if (paramString.nqc != null)
+        this.nTi = false;
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.CardCodeMgr", "get codes success for card id " + this.nTb);
+        paramString = (com.tencent.mm.plugin.card.model.ac)paramn;
+        this.nTe = paramString.nTe;
+        this.nTf = paramString.nTf;
+        this.nTg = paramString.nTg;
+        if (paramString.nTc != null)
         {
-          this.nqc.clear();
-          this.nqc.addAll(paramString.nqc);
-          this.nqd = 0;
+          this.nTc.clear();
+          this.nTc.addAll(paramString.nTc);
+          this.nTd = 0;
         }
         onSuccess();
-        bIl();
-        if (this.nqg != 0) {
-          bIn();
+        bPy();
+        if (this.nTg != 0) {
+          bPA();
         }
         AppMethodBeat.o(112593);
       }
     }
-    else if ((paramn instanceof ac))
+    else if ((paramn instanceof com.tencent.mm.plugin.card.model.ac))
     {
-      this.nqi = false;
-      ad.e("MicroMsg.CardCodeMgr", "get codes failed  for card id " + this.nqb);
-      Qi(paramString);
+      this.nTi = false;
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.CardCodeMgr", "get codes failed  for card id " + this.nTb);
+      Uu(paramString);
     }
     AppMethodBeat.o(112593);
   }
@@ -346,24 +344,24 @@ public final class c
   public final void release()
   {
     AppMethodBeat.i(112584);
-    com.tencent.mm.kernel.g.afA().gcy.b(577, this);
-    this.nqc.clear();
-    this.nqi = false;
-    this.nqb = "";
-    this.nqd = 0;
-    this.nqe = 0;
-    this.nqf = 0;
-    this.nqg = 0;
-    bIm();
-    bIo();
+    com.tencent.mm.kernel.g.agQ().ghe.b(577, this);
+    this.nTc.clear();
+    this.nTi = false;
+    this.nTb = "";
+    this.nTd = 0;
+    this.nTe = 0;
+    this.nTf = 0;
+    this.nTg = 0;
+    bPz();
+    bPB();
     AppMethodBeat.o(112584);
   }
   
   public static abstract interface a
   {
-    public abstract void Qi(String paramString);
+    public abstract void Uu(String paramString);
     
-    public abstract void bIp();
+    public abstract void bPC();
     
     public abstract void onSuccess();
   }

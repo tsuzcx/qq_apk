@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
@@ -20,7 +20,7 @@ public final class n
 {
   Context mContext = null;
   public com.tencent.mm.ui.base.p tipDialog = null;
-  e xlR = null;
+  e yyJ = null;
   
   public n(Context paramContext)
   {
@@ -29,7 +29,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.n
  * JD-Core Version:    0.7.0.1
  */

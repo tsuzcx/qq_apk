@@ -6,18 +6,18 @@ import java.lang.ref.WeakReference;
 public final class i
   implements c
 {
-  private WeakReference<c> JI;
+  private WeakReference<c> KD;
   
   public i(c paramc)
   {
-    this.JI = new WeakReference(paramc);
+    this.KD = new WeakReference(paramc);
   }
   
   public final void onResp(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((this.JI != null) && (this.JI.get() != null))
+    if ((this.KD != null) && (this.KD.get() != null))
     {
-      ((c)this.JI.get()).onResp(paramInt, paramArrayOfByte);
+      ((c)this.KD.get()).onResp(paramInt, paramArrayOfByte);
       return;
     }
     b.w("OnRespForLongAIDLImpl fail", new Object[] { "callback is null, errCode=".concat(String.valueOf(paramInt)) });

@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
 {
-  String bNK;
-  String evs;
-  String iaz;
-  b jNU;
-  String jNV;
-  a.a jNW;
-  a.a jNX;
-  a.a jNY;
-  String jNZ;
-  String jOa;
-  String jOb;
-  String jOc;
-  String jOd;
-  String jOe;
-  String jOf;
-  String jOg;
+  String bLs;
+  String exO;
+  String iAC;
+  String koA;
+  String koB;
+  String koC;
+  String koD;
+  String koE;
+  String koF;
+  String koG;
+  String koH;
+  b kov;
+  String kow;
+  a.a kox;
+  a.a koy;
+  a.a koz;
   String title;
   String url;
   
@@ -33,9 +33,9 @@ public final class a
     public b(String paramString1, String paramString2, String paramString3)
     {
       AppMethodBeat.i(137487);
-      this.firstName = bt.nullAsNil(paramString1);
-      this.middleName = bt.nullAsNil(paramString2);
-      this.lastName = bt.nullAsNil(paramString3);
+      this.firstName = bs.nullAsNil(paramString1);
+      this.middleName = bs.nullAsNil(paramString2);
+      this.lastName = bs.nullAsNil(paramString3);
       AppMethodBeat.o(137487);
     }
   }

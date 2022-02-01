@@ -2,56 +2,64 @@ package com.tencent.luggage.k.a.a;
 
 import android.view.View;
 import com.tencent.luggage.k.a.b.a;
-import com.tencent.mm.ac.i;
-import com.tencent.mm.plugin.appbrand.jsapi.o.b;
-import com.tencent.mm.plugin.appbrand.jsapi.o.b.a;
-import com.tencent.mm.plugin.appbrand.jsapi.o.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ab.i;
+import com.tencent.mm.plugin.appbrand.jsapi.n.b;
+import com.tencent.mm.plugin.appbrand.jsapi.n.b.a;
+import com.tencent.mm.plugin.appbrand.jsapi.n.g;
+import com.tencent.mm.sdk.platformtools.ac;
 
-public abstract class c<OriginVideoContainer extends h, PipVideoContainer extends View>
-  implements o<OriginVideoContainer, PipVideoContainer>
+public abstract class c<OriginVideoContainer extends g, PipVideoContainer extends View>
+  implements l<OriginVideoContainer, PipVideoContainer>
 {
-  private final a cjD;
+  private final a cgz;
   
   protected c(a parama)
   {
-    this.cjD = parama;
+    this.cgz = parama;
   }
   
-  public final b cE(final String paramString)
+  public final b ct(final String paramString)
   {
     try
     {
-      paramString = new i(paramString);
-      final b.a locala = com.tencent.mm.plugin.appbrand.jsapi.o.c.a(paramString);
-      if (paramString.has("pictureInPictureShowProgress")) {}
-      for (paramString = Boolean.valueOf(paramString.optBoolean("pictureInPictureShowProgress", false));; paramString = null)
+      Object localObject = new i(paramString);
+      paramString = ((i)localObject).optString("pictureInPictureMode", null);
+      if (paramString == null)
       {
-        paramString = new b()
+        paramString = null;
+        if (!((i)localObject).has("pictureInPictureShowProgress")) {
+          break label62;
+        }
+      }
+      label62:
+      for (localObject = Boolean.valueOf(((i)localObject).optBoolean("pictureInPictureShowProgress", false));; localObject = null)
+      {
+        new b()
         {
-          public final b.a EG()
-          {
-            return locala;
-          }
-          
-          public final Boolean EH()
+          public final b.a Ei()
           {
             return paramString;
           }
+          
+          public final Boolean Ej()
+          {
+            return this.cgJ;
+          }
         };
-        return paramString;
+        paramString = b.a.MW(paramString);
+        break;
       }
       return null;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrand.AbsXWebPipInfoProvider#" + this.cjD.getId(), paramString, "getPipExtra fail", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AppBrand.AbsXWebPipInfoProvider#" + this.cgz.getId(), paramString, "getPipExtra fail", new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a.c
  * JD-Core Version:    0.7.0.1
  */

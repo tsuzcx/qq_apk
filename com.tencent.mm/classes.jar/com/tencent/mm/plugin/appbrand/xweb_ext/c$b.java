@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.appbrand.xweb_ext;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
 final class c$b
   extends d.g.b.l
   implements a<Boolean>
 {
-  public static final b moE;
+  public static final b mQF;
   
   static
   {
     AppMethodBeat.i(51461);
-    moE = new b();
+    mQF = new b();
     AppMethodBeat.o(51461);
   }
   

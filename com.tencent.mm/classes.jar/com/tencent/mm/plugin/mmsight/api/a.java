@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 
 public abstract class a
 {
-  public static b tBo = null;
+  public static b uJL = null;
   
-  public abstract int akd();
+  public abstract int arc();
   
   public abstract int getType();
   
@@ -25,7 +25,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.api.a
  * JD-Core Version:    0.7.0.1
  */

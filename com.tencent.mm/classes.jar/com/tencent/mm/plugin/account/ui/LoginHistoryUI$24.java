@@ -12,7 +12,7 @@ final class LoginHistoryUI$24
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
     AppMethodBeat.i(128106);
-    LoginHistoryUI.a(this.isd, paramMenuItem.getItemId());
+    LoginHistoryUI.a(this.iSi, paramMenuItem.getItemId());
     AppMethodBeat.o(128106);
   }
 }

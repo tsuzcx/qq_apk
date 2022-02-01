@@ -4,18 +4,18 @@ import android.os.IBinder;
 
 public final class c
 {
-  private final d dK;
-  private final a dL;
+  private final d eK;
+  private final a eL;
   
   c(d paramd)
   {
-    this.dK = paramd;
-    this.dL = new a() {};
+    this.eK = paramd;
+    this.eL = new a() {};
   }
   
-  final IBinder at()
+  final IBinder aA()
   {
-    return this.dK.asBinder();
+    return this.eK.asBinder();
   }
   
   public final boolean equals(Object paramObject)
@@ -23,12 +23,12 @@ public final class c
     if (!(paramObject instanceof c)) {
       return false;
     }
-    return ((c)paramObject).at().equals(this.dK.asBinder());
+    return ((c)paramObject).aA().equals(this.eK.asBinder());
   }
   
   public final int hashCode()
   {
-    return at().hashCode();
+    return aA().hashCode();
   }
 }
 

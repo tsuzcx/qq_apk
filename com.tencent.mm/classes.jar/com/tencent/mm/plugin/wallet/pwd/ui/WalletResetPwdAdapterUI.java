@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet.pwd.c;
 import com.tencent.mm.plugin.wallet_core.c.d;
 import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.protocal.protobuf.bzm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cek;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -17,10 +17,10 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WalletResetPwdAdapterUI
   extends WalletBaseUI
 {
-  protected String flk = null;
-  protected boolean vCm = false;
-  protected com.tencent.mm.plugin.wallet.a vCn = null;
-  protected String zUG = "";
+  protected String Bna = "";
+  protected String foE = null;
+  protected boolean wMr = false;
+  protected com.tencent.mm.plugin.wallet.a wMs = null;
   
   public int getLayoutId()
   {
@@ -30,14 +30,14 @@ public class WalletResetPwdAdapterUI
   public void onBackPressed()
   {
     AppMethodBeat.i(69784);
-    if (!this.vCm)
+    if (!this.wMr)
     {
-      ad.d("MicroMsg.WalletResetPwdAdapterUI", "back press not lock");
+      ac.d("MicroMsg.WalletResetPwdAdapterUI", "back press not lock");
       finish();
       AppMethodBeat.o(69784);
       return;
     }
-    ad.d("MicroMsg.WalletResetPwdAdapterUI", "back press but lock");
+    ac.d("MicroMsg.WalletResetPwdAdapterUI", "back press but lock");
     AppMethodBeat.o(69784);
   }
   
@@ -46,12 +46,12 @@ public class WalletResetPwdAdapterUI
     AppMethodBeat.i(69781);
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
-    this.zUG = getIntent().getStringExtra("reset_pwd_token");
-    ad.i("MicroMsg.WalletResetPwdAdapterUI", "token_by_resetPwd %s", new Object[] { this.zUG });
+    this.Bna = getIntent().getStringExtra("reset_pwd_token");
+    ac.i("MicroMsg.WalletResetPwdAdapterUI", "token_by_resetPwd %s", new Object[] { this.Bna });
     addSceneEndListener(580);
     if (getIntent() == null)
     {
-      ad.d("MicroMsg.WalletResetPwdAdapterUI", "func[doCheckPayNetscene] intent null");
+      ac.d("MicroMsg.WalletResetPwdAdapterUI", "func[doCheckPayNetscene] intent null");
       setResult(0);
       finish();
       AppMethodBeat.o(69781);
@@ -74,7 +74,7 @@ public class WalletResetPwdAdapterUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(69782);
-    ad.v("MicroMsg.WalletResetPwdAdapterUI", "onNewIntent");
+    ac.v("MicroMsg.WalletResetPwdAdapterUI", "onNewIntent");
     int i = paramIntent.getIntExtra("RESET_PWD_USER_ACTION", 0);
     if (i == 1)
     {
@@ -102,14 +102,14 @@ public class WalletResetPwdAdapterUI
     {
       if ((paramn instanceof d))
       {
-        e.aCV(((d)paramn).ebj());
+        e.aIm(((d)paramn).eqF());
         paramString = new Bundle();
-        paramString.putString("kreq_token", this.zUG);
-        paramn = ((d)paramn).ebk();
+        paramString.putString("kreq_token", this.Bna);
+        paramn = ((d)paramn).eqG();
         if (paramn != null)
         {
           paramString.putString("key_pwd_title", paramn.title);
-          paramString.putString("key_pwd_desc", paramn.DWp);
+          paramString.putString("key_pwd_desc", paramn.Fth);
         }
         com.tencent.mm.wallet_core.a.a(this, c.class, paramString, null);
         AppMethodBeat.o(69785);
@@ -119,7 +119,7 @@ public class WalletResetPwdAdapterUI
     else
     {
       setResult(-1000);
-      h.cf(this, paramString);
+      h.cg(this, paramString);
       finish();
       AppMethodBeat.o(69785);
       return true;

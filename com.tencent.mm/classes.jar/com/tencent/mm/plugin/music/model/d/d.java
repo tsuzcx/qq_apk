@@ -7,28 +7,28 @@ import com.tencent.mm.plugin.music.model.e.a;
 
 public final class d
 {
-  boolean tXo = false;
-  boolean tXp = false;
-  boolean tXq = false;
-  boolean tXr = false;
-  boolean tXs = false;
-  boolean tXt = false;
-  boolean tXu = false;
-  boolean tXv = false;
-  boolean tXw = false;
-  int tXx = 0;
-  com.tencent.mm.plugin.music.c.b tXy;
+  boolean vga = false;
+  boolean vgb = false;
+  boolean vgc = false;
+  boolean vgd = false;
+  boolean vge = false;
+  boolean vgf = false;
+  boolean vgg = false;
+  boolean vgh = false;
+  boolean vgi = false;
+  int vgj = 0;
+  com.tencent.mm.plugin.music.c.b vgk;
   
   final String getMimeType()
   {
     AppMethodBeat.i(63143);
-    if (this.tXy != null) {}
-    for (String str1 = this.tXy.mimeType;; str1 = "")
+    if (this.vgk != null) {}
+    for (String str1 = this.vgk.mimeType;; str1 = "")
     {
       String str2 = str1;
       if (TextUtils.isEmpty(str1))
       {
-        a locala = ((e)com.tencent.mm.plugin.music.f.c.b.aP(e.class)).cUX();
+        a locala = ((e)com.tencent.mm.plugin.music.f.c.b.aQ(e.class)).diD();
         str2 = str1;
         if (locala != null) {
           str2 = locala.field_mimetype;
@@ -41,7 +41,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.d.d
  * JD-Core Version:    0.7.0.1
  */

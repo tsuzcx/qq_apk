@@ -8,5 +8,5 @@
     <dimen name="od">24.0dip</dimen>
     <item type="dimen" name="aln">@dimen/b4</item>
     <dimen name="am5">24.0dip</dimen>
-    <item type="dimen" name="amd">@dimen/c_</item>
+    <item type="dimen" name="ame">@dimen/c_</item>
 </resources>

@@ -7,21 +7,19 @@ import com.tencent.luggage.sdk.b.a.c.d;
 import com.tencent.luggage.sdk.b.a.c.h;
 import com.tencent.luggage.sdk.customize.impl.FullSdkExternalToolsHelper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.o.a;
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
-import com.tencent.mm.plugin.appbrand.page.bh.a;
+import com.tencent.mm.plugin.appbrand.page.bc.a;
 import com.tencent.mm.plugin.appbrand.widget.input.al.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.z.o.a;
 
 public class b
   extends c
 {
-  protected void CT()
+  protected void Cw()
   {
     AppMethodBeat.i(146682);
-    ad.i("Luggage.FullSdkLuggageInitDelegate", "hy: trigger registerServiceLogicImp");
-    d.DS().a(new b.a(), com.tencent.luggage.sdk.b.a.c.b.class);
-    d.DS().a(h.chL, h.class);
+    com.tencent.mm.sdk.platformtools.ac.i("Luggage.FullSdkLuggageInitDelegate", "hy: trigger registerServiceLogicImp");
+    d.Dv().a(new b.a(), com.tencent.luggage.sdk.b.a.c.b.class);
+    d.Dv().a(h.ceG, h.class);
     AppMethodBeat.o(146682);
   }
   
@@ -42,10 +40,10 @@ public class b
       public final void run()
       {
         AppMethodBeat.i(146680);
-        paramc.a(ac.class, new FullSdkExternalToolsHelper());
+        paramc.a(com.tencent.mm.plugin.appbrand.jsapi.ac.class, new FullSdkExternalToolsHelper());
         paramc.a(o.a.class, new a());
-        paramc.a(bh.a.class, new al.a());
-        b.this.CT();
+        paramc.a(bc.a.class, new al.a());
+        b.this.Cw();
         AppMethodBeat.o(146680);
       }
     });
@@ -54,7 +52,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.b
  * JD-Core Version:    0.7.0.1
  */

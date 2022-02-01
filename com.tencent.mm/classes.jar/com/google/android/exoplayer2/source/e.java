@@ -3,16 +3,16 @@ package com.google.android.exoplayer2.source;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
-  implements n
+  implements m
 {
-  private final n[] bkI;
+  private final m[] bln;
   
-  public e(n[] paramArrayOfn)
+  public e(m[] paramArrayOfm)
   {
-    this.bkI = paramArrayOfn;
+    this.bln = paramArrayOfm;
   }
   
-  public final boolean W(long paramLong)
+  public final boolean X(long paramLong)
   {
     AppMethodBeat.i(92642);
     boolean bool3 = false;
@@ -20,21 +20,21 @@ public final class e
     boolean bool1;
     do
     {
-      long l = tE();
+      long l = tM();
       bool4 = bool3;
       if (l == -9223372036854775808L) {
         break;
       }
-      n[] arrayOfn = this.bkI;
-      int j = arrayOfn.length;
+      m[] arrayOfm = this.bln;
+      int j = arrayOfm.length;
       int i = 0;
       boolean bool2;
       for (bool1 = false; i < j; bool1 = bool2)
       {
-        n localn = arrayOfn[i];
+        m localm = arrayOfm[i];
         bool2 = bool1;
-        if (localn.tE() == l) {
-          bool2 = bool1 | localn.W(paramLong);
+        if (localm.tM() == l) {
+          bool2 = bool1 | localm.X(paramLong);
         }
         i += 1;
       }
@@ -45,16 +45,16 @@ public final class e
     return bool4;
   }
   
-  public final long tD()
+  public final long tL()
   {
     AppMethodBeat.i(92640);
-    n[] arrayOfn = this.bkI;
-    int j = arrayOfn.length;
+    m[] arrayOfm = this.bln;
+    int j = arrayOfm.length;
     int i = 0;
     long l2;
     for (long l1 = 9223372036854775807L; i < j; l1 = l2)
     {
-      long l3 = arrayOfn[i].tD();
+      long l3 = arrayOfm[i].tL();
       l2 = l1;
       if (l3 != -9223372036854775808L) {
         l2 = Math.min(l1, l3);
@@ -70,16 +70,16 @@ public final class e
     return l1;
   }
   
-  public final long tE()
+  public final long tM()
   {
     AppMethodBeat.i(92641);
-    n[] arrayOfn = this.bkI;
-    int j = arrayOfn.length;
+    m[] arrayOfm = this.bln;
+    int j = arrayOfm.length;
     int i = 0;
     long l2;
     for (long l1 = 9223372036854775807L; i < j; l1 = l2)
     {
-      long l3 = arrayOfn[i].tE();
+      long l3 = arrayOfm[i].tM();
       l2 = l1;
       if (l3 != -9223372036854775808L) {
         l2 = Math.min(l1, l3);

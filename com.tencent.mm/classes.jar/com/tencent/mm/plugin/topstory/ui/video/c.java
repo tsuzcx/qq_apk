@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 public abstract interface c
 {
-  public abstract void Pk(int paramInt);
+  public abstract void Rq(int paramInt);
   
-  public abstract void bcn();
+  public abstract int bG(float paramFloat);
   
-  public abstract void bco();
+  public abstract void bjj();
   
-  public abstract void bcp();
+  public abstract void bjk();
   
-  public abstract int by(float paramFloat);
+  public abstract void bjl();
   
-  public abstract boolean dOY();
+  public abstract boolean edy();
   
   public abstract int getCurrentPosition();
 }

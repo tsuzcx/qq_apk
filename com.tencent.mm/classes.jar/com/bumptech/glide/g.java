@@ -7,11 +7,11 @@ public enum g
   static
   {
     AppMethodBeat.i(76789);
-    aAb = new g("IMMEDIATE", 0);
-    aAc = new g("HIGH", 1);
-    aAd = new g("NORMAL", 2);
-    aAe = new g("LOW", 3);
-    aAf = new g[] { aAb, aAc, aAd, aAe };
+    aAV = new g("IMMEDIATE", 0);
+    aAW = new g("HIGH", 1);
+    aAX = new g("NORMAL", 2);
+    aAY = new g("LOW", 3);
+    aAZ = new g[] { aAV, aAW, aAX, aAY };
     AppMethodBeat.o(76789);
   }
   
@@ -19,7 +19,7 @@ public enum g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.g
  * JD-Core Version:    0.7.0.1
  */

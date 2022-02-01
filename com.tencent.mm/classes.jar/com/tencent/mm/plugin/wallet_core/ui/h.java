@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet_core.ui;
 import android.content.Intent;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class h
   extends c
@@ -13,22 +13,22 @@ final class h
     super(paramWalletCheckPwdNewUI);
   }
   
-  public final void aui(String paramString)
+  public final void azA(String paramString)
   {
     AppMethodBeat.i(70680);
     Intent localIntent = new Intent();
     localIntent.putExtra("encrypt_pwd", paramString);
-    this.Ajj.setResult(-1, localIntent);
-    this.Ajj.finish();
+    this.BBF.setResult(-1, localIntent);
+    this.BBF.finish();
     AppMethodBeat.o(70680);
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(70679);
-    String str = this.Ajj.getIntent().getStringExtra("title");
-    if (!bt.isNullOrNil(str)) {
-      this.Ajj.AmC.setText(str);
+    String str = this.BBF.getIntent().getStringExtra("title");
+    if (!bs.isNullOrNil(str)) {
+      this.BBF.BEX.setText(str);
     }
     AppMethodBeat.o(70679);
   }

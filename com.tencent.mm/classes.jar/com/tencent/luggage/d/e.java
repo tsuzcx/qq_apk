@@ -10,46 +10,46 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class e
 {
-  protected i bZY;
-  public g bZZ;
-  protected a caa;
+  protected i bWV;
+  public g bWW;
+  protected a bWX;
   public Context mContext;
   
   public e(g paramg)
   {
     this.mContext = paramg.getContext();
-    this.bZY = new i();
-    this.bZZ = paramg;
+    this.bWV = new i();
+    this.bWW = paramg;
   }
   
-  protected abstract View AN();
+  protected abstract View Ar();
   
-  final void AO()
+  final void As()
   {
-    this.bZY.O(i.e.class);
+    this.bWV.O(i.e.class);
   }
   
-  public final void AP()
+  public final void At()
   {
     onForeground();
-    this.bZY.O(i.d.class);
+    this.bWV.O(i.d.class);
   }
   
-  final void AQ()
+  final void Au()
   {
     onBackground();
-    this.bZY.O(i.b.class);
+    this.bWV.O(i.b.class);
   }
   
-  final boolean AR()
+  final boolean Av()
   {
-    return (this.bZY.O(i.a.class)) || (onBackPressed());
+    return (this.bWV.O(i.a.class)) || (onBackPressed());
   }
   
-  final void AS()
+  final void Aw()
   {
     onDestroy();
-    this.bZY.O(i.c.class);
+    this.bWV.O(i.c.class);
   }
   
   final void a(Animator paramAnimator, final Runnable paramRunnable)
@@ -70,7 +70,7 @@ public abstract class e
   
   public void a(a parama)
   {
-    this.caa = parama;
+    this.bWX = parama;
   }
   
   protected abstract void destroy();
@@ -106,13 +106,13 @@ public abstract class e
   
   public static class a
   {
-    protected a cac;
+    protected a bWZ;
     
     public a() {}
     
     protected a(a parama)
     {
-      this.cac = parama;
+      this.bWZ = parama;
     }
   }
 }

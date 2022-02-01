@@ -2,12 +2,12 @@ package com.tencent.mm.sticker.loader;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.blp;
+import com.tencent.mm.protocal.protobuf.bpl;
 import com.tencent.mm.vfs.i;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/sticker/loader/LensIconDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/sticker/loader/LensIconData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-sticker_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/loader/LensIconDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/sticker/loader/LensIconData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-sticker_release"})
 public final class b
   extends com.tencent.mm.loader.b.a.a<a>
 {
@@ -39,9 +39,9 @@ public final class b
     k.h(parame, "opts");
     k.h(paramf, "reaper");
     parama = c(parama, parame, paramf);
-    if (i.eK(parama))
+    if (i.eA(parama))
     {
-      parama = com.tencent.mm.loader.h.b.a.ri(parama);
+      parama = com.tencent.mm.loader.h.b.a.vk(parama);
       AppMethodBeat.o(105916);
       return parama;
     }
@@ -55,18 +55,18 @@ public final class b
     k.h(parama, "url");
     k.h(parame, "opts");
     k.h(paramf, "reaper");
-    parame = e.Fds;
-    i.aMF(e.eJa());
+    parame = e.GAP;
+    i.aSh(e.eYw());
     parame = new StringBuilder();
-    paramf = e.Fds;
-    parama = e.eJa() + ((a)parama.value()).oKq.Dds;
+    paramf = e.GAP;
+    parama = e.eYw() + ((a)parama.value()).GzM.Ewy;
     AppMethodBeat.o(105915);
     return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sticker.loader.b
  * JD-Core Version:    0.7.0.1
  */

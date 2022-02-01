@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.d;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/handoff/api/IPluginHandOff;", "Lcom/tencent/mm/kernel/plugin/IPlugin;", "Companion", "api-handoff_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/api/IPluginHandOff;", "Lcom/tencent/mm/kernel/plugin/IPlugin;", "Companion", "api-handoff_release"})
 public abstract interface b
   extends d
 {
-  public static final a sti = a.stj;
+  public static final a tAY = a.tAZ;
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/handoff/api/IPluginHandOff$Companion;", "", "()V", "CLASS", "", "api-handoff_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/api/IPluginHandOff$Companion;", "", "()V", "CLASS", "", "api-handoff_release"})
   public static final class a
   {
     static
     {
       AppMethodBeat.i(121691);
-      stj = new a();
+      tAZ = new a();
       AppMethodBeat.o(121691);
     }
   }

@@ -19,7 +19,7 @@ import com.tencent.mm.plugin.facedetectlight.ui.a.a.1;
 import com.tencent.mm.plugin.facedetectlight.ui.c.a;
 import com.tencent.mm.plugin.facedetectlight.ui.d;
 import com.tencent.mm.plugin.facedetectlight.ui.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.youtu.ytcommon.YTCommonExInterface;
 
@@ -28,15 +28,15 @@ public class FaceReflectContainerUI
   extends MMActivity
   implements View.OnClickListener, f, a
 {
-  private String flk;
+  private String foE;
   private String mAppId;
-  private byte[] pRV;
-  private String pSb;
-  private com.tencent.mm.plugin.facedetectlight.ui.a.a pYN;
-  private d pYO;
-  private e pYP;
-  private TextView pYQ;
-  private String pYl;
+  private byte[] qAD;
+  private String qAJ;
+  private String qGS;
+  private com.tencent.mm.plugin.facedetectlight.ui.a.a qHu;
+  private d qHv;
+  private e qHw;
+  private TextView qHx;
   
   static
   {
@@ -48,16 +48,16 @@ public class FaceReflectContainerUI
     AppMethodBeat.o(104344);
   }
   
-  private void chk()
+  private void coR()
   {
     AppMethodBeat.i(104334);
-    ad.d("MicroMsg.FaceReflectContainerUI", "initLayout");
-    this.pYQ = ((TextView)findViewById(2131299658));
-    this.pYQ.setOnClickListener(this);
-    this.pYN = new com.tencent.mm.plugin.facedetectlight.ui.a.a((ViewGroup)findViewById(2131299697), this);
-    this.pYO = new d((ViewGroup)findViewById(2131299718), this);
-    this.pYP = new e((ViewGroup)findViewById(2131299731), this);
-    this.pYN.setBusinessTip(this.pSb);
+    ac.d("MicroMsg.FaceReflectContainerUI", "initLayout");
+    this.qHx = ((TextView)findViewById(2131299658));
+    this.qHx.setOnClickListener(this);
+    this.qHu = new com.tencent.mm.plugin.facedetectlight.ui.a.a((ViewGroup)findViewById(2131299697), this);
+    this.qHv = new d((ViewGroup)findViewById(2131299718), this);
+    this.qHw = new e((ViewGroup)findViewById(2131299731), this);
+    this.qHu.setBusinessTip(this.qAJ);
     AppMethodBeat.o(104334);
   }
   
@@ -66,9 +66,9 @@ public class FaceReflectContainerUI
     AppMethodBeat.i(104331);
     if (PluginFace.isEnabled())
     {
-      com.tencent.mm.plugin.expansions.a.Vi("YTCommon");
-      com.tencent.mm.plugin.expansions.a.Vi("YTFaceTrack");
-      com.tencent.mm.plugin.expansions.a.Vi("YTAGReflectLiveCheck");
+      com.tencent.mm.plugin.expansions.a.Zu("YTCommon");
+      com.tencent.mm.plugin.expansions.a.Zu("YTFaceTrack");
+      com.tencent.mm.plugin.expansions.a.Zu("YTAGReflectLiveCheck");
     }
     AppMethodBeat.o(104331);
   }
@@ -76,12 +76,12 @@ public class FaceReflectContainerUI
   public final void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(104339);
-    ad.i("MicroMsg.FaceReflectContainerUI", "finishWithResult errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if ((paramInt1 != 0) && (paramInt2 != 0) && (com.tencent.mm.plugin.facedetect.e.a.cgJ().isStarted()) && (com.tencent.mm.plugin.facedetect.e.a.cgJ().pUa)) {
-      com.tencent.mm.plugin.facedetect.e.a.cgJ().cgL();
+    ac.i("MicroMsg.FaceReflectContainerUI", "finishWithResult errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if ((paramInt1 != 0) && (paramInt2 != 0) && (com.tencent.mm.plugin.facedetect.e.a.coq().isStarted()) && (com.tencent.mm.plugin.facedetect.e.a.coq().qCF)) {
+      com.tencent.mm.plugin.facedetect.e.a.coq().cos();
     }
     Bundle localBundle = new Bundle();
-    localBundle.putParcelable("key_parcelable_reporter", FaceDetectReporter.cfV());
+    localBundle.putParcelable("key_parcelable_reporter", FaceDetectReporter.cnC());
     if (paramBundle != null) {
       localBundle.putAll(paramBundle);
     }
@@ -89,7 +89,7 @@ public class FaceReflectContainerUI
     paramBundle.putInt("err_type", paramInt1);
     paramBundle.putInt("err_code", paramInt2);
     paramBundle.putString("err_msg", paramString);
-    paramBundle.putString("k_bio_id", this.pYl);
+    paramBundle.putString("k_bio_id", this.qGS);
     paramBundle.putAll(localBundle);
     paramString = new Intent();
     paramString.putExtras(paramBundle);
@@ -100,21 +100,21 @@ public class FaceReflectContainerUI
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.facedetect.ui.c paramc) {}
   
-  public final void cfB() {}
-  
-  public final void cfw()
+  public final void cnd()
   {
     AppMethodBeat.i(104333);
-    this.pYN.cfw();
+    this.qHu.cnd();
     AppMethodBeat.o(104333);
   }
   
-  public final void cfy()
+  public final void cnf()
   {
-    AppMethodBeat.i(204828);
-    c.a.chj().release();
-    AppMethodBeat.o(204828);
+    AppMethodBeat.i(210516);
+    c.a.coQ().release();
+    AppMethodBeat.o(210516);
   }
+  
+  public final void cni() {}
   
   public final void d(int paramInt1, int paramInt2, String paramString, Bundle paramBundle) {}
   
@@ -127,14 +127,14 @@ public class FaceReflectContainerUI
   {
     AppMethodBeat.i(104340);
     super.onBackPressed();
-    c.a.chj().onBackPressed();
+    c.a.coQ().onBackPressed();
     AppMethodBeat.o(104340);
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(104343);
-    c.a.chj().onBackPressed();
+    c.a.coQ().onBackPressed();
     finish();
     AppMethodBeat.o(104343);
   }
@@ -143,50 +143,50 @@ public class FaceReflectContainerUI
   {
     AppMethodBeat.i(104332);
     tryLoadLibrary();
-    ad.d("MicroMsg.FaceReflectContainerUI", "start VerifyActivity");
+    ac.d("MicroMsg.FaceReflectContainerUI", "start VerifyActivity");
     super.onCreate(paramBundle);
     getWindow().addFlags(2097280);
-    ad.d("MicroMsg.FaceReflectContainerUI", "getData");
+    ac.d("MicroMsg.FaceReflectContainerUI", "getData");
     this.mAppId = getIntent().getStringExtra("k_app_id");
-    this.flk = getIntent().getStringExtra("k_user_name");
-    this.pRV = getIntent().getByteArrayExtra("k_bio_config");
-    this.pYl = getIntent().getStringExtra("k_bio_id");
-    this.pSb = getIntent().getStringExtra("business_tips");
-    ad.i("MicroMsg.FaceReflectContainerUI", "mConfig " + this.pRV);
-    ad.i("MicroMsg.FaceReflectContainerUI", "mBioID is %s", new Object[] { this.pYl });
-    ad.i("MicroMsg.FaceReflectContainerUI", "mAppID is %s", new Object[] { this.mAppId });
-    ad.i("MicroMsg.FaceReflectContainerUI", "mBusinessTip is %s", new Object[] { this.pSb });
+    this.foE = getIntent().getStringExtra("k_user_name");
+    this.qAD = getIntent().getByteArrayExtra("k_bio_config");
+    this.qGS = getIntent().getStringExtra("k_bio_id");
+    this.qAJ = getIntent().getStringExtra("business_tips");
+    ac.i("MicroMsg.FaceReflectContainerUI", "mConfig " + this.qAD);
+    ac.i("MicroMsg.FaceReflectContainerUI", "mBioID is %s", new Object[] { this.qGS });
+    ac.i("MicroMsg.FaceReflectContainerUI", "mAppID is %s", new Object[] { this.mAppId });
+    ac.i("MicroMsg.FaceReflectContainerUI", "mBusinessTip is %s", new Object[] { this.qAJ });
     paramBundle = (FaceDetectReporter)getIntent().getBundleExtra("key_reporter_bundle").getParcelable("key_parcelable_reporter");
     if (paramBundle != null) {
-      FaceDetectReporter.cfV().a(paramBundle);
+      FaceDetectReporter.cnC().a(paramBundle);
     }
-    FaceDetectReporter.cfV().appId = this.mAppId;
-    FaceDetectReporter.cfV().pPw = 6;
-    if (p.ah(this))
+    FaceDetectReporter.cnC().appId = this.mAppId;
+    FaceDetectReporter.cnC().qye = 6;
+    if (p.al(this))
     {
-      ad.i("MicroMsg.FaceReflectContainerUI", "carson: checkFacePermissionAnd Request true and do init ");
-      chk();
-      cfw();
+      ac.i("MicroMsg.FaceReflectContainerUI", "carson: checkFacePermissionAnd Request true and do init ");
+      coR();
+      cnd();
       AppMethodBeat.o(104332);
       return;
     }
-    ad.i("MicroMsg.FaceReflectContainerUI", "carson: no camera permission. request permission");
+    ac.i("MicroMsg.FaceReflectContainerUI", "carson: no camera permission. request permission");
     AppMethodBeat.o(104332);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(104337);
+    AppMethodBeat.i(207495);
     super.onDestroy();
-    ad.i("MicroMsg.FaceReflectContainerUI", "onDestroy");
-    c.a.chj().release();
-    AppMethodBeat.o(104337);
+    ac.i("MicroMsg.FaceReflectContainerUI", "onDestroy");
+    c.a.coQ().release();
+    AppMethodBeat.o(207495);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(104342);
-    ad.i("MicroMsg.FaceReflectContainerUI", "carson onRequestPermissionsResult");
+    ac.i("MicroMsg.FaceReflectContainerUI", "carson onRequestPermissionsResult");
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
       AppMethodBeat.o(104342);
@@ -199,8 +199,8 @@ public class FaceReflectContainerUI
     {
       AppMethodBeat.o(104342);
       return;
-      chk();
-      this.pYN.cfw();
+      coR();
+      this.qHu.cnd();
     }
   }
   
@@ -208,8 +208,8 @@ public class FaceReflectContainerUI
   {
     AppMethodBeat.i(104335);
     super.onResume();
-    if (this.pYN != null) {
-      this.pYN.resume();
+    if (this.qHu != null) {
+      this.qHu.resume();
     }
     AppMethodBeat.o(104335);
   }
@@ -218,12 +218,12 @@ public class FaceReflectContainerUI
   {
     AppMethodBeat.i(104336);
     super.onStop();
-    if (this.pYN != null)
+    if (this.qHu != null)
     {
-      com.tencent.mm.plugin.facedetectlight.ui.a.a locala = this.pYN;
-      ad.i(locala.TAG, " FaceReflect Preview UI pause");
-      if (locala.pXK != null) {
-        locala.pXK.pSz = false;
+      com.tencent.mm.plugin.facedetectlight.ui.a.a locala = this.qHu;
+      ac.i(locala.TAG, " FaceReflect Preview UI pause");
+      if (locala.qGp != null) {
+        locala.qGp.qBh = false;
       }
     }
     AppMethodBeat.o(104336);
@@ -238,21 +238,21 @@ public class FaceReflectContainerUI
   public final void startPreview()
   {
     AppMethodBeat.i(104338);
-    this.pYQ.setTextColor(-1);
-    com.tencent.mm.plugin.facedetectlight.ui.a.a locala = this.pYN;
-    locala.a(this.pRV, this.pYl, this.mAppId, this.flk);
-    locala.pYi.setVisibility(0);
-    locala.pYR.setVisibility(4);
-    locala.pYR.post(new a.1(locala));
+    this.qHx.setTextColor(-1);
+    com.tencent.mm.plugin.facedetectlight.ui.a.a locala = this.qHu;
+    locala.a(this.qAD, this.qGS, this.mAppId, this.foE);
+    locala.qGP.setVisibility(0);
+    locala.qHy.setVisibility(4);
+    locala.qHy.post(new a.1(locala));
     locala.resume();
-    locala.pXD.setVisibility(0);
-    FaceDetectReporter.cfV().Z(0, System.currentTimeMillis());
+    locala.qGi.setVisibility(0);
+    FaceDetectReporter.cnC().Y(0, System.currentTimeMillis());
     AppMethodBeat.o(104338);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.ui.container.FaceReflectContainerUI
  * JD-Core Version:    0.7.0.1
  */

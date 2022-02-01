@@ -9,14 +9,14 @@ import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.am.n;
-import com.tencent.mm.by.a.a.a;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.f.c;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.al.n;
+import com.tencent.mm.bx.a.a.a;
 import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
@@ -25,11 +25,11 @@ import com.tencent.mm.ui.tools.MMGestureGallery.f;
 public class ProfileHdHeadImg
   extends MMActivity
 {
-  private String BWg = null;
-  private String dkD = null;
+  private String Dox = null;
+  private String dic = null;
   private String username = null;
-  private GetHdHeadImageGalleryView weE;
-  private com.tencent.mm.ak.f weF;
+  private GetHdHeadImageGalleryView xpS;
+  private com.tencent.mm.aj.f xpT;
   
   private void d(Bitmap paramBitmap, String paramString)
   {
@@ -37,7 +37,7 @@ public class ProfileHdHeadImg
     try
     {
       Object localObject = com.tencent.mm.sdk.platformtools.f.a(paramBitmap, false, 0.1F);
-      a.a.EKY.q(this.username, (Bitmap)localObject);
+      a.a.Gik.p(this.username, (Bitmap)localObject);
       if (paramBitmap.getWidth() < 480)
       {
         float f = 480 / paramBitmap.getWidth();
@@ -45,15 +45,15 @@ public class ProfileHdHeadImg
         ((Matrix)localObject).postScale(f, f);
         localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
       }
-      ad.d("MicroMsg.ProfileHdHeadImg", "dkhdbm old[%d %d] new[%d %d]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Integer.valueOf(((Bitmap)localObject).getWidth()), Integer.valueOf(((Bitmap)localObject).getHeight()) });
-      this.weE.setHdHeadImage((Bitmap)localObject);
-      this.weE.setHdHeadImagePath(paramString);
+      ac.d("MicroMsg.ProfileHdHeadImg", "dkhdbm old[%d %d] new[%d %d]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Integer.valueOf(((Bitmap)localObject).getWidth()), Integer.valueOf(((Bitmap)localObject).getHeight()) });
+      this.xpS.setHdHeadImage((Bitmap)localObject);
+      this.xpS.setHdHeadImagePath(paramString);
       AppMethodBeat.o(31230);
       return;
     }
     catch (Exception paramBitmap)
     {
-      ad.printErrStackTrace("MicroMsg.ProfileHdHeadImg", paramBitmap, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.ProfileHdHeadImg", paramBitmap, "", new Object[0]);
       AppMethodBeat.o(31230);
     }
   }
@@ -71,32 +71,32 @@ public class ProfileHdHeadImg
       getSupportActionBar().hide();
     }
     this.username = getIntent().getStringExtra("username");
-    this.dkD = getIntent().getStringExtra("brand_icon_url");
+    this.dic = getIntent().getStringExtra("brand_icon_url");
     setActionbarColor(getResources().getColor(2131099654));
     setNavigationbarColor(getResources().getColor(2131099654));
-    this.weE = ((GetHdHeadImageGalleryView)findViewById(2131300335));
-    this.weE.setUsername(this.username);
-    this.weE.setSingleClickOverListener(new MMGestureGallery.f()
+    this.xpS = ((GetHdHeadImageGalleryView)findViewById(2131300335));
+    this.xpS.setUsername(this.username);
+    this.xpS.setSingleClickOverListener(new MMGestureGallery.f()
     {
-      public final void aHo()
+      public final void aOd()
       {
         AppMethodBeat.i(31226);
         ProfileHdHeadImg.this.finish();
         AppMethodBeat.o(31226);
       }
     });
-    az.arV();
+    az.ayM();
     if (!com.tencent.mm.model.c.isSDCardAvailable())
     {
       t.g(this, null);
-      d(p.auq().cs(this), null);
+      d(p.aBh().cB(this), null);
       AppMethodBeat.o(31228);
       return;
     }
     Object localObject;
-    if (!bt.isNullOrNil(this.dkD))
+    if (!bs.isNullOrNil(this.dic))
     {
-      paramBundle = n.aT(this.username, this.dkD);
+      paramBundle = n.bb(this.username, this.dic);
       localObject = paramBundle;
       if (paramBundle == null) {
         localObject = BitmapFactory.decodeResource(getResources(), 2131231875);
@@ -104,56 +104,56 @@ public class ProfileHdHeadImg
       if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
         break label322;
       }
-      ad.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is in the cache", new Object[] { this.username });
-      this.weE.setThumbImage((Bitmap)localObject);
+      ac.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is in the cache", new Object[] { this.username });
+      this.xpS.setThumbImage((Bitmap)localObject);
     }
     for (;;)
     {
-      if (!bt.isNullOrNil(this.BWg)) {
-        this.username = this.BWg;
+      if (!bs.isNullOrNil(this.Dox)) {
+        this.username = this.Dox;
       }
-      p.auq();
-      paramBundle = e.vW(this.username);
+      p.aBh();
+      paramBundle = e.Ac(this.username);
       if ((paramBundle == null) || (paramBundle.isRecycled())) {
         break label344;
       }
-      ad.i("MicroMsg.ProfileHdHeadImg", "The HDAvatar of %s is already exists", new Object[] { this.username });
-      p.auq();
-      d(paramBundle, e.I(this.username, true));
+      ac.i("MicroMsg.ProfileHdHeadImg", "The HDAvatar of %s is already exists", new Object[] { this.username });
+      p.aBh();
+      d(paramBundle, e.J(this.username, true));
       AppMethodBeat.o(31228);
       return;
-      paramBundle = com.tencent.mm.ak.c.a(this.username, true, -1, null);
+      paramBundle = com.tencent.mm.aj.c.a(this.username, true, -1, null);
       break;
       label322:
-      ad.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is not in the cache, use default avatar", new Object[] { this.username });
+      ac.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is not in the cache, use default avatar", new Object[] { this.username });
     }
     label344:
-    this.weF = new com.tencent.mm.ak.f();
-    this.weF.a(this.username, new f.c()
+    this.xpT = new com.tencent.mm.aj.f();
+    this.xpT.a(this.username, new f.c()
     {
       public final int dd(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(31227);
-        ProfileHdHeadImg.a(ProfileHdHeadImg.this).auu();
-        ad.i("MicroMsg.ProfileHdHeadImg", "onSceneEnd: errType=%d, errCode=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ProfileHdHeadImg.a(ProfileHdHeadImg.this).aBl();
+        ac.i("MicroMsg.ProfileHdHeadImg", "onSceneEnd: errType=%d, errCode=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          p.auq();
-          Bitmap localBitmap = e.vW(ProfileHdHeadImg.b(ProfileHdHeadImg.this));
+          p.aBh();
+          Bitmap localBitmap = e.Ac(ProfileHdHeadImg.b(ProfileHdHeadImg.this));
           if (localBitmap != null)
           {
             ProfileHdHeadImg localProfileHdHeadImg = ProfileHdHeadImg.this;
-            p.auq();
-            ProfileHdHeadImg.a(localProfileHdHeadImg, localBitmap, e.I(ProfileHdHeadImg.b(ProfileHdHeadImg.this), true));
+            p.aBh();
+            ProfileHdHeadImg.a(localProfileHdHeadImg, localBitmap, e.J(ProfileHdHeadImg.b(ProfileHdHeadImg.this), true));
           }
           for (;;)
           {
             AppMethodBeat.o(31227);
             return 0;
-            ProfileHdHeadImg.a(ProfileHdHeadImg.this, this.weJ, null);
+            ProfileHdHeadImg.a(ProfileHdHeadImg.this, this.xpX, null);
           }
         }
-        ProfileHdHeadImg.a(ProfileHdHeadImg.this, this.weJ, null);
+        ProfileHdHeadImg.a(ProfileHdHeadImg.this, this.xpX, null);
         AppMethodBeat.o(31227);
         return 0;
       }
@@ -176,7 +176,7 @@ public class ProfileHdHeadImg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.ProfileHdHeadImg
  * JD-Core Version:    0.7.0.1
  */

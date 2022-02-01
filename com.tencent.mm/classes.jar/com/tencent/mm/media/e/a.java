@@ -5,33 +5,33 @@ import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.h.c;
 import com.tencent.mm.compatible.h.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import d.n.n;
 import java.nio.ByteBuffer;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "", "filePath", "", "(Ljava/lang/String;)V", "audioTrackForamt", "Landroid/media/MediaFormat;", "audioTrackIndex", "", "hasError", "", "isRelease", "mediaExtractor", "Lcom/tencent/mm/compatible/video/VFSMediaExtractor;", "sampleSize", "sampleTime", "", "selectVideo", "videoBitrate", "videoTrackFormat", "videoTrackIndex", "getAudioFormat", "getAudioMIME", "getAudioTrackIndex", "getBitrate", "getCurrentSampleSize", "getDuration", "getFile", "getFilePath", "getSampleTime", "getSampleTrackIndex", "getVideoFormat", "getVideoHeight", "getVideoMIME", "getVideoWidth", "hasAudio", "isReleased", "isSelectVideo", "readNextSampleData", "byteBuffer", "Ljava/nio/ByteBuffer;", "release", "", "seek", "startTime", "selectAudio", "setBitrate", "bitrate", "toString", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "", "filePath", "", "(Ljava/lang/String;)V", "audioTrackForamt", "Landroid/media/MediaFormat;", "audioTrackIndex", "", "hasError", "", "isRelease", "mediaExtractor", "Lcom/tencent/mm/compatible/video/VFSMediaExtractor;", "sampleSize", "sampleTime", "", "selectVideo", "videoBitrate", "videoTrackFormat", "videoTrackIndex", "getAudioFormat", "getAudioMIME", "getAudioTrackIndex", "getBitrate", "getCurrentSampleSize", "getDuration", "getFile", "getFilePath", "getSampleTime", "getSampleTrackIndex", "getVideoFormat", "getVideoHeight", "getVideoMIME", "getVideoWidth", "hasAudio", "isReleased", "isSelectVideo", "readNextSampleData", "byteBuffer", "Ljava/nio/ByteBuffer;", "release", "", "seek", "startTime", "selectAudio", "setBitrate", "bitrate", "toString", "Companion", "plugin-mediaeditor_release"})
 public final class a
 {
-  public static final a grf;
+  public static final a.a gRN;
   public final String filePath;
-  public final c gqX;
-  private int gqY;
-  public int gqZ;
-  public boolean gqu;
-  public MediaFormat gra;
-  public MediaFormat grb;
-  private boolean grc;
-  private long grd;
-  public boolean gre;
+  public final c gRF;
+  private int gRG;
+  public int gRH;
+  public MediaFormat gRI;
+  public MediaFormat gRJ;
+  private boolean gRK;
+  private long gRL;
+  public boolean gRM;
+  public boolean gRc;
   public int sampleSize;
   private int videoBitrate;
   
   static
   {
     AppMethodBeat.i(93679);
-    grf = new a((byte)0);
+    gRN = new a.a((byte)0);
     AppMethodBeat.o(93679);
   }
   
@@ -39,46 +39,46 @@ public final class a
   {
     AppMethodBeat.i(93678);
     this.filePath = paramString;
-    this.gqX = new c();
-    this.gqY = -1;
-    this.gqZ = -1;
+    this.gRF = new c();
+    this.gRG = -1;
+    this.gRH = -1;
     int j;
     Object localObject;
     int i;
     try
     {
-      ad.m("MicroMsg.MediaExtractorWrapper", "filePath :" + this.filePath, new Object[0]);
-      this.gqX.setDataSource(this.filePath);
-      j = this.gqX.getTrackCount();
-      ad.m("MicroMsg.MediaExtractorWrapper", "trackCount :".concat(String.valueOf(j)), new Object[0]);
+      ac.m("MicroMsg.MediaExtractorWrapper", "filePath :" + this.filePath, new Object[0]);
+      this.gRF.setDataSource(this.filePath);
+      j = this.gRF.getTrackCount();
+      ac.m("MicroMsg.MediaExtractorWrapper", "trackCount :".concat(String.valueOf(j)), new Object[0]);
       paramString = new SparseArray();
       localObject = new SparseArray();
       i = 0;
       if (i < j)
       {
-        MediaFormat localMediaFormat = this.gqX.getTrackFormat(i);
+        MediaFormat localMediaFormat = this.gRF.getTrackFormat(i);
         k.g(localMediaFormat, "mediaExtractor.getTrackFormat(track)");
         String str = localMediaFormat.getString("mime");
         k.g(str, "mime");
-        if (n.f((CharSequence)str, (CharSequence)"video")) {
+        if (n.e((CharSequence)str, (CharSequence)"video")) {
           paramString.put(i, localMediaFormat);
-        } else if (n.f((CharSequence)str, (CharSequence)"audio")) {
+        } else if (n.e((CharSequence)str, (CharSequence)"audio")) {
           ((SparseArray)localObject).put(i, localMediaFormat);
         }
       }
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)paramString, "", new Object[0]);
-      this.gre = true;
+      ac.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)paramString, "", new Object[0]);
+      this.gRM = true;
       AppMethodBeat.o(93678);
       return;
     }
-    ad.i("MicroMsg.MediaExtractorWrapper", "video track count:" + paramString.size() + ", audio track count:" + ((SparseArray)localObject).size());
+    ac.i("MicroMsg.MediaExtractorWrapper", "video track count:" + paramString.size() + ", audio track count:" + ((SparseArray)localObject).size());
     if (((SparseArray)localObject).size() > 0)
     {
-      this.gqZ = ((SparseArray)localObject).keyAt(0);
-      this.grb = ((MediaFormat)((SparseArray)localObject).get(this.gqZ));
+      this.gRH = ((SparseArray)localObject).keyAt(0);
+      this.gRJ = ((MediaFormat)((SparseArray)localObject).get(this.gRH));
     }
     int m;
     if (paramString.size() > 0)
@@ -98,8 +98,8 @@ public final class a
           int k = ((MediaFormat)localObject).getInteger("frame-rate");
           if (k < i)
           {
-            this.gqY = n;
-            this.gra = ((MediaFormat)localObject);
+            this.gRG = n;
+            this.gRI = ((MediaFormat)localObject);
             i = k;
             break label599;
           }
@@ -107,23 +107,23 @@ public final class a
       }
       else
       {
-        if (this.gqY < 0)
+        if (this.gRG < 0)
         {
-          this.gqY = paramString.keyAt(0);
-          this.gra = ((MediaFormat)paramString.get(this.gqY));
+          this.gRG = paramString.keyAt(0);
+          this.gRI = ((MediaFormat)paramString.get(this.gRG));
         }
-        ad.i("MicroMsg.MediaExtractorWrapper", "audio track index:" + this.gqZ + ", format:" + this.grb);
-        ad.i("MicroMsg.MediaExtractorWrapper", "video track index: " + this.gqY + ", format:" + this.gra);
-        if (this.gqY >= 0)
+        ac.i("MicroMsg.MediaExtractorWrapper", "audio track index:" + this.gRH + ", format:" + this.gRJ);
+        ac.i("MicroMsg.MediaExtractorWrapper", "video track index: " + this.gRG + ", format:" + this.gRI);
+        if (this.gRG >= 0)
         {
-          this.gqX.selectTrack(this.gqY);
-          this.grc = true;
+          this.gRF.selectTrack(this.gRG);
+          this.gRK = true;
         }
         paramString = new d();
         paramString.setDataSource(this.filePath);
         this.videoBitrate = Integer.parseInt(paramString.extractMetadata(20));
         paramString.release();
-        ad.d("MicroMsg.MediaExtractorWrapper", "current info :" + toString());
+        ac.d("MicroMsg.MediaExtractorWrapper", "current info :" + toString());
         AppMethodBeat.o(93678);
         return;
       }
@@ -135,23 +135,23 @@ public final class a
     }
   }
   
-  public final boolean ajL()
+  public final boolean aqK()
   {
-    return (this.grb != null) && (this.gqZ >= 0);
+    return (this.gRJ != null) && (this.gRH >= 0);
   }
   
-  public final void ajM()
+  public final void aqL()
   {
     AppMethodBeat.i(93668);
     try
     {
-      if (this.gqZ >= 0) {
-        this.gqX.unselectTrack(this.gqZ);
+      if (this.gRH >= 0) {
+        this.gRF.unselectTrack(this.gRH);
       }
-      if (this.gqY >= 0)
+      if (this.gRG >= 0)
       {
-        this.grc = true;
-        this.gqX.selectTrack(this.gqY);
+        this.gRK = true;
+        this.gRF.selectTrack(this.gRG);
         this.sampleSize = 0;
         AppMethodBeat.o(93668);
         return;
@@ -159,23 +159,23 @@ public final class a
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)localException, "selectVideo error", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)localException, "selectVideo error", new Object[0]);
       AppMethodBeat.o(93668);
     }
   }
   
-  public final void ajN()
+  public final void aqM()
   {
     AppMethodBeat.i(93669);
     try
     {
-      if (this.gqY >= 0) {
-        this.gqX.unselectTrack(this.gqY);
+      if (this.gRG >= 0) {
+        this.gRF.unselectTrack(this.gRG);
       }
-      if (this.gqZ >= 0)
+      if (this.gRH >= 0)
       {
-        this.grc = false;
-        this.gqX.selectTrack(this.gqZ);
+        this.gRK = false;
+        this.gRF.selectTrack(this.gRH);
         this.sampleSize = 0;
         AppMethodBeat.o(93669);
         return;
@@ -183,15 +183,15 @@ public final class a
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)localException, "selectAudio error", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)localException, "selectAudio error", new Object[0]);
       AppMethodBeat.o(93669);
     }
   }
   
-  public final String ajO()
+  public final String aqN()
   {
     AppMethodBeat.i(93670);
-    Object localObject = this.gra;
+    Object localObject = this.gRI;
     if (localObject != null)
     {
       localObject = ((MediaFormat)localObject).getString("mime");
@@ -202,10 +202,10 @@ public final class a
     return null;
   }
   
-  public final String ajP()
+  public final String aqO()
   {
     AppMethodBeat.i(93671);
-    Object localObject = this.grb;
+    Object localObject = this.gRJ;
     if (localObject != null)
     {
       localObject = ((MediaFormat)localObject).getString("mime");
@@ -220,7 +220,7 @@ public final class a
   {
     int j = 0;
     AppMethodBeat.i(93676);
-    MediaFormat localMediaFormat = this.gra;
+    MediaFormat localMediaFormat = this.gRI;
     int i;
     if (localMediaFormat != null)
     {
@@ -228,7 +228,7 @@ public final class a
       if (i > 0) {
         break label63;
       }
-      localMediaFormat = this.grb;
+      localMediaFormat = this.gRJ;
       i = j;
       if (localMediaFormat != null) {
         i = (int)localMediaFormat.getLong("durationUs");
@@ -249,13 +249,13 @@ public final class a
     AppMethodBeat.i(93672);
     try
     {
-      long l = this.grd;
+      long l = this.gRL;
       AppMethodBeat.o(93672);
       return l;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)localException, "getSampleTime error", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)localException, "getSampleTime error", new Object[0]);
       AppMethodBeat.o(93672);
     }
     return -1L;
@@ -267,17 +267,17 @@ public final class a
     k.h(paramByteBuffer, "byteBuffer");
     try
     {
-      if (this.gqu)
+      if (this.gRc)
       {
-        ad.e("MicroMsg.MediaExtractorWrapper", "readNextSampleData already release");
+        ac.e("MicroMsg.MediaExtractorWrapper", "readNextSampleData already release");
         AppMethodBeat.o(93674);
         return false;
       }
-      this.sampleSize = this.gqX.j(paramByteBuffer);
-      this.grd = this.gqX.getSampleTime();
-      this.gqX.advance();
-      if (this.grc) {}
-      for (int i = this.gqY; this.gqX.getSampleTrackIndex() != i; i = this.gqZ)
+      this.sampleSize = this.gRF.j(paramByteBuffer);
+      this.gRL = this.gRF.getSampleTime();
+      this.gRF.advance();
+      if (this.gRK) {}
+      for (int i = this.gRG; this.gRF.getSampleTrackIndex() != i; i = this.gRH)
       {
         AppMethodBeat.o(93674);
         return false;
@@ -287,7 +287,7 @@ public final class a
     }
     catch (Exception paramByteBuffer)
     {
-      ad.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)paramByteBuffer, "readNextSampleData", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)paramByteBuffer, "readNextSampleData", new Object[0]);
       AppMethodBeat.o(93674);
     }
     return false;
@@ -296,38 +296,35 @@ public final class a
   public final void release()
   {
     AppMethodBeat.i(93675);
-    this.gqX.release();
-    this.gqu = true;
+    this.gRF.release();
+    this.gRc = true;
     AppMethodBeat.o(93675);
   }
   
   public final void seek(long paramLong)
   {
     AppMethodBeat.i(93673);
-    if (!this.gqu)
+    if (!this.gRc)
     {
-      this.gqX.seekTo(paramLong, 0);
+      this.gRF.seekTo(paramLong, 0);
       AppMethodBeat.o(93673);
       return;
     }
-    ad.e("MicroMsg.MediaExtractorWrapper", "seek error, mediaExtractor already release!");
+    ac.e("MicroMsg.MediaExtractorWrapper", "seek error, mediaExtractor already release!");
     AppMethodBeat.o(93673);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(93677);
-    String str = "MediaExtractorWrapper(filePath='" + this.filePath + "', mediaExtractor=" + this.gqX + ", videoTrackIndex=" + this.gqY + ", audioTrackIndex=" + this.gqZ + ", videoTrackFormat=" + this.gra + ", audioTrackForamt=" + this.grb + ", videoBitrate=" + this.videoBitrate + ", selectVideo=" + this.grc + ", sampleSize=" + this.sampleSize + ", hasError=" + this.gre + ", isRelease=" + this.gqu + ')';
+    String str = "MediaExtractorWrapper(filePath='" + this.filePath + "', mediaExtractor=" + this.gRF + ", videoTrackIndex=" + this.gRG + ", audioTrackIndex=" + this.gRH + ", videoTrackFormat=" + this.gRI + ", audioTrackForamt=" + this.gRJ + ", videoBitrate=" + this.videoBitrate + ", selectVideo=" + this.gRK + ", sampleSize=" + this.sampleSize + ", hasError=" + this.gRM + ", isRelease=" + this.gRc + ')';
     AppMethodBeat.o(93677);
     return str;
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/extractor/MediaExtractorWrapper$Companion;", "", "()V", "TAG", "", "plugin-mediaeditor_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.e.a
  * JD-Core Version:    0.7.0.1
  */

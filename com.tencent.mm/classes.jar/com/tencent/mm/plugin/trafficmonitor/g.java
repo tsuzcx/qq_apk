@@ -9,13 +9,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class g
 {
-  private static Map<Integer, e> yVs;
-  private static g yVt;
+  private static Map<Integer, e> Ajh;
+  private static g Aji;
   
   static
   {
     AppMethodBeat.i(123929);
-    yVs = new ConcurrentHashMap();
+    Ajh = new ConcurrentHashMap();
     AppMethodBeat.o(123929);
   }
   
@@ -29,16 +29,16 @@ public class g
     AppMethodBeat.o(123923);
   }
   
-  public static g dQu()
+  public static g eeT()
   {
     AppMethodBeat.i(123924);
-    if (yVt == null) {}
+    if (Aji == null) {}
     try
     {
-      if (yVt == null) {
-        yVt = new g();
+      if (Aji == null) {
+        Aji = new g();
       }
-      g localg = yVt;
+      g localg = Aji;
       AppMethodBeat.o(123924);
       return localg;
     }
@@ -48,31 +48,31 @@ public class g
     }
   }
   
-  public static void dQv()
+  public static void eeU()
   {
     AppMethodBeat.i(123926);
-    Iterator localIterator = yVs.values().iterator();
+    Iterator localIterator = Ajh.values().iterator();
     while (localIterator.hasNext()) {
-      ((e)localIterator.next()).dQr();
+      ((e)localIterator.next()).eeQ();
     }
     AppMethodBeat.o(123926);
   }
   
-  public static void dQw()
+  public static void eeV()
   {
     AppMethodBeat.i(123927);
-    Iterator localIterator = yVs.values().iterator();
+    Iterator localIterator = Ajh.values().iterator();
     while (localIterator.hasNext()) {
       ((e)localIterator.next()).currentIndex = 0;
     }
     AppMethodBeat.o(123927);
   }
   
-  public static int dQx()
+  public static int eeW()
   {
     AppMethodBeat.i(123928);
     int i = -1;
-    Iterator localIterator = yVs.values().iterator();
+    Iterator localIterator = Ajh.values().iterator();
     long l = 0L;
     if (localIterator.hasNext())
     {
@@ -102,9 +102,9 @@ public class g
       ((e)localObject).id = paramInt;
       ((e)localObject).interval = paramLong2;
       ((e)localObject).type = 0;
-      ((e)localObject).yVj = localf;
-      ((e)localObject).yVk = new e.a() {};
-      yVs.put(Integer.valueOf(paramInt), localObject);
+      ((e)localObject).AiY = localf;
+      ((e)localObject).AiZ = new e.a() {};
+      Ajh.put(Integer.valueOf(paramInt), localObject);
       AppMethodBeat.o(123925);
       return;
     }
@@ -112,7 +112,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.g
  * JD-Core Version:    0.7.0.1
  */

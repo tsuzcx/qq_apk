@@ -1,40 +1,99 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bj;
 import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storagebase.g;
+import com.tencent.mm.storagebase.g.a;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public final class i
-  extends bj
+  extends j<h>
+  implements g.a
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
+  private e db;
   
   static
   {
-    AppMethodBeat.i(105108);
-    c.a locala = new c.a();
-    locala.EYt = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "designerIDAndType";
-    locala.EYv.put("designerIDAndType", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" designerIDAndType TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.EYu = "designerIDAndType";
-    locala.columns[1] = "content";
-    locala.EYv.put("content", "BLOB default '' ");
-    localStringBuilder.append(" content BLOB default '' ");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(105108);
+    AppMethodBeat.i(105107);
+    SQL_CREATE = new String[] { j.getCreateSQLs(h.info, "EmojiSuggestDescInfo") };
+    AppMethodBeat.o(105107);
   }
   
-  public final c.a getDBInfo()
+  public i(e parame)
   {
-    return null;
+    this(parame, h.info, "EmojiSuggestDescInfo");
+  }
+  
+  private i(e parame, c.a parama, String paramString)
+  {
+    super(parame, parama, paramString, null);
+    this.db = parame;
+  }
+  
+  public final int a(g paramg)
+  {
+    this.db = paramg;
+    return 0;
+  }
+  
+  public final boolean aW(ArrayList<ArrayList<String>> paramArrayList)
+  {
+    AppMethodBeat.i(105106);
+    if (paramArrayList.isEmpty())
+    {
+      ac.i("MicroMsg.emoji.EmojiDescMapStorage", "group list is null.");
+      AppMethodBeat.o(105106);
+      return false;
+    }
+    com.tencent.mm.storagebase.h localh;
+    long l;
+    if ((this.db instanceof com.tencent.mm.storagebase.h))
+    {
+      localh = (com.tencent.mm.storagebase.h)this.db;
+      l = localh.vE(Thread.currentThread().getId());
+    }
+    for (;;)
+    {
+      this.db.delete("EmojiSuggestDescInfo", "", null);
+      paramArrayList = paramArrayList.iterator();
+      int i = 0;
+      if (paramArrayList.hasNext())
+      {
+        Object localObject = (ArrayList)paramArrayList.next();
+        if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
+          break label219;
+        }
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          if (!bs.isNullOrNil(str))
+          {
+            ac.d("MicroMsg.emoji.EmojiDescMapStorage", "insert groupID%s, word:%s", new Object[] { String.valueOf(i), str });
+            insert(new h(String.valueOf(i), str));
+          }
+        }
+        i += 1;
+      }
+      label219:
+      for (;;)
+      {
+        break;
+        if (localh != null) {
+          localh.qL(l);
+        }
+        AppMethodBeat.o(105106);
+        return false;
+      }
+      l = -1L;
+      localh = null;
+    }
   }
 }
 

@@ -6,8 +6,8 @@ import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class bf
@@ -19,11 +19,11 @@ public class bf
   {
     int j = 1;
     AppMethodBeat.i(78628);
-    ad.i("MicroMsg.JsApiSetScreenOrientation", "invoke");
-    String str = parama.bZV.bZb.optString("orientation");
-    if (bt.isNullOrNil(str))
+    ac.i("MicroMsg.JsApiSetScreenOrientation", "invoke");
+    String str = parama.bWS.bVY.optString("orientation");
+    if (bs.isNullOrNil(str))
     {
-      ad.e("MicroMsg.JsApiSetScreenOrientation", "data is null");
+      ac.e("MicroMsg.JsApiSetScreenOrientation", "data is null");
       parama.a("invalid_data", null);
       AppMethodBeat.o(78628);
       return;
@@ -34,7 +34,7 @@ public class bf
     }
     for (;;)
     {
-      ((f)parama.bZU).SH(i);
+      ((f)parama.bWR).UP(i);
       parama.a("", null);
       AppMethodBeat.o(78628);
       return;
@@ -59,7 +59,7 @@ public class bf
     }
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

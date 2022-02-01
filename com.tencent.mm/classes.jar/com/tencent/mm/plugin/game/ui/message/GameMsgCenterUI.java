@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.model.o;
 import com.tencent.mm.plugin.game.model.s;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +25,14 @@ public class GameMsgCenterUI
   extends MMActivity
 {
   private int fromScene;
-  private ViewPager rN;
-  private int snl = 0;
-  private TabItemView snm;
-  private TabItemView snn;
-  private a sno;
-  private b snp;
-  private int snq;
-  private int snr;
+  private ViewPager sO;
+  private int tve = 0;
+  private TabItemView tvf;
+  private TabItemView tvg;
+  private a tvh;
+  private b tvi;
+  private int tvj;
+  private int tvk;
   
   public int getLayoutId()
   {
@@ -46,20 +46,20 @@ public class GameMsgCenterUI
     getSupportActionBar().hide();
     this.fromScene = getIntent().getIntExtra("game_report_from_scene", 0);
     paramBundle = getIntent().getStringExtra("game_msg_ui_from_msgid");
-    paramBundle = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().acA(paramBundle);
+    paramBundle = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().ahs(paramBundle);
     if (paramBundle != null) {
-      this.snl = paramBundle.field_showType;
+      this.tve = paramBundle.field_showType;
     }
-    if (this.snl == 0)
+    if (this.tve == 0)
     {
-      this.snq = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().EB(1);
-      this.snr = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().EB(2);
-      if ((this.snq > 0) || (this.snr <= 0)) {
+      this.tvj = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().Gx(1);
+      this.tvk = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().Gx(2);
+      if ((this.tvj > 0) || (this.tvk <= 0)) {
         break label432;
       }
     }
     label432:
-    for (this.snl = 2;; this.snl = 1)
+    for (this.tve = 2;; this.tve = 1)
     {
       findViewById(2131296397).setOnClickListener(new View.OnClickListener()
       {
@@ -74,24 +74,24 @@ public class GameMsgCenterUI
       {
         public final void onClick(View paramAnonymousView) {}
       });
-      this.snm = ((TabItemView)findViewById(2131305607));
-      this.snm.setShowType(1);
-      this.snn = ((TabItemView)findViewById(2131305608));
-      this.snn.setShowType(2);
-      this.rN = ((ViewPager)findViewById(2131302255));
+      this.tvf = ((TabItemView)findViewById(2131305607));
+      this.tvf.setShowType(1);
+      this.tvg = ((TabItemView)findViewById(2131305608));
+      this.tvg.setShowType(2);
+      this.sO = ((ViewPager)findViewById(2131302255));
       paramBundle = new a(getSupportFragmentManager());
       GameMsgCenterFragment localGameMsgCenterFragment = new GameMsgCenterFragment();
-      this.sno = new a(this, this.fromScene);
-      this.sno.setNewMessageCount(this.snq);
-      localGameMsgCenterFragment.contentView = this.sno;
+      this.tvh = new a(this, this.fromScene);
+      this.tvh.setNewMessageCount(this.tvj);
+      localGameMsgCenterFragment.contentView = this.tvh;
       paramBundle.a(localGameMsgCenterFragment);
       localGameMsgCenterFragment = new GameMsgCenterFragment();
-      this.snp = new b(this, this.fromScene);
-      this.snp.setNewMessageCount(this.snr);
-      localGameMsgCenterFragment.contentView = this.snp;
+      this.tvi = new b(this, this.fromScene);
+      this.tvi.setNewMessageCount(this.tvk);
+      localGameMsgCenterFragment.contentView = this.tvi;
       paramBundle.a(localGameMsgCenterFragment);
-      this.rN.setAdapter(paramBundle);
-      this.snm.setOnClickListener(new View.OnClickListener()
+      this.sO.setAdapter(paramBundle);
+      this.tvf.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -101,7 +101,7 @@ public class GameMsgCenterUI
           AppMethodBeat.o(183871);
         }
       });
-      this.snn.setOnClickListener(new View.OnClickListener()
+      this.tvg.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -111,7 +111,7 @@ public class GameMsgCenterUI
           AppMethodBeat.o(183872);
         }
       });
-      this.rN.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
+      this.sO.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
       {
         public final void onPageScrollStateChanged(int paramAnonymousInt) {}
         
@@ -120,20 +120,20 @@ public class GameMsgCenterUI
         public final void onPageSelected(int paramAnonymousInt)
         {
           AppMethodBeat.i(183873);
-          ad.i("MicroMsg.GameMsgCenterUI", "onPageSelected:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ac.i("MicroMsg.GameMsgCenterUI", "onPageSelected:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
           GameMsgCenterUI.this.setCurrentItem(paramAnonymousInt);
           AppMethodBeat.o(183873);
         }
       });
-      if (this.snl != 2) {
+      if (this.tve != 2) {
         break;
       }
-      this.snm.setUnreadCount(((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().EB(1));
+      this.tvf.setUnreadCount(((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().Gx(1));
       setCurrentItem(1);
       AppMethodBeat.o(183878);
       return;
     }
-    this.snn.setUnreadCount(((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().EB(2));
+    this.tvg.setUnreadCount(((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().Gx(2));
     setCurrentItem(0);
     AppMethodBeat.o(183878);
   }
@@ -143,29 +143,29 @@ public class GameMsgCenterUI
     AppMethodBeat.i(183879);
     super.onDestroy();
     Object localObject;
-    if (this.sno != null)
+    if (this.tvh != null)
     {
-      localObject = this.sno;
-      if (((a)localObject).snj != null)
+      localObject = this.tvh;
+      if (((a)localObject).tvc != null)
       {
-        localObject = ((a)localObject).snj.snv.Qs;
+        localObject = ((a)localObject).tvc.tvo.Rn;
         if (localObject != null) {
           ((Cursor)localObject).close();
         }
       }
     }
-    if (this.snp != null)
+    if (this.tvi != null)
     {
-      localObject = this.snp;
-      if (((b)localObject).snu != null)
+      localObject = this.tvi;
+      if (((b)localObject).tvn != null)
       {
-        localObject = ((b)localObject).snu.snI.Qs;
+        localObject = ((b)localObject).tvn.tvB.Rn;
         if (localObject != null) {
           ((Cursor)localObject).close();
         }
       }
     }
-    ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().cDs();
+    ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().cQC();
     AppMethodBeat.o(183879);
   }
   
@@ -180,18 +180,18 @@ public class GameMsgCenterUI
     AppMethodBeat.i(183880);
     if (paramInt % 2 == 0)
     {
-      this.snm.setSelected(true);
-      this.snn.setSelected(false);
-      this.sno.resume();
+      this.tvf.setSelected(true);
+      this.tvg.setSelected(false);
+      this.tvh.resume();
     }
     for (;;)
     {
-      this.rN.setCurrentItem(paramInt);
+      this.sO.setCurrentItem(paramInt);
       AppMethodBeat.o(183880);
       return;
-      this.snm.setSelected(false);
-      this.snn.setSelected(true);
-      this.snp.resume();
+      this.tvf.setSelected(false);
+      this.tvg.setSelected(true);
+      this.tvi.resume();
     }
   }
   
@@ -209,27 +209,27 @@ public class GameMsgCenterUI
   static final class a
     extends i
   {
-    private List<GameMsgCenterUI.GameMsgCenterFragment> snt;
+    private List<GameMsgCenterUI.GameMsgCenterFragment> tvm;
     
     public a(android.support.v4.app.g paramg)
     {
       super();
       AppMethodBeat.i(183874);
-      this.snt = new ArrayList();
+      this.tvm = new ArrayList();
       AppMethodBeat.o(183874);
     }
     
     public final void a(GameMsgCenterUI.GameMsgCenterFragment paramGameMsgCenterFragment)
     {
       AppMethodBeat.i(183875);
-      this.snt.add(paramGameMsgCenterFragment);
+      this.tvm.add(paramGameMsgCenterFragment);
       AppMethodBeat.o(183875);
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(183877);
-      int i = this.snt.size();
+      int i = this.tvm.size();
       AppMethodBeat.o(183877);
       return i;
     }
@@ -237,7 +237,7 @@ public class GameMsgCenterUI
     public final Fragment getItem(int paramInt)
     {
       AppMethodBeat.i(183876);
-      Object localObject = this.snt;
+      Object localObject = this.tvm;
       localObject = (Fragment)((List)localObject).get(paramInt % ((List)localObject).size());
       AppMethodBeat.o(183876);
       return localObject;

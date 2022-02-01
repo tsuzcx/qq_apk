@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.fav.b.e;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.am;
 import com.tencent.mm.plugin.fav.a.f;
@@ -11,13 +11,13 @@ import com.tencent.mm.plugin.fav.a.h;
 import com.tencent.mm.plugin.fav.a.t;
 import com.tencent.mm.plugin.fav.a.u;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.protocal.protobuf.agc;
 import com.tencent.mm.protocal.protobuf.ahb;
-import com.tencent.mm.protocal.protobuf.bqq;
-import com.tencent.mm.protocal.protobuf.bqt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aia;
+import com.tencent.mm.protocal.protobuf.bvh;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -25,20 +25,20 @@ import java.util.List;
 import java.util.Map;
 
 public final class c
-  implements com.tencent.mm.al.g, u
+  implements com.tencent.mm.ak.g, u
 {
-  public Map<String, a> qbP;
+  public Map<String, a> qKv;
   
   public c()
   {
     AppMethodBeat.i(101626);
-    this.qbP = new HashMap();
-    com.tencent.mm.kernel.g.aeS().a(426, this);
-    com.tencent.mm.kernel.g.aeS().a(401, this);
+    this.qKv = new HashMap();
+    com.tencent.mm.kernel.g.agi().a(426, this);
+    com.tencent.mm.kernel.g.agi().a(401, this);
     AppMethodBeat.o(101626);
   }
   
-  public static String D(long paramLong, int paramInt)
+  public static String E(long paramLong, int paramInt)
   {
     AppMethodBeat.i(101629);
     String str = paramLong + "&&" + paramInt;
@@ -46,22 +46,22 @@ public final class c
     return str;
   }
   
-  public final void a(long paramLong, LinkedList<bqq> paramLinkedList, LinkedList<bqt> paramLinkedList1, int paramInt)
+  public final void a(long paramLong, LinkedList<bvh> paramLinkedList, LinkedList<bvk> paramLinkedList1, int paramInt)
   {
     AppMethodBeat.i(101630);
-    ad.i("MicroMsg.Fav.FavEditService", "addTag %d", new Object[] { Long.valueOf(paramLong) });
-    f localf = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavEditInfoStorage().pR(paramLong);
+    ac.i("MicroMsg.Fav.FavEditService", "addTag %d", new Object[] { Long.valueOf(paramLong) });
+    f localf = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavEditInfoStorage().tG(paramLong);
     if (localf == null) {
       localf = new f();
     }
     for (int i = 1;; i = 0)
     {
       localf.field_localId = paramLong;
-      agc localagc = new agc();
-      localagc.qbf = paramLinkedList;
-      localagc.Din = paramLinkedList1;
-      localf.field_modItem = localagc;
-      localf.field_time = bt.eGO();
+      ahb localahb = new ahb();
+      localahb.qJL = paramLinkedList;
+      localahb.EBt = paramLinkedList1;
+      localf.field_modItem = localahb;
+      localf.field_time = bs.eWj();
       localf.field_type = 0;
       localf.field_scene = paramInt;
       if (i != 0) {
@@ -85,10 +85,10 @@ public final class c
       AppMethodBeat.o(101627);
       return;
     }
-    ad.i("MicroMsg.Fav.FavEditService", "on edit service scene end, errType=%d errCode=%d, %s, scene type %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
+    ac.i("MicroMsg.Fav.FavEditService", "on edit service scene end, errType=%d errCode=%d, %s, scene type %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
     if (paramn.getType() == 401)
     {
-      ad.i("MicroMsg.Fav.FavEditService", "on add fav item scene end, try mod item");
+      ac.i("MicroMsg.Fav.FavEditService", "on add fav item scene end, try mod item");
       run();
       AppMethodBeat.o(101627);
       return;
@@ -98,39 +98,39 @@ public final class c
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramn = D(paramString.cin(), paramString.cio());
-        ad.i("MicroMsg.Fav.FavEditService", "clear job, key %s", new Object[] { paramn });
-        this.qbP.remove(paramn);
-        ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavEditInfoStorage().y(paramString.cin(), paramString.cio());
-        paramn = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pS(paramString.cin());
+        paramn = E(paramString.cpU(), paramString.cpV());
+        ac.i("MicroMsg.Fav.FavEditService", "clear job, key %s", new Object[] { paramn });
+        this.qKv.remove(paramn);
+        ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavEditInfoStorage().z(paramString.cpU(), paramString.cpV());
+        paramn = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tH(paramString.cpU());
         if (paramn != null)
         {
           l = paramn.field_id;
-          paramInt2 = paramn.field_tagProto.DiR.size();
-          if (paramString.qbd != null) {
+          paramInt2 = paramn.field_tagProto.EBX.size();
+          if (paramString.qJJ != null) {
             break label245;
           }
         }
         label245:
-        for (paramInt1 = 1;; paramInt1 = paramString.qbd.field_scene)
+        for (paramInt1 = 1;; paramInt1 = paramString.qJJ.field_scene)
         {
           h.j(l, paramInt2, paramInt1);
           AppMethodBeat.o(101627);
           return;
         }
       }
-      long l = paramString.cin();
-      paramInt1 = paramString.cio();
-      paramString = D(l, paramInt1);
-      ad.i("MicroMsg.Fav.FavEditService", "retry job, key %s", new Object[] { paramString });
-      paramString = (a)this.qbP.get(paramString);
+      long l = paramString.cpU();
+      paramInt1 = paramString.cpV();
+      paramString = E(l, paramInt1);
+      ac.i("MicroMsg.Fav.FavEditService", "retry job, key %s", new Object[] { paramString });
+      paramString = (a)this.qKv.get(paramString);
       if (paramString == null)
       {
-        ad.w("MicroMsg.Fav.FavEditService", "want to retry mod item, localid %d, type %d", new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1) });
+        ac.w("MicroMsg.Fav.FavEditService", "want to retry mod item, localid %d, type %d", new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1) });
         AppMethodBeat.o(101627);
         return;
       }
-      com.tencent.mm.kernel.g.afE().m(new Runnable()
+      com.tencent.mm.kernel.g.agU().m(new Runnable()
       {
         public final void run()
         {
@@ -154,37 +154,37 @@ public final class c
   public final void run()
   {
     AppMethodBeat.i(101628);
-    com.tencent.mm.kernel.g.afE().ax(new Runnable()
+    com.tencent.mm.kernel.g.agU().az(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(101622);
-        Object localObject = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavEditInfoStorage().chX();
+        Object localObject = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavEditInfoStorage().cpE();
         if (localObject == null)
         {
           AppMethodBeat.o(101622);
           return;
         }
-        ad.i("MicroMsg.Fav.FavEditService", "infos size %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+        ac.i("MicroMsg.Fav.FavEditService", "infos size %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           f localf = (f)((Iterator)localObject).next();
-          String str = c.D(localf.field_localId, localf.field_type);
-          c.a locala = (c.a)c.this.qbP.get(str);
+          String str = c.E(localf.field_localId, localf.field_type);
+          c.a locala = (c.a)c.this.qKv.get(str);
           if (locala == null)
           {
-            ad.i("MicroMsg.Fav.FavEditService", "not match key %s", new Object[] { str });
+            ac.i("MicroMsg.Fav.FavEditService", "not match key %s", new Object[] { str });
             locala = new c.a((byte)0);
-            locala.qbd = localf;
+            locala.qJJ = localf;
             locala.retryCount = 3;
             locala.time = SystemClock.elapsedRealtime();
-            c.this.qbP.put(str, locala);
+            c.this.qKv.put(str, locala);
             c.a(locala, true);
           }
           else
           {
-            ad.i("MicroMsg.Fav.FavEditService", "match key %s, check start", new Object[] { str });
+            ac.i("MicroMsg.Fav.FavEditService", "match key %s, check start", new Object[] { str });
             c.a(locala, false);
           }
         }
@@ -204,8 +204,8 @@ public final class c
   
   static final class a
   {
-    int qbc;
-    f qbd;
+    int qJI;
+    f qJJ;
     int retryCount;
     long time;
   }

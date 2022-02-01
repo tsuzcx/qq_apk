@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="@dimen/kt" />
+    <LinearLayout android:id="@id/had" android:background="@color/a7c" android:paddingTop="@dimen/kt" android:paddingBottom="@dimen/kx" android:layout_width="fill_parent" android:layout_height="@dimen/kt">
+        <TextView android:textSize="@dimen/kg" android:textColor="@color/s5" android:id="@id/hae" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hli" />
+    </LinearLayout>
 </FrameLayout>

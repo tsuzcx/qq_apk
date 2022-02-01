@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ay;
+import com.tencent.mm.g.c.az;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.b;
 import com.tencent.mm.ui.contact.a.f;
@@ -23,12 +23,12 @@ public final class ab
   extends q
   implements n.b
 {
-  private List<String> GXZ;
-  private int GYa;
-  private boolean GYb;
-  private int GYc;
-  private Cursor icq;
-  private int vGh;
+  private List<String> Iyp;
+  private int Iyq;
+  private boolean Iyr;
+  private int Iys;
+  private Cursor iCz;
+  private int wQm;
   
   public ab(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList)
   {
@@ -39,49 +39,49 @@ public final class ab
   {
     super(paramMMBaseSelectContactUI, paramList, paramBoolean1, paramBoolean2);
     AppMethodBeat.i(102921);
-    this.GYc = 0;
-    ad.i("MicroMsg.RecentConversationAdapter", "create!");
-    this.GYb = paramBoolean3;
-    this.GYc = paramInt;
-    VP();
-    ((k)g.ab(k.class)).apR().a(this);
+    this.Iys = 0;
+    ac.i("MicroMsg.RecentConversationAdapter", "create!");
+    this.Iyr = paramBoolean3;
+    this.Iys = paramInt;
+    WN();
+    ((k)g.ab(k.class)).awG().a(this);
     AppMethodBeat.o(102921);
   }
   
-  public final void VP()
+  public final void WN()
   {
     int j = 0;
     AppMethodBeat.i(102922);
-    ad.i("MicroMsg.RecentConversationAdapter", "resetData");
-    if (this.icq != null)
+    ac.i("MicroMsg.RecentConversationAdapter", "resetData");
+    if (this.iCz != null)
     {
-      this.icq.close();
-      this.icq = null;
+      this.iCz.close();
+      this.iCz = null;
     }
-    if (u.hasAttr(this.GYc, 4))
+    if (u.hasAttr(this.Iys, 4))
     {
-      this.icq = ((k)g.ab(k.class)).apR().a(w.gMs, this.fvP, this.GWl, "");
-      if (!this.GYb) {
+      this.iCz = ((k)g.ab(k.class)).awG().a(w.hmS, this.fzw, this.Iwz, "");
+      if (!this.Iyr) {
         break label220;
       }
     }
     label220:
     for (int i = 2;; i = 0)
     {
-      if (this.GXZ != null) {
-        j = this.GXZ.size();
+      if (this.Iyp != null) {
+        j = this.Iyp.size();
       }
-      this.GYa = j;
-      this.vGh = (i + this.GYa);
+      this.Iyq = j;
+      this.wQm = (i + this.Iyq);
       clearCache();
       AppMethodBeat.o(102922);
       return;
-      if (u.hasAttr(this.GYc, 16))
+      if (u.hasAttr(this.Iys, 16))
       {
-        this.icq = ((k)g.ab(k.class)).apR().a(w.gMu, this.fvP, this.GWl, "");
+        this.iCz = ((k)g.ab(k.class)).awG().a(w.hmU, this.fzw, this.Iwz, "");
         break;
       }
-      this.icq = ((k)g.ab(k.class)).apR().a(w.gMn, this.fvP, this.GWl, "");
+      this.iCz = ((k)g.ab(k.class)).awG().a(w.hmN, this.fzw, this.Iwz, "");
       break;
     }
   }
@@ -89,7 +89,7 @@ public final class ab
   public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
   {
     AppMethodBeat.i(102926);
-    VP();
+    WN();
     notifyDataSetChanged();
     AppMethodBeat.o(102926);
   }
@@ -98,93 +98,93 @@ public final class ab
   {
     AppMethodBeat.i(102925);
     super.finish();
-    ad.i("MicroMsg.RecentConversationAdapter", "finish!");
-    if (this.icq != null)
+    ac.i("MicroMsg.RecentConversationAdapter", "finish!");
+    if (this.iCz != null)
     {
-      this.icq.close();
-      this.icq = null;
+      this.iCz.close();
+      this.iCz = null;
     }
-    ((k)g.ab(k.class)).apR().b(this);
+    ((k)g.ab(k.class)).awG().b(this);
     AppMethodBeat.o(102925);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(102923);
-    int j = this.vGh + 1;
+    int j = this.wQm + 1;
     int i = j;
-    if (this.icq != null) {
-      i = j + this.icq.getCount();
+    if (this.iCz != null) {
+      i = j + this.iCz.getCount();
     }
     AppMethodBeat.o(102923);
     return i;
   }
   
-  protected final a pU(int paramInt)
+  protected final a qH(int paramInt)
   {
-    am localam = null;
+    ap localap = null;
     AppMethodBeat.i(102924);
     Object localObject;
-    if (this.vGh > this.GYa) {
-      if (paramInt == this.GYa)
+    if (this.wQm > this.Iyq) {
+      if (paramInt == this.Iyq)
       {
         localObject = new h(paramInt);
-        ((h)localObject).header = this.GVS.getActivity().getResources().getString(2131762997);
+        ((h)localObject).header = this.Iwg.getActivity().getResources().getString(2131762997);
       }
     }
     for (;;)
     {
-      if (paramInt == this.vGh)
+      if (paramInt == this.wQm)
       {
         localObject = new h(paramInt);
-        ((h)localObject).header = this.GVS.getActivity().getResources().getString(2131762982);
+        ((h)localObject).header = this.Iwg.getActivity().getResources().getString(2131762982);
       }
       for (;;)
       {
         AppMethodBeat.o(102924);
         return localObject;
-        if (paramInt != this.GYa + 1) {
+        if (paramInt != this.Iyq + 1) {
           break label373;
         }
         localObject = new b(paramInt);
-        String str = this.GVS.getActivity().getResources().getString(2131762997);
+        String str = this.Iwg.getActivity().getResources().getString(2131762997);
         ((b)localObject).resId = 2131690037;
-        ((b)localObject).bNK = str;
+        ((b)localObject).bLs = str;
         break;
-        if (paramInt < this.GYa)
+        if (paramInt < this.Iyq)
         {
-          localObject = localam;
-          if (this.GXZ != null)
+          localObject = localap;
+          if (this.Iyp != null)
           {
-            localObject = localam;
+            localObject = localap;
             if (paramInt >= 0)
             {
-              localObject = localam;
-              if (paramInt < this.GXZ.size())
+              localObject = localap;
+              if (paramInt < this.Iyp.size())
               {
                 localObject = new b(paramInt);
-                ((b)localObject).username = ((String)this.GXZ.get(paramInt));
+                ((b)localObject).username = ((String)this.Iyp.get(paramInt));
               }
             }
           }
         }
-        else if ((paramInt > this.vGh) && (this.icq.moveToPosition(paramInt - this.vGh - 1)))
+        else if ((paramInt > this.wQm) && (this.iCz.moveToPosition(paramInt - this.wQm - 1)))
         {
           localObject = new f(paramInt);
-          localam = new am();
-          localam.convertFrom(this.icq);
-          g.afC();
-          ((a)localObject).contact = ((k)g.ab(k.class)).apM().aHS(localam.field_username);
+          localap = new ap();
+          localap.convertFrom(this.iCz);
+          g.agS();
+          ((a)localObject).contact = ((k)g.ab(k.class)).awB().aNn(localap.field_username);
           if (((a)localObject).contact == null)
           {
-            g.afC();
-            ((a)localObject).contact = ((k)g.ab(k.class)).apM().aHX(localam.field_username);
+            g.agS();
+            ((a)localObject).contact = ((k)g.ab(k.class)).awB().aNs(localap.field_username);
           }
-          ((a)localObject).GVT = dqZ();
+          ((a)localObject).Iwh = dFi();
         }
         else
         {
-          ad.e("MicroMsg.RecentConversationAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+          ac.e("MicroMsg.RecentConversationAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
         }
       }
       label373:
@@ -194,7 +194,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ab
  * JD-Core Version:    0.7.0.1
  */

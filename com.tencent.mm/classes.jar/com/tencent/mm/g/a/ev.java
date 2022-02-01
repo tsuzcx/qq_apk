@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ev
   extends b
 {
-  public a dhr;
-  public b dhs;
+  public a deI;
+  public b deJ;
   
   public ev()
   {
@@ -16,28 +16,29 @@ public final class ev
   
   private ev(byte paramByte)
   {
-    AppMethodBeat.i(19796);
-    this.dhr = new a();
-    this.dhs = new b();
-    this.ESR = false;
+    AppMethodBeat.i(19795);
+    this.deI = new a();
+    this.deJ = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19796);
+    AppMethodBeat.o(19795);
   }
   
   public static final class a
   {
-    public boolean dfN = false;
+    public String deK;
+    public long deL;
     public String mac;
   }
   
   public static final class b
   {
-    public boolean dfO;
+    public boolean ddj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ev
  * JD-Core Version:    0.7.0.1
  */

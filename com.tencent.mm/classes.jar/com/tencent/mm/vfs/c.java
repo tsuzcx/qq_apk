@@ -22,52 +22,52 @@ import java.util.TreeMap;
 final class c
   implements SchemeResolver.a
 {
-  private static final FileSystem HSO;
-  final Map<String, SchemeResolver> HSP;
-  final Map<String, FileSystem> HSQ;
-  final SortedMap<String, String> HSR;
-  final List<a> HSS;
-  final Map<String, String> HST;
-  final FileSystem HSU;
-  Map<String, FileSystem> HSV;
-  private Map<String, String> HSW;
+  private static final FileSystem Jtk;
+  final Map<String, SchemeResolver> Jtl;
+  final Map<String, FileSystem> Jtm;
+  final SortedMap<String, String> Jtn;
+  final List<a> Jto;
+  final Map<String, String> Jtp;
+  final FileSystem Jtq;
+  Map<String, FileSystem> Jtr;
+  private Map<String, String> Jts;
   
   static
   {
     AppMethodBeat.i(13227);
-    HSO = new NativeFileSystem("");
+    Jtk = new NativeFileSystem("");
     AppMethodBeat.o(13227);
   }
   
   c()
   {
     AppMethodBeat.i(13218);
-    this.HSV = null;
-    this.HSW = null;
-    this.HSP = Collections.emptyMap();
-    this.HSQ = Collections.emptyMap();
-    this.HSR = new TreeMap();
-    this.HSS = Collections.emptyList();
-    this.HST = Collections.emptyMap();
-    this.HSU = HSO;
+    this.Jtr = null;
+    this.Jts = null;
+    this.Jtl = Collections.emptyMap();
+    this.Jtm = Collections.emptyMap();
+    this.Jtn = new TreeMap();
+    this.Jto = Collections.emptyList();
+    this.Jtp = Collections.emptyMap();
+    this.Jtq = Jtk;
     AppMethodBeat.o(13218);
   }
   
   private c(Map<String, SchemeResolver> paramMap, Map<String, FileSystem> paramMap1, SortedMap<String, String> paramSortedMap, Map<String, String> paramMap2, FileSystem paramFileSystem)
   {
     AppMethodBeat.i(13219);
-    this.HSV = null;
-    this.HSW = null;
-    this.HSP = paramMap;
-    this.HSQ = paramMap1;
-    this.HSR = paramSortedMap;
-    this.HSS = a(paramMap1, paramSortedMap, paramMap2);
-    this.HST = paramMap2;
+    this.Jtr = null;
+    this.Jts = null;
+    this.Jtl = paramMap;
+    this.Jtm = paramMap1;
+    this.Jtn = paramSortedMap;
+    this.Jto = a(paramMap1, paramSortedMap, paramMap2);
+    this.Jtp = paramMap2;
     paramMap = paramFileSystem;
     if (paramFileSystem == null) {
-      paramMap = HSO;
+      paramMap = Jtk;
     }
-    this.HSU = paramMap;
+    this.Jtq = paramMap;
     AppMethodBeat.o(13219);
   }
   
@@ -88,7 +88,7 @@ final class c
         AppMethodBeat.o(13224);
         throw paramMap;
       }
-      str = q.P(str, paramMap1);
+      str = q.Q(str, paramMap1);
       if (str != null) {
         localArrayList.add(new a(str, (String)localObject, localFileSystem, -1));
       }
@@ -99,27 +99,27 @@ final class c
     if (j < paramMap.length)
     {
       paramSortedMap = paramMap[j];
-      paramMap1 = paramSortedMap.HSX;
+      paramMap1 = paramSortedMap.basePath;
       int i = j - 1;
       localArrayList = paramMap[i];
-      if (paramSortedMap.HSX.equals(localArrayList.HSX)) {
+      if (paramSortedMap.basePath.equals(localArrayList.basePath)) {
         Log.w("VFS.ResolverState", "Oops, duplicated mount point detected: " + paramSortedMap.toString() + " <=> " + localArrayList.toString());
       }
       int k;
-      for (i = localArrayList.HSZ;; i = k)
+      for (i = localArrayList.Jtu;; i = k)
       {
         if (i >= 0) {
-          paramMap[j] = new a(paramSortedMap.HSX, paramSortedMap.HSY, paramSortedMap.HRC, i);
+          paramMap[j] = new a(paramSortedMap.basePath, paramSortedMap.Jtt, paramSortedMap.Jsh, i);
         }
         j += 1;
         break;
         do
         {
           localArrayList = paramMap[i];
-          if ((paramMap1.startsWith(localArrayList.HSX)) && (paramMap1.charAt(localArrayList.HSX.length()) == '/')) {
+          if ((paramMap1.startsWith(localArrayList.basePath)) && (paramMap1.charAt(localArrayList.basePath.length()) == '/')) {
             break;
           }
-          k = localArrayList.HSZ;
+          k = localArrayList.Jtu;
           i = k;
         } while (k >= 0);
       }
@@ -129,7 +129,7 @@ final class c
     return paramMap;
   }
   
-  static c bb(Bundle paramBundle)
+  static c bf(Bundle paramBundle)
   {
     AppMethodBeat.i(13222);
     Object localObject1 = paramBundle.getParcelableArrayList("sl");
@@ -213,24 +213,24 @@ final class c
     Object localObject2;
     if (paramMap.isEmpty())
     {
-      paramMap = this.HSP;
+      paramMap = this.Jtl;
       if (!paramMap1.isEmpty()) {
         break label160;
       }
-      localObject1 = this.HSQ;
+      localObject1 = this.Jtm;
       if (!paramSortedMap.isEmpty()) {
         break label182;
       }
-      paramSortedMap = this.HSR;
+      paramSortedMap = this.Jtn;
       if (!paramMap2.isEmpty()) {
         break label207;
       }
-      localObject2 = this.HST;
+      localObject2 = this.Jtp;
       label65:
       if (paramFileSystem != null) {
         break label230;
       }
-      paramFileSystem = this.HSU;
+      paramFileSystem = this.Jtq;
     }
     label160:
     label182:
@@ -240,38 +240,38 @@ final class c
     {
       paramMap = new c(paramMap, (Map)localObject1, paramSortedMap, (Map)localObject2, paramFileSystem);
       if (paramMap1.isEmpty()) {
-        paramMap.HSV = this.HSV;
+        paramMap.Jtr = this.Jtr;
       }
       if (paramMap2.isEmpty()) {
-        paramMap.HSW = this.HSW;
+        paramMap.Jts = this.Jts;
       }
       AppMethodBeat.o(13220);
       return paramMap;
-      localObject1 = new HashMap(this.HSP);
+      localObject1 = new HashMap(this.Jtl);
       c((Map)localObject1, paramMap);
       paramMap = (Map<String, SchemeResolver>)localObject1;
       break;
-      localObject1 = new HashMap(this.HSQ);
+      localObject1 = new HashMap(this.Jtm);
       c((Map)localObject1, paramMap1);
       break label35;
-      localObject2 = new TreeMap(this.HSR);
+      localObject2 = new TreeMap(this.Jtn);
       c((Map)localObject2, paramSortedMap);
       paramSortedMap = (SortedMap<String, String>)localObject2;
       break label49;
-      localObject2 = new HashMap(this.HST);
+      localObject2 = new HashMap(this.Jtp);
       c((Map)localObject2, paramMap2);
       break label65;
     }
   }
   
-  final Bundle dxF()
+  final Bundle dMc()
   {
     AppMethodBeat.i(13221);
     Bundle localBundle1 = new Bundle();
     Object localObject3 = new HashMap();
-    ArrayList localArrayList = new ArrayList(this.HSP.size());
+    ArrayList localArrayList = new ArrayList(this.Jtl.size());
     Bundle localBundle2 = new Bundle();
-    Iterator localIterator = this.HSP.entrySet().iterator();
+    Iterator localIterator = this.Jtl.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -289,7 +289,7 @@ final class c
     localBundle1.putParcelableArrayList("sl", localArrayList);
     localBundle1.putBundle("sm", localBundle2);
     Object localObject1 = new Bundle();
-    Object localObject2 = this.HSQ.entrySet().iterator();
+    Object localObject2 = this.Jtm.entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (Map.Entry)((Iterator)localObject2).next();
@@ -297,7 +297,7 @@ final class c
     }
     localBundle1.putBundle("fs", (Bundle)localObject1);
     localObject1 = new Bundle();
-    localObject2 = this.HSR.entrySet().iterator();
+    localObject2 = this.Jtn.entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (Map.Entry)((Iterator)localObject2).next();
@@ -305,38 +305,38 @@ final class c
     }
     localBundle1.putBundle("mp", (Bundle)localObject1);
     localObject1 = new Bundle();
-    localObject2 = this.HST.entrySet().iterator();
+    localObject2 = this.Jtp.entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (Map.Entry)((Iterator)localObject2).next();
       ((Bundle)localObject1).putString((String)((Map.Entry)localObject3).getKey(), (String)((Map.Entry)localObject3).getValue());
     }
     localBundle1.putBundle("env", (Bundle)localObject1);
-    localBundle1.putParcelable("root", this.HSU);
+    localBundle1.putParcelable("root", this.Jtq);
     AppMethodBeat.o(13221);
     return localBundle1;
   }
   
-  public final Map<String, String> fhP()
+  public final Map<String, String> fxQ()
   {
     AppMethodBeat.i(13225);
-    if (this.HSW == null) {
-      this.HSW = Collections.unmodifiableMap(this.HST);
+    if (this.Jts == null) {
+      this.Jts = Collections.unmodifiableMap(this.Jtp);
     }
-    Map localMap = this.HSW;
+    Map localMap = this.Jts;
     AppMethodBeat.o(13225);
     return localMap;
   }
   
-  public final FileSystem fhQ()
+  public final FileSystem fxR()
   {
-    return this.HSU;
+    return this.Jtq;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(13226);
-    String str = "schemes: " + this.HSP.size() + ", fileSystems: " + this.HSQ.size() + ", mountPoints: " + this.HSR.size() + " (" + this.HSS + " active), envVars: " + this.HST.size();
+    String str = "schemes: " + this.Jtl.size() + ", fileSystems: " + this.Jtm.size() + ", mountPoints: " + this.Jtn.size() + " (" + this.Jto + " active), envVars: " + this.Jtp.size();
     AppMethodBeat.o(13226);
     return str;
   }
@@ -344,23 +344,23 @@ final class c
   static final class a
     implements Comparable<String>
   {
-    final FileSystem HRC;
-    final String HSX;
-    final String HSY;
-    final int HSZ;
+    final FileSystem Jsh;
+    final String Jtt;
+    final int Jtu;
+    final String basePath;
     
     a(String paramString1, String paramString2, FileSystem paramFileSystem, int paramInt)
     {
-      this.HSX = paramString1;
-      this.HSY = paramString2;
-      this.HRC = paramFileSystem;
-      this.HSZ = paramInt;
+      this.basePath = paramString1;
+      this.Jtt = paramString2;
+      this.Jsh = paramFileSystem;
+      this.Jtu = paramInt;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(13216);
-      String str = this.HSX + " -> " + this.HSY + " " + this.HRC.toString();
+      String str = this.basePath + " -> " + this.Jtt + " " + this.Jsh.toString();
       AppMethodBeat.o(13216);
       return str;
     }

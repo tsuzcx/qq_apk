@@ -2,55 +2,55 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b
 {
-  private List<c> tmu;
-  private boolean tmv;
-  private boolean tmw;
-  private TextView tmx;
+  private List<c> uuN;
+  private boolean uuO;
+  private boolean uuP;
+  private TextView uuQ;
   
   public b()
   {
     AppMethodBeat.i(65609);
-    this.tmu = new LinkedList();
-    this.tmv = false;
-    this.tmw = false;
+    this.uuN = new LinkedList();
+    this.uuO = false;
+    this.uuP = false;
     AppMethodBeat.o(65609);
   }
   
-  private void afv(String paramString)
+  private void akp(String paramString)
   {
     AppMethodBeat.i(65614);
-    if ((this.tmx != null) && (!bt.isNullOrNil(paramString)))
+    if ((this.uuQ != null) && (!bs.isNullOrNil(paramString)))
     {
-      if (!this.tmv) {
-        this.tmx.setText(paramString);
+      if (!this.uuO) {
+        this.uuQ.setText(paramString);
       }
-      this.tmx.setVisibility(0);
-      this.tmv = true;
+      this.uuQ.setVisibility(0);
+      this.uuO = true;
     }
     AppMethodBeat.o(65614);
   }
   
-  public final void Mp(String paramString)
+  public final void Qr(String paramString)
   {
     AppMethodBeat.i(65615);
-    if ((this.tmx != null) && (!bt.isNullOrNil(paramString)))
+    if ((this.uuQ != null) && (!bs.isNullOrNil(paramString)))
     {
-      this.tmx.setText(paramString);
-      this.tmx.setVisibility(0);
-      this.tmv = true;
+      this.uuQ.setText(paramString);
+      this.uuQ.setVisibility(0);
+      this.uuO = true;
       AppMethodBeat.o(65615);
       return;
     }
-    if (this.tmx != null)
+    if (this.uuQ != null)
     {
-      this.tmx.setVisibility(8);
-      this.tmv = false;
+      this.uuQ.setVisibility(8);
+      this.uuO = false;
     }
     AppMethodBeat.o(65615);
   }
@@ -63,25 +63,33 @@ public final class b
       AppMethodBeat.o(65610);
       return;
     }
-    this.tmu.add(paramc);
+    this.uuN.add(paramc);
     AppMethodBeat.o(65610);
   }
   
-  public final boolean cMw()
+  public final void clear()
+  {
+    AppMethodBeat.i(65611);
+    this.uuN.clear();
+    this.uuQ = null;
+    AppMethodBeat.o(65611);
+  }
+  
+  public final boolean dac()
   {
     AppMethodBeat.i(65612);
-    this.tmw = false;
-    this.tmv = false;
+    this.uuP = false;
+    this.uuO = false;
     int i = 0;
-    if (i < this.tmu.size())
+    if (i < this.uuN.size())
     {
-      c localc = (c)this.tmu.get(i);
-      int j = localc.cKY();
+      c localc = (c)this.uuN.get(i);
+      int j = localc.cYE();
       if (j != 0)
       {
         localc.onError();
-        afv(localc.FI(j));
-        this.tmw = true;
+        akp(localc.HD(j));
+        this.uuP = true;
       }
       for (;;)
       {
@@ -90,23 +98,23 @@ public final class b
         localc.restore();
       }
     }
-    if ((!this.tmw) && (this.tmx != null))
+    if ((!this.uuP) && (this.uuQ != null))
     {
-      this.tmx.setVisibility(8);
-      this.tmv = false;
+      this.uuQ.setVisibility(8);
+      this.uuO = false;
     }
-    boolean bool = this.tmw;
+    boolean bool = this.uuP;
     AppMethodBeat.o(65612);
     return bool;
   }
   
-  public final boolean cMx()
+  public final boolean dad()
   {
     AppMethodBeat.i(65613);
     int i = 0;
-    while (i < this.tmu.size())
+    while (i < this.uuN.size())
     {
-      if (((c)this.tmu.get(i)).cKY() != 0)
+      if (((c)this.uuN.get(i)).cYE() != 0)
       {
         AppMethodBeat.o(65613);
         return true;
@@ -117,18 +125,10 @@ public final class b
     return false;
   }
   
-  public final void clear()
-  {
-    AppMethodBeat.i(65611);
-    this.tmu.clear();
-    this.tmx = null;
-    AppMethodBeat.o(65611);
-  }
-  
   public final void n(TextView paramTextView)
   {
     if (paramTextView != null) {
-      this.tmx = paramTextView;
+      this.uuQ = paramTextView;
     }
   }
 }

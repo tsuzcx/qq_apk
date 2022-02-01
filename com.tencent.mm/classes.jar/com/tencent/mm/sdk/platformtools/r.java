@@ -8,46 +8,46 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class r
 {
-  int ETH;
-  EGLDisplay ETI;
-  EGLSurface ETJ;
-  EGLContext ETK;
+  int GqU;
+  EGLSurface GqV;
+  EGLContext GqW;
+  EGLDisplay fZZ;
   
   private r()
   {
     AppMethodBeat.i(157557);
-    this.ETH = 2048;
-    ad.i("MicroMsg.GPU_TAG", "pennqin, init Help30Impl.");
+    this.GqU = 2048;
+    ac.i("MicroMsg.GPU_TAG", "pennqin, init Help30Impl.");
     AppMethodBeat.o(157557);
   }
   
   final void release()
   {
     AppMethodBeat.i(185117);
-    if (EGL14.EGL_NO_DISPLAY != this.ETI)
+    if (EGL14.EGL_NO_DISPLAY != this.fZZ)
     {
-      EGLDisplay localEGLDisplay = this.ETI;
+      EGLDisplay localEGLDisplay = this.fZZ;
       EGLSurface localEGLSurface = EGL14.EGL_NO_SURFACE;
       EGL14.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, EGL14.EGL_NO_CONTEXT);
-      EGL14.eglDestroySurface(this.ETI, this.ETJ);
-      EGL14.eglDestroyContext(this.ETI, this.ETK);
+      EGL14.eglDestroySurface(this.fZZ, this.GqV);
+      EGL14.eglDestroyContext(this.fZZ, this.GqW);
       EGL14.eglReleaseThread();
-      EGL14.eglTerminate(this.ETI);
+      EGL14.eglTerminate(this.fZZ);
     }
-    this.ETI = EGL14.EGL_NO_DISPLAY;
-    this.ETK = EGL14.EGL_NO_CONTEXT;
-    this.ETJ = EGL14.EGL_NO_SURFACE;
+    this.fZZ = EGL14.EGL_NO_DISPLAY;
+    this.GqW = EGL14.EGL_NO_CONTEXT;
+    this.GqV = EGL14.EGL_NO_SURFACE;
     AppMethodBeat.o(185117);
   }
   
   static final class a
   {
-    static r ETL;
+    static r GqX;
     
     static
     {
       AppMethodBeat.i(157556);
-      ETL = new r((byte)0);
+      GqX = new r((byte)0);
       AppMethodBeat.o(157556);
     }
   }

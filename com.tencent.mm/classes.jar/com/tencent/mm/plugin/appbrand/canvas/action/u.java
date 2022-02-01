@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontWeightArg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -39,11 +39,11 @@ public final class u
       }
       i = 1;
       break;
-      paramd.iYL.setFakeBoldText(true);
-      paramd.iYM.setFakeBoldText(true);
+      paramd.jzb.setFakeBoldText(true);
+      paramd.jzc.setFakeBoldText(true);
       continue;
-      paramd.iYL.setFakeBoldText(false);
-      paramd.iYM.setFakeBoldText(false);
+      paramd.jzb.setFakeBoldText(false);
+      paramd.jzc.setFakeBoldText(false);
     }
   }
   
@@ -56,7 +56,7 @@ public final class u
       AppMethodBeat.o(144932);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.iZm);
+    boolean bool = b(paramd, paramCanvas.jzB);
     AppMethodBeat.o(144932);
     return bool;
   }
@@ -78,13 +78,13 @@ public final class u
     }
     catch (JSONException paramd)
     {
-      ad.i("MicroMsg.SetFontWeight", "get 'fontWeight' error.");
+      ac.i("MicroMsg.SetFontWeight", "get 'fontWeight' error.");
       AppMethodBeat.o(144930);
     }
     return false;
   }
   
-  public final BaseDrawActionArg aSP()
+  public final BaseDrawActionArg aZO()
   {
     AppMethodBeat.i(144929);
     SetFontWeightArg localSetFontWeightArg = new SetFontWeightArg();
@@ -99,7 +99,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.u
  * JD-Core Version:    0.7.0.1
  */

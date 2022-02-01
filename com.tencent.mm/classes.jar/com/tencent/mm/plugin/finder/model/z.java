@@ -1,49 +1,41 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.protocal.protobuf.dzd;
-import com.tencent.mm.view.recyclerview.a;
+import com.tencent.mm.plugin.finder.feed.model.internal.h;
+import com.tencent.mm.plugin.finder.storage.u;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/model/FinderFeedLike;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "likeObj", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;)V", "getLikeObj", "()Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "setLikeObj", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/FinderMsgFriendObjectLikeLike;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
 public final class z
-  implements i, a
+  extends a
 {
-  public dzd KTs;
-  
-  public z(dzd paramdzd)
+  public z(u paramu)
   {
-    AppMethodBeat.i(198633);
-    this.KTs = paramdzd;
-    AppMethodBeat.o(198633);
+    super(paramu);
+    AppMethodBeat.i(202577);
+    AppMethodBeat.o(202577);
   }
   
-  public final int a(i parami)
+  public final int a(h paramh)
   {
-    AppMethodBeat.i(198632);
-    k.h(parami, "obj");
-    AppMethodBeat.o(198632);
+    AppMethodBeat.i(202576);
+    k.h(paramh, "obj");
+    AppMethodBeat.o(202576);
     return 0;
   }
   
-  public final long bMs()
+  public final int bTF()
   {
-    AppMethodBeat.i(198631);
-    long l = Long.valueOf(this.KTs.qou).hashCode();
-    AppMethodBeat.o(198631);
-    return l;
-  }
-  
-  public final int bMt()
-  {
-    return 0;
+    AppMethodBeat.i(202575);
+    int i = z.class.getName().hashCode();
+    AppMethodBeat.o(202575);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.z
  * JD-Core Version:    0.7.0.1
  */

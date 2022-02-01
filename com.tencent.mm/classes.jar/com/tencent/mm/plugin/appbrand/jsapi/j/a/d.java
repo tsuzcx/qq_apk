@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.ar;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -19,45 +19,45 @@ public final class d
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(179519);
-    ad.d("MicroMsg.JsApiOperateDownloadTask", "JsApiOperateDownloadTask");
+    ac.d("MicroMsg.JsApiOperateDownloadTask", "JsApiOperateDownloadTask");
     if (paramJSONObject == null)
     {
       paramc.h(paramInt, e("fail:data is null", null));
-      ad.e("MicroMsg.JsApiOperateDownloadTask", "data is null");
+      ac.e("MicroMsg.JsApiOperateDownloadTask", "data is null");
       AppMethodBeat.o(179519);
       return;
     }
     String str = paramJSONObject.optString("downloadTaskId");
-    if (bt.isNullOrNil(str))
+    if (bs.isNullOrNil(str))
     {
-      ad.e("MicroMsg.JsApiOperateDownloadTask", "downloadTaskId is null");
+      ac.e("MicroMsg.JsApiOperateDownloadTask", "downloadTaskId is null");
       paramc.h(paramInt, e("fail:downloadTaskId is null or nil", null));
       AppMethodBeat.o(179519);
       return;
     }
     paramJSONObject = paramJSONObject.optString("operationType");
-    if (bt.isNullOrNil(paramJSONObject))
+    if (bs.isNullOrNil(paramJSONObject))
     {
-      ad.e("MicroMsg.JsApiOperateDownloadTask", "operationType is null");
+      ac.e("MicroMsg.JsApiOperateDownloadTask", "operationType is null");
       paramc.h(paramInt, e("fail:operationType is null or nil", null));
       AppMethodBeat.o(179519);
       return;
     }
     if (paramJSONObject.equals("abort"))
     {
-      paramJSONObject = com.tencent.mm.plugin.appbrand.q.c.bim().KY(paramc.getAppId());
+      paramJSONObject = com.tencent.mm.plugin.appbrand.p.c.bpg().Pg(paramc.getAppId());
       if (paramJSONObject == null)
       {
         paramc.h(paramInt, e("fail:no task", null));
-        ad.w("MicroMsg.JsApiOperateDownloadTask", "download is null");
+        ac.w("MicroMsg.JsApiOperateDownloadTask", "download is null");
         AppMethodBeat.o(179519);
         return;
       }
-      com.tencent.mm.plugin.appbrand.q.a.b localb = paramJSONObject.KV(str);
+      com.tencent.mm.plugin.appbrand.p.a.b localb = paramJSONObject.Pd(str);
       if (localb == null)
       {
         paramc.h(paramInt, e("fail:no task", null));
-        ad.w("MicroMsg.JsApiOperateDownloadTask", "downloadWorker is null %s", new Object[] { str });
+        ac.w("MicroMsg.JsApiOperateDownloadTask", "downloadWorker is null %s", new Object[] { str });
         AppMethodBeat.o(179519);
         return;
       }
@@ -68,8 +68,8 @@ public final class d
       paramJSONObject.put("state", "fail");
       paramJSONObject.put("errMsg", "abort");
       paramJSONObject = new JSONObject(paramJSONObject).toString();
-      new a.a().h(paramc).HK(paramJSONObject).aXQ();
-      ad.d("MicroMsg.JsApiOperateDownloadTask", "abortTask finish %s", new Object[] { str });
+      new a.a().h(paramc).LO(paramJSONObject).beN();
+      ac.d("MicroMsg.JsApiOperateDownloadTask", "abortTask finish %s", new Object[] { str });
       AppMethodBeat.o(179519);
       return;
     }
@@ -79,7 +79,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.a.d
  * JD-Core Version:    0.7.0.1
  */

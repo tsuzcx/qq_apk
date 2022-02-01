@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.appbrand.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
 final class AppBrandPreLoadingUI$f
   extends d.g.b.l
   implements a<Integer>
 {
-  public static final f lAD;
+  public static final f mcz;
   
   static
   {
     AppMethodBeat.i(51122);
-    lAD = new f();
+    mcz = new f();
     AppMethodBeat.o(51122);
   }
   

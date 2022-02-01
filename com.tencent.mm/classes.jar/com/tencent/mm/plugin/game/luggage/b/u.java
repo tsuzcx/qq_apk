@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.api.c;
+import com.tencent.mm.g.a.hz;
+import com.tencent.mm.g.a.hz.b;
 import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.luggage.c.b;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import org.json.JSONArray;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,46 +19,57 @@ public class u
 {
   public final void a(Context paramContext, String paramString, bn.a parama)
   {
-    AppMethodBeat.i(83086);
-    paramContext = b.HG(paramString);
-    if (paramContext == null) {
-      paramContext = ((c)g.ab(c.class)).b(null, true);
-    }
-    for (;;)
+    AppMethodBeat.i(83084);
+    ac.i("MicroMsg.JsApiOperateGameCenterMsg", "invokeInMM");
+    try
     {
-      paramString = new JSONObject();
-      try
+      paramContext = new JSONObject(paramString);
+      if (paramContext == null)
       {
-        paramString.put("data", paramContext);
-        label46:
-        parama.f(null, paramString);
-        AppMethodBeat.o(83086);
+        ac.i("MicroMsg.JsApiOperateGameCenterMsg", "data is null");
+        parama.f("invalid_data", null);
+        AppMethodBeat.o(83084);
         return;
-        paramContext = paramContext.optJSONArray("postIdList");
-        if ((paramContext == null) || (paramContext.length() == 0))
-        {
-          paramContext = ((c)g.ab(c.class)).b(null, true);
-          continue;
-        }
-        paramContext = ((c)g.ab(c.class)).b(paramContext, false);
       }
-      catch (JSONException paramContext)
+    }
+    catch (JSONException paramContext)
+    {
+      for (;;)
       {
-        break label46;
+        paramContext = null;
       }
+      int i = paramContext.optInt("cmd");
+      paramString = paramContext.optJSONObject("param");
+      paramContext = new hz();
+      paramContext.dja.CW = i;
+      paramContext.dja.param = paramString.toString();
+      a.GpY.l(paramContext);
+      paramString = new JSONObject();
+    }
+    try
+    {
+      paramString.put("result", bs.nullAsNil(paramContext.djb.djc));
+      label127:
+      parama.f(null, paramString);
+      AppMethodBeat.o(83084);
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      break label127;
     }
   }
   
-  public final void b(a<f>.a parama) {}
+  public final void b(a.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 1;
   }
   
   public final String name()
   {
-    return "queryHaowanPublish";
+    return "operateGameCenterMsg";
   }
 }
 

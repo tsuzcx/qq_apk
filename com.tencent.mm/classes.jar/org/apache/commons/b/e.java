@@ -5,12 +5,12 @@ import java.io.Serializable;
 
 public final class e
 {
-  public static final a Klk;
+  public static final a LYT;
   
   static
   {
     AppMethodBeat.i(40736);
-    Klk = new a();
+    LYT = new a();
     AppMethodBeat.o(40736);
   }
   
@@ -45,13 +45,13 @@ public final class e
   {
     private Object readResolve()
     {
-      return e.Klk;
+      return e.LYT;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.apache.commons.b.e
  * JD-Core Version:    0.7.0.1
  */

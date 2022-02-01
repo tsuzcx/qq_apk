@@ -20,7 +20,7 @@ public class PlayerLayer
   
   public PlayerLayer(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(202167);
+    AppMethodBeat.i(198228);
     this.needReleaseSurface = false;
     this.readyListener = null;
     this.surface = new Surface(paramSurfaceTexture);
@@ -28,7 +28,7 @@ public class PlayerLayer
     this.surfaceTexture = paramSurfaceTexture;
     this.surfaceWidth = paramInt1;
     this.surfaceHeight = paramInt2;
-    AppMethodBeat.o(202167);
+    AppMethodBeat.o(198228);
   }
   
   public PlayerLayer(Surface paramSurface, int paramInt1, int paramInt2)
@@ -77,21 +77,21 @@ public class PlayerLayer
   
   void release()
   {
-    AppMethodBeat.i(202169);
+    AppMethodBeat.i(198230);
     if (this.needReleaseSurface) {
       this.surface.release();
     }
-    AppMethodBeat.o(202169);
+    AppMethodBeat.o(198230);
   }
   
   public void setPlayer(Player paramPlayer)
   {
-    AppMethodBeat.i(202168);
+    AppMethodBeat.i(198229);
     this.player = paramPlayer;
     if (paramPlayer != null) {
       paramPlayer.bindLayer(this);
     }
-    AppMethodBeat.o(202168);
+    AppMethodBeat.o(198229);
   }
   
   public void setReadyForDisplay(PlayerLayerReadyListener paramPlayerLayerReadyListener)
@@ -111,7 +111,7 @@ public class PlayerLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.player.PlayerLayer
  * JD-Core Version:    0.7.0.1
  */

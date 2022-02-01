@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class ak
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Desc;
-  public String rZo;
+  public String thh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -24,8 +24,8 @@ public final class ak
       if (this.Desc != null) {
         paramVarArgs.d(1, this.Desc);
       }
-      if (this.rZo != null) {
-        paramVarArgs.d(2, this.rZo);
+      if (this.thh != null) {
+        paramVarArgs.d(2, this.thh);
       }
       AppMethodBeat.o(41740);
       return 0;
@@ -39,17 +39,17 @@ public final class ak
     for (paramInt = f.a.a.b.b.a.e(1, this.Desc) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.rZo != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.rZo);
+      if (this.thh != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.thh);
       }
       AppMethodBeat.o(41740);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.Desc == null)
@@ -71,11 +71,11 @@ public final class ak
           AppMethodBeat.o(41740);
           return -1;
         case 1: 
-          localak.Desc = locala.KhF.readString();
+          localak.Desc = locala.LVo.readString();
           AppMethodBeat.o(41740);
           return 0;
         }
-        localak.rZo = locala.KhF.readString();
+        localak.thh = locala.LVo.readString();
         AppMethodBeat.o(41740);
         return 0;
       }
@@ -86,7 +86,7 @@ public final class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.ak
  * JD-Core Version:    0.7.0.1
  */

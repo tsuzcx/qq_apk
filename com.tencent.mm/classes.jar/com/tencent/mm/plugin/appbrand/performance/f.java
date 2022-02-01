@@ -4,29 +4,29 @@ import android.annotation.TargetApi;
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 @TargetApi(16)
 public final class f
   implements Choreographer.FrameCallback
 {
-  public a lhG;
-  private Choreographer lhV;
-  private long lhW;
-  private int lhX;
-  public volatile double lhY;
+  private Choreographer dL;
+  private long lHO;
+  private int lHP;
+  public volatile double lHQ;
+  public a lHz;
   private boolean mEnabled;
   public long mInterval;
   
   public f()
   {
     AppMethodBeat.i(139905);
-    this.lhW = 0L;
-    this.lhX = 0;
+    this.lHO = 0L;
+    this.lHP = 0;
     this.mEnabled = false;
-    this.lhY = 0.0D;
-    this.lhV = Choreographer.getInstance();
+    this.lHQ = 0.0D;
+    this.dL = Choreographer.getInstance();
     this.mInterval = 200L;
     AppMethodBeat.o(139905);
   }
@@ -39,14 +39,14 @@ public final class f
     if (this.mEnabled)
     {
       paramLong /= 1000000L;
-      if (this.lhW <= 0L) {
+      if (this.lHO <= 0L) {
         break label136;
       }
-      long l = paramLong - this.lhW;
-      this.lhX += 1;
+      long l = paramLong - this.lHO;
+      this.lHP += 1;
       if (l > this.mInterval)
       {
-        d2 = this.lhX * 1000 / l;
+        d2 = this.lHP * 1000 / l;
         if (d2 < 60.0D) {
           break label144;
         }
@@ -54,21 +54,21 @@ public final class f
     }
     for (;;)
     {
-      this.lhW = paramLong;
-      this.lhX = 0;
-      this.lhY = d1;
-      if (this.lhG != null) {
-        this.lhG.t(d1);
+      this.lHO = paramLong;
+      this.lHP = 0;
+      this.lHQ = d1;
+      if (this.lHz != null) {
+        this.lHz.s(d1);
       }
       for (;;)
       {
         if (this.mEnabled) {
-          this.lhV.postFrameCallback(this);
+          this.dL.postFrameCallback(this);
         }
         AppMethodBeat.o(139908);
         return;
         label136:
-        this.lhW = paramLong;
+        this.lHO = paramLong;
       }
       label144:
       d1 = d2;
@@ -84,8 +84,8 @@ public final class f
       return;
     }
     this.mEnabled = true;
-    ad.i("FPSMetronome", "[start] stack:%s", new Object[] { bt.eGN() });
-    this.lhV.postFrameCallback(this);
+    ac.i("FPSMetronome", "[start] stack:%s", new Object[] { bs.eWi() });
+    this.dL.postFrameCallback(this);
     AppMethodBeat.o(139906);
   }
   
@@ -98,21 +98,21 @@ public final class f
       return;
     }
     this.mEnabled = false;
-    this.lhW = 0L;
-    this.lhX = 0;
-    ad.i("FPSMetronome", "[stop] stack:%s", new Object[] { bt.eGN() });
-    this.lhV.removeFrameCallback(this);
+    this.lHO = 0L;
+    this.lHP = 0;
+    ac.i("FPSMetronome", "[stop] stack:%s", new Object[] { bs.eWi() });
+    this.dL.removeFrameCallback(this);
     AppMethodBeat.o(139907);
   }
   
   public static abstract interface a
   {
-    public abstract void t(double paramDouble);
+    public abstract void s(double paramDouble);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.f
  * JD-Core Version:    0.7.0.1
  */

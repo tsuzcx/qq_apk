@@ -2,49 +2,49 @@ package com.tencent.mm.plugin.expt.hellhound.core.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.amm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.app;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.IOException;
 
 public final class c
 {
-  public static void a(amm paramamm)
+  public static void a(app paramapp)
   {
     AppMethodBeat.i(169278);
-    if (paramamm == null)
+    if (paramapp == null)
     {
       AppMethodBeat.o(169278);
       return;
     }
     try
     {
-      paramamm = paramamm.toByteArray();
-      b.o("hell_mmkv_fbm__", paramamm);
+      paramapp = paramapp.toByteArray();
+      b.o("hell_mmkv_fbm__", paramapp);
       AppMethodBeat.o(169278);
       return;
     }
-    catch (IOException paramamm)
+    catch (IOException paramapp)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.FragmentFrontBackMonitor", paramamm, "HellMsgQDao, _write, crash: %s", new Object[] { paramamm.getMessage() });
+      ac.printErrStackTrace("HABBYGE-MALI.FragmentFrontBackMonitor", paramapp, "HellMsgQDao, _write, crash: %s", new Object[] { paramapp.getMessage() });
       AppMethodBeat.o(169278);
     }
   }
   
-  public static String cbV()
+  public static String cjg()
   {
     AppMethodBeat.i(169276);
-    Object localObject = cbW();
+    Object localObject = cjh();
     if (localObject == null)
     {
       AppMethodBeat.o(169276);
       return null;
     }
-    localObject = ((amm)localObject).DnC;
+    localObject = ((app)localObject).EIC;
     AppMethodBeat.o(169276);
     return localObject;
   }
   
-  public static amm cbW()
+  public static app cjh()
   {
     AppMethodBeat.i(169277);
     byte[] arrayOfByte = b.getBytes("hell_mmkv_fbm__");
@@ -53,16 +53,16 @@ public final class c
       AppMethodBeat.o(169277);
       return null;
     }
-    amm localamm = new amm();
+    app localapp = new app();
     try
     {
-      localamm.parseFrom(arrayOfByte);
+      localapp.parseFrom(arrayOfByte);
       AppMethodBeat.o(169277);
-      return localamm;
+      return localapp;
     }
     catch (IOException localIOException)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.FragmentFrontBackMonitor", localIOException, "FragmentFrontBack, _read, crash: %s", new Object[] { localIOException.getMessage() });
+      ac.printErrStackTrace("HABBYGE-MALI.FragmentFrontBackMonitor", localIOException, "FragmentFrontBack, _read, crash: %s", new Object[] { localIOException.getMessage() });
       AppMethodBeat.o(169277);
     }
     return null;
@@ -70,7 +70,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public final class j
 {
   public static final String[] SQL_CREATE;
   private e db;
-  public n ikB;
+  public n iKI;
   
   static
   {
@@ -28,17 +28,17 @@ public final class j
   {
     super(parame, i.info, "IPCallPopularCountry", null);
     AppMethodBeat.i(25553);
-    this.ikB = new n()
+    this.iKI = new n()
     {
-      public final boolean aIE()
+      public final boolean aPv()
       {
         AppMethodBeat.i(25552);
-        if ((j.a(j.this) == null) || (j.a(j.this).eHe()))
+        if ((j.a(j.this) == null) || (j.a(j.this).eWz()))
         {
           if (j.a(j.this) == null) {}
-          for (Object localObject = "null";; localObject = Boolean.valueOf(j.a(j.this).eHe()))
+          for (Object localObject = "null";; localObject = Boolean.valueOf(j.a(j.this).eWz()))
           {
-            ad.w("MicroMsg.IPCallPopularCountryStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
+            ac.w("MicroMsg.IPCallPopularCountryStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
             AppMethodBeat.o(25552);
             return false;
           }
@@ -57,7 +57,7 @@ public final class j
     return 0;
   }
   
-  public final void aj(int paramInt, long paramLong)
+  public final void ah(int paramInt, long paramLong)
   {
     AppMethodBeat.i(25554);
     i locali = new i();
@@ -65,7 +65,7 @@ public final class j
     boolean bool;
     if (!localCursor.moveToFirst())
     {
-      ad.i("MicroMsg.IPCallPopularCountryStorage", "get null with countryCode:".concat(String.valueOf(paramInt)));
+      ac.i("MicroMsg.IPCallPopularCountryStorage", "get null with countryCode:".concat(String.valueOf(paramInt)));
       localCursor.close();
       locali.field_countryCode = paramInt;
       locali.field_lastCallTime = paramLong;
@@ -74,7 +74,7 @@ public final class j
     }
     for (;;)
     {
-      ad.i("MicroMsg.IPCallPopularCountryStorage", "updatePopularCountryCode ret:".concat(String.valueOf(bool)));
+      ac.i("MicroMsg.IPCallPopularCountryStorage", "updatePopularCountryCode ret:".concat(String.valueOf(bool)));
       AppMethodBeat.o(25554);
       return;
       locali.convertFrom(localCursor);
@@ -85,7 +85,7 @@ public final class j
     }
   }
   
-  public final ArrayList<Integer> cHS()
+  public final ArrayList<Integer> cVd()
   {
     AppMethodBeat.i(25555);
     ArrayList localArrayList = new ArrayList();
@@ -116,7 +116,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.j
  * JD-Core Version:    0.7.0.1
  */

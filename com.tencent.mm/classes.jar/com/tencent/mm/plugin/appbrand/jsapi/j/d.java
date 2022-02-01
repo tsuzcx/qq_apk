@@ -11,34 +11,34 @@ public abstract class d
   extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
   implements e
 {
-  protected a kal = new a();
+  protected a kAY = new a();
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     if (h.DEBUG) {
       throw new RuntimeException("Should call 3 params version!");
     }
-    a(paramc, paramJSONObject, paramInt, paramc.aOf());
+    a(paramc, paramJSONObject, paramInt, paramc.aUV());
   }
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt, o paramo)
   {
-    String str = aEB();
+    String str = aLs();
     HashMap localHashMap = new HashMap();
-    localHashMap.put(abh(), str);
-    this.kal.a(str, paramo);
+    localHashMap.put(acf(), str);
+    this.kAY.a(str, paramo);
     a(paramc, paramJSONObject, str);
     paramc.h(paramInt, k("ok", localHashMap));
   }
   
-  public final boolean aXI()
+  public final boolean beF()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.d
  * JD-Core Version:    0.7.0.1
  */

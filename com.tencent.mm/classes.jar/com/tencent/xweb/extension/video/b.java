@@ -2,22 +2,22 @@ package com.tencent.xweb.extension.video;
 
 import android.view.View;
 import android.webkit.WebChromeClient.CustomViewCallback;
-import com.tencent.xweb.t;
+import com.tencent.xweb.u;
 
 public abstract interface b
-  extends t
+  extends u
 {
-  public abstract void aP(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void aT(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void ev(Object paramObject);
+  public abstract void ex(Object paramObject);
   
-  public abstract boolean ew(Object paramObject);
+  public abstract boolean ey(Object paramObject);
   
   public abstract void onHideCustomView();
   
   public abstract void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback);
   
-  public abstract void xF(boolean paramBoolean);
+  public abstract void yW(boolean paramBoolean);
 }
 
 

@@ -10,18 +10,18 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vo;
+import com.tencent.mm.g.a.vz;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.topstory.PluginTopStory;
 import com.tencent.mm.plugin.topstory.ui.debug.TopStoryDebugUI;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.am;
-import com.tencent.mm.protocal.protobuf.dcv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.plugin.websearch.api.ak;
+import com.tencent.mm.plugin.websearch.api.z;
+import com.tencent.mm.protocal.protobuf.dii;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
@@ -30,14 +30,14 @@ import com.tencent.mm.vfs.i;
 public final class c
   implements com.tencent.mm.pluginsdk.cmd.a
 {
-  public boolean yMj;
-  public boolean yMk;
-  public boolean yMl;
+  public boolean Aab;
+  public boolean Aac;
+  public boolean Aad;
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(125864);
-    if (ad.getLogLevel() > 1)
+    if (ac.getLogLevel() > 1)
     {
       AppMethodBeat.o(125864);
       return false;
@@ -136,29 +136,29 @@ public final class c
       }
       i = 14;
       break;
-      g.afB().afk().set(ae.a.Ftu, "");
+      g.agR().agA().set(ah.a.GRo, "");
       continue;
-      paramContext = new vo();
-      paramContext.dBb.actionType = 2;
-      com.tencent.mm.sdk.b.a.ESL.l(paramContext);
+      paramContext = new vz();
+      paramContext.dyP.actionType = 2;
+      com.tencent.mm.sdk.b.a.GpY.l(paramContext);
       continue;
-      this.yMj = true;
+      this.Aab = true;
       continue;
-      this.yMk = true;
+      this.Aac = true;
       continue;
-      this.yMl = true;
+      this.Aad = true;
       continue;
-      paramContext = new dcv();
-      paramContext.dvT = System.currentTimeMillis();
+      paramContext = new dii();
+      paramContext.dtG = System.currentTimeMillis();
       paramContext.text = "测试测试";
       try
       {
-        paramContext.AHi = Integer.valueOf(paramArrayOfString[2]).intValue();
+        paramContext.BZz = Integer.valueOf(paramArrayOfString[2]).intValue();
         paramContext.type = Integer.valueOf(paramArrayOfString[3]).intValue();
-        paramContext.Eun = System.currentTimeMillis();
-        paramContext.huV = 300L;
-        paramContext.Eul = (System.currentTimeMillis() / 1000L);
-        paramContext.AHk = 1;
+        paramContext.FRo = System.currentTimeMillis();
+        paramContext.hVx = 300L;
+        paramContext.FRm = (System.currentTimeMillis() / 1000L);
+        paramContext.BZB = 1;
         if (paramContext.type == 8)
         {
           ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr();
@@ -169,7 +169,7 @@ public final class c
       {
         for (;;)
         {
-          paramContext.AHi = 2;
+          paramContext.BZz = 2;
           paramContext.type = 1;
         }
         if (paramContext.type == 7)
@@ -185,54 +185,54 @@ public final class c
         ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().a(paramContext);
       }
       continue;
-      ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().Pb(1);
-      ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().Pb(7);
-      ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().Pb(8);
-      g.afB().afk().set(ae.a.FsI, Long.valueOf(0L));
-      g.afB().afk().set(ae.a.FsJ, Long.valueOf(0L));
-      g.afB().afk().set(ae.a.FsK, Integer.valueOf(0));
+      ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().Rh(1);
+      ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().Rh(7);
+      ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().Rh(8);
+      g.agR().agA().set(ah.a.GQA, Long.valueOf(0L));
+      g.agR().agA().set(ah.a.GQB, Long.valueOf(0L));
+      g.agR().agA().set(ah.a.GQC, Integer.valueOf(0));
       continue;
-      g.afB().afk().set(ae.a.Fub, Long.valueOf(0L));
-      g.afB().afk().eKy();
+      g.agR().agA().set(ah.a.GRV, Long.valueOf(0L));
+      g.agR().agA().faa();
       continue;
-      paramArrayOfString = ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().dNC();
+      paramArrayOfString = ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().ecc();
       if (paramArrayOfString != null)
       {
-        paramContext = aj.getContext();
-        paramString = new StringBuilder("count:").append(((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().dNA()).append("cmt: ");
+        paramContext = ai.getContext();
+        paramString = new StringBuilder("count:").append(((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().eca()).append("cmt: ");
         ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr();
         paramArrayOfString = paramString.append(com.tencent.mm.plugin.topstory.b.e(paramArrayOfString)).append("ts:");
         ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr();
-        t.makeText(paramContext, com.tencent.mm.plugin.topstory.b.dNF(), 0).show();
+        t.makeText(paramContext, com.tencent.mm.plugin.topstory.b.ecf(), 0).show();
       }
       else
       {
-        paramContext = aj.getContext();
+        paramContext = ai.getContext();
         paramArrayOfString = new StringBuilder("no cmtrdts:");
         ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr();
-        t.makeText(paramContext, com.tencent.mm.plugin.topstory.b.dNF(), 0).show();
+        t.makeText(paramContext, com.tencent.mm.plugin.topstory.b.ecf(), 0).show();
         continue;
-        paramContext = ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().yKY;
+        paramContext = ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr().zYR;
         if (paramContext != null)
         {
-          paramArrayOfString = aj.getContext();
+          paramArrayOfString = ai.getContext();
           paramString = new StringBuilder("cnt: ");
           ((PluginTopStory)g.ad(PluginTopStory.class)).getRedDotMgr();
           t.makeText(paramArrayOfString, com.tencent.mm.plugin.topstory.b.e(paramContext), 0).show();
         }
         else
         {
-          t.makeText(aj.getContext(), "no cntrd", 0).show();
+          t.makeText(ai.getContext(), "no cntrd", 0).show();
           continue;
           try
           {
-            paramArrayOfString = i.aMP(com.tencent.mm.loader.j.b.aih() + "topstory/trace.info");
+            paramArrayOfString = i.aSr(com.tencent.mm.loader.j.b.aph() + "topstory/trace.info");
             paramString = new TextView(paramContext);
             paramString.setText(paramArrayOfString);
             paramString.setGravity(19);
             paramString.setTextSize(1, 10.0F);
             paramString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-            paramString.setTextColor(ao.aD(paramContext, 2130968584));
+            paramString.setTextColor(ao.aJ(paramContext, 2130968584));
             paramString.setTypeface(Typeface.MONOSPACE);
             i = paramContext.getResources().getDimensionPixelSize(2131165480);
             paramString.setPadding(i, i, i, i);
@@ -241,21 +241,21 @@ public final class c
           }
           catch (Exception paramContext) {}
           continue;
-          i.cO(aa.RZ(1).eil(), true);
+          i.cU(z.Uj(1).exF(), true);
           Process.killProcess(Process.myPid());
           continue;
-          paramArrayOfString = new Intent(aj.getContext(), TopStoryDebugUI.class);
-          paramContext = aj.getContext();
-          paramArrayOfString = new com.tencent.mm.hellhoundlib.b.a().bd(paramArrayOfString);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfString.adn(), "com/tencent/mm/plugin/topstory/ui/TopStoryCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramArrayOfString.lS(0));
+          paramArrayOfString = new Intent(ai.getContext(), TopStoryDebugUI.class);
+          paramContext = ai.getContext();
+          paramArrayOfString = new com.tencent.mm.hellhoundlib.b.a().ba(paramArrayOfString);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfString.aeD(), "com/tencent/mm/plugin/topstory/ui/TopStoryCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramArrayOfString.lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/topstory/ui/TopStoryCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           continue;
-          g.afB().afk().set(ae.a.FtR, Integer.valueOf(0));
-          g.afB().afk().set(ae.a.FtS, Integer.valueOf(0));
+          g.agR().agA().set(ah.a.GRL, Integer.valueOf(0));
+          g.agR().agA().set(ah.a.GRM, Integer.valueOf(0));
           continue;
-          g.afB().afk().set(ae.a.FsP, Integer.valueOf(0));
-          g.afB().afk().eKy();
+          g.agR().agA().set(ah.a.GQH, Integer.valueOf(0));
+          g.agR().agA().faa();
         }
       }
     }

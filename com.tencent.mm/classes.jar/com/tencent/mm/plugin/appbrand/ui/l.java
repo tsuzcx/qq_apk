@@ -12,22 +12,22 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequ
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
 import com.tencent.mm.plugin.appbrand.task.g.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIAccountReleaseHandler;", "", "()V", "TAG", "", "processForegroundImportance", "", "", "[Ljava/lang/Integer;", "getSerializedUin", "handleAccountRelease", "", "activity", "Landroid/app/Activity;", "finishHandler", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandTaskUIController$FinishAllHandler;", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIAccountReleaseHandler;", "", "()V", "TAG", "", "processForegroundImportance", "", "", "[Ljava/lang/Integer;", "getSerializedUin", "handleAccountRelease", "", "activity", "Landroid/app/Activity;", "finishHandler", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandTaskUIController$FinishAllHandler;", "plugin-appbrand-integration_release"})
 public final class l
 {
-  private static final Integer[] lCR;
-  public static final l lCS;
+  private static final Integer[] meL;
+  public static final l meM;
   
   static
   {
     AppMethodBeat.i(51149);
-    lCS = new l();
-    lCR = new Integer[] { Integer.valueOf(100), Integer.valueOf(200) };
+    meM = new l();
+    meL = new Integer[] { Integer.valueOf(100), Integer.valueOf(200) };
     AppMethodBeat.o(51149);
   }
   
@@ -41,13 +41,13 @@ public final class l
       ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
       ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
       parama = new a(parama, paramActivity);
-      if ((localRunningAppProcessInfo == null) || (!org.apache.commons.b.a.contains(lCR, Integer.valueOf(localRunningAppProcessInfo.importance))))
+      if ((localRunningAppProcessInfo == null) || (!org.apache.commons.b.a.contains(meL, Integer.valueOf(localRunningAppProcessInfo.importance))))
       {
         paramActivity = new StringBuilder("finish directly importance[");
         if (localRunningAppProcessInfo != null)
         {
           i = localRunningAppProcessInfo.importance;
-          ad.i("MicroMsg.AppBrandUIAccountReleaseHandler", i + ']');
+          ac.i("MicroMsg.AppBrandUIAccountReleaseHandler", i + ']');
           parama.invoke();
           AppMethodBeat.o(51148);
           return;
@@ -68,10 +68,10 @@ public final class l
     }
   }
   
-  public static final int boC()
+  public static final int bvx()
   {
     AppMethodBeat.i(175219);
-    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("system_config_prefs", 0);
+    SharedPreferences localSharedPreferences = ai.getContext().getSharedPreferences("system_config_prefs", 0);
     if (localSharedPreferences != null)
     {
       int i = localSharedPreferences.getInt("default_uin", 0);
@@ -82,7 +82,7 @@ public final class l
     return 0;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"doFinish", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"doFinish", "", "invoke"})
   static final class a
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -95,13 +95,13 @@ public final class l
     public final void invoke()
     {
       AppMethodBeat.i(51146);
-      this.lCT.proceed();
+      this.meN.proceed();
       paramActivity.finish();
       AppMethodBeat.o(51146);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/ui/AccountReleaseProxyUILaunchResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/ui/AccountReleaseProxyUILaunchResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
   static final class b<R extends AppBrandProxyUIProcessTask.ProcessResult>
     implements AppBrandProxyUIProcessTask.b<AccountReleaseProxyUILaunchResult>
   {
@@ -110,7 +110,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.l
  * JD-Core Version:    0.7.0.1
  */

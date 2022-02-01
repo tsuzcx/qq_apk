@@ -11,20 +11,20 @@ import java.util.Map;
 public final class e
   extends ContextWrapper
 {
-  static final k<?, ?> azT;
-  public final h azD;
-  public final com.bumptech.glide.c.b.a.b azE;
-  final Map<Class<?>, k<?, ?>> azJ;
-  public final int azO;
-  final com.bumptech.glide.f.e azP;
-  private final Handler azU;
-  private final com.bumptech.glide.f.a.b azV;
-  final j azy;
+  static final k<?, ?> aAN;
+  final Map<Class<?>, k<?, ?>> aAD;
+  public final int aAI;
+  final com.bumptech.glide.f.e aAJ;
+  private final Handler aAO;
+  private final com.bumptech.glide.f.a.b aAP;
+  final j aAs;
+  public final h aAx;
+  public final com.bumptech.glide.c.b.a.b aAy;
   
   static
   {
     AppMethodBeat.i(76783);
-    azT = new b();
+    aAN = new b();
     AppMethodBeat.o(76783);
   }
   
@@ -32,20 +32,20 @@ public final class e
   {
     super(paramContext.getApplicationContext());
     AppMethodBeat.i(76782);
-    this.azE = paramb;
-    this.azD = paramh;
-    this.azV = paramb1;
-    this.azP = parame;
-    this.azJ = paramMap;
-    this.azy = paramj;
-    this.azO = paramInt;
-    this.azU = new Handler(Looper.getMainLooper());
+    this.aAy = paramb;
+    this.aAx = paramh;
+    this.aAP = paramb1;
+    this.aAJ = parame;
+    this.aAD = paramMap;
+    this.aAs = paramj;
+    this.aAI = paramInt;
+    this.aAO = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(76782);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.e
  * JD-Core Version:    0.7.0.1
  */

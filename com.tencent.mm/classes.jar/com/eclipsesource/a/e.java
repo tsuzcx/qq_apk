@@ -8,18 +8,18 @@ import java.util.List;
 
 public final class e
   extends h
-  implements Iterable<e.b>
+  implements Iterable<b>
 {
-  public final List<h> aFQ;
-  public final List<String> aOE;
-  public transient a aOF;
+  public final List<h> aGG;
+  public final List<String> aPu;
+  public transient a aPv;
   
   public e()
   {
     AppMethodBeat.i(74726);
-    this.aOE = new ArrayList();
-    this.aFQ = new ArrayList();
-    this.aOF = new a();
+    this.aPu = new ArrayList();
+    this.aGG = new ArrayList();
+    this.aPv = new a();
     AppMethodBeat.o(74726);
   }
   
@@ -29,38 +29,18 @@ public final class e
     {
       AppMethodBeat.i(74741);
       paramObjectInputStream.defaultReadObject();
-      this.aOF = new a();
-      int j = this.aOE.size();
+      this.aPv = new a();
+      int j = this.aPu.size();
       int i = 0;
       while (i < j)
       {
-        this.aOF.g((String)this.aOE.get(i), i);
+        this.aPv.g((String)this.aPu.get(i), i);
         i += 1;
       }
       AppMethodBeat.o(74741);
       return;
     }
     finally {}
-  }
-  
-  public final h Z(String paramString)
-  {
-    AppMethodBeat.i(74735);
-    if (paramString == null)
-    {
-      paramString = new NullPointerException("name is null");
-      AppMethodBeat.o(74735);
-      throw paramString;
-    }
-    int i = indexOf(paramString);
-    if (i != -1)
-    {
-      paramString = (h)this.aFQ.get(i);
-      AppMethodBeat.o(74735);
-      return paramString;
-    }
-    AppMethodBeat.o(74735);
-    return null;
   }
   
   public final e a(String paramString, double paramDouble)
@@ -86,9 +66,9 @@ public final class e
       AppMethodBeat.o(74727);
       throw paramString;
     }
-    this.aOF.g(paramString, this.aOE.size());
-    this.aOE.add(paramString);
-    this.aFQ.add(paramh);
+    this.aPv.g(paramString, this.aPu.size());
+    this.aPu.add(paramString);
+    this.aGG.add(paramh);
     AppMethodBeat.o(74727);
     return this;
   }
@@ -96,26 +76,46 @@ public final class e
   final void a(i parami)
   {
     AppMethodBeat.i(74737);
-    parami.qZ();
-    Iterator localIterator1 = this.aOE.iterator();
-    Iterator localIterator2 = this.aFQ.iterator();
+    parami.rj();
+    Iterator localIterator1 = this.aPu.iterator();
+    Iterator localIterator2 = this.aGG.iterator();
     for (int i = 1; localIterator1.hasNext(); i = 0)
     {
       if (i == 0) {
-        parami.rc();
+        parami.rm();
       }
-      parami.af((String)localIterator1.next());
-      parami.rb();
+      parami.ag((String)localIterator1.next());
+      parami.rl();
       ((h)localIterator2.next()).a(parami);
     }
-    parami.ra();
+    parami.rk();
     AppMethodBeat.o(74737);
+  }
+  
+  public final h ab(String paramString)
+  {
+    AppMethodBeat.i(74735);
+    if (paramString == null)
+    {
+      paramString = new NullPointerException("name is null");
+      AppMethodBeat.o(74735);
+      throw paramString;
+    }
+    int i = indexOf(paramString);
+    if (i != -1)
+    {
+      paramString = (h)this.aGG.get(i);
+      AppMethodBeat.o(74735);
+      return paramString;
+    }
+    AppMethodBeat.o(74735);
+    return null;
   }
   
   public final e b(String paramString, long paramLong)
   {
     AppMethodBeat.i(74729);
-    b(paramString, a.q(paramLong));
+    b(paramString, a.s(paramLong));
     AppMethodBeat.o(74729);
     return this;
   }
@@ -137,22 +137,22 @@ public final class e
     }
     int i = indexOf(paramString);
     if (i != -1) {
-      this.aFQ.set(i, paramh);
+      this.aGG.set(i, paramh);
     }
     for (;;)
     {
       AppMethodBeat.o(74734);
       return this;
-      this.aOF.g(paramString, this.aOE.size());
-      this.aOE.add(paramString);
-      this.aFQ.add(paramh);
+      this.aPv.g(paramString, this.aPu.size());
+      this.aPu.add(paramString);
+      this.aGG.add(paramh);
     }
   }
   
   public final e d(String paramString, float paramFloat)
   {
     AppMethodBeat.i(74730);
-    b(paramString, a.V(paramFloat));
+    b(paramString, a.Z(paramFloat));
     AppMethodBeat.o(74730);
     return this;
   }
@@ -184,7 +184,7 @@ public final class e
       return false;
     }
     paramObject = (e)paramObject;
-    if ((this.aOE.equals(paramObject.aOE)) && (this.aFQ.equals(paramObject.aFQ)))
+    if ((this.aPu.equals(paramObject.aPu)) && (this.aGG.equals(paramObject.aGG)))
     {
       AppMethodBeat.o(74739);
       return true;
@@ -196,15 +196,23 @@ public final class e
   public final e f(String paramString, int paramInt)
   {
     AppMethodBeat.i(74728);
-    b(paramString, a.dC(paramInt));
+    b(paramString, a.dB(paramInt));
     AppMethodBeat.o(74728);
     return this;
   }
   
   public final e g(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(194868);
+    a(paramString1, a.X(paramString2));
+    AppMethodBeat.o(194868);
+    return this;
+  }
+  
+  public final e h(String paramString1, String paramString2)
+  {
     AppMethodBeat.i(74733);
-    b(paramString1, a.V(paramString2));
+    b(paramString1, a.X(paramString2));
     AppMethodBeat.o(74733);
     return this;
   }
@@ -212,8 +220,8 @@ public final class e
   public final int hashCode()
   {
     AppMethodBeat.i(74738);
-    int i = this.aOE.hashCode();
-    int j = this.aFQ.hashCode();
+    int i = this.aPu.hashCode();
+    int j = this.aGG.hashCode();
     AppMethodBeat.o(74738);
     return (i + 31) * 31 + j;
   }
@@ -221,13 +229,13 @@ public final class e
   public final int indexOf(String paramString)
   {
     AppMethodBeat.i(74740);
-    int i = this.aOF.get(paramString);
-    if ((i != -1) && (paramString.equals(this.aOE.get(i))))
+    int i = this.aPv.get(paramString);
+    if ((i != -1) && (paramString.equals(this.aPu.get(i))))
     {
       AppMethodBeat.o(74740);
       return i;
     }
-    i = this.aOE.lastIndexOf(paramString);
+    i = this.aPu.lastIndexOf(paramString);
     AppMethodBeat.o(74740);
     return i;
   }
@@ -237,35 +245,52 @@ public final class e
     return true;
   }
   
-  public final Iterator<e.b> iterator()
+  public final Iterator<b> iterator()
   {
     AppMethodBeat.i(74736);
-    e.1 local1 = new e.1(this, this.aOE.iterator(), this.aFQ.iterator());
+    Iterator local1 = new Iterator()
+    {
+      public final boolean hasNext()
+      {
+        AppMethodBeat.i(74717);
+        boolean bool = this.aPw.hasNext();
+        AppMethodBeat.o(74717);
+        return bool;
+      }
+      
+      public final void remove()
+      {
+        AppMethodBeat.i(74718);
+        UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
+        AppMethodBeat.o(74718);
+        throw localUnsupportedOperationException;
+      }
+    };
     AppMethodBeat.o(74736);
     return local1;
   }
   
-  public final e qx()
+  public final e qH()
   {
     return this;
   }
   
   public static final class a
   {
-    private final byte[] aOJ;
+    private final byte[] aPz;
     
     public a()
     {
       AppMethodBeat.i(74720);
-      this.aOJ = new byte[32];
+      this.aPz = new byte[32];
       AppMethodBeat.o(74720);
     }
     
-    private int Y(Object paramObject)
+    private int aa(Object paramObject)
     {
       AppMethodBeat.i(74723);
       int i = paramObject.hashCode();
-      int j = this.aOJ.length;
+      int j = this.aPz.length;
       AppMethodBeat.o(74723);
       return i & j - 1;
     }
@@ -273,22 +298,22 @@ public final class e
     final void g(String paramString, int paramInt)
     {
       AppMethodBeat.i(74721);
-      int i = Y(paramString);
+      int i = aa(paramString);
       if (paramInt < 255)
       {
-        this.aOJ[i] = ((byte)(paramInt + 1));
+        this.aPz[i] = ((byte)(paramInt + 1));
         AppMethodBeat.o(74721);
         return;
       }
-      this.aOJ[i] = 0;
+      this.aPz[i] = 0;
       AppMethodBeat.o(74721);
     }
     
     final int get(Object paramObject)
     {
       AppMethodBeat.i(74722);
-      int i = Y(paramObject);
-      i = this.aOJ[i];
+      int i = aa(paramObject);
+      i = this.aPz[i];
       AppMethodBeat.o(74722);
       return (i & 0xFF) - 1;
     }
@@ -296,22 +321,71 @@ public final class e
     public final void remove(int paramInt)
     {
       int i = 0;
-      if (i < this.aOJ.length)
+      if (i < this.aPz.length)
       {
-        if (this.aOJ[i] == paramInt + 1) {
-          this.aOJ[i] = 0;
+        if (this.aPz[i] == paramInt + 1) {
+          this.aPz[i] = 0;
         }
         for (;;)
         {
           i += 1;
           break;
-          if (this.aOJ[i] > paramInt + 1)
+          if (this.aPz[i] > paramInt + 1)
           {
-            byte[] arrayOfByte = this.aOJ;
+            byte[] arrayOfByte = this.aPz;
             arrayOfByte[i] = ((byte)(arrayOfByte[i] - 1));
           }
         }
       }
+    }
+  }
+  
+  public static final class b
+  {
+    private final h aPA;
+    private final String name;
+    
+    b(String paramString, h paramh)
+    {
+      this.name = paramString;
+      this.aPA = paramh;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(74725);
+      if (this == paramObject)
+      {
+        AppMethodBeat.o(74725);
+        return true;
+      }
+      if (paramObject == null)
+      {
+        AppMethodBeat.o(74725);
+        return false;
+      }
+      if (getClass() != paramObject.getClass())
+      {
+        AppMethodBeat.o(74725);
+        return false;
+      }
+      paramObject = (b)paramObject;
+      if ((this.name.equals(paramObject.name)) && (this.aPA.equals(paramObject.aPA)))
+      {
+        AppMethodBeat.o(74725);
+        return true;
+      }
+      AppMethodBeat.o(74725);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(74724);
+      int i = this.name.hashCode();
+      int j = this.aPA.hashCode();
+      AppMethodBeat.o(74724);
+      return (i + 31) * 31 + j;
     }
   }
 }

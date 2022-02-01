@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.widget.e.b;
-import com.tencent.mm.plugin.appbrand.widget.e.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.LinkedList;
+import com.tencent.luggage.a.b;
+import d.l;
+import org.json.JSONObject;
 
-public final class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerHelper;", "Lcom/tencent/luggage/base/ICustomize;", "defaultReferrerPolicy", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "getDefaultReferrerPolicy", "()Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "parseReferrerPolicy", "referrerPolicyStr", "", "parseReferrerPolicyFallback", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "parseReferrerPolicyOrFallback", "data", "Lorg/json/JSONObject;", "parseReferrerPolicyStr", "provideReferrer", "luggage-commons_release"})
+public abstract interface a
+  extends b
 {
-  private static final int CTRL_INDEX = 106;
-  private static final String NAME = "hideToast";
+  public abstract c MX(String paramString);
+  
+  public abstract String U(JSONObject paramJSONObject);
+  
+  public abstract c a(JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.jsapi.c paramc);
+  
+  public abstract c biC();
+  
+  public abstract c x(com.tencent.mm.plugin.appbrand.jsapi.c paramc);
+  
+  public abstract String y(com.tencent.mm.plugin.appbrand.jsapi.c paramc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.a
  * JD-Core Version:    0.7.0.1
  */

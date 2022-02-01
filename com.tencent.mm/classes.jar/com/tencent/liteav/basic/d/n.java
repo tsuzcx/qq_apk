@@ -1,10 +1,16 @@
 package com.tencent.liteav.basic.d;
 
-import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
 
 public abstract interface n
 {
-  public abstract void onTakePhotoComplete(Bitmap paramBitmap);
+  public abstract int a(int paramInt, float[] paramArrayOfFloat);
+  
+  public abstract void a(SurfaceTexture paramSurfaceTexture);
+  
+  public abstract void a(byte[] paramArrayOfByte, float[] paramArrayOfFloat);
+  
+  public abstract void b(SurfaceTexture paramSurfaceTexture);
 }
 
 

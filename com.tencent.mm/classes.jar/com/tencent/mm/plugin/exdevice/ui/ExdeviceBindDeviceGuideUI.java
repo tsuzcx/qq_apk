@@ -19,11 +19,11 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.d.a.e.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ax;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import junit.framework.Assert;
@@ -32,54 +32,54 @@ public class ExdeviceBindDeviceGuideUI
   extends MMActivity
   implements g
 {
-  private String EQ;
-  private Button iwY;
+  private String FO;
+  private Button iXb;
   private String mDeviceType;
   private ListView mListView;
-  BroadcastReceiver mPQ;
+  BroadcastReceiver mReceiver;
   private String mTitle;
-  private String oUW;
-  private String oUX;
-  private String oyz;
-  private String paB;
-  private TextView paG;
-  private LocationManager paJ;
-  private boolean paK;
-  private ExdeviceBindDeviceGuideUI.a paY;
-  private Button paZ;
-  private TextView pba;
-  private ScrollView pbb;
-  private ImageView pbc;
-  private TextView pbd;
-  private String pbe;
-  private String pbf;
-  private String pbg;
-  private String pbh;
-  private long pbi;
-  private ArrayList<String> pbj;
-  private String pbk;
-  private boolean pbl;
-  private boolean pbm;
+  private String pDM;
+  private TextView pDR;
+  private LocationManager pDU;
+  private boolean pDV;
+  private ExdeviceBindDeviceGuideUI.a pEj;
+  private Button pEk;
+  private TextView pEl;
+  private ScrollView pEm;
+  private ImageView pEn;
+  private TextView pEo;
+  private String pEp;
+  private String pEq;
+  private String pEr;
+  private String pEs;
+  private long pEt;
+  private ArrayList<String> pEu;
+  private String pEv;
+  private boolean pEw;
+  private boolean pEx;
+  private String pbZ;
+  private String pyh;
+  private String pyi;
   
   public ExdeviceBindDeviceGuideUI()
   {
     AppMethodBeat.i(23887);
-    this.pbl = false;
-    this.pbm = false;
-    this.paK = false;
-    this.mPQ = new BroadcastReceiver()
+    this.pEw = false;
+    this.pEx = false;
+    this.pDV = false;
+    this.mReceiver = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(23882);
-        ad.i("MicroMsg.ExdeviceBindDeviceGuideUI", "Action broadcast receive...");
+        ac.i("MicroMsg.ExdeviceBindDeviceGuideUI", "Action broadcast receive...");
         if (paramAnonymousIntent == null)
         {
           AppMethodBeat.o(23882);
           return;
         }
         paramAnonymousContext = paramAnonymousIntent.getAction();
-        ad.d("MicroMsg.ExdeviceBindDeviceGuideUI", "Receiver action(%s)", new Object[] { paramAnonymousContext });
+        ac.d("MicroMsg.ExdeviceBindDeviceGuideUI", "Receiver action(%s)", new Object[] { paramAnonymousContext });
         int i;
         if (("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramAnonymousContext)) && (ExdeviceBindDeviceGuideUI.m(ExdeviceBindDeviceGuideUI.this)))
         {
@@ -105,7 +105,7 @@ public class ExdeviceBindDeviceGuideUI
           if (("android.net.wifi.WIFI_STATE_CHANGED".equals(paramAnonymousContext)) && (ExdeviceBindDeviceGuideUI.n(ExdeviceBindDeviceGuideUI.this)))
           {
             i = paramAnonymousIntent.getIntExtra("wifi_state", -1);
-            ad.i("MicroMsg.ExdeviceBindDeviceGuideUI", "Wifi state changed action: wifiState(%d)", new Object[] { Integer.valueOf(i) });
+            ac.i("MicroMsg.ExdeviceBindDeviceGuideUI", "Wifi state changed action: wifiState(%d)", new Object[] { Integer.valueOf(i) });
             if (i == 3)
             {
               ExdeviceBindDeviceGuideUI.a(ExdeviceBindDeviceGuideUI.this, 1);
@@ -123,7 +123,7 @@ public class ExdeviceBindDeviceGuideUI
           }
           if (ExdeviceBindDeviceGuideUI.p(ExdeviceBindDeviceGuideUI.this).isProviderEnabled("gps"))
           {
-            if (!a.bBG())
+            if (!a.bIE())
             {
               ExdeviceBindDeviceGuideUI.a(ExdeviceBindDeviceGuideUI.this, 3);
               AppMethodBeat.o(23882);
@@ -142,7 +142,7 @@ public class ExdeviceBindDeviceGuideUI
     AppMethodBeat.o(23887);
   }
   
-  private void Bc(int paramInt)
+  private void BU(int paramInt)
   {
     AppMethodBeat.i(23890);
     switch (paramInt)
@@ -157,48 +157,48 @@ public class ExdeviceBindDeviceGuideUI
     {
       AppMethodBeat.o(23890);
       return;
-      this.paZ.setText(getContext().getString(2131758507));
-      this.iwY.setVisibility(8);
-      this.pba.setText(getContext().getString(2131758506));
+      this.pEk.setText(getContext().getString(2131758507));
+      this.iXb.setVisibility(8);
+      this.pEl.setText(getContext().getString(2131758506));
       break;
-      this.paZ.setText(getContext().getString(2131758515));
-      this.iwY.setText(getContext().getString(2131758474));
-      this.pba.setText(getContext().getString(2131758516));
+      this.pEk.setText(getContext().getString(2131758515));
+      this.iXb.setText(getContext().getString(2131758474));
+      this.pEl.setText(getContext().getString(2131758516));
       break;
-      this.pbc.setImageResource(2131689789);
-      this.paG.setText(2131758494);
-      this.pbd.setText(2131758478);
+      this.pEn.setImageResource(2131689789);
+      this.pDR.setText(2131758494);
+      this.pEo.setText(2131758478);
       break;
-      this.pbc.setImageResource(2131689789);
-      this.paG.setText(2131758492);
-      this.pbd.setText("");
+      this.pEn.setImageResource(2131689789);
+      this.pDR.setText(2131758492);
+      this.pEo.setText("");
       break;
-      this.pbc.setImageResource(2131691457);
-      this.paG.setText(2131758494);
-      this.pbd.setText(2131758489);
+      this.pEn.setImageResource(2131691457);
+      this.pDR.setText(2131758494);
+      this.pEo.setText(2131758489);
       break;
-      this.pbc.setImageResource(2131689789);
-      this.paG.setText(2131758494);
-      this.pbd.setText(2131758542);
+      this.pEn.setImageResource(2131689789);
+      this.pDR.setText(2131758494);
+      this.pEo.setText(2131758542);
       break;
-      this.pbc.setVisibility(8);
-      this.paG.setVisibility(8);
-      this.pbd.setVisibility(8);
+      this.pEn.setVisibility(8);
+      this.pDR.setVisibility(8);
+      this.pEo.setVisibility(8);
       this.mListView.setVisibility(0);
-      this.pbb.setVisibility(0);
+      this.pEm.setVisibility(0);
       AppMethodBeat.o(23890);
       return;
-      this.pbc.setVisibility(0);
-      this.paG.setVisibility(0);
+      this.pEn.setVisibility(0);
+      this.pDR.setVisibility(0);
       this.mListView.setVisibility(8);
-      this.pbb.setVisibility(8);
+      this.pEm.setVisibility(8);
       if (paramInt == 4)
       {
-        this.pbd.setVisibility(8);
+        this.pEo.setVisibility(8);
         AppMethodBeat.o(23890);
         return;
       }
-      this.pbd.setVisibility(0);
+      this.pEo.setVisibility(0);
     }
   }
   
@@ -221,63 +221,63 @@ public class ExdeviceBindDeviceGuideUI
         return true;
       }
     });
-    if ((com.tencent.mm.compatible.util.d.lf(23)) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0")) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0.0")))
+    if ((com.tencent.mm.compatible.util.d.kZ(23)) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0")) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0.0")))
     {
-      ad.i("MicroMsg.ExdeviceBindDeviceGuideUI", "Bluetooth limited version(%s)", new Object[] { Build.VERSION.RELEASE });
-      this.paK = true;
+      ac.i("MicroMsg.ExdeviceBindDeviceGuideUI", "Bluetooth limited version(%s)", new Object[] { Build.VERSION.RELEASE });
+      this.pDV = true;
     }
     paramBundle = getIntent();
-    this.pbe = paramBundle.getStringExtra("device_scan_mode");
-    this.pbf = paramBundle.getStringExtra("device_scan_conn_proto");
-    this.oUX = paramBundle.getStringExtra("device_id");
+    this.pEp = paramBundle.getStringExtra("device_scan_mode");
+    this.pEq = paramBundle.getStringExtra("device_scan_conn_proto");
+    this.pyi = paramBundle.getStringExtra("device_id");
     this.mDeviceType = paramBundle.getStringExtra("device_type");
-    this.pbg = paramBundle.getStringExtra("device_title");
-    this.paB = paramBundle.getStringExtra("device_desc");
-    this.oyz = paramBundle.getStringExtra("device_icon_url");
-    this.EQ = paramBundle.getStringExtra("device_category_id");
-    this.oUW = paramBundle.getStringExtra("device_brand_name");
-    this.pbh = paramBundle.getStringExtra("bind_ticket");
-    this.pbi = paramBundle.getLongExtra("device_ble_simple_proto", -1L);
-    this.pbj = paramBundle.getStringArrayListExtra("device_airkiss_steps");
-    this.pbk = paramBundle.getStringExtra("device_airkiss_key");
+    this.pEr = paramBundle.getStringExtra("device_title");
+    this.pDM = paramBundle.getStringExtra("device_desc");
+    this.pbZ = paramBundle.getStringExtra("device_icon_url");
+    this.FO = paramBundle.getStringExtra("device_category_id");
+    this.pyh = paramBundle.getStringExtra("device_brand_name");
+    this.pEs = paramBundle.getStringExtra("bind_ticket");
+    this.pEt = paramBundle.getLongExtra("device_ble_simple_proto", -1L);
+    this.pEu = paramBundle.getStringArrayListExtra("device_airkiss_steps");
+    this.pEv = paramBundle.getStringExtra("device_airkiss_key");
     this.mTitle = paramBundle.getStringExtra("device_airkiss_title");
-    ad.i("MicroMsg.ExdeviceBindDeviceGuideUI", "Category config guide steps(%d)", new Object[] { Integer.valueOf(this.pbj.size()) });
-    this.paJ = ((LocationManager)getContext().getSystemService("location"));
+    ac.i("MicroMsg.ExdeviceBindDeviceGuideUI", "Category config guide steps(%d)", new Object[] { Integer.valueOf(this.pEu.size()) });
+    this.pDU = ((LocationManager)getContext().getSystemService("location"));
     this.mListView = ((ListView)findViewById(2131298741));
     paramBundle = View.inflate(this, 2131493850, null);
-    this.pba = ((TextView)paramBundle.findViewById(2131305905));
-    this.paY = new ExdeviceBindDeviceGuideUI.a(this.pbj);
+    this.pEl = ((TextView)paramBundle.findViewById(2131305905));
+    this.pEj = new ExdeviceBindDeviceGuideUI.a(this.pEu);
     this.mListView.addHeaderView(paramBundle);
     this.mListView.setDividerHeight(0);
     this.mListView.setClickable(false);
     this.mListView.setFooterDividersEnabled(false);
-    this.mListView.setAdapter(this.paY);
-    this.pbc = ((ImageView)findViewById(2131301586));
-    this.pbb = ((ScrollView)findViewById(2131300668));
-    this.paZ = ((Button)findViewById(2131298575));
-    this.iwY = ((Button)findViewById(2131302851));
-    this.paG = ((TextView)findViewById(2131299511));
-    this.pbd = ((TextView)findViewById(2131299512));
+    this.mListView.setAdapter(this.pEj);
+    this.pEn = ((ImageView)findViewById(2131301586));
+    this.pEm = ((ScrollView)findViewById(2131300668));
+    this.pEk = ((Button)findViewById(2131298575));
+    this.iXb = ((Button)findViewById(2131302851));
+    this.pDR = ((TextView)findViewById(2131299511));
+    this.pEo = ((TextView)findViewById(2131299512));
     paramBundle = "";
-    if (this.pbe.compareTo("SCAN_CATALOG") == 0) {
-      if (this.pbf.contains("wifi"))
+    if (this.pEp.compareTo("SCAN_CATALOG") == 0) {
+      if (this.pEq.contains("wifi"))
       {
-        this.pbl = true;
+        this.pEw = true;
         paramBundle = getContext().getString(2131758515);
         setMMTitle(paramBundle);
-        if ((!this.pbm) || (this.pbl)) {
+        if ((!this.pEx) || (this.pEw)) {
           break label746;
         }
-        if (a.eh(getContext())) {
+        if (a.ep(getContext())) {
           break label680;
         }
-        ad.i("MicroMsg.ExdeviceBindDeviceGuideUI", "now sdk version not support ble device : %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-        Bc(4);
+        ac.i("MicroMsg.ExdeviceBindDeviceGuideUI", "now sdk version not support ble device : %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+        BU(4);
       }
     }
     for (;;)
     {
-      this.paZ.setOnClickListener(new View.OnClickListener()
+      this.pEk.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -298,19 +298,19 @@ public class ExdeviceBindDeviceGuideUI
           paramAnonymousView.putExtra("jumpToBindDevice", true);
           if ((ExdeviceBindDeviceGuideUI.m(ExdeviceBindDeviceGuideUI.this)) && (!ExdeviceBindDeviceGuideUI.n(ExdeviceBindDeviceGuideUI.this)))
           {
-            com.tencent.mm.bs.d.b(ExdeviceBindDeviceGuideUI.this.getContext(), "exdevice", ".ui.ExdeviceBindDeviceUI", paramAnonymousView);
+            com.tencent.mm.br.d.b(ExdeviceBindDeviceGuideUI.this.getContext(), "exdevice", ".ui.ExdeviceBindDeviceUI", paramAnonymousView);
             AppMethodBeat.o(23880);
             return;
           }
           if ((ExdeviceBindDeviceGuideUI.n(ExdeviceBindDeviceGuideUI.this)) && (!ExdeviceBindDeviceGuideUI.m(ExdeviceBindDeviceGuideUI.this)))
           {
             paramAnonymousView.putExtra("exdevice_airkiss_open_type", 2);
-            com.tencent.mm.bs.d.b(ExdeviceBindDeviceGuideUI.this.getContext(), "exdevice", ".ui.ExdeviceConnectWifiUI", paramAnonymousView);
+            com.tencent.mm.br.d.b(ExdeviceBindDeviceGuideUI.this.getContext(), "exdevice", ".ui.ExdeviceConnectWifiUI", paramAnonymousView);
           }
           AppMethodBeat.o(23880);
         }
       });
-      this.iwY.setOnClickListener(new View.OnClickListener()
+      this.iXb.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -328,7 +328,7 @@ public class ExdeviceBindDeviceGuideUI
             paramAnonymousView.putExtra("device_category_id", ExdeviceBindDeviceGuideUI.h(ExdeviceBindDeviceGuideUI.this));
             paramAnonymousView.putExtra("device_brand_name", ExdeviceBindDeviceGuideUI.i(ExdeviceBindDeviceGuideUI.this));
             paramAnonymousView.putExtra("bind_ticket", ExdeviceBindDeviceGuideUI.j(ExdeviceBindDeviceGuideUI.this));
-            com.tencent.mm.bs.d.b(ExdeviceBindDeviceGuideUI.this.getContext(), "exdevice", ".ui.ExdeviceBindDeviceUI", paramAnonymousView);
+            com.tencent.mm.br.d.b(ExdeviceBindDeviceGuideUI.this.getContext(), "exdevice", ".ui.ExdeviceBindDeviceUI", paramAnonymousView);
           }
           AppMethodBeat.o(23881);
         }
@@ -337,12 +337,12 @@ public class ExdeviceBindDeviceGuideUI
       paramBundle.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
       paramBundle.addAction("android.net.wifi.WIFI_STATE_CHANGED");
       paramBundle.addAction("android.location.MODE_CHANGED");
-      getContext().registerReceiver(this.mPQ, paramBundle);
+      getContext().registerReceiver(this.mReceiver, paramBundle);
       AppMethodBeat.o(23888);
       return;
-      if (this.pbf.contains("blue"))
+      if (this.pEq.contains("blue"))
       {
-        this.pbm = true;
+        this.pEx = true;
         paramBundle = getContext().getString(2131758482);
         break;
       }
@@ -351,31 +351,31 @@ public class ExdeviceBindDeviceGuideUI
       Assert.assertTrue(false);
       break;
       label680:
-      if (!a.bBG())
+      if (!a.bIE())
       {
-        ad.i("MicroMsg.ExdeviceBindDeviceGuideUI", "Bluetooth is not open, Just leave");
-        Bc(3);
+        ac.i("MicroMsg.ExdeviceBindDeviceGuideUI", "Bluetooth is not open, Just leave");
+        BU(3);
       }
-      else if ((this.paJ != null) && (this.paK) && (!this.paJ.isProviderEnabled("gps")))
+      else if ((this.pDU != null) && (this.pDV) && (!this.pDU.isProviderEnabled("gps")))
       {
-        ad.i("MicroMsg.ExdeviceBindDeviceGuideUI", "BLE limited version, GPS do not open");
-        Bc(6);
+        ac.i("MicroMsg.ExdeviceBindDeviceGuideUI", "BLE limited version, GPS do not open");
+        BU(6);
       }
       else
       {
         label746:
-        if ((!this.pbm) && (this.pbl) && (!ay.isWifi(getContext())))
+        if ((!this.pEx) && (this.pEw) && (!ax.isWifi(getContext())))
         {
-          ad.i("MicroMsg.ExdeviceBindDeviceGuideUI", "wifi is not open, Just leave");
-          Bc(5);
+          ac.i("MicroMsg.ExdeviceBindDeviceGuideUI", "wifi is not open, Just leave");
+          BU(5);
         }
-        else if ((this.pbl) && (!this.pbm))
+        else if ((this.pEw) && (!this.pEx))
         {
-          Bc(1);
+          BU(1);
         }
-        else if ((this.pbm) && (!this.pbl))
+        else if ((this.pEx) && (!this.pEw))
         {
-          Bc(2);
+          BU(2);
         }
       }
     }
@@ -385,7 +385,7 @@ public class ExdeviceBindDeviceGuideUI
   {
     AppMethodBeat.i(23889);
     super.onDestroy();
-    getContext().unregisterReceiver(this.mPQ);
+    getContext().unregisterReceiver(this.mReceiver);
     AppMethodBeat.o(23889);
   }
   
@@ -399,7 +399,7 @@ public class ExdeviceBindDeviceGuideUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceBindDeviceGuideUI
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ import d.l;
 import java.util.Iterator;
 import org.json.JSONObject;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/sdk/wxa_ktx/JSONUtils;", "", "()V", "copy", "Lorg/json/JSONObject;", "luggage-wxa-app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/wxa_ktx/JSONUtils;", "", "()V", "copy", "Lorg/json/JSONObject;", "luggage-wxa-app_release"})
 public final class b
 {
-  public static final b ciz;
+  public static final b cfv;
   
   static
   {
     AppMethodBeat.i(135552);
-    ciz = new b();
+    cfv = new b();
     AppMethodBeat.o(135552);
   }
   
@@ -41,7 +41,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.g.b
  * JD-Core Version:    0.7.0.1
  */

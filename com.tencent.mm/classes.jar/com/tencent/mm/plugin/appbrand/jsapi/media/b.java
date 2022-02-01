@@ -6,21 +6,21 @@ import d.g.b.k;
 import d.l;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "", "()V", "CANCELED", "Companion", "FAILED", "OK", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$FAILED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$OK;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "", "()V", "CANCELED", "Companion", "FAILED", "OK", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$FAILED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$OK;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;", "plugin-appbrand-integration_release"})
 public abstract class b
 {
-  public static final b jVY = new b((byte)0);
+  public static final b kwK = new b((byte)0);
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "()V", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "()V", "plugin-appbrand-integration_release"})
   public static final class a
     extends b
   {
-    public static final a jVZ;
+    public static final a kwL;
     
     static
     {
       AppMethodBeat.i(50514);
-      jVZ = new a();
+      kwL = new a();
       AppMethodBeat.o(50514);
     }
     
@@ -30,10 +30,10 @@ public abstract class b
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$Companion;", "", "()V", "FROM_ALBUM", "", "FROM_CAMERA", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$Companion;", "", "()V", "FROM_ALBUM", "", "FROM_CAMERA", "plugin-appbrand-integration_release"})
   public static final class b {}
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$FAILED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "message", "", "(Ljava/lang/String;)V", "getMessage", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$FAILED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "message", "", "(Ljava/lang/String;)V", "getMessage", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
   public static final class c
     extends b
   {
@@ -88,18 +88,18 @@ public abstract class b
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$OK;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "files", "", "Lcom/tencent/mm/vfs/VFSFile;", "from", "", "(Ljava/util/List;I)V", "getFiles", "()Ljava/util/List;", "getFrom", "()I", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "toString", "", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$OK;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "files", "", "Lcom/tencent/mm/vfs/VFSFile;", "from", "", "(Ljava/util/List;I)V", "getFiles", "()Ljava/util/List;", "getFrom", "()I", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "toString", "", "plugin-appbrand-integration_release"})
   public static final class d
     extends b
   {
     final int from;
-    final List<e> jWa;
+    final List<e> kwM;
     
     public d(List<? extends e> paramList, int paramInt)
     {
       super();
       AppMethodBeat.i(50518);
-      this.jWa = paramList;
+      this.kwM = paramList;
       this.from = paramInt;
       AppMethodBeat.o(50518);
     }
@@ -112,7 +112,7 @@ public abstract class b
         if ((paramObject instanceof d))
         {
           paramObject = (d)paramObject;
-          if ((!k.g(this.jWa, paramObject.jWa)) || (this.from != paramObject.from)) {}
+          if ((!k.g(this.kwM, paramObject.kwM)) || (this.from != paramObject.from)) {}
         }
       }
       else
@@ -127,7 +127,7 @@ public abstract class b
     public final int hashCode()
     {
       AppMethodBeat.i(50520);
-      List localList = this.jWa;
+      List localList = this.kwM;
       if (localList != null) {}
       for (int i = localList.hashCode();; i = 0)
       {
@@ -140,7 +140,7 @@ public abstract class b
     public final String toString()
     {
       AppMethodBeat.i(50519);
-      String str = "OK(files=" + this.jWa + ", from=" + this.from + ")";
+      String str = "OK(files=" + this.kwM + ", from=" + this.from + ")";
       AppMethodBeat.o(50519);
       return str;
     }
@@ -148,7 +148,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.b
  * JD-Core Version:    0.7.0.1
  */

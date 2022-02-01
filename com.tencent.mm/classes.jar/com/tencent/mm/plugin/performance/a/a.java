@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.performance.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,58 +11,58 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public enum a
   implements c
 {
-  private List<c> urh;
-  private Map<Class<? extends c>, c> urj;
+  private List<c> vAd;
+  private Map<Class<? extends c>, c> vAe;
   
   static
   {
     AppMethodBeat.i(145998);
-    urg = new a("INSTANCE");
-    urk = new a[] { urg };
+    vAc = new a("INSTANCE");
+    vAf = new a[] { vAc };
     AppMethodBeat.o(145998);
   }
   
   private a()
   {
     AppMethodBeat.i(145994);
-    this.urh = new CopyOnWriteArrayList();
-    this.urj = new ConcurrentHashMap();
+    this.vAd = new CopyOnWriteArrayList();
+    this.vAe = new ConcurrentHashMap();
     AppMethodBeat.o(145994);
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(145995);
-    if (this.urj.containsKey(paramc.getClass()))
+    if (this.vAe.containsKey(paramc.getClass()))
     {
       AppMethodBeat.o(145995);
       return;
     }
-    this.urh.add(paramc);
-    this.urj.put(paramc.getClass(), paramc);
+    this.vAd.add(paramc);
+    this.vAe.put(paramc.getClass(), paramc);
     AppMethodBeat.o(145995);
   }
   
-  public final <T extends c> T aQ(Class<T> paramClass)
+  public final <T extends c> T aR(Class<T> paramClass)
   {
     AppMethodBeat.i(145996);
-    paramClass = (c)this.urj.get(paramClass);
+    paramClass = (c)this.vAe.get(paramClass);
     AppMethodBeat.o(145996);
     return paramClass;
   }
   
-  public final void an(Map<String, String> paramMap)
+  public final void ap(Map<String, String> paramMap)
   {
     AppMethodBeat.i(145997);
     if (!paramMap.containsKey(".cmd.diagnostic"))
     {
-      ad.d("MicroMsg.DiagnosticManager", "just ignore other ipxx cmd");
+      ac.d("MicroMsg.DiagnosticManager", "just ignore other ipxx cmd");
       AppMethodBeat.o(145997);
       return;
     }
-    Iterator localIterator = this.urh.iterator();
+    Iterator localIterator = this.vAd.iterator();
     while (localIterator.hasNext()) {
-      ((c)localIterator.next()).an(paramMap);
+      ((c)localIterator.next()).ap(paramMap);
     }
     AppMethodBeat.o(145997);
   }

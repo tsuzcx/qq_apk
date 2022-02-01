@@ -7,27 +7,27 @@ public class k
   implements j
 {
   public String appId = "appId";
-  public String dfM = "appName";
-  public String hGe = "";
-  public int jdL = 5;
-  public boolean jdM;
-  public boolean jdN;
-  public boolean jdO;
-  public boolean jdP;
-  public int jdQ = 5;
-  public int jdR = 60;
-  public volatile WxaPkgWrappingInfo jdS = null;
-  public int jdT = 1;
-  public boolean jdU = false;
+  public String ddh = "appName";
+  public String igG = "";
+  public int jDZ = 5;
+  public boolean jEa;
+  public boolean jEb;
+  public boolean jEc;
+  public boolean jEd;
+  public int jEe = 5;
+  public int jEf = 60;
+  public volatile WxaPkgWrappingInfo jEg = null;
+  public int jEh = 1;
+  public boolean jEi = false;
   
-  public final int aTG()
+  public final int baE()
   {
-    return this.jdS.iOQ;
+    return this.jEg.jpa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.k
  * JD-Core Version:    0.7.0.1
  */

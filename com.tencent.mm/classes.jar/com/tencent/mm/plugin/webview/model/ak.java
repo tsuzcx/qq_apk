@@ -4,10 +4,10 @@ import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.platformtools.ab;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.websearch.api.i;
+import com.tencent.mm.plugin.websearch.api.z;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.util.HashSet;
@@ -16,54 +16,54 @@ import java.util.Set;
 
 public final class ak
 {
-  private static final Set<String> AYp;
+  private static final Set<String> CqC;
   
   static
   {
     AppMethodBeat.i(78986);
     Object localObject = new HashSet();
-    AYp = (Set)localObject;
+    CqC = (Set)localObject;
     ((Set)localObject).add("file:///android_asset/");
-    localObject = b.aia();
-    if (!bt.isNullOrNil((String)localObject)) {
-      localObject = b.aia().replace("/data/user/0", "/data/data");
+    localObject = b.apa();
+    if (!bs.isNullOrNil((String)localObject)) {
+      localObject = b.apa().replace("/data/user/0", "/data/data");
     }
     for (;;)
     {
-      e locale1 = new e(aa.Sd(0));
-      AYp.add("file://" + q.B(locale1.fhU()));
-      AYp.add("file://" + ((j)com.tencent.mm.kernel.g.ab(j.class)).ehB());
-      e locale2 = new e(b.aih(), aa.ehR());
-      AYp.add("file://" + q.B(locale2.fhU()));
+      e locale1 = new e(z.Un(0));
+      CqC.add("file://" + q.B(locale1.fxV()));
+      CqC.add("file://" + ((i)com.tencent.mm.kernel.g.ab(i.class)).ewV());
+      e locale2 = new e(b.aph(), z.exl());
+      CqC.add("file://" + q.B(locale2.fxV()));
       e locale3 = new e((String)localObject, "wenote/res");
-      AYp.add("file://" + q.B(locale3.fhU()));
-      locale3 = new e(b.aih(), "wenote/res");
-      AYp.add("file://" + q.B(locale3.fhU()));
-      ad.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { q.B(locale1.fhU()), q.B(locale2.fhU()) });
+      CqC.add("file://" + q.B(locale3.fxV()));
+      locale3 = new e(b.aph(), "wenote/res");
+      CqC.add("file://" + q.B(locale3.fxV()));
+      ac.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { q.B(locale1.fxV()), q.B(locale2.fxV()) });
       localObject = new e((String)localObject, "emoji/res");
-      AYp.add("file://" + q.B(((e)localObject).fhU()));
-      locale1 = new e(b.aih(), "emoji/res");
-      AYp.add("file://" + q.B(locale1.fhU()));
-      ad.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { q.B(((e)localObject).fhU()), q.B(locale1.fhU()) });
-      localObject = AYp.iterator();
+      CqC.add("file://" + q.B(((e)localObject).fxV()));
+      locale1 = new e(b.aph(), "emoji/res");
+      CqC.add("file://" + q.B(locale1.fxV()));
+      ac.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { q.B(((e)localObject).fxV()), q.B(locale1.fxV()) });
+      localObject = CqC.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ad.i("MicroMsg.URLFilter", "WebViewUI white list path : %s", new Object[] { (String)((Iterator)localObject).next() });
+        ac.i("MicroMsg.URLFilter", "WebViewUI white list path : %s", new Object[] { (String)((Iterator)localObject).next() });
       }
       AppMethodBeat.o(78986);
       return;
     }
   }
   
-  public static boolean awv(String paramString)
+  public static boolean aBN(String paramString)
   {
     AppMethodBeat.i(78985);
-    if (ab.hVz)
+    if (ab.ivD)
     {
-      ad.w("MicroMsg.URLFilter", "skipLoadUrlCheck");
+      ac.w("MicroMsg.URLFilter", "skipLoadUrlCheck");
       AppMethodBeat.o(78985);
       return true;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(78985);
       return true;
@@ -77,12 +77,12 @@ public final class ak
     if (!paramString.startsWith("file://"))
     {
       paramString = Uri.parse(paramString);
-      if (bt.isNullOrNil(paramString.getHost()))
+      if (bs.isNullOrNil(paramString.getHost()))
       {
         AppMethodBeat.o(78985);
         return true;
       }
-      if (!paramString.getHost().contains(com.tencent.luggage.h.g.Ep()))
+      if (!paramString.getHost().contains(com.tencent.luggage.h.g.DS()))
       {
         AppMethodBeat.o(78985);
         return true;
@@ -90,7 +90,7 @@ public final class ak
       AppMethodBeat.o(78985);
       return false;
     }
-    Iterator localIterator = AYp.iterator();
+    Iterator localIterator = CqC.iterator();
     while (localIterator.hasNext()) {
       if (paramString.startsWith((String)localIterator.next()))
       {

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bh;
-import com.tencent.mm.protocal.protobuf.bi;
-import com.tencent.mm.protocal.protobuf.dbj;
-import com.tencent.mm.protocal.protobuf.dcm;
+import com.tencent.mm.protocal.protobuf.bj;
+import com.tencent.mm.protocal.protobuf.bk;
+import com.tencent.mm.protocal.protobuf.dgv;
+import com.tencent.mm.protocal.protobuf.dhz;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vending.j.b;
 import java.util.Iterator;
@@ -13,48 +13,31 @@ import java.util.LinkedList;
 
 public final class g
 {
-  public f pEC;
+  public f qjp;
   
-  public static bh VQ(String paramString)
-  {
-    AppMethodBeat.i(121911);
-    bi localbi = c.cbE();
-    paramString = a(localbi, paramString);
-    int i = ((Integer)paramString.get(0)).intValue();
-    int j = ((Integer)paramString.get(1)).intValue();
-    if ((i < 0) || (j < 0))
-    {
-      AppMethodBeat.o(121911);
-      return null;
-    }
-    paramString = (bh)((dbj)localbi.CvM.get(i)).EsW.get(j);
-    AppMethodBeat.o(121911);
-    return paramString;
-  }
-  
-  public static com.tencent.mm.vending.j.c<dbj, Integer> a(bi parambi, bh parambh)
+  public static com.tencent.mm.vending.j.c<dgv, Integer> a(bk parambk, bj parambj)
   {
     AppMethodBeat.i(121899);
-    if ((parambi == null) || (parambi.CvM.isEmpty()))
+    if ((parambk == null) || (parambk.DOh.isEmpty()))
     {
       AppMethodBeat.o(121899);
       return null;
     }
-    int i = parambi.CvM.size() - 1;
+    int i = parambk.DOh.size() - 1;
     while (i >= 0)
     {
-      dbj localdbj = (dbj)parambi.CvM.get(i);
-      if ((localdbj != null) && (!localdbj.EsW.isEmpty()))
+      dgv localdgv = (dgv)parambk.DOh.get(i);
+      if ((localdgv != null) && (!localdgv.FPY.isEmpty()))
       {
-        int j = localdbj.EsW.size() - 1;
+        int j = localdgv.FPY.size() - 1;
         while (j >= 0)
         {
-          bh localbh = (bh)localdbj.EsW.get(j);
-          if ((localbh != null) && (h.a(parambh.CvH, localbh.CvH)))
+          bj localbj = (bj)localdgv.FPY.get(j);
+          if ((localbj != null) && (h.a(parambj.DOc, localbj.DOc)))
           {
-            parambi = a.L(localdbj, Integer.valueOf(i));
+            parambk = a.L(localdgv, Integer.valueOf(i));
             AppMethodBeat.o(121899);
-            return parambi;
+            return parambk;
           }
           j -= 1;
         }
@@ -65,27 +48,27 @@ public final class g
     return null;
   }
   
-  static com.tencent.mm.vending.j.c<Integer, Integer> a(bi parambi, String paramString)
+  static com.tencent.mm.vending.j.c<Integer, Integer> a(bk parambk, String paramString)
   {
     AppMethodBeat.i(121908);
     if (TextUtils.isEmpty(paramString))
     {
-      parambi = a.L(Integer.valueOf(-1), Integer.valueOf(-1));
+      parambk = a.L(Integer.valueOf(-1), Integer.valueOf(-1));
       AppMethodBeat.o(121908);
-      return parambi;
+      return parambk;
     }
-    if (parambi == null)
+    if (parambk == null)
     {
-      parambi = com.tencent.mm.vending.j.c.L(Integer.valueOf(-1), Integer.valueOf(-1));
+      parambk = com.tencent.mm.vending.j.c.L(Integer.valueOf(-1), Integer.valueOf(-1));
       AppMethodBeat.o(121908);
-      return parambi;
+      return parambk;
     }
-    int i = parambi.CvM.size();
+    int i = parambk.DOh.size();
     if (i <= 0)
     {
-      parambi = com.tencent.mm.vending.j.c.L(Integer.valueOf(-1), Integer.valueOf(-1));
+      parambk = com.tencent.mm.vending.j.c.L(Integer.valueOf(-1), Integer.valueOf(-1));
       AppMethodBeat.o(121908);
-      return parambi;
+      return parambk;
     }
     i -= 1;
     int k = -1;
@@ -93,13 +76,13 @@ public final class g
     int m;
     if (i >= 0)
     {
-      dbj localdbj = (dbj)parambi.CvM.get(i);
-      m = localdbj.EsW.size() - 1;
+      dgv localdgv = (dgv)parambk.DOh.get(i);
+      m = localdgv.FPY.size() - 1;
       label123:
       if (m < 0) {
         break label220;
       }
-      if (paramString.equals(((bh)localdbj.EsW.get(m)).CvH.activityName))
+      if (paramString.equals(((bj)localdgv.FPY.get(m)).DOc.activityName))
       {
         k = m;
         j = i;
@@ -114,69 +97,86 @@ public final class g
       break label123;
       if (j == -1)
       {
-        parambi = com.tencent.mm.vending.j.c.L(Integer.valueOf(-1), Integer.valueOf(-1));
+        parambk = com.tencent.mm.vending.j.c.L(Integer.valueOf(-1), Integer.valueOf(-1));
         AppMethodBeat.o(121908);
-        return parambi;
+        return parambk;
       }
-      parambi = a.L(Integer.valueOf(j), Integer.valueOf(k));
+      parambk = a.L(Integer.valueOf(j), Integer.valueOf(k));
       AppMethodBeat.o(121908);
-      return parambi;
+      return parambk;
     }
   }
   
-  static void a(bi parambi, bh parambh, boolean paramBoolean)
+  static void a(bk parambk, bj parambj, boolean paramBoolean)
   {
     AppMethodBeat.i(121901);
-    dbj localdbj = new dbj();
-    localdbj.EsV = paramBoolean;
-    localdbj.EsW.addLast(parambh);
-    parambh = parambi;
-    if (parambi == null) {
-      parambh = new bi();
+    dgv localdgv = new dgv();
+    localdgv.FPX = paramBoolean;
+    localdgv.FPY.addLast(parambj);
+    parambj = parambk;
+    if (parambk == null) {
+      parambj = new bk();
     }
-    parambh.CvM.addLast(localdbj);
+    parambj.DOh.addLast(localdgv);
     AppMethodBeat.o(121901);
   }
   
-  private static void a(bi parambi, dbj paramdbj)
+  private static void a(bk parambk, dgv paramdgv)
   {
     AppMethodBeat.i(121905);
-    if ((paramdbj.EsW.isEmpty()) && (!parambi.CvM.isEmpty())) {
-      parambi.CvM.removeLast();
+    if ((paramdgv.FPY.isEmpty()) && (!parambk.DOh.isEmpty())) {
+      parambk.DOh.removeLast();
     }
     AppMethodBeat.o(121905);
   }
   
-  static void b(bi parambi, bh parambh)
+  public static bj aaf(String paramString)
+  {
+    AppMethodBeat.i(121911);
+    bk localbk = c.ciP();
+    paramString = a(localbk, paramString);
+    int i = ((Integer)paramString.get(0)).intValue();
+    int j = ((Integer)paramString.get(1)).intValue();
+    if ((i < 0) || (j < 0))
+    {
+      AppMethodBeat.o(121911);
+      return null;
+    }
+    paramString = (bj)((dgv)localbk.DOh.get(i)).FPY.get(j);
+    AppMethodBeat.o(121911);
+    return paramString;
+  }
+  
+  static void b(bk parambk, bj parambj)
   {
     AppMethodBeat.i(121900);
-    dbj localdbj1 = null;
-    if (!parambi.CvM.isEmpty()) {
-      localdbj1 = (dbj)parambi.CvM.getLast();
+    dgv localdgv1 = null;
+    if (!parambk.DOh.isEmpty()) {
+      localdgv1 = (dgv)parambk.DOh.getLast();
     }
-    dbj localdbj2 = localdbj1;
-    if (localdbj1 == null)
+    dgv localdgv2 = localdgv1;
+    if (localdgv1 == null)
     {
-      localdbj2 = new dbj();
-      parambi.CvM.addLast(localdbj2);
+      localdgv2 = new dgv();
+      parambk.DOh.addLast(localdgv2);
     }
-    localdbj2.EsW.addLast(parambh);
+    localdgv2.FPY.addLast(parambj);
     AppMethodBeat.o(121900);
   }
   
-  static boolean b(bi parambi)
+  static boolean b(bk parambk)
   {
     AppMethodBeat.i(121902);
-    if (parambi == null)
+    if (parambk == null)
     {
       AppMethodBeat.o(121902);
       return false;
     }
-    dbj localdbj = null;
-    if (!parambi.CvM.isEmpty()) {
-      localdbj = (dbj)parambi.CvM.getLast();
+    dgv localdgv = null;
+    if (!parambk.DOh.isEmpty()) {
+      localdgv = (dgv)parambk.DOh.getLast();
     }
-    if ((localdbj != null) && (localdbj.EsV))
+    if ((localdgv != null) && (localdgv.FPX))
     {
       AppMethodBeat.o(121902);
       return true;
@@ -185,95 +185,95 @@ public final class g
     return false;
   }
   
-  static bh c(bi parambi)
+  static bj c(bk parambk)
   {
     AppMethodBeat.i(121906);
-    if (parambi == null)
+    if (parambk == null)
     {
       AppMethodBeat.o(121906);
       return null;
     }
-    if (!parambi.CvM.isEmpty()) {}
-    for (parambi = (dbj)parambi.CvM.getLast();; parambi = null)
+    if (!parambk.DOh.isEmpty()) {}
+    for (parambk = (dgv)parambk.DOh.getLast();; parambk = null)
     {
-      if (parambi == null)
+      if (parambk == null)
       {
         AppMethodBeat.o(121906);
         return null;
       }
-      if (parambi.EsW.isEmpty())
+      if (parambk.FPY.isEmpty())
       {
         AppMethodBeat.o(121906);
         return null;
       }
-      parambi = (bh)parambi.EsW.getLast();
+      parambk = (bj)parambk.FPY.getLast();
       AppMethodBeat.o(121906);
-      return parambi;
+      return parambk;
     }
   }
   
-  static com.tencent.mm.vending.j.c<Integer, Integer> c(bi parambi, bh parambh)
+  static com.tencent.mm.vending.j.c<Integer, Integer> c(bk parambk, bj parambj)
   {
     AppMethodBeat.i(121907);
-    parambi = a(parambi, parambh.CvH.activityName);
+    parambk = a(parambk, parambj.DOc.activityName);
     AppMethodBeat.o(121907);
-    return parambi;
+    return parambk;
   }
   
-  public static com.tencent.mm.vending.j.c<bi, bh> cbM()
+  public static com.tencent.mm.vending.j.c<bk, bj> ciX()
   {
     AppMethodBeat.i(121909);
-    Object localObject = c.cbE();
-    localObject = a.L(localObject, e((bi)localObject));
+    Object localObject = c.ciP();
+    localObject = a.L(localObject, e((bk)localObject));
     AppMethodBeat.o(121909);
     return localObject;
   }
   
-  static LinkedList<dbj> d(bi parambi)
+  static LinkedList<dgv> d(bk parambk)
   {
-    if (parambi == null) {
+    if (parambk == null) {
       return null;
     }
-    return parambi.CvM;
+    return parambk.DOh;
   }
   
-  public static bh e(bi parambi)
+  public static bj e(bk parambk)
   {
     AppMethodBeat.i(121910);
-    if (parambi == null)
+    if (parambk == null)
     {
       AppMethodBeat.o(121910);
       return null;
     }
-    if (!parambi.CvM.isEmpty()) {}
-    for (parambi = (dbj)parambi.CvM.getLast();; parambi = null)
+    if (!parambk.DOh.isEmpty()) {}
+    for (parambk = (dgv)parambk.DOh.getLast();; parambk = null)
     {
-      if (parambi == null)
+      if (parambk == null)
       {
         AppMethodBeat.o(121910);
         return null;
       }
-      if (parambi.EsW.isEmpty())
+      if (parambk.FPY.isEmpty())
       {
         AppMethodBeat.o(121910);
         return null;
       }
-      parambi = (bh)parambi.EsW.getLast();
+      parambk = (bj)parambk.FPY.getLast();
       AppMethodBeat.o(121910);
-      return parambi;
+      return parambk;
     }
   }
   
-  final void a(bi parambi, int paramInt, bh parambh)
+  final void a(bk parambk, int paramInt, bj parambj)
   {
     AppMethodBeat.i(121903);
-    if (parambi == null)
+    if (parambk == null)
     {
       AppMethodBeat.o(121903);
       return;
     }
-    dbj localdbj = (dbj)parambi.CvM.getLast();
-    int i = localdbj.EsW.size();
+    dgv localdgv = (dgv)parambk.DOh.getLast();
+    int i = localdgv.FPY.size();
     if ((paramInt < 0) || (paramInt >= i))
     {
       AppMethodBeat.o(121903);
@@ -282,27 +282,27 @@ public final class g
     i -= 1;
     while (i >= paramInt)
     {
-      bh localbh = (bh)localdbj.EsW.remove(i);
-      if (this.pEC != null)
+      bj localbj = (bj)localdgv.FPY.remove(i);
+      if (this.qjp != null)
       {
-        localbh.CvH.timestamp = parambh.CvH.timestamp;
-        this.pEC.c(localbh, parambh);
+        localbj.DOc.timestamp = parambj.DOc.timestamp;
+        this.qjp.c(localbj, parambj);
       }
       i -= 1;
     }
-    a(parambi, localdbj);
+    a(parambk, localdgv);
     AppMethodBeat.o(121903);
   }
   
-  final void b(bi parambi, int paramInt, bh parambh)
+  final void b(bk parambk, int paramInt, bj parambj)
   {
     AppMethodBeat.i(121904);
-    if (parambi == null)
+    if (parambk == null)
     {
       AppMethodBeat.o(121904);
       return;
     }
-    int i = parambi.CvM.size();
+    int i = parambk.DOh.size();
     if ((paramInt < 0) || (paramInt >= i))
     {
       AppMethodBeat.o(121904);
@@ -311,14 +311,14 @@ public final class g
     i -= 1;
     while (i >= paramInt)
     {
-      Iterator localIterator = ((dbj)parambi.CvM.remove(i)).EsW.iterator();
+      Iterator localIterator = ((dgv)parambk.DOh.remove(i)).FPY.iterator();
       while (localIterator.hasNext())
       {
-        bh localbh = (bh)localIterator.next();
-        if (this.pEC != null)
+        bj localbj = (bj)localIterator.next();
+        if (this.qjp != null)
         {
-          localbh.CvH.timestamp = parambh.CvH.timestamp;
-          this.pEC.c(localbh, parambh);
+          localbj.DOc.timestamp = parambj.DOc.timestamp;
+          this.qjp.c(localbj, parambj);
         }
       }
       i -= 1;
@@ -328,7 +328,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.g
  * JD-Core Version:    0.7.0.1
  */

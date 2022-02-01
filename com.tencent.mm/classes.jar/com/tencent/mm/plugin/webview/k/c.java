@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.k;
 
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
+import com.tencent.mm.ak.b.a;
 import com.tencent.mm.appbrand.v8.IJSRuntime;
 import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
 import com.tencent.mm.ipcinvoker.type.IPCString;
@@ -10,20 +10,24 @@ import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.protobuf.aoj;
-import com.tencent.mm.protocal.protobuf.biv;
-import com.tencent.mm.protocal.protobuf.dsn;
-import com.tencent.mm.protocal.protobuf.dso;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.bmn;
+import com.tencent.mm.protocal.protobuf.dye;
+import com.tencent.mm.protocal.protobuf.dyf;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.xweb.z;
+import d.d.d;
 import d.d.f.c;
 import d.g.a.s;
 import d.g.b.u;
-import d.g.b.v.e;
+import d.g.b.v.f;
 import d.g.b.w;
 import d.n.n;
 import d.o;
 import d.p.a;
+import d.y;
 import java.net.URLDecoder;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -36,77 +40,78 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import kotlinx.coroutines.CoroutineExceptionHandler;
-import kotlinx.coroutines.al;
-import kotlinx.coroutines.ao;
-import kotlinx.coroutines.at;
-import kotlinx.coroutines.bc;
+import kotlinx.coroutines.ag;
+import kotlinx.coroutines.ap;
+import kotlinx.coroutines.as;
+import kotlinx.coroutines.ay;
+import kotlinx.coroutines.bh;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;", "", "jsapi", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;)V", "inited", "", "getJsapi", "()Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "reporter", "Lcom/tencent/mm/plugin/webview/webcompt/WebComptReporter;", "getReporter", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComptReporter;", "workerManager", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;", "getWorkerManager", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;", "workerManager$delegate", "Lkotlin/Lazy;", "appendTags", "", "webCompt", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "performanceHelper", "Lcom/tencent/mm/pluginsdk/PerformanceHelper;", "cleanMainFrame", "clear", "createJsContext", "appId", "", "url", "launchMainFrame", "dispatchEvent", "event", "message", "engine", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "errReport", "errMsg", "errStack", "errLine", "", "errCol", "evaluateMainFrame", "script", "callback", "Lkotlin/Function1;", "getA8Key", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$A8KeyResp;", "a8KeyUrl", "webComptName", "(Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getAppScript", "Lkotlin/Pair;", "paramsObject", "Lcom/tencent/mm/json/JSONObject;", "getInterceptResponse", "Lcom/tencent/xweb/WebResourceResponse;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "performance", "frontEndPerformance", "postToBack", "postToFront", "refreshA8Key", "onerror", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$CreateJSContextException;", "onsuccess", "config", "webComptInfo", "configTimeStamps", "", "resume", "end", "step", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$PerformanceSteps;", "evaluate", "launch", "a8key", "records", "steps", "", "start", "toJson", "A8KeyResp", "Companion", "CreateJSContextException", "PerformanceSteps", "WebComptWorkerManager", "webview-sdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;", "", "jsapi", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;)V", "inited", "", "getJsapi", "()Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "reporter", "Lcom/tencent/mm/plugin/webview/webcompt/WebComptReporter;", "getReporter", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComptReporter;", "workerManager", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;", "getWorkerManager", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;", "workerManager$delegate", "Lkotlin/Lazy;", "appendTags", "", "webCompt", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "performanceHelper", "Lcom/tencent/mm/pluginsdk/PerformanceHelper;", "cleanMainFrame", "clear", "createJsContext", "appId", "", "url", "launchMainFrame", "dispatchEvent", "event", "message", "engine", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "errReport", "errMsg", "errStack", "errLine", "", "errCol", "evaluateMainFrame", "script", "callback", "Lkotlin/Function1;", "getA8Key", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$A8KeyResp;", "a8KeyUrl", "webComptName", "(Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getAppScript", "Lkotlin/Pair;", "paramsObject", "Lcom/tencent/mm/json/JSONObject;", "getInterceptResponse", "Lcom/tencent/xweb/WebResourceResponse;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "performance", "frontEndPerformance", "postToBack", "postToFront", "refreshA8Key", "onerror", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$CreateJSContextException;", "onsuccess", "config", "webComptInfo", "configTimeStamps", "", "resume", "end", "step", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$PerformanceSteps;", "evaluate", "launch", "a8key", "records", "steps", "", "start", "toJson", "A8KeyResp", "Companion", "CreateJSContextException", "PerformanceSteps", "WebComptWorkerManager", "webview-sdk_release"})
 public final class c
 {
-  private static String ByA;
-  private static final LinkedList<l> ByB;
-  private static final d.f ByC;
-  private static final String ByD;
-  private static final d.f ByE;
-  public static final b ByF;
-  private static final String Byu = "webcompt://";
-  private static final d.f Byv;
-  private static final d.f Byw;
-  private static final d.f Byx;
-  private static final d.f Byy;
-  private static final e Byz;
+  private static final String CQC = "webcompt://";
+  private static final d.f CQD;
+  private static final d.f CQE;
+  private static final d.f CQF;
+  private static final d.f CQG;
+  private static final e CQH;
+  private static String CQI;
+  private static final LinkedList<l> CQJ;
+  private static final d.f CQK;
+  private static final String CQL;
+  private static final d.f CQM;
+  public static final b CQN;
   static final String TAG = "MicroMsg.WebComponent";
-  final com.tencent.mm.plugin.webview.c.f AQP;
-  final j Bys;
-  private final d.f Byt;
-  private boolean fFP;
+  final j CQA;
+  private final d.f CQB;
+  final com.tencent.mm.plugin.webview.c.f Cjc;
+  private boolean fJw;
   
   static
   {
     AppMethodBeat.i(82898);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(c.class), "workerManager", "getWorkerManager()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;")) };
-    ByF = new b((byte)0);
-    Byu = "webcompt://";
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(c.class), "workerManager", "getWorkerManager()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;")) };
+    CQN = new b((byte)0);
+    CQC = "webcompt://";
     TAG = "MicroMsg.WebComponent";
-    Byv = d.g.E((d.g.a.a)g.Bzh);
-    Byw = d.g.E((d.g.a.a)d.Bze);
-    Byx = d.g.E((d.g.a.a)f.Bzf);
-    Byy = d.g.E((d.g.a.a)i.Bzj);
-    Byz = new e();
-    ByA = "";
-    ByB = new LinkedList();
-    ByC = d.g.E((d.g.a.a)h.Bzi);
-    ByD = com.tencent.mm.loader.j.b.aih() + "webcompt_debug/";
-    ByE = d.g.E((d.g.a.a)c.Bzc);
+    CQD = d.g.K((d.g.a.a)g.CRp);
+    CQE = d.g.K((d.g.a.a)d.CRm);
+    CQF = d.g.K((d.g.a.a)f.CRn);
+    CQG = d.g.K((d.g.a.a)i.CRr);
+    CQH = new e();
+    CQI = "";
+    CQJ = new LinkedList();
+    CQK = d.g.K((d.g.a.a)h.CRq);
+    CQL = com.tencent.mm.loader.j.b.aph() + "webcompt_debug/";
+    CQM = d.g.K((d.g.a.a)c.CRk);
     AppMethodBeat.o(82898);
   }
   
   public c(com.tencent.mm.plugin.webview.c.f paramf)
   {
-    AppMethodBeat.i(189477);
-    this.AQP = paramf;
-    this.Bys = new j();
-    b.erO().clear();
-    this.Byt = d.g.E((d.g.a.a)new z(this));
-    AppMethodBeat.o(189477);
+    AppMethodBeat.i(205610);
+    this.Cjc = paramf;
+    this.CQA = new j();
+    b.eHi().clear();
+    this.CQB = d.g.K((d.g.a.a)new z(this));
+    AppMethodBeat.o(205610);
   }
   
   /* Error */
-  private final o<String, String> a(com.tencent.mm.ac.i parami, final biv parambiv)
+  private final o<String, String> a(com.tencent.mm.ab.i parami, final bmn parambmn)
   {
     // Byte code:
     //   0: ldc_w 390
     //   3: invokestatic 239	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 367	com/tencent/mm/plugin/webview/k/c:Bys	Lcom/tencent/mm/plugin/webview/k/j;
-    //   10: getstatic 396	com/tencent/mm/plugin/webview/k/b:Byb	Lcom/tencent/mm/plugin/webview/k/b;
+    //   7: getfield 367	com/tencent/mm/plugin/webview/k/c:CQA	Lcom/tencent/mm/plugin/webview/k/j;
+    //   10: getstatic 396	com/tencent/mm/plugin/webview/k/b:CQj	Lcom/tencent/mm/plugin/webview/k/b;
     //   13: invokevirtual 399	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
     //   16: new 97	com/tencent/mm/plugin/webview/k/c$v
     //   19: dup
     //   20: aload_0
     //   21: aload_2
-    //   22: invokespecial 402	com/tencent/mm/plugin/webview/k/c$v:<init>	(Lcom/tencent/mm/plugin/webview/k/c;Lcom/tencent/mm/protocal/protobuf/biv;)V
+    //   22: invokespecial 402	com/tencent/mm/plugin/webview/k/c$v:<init>	(Lcom/tencent/mm/plugin/webview/k/c;Lcom/tencent/mm/protocal/protobuf/bmn;)V
     //   25: astore 4
     //   27: getstatic 270	com/tencent/mm/plugin/webview/k/c:TAG	Ljava/lang/String;
     //   30: new 322	java/lang/StringBuilder
@@ -114,27 +119,27 @@ public final class c
     //   34: ldc_w 404
     //   37: invokespecial 407	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   40: aload_2
-    //   41: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
+    //   41: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
     //   44: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokestatic 417	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   53: getstatic 423	com/tencent/mm/plugin/webview/k/g:BAm	Lcom/tencent/mm/plugin/webview/k/g$a;
+    //   50: invokestatic 417	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   53: getstatic 423	com/tencent/mm/plugin/webview/k/g:CSt	Lcom/tencent/mm/plugin/webview/k/g$a;
     //   56: astore 5
     //   58: invokestatic 429	com/tencent/mm/plugin/webview/k/g$a:getDebug	()Z
     //   61: ifeq +77 -> 138
-    //   64: getstatic 423	com/tencent/mm/plugin/webview/k/g:BAm	Lcom/tencent/mm/plugin/webview/k/g$a;
+    //   64: getstatic 423	com/tencent/mm/plugin/webview/k/g:CSt	Lcom/tencent/mm/plugin/webview/k/g$a;
     //   67: astore 5
-    //   69: invokestatic 435	com/tencent/mm/plugin/webview/k/h:buO	()Lcom/tencent/mm/sdk/platformtools/ax;
+    //   69: invokestatic 435	com/tencent/mm/plugin/webview/k/h:bBL	()Lcom/tencent/mm/sdk/platformtools/aw;
     //   72: ldc_w 437
     //   75: ldc_w 307
-    //   78: invokevirtual 443	com/tencent/mm/sdk/platformtools/ax:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   78: invokevirtual 443	com/tencent/mm/sdk/platformtools/aw:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   81: astore 5
     //   83: aload 5
     //   85: ifnonnull +6 -> 91
-    //   88: invokestatic 446	d/g/b/k:fvU	()V
+    //   88: invokestatic 446	d/g/b/k:fOy	()V
     //   91: aload 5
     //   93: checkcast 448	java/lang/CharSequence
-    //   96: invokestatic 454	d/n/n:aC	(Ljava/lang/CharSequence;)Z
+    //   96: invokestatic 454	d/n/n:aD	(Ljava/lang/CharSequence;)Z
     //   99: ifne +127 -> 226
     //   102: iconst_1
     //   103: istore_3
@@ -148,40 +153,40 @@ public final class c
     //   119: ldc_w 459
     //   122: ldc_w 460
     //   125: aconst_null
-    //   126: getstatic 464	com/tencent/mm/plugin/webview/k/c$b$a:ByM	Lcom/tencent/mm/plugin/webview/k/c$b$a;
+    //   126: getstatic 464	com/tencent/mm/plugin/webview/k/c$b$a:CQU	Lcom/tencent/mm/plugin/webview/k/c$b$a;
     //   129: iconst_4
     //   130: invokestatic 467	com/tencent/mm/plugin/webview/k/c$v:a	(Lcom/tencent/mm/plugin/webview/k/c$v;Ljava/lang/Object;Ljava/lang/String;ILcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)Ld/o;
     //   133: astore_1
     //   134: aload_1
-    //   135: ifnonnull +967 -> 1102
+    //   135: ifnonnull +981 -> 1116
     //   138: aload_2
-    //   139: getfield 469	com/tencent/mm/protocal/protobuf/biv:url	Ljava/lang/String;
+    //   139: getfield 469	com/tencent/mm/protocal/protobuf/bmn:url	Ljava/lang/String;
     //   142: checkcast 448	java/lang/CharSequence
     //   145: astore_1
     //   146: aload_1
     //   147: ifnull +10 -> 157
     //   150: aload_1
-    //   151: invokestatic 454	d/n/n:aC	(Ljava/lang/CharSequence;)Z
+    //   151: invokestatic 454	d/n/n:aD	(Ljava/lang/CharSequence;)Z
     //   154: ifeq +313 -> 467
     //   157: iconst_1
     //   158: istore_3
     //   159: iload_3
     //   160: ifne +28 -> 188
     //   163: aload_2
-    //   164: getfield 472	com/tencent/mm/protocal/protobuf/biv:md5	Ljava/lang/String;
+    //   164: getfield 472	com/tencent/mm/protocal/protobuf/bmn:md5	Ljava/lang/String;
     //   167: checkcast 448	java/lang/CharSequence
     //   170: astore_1
     //   171: aload_1
     //   172: ifnull +10 -> 182
     //   175: aload_1
-    //   176: invokestatic 454	d/n/n:aC	(Ljava/lang/CharSequence;)Z
+    //   176: invokestatic 454	d/n/n:aD	(Ljava/lang/CharSequence;)Z
     //   179: ifeq +293 -> 472
     //   182: iconst_1
     //   183: istore_3
     //   184: iload_3
     //   185: ifeq +292 -> 477
     //   188: aload_2
-    //   189: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
+    //   189: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
     //   192: astore_1
     //   193: aload_1
     //   194: ldc_w 474
@@ -207,10 +212,10 @@ public final class c
     //   236: ldc_w 484
     //   239: invokespecial 407	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   242: aload_2
-    //   243: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
+    //   243: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
     //   246: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   249: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: invokevirtual 490	com/tencent/mm/ac/i:has	(Ljava/lang/String;)Z
+    //   252: invokevirtual 490	com/tencent/mm/ab/i:has	(Ljava/lang/String;)Z
     //   255: ifeq +71 -> 326
     //   258: aload 4
     //   260: new 456	java/net/URL
@@ -221,41 +226,41 @@ public final class c
     //   269: ldc_w 484
     //   272: invokespecial 407	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   275: aload_2
-    //   276: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
+    //   276: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
     //   279: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   282: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   285: invokevirtual 493	com/tencent/mm/ac/i:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   285: invokevirtual 493	com/tencent/mm/ab/i:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   288: invokespecial 457	java/net/URL:<init>	(Ljava/lang/String;)V
     //   291: new 322	java/lang/StringBuilder
     //   294: dup
     //   295: ldc_w 495
     //   298: invokespecial 407	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   301: aload_2
-    //   302: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
+    //   302: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
     //   305: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   308: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   311: ldc_w 496
     //   314: aconst_null
-    //   315: getstatic 499	com/tencent/mm/plugin/webview/k/c$b$a:ByJ	Lcom/tencent/mm/plugin/webview/k/c$b$a;
+    //   315: getstatic 499	com/tencent/mm/plugin/webview/k/c$b$a:CQR	Lcom/tencent/mm/plugin/webview/k/c$b$a;
     //   318: iconst_4
     //   319: invokestatic 467	com/tencent/mm/plugin/webview/k/c$v:a	(Lcom/tencent/mm/plugin/webview/k/c$v;Ljava/lang/Object;Ljava/lang/String;ILcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)Ld/o;
     //   322: astore_1
     //   323: goto -189 -> 134
     //   326: aload_1
     //   327: ldc_w 437
-    //   330: invokevirtual 490	com/tencent/mm/ac/i:has	(Ljava/lang/String;)Z
+    //   330: invokevirtual 490	com/tencent/mm/ab/i:has	(Ljava/lang/String;)Z
     //   333: ifeq +37 -> 370
     //   336: aload 4
     //   338: new 456	java/net/URL
     //   341: dup
     //   342: aload_1
     //   343: ldc_w 437
-    //   346: invokevirtual 493	com/tencent/mm/ac/i:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   346: invokevirtual 493	com/tencent/mm/ab/i:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   349: invokespecial 457	java/net/URL:<init>	(Ljava/lang/String;)V
     //   352: ldc_w 501
     //   355: ldc_w 502
     //   358: aconst_null
-    //   359: getstatic 499	com/tencent/mm/plugin/webview/k/c$b$a:ByJ	Lcom/tencent/mm/plugin/webview/k/c$b$a;
+    //   359: getstatic 499	com/tencent/mm/plugin/webview/k/c$b$a:CQR	Lcom/tencent/mm/plugin/webview/k/c$b$a;
     //   362: iconst_4
     //   363: invokestatic 467	com/tencent/mm/plugin/webview/k/c$v:a	(Lcom/tencent/mm/plugin/webview/k/c$v;Ljava/lang/Object;Ljava/lang/String;ILcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)Ld/o;
     //   366: astore_1
@@ -266,12 +271,12 @@ public final class c
     //   377: dup
     //   378: invokespecial 323	java/lang/StringBuilder:<init>	()V
     //   381: aload_2
-    //   382: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
+    //   382: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
     //   385: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   388: ldc_w 506
     //   391: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   394: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   397: invokestatic 509	com/tencent/mm/plugin/webview/k/c$b:ayS	(Ljava/lang/String;)Ljava/lang/String;
+    //   397: invokestatic 509	com/tencent/mm/plugin/webview/k/c$b:aEj	(Ljava/lang/String;)Ljava/lang/String;
     //   400: invokespecial 510	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   403: invokevirtual 513	com/tencent/mm/vfs/e:exists	()Z
     //   406: ifeq +56 -> 462
@@ -282,17 +287,17 @@ public final class c
     //   418: dup
     //   419: invokespecial 323	java/lang/StringBuilder:<init>	()V
     //   422: aload_2
-    //   423: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
+    //   423: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
     //   426: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   429: ldc_w 506
     //   432: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   435: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   438: invokestatic 509	com/tencent/mm/plugin/webview/k/c$b:ayS	(Ljava/lang/String;)Ljava/lang/String;
+    //   438: invokestatic 509	com/tencent/mm/plugin/webview/k/c$b:aEj	(Ljava/lang/String;)Ljava/lang/String;
     //   441: invokespecial 510	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   444: ldc_w 515
     //   447: ldc_w 516
     //   450: aconst_null
-    //   451: getstatic 519	com/tencent/mm/plugin/webview/k/c$b$a:ByK	Lcom/tencent/mm/plugin/webview/k/c$b$a;
+    //   451: getstatic 519	com/tencent/mm/plugin/webview/k/c$b$a:CQS	Lcom/tencent/mm/plugin/webview/k/c$b$a;
     //   454: iconst_4
     //   455: invokestatic 467	com/tencent/mm/plugin/webview/k/c$v:a	(Lcom/tencent/mm/plugin/webview/k/c$v;Ljava/lang/Object;Ljava/lang/String;ILcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)Ld/o;
     //   458: astore_1
@@ -312,14 +317,14 @@ public final class c
     //   484: dup
     //   485: invokespecial 323	java/lang/StringBuilder:<init>	()V
     //   488: aload_2
-    //   489: invokestatic 522	com/tencent/mm/plugin/webview/k/c$b:a	(Lcom/tencent/mm/protocal/protobuf/biv;)Ljava/lang/String;
+    //   489: invokestatic 522	com/tencent/mm/plugin/webview/k/c$b:a	(Lcom/tencent/mm/protocal/protobuf/bmn;)Ljava/lang/String;
     //   492: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   495: ldc_w 506
     //   498: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   501: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   504: invokespecial 510	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   507: invokevirtual 513	com/tencent/mm/vfs/e:exists	()Z
-    //   510: ifeq +166 -> 676
+    //   510: ifeq +180 -> 690
     //   513: aload 4
     //   515: new 504	com/tencent/mm/vfs/e
     //   518: dup
@@ -327,7 +332,7 @@ public final class c
     //   522: dup
     //   523: invokespecial 323	java/lang/StringBuilder:<init>	()V
     //   526: aload_2
-    //   527: invokestatic 522	com/tencent/mm/plugin/webview/k/c$b:a	(Lcom/tencent/mm/protocal/protobuf/biv;)Ljava/lang/String;
+    //   527: invokestatic 522	com/tencent/mm/plugin/webview/k/c$b:a	(Lcom/tencent/mm/protocal/protobuf/bmn;)Ljava/lang/String;
     //   530: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   533: ldc_w 506
     //   536: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -335,14 +340,14 @@ public final class c
     //   542: invokespecial 510	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   545: ldc_w 524
     //   548: sipush 21004
-    //   551: getstatic 528	com/tencent/mm/plugin/webview/k/c$b$c:ByT	Lcom/tencent/mm/plugin/webview/k/c$b$c;
+    //   551: getstatic 528	com/tencent/mm/plugin/webview/k/c$b$c:CRb	Lcom/tencent/mm/plugin/webview/k/c$b$c;
     //   554: aconst_null
     //   555: bipush 8
     //   557: invokestatic 467	com/tencent/mm/plugin/webview/k/c$v:a	(Lcom/tencent/mm/plugin/webview/k/c$v;Ljava/lang/Object;Ljava/lang/String;ILcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)Ld/o;
     //   560: astore_1
     //   561: aload_0
-    //   562: getfield 367	com/tencent/mm/plugin/webview/k/c:Bys	Lcom/tencent/mm/plugin/webview/k/j;
-    //   565: getstatic 531	com/tencent/mm/plugin/webview/k/b:BxA	Lcom/tencent/mm/plugin/webview/k/b;
+    //   562: getfield 367	com/tencent/mm/plugin/webview/k/c:CQA	Lcom/tencent/mm/plugin/webview/k/j;
+    //   565: getstatic 531	com/tencent/mm/plugin/webview/k/b:CPI	Lcom/tencent/mm/plugin/webview/k/b;
     //   568: invokevirtual 399	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
     //   571: getstatic 270	com/tencent/mm/plugin/webview/k/c:TAG	Ljava/lang/String;
     //   574: new 322	java/lang/StringBuilder
@@ -350,277 +355,283 @@ public final class c
     //   578: ldc_w 533
     //   581: invokespecial 407	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   584: aload_2
-    //   585: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
+    //   585: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
     //   588: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   591: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   594: invokestatic 417	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   597: getstatic 270	com/tencent/mm/plugin/webview/k/c:TAG	Ljava/lang/String;
-    //   600: astore 4
-    //   602: new 322	java/lang/StringBuilder
-    //   605: dup
-    //   606: ldc_w 535
-    //   609: invokespecial 407	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   612: aload_2
-    //   613: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
-    //   616: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   619: bipush 10
-    //   621: invokevirtual 538	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   624: astore_2
-    //   625: aload_1
-    //   626: getfield 544	d/o:second	Ljava/lang/Object;
-    //   629: checkcast 546	java/lang/String
-    //   632: astore 5
-    //   634: bipush 100
-    //   636: aload_1
-    //   637: getfield 544	d/o:second	Ljava/lang/Object;
-    //   640: checkcast 546	java/lang/String
-    //   643: invokevirtual 550	java/lang/String:length	()I
-    //   646: iconst_1
-    //   647: isub
-    //   648: invokestatic 556	java/lang/Math:min	(II)I
-    //   651: istore_3
-    //   652: aload 5
-    //   654: ifnonnull +405 -> 1059
-    //   657: new 558	d/v
-    //   660: dup
-    //   661: ldc_w 560
-    //   664: invokespecial 561	d/v:<init>	(Ljava/lang/String;)V
-    //   667: astore_1
-    //   668: ldc_w 390
-    //   671: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   674: aload_1
-    //   675: athrow
-    //   676: new 456	java/net/URL
-    //   679: dup
-    //   680: aload_2
-    //   681: getfield 469	com/tencent/mm/protocal/protobuf/biv:url	Ljava/lang/String;
-    //   684: invokespecial 457	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   687: astore 5
-    //   689: getstatic 270	com/tencent/mm/plugin/webview/k/c:TAG	Ljava/lang/String;
-    //   692: ldc_w 563
-    //   695: aload 5
-    //   697: invokestatic 567	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   700: invokevirtual 570	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   703: invokestatic 572	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   706: aload 5
-    //   708: invokevirtual 576	java/net/URL:openStream	()Ljava/io/InputStream;
-    //   711: checkcast 578	java/io/Closeable
-    //   714: astore 6
-    //   716: aconst_null
-    //   717: astore 4
-    //   719: aload 6
-    //   721: checkcast 580	java/io/InputStream
-    //   724: astore_1
-    //   725: aload_1
-    //   726: ldc_w 582
-    //   729: invokestatic 477	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   732: aload_1
-    //   733: invokestatic 588	d/f/a:V	(Ljava/io/InputStream;)[B
-    //   736: astore_1
-    //   737: aload_2
-    //   738: getfield 472	com/tencent/mm/protocal/protobuf/biv:md5	Ljava/lang/String;
-    //   741: new 590	java/io/ByteArrayInputStream
-    //   744: dup
-    //   745: aload_1
-    //   746: invokespecial 593	java/io/ByteArrayInputStream:<init>	([B)V
-    //   749: checkcast 580	java/io/InputStream
-    //   752: aload_1
-    //   753: arraylength
-    //   754: invokestatic 598	com/tencent/mm/b/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
-    //   757: invokestatic 601	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   760: ifeq +149 -> 909
-    //   763: new 504	com/tencent/mm/vfs/e
-    //   766: dup
-    //   767: new 322	java/lang/StringBuilder
-    //   770: dup
-    //   771: invokespecial 323	java/lang/StringBuilder:<init>	()V
-    //   774: aload_2
-    //   775: invokestatic 522	com/tencent/mm/plugin/webview/k/c$b:a	(Lcom/tencent/mm/protocal/protobuf/biv;)Ljava/lang/String;
-    //   778: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   781: ldc_w 506
-    //   784: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   787: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   790: invokespecial 510	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
-    //   793: astore 7
-    //   795: new 504	com/tencent/mm/vfs/e
-    //   798: dup
-    //   799: aload 7
-    //   801: invokevirtual 604	com/tencent/mm/vfs/e:getParent	()Ljava/lang/String;
+    //   594: invokestatic 417	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   597: aload_1
+    //   598: getfield 539	d/o:second	Ljava/lang/Object;
+    //   601: checkcast 541	java/lang/String
+    //   604: invokevirtual 545	java/lang/String:length	()I
+    //   607: iconst_1
+    //   608: if_icmple +496 -> 1104
+    //   611: getstatic 270	com/tencent/mm/plugin/webview/k/c:TAG	Ljava/lang/String;
+    //   614: astore 4
+    //   616: new 322	java/lang/StringBuilder
+    //   619: dup
+    //   620: ldc_w 547
+    //   623: invokespecial 407	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   626: aload_2
+    //   627: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
+    //   630: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   633: bipush 10
+    //   635: invokevirtual 550	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   638: astore_2
+    //   639: aload_1
+    //   640: getfield 539	d/o:second	Ljava/lang/Object;
+    //   643: checkcast 541	java/lang/String
+    //   646: astore 5
+    //   648: bipush 100
+    //   650: aload_1
+    //   651: getfield 539	d/o:second	Ljava/lang/Object;
+    //   654: checkcast 541	java/lang/String
+    //   657: invokevirtual 545	java/lang/String:length	()I
+    //   660: iconst_1
+    //   661: isub
+    //   662: invokestatic 556	java/lang/Math:min	(II)I
+    //   665: istore_3
+    //   666: aload 5
+    //   668: ifnonnull +405 -> 1073
+    //   671: new 558	d/v
+    //   674: dup
+    //   675: ldc_w 560
+    //   678: invokespecial 561	d/v:<init>	(Ljava/lang/String;)V
+    //   681: astore_1
+    //   682: ldc_w 390
+    //   685: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   688: aload_1
+    //   689: athrow
+    //   690: new 456	java/net/URL
+    //   693: dup
+    //   694: aload_2
+    //   695: getfield 469	com/tencent/mm/protocal/protobuf/bmn:url	Ljava/lang/String;
+    //   698: invokespecial 457	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   701: astore 5
+    //   703: getstatic 270	com/tencent/mm/plugin/webview/k/c:TAG	Ljava/lang/String;
+    //   706: ldc_w 563
+    //   709: aload 5
+    //   711: invokestatic 567	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   714: invokevirtual 570	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   717: invokestatic 572	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   720: aload 5
+    //   722: invokevirtual 576	java/net/URL:openStream	()Ljava/io/InputStream;
+    //   725: checkcast 578	java/io/Closeable
+    //   728: astore 6
+    //   730: aconst_null
+    //   731: astore 4
+    //   733: aload 6
+    //   735: checkcast 580	java/io/InputStream
+    //   738: astore_1
+    //   739: aload_1
+    //   740: ldc_w 582
+    //   743: invokestatic 477	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   746: aload_1
+    //   747: invokestatic 588	d/f/a:U	(Ljava/io/InputStream;)[B
+    //   750: astore_1
+    //   751: aload_2
+    //   752: getfield 472	com/tencent/mm/protocal/protobuf/bmn:md5	Ljava/lang/String;
+    //   755: new 590	java/io/ByteArrayInputStream
+    //   758: dup
+    //   759: aload_1
+    //   760: invokespecial 593	java/io/ByteArrayInputStream:<init>	([B)V
+    //   763: checkcast 580	java/io/InputStream
+    //   766: aload_1
+    //   767: arraylength
+    //   768: invokestatic 598	com/tencent/mm/b/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   771: invokestatic 601	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   774: ifeq +149 -> 923
+    //   777: new 504	com/tencent/mm/vfs/e
+    //   780: dup
+    //   781: new 322	java/lang/StringBuilder
+    //   784: dup
+    //   785: invokespecial 323	java/lang/StringBuilder:<init>	()V
+    //   788: aload_2
+    //   789: invokestatic 522	com/tencent/mm/plugin/webview/k/c$b:a	(Lcom/tencent/mm/protocal/protobuf/bmn;)Ljava/lang/String;
+    //   792: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   795: ldc_w 506
+    //   798: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   801: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   804: invokespecial 510	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
-    //   807: invokevirtual 607	com/tencent/mm/vfs/e:mkdirs	()Z
-    //   810: pop
-    //   811: aload 7
-    //   813: invokevirtual 610	com/tencent/mm/vfs/e:createNewFile	()Z
-    //   816: pop
-    //   817: aload 7
-    //   819: aload_1
-    //   820: invokestatic 615	com/tencent/mm/vfs/f:b	(Lcom/tencent/mm/vfs/e;[B)V
-    //   823: invokestatic 371	com/tencent/mm/plugin/webview/k/c$b:erO	()Lcom/tencent/mm/plugin/webview/k/c$b$b;
-    //   826: getfield 618	com/tencent/mm/plugin/webview/k/c$b$b:ByP	Ljava/util/LinkedList;
-    //   829: astore 7
-    //   831: aload 5
-    //   833: invokevirtual 619	java/net/URL:toString	()Ljava/lang/String;
-    //   836: astore 8
-    //   838: aload 8
-    //   840: ldc_w 621
-    //   843: invokestatic 477	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   846: aload 7
-    //   848: new 19	com/tencent/mm/plugin/webview/k/c$b$d
-    //   851: dup
+    //   807: astore 7
+    //   809: new 504	com/tencent/mm/vfs/e
+    //   812: dup
+    //   813: aload 7
+    //   815: invokevirtual 604	com/tencent/mm/vfs/e:getParent	()Ljava/lang/String;
+    //   818: invokespecial 510	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+    //   821: invokevirtual 607	com/tencent/mm/vfs/e:mkdirs	()Z
+    //   824: pop
+    //   825: aload 7
+    //   827: invokevirtual 610	com/tencent/mm/vfs/e:createNewFile	()Z
+    //   830: pop
+    //   831: aload 7
+    //   833: aload_1
+    //   834: invokestatic 615	com/tencent/mm/vfs/f:b	(Lcom/tencent/mm/vfs/e;[B)V
+    //   837: invokestatic 371	com/tencent/mm/plugin/webview/k/c$b:eHi	()Lcom/tencent/mm/plugin/webview/k/c$b$b;
+    //   840: getfield 618	com/tencent/mm/plugin/webview/k/c$b$b:CQX	Ljava/util/LinkedList;
+    //   843: astore 7
+    //   845: aload 5
+    //   847: invokevirtual 619	java/net/URL:toString	()Ljava/lang/String;
+    //   850: astore 8
     //   852: aload 8
-    //   854: getstatic 624	com/tencent/mm/plugin/webview/k/c$b$c:ByU	Lcom/tencent/mm/plugin/webview/k/c$b$c;
-    //   857: aconst_null
-    //   858: iconst_4
-    //   859: invokespecial 627	com/tencent/mm/plugin/webview/k/c$b$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)V
-    //   862: invokevirtual 631	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   865: pop
-    //   866: new 540	d/o
-    //   869: dup
-    //   870: aload 5
-    //   872: invokevirtual 619	java/net/URL:toString	()Ljava/lang/String;
-    //   875: new 546	java/lang/String
-    //   878: dup
-    //   879: aload_1
-    //   880: getstatic 637	d/n/d:UTF_8	Ljava/nio/charset/Charset;
-    //   883: invokespecial 640	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
-    //   886: invokespecial 643	d/o:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   889: astore_1
-    //   890: aload_0
-    //   891: getfield 367	com/tencent/mm/plugin/webview/k/c:Bys	Lcom/tencent/mm/plugin/webview/k/j;
-    //   894: getstatic 646	com/tencent/mm/plugin/webview/k/b:BxB	Lcom/tencent/mm/plugin/webview/k/b;
-    //   897: invokevirtual 399	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
-    //   900: aload 6
-    //   902: aconst_null
-    //   903: invokestatic 651	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   906: goto -335 -> 571
-    //   909: aload_0
-    //   910: getfield 367	com/tencent/mm/plugin/webview/k/c:Bys	Lcom/tencent/mm/plugin/webview/k/j;
-    //   913: getstatic 654	com/tencent/mm/plugin/webview/k/b:BxG	Lcom/tencent/mm/plugin/webview/k/b;
-    //   916: invokevirtual 399	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
-    //   919: aload_2
-    //   920: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
-    //   923: astore_1
-    //   924: aload_1
-    //   925: ldc_w 474
-    //   928: invokestatic 477	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   931: new 56	com/tencent/mm/plugin/webview/k/c$j
-    //   934: dup
-    //   935: sipush 21003
+    //   854: ldc_w 621
+    //   857: invokestatic 477	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   860: aload 7
+    //   862: new 19	com/tencent/mm/plugin/webview/k/c$b$d
+    //   865: dup
+    //   866: aload 8
+    //   868: getstatic 624	com/tencent/mm/plugin/webview/k/c$b$c:CRc	Lcom/tencent/mm/plugin/webview/k/c$b$c;
+    //   871: aconst_null
+    //   872: iconst_4
+    //   873: invokespecial 627	com/tencent/mm/plugin/webview/k/c$b$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)V
+    //   876: invokevirtual 631	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   879: pop
+    //   880: new 535	d/o
+    //   883: dup
+    //   884: aload 5
+    //   886: invokevirtual 619	java/net/URL:toString	()Ljava/lang/String;
+    //   889: new 541	java/lang/String
+    //   892: dup
+    //   893: aload_1
+    //   894: getstatic 637	d/n/d:UTF_8	Ljava/nio/charset/Charset;
+    //   897: invokespecial 640	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
+    //   900: invokespecial 643	d/o:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   903: astore_1
+    //   904: aload_0
+    //   905: getfield 367	com/tencent/mm/plugin/webview/k/c:CQA	Lcom/tencent/mm/plugin/webview/k/j;
+    //   908: getstatic 646	com/tencent/mm/plugin/webview/k/b:CPJ	Lcom/tencent/mm/plugin/webview/k/b;
+    //   911: invokevirtual 399	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
+    //   914: aload 6
+    //   916: aconst_null
+    //   917: invokestatic 651	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   920: goto -349 -> 571
+    //   923: aload_0
+    //   924: getfield 367	com/tencent/mm/plugin/webview/k/c:CQA	Lcom/tencent/mm/plugin/webview/k/j;
+    //   927: getstatic 654	com/tencent/mm/plugin/webview/k/b:CPO	Lcom/tencent/mm/plugin/webview/k/b;
+    //   930: invokevirtual 399	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
+    //   933: aload_2
+    //   934: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
+    //   937: astore_1
     //   938: aload_1
-    //   939: ldc_w 656
-    //   942: aload 5
-    //   944: invokestatic 567	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   947: invokevirtual 570	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   950: invokespecial 482	com/tencent/mm/plugin/webview/k/c$j:<init>	(ILjava/lang/String;Ljava/lang/String;)V
-    //   953: checkcast 389	java/lang/Throwable
-    //   956: astore_1
-    //   957: ldc_w 390
-    //   960: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   963: aload_1
-    //   964: athrow
-    //   965: astore 4
-    //   967: ldc_w 390
-    //   970: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   973: aload 4
-    //   975: athrow
-    //   976: astore_1
-    //   977: aload 6
-    //   979: aload 4
-    //   981: invokestatic 651	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   984: ldc_w 390
-    //   987: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   990: aload_1
-    //   991: athrow
-    //   992: astore_1
-    //   993: aload_2
-    //   994: getfield 412	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
-    //   997: astore_2
-    //   998: aload_2
-    //   999: ldc_w 474
-    //   1002: invokestatic 477	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   1005: new 56	com/tencent/mm/plugin/webview/k/c$j
-    //   1008: dup
-    //   1009: sipush 21002
+    //   939: ldc_w 474
+    //   942: invokestatic 477	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   945: new 56	com/tencent/mm/plugin/webview/k/c$j
+    //   948: dup
+    //   949: sipush 21003
+    //   952: aload_1
+    //   953: ldc_w 656
+    //   956: aload 5
+    //   958: invokestatic 567	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   961: invokevirtual 570	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   964: invokespecial 482	com/tencent/mm/plugin/webview/k/c$j:<init>	(ILjava/lang/String;Ljava/lang/String;)V
+    //   967: checkcast 389	java/lang/Throwable
+    //   970: astore_1
+    //   971: ldc_w 390
+    //   974: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   977: aload_1
+    //   978: athrow
+    //   979: astore 4
+    //   981: ldc_w 390
+    //   984: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   987: aload 4
+    //   989: athrow
+    //   990: astore_1
+    //   991: aload 6
+    //   993: aload 4
+    //   995: invokestatic 651	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   998: ldc_w 390
+    //   1001: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1004: aload_1
+    //   1005: athrow
+    //   1006: astore_1
+    //   1007: aload_2
+    //   1008: getfield 412	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
+    //   1011: astore_2
     //   1012: aload_2
-    //   1013: new 322	java/lang/StringBuilder
-    //   1016: dup
-    //   1017: ldc_w 658
-    //   1020: invokespecial 407	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1023: aload_1
-    //   1024: invokevirtual 661	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1027: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1030: ldc_w 663
-    //   1033: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1036: aload 5
-    //   1038: invokevirtual 666	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1041: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1044: invokespecial 482	com/tencent/mm/plugin/webview/k/c$j:<init>	(ILjava/lang/String;Ljava/lang/String;)V
-    //   1047: checkcast 389	java/lang/Throwable
-    //   1050: astore_1
-    //   1051: ldc_w 390
-    //   1054: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1057: aload_1
-    //   1058: athrow
-    //   1059: aload 5
-    //   1061: iconst_0
-    //   1062: iload_3
-    //   1063: invokevirtual 670	java/lang/String:substring	(II)Ljava/lang/String;
-    //   1066: astore 5
-    //   1068: aload 5
-    //   1070: ldc_w 672
-    //   1073: invokestatic 477	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   1076: aload 4
-    //   1078: aload_2
-    //   1079: aload 5
-    //   1081: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1084: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1087: invokestatic 572	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1090: ldc_w 390
-    //   1093: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1096: aload_1
-    //   1097: areturn
-    //   1098: astore_1
-    //   1099: goto -122 -> 977
-    //   1102: goto -531 -> 571
+    //   1013: ldc_w 474
+    //   1016: invokestatic 477	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1019: new 56	com/tencent/mm/plugin/webview/k/c$j
+    //   1022: dup
+    //   1023: sipush 21002
+    //   1026: aload_2
+    //   1027: new 322	java/lang/StringBuilder
+    //   1030: dup
+    //   1031: ldc_w 658
+    //   1034: invokespecial 407	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1037: aload_1
+    //   1038: invokevirtual 661	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1041: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1044: ldc_w 663
+    //   1047: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1050: aload 5
+    //   1052: invokevirtual 666	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1055: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1058: invokespecial 482	com/tencent/mm/plugin/webview/k/c$j:<init>	(ILjava/lang/String;Ljava/lang/String;)V
+    //   1061: checkcast 389	java/lang/Throwable
+    //   1064: astore_1
+    //   1065: ldc_w 390
+    //   1068: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1071: aload_1
+    //   1072: athrow
+    //   1073: aload 5
+    //   1075: iconst_0
+    //   1076: iload_3
+    //   1077: invokevirtual 670	java/lang/String:substring	(II)Ljava/lang/String;
+    //   1080: astore 5
+    //   1082: aload 5
+    //   1084: ldc_w 672
+    //   1087: invokestatic 477	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1090: aload 4
+    //   1092: aload_2
+    //   1093: aload 5
+    //   1095: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1098: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1101: invokestatic 572	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1104: ldc_w 390
+    //   1107: invokestatic 349	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1110: aload_1
+    //   1111: areturn
+    //   1112: astore_1
+    //   1113: goto -122 -> 991
+    //   1116: goto -545 -> 571
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1105	0	this	c
-    //   0	1105	1	parami	com.tencent.mm.ac.i
-    //   0	1105	2	parambiv	biv
-    //   103	960	3	i	int
-    //   25	693	4	localObject1	Object
-    //   965	112	4	localThrowable	Throwable
-    //   56	1024	5	localObject2	Object
-    //   714	264	6	localCloseable	java.io.Closeable
-    //   793	54	7	localObject3	Object
-    //   836	17	8	str	String
+    //   0	1119	0	this	c
+    //   0	1119	1	parami	com.tencent.mm.ab.i
+    //   0	1119	2	parambmn	bmn
+    //   103	974	3	i	int
+    //   25	707	4	localObject1	Object
+    //   979	112	4	localThrowable	Throwable
+    //   56	1038	5	localObject2	Object
+    //   728	264	6	localCloseable	java.io.Closeable
+    //   807	54	7	localObject3	Object
+    //   850	17	8	str	String
     // Exception table:
     //   from	to	target	type
-    //   719	900	965	java/lang/Throwable
-    //   909	965	965	java/lang/Throwable
-    //   967	976	976	finally
-    //   706	716	992	java/lang/Exception
-    //   900	906	992	java/lang/Exception
-    //   977	992	992	java/lang/Exception
-    //   719	900	1098	finally
-    //   909	965	1098	finally
+    //   733	914	979	java/lang/Throwable
+    //   923	979	979	java/lang/Throwable
+    //   981	990	990	finally
+    //   720	730	1006	java/lang/Exception
+    //   914	920	1006	java/lang/Exception
+    //   991	1006	1006	java/lang/Exception
+    //   733	914	1112	finally
+    //   923	979	1112	finally
   }
   
   private final String a(a parama)
   {
     AppMethodBeat.i(82905);
-    Object localObject1 = parama.ByH;
-    Object localObject2 = this.AQP.getSettings();
+    Object localObject1 = parama.CQP;
+    Object localObject2 = this.Cjc.getSettings();
     d.g.b.k.g(localObject2, "jsapi.settings");
-    localObject2 = ((com.tencent.xweb.y)localObject2).getUserAgentString();
+    localObject2 = ((z)localObject2).getUserAgentString();
     d.g.b.k.g(localObject2, "jsapi.settings.userAgentString");
     ((Map)localObject1).put("User-agent", localObject2);
-    localObject1 = new com.tencent.mm.ac.i((Map)localObject1).toString();
+    localObject1 = new com.tencent.mm.ab.i((Map)localObject1).toString();
     d.g.b.k.g(localObject1, "JSONObject(httpHeaders.a…ing\n        }).toString()");
     localObject2 = new StringBuilder("{clientVersion:");
-    String str = com.tencent.mm.sdk.platformtools.h.glW;
+    String str = com.tencent.mm.sdk.platformtools.h.gMJ;
     d.g.b.k.g(str, "BuildInfo.CLIENT_VERSION");
-    parama = a.ayN(str) + ",headers:" + (String)localObject1 + ",fullUrl:" + a.ayN(parama.nha) + '}';
+    parama = a.aEe(str) + ",headers:" + (String)localObject1 + ",fullUrl:" + a.aEe(parama.nJQ) + '}';
     AppMethodBeat.o(82905);
     return parama;
   }
@@ -633,83 +644,83 @@ public final class c
     while (localIterator.hasNext())
     {
       k localk = (k)localIterator.next();
-      localLinkedList.add(String.valueOf(paramq.bH(localk.kER + "_START", paramq.getStartTime()) - paramq.getStartTime()));
-      localLinkedList.add(String.valueOf(paramq.bH(localk.kER + "_END", paramq.getStartTime()) - paramq.getStartTime()));
+      localLinkedList.add(String.valueOf(paramq.bJ(localk.lgk + "_START", paramq.getStartTime()) - paramq.getStartTime()));
+      localLinkedList.add(String.valueOf(paramq.bJ(localk.lgk + "_END", paramq.getStartTime()) - paramq.getStartTime()));
     }
-    paramq = d.a.j.a((Iterable)localLinkedList, (CharSequence)",", null, (CharSequence)",", 0, null, null, 58) + n.s((CharSequence)"0,", (9 - paramList.size()) * 2);
+    paramq = d.a.j.a((Iterable)localLinkedList, (CharSequence)",", null, (CharSequence)",", 0, null, null, 58) + n.r((CharSequence)"0,", (9 - paramList.size()) * 2);
     AppMethodBeat.o(82902);
     return paramq;
   }
   
-  private static void a(com.tencent.mm.plugin.appbrand.jsruntime.g paramg, biv parambiv, long paramLong, boolean paramBoolean)
+  private static void a(com.tencent.mm.plugin.appbrand.jsruntime.g paramg, bmn parambmn, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(189471);
-    Object localObject = m.BzD;
+    AppMethodBeat.i(205604);
+    Object localObject = m.CRL;
     localObject = new StringBuilder("WeixinWebCompt.config({resume:").append(paramBoolean).append(", debug:");
-    g.a locala = g.BAm;
-    c(paramg, g.a.getDebug() + ", iframeUrlPattern:'" + b.erP() + "', configFinishTs:" + paramLong + ", bizReportId:" + parambiv.DGt + ", options:" + parambiv.DGu + "})");
-    com.tencent.mm.sdk.platformtools.ad.i(TAG, "WeixinWebCompt.config:" + parambiv.DGu);
-    AppMethodBeat.o(189471);
+    g.a locala = g.CSt;
+    c(paramg, g.a.getDebug() + ", iframeUrlPattern:'" + b.eHj() + "', configFinishTs:" + paramLong + ", bizReportId:" + parambmn.FbN + ", options:" + parambmn.FbO + "})");
+    ac.i(TAG, "WeixinWebCompt.config:" + parambmn.FbO);
+    AppMethodBeat.o(205604);
   }
   
   static void a(com.tencent.mm.pluginsdk.q paramq, k paramk)
   {
     AppMethodBeat.i(82901);
-    paramq.bG(paramk.kER + "_START", System.currentTimeMillis());
+    paramq.bI(paramk.lgk + "_START", System.currentTimeMillis());
     AppMethodBeat.o(82901);
   }
   
   static void c(com.tencent.mm.plugin.appbrand.jsruntime.g paramg, String paramString)
   {
-    AppMethodBeat.i(189473);
+    AppMethodBeat.i(205606);
     paramg.evaluateJavascript(paramString, null);
-    AppMethodBeat.o(189473);
+    AppMethodBeat.o(205606);
   }
   
-  public static final void erJ()
+  public static final void eHd()
   {
     AppMethodBeat.i(82923);
-    b.tI(false);
+    b.uK(false);
     AppMethodBeat.o(82923);
   }
   
-  private final void g(final String paramString, final d.g.a.b<? super String, d.y> paramb)
+  private final void h(final String paramString, final d.g.a.b<? super String, y> paramb)
   {
     AppMethodBeat.i(82912);
-    com.tencent.mm.ad.c.g((d.g.a.a)new t(this, paramString, paramb));
+    com.tencent.mm.ac.c.g((d.g.a.a)new t(this, paramString, paramb));
     AppMethodBeat.o(82912);
   }
   
-  public final void aM(final String paramString1, final String paramString2, final String paramString3)
+  public final com.tencent.mm.plugin.appbrand.jsruntime.g aEf(String paramString)
   {
-    AppMethodBeat.i(189474);
-    d.g.b.k.h(paramString1, "webCompt");
-    d.g.b.k.h(paramString2, "event");
-    if (bt.isNullOrNil(paramString2))
-    {
-      com.tencent.mm.sdk.platformtools.ad.w(TAG, "dispatch event is null");
-      AppMethodBeat.o(189474);
-      return;
-    }
-    com.tencent.mm.sdk.platformtools.ad.v(TAG, "dispatch event=%s, value=%s", new Object[] { paramString2, paramString3 });
-    com.tencent.mm.ad.c.g((d.g.a.a)new q(this, paramString1, paramString2, paramString3));
-    this.Bys.a(b.Byo);
-    AppMethodBeat.o(189474);
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.jsruntime.g ayO(String paramString)
-  {
-    AppMethodBeat.i(189475);
+    AppMethodBeat.i(205608);
     d.g.b.k.h(paramString, "webCompt");
-    paramString = (c.l.a)erw().get(paramString);
+    paramString = (c.l.a)eGQ().get(paramString);
     if (paramString != null)
     {
-      paramString = paramString.erU();
-      AppMethodBeat.o(189475);
+      paramString = paramString.eHo();
+      AppMethodBeat.o(205608);
       return paramString;
     }
-    AppMethodBeat.o(189475);
+    AppMethodBeat.o(205608);
     return null;
+  }
+  
+  public final void aP(final String paramString1, final String paramString2, final String paramString3)
+  {
+    AppMethodBeat.i(205607);
+    d.g.b.k.h(paramString1, "webCompt");
+    d.g.b.k.h(paramString2, "event");
+    if (bs.isNullOrNil(paramString2))
+    {
+      ac.w(TAG, "dispatch event is null");
+      AppMethodBeat.o(205607);
+      return;
+    }
+    ac.v(TAG, "dispatch event=%s, value=%s", new Object[] { paramString2, paramString3 });
+    com.tencent.mm.ac.c.g((d.g.a.a)new q(this, paramString1, paramString2, paramString3));
+    this.CQA.a(b.CQw);
+    AppMethodBeat.o(205607);
   }
   
   public final void clear()
@@ -721,14 +732,14 @@ public final class c
       try
       {
         AppMethodBeat.i(82900);
-        b.erO().clear();
-        if (!this.fFP) {
+        b.eHi().clear();
+        if (!this.fJw) {
           break label301;
         }
-        l locall = erw();
-        j localj = this.Bys;
+        l locall = eGQ();
+        j localj = this.CQA;
         d.g.b.k.h(localj, "reporter");
-        com.tencent.mm.sdk.platformtools.ad.i(b.erK(), "clear workerManager#" + locall.id);
+        ac.i(b.eHe(), "clear workerManager#" + locall.id);
         Iterator localIterator = locall.entrySet().iterator();
         i = -1;
         if (!localIterator.hasNext()) {
@@ -736,13 +747,13 @@ public final class c
         }
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         locala = (c.l.a)localEntry.getValue();
-        if ((!locala.used) && (locala.Bzu) && (!locall.Bzt.containsKey(localEntry.getKey())))
+        if ((!locala.used) && (locala.CRC) && (!locall.CRB.containsKey(localEntry.getKey())))
         {
-          locala.aFm = true;
-          locala.Bzy = null;
-          com.tencent.mm.sdk.platformtools.ad.i(b.erK(), "WebComptWorker.recycle " + locala.appId + '@' + locala.BzB.name + ':' + locala.BzA);
-          ((Map)locall.Bzt).put(localEntry.getKey(), locala);
-          localj.a(b.Byp);
+          locala.aGc = true;
+          locala.CRG = null;
+          ac.i(b.eHe(), "WebComptWorker.recycle " + locala.appId + '@' + locala.CRJ.name + ':' + locala.CRI);
+          ((Map)locall.CRB).put(localEntry.getKey(), locala);
+          localj.a(b.CQx);
           continue;
         }
         if (locala.used) {
@@ -750,36 +761,36 @@ public final class c
         }
       }
       finally {}
-      if (locala.BzA == localObject.Bzr) {
-        i = localObject.Bzr;
+      if (locala.CRI == localObject.CRz) {
+        i = localObject.CRz;
       } else {
         label279:
-        locala.erU().destroy();
+        locala.eHo().destroy();
       }
     }
-    localObject.Bzr = i;
+    localObject.CRz = i;
     localObject.clear();
     label301:
     AppMethodBeat.o(82900);
   }
   
-  final l erw()
+  final l eGQ()
   {
     AppMethodBeat.i(82899);
-    l locall = (l)this.Byt.getValue();
+    l locall = (l)this.CQB.getValue();
     AppMethodBeat.o(82899);
     return locall;
   }
   
-  public final void erx()
+  public final void eGR()
   {
-    AppMethodBeat.i(189476);
-    if (this.fFP)
+    AppMethodBeat.i(205609);
+    if (this.fJw)
     {
       a(this, "WeixinOpenTags.onClean()");
-      this.Bys.a(b.BxN);
+      this.CQA.a(b.CPV);
     }
-    AppMethodBeat.o(189476);
+    AppMethodBeat.o(205609);
   }
   
   public final void h(final String paramString1, final String paramString2, final String paramString3, final int paramInt1, final int paramInt2)
@@ -787,62 +798,62 @@ public final class c
     AppMethodBeat.i(82910);
     d.g.b.k.h(paramString1, "webCompt");
     d.g.b.k.h(paramString2, "errMsg");
-    Object localObject = (c.l.a)erw().get(paramString1);
+    Object localObject = (c.l.a)eGQ().get(paramString1);
     if (localObject != null)
     {
-      dsn localdsn = new dsn();
-      localdsn.dmE = paramString2;
-      localdsn.EGX = paramString3;
-      localdsn.EGY = paramInt1;
-      localdsn.EGZ = paramInt2;
-      com.tencent.xweb.y localy = this.AQP.getSettings();
-      d.g.b.k.g(localy, "jsapi.settings");
-      localdsn.EEw = localy.getUserAgentString();
-      localdsn.neR = ((c.l.a)localObject).neR;
-      localdsn.dlB = ((c.l.a)localObject).appId;
-      localdsn.EHa = paramString1;
-      localdsn.EHb = b.erS().getVersion();
-      localdsn.EHc = ((c.l.a)localObject).Bzw;
-      localdsn.EHd = ((c.l.a)localObject).Bzx;
-      this.Bys.a(b.Bym);
+      dye localdye = new dye();
+      localdye.dkm = paramString2;
+      localdye.Gej = paramString3;
+      localdye.Gek = paramInt1;
+      localdye.Gel = paramInt2;
+      z localz = this.Cjc.getSettings();
+      d.g.b.k.g(localz, "jsapi.settings");
+      localdye.GbJ = localz.getUserAgentString();
+      localdye.nHD = ((c.l.a)localObject).nHD;
+      localdye.djj = ((c.l.a)localObject).appId;
+      localdye.Gem = paramString1;
+      localdye.Gen = b.eHm().getVersion();
+      localdye.Geo = ((c.l.a)localObject).CRE;
+      localdye.Gep = ((c.l.a)localObject).CRF;
+      this.CQA.a(b.CQu);
       localObject = new b.a();
-      ((b.a)localObject).c((com.tencent.mm.bx.a)localdsn);
-      ((b.a)localObject).d((com.tencent.mm.bx.a)new dso());
-      ((b.a)localObject).wg("/cgi-bin/mmbiz-bin/webcompt/reportjserr");
-      ((b.a)localObject).nB(2914);
-      ((b.a)localObject).nD(0);
-      ((b.a)localObject).nE(0);
-      IPCRunCgi.a(((b.a)localObject).atI(), (IPCRunCgi.a)new r(this, paramString2, paramString3, paramInt1, paramInt2, paramString1));
+      ((b.a)localObject).c((com.tencent.mm.bw.a)localdye);
+      ((b.a)localObject).d((com.tencent.mm.bw.a)new dyf());
+      ((b.a)localObject).Am("/cgi-bin/mmbiz-bin/webcompt/reportjserr");
+      ((b.a)localObject).op(2914);
+      ((b.a)localObject).or(0);
+      ((b.a)localObject).os(0);
+      IPCRunCgi.a(((b.a)localObject).aAz(), (IPCRunCgi.a)new r(this, paramString2, paramString3, paramInt1, paramInt2, paramString1));
       AppMethodBeat.o(82910);
       return;
     }
     AppMethodBeat.o(82910);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$A8KeyResp;", "", "a8key", "Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key;", "fullUrl", "", "httpHeaders", "", "(Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key;Ljava/lang/String;Ljava/util/Map;)V", "getFullUrl", "()Ljava/lang/String;", "getHttpHeaders", "()Ljava/util/Map;", "jsPerm", "Lcom/tencent/mm/protocal/JsapiPermissionWrapper;", "getJsPerm", "()Lcom/tencent/mm/protocal/JsapiPermissionWrapper;", "webview-sdk_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$A8KeyResp;", "", "a8key", "Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key;", "fullUrl", "", "httpHeaders", "", "(Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key;Ljava/lang/String;Ljava/util/Map;)V", "getFullUrl", "()Ljava/lang/String;", "getHttpHeaders", "()Ljava/util/Map;", "jsPerm", "Lcom/tencent/mm/protocal/JsapiPermissionWrapper;", "getJsPerm", "()Lcom/tencent/mm/protocal/JsapiPermissionWrapper;", "webview-sdk_release"})
   public static final class a
   {
-    final com.tencent.mm.plugin.webview.e.c ByG;
-    final Map<String, String> ByH;
-    final String nha;
+    final com.tencent.mm.plugin.webview.e.c CQO;
+    final Map<String, String> CQP;
+    final String nJQ;
     
     public a(com.tencent.mm.plugin.webview.e.c paramc, String paramString, Map<String, String> paramMap)
     {
-      AppMethodBeat.i(189456);
-      this.ByG = paramc;
-      this.nha = paramString;
-      this.ByH = paramMap;
-      AppMethodBeat.o(189456);
+      AppMethodBeat.i(205588);
+      this.CQO = paramc;
+      this.nJQ = paramString;
+      this.CQP = paramMap;
+      AppMethodBeat.o(205588);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion;", "", "()V", "PREFIX_DEBUG_PATH", "", "TAG", "getTAG$webview_sdk_release", "()Ljava/lang/String;", "_cachedFilePath", "debugInfo", "getDebugInfo", "debugger", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Debugger;", "getDebugger", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Debugger;", "debugger$delegate", "Lkotlin/Lazy;", "iframeUrlPattern", "getIframeUrlPattern", "iframeUrlPattern$delegate", "manager", "com/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$manager$1", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$manager$1;", "matrix", "", "", "getMatrix", "()Ljava/util/List;", "matrix$delegate", "meta", "Lcom/tencent/mm/json/JSONObject;", "getMeta", "()Lcom/tencent/mm/json/JSONObject;", "meta$delegate", "preloadWorkers", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;", "scheme", "scheme$annotations", "getScheme", "scriptManager", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ScriptManager;", "getScriptManager", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ScriptManager;", "scriptManager$delegate", "skeleton", "getSkeleton", "skeleton$delegate", "debugPath", "getDebugPath", "(Ljava/lang/String;)Ljava/lang/String;", "savePath", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "getSavePath", "(Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;)Ljava/lang/String;", "version", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "getVersion", "(Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;)I", "clearDebugPath", "", "jsapiOnly", "", "appOnly", "getCachedFilePath", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getLocalScript", "path", "scripts", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Script;", "getScript", "preloadWorker", "force", "readText", "DebugType", "Debugger", "ResType", "Script", "ScriptManager", "Worker", "webview-sdk_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion;", "", "()V", "PREFIX_DEBUG_PATH", "", "TAG", "getTAG$webview_sdk_release", "()Ljava/lang/String;", "_cachedFilePath", "debugInfo", "getDebugInfo", "debugger", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Debugger;", "getDebugger", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Debugger;", "debugger$delegate", "Lkotlin/Lazy;", "iframeUrlPattern", "getIframeUrlPattern", "iframeUrlPattern$delegate", "manager", "com/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$manager$1", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$manager$1;", "matrix", "", "", "getMatrix", "()Ljava/util/List;", "matrix$delegate", "meta", "Lcom/tencent/mm/json/JSONObject;", "getMeta", "()Lcom/tencent/mm/json/JSONObject;", "meta$delegate", "preloadWorkers", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;", "scheme", "scheme$annotations", "getScheme", "scriptManager", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ScriptManager;", "getScriptManager", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ScriptManager;", "scriptManager$delegate", "skeleton", "getSkeleton", "skeleton$delegate", "debugPath", "getDebugPath", "(Ljava/lang/String;)Ljava/lang/String;", "savePath", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "getSavePath", "(Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;)Ljava/lang/String;", "version", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "getVersion", "(Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;)I", "clearDebugPath", "", "jsapiOnly", "", "appOnly", "getCachedFilePath", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getLocalScript", "path", "scripts", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Script;", "getScript", "preloadWorker", "force", "readText", "DebugType", "Debugger", "ResType", "Script", "ScriptManager", "Worker", "webview-sdk_release"})
   public static final class b
   {
     static
     {
       AppMethodBeat.i(82819);
-      $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(b.class), "meta", "getMeta()Lcom/tencent/mm/json/JSONObject;")), (d.l.k)w.a(new u(w.bk(b.class), "iframeUrlPattern", "getIframeUrlPattern()Ljava/lang/String;")), (d.l.k)w.a(new u(w.bk(b.class), "matrix", "getMatrix()Ljava/util/List;")), (d.l.k)w.a(new u(w.bk(b.class), "skeleton", "getSkeleton()Ljava/lang/String;")), (d.l.k)w.a(new u(w.bk(b.class), "scriptManager", "getScriptManager()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ScriptManager;")), (d.l.k)w.a(new u(w.bk(b.class), "debugger", "getDebugger()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Debugger;")) };
+      $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(b.class), "meta", "getMeta()Lcom/tencent/mm/json/JSONObject;")), (d.l.k)w.a(new u(w.bn(b.class), "iframeUrlPattern", "getIframeUrlPattern()Ljava/lang/String;")), (d.l.k)w.a(new u(w.bn(b.class), "matrix", "getMatrix()Ljava/util/List;")), (d.l.k)w.a(new u(w.bn(b.class), "skeleton", "getSkeleton()Ljava/lang/String;")), (d.l.k)w.a(new u(w.bn(b.class), "scriptManager", "getScriptManager()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ScriptManager;")), (d.l.k)w.a(new u(w.bn(b.class), "debugger", "getDebugger()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Debugger;")) };
       AppMethodBeat.o(82819);
     }
     
@@ -857,101 +868,104 @@ public final class c
       //   8: aload_0
       //   9: aload_1
       //   10: invokeinterface 287 2 0
-      //   15: checkcast 289	java/io/Closeable
-      //   18: astore_3
-      //   19: aload_3
-      //   20: checkcast 291	java/io/InputStream
-      //   23: astore_0
-      //   24: aload_0
-      //   25: ldc_w 293
-      //   28: invokestatic 296	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
-      //   31: new 298	java/lang/String
-      //   34: dup
-      //   35: aload_0
-      //   36: invokestatic 304	d/f/a:V	(Ljava/io/InputStream;)[B
-      //   39: getstatic 310	d/n/d:UTF_8	Ljava/nio/charset/Charset;
-      //   42: invokespecial 313	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
-      //   45: astore_0
-      //   46: aload_3
-      //   47: aconst_null
-      //   48: invokestatic 318	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   51: ldc_w 281
-      //   54: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   57: aload_0
-      //   58: areturn
-      //   59: astore_1
-      //   60: ldc_w 281
-      //   63: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   66: aload_1
-      //   67: athrow
-      //   68: astore_0
-      //   69: aload_3
-      //   70: aload_1
-      //   71: invokestatic 318	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   74: ldc_w 281
-      //   77: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   80: aload_0
-      //   81: athrow
-      //   82: astore_0
-      //   83: aload_2
-      //   84: astore_1
-      //   85: goto -16 -> 69
+      //   15: astore_0
+      //   16: aload_0
+      //   17: ifnull +62 -> 79
+      //   20: aload_0
+      //   21: checkcast 289	java/io/Closeable
+      //   24: astore_3
+      //   25: new 291	java/lang/String
+      //   28: dup
+      //   29: aload_3
+      //   30: checkcast 293	java/io/InputStream
+      //   33: invokestatic 299	d/f/a:U	(Ljava/io/InputStream;)[B
+      //   36: getstatic 305	d/n/d:UTF_8	Ljava/nio/charset/Charset;
+      //   39: invokespecial 308	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
+      //   42: astore_0
+      //   43: aload_3
+      //   44: aconst_null
+      //   45: invokestatic 313	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+      //   48: ldc_w 281
+      //   51: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   54: aload_0
+      //   55: areturn
+      //   56: astore_1
+      //   57: ldc_w 281
+      //   60: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   63: aload_1
+      //   64: athrow
+      //   65: astore_0
+      //   66: aload_3
+      //   67: aload_1
+      //   68: invokestatic 313	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+      //   71: ldc_w 281
+      //   74: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   77: aload_0
+      //   78: athrow
+      //   79: ldc_w 281
+      //   82: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   85: ldc_w 314
+      //   88: areturn
+      //   89: astore_0
+      //   90: aload_2
+      //   91: astore_1
+      //   92: goto -26 -> 66
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	88	0	paramp	com.tencent.mm.plugin.appbrand.appcache.p
-      //   0	88	1	paramString	String
-      //   1	83	2	localObject	Object
-      //   18	52	3	localCloseable	java.io.Closeable
+      //   0	95	0	paramp	com.tencent.mm.plugin.appbrand.appcache.p
+      //   0	95	1	paramString	String
+      //   1	90	2	localObject	Object
+      //   24	43	3	localCloseable	java.io.Closeable
       // Exception table:
       //   from	to	target	type
-      //   19	46	59	java/lang/Throwable
-      //   60	68	68	finally
-      //   19	46	82	finally
+      //   25	43	56	java/lang/Throwable
+      //   57	65	65	finally
+      //   25	43	89	finally
     }
     
-    private static String ayR(String paramString)
+    private static String aEi(String paramString)
     {
       AppMethodBeat.i(82828);
-      paramString = c.erz() + paramString;
+      paramString = c.eGT() + paramString;
       AppMethodBeat.o(82828);
       return paramString;
     }
     
-    public static String cPI()
+    public static String ddr()
     {
       AppMethodBeat.i(82831);
-      Object localObject = c.ByF;
-      localObject = erN();
+      Object localObject = c.CQN;
+      localObject = eHh();
       StringBuilder localStringBuilder = new StringBuilder("\n            [debug]\n            debug: ");
-      g.a locala = g.BAm;
-      localObject = n.aRa(g.a.getDebug() + "\n            \n            [lib]\n            version: " + ((b)localObject).ByR + "\n            res: " + ((b)localObject).ByQ + "\n\n            " + d.a.j.a((Iterable)((b)localObject).ByP, (CharSequence)"\n\n", null, null, 0, null, null, 62) + "\n            \n            " + d.a.j.a((Iterable)((b)localObject).ByO, (CharSequence)"\n\n", null, null, 0, null, null, 62) + "\n            ");
+      g.a locala = g.CSt;
+      localObject = n.aWZ(g.a.getDebug() + "\n            \n            [lib]\n            version: " + ((b)localObject).CQZ + "\n            res: " + ((b)localObject).CQY + "\n\n            " + d.a.j.a((Iterable)((b)localObject).CQX, (CharSequence)"\n\n", null, null, 0, null, null, 62) + "\n            \n            " + d.a.j.a((Iterable)((b)localObject).CQW, (CharSequence)"\n\n", null, null, 0, null, null, 62) + "\n            ");
       AppMethodBeat.o(82831);
       return localObject;
     }
     
-    public static String erK()
+    public static String eHe()
     {
-      AppMethodBeat.i(189461);
+      AppMethodBeat.i(205593);
       String str = c.access$getTAG$cp();
-      AppMethodBeat.o(189461);
+      AppMethodBeat.o(205593);
       return str;
     }
     
-    private static e erM()
+    private static e eHg()
     {
       AppMethodBeat.i(82827);
-      Object localObject = c.erH();
-      b localb = c.ByF;
+      Object localObject = c.eHb();
+      b localb = c.CQN;
       localObject = (e)((d.f)localObject).getValue();
       AppMethodBeat.o(82827);
       return localObject;
     }
     
-    private static b erN()
+    private static b eHh()
     {
       AppMethodBeat.i(82830);
-      Object localObject = c.erI();
-      b localb = c.ByF;
+      Object localObject = c.eHc();
+      b localb = c.CQN;
       localObject = (b)((d.f)localObject).getValue();
       AppMethodBeat.o(82830);
       return localObject;
@@ -963,32 +977,32 @@ public final class c
       // Byte code:
       //   0: aconst_null
       //   1: astore_2
-      //   2: ldc_w 501
+      //   2: ldc_w 497
       //   5: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: invokestatic 449	com/tencent/mm/plugin/webview/k/c:access$getTAG$cp	()Ljava/lang/String;
-      //   11: ldc_w 503
+      //   8: invokestatic 445	com/tencent/mm/plugin/webview/k/c:access$getTAG$cp	()Ljava/lang/String;
+      //   11: ldc_w 499
       //   14: iconst_1
       //   15: anewarray 4	java/lang/Object
       //   18: dup
       //   19: iconst_0
       //   20: aload_0
       //   21: aastore
-      //   22: invokestatic 508	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   25: getstatic 378	com/tencent/mm/plugin/webview/k/g:BAm	Lcom/tencent/mm/plugin/webview/k/g$a;
+      //   22: invokestatic 504	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   25: getstatic 374	com/tencent/mm/plugin/webview/k/g:CSt	Lcom/tencent/mm/plugin/webview/k/g$a;
       //   28: astore_3
-      //   29: invokestatic 384	com/tencent/mm/plugin/webview/k/g$a:getDebug	()Z
+      //   29: invokestatic 380	com/tencent/mm/plugin/webview/k/g$a:getDebug	()Z
       //   32: ifeq +181 -> 213
-      //   35: new 437	com/tencent/mm/vfs/e
+      //   35: new 433	com/tencent/mm/vfs/e
       //   38: dup
-      //   39: ldc_w 510
+      //   39: ldc_w 506
       //   42: aload_0
-      //   43: invokestatic 514	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-      //   46: invokevirtual 517	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-      //   49: invokestatic 363	com/tencent/mm/plugin/webview/k/c$b:ayR	(Ljava/lang/String;)Ljava/lang/String;
-      //   52: invokespecial 440	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+      //   43: invokestatic 510	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   46: invokevirtual 513	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+      //   49: invokestatic 359	com/tencent/mm/plugin/webview/k/c$b:aEi	(Ljava/lang/String;)Ljava/lang/String;
+      //   52: invokespecial 436	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
       //   55: astore_3
       //   56: aload_3
-      //   57: invokevirtual 520	com/tencent/mm/vfs/e:exists	()Z
+      //   57: invokevirtual 516	com/tencent/mm/vfs/e:exists	()Z
       //   60: ifeq +38 -> 98
       //   63: aload_1
       //   64: ifnull +21 -> 85
@@ -997,26 +1011,26 @@ public final class c
       //   71: dup
       //   72: aload_0
       //   73: aconst_null
-      //   74: getstatic 524	com/tencent/mm/plugin/webview/k/c$b$a:ByK	Lcom/tencent/mm/plugin/webview/k/c$b$a;
+      //   74: getstatic 520	com/tencent/mm/plugin/webview/k/c$b$a:CQS	Lcom/tencent/mm/plugin/webview/k/c$b$a;
       //   77: iconst_2
-      //   78: invokespecial 527	com/tencent/mm/plugin/webview/k/c$b$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)V
-      //   81: invokevirtual 533	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+      //   78: invokespecial 523	com/tencent/mm/plugin/webview/k/c$b$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)V
+      //   81: invokevirtual 529	java/util/LinkedList:add	(Ljava/lang/Object;)Z
       //   84: pop
       //   85: aload_3
-      //   86: invokestatic 539	com/tencent/mm/vfs/f:ag	(Lcom/tencent/mm/vfs/e;)Ljava/lang/String;
+      //   86: invokestatic 535	com/tencent/mm/vfs/f:af	(Lcom/tencent/mm/vfs/e;)Ljava/lang/String;
       //   89: astore_0
-      //   90: ldc_w 501
+      //   90: ldc_w 497
       //   93: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   96: aload_0
       //   97: areturn
-      //   98: new 437	com/tencent/mm/vfs/e
+      //   98: new 433	com/tencent/mm/vfs/e
       //   101: dup
-      //   102: ldc_w 541
-      //   105: invokestatic 363	com/tencent/mm/plugin/webview/k/c$b:ayR	(Ljava/lang/String;)Ljava/lang/String;
-      //   108: invokespecial 440	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+      //   102: ldc_w 537
+      //   105: invokestatic 359	com/tencent/mm/plugin/webview/k/c$b:aEi	(Ljava/lang/String;)Ljava/lang/String;
+      //   108: invokespecial 436	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
       //   111: astore_3
       //   112: aload_3
-      //   113: invokevirtual 520	com/tencent/mm/vfs/e:exists	()Z
+      //   113: invokevirtual 516	com/tencent/mm/vfs/e:exists	()Z
       //   116: ifeq +97 -> 213
       //   119: aload_1
       //   120: ifnull +21 -> 141
@@ -1025,24 +1039,24 @@ public final class c
       //   127: dup
       //   128: aload_0
       //   129: aconst_null
-      //   130: getstatic 544	com/tencent/mm/plugin/webview/k/c$b$a:ByL	Lcom/tencent/mm/plugin/webview/k/c$b$a;
+      //   130: getstatic 540	com/tencent/mm/plugin/webview/k/c$b$a:CQT	Lcom/tencent/mm/plugin/webview/k/c$b$a;
       //   133: iconst_2
-      //   134: invokespecial 527	com/tencent/mm/plugin/webview/k/c$b$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)V
-      //   137: invokevirtual 533	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+      //   134: invokespecial 523	com/tencent/mm/plugin/webview/k/c$b$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)V
+      //   137: invokevirtual 529	java/util/LinkedList:add	(Ljava/lang/Object;)Z
       //   140: pop
-      //   141: new 546	com/tencent/mm/plugin/appbrand/appcache/WxaPkg
+      //   141: new 542	com/tencent/mm/plugin/appbrand/appcache/WxaPkg
       //   144: dup
       //   145: aload_3
-      //   146: invokespecial 548	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:<init>	(Lcom/tencent/mm/vfs/e;)V
+      //   146: invokespecial 544	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:<init>	(Lcom/tencent/mm/vfs/e;)V
       //   149: checkcast 289	java/io/Closeable
       //   152: astore_3
       //   153: aload_3
-      //   154: checkcast 546	com/tencent/mm/plugin/appbrand/appcache/WxaPkg
+      //   154: checkcast 542	com/tencent/mm/plugin/appbrand/appcache/WxaPkg
       //   157: astore_1
       //   158: aload_1
-      //   159: invokevirtual 551	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:aPe	()Z
+      //   159: invokevirtual 547	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:aVW	()Z
       //   162: pop
-      //   163: getstatic 180	com/tencent/mm/plugin/webview/k/c:ByF	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   163: getstatic 180	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
       //   166: astore 4
       //   168: aload_1
       //   169: checkcast 283	com/tencent/mm/plugin/appbrand/appcache/p
@@ -1051,52 +1065,52 @@ public final class c
       //   176: astore_0
       //   177: aload_3
       //   178: aconst_null
-      //   179: invokestatic 318	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   182: ldc_w 501
+      //   179: invokestatic 313	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+      //   182: ldc_w 497
       //   185: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   188: aload_0
       //   189: areturn
       //   190: astore_1
-      //   191: ldc_w 501
+      //   191: ldc_w 497
       //   194: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   197: aload_1
       //   198: athrow
       //   199: astore_0
       //   200: aload_3
       //   201: aload_1
-      //   202: invokestatic 318	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   205: ldc_w 501
+      //   202: invokestatic 313	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+      //   205: ldc_w 497
       //   208: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   211: aload_0
       //   212: athrow
-      //   213: invokestatic 494	com/tencent/mm/plugin/webview/k/c$b:erM	()Lcom/tencent/mm/plugin/webview/k/c$b$e;
+      //   213: invokestatic 490	com/tencent/mm/plugin/webview/k/c$b:eHg	()Lcom/tencent/mm/plugin/webview/k/c$b$e;
       //   216: astore_2
       //   217: aload_0
-      //   218: ldc_w 552
+      //   218: ldc_w 548
       //   221: invokestatic 252	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
-      //   224: getstatic 180	com/tencent/mm/plugin/webview/k/c:ByF	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   224: getstatic 180	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
       //   227: astore_3
       //   228: aload_2
-      //   229: getfield 556	com/tencent/mm/plugin/webview/k/c$b$e:ByY	Lcom/tencent/mm/plugin/appbrand/appcache/p;
+      //   229: getfield 552	com/tencent/mm/plugin/webview/k/c$b$e:CRg	Lcom/tencent/mm/plugin/appbrand/appcache/p;
       //   232: aload_0
       //   233: invokestatic 187	com/tencent/mm/plugin/webview/k/c$b:a	(Lcom/tencent/mm/plugin/appbrand/appcache/p;Ljava/lang/String;)Ljava/lang/String;
       //   236: astore_2
       //   237: aload_1
       //   238: ifnull +28 -> 266
-      //   241: getstatic 180	com/tencent/mm/plugin/webview/k/c:ByF	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   241: getstatic 180	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
       //   244: astore_3
       //   245: aload_1
       //   246: new 17	com/tencent/mm/plugin/webview/k/c$b$d
       //   249: dup
       //   250: aload_0
-      //   251: invokestatic 369	com/tencent/mm/plugin/webview/k/c$b:erN	()Lcom/tencent/mm/plugin/webview/k/c$b$b;
-      //   254: getfield 402	com/tencent/mm/plugin/webview/k/c$b$b:ByQ	Lcom/tencent/mm/plugin/webview/k/c$b$c;
+      //   251: invokestatic 365	com/tencent/mm/plugin/webview/k/c$b:eHh	()Lcom/tencent/mm/plugin/webview/k/c$b$b;
+      //   254: getfield 398	com/tencent/mm/plugin/webview/k/c$b$b:CQY	Lcom/tencent/mm/plugin/webview/k/c$b$c;
       //   257: aconst_null
       //   258: iconst_4
-      //   259: invokespecial 527	com/tencent/mm/plugin/webview/k/c$b$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)V
-      //   262: invokevirtual 533	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+      //   259: invokespecial 523	com/tencent/mm/plugin/webview/k/c$b$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;I)V
+      //   262: invokevirtual 529	java/util/LinkedList:add	(Ljava/lang/Object;)Z
       //   265: pop
-      //   266: ldc_w 501
+      //   266: ldc_w 497
       //   269: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   272: aload_2
       //   273: areturn
@@ -1121,20 +1135,20 @@ public final class c
     public static String getScheme()
     {
       AppMethodBeat.i(82820);
-      String str = c.erB();
+      String str = c.eGV();
       AppMethodBeat.o(82820);
       return str;
     }
     
-    public static void tI(boolean paramBoolean)
+    public static void uK(boolean paramBoolean)
     {
       AppMethodBeat.i(82822);
-      if (c.erA().size() < 3)
+      if (c.eGU().size() < 3)
       {
         if (paramBoolean) {
           break label52;
         }
-        if (((Collection)c.erA()).isEmpty()) {
+        if (((Collection)c.eGU()).isEmpty()) {
           break label47;
         }
       }
@@ -1145,48 +1159,48 @@ public final class c
         return;
       }
       label52:
-      kotlinx.coroutines.d.a((kotlinx.coroutines.ad)bc.Kem, (d.d.f)at.fLg(), (d.g.a.m)new j(null), 2);
+      kotlinx.coroutines.f.b((ag)bh.LRM, (d.d.f)ay.gdP(), (d.g.a.m)new j(null), 2);
       AppMethodBeat.o(82822);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;", "", "(Ljava/lang/String;I)V", "NA", "PARAM", "SDCARD", "SDCARD_PKG", "COMMAND", "webview-sdk_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;", "", "(Ljava/lang/String;I)V", "NA", "PARAM", "SDCARD", "SDCARD_PKG", "COMMAND", "webview-sdk_release"})
     static enum a
     {
       static
       {
         AppMethodBeat.i(82775);
         a locala1 = new a("NA", 0);
-        ByI = locala1;
+        CQQ = locala1;
         a locala2 = new a("PARAM", 1);
-        ByJ = locala2;
+        CQR = locala2;
         a locala3 = new a("SDCARD", 2);
-        ByK = locala3;
+        CQS = locala3;
         a locala4 = new a("SDCARD_PKG", 3);
-        ByL = locala4;
+        CQT = locala4;
         a locala5 = new a("COMMAND", 4);
-        ByM = locala5;
-        ByN = new a[] { locala1, locala2, locala3, locala4, locala5 };
+        CQU = locala5;
+        CQV = new a[] { locala1, locala2, locala3, locala4, locala5 };
         AppMethodBeat.o(82775);
       }
       
       private a() {}
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Debugger;", "", "()V", "isPreload", "", "()Z", "setPreload", "(Z)V", "resType", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "getResType", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "setResType", "(Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;)V", "scripts", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Script;", "getScripts", "()Ljava/util/LinkedList;", "verion", "", "getVerion", "()I", "setVerion", "(I)V", "workers", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Worker;", "getWorkers", "clear", "", "webview-sdk_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Debugger;", "", "()V", "isPreload", "", "()Z", "setPreload", "(Z)V", "resType", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "getResType", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "setResType", "(Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;)V", "scripts", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Script;", "getScripts", "()Ljava/util/LinkedList;", "verion", "", "getVerion", "()I", "setVerion", "(I)V", "workers", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Worker;", "getWorkers", "clear", "", "webview-sdk_release"})
     static final class b
     {
-      final LinkedList<c.b.f> ByO;
-      final LinkedList<c.b.d> ByP;
-      c.b.c ByQ;
-      int ByR;
-      boolean jsq;
+      final LinkedList<c.b.f> CQW;
+      final LinkedList<c.b.d> CQX;
+      c.b.c CQY;
+      int CQZ;
+      boolean jSK;
       
       public b()
       {
         AppMethodBeat.i(82780);
-        this.ByO = new LinkedList();
-        this.ByP = new LinkedList();
-        this.ByQ = c.b.c.ByS;
+        this.CQW = new LinkedList();
+        this.CQX = new LinkedList();
+        this.CQY = c.b.c.CRa;
         AppMethodBeat.o(82780);
       }
       
@@ -1194,53 +1208,53 @@ public final class c
       {
         AppMethodBeat.i(82778);
         d.g.b.k.h(paramc, "<set-?>");
-        this.ByQ = paramc;
+        this.CQY = paramc;
         AppMethodBeat.o(82778);
       }
       
       public final void clear()
       {
         AppMethodBeat.i(82779);
-        this.ByO.clear();
-        this.ByP.clear();
+        this.CQW.clear();
+        this.CQX.clear();
         AppMethodBeat.o(82779);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "", "(Ljava/lang/String;I)V", "NA", "CACHE", "NETWORK", "ASSETS", "webview-sdk_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "", "(Ljava/lang/String;I)V", "NA", "CACHE", "NETWORK", "ASSETS", "webview-sdk_release"})
     static enum c
     {
       static
       {
         AppMethodBeat.i(82781);
         c localc1 = new c("NA", 0);
-        ByS = localc1;
+        CRa = localc1;
         c localc2 = new c("CACHE", 1);
-        ByT = localc2;
+        CRb = localc2;
         c localc3 = new c("NETWORK", 2);
-        ByU = localc3;
+        CRc = localc3;
         c localc4 = new c("ASSETS", 3);
-        ByV = localc4;
-        ByW = new c[] { localc1, localc2, localc3, localc4 };
+        CRd = localc4;
+        CRe = new c[] { localc1, localc2, localc3, localc4 };
         AppMethodBeat.o(82781);
       }
       
       private c() {}
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Script;", "", "uri", "", "resType", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "debugType", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;)V", "getDebugType", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;", "getResType", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "getUri", "()Ljava/lang/String;", "toString", "webview-sdk_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Script;", "", "uri", "", "resType", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "debugType", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;)V", "getDebugType", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;", "getResType", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "getUri", "()Ljava/lang/String;", "toString", "webview-sdk_release"})
     static final class d
     {
-      private final c.b.c ByQ;
-      private final c.b.a ByX;
+      private final c.b.c CQY;
+      private final c.b.a CRf;
       private final String uri;
       
       public d(String paramString, c.b.c paramc, c.b.a parama)
       {
         AppMethodBeat.i(82785);
         this.uri = paramString;
-        this.ByQ = paramc;
-        this.ByX = parama;
+        this.CQY = paramc;
+        this.CRf = parama;
         AppMethodBeat.o(82785);
       }
       
@@ -1248,46 +1262,46 @@ public final class c
       {
         AppMethodBeat.i(82784);
         StringBuilder localStringBuilder = new StringBuilder("[script]\n                ");
-        if (this.ByQ != c.b.c.ByS) {}
-        for (String str = "resType: " + this.ByQ;; str = "debugType: " + this.ByX)
+        if (this.CQY != c.b.c.CRa) {}
+        for (String str = "resType: " + this.CQY;; str = "debugType: " + this.CRf)
         {
-          str = n.aRa(str + "\n                " + this.uri + "\n                ");
+          str = n.aWZ(str + "\n                " + this.uri + "\n                ");
           AppMethodBeat.o(82784);
           return str;
         }
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ScriptManager;", "", "wxaPkg", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "(Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;)V", "version", "", "getVersion", "()I", "version$delegate", "Lkotlin/Lazy;", "getScript", "", "path", "webview-sdk_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ScriptManager;", "", "wxaPkg", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "(Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;)V", "version", "", "getVersion", "()I", "version$delegate", "Lkotlin/Lazy;", "getScript", "", "path", "webview-sdk_release"})
     static final class e
     {
-      final com.tencent.mm.plugin.appbrand.appcache.p ByY;
-      private final d.f nfa;
+      final com.tencent.mm.plugin.appbrand.appcache.p CRg;
+      private final d.f nHN;
       
       static
       {
         AppMethodBeat.i(82788);
-        $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(e.class), "version", "getVersion()I")) };
+        $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(e.class), "version", "getVersion()I")) };
         AppMethodBeat.o(82788);
       }
       
       public e(com.tencent.mm.plugin.appbrand.appcache.p paramp)
       {
         AppMethodBeat.i(82790);
-        this.ByY = paramp;
-        this.nfa = d.g.E((d.g.a.a)new a(this));
+        this.CRg = paramp;
+        this.nHN = d.g.K((d.g.a.a)new a(this));
         AppMethodBeat.o(82790);
       }
       
       public final int getVersion()
       {
         AppMethodBeat.i(82789);
-        int i = ((Number)this.nfa.getValue()).intValue();
+        int i = ((Number)this.nHN.getValue()).intValue();
         AppMethodBeat.o(82789);
         return i;
       }
       
-      @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+      @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
       static final class a
         extends d.g.b.l
         implements d.g.a.a<Integer>
@@ -1299,44 +1313,44 @@ public final class c
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Worker;", "", "id", "", "isPreload", "", "isRecycled", "(IZZ)V", "getId", "()I", "()Z", "scripts", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Script;", "getScripts", "()Ljava/util/LinkedList;", "toString", "", "webview-sdk_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Worker;", "", "id", "", "isPreload", "", "isRecycled", "(IZZ)V", "getId", "()I", "()Z", "scripts", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Script;", "getScripts", "()Ljava/util/LinkedList;", "toString", "", "webview-sdk_release"})
     static final class f
     {
-      final LinkedList<c.b.d> ByP;
-      private final boolean aFm;
+      final LinkedList<c.b.d> CQX;
+      private final boolean aGc;
       private final int id;
-      private final boolean jsq;
+      private final boolean jSK;
       
       private f(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
       {
         AppMethodBeat.i(82792);
         this.id = paramInt;
-        this.jsq = paramBoolean1;
-        this.aFm = paramBoolean2;
-        this.ByP = new LinkedList();
+        this.jSK = paramBoolean1;
+        this.aGc = paramBoolean2;
+        this.CQX = new LinkedList();
         AppMethodBeat.o(82792);
       }
       
       public final String toString()
       {
         AppMethodBeat.i(82791);
-        String str = n.aRa("[worker #" + this.id + "]\n                preload: " + this.jsq + "\n                recycled: " + this.aFm + "\n                \n                " + d.a.j.a((Iterable)this.ByP, (CharSequence)"\n\n", null, null, 0, null, null, 62) + "\n                ");
+        String str = n.aWZ("[worker #" + this.id + "]\n                preload: " + this.jSK + "\n                recycled: " + this.aGc + "\n                \n                " + d.a.j.a((Iterable)this.CQX, (CharSequence)"\n\n", null, null, 0, null, null, 62) + "\n                ");
         AppMethodBeat.o(82791);
         return str;
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"deleteChildJs", "", "Lcom/tencent/mm/vfs/VFSFile;", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"deleteChildJs", "", "Lcom/tencent/mm/vfs/VFSFile;", "invoke"})
     static final class g
       extends d.g.b.l
-      implements d.g.a.b<com.tencent.mm.vfs.e, d.y>
+      implements d.g.a.b<com.tencent.mm.vfs.e, y>
     {
-      public static final g Bza;
+      public static final g CRi;
       
       static
       {
         AppMethodBeat.i(82798);
-        Bza = new g();
+        CRi = new g();
         AppMethodBeat.o(82798);
       }
       
@@ -1345,11 +1359,11 @@ public final class c
         super();
       }
       
-      public static void U(com.tencent.mm.vfs.e parame)
+      public static void T(com.tencent.mm.vfs.e parame)
       {
         AppMethodBeat.i(175715);
         d.g.b.k.h(parame, "$this$deleteChildJs");
-        parame = parame.a((com.tencent.mm.vfs.g)1.Bzb);
+        parame = parame.a((com.tencent.mm.vfs.g)1.CRj);
         d.g.b.k.g(parame, "listFiles { filter ->\n  …json\"))\n                }");
         int j = parame.length;
         int i = 0;
@@ -1362,60 +1376,60 @@ public final class c
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "invoke"})
     static final class h<InputType, ResultType>
       implements com.tencent.mm.ipcinvoker.b<IPCVoid, IPCString>
     {
-      public static final h Bzd;
+      public static final h CRl;
       
       static
       {
         AppMethodBeat.i(82802);
-        Bzd = new h();
+        CRl = new h();
         AppMethodBeat.o(82802);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "invoke"})
     static final class i
       extends d.g.b.l
-      implements d.g.a.b<IPCString, d.y>
+      implements d.g.a.b<IPCString, y>
     {
-      i(d.d.d paramd)
+      i(d paramd)
       {
         super();
       }
     }
     
-    @d.d.b.a.f(c="com.tencent.mm.plugin.webview.webcompt.WebComponent$Companion$preloadWorker$1", f="WebComponent.kt", l={722}, m="invokeSuspend")
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+    @d.d.b.a.e(c="com.tencent.mm.plugin.webview.webcompt.WebComponent$Companion$preloadWorker$1", f="WebComponent.kt", l={727}, m="invokeSuspend")
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
     static final class j
-      extends d.d.b.a.j
-      implements d.g.a.m<kotlinx.coroutines.ad, d.d.d<? super d.y>, Object>
+      extends d.d.b.a.i
+      implements d.g.a.m<ag, d<? super y>, Object>
     {
       int label;
-      private kotlinx.coroutines.ad mTa;
-      Object mTb;
+      private ag nvs;
+      Object nvt;
       
-      j(d.d.d paramd)
+      j(d paramd)
       {
         super();
       }
       
-      public final d.d.d<d.y> a(Object paramObject, d.d.d<?> paramd)
+      public final d<y> a(Object paramObject, d<?> paramd)
       {
         AppMethodBeat.i(82813);
         d.g.b.k.h(paramd, "completion");
         paramd = new j(paramd);
-        paramd.mTa = ((kotlinx.coroutines.ad)paramObject);
+        paramd.nvs = ((ag)paramObject);
         AppMethodBeat.o(82813);
         return paramd;
       }
       
-      public final Object cP(Object paramObject)
+      public final Object cO(Object paramObject)
       {
         AppMethodBeat.i(82812);
-        paramObject = d.d.a.a.JgJ;
+        paramObject = d.d.a.a.KUd;
         Object localObject;
         c.b localb;
         switch (this.label)
@@ -1425,9 +1439,9 @@ public final class c
           AppMethodBeat.o(82812);
           throw paramObject;
         case 0: 
-          localObject = this.mTa;
-          localb = c.ByF;
-          this.mTb = localObject;
+          localObject = this.nvs;
+          localb = c.CQN;
+          this.nvt = localObject;
           this.label = 1;
           if (c.b.a(this) == paramObject)
           {
@@ -1437,46 +1451,46 @@ public final class c
           break;
         }
         paramObject = new c.l();
-        if (paramObject.Bzr == -1)
+        if (paramObject.CRz == -1)
         {
-          localObject = c.ery();
-          localb = c.ByF;
-          paramObject.Bzr = ((c.e)localObject).create(c.b.g("/wxwebcompt.js", paramObject.Bzs.ByP));
-          localObject = c.ByF;
-          com.tencent.mm.sdk.platformtools.ad.i(c.b.erK(), "preload workerManager#" + paramObject.id);
+          localObject = c.eGS();
+          localb = c.CQN;
+          paramObject.CRz = ((c.e)localObject).create(c.b.g("/wxwebcompt.js", paramObject.CRA.CQX));
+          localObject = c.CQN;
+          ac.i(c.b.eHe(), "preload workerManager#" + paramObject.id);
         }
         for (;;)
         {
-          c.erA().offerFirst(paramObject);
-          paramObject = d.y.JfV;
+          c.eGU().offerFirst(paramObject);
+          paramObject = y.KTp;
           AppMethodBeat.o(82812);
           return paramObject;
-          localObject = c.ByF;
-          com.tencent.mm.sdk.platformtools.ad.w(c.b.erK(), "preload twice #" + paramObject.id);
+          localObject = c.CQN;
+          ac.w(c.b.eHe(), "preload twice #" + paramObject.id);
         }
       }
       
       public final Object n(Object paramObject1, Object paramObject2)
       {
         AppMethodBeat.i(82814);
-        paramObject1 = ((j)a(paramObject1, (d.d.d)paramObject2)).cP(d.y.JfV);
+        paramObject1 = ((j)a(paramObject1, (d)paramObject2)).cO(y.KTp);
         AppMethodBeat.o(82814);
         return paramObject1;
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Debugger;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Debugger;", "invoke"})
   static final class c
     extends d.g.b.l
     implements d.g.a.a<c.b.b>
   {
-    public static final c Bzc;
+    public static final c CRk;
     
     static
     {
       AppMethodBeat.i(82800);
-      Bzc = new c();
+      CRk = new c();
       AppMethodBeat.o(82800);
     }
     
@@ -1486,17 +1500,17 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class d
     extends d.g.b.l
     implements d.g.a.a<String>
   {
-    public static final d Bze;
+    public static final d CRm;
     
     static
     {
       AppMethodBeat.i(82805);
-      Bze = new d();
+      CRm = new d();
       AppMethodBeat.o(82805);
     }
     
@@ -1506,51 +1520,51 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$manager$1", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AbstractMultiContextJsEngine;", "create", "", "script", "", "createJSRuntime", "Lcom/tencent/mm/appbrand/v8/IJSRuntime;", "config", "Lcom/tencent/mm/appbrand/v8/IJSRuntime$Config;", "createMainContextEngine", "Lcom/tencent/mm/appbrand/v8/V8ContextEngine;", "jsRuntime", "mainContextTag", "webview-sdk_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$manager$1", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AbstractMultiContextJsEngine;", "create", "", "script", "", "createJSRuntime", "Lcom/tencent/mm/appbrand/v8/IJSRuntime;", "config", "Lcom/tencent/mm/appbrand/v8/IJSRuntime$Config;", "createMainContextEngine", "Lcom/tencent/mm/appbrand/v8/V8ContextEngine;", "jsRuntime", "mainContextTag", "webview-sdk_release"})
   public static final class e
     extends com.tencent.mm.plugin.appbrand.jsruntime.a
   {
     public final com.tencent.mm.appbrand.v8.m a(IJSRuntime paramIJSRuntime, int paramInt)
     {
-      AppMethodBeat.i(189459);
+      AppMethodBeat.i(205591);
       d.g.b.k.h(paramIJSRuntime, "jsRuntime");
-      paramIJSRuntime = paramIJSRuntime.hE(paramInt);
-      AppMethodBeat.o(189459);
+      paramIJSRuntime = paramIJSRuntime.ho(paramInt);
+      AppMethodBeat.o(205591);
       return paramIJSRuntime;
     }
     
     public final int create(String paramString)
     {
-      AppMethodBeat.i(189460);
+      AppMethodBeat.i(205592);
       d.g.b.k.h(paramString, "script");
-      com.tencent.mm.plugin.appbrand.jsruntime.g localg = bfE();
+      com.tencent.mm.plugin.appbrand.jsruntime.g localg = bmy();
       localg.evaluateJavascript(paramString, null);
       d.g.b.k.g(localg, "context");
-      int i = localg.bfC();
-      AppMethodBeat.o(189460);
+      int i = localg.bmw();
+      AppMethodBeat.o(205592);
       return i;
     }
     
     public final IJSRuntime g(IJSRuntime.Config paramConfig)
     {
-      AppMethodBeat.i(189458);
+      AppMethodBeat.i(205590);
       paramConfig = (IJSRuntime)com.tencent.mm.appbrand.v8.f.c(paramConfig);
-      AppMethodBeat.o(189458);
+      AppMethodBeat.o(205590);
       return paramConfig;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "", "invoke"})
   static final class f
     extends d.g.b.l
     implements d.g.a.a<List<? extends Integer>>
   {
-    public static final f Bzf;
+    public static final f CRn;
     
     static
     {
       AppMethodBeat.i(82809);
-      Bzf = new f();
+      CRn = new f();
       AppMethodBeat.o(82809);
     }
     
@@ -1560,17 +1574,17 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/json/JSONObject;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/json/JSONObject;", "invoke"})
   static final class g
     extends d.g.b.l
-    implements d.g.a.a<com.tencent.mm.ac.i>
+    implements d.g.a.a<com.tencent.mm.ab.i>
   {
-    public static final g Bzh;
+    public static final g CRp;
     
     static
     {
       AppMethodBeat.i(82811);
-      Bzh = new g();
+      CRp = new g();
       AppMethodBeat.o(82811);
     }
     
@@ -1580,17 +1594,17 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ScriptManager;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ScriptManager;", "invoke"})
   static final class h
     extends d.g.b.l
     implements d.g.a.a<c.b.e>
   {
-    public static final h Bzi;
+    public static final h CRq;
     
     static
     {
       AppMethodBeat.i(82816);
-      Bzi = new h();
+      CRq = new h();
       AppMethodBeat.o(82816);
     }
     
@@ -1598,19 +1612,155 @@ public final class c
     {
       super();
     }
+    
+    /* Error */
+    private static c.b.e fdi()
+    {
+      // Byte code:
+      //   0: ldc 46
+      //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: new 48	com/tencent/mm/plugin/appbrand/appcache/f
+      //   8: dup
+      //   9: invokestatic 54	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+      //   12: ldc 56
+      //   14: invokespecial 59	com/tencent/mm/plugin/appbrand/appcache/f:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+      //   17: astore_2
+      //   18: aload_2
+      //   19: invokevirtual 63	com/tencent/mm/plugin/appbrand/appcache/f:aVW	()Z
+      //   22: pop
+      //   23: getstatic 67	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   26: astore_3
+      //   27: aload_2
+      //   28: checkcast 69	com/tencent/mm/plugin/appbrand/appcache/p
+      //   31: invokestatic 75	com/tencent/mm/plugin/webview/k/c$b:a	(Lcom/tencent/mm/plugin/appbrand/appcache/p;)I
+      //   34: istore_1
+      //   35: invokestatic 79	com/tencent/mm/plugin/webview/k/c:eHa	()Ljava/lang/String;
+      //   38: checkcast 81	java/lang/CharSequence
+      //   41: invokestatic 87	d/n/n:aD	(Ljava/lang/CharSequence;)Z
+      //   44: ifne +119 -> 163
+      //   47: iconst_1
+      //   48: istore_0
+      //   49: iload_0
+      //   50: ifeq +118 -> 168
+      //   53: invokestatic 79	com/tencent/mm/plugin/webview/k/c:eHa	()Ljava/lang/String;
+      //   56: invokestatic 93	com/tencent/mm/vfs/i:eA	(Ljava/lang/String;)Z
+      //   59: ifeq +109 -> 168
+      //   62: new 95	com/tencent/mm/plugin/appbrand/appcache/WxaPkg
+      //   65: dup
+      //   66: invokestatic 79	com/tencent/mm/plugin/webview/k/c:eHa	()Ljava/lang/String;
+      //   69: invokespecial 98	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:<init>	(Ljava/lang/String;)V
+      //   72: astore_3
+      //   73: aload_3
+      //   74: invokevirtual 99	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:aVW	()Z
+      //   77: pop
+      //   78: getstatic 67	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   81: astore 4
+      //   83: aload_3
+      //   84: checkcast 69	com/tencent/mm/plugin/appbrand/appcache/p
+      //   87: invokestatic 75	com/tencent/mm/plugin/webview/k/c$b:a	(Lcom/tencent/mm/plugin/appbrand/appcache/p;)I
+      //   90: istore_0
+      //   91: iload_0
+      //   92: iload_1
+      //   93: if_icmple +75 -> 168
+      //   96: getstatic 67	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   99: astore 4
+      //   101: invokestatic 102	com/tencent/mm/plugin/webview/k/c$b:eHe	()Ljava/lang/String;
+      //   104: ldc 104
+      //   106: iload_0
+      //   107: invokestatic 110	java/lang/String:valueOf	(I)Ljava/lang/String;
+      //   110: invokevirtual 114	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+      //   113: invokestatic 119	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   116: getstatic 67	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   119: astore 4
+      //   121: invokestatic 123	com/tencent/mm/plugin/webview/k/c$b:eHi	()Lcom/tencent/mm/plugin/webview/k/c$b$b;
+      //   124: getstatic 129	com/tencent/mm/plugin/webview/k/c$b$c:CRc	Lcom/tencent/mm/plugin/webview/k/c$b$c;
+      //   127: invokevirtual 134	com/tencent/mm/plugin/webview/k/c$b$b:a	(Lcom/tencent/mm/plugin/webview/k/c$b$c;)V
+      //   130: getstatic 67	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   133: astore 4
+      //   135: invokestatic 123	com/tencent/mm/plugin/webview/k/c$b:eHi	()Lcom/tencent/mm/plugin/webview/k/c$b$b;
+      //   138: iload_0
+      //   139: putfield 138	com/tencent/mm/plugin/webview/k/c$b$b:CQZ	I
+      //   142: aload_3
+      //   143: astore_2
+      //   144: new 140	com/tencent/mm/plugin/webview/k/c$b$e
+      //   147: dup
+      //   148: aload_2
+      //   149: checkcast 69	com/tencent/mm/plugin/appbrand/appcache/p
+      //   152: invokespecial 143	com/tencent/mm/plugin/webview/k/c$b$e:<init>	(Lcom/tencent/mm/plugin/appbrand/appcache/p;)V
+      //   155: astore_2
+      //   156: ldc 46
+      //   158: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   161: aload_2
+      //   162: areturn
+      //   163: iconst_0
+      //   164: istore_0
+      //   165: goto -116 -> 49
+      //   168: getstatic 67	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   171: astore_3
+      //   172: invokestatic 102	com/tencent/mm/plugin/webview/k/c$b:eHe	()Ljava/lang/String;
+      //   175: ldc 145
+      //   177: iload_1
+      //   178: invokestatic 110	java/lang/String:valueOf	(I)Ljava/lang/String;
+      //   181: invokevirtual 114	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+      //   184: invokestatic 119	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   187: getstatic 67	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   190: astore_3
+      //   191: invokestatic 123	com/tencent/mm/plugin/webview/k/c$b:eHi	()Lcom/tencent/mm/plugin/webview/k/c$b$b;
+      //   194: getstatic 148	com/tencent/mm/plugin/webview/k/c$b$c:CRd	Lcom/tencent/mm/plugin/webview/k/c$b$c;
+      //   197: invokevirtual 134	com/tencent/mm/plugin/webview/k/c$b$b:a	(Lcom/tencent/mm/plugin/webview/k/c$b$c;)V
+      //   200: getstatic 67	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   203: astore_3
+      //   204: invokestatic 123	com/tencent/mm/plugin/webview/k/c$b:eHi	()Lcom/tencent/mm/plugin/webview/k/c$b$b;
+      //   207: iload_1
+      //   208: putfield 138	com/tencent/mm/plugin/webview/k/c$b$b:CQZ	I
+      //   211: goto -67 -> 144
+      //   214: astore_3
+      //   215: getstatic 67	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   218: astore 4
+      //   220: invokestatic 102	com/tencent/mm/plugin/webview/k/c$b:eHe	()Ljava/lang/String;
+      //   223: new 150	java/lang/StringBuilder
+      //   226: dup
+      //   227: ldc 152
+      //   229: invokespecial 153	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   232: aload_3
+      //   233: invokevirtual 156	java/lang/Exception:getMessage	()Ljava/lang/String;
+      //   236: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   239: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   242: invokestatic 166	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   245: new 168	com/tencent/mm/plugin/webview/k/j
+      //   248: dup
+      //   249: invokespecial 169	com/tencent/mm/plugin/webview/k/j:<init>	()V
+      //   252: getstatic 175	com/tencent/mm/plugin/webview/k/b:Hah	Lcom/tencent/mm/plugin/webview/k/b;
+      //   255: invokevirtual 178	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
+      //   258: goto -47 -> 211
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   48	117	0	i	int
+      //   34	174	1	j	int
+      //   17	145	2	localObject1	Object
+      //   26	178	3	localObject2	Object
+      //   214	19	3	localException	Exception
+      //   81	138	4	localb	c.b
+      // Exception table:
+      //   from	to	target	type
+      //   23	47	214	java/lang/Exception
+      //   53	91	214	java/lang/Exception
+      //   96	142	214	java/lang/Exception
+      //   168	211	214	java/lang/Exception
+    }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class i
     extends d.g.b.l
     implements d.g.a.a<String>
   {
-    public static final i Bzj;
+    public static final i CRr;
     
     static
     {
       AppMethodBeat.i(82818);
-      Bzj = new i();
+      CRr = new i();
       AppMethodBeat.o(82818);
     }
     
@@ -1620,11 +1770,11 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$CreateJSContextException;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "retCode", "", "webComptName", "", "errMsg", "(ILjava/lang/String;Ljava/lang/String;)V", "toJsonString", "webview-sdk_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$CreateJSContextException;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "retCode", "", "webComptName", "", "errMsg", "(ILjava/lang/String;Ljava/lang/String;)V", "toJsonString", "webview-sdk_release"})
   public static final class j
     extends Exception
   {
-    final String Bzk;
+    final String CRs;
     final String errMsg;
     final int retCode;
     
@@ -1632,122 +1782,190 @@ public final class c
     {
       AppMethodBeat.i(82842);
       this.retCode = paramInt;
-      this.Bzk = paramString1;
+      this.CRs = paramString1;
       this.errMsg = paramString2;
       AppMethodBeat.o(82842);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$PerformanceSteps;", "", "stepName", "", "(Ljava/lang/String;ILjava/lang/String;)V", "getStepName", "()Ljava/lang/String;", "STEP_CREATE_JS_CXT", "STEP_EVAL_MAIN_FRAME", "STEP_GET_A8KEY", "STEP_FETCH_WORKER", "STEP_GET_APP_SCRIPT", "webview-sdk_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$PerformanceSteps;", "", "stepName", "", "(Ljava/lang/String;ILjava/lang/String;)V", "getStepName", "()Ljava/lang/String;", "STEP_CREATE_JS_CXT", "STEP_EVAL_MAIN_FRAME", "STEP_GET_A8KEY", "STEP_FETCH_WORKER", "STEP_GET_APP_SCRIPT", "webview-sdk_release"})
   static enum k
   {
-    final String kER;
+    final String lgk;
     
     static
     {
       AppMethodBeat.i(82843);
       k localk1 = new k("STEP_CREATE_JS_CXT", 0, "createJsContext");
-      Bzl = localk1;
+      CRt = localk1;
       k localk2 = new k("STEP_EVAL_MAIN_FRAME", 1, "evalMainFrame");
-      Bzm = localk2;
+      CRu = localk2;
       k localk3 = new k("STEP_GET_A8KEY", 2, "GetA8Key");
-      Bzn = localk3;
+      CRv = localk3;
       k localk4 = new k("STEP_FETCH_WORKER", 3, "FetchWorker");
-      Bzo = localk4;
+      CRw = localk4;
       k localk5 = new k("STEP_GET_APP_SCRIPT", 4, "GetAppScript");
-      Bzp = localk5;
-      Bzq = new k[] { localk1, localk2, localk3, localk4, localk5 };
+      CRx = localk5;
+      CRy = new k[] { localk1, localk2, localk3, localk4, localk5 };
       AppMethodBeat.o(82843);
     }
     
     private k(String paramString)
     {
-      this.kER = paramString;
+      this.lgk = paramString;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager$WebComptWorker;", "Lkotlin/collections/HashMap;", "()V", "id", "", "getId", "()I", "preloadDebugger", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Worker;", "preloadId", "recycleWorkers", "fetch", "appId", "webComptInfo", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "webCompt", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;", "preload", "", "recycle", "reporter", "Lcom/tencent/mm/plugin/webview/webcompt/WebComptReporter;", "WebComptWorker", "webview-sdk_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager$WebComptWorker;", "Lkotlin/collections/HashMap;", "()V", "id", "", "getId", "()I", "preloadDebugger", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$Worker;", "preloadId", "recycleWorkers", "fetch", "appId", "webComptInfo", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "webCompt", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;", "preload", "", "recycle", "reporter", "Lcom/tencent/mm/plugin/webview/webcompt/WebComptReporter;", "WebComptWorker", "webview-sdk_release"})
   static final class l
     extends HashMap<String, a>
   {
-    int Bzr;
-    c.b.f Bzs;
-    final HashMap<String, a> Bzt;
+    c.b.f CRA;
+    final HashMap<String, a> CRB;
+    int CRz;
     final int id;
     
     public l()
     {
       AppMethodBeat.i(82849);
       this.id = ((int)(System.currentTimeMillis() % 1000L));
-      this.Bzr = -1;
-      this.Bzs = new c.b.f(this.id, true, false, 4);
-      this.Bzt = new HashMap();
+      this.CRz = -1;
+      this.CRA = new c.b.f(this.id, true, false, 4);
+      this.CRB = new HashMap();
       AppMethodBeat.o(82849);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager$WebComptWorker;", "", "workerId", "", "webComptInfo", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "webCompt", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;", "(Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;ILcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;)V", "a8KeyUrl", "", "getA8KeyUrl", "()Ljava/lang/String;", "setA8KeyUrl", "(Ljava/lang/String;)V", "appId", "getAppId", "setAppId", "appScriptMD5", "getAppScriptMD5", "setAppScriptMD5", "appScriptUrl", "getAppScriptUrl", "setAppScriptUrl", "engine", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "getEngine", "()Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "isRecycled", "", "()Z", "setRecycled", "(Z)V", "jsapi", "Lcom/tencent/mm/plugin/webview/webcompt/WebComptContextJsApiHandler;", "getJsapi", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComptContextJsApiHandler;", "setJsapi", "(Lcom/tencent/mm/plugin/webview/webcompt/WebComptContextJsApiHandler;)V", "launched", "getLaunched", "setLaunched", "performanceHelper", "Lcom/tencent/mm/pluginsdk/PerformanceHelper;", "getPerformanceHelper", "()Lcom/tencent/mm/pluginsdk/PerformanceHelper;", "setPerformanceHelper", "(Lcom/tencent/mm/pluginsdk/PerformanceHelper;)V", "refer", "getRefer", "setRefer", "used", "getUsed", "setUsed", "getWebComptInfo", "()Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "getWorkerId", "()I", "recycle", "", "reuse", "webview-sdk_release"})
+    public final a a(String paramString, bmn parambmn, c paramc)
+    {
+      boolean bool = false;
+      for (;;)
+      {
+        Object localObject;
+        try
+        {
+          AppMethodBeat.i(205595);
+          d.g.b.k.h(paramString, "appId");
+          d.g.b.k.h(parambmn, "webComptInfo");
+          d.g.b.k.h(paramc, "webCompt");
+          String str = parambmn.name;
+          if (this.CRB.containsKey(str))
+          {
+            localObject = (a)this.CRB.get(str);
+            if ((localObject != null) && (d.g.b.k.g(((a)localObject).appId, paramString)))
+            {
+              this.CRB.remove(str);
+              paramString = (Map)this;
+              d.g.b.k.g(str, "webComptName");
+              d.g.b.k.g(localObject, "it");
+              paramString.put(str, localObject);
+              paramString = c.CQN;
+              c.b.eHi().CQW.add(new c.b.f(this.id, false, true, 2));
+              AppMethodBeat.o(205595);
+              paramString = (String)localObject;
+              return paramString;
+            }
+          }
+          if (this.CRz != -1) {
+            bool = true;
+          }
+          if (bool == true)
+          {
+            paramString = c.CQN;
+            ac.i(c.b.eHe(), "use preload workerManager#" + this.id);
+            paramString = this.CRA;
+            localObject = c.CQN;
+            c.b.eHi().CQW.add(paramString);
+            localObject = c.CQN;
+            c.b.eHi().jSK = bool;
+            if (bool == true)
+            {
+              i = this.CRz;
+              paramString = new a(i, parambmn, paramc);
+              this.CRz = -1;
+              parambmn = (Map)this;
+              d.g.b.k.g(str, "webComptName");
+              parambmn.put(str, paramString);
+              AppMethodBeat.o(205595);
+            }
+          }
+          else
+          {
+            paramString = c.CQN;
+            ac.i(c.b.eHe(), "create new workerManager#" + this.id);
+            paramString = new c.b.f(this.id, false, false, 4);
+            continue;
+          }
+          localObject = c.eGS();
+        }
+        finally {}
+        c.b localb = c.CQN;
+        int i = ((c.e)localObject).create(c.b.g("/wxwebcompt.js", paramString.CQX));
+      }
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager$WebComptWorker;", "", "workerId", "", "webComptInfo", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "webCompt", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;", "(Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;ILcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;Lcom/tencent/mm/plugin/webview/webcompt/WebComponent;)V", "a8KeyUrl", "", "getA8KeyUrl", "()Ljava/lang/String;", "setA8KeyUrl", "(Ljava/lang/String;)V", "appId", "getAppId", "setAppId", "appScriptMD5", "getAppScriptMD5", "setAppScriptMD5", "appScriptUrl", "getAppScriptUrl", "setAppScriptUrl", "engine", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "getEngine", "()Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "isRecycled", "", "()Z", "setRecycled", "(Z)V", "jsapi", "Lcom/tencent/mm/plugin/webview/webcompt/WebComptContextJsApiHandler;", "getJsapi", "()Lcom/tencent/mm/plugin/webview/webcompt/WebComptContextJsApiHandler;", "setJsapi", "(Lcom/tencent/mm/plugin/webview/webcompt/WebComptContextJsApiHandler;)V", "launched", "getLaunched", "setLaunched", "performanceHelper", "Lcom/tencent/mm/pluginsdk/PerformanceHelper;", "getPerformanceHelper", "()Lcom/tencent/mm/pluginsdk/PerformanceHelper;", "setPerformanceHelper", "(Lcom/tencent/mm/pluginsdk/PerformanceHelper;)V", "refer", "getRefer", "setRefer", "used", "getUsed", "setUsed", "getWebComptInfo", "()Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "getWorkerId", "()I", "recycle", "", "reuse", "webview-sdk_release"})
     public final class a
     {
-      final int BzA;
-      final biv BzB;
-      boolean Bzu;
-      String Bzv;
-      String Bzw;
-      String Bzx;
-      com.tencent.mm.pluginsdk.q Bzy;
-      i Bzz;
-      boolean aFm;
+      boolean CRC;
+      String CRD;
+      String CRE;
+      String CRF;
+      com.tencent.mm.pluginsdk.q CRG;
+      i CRH;
+      final int CRI;
+      final bmn CRJ;
+      boolean aGc;
       String appId;
-      String neR;
+      String nHD;
       boolean used;
       
-      public a(biv parambiv, c paramc)
+      public a(bmn parambmn, c paramc)
       {
         AppMethodBeat.i(82848);
-        this.BzA = parambiv;
-        this.BzB = paramc;
+        this.CRI = parambmn;
+        this.CRJ = paramc;
         this.appId = "";
-        this.neR = "";
-        this.Bzv = "";
-        this.Bzw = "";
-        this.Bzx = "";
-        this$1 = this.BzB.name;
+        this.nHD = "";
+        this.CRD = "";
+        this.CRE = "";
+        this.CRF = "";
+        this$1 = this.CRJ.name;
         d.g.b.k.g(c.l.this, "webComptInfo.name");
-        this.Bzz = new i(localObject, c.l.this, localObject.AQP);
-        erU().addJavascriptInterface(this.Bzz, "__webcompt");
+        this.CRH = new i(localObject, c.l.this, localObject.Cjc);
+        eHo().addJavascriptInterface(this.CRH, "__webcompt");
         AppMethodBeat.o(82848);
       }
       
-      public final void ayT(String paramString)
+      public final void aEk(String paramString)
       {
         AppMethodBeat.i(82846);
         d.g.b.k.h(paramString, "<set-?>");
-        this.Bzw = paramString;
+        this.CRE = paramString;
         AppMethodBeat.o(82846);
       }
       
-      public final com.tencent.mm.plugin.appbrand.jsruntime.g erU()
+      public final com.tencent.mm.plugin.appbrand.jsruntime.g eHo()
       {
-        AppMethodBeat.i(189462);
-        com.tencent.mm.plugin.appbrand.jsruntime.g localg = c.ery().sy(this.BzA);
+        AppMethodBeat.i(205594);
+        com.tencent.mm.plugin.appbrand.jsruntime.g localg = c.eGS().tp(this.CRI);
         d.g.b.k.g(localg, "manager.getJsContext(workerId)");
-        AppMethodBeat.o(189462);
+        AppMethodBeat.o(205594);
         return localg;
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"toJsonStringArray", "", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"toJsonStringArray", "", "", "invoke"})
   static final class m
     extends d.g.b.l
     implements d.g.a.b<List<? extends String>, String>
   {
-    public static final m BzD;
+    public static final m CRL;
     
     static
     {
       AppMethodBeat.i(82862);
-      BzD = new m();
+      CRL = new m();
       AppMethodBeat.o(82862);
     }
     
@@ -1757,12 +1975,12 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"kotlinx/coroutines/CoroutineExceptionHandlerKt$CoroutineExceptionHandler$1", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handleException", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "kotlinx-coroutines-core"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlinx/coroutines/CoroutineExceptionHandlerKt$CoroutineExceptionHandler$1", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handleException", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "kotlinx-coroutines-core"})
   public static final class n
     extends d.d.a
     implements CoroutineExceptionHandler
   {
-    public n(f.c paramc, c paramc1, v.e parame)
+    public n(f.c paramc, c paramc1, v.f paramf)
     {
       super();
     }
@@ -1770,10 +1988,10 @@ public final class c
     public final void handleException(d.d.f paramf, Throwable paramThrowable)
     {
       AppMethodBeat.i(82863);
-      this.BzE.Bys.a(b.BxT);
+      this.CRM.CQA.a(b.CQb);
       if ((paramThrowable instanceof c.j))
       {
-        ((d.g.a.b)this.BzF.Jhw).aA(paramThrowable);
+        ((d.g.a.b)this.CRN.KUQ).ay(paramThrowable);
         AppMethodBeat.o(82863);
         return;
       }
@@ -1782,58 +2000,59 @@ public final class c
     }
   }
   
-  @d.d.b.a.f(c="com.tencent.mm.plugin.webview.webcompt.WebComponent$createJsContext$2", f="WebComponent.kt", l={234, 329, 334, 341}, m="invokeSuspend")
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @d.d.b.a.e(c="com.tencent.mm.plugin.webview.webcompt.WebComponent$createJsContext$2", f="WebComponent.kt", l={237, 332, 337, 344}, m="invokeSuspend")
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class o
-    extends d.d.b.a.j
-    implements d.g.a.m<kotlinx.coroutines.ad, d.d.d<? super d.y>, Object>
+    extends d.d.b.a.i
+    implements d.g.a.m<ag, d<? super y>, Object>
   {
-    Object BzG;
     int label;
-    private kotlinx.coroutines.ad mTa;
-    Object mTb;
-    Object nfO;
-    Object nfP;
-    Object nfQ;
-    Object nfR;
-    Object nfS;
-    Object nfT;
-    Object nfU;
-    Object nfV;
-    Object nfW;
+    Object nIC;
+    Object nID;
+    Object nIE;
+    Object nIF;
+    Object nIG;
+    Object nIH;
+    Object nII;
+    Object nIJ;
+    Object nIK;
+    Object nIL;
+    private ag nvs;
+    Object nvt;
     
-    o(c paramc, boolean paramBoolean, com.tencent.mm.pluginsdk.q paramq, String paramString1, biv parambiv, String paramString2, String paramString3, v.e parame, d.d.d paramd)
+    o(c paramc, boolean paramBoolean, com.tencent.mm.pluginsdk.q paramq, String paramString1, bmn parambmn, String paramString2, String paramString3, v.f paramf, d paramd)
     {
       super();
     }
     
-    public final d.d.d<d.y> a(Object paramObject, d.d.d<?> paramd)
+    public final d<y> a(Object paramObject, d<?> paramd)
     {
       AppMethodBeat.i(82875);
       d.g.b.k.h(paramd, "completion");
-      paramd = new o(this.BzE, this.BzH, this.BzI, this.keu, this.BzJ, this.BzK, this.iQm, this.BzL, paramd);
-      paramd.mTa = ((kotlinx.coroutines.ad)paramObject);
+      paramd = new o(this.CRM, this.CRO, this.CRP, this.kFm, this.CRQ, this.CRR, this.jqw, this.CRS, paramd);
+      paramd.nvs = ((ag)paramObject);
       AppMethodBeat.o(82875);
       return paramd;
     }
     
-    public final Object cP(final Object paramObject)
+    public final Object cO(final Object paramObject)
     {
       AppMethodBeat.i(82874);
-      d.d.a.a locala = d.d.a.a.JgJ;
+      d.d.a.a locala = d.d.a.a.KUd;
       Object localObject1;
       Object localObject5;
       Object localObject2;
-      label322:
+      label311:
       Object localObject3;
-      label379:
-      Object localObject8;
-      Object localObject6;
-      Object localObject7;
+      label362:
       Object localObject4;
-      label825:
-      label863:
-      label1127:
+      label651:
+      label687:
+      label750:
+      label755:
+      Object localObject6;
+      Object localObject8;
+      Object localObject7;
       Object localObject9;
       switch (this.label)
       {
@@ -1842,9 +2061,9 @@ public final class c
         AppMethodBeat.o(82874);
         throw paramObject;
       case 0: 
-        paramObject = this.mTa;
-        localObject1 = c.ByF;
-        this.mTb = paramObject;
+        paramObject = this.nvs;
+        localObject1 = c.CQN;
+        this.nvt = paramObject;
         this.label = 1;
         if (c.b.a(this) == locala)
         {
@@ -1852,171 +2071,116 @@ public final class c
           return locala;
         }
       case 1: 
-        paramObject = (kotlinx.coroutines.ad)this.mTb;
-        if (this.BzH) {
-          c.a(this.BzE, this.BzI);
+        paramObject = (ag)this.nvt;
+        if (this.CRO) {
+          c.a(this.CRM, this.CRP);
         }
-        localObject5 = new com.tencent.mm.ac.i();
-        localObject1 = ((Iterable)n.a((CharSequence)n.mH(this.keu, "#"), new String[] { "&" })).iterator();
+        localObject5 = new com.tencent.mm.ab.i();
+        localObject1 = ((Iterable)n.a((CharSequence)n.nh(this.kFm, "#"), new String[] { "&" })).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = n.a((CharSequence)((Iterator)localObject1).next(), new String[] { "=" });
           if (((List)localObject2).size() == 2) {
-            ((com.tencent.mm.ac.i)localObject5).j((String)((List)localObject2).get(0), URLDecoder.decode((String)((List)localObject2).get(1), "UTF-8"));
+            ((com.tencent.mm.ab.i)localObject5).i((String)((List)localObject2).get(0), URLDecoder.decode((String)((List)localObject2).get(1), "UTF-8"));
           }
         }
-        localObject1 = g.BAm;
+        localObject1 = g.CSt;
         if (g.a.getDebug())
         {
-          localObject1 = g.BAm;
-          localObject1 = h.buO().getString("debugA8Key", "");
+          localObject1 = g.CSt;
+          localObject1 = h.bBL().getString("debugA8Key", "");
           if (localObject1 == null) {
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
-          if (!n.aC((CharSequence)localObject1))
+          if (!n.aD((CharSequence)localObject1))
           {
             i = 1;
             if (i == 0) {
-              break label825;
+              break label651;
             }
-            localObject1 = new o(localObject1, c.b.a.ByM);
+            localObject1 = new o(localObject1, c.b.a.CQU);
             if (localObject1 == null) {
-              break label863;
+              break label687;
             }
             localObject2 = (String)((o)localObject1).first;
             localObject1 = (c.b.a)((o)localObject1).second;
-            localObject3 = c.ByF;
-            c.b.erO().ByP.add(new c.b.d((String)localObject2, null, (c.b.a)localObject1, 2));
+            localObject3 = c.CQN;
+            c.b.eHi().CQX.add(new c.b.d((String)localObject2, null, (c.b.a)localObject1, 2));
             localObject1 = localObject2;
-            localObject2 = c.ByF;
-            com.tencent.mm.sdk.platformtools.ad.d(c.b.erK(), "createJsContext a8key:".concat(String.valueOf(localObject1)));
-            c.b(this.BzI, c.k.Bzl);
-            localObject2 = c.ByF;
-            com.tencent.mm.sdk.platformtools.ad.i(c.b.erK(), "createJsContext init " + this.BzK);
-            c.c(this.BzI, c.k.Bzo);
-            localObject3 = c.a(this.BzE);
-            localObject8 = this.iQm;
-            localObject6 = this.BzJ;
-            localObject7 = this.BzE;
-            d.g.b.k.h(localObject8, "appId");
-            d.g.b.k.h(localObject6, "webComptInfo");
-            d.g.b.k.h(localObject7, "webCompt");
-            localObject4 = ((biv)localObject6).name;
-            if (!((c.l)localObject3).Bzt.containsKey(localObject4)) {
-              break label929;
-            }
-            localObject2 = (c.l.a)((c.l)localObject3).Bzt.get(localObject4);
-            if ((localObject2 == null) || (!d.g.b.k.g(((c.l.a)localObject2).appId, localObject8))) {
-              break label929;
-            }
-            ((c.l)localObject3).Bzt.remove(localObject4);
-            localObject6 = (Map)localObject3;
-            d.g.b.k.g(localObject4, "webComptName");
-            d.g.b.k.g(localObject2, "it");
-            ((Map)localObject6).put(localObject4, localObject2);
-            localObject4 = c.ByF;
-            c.b.erO().ByO.add(new c.b.f(((c.l)localObject3).id, false, true, 2));
-            c.b(this.BzI, c.k.Bzo);
-            localObject3 = this.keu;
+            localObject2 = c.CQN;
+            ac.d(c.b.eHe(), "createJsContext a8key:".concat(String.valueOf(localObject1)));
+            c.b(this.CRP, c.k.CRt);
+            localObject2 = c.CQN;
+            ac.i(c.b.eHe(), "createJsContext init " + this.CRR);
+            c.c(this.CRP, c.k.CRw);
+            localObject2 = c.a(this.CRM).a(this.jqw, this.CRQ, this.CRM);
+            c.b(this.CRP, c.k.CRw);
+            localObject3 = this.kFm;
             d.g.b.k.h(localObject3, "<set-?>");
-            ((c.l.a)localObject2).neR = ((String)localObject3);
-            ((c.l.a)localObject2).Bzy = this.BzI;
-            localObject3 = this.iQm;
+            ((c.l.a)localObject2).nHD = ((String)localObject3);
+            ((c.l.a)localObject2).CRG = this.CRP;
+            localObject3 = this.jqw;
             d.g.b.k.h(localObject3, "appId");
-            if ((!((c.l.a)localObject2).aFm) || (!d.g.b.k.g(((c.l.a)localObject2).appId, localObject3))) {
-              break label1157;
+            if ((!((c.l.a)localObject2).aGc) || (!d.g.b.k.g(((c.l.a)localObject2).appId, localObject3))) {
+              break label750;
             }
-            ((c.l.a)localObject2).aFm = false;
-            localObject4 = c.ByF;
-            com.tencent.mm.sdk.platformtools.ad.i(c.b.erK(), "WebComptWorker.reuse " + (String)localObject3 + '@' + ((c.l.a)localObject2).BzB.name + ':' + ((c.l.a)localObject2).BzA);
+            ((c.l.a)localObject2).aGc = false;
+            localObject4 = c.CQN;
+            ac.i(c.b.eHe(), "WebComptWorker.reuse " + (String)localObject3 + '@' + ((c.l.a)localObject2).CRJ.name + ':' + ((c.l.a)localObject2).CRI);
           }
         }
         for (int i = 1;; i = 0)
         {
           if (i == 0) {
-            break label1162;
+            break label755;
           }
-          c.b(((c.l.a)localObject2).erU(), this.BzJ, this.BzI.getStartTime());
-          this.BzE.Bys.a(b.Byq);
-          paramObject = d.y.JfV;
+          c.b(((c.l.a)localObject2).eHo(), this.CRQ, this.CRP.getStartTime());
+          this.CRM.CQA.a(b.CQy);
+          paramObject = y.KTp;
           AppMethodBeat.o(82874);
           return paramObject;
           i = 0;
           break;
-          if (((com.tencent.mm.ac.i)localObject5).has("debugA8Key"))
+          if (((com.tencent.mm.ab.i)localObject5).has("debugA8Key"))
           {
-            localObject1 = new o(((com.tencent.mm.ac.i)localObject5).getString("debugA8Key"), c.b.a.ByJ);
-            break label322;
+            localObject1 = new o(((com.tencent.mm.ab.i)localObject5).getString("debugA8Key"), c.b.a.CQR);
+            break label311;
           }
           localObject1 = null;
-          break label322;
+          break label311;
           localObject1 = new StringBuilder();
-          localObject2 = c.ByF;
-          localObject1 = c.b.getScheme() + this.BzK + "?appId=" + this.iQm + "&src=" + a.htmlEncode(this.keu);
-          break label379;
-          boolean bool;
-          if (((c.l)localObject3).Bzr != -1)
-          {
-            bool = true;
-            if (bool != true) {
-              break label1075;
-            }
-            localObject2 = c.ByF;
-            com.tencent.mm.sdk.platformtools.ad.i(c.b.erK(), "use preload workerManager#" + ((c.l)localObject3).id);
-            localObject2 = ((c.l)localObject3).Bzs;
-            localObject8 = c.ByF;
-            c.b.erO().ByO.add(localObject2);
-            localObject8 = c.ByF;
-            c.b.erO().jsq = bool;
-            if (bool != true) {
-              break label1127;
-            }
-          }
-          for (i = ((c.l)localObject3).Bzr;; i = ((c.e)localObject8).create(c.b.g("/wxwebcompt.js", ((c.b.f)localObject2).ByP)))
-          {
-            localObject2 = new c.l.a((c.l)localObject3, i, (biv)localObject6, (c)localObject7);
-            localObject3 = (Map)localObject3;
-            d.g.b.k.g(localObject4, "webComptName");
-            ((Map)localObject3).put(localObject4, localObject2);
-            break;
-            bool = false;
-            break label940;
-            localObject2 = c.ByF;
-            com.tencent.mm.sdk.platformtools.ad.i(c.b.erK(), "create new workerManager#" + ((c.l)localObject3).id);
-            localObject2 = new c.b.f(((c.l)localObject3).id, false, false, 4);
-            break label984;
-            localObject8 = c.ery();
-            localObject9 = c.ByF;
-          }
+          localObject2 = c.CQN;
+          localObject1 = c.b.getScheme() + this.CRR + "?appId=" + this.jqw + "&src=" + a.htmlEncode(this.kFm);
+          break label362;
         }
-        localObject3 = this.iQm;
+        localObject3 = this.jqw;
         d.g.b.k.h(localObject3, "<set-?>");
         ((c.l.a)localObject2).appId = ((String)localObject3);
         d.g.b.k.h(localObject1, "<set-?>");
-        ((c.l.a)localObject2).Bzv = ((String)localObject1);
-        localObject3 = this.BzJ.md5;
+        ((c.l.a)localObject2).CRD = ((String)localObject1);
+        localObject3 = this.CRQ.md5;
         d.g.b.k.g(localObject3, "webCompt.md5");
         d.g.b.k.h(localObject3, "<set-?>");
-        ((c.l.a)localObject2).Bzx = ((String)localObject3);
-        localObject3 = this.BzJ.url;
+        ((c.l.a)localObject2).CRF = ((String)localObject3);
+        localObject3 = this.CRQ.url;
         d.g.b.k.g(localObject3, "webCompt.url");
-        ((c.l.a)localObject2).ayT((String)localObject3);
-        localObject4 = ((c.l.a)localObject2).erU();
-        ((com.tencent.mm.plugin.appbrand.jsruntime.g)localObject4).setJsExceptionHandler((com.tencent.mm.plugin.appbrand.jsruntime.h)new a((c.l.a)localObject2, this, paramObject, (String)localObject1, (com.tencent.mm.ac.i)localObject5));
-        this.BzL.Jhw = ((d.g.a.b)new b((com.tencent.mm.plugin.appbrand.jsruntime.g)localObject4, (c.l.a)localObject2, this, paramObject, (String)localObject1, (com.tencent.mm.ac.i)localObject5));
-        c.a((com.tencent.mm.plugin.appbrand.jsruntime.g)localObject4, this.BzJ, this.BzI.getStartTime());
-        localObject3 = kotlinx.coroutines.d.b(paramObject, paramObject.fKB(), (d.g.a.m)new c(null, (c.l.a)localObject2, this, paramObject, (String)localObject1, (com.tencent.mm.ac.i)localObject5), 2);
-        localObject6 = kotlinx.coroutines.d.b(paramObject, paramObject.fKB(), (d.g.a.m)new d((com.tencent.mm.plugin.appbrand.jsruntime.g)localObject4, null, (c.l.a)localObject2, this, paramObject, (String)localObject1, (com.tencent.mm.ac.i)localObject5), 2);
-        this.mTb = paramObject;
-        this.nfO = localObject5;
-        this.nfP = localObject1;
-        this.nfQ = localObject2;
-        this.nfR = localObject4;
-        this.nfS = localObject4;
-        this.nfT = localObject3;
-        this.nfU = localObject6;
+        ((c.l.a)localObject2).aEk((String)localObject3);
+        localObject4 = ((c.l.a)localObject2).eHo();
+        ((com.tencent.mm.plugin.appbrand.jsruntime.g)localObject4).setJsExceptionHandler((com.tencent.mm.plugin.appbrand.jsruntime.h)new a((c.l.a)localObject2, this, paramObject, (String)localObject1, (com.tencent.mm.ab.i)localObject5));
+        this.CRS.KUQ = ((d.g.a.b)new b((com.tencent.mm.plugin.appbrand.jsruntime.g)localObject4, (c.l.a)localObject2, this, paramObject, (String)localObject1, (com.tencent.mm.ab.i)localObject5));
+        c.a((com.tencent.mm.plugin.appbrand.jsruntime.g)localObject4, this.CRQ, this.CRP.getStartTime());
+        localObject3 = kotlinx.coroutines.f.a(paramObject, paramObject.gde(), (d.g.a.m)new c(null, (c.l.a)localObject2, this, paramObject, (String)localObject1, (com.tencent.mm.ab.i)localObject5), 2);
+        localObject6 = kotlinx.coroutines.f.a(paramObject, paramObject.gde(), (d.g.a.m)new d((com.tencent.mm.plugin.appbrand.jsruntime.g)localObject4, null, (c.l.a)localObject2, this, paramObject, (String)localObject1, (com.tencent.mm.ab.i)localObject5), 2);
+        this.nvt = paramObject;
+        this.nIC = localObject5;
+        this.nID = localObject1;
+        this.nIE = localObject2;
+        this.nIF = localObject4;
+        this.nIG = localObject4;
+        this.nIH = localObject3;
+        this.nII = localObject6;
         this.label = 2;
-        localObject8 = ((al)localObject6).f(this);
+        localObject8 = ((ap)localObject6).f(this);
         if (localObject8 == locala)
         {
           AppMethodBeat.o(82874);
@@ -2024,20 +2188,14 @@ public final class c
         }
         break;
       case 2: 
-        label929:
-        label940:
-        label984:
-        localObject6 = (al)this.nfU;
-        label1075:
-        localObject3 = (al)this.nfT;
-        label1157:
-        label1162:
-        localObject7 = (com.tencent.mm.plugin.appbrand.jsruntime.g)this.nfS;
-        localObject4 = (com.tencent.mm.plugin.appbrand.jsruntime.g)this.nfR;
-        localObject2 = (c.l.a)this.nfQ;
-        localObject1 = (String)this.nfP;
-        localObject9 = (com.tencent.mm.ac.i)this.nfO;
-        localObject8 = (kotlinx.coroutines.ad)this.mTb;
+        localObject6 = (ap)this.nII;
+        localObject3 = (ap)this.nIH;
+        localObject7 = (com.tencent.mm.plugin.appbrand.jsruntime.g)this.nIG;
+        localObject4 = (com.tencent.mm.plugin.appbrand.jsruntime.g)this.nIF;
+        localObject2 = (c.l.a)this.nIE;
+        localObject1 = (String)this.nID;
+        localObject9 = (com.tencent.mm.ab.i)this.nIC;
+        localObject8 = (ag)this.nvt;
         localObject5 = paramObject;
         paramObject = localObject8;
         localObject8 = localObject5;
@@ -2048,74 +2206,74 @@ public final class c
         localObject8 = (o)localObject8;
         Object localObject12 = (String)((o)localObject8).first;
         localObject8 = (String)((o)localObject8).second;
-        ((c.l.a)localObject2).ayT((String)localObject12);
+        ((c.l.a)localObject2).aEk((String)localObject12);
         c.d((com.tencent.mm.plugin.appbrand.jsruntime.g)localObject7, "(function(WeixinWebCompt){" + (String)localObject8 + "})(WeixinWebCompt);");
-        this.mTb = paramObject;
-        this.nfO = localObject5;
-        this.nfP = localObject1;
-        this.nfQ = localObject2;
-        this.nfR = localObject4;
-        this.nfS = localObject7;
-        this.nfT = localObject3;
-        this.nfU = localObject6;
-        this.nfV = localObject12;
-        this.nfW = localObject8;
+        this.nvt = paramObject;
+        this.nIC = localObject5;
+        this.nID = localObject1;
+        this.nIE = localObject2;
+        this.nIF = localObject4;
+        this.nIG = localObject7;
+        this.nIH = localObject3;
+        this.nII = localObject6;
+        this.nIJ = localObject12;
+        this.nIK = localObject8;
         this.label = 3;
-        Object localObject11 = ((al)localObject3).f(this);
+        Object localObject11 = ((ap)localObject3).f(this);
         Object localObject10;
         if (localObject11 == locala)
         {
           AppMethodBeat.o(82874);
           return locala;
-          localObject8 = (String)this.nfW;
-          localObject5 = (String)this.nfV;
-          localObject10 = (al)this.nfU;
-          localObject3 = (al)this.nfT;
-          localObject6 = (com.tencent.mm.plugin.appbrand.jsruntime.g)this.nfS;
-          localObject4 = (com.tencent.mm.plugin.appbrand.jsruntime.g)this.nfR;
-          localObject2 = (c.l.a)this.nfQ;
-          localObject1 = (String)this.nfP;
-          localObject7 = (com.tencent.mm.ac.i)this.nfO;
-          localObject9 = (kotlinx.coroutines.ad)this.mTb;
+          localObject8 = (String)this.nIK;
+          localObject5 = (String)this.nIJ;
+          localObject10 = (ap)this.nII;
+          localObject3 = (ap)this.nIH;
+          localObject6 = (com.tencent.mm.plugin.appbrand.jsruntime.g)this.nIG;
+          localObject4 = (com.tencent.mm.plugin.appbrand.jsruntime.g)this.nIF;
+          localObject2 = (c.l.a)this.nIE;
+          localObject1 = (String)this.nID;
+          localObject7 = (com.tencent.mm.ab.i)this.nIC;
+          localObject9 = (ag)this.nvt;
           localObject11 = paramObject;
         }
         for (;;)
         {
           paramObject = (c.a)localObject11;
-          localObject11 = ((c.l.a)localObject2).Bzz;
-          localObject12 = paramObject.ByG.axk(paramObject.nha);
+          localObject11 = ((c.l.a)localObject2).CRH;
+          localObject12 = paramObject.CQO.aCC(paramObject.nJQ);
           d.g.b.k.g(localObject12, "a8key.getJsPerm(fullUrl)");
           d.g.b.k.h(localObject12, "<set-?>");
-          ((i)localObject11).ARc = ((JsapiPermissionWrapper)localObject12);
-          c.a(this.BzE, (com.tencent.mm.plugin.appbrand.jsruntime.g)localObject6, paramObject);
-          ((c.l.a)localObject2).Bzu = true;
-          this.mTb = localObject9;
-          this.nfO = localObject7;
-          this.nfP = localObject1;
-          this.nfQ = localObject2;
-          this.nfR = localObject4;
-          this.nfS = localObject6;
-          this.nfT = localObject3;
-          this.nfU = localObject10;
-          this.nfV = localObject5;
-          this.nfW = localObject8;
-          this.BzG = paramObject;
+          ((i)localObject11).Cjp = ((JsapiPermissionWrapper)localObject12);
+          c.a(this.CRM, (com.tencent.mm.plugin.appbrand.jsruntime.g)localObject6, paramObject);
+          ((c.l.a)localObject2).CRC = true;
+          this.nvt = localObject9;
+          this.nIC = localObject7;
+          this.nID = localObject1;
+          this.nIE = localObject2;
+          this.nIF = localObject4;
+          this.nIG = localObject6;
+          this.nIH = localObject3;
+          this.nII = localObject10;
+          this.nIJ = localObject5;
+          this.nIK = localObject8;
+          this.nIL = paramObject;
           this.label = 4;
-          if (ao.a(1000L, this) == locala)
+          if (as.b(1000L, this) == locala)
           {
             AppMethodBeat.o(82874);
             return locala;
           }
-          paramObject = c.ByF;
-          c.b.erL();
-          this.BzE.Bys.a(b.BxW);
-          paramObject = c.ByF;
-          com.tencent.mm.sdk.platformtools.ad.d(c.b.erK(), "createJsContext init finish " + this.BzK);
-          paramObject = c.ByF;
-          if (c.b.erO().jsq) {
-            this.BzE.Bys.a(b.BxX);
+          paramObject = c.CQN;
+          c.b.eHf();
+          this.CRM.CQA.a(b.CQe);
+          paramObject = c.CQN;
+          ac.d(c.b.eHe(), "createJsContext init finish " + this.CRR);
+          paramObject = c.CQN;
+          if (c.b.eHi().jSK) {
+            this.CRM.CQA.a(b.CQf);
           }
-          paramObject = d.y.JfV;
+          paramObject = y.KTp;
           AppMethodBeat.o(82874);
           return paramObject;
           localObject10 = localObject6;
@@ -2132,71 +2290,71 @@ public final class c
     public final Object n(Object paramObject1, Object paramObject2)
     {
       AppMethodBeat.i(82876);
-      paramObject1 = ((o)a(paramObject1, (d.d.d)paramObject2)).cP(d.y.JfV);
+      paramObject1 = ((o)a(paramObject1, (d)paramObject2)).cO(y.KTp);
       AppMethodBeat.o(82876);
       return paramObject1;
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "message", "", "kotlin.jvm.PlatformType", "stackTrace", "handleException", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$1$1$1", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$$special$$inlined$apply$lambda$1"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "message", "", "kotlin.jvm.PlatformType", "stackTrace", "handleException", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$1$1$1", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$$special$$inlined$apply$lambda$1"})
     static final class a
       implements com.tencent.mm.plugin.appbrand.jsruntime.h
     {
-      a(c.l.a parama, c.o paramo, kotlinx.coroutines.ad paramad, String paramString, com.tencent.mm.ac.i parami) {}
+      a(c.l.a parama, c.o paramo, ag paramag, String paramString, com.tencent.mm.ab.i parami) {}
       
-      public final void t(String paramString1, String paramString2)
+      public final void u(String paramString1, String paramString2)
       {
-        AppMethodBeat.i(189463);
-        Object localObject = c.ByF;
-        com.tencent.mm.sdk.platformtools.ad.e(c.b.erK(), "engine " + jdField_this.BzK + " exception: " + paramString1 + " \nstackTrace:\n" + paramString2);
-        localObject = jdField_this.BzE;
-        String str = jdField_this.BzK;
+        AppMethodBeat.i(205596);
+        Object localObject = c.CQN;
+        ac.e(c.b.eHe(), "engine " + jdField_this.CRR + " exception: " + paramString1 + " \nstackTrace:\n" + paramString2);
+        localObject = jdField_this.CRM;
+        String str = jdField_this.CRR;
         d.g.b.k.g(str, "name");
         d.g.b.k.g(paramString1, "message");
         c.a((c)localObject, str, paramString1, paramString2);
-        jdField_this.BzE.Bys.a(b.Bye);
-        AppMethodBeat.o(189463);
+        jdField_this.CRM.CQA.a(b.CQm);
+        AppMethodBeat.o(205596);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "ex", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$CreateJSContextException;", "invoke", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$1$1$2", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$$special$$inlined$apply$lambda$2"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "ex", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$CreateJSContextException;", "invoke", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$1$1$2", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$$special$$inlined$apply$lambda$2"})
     static final class b
       extends d.g.b.l
-      implements d.g.a.b<c.j, d.y>
+      implements d.g.a.b<c.j, y>
     {
-      b(com.tencent.mm.plugin.appbrand.jsruntime.g paramg, c.l.a parama, c.o paramo, kotlinx.coroutines.ad paramad, String paramString, com.tencent.mm.ac.i parami)
+      b(com.tencent.mm.plugin.appbrand.jsruntime.g paramg, c.l.a parama, c.o paramo, ag paramag, String paramString, com.tencent.mm.ab.i parami)
       {
         super();
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$A8KeyResp;", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$1$1$asyncA8Key$1", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$$special$$inlined$apply$lambda$3"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$A8KeyResp;", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$1$1$asyncA8Key$1", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$$special$$inlined$apply$lambda$3"})
     static final class c
-      extends d.d.b.a.j
-      implements d.g.a.m<kotlinx.coroutines.ad, d.d.d<? super c.a>, Object>
+      extends d.d.b.a.i
+      implements d.g.a.m<ag, d<? super c.a>, Object>
     {
       int label;
-      private kotlinx.coroutines.ad mTa;
-      Object mTb;
+      private ag nvs;
+      Object nvt;
       
-      c(d.d.d paramd, c.l.a parama, c.o paramo, kotlinx.coroutines.ad paramad, String paramString, com.tencent.mm.ac.i parami)
+      c(d paramd, c.l.a parama, c.o paramo, ag paramag, String paramString, com.tencent.mm.ab.i parami)
       {
         super();
       }
       
-      public final d.d.d<d.y> a(Object paramObject, d.d.d<?> paramd)
+      public final d<y> a(Object paramObject, d<?> paramd)
       {
         AppMethodBeat.i(82868);
         d.g.b.k.h(paramd, "completion");
-        paramd = new c(paramd, this.BzM, jdField_this, paramObject, this.BzP, this.BzQ);
-        paramd.mTa = ((kotlinx.coroutines.ad)paramObject);
+        paramd = new c(paramd, this.CRT, jdField_this, paramObject, this.CRW, this.CRX);
+        paramd.nvs = ((ag)paramObject);
         AppMethodBeat.o(82868);
         return paramd;
       }
       
-      public final Object cP(Object paramObject)
+      public final Object cO(Object paramObject)
       {
         AppMethodBeat.i(82867);
-        d.d.a.a locala = d.d.a.a.JgJ;
+        d.d.a.a locala = d.d.a.a.KUd;
         switch (this.label)
         {
         default: 
@@ -2204,13 +2362,13 @@ public final class c
           AppMethodBeat.o(82867);
           throw paramObject;
         case 0: 
-          paramObject = this.mTa;
-          c.c(jdField_this.BzI, c.k.Bzn);
-          Object localObject = jdField_this.BzE;
-          String str1 = this.BzP;
-          String str2 = jdField_this.BzJ.name;
+          paramObject = this.nvs;
+          c.c(jdField_this.CRP, c.k.CRv);
+          Object localObject = jdField_this.CRM;
+          String str1 = this.CRW;
+          String str2 = jdField_this.CRQ.name;
           d.g.b.k.g(str2, "webCompt.name");
-          this.mTb = paramObject;
+          this.nvt = paramObject;
           this.label = 1;
           localObject = ((c)localObject).a(str1, str2, this);
           paramObject = localObject;
@@ -2221,7 +2379,7 @@ public final class c
           }
           break;
         }
-        c.b(jdField_this.BzI, c.k.Bzn);
+        c.b(jdField_this.CRP, c.k.CRv);
         AppMethodBeat.o(82867);
         return paramObject;
       }
@@ -2229,41 +2387,41 @@ public final class c
       public final Object n(Object paramObject1, Object paramObject2)
       {
         AppMethodBeat.i(82869);
-        paramObject1 = ((c)a(paramObject1, (d.d.d)paramObject2)).cP(d.y.JfV);
+        paramObject1 = ((c)a(paramObject1, (d)paramObject2)).cO(y.KTp);
         AppMethodBeat.o(82869);
         return paramObject1;
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lkotlin/Pair;", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$1$1$asyncAppScript$1", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$$special$$inlined$apply$lambda$4"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/Pair;", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$1$1$asyncAppScript$1", "com/tencent/mm/plugin/webview/webcompt/WebComponent$createJsContext$2$$special$$inlined$apply$lambda$4"})
     static final class d
-      extends d.d.b.a.j
-      implements d.g.a.m<kotlinx.coroutines.ad, d.d.d<? super o<? extends String, ? extends String>>, Object>
+      extends d.d.b.a.i
+      implements d.g.a.m<ag, d<? super o<? extends String, ? extends String>>, Object>
     {
       int label;
-      private kotlinx.coroutines.ad mTa;
-      Object mTb;
-      Object nfO;
+      Object nIC;
+      private ag nvs;
+      Object nvt;
       
-      d(com.tencent.mm.plugin.appbrand.jsruntime.g paramg, d.d.d paramd, c.l.a parama, c.o paramo, kotlinx.coroutines.ad paramad, String paramString, com.tencent.mm.ac.i parami)
+      d(com.tencent.mm.plugin.appbrand.jsruntime.g paramg, d paramd, c.l.a parama, c.o paramo, ag paramag, String paramString, com.tencent.mm.ab.i parami)
       {
         super();
       }
       
-      public final d.d.d<d.y> a(Object paramObject, d.d.d<?> paramd)
+      public final d<y> a(Object paramObject, d<?> paramd)
       {
         AppMethodBeat.i(82872);
         d.g.b.k.h(paramd, "completion");
-        paramd = new d(this.ngr, paramd, this.BzM, jdField_this, paramObject, this.BzP, this.BzQ);
-        paramd.mTa = ((kotlinx.coroutines.ad)paramObject);
+        paramd = new d(this.nJh, paramd, this.CRT, jdField_this, paramObject, this.CRW, this.CRX);
+        paramd.nvs = ((ag)paramObject);
         AppMethodBeat.o(82872);
         return paramd;
       }
       
-      public final Object cP(Object paramObject)
+      public final Object cO(Object paramObject)
       {
         AppMethodBeat.i(82871);
-        d.d.a.a locala = d.d.a.a.JgJ;
+        d.d.a.a locala = d.d.a.a.KUd;
         switch (this.label)
         {
         default: 
@@ -2271,17 +2429,17 @@ public final class c
           AppMethodBeat.o(82871);
           throw paramObject;
         case 0: 
-          paramObject = this.mTa;
-          c.c(jdField_this.BzI, c.k.Bzp);
-          this.mTb = paramObject;
-          this.nfO = this;
+          paramObject = this.nvs;
+          c.c(jdField_this.CRP, c.k.CRx);
+          this.nvt = paramObject;
+          this.nIC = this;
           this.label = 1;
           paramObject = new d.d.h(d.d.a.b.d(this));
-          Object localObject = (d.d.d)paramObject;
-          c.b localb = c.ByF;
-          com.tencent.mm.ad.c.b(c.b.erK(), (d.g.a.a)new d.g.b.l((d.d.d)localObject) {});
-          localObject = paramObject.fvB();
-          if (localObject == d.d.a.a.JgJ) {
+          Object localObject = (d)paramObject;
+          c.b localb = c.CQN;
+          com.tencent.mm.ac.c.b(c.b.eHe(), (d.g.a.a)new d.g.b.l((d)localObject) {});
+          localObject = paramObject.fOg();
+          if (localObject == d.d.a.a.KUd) {
             d.g.b.k.h(this, "frame");
           }
           paramObject = localObject;
@@ -2292,7 +2450,7 @@ public final class c
           }
           break;
         }
-        c.b(jdField_this.BzI, c.k.Bzp);
+        c.b(jdField_this.CRP, c.k.CRx);
         AppMethodBeat.o(82871);
         return paramObject;
       }
@@ -2300,24 +2458,24 @@ public final class c
       public final Object n(Object paramObject1, Object paramObject2)
       {
         AppMethodBeat.i(82873);
-        paramObject1 = ((d)a(paramObject1, (d.d.d)paramObject2)).cP(d.y.JfV);
+        paramObject1 = ((d)a(paramObject1, (d)paramObject2)).cO(y.KTp);
         AppMethodBeat.o(82873);
         return paramObject1;
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$CreateJSContextException;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$CreateJSContextException;", "invoke"})
   static final class p
     extends d.g.b.l
-    implements d.g.a.b<c.j, d.y>
+    implements d.g.a.b<c.j, y>
   {
-    public static final p BzS;
+    public static final p CRZ;
     
     static
     {
       AppMethodBeat.i(82878);
-      BzS = new p();
+      CRZ = new p();
       AppMethodBeat.o(82878);
     }
     
@@ -2327,10 +2485,10 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class q
     extends d.g.b.l
-    implements d.g.a.a<d.y>
+    implements d.g.a.a<y>
   {
     q(c paramc, String paramString1, String paramString2, String paramString3)
     {
@@ -2338,33 +2496,33 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback", "com/tencent/mm/plugin/webview/webcompt/WebComponent$errReport$1$2$2", "com/tencent/mm/plugin/webview/webcompt/WebComponent$$special$$inlined$let$lambda$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback", "com/tencent/mm/plugin/webview/webcompt/WebComponent$errReport$1$2$2", "com/tencent/mm/plugin/webview/webcompt/WebComponent$$special$$inlined$let$lambda$1"})
   static final class r
     implements IPCRunCgi.a
   {
     r(c paramc, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3) {}
     
-    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.b paramb)
+    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb)
     {
       AppMethodBeat.i(82879);
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        this.BzE.Bys.a(b.Byn);
+        this.CRM.CQA.a(b.CQv);
       }
       AppMethodBeat.o(82879);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke"})
   static final class s
     extends d.g.b.l
-    implements d.g.a.b<String, d.y>
+    implements d.g.a.b<String, y>
   {
-    public static final s BAa;
+    public static final s CSh;
     
     static
     {
       AppMethodBeat.i(82881);
-      BAa = new s();
+      CSh = new s();
       AppMethodBeat.o(82881);
     }
     
@@ -2374,10 +2532,10 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class t
     extends d.g.b.l
-    implements d.g.a.a<d.y>
+    implements d.g.a.a<y>
   {
     t(c paramc, String paramString, d.g.a.b paramb)
     {
@@ -2385,11 +2543,11 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/webview/webcompt/WebComponent$getA8Key$2$1$1", "Lcom/tencent/mm/plugin/webview/permission/AuthCallback;", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "onAuthEnd", "", "reason", "", "reqUrl", "", "onAuthStart", "onContentRedirect", "content", "onError", "errType", "errCode", "errMsg", "onPermissionUpdate", "fullUrl", "response", "onProcessResult", "", "onUrlRedirect", "webview-sdk_release", "com/tencent/mm/plugin/webview/webcompt/WebComponent$$special$$inlined$apply$lambda$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/webview/webcompt/WebComponent$getA8Key$2$1$1", "Lcom/tencent/mm/plugin/webview/permission/AuthCallback;", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "onAuthEnd", "", "reason", "", "reqUrl", "", "onAuthStart", "onContentRedirect", "content", "onError", "errType", "errCode", "errMsg", "onPermissionUpdate", "fullUrl", "response", "onProcessResult", "", "onUrlRedirect", "webview-sdk_release", "com/tencent/mm/plugin/webview/webcompt/WebComponent$$special$$inlined$apply$lambda$1"})
   public static final class u
-    implements com.tencent.mm.plugin.webview.e.a<aoj>
+    implements com.tencent.mm.plugin.webview.e.a<arn>
   {
-    u(com.tencent.mm.plugin.webview.e.c paramc, d.d.d paramd, c paramc1, String paramString1, String paramString2) {}
+    u(com.tencent.mm.plugin.webview.e.c paramc, d paramd, c paramc1, String paramString1, String paramString2) {}
     
     public final void A(int paramInt, String paramString1, String paramString2) {}
     
@@ -2398,35 +2556,35 @@ public final class c
       AppMethodBeat.i(82885);
       d.g.b.k.h(paramString1, "reqUrl");
       d.g.b.k.h(paramString2, "errMsg");
-      paramString1 = this.BAd;
-      paramString2 = (Throwable)new c.j(20001, this.BAe, "getA8Key error:" + paramInt2 + ", " + paramInt3 + ", " + paramString2);
-      p.a locala = d.p.JfM;
-      paramString1.eH(d.p.eF(d.q.n(paramString2)));
-      this.BzE.Bys.a(b.Bya);
+      paramString1 = this.CSk;
+      paramString2 = (Throwable)new c.j(20001, this.CSl, "getA8Key error:" + paramInt2 + ", " + paramInt3 + ", " + paramString2);
+      p.a locala = d.p.KTg;
+      paramString1.eK(d.p.eI(d.q.n(paramString2)));
+      this.CRM.CQA.a(b.CQi);
       AppMethodBeat.o(82885);
     }
     
-    public final void be(int paramInt, String paramString)
+    public final void bj(int paramInt, String paramString)
     {
-      AppMethodBeat.i(189467);
+      AppMethodBeat.i(205600);
       d.g.b.k.h(paramString, "reqUrl");
-      AppMethodBeat.o(189467);
+      AppMethodBeat.o(205600);
     }
     
-    public final void bf(int paramInt, String paramString)
+    public final void bk(int paramInt, String paramString)
     {
-      AppMethodBeat.i(189466);
+      AppMethodBeat.i(205599);
       d.g.b.k.h(paramString, "reqUrl");
-      AppMethodBeat.o(189466);
+      AppMethodBeat.o(205599);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"readText", "Lkotlin/Pair;", "", "T", "type", "errCode", "", "resType", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "debugType", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;", "invoke", "(Ljava/lang/Object;Ljava/lang/String;ILcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;)Lkotlin/Pair;"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"readText", "Lkotlin/Pair;", "", "T", "type", "errCode", "", "resType", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;", "debugType", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;", "invoke", "(Ljava/lang/Object;Ljava/lang/String;ILcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$ResType;Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$Companion$DebugType;)Lkotlin/Pair;"})
   static final class v
     extends d.g.b.l
     implements s<T, String, Integer, c.b.c, c.b.a, o<? extends String, ? extends String>>
   {
-    v(c paramc, biv parambiv)
+    v(c paramc, bmn parambmn)
     {
       super();
     }
@@ -2446,9 +2604,9 @@ public final class c
       //   18: aload 5
       //   20: ldc 82
       //   22: invokestatic 80	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
-      //   25: getstatic 86	com/tencent/mm/plugin/webview/k/c:ByF	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   25: getstatic 86	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
       //   28: astore 6
-      //   30: invokestatic 92	com/tencent/mm/plugin/webview/k/c$b:erK	()Ljava/lang/String;
+      //   30: invokestatic 92	com/tencent/mm/plugin/webview/k/c$b:eHe	()Ljava/lang/String;
       //   33: new 94	java/lang/StringBuilder
       //   36: dup
       //   37: ldc 96
@@ -2460,7 +2618,7 @@ public final class c
       //   51: aload_1
       //   52: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
       //   55: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   58: invokestatic 117	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+      //   58: invokestatic 117	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
       //   61: aload_1
       //   62: instanceof 119
       //   65: ifeq +104 -> 169
@@ -2471,18 +2629,18 @@ public final class c
       //   76: invokevirtual 124	com/tencent/mm/vfs/e:getAbsolutePath	()Ljava/lang/String;
       //   79: aload_1
       //   80: checkcast 119	com/tencent/mm/vfs/e
-      //   83: invokestatic 130	com/tencent/mm/vfs/f:ag	(Lcom/tencent/mm/vfs/e;)Ljava/lang/String;
+      //   83: invokestatic 130	com/tencent/mm/vfs/f:af	(Lcom/tencent/mm/vfs/e;)Ljava/lang/String;
       //   86: invokespecial 133	d/o:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
       //   89: astore 6
       //   91: aload_0
-      //   92: getfield 39	com/tencent/mm/plugin/webview/k/c$v:BzE	Lcom/tencent/mm/plugin/webview/k/c;
-      //   95: getfield 137	com/tencent/mm/plugin/webview/k/c:Bys	Lcom/tencent/mm/plugin/webview/k/j;
-      //   98: getstatic 143	com/tencent/mm/plugin/webview/k/b:Byc	Lcom/tencent/mm/plugin/webview/k/b;
+      //   92: getfield 39	com/tencent/mm/plugin/webview/k/c$v:CRM	Lcom/tencent/mm/plugin/webview/k/c;
+      //   95: getfield 137	com/tencent/mm/plugin/webview/k/c:CQA	Lcom/tencent/mm/plugin/webview/k/j;
+      //   98: getstatic 143	com/tencent/mm/plugin/webview/k/b:CQk	Lcom/tencent/mm/plugin/webview/k/b;
       //   101: invokevirtual 148	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
-      //   104: getstatic 86	com/tencent/mm/plugin/webview/k/c:ByF	Lcom/tencent/mm/plugin/webview/k/c$b;
+      //   104: getstatic 86	com/tencent/mm/plugin/webview/k/c:CQN	Lcom/tencent/mm/plugin/webview/k/c$b;
       //   107: astore 7
-      //   109: invokestatic 152	com/tencent/mm/plugin/webview/k/c$b:erO	()Lcom/tencent/mm/plugin/webview/k/c$b$b;
-      //   112: getfield 158	com/tencent/mm/plugin/webview/k/c$b$b:ByP	Ljava/util/LinkedList;
+      //   109: invokestatic 152	com/tencent/mm/plugin/webview/k/c$b:eHi	()Lcom/tencent/mm/plugin/webview/k/c$b$b;
+      //   112: getfield 158	com/tencent/mm/plugin/webview/k/c$b$b:CQX	Ljava/util/LinkedList;
       //   115: astore 7
       //   117: aload 6
       //   119: getfield 162	d/o:first	Ljava/lang/Object;
@@ -2495,9 +2653,9 @@ public final class c
       //   136: dup
       //   137: aload 8
       //   139: checkcast 171	java/lang/String
-      //   142: invokestatic 174	com/tencent/mm/plugin/webview/k/c:erz	()Ljava/lang/String;
+      //   142: invokestatic 174	com/tencent/mm/plugin/webview/k/c:eGT	()Ljava/lang/String;
       //   145: ldc 175
-      //   147: invokestatic 181	d/n/n:bb	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      //   147: invokestatic 181	d/n/n:bg	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
       //   150: aload 4
       //   152: aload 5
       //   154: invokespecial 184	com/tencent/mm/plugin/webview/k/c$b$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/webview/k/c$b$c;Lcom/tencent/mm/plugin/webview/k/c$b$a;)V
@@ -2530,9 +2688,9 @@ public final class c
       //   213: invokespecial 133	d/o:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
       //   216: astore 6
       //   218: aload_0
-      //   219: getfield 39	com/tencent/mm/plugin/webview/k/c$v:BzE	Lcom/tencent/mm/plugin/webview/k/c;
-      //   222: getfield 137	com/tencent/mm/plugin/webview/k/c:Bys	Lcom/tencent/mm/plugin/webview/k/j;
-      //   225: getstatic 213	com/tencent/mm/plugin/webview/k/b:BxE	Lcom/tencent/mm/plugin/webview/k/b;
+      //   219: getfield 39	com/tencent/mm/plugin/webview/k/c$v:CRM	Lcom/tencent/mm/plugin/webview/k/c;
+      //   222: getfield 137	com/tencent/mm/plugin/webview/k/c:CQA	Lcom/tencent/mm/plugin/webview/k/j;
+      //   225: getstatic 213	com/tencent/mm/plugin/webview/k/b:CPM	Lcom/tencent/mm/plugin/webview/k/b;
       //   228: invokevirtual 148	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
       //   231: goto -140 -> 91
       //   234: new 121	d/o
@@ -2547,23 +2705,23 @@ public final class c
       //   253: instanceof 192
       //   256: ifeq +16 -> 272
       //   259: aload_0
-      //   260: getfield 39	com/tencent/mm/plugin/webview/k/c$v:BzE	Lcom/tencent/mm/plugin/webview/k/c;
-      //   263: getfield 137	com/tencent/mm/plugin/webview/k/c:Bys	Lcom/tencent/mm/plugin/webview/k/j;
-      //   266: getstatic 216	com/tencent/mm/plugin/webview/k/b:BxF	Lcom/tencent/mm/plugin/webview/k/b;
+      //   260: getfield 39	com/tencent/mm/plugin/webview/k/c$v:CRM	Lcom/tencent/mm/plugin/webview/k/c;
+      //   263: getfield 137	com/tencent/mm/plugin/webview/k/c:CQA	Lcom/tencent/mm/plugin/webview/k/j;
+      //   266: getstatic 216	com/tencent/mm/plugin/webview/k/b:CPN	Lcom/tencent/mm/plugin/webview/k/b;
       //   269: invokevirtual 148	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
       //   272: aload_0
-      //   273: getfield 39	com/tencent/mm/plugin/webview/k/c$v:BzE	Lcom/tencent/mm/plugin/webview/k/c;
-      //   276: getfield 137	com/tencent/mm/plugin/webview/k/c:Bys	Lcom/tencent/mm/plugin/webview/k/j;
-      //   279: getstatic 219	com/tencent/mm/plugin/webview/k/b:Byd	Lcom/tencent/mm/plugin/webview/k/b;
+      //   273: getfield 39	com/tencent/mm/plugin/webview/k/c$v:CRM	Lcom/tencent/mm/plugin/webview/k/c;
+      //   276: getfield 137	com/tencent/mm/plugin/webview/k/c:CQA	Lcom/tencent/mm/plugin/webview/k/j;
+      //   279: getstatic 219	com/tencent/mm/plugin/webview/k/b:CQl	Lcom/tencent/mm/plugin/webview/k/b;
       //   282: invokevirtual 148	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
       //   285: aload_0
-      //   286: getfield 39	com/tencent/mm/plugin/webview/k/c$v:BzE	Lcom/tencent/mm/plugin/webview/k/c;
-      //   289: getfield 137	com/tencent/mm/plugin/webview/k/c:Bys	Lcom/tencent/mm/plugin/webview/k/j;
-      //   292: getstatic 222	com/tencent/mm/plugin/webview/k/b:BxH	Lcom/tencent/mm/plugin/webview/k/b;
+      //   286: getfield 39	com/tencent/mm/plugin/webview/k/c$v:CRM	Lcom/tencent/mm/plugin/webview/k/c;
+      //   289: getfield 137	com/tencent/mm/plugin/webview/k/c:CQA	Lcom/tencent/mm/plugin/webview/k/j;
+      //   292: getstatic 222	com/tencent/mm/plugin/webview/k/b:CPP	Lcom/tencent/mm/plugin/webview/k/b;
       //   295: invokevirtual 148	com/tencent/mm/plugin/webview/k/j:a	(Lcom/tencent/mm/plugin/webview/k/b;)V
       //   298: aload_0
-      //   299: getfield 41	com/tencent/mm/plugin/webview/k/c$v:BzJ	Lcom/tencent/mm/protocal/protobuf/biv;
-      //   302: getfield 228	com/tencent/mm/protocal/protobuf/biv:name	Ljava/lang/String;
+      //   299: getfield 41	com/tencent/mm/plugin/webview/k/c$v:CRQ	Lcom/tencent/mm/protocal/protobuf/bmn;
+      //   302: getfield 228	com/tencent/mm/protocal/protobuf/bmn:name	Ljava/lang/String;
       //   305: astore 5
       //   307: aload 5
       //   309: ldc 230
@@ -2614,17 +2772,17 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"buildMatrix", "", "", "matrix", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"buildMatrix", "", "", "matrix", "", "invoke"})
   static final class w
     extends d.g.b.l
     implements d.g.a.b<List<? extends Integer>, List<? extends String>>
   {
-    public static final w BAf;
+    public static final w CSm;
     
     static
     {
       AppMethodBeat.i(82892);
-      BAf = new w();
+      CSm = new w();
       AppMethodBeat.o(82892);
     }
     
@@ -2633,7 +2791,7 @@ public final class c
       super();
     }
     
-    public static List<String> gA(List<Integer> paramList)
+    public static List<String> gL(List<Integer> paramList)
     {
       AppMethodBeat.i(82891);
       d.g.b.k.h(paramList, "matrix");
@@ -2645,24 +2803,24 @@ public final class c
       {
         byte[] arrayOfByte = new byte[((Number)((Iterator)localObject).next()).intValue()];
         localSecureRandom.nextBytes(arrayOfByte);
-        paramList.add(d.a.e.a(arrayOfByte, (CharSequence)"", (d.g.a.b)a.BAg));
+        paramList.add(d.a.e.a(arrayOfByte, (CharSequence)"", (d.g.a.b)a.CSn));
       }
       paramList = (List)paramList;
       AppMethodBeat.o(82891);
       return paramList;
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke"})
     static final class a
       extends d.g.b.l
       implements d.g.a.b<Byte, String>
     {
-      public static final a BAg;
+      public static final a CSn;
       
       static
       {
         AppMethodBeat.i(82889);
-        BAg = new a();
+        CSn = new a();
         AppMethodBeat.o(82889);
       }
       
@@ -2673,10 +2831,10 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke"})
   static final class x
     extends d.g.b.l
-    implements d.g.a.b<String, d.y>
+    implements d.g.a.b<String, y>
   {
     x(c paramc, com.tencent.mm.pluginsdk.q paramq)
     {
@@ -2684,34 +2842,34 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "com/tencent/mm/plugin/webview/webcompt/WebComponent$refreshA8Key$2$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "com/tencent/mm/plugin/webview/webcompt/WebComponent$refreshA8Key$2$1"})
   static final class y
-    extends d.d.b.a.j
-    implements d.g.a.m<kotlinx.coroutines.ad, d.d.d<? super d.y>, Object>
+    extends d.d.b.a.i
+    implements d.g.a.m<ag, d<? super y>, Object>
   {
     int label;
-    private kotlinx.coroutines.ad mTa;
-    Object mTb;
+    private ag nvs;
+    Object nvt;
     
-    y(c.l.a parama, d.d.d paramd, c paramc, d.g.a.b paramb1, d.g.a.b paramb2)
+    y(c.l.a parama, d paramd, c paramc, d.g.a.b paramb1, d.g.a.b paramb2)
     {
       super();
     }
     
-    public final d.d.d<d.y> a(Object paramObject, d.d.d<?> paramd)
+    public final d<y> a(Object paramObject, d<?> paramd)
     {
       AppMethodBeat.i(82895);
       d.g.b.k.h(paramd, "completion");
-      paramd = new y(this.BAh, paramd, this.BzE, this.BAi, this.BAj);
-      paramd.mTa = ((kotlinx.coroutines.ad)paramObject);
+      paramd = new y(this.CSo, paramd, this.CRM, this.CSp, this.CSq);
+      paramd.nvs = ((ag)paramObject);
       AppMethodBeat.o(82895);
       return paramd;
     }
     
-    public final Object cP(Object paramObject)
+    public final Object cO(Object paramObject)
     {
       AppMethodBeat.i(82894);
-      d.d.a.a locala = d.d.a.a.JgJ;
+      d.d.a.a locala = d.d.a.a.KUd;
       switch (this.label)
       {
       default: 
@@ -2719,13 +2877,13 @@ public final class c
         AppMethodBeat.o(82894);
         throw paramObject;
       case 0: 
-        paramObject = this.mTa;
+        paramObject = this.nvs;
       }
       try
       {
-        c localc = this.BzE;
-        String str = this.BAh.Bzv;
-        this.mTb = paramObject;
+        c localc = this.CRM;
+        String str = this.CSo.CRD;
+        this.nvt = paramObject;
         this.label = 1;
         paramObject = c.a(localc, str, this);
         if (paramObject != locala) {
@@ -2738,12 +2896,12 @@ public final class c
       {
         for (;;)
         {
-          this.BAj.aA(paramObject);
+          this.CSq.ay(paramObject);
         }
       }
       paramObject = (c.a)paramObject;
-      this.BAi.aA(c.a(this.BzE, paramObject));
-      paramObject = d.y.JfV;
+      this.CSp.ay(c.a(this.CRM, paramObject));
+      paramObject = y.KTp;
       AppMethodBeat.o(82894);
       return paramObject;
     }
@@ -2751,13 +2909,13 @@ public final class c
     public final Object n(Object paramObject1, Object paramObject2)
     {
       AppMethodBeat.i(82896);
-      paramObject1 = ((y)a(paramObject1, (d.d.d)paramObject2)).cP(d.y.JfV);
+      paramObject1 = ((y)a(paramObject1, (d)paramObject2)).cO(y.KTp);
       AppMethodBeat.o(82896);
       return paramObject1;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/webview/webcompt/WebComponent$WebComptWorkerManager;", "invoke"})
   static final class z
     extends d.g.b.l
     implements d.g.a.a<c.l>

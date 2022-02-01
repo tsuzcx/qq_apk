@@ -5,26 +5,26 @@ import android.nfc.tech.NfcA;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.nfc.a.a;
 import com.tencent.mm.plugin.nfc.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class c
   implements d
 {
-  private NfcA ueY;
+  private NfcA vnX;
   
   public c(Tag paramTag)
   {
     AppMethodBeat.i(26671);
-    this.ueY = NfcA.get(paramTag);
+    this.vnX = NfcA.get(paramTag);
     AppMethodBeat.o(26671);
   }
   
   public final com.tencent.mm.plugin.nfc.a.c a(a parama)
   {
     AppMethodBeat.i(26672);
-    if (this.ueY == null)
+    if (this.vnX == null)
     {
-      ad.e("MicroMsg.ApduEngineNfcA", "[NFC]NfcA is null");
+      ac.e("MicroMsg.ApduEngineNfcA", "[NFC]NfcA is null");
       parama = new IllegalStateException("NfcA is null");
       AppMethodBeat.o(26672);
       throw parama;
@@ -33,11 +33,11 @@ public final class c
     Object localObject = null;
     a locala = parama;
     parama = (a)localObject;
-    com.tencent.mm.plugin.nfc.a.c localc = new com.tencent.mm.plugin.nfc.a.c(this.ueY.transceive(locala.getBytes()));
+    com.tencent.mm.plugin.nfc.a.c localc = new com.tencent.mm.plugin.nfc.a.c(this.vnX.transceive(locala.getBytes()));
     localObject = parama;
-    if (localc.ueH.length != 0)
+    if (localc.vnG.length != 0)
     {
-      if (localc.ueH.length - 2 >= 0) {
+      if (localc.vnG.length - 2 >= 0) {
         break label100;
       }
       localObject = localc;
@@ -48,9 +48,9 @@ public final class c
       AppMethodBeat.o(26672);
       return localObject;
       label100:
-      if (localc.cWB() == 108)
+      if (localc.dkj() == 108)
       {
-        locala.Iu(localc.cWC());
+        locala.Kt(localc.dkk());
         break;
       }
       if (parama == null) {
@@ -59,23 +59,42 @@ public final class c
       for (;;)
       {
         localObject = parama;
-        if (localc.cWB() != 97) {
+        if (localc.dkj() != 97) {
           break label92;
         }
-        if (localc.cWC() == 0) {
+        if (localc.dkk() == 0) {
           break label174;
         }
-        locala = new a((byte[])b.ueP.clone());
+        locala = new a((byte[])b.vnO.clone());
         break;
         parama.a(localc);
       }
       label174:
-      parama.ueH[(parama.ueH.length - 1)] = -112;
+      parama.vnG[(parama.vnG.length - 1)] = -112;
       localObject = parama;
     }
   }
   
-  public final boolean cWF()
+  public final void close()
+  {
+    AppMethodBeat.i(26674);
+    if (this.vnX.isConnected()) {
+      this.vnX.close();
+    }
+    AppMethodBeat.o(26674);
+  }
+  
+  public final boolean connect()
+  {
+    AppMethodBeat.i(26673);
+    if (!this.vnX.isConnected()) {
+      this.vnX.connect();
+    }
+    AppMethodBeat.o(26673);
+    return true;
+  }
+  
+  public final boolean dkn()
   {
     AppMethodBeat.i(26676);
     close();
@@ -84,29 +103,10 @@ public final class c
     return true;
   }
   
-  public final void close()
-  {
-    AppMethodBeat.i(26674);
-    if (this.ueY.isConnected()) {
-      this.ueY.close();
-    }
-    AppMethodBeat.o(26674);
-  }
-  
-  public final boolean connect()
-  {
-    AppMethodBeat.i(26673);
-    if (!this.ueY.isConnected()) {
-      this.ueY.connect();
-    }
-    AppMethodBeat.o(26673);
-    return true;
-  }
-  
   public final boolean isConnected()
   {
     AppMethodBeat.i(26675);
-    boolean bool = this.ueY.isConnected();
+    boolean bool = this.vnX.isConnected();
     AppMethodBeat.o(26675);
     return bool;
   }

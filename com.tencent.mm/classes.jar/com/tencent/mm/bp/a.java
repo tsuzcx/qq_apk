@@ -1,112 +1,49 @@
 package com.tencent.mm.bp;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.br.d;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.m.e;
+import com.tencent.mm.plugin.messenger.foundation.a.a.f;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.bs;
 
-@TargetApi(3)
 public final class a
-  extends OrientationEventListener
 {
-  private b hOA;
-  private a hOy = a.hOB;
-  private int hOz = 45;
-  
-  public a(Context paramContext, b paramb)
+  public static boolean eJP()
   {
-    super(paramContext);
-    this.hOA = paramb;
+    AppMethodBeat.i(89923);
+    String str2 = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).ZY().getValue("EnableStrangerChat");
+    String str1 = str2;
+    if (bs.isNullOrNil(str2)) {
+      str1 = "0";
+    }
+    boolean bool = "1".equals(str1);
+    AppMethodBeat.o(89923);
+    return bool;
   }
   
-  public final void disable()
+  public static void hc(Context paramContext)
   {
-    AppMethodBeat.i(151343);
-    super.disable();
-    this.hOy = a.hOB;
-    AppMethodBeat.o(151343);
-  }
-  
-  public final void enable()
-  {
-    AppMethodBeat.i(151342);
-    super.enable();
-    AppMethodBeat.o(151342);
-  }
-  
-  public final void onOrientationChanged(int paramInt)
-  {
-    AppMethodBeat.i(151344);
-    if (paramInt == -1)
+    AppMethodBeat.i(89924);
+    if (!eJP())
     {
-      AppMethodBeat.o(151344);
-      return;
-    }
-    a locala2 = this.hOy;
-    a locala1;
-    if (((paramInt >= 360 - this.hOz) && (paramInt < 360)) || ((paramInt >= 0) && (paramInt <= this.hOz + 0))) {
-      locala1 = a.hOC;
-    }
-    for (;;)
-    {
-      if (locala1 != this.hOy)
+      g.agP().afT();
+      if (((k)g.ab(k.class)).dco().bQe() > 0)
       {
-        if ((this.hOA != null) && (this.hOy != a.hOB)) {
-          this.hOA.a(this.hOy, locala1);
-        }
-        this.hOy = locala1;
-      }
-      ad.i("MicroMsg.OrientationListenerHelper", "OrientationListener onOrientationChanged: %d", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(151344);
-      return;
-      if ((paramInt >= 270 - this.hOz) && (paramInt <= this.hOz + 270))
-      {
-        locala1 = a.hOD;
-      }
-      else if ((paramInt >= 180 - this.hOz) && (paramInt <= this.hOz + 180))
-      {
-        locala1 = a.hOE;
-      }
-      else
-      {
-        locala1 = locala2;
-        if (paramInt >= 90 - this.hOz)
-        {
-          locala1 = locala2;
-          if (paramInt <= this.hOz + 90) {
-            locala1 = a.hOF;
-          }
-        }
+        d.N(paramContext, "nearby", ".ui.NearbyFriendShowSayHiUI");
+        AppMethodBeat.o(89924);
+        return;
       }
     }
-  }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(151341);
-      hOB = new a("NONE", 0);
-      hOC = new a("PORTRAIT", 1);
-      hOD = new a("LANDSCAPE", 2);
-      hOE = new a("REVERSE_PORTRAIT", 3);
-      hOF = new a("REVERSE_LANDSCAPE", 4);
-      hOG = new a[] { hOB, hOC, hOD, hOE, hOF };
-      AppMethodBeat.o(151341);
-    }
-    
-    private a() {}
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void a(a.a parama1, a.a parama2);
+    d.N(paramContext, "nearby", ".ui.NearbyFriendsUI");
+    AppMethodBeat.o(89924);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.bp.a
  * JD-Core Version:    0.7.0.1
  */

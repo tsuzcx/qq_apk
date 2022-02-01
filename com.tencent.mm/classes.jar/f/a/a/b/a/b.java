@@ -11,7 +11,7 @@ public final class b
     super(paramString);
   }
   
-  static b fMv()
+  static b gfl()
   {
     AppMethodBeat.i(2405);
     b localb = new b("While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.");
@@ -19,7 +19,7 @@ public final class b
     return localb;
   }
   
-  static b fMw()
+  static b gfm()
   {
     AppMethodBeat.i(2406);
     b localb = new b("CodedInputStream encountered an embedded string or message which claimed to have negative size.");
@@ -27,7 +27,7 @@ public final class b
     return localb;
   }
   
-  static b fMx()
+  static b gfn()
   {
     AppMethodBeat.i(2407);
     b localb = new b("CodedInputStream encountered a malformed varint.");
@@ -35,7 +35,7 @@ public final class b
     return localb;
   }
   
-  static b fMy()
+  static b gfo()
   {
     AppMethodBeat.i(2408);
     b localb = new b("Protocol message contained an invalid tag (zero).");
@@ -43,7 +43,7 @@ public final class b
     return localb;
   }
   
-  static b fMz()
+  static b gfp()
   {
     AppMethodBeat.i(2409);
     b localb = new b("Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit.");

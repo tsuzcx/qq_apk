@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.finder.view;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -8,237 +7,216 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.s;
+import android.support.v7.widget.RecyclerView.t;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.ag;
 import com.tencent.mm.plugin.finder.convert.as;
 import com.tencent.mm.plugin.finder.convert.at;
-import com.tencent.mm.plugin.finder.convert.j;
+import com.tencent.mm.plugin.finder.convert.z;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.view.manager.FinderLayoutManager;
-import com.tencent.mm.plugin.finder.viewmodel.FinderRecyclerViewPool;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.b;
-import com.tencent.mm.protocal.protobuf.ain;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.protocal.protobuf.ajz;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import com.tencent.mm.view.recyclerview.b;
 import com.tencent.mm.view.recyclerview.e;
 import d.g.b.k;
-import d.v;
 import d.y;
 import java.util.ArrayList;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "FOOTER_COUNT", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "foldedController", "com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$foldedController$1", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$foldedController$1;", "foldedLayout", "Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "footerData", "com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$footerData$1", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$footerData$1;", "layoutType", "parentFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "recyclerView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecyclerView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecyclerView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "initView", "", "jumpFoldedUI", "jumpPos", "setup", "Companion", "FoldedController", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "FOOTER_COUNT", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "foldedController", "com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$foldedController$1", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$foldedController$1;", "foldedLayout", "Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "footerData", "com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$footerData$1", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$footerData$1;", "layoutType", "parentFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "recyclerView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecyclerView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecyclerView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "initView", "", "jumpFoldedUI", "jumpPos", "setup", "Companion", "FoldedController", "plugin-finder_release"})
 public final class FinderFoldedScrollLayout
   extends FrameLayout
 {
-  private static long LeT;
-  private static long LeU;
-  private static long LeV;
-  private static long LeW;
-  public static final a LeX;
-  public int Dlf;
-  public WxRecyclerView KPx;
-  private final int LeP;
-  public final e LeQ;
-  public BaseFinderFeed LeR;
-  private final d LeS;
+  private static long rXA;
+  public static final FinderFoldedScrollLayout.a rXB;
+  private static long rXx;
+  private static long rXy;
+  private static long rXz;
   public ArrayList<com.tencent.mm.view.recyclerview.a> dataList;
-  public ain foldedLayout;
-  public WxRecyclerAdapter<com.tencent.mm.view.recyclerview.a> qul;
+  public ajz foldedLayout;
+  private final int rXs;
+  public final e rXt;
+  public int rXu;
+  public BaseFinderFeed rXv;
+  private final d rXw;
+  public WxRecyclerAdapter<com.tencent.mm.view.recyclerview.a> rfX;
+  public WxRecyclerView rlU;
   
   static
   {
-    AppMethodBeat.i(200104);
-    LeX = new a((byte)0);
-    AppMethodBeat.o(200104);
+    AppMethodBeat.i(204175);
+    rXB = new FinderFoldedScrollLayout.a((byte)0);
+    AppMethodBeat.o(204175);
   }
   
   public FinderFoldedScrollLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(200102);
-    this.LeP = 1;
+    AppMethodBeat.i(204173);
+    this.rXs = 1;
     this.dataList = new ArrayList();
-    this.LeQ = new e();
-    this.LeS = new d(this);
+    this.rXt = new e();
+    this.rXw = new d(this);
     initView();
-    AppMethodBeat.o(200102);
+    AppMethodBeat.o(204173);
   }
   
   public FinderFoldedScrollLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(200103);
-    this.LeP = 1;
+    AppMethodBeat.i(204174);
+    this.rXs = 1;
     this.dataList = new ArrayList();
-    this.LeQ = new e();
-    this.LeS = new d(this);
+    this.rXt = new e();
+    this.rXw = new d(this);
     initView();
-    AppMethodBeat.o(200103);
+    AppMethodBeat.o(204174);
   }
   
   private final void initView()
   {
-    AppMethodBeat.i(200100);
-    Object localObject1 = getContext();
-    k.g(localObject1, "context");
-    this.KPx = new WxRecyclerView((Context)localObject1);
-    localObject1 = this.KPx;
-    if (localObject1 == null) {
-      k.aPZ("recyclerView");
+    AppMethodBeat.i(204171);
+    Object localObject = getContext();
+    k.g(localObject, "context");
+    this.rlU = new WxRecyclerView((Context)localObject);
+    localObject = this.rlU;
+    if (localObject == null) {
+      k.aVY("recyclerView");
     }
-    ((WxRecyclerView)localObject1).setBackgroundResource(2131234894);
-    localObject1 = this.KPx;
-    if (localObject1 == null) {
-      k.aPZ("recyclerView");
+    ((WxRecyclerView)localObject).setBackgroundResource(2131234898);
+    localObject = this.rlU;
+    if (localObject == null) {
+      k.aVY("recyclerView");
     }
-    addView((View)localObject1, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    localObject1 = this.KPx;
-    if (localObject1 == null) {
-      k.aPZ("recyclerView");
+    addView((View)localObject, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+    localObject = this.rlU;
+    if (localObject == null) {
+      k.aVY("recyclerView");
     }
     getContext();
-    ((WxRecyclerView)localObject1).setLayoutManager((RecyclerView.i)new FinderLayoutManager());
-    this.qul = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.c)new c(this), this.dataList, true);
-    localObject1 = this.KPx;
-    if (localObject1 == null) {
-      k.aPZ("recyclerView");
+    ((WxRecyclerView)localObject).setLayoutManager((RecyclerView.i)new FinderLayoutManager());
+    this.rfX = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.c)new c(this), this.dataList, true);
+    localObject = this.rlU;
+    if (localObject == null) {
+      k.aVY("recyclerView");
     }
-    Object localObject2 = this.qul;
-    if (localObject2 == null) {
-      k.aPZ("adapter");
+    WxRecyclerAdapter localWxRecyclerAdapter = this.rfX;
+    if (localWxRecyclerAdapter == null) {
+      k.aVY("adapter");
     }
-    ((WxRecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
-    localObject1 = this.KPx;
-    if (localObject1 == null) {
-      k.aPZ("recyclerView");
+    ((WxRecyclerView)localObject).setAdapter((RecyclerView.a)localWxRecyclerAdapter);
+    localObject = this.rlU;
+    if (localObject == null) {
+      k.aVY("recyclerView");
     }
-    ((WxRecyclerView)localObject1).b(getItemDecoration());
-    localObject1 = this.KPx;
-    if (localObject1 == null) {
-      k.aPZ("recyclerView");
-    }
-    localObject2 = com.tencent.mm.ui.component.a.LCX;
-    localObject2 = getContext();
-    if (localObject2 == null)
+    ((WxRecyclerView)localObject).b(getItemDecoration());
+    localObject = FinderReporterUIC.seQ;
+    localObject = getContext();
+    k.g(localObject, "context");
+    localObject = FinderReporterUIC.a.eV((Context)localObject);
+    if (localObject != null)
     {
-      localObject1 = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(200100);
-      throw ((Throwable)localObject1);
-    }
-    ((WxRecyclerView)localObject1).setRecycledViewPool(((FinderRecyclerViewPool)com.tencent.mm.ui.component.a.s((MMActivity)localObject2).get(FinderRecyclerViewPool.class)).Lhs);
-    localObject1 = FinderReporterUIC.Ljl;
-    localObject1 = getContext();
-    k.g(localObject1, "context");
-    localObject1 = FinderReporterUIC.a.lB((Context)localObject1);
-    if (localObject1 != null)
-    {
-      localObject2 = this.qul;
-      if (localObject2 == null) {
-        k.aPZ("adapter");
+      localWxRecyclerAdapter = this.rfX;
+      if (localWxRecyclerAdapter == null) {
+        k.aVY("adapter");
       }
-      k.h(localObject2, "adapter");
-      com.tencent.mm.ad.c.g((d.g.a.a)new FinderReporterUIC.b((FinderReporterUIC)localObject1, (WxRecyclerAdapter)localObject2));
-      AppMethodBeat.o(200100);
+      k.h(localWxRecyclerAdapter, "adapter");
+      com.tencent.mm.ac.c.g((d.g.a.a)new FinderReporterUIC.b((FinderReporterUIC)localObject, localWxRecyclerAdapter));
+      AppMethodBeat.o(204171);
       return;
     }
-    AppMethodBeat.o(200100);
+    AppMethodBeat.o(204171);
   }
   
   public final WxRecyclerAdapter<com.tencent.mm.view.recyclerview.a> getAdapter()
   {
-    AppMethodBeat.i(200096);
-    WxRecyclerAdapter localWxRecyclerAdapter = this.qul;
+    AppMethodBeat.i(204167);
+    WxRecyclerAdapter localWxRecyclerAdapter = this.rfX;
     if (localWxRecyclerAdapter == null) {
-      k.aPZ("adapter");
+      k.aVY("adapter");
     }
-    AppMethodBeat.o(200096);
+    AppMethodBeat.o(204167);
     return localWxRecyclerAdapter;
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(200101);
+    AppMethodBeat.i(204172);
     RecyclerView.h localh = (RecyclerView.h)new f(this);
-    AppMethodBeat.o(200101);
+    AppMethodBeat.o(204172);
     return localh;
   }
   
   public final WxRecyclerView getRecyclerView()
   {
-    AppMethodBeat.i(200098);
-    WxRecyclerView localWxRecyclerView = this.KPx;
+    AppMethodBeat.i(204169);
+    WxRecyclerView localWxRecyclerView = this.rlU;
     if (localWxRecyclerView == null) {
-      k.aPZ("recyclerView");
+      k.aVY("recyclerView");
     }
-    AppMethodBeat.o(200098);
+    AppMethodBeat.o(204169);
     return localWxRecyclerView;
   }
   
   public final void setAdapter(WxRecyclerAdapter<com.tencent.mm.view.recyclerview.a> paramWxRecyclerAdapter)
   {
-    AppMethodBeat.i(200097);
+    AppMethodBeat.i(204168);
     k.h(paramWxRecyclerAdapter, "<set-?>");
-    this.qul = paramWxRecyclerAdapter;
-    AppMethodBeat.o(200097);
+    this.rfX = paramWxRecyclerAdapter;
+    AppMethodBeat.o(204168);
   }
   
   public final void setRecyclerView(WxRecyclerView paramWxRecyclerView)
   {
-    AppMethodBeat.i(200099);
+    AppMethodBeat.i(204170);
     k.h(paramWxRecyclerView, "<set-?>");
-    this.KPx = paramWxRecyclerView;
-    AppMethodBeat.o(200099);
+    this.rlU = paramWxRecyclerView;
+    AppMethodBeat.o(204170);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$Companion;", "", "()V", "clickFeedItemId", "", "getClickFeedItemId", "()J", "setClickFeedItemId", "(J)V", "clickFeedItemTimestamp", "getClickFeedItemTimestamp", "setClickFeedItemTimestamp", "clickFoldedTopTimestamp", "getClickFoldedTopTimestamp", "setClickFoldedTopTimestamp", "clickMoreTimestamp", "getClickMoreTimestamp", "setClickMoreTimestamp", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "", "getLayoutType", "", "onItemClick", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "", "getLayoutType", "", "onItemClick", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "plugin-finder_release"})
   public static abstract interface b
   {
-    public abstract void f(e parame);
+    public abstract int cEY();
     
-    public abstract int fWP();
+    public abstract void f(e parame);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
   public static final class c
     implements com.tencent.mm.view.recyclerview.c
   {
-    public final b<?> zm(int paramInt)
+    public final com.tencent.mm.view.recyclerview.b<?> Ac(int paramInt)
     {
-      AppMethodBeat.i(200091);
+      AppMethodBeat.i(204162);
       switch (paramInt)
       {
       default: 
-        localb = (b)new j();
-        AppMethodBeat.o(200091);
+        localb = (com.tencent.mm.view.recyclerview.b)new com.tencent.mm.plugin.finder.convert.b();
+        AppMethodBeat.o(204162);
         return localb;
       case 4: 
-        localb = (b)new at((FinderFoldedScrollLayout.b)FinderFoldedScrollLayout.a(this.LeY));
-        AppMethodBeat.o(200091);
+        localb = (com.tencent.mm.view.recyclerview.b)new at((FinderFoldedScrollLayout.b)FinderFoldedScrollLayout.a(this.rXC));
+        AppMethodBeat.o(204162);
         return localb;
       case 2: 
-        localb = (b)new ag((FinderFoldedScrollLayout.b)FinderFoldedScrollLayout.a(this.LeY));
-        AppMethodBeat.o(200091);
+        localb = (com.tencent.mm.view.recyclerview.b)new z((FinderFoldedScrollLayout.b)FinderFoldedScrollLayout.a(this.rXC));
+        AppMethodBeat.o(204162);
         return localb;
       }
-      b localb = (b)new as((d.g.a.a)new a(this));
-      AppMethodBeat.o(200091);
+      com.tencent.mm.view.recyclerview.b localb = (com.tencent.mm.view.recyclerview.b)new as((d.g.a.a)new a(this));
+      AppMethodBeat.o(204162);
       return localb;
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
     static final class a
       extends d.g.b.l
       implements d.g.a.a<y>
@@ -250,63 +228,63 @@ public final class FinderFoldedScrollLayout
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$foldedController$1", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "getLayoutType", "", "onItemClick", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$foldedController$1", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "getLayoutType", "", "onItemClick", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "plugin-finder_release"})
   public static final class d
     implements FinderFoldedScrollLayout.b
   {
-    public final void f(e parame)
+    public final int cEY()
     {
-      AppMethodBeat.i(200092);
-      k.h(parame, "holder");
-      int i = parame.lm();
-      parame = FinderFoldedScrollLayout.b(this.LeY);
-      if (parame != null)
-      {
-        FinderFoldedScrollLayout.a(this.LeY, parame, i);
-        AppMethodBeat.o(200092);
-        return;
-      }
-      AppMethodBeat.o(200092);
+      AppMethodBeat.i(204164);
+      int i = FinderFoldedScrollLayout.e(this.rXC);
+      AppMethodBeat.o(204164);
+      return i;
     }
     
-    public final int fWP()
+    public final void f(e parame)
     {
-      AppMethodBeat.i(200093);
-      int i = FinderFoldedScrollLayout.e(this.LeY);
-      AppMethodBeat.o(200093);
-      return i;
+      AppMethodBeat.i(204163);
+      k.h(parame, "holder");
+      int i = parame.lu();
+      parame = FinderFoldedScrollLayout.b(this.rXC);
+      if (parame != null)
+      {
+        FinderFoldedScrollLayout.a(this.rXC, parame, i);
+        AppMethodBeat.o(204163);
+        return;
+      }
+      AppMethodBeat.o(204163);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$footerData$1", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$footerData$1", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
   public static final class e
     implements com.tencent.mm.view.recyclerview.a
   {
-    public final long bMs()
-    {
-      AppMethodBeat.i(200094);
-      long l = hashCode();
-      AppMethodBeat.o(200094);
-      return l;
-    }
-    
-    public final int bMt()
+    public final int bTF()
     {
       return -100;
     }
+    
+    public final long lx()
+    {
+      AppMethodBeat.i(204165);
+      long l = hashCode();
+      AppMethodBeat.o(204165);
+      return l;
+    }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$getItemDecoration$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$getItemDecoration$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-finder_release"})
   public static final class f
     extends RecyclerView.h
   {
-    public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+    public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
     {
-      AppMethodBeat.i(200095);
+      AppMethodBeat.i(204166);
       k.h(paramRect, "outRect");
       k.h(paramView, "view");
       k.h(paramRecyclerView, "parent");
-      k.h(params, "state");
+      k.h(paramt, "state");
       paramRecyclerView = paramView.getContext();
       k.g(paramRecyclerView, "view.context");
       int i = (int)paramRecyclerView.getResources().getDimension(2131165284);
@@ -320,29 +298,29 @@ public final class FinderFoldedScrollLayout
         paramRect.right = j;
         paramRect.bottom = 0;
         paramRect.top = 0;
-        AppMethodBeat.o(200095);
+        AppMethodBeat.o(204166);
         return;
       }
-      if (k == FinderFoldedScrollLayout.c(this.LeY).size() - 1)
+      if (k == FinderFoldedScrollLayout.c(this.rXC).size() - 1)
       {
         paramRect.left = j;
         paramRect.right = i;
         paramRect.bottom = 0;
         paramRect.top = 0;
-        AppMethodBeat.o(200095);
+        AppMethodBeat.o(204166);
         return;
       }
       paramRect.left = j;
       paramRect.right = j;
       paramRect.bottom = 0;
       paramRect.top = 0;
-      AppMethodBeat.o(200095);
+      AppMethodBeat.o(204166);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout
  * JD-Core Version:    0.7.0.1
  */

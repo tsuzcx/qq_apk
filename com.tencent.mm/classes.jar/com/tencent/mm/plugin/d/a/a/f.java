@@ -10,11 +10,11 @@ import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.service.r;
 import com.tencent.mm.plugin.exdevice.service.v;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.UUID;
@@ -24,35 +24,35 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class f
   implements BluetoothAdapter.LeScanCallback, b, r
 {
-  private static boolean mMi = false;
-  public static boolean mMk = false;
-  public final ap mHandler;
-  private final b mMd;
-  private final d mMg;
-  private final HashSet<UUID> mMh;
-  private boolean mMj;
-  private BluetoothAdapter mMl;
-  private boolean mMm;
-  private int mMn;
-  private String mMo;
-  private e mMp;
-  private Map<String, Long> mMq;
-  private final av mMr;
-  private final av mMs;
-  private final av mMt;
-  private final av mMu;
-  private final av mMv;
+  private static boolean nou = false;
+  public static boolean now = false;
+  public final ao mHandler;
+  private String noA;
+  private e noB;
+  private Map<String, Long> noC;
+  private final au noD;
+  private final au noE;
+  private final au noF;
+  private final au noG;
+  private final au noH;
+  private final b nop;
+  private final d nos;
+  private final HashSet<UUID> not;
+  private boolean nov;
+  private BluetoothAdapter nox;
+  private boolean noy;
+  private int noz;
   
   public f(b paramb)
   {
     AppMethodBeat.i(22454);
-    this.mMj = false;
-    this.mMm = true;
-    this.mMn = 0;
-    this.mMo = "";
-    this.mMp = null;
-    this.mMq = new ConcurrentHashMap();
-    this.mMr = new av(v.caj().hsB.getSerialTag(), new av.a()
+    this.nov = false;
+    this.noy = true;
+    this.noz = 0;
+    this.noA = "";
+    this.noB = null;
+    this.noC = new ConcurrentHashMap();
+    this.noD = new au(v.chs().hTd.getSerialTag(), new au.a()
     {
       public final boolean onTimerExpired()
       {
@@ -70,49 +70,49 @@ public final class f
         return false;
       }
     }, true);
-    this.mMs = new av(v.caj().hsB.getSerialTag(), new av.a()
+    this.noE = new au(v.chs().hTd.getSerialTag(), new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(22446);
         if (f.f(f.this).size() > 0)
         {
-          ad.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]mSelfAdaptionTimer now start");
+          ac.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]mSelfAdaptionTimer now start");
           if (!f.g(f.this).booleanValue()) {
             break label127;
           }
-          ad.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]mSelfAdaptionTimer restart bleScan ok");
+          ac.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]mSelfAdaptionTimer restart bleScan ok");
         }
         for (;;)
         {
-          f.iv(aj.getContext().getSharedPreferences("com.tencent.mm_exdevice_ibeacon_isNewScanning", 4).getBoolean("isNewScanning", false));
-          if (!f.bxr())
+          f.iX(ai.getContext().getSharedPreferences("com.tencent.mm_exdevice_ibeacon_isNewScanning", 4).getBoolean("isNewScanning", false));
+          if (!f.bEn())
           {
-            if (!f.h(f.this).eFX()) {
+            if (!f.h(f.this).eVs()) {
               f.h(f.this).stopTimer();
             }
-            if (!f.i(f.this).eFX()) {
+            if (!f.i(f.this).eVs()) {
               f.i(f.this).stopTimer();
             }
           }
           AppMethodBeat.o(22446);
           return false;
           label127:
-          ad.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]mSelfAdaptionTimer restart bleScan fail");
+          ac.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]mSelfAdaptionTimer restart bleScan fail");
         }
       }
     }, true);
-    this.mMt = new av(v.caj().hsB.getSerialTag(), new av.a()
+    this.noF = new au(v.chs().hTd.getSerialTag(), new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(22447);
         if (f.f(f.this).size() > 0)
         {
-          ad.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]mSelfAdaptionTimer now stop");
+          ac.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]mSelfAdaptionTimer now stop");
           f.j(f.this);
-          if (f.i(f.this).eFX()) {
-            f.i(f.this).av(2000L, 2000L);
+          if (f.i(f.this).eVs()) {
+            f.i(f.this).au(2000L, 2000L);
           }
           AppMethodBeat.o(22447);
           return true;
@@ -121,86 +121,86 @@ public final class f
         return false;
       }
     }, true);
-    this.mMu = new av(v.caj().hsB.getSerialTag(), new av.a()
+    this.noG = new au(v.chs().hTd.getSerialTag(), new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(22448);
-        ad.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]make isScanning status false");
-        f.bBs();
+        ac.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]make isScanning status false");
+        f.bIq();
         AppMethodBeat.o(22448);
         return false;
       }
     }, true);
-    this.mMv = new av(v.caj().hsB.getSerialTag(), new av.a()
+    this.noH = new au(v.chs().hTd.getSerialTag(), new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(22449);
-        ad.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]time out ,let's stop this new method scan");
+        ac.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]time out ,let's stop this new method scan");
         f.k(f.this);
         AppMethodBeat.o(22449);
         return false;
       }
     }, true);
-    this.mMh = new HashSet();
-    this.mMg = new d(this);
-    this.mMd = paramb;
-    this.mHandler = new ap(v.caj().hsB.getSerialTag());
-    this.mMl = ((BluetoothManager)aj.getContext().getSystemService("bluetooth")).getAdapter();
+    this.not = new HashSet();
+    this.nos = new d(this);
+    this.nop = paramb;
+    this.mHandler = new ao(v.chs().hTd.getSerialTag());
+    this.nox = ((BluetoothManager)ai.getContext().getSystemService("bluetooth")).getAdapter();
     AppMethodBeat.o(22454);
   }
   
-  private void bBr()
+  private void bIp()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(22456);
-        if (this.mMu.eFX()) {
-          this.mMu.av(2000L, 2000L);
+        if (this.noG.eVs()) {
+          this.noG.au(2000L, 2000L);
         }
-        if ((mMk) && (this.mMt.eFX())) {
-          this.mMt.av(10000L, 10000L);
+        if ((now) && (this.noF.eVs())) {
+          this.noF.au(10000L, 10000L);
         }
-        if (this.mMv.eFX())
+        if (this.noH.eVs())
         {
-          if (!mMk) {
-            this.mMv.av(120000L, 120000L);
+          if (!now) {
+            this.noH.au(120000L, 120000L);
           }
         }
         else
         {
-          if (mMi) {
+          if (nou) {
             break label282;
           }
-          this.mMm = true;
-          Object localObject1 = Boolean.valueOf(this.mMl.startLeScan(this));
-          if ((((Boolean)localObject1).booleanValue()) || (mMi)) {
+          this.noy = true;
+          Object localObject1 = Boolean.valueOf(this.nox.startLeScan(this));
+          if ((((Boolean)localObject1).booleanValue()) || (nou)) {
             break label265;
           }
           int i = 0;
-          if ((((Boolean)localObject1).booleanValue()) || (i >= 3) || (mMi)) {
+          if ((((Boolean)localObject1).booleanValue()) || (i >= 3) || (nou)) {
             break;
           }
           int j = i + 1;
-          this.mMl.stopLeScan(this);
-          ad.e("MicroMsg.exdevice.IBeaconServer", "start IBEACON BLE scan failed,retry no " + j + " time");
-          Boolean localBoolean = Boolean.valueOf(this.mMl.startLeScan(this));
+          this.nox.stopLeScan(this);
+          ac.e("MicroMsg.exdevice.IBeaconServer", "start IBEACON BLE scan failed,retry no " + j + " time");
+          Boolean localBoolean = Boolean.valueOf(this.nox.startLeScan(this));
           i = j;
           localObject1 = localBoolean;
           if (!localBoolean.booleanValue()) {
             continue;
           }
-          mMi = true;
-          this.mMj = true;
-          ad.i("MicroMsg.exdevice.IBeaconServer", "[shakezb]start ibeacon range successful");
+          nou = true;
+          this.nov = true;
+          ac.i("MicroMsg.exdevice.IBeaconServer", "[shakezb]start ibeacon range successful");
           i = j;
           localObject1 = localBoolean;
           continue;
         }
-        this.mMv.av(1800000L, 1800000L);
+        this.noH.au(1800000L, 1800000L);
       }
       finally {}
     }
@@ -209,9 +209,9 @@ public final class f
     {
       return;
       label265:
-      this.mMj = true;
-      mMi = true;
-      ad.i("MicroMsg.exdevice.IBeaconServer", "[shakezb]start ibeacon range successful");
+      this.nov = true;
+      nou = true;
+      ac.i("MicroMsg.exdevice.IBeaconServer", "[shakezb]start ibeacon range successful");
       label282:
       AppMethodBeat.o(22456);
     }
@@ -220,65 +220,65 @@ public final class f
   private void stopScan()
   {
     AppMethodBeat.i(22455);
-    this.mMq.clear();
-    mMi = false;
-    if (!this.mMu.eFX()) {
-      this.mMu.stopTimer();
+    this.noC.clear();
+    nou = false;
+    if (!this.noG.eVs()) {
+      this.noG.stopTimer();
     }
-    if (!this.mMt.eFX()) {
-      this.mMt.stopTimer();
+    if (!this.noF.eVs()) {
+      this.noF.stopTimer();
     }
-    if (!this.mMs.eFX()) {
-      this.mMs.stopTimer();
+    if (!this.noE.eVs()) {
+      this.noE.stopTimer();
     }
-    if (!this.mMr.eFX()) {
-      this.mMr.stopTimer();
+    if (!this.noD.eVs()) {
+      this.noD.stopTimer();
     }
-    if (!this.mMv.eFX()) {
-      this.mMv.stopTimer();
+    if (!this.noH.eVs()) {
+      this.noH.stopTimer();
     }
-    if ((this.mMj) && (this.mMl != null))
+    if ((this.nov) && (this.nox != null))
     {
-      if (this.mMl != null) {
-        this.mMl.stopLeScan(this);
+      if (this.nox != null) {
+        this.nox.stopLeScan(this);
       }
-      this.mMj = false;
+      this.nov = false;
     }
     AppMethodBeat.o(22455);
   }
   
-  public final void OS(String paramString)
+  public final void Tc(String paramString)
   {
     AppMethodBeat.i(22460);
-    ad.e("MicroMsg.exdevice.IBeaconServer", "------onScanError------ error code = %s, error msg = %s", new Object[] { Integer.valueOf(-1), paramString });
+    ac.e("MicroMsg.exdevice.IBeaconServer", "------onScanError------ error code = %s, error msg = %s", new Object[] { Integer.valueOf(-1), paramString });
     AppMethodBeat.o(22460);
   }
   
   public final void a(double paramDouble, c paramc)
   {
     AppMethodBeat.i(22457);
-    ad.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]onRangingCallback, distance = %f", new Object[] { Double.valueOf(paramDouble) });
-    String str2 = com.tencent.mm.plugin.exdevice.k.b.be(paramc.mMb.mMf.mMG);
+    ac.d("MicroMsg.exdevice.IBeaconServer", "[shakezb]onRangingCallback, distance = %f", new Object[] { Double.valueOf(paramDouble) });
+    String str2 = com.tencent.mm.plugin.exdevice.k.b.bd(paramc.non.nor.noS);
     String str1 = str2;
     if (str2.length() >= 32) {
       str1 = str2.substring(0, 8) + "-" + str2.substring(8, 12) + "-" + str2.substring(12, 16) + "-" + str2.substring(16, 20) + "-" + str2.substring(20);
     }
-    str2 = str1 + paramc.mMb.mMf.mMH + paramc.mMb.mMf.mMI;
-    if (!this.mMq.containsKey(str2))
+    str2 = str1 + paramc.non.nor.noT + paramc.non.nor.noU;
+    if (!this.noC.containsKey(str2))
     {
-      this.mMq.put(str2, Long.valueOf(System.currentTimeMillis()));
-      this.mMd.a(paramDouble, paramc);
-      int i = paramc.mMb.mMf.mMI;
-      ad.i("MicroMsg.exdevice.IBeaconServer", "[shakezb]onRangingCallback,uuid = " + str1 + ",major = " + paramc.mMb.mMf.mMH + ",minor = " + (i & 0xFFFF));
+      this.noC.put(str2, Long.valueOf(System.currentTimeMillis()));
+      this.nop.a(paramDouble, paramc);
+      int i = paramc.non.nor.noU;
+      ac.i("MicroMsg.exdevice.IBeaconServer", "[shakezb]onRangingCallback,uuid = " + str1 + ",major = " + paramc.non.nor.noT + ",minor = " + (i & 0xFFFF));
       AppMethodBeat.o(22457);
       return;
     }
-    long l1 = ((Long)this.mMq.get(str2)).longValue();
+    long l1 = ((Long)this.noC.get(str2)).longValue();
     long l2 = System.currentTimeMillis();
     if (l2 - l1 > 500L)
     {
-      this.mMq.put(str2, Long.valueOf(l2));
-      this.mMd.a(paramDouble, paramc);
+      this.noC.put(str2, Long.valueOf(l2));
+      this.nop.a(paramDouble, paramc);
     }
     AppMethodBeat.o(22457);
   }
@@ -286,34 +286,34 @@ public final class f
   public final void a(final String paramString1, final String paramString2, int paramInt1, final int paramInt2, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(22459);
-    ad.d("MicroMsg.exdevice.IBeaconServer", "onScanFound, device mac = %s, device name = %s, bluetooth version = %d, rssi = %d, advertisment = %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), com.tencent.mm.plugin.exdevice.k.b.be(paramArrayOfByte) });
+    ac.d("MicroMsg.exdevice.IBeaconServer", "onScanFound, device mac = %s, device name = %s, bluetooth version = %d, rssi = %d, advertisment = %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), com.tencent.mm.plugin.exdevice.k.b.bd(paramArrayOfByte) });
     if (paramInt1 != 0)
     {
       AppMethodBeat.o(22459);
       return;
     }
     paramString2 = new e();
-    if (!paramString2.aF(paramArrayOfByte))
+    if (!paramString2.aE(paramArrayOfByte))
     {
-      ad.d("MicroMsg.exdevice.IBeaconServer", "protocal.ParseFromByte Failed!!!");
+      ac.d("MicroMsg.exdevice.IBeaconServer", "protocal.ParseFromByte Failed!!!");
       AppMethodBeat.o(22459);
       return;
     }
-    paramArrayOfByte = com.tencent.mm.plugin.exdevice.k.b.bg(paramString2.mMf.mMG);
+    paramArrayOfByte = com.tencent.mm.plugin.exdevice.k.b.bf(paramString2.nor.noS);
     if (paramArrayOfByte == null)
     {
-      ad.e("MicroMsg.exdevice.IBeaconServer", "parse UUID from byte array failed!!!");
+      ac.e("MicroMsg.exdevice.IBeaconServer", "parse UUID from byte array failed!!!");
       AppMethodBeat.o(22459);
       return;
     }
-    if (!this.mMh.contains(paramArrayOfByte))
+    if (!this.not.contains(paramArrayOfByte))
     {
-      ad.d("MicroMsg.exdevice.IBeaconServer", "this IBeacon UUID is not in the set");
+      ac.d("MicroMsg.exdevice.IBeaconServer", "this IBeacon UUID is not in the set");
       AppMethodBeat.o(22459);
       return;
     }
-    if (this.mMm) {
-      this.mMo = paramString1;
+    if (this.noy) {
+      this.noA = paramString1;
     }
     this.mHandler.post(new Runnable()
     {
@@ -331,33 +331,33 @@ public final class f
   {
     AppMethodBeat.i(22461);
     final e locale = new e();
-    if (!locale.aF(paramArrayOfByte))
+    if (!locale.aE(paramArrayOfByte))
     {
-      ad.d("MicroMsg.exdevice.IBeaconServer", "protocal.ParseFromByte Failed!!!");
+      ac.d("MicroMsg.exdevice.IBeaconServer", "protocal.ParseFromByte Failed!!!");
       AppMethodBeat.o(22461);
       return;
     }
-    paramArrayOfByte = com.tencent.mm.plugin.exdevice.k.b.bg(locale.mMf.mMG);
+    paramArrayOfByte = com.tencent.mm.plugin.exdevice.k.b.bf(locale.nor.noS);
     if (paramArrayOfByte == null)
     {
-      ad.e("MicroMsg.exdevice.IBeaconServer", "parse UUID from byte array failed!!!");
+      ac.e("MicroMsg.exdevice.IBeaconServer", "parse UUID from byte array failed!!!");
       AppMethodBeat.o(22461);
       return;
     }
-    if (!this.mMh.contains(paramArrayOfByte))
+    if (!this.not.contains(paramArrayOfByte))
     {
-      ad.d("MicroMsg.exdevice.IBeaconServer", "this IBeacon UUID is not in the set");
+      ac.d("MicroMsg.exdevice.IBeaconServer", "this IBeacon UUID is not in the set");
       AppMethodBeat.o(22461);
       return;
     }
-    if (this.mMm)
+    if (this.noy)
     {
-      this.mMn = paramInt;
-      this.mMp = locale;
-      if (this.mMr.eFX()) {
-        this.mMr.av(2000L, 2000L);
+      this.noz = paramInt;
+      this.noB = locale;
+      if (this.noD.eVs()) {
+        this.noD.au(2000L, 2000L);
       }
-      this.mMm = false;
+      this.noy = false;
     }
     this.mHandler.post(new Runnable()
     {
@@ -371,7 +371,7 @@ public final class f
     AppMethodBeat.o(22461);
   }
   
-  public final void xt(int paramInt)
+  public final void yl(int paramInt)
   {
     AppMethodBeat.i(22458);
     if (paramInt != 0)

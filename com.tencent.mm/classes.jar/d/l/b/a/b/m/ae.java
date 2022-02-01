@@ -8,33 +8,33 @@ import d.l.b.a.b.l.f;
 public final class ae
   extends bi
 {
-  final a<ab> JWE;
-  private final f<ab> JYb;
-  private final d.l.b.a.b.l.i JlL;
+  private final d.l.b.a.b.l.i KZf;
+  final a<ab> LJX;
+  private final f<ab> LLu;
   
   public ae(d.l.b.a.b.l.i parami, a<? extends ab> parama)
   {
     AppMethodBeat.i(60778);
-    this.JlL = parami;
-    this.JWE = parama;
-    this.JYb = this.JlL.H(this.JWE);
+    this.KZf = parami;
+    this.LJX = parama;
+    this.LLu = this.KZf.O(this.LJX);
     AppMethodBeat.o(60778);
   }
   
-  public final boolean fJM()
-  {
-    AppMethodBeat.i(60776);
-    boolean bool = this.JYb.fJM();
-    AppMethodBeat.o(60776);
-    return bool;
-  }
-  
-  protected final ab fJX()
+  protected final ab gcA()
   {
     AppMethodBeat.i(60775);
-    ab localab = (ab)this.JYb.invoke();
+    ab localab = (ab)this.LLu.invoke();
     AppMethodBeat.o(60775);
     return localab;
+  }
+  
+  public final boolean gcp()
+  {
+    AppMethodBeat.i(60776);
+    boolean bool = this.LLu.gcp();
+    AppMethodBeat.o(60776);
+    return bool;
   }
   
   static final class a
@@ -49,7 +49,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.ae
  * JD-Core Version:    0.7.0.1
  */

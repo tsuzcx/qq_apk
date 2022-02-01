@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.plugin.appbrand.aa.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -34,12 +34,12 @@ public final class a
     return i;
   }
   
-  public static String acU()
+  public static String aea()
   {
     AppMethodBeat.i(108276);
     if (uuid == null)
     {
-      str = q.Xa();
+      str = q.XX();
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
       while (i < str.length() - 1)
@@ -58,17 +58,17 @@ public final class a
   public static int getNetworkType(Context paramContext)
   {
     AppMethodBeat.i(108274);
-    if (ay.is3G(paramContext))
+    if (ax.is3G(paramContext))
     {
       AppMethodBeat.o(108274);
       return 4;
     }
-    if (ay.is4G(paramContext))
+    if (ax.is4G(paramContext))
     {
       AppMethodBeat.o(108274);
       return 5;
     }
-    switch (ay.getNetType(paramContext))
+    switch (ax.getNetType(paramContext))
     {
     case 1: 
     case 2: 
@@ -91,16 +91,7 @@ public final class a
     return 3;
   }
   
-  public static String lu(long paramLong)
-  {
-    AppMethodBeat.i(108278);
-    String str = new BigInteger("00FFFFFFFFFFFFFFFF", 16).and(BigInteger.valueOf(paramLong)).toString();
-    ad.d("MicroMsg.GameReportUtil", "reportReadMsg, unsignedlonglong = ".concat(String.valueOf(str)));
-    AppMethodBeat.o(108278);
-    return str;
-  }
-  
-  public static String m(Map<String, String> paramMap)
+  public static String l(Map<String, String> paramMap)
   {
     AppMethodBeat.i(108279);
     if ((paramMap == null) || (paramMap.size() == 0))
@@ -119,7 +110,7 @@ public final class a
       }
       catch (Exception paramMap)
       {
-        ad.e("MicroMsg.GameReportUtil", paramMap.getMessage());
+        ac.e("MicroMsg.GameReportUtil", paramMap.getMessage());
         AppMethodBeat.o(108279);
         return "";
       }
@@ -132,16 +123,25 @@ public final class a
     }
     catch (Exception paramMap)
     {
-      ad.e("MicroMsg.GameReportUtil", paramMap.getMessage());
+      ac.e("MicroMsg.GameReportUtil", paramMap.getMessage());
       AppMethodBeat.o(108279);
     }
     return "";
   }
   
-  public static String qh(String paramString)
+  public static String oX(long paramLong)
+  {
+    AppMethodBeat.i(108278);
+    String str = new BigInteger("00FFFFFFFFFFFFFFFF", 16).and(BigInteger.valueOf(paramLong)).toString();
+    ac.d("MicroMsg.GameReportUtil", "reportReadMsg, unsignedlonglong = ".concat(String.valueOf(str)));
+    AppMethodBeat.o(108278);
+    return str;
+  }
+  
+  public static String tu(String paramString)
   {
     AppMethodBeat.i(108275);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(108275);
       return "";
@@ -157,7 +157,7 @@ public final class a
       for (;;)
       {
         paramString = "";
-        ad.e("MicroMsg.GameReportUtil", localException.getMessage());
+        ac.e("MicroMsg.GameReportUtil", localException.getMessage());
       }
     }
   }

@@ -36,83 +36,101 @@ import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ap;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public final class b
 {
-  private static int foV;
-  private static final Object tJS;
-  private p fqw;
-  private MMActivity imP;
+  private static int fsu;
+  private static final Object uSB;
+  private p fua;
+  private MMActivity iMV;
   String md5;
   public int scene;
-  private VideoTransPara tCr;
-  private VideoPlayerTextureView tFN;
-  private VideoSeekBarEditorView tFO;
-  private RecyclerThumbSeekBar tJH;
-  private boolean tJI = false;
-  private int tJJ = -1;
-  public int tJK = -1;
-  public int tJL = -1;
-  private av tJM;
-  private ViewGroup tJN;
-  private y tJO;
-  private com.tencent.mm.api.e tJP;
-  private com.tencent.mm.plugin.mmsight.api.a tJQ;
-  private com.tencent.mm.media.h.d tJR;
-  public a tJT;
-  private boolean tJU = false;
-  public boolean tJV = false;
-  private boolean tJW = false;
-  private boolean tJX = false;
-  public int tJZ = -1;
-  private com.tencent.mm.plugin.mmsight.a.a.b tKa;
-  public boolean tKb = false;
-  public boolean tKc = true;
+  private y sgl;
+  private VideoTransPara uKO;
+  private VideoPlayerTextureView uOi;
+  private VideoSeekBarEditorView uOj;
+  private com.tencent.mm.media.h.d uSA;
+  public a uSC;
+  private boolean uSD = false;
+  public boolean uSE = false;
+  private boolean uSF = false;
+  private boolean uSG = false;
+  public int uSH = -1;
+  private com.tencent.mm.plugin.mmsight.a.a.b uSI;
+  public boolean uSJ = false;
+  public boolean uSK = true;
+  private RecyclerThumbSeekBar uSr;
+  private boolean uSs = false;
+  private int uSt = -1;
+  public int uSu = -1;
+  public int uSv = -1;
+  private au uSw;
+  private ViewGroup uSx;
+  private com.tencent.mm.api.e uSy;
+  private com.tencent.mm.plugin.mmsight.api.a uSz;
   public String videoOutputPath = null;
   private String videoPath;
   
   static
   {
     AppMethodBeat.i(94627);
-    tJS = new Object();
+    uSB = new Object();
     AppMethodBeat.o(94627);
   }
   
-  private void cQO()
+  private void deA()
+  {
+    AppMethodBeat.i(94616);
+    com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(94597);
+        if (b.v(b.this) != null) {
+          b.v(b.this).dismiss();
+        }
+        if (b.a(b.this) != null) {
+          b.a(b.this).def();
+        }
+        AppMethodBeat.o(94597);
+      }
+    });
+    AppMethodBeat.o(94616);
+  }
+  
+  private void dey()
   {
     AppMethodBeat.i(94614);
-    this.tJO = y.cJB.IO();
-    Object localObject = this.tJO;
+    this.sgl = y.cGI.Ix();
+    Object localObject = this.sgl;
     y.a.a locala = new y.a.a();
-    locala.cJD = false;
-    locala.cJG = true;
-    locala.cJC = y.c.cJI;
-    locala.cJH = new Rect(this.tFN.getLeft(), this.tFN.getTop(), this.tFN.getRight(), this.tFN.getBottom());
-    ((y)localObject).a(locala.Ke());
-    this.tJP = this.tJO.bf(this.tJN.getContext());
-    this.tJP.setActionBarCallback(new com.tencent.mm.api.i()
+    locala.cGK = false;
+    locala.cGN = true;
+    locala.cGJ = y.c.cGP;
+    locala.cGO = new Rect(this.uOi.getLeft(), this.uOi.getTop(), this.uOi.getRight(), this.uOi.getBottom());
+    ((y)localObject).a(locala.JO());
+    this.uSy = this.sgl.bg(this.uSx.getContext());
+    this.uSy.setActionBarCallback(new com.tencent.mm.api.i()
     {
       public final void onExit()
       {
         AppMethodBeat.i(94586);
-        ad.i("MicroMsg.MMSightVideoEditor", "photoEditor onExit");
+        ac.i("MicroMsg.MMSightVideoEditor", "photoEditor onExit");
         b.this.release();
         if (b.a(b.this) != null) {
-          aq.f(new Runnable()
+          com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(94584);
-              b.a(b.this).cQy();
+              b.a(b.this).deg();
               AppMethodBeat.o(94584);
             }
           });
@@ -123,13 +141,13 @@ public final class b
       public final void onFinish()
       {
         AppMethodBeat.i(94585);
-        ad.i("MicroMsg.MMSightVideoEditor", "photoEditor onFinish");
+        ac.i("MicroMsg.MMSightVideoEditor", "photoEditor onFinish");
         b.h(b.this).a(new s()
         {
           public final void a(final Bitmap paramAnonymous2Bitmap, boolean paramAnonymous2Boolean)
           {
             AppMethodBeat.i(94583);
-            ad.i("MicroMsg.MMSightVideoEditor", "photoEditor onSuccess: %s isNever：%s", new Object[] { paramAnonymous2Bitmap, Boolean.valueOf(paramAnonymous2Boolean) });
+            ac.i("MicroMsg.MMSightVideoEditor", "photoEditor onSuccess: %s isNever：%s", new Object[] { paramAnonymous2Bitmap, Boolean.valueOf(paramAnonymous2Boolean) });
             if (paramAnonymous2Boolean)
             {
               if ((paramAnonymous2Bitmap != null) && (!paramAnonymous2Bitmap.isRecycled())) {
@@ -139,7 +157,7 @@ public final class b
               {
                 if ((b.c(b.this) > 0) && (b.d(b.this) > 0) && (b.c(b.this) <= b.d(b.this)))
                 {
-                  aq.f(new Runnable()
+                  com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
                   {
                     public final void run()
                     {
@@ -153,13 +171,13 @@ public final class b
                   AppMethodBeat.o(94583);
                   return;
                 }
-                b.a(b.this, com.tencent.mm.vfs.i.aEN(b.g(b.this)));
-                aq.f(new Runnable()
+                b.a(b.this, com.tencent.mm.vfs.i.aKe(b.g(b.this)));
+                com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
                 {
                   public final void run()
                   {
                     AppMethodBeat.i(94579);
-                    b.a(b.this).cQx();
+                    b.a(b.this).def();
                     AppMethodBeat.o(94579);
                   }
                 });
@@ -168,7 +186,7 @@ public final class b
               }
               if (b.b(b.this))
               {
-                aq.f(new Runnable()
+                com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
                 {
                   public final void run()
                   {
@@ -184,7 +202,7 @@ public final class b
             }
             else if (paramAnonymous2Bitmap != null)
             {
-              aq.f(new Runnable()
+              com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
               {
                 public final void run()
                 {
@@ -202,7 +220,7 @@ public final class b
           public final void onError(Exception paramAnonymous2Exception)
           {
             AppMethodBeat.i(94582);
-            ad.e("MicroMsg.MMSightVideoEditor", "photoEditor onError: %s", new Object[] { paramAnonymous2Exception });
+            ac.e("MicroMsg.MMSightVideoEditor", "photoEditor onError: %s", new Object[] { paramAnonymous2Exception });
             AppMethodBeat.o(94582);
           }
         });
@@ -210,17 +228,17 @@ public final class b
       }
     });
     localObject = new ViewGroup.MarginLayoutParams(-1, -1);
-    if (ap.ju(this.imP)) {
-      ((ViewGroup.MarginLayoutParams)localObject).height = (com.tencent.mm.plugin.mmsight.d.cPz().y - Math.max(ap.eb(this.imP), ap.jv(this.imP)));
+    if (com.tencent.mm.ui.ap.jF(this.iMV)) {
+      ((ViewGroup.MarginLayoutParams)localObject).height = (com.tencent.mm.plugin.mmsight.d.ddi().y - Math.max(com.tencent.mm.ui.ap.ej(this.iMV), com.tencent.mm.ui.ap.jG(this.iMV)));
     }
-    this.tJN.addView(this.tJP, (ViewGroup.LayoutParams)localObject);
-    this.tJP.setSelectedFeatureListener(new w()
+    this.uSx.addView(this.uSy, (ViewGroup.LayoutParams)localObject);
+    this.uSy.setSelectedFeatureListener(new w()
     {
       public final void a(g paramAnonymousg)
       {
         AppMethodBeat.i(94598);
-        ad.i("MicroMsg.MMSightVideoEditor", "photoEditor [onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
-        if (paramAnonymousg == g.cJx) {
+        ac.i("MicroMsg.MMSightVideoEditor", "photoEditor [onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
+        if (paramAnonymousg == g.cGE) {
           b.i(b.this);
         }
         AppMethodBeat.o(94598);
@@ -229,11 +247,11 @@ public final class b
       public final void a(g paramAnonymousg, int paramAnonymousInt, Object paramAnonymousObject)
       {
         AppMethodBeat.i(169419);
-        ad.i("MicroMsg.MMSightVideoEditor", "photoEditor [onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
+        ac.i("MicroMsg.MMSightVideoEditor", "photoEditor [onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
         AppMethodBeat.o(169419);
       }
       
-      public final void bV(boolean paramAnonymousBoolean)
+      public final void bW(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(94600);
         if (paramAnonymousBoolean)
@@ -246,7 +264,7 @@ public final class b
         AppMethodBeat.o(94600);
       }
     });
-    this.tFO.setCancelButtonClickListener(new View.OnClickListener()
+    this.uOj.setCancelButtonClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -254,20 +272,20 @@ public final class b
         if ((!b.k(b.this)) && (b.d(b.this) <= b.l(b.this).duration))
         {
           b.a(b.this, b.b(b.this, -1));
-          b.m(b.this).cRe();
-          b.a(b.this, b.m(b.this).tLG);
+          b.m(b.this).deO();
+          b.a(b.this, b.m(b.this).uUk);
           b.n(b.this);
         }
         if (!b.o(b.this))
         {
           if (b.a(b.this) != null)
           {
-            aq.f(new Runnable()
+            com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(94601);
-                b.a(b.this).cQy();
+                b.a(b.this).deg();
                 AppMethodBeat.o(94601);
               }
             });
@@ -278,12 +296,12 @@ public final class b
         {
           b.p(b.this);
           if ((!b.k(b.this)) && (b.q(b.this)) && (b.a(b.this) != null)) {
-            aq.f(new Runnable()
+            com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(94602);
-                b.a(b.this).cQy();
+                b.a(b.this).deg();
                 AppMethodBeat.o(94602);
               }
             });
@@ -292,7 +310,7 @@ public final class b
         AppMethodBeat.o(94603);
       }
     });
-    this.tFO.setFinishButtonClickListener(new View.OnClickListener()
+    this.uOj.setFinishButtonClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -310,11 +328,11 @@ public final class b
         AppMethodBeat.o(94604);
       }
     });
-    if (this.tJW)
+    if (this.uSF)
     {
-      this.tFO.setVisibility(0);
-      this.tFO.bringToFront();
-      this.tFO.post(new Runnable()
+      this.uOj.setVisibility(0);
+      this.uOj.bringToFront();
+      this.uOj.post(new Runnable()
       {
         public final void run()
         {
@@ -330,11 +348,11 @@ public final class b
     AppMethodBeat.o(94614);
   }
   
-  private void cQP()
+  private void dez()
   {
     AppMethodBeat.i(94615);
-    this.tFN.animate().scaleX(1.0F).scaleY(1.0F).translationY(0.0F).setDuration(300L);
-    this.tFO.animate().alpha(0.0F).setDuration(100L).setListener(new AnimatorListenerAdapter()
+    this.uOi.animate().scaleX(1.0F).scaleY(1.0F).translationY(0.0F).setDuration(300L);
+    this.uOj.animate().alpha(0.0F).setDuration(100L).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -344,85 +362,65 @@ public final class b
         AppMethodBeat.o(94588);
       }
     });
-    this.tJP.setFooterVisible(true);
-    this.tJP.setAutoShowFooterAndBar(true);
-    this.tJP.setActionBarVisible(true);
-    this.tJP.animate().scaleX(1.0F).scaleY(1.0F).translationY(0.0F).setDuration(300L);
-    this.tJX = false;
+    this.uSy.setFooterVisible(true);
+    this.uSy.setAutoShowFooterAndBar(true);
+    this.uSy.setActionBarVisible(true);
+    this.uSy.animate().scaleX(1.0F).scaleY(1.0F).translationY(0.0F).setDuration(300L);
+    this.uSG = false;
     AppMethodBeat.o(94615);
-  }
-  
-  private void cQQ()
-  {
-    AppMethodBeat.i(94616);
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(94597);
-        if (b.v(b.this) != null) {
-          b.v(b.this).dismiss();
-        }
-        if (b.a(b.this) != null) {
-          b.a(b.this).cQx();
-        }
-        AppMethodBeat.o(94597);
-      }
-    });
-    AppMethodBeat.o(94616);
   }
   
   public final void a(MMActivity paramMMActivity, int paramInt, String paramString, VideoSeekBarEditorView paramVideoSeekBarEditorView, VideoPlayerTextureView paramVideoPlayerTextureView, ViewGroup paramViewGroup, VideoTransPara paramVideoTransPara, boolean paramBoolean)
   {
     AppMethodBeat.i(94613);
-    this.tCr = paramVideoTransPara;
-    if (this.tCr != null) {
-      if (this.tCr.duration > 0) {}
+    this.uKO = paramVideoTransPara;
+    if (this.uKO != null) {
+      if (this.uKO.duration > 0) {}
     }
-    for (this.tCr.duration = 10000;; this.tCr.duration = 10000)
+    for (this.uKO.duration = 10000;; this.uKO.duration = 10000)
     {
       this.scene = paramInt;
       this.videoPath = paramString;
-      this.tFO = paramVideoSeekBarEditorView;
-      this.tFN = paramVideoPlayerTextureView;
-      this.tJN = paramViewGroup;
-      this.imP = paramMMActivity;
-      this.tJW = paramBoolean;
-      this.tKa = new com.tencent.mm.plugin.mmsight.a.a.b(paramInt);
-      this.tJH = paramVideoSeekBarEditorView.tLG;
-      this.tJH.setVideoTransPara(this.tCr);
-      cQO();
+      this.uOj = paramVideoSeekBarEditorView;
+      this.uOi = paramVideoPlayerTextureView;
+      this.uSx = paramViewGroup;
+      this.iMV = paramMMActivity;
+      this.uSF = paramBoolean;
+      this.uSI = new com.tencent.mm.plugin.mmsight.a.a.b(paramInt);
+      this.uSr = paramVideoSeekBarEditorView.uUk;
+      this.uSr.setVideoTransPara(this.uKO);
+      dey();
       AppMethodBeat.o(94613);
       return;
-      ad.e("MicroMsg.MMSightVideoEditor", "video trans para is null!!!");
-      this.tCr = new VideoTransPara();
+      ac.e("MicroMsg.MMSightVideoEditor", "video trans para is null!!!");
+      this.uKO = new VideoTransPara();
     }
   }
   
-  public final void nl(boolean paramBoolean)
+  public final void of(boolean paramBoolean)
   {
     AppMethodBeat.i(94618);
-    r(paramBoolean, "");
+    s(paramBoolean, "");
     AppMethodBeat.o(94618);
   }
   
   public final boolean onBackPressed()
   {
     AppMethodBeat.i(94620);
-    if (!this.tKc)
+    if (!this.uSK)
     {
       AppMethodBeat.o(94620);
       return false;
     }
-    if (this.tJX)
+    if (this.uSG)
     {
-      cQP();
+      dez();
       AppMethodBeat.o(94620);
       return true;
     }
-    if (this.tJO != null)
+    if (this.sgl != null)
     {
-      boolean bool = this.tJO.IL();
+      boolean bool = this.sgl.Iu();
       AppMethodBeat.o(94620);
       return bool;
     }
@@ -430,26 +428,60 @@ public final class b
     return false;
   }
   
-  public final void r(boolean paramBoolean, String paramString)
+  public final void release()
+  {
+    AppMethodBeat.i(94617);
+    try
+    {
+      if (this.uSw != null)
+      {
+        this.uSw.stopTimer();
+        this.uSw = null;
+      }
+      if (this.uSr != null) {
+        this.uSr.release();
+      }
+      if (this.sgl != null) {
+        this.sgl.onDestroy();
+      }
+      if (this.uSx != null) {
+        this.uSx.removeView(this.uSy);
+      }
+      if (this.uOj != null) {
+        this.uOj.deO();
+      }
+      this.uSs = false;
+      j.uMV.avJ();
+      AppMethodBeat.o(94617);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ac.printErrStackTrace("MicroMsg.MMSightVideoEditor", localException, "release error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(94617);
+    }
+  }
+  
+  public final void s(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(94619);
     try
     {
-      this.tKa.gqP = paramBoolean;
-      if (this.tJO == null)
+      this.uSI.gRx = paramBoolean;
+      if (this.sgl == null)
       {
-        ad.e("MicroMsg.MMSightVideoEditor", "[report] null == photoEditor");
+        ac.e("MicroMsg.MMSightVideoEditor", "[report] null == photoEditor");
         AppMethodBeat.o(94619);
         return;
       }
-      u localu = this.tJO.IM();
-      this.tKa.tFB = localu.JU();
-      this.tKa.tFC = localu.JT();
-      this.tKa.tFE = localu.JW();
-      this.tKa.fmF = localu.JX();
-      this.tKa.tFF = localu.JZ();
-      this.tKa.textColor = localu.getTextColor();
-      com.tencent.mm.plugin.mmsight.a.a.a(this.tKa, paramString);
+      u localu = this.sgl.Iv();
+      this.uSI.uNW = localu.JE();
+      this.uSI.uNX = localu.JD();
+      this.uSI.uNZ = localu.JG();
+      this.uSI.fqa = localu.JH();
+      this.uSI.uOa = localu.JJ();
+      this.uSI.textColor = localu.getTextColor();
+      com.tencent.mm.plugin.mmsight.a.a.a(this.uSI, paramString);
       AppMethodBeat.o(94619);
       return;
     }
@@ -459,52 +491,18 @@ public final class b
     }
   }
   
-  public final void release()
-  {
-    AppMethodBeat.i(94617);
-    try
-    {
-      if (this.tJM != null)
-      {
-        this.tJM.stopTimer();
-        this.tJM = null;
-      }
-      if (this.tJH != null) {
-        this.tJH.release();
-      }
-      if (this.tJO != null) {
-        this.tJO.onDestroy();
-      }
-      if (this.tJN != null) {
-        this.tJN.removeView(this.tJP);
-      }
-      if (this.tFO != null) {
-        this.tFO.cRe();
-      }
-      this.tJI = false;
-      j.tEA.aoS();
-      AppMethodBeat.o(94617);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ad.printErrStackTrace("MicroMsg.MMSightVideoEditor", localException, "release error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(94617);
-    }
-  }
-  
   public static abstract interface a
   {
-    public abstract void cQx();
+    public abstract void def();
     
-    public abstract void cQy();
+    public abstract void deg();
     
     public abstract void onError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.b
  * JD-Core Version:    0.7.0.1
  */

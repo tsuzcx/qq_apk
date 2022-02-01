@@ -5,117 +5,117 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.audio.b.d;
 import com.tencent.mm.plugin.audio.d.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import d.g.b.k;
 import d.l;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/voiceprint/audio/VoicePrintRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyResponse", "", "(Lkotlin/jvm/functions/Function1;)V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "hasBeginRec", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecorderDevice", "context", "Landroid/content/Context;", "stopRecord", "isContinue", "Companion", "app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/voiceprint/audio/VoicePrintRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyResponse", "", "(Lkotlin/jvm/functions/Function1;)V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "hasBeginRec", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecorderDevice", "context", "Landroid/content/Context;", "stopRecord", "isContinue", "Companion", "app_release"})
 public final class a
   extends d
 {
-  public static final a.a zdb;
-  private d.g.a.b<? super Boolean, y> cTg;
-  private com.tencent.mm.compatible.util.b hDB;
-  private boolean zda;
+  public static final a.a AvH;
+  private boolean AvG;
+  private d.g.a.b<? super Boolean, y> cQD;
+  private com.tencent.mm.compatible.util.b ied;
   
   static
   {
-    AppMethodBeat.i(191884);
-    zdb = new a.a((byte)0);
-    AppMethodBeat.o(191884);
+    AppMethodBeat.i(197006);
+    AvH = new a.a((byte)0);
+    AppMethodBeat.o(197006);
   }
   
   public a(d.g.a.b<? super Boolean, y> paramb)
   {
-    AppMethodBeat.i(191883);
-    this.cTg = paramb;
-    com.tencent.mm.plugin.audio.d.a.bvI();
-    c.bvI();
-    paramb = com.tencent.mm.plugin.audio.c.a.mpv;
+    AppMethodBeat.i(197005);
+    this.cQD = paramb;
+    com.tencent.mm.plugin.audio.d.a.bCE();
+    c.bCE();
+    paramb = com.tencent.mm.plugin.audio.c.a.mRw;
     com.tencent.mm.plugin.audio.c.a.a.a((com.tencent.mm.plugin.audio.b.a)this, "record");
-    AppMethodBeat.o(191883);
+    AppMethodBeat.o(197005);
   }
   
-  private final void My()
+  private final void Mw()
   {
-    AppMethodBeat.i(191880);
-    Oc("record");
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.mpv;
-    com.tencent.mm.plugin.audio.c.a.a.Oe("record");
-    AppMethodBeat.o(191880);
+    AppMethodBeat.i(197002);
+    Sl("record");
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.mRw;
+    com.tencent.mm.plugin.audio.c.a.a.So("record");
+    AppMethodBeat.o(197002);
   }
   
-  public final boolean gk(Context paramContext)
+  public final boolean gw(Context paramContext)
   {
-    AppMethodBeat.i(191879);
+    AppMethodBeat.i(197001);
     k.h(paramContext, "context");
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.mpv;
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.mRw;
     com.tencent.mm.plugin.audio.c.a.a.a((com.tencent.mm.plugin.audio.b.a)this, "record");
-    this.hDB = new com.tencent.mm.compatible.util.b(paramContext);
+    this.ied = new com.tencent.mm.compatible.util.b(paramContext);
     int i = b("record", Integer.valueOf(4));
-    this.zda = false;
+    this.AvG = false;
     if (i != 0) {
-      hL(100);
+      hv(100);
     }
     for (;;)
     {
-      AppMethodBeat.o(191879);
+      AppMethodBeat.o(197001);
       return false;
       new b(this).sendEmptyMessageDelayed(0, 50L);
     }
   }
   
-  public final void hL(int paramInt)
+  public final void hv(int paramInt)
   {
-    AppMethodBeat.i(191882);
-    super.hL(paramInt);
-    ad.d("MicroMsg.VoicePrintRecorderAudioManager", " Recorder onAudioDeviceStateChange :".concat(String.valueOf(paramInt)));
-    if (this.zda)
+    AppMethodBeat.i(197004);
+    super.hv(paramInt);
+    ac.d("MicroMsg.VoicePrintRecorderAudioManager", " Recorder onAudioDeviceStateChange :".concat(String.valueOf(paramInt)));
+    if (this.AvG)
     {
-      AppMethodBeat.o(191882);
+      AppMethodBeat.o(197004);
       return;
     }
-    this.zda = true;
-    My();
-    this.cTg.aA(Boolean.TRUE);
-    AppMethodBeat.o(191882);
+    this.AvG = true;
+    Mw();
+    this.cQD.ay(Boolean.TRUE);
+    AppMethodBeat.o(197004);
   }
   
-  public final void rn(boolean paramBoolean)
+  public final void so(boolean paramBoolean)
   {
-    AppMethodBeat.i(191881);
+    AppMethodBeat.i(197003);
     if (!paramBoolean) {
-      My();
+      Mw();
     }
-    com.tencent.mm.compatible.util.b localb = this.hDB;
+    com.tencent.mm.compatible.util.b localb = this.ied;
     if (localb != null)
     {
-      localb.XF();
-      AppMethodBeat.o(191881);
+      localb.YC();
+      AppMethodBeat.o(197003);
       return;
     }
-    AppMethodBeat.o(191881);
+    AppMethodBeat.o(197003);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/voiceprint/audio/VoicePrintRecorderAudioManager$requestAudioRecorderDevice$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "app_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/voiceprint/audio/VoicePrintRecorderAudioManager$requestAudioRecorderDevice$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "app_release"})
   public static final class b
-    extends ap
+    extends ao
   {
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(191878);
+      AppMethodBeat.i(197000);
       k.h(paramMessage, "msg");
-      ad.d("MicroMsg.VoicePrintRecorderAudioManager", " Recorder handleMessage");
-      if (a.a(this.zdc))
+      ac.d("MicroMsg.VoicePrintRecorderAudioManager", " Recorder handleMessage");
+      if (a.a(this.AvI))
       {
-        AppMethodBeat.o(191878);
+        AppMethodBeat.o(197000);
         return;
       }
-      this.zdc.Oc("record");
-      this.zdc.hL(200);
-      AppMethodBeat.o(191878);
+      this.AvI.Sl("record");
+      this.AvI.hv(200);
+      AppMethodBeat.o(197000);
     }
   }
 }

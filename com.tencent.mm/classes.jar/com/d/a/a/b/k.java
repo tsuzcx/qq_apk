@@ -20,7 +20,7 @@ public abstract interface k<K, V>
   
   public abstract Collection<V> values();
   
-  public abstract Map<K, Collection<V>> zB();
+  public abstract Map<K, Collection<V>> zo();
 }
 
 

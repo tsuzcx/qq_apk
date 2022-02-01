@@ -10,70 +10,70 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b.k;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.service.n;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class d
   extends com.tencent.mm.pluginsdk.ui.b.b
   implements View.OnClickListener, f
 {
-  private static boolean lFv = false;
-  private View lFp;
-  private TextView lFq;
-  private ImageView lFr;
-  private String lFs;
-  private final Runnable lFt;
-  private final b.k lFu;
+  private static boolean mhp = false;
+  private View mhj;
+  private TextView mhk;
+  private ImageView mhl;
+  private String mhm;
+  private final Runnable mhn;
+  private final b.k mho;
   
-  public static void bpa()
+  public static void bvV()
   {
-    lFv = false;
+    mhp = false;
   }
   
-  public final boolean boZ()
+  public final boolean bvU()
   {
     AppMethodBeat.i(48994);
-    if (!lFv)
+    if (!mhp)
     {
       ((e)com.tencent.mm.kernel.g.ab(e.class)).b(this);
-      ((e)com.tencent.mm.kernel.g.ab(e.class)).boW();
+      ((e)com.tencent.mm.kernel.g.ab(e.class)).bvR();
       ((e)com.tencent.mm.kernel.g.ab(e.class)).a(this);
-      lFv = true;
+      mhp = true;
     }
-    Object localObject2 = BannerModel.bpf();
-    if ((localObject2 != null) && (!bt.isNullOrNil(((BannerModel)localObject2).appId)))
+    Object localObject2 = BannerModel.bwa();
+    if ((localObject2 != null) && (!bs.isNullOrNil(((BannerModel)localObject2).appId)))
     {
       Object localObject1 = ((BannerModel)localObject2).appName;
-      String str = ((BannerModel)localObject2).lFM;
-      localObject2 = ((BannerModel)localObject2).iVP;
-      if (bt.isNullOrNil(str)) {}
-      while (bt.isNullOrNil((String)localObject1))
+      String str = ((BannerModel)localObject2).mhG;
+      localObject2 = ((BannerModel)localObject2).jwf;
+      if (bs.isNullOrNil(str)) {}
+      while (bs.isNullOrNil((String)localObject1))
       {
         AppMethodBeat.o(48994);
         return false;
         localObject1 = str;
       }
       setVisibility(0);
-      if (this.lFq != null) {
-        this.lFq.setText((CharSequence)localObject1);
+      if (this.mhk != null) {
+        this.mhk.setText((CharSequence)localObject1);
       }
-      if (!bt.isNullOrNil((String)localObject2))
+      if (!bs.isNullOrNil((String)localObject2))
       {
         localObject1 = null;
-        if (!bt.isNullOrNil(this.lFs)) {
-          localObject1 = com.tencent.mm.modelappbrand.a.b.aub().vm(this.lFs);
+        if (!bs.isNullOrNil(this.mhm)) {
+          localObject1 = com.tencent.mm.modelappbrand.a.b.aAS().zs(this.mhm);
         }
         if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
           break label193;
         }
-        this.lFu.E((Bitmap)localObject1);
+        this.mho.E((Bitmap)localObject1);
       }
       for (;;)
       {
         AppMethodBeat.o(48994);
         return true;
         label193:
-        this.lFs = com.tencent.mm.modelappbrand.a.b.aub().a(this.lFu, (String)localObject2, com.tencent.mm.modelappbrand.a.g.gSK);
+        this.mhm = com.tencent.mm.modelappbrand.a.b.aAS().a(this.mho, (String)localObject2, com.tencent.mm.modelappbrand.a.g.htk);
       }
     }
     setVisibility(8);
@@ -81,24 +81,24 @@ public final class d
     return false;
   }
   
-  public final void bv(String paramString, int paramInt)
+  public final void bz(String paramString, int paramInt)
   {
     AppMethodBeat.i(48998);
-    aq.f(this.lFt);
+    ap.f(this.mhn);
     AppMethodBeat.o(48998);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(48996);
-    if (this.lFp != null)
+    if (this.mhj != null)
     {
-      ((ViewGroup)this.lFp).removeAllViews();
-      this.lFp.setVisibility(8);
+      ((ViewGroup)this.mhj).removeAllViews();
+      this.mhj.setVisibility(8);
     }
-    this.lFp = null;
-    this.lFq = null;
-    this.lFr = null;
+    this.mhj = null;
+    this.mhk = null;
+    this.mhl = null;
     ((e)com.tencent.mm.kernel.g.ab(e.class)).b(this);
     AppMethodBeat.o(48996);
   }
@@ -111,17 +111,17 @@ public final class d
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(48997);
-    Object localObject = BannerModel.bpf();
+    Object localObject = BannerModel.bwa();
     if (localObject == null)
     {
       AppMethodBeat.o(48997);
       return;
     }
     String str = ((BannerModel)localObject).appId;
-    int i = ((BannerModel)localObject).gXn;
-    if (bt.isNullOrNil(str))
+    int i = ((BannerModel)localObject).hxM;
+    if (bs.isNullOrNil(str))
     {
-      boZ();
+      bvU();
       AppMethodBeat.o(48997);
       return;
     }
@@ -134,15 +134,15 @@ public final class d
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(48995);
-    if (this.lFp != null) {
-      this.lFp.setVisibility(paramInt);
+    if (this.mhj != null) {
+      this.mhj.setVisibility(paramInt);
     }
     AppMethodBeat.o(48995);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.d
  * JD-Core Version:    0.7.0.1
  */

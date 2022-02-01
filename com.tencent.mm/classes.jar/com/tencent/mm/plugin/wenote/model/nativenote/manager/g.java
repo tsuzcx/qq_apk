@@ -10,9 +10,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public a BDZ;
+  public a CWg;
   public View mParentView;
-  public PopupWindow onq;
+  public PopupWindow oQQ;
   
   public g(Context paramContext, View paramView)
   {
@@ -20,17 +20,17 @@ public final class g
     this.mParentView = paramView;
     paramContext = LayoutInflater.from(paramContext).inflate(2131496103, null);
     paramContext.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-    this.onq = new PopupWindow(paramContext, -2, -2, false);
-    this.onq.setClippingEnabled(false);
+    this.oQQ = new PopupWindow(paramContext, -2, -2, false);
+    this.oQQ.setClippingEnabled(false);
     paramContext.findViewById(2131306977).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30468);
-        g.this.onq.dismiss();
+        g.this.oQQ.dismiss();
         g.this.mParentView.setVisibility(8);
-        if (g.this.BDZ != null) {
-          g.this.BDZ.bRN();
+        if (g.this.CWg != null) {
+          g.this.CWg.bZc();
         }
         AppMethodBeat.o(30468);
       }
@@ -40,10 +40,10 @@ public final class g
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30469);
-        g.this.onq.dismiss();
+        g.this.oQQ.dismiss();
         g.this.mParentView.setVisibility(8);
-        if (g.this.BDZ != null) {
-          g.this.BDZ.bRO();
+        if (g.this.CWg != null) {
+          g.this.CWg.bZd();
         }
         AppMethodBeat.o(30469);
       }
@@ -53,10 +53,10 @@ public final class g
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30470);
-        g.this.onq.dismiss();
+        g.this.oQQ.dismiss();
         g.this.mParentView.setVisibility(8);
-        if (g.this.BDZ != null) {
-          g.this.BDZ.bRP();
+        if (g.this.CWg != null) {
+          g.this.CWg.bZe();
         }
         AppMethodBeat.o(30470);
       }
@@ -66,10 +66,10 @@ public final class g
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30471);
-        g.this.onq.dismiss();
+        g.this.oQQ.dismiss();
         g.this.mParentView.setVisibility(8);
-        if (g.this.BDZ != null) {
-          g.this.BDZ.bRQ();
+        if (g.this.CWg != null) {
+          g.this.CWg.bZf();
         }
         AppMethodBeat.o(30471);
       }
@@ -79,18 +79,18 @@ public final class g
   
   public static abstract interface a
   {
-    public abstract void bRN();
+    public abstract void bZc();
     
-    public abstract void bRO();
+    public abstract void bZd();
     
-    public abstract void bRP();
+    public abstract void bZe();
     
-    public abstract void bRQ();
+    public abstract void bZf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.g
  * JD-Core Version:    0.7.0.1
  */

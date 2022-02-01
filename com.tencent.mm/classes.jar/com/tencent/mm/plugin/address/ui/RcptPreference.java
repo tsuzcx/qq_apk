@@ -13,7 +13,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RcptPreference
   extends Preference
 {
-  RcptItem iAz;
+  RcptItem jaA;
   
   public RcptPreference(Context paramContext)
   {
@@ -37,19 +37,19 @@ public class RcptPreference
   {
     AppMethodBeat.i(20975);
     super.onBindView(paramView);
-    if (this.iAz == null)
+    if (this.jaA == null)
     {
       AppMethodBeat.o(20975);
       return;
     }
-    ((TextView)paramView.findViewById(2131307140)).setText(this.iAz.name);
+    ((TextView)paramView.findViewById(2131307140)).setText(this.jaA.name);
     paramView = paramView.findViewById(16908312);
     if (paramView == null)
     {
       AppMethodBeat.o(20975);
       return;
     }
-    if (this.iAz.iyC)
+    if (this.jaA.iYF)
     {
       paramView.setVisibility(0);
       AppMethodBeat.o(20975);
@@ -73,7 +73,7 @@ public class RcptPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.RcptPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.camera;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,18 +26,18 @@ public final class n
       AppMethodBeat.o(137480);
       return;
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(137479);
         int i = paramJSONObject.optInt("cameraId");
         String str = paramJSONObject.optString("type");
-        ad.i("MicroMsg.JsApiOperateCamera", "cameraId=%d type=%s", new Object[] { Integer.valueOf(i), str });
-        Object localObject = a.a.aZh();
-        if (((a)localObject).jLB.indexOfKey(i) >= 0)
+        ac.i("MicroMsg.JsApiOperateCamera", "cameraId=%d type=%s", new Object[] { Integer.valueOf(i), str });
+        Object localObject = a.a.bfZ();
+        if (((a)localObject).kmc.indexOfKey(i) >= 0)
         {
-          localObject = (WeakReference)((a)localObject).jLB.get(i);
+          localObject = (WeakReference)((a)localObject).kmc.get(i);
           if (localObject != null) {
             localObject = (f)((WeakReference)localObject).get();
           }
@@ -62,18 +62,18 @@ public final class n
               paramAnonymous2String2.put("tempImagePath", paramAnonymous2String1);
               paramAnonymous2String2.put("width", Integer.valueOf(paramAnonymous2Int2));
               paramAnonymous2String2.put("height", Integer.valueOf(paramAnonymous2Int3));
-              n.1.this.jza.h(n.1.this.ccB, n.this.k("ok", paramAnonymous2String2));
+              n.1.this.jZx.h(n.1.this.bZy, n.this.k("ok", paramAnonymous2String2));
               AppMethodBeat.o(137475);
               return;
             }
-            n.1.this.jza.h(n.1.this.ccB, n.this.e("fail:".concat(String.valueOf(paramAnonymous2String2)), null));
+            n.1.this.jZx.h(n.1.this.bZy, n.this.e("fail:".concat(String.valueOf(paramAnonymous2String2)), null));
             AppMethodBeat.o(137475);
           }
           
           public final void a(int paramAnonymous2Int1, String paramAnonymous2String1, String paramAnonymous2String2, String paramAnonymous2String3, int paramAnonymous2Int2, long paramAnonymous2Long, int paramAnonymous2Int3, int paramAnonymous2Int4)
           {
             AppMethodBeat.i(137477);
-            ad.d("MicroMsg.JsApiOperateCamera", "onStopRecord ret %d, thumbPath %s,tempVideoPath %s,duration %d,size %d,width %d,height %d", new Object[] { Integer.valueOf(paramAnonymous2Int1), paramAnonymous2String2, paramAnonymous2String3, Integer.valueOf(paramAnonymous2Int2), Long.valueOf(paramAnonymous2Long), Integer.valueOf(paramAnonymous2Int3), Integer.valueOf(paramAnonymous2Int4) });
+            ac.d("MicroMsg.JsApiOperateCamera", "onStopRecord ret %d, thumbPath %s,tempVideoPath %s,duration %d,size %d,width %d,height %d", new Object[] { Integer.valueOf(paramAnonymous2Int1), paramAnonymous2String2, paramAnonymous2String3, Integer.valueOf(paramAnonymous2Int2), Long.valueOf(paramAnonymous2Long), Integer.valueOf(paramAnonymous2Int3), Integer.valueOf(paramAnonymous2Int4) });
             if (paramAnonymous2Int1 == 0)
             {
               paramAnonymous2String1 = new HashMap();
@@ -83,42 +83,42 @@ public final class n
               paramAnonymous2String1.put("size", Long.valueOf(paramAnonymous2Long));
               paramAnonymous2String1.put("height", Integer.valueOf(paramAnonymous2Int4));
               paramAnonymous2String1.put("width", Integer.valueOf(paramAnonymous2Int3));
-              n.1.this.jza.h(n.1.this.ccB, n.this.k("ok", paramAnonymous2String1));
+              n.1.this.jZx.h(n.1.this.bZy, n.this.k("ok", paramAnonymous2String1));
               AppMethodBeat.o(137477);
               return;
             }
-            n.1.this.jza.h(n.1.this.ccB, n.this.e("fail:".concat(String.valueOf(paramAnonymous2String1)), null));
+            n.1.this.jZx.h(n.1.this.bZy, n.this.e("fail:".concat(String.valueOf(paramAnonymous2String1)), null));
             AppMethodBeat.o(137477);
           }
           
-          public final void ad(int paramAnonymous2Int, String paramAnonymous2String)
+          public final void ae(int paramAnonymous2Int, String paramAnonymous2String)
           {
             AppMethodBeat.i(137476);
             if (paramAnonymous2Int == 0)
             {
-              n.1.this.jza.h(n.1.this.ccB, n.this.e("ok", null));
+              n.1.this.jZx.h(n.1.this.bZy, n.this.e("ok", null));
               AppMethodBeat.o(137476);
               return;
             }
-            n.1.this.jza.h(n.1.this.ccB, n.this.e("fail:".concat(String.valueOf(paramAnonymous2String)), null));
+            n.1.this.jZx.h(n.1.this.bZy, n.this.e("fail:".concat(String.valueOf(paramAnonymous2String)), null));
             AppMethodBeat.o(137476);
           }
           
           public final void h(String paramAnonymous2String, int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3)
           {
             AppMethodBeat.i(137478);
-            if (!bt.isNullOrNil(paramAnonymous2String))
+            if (!bs.isNullOrNil(paramAnonymous2String))
             {
-              n.1.this.jza.h(n.1.this.ccB, n.this.e("fail:".concat(String.valueOf(paramAnonymous2String)), null));
+              n.1.this.jZx.h(n.1.this.bZy, n.this.e("fail:".concat(String.valueOf(paramAnonymous2String)), null));
               AppMethodBeat.o(137478);
               return;
             }
-            ad.d("MicroMsg.JsApiOperateCamera", "onListenFrameChange bufferId:%d width:%d height:%d", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), Integer.valueOf(paramAnonymous2Int3) });
+            ac.d("MicroMsg.JsApiOperateCamera", "onListenFrameChange bufferId:%d width:%d height:%d", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), Integer.valueOf(paramAnonymous2Int3) });
             paramAnonymous2String = new HashMap();
             paramAnonymous2String.put("bufferId", Integer.valueOf(paramAnonymous2Int1));
             paramAnonymous2String.put("width", Integer.valueOf(paramAnonymous2Int2));
             paramAnonymous2String.put("height", Integer.valueOf(paramAnonymous2Int3));
-            n.1.this.jza.h(n.1.this.ccB, n.this.k("ok", paramAnonymous2String));
+            n.1.this.jZx.h(n.1.this.bZy, n.this.k("ok", paramAnonymous2String));
             AppMethodBeat.o(137478);
           }
         });
@@ -131,7 +131,7 @@ public final class n
           switch (i)
           {
           default: 
-            ad.w("MicroMsg.JsApiOperateCamera", "operateType not supported: %s", new Object[] { str });
+            ac.w("MicroMsg.JsApiOperateCamera", "operateType not supported: %s", new Object[] { str });
             paramc.h(paramInt, n.this.e("fail:operateType not supported", null));
             AppMethodBeat.o(137479);
             return;
@@ -167,10 +167,10 @@ public final class n
           }
         }
         ((f)localObject).setQuality(paramJSONObject.optString("quality", "high"));
-        ((f)localObject).aZj();
+        ((f)localObject).bgb();
         AppMethodBeat.o(137479);
         return;
-        float f = ((f)localObject).as((float)paramJSONObject.optDouble("zoom"));
+        float f = ((f)localObject).aw((float)paramJSONObject.optDouble("zoom"));
         if (f < 1.0F)
         {
           paramc.h(paramInt, n.this.e("fail: zoom multiple not support", null));
@@ -182,18 +182,18 @@ public final class n
         paramc.h(paramInt, n.this.k("ok", (Map)localObject));
         AppMethodBeat.o(137479);
         return;
-        ((f)localObject).aZs();
+        ((f)localObject).bgk();
         AppMethodBeat.o(137479);
         return;
         ((f)localObject).setCompressRecord(paramJSONObject.optBoolean("compressed"));
-        ((f)localObject).aZt();
+        ((f)localObject).bgl();
         AppMethodBeat.o(137479);
         return;
         paramJSONObject.optString("size");
         ((f)localObject).o(paramc);
         AppMethodBeat.o(137479);
         return;
-        ((f)localObject).aZm();
+        ((f)localObject).bge();
         paramc.h(paramInt, n.this.e("ok", null));
         AppMethodBeat.o(137479);
       }
@@ -203,7 +203,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.n
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public final class a
   public final boolean a(Context paramContext, final String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(121281);
-    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().atS())
+    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().aAJ())
     {
       AppMethodBeat.o(121281);
       return true;
@@ -62,7 +62,7 @@ public final class a
       }
       i = 2;
       break label111;
-      com.tencent.mm.cj.a.post(new Runnable()
+      com.tencent.mm.ci.a.post(new Runnable()
       {
         public final void run()
         {
@@ -81,7 +81,7 @@ public final class a
         }
       });
       continue;
-      com.tencent.mm.cj.a.post(new Runnable()
+      com.tencent.mm.ci.a.post(new Runnable()
       {
         public final void run()
         {
@@ -119,7 +119,7 @@ public final class a
         default: 
           break;
         case 0: 
-          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().ed(true);
+          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().ey(true);
           break;
           if (!paramArrayOfString.equals("-or")) {
             break label288;
@@ -137,9 +137,9 @@ public final class a
           i = 2;
         }
       }
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().ed(false);
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().ey(false);
       continue;
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().cr(paramContext);
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().cA(paramContext);
     }
   }
   

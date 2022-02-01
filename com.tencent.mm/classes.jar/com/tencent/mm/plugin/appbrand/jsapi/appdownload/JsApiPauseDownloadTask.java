@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public final class JsApiPauseDownloadTask
@@ -23,12 +23,12 @@ public final class JsApiPauseDownloadTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<PauseDownloadTask> CREATOR;
-    private int bZo;
-    private q iDy;
-    private m jxX;
-    private boolean jyf;
-    private String jyg;
-    private long jyh;
+    private int bWl;
+    private boolean jYA;
+    private String jYB;
+    private long jYC;
+    private m jYs;
+    private q jdy;
     
     static
     {
@@ -47,44 +47,27 @@ public final class JsApiPauseDownloadTask
     public PauseDownloadTask(m paramm, q paramq, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45851);
-      this.jxX = paramm;
-      this.iDy = paramq;
-      this.bZo = paramInt;
-      this.jyh = paramJSONObject.optLong("downloadId");
-      this.jyf = true;
+      this.jYs = paramm;
+      this.jdy = paramq;
+      this.bWl = paramInt;
+      this.jYC = paramJSONObject.optLong("downloadId");
+      this.jYA = true;
       AppMethodBeat.o(45851);
     }
     
-    public final void aEA()
-    {
-      AppMethodBeat.i(45854);
-      if (this.jyf)
-      {
-        if (bt.isNullOrNil(this.jyg)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.jyg }))
-        {
-          this.iDy.h(this.bZo, this.jxX.e(str, null));
-          AppMethodBeat.o(45854);
-          return;
-        }
-      }
-      this.iDy.h(this.bZo, this.jxX.e("ok", null));
-      AppMethodBeat.o(45854);
-    }
-    
-    public final void aEz()
+    public final void aLq()
     {
       boolean bool = true;
       AppMethodBeat.i(45853);
-      ad.i("MicroMsg.JsApiPauseDownloadTask", "doPauseDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.jyh) });
-      if (this.jyh <= 0L) {}
+      ac.i("MicroMsg.JsApiPauseDownloadTask", "doPauseDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.jYC) });
+      if (this.jYC <= 0L) {}
       com.tencent.mm.plugin.downloader.g.a locala;
-      for (this.jyg = "downloadId invalid";; this.jyg = "downloadId invalid")
+      for (this.jYB = "downloadId invalid";; this.jYB = "downloadId invalid")
       {
-        aXw();
+        bet();
         AppMethodBeat.o(45853);
         return;
-        locala = d.oq(this.jyh);
+        locala = d.sc(this.jYC);
         if (locala != null) {
           break;
         }
@@ -94,25 +77,42 @@ public final class JsApiPauseDownloadTask
         locala.field_downloadInWifi = false;
         d.e(locala);
       }
-      if (!f.bQt().oi(this.jyh)) {}
+      if (!f.bXJ().rU(this.jYC)) {}
       for (;;)
       {
-        this.jyf = bool;
+        this.jYA = bool;
         break;
         bool = false;
       }
+    }
+    
+    public final void aLr()
+    {
+      AppMethodBeat.i(45854);
+      if (this.jYA)
+      {
+        if (bs.isNullOrNil(this.jYB)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.jYB }))
+        {
+          this.jdy.h(this.bWl, this.jYs.e(str, null));
+          AppMethodBeat.o(45854);
+          return;
+        }
+      }
+      this.jdy.h(this.bWl, this.jYs.e("ok", null));
+      AppMethodBeat.o(45854);
     }
     
     public final void e(Parcel paramParcel)
     {
       boolean bool = true;
       AppMethodBeat.i(45855);
-      this.jyh = paramParcel.readLong();
+      this.jYC = paramParcel.readLong();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.jyf = bool;
-        this.jyg = paramParcel.readString();
+        this.jYA = bool;
+        this.jYB = paramParcel.readString();
         AppMethodBeat.o(45855);
         return;
         bool = false;
@@ -122,12 +122,12 @@ public final class JsApiPauseDownloadTask
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45856);
-      paramParcel.writeLong(this.jyh);
-      if (this.jyf) {}
+      paramParcel.writeLong(this.jYC);
+      if (this.jYA) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.jyg);
+        paramParcel.writeString(this.jYB);
         AppMethodBeat.o(45856);
         return;
       }

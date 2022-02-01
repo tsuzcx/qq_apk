@@ -13,20 +13,20 @@ import java.util.Map;
 public final class i
   implements m
 {
-  final h JAk;
-  final Map<w, Integer> JAv;
-  private final d<w, n> JAw;
-  final int JAx;
-  final d.l.b.a.b.b.l Jtl;
+  final d.l.b.a.b.b.l LgE;
+  final h LnD;
+  final Map<w, Integer> LnO;
+  private final d<w, n> LnP;
+  final int LnQ;
   
   public i(h paramh, d.l.b.a.b.b.l paraml, x paramx, int paramInt)
   {
     AppMethodBeat.i(57764);
-    this.JAk = paramh;
-    this.Jtl = paraml;
-    this.JAx = paramInt;
-    this.JAv = a.B((Iterable)paramx.fyn());
-    this.JAw = this.JAk.JAs.JlL.B((d.g.a.b)new a(this));
+    this.LnD = paramh;
+    this.LgE = paraml;
+    this.LnQ = paramInt;
+    this.LnO = a.A((Iterable)paramx.fQR());
+    this.LnP = this.LnD.LnL.KZf.J((d.g.a.b)new a(this));
     AppMethodBeat.o(57764);
   }
   
@@ -34,14 +34,14 @@ public final class i
   {
     AppMethodBeat.i(57763);
     k.h(paramw, "javaTypeParameter");
-    n localn = (n)this.JAw.aA(paramw);
+    n localn = (n)this.LnP.ay(paramw);
     if (localn != null)
     {
       paramw = (as)localn;
       AppMethodBeat.o(57763);
       return paramw;
     }
-    paramw = this.JAk.JAt.a(paramw);
+    paramw = this.LnD.LnM.a(paramw);
     AppMethodBeat.o(57763);
     return paramw;
   }
@@ -58,7 +58,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.i
  * JD-Core Version:    0.7.0.1
  */

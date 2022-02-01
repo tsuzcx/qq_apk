@@ -12,26 +12,26 @@ public final class d<K, V>
   extends n<K>
   implements Map<K, V>
 {
-  protected transient V[] bXN;
+  protected transient V[] bVv;
   
-  private d<K, V> Aq()
+  private d<K, V> Ad()
   {
-    d locald = (d)super.Ar();
-    locald.bXN = ((Object[])this.bXN.clone());
+    d locald = (d)super.Ae();
+    locald.bVv = ((Object[])this.bVv.clone());
     return locald;
   }
   
   private boolean a(r<K, V> paramr)
   {
-    Object[] arrayOfObject1 = this.bYf;
-    Object[] arrayOfObject2 = this.bXN;
+    Object[] arrayOfObject1 = this.bVN;
+    Object[] arrayOfObject2 = this.bVv;
     int j;
     for (int i = arrayOfObject1.length;; i = j)
     {
       j = i - 1;
       if (i > 0)
       {
-        if ((arrayOfObject1[j] != null) && (arrayOfObject1[j] != bYh) && (!paramr.l(arrayOfObject1[j], arrayOfObject2[j]))) {
+        if ((arrayOfObject1[j] != null) && (arrayOfObject1[j] != bVP) && (!paramr.l(arrayOfObject1[j], arrayOfObject2[j]))) {
           return false;
         }
       }
@@ -46,8 +46,8 @@ public final class d<K, V>
     if (size() != 0)
     {
       super.clear();
-      Object[] arrayOfObject1 = this.bYf;
-      Object[] arrayOfObject2 = this.bXN;
+      Object[] arrayOfObject1 = this.bVN;
+      Object[] arrayOfObject2 = this.bVv;
       int j;
       for (int i = arrayOfObject1.length;; i = j)
       {
@@ -68,8 +68,8 @@ public final class d<K, V>
   
   public final boolean containsValue(Object paramObject)
   {
-    Object[] arrayOfObject1 = this.bYf;
-    Object[] arrayOfObject2 = this.bXN;
+    Object[] arrayOfObject1 = this.bVN;
+    Object[] arrayOfObject2 = this.bVv;
     if (paramObject == null) {}
     int j;
     for (int i = arrayOfObject2.length;; i = j)
@@ -77,7 +77,7 @@ public final class d<K, V>
       j = i - 1;
       if (i > 0)
       {
-        if ((arrayOfObject1[j] != null) && (arrayOfObject1[j] != bYh) && (paramObject == arrayOfObject2[j]))
+        if ((arrayOfObject1[j] != null) && (arrayOfObject1[j] != bVP) && (paramObject == arrayOfObject2[j]))
         {
           return true;
           for (i = arrayOfObject2.length;; i = j)
@@ -86,7 +86,7 @@ public final class d<K, V>
             if (i <= 0) {
               break label108;
             }
-            if ((arrayOfObject1[j] != null) && (arrayOfObject1[j] != bYh) && ((paramObject == arrayOfObject2[j]) || (paramObject.equals(arrayOfObject2[j])))) {
+            if ((arrayOfObject1[j] != null) && (arrayOfObject1[j] != bVP) && ((paramObject == arrayOfObject2[j]) || (paramObject.equals(arrayOfObject2[j])))) {
               break;
             }
           }
@@ -112,7 +112,7 @@ public final class d<K, V>
       return false;
       paramObject = (Map)paramObject;
     } while (paramObject.size() != size());
-    return a(new d.c(paramObject));
+    return a(new c(paramObject));
   }
   
   public final V get(Object paramObject)
@@ -121,38 +121,38 @@ public final class d<K, V>
     if (i < 0) {
       return null;
     }
-    return this.bXN[i];
+    return this.bVv[i];
   }
   
-  protected final int gx(int paramInt)
+  protected final int gi(int paramInt)
   {
-    paramInt = super.gx(paramInt);
-    this.bXN = ((Object[])new Object[paramInt]);
+    paramInt = super.gi(paramInt);
+    this.bVv = ((Object[])new Object[paramInt]);
     return paramInt;
   }
   
-  protected final void gy(int paramInt)
+  protected final void gj(int paramInt)
   {
-    int i = this.bYf.length;
-    Object[] arrayOfObject1 = this.bYf;
-    Object[] arrayOfObject2 = this.bXN;
-    this.bYf = new Object[paramInt];
-    this.bXN = ((Object[])new Object[paramInt]);
+    int i = this.bVN.length;
+    Object[] arrayOfObject1 = this.bVN;
+    Object[] arrayOfObject2 = this.bVv;
+    this.bVN = new Object[paramInt];
+    this.bVv = ((Object[])new Object[paramInt]);
     paramInt = i;
     for (;;)
     {
       i = paramInt - 1;
       if (paramInt > 0)
       {
-        if ((arrayOfObject1[i] != null) && (arrayOfObject1[i] != bYh))
+        if ((arrayOfObject1[i] != null) && (arrayOfObject1[i] != bVP))
         {
           Object localObject = arrayOfObject1[i];
           paramInt = ax(localObject);
           if (paramInt < 0) {
-            m(this.bYf[(-paramInt - 1)], localObject);
+            m(this.bVN[(-paramInt - 1)], localObject);
           }
-          this.bYf[paramInt] = localObject;
-          this.bXN[paramInt] = arrayOfObject2[i];
+          this.bVN[paramInt] = localObject;
+          this.bVv[paramInt] = arrayOfObject2[i];
           paramInt = i;
         }
       }
@@ -190,11 +190,11 @@ public final class d<K, V>
       if (i != 0)
       {
         j = -k - 1;
-        localObject1 = this.bXN[j];
+        localObject1 = this.bVv[j];
       }
-      Object localObject2 = this.bYf[j];
-      this.bYf[j] = paramK;
-      this.bXN[j] = paramV;
+      Object localObject2 = this.bVN[j];
+      this.bVN[j] = paramK;
+      this.bVv[j] = paramV;
       if (i == 0) {
         if (localObject2 != null) {
           break label106;
@@ -204,7 +204,7 @@ public final class d<K, V>
     label106:
     for (boolean bool = true;; bool = false)
     {
-      bo(bool);
+      bn(bool);
       return localObject1;
       i = 0;
       break;
@@ -229,7 +229,7 @@ public final class d<K, V>
     paramObject = localObject;
     if (i >= 0)
     {
-      paramObject = this.bXN[i];
+      paramObject = this.bVv[i];
       removeAt(i);
     }
     return paramObject;
@@ -237,7 +237,7 @@ public final class d<K, V>
   
   protected final void removeAt(int paramInt)
   {
-    this.bXN[paramInt] = null;
+    this.bVv[paramInt] = null;
     super.removeAt(paramInt);
   }
   
@@ -249,36 +249,36 @@ public final class d<K, V>
   final class a
     implements Map.Entry<K, V>
   {
-    private final K aFP;
-    private V bXO;
+    private final K aGF;
+    private V bVw;
     private final int index;
     
     a(V paramV, int paramInt)
     {
-      this.aFP = paramV;
-      this.bXO = paramInt;
+      this.aGF = paramV;
+      this.bVw = paramInt;
       int i;
       this.index = i;
     }
     
     public final K getKey()
     {
-      return this.aFP;
+      return this.aGF;
     }
     
     public final V getValue()
     {
-      return this.bXO;
+      return this.bVw;
     }
     
     public final V setValue(V paramV)
     {
-      if (d.this.bXN[this.index] != this.bXO) {
+      if (d.this.bVv[this.index] != this.bVw) {
         throw new ConcurrentModificationException();
       }
-      d.this.bXN[this.index] = paramV;
-      Object localObject = this.bXO;
-      this.bXO = paramV;
+      d.this.bVv[this.index] = paramV;
+      Object localObject = this.bVw;
+      this.bVw = paramV;
       return localObject;
     }
   }
@@ -306,6 +306,23 @@ public final class d<K, V>
     }
   }
   
+  static final class c<K, V>
+    implements r<K, V>
+  {
+    private final Map<K, V> bVz;
+    
+    c(Map<K, V> paramMap)
+    {
+      this.bVz = paramMap;
+    }
+    
+    public final boolean l(K paramK, V paramV)
+    {
+      paramK = this.bVz.get(paramK);
+      return (paramK == paramV) || ((paramK != null) && (paramK.equals(paramV)));
+    }
+  }
+  
   final class d
     implements r<K, V>
   {
@@ -316,7 +333,7 @@ public final class d<K, V>
     public final boolean l(K paramK, V paramV)
     {
       int j = this.h;
-      int k = d.this.bYg.av(paramK);
+      int k = d.this.bVO.av(paramK);
       if (paramV == null) {}
       for (int i = 0;; i = paramV.hashCode())
       {
@@ -486,17 +503,17 @@ public final class d<K, V>
     {
       new c(d.this)
       {
-        protected final V gA(int paramAnonymousInt)
+        protected final V gl(int paramAnonymousInt)
         {
-          return d.this.bXN[paramAnonymousInt];
+          return d.this.bVv[paramAnonymousInt];
         }
       };
     }
     
     public final boolean removeElement(V paramV)
     {
-      Object[] arrayOfObject1 = d.this.bXN;
-      Object[] arrayOfObject2 = d.this.bYf;
+      Object[] arrayOfObject1 = d.this.bVv;
+      Object[] arrayOfObject2 = d.this.bVN;
       int i = arrayOfObject1.length;
       boolean bool = false;
       for (;;)
@@ -504,7 +521,7 @@ public final class d<K, V>
         int j = i - 1;
         if (i > 0)
         {
-          if (((arrayOfObject2[j] != null) && (arrayOfObject2[j] != n.bYh) && (paramV == arrayOfObject1[j])) || ((arrayOfObject1[j] != null) && (arrayOfObject1[j].equals(paramV))))
+          if (((arrayOfObject2[j] != null) && (arrayOfObject2[j] != n.bVP) && (paramV == arrayOfObject1[j])) || ((arrayOfObject1[j] != null) && (arrayOfObject1[j].equals(paramV))))
           {
             d.this.removeAt(j);
             bool = true;

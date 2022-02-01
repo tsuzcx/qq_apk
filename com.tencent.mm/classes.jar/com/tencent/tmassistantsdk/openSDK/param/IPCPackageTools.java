@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.tmassistantsdk.openSDK.param.jce.IPCCmd;
 import com.tencent.tmassistantsdk.openSDK.param.jce.IPCHead;
 import com.tencent.tmassistantsdk.openSDK.param.jce.IPCRequest;
@@ -75,7 +75,7 @@ public class IPCPackageTools
     {
       for (;;)
       {
-        ad.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
+        ac.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
         paramString = null;
       }
     }
@@ -83,7 +83,7 @@ public class IPCPackageTools
     {
       for (;;)
       {
-        ad.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
+        ac.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
         paramString = null;
       }
     }
@@ -91,7 +91,7 @@ public class IPCPackageTools
     {
       for (;;)
       {
-        ad.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
+        ac.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
         paramString = null;
       }
     }
@@ -134,7 +134,7 @@ public class IPCPackageTools
       }
       catch (Exception paramIPCResponse)
       {
-        ad.printErrStackTrace("IPCPackageTools", paramIPCResponse, "", new Object[0]);
+        ac.printErrStackTrace("IPCPackageTools", paramIPCResponse, "", new Object[0]);
         AppMethodBeat.o(102221);
         return null;
       }
@@ -165,7 +165,7 @@ public class IPCPackageTools
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.printErrStackTrace("IPCPackageTools", paramArrayOfByte, "", new Object[0]);
+      ac.printErrStackTrace("IPCPackageTools", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(102220);
     }
     return null;
@@ -173,7 +173,7 @@ public class IPCPackageTools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.IPCPackageTools
  * JD-Core Version:    0.7.0.1
  */

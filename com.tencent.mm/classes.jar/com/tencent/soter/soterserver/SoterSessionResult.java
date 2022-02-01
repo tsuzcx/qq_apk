@@ -9,8 +9,8 @@ public class SoterSessionResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SoterSessionResult> CREATOR;
-  public int bRZ;
-  public long dcQ;
+  public int bPH;
+  public long dao;
   
   static
   {
@@ -24,8 +24,8 @@ public class SoterSessionResult
   protected SoterSessionResult(Parcel paramParcel)
   {
     AppMethodBeat.i(88748);
-    this.dcQ = paramParcel.readLong();
-    this.bRZ = paramParcel.readInt();
+    this.dao = paramParcel.readLong();
+    this.bPH = paramParcel.readInt();
     AppMethodBeat.o(88748);
   }
   
@@ -37,14 +37,14 @@ public class SoterSessionResult
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(88749);
-    paramParcel.writeLong(this.dcQ);
-    paramParcel.writeInt(this.bRZ);
+    paramParcel.writeLong(this.dao);
+    paramParcel.writeInt(this.bPH);
     AppMethodBeat.o(88749);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.soter.soterserver.SoterSessionResult
  * JD-Core Version:    0.7.0.1
  */

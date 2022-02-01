@@ -19,10 +19,10 @@ import com.tencent.mm.plugin.mmsight.ui.b.a;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.ui.MMActivity;
 
@@ -30,33 +30,33 @@ import com.tencent.mm.ui.MMActivity;
 public class MMSightEditUI
   extends MMActivity
 {
-  private com.tencent.mm.remoteservice.d fLo;
-  private String oLh;
-  private ViewGroup pTc;
-  private VideoTransPara tCr;
-  private VideoPlayerTextureView tFN;
-  private VideoSeekBarEditorView tFO;
-  private String tFP;
-  private b tFQ;
-  private boolean tFR;
-  private boolean tFS;
-  private boolean tFT;
-  private h.a tFU;
+  private com.tencent.mm.remoteservice.d fPa;
+  private ViewGroup gnb;
+  private String poB;
   private String thumbPath;
+  private VideoTransPara uKO;
+  private VideoPlayerTextureView uOi;
+  private VideoSeekBarEditorView uOj;
+  private String uOk;
+  private b uOl;
+  private boolean uOm;
+  private boolean uOn;
+  private boolean uOo;
+  private h.a uOp;
   private String videoPath;
   
   public MMSightEditUI()
   {
     AppMethodBeat.i(94399);
-    this.fLo = new com.tencent.mm.remoteservice.d(aj.getContext());
-    this.tFR = false;
-    this.tFS = true;
-    this.tFT = false;
-    this.tFU = new h.a()
+    this.fPa = new com.tencent.mm.remoteservice.d(ai.getContext());
+    this.uOm = false;
+    this.uOn = true;
+    this.uOo = false;
+    this.uOp = new h.a()
     {
-      public final void dY(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void dZ(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
-      public final int eM(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final int eP(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         return 0;
       }
@@ -71,11 +71,11 @@ public class MMSightEditUI
       public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(94396);
-        ad.e("MicroMsg.MMSightEditUI", "%d on error what %d extra %d", new Object[] { Integer.valueOf(MMSightEditUI.this.hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ac.e("MicroMsg.MMSightEditUI", "%d on error what %d extra %d", new Object[] { Integer.valueOf(MMSightEditUI.this.hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         AppMethodBeat.o(94396);
       }
       
-      public final void rq()
+      public final void rB()
       {
         AppMethodBeat.i(94397);
         if (MMSightEditUI.j(MMSightEditUI.this) != null)
@@ -83,7 +83,7 @@ public class MMSightEditUI
           MMSightEditUI.j(MMSightEditUI.this).start();
           MMSightEditUI.j(MMSightEditUI.this).setLoop(true);
           MMSightEditUI.j(MMSightEditUI.this).setAlpha(1.0F);
-          aq.n(new Runnable()
+          ap.n(new Runnable()
           {
             public final void run()
             {
@@ -112,7 +112,7 @@ public class MMSightEditUI
   public void onBackPressed()
   {
     AppMethodBeat.i(94401);
-    if ((this.tFQ != null) && (this.tFQ.onBackPressed()))
+    if ((this.uOl != null) && (this.uOl.onBackPressed()))
     {
       AppMethodBeat.o(94401);
       return;
@@ -127,23 +127,23 @@ public class MMSightEditUI
     supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
     getWindow().addFlags(2097280);
-    if (com.tencent.mm.compatible.util.d.lf(19))
+    if (com.tencent.mm.compatible.util.d.kZ(19))
     {
       getWindow().setFlags(201327616, 201327616);
-      com.tencent.mm.plugin.mmsight.d.ne(true);
+      com.tencent.mm.plugin.mmsight.d.nX(true);
     }
     for (;;)
     {
-      CaptureMMProxy.createProxy(new CaptureMMProxy(this.fLo));
-      final long l = bt.GC();
-      this.fLo.connect(new Runnable()
+      CaptureMMProxy.createProxy(new CaptureMMProxy(this.fPa));
+      final long l = bs.Gn();
+      this.fPa.connect(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(94390);
-          ad.i("MicroMsg.MMSightEditUI", "connect cost %sms", new Object[] { Long.valueOf(bt.aS(l)) });
+          ac.i("MicroMsg.MMSightEditUI", "connect cost %sms", new Object[] { Long.valueOf(bs.aO(l)) });
           if (CaptureMMProxy.getInstance() != null) {
-            ae.ph(CaptureMMProxy.getInstance().getDeviceInfoConfig());
+            ae.st(CaptureMMProxy.getInstance().getDeviceInfoConfig());
           }
           MMSightEditUI.a(MMSightEditUI.this);
           AppMethodBeat.o(94390);
@@ -152,7 +152,7 @@ public class MMSightEditUI
       AppMethodBeat.o(94400);
       return;
       getWindow().setFlags(1024, 1024);
-      com.tencent.mm.plugin.mmsight.d.ne(false);
+      com.tencent.mm.plugin.mmsight.d.nX(false);
     }
   }
   
@@ -160,15 +160,15 @@ public class MMSightEditUI
   {
     AppMethodBeat.i(94404);
     super.onDestroy();
-    if (this.tFN != null) {
-      this.tFN.stop();
+    if (this.uOi != null) {
+      this.uOi.stop();
     }
-    if (this.tFQ != null)
+    if (this.uOl != null)
     {
-      if (this.tFT) {
-        com.tencent.mm.plugin.mmsight.a.a.a(new a.a(this.tFQ.scene));
+      if (this.uOo) {
+        com.tencent.mm.plugin.mmsight.a.a.a(new a.a(this.uOl.scene));
       }
-      this.tFQ.release();
+      this.uOl.release();
     }
     AppMethodBeat.o(94404);
   }
@@ -177,8 +177,8 @@ public class MMSightEditUI
   {
     AppMethodBeat.i(94402);
     super.onPause();
-    if (this.tFN != null) {
-      this.tFN.pause();
+    if (this.uOi != null) {
+      this.uOi.pause();
     }
     AppMethodBeat.o(94402);
   }
@@ -187,8 +187,8 @@ public class MMSightEditUI
   {
     AppMethodBeat.i(94403);
     super.onResume();
-    if (this.tFN != null) {
-      this.tFN.start();
+    if (this.uOi != null) {
+      this.uOi.start();
     }
     AppMethodBeat.o(94403);
   }
@@ -201,7 +201,7 @@ public class MMSightEditUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.MMSightEditUI
  * JD-Core Version:    0.7.0.1
  */

@@ -7,23 +7,23 @@ import java.util.List;
 
 public final class j
 {
-  private static j oVZ;
-  private SparseArray<List<a>> oWa;
+  private static j pzk;
+  private SparseArray<List<a>> pzl;
   
   private j()
   {
     AppMethodBeat.i(23375);
-    this.oWa = new SparseArray();
+    this.pzl = new SparseArray();
     AppMethodBeat.o(23375);
   }
   
-  public static j bZx()
+  public static j cgG()
   {
     AppMethodBeat.i(23376);
-    if (oVZ == null) {
-      oVZ = new j();
+    if (pzk == null) {
+      pzk = new j();
     }
-    j localj = oVZ;
+    j localj = pzk;
     AppMethodBeat.o(23376);
     return localj;
   }
@@ -36,12 +36,12 @@ public final class j
       AppMethodBeat.o(23377);
       return false;
     }
-    List localList = (List)this.oWa.get(paramInt);
+    List localList = (List)this.pzl.get(paramInt);
     Object localObject;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.oWa.put(paramInt, localObject);
+      this.pzl.put(paramInt, localObject);
     }
     do
     {
@@ -57,12 +57,12 @@ public final class j
   public final boolean b(int paramInt, a parama)
   {
     AppMethodBeat.i(23378);
-    List localList = (List)this.oWa.get(paramInt);
+    List localList = (List)this.pzl.get(paramInt);
     if (localList != null)
     {
       localList.remove(parama);
       if (localList.size() == 0) {
-        this.oWa.remove(paramInt);
+        this.pzl.remove(paramInt);
       }
     }
     AppMethodBeat.o(23378);
@@ -72,7 +72,7 @@ public final class j
   public final void h(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(23379);
-    List localList = (List)this.oWa.get(paramInt);
+    List localList = (List)this.pzl.get(paramInt);
     if ((localList == null) || (localList.size() == 0))
     {
       AppMethodBeat.o(23379);
@@ -94,7 +94,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.j
  * JD-Core Version:    0.7.0.1
  */

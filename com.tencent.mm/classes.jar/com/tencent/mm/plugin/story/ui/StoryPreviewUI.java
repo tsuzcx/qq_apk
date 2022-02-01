@@ -17,19 +17,19 @@ import d.g.b.k;
 import d.l;
 
 @a(3)
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "videoCallBack", "com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1;", "videoPlayView", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "videoCallBack", "com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1;", "videoPlayView", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-story_release"})
 public final class StoryPreviewUI
   extends MMActivity
 {
   private final String TAG;
-  private VideoPlayerTextureView tFN;
-  private final b ypV;
+  private VideoPlayerTextureView uOi;
+  private final b zDt;
   
   public StoryPreviewUI()
   {
     AppMethodBeat.i(119645);
     this.TAG = "MicroMsg.StoryPreviewUI";
-    this.ypV = new b(this);
+    this.zDt = new b(this);
     AppMethodBeat.o(119645);
   }
   
@@ -45,7 +45,7 @@ public final class StoryPreviewUI
     super.onCreate(paramBundle);
     setSelfNavigationBarVisible(8);
     getWindow().addFlags(2097280);
-    if (d.lf(19)) {
+    if (d.kZ(19)) {
       getWindow().setFlags(201327616, 201327616);
     }
     for (;;)
@@ -53,20 +53,20 @@ public final class StoryPreviewUI
       paramBundle = getIntent().getStringExtra("video_path");
       Object localObject = findViewById(2131305486);
       k.g(localObject, "findViewById(R.id.story_preview_play_view)");
-      this.tFN = ((VideoPlayerTextureView)localObject);
-      localObject = this.tFN;
+      this.uOi = ((VideoPlayerTextureView)localObject);
+      localObject = this.uOi;
       if (localObject == null) {
-        k.aPZ("videoPlayView");
+        k.aVY("videoPlayView");
       }
       ((VideoPlayerTextureView)localObject).setVideoPath(paramBundle);
-      paramBundle = this.tFN;
+      paramBundle = this.uOi;
       if (paramBundle == null) {
-        k.aPZ("videoPlayView");
+        k.aVY("videoPlayView");
       }
-      paramBundle.setVideoCallback((h.a)this.ypV);
-      paramBundle = this.tFN;
+      paramBundle.setVideoCallback((h.a)this.zDt);
+      paramBundle = this.uOi;
       if (paramBundle == null) {
-        k.aPZ("videoPlayView");
+        k.aVY("videoPlayView");
       }
       paramBundle.setAlpha(0.0F);
       findViewById(2131305485).setOnClickListener((View.OnClickListener)new StoryPreviewUI.a(this));
@@ -80,9 +80,9 @@ public final class StoryPreviewUI
   {
     AppMethodBeat.i(119644);
     super.onDestroy();
-    VideoPlayerTextureView localVideoPlayerTextureView = this.tFN;
+    VideoPlayerTextureView localVideoPlayerTextureView = this.uOi;
     if (localVideoPlayerTextureView == null) {
-      k.aPZ("videoPlayView");
+      k.aVY("videoPlayView");
     }
     localVideoPlayerTextureView.stop();
     AppMethodBeat.o(119644);
@@ -94,13 +94,13 @@ public final class StoryPreviewUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$IVideoCallback;", "onCompletion", "", "onError", "what", "", "extra", "onGetVideoSize", "width", "height", "onPlayTime", "playTime", "videoTime", "onPrepared", "plugin-story_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$IVideoCallback;", "onCompletion", "", "onError", "what", "", "extra", "onGetVideoSize", "width", "height", "onPlayTime", "playTime", "videoTime", "onPrepared", "plugin-story_release"})
   public static final class b
     implements h.a
   {
-    public final void dY(int paramInt1, int paramInt2) {}
+    public final void dZ(int paramInt1, int paramInt2) {}
     
-    public final int eM(int paramInt1, int paramInt2)
+    public final int eP(int paramInt1, int paramInt2)
     {
       return 0;
     }
@@ -108,31 +108,31 @@ public final class StoryPreviewUI
     public final void onCompletion()
     {
       AppMethodBeat.i(119642);
-      StoryPreviewUI.a(this.ypW).d(0.0D, true);
+      StoryPreviewUI.a(this.zDu).d(0.0D, true);
       AppMethodBeat.o(119642);
     }
     
     public final void onError(int paramInt1, int paramInt2) {}
     
-    public final void rq()
+    public final void rB()
     {
       AppMethodBeat.i(119641);
-      StoryPreviewUI.a(this.ypW).setOneTimeVideoTextureUpdateCallback((h.e)new a(this));
-      StoryPreviewUI.a(this.ypW).start();
+      StoryPreviewUI.a(this.zDu).setOneTimeVideoTextureUpdateCallback((h.e)new a(this));
+      StoryPreviewUI.a(this.zDu).start();
       AppMethodBeat.o(119641);
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "onTextureUpdate"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onTextureUpdate"})
     static final class a
       implements h.e
     {
       a(StoryPreviewUI.b paramb) {}
       
-      public final void beo()
+      public final void bli()
       {
         AppMethodBeat.i(119640);
-        StoryPreviewUI.a(this.ypX.ypW).setVisibility(0);
-        StoryPreviewUI.a(this.ypX.ypW).setAlpha(1.0F);
+        StoryPreviewUI.a(this.zDv.zDu).setVisibility(0);
+        StoryPreviewUI.a(this.zDv.zDu).setAlpha(1.0F);
         AppMethodBeat.o(119640);
       }
     }
@@ -140,7 +140,7 @@ public final class StoryPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.StoryPreviewUI
  * JD-Core Version:    0.7.0.1
  */

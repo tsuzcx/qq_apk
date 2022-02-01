@@ -1,196 +1,349 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.util.ArrayMap;
-import com.tencent.luggage.sdk.b.a.c;
-import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
+import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPluginPkgInfo;
-import com.tencent.mm.plugin.appbrand.appcache.WxaRuntimeModulePluginListMap;
-import com.tencent.mm.plugin.appbrand.appcache.bl;
-import com.tencent.mm.plugin.appbrand.appcache.bl.a;
-import com.tencent.mm.plugin.appbrand.appcache.q;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.sdk.platformtools.ad;
-import d.f;
-import d.g;
-import d.g.b.u;
-import d.g.b.w;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.plugin.appbrand.page.b.f;
+import com.tencent.mm.plugin.appbrand.page.b.f.a;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.sdk.platformtools.ac;
+import d.g.b.k;
+import d.l;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "", "injectPlugins", "", "moduleName", "", "useLazyCodeLoading", "", "onReloadURL", "Factory", "luggage-wechat-full-sdk_release"})
-public abstract interface bj
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPullDownExtension;", "mPageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "mPullDownWrapper", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPullDownWebView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;Lcom/tencent/mm/plugin/appbrand/page/AppBrandPullDownWebView;)V", "TAG", "", "enablePullDown", "", "enable", "", "enablePullDownRefresh", "getPullDownBackgroundColor", "", "requestDisallowInterceptTouchEvent", "disallow", "runOnUiThread", "block", "Lkotlin/Function0;", "setPullDownBackground", "style", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPullDownExtension$BackgroundTextStyle;", "color", "colorStr", "setPullDownBackgroundStyle", "setPullDownText", "text", "startPullDownRefresh", "stopPullDownRefresh", "luggage-wechat-full-sdk_release"})
+public class bj
+  implements f
 {
-  public static final a lfc = a.lfd;
+  private final String TAG;
+  private final aa caw;
+  private final ah lyI;
   
-  public abstract void au(String paramString, boolean paramBoolean);
-  
-  public abstract void bkw();
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory;", "", "()V", "createInjector", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "renderer", "Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;", "IMPL", "luggage-wechat-full-sdk_release"})
-  public static final class a
+  public bj(aa paramaa, ah paramah)
   {
-    static
+    AppMethodBeat.i(147996);
+    this.caw = paramaa;
+    this.lyI = paramah;
+    this.TAG = "Luggage.MPPageViewPullDownExtensionImpl";
+    AppMethodBeat.o(147996);
+  }
+  
+  public final void PS(final String paramString)
+  {
+    AppMethodBeat.i(147993);
+    k.h(paramString, "style");
+    if (!this.caw.isRunning())
     {
-      AppMethodBeat.i(183070);
-      lfd = new a();
-      AppMethodBeat.o(183070);
+      ac.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147993);
+      return;
     }
-    
-    public static bj d(a<?> parama)
+    this.caw.N((Runnable)new f(this, this, paramString));
+    AppMethodBeat.o(147993);
+  }
+  
+  public void a(final f.a parama, final int paramInt)
+  {
+    AppMethodBeat.i(147991);
+    k.h(parama, "style");
+    if (!this.caw.isRunning())
     {
-      AppMethodBeat.i(183069);
-      d.g.b.k.h(parama, "renderer");
-      Object localObject = (c)parama.Dj();
-      if (localObject == null) {
-        d.g.b.k.fvU();
-      }
-      localObject = ((AppBrandSysConfigLU)((c)localObject).ar(AppBrandSysConfigLU.class)).jdS;
-      WxaRuntimeModulePluginListMap localWxaRuntimeModulePluginListMap;
-      if (localObject != null)
-      {
-        localWxaRuntimeModulePluginListMap = ((WxaPkgWrappingInfo)localObject).iOV;
-        if (localWxaRuntimeModulePluginListMap == null) {}
-      }
-      for (int i = localWxaRuntimeModulePluginListMap.iPa.size(); i > 0; i = 0)
-      {
-        localObject = ((WxaPkgWrappingInfo)localObject).iOV;
-        if (localObject == null) {
-          d.g.b.k.fvU();
-        }
-        d.g.b.k.g(localObject, "wrappingInfo.separatedPlugins!!");
-        parama = (bj)new a(parama, (WxaRuntimeModulePluginListMap)localObject);
-        AppMethodBeat.o(183069);
-        return parama;
-      }
-      parama = (bj)new b();
-      AppMethodBeat.o(183069);
-      return parama;
+      ac.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147991);
+      return;
     }
-    
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory$IMPL;", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "renderer", "Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;", "separatedPluginsMap", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "(Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;)V", "TAG", "", "injectedScriptNames", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "pkgReader", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "getPkgReader", "()Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "pkgReader$delegate", "Lkotlin/Lazy;", "injectPlugins", "", "moduleName", "useLazyCodeLoading", "", "onReloadURL", "evaluateScriptFile", "fileName", "luggage-wechat-full-sdk_release"})
-    static final class a
-      implements bj
+    this.caw.N((Runnable)new d(this, this, parama, paramInt));
+    AppMethodBeat.o(147991);
+  }
+  
+  public final void brn()
+  {
+    AppMethodBeat.i(147987);
+    ac.i(this.TAG, "AppBrandPullDown invoke entered startPullDownRefresh appId:" + this.caw.getAppId() + " url:" + this.caw.getURL());
+    if (!this.caw.isRunning())
     {
-      private final String TAG;
-      private final f lfe;
-      private final HashSet<String> lff;
-      private final a<?> lfg;
-      private final WxaRuntimeModulePluginListMap lfh;
-      
-      static
+      ac.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147987);
+      return;
+    }
+    this.caw.N((Runnable)new h(this, this));
+    AppMethodBeat.o(147987);
+  }
+  
+  public final void bro()
+  {
+    AppMethodBeat.i(147988);
+    if (!this.caw.isRunning())
+    {
+      ac.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147988);
+      return;
+    }
+    this.caw.N((Runnable)new i(this, this));
+    AppMethodBeat.o(147988);
+  }
+  
+  public void dY(final String paramString1, final String paramString2)
+  {
+    AppMethodBeat.i(147992);
+    if (!this.caw.isRunning())
+    {
+      ac.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147992);
+      return;
+    }
+    this.caw.N((Runnable)new e(this, this, paramString1, paramString2));
+    AppMethodBeat.o(147992);
+  }
+  
+  public final void gZ(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(147989);
+    if (!this.caw.isRunning())
+    {
+      ac.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147989);
+      return;
+    }
+    this.caw.N((Runnable)new b(this, this, paramBoolean));
+    AppMethodBeat.o(147989);
+  }
+  
+  public final void hb(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(147990);
+    if (!this.caw.isRunning())
+    {
+      ac.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147990);
+      return;
+    }
+    this.caw.N((Runnable)new a(this, this, paramBoolean));
+    AppMethodBeat.o(147990);
+  }
+  
+  public final void requestDisallowInterceptTouchEvent(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(147995);
+    if (!this.caw.isRunning())
+    {
+      ac.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147995);
+      return;
+    }
+    this.caw.N((Runnable)new c(this, this, paramBoolean));
+    AppMethodBeat.o(147995);
+  }
+  
+  public final void setPullDownText(final String paramString)
+  {
+    AppMethodBeat.i(147994);
+    k.h(paramString, "text");
+    if (!this.caw.isRunning())
+    {
+      ac.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147994);
+      return;
+    }
+    this.caw.N((Runnable)new g(this, this, paramString));
+    AppMethodBeat.o(147994);
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class a
+    implements Runnable
+  {
+    public a(bj parambj1, bj parambj2, boolean paramBoolean) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147978);
+      if (!bj.b(this.lFr).isRunning())
       {
-        AppMethodBeat.i(183063);
-        $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(a.class), "pkgReader", "getPkgReader()Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;")) };
-        AppMethodBeat.o(183063);
+        ac.e(bj.a(this.lFr), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147978);
+        return;
       }
-      
-      public a(a<?> parama, WxaRuntimeModulePluginListMap paramWxaRuntimeModulePluginListMap)
+      bj.c(jdField_this).setPullDownEnabled(paramBoolean);
+      AppMethodBeat.o(147978);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class b
+    implements Runnable
+  {
+    public b(bj parambj1, bj parambj2, boolean paramBoolean) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147979);
+      if (!bj.b(this.lFr).isRunning())
       {
-        AppMethodBeat.i(183067);
-        this.lfg = parama;
-        this.lfh = paramWxaRuntimeModulePluginListMap;
-        this.TAG = "Luggage.FULL.IWxaPageSeparatedPluginsInjectHelper.IMPL";
-        this.lfe = g.E((d.g.a.a)new a(this));
-        this.lff = new HashSet();
-        AppMethodBeat.o(183067);
+        ac.e(bj.a(this.lFr), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147979);
+        return;
       }
-      
-      private final void a(a<?> parama, String paramString)
+      bj.c(jdField_this).setPullDownEnabled(paramBoolean);
+      bj.c(jdField_this).gZ(paramBoolean);
+      AppMethodBeat.o(147979);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class c
+    implements Runnable
+  {
+    public c(bj parambj1, bj parambj2, boolean paramBoolean) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147980);
+      if (!bj.b(this.lFr).isRunning())
       {
-        AppMethodBeat.i(183064);
-        if (this.lff.contains(paramString))
-        {
-          AppMethodBeat.o(183064);
-          return;
-        }
-        ad.i(this.TAG, "inner evaluateScriptFile fileName(" + paramString + ") hash(" + hashCode() + ')');
-        parama.dL(paramString, parama.biQ().Ky(paramString));
-        this.lff.add(paramString);
-        AppMethodBeat.o(183064);
+        ac.e(bj.a(this.lFr), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147980);
+        return;
       }
-      
-      public final void au(String paramString, boolean paramBoolean)
+      bj.c(jdField_this).requestDisallowInterceptTouchEvent(paramBoolean);
+      AppMethodBeat.o(147980);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class d
+    implements Runnable
+  {
+    public d(bj parambj1, bj parambj2, f.a parama, int paramInt) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147981);
+      if (!bj.b(this.lFr).isRunning())
       {
-        AppMethodBeat.i(183065);
-        d.g.b.k.h(paramString, "moduleName");
-        ad.i(this.TAG, "injectPlugins moduleName(" + paramString + ") useLazyCodeLoading(" + paramBoolean + ") hash(" + hashCode() + ')');
-        Object localObject2 = this.lfh.Et(paramString);
-        Object localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject1 = LaunchParcel.EW(paramString);
-          if (!d.g.b.k.g(localObject1, paramString)) {
-            break label140;
-          }
-        }
-        for (localObject1 = null; (localObject1 == null) || (((List)localObject1).isEmpty()); localObject1 = ((WxaRuntimeModulePluginListMap)localObject2).Et((String)localObject1))
-        {
-          ad.i(this.TAG, "injectPlugins, try with module(" + paramString + "), get empty pluginList");
-          AppMethodBeat.o(183065);
-          return;
-          label140:
-          localObject2 = this.lfh;
-          d.g.b.k.g(localObject1, "fixedName");
-        }
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (WxaPluginPkgInfo)((Iterator)localObject1).next();
-          bl.a locala = bl.iPj;
-          localObject2 = bl.a.a(paramString, (WxaPluginPkgInfo)localObject2);
-          if ((!paramBoolean) || (!((q)this.lfe.getValue()).DR((String)localObject2 + "/common.app.js")))
-          {
-            a(this.lfg, (String)localObject2 + "/pageframe.js");
-          }
-          else
-          {
-            a(this.lfg, (String)localObject2 + "/common.app.js");
-            a(this.lfg, (String)localObject2 + "/webview.app.js");
-          }
-        }
-        AppMethodBeat.o(183065);
+        ac.e(bj.a(this.lFr), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147981);
+        return;
       }
-      
-      public final void bkw()
+      bj.c(jdField_this).bM(parama.brB(), paramInt);
+      AppMethodBeat.o(147981);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class e
+    implements Runnable
+  {
+    public e(bj parambj1, bj parambj2, String paramString1, String paramString2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147982);
+      if (!bj.b(this.lFr).isRunning())
       {
-        AppMethodBeat.i(183066);
-        this.lff.clear();
-        AppMethodBeat.o(183066);
+        ac.e(bj.a(this.lFr), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147982);
+        return;
       }
-      
-      @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "invoke"})
-      static final class a
-        extends d.g.b.l
-        implements d.g.a.a<q>
+      bj.c(jdField_this).bM(paramString1, g.cd(paramString2, -1));
+      AppMethodBeat.o(147982);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class f
+    implements Runnable
+  {
+    public f(bj parambj1, bj parambj2, String paramString) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147983);
+      if (!bj.b(this.lFr).isRunning())
       {
-        a(bj.a.a parama)
-        {
-          super();
-        }
+        ac.e(bj.a(this.lFr), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147983);
+        return;
+      }
+      bj.c(jdField_this).setBackgroundTextStyle(paramString);
+      AppMethodBeat.o(147983);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class g
+    implements Runnable
+  {
+    public g(bj parambj1, bj parambj2, String paramString) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147984);
+      if (!bj.b(this.lFr).isRunning())
+      {
+        ac.e(bj.a(this.lFr), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147984);
+        return;
+      }
+      bj.c(jdField_this).setPullDownText(paramString);
+      AppMethodBeat.o(147984);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class h
+    implements Runnable
+  {
+    public h(bj parambj1, bj parambj2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147985);
+      if (!bj.b(this.lFr).isRunning())
+      {
+        ac.e(bj.a(this.lFr), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147985);
+        return;
+      }
+      ac.i(bj.a(jdField_this), "AppBrandPullDown OnUiThread startPullDownRefresh appId:" + bj.b(jdField_this).getAppId() + " url:" + bj.b(jdField_this).getURL());
+      try
+      {
+        bj.c(jdField_this).gZ(true);
+        bj.c(jdField_this).bqY();
+        AppMethodBeat.o(147985);
+        return;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        ac.e(bj.a(jdField_this), "AppBrandPullDown OnUiThread startPullDownRefresh appId:" + bj.b(jdField_this).getAppId() + " url:" + bj.b(jdField_this).getURL() + " e:" + localNullPointerException);
+        Throwable localThrowable = (Throwable)localNullPointerException;
+        AppMethodBeat.o(147985);
+        throw localThrowable;
       }
     }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class i
+    implements Runnable
+  {
+    public i(bj parambj1, bj parambj2) {}
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory$createInjector$1", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "injectPlugins", "", "moduleName", "", "useLazyCodeLoading", "", "onReloadURL", "luggage-wechat-full-sdk_release"})
-    public static final class b
-      implements bj
+    public final void run()
     {
-      public final void au(String paramString, boolean paramBoolean)
+      AppMethodBeat.i(147986);
+      if (!bj.b(this.lFr).isRunning())
       {
-        AppMethodBeat.i(183068);
-        d.g.b.k.h(paramString, "moduleName");
-        AppMethodBeat.o(183068);
+        ac.e(bj.a(this.lFr), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147986);
+        return;
       }
-      
-      public final void bkw() {}
+      bj.c(jdField_this).brc();
+      AppMethodBeat.o(147986);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bj
  * JD-Core Version:    0.7.0.1
  */

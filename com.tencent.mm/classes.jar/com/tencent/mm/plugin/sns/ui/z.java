@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.sns.ui;
 
 public abstract interface z
 {
-  public abstract aj dyL();
+  public abstract aj dNi();
   
-  public abstract b dyM();
+  public abstract b dNj();
   
-  public abstract bm dyN();
+  public abstract bm dNk();
   
-  public abstract bo dyO();
+  public abstract bo dNl();
 }
 
 

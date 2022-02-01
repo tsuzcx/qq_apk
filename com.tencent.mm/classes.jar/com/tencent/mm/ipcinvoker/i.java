@@ -1,14 +1,18 @@
 package com.tencent.mm.ipcinvoker;
 
+import android.app.Application;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.a.d;
+import com.tencent.mm.ipcinvoker.a.e;
 import com.tencent.mm.ipcinvoker.h.b;
+import java.util.Map;
 
 public final class i
 {
-  public static void qq(String paramString)
+  public static void tF(String paramString)
   {
     AppMethodBeat.i(158750);
-    if (c.ads().qn(paramString))
+    if (c.aeI().tC(paramString))
     {
       AppMethodBeat.o(158750);
       return;
@@ -18,25 +22,25 @@ public final class i
       public final void run()
       {
         AppMethodBeat.i(158748);
-        c localc = c.ads();
-        String str = this.fZe;
-        if (g.qp(str))
+        c localc = c.aeI();
+        String str = this.gdK;
+        if (g.tE(str))
         {
           b.i("IPC.IPCBridgeManager", "the same process(%s), do not need to build IPCBridge.", new Object[] { str });
           AppMethodBeat.o(158748);
           return;
         }
-        localc.ql(str);
+        localc.tA(str);
         AppMethodBeat.o(158748);
       }
     });
     AppMethodBeat.o(158750);
   }
   
-  public static void qr(String paramString)
+  public static void tG(String paramString)
   {
     AppMethodBeat.i(158751);
-    if (c.ads().qn(paramString))
+    if (c.aeI().tC(paramString))
     {
       AppMethodBeat.o(158751);
       return;
@@ -46,7 +50,7 @@ public final class i
       public final void run()
       {
         AppMethodBeat.i(158749);
-        c.ads().qo(this.fZe);
+        c.aeI().tD(this.gdK);
         AppMethodBeat.o(158749);
       }
     });
@@ -55,7 +59,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.i
  * JD-Core Version:    0.7.0.1
  */

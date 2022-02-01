@@ -5,20 +5,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  public static b Izh;
+  public static b KaQ;
   
   public static b b(com.tencent.e.a parama)
   {
     AppMethodBeat.i(183339);
-    if (parama.Ixv != null)
+    if (parama.JZe != null)
     {
-      parama = parama.Ixv;
+      parama = parama.JZe;
       AppMethodBeat.o(183339);
       return parama;
     }
-    int i = Math.max(1, parama.Ixs / 2);
+    int i = Math.max(1, parama.JZb / 2);
     int j = Math.max(1, i / 3);
-    switch (1.Izi[parama.Ixw.ordinal()])
+    switch (1.KaR[parama.JZf.ordinal()])
     {
     default: 
       parama = new d();
@@ -51,13 +51,13 @@ public final class h
     static
     {
       AppMethodBeat.i(183338);
-      Izj = new a("FS_POLICY", 0);
-      Izk = new a("LINEAR_POLICY", 1);
-      Izl = new a("CONST_POLICY", 2);
-      Izm = new a("THROW_POLICY", 3);
-      Izn = new a("BLOCK_INVOKER_POLICY", 4);
-      Izo = new a("DEFAULT", 5);
-      Izp = new a[] { Izj, Izk, Izl, Izm, Izn, Izo };
+      KaS = new a("FS_POLICY", 0);
+      KaT = new a("LINEAR_POLICY", 1);
+      KaU = new a("CONST_POLICY", 2);
+      KaV = new a("THROW_POLICY", 3);
+      KaW = new a("BLOCK_INVOKER_POLICY", 4);
+      KaX = new a("DEFAULT", 5);
+      KaY = new a[] { KaS, KaT, KaU, KaV, KaW, KaX };
       AppMethodBeat.o(183338);
     }
     

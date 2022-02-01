@@ -6,18 +6,18 @@ import java.util.Arrays;
 public final class t
   extends s.a.a<t>
 {
-  public static final t IBW = new t(0, i.IBd);
-  public short[] IBX;
+  public static final t Kof = new t(0, i.Knm);
+  public short[] Kog;
   
   public t(int paramInt, short[] paramArrayOfShort)
   {
     super(paramInt);
-    this.IBX = paramArrayOfShort;
+    this.Kog = paramArrayOfShort;
   }
   
   private int b(t paramt)
   {
-    return c.a(this.IBX, paramt.IBX);
+    return c.a(this.Kog, paramt.Kog);
   }
   
   public final boolean equals(Object paramObject)
@@ -31,7 +31,7 @@ public final class t
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.IBX);
+    return Arrays.hashCode(this.Kog);
   }
 }
 

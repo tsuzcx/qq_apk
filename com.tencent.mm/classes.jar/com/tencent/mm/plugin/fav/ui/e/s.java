@@ -7,8 +7,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.agq;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.protocal.protobuf.ahp;
 
 public final class s
   extends b
@@ -27,11 +27,11 @@ public final class s
     {
       paramViewGroup = new a();
       paramView = a(View.inflate(localContext, 2131493966, null), paramViewGroup, paramg);
-      paramViewGroup.ica = ((TextView)paramView.findViewById(2131299848));
+      paramViewGroup.iCg = ((TextView)paramView.findViewById(2131299848));
       a(paramViewGroup, paramg);
-      i = (int)com.tencent.mm.plugin.fav.a.b.mI(com.tencent.mm.plugin.fav.a.b.c(paramg).duration);
-      paramg = paramViewGroup.ica;
-      paramViewGroup = this.qcI.context;
+      i = (int)com.tencent.mm.plugin.fav.a.b.qw(com.tencent.mm.plugin.fav.a.b.c(paramg).duration);
+      paramg = paramViewGroup.iCg;
+      paramViewGroup = this.qLn.context;
       if (i > 0) {
         break label130;
       }
@@ -47,24 +47,24 @@ public final class s
     }
   }
   
-  public final void a(View paramView, agq paramagq)
+  public final void a(View paramView, ahp paramahp)
   {
     AppMethodBeat.i(107502);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.qaS, paramagq);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.qJy, paramahp);
     AppMethodBeat.o(107502);
   }
   
   public static final class a
     extends b.b
   {
-    TextView ica;
+    TextView iCg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.e.s
  * JD-Core Version:    0.7.0.1
  */

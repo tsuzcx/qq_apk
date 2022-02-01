@@ -16,19 +16,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.uj;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.ut;
 import com.tencent.mm.model.bn;
 import com.tencent.mm.model.bn.a;
 import com.tencent.mm.model.ce;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.af;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.c;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.e.m;
 import com.tencent.mm.wallet_core.c.ah;
@@ -40,7 +41,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -50,22 +50,22 @@ import org.json.JSONObject;
 
 public final class e
 {
-  private static final String[] AlW;
-  protected static final Pattern CjR;
-  private static final ag<Integer, Typeface> Ifq;
-  private static SimpleDateFormat oaB;
+  private static final String[] BEr;
+  protected static final Pattern DCi;
+  private static final af<Integer, Typeface> JGS;
+  private static SimpleDateFormat oEa;
   
   static
   {
     AppMethodBeat.i(73054);
-    CjR = Pattern.compile("((?:(http|https|Http|Https):\\/\\/(?:(?:[a-zA-Z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,64}(?:\\:(?:[a-zA-Z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,25})?\\@)?)?((?:(?:[a-zA-Z0-9][a-zA-Z0-9\\-\\_]{0,64}\\.)+(?:(?:aero|arpa|asia|a[cdefgilmnoqrstuwxz])|(?:biz|b[abdefghijmnorstvwyz])|(?:cat|com|coop|c[acdfghiklmnoruvxyz])|d[ejkmoz]|(?:edu|e[cegrstu])|f[ijkmor]|(?:gov|g[abdefghilmnpqrstuwy])|h[kmnrtu]|(?:info|int|i[delmnoqrst])|(?:jobs|j[emop])|k[eghimnrwyz]|l[abcikrstuvy]|(?:mil|mobi|museum|m[acdeghklmnopqrstuvwxyz])|(?:name|net|n[acefgilopruz])|(?:org|om)|(?:pro|p[aefghklmnrstwy])|qa|r[eouw]|s[abcdeghijklmnortuvyz]|(?:tel|travel|t[cdfghjklmnoprtvwz])|u[agkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw]))|(?:(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9])\\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])))(?:\\:\\d{1,5})?)(\\/(?:(?:[a-zA-Z0-9\\;\\/\\?\\:\\@\\&\\=\\#\\~\\-\\.\\+\\!\\*\\'\\(\\)\\,\\_])|(?:\\%[a-fA-F0-9]{2}))*)?");
-    AlW = new String[] { "ABC_DEBIT", "ABC_CREDIT", "CITIC_CREDIT", "CMBC_DEBIT", "COMM_DEBIT", "HSBC_DEBIT" };
-    Ifq = new ag(4);
-    oaB = null;
+    DCi = Pattern.compile("((?:(http|https|Http|Https):\\/\\/(?:(?:[a-zA-Z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,64}(?:\\:(?:[a-zA-Z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,25})?\\@)?)?((?:(?:[a-zA-Z0-9][a-zA-Z0-9\\-\\_]{0,64}\\.)+(?:(?:aero|arpa|asia|a[cdefgilmnoqrstuwxz])|(?:biz|b[abdefghijmnorstvwyz])|(?:cat|com|coop|c[acdfghiklmnoruvxyz])|d[ejkmoz]|(?:edu|e[cegrstu])|f[ijkmor]|(?:gov|g[abdefghilmnpqrstuwy])|h[kmnrtu]|(?:info|int|i[delmnoqrst])|(?:jobs|j[emop])|k[eghimnrwyz]|l[abcikrstuvy]|(?:mil|mobi|museum|m[acdeghklmnopqrstuvwxyz])|(?:name|net|n[acefgilopruz])|(?:org|om)|(?:pro|p[aefghklmnrstwy])|qa|r[eouw]|s[abcdeghijklmnortuvyz]|(?:tel|travel|t[cdfghjklmnoprtvwz])|u[agkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw]))|(?:(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9])\\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])))(?:\\:\\d{1,5})?)(\\/(?:(?:[a-zA-Z0-9\\;\\/\\?\\:\\@\\&\\=\\#\\~\\-\\.\\+\\!\\*\\'\\(\\)\\,\\_])|(?:\\%[a-fA-F0-9]{2}))*)?");
+    BEr = new String[] { "ABC_DEBIT", "ABC_CREDIT", "CITIC_CREDIT", "CMBC_DEBIT", "COMM_DEBIT", "HSBC_DEBIT" };
+    JGS = new af(4);
+    oEa = null;
     AppMethodBeat.o(73054);
   }
   
-  public static String D(double paramDouble)
+  public static String C(double paramDouble)
   {
     AppMethodBeat.i(72996);
     String str = String.format("%.2f", new Object[] { Double.valueOf(paramDouble) });
@@ -73,7 +73,7 @@ public final class e
     return str;
   }
   
-  public static String E(double paramDouble)
+  public static String D(double paramDouble)
   {
     AppMethodBeat.i(72995);
     String str = d(paramDouble, "");
@@ -81,7 +81,7 @@ public final class e
     return str;
   }
   
-  public static long F(double paramDouble)
+  public static long E(double paramDouble)
   {
     AppMethodBeat.i(73018);
     long l = Math.round(100.0D * paramDouble);
@@ -101,7 +101,7 @@ public final class e
     if (paramBitmap == null) {}
     for (;;)
     {
-      ad.d("MicroMsg.WalletBaseUtil ", bool + "  degree:90.0");
+      ac.d("MicroMsg.WalletBaseUtil ", bool + "  degree:90.0");
       AppMethodBeat.o(73026);
       return paramBitmap;
       bool = false;
@@ -115,16 +115,6 @@ public final class e
       paramBitmap.recycle();
     }
     AppMethodBeat.o(73025);
-  }
-  
-  public static void X(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(182535);
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramIntent);
-    localIntent.putExtra("allow_mix_content_mode", false);
-    com.tencent.mm.bs.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
-    AppMethodBeat.o(182535);
   }
   
   public static long a(String paramString1, String paramString2, RoundingMode paramRoundingMode)
@@ -158,7 +148,7 @@ public final class e
     AppMethodBeat.i(73040);
     try
     {
-      if (bt.getDouble(paramString1, 0.0D) == 0.0D) {}
+      if (bs.getDouble(paramString1, 0.0D) == 0.0D) {}
       for (paramString1 = "0";; paramString1 = paramString1.trim())
       {
         paramString1 = new BigDecimal(paramString1).divide(new BigDecimal(paramString2.trim()), paramInt, paramRoundingMode);
@@ -169,7 +159,7 @@ public final class e
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.WalletBaseUtil ", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.WalletBaseUtil ", paramString1, "", new Object[0]);
       paramString1 = new BigDecimal(0);
       AppMethodBeat.o(73040);
     }
@@ -182,7 +172,7 @@ public final class e
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("showShare", paramBoolean);
     localIntent.putExtra("allow_mix_content_mode", false);
-    com.tencent.mm.bs.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent, paramInt);
+    com.tencent.mm.br.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent, paramInt);
     AppMethodBeat.o(73003);
   }
   
@@ -191,32 +181,32 @@ public final class e
     AppMethodBeat.i(73031);
     if (paramTextView == null)
     {
-      ad.e("MicroMsg.WalletBaseUtil ", "hy: text view is null.");
+      ac.e("MicroMsg.WalletBaseUtil ", "hy: text view is null.");
       AppMethodBeat.o(73031);
       return;
     }
-    if (bt.isNullOrNil(paramString2))
+    if (bs.isNullOrNil(paramString2))
     {
-      ad.w("MicroMsg.WalletBaseUtil ", "hy: msg is null. set text view to gone");
+      ac.w("MicroMsg.WalletBaseUtil ", "hy: msg is null. set text view to gone");
       paramTextView.setVisibility(8);
       AppMethodBeat.o(73031);
       return;
     }
     paramTextView.setVisibility(0);
     paramTextView.setText(paramString2);
-    com.tencent.mm.protocal.g.fL(aNl(paramString1), 0);
-    if (!bt.isNullOrNil(paramString3)) {
+    com.tencent.mm.protocal.g.fS(aSO(paramString1), 0);
+    if (!bs.isNullOrNil(paramString3)) {
       paramTextView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72987);
-          ad.i("MicroMsg.WalletBaseUtil ", "hy: on click banner");
+          ac.i("MicroMsg.WalletBaseUtil ", "hy: on click banner");
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("rawUrl", this.val$url);
           paramAnonymousView.putExtra("showShare", true);
-          com.tencent.mm.bs.d.b(paramTextView.getContext(), "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramAnonymousView);
-          com.tencent.mm.protocal.g.fL(e.aLi(paramString1), 1);
+          com.tencent.mm.br.d.b(paramTextView.getContext(), "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramAnonymousView);
+          com.tencent.mm.protocal.g.fS(e.aQM(paramString1), 1);
           AppMethodBeat.o(72987);
         }
       });
@@ -224,99 +214,19 @@ public final class e
     AppMethodBeat.o(73031);
   }
   
-  public static void a(String paramString, final b paramb)
+  public static void a(String paramString, e.b paramb)
   {
     AppMethodBeat.i(73020);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(new bn(new bn.a()
-    {
-      public final void a(com.tencent.mm.network.e paramAnonymouse)
-      {
-        AppMethodBeat.i(72984);
-        if ((paramAnonymouse == null) || (paramAnonymouse.avg() == null))
-        {
-          AppMethodBeat.o(72984);
-          return;
-        }
-        if (bt.isNullOrNil(this.val$key))
-        {
-          ad.w("MicroMsg.WalletBaseUtil ", "hy: key is null");
-          AppMethodBeat.o(72984);
-          return;
-        }
-        try
-        {
-          paramAnonymouse = paramAnonymouse.avg().wh(this.val$key);
-          if (paramb == null) {
-            break label145;
-          }
-          if (paramAnonymouse != null)
-          {
-            paramb.dm(e.cB(paramAnonymouse));
-            AppMethodBeat.o(72984);
-            return;
-          }
-        }
-        catch (Exception paramAnonymouse)
-        {
-          ad.e("MicroMsg.WalletBaseUtil ", "hy: deserialize failed: %s", new Object[] { paramAnonymouse.toString() });
-          if (paramb != null) {
-            paramb.dm(null);
-          }
-          AppMethodBeat.o(72984);
-          return;
-        }
-        paramb.dm(null);
-        label145:
-        AppMethodBeat.o(72984);
-      }
-    }), 0);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(new bn(new e.4(paramString, paramb)), 0);
     AppMethodBeat.o(73020);
   }
   
   public static void a(e.c... paramVarArgs)
   {
     AppMethodBeat.i(73019);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(new bn(new bn.a()
-    {
-      public final void a(com.tencent.mm.network.e paramAnonymouse)
-      {
-        AppMethodBeat.i(72983);
-        if ((paramAnonymouse == null) || (paramAnonymouse.avg() == null))
-        {
-          AppMethodBeat.o(72983);
-          return;
-        }
-        if ((this.Ifs == null) || (this.Ifs.length == 0))
-        {
-          ad.w("MicroMsg.WalletBaseUtil ", "hy: kvs is null or length is 0");
-          AppMethodBeat.o(72983);
-          return;
-        }
-        try
-        {
-          e.c[] arrayOfc = this.Ifs;
-          int j = arrayOfc.length;
-          int i = 0;
-          while (i < j)
-          {
-            e.c localc = arrayOfc[i];
-            if ((localc != null) && (!bt.isNullOrNil(localc.key))) {
-              paramAnonymouse.avg().i(localc.key, e.em(localc.bXO));
-            }
-            i += 1;
-          }
-          AppMethodBeat.o(72983);
-          return;
-        }
-        catch (Exception paramAnonymouse)
-        {
-          ad.e("MicroMsg.WalletBaseUtil ", "hy: serialize failed: %s", new Object[] { paramAnonymouse.toString() });
-          AppMethodBeat.o(72983);
-        }
-      }
-    }), 0);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(new bn(new e.3(paramVarArgs)), 0);
     AppMethodBeat.o(73019);
   }
   
@@ -339,7 +249,7 @@ public final class e
     if (j > 0)
     {
       j += 10;
-      ad.i("MicroMsg.WalletBaseUtil ", "adjust max width: %s", new Object[] { Integer.valueOf(j) });
+      ac.i("MicroMsg.WalletBaseUtil ", "adjust max width: %s", new Object[] { Integer.valueOf(j) });
       i = k;
       while (i < paramArrayOfWalletFormView.length)
       {
@@ -350,70 +260,15 @@ public final class e
     AppMethodBeat.o(182534);
   }
   
-  public static void a(String[] paramArrayOfString, final a parama)
+  public static void a(String[] paramArrayOfString, e.a parama)
   {
     AppMethodBeat.i(73029);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(new bn(new bn.a()
-    {
-      public final void a(com.tencent.mm.network.e paramAnonymouse)
-      {
-        AppMethodBeat.i(72986);
-        if ((paramAnonymouse == null) || (paramAnonymouse.avg() == null))
-        {
-          AppMethodBeat.o(72986);
-          return;
-        }
-        if ((this.Ifu == null) || (this.Ifu.length == 0))
-        {
-          ad.w("MicroMsg.WalletBaseUtil ", "hy: keys is null");
-          AppMethodBeat.o(72986);
-          return;
-        }
-        HashMap localHashMap = new HashMap();
-        int i = 0;
-        for (;;)
-        {
-          try
-          {
-            if (i < this.Ifu.length)
-            {
-              String str = this.Ifu[i];
-              if (!bt.isNullOrNil(str))
-              {
-                byte[] arrayOfByte = paramAnonymouse.avg().wh(str);
-                if (arrayOfByte != null) {
-                  localHashMap.put(str, e.cB(arrayOfByte));
-                }
-              }
-              else
-              {
-                ad.e("MicroMsg.WalletBaseUtil ", "hy: key is null");
-              }
-            }
-          }
-          catch (Exception paramAnonymouse)
-          {
-            ad.e("MicroMsg.WalletBaseUtil ", "hy: deserialize failed: %s", new Object[] { paramAnonymouse.toString() });
-            if (parama != null) {
-              parama.aP(null);
-            }
-            AppMethodBeat.o(72986);
-            return;
-          }
-          if (parama != null) {
-            parama.aP(localHashMap);
-          }
-          AppMethodBeat.o(72986);
-          return;
-          i += 1;
-        }
-      }
-    }), 0);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(new bn(new e.6(paramArrayOfString, parama)), 0);
     AppMethodBeat.o(73029);
   }
   
-  public static Typeface aI(Context paramContext, int paramInt)
+  public static Typeface aO(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(72991);
     if (paramInt == 8)
@@ -426,30 +281,30 @@ public final class e
     {
       if (Build.VERSION.SDK_INT > 23)
       {
-        paramContext = Typeface.createFromAsset(paramContext.getAssets(), abw(paramInt));
+        paramContext = Typeface.createFromAsset(paramContext.getAssets(), adP(paramInt));
         AppMethodBeat.o(72991);
         return paramContext;
       }
-      Typeface localTypeface2 = (Typeface)Ifq.get(Integer.valueOf(paramInt));
+      Typeface localTypeface2 = (Typeface)JGS.get(Integer.valueOf(paramInt));
       Typeface localTypeface1 = localTypeface2;
       if (localTypeface2 == null)
       {
-        localTypeface1 = Typeface.createFromAsset(paramContext.getAssets(), abw(paramInt));
-        Ifq.put(Integer.valueOf(paramInt), localTypeface1);
+        localTypeface1 = Typeface.createFromAsset(paramContext.getAssets(), adP(paramInt));
+        JGS.put(Integer.valueOf(paramInt), localTypeface1);
       }
       AppMethodBeat.o(72991);
       return localTypeface1;
     }
     catch (Exception paramContext)
     {
-      ad.e("MicroMsg.WalletBaseUtil ", "getWalletTypeface() Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
+      ac.e("MicroMsg.WalletBaseUtil ", "getWalletTypeface() Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
       paramContext = Typeface.DEFAULT;
       AppMethodBeat.o(72991);
     }
     return paramContext;
   }
   
-  public static String aNc(String paramString)
+  public static String aSF(String paramString)
   {
     AppMethodBeat.i(72994);
     if ("CNY".equals(paramString))
@@ -462,9 +317,9 @@ public final class e
       AppMethodBeat.o(72994);
       return "R";
     }
-    if (("1".equals(paramString)) || (bt.isNullOrNil(paramString)))
+    if (("1".equals(paramString)) || (bs.isNullOrNil(paramString)))
     {
-      paramString = ah.fkg();
+      paramString = ah.fAw();
       AppMethodBeat.o(72994);
       return paramString;
     }
@@ -472,10 +327,10 @@ public final class e
     return paramString;
   }
   
-  public static String aNd(String paramString)
+  public static String aSG(String paramString)
   {
     AppMethodBeat.i(72997);
-    if (("CNY".equals(paramString)) || ("1".equals(paramString)) || (bt.isNullOrNil(paramString)))
+    if (("CNY".equals(paramString)) || ("1".equals(paramString)) || (bs.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(72997);
       return "¥";
@@ -484,10 +339,10 @@ public final class e
     return paramString;
   }
   
-  public static boolean aNe(String paramString)
+  public static boolean aSH(String paramString)
   {
     AppMethodBeat.i(73007);
-    if (!CjR.matcher(paramString).matches())
+    if (!DCi.matcher(paramString).matches())
     {
       AppMethodBeat.o(73007);
       return false;
@@ -496,10 +351,10 @@ public final class e
     return true;
   }
   
-  public static String aNf(String paramString)
+  public static String aSI(String paramString)
   {
     AppMethodBeat.i(73008);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(73008);
       return paramString;
@@ -516,7 +371,7 @@ public final class e
     return paramString;
   }
   
-  public static String aNg(String paramString)
+  public static String aSJ(String paramString)
   {
     AppMethodBeat.i(73011);
     if ((paramString != null) && (paramString.length() > 8))
@@ -532,16 +387,16 @@ public final class e
     return paramString;
   }
   
-  public static String aNh(String paramString)
+  public static String aSK(String paramString)
   {
     AppMethodBeat.i(73012);
     if ((paramString != null) && (paramString.length() > 0))
     {
       String str = paramString.substring(1, paramString.length());
-      ad.d("MicroMsg.WalletBaseUtil ", "tail : ".concat(String.valueOf(str)));
+      ac.d("MicroMsg.WalletBaseUtil ", "tail : ".concat(String.valueOf(str)));
       paramString = paramString.substring(0, 1);
-      ad.d("MicroMsg.WalletBaseUtil ", "head : ".concat(String.valueOf(paramString)));
-      ad.d("MicroMsg.WalletBaseUtil ", "after : ".concat(String.valueOf(paramString)));
+      ac.d("MicroMsg.WalletBaseUtil ", "head : ".concat(String.valueOf(paramString)));
+      ac.d("MicroMsg.WalletBaseUtil ", "after : ".concat(String.valueOf(paramString)));
       paramString = "*".concat(String.valueOf(str));
       AppMethodBeat.o(73012);
       return paramString;
@@ -550,7 +405,7 @@ public final class e
     return "";
   }
   
-  public static String aNi(String paramString)
+  public static String aSL(String paramString)
   {
     AppMethodBeat.i(73013);
     if ((paramString != null) && (paramString.length() >= 2))
@@ -559,12 +414,12 @@ public final class e
       AppMethodBeat.o(73013);
       return paramString;
     }
-    paramString = aNh(paramString);
+    paramString = aSK(paramString);
     AppMethodBeat.o(73013);
     return paramString;
   }
   
-  public static String aNj(String paramString)
+  public static String aSM(String paramString)
   {
     AppMethodBeat.i(73022);
     if (TextUtils.isEmpty(paramString))
@@ -578,7 +433,7 @@ public final class e
     while (i < k + 1)
     {
       int j = Math.min((i + 1) * 4, paramString.length());
-      localStringBuilder.append(lL(paramString.substring(i * 4, j), ""));
+      localStringBuilder.append(mi(paramString.substring(i * 4, j), ""));
       if (j - i * 4 == 4)
       {
         j = 0;
@@ -595,7 +450,7 @@ public final class e
     return paramString;
   }
   
-  public static String aNk(String paramString)
+  public static String aSN(String paramString)
   {
     AppMethodBeat.i(73023);
     if (TextUtils.isEmpty(paramString))
@@ -613,7 +468,7 @@ public final class e
       if (k + 4 > paramString.length()) {
         j = paramString.length();
       }
-      localStringBuilder.append(lL(paramString.substring(i * 4, j), " "));
+      localStringBuilder.append(mi(paramString.substring(i * 4, j), " "));
       if (j - i * 4 == 4)
       {
         j = 0;
@@ -630,7 +485,7 @@ public final class e
     return paramString;
   }
   
-  private static int aNl(String paramString)
+  private static int aSO(String paramString)
   {
     AppMethodBeat.i(73032);
     if ("1".equals(paramString))
@@ -677,10 +532,10 @@ public final class e
     return -1;
   }
   
-  public static String aNm(String paramString)
+  public static String aSP(String paramString)
   {
     AppMethodBeat.i(73034);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(73034);
       return paramString;
@@ -695,71 +550,56 @@ public final class e
     return paramString;
   }
   
-  public static int aNn(String paramString)
+  public static int aSQ(String paramString)
   {
     AppMethodBeat.i(73046);
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() < 2))
+    if ((bs.isNullOrNil(paramString)) || (paramString.length() < 2))
     {
-      ad.w("MicroMsg.WalletBaseUtil ", "illegal reqkey: %s", new Object[] { paramString });
+      ac.w("MicroMsg.WalletBaseUtil ", "illegal reqkey: %s", new Object[] { paramString });
       AppMethodBeat.o(73046);
       return 0;
     }
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aty().qu("100456");
+    c localc = com.tencent.mm.model.c.d.aAp().tJ("100456");
     if (!localc.isValid())
     {
-      ad.w("MicroMsg.WalletBaseUtil ", "invalid abtest value");
+      ac.w("MicroMsg.WalletBaseUtil ", "invalid abtest value");
       AppMethodBeat.o(73046);
       return 0;
     }
-    if (bt.getInt((String)localc.eJy().get("open"), 0) == 0)
+    if (bs.getInt((String)localc.eYV().get("open"), 0) == 0)
     {
-      ad.i("MicroMsg.WalletBaseUtil ", "abtest unopened");
+      ac.i("MicroMsg.WalletBaseUtil ", "abtest unopened");
       AppMethodBeat.o(73046);
       return 0;
     }
     if ((paramString.startsWith("ts_wx")) || (paramString.startsWith("offline_wx")) || (paramString.startsWith("up_wx")) || (paramString.startsWith("wx"))) {}
-    for (int i = bt.getInt(paramString.substring(paramString.length() - 2), 0);; i = 0)
+    for (int i = bs.getInt(paramString.substring(paramString.length() - 2), 0);; i = 0)
     {
-      ad.d("MicroMsg.WalletBaseUtil ", "parse group id: %s, reqKey: %s", new Object[] { Integer.valueOf(i), paramString });
+      ac.d("MicroMsg.WalletBaseUtil ", "parse group id: %s, reqKey: %s", new Object[] { Integer.valueOf(i), paramString });
       AppMethodBeat.o(73046);
       return i;
     }
   }
   
-  public static void aNo(String paramString)
+  public static void aSR(String paramString)
   {
     AppMethodBeat.i(73047);
     String str = paramString;
-    if (bt.isNullOrNil(paramString)) {
-      str = aj.getContext().getString(2131765901);
+    if (bs.isNullOrNil(paramString)) {
+      str = ai.getContext().getString(2131765901);
     }
-    Toast.makeText(aj.getContext(), str, 1).show();
+    Toast.makeText(ai.getContext(), str, 1).show();
     AppMethodBeat.o(73047);
   }
   
-  public static void aQ(ArrayList<Bitmap> paramArrayList)
-  {
-    AppMethodBeat.i(73024);
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      int i = paramArrayList.size() - 1;
-      while (i > 0)
-      {
-        T((Bitmap)paramArrayList.remove(i));
-        i -= 1;
-      }
-    }
-    AppMethodBeat.o(73024);
-  }
-  
-  public static void aS(Context paramContext, String paramString)
+  public static void aT(Context paramContext, String paramString)
   {
     AppMethodBeat.i(182537);
-    p(paramContext, paramString, true);
+    o(paramContext, paramString, true);
     AppMethodBeat.o(182537);
   }
   
-  public static void aS(View paramView, int paramInt)
+  public static void aT(View paramView, int paramInt)
   {
     AppMethodBeat.i(73045);
     View localView = (View)paramView.getParent();
@@ -767,7 +607,23 @@ public final class e
     AppMethodBeat.o(73045);
   }
   
-  public static String abw(int paramInt)
+  public static void ad(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(73004);
+    if (TextUtils.isEmpty(paramString))
+    {
+      ac.v("MicroMsg.WalletBaseUtil ", "username is null");
+      AppMethodBeat.o(73004);
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("Contact_User", paramString);
+    localIntent.putExtra("force_get_contact", true);
+    com.tencent.mm.br.d.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
+    AppMethodBeat.o(73004);
+  }
+  
+  public static String adP(int paramInt)
   {
     switch (paramInt)
     {
@@ -791,7 +647,7 @@ public final class e
     return "fonts/WeChatSansStd-Regular.ttf";
   }
   
-  public static String abx(int paramInt)
+  public static String adQ(int paramInt)
   {
     AppMethodBeat.i(72999);
     String str = a(paramInt, new SimpleDateFormat("MM-dd HH:mm"), new SimpleDateFormat("yyyy-MM-dd HH:mm"));
@@ -799,74 +655,68 @@ public final class e
     return str;
   }
   
-  public static void aby(int paramInt)
+  public static void adR(int paramInt)
   {
     AppMethodBeat.i(73030);
-    com.tencent.mm.plugin.report.service.h.vKh.f(12719, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1) });
+    com.tencent.mm.plugin.report.service.h.wUl.f(12719, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1) });
     AppMethodBeat.o(73030);
-  }
-  
-  public static void ac(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(73004);
-    if (TextUtils.isEmpty(paramString))
-    {
-      ad.v("MicroMsg.WalletBaseUtil ", "username is null");
-      AppMethodBeat.o(73004);
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("Contact_User", paramString);
-    localIntent.putExtra("force_get_contact", true);
-    com.tencent.mm.bs.d.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
-    AppMethodBeat.o(73004);
-  }
-  
-  public static void ad(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(73001);
-    if (TextUtils.isEmpty(paramString))
-    {
-      ad.v("MicroMsg.WalletBaseUtil ", "username is null");
-      AppMethodBeat.o(73001);
-      return;
-    }
-    if (w.sD(paramString))
-    {
-      ae(paramContext, paramString);
-      AppMethodBeat.o(73001);
-      return;
-    }
-    ac(paramContext, paramString);
-    AppMethodBeat.o(73001);
   }
   
   public static void ae(Context paramContext, String paramString)
   {
+    AppMethodBeat.i(73001);
+    if (TextUtils.isEmpty(paramString))
+    {
+      ac.v("MicroMsg.WalletBaseUtil ", "username is null");
+      AppMethodBeat.o(73001);
+      return;
+    }
+    if (w.wG(paramString))
+    {
+      af(paramContext, paramString);
+      AppMethodBeat.o(73001);
+      return;
+    }
+    ad(paramContext, paramString);
+    AppMethodBeat.o(73001);
+  }
+  
+  public static void af(Context paramContext, String paramString)
+  {
     AppMethodBeat.i(73006);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.v("MicroMsg.WalletBaseUtil ", "username is null");
+      ac.v("MicroMsg.WalletBaseUtil ", "username is null");
       AppMethodBeat.o(73006);
       return;
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("Chat_User", paramString);
     localIntent.putExtra("finish_direct", true);
-    com.tencent.mm.bs.d.e(paramContext, ".ui.chatting.ChattingUI", localIntent);
+    com.tencent.mm.br.d.e(paramContext, ".ui.chatting.ChattingUI", localIntent);
     AppMethodBeat.o(73006);
   }
   
-  public static void ah(Context paramContext, String paramString)
+  public static void ai(Context paramContext, String paramString)
   {
     AppMethodBeat.i(73049);
     e.2 local2 = new e.2(paramContext);
     String str = paramString;
-    if (bt.isNullOrNil(paramString)) {
-      str = aj.getContext().getString(2131765901);
+    if (bs.isNullOrNil(paramString)) {
+      str = ai.getContext().getString(2131765901);
     }
     com.tencent.mm.ui.base.h.d(paramContext, str, "", local2);
     AppMethodBeat.o(73049);
+  }
+  
+  public static void al(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(182535);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramIntent);
+    localIntent.putExtra("allow_mix_content_mode", false);
+    com.tencent.mm.br.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.o(182535);
   }
   
   public static double b(String paramString1, String paramString2, RoundingMode paramRoundingMode)
@@ -882,8 +732,8 @@ public final class e
     AppMethodBeat.i(73044);
     try
     {
-      double d1 = bt.getDouble(paramString1, 0.0D);
-      double d2 = bt.getDouble(paramString2, 0.0D);
+      double d1 = bs.getDouble(paramString1, 0.0D);
+      double d2 = bs.getDouble(paramString2, 0.0D);
       BigDecimal localBigDecimal;
       if (d1 == 0.0D)
       {
@@ -906,7 +756,7 @@ public final class e
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.WalletBaseUtil ", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.WalletBaseUtil ", paramString1, "", new Object[0]);
       paramString1 = new BigDecimal(0);
       AppMethodBeat.o(73044);
     }
@@ -918,7 +768,7 @@ public final class e
     Intent localIntent = new Intent();
     localIntent.putExtras(paramIntent);
     localIntent.putExtra("allow_mix_content_mode", false);
-    com.tencent.mm.bs.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent, paramInt);
+    com.tencent.mm.br.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent, paramInt);
     AppMethodBeat.o(182536);
   }
   
@@ -934,7 +784,7 @@ public final class e
       localLinkedList1.add(paramContext.getString(2131765082));
       localLinkedList2.add(Integer.valueOf(1));
     }
-    if ((paramBoolean1) && (!bt.isNullOrNil(paramString2)))
+    if ((paramBoolean1) && (!bs.isNullOrNil(paramString2)))
     {
       localLinkedList1.add(paramContext.getString(2131765085, new Object[] { paramString2 }));
       localLinkedList2.add(Integer.valueOf(2));
@@ -945,19 +795,27 @@ public final class e
     AppMethodBeat.o(73014);
   }
   
+  public static void bc(ArrayList<Bitmap> paramArrayList)
+  {
+    AppMethodBeat.i(73024);
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      int i = paramArrayList.size() - 1;
+      while (i > 0)
+      {
+        T((Bitmap)paramArrayList.remove(i));
+        i -= 1;
+      }
+    }
+    AppMethodBeat.o(73024);
+  }
+  
   public static double c(String paramString1, String paramString2, RoundingMode paramRoundingMode)
   {
     AppMethodBeat.i(73041);
     double d = b(paramString1, paramString2, 2, paramRoundingMode).doubleValue();
     AppMethodBeat.o(73041);
     return d;
-  }
-  
-  public static void c(int paramInt1, long paramLong, int paramInt2)
-  {
-    AppMethodBeat.i(73033);
-    com.tencent.mm.plugin.report.service.h.vKh.f(13375, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(1), Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(73033);
   }
   
   public static Typeface cl(Context paramContext, String paramString)
@@ -975,7 +833,7 @@ public final class e
     }
     for (j = 8;; j = 4)
     {
-      paramContext = aI(paramContext, j);
+      paramContext = aO(paramContext, j);
       AppMethodBeat.o(72990);
       return paramContext;
       if (!paramString.equals("sans_ss")) {
@@ -996,30 +854,30 @@ public final class e
     AppMethodBeat.i(163888);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.v("MicroMsg.WalletBaseUtil ", "username is null");
+      ac.v("MicroMsg.WalletBaseUtil ", "username is null");
       AppMethodBeat.o(163888);
       return;
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("Contact_User", paramString);
     localIntent.putExtra("force_get_contact", true);
-    com.tencent.mm.bs.d.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent, 2);
+    com.tencent.mm.br.d.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent, 2);
     AppMethodBeat.o(163888);
   }
   
   public static void cn(Context paramContext, String paramString)
   {
     AppMethodBeat.i(73017);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(73017);
       return;
     }
     paramString = new Intent("android.intent.action.DIAL", Uri.parse("tel:".concat(String.valueOf(paramString))));
     paramString.addFlags(268435456);
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.adn(), "com/tencent/mm/wallet_core/ui/WalletBaseUtil", "dial", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString.lS(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/wallet_core/ui/WalletBaseUtil", "dial", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/wallet_core/ui/WalletBaseUtil", "dial", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(73017);
   }
@@ -1031,7 +889,7 @@ public final class e
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("showShare", false);
     localIntent.putExtra("pay_channel", 1);
-    com.tencent.mm.bs.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+    com.tencent.mm.br.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(73028);
   }
   
@@ -1042,8 +900,8 @@ public final class e
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("showShare", false);
     localIntent.putExtra("pay_channel", 1);
-    localIntent.putExtra(e.m.FIC, true);
-    com.tencent.mm.bs.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+    localIntent.putExtra(e.m.HhK, true);
+    com.tencent.mm.br.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(162284);
   }
   
@@ -1051,8 +909,8 @@ public final class e
   {
     AppMethodBeat.i(73048);
     String str = paramString;
-    if (bt.isNullOrNil(paramString)) {
-      str = aj.getContext().getString(2131765901);
+    if (bs.isNullOrNil(paramString)) {
+      str = ai.getContext().getString(2131765901);
     }
     com.tencent.mm.ui.base.h.d(paramContext, str, "", new DialogInterface.OnClickListener()
     {
@@ -1076,9 +934,9 @@ public final class e
       AppMethodBeat.o(72993);
       return paramString;
     }
-    if (("1".equals(paramString)) || (bt.isNullOrNil(paramString)))
+    if (("1".equals(paramString)) || (bs.isNullOrNil(paramString)))
     {
-      paramString = String.format(ah.fkg() + "%.2f", new Object[] { Double.valueOf(paramDouble) });
+      paramString = String.format(ah.fAw() + "%.2f", new Object[] { Double.valueOf(paramDouble) });
       AppMethodBeat.o(72993);
       return paramString;
     }
@@ -1087,45 +945,54 @@ public final class e
     return paramString;
   }
   
+  public static void d(int paramInt1, long paramLong, int paramInt2)
+  {
+    AppMethodBeat.i(73033);
+    com.tencent.mm.plugin.report.service.h.wUl.f(13375, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(1), Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(73033);
+  }
+  
   public static void d(MMActivity paramMMActivity, String paramString)
   {
     AppMethodBeat.i(73015);
     Intent localIntent = new Intent();
     localIntent.putExtra("BaseScanUI_select_scan_mode", 7);
     localIntent.putExtra("bank_card_owner", paramString);
-    com.tencent.mm.bs.d.b(paramMMActivity, "scanner", ".ui.ScanCardUI", localIntent);
+    com.tencent.mm.br.d.b(paramMMActivity, "scanner", ".ui.ScanCardUI", localIntent);
     AppMethodBeat.o(73015);
   }
   
   public static void f(TextView paramTextView, String paramString)
   {
     AppMethodBeat.i(73037);
-    paramString = go(paramString, 10);
+    paramString = gs(paramString, 10);
     paramTextView.setText(com.tencent.mm.pluginsdk.ui.span.k.b(paramTextView.getContext(), paramString, paramTextView.getTextSize()));
     AppMethodBeat.o(73037);
   }
   
-  public static void fkA()
+  public static void fAP() {}
+  
+  public static void fAQ()
   {
     AppMethodBeat.i(73021);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(new bn(new bn.a()
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(new bn(new bn.a()
     {
       public final void a(com.tencent.mm.network.e paramAnonymouse)
       {
         AppMethodBeat.i(72985);
-        paramAnonymouse.avi();
+        paramAnonymouse.aCb();
         AppMethodBeat.o(72985);
       }
     }), 0);
     AppMethodBeat.o(73021);
   }
   
-  public static String fkB()
+  public static String fAR()
   {
     AppMethodBeat.i(162285);
-    if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pqw, 0) == 0) {}
-    for (long l = ce.asS();; l = ce.asQ())
+    if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pUj, 0) == 0) {}
+    for (long l = ce.azJ();; l = ce.azH())
     {
       String str = Long.toString(l / 1000L);
       AppMethodBeat.o(162285);
@@ -1133,12 +1000,10 @@ public final class e
     }
   }
   
-  public static void fkz() {}
-  
-  public static Typeface fy(Context paramContext)
+  public static Typeface fK(Context paramContext)
   {
     AppMethodBeat.i(72989);
-    paramContext = aI(paramContext, 4);
+    paramContext = aO(paramContext, 4);
     AppMethodBeat.o(72989);
     return paramContext;
   }
@@ -1146,16 +1011,16 @@ public final class e
   public static String getUsername()
   {
     AppMethodBeat.i(73010);
-    com.tencent.mm.kernel.g.afz().aeD();
-    String str = u.aqG();
+    com.tencent.mm.kernel.g.agP().afT();
+    String str = u.axw();
     AppMethodBeat.o(73010);
     return str;
   }
   
-  public static String gn(String paramString, int paramInt)
+  public static String gr(String paramString, int paramInt)
   {
     AppMethodBeat.i(73035);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(73035);
       return paramString;
@@ -1170,31 +1035,39 @@ public final class e
     return paramString;
   }
   
-  public static String go(String paramString, int paramInt)
+  public static String gs(String paramString, int paramInt)
   {
     AppMethodBeat.i(73036);
-    paramString = gn(sh(paramString), paramInt);
+    paramString = gr(wk(paramString), paramInt);
     AppMethodBeat.o(73036);
     return paramString;
   }
   
-  public static void kq(Context paramContext)
+  public static void kC(Context paramContext)
   {
     AppMethodBeat.i(73005);
     if (paramContext == null)
     {
-      ad.e("MicroMsg.WalletBaseUtil ", "hy: jump to preference error. context is null");
+      ac.e("MicroMsg.WalletBaseUtil ", "hy: jump to preference error. context is null");
       AppMethodBeat.o(73005);
       return;
     }
     Intent localIntent = new Intent();
     localIntent.addFlags(67108864);
     localIntent.putExtra("preferred_tab", 3);
-    com.tencent.mm.bs.d.e(paramContext, "com.tencent.mm.ui.LauncherUI", localIntent);
+    com.tencent.mm.br.d.e(paramContext, "com.tencent.mm.ui.LauncherUI", localIntent);
     AppMethodBeat.o(73005);
   }
   
-  private static String lL(String paramString1, String paramString2)
+  public static boolean m(JSONObject paramJSONObject, String paramString)
+  {
+    AppMethodBeat.i(73009);
+    boolean bool = "1".equals(paramJSONObject.optString(paramString, "0"));
+    AppMethodBeat.o(73009);
+    return bool;
+  }
+  
+  private static String mi(String paramString1, String paramString2)
   {
     AppMethodBeat.i(73027);
     if (TextUtils.isEmpty(paramString1))
@@ -1217,7 +1090,7 @@ public final class e
     return paramString1;
   }
   
-  public static int lM(String paramString1, String paramString2)
+  public static int mj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(73042);
     int i = b(paramString1, paramString2, 0, RoundingMode.HALF_UP).intValue();
@@ -1225,7 +1098,7 @@ public final class e
     return i;
   }
   
-  public static long lN(String paramString1, String paramString2)
+  public static long mk(String paramString1, String paramString2)
   {
     AppMethodBeat.i(73043);
     long l = b(paramString1, paramString2, 0, RoundingMode.HALF_UP).longValue();
@@ -1233,45 +1106,37 @@ public final class e
     return l;
   }
   
-  public static boolean m(JSONObject paramJSONObject, String paramString)
+  public static void n(Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(73009);
-    boolean bool = "1".equals(paramJSONObject.optString(paramString, "0"));
-    AppMethodBeat.o(73009);
-    return bool;
+    AppMethodBeat.i(162283);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("rawUrl", paramString);
+    localIntent.putExtra("showShare", paramBoolean);
+    localIntent.putExtra(e.m.HhK, true);
+    localIntent.putExtra("allow_mix_content_mode", false);
+    com.tencent.mm.br.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.o(162283);
   }
   
-  public static String nh(int paramInt)
+  public static String nV(int paramInt)
   {
     AppMethodBeat.i(72998);
-    if (oaB == null) {
-      oaB = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    if (oEa == null) {
+      oEa = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     }
-    String str = oaB.format(new Date(paramInt * 1000L));
+    String str = oEa.format(new Date(paramInt * 1000L));
     AppMethodBeat.o(72998);
     return str;
   }
   
   public static void o(Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(162283);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", paramString);
-    localIntent.putExtra("showShare", paramBoolean);
-    localIntent.putExtra(e.m.FIC, true);
-    localIntent.putExtra("allow_mix_content_mode", false);
-    com.tencent.mm.bs.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
-    AppMethodBeat.o(162283);
-  }
-  
-  public static void p(Context paramContext, String paramString, boolean paramBoolean)
-  {
     AppMethodBeat.i(73002);
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("showShare", paramBoolean);
     localIntent.putExtra("allow_mix_content_mode", false);
-    com.tencent.mm.bs.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+    com.tencent.mm.br.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(73002);
   }
   
@@ -1294,7 +1159,7 @@ public final class e
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      ad.e("erik", "setShowSoftInputOnFocus exception!");
+      ac.e("erik", "setShowSoftInputOnFocus exception!");
       try
       {
         Method localMethod2 = EditText.class.getMethod("setSoftInputShownOnFocus", new Class[] { Boolean.TYPE });
@@ -1306,27 +1171,40 @@ public final class e
       catch (Exception localException)
       {
         paramEditText.setInputType(0);
-        ad.printErrStackTrace("MicroMsg.WalletBaseUtil ", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WalletBaseUtil ", localException, "", new Object[0]);
         AppMethodBeat.o(72992);
         return;
       }
     }
     catch (Exception paramEditText)
     {
-      ad.printErrStackTrace("MicroMsg.WalletBaseUtil ", paramEditText, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.WalletBaseUtil ", paramEditText, "", new Object[0]);
       AppMethodBeat.o(72992);
     }
   }
   
-  public static String sh(String paramString)
+  public static void v(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(73050);
+    ut localut = new ut();
+    localut.dxt.userName = paramString1;
+    localut.dxt.dxv = bs.bG(paramString2, "");
+    localut.dxt.aBM = paramInt1;
+    localut.dxt.scene = paramInt2;
+    localut.dxt.dxw = 0;
+    com.tencent.mm.sdk.b.a.GpY.l(localut);
+    AppMethodBeat.o(73050);
+  }
+  
+  public static String wk(String paramString)
   {
     AppMethodBeat.i(73016);
-    com.tencent.mm.kernel.g.afC();
-    Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHX(paramString);
+    com.tencent.mm.kernel.g.agS();
+    Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNs(paramString);
     if (localObject != null) {}
-    for (localObject = ((com.tencent.mm.n.b)localObject).ZX();; localObject = null)
+    for (localObject = ((com.tencent.mm.n.b)localObject).aaS();; localObject = null)
     {
-      if (bt.isNullOrNil((String)localObject)) {}
+      if (bs.isNullOrNil((String)localObject)) {}
       for (;;)
       {
         AppMethodBeat.o(73016);
@@ -1334,29 +1212,6 @@ public final class e
         paramString = (String)localObject;
       }
     }
-  }
-  
-  public static void v(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(73050);
-    uj localuj = new uj();
-    localuj.dzH.userName = paramString1;
-    localuj.dzH.dzJ = bt.by(paramString2, "");
-    localuj.dzH.aAS = paramInt1;
-    localuj.dzH.scene = paramInt2;
-    localuj.dzH.dzK = 0;
-    com.tencent.mm.sdk.b.a.ESL.l(localuj);
-    AppMethodBeat.o(73050);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void aP(Map<String, Object> paramMap);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void dm(Object paramObject);
   }
 }
 

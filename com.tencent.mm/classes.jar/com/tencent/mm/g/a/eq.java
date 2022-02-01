@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class eq
   extends b
 {
-  public a dhc;
-  public b dhd;
+  public a dev;
+  public b dew;
   
   public eq()
   {
@@ -16,33 +16,29 @@ public final class eq
   
   private eq(byte paramByte)
   {
-    AppMethodBeat.i(116008);
-    this.dhc = new a();
-    this.dhd = new b();
-    this.ESR = false;
+    AppMethodBeat.i(116007);
+    this.dev = new a();
+    this.dew = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116008);
+    AppMethodBeat.o(116007);
   }
   
   public static final class a
   {
-    public String cLR;
+    public String cIZ;
     public String data;
-    public String dfF;
-    public String dgg;
-    public String dhe;
-    public boolean dhf;
-    public long msgId;
+    public String ddh;
   }
   
   public static final class b
   {
-    public boolean dhg;
+    public boolean ddj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.eq
  * JD-Core Version:    0.7.0.1
  */

@@ -43,31 +43,31 @@ public abstract class o$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      long l = bZZ();
+      long l = chi();
       paramParcel2.writeNoException();
       paramParcel2.writeLong(l);
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramParcel1 = caa();
+      paramParcel1 = chj();
       paramParcel2.writeNoException();
       paramParcel2.writeByteArray(paramParcel1);
       return true;
     case 3: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramInt1 = cab();
+      paramInt1 = chk();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramInt1 = cac();
+      paramInt1 = chl();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-    paramInt1 = cad();
+    paramInt1 = chm();
     paramParcel2.writeNoException();
     paramParcel2.writeInt(paramInt1);
     return true;
@@ -88,7 +88,7 @@ public abstract class o$a
       return this.mRemote;
     }
     
-    public final long bZZ()
+    public final long chi()
     {
       AppMethodBeat.i(23684);
       Parcel localParcel1 = Parcel.obtain();
@@ -109,7 +109,7 @@ public abstract class o$a
       }
     }
     
-    public final byte[] caa()
+    public final byte[] chj()
     {
       AppMethodBeat.i(23685);
       Parcel localParcel1 = Parcel.obtain();
@@ -130,7 +130,7 @@ public abstract class o$a
       }
     }
     
-    public final int cab()
+    public final int chk()
     {
       AppMethodBeat.i(23686);
       Parcel localParcel1 = Parcel.obtain();
@@ -151,7 +151,7 @@ public abstract class o$a
       }
     }
     
-    public final int cac()
+    public final int chl()
     {
       AppMethodBeat.i(23687);
       Parcel localParcel1 = Parcel.obtain();
@@ -172,7 +172,7 @@ public abstract class o$a
       }
     }
     
-    public final int cad()
+    public final int chm()
     {
       AppMethodBeat.i(23688);
       Parcel localParcel1 = Parcel.obtain();

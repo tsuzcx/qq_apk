@@ -7,17 +7,17 @@ import d.l;
 import d.v;
 import java.lang.reflect.Constructor;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCResultKeyCreator;", "", "()V", "TAG", "", "resultConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureResult$Key;", "resultKey", "T", "name", "klass", "Ljava/lang/Class;", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCResultKeyCreator;", "", "()V", "TAG", "", "resultConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureResult$Key;", "resultKey", "T", "name", "klass", "Ljava/lang/Class;", "plugin-mediaeditor_release"})
 public final class c
 {
   private static final String TAG = "CT2.WCRequestKeyCreator";
-  private static Constructor<CaptureResult.Key<?>> gAs;
-  public static final c gAt;
+  private static Constructor<CaptureResult.Key<?>> haP;
+  public static final c haQ;
   
   static
   {
     AppMethodBeat.i(94210);
-    gAt = new c();
+    haQ = new c();
     TAG = "CT2.WCRequestKeyCreator";
     AppMethodBeat.o(94210);
   }
@@ -30,20 +30,20 @@ public final class c
     try
     {
       Constructor localConstructor;
-      if (gAs == null)
+      if (haP == null)
       {
         localConstructor = CaptureResult.Key.class.getConstructor(new Class[] { String.class, paramClass.getClass() });
-        gAs = localConstructor;
+        haP = localConstructor;
         if (localConstructor == null) {
-          k.fvU();
+          k.fOy();
         }
         localConstructor.setAccessible(true);
       }
       try
       {
-        localConstructor = gAs;
+        localConstructor = haP;
         if (localConstructor == null) {
-          k.fvU();
+          k.fOy();
         }
         paramString = localConstructor.newInstance(new Object[] { paramString, paramClass });
         if (paramString != null) {
@@ -75,7 +75,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.a.b.c
  * JD-Core Version:    0.7.0.1
  */

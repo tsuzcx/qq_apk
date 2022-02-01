@@ -2,13 +2,13 @@ package com.d.a.b;
 
 public final class o
 {
-  long JV;
-  int bXq;
+  long KQ;
+  int bUY;
   
   public o(long paramLong, int paramInt)
   {
-    this.JV = paramLong;
-    this.bXq = paramInt;
+    this.KQ = paramLong;
+    this.bUY = paramInt;
   }
 }
 

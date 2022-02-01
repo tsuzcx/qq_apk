@@ -11,11 +11,11 @@ import java.nio.ByteOrder;
 
 public final class b
 {
-  private final a IXd;
+  private final a KKo;
   
   public b(a parama)
   {
-    this.IXd = parama;
+    this.KKo = parama;
   }
   
   private static void a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, int paramInt3, ByteBuffer paramByteBuffer)
@@ -26,8 +26,9 @@ public final class b
       AppMethodBeat.o(9981);
       return;
     }
-    int j = adA(paramMotionEvent.getToolType(paramInt1));
+    int j = agv(paramMotionEvent.getToolType(paramInt1));
     int i;
+    long l1;
     if (paramMotionEvent.getActionMasked() == 8)
     {
       i = 1;
@@ -36,13 +37,34 @@ public final class b
       paramByteBuffer.putLong(j);
       paramByteBuffer.putLong(i);
       paramByteBuffer.putLong(paramMotionEvent.getPointerId(paramInt1));
+      paramByteBuffer.putLong(0L);
       paramByteBuffer.putDouble(paramMotionEvent.getX(paramInt1));
       paramByteBuffer.putDouble(paramMotionEvent.getY(paramInt1));
+      paramByteBuffer.putDouble(0.0D);
+      paramByteBuffer.putDouble(0.0D);
       if (j != 1) {
-        break label397;
+        break label471;
       }
-      paramByteBuffer.putLong(paramMotionEvent.getButtonState() & 0x1F);
-      label136:
+      long l2 = paramMotionEvent.getButtonState() & 0x1F;
+      l1 = l2;
+      if (l2 == 0L)
+      {
+        l1 = l2;
+        if (paramMotionEvent.getSource() == 8194) {
+          if (paramInt2 != 4)
+          {
+            l1 = l2;
+            if (paramInt2 != 5) {}
+          }
+          else
+          {
+            l1 = 1L;
+          }
+        }
+      }
+      label195:
+      paramByteBuffer.putLong(l1);
+      paramByteBuffer.putLong(0L);
       paramByteBuffer.putLong(0L);
       paramByteBuffer.putDouble(paramMotionEvent.getPressure(paramInt1));
       double d3 = 0.0D;
@@ -63,11 +85,11 @@ public final class b
       paramByteBuffer.putDouble(d1);
       paramByteBuffer.putDouble(d2);
       if (j != 2) {
-        break label432;
+        break label498;
       }
       paramByteBuffer.putDouble(paramMotionEvent.getAxisValue(24, paramInt1));
       paramByteBuffer.putDouble(0.0D);
-      label258:
+      label332:
       paramByteBuffer.putDouble(paramMotionEvent.getSize(paramInt1));
       paramByteBuffer.putDouble(paramMotionEvent.getToolMajor(paramInt1));
       paramByteBuffer.putDouble(paramMotionEvent.getToolMinor(paramInt1));
@@ -75,7 +97,7 @@ public final class b
       paramByteBuffer.putDouble(0.0D);
       paramByteBuffer.putDouble(paramMotionEvent.getAxisValue(8, paramInt1));
       if (j != 2) {
-        break label449;
+        break label515;
       }
       paramByteBuffer.putDouble(paramMotionEvent.getAxisValue(25, paramInt1));
     }
@@ -83,7 +105,7 @@ public final class b
     {
       paramByteBuffer.putLong(paramInt3);
       if (i != 1) {
-        break label459;
+        break label525;
       }
       paramByteBuffer.putDouble(-paramMotionEvent.getAxisValue(10));
       paramByteBuffer.putDouble(-paramMotionEvent.getAxisValue(9));
@@ -91,44 +113,28 @@ public final class b
       return;
       i = 0;
       break;
-      label397:
+      label471:
       if (j == 2)
       {
-        paramByteBuffer.putLong(paramMotionEvent.getButtonState() >> 4 & 0xF);
-        break label136;
+        l1 = paramMotionEvent.getButtonState() >> 4 & 0xF;
+        break label195;
       }
-      paramByteBuffer.putLong(0L);
-      break label136;
-      label432:
+      l1 = 0L;
+      break label195;
+      label498:
       paramByteBuffer.putDouble(0.0D);
       paramByteBuffer.putDouble(0.0D);
-      break label258;
-      label449:
+      break label332;
+      label515:
       paramByteBuffer.putDouble(0.0D);
     }
-    label459:
+    label525:
     paramByteBuffer.putDouble(0.0D);
     paramByteBuffer.putDouble(0.0D);
     AppMethodBeat.o(9981);
   }
   
-  private static int adA(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 4;
-    case 1: 
-      return 0;
-    case 2: 
-      return 2;
-    case 3: 
-      return 1;
-    }
-    return 3;
-  }
-  
-  private static int adz(int paramInt)
+  private static int agu(int paramInt)
   {
     if (paramInt == 0) {}
     do
@@ -156,6 +162,22 @@ public final class b
     return -1;
   }
   
+  private static int agv(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 4;
+    case 1: 
+      return 0;
+    case 2: 
+      return 2;
+    case 3: 
+      return 1;
+    }
+    return 3;
+  }
+  
   public final boolean onGenericMotionEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9980);
@@ -178,17 +200,17 @@ public final class b
       break;
     }
     label70:
-    int i = adz(paramMotionEvent.getActionMasked());
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramMotionEvent.getPointerCount() * 24 * 8);
+    int i = agu(paramMotionEvent.getActionMasked());
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramMotionEvent.getPointerCount() * 28 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     a(paramMotionEvent, paramMotionEvent.getActionIndex(), i, 0, localByteBuffer);
-    if (localByteBuffer.position() % 192 != 0)
+    if (localByteBuffer.position() % 224 != 0)
     {
       paramMotionEvent = new AssertionError("Packet position is not on field boundary.");
       AppMethodBeat.o(9980);
       throw paramMotionEvent;
     }
-    this.IXd.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
+    this.KKo.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
     AppMethodBeat.o(9980);
     return true;
   }
@@ -197,10 +219,10 @@ public final class b
   {
     AppMethodBeat.i(9979);
     int k = paramMotionEvent.getPointerCount();
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(k * 24 * 8);
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(k * 28 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     int j = paramMotionEvent.getActionMasked();
-    int m = adz(paramMotionEvent.getActionMasked());
+    int m = agu(paramMotionEvent.getActionMasked());
     int i;
     if ((j == 0) || (j == 5))
     {
@@ -217,7 +239,7 @@ public final class b
     }
     for (;;)
     {
-      if (localByteBuffer.position() % 192 == 0) {
+      if (localByteBuffer.position() % 224 == 0) {
         break label219;
       }
       paramMotionEvent = new AssertionError("Packet position is not on field boundary");
@@ -252,14 +274,14 @@ public final class b
       }
     }
     label219:
-    this.IXd.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
+    this.KKo.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
     AppMethodBeat.o(9979);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.embedding.android.b
  * JD-Core Version:    0.7.0.1
  */

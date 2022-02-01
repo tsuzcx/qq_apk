@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.avx;
-import com.tencent.mm.protocal.protobuf.avy;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.azp;
+import com.tencent.mm.protocal.protobuf.azq;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class n
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
+  private azp BoD;
+  public azq BoE;
+  private boolean Boz;
   private g callback;
-  private b iaa;
-  private boolean zWf;
-  private avx zWj;
-  public avy zWk;
+  private b gvE;
   
   public n(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(69917);
-    this.zWf = paramBoolean;
+    this.Boz = paramBoolean;
     b.a locala = new b.a();
-    locala.gUU = new avx();
-    locala.gUV = new avy();
+    locala.hvt = new azp();
+    locala.hvu = new azq();
     if (paramBoolean) {
       locala.funcId = 2803;
     }
@@ -37,10 +37,10 @@ public final class n
     {
       locala.reqCmdId = 0;
       locala.respCmdId = 0;
-      this.iaa = locala.atI();
-      this.zWj = ((avx)this.iaa.gUS.gUX);
-      this.zWj.Dvu = paramString;
-      ad.i("MicroMsg.NetSceneMktGetLottery", "NetSceneMktGetLottery, getLotteryParams: %s, isF2f: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+      this.gvE = locala.aAz();
+      this.BoD = ((azp)this.gvE.hvr.hvw);
+      this.BoD.EQP = paramString;
+      ac.i("MicroMsg.NetSceneMktGetLottery", "NetSceneMktGetLottery, getLotteryParams: %s, isF2f: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(69917);
       return;
       locala.funcId = 2508;
@@ -51,14 +51,14 @@ public final class n
   {
     AppMethodBeat.i(69918);
     this.callback = paramg;
-    int i = dispatch(parame, this.iaa, this);
+    int i = dispatch(parame, this.gvE, this);
     AppMethodBeat.o(69918);
     return i;
   }
   
   public final int getType()
   {
-    if (this.zWf) {
+    if (this.Boz) {
       return 2803;
     }
     return 2508;
@@ -67,8 +67,8 @@ public final class n
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69919);
-    ad.i("MicroMsg.NetSceneMktGetLottery", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.zWk = ((avy)((b)paramq).gUT.gUX);
+    ac.i("MicroMsg.NetSceneMktGetLottery", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.BoE = ((azq)((b)paramq).hvs.hvw);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

@@ -1,9 +1,9 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.d;
-import com.tencent.mm.co.c;
-import com.tencent.mm.co.h;
+import com.tencent.mm.ak.f.d;
+import com.tencent.mm.cn.c;
+import com.tencent.mm.cn.h;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.model.ar.e;
@@ -12,9 +12,9 @@ import com.tencent.mm.model.t;
 import com.tencent.mm.network.aa;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
@@ -22,11 +22,11 @@ public class q
   implements aw
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.network.n haH;
-  private l hxn;
-  private h<m> hxo;
-  private aa hxp;
-  private h<g> hxq;
+  private com.tencent.mm.network.n hBi;
+  private l hXO;
+  private h<m> hXP;
+  private aa hXQ;
+  private h<g> hXR;
   
   static
   {
@@ -46,11 +46,11 @@ public class q
   public q()
   {
     AppMethodBeat.i(151136);
-    this.hxn = new l();
-    this.hxo = new h(new c() {});
-    this.hxp = new aa();
-    this.hxq = new h(new c() {});
-    this.haH = new n.a()
+    this.hXO = new l();
+    this.hXP = new h(new c() {});
+    this.hXQ = new aa();
+    this.hXR = new h(new c() {});
+    this.hBi = new n.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
@@ -60,17 +60,17 @@ public class q
           AppMethodBeat.o(151134);
           return;
         }
-        com.tencent.mm.kernel.g.afE().m(new Runnable()
+        com.tencent.mm.kernel.g.agU().m(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(151132);
-            if (!com.tencent.mm.kernel.g.afz().aeI())
+            if (!com.tencent.mm.kernel.g.agP().afY())
             {
               AppMethodBeat.o(151132);
               return;
             }
-            q.aBO().aBH();
+            q.aIE().aIx();
             AppMethodBeat.o(151132);
           }
           
@@ -82,7 +82,7 @@ public class q
             return str;
           }
         }, 3000L);
-        ad.d("MicroMsg.SubCoreStat", "NetTypeReporter st:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ac.d("MicroMsg.SubCoreStat", "NetTypeReporter st:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         o.run(2);
         AppMethodBeat.o(151134);
       }
@@ -90,16 +90,16 @@ public class q
     AppMethodBeat.o(151136);
   }
   
-  public static g aBO()
+  public static g aIE()
   {
     AppMethodBeat.i(151137);
-    com.tencent.mm.kernel.g.afz().aeD();
-    g localg = (g)aBP().hxq.get();
+    com.tencent.mm.kernel.g.agP().afT();
+    g localg = (g)aIF().hXR.get();
     AppMethodBeat.o(151137);
     return localg;
   }
   
-  private static q aBP()
+  private static q aIF()
   {
     AppMethodBeat.i(151138);
     q localq = (q)t.ap(q.class);
@@ -107,11 +107,11 @@ public class q
     return localq;
   }
   
-  public static m aBQ()
+  public static m aIG()
   {
     AppMethodBeat.i(151139);
-    com.tencent.mm.kernel.g.afz().aeD();
-    m localm = (m)aBP().hxo.get();
+    com.tencent.mm.kernel.g.agP().afT();
+    m localm = (m)aIF().hXP.get();
     AppMethodBeat.o(151139);
     return localm;
   }
@@ -122,9 +122,9 @@ public class q
     if (parame == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.SubCoreStat", "dknetstat setNetworkMoniter  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bt.eGN() });
+      ac.d("MicroMsg.SubCoreStat", "dknetstat setNetworkMoniter  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bs.eWi() });
       if (parame != null) {
-        parame.a(aBP().hxn);
+        parame.a(aIF().hXO);
       }
       AppMethodBeat.o(151140);
       return;
@@ -137,9 +137,9 @@ public class q
     if (parame == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.SubCoreStat", "setKVReportMonitor  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bt.eGN() });
+      ac.d("MicroMsg.SubCoreStat", "setKVReportMonitor  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bs.eWi() });
       if (parame != null) {
-        parame.a(aBP().hxp);
+        parame.a(aIF().hXQ);
       }
       AppMethodBeat.o(151141);
       return;
@@ -156,15 +156,15 @@ public class q
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(151143);
-    f.d.a(Integer.valueOf(9998), this.hxn);
-    com.tencent.mm.kernel.g.afA().a(this.haH);
-    com.tencent.mm.model.ar.a.gMX = new ar.e()
+    f.d.a(Integer.valueOf(9998), this.hXO);
+    com.tencent.mm.kernel.g.agQ().a(this.hBi);
+    com.tencent.mm.model.ar.a.hnx = new ar.e()
     {
       public final void cZ(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(151135);
-        ad.d("MicroMsg.SubCoreStat", "ReportDataFlow [%d][%d][%d] : %s ", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(0), bt.eGN() });
-        n.B(paramAnonymousInt1, paramAnonymousInt2);
+        ac.d("MicroMsg.SubCoreStat", "ReportDataFlow [%d][%d][%d] : %s ", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(0), bs.eWi() });
+        n.y(paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(151135);
       }
     };
@@ -174,10 +174,10 @@ public class q
   public void onAccountRelease()
   {
     AppMethodBeat.i(151142);
-    com.tencent.mm.kernel.g.afA().b(this.haH);
-    f.d.b(Integer.valueOf(9998), this.hxn);
-    this.hxn = new l();
-    com.tencent.mm.model.ar.a.gMX = null;
+    com.tencent.mm.kernel.g.agQ().b(this.hBi);
+    f.d.b(Integer.valueOf(9998), this.hXO);
+    this.hXO = new l();
+    com.tencent.mm.model.ar.a.hnx = null;
     AppMethodBeat.o(151142);
   }
   
@@ -185,7 +185,7 @@ public class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelstat.q
  * JD-Core Version:    0.7.0.1
  */

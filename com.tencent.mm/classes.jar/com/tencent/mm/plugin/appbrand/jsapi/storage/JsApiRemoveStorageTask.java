@@ -13,8 +13,8 @@ public class JsApiRemoveStorageTask
 {
   public static final Parcelable.Creator<JsApiRemoveStorageTask> CREATOR;
   public String appId;
+  public int kMr;
   public String key;
-  public int kkZ;
   
   static
   {
@@ -23,16 +23,16 @@ public class JsApiRemoveStorageTask
     AppMethodBeat.o(147277);
   }
   
-  public final void aEz()
+  public final void aLq()
   {
     AppMethodBeat.i(147274);
     if (e.K(a.class) == null) {}
-    for (d locald = null; locald == null; locald = ((a)e.K(a.class)).Dg())
+    for (d locald = null; locald == null; locald = ((a)e.K(a.class)).CJ())
     {
       AppMethodBeat.o(147274);
       return;
     }
-    locald.m(this.kkZ, this.appId, this.key);
+    locald.l(this.kMr, this.appId, this.key);
     AppMethodBeat.o(147274);
   }
   
@@ -40,7 +40,7 @@ public class JsApiRemoveStorageTask
   {
     AppMethodBeat.i(147276);
     this.appId = paramParcel.readString();
-    this.kkZ = paramParcel.readInt();
+    this.kMr = paramParcel.readInt();
     this.key = paramParcel.readString();
     AppMethodBeat.o(147276);
   }
@@ -49,14 +49,14 @@ public class JsApiRemoveStorageTask
   {
     AppMethodBeat.i(147275);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.kkZ);
+    paramParcel.writeInt(this.kMr);
     paramParcel.writeString(this.key);
     AppMethodBeat.o(147275);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiRemoveStorageTask
  * JD-Core Version:    0.7.0.1
  */

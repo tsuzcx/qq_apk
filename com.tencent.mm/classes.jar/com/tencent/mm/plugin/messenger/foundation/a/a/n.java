@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.mm.sdk.e.d;
 import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.storage.bh;
 
 public abstract interface n
-  extends d<be>, g
+  extends d<bh>, g
 {}
 
 

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
 import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bo;
 
 public abstract interface f
 {
-  public abstract void a(bl parambl, am paramam, boolean paramBoolean, h.c paramc);
+  public abstract void a(bo parambo, ap paramap, boolean paramBoolean, h.c paramc);
   
-  public abstract void b(bl parambl, am paramam, boolean paramBoolean, h.c paramc);
+  public abstract void b(bo parambo, ap paramap, boolean paramBoolean, h.c paramc);
 }
 
 

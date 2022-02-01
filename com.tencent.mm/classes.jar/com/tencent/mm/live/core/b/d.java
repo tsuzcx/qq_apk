@@ -3,73 +3,74 @@ package com.tencent.mm.live.core.b;
 import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.i.b.a;
+import com.tencent.mm.media.i.b.e;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/core/render/LiveScreenRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "(IIII)V", "animationCost", "animationScale", "", "animationStartTime", "", "drawHeightStart", "drawWidthStart", "isScale", "", "originalDrawHeight", "originalDrawWidth", "beforeRender", "", "endScaleAnimation", "time", "reset", "startScaleAnimation", "scale", "updateDrawViewSize", "width", "height", "plugin-core_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/render/LiveScreenRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "(IIII)V", "animationCost", "animationScale", "", "animationStartTime", "", "drawHeightStart", "drawWidthStart", "isScale", "", "originalDrawHeight", "originalDrawWidth", "beforeRender", "", "endScaleAnimation", "time", "reset", "startScaleAnimation", "scale", "updateDrawViewSize", "width", "height", "plugin-core_release"})
 public final class d
-  extends com.tencent.mm.media.i.b.d
+  extends e
 {
-  private boolean HEo;
-  private int qQN;
-  private int qRE;
-  private long qSC;
-  private int qSH;
-  private float qSI;
-  public int qSJ;
-  public int qSK;
+  private int grn;
+  private int gro;
+  private long grp;
+  private int grq;
+  private float grr;
+  public int grs;
+  public int grt;
+  private boolean gru;
   
   public d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramInt1, paramInt2, paramInt3, paramInt4, 1, 1);
   }
   
-  public final void akt()
+  public final void ajE()
   {
-    AppMethodBeat.i(205759);
+    AppMethodBeat.i(209295);
     float f1;
-    if (System.currentTimeMillis() - this.qSC <= this.qSH)
+    if (System.currentTimeMillis() - this.grp <= this.grq)
     {
-      if (!this.HEo) {
+      if (!this.gru) {
         break label139;
       }
-      f1 = (float)(System.currentTimeMillis() - this.qSC) * (1.0F - this.qSI) / this.qSH;
-      this.guK = ((int)(this.qQN * (1.0F - f1)));
-      this.guL = ((int)((1.0F - f1) * this.qRE));
+      f1 = (float)(System.currentTimeMillis() - this.grp) * (1.0F - this.grr) / this.grq;
+      this.grV = ((int)(this.grn * (1.0F - f1)));
+      this.grW = ((int)((1.0F - f1) * this.gro));
     }
     for (;;)
     {
-      this.qSJ = ((this.qQN - this.guK) / 2);
-      this.qSK = ((this.qRE - this.guL) / 2);
-      super.akt();
-      GLES20.glViewport(this.qSJ, this.qSK, this.guK, this.guL);
-      AppMethodBeat.o(205759);
+      this.grs = ((this.grn - this.grV) / 2);
+      this.grt = ((this.gro - this.grW) / 2);
+      super.ajE();
+      GLES20.glViewport(this.grs, this.grt, this.grV, this.grW);
+      AppMethodBeat.o(209295);
       return;
       label139:
-      f1 = (float)(System.currentTimeMillis() - this.qSC) * (1.0F - this.qSI) / this.qSH;
-      this.guK = ((int)(this.qQN * (this.qSI + f1)));
-      float f2 = this.qRE;
-      this.guL = ((int)((f1 + this.qSI) * f2));
-      if (this.guK > this.qQN) {
-        this.guK = this.qQN;
+      f1 = (float)(System.currentTimeMillis() - this.grp) * (1.0F - this.grr) / this.grq;
+      this.grV = ((int)(this.grn * (this.grr + f1)));
+      float f2 = this.gro;
+      this.grW = ((int)((f1 + this.grr) * f2));
+      if (this.grV > this.grn) {
+        this.grV = this.grn;
       }
-      if (this.guL > this.qRE) {
-        this.guK = this.qRE;
+      if (this.grW > this.gro) {
+        this.grV = this.gro;
       }
     }
   }
   
-  public final void cT(int paramInt1, int paramInt2)
+  public final void cR(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(205760);
-    super.cT(paramInt1, paramInt2);
-    this.qQN = paramInt1;
-    this.qRE = paramInt2;
-    AppMethodBeat.o(205760);
+    AppMethodBeat.i(209296);
+    super.cR(paramInt1, paramInt2);
+    this.grn = paramInt1;
+    this.gro = paramInt2;
+    AppMethodBeat.o(209296);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.live.core.b.d
  * JD-Core Version:    0.7.0.1
  */

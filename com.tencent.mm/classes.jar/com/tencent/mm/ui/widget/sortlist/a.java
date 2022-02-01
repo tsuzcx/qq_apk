@@ -14,47 +14,47 @@ public final class a
   extends d
   implements GestureDetector.OnGestureListener, View.OnTouchListener
 {
-  boolean HLA;
-  boolean HLB;
-  private boolean HLC;
-  private GestureDetector HLD;
-  private int HLE;
-  private int HLF;
-  private int HLG;
-  private int HLH;
-  private int HLI;
-  private boolean HLJ;
-  private float HLK;
-  private int HLL;
-  private int HLM;
-  private int HLN;
-  private boolean HLO;
-  private DragSortListView HLP;
-  private int HLQ;
-  private GestureDetector.OnGestureListener HLR;
-  private int HLz;
-  private GestureDetector MQ;
-  private int krn;
-  private int kro;
+  private int JlW;
+  boolean JlX;
+  boolean JlY;
+  private boolean JlZ;
+  private GestureDetector Jma;
+  private int Jmb;
+  private int Jmc;
+  private int Jmd;
+  private int Jme;
+  private int Jmf;
+  private boolean Jmg;
+  private float Jmh;
+  private int Jmi;
+  private int Jmj;
+  private int Jmk;
+  private boolean Jml;
+  private DragSortListView Jmm;
+  private int Jmn;
+  private GestureDetector.OnGestureListener Jmo;
+  private GestureDetector NL;
+  private int kSG;
+  private int kSH;
   private int mTouchSlop;
-  private int oEv;
-  private int[] xV;
+  private int phU;
+  private int[] yT;
   
   public a(DragSortListView paramDragSortListView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     super(paramDragSortListView);
     AppMethodBeat.i(159739);
-    this.HLz = 0;
-    this.HLA = true;
-    this.HLB = false;
-    this.HLC = false;
-    this.HLE = -1;
-    this.HLF = -1;
-    this.HLG = -1;
-    this.xV = new int[2];
-    this.HLJ = false;
-    this.HLK = 500.0F;
-    this.HLR = new GestureDetector.SimpleOnGestureListener()
+    this.JlW = 0;
+    this.JlX = true;
+    this.JlY = false;
+    this.JlZ = false;
+    this.Jmb = -1;
+    this.Jmc = -1;
+    this.Jmd = -1;
+    this.yT = new int[2];
+    this.Jmg = false;
+    this.Jmh = 500.0F;
+    this.Jmo = new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
@@ -67,7 +67,7 @@ public final class a
             break label91;
           }
           if (a.e(a.this) > -i) {
-            a.c(a.this).bM(paramAnonymousFloat1);
+            a.c(a.this).bV(paramAnonymousFloat1);
           }
         }
         for (;;)
@@ -77,54 +77,54 @@ public final class a
           return false;
           label91:
           if ((paramAnonymousFloat1 < -a.d(a.this)) && (a.e(a.this) < i)) {
-            a.c(a.this).bM(paramAnonymousFloat1);
+            a.c(a.this).bV(paramAnonymousFloat1);
           }
         }
       }
     };
-    this.HLP = paramDragSortListView;
-    this.MQ = new GestureDetector(paramDragSortListView.getContext(), this);
-    this.HLD = new GestureDetector(paramDragSortListView.getContext(), this.HLR);
-    this.HLD.setIsLongpressEnabled(false);
+    this.Jmm = paramDragSortListView;
+    this.NL = new GestureDetector(paramDragSortListView.getContext(), this);
+    this.Jma = new GestureDetector(paramDragSortListView.getContext(), this.Jmo);
+    this.Jma.setIsLongpressEnabled(false);
     this.mTouchSlop = ViewConfiguration.get(paramDragSortListView.getContext()).getScaledTouchSlop();
-    this.HLL = paramInt1;
-    this.HLM = paramInt4;
-    this.HLN = paramInt5;
-    this.oEv = paramInt3;
-    this.HLz = paramInt2;
+    this.Jmi = paramInt1;
+    this.Jmj = paramInt4;
+    this.Jmk = paramInt5;
+    this.phU = paramInt3;
+    this.JlW = paramInt2;
     AppMethodBeat.o(159739);
   }
   
-  private boolean aQ(int paramInt1, int paramInt2, int paramInt3)
+  private boolean aS(int paramInt1, int paramInt2, int paramInt3)
   {
     boolean bool2 = false;
     AppMethodBeat.i(159740);
-    if ((this.HLA) && (!this.HLC)) {}
+    if ((this.JlX) && (!this.JlZ)) {}
     for (int i = 12;; i = 0)
     {
-      if ((this.HLB) && (this.HLC)) {
+      if ((this.JlY) && (this.JlZ)) {
         i = i | 0x1 | 0x2;
       }
       for (;;)
       {
-        DragSortListView localDragSortListView = this.HLP;
-        paramInt1 -= this.HLP.getHeaderViewsCount();
+        DragSortListView localDragSortListView = this.Jmm;
+        paramInt1 -= this.Jmm.getHeaderViewsCount();
         boolean bool1 = bool2;
-        if (localDragSortListView.HME)
+        if (localDragSortListView.Jna)
         {
-          if (localDragSortListView.HMF != null) {
+          if (localDragSortListView.Jnb != null) {
             break label108;
           }
           bool1 = bool2;
         }
         for (;;)
         {
-          this.HLJ = bool1;
-          bool1 = this.HLJ;
+          this.Jmg = bool1;
+          bool1 = this.Jmg;
           AppMethodBeat.o(159740);
           return bool1;
           label108:
-          View localView = localDragSortListView.HMF.abb(paramInt1);
+          View localView = localDragSortListView.Jnb.adn(paramInt1);
           bool1 = bool2;
           if (localView != null) {
             bool1 = localDragSortListView.a(paramInt1, localView, i, paramInt2, paramInt3);
@@ -139,29 +139,29 @@ public final class a
     AppMethodBeat.i(159742);
     int i = (int)paramMotionEvent.getX();
     int j = (int)paramMotionEvent.getY();
-    i = this.HLP.pointToPosition(i, j);
-    j = this.HLP.getHeaderViewsCount();
-    int k = this.HLP.getFooterViewsCount();
-    int m = this.HLP.getCount();
+    i = this.Jmm.pointToPosition(i, j);
+    j = this.Jmm.getHeaderViewsCount();
+    int k = this.Jmm.getFooterViewsCount();
+    int m = this.Jmm.getCount();
     if ((i != -1) && (i >= j) && (i < m - k))
     {
-      Object localObject = this.HLP;
+      Object localObject = this.Jmm;
       localObject = ((DragSortListView)localObject).getChildAt(i - ((DragSortListView)localObject).getFirstVisiblePosition());
       k = (int)paramMotionEvent.getRawX();
       j = (int)paramMotionEvent.getRawY();
       if (paramInt == 0) {}
       for (paramMotionEvent = (MotionEvent)localObject; paramMotionEvent != null; paramMotionEvent = ((View)localObject).findViewById(paramInt))
       {
-        paramMotionEvent.getLocationOnScreen(this.xV);
-        if ((k <= this.xV[0]) || (j <= this.xV[1]) || (k >= this.xV[0] + paramMotionEvent.getWidth())) {
+        paramMotionEvent.getLocationOnScreen(this.yT);
+        if ((k <= this.yT[0]) || (j <= this.yT[1]) || (k >= this.yT[0] + paramMotionEvent.getWidth())) {
           break;
         }
-        paramInt = this.xV[1];
+        paramInt = this.yT[1];
         if (j >= paramMotionEvent.getHeight() + paramInt) {
           break;
         }
-        this.HLH = ((View)localObject).getLeft();
-        this.HLI = ((View)localObject).getTop();
+        this.Jme = ((View)localObject).getLeft();
+        this.Jmf = ((View)localObject).getTop();
         AppMethodBeat.o(159742);
         return i;
       }
@@ -170,10 +170,10 @@ public final class a
     return -1;
   }
   
-  public final void h(Point paramPoint)
+  public final void j(Point paramPoint)
   {
-    if ((this.HLB) && (this.HLC)) {
-      this.HLQ = paramPoint.x;
+    if ((this.JlY) && (this.JlZ)) {
+      this.Jmn = paramPoint.x;
     }
   }
   
@@ -181,20 +181,20 @@ public final class a
   {
     int i = -1;
     AppMethodBeat.i(159743);
-    if ((this.HLB) && (this.oEv == 0)) {
-      this.HLG = f(paramMotionEvent, this.HLM);
+    if ((this.JlY) && (this.phU == 0)) {
+      this.Jmd = f(paramMotionEvent, this.Jmj);
     }
-    this.HLE = f(paramMotionEvent, this.HLL);
-    if ((this.HLE != -1) && (this.HLz == 0)) {
-      aQ(this.HLE, (int)paramMotionEvent.getX() - this.HLH, (int)paramMotionEvent.getY() - this.HLI);
+    this.Jmb = f(paramMotionEvent, this.Jmi);
+    if ((this.Jmb != -1) && (this.JlW == 0)) {
+      aS(this.Jmb, (int)paramMotionEvent.getX() - this.Jme, (int)paramMotionEvent.getY() - this.Jmf);
     }
-    this.HLC = false;
-    this.HLO = true;
-    this.HLQ = 0;
-    if (this.oEv == 1) {
-      i = f(paramMotionEvent, this.HLN);
+    this.JlZ = false;
+    this.Jml = true;
+    this.Jmn = 0;
+    if (this.phU == 1) {
+      i = f(paramMotionEvent, this.Jmk);
     }
-    this.HLF = i;
+    this.Jmc = i;
     AppMethodBeat.o(159743);
     return true;
   }
@@ -207,10 +207,10 @@ public final class a
   public final void onLongPress(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(159745);
-    if ((this.HLE != -1) && (this.HLz == 2))
+    if ((this.Jmb != -1) && (this.JlW == 2))
     {
-      this.HLP.performHapticFeedback(0);
-      aQ(this.HLE, this.krn - this.HLH, this.kro - this.HLI);
+      this.Jmm.performHapticFeedback(0);
+      aS(this.Jmb, this.kSG - this.Jme, this.kSH - this.Jmf);
     }
     AppMethodBeat.o(159745);
   }
@@ -222,38 +222,38 @@ public final class a
     int j = (int)paramMotionEvent1.getY();
     int k = (int)paramMotionEvent2.getX();
     int m = (int)paramMotionEvent2.getY();
-    int n = k - this.HLH;
-    int i1 = m - this.HLI;
-    if ((this.HLO) && (!this.HLJ) && ((this.HLE != -1) || (this.HLF != -1)))
+    int n = k - this.Jme;
+    int i1 = m - this.Jmf;
+    if ((this.Jml) && (!this.Jmg) && ((this.Jmb != -1) || (this.Jmc != -1)))
     {
-      if (this.HLE == -1) {
+      if (this.Jmb == -1) {
         break label189;
       }
-      if ((this.HLz != 1) || (Math.abs(m - j) <= this.mTouchSlop) || (!this.HLA)) {
+      if ((this.JlW != 1) || (Math.abs(m - j) <= this.mTouchSlop) || (!this.JlX)) {
         break label139;
       }
-      aQ(this.HLE, n, i1);
+      aS(this.Jmb, n, i1);
     }
     for (;;)
     {
       AppMethodBeat.o(159744);
       return false;
       label139:
-      if ((this.HLz != 0) && (Math.abs(k - i) > this.mTouchSlop) && (this.HLB))
+      if ((this.JlW != 0) && (Math.abs(k - i) > this.mTouchSlop) && (this.JlY))
       {
-        this.HLC = true;
-        aQ(this.HLF, n, i1);
+        this.JlZ = true;
+        aS(this.Jmc, n, i1);
         continue;
         label189:
-        if (this.HLF != -1) {
-          if ((Math.abs(k - i) > this.mTouchSlop) && (this.HLB))
+        if (this.Jmc != -1) {
+          if ((Math.abs(k - i) > this.mTouchSlop) && (this.JlY))
           {
-            this.HLC = true;
-            aQ(this.HLF, n, i1);
+            this.JlZ = true;
+            aS(this.Jmc, n, i1);
           }
           else if (Math.abs(m - j) > this.mTouchSlop)
           {
-            this.HLO = false;
+            this.Jml = false;
           }
         }
       }
@@ -265,8 +265,8 @@ public final class a
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(159746);
-    if ((this.HLB) && (this.oEv == 0) && (this.HLG != -1)) {
-      this.HLP.removeItem(this.HLG - this.HLP.getHeaderViewsCount());
+    if ((this.JlY) && (this.phU == 0) && (this.Jmd != -1)) {
+      this.Jmm.removeItem(this.Jmd - this.Jmm.getHeaderViewsCount());
     }
     AppMethodBeat.o(159746);
     return true;
@@ -275,14 +275,14 @@ public final class a
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(159741);
-    if ((!this.HLP.HMk) || (this.HLP.HMU))
+    if ((!this.Jmm.JmG) || (this.Jmm.Jnq))
     {
       AppMethodBeat.o(159741);
       return false;
     }
-    this.MQ.onTouchEvent(paramMotionEvent);
-    if ((this.HLB) && (this.HLJ) && (this.oEv == 1)) {
-      this.HLD.onTouchEvent(paramMotionEvent);
+    this.NL.onTouchEvent(paramMotionEvent);
+    if ((this.JlY) && (this.Jmg) && (this.phU == 1)) {
+      this.Jma.onTouchEvent(paramMotionEvent);
     }
     switch (paramMotionEvent.getAction() & 0xFF)
     {
@@ -291,26 +291,26 @@ public final class a
     {
       AppMethodBeat.o(159741);
       return false;
-      this.krn = ((int)paramMotionEvent.getX());
-      this.kro = ((int)paramMotionEvent.getY());
+      this.kSG = ((int)paramMotionEvent.getX());
+      this.kSH = ((int)paramMotionEvent.getY());
       continue;
-      if ((this.HLB) && (this.HLC))
+      if ((this.JlY) && (this.JlZ))
       {
-        if (this.HLQ >= 0) {}
-        for (int i = this.HLQ; i > this.HLP.getWidth() / 2; i = -this.HLQ)
+        if (this.Jmn >= 0) {}
+        for (int i = this.Jmn; i > this.Jmm.getWidth() / 2; i = -this.Jmn)
         {
-          this.HLP.bM(0.0F);
+          this.Jmm.bV(0.0F);
           break;
         }
-        this.HLC = false;
-        this.HLJ = false;
+        this.JlZ = false;
+        this.Jmg = false;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.sortlist.a
  * JD-Core Version:    0.7.0.1
  */

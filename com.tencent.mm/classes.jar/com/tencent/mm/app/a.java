@@ -7,40 +7,40 @@ import com.tencent.mm.compatible.deviceinfo.p;
 @Deprecated
 public final class a
 {
-  private static int cKj;
-  private static int cKk;
-  private static p cKl;
-  private static final a cKm;
-  private static final b cKn;
-  private static a cKo;
-  private static b cKp;
-  private static int cKq;
-  private static int cKr;
-  private static String cKs;
-  private static boolean cKt;
-  private static boolean cKu;
-  private static String cvL;
+  private static String cHA;
+  private static boolean cHB;
+  private static boolean cHC;
+  private static int cHr;
+  private static int cHs;
+  private static p cHt;
+  private static final a cHu;
+  private static final b cHv;
+  private static a cHw;
+  private static b cHx;
+  private static int cHy;
+  private static int cHz;
+  private static String csT;
   
   static
   {
     AppMethodBeat.i(19427);
-    cKj = 0;
-    cKk = 0;
-    cKl = new p(Process.myPid());
-    cKm = new a() {};
-    cKn = new b() {};
-    cKo = cKm;
-    cKp = cKn;
-    cKq = 4500;
-    cKr = 500;
-    cKs = "";
-    cKt = true;
-    cKu = false;
-    cvL = "";
+    cHr = 0;
+    cHs = 0;
+    cHt = new p(Process.myPid());
+    cHu = new a() {};
+    cHv = new b() {};
+    cHw = cHu;
+    cHx = cHv;
+    cHy = 4500;
+    cHz = 500;
+    cHA = "";
+    cHB = true;
+    cHC = false;
+    csT = "";
     AppMethodBeat.o(19427);
   }
   
-  public static void Kl() {}
+  public static void JV() {}
   
   public static abstract interface a {}
   

@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$a
 {
-  public final boolean bie;
+  public final boolean biJ;
   public final String mimeType;
   
   public d$a(String paramString, boolean paramBoolean)
   {
     this.mimeType = paramString;
-    this.bie = paramBoolean;
+    this.biJ = paramBoolean;
   }
   
   public final boolean equals(Object paramObject)
@@ -28,7 +28,7 @@ final class d$a
       return false;
     }
     paramObject = (a)paramObject;
-    if ((TextUtils.equals(this.mimeType, paramObject.mimeType)) && (this.bie == paramObject.bie))
+    if ((TextUtils.equals(this.mimeType, paramObject.mimeType)) && (this.biJ == paramObject.biJ))
     {
       AppMethodBeat.o(92362);
       return true;
@@ -44,7 +44,7 @@ final class d$a
     if (this.mimeType == null)
     {
       i = 0;
-      if (!this.bie) {
+      if (!this.biJ) {
         break label51;
       }
     }
@@ -60,7 +60,7 @@ final class d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.exoplayer2.e.d.a
  * JD-Core Version:    0.7.0.1
  */

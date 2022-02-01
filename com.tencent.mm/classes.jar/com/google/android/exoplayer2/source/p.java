@@ -1,75 +1,75 @@
 package com.google.android.exoplayer2.source;
 
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.i.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
 public final class p
 {
-  private int aFj;
-  public final Format[] blC;
+  public static final p bmL;
+  private int aFZ;
+  public final o[] bmM;
   public final int length;
   
-  public p(Format... paramVarArgs)
+  static
   {
-    AppMethodBeat.i(92720);
-    if (paramVarArgs.length > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a.checkState(bool);
-      this.blC = paramVarArgs;
-      this.length = paramVarArgs.length;
-      AppMethodBeat.o(92720);
-      return;
-    }
+    AppMethodBeat.i(92726);
+    bmL = new p(new o[0]);
+    AppMethodBeat.o(92726);
   }
   
-  public final boolean equals(Object paramObject)
+  public p(o... paramVarArgs)
   {
-    AppMethodBeat.i(92722);
-    if (this == paramObject)
-    {
-      AppMethodBeat.o(92722);
-      return true;
-    }
-    if ((paramObject == null) || (getClass() != paramObject.getClass()))
-    {
-      AppMethodBeat.o(92722);
-      return false;
-    }
-    paramObject = (p)paramObject;
-    if ((this.length == paramObject.length) && (Arrays.equals(this.blC, paramObject.blC)))
-    {
-      AppMethodBeat.o(92722);
-      return true;
-    }
-    AppMethodBeat.o(92722);
-    return false;
+    AppMethodBeat.i(92723);
+    this.bmM = paramVarArgs;
+    this.length = paramVarArgs.length;
+    AppMethodBeat.o(92723);
   }
   
-  public final int hashCode()
-  {
-    AppMethodBeat.i(92721);
-    if (this.aFj == 0) {
-      this.aFj = (Arrays.hashCode(this.blC) + 527);
-    }
-    int i = this.aFj;
-    AppMethodBeat.o(92721);
-    return i;
-  }
-  
-  public final int j(Format paramFormat)
+  public final int a(o paramo)
   {
     int i = 0;
-    while (i < this.blC.length)
+    while (i < this.length)
     {
-      if (paramFormat == this.blC[i]) {
+      if (this.bmM[i] == paramo) {
         return i;
       }
       i += 1;
     }
     return -1;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(92725);
+    if (this == paramObject)
+    {
+      AppMethodBeat.o(92725);
+      return true;
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(92725);
+      return false;
+    }
+    paramObject = (p)paramObject;
+    if ((this.length == paramObject.length) && (Arrays.equals(this.bmM, paramObject.bmM)))
+    {
+      AppMethodBeat.o(92725);
+      return true;
+    }
+    AppMethodBeat.o(92725);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(92724);
+    if (this.aFZ == 0) {
+      this.aFZ = Arrays.hashCode(this.bmM);
+    }
+    int i = this.aFZ;
+    AppMethodBeat.o(92724);
+    return i;
   }
 }
 

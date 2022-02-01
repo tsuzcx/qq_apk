@@ -17,7 +17,7 @@ import com.tencent.liteav.g;
 import com.tencent.liteav.i;
 import com.tencent.liteav.i.a;
 import com.tencent.liteav.m;
-import com.tencent.liteav.o;
+import com.tencent.liteav.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.ugc.TXRecordCommon.ITXVideoRecordListener;
@@ -284,7 +284,7 @@ public class a
     TXCLog.i("TXLivePlayer", "===========================================================================================================================================================");
     TXCLog.i("TXLivePlayer", "===========================================================================================================================================================");
     if ((this.A == -1) || (this.A != paramInt)) {
-      this.r = o.a(this.p, paramInt);
+      this.r = com.tencent.liteav.o.a(this.p, paramInt);
     }
     this.A = paramInt;
     if (this.r == null)
@@ -493,7 +493,7 @@ public class a
     this.u = true;
     if (this.r != null)
     {
-      this.r.a(new com.tencent.liteav.basic.d.n()
+      this.r.a(new com.tencent.liteav.basic.d.o()
       {
         public void onTakePhotoComplete(Bitmap paramAnonymousBitmap)
         {
@@ -521,7 +521,7 @@ public class a
     }
     if (paramITXVideoRawDataListener != null)
     {
-      this.r.a(new com.tencent.liteav.n()
+      this.r.a(new n()
       {
         public void onRenderVideoFrame(String paramAnonymousString, int paramAnonymousInt, TXSVideoFrame paramAnonymousTXSVideoFrame)
         {

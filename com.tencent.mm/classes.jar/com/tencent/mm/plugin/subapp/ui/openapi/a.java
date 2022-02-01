@@ -16,7 +16,7 @@ import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.j;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,22 +25,22 @@ public final class a
   implements k.a
 {
   private Context context;
-  private List<g> whn;
-  boolean yFk;
-  private int yFl;
+  private List<g> xsD;
+  boolean zSy;
+  private int zSz;
   
   public a(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(29123);
-    this.yFk = false;
-    this.yFl = 0;
+    this.zSy = false;
+    this.zSz = 0;
     this.context = paramContext;
-    this.yFl = paramInt;
+    this.zSz = paramInt;
     init();
     AppMethodBeat.o(29123);
   }
   
-  private int cEn()
+  private int cRx()
   {
     AppMethodBeat.i(29131);
     int i = getRealCount();
@@ -51,7 +51,7 @@ public final class a
   private int getRealCount()
   {
     AppMethodBeat.i(29130);
-    int i = this.whn.size();
+    int i = this.xsD.size();
     AppMethodBeat.o(29130);
     return i;
   }
@@ -60,14 +60,14 @@ public final class a
   {
     int i = 0;
     AppMethodBeat.i(29124);
-    this.whn = new ArrayList();
-    Object localObject1 = ap.cZQ();
-    int j = this.yFl;
+    this.xsD = new ArrayList();
+    Object localObject1 = ap.dny();
+    int j = this.zSz;
     Object localObject2 = ((j)localObject1).rawQuery("select * from AppInfo where status = " + j + " and (appType is null or appType not like ',1,')", new String[0]);
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      ad.e("MicroMsg.AppInfoStorage", "getAppByStatusExcludeByType: curosr is null");
+      ac.e("MicroMsg.AppInfoStorage", "getAppByStatusExcludeByType: curosr is null");
       localObject1 = null;
     }
     if (localObject1 != null)
@@ -79,7 +79,7 @@ public final class a
         localObject2 = new g();
         ((g)localObject2).convertFrom((Cursor)localObject1);
         if (h.t(this.context, ((g)localObject2).field_appId)) {
-          this.whn.add(localObject2);
+          this.xsD.add(localObject2);
         }
         i += 1;
       }
@@ -88,11 +88,11 @@ public final class a
     AppMethodBeat.o(29124);
   }
   
-  public final boolean EJ(int paramInt)
+  public final boolean GF(int paramInt)
   {
     AppMethodBeat.i(29128);
-    int i = this.whn.size();
-    if ((paramInt >= i) && (paramInt < i + cEn()))
+    int i = this.xsD.size();
+    if ((paramInt >= i) && (paramInt < i + cRx()))
     {
       AppMethodBeat.o(29128);
       return true;
@@ -113,7 +113,7 @@ public final class a
   {
     AppMethodBeat.i(29127);
     int i = getRealCount();
-    int j = cEn();
+    int j = cRx();
     AppMethodBeat.o(29127);
     return i + j;
   }
@@ -121,12 +121,12 @@ public final class a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(29129);
-    if (EJ(paramInt))
+    if (GF(paramInt))
     {
       AppMethodBeat.o(29129);
       return null;
     }
-    Object localObject = this.whn.get(paramInt);
+    Object localObject = this.xsD.get(paramInt);
     AppMethodBeat.o(29129);
     return localObject;
   }
@@ -143,60 +143,60 @@ public final class a
     {
       paramViewGroup = new d();
       paramView = View.inflate(this.context, 2131493084, null);
-      paramViewGroup.fxT = ((ImageView)paramView.findViewById(2131296905));
-      paramViewGroup.yFF = ((TextView)paramView.findViewById(2131296904));
-      paramViewGroup.ftj = ((TextView)paramView.findViewById(2131296906));
-      paramViewGroup.yFG = paramView.findViewById(2131296907);
+      paramViewGroup.fBA = ((ImageView)paramView.findViewById(2131296905));
+      paramViewGroup.zST = ((TextView)paramView.findViewById(2131296904));
+      paramViewGroup.fwQ = ((TextView)paramView.findViewById(2131296906));
+      paramViewGroup.zSU = paramView.findViewById(2131296907);
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup.yFG.setVisibility(4);
-      if (!EJ(paramInt)) {
+      paramViewGroup.zSU.setVisibility(4);
+      if (!GF(paramInt)) {
         break;
       }
-      paramViewGroup.fxT.setVisibility(4);
-      paramViewGroup.yFF.setVisibility(4);
-      paramViewGroup.ftj.setVisibility(4);
+      paramViewGroup.fBA.setVisibility(4);
+      paramViewGroup.zST.setVisibility(4);
+      paramViewGroup.fwQ.setVisibility(4);
       AppMethodBeat.o(29126);
       return paramView;
       paramViewGroup = (d)paramView.getTag();
     }
     g localg = (g)getItem(paramInt);
-    paramViewGroup.fxT.setVisibility(0);
-    Bitmap localBitmap = h.c(localg.field_appId, 1, com.tencent.mm.cd.a.getDensity(this.context));
+    paramViewGroup.fBA.setVisibility(0);
+    Bitmap localBitmap = h.c(localg.field_appId, 1, com.tencent.mm.cc.a.getDensity(this.context));
     if (localBitmap == null)
     {
-      paramViewGroup.fxT.setBackgroundResource(2131231052);
-      paramViewGroup.ftj.setVisibility(0);
-      paramViewGroup.ftj.setText(h.a(this.context, localg, null));
-      if (!this.yFk) {
+      paramViewGroup.fBA.setBackgroundResource(2131231052);
+      paramViewGroup.fwQ.setVisibility(0);
+      paramViewGroup.fwQ.setText(h.a(this.context, localg, null));
+      if (!this.zSy) {
         break label259;
       }
-      paramViewGroup.yFF.setVisibility(0);
+      paramViewGroup.zST.setVisibility(0);
     }
     for (;;)
     {
       AppMethodBeat.o(29126);
       return paramView;
-      paramViewGroup.fxT.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+      paramViewGroup.fBA.setBackgroundDrawable(new BitmapDrawable(localBitmap));
       break;
       label259:
-      paramViewGroup.yFF.setVisibility(8);
+      paramViewGroup.zST.setVisibility(8);
     }
   }
   
-  public final void qZ(boolean paramBoolean)
+  public final void rX(boolean paramBoolean)
   {
     AppMethodBeat.i(29125);
-    this.yFk = paramBoolean;
+    this.zSy = paramBoolean;
     notifyDataSetChanged();
     AppMethodBeat.o(29125);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.a
  * JD-Core Version:    0.7.0.1
  */

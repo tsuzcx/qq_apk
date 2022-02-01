@@ -2,7 +2,7 @@ package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
 import com.tencent.liteav.basic.c.a;
-import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.d.i;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -14,7 +14,7 @@ public class j
   private boolean c;
   private w d;
   private boolean e;
-  private h f;
+  private i f;
   private e g;
   private p h;
   private boolean i;

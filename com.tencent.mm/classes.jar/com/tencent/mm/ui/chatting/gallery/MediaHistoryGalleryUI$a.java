@@ -12,7 +12,7 @@ final class MediaHistoryGalleryUI$a
   {
     AppMethodBeat.i(36357);
     Object localObject = null;
-    switch (MediaHistoryGalleryUI.6.GEt[paramc.ordinal()])
+    switch (MediaHistoryGalleryUI.6.Ieq[paramc.ordinal()])
     {
     }
     for (paramContext = localObject;; paramContext = new e(paramContext))
@@ -24,7 +24,7 @@ final class MediaHistoryGalleryUI$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.MediaHistoryGalleryUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ga
   extends b
 {
-  public a diX;
+  public a dgq;
+  public b dgr;
   
   public ga()
   {
@@ -15,23 +16,27 @@ public final class ga
   
   private ga(byte paramByte)
   {
-    AppMethodBeat.i(116026);
-    this.diX = new a();
-    this.ESR = false;
+    AppMethodBeat.i(116025);
+    this.dgq = new a();
+    this.dgr = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116026);
+    AppMethodBeat.o(116025);
   }
   
   public static final class a
   {
-    public int diY;
+    public long msgId;
+  }
+  
+  public static final class b
+  {
     public String fileName;
-    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ga
  * JD-Core Version:    0.7.0.1
  */

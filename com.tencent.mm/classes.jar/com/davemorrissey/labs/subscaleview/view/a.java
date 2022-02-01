@@ -10,12 +10,12 @@ import java.net.URLDecoder;
 
 public final class a
 {
-  final Integer aLW;
-  public boolean aLX;
-  public int aLY;
-  public int aLZ;
-  public Rect aMa;
-  boolean aMb;
+  final Integer aMM;
+  public boolean aMN;
+  public int aMO;
+  public int aMP;
+  public Rect aMQ;
+  boolean aMR;
   public final Bitmap bitmap;
   public final Uri uri;
   
@@ -24,8 +24,8 @@ public final class a
     AppMethodBeat.i(157373);
     this.bitmap = null;
     this.uri = null;
-    this.aLW = Integer.valueOf(paramInt);
-    this.aLX = true;
+    this.aMM = Integer.valueOf(paramInt);
+    this.aMN = true;
     AppMethodBeat.o(157373);
   }
   
@@ -34,11 +34,11 @@ public final class a
     AppMethodBeat.i(157371);
     this.bitmap = paramBitmap;
     this.uri = null;
-    this.aLW = null;
-    this.aLX = false;
-    this.aLY = paramBitmap.getWidth();
-    this.aLZ = paramBitmap.getHeight();
-    this.aMb = true;
+    this.aMM = null;
+    this.aMN = false;
+    this.aMO = paramBitmap.getWidth();
+    this.aMP = paramBitmap.getHeight();
+    this.aMR = true;
     AppMethodBeat.o(157371);
   }
   
@@ -57,8 +57,8 @@ public final class a
       localUri1 = Uri.parse(URLDecoder.decode(str, "UTF-8"));
       this.bitmap = null;
       this.uri = localUri1;
-      this.aLW = null;
-      this.aLX = true;
+      this.aMM = null;
+      this.aMN = true;
       AppMethodBeat.o(157372);
       return;
     }
@@ -71,7 +71,7 @@ public final class a
     }
   }
   
-  public static a U(String paramString)
+  public static a W(String paramString)
   {
     AppMethodBeat.i(157374);
     if (paramString == null)
@@ -108,15 +108,15 @@ public final class a
     return paramBitmap;
   }
   
-  public final a qb()
+  public final a ql()
   {
-    this.aLX = true;
+    this.aMN = true;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.davemorrissey.labs.subscaleview.view.a
  * JD-Core Version:    0.7.0.1
  */

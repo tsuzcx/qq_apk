@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.json.JSONObject;
@@ -30,78 +31,86 @@ public abstract class JsonComposer
   
   private void checkJsonComposerElements()
   {
-    Object localObject1 = (JsonType)getClass().getAnnotation(JsonType.class);
-    if (localObject1 != null)
-    {
-      this.mAllowEmpty = ((JsonType)localObject1).allowEmpty();
-      this.mFieldNameStyle = ((JsonType)localObject1).fieldNameStyle();
-      this.mFieldNamePrefix = ((JsonType)localObject1).fieldNamePrefix();
-      localObject1 = ((JsonType)localObject1).deserializer();
-      if (localObject1 != JsonParser.Deserializer.class)
-      {
-        localObject1 = (JsonParser.Deserializer)Util.newInstance((Class)localObject1, new Object[0]);
-        this.mClassDeserializer.put(getClass(), localObject1);
-      }
-    }
-    this.mJsonFields = ((Map)sClassJsonMap.get(getClass()));
-    Object localObject2 = new ArrayList();
-    if (this.mJsonFields == null)
-    {
-      this.mJsonFields = new Hashtable();
-      for (localObject1 = getClass(); localObject1 != JsonComposer.class; localObject1 = ((Class)localObject1).getSuperclass()) {
-        ((Collection)localObject2).addAll(Arrays.asList(((Class)localObject1).getDeclaredFields()));
-      }
-      sClassJsonMap.put(getClass(), this.mJsonFields);
-      localObject1 = localObject2;
-      localObject1 = ((Collection)localObject1).iterator();
-    }
     for (;;)
     {
-      label191:
-      if (!((Iterator)localObject1).hasNext()) {
-        return;
-      }
-      localObject2 = (Field)((Iterator)localObject1).next();
-      if ((!Modifier.isStatic(((Field)localObject2).getModifiers())) && (!Modifier.isTransient(((Field)localObject2).getModifiers())) && (!Modifier.isFinal(((Field)localObject2).getModifiers())))
+      Object localObject3;
+      Object localObject4;
+      try
       {
-        Object localObject3 = (JsonType)((Field)localObject2).getType().getAnnotation(JsonType.class);
-        if (localObject3 != null)
+        Object localObject1 = (JsonType)getClass().getAnnotation(JsonType.class);
+        if (localObject1 != null)
         {
-          localObject3 = ((JsonType)localObject3).deserializer();
-          if (localObject3 != JsonParser.Deserializer.class)
+          this.mAllowEmpty = ((JsonType)localObject1).allowEmpty();
+          this.mFieldNameStyle = ((JsonType)localObject1).fieldNameStyle();
+          this.mFieldNamePrefix = ((JsonType)localObject1).fieldNamePrefix();
+          localObject1 = ((JsonType)localObject1).deserializer();
+          if (localObject1 != JsonParser.Deserializer.class)
           {
-            localObject3 = (JsonParser.Deserializer)Util.newInstance((Class)localObject3, new Object[0]);
-            this.mFieldDeserializer.put(localObject2, localObject3);
+            localObject1 = (JsonParser.Deserializer)Util.newInstance((Class)localObject1, new Object[0]);
+            this.mClassDeserializer.put(getClass(), localObject1);
           }
         }
-        localObject3 = (Json)((Field)localObject2).getAnnotation(Json.class);
-        if (localObject3 != null)
+        this.mJsonFields = ((Map)sClassJsonMap.get(getClass()));
+        localObject3 = new ArrayList();
+        if (this.mJsonFields == null)
         {
-          if (!((Json)localObject3).ignore())
+          this.mJsonFields = new Hashtable();
+          localObject1 = getClass();
+          if (localObject1 != JsonComposer.class)
           {
-            if (!TextUtils.isEmpty(((Json)localObject3).name())) {
-              break label401;
-            }
-            this.mJsonFields.put(localObject2, translateFieldName(((Field)localObject2).getName()));
+            ((Collection)localObject3).addAll(Arrays.asList(((Class)localObject1).getDeclaredFields()));
+            localObject1 = ((Class)localObject1).getSuperclass();
+            continue;
           }
-          for (;;)
-          {
-            localObject3 = ((Json)localObject3).deserializer();
-            if (localObject3 == JsonParser.Deserializer.class) {
-              break label191;
-            }
-            localObject3 = (JsonParser.Deserializer)Util.newInstance((Class)localObject3, new Object[0]);
-            this.mFieldDeserializer.put(localObject2, localObject3);
-            break label191;
-            localObject1 = this.mJsonFields.keySet();
+          sClassJsonMap.put(getClass(), this.mJsonFields);
+          localObject1 = localObject3;
+          localObject1 = ((Collection)localObject1).iterator();
+          if (!((Iterator)localObject1).hasNext()) {
             break;
-            label401:
-            this.mJsonFields.put(localObject2, ((Json)localObject3).name());
           }
+          localObject3 = (Field)((Iterator)localObject1).next();
+          if ((Modifier.isStatic(((Field)localObject3).getModifiers())) || (Modifier.isTransient(((Field)localObject3).getModifiers())) || (Modifier.isFinal(((Field)localObject3).getModifiers()))) {
+            continue;
+          }
+          localObject4 = (JsonType)((Field)localObject3).getType().getAnnotation(JsonType.class);
+          if (localObject4 != null)
+          {
+            localObject4 = ((JsonType)localObject4).deserializer();
+            if (localObject4 != JsonParser.Deserializer.class)
+            {
+              localObject4 = (JsonParser.Deserializer)Util.newInstance((Class)localObject4, new Object[0]);
+              this.mFieldDeserializer.put(localObject3, localObject4);
+            }
+          }
+          localObject4 = (Json)((Field)localObject3).getAnnotation(Json.class);
+          if (localObject4 == null) {
+            break label428;
+          }
+          if (!((Json)localObject4).ignore())
+          {
+            if (!TextUtils.isEmpty(((Json)localObject4).name())) {
+              break label408;
+            }
+            this.mJsonFields.put(localObject3, translateFieldName(((Field)localObject3).getName()));
+          }
+          localObject4 = ((Json)localObject4).deserializer();
+          if (localObject4 == JsonParser.Deserializer.class) {
+            continue;
+          }
+          localObject4 = (JsonParser.Deserializer)Util.newInstance((Class)localObject4, new Object[0]);
+          this.mFieldDeserializer.put(localObject3, localObject4);
+          continue;
         }
-        if (!((Field)localObject2).getName().contains("this")) {
-          this.mJsonFields.put(localObject2, translateFieldName(((Field)localObject2).getName()));
-        }
+        Set localSet = this.mJsonFields.keySet();
+      }
+      finally {}
+      continue;
+      label408:
+      this.mJsonFields.put(localObject3, ((Json)localObject4).name());
+      continue;
+      label428:
+      if (!((Field)localObject3).getName().contains("this")) {
+        this.mJsonFields.put(localObject3, translateFieldName(((Field)localObject3).getName()));
       }
     }
   }
@@ -917,7 +926,7 @@ public abstract class JsonComposer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.map.tools.json.JsonComposer
  * JD-Core Version:    0.7.0.1
  */

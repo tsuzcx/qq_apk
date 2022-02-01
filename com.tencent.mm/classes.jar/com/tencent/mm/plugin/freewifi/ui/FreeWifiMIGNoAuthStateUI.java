@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class FreeWifiMIGNoAuthStateUI
   extends FreeWifiNoAuthStateUI
 {
-  protected final String cwB()
+  protected final String cJN()
   {
     AppMethodBeat.i(25066);
     String str = getString(2131761233);

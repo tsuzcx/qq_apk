@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.f;
+import com.tencent.mm.ay.f;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.ago;
-import com.tencent.mm.protocal.protobuf.agq;
-import com.tencent.mm.protocal.protobuf.agu;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.protocal.protobuf.ahp;
+import com.tencent.mm.protocal.protobuf.aht;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.vfs.q;
 import java.util.HashSet;
@@ -23,79 +23,79 @@ import java.util.Set;
 public final class i
   extends b
 {
-  private final int qkA;
-  private Set<ImageView> qkP;
-  private View.OnClickListener qkQ;
+  private final int qTc;
+  private Set<ImageView> qTr;
+  private View.OnClickListener qTs;
   
   public i(o paramo)
   {
     super(paramo);
     AppMethodBeat.i(107465);
-    this.qkQ = new View.OnClickListener()
+    this.qTs = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(107464);
-        if (!com.tencent.mm.compatible.util.e.XG())
+        if (!com.tencent.mm.compatible.util.e.YD())
         {
-          t.g(i.this.qcI.context, null);
+          t.g(i.this.qLn.context, null);
           AppMethodBeat.o(107464);
           return;
         }
         Object localObject;
-        agu localagu;
-        afy localafy;
+        aht localaht;
+        agx localagx;
         if ((paramAnonymousView.getTag() instanceof com.tencent.mm.plugin.fav.a.g))
         {
           localObject = (com.tencent.mm.plugin.fav.a.g)paramAnonymousView.getTag();
-          localagu = ((com.tencent.mm.plugin.fav.a.g)localObject).field_favProto.DiD;
-          localafy = com.tencent.mm.plugin.fav.a.b.c((com.tencent.mm.plugin.fav.a.g)localObject);
-          if (localafy == null)
+          localaht = ((com.tencent.mm.plugin.fav.a.g)localObject).field_favProto.EBJ;
+          localagx = com.tencent.mm.plugin.fav.a.b.c((com.tencent.mm.plugin.fav.a.g)localObject);
+          if (localagx == null)
           {
-            ad.w("MicroMsg.FavBaseListItem", "data item is null");
+            ac.w("MicroMsg.FavBaseListItem", "data item is null");
             AppMethodBeat.o(107464);
             return;
           }
-          if (com.tencent.mm.plugin.fav.a.b.f(localafy))
+          if (com.tencent.mm.plugin.fav.a.b.f(localagx))
           {
-            ad.i("MicroMsg.FavBaseListItem", "same song, do release");
-            com.tencent.mm.az.a.azD();
+            ac.i("MicroMsg.FavBaseListItem", "same song, do release");
+            com.tencent.mm.ay.a.aGt();
             i.a(i.this, null);
             AppMethodBeat.o(107464);
             return;
           }
-          localObject = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fav.a.b.a(localafy));
+          localObject = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fav.a.b.a(localagx));
           if (((com.tencent.mm.vfs.e)localObject).exists()) {
             break label301;
           }
-          if (localafy.deE != null) {
+          if (localagx.dbZ != null) {
             break label239;
           }
           localObject = "";
         }
         for (;;)
         {
-          localObject = com.tencent.mm.az.g.a(6, null, localafy.title, localafy.desc, localafy.Dgg, localafy.Dgk, localafy.Dgi, localafy.dkb, com.tencent.mm.plugin.fav.a.b.chv(), (String)localObject, "", localagu.appId);
-          ((f)localObject).hnG = localafy.songAlbumUrl;
-          ((f)localObject).hny = localafy.songLyric;
-          ((f)localObject).hnQ = localafy.dkb;
-          com.tencent.mm.az.a.c((f)localObject);
+          localObject = com.tencent.mm.ay.g.a(6, null, localagx.title, localagx.desc, localagx.Ezm, localagx.Ezq, localagx.Ezo, localagx.dhw, com.tencent.mm.plugin.fav.a.b.cpc(), (String)localObject, "", localaht.appId);
+          ((f)localObject).hOj = localagx.songAlbumUrl;
+          ((f)localObject).hOb = localagx.songLyric;
+          ((f)localObject).hOt = localagx.dhw;
+          com.tencent.mm.ay.a.c((f)localObject);
           i.a(i.this, (ImageView)paramAnonymousView);
           AppMethodBeat.o(107464);
           return;
           label239:
-          localObject = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fav.a.b.chp() + com.tencent.mm.b.g.getMessageDigest(localafy.deE.getBytes()));
+          localObject = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fav.a.b.coW() + com.tencent.mm.b.g.getMessageDigest(localagx.dbZ.getBytes()));
           if (((com.tencent.mm.vfs.e)localObject).exists()) {}
-          for (localObject = q.B(((com.tencent.mm.vfs.e)localObject).fhU());; localObject = "") {
+          for (localObject = q.B(((com.tencent.mm.vfs.e)localObject).fxV());; localObject = "") {
             break;
           }
           label301:
-          localObject = q.B(((com.tencent.mm.vfs.e)localObject).fhU());
+          localObject = q.B(((com.tencent.mm.vfs.e)localObject).fxV());
         }
       }
     };
-    this.qkA = com.tencent.mm.cd.a.ao(paramo.context, 2131165358);
-    this.qkP = new HashSet();
+    this.qTc = com.tencent.mm.cc.a.au(paramo.context, 2131165358);
+    this.qTr = new HashSet();
     AppMethodBeat.o(107465);
   }
   
@@ -107,26 +107,26 @@ public final class i
     {
       paramViewGroup = new a();
       paramView = a(View.inflate((Context)localObject, 2131493955, null), paramViewGroup, paramg);
-      paramViewGroup.kXS = ((ImageView)paramView.findViewById(2131299794));
-      paramViewGroup.ica = ((TextView)paramView.findViewById(2131299848));
-      paramViewGroup.hJe = ((TextView)paramView.findViewById(2131299778));
-      paramViewGroup.qkS = ((ImageView)paramView.findViewById(2131299798));
-      paramViewGroup.qkL = ((TextView)paramView.findViewById(2131299825));
-      paramViewGroup.qkL.setVisibility(8);
-      paramViewGroup.qkS.setOnClickListener(this.qkQ);
-      paramViewGroup.qkS.setVisibility(0);
-      this.qkP.add(paramViewGroup.qkS);
+      paramViewGroup.lzC = ((ImageView)paramView.findViewById(2131299794));
+      paramViewGroup.iCg = ((TextView)paramView.findViewById(2131299848));
+      paramViewGroup.ijE = ((TextView)paramView.findViewById(2131299778));
+      paramViewGroup.qTu = ((ImageView)paramView.findViewById(2131299798));
+      paramViewGroup.qTn = ((TextView)paramView.findViewById(2131299825));
+      paramViewGroup.qTn.setVisibility(8);
+      paramViewGroup.qTu.setOnClickListener(this.qTs);
+      paramViewGroup.qTu.setVisibility(0);
+      this.qTr.add(paramViewGroup.qTu);
       a(paramViewGroup, paramg);
       localObject = com.tencent.mm.plugin.fav.a.b.c(paramg);
-      paramViewGroup.ica.setText(((afy)localObject).title);
-      paramViewGroup.hJe.setText(((afy)localObject).desc);
-      paramViewGroup.hJe.setVisibility(0);
-      this.qcI.a(paramViewGroup.kXS, (afy)localObject, paramg, 2131689564, this.qkA, this.qkA);
-      paramViewGroup.qkS.setTag(paramg);
-      if (!com.tencent.mm.plugin.fav.a.b.f((afy)localObject)) {
+      paramViewGroup.iCg.setText(((agx)localObject).title);
+      paramViewGroup.ijE.setText(((agx)localObject).desc);
+      paramViewGroup.ijE.setVisibility(0);
+      this.qLn.a(paramViewGroup.lzC, (agx)localObject, paramg, 2131689564, this.qTc, this.qTc);
+      paramViewGroup.qTu.setTag(paramg);
+      if (!com.tencent.mm.plugin.fav.a.b.f((agx)localObject)) {
         break label256;
       }
-      paramViewGroup.qkS.setImageResource(2131233393);
+      paramViewGroup.qTu.setImageResource(2131233393);
     }
     for (;;)
     {
@@ -135,32 +135,32 @@ public final class i
       paramViewGroup = (a)paramView.getTag();
       break;
       label256:
-      paramViewGroup.qkS.setImageResource(2131233395);
+      paramViewGroup.qTu.setImageResource(2131233395);
     }
   }
   
-  public final void a(View paramView, agq paramagq)
+  public final void a(View paramView, ahp paramahp)
   {
     AppMethodBeat.i(107467);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.qaS, paramagq);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.qJy, paramahp);
     AppMethodBeat.o(107467);
   }
   
   public static final class a
     extends b.b
   {
-    TextView hJe;
-    TextView ica;
-    ImageView kXS;
-    TextView qkL;
-    ImageView qkS;
+    TextView iCg;
+    TextView ijE;
+    ImageView lzC;
+    TextView qTn;
+    ImageView qTu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.e.i
  * JD-Core Version:    0.7.0.1
  */

@@ -16,46 +16,46 @@ import android.util.DisplayMetrics;
 public abstract class b
   extends Drawable
 {
-  private boolean HA = true;
-  public boolean HB;
-  private int HC;
-  private int HD;
-  private int Ht = 160;
-  private int Hu = 119;
-  public final BitmapShader Hv;
-  private final Matrix Hw = new Matrix();
-  public float Hx;
-  final Rect Hy = new Rect();
-  private final RectF Hz = new RectF();
+  private int Ir = 160;
+  private int Is = 119;
+  public final BitmapShader It;
+  private final Matrix Iu = new Matrix();
+  public float Iv;
+  final Rect Iw = new Rect();
+  private final RectF Ix = new RectF();
+  private boolean Iy = true;
+  public boolean Iz;
   public final Bitmap mBitmap;
+  private int mBitmapHeight;
+  private int mBitmapWidth;
   public final Paint mPaint = new Paint(3);
   
   b(Resources paramResources, Bitmap paramBitmap)
   {
     if (paramResources != null) {
-      this.Ht = paramResources.getDisplayMetrics().densityDpi;
+      this.Ir = paramResources.getDisplayMetrics().densityDpi;
     }
     this.mBitmap = paramBitmap;
     if (this.mBitmap != null)
     {
-      this.HC = this.mBitmap.getScaledWidth(this.Ht);
-      this.HD = this.mBitmap.getScaledHeight(this.Ht);
+      this.mBitmapWidth = this.mBitmap.getScaledWidth(this.Ir);
+      this.mBitmapHeight = this.mBitmap.getScaledHeight(this.Ir);
       paramResources = this.mBitmap;
       paramBitmap = Shader.TileMode.CLAMP;
-      this.Hv = new BitmapShader(paramResources, paramBitmap, paramBitmap);
+      this.It = new BitmapShader(paramResources, paramBitmap, paramBitmap);
       return;
     }
-    this.HD = -1;
-    this.HC = -1;
-    this.Hv = null;
+    this.mBitmapHeight = -1;
+    this.mBitmapWidth = -1;
+    this.It = null;
   }
   
-  private void dY()
+  private void ej()
   {
-    this.Hx = (Math.min(this.HD, this.HC) / 2);
+    this.Iv = (Math.min(this.mBitmapHeight, this.mBitmapWidth) / 2);
   }
   
-  public static boolean v(float paramFloat)
+  public static boolean z(float paramFloat)
   {
     return paramFloat > 0.05F;
   }
@@ -65,60 +65,60 @@ public abstract class b
     throw new UnsupportedOperationException();
   }
   
-  final void dW()
-  {
-    if (this.HA)
-    {
-      if (!this.HB) {
-        break label220;
-      }
-      int i = Math.min(this.HC, this.HD);
-      a(this.Hu, i, i, getBounds(), this.Hy);
-      i = Math.min(this.Hy.width(), this.Hy.height());
-      int j = Math.max(0, (this.Hy.width() - i) / 2);
-      int k = Math.max(0, (this.Hy.height() - i) / 2);
-      this.Hy.inset(j, k);
-      this.Hx = (i * 0.5F);
-    }
-    for (;;)
-    {
-      this.Hz.set(this.Hy);
-      if (this.Hv != null)
-      {
-        this.Hw.setTranslate(this.Hz.left, this.Hz.top);
-        this.Hw.preScale(this.Hz.width() / this.mBitmap.getWidth(), this.Hz.height() / this.mBitmap.getHeight());
-        this.Hv.setLocalMatrix(this.Hw);
-        this.mPaint.setShader(this.Hv);
-      }
-      this.HA = false;
-      return;
-      label220:
-      a(this.Hu, this.HC, this.HD, getBounds(), this.Hy);
-    }
-  }
-  
-  public final void dX()
-  {
-    this.HB = true;
-    this.HA = true;
-    dY();
-    this.mPaint.setShader(this.Hv);
-    invalidateSelf();
-  }
-  
   public void draw(Canvas paramCanvas)
   {
     Bitmap localBitmap = this.mBitmap;
     if (localBitmap == null) {
       return;
     }
-    dW();
+    eh();
     if (this.mPaint.getShader() == null)
     {
-      paramCanvas.drawBitmap(localBitmap, null, this.Hy, this.mPaint);
+      paramCanvas.drawBitmap(localBitmap, null, this.Iw, this.mPaint);
       return;
     }
-    paramCanvas.drawRoundRect(this.Hz, this.Hx, this.Hx, this.mPaint);
+    paramCanvas.drawRoundRect(this.Ix, this.Iv, this.Iv, this.mPaint);
+  }
+  
+  final void eh()
+  {
+    if (this.Iy)
+    {
+      if (!this.Iz) {
+        break label220;
+      }
+      int i = Math.min(this.mBitmapWidth, this.mBitmapHeight);
+      a(this.Is, i, i, getBounds(), this.Iw);
+      i = Math.min(this.Iw.width(), this.Iw.height());
+      int j = Math.max(0, (this.Iw.width() - i) / 2);
+      int k = Math.max(0, (this.Iw.height() - i) / 2);
+      this.Iw.inset(j, k);
+      this.Iv = (i * 0.5F);
+    }
+    for (;;)
+    {
+      this.Ix.set(this.Iw);
+      if (this.It != null)
+      {
+        this.Iu.setTranslate(this.Ix.left, this.Ix.top);
+        this.Iu.preScale(this.Ix.width() / this.mBitmap.getWidth(), this.Ix.height() / this.mBitmap.getHeight());
+        this.It.setLocalMatrix(this.Iu);
+        this.mPaint.setShader(this.It);
+      }
+      this.Iy = false;
+      return;
+      label220:
+      a(this.Is, this.mBitmapWidth, this.mBitmapHeight, getBounds(), this.Iw);
+    }
+  }
+  
+  public final void ei()
+  {
+    this.Iz = true;
+    this.Iy = true;
+    ej();
+    this.mPaint.setShader(this.It);
+    invalidateSelf();
   }
   
   public int getAlpha()
@@ -133,33 +133,33 @@ public abstract class b
   
   public int getIntrinsicHeight()
   {
-    return this.HD;
+    return this.mBitmapHeight;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.HC;
+    return this.mBitmapWidth;
   }
   
   public int getOpacity()
   {
-    if ((this.Hu != 119) || (this.HB)) {}
+    if ((this.Is != 119) || (this.Iz)) {}
     Bitmap localBitmap;
     do
     {
       return -3;
       localBitmap = this.mBitmap;
-    } while ((localBitmap == null) || (localBitmap.hasAlpha()) || (this.mPaint.getAlpha() < 255) || (v(this.Hx)));
+    } while ((localBitmap == null) || (localBitmap.hasAlpha()) || (this.mPaint.getAlpha() < 255) || (z(this.Iv)));
     return -1;
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    if (this.HB) {
-      dY();
+    if (this.Iz) {
+      ej();
     }
-    this.HA = true;
+    this.Iy = true;
   }
   
   public void setAlpha(int paramInt)
@@ -191,7 +191,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.graphics.drawable.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
 import com.tencent.mm.plugin.music.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a$d
   implements k<IPCString, IPCString>
@@ -17,12 +17,12 @@ public final class a$d
     AppMethodBeat.i(63072);
     try
     {
-      ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getMusicMIMETypeByMusicId Task, musicId:%s", new Object[] { paramIPCString });
+      ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getMusicMIMETypeByMusicId Task, musicId:%s", new Object[] { paramIPCString });
       paramIPCString = paramIPCString.value;
-      paramIPCString = f.cVp().aiQ(paramIPCString);
+      paramIPCString = f.diV().anL(paramIPCString);
       if (paramIPCString == null)
       {
-        ad.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "getMusicMIMETypeByMusicId pMusic is null!'");
+        ac.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "getMusicMIMETypeByMusicId pMusic is null!'");
         paramIPCString = null;
       }
       for (;;)
@@ -30,10 +30,10 @@ public final class a$d
         paramIPCString = new IPCString(paramIPCString);
         AppMethodBeat.o(63072);
         return paramIPCString;
-        ad.i("MicroMsg.Music.MusicDataSourceMainProcessImp", "music field_pieceFileMIMEType:%s", new Object[] { paramIPCString.field_pieceFileMIMEType });
+        ac.i("MicroMsg.Music.MusicDataSourceMainProcessImp", "music field_pieceFileMIMEType:%s", new Object[] { paramIPCString.field_pieceFileMIMEType });
         if (TextUtils.isEmpty(paramIPCString.field_pieceFileMIMEType))
         {
-          ad.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "field_pieceFileMIMEType is null!'");
+          ac.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "field_pieceFileMIMEType is null!'");
           paramIPCString = null;
         }
         else
@@ -45,7 +45,7 @@ public final class a$d
     }
     catch (Exception paramIPCString)
     {
-      ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc getMusicMIMETypeByMusicId task", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc getMusicMIMETypeByMusicId task", new Object[0]);
       paramIPCString = new IPCString("");
       AppMethodBeat.o(63072);
     }
@@ -53,7 +53,7 @@ public final class a$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.d
  * JD-Core Version:    0.7.0.1
  */

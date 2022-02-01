@@ -12,8 +12,8 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class WalletWXCreditDetailHeaderPreference
   extends Preference
 {
-  TextView BLk;
-  TextView ibG;
+  TextView Dds;
+  TextView iBN;
   private LayoutInflater mInflater;
   
   public WalletWXCreditDetailHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -34,8 +34,8 @@ public class WalletWXCreditDetailHeaderPreference
   {
     AppMethodBeat.i(72363);
     super.onBindView(paramView);
-    this.ibG = ((TextView)paramView.findViewById(2131306853));
-    this.BLk = ((TextView)paramView.findViewById(2131306860));
+    this.iBN = ((TextView)paramView.findViewById(2131306853));
+    this.Dds = ((TextView)paramView.findViewById(2131306860));
     AppMethodBeat.o(72363);
   }
   

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
-import com.tencent.mm.protocal.protobuf.dwo;
+import com.tencent.mm.protocal.protobuf.ecf;
 
 public final class i
-  extends a<Boolean, dwo>
+  extends a<Boolean, ecf>
 {
-  final String aQI()
+  final String aXD()
   {
     return "CmdUpdateVersion";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.b.b.i
  * JD-Core Version:    0.7.0.1
  */

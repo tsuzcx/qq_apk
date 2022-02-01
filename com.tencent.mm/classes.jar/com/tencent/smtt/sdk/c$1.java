@@ -21,9 +21,9 @@ final class c$1
       paramString2 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
       paramString2.setFlags(268435456);
       paramString1 = this.a;
-      paramString2 = new com.tencent.mm.hellhoundlib.b.a().bd(paramString2);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString2.adn(), "com/tencent/smtt/sdk/c$1", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString1.startActivity((Intent)paramString2.lS(0));
+      paramString2 = new com.tencent.mm.hellhoundlib.b.a().ba(paramString2);
+      com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString2.aeD(), "com/tencent/smtt/sdk/c$1", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString1.startActivity((Intent)paramString2.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString1, "com/tencent/smtt/sdk/c$1", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(54363);
       return;

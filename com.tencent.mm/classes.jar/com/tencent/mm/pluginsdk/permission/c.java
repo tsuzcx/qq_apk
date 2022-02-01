@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.permission;
 
 public abstract interface c
 {
-  public abstract void s(int[] paramArrayOfInt);
+  public abstract void b(int paramInt, int[] paramArrayOfInt);
 }
 
 

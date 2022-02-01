@@ -1,20 +1,20 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class bs$a
 {
-  public static boolean aF(String paramString1, String paramString2)
+  public static boolean aN(String paramString1, String paramString2)
   {
     AppMethodBeat.i(42980);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(42980);
       return true;
     }
     paramString1 = decode(encode(paramString1));
-    if ((bt.isNullOrNil(paramString1)) || (!paramString1.equals(paramString2)))
+    if ((bs.isNullOrNil(paramString1)) || (!paramString1.equals(paramString2)))
     {
       AppMethodBeat.o(42980);
       return true;
@@ -27,7 +27,7 @@ final class bs$a
   {
     AppMethodBeat.i(42982);
     String str = "";
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() % 2 != 0))
+    if ((bs.isNullOrNil(paramString)) || (paramString.length() % 2 != 0))
     {
       AppMethodBeat.o(42982);
       return "";

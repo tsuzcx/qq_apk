@@ -10,55 +10,55 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class i
   extends BitmapDrawable
   implements d.a
 {
-  protected static final ap gFd;
-  private PaintFlagsDrawFilter BVA;
-  protected boolean BVv;
-  private int BVw;
-  private int BVx;
-  protected boolean BVy;
-  protected float BVz;
-  protected final Paint gFc;
-  private Runnable gFf;
-  private Path ja;
+  protected static final ao hfE;
+  protected boolean DnM;
+  private int DnN;
+  private int DnO;
+  protected boolean DnP;
+  protected float DnQ;
+  private PaintFlagsDrawFilter DnR;
+  protected final Paint hfD;
+  private Runnable hfG;
+  private Path jZ;
   private Paint paint;
   private Rect rect;
-  protected boolean tFD;
   protected String tag;
-  protected final a uIa;
-  protected boolean vtv;
+  protected boolean uNY;
+  protected final a vQR;
+  protected boolean wDv;
   
   static
   {
     AppMethodBeat.i(152146);
-    gFd = new ap(Looper.getMainLooper());
+    hfE = new ao(Looper.getMainLooper());
     AppMethodBeat.o(152146);
   }
   
   public i(a parama, String paramString)
   {
-    super(parama.Ky());
+    super(parama.Kj());
     AppMethodBeat.i(152139);
-    this.gFc = new Paint();
-    this.tFD = false;
-    this.BVv = false;
-    this.BVw = 0;
-    this.BVx = 0;
-    this.BVz = 1.0F;
+    this.hfD = new Paint();
+    this.uNY = false;
+    this.DnM = false;
+    this.DnN = 0;
+    this.DnO = 0;
+    this.DnQ = 1.0F;
     this.rect = new Rect();
-    this.BVA = new PaintFlagsDrawFilter(0, 3);
+    this.DnR = new PaintFlagsDrawFilter(0, 3);
     this.paint = new Paint();
     this.paint.setStyle(Paint.Style.STROKE);
     this.paint.setFlags(1);
     this.paint.setAntiAlias(true);
-    this.ja = new Path();
-    this.gFf = new Runnable()
+    this.jZ = new Path();
+    this.hfG = new Runnable()
     {
       public final void run()
       {
@@ -67,32 +67,32 @@ public class i
         AppMethodBeat.o(152138);
       }
     };
-    this.gFc.setAntiAlias(true);
-    this.gFc.setFilterBitmap(true);
-    this.uIa = parama;
+    this.hfD.setAntiAlias(true);
+    this.hfD.setFilterBitmap(true);
+    this.vQR = parama;
     this.tag = paramString;
-    this.uIa.a(this);
+    this.vQR.a(this);
     AppMethodBeat.o(152139);
   }
   
   public i(a parama, String paramString, byte paramByte)
   {
-    super(parama.Ky());
+    super(parama.Kj());
     AppMethodBeat.i(152140);
-    this.gFc = new Paint();
-    this.tFD = false;
-    this.BVv = false;
-    this.BVw = 0;
-    this.BVx = 0;
-    this.BVz = 1.0F;
+    this.hfD = new Paint();
+    this.uNY = false;
+    this.DnM = false;
+    this.DnN = 0;
+    this.DnO = 0;
+    this.DnQ = 1.0F;
     this.rect = new Rect();
-    this.BVA = new PaintFlagsDrawFilter(0, 3);
+    this.DnR = new PaintFlagsDrawFilter(0, 3);
     this.paint = new Paint();
     this.paint.setStyle(Paint.Style.STROKE);
     this.paint.setFlags(1);
     this.paint.setAntiAlias(true);
-    this.ja = new Path();
-    this.gFf = new Runnable()
+    this.jZ = new Path();
+    this.hfG = new Runnable()
     {
       public final void run()
       {
@@ -101,76 +101,89 @@ public class i
         AppMethodBeat.o(152138);
       }
     };
-    this.gFc.setAntiAlias(true);
-    this.gFc.setFilterBitmap(true);
-    this.tFD = false;
-    this.uIa = parama;
+    this.hfD.setAntiAlias(true);
+    this.hfD.setFilterBitmap(true);
+    this.uNY = false;
+    this.vQR = parama;
     this.tag = paramString;
-    this.uIa.a(this);
+    this.vQR.a(this);
     AppMethodBeat.o(152140);
+  }
+  
+  public void Af(String paramString)
+  {
+    AppMethodBeat.i(152143);
+    if ((paramString == null) || (!paramString.equals(this.tag)))
+    {
+      AppMethodBeat.o(152143);
+      return;
+    }
+    ac.v("MicroMsg.SDK.LazyBitmapDrawable", "notifyChanged :%s", new Object[] { paramString });
+    hfE.post(this.hfG);
+    AppMethodBeat.o(152143);
   }
   
   public void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(152142);
     Bitmap localBitmap;
-    if (this.BVv)
+    if (this.DnM)
     {
-      localBitmap = this.uIa.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
+      localBitmap = this.vQR.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
       if ((localBitmap != null) && (!localBitmap.isRecycled())) {
         break label215;
       }
-      localBitmap = this.uIa.Ky();
-      if (!this.BVy) {
+      localBitmap = this.vQR.Kj();
+      if (!this.DnP) {
         break label207;
       }
-      this.vtv = true;
+      this.wDv = true;
     }
     for (;;)
     {
       Rect localRect2 = getBounds();
       Rect localRect1 = null;
-      if ((this.BVz > 1.0F) || (this.tFD))
+      if ((this.DnQ > 1.0F) || (this.uNY))
       {
         int i = localBitmap.getHeight() / 15 / 2;
         int j = localBitmap.getWidth() / 15 / 2;
         localRect1 = new Rect(j, i, localBitmap.getWidth() - j, localBitmap.getHeight() - i);
       }
-      paramCanvas.drawBitmap(localBitmap, localRect1, localRect2, this.gFc);
+      paramCanvas.drawBitmap(localBitmap, localRect1, localRect2, this.hfD);
       AppMethodBeat.o(152142);
       return;
-      if (this.BVy)
+      if (this.DnP)
       {
-        localBitmap = this.uIa.ex(this.tag);
+        localBitmap = this.vQR.em(this.tag);
         break;
       }
-      localBitmap = this.uIa.ew(this.tag);
+      localBitmap = this.vQR.el(this.tag);
       break;
       label207:
-      this.vtv = false;
+      this.wDv = false;
       continue;
       label215:
-      this.vtv = false;
+      this.wDv = false;
     }
   }
   
-  public final void exs()
+  public final void eMM()
   {
-    this.BVy = true;
+    this.DnP = true;
   }
   
-  public final void ext()
+  public final void eMN()
   {
     AppMethodBeat.i(152144);
-    if (!this.BVy)
+    if (!this.DnP)
     {
       AppMethodBeat.o(152144);
       return;
     }
-    this.BVy = false;
-    if (this.vtv)
+    this.DnP = false;
+    if (this.wDv)
     {
-      this.vtv = false;
+      this.wDv = false;
       invalidateSelf();
     }
     AppMethodBeat.o(152144);
@@ -181,11 +194,11 @@ public class i
     AppMethodBeat.i(152145);
     if (paramBoolean)
     {
-      this.BVy = true;
+      this.DnP = true;
       AppMethodBeat.o(152145);
       return;
     }
-    ext();
+    eMN();
     AppMethodBeat.o(152145);
   }
   
@@ -200,45 +213,32 @@ public class i
     if (!paramString.equals(this.tag))
     {
       this.tag = paramString;
-      gFd.post(this.gFf);
+      hfE.post(this.hfG);
     }
     AppMethodBeat.o(152141);
   }
   
-  public final void tW(boolean paramBoolean)
+  public final void uX(boolean paramBoolean)
   {
-    this.BVv = paramBoolean;
-  }
-  
-  public void vZ(String paramString)
-  {
-    AppMethodBeat.i(152143);
-    if ((paramString == null) || (!paramString.equals(this.tag)))
-    {
-      AppMethodBeat.o(152143);
-      return;
-    }
-    ad.v("MicroMsg.SDK.LazyBitmapDrawable", "notifyChanged :%s", new Object[] { paramString });
-    gFd.post(this.gFf);
-    AppMethodBeat.o(152143);
+    this.DnM = paramBoolean;
   }
   
   public static abstract interface a
   {
-    public abstract Bitmap Ky();
+    public abstract Bitmap Kj();
     
     public abstract Bitmap a(String paramString, int paramInt1, int paramInt2, int paramInt3);
     
     public abstract void a(i parami);
     
-    public abstract Bitmap ew(String paramString);
+    public abstract Bitmap el(String paramString);
     
-    public abstract Bitmap ex(String paramString);
+    public abstract Bitmap em(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.i
  * JD-Core Version:    0.7.0.1
  */

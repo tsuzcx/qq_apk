@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.sns.model.am.a;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
 import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.protocal.protobuf.afv;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.agu;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class c
   extends a
@@ -16,23 +16,23 @@ public final class c
   {
     super(new p());
     AppMethodBeat.i(99844);
-    fgY();
+    fxa();
     AppMethodBeat.o(99844);
   }
   
-  public final String C(long paramLong, String paramString)
+  public final String A(long paramLong, String paramString)
   {
     AppMethodBeat.i(179324);
-    ad.l("MicroMsg.SnsTimeLineVending", "updateDownLimitSeq", new Object[0]);
-    ad.d("MicroMsg.SnsTimeLineVending", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(af.dtk().dtX()), paramString });
-    Object localObject = af.dtu();
+    ac.l("MicroMsg.SnsTimeLineVending", "updateDownLimitSeq", new Object[0]);
+    ac.d("MicroMsg.SnsTimeLineVending", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(af.dHH().dIv()), paramString });
+    Object localObject = af.dHR();
     int i;
     String str;
     if (paramString.equals(""))
     {
-      i = af.dtk().dtX() / 2;
-      localObject = com.tencent.mm.plugin.sns.data.q.su(((com.tencent.mm.plugin.sns.storage.q)localObject).f(paramLong, i, false));
-      str = dDh();
+      i = af.dHH().dIv() / 2;
+      localObject = com.tencent.mm.plugin.sns.data.q.wX(((com.tencent.mm.plugin.sns.storage.q)localObject).f(paramLong, i, false));
+      str = dRE();
       if (!str.equals("")) {
         break label141;
       }
@@ -40,13 +40,13 @@ public final class c
     }
     for (;;)
     {
-      localObject = af.dty().apP("@__weixintimtline").dxP();
-      if (((afv)localObject).DfN != 0L) {
+      localObject = af.dHV().auY("@__weixintimtline").dMm();
+      if (((agu)localObject).EyT != 0L) {
         break label160;
       }
       AppMethodBeat.o(179324);
       return paramString;
-      i = af.dtk().dtX();
+      i = af.dHH().dIv();
       break;
       label141:
       paramString = (String)localObject;
@@ -55,7 +55,7 @@ public final class c
       }
     }
     label160:
-    localObject = com.tencent.mm.plugin.sns.data.q.su(((afv)localObject).DfN);
+    localObject = com.tencent.mm.plugin.sns.data.q.wX(((agu)localObject).EyT);
     if (paramString.equals(""))
     {
       AppMethodBeat.o(179324);
@@ -70,12 +70,12 @@ public final class c
     return paramString;
   }
   
-  public final String tr(long paramLong)
+  public final String xU(long paramLong)
   {
     AppMethodBeat.i(179325);
-    ad.d("MicroMsg.SnsTimeLineVending", "updateUpLimitSeq %s", new Object[] { Integer.valueOf(af.dtk().dtX()) });
-    String str1 = com.tencent.mm.plugin.sns.data.q.su(af.dtu().g(paramLong, af.dtk().dtX(), false));
-    String str2 = dDd();
+    ac.d("MicroMsg.SnsTimeLineVending", "updateUpLimitSeq %s", new Object[] { Integer.valueOf(af.dHH().dIv()) });
+    String str1 = com.tencent.mm.plugin.sns.data.q.wX(af.dHR().g(paramLong, af.dHH().dIv(), false));
+    String str2 = dRA();
     if (str2.equals(""))
     {
       AppMethodBeat.o(179325);

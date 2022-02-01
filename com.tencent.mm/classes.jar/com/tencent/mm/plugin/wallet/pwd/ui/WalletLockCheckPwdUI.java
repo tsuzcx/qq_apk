@@ -12,15 +12,15 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.up;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.uz;
 import com.tencent.mm.plugin.wallet.pwd.a.e;
 import com.tencent.mm.plugin.wallet.pwd.a.s;
 import com.tencent.mm.plugin.wallet_core.c.w;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
@@ -28,12 +28,12 @@ import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
 public class WalletLockCheckPwdUI
   extends WalletBaseUI
 {
-  private String Ko;
-  private TextView kEu;
-  private TextView nym;
-  private w zMv;
-  private EditHintPasswdView zTU;
-  private int zTV = -1;
+  private w BeP;
+  private EditHintPasswdView Bmo;
+  private int Bmp = -1;
+  private String Lj;
+  private TextView lfN;
+  private TextView obn;
   
   private void K(int paramInt, String paramString1, String paramString2)
   {
@@ -47,7 +47,7 @@ public class WalletLockCheckPwdUI
     AppMethodBeat.o(69721);
   }
   
-  private void Rr(int paramInt)
+  private void TA(int paramInt)
   {
     AppMethodBeat.i(69720);
     Intent localIntent = new Intent();
@@ -61,7 +61,7 @@ public class WalletLockCheckPwdUI
   {
     AppMethodBeat.i(69719);
     super.cleanUiData(paramInt);
-    this.zTU.dga();
+    this.Bmo.dtH();
     AppMethodBeat.o(69719);
   }
   
@@ -77,7 +77,7 @@ public class WalletLockCheckPwdUI
     if (paramIntent == null) {}
     for (;;)
     {
-      ad.v("MicroMsg.WalletLockCheckPwdUI", "alvinluo WalletLockCheckPwdUI onActivityResult requestCode: %d, resultCode: %d, data == null: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+      ac.v("MicroMsg.WalletLockCheckPwdUI", "alvinluo WalletLockCheckPwdUI onActivityResult requestCode: %d, resultCode: %d, data == null: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
       setResult(paramInt2, paramIntent);
       finish();
       AppMethodBeat.o(69723);
@@ -89,8 +89,8 @@ public class WalletLockCheckPwdUI
   public void onBackPressed()
   {
     AppMethodBeat.i(69718);
-    ad.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo onBackPressed");
-    Rr(4);
+    ac.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo onBackPressed");
+    TA(4);
     AppMethodBeat.o(69718);
   }
   
@@ -99,23 +99,23 @@ public class WalletLockCheckPwdUI
     AppMethodBeat.i(69716);
     super.onCreate(paramBundle);
     hideTitleView();
-    this.zTV = getIntent().getIntExtra("key_wallet_lock_type", -1);
-    this.Ko = getIntent().getStringExtra("action");
-    ad.v("MicroMsg.WalletLockCheckPwdUI", "alvinluo wallet lock type: %d, action: %s", new Object[] { Integer.valueOf(this.zTV), this.Ko });
-    this.zTU = ((EditHintPasswdView)findViewById(2131301026));
-    this.kEu = ((TextView)findViewById(2131306825));
-    this.nym = ((TextView)findViewById(2131306820));
+    this.Bmp = getIntent().getIntExtra("key_wallet_lock_type", -1);
+    this.Lj = getIntent().getStringExtra("action");
+    ac.v("MicroMsg.WalletLockCheckPwdUI", "alvinluo wallet lock type: %d, action: %s", new Object[] { Integer.valueOf(this.Bmp), this.Lj });
+    this.Bmo = ((EditHintPasswdView)findViewById(2131301026));
+    this.lfN = ((TextView)findViewById(2131306825));
+    this.obn = ((TextView)findViewById(2131306820));
     paramBundle = getIntent().getStringExtra("key_wallet_lock_input_new_fp_tips");
-    if (this.zTV == 2)
+    if (this.Bmp == 2)
     {
-      this.kEu.setText(2131765990);
-      if ((this.Ko.equals("action.touchlock_need_verify_paypwd")) && (!bt.isNullOrNil(paramBundle))) {
-        this.nym.setText(paramBundle);
+      this.lfN.setText(2131765990);
+      if ((this.Lj.equals("action.touchlock_need_verify_paypwd")) && (!bs.isNullOrNil(paramBundle))) {
+        this.obn.setText(paramBundle);
       }
     }
     for (;;)
     {
-      this.zTU.setOnInputValidListener(new EditHintPasswdView.a()
+      this.Bmo.setOnInputValidListener(new EditHintPasswdView.a()
       {
         public final void onInputValidChange(boolean paramAnonymousBoolean)
         {
@@ -174,14 +174,14 @@ public class WalletLockCheckPwdUI
           }
         }
       });
-      setEditFocusListener(this.zTU, 0, false);
-      this.zTU.fkE();
+      setEditFocusListener(this.Bmo, 0, false);
+      this.Bmo.fAU();
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(69713);
-          ad.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo cancel by BackBtn");
+          ac.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo cancel by BackBtn");
           WalletLockCheckPwdUI.a(WalletLockCheckPwdUI.this);
           AppMethodBeat.o(69713);
           return true;
@@ -192,7 +192,7 @@ public class WalletLockCheckPwdUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(69714);
-          ad.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo cancel by BackBtn");
+          ac.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo cancel by BackBtn");
           WalletLockCheckPwdUI.a(WalletLockCheckPwdUI.this);
           AppMethodBeat.o(69714);
         }
@@ -209,8 +209,8 @@ public class WalletLockCheckPwdUI
       getContentView().setFitsSystemWindows(true);
       AppMethodBeat.o(69716);
       return;
-      if (this.zTV == 1) {
-        this.kEu.setText(2131765991);
+      if (this.Bmp == 1) {
+        this.lfN.setText(2131765991);
       }
     }
   }
@@ -224,8 +224,8 @@ public class WalletLockCheckPwdUI
   {
     AppMethodBeat.i(69717);
     super.onResume();
-    if (this.zTU != null) {
-      this.zTU.dga();
+    if (this.Bmo != null) {
+      this.Bmo.dtH();
     }
     AppMethodBeat.o(69717);
   }
@@ -233,7 +233,7 @@ public class WalletLockCheckPwdUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(69722);
-    ad.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo WalletLockCheckPwdUI errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo WalletLockCheckPwdUI errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramn instanceof w))
     {
       paramn = (w)paramn;
@@ -241,28 +241,28 @@ public class WalletLockCheckPwdUI
       {
         if ("next_action.switch_on_pattern".equals(getIntent().getStringExtra("next_action")))
         {
-          ad.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo start to open wallet lock after check pwd");
+          ac.i("MicroMsg.WalletLockCheckPwdUI", "alvinluo start to open wallet lock after check pwd");
           paramString = new Intent();
           paramString.putExtra("action", "action.switch_on_pattern");
           paramString.putExtra("next_action", "next_action.switch_on_pattern");
           paramString.putExtra("token", paramn.token);
-          paramString.putExtra("type", paramn.zWt);
-          paramString.putExtra("key_wallet_lock_type", this.zTV);
-          paramString.setPackage(aj.getPackageName());
-          if (this.zTV == 2) {
-            paramString.putExtra("key_pay_passwd", this.zTU.getText());
+          paramString.putExtra("type", paramn.BoN);
+          paramString.putExtra("key_wallet_lock_type", this.Bmp);
+          paramString.setPackage(ai.getPackageName());
+          if (this.Bmp == 2) {
+            paramString.putExtra("key_pay_passwd", this.Bmo.getText());
           }
-          paramn = new up();
-          paramn.dAh.dAj = paramString;
-          paramn.dAh.djj = this;
-          paramn.dAh.requestCode = 1;
-          a.ESL.l(paramn);
+          paramn = new uz();
+          paramn.dxT.dxV = paramString;
+          paramn.dxT.dgE = this;
+          paramn.dxT.requestCode = 1;
+          a.GpY.l(paramn);
         }
         for (;;)
         {
           AppMethodBeat.o(69722);
           return true;
-          K(0, paramn.token, paramn.zWt);
+          K(0, paramn.token, paramn.BoN);
         }
       }
       if ((paramInt1 == 1000) && (paramInt2 == 3))
@@ -277,13 +277,13 @@ public class WalletLockCheckPwdUI
       if ((paramn instanceof s))
       {
         if ((paramInt1 == 0) && (paramInt2 == 0)) {
-          Rr(0);
+          TA(0);
         }
         for (;;)
         {
           AppMethodBeat.o(69722);
           return true;
-          Rr(-1);
+          TA(-1);
         }
       }
       if ((paramn instanceof e))
@@ -291,7 +291,7 @@ public class WalletLockCheckPwdUI
         if ((paramInt1 != 0) || (paramInt2 != 0)) {
           break label347;
         }
-        Rr(0);
+        TA(0);
       }
     }
     for (;;)
@@ -299,7 +299,7 @@ public class WalletLockCheckPwdUI
       AppMethodBeat.o(69722);
       return false;
       label347:
-      Rr(-1);
+      TA(-1);
     }
   }
   

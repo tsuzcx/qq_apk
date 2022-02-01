@@ -9,17 +9,17 @@ import com.tencent.mm.plugin.game.model.aw;
 import com.tencent.mm.plugin.game.model.aw.a;
 import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class u
   implements View.OnClickListener
 {
   private Context mContext;
-  int rXI = 0;
-  private c rXP;
-  String sev = null;
-  private int snh;
+  int tfA = 0;
+  private c tfH;
+  String tmo = null;
+  private int tva;
   
   public u(Context paramContext)
   {
@@ -31,44 +31,44 @@ public final class u
     AppMethodBeat.i(42414);
     if (!(paramView.getTag() instanceof c))
     {
-      ad.e("MicroMsg.GameTMAssistClickListener", "No GameAppInfo");
+      ac.e("MicroMsg.GameTMAssistClickListener", "No GameAppInfo");
       AppMethodBeat.o(42414);
       return;
     }
-    this.rXP = ((c)paramView.getTag());
-    ad.i("MicroMsg.GameTMAssistClickListener", "Clicked appid = " + this.rXP.field_appId);
-    if (h.t(this.mContext, this.rXP.field_appId))
+    this.tfH = ((c)paramView.getTag());
+    ac.i("MicroMsg.GameTMAssistClickListener", "Clicked appid = " + this.tfH.field_appId);
+    if (h.t(this.mContext, this.tfH.field_appId))
     {
-      ad.d("MicroMsg.GameTMAssistClickListener", "launchFromWX, appId = " + this.rXP.field_appId + ", pkg = " + this.rXP.field_packageName + ", openId = " + this.rXP.field_openId);
-      com.tencent.mm.game.report.e.a(this.mContext, this.rXP.scene, this.rXP.dvS, this.rXP.position, 3, this.rXP.field_appId, this.rXI, this.sev);
-      com.tencent.mm.plugin.game.model.e.ai(this.mContext, this.rXP.field_appId);
+      ac.d("MicroMsg.GameTMAssistClickListener", "launchFromWX, appId = " + this.tfH.field_appId + ", pkg = " + this.tfH.field_packageName + ", openId = " + this.tfH.field_openId);
+      com.tencent.mm.game.report.e.a(this.mContext, this.tfH.scene, this.tfH.dtF, this.tfH.position, 3, this.tfH.field_appId, this.tfA, this.tmo);
+      com.tencent.mm.plugin.game.model.e.aj(this.mContext, this.tfH.field_appId);
       AppMethodBeat.o(42414);
       return;
     }
-    aw.cDQ();
-    paramView = this.rXP.eor;
+    aw.cRa();
+    paramView = this.tfH.eqv;
     int i;
-    if (bt.isNullOrNil(paramView))
+    if (bs.isNullOrNil(paramView))
     {
-      ad.e("MicroMsg.QQDownloaderSDKWrapper", "queryQQDownloadTaskStatus, params is null or nil");
+      ac.e("MicroMsg.QQDownloaderSDKWrapper", "queryQQDownloadTaskStatus, params is null or nil");
       i = -1;
-      this.snh = i;
-      String str = this.rXP.eor;
+      this.tva = i;
+      String str = this.tfH.eqv;
       paramView = str;
-      if (!bt.isNullOrNil(str)) {
+      if (!bs.isNullOrNil(str)) {
         paramView = str.replace("ANDROIDWX.GAMECENTER", "ANDROIDWX.YYB.GAMECENTER");
       }
-      if (this.rXP.status != 3) {
+      if (this.tfH.status != 3) {
         break label389;
       }
-      aw.cDQ();
+      aw.cRa();
       aw.startToAuthorized(this.mContext, paramView);
       label286:
       i = 5;
-      if (this.rXP.status == 3) {
+      if (this.tfH.status == 3) {
         i = 10;
       }
-      if (this.snh != 4) {
+      if (this.tva != 4) {
         break label404;
       }
       i = 8;
@@ -77,13 +77,13 @@ public final class u
     label404:
     for (;;)
     {
-      com.tencent.mm.game.report.e.a(this.mContext, this.rXP.scene, this.rXP.dvS, this.rXP.position, i, this.rXP.field_appId, this.rXI, this.rXP.dcC, this.sev);
+      com.tencent.mm.game.report.e.a(this.mContext, this.tfH.scene, this.tfH.dtF, this.tfH.position, i, this.tfH.field_appId, this.tfA, this.tfH.daa, this.tmo);
       AppMethodBeat.o(42414);
       return;
-      i = aw.a(new aw.a((byte)0).acE(paramView));
+      i = aw.a(new aw.a((byte)0).ahw(paramView));
       break;
-      aw.cDQ();
-      aw.aw(this.mContext, paramView);
+      aw.cRa();
+      aw.ax(this.mContext, paramView);
       break label286;
     }
   }

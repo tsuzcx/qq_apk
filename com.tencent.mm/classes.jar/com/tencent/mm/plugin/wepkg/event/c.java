@@ -11,12 +11,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class c
 {
-  private static ConcurrentLinkedQueue<WeakReference<a>> BIt;
+  private static ConcurrentLinkedQueue<WeakReference<a>> DaC;
   
   static
   {
     AppMethodBeat.i(110644);
-    BIt = new ConcurrentLinkedQueue();
+    DaC = new ConcurrentLinkedQueue();
     AppMethodBeat.o(110644);
   }
   
@@ -25,11 +25,11 @@ public final class c
     AppMethodBeat.i(110643);
     ToolsProcessIPCService.a(paramT, b.class, new d()
     {
-      public final void bf(Object paramAnonymousObject)
+      public final void bc(Object paramAnonymousObject)
       {
         AppMethodBeat.i(110638);
-        if (this.BIu != null) {
-          this.BIu.cWw();
+        if (this.DaD != null) {
+          this.DaD.dkf();
         }
         AppMethodBeat.o(110638);
       }
@@ -40,19 +40,19 @@ public final class c
   public static void a(a parama)
   {
     AppMethodBeat.i(110640);
-    BIt.add(new WeakReference(parama));
+    DaC.add(new WeakReference(parama));
     AppMethodBeat.o(110640);
   }
   
   public static void b(a parama)
   {
     AppMethodBeat.i(110641);
-    Iterator localIterator = BIt.iterator();
+    Iterator localIterator = DaC.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if (localWeakReference.get() == parama) {
-        BIt.remove(localWeakReference);
+        DaC.remove(localWeakReference);
       }
     }
     AppMethodBeat.o(110641);
@@ -61,13 +61,13 @@ public final class c
   public static void clear()
   {
     AppMethodBeat.i(110642);
-    BIt.clear();
+    DaC.clear();
     AppMethodBeat.o(110642);
   }
   
   public static abstract interface a
   {
-    public abstract void cWw();
+    public abstract void dkf();
   }
   
   static class b
@@ -76,15 +76,15 @@ public final class c
     public void invoke(Object paramObject, d paramd)
     {
       AppMethodBeat.i(110639);
-      Iterator localIterator = c.etI().iterator();
+      Iterator localIterator = c.eJb().iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if (localWeakReference.get() != null) {
-          ((a)localWeakReference.get()).dH(paramObject);
+          ((a)localWeakReference.get()).dI(paramObject);
         }
       }
-      paramd.bf(null);
+      paramd.bc(null);
       AppMethodBeat.o(110639);
     }
   }

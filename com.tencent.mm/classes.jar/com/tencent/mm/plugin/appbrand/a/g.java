@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class g
   implements d
 {
-  public float dpb;
-  public float dqQ;
-  public String goQ;
+  public float dmL;
+  public float doB;
+  public String gPy;
   
-  public final String aOj()
+  public final String aUZ()
   {
     AppMethodBeat.i(153193);
     try
     {
       Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("latitude", this.dpb);
-      ((JSONObject)localObject).put("longitude", this.dqQ);
-      ((JSONObject)localObject).put("name", this.goQ);
+      ((JSONObject)localObject).put("latitude", this.dmL);
+      ((JSONObject)localObject).put("longitude", this.doB);
+      ((JSONObject)localObject).put("name", this.gPy);
       localObject = new JSONObject().put("location", localObject).toString();
       AppMethodBeat.o(153193);
       return localObject;
     }
     catch (JSONException localJSONException)
     {
-      ad.printErrStackTrace("MicroMsg.WeAppOpenPoiNativeExtraData", localJSONException, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.WeAppOpenPoiNativeExtraData", localJSONException, "", new Object[0]);
       AppMethodBeat.o(153193);
     }
     return "{}";
@@ -35,7 +35,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.g
  * JD-Core Version:    0.7.0.1
  */

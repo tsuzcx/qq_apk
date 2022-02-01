@@ -687,6 +687,7 @@
     <item type="id" name="sr" />
     <item type="id" name="ss" />
     <item type="id" name="st" />
+    <item type="id" name="su" />
     <item type="id" name="sv" />
     <item type="id" name="sw" />
     <item type="id" name="sx" />
@@ -3696,6 +3697,7 @@
     <item type="id" name="c1c" />
     <item type="id" name="c1d" />
     <item type="id" name="c1e" />
+    <item type="id" name="c1f" />
     <item type="id" name="c1g" />
     <item type="id" name="c1h" />
     <item type="id" name="c1i" />
@@ -6184,11 +6186,8 @@
     <item type="id" name="dvv" />
     <item type="id" name="dvw" />
     <item type="id" name="dvy" />
-    <item type="id" name="dvz" />
     <item type="id" name="dw0" />
-    <item type="id" name="dw1" />
     <item type="id" name="dw2" />
-    <item type="id" name="dw3" />
     <item type="id" name="dw4" />
     <item type="id" name="dw5" />
     <item type="id" name="dw6" />
@@ -6197,7 +6196,6 @@
     <item type="id" name="dw9" />
     <item type="id" name="dw_" />
     <item type="id" name="dwa" />
-    <item type="id" name="dwb" />
     <item type="id" name="dwc" />
     <item type="id" name="dwd" />
     <item type="id" name="dwe" />
@@ -6280,7 +6278,6 @@
     <item type="id" name="dyi" />
     <item type="id" name="dyj" />
     <item type="id" name="dyk" />
-    <item type="id" name="dyl" />
     <item type="id" name="dym" />
     <item type="id" name="dyn" />
     <item type="id" name="dyo" />
@@ -10407,7 +10404,6 @@
     <item type="id" name="h1c" />
     <item type="id" name="h1d" />
     <item type="id" name="h1e" />
-    <item type="id" name="h1f" />
     <item type="id" name="h1g" />
     <item type="id" name="h1h" />
     <item type="id" name="h1i" />
@@ -11437,8 +11433,149 @@
     <item type="id" name="hse" />
     <item type="id" name="hsf" />
     <item type="id" name="hsg" />
-    <item type="id" name="APKTOOL_DUMMY_2d3" />
-    <item type="id" name="APKTOOL_DUMMY_ec6" />
+    <item type="id" name="hsh" />
+    <item type="id" name="hsi" />
+    <item type="id" name="hsj" />
+    <item type="id" name="hsk" />
+    <item type="id" name="hsl" />
+    <item type="id" name="hsm" />
+    <item type="id" name="hsn" />
+    <item type="id" name="hso" />
+    <item type="id" name="hsp" />
+    <item type="id" name="hsq" />
+    <item type="id" name="hsr" />
+    <item type="id" name="hss" />
+    <item type="id" name="hst" />
+    <item type="id" name="hsu" />
+    <item type="id" name="hsv" />
+    <item type="id" name="hsw" />
+    <item type="id" name="hsx" />
+    <item type="id" name="hsy" />
+    <item type="id" name="hsz" />
+    <item type="id" name="ht0" />
+    <item type="id" name="ht1" />
+    <item type="id" name="ht2" />
+    <item type="id" name="ht3" />
+    <item type="id" name="ht4" />
+    <item type="id" name="ht5" />
+    <item type="id" name="ht6" />
+    <item type="id" name="ht7" />
+    <item type="id" name="ht8" />
+    <item type="id" name="ht9" />
+    <item type="id" name="ht_" />
+    <item type="id" name="hta" />
+    <item type="id" name="htb" />
+    <item type="id" name="htc" />
+    <item type="id" name="htd" />
+    <item type="id" name="hte" />
+    <item type="id" name="htf" />
+    <item type="id" name="htg" />
+    <item type="id" name="hth" />
+    <item type="id" name="hti" />
+    <item type="id" name="htj" />
+    <item type="id" name="htk" />
+    <item type="id" name="htl" />
+    <item type="id" name="htm" />
+    <item type="id" name="htn" />
+    <item type="id" name="hto" />
+    <item type="id" name="htp" />
+    <item type="id" name="htq" />
+    <item type="id" name="htr" />
+    <item type="id" name="hts" />
+    <item type="id" name="htt" />
+    <item type="id" name="htu" />
+    <item type="id" name="htv" />
+    <item type="id" name="htw" />
+    <item type="id" name="htx" />
+    <item type="id" name="hty" />
+    <item type="id" name="htz" />
+    <item type="id" name="hu0" />
+    <item type="id" name="hu1" />
+    <item type="id" name="hu2" />
+    <item type="id" name="hu3" />
+    <item type="id" name="hu4" />
+    <item type="id" name="hu5" />
+    <item type="id" name="hu6" />
+    <item type="id" name="hu7" />
+    <item type="id" name="hu8" />
+    <item type="id" name="hu9" />
+    <item type="id" name="hu_" />
+    <item type="id" name="hua" />
+    <item type="id" name="hub" />
+    <item type="id" name="huc" />
+    <item type="id" name="hud" />
+    <item type="id" name="hue" />
+    <item type="id" name="huf" />
+    <item type="id" name="hug" />
+    <item type="id" name="huh" />
+    <item type="id" name="hui" />
+    <item type="id" name="huj" />
+    <item type="id" name="huk" />
+    <item type="id" name="hul" />
+    <item type="id" name="hum" />
+    <item type="id" name="hun" />
+    <item type="id" name="huo" />
+    <item type="id" name="hup" />
+    <item type="id" name="huq" />
+    <item type="id" name="hur" />
+    <item type="id" name="hus" />
+    <item type="id" name="hut" />
+    <item type="id" name="huu" />
+    <item type="id" name="huv" />
+    <item type="id" name="huw" />
+    <item type="id" name="hux" />
+    <item type="id" name="huy" />
+    <item type="id" name="huz" />
+    <item type="id" name="hv0" />
+    <item type="id" name="hv1" />
+    <item type="id" name="hv2" />
+    <item type="id" name="hv3" />
+    <item type="id" name="hv4" />
+    <item type="id" name="hv5" />
+    <item type="id" name="hv6" />
+    <item type="id" name="hv7" />
+    <item type="id" name="hv8" />
+    <item type="id" name="hv9" />
+    <item type="id" name="hv_" />
+    <item type="id" name="hva" />
+    <item type="id" name="hvb" />
+    <item type="id" name="hvc" />
+    <item type="id" name="hvd" />
+    <item type="id" name="hve" />
+    <item type="id" name="hvf" />
+    <item type="id" name="hvg" />
+    <item type="id" name="hvh" />
+    <item type="id" name="hvi" />
+    <item type="id" name="hvj" />
+    <item type="id" name="hvk" />
+    <item type="id" name="hvl" />
+    <item type="id" name="hvm" />
+    <item type="id" name="hvn" />
+    <item type="id" name="hvo" />
+    <item type="id" name="hvp" />
+    <item type="id" name="hvq" />
+    <item type="id" name="hvr" />
+    <item type="id" name="hvs" />
+    <item type="id" name="hvt" />
+    <item type="id" name="hvu" />
+    <item type="id" name="hvv" />
+    <item type="id" name="hvw" />
+    <item type="id" name="hvx" />
+    <item type="id" name="hvy" />
+    <item type="id" name="hvz" />
+    <item type="id" name="hw0" />
+    <item type="id" name="hw1" />
+    <item type="id" name="hw2" />
+    <item type="id" name="hw3" />
+    <item type="id" name="hw4" />
+    <item type="id" name="hw5" />
+    <item type="id" name="hw6" />
+    <item type="id" name="hw7" />
+    <item type="id" name="hw8" />
+    <item type="id" name="hw9" />
+    <item type="id" name="hw_" />
+    <item type="id" name="hwa" />
+    <item type="id" name="hwb" />
     <item type="id" name="APKTOOL_DUMMY_ed6" />
     <item type="id" name="APKTOOL_DUMMY_ed7" />
     <item type="id" name="APKTOOL_DUMMY_ed9" />
@@ -11446,7 +11583,13 @@
     <item type="id" name="APKTOOL_DUMMY_ee2" />
     <item type="id" name="APKTOOL_DUMMY_1375" />
     <item type="id" name="APKTOOL_DUMMY_147a" />
+    <item type="id" name="APKTOOL_DUMMY_18ad" />
+    <item type="id" name="APKTOOL_DUMMY_18af" />
+    <item type="id" name="APKTOOL_DUMMY_18b1" />
+    <item type="id" name="APKTOOL_DUMMY_18ba" />
+    <item type="id" name="APKTOOL_DUMMY_190e" />
     <item type="id" name="APKTOOL_DUMMY_1c6d" />
     <item type="id" name="APKTOOL_DUMMY_24eb" />
     <item type="id" name="APKTOOL_DUMMY_2701" />
+    <item type="id" name="APKTOOL_DUMMY_298e" />
 </resources>

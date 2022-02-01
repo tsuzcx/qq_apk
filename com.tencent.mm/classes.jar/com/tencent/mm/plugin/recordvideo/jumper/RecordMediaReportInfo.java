@@ -13,7 +13,7 @@ public class RecordMediaReportInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<RecordMediaReportInfo> CREATOR;
-  private HashMap vig;
+  private HashMap wqQ;
   
   static
   {
@@ -25,19 +25,19 @@ public class RecordMediaReportInfo
   public RecordMediaReportInfo()
   {
     AppMethodBeat.i(101508);
-    this.vig = new HashMap();
+    this.wqQ = new HashMap();
     AppMethodBeat.o(101508);
   }
   
   protected RecordMediaReportInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(101512);
-    this.vig = new HashMap();
-    this.vig = ((HashMap)paramParcel.readSerializable());
+    this.wqQ = new HashMap();
+    this.wqQ = ((HashMap)paramParcel.readSerializable());
     AppMethodBeat.o(101512);
   }
   
-  public final void alK(String paramString)
+  public final void aqJ(String paramString)
   {
     AppMethodBeat.i(101514);
     if (paramString == null)
@@ -52,7 +52,7 @@ public class RecordMediaReportInfo
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        this.vig.put(str, paramString.get(str));
+        this.wqQ.put(str, paramString.get(str));
       }
       AppMethodBeat.o(101514);
     }
@@ -68,44 +68,44 @@ public class RecordMediaReportInfo
     return 0;
   }
   
-  public final String dhG()
+  public final String dvo()
   {
     AppMethodBeat.i(101513);
-    String str = new JSONObject(this.vig).toString();
+    String str = new JSONObject(this.wqQ).toString();
     AppMethodBeat.o(101513);
     return str;
   }
   
-  public final void v(String paramString, Object paramObject)
+  public final void w(String paramString, Object paramObject)
   {
     AppMethodBeat.i(101509);
-    this.vig.put(paramString, paramObject);
+    this.wqQ.put(paramString, paramObject);
     AppMethodBeat.o(101509);
   }
   
-  public final <T> T w(String paramString, T paramT)
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    AppMethodBeat.i(101511);
+    paramParcel.writeSerializable(this.wqQ);
+    AppMethodBeat.o(101511);
+  }
+  
+  public final <T> T x(String paramString, T paramT)
   {
     AppMethodBeat.i(101510);
-    if (this.vig.get(paramString) != null)
+    if (this.wqQ.get(paramString) != null)
     {
-      paramString = this.vig.get(paramString);
+      paramString = this.wqQ.get(paramString);
       AppMethodBeat.o(101510);
       return paramString;
     }
     AppMethodBeat.o(101510);
     return paramT;
   }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    AppMethodBeat.i(101511);
-    paramParcel.writeSerializable(this.vig);
-    AppMethodBeat.o(101511);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo
  * JD-Core Version:    0.7.0.1
  */

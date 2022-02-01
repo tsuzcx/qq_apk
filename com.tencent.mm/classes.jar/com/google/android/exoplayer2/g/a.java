@@ -3,53 +3,53 @@ package com.google.android.exoplayer2.g;
 import android.os.SystemClock;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.h.d;
-import com.google.android.exoplayer2.source.p;
+import com.google.android.exoplayer2.source.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
   extends b
 {
-  private int boX;
-  private final d bvD;
-  private final int bvE;
-  private final long bvF;
-  private final long bvG;
-  private final long bvH;
-  private final float bvI;
-  private int bvJ;
+  private int bns;
+  private final d btC;
+  private final int btD;
+  private final long btE;
+  private final long btF;
+  private final long btG;
+  private final float btH;
+  private int reason;
   
-  public a(p paramp, int[] paramArrayOfInt, d paramd, int paramInt, long paramLong1, long paramLong2, long paramLong3, float paramFloat)
+  public a(o paramo, int[] paramArrayOfInt, d paramd, int paramInt, long paramLong1, long paramLong2, long paramLong3, float paramFloat)
   {
-    super(paramp, paramArrayOfInt);
+    super(paramo, paramArrayOfInt);
     AppMethodBeat.i(92926);
-    this.bvD = paramd;
-    this.bvE = paramInt;
-    this.bvF = (1000L * paramLong1);
-    this.bvG = (1000L * paramLong2);
-    this.bvH = (1000L * paramLong3);
-    this.bvI = paramFloat;
-    this.boX = ao(-9223372036854775808L);
-    this.bvJ = 1;
+    this.btC = paramd;
+    this.btD = paramInt;
+    this.btE = (1000L * paramLong1);
+    this.btF = (1000L * paramLong2);
+    this.btG = (1000L * paramLong3);
+    this.btH = paramFloat;
+    this.bns = ak(-9223372036854775808L);
+    this.reason = 1;
     AppMethodBeat.o(92926);
   }
   
-  private int ao(long paramLong)
+  private int ak(long paramLong)
   {
     AppMethodBeat.i(92928);
-    long l = this.bvD.vg();
+    long l = this.btC.va();
     if (l == -1L) {}
     int i;
-    for (l = this.bvE;; l = ((float)l * this.bvI))
+    for (l = this.btD;; l = ((float)l * this.btH))
     {
       i = 0;
       j = 0;
       if (i >= this.length) {
         break label109;
       }
-      if ((paramLong != -9223372036854775808L) && (l(i, paramLong))) {
+      if ((paramLong != -9223372036854775808L) && (k(i, paramLong))) {
         break label117;
       }
-      if (this.blC[i].bitrate > l) {
+      if (this.bmh[i].bitrate > l) {
         break;
       }
       AppMethodBeat.o(92928);
@@ -67,52 +67,52 @@ public final class a
     }
   }
   
-  public final void aj(long paramLong)
+  public final void af(long paramLong)
   {
     AppMethodBeat.i(92927);
     long l = SystemClock.elapsedRealtime();
-    int i = this.boX;
-    this.boX = ao(l);
-    if (this.boX == i)
+    int i = this.bns;
+    this.bns = ak(l);
+    if (this.bns == i)
     {
       AppMethodBeat.o(92927);
       return;
     }
     Format localFormat1;
     Format localFormat2;
-    if (!l(i, l))
+    if (!k(i, l))
     {
-      localFormat1 = this.blC[i];
-      int j = this.boX;
-      localFormat2 = this.blC[j];
-      if ((localFormat2.bitrate <= localFormat1.bitrate) || (paramLong >= this.bvF)) {
+      localFormat1 = this.bmh[i];
+      int j = this.bns;
+      localFormat2 = this.bmh[j];
+      if ((localFormat2.bitrate <= localFormat1.bitrate) || (paramLong >= this.btE)) {
         break label118;
       }
     }
-    for (this.boX = i;; this.boX = i) {
+    for (this.bns = i;; this.bns = i) {
       label118:
       do
       {
-        if (this.boX != i) {
-          this.bvJ = 3;
+        if (this.bns != i) {
+          this.reason = 3;
         }
         AppMethodBeat.o(92927);
         return;
-      } while ((localFormat2.bitrate >= localFormat1.bitrate) || (paramLong < this.bvG));
+      } while ((localFormat2.bitrate >= localFormat1.bitrate) || (paramLong < this.btF));
     }
   }
   
   public final int getSelectedIndex()
   {
-    return this.boX;
+    return this.bns;
   }
   
-  public final int up()
+  public final int ul()
   {
-    return this.bvJ;
+    return this.reason;
   }
   
-  public final Object uq()
+  public final Object um()
   {
     return null;
   }
@@ -120,12 +120,12 @@ public final class a
   public static final class a
     implements f.a
   {
-    private final d bvD;
-    private final int bvE;
-    private final float bvI;
-    private final int bvK;
-    private final int bvL;
-    private final int bvM;
+    private final d btC;
+    private final int btD;
+    private final float btH;
+    private final int btI;
+    private final int btJ;
+    private final int btK;
     
     public a(d paramd)
     {
@@ -134,12 +134,12 @@ public final class a
     
     public a(d paramd, int paramInt1, int paramInt2, int paramInt3, float paramFloat)
     {
-      this.bvD = paramd;
-      this.bvE = paramInt1;
-      this.bvK = paramInt2;
-      this.bvL = paramInt3;
-      this.bvM = 25000;
-      this.bvI = paramFloat;
+      this.btC = paramd;
+      this.btD = paramInt1;
+      this.btI = paramInt2;
+      this.btJ = paramInt3;
+      this.btK = 25000;
+      this.btH = paramFloat;
     }
   }
 }

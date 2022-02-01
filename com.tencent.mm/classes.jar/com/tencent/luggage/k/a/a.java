@@ -7,21 +7,21 @@ import org.json.JSONObject;
 
 public abstract interface a
 {
-  public abstract c Dj();
+  public abstract c CM();
   
-  public abstract boolean EA();
+  public abstract boolean Ed();
   
-  public abstract JSONObject EB();
+  public abstract JSONObject Ee();
   
-  public abstract String EC();
+  public abstract String Ef();
   
-  public abstract void ED();
+  public abstract void Eg();
   
   public abstract void a(a.a parama);
   
   public abstract void b(a.a parama);
   
-  public abstract String cD(String paramString);
+  public abstract String cs(String paramString);
   
   public abstract String d(String paramString, Map<String, ? extends Object> paramMap);
   
@@ -31,7 +31,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a
  * JD-Core Version:    0.7.0.1
  */

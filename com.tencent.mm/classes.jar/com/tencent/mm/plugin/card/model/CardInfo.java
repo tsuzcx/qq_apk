@@ -5,126 +5,126 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fx;
+import com.tencent.mm.g.c.gb;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.protobuf.csx;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.protocal.protobuf.rd;
-import com.tencent.mm.protocal.protobuf.rh;
-import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.protocal.protobuf.cyg;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.rn;
+import com.tencent.mm.protocal.protobuf.rr;
+import com.tencent.mm.protocal.protobuf.ry;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class CardInfo
-  extends fx
+  extends gb
   implements Parcelable, b
 {
   public static final Parcelable.Creator<CardInfo> CREATOR;
   protected static c.a info;
-  public String nru;
-  public ro nsC;
-  public qo nsD;
-  public csx nsE;
-  public rh nsF;
-  public boolean nsG;
+  public String nUu;
+  public ry nVC;
+  public qy nVD;
+  public cyg nVE;
+  public rr nVF;
+  public boolean nVG;
   
   static
   {
     AppMethodBeat.i(112765);
     c.a locala = new c.a();
-    locala.EYt = new Field[22];
+    locala.GvF = new Field[22];
     locala.columns = new String[23];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "card_id";
-    locala.EYv.put("card_id", "TEXT PRIMARY KEY ");
+    locala.GvH.put("card_id", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" card_id TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "card_id";
+    locala.GvG = "card_id";
     locala.columns[1] = "card_tp_id";
-    locala.EYv.put("card_tp_id", "TEXT");
+    locala.GvH.put("card_tp_id", "TEXT");
     localStringBuilder.append(" card_tp_id TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "from_username";
-    locala.EYv.put("from_username", "TEXT");
+    locala.GvH.put("from_username", "TEXT");
     localStringBuilder.append(" from_username TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "status";
-    locala.EYv.put("status", "INTEGER");
+    locala.GvH.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "delete_state_flag";
-    locala.EYv.put("delete_state_flag", "INTEGER");
+    locala.GvH.put("delete_state_flag", "INTEGER");
     localStringBuilder.append(" delete_state_flag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "local_updateTime";
-    locala.EYv.put("local_updateTime", "LONG");
+    locala.GvH.put("local_updateTime", "LONG");
     localStringBuilder.append(" local_updateTime LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "updateTime";
-    locala.EYv.put("updateTime", "LONG");
+    locala.GvH.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "updateSeq";
-    locala.EYv.put("updateSeq", "LONG");
+    locala.GvH.put("updateSeq", "LONG");
     localStringBuilder.append(" updateSeq LONG");
     localStringBuilder.append(", ");
     locala.columns[8] = "create_time";
-    locala.EYv.put("create_time", "LONG");
+    locala.GvH.put("create_time", "LONG");
     localStringBuilder.append(" create_time LONG");
     localStringBuilder.append(", ");
     locala.columns[9] = "begin_time";
-    locala.EYv.put("begin_time", "LONG");
+    locala.GvH.put("begin_time", "LONG");
     localStringBuilder.append(" begin_time LONG");
     localStringBuilder.append(", ");
     locala.columns[10] = "end_time";
-    locala.EYv.put("end_time", "LONG");
+    locala.GvH.put("end_time", "LONG");
     localStringBuilder.append(" end_time LONG");
     localStringBuilder.append(", ");
     locala.columns[11] = "block_mask";
-    locala.EYv.put("block_mask", "TEXT");
+    locala.GvH.put("block_mask", "TEXT");
     localStringBuilder.append(" block_mask TEXT");
     localStringBuilder.append(", ");
     locala.columns[12] = "dataInfoData";
-    locala.EYv.put("dataInfoData", "BLOB");
+    locala.GvH.put("dataInfoData", "BLOB");
     localStringBuilder.append(" dataInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[13] = "cardTpInfoData";
-    locala.EYv.put("cardTpInfoData", "BLOB");
+    locala.GvH.put("cardTpInfoData", "BLOB");
     localStringBuilder.append(" cardTpInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[14] = "shareInfoData";
-    locala.EYv.put("shareInfoData", "BLOB");
+    locala.GvH.put("shareInfoData", "BLOB");
     localStringBuilder.append(" shareInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[15] = "shopInfoData";
-    locala.EYv.put("shopInfoData", "BLOB");
+    locala.GvH.put("shopInfoData", "BLOB");
     localStringBuilder.append(" shopInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[16] = "stickyIndex";
-    locala.EYv.put("stickyIndex", "INTEGER");
+    locala.GvH.put("stickyIndex", "INTEGER");
     localStringBuilder.append(" stickyIndex INTEGER");
     localStringBuilder.append(", ");
     locala.columns[17] = "stickyEndTime";
-    locala.EYv.put("stickyEndTime", "INTEGER");
+    locala.GvH.put("stickyEndTime", "INTEGER");
     localStringBuilder.append(" stickyEndTime INTEGER");
     localStringBuilder.append(", ");
     locala.columns[18] = "stickyAnnouncement";
-    locala.EYv.put("stickyAnnouncement", "TEXT");
+    locala.GvH.put("stickyAnnouncement", "TEXT");
     localStringBuilder.append(" stickyAnnouncement TEXT");
     localStringBuilder.append(", ");
     locala.columns[19] = "card_type";
-    locala.EYv.put("card_type", "INTEGER default '-1' ");
+    locala.GvH.put("card_type", "INTEGER default '-1' ");
     localStringBuilder.append(" card_type INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[20] = "label_wording";
-    locala.EYv.put("label_wording", "TEXT");
+    locala.GvH.put("label_wording", "TEXT");
     localStringBuilder.append(" label_wording TEXT");
     localStringBuilder.append(", ");
     locala.columns[21] = "is_dynamic";
-    locala.EYv.put("is_dynamic", "INTEGER");
+    locala.GvH.put("is_dynamic", "INTEGER");
     localStringBuilder.append(" is_dynamic INTEGER");
     locala.columns[22] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -135,16 +135,16 @@ public class CardInfo
   
   public CardInfo()
   {
-    this.nsG = true;
-    this.nru = "";
+    this.nVG = true;
+    this.nUu = "";
     this.field_card_type = -1;
   }
   
   public CardInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(112759);
-    this.nsG = true;
-    this.nru = "";
+    this.nVG = true;
+    this.nUu = "";
     this.field_card_id = paramParcel.readString();
     this.field_card_tp_id = paramParcel.readString();
     this.field_from_username = paramParcel.readString();
@@ -210,94 +210,94 @@ public class CardInfo
     AppMethodBeat.o(112759);
   }
   
-  public final void Qh(String paramString)
+  public final void Ut(String paramString)
   {
     this.field_from_username = paramString;
   }
   
-  public final void a(csx paramcsx)
+  public final void a(cyg paramcyg)
   {
     AppMethodBeat.i(112756);
-    this.nsE = paramcsx;
-    if (paramcsx != null) {}
+    this.nVE = paramcyg;
+    if (paramcyg != null) {}
     try
     {
-      this.field_shareInfoData = paramcsx.toByteArray();
+      this.field_shareInfoData = paramcyg.toByteArray();
       AppMethodBeat.o(112756);
       return;
     }
-    catch (Exception paramcsx)
+    catch (Exception paramcyg)
     {
-      ad.e("MicroMsg.CardInfo", "setShareInfo fail, ex = %s", new Object[] { paramcsx.getMessage() });
-      ad.printErrStackTrace("MicroMsg.CardInfo", paramcsx, "", new Object[0]);
+      ac.e("MicroMsg.CardInfo", "setShareInfo fail, ex = %s", new Object[] { paramcyg.getMessage() });
+      ac.printErrStackTrace("MicroMsg.CardInfo", paramcyg, "", new Object[0]);
       AppMethodBeat.o(112756);
     }
   }
   
-  public final void a(qo paramqo)
+  public final void a(qy paramqy)
   {
     AppMethodBeat.i(112754);
-    this.nsD = paramqo;
-    if (this.nsD != null)
+    this.nVD = paramqy;
+    if (this.nVD != null)
     {
-      this.field_status = this.nsD.status;
-      if (paramqo != null) {}
+      this.field_status = this.nVD.status;
+      if (paramqy != null) {}
       try
       {
-        this.field_dataInfoData = paramqo.toByteArray();
+        this.field_dataInfoData = paramqy.toByteArray();
         AppMethodBeat.o(112754);
         return;
       }
-      catch (Exception paramqo)
+      catch (Exception paramqy)
       {
-        ad.e("MicroMsg.CardInfo", "setDataInfo fail, ex = %s", new Object[] { paramqo.getMessage() });
-        ad.printErrStackTrace("MicroMsg.CardInfo", paramqo, "", new Object[0]);
+        ac.e("MicroMsg.CardInfo", "setDataInfo fail, ex = %s", new Object[] { paramqy.getMessage() });
+        ac.printErrStackTrace("MicroMsg.CardInfo", paramqy, "", new Object[0]);
       }
     }
     AppMethodBeat.o(112754);
   }
   
-  public final void a(rh paramrh)
+  public final void a(rr paramrr)
   {
     AppMethodBeat.i(112758);
-    this.nsF = paramrh;
-    if (paramrh != null) {}
+    this.nVF = paramrr;
+    if (paramrr != null) {}
     try
     {
-      this.field_shopInfoData = paramrh.toByteArray();
+      this.field_shopInfoData = paramrr.toByteArray();
       AppMethodBeat.o(112758);
       return;
     }
-    catch (Exception paramrh)
+    catch (Exception paramrr)
     {
-      ad.e("MicroMsg.CardInfo", "setShopInfo fail, ex = %s", new Object[] { paramrh.getMessage() });
-      ad.printErrStackTrace("MicroMsg.CardInfo", paramrh, "", new Object[0]);
+      ac.e("MicroMsg.CardInfo", "setShopInfo fail, ex = %s", new Object[] { paramrr.getMessage() });
+      ac.printErrStackTrace("MicroMsg.CardInfo", paramrr, "", new Object[0]);
       AppMethodBeat.o(112758);
     }
   }
   
-  public final void a(ro paramro)
+  public final void a(ry paramry)
   {
     AppMethodBeat.i(112752);
-    this.nsC = paramro;
-    if (paramro != null) {}
+    this.nVC = paramry;
+    if (paramry != null) {}
     try
     {
-      this.field_cardTpInfoData = paramro.toByteArray();
+      this.field_cardTpInfoData = paramry.toByteArray();
       AppMethodBeat.o(112752);
       return;
     }
-    catch (Exception paramro)
+    catch (Exception paramry)
     {
-      ad.e("MicroMsg.CardInfo", "setCardTpInfo fail, ex = %s", new Object[] { paramro.getMessage() });
+      ac.e("MicroMsg.CardInfo", "setCardTpInfo fail, ex = %s", new Object[] { paramry.getMessage() });
       AppMethodBeat.o(112752);
     }
   }
   
-  public final boolean bHA()
+  public final boolean bON()
   {
     AppMethodBeat.i(112761);
-    if ((bHV() != null) && (bHV().CRV == 0))
+    if ((bPi() != null) && (bPi().EkG == 0))
     {
       AppMethodBeat.o(112761);
       return true;
@@ -306,10 +306,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHB()
+  public final boolean bOO()
   {
     AppMethodBeat.i(112762);
-    if ((bHV() != null) && (bHV().CRV == 1))
+    if ((bPi() != null) && (bPi().EkG == 1))
     {
       AppMethodBeat.o(112762);
       return true;
@@ -318,10 +318,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHC()
+  public final boolean bOP()
   {
     AppMethodBeat.i(112734);
-    if ((bHV() != null) && (bHV().lpz == 10))
+    if ((bPi() != null) && (bPi().lRv == 10))
     {
       AppMethodBeat.o(112734);
       return true;
@@ -330,10 +330,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHD()
+  public final boolean bOQ()
   {
     AppMethodBeat.i(112735);
-    if ((bHV() != null) && (bHV().lpz == 0))
+    if ((bPi() != null) && (bPi().lRv == 0))
     {
       AppMethodBeat.o(112735);
       return true;
@@ -342,10 +342,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHE()
+  public final boolean bOR()
   {
     AppMethodBeat.i(112736);
-    if ((bHV() != null) && (bHV().lpz == 20))
+    if ((bPi() != null) && (bPi().lRv == 20))
     {
       AppMethodBeat.o(112736);
       return true;
@@ -354,10 +354,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHF()
+  public final boolean bOS()
   {
     AppMethodBeat.i(112737);
-    if ((bHV() != null) && (bHV().lpz == 11))
+    if ((bPi() != null) && (bPi().lRv == 11))
     {
       AppMethodBeat.o(112737);
       return true;
@@ -366,10 +366,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHG()
+  public final boolean bOT()
   {
     AppMethodBeat.i(112738);
-    if ((bHV() != null) && (bHV().lpz == 30))
+    if ((bPi() != null) && (bPi().lRv == 30))
     {
       AppMethodBeat.o(112738);
       return true;
@@ -378,18 +378,18 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHH()
+  public final boolean bOU()
   {
     AppMethodBeat.i(112739);
-    boolean bool = l.yQ(bHV().lpz);
+    boolean bool = l.zG(bPi().lRv);
     AppMethodBeat.o(112739);
     return bool;
   }
   
-  public final boolean bHI()
+  public final boolean bOV()
   {
     AppMethodBeat.i(112740);
-    if ((bHV().CRL & 0x2) == 0)
+    if ((bPi().Ekw & 0x2) == 0)
     {
       AppMethodBeat.o(112740);
       return true;
@@ -398,10 +398,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHJ()
+  public final boolean bOW()
   {
     AppMethodBeat.i(112741);
-    if ((bHV().CRL & 0x1) == 0)
+    if ((bPi().Ekw & 0x1) == 0)
     {
       AppMethodBeat.o(112741);
       return true;
@@ -410,10 +410,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHK()
+  public final boolean bOX()
   {
     AppMethodBeat.i(112742);
-    if ((bHV().CRO & 1L) == 0L)
+    if ((bPi().Ekz & 1L) == 0L)
     {
       AppMethodBeat.o(112742);
       return true;
@@ -422,10 +422,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHL()
+  public final boolean bOY()
   {
     AppMethodBeat.i(112743);
-    if ((bHV().CRO & 0x10) == 0L)
+    if ((bPi().Ekz & 0x10) == 0L)
     {
       AppMethodBeat.o(112743);
       return true;
@@ -434,10 +434,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHM()
+  public final boolean bOZ()
   {
     AppMethodBeat.i(112744);
-    if ((bHV().CRO & 0x2) > 0L)
+    if ((bPi().Ekz & 0x2) > 0L)
     {
       AppMethodBeat.o(112744);
       return true;
@@ -446,10 +446,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHN()
+  public final boolean bPa()
   {
     AppMethodBeat.i(112745);
-    if ((bHV().CRO & 0x20) > 0L)
+    if ((bPi().Ekz & 0x20) > 0L)
     {
       AppMethodBeat.o(112745);
       return true;
@@ -458,10 +458,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHO()
+  public final boolean bPb()
   {
     AppMethodBeat.i(112746);
-    if ((bHV().CRO & 0x4) > 0L)
+    if ((bPi().Ekz & 0x4) > 0L)
     {
       AppMethodBeat.o(112746);
       return true;
@@ -470,10 +470,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHP()
+  public final boolean bPc()
   {
     AppMethodBeat.i(112747);
-    if ((bHV().CRO & 0x8) > 0L)
+    if ((bPi().Ekz & 0x8) > 0L)
     {
       AppMethodBeat.o(112747);
       return true;
@@ -482,10 +482,10 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHQ()
+  public final boolean bPd()
   {
     AppMethodBeat.i(112764);
-    if ((bHV() != null) && (bHV().CSa == 1))
+    if ((bPi() != null) && (bPi().EkL == 1))
     {
       AppMethodBeat.o(112764);
       return true;
@@ -494,39 +494,39 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHR()
+  public final boolean bPe()
   {
-    return (this.nsD != null) && (this.nsD.status == 0);
+    return (this.nVD != null) && (this.nVD.status == 0);
   }
   
-  public final boolean bHS()
+  public final boolean bPf()
   {
     AppMethodBeat.i(112749);
-    if (!bHR())
+    if (!bPe())
     {
       AppMethodBeat.o(112749);
       return false;
     }
-    if (this.nsC != null) {
-      ad.i("MicroMsg.CardInfo", "is_acceptable:" + this.nsC.CSb);
+    if (this.nVC != null) {
+      ac.i("MicroMsg.CardInfo", "is_acceptable:" + this.nVC.EkM);
     }
-    ad.i("MicroMsg.CardInfo", "avail_num:" + this.nsD.CPt);
-    if ((this.nsC != null) && (this.nsC.CSb == 1))
+    ac.i("MicroMsg.CardInfo", "avail_num:" + this.nVD.Eie);
+    if ((this.nVC != null) && (this.nVC.EkM == 1))
     {
       AppMethodBeat.o(112749);
       return true;
     }
-    if (this.nsD.CPt > 0)
+    if (this.nVD.Eie > 0)
     {
       AppMethodBeat.o(112749);
       return true;
     }
-    if ((this.nsC != null) && (this.nsC.CSb == 0))
+    if ((this.nVC != null) && (this.nVC.EkM == 0))
     {
       AppMethodBeat.o(112749);
       return false;
     }
-    if (this.nsD.CPt == 0)
+    if (this.nVD.Eie == 0)
     {
       AppMethodBeat.o(112749);
       return false;
@@ -535,18 +535,18 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHT()
+  public final boolean bPg()
   {
     AppMethodBeat.i(112750);
-    if ((this.nsC == null) || (this.nsC.CRS == null) || (TextUtils.isEmpty(this.nsC.CRS.text)))
+    if ((this.nVC == null) || (this.nVC.EkD == null) || (TextUtils.isEmpty(this.nVC.EkD.text)))
     {
       AppMethodBeat.o(112750);
       return false;
     }
-    rd localrd = this.nsC.CRS;
+    rn localrn = this.nVC.EkD;
     int i = (int)(System.currentTimeMillis() / 1000L);
-    int j = localrd.wmA;
-    if ((localrd.wmA > 0) && (j - i > 0))
+    int j = localrn.xxQ;
+    if ((localrn.xxQ > 0) && (j - i > 0))
     {
       AppMethodBeat.o(112750);
       return true;
@@ -555,176 +555,176 @@ public class CardInfo
     return false;
   }
   
-  public final boolean bHU()
+  public final boolean bPh()
   {
-    return (this.nsC != null) && (this.nsC.CSf == 1);
+    return (this.nVC != null) && (this.nVC.EkQ == 1);
   }
   
-  public final ro bHV()
+  public final ry bPi()
   {
     AppMethodBeat.i(112751);
-    ro localro1;
-    if (this.nsC != null)
+    ry localry1;
+    if (this.nVC != null)
     {
-      localro1 = this.nsC;
+      localry1 = this.nVC;
       AppMethodBeat.o(112751);
-      return localro1;
+      return localry1;
     }
     try
     {
       if (this.field_cardTpInfoData != null)
       {
-        this.nsC = ((ro)new ro().parseFrom(this.field_cardTpInfoData));
-        localro1 = this.nsC;
+        this.nVC = ((ry)new ry().parseFrom(this.field_cardTpInfoData));
+        localry1 = this.nVC;
         AppMethodBeat.o(112751);
-        return localro1;
+        return localry1;
       }
-      localro1 = new ro();
+      localry1 = new ry();
       AppMethodBeat.o(112751);
-      return localro1;
+      return localry1;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.CardInfo", "getCardTpInfo fail, ex = %s", new Object[] { localException.getMessage() });
-      ad.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
-      ro localro2 = new ro();
+      ac.e("MicroMsg.CardInfo", "getCardTpInfo fail, ex = %s", new Object[] { localException.getMessage() });
+      ac.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      ry localry2 = new ry();
       AppMethodBeat.o(112751);
-      return localro2;
+      return localry2;
     }
   }
   
-  public final qo bHW()
+  public final qy bPj()
   {
     AppMethodBeat.i(112753);
-    qo localqo1;
-    if (this.nsD != null)
+    qy localqy1;
+    if (this.nVD != null)
     {
-      localqo1 = this.nsD;
+      localqy1 = this.nVD;
       AppMethodBeat.o(112753);
-      return localqo1;
+      return localqy1;
     }
     try
     {
       if (this.field_dataInfoData != null)
       {
-        this.nsD = ((qo)new qo().parseFrom(this.field_dataInfoData));
-        localqo1 = this.nsD;
+        this.nVD = ((qy)new qy().parseFrom(this.field_dataInfoData));
+        localqy1 = this.nVD;
         AppMethodBeat.o(112753);
-        return localqo1;
+        return localqy1;
       }
-      localqo1 = new qo();
+      localqy1 = new qy();
       AppMethodBeat.o(112753);
-      return localqo1;
+      return localqy1;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.CardInfo", "getDataInfo fail, ex = %s", new Object[] { localException.getMessage() });
-      ad.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
-      qo localqo2 = new qo();
+      ac.e("MicroMsg.CardInfo", "getDataInfo fail, ex = %s", new Object[] { localException.getMessage() });
+      ac.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      qy localqy2 = new qy();
       AppMethodBeat.o(112753);
-      return localqo2;
+      return localqy2;
     }
   }
   
-  public final csx bHX()
+  public final cyg bPk()
   {
     AppMethodBeat.i(112755);
-    csx localcsx1;
-    if (this.nsE != null)
+    cyg localcyg1;
+    if (this.nVE != null)
     {
-      localcsx1 = this.nsE;
+      localcyg1 = this.nVE;
       AppMethodBeat.o(112755);
-      return localcsx1;
+      return localcyg1;
     }
     try
     {
       if (this.field_shareInfoData != null)
       {
-        this.nsE = ((csx)new csx().parseFrom(this.field_shareInfoData));
-        localcsx1 = this.nsE;
+        this.nVE = ((cyg)new cyg().parseFrom(this.field_shareInfoData));
+        localcyg1 = this.nVE;
         AppMethodBeat.o(112755);
-        return localcsx1;
+        return localcyg1;
       }
-      localcsx1 = new csx();
+      localcyg1 = new cyg();
       AppMethodBeat.o(112755);
-      return localcsx1;
+      return localcyg1;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.CardInfo", "getShareInfo fail, ex = %s", new Object[] { localException.getMessage() });
-      ad.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
-      csx localcsx2 = new csx();
+      ac.e("MicroMsg.CardInfo", "getShareInfo fail, ex = %s", new Object[] { localException.getMessage() });
+      ac.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      cyg localcyg2 = new cyg();
       AppMethodBeat.o(112755);
-      return localcsx2;
+      return localcyg2;
     }
   }
   
-  public final rh bHY()
+  public final rr bPl()
   {
     AppMethodBeat.i(112757);
-    rh localrh;
-    if (this.nsF != null)
+    rr localrr;
+    if (this.nVF != null)
     {
-      localrh = this.nsF;
+      localrr = this.nVF;
       AppMethodBeat.o(112757);
-      return localrh;
+      return localrr;
     }
     try
     {
       if (this.field_shopInfoData != null)
       {
-        this.nsF = ((rh)new rh().parseFrom(this.field_shopInfoData));
-        localrh = this.nsF;
+        this.nVF = ((rr)new rr().parseFrom(this.field_shopInfoData));
+        localrr = this.nVF;
         AppMethodBeat.o(112757);
-        return localrh;
+        return localrr;
       }
       AppMethodBeat.o(112757);
       return null;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.CardInfo", "getShopInfo fail ex = %s", new Object[] { localException.getMessage() });
-      ad.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      ac.e("MicroMsg.CardInfo", "getShopInfo fail ex = %s", new Object[] { localException.getMessage() });
+      ac.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
       AppMethodBeat.o(112757);
     }
     return null;
   }
   
-  public final String bHZ()
+  public final String bPm()
   {
     return this.field_card_id;
   }
   
-  public final String bIa()
+  public final String bPn()
   {
     return this.field_card_tp_id;
   }
   
-  public final String bIb()
+  public final String bPo()
   {
     return this.field_from_username;
   }
   
-  public final long bIc()
+  public final long bPp()
   {
     return this.field_local_updateTime;
   }
   
-  public final String bId()
+  public final String bPq()
   {
     return null;
   }
   
-  public final int bIe()
+  public final int bPr()
   {
     return 0;
   }
   
-  public final String bIf()
+  public final String bPs()
   {
     AppMethodBeat.i(112763);
-    ad.d("MicroMsg.CardInfo", "encrypt_code:" + this.nru);
-    String str = this.nru;
+    ac.d("MicroMsg.CardInfo", "encrypt_code:" + this.nUu);
+    String str = this.nUu;
     AppMethodBeat.o(112763);
     return str;
   }
@@ -747,26 +747,26 @@ public class CardInfo
   public final boolean isAcceptable()
   {
     AppMethodBeat.i(112748);
-    if (!bHR())
+    if (!bPe())
     {
       AppMethodBeat.o(112748);
       return false;
     }
-    if (this.nsC != null) {
-      ad.i("MicroMsg.CardInfo", "is_acceptable:" + this.nsC.CSb);
+    if (this.nVC != null) {
+      ac.i("MicroMsg.CardInfo", "is_acceptable:" + this.nVC.EkM);
     }
-    ad.i("MicroMsg.CardInfo", "stock_num:" + this.nsD.CPw + " limit_num:" + this.nsD.CPx);
-    if ((this.nsC != null) && (this.nsC.CSb == 1))
+    ac.i("MicroMsg.CardInfo", "stock_num:" + this.nVD.Eih + " limit_num:" + this.nVD.Eii);
+    if ((this.nVC != null) && (this.nVC.EkM == 1))
     {
       AppMethodBeat.o(112748);
       return true;
     }
-    if ((this.nsC != null) && (this.nsC.CSb == 0))
+    if ((this.nVC != null) && (this.nVC.EkM == 0))
     {
       AppMethodBeat.o(112748);
       return false;
     }
-    if ((this.nsD.CPw == 0L) || (this.nsD.CPx == 0))
+    if ((this.nVD.Eih == 0L) || (this.nVD.Eii == 0))
     {
       AppMethodBeat.o(112748);
       return false;
@@ -845,7 +845,7 @@ public class CardInfo
     AppMethodBeat.o(112760);
   }
   
-  public final String yO(int paramInt)
+  public final String zE(int paramInt)
   {
     return null;
   }

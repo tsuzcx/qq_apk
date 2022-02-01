@@ -1,16 +1,15 @@
 package com.tencent.luggage.k.a.a;
 
+import android.graphics.Bitmap;
+
 public abstract interface h
+  extends q
 {
-  public abstract <AddOn extends i> AddOn U(Class<AddOn> paramClass);
-  
-  public abstract <AddOn extends i> void a(Class<AddOn> paramClass, AddOn paramAddOn);
-  
-  public abstract String getName();
+  public abstract Bitmap Ep();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a.h
  * JD-Core Version:    0.7.0.1
  */

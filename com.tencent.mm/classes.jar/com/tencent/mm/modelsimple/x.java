@@ -1,24 +1,24 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.model.u;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.cow;
+import com.tencent.mm.protocal.protobuf.cud;
 import com.tencent.mm.protocal.z.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import junit.framework.Assert;
 
 public final class x
   extends n
   implements k
 {
-  private com.tencent.mm.al.g callback;
-  private final q gVZ;
+  private com.tencent.mm.ak.g callback;
+  private final q hwy;
   
   public x(int paramInt, String paramString)
   {
@@ -28,10 +28,10 @@ public final class x
   public x(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(150946);
-    this.gVZ = new d();
-    z.a locala = (z.a)this.gVZ.getReqObj();
-    locala.Crh.mAQ = u.aqG();
-    cow localcow = locala.Crh;
+    this.hwy = new d();
+    z.a locala = (z.a)this.hwy.getReqObj();
+    locala.DJz.ncR = u.axw();
+    cud localcud = locala.DJz;
     Object localObject = new StringBuilder();
     int i = paramInt;
     if (paramInt == 0) {
@@ -42,12 +42,12 @@ public final class x
     if (paramString1 == null) {
       localObject = "";
     }
-    localcow.gKr = ((String)localObject);
-    ad.d("MicroMsg.NetSceneSendCard", "content:" + locala.Crh.gKr);
+    localcud.hkR = ((String)localObject);
+    ac.d("MicroMsg.NetSceneSendCard", "content:" + locala.DJz.hkR);
     Assert.assertTrue("empty sendcard", true);
-    locala.Crh.DQE = 64;
+    locala.DJz.FmW = 64;
     if ((paramString2 != null) && (paramString2.length() > 0)) {
-      locala.Crh.EiQ = paramString2;
+      locala.DJz.FFO = paramString2;
     }
     AppMethodBeat.o(150946);
   }
@@ -55,26 +55,26 @@ public final class x
   public x(String paramString)
   {
     AppMethodBeat.i(150947);
-    this.gVZ = new d();
-    z.a locala = (z.a)this.gVZ.getReqObj();
-    locala.Crh.mAQ = u.aqG();
-    locala.Crh.gKr = paramString;
-    ad.d("MicroMsg.NetSceneSendCard", "content:".concat(String.valueOf(paramString)));
-    locala.Crh.Dxp = bt.l((Integer)com.tencent.mm.kernel.g.afB().afk().get(66561, null));
+    this.hwy = new d();
+    z.a locala = (z.a)this.hwy.getReqObj();
+    locala.DJz.ncR = u.axw();
+    locala.DJz.hkR = paramString;
+    ac.d("MicroMsg.NetSceneSendCard", "content:".concat(String.valueOf(paramString)));
+    locala.DJz.ESL = bs.m((Integer)com.tencent.mm.kernel.g.agR().agA().get(66561, null));
     Assert.assertTrue("empty sendcard", true);
-    locala.Crh.DQE = 128;
+    locala.DJz.FmW = 128;
     AppMethodBeat.o(150947);
   }
   
   public x(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(150948);
-    this.gVZ = new d();
-    z.a locala = (z.a)this.gVZ.getReqObj();
-    locala.Crh.mAQ = u.aqG();
-    locala.Crh.gKr = paramString;
-    ad.d("MicroMsg.NetSceneSendCard", "content:".concat(String.valueOf(paramString)));
-    locala.Crh.Dxp = bt.l((Integer)com.tencent.mm.kernel.g.afB().afk().get(66561, null));
+    this.hwy = new d();
+    z.a locala = (z.a)this.hwy.getReqObj();
+    locala.DJz.ncR = u.axw();
+    locala.DJz.hkR = paramString;
+    ac.d("MicroMsg.NetSceneSendCard", "content:".concat(String.valueOf(paramString)));
+    locala.DJz.ESL = bs.m((Integer)com.tencent.mm.kernel.g.agR().agA().get(66561, null));
     int i;
     if (paramBoolean1)
     {
@@ -87,7 +87,7 @@ public final class x
     for (int j = 4;; j = 0)
     {
       Assert.assertTrue("empty sendcard", true);
-      locala.Crh.DQE = (j | i | 0x0 | 0x0 | 0x8);
+      locala.DJz.FmW = (j | i | 0x0 | 0x0 | 0x8);
       AppMethodBeat.o(150948);
       return;
       i = 0;
@@ -95,11 +95,11 @@ public final class x
     }
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(150949);
     this.callback = paramg;
-    int i = dispatch(parame, this.gVZ, this);
+    int i = dispatch(parame, this.hwy, this);
     AppMethodBeat.o(150949);
     return i;
   }
@@ -119,7 +119,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelsimple.x
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.vfs.e;
 import org.json.JSONException;
@@ -18,7 +18,7 @@ public class WebViewJSSDKImageItem
   implements Parcelable
 {
   public static final Parcelable.Creator<WebViewJSSDKImageItem> CREATOR;
-  public boolean rEo;
+  public boolean sNg;
   
   static
   {
@@ -39,7 +39,7 @@ public class WebViewJSSDKImageItem
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.rEo = bool;
+      this.sNg = bool;
       AppMethodBeat.o(79014);
       return;
       bool = false;
@@ -51,7 +51,7 @@ public class WebViewJSSDKImageItem
     AppMethodBeat.i(182695);
     super.bt(paramJSONObject);
     if (paramJSONObject != null) {
-      this.rEo = paramJSONObject.optBoolean("isGif");
+      this.sNg = paramJSONObject.optBoolean("isGif");
     }
     AppMethodBeat.o(182695);
   }
@@ -61,13 +61,13 @@ public class WebViewJSSDKImageItem
     return 0;
   }
   
-  public final JSONObject fZv()
+  public final JSONObject fcF()
   {
     AppMethodBeat.i(182696);
-    JSONObject localJSONObject = super.fZv();
+    JSONObject localJSONObject = super.fcF();
     try
     {
-      localJSONObject.put("isGif", this.rEo);
+      localJSONObject.put("isGif", this.sNg);
       label21:
       AppMethodBeat.o(182696);
       return localJSONObject;
@@ -78,56 +78,56 @@ public class WebViewJSSDKImageItem
     }
   }
   
-  public final WebViewJSSDKFileItem fZw()
+  public final WebViewJSSDKFileItem fcG()
   {
     AppMethodBeat.i(79012);
-    this.diQ = aw.awH(this.jau);
-    fZz();
+    this.dgl = aw.aBZ(this.jAH);
+    fdb();
     AppMethodBeat.o(79012);
     return this;
   }
   
-  public final String fZx()
+  public final String fcH()
   {
     return "jpeg";
   }
   
-  public final String fZy()
+  public final String fda()
   {
     return "image";
   }
   
-  public final void fZz()
+  public final void fdb()
   {
     AppMethodBeat.i(79011);
-    if (!new e(this.jau).exists())
+    if (!new e(this.jAH).exists())
     {
-      ad.i("MicroMsg.WebViewJSSDkImageItem", "Original file not existed");
+      ac.i("MicroMsg.WebViewJSSDkImageItem", "Original file not existed");
       AppMethodBeat.o(79011);
       return;
     }
-    if (this.jMa == null) {
-      this.jMa = aw.awF(System.currentTimeMillis());
+    if (this.kmB == null) {
+      this.kmB = aw.aBX(System.currentTimeMillis());
     }
     for (;;)
     {
-      Bitmap localBitmap = f.e(this.jau, 640, 640, false);
+      Bitmap localBitmap = f.e(this.jAH, 640, 640, false);
       if (localBitmap != null)
       {
-        ad.i("MicroMsg.WebViewJSSDkImageItem", "extract thumbnail bitmap");
-        localBitmap = f.a(localBitmap, BackwardSupportUtil.ExifHelper.co(this.jau));
+        ac.i("MicroMsg.WebViewJSSDkImageItem", "extract thumbnail bitmap");
+        localBitmap = f.a(localBitmap, BackwardSupportUtil.ExifHelper.ce(this.jAH));
         if (localBitmap == null) {}
       }
       try
       {
-        f.a(localBitmap, 100, Bitmap.CompressFormat.JPEG, this.jMa, true);
-        ad.i("MicroMsg.WebViewJSSDkImageItem", "Thumb Path: %s", new Object[] { this.jMa });
+        f.a(localBitmap, 100, Bitmap.CompressFormat.JPEG, this.kmB, true);
+        ac.i("MicroMsg.WebViewJSSDkImageItem", "Thumb Path: %s", new Object[] { this.kmB });
         AppMethodBeat.o(79011);
         return;
-        if (!this.jMa.equals(this.jau)) {
+        if (!this.kmB.equals(this.jAH)) {
           continue;
         }
-        ad.i("MicroMsg.WebViewJSSDkImageItem", "Thumb file is original file");
+        ac.i("MicroMsg.WebViewJSSDkImageItem", "Thumb file is original file");
         AppMethodBeat.o(79011);
         return;
       }
@@ -135,7 +135,7 @@ public class WebViewJSSDKImageItem
       {
         for (;;)
         {
-          ad.e("MicroMsg.WebViewJSSDkImageItem", "save bitmap to file failed : %s", new Object[] { localException.getMessage() });
+          ac.e("MicroMsg.WebViewJSSDkImageItem", "save bitmap to file failed : %s", new Object[] { localException.getMessage() });
         }
       }
     }
@@ -145,7 +145,7 @@ public class WebViewJSSDKImageItem
   {
     AppMethodBeat.i(79013);
     super.writeToParcel(paramParcel, paramInt);
-    if (this.rEo) {}
+    if (this.sNg) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -156,7 +156,7 @@ public class WebViewJSSDKImageItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.WebViewJSSDKImageItem
  * JD-Core Version:    0.7.0.1
  */

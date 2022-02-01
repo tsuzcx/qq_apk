@@ -11,17 +11,17 @@ import java.util.ArrayList;
 final class k
   extends Instrumentation
 {
-  public Instrumentation FbZ;
+  public Instrumentation Gzr;
   
   public k(Instrumentation paramInstrumentation)
   {
     AppMethodBeat.i(40679);
-    this.FbZ = paramInstrumentation;
-    eIy();
+    this.Gzr = paramInstrumentation;
+    eXU();
     AppMethodBeat.o(40679);
   }
   
-  private void eIy()
+  private void eXU()
   {
     AppMethodBeat.i(40681);
     Field[] arrayOfField = Instrumentation.class.getDeclaredFields();
@@ -29,7 +29,7 @@ final class k
     while (i < arrayOfField.length)
     {
       arrayOfField[i].setAccessible(true);
-      Object localObject = arrayOfField[i].get(this.FbZ);
+      Object localObject = arrayOfField[i].get(this.Gzr);
       arrayOfField[i].set(this, localObject);
       i += 1;
     }
@@ -39,20 +39,20 @@ final class k
   public final Activity newActivity(ClassLoader paramClassLoader, String paramString, Intent paramIntent)
   {
     AppMethodBeat.i(40680);
-    if (h.Fbr != null) {
-      h.Fbr.eJ(paramString);
+    if (h.GyI != null) {
+      h.GyI.ez(paramString);
     }
-    if ((h.eIk()) && (!h.eIq().getCanonicalName().equals(paramString)) && (!ExtStorageMigrateAuxActivity.class.getName().equals(paramString)))
+    if ((h.eXG()) && (!h.eXM().getCanonicalName().equals(paramString)) && (!h.aMo(paramString)) && (!ExtStorageMigrateAuxActivity.class.getName().equals(paramString)))
     {
       paramClassLoader = new i();
-      paramClassLoader.FbM = paramString;
+      paramClassLoader.Gze = paramString;
       h.b("WxSplash.SplashHackInstrumentation", "new splash hack activity. replace activity %s", new Object[] { paramString });
-      h.Fbm.add(paramClassLoader);
+      h.GyD.add(paramClassLoader);
       AppMethodBeat.o(40680);
       return paramClassLoader;
     }
     paramClassLoader = super.newActivity(paramClassLoader, paramString, paramIntent);
-    Object localObject = h.cMp;
+    Object localObject = h.cJA;
     if (localObject != null)
     {
       localObject = ((d)localObject).q(paramClassLoader);
@@ -64,7 +64,7 @@ final class k
     }
     for (;;)
     {
-      if (j.eIx())
+      if (j.eXT())
       {
         h.b("WxSplash.SplashHackInstrumentation", "processing relaunch activity.", new Object[0]);
         paramIntent.putExtra("splash-hack-activity-recreate", true);

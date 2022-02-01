@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.a;
+import com.tencent.mm.bq.a;
 import com.tencent.mm.compatible.d.b;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class f
 {

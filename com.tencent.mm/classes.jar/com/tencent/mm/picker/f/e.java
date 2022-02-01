@@ -18,41 +18,41 @@ import java.util.Locale;
 
 public final class e
 {
-  public static DateFormat hTa;
+  public static DateFormat itf;
   Context ctx;
   int endYear;
   int gravity;
-  private int hRF;
-  float hSE;
-  WheelView.b hSG;
-  boolean[] hSh;
-  WheelView hTb;
-  WheelView hTc;
-  WheelView hTd;
-  WheelView hTe;
-  WheelView hTf;
-  WheelView hTg;
-  int hTh;
-  int hTi;
-  int hTj;
-  int hTk;
-  int hTl;
-  int hTm;
-  int hTn;
-  int hTo;
-  int hTp;
-  a hTq;
-  private String[] hTr;
-  private String[] hTs;
-  final List<String> hTt;
-  final List<String> hTu;
+  private int irK;
+  float isJ;
+  WheelView.b isL;
+  boolean[] ism;
+  WheelView itg;
+  WheelView ith;
+  WheelView iti;
+  WheelView itj;
+  WheelView itk;
+  WheelView itl;
+  int itm;
+  int itn;
+  int ito;
+  int itp;
+  int itq;
+  int itr;
+  int its;
+  int itt;
+  int itu;
+  a itv;
+  private String[] itw;
+  private String[] itx;
+  final List<String> ity;
+  final List<String> itz;
   int startYear;
   View view;
   
   static
   {
     AppMethodBeat.i(175380);
-    hTa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+    itf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
     AppMethodBeat.o(175380);
   }
   
@@ -61,35 +61,23 @@ public final class e
     AppMethodBeat.i(175371);
     this.startYear = 1900;
     this.endYear = 2100;
-    this.hTh = 1;
-    this.hTi = 12;
-    this.hTj = 1;
-    this.hTk = 31;
-    this.hTl = 0;
-    this.hTm = 0;
-    this.hTn = 23;
-    this.hTo = 59;
-    this.hTr = new String[] { "1", "3", "5", "7", "8", "10", "12" };
-    this.hTs = new String[] { "4", "6", "9", "11" };
-    this.hTt = Arrays.asList(this.hTr);
-    this.hTu = Arrays.asList(this.hTs);
+    this.itm = 1;
+    this.itn = 12;
+    this.ito = 1;
+    this.itp = 31;
+    this.itq = 0;
+    this.itr = 0;
+    this.its = 23;
+    this.itt = 59;
+    this.itw = new String[] { "1", "3", "5", "7", "8", "10", "12" };
+    this.itx = new String[] { "4", "6", "9", "11" };
+    this.ity = Arrays.asList(this.itw);
+    this.itz = Arrays.asList(this.itx);
     this.ctx = paramContext;
     AppMethodBeat.o(175371);
   }
   
-  private void aGh()
-  {
-    AppMethodBeat.i(175375);
-    this.hTd.setDividerColor(this.hRF);
-    this.hTc.setDividerColor(this.hRF);
-    this.hTb.setDividerColor(this.hRF);
-    this.hTe.setDividerColor(this.hRF);
-    this.hTf.setDividerColor(this.hRF);
-    this.hTg.setDividerColor(this.hRF);
-    AppMethodBeat.o(175375);
-  }
-  
-  static void aJ(List<WheelView> paramList)
+  static void aG(List<WheelView> paramList)
   {
     AppMethodBeat.i(175373);
     paramList = paramList.iterator();
@@ -97,6 +85,18 @@ public final class e
       ((WheelView)paramList.next()).setLayoutParams(new LinearLayout.LayoutParams(0, -1, 1.0F));
     }
     AppMethodBeat.o(175373);
+  }
+  
+  private void aMU()
+  {
+    AppMethodBeat.i(175375);
+    this.iti.setDividerColor(this.irK);
+    this.ith.setDividerColor(this.irK);
+    this.itg.setDividerColor(this.irK);
+    this.itj.setDividerColor(this.irK);
+    this.itk.setDividerColor(this.irK);
+    this.itl.setDividerColor(this.irK);
+    AppMethodBeat.o(175375);
   }
   
   private static int c(WheelView paramWheelView)
@@ -116,7 +116,7 @@ public final class e
     return 0;
   }
   
-  public final List<WheelView> aGj()
+  public final List<WheelView> aMW()
   {
     AppMethodBeat.i(175372);
     ArrayList localArrayList = new ArrayList();
@@ -131,75 +131,75 @@ public final class e
         i += 1;
         break;
       case 0: 
-        localWheelView = this.hTb;
-        if (this.hSh[i] != 0) {}
+        localWheelView = this.itg;
+        if (this.ism[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.hSh[i] == 0) {
+          if (this.ism[i] == 0) {
             break;
           }
-          localArrayList.add(this.hTb);
+          localArrayList.add(this.itg);
           break;
         }
       case 1: 
-        localWheelView = this.hTc;
-        if (this.hSh[i] != 0) {}
+        localWheelView = this.ith;
+        if (this.ism[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.hSh[i] == 0) {
+          if (this.ism[i] == 0) {
             break;
           }
-          localArrayList.add(this.hTc);
+          localArrayList.add(this.ith);
           break;
         }
       case 2: 
-        localWheelView = this.hTd;
-        if (this.hSh[i] != 0) {}
+        localWheelView = this.iti;
+        if (this.ism[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.hSh[i] == 0) {
+          if (this.ism[i] == 0) {
             break;
           }
-          localArrayList.add(this.hTd);
+          localArrayList.add(this.iti);
           break;
         }
       case 3: 
-        localWheelView = this.hTe;
-        if (this.hSh[i] != 0) {}
+        localWheelView = this.itj;
+        if (this.ism[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.hSh[i] == 0) {
+          if (this.ism[i] == 0) {
             break;
           }
-          localArrayList.add(this.hTe);
+          localArrayList.add(this.itj);
           break;
         }
       case 4: 
-        localWheelView = this.hTf;
-        if (this.hSh[i] != 0) {}
+        localWheelView = this.itk;
+        if (this.ism[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.hSh[i] == 0) {
+          if (this.ism[i] == 0) {
             break;
           }
-          localArrayList.add(this.hTf);
+          localArrayList.add(this.itk);
           break;
         }
       case 5: 
-        localWheelView = this.hTg;
-        if (this.hSh[i] != 0) {}
+        localWheelView = this.itl;
+        if (this.ism[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.hSh[i] == 0) {
+          if (this.ism[i] == 0) {
             break;
           }
-          localArrayList.add(this.hTg);
+          localArrayList.add(this.itl);
           break;
         }
       }
@@ -208,10 +208,10 @@ public final class e
     return localArrayList;
   }
   
-  public final String aGk()
+  public final String aMX()
   {
     AppMethodBeat.i(175376);
-    String str = String.valueOf(c(this.hTb) + "-" + c(this.hTc) + "-" + c(this.hTd) + " " + c(this.hTe) + ":" + c(this.hTf) + ":" + c(this.hTg));
+    String str = String.valueOf(c(this.itg) + "-" + c(this.ith) + "-" + c(this.iti) + " " + c(this.itj) + ":" + c(this.itk) + ":" + c(this.itl));
     AppMethodBeat.o(175376);
     return str;
   }
@@ -219,13 +219,13 @@ public final class e
   final void b(WheelView paramWheelView)
   {
     AppMethodBeat.i(175374);
-    if (this.hTq != null) {
+    if (this.itv != null) {
       paramWheelView.setOnItemSelectedListener(new com.tencent.mm.picker.base.b.b()
       {
-        public final void pz(int paramAnonymousInt)
+        public final void qm(int paramAnonymousInt)
         {
           AppMethodBeat.i(175370);
-          e.k(e.this).aFY();
+          e.k(e.this).aML();
           AppMethodBeat.o(175370);
         }
       });
@@ -236,14 +236,14 @@ public final class e
   public final void setDividerColor(int paramInt)
   {
     AppMethodBeat.i(175378);
-    this.hRF = paramInt;
-    aGh();
+    this.irK = paramInt;
+    aMU();
     AppMethodBeat.o(175378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.picker.f.e
  * JD-Core Version:    0.7.0.1
  */

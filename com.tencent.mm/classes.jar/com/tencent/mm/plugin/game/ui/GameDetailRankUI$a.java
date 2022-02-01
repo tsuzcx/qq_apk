@@ -4,9 +4,9 @@ import com.tencent.mm.plugin.game.model.c;
 
 public final class GameDetailRankUI$a
 {
-  public String sgO;
-  public String sgP;
-  c sgQ;
+  public String toI;
+  public String toJ;
+  c toK;
 }
 
 

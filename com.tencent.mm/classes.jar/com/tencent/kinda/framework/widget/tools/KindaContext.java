@@ -7,8 +7,8 @@ import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,11 +28,11 @@ public class KindaContext
       public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(19378);
-        ad.d("KindaContext", "onActivityCreated：".concat(String.valueOf(paramAnonymousActivity)));
+        ac.d("KindaContext", "onActivityCreated：".concat(String.valueOf(paramAnonymousActivity)));
         if (KindaContext.sContextStack != null)
         {
           KindaContext.sContextStack.push(new WeakReference(paramAnonymousActivity));
-          ad.i("KindaContext", "sContextStack.push：".concat(String.valueOf(paramAnonymousActivity)));
+          ac.i("KindaContext", "sContextStack.push：".concat(String.valueOf(paramAnonymousActivity)));
         }
         AppMethodBeat.o(19378);
       }
@@ -42,7 +42,7 @@ public class KindaContext
       public final void onActivityPaused(Activity paramAnonymousActivity)
       {
         AppMethodBeat.i(19379);
-        ad.d("KindaContext", "onActivityPaused：".concat(String.valueOf(paramAnonymousActivity)));
+        ac.d("KindaContext", "onActivityPaused：".concat(String.valueOf(paramAnonymousActivity)));
         WeakReference localWeakReference;
         if (paramAnonymousActivity.isFinishing())
         {
@@ -60,7 +60,7 @@ public class KindaContext
           if (localWeakReference != null)
           {
             KindaContext.sContextStack.remove(localWeakReference);
-            ad.i("KindaContext", "The context is finishing, so sContextStack.remove:[" + paramAnonymousActivity + "]");
+            ac.i("KindaContext", "The context is finishing, so sContextStack.remove:[" + paramAnonymousActivity + "]");
           }
           AppMethodBeat.o(19379);
           return;
@@ -101,7 +101,7 @@ public class KindaContext
     {
       localObject2 = (WeakReference)((Iterator)localObject1).next();
       sContextStack.remove(localObject2);
-      ad.i("KindaContext", "clearNullContextOfStack sContextStack.remove:[" + ((WeakReference)localObject2).get() + "]");
+      ac.i("KindaContext", "clearNullContextOfStack sContextStack.remove:[" + ((WeakReference)localObject2).get() + "]");
     }
     AppMethodBeat.o(19386);
   }
@@ -119,14 +119,14 @@ public class KindaContext
     AppMethodBeat.i(19382);
     if (sContextStack == null)
     {
-      ad.e("KindaContext", "KindaContext is null then return case1");
+      ac.e("KindaContext", "KindaContext is null then return case1");
       AppMethodBeat.o(19382);
       return null;
     }
     clearNullContextOfStack();
     if (sContextStack.size() == 0)
     {
-      ad.e("KindaContext", "KindaContext is stack is null then return case2");
+      ac.e("KindaContext", "KindaContext is stack is null then return case2");
       AppMethodBeat.o(19382);
       return null;
     }
@@ -169,7 +169,7 @@ public class KindaContext
       if (localObject1 == null) {
         localObject3 = localObject2;
       }
-      ad.i("KindaContext", "getTopOrUIPageFragmentActivity finally return [" + localObject3 + "]");
+      ac.i("KindaContext", "getTopOrUIPageFragmentActivity finally return [" + localObject3 + "]");
       AppMethodBeat.o(19382);
       return localObject3;
       localObject3 = null;
@@ -183,7 +183,7 @@ public class KindaContext
     AppMethodBeat.i(19384);
     if (sContextStack == null)
     {
-      ad.e("KindaContext", "The sContextStack is null then getUsableContext return null! case1");
+      ac.e("KindaContext", "The sContextStack is null then getUsableContext return null! case1");
       AppMethodBeat.o(19384);
       return null;
     }
@@ -191,7 +191,7 @@ public class KindaContext
     String str = printContextStack();
     if (sContextStack.size() == 0)
     {
-      ad.e("KindaContext", "The sContextStack is empty, so that return null! case2");
+      ac.e("KindaContext", "The sContextStack is empty, so that return null! case2");
       AppMethodBeat.o(19384);
       return null;
     }
@@ -207,26 +207,26 @@ public class KindaContext
       if (localActivity.isFinishing())
       {
         sContextStack.pop();
-        ad.i("KindaContext", "getUsableContext，sContextStack.pop:[" + localActivity + "]");
+        ac.i("KindaContext", "getUsableContext，sContextStack.pop:[" + localActivity + "]");
         localObject = getUsableContext();
       }
     }
     if (localObject == null) {
-      ad.e("KindaContext", "getUsableContext get null and the sContextStack before call：".concat(String.valueOf(str)));
+      ac.e("KindaContext", "getUsableContext get null and the sContextStack before call：".concat(String.valueOf(str)));
     }
     for (;;)
     {
       AppMethodBeat.o(19384);
       return localObject;
-      ad.i("KindaContext", "getUsableContext get value：".concat(String.valueOf(localObject)));
+      ac.i("KindaContext", "getUsableContext get value：".concat(String.valueOf(localObject)));
     }
   }
   
   private static void init()
   {
     AppMethodBeat.i(19387);
-    ((Application)aj.getContext()).registerActivityLifecycleCallbacks(sActivityLifeCycleCallbacks);
-    ad.i("KindaContext", "KindaContext has finish init.");
+    ((Application)ai.getContext()).registerActivityLifecycleCallbacks(sActivityLifeCycleCallbacks);
+    ac.i("KindaContext", "KindaContext has finish init.");
     AppMethodBeat.o(19387);
   }
   
@@ -252,7 +252,7 @@ public class KindaContext
       AppMethodBeat.o(19383);
       return;
     }
-    ad.d("KindaContext", "popToContext run");
+    ac.d("KindaContext", "popToContext run");
     Object localObject = sContextStack.iterator();
     WeakReference localWeakReference;
     do
@@ -269,7 +269,7 @@ public class KindaContext
         localObject = (WeakReference)sContextStack.peek();
         if ((localObject != null) && (((WeakReference)localObject).get() == paramContext))
         {
-          ad.i("KindaContext", "popToContext break");
+          ac.i("KindaContext", "popToContext break");
           AppMethodBeat.o(19383);
           return;
         }
@@ -281,7 +281,7 @@ public class KindaContext
       label160:
       for (localObject = localObject.toString();; localObject = "null")
       {
-        ad.i("KindaContext", "popToContext pop context：".concat(String.valueOf(localObject)));
+        ac.i("KindaContext", "popToContext pop context：".concat(String.valueOf(localObject)));
         if (sContextStack.size() > 0) {
           break;
         }
@@ -317,7 +317,7 @@ public class KindaContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.KindaContext
  * JD-Core Version:    0.7.0.1
  */

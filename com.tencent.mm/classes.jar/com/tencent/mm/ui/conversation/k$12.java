@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.widget.a.f.c;
 
 final class k$12
@@ -17,18 +17,18 @@ final class k$12
     AppMethodBeat.i(38608);
     if (paramBoolean)
     {
-      h.vKh.f(15181, new Object[] { Integer.valueOf(3) });
+      h.wUl.f(15181, new Object[] { Integer.valueOf(3) });
       Object localObject = new Intent();
-      ((Intent)localObject).setClassName(aj.getPackageName(), "com.tencent.mm.plugin.setting.ui.setting.SettingsFontUI");
+      ((Intent)localObject).setClassName(ai.getPackageName(), "com.tencent.mm.plugin.setting.ui.setting.SettingsFontUI");
       paramString = this.val$activity;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/conversation/InitHelper$8", "onDialogClick", "(ZLjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/conversation/InitHelper$8", "onDialogClick", "(ZLjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/ui/conversation/InitHelper$8", "onDialogClick", "(ZLjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(38608);
       return;
     }
-    h.vKh.f(15181, new Object[] { Integer.valueOf(2) });
+    h.wUl.f(15181, new Object[] { Integer.valueOf(2) });
     AppMethodBeat.o(38608);
   }
 }

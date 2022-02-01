@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.PointF;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.s;
+import android.support.v7.widget.RecyclerView.t;
 import android.support.v7.widget.ae;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -20,7 +20,7 @@ public class SpeedyLinearLayoutManager
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
   }
   
-  public final void a(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
+  public final void a(RecyclerView paramRecyclerView, RecyclerView.t paramt, int paramInt)
   {
     AppMethodBeat.i(111713);
     paramRecyclerView = new ae(paramRecyclerView.getContext())
@@ -38,14 +38,14 @@ public class SpeedyLinearLayoutManager
         return localPointF;
       }
     };
-    paramRecyclerView.ard = paramInt;
+    paramRecyclerView.arZ = paramInt;
     a(paramRecyclerView);
     AppMethodBeat.o(111713);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.SpeedyLinearLayoutManager
  * JD-Core Version:    0.7.0.1
  */

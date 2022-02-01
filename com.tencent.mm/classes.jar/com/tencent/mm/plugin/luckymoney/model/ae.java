@@ -2,8 +2,7 @@ package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,32 +12,32 @@ import org.json.JSONObject;
 public final class ae
   extends ac
 {
-  public int dDO;
-  public int dDP;
-  public long dEb;
-  public int nTB;
-  public String sZn;
-  public RealnameGuideHelper tac;
-  public String tdh;
-  public f tdw;
-  public String teL;
-  public String teM;
-  public int teN;
-  public String teO;
-  public int teP;
-  public String teQ;
-  public String teR;
-  public int teS;
-  public l teT;
+  public int dBA;
+  public int dBB;
+  public long dBN;
+  public int owW;
+  public String uhB;
+  public RealnameGuideHelper uis;
+  public f ulL;
+  public String ulw;
+  public String una;
+  public String unb;
+  public int unc;
+  public String und;
+  public int une;
+  public String unf;
+  public String ung;
+  public int unh;
+  public l uni;
   
   public ae(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
     AppMethodBeat.i(65279);
-    this.teT = null;
-    this.sZn = paramString1;
+    this.uni = null;
+    this.uhB = paramString1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
-    if (!bt.isNullOrNil(paramString2)) {
+    if (!bs.isNullOrNil(paramString2)) {
       localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
     }
     localHashMap.put("way", String.valueOf(paramInt));
@@ -49,7 +48,7 @@ public final class ae
     AppMethodBeat.o(65279);
   }
   
-  public final int bOC()
+  public final int bVS()
   {
     return 1;
   }
@@ -57,33 +56,33 @@ public final class ae
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(65280);
-    this.teL = paramJSONObject.optString("spidName");
-    this.dDO = paramJSONObject.optInt("hbStatus");
-    this.dDP = paramJSONObject.optInt("receiveStatus");
-    this.tdh = paramJSONObject.optString("statusMess");
-    this.teM = paramJSONObject.optString("hintMess");
-    this.dEb = paramJSONObject.optLong("amount");
-    this.teN = paramJSONObject.optInt("recNum");
-    this.nTB = paramJSONObject.optInt("totalNum");
-    this.tdw = new f();
+    this.una = paramJSONObject.optString("spidName");
+    this.dBA = paramJSONObject.optInt("hbStatus");
+    this.dBB = paramJSONObject.optInt("receiveStatus");
+    this.ulw = paramJSONObject.optString("statusMess");
+    this.unb = paramJSONObject.optString("hintMess");
+    this.dBN = paramJSONObject.optLong("amount");
+    this.unc = paramJSONObject.optInt("recNum");
+    this.owW = paramJSONObject.optInt("totalNum");
+    this.ulL = new f();
     paramString = paramJSONObject.optJSONObject("atomicFunc");
     if (paramString != null)
     {
-      this.tdw.fBI = paramString.optInt("enable");
-      this.tdw.tcS = paramString.optString("fissionContent");
-      this.tdw.tcR = paramString.optString("fissionUrl");
+      this.ulL.fFp = paramString.optInt("enable");
+      this.ulL.ulh = paramString.optString("fissionContent");
+      this.ulL.ulg = paramString.optString("fissionUrl");
     }
-    this.teP = paramJSONObject.optInt("focusFlag");
-    this.teQ = paramJSONObject.optString("focusWording");
-    this.teR = paramJSONObject.optString("focusAppidUserName");
-    this.teS = paramJSONObject.optInt("isFocus");
-    this.teO = paramJSONObject.optString("smallHbButtonMess");
+    this.une = paramJSONObject.optInt("focusFlag");
+    this.unf = paramJSONObject.optString("focusWording");
+    this.ung = paramJSONObject.optString("focusAppidUserName");
+    this.unh = paramJSONObject.optInt("isFocus");
+    this.und = paramJSONObject.optString("smallHbButtonMess");
     try
     {
-      this.teT = x.at(paramJSONObject);
-      this.teT.tdk = paramJSONObject.optString("spidLogo");
-      this.teT.tdj = paramJSONObject.optString("spidName");
-      this.teT.sYt = paramJSONObject.optString("spidWishing");
+      this.uni = x.au(paramJSONObject);
+      this.uni.ulz = paramJSONObject.optString("spidLogo");
+      this.uni.uly = paramJSONObject.optString("spidName");
+      this.uni.ugH = paramJSONObject.optString("spidWishing");
       if ((paramInt == 0) && (paramJSONObject.has("real_name_info")))
       {
         Object localObject = paramJSONObject.optJSONObject("real_name_info");
@@ -94,8 +93,8 @@ public final class ae
           String str1 = ((JSONObject)localObject).optString("left_button_wording");
           String str2 = ((JSONObject)localObject).optString("right_button_wording");
           localObject = ((JSONObject)localObject).optString("upload_credit_url");
-          this.tac = new RealnameGuideHelper();
-          this.tac.b(paramString, paramJSONObject, str1, str2, (String)localObject, 1005);
+          this.uis = new RealnameGuideHelper();
+          this.uis.b(paramString, paramJSONObject, str1, str2, (String)localObject, 1005);
         }
       }
       AppMethodBeat.o(65280);
@@ -105,7 +104,7 @@ public final class ae
     {
       for (;;)
       {
-        ad.w("MicroMsg.NetSceneLuckyMoneyBusiBase", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
+        com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.NetSceneLuckyMoneyBusiBase", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
       }
     }
   }

@@ -10,14 +10,12 @@ import android.view.SurfaceHolder.Callback;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import com.google.android.exoplayer2.a.b;
-import com.google.android.exoplayer2.a.b.a;
 import com.google.android.exoplayer2.b.d;
 import com.google.android.exoplayer2.f.a;
 import com.google.android.exoplayer2.f.j.a;
-import com.google.android.exoplayer2.i.x;
 import com.google.android.exoplayer2.metadata.Metadata;
 import com.google.android.exoplayer2.metadata.e.a;
-import com.google.android.exoplayer2.source.j;
+import com.google.android.exoplayer2.source.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
@@ -27,36 +25,36 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public final class v
   implements f
 {
-  protected final r[] aQP;
-  private final f aRp;
-  private final a aSH;
-  final CopyOnWriteArraySet<Object> aSI;
-  final CopyOnWriteArraySet<j.a> aSJ;
-  public final CopyOnWriteArraySet<e.a> aSK;
-  private final int aSL;
-  private final int aSM;
-  public Format aSN;
-  Format aSO;
-  private boolean aSQ;
-  private int aSR;
-  private SurfaceHolder aSS;
-  private TextureView aST;
-  public com.google.android.exoplayer2.a.e aSU;
-  com.google.android.exoplayer2.video.e aSV;
-  d aSW;
-  d aSX;
-  int aSY;
-  private b aSZ;
-  private float aTa;
+  protected final r[] aRK;
+  private final f aSk;
+  private final a aTA;
+  final CopyOnWriteArraySet<Object> aTB;
+  final CopyOnWriteArraySet<j.a> aTC;
+  public final CopyOnWriteArraySet<e.a> aTD;
+  private final int aTE;
+  private final int aTF;
+  Format aTG;
+  Format aTH;
+  private boolean aTI;
+  private int aTJ;
+  private SurfaceHolder aTK;
+  private TextureView aTL;
+  public com.google.android.exoplayer2.a.e aTM;
+  com.google.android.exoplayer2.video.e aTN;
+  d aTO;
+  d aTP;
+  int aTQ;
+  private b aTR;
+  private float aTS;
   Surface surface;
   
   protected v(u paramu, com.google.android.exoplayer2.g.h paramh, m paramm)
   {
     AppMethodBeat.i(92534);
-    this.aSH = new a((byte)0);
-    this.aSI = new CopyOnWriteArraySet();
-    this.aSJ = new CopyOnWriteArraySet();
-    this.aSK = new CopyOnWriteArraySet();
+    this.aTA = new a((byte)0);
+    this.aTB = new CopyOnWriteArraySet();
+    this.aTC = new CopyOnWriteArraySet();
+    this.aTD = new CopyOnWriteArraySet();
     Looper localLooper;
     int i;
     int k;
@@ -64,8 +62,8 @@ public final class v
     if (Looper.myLooper() != null)
     {
       localLooper = Looper.myLooper();
-      this.aQP = paramu.a(new Handler(localLooper), this.aSH, this.aSH, this.aSH, this.aSH);
-      paramu = this.aQP;
+      this.aRK = paramu.a(new Handler(localLooper), this.aTA, this.aTA, this.aTA, this.aTA);
+      paramu = this.aRK;
       int m = paramu.length;
       i = 0;
       k = 0;
@@ -89,21 +87,21 @@ public final class v
       k += 1;
     }
     label191:
-    this.aSL = j;
-    this.aSM = k;
-    this.aTa = 1.0F;
-    this.aSY = 0;
-    this.aSZ = b.aTA;
-    this.aSR = 1;
-    this.aRp = new h(this.aQP, paramh, paramm);
+    this.aTE = j;
+    this.aTF = k;
+    this.aTS = 1.0F;
+    this.aTQ = 0;
+    this.aTR = b.aUs;
+    this.aTJ = 1;
+    this.aSk = new h(this.aRK, paramh, paramm);
     AppMethodBeat.o(92534);
   }
   
   private void a(Surface paramSurface, boolean paramBoolean)
   {
     AppMethodBeat.i(92558);
-    f.c[] arrayOfc = new f.c[this.aSL];
-    r[] arrayOfr = this.aQP;
+    f.c[] arrayOfc = new f.c[this.aTE];
+    r[] arrayOfr = this.aRK;
     int m = arrayOfr.length;
     int j = 0;
     int i = 0;
@@ -124,142 +122,104 @@ public final class v
       break;
       if ((this.surface != null) && (this.surface != paramSurface))
       {
-        this.aRp.b(arrayOfc);
-        if (this.aSQ) {
+        this.aSk.b(arrayOfc);
+        if (this.aTI) {
           this.surface.release();
         }
       }
       for (;;)
       {
         this.surface = paramSurface;
-        this.aSQ = paramBoolean;
+        this.aTI = paramBoolean;
         AppMethodBeat.o(92558);
         return;
-        this.aRp.a(arrayOfc);
+        this.aSk.a(arrayOfc);
       }
     }
   }
   
-  private void rO()
+  private void rY()
   {
     AppMethodBeat.i(92557);
-    if (this.aST != null)
+    if (this.aTL != null)
     {
-      if (this.aST.getSurfaceTextureListener() == this.aSH) {
-        this.aST.setSurfaceTextureListener(null);
+      if (this.aTL.getSurfaceTextureListener() == this.aTA) {
+        this.aTL.setSurfaceTextureListener(null);
       }
-      this.aST = null;
+      this.aTL = null;
     }
-    if (this.aSS != null)
+    if (this.aTK != null)
     {
-      this.aSS.removeCallback(this.aSH);
-      this.aSS = null;
+      this.aTK.removeCallback(this.aTA);
+      this.aTK = null;
     }
     AppMethodBeat.o(92557);
-  }
-  
-  public final void a(b paramb)
-  {
-    AppMethodBeat.i(92537);
-    this.aSZ = paramb;
-    f.c[] arrayOfc = new f.c[this.aSM];
-    r[] arrayOfr = this.aQP;
-    int m = arrayOfr.length;
-    int j = 0;
-    int i = 0;
-    if (j < m)
-    {
-      r localr = arrayOfr[j];
-      if (localr.getTrackType() != 1) {
-        break label104;
-      }
-      int k = i + 1;
-      arrayOfc[i] = new f.c(localr, 3, paramb);
-      i = k;
-    }
-    label104:
-    for (;;)
-    {
-      j += 1;
-      break;
-      this.aRp.a(arrayOfc);
-      AppMethodBeat.o(92537);
-      return;
-    }
   }
   
   public final void a(p paramp)
   {
     AppMethodBeat.i(92548);
-    this.aRp.a(paramp);
+    this.aSk.a(paramp);
     AppMethodBeat.o(92548);
   }
   
   public final void a(q.a parama)
   {
     AppMethodBeat.i(92539);
-    this.aRp.a(parama);
+    this.aSk.a(parama);
     AppMethodBeat.o(92539);
   }
   
-  public final void a(j paramj)
+  public final void a(i parami)
   {
     AppMethodBeat.i(92542);
-    this.aRp.a(paramj);
+    this.aSk.a(parami);
     AppMethodBeat.o(92542);
   }
   
   public final void a(f.c... paramVarArgs)
   {
     AppMethodBeat.i(92551);
-    this.aRp.a(paramVarArgs);
+    this.aSk.a(paramVarArgs);
     AppMethodBeat.o(92551);
   }
   
   public final void aO(boolean paramBoolean)
   {
     AppMethodBeat.i(92543);
-    this.aRp.aO(paramBoolean);
+    this.aSk.aO(paramBoolean);
     AppMethodBeat.o(92543);
   }
   
   public final void b(q.a parama)
   {
     AppMethodBeat.i(92540);
-    this.aRp.b(parama);
+    this.aSk.b(parama);
     AppMethodBeat.o(92540);
   }
   
   public final void b(f.c... paramVarArgs)
   {
     AppMethodBeat.i(92552);
-    this.aRp.b(paramVarArgs);
+    this.aSk.b(paramVarArgs);
     AppMethodBeat.o(92552);
   }
   
-  public final void c(Surface paramSurface)
-  {
-    AppMethodBeat.i(92535);
-    rO();
-    a(paramSurface, false);
-    AppMethodBeat.o(92535);
-  }
-  
-  public final void d(TextureView paramTextureView)
+  public final void c(TextureView paramTextureView)
   {
     Surface localSurface = null;
-    AppMethodBeat.i(205008);
-    rO();
-    this.aST = paramTextureView;
+    AppMethodBeat.i(195768);
+    rY();
+    this.aTL = paramTextureView;
     if (paramTextureView == null) {}
     label76:
     for (;;)
     {
       a(localSurface, true);
-      AppMethodBeat.o(205008);
+      AppMethodBeat.o(195768);
       return;
       paramTextureView.getSurfaceTextureListener();
-      paramTextureView.setSurfaceTextureListener(this.aSH);
+      paramTextureView.setSurfaceTextureListener(this.aTA);
       if (paramTextureView.isAvailable()) {}
       for (paramTextureView = paramTextureView.getSurfaceTexture();; paramTextureView = null)
       {
@@ -275,7 +235,7 @@ public final class v
   public final int getBufferedPercentage()
   {
     AppMethodBeat.i(92556);
-    int i = this.aRp.getBufferedPercentage();
+    int i = this.aSk.getBufferedPercentage();
     AppMethodBeat.o(92556);
     return i;
   }
@@ -283,7 +243,7 @@ public final class v
   public final long getBufferedPosition()
   {
     AppMethodBeat.i(92555);
-    long l = this.aRp.getBufferedPosition();
+    long l = this.aSk.getBufferedPosition();
     AppMethodBeat.o(92555);
     return l;
   }
@@ -291,7 +251,7 @@ public final class v
   public final long getCurrentPosition()
   {
     AppMethodBeat.i(92554);
-    long l = this.aRp.getCurrentPosition();
+    long l = this.aSk.getCurrentPosition();
     AppMethodBeat.o(92554);
     return l;
   }
@@ -299,7 +259,7 @@ public final class v
   public final long getDuration()
   {
     AppMethodBeat.i(92553);
-    long l = this.aRp.getDuration();
+    long l = this.aSk.getDuration();
     AppMethodBeat.o(92553);
     return l;
   }
@@ -307,32 +267,35 @@ public final class v
   public final boolean isLoading()
   {
     AppMethodBeat.i(92546);
-    boolean bool = this.aRp.isLoading();
+    boolean bool = this.aSk.isLoading();
     AppMethodBeat.o(92546);
     return bool;
   }
   
-  @Deprecated
-  public final void rN()
+  public final int rE()
   {
-    AppMethodBeat.i(92536);
-    x.wa();
-    x.wb();
-    b.a locala = new b.a();
-    locala.aTC = 1;
-    locala.aTB = 2;
-    a(locala.rT());
-    AppMethodBeat.o(92536);
+    AppMethodBeat.i(92541);
+    int i = this.aSk.rE();
+    AppMethodBeat.o(92541);
+    return i;
+  }
+  
+  public final boolean rF()
+  {
+    AppMethodBeat.i(92544);
+    boolean bool = this.aSk.rF();
+    AppMethodBeat.o(92544);
+    return bool;
   }
   
   public final void release()
   {
     AppMethodBeat.i(92550);
-    this.aRp.release();
-    rO();
+    this.aSk.release();
+    rY();
     if (this.surface != null)
     {
-      if (this.aSQ) {
+      if (this.aTI) {
         this.surface.release();
       }
       this.surface = null;
@@ -340,70 +303,24 @@ public final class v
     AppMethodBeat.o(92550);
   }
   
-  public final int rt()
-  {
-    AppMethodBeat.i(92541);
-    int i = this.aRp.rt();
-    AppMethodBeat.o(92541);
-    return i;
-  }
-  
-  public final boolean ru()
-  {
-    AppMethodBeat.i(92544);
-    boolean bool = this.aRp.ru();
-    AppMethodBeat.o(92544);
-    return bool;
-  }
-  
   public final void seekTo(long paramLong)
   {
     AppMethodBeat.i(92547);
-    this.aRp.seekTo(paramLong);
+    this.aSk.seekTo(paramLong);
     AppMethodBeat.o(92547);
   }
   
   public final void setRepeatMode(int paramInt)
   {
     AppMethodBeat.i(92545);
-    this.aRp.setRepeatMode(paramInt);
+    this.aSk.setRepeatMode(paramInt);
     AppMethodBeat.o(92545);
-  }
-  
-  public final void setVolume(float paramFloat)
-  {
-    AppMethodBeat.i(92538);
-    this.aTa = paramFloat;
-    f.c[] arrayOfc = new f.c[this.aSM];
-    r[] arrayOfr = this.aQP;
-    int m = arrayOfr.length;
-    int j = 0;
-    int i = 0;
-    if (j < m)
-    {
-      r localr = arrayOfr[j];
-      if (localr.getTrackType() != 1) {
-        break label109;
-      }
-      int k = i + 1;
-      arrayOfc[i] = new f.c(localr, 2, Float.valueOf(paramFloat));
-      i = k;
-    }
-    label109:
-    for (;;)
-    {
-      j += 1;
-      break;
-      this.aRp.a(arrayOfc);
-      AppMethodBeat.o(92538);
-      return;
-    }
   }
   
   public final void stop()
   {
     AppMethodBeat.i(92549);
-    this.aRp.stop();
+    this.aSk.stop();
     AppMethodBeat.o(92549);
   }
   
@@ -415,12 +332,12 @@ public final class v
     public final void a(int paramInt1, int paramInt2, int paramInt3, float paramFloat)
     {
       AppMethodBeat.i(92519);
-      Iterator localIterator = v.this.aSI.iterator();
+      Iterator localIterator = v.this.aTB.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      if (v.this.aSV != null) {
-        v.this.aSV.a(paramInt1, paramInt2, paramInt3, paramFloat);
+      if (v.this.aTN != null) {
+        v.this.aTN.a(paramInt1, paramInt2, paramInt3, paramFloat);
       }
       AppMethodBeat.o(92519);
     }
@@ -428,9 +345,9 @@ public final class v
     public final void a(d paramd)
     {
       AppMethodBeat.i(92515);
-      v.this.aSW = paramd;
-      if (v.this.aSV != null) {
-        v.this.aSV.a(paramd);
+      v.this.aTO = paramd;
+      if (v.this.aTN != null) {
+        v.this.aTN.a(paramd);
       }
       AppMethodBeat.o(92515);
     }
@@ -438,18 +355,18 @@ public final class v
     public final void b(d paramd)
     {
       AppMethodBeat.i(92521);
-      if (v.this.aSV != null) {
-        v.this.aSV.b(paramd);
+      if (v.this.aTN != null) {
+        v.this.aTN.b(paramd);
       }
-      v.this.aSN = null;
-      v.this.aSW = null;
+      v.this.aTG = null;
+      v.this.aTO = null;
       AppMethodBeat.o(92521);
     }
     
     public final void b(Metadata paramMetadata)
     {
       AppMethodBeat.i(92529);
-      Iterator localIterator = v.this.aSK.iterator();
+      Iterator localIterator = v.this.aTD.iterator();
       while (localIterator.hasNext()) {
         ((e.a)localIterator.next()).b(paramMetadata);
       }
@@ -459,8 +376,8 @@ public final class v
     public final void b(String paramString, long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(92516);
-      if (v.this.aSV != null) {
-        v.this.aSV.b(paramString, paramLong1, paramLong2);
+      if (v.this.aTN != null) {
+        v.this.aTN.b(paramString, paramLong1, paramLong2);
       }
       AppMethodBeat.o(92516);
     }
@@ -468,18 +385,34 @@ public final class v
     public final void c(int paramInt, long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(92526);
-      if (v.this.aSU != null) {
-        v.this.aSU.c(paramInt, paramLong1, paramLong2);
+      if (v.this.aTM != null) {
+        v.this.aTM.c(paramInt, paramLong1, paramLong2);
       }
       AppMethodBeat.o(92526);
+    }
+    
+    public final void c(Surface paramSurface)
+    {
+      AppMethodBeat.i(92520);
+      if (v.this.surface == paramSurface)
+      {
+        Iterator localIterator = v.this.aTB.iterator();
+        while (localIterator.hasNext()) {
+          localIterator.next();
+        }
+      }
+      if (v.this.aTN != null) {
+        v.this.aTN.c(paramSurface);
+      }
+      AppMethodBeat.o(92520);
     }
     
     public final void c(Format paramFormat)
     {
       AppMethodBeat.i(92517);
-      v.this.aSN = paramFormat;
-      if (v.this.aSV != null) {
-        v.this.aSV.c(paramFormat);
+      v.this.aTG = paramFormat;
+      if (v.this.aTN != null) {
+        v.this.aTN.c(paramFormat);
       }
       AppMethodBeat.o(92517);
     }
@@ -487,9 +420,9 @@ public final class v
     public final void c(d paramd)
     {
       AppMethodBeat.i(92522);
-      v.this.aSX = paramd;
-      if (v.this.aSU != null) {
-        v.this.aSU.c(paramd);
+      v.this.aTP = paramd;
+      if (v.this.aTM != null) {
+        v.this.aTM.c(paramd);
       }
       AppMethodBeat.o(92522);
     }
@@ -497,34 +430,18 @@ public final class v
     public final void c(String paramString, long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(92524);
-      if (v.this.aSU != null) {
-        v.this.aSU.c(paramString, paramLong1, paramLong2);
+      if (v.this.aTM != null) {
+        v.this.aTM.c(paramString, paramLong1, paramLong2);
       }
       AppMethodBeat.o(92524);
-    }
-    
-    public final void d(Surface paramSurface)
-    {
-      AppMethodBeat.i(92520);
-      if (v.this.surface == paramSurface)
-      {
-        Iterator localIterator = v.this.aSI.iterator();
-        while (localIterator.hasNext()) {
-          localIterator.next();
-        }
-      }
-      if (v.this.aSV != null) {
-        v.this.aSV.d(paramSurface);
-      }
-      AppMethodBeat.o(92520);
     }
     
     public final void d(Format paramFormat)
     {
       AppMethodBeat.i(92525);
-      v.this.aSO = paramFormat;
-      if (v.this.aSU != null) {
-        v.this.aSU.d(paramFormat);
+      v.this.aTH = paramFormat;
+      if (v.this.aTM != null) {
+        v.this.aTM.d(paramFormat);
       }
       AppMethodBeat.o(92525);
     }
@@ -532,21 +449,21 @@ public final class v
     public final void d(d paramd)
     {
       AppMethodBeat.i(92527);
-      if (v.this.aSU != null) {
-        v.this.aSU.d(paramd);
+      if (v.this.aTM != null) {
+        v.this.aTM.d(paramd);
       }
-      v.this.aSO = null;
-      v.this.aSX = null;
-      v.this.aSY = 0;
+      v.this.aTH = null;
+      v.this.aTP = null;
+      v.this.aTQ = 0;
       AppMethodBeat.o(92527);
     }
     
-    public final void dI(int paramInt)
+    public final void dH(int paramInt)
     {
       AppMethodBeat.i(92523);
-      v.this.aSY = paramInt;
-      if (v.this.aSU != null) {
-        v.this.aSU.dI(paramInt);
+      v.this.aTQ = paramInt;
+      if (v.this.aTM != null) {
+        v.this.aTM.dH(paramInt);
       }
       AppMethodBeat.o(92523);
     }
@@ -554,8 +471,8 @@ public final class v
     public final void h(int paramInt, long paramLong)
     {
       AppMethodBeat.i(92518);
-      if (v.this.aSV != null) {
-        v.this.aSV.h(paramInt, paramLong);
+      if (v.this.aTN != null) {
+        v.this.aTN.h(paramInt, paramLong);
       }
       AppMethodBeat.o(92518);
     }
@@ -579,6 +496,16 @@ public final class v
     
     public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
     
+    public final void s(List<a> paramList)
+    {
+      AppMethodBeat.i(92528);
+      Iterator localIterator = v.this.aTC.iterator();
+      while (localIterator.hasNext()) {
+        ((j.a)localIterator.next()).s(paramList);
+      }
+      AppMethodBeat.o(92528);
+    }
+    
     public final void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
     
     public final void surfaceCreated(SurfaceHolder paramSurfaceHolder)
@@ -593,16 +520,6 @@ public final class v
       AppMethodBeat.i(92531);
       v.a(v.this, null, false);
       AppMethodBeat.o(92531);
-    }
-    
-    public final void t(List<a> paramList)
-    {
-      AppMethodBeat.i(92528);
-      Iterator localIterator = v.this.aSJ.iterator();
-      while (localIterator.hasNext()) {
-        ((j.a)localIterator.next()).t(paramList);
-      }
-      AppMethodBeat.o(92528);
     }
   }
 }

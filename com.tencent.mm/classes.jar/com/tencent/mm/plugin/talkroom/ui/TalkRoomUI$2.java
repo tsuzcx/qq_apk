@@ -13,13 +13,13 @@ final class TalkRoomUI$2
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(29591);
-    this.yKp.dismiss();
+    this.zXC.dismiss();
     AppMethodBeat.o(29591);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI.2
  * JD-Core Version:    0.7.0.1
  */

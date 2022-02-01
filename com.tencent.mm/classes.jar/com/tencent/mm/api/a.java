@@ -3,18 +3,18 @@ package com.tencent.mm.api;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.plugin.image.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
 {
-  public static String dH(String paramString)
+  public static String dw(String paramString)
   {
     AppMethodBeat.i(116343);
     String str = paramString;
-    if (bt.isNullOrNil(paramString)) {
+    if (bs.isNullOrNil(paramString)) {
       str = "tempConv";
     }
-    paramString = new StringBuilder(d.apX());
+    paramString = new StringBuilder(d.awM());
     paramString.append(g.getMessageDigest(str.getBytes())).append("/");
     paramString.append("conv/");
     paramString = paramString.toString();
@@ -24,7 +24,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.api.a
  * JD-Core Version:    0.7.0.1
  */

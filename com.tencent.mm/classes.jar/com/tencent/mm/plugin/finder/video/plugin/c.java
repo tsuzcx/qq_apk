@@ -16,51 +16,51 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/plugin/FinderSubRecordDeletePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "dialog", "Lcom/tencent/mm/ui/widget/dialog/MMAlertDialog;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setView", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "onBackPress", "", "onClick", "", "v", "Landroid/view/View;", "setVisibility", "visibility", "", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/plugin/FinderSubRecordDeletePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "dialog", "Lcom/tencent/mm/ui/widget/dialog/MMAlertDialog;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setView", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "onBackPress", "", "onClick", "", "v", "Landroid/view/View;", "setVisibility", "visibility", "", "plugin-finder_release"})
 public final class c
   implements View.OnClickListener, t
 {
   private final Context context;
-  private final com.tencent.mm.ui.widget.a.d iAV;
-  com.tencent.mm.plugin.recordvideo.plugin.parent.d vjo;
-  private WeImageView vkX;
+  private final com.tencent.mm.ui.widget.a.d jaW;
+  com.tencent.mm.plugin.recordvideo.plugin.parent.d rTT;
+  private WeImageView rTZ;
   
   public c(WeImageView paramWeImageView, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd)
   {
-    AppMethodBeat.i(199908);
-    this.vkX = paramWeImageView;
-    this.vjo = paramd;
-    this.context = this.vkX.getContext();
-    this.iAV = new d.a(this.context).aay(2131765438).aaB(2131755939).aaC(2131755831).c((DialogInterface.OnClickListener)new a(this)).b((DialogInterface.OnClickListener)new b(this)).fft();
-    this.vkX.setOnClickListener((View.OnClickListener)this);
-    this.iAV.setOnDismissListener((DialogInterface.OnDismissListener)new DialogInterface.OnDismissListener()
+    AppMethodBeat.i(203976);
+    this.rTZ = paramWeImageView;
+    this.rTT = paramd;
+    this.context = this.rTZ.getContext();
+    this.jaW = new d.a(this.context).acJ(2131766237).acM(2131755939).acN(2131755831).c((DialogInterface.OnClickListener)new a(this)).b((DialogInterface.OnClickListener)new b(this)).fvp();
+    this.rTZ.setOnClickListener((View.OnClickListener)this);
+    this.jaW.setOnDismissListener((DialogInterface.OnDismissListener)new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(199902);
-        d.b.a(this.Ldk.vjo, d.c.Loq);
-        AppMethodBeat.o(199902);
+        AppMethodBeat.i(203970);
+        d.b.a(this.rUa.rTT, d.c.wvX);
+        AppMethodBeat.o(203970);
       }
     });
-    AppMethodBeat.o(199908);
+    AppMethodBeat.o(203976);
   }
   
-  public final void apt() {}
-  
-  public final boolean dia()
+  public final boolean alO()
   {
-    AppMethodBeat.i(199907);
-    com.tencent.mm.ui.widget.a.d locald = this.iAV;
+    AppMethodBeat.i(203975);
+    com.tencent.mm.ui.widget.a.d locald = this.jaW;
     k.g(locald, "dialog");
     if (locald.isShowing())
     {
-      this.iAV.dismiss();
-      AppMethodBeat.o(199907);
+      this.jaW.dismiss();
+      AppMethodBeat.o(203975);
       return true;
     }
-    AppMethodBeat.o(199907);
+    AppMethodBeat.o(203975);
     return false;
   }
+  
+  public final void awk() {}
   
   public final String name()
   {
@@ -71,10 +71,10 @@ public final class c
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(199905);
-    d.b.a(this.vjo, d.c.Lop);
-    this.iAV.show();
-    AppMethodBeat.o(199905);
+    AppMethodBeat.i(203973);
+    d.b.a(this.rTT, d.c.wvW);
+    this.jaW.show();
+    AppMethodBeat.o(203973);
   }
   
   public final void onDetach() {}
@@ -89,12 +89,12 @@ public final class c
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(199906);
-    this.vkX.setVisibility(paramInt);
-    AppMethodBeat.o(199906);
+    AppMethodBeat.i(203974);
+    this.rTZ.setVisibility(paramInt);
+    AppMethodBeat.o(203974);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
   static final class a
     implements DialogInterface.OnClickListener
   {
@@ -102,14 +102,14 @@ public final class c
     
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
-      AppMethodBeat.i(199903);
+      AppMethodBeat.i(203971);
       paramDialogInterface.dismiss();
-      d.b.a(this.Ldk.vjo, d.c.Loq);
-      AppMethodBeat.o(199903);
+      d.b.a(this.rUa.rTT, d.c.wvX);
+      AppMethodBeat.o(203971);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
   static final class b
     implements DialogInterface.OnClickListener
   {
@@ -117,15 +117,15 @@ public final class c
     
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
-      AppMethodBeat.i(199904);
-      d.b.a(this.Ldk.vjo, d.c.Lor);
-      AppMethodBeat.o(199904);
+      AppMethodBeat.i(203972);
+      d.b.a(this.rUa.rTT, d.c.wvY);
+      AppMethodBeat.o(203972);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.plugin.c
  * JD-Core Version:    0.7.0.1
  */

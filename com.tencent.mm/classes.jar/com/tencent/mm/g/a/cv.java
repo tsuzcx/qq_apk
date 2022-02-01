@@ -12,7 +12,7 @@ public final class cv
   
   private cv(byte paramByte)
   {
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
   }
 }

@@ -22,10 +22,27 @@ import java.lang.reflect.Method;
 
 public final class q
 {
-  private static Field Tp;
-  private static boolean Tq;
-  private static Field Tr;
-  private static boolean Ts;
+  private static Field Uk;
+  private static boolean Ul;
+  private static Field Um;
+  private static boolean Un;
+  
+  private static Field B(String paramString)
+  {
+    Object localObject = null;
+    try
+    {
+      Field localField = TextView.class.getDeclaredField(paramString);
+      localObject = localField;
+      localField.setAccessible(true);
+      return localField;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      new StringBuilder("Could not retrieve ").append(paramString).append(" field.");
+    }
+    return localObject;
+  }
   
   private static int a(Field paramField, TextView paramTextView)
   {
@@ -92,14 +109,14 @@ public final class q
   {
     if (Build.VERSION.SDK_INT >= 28)
     {
-      if ((paramc.Lj instanceof PrecomputedText)) {}
-      for (paramc = (PrecomputedText)paramc.Lj;; paramc = null)
+      if ((paramc.Me instanceof PrecomputedText)) {}
+      for (paramc = (PrecomputedText)paramc.Me;; paramc = null)
       {
         paramTextView.setText(paramc);
         return;
       }
     }
-    if (!d(paramTextView).equals(paramc.Lk)) {
+    if (!d(paramTextView).equals(paramc.Mf)) {
       throw new IllegalArgumentException("Given text can not be applied to TextView.");
     }
     paramTextView.setText(paramc);
@@ -110,20 +127,20 @@ public final class q
     if (Build.VERSION.SDK_INT >= 16) {
       return paramTextView.getMaxLines();
     }
-    if (!Ts)
+    if (!Un)
     {
-      Tr = z("mMaxMode");
-      Ts = true;
+      Um = B("mMaxMode");
+      Un = true;
     }
-    if ((Tr != null) && (a(Tr, paramTextView) == 1))
+    if ((Um != null) && (a(Um, paramTextView) == 1))
     {
-      if (!Tq)
+      if (!Ul)
       {
-        Tp = z("mMaximum");
-        Tq = true;
+        Uk = B("mMaximum");
+        Ul = true;
       }
-      if (Tp != null) {
-        return a(Tp, paramTextView);
+      if (Uk != null) {
+        return a(Uk, paramTextView);
       }
     }
     return -1;
@@ -164,8 +181,8 @@ public final class q
     c.a.a locala = new c.a.a(new TextPaint(paramTextView.getPaint()));
     if (Build.VERSION.SDK_INT >= 23)
     {
-      locala.Lo = paramTextView.getBreakStrategy();
-      locala.Lp = paramTextView.getHyphenationFrequency();
+      locala.Mj = paramTextView.getBreakStrategy();
+      locala.Mk = paramTextView.getHyphenationFrequency();
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
@@ -178,8 +195,8 @@ public final class q
     for (;;)
     {
       label87:
-      locala.Ln = paramTextView;
-      return new c.a(locala.Lm, locala.Ln, locala.Lo, locala.Lp);
+      locala.Mi = paramTextView;
+      return new c.a(locala.Mh, locala.Mi, locala.Mj, locala.Mk);
       label116:
       if ((Build.VERSION.SDK_INT >= 28) && ((paramTextView.getInputType() & 0xF) == 3))
       {
@@ -274,58 +291,41 @@ public final class q
     }
   }
   
-  private static Field z(String paramString)
-  {
-    Object localObject = null;
-    try
-    {
-      Field localField = TextView.class.getDeclaredField(paramString);
-      localObject = localField;
-      localField.setAccessible(true);
-      return localField;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      new StringBuilder("Could not retrieve ").append(paramString).append(" field.");
-    }
-    return localObject;
-  }
-  
   static final class a
     implements ActionMode.Callback
   {
-    private final ActionMode.Callback Tt;
-    private final TextView Tu;
-    private Class Tv;
-    private Method Tw;
-    private boolean Tx;
-    private boolean Ty;
+    private final ActionMode.Callback Uo;
+    private final TextView Up;
+    private Class Uq;
+    private Method Ur;
+    private boolean Us;
+    private boolean Ut;
     
     a(ActionMode.Callback paramCallback, TextView paramTextView)
     {
-      this.Tt = paramCallback;
-      this.Tu = paramTextView;
-      this.Ty = false;
+      this.Uo = paramCallback;
+      this.Up = paramTextView;
+      this.Ut = false;
     }
     
-    private static Intent fG()
+    private static Intent fO()
     {
       return new Intent().setAction("android.intent.action.PROCESS_TEXT").setType("text/plain");
     }
     
     public final boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
     {
-      return this.Tt.onActionItemClicked(paramActionMode, paramMenuItem);
+      return this.Uo.onActionItemClicked(paramActionMode, paramMenuItem);
     }
     
     public final boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
     {
-      return this.Tt.onCreateActionMode(paramActionMode, paramMenu);
+      return this.Uo.onCreateActionMode(paramActionMode, paramMenu);
     }
     
     public final void onDestroyActionMode(ActionMode paramActionMode)
     {
-      this.Tt.onDestroyActionMode(paramActionMode);
+      this.Uo.onDestroyActionMode(paramActionMode);
     }
     
     /* Error */
@@ -333,25 +333,25 @@ public final class q
     {
       // Byte code:
       //   0: aload_0
-      //   1: getfield 29	android/support/v4/widget/q$a:Tu	Landroid/widget/TextView;
+      //   1: getfield 29	android/support/v4/widget/q$a:Up	Landroid/widget/TextView;
       //   4: invokevirtual 75	android/widget/TextView:getContext	()Landroid/content/Context;
       //   7: astore 8
       //   9: aload 8
       //   11: invokevirtual 81	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
       //   14: astore 7
       //   16: aload_0
-      //   17: getfield 31	android/support/v4/widget/q$a:Ty	Z
+      //   17: getfield 31	android/support/v4/widget/q$a:Ut	Z
       //   20: ifne +45 -> 65
       //   23: aload_0
       //   24: iconst_1
-      //   25: putfield 31	android/support/v4/widget/q$a:Ty	Z
+      //   25: putfield 31	android/support/v4/widget/q$a:Ut	Z
       //   28: aload_0
       //   29: ldc 83
       //   31: invokestatic 89	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-      //   34: putfield 91	android/support/v4/widget/q$a:Tv	Ljava/lang/Class;
+      //   34: putfield 91	android/support/v4/widget/q$a:Uq	Ljava/lang/Class;
       //   37: aload_0
       //   38: aload_0
-      //   39: getfield 91	android/support/v4/widget/q$a:Tv	Ljava/lang/Class;
+      //   39: getfield 91	android/support/v4/widget/q$a:Uq	Ljava/lang/Class;
       //   42: ldc 93
       //   44: iconst_1
       //   45: anewarray 85	java/lang/Class
@@ -360,20 +360,20 @@ public final class q
       //   50: getstatic 98	java/lang/Integer:TYPE	Ljava/lang/Class;
       //   53: aastore
       //   54: invokevirtual 102	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-      //   57: putfield 104	android/support/v4/widget/q$a:Tw	Ljava/lang/reflect/Method;
+      //   57: putfield 104	android/support/v4/widget/q$a:Ur	Ljava/lang/reflect/Method;
       //   60: aload_0
       //   61: iconst_1
-      //   62: putfield 106	android/support/v4/widget/q$a:Tx	Z
+      //   62: putfield 106	android/support/v4/widget/q$a:Us	Z
       //   65: aload_0
-      //   66: getfield 106	android/support/v4/widget/q$a:Tx	Z
+      //   66: getfield 106	android/support/v4/widget/q$a:Us	Z
       //   69: ifeq +115 -> 184
       //   72: aload_0
-      //   73: getfield 91	android/support/v4/widget/q$a:Tv	Ljava/lang/Class;
+      //   73: getfield 91	android/support/v4/widget/q$a:Uq	Ljava/lang/Class;
       //   76: aload_2
       //   77: invokevirtual 110	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
       //   80: ifeq +104 -> 184
       //   83: aload_0
-      //   84: getfield 104	android/support/v4/widget/q$a:Tw	Ljava/lang/reflect/Method;
+      //   84: getfield 104	android/support/v4/widget/q$a:Ur	Ljava/lang/reflect/Method;
       //   87: astore 6
       //   89: aload_2
       //   90: invokeinterface 116 1 0
@@ -414,13 +414,13 @@ public final class q
       //   164: astore 6
       //   166: aload_0
       //   167: aconst_null
-      //   168: putfield 91	android/support/v4/widget/q$a:Tv	Ljava/lang/Class;
+      //   168: putfield 91	android/support/v4/widget/q$a:Uq	Ljava/lang/Class;
       //   171: aload_0
       //   172: aconst_null
-      //   173: putfield 104	android/support/v4/widget/q$a:Tw	Ljava/lang/reflect/Method;
+      //   173: putfield 104	android/support/v4/widget/q$a:Ur	Ljava/lang/reflect/Method;
       //   176: aload_0
       //   177: iconst_0
-      //   178: putfield 106	android/support/v4/widget/q$a:Tx	Z
+      //   178: putfield 106	android/support/v4/widget/q$a:Us	Z
       //   181: goto -116 -> 65
       //   184: aload_2
       //   185: invokevirtual 148	java/lang/Object:getClass	()Ljava/lang/Class;
@@ -442,7 +442,7 @@ public final class q
       //   219: instanceof 153
       //   222: ifeq +127 -> 349
       //   225: aload 7
-      //   227: invokestatic 155	android/support/v4/widget/q$a:fG	()Landroid/content/Intent;
+      //   227: invokestatic 155	android/support/v4/widget/q$a:fO	()Landroid/content/Intent;
       //   230: iconst_0
       //   231: invokevirtual 161	android/content/pm/PackageManager:queryIntentActivities	(Landroid/content/Intent;I)Ljava/util/List;
       //   234: invokeinterface 167 1 0
@@ -513,9 +513,9 @@ public final class q
       //   389: invokeinterface 217 5 0
       //   394: astore 9
       //   396: aload_0
-      //   397: getfield 29	android/support/v4/widget/q$a:Tu	Landroid/widget/TextView;
+      //   397: getfield 29	android/support/v4/widget/q$a:Up	Landroid/widget/TextView;
       //   400: astore 10
-      //   402: invokestatic 155	android/support/v4/widget/q$a:fG	()Landroid/content/Intent;
+      //   402: invokestatic 155	android/support/v4/widget/q$a:fO	()Landroid/content/Intent;
       //   405: astore 11
       //   407: aload 10
       //   409: instanceof 219
@@ -560,7 +560,7 @@ public final class q
       //   499: goto -57 -> 442
       //   502: astore 6
       //   504: aload_0
-      //   505: getfield 27	android/support/v4/widget/q$a:Tt	Landroid/view/ActionMode$Callback;
+      //   505: getfield 27	android/support/v4/widget/q$a:Uo	Landroid/view/ActionMode$Callback;
       //   508: aload_1
       //   509: aload_2
       //   510: invokeinterface 248 3 0

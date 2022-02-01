@@ -8,32 +8,13 @@ public abstract class bd
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elJ;
-  private static final int emf = "updateTime".hashCode();
-  private static final int emn;
-  private static final int exb = "id".hashCode();
-  private static final int exc = "cacheKey".hashCode();
-  private static final int exd;
+  private static final int ezt = "bakLogId".hashCode();
+  private static final int ezu = "valueStr".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean els = true;
-  private boolean emc = true;
-  private boolean emj = true;
-  private boolean ewY = true;
-  private boolean ewZ = true;
-  private boolean exa = true;
-  public String field_appId;
-  public String field_cacheKey;
-  public String field_data;
-  public String field_id;
-  public int field_interval;
-  public long field_updateTime;
-  
-  static
-  {
-    elJ = "appId".hashCode();
-    emn = "data".hashCode();
-    exd = "interval".hashCode();
-  }
+  private boolean ezr;
+  private boolean ezs;
+  public int field_bakLogId;
+  public String field_valueStr;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -48,10 +29,10 @@ public abstract class bd
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (exb != k) {
+      if (ezt != k) {
         break label60;
       }
-      this.field_id = paramCursor.getString(i);
+      this.field_bakLogId = paramCursor.getInt(i);
     }
     for (;;)
     {
@@ -59,16 +40,8 @@ public abstract class bd
       break label20;
       break;
       label60:
-      if (exc == k) {
-        this.field_cacheKey = paramCursor.getString(i);
-      } else if (elJ == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (emn == k) {
-        this.field_data = paramCursor.getString(i);
-      } else if (exd == k) {
-        this.field_interval = paramCursor.getInt(i);
-      } else if (emf == k) {
-        this.field_updateTime = paramCursor.getLong(i);
+      if (ezu == k) {
+        this.field_valueStr = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -78,23 +51,11 @@ public abstract class bd
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ewY) {
-      localContentValues.put("id", this.field_id);
+    if (this.ezr) {
+      localContentValues.put("bakLogId", Integer.valueOf(this.field_bakLogId));
     }
-    if (this.ewZ) {
-      localContentValues.put("cacheKey", this.field_cacheKey);
-    }
-    if (this.els) {
-      localContentValues.put("appId", this.field_appId);
-    }
-    if (this.emj) {
-      localContentValues.put("data", this.field_data);
-    }
-    if (this.exa) {
-      localContentValues.put("interval", Integer.valueOf(this.field_interval));
-    }
-    if (this.emc) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.ezs) {
+      localContentValues.put("valueStr", this.field_valueStr);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

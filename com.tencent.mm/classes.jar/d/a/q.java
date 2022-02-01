@@ -11,17 +11,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.RandomAccess;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"addAll", "", "T", "", "elements", "", "(Ljava/util/Collection;[Ljava/lang/Object;)Z", "", "Lkotlin/sequences/Sequence;", "filterInPlace", "", "predicate", "Lkotlin/Function1;", "predicateResultToRemove", "filterInPlace$CollectionsKt__MutableCollectionsKt", "", "minusAssign", "", "element", "(Ljava/util/Collection;Ljava/lang/Object;)V", "(Ljava/util/Collection;[Ljava/lang/Object;)V", "plusAssign", "remove", "Lkotlin/internal/OnlyInputTypes;", "(Ljava/util/Collection;Ljava/lang/Object;)Z", "index", "", "(Ljava/util/List;I)Ljava/lang/Object;", "removeAll", "", "removeFirst", "(Ljava/util/List;)Ljava/lang/Object;", "removeFirstOrNull", "removeLast", "removeLastOrNull", "retainAll", "retainNothing", "retainNothing$CollectionsKt__MutableCollectionsKt", "shuffle", "random", "Lkotlin/random/Random;", "shuffled", "", "kotlin-stdlib"}, fvw=1)
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"addAll", "", "T", "", "elements", "", "(Ljava/util/Collection;[Ljava/lang/Object;)Z", "", "Lkotlin/sequences/Sequence;", "filterInPlace", "", "predicate", "Lkotlin/Function1;", "predicateResultToRemove", "filterInPlace$CollectionsKt__MutableCollectionsKt", "", "minusAssign", "", "element", "(Ljava/util/Collection;Ljava/lang/Object;)V", "(Ljava/util/Collection;[Ljava/lang/Object;)V", "plusAssign", "remove", "Lkotlin/internal/OnlyInputTypes;", "(Ljava/util/Collection;Ljava/lang/Object;)Z", "index", "", "(Ljava/util/List;I)Ljava/lang/Object;", "removeAll", "", "removeFirst", "(Ljava/util/List;)Ljava/lang/Object;", "removeFirstOrNull", "removeLast", "removeLastOrNull", "retainAll", "retainNothing", "retainNothing$CollectionsKt__MutableCollectionsKt", "shuffle", "random", "Lkotlin/random/Random;", "shuffled", "", "kotlin-stdlib"}, fOb=1)
 public class q
   extends p
 {
   public static final <T> boolean a(Iterable<? extends T> paramIterable, b<? super T, Boolean> paramb)
   {
-    AppMethodBeat.i(186828);
+    AppMethodBeat.i(186151);
     k.h(paramIterable, "$this$removeAll");
     k.h(paramb, "predicate");
     boolean bool = a(paramIterable, paramb, true);
-    AppMethodBeat.o(186828);
+    AppMethodBeat.o(186151);
     return bool;
   }
   
@@ -32,7 +32,7 @@ public class q
     boolean bool = false;
     if (paramIterable.hasNext())
     {
-      if (((Boolean)paramb.aA(paramIterable.next())).booleanValue() != paramBoolean) {
+      if (((Boolean)paramb.ay(paramIterable.next())).booleanValue() != paramBoolean) {
         break label63;
       }
       paramIterable.remove();
@@ -79,16 +79,6 @@ public class q
     return bool;
   }
   
-  public static final <T> boolean addAll(Collection<? super T> paramCollection, T[] paramArrayOfT)
-  {
-    AppMethodBeat.i(168694);
-    k.h(paramCollection, "$this$addAll");
-    k.h(paramArrayOfT, "elements");
-    boolean bool = paramCollection.addAll((Collection)e.asList(paramArrayOfT));
-    AppMethodBeat.o(168694);
-    return bool;
-  }
-  
   public static final <T> boolean b(Iterable<? extends T> paramIterable, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(129120);
@@ -110,11 +100,11 @@ public class q
         AppMethodBeat.o(129123);
         throw paramList;
       }
-      boolean bool = a(aa.eJ(paramList), paramb, true);
+      boolean bool = a(aa.eM(paramList), paramb, true);
       AppMethodBeat.o(129123);
       return bool;
     }
-    int m = j.iw(paramList);
+    int m = j.iM(paramList);
     int i;
     if (m >= 0)
     {
@@ -123,7 +113,7 @@ public class q
       {
         Object localObject = paramList.get(k);
         i = j;
-        if (((Boolean)paramb.aA(localObject)).booleanValue() != true)
+        if (((Boolean)paramb.ay(localObject)).booleanValue() != true)
         {
           if (j != k) {
             paramList.set(j, localObject);
@@ -140,7 +130,7 @@ public class q
     int j = 0;
     if (j < paramList.size())
     {
-      i = j.iw(paramList);
+      i = j.iM(paramList);
       if (i >= j) {
         for (;;)
         {

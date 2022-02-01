@@ -4,25 +4,25 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.a.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
 import java.util.ArrayList;
 import java.util.List;
 
 public class bh
 {
-  private static bh gNF;
-  public b gNE;
+  private static bh hof;
+  public b hoe;
   
-  public static bh asb()
+  public static bh ayS()
   {
     AppMethodBeat.i(20376);
     try
     {
-      if (gNF == null) {
-        gNF = new bh();
+      if (hof == null) {
+        hof = new bh();
       }
-      bh localbh = gNF;
+      bh localbh = hof;
       AppMethodBeat.o(20376);
       return localbh;
     }
@@ -32,11 +32,11 @@ public class bh
     }
   }
   
-  public static bg asc()
+  public static bg ayT()
   {
     AppMethodBeat.i(20378);
-    az.arV();
-    Object localObject = c.qR("banner");
+    az.ayM();
+    Object localObject = c.ug("banner");
     if (localObject == null)
     {
       AppMethodBeat.o(20378);
@@ -67,29 +67,29 @@ public class bh
             localObject = new bg(i, j, (String)localObject);
             AppMethodBeat.o(20378);
             return localObject;
-            locala = ase();
-          } while ((locala != a.gNI) && (locala != a.gNJ) && (!g.asX().asV()));
-          if (g.asX().asV()) {
-            ad.i("MicorMsg.MainFrameBannerStorage", "has abtest case. ignore bind bind contacts banner.");
+            locala = ayV();
+          } while ((locala != a.hoi) && (locala != a.hoj) && (!g.azO().azM()));
+          if (g.azO().azM()) {
+            ac.i("MicorMsg.MainFrameBannerStorage", "has abtest case. ignore bind bind contacts banner.");
           }
           for (;;)
           {
             AppMethodBeat.o(20378);
             return null;
-            ad.i("MicorMsg.MainFrameBannerStorage", "already Bind the Mobile");
+            ac.i("MicorMsg.MainFrameBannerStorage", "already Bind the Mobile");
           }
-          ad.i("MicorMsg.MainFrameBannerStorage", "avatar already existed");
+          ac.i("MicorMsg.MainFrameBannerStorage", "avatar already existed");
           AppMethodBeat.o(20378);
           return null;
-        } while ((ase() != a.gNI) && (!g.asX().asV()));
-        if (g.asX().asV()) {
-          ad.i("MicorMsg.MainFrameBannerStorage", "has abtest case. ignore bind upload contacts banner.");
+        } while ((ayV() != a.hoi) && (!g.azO().azM()));
+        if (g.azO().azM()) {
+          ac.i("MicorMsg.MainFrameBannerStorage", "has abtest case. ignore bind upload contacts banner.");
         }
         for (;;)
         {
           AppMethodBeat.o(20378);
           return null;
-          ad.i("MicorMsg.MainFrameBannerStorage", "already upload the contacts");
+          ac.i("MicorMsg.MainFrameBannerStorage", "already upload the contacts");
         }
       case 10000: 
       case 57005: 
@@ -103,11 +103,11 @@ public class bh
     return null;
   }
   
-  private static boolean asd()
+  private static boolean ayU()
   {
     AppMethodBeat.i(20380);
-    az.arV();
-    SharedPreferences localSharedPreferences = c.qR("banner");
+    az.ayM();
+    SharedPreferences localSharedPreferences = c.ug("banner");
     if ((localSharedPreferences != null) && (localSharedPreferences.edit().clear().commit()))
     {
       AppMethodBeat.o(20380);
@@ -117,19 +117,19 @@ public class bh
     return false;
   }
   
-  public static a ase()
+  public static a ayV()
   {
     AppMethodBeat.i(20384);
     for (;;)
     {
       try
       {
-        az.arV();
-        localObject2 = (String)c.afk().get(4097, "");
-        az.arV();
-        String str = (String)c.afk().get(6, "");
-        boolean bool = u.arl();
-        ad.d("MicorMsg.MainFrameBannerStorage", "isUpload " + bool + " stat " + u.aqK());
+        az.ayM();
+        localObject2 = (String)c.agA().get(4097, "");
+        az.ayM();
+        String str = (String)c.agA().get(6, "");
+        boolean bool = u.ayb();
+        ac.d("MicorMsg.MainFrameBannerStorage", "isUpload " + bool + " stat " + u.axA());
         if (localObject2 != null)
         {
           Object localObject1 = localObject2;
@@ -144,23 +144,23 @@ public class bh
             }
             if ((localObject1 == null) && (localObject2 == null))
             {
-              localObject1 = a.gNG;
+              localObject1 = a.hog;
               AppMethodBeat.o(20384);
               return localObject1;
             }
             if ((localObject1 != null) && (localObject2 == null))
             {
-              localObject1 = a.gNH;
+              localObject1 = a.hoh;
               AppMethodBeat.o(20384);
               return localObject1;
             }
             if (bool)
             {
-              localObject1 = a.gNI;
+              localObject1 = a.hoi;
               AppMethodBeat.o(20384);
               return localObject1;
             }
-            localObject1 = a.gNJ;
+            localObject1 = a.hoj;
             AppMethodBeat.o(20384);
             return localObject1;
           }
@@ -168,7 +168,7 @@ public class bh
       }
       catch (Exception localException)
       {
-        locala = a.gNG;
+        locala = a.hog;
         AppMethodBeat.o(20384);
         return locala;
       }
@@ -182,16 +182,16 @@ public class bh
   private static boolean b(bg parambg)
   {
     AppMethodBeat.i(20381);
-    boolean bool = ub("HistoryInfo").contains(Integer.valueOf(parambg.type));
+    boolean bool = yh("HistoryInfo").contains(Integer.valueOf(parambg.type));
     AppMethodBeat.o(20381);
     return bool;
   }
   
-  private static boolean f(String paramString, List<Integer> paramList)
+  private static boolean d(String paramString, List<Integer> paramList)
   {
     AppMethodBeat.i(20382);
-    az.arV();
-    Object localObject = c.qR("banner");
+    az.ayM();
+    Object localObject = c.ug("banner");
     if (localObject == null)
     {
       AppMethodBeat.o(20382);
@@ -210,11 +210,11 @@ public class bh
     return bool;
   }
   
-  private static List<Integer> ub(String paramString)
+  private static List<Integer> yh(String paramString)
   {
     AppMethodBeat.i(20383);
-    az.arV();
-    SharedPreferences localSharedPreferences = c.qR("banner");
+    az.ayM();
+    SharedPreferences localSharedPreferences = c.ug("banner");
     if (localSharedPreferences == null)
     {
       AppMethodBeat.o(20383);
@@ -238,9 +238,9 @@ public class bh
     AppMethodBeat.i(20377);
     if (parambg.type == 10000)
     {
-      asd();
-      if (this.gNE != null) {
-        this.gNE.onNotify();
+      ayU();
+      if (this.hoe != null) {
+        this.hoe.onNotify();
       }
       AppMethodBeat.o(20377);
       return true;
@@ -250,31 +250,31 @@ public class bh
       AppMethodBeat.o(20377);
       return false;
     }
-    az.arV();
-    Object localObject = c.qR("banner");
+    az.ayM();
+    Object localObject = c.ug("banner");
     if (localObject == null)
     {
       AppMethodBeat.o(20377);
       return false;
     }
     localObject = ((SharedPreferences)localObject).edit();
-    bg localbg = asc();
+    bg localbg = ayT();
     if (!b(parambg)) {}
     for (;;)
     {
-      if ((localbg != null) && (localbg.dcz == 2))
+      if ((localbg != null) && (localbg.cZX == 2))
       {
-        List localList = ub("HistoryInfo");
+        List localList = yh("HistoryInfo");
         if (!localList.contains(Integer.valueOf(localbg.type))) {
           localList.add(Integer.valueOf(localbg.type));
         }
-        f("HistoryInfo", localList);
+        d("HistoryInfo", localList);
       }
       if (bool) {
-        ((SharedPreferences.Editor)localObject).putInt("CurrentType", parambg.type).putInt("CurrentShowType", parambg.dcz).putString("CurrentData", parambg.data).commit();
+        ((SharedPreferences.Editor)localObject).putInt("CurrentType", parambg.type).putInt("CurrentShowType", parambg.cZX).putString("CurrentData", parambg.data).commit();
       }
-      if (this.gNE != null) {
-        this.gNE.onNotify();
+      if (this.hoe != null) {
+        this.hoe.onNotify();
       }
       AppMethodBeat.o(20377);
       return bool;
@@ -285,8 +285,8 @@ public class bh
   public final void db(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(20379);
-    az.arV();
-    Object localObject = c.qR("banner");
+    az.ayM();
+    Object localObject = c.ug("banner");
     if (localObject == null)
     {
       AppMethodBeat.o(20379);
@@ -298,19 +298,19 @@ public class bh
     }
     for (;;)
     {
-      if (this.gNE != null) {
-        this.gNE.onNotify();
+      if (this.hoe != null) {
+        this.hoe.onNotify();
       }
       AppMethodBeat.o(20379);
       return;
       ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
       continue;
       ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
-      localObject = ub("HistoryInfo");
+      localObject = yh("HistoryInfo");
       if (!((List)localObject).contains(Integer.valueOf(paramInt1))) {
         ((List)localObject).add(Integer.valueOf(paramInt1));
       }
-      f("HistoryInfo", (List)localObject);
+      d("HistoryInfo", (List)localObject);
       continue;
       if (paramInt1 == 3) {
         ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
@@ -323,11 +323,11 @@ public class bh
     static
     {
       AppMethodBeat.i(20375);
-      gNG = new a("NO_INIT", 0);
-      gNH = new a("SET_MOBILE", 1);
-      gNI = new a("SUCC", 2);
-      gNJ = new a("SUCC_UNLOAD", 3);
-      gNK = new a[] { gNG, gNH, gNI, gNJ };
+      hog = new a("NO_INIT", 0);
+      hoh = new a("SET_MOBILE", 1);
+      hoi = new a("SUCC", 2);
+      hoj = new a("SUCC_UNLOAD", 3);
+      hok = new a[] { hog, hoh, hoi, hoj };
       AppMethodBeat.o(20375);
     }
     
@@ -341,7 +341,7 @@ public class bh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.bh
  * JD-Core Version:    0.7.0.1
  */

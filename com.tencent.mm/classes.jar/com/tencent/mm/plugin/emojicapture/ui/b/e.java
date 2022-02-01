@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.emojicapture.ui.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.f.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCapturePreviewRenderer;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureRender;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/IEmojiCapturePreviewRender;", "()V", "TAG", "", "useCpuCrop", "", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "getRecordTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCapturePreviewRenderer;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureRender;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/IEmojiCapturePreviewRender;", "()V", "TAG", "", "useCpuCrop", "", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "getRecordTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "plugin-emojicapture_release"})
 public final class e
   extends h
   implements k
 {
   private final String TAG = "MicroMsg.EmojiCapturePreviewRenderer";
-  private boolean gwB;
+  private boolean gWY;
   
   public e()
   {
     super((byte)0);
   }
   
-  public final com.tencent.mm.media.i.b.a akj()
+  public final com.tencent.mm.media.i.b.a ajF()
   {
     AppMethodBeat.i(853);
-    ad.i(this.TAG, "doInitRenderProc, useCpuCrop:" + this.gwB);
-    if (this.gwB)
+    ac.i(this.TAG, "doInitRenderProc, useCpuCrop:" + this.gWY);
+    if (this.gWY)
     {
-      locala = (com.tencent.mm.media.i.b.a)new f(this.guI, this.guJ, this.guK, this.guL, this.guM, this.scaleType);
+      locala = (com.tencent.mm.media.i.b.a)new f(this.gqZ, this.gra, this.grV, this.grW, this.gVm, this.scaleType);
       AppMethodBeat.o(853);
       return locala;
     }
-    com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new a(this.guI, this.guJ, this.guK, this.guL, this.guM, this.scaleType);
+    com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new a(this.gqZ, this.gra, this.grV, this.grW, this.gVm, this.scaleType);
     AppMethodBeat.o(853);
     return locala;
   }
   
-  public final d fRl()
+  public final d cgb()
   {
-    AppMethodBeat.i(205006);
-    com.tencent.mm.media.i.b.a locala = this.gux;
+    AppMethodBeat.i(195166);
+    com.tencent.mm.media.i.b.a locala = this.gVc;
     Object localObject = locala;
     if (!(locala instanceof k)) {
       localObject = null;
@@ -44,11 +44,11 @@ public final class e
     localObject = (k)localObject;
     if (localObject != null)
     {
-      localObject = ((k)localObject).fRl();
-      AppMethodBeat.o(205006);
+      localObject = ((k)localObject).cgb();
+      AppMethodBeat.o(195166);
       return localObject;
     }
-    AppMethodBeat.o(205006);
+    AppMethodBeat.o(195166);
     return null;
   }
 }

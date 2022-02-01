@@ -7,9 +7,9 @@ public enum k$a
   static
   {
     AppMethodBeat.i(2625);
-    gRz = new a("DECODE_TYPE_DEFAULT", 0);
-    gRA = new a("DECODE_TYPE_ORIGIN", 1);
-    gRB = new a[] { gRz, gRA };
+    hrZ = new a("DECODE_TYPE_DEFAULT", 0);
+    hsa = new a("DECODE_TYPE_ORIGIN", 1);
+    hsb = new a[] { hrZ, hsa };
     AppMethodBeat.o(2625);
   }
   

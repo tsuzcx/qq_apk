@@ -13,33 +13,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MallProductSelectAmountView
   extends LinearLayout
 {
-  private TextView ibG;
-  private ImageView uxT;
-  private ImageView uxU;
-  private int uxV;
-  private int uxW;
-  private int uxX;
-  private int uxY;
-  private a uxZ;
+  private TextView iBN;
+  private ImageView vGM;
+  private ImageView vGN;
+  private int vGO;
+  private int vGP;
+  private int vGQ;
+  private int vGR;
+  private a vGS;
   
   public MallProductSelectAmountView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67003);
-    this.ibG = null;
-    this.uxT = null;
-    this.uxU = null;
-    this.uxV = 2147483647;
-    this.uxW = 1;
-    this.uxX = 1;
-    this.uxY = this.uxX;
-    this.uxZ = null;
+    this.iBN = null;
+    this.vGM = null;
+    this.vGN = null;
+    this.vGO = 2147483647;
+    this.vGP = 1;
+    this.vGQ = 1;
+    this.vGR = this.vGQ;
+    this.vGS = null;
     paramContext = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131495125, this, true);
-    this.ibG = ((TextView)paramContext.findViewById(2131302098));
-    this.uxT = ((ImageView)paramContext.findViewById(2131302097));
-    this.uxU = ((ImageView)paramContext.findViewById(2131302103));
-    this.ibG.setText(this.uxY);
-    this.uxT.setOnClickListener(new View.OnClickListener()
+    this.iBN = ((TextView)paramContext.findViewById(2131302098));
+    this.vGM = ((ImageView)paramContext.findViewById(2131302097));
+    this.vGN = ((ImageView)paramContext.findViewById(2131302103));
+    this.iBN.setText(this.vGR);
+    this.vGM.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -47,7 +47,7 @@ public class MallProductSelectAmountView
         if (MallProductSelectAmountView.a(MallProductSelectAmountView.this) + 1 > MallProductSelectAmountView.b(MallProductSelectAmountView.this))
         {
           if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-            MallProductSelectAmountView.c(MallProductSelectAmountView.this).gD(MallProductSelectAmountView.a(MallProductSelectAmountView.this), MallProductSelectAmountView.d(MallProductSelectAmountView.this));
+            MallProductSelectAmountView.c(MallProductSelectAmountView.this).gK(MallProductSelectAmountView.a(MallProductSelectAmountView.this), MallProductSelectAmountView.d(MallProductSelectAmountView.this));
           }
           AppMethodBeat.o(67001);
           return;
@@ -57,12 +57,12 @@ public class MallProductSelectAmountView
           MallProductSelectAmountView.g(MallProductSelectAmountView.this).setText(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
         }
         if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-          MallProductSelectAmountView.c(MallProductSelectAmountView.this).hM(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
+          MallProductSelectAmountView.c(MallProductSelectAmountView.this).hw(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
         }
         AppMethodBeat.o(67001);
       }
     });
-    this.uxU.setOnClickListener(new View.OnClickListener()
+    this.vGN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -70,7 +70,7 @@ public class MallProductSelectAmountView
         if (MallProductSelectAmountView.a(MallProductSelectAmountView.this) - 1 < MallProductSelectAmountView.h(MallProductSelectAmountView.this))
         {
           if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-            MallProductSelectAmountView.c(MallProductSelectAmountView.this).gD(MallProductSelectAmountView.a(MallProductSelectAmountView.this), 2);
+            MallProductSelectAmountView.c(MallProductSelectAmountView.this).gK(MallProductSelectAmountView.a(MallProductSelectAmountView.this), 2);
           }
           AppMethodBeat.o(67002);
           return;
@@ -81,7 +81,7 @@ public class MallProductSelectAmountView
         }
         MallProductSelectAmountView.f(MallProductSelectAmountView.this);
         if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-          MallProductSelectAmountView.c(MallProductSelectAmountView.this).hM(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
+          MallProductSelectAmountView.c(MallProductSelectAmountView.this).hw(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
         }
         AppMethodBeat.o(67002);
       }
@@ -89,81 +89,81 @@ public class MallProductSelectAmountView
     AppMethodBeat.o(67003);
   }
   
-  private boolean dbL()
+  private boolean dpt()
   {
     AppMethodBeat.i(67005);
-    if (this.uxY > this.uxV)
+    if (this.vGR > this.vGO)
     {
-      this.uxY = this.uxV;
-      if (this.uxZ != null) {
-        this.uxZ.hM(this.uxY);
+      this.vGR = this.vGO;
+      if (this.vGS != null) {
+        this.vGS.hw(this.vGR);
       }
-      if (this.uxZ != null) {
-        this.uxZ.gD(this.uxY, this.uxW);
+      if (this.vGS != null) {
+        this.vGS.gK(this.vGR, this.vGP);
       }
-      this.ibG.setText(this.uxY);
+      this.iBN.setText(this.vGR);
       AppMethodBeat.o(67005);
       return false;
     }
-    if (this.uxY > this.uxX) {
-      this.uxU.setEnabled(true);
+    if (this.vGR > this.vGQ) {
+      this.vGN.setEnabled(true);
     }
     for (;;)
     {
       AppMethodBeat.o(67005);
       return true;
-      if (this.uxY != this.uxX) {
+      if (this.vGR != this.vGQ) {
         break;
       }
-      this.uxU.setEnabled(false);
+      this.vGN.setEnabled(false);
     }
-    this.uxU.setEnabled(false);
-    this.uxY = this.uxX;
-    if (this.uxZ != null) {
-      this.uxZ.hM(this.uxY);
+    this.vGN.setEnabled(false);
+    this.vGR = this.vGQ;
+    if (this.vGS != null) {
+      this.vGS.hw(this.vGR);
     }
-    if (this.uxZ != null) {
-      this.uxZ.gD(this.uxY, 2);
+    if (this.vGS != null) {
+      this.vGS.gK(this.vGR, 2);
     }
-    this.ibG.setText(this.uxY);
+    this.iBN.setText(this.vGR);
     AppMethodBeat.o(67005);
     return false;
   }
   
-  public final void gC(int paramInt1, int paramInt2)
+  public final void gJ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(67008);
     if (paramInt1 > paramInt2) {
-      this.uxW = 3;
+      this.vGP = 3;
     }
-    for (this.uxV = paramInt2;; this.uxV = paramInt1)
+    for (this.vGO = paramInt2;; this.vGO = paramInt1)
     {
-      dbL();
-      if (this.uxZ != null) {
-        this.uxZ.hM(this.uxY);
+      dpt();
+      if (this.vGS != null) {
+        this.vGS.hw(this.vGR);
       }
       AppMethodBeat.o(67008);
       return;
-      this.uxW = 1;
+      this.vGP = 1;
     }
   }
   
   public void setAddEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(67006);
-    this.uxT.setEnabled(paramBoolean);
+    this.vGM.setEnabled(paramBoolean);
     AppMethodBeat.o(67006);
   }
   
   public void setAmount(int paramInt)
   {
     AppMethodBeat.i(67004);
-    this.uxY = paramInt;
-    if (dbL())
+    this.vGR = paramInt;
+    if (dpt())
     {
-      this.ibG.setText(this.uxY);
-      if (this.uxZ != null) {
-        this.uxZ.hM(this.uxY);
+      this.iBN.setText(this.vGR);
+      if (this.vGS != null) {
+        this.vGS.hw(this.vGR);
       }
     }
     AppMethodBeat.o(67004);
@@ -172,28 +172,28 @@ public class MallProductSelectAmountView
   public void setMinAmount(int paramInt)
   {
     AppMethodBeat.i(67009);
-    this.uxX = paramInt;
-    dbL();
+    this.vGQ = paramInt;
+    dpt();
     AppMethodBeat.o(67009);
   }
   
   public void setOnAmountChangeListener(a parama)
   {
-    this.uxZ = parama;
+    this.vGS = parama;
   }
   
   public void setRemoveEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(67007);
-    this.uxU.setEnabled(paramBoolean);
+    this.vGN.setEnabled(paramBoolean);
     AppMethodBeat.o(67007);
   }
   
   public static abstract interface a
   {
-    public abstract void gD(int paramInt1, int paramInt2);
+    public abstract void gK(int paramInt1, int paramInt2);
     
-    public abstract void hM(int paramInt);
+    public abstract void hw(int paramInt);
   }
 }
 

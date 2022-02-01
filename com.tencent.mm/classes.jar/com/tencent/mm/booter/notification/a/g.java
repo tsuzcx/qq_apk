@@ -5,35 +5,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public b flN;
-  public c flO;
-  public d flP;
-  public h flQ;
-  private f flR;
-  public a flS;
-  public int flT;
-  public int flU;
-  public int flV;
-  public int flW;
-  public boolean flX;
-  private int flY;
-  private int flZ;
-  public boolean fma;
-  public boolean fmb;
+  public b fph;
+  public c fpi;
+  public d fpj;
+  public h fpk;
+  private f fpl;
+  public a fpm;
+  public int fpn;
+  public int fpo;
+  public int fpp;
+  public int fpq;
+  public boolean fpr;
+  private int fpt;
+  private int fpu;
+  public boolean fpv;
+  public boolean fpw;
   public Context mContext;
   
   public g(Context paramContext)
   {
     AppMethodBeat.i(20067);
-    this.flY = -1;
-    this.flZ = -1;
+    this.fpt = -1;
+    this.fpu = -1;
     this.mContext = paramContext;
-    this.flN = new b();
-    this.flO = new c();
-    this.flP = new d();
-    this.flQ = new h();
-    this.flS = new a();
-    this.flR = f.a.Un();
+    this.fph = new b();
+    this.fpi = new c();
+    this.fpj = new d();
+    this.fpk = new h();
+    this.fpm = new a();
+    this.fpl = f.a.Vi();
     AppMethodBeat.o(20067);
   }
   
@@ -64,16 +64,16 @@ public final class g
     return paramArrayOfLong;
   }
   
-  public final void oB(String paramString)
+  public final void rH(String paramString)
   {
     AppMethodBeat.i(20068);
-    this.flR.oA(paramString);
+    this.fpl.rG(paramString);
     AppMethodBeat.o(20068);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.g
  * JD-Core Version:    0.7.0.1
  */

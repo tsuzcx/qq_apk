@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.wallet_core.c;
 
 public final class ak
 {
-  public String gIw;
-  public String zWU;
-  public String zWV;
-  public int zWW;
+  public String Bpo;
+  public String Bpp;
+  public int Bpq;
+  public String hiX;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.ak
  * JD-Core Version:    0.7.0.1
  */

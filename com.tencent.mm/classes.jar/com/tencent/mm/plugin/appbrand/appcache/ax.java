@@ -7,7 +7,7 @@ import android.os.StatFs;
 import android.os.SystemClock;
 import com.tencent.mars.cdn.CdnLogic.CronetTaskResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.f;
+import com.tencent.mm.an.f;
 import com.tencent.mm.compatible.deviceinfo.ab;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
@@ -21,11 +21,9 @@ import com.tencent.mm.pluginsdk.h.a.c.f.d;
 import com.tencent.mm.pluginsdk.h.a.c.j;
 import com.tencent.mm.pluginsdk.h.a.c.n;
 import com.tencent.mm.pluginsdk.h.a.c.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.q;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -37,25 +35,25 @@ import javax.net.ssl.SSLException;
 
 public final class ax
 {
-  final b iNG;
+  final b jnO;
   
   ax()
   {
     AppMethodBeat.i(90618);
-    this.iNG = new b();
+    this.jnO = new b();
     AppMethodBeat.o(90618);
   }
   
-  public static String aQj()
+  public static String aXb()
   {
     AppMethodBeat.i(90619);
-    String str2 = com.tencent.mm.kernel.g.afB().cachePath;
+    String str2 = com.tencent.mm.kernel.g.agR().cachePath;
     String str1 = str2;
     if (!str2.endsWith("/")) {
       str1 = str2 + "/";
     }
     str1 = str1 + "appbrand/pkg/";
-    com.tencent.mm.sdk.platformtools.l.aAk(str1);
+    com.tencent.mm.sdk.platformtools.l.aFC(str1);
     AppMethodBeat.o(90619);
     return str1;
   }
@@ -63,52 +61,52 @@ public final class ax
   public final int b(com.tencent.mm.plugin.appbrand.appcache.a.a parama)
   {
     AppMethodBeat.i(90620);
-    if (this.iNG.aBn(parama.BRL))
+    if (this.jnO.aGF(parama.Dkb))
     {
-      ad.i("MicroMsg.AppBrandWxaPkgDownloadPerformer", "addRequestIfNotRunning, urlKey %s already in queue", new Object[] { parama.BRL });
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.AppBrandWxaPkgDownloadPerformer", "addRequestIfNotRunning, urlKey %s already in queue", new Object[] { parama.Dkb });
       AppMethodBeat.o(90620);
       return 0;
     }
-    int i = this.iNG.b(parama);
-    ad.i("MicroMsg.AppBrandWxaPkgDownloadPerformer", "addRequestIfNotRunning, urlKey %s, addResult %d", new Object[] { parama.BRL, Integer.valueOf(i) });
+    int i = this.jnO.b(parama);
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.AppBrandWxaPkgDownloadPerformer", "addRequestIfNotRunning, urlKey %s, addResult %d", new Object[] { parama.Dkb, Integer.valueOf(i) });
     AppMethodBeat.o(90620);
     return i;
   }
   
   static final class a
   {
-    private static final AtomicInteger iNH;
+    private static final AtomicInteger jnP;
     
     static
     {
-      AppMethodBeat.i(192858);
-      iNH = new AtomicInteger(0);
-      AppMethodBeat.o(192858);
+      AppMethodBeat.i(206848);
+      jnP = new AtomicInteger(0);
+      AppMethodBeat.o(206848);
     }
     
     public final com.tencent.mm.pluginsdk.h.a.c.m a(ax.c paramc)
     {
       AppMethodBeat.i(90595);
-      String str1 = paramc.ewl();
-      ad.i("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "downloadUsingCDN, url %s", new Object[] { paramc.getURL() });
+      String str1 = paramc.eLF();
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "downloadUsingCDN, url %s", new Object[] { paramc.getURL() });
       for (;;)
       {
         try
         {
           localCountDownLatch = new CountDownLatch(1);
-          locali = new com.tencent.mm.plugin.appbrand.aa.i();
-          locala = paramc.aQk();
-          final String str2 = locala.BRL;
-          localObject = paramc.iNU;
-          if (paramc.aQk().iPr)
+          locali = new com.tencent.mm.plugin.appbrand.z.i();
+          locala = paramc.aXc();
+          final String str2 = locala.Dkb;
+          localObject = paramc.joc;
+          if (paramc.aXc().jpB)
           {
-            localObject = new av(p.adC().getLooper(), new av.a()
+            localObject = new com.tencent.mm.sdk.platformtools.au(p.aeS().getLooper(), new au.a()
             {
               public final boolean onTimerExpired()
               {
                 AppMethodBeat.i(90593);
-                f.awL().xL(str2);
-                this.iNJ.aPj();
+                f.aDD().BR(str2);
+                this.jnR.aWb();
                 com.tencent.mm.vfs.i.deleteFile(locala.getFilePath());
                 locali.value = null;
                 localCountDownLatch.countDown();
@@ -122,8 +120,8 @@ public final class ax
               final void b(com.tencent.mm.pluginsdk.h.a.c.m paramAnonymousm)
               {
                 AppMethodBeat.i(90594);
-                if (this.iNN != null) {
-                  this.iNN.stopTimer();
+                if (this.jnV != null) {
+                  this.jnV.stopTimer();
                 }
                 locali.value = paramAnonymousm;
                 localCountDownLatch.countDown();
@@ -132,47 +130,47 @@ public final class ax
             };
             localg.field_mediaId = str2;
             localg.field_fullpath = locala.getFilePath();
-            localg.fnK = locala.url;
-            localg.dDS = false;
-            localg.fnH = paramc;
-            localg.fnL = ((int)TimeUnit.MILLISECONDS.toSeconds(locala.getConnectTimeout()));
-            localg.fnM = ((int)TimeUnit.MILLISECONDS.toSeconds(locala.getReadTimeout()));
-            localg.field_fileType = com.tencent.mm.i.a.fnj;
+            localg.fre = locala.url;
+            localg.dBE = false;
+            localg.frb = paramc;
+            localg.frf = ((int)TimeUnit.MILLISECONDS.toSeconds(locala.getConnectTimeout()));
+            localg.frg = ((int)TimeUnit.MILLISECONDS.toSeconds(locala.getReadTimeout()));
+            localg.field_fileType = com.tencent.mm.i.a.fqD;
             if (!(locala instanceof l)) {
               continue;
             }
-            localg.fnO = false;
+            localg.fri = false;
             com.tencent.luggage.sdk.g.c.a("WxaDownloadProfile| getHost", new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(161748);
-                Object localObject = Uri.parse(localg.fnK).getHost();
-                if (!bt.isNullOrNil((String)localObject))
+                Object localObject = Uri.parse(localg.fre).getHost();
+                if (!bs.isNullOrNil((String)localObject))
                 {
-                  localObject = y.DW((String)localObject);
-                  localg.fnN = new String[((ArrayList)localObject).size()];
-                  ((ArrayList)localObject).toArray(localg.fnN);
+                  localObject = y.HZ((String)localObject);
+                  localg.frh = new String[((ArrayList)localObject).size()];
+                  ((ArrayList)localObject).toArray(localg.frh);
                 }
                 AppMethodBeat.o(161748);
               }
             });
-            f.awL().b(localg, -1);
+            f.aDD().b(localg, -1);
             if (localObject != null)
             {
               long l = locala.getReadTimeout();
-              ((av)localObject).av(l, l);
+              ((com.tencent.mm.sdk.platformtools.au)localObject).au(l, l);
             }
           }
         }
         catch (Exception paramc)
         {
           final CountDownLatch localCountDownLatch;
-          final com.tencent.mm.plugin.appbrand.aa.i locali;
+          final com.tencent.mm.plugin.appbrand.z.i locali;
           final com.tencent.mm.plugin.appbrand.appcache.a.a locala;
           Object localObject;
           final com.tencent.mm.i.g localg;
-          ad.e("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "cdn https perform urlKey %s exp %s", new Object[] { str1, paramc });
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "cdn https perform urlKey %s exp %s", new Object[] { str1, paramc });
           AppMethodBeat.o(90595);
           return null;
         }
@@ -185,13 +183,13 @@ public final class ax
         }
         catch (Exception paramc)
         {
-          ad.e("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "cdn https perform, urlKey %s semaphore await e = %s", new Object[] { str1, paramc });
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "cdn https perform, urlKey %s semaphore await e = %s", new Object[] { str1, paramc });
           AppMethodBeat.o(90595);
         }
         localObject = null;
         continue;
-        if ((locala.appId.startsWith("wxfe02ecfe70800f46")) && (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pnd, false))) {
-          localg.fnV = true;
+        if ((locala.appId.startsWith("wxfe02ecfe70800f46")) && (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pQD, false))) {
+          localg.frp = true;
         }
       }
       return null;
@@ -200,13 +198,13 @@ public final class ax
     static abstract class a
       implements g.a
     {
-      private final ax.c iNP;
-      private final com.tencent.mm.i.g iNQ;
+      private final ax.c jnX;
+      private final com.tencent.mm.i.g jnY;
       
       a(ax.c paramc, com.tencent.mm.i.g paramg)
       {
-        this.iNP = paramc;
-        this.iNQ = paramg;
+        this.jnX = paramc;
+        this.jnY = paramg;
       }
       
       private static void a(com.tencent.mm.pluginsdk.h.a.c.m paramm, CdnLogic.CronetTaskResult paramCronetTaskResult)
@@ -218,7 +216,7 @@ public final class ax
           if (paramCronetTaskResult.performance != null)
           {
             paramm.bundle.putParcelable("RESPONSE_KEY_CRONET_PERFORMANCE", paramCronetTaskResult.performance);
-            ad.i("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "fill cronet performance profile, urlKey:%s, resp.status:%d, url:%s, performance:%s", new Object[] { paramm.BRL, Integer.valueOf(paramm.status), paramm.url, paramCronetTaskResult.performance });
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "fill cronet performance profile, urlKey:%s, resp.status:%d, url:%s, performance:%s", new Object[] { paramm.Dkb, Integer.valueOf(paramm.status), paramm.url, paramCronetTaskResult.performance });
           }
         }
       }
@@ -227,23 +225,23 @@ public final class ax
       {
         if (paramInt != 0)
         {
-          b(new com.tencent.mm.pluginsdk.h.a.c.m(this.iNP, new SSLException(String.format(Locale.US, "CdnHttpsAddTaskFailed$%s$%d", new Object[] { this.iNP.ewl(), Integer.valueOf(paramInt) })), 3));
-          ad.e("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "urlKey %s, startRet %d", new Object[] { this.iNP.ewl(), Integer.valueOf(paramInt) });
+          b(new com.tencent.mm.pluginsdk.h.a.c.m(this.jnX, new SSLException(String.format(Locale.US, "CdnHttpsAddTaskFailed$%s$%d", new Object[] { this.jnX.eLF(), Integer.valueOf(paramInt) })), 3));
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "urlKey %s, startRet %d", new Object[] { this.jnX.eLF(), Integer.valueOf(paramInt) });
           return 0;
         }
         if (paramc != null)
         {
-          paramString = this.iNP.BTA;
+          paramString = this.jnX.DlQ;
           if (paramString != null)
           {
             paramc = new WxaPkgLoadProgress((int)((float)paramc.field_finishedLength / (float)paramc.field_toltalLength * 100.0F), paramc.field_finishedLength, paramc.field_toltalLength);
-            paramString.a(this.iNP.ewl(), paramc);
+            paramString.a(this.jnX.eLF(), paramc);
           }
           return 0;
         }
         if (paramd != null)
         {
-          paramString = this.iNP.ewl();
+          paramString = this.jnX.eLF();
           paramInt = paramd.field_retCode;
           paramc = paramd.field_httpResponseHeader;
           int i = paramd.field_httpStatusCode;
@@ -251,14 +249,14 @@ public final class ax
             break label319;
           }
           paramBoolean = true;
-          ad.i("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "urlKey %s, retCode %d, responseHeader %s, httpStatusCode %d, useCronet %b", new Object[] { paramString, Integer.valueOf(paramInt), paramc, Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.AppBrand.CdnHttpsDownloadPerformer", "urlKey %s, retCode %d, responseHeader %s, httpStatusCode %d, useCronet %b", new Object[] { paramString, Integer.valueOf(paramInt), paramc, Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
           if ((paramd.field_retCode == 0) && (200 == paramd.field_httpStatusCode)) {
             break label386;
           }
-          if ((paramd.field_fileLength <= 0L) || (this.iNP.mR(paramd.field_fileLength))) {
+          if ((paramd.field_fileLength <= 0L) || (this.jnX.qG(paramd.field_fileLength))) {
             break label325;
           }
-          paramString = new com.tencent.mm.pluginsdk.h.a.c.m(this.iNP, new com.tencent.mm.pluginsdk.h.a.b.a(), paramd.field_httpStatusCode, 3);
+          paramString = new com.tencent.mm.pluginsdk.h.a.c.m(this.jnX, new com.tencent.mm.pluginsdk.h.a.b.a(), paramd.field_httpStatusCode, 3);
           label303:
           a(paramString, paramd.cronetTaskResult);
           b(paramString);
@@ -270,15 +268,15 @@ public final class ax
           paramBoolean = false;
           break;
           label325:
-          paramString = new com.tencent.mm.pluginsdk.h.a.c.m(this.iNP, new SSLException(String.format(Locale.US, "CdnHttpsDownloadFailed$%s$%d", new Object[] { this.iNP.ewl(), Integer.valueOf(paramd.field_retCode) })), paramd.field_httpStatusCode, 3);
+          paramString = new com.tencent.mm.pluginsdk.h.a.c.m(this.jnX, new SSLException(String.format(Locale.US, "CdnHttpsDownloadFailed$%s$%d", new Object[] { this.jnX.eLF(), Integer.valueOf(paramd.field_retCode) })), paramd.field_httpStatusCode, 3);
           break label303;
           label386:
-          paramString = new com.tencent.mm.pluginsdk.h.a.c.m("AppBrandWxaPkgDownloader", this.iNP.ewl(), this.iNQ.fnK, this.iNP.getFilePath(), -1L, null, 2, null);
+          paramString = new com.tencent.mm.pluginsdk.h.a.c.m("AppBrandWxaPkgDownloader", this.jnX.eLF(), this.jnY.fre, this.jnX.getFilePath(), -1L, null, 2, null);
           a(paramString, paramd.cronetTaskResult);
           b(paramString);
-          paramInt = (int)com.tencent.mm.vfs.i.aMN(this.iNP.aQk().getFilePath());
-          if (ar.a.gMX != null) {
-            ar.a.gMX.cZ(paramInt, 0);
+          paramInt = (int)com.tencent.mm.vfs.i.aSp(this.jnX.aXc().getFilePath());
+          if (ar.a.hnx != null) {
+            ar.a.hnx.cZ(paramInt, 0);
           }
         }
       }
@@ -308,7 +306,7 @@ public final class ax
     {
       AppMethodBeat.i(90598);
       paraml = new ax.c((com.tencent.mm.plugin.appbrand.appcache.a.a)paraml);
-      paraml.BTA = this.BTx;
+      paraml.DlQ = this.DlN;
       AppMethodBeat.o(90598);
       return paraml;
     }
@@ -331,7 +329,7 @@ public final class ax
     {
       AppMethodBeat.i(90597);
       super.shutdown();
-      ((ax.d)this.BTx).iNV.quit();
+      ((ax.d)this.DlN).jod.quit();
       AppMethodBeat.o(90597);
     }
   }
@@ -339,14 +337,14 @@ public final class ax
   static final class c
     extends n.a<com.tencent.mm.plugin.appbrand.appcache.a.a>
   {
-    private static final ThreadLocal<ax.a> iNS;
-    private String iNT;
-    final ac.a iNU;
+    private static final ThreadLocal<ax.a> joa;
+    private String job;
+    final ac.a joc;
     
     static
     {
       AppMethodBeat.i(90609);
-      iNS = new ThreadLocal() {};
+      joa = new ThreadLocal() {};
       AppMethodBeat.o(90609);
     }
     
@@ -354,13 +352,13 @@ public final class ax
     {
       super();
       AppMethodBeat.i(90602);
-      this.iNT = null;
+      this.job = null;
       ac.a locala = ac.a(parama);
       parama = locala;
       if (locala == null) {
-        parama = m.iLJ;
+        parama = m.jlQ;
       }
-      this.iNU = parama;
+      this.joc = parama;
       AppMethodBeat.o(90602);
     }
     
@@ -375,38 +373,38 @@ public final class ax
       return paramj;
     }
     
-    protected final com.tencent.mm.plugin.appbrand.appcache.a.a aQk()
+    protected final com.tencent.mm.plugin.appbrand.appcache.a.a aXc()
     {
       AppMethodBeat.i(90603);
-      com.tencent.mm.plugin.appbrand.appcache.a.a locala = (com.tencent.mm.plugin.appbrand.appcache.a.a)super.aQq();
+      com.tencent.mm.plugin.appbrand.appcache.a.a locala = (com.tencent.mm.plugin.appbrand.appcache.a.a)super.aXi();
       AppMethodBeat.o(90603);
       return locala;
     }
     
-    public final boolean aQl()
+    public final boolean aXd()
     {
       return true;
     }
     
-    public final boolean aQm()
+    public final boolean aXe()
     {
       return false;
     }
     
-    public final boolean aQn()
+    public final boolean aXf()
     {
       return true;
     }
     
-    public final boolean aQo()
+    public final boolean aXg()
     {
       return false;
     }
     
-    public final boolean aQp()
+    public final boolean aXh()
     {
       AppMethodBeat.i(90607);
-      switch (ab.Xx())
+      switch (ab.Yu())
       {
       default: 
         AppMethodBeat.o(90607);
@@ -415,12 +413,12 @@ public final class ax
         AppMethodBeat.o(90607);
         return false;
       }
-      boolean bool = super.aQp();
+      boolean bool = super.aXh();
       AppMethodBeat.o(90607);
       return bool;
     }
     
-    public final String asy()
+    public final String azp()
     {
       return "AppBrandWxaPkgDownloader";
     }
@@ -430,13 +428,13 @@ public final class ax
       AppMethodBeat.i(90605);
       try
       {
-        localObject1 = (com.tencent.mm.plugin.appbrand.appcache.a.a)super.aQq();
+        localObject1 = (com.tencent.mm.plugin.appbrand.appcache.a.a)super.aXi();
         com.tencent.mm.vfs.i.deleteFile(((com.tencent.mm.plugin.appbrand.appcache.a.a)localObject1).getFilePath());
-        this.iNT = ((com.tencent.mm.pluginsdk.h.a.c.l)localObject1).url;
-        localObject2 = this.iNU;
-        this.iNT.startsWith("https");
-        ((ac.a)localObject2).aPi();
-        localm = ((ax.a)iNS.get()).a(this);
+        this.job = ((com.tencent.mm.pluginsdk.h.a.c.l)localObject1).url;
+        localObject2 = this.joc;
+        this.job.startsWith("https");
+        ((ac.a)localObject2).aWa();
+        localm = ((ax.a)joa.get()).a(this);
         if (localm != null) {
           localObject2 = localm;
         }
@@ -449,7 +447,7 @@ public final class ax
           com.tencent.mm.pluginsdk.h.a.c.m localm;
           label163:
           Object localObject2 = null;
-          ad.printErrStackTrace("MicroMsg.AppBrandWxaPkgDownloadPerformer", paramj, "perform failed", new Object[0]);
+          com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.AppBrandWxaPkgDownloadPerformer", paramj, "perform failed", new Object[0]);
           localObject1 = localObject2;
         }
         AppMethodBeat.o(90605);
@@ -461,7 +459,7 @@ public final class ax
           break label232;
         }
         localObject2 = localm;
-        if (!this.iNT.startsWith("http://")) {
+        if (!this.job.startsWith("http://")) {
           break label232;
         }
         i = 1;
@@ -473,11 +471,11 @@ public final class ax
           }
         }
         localObject2 = localm;
-        if (!this.iNT.startsWith("https")) {
+        if (!this.job.startsWith("https")) {
           break label237;
         }
         localObject2 = localm;
-        this.iNU.aPk();
+        this.joc.aWc();
         localObject2 = localm;
         if (!(localObject1 instanceof at)) {
           break label295;
@@ -493,14 +491,14 @@ public final class ax
       if (i != 0)
       {
         localObject2 = localm;
-        this.iNT = this.iNT.replaceFirst("https", "http");
+        this.job = this.job.replaceFirst("https", "http");
       }
       localObject2 = localm;
       localObject1 = a(paramj);
       for (;;)
       {
         localObject2 = localObject1;
-        this.iNU.a((com.tencent.mm.pluginsdk.h.a.c.m)localObject1);
+        this.joc.a((com.tencent.mm.pluginsdk.h.a.c.m)localObject1);
         if (localObject1 != null) {
           break label284;
         }
@@ -526,13 +524,13 @@ public final class ax
     
     public final String getURL()
     {
-      return this.iNT;
+      return this.job;
     }
     
-    public final boolean mR(long paramLong)
+    public final boolean qG(long paramLong)
     {
       AppMethodBeat.i(90606);
-      StatFs localStatFs = new StatFs(q.B(new com.tencent.mm.vfs.e(getFilePath()).fhT().fhU()));
+      StatFs localStatFs = new StatFs(q.B(new com.tencent.mm.vfs.e(getFilePath()).fxU().fxV()));
       long l = localStatFs.getAvailableBlocks() * localStatFs.getBlockSize();
       if ((l < 0L) || (l > paramLong))
       {
@@ -547,12 +545,12 @@ public final class ax
   final class d
     implements com.tencent.mm.pluginsdk.h.a.c.c
   {
-    final ap iNV;
+    final ao jod;
     
     d()
     {
       AppMethodBeat.i(90611);
-      this.iNV = new ap("WxaPkgDownloadPerformerEventDispatchThread");
+      this.jod = new ao("WxaPkgDownloadPerformerEventDispatchThread");
       AppMethodBeat.o(90611);
     }
     
@@ -560,41 +558,41 @@ public final class ax
     {
       AppMethodBeat.i(90617);
       com.tencent.mm.vfs.i.deleteFile(paramm.filePath);
-      if ((paramc.aQk() instanceof l))
+      if ((paramc.aXc() instanceof l))
       {
-        k.iLF.a((l)paramc.aQk(), paramm);
+        k.jlM.a((l)paramc.aXc(), paramm);
         AppMethodBeat.o(90617);
         return;
       }
-      if ((paramc.aQk() instanceof au))
+      if ((paramc.aXc() instanceof au))
       {
-        s.a((au)paramc.aQk(), paramm, paramc.iNU);
+        s.a((au)paramc.aXc(), paramm, paramc.joc);
         AppMethodBeat.o(90617);
         return;
       }
-      if ((paramc.aQk() instanceof bo))
+      if ((paramc.aXc() instanceof bo))
       {
-        bp.a((bo)paramc.aQk(), paramm, paramc.iNU);
+        bp.a((bo)paramc.aXc(), paramm, paramc.joc);
         AppMethodBeat.o(90617);
         return;
       }
-      String str = paramc.aQk().appId;
-      if ((paramm.BTv instanceof com.tencent.mm.pluginsdk.h.a.b.a)) {
-        paramc = b.a.a.iPz;
+      String str = paramc.aXc().appId;
+      if ((paramm.DlL instanceof com.tencent.mm.pluginsdk.h.a.b.a)) {
+        paramc = b.a.a.jpI;
       }
       for (;;)
       {
-        bh.a(paramm.BRL, str, paramc);
+        bh.a(paramm.Dkb, str, paramc);
         AppMethodBeat.o(90617);
         return;
         switch (paramm.httpStatusCode)
         {
         default: 
-          paramc = b.a.a.iPt;
+          paramc = b.a.a.jpD;
           break;
         case 403: 
         case 404: 
-          paramc = b.a.a.iPy;
+          paramc = b.a.a.jpH;
         }
       }
     }
@@ -609,85 +607,85 @@ public final class ax
     public static void c(com.tencent.mm.pluginsdk.h.a.c.e parame, com.tencent.mm.pluginsdk.h.a.c.m paramm)
     {
       AppMethodBeat.i(90614);
-      Object localObject1 = ((ax.c)parame).aQk();
-      if ((localObject1 instanceof au))
+      Object localObject = ((ax.c)parame).aXc();
+      if ((localObject instanceof au))
       {
-        paramm = (au)localObject1;
-        parame = ((ax.c)parame).iNU;
-        localObject1 = ((com.tencent.mm.plugin.appbrand.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aOk();
-        if (localObject1 == null)
+        paramm = (au)localObject;
+        parame = ((ax.c)parame).joc;
+        localObject = ((com.tencent.mm.plugin.appbrand.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aVa();
+        if (localObject == null)
         {
-          bh.a(paramm.BRL, paramm.appId, b.a.a.iPA, null);
+          bh.a(paramm.Dkb, paramm.appId, b.a.a.jpJ, null);
           AppMethodBeat.o(90614);
           return;
         }
-        Object localObject2 = paramm.appId;
-        j = paramm.iNo;
-        i = paramm.iNp;
-        String str = paramm.aPZ();
-        bb localbb = ((bf)localObject1).a((String)localObject2, j, 0, new String[] { "pkgPath" });
-        localObject2 = ((bf)localObject1).a((String)localObject2, i, 0, new String[] { "versionMd5" });
-        if ((localbb == null) || (localObject2 == null))
+        String str1 = paramm.appId;
+        j = paramm.jnw;
+        i = paramm.jnx;
+        String str2 = paramm.aWR();
+        bb localbb = ((bf)localObject).a(str1, j, 0, new String[] { "pkgPath" });
+        if (localbb == null)
         {
-          bh.a(paramm.BRL, paramm.appId, b.a.a.iPA, null);
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadComplete, get NULL oldInfo with appId[%s] version[%d]", new Object[] { str1, Integer.valueOf(j) });
+          bh.a(paramm.Dkb, paramm.appId, b.a.a.jpJ, null);
           AppMethodBeat.o(90614);
           return;
         }
-        parame.aPl();
+        parame.aWd();
         long l1 = SystemClock.elapsedRealtime();
-        j = s.A(localbb.field_pkgPath, str, paramm.getFilePath());
+        j = s.A(localbb.field_pkgPath, str2, paramm.getFilePath());
         long l2 = SystemClock.elapsedRealtime();
-        ad.i("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "applyPkgPatch, appId[%s], oldPath[%s], newPath[%s], patchPath[%s], cost %d, ret %d", new Object[] { paramm.appId, localbb.field_pkgPath, str, paramm.getFilePath(), Long.valueOf(l2 - l1), Integer.valueOf(j) });
-        parame.qE(j);
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "applyPkgPatch, appId[%s], oldPath[%s], newPath[%s], patchPath[%s], cost %d, ret %d", new Object[] { paramm.appId, localbb.field_pkgPath, str2, paramm.getFilePath(), Long.valueOf(l2 - l1), Integer.valueOf(j) });
+        parame.rr(j);
         if (j == 0)
         {
-          bh.a(paramm.BRL, paramm.appId, str, i, 0, parame);
+          bh.a(paramm.Dkb, paramm.appId, str2, i, 0, parame);
           AppMethodBeat.o(90614);
           return;
         }
-        com.tencent.mm.vfs.i.deleteFile(str);
-        bh.En(paramm.BRL);
-        if ((paramm.iNq instanceof b.b)) {
-          ((b.b)paramm.iNq).aQB();
+        com.tencent.mm.vfs.i.deleteFile(str2);
+        bh.Iq(paramm.Dkb);
+        if ((paramm.jny instanceof b.b)) {
+          ((b.b)paramm.jny).aXt();
         }
-        parame = ((bf)localObject1).a(paramm.appId, paramm.iNp, 0, new String[] { "downloadURL" });
+        parame = ((bf)localObject).a(paramm.appId, paramm.jnx, 0, new String[] { "downloadURL" });
         if (parame == null)
         {
-          bh.a(paramm.BRL, paramm.appId, b.a.a.iPA, null);
+          bh.a(paramm.Dkb, paramm.appId, b.a.a.jpJ, null);
           AppMethodBeat.o(90614);
           return;
         }
-        if (!bh.b(paramm.appId, 0, paramm.iNp, parame.field_downloadURL, paramm.iNq)) {
-          paramm.iNq.a(paramm.appId, b.a.a.iPA, null);
+        if (!bh.b(paramm.appId, 0, paramm.jnx, parame.field_downloadURL, paramm.jny)) {
+          paramm.jny.a(paramm.appId, b.a.a.jpJ, null);
         }
         AppMethodBeat.o(90614);
         return;
       }
-      if ((localObject1 instanceof bo))
+      if ((localObject instanceof bo))
       {
-        bp.a((bo)localObject1, ((ax.c)parame).iNU);
+        bp.a((bo)localObject, ((ax.c)parame).joc);
         AppMethodBeat.o(90614);
         return;
       }
-      if ((localObject1 instanceof l))
+      if ((localObject instanceof l))
       {
-        k.iLF.a((l)localObject1, paramm);
+        k.jlM.a((l)localObject, paramm);
         AppMethodBeat.o(90614);
         return;
       }
-      localObject1 = ((ax.c)parame).aQk().appId;
-      int i = ((ax.c)parame).aQk().version;
-      int j = ((ax.c)parame).aQk().dkC;
+      localObject = ((ax.c)parame).aXc().appId;
+      int i = ((ax.c)parame).aXc().version;
+      int j = ((ax.c)parame).aXc().dib;
       try
       {
-        bh.a(paramm.BRL, (String)localObject1, paramm.filePath, i, j, ((ax.c)parame).iNU);
+        bh.a(paramm.Dkb, (String)localObject, paramm.filePath, i, j, ((ax.c)parame).joc);
         AppMethodBeat.o(90614);
         return;
       }
       catch (Exception parame)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrandWxaPkgDownloadPerformer", parame, "dispatchComplete", new Object[0]);
-        bh.bU(paramm.BRL, (String)localObject1);
+        com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.AppBrandWxaPkgDownloadPerformer", parame, "dispatchComplete", new Object[0]);
+        bh.cd(paramm.Dkb, (String)localObject);
         AppMethodBeat.o(90614);
       }
     }
@@ -699,14 +697,14 @@ public final class ax
       AppMethodBeat.o(90615);
     }
     
-    public final void B(String paramString, int paramInt1, int paramInt2) {}
+    public final void A(String paramString, int paramInt1, int paramInt2) {}
     
-    public final void G(String paramString, long paramLong) {}
+    public final void H(String paramString, long paramLong) {}
     
     public final void a(final com.tencent.mm.pluginsdk.h.a.c.e parame, final com.tencent.mm.pluginsdk.h.a.c.m paramm)
     {
       AppMethodBeat.i(90612);
-      this.iNV.post(new Runnable()
+      this.jod.post(new Runnable()
       {
         public final void run()
         {
@@ -741,7 +739,7 @@ public final class ax
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ax
  * JD-Core Version:    0.7.0.1
  */

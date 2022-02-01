@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class fm
   extends b
 {
-  public a dhT;
-  public b dhU;
+  public a dfi;
+  public b dfj;
   
   public fm()
   {
@@ -17,22 +16,27 @@ public final class fm
   
   private fm(byte paramByte)
   {
-    AppMethodBeat.i(116016);
-    this.dhT = new a();
-    this.dhU = new b();
-    this.ESR = false;
+    AppMethodBeat.i(19805);
+    this.dfi = new a();
+    this.dfj = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116016);
+    AppMethodBeat.o(19805);
   }
   
   public static final class a
   {
-    public String dhV;
+    public String bssid;
+    public int dfk;
+    public String ssid;
+    public int version = 1;
   }
   
   public static final class b
   {
-    public Cursor dhM;
+    public int dfl = 0;
+    public int dfm = 0;
+    public String dfn;
   }
 }
 

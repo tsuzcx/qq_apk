@@ -3,23 +3,23 @@ package com.tencent.luggage.e.a;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.m.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.InputStream;
 
 public final class a
 {
   /* Error */
-  public static int co(String paramString)
+  public static int ce(String paramString)
   {
     // Byte code:
     //   0: ldc 11
     //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 23	com/tencent/mm/vfs/i:eK	(Ljava/lang/String;)Z
+    //   6: invokestatic 23	com/tencent/mm/vfs/i:eA	(Ljava/lang/String;)Z
     //   9: ifne +17 -> 26
     //   12: ldc 25
     //   14: ldc 27
-    //   16: invokestatic 33	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: invokestatic 33	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: ldc 11
     //   21: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: iconst_0
@@ -30,12 +30,12 @@ public final class a
     //   32: aconst_null
     //   33: astore_2
     //   34: aload 4
-    //   36: invokestatic 46	com/tencent/mm/plugin/appbrand/m/b:j	(Ljava/io/InputStream;)I
+    //   36: invokestatic 45	com/tencent/mm/plugin/appbrand/m/b:i	(Ljava/io/InputStream;)I
     //   39: istore_1
     //   40: aload 4
     //   42: ifnull +8 -> 50
     //   45: aload 4
-    //   47: invokevirtual 52	java/io/InputStream:close	()V
+    //   47: invokevirtual 51	java/io/InputStream:close	()V
     //   50: ldc 11
     //   52: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   55: iload_1
@@ -55,14 +55,14 @@ public final class a
     //   75: aload_2
     //   76: ifnull +53 -> 129
     //   79: aload 4
-    //   81: invokevirtual 52	java/io/InputStream:close	()V
+    //   81: invokevirtual 51	java/io/InputStream:close	()V
     //   84: ldc 11
     //   86: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: aload_3
     //   90: athrow
     //   91: astore_2
     //   92: ldc 25
-    //   94: ldc 54
+    //   94: ldc 53
     //   96: iconst_2
     //   97: anewarray 4	java/lang/Object
     //   100: dup
@@ -73,7 +73,7 @@ public final class a
     //   105: iconst_1
     //   106: aload_2
     //   107: aastore
-    //   108: invokestatic 57	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   108: invokestatic 56	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   111: ldc 11
     //   113: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   116: iconst_0
@@ -81,10 +81,10 @@ public final class a
     //   118: astore 4
     //   120: aload_2
     //   121: aload 4
-    //   123: invokevirtual 61	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   123: invokevirtual 60	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   126: goto -42 -> 84
     //   129: aload 4
-    //   131: invokevirtual 52	java/io/InputStream:close	()V
+    //   131: invokevirtual 51	java/io/InputStream:close	()V
     //   134: goto -50 -> 84
     // Local variable table:
     //   start	length	slot	name	signature
@@ -174,7 +174,7 @@ public final class a
     return "unknown";
   }
   
-  public static String gL(int paramInt)
+  public static String gv(int paramInt)
   {
     switch (paramInt)
     {
@@ -200,18 +200,18 @@ public final class a
     return "up";
   }
   
-  public static int j(InputStream paramInputStream)
+  public static int i(InputStream paramInputStream)
   {
     AppMethodBeat.i(138794);
     try
     {
-      int i = b.j(paramInputStream);
+      int i = b.i(paramInputStream);
       AppMethodBeat.o(138794);
       return i;
     }
     catch (Exception paramInputStream)
     {
-      ad.e("Luggage.ImageInfoUtils", "getExifOrientation with stream, e = %s", new Object[] { paramInputStream });
+      ac.e("Luggage.ImageInfoUtils", "getExifOrientation with stream, e = %s", new Object[] { paramInputStream });
       AppMethodBeat.o(138794);
     }
     return 0;
@@ -219,7 +219,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.e.a.a
  * JD-Core Version:    0.7.0.1
  */

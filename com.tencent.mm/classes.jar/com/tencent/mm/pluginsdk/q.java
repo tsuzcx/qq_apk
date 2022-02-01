@@ -7,74 +7,74 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class q
 {
-  private long BNx;
-  protected ConcurrentLinkedDeque<a> BNy;
-  protected HashMap<String, a> BNz;
+  private long DfH;
+  protected ConcurrentLinkedDeque<a> DfI;
+  protected HashMap<String, a> DfJ;
   
   public q()
   {
     AppMethodBeat.i(141154);
-    this.BNx = System.currentTimeMillis();
-    this.BNy = new ConcurrentLinkedDeque();
-    this.BNz = new HashMap();
+    this.DfH = System.currentTimeMillis();
+    this.DfI = new ConcurrentLinkedDeque();
+    this.DfJ = new HashMap();
     AppMethodBeat.o(141154);
-  }
-  
-  private void g(String paramString1, long paramLong, String paramString2)
-  {
-    AppMethodBeat.i(141156);
-    this.BNy.add(new a(paramString1, paramLong, paramString2));
-    h(paramString1, paramLong, paramString2);
-    AppMethodBeat.o(141156);
   }
   
   private void h(String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(190966);
-    if ((paramString1.equals("onPageStarted")) || (paramString1.equals("onPageFinished")) || (paramString1.equals("getA8KeyStart")) || (paramString1.equals("getA8KeyEnd")) || (paramString1.equals("firstScreenTimestamp")) || (paramString1.equals("firstScreenTime")))
-    {
-      if (this.BNz.get(paramString1) == null) {
-        this.BNz.put(paramString1, new a(paramString1, paramLong, paramString2));
-      }
-      ((a)this.BNz.get(paramString1)).time = paramLong;
-    }
-    AppMethodBeat.o(190966);
+    AppMethodBeat.i(141156);
+    this.DfI.add(new a(paramString1, paramLong, paramString2));
+    i(paramString1, paramLong, paramString2);
+    AppMethodBeat.o(141156);
   }
   
-  public final long aAw(String paramString)
+  private void i(String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(190967);
-    if ((this.BNz == null) || (this.BNz.isEmpty()))
+    AppMethodBeat.i(197172);
+    if ((paramString1.equals("onPageStarted")) || (paramString1.equals("onPageFinished")) || (paramString1.equals("getA8KeyStart")) || (paramString1.equals("getA8KeyEnd")) || (paramString1.equals("firstScreenTimestamp")) || (paramString1.equals("firstScreenTime")))
     {
-      AppMethodBeat.o(190967);
+      if (this.DfJ.get(paramString1) == null) {
+        this.DfJ.put(paramString1, new a(paramString1, paramLong, paramString2));
+      }
+      ((a)this.DfJ.get(paramString1)).time = paramLong;
+    }
+    AppMethodBeat.o(197172);
+  }
+  
+  public final long aFO(String paramString)
+  {
+    AppMethodBeat.i(197173);
+    if ((this.DfJ == null) || (this.DfJ.isEmpty()))
+    {
+      AppMethodBeat.o(197173);
       return 0L;
     }
-    if (this.BNz.get(paramString) != null)
+    if (this.DfJ.get(paramString) != null)
     {
-      long l = ((a)this.BNz.get(paramString)).time;
-      AppMethodBeat.o(190967);
+      long l = ((a)this.DfJ.get(paramString)).time;
+      AppMethodBeat.o(197173);
       return l;
     }
-    AppMethodBeat.o(190967);
+    AppMethodBeat.o(197173);
     return 0L;
   }
   
-  public final void bG(String paramString, long paramLong)
+  public final void bI(String paramString, long paramLong)
   {
     AppMethodBeat.i(141155);
-    g(paramString, paramLong, "");
+    h(paramString, paramLong, "");
     AppMethodBeat.o(141155);
   }
   
-  public final long bH(String paramString, long paramLong)
+  public final long bJ(String paramString, long paramLong)
   {
     AppMethodBeat.i(141157);
-    if ((this.BNy == null) || (this.BNy.isEmpty()))
+    if ((this.DfI == null) || (this.DfI.isEmpty()))
     {
       AppMethodBeat.o(141157);
       return paramLong;
     }
-    Iterator localIterator = this.BNy.iterator();
+    Iterator localIterator = this.DfI.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
@@ -91,7 +91,7 @@ public class q
   
   public final long getStartTime()
   {
-    return this.BNx;
+    return this.DfH;
   }
   
   public final class a

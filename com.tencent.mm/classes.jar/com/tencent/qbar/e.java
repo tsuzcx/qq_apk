@@ -7,7 +7,7 @@ import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.y;
 import com.tencent.mm.model.y.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.scanlib.a;
 import java.util.ArrayList;
@@ -20,60 +20,60 @@ import java.util.concurrent.Executors;
 
 public final class e
 {
-  private static e Ipe;
-  private Map<Long, String> Ipf;
-  private Map<Long, b> Ipg;
-  private Map<String, List<Long>> Iph;
-  private g jMM;
-  private Object vNi;
-  private ExecutorService vNk;
+  private static e JQO;
+  private Map<Long, String> JQP;
+  private Map<Long, b> JQQ;
+  private Map<String, List<Long>> JQR;
+  private g knn;
+  private Object wXD;
+  private ExecutorService wXF;
   
   static
   {
     AppMethodBeat.i(91156);
-    Ipe = new e();
+    JQO = new e();
     AppMethodBeat.o(91156);
   }
   
   public e()
   {
     AppMethodBeat.i(91154);
-    this.Ipf = new HashMap();
-    this.Ipg = new HashMap();
-    this.Iph = new HashMap();
-    this.vNi = new Object();
-    this.jMM = new g("WxFileDecodeQueue");
-    this.vNk = Executors.newSingleThreadExecutor();
+    this.JQP = new HashMap();
+    this.JQQ = new HashMap();
+    this.JQR = new HashMap();
+    this.wXD = new Object();
+    this.knn = new g("WxFileDecodeQueue");
+    this.wXF = Executors.newSingleThreadExecutor();
     AppMethodBeat.o(91154);
   }
   
-  public static e flQ()
+  public static e fCh()
   {
-    return Ipe;
+    return JQO;
   }
   
   public final void a(Context paramContext, long paramLong, String paramString, b paramb, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(91155);
-    synchronized (this.vNi)
+    synchronized (this.wXD)
     {
-      if (this.Ipf.size() < 5)
+      if (this.JQP.size() < 5)
       {
-        ad.i("WxFileDecodeQueue", String.format("submit decode task %d", new Object[] { Long.valueOf(paramLong) }));
-        this.Ipf.put(Long.valueOf(paramLong), paramString);
+        ac.i("WxFileDecodeQueue", String.format("submit decode task %d", new Object[] { Long.valueOf(paramLong) }));
+        this.JQP.put(Long.valueOf(paramLong), paramString);
         if (paramb != null) {
-          this.Ipg.put(Long.valueOf(paramLong), paramb);
+          this.JQQ.put(Long.valueOf(paramLong), paramb);
         }
-        if (!this.Iph.containsKey(paramString))
+        if (!this.JQR.containsKey(paramString))
         {
-          this.Iph.put(paramString, new ArrayList());
-          this.vNk.execute(new a(paramString, a.kB(paramContext), paramArrayOfInt));
+          this.JQR.put(paramString, new ArrayList());
+          this.wXF.execute(new a(paramString, a.kN(paramContext), paramArrayOfInt));
         }
-        ((List)this.Iph.get(paramString)).add(Long.valueOf(paramLong));
+        ((List)this.JQR.get(paramString)).add(Long.valueOf(paramLong));
         AppMethodBeat.o(91155);
         return;
       }
-      ad.w("WxFileDecodeQueue", "too many files are waiting!");
+      ac.w("WxFileDecodeQueue", "too many files are waiting!");
       paramb.a(paramLong, null, null);
     }
   }
@@ -81,32 +81,32 @@ public final class e
   final class a
     implements Runnable
   {
-    private QbarNative.QbarAiModelParam Ipi;
-    private int[] Ipj;
+    private QbarNative.QbarAiModelParam JQS;
+    private int[] JQT;
     private String filePath;
     
     public a(String paramString, QbarNative.QbarAiModelParam paramQbarAiModelParam, int[] paramArrayOfInt)
     {
       AppMethodBeat.i(91152);
-      this.Ipj = new int[] { 0 };
+      this.JQT = new int[] { 0 };
       this.filePath = paramString;
-      this.Ipi = paramQbarAiModelParam;
+      this.JQS = paramQbarAiModelParam;
       if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
-        this.Ipj = paramArrayOfInt;
+        this.JQT = paramArrayOfInt;
       }
       AppMethodBeat.o(91152);
     }
     
-    private boolean flR()
+    private boolean fCi()
     {
       boolean bool2 = false;
       int i = 0;
       for (;;)
       {
         boolean bool1 = bool2;
-        if (i < this.Ipj.length)
+        if (i < this.JQT.length)
         {
-          if ((this.Ipj[i] == 3) || (this.Ipj[i] == 0)) {
+          if ((this.JQT[i] == 3) || (this.JQT[i] == 0)) {
             bool1 = true;
           }
         }
@@ -132,7 +132,7 @@ public final class e
           localObject5 = new BitmapFactory.Options();
           if (((BitmapFactory.Options)localObject1).outWidth * ((BitmapFactory.Options)localObject1).outHeight * 3 > 10485760)
           {
-            ad.i("WxFileDecodeQueue", "bitmap too large %d x %d, sample", new Object[] { Integer.valueOf(((BitmapFactory.Options)localObject1).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject1).outHeight) });
+            ac.i("WxFileDecodeQueue", "bitmap too large %d x %d, sample", new Object[] { Integer.valueOf(((BitmapFactory.Options)localObject1).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject1).outHeight) });
             ((BitmapFactory.Options)localObject5).inSampleSize = 2;
           }
           localObject1 = f.decodeFile(this.filePath, (BitmapFactory.Options)localObject5);
@@ -140,14 +140,14 @@ public final class e
         catch (Exception localException)
         {
           Object localObject1;
-          ad.e("WxFileDecodeQueue", "decode file to bitmap error! " + localException.getMessage());
+          ac.e("WxFileDecodeQueue", "decode file to bitmap error! " + localException.getMessage());
           localObject3 = null;
           continue;
           int i = ((List)localObject5).size();
           continue;
-          c.IoH.flO();
-          c.IoH.xf(i);
-          localObject7 = c.IoH;
+          c.JQs.fCf();
+          c.JQs.BP(i);
+          localObject7 = c.JQs;
           str1 = ((a.a)((List)localObject5).get(0)).typeName;
           str2 = ((a.a)((List)localObject5).get(0)).data;
           str3 = ((a.a)((List)localObject5).get(0)).charset;
@@ -159,18 +159,18 @@ public final class e
         {
           l = System.currentTimeMillis();
           if (!e.a(e.this).hasInited()) {
-            e.a(e.this).a(1, this.Ipi);
+            e.a(e.this).a(1, this.JQS);
           }
           if (e.a(e.this).hasInited()) {
-            e.a(e.this).L(this.Ipj);
+            e.a(e.this).L(this.JQT);
           }
           if (localObject1 == null) {
             break label942;
           }
-          ad.i("WxFileDecodeQueue", String.format("%s,%s", new Object[] { Integer.valueOf(((Bitmap)localObject1).getWidth()), Integer.valueOf(((Bitmap)localObject1).getHeight()) }));
+          ac.i("WxFileDecodeQueue", String.format("%s,%s", new Object[] { Integer.valueOf(((Bitmap)localObject1).getWidth()), Integer.valueOf(((Bitmap)localObject1).getHeight()) }));
           localObject7 = new int[((Bitmap)localObject1).getWidth() * ((Bitmap)localObject1).getHeight()];
           ((Bitmap)localObject1).getPixels((int[])localObject7, 0, ((Bitmap)localObject1).getWidth(), 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
-          localObject5 = y.arz().tC("basescanui@datacenter");
+          localObject5 = y.ayq().xI("basescanui@datacenter");
           if (localObject5 == null) {
             break label936;
           }
@@ -180,12 +180,12 @@ public final class e
           if (localObject5 == null)
           {
             i = 0;
-            ad.i("WxFileDecodeQueue", String.format("get %d decode results", new Object[] { Integer.valueOf(i) }));
+            ac.i("WxFileDecodeQueue", String.format("get %d decode results", new Object[] { Integer.valueOf(i) }));
             i = (int)(System.currentTimeMillis() - l);
-            c.IoH.flP();
-            c.IoH.xe(i);
-            c.IoH.kj(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
-            c.IoH.IoZ = flR();
+            c.JQs.fCg();
+            c.JQs.BO(i);
+            c.JQs.kw(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
+            c.JQs.JQJ = fCi();
             if ((localObject5 == null) || (((List)localObject5).isEmpty())) {
               break label665;
             }
@@ -194,7 +194,7 @@ public final class e
               continue;
             }
             localObject7 = (a.a)((Iterator)localObject1).next();
-            ad.i("WxFileDecodeQueue", "result " + ((a.a)localObject7).typeName + "," + ((a.a)localObject7).data);
+            ac.i("WxFileDecodeQueue", "result " + ((a.a)localObject7).typeName + "," + ((a.a)localObject7).data);
           }
         }
       }
@@ -205,7 +205,7 @@ public final class e
       label643:
       ((c)localObject7).a(str1, str2, str3, (WxQbarNative.QBarReportMsg)localObject3, ((List)localObject5).size(), (List)???);
       label665:
-      c.IoH.bmJ();
+      c.JQs.btF();
       localObject3 = localObject5;
       Object localObject5 = ???;
       for (;;)
@@ -235,7 +235,7 @@ public final class e
         label891:
         if (e.c(e.this).isEmpty())
         {
-          ad.i("WxFileDecodeQueue", "release QBar");
+          ac.i("WxFileDecodeQueue", "release QBar");
           e.a(e.this).release();
         }
         AppMethodBeat.o(91153);

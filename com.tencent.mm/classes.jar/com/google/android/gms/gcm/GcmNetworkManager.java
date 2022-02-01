@@ -337,7 +337,7 @@ public class GcmNetworkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.gcm.GcmNetworkManager
  * JD-Core Version:    0.7.0.1
  */

@@ -17,19 +17,19 @@ import com.tencent.mm.plugin.game.model.aa;
 import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 
 public class GameDetailRankUI
   extends MMActivity
 {
   public static String EXTRA_SESSION_ID = "extra_session_id";
-  public static String sgM = "gameDetailRankDataKey";
+  public static String toG = "gameDetailRankDataKey";
   private String appId;
-  private ListView sgJ;
-  private GameRankHeadView sgK;
-  private i sgL;
+  private ListView toD;
+  private GameRankHeadView toE;
+  private i toF;
   
   public int getLayoutId()
   {
@@ -58,34 +58,34 @@ public class GameDetailRankUI
     AppMethodBeat.i(42005);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra(EXTRA_SESSION_ID);
-    paramBundle = y.arz().tC(paramBundle);
+    paramBundle = y.ayq().xI(paramBundle);
     if (paramBundle == null)
     {
       finish();
       AppMethodBeat.o(42005);
       return;
     }
-    paramBundle = (GameDetailRankUI.a)paramBundle.get(sgM);
-    this.sgJ = ((ListView)findViewById(2131300420));
-    if ((!bt.isNullOrNil(paramBundle.sgO)) && (!bt.isNullOrNil(paramBundle.sgP)))
+    paramBundle = (GameDetailRankUI.a)paramBundle.get(toG);
+    this.toD = ((ListView)findViewById(2131300420));
+    if ((!bs.isNullOrNil(paramBundle.toI)) && (!bs.isNullOrNil(paramBundle.toJ)))
     {
-      View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494291, this.sgJ, false);
-      this.sgK = ((GameRankHeadView)localView.findViewById(2131300540));
-      this.sgJ.addHeaderView(localView);
-      this.sgK.setData(paramBundle);
+      View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494291, this.toD, false);
+      this.toE = ((GameRankHeadView)localView.findViewById(2131300540));
+      this.toD.addHeaderView(localView);
+      this.toE.setData(paramBundle);
     }
-    this.sgL = new i(this);
-    this.sgL.Sg = 2131494285;
-    this.sgJ.setAdapter(this.sgL);
-    this.appId = paramBundle.sgQ.field_appId;
-    if (bt.isNullOrNil(this.appId))
+    this.toF = new i(this);
+    this.toF.Tb = 2131494285;
+    this.toD.setAdapter(this.toF);
+    this.appId = paramBundle.toK.field_appId;
+    if (bs.isNullOrNil(this.appId))
     {
       finish();
       AppMethodBeat.o(42005);
       return;
     }
     initView();
-    g.afE().ax(new Runnable()
+    g.agU().az(new Runnable()
     {
       public final void run()
       {
@@ -102,7 +102,7 @@ public class GameDetailRankUI
   {
     AppMethodBeat.i(42007);
     super.onDestroy();
-    k.b(this.sgK.sgV);
+    k.b(this.toE.toP);
     AppMethodBeat.o(42007);
   }
   
@@ -121,7 +121,7 @@ public class GameDetailRankUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailRankUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,37 +2,37 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import com.tencent.mm.pluginsdk.ui.c.a;
-import com.tencent.mm.protocal.protobuf.cuo;
+import com.tencent.mm.protocal.protobuf.daa;
 
 public final class m
   implements a
 {
-  public String gKr = "";
-  public String mAQ = "";
+  public String hkR = "";
+  public String ncR = "";
   public int scene = -1;
   public Object tag;
-  public cuo wFh;
-  public String xlO = "";
-  public String xlP = "";
-  public View xlQ;
+  public daa xRC;
+  public String yyG = "";
+  public String yyH = "";
+  public View yyI;
   
-  public m(String paramString1, String paramString2, cuo paramcuo, String paramString3, String paramString4, View paramView, int paramInt)
+  public m(String paramString1, String paramString2, daa paramdaa, String paramString3, String paramString4, View paramView, int paramInt)
   {
-    this.xlO = paramString1;
-    this.xlP = paramString2;
-    this.wFh = paramcuo;
-    this.mAQ = paramString3;
-    this.gKr = paramString4;
-    this.xlQ = paramView;
+    this.yyG = paramString1;
+    this.yyH = paramString2;
+    this.xRC = paramdaa;
+    this.ncR = paramString3;
+    this.hkR = paramString4;
+    this.yyI = paramView;
     this.scene = paramInt;
   }
   
   public final String getUserName()
   {
-    if (this.wFh == null) {
+    if (this.xRC == null) {
       return null;
     }
-    return this.wFh.Username;
+    return this.xRC.Username;
   }
 }
 

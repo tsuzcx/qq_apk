@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.card.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class j$1
   implements Runnable
@@ -11,8 +11,8 @@ final class j$1
   public final void run()
   {
     AppMethodBeat.i(112671);
-    j.k(this.nra, this.nrb, this.nrc, this.fpl);
-    ad.i("MicroMsg.CardMarkCodeMgr", "run the unmark task, the card is " + this.nra + " system.time:" + System.currentTimeMillis());
+    j.k(this.nUa, this.nUb, this.nUc, this.fsL);
+    ac.i("MicroMsg.CardMarkCodeMgr", "run the unmark task, the card is " + this.nUa + " system.time:" + System.currentTimeMillis());
     AppMethodBeat.o(112671);
   }
 }

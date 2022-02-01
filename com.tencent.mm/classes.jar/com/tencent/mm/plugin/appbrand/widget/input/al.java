@@ -6,107 +6,105 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.x.d;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.am;
-import com.tencent.mm.plugin.appbrand.page.bb;
-import com.tencent.mm.plugin.appbrand.page.bd;
-import com.tencent.mm.plugin.appbrand.page.bh;
-import com.tencent.mm.plugin.appbrand.page.bh.a;
+import com.tencent.mm.plugin.appbrand.page.ag;
+import com.tencent.mm.plugin.appbrand.page.aw;
+import com.tencent.mm.plugin.appbrand.page.ay;
+import com.tencent.mm.plugin.appbrand.page.bc;
+import com.tencent.mm.plugin.appbrand.page.bc.a;
 import com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat;
 import com.tencent.mm.plugin.appbrand.widget.base.a;
 import com.tencent.mm.plugin.appbrand.widget.base.b;
-import com.tencent.mm.plugin.appbrand.widget.base.e;
 import com.tencent.mm.plugin.appbrand.widget.base.e.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class al
-  implements bh
+  implements bc
 {
-  private static View.OnTouchListener mep;
-  private final aa cdz;
-  private final g meq;
+  private static View.OnTouchListener mGo;
+  private final aa caw;
+  private final g mGp;
   
   static
   {
     AppMethodBeat.i(177120);
-    mep = new al.1();
+    mGo = new al.1();
     AppMethodBeat.o(177120);
   }
   
   public al(aa paramaa)
   {
     AppMethodBeat.i(136600);
-    this.cdz = paramaa;
-    this.meq = new g(paramaa);
+    this.caw = paramaa;
+    this.mGp = new g(paramaa);
     AppMethodBeat.o(136600);
   }
   
-  public final void a(bb parambb)
+  public final void a(aw paramaw)
   {
     AppMethodBeat.i(136602);
-    if ((parambb == bb.leY) || (parambb == bb.leZ)) {
-      o.x(this.cdz);
+    if ((paramaw == aw.lEO) || (paramaw == aw.lEP)) {
+      o.x(this.caw);
     }
     AppMethodBeat.o(136602);
   }
   
-  public final void a(bd parambd)
+  public final void a(ay paramay)
   {
     AppMethodBeat.i(177119);
-    if (parambd.getContentView() == null)
+    if (paramay.getContentView() == null)
     {
       AppMethodBeat.o(177119);
       return;
     }
-    ((ViewGroup)parambd.getContentView()).setOnTouchListener(mep);
+    ((ViewGroup)paramay.getContentView()).setOnTouchListener(mGo);
     AppMethodBeat.o(177119);
   }
   
   public final void d(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(136605);
-    this.meq.d(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    this.mGp.d(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(136605);
-  }
-  
-  public final void gJ(int paramInt)
-  {
-    AppMethodBeat.i(136603);
-    this.meq.setTranslationY(paramInt);
-    AppMethodBeat.o(136603);
   }
   
   public final ViewGroup getContainer()
   {
-    return this.meq;
+    return this.mGp;
+  }
+  
+  public final void gt(int paramInt)
+  {
+    AppMethodBeat.i(136603);
+    this.mGp.setTranslationY(paramInt);
+    AppMethodBeat.o(136603);
   }
   
   public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     AppMethodBeat.i(136604);
-    this.meq.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    this.mGp.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
     AppMethodBeat.o(136604);
   }
   
-  public final void setupWebViewTouchInterceptor(bd parambd)
+  public final void setupWebViewTouchInterceptor(ay paramay)
   {
     AppMethodBeat.i(136601);
-    parambd = (ViewGroup)parambd.getContentView();
-    final g localg = this.meq;
-    parambd.setOnTouchListener(new View.OnTouchListener()
+    paramay = (ViewGroup)paramay.getContentView();
+    final g localg = this.mGp;
+    paramay.setOnTouchListener(new View.OnTouchListener()
     {
       @SuppressLint({"ClickableViewAccessibility"})
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(177118);
         if (paramAnonymousMotionEvent.getAction() != 0) {
-          d.a(localg, paramAnonymousMotionEvent);
+          com.tencent.mm.plugin.appbrand.jsapi.w.e.a(localg, paramAnonymousMotionEvent);
         }
-        ah localah = this.mes;
+        ah localah = this.mGr;
         boolean bool2;
-        e locale;
+        com.tencent.mm.plugin.appbrand.widget.base.e locale;
         label112:
         boolean bool1;
         if (paramAnonymousMotionEvent == null)
@@ -120,27 +118,27 @@ public final class al
         }
         else
         {
-          locale = localah.mdW.maI;
-          if (locale.fSZ.onFilterTouchEventForSecurity(paramAnonymousMotionEvent))
+          locale = localah.mFV.mCF;
+          if (locale.fWU.onFilterTouchEventForSecurity(paramAnonymousMotionEvent))
           {
             Object localObject;
             label122:
             int j;
             if (paramAnonymousMotionEvent.getActionMasked() == 0)
             {
-              paramAnonymousView = new b(locale.fSZ);
+              paramAnonymousView = new b(locale.fWU);
               if (paramAnonymousMotionEvent.getActionMasked() != 0) {
                 break label271;
               }
               localObject = new e.a(paramAnonymousMotionEvent.getDownTime(), paramAnonymousMotionEvent.getEventTime(), (byte)0);
-              locale.lRI = ((e.a)localObject);
+              locale.mtK = ((e.a)localObject);
               bool1 = false;
               if (!paramAnonymousView.hasNext()) {
                 break label305;
               }
               localObject = (View)paramAnonymousView.next();
               j = paramAnonymousMotionEvent.getActionIndex();
-              if (!locale.fSZ.isMotionEventSplittingEnabled()) {
+              if (!locale.fWU.isMotionEventSplittingEnabled()) {
                 break label277;
               }
             }
@@ -154,25 +152,25 @@ public final class al
               if (paramAnonymousMotionEvent.getActionMasked() != 0) {
                 break label283;
               }
-              if ((!AppBrandViewMotionCompat.cS((View)localObject)) || (!AppBrandViewMotionCompat.a(locale.fSZ, f1, f2, (View)localObject))) {
+              if ((!AppBrandViewMotionCompat.cU((View)localObject)) || (!AppBrandViewMotionCompat.a(locale.fWU, f1, f2, (View)localObject))) {
                 break label122;
               }
-              if (!AppBrandViewMotionCompat.cR((View)localObject)) {
+              if (!AppBrandViewMotionCompat.cT((View)localObject)) {
                 break label590;
               }
-              if (!AppBrandViewMotionCompat.dispatchTransformedTouchEvent(locale.fSZ, paramAnonymousMotionEvent, false, (View)localObject, i)) {
+              if (!AppBrandViewMotionCompat.dispatchTransformedTouchEvent(locale.fWU, paramAnonymousMotionEvent, false, (View)localObject, i)) {
                 break label587;
               }
-              locale.lRH.addLast(localObject);
+              locale.mtJ.addLast(localObject);
               bool1 |= true;
               break label122;
-              paramAnonymousView = locale.lRH.iterator();
+              paramAnonymousView = locale.mtJ.iterator();
               break;
               localObject = null;
               break label112;
             }
             label283:
-            bool1 = AppBrandViewMotionCompat.dispatchTransformedTouchEvent(locale.fSZ, paramAnonymousMotionEvent, false, (View)localObject, i) | bool1;
+            bool1 = AppBrandViewMotionCompat.dispatchTransformedTouchEvent(locale.fWU, paramAnonymousMotionEvent, false, (View)localObject, i) | bool1;
           }
         }
         label305:
@@ -191,25 +189,25 @@ public final class al
             a.a("MicroMsg.AppBrand.InputTouchDuplicateDispatcher", "[textscroll] handled | ".concat(String.valueOf(bool2)), paramAnonymousMotionEvent);
             if (2 == paramAnonymousMotionEvent.getActionMasked())
             {
-              if ((bool2) && (!localah.mdX))
+              if ((bool2) && (!localah.mFW))
               {
-                paramAnonymousView = (am)localah.meb.dk(localah.mdW);
+                paramAnonymousView = (com.tencent.mm.plugin.appbrand.page.ah)localah.mGa.dm(localah.mFV);
                 if (paramAnonymousView != null)
                 {
-                  if (paramAnonymousView.ldy) {
+                  if (paramAnonymousView.lDp) {
                     break label510;
                   }
                   bool1 = true;
-                  localah.mdY = bool1;
+                  localah.mFX = bool1;
                   paramAnonymousView.setPullDownEnabled(false);
                   paramAnonymousView.requestDisallowInterceptTouchEvent(true);
-                  localah.mdX = true;
+                  localah.mFW = true;
                 }
               }
               if (!bool2) {
                 break label516;
               }
-              localah.mdZ = true;
+              localah.mFY = true;
             }
             else
             {
@@ -225,7 +223,7 @@ public final class al
               label344:
               bool2 = false;
               break;
-              locale.lRH.clear();
+              locale.mtJ.clear();
               bool2 = bool1;
               break label344;
               bool2 = false;
@@ -233,18 +231,18 @@ public final class al
               label510:
               bool1 = false;
               break label412;
-              if (!localah.mdZ) {
+              if (!localah.mFY) {
                 break label446;
               }
-              localah.mdZ = false;
+              localah.mFY = false;
               break label446;
-              if (localah.mdX)
+              if (localah.mFW)
               {
-                paramAnonymousView = (am)localah.meb.dk(localah.mdW);
+                paramAnonymousView = (com.tencent.mm.plugin.appbrand.page.ah)localah.mGa.dm(localah.mFV);
                 if (paramAnonymousView != null) {
-                  paramAnonymousView.setPullDownEnabled(localah.mdY);
+                  paramAnonymousView.setPullDownEnabled(localah.mFX);
                 }
-                localah.mdX = false;
+                localah.mFW = false;
               }
             }
             AppMethodBeat.o(177118);
@@ -258,12 +256,12 @@ public final class al
   }
   
   public static final class a
-    implements bh.a
+    implements bc.a
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.al
  * JD-Core Version:    0.7.0.1
  */

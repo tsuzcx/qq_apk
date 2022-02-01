@@ -8,15 +8,15 @@ import java.util.concurrent.Executors;
 
 final class z
 {
-  private static z bUZ;
-  private static final SparseArray<z> bVa;
-  private final ExecutorService bVb;
+  private static z bSH;
+  private static final SparseArray<z> bSI;
+  private final ExecutorService bSJ;
   private final Handler handler;
   
   static
   {
     AppMethodBeat.i(88019);
-    bVa = new SparseArray();
+    bSI = new SparseArray();
     AppMethodBeat.o(88019);
   }
   
@@ -24,7 +24,7 @@ final class z
   {
     AppMethodBeat.i(88020);
     if (paramHandler != null) {}
-    for (this.bVb = null;; this.bVb = Executors.newSingleThreadExecutor())
+    for (this.bSJ = null;; this.bSJ = Executors.newSingleThreadExecutor())
     {
       this.handler = paramHandler;
       AppMethodBeat.o(88020);
@@ -38,20 +38,20 @@ final class z
     if (paramHandler != null)
     {
       int i = paramHandler.getLooper().hashCode();
-      z localz2 = (z)bVa.get(i);
+      z localz2 = (z)bSI.get(i);
       z localz1 = localz2;
       if (localz2 == null)
       {
         localz1 = new z(paramHandler);
-        bVa.put(i, localz1);
+        bSI.put(i, localz1);
       }
       AppMethodBeat.o(88021);
       return localz1;
     }
-    if (bUZ == null) {
-      bUZ = new z(null);
+    if (bSH == null) {
+      bSH = new z(null);
     }
-    paramHandler = bUZ;
+    paramHandler = bSH;
     AppMethodBeat.o(88021);
     return paramHandler;
   }
@@ -65,7 +65,7 @@ final class z
       AppMethodBeat.o(88022);
       return;
     }
-    this.bVb.execute(paramRunnable);
+    this.bSJ.execute(paramRunnable);
     AppMethodBeat.o(88022);
   }
 }

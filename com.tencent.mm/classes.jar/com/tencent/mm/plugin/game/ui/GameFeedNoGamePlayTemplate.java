@@ -18,22 +18,22 @@ import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.d;
 import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.plugin.game.model.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class GameFeedNoGamePlayTemplate
   extends LinearLayout
   implements View.OnClickListener
 {
-  private ImageView jFL;
-  GameDownloadView sfa;
-  private d sfe;
-  private GameFeedTitleDescView siI;
-  private FrameLayout siJ;
-  private RelativeLayout siK;
-  private TextView siL;
-  private GameRoundImageView siv;
-  private ImageView siw;
+  private ImageView kgj;
+  GameDownloadView tmT;
+  private d tmX;
+  private GameFeedTitleDescView tqB;
+  private FrameLayout tqC;
+  private RelativeLayout tqD;
+  private TextView tqE;
+  private GameRoundImageView tqo;
+  private ImageView tqp;
   
   public GameFeedNoGamePlayTemplate(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,23 +43,23 @@ public class GameFeedNoGamePlayTemplate
   public void onClick(View paramView)
   {
     AppMethodBeat.i(42122);
-    if ((this.sfe == null) || (this.sfe.rVo == null) || (this.sfe.rVo.saQ == null))
+    if ((this.tmX == null) || (this.tmX.tdg == null) || (this.tmX.tdg.tiK == null))
     {
       AppMethodBeat.o(42122);
       return;
     }
     int i;
-    if ((paramView.getId() == 2131300951) && (!bt.isNullOrNil(this.sfe.rVo.saQ.sbz)))
+    if ((paramView.getId() == 2131300951) && (!bs.isNullOrNil(this.tmX.tdg.tiK.tjt)))
     {
-      i = c.ax(getContext(), this.sfe.rVo.saQ.sbz);
-      com.tencent.mm.game.report.e.a(getContext(), 10, 1024, this.sfe.position, i, this.sfe.rVo.hnC, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.ad(this.sfe.rVo.rZW, "clickType", "middle"));
+      i = c.ay(getContext(), this.tmX.tdg.tiK.tjt);
+      com.tencent.mm.game.report.e.a(getContext(), 10, 1024, this.tmX.position, i, this.tmX.tdg.hOf, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.ae(this.tmX.tdg.thP, "clickType", "middle"));
       AppMethodBeat.o(42122);
       return;
     }
-    if (!bt.isNullOrNil(this.sfe.rVo.rZo))
+    if (!bs.isNullOrNil(this.tmX.tdg.thh))
     {
-      i = c.ax(getContext(), this.sfe.rVo.rZo);
-      com.tencent.mm.game.report.e.a(getContext(), 10, 1024, this.sfe.position, i, this.sfe.rVo.hnC, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.ad(this.sfe.rVo.rZW, "clickType", "card"));
+      i = c.ay(getContext(), this.tmX.tdg.thh);
+      com.tencent.mm.game.report.e.a(getContext(), 10, 1024, this.tmX.position, i, this.tmX.tdg.hOf, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.ae(this.tmX.tdg.thP, "clickType", "card"));
     }
     AppMethodBeat.o(42122);
   }
@@ -68,65 +68,65 @@ public class GameFeedNoGamePlayTemplate
   {
     AppMethodBeat.i(42120);
     super.onFinishInflate();
-    this.siI = ((GameFeedTitleDescView)findViewById(2131300441));
-    this.siJ = ((FrameLayout)findViewById(2131300951));
-    this.siv = ((GameRoundImageView)findViewById(2131298822));
-    this.siw = ((ImageView)findViewById(2131306363));
-    this.siK = ((RelativeLayout)findViewById(2131300373));
-    this.jFL = ((ImageView)findViewById(2131300462));
-    this.siL = ((TextView)findViewById(2131300524));
-    this.sfa = ((GameDownloadView)findViewById(2131300435));
+    this.tqB = ((GameFeedTitleDescView)findViewById(2131300441));
+    this.tqC = ((FrameLayout)findViewById(2131300951));
+    this.tqo = ((GameRoundImageView)findViewById(2131298822));
+    this.tqp = ((ImageView)findViewById(2131306363));
+    this.tqD = ((RelativeLayout)findViewById(2131300373));
+    this.kgj = ((ImageView)findViewById(2131300462));
+    this.tqE = ((TextView)findViewById(2131300524));
+    this.tmT = ((GameDownloadView)findViewById(2131300435));
     setOnClickListener(this);
-    this.siJ.setOnClickListener(this);
+    this.tqC.setOnClickListener(this);
     AppMethodBeat.o(42120);
   }
   
   public void setData(d paramd)
   {
     AppMethodBeat.i(42121);
-    ad.d("MicroMsg.GameFeedNoGamePlayTemplate", "setData");
-    if ((paramd == null) || (paramd.rVo == null) || (paramd.rVo.saQ == null))
+    ac.d("MicroMsg.GameFeedNoGamePlayTemplate", "setData");
+    if ((paramd == null) || (paramd.tdg == null) || (paramd.tdg.tiK == null))
     {
       setVisibility(8);
       AppMethodBeat.o(42121);
       return;
     }
-    ad.d("MicroMsg.GameFeedNoGamePlayTemplate", "setData 1");
-    this.sfe = paramd;
-    paramd = paramd.rVo;
+    ac.d("MicroMsg.GameFeedNoGamePlayTemplate", "setData 1");
+    this.tmX = paramd;
+    paramd = paramd.tdg;
     setVisibility(0);
-    this.siI.b(paramd.saQ.Title, paramd.saQ.Desc, paramd.saQ.sdt);
-    this.siJ.setVisibility(0);
-    if (!bt.isNullOrNil(paramd.saQ.rZn))
+    this.tqB.b(paramd.tiK.Title, paramd.tiK.Desc, paramd.tiK.tln);
+    this.tqC.setVisibility(0);
+    if (!bs.isNullOrNil(paramd.tiK.thg))
     {
-      com.tencent.mm.plugin.game.f.e.cEB().a(this.siv, paramd.saQ.rZn, getResources().getDimensionPixelSize(2131165434), getResources().getDimensionPixelSize(2131165433), c.getScreenWidth(getContext()) - getPaddingLeft() - getPaddingRight());
-      if (!bt.isNullOrNil(paramd.saQ.sbz)) {
-        this.siw.setVisibility(0);
+      com.tencent.mm.plugin.game.f.e.cRL().a(this.tqo, paramd.tiK.thg, getResources().getDimensionPixelSize(2131165434), getResources().getDimensionPixelSize(2131165433), c.getScreenWidth(getContext()) - getPaddingLeft() - getPaddingRight());
+      if (!bs.isNullOrNil(paramd.tiK.tjt)) {
+        this.tqp.setVisibility(0);
       }
     }
     for (;;)
     {
-      if (paramd.saQ.rZp != null)
+      if (paramd.tiK.thi != null)
       {
-        this.siK.setVisibility(0);
-        com.tencent.mm.plugin.game.f.e.cEB().c(this.jFL, paramd.saQ.rZp.fVC, com.tencent.mm.cd.a.getDensity(getContext()));
-        this.siL.setText(paramd.saQ.rZp.Name);
-        paramd = x.a(paramd.saQ.rZp);
+        this.tqD.setVisibility(0);
+        com.tencent.mm.plugin.game.f.e.cRL().c(this.kgj, paramd.tiK.thi.fZx, com.tencent.mm.cc.a.getDensity(getContext()));
+        this.tqE.setText(paramd.tiK.thi.Name);
+        paramd = x.a(paramd.tiK.thi);
         paramd.scene = 10;
-        paramd.dvS = 1024;
-        paramd.position = this.sfe.position;
-        this.sfa.setDownloadInfo(new l(paramd));
+        paramd.dtF = 1024;
+        paramd.position = this.tmX.position;
+        this.tmT.setDownloadInfo(new l(paramd));
       }
-      if (!this.sfe.rVq)
+      if (!this.tmX.tdi)
       {
-        com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1024, this.sfe.position, this.sfe.rVo.hnC, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.qh(this.sfe.rVo.rZW));
-        this.sfe.rVq = true;
+        com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1024, this.tmX.position, this.tmX.tdg.hOf, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.tu(this.tmX.tdg.thP));
+        this.tmX.tdi = true;
       }
       AppMethodBeat.o(42121);
       return;
-      this.siw.setVisibility(8);
+      this.tqp.setVisibility(8);
       continue;
-      this.siJ.setVisibility(8);
+      this.tqC.setVisibility(8);
     }
   }
 }

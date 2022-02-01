@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/hp6" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/hk3" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <RelativeLayout android:background="@drawable/c66" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textColor="@color/BW_0" android:id="@id/hk6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c8" android:layout_marginTop="@dimen/c8" android:text="@string/hoy" style="@style/he" />
-        <TextView android:id="@id/hjt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c8" android:layout_marginTop="@dimen/c8" android:text="@string/hoa" android:layout_below="@id/hk6" style="@style/hh" />
-        <TextView android:textColor="@color/Purple" android:id="@id/hjv" android:layout_width="@dimen/c2" android:layout_height="@dimen/cb" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/c_" android:text="@string/ho_" android:layout_below="@id/hjt" android:layout_centerHorizontal="true" style="@style/q1" />
-    </RelativeLayout>
-</LinearLayout>
+    <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/hp1" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/hp2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ci" android:layout_toEndOf="@id/hp1">
+        <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hp3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hp4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xxx的直播" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

@@ -9,24 +9,24 @@ public abstract class n
   extends m
   implements h
 {
-  public final Object aA(Object paramObject)
+  public final Object ay(Object paramObject)
   {
     return get(paramObject);
   }
   
-  protected final a fvK()
+  public final h.a fOA()
+  {
+    return ((h)fOB()).fOA();
+  }
+  
+  protected final a fOo()
   {
     return w.a(this);
   }
   
-  public final m.a fvV()
+  public final m.a fOz()
   {
-    return ((h)fvX()).fvV();
-  }
-  
-  public final h.a fvW()
-  {
-    return ((h)fvX()).fvW();
+    return ((h)fOB()).fOz();
   }
 }
 

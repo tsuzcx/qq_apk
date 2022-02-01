@@ -10,22 +10,22 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/collections/EmptySet;", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "serialVersionUID", "", "size", "", "getSize", "()I", "contains", "", "element", "containsAll", "elements", "", "equals", "other", "", "hashCode", "isEmpty", "iterator", "", "readResolve", "toString", "", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/EmptySet;", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "serialVersionUID", "", "size", "", "getSize", "()I", "contains", "", "element", "containsAll", "elements", "", "equals", "other", "", "hashCode", "isEmpty", "iterator", "", "readResolve", "toString", "", "kotlin-stdlib"})
 public final class x
   implements a, Serializable, Set
 {
-  public static final x Jgn;
+  public static final x KTH;
   
   static
   {
     AppMethodBeat.i(129052);
-    Jgn = new x();
+    KTH = new x();
     AppMethodBeat.o(129052);
   }
   
   private final Object readResolve()
   {
-    return Jgn;
+    return KTH;
   }
   
   public final boolean addAll(Collection paramCollection)
@@ -90,7 +90,7 @@ public final class x
   
   public final Iterator iterator()
   {
-    return (Iterator)u.Jgk;
+    return (Iterator)u.KTE;
   }
   
   public final boolean remove(Object paramObject)
@@ -120,7 +120,7 @@ public final class x
   public final Object[] toArray()
   {
     AppMethodBeat.i(129059);
-    Object[] arrayOfObject = f.r(this);
+    Object[] arrayOfObject = f.s(this);
     AppMethodBeat.o(129059);
     return arrayOfObject;
   }

@@ -8,46 +8,46 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class a<T, V extends View>
   extends RecyclerView.a<b>
 {
-  public a GdK = null;
-  public List<T> cbP = new ArrayList();
-  private RecyclerView fPw;
+  public a HDz = null;
+  public List<T> bYM = new ArrayList();
+  private RecyclerView fTr;
   
   public void a(final b paramb, final int paramInt)
   {
-    paramb.arI.setOnClickListener(new View.OnClickListener()
+    paramb.asD.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164160);
-        if (a.this.GdK != null)
+        if (a.this.HDz != null)
         {
-          int i = ((b)((RecyclerView)paramb.arI.getParent()).bu(paramb.arI)).ln();
+          int i = ((b)((RecyclerView)paramb.asD.getParent()).bu(paramb.asD)).lv();
           if (i < 0)
           {
-            ad.e("MicroMsg.RecyclerViewAdapterBase", "[onBindViewHolder#setOnClickListener] pos=%s", new Object[] { Integer.valueOf(i) });
+            ac.e("MicroMsg.RecyclerViewAdapterBase", "[onBindViewHolder#setOnClickListener] pos=%s", new Object[] { Integer.valueOf(i) });
             AppMethodBeat.o(164160);
             return;
           }
-          a.this.GdK.a(i, paramAnonymousView, a.this.getItemAtPosition(i));
+          a.this.HDz.a(i, paramAnonymousView, a.this.getItemAtPosition(i));
         }
         AppMethodBeat.o(164160);
       }
     });
-    paramb.arI.setOnLongClickListener(new View.OnLongClickListener()
+    paramb.asD.setOnLongClickListener(new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164161);
-        if (a.this.GdK != null)
+        if (a.this.HDz != null)
         {
-          boolean bool = a.this.GdK.a(paramAnonymousView, a.this.getItemAtPosition(paramInt));
+          boolean bool = a.this.HDz.a(paramAnonymousView, a.this.getItemAtPosition(paramInt));
           AppMethodBeat.o(164161);
           return bool;
         }
@@ -60,38 +60,38 @@ public abstract class a<T, V extends View>
   public void a(b paramb, int paramInt, List<Object> paramList)
   {
     super.a(paramb, paramInt, paramList);
-    paramb.fPw = this.fPw;
+    paramb.fTr = this.fTr;
   }
   
   public final void c(RecyclerView paramRecyclerView)
   {
     super.c(paramRecyclerView);
-    this.fPw = paramRecyclerView;
+    this.fTr = paramRecyclerView;
   }
   
   public final void clearItems()
   {
-    int i = this.cbP.size();
-    this.cbP.clear();
+    int i = this.bYM.size();
+    this.bYM.clear();
     ar(0, i);
   }
   
   public final T getItemAtPosition(int paramInt)
   {
-    return this.cbP.get(paramInt);
+    return this.bYM.get(paramInt);
   }
   
   public final int getItemCount()
   {
-    return this.cbP.size();
+    return this.bYM.size();
   }
   
-  public final void hr(List<T> paramList)
+  public final void hE(List<T> paramList)
   {
     if (paramList != null)
     {
-      int i = this.cbP.size();
-      this.cbP.addAll(paramList);
+      int i = this.bYM.size();
+      this.bYM.addAll(paramList);
       aq(i, paramList.size());
     }
   }
@@ -102,8 +102,8 @@ public abstract class a<T, V extends View>
   {
     if (paramList != null)
     {
-      this.cbP = paramList;
-      this.aql.notifyChanged();
+      this.bYM = paramList;
+      this.arg.notifyChanged();
     }
   }
   
@@ -116,7 +116,7 @@ public abstract class a<T, V extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,24 +7,24 @@ import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.g.f;
 import com.tencent.mm.plugin.emojicapture.api.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sticker.loader.e;
 import com.tencent.mm.sticker.loader.g;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.widget.a.f.c;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/model/CheckStickerDownload;", "", "context", "Landroid/content/Context;", "url", "", "onResult", "Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;)V", "TAG", "callback", "com/tencent/mm/plugin/emojicapture/model/CheckStickerDownload$callback$1", "Lcom/tencent/mm/plugin/emojicapture/model/CheckStickerDownload$callback$1;", "canRetry", "", "canceled", "getContext", "()Landroid/content/Context;", "loadHint", "kotlin.jvm.PlatformType", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getOnResult", "()Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;", "getUrl", "()Ljava/lang/String;", "destroy", "", "rescan", "download", "startPreview", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/CheckStickerDownload;", "", "context", "Landroid/content/Context;", "url", "", "onResult", "Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;)V", "TAG", "callback", "com/tencent/mm/plugin/emojicapture/model/CheckStickerDownload$callback$1", "Lcom/tencent/mm/plugin/emojicapture/model/CheckStickerDownload$callback$1;", "canRetry", "", "canceled", "getContext", "()Landroid/content/Context;", "loadHint", "kotlin.jvm.PlatformType", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getOnResult", "()Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;", "getUrl", "()Ljava/lang/String;", "destroy", "", "rescan", "download", "startPreview", "plugin-emojicapture_release"})
 public final class b
 {
   final String TAG;
   final Context context;
-  boolean hls;
-  private final String oJF;
-  final p oJG;
-  final a.b oJI;
-  private boolean oJO;
-  final a oJP;
+  boolean hLV;
+  private final String pnd;
+  final p pne;
+  final a.b png;
+  private boolean pnm;
+  final a pnn;
   final String url;
   
   public b(Context paramContext, String paramString, a.b paramb)
@@ -32,41 +32,41 @@ public final class b
     AppMethodBeat.i(153);
     this.context = paramContext;
     this.url = paramString;
-    this.oJI = paramb;
+    this.png = paramb;
     this.TAG = "MicroMsg.CheckStickerDownload";
-    this.oJO = true;
-    this.oJF = this.context.getResources().getString(2131755720);
-    this.oJG = p.a(this.context, (CharSequence)this.oJF, true, 0, (DialogInterface.OnCancelListener)new b(this));
-    this.oJP = new a(this);
-    paramContext = e.Fds;
-    e.a((f)this.oJP);
-    bXv();
+    this.pnm = true;
+    this.pnd = this.context.getResources().getString(2131755720);
+    this.pne = p.a(this.context, (CharSequence)this.pnd, true, 0, (DialogInterface.OnCancelListener)new b(this));
+    this.pnn = new a(this);
+    paramContext = e.GAP;
+    e.a((f)this.pnn);
+    ceI();
     AppMethodBeat.o(153);
   }
   
-  final void bXv()
+  final void ceI()
   {
     AppMethodBeat.i(151);
-    e locale = e.Fds;
-    e.aHc(this.url);
+    e locale = e.GAP;
+    e.aMw(this.url);
     AppMethodBeat.o(151);
   }
   
-  public final void jQ(boolean paramBoolean)
+  public final void kt(boolean paramBoolean)
   {
     AppMethodBeat.i(152);
-    this.oJG.dismiss();
-    e locale = e.Fds;
-    e.b((f)this.oJP);
-    this.oJI.df(paramBoolean);
+    this.pne.dismiss();
+    e locale = e.GAP;
+    e.b((f)this.pnn);
+    this.png.de(paramBoolean);
     AppMethodBeat.o(152);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/emojicapture/model/CheckStickerDownload$callback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojicapture_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/emojicapture/model/CheckStickerDownload$callback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojicapture_release"})
   public static final class a
     implements f<g>
   {
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
     static final class a
       implements f.c
     {
@@ -75,12 +75,12 @@ public final class b
       public final void d(boolean paramBoolean, String paramString)
       {
         AppMethodBeat.i(145);
-        this.oJR.oJQ.bXv();
+        this.pnp.pno.ceI();
         AppMethodBeat.o(145);
       }
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
     static final class b
       implements f.c
     {
@@ -89,12 +89,12 @@ public final class b
       public final void d(boolean paramBoolean, String paramString)
       {
         AppMethodBeat.i(146);
-        this.oJR.oJQ.jQ(true);
+        this.pnp.pno.kt(true);
         AppMethodBeat.o(146);
       }
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
     static final class c
       implements f.c
     {
@@ -103,12 +103,12 @@ public final class b
       public final void d(boolean paramBoolean, String paramString)
       {
         AppMethodBeat.i(147);
-        this.oJR.oJQ.jQ(false);
+        this.pnp.pno.kt(false);
         AppMethodBeat.o(147);
       }
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
     static final class d
       implements f.c
     {
@@ -117,13 +117,13 @@ public final class b
       public final void d(boolean paramBoolean, String paramString)
       {
         AppMethodBeat.i(148);
-        this.oJR.oJQ.jQ(false);
+        this.pnp.pno.kt(false);
         AppMethodBeat.o(148);
       }
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class b
     implements DialogInterface.OnCancelListener
   {
@@ -132,16 +132,16 @@ public final class b
     public final void onCancel(DialogInterface paramDialogInterface)
     {
       AppMethodBeat.i(150);
-      ad.i(this.oJQ.TAG, "startStickerPreview: cancel loading");
-      this.oJQ.hls = true;
-      this.oJQ.jQ(false);
+      ac.i(this.pno.TAG, "startStickerPreview: cancel loading");
+      this.pno.hLV = true;
+      this.pno.kt(false);
       AppMethodBeat.o(150);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b
  * JD-Core Version:    0.7.0.1
  */

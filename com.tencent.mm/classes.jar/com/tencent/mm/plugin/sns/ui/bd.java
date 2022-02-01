@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.sns.data.q;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.yk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -18,52 +18,52 @@ import java.util.Map;
 public final class bd
   extends d<p>
 {
-  private boolean diE;
+  private boolean dfZ;
   List<p> list;
-  Comparator<p> wDj;
-  private boolean xEc;
-  private bc.a xEd;
-  private c xEe;
-  boolean xEg;
-  private int xjP;
-  private int xjQ;
+  Comparator<p> xPE;
+  private boolean yQQ;
+  private bc.a yQR;
+  private c yQS;
+  boolean yQU;
+  private int ywI;
+  private int ywJ;
   
   public bd(bc.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(99068);
-    this.diE = false;
+    this.dfZ = false;
     this.list = new ArrayList();
-    this.xjP = 0;
-    this.xjQ = 0;
-    this.xEg = false;
-    this.xEc = false;
-    this.wDj = new Comparator() {};
-    this.xEd = parama;
-    this.diE = paramBoolean;
+    this.ywI = 0;
+    this.ywJ = 0;
+    this.yQU = false;
+    this.yQQ = false;
+    this.xPE = new Comparator() {};
+    this.yQR = parama;
+    this.dfZ = paramBoolean;
     AppMethodBeat.o(99068);
   }
   
-  public final List<p> VZ()
+  public final List<p> WX()
   {
     AppMethodBeat.i(99072);
-    List localList = aj.iE(q.su(aj.wET), q.su(aj.wEU));
-    ad.i("MicroMsg.SnsSelfAdapterSearchHelper", "loadData thread: %d count: %d", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(localList.size()) });
+    List localList = aj.jb(q.wX(aj.xRo), q.wX(aj.xRp));
+    ac.i("MicroMsg.SnsSelfAdapterSearchHelper", "loadData thread: %d count: %d", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(localList.size()) });
     AppMethodBeat.o(99072);
     return localList;
   }
   
-  public final void ac(boolean paramBoolean1, boolean paramBoolean2)
+  public final void af(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(99069);
-    this.xEc = paramBoolean1;
-    lQ(paramBoolean2);
+    this.yQQ = paramBoolean1;
+    mJ(paramBoolean2);
     AppMethodBeat.o(99069);
   }
   
   final void f(boolean paramBoolean, List<p> paramList)
   {
-    AppMethodBeat.i(187720);
-    this.xEe = new c();
+    AppMethodBeat.i(200535);
+    this.yQS = new c();
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     HashMap localHashMap3 = new HashMap();
@@ -71,21 +71,21 @@ public final class bd
     int j = 0;
     int i1 = 0;
     p localp;
-    if ((paramBoolean) && (this.diE))
+    if ((paramBoolean) && (this.dfZ))
     {
       localp = new p((byte)0);
       localp.field_snsId = 0L;
-      localp.xiB = -1;
+      localp.yvp = -1;
       localp.setCreateTime((int)(System.currentTimeMillis() / 1000L));
       paramList.add(0, localp);
     }
     int i3 = paramList.size();
-    ad.d("MicroMsg.SnsSelfAdapterSearchHelper", "initFixType ".concat(String.valueOf(i3)));
+    ac.d("MicroMsg.SnsSelfAdapterSearchHelper", "initFixType ".concat(String.valueOf(i3)));
     int n = 0;
     int m = 0;
     if (n < i3)
     {
-      this.xEe.drT();
+      this.yQS.dGs();
       TimeLineObject localTimeLineObject;
       label264:
       label376:
@@ -96,13 +96,13 @@ public final class bd
       if (n + 1 < i3)
       {
         localp = (p)paramList.get(n + 1);
-        this.xEe.wAh = localp.field_head;
-        localTimeLineObject = localp.dxy();
-        this.xEe.wAl = localTimeLineObject.Etj;
-        this.xEe.wAi = aj.ap(localp.field_localPrivate, this.diE);
-        this.xEe.wAj = localp.field_type;
-        if (localTimeLineObject.Etm != null) {
-          this.xEe.wAk = localTimeLineObject.Etm.DaC.size();
+        this.yQS.xMB = localp.field_head;
+        localTimeLineObject = localp.dLV();
+        this.yQS.xME = localTimeLineObject.FQl;
+        this.yQS.xMC = aj.as(localp.field_localPrivate, this.dfZ);
+        this.yQS.xMD = localp.field_type;
+        if (localTimeLineObject.FQo != null) {
+          this.yQS.rvG = localTimeLineObject.FQo.Etz.size();
         }
       }
       else
@@ -110,27 +110,27 @@ public final class bd
         if (n + 2 < i3)
         {
           localp = (p)paramList.get(n + 2);
-          this.xEe.wAr = localp.field_head;
-          localTimeLineObject = localp.dxy();
-          this.xEe.wAm = localTimeLineObject.Etj;
-          this.xEe.wAs = aj.ap(localp.field_localPrivate, this.diE);
-          this.xEe.wAt = localp.field_type;
-          if (localTimeLineObject.Etm == null) {
+          this.yQS.xMK = localp.field_head;
+          localTimeLineObject = localp.dLV();
+          this.yQS.xMF = localTimeLineObject.FQl;
+          this.yQS.xML = aj.as(localp.field_localPrivate, this.dfZ);
+          this.yQS.xMM = localp.field_type;
+          if (localTimeLineObject.FQo == null) {
             break label600;
           }
-          this.xEe.wAu = localTimeLineObject.Etm.DaC.size();
+          this.yQS.xMN = localTimeLineObject.FQo.Etz.size();
         }
         localp = (p)paramList.get(n);
-        this.xEe.wAg = localp.field_head;
-        localTimeLineObject = localp.dxy();
-        this.xEe.wAn = localTimeLineObject.Etj;
-        this.xEe.wAo = localp.field_type;
-        this.xEe.wAq = aj.ap(localp.field_localPrivate, this.diE);
-        if (localTimeLineObject.Etm == null) {
+        this.yQS.xMA = localp.field_head;
+        localTimeLineObject = localp.dLV();
+        this.yQS.xMG = localTimeLineObject.FQl;
+        this.yQS.xMH = localp.field_type;
+        this.yQS.xMJ = aj.as(localp.field_localPrivate, this.dfZ);
+        if (localTimeLineObject.FQo == null) {
           break label611;
         }
-        this.xEe.wAp = localTimeLineObject.Etm.DaC.size();
-        if (!this.xEe.drU()) {
+        this.yQS.xMI = localTimeLineObject.FQo.Etz.size();
+        if (!this.yQS.dGt()) {
           break label622;
         }
         i = 1;
@@ -138,7 +138,7 @@ public final class bd
         localHashMap2.put(Integer.valueOf(m), Integer.valueOf(i));
         i2 = j + i;
         localHashMap3.put(Integer.valueOf(m), Integer.valueOf(i1));
-        if ((!this.diE) || (n != 0)) {
+        if ((!this.dfZ) || (n != 0)) {
           break label642;
         }
         j = 0;
@@ -150,16 +150,16 @@ public final class bd
         m += 1;
         j = i2;
         break;
-        this.xEe.wAk = 0;
+        this.yQS.rvG = 0;
         break label264;
         label600:
-        this.xEe.wAu = 0;
+        this.yQS.xMN = 0;
         break label376;
         label611:
-        this.xEe.wAp = 0;
+        this.yQS.xMI = 0;
         break label477;
         label622:
-        if (this.xEe.drV())
+        if (this.yQS.dGu())
         {
           i = 2;
           break label489;
@@ -172,7 +172,7 @@ public final class bd
         if (i > 0)
         {
           j = k;
-          if (this.xEe.wAo == 1) {
+          if (this.yQS.xMH == 1) {
             j = 1;
           }
         }
@@ -180,7 +180,7 @@ public final class bd
         if (i >= 2)
         {
           k = j;
-          if (this.xEe.wAj == 1) {
+          if (this.yQS.xMD == 1) {
             k = j + 1;
           }
         }
@@ -188,30 +188,30 @@ public final class bd
         if (i >= 3)
         {
           j = k;
-          if (this.xEe.wAt == 1) {
+          if (this.yQS.xMM == 1) {
             j = k + 1;
           }
         }
       }
     }
-    this.xjP = m;
-    this.xjQ = paramList.size();
-    ad.d("MicroMsg.SnsSelfAdapterSearchHelper", "icount " + this.xjP);
+    this.ywI = m;
+    this.ywJ = paramList.size();
+    ac.d("MicroMsg.SnsSelfAdapterSearchHelper", "icount " + this.ywI);
     this.list = paramList;
-    q.be("SnsphotoAdapter initFixType ", l);
-    this.xEd.b(this.list, localHashMap1, localHashMap2, localHashMap3, this.xjQ, this.xjP);
-    AppMethodBeat.o(187720);
+    q.bg("SnsphotoAdapter initFixType ", l);
+    this.yQR.b(this.list, localHashMap1, localHashMap2, localHashMap3, this.ywJ, this.ywI);
+    AppMethodBeat.o(200535);
   }
   
-  public final void fB(List<p> paramList)
+  public final void fJ(List<p> paramList)
   {
     AppMethodBeat.i(99071);
-    if (this.xEd != null)
+    if (this.yQR != null)
     {
       if (paramList != null) {
-        f(this.xEg, paramList);
+        f(this.yQU, paramList);
       }
-      this.xEd.dBL();
+      this.yQR.dQi();
     }
     AppMethodBeat.o(99071);
   }

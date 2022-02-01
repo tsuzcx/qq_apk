@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ou
   extends b
 {
-  public a duf;
-  public b dug;
+  public a drl;
   
   public ou()
   {
@@ -16,23 +15,21 @@ public final class ou
   
   private ou(byte paramByte)
   {
-    AppMethodBeat.i(9427);
-    this.duf = new a();
-    this.dug = new b();
-    this.ESR = false;
+    AppMethodBeat.i(168630);
+    this.drl = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(9427);
+    AppMethodBeat.o(168630);
   }
   
   public static final class a
   {
-    public long ded;
-    public String dsv;
-  }
-  
-  public static final class b
-  {
-    public String duh;
+    public boolean drm;
+    public String drn;
+    public String mediaId;
+    public int process;
+    public int size;
+    public int type;
   }
 }
 

@@ -17,7 +17,7 @@ public final class d
     super(paramViewGroup, parama);
   }
   
-  public final int chg()
+  public final int coN()
   {
     return 2131493913;
   }
@@ -25,9 +25,9 @@ public final class d
   public final void initView()
   {
     AppMethodBeat.i(104326);
-    FaceDetectReporter.cfV().cfW();
-    FaceDetectReporter.cfV().cfX();
-    FaceDetectReporter.cfV().pPB = System.currentTimeMillis();
+    FaceDetectReporter.cnC().cnD();
+    FaceDetectReporter.cnC().cnE();
+    FaceDetectReporter.cnC().qyj = System.currentTimeMillis();
     MMAnimateView localMMAnimateView = (MMAnimateView)findViewById(2131299705);
     localMMAnimateView.setImageResource(2131690129);
     localMMAnimateView.start();
@@ -41,14 +41,14 @@ public final class d
     if (paramView.getId() == 2131299704)
     {
       setVisibility(8);
-      this.pYb.startPreview();
+      this.qGI.startPreview();
     }
     AppMethodBeat.o(104327);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.ui.d
  * JD-Core Version:    0.7.0.1
  */

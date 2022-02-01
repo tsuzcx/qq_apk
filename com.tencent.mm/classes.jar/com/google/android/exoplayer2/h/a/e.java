@@ -9,33 +9,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   implements g.a
 {
-  private final a bxF;
-  private final d.a bxO;
-  private final g.a bxZ;
-  private final g.a bya;
-  private final f.a byb;
+  private final g.a bvI;
+  private final g.a bvJ;
+  private final f.a bvK;
+  private final a bvo;
+  private final d.a bvx;
   private final int flags;
   
   public e(a parama, g.a parama1, g.a parama2, f.a parama3, d.a parama4)
   {
-    this.bxF = parama;
-    this.bxZ = parama1;
-    this.bya = parama2;
-    this.byb = parama3;
+    this.bvo = parama;
+    this.bvI = parama1;
+    this.bvJ = parama2;
+    this.bvK = parama3;
     this.flags = 3;
-    this.bxO = parama4;
+    this.bvx = parama4;
   }
   
-  public final d vv()
+  public final d vm()
   {
     AppMethodBeat.i(92974);
-    a locala = this.bxF;
-    g localg1 = this.bxZ.vi();
-    g localg2 = this.bya.vi();
-    if (this.byb != null) {}
-    for (Object localObject = this.byb.vh();; localObject = null)
+    a locala = this.bvo;
+    g localg1 = this.bvI.vc();
+    g localg2 = this.bvJ.vc();
+    if (this.bvK != null) {}
+    for (Object localObject = this.bvK.vb();; localObject = null)
     {
-      localObject = new d(locala, localg1, localg2, (f)localObject, this.flags, this.bxO);
+      localObject = new d(locala, localg1, localg2, (f)localObject, this.flags, this.bvx);
       AppMethodBeat.o(92974);
       return localObject;
     }

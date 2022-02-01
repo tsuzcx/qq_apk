@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.afz;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.protocal.protobuf.agy;
 
 public final class d
 {
-  public afy dke;
-  public g okO;
+  public agx dhz;
+  public g oOo;
   
-  public d(g paramg, afy paramafy)
+  public d(g paramg, agx paramagx)
   {
-    this.okO = paramg;
-    this.dke = paramafy;
+    this.oOo = paramg;
+    this.dhz = paramagx;
   }
   
-  public final boolean cjM()
+  public final boolean crt()
   {
-    return this.dke.dataType == 4;
+    return this.dhz.dataType == 4;
   }
   
-  public final boolean cjN()
+  public final boolean cru()
   {
-    return (this.dke.dataType == 4) && (this.dke.DgT != null) && (this.dke.DgT.DhU != null);
+    return (this.dhz.dataType == 4) && (this.dhz.EzZ != null) && (this.dhz.EzZ.EBa != null);
   }
   
-  public final boolean cjO()
+  public final boolean crv()
   {
-    return this.dke.dataType == 15;
+    return this.dhz.dataType == 15;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.d
  * JD-Core Version:    0.7.0.1
  */

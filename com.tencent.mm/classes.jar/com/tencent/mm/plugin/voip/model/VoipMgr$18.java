@@ -11,18 +11,18 @@ final class VoipMgr$18
 {
   VoipMgr$18(VoipMgr paramVoipMgr) {}
   
-  public final void Ca()
+  public final void BE()
   {
-    AppMethodBeat.i(192028);
-    VoipMgr localVoipMgr = this.zlq;
+    AppMethodBeat.i(208351);
+    VoipMgr localVoipMgr = this.AEb;
     SurfaceTexture localSurfaceTexture = v2protocal.mSurfaceTexture;
-    d locald = v2protocal.zpx;
-    if ((localVoipMgr.zgR != null) && (localSurfaceTexture != null))
+    d locald = v2protocal.AIm;
+    if ((localVoipMgr.AzA != null) && (localSurfaceTexture != null))
     {
       localSurfaceTexture.setOnFrameAvailableListener(localVoipMgr);
-      localVoipMgr.zgR.a(localSurfaceTexture, locald);
+      localVoipMgr.AzA.a(localSurfaceTexture, locald);
     }
-    AppMethodBeat.o(192028);
+    AppMethodBeat.o(208351);
   }
 }
 

@@ -7,7 +7,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
-import com.tencent.mm.co.a.a;
+import com.tencent.mm.cn.a.a;
 import com.tencent.mm.compatible.deviceinfo.l;
 import com.tencent.mm.compatible.util.f.a;
 import com.tencent.mm.kernel.a.c;
@@ -15,15 +15,17 @@ import com.tencent.mm.loader.j.b;
 import com.tencent.mm.model.al;
 import com.tencent.mm.model.am;
 import com.tencent.mm.model.ci;
+import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.by;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.cb;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.storagebase.f;
 import com.tencent.mm.storagebase.h.a;
 import com.tencent.mm.storagebase.h.b;
@@ -51,29 +53,29 @@ public final class e
 {
   private static HashMap<Integer, h.b> baseDBFactories;
   public String cachePath;
-  public final aa gcR;
-  private com.tencent.mm.kernel.api.e gcS;
-  public b gcT;
-  b gcU;
-  public String gcV;
-  public String gcW;
-  public String gcX;
-  String gcY;
-  String gcZ;
-  public com.tencent.mm.storagebase.h gda;
-  public com.tencent.mm.storagebase.h gdb;
-  com.tencent.mm.storage.ab gdc;
-  com.tencent.mm.storage.bt gdd;
-  bz gde;
-  ConcurrentHashMap<Integer, String> gdf;
-  boolean gdg;
-  ci gdh;
-  ConcurrentHashMap<String, SharedPreferences> gdi;
-  private long gdj;
-  private ap gdk;
-  public volatile Boolean gdl;
-  public a gdm;
-  public long gdn;
+  b ghA;
+  public String ghB;
+  public String ghC;
+  public String ghD;
+  String ghE;
+  String ghF;
+  public com.tencent.mm.storagebase.h ghG;
+  public com.tencent.mm.storagebase.h ghH;
+  com.tencent.mm.storage.ae ghI;
+  bw ghJ;
+  cc ghK;
+  ConcurrentHashMap<Integer, String> ghL;
+  boolean ghM;
+  ci ghN;
+  ConcurrentHashMap<String, SharedPreferences> ghO;
+  private long ghP;
+  private ao ghQ;
+  public volatile Boolean ghR;
+  public a ghS;
+  public long ghT;
+  public final ad ghx;
+  private com.tencent.mm.kernel.api.e ghy;
+  public b ghz;
   
   static
   {
@@ -84,14 +86,14 @@ public final class e
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.storage.ab.SQL_CREATE;
+        return com.tencent.mm.storage.ae.SQL_CREATE;
       }
     });
     baseDBFactories.put(Integer.valueOf("TablesVersion".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return bz.SQL_CREATE;
+        return cc.SQL_CREATE;
       }
     });
     AppMethodBeat.o(132107);
@@ -100,31 +102,31 @@ public final class e
   public e(com.tencent.mm.kernel.api.e parame)
   {
     AppMethodBeat.i(132077);
-    this.gcT = new b();
-    this.gcU = new b();
-    this.gda = null;
-    this.gdb = null;
-    this.gdg = false;
-    this.gdi = new ConcurrentHashMap();
-    this.gdj = 0L;
-    this.gdk = null;
-    this.gdl = null;
-    this.gdm = new a((byte)0);
-    this.gdn = 0L;
-    this.gcR = afa();
-    a.gbY.a(this.gcR);
-    String str1 = com.tencent.mm.storage.ae.FfH + "alphahold.ini";
-    ad.i("MMKernel.CoreStorage", "initialize dkalpha client:%x  isapha:%b %s", new Object[] { Integer.valueOf(d.CpK), Boolean.valueOf(d.CpN), str1 });
+    this.ghz = new b();
+    this.ghA = new b();
+    this.ghG = null;
+    this.ghH = null;
+    this.ghM = false;
+    this.ghO = new ConcurrentHashMap();
+    this.ghP = 0L;
+    this.ghQ = null;
+    this.ghR = null;
+    this.ghS = new a((byte)0);
+    this.ghT = 0L;
+    this.ghx = agq();
+    a.ggE.a(this.ghx);
+    String str1 = com.tencent.mm.storage.ah.GDu + "alphahold.ini";
+    ac.i("MMKernel.CoreStorage", "initialize dkalpha client:%x  isapha:%b %s", new Object[] { Integer.valueOf(d.DIc), Boolean.valueOf(d.DIf), str1 });
     String str2;
     int i;
-    if (d.CpN)
+    if (d.DIf)
     {
       str2 = com.tencent.mm.sdk.e.a.getValue(str1, "noneedhold");
-      i = d.CpK;
+      i = d.DIc;
     }
     try
     {
-      int j = Integer.decode(com.tencent.mm.loader.j.a.glW).intValue();
+      int j = Integer.decode(com.tencent.mm.loader.j.a.gMJ).intValue();
       i = j;
     }
     catch (Throwable localThrowable)
@@ -134,14 +136,14 @@ public final class e
     }
     if (!String.valueOf(i).equals(str2))
     {
-      ad.w("MMKernel.CoreStorage", "dkalpha version need  reset to DefaultAccount , hold it! client:%x  isapha:%b", new Object[] { Integer.valueOf(i), Boolean.valueOf(d.CpN) });
-      a.aeu();
-      com.tencent.mm.sdk.e.a.aS(str1, "noneedhold", String.valueOf(i));
+      ac.w("MMKernel.CoreStorage", "dkalpha version need  reset to DefaultAccount , hold it! client:%x  isapha:%b", new Object[] { Integer.valueOf(i), Boolean.valueOf(d.DIf) });
+      a.afK();
+      com.tencent.mm.sdk.e.a.aV(str1, "noneedhold", String.valueOf(i));
     }
     for (;;)
     {
-      this.gcV = afj();
-      this.gcS = parame;
+      this.ghB = agz();
+      this.ghy = parame;
       AppMethodBeat.o(132077);
       return;
       i.deleteFile(str1);
@@ -151,8 +153,8 @@ public final class e
   static String C(int paramInt, String paramString)
   {
     AppMethodBeat.i(132106);
-    com.tencent.mm.vfs.e locale1 = new com.tencent.mm.vfs.e(b.ahY(), "account.bin");
-    com.tencent.mm.vfs.e locale2 = new com.tencent.mm.vfs.e(b.ahY() + "MicroMsg/" + paramString + "/account.bin");
+    com.tencent.mm.vfs.e locale1 = new com.tencent.mm.vfs.e(b.aoY(), "account.bin");
+    com.tencent.mm.vfs.e locale2 = new com.tencent.mm.vfs.e(b.aoY() + "MicroMsg/" + paramString + "/account.bin");
     Object localObject1 = h(locale1);
     Object localObject2 = h(locale2);
     int i;
@@ -180,7 +182,7 @@ public final class e
       if ((i == 0) || (bool2)) {
         break;
       }
-      ad.e("MMKernel.CoreStorage", "Cannot write new generated data to account files.");
+      ac.e("MMKernel.CoreStorage", "Cannot write new generated data to account files.");
       AppMethodBeat.o(132106);
       return null;
       if (localObject1 != null)
@@ -190,7 +192,7 @@ public final class e
       }
       else
       {
-        paramString = afq();
+        paramString = agG();
         if (paramString == null)
         {
           AppMethodBeat.o(132106);
@@ -271,17 +273,17 @@ public final class e
     //   11: if_icmpeq +19 -> 30
     //   14: ldc 190
     //   16: ldc_w 363
-    //   19: invokestatic 305	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: invokestatic 305	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   22: ldc_w 361
     //   25: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: iconst_0
     //   29: ireturn
     //   30: aload_0
-    //   31: invokevirtual 367	com/tencent/mm/vfs/e:fhT	()Lcom/tencent/mm/vfs/e;
+    //   31: invokevirtual 367	com/tencent/mm/vfs/e:fxU	()Lcom/tencent/mm/vfs/e;
     //   34: invokevirtual 371	com/tencent/mm/vfs/e:mkdirs	()Z
     //   37: pop
     //   38: aload_0
-    //   39: invokestatic 375	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   39: invokestatic 375	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   42: astore_3
     //   43: aconst_null
     //   44: astore_2
@@ -290,18 +292,18 @@ public final class e
     //   47: invokevirtual 380	java/io/OutputStream:write	([B)V
     //   50: aload_3
     //   51: aload_1
-    //   52: invokestatic 386	com/tencent/mm/b/g:E	([B)[B
+    //   52: invokestatic 385	com/tencent/mm/b/g:C	([B)[B
     //   55: invokevirtual 380	java/io/OutputStream:write	([B)V
     //   58: ldc 190
-    //   60: ldc_w 388
+    //   60: ldc_w 387
     //   63: aload_0
-    //   64: invokestatic 391	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   67: invokevirtual 395	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   70: invokestatic 397	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   64: invokestatic 390	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   67: invokevirtual 394	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   70: invokestatic 396	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   73: aload_3
     //   74: ifnull +7 -> 81
     //   77: aload_3
-    //   78: invokevirtual 400	java/io/OutputStream:close	()V
+    //   78: invokevirtual 399	java/io/OutputStream:close	()V
     //   81: ldc_w 361
     //   84: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   87: iconst_1
@@ -317,7 +319,7 @@ public final class e
     //   103: aload_2
     //   104: ifnull +50 -> 154
     //   107: aload_3
-    //   108: invokevirtual 400	java/io/OutputStream:close	()V
+    //   108: invokevirtual 399	java/io/OutputStream:close	()V
     //   111: ldc_w 361
     //   114: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   117: aload_1
@@ -325,14 +327,14 @@ public final class e
     //   119: astore_1
     //   120: ldc 190
     //   122: aload_1
-    //   123: ldc_w 402
+    //   123: ldc_w 401
     //   126: iconst_1
     //   127: anewarray 4	java/lang/Object
     //   130: dup
     //   131: iconst_0
     //   132: aload_0
     //   133: aastore
-    //   134: invokestatic 406	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   134: invokestatic 405	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   137: ldc_w 361
     //   140: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   143: iconst_0
@@ -340,10 +342,10 @@ public final class e
     //   145: astore_3
     //   146: aload_2
     //   147: aload_3
-    //   148: invokevirtual 409	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   148: invokevirtual 408	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   151: goto -40 -> 111
     //   154: aload_3
-    //   155: invokevirtual 400	java/io/OutputStream:close	()V
+    //   155: invokevirtual 399	java/io/OutputStream:close	()V
     //   158: goto -47 -> 111
     //   161: astore_1
     //   162: goto -63 -> 99
@@ -369,98 +371,12 @@ public final class e
     //   45	73	161	finally
   }
   
-  private static aa afa()
-  {
-    AppMethodBeat.i(132078);
-    ad.i("MMKernel.CoreStorage", "initialize packageInfo:%s version:%x", new Object[] { com.tencent.mm.sdk.platformtools.h.info(), Integer.valueOf(d.CpK) });
-    Object localObject1 = new com.tencent.mm.vfs.e(com.tencent.mm.storage.ae.FfH);
-    if (!((com.tencent.mm.vfs.e)localObject1).exists()) {
-      ((com.tencent.mm.vfs.e)localObject1).mkdirs();
-    }
-    localObject1 = new aa(com.tencent.mm.storage.ae.FfH + "systemInfo.cfg");
-    Object localObject2 = (String)((aa)localObject1).get(258);
-    if (localObject2 != null) {
-      l.WE().set(258, localObject2);
-    }
-    try
-    {
-      localObject2 = new StatFs(com.tencent.mm.compatible.util.g.getDataDirectory().getPath());
-      ad.i("MMKernel.CoreStorage", "CheckData path[%s] blocksize:%d blockcount:%d availcount:%d", new Object[] { com.tencent.mm.compatible.util.g.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()) });
-      AppMethodBeat.o(132078);
-      return localObject1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ad.e("MMKernel.CoreStorage", "check data size failed :%s", new Object[] { localException.getMessage() });
-      }
-    }
-  }
-  
-  private static String afj()
-  {
-    AppMethodBeat.i(132092);
-    Object localObject2 = com.tencent.mm.storage.ae.FfH;
-    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(b.aib());
-    ad.i("MMKernel.CoreStorage", "summer buildSysPath sysPath[" + (String)localObject2 + "] SDCARD_ROOT[" + b.aib() + "] file.exists:" + locale.exists() + " CUtil.isSDCardAvail():" + com.tencent.mm.compatible.util.e.XG());
-    Object localObject1 = localObject2;
-    if (locale.exists())
-    {
-      localObject1 = localObject2;
-      if (com.tencent.mm.compatible.util.e.XG())
-      {
-        localObject1 = localObject2;
-        if (qS(b.aih())) {
-          localObject1 = b.aih();
-        }
-        localObject2 = new com.tencent.mm.vfs.e(b.ais());
-        if (!((com.tencent.mm.vfs.e)localObject2).exists()) {
-          ((com.tencent.mm.vfs.e)localObject2).mkdirs();
-        }
-        localObject2 = new com.tencent.mm.vfs.e(b.aik());
-        if (!((com.tencent.mm.vfs.e)localObject2).exists()) {
-          ((com.tencent.mm.vfs.e)localObject2).mkdirs();
-        }
-        localObject2 = new com.tencent.mm.vfs.e(b.ail());
-        if (!((com.tencent.mm.vfs.e)localObject2).exists()) {
-          ((com.tencent.mm.vfs.e)localObject2).mkdirs();
-        }
-        localObject2 = new com.tencent.mm.vfs.e(b.aim());
-        if (!((com.tencent.mm.vfs.e)localObject2).exists()) {
-          ((com.tencent.mm.vfs.e)localObject2).mkdirs();
-        }
-        localObject2 = new com.tencent.mm.vfs.e(b.aik() + ".nomedia");
-        if (((com.tencent.mm.vfs.e)localObject2).exists()) {}
-      }
-    }
-    try
-    {
-      ((com.tencent.mm.vfs.e)localObject2).createNewFile();
-      qS(b.aij());
-      localObject2 = new com.tencent.mm.vfs.e((String)localObject1);
-      if (!((com.tencent.mm.vfs.e)localObject2).exists()) {
-        ((com.tencent.mm.vfs.e)localObject2).mkdirs();
-      }
-      ad.i("MMKernel.CoreStorage", "summer buildSysPath ret sysPath: ".concat(String.valueOf(localObject1)));
-      AppMethodBeat.o(132092);
-      return localObject1;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        ad.e("MMKernel.CoreStorage", "exception:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(localIOException) });
-      }
-    }
-  }
-  
-  private static boolean afo()
+  private static boolean agE()
   {
     bool3 = false;
     AppMethodBeat.i(132100);
     String str = Environment.getExternalStorageDirectory().getAbsolutePath();
-    boolean bool4 = b.aib().equalsIgnoreCase(str);
+    boolean bool4 = b.apb().equalsIgnoreCase(str);
     boolean bool5 = Environment.getExternalStorageState().equals("mounted");
     try
     {
@@ -482,7 +398,7 @@ public final class e
           locale.createNewFile();
           localOutputStream2 = localOutputStream3;
           Object localObject1 = localObject3;
-          localOutputStream3 = i.ai(locale);
+          localOutputStream3 = i.ah(locale);
           localOutputStream2 = localOutputStream3;
           localObject1 = localOutputStream3;
           localOutputStream3.write("test".getBytes());
@@ -505,7 +421,7 @@ public final class e
           OutputStream localOutputStream3;
           OutputStream localOutputStream2;
           OutputStream localOutputStream1 = localOutputStream2;
-          ad.w("MMKernel.CoreStorage", "testSdcardWritable 2 e: " + localException2.getMessage());
+          ac.w("MMKernel.CoreStorage", "testSdcardWritable 2 e: " + localException2.getMessage());
           boolean bool1 = bool3;
           if (localOutputStream2 == null) {
             continue;
@@ -517,7 +433,7 @@ public final class e
           }
           catch (IOException localIOException2)
           {
-            ad.e("MMKernel.CoreStorage", "exception:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(localIOException2) });
+            ac.e("MMKernel.CoreStorage", "exception:%s", new Object[] { bs.m(localIOException2) });
             bool1 = bool3;
           }
           continue;
@@ -535,7 +451,7 @@ public final class e
           }
           catch (IOException localIOException3)
           {
-            ad.e("MMKernel.CoreStorage", "exception:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(localIOException3) });
+            ac.e("MMKernel.CoreStorage", "exception:%s", new Object[] { bs.m(localIOException3) });
             continue;
           }
           continue;
@@ -543,36 +459,36 @@ public final class e
         try
         {
           localOutputStream3.close();
-          ad.i("MMKernel.CoreStorage", "testSdcardWritable primaryExtStg: " + str + " CConstants.SDCARD_ROOT: " + b.aib() + " isPrimaryExtStg: " + bool4 + " mounted: " + bool5 + " canWrite: " + bool2 + " canTrueWrite:" + bool1);
+          ac.i("MMKernel.CoreStorage", "testSdcardWritable primaryExtStg: " + str + " CConstants.SDCARD_ROOT: " + b.apb() + " isPrimaryExtStg: " + bool4 + " mounted: " + bool5 + " canWrite: " + bool2 + " canTrueWrite:" + bool1);
           AppMethodBeat.o(132100);
           return bool1;
           localException1 = localException1;
-          ad.w("MMKernel.CoreStorage", "testSdcardWritable 1 e: " + localException1.getMessage());
+          ac.w("MMKernel.CoreStorage", "testSdcardWritable 1 e: " + localException1.getMessage());
           bool2 = false;
         }
         catch (IOException localIOException1)
         {
-          ad.e("MMKernel.CoreStorage", "exception:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(localIOException1) });
+          ac.e("MMKernel.CoreStorage", "exception:%s", new Object[] { bs.m(localIOException1) });
         }
       }
     }
   }
   
-  private static boolean afp()
+  private static boolean agF()
   {
     AppMethodBeat.i(132101);
     String str = Environment.getExternalStorageDirectory().getAbsolutePath();
-    boolean bool2 = b.aib().equalsIgnoreCase(str);
+    boolean bool2 = b.apb().equalsIgnoreCase(str);
     boolean bool3 = Environment.getExternalStorageState().equals("mounted");
     try
     {
       bool1 = new com.tencent.mm.vfs.e(Environment.getExternalStorageDirectory().getAbsolutePath()).canRead();
-      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(b.aih());
+      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(b.aph());
       boolean bool4 = locale.exists();
       if (bool4) {
-        ad.i("MMKernel.CoreStorage", "testSdcardReadable testFile isDirectory:" + locale.isDirectory() + " isFile:" + locale.isFile());
+        ac.i("MMKernel.CoreStorage", "testSdcardReadable testFile isDirectory:" + locale.isDirectory() + " isFile:" + locale.isFile());
       }
-      ad.i("MMKernel.CoreStorage", "testSdcardWritable primaryExtStg: " + str + " CConstants.SDCARD_ROOT: " + b.aib() + " CConstants.DATAROOT_SDCARD_PATH: " + b.aih() + " isPrimaryExtStg: " + bool2 + " mounted: " + bool3 + " canRead: " + bool1 + " canTrueRead:" + bool4);
+      ac.i("MMKernel.CoreStorage", "testSdcardWritable primaryExtStg: " + str + " CConstants.SDCARD_ROOT: " + b.apb() + " CConstants.DATAROOT_SDCARD_PATH: " + b.aph() + " isPrimaryExtStg: " + bool2 + " mounted: " + bool3 + " canRead: " + bool1 + " canTrueRead:" + bool4);
       AppMethodBeat.o(132101);
       return bool4;
     }
@@ -581,19 +497,19 @@ public final class e
       for (;;)
       {
         boolean bool1 = false;
-        ad.w("MMKernel.CoreStorage", "testSdcardReadable 1 e: " + localException.getMessage());
+        ac.w("MMKernel.CoreStorage", "testSdcardReadable 1 e: " + localException.getMessage());
       }
     }
   }
   
   /* Error */
-  private static byte[] afq()
+  private static byte[] agG()
   {
     // Byte code:
-    //   0: ldc_w 603
+    //   0: ldc_w 515
     //   3: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc_w 605
-    //   9: invokestatic 609	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   6: ldc_w 517
+    //   9: invokestatic 521	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   12: astore 4
     //   14: sipush 4096
     //   17: newarray byte
@@ -606,18 +522,18 @@ public final class e
     //   26: sipush 4096
     //   29: iload_0
     //   30: isub
-    //   31: invokevirtual 615	java/io/InputStream:read	([BII)I
+    //   31: invokevirtual 527	java/io/InputStream:read	([BII)I
     //   34: istore_1
     //   35: iload_1
     //   36: ifge +29 -> 65
     //   39: ldc 190
-    //   41: ldc_w 617
-    //   44: invokestatic 305	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   41: ldc_w 529
+    //   44: invokestatic 305	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   47: aload 4
     //   49: ifnull +8 -> 57
     //   52: aload 4
-    //   54: invokevirtual 618	java/io/InputStream:close	()V
-    //   57: ldc_w 603
+    //   54: invokevirtual 530	java/io/InputStream:close	()V
+    //   57: ldc_w 515
     //   60: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   63: aconst_null
     //   64: areturn
@@ -633,13 +549,13 @@ public final class e
     //   78: aload 4
     //   80: ifnull +8 -> 88
     //   83: aload 4
-    //   85: invokevirtual 618	java/io/InputStream:close	()V
-    //   88: ldc_w 603
+    //   85: invokevirtual 530	java/io/InputStream:close	()V
+    //   88: ldc_w 515
     //   91: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   94: aload_2
     //   95: areturn
     //   96: astore_3
-    //   97: ldc_w 603
+    //   97: ldc_w 515
     //   100: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: aload_3
     //   104: athrow
@@ -649,29 +565,29 @@ public final class e
     //   111: aload_3
     //   112: ifnull +49 -> 161
     //   115: aload 4
-    //   117: invokevirtual 618	java/io/InputStream:close	()V
-    //   120: ldc_w 603
+    //   117: invokevirtual 530	java/io/InputStream:close	()V
+    //   120: ldc_w 515
     //   123: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   126: aload_2
     //   127: athrow
     //   128: astore_2
     //   129: ldc 190
     //   131: aload_2
-    //   132: ldc_w 620
+    //   132: ldc_w 532
     //   135: iconst_0
     //   136: anewarray 4	java/lang/Object
-    //   139: invokestatic 406	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   142: ldc_w 603
+    //   139: invokestatic 405	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   142: ldc_w 515
     //   145: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   148: aconst_null
     //   149: areturn
     //   150: astore 4
     //   152: aload_3
     //   153: aload 4
-    //   155: invokevirtual 409	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   155: invokevirtual 408	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   158: goto -38 -> 120
     //   161: aload 4
-    //   163: invokevirtual 618	java/io/InputStream:close	()V
+    //   163: invokevirtual 530	java/io/InputStream:close	()V
     //   166: goto -46 -> 120
     //   169: astore_2
     //   170: aconst_null
@@ -708,6 +624,92 @@ public final class e
     //   39	47	169	finally
   }
   
+  private static ad agq()
+  {
+    AppMethodBeat.i(132078);
+    ac.i("MMKernel.CoreStorage", "initialize packageInfo:%s version:%x", new Object[] { com.tencent.mm.sdk.platformtools.h.info(), Integer.valueOf(d.DIc) });
+    Object localObject1 = new com.tencent.mm.vfs.e(com.tencent.mm.storage.ah.GDu);
+    if (!((com.tencent.mm.vfs.e)localObject1).exists()) {
+      ((com.tencent.mm.vfs.e)localObject1).mkdirs();
+    }
+    localObject1 = new ad(com.tencent.mm.storage.ah.GDu + "systemInfo.cfg");
+    Object localObject2 = (String)((ad)localObject1).get(258);
+    if (localObject2 != null) {
+      l.XC().set(258, localObject2);
+    }
+    try
+    {
+      localObject2 = new StatFs(com.tencent.mm.compatible.util.g.getDataDirectory().getPath());
+      ac.i("MMKernel.CoreStorage", "CheckData path[%s] blocksize:%d blockcount:%d availcount:%d", new Object[] { com.tencent.mm.compatible.util.g.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()) });
+      AppMethodBeat.o(132078);
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ac.e("MMKernel.CoreStorage", "check data size failed :%s", new Object[] { localException.getMessage() });
+      }
+    }
+  }
+  
+  private static String agz()
+  {
+    AppMethodBeat.i(132092);
+    Object localObject2 = com.tencent.mm.storage.ah.GDu;
+    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(b.apb());
+    ac.i("MMKernel.CoreStorage", "summer buildSysPath sysPath[" + (String)localObject2 + "] SDCARD_ROOT[" + b.apb() + "] file.exists:" + locale.exists() + " CUtil.isSDCardAvail():" + com.tencent.mm.compatible.util.e.YD());
+    Object localObject1 = localObject2;
+    if (locale.exists())
+    {
+      localObject1 = localObject2;
+      if (com.tencent.mm.compatible.util.e.YD())
+      {
+        localObject1 = localObject2;
+        if (uh(b.aph())) {
+          localObject1 = b.aph();
+        }
+        localObject2 = new com.tencent.mm.vfs.e(b.aps());
+        if (!((com.tencent.mm.vfs.e)localObject2).exists()) {
+          ((com.tencent.mm.vfs.e)localObject2).mkdirs();
+        }
+        localObject2 = new com.tencent.mm.vfs.e(b.apk());
+        if (!((com.tencent.mm.vfs.e)localObject2).exists()) {
+          ((com.tencent.mm.vfs.e)localObject2).mkdirs();
+        }
+        localObject2 = new com.tencent.mm.vfs.e(b.apl());
+        if (!((com.tencent.mm.vfs.e)localObject2).exists()) {
+          ((com.tencent.mm.vfs.e)localObject2).mkdirs();
+        }
+        localObject2 = new com.tencent.mm.vfs.e(b.apm());
+        if (!((com.tencent.mm.vfs.e)localObject2).exists()) {
+          ((com.tencent.mm.vfs.e)localObject2).mkdirs();
+        }
+        localObject2 = new com.tencent.mm.vfs.e(b.apk() + ".nomedia");
+        if (((com.tencent.mm.vfs.e)localObject2).exists()) {}
+      }
+    }
+    try
+    {
+      ((com.tencent.mm.vfs.e)localObject2).createNewFile();
+      uh(b.apj());
+      localObject2 = new com.tencent.mm.vfs.e((String)localObject1);
+      if (!((com.tencent.mm.vfs.e)localObject2).exists()) {
+        ((com.tencent.mm.vfs.e)localObject2).mkdirs();
+      }
+      ac.i("MMKernel.CoreStorage", "summer buildSysPath ret sysPath: ".concat(String.valueOf(localObject1)));
+      AppMethodBeat.o(132092);
+      return localObject1;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ac.e("MMKernel.CoreStorage", "exception:%s", new Object[] { bs.m(localIOException) });
+      }
+    }
+  }
+  
   static HashMap<Integer, h.b> getBaseDBFactories()
   {
     AppMethodBeat.i(132102);
@@ -721,13 +723,13 @@ public final class e
   private static byte[] h(com.tencent.mm.vfs.e parame)
   {
     // Byte code:
-    //   0: ldc_w 634
+    //   0: ldc_w 633
     //   3: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: invokevirtual 295	com/tencent/mm/vfs/e:length	()J
     //   10: lstore_3
     //   11: lload_3
-    //   12: ldc2_w 635
+    //   12: ldc2_w 634
     //   15: lcmp
     //   16: ifeq +42 -> 58
     //   19: lload_3
@@ -735,7 +737,7 @@ public final class e
     //   23: lcmp
     //   24: ifeq +34 -> 58
     //   27: ldc 190
-    //   29: ldc_w 638
+    //   29: ldc_w 637
     //   32: iconst_2
     //   33: anewarray 4	java/lang/Object
     //   36: dup
@@ -745,15 +747,15 @@ public final class e
     //   40: dup
     //   41: iconst_1
     //   42: lload_3
-    //   43: invokestatic 643	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   43: invokestatic 642	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   46: aastore
-    //   47: invokestatic 243	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   50: ldc_w 634
+    //   47: invokestatic 243	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   50: ldc_w 633
     //   53: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   56: aconst_null
     //   57: areturn
     //   58: aload_0
-    //   59: invokestatic 647	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   59: invokestatic 646	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   62: astore 7
     //   64: sipush 4096
     //   67: newarray byte
@@ -766,12 +768,12 @@ public final class e
     //   78: sipush 4096
     //   81: iload_1
     //   82: isub
-    //   83: invokevirtual 615	java/io/InputStream:read	([BII)I
+    //   83: invokevirtual 527	java/io/InputStream:read	([BII)I
     //   86: istore_2
     //   87: iload_2
     //   88: ifge +44 -> 132
     //   91: ldc 190
-    //   93: ldc_w 649
+    //   93: ldc_w 648
     //   96: iconst_2
     //   97: anewarray 4	java/lang/Object
     //   100: dup
@@ -783,12 +785,12 @@ public final class e
     //   106: iload_1
     //   107: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   110: aastore
-    //   111: invokestatic 476	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   111: invokestatic 483	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   114: aload 7
     //   116: ifnull +8 -> 124
     //   119: aload 7
-    //   121: invokevirtual 618	java/io/InputStream:close	()V
-    //   124: ldc_w 634
+    //   121: invokevirtual 530	java/io/InputStream:close	()V
+    //   124: ldc_w 633
     //   127: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   130: aconst_null
     //   131: areturn
@@ -802,7 +804,7 @@ public final class e
     //   139: sipush 4096
     //   142: if_icmplt -69 -> 73
     //   145: lload_3
-    //   146: ldc2_w 635
+    //   146: ldc2_w 634
     //   149: lcmp
     //   150: ifle +128 -> 278
     //   153: bipush 16
@@ -816,12 +818,12 @@ public final class e
     //   166: bipush 16
     //   168: iload_1
     //   169: isub
-    //   170: invokevirtual 615	java/io/InputStream:read	([BII)I
+    //   170: invokevirtual 527	java/io/InputStream:read	([BII)I
     //   173: istore_2
     //   174: iload_2
     //   175: ifge +44 -> 219
     //   178: ldc 190
-    //   180: ldc_w 649
+    //   180: ldc_w 648
     //   183: iconst_2
     //   184: anewarray 4	java/lang/Object
     //   187: dup
@@ -833,12 +835,12 @@ public final class e
     //   193: iload_1
     //   194: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   197: aastore
-    //   198: invokestatic 476	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   198: invokestatic 483	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   201: aload 7
     //   203: ifnull +8 -> 211
     //   206: aload 7
-    //   208: invokevirtual 618	java/io/InputStream:close	()V
-    //   211: ldc_w 634
+    //   208: invokevirtual 530	java/io/InputStream:close	()V
+    //   211: ldc_w 633
     //   214: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   217: aconst_null
     //   218: areturn
@@ -853,36 +855,36 @@ public final class e
     //   228: if_icmplt -67 -> 161
     //   231: aload 6
     //   233: aload 5
-    //   235: invokestatic 386	com/tencent/mm/b/g:E	([B)[B
-    //   238: invokestatic 654	java/util/Arrays:equals	([B[B)Z
+    //   235: invokestatic 385	com/tencent/mm/b/g:C	([B)[B
+    //   238: invokestatic 653	java/util/Arrays:equals	([B[B)Z
     //   241: ifne +37 -> 278
     //   244: ldc 190
-    //   246: ldc_w 656
+    //   246: ldc_w 655
     //   249: iconst_1
     //   250: anewarray 4	java/lang/Object
     //   253: dup
     //   254: iconst_0
     //   255: aload_0
     //   256: aastore
-    //   257: invokestatic 476	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   257: invokestatic 483	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   260: aload 7
     //   262: ifnull +8 -> 270
     //   265: aload 7
-    //   267: invokevirtual 618	java/io/InputStream:close	()V
-    //   270: ldc_w 634
+    //   267: invokevirtual 530	java/io/InputStream:close	()V
+    //   270: ldc_w 633
     //   273: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   276: aconst_null
     //   277: areturn
     //   278: aload 7
     //   280: ifnull +8 -> 288
     //   283: aload 7
-    //   285: invokevirtual 618	java/io/InputStream:close	()V
-    //   288: ldc_w 634
+    //   285: invokevirtual 530	java/io/InputStream:close	()V
+    //   288: ldc_w 633
     //   291: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   294: aload 5
     //   296: areturn
     //   297: astore 6
-    //   299: ldc_w 634
+    //   299: ldc_w 633
     //   302: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   305: aload 6
     //   307: athrow
@@ -892,33 +894,33 @@ public final class e
     //   315: aload 6
     //   317: ifnull +57 -> 374
     //   320: aload 7
-    //   322: invokevirtual 618	java/io/InputStream:close	()V
-    //   325: ldc_w 634
+    //   322: invokevirtual 530	java/io/InputStream:close	()V
+    //   325: ldc_w 633
     //   328: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   331: aload 5
     //   333: athrow
     //   334: astore 5
     //   336: ldc 190
     //   338: aload 5
-    //   340: ldc_w 658
+    //   340: ldc_w 657
     //   343: iconst_1
     //   344: anewarray 4	java/lang/Object
     //   347: dup
     //   348: iconst_0
     //   349: aload_0
     //   350: aastore
-    //   351: invokestatic 406	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   354: ldc_w 634
+    //   351: invokestatic 405	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   354: ldc_w 633
     //   357: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   360: aconst_null
     //   361: areturn
     //   362: astore 7
     //   364: aload 6
     //   366: aload 7
-    //   368: invokevirtual 409	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   368: invokevirtual 408	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   371: goto -46 -> 325
     //   374: aload 7
-    //   376: invokevirtual 618	java/io/InputStream:close	()V
+    //   376: invokevirtual 530	java/io/InputStream:close	()V
     //   379: goto -54 -> 325
     //   382: astore 5
     //   384: aconst_null
@@ -968,52 +970,52 @@ public final class e
     //   231	260	382	finally
   }
   
-  public static String mr(int paramInt)
+  public static String mq(int paramInt)
   {
     AppMethodBeat.i(132088);
     String str = com.tencent.mm.b.g.getMessageDigest("mm".concat(String.valueOf(paramInt)).getBytes());
-    str = com.tencent.mm.storage.ae.FfH + str + '/';
+    str = com.tencent.mm.storage.ah.GDu + str + '/';
     AppMethodBeat.o(132088);
     return str;
   }
   
-  private static final boolean qS(String paramString)
+  private static final boolean uh(String paramString)
   {
     AppMethodBeat.i(132093);
-    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.i("MMKernel.CoreStorage", "forceMkdirs absolutePath isNullOrNil ret false");
+      ac.i("MMKernel.CoreStorage", "forceMkdirs absolutePath isNullOrNil ret false");
       AppMethodBeat.o(132093);
       return false;
     }
     Object localObject = new com.tencent.mm.vfs.e(paramString);
-    ad.i("MMKernel.CoreStorage", "forceMkdirs absolutePath[%s], f.exists[%b], f.isDirectory[%b]", new Object[] { paramString, Boolean.valueOf(((com.tencent.mm.vfs.e)localObject).exists()), Boolean.valueOf(((com.tencent.mm.vfs.e)localObject).isDirectory()) });
+    ac.i("MMKernel.CoreStorage", "forceMkdirs absolutePath[%s], f.exists[%b], f.isDirectory[%b]", new Object[] { paramString, Boolean.valueOf(((com.tencent.mm.vfs.e)localObject).exists()), Boolean.valueOf(((com.tencent.mm.vfs.e)localObject).isDirectory()) });
     if ((((com.tencent.mm.vfs.e)localObject).exists()) && (((com.tencent.mm.vfs.e)localObject).isDirectory()))
     {
-      ad.i("MMKernel.CoreStorage", "forceMkdirs f is dir and exist ret true");
+      ac.i("MMKernel.CoreStorage", "forceMkdirs f is dir and exist ret true");
       AppMethodBeat.o(132093);
       return true;
     }
     String[] arrayOfString = paramString.split("/");
     if ((arrayOfString == null) || (arrayOfString.length < 2))
     {
-      ad.i("MMKernel.CoreStorage", "forceMkdirs absolutePath arr len illegal ret false");
+      ac.i("MMKernel.CoreStorage", "forceMkdirs absolutePath arr len illegal ret false");
       AppMethodBeat.o(132093);
       return false;
     }
     localObject = "/";
-    ad.i("MMKernel.CoreStorage", "forceMkdirs absolutePath arr len: " + arrayOfString.length);
+    ac.i("MMKernel.CoreStorage", "forceMkdirs absolutePath arr len: " + arrayOfString.length);
     int i = 0;
     while (i < arrayOfString.length)
     {
       paramString = (String)localObject;
-      if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(arrayOfString[i]))
+      if (!bs.isNullOrNil(arrayOfString[i]))
       {
         localObject = (String)localObject + "/" + arrayOfString[i];
         com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e((String)localObject);
-        if ((locale.isFile()) && (!locale.af(new com.tencent.mm.vfs.e((String)localObject + "_mmbak"))))
+        if ((locale.isFile()) && (!locale.ae(new com.tencent.mm.vfs.e((String)localObject + "_mmbak"))))
         {
-          ad.i("MMKernel.CoreStorage", "forceMkdirs renameTo false ret false file[%s]", new Object[] { locale.getName() });
+          ac.i("MMKernel.CoreStorage", "forceMkdirs renameTo false ret false file[%s]", new Object[] { locale.getName() });
           AppMethodBeat.o(132093);
           return false;
         }
@@ -1023,7 +1025,7 @@ public final class e
           paramString = (String)localObject;
           if (!locale.mkdirs())
           {
-            ad.i("MMKernel.CoreStorage", "forceMkdirs mkdir false ret false file[%s]", new Object[] { locale.getName() });
+            ac.i("MMKernel.CoreStorage", "forceMkdirs mkdir false ret false file[%s]", new Object[] { locale.getName() });
             AppMethodBeat.o(132093);
             return false;
           }
@@ -1032,7 +1034,7 @@ public final class e
       i += 1;
       localObject = paramString;
     }
-    ad.i("MMKernel.CoreStorage", "forceMkdirs false ret true");
+    ac.i("MMKernel.CoreStorage", "forceMkdirs false ret true");
     AppMethodBeat.o(132093);
     return true;
   }
@@ -1041,13 +1043,13 @@ public final class e
   {
     int i = 1;
     AppMethodBeat.i(132081);
-    ad.i("MMKernel.CoreStorage", "remount resetSysPath sysPath:[%s] newSysPath:[%s] accPath:[%s] cachePath: [%s]", new Object[] { this.gcV, paramString, this.gcW, this.cachePath });
-    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramString))
+    ac.i("MMKernel.CoreStorage", "remount resetSysPath sysPath:[%s] newSysPath:[%s] accPath:[%s] cachePath: [%s]", new Object[] { this.ghB, paramString, this.ghC, this.cachePath });
+    if (!bs.isNullOrNil(paramString))
     {
-      int j = this.gcV.length();
-      this.gcW.substring(j);
-      this.gcV = paramString;
-      if ((!paramBoolean) || (!this.gcV.startsWith(b.aib()))) {
+      int j = this.ghB.length();
+      this.ghC.substring(j);
+      this.ghB = paramString;
+      if ((!paramBoolean) || (!this.ghB.startsWith(b.apb()))) {
         break label152;
       }
       if (i == 0) {
@@ -1056,11 +1058,11 @@ public final class e
     }
     label152:
     label157:
-    for (paramString = this.gcY;; paramString = this.gcX)
+    for (paramString = this.ghE;; paramString = this.ghD)
     {
-      this.gcZ = paramString;
-      this.gcW = (this.gcV + this.gcZ + "/");
-      afc();
+      this.ghF = paramString;
+      this.ghC = (this.ghB + this.ghF + "/");
+      ags();
       AppMethodBeat.o(132081);
       return;
       i = 0;
@@ -1073,31 +1075,31 @@ public final class e
     AppMethodBeat.i(132079);
     if (paramam == null)
     {
-      ad.e("MMKernel.CoreStorage", "tryDataTransfer, dataTransferFactory is null");
+      ac.e("MMKernel.CoreStorage", "tryDataTransfer, dataTransferFactory is null");
       AppMethodBeat.o(132079);
       return false;
     }
-    int i = com.tencent.mm.sdk.platformtools.bt.l((Integer)this.gdc.get(14, null));
-    int j = d.CpK;
-    ad.d("MMKernel.CoreStorage", "tryDataTransfer, sVer = " + i + ", cVer = " + j);
+    int i = bs.m((Integer)this.ghI.get(14, null));
+    int j = d.DIc;
+    ac.d("MMKernel.CoreStorage", "tryDataTransfer, sVer = " + i + ", cVer = " + j);
     paramam = paramam.getDataTransferList();
     if (paramam == null)
     {
-      ad.e("MMKernel.CoreStorage", "tryDataTransfer, dataTransferList is null");
+      ac.e("MMKernel.CoreStorage", "tryDataTransfer, dataTransferList is null");
       AppMethodBeat.o(132079);
       return false;
     }
-    if ((com.tencent.mm.platformtools.ab.hVu > 0) && (com.tencent.mm.platformtools.ab.hVv > 0)) {
-      ad.w("MMKernel.CoreStorage", "tryDataTransfer, force data transfer");
+    if ((ab.ivy > 0) && (ab.ivz > 0)) {
+      ac.w("MMKernel.CoreStorage", "tryDataTransfer, force data transfer");
     }
     long l1;
     label383:
     boolean bool1;
     do
     {
-      ad.d("MMKernel.CoreStorage", "tryDataTransfer dataTransferList size = " + paramam.size());
-      ad.d("MMKernel.CoreStorage", "tryDataTransfer, threadId = " + Thread.currentThread().getId() + ", name = " + Thread.currentThread().getName());
-      l1 = this.gda.rb(Thread.currentThread().getId());
+      ac.d("MMKernel.CoreStorage", "tryDataTransfer dataTransferList size = " + paramam.size());
+      ac.d("MMKernel.CoreStorage", "tryDataTransfer, threadId = " + Thread.currentThread().getId() + ", name = " + Thread.currentThread().getName());
+      l1 = this.ghG.vE(Thread.currentThread().getId());
       try
       {
         paramam = paramam.iterator();
@@ -1106,8 +1108,8 @@ public final class e
           localObject = (al)paramam.next();
           long l2 = System.currentTimeMillis();
           ((al)localObject).transfer(i);
-          ((al)localObject).gMV = (System.currentTimeMillis() - l2);
-          ad.d("MicroMsg.DataTransferBase", "doTransfer, timeConsumed = " + ((al)localObject).gMV + ", tag = " + ((al)localObject).getTag());
+          ((al)localObject).hnv = (System.currentTimeMillis() - l2);
+          ac.d("MicroMsg.DataTransferBase", "doTransfer, timeConsumed = " + ((al)localObject).hnv + ", tag = " + ((al)localObject).getTag());
         }
         if (i != j) {
           break label383;
@@ -1121,51 +1123,51 @@ public final class e
       finally
       {
         if (l1 > 0L) {
-          this.gda.mX(l1);
+          this.ghG.qL(l1);
         }
         AppMethodBeat.o(132079);
       }
-      ad.i("MMKernel.CoreStorage", "tryDataTransfer, no need to transfer, sVer = " + i + ", cVer = " + j);
+      ac.i("MMKernel.CoreStorage", "tryDataTransfer, no need to transfer, sVer = " + i + ", cVer = " + j);
       AppMethodBeat.o(132079);
       return false;
       bool1 = false;
       Object localObject = paramam.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        boolean bool2 = ((al)((Iterator)localObject).next()).nb(i);
+        boolean bool2 = ((al)((Iterator)localObject).next()).nP(i);
         bool1 = bool2;
         if (bool2) {
           bool1 = bool2;
         }
       }
-      ad.d("MMKernel.CoreStorage", "tryDataTransfer, needTransfer = ".concat(String.valueOf(bool1)));
+      ac.d("MMKernel.CoreStorage", "tryDataTransfer, needTransfer = ".concat(String.valueOf(bool1)));
     } while (bool1);
     AppMethodBeat.o(132079);
     return false;
-    if ((com.tencent.mm.platformtools.ab.hVu != 0) && (com.tencent.mm.platformtools.ab.hVv != 0))
+    if ((ab.ivy != 0) && (ab.ivz != 0))
     {
       i = 0;
       for (;;)
       {
-        j = com.tencent.mm.platformtools.ab.hVu;
+        j = ab.ivy;
         if (i < j) {
           try
           {
-            Thread.sleep(com.tencent.mm.platformtools.ab.hVv);
+            Thread.sleep(ab.ivz);
             i += 1;
           }
           catch (InterruptedException paramam)
           {
             for (;;)
             {
-              ad.e("MMKernel.CoreStorage", "exception:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(paramam) });
+              ac.e("MMKernel.CoreStorage", "exception:%s", new Object[] { bs.m(paramam) });
             }
           }
         }
       }
     }
     if (l1 > 0L) {
-      this.gda.mX(l1);
+      this.ghG.qL(l1);
     }
     AppMethodBeat.o(132079);
     return true;
@@ -1180,7 +1182,7 @@ public final class e
     if (paramHashMap == null)
     {
       i = -1;
-      ad.i("MMKernel.CoreStorage", "createtables %d %s", new Object[] { Integer.valueOf(i), Boolean.FALSE });
+      ac.i("MMKernel.CoreStorage", "createtables %d %s", new Object[] { Integer.valueOf(i), Boolean.FALSE });
       locala = new f.a();
       if ((paramHashMap != null) && (paramHashMap.size() > 0))
       {
@@ -1200,7 +1202,7 @@ public final class e
           paramHashMap = null;
           if (localb.getSQLs() == null)
           {
-            ad.e("MMKernel.CoreStorage", "factory.getSQLs() is null! %s, %s", new Object[] { localInteger, localb });
+            ac.e("MMKernel.CoreStorage", "factory.getSQLs() is null! %s, %s", new Object[] { localInteger, localb });
             continue;
             i = paramHashMap.size();
             break;
@@ -1210,7 +1212,7 @@ public final class e
           int j;
           label293:
           Object localObject2;
-          if (!this.gdg)
+          if (!this.ghM)
           {
             paramHashMap = new StringBuilder();
             localObject1 = localb.getSQLs();
@@ -1222,10 +1224,10 @@ public final class e
               j += 1;
             }
             localObject1 = com.tencent.mm.b.g.getMessageDigest(paramHashMap.toString().getBytes());
-            if (this.gdf != null)
+            if (this.ghL != null)
             {
-              paramHashMap = (String)this.gdf.get(localInteger);
-              ad.d("MMKernel.CoreStorage", "Create tables on %s(%s) compare with %s, using table versions", new Object[] { localInteger, paramHashMap, localObject1 });
+              paramHashMap = (String)this.ghL.get(localInteger);
+              ac.d("MMKernel.CoreStorage", "Create tables on %s(%s) compare with %s, using table versions", new Object[] { localInteger, paramHashMap, localObject1 });
               if ((paramHashMap != null) && (((String)localObject1).equals(paramHashMap))) {
                 continue;
               }
@@ -1253,30 +1255,30 @@ public final class e
               {
                 for (;;)
                 {
-                  Object localObject3 = com.tencent.mm.storagebase.a.FCa.matcher((CharSequence)localObject2);
+                  Object localObject3 = com.tencent.mm.storagebase.a.Hbd.matcher((CharSequence)localObject2);
                   if ((localObject3 != null) && (((Matcher)localObject3).matches())) {
                     Assert.assertTrue("CreateTable failed:[" + (String)localObject2 + "][" + localException.getMessage() + "]", false);
                   } else {
-                    ad.w("MMKernel.CoreStorage", "CreateTable failed:[" + (String)localObject2 + "][" + localException.getMessage() + "]");
+                    ac.w("MMKernel.CoreStorage", "CreateTable failed:[" + (String)localObject2 + "][" + localException.getMessage() + "]");
                   }
                 }
               }
               j += 1;
             }
           }
-          if (this.gde != null)
+          if (this.ghK != null)
           {
-            localObject3 = this.gde;
+            localObject3 = this.ghK;
             j = localInteger.intValue();
             paramHashMap = null;
             localObject2 = null;
-            localObject3 = ((bz)localObject3).rawQuery("select * from TablesVersion where tableHash = ".concat(String.valueOf(j)), new String[0]);
+            localObject3 = ((cc)localObject3).rawQuery("select * from TablesVersion where tableHash = ".concat(String.valueOf(j)), new String[0]);
             if (localObject3 != null)
             {
               paramHashMap = (HashMap<Integer, h.b>)localObject2;
               if (((Cursor)localObject3).moveToFirst())
               {
-                paramHashMap = new by();
+                paramHashMap = new cb();
                 paramHashMap.convertFrom((Cursor)localObject3);
               }
               ((Cursor)localObject3).close();
@@ -1288,7 +1290,7 @@ public final class e
           label484:
           for (paramHashMap = null;; paramHashMap = paramHashMap.field_tableSQLMD5)
           {
-            ad.d("MMKernel.CoreStorage", "Create tables on %s(%s) compare with %s, using table versions storage", new Object[] { localInteger, paramHashMap, localObject1 });
+            ac.d("MMKernel.CoreStorage", "Create tables on %s(%s) compare with %s, using table versions storage", new Object[] { localInteger, paramHashMap, localObject1 });
             if ((paramHashMap != null) && (((String)localObject1).equals(paramHashMap))) {
               break;
             }
@@ -1297,9 +1299,9 @@ public final class e
           }
           label608:
           paramf.endTransaction();
-          if ((!this.gdg) && (this.gde != null) && (paramHashMap != null))
+          if ((!this.ghM) && (this.ghK != null) && (paramHashMap != null))
           {
-            localObject1 = this.gde;
+            localObject1 = this.ghK;
             j = localInteger.intValue();
             if (j == 0) {
               break label726;
@@ -1310,210 +1312,82 @@ public final class e
           {
             Assert.assertTrue(bool);
             Assert.assertNotNull(paramHashMap);
-            localObject2 = new by();
-            ((by)localObject2).field_tableHash = j;
-            ((by)localObject2).field_tableSQLMD5 = paramHashMap;
-            ((bz)localObject1).gPa.replace("TablesVersion", "tableHash", ((by)localObject2).convertTo());
-            if ((this.gdf != null) && (paramHashMap != null)) {
-              this.gdf.put(localInteger, paramHashMap);
+            localObject2 = new cb();
+            ((cb)localObject2).field_tableHash = j;
+            ((cb)localObject2).field_tableSQLMD5 = paramHashMap;
+            ((cc)localObject1).hpA.replace("TablesVersion", "tableHash", ((cb)localObject2).convertTo());
+            if ((this.ghL != null) && (paramHashMap != null)) {
+              this.ghL.put(localInteger, paramHashMap);
             }
             break;
           }
         }
       }
-      ad.i("MMKernel.CoreStorage", "createtables end sql:%d trans:%d sqlCount:%d", new Object[] { Long.valueOf(locala.XK()), Long.valueOf(locala.XK()), Integer.valueOf(i) });
+      ac.i("MMKernel.CoreStorage", "createtables end sql:%d trans:%d sqlCount:%d", new Object[] { Long.valueOf(locala.YH()), Long.valueOf(locala.YH()), Integer.valueOf(i) });
     }
     AppMethodBeat.o(132084);
     return true;
   }
   
-  final void afb()
-  {
-    AppMethodBeat.i(132080);
-    this.gdc.set(14, Integer.valueOf(d.CpK));
-    AppMethodBeat.o(132080);
-  }
-  
-  final void afc()
-  {
-    AppMethodBeat.i(132082);
-    c.afO().qW(this.gcW);
-    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(this.gcW + ".nomedia");
-    if (!locale.exists()) {
-      try
-      {
-        locale.createNewFile();
-        AppMethodBeat.o(132082);
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        ad.e("MMKernel.CoreStorage", "exception:%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(localIOException) });
-      }
-    }
-    AppMethodBeat.o(132082);
-  }
-  
-  public final boolean afd()
-  {
-    AppMethodBeat.i(132085);
-    g.afC();
-    g.afz().aeD();
-    int i = com.tencent.mm.sdk.platformtools.bt.l((Integer)this.gdc.get(89, null));
-    if (i != 0)
-    {
-      ad.i("MMKernel.CoreStorage", "isDBCorrupted: false, recoveryState: ".concat(String.valueOf(i)));
-      AppMethodBeat.o(132085);
-      return false;
-    }
-    if ((com.tencent.mm.sdk.platformtools.bt.nullAsNil((String)this.gdc.get(8195, null)).length() <= 0) || (com.tencent.mm.sdk.platformtools.bt.l((Integer)this.gdc.get(15, null)) == 0)) {}
-    for (boolean bool = true; (!bool) || (afe() == null); bool = false)
-    {
-      this.gdc.set(89, Integer.valueOf(1));
-      this.gdc.eKy();
-      ad.i("MMKernel.CoreStorage", "isDBCorrupted: false, needInit: ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(132085);
-      return false;
-    }
-    ad.i("MMKernel.CoreStorage", "isDBCorrupted: true");
-    AppMethodBeat.o(132085);
-    return true;
-  }
-  
-  public final String afe()
-  {
-    AppMethodBeat.i(132086);
-    Object localObject1 = new com.tencent.mm.vfs.e(this.cachePath + "/ctest", "EnMicroMsg.db");
-    if (((com.tencent.mm.vfs.e)localObject1).isFile())
-    {
-      localObject1 = q.B(((com.tencent.mm.vfs.e)localObject1).fhU());
-      AppMethodBeat.o(132086);
-      return localObject1;
-    }
-    localObject1 = new com.tencent.mm.vfs.e(this.cachePath + "/corrupted", "EnMicroMsg.db");
-    if (((com.tencent.mm.vfs.e)localObject1).isFile())
-    {
-      localObject1 = q.B(((com.tencent.mm.vfs.e)localObject1).fhU());
-      AppMethodBeat.o(132086);
-      return localObject1;
-    }
-    String[] arrayOfString = new com.tencent.mm.vfs.e(this.cachePath).a(new com.tencent.mm.vfs.m()
-    {
-      public final boolean qT(String paramAnonymousString)
-      {
-        AppMethodBeat.i(176836);
-        boolean bool = paramAnonymousString.startsWith("EnMicroMsg.dberr");
-        AppMethodBeat.o(176836);
-        return bool;
-      }
-    });
-    if ((arrayOfString != null) && (arrayOfString.length > 0))
-    {
-      localObject1 = arrayOfString[0];
-      int i = 1;
-      while (i < arrayOfString.length)
-      {
-        String str = arrayOfString[i];
-        Object localObject2 = localObject1;
-        if (str.compareTo((String)localObject1) > 0) {
-          localObject2 = str;
-        }
-        i += 1;
-        localObject1 = localObject2;
-      }
-      localObject1 = this.cachePath + '/' + (String)localObject1;
-      AppMethodBeat.o(132086);
-      return localObject1;
-    }
-    AppMethodBeat.o(132086);
-    return null;
-  }
-  
-  public final String aff()
-  {
-    return this.cachePath;
-  }
-  
-  public final com.tencent.mm.storagebase.h afg()
-  {
-    return this.gda;
-  }
-  
-  public final String afh()
-  {
-    AppMethodBeat.i(132089);
-    String str = this.cachePath + "MicroMsg.db";
-    AppMethodBeat.o(132089);
-    return str;
-  }
-  
-  public final String afi()
-  {
-    AppMethodBeat.i(132090);
-    String str = this.cachePath + "EnMicroMsg.db";
-    AppMethodBeat.o(132090);
-    return str;
-  }
-  
-  public final com.tencent.mm.storage.ab afk()
+  public final com.tencent.mm.storage.ae agA()
   {
     AppMethodBeat.i(132094);
-    g.afC();
-    g.afz().aeD();
-    com.tencent.mm.storage.ab localab = this.gdc;
+    g.agS();
+    g.agP().afT();
+    com.tencent.mm.storage.ae localae = this.ghI;
     AppMethodBeat.o(132094);
-    return localab;
+    return localae;
   }
   
-  public final com.tencent.mm.storage.bt afl()
+  public final bw agB()
   {
     AppMethodBeat.i(132095);
-    g.afC();
-    g.afz().aeD();
-    com.tencent.mm.storage.bt localbt = this.gdd;
+    g.agS();
+    g.agP().afT();
+    bw localbw = this.ghJ;
     AppMethodBeat.o(132095);
-    return localbt;
+    return localbw;
   }
   
-  public final void afm()
+  public final void agC()
   {
     AppMethodBeat.i(132096);
-    this.gdl = Boolean.valueOf(isSDCardAvailable());
+    this.ghR = Boolean.valueOf(isSDCardAvailable());
     AppMethodBeat.o(132096);
   }
   
   /* Error */
-  public final void afn()
+  public final void agD()
   {
     // Byte code:
     //   0: iconst_1
     //   1: istore_2
-    //   2: ldc_w 1085
+    //   2: ldc_w 1017
     //   5: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 1012	com/tencent/mm/kernel/g:afC	()Lcom/tencent/mm/kernel/g;
+    //   8: invokestatic 998	com/tencent/mm/kernel/g:agS	()Lcom/tencent/mm/kernel/g;
     //   11: pop
-    //   12: invokestatic 1016	com/tencent/mm/kernel/g:afz	()Lcom/tencent/mm/kernel/a;
-    //   15: getfield 1089	com/tencent/mm/kernel/a:gbX	[B
+    //   12: invokestatic 1002	com/tencent/mm/kernel/g:agP	()Lcom/tencent/mm/kernel/a;
+    //   15: getfield 1021	com/tencent/mm/kernel/a:ggD	[B
     //   18: astore 5
     //   20: aload 5
     //   22: monitorenter
-    //   23: invokestatic 497	com/tencent/mm/compatible/util/e:XG	()Z
+    //   23: invokestatic 597	com/tencent/mm/compatible/util/e:YD	()Z
     //   26: istore_3
-    //   27: invokestatic 253	com/tencent/mm/kernel/e:afj	()Ljava/lang/String;
+    //   27: invokestatic 253	com/tencent/mm/kernel/e:agz	()Ljava/lang/String;
     //   30: astore 4
     //   32: ldc 190
-    //   34: ldc_w 1091
+    //   34: ldc_w 1023
     //   37: iconst_4
     //   38: anewarray 4	java/lang/Object
     //   41: dup
     //   42: iconst_0
-    //   43: invokestatic 1094	com/tencent/mm/kernel/a:getUin	()I
+    //   43: invokestatic 1026	com/tencent/mm/kernel/a:getUin	()I
     //   46: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   49: aastore
     //   50: dup
     //   51: iconst_1
     //   52: aload_0
-    //   53: getfield 255	com/tencent/mm/kernel/e:gcV	Ljava/lang/String;
+    //   53: getfield 255	com/tencent/mm/kernel/e:ghB	Ljava/lang/String;
     //   56: aastore
     //   57: dup
     //   58: iconst_2
@@ -1521,60 +1395,60 @@ public final class e
     //   61: aastore
     //   62: dup
     //   63: iconst_3
-    //   64: invokestatic 1016	com/tencent/mm/kernel/g:afz	()Lcom/tencent/mm/kernel/a;
-    //   67: invokevirtual 1097	com/tencent/mm/kernel/a:aeI	()Z
+    //   64: invokestatic 1002	com/tencent/mm/kernel/g:agP	()Lcom/tencent/mm/kernel/a;
+    //   67: invokevirtual 1029	com/tencent/mm/kernel/a:afY	()Z
     //   70: invokestatic 206	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   73: aastore
-    //   74: invokestatic 211	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   74: invokestatic 211	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   77: aload 4
-    //   79: invokestatic 670	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   79: invokestatic 669	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   82: ifne +269 -> 351
     //   85: aload 4
     //   87: aload_0
-    //   88: getfield 255	com/tencent/mm/kernel/e:gcV	Ljava/lang/String;
-    //   91: invokevirtual 543	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   88: getfield 255	com/tencent/mm/kernel/e:ghB	Ljava/lang/String;
+    //   91: invokevirtual 429	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   94: istore_1
     //   95: iload_1
     //   96: ifeq +137 -> 233
     //   99: ldc 190
     //   101: new 172	java/lang/StringBuilder
     //   104: dup
-    //   105: ldc_w 1099
-    //   108: invokespecial 483	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   111: invokestatic 1101	com/tencent/mm/kernel/e:afo	()Z
-    //   114: invokevirtual 490	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   105: ldc_w 1031
+    //   108: invokespecial 453	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   111: invokestatic 1033	com/tencent/mm/kernel/e:agE	()Z
+    //   114: invokevirtual 460	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   117: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: invokestatic 397	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   120: invokestatic 396	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   123: ldc 190
     //   125: new 172	java/lang/StringBuilder
     //   128: dup
-    //   129: ldc_w 1103
-    //   132: invokespecial 483	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   135: invokestatic 1105	com/tencent/mm/kernel/e:afp	()Z
-    //   138: invokevirtual 490	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   129: ldc_w 1035
+    //   132: invokespecial 453	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   135: invokestatic 1037	com/tencent/mm/kernel/e:agF	()Z
+    //   138: invokevirtual 460	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   141: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   144: invokestatic 397	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   144: invokestatic 396	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   147: aload 5
     //   149: monitorexit
-    //   150: ldc_w 1085
+    //   150: ldc_w 1017
     //   153: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   156: return
     //   157: astore 4
     //   159: ldc 190
     //   161: new 172	java/lang/StringBuilder
     //   164: dup
-    //   165: ldc_w 1107
-    //   168: invokespecial 483	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   165: ldc_w 1039
+    //   168: invokespecial 453	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   171: aload 4
-    //   173: invokevirtual 474	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   173: invokevirtual 471	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   176: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   179: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: invokestatic 577	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   182: invokestatic 473	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   185: goto -62 -> 123
     //   188: astore 4
     //   190: aload 5
     //   192: monitorexit
-    //   193: ldc_w 1085
+    //   193: ldc_w 1017
     //   196: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   199: aload 4
     //   201: athrow
@@ -1582,62 +1456,62 @@ public final class e
     //   204: ldc 190
     //   206: new 172	java/lang/StringBuilder
     //   209: dup
-    //   210: ldc_w 1109
-    //   213: invokespecial 483	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   210: ldc_w 1041
+    //   213: invokespecial 453	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   216: aload 4
-    //   218: invokevirtual 474	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   218: invokevirtual 471	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   221: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   224: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: invokestatic 577	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   227: invokestatic 473	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   230: goto -83 -> 147
     //   233: aload_0
     //   234: aload 4
     //   236: iload_3
-    //   237: invokespecial 1111	com/tencent/mm/kernel/e:x	(Ljava/lang/String;Z)V
+    //   237: invokespecial 1043	com/tencent/mm/kernel/e:x	(Ljava/lang/String;Z)V
     //   240: iload_3
     //   241: ifeq +120 -> 361
     //   244: aload_0
-    //   245: getfield 255	com/tencent/mm/kernel/e:gcV	Ljava/lang/String;
-    //   248: invokestatic 480	com/tencent/mm/loader/j/b:aib	()Ljava/lang/String;
-    //   251: invokevirtual 721	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   245: getfield 255	com/tencent/mm/kernel/e:ghB	Ljava/lang/String;
+    //   248: invokestatic 426	com/tencent/mm/loader/j/b:apb	()Ljava/lang/String;
+    //   251: invokevirtual 720	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   254: ifeq +107 -> 361
     //   257: iconst_1
     //   258: istore_1
-    //   259: invokestatic 1117	com/tencent/mm/vfs/a:gap	()Lcom/tencent/mm/vfs/a;
-    //   262: invokevirtual 1121	com/tencent/mm/vfs/a:gar	()Lcom/tencent/mm/vfs/a$a;
+    //   259: invokestatic 1049	com/tencent/mm/vfs/a:ghk	()Lcom/tencent/mm/vfs/a;
+    //   262: invokevirtual 1053	com/tencent/mm/vfs/a:ghm	()Lcom/tencent/mm/vfs/a$a;
     //   265: astore 6
     //   267: aload_0
-    //   268: getfield 723	com/tencent/mm/kernel/e:gcY	Ljava/lang/String;
+    //   268: getfield 722	com/tencent/mm/kernel/e:ghE	Ljava/lang/String;
     //   271: aload_0
-    //   272: getfield 730	com/tencent/mm/kernel/e:gcX	Ljava/lang/String;
+    //   272: getfield 729	com/tencent/mm/kernel/e:ghD	Ljava/lang/String;
     //   275: invokevirtual 238	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   278: ifne +88 -> 366
     //   281: aload 6
     //   283: iload_1
     //   284: iload_2
-    //   285: invokestatic 1126	com/tencent/mm/vfs/o:a	(Lcom/tencent/mm/vfs/a$a;ZZ)Lcom/tencent/mm/vfs/a$a;
+    //   285: invokestatic 1058	com/tencent/mm/vfs/o:a	(Lcom/tencent/mm/vfs/a$a;ZZ)Lcom/tencent/mm/vfs/a$a;
     //   288: pop
     //   289: aload 6
     //   291: aload_0
-    //   292: getfield 255	com/tencent/mm/kernel/e:gcV	Ljava/lang/String;
+    //   292: getfield 255	com/tencent/mm/kernel/e:ghB	Ljava/lang/String;
     //   295: iload_1
-    //   296: invokestatic 1129	com/tencent/mm/vfs/o:a	(Lcom/tencent/mm/vfs/a$a;Ljava/lang/String;Z)Lcom/tencent/mm/vfs/a$a;
+    //   296: invokestatic 1061	com/tencent/mm/vfs/o:a	(Lcom/tencent/mm/vfs/a$a;Ljava/lang/String;Z)Lcom/tencent/mm/vfs/a$a;
     //   299: pop
     //   300: iload_1
     //   301: ifeq +70 -> 371
     //   304: aload_0
-    //   305: getfield 723	com/tencent/mm/kernel/e:gcY	Ljava/lang/String;
+    //   305: getfield 722	com/tencent/mm/kernel/e:ghE	Ljava/lang/String;
     //   308: astore 4
     //   310: aload 6
-    //   312: ldc_w 1131
+    //   312: ldc_w 1063
     //   315: aload 4
-    //   317: invokevirtual 1137	com/tencent/mm/vfs/a$a:lz	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/vfs/a$a;
-    //   320: invokevirtual 1140	com/tencent/mm/vfs/a$a:commit	()V
-    //   323: invokestatic 1001	com/tencent/mm/kernel/a/c:afO	()Lcom/tencent/mm/kernel/a/c;
-    //   326: getfield 1144	com/tencent/mm/kernel/a/c:gem	Lcom/tencent/mm/kernel/a/c$e;
-    //   329: invokevirtual 1149	com/tencent/mm/kernel/a/c$e:afJ	()V
+    //   317: invokevirtual 1069	com/tencent/mm/vfs/a$a:lW	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/vfs/a$a;
+    //   320: invokevirtual 1072	com/tencent/mm/vfs/a$a:commit	()V
+    //   323: invokestatic 1078	com/tencent/mm/kernel/a/c:ahe	()Lcom/tencent/mm/kernel/a/c;
+    //   326: getfield 1082	com/tencent/mm/kernel/a/c:giS	Lcom/tencent/mm/kernel/a/c$e;
+    //   329: invokevirtual 1087	com/tencent/mm/kernel/a/c$e:agZ	()V
     //   332: ldc 190
-    //   334: ldc_w 1151
+    //   334: ldc_w 1089
     //   337: iconst_1
     //   338: anewarray 4	java/lang/Object
     //   341: dup
@@ -1645,10 +1519,10 @@ public final class e
     //   343: iload_3
     //   344: invokestatic 206	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   347: aastore
-    //   348: invokestatic 211	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   348: invokestatic 211	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   351: aload 5
     //   353: monitorexit
-    //   354: ldc_w 1085
+    //   354: ldc_w 1017
     //   357: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   360: return
     //   361: iconst_0
@@ -1658,7 +1532,7 @@ public final class e
     //   367: istore_2
     //   368: goto -87 -> 281
     //   371: aload_0
-    //   372: getfield 730	com/tencent/mm/kernel/e:gcX	Ljava/lang/String;
+    //   372: getfield 729	com/tencent/mm/kernel/e:ghD	Ljava/lang/String;
     //   375: astore 4
     //   377: goto -67 -> 310
     // Local variable table:
@@ -1695,31 +1569,159 @@ public final class e
     //   123	147	202	java/lang/Exception
   }
   
+  final void agr()
+  {
+    AppMethodBeat.i(132080);
+    this.ghI.set(14, Integer.valueOf(d.DIc));
+    AppMethodBeat.o(132080);
+  }
+  
+  final void ags()
+  {
+    AppMethodBeat.i(132082);
+    c.ahe().ul(this.ghC);
+    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(this.ghC + ".nomedia");
+    if (!locale.exists()) {
+      try
+      {
+        locale.createNewFile();
+        AppMethodBeat.o(132082);
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        ac.e("MMKernel.CoreStorage", "exception:%s", new Object[] { bs.m(localIOException) });
+      }
+    }
+    AppMethodBeat.o(132082);
+  }
+  
+  public final boolean agt()
+  {
+    AppMethodBeat.i(132085);
+    g.agS();
+    g.agP().afT();
+    int i = bs.m((Integer)this.ghI.get(89, null));
+    if (i != 0)
+    {
+      ac.i("MMKernel.CoreStorage", "isDBCorrupted: false, recoveryState: ".concat(String.valueOf(i)));
+      AppMethodBeat.o(132085);
+      return false;
+    }
+    if ((bs.nullAsNil((String)this.ghI.get(8195, null)).length() <= 0) || (bs.m((Integer)this.ghI.get(15, null)) == 0)) {}
+    for (boolean bool = true; (!bool) || (agu() == null); bool = false)
+    {
+      this.ghI.set(89, Integer.valueOf(1));
+      this.ghI.faa();
+      ac.i("MMKernel.CoreStorage", "isDBCorrupted: false, needInit: ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(132085);
+      return false;
+    }
+    ac.i("MMKernel.CoreStorage", "isDBCorrupted: true");
+    AppMethodBeat.o(132085);
+    return true;
+  }
+  
+  public final String agu()
+  {
+    AppMethodBeat.i(132086);
+    Object localObject1 = new com.tencent.mm.vfs.e(this.cachePath + "/ctest", "EnMicroMsg.db");
+    if (((com.tencent.mm.vfs.e)localObject1).isFile())
+    {
+      localObject1 = q.B(((com.tencent.mm.vfs.e)localObject1).fxV());
+      AppMethodBeat.o(132086);
+      return localObject1;
+    }
+    localObject1 = new com.tencent.mm.vfs.e(this.cachePath + "/corrupted", "EnMicroMsg.db");
+    if (((com.tencent.mm.vfs.e)localObject1).isFile())
+    {
+      localObject1 = q.B(((com.tencent.mm.vfs.e)localObject1).fxV());
+      AppMethodBeat.o(132086);
+      return localObject1;
+    }
+    String[] arrayOfString = new com.tencent.mm.vfs.e(this.cachePath).a(new com.tencent.mm.vfs.m()
+    {
+      public final boolean ui(String paramAnonymousString)
+      {
+        AppMethodBeat.i(176836);
+        boolean bool = paramAnonymousString.startsWith("EnMicroMsg.dberr");
+        AppMethodBeat.o(176836);
+        return bool;
+      }
+    });
+    if ((arrayOfString != null) && (arrayOfString.length > 0))
+    {
+      localObject1 = arrayOfString[0];
+      int i = 1;
+      while (i < arrayOfString.length)
+      {
+        String str = arrayOfString[i];
+        Object localObject2 = localObject1;
+        if (str.compareTo((String)localObject1) > 0) {
+          localObject2 = str;
+        }
+        i += 1;
+        localObject1 = localObject2;
+      }
+      localObject1 = this.cachePath + '/' + (String)localObject1;
+      AppMethodBeat.o(132086);
+      return localObject1;
+    }
+    AppMethodBeat.o(132086);
+    return null;
+  }
+  
+  public final String agv()
+  {
+    return this.cachePath;
+  }
+  
+  public final com.tencent.mm.storagebase.h agw()
+  {
+    return this.ghG;
+  }
+  
+  public final String agx()
+  {
+    AppMethodBeat.i(132089);
+    String str = this.cachePath + "MicroMsg.db";
+    AppMethodBeat.o(132089);
+    return str;
+  }
+  
+  public final String agy()
+  {
+    AppMethodBeat.i(132090);
+    String str = this.cachePath + "EnMicroMsg.db";
+    AppMethodBeat.o(132090);
+    return str;
+  }
+  
   public final String getAccPath()
   {
-    return this.gcW;
+    return this.ghC;
   }
   
   public final boolean isSDCardAvailable()
   {
     AppMethodBeat.i(132098);
-    boolean bool1 = this.gcV.startsWith(b.aib());
-    long l1 = com.tencent.mm.sdk.platformtools.bt.eGO();
-    long l2 = l1 - this.gdj;
+    boolean bool1 = this.ghB.startsWith(b.apb());
+    long l1 = bs.eWj();
+    long l2 = l1 - this.ghP;
     if (bool1)
     {
-      g.afC();
-      if ((g.afz().aeI()) && (l2 > 0L) && (l2 < 2000L) && (new com.tencent.mm.vfs.e(this.gcV).exists()))
+      g.agS();
+      if ((g.agP().afY()) && (l2 > 0L) && (l2 < 2000L) && (new com.tencent.mm.vfs.e(this.ghB).exists()))
       {
         AppMethodBeat.o(132098);
         return true;
       }
     }
-    this.gdj = l1;
-    boolean bool2 = com.tencent.mm.compatible.util.e.XG();
-    g.afC();
-    g.afz();
-    ad.i("MMKernel.CoreStorage", "isSDCardAvail:%b uin:%s toNow:%d sysPath:[%s] sdRoot:[%s], acc init:[%b]", new Object[] { Boolean.valueOf(bool2), p.getString(a.getUin()), Long.valueOf(l2), this.gcV, b.aib(), Boolean.valueOf(g.afz().aeI()) });
+    this.ghP = l1;
+    boolean bool2 = com.tencent.mm.compatible.util.e.YD();
+    g.agS();
+    g.agP();
+    ac.i("MMKernel.CoreStorage", "isSDCardAvail:%b uin:%s toNow:%d sysPath:[%s] sdRoot:[%s], acc init:[%b]", new Object[] { Boolean.valueOf(bool2), p.getString(a.getUin()), Long.valueOf(l2), this.ghB, b.apb(), Boolean.valueOf(g.agP().afY()) });
     if (!bool2)
     {
       AppMethodBeat.o(132098);
@@ -1730,48 +1732,48 @@ public final class e
       AppMethodBeat.o(132098);
       return true;
     }
-    g.afC();
-    if (g.afz().aeI())
+    g.agS();
+    if (g.agP().afY())
     {
-      ad.i("MMKernel.CoreStorage", "summer isSDCardAvailable accHasReady and remount");
-      afn();
+      ac.i("MMKernel.CoreStorage", "summer isSDCardAvailable accHasReady and remount");
+      agD();
     }
     AppMethodBeat.o(132098);
     return true;
   }
   
-  public final void oi(String paramString)
+  public final void ro(String paramString)
   {
     AppMethodBeat.i(132087);
-    if (this.gdb != null) {
-      this.gdb.closeDB();
+    if (this.ghH != null) {
+      this.ghH.closeDB();
     }
-    if (this.gda != null) {
-      this.gda.oi(paramString);
+    if (this.ghG != null) {
+      this.ghG.ro(paramString);
     }
-    this.gcS.onDataBaseClosed(this.gda, this.gdb);
-    this.gdg = false;
+    this.ghy.onDataBaseClosed(this.ghG, this.ghH);
+    this.ghM = false;
     AppMethodBeat.o(132087);
   }
   
-  final void qQ(final String paramString)
+  final void uf(final String paramString)
   {
     AppMethodBeat.i(132083);
     com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(paramString + "-recovery");
     if (locale.isFile())
     {
-      ad.i("MMKernel.CoreStorage", "Recovery database found, replace original one.");
+      ac.i("MMKernel.CoreStorage", "Recovery database found, replace original one.");
       i.deleteFile(paramString + ".ini");
       paramString = new com.tencent.mm.vfs.e(paramString);
       paramString.delete();
-      if (!locale.af(paramString)) {
-        ad.e("MMKernel.CoreStorage", "Rename database file failed!");
+      if (!locale.ae(paramString)) {
+        ac.e("MMKernel.CoreStorage", "Rename database file failed!");
       }
     }
     paramString = locale.getName();
-    paramString = locale.fhT().b(new com.tencent.mm.vfs.m()
+    paramString = locale.fxU().b(new com.tencent.mm.vfs.m()
     {
-      public final boolean qT(String paramAnonymousString)
+      public final boolean ui(String paramAnonymousString)
       {
         AppMethodBeat.i(176835);
         if ((paramAnonymousString.startsWith(paramString)) && (!paramAnonymousString.equals(paramString)))
@@ -1790,7 +1792,7 @@ public final class e
       while (i < j)
       {
         locale = paramString[i];
-        ad.i("MMKernel.CoreStorage", "Delete temporary recovery database file: " + locale.getName());
+        ac.i("MMKernel.CoreStorage", "Delete temporary recovery database file: " + locale.getName());
         locale.delete();
         i += 1;
       }
@@ -1798,25 +1800,25 @@ public final class e
     AppMethodBeat.o(132083);
   }
   
-  public final SharedPreferences qR(String paramString)
+  public final SharedPreferences ug(String paramString)
   {
     AppMethodBeat.i(132091);
-    g.afC();
-    g.afz();
+    g.agS();
+    g.agP();
     int i = a.getUin();
     if (i != 0) {
-      if (this.gdi.containsKey(paramString))
+      if (this.ghO.containsKey(paramString))
       {
-        paramString = (SharedPreferences)this.gdi.get(paramString);
+        paramString = (SharedPreferences)this.ghO.get(paramString);
         AppMethodBeat.o(132091);
         return paramString;
       }
     }
     try
     {
-      localObject1 = aj.getContext().getFilesDir().getParent() + "/shared_prefs/";
-      Object localObject2 = aj.eFD() + paramString + i + ".xml";
-      String str = aj.eFD() + paramString + i + ".xml.bak";
+      localObject1 = ai.getContext().getFilesDir().getParent() + "/shared_prefs/";
+      Object localObject2 = ai.eUX() + paramString + i + ".xml";
+      String str = ai.eUX() + paramString + i + ".xml.bak";
       localObject2 = new com.tencent.mm.vfs.e((String)localObject1 + (String)localObject2);
       if (((com.tencent.mm.vfs.e)localObject2).exists()) {
         ((com.tencent.mm.vfs.e)localObject2).delete();
@@ -1832,10 +1834,10 @@ public final class e
       label227:
       break label227;
     }
-    localObject1 = ai.du(String.valueOf(i / 2));
-    localObject1 = aj.eFD() + paramString + ai.du(new StringBuilder().append(i).append((String)localObject1).toString());
-    localObject1 = aj.getContext().getSharedPreferences((String)localObject1, 0);
-    this.gdi.put(paramString, localObject1);
+    localObject1 = com.tencent.mm.sdk.platformtools.ah.dg(String.valueOf(i / 2));
+    localObject1 = ai.eUX() + paramString + com.tencent.mm.sdk.platformtools.ah.dg(new StringBuilder().append(i).append((String)localObject1).toString());
+    localObject1 = ai.getContext().getSharedPreferences((String)localObject1, 0);
+    this.ghO.put(paramString, localObject1);
     AppMethodBeat.o(132091);
     return localObject1;
     AppMethodBeat.o(132091);
@@ -1845,42 +1847,42 @@ public final class e
   public final class a
     implements com.tencent.e.i.e, Runnable
   {
-    public Future daz;
+    public Future cXV;
     
     private a() {}
     
     public final void a(Future paramFuture)
     {
-      this.daz = paramFuture;
+      this.cXV = paramFuture;
     }
     
     public final void run()
     {
       AppMethodBeat.i(132070);
-      e.this.afm();
+      e.this.agC();
       AppMethodBeat.o(132070);
     }
   }
   
   public static final class b
-    extends com.tencent.mm.co.a<h.a>
+    extends com.tencent.mm.cn.a<h.a>
     implements h.a
   {
-    public final void afr()
+    public final void agH()
     {
       AppMethodBeat.i(132074);
       a(new a.a() {});
       AppMethodBeat.o(132074);
     }
     
-    public final void afs()
+    public final void agI()
     {
       AppMethodBeat.i(132075);
       a(new a.a() {});
       AppMethodBeat.o(132075);
     }
     
-    public final void aft()
+    public final void agJ()
     {
       AppMethodBeat.i(132076);
       a(new a.a() {});
@@ -1890,8 +1892,8 @@ public final class e
   
   public static final class c
   {
-    public boolean gdr = false;
-    public int gds = 0;
+    public boolean ghX = false;
+    public int ghY = 0;
   }
 }
 

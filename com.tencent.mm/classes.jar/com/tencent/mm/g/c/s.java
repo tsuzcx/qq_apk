@@ -2,22 +2,22 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.chm;
+import com.tencent.mm.protocal.protobuf.cmp;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.IOException;
 
 public abstract class s
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elJ = "appId".hashCode();
-  private static final int emJ = "recommendCard".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int eoP = "recommendCard".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean els = true;
-  private boolean emI = true;
+  private boolean enx = true;
+  private boolean eoO = true;
   public String field_appId;
-  public chm field_recommendCard;
+  public cmp field_recommendCard;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +32,11 @@ public abstract class s
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
+      if (enO != k) {
         break label65;
       }
       this.field_appId = paramCursor.getString(i);
-      this.els = true;
+      this.enx = true;
     }
     for (;;)
     {
@@ -44,18 +44,18 @@ public abstract class s
       break label20;
       break;
       label65:
-      if (emJ == k) {
+      if (eoP == k) {
         try
         {
           byte[] arrayOfByte = paramCursor.getBlob(i);
           if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
             continue;
           }
-          this.field_recommendCard = ((chm)new chm().parseFrom(arrayOfByte));
+          this.field_recommendCard = ((cmp)new cmp().parseFrom(arrayOfByte));
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
+          ac.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
         }
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -66,10 +66,10 @@ public abstract class s
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
     }
-    if ((this.emI) && (this.field_recommendCard != null)) {}
+    if ((this.eoO) && (this.field_recommendCard != null)) {}
     try
     {
       localContentValues.put("recommendCard", this.field_recommendCard.toByteArray());
@@ -82,7 +82,7 @@ public abstract class s
     {
       for (;;)
       {
-        ad.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
+        ac.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
       }
     }
   }

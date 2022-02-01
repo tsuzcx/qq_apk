@@ -10,27 +10,27 @@ import d.l.b.a.b.b.ac;
 
 public abstract interface a
 {
-  public static final a Jls = a.Jlu;
+  public static final a KYM = a.KYO;
   
-  public abstract ac fwR();
+  public abstract ac fPv();
   
   public static final class a
   {
-    private static final f Jlt;
+    private static final f KYN;
     
     static
     {
       AppMethodBeat.i(56649);
-      $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(a.class), "Instance", "getInstance()Lorg/jetbrains/kotlin/builtins/BuiltInsLoader;")) };
-      Jlu = new a();
-      Jlt = g.a(d.k.JfJ, (d.g.a.a)a.Jlv);
+      $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(a.class), "Instance", "getInstance()Lorg/jetbrains/kotlin/builtins/BuiltInsLoader;")) };
+      KYO = new a();
+      KYN = g.a(d.k.KTd, (d.g.a.a)a.KYP);
       AppMethodBeat.o(56649);
     }
     
-    public static a fwS()
+    public static a fPw()
     {
       AppMethodBeat.i(56650);
-      a locala = (a)Jlt.getValue();
+      a locala = (a)KYN.getValue();
       AppMethodBeat.o(56650);
       return locala;
     }
@@ -39,12 +39,12 @@ public abstract interface a
       extends l
       implements d.g.a.a<a>
     {
-      public static final a Jlv;
+      public static final a KYP;
       
       static
       {
         AppMethodBeat.i(56648);
-        Jlv = new a();
+        KYP = new a();
         AppMethodBeat.o(56648);
       }
       
@@ -57,7 +57,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.a
  * JD-Core Version:    0.7.0.1
  */

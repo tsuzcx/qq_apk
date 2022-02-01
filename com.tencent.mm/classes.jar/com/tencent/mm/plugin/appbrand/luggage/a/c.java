@@ -24,7 +24,7 @@ public final class c
   public final Bitmap a(final d paramd, final String paramString, Rect paramRect, final e.a parama)
   {
     AppMethodBeat.i(47475);
-    com.tencent.mm.plugin.appbrand.jsapi.c localc = paramd.cfX;
+    com.tencent.mm.plugin.appbrand.jsapi.c localc = paramd.ccU;
     String str = ((b)localc.K(b.class)).b(localc, paramString);
     paramd = ((a)localc.K(a.class)).a(str, paramRect, new a.b()
     {
@@ -54,7 +54,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.a.c
  * JD-Core Version:    0.7.0.1
  */

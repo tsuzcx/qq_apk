@@ -5,16 +5,16 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class cf
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Title;
-  public LinkedList<cl> rOa;
-  public String saB;
+  public LinkedList<cl> sVR;
+  public String tiv;
   
   public cf()
   {
     AppMethodBeat.i(41806);
-    this.rOa = new LinkedList();
+    this.sVR = new LinkedList();
     AppMethodBeat.o(41806);
   }
   
@@ -30,7 +30,7 @@ public final class cf
         AppMethodBeat.o(41807);
         throw paramVarArgs;
       }
-      if (this.saB == null)
+      if (this.tiv == null)
       {
         paramVarArgs = new b("Not all required fields were included: Detail");
         AppMethodBeat.o(41807);
@@ -39,9 +39,9 @@ public final class cf
       if (this.Title != null) {
         paramVarArgs.d(1, this.Title);
       }
-      paramVarArgs.e(2, 8, this.rOa);
-      if (this.saB != null) {
-        paramVarArgs.d(3, this.saB);
+      paramVarArgs.e(2, 8, this.sVR);
+      if (this.tiv != null) {
+        paramVarArgs.d(3, this.tiv);
       }
       AppMethodBeat.o(41807);
       return 0;
@@ -54,21 +54,21 @@ public final class cf
     label514:
     for (paramInt = f.a.a.b.b.a.e(1, this.Title) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.a.c(2, 8, this.rOa);
+      int i = paramInt + f.a.a.a.c(2, 8, this.sVR);
       paramInt = i;
-      if (this.saB != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.saB);
+      if (this.tiv != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.tiv);
       }
       AppMethodBeat.o(41807);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.rOa.clear();
+        this.sVR.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.Title == null)
@@ -77,7 +77,7 @@ public final class cf
           AppMethodBeat.o(41807);
           throw paramVarArgs;
         }
-        if (this.saB == null)
+        if (this.tiv == null)
         {
           paramVarArgs = new b("Not all required fields were included: Detail");
           AppMethodBeat.o(41807);
@@ -97,11 +97,11 @@ public final class cf
           AppMethodBeat.o(41807);
           return -1;
         case 1: 
-          localcf.Title = ((f.a.a.a.a)localObject1).KhF.readString();
+          localcf.Title = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(41807);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -109,14 +109,14 @@ public final class cf
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new cl();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((cl)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcf.rOa.add(localObject1);
+            for (boolean bool = true; bool; bool = ((cl)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcf.sVR.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(41807);
           return 0;
         }
-        localcf.saB = ((f.a.a.a.a)localObject1).KhF.readString();
+        localcf.tiv = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(41807);
         return 0;
       }
@@ -127,7 +127,7 @@ public final class cf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.cf
  * JD-Core Version:    0.7.0.1
  */

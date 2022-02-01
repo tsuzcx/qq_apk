@@ -9,14 +9,14 @@ import com.tencent.mm.pluginsdk.b.d;
 public class Plugin
   implements d
 {
-  private c wln;
+  private c xwD;
   
   public Plugin()
   {
     AppMethodBeat.i(28083);
-    this.wln = new c()
+    this.xwD = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a ab(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(28082);
         paramAnonymousContext = new com.tencent.mm.plugin.shake.ui.a(paramAnonymousContext);
@@ -45,12 +45,12 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.wln;
+    return this.xwD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.Plugin
  * JD-Core Version:    0.7.0.1
  */

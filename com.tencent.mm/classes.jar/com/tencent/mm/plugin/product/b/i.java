@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.abw;
-import com.tencent.mm.protocal.protobuf.ayo;
-import com.tencent.mm.protocal.protobuf.ayp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.acv;
+import com.tencent.mm.protocal.protobuf.bcg;
+import com.tencent.mm.protocal.protobuf.bch;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,23 +25,23 @@ public final class i
   private g callback;
   public String mUrl;
   private b rr;
-  public LinkedList<abw> uwg;
+  public LinkedList<acv> vEZ;
   
   public i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(66897);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new ayo();
-    ((b.a)localObject).gUV = new ayp();
+    ((b.a)localObject).hvt = new bcg();
+    ((b.a)localObject).hvu = new bch();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getproductdiscount";
     ((b.a)localObject).funcId = 579;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (ayo)this.rr.gUS.gUX;
-    ((ayo)localObject).CPg = paramString1;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (bcg)this.rr.hvr.hvw;
+    ((bcg)localObject).EhR = paramString1;
     this.mUrl = paramString2;
-    ((ayo)localObject).Url = paramString2;
+    ((bcg)localObject).Url = paramString2;
     AppMethodBeat.o(66897);
   }
   
@@ -62,25 +62,25 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66898);
-    paramArrayOfByte = (ayp)((b)paramq).gUT.gUX;
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.CEu == 0))
+    paramArrayOfByte = (bch)((b)paramq).hvs.hvw;
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.DWU == 0))
     {
-      ad.d("MicroMsg.NetSceneMallGetProductDiscount", "resp.ProductInfo " + paramArrayOfByte.DwW);
+      ac.d("MicroMsg.NetSceneMallGetProductDiscount", "resp.ProductInfo " + paramArrayOfByte.ESr);
       try
       {
-        paramq = new JSONObject(paramArrayOfByte.DwW).optJSONArray("discount_list");
+        paramq = new JSONObject(paramArrayOfByte.ESr).optJSONArray("discount_list");
         if (paramq != null)
         {
-          this.uwg = new LinkedList();
+          this.vEZ = new LinkedList();
           int i = paramq.length();
           paramInt1 = 0;
           while (paramInt1 < i)
           {
             JSONObject localJSONObject = paramq.getJSONObject(paramInt1);
-            abw localabw = new abw();
-            localabw.Title = localJSONObject.getString("title");
-            localabw.CNG = localJSONObject.getInt("fee");
-            this.uwg.add(localabw);
+            acv localacv = new acv();
+            localacv.Title = localJSONObject.getString("title");
+            localacv.Egi = localJSONObject.getInt("fee");
+            this.vEZ.add(localacv);
             paramInt1 += 1;
           }
         }
@@ -93,13 +93,13 @@ public final class i
     {
       paramInt1 = paramInt3;
       paramq = paramString;
-      if (paramArrayOfByte.CEu != 0)
+      if (paramArrayOfByte.DWU != 0)
       {
-        paramInt1 = paramArrayOfByte.CEu;
-        paramq = paramArrayOfByte.CEv;
+        paramInt1 = paramArrayOfByte.DWU;
+        paramq = paramArrayOfByte.DWV;
       }
     }
-    ad.d("MicroMsg.NetSceneMallGetProductDiscount", "errCode " + paramInt1 + ", errMsg " + paramq);
+    ac.d("MicroMsg.NetSceneMallGetProductDiscount", "errCode " + paramInt1 + ", errMsg " + paramq);
     this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
     AppMethodBeat.o(66898);
   }

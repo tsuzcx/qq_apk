@@ -1,85 +1,85 @@
 package com.tencent.mm.plugin.appbrand.launching.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.c;
-import com.tencent.mm.al.c.a;
-import com.tencent.mm.co.f;
-import com.tencent.mm.protocal.protobuf.bkw;
-import com.tencent.mm.protocal.protobuf.bkx;
-import com.tencent.mm.protocal.protobuf.dty;
-import com.tencent.mm.protocal.protobuf.dux;
-import com.tencent.mm.protocal.protobuf.dvo;
-import com.tencent.mm.protocal.protobuf.dvx;
-import com.tencent.mm.protocal.protobuf.dws;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.cn.f;
+import com.tencent.mm.protocal.protobuf.bos;
+import com.tencent.mm.protocal.protobuf.bot;
+import com.tencent.mm.protocal.protobuf.dzp;
+import com.tencent.mm.protocal.protobuf.eao;
+import com.tencent.mm.protocal.protobuf.ebf;
+import com.tencent.mm.protocal.protobuf.ebo;
+import com.tencent.mm.protocal.protobuf.ecj;
 import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;", "isSync", "", "(Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;Z)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "call", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Companion", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;", "isSync", "", "(Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;Z)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppRequest;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "call", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Companion", "plugin-appbrand-integration_release"})
 public final class d
-  extends c<bkx>
+  extends c<bot>
 {
-  public static final a kOb;
-  private final boolean iwh;
-  private final bkw kOa;
-  private final com.tencent.mm.al.b rr;
+  public static final a lpA;
+  private final boolean iWl;
+  private final bos lpz;
+  private final com.tencent.mm.ak.b rr;
   
   static
   {
     AppMethodBeat.i(50807);
-    kOb = new a((byte)0);
+    lpA = new a((byte)0);
     AppMethodBeat.o(50807);
   }
   
-  public d(bkw parambkw, boolean paramBoolean)
+  public d(bos parambos, boolean paramBoolean)
   {
     AppMethodBeat.i(50806);
-    this.kOa = parambkw;
-    this.iwh = paramBoolean;
-    parambkw = new b.a();
-    parambkw.nB(1122);
-    parambkw.wg("/cgi-bin/mmbiz-bin/wxaattr/launchwxaapp");
-    parambkw.c((com.tencent.mm.bx.a)this.kOa);
-    parambkw.d((com.tencent.mm.bx.a)new bkx());
-    parambkw = parambkw.atI();
-    k.g(parambkw, "rrb.buildInstance()");
-    this.rr = parambkw;
+    this.lpz = parambos;
+    this.iWl = paramBoolean;
+    parambos = new b.a();
+    parambos.op(1122);
+    parambos.Am("/cgi-bin/mmbiz-bin/wxaattr/launchwxaapp");
+    parambos.c((com.tencent.mm.bw.a)this.lpz);
+    parambos.d((com.tencent.mm.bw.a)new bot());
+    parambos = parambos.aAz();
+    k.g(parambos, "rrb.buildInstance()");
+    this.rr = parambos;
     c(this.rr);
     AppMethodBeat.o(50806);
   }
   
-  public final f<c.a<bkx>> auK()
+  public final f<c.a<bot>> aBB()
   {
     AppMethodBeat.i(50805);
     Object localObject = new com.tencent.mm.plugin.appbrand.launching.a.a();
-    com.tencent.mm.bx.a locala = this.rr.auL();
+    com.tencent.mm.bw.a locala = this.rr.aBC();
     if (locala == null)
     {
       localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LaunchWxaAppRequest");
       AppMethodBeat.o(50805);
       throw ((Throwable)localObject);
     }
-    localObject = ((com.tencent.mm.plugin.appbrand.launching.a.a)localObject).a((bkw)locala, this.iwh, (c)this);
-    locala = this.rr.auL();
+    localObject = ((com.tencent.mm.plugin.appbrand.launching.a.a)localObject).a((bos)locala, this.iWl, (c)this);
+    locala = this.rr.aBC();
     if (locala == null)
     {
       localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LaunchWxaAppRequest");
       AppMethodBeat.o(50805);
       throw ((Throwable)localObject);
     }
-    com.tencent.mm.plugin.appbrand.launching.a.b.a((bkw)locala);
-    locala = this.rr.auL();
+    com.tencent.mm.plugin.appbrand.launching.a.b.a((bos)locala);
+    locala = this.rr.aBC();
     if (locala == null)
     {
       localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LaunchWxaAppRequest");
       AppMethodBeat.o(50805);
       throw ((Throwable)localObject);
     }
-    com.tencent.mm.plugin.appbrand.launching.a.b.b((bkw)locala);
+    com.tencent.mm.plugin.appbrand.launching.a.b.b((bos)locala);
     if (localObject == null)
     {
-      localObject = super.auK();
+      localObject = super.aBB();
       k.g(localObject, "super.run()");
     }
     for (;;)
@@ -89,33 +89,33 @@ public final class d
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch$Companion;", "", "()V", "TAG", "", "createRequest", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch;", "userName", "appId", "wxaAppBaseInfo", "Lcom/tencent/mm/protocal/protobuf/WxaAppBaseInfo;", "webLaunch", "Lcom/tencent/mm/protocal/protobuf/WxaWebLaunchInfo;", "appJump", "Lcom/tencent/mm/protocal/protobuf/WxaJumpInfo;", "libVersion", "", "wxaPushMsgInfo", "Lcom/tencent/mm/protocal/protobuf/WxaPushMsgInfo;", "isSync", "", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch$Companion;", "", "()V", "TAG", "", "createRequest", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/CgiLaunchWxaAppForPreFetch;", "userName", "appId", "wxaAppBaseInfo", "Lcom/tencent/mm/protocal/protobuf/WxaAppBaseInfo;", "webLaunch", "Lcom/tencent/mm/protocal/protobuf/WxaWebLaunchInfo;", "appJump", "Lcom/tencent/mm/protocal/protobuf/WxaJumpInfo;", "libVersion", "", "wxaPushMsgInfo", "Lcom/tencent/mm/protocal/protobuf/WxaPushMsgInfo;", "isSync", "", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    public static d a(String paramString1, String paramString2, dty paramdty, dws paramdws, dvo paramdvo, int paramInt, dvx paramdvx, boolean paramBoolean)
+    public static d a(String paramString1, String paramString2, dzp paramdzp, ecj paramecj, ebf paramebf, int paramInt, ebo paramebo, boolean paramBoolean)
     {
-      AppMethodBeat.i(196401);
-      bkw localbkw = new bkw();
-      localbkw.DIA = paramdty;
+      AppMethodBeat.i(187339);
+      bos localbos = new bos();
+      localbos.FdV = paramdzp;
       if (paramBoolean) {}
       for (int i = 1;; i = 2)
       {
-        localbkw.Dym = i;
-        localbkw.DID = paramdws;
-        localbkw.DIE = paramdvo;
-        paramdty = paramString2;
+        localbos.ETI = i;
+        localbos.FdY = paramecj;
+        localbos.FdZ = paramebf;
+        paramdzp = paramString2;
         if (paramString2 == null) {
-          paramdty = "";
+          paramdzp = "";
         }
-        localbkw.hnC = paramdty;
-        localbkw.DAR = true;
-        paramString2 = new dux();
-        paramString2.DKZ = paramInt;
-        localbkw.DIC = paramString2;
-        localbkw.DII = paramString1;
-        localbkw.DIJ = paramdvx;
-        paramString1 = new d(localbkw, paramBoolean);
-        AppMethodBeat.o(196401);
+        localbos.hOf = paramdzp;
+        localbos.EWn = true;
+        paramString2 = new eao();
+        paramString2.Fho = paramInt;
+        localbos.FdX = paramString2;
+        localbos.Fed = paramString1;
+        localbos.Fee = paramebo;
+        paramString1 = new d(localbos, paramBoolean);
+        AppMethodBeat.o(187339);
         return paramString1;
       }
     }
@@ -123,7 +123,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.d.d
  * JD-Core Version:    0.7.0.1
  */

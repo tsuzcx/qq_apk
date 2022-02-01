@@ -5,14 +5,14 @@ import d.g.b.k;
 
 public final class f
 {
-  public final String Azr;
-  public final int KbD;
+  public final String BRN;
+  public final int LOY;
   
   public f(String paramString, int paramInt)
   {
     AppMethodBeat.i(61369);
-    this.Azr = paramString;
-    this.KbD = paramInt;
+    this.BRN = paramString;
+    this.LOY = paramInt;
     AppMethodBeat.o(61369);
   }
   
@@ -25,10 +25,10 @@ public final class f
         break label65;
       }
       paramObject = (f)paramObject;
-      if (!k.g(this.Azr, paramObject.Azr)) {
+      if (!k.g(this.BRN, paramObject.BRN)) {
         break label65;
       }
-      if (this.KbD != paramObject.KbD) {
+      if (this.LOY != paramObject.LOY) {
         break label60;
       }
     }
@@ -46,11 +46,11 @@ public final class f
   public final int hashCode()
   {
     AppMethodBeat.i(61371);
-    String str = this.Azr;
+    String str = this.BRN;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
-      int j = this.KbD;
+      int j = this.LOY;
       AppMethodBeat.o(61371);
       return i * 31 + j;
     }
@@ -59,7 +59,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(61370);
-    String str = "NumberWithRadix(number=" + this.Azr + ", radix=" + this.KbD + ")";
+    String str = "NumberWithRadix(number=" + this.BRN + ", radix=" + this.LOY + ")";
     AppMethodBeat.o(61370);
     return str;
   }

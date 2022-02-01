@@ -1,169 +1,324 @@
 package com.tencent.mm.plugin.appbrand.jsapi.b;
 
-import com.tencent.magicbrush.ui.MagicBrushView;
+import android.annotation.TargetApi;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothAdapter.LeScanCallback;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.c;
-import d.g.b.k;
-import d.l;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/HTMLCanvasElementManager;", "", "appId", "", "(Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/HTMLCanvasElementManager$Entity;", "add", "", "canvasId", "view", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "background", "canvasId2VirtualElementIdOrNull", "foreground", "foregroundCount", "get", "remove", "Companion", "Entity", "plugin-appbrand-integration_release"})
+@TargetApi(18)
 public final class a
 {
-  private static final HashMap<String, a> jNl;
-  public static final a jNm;
-  final String appId;
-  public final ConcurrentHashMap<Integer, b> cit;
+  public static BroadcastReceiver kia;
+  public static boolean kib;
+  public static Map<String, a> map;
   
   static
   {
-    AppMethodBeat.i(50490);
-    jNm = new a((byte)0);
-    jNl = new HashMap();
-    AppMethodBeat.o(50490);
+    AppMethodBeat.i(144673);
+    map = new ConcurrentHashMap();
+    AppMethodBeat.o(144673);
   }
   
-  public a(String paramString)
+  public static a Mh(String paramString)
   {
-    AppMethodBeat.i(50489);
-    this.appId = paramString;
-    g.a(this.appId, (g.c)new g.c()
-    {
-      public final void onDestroy()
-      {
-        AppMethodBeat.i(50483);
-        a.a locala = a.jNm;
-        a.a.Ia(this.jNn.appId);
-        AppMethodBeat.o(50483);
-      }
-    });
-    this.cit = new ConcurrentHashMap();
-    AppMethodBeat.o(50489);
-  }
-  
-  public static final a HZ(String paramString)
-  {
-    AppMethodBeat.i(50491);
-    paramString = a.HZ(paramString);
-    AppMethodBeat.o(50491);
+    AppMethodBeat.i(144671);
+    paramString = (a)map.get(paramString);
+    AppMethodBeat.o(144671);
     return paramString;
   }
   
-  public final void a(int paramInt, MagicBrushView paramMagicBrushView)
+  public static void a(String paramString, a parama)
   {
-    AppMethodBeat.i(196280);
-    k.h(paramMagicBrushView, "view");
-    ((Map)this.cit).put(Integer.valueOf(paramInt), new b(paramMagicBrushView));
-    AppMethodBeat.o(196280);
-  }
-  
-  public final int aZB()
-  {
-    int i = 0;
-    AppMethodBeat.i(50488);
-    Object localObject = (Map)this.cit;
-    if (((Map)localObject).isEmpty())
+    AppMethodBeat.i(144670);
+    map.put(paramString, parama);
+    if (kia == null)
     {
-      AppMethodBeat.o(50488);
-      return 0;
+      ac.i("MicroMsg.BeaconManager", "bluetoothStateListener init");
+      kia = new BroadcastReceiver()
+      {
+        public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+        {
+          boolean bool2 = false;
+          AppMethodBeat.i(144666);
+          if (paramAnonymousIntent == null)
+          {
+            ac.i("MicroMsg.BeaconManager", "Receive intent failed");
+            AppMethodBeat.o(144666);
+            return;
+          }
+          paramAnonymousContext = BluetoothAdapter.getDefaultAdapter();
+          if (paramAnonymousContext != null)
+          {
+            int i = paramAnonymousContext.getState();
+            ac.d("MicroMsg.BeaconManager", "state:%d", new Object[] { Integer.valueOf(i) });
+            boolean bool1;
+            if (i == 12) {
+              bool1 = true;
+            }
+            while (((a.kib) && (!bool1)) || ((!a.kib) && (bool1)))
+            {
+              paramAnonymousContext = a.map.values().iterator();
+              while (paramAnonymousContext.hasNext())
+              {
+                paramAnonymousIntent = (a.a)paramAnonymousContext.next();
+                if ((paramAnonymousIntent.isStart()) && (!bool1)) {
+                  paramAnonymousIntent.Fb();
+                }
+                if (paramAnonymousIntent.ksm != null) {
+                  paramAnonymousIntent.ksm.gm(bool1);
+                }
+              }
+              bool1 = bool2;
+              if (i == 10) {
+                bool1 = bool2;
+              }
+            }
+            a.kib = bool1;
+          }
+          AppMethodBeat.o(144666);
+        }
+      };
+      paramString = new IntentFilter("android.bluetooth.adapter.action.STATE_CHANGED");
+      ai.getContext().registerReceiver(kia, paramString);
     }
-    localObject = ((Map)localObject).entrySet().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (((b)((Map.Entry)((Iterator)localObject).next()).getValue()).foreground) {
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(50488);
-    return i;
+    AppMethodBeat.o(144670);
   }
   
-  public final void rJ(int paramInt)
+  public static void remove(String paramString)
   {
-    AppMethodBeat.i(50487);
-    Object localObject = this.cit.get(Integer.valueOf(paramInt));
-    if (localObject == null) {
-      k.fvU();
+    AppMethodBeat.i(144672);
+    map.remove(paramString);
+    ac.i("MicroMsg.BeaconManager", "remove Beacon appid:%s", new Object[] { paramString });
+    if ((map.size() == 0) && (kia != null))
+    {
+      ac.i("MicroMsg.BeaconManager", "bluetoothStateListener uninit");
+      ai.getContext().unregisterReceiver(kia);
+      kia = null;
     }
-    ((b)localObject).foreground = true;
-    AppMethodBeat.o(50487);
+    AppMethodBeat.o(144672);
   }
   
-  public final void rK(int paramInt)
-  {
-    AppMethodBeat.i(196281);
-    Object localObject = this.cit.get(Integer.valueOf(paramInt));
-    if (localObject == null) {
-      k.fvU();
-    }
-    ((b)localObject).foreground = false;
-    AppMethodBeat.o(196281);
-  }
-  
-  public final void remove(int paramInt)
-  {
-    AppMethodBeat.i(196282);
-    this.cit.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(196282);
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/HTMLCanvasElementManager$Companion;", "", "()V", "holder", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/HTMLCanvasElementManager;", "Lkotlin/collections/HashMap;", "instance", "appId", "release", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    public static a HZ(String paramString)
+    volatile boolean isStart;
+    BluetoothAdapter ksj;
+    Map<String, JSONObject> ksk;
+    UUID[] ksl;
+    a ksm;
+    long ksn;
+    Map<String, JSONObject> kso;
+    BluetoothAdapter.LeScanCallback ksp;
+    
+    public a()
     {
-      AppMethodBeat.i(50484);
-      k.h(paramString, "appId");
-      synchronized (a.aZC())
+      AppMethodBeat.i(144668);
+      this.ksk = new ConcurrentHashMap();
+      this.ksl = null;
+      this.isStart = false;
+      this.ksn = 0L;
+      this.kso = new ConcurrentHashMap();
+      this.ksp = new BluetoothAdapter.LeScanCallback()
       {
-        a locala = (a)a.aZC().get(paramString);
-        if (locala != null)
+        public final void onLeScan(BluetoothDevice paramAnonymousBluetoothDevice, int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
         {
-          AppMethodBeat.o(50484);
-          return locala;
+          AppMethodBeat.i(144667);
+          if (bs.cv(paramAnonymousArrayOfByte))
+          {
+            ac.e("MicroMsg.BeaconManager", "valueByte is null or nil");
+            AppMethodBeat.o(144667);
+            return;
+          }
+          int k = 0;
+          int i = 2;
+          for (;;)
+          {
+            j = k;
+            if (i <= 5)
+            {
+              if (((paramAnonymousArrayOfByte[(i + 2)] & 0xFF) == 2) && ((paramAnonymousArrayOfByte[(i + 3)] & 0xFF) == 21)) {
+                j = 1;
+              }
+            }
+            else
+            {
+              if (j == 0) {
+                break label624;
+              }
+              localObject1 = new byte[16];
+              System.arraycopy(paramAnonymousArrayOfByte, i + 4, localObject1, 0, 16);
+              localObject2 = new StringBuilder();
+              j = 0;
+              while (j < 16)
+              {
+                k = localObject1[j] & 0xFF;
+                if (k < 16) {
+                  ((StringBuilder)localObject2).append("0");
+                }
+                ((StringBuilder)localObject2).append(Integer.toHexString(k));
+                j += 1;
+              }
+            }
+            i += 1;
+          }
+          Object localObject1 = ((StringBuilder)localObject2).toString().toUpperCase(Locale.US);
+          if (bs.isNullOrNil((String)localObject1))
+          {
+            ac.e("MicroMsg.BeaconManager", "hexString is null, err");
+            AppMethodBeat.o(144667);
+            return;
+          }
+          localObject1 = UUID.fromString(((String)localObject1).substring(0, 8) + "-" + ((String)localObject1).substring(8, 12) + "-" + ((String)localObject1).substring(12, 16) + "-" + ((String)localObject1).substring(16, 20) + "-" + ((String)localObject1).substring(20, 32));
+          int m = 0;
+          Object localObject2 = a.a.this.ksl;
+          int n = localObject2.length;
+          int j = 0;
+          for (;;)
+          {
+            k = m;
+            double d;
+            if (j < n)
+            {
+              if (localObject2[j].equals(localObject1)) {
+                k = 1;
+              }
+            }
+            else if (k != 0)
+            {
+              j = paramAnonymousArrayOfByte[(i + 20)];
+              k = paramAnonymousArrayOfByte[(i + 21)];
+              m = paramAnonymousArrayOfByte[(i + 22)];
+              n = paramAnonymousArrayOfByte[(i + 23)];
+              i = paramAnonymousArrayOfByte[(i + 24)];
+              d = paramAnonymousInt;
+              if (d != 0.0D) {
+                break label639;
+              }
+              d = -1.0D;
+              label412:
+              paramAnonymousBluetoothDevice = paramAnonymousBluetoothDevice.getAddress();
+              paramAnonymousArrayOfByte = new JSONObject();
+            }
+            try
+            {
+              paramAnonymousArrayOfByte.put("uuid", localObject1);
+              paramAnonymousArrayOfByte.put("major", (j & 0xFF) * 256 + (k & 0xFF));
+              paramAnonymousArrayOfByte.put("minor", (m & 0xFF) * 256 + (n & 0xFF));
+              paramAnonymousArrayOfByte.put("proximity", 0);
+              paramAnonymousArrayOfByte.put("accuracy", d);
+              paramAnonymousArrayOfByte.put("rssi", paramAnonymousInt);
+              a.a.this.ksk.put(paramAnonymousBluetoothDevice, paramAnonymousArrayOfByte);
+              a.a.this.kso.put(paramAnonymousBluetoothDevice, paramAnonymousArrayOfByte);
+              ac.d("MicroMsg.BeaconManager", "found device ibeacon %s", new Object[] { paramAnonymousArrayOfByte });
+              long l = System.currentTimeMillis();
+              if (l - a.a.this.ksn > 500L)
+              {
+                if (a.a.this.ksm != null) {
+                  a.a.this.ksm.E(a.a.this.kso);
+                }
+                a.a.this.ksn = l;
+                a.a.this.kso.clear();
+              }
+              label624:
+              AppMethodBeat.o(144667);
+              return;
+              j += 1;
+              continue;
+              label639:
+              d = d * 1.0D / i;
+              if (d < 1.0D)
+              {
+                d = Math.pow(d, 10.0D);
+                break label412;
+              }
+              d = Math.pow(d, 9.9476D) * 0.92093D + 0.54992D;
+            }
+            catch (JSONException paramAnonymousBluetoothDevice)
+            {
+              for (;;)
+              {
+                ac.e("MicroMsg.BeaconManager", "put JSON data error : %s", new Object[] { paramAnonymousBluetoothDevice });
+              }
+            }
+          }
         }
-        locala = new a(paramString);
-        ((Map)a.aZC()).put(paramString, locala);
-        AppMethodBeat.o(50484);
-        return locala;
-      }
-    }
-    
-    public static a Ia(String paramString)
-    {
-      AppMethodBeat.i(50485);
-      k.h(paramString, "appId");
-      synchronized (a.aZC())
+      };
+      BluetoothManager localBluetoothManager = (BluetoothManager)ai.getContext().getSystemService("bluetooth");
+      if (localBluetoothManager == null)
       {
-        paramString = (a)a.aZC().remove(paramString);
-        AppMethodBeat.o(50485);
-        return paramString;
+        ac.e("MicroMsg.BeaconManager", "bluetoothManager is null!");
+        AppMethodBeat.o(144668);
+        return;
+      }
+      this.ksj = localBluetoothManager.getAdapter();
+      if (this.ksj == null)
+      {
+        ac.e("MicroMsg.BeaconManager", "bluetoothAdapter is null!");
+        AppMethodBeat.o(144668);
+        return;
+      }
+      a.kib = this.ksj.isEnabled();
+      AppMethodBeat.o(144668);
+    }
+    
+    public final boolean Fb()
+    {
+      AppMethodBeat.i(144669);
+      ac.i("MicroMsg.BeaconManager", "BeaconWorker:%d stop", new Object[] { Integer.valueOf(hashCode()) });
+      if (!isStart())
+      {
+        ac.i("MicroMsg.BeaconManager", "BeaconWorker:%d, already stop", new Object[] { Integer.valueOf(hashCode()) });
+        AppMethodBeat.o(144669);
+        return false;
+      }
+      this.ksk.clear();
+      this.ksj.stopLeScan(this.ksp);
+      this.isStart = false;
+      AppMethodBeat.o(144669);
+      return true;
+    }
+    
+    final boolean isStart()
+    {
+      try
+      {
+        boolean bool = this.isStart;
+        return bool;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
       }
     }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/HTMLCanvasElementManager$Entity;", "", "view", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "(Lcom/tencent/magicbrush/ui/MagicBrushView;)V", "foreground", "", "getForeground", "()Z", "setForeground", "(Z)V", "getView", "()Lcom/tencent/magicbrush/ui/MagicBrushView;", "plugin-appbrand-integration_release"})
-  public static final class b
-  {
-    boolean foreground;
-    public final MagicBrushView jNo;
     
-    public b(MagicBrushView paramMagicBrushView)
+    public static abstract interface a
     {
-      AppMethodBeat.i(50486);
-      this.jNo = paramMagicBrushView;
-      AppMethodBeat.o(50486);
+      public abstract void E(Map<String, JSONObject> paramMap);
+      
+      public abstract void gm(boolean paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class cu
   extends b
 {
+  public a dcv;
+  
   public cu()
   {
     this((byte)0);
@@ -12,13 +15,21 @@ public final class cu
   
   private cu(byte paramByte)
   {
-    this.ESR = false;
+    AppMethodBeat.i(194027);
+    this.dcv = new a();
+    this.Gqe = false;
     this.callback = null;
+    AppMethodBeat.o(194027);
+  }
+  
+  public static final class a
+  {
+    public int action;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.cu
  * JD-Core Version:    0.7.0.1
  */

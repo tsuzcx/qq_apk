@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.anu;
-import com.tencent.mm.protocal.protobuf.anv;
-import com.tencent.mm.protocal.protobuf.anw;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aqy;
+import com.tencent.mm.protocal.protobuf.aqz;
+import com.tencent.mm.protocal.protobuf.ara;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -24,7 +24,7 @@ public final class d
 {
   private g callback;
   private b rr;
-  public String wcU;
+  public String xoi;
   
   public d(String paramString)
   {
@@ -35,40 +35,40 @@ public final class d
   
   public d(String paramString, Map<Integer, String> paramMap)
   {
-    AppMethodBeat.i(186500);
+    AppMethodBeat.i(190965);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new anu();
-    ((b.a)localObject).gUV = new anv();
+    ((b.a)localObject).hvt = new aqy();
+    ((b.a)localObject).hvu = new aqz();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/generalset";
     ((b.a)localObject).funcId = 177;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    this.wcU = paramString;
-    localObject = (anu)this.rr.gUS.gUX;
-    ((anu)localObject).SetType = 1;
-    ((anu)localObject).DoX = paramString;
+    this.rr = ((b.a)localObject).aAz();
+    this.xoi = paramString;
+    localObject = (aqy)this.rr.hvr.hvw;
+    ((aqy)localObject).SetType = 1;
+    ((aqy)localObject).EJX = paramString;
     if (paramMap != null)
     {
-      ((anu)localObject).DoY = paramMap.size();
-      ((anu)localObject).DoZ = new LinkedList();
+      ((aqy)localObject).EJY = paramMap.size();
+      ((aqy)localObject).EJZ = new LinkedList();
       paramString = paramMap.keySet().iterator();
       while (paramString.hasNext())
       {
         Integer localInteger = (Integer)paramString.next();
-        anw localanw = new anw();
-        localanw.mBH = localInteger.intValue();
-        localanw.Ddo = ((String)paramMap.get(localInteger));
-        ((anu)localObject).DoZ.add(localanw);
+        ara localara = new ara();
+        localara.ndI = localInteger.intValue();
+        localara.Ewu = ((String)paramMap.get(localInteger));
+        ((aqy)localObject).EJZ.add(localara);
       }
     }
-    AppMethodBeat.o(186500);
+    AppMethodBeat.o(190965);
   }
   
   public final int doScene(e parame, g paramg)
   {
     AppMethodBeat.i(73767);
-    ad.d("MicroMsg.NetSceneGeneralSet", "doScene");
+    ac.d("MicroMsg.NetSceneGeneralSet", "doScene");
     this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(73767);
@@ -83,14 +83,14 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(73768);
-    ad.d("MicroMsg.NetSceneGeneralSet", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    ac.d("MicroMsg.NetSceneGeneralSet", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(73768);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.d
  * JD-Core Version:    0.7.0.1
  */

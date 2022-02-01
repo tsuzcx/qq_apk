@@ -3,41 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dpn
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String CHl;
+  public String FWT;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(191099);
+    AppMethodBeat.i(32493);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.CHl != null) {
-        paramVarArgs.d(1, this.CHl);
+      if (this.username != null) {
+        paramVarArgs.d(1, this.username);
       }
-      AppMethodBeat.o(191099);
+      if (this.FWT != null) {
+        paramVarArgs.d(2, this.FWT);
+      }
+      AppMethodBeat.o(32493);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CHl == null) {
-        break label213;
+      if (this.username == null) {
+        break label282;
       }
     }
-    label213:
-    for (paramInt = f.a.a.b.b.a.e(1, this.CHl) + 0;; paramInt = 0)
+    label282:
+    for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(191099);
-      return paramInt;
+      int i = paramInt;
+      if (this.FWT != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FWT);
+      }
+      AppMethodBeat.o(32493);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(191099);
+        AppMethodBeat.o(32493);
         return 0;
       }
       if (paramInt == 3)
@@ -47,21 +55,25 @@ public final class dpn
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(191099);
+          AppMethodBeat.o(32493);
           return -1;
+        case 1: 
+          localdpn.username = locala.LVo.readString();
+          AppMethodBeat.o(32493);
+          return 0;
         }
-        localdpn.CHl = locala.KhF.readString();
-        AppMethodBeat.o(191099);
+        localdpn.FWT = locala.LVo.readString();
+        AppMethodBeat.o(32493);
         return 0;
       }
-      AppMethodBeat.o(191099);
+      AppMethodBeat.o(32493);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dpn
  * JD-Core Version:    0.7.0.1
  */

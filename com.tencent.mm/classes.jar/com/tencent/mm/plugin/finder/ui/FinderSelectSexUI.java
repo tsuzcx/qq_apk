@@ -11,31 +11,31 @@ import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SelectPreference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/ui/FinderSelectSexUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "selectFeMale", "Lcom/tencent/mm/ui/base/preference/SelectPreference;", "selectMale", "complete", "", "getFooterResourceId", "", "getResourceId", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "updateComplete", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/FinderSelectSexUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "selectFeMale", "Lcom/tencent/mm/ui/base/preference/SelectPreference;", "selectMale", "complete", "", "getFooterResourceId", "", "getResourceId", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "updateComplete", "plugin-finder_release"})
 public final class FinderSelectSexUI
   extends MMPreference
 {
   private final String TAG = "Finder.FinderSelectSexUI";
-  private SelectPreference qPt;
-  private SelectPreference qPu;
+  private SelectPreference rKX;
+  private SelectPreference rKY;
   
-  private final void cru()
+  private final void cCj()
   {
     AppMethodBeat.i(167566);
-    SelectPreference localSelectPreference = this.qPu;
+    SelectPreference localSelectPreference = this.rKY;
     if (localSelectPreference == null) {
-      k.aPZ("selectFeMale");
+      k.aVY("selectFeMale");
     }
     if (!localSelectPreference.getSelected())
     {
-      localSelectPreference = this.qPt;
+      localSelectPreference = this.rKX;
       if (localSelectPreference == null) {
-        k.aPZ("selectMale");
+        k.aVY("selectMale");
       }
       if (!localSelectPreference.getSelected()) {}
     }
@@ -51,7 +51,7 @@ public final class FinderSelectSexUI
   
   public final int getFooterResourceId()
   {
-    return 2131496251;
+    return 2131496252;
   }
   
   public final int getResourceId()
@@ -63,82 +63,82 @@ public final class FinderSelectSexUI
   {
     AppMethodBeat.i(167565);
     super.onCreate(paramBundle);
-    paramBundle = getPreferenceScreen().aKk("select_male");
+    paramBundle = getPreferenceScreen().aPN("select_male");
     if (paramBundle == null)
     {
       paramBundle = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.SelectPreference");
       AppMethodBeat.o(167565);
       throw paramBundle;
     }
-    this.qPt = ((SelectPreference)paramBundle);
-    paramBundle = getPreferenceScreen().aKk("select_female");
+    this.rKX = ((SelectPreference)paramBundle);
+    paramBundle = getPreferenceScreen().aPN("select_female");
     if (paramBundle == null)
     {
       paramBundle = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.SelectPreference");
       AppMethodBeat.o(167565);
       throw paramBundle;
     }
-    this.qPu = ((SelectPreference)paramBundle);
+    this.rKY = ((SelectPreference)paramBundle);
     Object localObject = getIntent().getStringExtra("key_input_sex");
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
       paramBundle = "";
     }
     "inputSex = ".concat(String.valueOf(paramBundle));
-    h.fmz();
-    localObject = this.qPt;
+    h.fCP();
+    localObject = this.rKX;
     if (localObject == null) {
-      k.aPZ("selectMale");
+      k.aVY("selectMale");
     }
     ((SelectPreference)localObject).setEnabled(true);
-    localObject = this.qPu;
+    localObject = this.rKY;
     if (localObject == null) {
-      k.aPZ("selectFeMale");
+      k.aVY("selectFeMale");
     }
     ((SelectPreference)localObject).setEnabled(true);
     if (k.g(paramBundle, "male"))
     {
-      paramBundle = this.qPt;
+      paramBundle = this.rKX;
       if (paramBundle == null) {
-        k.aPZ("selectMale");
+        k.aVY("selectMale");
       }
       paramBundle.setSelected(true);
-      paramBundle = this.qPu;
+      paramBundle = this.rKY;
       if (paramBundle == null) {
-        k.aPZ("selectFeMale");
+        k.aVY("selectFeMale");
       }
       paramBundle.setSelected(false);
     }
     for (;;)
     {
-      addTextOptionMenu(0, getString(2131755779), (MenuItem.OnMenuItemClickListener)new a(this), null, r.b.FOB);
+      addTextOptionMenu(0, getString(2131755779), (MenuItem.OnMenuItemClickListener)new a(this), null, s.b.Hom);
       setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-      cru();
+      cCj();
       AppMethodBeat.o(167565);
       return;
       if (k.g(paramBundle, "female"))
       {
-        paramBundle = this.qPt;
+        paramBundle = this.rKX;
         if (paramBundle == null) {
-          k.aPZ("selectMale");
+          k.aVY("selectMale");
         }
         paramBundle.setSelected(false);
-        paramBundle = this.qPu;
+        paramBundle = this.rKY;
         if (paramBundle == null) {
-          k.aPZ("selectFeMale");
+          k.aVY("selectFeMale");
         }
         paramBundle.setSelected(true);
       }
       else
       {
-        paramBundle = this.qPt;
+        paramBundle = this.rKX;
         if (paramBundle == null) {
-          k.aPZ("selectMale");
+          k.aVY("selectMale");
         }
         paramBundle.setSelected(false);
-        paramBundle = this.qPu;
+        paramBundle = this.rKY;
         if (paramBundle == null) {
-          k.aPZ("selectFeMale");
+          k.aVY("selectFeMale");
         }
         paramBundle.setSelected(false);
       }
@@ -160,14 +160,14 @@ public final class FinderSelectSexUI
     }
     if (k.g(paramPreference, "select_male"))
     {
-      paramPreference = this.qPt;
+      paramPreference = this.rKX;
       if (paramPreference == null) {
-        k.aPZ("selectMale");
+        k.aVY("selectMale");
       }
       paramPreference.setSelected(true);
-      paramPreference = this.qPu;
+      paramPreference = this.rKY;
       if (paramPreference == null) {
-        k.aPZ("selectFeMale");
+        k.aVY("selectFeMale");
       }
       paramPreference.setSelected(false);
       if (paramf != null) {
@@ -176,7 +176,7 @@ public final class FinderSelectSexUI
     }
     for (;;)
     {
-      cru();
+      cCj();
       if (paramf != null) {
         paramf.notifyDataSetChanged();
       }
@@ -184,27 +184,27 @@ public final class FinderSelectSexUI
       return false;
       if (k.g(paramPreference, "select_female"))
       {
-        paramPreference = this.qPt;
+        paramPreference = this.rKX;
         if (paramPreference == null) {
-          k.aPZ("selectMale");
+          k.aVY("selectMale");
         }
         paramPreference.setSelected(false);
-        paramPreference = this.qPu;
+        paramPreference = this.rKY;
         if (paramPreference == null) {
-          k.aPZ("selectFeMale");
+          k.aVY("selectFeMale");
         }
         paramPreference.setSelected(true);
       }
       else
       {
-        paramPreference = this.qPt;
+        paramPreference = this.rKX;
         if (paramPreference == null) {
-          k.aPZ("selectMale");
+          k.aVY("selectMale");
         }
         paramPreference.setSelected(false);
-        paramPreference = this.qPu;
+        paramPreference = this.rKY;
         if (paramPreference == null) {
-          k.aPZ("selectFeMale");
+          k.aVY("selectFeMale");
         }
         paramPreference.setSelected(false);
       }
@@ -217,7 +217,7 @@ public final class FinderSelectSexUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -226,13 +226,13 @@ public final class FinderSelectSexUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167563);
-      FinderSelectSexUI.a(this.qPw);
+      FinderSelectSexUI.a(this.rKZ);
       AppMethodBeat.o(167563);
       return true;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -241,7 +241,7 @@ public final class FinderSelectSexUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167564);
-      this.qPw.finish();
+      this.rKZ.finish();
       AppMethodBeat.o(167564);
       return false;
     }
@@ -249,7 +249,7 @@ public final class FinderSelectSexUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderSelectSexUI
  * JD-Core Version:    0.7.0.1
  */

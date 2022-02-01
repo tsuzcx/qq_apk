@@ -10,7 +10,7 @@ import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
 import com.tencent.mm.pluginsdk.n.c.a;
 import com.tencent.mm.pluginsdk.n.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.h;
 
@@ -30,7 +30,7 @@ public final class m
   {
     int i = 0;
     AppMethodBeat.i(20193);
-    if (ad.getLogLevel() > 1)
+    if (ac.getLogLevel() > 1)
     {
       AppMethodBeat.o(20193);
       return false;
@@ -69,14 +69,14 @@ public final class m
       }
       i = 2;
       break label83;
-      n.e.BNv.ehd();
+      n.e.DfF.ewx();
       continue;
       paramArrayOfString = new TextView(paramContext);
-      paramArrayOfString.setText(n.e.BNv.ehc());
+      paramArrayOfString.setText(n.e.DfF.eww());
       paramArrayOfString.setGravity(19);
       paramArrayOfString.setTextSize(1, 10.0F);
       paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-      paramArrayOfString.setTextColor(ao.aD(paramContext, 2130968584));
+      paramArrayOfString.setTextColor(ao.aJ(paramContext, 2130968584));
       paramArrayOfString.setTypeface(Typeface.MONOSPACE);
       i = paramContext.getResources().getDimensionPixelSize(2131165480);
       paramArrayOfString.setPadding(i, i, i, i);

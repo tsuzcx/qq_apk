@@ -11,7 +11,7 @@ public abstract interface f
   
   public abstract int getBackgroundColor();
   
-  public abstract void hd(boolean paramBoolean);
+  public abstract void hA(boolean paramBoolean);
   
   public abstract void setBackButtonClickListener(View.OnClickListener paramOnClickListener);
   
@@ -29,7 +29,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.f
  * JD-Core Version:    0.7.0.1
  */

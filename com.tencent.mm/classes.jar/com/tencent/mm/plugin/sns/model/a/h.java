@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.sns.model.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.data.q;
 import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,10 +18,10 @@ public final class h
     super(parama, parama1);
   }
   
-  public final boolean J(InputStream paramInputStream)
+  public final boolean I(InputStream paramInputStream)
   {
     AppMethodBeat.i(96073);
-    ad.i("MicroMsg.SnsDownloadSightForAdShort", "download sight. %s ", new Object[] { this.wLz.getPath() + this.wLz.dut() });
+    ac.i("MicroMsg.SnsDownloadSightForAdShort", "download sight. %s ", new Object[] { this.xYf.getPath() + this.xYf.dIT() });
     Object localObject2 = null;
     OutputStream localOutputStream2 = null;
     OutputStream localOutputStream1 = localOutputStream2;
@@ -31,13 +31,13 @@ public final class h
       byte[] arrayOfByte = new byte[1024];
       localOutputStream1 = localOutputStream2;
       localObject1 = localObject2;
-      localOutputStream2 = i.cM(this.wLz.getPath() + this.wLz.dut(), false);
+      localOutputStream2 = i.cS(this.xYf.getPath() + this.xYf.dIT(), false);
       localOutputStream1 = localOutputStream2;
       localObject1 = localOutputStream2;
       long l = System.currentTimeMillis();
       localOutputStream1 = localOutputStream2;
       localObject1 = localOutputStream2;
-      this.wLK.value = "";
+      this.xYq.value = "";
       int i = 0;
       for (;;)
       {
@@ -49,26 +49,26 @@ public final class h
         }
         localOutputStream1 = localOutputStream2;
         localObject1 = localOutputStream2;
-        if (j > this.wLL)
+        if (j > this.xYr)
         {
           localOutputStream1 = localOutputStream2;
           localObject1 = localOutputStream2;
-          this.wLL = j;
+          this.xYr = j;
           localOutputStream1 = localOutputStream2;
           localObject1 = localOutputStream2;
-          this.wLM = bt.aGK();
+          this.xYs = bs.aNx();
         }
         localOutputStream1 = localOutputStream2;
         localObject1 = localOutputStream2;
-        if (this.wLN == 0L)
+        if (this.xYt == 0L)
         {
           localOutputStream1 = localOutputStream2;
           localObject1 = localOutputStream2;
-          this.wLN = bt.vM(this.wLO);
+          this.xYt = bs.Ap(this.xYu);
         }
         localOutputStream1 = localOutputStream2;
         localObject1 = localOutputStream2;
-        if (!q.anO(af.getAccPath()))
+        if (!q.ata(af.getAccPath()))
         {
           localOutputStream1 = localOutputStream2;
           localObject1 = localOutputStream2;
@@ -87,7 +87,7 @@ public final class h
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.SnsDownloadSightForAdShort", paramInputStream, "", new Object[0]);
+              ac.printErrStackTrace("MicroMsg.SnsDownloadSightForAdShort", paramInputStream, "", new Object[0]);
             }
           }
         }
@@ -96,11 +96,11 @@ public final class h
         localOutputStream2.write(arrayOfByte, 0, j);
         localOutputStream1 = localOutputStream2;
         localObject1 = localOutputStream2;
-        this.wLS += j;
+        this.xYy += j;
         i = 1;
         localOutputStream1 = localOutputStream2;
         localObject1 = localOutputStream2;
-        if (a(this.wLS, l, this.wLK))
+        if (a(this.xYy, l, this.xYq))
         {
           localOutputStream1 = localOutputStream2;
           localObject1 = localOutputStream2;
@@ -114,7 +114,7 @@ public final class h
       localObject1 = null;
       localOutputStream1 = null;
       if (i != 0) {
-        a(this.wLS, 0L, this.wLK);
+        a(this.xYy, 0L, this.xYq);
       }
       AppMethodBeat.o(96073);
       return true;
@@ -122,9 +122,9 @@ public final class h
     catch (Exception paramInputStream)
     {
       localObject1 = localOutputStream1;
-      ad.printErrStackTrace("MicroMsg.SnsDownloadSightForAdShort", paramInputStream, "snscdndownload fail : " + paramInputStream.getMessage(), new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SnsDownloadSightForAdShort", paramInputStream, "snscdndownload fail : " + paramInputStream.getMessage(), new Object[0]);
       localObject1 = localOutputStream1;
-      ad.printErrStackTrace("MicroMsg.SnsDownloadSightForAdShort", paramInputStream, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SnsDownloadSightForAdShort", paramInputStream, "", new Object[0]);
       if (localOutputStream1 != null) {}
       try
       {
@@ -136,7 +136,7 @@ public final class h
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.SnsDownloadSightForAdShort", paramInputStream, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.SnsDownloadSightForAdShort", paramInputStream, "", new Object[0]);
         }
       }
     }
@@ -154,21 +154,21 @@ public final class h
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.SnsDownloadSightForAdShort", localIOException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.SnsDownloadSightForAdShort", localIOException, "", new Object[0]);
       }
     }
   }
   
-  public final String apd(String paramString)
+  public final String aup(String paramString)
   {
     return paramString;
   }
   
-  public final boolean duv()
+  public final boolean dIV()
   {
     AppMethodBeat.i(96074);
-    String str = q.i(this.dyS);
-    i.aQ(this.wLz.getPath(), this.wLz.dut(), str);
+    String str = q.i(this.dwE);
+    i.aT(this.xYf.getPath(), this.xYf.dIT(), str);
     AppMethodBeat.o(96074);
     return true;
   }

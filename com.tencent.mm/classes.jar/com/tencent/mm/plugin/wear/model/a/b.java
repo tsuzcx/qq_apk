@@ -9,15 +9,15 @@ public abstract interface b
 {
   public abstract byte[] a(Asset paramAsset);
   
-  public abstract void ehi();
+  public abstract void ewC();
   
-  public abstract GoogleApiClient ehj();
+  public abstract GoogleApiClient ewD();
   
-  public abstract HashSet<String> ehk();
+  public abstract HashSet<String> ewE();
   
-  public abstract boolean ehl();
+  public abstract boolean ewF();
   
-  public abstract void ehm();
+  public abstract void ewG();
   
   public abstract void finish();
   
@@ -31,7 +31,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.a.b
  * JD-Core Version:    0.7.0.1
  */

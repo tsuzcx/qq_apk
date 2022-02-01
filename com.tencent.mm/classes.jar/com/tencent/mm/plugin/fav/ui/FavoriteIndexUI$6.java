@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fav.ui;
 
 import android.app.Dialog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.List;
 
 final class FavoriteIndexUI$6
@@ -13,13 +13,13 @@ final class FavoriteIndexUI$6
   public final void run()
   {
     AppMethodBeat.i(107004);
-    FavoriteIndexUI.b(this.qdg, this.qge);
-    aq.f(new Runnable()
+    FavoriteIndexUI.b(this.qLL, this.qOG);
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(107002);
-        FavoriteIndexUI.6.this.qcu.dismiss();
+        FavoriteIndexUI.6.this.qLa.dismiss();
         AppMethodBeat.o(107002);
       }
       
@@ -36,7 +36,7 @@ final class FavoriteIndexUI$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavoriteIndexUI.6
  * JD-Core Version:    0.7.0.1
  */

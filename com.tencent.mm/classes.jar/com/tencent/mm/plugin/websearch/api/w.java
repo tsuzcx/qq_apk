@@ -1,73 +1,8 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ckd;
-import com.tencent.mm.protocal.protobuf.cke;
-import com.tencent.mm.sdk.platformtools.ad;
-
-public final class w
-  extends n
-  implements k
+public abstract interface w
 {
-  private String AGi;
-  private g callback;
-  public b hdD;
-  private int scene;
-  
-  public w(ckd paramckd)
-  {
-    AppMethodBeat.i(117641);
-    b.a locala = new b.a();
-    locala.funcId = 1134;
-    locala.uri = "/cgi-bin/mmsearch-bin/searchreport";
-    locala.gUU = paramckd;
-    locala.gUV = new cke();
-    this.hdD = locala.atI();
-    this.scene = paramckd.Scene;
-    this.AGi = paramckd.Eff;
-    AppMethodBeat.o(117641);
-  }
-  
-  public final int doScene(e parame, g paramg)
-  {
-    AppMethodBeat.i(117643);
-    ad.i("MicroMsg.FTS.NetSceneWebSearchReport", "doScene %d", new Object[] { Integer.valueOf(this.scene) });
-    ak.Sk(5);
-    ak.L(this.scene, 4, this.AGi);
-    this.callback = paramg;
-    int i = dispatch(parame, this.hdD, this);
-    AppMethodBeat.o(117643);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 1134;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(117642);
-    ad.i("MicroMsg.FTS.NetSceneWebSearchReport", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      ak.Sk(7);
-      AppMethodBeat.o(117642);
-      return;
-    }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    ak.Sk(6);
-    ak.a(this.scene, 5, paramInt2, paramInt3, this.AGi);
-    AppMethodBeat.o(117642);
-  }
+  public abstract void iD(int paramInt1, int paramInt2);
 }
 
 

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.pluginsdk.wallet.e;
 
 public final class bn
@@ -12,12 +12,12 @@ public final class bn
 {
   public static final int CTRL_INDEX = 618;
   public static final String NAME = "openWCPayLQTDepositPlan";
-  final int jyE;
+  final int jZb;
   
   public bn()
   {
     AppMethodBeat.i(174761);
-    this.jyE = com.tencent.luggage.sdk.g.a.aD(this);
+    this.jZb = com.tencent.luggage.sdk.g.a.aA(this);
     AppMethodBeat.o(174761);
   }
 }

@@ -21,27 +21,27 @@ public abstract interface h
   
   public abstract void onDetach();
   
-  public abstract void pause();
+  public abstract void p(double paramDouble);
   
-  public abstract void q(double paramDouble);
+  public abstract void pause();
   
   public abstract void setLoop(boolean paramBoolean);
   
   public abstract void setMute(boolean paramBoolean);
   
-  public abstract void setOnInfoCallback(b paramb);
+  public abstract void setOnInfoCallback(h.b paramb);
   
-  public abstract void setOnSeekCompleteCallback(h.c paramc);
+  public abstract void setOnSeekCompleteCallback(c paramc);
   
-  public abstract void setOnSurfaceCallback(h.d paramd);
+  public abstract void setOnSurfaceCallback(d paramd);
   
-  public abstract void setOneTimeVideoTextureUpdateCallback(h.e parame);
+  public abstract void setOneTimeVideoTextureUpdateCallback(e parame);
   
   public abstract void setPlayProgressCallback(boolean paramBoolean);
   
   public abstract void setThumb(Bitmap paramBitmap);
   
-  public abstract void setVideoCallback(h.a parama);
+  public abstract void setVideoCallback(a parama);
   
   public abstract void setVideoPath(String paramString);
   
@@ -49,11 +49,34 @@ public abstract interface h
   
   public abstract void stop();
   
-  public abstract boolean y(Context paramContext, boolean paramBoolean);
+  public abstract boolean z(Context paramContext, boolean paramBoolean);
   
-  public static abstract interface b
+  public static abstract interface a
   {
     public abstract void dZ(int paramInt1, int paramInt2);
+    
+    public abstract int eP(int paramInt1, int paramInt2);
+    
+    public abstract void onCompletion();
+    
+    public abstract void onError(int paramInt1, int paramInt2);
+    
+    public abstract void rB();
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void eS(boolean paramBoolean);
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void aJn();
+  }
+  
+  public static abstract interface e
+  {
+    public abstract void bli();
   }
 }
 

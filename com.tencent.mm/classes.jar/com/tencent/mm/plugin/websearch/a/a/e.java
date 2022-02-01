@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.websearch.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -15,44 +15,44 @@ import java.util.List;
 public final class e
   extends a<a>
 {
-  public List<a> kLN;
+  public List<a> lnk;
   
   public e(String paramString)
   {
     super(paramString);
     AppMethodBeat.i(116562);
-    this.kLN = Collections.emptyList();
+    this.lnk = Collections.emptyList();
     AppMethodBeat.o(116562);
   }
   
-  public final void gu(List<m> paramList)
+  public final void gF(List<m> paramList)
   {
     AppMethodBeat.i(116563);
-    this.kLN = new ArrayList(paramList.size());
+    this.lnk = new ArrayList(paramList.size());
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       m localm = (m)paramList.next();
-      af localaf = ((k)g.ab(k.class)).apM().aHY(localm.roN);
+      ai localai = ((k)g.ab(k.class)).awB().aNt(localm.sxG);
       a locala = new a();
-      locala.userName = localaf.field_username;
-      locala.AHX = localm.content;
-      locala.bNK = localaf.field_nickname;
-      locala.iaz = localaf.field_conRemark;
-      locala.eKn = localaf.Ss();
-      locala.desc = localaf.evI;
-      this.kLN.add(locala);
+      locala.userName = localai.field_username;
+      locala.Cao = localm.content;
+      locala.bLs = localai.field_nickname;
+      locala.iAC = localai.field_conRemark;
+      locala.eNf = localai.Tl();
+      locala.desc = localai.eyf;
+      this.lnk.add(locala);
     }
     AppMethodBeat.o(116563);
   }
   
   public static final class a
   {
-    public String AHX;
-    public String bNK;
+    public String Cao;
+    public String bLs;
     public String desc;
-    public String eKn;
-    public String iaz;
+    public String eNf;
+    public String iAC;
     public String userName;
   }
 }

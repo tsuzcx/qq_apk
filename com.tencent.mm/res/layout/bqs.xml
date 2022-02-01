@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/v" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="vertical" android:id="@id/htd" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <SeekBar android:id="@id/htf" android:background="@null" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/cg" android:max="100" android:progress="0" android:thumb="@drawable/c5j" android:thumbOffset="0.0dip" />
+        <RelativeLayout android:paddingLeft="@dimen/bq" android:paddingRight="@dimen/bq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="14.0dip">
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/aj" android:id="@id/htc" android:paddingTop="@dimen/bq" android:paddingBottom="@dimen/bq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r5" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/aj" android:id="@id/hte" android:background="@drawable/io" android:paddingLeft="@dimen/c8" android:paddingTop="@dimen/bq" android:paddingRight="@dimen/c8" android:paddingBottom="@dimen/bq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ti" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/htd">
+        <com.tencent.mm.ui.widget.cropview.CropLayout android:id="@id/c02" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </RelativeLayout>

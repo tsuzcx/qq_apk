@@ -17,8 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.ai.z.a;
+import com.tencent.mm.ah.z;
+import com.tencent.mm.ah.z.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
@@ -28,64 +28,64 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.e.b;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.f;
 import com.tencent.mm.plugin.appbrand.jsapi.video.progressbar.AppBrandVideoViewControlBar;
 import com.tencent.mm.plugin.mmsight.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import d.l;
 import d.n.n;
 import d.v;
 
 @com.tencent.mm.ui.base.a(32)
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandVideoPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/message/MsgJobCallback;", "()V", "BASIC_PADDING", "", "TAG", "", "getTAG", "()Ljava/lang/String;", "TOGGLE_PADDING", "appBrandVideoViewControlBar", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/progressbar/AppBrandVideoViewControlBar;", "mAdditionButtonStr", "mAdditionMsgId", "", "Ljava/lang/Long;", "mAdditionSenderUsername", "mAdditionStartAppBrandId", "mAdditionTalkerUsername", "mAdditionText", "mChattingType", "Ljava/lang/Integer;", "mCoverUrl", "mExtData", "Landroid/os/Bundle;", "mLocalPath", "mScene", "mShouldAutoSave", "", "Ljava/lang/Boolean;", "mVideoUrl", "mVideoView", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView;", "checkParams", "doInBackground", "", "job", "Lcom/tencent/mm/message/MsgJobCallback$Job;", "failDoJob", "getLayoutId", "getUIFlag", "initVideoView", "isJustTransAsNormalMsg", "onCreate", "savedInstanceState", "onDestroy", "onPause", "onResume", "onSwipeBackFinish", "onWindowFocusChanged", "hasFocus", "reportWitrhType", "type", "requestExitSelectedMode", "resumeEditMode", "setWindowStyle", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandVideoPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/message/MsgJobCallback;", "()V", "BASIC_PADDING", "", "TAG", "", "getTAG", "()Ljava/lang/String;", "TOGGLE_PADDING", "appBrandVideoViewControlBar", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/progressbar/AppBrandVideoViewControlBar;", "mAdditionButtonStr", "mAdditionMsgId", "", "Ljava/lang/Long;", "mAdditionSenderUsername", "mAdditionStartAppBrandId", "mAdditionTalkerUsername", "mAdditionText", "mChattingType", "Ljava/lang/Integer;", "mCoverUrl", "mExtData", "Landroid/os/Bundle;", "mLocalPath", "mScene", "mShouldAutoSave", "", "Ljava/lang/Boolean;", "mVideoUrl", "mVideoView", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView;", "checkParams", "doInBackground", "", "job", "Lcom/tencent/mm/message/MsgJobCallback$Job;", "failDoJob", "getLayoutId", "getUIFlag", "initVideoView", "isJustTransAsNormalMsg", "onCreate", "savedInstanceState", "onDestroy", "onPause", "onResume", "onSwipeBackFinish", "onWindowFocusChanged", "hasFocus", "reportWitrhType", "type", "requestExitSelectedMode", "resumeEditMode", "setWindowStyle", "plugin-appbrand-integration_release"})
 public final class AppBrandVideoPreviewUI
   extends MMActivity
   implements z
 {
   final String TAG;
-  private Bundle joo;
-  private String knl;
-  private String lDC;
-  private AppBrandVideoView lDD;
-  private String lDE;
-  private Boolean lDF;
-  private Integer lDG;
-  private Integer lDH;
-  private String lDI;
-  private String lDJ;
-  private String lDK;
-  private Long lDL;
-  private String lDM;
-  private String lDN;
-  private AppBrandVideoViewControlBar lDO;
-  private int lDP;
-  private int lDQ;
+  private Bundle jOA;
+  private String kOD;
+  private Integer mfA;
+  private Integer mfB;
+  private String mfC;
+  private String mfD;
+  private String mfE;
+  private Long mfF;
+  private String mfG;
+  private String mfH;
+  private AppBrandVideoViewControlBar mfI;
+  private int mfJ;
+  private int mfK;
+  private String mfw;
+  private AppBrandVideoView mfx;
+  private String mfy;
+  private Boolean mfz;
   
   public AppBrandVideoPreviewUI()
   {
     AppMethodBeat.i(51170);
     this.TAG = "MicroMsg.AppBrandVideoPreviewUI";
-    this.knl = "";
-    this.lDE = "";
-    this.lDF = Boolean.FALSE;
-    this.lDG = Integer.valueOf(0);
-    this.lDH = Integer.valueOf(0);
-    this.lDI = "";
-    this.lDJ = "";
-    this.lDK = "";
-    this.lDL = Long.valueOf(-1L);
-    this.lDM = "";
-    this.lDN = "";
+    this.kOD = "";
+    this.mfy = "";
+    this.mfz = Boolean.FALSE;
+    this.mfA = Integer.valueOf(0);
+    this.mfB = Integer.valueOf(0);
+    this.mfC = "";
+    this.mfD = "";
+    this.mfE = "";
+    this.mfF = Long.valueOf(-1L);
+    this.mfG = "";
+    this.mfH = "";
     AppMethodBeat.o(51170);
   }
   
-  private final void tZ(int paramInt)
+  private final void uR(int paramInt)
   {
     AppMethodBeat.i(51165);
-    com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.vKh;
-    if (w.pF(this.lDM)) {}
+    com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.wUl;
+    if (w.sQ(this.mfG)) {}
     for (int i = 2;; i = 1)
     {
-      localh.f(17608, new Object[] { Integer.valueOf(i), this.lDK, Integer.valueOf(paramInt), Integer.valueOf(1) });
+      localh.f(17608, new Object[] { Integer.valueOf(i), this.mfE, Integer.valueOf(paramInt), Integer.valueOf(1) });
       AppMethodBeat.o(51165);
       return;
     }
@@ -94,11 +94,11 @@ public final class AppBrandVideoPreviewUI
   public final void a(z.a parama)
   {
     AppMethodBeat.i(51161);
-    ad.i(this.TAG, "hy: fail do job: %s", new Object[] { parama });
+    ac.i(this.TAG, "hy: fail do job: %s", new Object[] { parama });
     AppMethodBeat.o(51161);
   }
   
-  public final boolean apE()
+  public final boolean awt()
   {
     return true;
   }
@@ -106,16 +106,16 @@ public final class AppBrandVideoPreviewUI
   public final void b(z.a parama)
   {
     AppMethodBeat.i(51162);
-    ad.i(this.TAG, "hy: doInBackground do job: %s", new Object[] { parama });
+    ac.i(this.TAG, "hy: doInBackground do job: %s", new Object[] { parama });
     AppMethodBeat.o(51162);
   }
   
   public final void c(z.a parama)
   {
     AppMethodBeat.i(51163);
-    ad.i(this.TAG, "hy: requestExitSelectedMode do job: %s", new Object[] { parama });
-    if (parama == z.a.gLj) {
-      tZ(4);
+    ac.i(this.TAG, "hy: requestExitSelectedMode do job: %s", new Object[] { parama });
+    if (parama == z.a.hlJ) {
+      uR(4);
     }
     AppMethodBeat.o(51163);
   }
@@ -131,7 +131,7 @@ public final class AppBrandVideoPreviewUI
     supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
     setSelfNavigationBarVisible(8);
-    d.ne(true);
+    d.nX(true);
     paramBundle = getWindow();
     d.g.b.k.g(paramBundle, "window");
     paramBundle.setNavigationBarColor(-16777216);
@@ -146,26 +146,26 @@ public final class AppBrandVideoPreviewUI
     paramBundle = getWindow();
     d.g.b.k.g(paramBundle, "window");
     paramBundle.getDecorView().setOnSystemUiVisibilityChangeListener((View.OnSystemUiVisibilityChangeListener)new f(this));
-    this.lDP = com.tencent.mm.cd.a.ap((Context)this, 2131165483);
-    this.lDQ = (com.tencent.mm.cd.a.ap((Context)this, 2131165867) + this.lDP);
-    this.lDC = getIntent().getStringExtra("key_video_url");
-    this.knl = getIntent().getStringExtra("key_cover_path");
-    this.lDE = getIntent().getStringExtra("key_local_file_path");
-    this.lDF = Boolean.valueOf(getIntent().getBooleanExtra("key_auto_save", false));
-    this.lDG = Integer.valueOf(getIntent().getIntExtra("key_scene", 0));
-    this.joo = getIntent().getBundleExtra("key_ext_data");
-    if (this.knl != null)
+    this.mfJ = com.tencent.mm.cc.a.av((Context)this, 2131165483);
+    this.mfK = (com.tencent.mm.cc.a.av((Context)this, 2131165867) + this.mfJ);
+    this.mfw = getIntent().getStringExtra("key_video_url");
+    this.kOD = getIntent().getStringExtra("key_cover_path");
+    this.mfy = getIntent().getStringExtra("key_local_file_path");
+    this.mfz = Boolean.valueOf(getIntent().getBooleanExtra("key_auto_save", false));
+    this.mfA = Integer.valueOf(getIntent().getIntExtra("key_scene", 0));
+    this.jOA = getIntent().getBundleExtra("key_ext_data");
+    if (this.kOD != null)
     {
-      paramBundle = this.knl;
+      paramBundle = this.kOD;
       if (paramBundle == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      if (n.mA(paramBundle, "/")) {
-        this.knl = ("file:/" + this.knl);
+      if (n.nb(paramBundle, "/")) {
+        this.kOD = ("file:/" + this.kOD);
       }
     }
     int i;
-    if (bt.isNullOrNil(this.lDC)) {
+    if (bs.isNullOrNil(this.mfw)) {
       i = 0;
     }
     label364:
@@ -175,54 +175,54 @@ public final class AppBrandVideoPreviewUI
       finish();
       AppMethodBeat.o(51164);
       return;
-      paramBundle = this.lDG;
+      paramBundle = this.mfA;
       if (paramBundle == null) {}
       while (paramBundle.intValue() != 1)
       {
         i = 1;
         break;
       }
-      paramBundle = this.joo;
+      paramBundle = this.jOA;
       if (paramBundle != null)
       {
         paramBundle = Integer.valueOf(paramBundle.getInt("key_chatting_type"));
-        this.lDH = paramBundle;
-        paramBundle = this.joo;
+        this.mfB = paramBundle;
+        paramBundle = this.jOA;
         if (paramBundle == null) {
           break label547;
         }
         paramBundle = paramBundle.getString("key_chatting_wording");
         label386:
-        this.lDI = paramBundle;
-        paramBundle = this.joo;
+        this.mfC = paramBundle;
+        paramBundle = this.jOA;
         if (paramBundle == null) {
           break label552;
         }
         paramBundle = paramBundle.getString("key_chatting_text");
         label408:
-        this.lDJ = paramBundle;
-        paramBundle = this.joo;
+        this.mfD = paramBundle;
+        paramBundle = this.jOA;
         if (paramBundle == null) {
           break label557;
         }
         paramBundle = paramBundle.getString("key_chatting_appid");
         label430:
-        this.lDK = paramBundle;
-        paramBundle = this.joo;
+        this.mfE = paramBundle;
+        paramBundle = this.jOA;
         if (paramBundle == null) {
           break label562;
         }
         paramBundle = Long.valueOf(paramBundle.getLong("key_msg_id", -1L));
         label458:
-        this.lDL = paramBundle;
-        paramBundle = this.joo;
+        this.mfF = paramBundle;
+        paramBundle = this.jOA;
         if (paramBundle == null) {
           break label567;
         }
         paramBundle = paramBundle.getString("key_talker_username");
         label480:
-        this.lDM = paramBundle;
-        paramBundle = this.joo;
+        this.mfG = paramBundle;
+        paramBundle = this.jOA;
         if (paramBundle == null) {
           break label572;
         }
@@ -235,8 +235,8 @@ public final class AppBrandVideoPreviewUI
       label572:
       for (paramBundle = paramBundle.getString("key_sender_username");; paramBundle = null)
       {
-        this.lDN = paramBundle;
-        if ((!bt.isNullOrNil(this.lDK)) && (!bt.isNullOrNil(this.lDM)) && (!bt.isNullOrNil(this.lDN))) {
+        this.mfH = paramBundle;
+        if ((!bs.isNullOrNil(this.mfE)) && (!bs.isNullOrNil(this.mfG)) && (!bs.isNullOrNil(this.mfH))) {
           break label577;
         }
         i = 0;
@@ -255,27 +255,27 @@ public final class AppBrandVideoPreviewUI
         break label480;
       }
       label577:
-      if (this.lDL != null)
+      if (this.mfF != null)
       {
-        paramBundle = this.lDL;
+        paramBundle = this.mfF;
         if (paramBundle == null) {}
         while (paramBundle.longValue() != -1L)
         {
           paramBundle = g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
           d.g.b.k.g(paramBundle, "MMKernel.service(IMessengerStorage::class.java)");
-          paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramBundle).cOI();
-          localObject = this.lDL;
+          paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramBundle).dcr();
+          localObject = this.mfF;
           if (localObject == null) {
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
-          paramBundle.rm(((Long)localObject).longValue());
+          paramBundle.vP(((Long)localObject).longValue());
           break;
         }
       }
       i = 0;
     }
-    tZ(2);
-    paramBundle = this.lDG;
+    uR(2);
+    paramBundle = this.mfA;
     if (paramBundle == null)
     {
       setBackBtn((MenuItem.OnMenuItemClickListener)new AppBrandVideoPreviewUI.e(this));
@@ -284,99 +284,99 @@ public final class AppBrandVideoPreviewUI
       setActionbarColor(-16777216);
       label704:
       paramBundle = new AppBrandVideoWrapper((Context)this);
-      this.lDD = new AppBrandVideoView((Context)this, (View)paramBundle);
-      this.lDO = new AppBrandVideoViewControlBar((Context)this);
-      localObject = this.lDO;
+      this.mfx = new AppBrandVideoView((Context)this, (View)paramBundle);
+      this.mfI = new AppBrandVideoViewControlBar((Context)this);
+      localObject = this.mfI;
       if (localObject == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
       ((AppBrandVideoViewControlBar)localObject).setId(2131296841);
-      localObject = this.lDD;
+      localObject = this.mfx;
       if (localObject != null) {
-        ((AppBrandVideoView)localObject).a((e.a)this.lDO);
+        ((AppBrandVideoView)localObject).a((e.a)this.mfI);
       }
-      paramBundle.setVideoFooterView((e.b)this.lDO);
-      paramBundle = this.lDH;
+      paramBundle.setVideoFooterView((e.b)this.mfI);
+      paramBundle = this.mfB;
       if (paramBundle != null) {
         break label1178;
       }
     }
     for (;;)
     {
-      ((RelativeLayout)findViewById(2131298740)).addView((View)this.lDD, 0, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
-      paramBundle = this.lDD;
+      ((RelativeLayout)findViewById(2131298740)).addView((View)this.mfx, 0, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setAutoPlay(true);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setLoop(true);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setMute(false);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setCookieData(null);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
-        paramBundle.setCover$16da05f7(this.knl);
+        paramBundle.setCover$16da05f7(this.kOD);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setObjectFit("contain");
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setShowDanmakuBtn(false);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setShowMuteBtn(false);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setShowPlayBtn(true);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setShowProgress(true);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setShowFullScreenBtn(false);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setIsShowBasicControls(true);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setIsEnableBottomProgressBar(false);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setShowCenterPlayBtn(false);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setShowControlProgress(true);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
         paramBundle.setPageGesture(true);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
-        paramBundle.gm(true);
+        paramBundle.gI(true);
       }
-      paramBundle = this.lDD;
+      paramBundle = this.mfx;
       if (paramBundle != null) {
-        paramBundle.e(this.lDC, false, 0);
+        paramBundle.e(this.mfw, false, 0);
       }
-      paramBundle = this.lDG;
+      paramBundle = this.mfA;
       if (paramBundle != null) {
         break label1204;
       }
@@ -391,7 +391,7 @@ public final class AppBrandVideoPreviewUI
       label1178:
       if (paramBundle.intValue() == 48)
       {
-        paramBundle = this.lDO;
+        paramBundle = this.mfI;
         if (paramBundle != null) {
           paramBundle.setAutoHide(false);
         }
@@ -403,16 +403,16 @@ public final class AppBrandVideoPreviewUI
       paramBundle = LayoutInflater.from((Context)this).inflate(2131493073, (ViewGroup)findViewById(2131298740), false);
       localObject = new RelativeLayout.LayoutParams(-1, -2);
       ((RelativeLayout.LayoutParams)localObject).addRule(12);
-      ((RelativeLayout.LayoutParams)localObject).bottomMargin = this.lDQ;
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = this.mfK;
       ((RelativeLayout)findViewById(2131298740)).addView(paramBundle, (ViewGroup.LayoutParams)localObject);
       localObject = paramBundle.findViewById(2131296468);
       d.g.b.k.g(localObject, "additionView.findViewByI…View>(R.id.addition_text)");
-      ((TextView)localObject).setText((CharSequence)this.lDI);
+      ((TextView)localObject).setText((CharSequence)this.mfC);
       localObject = (Button)paramBundle.findViewById(2131296467);
       d.g.b.k.g(localObject, "startBtn");
-      ((Button)localObject).setText((CharSequence)this.lDJ);
+      ((Button)localObject).setText((CharSequence)this.mfD);
       ((Button)localObject).setOnClickListener((View.OnClickListener)new AppBrandVideoPreviewUI.a(this));
-      localObject = this.lDO;
+      localObject = this.mfI;
       if (localObject != null)
       {
         ((AppBrandVideoViewControlBar)localObject).a((e.f)new b(this, paramBundle));
@@ -427,7 +427,7 @@ public final class AppBrandVideoPreviewUI
   {
     AppMethodBeat.i(51169);
     super.onDestroy();
-    AppBrandVideoView localAppBrandVideoView = this.lDD;
+    AppBrandVideoView localAppBrandVideoView = this.mfx;
     if (localAppBrandVideoView != null)
     {
       localAppBrandVideoView.onUIDestroy();
@@ -441,10 +441,10 @@ public final class AppBrandVideoPreviewUI
   {
     AppMethodBeat.i(51168);
     super.onPause();
-    AppBrandVideoView localAppBrandVideoView = this.lDD;
+    AppBrandVideoView localAppBrandVideoView = this.mfx;
     if (localAppBrandVideoView != null)
     {
-      localAppBrandVideoView.rV(3);
+      localAppBrandVideoView.sM(3);
       AppMethodBeat.o(51168);
       return;
     }
@@ -455,7 +455,7 @@ public final class AppBrandVideoPreviewUI
   {
     AppMethodBeat.i(51167);
     super.onResume();
-    AppBrandVideoView localAppBrandVideoView = this.lDD;
+    AppBrandVideoView localAppBrandVideoView = this.mfx;
     if (localAppBrandVideoView != null)
     {
       localAppBrandVideoView.onUIResume();
@@ -483,7 +483,7 @@ public final class AppBrandVideoPreviewUI
     AppMethodBeat.o(51166);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "onVisibilityChanged"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "onVisibilityChanged"})
   static final class b
     implements e.f
   {
@@ -494,10 +494,10 @@ public final class AppBrandVideoPreviewUI
       AppMethodBeat.i(51156);
       if (!paramBoolean)
       {
-        localObject = this.lDR.findViewById(2131303392);
+        localObject = this.mfL.findViewById(2131303392);
         d.g.b.k.g(localObject, "findViewById<ImageView>(R.id.preview_close)");
         ((ImageView)localObject).setVisibility(8);
-        localObject = this.lDR.findViewById(2131303400);
+        localObject = this.mfL.findViewById(2131303400);
         d.g.b.k.g(localObject, "findViewById<ImageView>(R.id.preview_share)");
         ((ImageView)localObject).setVisibility(8);
         localObject = paramBundle;
@@ -509,14 +509,14 @@ public final class AppBrandVideoPreviewUI
           AppMethodBeat.o(51156);
           throw ((Throwable)localObject);
         }
-        ((RelativeLayout.LayoutParams)localObject).bottomMargin = AppBrandVideoPreviewUI.e(this.lDR);
+        ((RelativeLayout.LayoutParams)localObject).bottomMargin = AppBrandVideoPreviewUI.e(this.mfL);
         AppMethodBeat.o(51156);
         return;
       }
-      Object localObject = this.lDR.findViewById(2131303392);
+      Object localObject = this.mfL.findViewById(2131303392);
       d.g.b.k.g(localObject, "findViewById<ImageView>(R.id.preview_close)");
       ((ImageView)localObject).setVisibility(0);
-      localObject = this.lDR.findViewById(2131303400);
+      localObject = this.mfL.findViewById(2131303400);
       d.g.b.k.g(localObject, "findViewById<ImageView>(R.id.preview_share)");
       ((ImageView)localObject).setVisibility(0);
       localObject = paramBundle;
@@ -528,12 +528,12 @@ public final class AppBrandVideoPreviewUI
         AppMethodBeat.o(51156);
         throw ((Throwable)localObject);
       }
-      ((RelativeLayout.LayoutParams)localObject).bottomMargin = AppBrandVideoPreviewUI.f(this.lDR);
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = AppBrandVideoPreviewUI.f(this.mfL);
       AppMethodBeat.o(51156);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "onSystemUiVisibilityChange"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "onSystemUiVisibilityChange"})
   static final class f
     implements View.OnSystemUiVisibilityChangeListener
   {
@@ -544,11 +544,11 @@ public final class AppBrandVideoPreviewUI
       AppMethodBeat.i(51160);
       if ((paramInt & 0x4) == 0)
       {
-        Object localObject = this.lDR.getWindow();
+        Object localObject = this.mfL.getWindow();
         d.g.b.k.g(localObject, "window");
         localObject = ((Window)localObject).getDecorView();
         d.g.b.k.g(localObject, "window.decorView");
-        ((View)localObject).setSystemUiVisibility(AppBrandVideoPreviewUI.boH());
+        ((View)localObject).setSystemUiVisibility(AppBrandVideoPreviewUI.bvC());
       }
       AppMethodBeat.o(51160);
     }

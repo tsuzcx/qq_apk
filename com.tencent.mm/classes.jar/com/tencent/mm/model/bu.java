@@ -4,9 +4,9 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.n.b;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bk;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,21 +14,21 @@ import java.util.List;
 public final class bu
 {
   private e db;
-  private bh gPg;
+  private bk hpG;
   
-  public bu(e parame, bh parambh)
+  public bu(e parame, bk parambk)
   {
     this.db = parame;
-    this.gPg = parambh;
+    this.hpG = parambk;
   }
   
-  private String us(String paramString)
+  private String yy(String paramString)
   {
     AppMethodBeat.i(20392);
     Object localObject1 = new ArrayList();
-    String str = "select username from rcontact where (username like '%" + paramString + "%' or nickname like '%" + paramString + "%' or alias like '%" + paramString + "%' or pyInitial like '%" + paramString + "%' or quanPin like '%" + paramString + "%' or conRemark like '%" + paramString + "%' )and username not like '%@%' and type & " + b.ZI() + "=0 ";
+    String str = "select username from rcontact where (username like '%" + paramString + "%' or nickname like '%" + paramString + "%' or alias like '%" + paramString + "%' or pyInitial like '%" + paramString + "%' or quanPin like '%" + paramString + "%' or conRemark like '%" + paramString + "%' )and username not like '%@%' and type & " + b.aaD() + "=0 ";
     Object localObject2 = this.db.a(str, null, 2);
-    ad.v("Micro.SimpleSearchConversationModel", "contactsql %s", new Object[] { str });
+    ac.v("Micro.SimpleSearchConversationModel", "contactsql %s", new Object[] { str });
     while (((Cursor)localObject2).moveToNext())
     {
       str = ((Cursor)localObject2).getString(((Cursor)localObject2).getColumnIndex("username"));
@@ -70,7 +70,7 @@ public final class bu
         str1 = " and rconversation.username = rcontact.username ";
       }
     }
-    str2 = "select 1,unReadCount, status, isSend, conversationTime, rconversation.username, content, rconversation.msgType, rconversation.flag, rcontact.nickname from rconversation," + "rcontact" + " " + " where rconversation.username = rcontact.username" + str1 + bt.nullAsNil(paramString1);
+    str2 = "select 1,unReadCount, status, isSend, conversationTime, rconversation.username, content, rconversation.msgType, rconversation.flag, rcontact.nickname from rconversation," + "rcontact" + " " + " where rconversation.username = rcontact.username" + str1 + bs.nullAsNil(paramString1);
     str1 = "";
     paramString1 = str1;
     if (paramList != null)
@@ -90,13 +90,13 @@ public final class bu
     {
       paramString1 = paramList;
       if (paramString2.length() > 0) {
-        paramString1 = paramList + us(paramString2);
+        paramString1 = paramList + yy(paramString2);
       }
     }
     paramString1 = paramString1 + " order by ";
     paramString1 = paramString1 + "rconversation.username like '%@chatroom' asc, ";
     paramString1 = paramString1 + "flag desc, conversationTime desc";
-    ad.v("Micro.SimpleSearchConversationModel", "convsql %s", new Object[] { paramString1 });
+    ac.v("Micro.SimpleSearchConversationModel", "convsql %s", new Object[] { paramString1 });
     paramString1 = this.db.rawQuery(paramString1, null);
     AppMethodBeat.o(20391);
     return paramString1;
@@ -104,7 +104,7 @@ public final class bu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.bu
  * JD-Core Version:    0.7.0.1
  */

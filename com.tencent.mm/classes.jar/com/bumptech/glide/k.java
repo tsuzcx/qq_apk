@@ -6,9 +6,9 @@ import com.bumptech.glide.f.b.c;
 public abstract class k<CHILD extends k<CHILD, TranscodeType>, TranscodeType>
   implements Cloneable
 {
-  c<? super TranscodeType> aAO = a.pL();
+  c<? super TranscodeType> aBI = a.pV();
   
-  public final CHILD nn()
+  public final CHILD nx()
   {
     try
     {
@@ -23,7 +23,7 @@ public abstract class k<CHILD extends k<CHILD, TranscodeType>, TranscodeType>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.k
  * JD-Core Version:    0.7.0.1
  */

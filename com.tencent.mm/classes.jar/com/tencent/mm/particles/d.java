@@ -2,10 +2,10 @@ package com.tencent.mm.particles;
 
 public final class d
 {
-  public final int hPA;
-  public final int hPB;
-  public final int hPC;
-  public final int hPz;
+  public final int ipU;
+  public final int ipV;
+  public final int ipW;
+  public final int ipX;
   
   public d(int paramInt1, int paramInt2)
   {
@@ -14,25 +14,25 @@ public final class d
   
   private d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.hPz = paramInt1;
-    this.hPA = paramInt2;
-    this.hPB = paramInt3;
-    this.hPC = paramInt4;
+    this.ipU = paramInt1;
+    this.ipV = paramInt2;
+    this.ipW = paramInt3;
+    this.ipX = paramInt4;
   }
   
-  protected final float ak(float paramFloat)
+  protected final float ao(float paramFloat)
   {
-    return this.hPz + (this.hPB - this.hPz) * paramFloat;
+    return this.ipU + (this.ipW - this.ipU) * paramFloat;
   }
   
-  protected final float al(float paramFloat)
+  protected final float ap(float paramFloat)
   {
-    return this.hPA + (this.hPC - this.hPA) * paramFloat;
+    return this.ipV + (this.ipX - this.ipV) * paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.particles.d
  * JD-Core Version:    0.7.0.1
  */

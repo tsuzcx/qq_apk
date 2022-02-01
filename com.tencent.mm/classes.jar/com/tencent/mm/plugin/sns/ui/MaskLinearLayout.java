@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,8 +20,8 @@ public class MaskLinearLayout
 {
   private boolean enable;
   private List<MaskImageView> list;
-  private ap xkC;
-  private Runnable xkD;
+  private ao yxu;
+  private Runnable yxv;
   
   public MaskLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,8 +29,8 @@ public class MaskLinearLayout
     AppMethodBeat.i(97968);
     this.enable = false;
     this.list = new LinkedList();
-    this.xkC = new ap();
-    this.xkD = new Runnable()
+    this.yxu = new ao();
+    this.yxv = new Runnable()
     {
       public final void run()
       {
@@ -46,7 +46,7 @@ public class MaskLinearLayout
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(97967);
-        ad.e("test", "touch: " + paramAnonymousMotionEvent.getAction());
+        ac.e("test", "touch: " + paramAnonymousMotionEvent.getAction());
         if (!MaskLinearLayout.b(MaskLinearLayout.this))
         {
           AppMethodBeat.o(97967);

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +22,7 @@ public final class c
     AppMethodBeat.o(72145);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 3;
   }
@@ -30,7 +30,7 @@ public final class c
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72146);
-    ad.d("MicroMsg.NetScenePayUCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    ac.d("MicroMsg.NetScenePayUCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
     this.token = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(72146);
   }

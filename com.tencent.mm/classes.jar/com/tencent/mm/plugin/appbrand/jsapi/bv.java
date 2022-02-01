@@ -6,14 +6,14 @@ public final class bv
   public static final int CTRL_INDEX = 408;
   public static final String NAME = "private_quicklyAddBrandContact";
   
-  protected final int aXR()
+  protected final int beO()
   {
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bv
  * JD-Core Version:    0.7.0.1
  */

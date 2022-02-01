@@ -9,7 +9,7 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.a.a;
 import com.tencent.mm.plugin.messenger.a.f;
 import com.tencent.mm.plugin.messenger.d.b.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
@@ -25,7 +25,7 @@ public final class b
   
   public final CharSequence b(final Map<String, String> paramMap, String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(191591);
+    AppMethodBeat.i(196656);
     String str3 = (String)paramMap.get(paramString + ".title");
     final LinkedList localLinkedList = new LinkedList();
     int i = 0;
@@ -37,7 +37,7 @@ public final class b
         str1 = str2 + i;
       }
       str1 = (String)paramMap.get(str1);
-      if (bt.isNullOrNil(str1)) {
+      if (bs.isNullOrNil(str1)) {
         break;
       }
       localLinkedList.add(str1);
@@ -48,28 +48,28 @@ public final class b
     {
       public final void onClickImp(View paramAnonymousView)
       {
-        AppMethodBeat.i(191590);
+        AppMethodBeat.i(196655);
         paramAnonymousView = b.this;
         LinkedList localLinkedList = localLinkedList;
-        if ((paramAnonymousView.tzf != null) && (paramAnonymousView.tzf.get() != null)) {
-          ((b.b)paramAnonymousView.tzf.get()).az(localLinkedList);
+        if ((paramAnonymousView.uHC != null) && (paramAnonymousView.uHC.get() != null)) {
+          ((b.b)paramAnonymousView.uHC.get()).aG(localLinkedList);
         }
         ((f)g.ab(f.class)).a("link_revoke", paramMap, paramBundle);
-        AppMethodBeat.o(191590);
+        AppMethodBeat.o(196655);
       }
     }, 0, str3.length(), 33);
-    AppMethodBeat.o(191591);
+    AppMethodBeat.o(196656);
     return paramString;
   }
   
-  public final String cPc()
+  public final String dcL()
   {
     return "link_revoke";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.n.b
  * JD-Core Version:    0.7.0.1
  */

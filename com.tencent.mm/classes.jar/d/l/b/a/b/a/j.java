@@ -6,33 +6,33 @@ import java.util.List;
 
 public final class j
 {
-  private static final b JnT;
-  private static final String JnU = "KProperty";
-  private static final String JnV = "KMutableProperty";
-  private static final String JnW = "KFunction";
-  private static final String JnX = "KSuspendFunction";
-  private static final List<String> JnY;
+  private static final b Lbn;
+  private static final String Lbo = "KProperty";
+  private static final String Lbp = "KMutableProperty";
+  private static final String Lbq = "KFunction";
+  private static final String Lbr = "KSuspendFunction";
+  private static final List<String> Lbs;
   
   static
   {
     AppMethodBeat.i(56693);
-    JnT = new b("kotlin.reflect");
-    JnU = "KProperty";
-    JnV = "KMutableProperty";
-    JnW = "KFunction";
-    JnX = "KSuspendFunction";
-    JnY = d.a.j.listOf(new String[] { JnU, JnV, JnW, JnX });
+    Lbn = new b("kotlin.reflect");
+    Lbo = "KProperty";
+    Lbp = "KMutableProperty";
+    Lbq = "KFunction";
+    Lbr = "KSuspendFunction";
+    Lbs = d.a.j.listOf(new String[] { Lbo, Lbp, Lbq, Lbr });
     AppMethodBeat.o(56693);
   }
   
-  public static final b fxp()
+  public static final b fPT()
   {
-    return JnT;
+    return Lbn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.j
  * JD-Core Version:    0.7.0.1
  */

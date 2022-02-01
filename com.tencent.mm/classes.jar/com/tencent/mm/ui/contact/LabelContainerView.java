@@ -10,30 +10,30 @@ import com.tencent.mm.ui.base.MMTagPanelScrollView;
 public class LabelContainerView
   extends MMTagPanelScrollView
 {
-  boolean GVJ;
-  boolean GVK;
-  boolean GVL;
-  float GVM;
-  float GVN;
-  float GVO;
-  float GVP;
-  private a GVQ;
-  boolean MF;
-  float MK;
-  float ML;
-  float MM;
-  float MN;
-  private int Mr;
+  boolean IvX;
+  boolean IvY;
+  boolean IvZ;
+  float Iwa;
+  float Iwb;
+  float Iwc;
+  float Iwd;
+  private a Iwe;
+  boolean NA;
+  float NF;
+  float NG;
+  float NH;
+  float NI;
+  private int No;
   
   public LabelContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(102845);
-    this.MF = true;
-    this.GVJ = false;
-    this.GVK = true;
-    this.GVL = false;
-    csj();
+    this.NA = true;
+    this.IvX = false;
+    this.IvY = true;
+    this.IvZ = false;
+    cDI();
     AppMethodBeat.o(102845);
   }
   
@@ -41,26 +41,26 @@ public class LabelContainerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(102844);
-    this.MF = true;
-    this.GVJ = false;
-    this.GVK = true;
-    this.GVL = false;
-    csj();
+    this.NA = true;
+    this.IvX = false;
+    this.IvY = true;
+    this.IvZ = false;
+    cDI();
     AppMethodBeat.o(102844);
   }
   
-  private void csj()
+  private void cDI()
   {
     AppMethodBeat.i(102847);
     int i = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.Mr = (i * i);
+    this.No = (i * i);
     AppMethodBeat.o(102847);
   }
   
-  public final void bXa()
+  public final void cen()
   {
     AppMethodBeat.i(102850);
-    this.GVQ.bXa();
+    this.Iwe.cen();
     AppMethodBeat.o(102850);
   }
   
@@ -125,22 +125,22 @@ public class LabelContainerView
       return bool;
       i = m;
       break;
-      this.GVK = true;
-      this.GVN = f2;
-      this.GVM = f2;
-      this.GVP = f1;
-      this.GVO = f1;
-      this.GVL = true;
+      this.IvY = true;
+      this.Iwb = f2;
+      this.Iwa = f2;
+      this.Iwd = f1;
+      this.Iwc = f1;
+      this.IvZ = true;
       continue;
-      i = (int)(f2 - this.GVM);
-      j = (int)(f1 - this.GVO);
-      if (j * j + i * i > this.Mr)
+      i = (int)(f2 - this.Iwa);
+      j = (int)(f1 - this.Iwc);
+      if (j * j + i * i > this.No)
       {
-        this.GVK = false;
+        this.IvY = false;
         AppMethodBeat.o(102846);
         return true;
-        this.GVK = true;
-        this.GVL = false;
+        this.IvY = true;
+        this.IvZ = false;
       }
     }
   }
@@ -198,55 +198,55 @@ public class LabelContainerView
       return bool;
       i = m;
       break;
-      this.MF = true;
-      this.MK = f2;
-      this.MM = f2;
-      this.ML = f1;
-      this.MN = f1;
-      this.GVJ = true;
+      this.NA = true;
+      this.NF = f2;
+      this.NH = f2;
+      this.NG = f1;
+      this.NI = f1;
+      this.IvX = true;
       continue;
-      if (!this.GVJ)
+      if (!this.IvX)
       {
-        this.MF = true;
-        this.MK = f2;
-        this.MM = f2;
-        this.ML = f1;
-        this.MN = f1;
-        this.GVJ = true;
+        this.NA = true;
+        this.NF = f2;
+        this.NH = f2;
+        this.NG = f1;
+        this.NI = f1;
+        this.IvX = true;
       }
-      if (this.GVQ != null) {
-        this.GVQ.bXb();
+      if (this.Iwe != null) {
+        this.Iwe.ceo();
       }
-      i = (int)(f2 - this.MM);
-      j = (int)(f1 - this.MN);
-      if (j * j + i * i > this.Mr)
+      i = (int)(f2 - this.NH);
+      j = (int)(f1 - this.NI);
+      if (j * j + i * i > this.No)
       {
-        this.MF = false;
+        this.NA = false;
         continue;
-        if (((this.MF) || (!this.GVJ)) && (this.GVQ != null)) {
-          this.GVQ.bXa();
+        if (((this.NA) || (!this.IvX)) && (this.Iwe != null)) {
+          this.Iwe.cen();
         }
-        this.MF = true;
-        this.GVJ = false;
+        this.NA = true;
+        this.IvX = false;
       }
     }
   }
   
   public void setOnLabelContainerListener(a parama)
   {
-    this.GVQ = parama;
+    this.Iwe = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void bXa();
+    public abstract void cen();
     
-    public abstract void bXb();
+    public abstract void ceo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.LabelContainerView
  * JD-Core Version:    0.7.0.1
  */

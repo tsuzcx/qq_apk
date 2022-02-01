@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.mmsight.model.a.j;
 import com.tencent.mm.plugin.mmsight.segment.MP4MuxerJNI;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
@@ -17,30 +17,30 @@ import java.nio.ByteBuffer;
 public final class c
   extends com.tencent.mm.plugin.mmsight.api.a
 {
-  private com.tencent.mm.compatible.h.c cUM;
+  private com.tencent.mm.compatible.h.c cSi;
   private int channelCount;
   private String filePath;
-  private int gmW;
-  private int gnI;
-  private int gsY;
-  private int gsZ;
-  private Bitmap gsr;
-  private int gtF;
-  private int gtG;
-  private int gtH;
-  private int gtL;
-  private int gta;
-  private long gtb;
-  private Point hBZ;
+  private int gNJ;
+  private int gOu;
+  private Bitmap gSY;
+  private int gTG;
+  private int gTH;
+  private int gTI;
+  private long gTJ;
+  private int gUm;
+  private int gUq;
+  private int grA;
+  private int grB;
+  private Point icA;
   private String outputFilePath;
   private long remuxEndTime;
-  private a tFf;
-  private byte[] tFj;
-  private byte[] tFk;
-  private a.a tFl;
-  private g tFn;
-  private int tFo;
-  private int tFp;
+  private a uNA;
+  private byte[] uNE;
+  private byte[] uNF;
+  private a.a uNG;
+  private g uNI;
+  private int uNJ;
+  private int uNK;
   private int videoDuration;
   private int videoFps;
   
@@ -48,38 +48,38 @@ public final class c
   {
     AppMethodBeat.i(89613);
     this.videoDuration = -1;
-    this.gtb = -1L;
+    this.gTJ = -1L;
     this.remuxEndTime = -1L;
-    this.gtL = -1;
-    this.hBZ = null;
-    this.tFj = null;
-    this.tFk = null;
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    this.gUq = -1;
+    this.icA = null;
+    this.uNE = null;
+    this.uNF = null;
+    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)) || (paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      ad.e("MicroMsg.MMSightFFMpegX264Remuxer", "create MMSightFFMpegMediaCodecRemuxer error, filePath: %s, outputFilePath: %s, outputWidth: %s, outputHeight: %s, outputFps: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
+      ac.e("MicroMsg.MMSightFFMpegX264Remuxer", "create MMSightFFMpegMediaCodecRemuxer error, filePath: %s, outputFilePath: %s, outputWidth: %s, outputHeight: %s, outputFps: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
       AppMethodBeat.o(89613);
       return;
     }
     this.filePath = paramString1;
     this.outputFilePath = paramString2;
-    this.gtF = paramInt1;
-    this.gtG = paramInt2;
-    this.gtH = paramInt3;
-    this.gtL = paramInt4;
-    this.tFo = paramInt5;
-    this.tFp = paramInt6;
-    this.gta = SightVideoJNI.getMp4RotateVFS(paramString1);
-    com.tencent.mm.plugin.sight.base.a locala = e.ano(paramString1);
+    this.grA = paramInt1;
+    this.grB = paramInt2;
+    this.gUm = paramInt3;
+    this.gUq = paramInt4;
+    this.uNJ = paramInt5;
+    this.uNK = paramInt6;
+    this.gTI = SightVideoJNI.getMp4RotateVFS(paramString1);
+    com.tencent.mm.plugin.sight.base.a locala = e.asx(paramString1);
     if (locala != null)
     {
-      this.gsY = locala.width;
-      this.gsZ = locala.height;
+      this.gTG = locala.width;
+      this.gTH = locala.height;
       this.videoDuration = locala.videoDuration;
       this.videoFps = locala.frameRate;
     }
-    this.gtb = 0L;
+    this.gTJ = 0L;
     this.remuxEndTime = this.videoDuration;
-    ad.i("MicroMsg.MMSightFFMpegX264Remuxer", "create MMSightFFMpegX264Remuxer, filePath: %s, outputFilePath: %s, inputWidth: %s, inputHeight: %s, videoRotate: %s, outputWidth: %s, outputHeight: %s", new Object[] { paramString1, paramString2, Integer.valueOf(this.gsY), Integer.valueOf(this.gsZ), Integer.valueOf(this.gta), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.MMSightFFMpegX264Remuxer", "create MMSightFFMpegX264Remuxer, filePath: %s, outputFilePath: %s, inputWidth: %s, inputHeight: %s, videoRotate: %s, outputWidth: %s, outputHeight: %s", new Object[] { paramString1, paramString2, Integer.valueOf(this.gTG), Integer.valueOf(this.gTH), Integer.valueOf(this.gTI), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(89613);
   }
   
@@ -87,42 +87,42 @@ public final class c
   {
     AppMethodBeat.i(89614);
     this.videoDuration = -1;
-    this.gtb = -1L;
+    this.gTJ = -1L;
     this.remuxEndTime = -1L;
-    this.gtL = -1;
-    this.hBZ = null;
-    this.tFj = null;
-    this.tFk = null;
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    this.gUq = -1;
+    this.icA = null;
+    this.uNE = null;
+    this.uNF = null;
+    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)) || (paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      ad.e("MicroMsg.MMSightFFMpegX264Remuxer", "create MMSightFFMpegMediaCodecRemuxer error, filePath: %s, outputFilePath: %s, outputWidth: %s, outputHeight: %s, outputFps: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
+      ac.e("MicroMsg.MMSightFFMpegX264Remuxer", "create MMSightFFMpegMediaCodecRemuxer error, filePath: %s, outputFilePath: %s, outputWidth: %s, outputHeight: %s, outputFps: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
       AppMethodBeat.o(89614);
       return;
     }
     this.filePath = paramString1;
     this.outputFilePath = paramString2;
-    this.gtF = paramInt1;
-    this.gtG = paramInt2;
-    this.gtH = paramInt3;
-    this.gtL = paramInt4;
-    this.tFo = paramInt5;
-    this.tFp = paramInt6;
-    this.gta = SightVideoJNI.getMp4RotateVFS(paramString1);
-    com.tencent.mm.plugin.sight.base.a locala = e.ano(paramString1);
+    this.grA = paramInt1;
+    this.grB = paramInt2;
+    this.gUm = paramInt3;
+    this.gUq = paramInt4;
+    this.uNJ = paramInt5;
+    this.uNK = paramInt6;
+    this.gTI = SightVideoJNI.getMp4RotateVFS(paramString1);
+    com.tencent.mm.plugin.sight.base.a locala = e.asx(paramString1);
     if (locala != null)
     {
-      this.gsY = locala.width;
-      this.gsZ = locala.height;
+      this.gTG = locala.width;
+      this.gTH = locala.height;
       this.videoFps = locala.frameRate;
     }
-    this.gtb = paramLong1;
+    this.gTJ = paramLong1;
     this.remuxEndTime = paramLong2;
-    ad.i("MicroMsg.MMSightFFMpegX264Remuxer", "create MMSightFFMpegX264Remuxer, filePath: %s, outputFilePath: %s, inputWidth: %s, inputHeight: %s, videoRotate: %s, outputWidth: %s, outputHeight: %s, startTimeMs: %s, endTimeMs: %s", new Object[] { paramString1, paramString2, Integer.valueOf(this.gsY), Integer.valueOf(this.gsZ), Integer.valueOf(this.gta), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    ac.i("MicroMsg.MMSightFFMpegX264Remuxer", "create MMSightFFMpegX264Remuxer, filePath: %s, outputFilePath: %s, inputWidth: %s, inputHeight: %s, videoRotate: %s, outputWidth: %s, outputHeight: %s, startTimeMs: %s, endTimeMs: %s", new Object[] { paramString1, paramString2, Integer.valueOf(this.gTG), Integer.valueOf(this.gTH), Integer.valueOf(this.gTI), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
     AppMethodBeat.o(89614);
   }
   
   /* Error */
-  public final int akd()
+  public final int arc()
   {
     // Byte code:
     //   0: ldc 188
@@ -137,7 +137,7 @@ public final class c
     //   17: iload_2
     //   18: istore_1
     //   19: aload_0
-    //   20: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gtb	J
+    //   20: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gTJ	J
     //   23: lconst_0
     //   24: lcmp
     //   25: iflt +33 -> 58
@@ -151,7 +151,7 @@ public final class c
     //   39: aload_0
     //   40: getfield 62	com/tencent/mm/plugin/mmsight/model/b/c:remuxEndTime	J
     //   43: aload_0
-    //   44: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gtb	J
+    //   44: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gTJ	J
     //   47: lsub
     //   48: l2f
     //   49: ldc 189
@@ -163,24 +163,24 @@ public final class c
     //   58: aload_0
     //   59: iload_1
     //   60: invokestatic 201	com/tencent/mm/plugin/mmsight/segment/MP4MuxerJNI:initDataBufLock	(I)I
-    //   63: putfield 203	com/tencent/mm/plugin/mmsight/model/b/c:gmW	I
+    //   63: putfield 203	com/tencent/mm/plugin/mmsight/model/b/c:gNJ	I
     //   66: aload_0
     //   67: getfield 99	com/tencent/mm/plugin/mmsight/model/b/c:filePath	Ljava/lang/String;
-    //   70: invokestatic 208	com/tencent/mm/bl/e:Ao	(Ljava/lang/String;)Z
+    //   70: invokestatic 208	com/tencent/mm/bk/e:Et	(Ljava/lang/String;)Z
     //   73: ifeq +88 -> 161
     //   76: ldc 78
     //   78: ldc 210
-    //   80: invokestatic 213	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   80: invokestatic 213	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   83: aload_0
     //   84: new 215	com/tencent/mm/plugin/mmsight/model/b/e
     //   87: dup
     //   88: invokespecial 216	com/tencent/mm/plugin/mmsight/model/b/e:<init>	()V
-    //   91: putfield 168	com/tencent/mm/plugin/mmsight/model/b/c:tFf	Lcom/tencent/mm/plugin/mmsight/model/b/a;
+    //   91: putfield 168	com/tencent/mm/plugin/mmsight/model/b/c:uNA	Lcom/tencent/mm/plugin/mmsight/model/b/a;
     //   94: aload_0
     //   95: getfield 56	com/tencent/mm/plugin/mmsight/model/b/c:videoDuration	I
     //   98: ifle +77 -> 175
     //   101: aload_0
-    //   102: getfield 168	com/tencent/mm/plugin/mmsight/model/b/c:tFf	Lcom/tencent/mm/plugin/mmsight/model/b/a;
+    //   102: getfield 168	com/tencent/mm/plugin/mmsight/model/b/c:uNA	Lcom/tencent/mm/plugin/mmsight/model/b/a;
     //   105: aload_0
     //   106: getfield 99	com/tencent/mm/plugin/mmsight/model/b/c:filePath	Ljava/lang/String;
     //   109: lconst_0
@@ -200,11 +200,11 @@ public final class c
     //   135: iload_1
     //   136: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   139: aastore
-    //   140: invokestatic 147	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   140: invokestatic 147	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   143: iload_1
     //   144: ifge +133 -> 277
     //   147: aload_0
-    //   148: getfield 203	com/tencent/mm/plugin/mmsight/model/b/c:gmW	I
+    //   148: getfield 203	com/tencent/mm/plugin/mmsight/model/b/c:gNJ	I
     //   151: invokestatic 226	com/tencent/mm/plugin/mmsight/segment/MP4MuxerJNI:releaseDataBufLock	(I)V
     //   154: ldc 188
     //   156: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -214,10 +214,10 @@ public final class c
     //   162: new 228	com/tencent/mm/plugin/mmsight/model/b/d
     //   165: dup
     //   166: invokespecial 229	com/tencent/mm/plugin/mmsight/model/b/d:<init>	()V
-    //   169: putfield 168	com/tencent/mm/plugin/mmsight/model/b/c:tFf	Lcom/tencent/mm/plugin/mmsight/model/b/a;
+    //   169: putfield 168	com/tencent/mm/plugin/mmsight/model/b/c:uNA	Lcom/tencent/mm/plugin/mmsight/model/b/a;
     //   172: goto -78 -> 94
     //   175: aload_0
-    //   176: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gtb	J
+    //   176: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gTJ	J
     //   179: lconst_0
     //   180: lcmp
     //   181: iflt +41 -> 222
@@ -227,11 +227,11 @@ public final class c
     //   189: lcmp
     //   190: iflt +32 -> 222
     //   193: aload_0
-    //   194: getfield 168	com/tencent/mm/plugin/mmsight/model/b/c:tFf	Lcom/tencent/mm/plugin/mmsight/model/b/a;
+    //   194: getfield 168	com/tencent/mm/plugin/mmsight/model/b/c:uNA	Lcom/tencent/mm/plugin/mmsight/model/b/a;
     //   197: aload_0
     //   198: getfield 99	com/tencent/mm/plugin/mmsight/model/b/c:filePath	Ljava/lang/String;
     //   201: aload_0
-    //   202: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gtb	J
+    //   202: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gTJ	J
     //   205: aload_0
     //   206: getfield 62	com/tencent/mm/plugin/mmsight/model/b/c:remuxEndTime	J
     //   209: aload_0
@@ -252,7 +252,7 @@ public final class c
     //   240: dup
     //   241: iconst_1
     //   242: aload_0
-    //   243: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gtb	J
+    //   243: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gTJ	J
     //   246: invokestatic 157	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   249: aastore
     //   250: dup
@@ -261,29 +261,29 @@ public final class c
     //   253: getfield 62	com/tencent/mm/plugin/mmsight/model/b/c:remuxEndTime	J
     //   256: invokestatic 157	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   259: aastore
-    //   260: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   260: invokestatic 94	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   263: aload_0
-    //   264: getfield 203	com/tencent/mm/plugin/mmsight/model/b/c:gmW	I
+    //   264: getfield 203	com/tencent/mm/plugin/mmsight/model/b/c:gNJ	I
     //   267: invokestatic 226	com/tencent/mm/plugin/mmsight/segment/MP4MuxerJNI:releaseDataBufLock	(I)V
     //   270: ldc 188
     //   272: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   275: iconst_m1
     //   276: ireturn
     //   277: aload_0
-    //   278: getfield 64	com/tencent/mm/plugin/mmsight/model/b/c:gtL	I
+    //   278: getfield 64	com/tencent/mm/plugin/mmsight/model/b/c:gUq	I
     //   281: ifle +39 -> 320
     //   284: aload_0
-    //   285: getfield 64	com/tencent/mm/plugin/mmsight/model/b/c:gtL	I
+    //   285: getfield 64	com/tencent/mm/plugin/mmsight/model/b/c:gUq	I
     //   288: aload_0
     //   289: getfield 143	com/tencent/mm/plugin/mmsight/model/b/c:videoFps	I
     //   292: if_icmpge +28 -> 320
     //   295: aload_0
-    //   296: getfield 168	com/tencent/mm/plugin/mmsight/model/b/c:tFf	Lcom/tencent/mm/plugin/mmsight/model/b/a;
+    //   296: getfield 168	com/tencent/mm/plugin/mmsight/model/b/c:uNA	Lcom/tencent/mm/plugin/mmsight/model/b/a;
     //   299: aload_0
     //   300: getfield 143	com/tencent/mm/plugin/mmsight/model/b/c:videoFps	I
     //   303: i2f
     //   304: aload_0
-    //   305: getfield 64	com/tencent/mm/plugin/mmsight/model/b/c:gtL	I
+    //   305: getfield 64	com/tencent/mm/plugin/mmsight/model/b/c:gUq	I
     //   308: i2f
     //   309: fdiv
     //   310: f2d
@@ -291,16 +291,16 @@ public final class c
     //   314: d2i
     //   315: invokeinterface 238 2 0
     //   320: aload_0
-    //   321: getfield 64	com/tencent/mm/plugin/mmsight/model/b/c:gtL	I
+    //   321: getfield 64	com/tencent/mm/plugin/mmsight/model/b/c:gUq	I
     //   324: ifle +622 -> 946
     //   327: aload_0
-    //   328: getfield 64	com/tencent/mm/plugin/mmsight/model/b/c:gtL	I
+    //   328: getfield 64	com/tencent/mm/plugin/mmsight/model/b/c:gUq	I
     //   331: aload_0
     //   332: getfield 143	com/tencent/mm/plugin/mmsight/model/b/c:videoFps	I
     //   335: invokestatic 242	java/lang/Math:min	(II)I
     //   338: istore_1
     //   339: aload_0
-    //   340: getfield 168	com/tencent/mm/plugin/mmsight/model/b/c:tFf	Lcom/tencent/mm/plugin/mmsight/model/b/a;
+    //   340: getfield 168	com/tencent/mm/plugin/mmsight/model/b/c:uNA	Lcom/tencent/mm/plugin/mmsight/model/b/a;
     //   343: new 6	com/tencent/mm/plugin/mmsight/model/b/c$1
     //   346: dup
     //   347: aload_0
@@ -310,48 +310,48 @@ public final class c
     //   357: new 250	com/tencent/mm/plugin/mmsight/model/b/g
     //   360: dup
     //   361: aload_0
-    //   362: getfield 132	com/tencent/mm/plugin/mmsight/model/b/c:gsY	I
+    //   362: getfield 132	com/tencent/mm/plugin/mmsight/model/b/c:gTG	I
     //   365: aload_0
-    //   366: getfield 137	com/tencent/mm/plugin/mmsight/model/b/c:gsZ	I
+    //   366: getfield 137	com/tencent/mm/plugin/mmsight/model/b/c:gTH	I
     //   369: aload_0
-    //   370: getfield 103	com/tencent/mm/plugin/mmsight/model/b/c:gtF	I
+    //   370: getfield 103	com/tencent/mm/plugin/mmsight/model/b/c:grA	I
     //   373: aload_0
-    //   374: getfield 105	com/tencent/mm/plugin/mmsight/model/b/c:gtG	I
+    //   374: getfield 105	com/tencent/mm/plugin/mmsight/model/b/c:grB	I
     //   377: aload_0
-    //   378: getfield 107	com/tencent/mm/plugin/mmsight/model/b/c:gtH	I
+    //   378: getfield 107	com/tencent/mm/plugin/mmsight/model/b/c:gUm	I
     //   381: iload_1
-    //   382: getstatic 255	com/tencent/mm/plugin/sight/base/c:wra	I
+    //   382: getstatic 255	com/tencent/mm/plugin/sight/base/c:xCr	I
     //   385: aload_0
-    //   386: getfield 109	com/tencent/mm/plugin/mmsight/model/b/c:tFo	I
+    //   386: getfield 109	com/tencent/mm/plugin/mmsight/model/b/c:uNJ	I
     //   389: aload_0
-    //   390: getfield 111	com/tencent/mm/plugin/mmsight/model/b/c:tFp	I
+    //   390: getfield 111	com/tencent/mm/plugin/mmsight/model/b/c:uNK	I
     //   393: invokespecial 258	com/tencent/mm/plugin/mmsight/model/b/g:<init>	(IIIIIIIII)V
-    //   396: putfield 181	com/tencent/mm/plugin/mmsight/model/b/c:tFn	Lcom/tencent/mm/plugin/mmsight/model/b/g;
+    //   396: putfield 181	com/tencent/mm/plugin/mmsight/model/b/c:uNI	Lcom/tencent/mm/plugin/mmsight/model/b/g;
     //   399: aload_0
-    //   400: getfield 181	com/tencent/mm/plugin/mmsight/model/b/c:tFn	Lcom/tencent/mm/plugin/mmsight/model/b/g;
+    //   400: getfield 181	com/tencent/mm/plugin/mmsight/model/b/c:uNI	Lcom/tencent/mm/plugin/mmsight/model/b/g;
     //   403: astore 5
     //   405: aload 5
     //   407: iconst_0
     //   408: putfield 261	com/tencent/mm/plugin/mmsight/model/b/g:frameCount	I
     //   411: aload 5
-    //   413: getfield 264	com/tencent/mm/plugin/mmsight/model/b/g:gnh	I
+    //   413: getfield 264	com/tencent/mm/plugin/mmsight/model/b/g:gNU	I
     //   416: aload 5
-    //   418: getfield 267	com/tencent/mm/plugin/mmsight/model/b/g:gni	I
+    //   418: getfield 267	com/tencent/mm/plugin/mmsight/model/b/g:gNV	I
     //   421: aload 5
     //   423: getfield 268	com/tencent/mm/plugin/mmsight/model/b/g:frameRate	I
     //   426: i2f
     //   427: aload 5
     //   429: getfield 271	com/tencent/mm/plugin/mmsight/model/b/g:bitrate	I
     //   432: aload 5
-    //   434: getfield 274	com/tencent/mm/plugin/mmsight/model/b/g:hbY	I
+    //   434: getfield 274	com/tencent/mm/plugin/mmsight/model/b/g:hCA	I
     //   437: bipush 8
     //   439: aload 5
-    //   441: getfield 277	com/tencent/mm/plugin/mmsight/model/b/g:hbX	I
+    //   441: getfield 277	com/tencent/mm/plugin/mmsight/model/b/g:hCz	I
     //   444: ldc_w 278
     //   447: aload 5
-    //   449: getfield 279	com/tencent/mm/plugin/mmsight/model/b/g:tFo	I
+    //   449: getfield 279	com/tencent/mm/plugin/mmsight/model/b/g:uNJ	I
     //   452: aload 5
-    //   454: getfield 280	com/tencent/mm/plugin/mmsight/model/b/g:tFp	I
+    //   454: getfield 280	com/tencent/mm/plugin/mmsight/model/b/g:uNK	I
     //   457: invokestatic 284	com/tencent/mm/plugin/mmsight/segment/MP4MuxerJNI:initH264EncoderLock	(IIFIIIIFII)I
     //   460: pop
     //   461: aload 5
@@ -360,8 +360,8 @@ public final class c
     //   467: aload 5
     //   469: iconst_0
     //   470: invokespecial 289	com/tencent/mm/plugin/mmsight/model/b/g$a:<init>	(Lcom/tencent/mm/plugin/mmsight/model/b/g;B)V
-    //   473: putfield 293	com/tencent/mm/plugin/mmsight/model/b/g:tFx	Lcom/tencent/mm/plugin/mmsight/model/b/g$a;
-    //   476: getstatic 299	com/tencent/e/h:Iye	Lcom/tencent/e/i;
+    //   473: putfield 293	com/tencent/mm/plugin/mmsight/model/b/g:uNS	Lcom/tencent/mm/plugin/mmsight/model/b/g$a;
+    //   476: getstatic 299	com/tencent/e/h:JZN	Lcom/tencent/e/i;
     //   479: astore 6
     //   481: new 286	com/tencent/mm/plugin/mmsight/model/b/g$a
     //   484: dup
@@ -371,7 +371,7 @@ public final class c
     //   491: astore 7
     //   493: aload 5
     //   495: aload 7
-    //   497: putfield 293	com/tencent/mm/plugin/mmsight/model/b/g:tFx	Lcom/tencent/mm/plugin/mmsight/model/b/g$a;
+    //   497: putfield 293	com/tencent/mm/plugin/mmsight/model/b/g:uNS	Lcom/tencent/mm/plugin/mmsight/model/b/g$a;
     //   500: aload 6
     //   502: aload 7
     //   504: invokeinterface 305 2 0
@@ -381,45 +381,45 @@ public final class c
     //   513: putfield 309	com/tencent/mm/plugin/mmsight/model/b/g:isStart	Z
     //   516: ldc_w 311
     //   519: ldc_w 313
-    //   522: invokestatic 213	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   522: invokestatic 213	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   525: aload_0
-    //   526: getfield 168	com/tencent/mm/plugin/mmsight/model/b/c:tFf	Lcom/tencent/mm/plugin/mmsight/model/b/a;
+    //   526: getfield 168	com/tencent/mm/plugin/mmsight/model/b/c:uNA	Lcom/tencent/mm/plugin/mmsight/model/b/a;
     //   529: invokeinterface 316 1 0
     //   534: aload_0
-    //   535: getfield 181	com/tencent/mm/plugin/mmsight/model/b/c:tFn	Lcom/tencent/mm/plugin/mmsight/model/b/g;
+    //   535: getfield 181	com/tencent/mm/plugin/mmsight/model/b/c:uNI	Lcom/tencent/mm/plugin/mmsight/model/b/g;
     //   538: astore 5
     //   540: aload 5
-    //   542: getfield 293	com/tencent/mm/plugin/mmsight/model/b/g:tFx	Lcom/tencent/mm/plugin/mmsight/model/b/g$a;
+    //   542: getfield 293	com/tencent/mm/plugin/mmsight/model/b/g:uNS	Lcom/tencent/mm/plugin/mmsight/model/b/g$a;
     //   545: ifnull +20 -> 565
     //   548: aload 5
-    //   550: getfield 293	com/tencent/mm/plugin/mmsight/model/b/g:tFx	Lcom/tencent/mm/plugin/mmsight/model/b/g$a;
+    //   550: getfield 293	com/tencent/mm/plugin/mmsight/model/b/g:uNS	Lcom/tencent/mm/plugin/mmsight/model/b/g$a;
     //   553: iconst_1
-    //   554: putfield 319	com/tencent/mm/plugin/mmsight/model/b/g$a:hCa	Z
+    //   554: putfield 319	com/tencent/mm/plugin/mmsight/model/b/g$a:icB	Z
     //   557: aload 5
-    //   559: getfield 293	com/tencent/mm/plugin/mmsight/model/b/g:tFx	Lcom/tencent/mm/plugin/mmsight/model/b/g$a;
-    //   562: invokevirtual 322	com/tencent/mm/plugin/mmsight/model/b/g$a:fog	()V
+    //   559: getfield 293	com/tencent/mm/plugin/mmsight/model/b/g:uNS	Lcom/tencent/mm/plugin/mmsight/model/b/g$a;
+    //   562: invokevirtual 322	com/tencent/mm/plugin/mmsight/model/b/g$a:fEw	()V
     //   565: aload_0
     //   566: new 324	com/tencent/mm/compatible/h/c
     //   569: dup
     //   570: invokespecial 325	com/tencent/mm/compatible/h/c:<init>	()V
-    //   573: putfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   573: putfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cSi	Lcom/tencent/mm/compatible/h/c;
     //   576: aload_0
-    //   577: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   577: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cSi	Lcom/tencent/mm/compatible/h/c;
     //   580: aload_0
     //   581: getfield 99	com/tencent/mm/plugin/mmsight/model/b/c:filePath	Ljava/lang/String;
-    //   584: invokevirtual 331	com/tencent/mm/compatible/h/c:px	(Ljava/lang/String;)V
+    //   584: invokevirtual 331	com/tencent/mm/compatible/h/c:sI	(Ljava/lang/String;)V
     //   587: aconst_null
     //   588: astore 5
     //   590: iconst_0
     //   591: istore_1
     //   592: iload_1
     //   593: aload_0
-    //   594: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cUM	Lcom/tencent/mm/compatible/h/c;
-    //   597: getfield 335	com/tencent/mm/compatible/h/c:fGK	Landroid/media/MediaExtractor;
+    //   594: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cSi	Lcom/tencent/mm/compatible/h/c;
+    //   597: getfield 335	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
     //   600: invokevirtual 340	android/media/MediaExtractor:getTrackCount	()I
     //   603: if_icmpge +518 -> 1121
     //   606: aload_0
-    //   607: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   607: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cSi	Lcom/tencent/mm/compatible/h/c;
     //   610: iload_1
     //   611: invokevirtual 344	com/tencent/mm/compatible/h/c:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   614: astore 6
@@ -436,7 +436,7 @@ public final class c
     //   641: aload 6
     //   643: ifnull +139 -> 782
     //   646: aload 5
-    //   648: invokestatic 76	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   648: invokestatic 76	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   651: ifne +131 -> 782
     //   654: aload_0
     //   655: aload 6
@@ -447,20 +447,20 @@ public final class c
     //   667: aload 6
     //   669: ldc_w 368
     //   672: invokevirtual 364	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   675: putfield 370	com/tencent/mm/plugin/mmsight/model/b/c:gnI	I
+    //   675: putfield 370	com/tencent/mm/plugin/mmsight/model/b/c:gOu	I
     //   678: aload_0
-    //   679: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   679: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cSi	Lcom/tencent/mm/compatible/h/c;
     //   682: iload_1
     //   683: invokevirtual 373	com/tencent/mm/compatible/h/c:selectTrack	(I)V
     //   686: aload_0
-    //   687: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gtb	J
+    //   687: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gTJ	J
     //   690: lconst_0
     //   691: lcmp
     //   692: ifle +19 -> 711
     //   695: aload_0
-    //   696: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   696: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cSi	Lcom/tencent/mm/compatible/h/c;
     //   699: aload_0
-    //   700: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gtb	J
+    //   700: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gTJ	J
     //   703: ldc2_w 374
     //   706: lmul
     //   707: iconst_0
@@ -474,7 +474,7 @@ public final class c
     //   726: invokevirtual 391	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   729: pop
     //   730: aload_0
-    //   731: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   731: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cSi	Lcom/tencent/mm/compatible/h/c;
     //   734: aload 5
     //   736: invokevirtual 395	com/tencent/mm/compatible/h/c:j	(Ljava/nio/ByteBuffer;)I
     //   739: istore_2
@@ -487,7 +487,7 @@ public final class c
     //   751: iload_2
     //   752: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   755: aastore
-    //   756: invokestatic 399	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   756: invokestatic 399	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   759: iload_2
     //   760: ifgt +280 -> 1040
     //   763: ldc 78
@@ -499,14 +499,14 @@ public final class c
     //   774: iload_2
     //   775: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   778: aastore
-    //   779: invokestatic 147	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   779: invokestatic 147	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   782: aload_0
     //   783: getfield 101	com/tencent/mm/plugin/mmsight/model/b/c:outputFilePath	Ljava/lang/String;
     //   786: astore 6
     //   788: aload 6
     //   790: astore 5
     //   792: aload_0
-    //   793: getfield 119	com/tencent/mm/plugin/mmsight/model/b/c:gta	I
+    //   793: getfield 119	com/tencent/mm/plugin/mmsight/model/b/c:gTI	I
     //   796: ifle +26 -> 822
     //   799: new 403	java/lang/StringBuilder
     //   802: dup
@@ -528,18 +528,18 @@ public final class c
     //   834: aload_0
     //   835: getfield 62	com/tencent/mm/plugin/mmsight/model/b/c:remuxEndTime	J
     //   838: aload_0
-    //   839: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gtb	J
+    //   839: getfield 60	com/tencent/mm/plugin/mmsight/model/b/c:gTJ	J
     //   842: lsub
     //   843: lstore_3
     //   844: aload_0
-    //   845: getfield 370	com/tencent/mm/plugin/mmsight/model/b/c:gnI	I
+    //   845: getfield 370	com/tencent/mm/plugin/mmsight/model/b/c:gOu	I
     //   848: sipush 1024
     //   851: iconst_2
     //   852: aload_0
     //   853: getfield 366	com/tencent/mm/plugin/mmsight/model/b/c:channelCount	I
     //   856: aload 5
     //   858: aload_0
-    //   859: getfield 181	com/tencent/mm/plugin/mmsight/model/b/c:tFn	Lcom/tencent/mm/plugin/mmsight/model/b/g;
+    //   859: getfield 181	com/tencent/mm/plugin/mmsight/model/b/c:uNI	Lcom/tencent/mm/plugin/mmsight/model/b/g;
     //   862: getfield 261	com/tencent/mm/plugin/mmsight/model/b/g:frameCount	I
     //   865: i2f
     //   866: ldc 189
@@ -562,25 +562,25 @@ public final class c
     //   891: iload_1
     //   892: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   895: aastore
-    //   896: invokestatic 147	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   896: invokestatic 147	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   899: aload_0
-    //   900: getfield 119	com/tencent/mm/plugin/mmsight/model/b/c:gta	I
+    //   900: getfield 119	com/tencent/mm/plugin/mmsight/model/b/c:gTI	I
     //   903: ifle +23 -> 926
     //   906: aload 5
     //   908: aload_0
     //   909: getfield 101	com/tencent/mm/plugin/mmsight/model/b/c:outputFilePath	Ljava/lang/String;
     //   912: aload_0
-    //   913: getfield 119	com/tencent/mm/plugin/mmsight/model/b/c:gta	I
+    //   913: getfield 119	com/tencent/mm/plugin/mmsight/model/b/c:gTI	I
     //   916: invokestatic 424	com/tencent/mm/plugin/sight/base/SightVideoJNI:tagRotateVideoVFS	(Ljava/lang/String;Ljava/lang/String;I)I
     //   919: pop
     //   920: aload 5
     //   922: invokestatic 429	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
     //   925: pop
     //   926: aload_0
-    //   927: getfield 203	com/tencent/mm/plugin/mmsight/model/b/c:gmW	I
+    //   927: getfield 203	com/tencent/mm/plugin/mmsight/model/b/c:gNJ	I
     //   930: invokestatic 226	com/tencent/mm/plugin/mmsight/segment/MP4MuxerJNI:releaseDataBufLock	(I)V
-    //   933: getstatic 435	com/tencent/mm/plugin/mmsight/model/a/j:tEA	Lcom/tencent/mm/plugin/mmsight/model/a/j;
-    //   936: invokevirtual 438	com/tencent/mm/plugin/mmsight/model/a/j:aoS	()V
+    //   933: getstatic 435	com/tencent/mm/plugin/mmsight/model/a/j:uMV	Lcom/tencent/mm/plugin/mmsight/model/a/j;
+    //   936: invokevirtual 438	com/tencent/mm/plugin/mmsight/model/a/j:avJ	()V
     //   939: ldc 188
     //   941: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   944: iload_1
@@ -600,7 +600,7 @@ public final class c
     //   970: aload 5
     //   972: invokevirtual 443	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   975: aastore
-    //   976: invokestatic 447	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   976: invokestatic 447	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   979: goto -414 -> 565
     //   982: astore 5
     //   984: ldc 78
@@ -613,7 +613,7 @@ public final class c
     //   997: aload 5
     //   999: invokevirtual 443	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1002: aastore
-    //   1003: invokestatic 447	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1003: invokestatic 447	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1006: ldc 188
     //   1008: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1011: iconst_m1
@@ -629,11 +629,11 @@ public final class c
     //   1028: aload 5
     //   1030: invokevirtual 452	java/io/IOException:getMessage	()Ljava/lang/String;
     //   1033: aastore
-    //   1034: invokestatic 447	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1034: invokestatic 447	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1037: goto -255 -> 782
     //   1040: aload_0
-    //   1041: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cUM	Lcom/tencent/mm/compatible/h/c;
-    //   1044: getfield 335	com/tencent/mm/compatible/h/c:fGK	Landroid/media/MediaExtractor;
+    //   1041: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cSi	Lcom/tencent/mm/compatible/h/c;
+    //   1044: getfield 335	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
     //   1047: invokevirtual 456	android/media/MediaExtractor:getSampleTime	()J
     //   1050: aload_0
     //   1051: getfield 62	com/tencent/mm/plugin/mmsight/model/b/c:remuxEndTime	J
@@ -642,27 +642,27 @@ public final class c
     //   1058: lcmp
     //   1059: ifge -277 -> 782
     //   1062: aload_0
-    //   1063: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cUM	Lcom/tencent/mm/compatible/h/c;
-    //   1066: getfield 335	com/tencent/mm/compatible/h/c:fGK	Landroid/media/MediaExtractor;
+    //   1063: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cSi	Lcom/tencent/mm/compatible/h/c;
+    //   1066: getfield 335	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
     //   1069: invokevirtual 459	android/media/MediaExtractor:getSampleTrackIndex	()I
     //   1072: iload_1
     //   1073: if_icmpeq +14 -> 1087
     //   1076: ldc 78
     //   1078: ldc_w 461
-    //   1081: invokestatic 463	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1081: invokestatic 463	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1084: goto -302 -> 782
     //   1087: aload 5
     //   1089: iconst_0
     //   1090: invokevirtual 467	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
     //   1093: pop
     //   1094: aload_0
-    //   1095: getfield 203	com/tencent/mm/plugin/mmsight/model/b/c:gmW	I
+    //   1095: getfield 203	com/tencent/mm/plugin/mmsight/model/b/c:gNJ	I
     //   1098: aload 5
     //   1100: iload_2
     //   1101: invokestatic 471	com/tencent/mm/plugin/mmsight/segment/MP4MuxerJNI:writeAACDataLock	(ILjava/nio/ByteBuffer;I)V
     //   1104: aload_0
-    //   1105: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cUM	Lcom/tencent/mm/compatible/h/c;
-    //   1108: getfield 335	com/tencent/mm/compatible/h/c:fGK	Landroid/media/MediaExtractor;
+    //   1105: getfield 327	com/tencent/mm/plugin/mmsight/model/b/c:cSi	Lcom/tencent/mm/compatible/h/c;
+    //   1108: getfield 335	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
     //   1111: invokevirtual 475	android/media/MediaExtractor:advance	()Z
     //   1114: pop
     //   1115: goto -391 -> 724
@@ -721,7 +721,7 @@ public final class c
   public final void y(Bitmap paramBitmap)
   {
     if (paramBitmap != null) {
-      this.gsr = paramBitmap;
+      this.gSY = paramBitmap;
     }
   }
 }

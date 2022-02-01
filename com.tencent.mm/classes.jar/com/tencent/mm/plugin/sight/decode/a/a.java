@@ -6,15 +6,15 @@ public abstract interface a
 {
   public abstract void clear();
   
-  public abstract void dqo();
+  public abstract void dEx();
   
   public abstract void e(String paramString, boolean paramBoolean, int paramInt);
-  
-  public abstract void gW(int paramInt1, int paramInt2);
   
   public abstract Object getTagObject();
   
   public abstract String getVideoPath();
+  
+  public abstract void hf(int paramInt1, int paramInt2);
   
   public abstract void setCanPlay(boolean paramBoolean);
   

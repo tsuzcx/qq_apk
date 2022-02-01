@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 
 final class m$b
   implements Runnable
 {
-  private String rHD;
+  private String sPs;
   
   m$b(m paramm, String paramString)
   {
-    this.rHD = paramString;
+    this.sPs = paramString;
   }
   
   public final void run()
   {
     AppMethodBeat.i(126113);
     long l = System.currentTimeMillis();
-    i.cO(this.rHD, true);
-    ad.i("MicroMsg.TopStory.TopStoryPreloadMgr", "DeleteVideoFolderTask %s %d", new Object[] { this.rHD, Long.valueOf(System.currentTimeMillis() - l) });
+    i.cU(this.sPs, true);
+    ac.i("MicroMsg.TopStory.TopStoryPreloadMgr", "DeleteVideoFolderTask %s %d", new Object[] { this.sPs, Long.valueOf(System.currentTimeMillis() - l) });
     AppMethodBeat.o(126113);
   }
 }

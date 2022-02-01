@@ -7,29 +7,29 @@ import com.tencent.mm.sdk.e.j;
 public final class ah
   extends j<aj>
 {
-  public static final String[] gLs;
+  public static final String[] hlS;
   final e db;
   
   static
   {
     AppMethodBeat.i(44319);
-    gLs = new String[] { j.getCreateSQLs(aj.iMP, "PluginCodeUsageLRURecord") };
+    hlS = new String[] { j.getCreateSQLs(aj.jmW, "PluginCodeUsageLRURecord") };
     AppMethodBeat.o(44319);
   }
   
   public ah(e parame)
   {
-    super(parame, aj.iMP, "PluginCodeUsageLRURecord", aj.INDEX_CREATE);
+    super(parame, aj.jmW, "PluginCodeUsageLRURecord", aj.INDEX_CREATE);
     this.db = parame;
   }
   
-  public final void aD(String paramString, int paramInt)
+  public final void aH(String paramString, int paramInt)
   {
     AppMethodBeat.i(44318);
     aj localaj = new aj();
     localaj.field_appId = paramString;
     localaj.field_version = paramInt;
-    super.delete(localaj, aj.iLd);
+    super.delete(localaj, aj.jlk);
     AppMethodBeat.o(44318);
   }
 }

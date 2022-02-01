@@ -9,50 +9,50 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 import java.util.HashMap;
 import junit.framework.Assert;
 
 final class d
   extends BaseAdapter
 {
-  protected CharSequence[] Gec;
-  protected CharSequence[] Ged;
+  protected CharSequence[] HDR;
+  protected CharSequence[] HDS;
   private final Context context;
   private final int style;
-  protected int uxs;
+  protected int vGl;
   protected String value;
   protected final HashMap<CharSequence, c> values;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(142528);
-    this.uxs = -1;
+    this.vGl = -1;
     this.values = new HashMap();
     this.context = paramContext;
     this.style = 1;
     AppMethodBeat.o(142528);
   }
   
-  protected final void eTw()
+  protected final void fji()
   {
     int i = 0;
     AppMethodBeat.i(142529);
-    if (this.Gec == null) {
-      this.Gec = new CharSequence[0];
+    if (this.HDR == null) {
+      this.HDR = new CharSequence[0];
     }
-    if (this.Ged == null) {
-      this.Ged = new CharSequence[0];
+    if (this.HDS == null) {
+      this.HDS = new CharSequence[0];
     }
-    if (this.Gec.length == this.Ged.length) {}
+    if (this.HDR.length == this.HDS.length) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("entries count different", bool);
       this.values.clear();
-      while (i < this.Ged.length)
+      while (i < this.HDS.length)
       {
-        c localc = new c(this.Gec[i], 1048576 + i);
-        this.values.put(this.Ged[i], localc);
+        c localc = new c(this.HDR[i], 1048576 + i);
+        this.values.put(this.HDS[i], localc);
         i += 1;
       }
     }
@@ -61,7 +61,7 @@ final class d
   
   public final int getCount()
   {
-    return this.Ged.length;
+    return this.HDS.length;
   }
   
   public final Object getItem(int paramInt)
@@ -80,40 +80,40 @@ final class d
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramViewGroup = y.js(this.context).inflate(2131494854, null);
+      paramViewGroup = z.jD(this.context).inflate(2131494854, null);
       paramView = new a();
-      paramView.mWt = ((TextView)paramViewGroup.findViewById(2131305710));
-      paramView.uxt = ((CheckBox)paramViewGroup.findViewById(2131298214));
-      paramView.uxu = ((RadioButton)paramViewGroup.findViewById(2131303704));
+      paramView.nyS = ((TextView)paramViewGroup.findViewById(2131305710));
+      paramView.vGm = ((CheckBox)paramViewGroup.findViewById(2131298214));
+      paramView.vGn = ((RadioButton)paramViewGroup.findViewById(2131303704));
       paramViewGroup.setTag(paramView);
     }
     paramView = (a)paramViewGroup.getTag();
-    paramView.mWt.setText(this.Gec[paramInt]);
+    paramView.nyS.setText(this.HDR[paramInt]);
     switch (this.style)
     {
     default: 
-      paramView.uxt.setVisibility(8);
-      paramView.uxu.setVisibility(8);
+      paramView.vGm.setVisibility(8);
+      paramView.vGn.setVisibility(8);
     }
     for (;;)
     {
       AppMethodBeat.o(142530);
       return paramViewGroup;
-      paramView.uxt.setVisibility(8);
-      paramView.uxu.setVisibility(0);
-      paramView.uxu.setChecked(this.Ged[paramInt].equals(this.value));
+      paramView.vGm.setVisibility(8);
+      paramView.vGn.setVisibility(0);
+      paramView.vGn.setChecked(this.HDS[paramInt].equals(this.value));
       continue;
-      paramView.uxt.setVisibility(0);
-      paramView.uxu.setVisibility(8);
-      paramView.uxt.setChecked(this.Ged[paramInt].equals(this.value));
+      paramView.vGm.setVisibility(0);
+      paramView.vGn.setVisibility(8);
+      paramView.vGm.setChecked(this.HDS[paramInt].equals(this.value));
     }
   }
   
   static final class a
   {
-    TextView mWt;
-    CheckBox uxt;
-    RadioButton uxu;
+    TextView nyS;
+    CheckBox vGm;
+    RadioButton vGn;
   }
 }
 

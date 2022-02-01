@@ -5,21 +5,21 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.page.bx;
-import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.bs;
+import com.tencent.mm.plugin.appbrand.page.v;
 
 public final class c
-  extends u
+  extends v
 {
-  private final bx kPL;
+  private final bs lrk;
   
   public c(Context paramContext, o paramo)
   {
     super(paramContext, paramo);
     AppMethodBeat.i(47554);
-    this.kPL = new bx()
+    this.lrk = new bs()
     {
-      private final bx kPM;
+      private final bs lrl;
       
       public final <WIDGET extends View> WIDGET c(Context paramAnonymousContext, Class<WIDGET> paramAnonymousClass)
       {
@@ -30,19 +30,19 @@ public final class c
           AppMethodBeat.o(47553);
           return paramAnonymousContext;
         }
-        paramAnonymousContext = this.kPM.c(paramAnonymousContext, paramAnonymousClass);
+        paramAnonymousContext = this.lrl.c(paramAnonymousContext, paramAnonymousClass);
         AppMethodBeat.o(47553);
         return paramAnonymousContext;
       }
     };
-    super.setDecorWidgetFactory(this.kPL);
+    super.setDecorWidgetFactory(this.lrk);
     AppMethodBeat.o(47554);
   }
   
-  public final ae bhw()
+  public final ae boq()
   {
     AppMethodBeat.i(175010);
-    d locald = e.KA(getAppId());
+    d locald = e.OH(getAppId());
     if (locald != null)
     {
       AppMethodBeat.o(175010);
@@ -55,7 +55,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.c
  * JD-Core Version:    0.7.0.1
  */

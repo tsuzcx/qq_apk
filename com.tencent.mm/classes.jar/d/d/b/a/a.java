@@ -1,6 +1,5 @@
 package d.d.b.a;
 
-import d.d.d;
 import d.g.b.k;
 import d.l;
 import d.p;
@@ -9,81 +8,81 @@ import d.q;
 import d.y;
 import java.io.Serializable;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/coroutines/jvm/internal/BaseContinuationImpl;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "Ljava/io/Serializable;", "completion", "(Lkotlin/coroutines/Continuation;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "getCompletion", "()Lkotlin/coroutines/Continuation;", "create", "", "value", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "invokeSuspend", "result", "Lkotlin/Result;", "(Ljava/lang/Object;)Ljava/lang/Object;", "releaseIntercepted", "resumeWith", "(Ljava/lang/Object;)V", "toString", "", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/jvm/internal/BaseContinuationImpl;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "Ljava/io/Serializable;", "completion", "(Lkotlin/coroutines/Continuation;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "getCompletion", "()Lkotlin/coroutines/Continuation;", "create", "", "value", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "invokeSuspend", "result", "Lkotlin/Result;", "(Ljava/lang/Object;)Ljava/lang/Object;", "releaseIntercepted", "resumeWith", "(Ljava/lang/Object;)V", "toString", "", "kotlin-stdlib"})
 public abstract class a
-  implements e, d<Object>, Serializable
+  implements d, d.d.d<Object>, Serializable
 {
-  final d<Object> JgR;
+  final d.d.d<Object> KUl;
   
-  public a(d<Object> paramd)
+  public a(d.d.d<Object> paramd)
   {
-    this.JgR = paramd;
+    this.KUl = paramd;
   }
   
-  public d<y> a(Object paramObject, d<?> paramd)
+  public d.d.d<y> a(Object paramObject, d.d.d<?> paramd)
   {
     k.h(paramd, "completion");
     throw ((Throwable)new UnsupportedOperationException("create(Any?;Continuation) has not been overridden"));
   }
   
-  protected abstract Object cP(Object paramObject);
+  protected abstract Object cO(Object paramObject);
   
-  public final void eH(Object paramObject)
+  public final void eK(Object paramObject)
   {
-    d locald;
+    d.d.d locald;
     for (a locala = (a)this;; locala = (a)locald)
     {
-      k.h((d)locala, "frame");
-      locald = locala.JgR;
+      k.h((d.d.d)locala, "frame");
+      locald = locala.KUl;
       if (locald == null) {
-        k.fvU();
+        k.fOy();
       }
       try
       {
-        paramObject = locala.cP(paramObject);
-        if (paramObject == d.d.a.a.JgJ) {
+        paramObject = locala.cO(paramObject);
+        if (paramObject == d.d.a.a.KUd) {
           return;
         }
-        locala1 = p.JfM;
-        paramObject = p.eF(paramObject);
+        locala1 = p.KTg;
+        paramObject = p.eI(paramObject);
       }
       catch (Throwable paramObject)
       {
         for (;;)
         {
-          p.a locala1 = p.JfM;
-          paramObject = p.eF(q.n(paramObject));
+          p.a locala1 = p.KTg;
+          paramObject = p.eI(q.n(paramObject));
         }
-        locald.eH(paramObject);
+        locald.eK(paramObject);
       }
-      locala.fvE();
+      locala.fOj();
       if (!(locald instanceof a)) {
         break;
       }
     }
   }
   
-  public final e fvC()
+  public final d fOh()
   {
-    d locald2 = this.JgR;
-    d locald1 = locald2;
-    if (!(locald2 instanceof e)) {
+    d.d.d locald2 = this.KUl;
+    d.d.d locald1 = locald2;
+    if (!(locald2 instanceof d)) {
       locald1 = null;
     }
-    return (e)locald1;
+    return (d)locald1;
   }
   
-  public final StackTraceElement fvD()
+  public final StackTraceElement fOi()
   {
-    return g.a(this);
+    return f.a(this);
   }
   
-  protected void fvE() {}
+  protected void fOj() {}
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("Continuation at ");
-    Object localObject = g.a(this);
+    Object localObject = f.a(this);
     if (localObject != null) {}
     for (localObject = (Serializable)localObject;; localObject = (Serializable)getClass().getName()) {
       return localObject;
@@ -92,7 +91,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.d.b.a.a
  * JD-Core Version:    0.7.0.1
  */

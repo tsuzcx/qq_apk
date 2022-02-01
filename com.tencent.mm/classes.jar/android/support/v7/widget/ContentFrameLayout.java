@@ -13,14 +13,14 @@ import android.widget.FrameLayout;
 public class ContentFrameLayout
   extends FrameLayout
 {
-  private TypedValue aje;
-  private TypedValue ajf;
-  private TypedValue ajg;
-  private TypedValue ajh;
-  private TypedValue aji;
-  private TypedValue ajj;
-  private final Rect ajk = new Rect();
-  private a ajl;
+  private TypedValue ajY;
+  private TypedValue ajZ;
+  private TypedValue aka;
+  private TypedValue akb;
+  private TypedValue akc;
+  private TypedValue akd;
+  private final Rect ake = new Rect();
+  private a akf;
   
   public ContentFrameLayout(Context paramContext)
   {
@@ -44,55 +44,55 @@ public class ContentFrameLayout
   
   public TypedValue getFixedHeightMajor()
   {
-    if (this.aji == null) {
-      this.aji = new TypedValue();
+    if (this.akc == null) {
+      this.akc = new TypedValue();
     }
-    return this.aji;
+    return this.akc;
   }
   
   public TypedValue getFixedHeightMinor()
   {
-    if (this.ajj == null) {
-      this.ajj = new TypedValue();
+    if (this.akd == null) {
+      this.akd = new TypedValue();
     }
-    return this.ajj;
+    return this.akd;
   }
   
   public TypedValue getFixedWidthMajor()
   {
-    if (this.ajg == null) {
-      this.ajg = new TypedValue();
+    if (this.aka == null) {
+      this.aka = new TypedValue();
     }
-    return this.ajg;
+    return this.aka;
   }
   
   public TypedValue getFixedWidthMinor()
   {
-    if (this.ajh == null) {
-      this.ajh = new TypedValue();
+    if (this.akb == null) {
+      this.akb = new TypedValue();
     }
-    return this.ajh;
+    return this.akb;
   }
   
   public TypedValue getMinWidthMajor()
   {
-    if (this.aje == null) {
-      this.aje = new TypedValue();
+    if (this.ajY == null) {
+      this.ajY = new TypedValue();
     }
-    return this.aje;
+    return this.ajY;
   }
   
   public TypedValue getMinWidthMinor()
   {
-    if (this.ajf == null) {
-      this.ajf = new TypedValue();
+    if (this.ajZ == null) {
+      this.ajZ = new TypedValue();
     }
-    return this.ajf;
+    return this.ajZ;
   }
   
   public final void j(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.ajk.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.ake.set(paramInt1, paramInt2, paramInt3, paramInt4);
     if (t.ay(this)) {
       requestLayout();
     }
@@ -106,8 +106,8 @@ public class ContentFrameLayout
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.ajl != null) {
-      this.ajl.onDetachedFromWindow();
+    if (this.akf != null) {
+      this.akf.onDetachedFromWindow();
     }
   }
   
@@ -132,7 +132,7 @@ public class ContentFrameLayout
       if (j == 0) {
         break label353;
       }
-      localTypedValue = this.ajh;
+      localTypedValue = this.akb;
       if ((localTypedValue == null) || (localTypedValue.type == 0)) {
         break label495;
       }
@@ -148,7 +148,7 @@ public class ContentFrameLayout
       int k;
       if (i > 0)
       {
-        m = View.MeasureSpec.makeMeasureSpec(Math.min(i - (this.ajk.left + this.ajk.right), View.MeasureSpec.getSize(paramInt1)), 1073741824);
+        m = View.MeasureSpec.makeMeasureSpec(Math.min(i - (this.ake.left + this.ake.right), View.MeasureSpec.getSize(paramInt1)), 1073741824);
         k = 1;
       }
       for (;;)
@@ -159,7 +159,7 @@ public class ContentFrameLayout
           if (j == 0) {
             break label394;
           }
-          localTypedValue = this.aji;
+          localTypedValue = this.akc;
           label150:
           i = paramInt2;
           if (localTypedValue != null)
@@ -179,7 +179,7 @@ public class ContentFrameLayout
           label185:
           i = paramInt2;
           if (paramInt1 > 0) {
-            i = View.MeasureSpec.makeMeasureSpec(Math.min(paramInt1 - (this.ajk.top + this.ajk.bottom), View.MeasureSpec.getSize(paramInt2)), 1073741824);
+            i = View.MeasureSpec.makeMeasureSpec(Math.min(paramInt1 - (this.ake.top + this.ake.bottom), View.MeasureSpec.getSize(paramInt2)), 1073741824);
           }
           super.onMeasure(m, i);
           i2 = getMeasuredWidth();
@@ -187,7 +187,7 @@ public class ContentFrameLayout
           if ((k == 0) && (i1 == -2147483648)) {
             if (j != 0)
             {
-              localTypedValue = this.ajf;
+              localTypedValue = this.ajZ;
               label266:
               if ((localTypedValue == null) || (localTypedValue.type == 0)) {
                 break label476;
@@ -203,7 +203,7 @@ public class ContentFrameLayout
             label297:
             paramInt2 = paramInt1;
             if (paramInt1 > 0) {
-              paramInt2 = paramInt1 - (this.ajk.left + this.ajk.right);
+              paramInt2 = paramInt1 - (this.ake.left + this.ake.right);
             }
             if (i2 < paramInt2) {
               paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
@@ -217,7 +217,7 @@ public class ContentFrameLayout
               j = 0;
               break;
               label353:
-              localTypedValue = this.ajg;
+              localTypedValue = this.aka;
               break label61;
               label362:
               if (localTypedValue.type != 6) {
@@ -226,7 +226,7 @@ public class ContentFrameLayout
               i = (int)localTypedValue.getFraction(localDisplayMetrics.widthPixels, localDisplayMetrics.widthPixels);
               break label92;
               label394:
-              localTypedValue = this.ajj;
+              localTypedValue = this.akd;
               break label150;
               label403:
               if (localTypedValue.type != 6) {
@@ -234,7 +234,7 @@ public class ContentFrameLayout
               }
               paramInt1 = (int)localTypedValue.getFraction(localDisplayMetrics.heightPixels, localDisplayMetrics.heightPixels);
               break label185;
-              localTypedValue = this.aje;
+              localTypedValue = this.ajY;
               break label266;
               label444:
               if (localTypedValue.type != 6) {
@@ -262,7 +262,7 @@ public class ContentFrameLayout
   
   public void setAttachListener(a parama)
   {
-    this.ajl = parama;
+    this.akf = parama;
   }
   
   public static abstract interface a

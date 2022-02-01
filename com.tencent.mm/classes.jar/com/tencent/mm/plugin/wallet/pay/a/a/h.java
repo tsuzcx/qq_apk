@@ -24,8 +24,8 @@ public final class h
   
   public final boolean isBlock()
   {
-    if (this.zPG == null) {}
-    while (this.zPG.uXi.Coy == 1) {
+    if (this.Bia == null) {}
+    while (this.Bia.wfX.DGQ == 1) {
       return true;
     }
     return false;

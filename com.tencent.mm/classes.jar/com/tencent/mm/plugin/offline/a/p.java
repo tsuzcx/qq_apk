@@ -14,7 +14,7 @@ public final class p
   {
     AppMethodBeat.i(66314);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("device_id", q.Xa());
+    localHashMap.put("device_id", q.XX());
     localHashMap.put("passwd", paramString);
     setRequestData(localHashMap);
     AppMethodBeat.o(66314);

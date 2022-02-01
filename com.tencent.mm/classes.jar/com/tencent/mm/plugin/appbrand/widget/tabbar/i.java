@@ -14,12 +14,12 @@ public final class i
     super(paramString, paramc, paramq);
   }
   
-  public final void buM()
+  public final void bBJ()
   {
     AppMethodBeat.i(135550);
-    if ((this.iIL.Ee() != null) && (this.mns != null))
+    if ((this.jiP.DH() != null) && (this.mPt != null))
     {
-      com.tencent.e.h.Iye.aP(new com.tencent.e.i.h()
+      com.tencent.e.h.JZN.aS(new com.tencent.e.i.h()
       {
         public final String getKey()
         {
@@ -29,10 +29,10 @@ public final class i
         public final void run()
         {
           AppMethodBeat.i(135549);
-          Object localObject = i.this.iIL.Ee().EP(i.this.mns);
+          Object localObject = i.this.jiP.DH().IS(i.this.mPt);
           if (localObject == null)
           {
-            i.this.mnt.a("Failed to load icon via temp file", i.this);
+            i.this.mPu.a("Failed to load icon via temp file", i.this);
             AppMethodBeat.o(135549);
             return;
           }
@@ -43,20 +43,20 @@ public final class i
             AppMethodBeat.o(135549);
             return;
           }
-          i.this.mnt.a("Failed to load icon via temp file", i.this);
+          i.this.mPu.a("Failed to load icon via temp file", i.this);
           AppMethodBeat.o(135549);
         }
       });
       AppMethodBeat.o(135550);
       return;
     }
-    this.mnt.a("Failed to load icon via temp file", this);
+    this.mPu.a("Failed to load icon via temp file", this);
     AppMethodBeat.o(135550);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.i
  * JD-Core Version:    0.7.0.1
  */

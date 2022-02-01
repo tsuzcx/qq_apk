@@ -14,7 +14,7 @@ final class VideoSegmentUI$8
   public final void run()
   {
     AppMethodBeat.i(94474);
-    Object localObject = i.cT(CaptureMMProxy.getInstance().getAccVideoPath(), false);
+    Object localObject = i.cZ(CaptureMMProxy.getInstance().getAccVideoPath(), false);
     if (localObject == null)
     {
       AppMethodBeat.o(94474);
@@ -24,7 +24,7 @@ final class VideoSegmentUI$8
     while (((Iterator)localObject).hasNext())
     {
       FileSystem.a locala = (FileSystem.a)((Iterator)localObject).next();
-      if ((!locala.HRB) && (locala.name != null) && (((locala.name.startsWith("vsg_output_")) && (!locala.name.equals(this.tHT))) || ((locala.name.startsWith("vsg_thumb_")) && (!locala.name.equals(this.tHU))))) {
+      if ((!locala.Jsg) && (locala.name != null) && (((locala.name.startsWith("vsg_output_")) && (!locala.name.equals(this.uQp))) || ((locala.name.startsWith("vsg_thumb_")) && (!locala.name.equals(this.uQq))))) {
         locala.delete();
       }
     }
@@ -33,7 +33,7 @@ final class VideoSegmentUI$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.VideoSegmentUI.8
  * JD-Core Version:    0.7.0.1
  */

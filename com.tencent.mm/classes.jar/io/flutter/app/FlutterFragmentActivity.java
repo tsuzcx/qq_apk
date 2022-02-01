@@ -6,41 +6,41 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.a.a.m;
-import io.flutter.a.a.m.c;
+import io.flutter.plugin.a.m;
+import io.flutter.plugin.a.m.c;
 import io.flutter.view.FlutterView.b;
 
 public class FlutterFragmentActivity
   extends FragmentActivity
-  implements m, a.a, FlutterView.b
+  implements a.a, m, FlutterView.b
 {
-  private final a IWF;
-  private final b IWG;
-  private final FlutterView.b IWH;
-  private final m IWI;
+  private final a KJQ;
+  private final b KJR;
+  private final FlutterView.b KJS;
+  private final m KJT;
   
   public FlutterFragmentActivity()
   {
     AppMethodBeat.i(9631);
-    this.IWF = new a(this, this);
-    this.IWG = this.IWF;
-    this.IWH = this.IWF;
-    this.IWI = this.IWF;
+    this.KJQ = new a(this, this);
+    this.KJR = this.KJQ;
+    this.KJS = this.KJQ;
+    this.KJT = this.KJQ;
     AppMethodBeat.o(9631);
   }
   
-  public final boolean aPH(String paramString)
+  public final boolean aVE(String paramString)
   {
     AppMethodBeat.i(9632);
-    boolean bool = this.IWI.aPH(paramString);
+    boolean bool = this.KJT.aVE(paramString);
     AppMethodBeat.o(9632);
     return bool;
   }
   
-  public final m.c dB(String paramString)
+  public final m.c dq(String paramString)
   {
     AppMethodBeat.i(9633);
-    paramString = this.IWI.dB(paramString);
+    paramString = this.KJT.dq(paramString);
     AppMethodBeat.o(9633);
     return paramString;
   }
@@ -48,7 +48,7 @@ public class FlutterFragmentActivity
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(9642);
-    if (!this.IWG.onActivityResult(paramInt1, paramInt2, paramIntent)) {
+    if (!this.KJR.onActivityResult(paramInt1, paramInt2, paramIntent)) {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
     AppMethodBeat.o(9642);
@@ -57,7 +57,7 @@ public class FlutterFragmentActivity
   public void onBackPressed()
   {
     AppMethodBeat.i(9636);
-    if (!this.IWG.onBackPressed()) {
+    if (!this.KJR.onBackPressed()) {
       super.onBackPressed();
     }
     AppMethodBeat.o(9636);
@@ -67,7 +67,7 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9647);
     super.onConfigurationChanged(paramConfiguration);
-    this.IWG.onConfigurationChanged(paramConfiguration);
+    this.KJR.onConfigurationChanged(paramConfiguration);
     AppMethodBeat.o(9647);
   }
   
@@ -75,14 +75,14 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9634);
     super.onCreate(paramBundle);
-    this.IWG.ftX();
+    this.KJR.fMJ();
     AppMethodBeat.o(9634);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(9635);
-    this.IWG.onDestroy();
+    this.KJR.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(9635);
   }
@@ -90,14 +90,14 @@ public class FlutterFragmentActivity
   public void onLowMemory()
   {
     AppMethodBeat.i(9646);
-    this.IWG.onLowMemory();
+    this.KJR.onLowMemory();
     AppMethodBeat.o(9646);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(9643);
-    this.IWG.onNewIntent(paramIntent);
+    this.KJR.onNewIntent(paramIntent);
     AppMethodBeat.o(9643);
   }
   
@@ -105,7 +105,7 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9639);
     super.onPause();
-    this.IWG.onPause();
+    this.KJR.onPause();
     AppMethodBeat.o(9639);
   }
   
@@ -113,14 +113,14 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9640);
     super.onPostResume();
-    this.IWG.onPostResume();
+    this.KJR.onPostResume();
     AppMethodBeat.o(9640);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(9641);
-    this.IWG.a(paramInt, paramArrayOfString, paramArrayOfInt);
+    this.KJR.a(paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(9641);
   }
   
@@ -128,14 +128,14 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9637);
     super.onStart();
-    this.IWG.onStart();
+    this.KJR.onStart();
     AppMethodBeat.o(9637);
   }
   
   public void onStop()
   {
     AppMethodBeat.i(9638);
-    this.IWG.onStop();
+    this.KJR.onStop();
     super.onStop();
     AppMethodBeat.o(9638);
   }
@@ -143,14 +143,14 @@ public class FlutterFragmentActivity
   public void onTrimMemory(int paramInt)
   {
     AppMethodBeat.i(9645);
-    this.IWG.onTrimMemory(paramInt);
+    this.KJR.onTrimMemory(paramInt);
     AppMethodBeat.o(9645);
   }
   
   public void onUserLeaveHint()
   {
     AppMethodBeat.i(9644);
-    this.IWG.onUserLeaveHint();
+    this.KJR.onUserLeaveHint();
     AppMethodBeat.o(9644);
   }
   
@@ -162,7 +162,7 @@ public class FlutterFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.app.FlutterFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

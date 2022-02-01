@@ -5,17 +5,17 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class EllipsizeTextView
   extends TextView
 {
-  private String FUT;
-  private int FUU;
-  private int FUV;
-  private a FUW;
-  private CharSequence FUX;
-  private long FUY = -1L;
+  private String HuH;
+  private int HuI;
+  private int HuJ;
+  private a HuK;
+  private CharSequence HuL;
+  private long HuM = -1L;
   
   public EllipsizeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,11 +30,11 @@ public class EllipsizeTextView
   public final void a(CharSequence paramCharSequence, String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141626);
-    this.FUT = paramString;
-    this.FUU = paramInt1;
-    this.FUV = paramInt2;
-    this.FUX = paramCharSequence;
-    setText(this.FUX + "  " + paramString);
+    this.HuH = paramString;
+    this.HuI = paramInt1;
+    this.HuJ = paramInt2;
+    this.HuL = paramCharSequence;
+    setText(this.HuL + "  " + paramString);
     AppMethodBeat.o(141626);
   }
   
@@ -42,10 +42,10 @@ public class EllipsizeTextView
   {
     AppMethodBeat.i(141627);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((getMeasuredWidth() > 0) && (!bt.isNullOrNil(this.FUT)) && (this.FUW != null) && (getText() != null) && (getText().length() > 0))
+    if ((getMeasuredWidth() > 0) && (!bs.isNullOrNil(this.HuH)) && (this.HuK != null) && (getText() != null) && (getText().length() > 0))
     {
-      CharSequence localCharSequence = this.FUW.a(this, this.FUX, this.FUT, this.FUU, this.FUV);
-      this.FUT = null;
+      CharSequence localCharSequence = this.HuK.a(this, this.HuL, this.HuH, this.HuI, this.HuJ);
+      this.HuH = null;
       setText(localCharSequence, TextView.BufferType.SPANNABLE);
       requestLayout();
     }
@@ -54,7 +54,7 @@ public class EllipsizeTextView
   
   public void setLayoutCallback(a parama)
   {
-    this.FUW = parama;
+    this.HuK = parama;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
@@ -71,7 +71,7 @@ public class EllipsizeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.EllipsizeTextView
  * JD-Core Version:    0.7.0.1
  */

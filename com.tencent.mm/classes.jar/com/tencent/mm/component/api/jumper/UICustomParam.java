@@ -14,21 +14,21 @@ public class UICustomParam
   implements Parcelable
 {
   public static final Parcelable.Creator<UICustomParam> CREATOR;
-  public int aMk;
-  public int aMl;
-  public float fGN;
-  public float fGO;
-  public float fGP;
-  public float fGQ;
-  public Map<String, Boolean> fGR;
-  public int fGS;
-  public int fGT;
-  public int fGU;
-  public String fGV;
-  public int fGW;
-  public float fGX;
-  public int fGY;
-  public float fGZ;
+  public int aNa;
+  public int aNb;
+  public int fKA;
+  public int fKB;
+  public String fKC;
+  public int fKD;
+  public float fKE;
+  public int fKF;
+  public float fKG;
+  public float fKu;
+  public float fKv;
+  public float fKw;
+  public float fKx;
+  public Map<String, Boolean> fKy;
+  public int fKz;
   public String text;
   
   static
@@ -41,68 +41,68 @@ public class UICustomParam
   private UICustomParam()
   {
     AppMethodBeat.i(101481);
-    this.fGN = 0.0F;
-    this.fGO = 0.0F;
-    this.fGP = 0.0F;
-    this.fGQ = 0.0F;
-    this.fGS = 0;
-    this.fGT = 0;
-    this.fGU = 0;
+    this.fKu = 0.0F;
+    this.fKv = 0.0F;
+    this.fKw = 0.0F;
+    this.fKx = 0.0F;
+    this.fKz = 0;
+    this.fKA = 0;
+    this.fKB = 0;
     this.text = "";
-    this.fGV = "";
-    this.fGW = 0;
-    this.fGX = 0.0F;
-    this.fGY = 0;
-    this.aMk = -1;
-    this.aMl = -1;
-    this.fGZ = -1.0F;
-    this.fGR = new HashMap();
+    this.fKC = "";
+    this.fKD = 0;
+    this.fKE = 0.0F;
+    this.fKF = 0;
+    this.aNa = -1;
+    this.aNb = -1;
+    this.fKG = -1.0F;
+    this.fKy = new HashMap();
     AppMethodBeat.o(101481);
   }
   
   protected UICustomParam(Parcel paramParcel)
   {
     AppMethodBeat.i(101482);
-    this.fGN = 0.0F;
-    this.fGO = 0.0F;
-    this.fGP = 0.0F;
-    this.fGQ = 0.0F;
-    this.fGS = 0;
-    this.fGT = 0;
-    this.fGU = 0;
+    this.fKu = 0.0F;
+    this.fKv = 0.0F;
+    this.fKw = 0.0F;
+    this.fKx = 0.0F;
+    this.fKz = 0;
+    this.fKA = 0;
+    this.fKB = 0;
     this.text = "";
-    this.fGV = "";
-    this.fGW = 0;
-    this.fGX = 0.0F;
-    this.fGY = 0;
-    this.aMk = -1;
-    this.aMl = -1;
-    this.fGZ = -1.0F;
-    this.fGN = paramParcel.readFloat();
-    this.fGO = paramParcel.readFloat();
-    this.fGP = paramParcel.readFloat();
-    this.fGQ = paramParcel.readFloat();
+    this.fKC = "";
+    this.fKD = 0;
+    this.fKE = 0.0F;
+    this.fKF = 0;
+    this.aNa = -1;
+    this.aNb = -1;
+    this.fKG = -1.0F;
+    this.fKu = paramParcel.readFloat();
+    this.fKv = paramParcel.readFloat();
+    this.fKw = paramParcel.readFloat();
+    this.fKx = paramParcel.readFloat();
     int j = paramParcel.readInt();
-    this.fGR = new HashMap(j);
+    this.fKy = new HashMap(j);
     int i = 0;
     while (i < j)
     {
       String str = paramParcel.readString();
       Boolean localBoolean = (Boolean)paramParcel.readValue(Boolean.class.getClassLoader());
-      this.fGR.put(str, localBoolean);
+      this.fKy.put(str, localBoolean);
       i += 1;
     }
-    this.fGS = paramParcel.readInt();
-    this.fGT = paramParcel.readInt();
-    this.fGU = paramParcel.readInt();
+    this.fKz = paramParcel.readInt();
+    this.fKA = paramParcel.readInt();
+    this.fKB = paramParcel.readInt();
     this.text = paramParcel.readString();
-    this.fGV = paramParcel.readString();
-    this.fGW = paramParcel.readInt();
-    this.fGX = paramParcel.readFloat();
-    this.fGY = paramParcel.readInt();
-    this.aMk = paramParcel.readInt();
-    this.aMl = paramParcel.readInt();
-    this.fGZ = paramParcel.readFloat();
+    this.fKC = paramParcel.readString();
+    this.fKD = paramParcel.readInt();
+    this.fKE = paramParcel.readFloat();
+    this.fKF = paramParcel.readInt();
+    this.aNa = paramParcel.readInt();
+    this.aNb = paramParcel.readInt();
+    this.fKG = paramParcel.readFloat();
     AppMethodBeat.o(101482);
   }
   
@@ -114,179 +114,179 @@ public class UICustomParam
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(101483);
-    paramParcel.writeFloat(this.fGN);
-    paramParcel.writeFloat(this.fGO);
-    paramParcel.writeFloat(this.fGP);
-    paramParcel.writeFloat(this.fGQ);
-    paramParcel.writeInt(this.fGR.size());
-    Iterator localIterator = this.fGR.entrySet().iterator();
+    paramParcel.writeFloat(this.fKu);
+    paramParcel.writeFloat(this.fKv);
+    paramParcel.writeFloat(this.fKw);
+    paramParcel.writeFloat(this.fKx);
+    paramParcel.writeInt(this.fKy.size());
+    Iterator localIterator = this.fKy.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       paramParcel.writeString((String)localEntry.getKey());
       paramParcel.writeValue(localEntry.getValue());
     }
-    paramParcel.writeInt(this.fGS);
-    paramParcel.writeInt(this.fGT);
-    paramParcel.writeInt(this.fGU);
+    paramParcel.writeInt(this.fKz);
+    paramParcel.writeInt(this.fKA);
+    paramParcel.writeInt(this.fKB);
     paramParcel.writeString(this.text);
-    paramParcel.writeString(this.fGV);
-    paramParcel.writeInt(this.fGW);
-    paramParcel.writeFloat(this.fGX);
-    paramParcel.writeInt(this.fGY);
-    paramParcel.writeInt(this.aMk);
-    paramParcel.writeInt(this.aMl);
-    paramParcel.writeFloat(this.fGZ);
+    paramParcel.writeString(this.fKC);
+    paramParcel.writeInt(this.fKD);
+    paramParcel.writeFloat(this.fKE);
+    paramParcel.writeInt(this.fKF);
+    paramParcel.writeInt(this.aNa);
+    paramParcel.writeInt(this.aNb);
+    paramParcel.writeFloat(this.fKG);
     AppMethodBeat.o(101483);
   }
   
   public static final class a
   {
-    public UICustomParam fHa;
+    public UICustomParam fKH;
     
     public a()
     {
       AppMethodBeat.i(101475);
-      this.fHa = new UICustomParam((byte)0);
-      this.fHa.fGR.put("plugin_filter", Boolean.TRUE);
+      this.fKH = new UICustomParam((byte)0);
+      this.fKH.fKy.put("plugin_filter", Boolean.TRUE);
       AppMethodBeat.o(101475);
     }
     
-    public static a XV()
+    public static a YS()
     {
       AppMethodBeat.i(101476);
       a locala = new a();
-      locala.Ya();
-      locala.XZ();
-      locala.cO(true);
+      locala.YX();
+      locala.YW();
+      locala.cN(true);
       AppMethodBeat.o(101476);
       return locala;
     }
     
     public final a G(String paramString, int paramInt)
     {
-      this.fHa.fGV = paramString;
-      this.fHa.fGW = paramInt;
-      this.fHa.fGX = 17.0F;
+      this.fKH.fKC = paramString;
+      this.fKH.fKD = paramInt;
+      this.fKH.fKE = 17.0F;
       return this;
     }
     
-    public final a XW()
+    public final a YT()
     {
-      this.fHa.fGN = 0.6F;
-      this.fHa.fGO = 0.6F;
+      this.fKH.fKu = 0.6F;
+      this.fKH.fKv = 0.6F;
       return this;
     }
     
-    public final a XX()
+    public final a YU()
     {
-      this.fHa.fGP = 0.5F;
-      this.fHa.fGQ = 0.5F;
+      this.fKH.fKw = 0.5F;
+      this.fKH.fKx = 0.5F;
       return this;
     }
     
-    public final a XY()
+    public final a YV()
     {
       AppMethodBeat.i(168709);
-      this.fHa.fGR.put("plugin_photo_crop", Boolean.TRUE);
+      this.fKH.fKy.put("plugin_photo_crop", Boolean.TRUE);
       AppMethodBeat.o(168709);
       return this;
     }
     
-    public final a XZ()
+    public final a YW()
     {
       AppMethodBeat.i(101478);
-      this.fHa.fGR.put("plugin_tip", Boolean.TRUE);
+      this.fKH.fKy.put("plugin_tip", Boolean.TRUE);
       AppMethodBeat.o(101478);
       return this;
     }
     
-    public final a Ya()
+    public final a YX()
     {
       AppMethodBeat.i(101479);
-      this.fHa.fGR.put("plugin_poi", Boolean.TRUE);
+      this.fKH.fKy.put("plugin_poi", Boolean.TRUE);
       AppMethodBeat.o(101479);
       return this;
     }
     
-    public final a Yb()
+    public final a YY()
     {
       AppMethodBeat.i(168711);
-      this.fHa.fGR.put("plugin_filter", Boolean.TRUE);
+      this.fKH.fKy.put("plugin_filter", Boolean.TRUE);
       AppMethodBeat.o(168711);
       return this;
     }
     
-    public final a Yc()
+    public final a YZ()
     {
-      this.fHa.fGZ = 0.8571429F;
+      this.fKH.fKG = 0.8571429F;
       return this;
     }
     
-    public final UICustomParam Yd()
+    public final UICustomParam Za()
     {
-      return this.fHa;
+      return this.fKH;
     }
     
     public final a a(int paramInt1, int paramInt2, String paramString, int paramInt3)
     {
-      this.fHa.fGS = paramInt1;
-      this.fHa.fGT = paramInt2;
-      this.fHa.text = paramString;
-      this.fHa.fGU = paramInt3;
+      this.fKH.fKz = paramInt1;
+      this.fKH.fKA = paramInt2;
+      this.fKH.text = paramString;
+      this.fKH.fKB = paramInt3;
+      return this;
+    }
+    
+    public final a cJ(boolean paramBoolean)
+    {
+      AppMethodBeat.i(199481);
+      this.fKH.fKy.put("plugin_emoji", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(199481);
       return this;
     }
     
     public final a cK(boolean paramBoolean)
     {
-      AppMethodBeat.i(186945);
-      this.fHa.fGR.put("plugin_emoji", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(186945);
+      AppMethodBeat.i(199482);
+      this.fKH.fKy.put("plugin_text", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(199482);
       return this;
     }
     
     public final a cL(boolean paramBoolean)
     {
-      AppMethodBeat.i(186946);
-      this.fHa.fGR.put("plugin_text", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(186946);
+      AppMethodBeat.i(199483);
+      this.fKH.fKy.put("plugin_music", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(199483);
       return this;
     }
     
     public final a cM(boolean paramBoolean)
     {
-      AppMethodBeat.i(186947);
-      this.fHa.fGR.put("plugin_music", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(186947);
+      AppMethodBeat.i(168708);
+      this.fKH.fKy.put("plugin_video_crop", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(168708);
       return this;
     }
     
     public final a cN(boolean paramBoolean)
     {
-      AppMethodBeat.i(168708);
-      this.fHa.fGR.put("plugin_video_crop", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(168708);
-      return this;
-    }
-    
-    public final a cO(boolean paramBoolean)
-    {
       AppMethodBeat.i(168710);
-      this.fHa.fGR.put("plugin_menu", Boolean.valueOf(paramBoolean));
+      this.fKH.fKy.put("plugin_menu", Boolean.valueOf(paramBoolean));
       AppMethodBeat.o(168710);
       return this;
     }
     
-    public final a li(int paramInt)
+    public final a lc(int paramInt)
     {
-      this.fHa.fGY = paramInt;
+      this.fKH.fKF = paramInt;
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.component.api.jumper.UICustomParam
  * JD-Core Version:    0.7.0.1
  */

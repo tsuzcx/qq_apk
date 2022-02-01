@@ -1,227 +1,166 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.content.Context;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.AppForegroundDelegate;
+import com.tencent.mm.app.n;
 import com.tencent.mm.model.ce;
-import com.tencent.mm.plugin.finder.cgi.h;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vending.c.a;
-import d.a.j;
-import d.g.a.b;
+import com.tencent.mm.plugin.finder.report.i.a;
+import com.tencent.mm.plugin.finder.storage.b;
+import com.tencent.mm.plugin.finder.storage.logic.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.vfs.i;
 import d.g.b.k;
 import d.l;
-import d.n.n;
-import d.t;
-import d.v;
+import d.o;
 import d.y;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/utils/FinderObjectStatusRefresher;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "objectStatusReqMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/utils/FinderObjectStatusRefresher$ObjectStatusReqState;", "getObjectStatusReqMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "canReqObjectStatus", "", "feedId", "clearObjectStatusStates", "", "createTriple", "Lkotlin/Triple;", "tips", "refreshInterval", "lastReqTime", "waitTime", "refreshObjectStatus", "context", "Landroid/content/Context;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "scene", "", "cgiBack", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "result", "ObjectStatusReqState", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/utils/FinderFolderClearManager;", "", "()V", "MARK_DEL_FOLDERS", "", "TAG", "fileLock", "Ljava/lang/Object;", "finderUICount", "", "lastDumpTime", "", "checkClearWhenAppInBackground", "", "clearMarkFolder", "dumpAndMark", "enterFinderUI", "exitFinderUI", "mark", "curSize", "folder", "Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "plugin-finder_release"})
 public final class f
 {
-  private static final String TAG = "Finder.ObjectStatusRefresher";
-  private static final ConcurrentHashMap<Long, a> qSr;
-  public static final f qSs;
+  static final String TAG = "Finder.FinderFolderClearManager";
+  private static long gat;
+  static final Object rMV;
+  static int rOM;
+  public static final f rON;
   
   static
   {
-    AppMethodBeat.i(167895);
-    qSs = new f();
-    TAG = "Finder.ObjectStatusRefresher";
-    qSr = new ConcurrentHashMap();
-    AppMethodBeat.o(167895);
-  }
-  
-  private static t<String, String, String> ZL(String paramString)
-  {
-    AppMethodBeat.i(167894);
-    Object localObject3 = "";
-    Object localObject1 = "";
-    Object localObject2 = "";
-    Object localObject4 = n.a((CharSequence)paramString, new String[] { "#" });
-    paramString = (String)localObject2;
-    if (((List)localObject4).size() >= 3)
+    AppMethodBeat.i(167889);
+    rON = new f();
+    TAG = "Finder.FinderFolderClearManager";
+    rMV = new Object();
+    AppForegroundDelegate.cHM.a((n)new n()
     {
-      localObject2 = (String)j.C((List)localObject4, 0);
-      if (localObject2 != null) {
-        break label198;
-      }
-      localObject2 = "";
-    }
-    label198:
-    for (;;)
-    {
-      String str = (String)j.C((List)localObject4, 1);
-      if (str == null) {
-        str = "";
-      }
-      for (;;)
+      public final void onAppBackground(String arg1)
       {
-        localObject4 = (String)j.C((List)localObject4, 2);
-        paramString = (String)localObject4;
-        localObject3 = localObject2;
-        localObject1 = str;
-        if (localObject4 == null)
+        AppMethodBeat.i(167887);
+        ??? = f.rON;
+        ac.i(f.TAG, "checkClearWhenAppInBackground");
+        if (f.rOM <= 0)
         {
-          paramString = "";
-          localObject1 = str;
-          localObject3 = localObject2;
+          ac.i(f.TAG, "clearMarkFolder");
+          synchronized (f.rMV)
+          {
+            l = bs.Gn();
+            localObject3 = aw.eVz();
+            Set localSet = ((aw)localObject3).getStringSet("FINDER_MARK_DEL_FOLDERS", (Set)new HashSet());
+            if (localSet != null)
+            {
+              Iterator localIterator = ((Iterable)localSet).iterator();
+              while (localIterator.hasNext())
+              {
+                Object localObject4 = (String)localIterator.next();
+                ac.i(f.TAG, "clearMarkFolders ".concat(String.valueOf(localObject4)));
+                i.cU((String)localObject4, true);
+                p localp = p.rQw;
+                if (k.g(localObject4, p.cDn()))
+                {
+                  localObject4 = c.rFo;
+                  c.aPx();
+                }
+              }
+            }
+          }
+          ((aw)localObject3).putStringSet("FINDER_MARK_DEL_FOLDERS", (Set)new HashSet());
+          Object localObject3 = p.rQw;
+          localObject3 = p.cDp();
+          int j = localObject3.length;
+          int i = 0;
+          while (i < j)
+          {
+            localObject3[i].cCN();
+            i += 1;
+          }
+          long l = bs.aO(l);
+          if ((localObject1 != null) && (localObject1.size() > 0))
+          {
+            localObject2 = i.a.ryn;
+            i.a.uu(l);
+          }
+          ac.i(f.TAG, "clearMarkFolder cost:".concat(String.valueOf(l)));
+          Object localObject2 = y.KTp;
+          ??? = com.tencent.mm.plugin.finder.upload.e.rMX;
+          com.tencent.mm.plugin.finder.upload.e.cCs();
         }
-        localObject2 = localObject3;
-        if (bt.isNullOrNil((String)localObject3))
-        {
-          localObject2 = i.qTa;
-          localObject2 = i.dc("FinderSafeSelfSeeForward", 2131759344);
-        }
-        localObject3 = localObject1;
-        if (bt.isNullOrNil((String)localObject1))
-        {
-          localObject1 = i.qTa;
-          localObject3 = i.dc("FinderSafeSelfSeeShare", 2131759345);
-        }
-        localObject1 = paramString;
-        if (bt.isNullOrNil(paramString))
-        {
-          paramString = i.qTa;
-          localObject1 = i.dc("FinderSafeSelfSeeCollect", 2131759343);
-        }
-        paramString = new t(localObject2, localObject3, localObject1);
-        AppMethodBeat.o(167894);
-        return paramString;
+        AppMethodBeat.o(167887);
       }
+      
+      public final void onAppForeground(String paramAnonymousString) {}
+    });
+    AppMethodBeat.o(167889);
+  }
+  
+  public static void cCP()
+  {
+    rOM += 1;
+  }
+  
+  public static void cCQ()
+  {
+    int i = rOM - 1;
+    rOM = i;
+    if (i < 0) {
+      rOM = 0;
     }
   }
   
-  public static t<String, String, String> a(Context paramContext, BaseFinderFeed paramBaseFinderFeed, int paramInt, final b<? super t<String, String, String>, y> paramb)
+  public static void cCR()
   {
-    AppMethodBeat.i(199633);
-    k.h(paramContext, "context");
-    k.h(paramBaseFinderFeed, "feed");
-    k.h(paramb, "cgiBack");
-    final long l1 = paramBaseFinderFeed.feedObject.getId();
-    long l2 = ce.asQ() / 1000L;
-    Object localObject = (a)qSr.get(Long.valueOf(l1));
-    int i;
-    if (localObject != null) {
-      if (ce.asQ() / 1000L - ((a)localObject).qSt >= ((a)localObject).waitTime)
+    AppMethodBeat.i(167888);
+    ac.i(TAG, "dumpAndMark");
+    long l1 = ce.azH();
+    long l2 = gat;
+    Object localObject1 = b.rCU;
+    if (l1 - l2 < b.cyz())
+    {
+      AppMethodBeat.o(167888);
+      return;
+    }
+    l2 = bs.Gn();
+    gat = l1;
+    localObject1 = (Map)new LinkedHashMap();
+    ??? = p.rQw;
+    e[] arrayOfe = p.cDp();
+    int j = arrayOfe.length;
+    int i = 0;
+    while (i < j)
+    {
+      e locale = arrayOfe[i];
+      l1 = ((Number)locale.cCO().second).longValue();
+      if ((locale.rOL) && (l1 > locale.maxSize)) {}
+      synchronized (rMV)
       {
-        i = 1;
-        if (i == 0) {
-          break label239;
+        ac.i(TAG, "mark: size " + l1 + ", name " + locale.name + ", path " + locale.path);
+        aw localaw = aw.eVz();
+        Set localSet = localaw.getStringSet("FINDER_MARK_DEL_FOLDERS", (Set)new HashSet());
+        if (localSet == null) {
+          k.fOy();
         }
-        localObject = paramBaseFinderFeed.feedObject.getObjectNonceId();
-        String str = paramBaseFinderFeed.feedObject.getUserName();
-        FinderReporterUIC.a locala = FinderReporterUIC.Ljl;
-        paramContext = FinderReporterUIC.a.lB(paramContext);
-        if (paramContext == null) {
-          break label234;
-        }
-        paramContext = paramContext.fXs();
-        label129:
-        new h(l1, (String)localObject, 3, paramInt, str, false, null, null, 0L, null, false, true, null, paramContext, 6112).auK().h((a)new b(paramBaseFinderFeed, l1, l2)).b((a)new c(paramBaseFinderFeed, paramb));
+        localSet.add(locale.path);
+        localaw.putStringSet("FINDER_MARK_DEL_FOLDERS", localSet).commit();
+        ((Map)localObject1).put(locale.name, Long.valueOf(l1));
+        i += 1;
       }
     }
-    for (;;)
-    {
-      paramContext = paramBaseFinderFeed.feedObject.getNotShareMsg();
-      if (paramContext != null) {
-        break label310;
-      }
-      paramContext = new v("null cannot be cast to non-null type kotlin.CharSequence");
-      AppMethodBeat.o(199633);
-      throw paramContext;
-      i = 0;
-      break;
-      i = 1;
-      break;
-      label234:
-      paramContext = null;
-      break label129;
-      label239:
-      paramContext = (a)qSr.get(Long.valueOf(l1));
-      if (paramContext != null) {
-        ad.w(TAG, "can't request. lastReqTime=" + l2 + " lastReqTime=" + paramContext.qSt + " waitTime=" + paramContext.waitTime);
-      }
-    }
-    label310:
-    paramContext = ZL(n.trim((CharSequence)paramContext).toString());
-    AppMethodBeat.o(199633);
-    return paramContext;
-  }
-  
-  public static String getTAG()
-  {
-    return TAG;
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/utils/FinderObjectStatusRefresher$ObjectStatusReqState;", "", "lastReqTime", "", "waitTime", "(JJ)V", "getLastReqTime", "()J", "getWaitTime", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
-  public static final class a
-  {
-    final long qSt;
-    final long waitTime;
-    
-    public a(long paramLong1, long paramLong2)
-    {
-      this.qSt = paramLong1;
-      this.waitTime = paramLong2;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((this.qSt != paramObject.qSt) || (this.waitTime != paramObject.waitTime)) {}
-        }
-      }
-      else {
-        return true;
-      }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      long l = this.qSt;
-      int i = (int)(l ^ l >>> 32);
-      l = this.waitTime;
-      return i * 31 + (int)(l ^ l >>> 32);
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(167890);
-      String str = "ObjectStatusReqState(lastReqTime=" + this.qSt + ", waitTime=" + this.waitTime + ")";
-      AppMethodBeat.o(167890);
-      return str;
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "result", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "kotlin.jvm.PlatformType", "call"})
-  static final class b<_Ret, _Var>
-    implements a<_Ret, _Var>
-  {
-    b(BaseFinderFeed paramBaseFinderFeed, long paramLong1, long paramLong2) {}
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "kotlin.jvm.PlatformType", "call", "(Lkotlin/Unit;)V"})
-  static final class c<_Ret, _Var>
-    implements a<_Ret, _Var>
-  {
-    c(BaseFinderFeed paramBaseFinderFeed, b paramb) {}
+    l1 = bs.aO(l2);
+    ??? = i.a.ryn;
+    i.a.uv(l1);
+    ??? = i.a.ryn;
+    i.a.W(localMap);
+    AppMethodBeat.o(167888);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.f
  * JD-Core Version:    0.7.0.1
  */

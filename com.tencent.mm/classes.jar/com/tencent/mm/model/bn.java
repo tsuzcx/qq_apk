@@ -1,22 +1,22 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class bn
   extends n
   implements k
 {
-  private com.tencent.mm.al.g callback;
-  private long csJ;
-  private final a gOJ;
-  private final String gOK;
+  private com.tencent.mm.ak.g callback;
+  private long cpR;
+  private final a hpj;
+  private final String hpk;
   
   public bn(a parama)
   {
@@ -26,19 +26,19 @@ public final class bn
   public bn(a parama, String paramString)
   {
     AppMethodBeat.i(132255);
-    ad.i("MicroMsg.NetSceneLocalProxy", "init LocalProxy task:%s [%s] ", new Object[] { paramString, bt.eGN() });
-    this.gOJ = parama;
-    this.gOK = paramString;
+    ac.i("MicroMsg.NetSceneLocalProxy", "init LocalProxy task:%s [%s] ", new Object[] { paramString, bs.eWi() });
+    this.hpj = parama;
+    this.hpk = paramString;
     AppMethodBeat.o(132255);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(132256);
     prepareDispatcher(parame);
     this.callback = paramg;
-    this.csJ = bt.GC();
-    com.tencent.mm.kernel.g.afE().ax(new Runnable()
+    this.cpR = bs.Gn();
+    com.tencent.mm.kernel.g.agU().az(new Runnable()
     {
       public final void run()
       {
@@ -67,10 +67,10 @@ public final class bn
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132257);
-    if (this.gOJ != null)
+    if (this.hpj != null)
     {
-      ad.d("MicroMsg.NetSceneLocalProxy", "local proxy [%s] end, cost=%d", new Object[] { this.gOK, Long.valueOf(bt.aS(this.csJ)) });
-      this.gOJ.a(super.dispatcher());
+      ac.d("MicroMsg.NetSceneLocalProxy", "local proxy [%s] end, cost=%d", new Object[] { this.hpk, Long.valueOf(bs.aO(this.cpR)) });
+      this.hpj.a(super.dispatcher());
     }
     this.callback.onSceneEnd(0, 0, null, this);
     AppMethodBeat.o(132257);

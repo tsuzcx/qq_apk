@@ -5,21 +5,21 @@ import java.lang.reflect.Array;
 
 public final class f
 {
-  private static f[][] ABR;
-  public int ABP = 0;
-  public int ABQ = 0;
+  private static f[][] BUm;
+  public int BUk = 0;
+  public int BUl = 0;
   
   static
   {
     AppMethodBeat.i(129788);
-    ABR = (f[][])Array.newInstance(f.class, new int[] { 3, 3 });
+    BUm = (f[][])Array.newInstance(f.class, new int[] { 3, 3 });
     int i = 0;
     while (i < 3)
     {
       int j = 0;
       while (j < 3)
       {
-        ABR[i][j] = new f(i, j);
+        BUm[i][j] = new f(i, j);
         j += 1;
       }
       i += 1;
@@ -29,11 +29,11 @@ public final class f
   
   private f(int paramInt1, int paramInt2)
   {
-    this.ABP = paramInt1;
-    this.ABQ = paramInt2;
+    this.BUk = paramInt1;
+    this.BUl = paramInt2;
   }
   
-  public static f ik(int paramInt1, int paramInt2)
+  public static f iz(int paramInt1, int paramInt2)
   {
     try
     {
@@ -52,7 +52,7 @@ public final class f
       AppMethodBeat.o(129786);
       throw ((Throwable)localObject2);
     }
-    Object localObject2 = ABR[paramInt1][paramInt2];
+    Object localObject2 = BUm[paramInt1][paramInt2];
     AppMethodBeat.o(129786);
     return localObject2;
   }
@@ -60,14 +60,14 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(129787);
-    String str = String.format("{row: %d, col: %d}", new Object[] { Integer.valueOf(this.ABP), Integer.valueOf(this.ABQ) });
+    String str = String.format("{row: %d, col: %d}", new Object[] { Integer.valueOf(this.BUk), Integer.valueOf(this.BUl) });
     AppMethodBeat.o(129787);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,15 @@ public abstract interface d
 {
   public abstract boolean a(h paramh);
   
-  public abstract h aqU(String paramString);
+  public abstract h awd(String paramString);
   
   public abstract boolean b(h paramh);
   
-  public abstract boolean dEA();
+  public abstract h dSY();
   
-  public abstract int dEB();
+  public abstract boolean dSZ();
   
-  public abstract h dEz();
+  public abstract int dTa();
   
   public abstract int getCount();
   

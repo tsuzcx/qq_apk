@@ -13,10 +13,10 @@ public class ScanResultCompat
   implements Parcelable
 {
   public static final Parcelable.Creator<ScanResultCompat> CREATOR;
-  private BluetoothDevice jLq;
-  public f jLr;
-  public int jLs;
-  private long jLt;
+  private BluetoothDevice klR;
+  public f klS;
+  public int klT;
+  private long klU;
   
   static
   {
@@ -27,20 +27,20 @@ public class ScanResultCompat
   
   public ScanResultCompat(BluetoothDevice paramBluetoothDevice, f paramf, int paramInt, long paramLong)
   {
-    this.jLq = paramBluetoothDevice;
-    this.jLr = paramf;
-    this.jLs = paramInt;
-    this.jLt = paramLong;
+    this.klR = paramBluetoothDevice;
+    this.klS = paramf;
+    this.klT = paramInt;
+    this.klU = paramLong;
   }
   
   @TargetApi(21)
   ScanResultCompat(ScanResult paramScanResult)
   {
     AppMethodBeat.i(144640);
-    this.jLq = paramScanResult.getDevice();
-    this.jLr = new f(paramScanResult.getScanRecord());
-    this.jLs = paramScanResult.getRssi();
-    this.jLt = System.currentTimeMillis();
+    this.klR = paramScanResult.getDevice();
+    this.klS = new f(paramScanResult.getScanRecord());
+    this.klT = paramScanResult.getRssi();
+    this.klU = System.currentTimeMillis();
     AppMethodBeat.o(144640);
   }
   
@@ -48,13 +48,13 @@ public class ScanResultCompat
   {
     AppMethodBeat.i(144641);
     if (paramParcel.readInt() == 1) {
-      this.jLq = ((BluetoothDevice)BluetoothDevice.CREATOR.createFromParcel(paramParcel));
+      this.klR = ((BluetoothDevice)BluetoothDevice.CREATOR.createFromParcel(paramParcel));
     }
     if (paramParcel.readInt() == 1) {
-      this.jLr = f.at(paramParcel.createByteArray());
+      this.klS = f.as(paramParcel.createByteArray());
     }
-    this.jLs = paramParcel.readInt();
-    this.jLt = paramParcel.readLong();
+    this.klT = paramParcel.readInt();
+    this.klU = paramParcel.readLong();
     AppMethodBeat.o(144641);
   }
   
@@ -77,7 +77,7 @@ public class ScanResultCompat
       return false;
     }
     paramObject = (ScanResultCompat)paramObject;
-    if ((d.equals(this.jLq, paramObject.jLq)) && (this.jLs == paramObject.jLs) && (d.equals(this.jLr, paramObject.jLr)) && (this.jLt == paramObject.jLt))
+    if ((d.equals(this.klR, paramObject.klR)) && (this.klT == paramObject.klT) && (d.equals(this.klS, paramObject.klS)) && (this.klU == paramObject.klU))
     {
       AppMethodBeat.o(144644);
       return true;
@@ -88,8 +88,8 @@ public class ScanResultCompat
   
   public final BluetoothDevice getDevice()
   {
-    if (this.jLq != null) {
-      return this.jLq;
+    if (this.klR != null) {
+      return this.klR;
     }
     return null;
   }
@@ -97,7 +97,7 @@ public class ScanResultCompat
   public int hashCode()
   {
     AppMethodBeat.i(144643);
-    int i = Arrays.hashCode(new Object[] { this.jLq, Integer.valueOf(this.jLs), this.jLr, Long.valueOf(this.jLt) });
+    int i = Arrays.hashCode(new Object[] { this.klR, Integer.valueOf(this.klT), this.klS, Long.valueOf(this.klU) });
     AppMethodBeat.o(144643);
     return i;
   }
@@ -105,7 +105,7 @@ public class ScanResultCompat
   public String toString()
   {
     AppMethodBeat.i(144645);
-    String str = "ScanResult{mDevice=" + this.jLq + ", mScanRecord=" + d.toString(this.jLr) + ", mRssi=" + this.jLs + ", mTimestampNanos=" + this.jLt + '}';
+    String str = "ScanResult{mDevice=" + this.klR + ", mScanRecord=" + d.toString(this.klS) + ", mRssi=" + this.klT + ", mTimestampNanos=" + this.klU + '}';
     AppMethodBeat.o(144645);
     return str;
   }
@@ -113,20 +113,20 @@ public class ScanResultCompat
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(144642);
-    if (this.jLq != null)
+    if (this.klR != null)
     {
       paramParcel.writeInt(1);
-      this.jLq.writeToParcel(paramParcel, paramInt);
-      if (this.jLr == null) {
+      this.klR.writeToParcel(paramParcel, paramInt);
+      if (this.klS == null) {
         break label79;
       }
       paramParcel.writeInt(1);
-      paramParcel.writeByteArray(this.jLr.jLp);
+      paramParcel.writeByteArray(this.klS.klQ);
     }
     for (;;)
     {
-      paramParcel.writeInt(this.jLs);
-      paramParcel.writeLong(this.jLt);
+      paramParcel.writeInt(this.klT);
+      paramParcel.writeLong(this.klU);
       AppMethodBeat.o(144642);
       return;
       paramParcel.writeInt(0);

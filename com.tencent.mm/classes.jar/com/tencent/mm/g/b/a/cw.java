@@ -6,76 +6,42 @@ import com.tencent.mm.plugin.report.a;
 public final class cw
   extends a
 {
-  private String dGR;
-  private String dSJ;
-  public long dSK = 0L;
-  private String dSO;
-  public long dSX = 0L;
+  public long dCS;
+  public String dRs = "";
+  public String dRt = "";
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(110289);
+    AppMethodBeat.i(197010);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dGR);
+    ((StringBuffer)localObject).append(this.dRs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSJ);
+    ((StringBuffer)localObject).append(this.dRt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSO);
+    ((StringBuffer)localObject).append(this.dCS);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(110289);
+    arz((String)localObject);
+    AppMethodBeat.o(197010);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(110290);
+    AppMethodBeat.i(197011);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ChatName:").append(this.dGR);
+    ((StringBuffer)localObject).append("roomID:").append(this.dRs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LaunchUserName:").append(this.dSJ);
+    ((StringBuffer)localObject).append("oldRoomID:").append(this.dRt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionID:").append(this.dSK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("reason:").append(this.dSX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Identifier:").append(this.dSO);
+    ((StringBuffer)localObject).append("action:").append(this.dCS);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(110290);
+    AppMethodBeat.o(197011);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18252;
-  }
-  
-  public final cw jq(String paramString)
-  {
-    AppMethodBeat.i(110286);
-    this.dGR = t("ChatName", paramString, true);
-    AppMethodBeat.o(110286);
-    return this;
-  }
-  
-  public final cw jr(String paramString)
-  {
-    AppMethodBeat.i(110287);
-    this.dSJ = t("LaunchUserName", paramString, true);
-    AppMethodBeat.o(110287);
-    return this;
-  }
-  
-  public final cw js(String paramString)
-  {
-    AppMethodBeat.i(110288);
-    this.dSO = t("Identifier", paramString, true);
-    AppMethodBeat.o(110288);
-    return this;
+    return 20246;
   }
 }
 

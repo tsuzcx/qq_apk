@@ -22,22 +22,22 @@ public final class a
   {
     AppMethodBeat.i(57648);
     if (paramf == null) {
-      adP(0);
+      agL(0);
     }
     if (paramCollection1 == null) {
-      adP(1);
+      agL(1);
     }
     if (paramCollection2 == null) {
-      adP(2);
+      agL(2);
     }
     if (parame == null) {
-      adP(3);
+      agL(3);
     }
     if (paramr == null) {
-      adP(4);
+      agL(4);
     }
     if (parami == null) {
-      adP(5);
+      agL(5);
     }
     paramf = a(paramf, paramCollection1, paramCollection2, parame, paramr, parami, false);
     AppMethodBeat.o(57648);
@@ -48,22 +48,22 @@ public final class a
   {
     AppMethodBeat.i(57650);
     if (paramf == null) {
-      adP(12);
+      agL(12);
     }
     if (paramCollection1 == null) {
-      adP(13);
+      agL(13);
     }
     if (paramCollection2 == null) {
-      adP(14);
+      agL(14);
     }
     if (parame == null) {
-      adP(15);
+      agL(15);
     }
     if (paramr == null) {
-      adP(16);
+      agL(16);
     }
     if (parami == null) {
-      adP(17);
+      agL(17);
     }
     final LinkedHashSet localLinkedHashSet = new LinkedHashSet();
     parami.a(paramf, paramCollection1, paramCollection2, parame, new g()
@@ -72,10 +72,10 @@ public final class a
       {
         AppMethodBeat.i(57645);
         if (paramAnonymousb1 == null) {
-          adP(1);
+          agL(1);
         }
         if (paramAnonymousb2 == null) {
-          adP(2);
+          agL(2);
         }
         AppMethodBeat.o(57645);
       }
@@ -84,12 +84,12 @@ public final class a
       {
         AppMethodBeat.i(57646);
         if (paramAnonymousb == null) {
-          adP(3);
+          agL(3);
         }
         if (paramAnonymousCollection == null) {
-          adP(4);
+          agL(4);
         }
-        if ((paramBoolean) && (paramAnonymousb.fyu() != b.a.JpW))
+        if ((paramBoolean) && (paramAnonymousb.fQY() != b.a.Ldp))
         {
           AppMethodBeat.o(57646);
           return;
@@ -102,7 +102,7 @@ public final class a
       {
         AppMethodBeat.i(57644);
         if (paramAnonymousb == null) {
-          adP(0);
+          agL(0);
         }
         i.a(paramAnonymousb, new d.g.a.b() {});
         localLinkedHashSet.add(paramAnonymousb);
@@ -117,22 +117,22 @@ public final class a
   {
     AppMethodBeat.i(57651);
     if (paramf == null) {
-      adP(19);
+      agL(19);
     }
     if (parame == null) {
-      adP(20);
+      agL(20);
     }
-    parame = parame.fvR();
+    parame = parame.fOv();
     if (parame.size() != 1)
     {
       AppMethodBeat.o(57651);
       return null;
     }
-    parame = ((d)parame.iterator().next()).fyq().iterator();
+    parame = ((d)parame.iterator().next()).fQU().iterator();
     while (parame.hasNext())
     {
       av localav = (av)parame.next();
-      if (localav.fyB().equals(paramf))
+      if (localav.fRf().equals(paramf))
       {
         AppMethodBeat.o(57651);
         return localav;
@@ -146,22 +146,22 @@ public final class a
   {
     AppMethodBeat.i(57649);
     if (paramf == null) {
-      adP(6);
+      agL(6);
     }
     if (paramCollection1 == null) {
-      adP(7);
+      agL(7);
     }
     if (paramCollection2 == null) {
-      adP(8);
+      agL(8);
     }
     if (parame == null) {
-      adP(9);
+      agL(9);
     }
     if (paramr == null) {
-      adP(10);
+      agL(10);
     }
     if (parami == null) {
-      adP(11);
+      agL(11);
     }
     paramf = a(paramf, paramCollection1, paramCollection2, parame, paramr, parami, true);
     AppMethodBeat.o(57649);
@@ -170,7 +170,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.a.a
  * JD-Core Version:    0.7.0.1
  */

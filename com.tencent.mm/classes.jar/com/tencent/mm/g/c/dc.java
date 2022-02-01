@@ -8,19 +8,34 @@ public abstract class dc
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eKR = "wechatUsername".hashCode();
-  private static final int eKS = "systemAddressBookUsername".hashCode();
-  private static final int eKT = "contactId".hashCode();
-  private static final int eKU = "sortKey".hashCode();
+  private static final int eNC;
+  private static final int eND = "likecount".hashCode();
+  private static final int eNE = "selfLikeState".hashCode();
+  private static final int eNs = "rankID".hashCode();
+  private static final int eNt = "appusername".hashCode();
+  private static final int eNw;
+  private static final int eok = "username".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eKN = true;
-  private boolean eKO = true;
-  private boolean eKP = true;
-  private boolean eKQ = true;
-  public String field_contactId;
-  public String field_sortKey;
-  public String field_systemAddressBookUsername;
-  public String field_wechatUsername;
+  private boolean eNA = true;
+  private boolean eNB = true;
+  private boolean eNp = true;
+  private boolean eNq = true;
+  private boolean eNv = true;
+  private boolean eNz = true;
+  private boolean eoh = true;
+  public String field_appusername;
+  public int field_likecount;
+  public String field_rankID;
+  public int field_ranknum;
+  public int field_score;
+  public int field_selfLikeState;
+  public String field_username;
+  
+  static
+  {
+    eNC = "ranknum".hashCode();
+    eNw = "score".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,10 +50,10 @@ public abstract class dc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eKR != k) {
+      if (eNs != k) {
         break label60;
       }
-      this.field_wechatUsername = paramCursor.getString(i);
+      this.field_rankID = paramCursor.getString(i);
     }
     for (;;)
     {
@@ -46,12 +61,18 @@ public abstract class dc
       break label20;
       break;
       label60:
-      if (eKS == k) {
-        this.field_systemAddressBookUsername = paramCursor.getString(i);
-      } else if (eKT == k) {
-        this.field_contactId = paramCursor.getString(i);
-      } else if (eKU == k) {
-        this.field_sortKey = paramCursor.getString(i);
+      if (eNt == k) {
+        this.field_appusername = paramCursor.getString(i);
+      } else if (eok == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (eNC == k) {
+        this.field_ranknum = paramCursor.getInt(i);
+      } else if (eNw == k) {
+        this.field_score = paramCursor.getInt(i);
+      } else if (eND == k) {
+        this.field_likecount = paramCursor.getInt(i);
+      } else if (eNE == k) {
+        this.field_selfLikeState = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -61,17 +82,26 @@ public abstract class dc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eKN) {
-      localContentValues.put("wechatUsername", this.field_wechatUsername);
+    if (this.eNp) {
+      localContentValues.put("rankID", this.field_rankID);
     }
-    if (this.eKO) {
-      localContentValues.put("systemAddressBookUsername", this.field_systemAddressBookUsername);
+    if (this.eNq) {
+      localContentValues.put("appusername", this.field_appusername);
     }
-    if (this.eKP) {
-      localContentValues.put("contactId", this.field_contactId);
+    if (this.eoh) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.eKQ) {
-      localContentValues.put("sortKey", this.field_sortKey);
+    if (this.eNz) {
+      localContentValues.put("ranknum", Integer.valueOf(this.field_ranknum));
+    }
+    if (this.eNv) {
+      localContentValues.put("score", Integer.valueOf(this.field_score));
+    }
+    if (this.eNA) {
+      localContentValues.put("likecount", Integer.valueOf(this.field_likecount));
+    }
+    if (this.eNB) {
+      localContentValues.put("selfLikeState", Integer.valueOf(this.field_selfLikeState));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -81,7 +111,7 @@ public abstract class dc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.dc
  * JD-Core Version:    0.7.0.1
  */

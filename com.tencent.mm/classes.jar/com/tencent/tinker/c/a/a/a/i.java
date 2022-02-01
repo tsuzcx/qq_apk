@@ -9,15 +9,15 @@ import java.util.Arrays;
 
 public abstract class i<T extends Comparable<T>>
 {
-  protected final com.tencent.tinker.a.a.i ICq;
-  protected final com.tencent.tinker.c.a.b.a ICs;
-  private final c ICt;
+  protected final com.tencent.tinker.c.a.b.a KoB;
+  private final c KoC;
+  protected final com.tencent.tinker.a.a.i Koz;
   
   public i(com.tencent.tinker.c.a.b.a parama, com.tencent.tinker.a.a.i parami, c paramc)
   {
-    this.ICs = parama;
-    this.ICq = parami;
-    this.ICt = paramc;
+    this.KoB = parama;
+    this.Koz = parami;
+    this.KoC = paramc;
   }
   
   private static int a(int paramInt, T paramT)
@@ -28,14 +28,14 @@ public abstract class i<T extends Comparable<T>>
     return paramInt;
   }
   
-  private int[] acA(int paramInt)
+  private int[] afw(int paramInt)
   {
     int[] arrayOfInt = new int[paramInt];
     int i = 0;
     int j = 0;
     while (i < paramInt)
     {
-      j = o.a(this.ICs.IDp) + j;
+      j = o.a(this.KoB.Kpy) + j;
       arrayOfInt[i] = j;
       i += 1;
     }
@@ -59,15 +59,15 @@ public abstract class i<T extends Comparable<T>>
   
   public final void execute()
   {
-    int[] arrayOfInt1 = acA(o.b(this.ICs.IDp));
-    int[] arrayOfInt2 = acA(o.b(this.ICs.IDp));
-    int[] arrayOfInt3 = acA(o.b(this.ICs.IDp));
-    Object localObject = c(this.ICq);
+    int[] arrayOfInt1 = afw(o.b(this.KoB.Kpy));
+    int[] arrayOfInt2 = afw(o.b(this.KoB.Kpy));
+    int[] arrayOfInt3 = afw(o.b(this.KoB.Kpy));
+    Object localObject = c(this.Koz);
     i.e locale;
     int k;
     if (((s.a)localObject).exists())
     {
-      locale = this.ICq.a((s.a)localObject);
+      locale = this.Koz.a((s.a)localObject);
       k = ((s.a)localObject).size;
     }
     for (;;)
@@ -83,34 +83,34 @@ public abstract class i<T extends Comparable<T>>
       while ((j < k) || (i < k + i3 - i2)) {
         if ((n < i3) && (arrayOfInt2[n] == i))
         {
-          e(a(this.ICs.IDp));
+          e(a(this.KoB.Kpy));
           i += 1;
           n += 1;
         }
         else if ((i1 < i4) && (arrayOfInt3[i1] == i))
         {
-          e(a(this.ICs.IDp));
+          e(a(this.KoB.Kpy));
           i += 1;
           i1 += 1;
         }
         else if (Arrays.binarySearch(arrayOfInt1, j) >= 0)
         {
           localObject = a(locale);
-          a(this.ICt, j, a(j, (Comparable)localObject));
+          a(this.KoC, j, a(j, (Comparable)localObject));
           j += 1;
           m += 1;
         }
         else if (Arrays.binarySearch(arrayOfInt3, j) >= 0)
         {
           localObject = a(locale);
-          a(this.ICt, j, a(j, (Comparable)localObject));
+          a(this.KoC, j, a(j, (Comparable)localObject));
           j += 1;
         }
         else if (j < k)
         {
-          localObject = a(this.ICt, a(locale));
+          localObject = a(this.KoC, a(locale));
           int i5 = e((Comparable)localObject);
-          a(this.ICt, j, a(j, (Comparable)localObject), i, i5);
+          a(this.KoC, j, a(j, (Comparable)localObject), i, i5);
           j += 1;
           i += 1;
         }

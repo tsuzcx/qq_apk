@@ -4,17 +4,17 @@ import android.content.Context;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.c.a.c;
 
 public final class a
 {
-  public static Animation fZ(Context paramContext)
+  public static Animation gl(Context paramContext)
   {
     AppMethodBeat.i(141578);
     if (paramContext == null)
     {
-      ad.e("MicroMsg.MMAnimationEffectLoader", "hy: context is null.");
+      ac.e("MicroMsg.MMAnimationEffectLoader", "hy: context is null.");
       AppMethodBeat.o(141578);
       return null;
     }

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 import junit.framework.Assert;
 
 public class PressImageView
@@ -18,8 +18,8 @@ public class PressImageView
   private int b;
   private int g;
   private int r;
-  private ap xkC;
-  private Runnable xkD;
+  private ao yxu;
+  private Runnable yxv;
   
   public PressImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,8 +29,8 @@ public class PressImageView
     this.r = 0;
     this.g = 0;
     this.b = 0;
-    this.xkC = new ap();
-    this.xkD = new Runnable()
+    this.yxu = new ao();
+    this.yxv = new Runnable()
     {
       public final void run()
       {

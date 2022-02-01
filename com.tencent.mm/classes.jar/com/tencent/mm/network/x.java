@@ -9,7 +9,7 @@ import com.tencent.mars.cdn.CronetLogic.CronetTaskResult;
 import com.tencent.mars.cdn.CronetLogic.DefaultHttpTaskParams;
 import com.tencent.mars.cdn.CronetLogic.ResponseHeader;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -22,27 +22,28 @@ import java.util.Set;
 public final class x
   implements CronetLogic.CronetTaskCallback, w
 {
-  private String bZn;
-  private boolean hLN;
-  private String hLO;
-  private Map<String, String> hLP;
-  public int hLQ;
-  public int hLR;
-  private int hLS;
-  String hLT;
-  private byte[] hLU;
-  private boolean hLV;
-  public boolean hLW;
-  private boolean hLX;
-  private boolean hLY;
-  private CronetLogic.CronetTaskCallback hLZ;
-  private int hMa;
-  private int hMb;
-  private byte[] hMc;
-  private String hMd;
-  private String hMe;
-  private Map<String, List<String>> hMf;
-  public int hMg;
+  private String bWk;
+  private String imA;
+  private Map<String, List<String>> imB;
+  public int imC;
+  public boolean imD;
+  private boolean imj;
+  private String imk;
+  private Map<String, String> iml;
+  public int imm;
+  public int imn;
+  private int imo;
+  String imp;
+  private byte[] imq;
+  private boolean imr;
+  public boolean ims;
+  private boolean imt;
+  private boolean imu;
+  private CronetLogic.CronetTaskCallback imv;
+  private int imw;
+  private int imx;
+  private byte[] imy;
+  private String imz;
   private int mErrorCode;
   private String mSavePath;
   private String mURL;
@@ -50,25 +51,26 @@ public final class x
   public x(String paramString, int paramInt)
   {
     AppMethodBeat.i(132870);
-    this.hLN = false;
-    this.hLO = "";
-    this.hLP = new HashMap();
-    this.hLQ = 5000;
-    this.hLR = 5000;
-    this.bZn = "GET";
-    this.hLV = false;
-    this.hLW = false;
-    this.hLX = false;
-    this.hLY = false;
-    this.hMa = 8;
-    this.hMb = -1;
-    this.hMd = "";
+    this.imj = false;
+    this.imk = "";
+    this.iml = new HashMap();
+    this.imm = 5000;
+    this.imn = 5000;
+    this.bWk = "GET";
+    this.imr = false;
+    this.ims = false;
+    this.imt = false;
+    this.imu = false;
+    this.imw = 8;
+    this.imx = -1;
+    this.imz = "";
     this.mErrorCode = 0;
-    this.hMe = "";
-    this.hMf = new HashMap();
-    this.hMg = 0;
+    this.imA = "";
+    this.imB = new HashMap();
+    this.imC = 0;
+    this.imD = false;
     this.mURL = paramString;
-    this.hLS = paramInt;
+    this.imo = paramInt;
     AppMethodBeat.o(132870);
   }
   
@@ -77,13 +79,13 @@ public final class x
     try
     {
       AppMethodBeat.i(132880);
-      this.hLN = true;
-      this.hMb = paramCronetTaskResult.statusCode;
-      this.hMc = paramCronetTaskResult.data;
-      this.hMd = paramCronetTaskResult.errorMsg;
+      this.imj = true;
+      this.imx = paramCronetTaskResult.statusCode;
+      this.imy = paramCronetTaskResult.data;
+      this.imz = paramCronetTaskResult.errorMsg;
       this.mErrorCode = paramCronetTaskResult.errorCode;
-      this.hMe = paramCronetTaskResult.statusText;
-      this.hMf = paramCronetTaskResult.getHeaderMapList();
+      this.imA = paramCronetTaskResult.statusText;
+      this.imB = paramCronetTaskResult.getHeaderMapList();
       notify();
       AppMethodBeat.o(132880);
       return;
@@ -95,7 +97,7 @@ public final class x
     }
   }
   
-  private void aEY()
+  private void aLP()
   {
     try
     {
@@ -103,34 +105,35 @@ public final class x
       Object localObject1 = new CronetLogic.CronetRequestParams();
       ((CronetLogic.CronetRequestParams)localObject1).url = this.mURL;
       ((CronetLogic.CronetRequestParams)localObject1).followRedirect = false;
-      ((CronetLogic.CronetRequestParams)localObject1).bodyData = this.hLU;
-      ((CronetLogic.CronetRequestParams)localObject1).method = this.bZn;
-      ((CronetLogic.CronetRequestParams)localObject1).useMemoryCache = this.hLW;
-      ((CronetLogic.CronetRequestParams)localObject1).useHttp2 = this.hLX;
-      ((CronetLogic.CronetRequestParams)localObject1).useQuic = this.hLY;
-      ((CronetLogic.CronetRequestParams)localObject1).makeRequestHeader(this.hLP);
-      ((CronetLogic.CronetRequestParams)localObject1).taskType = this.hMa;
-      if (this.hMg != 0)
+      ((CronetLogic.CronetRequestParams)localObject1).bodyData = this.imq;
+      ((CronetLogic.CronetRequestParams)localObject1).method = this.bWk;
+      ((CronetLogic.CronetRequestParams)localObject1).useMemoryCache = this.ims;
+      ((CronetLogic.CronetRequestParams)localObject1).useHttp2 = this.imt;
+      ((CronetLogic.CronetRequestParams)localObject1).useQuic = this.imu;
+      ((CronetLogic.CronetRequestParams)localObject1).makeRequestHeader(this.iml);
+      ((CronetLogic.CronetRequestParams)localObject1).taskType = this.imw;
+      if (this.imC != 0)
       {
         ((CronetLogic.CronetRequestParams)localObject1).defaultHttpTaskParams = new CronetLogic.DefaultHttpTaskParams();
-        ((CronetLogic.CronetRequestParams)localObject1).defaultHttpTaskParams.reportId = this.hMg;
+        ((CronetLogic.CronetRequestParams)localObject1).defaultHttpTaskParams.reportId = this.imC;
       }
-      switch (this.hMa)
+      switch (this.imw)
       {
       }
       for (;;)
       {
+        ((CronetLogic.CronetRequestParams)localObject1).useNewdns = this.imD;
         localObject1 = CronetLogic.startCronetDefaultHttpTask((CronetLogic.CronetRequestParams)localObject1, this);
         for (;;)
         {
-          this.hLO = ((CronetLogic.CronetHttpsCreateResult)localObject1).taskId;
+          this.imk = ((CronetLogic.CronetHttpsCreateResult)localObject1).taskId;
           try
           {
-            wait(this.hLQ + this.hLR);
-            if (!this.hLN) {
-              CronetLogic.cancelCronetTask(this.hLO);
+            wait(this.imm + this.imn);
+            if (!this.imj) {
+              CronetLogic.cancelCronetTask(this.imk);
             }
-            aEZ();
+            aLQ();
             AppMethodBeat.o(132881);
             return;
             localObject1 = CronetLogic.startCronetHttpTask((CronetLogic.CronetRequestParams)localObject1, this);
@@ -143,7 +146,7 @@ public final class x
           {
             for (;;)
             {
-              ad.e("MicroMsg.CronetConnect", "createAndStartCronetRequest " + localException.getLocalizedMessage());
+              ac.e("MicroMsg.CronetConnect", "createAndStartCronetRequest " + localException.getLocalizedMessage());
             }
           }
         }
@@ -152,12 +155,12 @@ public final class x
     finally {}
   }
   
-  private void aEZ()
+  private void aLQ()
   {
     AppMethodBeat.i(132882);
     Object localObject = new HashMap();
-    ((Map)localObject).putAll(this.hMf);
-    this.hMf.clear();
+    ((Map)localObject).putAll(this.imB);
+    this.imB.clear();
     localObject = ((Map)localObject).entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -165,61 +168,61 @@ public final class x
       if ((localEntry != null) && (localEntry.getKey() != null))
       {
         String str = (String)localEntry.getKey();
-        this.hMf.put(str.toLowerCase(), localEntry.getValue());
+        this.imB.put(str.toLowerCase(), localEntry.getValue());
       }
     }
     AppMethodBeat.o(132882);
   }
   
-  public final void Bc(String paramString)
+  public final void Fh(String paramString)
   {
     AppMethodBeat.i(132872);
-    this.hLP.put("Referer", paramString);
+    this.iml.put("Referer", paramString);
     AppMethodBeat.o(132872);
   }
   
   public final void a(CronetLogic.CronetTaskCallback paramCronetTaskCallback)
   {
-    this.hLZ = paramCronetTaskCallback;
+    this.imv = paramCronetTaskCallback;
   }
   
-  public final String aES()
+  public final String aLJ()
   {
-    return this.hLT;
+    return this.imp;
   }
   
-  public final int aET()
+  public final int aLK()
   {
-    return this.hLS;
+    return this.imo;
   }
   
-  public final void aEU()
+  public final void aLL()
   {
-    this.hLV = false;
+    this.imr = false;
   }
   
-  public final String aEV()
+  public final String aLM()
   {
     return this.mSavePath;
   }
   
-  public final void aEW()
+  public final void aLN()
   {
-    this.hMa = 2;
+    this.imw = 2;
   }
   
-  public final void aEX()
+  public final void aLO()
   {
-    this.hLX = true;
+    this.imt = true;
   }
   
   public final void connect()
   {
-    AppMethodBeat.i(192880);
-    if (("".equals(this.hLO)) && (this.hMa == 2)) {
-      aEY();
+    AppMethodBeat.i(206893);
+    if (("".equals(this.imk)) && (this.imw == 2)) {
+      aLP();
     }
-    AppMethodBeat.o(192880);
+    AppMethodBeat.o(206893);
   }
   
   public final void disconnect() {}
@@ -243,7 +246,7 @@ public final class x
     {
       for (;;)
       {
-        ad.e("MicroMsg.CronetConnect", "getContentLength content-length " + localException.getLocalizedMessage());
+        ac.e("MicroMsg.CronetConnect", "getContentLength content-length " + localException.getLocalizedMessage());
       }
       int i = (int)l1;
       AppMethodBeat.o(132875);
@@ -258,9 +261,9 @@ public final class x
   
   public final String getContentType()
   {
-    AppMethodBeat.i(202271);
+    AppMethodBeat.i(210307);
     String str = getHeaderField("content-type");
-    AppMethodBeat.o(202271);
+    AppMethodBeat.o(210307);
     return str;
   }
   
@@ -272,14 +275,14 @@ public final class x
       AppMethodBeat.o(132878);
       return "";
     }
-    List localList = (List)this.hMf.get(paramString.toLowerCase());
+    List localList = (List)this.imB.get(paramString.toLowerCase());
     if (localList == null)
     {
-      ad.w("MicroMsg.CronetConnect", "getHeaderField %s is null", new Object[] { paramString });
+      ac.w("MicroMsg.CronetConnect", "getHeaderField %s is null", new Object[] { paramString });
       AppMethodBeat.o(132878);
       return "";
     }
-    ad.i("MicroMsg.CronetConnect", "getHeaderField field %s, value %s ", new Object[] { paramString, localList.get(0) });
+    ac.i("MicroMsg.CronetConnect", "getHeaderField field %s, value %s ", new Object[] { paramString, localList.get(0) });
     paramString = (String)localList.get(0);
     AppMethodBeat.o(132878);
     return paramString;
@@ -297,7 +300,7 @@ public final class x
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.CronetConnect", "getHeaderFieldInt field " + paramString + " " + localException.getLocalizedMessage());
+      ac.e("MicroMsg.CronetConnect", "getHeaderFieldInt field " + paramString + " " + localException.getLocalizedMessage());
       AppMethodBeat.o(132874);
     }
     return paramInt;
@@ -305,7 +308,7 @@ public final class x
   
   public final Map<String, List<String>> getHeaderFields()
   {
-    return this.hMf;
+    return this.imB;
   }
   
   public final String getHost()
@@ -316,7 +319,7 @@ public final class x
   public final InputStream getInputStream()
   {
     AppMethodBeat.i(132877);
-    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(this.hMc);
+    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(this.imy);
     AppMethodBeat.o(132877);
     return localByteArrayInputStream;
   }
@@ -324,23 +327,23 @@ public final class x
   public final int getResponseCode()
   {
     AppMethodBeat.i(132876);
-    if ((this.hLN) && (this.hMb != -1))
+    if ((this.imj) && (this.imx != -1))
     {
-      i = this.hMb;
+      i = this.imx;
       AppMethodBeat.o(132876);
       return i;
     }
-    if ("".equals(this.hLO)) {
-      aEY();
+    if ("".equals(this.imk)) {
+      aLP();
     }
-    int i = this.hMb;
+    int i = this.imx;
     AppMethodBeat.o(132876);
     return i;
   }
   
   public final String getResponseMessage()
   {
-    return this.hMe;
+    return this.imA;
   }
   
   public final String getURL()
@@ -350,57 +353,57 @@ public final class x
   
   public final int onCronetReceiveHeader(CronetLogic.ResponseHeader paramResponseHeader, int paramInt)
   {
-    AppMethodBeat.i(192883);
-    if (this.hLZ != null)
+    AppMethodBeat.i(206896);
+    if (this.imv != null)
     {
-      this.hMf = CronetLogic.getHeaderList(paramResponseHeader);
-      paramInt = this.hLZ.onCronetReceiveHeader(paramResponseHeader, paramInt);
-      AppMethodBeat.o(192883);
+      this.imB = CronetLogic.getHeaderList(paramResponseHeader);
+      paramInt = this.imv.onCronetReceiveHeader(paramResponseHeader, paramInt);
+      AppMethodBeat.o(206896);
       return paramInt;
     }
-    AppMethodBeat.o(192883);
+    AppMethodBeat.o(206896);
     return 0;
   }
   
   public final void onCronetTaskCompleted(String paramString, CronetLogic.CronetTaskResult paramCronetTaskResult)
   {
     AppMethodBeat.i(132879);
-    ad.i("MicroMsg.CronetConnect", "receive callback, status %d, error %d, msg %s", new Object[] { Integer.valueOf(paramCronetTaskResult.statusCode), Integer.valueOf(paramCronetTaskResult.errorCode), paramCronetTaskResult.errorMsg });
+    ac.i("MicroMsg.CronetConnect", "receive callback, status %d, error %d, msg %s", new Object[] { Integer.valueOf(paramCronetTaskResult.statusCode), Integer.valueOf(paramCronetTaskResult.errorCode), paramCronetTaskResult.errorMsg });
     a(paramCronetTaskResult);
-    if (this.hLZ != null) {
-      this.hLZ.onCronetTaskCompleted(paramString, paramCronetTaskResult);
+    if (this.imv != null) {
+      this.imv.onCronetTaskCompleted(paramString, paramCronetTaskResult);
     }
     AppMethodBeat.o(132879);
   }
   
   public final void onDownloadProgressChanged(String paramString, CronetLogic.CronetDownloadProgress paramCronetDownloadProgress)
   {
-    AppMethodBeat.i(192882);
-    if (this.hLZ != null) {
-      this.hLZ.onDownloadProgressChanged(paramString, paramCronetDownloadProgress);
+    AppMethodBeat.i(206895);
+    if (this.imv != null) {
+      this.imv.onDownloadProgressChanged(paramString, paramCronetDownloadProgress);
     }
-    AppMethodBeat.o(192882);
+    AppMethodBeat.o(206895);
   }
   
   public final void setConnectTimeout(int paramInt)
   {
-    this.hLQ = paramInt;
+    this.imm = paramInt;
   }
   
   public final void setReadTimeout(int paramInt)
   {
-    this.hLR = paramInt;
+    this.imn = paramInt;
   }
   
   public final void setRequestMethod(String paramString)
   {
-    this.bZn = paramString;
+    this.bWk = paramString;
   }
   
   public final void setRequestProperty(String paramString1, String paramString2)
   {
     AppMethodBeat.i(132871);
-    this.hLP.put(paramString1, paramString2);
+    this.iml.put(paramString1, paramString2);
     AppMethodBeat.o(132871);
   }
   
@@ -411,12 +414,12 @@ public final class x
   
   public final void setUseCaches(boolean paramBoolean)
   {
-    this.hLW = paramBoolean;
+    this.ims = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.network.x
  * JD-Core Version:    0.7.0.1
  */

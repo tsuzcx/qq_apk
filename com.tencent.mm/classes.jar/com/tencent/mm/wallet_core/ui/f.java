@@ -6,30 +6,25 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.xc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.xn;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.c.s;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.e.a.b;
 
 public final class f
 {
-  private static String jyg = null;
-  private static int oTe;
-  private static int oTq = 0;
-  
-  static
-  {
-    oTe = 0;
-  }
+  private static String jYB = null;
+  private static int pwB = 0;
+  private static int pwp = 0;
   
   public static void a(WalletBaseUI paramWalletBaseUI, int paramInt1, int paramInt2, final String paramString, final n paramn, boolean paramBoolean)
   {
     AppMethodBeat.i(73058);
     String str = paramString;
-    if (bt.isNullOrNil(paramString)) {
+    if (bs.isNullOrNil(paramString)) {
       str = paramWalletBaseUI.getString(2131765901);
     }
     boolean bool = true;
@@ -42,7 +37,7 @@ public final class f
     label556:
     for (;;)
     {
-      ad.i("MicroMsg.WalletDispatcher", "dispatch errType:%d errCode %s ,errMsg: %s, isBlock %s scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str, Boolean.valueOf(bool), paramn });
+      ac.i("MicroMsg.WalletDispatcher", "dispatch errType:%d errCode %s ,errMsg: %s, isBlock %s scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str, Boolean.valueOf(bool), paramn });
       Bundle localBundle;
       if ((!(paramn instanceof com.tencent.mm.wallet_core.tenpay.model.q)) && (!(paramn instanceof b)))
       {
@@ -53,7 +48,7 @@ public final class f
         if (!paramString.isPayEnd()) {
           break label456;
         }
-        ad.d("MicroMsg.WalletDispatcher", "order pay end!!!");
+        ac.d("MicroMsg.WalletDispatcher", "order pay end!!!");
         localBundle = paramWalletBaseUI.getInput();
         localBundle.putInt("intent_pay_end_errcode", paramInt2);
         localBundle.putString("intent_pay_app_url", paramString.getReturnUrl());
@@ -74,10 +69,10 @@ public final class f
           {
             if ((paramInt1 != 0) || (paramInt2 != 0))
             {
-              oTq = paramInt1;
-              oTe = paramInt2;
-              jyg = str;
-              ad.d("MicroMsg.WalletDispatcher", "wallet base consume this response in the end!");
+              pwB = paramInt1;
+              pwp = paramInt2;
+              jYB = str;
+              ac.d("MicroMsg.WalletDispatcher", "wallet base consume this response in the end!");
             }
           }
           else
@@ -85,29 +80,29 @@ public final class f
             if (!paramBoolean) {
               break label691;
             }
-            ad.d("MicroMsg.WalletDispatcher", "scenes & forcescenes isEmpty! %s", new Object[] { Boolean.valueOf(bool) });
-            if (oTe == 0) {
+            ac.d("MicroMsg.WalletDispatcher", "scenes & forcescenes isEmpty! %s", new Object[] { Boolean.valueOf(bool) });
+            if (pwp == 0) {
               break label679;
             }
-            ad.e("MicroMsg.WalletDispatcher", "showAlert! mErrCode : " + oTe);
+            ac.e("MicroMsg.WalletDispatcher", "showAlert! mErrCode : " + pwp);
             if (!(paramn instanceof s)) {
               break label638;
             }
             paramString = ((s)paramn).getErrDetailUrl();
-            if (bt.isNullOrNil(paramString)) {
+            if (bs.isNullOrNil(paramString)) {
               break label638;
             }
-            ad.i("MicroMsg.WalletDispatcher", "error_detail_url is not null ");
-            com.tencent.mm.ui.base.h.a(paramWalletBaseUI.getContext(), jyg, null, paramWalletBaseUI.getResources().getString(2131765249), paramWalletBaseUI.getResources().getString(2131755835), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            ac.i("MicroMsg.WalletDispatcher", "error_detail_url is not null ");
+            com.tencent.mm.ui.base.h.a(paramWalletBaseUI.getContext(), jYB, null, paramWalletBaseUI.getResources().getString(2131765249), paramWalletBaseUI.getResources().getString(2131755835), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(73056);
-                f.c(this.Ifx);
+                f.c(this.JGZ);
                 paramAnonymousDialogInterface = new Intent();
                 paramAnonymousDialogInterface.putExtra("rawUrl", paramString);
-                e.X(this.Ifx.getContext(), paramAnonymousDialogInterface);
-                e.aby(3);
+                e.al(this.JGZ.getContext(), paramAnonymousDialogInterface);
+                e.adR(3);
                 AppMethodBeat.o(73056);
               }
             }, new DialogInterface.OnClickListener()
@@ -115,12 +110,12 @@ public final class f
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(73057);
-                f.c(this.Ifx);
+                f.c(this.JGZ);
                 AppMethodBeat.o(73057);
               }
             });
             clearErr();
-            e.aby(4);
+            e.adR(4);
           }
         }
         label456:
@@ -135,7 +130,7 @@ public final class f
           if ((!(paramn instanceof com.tencent.mm.wallet_core.tenpay.model.p)) || (!((com.tencent.mm.wallet_core.tenpay.model.p)paramn).checkPaySuccess())) {
             break;
           }
-          ad.i("MicroMsg.WalletDispatcher", "delay order pay end");
+          ac.i("MicroMsg.WalletDispatcher", "delay order pay end");
           localBundle = paramWalletBaseUI.getInput();
           localBundle.putInt("intent_pay_end_errcode", paramInt2);
           localBundle.putString("intent_pay_app_url", paramString.getReturnUrl());
@@ -143,36 +138,36 @@ public final class f
           localBundle.putBoolean("intent_pay_end", true);
           com.tencent.mm.wallet_core.a.l(paramWalletBaseUI, localBundle);
           break;
-          ad.d("MicroMsg.WalletDispatcher", "wallet this response havn't error!");
+          ac.d("MicroMsg.WalletDispatcher", "wallet this response havn't error!");
           break label305;
-          ad.d("MicroMsg.WalletDispatcher", "wallet base consume this response before subclass!");
+          ac.d("MicroMsg.WalletDispatcher", "wallet base consume this response before subclass!");
           break label305;
           if (((paramWalletBaseUI.getProcess() != null) && (paramWalletBaseUI.getNetController().onSceneEnd(paramInt1, paramInt2, str, paramn))) || (paramWalletBaseUI.onSceneEnd(paramInt1, paramInt2, str, paramn)) || (!bool)) {
             break label305;
           }
           if ((paramInt1 != 0) || (paramInt2 != 0))
           {
-            oTq = paramInt1;
-            oTe = paramInt2;
-            jyg = str;
-            ad.d("MicroMsg.WalletDispatcher", "wallet base consume this response in the end!");
+            pwB = paramInt1;
+            pwp = paramInt2;
+            jYB = str;
+            ac.d("MicroMsg.WalletDispatcher", "wallet base consume this response in the end!");
             break label305;
           }
-          ad.d("MicroMsg.WalletDispatcher", "wallet other scene this response havn't error!");
+          ac.d("MicroMsg.WalletDispatcher", "wallet other scene this response havn't error!");
           break label305;
         }
-        ad.i("MicroMsg.WalletDispatcher", "error_detail_url is null ");
-        com.tencent.mm.ui.base.h.a(paramWalletBaseUI.getContext(), jyg, null, false, new DialogInterface.OnClickListener()
+        ac.i("MicroMsg.WalletDispatcher", "error_detail_url is null ");
+        com.tencent.mm.ui.base.h.a(paramWalletBaseUI.getContext(), jYB, null, false, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(73055);
-            f.c(this.Ifx);
+            f.c(this.JGZ);
             if ((paramn != null) && (paramn.getReqResp() != null))
             {
-              paramAnonymousDialogInterface = new xc();
-              paramAnonymousDialogInterface.dCB.uri = paramn.getReqResp().getUri();
-              com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousDialogInterface);
+              paramAnonymousDialogInterface = new xn();
+              paramAnonymousDialogInterface.dAn.uri = paramn.getReqResp().getUri();
+              com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousDialogInterface);
             }
             AppMethodBeat.o(73055);
           }
@@ -190,9 +185,9 @@ public final class f
   
   public static void clearErr()
   {
-    oTq = 0;
-    oTe = 0;
-    jyg = null;
+    pwB = 0;
+    pwp = 0;
+    jYB = null;
   }
 }
 

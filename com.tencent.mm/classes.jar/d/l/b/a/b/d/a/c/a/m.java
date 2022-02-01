@@ -26,7 +26,7 @@ public abstract class m
     d.g.b.k.h(paramList, "methodTypeParameters");
     d.g.b.k.h(paramab, "returnType");
     d.g.b.k.h(paramList1, "valueParameters");
-    return new k.a(paramab, null, paramList1, paramList, false, (List)v.Jgl);
+    return new k.a(paramab, null, paramList1, paramList, false, (List)v.KTF);
   }
   
   protected void b(f paramf, Collection<ah> paramCollection)
@@ -35,14 +35,14 @@ public abstract class m
     d.g.b.k.h(paramCollection, "result");
   }
   
-  protected final ak fym()
+  protected final ak fQQ()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a.m
  * JD-Core Version:    0.7.0.1
  */

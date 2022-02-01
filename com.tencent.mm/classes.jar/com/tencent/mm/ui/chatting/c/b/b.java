@@ -3,7 +3,7 @@ package com.tencent.mm.ui.chatting.c.b;
 import com.tencent.mm.pluginsdk.model.app.am;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.ui.tools.r;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.c.ab;
 
 public abstract interface b
@@ -11,7 +11,7 @@ public abstract interface b
 {
   public abstract void a(r paramr);
   
-  public abstract void a(bl parambl, am paramam);
+  public abstract void a(bo parambo, am paramam);
   
   public abstract void t(g paramg);
 }

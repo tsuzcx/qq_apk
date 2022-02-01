@@ -2,27 +2,25 @@ package com.tencent.mm.plugin.topstory.ui.webview;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dcn;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dia;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ab;
 
 public final class d
-  extends ab
+  extends com.tencent.xweb.ac
 {
-  private dcn dBe;
-  private c ySS;
+  private c AgH;
+  private dia dyS;
   
-  public d(dcn paramdcn, c paramc)
+  public d(dia paramdia, c paramc)
   {
-    this.dBe = paramdcn;
-    this.ySS = paramc;
+    this.dyS = paramdia;
+    this.AgH = paramc;
   }
   
   public final boolean a(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(126576);
-    ad.i("MicroMsg.TopStory.TopStoryWebViewClient", "shouldOverrideUrlLoading %s", new Object[] { paramString });
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.TopStory.TopStoryWebViewClient", "shouldOverrideUrlLoading %s", new Object[] { paramString });
     boolean bool = super.a(paramWebView, paramString);
     AppMethodBeat.o(126576);
     return bool;
@@ -31,17 +29,17 @@ public final class d
   public final void b(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(126575);
-    ad.i("MicroMsg.TopStory.TopStoryWebViewClient", "onPageFinished %s  %d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.TopStory.TopStoryWebViewClient", "onPageFinished %s  %d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
     super.b(paramWebView, paramString);
-    com.tencent.mm.plugin.topstory.ui.d.c(this.dBe, "pageFinish", System.currentTimeMillis());
+    com.tencent.mm.plugin.topstory.ui.d.c(this.dyS, "pageFinish", System.currentTimeMillis());
     AppMethodBeat.o(126575);
   }
   
   public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(126574);
-    com.tencent.mm.plugin.topstory.ui.d.c(this.dBe, "pageStart", System.currentTimeMillis());
-    ad.i("MicroMsg.TopStory.TopStoryWebViewClient", "onPageStarted %s %d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
+    com.tencent.mm.plugin.topstory.ui.d.c(this.dyS, "pageStart", System.currentTimeMillis());
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.TopStory.TopStoryWebViewClient", "onPageStarted %s %d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
     super.b(paramWebView, paramString, paramBitmap);
     AppMethodBeat.o(126574);
   }

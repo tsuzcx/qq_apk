@@ -51,17 +51,17 @@ public class ActivityTestMultilineEllipse
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(97664);
-        if (this.xjt.getIsExpanded())
+        if (this.ywk.getIsExpanded())
         {
-          paramAnonymousView = this.xjt;
-          paramAnonymousView.nmL = false;
+          paramAnonymousView = this.ywk;
+          paramAnonymousView.nPL = false;
           paramAnonymousView.requestLayout();
           paramAnonymousView.invalidate();
           AppMethodBeat.o(97664);
           return;
         }
-        paramAnonymousView = this.xjt;
-        paramAnonymousView.nmL = true;
+        paramAnonymousView = this.ywk;
+        paramAnonymousView.nPL = true;
         paramAnonymousView.requestLayout();
         paramAnonymousView.invalidate();
         AppMethodBeat.o(97664);
@@ -79,7 +79,7 @@ public class ActivityTestMultilineEllipse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ActivityTestMultilineEllipse
  * JD-Core Version:    0.7.0.1
  */

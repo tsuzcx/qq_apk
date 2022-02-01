@@ -15,7 +15,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ao
 {
-  private static SparseIntArray EMl;
+  private static SparseIntArray Gjx;
   private static float density;
   private static float scale;
   
@@ -24,11 +24,11 @@ public final class ao
     AppMethodBeat.i(159132);
     density = -1.0F;
     scale = 0.0F;
-    EMl = new SparseIntArray();
+    Gjx = new SparseIntArray();
     AppMethodBeat.o(159132);
   }
   
-  public static Drawable aC(Context paramContext, int paramInt)
+  public static Drawable aI(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(159129);
     paramContext = paramContext.obtainStyledAttributes(new int[] { paramInt });
@@ -38,7 +38,7 @@ public final class ao
     return localDrawable;
   }
   
-  public static int aD(Context paramContext, int paramInt)
+  public static int aJ(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(159130);
     TypedValue localTypedValue = new TypedValue();
@@ -48,7 +48,7 @@ public final class ao
     return paramInt;
   }
   
-  public static int ap(Context paramContext, int paramInt)
+  public static int av(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(159126);
     if (paramContext == null)
@@ -57,18 +57,18 @@ public final class ao
       AppMethodBeat.o(159126);
       return 0;
     }
-    int j = EMl.get(paramInt, 0);
+    int j = Gjx.get(paramInt, 0);
     int i = j;
     if (j == 0)
     {
       i = paramContext.getResources().getDimensionPixelSize(paramInt);
-      EMl.put(paramInt, i);
+      Gjx.put(paramInt, i);
     }
     AppMethodBeat.o(159126);
     return i;
   }
   
-  public static float dT(Context paramContext)
+  public static float eb(Context paramContext)
   {
     AppMethodBeat.i(159128);
     if (scale == 0.0F) {
@@ -104,7 +104,7 @@ public final class ao
     return f;
   }
   
-  public static ColorStateList jz(Context paramContext)
+  public static ColorStateList jK(Context paramContext)
   {
     AppMethodBeat.i(159131);
     TypedValue localTypedValue = new TypedValue();

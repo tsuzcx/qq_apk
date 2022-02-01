@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class qh
   extends b
 {
-  public a dvO;
+  public a dtl;
   
   public qh()
   {
@@ -15,24 +15,22 @@ public final class qh
   
   private qh(byte paramByte)
   {
-    AppMethodBeat.i(116043);
-    this.dvO = new a();
-    this.ESR = false;
+    AppMethodBeat.i(63291);
+    this.dtl = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116043);
+    AppMethodBeat.o(63291);
   }
   
   public static final class a
   {
-    public String appId;
-    public String dvP;
-    public String dvQ;
-    public String mediaTagName;
+    public boolean ddj = false;
+    public int dtm = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.qh
  * JD-Core Version:    0.7.0.1
  */

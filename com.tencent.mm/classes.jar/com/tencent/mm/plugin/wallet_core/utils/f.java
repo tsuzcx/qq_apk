@@ -13,27 +13,27 @@ import com.tencent.mm.wallet_core.d;
 
 public final class f
 {
-  public static long Avp = 0L;
-  public static int Avq = 2;
-  public static int Avr = 1;
-  public static int Avs = 2;
+  public static long BNJ = 0L;
+  public static int BNK = 2;
+  public static int BNL = 1;
+  public static int BNM = 2;
   
   public static void a(Activity paramActivity, Bundle paramBundle, int paramInt)
   {
     AppMethodBeat.i(71647);
-    paramActivity = a.bo(paramActivity);
-    if ((!s.ecc().ecF()) && (paramActivity != null) && (paramActivity.fjs()))
+    paramActivity = a.br(paramActivity);
+    if ((!s.ery().esa()) && (paramActivity != null) && (paramActivity.fzH()))
     {
       paramActivity = (PayInfo)paramBundle.getParcelable("key_pay_info");
       paramBundle = (Orders)paramBundle.getParcelable("key_orders");
       if ((paramActivity != null) && (paramBundle != null)) {
-        h.vKh.f(10725, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramActivity.dtb), Integer.valueOf((int)(paramBundle.dcH * 100.0D)), paramBundle.uop });
+        h.wUl.f(10725, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramActivity.dqL), Integer.valueOf((int)(paramBundle.daf * 100.0D)), paramBundle.vxl });
       }
       AppMethodBeat.o(71647);
       return;
     }
-    if ((!s.ecc().ecF()) && (paramBundle != null) && (paramBundle.getBoolean("key_is_bind_reg_process", false))) {
-      h.vKh.f(10932, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBundle.getInt("key_bind_scene", 0)) });
+    if ((!s.ery().esa()) && (paramBundle != null) && (paramBundle.getBoolean("key_is_bind_reg_process", false))) {
+      h.wUl.f(10932, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBundle.getInt("key_bind_scene", 0)) });
     }
     AppMethodBeat.o(71647);
   }
@@ -41,31 +41,31 @@ public final class f
   public static void a(PayInfo paramPayInfo, Orders paramOrders)
   {
     AppMethodBeat.i(71649);
-    if ((!s.ecc().ecF()) && (paramPayInfo != null) && (paramOrders != null)) {
-      h.vKh.f(10725, new Object[] { Integer.valueOf(1), Integer.valueOf(paramPayInfo.dtb), Integer.valueOf((int)(paramOrders.dcH * 100.0D)), paramOrders.uop });
+    if ((!s.ery().esa()) && (paramPayInfo != null) && (paramOrders != null)) {
+      h.wUl.f(10725, new Object[] { Integer.valueOf(1), Integer.valueOf(paramPayInfo.dqL), Integer.valueOf((int)(paramOrders.daf * 100.0D)), paramOrders.vxl });
     }
     AppMethodBeat.o(71649);
   }
   
-  public static void eft()
+  public static void euN()
   {
     AppMethodBeat.i(71645);
-    Avp = System.currentTimeMillis();
+    BNJ = System.currentTimeMillis();
     AppMethodBeat.o(71645);
   }
   
-  public static int efu()
+  public static int euO()
   {
     AppMethodBeat.i(71646);
-    int i = (int)((System.currentTimeMillis() - Avp) / 1000L);
+    int i = (int)((System.currentTimeMillis() - BNJ) / 1000L);
     AppMethodBeat.o(71646);
     return i;
   }
   
-  public static void ij(int paramInt1, int paramInt2)
+  public static void iy(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(71648);
-    h.vKh.f(10932, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+    h.wUl.f(10932, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
     AppMethodBeat.o(71648);
   }
 }

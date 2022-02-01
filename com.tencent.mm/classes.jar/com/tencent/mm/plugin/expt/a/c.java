@@ -8,15 +8,15 @@ public abstract interface c
 {
   public abstract void T(String paramString1, String paramString2, String paramString3);
   
-  public abstract void Vm(String paramString);
+  public abstract void Zy(String paramString);
   
-  public abstract String cbk();
+  public abstract String cit();
   
-  public abstract String cbl();
+  public abstract String ciu();
   
-  public abstract Map<String, Boolean> cbm();
+  public abstract Map<String, Boolean> civ();
   
-  public abstract void fq(String paramString1, String paramString2);
+  public abstract void fD(String paramString1, String paramString2);
 }
 
 

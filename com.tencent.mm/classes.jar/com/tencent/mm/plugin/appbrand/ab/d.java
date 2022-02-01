@@ -1,32 +1,24 @@
 package com.tencent.mm.plugin.appbrand.ab;
 
-import com.tencent.mm.plugin.appbrand.ab.e.f;
-import com.tencent.mm.plugin.appbrand.ab.e.i;
-import java.nio.ByteBuffer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.bl;
+import d.l;
 
-public abstract interface d
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/weishi/AppBrandWeishiStatusBarExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/MPPageViewStatusBarExtensionImpl;", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "plugin-appbrand-integration_release"})
+public final class d
+  extends bl
 {
-  public abstract void Nr(String paramString);
-  
-  public abstract void a(a parama, com.tencent.mm.plugin.appbrand.ab.d.d paramd);
-  
-  public abstract void at(int paramInt, String paramString);
-  
-  public abstract void b(com.tencent.mm.plugin.appbrand.ab.e.a parama);
-  
-  public abstract i bqv();
-  
-  public abstract void c(com.tencent.mm.plugin.appbrand.ab.d.d paramd);
-  
-  public abstract void d(f paramf);
-  
-  public abstract void k(Exception paramException);
-  
-  public abstract void v(ByteBuffer paramByteBuffer);
+  public d(aa paramaa)
+  {
+    super(paramaa, (com.tencent.mm.plugin.appbrand.page.d.c)new c(paramaa));
+    AppMethodBeat.i(51404);
+    AppMethodBeat.o(51404);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ab.d
  * JD-Core Version:    0.7.0.1
  */

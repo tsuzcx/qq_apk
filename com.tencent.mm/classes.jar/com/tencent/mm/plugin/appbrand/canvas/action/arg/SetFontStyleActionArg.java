@@ -11,7 +11,7 @@ public class SetFontStyleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFontStyleActionArg> CREATOR;
-  public String iZl;
+  public String jzA;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetFontStyleActionArg
       return false;
     }
     paramObject = (SetFontStyleActionArg)paramObject;
-    boolean bool = Objects.equals(this.iZl, paramObject.iZl);
+    boolean bool = Objects.equals(this.jzA, paramObject.jzA);
     AppMethodBeat.o(145165);
     return bool;
   }
@@ -60,14 +60,14 @@ public class SetFontStyleActionArg
   {
     AppMethodBeat.i(145162);
     super.h(paramParcel);
-    this.iZl = paramParcel.readString();
+    this.jzA = paramParcel.readString();
     AppMethodBeat.o(145162);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145166);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.iZl });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jzA });
     AppMethodBeat.o(145166);
     return i;
   }
@@ -76,7 +76,7 @@ public class SetFontStyleActionArg
   {
     AppMethodBeat.i(145163);
     super.parse(paramJSONObject);
-    this.iZl = paramJSONObject.optJSONArray("data").optString(0);
+    this.jzA = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145163);
   }
   
@@ -84,13 +84,13 @@ public class SetFontStyleActionArg
   {
     AppMethodBeat.i(145164);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.iZl);
+    paramParcel.writeString(this.jzA);
     AppMethodBeat.o(145164);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontStyleActionArg
  * JD-Core Version:    0.7.0.1
  */

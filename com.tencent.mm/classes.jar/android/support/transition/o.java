@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 public final class o
   extends al
 {
-  private float xS = 3.0F;
-  int yJ = 80;
+  private float yQ = 3.0F;
+  int zJ = 80;
   
   public final long a(ViewGroup paramViewGroup, Transition paramTransition, u paramu1, u paramu2)
   {
@@ -40,7 +40,7 @@ public final class o
     {
       k = localRect.centerX();
       m = localRect.centerY();
-      if (this.yJ != 8388611) {
+      if (this.zJ != 8388611) {
         break label345;
       }
       if (t.Y(paramViewGroup) != 1) {
@@ -56,7 +56,7 @@ public final class o
       default: 
         i = 0;
         f = i;
-        switch (this.yJ)
+        switch (this.zJ)
         {
         }
         break;
@@ -70,7 +70,7 @@ public final class o
       if (l2 < 0L) {
         l1 = 300L;
       }
-      return Math.round((float)(l1 * j) / this.xS * f);
+      return Math.round((float)(l1 * j) / this.yQ * f);
       k = (i2 + i4) / 2;
       m = (i3 + i5) / 2;
       break;
@@ -81,7 +81,7 @@ public final class o
       i = 3;
       break label154;
       label345:
-      if (this.yJ == 8388613)
+      if (this.zJ == 8388613)
       {
         if (t.Y(paramViewGroup) == 1)
         {
@@ -99,7 +99,7 @@ public final class o
           break label365;
         }
       }
-      i = this.yJ;
+      i = this.zJ;
       break label154;
       i = i4 - n + Math.abs(m - i1);
       break label203;
@@ -114,7 +114,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.o
  * JD-Core Version:    0.7.0.1
  */

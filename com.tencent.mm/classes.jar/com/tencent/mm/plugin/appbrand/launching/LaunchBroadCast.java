@@ -11,9 +11,9 @@ public final class LaunchBroadCast
 {
   public static final Parcelable.Creator<LaunchBroadCast> CREATOR;
   public String appId;
-  public boolean dBW;
+  public boolean dzK;
   public int enterScene;
-  public int gXn;
+  public int hxM;
   public String username;
   
   static
@@ -30,12 +30,12 @@ public final class LaunchBroadCast
     AppMethodBeat.i(147317);
     this.username = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.gXn = paramParcel.readInt();
+    this.hxM = paramParcel.readInt();
     this.enterScene = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.dBW = bool;
+      this.dzK = bool;
       AppMethodBeat.o(147317);
       return;
     }
@@ -47,9 +47,9 @@ public final class LaunchBroadCast
     LaunchBroadCast localLaunchBroadCast = new LaunchBroadCast();
     localLaunchBroadCast.username = null;
     localLaunchBroadCast.appId = paramString;
-    localLaunchBroadCast.gXn = paramInt1;
+    localLaunchBroadCast.hxM = paramInt1;
     localLaunchBroadCast.enterScene = paramInt2;
-    localLaunchBroadCast.dBW = paramBoolean;
+    localLaunchBroadCast.dzK = paramBoolean;
     e.b(paramString, localLaunchBroadCast);
     AppMethodBeat.o(147315);
   }
@@ -64,9 +64,9 @@ public final class LaunchBroadCast
     AppMethodBeat.i(147316);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.gXn);
+    paramParcel.writeInt(this.hxM);
     paramParcel.writeInt(this.enterScene);
-    if (this.dBW) {}
+    if (this.dzK) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
@@ -77,7 +77,7 @@ public final class LaunchBroadCast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.LaunchBroadCast
  * JD-Core Version:    0.7.0.1
  */

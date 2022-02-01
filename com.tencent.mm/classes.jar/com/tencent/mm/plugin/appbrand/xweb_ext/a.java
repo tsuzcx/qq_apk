@@ -6,31 +6,31 @@ import com.tencent.mm.plugin.appbrand.i.d;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/AppBrandPluginHandlerFactoryWC;", "Lcom/tencent/mm/plugin/appbrand/extendplugin/AppBrandPluginHandlerFactory;", "()V", "createHandler", "Lcom/tencent/luggage/xweb_ext/extendplugin/handler/IExtendPluginHandler;", "type", "", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/AppBrandPluginHandlerFactoryWC;", "Lcom/tencent/mm/plugin/appbrand/extendplugin/AppBrandPluginHandlerFactory;", "()V", "createHandler", "Lcom/tencent/luggage/xweb_ext/extendplugin/handler/IExtendPluginHandler;", "type", "", "plugin-appbrand-integration_release"})
 public final class a
   extends d
 {
-  public final b cJ(String paramString)
+  public final b cy(String paramString)
   {
-    AppMethodBeat.i(196546);
+    AppMethodBeat.i(187507);
     k.h(paramString, "type");
     switch (paramString.hashCode())
     {
     }
     do
     {
-      paramString = super.cJ(paramString);
-      AppMethodBeat.o(196546);
+      paramString = super.cy(paramString);
+      AppMethodBeat.o(187507);
       return paramString;
     } while (!paramString.equals("webgl"));
-    paramString = (b)new com.tencent.mm.plugin.appbrand.jsapi.b.a.a();
-    AppMethodBeat.o(196546);
+    paramString = (b)new com.tencent.mm.plugin.appbrand.jsapi.a.a.a();
+    AppMethodBeat.o(187507);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.a
  * JD-Core Version:    0.7.0.1
  */

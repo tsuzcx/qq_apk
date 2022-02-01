@@ -1,80 +1,83 @@
 package com.tencent.mm.plugin.appbrand.report.quality;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.fd;
-import com.tencent.mm.g.b.a.fd.a;
-import com.tencent.mm.g.b.a.fh;
-import com.tencent.mm.g.b.a.fh.a;
-import com.tencent.mm.g.b.a.fp;
-import com.tencent.mm.g.b.a.fv;
-import com.tencent.mm.g.b.a.fv.a;
-import com.tencent.mm.g.b.a.gf;
-import com.tencent.mm.g.b.a.gf.a;
+import com.tencent.mm.g.b.a.gv;
+import com.tencent.mm.g.b.a.gv.a;
+import com.tencent.mm.g.b.a.gz;
+import com.tencent.mm.g.b.a.gz.a;
+import com.tencent.mm.g.b.a.hh;
+import com.tencent.mm.g.b.a.hn;
+import com.tencent.mm.g.b.a.hn.a;
+import com.tencent.mm.g.b.a.hx;
+import com.tencent.mm.g.b.a.hx.a;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
+import com.tencent.mm.plugin.appbrand.launching.AppStartupPerformanceReportBundle;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.bd;
-import com.tencent.mm.plugin.appbrand.report.n;
+import com.tencent.mm.plugin.appbrand.page.ay;
+import com.tencent.mm.plugin.appbrand.report.model.kv_14609;
 import com.tencent.mm.plugin.appbrand.task.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
   extends c
 {
-  public static void MF(String paramString)
+  public static void QO(String paramString)
   {
     AppMethodBeat.i(48206);
-    QualitySessionRuntime localQualitySessionRuntime = a.ME(paramString);
+    QualitySessionRuntime localQualitySessionRuntime = a.QN(paramString);
     if (localQualitySessionRuntime == null)
     {
       AppMethodBeat.o(48206);
       return;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = localQualitySessionRuntime.ltF;
-    if (DebuggerShell.aTY()) {
+    long l2 = localQualitySessionRuntime.lVz;
+    if (DebuggerShell.baW()) {
       com.tencent.mm.plugin.appbrand.performance.c.b(paramString, "FirstRenderToGameInteractive", l2, l1);
     }
     AppMethodBeat.o(48206);
   }
   
-  public static fp a(boolean paramBoolean, String paramString, i parami)
+  public static hh a(boolean paramBoolean, String paramString, i parami)
   {
     AppMethodBeat.i(48203);
-    fp localfp = new fp();
+    hh localhh = new hh();
     if (!paramBoolean)
     {
-      paramString = a.ME(paramString);
+      paramString = a.QN(paramString);
       if (paramString == null)
       {
         AppMethodBeat.o(48203);
         return null;
       }
-      localfp.lo(paramString.appId);
-      localfp.ln(paramString.kGa);
-      localfp.ecH = paramString.lrW;
-      localfp.eai = paramString.apptype;
-      localfp.dYT = paramString.lty;
-      localfp.dKe = paramString.scene;
+      localhh.ot(paramString.appId);
+      localhh.os(paramString.lht);
+      localhh.eeN = paramString.lTR;
+      localhh.eco = paramString.apptype;
+      localhh.eaM = paramString.lVs;
+      localhh.dHY = paramString.scene;
     }
-    for (localfp.eaX = paramString.bmT();; localfp.eaX = 1L)
+    for (localhh.edd = paramString.btP();; localhh.edd = 1L)
     {
-      a(localfp, parami);
+      a(localhh, parami);
       AppMethodBeat.o(48203);
-      return localfp;
+      return localhh;
     }
   }
   
-  private static void a(fp paramfp, i parami)
+  private static void a(hh paramhh, i parami)
   {
     AppMethodBeat.i(48204);
     int i;
     if (parami != null) {
-      switch (2.lsF[com.tencent.mm.plugin.appbrand.report.c.d(parami).ordinal()])
+      switch (2.lUz[com.tencent.mm.plugin.appbrand.report.c.d(parami).ordinal()])
       {
       default: 
         i = 0;
@@ -82,9 +85,9 @@ public final class b
     }
     for (;;)
     {
-      paramfp.ecK = i;
-      if ((parami instanceof bd)) {
-        paramfp.lr(bmN());
+      paramhh.eeQ = i;
+      if ((parami instanceof ay)) {
+        paramhh.ow(btJ());
       }
       AppMethodBeat.o(48204);
       return;
@@ -116,26 +119,26 @@ public final class b
       AppMethodBeat.o(175062);
       return;
     }
-    fp localfp = new fp();
-    Object localObject = a.ME(paramd.getAppId());
+    hh localhh = new hh();
+    Object localObject = a.QN(paramd.getAppId());
     if (localObject == null)
     {
       AppMethodBeat.o(175062);
       return;
     }
-    localfp.lo(((QualitySessionRuntime)localObject).appId);
-    localfp.ln(((QualitySessionRuntime)localObject).kGa);
-    localfp.ecH = ((QualitySessionRuntime)localObject).lrW;
-    localfp.eai = ((QualitySessionRuntime)localObject).apptype;
-    localfp.dYT = ((QualitySessionRuntime)localObject).lty;
-    localfp.dKe = ((QualitySessionRuntime)localObject).scene;
-    a(localfp, paramd.aOf());
+    localhh.ot(((QualitySessionRuntime)localObject).appId);
+    localhh.os(((QualitySessionRuntime)localObject).lht);
+    localhh.eeN = ((QualitySessionRuntime)localObject).lTR;
+    localhh.eco = ((QualitySessionRuntime)localObject).apptype;
+    localhh.eaM = ((QualitySessionRuntime)localObject).lVs;
+    localhh.dHY = ((QualitySessionRuntime)localObject).scene;
+    a(localhh, paramd.aUV());
     if ((paramd instanceof aa))
     {
       localObject = "WebView-wxConfigReady";
-      localfp.lp((String)localObject);
-      localfp.ecI = bt.nullAsNil(paramString).length();
-      localfp.lq(paramd.aLC().aPa());
+      localhh.ou((String)localObject);
+      localhh.eeO = bs.nullAsNil(paramString).length();
+      localhh.ov(paramd.aSt().aVS());
       if (!paramBoolean) {
         break label262;
       }
@@ -143,15 +146,15 @@ public final class b
     label262:
     for (long l = 1L;; l = 0L)
     {
-      localfp.ecM = l;
-      localfp.iB(paramLong1);
-      localfp.iC(paramLong2);
-      localfp.iA(localfp.ebr - localfp.ebq);
-      localfp.ecN = paramLong3;
-      localfp.aBj();
+      localhh.eeS = l;
+      localhh.md(paramLong1);
+      localhh.me(paramLong2);
+      localhh.mc(localhh.edx - localhh.edw);
+      localhh.eeT = paramLong3;
+      localhh.aHZ();
       AppMethodBeat.o(175062);
       return;
-      if (((o)paramd.getRuntime()).CZ())
+      if (((o)paramd.getRuntime()).CC())
       {
         localObject = "GameMainContext-wxConfigReady";
         break;
@@ -165,14 +168,14 @@ public final class b
   {
     long l = 0L;
     AppMethodBeat.i(48201);
-    fh localfh = new fh();
+    gz localgz = new gz();
     int i;
     if (parame != null) {
       i = 1;
     }
     while (i == 0)
     {
-      parame = a.ME(paramString);
+      parame = a.QN(paramString);
       if (parame == null)
       {
         AppMethodBeat.o(48201);
@@ -181,49 +184,49 @@ public final class b
       }
       else
       {
-        localfh.lh(parame.appId);
-        localfh.lg(parame.kGa);
-        localfh.ebT = fh.a.iQ(parame.lrW);
-        localfh.eai = parame.apptype;
-        localfh.dYT = parame.lty;
-        localfh.dKe = parame.scene;
-        localfh.eaX = parame.bmT();
-        if (parame.cbn) {
+        localgz.om(parame.appId);
+        localgz.ol(parame.lht);
+        localgz.edZ = gz.a.iO(parame.lTR);
+        localgz.eco = parame.apptype;
+        localgz.eaM = parame.lVs;
+        localgz.dHY = parame.scene;
+        localgz.edd = parame.btP();
+        if (parame.bYk) {
           l = 1L;
         }
-        localfh.ebU = l;
-        localfh.ii(paramLong);
-        localfh.RQ();
-        localfh.ih(localfh.ebr - paramLong);
-        switch (2.lsF[paramc.ordinal()])
+        localgz.eea = l;
+        localgz.lK(paramLong);
+        localgz.SJ();
+        localgz.lJ(localgz.edx - paramLong);
+        switch (2.lUz[paramc.ordinal()])
         {
         default: 
-          localfh.dZg = 2147483647L;
+          localgz.eaY = 2147483647L;
         }
       }
     }
     for (;;)
     {
-      localfh.aBj();
+      localgz.aHZ();
       AppMethodBeat.o(48201);
       return;
-      localfh.eaX = 1L;
-      if (parame == e.lwy) {
+      localgz.edd = 1L;
+      if (parame == e.lYs) {
         l = 1L;
       }
-      localfh.ebU = l;
+      localgz.eea = l;
       break;
-      localfh.dZg = 1L;
+      localgz.eaY = 1L;
       continue;
-      localfh.dZg = 2L;
+      localgz.eaY = 2L;
       continue;
-      localfh.dZg = 3L;
+      localgz.eaY = 3L;
       continue;
-      localfh.dZg = 4L;
+      localgz.eaY = 4L;
       continue;
-      localfh.dZg = 5L;
+      localgz.eaY = 5L;
       continue;
-      localfh.dZg = 6L;
+      localgz.eaY = 6L;
     }
   }
   
@@ -231,49 +234,49 @@ public final class b
   {
     int i = 1;
     AppMethodBeat.i(48207);
-    paramString = a.ME(paramString);
+    paramString = a.QN(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(48207);
       return;
     }
-    fv localfv = new fv();
-    localfv.eag = localfv.t("AppId", paramString.appId, true);
-    localfv.dYa = localfv.t("InstanceId", paramString.kGa, true);
-    localfv.edN = fv.a.jb(paramString.lrW);
-    localfv.eai = paramString.apptype;
-    localfv.dYT = paramString.lty;
-    localfv.dKe = paramString.scene;
-    localfv.eec = paramString.ltL.get();
-    localfv.Se();
-    localfv.Sf();
-    localfv.Sd();
-    localfv.edO = paramm.fps;
-    localfv.edP = Math.round(paramm.lue);
-    if (paramm.ltY == l.a.lua) {}
+    hn localhn = new hn();
+    localhn.ecm = localhn.t("AppId", paramString.appId, true);
+    localhn.dZT = localhn.t("InstanceId", paramString.lht, true);
+    localhn.efT = hn.a.iZ(paramString.lTR);
+    localhn.eco = paramString.apptype;
+    localhn.eaM = paramString.lVs;
+    localhn.dHY = paramString.scene;
+    localhn.egi = paramString.lVF.get();
+    localhn.SX();
+    localhn.SY();
+    localhn.SW();
+    localhn.efU = paramm.fps;
+    localhn.efV = Math.round(paramm.lVY);
+    if (paramm.lVS == l.a.lVU) {}
     for (;;)
     {
-      localfv.edX = i;
-      localfv.edY = paramm.luf;
-      localfv.edZ = paramm.lug;
-      localfv.eea = paramm.luh;
-      localfv.edT = paramm.ccq;
-      localfv.edU = paramm.ccr;
-      localfv.edR = paramm.ccp;
-      localfv.edS = paramm.lui;
-      localfv.edV = (paramm.luj / 1000);
-      localfv.edW = paramm.jqE;
-      localfv.edQ = paramm.luk;
-      localfv.eeb = paramm.lul;
-      localfv.eed = paramm.lum;
-      localfv.eee = paramm.lun;
-      localfv.eef = paramm.luo;
-      localfv.eeg = paramm.lup;
-      localfv.eeh = paramm.luq;
-      localfv.aBj();
+      localhn.egd = i;
+      localhn.ege = paramm.lVZ;
+      localhn.egf = paramm.lWa;
+      localhn.egg = paramm.lWb;
+      localhn.efZ = paramm.bZn;
+      localhn.ega = paramm.bZo;
+      localhn.efX = paramm.bZm;
+      localhn.efY = paramm.lWc;
+      localhn.egb = (paramm.lWd / 1000);
+      localhn.egc = paramm.jQW;
+      localhn.efW = paramm.lWe;
+      localhn.egh = paramm.lWf;
+      localhn.egj = paramm.lWg;
+      localhn.egk = paramm.lWh;
+      localhn.egm = paramm.lWi;
+      localhn.egn = paramm.lWj;
+      localhn.ego = paramm.lWk;
+      localhn.aHZ();
       AppMethodBeat.o(48207);
       return;
-      if (paramm.ltY == l.a.lub) {
+      if (paramm.lVS == l.a.lVV) {
         i = 2;
       } else {
         i = 0;
@@ -284,96 +287,96 @@ public final class b
   public static void a(boolean paramBoolean, String paramString, long paramLong)
   {
     AppMethodBeat.i(48208);
-    fd localfd = new fd();
+    gv localgv = new gv();
     if (!paramBoolean)
     {
-      paramString = a.ME(paramString);
+      paramString = a.QN(paramString);
       if (paramString == null)
       {
         AppMethodBeat.o(48208);
         return;
       }
-      localfd.lf(paramString.appId);
-      localfd.le(paramString.kGa);
-      localfd.ebx = fd.a.iM(paramString.lrW);
-      localfd.eai = paramString.apptype;
-      localfd.dKe = paramString.scene;
+      localgv.ok(paramString.appId);
+      localgv.oj(paramString.lht);
+      localgv.edD = gv.a.iK(paramString.lTR);
+      localgv.eco = paramString.apptype;
+      localgv.dHY = paramString.scene;
     }
-    localfd.hX(paramLong);
-    localfd.RP();
-    localfd.hW(localfd.ebr - localfd.ebq);
+    localgv.lz(paramLong);
+    localgv.SI();
+    localgv.ly(localgv.edx - localgv.edw);
     if (paramBoolean) {}
     for (paramLong = 1L;; paramLong = 0L)
     {
-      localfd.eby = paramLong;
-      localfd.aBj();
+      localgv.edE = paramLong;
+      localgv.aHZ();
       AppMethodBeat.o(48208);
       return;
     }
   }
   
-  public static void a(boolean paramBoolean, String paramString, long paramLong, n paramn)
+  public static void a(boolean paramBoolean, String paramString, long paramLong, com.tencent.mm.plugin.appbrand.report.m paramm)
   {
     AppMethodBeat.i(48200);
-    gf localgf = new gf();
+    hx localhx = new hx();
     if (!paramBoolean)
     {
-      paramString = a.ME(paramString);
+      paramString = a.QN(paramString);
       if (paramString == null)
       {
         AppMethodBeat.o(48200);
         return;
       }
-      localgf.lU(paramString.appId);
-      localgf.lT(paramString.kGa);
-      localgf.egw = gf.a.jm(paramString.lrW);
-      localgf.eai = paramString.apptype;
-      localgf.dYT = paramString.lty;
-      localgf.dKe = paramString.scene;
-      localgf.eaX = paramString.bmT();
-      localgf.jX(paramLong);
-      localgf.Sj();
-      localgf.jW(localgf.ebr - paramLong);
-      switch (2.lsJ[paramn.ordinal()])
+      localhx.oZ(paramString.appId);
+      localhx.oY(paramString.lht);
+      localhx.eiC = hx.a.jk(paramString.lTR);
+      localhx.eco = paramString.apptype;
+      localhx.eaM = paramString.lVs;
+      localhx.dHY = paramString.scene;
+      localhx.edd = paramString.btP();
+      localhx.nz(paramLong);
+      localhx.Tc();
+      localhx.ny(localhx.edx - paramLong);
+      switch (2.lUD[paramm.ordinal()])
       {
       default: 
-        localgf.dZg = 2147483647L;
+        localhx.eaY = 2147483647L;
       }
     }
     for (;;)
     {
-      localgf.egx = bmN();
-      localgf.lV(bmN());
-      localgf.aBj();
+      localhx.eiD = btJ();
+      localhx.pa(btJ());
+      localhx.aHZ();
       AppMethodBeat.o(48200);
       return;
-      localgf.eaX = 1L;
+      localhx.edd = 1L;
       break;
-      localgf.dZg = 2L;
+      localhx.eaY = 2L;
       continue;
-      localgf.dZg = 4L;
+      localhx.eaY = 4L;
       continue;
-      localgf.dZg = 3L;
+      localhx.eaY = 3L;
     }
   }
   
-  public static fp g(d paramd)
+  public static hh g(d paramd)
   {
     AppMethodBeat.i(48202);
-    fp localfp = a(paramd.aNv(), paramd.getAppId(), paramd.aOf());
-    if (localfp == null)
+    hh localhh = a(paramd.aUl(), paramd.getAppId(), paramd.aUV());
+    if (localhh == null)
     {
       AppMethodBeat.o(48202);
       return null;
     }
-    localfp.lq(paramd.aLC().aPa());
+    localhh.ov(paramd.aSt().aVS());
     AppMethodBeat.o(48202);
-    return localfp;
+    return localhh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.b
  * JD-Core Version:    0.7.0.1
  */

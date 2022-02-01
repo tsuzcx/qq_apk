@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.a.b;
+import org.apache.commons.a.c;
 
 public final class a
 {
@@ -61,7 +61,7 @@ public final class a
       try
       {
         paramString.delete();
-        b.c(paramInputStream, paramString);
+        c.c(paramInputStream, paramString);
         AppMethodBeat.o(3506);
         return;
       }
@@ -70,7 +70,7 @@ public final class a
     AppMethodBeat.o(3506);
   }
   
-  public static int ep(String paramString)
+  public static int ee(String paramString)
   {
     AppMethodBeat.i(3507);
     if (paramString != null) {}
@@ -104,7 +104,7 @@ public final class a
     return false;
   }
   
-  public static QbarNative.QbarAiModelParam kB(Context paramContext)
+  public static QbarNative.QbarAiModelParam kN(Context paramContext)
   {
     AppMethodBeat.i(3509);
     try
@@ -145,7 +145,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.scanlib.a
  * JD-Core Version:    0.7.0.1
  */

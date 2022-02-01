@@ -1,264 +1,194 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
-import android.annotation.TargetApi;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.Log;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.m.a;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.phonenumber.PhoneItem;
-import com.tencent.mm.plugin.appbrand.phonenumber.r;
-import com.tencent.mm.plugin.appbrand.phonenumber.v;
-import com.tencent.mm.plugin.appbrand.phonenumber.z;
-import com.tencent.mm.plugin.appbrand.widget.dialog.g;
-import com.tencent.mm.protocal.protobuf.cmy;
-import com.tencent.mm.protocal.protobuf.dl;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vending.g.d.a;
-import com.tencent.mm.vending.g.d.b;
-import d.g.a.m;
-import d.g.b.k;
-import java.util.ArrayList;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
+import com.tencent.mm.plugin.appbrand.canvas.widget.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.base.f;
+import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.e.a;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.z.d;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.nio.ByteBuffer;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "()V", "getLocalPhoneItems", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "getServePhoneItems", "Lcom/tencent/mm/vending/tuple/Tuple2;", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "env", "apiName", "", "withCredentials", "", "localPhoneItems", "report", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberReportAction;", "invoke", "", "data", "Lorg/json/JSONObject;", "callbackId", "", "jumpToBindWxPhoneIfNeed", "tuple2", "needBindWxPhone", "phoneItems", "showPhoneNumberDialog", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi$CallResult;", "it", "progressDialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandProgressDialog;", "dialog", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManageDialog;", "showProgressDialog", "", "Companion", "Info", "luggage-wechat-full-sdk_release"})
-@TargetApi(8)
 public final class c
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<aa>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.c>
 {
-  private static final int CTRL_INDEX = 209;
-  private static final String NAME = "getPhoneNumber";
-  public static final c.a jFh;
+  public static final int CTRL_INDEX = 373;
+  public static final String NAME = "canvasPutImageData";
   
-  static
+  private static int[] n(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(147931);
-    jFh = new c.a((byte)0);
-    NAME = "getPhoneNumber";
-    CTRL_INDEX = 209;
-    AppMethodBeat.o(147931);
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "", "scopeInfo", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "alertPrivacyInfo", "Lcom/tencent/mm/protocal/protobuf/AlertPrivacyInfo;", "(Lcom/tencent/mm/protocal/protobuf/ScopeInfo;Lcom/tencent/mm/protocal/protobuf/AlertPrivacyInfo;)V", "getAlertPrivacyInfo", "()Lcom/tencent/mm/protocal/protobuf/AlertPrivacyInfo;", "getScopeInfo", "()Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "luggage-wechat-full-sdk_release"})
-  public static final class b
-  {
-    final cmy jFi;
-    final dl jFj;
-    
-    public b(cmy paramcmy, dl paramdl)
+    AppMethodBeat.i(145529);
+    paramByteBuffer = d.q(paramByteBuffer);
+    int[] arrayOfInt = new int[paramByteBuffer.length / 4];
+    int i = 0;
+    int k;
+    for (int j = 0; i < arrayOfInt.length; j = k + 1)
     {
-      this.jFi = paramcmy;
-      this.jFj = paramdl;
+      k = j + 1;
+      j = paramByteBuffer[j];
+      int m = k + 1;
+      int n = paramByteBuffer[k];
+      k = m + 1;
+      m = paramByteBuffer[m];
+      arrayOfInt[i] = ((paramByteBuffer[k] & 0xFF) << 24 | m & 0xFF | (n & 0xFF) << 8 | (j & 0xFF) << 16);
+      i += 1;
     }
-    
-    public final boolean equals(Object paramObject)
+    AppMethodBeat.o(145529);
+    return arrayOfInt;
+  }
+  
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
+  {
+    AppMethodBeat.i(145528);
+    int n;
+    try
     {
-      AppMethodBeat.i(147904);
-      if (this != paramObject)
+      n = paramJSONObject.getInt("canvasId");
+      localObject1 = ((f)paramc.K(f.class)).c(paramc, paramJSONObject);
+      if (localObject1 == null)
       {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((!k.g(this.jFi, paramObject.jFi)) || (!k.g(this.jFj, paramObject.jFj))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(147904);
-        return true;
-      }
-      AppMethodBeat.o(147904);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      int j = 0;
-      AppMethodBeat.i(147903);
-      Object localObject = this.jFi;
-      if (localObject != null) {}
-      for (int i = localObject.hashCode();; i = 0)
-      {
-        localObject = this.jFj;
-        if (localObject != null) {
-          j = localObject.hashCode();
-        }
-        AppMethodBeat.o(147903);
-        return i * 31 + j;
-      }
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(147902);
-      String str = "Info(scopeInfo=" + this.jFi + ", alertPrivacyInfo=" + this.jFj + ")";
-      AppMethodBeat.o(147902);
-      return str;
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
-  static final class d<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    d(c paramc, g paramg, aa paramaa) {}
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "it", "", "kotlin.jvm.PlatformType", "call"})
-  static final class e<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    e(c paramc) {}
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/vending/tuple/Tuple2;", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "localPhoneItems", "kotlin.jvm.PlatformType", "call"})
-  static final class f<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    f(c paramc, aa paramaa, String paramString, boolean paramBoolean) {}
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/vending/tuple/Tuple2;", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "it", "call"})
-  static final class g<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    g(c paramc, aa paramaa, String paramString, boolean paramBoolean) {}
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi$CallResult;", "it", "Lcom/tencent/mm/vending/tuple/Tuple2;", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "call"})
-  static final class i<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    i(c paramc, aa paramaa, g paramg, v paramv) {}
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi$CallResult;", "kotlin.jvm.PlatformType", "onTerminate"})
-  static final class j<T>
-    implements d.b<m.a>
-  {
-    j(c paramc, aa paramaa, int paramInt) {}
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "res", "", "kotlin.jvm.PlatformType", "onInterrupt"})
-  static final class k<T>
-    implements d.a<Object>
-  {
-    k(c paramc, aa paramaa, int paramInt) {}
-    
-    public final void ce(Object paramObject)
-    {
-      AppMethodBeat.i(147914);
-      Object localObject1 = z.llS;
-      Object localObject2 = this.jFn.getAppId();
-      k.g(localObject2, "env.appId");
-      localObject1 = ((z)localObject1).Mn((String)localObject2);
-      if (localObject1 != null) {
-        ((com.tencent.mm.plugin.appbrand.phonenumber.y)localObject1).report();
-      }
-      localObject2 = z.llS;
-      localObject1 = this.jFn;
-      if (localObject1 != null) {}
-      for (localObject1 = ((aa)localObject1).getAppId();; localObject1 = null)
-      {
-        k.g(localObject1, "env?.appId");
-        ((z)localObject2).Mo((String)localObject1);
-        if (!(paramObject instanceof String)) {
-          break label137;
-        }
-        ad.e("MicroMsg.JsApiGetPhoneNumberNew", "getphonenumber fail:".concat(String.valueOf(paramObject)));
-        localObject1 = this.jFn;
-        if (localObject1 == null) {
-          break;
-        }
-        ((aa)localObject1).h(this.jxb, this.jFl.HI("fail:".concat(String.valueOf(paramObject))));
-        AppMethodBeat.o(147914);
+        ac.w("MicroMsg.JsApiCanvasPutImageData", "invoke JsApi canvasPutImageData failed, component view is null.");
+        paramc.h(paramInt, e("fail:page is null", null));
+        AppMethodBeat.o(145528);
         return;
       }
-      AppMethodBeat.o(147914);
+    }
+    catch (JSONException paramJSONObject)
+    {
+      ac.i("MicroMsg.JsApiCanvasPutImageData", "get canvas id failed, %s", new Object[] { Log.getStackTraceString(paramJSONObject) });
+      paramc.h(paramInt, e("fail:illegal canvasId", null));
+      AppMethodBeat.o(145528);
       return;
-      label137:
-      if ((paramObject instanceof Exception))
+    }
+    Object localObject1 = ((e)localObject1).fC(paramJSONObject.optBoolean("independent", false)).getViewById(n);
+    if (localObject1 == null)
+    {
+      ac.w("MicroMsg.JsApiCanvasPutImageData", "view(%s) is null.", new Object[] { Integer.valueOf(n) });
+      paramc.h(paramInt, e("fail:view is null", null));
+      AppMethodBeat.o(145528);
+      return;
+    }
+    if (!(localObject1 instanceof CoverViewContainer))
+    {
+      ac.w("MicroMsg.JsApiCanvasPutImageData", "the viewId is not a canvas(%s).", new Object[] { Integer.valueOf(n) });
+      paramc.h(paramInt, e("fail:illegal view type", null));
+      AppMethodBeat.o(145528);
+      return;
+    }
+    localObject1 = (View)((CoverViewContainer)localObject1).ax(View.class);
+    if (!(localObject1 instanceof com.tencent.mm.plugin.appbrand.canvas.widget.a))
+    {
+      ac.i("MicroMsg.JsApiCanvasPutImageData", "the view is not a instance of CanvasView.(%s)", new Object[] { Integer.valueOf(n) });
+      paramc.h(paramInt, e("fail:illegal view type", null));
+      AppMethodBeat.o(145528);
+      return;
+    }
+    float f = g.bxg();
+    int j = paramJSONObject.optInt("x");
+    int m = paramJSONObject.optInt("y");
+    int i = paramJSONObject.optInt("width");
+    int k = paramJSONObject.optInt("height");
+    Math.round(j * f);
+    Math.round(m * f);
+    Math.round(i * f);
+    Math.round(f * k);
+    if ((i == 0) || (k == 0))
+    {
+      ac.i("MicroMsg.JsApiCanvasPutImageData", "width(%s) or height(%s) is 0.(%s)", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(n) });
+      paramc.h(paramInt, e("fail:width or height is 0", null));
+      AppMethodBeat.o(145528);
+      return;
+    }
+    if (i < 0)
+    {
+      j += i;
+      i = -i;
+    }
+    for (;;)
+    {
+      if (k < 0)
       {
-        ad.e("MicroMsg.JsApiGetPhoneNumberNew", "getphonenumber fail:{" + paramObject + ".message}");
-        localObject1 = this.jFn;
-        if (localObject1 != null)
+        m += k;
+        k = -k;
+        try
         {
-          ((aa)localObject1).h(this.jxb, this.jFl.HI("fail:{" + paramObject + ".message}"));
-          AppMethodBeat.o(147914);
+          Object localObject2;
+          JSONObject localJSONObject;
+          JSONArray localJSONArray;
+          for (;;)
+          {
+            paramJSONObject = paramJSONObject.get("data");
+            if (!(paramJSONObject instanceof ByteBuffer))
+            {
+              ac.i("MicroMsg.JsApiCanvasPutImageData", "get data failed, value is not a ByteBuffer");
+              paramc.h(paramInt, e("fail:illegal data", null));
+              AppMethodBeat.o(145528);
+              return;
+            }
+            localObject2 = (ByteBuffer)paramJSONObject;
+            paramJSONObject = new JSONArray();
+            localObject2 = n((ByteBuffer)localObject2);
+            localJSONObject = new JSONObject();
+          }
+        }
+        catch (JSONException paramJSONObject)
+        {
+          try
+          {
+            localJSONArray = new JSONArray();
+            localJSONArray.put(j);
+            localJSONArray.put(m);
+            localJSONArray.put(i);
+            localJSONArray.put(k);
+            localJSONArray.put(Bitmap.createBitmap((int[])localObject2, i, k, Bitmap.Config.ARGB_8888));
+            localJSONObject.put("method", "__setPixels");
+            localJSONObject.put("data", localJSONArray);
+            paramJSONObject.put(localJSONObject);
+            localObject1 = (com.tencent.mm.plugin.appbrand.canvas.widget.a)localObject1;
+            ((com.tencent.mm.plugin.appbrand.canvas.widget.a)localObject1).b(paramJSONObject, new a.a()
+            {
+              public final void a(DrawCanvasArg paramAnonymousDrawCanvasArg)
+              {
+                AppMethodBeat.i(145527);
+                paramc.h(paramInt, c.this.e("ok", null));
+                AppMethodBeat.o(145527);
+              }
+            });
+            ((com.tencent.mm.plugin.appbrand.canvas.widget.a)localObject1).aZL();
+            AppMethodBeat.o(145528);
+            return;
+          }
+          catch (JSONException paramJSONObject)
+          {
+            ac.w("MicroMsg.JsApiCanvasPutImageData", "put json value error : %s", new Object[] { paramJSONObject });
+            paramc.h(paramInt, e("fail:build action JSON error", null));
+            AppMethodBeat.o(145528);
+            return;
+          }
+          paramJSONObject = paramJSONObject;
+          ac.i("MicroMsg.JsApiCanvasPutImageData", "get data failed, %s", new Object[] { Log.getStackTraceString(paramJSONObject) });
+          paramc.h(paramInt, e("fail:missing data", null));
+          AppMethodBeat.o(145528);
           return;
         }
-        AppMethodBeat.o(147914);
-        return;
       }
-      ad.e("MicroMsg.JsApiGetPhoneNumberNew", "getphonenumber fail");
-      paramObject = this.jFn;
-      if (paramObject != null)
-      {
-        paramObject.h(this.jxb, this.jFl.HI("fail"));
-        AppMethodBeat.o(147914);
-        return;
-      }
-      AppMethodBeat.o(147914);
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class p
-    extends d.g.b.l
-    implements d.g.a.a<d.y>
-  {
-    p(com.tencent.mm.plugin.appbrand.phonenumber.y paramy, aa paramaa, v paramv)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class q
-    extends d.g.b.l
-    implements d.g.a.a<d.y>
-  {
-    q(com.tencent.mm.plugin.appbrand.phonenumber.y paramy, aa paramaa, v paramv)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "phoneItem", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "invoke"})
-  static final class r
-    extends d.g.b.l
-    implements d.g.a.b<PhoneItem, d.y>
-  {
-    r(com.tencent.mm.plugin.appbrand.phonenumber.y paramy, aa paramaa, c.b paramb, com.tencent.mm.vending.g.b paramb1)
-    {
-      super();
-    }
-    
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "isSuccess", "", "result", "", "", "invoke", "com/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$showPhoneNumberDialog$5$1$1"})
-    static final class a
-      extends d.g.b.l
-      implements m<Boolean, Map<String, ? extends String>, d.y>
-    {
-      a(c.r paramr, PhoneItem paramPhoneItem)
-      {
-        super();
-      }
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class s
-    extends d.g.b.l
-    implements d.g.a.a<d.y>
-  {
-    s(com.tencent.mm.plugin.appbrand.phonenumber.y paramy, aa paramaa, c.b paramb, v paramv)
-    {
-      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.a.c
  * JD-Core Version:    0.7.0.1
  */

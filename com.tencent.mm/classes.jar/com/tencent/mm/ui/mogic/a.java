@@ -12,34 +12,34 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.OverScroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Arrays;
 
 public final class a
 {
   private static final Interpolator sInterpolator;
-  public final a HkJ;
-  public float[] TA;
-  public float[] TB;
-  public float[] TC;
-  public float[] TD;
-  public int[] TE;
-  private int[] TF;
-  private int[] TG;
-  public int TH;
-  public float TI;
-  public float TJ;
-  private int TK;
-  public int TL;
-  public View TN;
-  public boolean TO;
-  public final ViewGroup TP;
-  public final Runnable TQ;
-  public int Tz;
+  public final a ILc;
+  private int[] UA;
+  private int[] UB;
+  public int UC;
+  public float UD;
+  public float UE;
+  private int UF;
+  public int UG;
+  public View UI;
+  public boolean UJ;
+  public final ViewGroup UK;
+  public final Runnable UL;
+  public int Uu;
+  public float[] Uv;
+  public float[] Uw;
+  public float[] Ux;
+  public float[] Uy;
+  public int[] Uz;
   public int mActivePointerId;
+  public p mLD;
   private int mTouchSlop;
   public VelocityTracker mVelocityTracker;
-  public p mjD;
   
   static
   {
@@ -59,7 +59,7 @@ public final class a
   {
     AppMethodBeat.i(142868);
     this.mActivePointerId = -1;
-    this.TQ = new Runnable()
+    this.UL = new Runnable()
     {
       public final void run()
       {
@@ -80,22 +80,22 @@ public final class a
       AppMethodBeat.o(142868);
       throw paramContext;
     }
-    this.TP = paramViewGroup;
-    this.HkJ = parama;
+    this.UK = paramViewGroup;
+    this.ILc = parama;
     paramViewGroup = ViewConfiguration.get(paramContext);
-    this.TK = ((int)(paramContext.getResources().getDisplayMetrics().density * 20.0F + 0.5F));
+    this.UF = ((int)(paramContext.getResources().getDisplayMetrics().density * 20.0F + 0.5F));
     this.mTouchSlop = paramViewGroup.getScaledTouchSlop();
-    this.TI = paramViewGroup.getScaledMaximumFlingVelocity();
-    this.TJ = paramViewGroup.getScaledMinimumFlingVelocity();
-    this.mjD = p.a(paramContext, paramInterpolator);
+    this.UD = paramViewGroup.getScaledMaximumFlingVelocity();
+    this.UE = paramViewGroup.getScaledMinimumFlingVelocity();
+    this.mLD = p.a(paramContext, paramInterpolator);
     AppMethodBeat.o(142868);
   }
   
-  private int O(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private int Q(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(142871);
-    paramInt3 = i(paramInt3, (int)this.TJ, (int)this.TI);
-    paramInt4 = i(paramInt4, (int)this.TJ, (int)this.TI);
+    paramInt3 = i(paramInt3, (int)this.UE, (int)this.UD);
+    paramInt4 = i(paramInt4, (int)this.UE, (int)this.UD);
     int i = Math.abs(paramInt1);
     int j = Math.abs(paramInt2);
     int k = Math.abs(paramInt3);
@@ -113,7 +113,7 @@ public final class a
     label162:
     for (float f2 = m / n;; f2 = j / i1)
     {
-      paramInt1 = h(paramInt1, paramInt3, this.HkJ.fdh());
+      paramInt1 = h(paramInt1, paramInt3, this.ILc.ftc());
       paramInt2 = h(paramInt2, paramInt4, 0);
       float f3 = paramInt1;
       paramInt1 = (int)(f2 * paramInt2 + f1 * f3);
@@ -137,12 +137,12 @@ public final class a
     AppMethodBeat.i(142882);
     paramFloat1 = Math.abs(paramFloat1);
     paramFloat2 = Math.abs(paramFloat2);
-    if (((this.TE[paramInt1] & paramInt2) != paramInt2) || ((this.TL & paramInt2) == 0) || ((this.TG[paramInt1] & paramInt2) == paramInt2) || ((this.TF[paramInt1] & paramInt2) == paramInt2) || ((paramFloat1 <= this.mTouchSlop) && (paramFloat2 <= this.mTouchSlop)))
+    if (((this.Uz[paramInt1] & paramInt2) != paramInt2) || ((this.UG & paramInt2) == 0) || ((this.UB[paramInt1] & paramInt2) == paramInt2) || ((this.UA[paramInt1] & paramInt2) == paramInt2) || ((paramFloat1 <= this.mTouchSlop) && (paramFloat2 <= this.mTouchSlop)))
     {
       AppMethodBeat.o(142882);
       return false;
     }
-    if (((this.TF[paramInt1] & paramInt2) == 0) && (paramFloat1 > this.mTouchSlop))
+    if (((this.UA[paramInt1] & paramInt2) == 0) && (paramFloat1 > this.mTouchSlop))
     {
       AppMethodBeat.o(142882);
       return true;
@@ -159,7 +159,7 @@ public final class a
     return paramFloat;
   }
   
-  private static float g(float paramFloat1, float paramFloat2, float paramFloat3)
+  private static float f(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     AppMethodBeat.i(142874);
     float f = Math.abs(paramFloat1);
@@ -191,7 +191,7 @@ public final class a
       AppMethodBeat.o(142872);
       return 0;
     }
-    int i = this.TP.getWidth();
+    int i = this.UK.getWidth();
     int j = i / 2;
     float f3 = Math.min(1.0F, Math.abs(paramInt1) / i);
     float f1 = j;
@@ -234,10 +234,10 @@ public final class a
   public final View C(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142885);
-    int i = this.TP.getChildCount() - 1;
+    int i = this.UK.getChildCount() - 1;
     while (i >= 0)
     {
-      View localView = this.TP.getChildAt(i);
+      View localView = this.UK.getChildAt(i);
       if ((paramInt1 >= localView.getLeft()) && (paramInt1 < localView.getRight()) && (paramInt2 >= localView.getTop()) && (paramInt2 < localView.getBottom()))
       {
         AppMethodBeat.o(142885);
@@ -253,7 +253,7 @@ public final class a
   {
     int j = 0;
     AppMethodBeat.i(142877);
-    if ((this.TA == null) || (this.TA.length <= paramInt))
+    if ((this.Uv == null) || (this.Uv.length <= paramInt))
     {
       localObject = new float[paramInt + 1];
       float[] arrayOfFloat1 = new float[paramInt + 1];
@@ -262,50 +262,50 @@ public final class a
       int[] arrayOfInt1 = new int[paramInt + 1];
       int[] arrayOfInt2 = new int[paramInt + 1];
       int[] arrayOfInt3 = new int[paramInt + 1];
-      if (this.TA != null)
+      if (this.Uv != null)
       {
-        System.arraycopy(this.TA, 0, localObject, 0, this.TA.length);
-        System.arraycopy(this.TB, 0, arrayOfFloat1, 0, this.TB.length);
-        System.arraycopy(this.TC, 0, arrayOfFloat2, 0, this.TC.length);
-        System.arraycopy(this.TD, 0, arrayOfFloat3, 0, this.TD.length);
-        System.arraycopy(this.TE, 0, arrayOfInt1, 0, this.TE.length);
-        System.arraycopy(this.TF, 0, arrayOfInt2, 0, this.TF.length);
-        System.arraycopy(this.TG, 0, arrayOfInt3, 0, this.TG.length);
+        System.arraycopy(this.Uv, 0, localObject, 0, this.Uv.length);
+        System.arraycopy(this.Uw, 0, arrayOfFloat1, 0, this.Uw.length);
+        System.arraycopy(this.Ux, 0, arrayOfFloat2, 0, this.Ux.length);
+        System.arraycopy(this.Uy, 0, arrayOfFloat3, 0, this.Uy.length);
+        System.arraycopy(this.Uz, 0, arrayOfInt1, 0, this.Uz.length);
+        System.arraycopy(this.UA, 0, arrayOfInt2, 0, this.UA.length);
+        System.arraycopy(this.UB, 0, arrayOfInt3, 0, this.UB.length);
       }
-      this.TA = ((float[])localObject);
-      this.TB = arrayOfFloat1;
-      this.TC = arrayOfFloat2;
-      this.TD = arrayOfFloat3;
-      this.TE = arrayOfInt1;
-      this.TF = arrayOfInt2;
-      this.TG = arrayOfInt3;
+      this.Uv = ((float[])localObject);
+      this.Uw = arrayOfFloat1;
+      this.Ux = arrayOfFloat2;
+      this.Uy = arrayOfFloat3;
+      this.Uz = arrayOfInt1;
+      this.UA = arrayOfInt2;
+      this.UB = arrayOfInt3;
     }
-    Object localObject = this.TA;
-    this.TC[paramInt] = paramFloat1;
+    Object localObject = this.Uv;
+    this.Ux[paramInt] = paramFloat1;
     localObject[paramInt] = paramFloat1;
-    localObject = this.TB;
-    this.TD[paramInt] = paramFloat2;
+    localObject = this.Uw;
+    this.Uy[paramInt] = paramFloat2;
     localObject[paramInt] = paramFloat2;
-    localObject = this.TE;
+    localObject = this.Uz;
     int m = (int)paramFloat1;
     int k = (int)paramFloat2;
-    if (m < this.TP.getLeft() + this.TK) {
+    if (m < this.UK.getLeft() + this.UF) {
       j = 1;
     }
     int i = j;
-    if (k < this.TP.getTop() + this.TK) {
+    if (k < this.UK.getTop() + this.UF) {
       i = j | 0x4;
     }
     j = i;
-    if (m > this.TP.getRight() - this.TK) {
+    if (m > this.UK.getRight() - this.UF) {
       j = i | 0x2;
     }
     i = j;
-    if (k > this.TP.getBottom() - this.TK) {
+    if (k > this.UK.getBottom() - this.UF) {
       i = j | 0x8;
     }
     localObject[paramInt] = i;
-    this.TH |= 1 << paramInt;
+    this.UC |= 1 << paramInt;
     AppMethodBeat.o(142877);
   }
   
@@ -330,7 +330,7 @@ public final class a
       }
       if (i != 0)
       {
-        int[] arrayOfInt = this.TF;
+        int[] arrayOfInt = this.UA;
         arrayOfInt[paramInt] = (i | arrayOfInt[paramInt]);
       }
       AppMethodBeat.o(142881);
@@ -342,23 +342,23 @@ public final class a
   public final boolean b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
   {
     AppMethodBeat.i(142870);
-    int i = this.TN.getLeft();
-    int j = this.TN.getTop();
+    int i = this.UI.getLeft();
+    int j = this.UI.getTop();
     paramInt1 -= i;
     paramInt2 -= j;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.mjD.RH.abortAnimation();
+      this.mLD.SC.abortAnimation();
       be(0);
       AppMethodBeat.o(142870);
       return false;
     }
     long l = paramLong;
     if (paramLong == 0L) {
-      l = O(paramInt1, paramInt2, paramInt3, paramInt4);
+      l = Q(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    ad.d("WxViewDragHelper", "ashutest:: xvel %d, yvel %d, dx %d, dy %d duration %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(l) });
-    this.mjD.startScroll(i, j, paramInt1, paramInt2, (int)l);
+    ac.d("WxViewDragHelper", "ashutest:: xvel %d, yvel %d, dx %d, dy %d duration %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(l) });
+    this.mLD.startScroll(i, j, paramInt1, paramInt2, (int)l);
     be(2);
     AppMethodBeat.o(142870);
     return true;
@@ -366,28 +366,28 @@ public final class a
   
   public final void bc(int paramInt)
   {
-    if (this.TA == null) {
+    if (this.Uv == null) {
       return;
     }
-    this.TA[paramInt] = 0.0F;
-    this.TB[paramInt] = 0.0F;
-    this.TC[paramInt] = 0.0F;
-    this.TD[paramInt] = 0.0F;
-    this.TE[paramInt] = 0;
-    this.TF[paramInt] = 0;
-    this.TG[paramInt] = 0;
-    this.TH &= (1 << paramInt ^ 0xFFFFFFFF);
+    this.Uv[paramInt] = 0.0F;
+    this.Uw[paramInt] = 0.0F;
+    this.Ux[paramInt] = 0.0F;
+    this.Uy[paramInt] = 0.0F;
+    this.Uz[paramInt] = 0;
+    this.UA[paramInt] = 0;
+    this.UB[paramInt] = 0;
+    this.UC &= (1 << paramInt ^ 0xFFFFFFFF);
   }
   
   final void be(int paramInt)
   {
     AppMethodBeat.i(142879);
-    if (this.Tz != paramInt)
+    if (this.Uu != paramInt)
     {
-      this.Tz = paramInt;
-      this.HkJ.M(paramInt);
+      this.Uu = paramInt;
+      this.ILc.M(paramInt);
       if (paramInt == 0) {
-        this.TN = null;
+        this.UI = null;
       }
     }
     AppMethodBeat.o(142879);
@@ -397,16 +397,16 @@ public final class a
   {
     AppMethodBeat.i(142869);
     this.mActivePointerId = -1;
-    if (this.TA != null)
+    if (this.Uv != null)
     {
-      Arrays.fill(this.TA, 0.0F);
-      Arrays.fill(this.TB, 0.0F);
-      Arrays.fill(this.TC, 0.0F);
-      Arrays.fill(this.TD, 0.0F);
-      Arrays.fill(this.TE, 0);
-      Arrays.fill(this.TF, 0);
-      Arrays.fill(this.TG, 0);
-      this.TH = 0;
+      Arrays.fill(this.Uv, 0.0F);
+      Arrays.fill(this.Uw, 0.0F);
+      Arrays.fill(this.Ux, 0.0F);
+      Arrays.fill(this.Uy, 0.0F);
+      Arrays.fill(this.Uz, 0);
+      Arrays.fill(this.UA, 0);
+      Arrays.fill(this.UB, 0);
+      this.UC = 0;
     }
     if (this.mVelocityTracker != null)
     {
@@ -426,34 +426,34 @@ public final class a
       int k = paramMotionEvent.getPointerId(i);
       float f1 = paramMotionEvent.getX(i);
       float f2 = paramMotionEvent.getY(i);
-      this.TC[k] = f1;
-      this.TD[k] = f2;
+      this.Ux[k] = f1;
+      this.Uy[k] = f2;
       i += 1;
     }
     AppMethodBeat.o(142878);
   }
   
-  public final void fJ()
+  public final void fR()
   {
     AppMethodBeat.i(142884);
-    this.mVelocityTracker.computeCurrentVelocity(1000, this.TI);
-    l(g(this.mVelocityTracker.getXVelocity(this.mActivePointerId), this.TJ, this.TI), g(this.mVelocityTracker.getYVelocity(this.mActivePointerId), this.TJ, this.TI));
+    this.mVelocityTracker.computeCurrentVelocity(1000, this.UD);
+    l(f(this.mVelocityTracker.getXVelocity(this.mActivePointerId), this.UE, this.UD), f(this.mVelocityTracker.getYVelocity(this.mActivePointerId), this.UE, this.UD));
     AppMethodBeat.o(142884);
   }
   
   public final void l(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(142876);
-    this.TO = true;
-    this.HkJ.a(this.TN, paramFloat1, paramFloat2);
-    this.TO = false;
-    if (this.Tz == 1) {
+    this.UJ = true;
+    this.ILc.a(this.UI, paramFloat1, paramFloat2);
+    this.UJ = false;
+    if (this.Uu == 1) {
       be(0);
     }
     AppMethodBeat.o(142876);
   }
   
-  public final boolean v(View paramView, float paramFloat)
+  public final boolean w(View paramView, float paramFloat)
   {
     AppMethodBeat.i(142883);
     if (paramView == null)
@@ -462,7 +462,7 @@ public final class a
       return false;
     }
     int i;
-    if (this.HkJ.fdh() > 0) {
+    if (this.ILc.ftc() > 0) {
       i = 1;
     }
     while (i != 0) {
@@ -485,21 +485,21 @@ public final class a
   public final boolean z(View paramView, int paramInt)
   {
     AppMethodBeat.i(142880);
-    if ((paramView == this.TN) && (this.mActivePointerId == paramInt))
+    if ((paramView == this.UI) && (this.mActivePointerId == paramInt))
     {
       AppMethodBeat.o(142880);
       return true;
     }
-    if ((paramView != null) && (this.HkJ.aaf(paramInt)))
+    if ((paramView != null) && (this.ILc.acs(paramInt)))
     {
       this.mActivePointerId = paramInt;
-      if (paramView.getParent() != this.TP)
+      if (paramView.getParent() != this.UK)
       {
-        paramView = new IllegalArgumentException("captureChildView: parameter must be a descendant of the ViewDragHelper's tracked parent view (" + this.TP + ")");
+        paramView = new IllegalArgumentException("captureChildView: parameter must be a descendant of the ViewDragHelper's tracked parent view (" + this.UK + ")");
         AppMethodBeat.o(142880);
         throw paramView;
       }
-      this.TN = paramView;
+      this.UI = paramView;
       this.mActivePointerId = paramInt;
       be(1);
       AppMethodBeat.o(142880);
@@ -515,19 +515,19 @@ public final class a
     
     public void a(View paramView, float paramFloat1, float paramFloat2) {}
     
-    public abstract boolean aaf(int paramInt);
+    public abstract boolean acs(int paramInt);
     
     public int e(View paramView, int paramInt)
     {
       return 0;
     }
     
-    public int fdh()
+    public int ftc()
     {
       return 0;
     }
     
-    public void jy(int paramInt1, int paramInt2) {}
+    public void jK(int paramInt1, int paramInt2) {}
   }
 }
 

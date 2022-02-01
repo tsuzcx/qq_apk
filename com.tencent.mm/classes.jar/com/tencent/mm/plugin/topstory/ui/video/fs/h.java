@@ -26,15 +26,15 @@ public final class h
       if (localObject == null) {
         break label191;
       }
-      i = ((g)localObject).ln();
-      if ((i != paramb.dOM()) && (paramb.dOJ().yQs))
+      i = ((g)localObject).lv();
+      if ((i != paramb.edm()) && (paramb.edj().Aei))
       {
-        paramb.dOJ().stopPlay();
+        paramb.edj().stopPlay();
         if (localObject != null) {
-          paramb.dOF().i(((j)localObject).yLU);
+          paramb.edf().i(((j)localObject).zZN);
         }
       }
-      paramb.dOC();
+      paramb.edc();
       j = 0;
       label103:
       if (j >= localRecyclerView.getChildCount()) {
@@ -44,12 +44,12 @@ public final class h
       if (((View)localObject).getTag() != null)
       {
         localObject = (j)paramb.getRecyclerView().bh((View)localObject);
-        if (((g)localObject).ln() != i) {
+        if (((g)localObject).lv() != i) {
           break label196;
         }
-        ((j)localObject).dOB();
-        if (!paramb.dOJ().yQs) {
-          ((g)localObject).yRs.dPa();
+        ((j)localObject).edb();
+        if (!paramb.edj().Aei) {
+          ((g)localObject).Afh.edA();
         }
       }
     }
@@ -63,7 +63,7 @@ public final class h
       i = -1;
       break;
       label196:
-      ((g)localObject).yRs.dPb();
+      ((g)localObject).Afh.edB();
     }
     label207:
     AppMethodBeat.o(126390);
@@ -74,24 +74,24 @@ public final class h
     AppMethodBeat.i(126391);
     com.tencent.mm.plugin.topstory.ui.video.h localh = c(paramb);
     if ((localh instanceof j)) {
-      if (!paramb.dOJ().yQs)
+      if (!paramb.edj().Aei)
       {
-        if (!paramb.dOE().isConnected()) {
+        if (!paramb.ede().isConnected()) {
           break label75;
         }
-        localh.rf(true);
+        localh.sd(true);
       }
     }
     for (;;)
     {
-      localh.dOB();
-      paramb.Pi(localh.dOD());
-      paramb.dOF().dPI();
+      localh.edb();
+      paramb.Ro(localh.edd());
+      paramb.edf().eeh();
       AppMethodBeat.o(126391);
       return;
       label75:
-      localh.dPp().dPe();
-      paramb.dOJ().stopPlay();
+      localh.edP().edE();
+      paramb.edj().stopPlay();
     }
   }
 }

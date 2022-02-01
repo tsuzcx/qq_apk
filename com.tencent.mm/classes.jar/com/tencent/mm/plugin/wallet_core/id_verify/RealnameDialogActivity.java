@@ -6,7 +6,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -15,8 +15,8 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class RealnameDialogActivity
   extends WalletBaseUI
 {
-  private RealnameGuideHelper tpz;
   private int type = 1;
+  private RealnameGuideHelper uxR;
   
   public int getLayoutId()
   {
@@ -30,12 +30,12 @@ public class RealnameDialogActivity
     paramBundle = getIntent();
     if ((paramBundle != null) && (paramBundle.hasExtra("key_realname_guide_helper")))
     {
-      this.tpz = ((RealnameGuideHelper)paramBundle.getParcelableExtra("key_realname_guide_helper"));
+      this.uxR = ((RealnameGuideHelper)paramBundle.getParcelableExtra("key_realname_guide_helper"));
       paramBundle = new Bundle();
       paramBundle.putString("realname_verify_process_jump_plugin", "wallet_core");
       paramBundle.putString("realname_verify_process_jump_activity", ".id_verify.RealnameDialogActivity");
       paramBundle.putBoolean("process_finish_stay_orgpage", false);
-      boolean bool1 = this.tpz.a(this, paramBundle, new DialogInterface.OnClickListener()
+      boolean bool1 = this.uxR.a(this, paramBundle, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -45,7 +45,7 @@ public class RealnameDialogActivity
           AppMethodBeat.o(70015);
         }
       }, null, true);
-      boolean bool2 = this.tpz.a(this, paramBundle, new DialogInterface.OnClickListener()
+      boolean bool2 = this.uxR.a(this, paramBundle, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {

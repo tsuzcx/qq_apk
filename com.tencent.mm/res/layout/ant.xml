@@ -9,9 +9,9 @@
         <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/a5v" android:paddingTop="@dimen/c5" android:paddingRight="@dimen/c0" android:paddingBottom="@dimen/c_" android:visibility="gone" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
         <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/a5s" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <LinearLayout android:orientation="vertical" android:id="@id/a5p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <View android:background="@color/b" android:layout_width="fill_parent" android:layout_height="@dimen/ci" />
-            <ImageView android:id="@id/bdj" style="@style/hp" />
-            <TextView android:textSize="@dimen/td" android:textColor="@color/FG_0" android:gravity="center" android:background="@drawable/ajy" android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:text="@string/ai4" />
+            <View android:id="@id/hb1" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="@dimen/ci" />
+            <ImageView android:id="@id/haz" style="@style/hp" />
+            <TextView android:textSize="@dimen/td" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/hb2" android:background="@drawable/ajy" android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:text="@string/ai4" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

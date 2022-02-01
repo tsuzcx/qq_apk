@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
@@ -100,7 +100,7 @@ public class TMAssistantFile
       paramString1 = new e(paramString1);
       if (paramString1.exists() == true)
       {
-        boolean bool = paramString1.af(new e(paramString2));
+        boolean bool = paramString1.ae(new e(paramString2));
         if (bool) {
           GlobalUtil.updateFilePathAuthorized(paramString2);
         }
@@ -144,7 +144,7 @@ public class TMAssistantFile
       }
       catch (IOException paramOutputStream)
       {
-        ad.printErrStackTrace("TMAssistantFile", paramOutputStream, "", new Object[0]);
+        ac.printErrStackTrace("TMAssistantFile", paramOutputStream, "", new Object[0]);
         TMLog.w("TMAssistantFile", "writeData1 failed " + paramOutputStream.getMessage());
         AppMethodBeat.o(177060);
         return false;
@@ -160,7 +160,7 @@ public class TMAssistantFile
       }
       catch (IOException paramOutputStream)
       {
-        ad.printErrStackTrace("TMAssistantFile", paramOutputStream, "", new Object[0]);
+        ac.printErrStackTrace("TMAssistantFile", paramOutputStream, "", new Object[0]);
         TMLog.w("TMAssistantFile", "writeData2 failed " + paramOutputStream.getMessage());
         AppMethodBeat.o(177060);
       }
@@ -205,7 +205,7 @@ public class TMAssistantFile
     //   53: ldc 190
     //   55: iconst_0
     //   56: anewarray 4	java/lang/Object
-    //   59: invokestatic 196	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   59: invokestatic 196	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   62: goto -36 -> 26
     //   65: astore_1
     //   66: aload_0
@@ -327,7 +327,7 @@ public class TMAssistantFile
     //   63: ldc 190
     //   65: iconst_0
     //   66: anewarray 4	java/lang/Object
-    //   69: invokestatic 196	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   69: invokestatic 196	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   72: ldc 11
     //   74: ldc_w 270
     //   77: aload_3
@@ -440,7 +440,7 @@ public class TMAssistantFile
           try
           {
             ensureFilePath(str);
-            this.mFileOutputStream = i.cM(str, true);
+            this.mFileOutputStream = i.cS(str, true);
             if (this.mWriteDataBuffer == null)
             {
               this.mWriteDataBuffer = new byte[16384];
@@ -455,7 +455,7 @@ public class TMAssistantFile
           }
           catch (Exception paramArrayOfByte)
           {
-            ad.printErrStackTrace("TMAssistantFile", paramArrayOfByte, "", new Object[0]);
+            ac.printErrStackTrace("TMAssistantFile", paramArrayOfByte, "", new Object[0]);
             TMLog.w("TMAssistantFile", "write failed" + paramArrayOfByte.getMessage());
             AppMethodBeat.o(102418);
             paramBoolean = bool;
@@ -485,7 +485,7 @@ public class TMAssistantFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.TMAssistantFile
  * JD-Core Version:    0.7.0.1
  */

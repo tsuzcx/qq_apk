@@ -4,27 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.normsg.a.b;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.acp;
-import com.tencent.mm.protocal.protobuf.boo;
-import com.tencent.mm.protocal.protobuf.bop;
-import com.tencent.mm.protocal.protobuf.boq;
-import com.tencent.mm.protocal.protobuf.dfm;
-import com.tencent.mm.protocal.protobuf.dow;
-import com.tencent.mm.protocal.protobuf.gm;
-import com.tencent.mm.protocal.protobuf.gz;
-import com.tencent.mm.protocal.protobuf.hb;
-import com.tencent.mm.protocal.protobuf.hc;
-import com.tencent.mm.protocal.protobuf.ik;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.ado;
+import com.tencent.mm.protocal.protobuf.bte;
+import com.tencent.mm.protocal.protobuf.btf;
+import com.tencent.mm.protocal.protobuf.btg;
+import com.tencent.mm.protocal.protobuf.dlb;
+import com.tencent.mm.protocal.protobuf.dun;
+import com.tencent.mm.protocal.protobuf.gq;
+import com.tencent.mm.protocal.protobuf.hd;
+import com.tencent.mm.protocal.protobuf.hf;
+import com.tencent.mm.protocal.protobuf.hg;
+import com.tencent.mm.protocal.protobuf.iq;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.i;
-import com.tencent.mm.storage.aa;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.bw;
 import java.io.IOException;
 
 public final class j
@@ -33,19 +33,19 @@ public final class j
     extends j.h
     implements l.b
   {
-    public hb Cqm;
+    public hf DIE;
     public String username;
     
     public a()
     {
       AppMethodBeat.i(133087);
-      this.Cqm = new hb();
+      this.DIE = new hf();
       AppMethodBeat.o(133087);
     }
     
     public final int getFuncId()
     {
-      if (f.CpT) {
+      if (f.DIl) {
         return 763;
       }
       return 702;
@@ -53,7 +53,7 @@ public final class j
     
     public final String getUri()
     {
-      if (f.CpT) {
+      if (f.DIl) {
         return "/cgi-bin/micromsg-bin/secautoauth";
       }
       return "/cgi-bin/micromsg-bin/autoauth";
@@ -63,7 +63,7 @@ public final class j
     {
       int j = -1;
       AppMethodBeat.i(133088);
-      a.qL("");
+      a.ua("");
       int k = getSceneStatus();
       int i;
       Object localObject1;
@@ -71,50 +71,50 @@ public final class j
       if (k == 12)
       {
         i = 1;
-        ad.d("MicroMsg.AutoReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-        setRsaInfo(ac.eBY());
-        if ((10002 == ab.hVC) && (ab.hVD > 0))
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.AutoReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+        setRsaInfo(ac.eRt());
+        if ((10002 == com.tencent.mm.platformtools.ab.ivG) && (com.tencent.mm.platformtools.ab.ivH > 0))
         {
-          ab.hVD = 0;
-          ac.af("", "", 0);
+          com.tencent.mm.platformtools.ab.ivH = 0;
+          ac.ag("", "", 0);
         }
-        localObject1 = this.Cqm.CBY;
-        ((gz)localObject1).setBaseRequest(l.a(this));
-        ad.i("MicroMsg.AutoReq", "summerauth autoauth toProtoBuf uin[%d]", new Object[] { Integer.valueOf(getUin()) });
-        ((gz)localObject1).sul = com.tencent.mm.compatible.deviceinfo.q.cG(true);
-        ((gz)localObject1).CBO = b.ufs.Ix(i);
-        ((gz)localObject1).CBP = 0;
-        ((gz)localObject1).CBQ = a.aeM();
-        ((gz)localObject1).ijP = com.tencent.mm.sdk.platformtools.bt.iO(aj.getContext());
-        ((gz)localObject1).mAU = d.DEVICE_NAME;
-        ((gz)localObject1).CBS = com.tencent.mm.storage.bt.eMY();
-        ((gz)localObject1).oXs = com.tencent.mm.sdk.platformtools.ac.eFu();
-        ((gz)localObject1).oXr = com.tencent.mm.sdk.platformtools.bt.eGH();
-        ((gz)localObject1).Ctl = i.cJR;
-        g.afC();
-        localObject2 = (String)g.afB().gcR.get(18);
-        ad.d("MicroMsg.AutoReq", "summerecdh ksid:%s, flag:%d", new Object[] { localObject2, Integer.valueOf(((gz)localObject1).CBN.CEa) });
-        ((gz)localObject1).CBN.CDY.CGx = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.sdk.platformtools.bt.aGd((String)localObject2));
+        localObject1 = this.DIE.DUv;
+        ((hd)localObject1).setBaseRequest(l.a(this));
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.AutoReq", "summerauth autoauth toProtoBuf uin[%d]", new Object[] { Integer.valueOf(getUin()) });
+        ((hd)localObject1).tCb = com.tencent.mm.compatible.deviceinfo.q.cF(true);
+        ((hd)localObject1).DUm = b.vor.Kw(i);
+        ((hd)localObject1).DUn = 0;
+        ((hd)localObject1).DUo = a.agc();
+        ((hd)localObject1).iJW = bs.iZ(ai.getContext());
+        ((hd)localObject1).ncV = d.DEVICE_NAME;
+        ((hd)localObject1).DUp = bw.fcC();
+        ((hd)localObject1).pAD = com.tencent.mm.sdk.platformtools.ab.eUO();
+        ((hd)localObject1).pAC = bs.eWc();
+        ((hd)localObject1).DLC = i.cGY;
+        g.agS();
+        localObject2 = (String)g.agR().ghx.get(18);
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.AutoReq", "summerecdh ksid:%s, flag:%d", new Object[] { localObject2, Integer.valueOf(((hd)localObject1).DUl.DWA) });
+        ((hd)localObject1).DUl.DWy.DYX = new SKBuiltinBuffer_t().setBuffer(bs.aLu((String)localObject2));
       }
       for (;;)
       {
         try
         {
-          localObject2 = b.ufs.cWU();
+          localObject2 = b.vor.dkC();
           if (localObject2 == null) {
             continue;
           }
           i = localObject2.length;
-          ad.d("MicroMsg.AutoReq", "[tomys] ccd set on auto auth, len: %s", new Object[] { Integer.valueOf(i) });
-          localObject3 = new dow();
-          ((dow)localObject3).EFc = new SKBuiltinBuffer_t().setBuffer((byte[])localObject2);
-          ((dow)localObject3).EFg = new SKBuiltinBuffer_t().setBuffer(b.ufs.cWX());
-          if (((dow)localObject3).EFg == null) {
+          com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.AutoReq", "[tomys] ccd set on auto auth, len: %s", new Object[] { Integer.valueOf(i) });
+          localObject3 = new dun();
+          ((dun)localObject3).Gco = new SKBuiltinBuffer_t().setBuffer((byte[])localObject2);
+          ((dun)localObject3).Gcs = new SKBuiltinBuffer_t().setBuffer(b.vor.dkF());
+          if (((dun)localObject3).Gcs == null) {
             continue;
           }
-          i = ((dow)localObject3).EFg.getILen();
-          ad.d("MicroMsg.AutoReq", "[debug] devtok on auto auth, len: %s", new Object[] { Integer.valueOf(i) });
-          ((gz)localObject1).CBU = new SKBuiltinBuffer_t().setBuffer(((dow)localObject3).toByteArray());
+          i = ((dun)localObject3).Gcs.getILen();
+          com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.AutoReq", "[debug] devtok on auto auth, len: %s", new Object[] { Integer.valueOf(i) });
+          ((hd)localObject1).DUr = new SKBuiltinBuffer_t().setBuffer(((dun)localObject3).toByteArray());
         }
         catch (Throwable localThrowable)
         {
@@ -122,23 +122,23 @@ public final class j
           Object localObject5;
           Object localObject4;
           int m;
-          ad.printErrStackTrace("MicroMsg.AutoReq", localThrowable, "cc throws exception.", new Object[0]);
+          com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.AutoReq", localThrowable, "cc throws exception.", new Object[0]);
           continue;
           i = localObject5.length;
           continue;
           j = localObject4.length;
           continue;
         }
-        localObject2 = this.Cqm.CBX;
-        localObject3 = new acp();
-        ((acp)localObject3).DcY = 713;
+        localObject2 = this.DIE.DUu;
+        localObject3 = new ado();
+        ((ado)localObject3).Ewf = 713;
         localObject5 = new PByteArray();
         localObject4 = new PByteArray();
-        k = MMProtocalJni.generateECKey(((acp)localObject3).DcY, (PByteArray)localObject5, (PByteArray)localObject4);
+        k = MMProtocalJni.generateECKey(((ado)localObject3).Ewf, (PByteArray)localObject5, (PByteArray)localObject4);
         localObject5 = ((PByteArray)localObject5).value;
         localObject4 = ((PByteArray)localObject4).value;
-        cg((byte[])localObject4);
-        m = ((acp)localObject3).DcY;
+        cf((byte[])localObject4);
+        m = ((ado)localObject3).Ewf;
         if (localObject5 != null) {
           continue;
         }
@@ -146,23 +146,23 @@ public final class j
         if (localObject4 != null) {
           continue;
         }
-        ad.d("MicroMsg.AutoReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), com.tencent.mm.sdk.platformtools.bt.cv((byte[])localObject5), com.tencent.mm.sdk.platformtools.bt.cv((byte[])localObject4) });
-        ((acp)localObject3).CBW = new SKBuiltinBuffer_t().setBuffer((byte[])localObject5);
-        ((hc)localObject2).CCa = ((acp)localObject3);
-        ad.i("MicroMsg.AutoReq", "summerauth auto IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d]", new Object[] { ((gz)localObject1).sul, ((gz)localObject1).CBO, ((gz)localObject1).CBQ, ((gz)localObject1).ijP, ((gz)localObject1).mAU, ((gz)localObject1).CBS, ((gz)localObject1).oXs, ((gz)localObject1).oXr, Integer.valueOf(((gz)localObject1).Ctl), Integer.valueOf(i.cJR), Integer.valueOf(i.ETt) });
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.AutoReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), bs.cu((byte[])localObject5), bs.cu((byte[])localObject4) });
+        ((ado)localObject3).DUt = new SKBuiltinBuffer_t().setBuffer((byte[])localObject5);
+        ((hg)localObject2).DUx = ((ado)localObject3);
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.AutoReq", "summerauth auto IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d]", new Object[] { ((hd)localObject1).tCb, ((hd)localObject1).DUm, ((hd)localObject1).DUo, ((hd)localObject1).iJW, ((hd)localObject1).ncV, ((hd)localObject1).DUp, ((hd)localObject1).pAD, ((hd)localObject1).pAC, Integer.valueOf(((hd)localObject1).DLC), Integer.valueOf(i.cGY), Integer.valueOf(i.GqG) });
         try
         {
-          localObject1 = this.Cqm.toByteArray();
+          localObject1 = this.DIE.toByteArray();
           AppMethodBeat.o(133088);
           return localObject1;
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.AutoReq", "summerauth toProtoBuf :%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(localIOException) });
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.AutoReq", "summerauth toProtoBuf :%s", new Object[] { bs.m(localIOException) });
           AppMethodBeat.o(133088);
         }
-        g.afC();
-        i = g.afB().gcR.Wv(46);
+        g.agS();
+        i = g.agR().ghx.YF(46);
         break;
         i = -1;
         continue;
@@ -181,25 +181,25 @@ public final class j
       AppMethodBeat.i(133089);
       try
       {
-        this.Cqo = ((dfm)this.Cqo.parseFrom(paramArrayOfByte));
-        l.a(this, this.Cqo.getBaseResponse());
-        this.fWJ = 0;
-        if ((this.Cqo.getBaseResponse().Ret == 0) && ((this.Cqo.EwP == null) || (this.Cqo.EwP.oXh == 0) || (com.tencent.mm.sdk.platformtools.bt.cw(z.a(this.Cqo.EwP.CBb)))))
+        this.DIG = ((dlb)this.DIG.parseFrom(paramArrayOfByte));
+        l.a(this, this.DIG.getBaseResponse());
+        this.gbq = 0;
+        if ((this.DIG.getBaseResponse().Ret == 0) && ((this.DIG.FTR == null) || (this.DIG.FTR.pAs == 0) || (bs.cv(z.a(this.DIG.FTR.DTz)))))
         {
-          ad.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
-          this.Cqo.getBaseResponse().Ret = -1;
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
+          this.DIG.getBaseResponse().Ret = -1;
         }
         paramArrayOfByte = getErrMsg();
-        ad.i("MicroMsg.MMAuth", "summerauthkick auto errmsg[%s]", new Object[] { paramArrayOfByte });
-        a.qL(paramArrayOfByte);
-        int i = this.Cqo.getBaseResponse().Ret;
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMAuth", "summerauthkick auto errmsg[%s]", new Object[] { paramArrayOfByte });
+        a.ua(paramArrayOfByte);
+        int i = this.DIG.getBaseResponse().Ret;
         AppMethodBeat.o(133089);
         return i;
       }
       catch (IOException paramArrayOfByte)
       {
-        ad.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(paramArrayOfByte) });
-        this.Cqo.getBaseResponse().Ret = -1;
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { bs.m(paramArrayOfByte) });
+        this.DIG.getBaseResponse().Ret = -1;
         AppMethodBeat.o(133089);
       }
       return -1;
@@ -210,14 +210,14 @@ public final class j
     extends l.d
     implements l.b
   {
-    public hb Cqm;
-    private byte[] Cqn;
+    public hf DIE;
+    private byte[] DIF;
     public String username;
     
     public c()
     {
       AppMethodBeat.i(133090);
-      this.Cqm = new hb();
+      this.DIE = new hf();
       AppMethodBeat.o(133090);
     }
     
@@ -230,52 +230,52 @@ public final class j
     {
       int j = -1;
       AppMethodBeat.i(133091);
-      a.qL("");
+      a.ua("");
       int k = getSceneStatus();
       int i;
       Object localObject1;
       Object localObject2;
-      acp localacp;
+      ado localado;
       Object localObject4;
       Object localObject3;
       int m;
       if (k == 12)
       {
         i = 1;
-        ad.d("MicroMsg.MMAuth", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-        setRsaInfo(ac.eBY());
-        if ((10002 == ab.hVC) && (ab.hVD > 0))
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.MMAuth", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+        setRsaInfo(ac.eRt());
+        if ((10002 == com.tencent.mm.platformtools.ab.ivG) && (com.tencent.mm.platformtools.ab.ivH > 0))
         {
-          ab.hVD = 0;
-          ac.af("", "", 0);
+          com.tencent.mm.platformtools.ab.ivH = 0;
+          ac.ag("", "", 0);
         }
-        localObject1 = this.Cqm.CBY;
-        ((gz)localObject1).setBaseRequest(l.a(this));
-        ad.i("MicroMsg.MMAuth", "summerauth autoauth toProtoBuf uin[%d]", new Object[] { Integer.valueOf(getUin()) });
-        ((gz)localObject1).sul = com.tencent.mm.compatible.deviceinfo.q.WT();
-        ((gz)localObject1).CBO = b.ufs.Ix(i);
-        ((gz)localObject1).CBP = 0;
-        ((gz)localObject1).CBQ = a.aeM();
-        ((gz)localObject1).ijP = com.tencent.mm.sdk.platformtools.bt.iO(aj.getContext());
-        ((gz)localObject1).mAU = d.DEVICE_NAME;
-        ((gz)localObject1).CBS = com.tencent.mm.storage.bt.eMY();
-        ((gz)localObject1).oXs = com.tencent.mm.sdk.platformtools.ac.eFu();
-        ((gz)localObject1).oXr = com.tencent.mm.sdk.platformtools.bt.eGH();
-        ((gz)localObject1).Ctl = i.cJR;
-        g.afC();
-        localObject2 = (String)g.afB().gcR.get(18);
-        ad.d("MicroMsg.MMAuth", "summerecdh ksid:%s, flag:%d", new Object[] { localObject2, Integer.valueOf(((gz)localObject1).CBN.CEa) });
-        ((gz)localObject1).CBN.CDY.CGx = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.sdk.platformtools.bt.aGd((String)localObject2));
-        localObject2 = this.Cqm.CBX;
-        localacp = new acp();
-        localacp.DcY = 713;
+        localObject1 = this.DIE.DUv;
+        ((hd)localObject1).setBaseRequest(l.a(this));
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMAuth", "summerauth autoauth toProtoBuf uin[%d]", new Object[] { Integer.valueOf(getUin()) });
+        ((hd)localObject1).tCb = com.tencent.mm.compatible.deviceinfo.q.XQ();
+        ((hd)localObject1).DUm = b.vor.Kw(i);
+        ((hd)localObject1).DUn = 0;
+        ((hd)localObject1).DUo = a.agc();
+        ((hd)localObject1).iJW = bs.iZ(ai.getContext());
+        ((hd)localObject1).ncV = d.DEVICE_NAME;
+        ((hd)localObject1).DUp = bw.fcC();
+        ((hd)localObject1).pAD = com.tencent.mm.sdk.platformtools.ab.eUO();
+        ((hd)localObject1).pAC = bs.eWc();
+        ((hd)localObject1).DLC = i.cGY;
+        g.agS();
+        localObject2 = (String)g.agR().ghx.get(18);
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.MMAuth", "summerecdh ksid:%s, flag:%d", new Object[] { localObject2, Integer.valueOf(((hd)localObject1).DUl.DWA) });
+        ((hd)localObject1).DUl.DWy.DYX = new SKBuiltinBuffer_t().setBuffer(bs.aLu((String)localObject2));
+        localObject2 = this.DIE.DUu;
+        localado = new ado();
+        localado.Ewf = 713;
         localObject4 = new PByteArray();
         localObject3 = new PByteArray();
-        k = MMProtocalJni.generateECKey(localacp.DcY, (PByteArray)localObject4, (PByteArray)localObject3);
+        k = MMProtocalJni.generateECKey(localado.Ewf, (PByteArray)localObject4, (PByteArray)localObject3);
         localObject4 = ((PByteArray)localObject4).value;
         localObject3 = ((PByteArray)localObject3).value;
-        this.Cqn = ((byte[])localObject3);
-        m = localacp.DcY;
+        this.DIF = ((byte[])localObject3);
+        m = localado.Ewf;
         if (localObject4 != null) {
           break label624;
         }
@@ -287,23 +287,23 @@ public final class j
       }
       for (;;)
       {
-        ad.d("MicroMsg.MMAuth", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), com.tencent.mm.sdk.platformtools.bt.cv((byte[])localObject4), com.tencent.mm.sdk.platformtools.bt.cv((byte[])localObject3) });
-        localacp.CBW = new SKBuiltinBuffer_t().setBuffer((byte[])localObject4);
-        ((hc)localObject2).CCa = localacp;
-        ad.i("MicroMsg.MMAuth", "summerauth auto IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d]", new Object[] { ((gz)localObject1).sul, ((gz)localObject1).CBO, ((gz)localObject1).CBQ, ((gz)localObject1).ijP, ((gz)localObject1).mAU, ((gz)localObject1).CBS, ((gz)localObject1).oXs, ((gz)localObject1).oXr, Integer.valueOf(((gz)localObject1).Ctl), Integer.valueOf(i.cJR), Integer.valueOf(i.ETt) });
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.MMAuth", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), bs.cu((byte[])localObject4), bs.cu((byte[])localObject3) });
+        localado.DUt = new SKBuiltinBuffer_t().setBuffer((byte[])localObject4);
+        ((hg)localObject2).DUx = localado;
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMAuth", "summerauth auto IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d]", new Object[] { ((hd)localObject1).tCb, ((hd)localObject1).DUm, ((hd)localObject1).DUo, ((hd)localObject1).iJW, ((hd)localObject1).ncV, ((hd)localObject1).DUp, ((hd)localObject1).pAD, ((hd)localObject1).pAC, Integer.valueOf(((hd)localObject1).DLC), Integer.valueOf(i.cGY), Integer.valueOf(i.GqG) });
         try
         {
-          localObject1 = this.Cqm.toByteArray();
+          localObject1 = this.DIE.toByteArray();
           AppMethodBeat.o(133091);
           return localObject1;
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.MMAuth", "summerauth toProtoBuf :%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(localIOException) });
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMAuth", "summerauth toProtoBuf :%s", new Object[] { bs.m(localIOException) });
           AppMethodBeat.o(133091);
         }
-        g.afC();
-        i = g.afB().gcR.Wv(46);
+        g.agS();
+        i = g.agR().ghx.YF(46);
         break;
         label624:
         i = localObject4.length;
@@ -319,13 +319,13 @@ public final class j
   {
     public abstract void a(j.h paramh, j.i parami, int paramInt1, int paramInt2, String paramString);
     
-    public abstract int arZ();
+    public abstract int ayQ();
     
     public abstract com.tencent.mm.network.q da(int paramInt1, int paramInt2);
     
     public static final class a
     {
-      public static j.e Cqp;
+      public static j.e DIH;
     }
   }
   
@@ -333,20 +333,20 @@ public final class j
     extends j.h
     implements l.b
   {
-    public bop Cqq;
-    public boolean Cqr;
+    public btf DII;
+    public boolean DIJ;
     
     public f()
     {
       AppMethodBeat.i(133094);
-      this.Cqq = new bop();
-      this.Cqr = false;
+      this.DII = new btf();
+      this.DIJ = false;
       AppMethodBeat.o(133094);
     }
     
     public final int getFuncId()
     {
-      if (f.CpT) {
+      if (f.DIl) {
         return 252;
       }
       return 701;
@@ -354,7 +354,7 @@ public final class j
     
     public final String getUri()
     {
-      if (f.CpT) {
+      if (f.DIl) {
         return "/cgi-bin/micromsg-bin/secmanualauth";
       }
       return "/cgi-bin/micromsg-bin/manualauth";
@@ -364,7 +364,7 @@ public final class j
     {
       int j = -1;
       AppMethodBeat.i(133095);
-      a.qL("");
+      a.ua("");
       int k = getSceneStatus();
       int i;
       Object localObject1;
@@ -372,74 +372,74 @@ public final class j
       if (k == 16)
       {
         i = 1;
-        ad.d("MicroMsg.ManualReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-        if ((10002 == ab.hVC) && (ab.hVD > 0))
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.ManualReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+        if ((10002 == com.tencent.mm.platformtools.ab.ivG) && (com.tencent.mm.platformtools.ab.ivH > 0))
         {
-          ab.hVD = 0;
-          ac.af("", "", 0);
+          com.tencent.mm.platformtools.ab.ivH = 0;
+          ac.ag("", "", 0);
         }
-        setRsaInfo(ac.eBY());
-        localObject1 = this.Cqq.DLY;
-        ((boo)localObject1).setBaseRequest(l.a(this));
-        ((boo)localObject1).sul = com.tencent.mm.compatible.deviceinfo.q.cG(true);
-        ((boo)localObject1).CBO = b.ufs.Ix(i);
-        ((boo)localObject1).CBP = 0;
-        ((boo)localObject1).CBQ = a.aeM();
-        ((boo)localObject1).ijP = com.tencent.mm.sdk.platformtools.bt.iO(aj.getContext());
-        ((boo)localObject1).mAU = d.DEVICE_NAME;
-        ((boo)localObject1).CBS = com.tencent.mm.storage.bt.eMY();
-        ((boo)localObject1).oXs = com.tencent.mm.sdk.platformtools.ac.eFu();
-        ((boo)localObject1).oXr = com.tencent.mm.sdk.platformtools.bt.eGH();
-        ((boo)localObject1).Ctl = i.cJR;
-        if ((10012 == ab.hVC) && (ab.hVD > 0)) {
-          ((boo)localObject1).Ctl = ab.hVD;
+        setRsaInfo(ac.eRt());
+        localObject1 = this.DII.Fin;
+        ((bte)localObject1).setBaseRequest(l.a(this));
+        ((bte)localObject1).tCb = com.tencent.mm.compatible.deviceinfo.q.cF(true);
+        ((bte)localObject1).DUm = b.vor.Kw(i);
+        ((bte)localObject1).DUn = 0;
+        ((bte)localObject1).DUo = a.agc();
+        ((bte)localObject1).iJW = bs.iZ(ai.getContext());
+        ((bte)localObject1).ncV = d.DEVICE_NAME;
+        ((bte)localObject1).DUp = bw.fcC();
+        ((bte)localObject1).pAD = com.tencent.mm.sdk.platformtools.ab.eUO();
+        ((bte)localObject1).pAC = bs.eWc();
+        ((bte)localObject1).DLC = i.cGY;
+        if ((10012 == com.tencent.mm.platformtools.ab.ivG) && (com.tencent.mm.platformtools.ab.ivH > 0)) {
+          ((bte)localObject1).DLC = com.tencent.mm.platformtools.ab.ivH;
         }
-        ((boo)localObject1).fVw = d.CpE;
-        ((boo)localObject1).fVv = d.CpF;
-        ((boo)localObject1).DLT = d.CpG;
-        ((boo)localObject1).Ddm = com.tencent.mm.compatible.deviceinfo.q.getSimCountryIso();
-        g.afC();
-        localObject2 = (String)g.afB().gcR.get(18);
-        ad.d("MicroMsg.ManualReq", "summerauth ksid:%s authreq flag:%d", new Object[] { localObject2, Integer.valueOf(((boo)localObject1).CBN.CEa) });
-        ((boo)localObject1).CBN.CDY.CGx = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.sdk.platformtools.bt.aGd((String)localObject2));
+        ((bte)localObject1).fZr = d.DHW;
+        ((bte)localObject1).fZq = d.DHX;
+        ((bte)localObject1).Fii = d.DHY;
+        ((bte)localObject1).Ews = com.tencent.mm.compatible.deviceinfo.q.getSimCountryIso();
+        g.agS();
+        localObject2 = (String)g.agR().ghx.get(18);
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.ManualReq", "summerauth ksid:%s authreq flag:%d", new Object[] { localObject2, Integer.valueOf(((bte)localObject1).DUl.DWA) });
+        ((bte)localObject1).DUl.DWy.DYX = new SKBuiltinBuffer_t().setBuffer(bs.aLu((String)localObject2));
       }
       for (;;)
       {
         try
         {
-          localObject2 = b.ufs.cWU();
+          localObject2 = b.vor.dkC();
           if (localObject2 == null) {
             continue;
           }
           i = localObject2.length;
-          ad.d("MicroMsg.ManualReq", "[debug] ccd set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-          localObject3 = new dow();
-          if ((2 == ((boo)localObject1).DLW) || (1 == ((boo)localObject1).DLW))
+          com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.ManualReq", "[debug] ccd set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
+          localObject3 = new dun();
+          if ((2 == ((bte)localObject1).Fil) || (1 == ((bte)localObject1).Fil))
           {
-            if (b.ufs.aju("ie_login_id")) {
-              b.ufs.ajt("ie_login_id");
+            if (b.vor.aos("ie_login_id")) {
+              b.vor.aor("ie_login_id");
             }
-            ((dow)localObject3).EFa = new SKBuiltinBuffer_t().setBuffer(b.ufs.ajv("ie_login_id"));
-            if (((dow)localObject3).EFa == null) {
+            ((dun)localObject3).Gcm = new SKBuiltinBuffer_t().setBuffer(b.vor.aot("ie_login_id"));
+            if (((dun)localObject3).Gcm == null) {
               continue;
             }
-            i = ((dow)localObject3).EFa.getILen();
-            ad.d("MicroMsg.ManualReq", "[debug] wcstf set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-            ((dow)localObject3).EFb = new SKBuiltinBuffer_t().setBuffer(b.ufs.ajy("ce_login_id"));
-            if (((dow)localObject3).EFb == null) {
+            i = ((dun)localObject3).Gcm.getILen();
+            com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.ManualReq", "[debug] wcstf set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
+            ((dun)localObject3).Gcn = new SKBuiltinBuffer_t().setBuffer(b.vor.aow("ce_login_id"));
+            if (((dun)localObject3).Gcn == null) {
               continue;
             }
-            i = ((dow)localObject3).EFb.getILen();
-            ad.d("MicroMsg.ManualReq", "[debug] wcste set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
+            i = ((dun)localObject3).Gcn.getILen();
+            com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.ManualReq", "[debug] wcste set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
           }
-          ((dow)localObject3).EFg = new SKBuiltinBuffer_t().setBuffer(b.ufs.cWX());
-          if (((dow)localObject3).EFg == null) {
+          ((dun)localObject3).Gcs = new SKBuiltinBuffer_t().setBuffer(b.vor.dkF());
+          if (((dun)localObject3).Gcs == null) {
             continue;
           }
-          i = ((dow)localObject3).EFg.getILen();
-          ad.d("MicroMsg.ManualReq", "[debug] devtok on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-          ((dow)localObject3).EFc = new SKBuiltinBuffer_t().setBuffer((byte[])localObject2);
-          ((boo)localObject1).CBU = new SKBuiltinBuffer_t().setBuffer(((dow)localObject3).toByteArray());
+          i = ((dun)localObject3).Gcs.getILen();
+          com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.ManualReq", "[debug] devtok on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
+          ((dun)localObject3).Gco = new SKBuiltinBuffer_t().setBuffer((byte[])localObject2);
+          ((bte)localObject1).DUr = new SKBuiltinBuffer_t().setBuffer(((dun)localObject3).toByteArray());
         }
         catch (Throwable localThrowable)
         {
@@ -447,24 +447,24 @@ public final class j
           Object localObject5;
           Object localObject4;
           int m;
-          ad.printErrStackTrace("MicroMsg.ManualReq", localThrowable, "cc throws exception.", new Object[0]);
+          com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.ManualReq", localThrowable, "cc throws exception.", new Object[0]);
           continue;
           i = localObject5.length;
           continue;
           j = localObject4.length;
           continue;
         }
-        localObject2 = this.Cqq.DLX;
-        ((boq)localObject2).CFU = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.sdk.platformtools.bt.eGG());
-        localObject3 = new acp();
-        ((acp)localObject3).DcY = 713;
+        localObject2 = this.DII.Fim;
+        ((btg)localObject2).DYu = new SKBuiltinBuffer_t().setBuffer(bs.eWb());
+        localObject3 = new ado();
+        ((ado)localObject3).Ewf = 713;
         localObject5 = new PByteArray();
         localObject4 = new PByteArray();
-        k = MMProtocalJni.generateECKey(((acp)localObject3).DcY, (PByteArray)localObject5, (PByteArray)localObject4);
+        k = MMProtocalJni.generateECKey(((ado)localObject3).Ewf, (PByteArray)localObject5, (PByteArray)localObject4);
         localObject5 = ((PByteArray)localObject5).value;
         localObject4 = ((PByteArray)localObject4).value;
-        cg((byte[])localObject4);
-        m = ((acp)localObject3).DcY;
+        cf((byte[])localObject4);
+        m = ((ado)localObject3).Ewf;
         if (localObject5 != null) {
           continue;
         }
@@ -472,28 +472,28 @@ public final class j
         if (localObject4 != null) {
           continue;
         }
-        ad.d("MicroMsg.ManualReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), com.tencent.mm.sdk.platformtools.bt.cv((byte[])localObject5), com.tencent.mm.sdk.platformtools.bt.cv((byte[])localObject4) });
-        ((acp)localObject3).CBW = new SKBuiltinBuffer_t().setBuffer((byte[])localObject5);
-        ((boq)localObject2).CCa = ((acp)localObject3);
-        ad.i("MicroMsg.ManualReq", "summerauth manual IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d] DeviceBrand:%s DeviceModel:%s OSType:%s RealCountry:%s", new Object[] { ((boo)localObject1).sul, ((boo)localObject1).CBO, ((boo)localObject1).CBQ, ((boo)localObject1).ijP, ((boo)localObject1).mAU, ((boo)localObject1).CBS, ((boo)localObject1).oXs, ((boo)localObject1).oXr, Integer.valueOf(((boo)localObject1).Ctl), Integer.valueOf(i.cJR), Integer.valueOf(i.ETt), ((boo)localObject1).fVw, ((boo)localObject1).fVv, ((boo)localObject1).DLT, ((boo)localObject1).Ddm });
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.ManualReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), bs.cu((byte[])localObject5), bs.cu((byte[])localObject4) });
+        ((ado)localObject3).DUt = new SKBuiltinBuffer_t().setBuffer((byte[])localObject5);
+        ((btg)localObject2).DUx = ((ado)localObject3);
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ManualReq", "summerauth manual IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d] DeviceBrand:%s DeviceModel:%s OSType:%s RealCountry:%s", new Object[] { ((bte)localObject1).tCb, ((bte)localObject1).DUm, ((bte)localObject1).DUo, ((bte)localObject1).iJW, ((bte)localObject1).ncV, ((bte)localObject1).DUp, ((bte)localObject1).pAD, ((bte)localObject1).pAC, Integer.valueOf(((bte)localObject1).DLC), Integer.valueOf(i.cGY), Integer.valueOf(i.GqG), ((bte)localObject1).fZr, ((bte)localObject1).fZq, ((bte)localObject1).Fii, ((bte)localObject1).Ews });
         try
         {
-          localObject1 = this.Cqq.toByteArray();
+          localObject1 = this.DII.toByteArray();
           AppMethodBeat.o(133095);
           return localObject1;
         }
         catch (IOException localIOException)
         {
-          ad.e("MicroMsg.ManualReq", "summerauth toProtoBuf :%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(localIOException) });
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.ManualReq", "summerauth toProtoBuf :%s", new Object[] { bs.m(localIOException) });
           AppMethodBeat.o(133095);
         }
-        if (this.Cqr)
+        if (this.DIJ)
         {
           i = 3;
           break;
         }
-        g.afC();
-        i = g.afB().gcR.Wv(46);
+        g.agS();
+        i = g.agR().ghx.YF(46);
         break;
         i = -1;
         continue;
@@ -516,25 +516,25 @@ public final class j
       AppMethodBeat.i(133096);
       try
       {
-        this.Cqo = ((dfm)this.Cqo.parseFrom(paramArrayOfByte));
-        l.a(this, this.Cqo.getBaseResponse());
-        this.fWJ = 0;
-        if ((this.Cqo.getBaseResponse().Ret == 0) && ((this.Cqo.EwP == null) || (this.Cqo.EwP.oXh == 0) || (com.tencent.mm.sdk.platformtools.bt.cw(z.a(this.Cqo.EwP.CBb)))))
+        this.DIG = ((dlb)this.DIG.parseFrom(paramArrayOfByte));
+        l.a(this, this.DIG.getBaseResponse());
+        this.gbq = 0;
+        if ((this.DIG.getBaseResponse().Ret == 0) && ((this.DIG.FTR == null) || (this.DIG.FTR.pAs == 0) || (bs.cv(z.a(this.DIG.FTR.DTz)))))
         {
-          ad.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
-          this.Cqo.getBaseResponse().Ret = -1;
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
+          this.DIG.getBaseResponse().Ret = -1;
         }
         paramArrayOfByte = getErrMsg();
-        ad.i("MicroMsg.MMAuth", "summerauthkick manual errmsg[%s]", new Object[] { paramArrayOfByte });
-        a.qL(paramArrayOfByte);
-        int i = this.Cqo.getBaseResponse().Ret;
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMAuth", "summerauthkick manual errmsg[%s]", new Object[] { paramArrayOfByte });
+        a.ua(paramArrayOfByte);
+        int i = this.DIG.getBaseResponse().Ret;
         AppMethodBeat.o(133096);
         return i;
       }
       catch (IOException paramArrayOfByte)
       {
-        ad.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { com.tencent.mm.sdk.platformtools.bt.m(paramArrayOfByte) });
-        this.Cqo.getBaseResponse().Ret = -1;
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { bs.m(paramArrayOfByte) });
+        this.DIG.getBaseResponse().Ret = -1;
         AppMethodBeat.o(133096);
       }
       return -1;
@@ -545,14 +545,14 @@ public final class j
     extends l.d
     implements l.b
   {
-    public byte[] Cqn;
+    public byte[] DIF;
     
-    public final void cg(byte[] paramArrayOfByte)
+    public final void cf(byte[] paramArrayOfByte)
     {
       if (paramArrayOfByte != null) {}
       for (;;)
       {
-        this.Cqn = paramArrayOfByte;
+        this.DIF = paramArrayOfByte;
         return;
         paramArrayOfByte = new byte[0];
       }
@@ -565,15 +565,15 @@ public final class j
     extends l.e
     implements l.c
   {
-    public dfm Cqo = new dfm();
-    public byte[] Cqs;
-    private byte[] Cqt;
-    public int fWJ = 0;
-    private byte[] hKA;
-    public String hKD;
-    private byte[] hKz;
+    public dlb DIG = new dlb();
+    public byte[] DIK;
+    private byte[] DIL;
+    public String diA;
+    public int gbq = 0;
+    private byte[] ikW;
+    private byte[] ikX;
     
-    public final byte[] Vz(int paramInt)
+    public final byte[] XI(int paramInt)
     {
       byte[] arrayOfByte = new byte[0];
       switch (paramInt)
@@ -585,30 +585,30 @@ public final class j
       }
       for (int i = -1;; i = arrayOfByte.length)
       {
-        ad.i("MicroMsg.MMAuth", "summerauths getSession seesionKeyType[%s] [%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMAuth", "summerauths getSession seesionKeyType[%s] [%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
         return arrayOfByte;
-        arrayOfByte = this.Cqt;
+        arrayOfByte = this.DIL;
         break;
-        arrayOfByte = this.hKz;
+        arrayOfByte = this.ikW;
         break;
-        arrayOfByte = this.hKA;
+        arrayOfByte = this.ikX;
         break;
       }
     }
     
     public final void b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
     {
-      this.Cqt = paramArrayOfByte1;
-      this.hKz = paramArrayOfByte2;
-      this.hKA = paramArrayOfByte3;
-      ad.i("MicroMsg.MMAuth", "summerauths setSession [%s] [%s], [%s]", new Object[] { com.tencent.mm.sdk.platformtools.bt.aGs(com.tencent.mm.sdk.platformtools.bt.cv(this.Cqt)), com.tencent.mm.sdk.platformtools.bt.aGs(com.tencent.mm.sdk.platformtools.bt.cv(this.hKz)), com.tencent.mm.sdk.platformtools.bt.aGs(com.tencent.mm.sdk.platformtools.bt.cv(this.hKA)) });
+      this.DIL = paramArrayOfByte1;
+      this.ikW = paramArrayOfByte2;
+      this.ikX = paramArrayOfByte3;
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMAuth", "summerauths setSession [%s] [%s], [%s]", new Object[] { bs.aLJ(bs.cu(this.DIL)), bs.aLJ(bs.cu(this.ikW)), bs.aLJ(bs.cu(this.ikX)) });
     }
     
     public byte[] getAuthResponse()
     {
       try
       {
-        byte[] arrayOfByte = this.Cqo.toByteArray();
+        byte[] arrayOfByte = this.DIG.toByteArray();
         return arrayOfByte;
       }
       catch (Exception localException) {}

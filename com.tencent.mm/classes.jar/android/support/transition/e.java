@@ -17,24 +17,24 @@ final class e
 {
   private final Matrix mMatrix = new Matrix();
   final View mView;
-  ViewGroup yi;
-  View yj;
-  int yk;
-  private int yl;
-  private int ym;
-  Matrix yn;
-  private final ViewTreeObserver.OnPreDrawListener yo = new ViewTreeObserver.OnPreDrawListener()
+  ViewGroup zg;
+  View zi;
+  int zj;
+  private int zk;
+  private int zl;
+  Matrix zm;
+  private final ViewTreeObserver.OnPreDrawListener zn = new ViewTreeObserver.OnPreDrawListener()
   {
     public final boolean onPreDraw()
     {
-      e.this.yn = e.this.mView.getMatrix();
+      e.this.zm = e.this.mView.getMatrix();
       t.W(e.this);
-      if ((e.this.yi != null) && (e.this.yj != null))
+      if ((e.this.zg != null) && (e.this.zi != null))
       {
-        e.this.yi.endViewTransition(e.this.yj);
-        t.W(e.this.yi);
-        e.this.yi = null;
-        e.this.yj = null;
+        e.this.zg.endViewTransition(e.this.zi);
+        t.W(e.this.zg);
+        e.this.zg = null;
+        e.this.zi = null;
       }
       return true;
     }
@@ -52,8 +52,8 @@ final class e
     paramView = E(paramView);
     if (paramView != null)
     {
-      paramView.yk -= 1;
-      if (paramView.yk <= 0)
+      paramView.zj -= 1;
+      if (paramView.zj <= 0)
       {
         Object localObject = paramView.getParent();
         if ((localObject instanceof ViewGroup))
@@ -95,14 +95,14 @@ final class e
       locale1 = new e(paramView);
       paramViewGroup.addView(locale1);
     }
-    locale1.yk += 1;
+    locale1.zj += 1;
     return locale1;
   }
   
   public final void a(ViewGroup paramViewGroup, View paramView)
   {
-    this.yi = paramViewGroup;
-    this.yj = paramView;
+    this.zg = paramViewGroup;
+    this.zi = paramView;
   }
   
   protected final void onAttachedToWindow()
@@ -115,15 +115,15 @@ final class e
     this.mView.getLocationOnScreen(arrayOfInt2);
     arrayOfInt2[0] = ((int)(arrayOfInt2[0] - this.mView.getTranslationX()));
     arrayOfInt2[1] = ((int)(arrayOfInt2[1] - this.mView.getTranslationY()));
-    this.yl = (arrayOfInt2[0] - arrayOfInt1[0]);
-    this.ym = (arrayOfInt2[1] - arrayOfInt1[1]);
-    this.mView.getViewTreeObserver().addOnPreDrawListener(this.yo);
+    this.zk = (arrayOfInt2[0] - arrayOfInt1[0]);
+    this.zl = (arrayOfInt2[1] - arrayOfInt1[1]);
+    this.mView.getViewTreeObserver().addOnPreDrawListener(this.zn);
     this.mView.setVisibility(4);
   }
   
   protected final void onDetachedFromWindow()
   {
-    this.mView.getViewTreeObserver().removeOnPreDrawListener(this.yo);
+    this.mView.getViewTreeObserver().removeOnPreDrawListener(this.zn);
     this.mView.setVisibility(0);
     this.mView.setTag(2131300585, null);
     super.onDetachedFromWindow();
@@ -131,8 +131,8 @@ final class e
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    this.mMatrix.set(this.yn);
-    this.mMatrix.postTranslate(this.yl, this.ym);
+    this.mMatrix.set(this.zm);
+    this.mMatrix.postTranslate(this.zk, this.zl);
     paramCanvas.setMatrix(this.mMatrix);
     this.mView.draw(paramCanvas);
   }
@@ -151,7 +151,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.e
  * JD-Core Version:    0.7.0.1
  */

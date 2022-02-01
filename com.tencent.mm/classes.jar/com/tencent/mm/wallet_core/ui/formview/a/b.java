@@ -12,7 +12,7 @@ public abstract interface b
   
   public abstract String c(WalletFormView paramWalletFormView, String paramString);
   
-  public abstract boolean dfX();
+  public abstract boolean dtE();
 }
 
 

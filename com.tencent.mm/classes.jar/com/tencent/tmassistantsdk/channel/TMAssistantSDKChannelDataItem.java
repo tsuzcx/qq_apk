@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.channel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.tmassistantsdk.util.Base64;
 import com.tencent.tmassistantsdk.util.Cryptor;
 import java.io.UnsupportedEncodingException;
@@ -99,7 +99,7 @@ public class TMAssistantSDKChannelDataItem
       long l1;
       long l2;
       int k;
-      ad.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(101865);
       return null;
     }
@@ -107,7 +107,7 @@ public class TMAssistantSDKChannelDataItem
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
         continue;
         paramArrayOfByte = null;
       }
@@ -152,7 +152,7 @@ public class TMAssistantSDKChannelDataItem
     }
     catch (JSONException localJSONException)
     {
-      ad.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localJSONException, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localJSONException, "", new Object[0]);
       AppMethodBeat.o(101866);
       return null;
     }
@@ -160,7 +160,7 @@ public class TMAssistantSDKChannelDataItem
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localUnsupportedEncodingException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localUnsupportedEncodingException, "", new Object[0]);
       }
     }
   }

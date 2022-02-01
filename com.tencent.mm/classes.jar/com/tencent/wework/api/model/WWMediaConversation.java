@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaConversation
   extends WWMediaMessage.WWMediaObject
 {
-  public byte[] ILX;
-  public WWMediaMessage.WWMediaObject ILY;
+  public byte[] Kyp;
+  public WWMediaMessage.WWMediaObject Kyq;
   public String name;
-  public String qjl;
-  public long vJM;
+  public String qRN;
+  public long wTQ;
   
   public final boolean checkArgs()
   {
@@ -20,22 +20,22 @@ public class WWMediaConversation
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.ILX != null) && (this.ILX.length > 10485760))
+    if ((this.Kyp != null) && (this.Kyp.length > 10485760))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.qjl != null) && (this.qjl.length() > 10240))
+    if ((this.qRN != null) && (this.qRN.length() > 10240))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.qjl != null) && (getFileSize(this.qjl) > 10485760))
+    if ((this.qRN != null) && (getFileSize(this.qRN) > 10485760))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.ILY != null) && (this.ILY.checkArgs()))
+    if ((this.Kyq != null) && (this.Kyq.checkArgs()))
     {
       AppMethodBeat.o(106538);
       return true;
@@ -49,10 +49,10 @@ public class WWMediaConversation
     AppMethodBeat.i(106539);
     super.toBundle(paramBundle);
     paramBundle.putString("_wwconvobject_name", this.name);
-    paramBundle.putLong("_wwconvobject_date", this.vJM);
-    paramBundle.putByteArray("_wwconvobject_avatarData", this.ILX);
-    paramBundle.putString("_wwconvobject_avatarPath", this.qjl);
-    paramBundle.putBundle("_wwconvobject_message", BaseMessage.b(this.ILY));
+    paramBundle.putLong("_wwconvobject_date", this.wTQ);
+    paramBundle.putByteArray("_wwconvobject_avatarData", this.Kyp);
+    paramBundle.putString("_wwconvobject_avatarPath", this.qRN);
+    paramBundle.putBundle("_wwconvobject_message", BaseMessage.b(this.Kyq));
     AppMethodBeat.o(106539);
   }
 }

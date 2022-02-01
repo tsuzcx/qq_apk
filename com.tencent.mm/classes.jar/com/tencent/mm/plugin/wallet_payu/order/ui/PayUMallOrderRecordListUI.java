@@ -4,18 +4,18 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.order.model.g;
 import com.tencent.mm.plugin.order.model.i;
 import com.tencent.mm.plugin.order.ui.MallOrderRecordListUI;
 import com.tencent.mm.plugin.order.ui.MallOrderRecordListUI.a;
 import com.tencent.mm.plugin.wallet_payu.order.a.a;
-import com.tencent.mm.protocal.protobuf.bzw;
-import com.tencent.mm.protocal.protobuf.caf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ceu;
+import com.tencent.mm.protocal.protobuf.cfd;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
 import com.tencent.mm.wallet_core.ui.e;
 import java.text.SimpleDateFormat;
@@ -27,7 +27,7 @@ import java.util.Locale;
 public class PayUMallOrderRecordListUI
   extends MallOrderRecordListUI
 {
-  public final String IV(int paramInt)
+  public final String KU(int paramInt)
   {
     AppMethodBeat.i(72077);
     String str = e.a(paramInt, new SimpleDateFormat("dd MMMM", Locale.ENGLISH), new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH));
@@ -35,7 +35,7 @@ public class PayUMallOrderRecordListUI
     return str;
   }
   
-  public final void dal()
+  public final void dnT()
   {
     AppMethodBeat.i(72073);
     addSceneEndListener(1519);
@@ -43,7 +43,7 @@ public class PayUMallOrderRecordListUI
     AppMethodBeat.o(72073);
   }
   
-  public final void dam()
+  public final void dnU()
   {
     AppMethodBeat.i(72074);
     removeSceneEndListener(1519);
@@ -51,14 +51,14 @@ public class PayUMallOrderRecordListUI
     AppMethodBeat.o(72074);
   }
   
-  public final void dan()
+  public final void dnV()
   {
     AppMethodBeat.i(72076);
-    doSceneProgress(new a(this.LZ));
+    doSceneProgress(new a(this.MW));
     AppMethodBeat.o(72076);
   }
   
-  public final void hO(String paramString1, String paramString2)
+  public final void ih(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72075);
     doSceneProgress(new com.tencent.mm.plugin.wallet_payu.order.a.b(paramString1));
@@ -78,42 +78,42 @@ public class PayUMallOrderRecordListUI
         this.mProgressDialog = null;
       }
       paramString = (a)paramn;
-      localObject = ((bzw)paramString.rr.gUT.gUX).DWC;
+      localObject = ((ceu)paramString.rr.hvs.hvw).Ftu;
       paramn = new LinkedList();
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        caf localcaf = (caf)((Iterator)localObject).next();
+        cfd localcfd = (cfd)((Iterator)localObject).next();
         i locali = new i();
-        locali.scR = localcaf.scR;
-        locali.uph = localcaf.uph;
-        locali.upi = localcaf.upi;
-        locali.CreateTime = localcaf.CreateTime;
-        locali.upd = localcaf.upd;
-        locali.upa = localcaf.upa;
-        locali.upg = "0";
-        locali.upc = localcaf.upc;
-        locali.upf = localcaf.upf;
-        locali.upl = 1;
-        locali.upk = localcaf.upk;
-        locali.upj = localcaf.upj;
-        locali.upe = localcaf.upe;
-        locali.uoZ = localcaf.DWt;
-        locali.upb = localcaf.upb;
-        locali.uoY = localcaf.uoY;
+        locali.tkL = localcfd.tkL;
+        locali.vyd = localcfd.vyd;
+        locali.vye = localcfd.vye;
+        locali.CreateTime = localcfd.CreateTime;
+        locali.vxZ = localcfd.vxZ;
+        locali.vxW = localcfd.vxW;
+        locali.vyc = "0";
+        locali.vxY = localcfd.vxY;
+        locali.vyb = localcfd.vyb;
+        locali.vyh = 1;
+        locali.vyg = localcfd.vyg;
+        locali.vyf = localcfd.vyf;
+        locali.vya = localcfd.vya;
+        locali.vxV = localcfd.Ftl;
+        locali.vxX = localcfd.vxX;
+        locali.vxU = localcfd.vxU;
         paramn.add(locali);
       }
-      er(paramn);
-      es(null);
-      this.mCount = this.uqd.size();
-      if (paramString.efL() > this.mCount)
+      ev(paramn);
+      ew(null);
+      this.mCount = this.vyZ.size();
+      if (paramString.evf() > this.mCount)
       {
         bool = true;
-        this.tkj = bool;
-        this.uqc.notifyDataSetChanged();
-        ad.d("MicroMsg.PayUMallOrderRecordListUI", "orders list count: " + this.mCount);
-        ad.d("MicroMsg.PayUMallOrderRecordListUI", "orders list total record: " + paramString.efL());
-        ad.d("MicroMsg.PayUMallOrderRecordListUI", "orders list has more: " + this.tkj);
+        this.usC = bool;
+        this.vyY.notifyDataSetChanged();
+        ac.d("MicroMsg.PayUMallOrderRecordListUI", "orders list count: " + this.mCount);
+        ac.d("MicroMsg.PayUMallOrderRecordListUI", "orders list total record: " + paramString.evf());
+        ac.d("MicroMsg.PayUMallOrderRecordListUI", "orders list has more: " + this.usC);
         this.mHandler.post(new Runnable()
         {
           public final void run()
@@ -121,10 +121,10 @@ public class PayUMallOrderRecordListUI
             AppMethodBeat.i(72071);
             if (PayUMallOrderRecordListUI.a(PayUMallOrderRecordListUI.this))
             {
-              ad.v("MicroMsg.PayUMallOrderRecordListUI", "has more");
+              ac.v("MicroMsg.PayUMallOrderRecordListUI", "has more");
               if (!PayUMallOrderRecordListUI.b(PayUMallOrderRecordListUI.this))
               {
-                PayUMallOrderRecordListUI.c(PayUMallOrderRecordListUI.this).eSM();
+                PayUMallOrderRecordListUI.c(PayUMallOrderRecordListUI.this).fiw();
                 PayUMallOrderRecordListUI.e(PayUMallOrderRecordListUI.this).setAdapter(PayUMallOrderRecordListUI.d(PayUMallOrderRecordListUI.this));
                 PayUMallOrderRecordListUI.f(PayUMallOrderRecordListUI.this);
               }
@@ -134,14 +134,14 @@ public class PayUMallOrderRecordListUI
               PayUMallOrderRecordListUI.h(PayUMallOrderRecordListUI.this).notifyDataSetChanged();
               AppMethodBeat.o(72071);
               return;
-              ad.v("MicroMsg.PayUMallOrderRecordListUI", "no more! dismiss footer view!");
-              PayUMallOrderRecordListUI.g(PayUMallOrderRecordListUI.this).eSN();
+              ac.v("MicroMsg.PayUMallOrderRecordListUI", "no more! dismiss footer view!");
+              PayUMallOrderRecordListUI.g(PayUMallOrderRecordListUI.this).fix();
             }
           }
         });
         this.isLoading = false;
         label418:
-        if ((this.mCount > 0) || (this.uqd.size() != 0)) {
+        if ((this.mCount > 0) || (this.vyZ.size() != 0)) {
           break label660;
         }
         showOptionMenu(false);
@@ -164,14 +164,14 @@ public class PayUMallOrderRecordListUI
       }
       paramString = (g)paramn;
       label539:
-      if (paramString.dah() == 2)
+      if (paramString.dnP() == 2)
       {
-        if (this.uqd != null) {
-          this.uqd.clear();
+        if (this.vyZ != null) {
+          this.vyZ.clear();
         }
         this.mCount = 0;
-        this.tkj = false;
-        this.fwH.eSN();
+        this.usC = false;
+        this.fAo.fix();
       }
       for (;;)
       {
@@ -185,19 +185,19 @@ public class PayUMallOrderRecordListUI
           }
         });
         break;
-        paramString = paramString.dai();
-        ad.d("MicroMsg.PayUMallOrderRecordListUI", "delete transId:".concat(String.valueOf(paramString)));
-        if (!bt.isNullOrNil(paramString))
+        paramString = paramString.dnQ();
+        ac.d("MicroMsg.PayUMallOrderRecordListUI", "delete transId:".concat(String.valueOf(paramString)));
+        if (!bs.isNullOrNil(paramString))
         {
-          paramn = this.uqd.iterator();
+          paramn = this.vyZ.iterator();
           if (paramn.hasNext())
           {
             localObject = (i)paramn.next();
-            if (!paramString.equals(((i)localObject).uoY)) {
+            if (!paramString.equals(((i)localObject).vxU)) {
               break label539;
             }
-            this.uqd.remove(localObject);
-            this.mCount = this.uqd.size();
+            this.vyZ.remove(localObject);
+            this.mCount = this.vyZ.size();
           }
         }
       }

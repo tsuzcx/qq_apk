@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends Exception
 {
-  c ssK;
+  c tAA;
   
   public a(int paramInt, String paramString)
   {
@@ -21,8 +21,8 @@ public final class a
   
   private a(c paramc, Exception paramException)
   {
-    super(paramc.ste, paramException);
-    this.ssK = paramc;
+    super(paramc.tAU, paramException);
+    this.tAA = paramc;
   }
   
   public a(String paramString, Exception paramException)
@@ -34,7 +34,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gwallet.a.a
  * JD-Core Version:    0.7.0.1
  */

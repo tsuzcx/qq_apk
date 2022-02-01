@@ -6,29 +6,29 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class b
   implements e
 {
-  private final IntentFilter bVe;
-  private final d lNb;
-  Intent lNc;
-  final e lNd;
-  private a lNe;
+  private final IntentFilter bSM;
   protected Context mContext;
+  private final d mpb;
+  Intent mpc;
+  final e mpd;
+  private a mpe;
   
   b()
   {
     AppMethodBeat.i(137931);
-    this.bVe = new IntentFilter("android.intent.action.BATTERY_CHANGED");
-    this.lNb = new d();
-    this.lNc = null;
-    this.lNd = this;
+    this.bSM = new IntentFilter("android.intent.action.BATTERY_CHANGED");
+    this.mpb = new d();
+    this.mpc = null;
+    this.mpd = this;
     AppMethodBeat.o(137931);
   }
   
-  public final c bqu()
+  public final c bxu()
   {
     boolean bool2 = true;
     int j = -1;
@@ -40,28 +40,28 @@ final class b
         AppMethodBeat.i(137934);
         if (this.mContext == null)
         {
-          ad.e("MicroMsg.AppBrandBatteryManagerImplBelow21", "getBatteryInfo no context");
-          localObject1 = a.lMX;
+          ac.e("MicroMsg.AppBrandBatteryManagerImplBelow21", "getBatteryInfo no context");
+          localObject1 = a.moX;
           AppMethodBeat.o(137934);
           return localObject1;
         }
         Object localObject1 = this.mContext;
-        if (this.lNc != null)
+        if (this.mpc != null)
         {
-          localObject1 = this.lNc;
+          localObject1 = this.mpc;
           if (localObject1 != null) {
             break;
           }
-          ad.e("MicroMsg.AppBrandBatteryManagerImplBelow21", "getBatteryInfo no intent got");
-          localObject1 = a.lMX;
+          ac.e("MicroMsg.AppBrandBatteryManagerImplBelow21", "getBatteryInfo no intent got");
+          localObject1 = a.moX;
           AppMethodBeat.o(137934);
           continue;
         }
-        this.lNe = new a((byte)0);
+        this.mpe = new a((byte)0);
       }
       finally {}
-      localObject3 = localObject2.getApplicationContext().registerReceiver(this.lNe, this.bVe);
-      this.lNc = ((Intent)localObject3);
+      localObject3 = localObject2.getApplicationContext().registerReceiver(this.mpe, this.bSM);
+      this.mpc = ((Intent)localObject3);
     }
     c localc = new c();
     int i;
@@ -69,7 +69,7 @@ final class b
     {
       i = j;
       label148:
-      localc.lNh = i;
+      localc.mph = i;
       if (localObject3 == null) {
         break label299;
       }
@@ -93,7 +93,7 @@ final class b
     label299:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localc.lNg = bool1;
+      localc.mpg = bool1;
       AppMethodBeat.o(137934);
       localObject3 = localc;
       break;
@@ -122,7 +122,7 @@ final class b
     //   4: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: aconst_null
-    //   9: putfield 48	com/tencent/mm/plugin/appbrand/utils/a/b:lNc	Landroid/content/Intent;
+    //   9: putfield 48	com/tencent/mm/plugin/appbrand/utils/a/b:mpc	Landroid/content/Intent;
     //   12: aload_1
     //   13: invokevirtual 88	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   16: ifnonnull +16 -> 32
@@ -161,8 +161,8 @@ final class b
       AppMethodBeat.i(137933);
       if (this.mContext != null)
       {
-        if (this.lNe != null) {
-          this.mContext.unregisterReceiver(this.lNe);
+        if (this.mpe != null) {
+          this.mContext.unregisterReceiver(this.mpe);
         }
         this.mContext = null;
       }
@@ -179,9 +179,9 @@ final class b
     
     public final void onReceive(Context arg1, Intent paramIntent)
     {
-      synchronized (b.this.lNd)
+      synchronized (b.this.mpd)
       {
-        b.this.lNc = paramIntent;
+        b.this.mpc = paramIntent;
         return;
       }
     }
@@ -189,7 +189,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,19 +7,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class w
   extends n
 {
-  private static w bUt;
-  private boolean bUu;
-  private int bUv;
-  private long bUw;
-  private long bUx;
+  private static w bSb;
+  private boolean bSc;
+  private int bSd;
+  private long bSe;
+  private long bSf;
   
-  static w zy()
+  static w zl()
   {
     AppMethodBeat.i(87951);
-    if (bUt == null) {
-      bUt = new w();
+    if (bSb == null) {
+      bSb = new w();
     }
-    w localw = bUt;
+    w localw = bSb;
     AppMethodBeat.o(87951);
     return localw;
   }
@@ -27,7 +27,7 @@ final class w
   final void a(int paramInt, String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(87956);
-    if (this.bUu) {
+    if (this.bSc) {
       stop();
     }
     super.a(paramInt, paramString, paramLong1, paramLong2);
@@ -37,9 +37,9 @@ final class w
   final void a(Context paramContext, Handler paramHandler, d.a parama)
   {
     AppMethodBeat.i(87952);
-    if (this.bUu) {
-      if (k.yY().bOR) {
-        k.yY().yU();
+    if (this.bSc) {
+      if (k.yL().bMz) {
+        k.yL().yH();
       }
     }
     for (;;)
@@ -47,10 +47,10 @@ final class w
       super.a(paramContext, paramHandler, parama);
       AppMethodBeat.o(87952);
       return;
-      if (!k.yY().bOR) {
+      if (!k.yL().bMz) {
         try
         {
-          k.yY().a(paramContext, new m[] { this });
+          k.yL().a(paramContext, new m[] { this });
         }
         catch (Exception localException) {}
       }
@@ -62,7 +62,7 @@ final class w
     try
     {
       AppMethodBeat.i(87953);
-      this.bUu = false;
+      this.bSc = false;
       super.a(paramHandler, parama);
       AppMethodBeat.o(87953);
       return;
@@ -77,8 +77,8 @@ final class w
   public final void a(p paramp)
   {
     AppMethodBeat.i(87954);
-    long l = paramp.bRD;
-    if ((this.bUu) && (l - this.bUx > this.bUw)) {
+    long l = paramp.bPl;
+    if ((this.bSc) && (l - this.bSf > this.bSe)) {
       stop();
     }
     for (int i = 1; i != 0; i = 0)
@@ -93,11 +93,11 @@ final class w
   final void a(x paramx, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(87955);
-    if (paramx.bUB == null) {
-      paramx.bUB = new x.a();
+    if (paramx.bSj == null) {
+      paramx.bSj = new x.a();
     }
-    float f = paramx.bUB.bUE;
-    if ((this.bUu) && (f >= this.bUv)) {
+    float f = paramx.bSj.bSm;
+    if ((this.bSc) && (f >= this.bSd)) {
       stop();
     }
     for (int i = 1; i != 0; i = 0)

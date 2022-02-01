@@ -4,22 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.x;
+import com.tencent.mm.ah.x;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "Landroid/os/Parcelable;", "()V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "appendText", "", "getAppendText$plugin_brandservice_release", "()Ljava/lang/String;", "setAppendText$plugin_brandservice_release", "(Ljava/lang/String;)V", "isMaliciousTitle", "", "isMaliciousTitle$plugin_brandservice_release", "()I", "setMaliciousTitle$plugin_brandservice_release", "(I)V", "maliciousCover", "getMaliciousCover$plugin_brandservice_release", "setMaliciousCover$plugin_brandservice_release", "maliciousDesc", "getMaliciousDesc$plugin_brandservice_release", "setMaliciousDesc$plugin_brandservice_release", "maliciousTitle", "getMaliciousTitle$plugin_brandservice_release", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "getMsgInfo$plugin_brandservice_release", "()Lcom/tencent/mm/message/MPMsgInfo;", "setMsgInfo$plugin_brandservice_release", "(Lcom/tencent/mm/message/MPMsgInfo;)V", "msgInfoLength", "getMsgInfoLength$plugin_brandservice_release", "setMsgInfoLength$plugin_brandservice_release", "sessionId", "getSessionId$plugin_brandservice_release", "setSessionId$plugin_brandservice_release", "toUser", "getToUser$plugin_brandservice_release", "setToUser$plugin_brandservice_release", "url", "getUrl$plugin_brandservice_release", "setUrl$plugin_brandservice_release", "describeContents", "readParcel", "", "writeToParcel", "dest", "flags", "CREATOR", "plugin-brandservice_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "Landroid/os/Parcelable;", "()V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "appendText", "", "getAppendText$plugin_brandservice_release", "()Ljava/lang/String;", "setAppendText$plugin_brandservice_release", "(Ljava/lang/String;)V", "isMaliciousTitle", "", "isMaliciousTitle$plugin_brandservice_release", "()I", "setMaliciousTitle$plugin_brandservice_release", "(I)V", "maliciousCover", "getMaliciousCover$plugin_brandservice_release", "setMaliciousCover$plugin_brandservice_release", "maliciousDesc", "getMaliciousDesc$plugin_brandservice_release", "setMaliciousDesc$plugin_brandservice_release", "maliciousTitle", "getMaliciousTitle$plugin_brandservice_release", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "getMsgInfo$plugin_brandservice_release", "()Lcom/tencent/mm/message/MPMsgInfo;", "setMsgInfo$plugin_brandservice_release", "(Lcom/tencent/mm/message/MPMsgInfo;)V", "msgInfoLength", "getMsgInfoLength$plugin_brandservice_release", "setMsgInfoLength$plugin_brandservice_release", "sessionId", "getSessionId$plugin_brandservice_release", "setSessionId$plugin_brandservice_release", "toUser", "getToUser$plugin_brandservice_release", "setToUser$plugin_brandservice_release", "url", "getUrl$plugin_brandservice_release", "setUrl$plugin_brandservice_release", "describeContents", "readParcel", "", "writeToParcel", "dest", "flags", "CREATOR", "plugin-brandservice_release"})
 public final class AppMsgDataParcelable
   implements Parcelable
 {
   public static final a CREATOR;
-  String kkB;
-  x niI;
-  String nkA;
-  String nkB;
-  String nkC;
-  private int nky;
-  int nkz;
+  String kLS;
+  x nLB;
+  String nNA;
+  String nNB;
+  String nNC;
+  private int nNy;
+  int nNz;
   String sessionId;
   String toUser;
   String url;
@@ -39,20 +39,20 @@ public final class AppMsgDataParcelable
     k.h(paramParcel, "parcel");
     this.toUser = paramParcel.readString();
     this.url = paramParcel.readString();
-    this.kkB = paramParcel.readString();
-    this.nky = paramParcel.readInt();
-    if (this.nky > 0)
+    this.kLS = paramParcel.readString();
+    this.nNy = paramParcel.readInt();
+    if (this.nNy > 0)
     {
-      byte[] arrayOfByte = new byte[this.nky];
+      byte[] arrayOfByte = new byte[this.nNy];
       paramParcel.readByteArray(arrayOfByte);
       x localx = new x();
       localx.parseFrom(arrayOfByte);
-      this.niI = localx;
+      this.nLB = localx;
     }
-    this.nkz = paramParcel.readInt();
-    this.nkA = paramParcel.readString();
-    this.nkB = paramParcel.readString();
-    this.nkC = paramParcel.readString();
+    this.nNz = paramParcel.readInt();
+    this.nNA = paramParcel.readString();
+    this.nNB = paramParcel.readString();
+    this.nNC = paramParcel.readString();
     this.sessionId = paramParcel.readString();
     AppMethodBeat.o(7277);
   }
@@ -69,8 +69,8 @@ public final class AppMsgDataParcelable
     k.h(paramParcel, "dest");
     paramParcel.writeString(this.toUser);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.kkB);
-    Object localObject = this.niI;
+    paramParcel.writeString(this.kLS);
+    Object localObject = this.nLB;
     if (localObject != null)
     {
       localObject = ((x)localObject).toByteArray();
@@ -90,16 +90,16 @@ public final class AppMsgDataParcelable
       if (paramInt == 0) {
         break label163;
       }
-      this.nky = localObject.length;
-      paramParcel.writeInt(this.nky);
+      this.nNy = localObject.length;
+      paramParcel.writeInt(this.nNy);
       paramParcel.writeByteArray((byte[])localObject);
     }
     for (;;)
     {
-      paramParcel.writeInt(this.nkz);
-      paramParcel.writeString(this.nkA);
-      paramParcel.writeString(this.nkB);
-      paramParcel.writeString(this.nkC);
+      paramParcel.writeInt(this.nNz);
+      paramParcel.writeString(this.nNA);
+      paramParcel.writeString(this.nNB);
+      paramParcel.writeString(this.nNC);
       paramParcel.writeString(this.sessionId);
       AppMethodBeat.o(7276);
       return;
@@ -112,11 +112,11 @@ public final class AppMsgDataParcelable
       paramInt = 0;
       break label75;
       label163:
-      paramParcel.writeInt(this.nky);
+      paramParcel.writeInt(this.nNy);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "()V", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "plugin-brandservice_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "()V", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "plugin-brandservice_release"})
   public static final class a
     implements Parcelable.Creator<AppMsgDataParcelable>
   {}

@@ -8,24 +8,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.a.a.h;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/emojistore/ui/MenuItemCreateListener;", "Landroid/view/View$OnCreateContextMenuListener;", "item", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "(Lcom/tencent/mm/emoji/model/panel/EmojiItem;)V", "getItem", "()Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "onCreateContextMenu", "", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "plugin-webview_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/emojistore/ui/MenuItemCreateListener;", "Landroid/view/View$OnCreateContextMenuListener;", "item", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "(Lcom/tencent/mm/emoji/model/panel/EmojiItem;)V", "getItem", "()Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "onCreateContextMenu", "", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "plugin-webview_release"})
 public final class a
   implements View.OnCreateContextMenuListener
 {
-  private final h ANT;
+  private final h Cgl;
   
   public a(h paramh)
   {
-    this.ANT = paramh;
+    this.Cgl = paramh;
   }
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    AppMethodBeat.i(188872);
+    AppMethodBeat.i(189441);
     if (paramContextMenu != null) {
       paramContextMenu.add(0, 0, 0, 2131755137);
     }
-    AppMethodBeat.o(188872);
+    AppMethodBeat.o(189441);
   }
 }
 

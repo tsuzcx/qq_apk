@@ -1,51 +1,108 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fw;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.storagebase.h;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.g.c.fz;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class bz
-  extends j<fw>
+  extends fz
 {
-  public static final String[] SQL_CREATE;
-  public h gPa;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(133310);
-    SQL_CREATE = new String[] { j.getCreateSQLs(by.info, "TablesVersion") };
-    AppMethodBeat.o(133310);
+    AppMethodBeat.i(43306);
+    c.a locala = new c.a();
+    locala.GvF = new Field[5];
+    locala.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "encryptUsername";
+    locala.GvH.put("encryptUsername", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" encryptUsername TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.GvG = "encryptUsername";
+    locala.columns[1] = "conRemark";
+    locala.GvH.put("conRemark", "TEXT default '' ");
+    localStringBuilder.append(" conRemark TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "contactLabels";
+    locala.GvH.put("contactLabels", "TEXT default '' ");
+    localStringBuilder.append(" contactLabels TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "conDescription";
+    locala.GvH.put("conDescription", "TEXT default '' ");
+    localStringBuilder.append(" conDescription TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "conPhone";
+    locala.GvH.put("conPhone", "TEXT default '' ");
+    localStringBuilder.append(" conPhone TEXT default '' ");
+    locala.columns[5] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(43306);
   }
   
-  public bz(h paramh)
+  public bz()
   {
-    super(paramh, by.info, "TablesVersion", fw.INDEX_CREATE);
-    this.gPa = paramh;
+    AppMethodBeat.i(43304);
+    this.field_encryptUsername = "";
+    this.field_conRemark = "";
+    AppMethodBeat.o(43304);
   }
   
-  public final ConcurrentHashMap<Integer, String> eNa()
+  public bz(String paramString)
   {
-    AppMethodBeat.i(133309);
-    Cursor localCursor = this.gPa.a("select * from TablesVersion", new String[0], 0);
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(133309);
-      return localConcurrentHashMap;
+    this();
+    AppMethodBeat.i(43302);
+    this.field_conRemark = "";
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    try
-    {
-      if (localCursor.moveToNext()) {}
-      return localConcurrentHashMap1;
+    this.field_encryptUsername = str;
+    AppMethodBeat.o(43302);
+  }
+  
+  public bz(String paramString1, String paramString2)
+  {
+    this();
+    AppMethodBeat.i(43303);
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
     }
-    finally
-    {
-      localCursor.close();
-      AppMethodBeat.o(133309);
+    this.field_encryptUsername = str;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
     }
+    this.field_conRemark = paramString1;
+    AppMethodBeat.o(43303);
+  }
+  
+  public final String Tm()
+  {
+    return this.field_conRemark;
+  }
+  
+  public final String Tq()
+  {
+    return this.field_encryptUsername;
+  }
+  
+  protected final Object clone()
+  {
+    AppMethodBeat.i(43305);
+    Object localObject = super.clone();
+    AppMethodBeat.o(43305);
+    return localObject;
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
   }
 }
 

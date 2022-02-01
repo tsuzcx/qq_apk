@@ -9,83 +9,75 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class n
 {
-  private static AtomicInteger kqp;
-  private long iOo;
-  private c kow;
-  String kox;
-  String kqA;
-  String kqB;
-  public String kqC;
-  String kqD;
-  private int kqE;
-  private int kqF;
-  Future<?> kqn;
-  boolean kqq;
-  private int kqr;
-  private int kqs;
-  o kqt;
-  private final Object kqu;
-  int kqv;
-  int kqw;
-  long kqx;
-  long kqy;
-  public boolean kqz;
+  private static AtomicInteger kRI;
+  private long jox;
+  private c kPP;
+  String kPQ;
+  Future<?> kRG;
+  boolean kRJ;
+  private int kRK;
+  private int kRL;
+  o kRM;
+  private final Object kRN;
+  int kRO;
+  int kRP;
+  long kRQ;
+  long kRR;
+  public boolean kRS;
+  String kRT;
+  String kRU;
+  public String kRV;
+  String kRW;
+  private int kRX;
+  private int kRY;
   int priority;
   long startTime;
   String uuid;
   
   static
   {
-    AppMethodBeat.i(193969);
-    kqp = new AtomicInteger(10000);
-    AppMethodBeat.o(193969);
+    AppMethodBeat.i(194316);
+    kRI = new AtomicInteger(10000);
+    AppMethodBeat.o(194316);
   }
   
   public n()
   {
-    AppMethodBeat.i(193961);
-    this.kqr = 0;
-    this.kqs = 0;
-    this.kqu = new Object();
-    this.kqw = 0;
+    AppMethodBeat.i(194308);
+    this.kRK = 0;
+    this.kRL = 0;
+    this.kRN = new Object();
+    this.kRP = 0;
     this.priority = -1;
-    this.iOo = -1L;
-    this.kox = "";
-    this.kow = c.kpv;
-    this.kqv = kqp.incrementAndGet();
+    this.jox = -1L;
+    this.kPQ = "";
+    this.kPP = c.kQO;
+    this.kRO = kRI.incrementAndGet();
     this.startTime = System.currentTimeMillis();
-    AppMethodBeat.o(193961);
-  }
-  
-  public final String EE()
-  {
-    AppMethodBeat.i(193962);
-    String str = this.kox + "VideoRequest";
-    AppMethodBeat.o(193962);
-    return str;
+    AppMethodBeat.o(194308);
   }
   
   public final void a(long paramLong, c paramc)
   {
     try
     {
-      AppMethodBeat.i(193963);
-      this.iOo = paramLong;
-      this.kow = paramc;
-      if (this.kow.equals(c.kpx)) {
-        this.kqw |= 0x8;
+      AppMethodBeat.i(194310);
+      this.jox = paramLong;
+      this.kPP = paramc;
+      if (this.kPP.equals(c.kQQ)) {
+        this.kRP |= 0x8;
       }
-      AppMethodBeat.o(193963);
+      AppMethodBeat.o(194310);
       return;
     }
     finally {}
   }
   
-  public final long aQu()
+  public final long aXm()
   {
     try
     {
-      long l = this.iOo;
+      long l = this.jox;
       return l;
     }
     finally
@@ -95,11 +87,11 @@ public final class n
     }
   }
   
-  public final c bcW()
+  public final c bjR()
   {
     try
     {
-      c localc = this.kow;
+      c localc = this.kPP;
       return localc;
     }
     finally
@@ -109,61 +101,69 @@ public final class n
     }
   }
   
-  public final long bdc()
+  public final long bjX()
   {
-    AppMethodBeat.i(193965);
+    AppMethodBeat.i(194312);
     long l = System.currentTimeMillis();
-    l = ((float)(this.kqE * 1000L) / (float)((l - this.startTime) * 1024L));
-    AppMethodBeat.o(193965);
+    l = ((float)(this.kRX * 1000L) / (float)((l - this.startTime) * 1024L));
+    AppMethodBeat.o(194312);
     return l;
   }
   
-  public final void bdd()
+  public final void bjY()
   {
-    AppMethodBeat.i(193966);
-    if (dR(2, 3))
+    AppMethodBeat.i(194313);
+    if (dS(2, 3))
     {
-      if (this.kqt != null) {
-        this.kqt.bdf();
+      if (this.kRM != null) {
+        this.kRM.bka();
       }
-      if (a.bcR().cxf) {
-        h.log(3, EE(), "cancel success, seq=" + this.kqv);
+      if (a.bjM().cuo) {
+        h.log(3, getLogTag(), "cancel success, seq=" + this.kRO);
       }
     }
-    AppMethodBeat.o(193966);
+    AppMethodBeat.o(194313);
   }
   
-  public final void bde()
+  public final void bjZ()
   {
-    AppMethodBeat.i(193967);
-    if ((dR(1, 2)) && (a.bcR().cxf)) {
-      h.log(3, EE(), "cancel proceeding, seq=" + this.kqv);
+    AppMethodBeat.i(194314);
+    if ((dS(1, 2)) && (a.bjM().cuo)) {
+      h.log(3, getLogTag(), "cancel proceeding, seq=" + this.kRO);
     }
-    AppMethodBeat.o(193967);
+    AppMethodBeat.o(194314);
   }
   
-  final boolean dR(int paramInt1, int paramInt2)
+  final boolean dS(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193968);
-    synchronized (this.kqu)
+    AppMethodBeat.i(194315);
+    synchronized (this.kRN)
     {
-      if (this.kqs == paramInt1)
+      if (this.kRL == paramInt1)
       {
-        this.kqs = paramInt2;
-        AppMethodBeat.o(193968);
+        this.kRL = paramInt2;
+        AppMethodBeat.o(194315);
         return true;
       }
-      h.log(5, EE(), String.format(Locale.US, "transState error, current %d, condition %d, newState %d", new Object[] { Integer.valueOf(this.kqs), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      AppMethodBeat.o(193968);
+      h.log(5, getLogTag(), String.format(Locale.US, "transState error, current %d, condition %d, newState %d", new Object[] { Integer.valueOf(this.kRL), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      AppMethodBeat.o(194315);
       return false;
     }
   }
   
-  public final void sd(int paramInt)
+  public final String getLogTag()
+  {
+    AppMethodBeat.i(194309);
+    String str = this.kPQ + "VideoRequest";
+    AppMethodBeat.o(194309);
+    return str;
+  }
+  
+  public final void sT(int paramInt)
   {
     try
     {
-      this.kqF = paramInt;
+      this.kRY = paramInt;
       return;
     }
     finally
@@ -173,11 +173,11 @@ public final class n
     }
   }
   
-  public final void se(int paramInt)
+  public final void sU(int paramInt)
   {
     try
     {
-      this.kqE += paramInt;
+      this.kRX += paramInt;
       return;
     }
     finally
@@ -187,20 +187,20 @@ public final class n
     }
   }
   
-  public final void sf(int paramInt)
+  public final void sV(int paramInt)
   {
-    if ((this.kqr & paramInt) == 0) {
-      this.kqr += paramInt;
+    if ((this.kRK & paramInt) == 0) {
+      this.kRK += paramInt;
     }
   }
   
-  public final boolean sg(int paramInt)
+  public final boolean sW(int paramInt)
   {
     for (;;)
     {
-      synchronized (this.kqu)
+      synchronized (this.kRN)
       {
-        if (this.kqs == paramInt)
+        if (this.kRL == paramInt)
         {
           bool = true;
           return bool;
@@ -212,13 +212,13 @@ public final class n
   
   public final String toString()
   {
-    AppMethodBeat.i(193964);
-    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append("{seq=").append(this.kqv).append(",priority=").append(this.priority).append(",range=[").append(this.kqx).append(",").append(this.kqy).append("],uuid=").append(this.uuid).append(",contentType=").append(this.kqC).append(",cancelState=").append(this.kqs).append(",sourceUrl=").append(this.kqB).append(",videoKey=").append(this.kqA).append(",task=");
-    if (this.kqn == null) {}
-    for (String str = "null";; str = this.kqn.toString())
+    AppMethodBeat.i(194311);
+    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append("{seq=").append(this.kRO).append(",priority=").append(this.priority).append(",range=[").append(this.kRQ).append(",").append(this.kRR).append("],uuid=").append(this.uuid).append(",contentType=").append(this.kRV).append(",cancelState=").append(this.kRL).append(",sourceUrl=").append(this.kRU).append(",videoKey=").append(this.kRT).append(",task=");
+    if (this.kRG == null) {}
+    for (String str = "null";; str = this.kRG.toString())
     {
       str = str + "}";
-      AppMethodBeat.o(193964);
+      AppMethodBeat.o(194311);
       return str;
     }
   }

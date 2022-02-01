@@ -12,9 +12,9 @@ import com.tencent.mm.plugin.downloader_app.a.i;
 public class TaskHeaderView
   extends LinearLayout
 {
-  private View ojA;
-  private TextView ojy;
-  private TextView ojz;
+  private TextView oMY;
+  private TextView oMZ;
+  private View oNa;
   
   public TaskHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,41 +26,41 @@ public class TaskHeaderView
     AppMethodBeat.i(9023);
     if (parami.type == 1)
     {
-      this.ojy.setText(getResources().getString(2131758122));
-      this.ojz.setVisibility(8);
+      this.oMY.setText(getResources().getString(2131758122));
+      this.oMZ.setVisibility(8);
       if (!paramBoolean) {
         break label194;
       }
-      this.ojA.setVisibility(0);
+      this.oNa.setVisibility(0);
     }
     for (;;)
     {
-      if (!parami.nrE) {
+      if (!parami.nUE) {
         break label206;
       }
-      this.ojy.setTextColor(getContext().getResources().getColor(2131100250));
-      this.ojz.setVisibility(8);
+      this.oMY.setTextColor(getContext().getResources().getColor(2131100250));
+      this.oMZ.setVisibility(8);
       AppMethodBeat.o(9023);
       return;
       if (parami.type == 3)
       {
-        this.ojy.setText(getResources().getString(2131764586));
-        this.ojz.setText(getResources().getString(2131764585, new Object[] { Integer.valueOf(parami.oic) }));
-        this.ojz.setVisibility(0);
+        this.oMY.setText(getResources().getString(2131764586));
+        this.oMZ.setText(getResources().getString(2131764585, new Object[] { Integer.valueOf(parami.oLC) }));
+        this.oMZ.setVisibility(0);
         break;
       }
       if (parami.type != 5) {
         break;
       }
-      this.ojy.setText(getResources().getString(2131758109));
-      this.ojz.setVisibility(8);
+      this.oMY.setText(getResources().getString(2131758109));
+      this.oMZ.setVisibility(8);
       break;
       label194:
-      this.ojA.setVisibility(8);
+      this.oNa.setVisibility(8);
     }
     label206:
-    this.ojy.setTextColor(getContext().getResources().getColor(2131100523));
-    this.ojz.setVisibility(0);
+    this.oMY.setTextColor(getContext().getResources().getColor(2131100523));
+    this.oMZ.setVisibility(0);
     AppMethodBeat.o(9023);
   }
   
@@ -68,9 +68,9 @@ public class TaskHeaderView
   {
     AppMethodBeat.i(9022);
     super.onFinishInflate();
-    this.ojA = findViewById(2131299153);
-    this.ojy = ((TextView)findViewById(2131301392));
-    this.ojz = ((TextView)findViewById(2131304200));
+    this.oNa = findViewById(2131299153);
+    this.oMY = ((TextView)findViewById(2131301392));
+    this.oMZ = ((TextView)findViewById(2131304200));
     AppMethodBeat.o(9022);
   }
 }

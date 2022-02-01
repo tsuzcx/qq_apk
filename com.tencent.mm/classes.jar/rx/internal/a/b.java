@@ -7,22 +7,22 @@ import rx.d.a;
 public enum b
   implements d.a<Object>
 {
-  static final d<Object> KoT;
+  static final d<Object> McC;
   
   static
   {
     AppMethodBeat.i(90248);
-    KoS = new b("INSTANCE");
-    KoU = new b[] { KoS };
-    KoT = d.a(KoS);
+    McB = new b("INSTANCE");
+    McD = new b[] { McB };
+    McC = d.a(McB);
     AppMethodBeat.o(90248);
   }
   
   private b() {}
   
-  public static <T> d<T> fNB()
+  public static <T> d<T> ggr()
   {
-    return KoT;
+    return McC;
   }
 }
 

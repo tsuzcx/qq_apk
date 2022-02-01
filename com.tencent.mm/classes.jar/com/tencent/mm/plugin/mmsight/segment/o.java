@@ -1,24 +1,18 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bl.e;
-import com.tencent.mm.sdk.platformtools.ad;
-
 public final class o
+  extends Exception
 {
-  public static d m(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public o() {}
+  
+  public o(String paramString)
   {
-    AppMethodBeat.i(107690);
-    ad.i("MicroMsg.ThumbFetcherFactory", "get thumb fetcher, ish265: %s", new Object[] { Boolean.valueOf(e.Ao(paramString)) });
-    k localk = new k();
-    localk.init(paramString, paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(107690);
-    return localk;
+    super(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.o
  * JD-Core Version:    0.7.0.1
  */

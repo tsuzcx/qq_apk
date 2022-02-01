@@ -4,10 +4,9 @@ import android.content.Context;
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.f.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.l;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vfs.i;
@@ -16,34 +15,33 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
-import org.apache.commons.a.c;
 
 @Deprecated
 public final class AppBrandLocalMediaObjectManager
 {
-  private static String KCl;
-  private static final Collection<a> KCm;
-  private static final AppBrandLocalMediaObject KCn;
+  private static String jsq;
+  private static final Collection<a> kPt;
+  private static final AppBrandLocalMediaObject kZK;
   
   static
   {
     AppMethodBeat.i(134321);
-    Object localObject2 = b.aih();
+    Object localObject2 = b.aph();
     Object localObject1 = localObject2;
     if (!((String)localObject2).endsWith("/")) {
       localObject1 = (String)localObject2 + "/";
     }
-    KCl = (String)localObject1 + "wxafiles/";
-    localObject2 = com.tencent.mm.vfs.e.R(aj.getContext().getExternalCacheDir());
+    jsq = (String)localObject1 + "wxafiles/";
+    localObject2 = com.tencent.mm.vfs.e.U(ai.getContext().getExternalCacheDir());
     localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = com.tencent.mm.vfs.e.R(aj.getContext().getCacheDir());
+      localObject1 = com.tencent.mm.vfs.e.U(ai.getContext().getCacheDir());
     }
-    vp(com.tencent.mm.vfs.q.B(((com.tencent.mm.vfs.e)localObject1).fhU()));
+    zv(com.tencent.mm.vfs.q.B(((com.tencent.mm.vfs.e)localObject1).fxV()));
     localObject1 = new LinkedList();
     ((Collection)localObject1).add(new b((byte)0));
-    KCm = Collections.unmodifiableCollection((Collection)localObject1);
-    KCn = new AppBrandLocalMediaObject()
+    kPt = Collections.unmodifiableCollection((Collection)localObject1);
+    kZK = new AppBrandLocalMediaObject()
     {
       public final String toString()
       {
@@ -53,19 +51,19 @@ public final class AppBrandLocalMediaObjectManager
     AppMethodBeat.o(134321);
   }
   
-  private static String EJ(String paramString)
+  private static String IM(String paramString)
   {
-    AppMethodBeat.i(192577);
-    paramString = KCl + paramString + "/";
-    AppMethodBeat.o(192577);
+    AppMethodBeat.i(200728);
+    paramString = jsq + paramString + "/";
+    AppMethodBeat.o(200728);
     return paramString;
   }
   
-  private static String EK(String paramString)
+  private static String IN(String paramString)
   {
     AppMethodBeat.i(134315);
-    paramString = EJ(paramString);
-    l.aAk(paramString);
+    paramString = IM(paramString);
+    l.aFC(paramString);
     try
     {
       new com.tencent.mm.vfs.e(paramString, ".nomedia").createNewFile();
@@ -79,24 +77,68 @@ public final class AppBrandLocalMediaObjectManager
     }
   }
   
+  public static long RL(String paramString)
+  {
+    long l = 0L;
+    AppMethodBeat.i(134309);
+    paramString = new com.tencent.mm.vfs.e(IN(paramString));
+    if ((!paramString.exists()) || (!paramString.isDirectory())) {}
+    for (paramString = null; (paramString == null) || (paramString.length <= 0); paramString = paramString.a(new AppBrandLocalMediaObjectManager.2()))
+    {
+      AppMethodBeat.o(134309);
+      return 0L;
+    }
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      l += paramString[i].length();
+      i += 1;
+    }
+    AppMethodBeat.o(134309);
+    return l;
+  }
+  
+  public static long RM(String paramString)
+  {
+    long l = 0L;
+    AppMethodBeat.i(134310);
+    paramString = new com.tencent.mm.vfs.e(IN(paramString));
+    if ((!paramString.exists()) || (!paramString.isDirectory())) {}
+    for (paramString = null; (paramString == null) || (paramString.length <= 0); paramString = paramString.a(new AppBrandLocalMediaObjectManager.1()))
+    {
+      AppMethodBeat.o(134310);
+      return 0L;
+    }
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      l += paramString[i].length();
+      i += 1;
+    }
+    AppMethodBeat.o(134310);
+    return l;
+  }
+  
   private static <T extends AppBrandLocalMediaObject> T a(String paramString1, String paramString2, Class<T> paramClass, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(134312);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(134312);
       return null;
     }
-    if (!i.eK(paramString2))
+    if (!i.eA(paramString2))
     {
       AppMethodBeat.o(134312);
       return null;
     }
-    Object localObject1 = c.getExtension(paramString2);
+    Object localObject1 = org.apache.commons.a.d.getExtension(paramString2);
     Object localObject2;
-    if (bt.isNullOrNil((String)localObject1))
+    if (bs.isNullOrNil((String)localObject1))
     {
-      Iterator localIterator = KCm.iterator();
+      Iterator localIterator = kPt.iterator();
       localObject1 = null;
       while (localIterator.hasNext())
       {
@@ -116,7 +158,7 @@ public final class AppBrandLocalMediaObjectManager
     label157:
     for (int i = -1;; i = ((a)localObject1).size())
     {
-      ad.e("MicroMsg.AppBrand.LocalMediaObjectManager", "attachCast, no handler return correct info, attach.size = %d", new Object[] { Integer.valueOf(i) });
+      ac.e("MicroMsg.AppBrand.LocalMediaObjectManager", "attachCast, no handler return correct info, attach.size = %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(134312);
       return null;
       paramString3 = (String)localObject1;
@@ -126,29 +168,29 @@ public final class AppBrandLocalMediaObjectManager
     {
       label167:
       localObject2 = (AppBrandLocalMediaObject)paramClass.newInstance();
-      ((AppBrandLocalMediaObject)localObject2).diQ = ((String)((a)localObject1).get(0));
-      ((AppBrandLocalMediaObject)localObject2).mimeType = d.aGE(paramString3);
-      ((AppBrandLocalMediaObject)localObject2).gPG = ((String)((a)localObject1).get(1));
-      if (bt.isNullOrNil(((AppBrandLocalMediaObject)localObject2).gPG))
+      ((AppBrandLocalMediaObject)localObject2).dgl = ((String)((a)localObject1).get(0));
+      ((AppBrandLocalMediaObject)localObject2).mimeType = com.tencent.mm.sdk.f.d.aLW(paramString3);
+      ((AppBrandLocalMediaObject)localObject2).hqg = ((String)((a)localObject1).get(1));
+      if (bs.isNullOrNil(((AppBrandLocalMediaObject)localObject2).hqg))
       {
-        ad.e("MicroMsg.AppBrand.LocalMediaObjectManager", "attachCast appId %s, Null Or Nil fileFullPath");
+        ac.e("MicroMsg.AppBrand.LocalMediaObjectManager", "attachCast appId %s, Null Or Nil fileFullPath");
         AppMethodBeat.o(134312);
         return null;
       }
       paramClass = paramString3;
-      if (bt.isNullOrNil(paramString3)) {
+      if (bs.isNullOrNil(paramString3)) {
         paramClass = "unknown";
       }
-      ((AppBrandLocalMediaObject)localObject2).fyk = bt.by((String)((a)localObject1).get(3), paramClass);
-      paramClass = ((AppBrandLocalMediaObject)localObject2).gPG;
-      if ((paramBoolean) && (i.lD(paramString2, paramClass))) {
+      ((AppBrandLocalMediaObject)localObject2).fBR = bs.bG((String)((a)localObject1).get(3), paramClass);
+      paramClass = ((AppBrandLocalMediaObject)localObject2).hqg;
+      if ((paramBoolean) && (i.ma(paramString2, paramClass))) {
         i = 1;
       }
       while (i != 0)
       {
-        paramString2 = new com.tencent.mm.vfs.e(((AppBrandLocalMediaObject)localObject2).gPG);
-        ((AppBrandLocalMediaObject)localObject2).hWY = paramString2.length();
-        ((AppBrandLocalMediaObject)localObject2).iSc = paramString2.lastModified();
+        paramString2 = new com.tencent.mm.vfs.e(((AppBrandLocalMediaObject)localObject2).hqg);
+        ((AppBrandLocalMediaObject)localObject2).ixc = paramString2.length();
+        ((AppBrandLocalMediaObject)localObject2).jsn = paramString2.lastModified();
         paramClass = (q)com.tencent.luggage.a.e.L(q.class);
         if (paramClass != null) {
           paramClass.b(paramString1, paramString2);
@@ -157,7 +199,7 @@ public final class AppBrandLocalMediaObjectManager
         return localObject2;
         if (!paramBoolean)
         {
-          long l = i.lC(paramString2, paramClass);
+          long l = i.lZ(paramString2, paramClass);
           if (l >= 0L)
           {
             i = 1;
@@ -170,53 +212,14 @@ public final class AppBrandLocalMediaObjectManager
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrand.LocalMediaObjectManager", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AppBrand.LocalMediaObjectManager", paramString1, "", new Object[0]);
       AppMethodBeat.o(134312);
     }
   }
   
-  public static long aUB(String paramString)
+  public static String aXR()
   {
-    long l = 0L;
-    AppMethodBeat.i(134309);
-    paramString = new com.tencent.mm.vfs.e(EK(paramString));
-    if ((!paramString.exists()) || (!paramString.isDirectory())) {}
-    for (paramString = null; (paramString == null) || (paramString.length <= 0); paramString = paramString.a(new AppBrandLocalMediaObjectManager.2()))
-    {
-      AppMethodBeat.o(134309);
-      return 0L;
-    }
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      l += paramString[i].length();
-      i += 1;
-    }
-    AppMethodBeat.o(134309);
-    return l;
-  }
-  
-  public static long aUC(String paramString)
-  {
-    long l = 0L;
-    AppMethodBeat.i(134310);
-    paramString = new com.tencent.mm.vfs.e(EK(paramString));
-    if ((!paramString.exists()) || (!paramString.isDirectory())) {}
-    for (paramString = null; (paramString == null) || (paramString.length <= 0); paramString = paramString.a(new AppBrandLocalMediaObjectManager.1()))
-    {
-      AppMethodBeat.o(134310);
-      return 0L;
-    }
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      l += paramString[i].length();
-      i += 1;
-    }
-    AppMethodBeat.o(134310);
-    return l;
+    return jsq;
   }
   
   public static AppBrandLocalMediaObject b(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
@@ -227,24 +230,7 @@ public final class AppBrandLocalMediaObjectManager
     return paramString1;
   }
   
-  public static void clear(String paramString)
-  {
-    AppMethodBeat.i(192576);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(192576);
-      return;
-    }
-    i.cO(EJ(paramString), true);
-    AppMethodBeat.o(192576);
-  }
-  
-  public static String fQU()
-  {
-    return KCl;
-  }
-  
-  public static AppBrandLocalVideoObject fT(String paramString1, String paramString2)
+  public static AppBrandLocalVideoObject cj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(134311);
     paramString1 = (AppBrandLocalVideoObject)a(paramString1, paramString2, AppBrandLocalVideoObject.class, "mp4", false);
@@ -253,29 +239,29 @@ public final class AppBrandLocalMediaObjectManager
   }
   
   @Deprecated
-  public static AppBrandLocalMediaObject fU(String paramString1, String paramString2)
+  public static AppBrandLocalMediaObject cl(String paramString1, String paramString2)
   {
     AppMethodBeat.i(134316);
-    if ((bt.isNullOrNil(paramString2)) || (!paramString2.startsWith("wxfile://")) || (bt.isNullOrNil(paramString1)))
+    if ((bs.isNullOrNil(paramString2)) || (!paramString2.startsWith("wxfile://")) || (bs.isNullOrNil(paramString1)))
     {
-      ad.e("MicroMsg.AppBrand.LocalMediaObjectManager", "getItemByLocalId, invalid args, localId(%s), appId(%s) ", new Object[] { paramString2, paramString1 });
+      ac.e("MicroMsg.AppBrand.LocalMediaObjectManager", "getItemByLocalId, invalid args, localId(%s), appId(%s) ", new Object[] { paramString2, paramString1 });
       AppMethodBeat.o(134316);
       return null;
     }
     String str = paramString2.substring(9);
-    Iterator localIterator = KCm.iterator();
+    Iterator localIterator = kPt.iterator();
     paramString2 = null;
     if (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      paramString2 = locala.cd(paramString1, str);
+      paramString2 = locala.cm(paramString1, str);
       if (paramString2 != null) {
-        ad.i("MicroMsg.AppBrand.LocalMediaObjectManager", "getItemByLocalId, handled by %s, result = %s", new Object[] { locala.toString(), paramString2 });
+        ac.i("MicroMsg.AppBrand.LocalMediaObjectManager", "getItemByLocalId, handled by %s, result = %s", new Object[] { locala.toString(), paramString2 });
       }
     }
     for (;;)
     {
-      if (KCn == paramString2)
+      if (kZK == paramString2)
       {
         AppMethodBeat.o(134316);
         return null;
@@ -286,16 +272,28 @@ public final class AppBrandLocalMediaObjectManager
     }
   }
   
+  public static void clear(String paramString)
+  {
+    AppMethodBeat.i(200727);
+    if (bs.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(200727);
+      return;
+    }
+    i.cU(IM(paramString), true);
+    AppMethodBeat.o(200727);
+  }
+  
   @Keep
   public static String genMediaFilePath(String paramString1, String paramString2)
   {
     AppMethodBeat.i(134308);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(134308);
       return null;
     }
-    paramString1 = EK(paramString1) + paramString2;
+    paramString1 = IN(paramString1) + paramString2;
     AppMethodBeat.o(134308);
     return paramString1;
   }
@@ -308,14 +306,14 @@ public final class AppBrandLocalMediaObjectManager
     return paramString1;
   }
   
-  public static void vp(String paramString)
+  public static void zv(String paramString)
   {
     AppMethodBeat.i(175562);
     String str = paramString;
     if (!paramString.endsWith("/")) {
       str = paramString + "/";
     }
-    KCl = str + "wxafiles/";
+    jsq = str + "wxafiles/";
     AppMethodBeat.o(175562);
   }
   
@@ -323,7 +321,7 @@ public final class AppBrandLocalMediaObjectManager
   {
     public abstract a B(String paramString1, String paramString2, String paramString3);
     
-    public abstract AppBrandLocalMediaObject cd(String paramString1, String paramString2);
+    public abstract AppBrandLocalMediaObject cm(String paramString1, String paramString2);
   }
   
   static final class b
@@ -338,12 +336,12 @@ public final class AppBrandLocalMediaObjectManager
       //   5: aload_3
       //   6: astore 6
       //   8: aload_3
-      //   9: invokestatic 33	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   9: invokestatic 33	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
       //   12: ifeq +8 -> 20
-      //   15: invokestatic 37	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:aRe	()Ljava/lang/String;
+      //   15: invokestatic 37	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:aXZ	()Ljava/lang/String;
       //   18: astore 6
       //   20: aload_2
-      //   21: invokestatic 41	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:aUD	(Ljava/lang/String;)J
+      //   21: invokestatic 41	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:RN	(Ljava/lang/String;)J
       //   24: lstore 4
       //   26: getstatic 47	java/util/Locale:US	Ljava/util/Locale;
       //   29: ldc 49
@@ -362,10 +360,10 @@ public final class AppBrandLocalMediaObjectManager
       //   51: astore_2
       //   52: aload_2
       //   53: aload_1
-      //   54: invokestatic 65	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:ij	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      //   54: invokestatic 65	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:kw	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
       //   57: astore_2
       //   58: aload_2
-      //   59: invokestatic 33	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   59: invokestatic 33	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
       //   62: ifeq +54 -> 116
       //   65: ldc 21
       //   67: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -379,9 +377,9 @@ public final class AppBrandLocalMediaObjectManager
       //   81: dup
       //   82: iconst_0
       //   83: aload_1
-      //   84: invokestatic 76	com/tencent/mm/sdk/platformtools/bt:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+      //   84: invokestatic 76	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
       //   87: aastore
-      //   88: invokestatic 82	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   88: invokestatic 82	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   91: ldc 21
       //   93: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   96: aconst_null
@@ -392,7 +390,7 @@ public final class AppBrandLocalMediaObjectManager
       //   102: ldc 84
       //   104: iconst_0
       //   105: anewarray 4	java/lang/Object
-      //   108: invokestatic 88	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   108: invokestatic 88	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   111: aconst_null
       //   112: astore_2
       //   113: goto -55 -> 58
@@ -419,7 +417,7 @@ public final class AppBrandLocalMediaObjectManager
       //   158: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   161: astore_3
       //   162: aload 6
-      //   164: invokestatic 33	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   164: invokestatic 33	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
       //   167: ifeq +49 -> 216
       //   170: ldc 117
       //   172: astore_1
@@ -440,7 +438,7 @@ public final class AppBrandLocalMediaObjectManager
       //   195: iconst_1
       //   196: aload_2
       //   197: aastore
-      //   198: invokestatic 122	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   198: invokestatic 122	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   201: aload_1
       //   202: aload_2
       //   203: aload 6
@@ -470,7 +468,7 @@ public final class AppBrandLocalMediaObjectManager
       //   52	58	98	java/lang/Exception
     }
     
-    public final AppBrandLocalMediaObject cd(String paramString1, String paramString2)
+    public final AppBrandLocalMediaObject cm(String paramString1, String paramString2)
     {
       Object localObject1 = null;
       AppMethodBeat.i(134306);
@@ -479,34 +477,34 @@ public final class AppBrandLocalMediaObjectManager
         AppMethodBeat.o(134306);
         return null;
       }
-      String str3 = c.getExtension(paramString2);
+      String str3 = org.apache.commons.a.d.getExtension(paramString2);
       String str2 = paramString2.replaceFirst("store_", "").replaceFirst("tmp_", "");
       String str1 = str2;
-      if (!bt.isNullOrNil(str3)) {
+      if (!bs.isNullOrNil(str3)) {
         str1 = str2.replaceFirst(".".concat(String.valueOf(str3)), "");
       }
-      if (bt.isNullOrNil(str1))
+      if (bs.isNullOrNil(str1))
       {
-        paramString1 = AppBrandLocalMediaObjectManager.fQV();
+        paramString1 = AppBrandLocalMediaObjectManager.aXX();
         AppMethodBeat.o(134306);
         return paramString1;
       }
       try
       {
-        str2 = AppBrandLocalMediaObjectManager.cb(str1, paramString1);
+        str2 = AppBrandLocalMediaObjectManager.ck(str1, paramString1);
         localObject1 = str2;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", localException, "retrieveMediaObject, decrypt exp ", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", localException, "retrieveMediaObject, decrypt exp ", new Object[0]);
         }
         Object localObject2 = ((String)localObject1).split("\\|");
         if ((localObject2 != null) && (localObject2.length == 2)) {
           break label194;
         }
-        paramString1 = AppBrandLocalMediaObjectManager.fQV();
+        paramString1 = AppBrandLocalMediaObjectManager.aXX();
         AppMethodBeat.o(134306);
         return paramString1;
         label194:
@@ -518,47 +516,47 @@ public final class AppBrandLocalMediaObjectManager
         for (localObject1 = "store_";; localObject1 = "tmp_")
         {
           str1 = AppBrandLocalMediaObjectManager.access$300(paramString1) + (String)localObject1 + str1;
-          l1 = bt.getLong(localObject2[0], 0L);
+          l1 = bs.getLong(localObject2[0], 0L);
           localObject2 = localObject2[1];
           if (((String)localObject2).equalsIgnoreCase(str3)) {
             break;
           }
-          paramString1 = AppBrandLocalMediaObjectManager.fQV();
+          paramString1 = AppBrandLocalMediaObjectManager.aXX();
           AppMethodBeat.o(134306);
           return paramString1;
         }
         try
         {
-          long l2 = AppBrandLocalMediaObjectManager.aUD(str1);
+          long l2 = AppBrandLocalMediaObjectManager.RN(str1);
           if (l1 != l2)
           {
-            ad.e("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, exactCRC32(%d) != fileCRC32(%d), localId(%s), appId(%s)", new Object[] { Long.valueOf(l2), Long.valueOf(l1), paramString2, paramString1 });
-            paramString1 = AppBrandLocalMediaObjectManager.fQV();
+            ac.e("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, exactCRC32(%d) != fileCRC32(%d), localId(%s), appId(%s)", new Object[] { Long.valueOf(l2), Long.valueOf(l1), paramString2, paramString1 });
+            paramString1 = AppBrandLocalMediaObjectManager.aXX();
             AppMethodBeat.o(134306);
             return paramString1;
           }
         }
         catch (IOException paramString1)
         {
-          ad.e("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, getCRC exp = %s", new Object[] { bt.m(paramString1) });
-          paramString1 = AppBrandLocalMediaObjectManager.fQV();
+          ac.e("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, getCRC exp = %s", new Object[] { bs.m(paramString1) });
+          paramString1 = AppBrandLocalMediaObjectManager.aXX();
           AppMethodBeat.o(134306);
           return paramString1;
         }
         paramString1 = new AppBrandLocalMediaObject();
-        paramString1.diQ = "wxfile://".concat(String.valueOf(paramString2));
-        paramString1.gPG = str1;
-        paramString1.mimeType = d.aGE((String)localObject2);
-        paramString1.iSb = ((String)localObject1).equalsIgnoreCase("store_");
-        paramString2 = new com.tencent.mm.vfs.e(paramString1.gPG);
-        paramString1.iSc = paramString2.lastModified();
-        paramString1.hWY = paramString2.length();
+        paramString1.dgl = "wxfile://".concat(String.valueOf(paramString2));
+        paramString1.hqg = str1;
+        paramString1.mimeType = com.tencent.mm.sdk.f.d.aLW((String)localObject2);
+        paramString1.jsm = ((String)localObject1).equalsIgnoreCase("store_");
+        paramString2 = new com.tencent.mm.vfs.e(paramString1.hqg);
+        paramString1.jsn = paramString2.lastModified();
+        paramString1.ixc = paramString2.length();
         AppMethodBeat.o(134306);
       }
-      if (bt.isNullOrNil((String)localObject1))
+      if (bs.isNullOrNil((String)localObject1))
       {
-        ad.d("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, get empty decrypted string");
-        paramString1 = AppBrandLocalMediaObjectManager.fQV();
+        ac.d("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, get empty decrypted string");
+        paramString1 = AppBrandLocalMediaObjectManager.aXX();
         AppMethodBeat.o(134306);
         return paramString1;
       }
@@ -573,7 +571,7 @@ public final class AppBrandLocalMediaObjectManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager
  * JD-Core Version:    0.7.0.1
  */

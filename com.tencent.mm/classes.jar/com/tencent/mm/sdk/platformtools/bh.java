@@ -1,438 +1,756 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.app.Activity;
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
-import android.provider.MediaStore.Images.Media;
-import android.view.Display;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.os.Environment;
+import android.os.StatFs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public final class bh
 {
-  private static final String EWE;
-  private static ContentObserver EWF;
-  private static WeakReference<a> EWG;
-  private static final String[] aHD;
+  static String[] GtT = { "sysfs", "rootfs", "binfmt_misc", "anon_inodefs", "bdev", "proc", "cgroup", "tmpfs", "debugfs", "sockfs", "pipefs", "rpc_pipefs", "devpts", "ramfs", "fuseblk", "fusectl", "selinuxfs" };
+  static String[] GtU = { "vfat", "exfat", "fuse", "sdcardfs" };
+  static String[] GtV = { "/mnt/secure", "/mnt/asec", "/mnt/obb", "/dev/mapper", "/data/" };
+  static String[] GtW = { "/dev/block/vold" };
   
-  static
+  private static void a(a parama)
   {
-    AppMethodBeat.i(157810);
-    EWE = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
-    aHD = new String[] { "_display_name", "_data", "date_added" };
-    AppMethodBeat.o(157810);
-  }
-  
-  public static void a(final Context paramContext, a parama)
-  {
-    AppMethodBeat.i(157809);
-    ad.i("MicroMsg.ScreenShotUtil", "summerscreenshot setScreenShotCallback context[%s] callback[%s], stack[%s]", new Object[] { paramContext, parama, bt.eGN() });
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(157809);
-      return;
-    }
-    if (parama == null)
-    {
-      if (EWF != null)
-      {
-        paramContext.getContentResolver().unregisterContentObserver(EWF);
-        EWF = null;
-      }
-      if (EWG != null)
-      {
-        EWG.clear();
-        EWG = null;
-      }
-      AppMethodBeat.o(157809);
-      return;
-    }
-    EWG = new WeakReference(parama);
-    if (EWF == null)
-    {
-      EWF = new ContentObserver(new Handler(Looper.myLooper()))
-      {
-        private long vVj;
-        
-        /* Error */
-        public final void onChange(boolean paramAnonymousBoolean, Uri paramAnonymousUri)
-        {
-          // Byte code:
-          //   0: ldc 26
-          //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-          //   5: ldc 34
-          //   7: new 36	java/lang/StringBuilder
-          //   10: dup
-          //   11: ldc 38
-          //   13: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   16: iload_1
-          //   17: invokevirtual 45	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-          //   20: ldc 47
-          //   22: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   25: aload_2
-          //   26: invokevirtual 56	android/net/Uri:toString	()Ljava/lang/String;
-          //   29: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   32: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   35: invokestatic 63	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
-          //   38: invokestatic 67	com/tencent/mm/sdk/platformtools/bh:EW	()Ljava/lang/ref/WeakReference;
-          //   41: ifnull +12 -> 53
-          //   44: invokestatic 67	com/tencent/mm/sdk/platformtools/bh:EW	()Ljava/lang/ref/WeakReference;
-          //   47: invokevirtual 73	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-          //   50: ifnonnull +63 -> 113
-          //   53: ldc 34
-          //   55: ldc 75
-          //   57: iconst_1
-          //   58: anewarray 77	java/lang/Object
-          //   61: dup
-          //   62: iconst_0
-          //   63: invokestatic 67	com/tencent/mm/sdk/platformtools/bh:EW	()Ljava/lang/ref/WeakReference;
-          //   66: aastore
-          //   67: invokestatic 80	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   70: aload_0
-          //   71: getfield 17	com/tencent/mm/sdk/platformtools/bh$1:val$context	Landroid/content/Context;
-          //   74: invokevirtual 86	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-          //   77: aload_0
-          //   78: invokevirtual 92	android/content/ContentResolver:unregisterContentObserver	(Landroid/database/ContentObserver;)V
-          //   81: invokestatic 96	com/tencent/mm/sdk/platformtools/bh:eGo	()Landroid/database/ContentObserver;
-          //   84: pop
-          //   85: invokestatic 67	com/tencent/mm/sdk/platformtools/bh:EW	()Ljava/lang/ref/WeakReference;
-          //   88: ifnull +13 -> 101
-          //   91: invokestatic 67	com/tencent/mm/sdk/platformtools/bh:EW	()Ljava/lang/ref/WeakReference;
-          //   94: invokevirtual 100	java/lang/ref/WeakReference:clear	()V
-          //   97: invokestatic 103	com/tencent/mm/sdk/platformtools/bh:eGp	()Ljava/lang/ref/WeakReference;
-          //   100: pop
-          //   101: aload_0
-          //   102: iload_1
-          //   103: aload_2
-          //   104: invokespecial 105	android/database/ContentObserver:onChange	(ZLandroid/net/Uri;)V
-          //   107: ldc 26
-          //   109: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   112: return
-          //   113: aload_2
-          //   114: invokevirtual 56	android/net/Uri:toString	()Ljava/lang/String;
-          //   117: invokestatic 111	com/tencent/mm/sdk/platformtools/bh:access$200	()Ljava/lang/String;
-          //   120: invokevirtual 117	java/lang/String:matches	(Ljava/lang/String;)Z
-          //   123: ifne +16 -> 139
-          //   126: aload_2
-          //   127: invokevirtual 56	android/net/Uri:toString	()Ljava/lang/String;
-          //   130: invokestatic 111	com/tencent/mm/sdk/platformtools/bh:access$200	()Ljava/lang/String;
-          //   133: invokevirtual 121	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-          //   136: ifeq -35 -> 101
-          //   139: aload_0
-          //   140: getfield 17	com/tencent/mm/sdk/platformtools/bh$1:val$context	Landroid/content/Context;
-          //   143: invokevirtual 86	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-          //   146: aload_2
-          //   147: invokestatic 125	com/tencent/mm/sdk/platformtools/bh:elP	()[Ljava/lang/String;
-          //   150: aconst_null
-          //   151: aconst_null
-          //   152: ldc 127
-          //   154: invokevirtual 131	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-          //   157: astore 9
-          //   159: aload 9
-          //   161: ifnull +478 -> 639
-          //   164: aload 9
-          //   166: astore 10
-          //   168: aload 9
-          //   170: invokeinterface 137 1 0
-          //   175: ifeq +464 -> 639
-          //   178: aload 9
-          //   180: astore 10
-          //   182: aload 9
-          //   184: aload 9
-          //   186: ldc 139
-          //   188: invokeinterface 143 2 0
-          //   193: invokeinterface 147 2 0
-          //   198: astore 8
-          //   200: aload 9
-          //   202: astore 10
-          //   204: aload 9
-          //   206: aload 9
-          //   208: ldc 149
-          //   210: invokeinterface 143 2 0
-          //   215: invokeinterface 153 2 0
-          //   220: lstore 4
-          //   222: aload 9
-          //   224: astore 10
-          //   226: invokestatic 159	java/lang/System:currentTimeMillis	()J
-          //   229: ldc2_w 160
-          //   232: ldiv
-          //   233: lstore 6
-          //   235: aload 9
-          //   237: astore 10
-          //   239: ldc 34
-          //   241: new 36	java/lang/StringBuilder
-          //   244: dup
-          //   245: ldc 163
-          //   247: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   250: aload 8
-          //   252: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   255: ldc 165
-          //   257: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   260: lload 4
-          //   262: invokevirtual 168	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-          //   265: ldc 170
-          //   267: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   270: lload 6
-          //   272: invokevirtual 168	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-          //   275: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   278: invokestatic 63	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
-          //   281: aload 9
-          //   283: astore 10
-          //   285: lload 6
-          //   287: lload 4
-          //   289: lsub
-          //   290: invokestatic 176	java/lang/Math:abs	(J)J
-          //   293: ldc2_w 177
-          //   296: lcmp
-          //   297: ifgt +342 -> 639
-          //   300: aload 9
-          //   302: astore 10
-          //   304: lload 6
-          //   306: aload_0
-          //   307: getfield 180	com/tencent/mm/sdk/platformtools/bh$1:vVj	J
-          //   310: lsub
-          //   311: lconst_1
-          //   312: lcmp
-          //   313: ifle +326 -> 639
-          //   316: aload 9
-          //   318: astore 10
-          //   320: aload 8
-          //   322: invokestatic 185	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
-          //   325: ifne +314 -> 639
-          //   328: aload 9
-          //   330: astore 10
-          //   332: aload 8
-          //   334: invokevirtual 188	java/lang/String:toLowerCase	()Ljava/lang/String;
-          //   337: ldc 190
-          //   339: invokevirtual 121	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-          //   342: ifne +33 -> 375
-          //   345: aload 9
-          //   347: astore 10
-          //   349: aload 8
-          //   351: ldc 192
-          //   353: invokevirtual 121	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-          //   356: ifne +19 -> 375
-          //   359: aload 9
-          //   361: astore 10
-          //   363: aload 8
-          //   365: ldc 194
-          //   367: invokevirtual 121	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-          //   370: istore_3
-          //   371: iload_3
-          //   372: ifeq +267 -> 639
-          //   375: aload 9
-          //   377: astore 10
-          //   379: aload_0
-          //   380: lload 6
-          //   382: putfield 180	com/tencent/mm/sdk/platformtools/bh$1:vVj	J
-          //   385: lload 4
-          //   387: lstore 6
-          //   389: aload 8
-          //   391: astore 10
-          //   393: aload 9
-          //   395: ifnull +233 -> 628
-          //   398: aload 9
-          //   400: invokeinterface 197 1 0
-          //   405: aload 8
-          //   407: invokestatic 185	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
-          //   410: ifne -309 -> 101
-          //   413: ldc 34
-          //   415: new 36	java/lang/StringBuilder
-          //   418: dup
-          //   419: ldc 199
-          //   421: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   424: aload 8
-          //   426: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   429: ldc 201
-          //   431: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   434: lload 4
-          //   436: invokevirtual 168	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-          //   439: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   442: invokestatic 203	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-          //   445: invokestatic 67	com/tencent/mm/sdk/platformtools/bh:EW	()Ljava/lang/ref/WeakReference;
-          //   448: ifnull +119 -> 567
-          //   451: invokestatic 67	com/tencent/mm/sdk/platformtools/bh:EW	()Ljava/lang/ref/WeakReference;
-          //   454: invokevirtual 73	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-          //   457: ifnull +110 -> 567
-          //   460: invokestatic 67	com/tencent/mm/sdk/platformtools/bh:EW	()Ljava/lang/ref/WeakReference;
-          //   463: invokevirtual 73	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-          //   466: checkcast 205	com/tencent/mm/sdk/platformtools/bh$a
-          //   469: aload 8
-          //   471: lload 4
-          //   473: invokeinterface 209 4 0
-          //   478: goto -377 -> 101
-          //   481: astore 11
-          //   483: aconst_null
-          //   484: astore 9
-          //   486: lconst_0
-          //   487: lstore 4
-          //   489: aconst_null
-          //   490: astore 8
-          //   492: aload 9
-          //   494: astore 10
-          //   496: ldc 34
-          //   498: new 36	java/lang/StringBuilder
-          //   501: dup
-          //   502: ldc 211
-          //   504: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   507: aload 11
-          //   509: invokevirtual 214	java/lang/Exception:getMessage	()Ljava/lang/String;
-          //   512: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   515: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   518: invokestatic 217	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
-          //   521: lload 4
-          //   523: lstore 6
-          //   525: aload 8
-          //   527: astore 10
-          //   529: aload 9
-          //   531: ifnull +97 -> 628
-          //   534: aload 9
-          //   536: invokeinterface 197 1 0
-          //   541: goto -136 -> 405
-          //   544: astore_2
-          //   545: aconst_null
-          //   546: astore 10
-          //   548: aload 10
-          //   550: ifnull +10 -> 560
-          //   553: aload 10
-          //   555: invokeinterface 197 1 0
-          //   560: ldc 26
-          //   562: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   565: aload_2
-          //   566: athrow
-          //   567: aload_0
-          //   568: getfield 17	com/tencent/mm/sdk/platformtools/bh$1:val$context	Landroid/content/Context;
-          //   571: invokevirtual 86	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-          //   574: aload_0
-          //   575: invokevirtual 92	android/content/ContentResolver:unregisterContentObserver	(Landroid/database/ContentObserver;)V
-          //   578: invokestatic 96	com/tencent/mm/sdk/platformtools/bh:eGo	()Landroid/database/ContentObserver;
-          //   581: pop
-          //   582: invokestatic 67	com/tencent/mm/sdk/platformtools/bh:EW	()Ljava/lang/ref/WeakReference;
-          //   585: ifnull +13 -> 598
-          //   588: invokestatic 67	com/tencent/mm/sdk/platformtools/bh:EW	()Ljava/lang/ref/WeakReference;
-          //   591: invokevirtual 100	java/lang/ref/WeakReference:clear	()V
-          //   594: invokestatic 103	com/tencent/mm/sdk/platformtools/bh:eGp	()Ljava/lang/ref/WeakReference;
-          //   597: pop
-          //   598: ldc 34
-          //   600: ldc 219
-          //   602: invokestatic 203	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-          //   605: goto -504 -> 101
-          //   608: astore_2
-          //   609: goto -61 -> 548
-          //   612: astore 11
-          //   614: lconst_0
-          //   615: lstore 4
-          //   617: aconst_null
-          //   618: astore 8
-          //   620: goto -128 -> 492
-          //   623: astore 11
-          //   625: goto -133 -> 492
-          //   628: lload 6
-          //   630: lstore 4
-          //   632: aload 10
-          //   634: astore 8
-          //   636: goto -231 -> 405
-          //   639: lconst_0
-          //   640: lstore 4
-          //   642: aconst_null
-          //   643: astore 8
-          //   645: goto -260 -> 385
-          // Local variable table:
-          //   start	length	slot	name	signature
-          //   0	648	0	this	1
-          //   0	648	1	paramAnonymousBoolean	boolean
-          //   0	648	2	paramAnonymousUri	Uri
-          //   370	2	3	bool	boolean
-          //   220	421	4	l1	long
-          //   233	396	6	l2	long
-          //   198	446	8	localObject1	Object
-          //   157	378	9	localCursor	android.database.Cursor
-          //   166	467	10	localObject2	Object
-          //   481	27	11	localException1	Exception
-          //   612	1	11	localException2	Exception
-          //   623	1	11	localException3	Exception
-          // Exception table:
-          //   from	to	target	type
-          //   139	159	481	java/lang/Exception
-          //   139	159	544	finally
-          //   168	178	608	finally
-          //   182	200	608	finally
-          //   204	222	608	finally
-          //   226	235	608	finally
-          //   239	281	608	finally
-          //   285	300	608	finally
-          //   304	316	608	finally
-          //   320	328	608	finally
-          //   332	345	608	finally
-          //   349	359	608	finally
-          //   363	371	608	finally
-          //   379	385	608	finally
-          //   496	521	608	finally
-          //   168	178	612	java/lang/Exception
-          //   182	200	612	java/lang/Exception
-          //   204	222	612	java/lang/Exception
-          //   226	235	612	java/lang/Exception
-          //   239	281	612	java/lang/Exception
-          //   285	300	612	java/lang/Exception
-          //   304	316	612	java/lang/Exception
-          //   320	328	612	java/lang/Exception
-          //   332	345	612	java/lang/Exception
-          //   349	359	612	java/lang/Exception
-          //   363	371	612	java/lang/Exception
-          //   379	385	623	java/lang/Exception
-        }
-      };
-      paramContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, EWF);
-    }
-    AppMethodBeat.o(157809);
-  }
-  
-  public static Bitmap aR(Activity paramActivity)
-  {
-    AppMethodBeat.i(157808);
-    View localView = paramActivity.getWindow().getDecorView();
-    localView.setDrawingCacheEnabled(true);
-    localView.buildDrawingCache();
-    Bitmap localBitmap = localView.getDrawingCache();
-    Rect localRect = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    int i = localRect.top;
-    int j = paramActivity.getWindowManager().getDefaultDisplay().getWidth();
-    int k = paramActivity.getWindowManager().getDefaultDisplay().getHeight();
+    AppMethodBeat.i(157814);
     try
     {
-      paramActivity = Bitmap.createBitmap(localBitmap, 0, i, j, k - i);
-      localView.destroyDrawingCache();
-      AppMethodBeat.o(157808);
-      return paramActivity;
+      StatFs localStatFs = new StatFs(parama.GtY);
+      parama.Gud = localStatFs.getBlockSize();
+      parama.Guc = localStatFs.getAvailableBlocks();
+      parama.Gua = localStatFs.getBlockCount();
+      parama.Gub = localStatFs.getFreeBlocks();
+      AppMethodBeat.o(157814);
+      return;
     }
-    catch (Exception paramActivity)
+    catch (IllegalArgumentException parama)
     {
+      ac.e("MicroMsg.SdcardUtil", "statFsForStatMountParse", new Object[] { parama });
+      AppMethodBeat.o(157814);
+    }
+  }
+  
+  public static String aLf(String paramString)
+  {
+    AppMethodBeat.i(157822);
+    Object localObject2 = "";
+    if (bs.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(157822);
+      return "";
+    }
+    Object localObject3 = eVL();
+    Object localObject4 = ((ArrayList)localObject3).iterator();
+    do
+    {
+      localObject1 = localObject2;
+      if (!((Iterator)localObject4).hasNext()) {
+        break;
+      }
+      localObject1 = (a)((Iterator)localObject4).next();
+    } while (!paramString.equals(((a)localObject1).GtY));
+    Object localObject1 = ((a)localObject1).GtZ;
+    ac.i("MicroMsg.SdcardUtil", "getFileSystem[%s] is [%s]", new Object[] { paramString, localObject1 });
+    localObject2 = localObject1;
+    if (bs.isNullOrNil((String)localObject1))
+    {
+      localObject2 = localObject1;
+      if (paramString.contains("emulated"))
+      {
+        localObject4 = paramString.substring(paramString.lastIndexOf('/') + 1);
+        int i = bs.getInt((String)localObject4, -1);
+        ac.i("MicroMsg.SdcardUtil", "getFileSystem multiuser uid[%s][%d]", new Object[] { localObject4, Integer.valueOf(i) });
+        localObject2 = localObject1;
+        if (i != -1)
+        {
+          localObject4 = paramString.substring(0, paramString.length() - ((String)localObject4).length() - 1);
+          localObject2 = localObject1;
+          if (!bs.isNullOrNil((String)localObject4))
+          {
+            localObject3 = ((ArrayList)localObject3).iterator();
+            do
+            {
+              localObject2 = localObject1;
+              if (!((Iterator)localObject3).hasNext()) {
+                break;
+              }
+              localObject2 = (a)((Iterator)localObject3).next();
+            } while (!((String)localObject4).equals(((a)localObject2).GtY));
+            localObject2 = ((a)localObject2).GtZ;
+            ac.i("MicroMsg.SdcardUtil", "getFileSystem[%s] fix[%s] is [%s]", new Object[] { paramString, localObject4, localObject2 });
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(157822);
+    return localObject2;
+  }
+  
+  private static boolean b(a parama)
+  {
+    AppMethodBeat.i(157815);
+    e locale = new e(parama.GtY, "test_writable");
+    Object localObject2 = null;
+    OutputStream localOutputStream3 = null;
+    localOutputStream2 = localOutputStream3;
+    Object localObject1 = localObject2;
+    for (;;)
+    {
+      try
+      {
+        locale.createNewFile();
+        localOutputStream2 = localOutputStream3;
+        localObject1 = localObject2;
+        localOutputStream3 = i.ah(locale);
+        localOutputStream2 = localOutputStream3;
+        localObject1 = localOutputStream3;
+        localOutputStream3.write("test".getBytes());
+        localOutputStream2 = localOutputStream3;
+        localObject1 = localOutputStream3;
+        localOutputStream3.flush();
+        localOutputStream2 = localOutputStream3;
+        localObject1 = localOutputStream3;
+        localOutputStream3.close();
+        localOutputStream2 = localOutputStream3;
+        localObject1 = localOutputStream3;
+        bool2 = locale.delete();
+        bool1 = bool2;
+        if (localOutputStream3 == null) {}
+      }
+      catch (IOException localIOException4)
+      {
+        boolean bool2;
+        OutputStream localOutputStream1 = localOutputStream2;
+        ac.e("MicroMsg.SdcardUtil", "createNewFile: " + localIOException4.getMessage() + " dir: " + parama.GtY);
+        if (localOutputStream2 == null) {
+          continue;
+        }
+        try
+        {
+          localOutputStream2.close();
+          bool1 = false;
+        }
+        catch (IOException localIOException2)
+        {
+          ac.printErrStackTrace("MicroMsg.SdcardUtil", localIOException2, "", new Object[0]);
+          bool1 = false;
+        }
+        continue;
+      }
+      finally
+      {
+        if (localIOException2 == null) {
+          continue;
+        }
+        try
+        {
+          localIOException2.close();
+          AppMethodBeat.o(157815);
+          throw parama;
+        }
+        catch (IOException localIOException3)
+        {
+          ac.printErrStackTrace("MicroMsg.SdcardUtil", localIOException3, "", new Object[0]);
+          continue;
+        }
+        boolean bool1 = false;
+        continue;
+      }
+      try
+      {
+        localOutputStream3.close();
+        bool1 = bool2;
+      }
+      catch (IOException localIOException1)
+      {
+        ac.printErrStackTrace("MicroMsg.SdcardUtil", localIOException1, "", new Object[0]);
+        bool1 = bool2;
+      }
+    }
+    parama.cDN = bool1;
+    AppMethodBeat.o(157815);
+    return bool1;
+  }
+  
+  /* Error */
+  private static ArrayList<a> eVL()
+  {
+    // Byte code:
+    //   0: ldc_w 287
+    //   3: invokestatic 89	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 155	java/util/ArrayList
+    //   9: dup
+    //   10: invokespecial 289	java/util/ArrayList:<init>	()V
+    //   13: astore_3
+    //   14: new 291	java/io/BufferedReader
+    //   17: dup
+    //   18: new 293	com/tencent/mm/vfs/k
+    //   21: dup
+    //   22: ldc_w 295
+    //   25: invokespecial 296	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   28: invokespecial 299	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   31: astore_1
+    //   32: aload_1
+    //   33: astore_0
+    //   34: aload_1
+    //   35: invokevirtual 302	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   38: astore 4
+    //   40: aload 4
+    //   42: ifnull +156 -> 198
+    //   45: aload_1
+    //   46: astore_0
+    //   47: aload 4
+    //   49: ldc_w 304
+    //   52: invokevirtual 308	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   55: astore_2
+    //   56: aload_2
+    //   57: ifnull +11 -> 68
+    //   60: aload_1
+    //   61: astore_0
+    //   62: aload_2
+    //   63: arraylength
+    //   64: iconst_3
+    //   65: if_icmpge +59 -> 124
+    //   68: aload_1
+    //   69: astore_0
+    //   70: ldc 130
+    //   72: ldc_w 310
+    //   75: aload 4
+    //   77: invokestatic 313	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   80: invokevirtual 316	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: invokestatic 284	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   86: goto -54 -> 32
+    //   89: astore_2
+    //   90: aload_1
+    //   91: astore_0
+    //   92: ldc 130
+    //   94: ldc_w 318
+    //   97: iconst_1
+    //   98: anewarray 4	java/lang/Object
+    //   101: dup
+    //   102: iconst_0
+    //   103: aload_2
+    //   104: aastore
+    //   105: invokestatic 138	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   108: aload_1
+    //   109: ifnull +7 -> 116
+    //   112: aload_1
+    //   113: invokevirtual 319	java/io/BufferedReader:close	()V
+    //   116: ldc_w 287
+    //   119: invokestatic 128	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   122: aload_3
+    //   123: areturn
+    //   124: aload_1
+    //   125: astore_0
+    //   126: new 6	com/tencent/mm/sdk/platformtools/bh$a
+    //   129: dup
+    //   130: invokespecial 320	com/tencent/mm/sdk/platformtools/bh$a:<init>	()V
+    //   133: astore 4
+    //   135: aload_1
+    //   136: astore_0
+    //   137: aload 4
+    //   139: aload_2
+    //   140: iconst_0
+    //   141: aaload
+    //   142: putfield 323	com/tencent/mm/sdk/platformtools/bh$a:GtX	Ljava/lang/String;
+    //   145: aload_1
+    //   146: astore_0
+    //   147: aload 4
+    //   149: aload_2
+    //   150: iconst_1
+    //   151: aaload
+    //   152: putfield 95	com/tencent/mm/sdk/platformtools/bh$a:GtY	Ljava/lang/String;
+    //   155: aload_1
+    //   156: astore_0
+    //   157: aload 4
+    //   159: aload_2
+    //   160: iconst_2
+    //   161: aaload
+    //   162: putfield 176	com/tencent/mm/sdk/platformtools/bh$a:GtZ	Ljava/lang/String;
+    //   165: aload_1
+    //   166: astore_0
+    //   167: aload_3
+    //   168: aload 4
+    //   170: invokevirtual 326	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   173: pop
+    //   174: goto -142 -> 32
+    //   177: astore_2
+    //   178: aload_0
+    //   179: astore_1
+    //   180: aload_2
+    //   181: astore_0
+    //   182: aload_1
+    //   183: ifnull +7 -> 190
+    //   186: aload_1
+    //   187: invokevirtual 319	java/io/BufferedReader:close	()V
+    //   190: ldc_w 287
+    //   193: invokestatic 128	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   196: aload_0
+    //   197: athrow
+    //   198: aload_1
+    //   199: invokevirtual 319	java/io/BufferedReader:close	()V
+    //   202: goto -86 -> 116
+    //   205: astore_0
+    //   206: ldc 130
+    //   208: aload_0
+    //   209: ldc 143
+    //   211: iconst_0
+    //   212: anewarray 4	java/lang/Object
+    //   215: invokestatic 264	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   218: goto -102 -> 116
+    //   221: astore_0
+    //   222: ldc 130
+    //   224: aload_0
+    //   225: ldc 143
+    //   227: iconst_0
+    //   228: anewarray 4	java/lang/Object
+    //   231: invokestatic 264	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   234: goto -118 -> 116
+    //   237: astore_1
+    //   238: ldc 130
+    //   240: aload_1
+    //   241: ldc 143
+    //   243: iconst_0
+    //   244: anewarray 4	java/lang/Object
+    //   247: invokestatic 264	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   250: goto -60 -> 190
+    //   253: astore_0
+    //   254: aconst_null
+    //   255: astore_1
+    //   256: goto -74 -> 182
+    //   259: astore_2
+    //   260: aconst_null
+    //   261: astore_1
+    //   262: goto -172 -> 90
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   33	164	0	localObject1	Object
+    //   205	4	0	localIOException1	IOException
+    //   221	4	0	localIOException2	IOException
+    //   253	1	0	localObject2	Object
+    //   31	168	1	localObject3	Object
+    //   237	4	1	localIOException3	IOException
+    //   255	7	1	localObject4	Object
+    //   55	8	2	arrayOfString	String[]
+    //   89	71	2	localException1	java.lang.Exception
+    //   177	4	2	localObject5	Object
+    //   259	1	2	localException2	java.lang.Exception
+    //   13	155	3	localArrayList	ArrayList
+    //   38	131	4	localObject6	Object
+    // Exception table:
+    //   from	to	target	type
+    //   34	40	89	java/lang/Exception
+    //   47	56	89	java/lang/Exception
+    //   62	68	89	java/lang/Exception
+    //   70	86	89	java/lang/Exception
+    //   126	135	89	java/lang/Exception
+    //   137	145	89	java/lang/Exception
+    //   147	155	89	java/lang/Exception
+    //   157	165	89	java/lang/Exception
+    //   167	174	89	java/lang/Exception
+    //   34	40	177	finally
+    //   47	56	177	finally
+    //   62	68	177	finally
+    //   70	86	177	finally
+    //   92	108	177	finally
+    //   126	135	177	finally
+    //   137	145	177	finally
+    //   147	155	177	finally
+    //   157	165	177	finally
+    //   167	174	177	finally
+    //   198	202	205	java/io/IOException
+    //   112	116	221	java/io/IOException
+    //   186	190	237	java/io/IOException
+    //   14	32	253	finally
+    //   14	32	259	java/lang/Exception
+  }
+  
+  private static a eVM()
+  {
+    AppMethodBeat.i(157816);
+    Object localObject1 = eVL();
+    String str = Environment.getDataDirectory().getAbsolutePath();
+    Object localObject2 = ((ArrayList)localObject1).iterator();
+    do
+    {
+      if (!((Iterator)localObject2).hasNext()) {
+        break;
+      }
+      localObject1 = (a)((Iterator)localObject2).next();
+    } while (!((a)localObject1).GtY.equals(str));
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject2 = new a();
+        ((a)localObject2).GtY = str;
+        ((a)localObject2).GtX = "Unknown";
+        ((a)localObject2).GtZ = "Unknown";
+      }
+      a((a)localObject2);
+      AppMethodBeat.o(157816);
+      return localObject2;
+      localObject1 = null;
+    }
+  }
+  
+  private static a eVN()
+  {
+    AppMethodBeat.i(157817);
+    Object localObject1 = eVL();
+    String str = Environment.getExternalStorageDirectory().getAbsolutePath();
+    Object localObject2 = ((ArrayList)localObject1).iterator();
+    do
+    {
+      if (!((Iterator)localObject2).hasNext()) {
+        break;
+      }
+      localObject1 = (a)((Iterator)localObject2).next();
+    } while (!((a)localObject1).GtY.equals(str));
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject2 = new a();
+        ((a)localObject2).GtY = str;
+        ((a)localObject2).GtX = "Unknown";
+        ((a)localObject2).GtZ = "Unknown";
+      }
+      a((a)localObject2);
+      AppMethodBeat.o(157817);
+      return localObject2;
+      localObject1 = null;
+    }
+  }
+  
+  public static ArrayList<a> eVO()
+  {
+    AppMethodBeat.i(157818);
+    ArrayList localArrayList = eVL();
+    int i = localArrayList.size();
+    Object localObject1 = Arrays.asList(GtU);
+    Object localObject2 = Arrays.asList(GtV);
+    Object localObject3 = Arrays.asList(GtW);
+    i -= 1;
+    if (i >= 0)
+    {
+      a locala = (a)localArrayList.get(i);
+      if (!((List)localObject1).contains(locala.GtZ))
+      {
+        localArrayList.remove(i);
+        ac.d("MicroMsg.SdcardUtil", "Remove with filesystem mismatch: " + locala.GtZ);
+      }
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.ScreenShotUtil", paramActivity, "", new Object[0]);
-        paramActivity = localBitmap;
+        i -= 1;
+        break;
+        Iterator localIterator = ((List)localObject2).iterator();
+        String str;
+        for (boolean bool = false; localIterator.hasNext(); bool = locala.GtY.startsWith(str) | bool) {
+          str = (String)localIterator.next();
+        }
+        if (bool)
+        {
+          localArrayList.remove(i);
+          ac.d("MicroMsg.SdcardUtil", "Remove with bad mount dir1: " + locala.GtY);
+        }
+        else if ((locala.GtZ.equals("fuse")) || (locala.GtZ.equals("sdcardfs")))
+        {
+          if (locala.GtX.startsWith("/data/"))
+          {
+            localArrayList.remove(i);
+            ac.d("MicroMsg.SdcardUtil", "Remove with bad mount dir2: " + locala.GtX);
+          }
+        }
+        else if ((!locala.GtZ.equals("fuse")) && (!locala.GtZ.equals("sdcardfs")))
+        {
+          localIterator = ((List)localObject3).iterator();
+          for (bool = false; localIterator.hasNext(); bool = locala.GtX.startsWith(str) | bool) {
+            str = (String)localIterator.next();
+          }
+          if (!bool)
+          {
+            localArrayList.remove(i);
+            ac.d("MicroMsg.SdcardUtil", "Remove with bad device name: " + locala.GtX);
+          }
+        }
+      }
+    }
+    localObject1 = Environment.getExternalStorageDirectory().getPath();
+    i = localArrayList.size() - 1;
+    if (i >= 0)
+    {
+      localObject2 = (a)localArrayList.get(i);
+      if (((a)localObject2).GtY.equals(localObject1))
+      {
+        localArrayList.remove(i);
+        localArrayList.add(0, localObject2);
+      }
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        localObject2 = new a();
+        ((a)localObject2).GtY = ((String)localObject1);
+        ((a)localObject2).GtZ = "unknown";
+        ((a)localObject2).GtX = "unknown";
+        localArrayList.add(0, localObject2);
+      }
+      i = localArrayList.size() - 1;
+      for (;;)
+      {
+        if (i >= 0)
+        {
+          localObject1 = (a)localArrayList.get(i);
+          localObject2 = new e(((a)localObject1).GtY);
+          if ((!((e)localObject2).exists()) || (!((e)localObject2).isDirectory()))
+          {
+            ac.d("MicroMsg.SdcardUtil", "Directory verify failed: ".concat(String.valueOf(localObject1)));
+            localArrayList.remove(i);
+          }
+          i -= 1;
+          continue;
+          i -= 1;
+          break;
+        }
+      }
+      i = localArrayList.size() - 1;
+      while (i >= 0)
+      {
+        localObject1 = (a)localArrayList.get(i);
+        if (!b((a)localObject1))
+        {
+          ac.d("MicroMsg.SdcardUtil", "Directory testPermissionForStatMountParse failed: ".concat(String.valueOf(localObject1)));
+          localArrayList.remove(i);
+        }
+        i -= 1;
+      }
+      localObject3 = new ArrayList();
+      if (!localArrayList.isEmpty())
+      {
+        localObject1 = (a)localArrayList.remove(0);
+        i = localArrayList.size() - 1;
+        label661:
+        if (i >= 0)
+        {
+          localObject2 = (a)localArrayList.get(i);
+          if (!((a)localObject1).GtX.equals(((a)localObject2).GtX)) {
+            break label913;
+          }
+          localArrayList.remove(i);
+          ac.d("MicroMsg.SdcardUtil", "Duplicate with same DevName:" + ((a)localObject1).GtX);
+          if ((((a)localObject1).cDN) || (!((a)localObject2).cDN)) {
+            break label913;
+          }
+          ac.d("MicroMsg.SdcardUtil", "Keep the writable one, discard the unwritable one");
+          localObject1 = localObject2;
+        }
+      }
+      label913:
+      for (;;)
+      {
+        i -= 1;
+        break label661;
+        ((ArrayList)localObject3).add(localObject1);
+        break;
+        localObject1 = ((ArrayList)localObject3).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          a((a)((Iterator)localObject1).next());
+        }
+        localArrayList.clear();
+        while (!((ArrayList)localObject3).isEmpty())
+        {
+          localObject1 = (a)((ArrayList)localObject3).remove(0);
+          localArrayList.add(localObject1);
+          i = ((ArrayList)localObject3).size() - 1;
+          while (i >= 0)
+          {
+            localObject2 = (a)((ArrayList)localObject3).get(i);
+            if (((a)localObject1).equals(localObject2))
+            {
+              ac.d("MicroMsg.SdcardUtil", "Duplicate:" + ((a)localObject1).toString() + "---" + ((a)localObject2).toString());
+              ((ArrayList)localObject3).remove(i);
+            }
+            i -= 1;
+          }
+        }
+        AppMethodBeat.o(157818);
+        return localArrayList;
       }
     }
   }
   
-  public static abstract interface a
+  public static long eVP()
   {
-    public abstract void P(String paramString, long paramLong);
+    AppMethodBeat.i(157819);
+    a locala = eVM();
+    long l1 = locala.Guc;
+    long l2 = locala.Gud;
+    AppMethodBeat.o(157819);
+    return l2 * l1;
+  }
+  
+  public static long eVQ()
+  {
+    AppMethodBeat.i(157820);
+    a locala = eVN();
+    long l1 = locala.Guc;
+    long l2 = locala.Gud;
+    AppMethodBeat.o(157820);
+    return l2 * l1;
+  }
+  
+  public static boolean eVR()
+  {
+    AppMethodBeat.i(157821);
+    long l = System.currentTimeMillis();
+    Object localObject5 = eVL();
+    String str2 = Environment.getDataDirectory().getAbsolutePath();
+    String str1 = Environment.getExternalStorageDirectory().getAbsolutePath();
+    Object localObject1 = null;
+    Iterator localIterator = ((ArrayList)localObject5).iterator();
+    Object localObject3 = null;
+    Object localObject2;
+    for (;;)
+    {
+      localObject2 = localObject1;
+      localObject4 = localObject3;
+      if (!localIterator.hasNext()) {
+        break label138;
+      }
+      localObject2 = (a)localIterator.next();
+      if ((localObject3 == null) && (((a)localObject2).GtY.equals(str2)))
+      {
+        if (localObject1 != null) {
+          break label492;
+        }
+        localObject3 = localObject2;
+      }
+      else
+      {
+        if ((localObject1 != null) || (!((a)localObject2).GtY.equals(str1))) {
+          break label485;
+        }
+        if (localObject3 != null) {
+          break;
+        }
+        localObject1 = localObject2;
+      }
+    }
+    Object localObject4 = localObject3;
+    for (;;)
+    {
+      label138:
+      if ((localObject4 != null) && (localObject2 == null) && (!bs.isNullOrNil(str1)) && (str1.contains("emulated")))
+      {
+        localObject1 = str1.substring(str1.lastIndexOf('/') + 1);
+        int i = bs.getInt((String)localObject1, -1);
+        ac.i("MicroMsg.SdcardUtil", "hasUnRemovableStorage multiuser uid[%s][%d]", new Object[] { localObject1, Integer.valueOf(i) });
+        if (i != -1)
+        {
+          localObject3 = str1.substring(0, str1.length() - ((String)localObject1).length() - 1);
+          if (!bs.isNullOrNil((String)localObject3))
+          {
+            localObject5 = ((ArrayList)localObject5).iterator();
+            do
+            {
+              if (!((Iterator)localObject5).hasNext()) {
+                break;
+              }
+              localObject1 = (a)((Iterator)localObject5).next();
+            } while (!((a)localObject1).GtY.equals(localObject3));
+          }
+        }
+      }
+      for (;;)
+      {
+        if ((localObject4 != null) && (localObject1 != null))
+        {
+          a(localObject4);
+          a((a)localObject1);
+          ac.d("MicroMsg.SdcardUtil", "hasUnRemovableStorage stats dataStatMountParse[%s] storageStatMountParse[%s]", new Object[] { localObject4, localObject1 });
+          if (((!((a)localObject1).GtZ.equals("fuse")) && (!((a)localObject1).GtZ.equals("sdcardfs")) && (!((a)localObject1).GtZ.equals("esdfs"))) || (localObject4.Gua < ((a)localObject1).Gua) || (((a)localObject1).Gua <= 0L) || (localObject4.Gud < ((a)localObject1).Gud) || (((a)localObject1).Gud <= 0L) || (localObject4.Guc < ((a)localObject1).Guc)) {}
+        }
+        for (boolean bool = true;; bool = false)
+        {
+          ac.i("MicroMsg.SdcardUtil", "hasUnRemovableStorage ret[%b], take[%d]ms", new Object[] { Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
+          AppMethodBeat.o(157821);
+          return bool;
+        }
+        localObject1 = localObject2;
+      }
+      label485:
+      localObject2 = localObject1;
+      break;
+      label492:
+      localObject4 = localObject2;
+      localObject2 = localObject1;
+    }
+  }
+  
+  public static final class a
+  {
+    public String GtX;
+    public String GtY;
+    public String GtZ;
+    public long Gua;
+    public long Gub;
+    public long Guc;
+    public long Gud;
+    a Gue;
+    public boolean cDN;
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(157812);
+      paramObject = (a)paramObject;
+      if (this.Gud != paramObject.Gud)
+      {
+        AppMethodBeat.o(157812);
+        return false;
+      }
+      long l1 = this.Gua - paramObject.Gua;
+      long l2 = this.Gub - paramObject.Gub;
+      long l3 = this.Guc - paramObject.Guc;
+      if ((Math.abs(l1 - l2) <= 4L) && (Math.abs(l1 - l3) <= 4L) && (Math.abs(l2 - l3) <= 4L))
+      {
+        AppMethodBeat.o(157812);
+        return true;
+      }
+      AppMethodBeat.o(157812);
+      return false;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(157811);
+      Object localObject = new StringBuilder("{DevName=").append(this.GtX).append(", MountDir=").append(this.GtY).append(", FileSystem=").append(this.GtZ).append(", TotalBlocks=").append(this.Gua).append(", FreeBlocks=").append(this.Gub).append(", AvailableBlocks=").append(this.Guc).append(", BlockSize=").append(this.Gud).append(", Shared=");
+      if (this.Gue != null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localObject = bool + "}";
+        AppMethodBeat.o(157811);
+        return localObject;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.bh
  * JD-Core Version:    0.7.0.1
  */

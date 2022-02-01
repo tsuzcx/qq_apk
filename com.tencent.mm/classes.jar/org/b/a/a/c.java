@@ -14,12 +14,12 @@ public class c
     return parami;
   }
   
-  public String fMY()
+  public String gfO()
   {
     return "http://api.twitter.com/oauth/request_token";
   }
   
-  public String fMZ()
+  public String gfP()
   {
     return "http://api.twitter.com/oauth/access_token";
   }
@@ -27,12 +27,12 @@ public class c
   public static class a
     extends c
   {
-    public final String fMY()
+    public final String gfO()
     {
       return "https://api.twitter.com/oauth/request_token";
     }
     
-    public final String fMZ()
+    public final String gfP()
     {
       return "https://api.twitter.com/oauth/access_token";
     }
@@ -40,7 +40,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.a.a.c
  * JD-Core Version:    0.7.0.1
  */

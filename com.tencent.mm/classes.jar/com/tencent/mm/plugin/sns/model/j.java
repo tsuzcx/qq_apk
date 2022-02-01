@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.modelstat.p;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
@@ -14,15 +14,16 @@ import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.sns.storage.f;
 import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.cua;
-import com.tencent.mm.protocal.protobuf.cub;
-import com.tencent.mm.protocal.protobuf.cud;
-import com.tencent.mm.protocal.protobuf.cui;
-import com.tencent.mm.protocal.protobuf.cuj;
-import com.tencent.mm.protocal.protobuf.cuo;
-import com.tencent.mm.protocal.protobuf.cvo;
-import com.tencent.mm.protocal.protobuf.cxj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.czm;
+import com.tencent.mm.protocal.protobuf.czn;
+import com.tencent.mm.protocal.protobuf.czp;
+import com.tencent.mm.protocal.protobuf.czu;
+import com.tencent.mm.protocal.protobuf.czv;
+import com.tencent.mm.protocal.protobuf.daa;
+import com.tencent.mm.protocal.protobuf.dba;
+import com.tencent.mm.protocal.protobuf.dcv;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public final class j
@@ -32,52 +33,52 @@ public final class j
   public g callback;
   private b rr;
   private int type;
-  private String wEN;
-  private cuj wEO;
+  private String xRi;
+  private czv xRj;
   
-  public j(cuj paramcuj, String paramString1, String paramString2, int paramInt)
+  public j(czv paramczv, String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(95564);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new cua();
-    ((b.a)localObject).gUV = new cub();
+    ((b.a)localObject).hvt = new czm();
+    ((b.a)localObject).hvu = new czn();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnsadcomment";
     ((b.a)localObject).funcId = 682;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (cua)this.rr.gUS.gUX;
-    ((cua)localObject).ElL = paramcuj;
-    this.type = paramcuj.Emi.mBH;
-    this.wEO = paramcuj;
-    ((cua)localObject).gKn = paramString1;
-    ((cua)localObject).Scene = paramInt;
-    this.wEN = paramString1;
-    long l = paramcuj.Id;
-    paramString1 = af.dtx().sY(l);
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (czm)this.rr.hvr.hvw;
+    ((czm)localObject).FIK = paramczv;
+    this.type = paramczv.FJh.ndI;
+    this.xRj = paramczv;
+    ((czm)localObject).hkN = paramString1;
+    ((czm)localObject).Scene = paramInt;
+    this.xRi = paramString1;
+    long l = paramczv.Id;
+    paramString1 = af.dHU().xB(l);
     if (paramString1 != null)
     {
-      paramString1 = paramString1.dxy();
+      paramString1 = paramString1.dLV();
       if (paramString1 != null)
       {
-        paramString1 = p.zv(paramString1.xns);
+        paramString1 = p.DA(paramString1.yAj);
         if (paramString1 != null)
         {
-          ((cua)localObject).ElM = z.BE(p.a(paramString1));
-          ((cua)localObject).rNz = paramString1.dep;
+          ((czm)localObject).FIL = z.FI(p.a(paramString1));
+          ((czm)localObject).sVo = paramString1.dbL;
         }
-        ((cua)localObject).ElK = z.BE(bt.by(paramString2, ""));
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneSnsAdComment", paramcuj.Emi.DZr + " " + paramcuj.Emi.DdY + " type " + paramcuj.Emi.mBH + " aduxinfo " + paramString2 + ", SnsStat=" + ((cua)localObject).ElM + ", source=" + ((cua)localObject).rNz + ", scene=" + paramInt);
+        ((czm)localObject).FIJ = z.FI(bs.bG(paramString2, ""));
+        ac.i("MicroMsg.NetSceneSnsAdComment", paramczv.FJh.Fwn + " " + paramczv.FJh.Exe + " type " + paramczv.FJh.ndI + " aduxinfo " + paramString2 + ", SnsStat=" + ((czm)localObject).FIL + ", source=" + ((czm)localObject).sVo + ", scene=" + paramInt);
         AppMethodBeat.o(95564);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ad.v("SnsAdExtUtil", "parseStatSnsAdInfo snsInfo null, snsId %d", new Object[] { Long.valueOf(l) });
+      ac.v("SnsAdExtUtil", "parseStatSnsAdInfo snsInfo null, snsId %d", new Object[] { Long.valueOf(l) });
     }
     for (;;)
     {
       paramString1 = null;
       break;
-      com.tencent.mm.sdk.platformtools.ad.v("SnsAdExtUtil", "parseStatSnsAdInfo snsInfo null, snsId %d", new Object[] { Long.valueOf(l) });
+      ac.v("SnsAdExtUtil", "parseStatSnsAdInfo snsInfo null, snsId %d", new Object[] { Long.valueOf(l) });
     }
   }
   
@@ -98,52 +99,52 @@ public final class j
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(95566);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneSnsAdComment", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ac.d("MicroMsg.NetSceneSnsAdComment", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       if (paramInt2 == 4) {
-        af.dtt().e(this.wEO.Id, this.type, this.wEN);
+        af.dHQ().h(this.xRj.Id, this.type, this.xRi);
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(95566);
       return;
     }
-    af.dtt().e(this.wEO.Id, this.type, this.wEN);
-    paramq = this.wEO.Emi;
-    if ((paramq.mBH == 1) || (paramq.mBH == 2) || (paramq.mBH == 3) || (paramq.mBH == 5) || (paramq.mBH == 7) || (paramq.mBH == 8) || (paramq.mBH == 16))
+    af.dHQ().h(this.xRj.Id, this.type, this.xRi);
+    paramq = this.xRj.FJh;
+    if ((paramq.ndI == 1) || (paramq.ndI == 2) || (paramq.ndI == 3) || (paramq.ndI == 5) || (paramq.ndI == 7) || (paramq.ndI == 8) || (paramq.ndI == 16))
     {
-      paramArrayOfByte = new cuo();
+      paramArrayOfByte = new daa();
       paramArrayOfByte.CreateTime = paramq.CreateTime;
-      paramArrayOfByte.mBH = paramq.mBH;
-      paramArrayOfByte.rNz = paramq.rNz;
-      paramArrayOfByte.Username = paramq.DZr;
-      paramArrayOfByte.Nickname = paramq.ElX;
-      paramArrayOfByte.gKr = paramq.gKr;
-      paramArrayOfByte.Eme = paramq.Eme;
+      paramArrayOfByte.ndI = paramq.ndI;
+      paramArrayOfByte.sVo = paramq.sVo;
+      paramArrayOfByte.Username = paramq.Fwn;
+      paramArrayOfByte.Nickname = paramq.FIW;
+      paramArrayOfByte.hkR = paramq.hkR;
+      paramArrayOfByte.FJd = paramq.FJd;
     }
     for (;;)
     {
       try
       {
-        paramq = (cua)this.rr.gUS.gUX;
-        paramArrayOfByte = (cub)this.rr.gUT.gUX;
-        if ((paramq.rNz != 1) && (paramq.rNz != 2)) {
+        paramq = (czm)this.rr.hvr.hvw;
+        paramArrayOfByte = (czn)this.rr.hvs.hvw;
+        if ((paramq.sVo != 1) && (paramq.sVo != 2)) {
           continue;
         }
-        paramArrayOfByte = paramArrayOfByte.EcK;
-        paramq = paramArrayOfByte.ElO;
+        paramArrayOfByte = paramArrayOfByte.FzF;
+        paramq = paramArrayOfByte.FIN;
         a.a(paramArrayOfByte);
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneSnsAdComment", "snsComment:" + paramq.toString() + " " + paramq.LikeUserList.size() + " " + paramq.CommentUserList.size());
+        ac.d("MicroMsg.NetSceneSnsAdComment", "snsComment:" + paramq.toString() + " " + paramq.LikeUserList.size() + " " + paramq.CommentUserList.size());
       }
       catch (Exception paramq)
       {
-        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.NetSceneSnsAdComment", paramq, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.NetSceneSnsAdComment", paramq, "", new Object[0]);
         continue;
       }
-      af.dtt().dsV();
+      af.dHQ().dHs();
       break;
-      paramArrayOfByte = paramArrayOfByte.CxS;
-      paramq = paramArrayOfByte.ElO;
+      paramArrayOfByte = paramArrayOfByte.DQo;
+      paramq = paramArrayOfByte.FIN;
       a.a(paramArrayOfByte);
     }
   }

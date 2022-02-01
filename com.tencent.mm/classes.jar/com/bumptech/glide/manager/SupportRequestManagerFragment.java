@@ -14,12 +14,12 @@ import java.util.Set;
 public class SupportRequestManagerFragment
   extends Fragment
 {
-  j aAr;
-  final a aJU;
-  final m aJV;
-  private final Set<SupportRequestManagerFragment> aJW;
-  private SupportRequestManagerFragment aKk;
-  Fragment aKl;
+  j aBl;
+  final a aKK;
+  final m aKL;
+  private final Set<SupportRequestManagerFragment> aKM;
+  private SupportRequestManagerFragment aLa;
+  Fragment aLb;
   
   public SupportRequestManagerFragment()
   {
@@ -32,19 +32,19 @@ public class SupportRequestManagerFragment
   private SupportRequestManagerFragment(a parama)
   {
     AppMethodBeat.i(77582);
-    this.aJV = new SupportRequestManagerFragment.a(this);
-    this.aJW = new HashSet();
-    this.aJU = parama;
+    this.aKL = new SupportRequestManagerFragment.a(this);
+    this.aKM = new HashSet();
+    this.aKK = parama;
     AppMethodBeat.o(77582);
   }
   
-  private void pm()
+  private void pw()
   {
     AppMethodBeat.i(77583);
-    if (this.aKk != null)
+    if (this.aLa != null)
     {
-      this.aKk.aJW.remove(this);
-      this.aKk = null;
+      this.aLa.aKM.remove(this);
+      this.aLa = null;
     }
     AppMethodBeat.o(77583);
   }
@@ -56,10 +56,10 @@ public class SupportRequestManagerFragment
     try
     {
       paramContext = getActivity();
-      pm();
-      this.aKk = c.ac(paramContext).azF.a(paramContext.getSupportFragmentManager(), l.l(paramContext));
-      if (!equals(this.aKk)) {
-        this.aKk.aJW.add(this);
+      pw();
+      this.aLa = c.ad(paramContext).aAz.a(paramContext.getSupportFragmentManager(), l.l(paramContext));
+      if (!equals(this.aLa)) {
+        this.aLa.aKM.add(this);
       }
       AppMethodBeat.o(77584);
       return;
@@ -75,8 +75,8 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77588);
     super.onDestroy();
-    this.aJU.onDestroy();
-    pm();
+    this.aKK.onDestroy();
+    pw();
     AppMethodBeat.o(77588);
   }
   
@@ -84,8 +84,8 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77585);
     super.onDetach();
-    this.aKl = null;
-    pm();
+    this.aLb = null;
+    pw();
     AppMethodBeat.o(77585);
   }
   
@@ -93,7 +93,7 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77586);
     super.onStart();
-    this.aJU.onStart();
+    this.aKK.onStart();
     AppMethodBeat.o(77586);
   }
   
@@ -101,7 +101,7 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77587);
     super.onStop();
-    this.aJU.onStop();
+    this.aKK.onStop();
     AppMethodBeat.o(77587);
   }
   
@@ -116,13 +116,13 @@ public class SupportRequestManagerFragment
       localObject = localObject + "}";
       AppMethodBeat.o(77589);
       return localObject;
-      localObject = this.aKl;
+      localObject = this.aLb;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.manager.SupportRequestManagerFragment
  * JD-Core Version:    0.7.0.1
  */

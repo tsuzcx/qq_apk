@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.h.b;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 
@@ -20,7 +20,7 @@ public final class e
 {
   private static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  public SharedPreferences FBQ;
+  public SharedPreferences HaQ;
   public com.tencent.mm.sdk.e.e db;
   
   static
@@ -41,22 +41,22 @@ public final class e
     super(parame, parama, paramString, paramArrayOfString);
     AppMethodBeat.i(105050);
     this.db = parame;
-    this.FBQ = PreferenceManager.getDefaultSharedPreferences(aj.getContext());
+    this.HaQ = PreferenceManager.getDefaultSharedPreferences(ai.getContext());
     AppMethodBeat.o(105050);
   }
   
-  public final String TD(String paramString)
+  public final String XP(String paramString)
   {
     AppMethodBeat.i(105051);
     String str1 = null;
     String str2 = String.format("select %s from %s where %s=?", new Object[] { "desc", "EmojiInfoDesc", "md5_lang" });
-    Object localObject = paramString + ac.eFu().toLowerCase();
+    Object localObject = paramString + ab.eUO().toLowerCase();
     localObject = this.db.a(str2, new String[] { localObject }, 2);
     if (((Cursor)localObject).moveToFirst()) {
       str1 = ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("desc"));
     }
     ((Cursor)localObject).close();
-    if (!bt.isNullOrNil(str1))
+    if (!bs.isNullOrNil(str1))
     {
       AppMethodBeat.o(105051);
       return str1;
@@ -77,7 +77,7 @@ public final class e
     return 0;
   }
   
-  public final boolean aJt(String paramString)
+  public final boolean aOP(String paramString)
   {
     bool2 = true;
     bool3 = false;
@@ -119,7 +119,7 @@ public final class e
       {
         boolean bool1;
         localObject = str1;
-        ad.w("MicroMsg.emoji.EmojiInfoDescStorage", "[isPurChase] Exception:%s", new Object[] { paramString.toString() });
+        ac.w("MicroMsg.emoji.EmojiInfoDescStorage", "[isPurChase] Exception:%s", new Object[] { paramString.toString() });
         bool2 = bool3;
         if (str1 == null) {
           continue;
@@ -142,7 +142,7 @@ public final class e
     }
   }
   
-  public final boolean aJu(String paramString)
+  public final boolean aOQ(String paramString)
   {
     bool2 = true;
     bool3 = false;
@@ -184,7 +184,7 @@ public final class e
       {
         boolean bool1;
         localObject = str1;
-        ad.w("MicroMsg.emoji.EmojiInfoDescStorage", "[isPurChase] Exception:%s", new Object[] { paramString.toString() });
+        ac.w("MicroMsg.emoji.EmojiInfoDescStorage", "[isPurChase] Exception:%s", new Object[] { paramString.toString() });
         bool2 = bool3;
         if (str1 == null) {
           continue;
@@ -207,14 +207,14 @@ public final class e
     }
   }
   
-  public final boolean aJv(String paramString)
+  public final boolean aOR(String paramString)
   {
     bool4 = false;
     boolean bool3 = false;
     AppMethodBeat.i(105054);
     bool2 = bool4;
     String str2;
-    if (b.Uq(paramString))
+    if (b.YC(paramString))
     {
       str2 = String.format("select %s from %s where %s=?", new Object[] { "desc", "EmojiInfoDesc", "groupId" });
       localObject = null;
@@ -246,7 +246,7 @@ public final class e
       for (;;)
       {
         localObject = str1;
-        ad.w("MicroMsg.emoji.EmojiInfoDescStorage", paramString.toString());
+        ac.w("MicroMsg.emoji.EmojiInfoDescStorage", paramString.toString());
         bool2 = bool4;
         if (str1 != null)
         {
@@ -268,7 +268,7 @@ public final class e
   }
   
   /* Error */
-  public final java.util.ArrayList<d> aJw(String paramString)
+  public final java.util.ArrayList<d> aOS(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -347,7 +347,7 @@ public final class e
     //   156: ldc 203
     //   158: iconst_0
     //   159: anewarray 77	java/lang/Object
-    //   162: invokestatic 207	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   162: invokestatic 207	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   165: goto -53 -> 112
     //   168: astore 5
     //   170: aload_3
@@ -387,7 +387,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.e
  * JD-Core Version:    0.7.0.1
  */

@@ -58,39 +58,39 @@ import java.util.Set;
 public class c
   implements ComponentCallbacks2
 {
-  private static volatile c azw;
-  private static volatile boolean azx;
-  private final com.bumptech.glide.c.b.b.h azA;
-  private final com.bumptech.glide.c.b.d.a azB;
-  public final e azC;
-  public final h azD;
-  public final com.bumptech.glide.c.b.a.b azE;
-  public final l azF;
-  final com.bumptech.glide.manager.d azG;
-  final List<j> azH;
-  private f azI;
-  private final com.bumptech.glide.c.b.j azy;
-  public final com.bumptech.glide.c.b.a.e azz;
+  private static volatile c aAq;
+  private static volatile boolean aAr;
+  final com.bumptech.glide.manager.d aAA;
+  final List<j> aAB;
+  private f aAC;
+  private final com.bumptech.glide.c.b.j aAs;
+  public final com.bumptech.glide.c.b.a.e aAt;
+  private final com.bumptech.glide.c.b.b.h aAu;
+  private final com.bumptech.glide.c.b.d.a aAv;
+  public final e aAw;
+  public final h aAx;
+  public final com.bumptech.glide.c.b.a.b aAy;
+  public final l aAz;
   
   private c(Context paramContext, com.bumptech.glide.c.b.j paramj, com.bumptech.glide.c.b.b.h paramh, com.bumptech.glide.c.b.a.e parame, com.bumptech.glide.c.b.a.b paramb, l paraml, com.bumptech.glide.manager.d paramd, int paramInt, com.bumptech.glide.f.e parame1, Map<Class<?>, k<?, ?>> paramMap)
   {
     AppMethodBeat.i(76776);
-    this.azH = new ArrayList();
-    this.azI = f.azX;
-    this.azy = paramj;
-    this.azz = parame;
-    this.azE = paramb;
-    this.azA = paramh;
-    this.azF = paraml;
-    this.azG = paramd;
-    this.azB = new com.bumptech.glide.c.b.d.a(paramh, parame, (com.bumptech.glide.c.b)parame1.aDv.a(com.bumptech.glide.c.d.a.h.aID));
+    this.aAB = new ArrayList();
+    this.aAC = f.aAR;
+    this.aAs = paramj;
+    this.aAt = parame;
+    this.aAy = paramb;
+    this.aAu = paramh;
+    this.aAz = paraml;
+    this.aAA = paramd;
+    this.aAv = new com.bumptech.glide.c.b.d.a(paramh, parame, (com.bumptech.glide.c.b)parame1.aEm.a(com.bumptech.glide.c.d.a.h.aJt));
     paramh = paramContext.getResources();
-    this.azD = new h();
-    paraml = this.azD;
+    this.aAx = new h();
+    paraml = this.aAx;
     paramd = new com.bumptech.glide.c.d.a.f();
-    paraml.aAm.a(paramd);
-    Object localObject = new com.bumptech.glide.c.d.a.h(this.azD.nj(), paramh.getDisplayMetrics(), parame, paramb);
-    paraml = new com.bumptech.glide.c.d.e.a(paramContext, this.azD.nj(), parame, paramb);
+    paraml.aBg.a(paramd);
+    Object localObject = new com.bumptech.glide.c.d.a.h(this.aAx.nt(), paramh.getDisplayMetrics(), parame, paramb);
+    paraml = new com.bumptech.glide.c.d.e.a(paramContext, this.aAx.nt(), parame, paramb);
     paramd = r.b(parame);
     com.bumptech.glide.c.d.a.e locale = new com.bumptech.glide.c.d.a.e((com.bumptech.glide.c.d.a.h)localObject);
     localObject = new o((com.bumptech.glide.c.d.a.h)localObject, paramb);
@@ -103,9 +103,9 @@ public class c
     com.bumptech.glide.c.d.f.a locala1 = new com.bumptech.glide.c.d.f.a();
     com.bumptech.glide.c.d.f.d locald2 = new com.bumptech.glide.c.d.f.d();
     ContentResolver localContentResolver = paramContext.getContentResolver();
-    this.azD.a(ByteBuffer.class, new com.bumptech.glide.c.c.c()).a(InputStream.class, new t(paramb)).a("Bitmap", ByteBuffer.class, Bitmap.class, locale).a("Bitmap", InputStream.class, Bitmap.class, (com.bumptech.glide.c.k)localObject).a("Bitmap", ParcelFileDescriptor.class, Bitmap.class, paramd).a("Bitmap", AssetFileDescriptor.class, Bitmap.class, r.a(parame)).a(Bitmap.class, Bitmap.class, v.a.oP()).a("Bitmap", Bitmap.class, Bitmap.class, new q()).a(Bitmap.class, localc1).a("BitmapDrawable", ByteBuffer.class, BitmapDrawable.class, new com.bumptech.glide.c.d.a.a(paramh, locale)).a("BitmapDrawable", InputStream.class, BitmapDrawable.class, new com.bumptech.glide.c.d.a.a(paramh, (com.bumptech.glide.c.k)localObject)).a("BitmapDrawable", ParcelFileDescriptor.class, BitmapDrawable.class, new com.bumptech.glide.c.d.a.a(paramh, paramd)).a(BitmapDrawable.class, new com.bumptech.glide.c.d.a.b(parame, localc1)).a("Gif", InputStream.class, com.bumptech.glide.c.d.e.c.class, new com.bumptech.glide.c.d.e.j(this.azD.nj(), paraml, paramb)).a("Gif", ByteBuffer.class, com.bumptech.glide.c.d.e.c.class, paraml).a(com.bumptech.glide.c.d.e.c.class, new com.bumptech.glide.c.d.e.d()).a(com.bumptech.glide.b.a.class, com.bumptech.glide.b.a.class, v.a.oP()).a("Bitmap", com.bumptech.glide.b.a.class, Bitmap.class, new com.bumptech.glide.c.d.e.h(parame)).a(Uri.class, Drawable.class, locald).a(Uri.class, Bitmap.class, new n(locald, parame)).a(new com.bumptech.glide.c.d.b.a.a()).a(File.class, ByteBuffer.class, new d.b()).a(File.class, InputStream.class, new f.e()).a(File.class, File.class, new com.bumptech.glide.c.d.d.a()).a(File.class, ParcelFileDescriptor.class, new f.b()).a(File.class, File.class, v.a.oP()).a(new com.bumptech.glide.c.a.k.a(paramb)).a(Integer.TYPE, InputStream.class, localc).a(Integer.TYPE, ParcelFileDescriptor.class, localb).a(Integer.class, InputStream.class, localc).a(Integer.class, ParcelFileDescriptor.class, localb).a(Integer.class, Uri.class, locald1).a(Integer.TYPE, AssetFileDescriptor.class, locala).a(Integer.class, AssetFileDescriptor.class, locala).a(Integer.TYPE, Uri.class, locald1).a(String.class, InputStream.class, new e.c()).a(Uri.class, InputStream.class, new e.c()).a(String.class, InputStream.class, new u.c()).a(String.class, ParcelFileDescriptor.class, new u.b()).a(String.class, AssetFileDescriptor.class, new u.a()).a(Uri.class, InputStream.class, new com.bumptech.glide.c.c.a.b.a()).a(Uri.class, InputStream.class, new a.c(paramContext.getAssets())).a(Uri.class, ParcelFileDescriptor.class, new a.b(paramContext.getAssets())).a(Uri.class, InputStream.class, new c.a(paramContext)).a(Uri.class, InputStream.class, new d.a(paramContext)).a(Uri.class, InputStream.class, new w.d(localContentResolver)).a(Uri.class, ParcelFileDescriptor.class, new w.b(localContentResolver)).a(Uri.class, AssetFileDescriptor.class, new w.a(localContentResolver)).a(Uri.class, InputStream.class, new x.a()).a(URL.class, InputStream.class, new e.a()).a(Uri.class, File.class, new com.bumptech.glide.c.c.k.a(paramContext)).a(com.bumptech.glide.c.c.g.class, InputStream.class, new com.bumptech.glide.c.c.a.a.a()).a([B.class, ByteBuffer.class, new com.bumptech.glide.c.c.b.a()).a([B.class, InputStream.class, new b.d()).a(Uri.class, Uri.class, v.a.oP()).a(Drawable.class, Drawable.class, v.a.oP()).a(Drawable.class, Drawable.class, new com.bumptech.glide.c.d.c.e()).a(Bitmap.class, BitmapDrawable.class, new com.bumptech.glide.c.d.f.b(paramh)).a(Bitmap.class, [B.class, locala1).a(Drawable.class, [B.class, new com.bumptech.glide.c.d.f.c(parame, locala1, locald2)).a(com.bumptech.glide.c.d.e.c.class, [B.class, locald2);
+    this.aAx.a(ByteBuffer.class, new com.bumptech.glide.c.c.c()).a(InputStream.class, new t(paramb)).a("Bitmap", ByteBuffer.class, Bitmap.class, locale).a("Bitmap", InputStream.class, Bitmap.class, (com.bumptech.glide.c.k)localObject).a("Bitmap", ParcelFileDescriptor.class, Bitmap.class, paramd).a("Bitmap", AssetFileDescriptor.class, Bitmap.class, r.a(parame)).a(Bitmap.class, Bitmap.class, v.a.oZ()).a("Bitmap", Bitmap.class, Bitmap.class, new q()).a(Bitmap.class, localc1).a("BitmapDrawable", ByteBuffer.class, BitmapDrawable.class, new com.bumptech.glide.c.d.a.a(paramh, locale)).a("BitmapDrawable", InputStream.class, BitmapDrawable.class, new com.bumptech.glide.c.d.a.a(paramh, (com.bumptech.glide.c.k)localObject)).a("BitmapDrawable", ParcelFileDescriptor.class, BitmapDrawable.class, new com.bumptech.glide.c.d.a.a(paramh, paramd)).a(BitmapDrawable.class, new com.bumptech.glide.c.d.a.b(parame, localc1)).a("Gif", InputStream.class, com.bumptech.glide.c.d.e.c.class, new com.bumptech.glide.c.d.e.j(this.aAx.nt(), paraml, paramb)).a("Gif", ByteBuffer.class, com.bumptech.glide.c.d.e.c.class, paraml).a(com.bumptech.glide.c.d.e.c.class, new com.bumptech.glide.c.d.e.d()).a(com.bumptech.glide.b.a.class, com.bumptech.glide.b.a.class, v.a.oZ()).a("Bitmap", com.bumptech.glide.b.a.class, Bitmap.class, new com.bumptech.glide.c.d.e.h(parame)).a(Uri.class, Drawable.class, locald).a(Uri.class, Bitmap.class, new n(locald, parame)).a(new com.bumptech.glide.c.d.b.a.a()).a(File.class, ByteBuffer.class, new d.b()).a(File.class, InputStream.class, new f.e()).a(File.class, File.class, new com.bumptech.glide.c.d.d.a()).a(File.class, ParcelFileDescriptor.class, new f.b()).a(File.class, File.class, v.a.oZ()).a(new com.bumptech.glide.c.a.k.a(paramb)).a(Integer.TYPE, InputStream.class, localc).a(Integer.TYPE, ParcelFileDescriptor.class, localb).a(Integer.class, InputStream.class, localc).a(Integer.class, ParcelFileDescriptor.class, localb).a(Integer.class, Uri.class, locald1).a(Integer.TYPE, AssetFileDescriptor.class, locala).a(Integer.class, AssetFileDescriptor.class, locala).a(Integer.TYPE, Uri.class, locald1).a(String.class, InputStream.class, new e.c()).a(Uri.class, InputStream.class, new e.c()).a(String.class, InputStream.class, new u.c()).a(String.class, ParcelFileDescriptor.class, new u.b()).a(String.class, AssetFileDescriptor.class, new u.a()).a(Uri.class, InputStream.class, new com.bumptech.glide.c.c.a.b.a()).a(Uri.class, InputStream.class, new a.c(paramContext.getAssets())).a(Uri.class, ParcelFileDescriptor.class, new a.b(paramContext.getAssets())).a(Uri.class, InputStream.class, new c.a(paramContext)).a(Uri.class, InputStream.class, new d.a(paramContext)).a(Uri.class, InputStream.class, new w.d(localContentResolver)).a(Uri.class, ParcelFileDescriptor.class, new w.b(localContentResolver)).a(Uri.class, AssetFileDescriptor.class, new w.a(localContentResolver)).a(Uri.class, InputStream.class, new x.a()).a(URL.class, InputStream.class, new e.a()).a(Uri.class, File.class, new com.bumptech.glide.c.c.k.a(paramContext)).a(com.bumptech.glide.c.c.g.class, InputStream.class, new com.bumptech.glide.c.c.a.a.a()).a([B.class, ByteBuffer.class, new com.bumptech.glide.c.c.b.a()).a([B.class, InputStream.class, new b.d()).a(Uri.class, Uri.class, v.a.oZ()).a(Drawable.class, Drawable.class, v.a.oZ()).a(Drawable.class, Drawable.class, new com.bumptech.glide.c.d.c.e()).a(Bitmap.class, BitmapDrawable.class, new com.bumptech.glide.c.d.f.b(paramh)).a(Bitmap.class, [B.class, locala1).a(Drawable.class, [B.class, new com.bumptech.glide.c.d.f.c(parame, locala1, locald2)).a(com.bumptech.glide.c.d.e.c.class, [B.class, locald2);
     paramh = new com.bumptech.glide.f.a.b();
-    this.azC = new e(paramContext, paramb, this.azD, paramh, parame1, paramMap, paramj, paramInt);
+    this.aAw = new e(paramContext, paramb, this.aAx, paramh, parame1, paramMap, paramj, paramInt);
     AppMethodBeat.o(76776);
   }
   
@@ -113,14 +113,14 @@ public class c
   {
     AppMethodBeat.i(76773);
     paramContext = paramContext.getApplicationContext();
-    Object localObject2 = ni();
+    Object localObject2 = ns();
     Collections.emptyList();
-    Object localObject1 = new com.bumptech.glide.d.d(paramContext).pn();
+    Object localObject1 = new com.bumptech.glide.d.d(paramContext).px();
     Object localObject3;
     Object localObject4;
-    if ((localObject2 != null) && (!((a)localObject2).nh().isEmpty()))
+    if ((localObject2 != null) && (!((a)localObject2).nr().isEmpty()))
     {
-      localObject2 = ((a)localObject2).nh();
+      localObject2 = ((a)localObject2).nr();
       localObject3 = ((List)localObject1).iterator();
       while (((Iterator)localObject3).hasNext())
       {
@@ -143,80 +143,80 @@ public class c
         new StringBuilder("Discovered GlideModule from manifest: ").append(localObject3.getClass());
       }
     }
-    paramd.azQ = null;
+    paramd.aAK = null;
     localObject2 = ((List)localObject1).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((Iterator)localObject2).next();
     }
-    if (paramd.azK == null) {
-      paramd.azK = com.bumptech.glide.c.b.c.a.oG();
+    if (paramd.aAE == null) {
+      paramd.aAE = com.bumptech.glide.c.b.c.a.oQ();
     }
-    if (paramd.azL == null) {
-      paramd.azL = com.bumptech.glide.c.b.c.a.oF();
+    if (paramd.aAF == null) {
+      paramd.aAF = com.bumptech.glide.c.b.c.a.oP();
     }
-    if (paramd.azR == null) {
-      paramd.azR = com.bumptech.glide.c.b.c.a.oI();
+    if (paramd.aAL == null) {
+      paramd.aAL = com.bumptech.glide.c.b.c.a.oS();
     }
-    if (paramd.azN == null) {
-      paramd.azN = new com.bumptech.glide.c.b.b.i(new i.a(paramContext));
+    if (paramd.aAH == null) {
+      paramd.aAH = new com.bumptech.glide.c.b.b.i(new i.a(paramContext));
     }
-    if (paramd.azG == null) {
-      paramd.azG = new com.bumptech.glide.manager.f();
+    if (paramd.aAA == null) {
+      paramd.aAA = new com.bumptech.glide.manager.f();
     }
     int i;
-    if (paramd.azz == null)
+    if (paramd.aAt == null)
     {
-      i = paramd.azN.aGB;
+      i = paramd.aAH.aHr;
       if (i <= 0) {
         break label580;
       }
     }
     label580:
-    for (paramd.azz = new com.bumptech.glide.c.b.a.k(i);; paramd.azz = new com.bumptech.glide.c.b.a.f())
+    for (paramd.aAt = new com.bumptech.glide.c.b.a.k(i);; paramd.aAt = new com.bumptech.glide.c.b.a.f())
     {
-      if (paramd.azE == null) {
-        paramd.azE = new com.bumptech.glide.c.b.a.j(paramd.azN.aGD);
+      if (paramd.aAy == null) {
+        paramd.aAy = new com.bumptech.glide.c.b.a.j(paramd.aAH.aHt);
       }
-      if (paramd.azA == null) {
-        paramd.azA = new com.bumptech.glide.c.b.b.g(paramd.azN.aGC);
+      if (paramd.aAu == null) {
+        paramd.aAu = new com.bumptech.glide.c.b.b.g(paramd.aAH.aHs);
       }
-      if (paramd.azM == null) {
-        paramd.azM = new com.bumptech.glide.c.b.b.f(paramContext);
+      if (paramd.aAG == null) {
+        paramd.aAG = new com.bumptech.glide.c.b.b.f(paramContext);
       }
-      if (paramd.azy == null) {
-        paramd.azy = new com.bumptech.glide.c.b.j(paramd.azA, paramd.azM, paramd.azL, paramd.azK, com.bumptech.glide.c.b.c.a.oH(), com.bumptech.glide.c.b.c.a.oI(), paramd.azS);
+      if (paramd.aAs == null) {
+        paramd.aAs = new com.bumptech.glide.c.b.j(paramd.aAu, paramd.aAG, paramd.aAF, paramd.aAE, com.bumptech.glide.c.b.c.a.oR(), com.bumptech.glide.c.b.c.a.oS(), paramd.aAM);
       }
-      localObject2 = new l(paramd.azQ);
-      localObject3 = paramd.azy;
-      localObject4 = paramd.azA;
-      com.bumptech.glide.c.b.a.e locale = paramd.azz;
-      com.bumptech.glide.c.b.a.b localb = paramd.azE;
-      com.bumptech.glide.manager.d locald = paramd.azG;
-      i = paramd.azO;
-      com.bumptech.glide.f.e locale1 = paramd.azP;
-      locale1.aFx = true;
-      paramd = new c(paramContext, (com.bumptech.glide.c.b.j)localObject3, (com.bumptech.glide.c.b.b.h)localObject4, locale, localb, (l)localObject2, locald, i, locale1, paramd.azJ);
+      localObject2 = new l(paramd.aAK);
+      localObject3 = paramd.aAs;
+      localObject4 = paramd.aAu;
+      com.bumptech.glide.c.b.a.e locale = paramd.aAt;
+      com.bumptech.glide.c.b.a.b localb = paramd.aAy;
+      com.bumptech.glide.manager.d locald = paramd.aAA;
+      i = paramd.aAI;
+      com.bumptech.glide.f.e locale1 = paramd.aAJ;
+      locale1.aGn = true;
+      paramd = new c(paramContext, (com.bumptech.glide.c.b.j)localObject3, (com.bumptech.glide.c.b.b.h)localObject4, locale, localb, (l)localObject2, locald, i, locale1, paramd.aAD);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
         ((Iterator)localObject1).next();
       }
     }
     paramContext.registerComponentCallbacks(paramd);
-    azw = paramd;
+    aAq = paramd;
     AppMethodBeat.o(76773);
   }
   
-  public static c ac(Context paramContext)
+  public static c ad(Context paramContext)
   {
     AppMethodBeat.i(76772);
-    if (azw == null)
+    if (aAq == null)
     {
       try
       {
-        if (azw != null) {
+        if (aAq != null) {
           break label77;
         }
-        if (azx)
+        if (aAr)
         {
           paramContext = new IllegalStateException("You cannot call Glide.get() in registerComponents(), use the provided Glide instance instead");
           AppMethodBeat.o(76772);
@@ -227,21 +227,21 @@ public class c
       {
         AppMethodBeat.o(76772);
       }
-      azx = true;
+      aAr = true;
       a(paramContext, new d());
-      azx = false;
+      aAr = false;
     }
     label77:
-    paramContext = azw;
+    paramContext = aAq;
     AppMethodBeat.o(76772);
     return paramContext;
   }
   
-  public static j ad(Context paramContext)
+  public static j ae(Context paramContext)
   {
     AppMethodBeat.i(76777);
     com.bumptech.glide.h.i.checkNotNull(paramContext, "You cannot start a load on a not yet attached View or a Fragment where getActivity() returns null (which usually occurs when getActivity() is called before the Fragment is attached or after the Fragment is destroyed).");
-    paramContext = ac(paramContext).azF.af(paramContext);
+    paramContext = ad(paramContext).aAz.ag(paramContext);
     AppMethodBeat.o(76777);
     return paramContext;
   }
@@ -254,7 +254,7 @@ public class c
     throw paramException;
   }
   
-  private static a ni()
+  private static a ns()
   {
     AppMethodBeat.i(76774);
     try
@@ -308,9 +308,9 @@ public class c
   final boolean a(com.bumptech.glide.f.a.e<?> parame)
   {
     AppMethodBeat.i(76778);
-    synchronized (this.azH)
+    synchronized (this.aAB)
     {
-      Iterator localIterator = this.azH.iterator();
+      Iterator localIterator = this.aAB.iterator();
       while (localIterator.hasNext()) {
         if (((j)localIterator.next()).e(parame))
         {
@@ -328,26 +328,26 @@ public class c
   public void onLowMemory()
   {
     AppMethodBeat.i(76780);
-    com.bumptech.glide.h.j.pQ();
-    this.azA.os();
-    this.azz.os();
-    this.azE.os();
+    com.bumptech.glide.h.j.qa();
+    this.aAu.oC();
+    this.aAt.oC();
+    this.aAy.oC();
     AppMethodBeat.o(76780);
   }
   
   public void onTrimMemory(int paramInt)
   {
     AppMethodBeat.i(76779);
-    com.bumptech.glide.h.j.pQ();
-    this.azA.trimMemory(paramInt);
-    this.azz.trimMemory(paramInt);
-    this.azE.trimMemory(paramInt);
+    com.bumptech.glide.h.j.qa();
+    this.aAu.trimMemory(paramInt);
+    this.aAt.trimMemory(paramInt);
+    this.aAy.trimMemory(paramInt);
     AppMethodBeat.o(76779);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c
  * JD-Core Version:    0.7.0.1
  */

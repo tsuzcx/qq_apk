@@ -14,23 +14,23 @@ import android.view.View;
 final class e
   extends GradientDrawable
 {
-  private final Paint nX = new Paint(1);
-  private final RectF nY;
-  private int nZ;
+  private final Paint oY = new Paint(1);
+  private final RectF oZ;
+  private int pa;
   
   e()
   {
-    this.nX.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.nX.setColor(-1);
-    this.nX.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-    this.nY = new RectF();
+    this.oY.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.oY.setColor(-1);
+    this.oY.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+    this.oZ = new RectF();
   }
   
   final void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if ((paramFloat1 != this.nY.left) || (paramFloat2 != this.nY.top) || (paramFloat3 != this.nY.right) || (paramFloat4 != this.nY.bottom))
+    if ((paramFloat1 != this.oZ.left) || (paramFloat2 != this.oZ.top) || (paramFloat3 != this.oZ.right) || (paramFloat4 != this.oZ.bottom))
     {
-      this.nY.set(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+      this.oZ.set(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
       invalidateSelf();
     }
   }
@@ -40,9 +40,9 @@ final class e
     a(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom);
   }
   
-  final boolean ca()
+  final boolean ch()
   {
-    return !this.nY.isEmpty();
+    return !this.oZ.isEmpty();
   }
   
   public final void draw(Canvas paramCanvas)
@@ -54,22 +54,22 @@ final class e
     for (;;)
     {
       super.draw(paramCanvas);
-      paramCanvas.drawRect(this.nY, this.nX);
+      paramCanvas.drawRect(this.oZ, this.oY);
       if (!(getCallback() instanceof View)) {
-        paramCanvas.restoreToCount(this.nZ);
+        paramCanvas.restoreToCount(this.pa);
       }
       return;
       if (Build.VERSION.SDK_INT >= 21) {
-        this.nZ = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
+        this.pa = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
       } else {
-        this.nZ = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null, 31);
+        this.pa = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null, 31);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.design.widget.e
  * JD-Core Version:    0.7.0.1
  */

@@ -8,25 +8,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class s
   implements i
 {
-  private p aRf = p.aSC;
-  private long bzq;
-  private long bzr;
+  private p aSa = p.aTv;
+  private long bwY;
+  private long bwZ;
   private boolean started;
   
   public final void a(i parami)
   {
     AppMethodBeat.i(93201);
-    al(parami.si());
-    this.aRf = parami.sm();
+    ah(parami.sr());
+    this.aSa = parami.sv();
     AppMethodBeat.o(93201);
   }
   
-  public final void al(long paramLong)
+  public final void ah(long paramLong)
   {
     AppMethodBeat.i(93200);
-    this.bzq = paramLong;
+    this.bwY = paramLong;
     if (this.started) {
-      this.bzr = SystemClock.elapsedRealtime();
+      this.bwZ = SystemClock.elapsedRealtime();
     }
     AppMethodBeat.o(93200);
   }
@@ -35,36 +35,31 @@ public final class s
   {
     AppMethodBeat.i(93203);
     if (this.started) {
-      al(si());
+      ah(sr());
     }
-    this.aRf = paramp;
+    this.aSa = paramp;
     AppMethodBeat.o(93203);
     return paramp;
   }
   
-  public final long si()
+  public final long sr()
   {
     AppMethodBeat.i(93202);
-    long l2 = this.bzq;
+    long l2 = this.bwY;
     long l1 = l2;
     if (this.started)
     {
-      l1 = SystemClock.elapsedRealtime() - this.bzr;
-      if (this.aRf.aSD != 1.0F) {
+      l1 = SystemClock.elapsedRealtime() - this.bwZ;
+      if (this.aSa.aTw != 1.0F) {
         break label54;
       }
     }
     label54:
-    for (l1 = l2 + b.u(l1);; l1 = l2 + l1 * this.aRf.aSE)
+    for (l1 = l2 + b.w(l1);; l1 = l2 + l1 * this.aSa.aTx)
     {
       AppMethodBeat.o(93202);
       return l1;
     }
-  }
-  
-  public final p sm()
-  {
-    return this.aRf;
   }
   
   public final void start()
@@ -72,7 +67,7 @@ public final class s
     AppMethodBeat.i(93198);
     if (!this.started)
     {
-      this.bzr = SystemClock.elapsedRealtime();
+      this.bwZ = SystemClock.elapsedRealtime();
       this.started = true;
     }
     AppMethodBeat.o(93198);
@@ -83,10 +78,15 @@ public final class s
     AppMethodBeat.i(93199);
     if (this.started)
     {
-      al(si());
+      ah(sr());
       this.started = false;
     }
     AppMethodBeat.o(93199);
+  }
+  
+  public final p sv()
+  {
+    return this.aSa;
   }
 }
 

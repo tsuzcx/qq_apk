@@ -1,59 +1,25 @@
 package com.tencent.mm.ui.chatting;
 
-import android.annotation.TargetApi;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnHoverListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ag
 {
-  private static ag Gql;
-  Object Gqk;
+  private static ag HQd;
+  Object HQc;
   
-  public static ag eWa()
+  public static ag flM()
   {
     try
     {
       AppMethodBeat.i(34839);
-      if (Gql == null) {
-        Gql = new ag();
+      if (HQd == null) {
+        HQd = new ag();
       }
-      ag localag = Gql;
+      ag localag = HQd;
       AppMethodBeat.o(34839);
       return localag;
     }
     finally {}
-  }
-  
-  @TargetApi(14)
-  public static final class a
-    implements View.OnHoverListener
-  {
-    private ag.b Gqm;
-    
-    public a(ag.b paramb)
-    {
-      this.Gqm = paramb;
-    }
-    
-    public final boolean onHover(View paramView, MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(34838);
-      if (this.Gqm != null)
-      {
-        boolean bool = this.Gqm.f(paramView, paramMotionEvent);
-        AppMethodBeat.o(34838);
-        return bool;
-      }
-      AppMethodBeat.o(34838);
-      return false;
-    }
-  }
-  
-  public static abstract interface b
-  {
-    public abstract boolean f(View paramView, MotionEvent paramMotionEvent);
   }
 }
 

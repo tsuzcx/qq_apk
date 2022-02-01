@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.wallet.balance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.c;
-import com.tencent.mm.protocal.protobuf.sk;
-import com.tencent.mm.protocal.protobuf.sl;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.protocal.protobuf.su;
+import com.tencent.mm.protocal.protobuf.sv;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
-  extends c<sl>
+  extends c<sv>
 {
   public b(long paramLong, String paramString1, String paramString2)
   {
     AppMethodBeat.i(68392);
     b.a locala = new b.a();
-    sk localsk = new sk();
-    localsk.CUj = paramLong;
-    localsk.CUk = paramString1;
-    localsk.CUl = paramString2;
-    locala.gUU = localsk;
-    locala.gUV = new sl();
+    su localsu = new su();
+    localsu.EmT = paramLong;
+    localsu.EmU = paramString1;
+    localsu.EmV = paramString2;
+    locala.hvt = localsu;
+    locala.hvu = new sv();
     locala.uri = "/cgi-bin/mmpay-bin/tenpay/getfreefeedetail";
     locala.funcId = 1236;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ad.i("MicroMsg.CgiGetFreeFeeDetail", "get free fee detail: %s, %s, %s", new Object[] { Long.valueOf(paramLong), paramString1, paramString2 });
+    this.rr = locala.aAz();
+    ac.i("MicroMsg.CgiGetFreeFeeDetail", "get free fee detail: %s, %s, %s", new Object[] { Long.valueOf(paramLong), paramString1, paramString2 });
     AppMethodBeat.o(68392);
   }
 }

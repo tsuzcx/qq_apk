@@ -9,21 +9,21 @@ public abstract interface aa
 {
   public static final String[] SQL_CREATE = { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "FavSearchInfo") };
   
-  public abstract boolean Ym(String paramString);
-  
   public abstract boolean a(j paramj);
   
   public abstract boolean a(j paramj, String... paramVarArgs);
   
+  public abstract boolean acI(String paramString);
+  
   public abstract ArrayList<Long> b(List<String> paramList1, List<String> paramList2, List<Integer> paramList);
   
-  public abstract void pU(long paramLong);
+  public abstract void tJ(long paramLong);
   
-  public abstract j pV(long paramLong);
+  public abstract j tK(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.aa
  * JD-Core Version:    0.7.0.1
  */

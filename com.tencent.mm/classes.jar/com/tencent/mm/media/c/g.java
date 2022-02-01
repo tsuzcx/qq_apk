@@ -2,29 +2,29 @@ package com.tencent.mm.media.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.z;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.a.m;
 import d.g.b.k;
 import d.l;
 import d.y;
 import java.nio.ByteBuffer;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/decoder/MediaCodecAACDecoder;", "Lcom/tencent/mm/media/decoder/IAudioDecoder;", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "audioId", "", "startTimeMs", "", "endTimeMs", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJ)V", "frameDecodeCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "pcmData", "pts", "", "frameDecodeEndCallback", "Lkotlin/Function0;", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V", "codeOver", "", "drainDecoder", "readNextSample", "startDecoder", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/decoder/MediaCodecAACDecoder;", "Lcom/tencent/mm/media/decoder/IAudioDecoder;", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "audioId", "", "startTimeMs", "", "endTimeMs", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJ)V", "frameDecodeCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "pcmData", "pts", "", "frameDecodeEndCallback", "Lkotlin/Function0;", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V", "codeOver", "", "drainDecoder", "readNextSample", "startDecoder", "Companion", "plugin-mediaeditor_release"})
 public final class g
   extends e
 {
   private static final String TAG = "MicroMsg.MediaCodecAACDecoder";
-  private static final long gok = 60000L;
-  public static final g.a gol;
+  private static final long gOU = 60000L;
+  public static final g.a gOV;
   private boolean codeOver;
   
   static
   {
     AppMethodBeat.i(93536);
-    gol = new g.a((byte)0);
+    gOV = new g.a((byte)0);
     TAG = "MicroMsg.MediaCodecAACDecoder";
-    gok = 60000L;
+    gOU = 60000L;
     AppMethodBeat.o(93536);
   }
   
@@ -42,7 +42,7 @@ public final class g
     AppMethodBeat.o(93534);
   }
   
-  private final boolean ajt()
+  private final boolean aqs()
   {
     AppMethodBeat.i(93531);
     int m;
@@ -50,17 +50,17 @@ public final class g
     {
       synchronized (this.stopLock)
       {
-        if (this.gnG) {
-          ad.i(TAG, "readNextSample decoder stop");
+        if (this.gOs) {
+          ac.i(TAG, "readNextSample decoder stop");
         }
-        Object localObject3 = y.JfV;
-        localObject3 = this.gnF;
+        Object localObject3 = y.KTp;
+        localObject3 = this.gOr;
         if (localObject3 != null)
         {
-          this.gnJ = bt.GC();
+          this.gOv = bs.Gn();
           m = ((z)localObject3).dequeueInputBuffer(100L);
           if (m < 0) {
-            aju();
+            aqt();
           }
           if (m >= 0) {
             break label125;
@@ -73,17 +73,17 @@ public final class g
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
+      ac.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
     }
     return true;
     label125:
-    ad.i(TAG, "inputIndex: ".concat(String.valueOf(m)));
-    this.gnJ = bt.GC();
+    ac.i(TAG, "inputIndex: ".concat(String.valueOf(m)));
+    this.gOv = bs.Gn();
     ByteBuffer localByteBuffer = localObject4.getInputBuffers()[m];
     if (localByteBuffer != null) {
       localByteBuffer.clear();
     }
-    Object localObject2 = this.gnN;
+    Object localObject2 = this.gOy;
     label199:
     int i;
     long l2;
@@ -99,13 +99,13 @@ public final class g
       if (!k.g(localObject2, Boolean.FALSE)) {
         break label404;
       }
-      ad.i(TAG, "read sample end");
+      ac.i(TAG, "read sample end");
       i = 1;
       l2 = 0L;
       if (i != 0) {
         break label399;
       }
-      localObject2 = this.gnN;
+      localObject2 = this.gOy;
       if (localObject2 == null) {
         break label381;
       }
@@ -113,21 +113,21 @@ public final class g
       if (localByteBuffer != null) {
         localByteBuffer.position(0);
       }
-      localObject2 = this.gnN;
+      localObject2 = this.gOy;
       if (localObject2 == null) {
         break label386;
       }
       l1 = ((com.tencent.mm.media.e.a)localObject2).getSampleTime();
-      ad.i(TAG, "sampleTime : " + l1 + ", sampleSize:" + j);
+      ac.i(TAG, "sampleTime : " + l1 + ", sampleSize:" + j);
       if (j >= 0)
       {
         k = j;
         l2 = l1;
-        if (l1 < this.gnO * 1000L) {
+        if (l1 < this.gOz * 1000L) {
           break label409;
         }
       }
-      ad.i(TAG, "sawInputEOS");
+      ac.i(TAG, "sawInputEOS");
       i = 1;
       k = j;
       l2 = l1;
@@ -138,9 +138,9 @@ public final class g
       label349:
       localObject4.a(m, k, l2, j);
       if (i != 0) {
-        ajs();
+        aqr();
       }
-      aju();
+      aqt();
       break;
       localObject2 = null;
       break label199;
@@ -167,7 +167,7 @@ public final class g
   }
   
   /* Error */
-  private final void aju()
+  private final void aqt()
   {
     // Byte code:
     //   0: ldc 248
@@ -178,22 +178,22 @@ public final class g
     //   11: aload 5
     //   13: monitorenter
     //   14: aload_0
-    //   15: getfield 100	com/tencent/mm/media/c/e:gnG	Z
+    //   15: getfield 100	com/tencent/mm/media/c/e:gOs	Z
     //   18: ifeq +20 -> 38
     //   21: getstatic 65	com/tencent/mm/media/c/g:TAG	Ljava/lang/String;
     //   24: ldc 250
-    //   26: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   26: invokestatic 107	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   29: aload 5
     //   31: monitorexit
     //   32: ldc 248
     //   34: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: return
-    //   38: getstatic 113	d/y:JfV	Ld/y;
+    //   38: getstatic 113	d/y:KTp	Ld/y;
     //   41: astore 6
     //   43: aload 5
     //   45: monitorexit
     //   46: aload_0
-    //   47: getfield 117	com/tencent/mm/media/c/e:gnF	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   47: getfield 117	com/tencent/mm/media/c/e:gOr	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   50: astore 5
     //   52: aload 5
     //   54: ifnull +464 -> 518
@@ -210,7 +210,7 @@ public final class g
     //   80: aload 5
     //   82: aload_0
     //   83: getfield 260	com/tencent/mm/media/c/e:bufferInfo	Landroid/media/MediaCodec$BufferInfo;
-    //   86: getstatic 67	com/tencent/mm/media/c/g:gok	J
+    //   86: getstatic 67	com/tencent/mm/media/c/g:gOU	J
     //   89: invokevirtual 264	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
     //   92: istore_1
     //   93: iload_1
@@ -219,9 +219,9 @@ public final class g
     //   99: aload_0
     //   100: aload 5
     //   102: invokevirtual 268	com/tencent/mm/compatible/deviceinfo/z:getOutputFormat	()Landroid/media/MediaFormat;
-    //   105: putfield 272	com/tencent/mm/media/c/e:gmG	Landroid/media/MediaFormat;
+    //   105: putfield 272	com/tencent/mm/media/c/e:gNt	Landroid/media/MediaFormat;
     //   108: aload_0
-    //   109: getfield 272	com/tencent/mm/media/c/e:gmG	Landroid/media/MediaFormat;
+    //   109: getfield 272	com/tencent/mm/media/c/e:gNt	Landroid/media/MediaFormat;
     //   112: astore 6
     //   114: aload 6
     //   116: ifnull +44 -> 160
@@ -231,7 +231,7 @@ public final class g
     //   127: iconst_1
     //   128: if_icmpne +32 -> 160
     //   131: aload_0
-    //   132: getfield 272	com/tencent/mm/media/c/e:gmG	Landroid/media/MediaFormat;
+    //   132: getfield 272	com/tencent/mm/media/c/e:gNt	Landroid/media/MediaFormat;
     //   135: astore 6
     //   137: aload 6
     //   139: ifnull +385 -> 524
@@ -243,31 +243,31 @@ public final class g
     //   152: ifle +8 -> 160
     //   155: aload_0
     //   156: iload_1
-    //   157: putfield 287	com/tencent/mm/media/c/e:gnI	I
+    //   157: putfield 287	com/tencent/mm/media/c/e:gOu	I
     //   160: getstatic 65	com/tencent/mm/media/c/g:TAG	Ljava/lang/String;
     //   163: new 210	java/lang/StringBuilder
     //   166: dup
     //   167: ldc_w 289
     //   170: invokespecial 215	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   173: aload_0
-    //   174: getfield 272	com/tencent/mm/media/c/e:gmG	Landroid/media/MediaFormat;
+    //   174: getfield 272	com/tencent/mm/media/c/e:gNt	Landroid/media/MediaFormat;
     //   177: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   180: ldc_w 294
     //   183: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   186: aload_0
-    //   187: getfield 287	com/tencent/mm/media/c/e:gnI	I
+    //   187: getfield 287	com/tencent/mm/media/c/e:gOu	I
     //   190: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   193: ldc_w 296
     //   196: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   199: aload_0
-    //   200: getfield 299	com/tencent/mm/media/c/e:cTr	Ljava/lang/String;
+    //   200: getfield 299	com/tencent/mm/media/c/e:cQO	Ljava/lang/String;
     //   203: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   206: invokevirtual 231	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   209: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   209: invokestatic 107	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   212: aload 5
     //   214: aload_0
     //   215: getfield 260	com/tencent/mm/media/c/e:bufferInfo	Landroid/media/MediaCodec$BufferInfo;
-    //   218: getstatic 67	com/tencent/mm/media/c/g:gok	J
+    //   218: getstatic 67	com/tencent/mm/media/c/g:gOU	J
     //   221: invokevirtual 264	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
     //   224: istore_2
     //   225: iload_2
@@ -287,7 +287,7 @@ public final class g
     //   252: ldc 140
     //   254: iconst_0
     //   255: anewarray 142	java/lang/Object
-    //   258: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   258: invokestatic 146	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   261: ldc 248
     //   263: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   266: return
@@ -309,7 +309,7 @@ public final class g
     //   295: ifnonnull +18 -> 313
     //   298: getstatic 65	com/tencent/mm/media/c/g:TAG	Ljava/lang/String;
     //   301: ldc_w 306
-    //   304: invokestatic 309	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   304: invokestatic 309	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   307: ldc 248
     //   309: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   312: return
@@ -322,10 +322,10 @@ public final class g
     //   327: lload_3
     //   328: invokestatic 317	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   331: invokevirtual 158	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   334: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   334: invokestatic 107	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   337: lload_3
     //   338: aload_0
-    //   339: getfield 320	com/tencent/mm/media/c/e:bxw	J
+    //   339: getfield 320	com/tencent/mm/media/c/e:bvf	J
     //   342: ldc2_w 235
     //   345: lmul
     //   346: lcmp
@@ -350,12 +350,12 @@ public final class g
     //   386: ldc_w 331
     //   389: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   392: aload_0
-    //   393: getfield 320	com/tencent/mm/media/c/e:bxw	J
+    //   393: getfield 320	com/tencent/mm/media/c/e:bvf	J
     //   396: ldc2_w 235
     //   399: lmul
     //   400: invokevirtual 219	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   403: invokevirtual 231	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   406: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   406: invokestatic 107	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   409: ldc 248
     //   411: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   414: return
@@ -373,7 +373,7 @@ public final class g
     //   438: iconst_0
     //   439: invokevirtual 327	com/tencent/mm/compatible/deviceinfo/z:releaseOutputBuffer	(IZ)V
     //   442: aload_0
-    //   443: getfield 234	com/tencent/mm/media/c/e:gnO	J
+    //   443: getfield 234	com/tencent/mm/media/c/e:gOz	J
     //   446: ldc2_w 235
     //   449: lmul
     //   450: lconst_1
@@ -381,16 +381,16 @@ public final class g
     //   452: ifeq +35 -> 487
     //   455: lload_3
     //   456: aload_0
-    //   457: getfield 234	com/tencent/mm/media/c/e:gnO	J
+    //   457: getfield 234	com/tencent/mm/media/c/e:gOz	J
     //   460: ldc2_w 235
     //   463: lmul
     //   464: lcmp
     //   465: iflt +22 -> 487
     //   468: getstatic 65	com/tencent/mm/media/c/g:TAG	Ljava/lang/String;
     //   471: ldc_w 339
-    //   474: invokestatic 309	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   474: invokestatic 309	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   477: aload_0
-    //   478: invokevirtual 245	com/tencent/mm/media/c/g:ajs	()V
+    //   478: invokevirtual 245	com/tencent/mm/media/c/g:aqr	()V
     //   481: ldc 248
     //   483: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   486: return
@@ -402,9 +402,9 @@ public final class g
     //   496: ifeq -284 -> 212
     //   499: getstatic 65	com/tencent/mm/media/c/g:TAG	Ljava/lang/String;
     //   502: ldc_w 341
-    //   505: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   505: invokestatic 107	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   508: aload_0
-    //   509: invokevirtual 245	com/tencent/mm/media/c/g:ajs	()V
+    //   509: invokevirtual 245	com/tencent/mm/media/c/g:aqr	()V
     //   512: ldc 248
     //   514: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   517: return
@@ -451,14 +451,14 @@ public final class g
   public final void startDecoder()
   {
     AppMethodBeat.i(93533);
-    z localz = this.gnF;
+    z localz = this.gOr;
     if (localz != null) {
       localz.start();
     }
-    while ((!this.codeOver) && (!this.gnG)) {
-      ajt();
+    while ((!this.codeOver) && (!this.gOs)) {
+      aqs();
     }
-    ajs();
+    aqr();
     AppMethodBeat.o(93533);
   }
 }

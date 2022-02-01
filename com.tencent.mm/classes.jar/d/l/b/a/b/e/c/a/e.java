@@ -9,11 +9,11 @@ public abstract class e
   
   public abstract String getName();
   
-  public abstract String qV();
+  public abstract String rf();
   
   public final String toString()
   {
-    return qV();
+    return rf();
   }
   
   public static final class a
@@ -78,7 +78,7 @@ public abstract class e
       }
     }
     
-    public final String qV()
+    public final String rf()
     {
       AppMethodBeat.i(59233);
       String str = this.name + ':' + this.desc;
@@ -149,7 +149,7 @@ public abstract class e
       }
     }
     
-    public final String qV()
+    public final String rf()
     {
       AppMethodBeat.i(59237);
       String str = this.name + this.desc;
@@ -160,7 +160,7 @@ public abstract class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.c.a.e
  * JD-Core Version:    0.7.0.1
  */

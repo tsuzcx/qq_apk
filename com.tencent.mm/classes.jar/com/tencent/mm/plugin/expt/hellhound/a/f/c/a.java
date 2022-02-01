@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.gk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.go;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -11,7 +11,44 @@ import java.util.Set;
 
 public final class a
 {
-  public static void WO(String paramString)
+  private static void a(go paramgo)
+  {
+    AppMethodBeat.i(122126);
+    int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
+    if (i == 0)
+    {
+      AppMethodBeat.o(122126);
+      return;
+    }
+    try
+    {
+      paramgo = paramgo.toByteArray();
+      Object localObject = paramgo;
+      if (paramgo == null) {}
+      return;
+    }
+    catch (IOException paramgo)
+    {
+      try
+      {
+        localObject = new byte[0];
+        com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_async_bizid_sid".concat(String.valueOf(i)), (byte[])localObject);
+        AppMethodBeat.o(122126);
+        return;
+      }
+      catch (Exception paramgo)
+      {
+        ac.printErrStackTrace("AsyncBizDao", paramgo, "habbyge-mali, AsyncBizDao._writeBizId crash: %s", new Object[] { paramgo.getMessage() });
+        AppMethodBeat.o(122126);
+      }
+      paramgo = paramgo;
+      ac.printErrStackTrace("AsyncBizDao", paramgo, "AsyncBizDao, putBizIdOfCloudConfig, crash: %s", new Object[] { paramgo.getMessage() });
+      AppMethodBeat.o(122126);
+      return;
+    }
+  }
+  
+  public static void abl(String paramString)
   {
     AppMethodBeat.i(122120);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -32,83 +69,12 @@ public final class a
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("AsyncBizDao", paramString, "habbyge-mali, AsyncBizDao._write crash: %s", new Object[] { paramString.getMessage() });
+      ac.printErrStackTrace("AsyncBizDao", paramString, "habbyge-mali, AsyncBizDao._write crash: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(122120);
     }
   }
   
-  private static void a(gk paramgk)
-  {
-    AppMethodBeat.i(122126);
-    int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
-    if (i == 0)
-    {
-      AppMethodBeat.o(122126);
-      return;
-    }
-    try
-    {
-      paramgk = paramgk.toByteArray();
-      Object localObject = paramgk;
-      if (paramgk == null) {}
-      return;
-    }
-    catch (IOException paramgk)
-    {
-      try
-      {
-        localObject = new byte[0];
-        com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_async_bizid_sid".concat(String.valueOf(i)), (byte[])localObject);
-        AppMethodBeat.o(122126);
-        return;
-      }
-      catch (Exception paramgk)
-      {
-        ad.printErrStackTrace("AsyncBizDao", paramgk, "habbyge-mali, AsyncBizDao._writeBizId crash: %s", new Object[] { paramgk.getMessage() });
-        AppMethodBeat.o(122126);
-      }
-      paramgk = paramgk;
-      ad.printErrStackTrace("AsyncBizDao", paramgk, "AsyncBizDao, putBizIdOfCloudConfig, crash: %s", new Object[] { paramgk.getMessage() });
-      AppMethodBeat.o(122126);
-      return;
-    }
-  }
-  
-  public static void c(Set<String> paramSet)
-  {
-    AppMethodBeat.i(122122);
-    if (paramSet.isEmpty())
-    {
-      AppMethodBeat.o(122122);
-      return;
-    }
-    Object localObject = cdc();
-    if ((localObject == null) || (((List)localObject).isEmpty()))
-    {
-      if (!paramSet.isEmpty())
-      {
-        localObject = new gk();
-        ((gk)localObject).CAW.addAll(paramSet);
-        a((gk)localObject);
-        AppMethodBeat.o(122122);
-      }
-    }
-    else
-    {
-      paramSet = paramSet.iterator();
-      while (paramSet.hasNext())
-      {
-        String str = (String)paramSet.next();
-        if ((str != null) && (!((List)localObject).contains(str))) {
-          ((List)localObject).add(str);
-        }
-      }
-      cW((List)localObject);
-    }
-    AppMethodBeat.o(122122);
-  }
-  
-  public static void cV(List<String> paramList)
+  public static void cX(List<String> paramList)
   {
     AppMethodBeat.i(122123);
     int i = paramList.size() - 1;
@@ -122,10 +88,10 @@ public final class a
       {
         i -= 1;
         break;
-        Long localLong = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.WG(str);
+        Long localLong = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.abd(str);
         if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() >= 43200000L))
         {
-          ad.i("AsyncBizDao", "HABBYGE-MALI, AsyncBizDao, _clearHistory: %s", new Object[] { str });
+          ac.i("AsyncBizDao", "HABBYGE-MALI, AsyncBizDao, _clearHistory: %s", new Object[] { str });
           paramList.remove(i);
         }
       }
@@ -133,7 +99,7 @@ public final class a
     AppMethodBeat.o(122123);
   }
   
-  public static void cW(List<String> paramList)
+  public static void cY(List<String> paramList)
   {
     AppMethodBeat.i(122124);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -141,13 +107,13 @@ public final class a
       AppMethodBeat.o(122124);
       return;
     }
-    gk localgk = new gk();
-    localgk.CAW.addAll(paramList);
-    a(localgk);
+    go localgo = new go();
+    localgo.DTu.addAll(paramList);
+    a(localgo);
     AppMethodBeat.o(122124);
   }
   
-  public static String cdb()
+  public static String ckJ()
   {
     AppMethodBeat.i(122121);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -166,21 +132,21 @@ public final class a
     return str;
   }
   
-  public static List<String> cdc()
+  public static List<String> ckK()
   {
     AppMethodBeat.i(122125);
-    Object localObject = cdd();
+    Object localObject = ckL();
     if (localObject == null)
     {
       AppMethodBeat.o(122125);
       return null;
     }
-    localObject = ((gk)localObject).CAW;
+    localObject = ((go)localObject).DTu;
     AppMethodBeat.o(122125);
     return localObject;
   }
   
-  private static gk cdd()
+  private static go ckL()
   {
     AppMethodBeat.i(122127);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -195,24 +161,58 @@ public final class a
       AppMethodBeat.o(122127);
       return null;
     }
-    gk localgk = new gk();
+    go localgo = new go();
     try
     {
-      localgk.parseFrom(arrayOfByte);
+      localgo.parseFrom(arrayOfByte);
       AppMethodBeat.o(122127);
-      return localgk;
+      return localgo;
     }
     catch (IOException localIOException)
     {
-      ad.printErrStackTrace("AsyncBizDao", localIOException, "AsyncBizDao, _readBizId, crash: %s", new Object[] { localIOException.getMessage() });
+      ac.printErrStackTrace("AsyncBizDao", localIOException, "AsyncBizDao, _readBizId, crash: %s", new Object[] { localIOException.getMessage() });
       AppMethodBeat.o(122127);
     }
     return null;
   }
+  
+  public static void d(Set<String> paramSet)
+  {
+    AppMethodBeat.i(122122);
+    if (paramSet.isEmpty())
+    {
+      AppMethodBeat.o(122122);
+      return;
+    }
+    Object localObject = ckK();
+    if ((localObject == null) || (((List)localObject).isEmpty()))
+    {
+      if (!paramSet.isEmpty())
+      {
+        localObject = new go();
+        ((go)localObject).DTu.addAll(paramSet);
+        a((go)localObject);
+        AppMethodBeat.o(122122);
+      }
+    }
+    else
+    {
+      paramSet = paramSet.iterator();
+      while (paramSet.hasNext())
+      {
+        String str = (String)paramSet.next();
+        if ((str != null) && (!((List)localObject).contains(str))) {
+          ((List)localObject).add(str);
+        }
+      }
+      cY((List)localObject);
+    }
+    AppMethodBeat.o(122122);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.a
  * JD-Core Version:    0.7.0.1
  */

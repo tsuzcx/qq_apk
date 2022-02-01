@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.wallet_core.model.s;
 import com.tencent.mm.plugin.wallet_core.ui.WalletBankcardIdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCardImportUI;
 import com.tencent.mm.plugin.wallet_core.utils.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.c.ab;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.d;
@@ -21,13 +21,13 @@ public class a
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71704);
-    H(new Object[] { "start", paramActivity, paramBundle });
-    ad.d("MicroMsg.BindCardProcess", "start Process : BindCardProcess");
+    J(new Object[] { "start", paramActivity, paramBundle });
+    ac.d("MicroMsg.BindCardProcess", "start Process : BindCardProcess");
     if (paramBundle != null)
     {
-      ab.jZ(6, paramBundle.getInt("key_bind_scene"));
-      z.abt(paramBundle.getInt("key_bind_scene"));
-      if (!s.ecc().ecF()) {
+      ab.km(6, paramBundle.getInt("key_bind_scene"));
+      z.adM(paramBundle.getInt("key_bind_scene"));
+      if (!s.ery().esa()) {
         break label133;
       }
       if (paramBundle == null) {
@@ -42,8 +42,8 @@ public class a
     {
       AppMethodBeat.o(71704);
       return this;
-      ab.jZ(6, 0);
-      z.abt(0);
+      ab.km(6, 0);
+      z.adM(0);
       break;
       label108:
       b(paramActivity, WalletBankcardIdUI.class, paramBundle);
@@ -54,7 +54,7 @@ public class a
     return paramActivity;
     label133:
     if (paramBundle != null) {
-      f.ij(paramBundle.getInt("key_bind_scene", 0), 1);
+      f.iy(paramBundle.getInt("key_bind_scene", 0), 1);
     }
     if ((paramBundle != null) && (paramBundle.getBoolean("key_is_import_bind", false)))
     {
@@ -81,7 +81,7 @@ public class a
     AppMethodBeat.o(71705);
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "OpenECardBindCardProcess";
   }

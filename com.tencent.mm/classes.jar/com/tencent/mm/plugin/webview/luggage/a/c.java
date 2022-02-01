@@ -5,12 +5,12 @@ import org.json.JSONObject;
 public final class c
   extends com.tencent.luggage.d.c
 {
-  JSONObject bZb;
+  JSONObject bVY;
   String mName;
   
-  public final JSONObject AM()
+  public final JSONObject Aq()
   {
-    return this.bZb;
+    return this.bVY;
   }
   
   public final String name()

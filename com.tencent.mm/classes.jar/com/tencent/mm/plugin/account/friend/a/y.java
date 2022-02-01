@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ky;
-import com.tencent.mm.protocal.protobuf.kz;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.le;
+import com.tencent.mm.protocal.protobuf.lf;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class y
   extends n
   implements k
 {
   private g callback;
-  public b iaa;
+  public b gvE;
   
   public y(String paramString)
   {
     AppMethodBeat.i(184422);
     b.a locala = new b.a();
     locala.funcId = getType();
-    ky localky = new ky();
-    localky.dre = paramString;
-    locala.gUU = localky;
+    le localle = new le();
+    localle.doP = paramString;
+    locala.hvt = localle;
     locala.uri = "/cgi-bin/micromsg-bin/bindoldwx";
-    locala.gUV = new kz();
-    this.iaa = locala.atI();
+    locala.hvu = new lf();
+    this.gvE = locala.aAz();
     AppMethodBeat.o(184422);
   }
   
@@ -37,7 +37,7 @@ public final class y
   {
     AppMethodBeat.i(184423);
     this.callback = paramg;
-    int i = dispatch(parame, this.iaa, this);
+    int i = dispatch(parame, this.gvE, this);
     AppMethodBeat.o(184423);
     return i;
   }
@@ -50,14 +50,14 @@ public final class y
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(184424);
-    ad.i("MicroMsg.NetSceneBindOldWx", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.i("MicroMsg.NetSceneBindOldWx", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(184424);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.y
  * JD-Core Version:    0.7.0.1
  */

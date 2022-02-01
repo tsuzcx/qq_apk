@@ -8,7 +8,7 @@ public final class j
 {
   public j(String paramString)
   {
-    super(i.cM(paramString, false));
+    super(i.cS(paramString, false));
     AppMethodBeat.i(13305);
     AppMethodBeat.o(13305);
   }

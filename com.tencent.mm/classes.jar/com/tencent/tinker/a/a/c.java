@@ -5,22 +5,22 @@ import java.util.Arrays;
 public final class c
   extends s.a.a<c>
 {
-  public int[] IAt;
+  public int[] KmC;
   
   public c(int paramInt, int[] paramArrayOfInt)
   {
     super(paramInt);
-    this.IAt = paramArrayOfInt;
+    this.KmC = paramArrayOfInt;
   }
   
   private int a(c paramc)
   {
     int k = 0;
-    int m = this.IAt.length;
-    int i = paramc.IAt.length;
+    int m = this.KmC.length;
+    int i = paramc.KmC.length;
     if (m != i)
     {
-      i = com.tencent.tinker.a.a.b.c.ks(m, i);
+      i = com.tencent.tinker.a.a.b.c.kJ(m, i);
       return i;
     }
     int j = 0;
@@ -30,8 +30,8 @@ public final class c
       if (j >= m) {
         break;
       }
-      if (this.IAt[j] != paramc.IAt[j]) {
-        return com.tencent.tinker.a.a.b.c.ks(this.IAt[j], paramc.IAt[j]);
+      if (this.KmC[j] != paramc.KmC[j]) {
+        return com.tencent.tinker.a.a.b.c.kJ(this.KmC[j], paramc.KmC[j]);
       }
       j += 1;
     }
@@ -48,7 +48,7 @@ public final class c
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.IAt);
+    return Arrays.hashCode(this.KmC);
   }
 }
 

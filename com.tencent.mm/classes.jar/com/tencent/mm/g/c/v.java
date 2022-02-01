@@ -8,13 +8,13 @@ public abstract class v
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elJ = "appId".hashCode();
-  private static final int emP = "versionMd5".hashCode();
-  private static final int emu = "versionType".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int eoA = "versionType".hashCode();
+  private static final int eoV = "versionMd5".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean els = true;
-  private boolean emO = true;
-  private boolean emq = true;
+  private boolean enx = true;
+  private boolean eoU = true;
+  private boolean eow = true;
   public String field_appId;
   public String field_versionMd5;
   public int field_versionType;
@@ -32,7 +32,7 @@ public abstract class v
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
+      if (enO != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -43,9 +43,9 @@ public abstract class v
       break label20;
       break;
       label60:
-      if (emu == k) {
+      if (eoA == k) {
         this.field_versionType = paramCursor.getInt(i);
-      } else if (emP == k) {
+      } else if (eoV == k) {
         this.field_versionMd5 = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -56,13 +56,13 @@ public abstract class v
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.emq) {
+    if (this.eow) {
       localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.emO) {
+    if (this.eoU) {
       localContentValues.put("versionMd5", this.field_versionMd5);
     }
     if (this.systemRowid > 0L) {

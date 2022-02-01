@@ -6,9 +6,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.MMTagPanel;
+import com.tencent.mm.ui.base.MMTagPanel.a;
 import com.tencent.mm.ui.base.MMTagPanel.d;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,17 +17,17 @@ import java.util.LinkedList;
 public class FavTagPanel
   extends MMTagPanel
 {
-  private LinkedList<MMTagPanel.d> qmd;
-  private FavTagPanel.a qme;
-  private View.OnClickListener qmf;
+  private LinkedList<MMTagPanel.d> qUF;
+  private a qUG;
+  private View.OnClickListener qUH;
   
   public FavTagPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(107556);
-    this.qmd = new LinkedList();
-    this.qme = null;
-    this.qmf = new View.OnClickListener()
+    this.qUF = new LinkedList();
+    this.qUG = null;
+    this.qUH = new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
@@ -58,7 +59,7 @@ public class FavTagPanel
               public final void run()
               {
                 AppMethodBeat.i(107553);
-                FavTagPanel.a(FavTagPanel.this).YH(((TextView)paramAnonymousView).getText().toString());
+                FavTagPanel.a(FavTagPanel.this).add(((TextView)paramAnonymousView).getText().toString());
                 AppMethodBeat.o(107553);
               }
             });
@@ -74,9 +75,9 @@ public class FavTagPanel
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(107555);
-    this.qmd = new LinkedList();
-    this.qme = null;
-    this.qmf = new View.OnClickListener()
+    this.qUF = new LinkedList();
+    this.qUG = null;
+    this.qUH = new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
@@ -108,7 +109,7 @@ public class FavTagPanel
               public final void run()
               {
                 AppMethodBeat.i(107553);
-                FavTagPanel.a(FavTagPanel.this).YH(((TextView)paramAnonymousView).getText().toString());
+                FavTagPanel.a(FavTagPanel.this).add(((TextView)paramAnonymousView).getText().toString());
                 AppMethodBeat.o(107553);
               }
             });
@@ -120,12 +121,12 @@ public class FavTagPanel
     AppMethodBeat.o(107555);
   }
   
-  public final void cjW() {}
+  public final void crD() {}
   
-  public void setCallBack(FavTagPanel.a parama)
+  public void setCallBack(a parama)
   {
     AppMethodBeat.i(107557);
-    this.qme = parama;
+    this.qUG = parama;
     super.setCallBack(parama);
     AppMethodBeat.o(107557);
   }
@@ -133,31 +134,37 @@ public class FavTagPanel
   public void setType(String paramString)
   {
     AppMethodBeat.i(107558);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.FavTagPanel", "want to add type, but it is null or empty");
+      ac.w("MicroMsg.FavTagPanel", "want to add type, but it is null or empty");
       AppMethodBeat.o(107558);
       return;
     }
     paramString = paramString.trim();
-    Object localObject = this.qmd.iterator();
+    Object localObject = this.qUF.iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).Gar))
+      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).HAf))
       {
-        ad.w("MicroMsg.FavTagPanel", "want to add type %s, but it exsited!", new Object[] { paramString });
+        ac.w("MicroMsg.FavTagPanel", "want to add type %s, but it exsited!", new Object[] { paramString });
         AppMethodBeat.o(107558);
         return;
       }
     }
-    this.qmd.clear();
-    localObject = eTd();
-    this.qmd.add(localObject);
+    this.qUF.clear();
+    localObject = fiN();
+    this.qUF.add(localObject);
     a((MMTagPanel.d)localObject, paramString, true);
-    ((MMTagPanel.d)localObject).Gas.setOnClickListener(this.qmf);
+    ((MMTagPanel.d)localObject).HAg.setOnClickListener(this.qUH);
     removeViews(0, getChildCount() - 1);
-    addView(((MMTagPanel.d)localObject).Gas, 0);
-    eTe();
+    addView(((MMTagPanel.d)localObject).HAg, 0);
+    fiO();
     AppMethodBeat.o(107558);
+  }
+  
+  public static abstract interface a
+    extends MMTagPanel.a
+  {
+    public abstract void add(String paramString);
   }
 }
 

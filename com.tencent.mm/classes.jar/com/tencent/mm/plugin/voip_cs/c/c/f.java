@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.voip_cs.c.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dlz;
-import com.tencent.mm.protocal.protobuf.dma;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.drq;
+import com.tencent.mm.protocal.protobuf.drr;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class f
   extends n
@@ -24,18 +24,18 @@ public final class f
   {
     AppMethodBeat.i(125437);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new dlz();
-    ((b.a)localObject).gUV = new dma();
+    ((b.a)localObject).hvt = new drq();
+    ((b.a)localObject).hvu = new drr();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/csvoipsync";
     ((b.a)localObject).funcId = 818;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (dlz)this.rr.gUS.gUX;
-    ((dlz)localObject).Erf = paramLong1;
-    ((dlz)localObject).Dea = paramLong2;
-    ((dlz)localObject).EBN = paramInt;
-    ((dlz)localObject).DYU = System.currentTimeMillis();
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (drq)this.rr.hvr.hvw;
+    ((drq)localObject).FOh = paramLong1;
+    ((drq)localObject).Exg = paramLong2;
+    ((drq)localObject).FZa = paramInt;
+    ((drq)localObject).FvQ = System.currentTimeMillis();
     AppMethodBeat.o(125437);
   }
   
@@ -56,14 +56,14 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(125438);
-    ad.i("MicroMsg.NetSceneVoipCSSync", "onGYNetEnd, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.i("MicroMsg.NetSceneVoipCSSync", "onGYNetEnd, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(125438);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.c.c.f
  * JD-Core Version:    0.7.0.1
  */

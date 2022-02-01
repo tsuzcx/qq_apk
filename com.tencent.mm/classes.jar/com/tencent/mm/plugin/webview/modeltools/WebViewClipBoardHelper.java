@@ -13,23 +13,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 import java.nio.charset.Charset;
 
 public final class WebViewClipBoardHelper
   implements ClipboardManager.OnPrimaryClipChangedListener
 {
-  private WeakReference<WebViewUI> Bau;
+  private WeakReference<WebViewUI> CsH;
   private long lastReportTime;
   
   public WebViewClipBoardHelper(WebViewUI paramWebViewUI)
   {
     AppMethodBeat.i(79200);
     this.lastReportTime = 0L;
-    this.Bau = new WeakReference(paramWebViewUI);
+    this.CsH = new WeakReference(paramWebViewUI);
     paramWebViewUI = (ClipboardManager)paramWebViewUI.getApplicationContext().getSystemService("clipboard");
     try
     {
@@ -46,7 +46,7 @@ public final class WebViewClipBoardHelper
   public final void onPrimaryClipChanged()
   {
     AppMethodBeat.i(79201);
-    if (this.Bau.get() == null)
+    if (this.CsH.get() == null)
     {
       AppMethodBeat.o(79201);
       return;
@@ -58,7 +58,7 @@ public final class WebViewClipBoardHelper
       return;
     }
     this.lastReportTime = l;
-    Object localObject = ((ClipboardManager)aj.getContext().getSystemService("clipboard")).getPrimaryClip();
+    Object localObject = ((ClipboardManager)ai.getContext().getSystemService("clipboard")).getPrimaryClip();
     if (localObject == null)
     {
       AppMethodBeat.o(79201);
@@ -71,16 +71,16 @@ public final class WebViewClipBoardHelper
       return;
     }
     ClipBoardDataWrapper localClipBoardDataWrapper = new ClipBoardDataWrapper();
-    localClipBoardDataWrapper.url = ((WebViewUI)this.Bau.get()).ejo();
-    if (bt.ai(((ClipData.Item)localObject).getText()))
+    localClipBoardDataWrapper.url = ((WebViewUI)this.CsH.get()).eyJ();
+    if (bs.aj(((ClipData.Item)localObject).getText()))
     {
-      ad.w("MicroMsg.WebViewClipBoardHelper", "onPrimaryClipChanged text is null");
+      ac.w("MicroMsg.WebViewClipBoardHelper", "onPrimaryClipChanged text is null");
       AppMethodBeat.o(79201);
       return;
     }
     localClipBoardDataWrapper.length = ((ClipData.Item)localObject).getText().toString().getBytes(Charset.forName("UTF-8")).length;
-    localClipBoardDataWrapper.fromScene = ((WebViewUI)this.Bau.get()).getIntent().getIntExtra("from_scence", 0);
-    localClipBoardDataWrapper.username = ((WebViewUI)this.Bau.get()).getIntent().getStringExtra("geta8key_username");
+    localClipBoardDataWrapper.fromScene = ((WebViewUI)this.CsH.get()).getIntent().getIntExtra("from_scence", 0);
+    localClipBoardDataWrapper.username = ((WebViewUI)this.CsH.get()).getIntent().getStringExtra("geta8key_username");
     XIPCInvoker.a("com.tencent.mm", localClipBoardDataWrapper, a.class, null);
     AppMethodBeat.o(79201);
   }

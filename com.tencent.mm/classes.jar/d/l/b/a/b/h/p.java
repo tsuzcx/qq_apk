@@ -7,12 +7,12 @@ import java.util.NoSuchElementException;
 class p
   extends d
 {
-  private int uLx = 0;
-  protected final byte[] wA;
+  private int vUo = 0;
+  protected final byte[] xy;
   
   p(byte[] paramArrayOfByte)
   {
-    this.wA = paramArrayOfByte;
+    this.xy = paramArrayOfByte;
   }
   
   private static int a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
@@ -43,11 +43,11 @@ class p
       AppMethodBeat.o(59527);
       throw paramp;
     }
-    byte[] arrayOfByte1 = this.wA;
-    byte[] arrayOfByte2 = paramp.wA;
-    int j = fHl();
-    int i = fHl();
-    paramInt1 = paramp.fHl() + paramInt1;
+    byte[] arrayOfByte1 = this.xy;
+    byte[] arrayOfByte2 = paramp.xy;
+    int j = fZO();
+    int i = fZO();
+    paramInt1 = paramp.fZO() + paramInt1;
     while (i < j + paramInt2)
     {
       if (arrayOfByte1[i] != arrayOfByte2[paramInt1])
@@ -62,11 +62,23 @@ class p
     return true;
   }
   
-  protected final int aY(int paramInt1, int paramInt2, int paramInt3)
+  public byte aiv(int paramInt)
+  {
+    return this.xy[paramInt];
+  }
+  
+  final void b(OutputStream paramOutputStream, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(59522);
+    paramOutputStream.write(this.xy, fZO() + paramInt1, paramInt2);
+    AppMethodBeat.o(59522);
+  }
+  
+  protected final int ba(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59525);
-    paramInt2 = fHl() + paramInt2;
-    byte[] arrayOfByte = this.wA;
+    paramInt2 = fZO() + paramInt2;
+    byte[] arrayOfByte = this.xy;
     int k = paramInt2 + paramInt3;
     int m;
     int i;
@@ -102,7 +114,7 @@ class p
           paramInt1 = arrayOfByte[paramInt2];
           if (paramInt3 >= k)
           {
-            paramInt1 = y.kO(m, paramInt1);
+            paramInt1 = y.le(m, paramInt1);
             AppMethodBeat.o(59525);
             return paramInt1;
           }
@@ -126,7 +138,7 @@ class p
         if (j < k) {
           break label347;
         }
-        paramInt1 = y.kO(m, paramInt3);
+        paramInt1 = y.le(m, paramInt3);
         AppMethodBeat.o(59525);
         return paramInt1;
       }
@@ -142,7 +154,7 @@ class p
         paramInt2 = i;
         if (i >= k)
         {
-          paramInt1 = y.ba(m, paramInt3, j);
+          paramInt1 = y.bc(m, paramInt3, j);
           AppMethodBeat.o(59525);
           return paramInt1;
         }
@@ -159,7 +171,7 @@ class p
         paramInt1 = paramInt2;
       }
       label331:
-      paramInt1 = y.M(arrayOfByte, paramInt1, k);
+      paramInt1 = y.L(arrayOfByte, paramInt1, k);
       AppMethodBeat.o(59525);
       return paramInt1;
       label347:
@@ -168,24 +180,12 @@ class p
     }
   }
   
-  protected final int aZ(int paramInt1, int paramInt2, int paramInt3)
+  protected final int bb(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59529);
-    paramInt1 = a(paramInt1, this.wA, fHl() + paramInt2, paramInt3);
+    paramInt1 = a(paramInt1, this.xy, fZO() + paramInt2, paramInt3);
     AppMethodBeat.o(59529);
     return paramInt1;
-  }
-  
-  public byte afz(int paramInt)
-  {
-    return this.wA[paramInt];
-  }
-  
-  final void b(OutputStream paramOutputStream, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(59522);
-    paramOutputStream.write(this.wA, fHl() + paramInt1, paramInt2);
-    AppMethodBeat.o(59522);
   }
   
   public boolean equals(Object paramObject)
@@ -230,12 +230,12 @@ class p
     throw paramObject;
   }
   
-  protected int fHl()
+  protected int fZO()
   {
     return 0;
   }
   
-  public d.a fHm()
+  public d.a fZP()
   {
     AppMethodBeat.i(59531);
     a locala = new a((byte)0);
@@ -243,16 +243,16 @@ class p
     return locala;
   }
   
-  public final boolean fHn()
+  public final boolean fZQ()
   {
     AppMethodBeat.i(59524);
-    int i = fHl();
-    boolean bool = y.L(this.wA, i, size() + i);
+    int i = fZO();
+    boolean bool = y.K(this.xy, i, size() + i);
     AppMethodBeat.o(59524);
     return bool;
   }
   
-  public final e fHo()
+  public final e fZR()
   {
     AppMethodBeat.i(59530);
     e locale = e.a(this);
@@ -260,56 +260,56 @@ class p
     return locale;
   }
   
-  protected final int fHq()
+  protected final int fZT()
   {
     return 0;
   }
   
-  protected final boolean fHr()
+  protected final boolean fZU()
   {
     return true;
   }
   
-  protected final int fHs()
+  protected final int fZV()
   {
-    return this.uLx;
+    return this.vUo;
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(59528);
-    int j = this.uLx;
+    int j = this.vUo;
     int i = j;
     if (j == 0)
     {
       i = size();
-      j = aZ(i, 0, i);
+      j = bb(i, 0, i);
       i = j;
       if (j == 0) {
         i = 1;
       }
-      this.uLx = i;
+      this.vUo = i;
     }
     AppMethodBeat.o(59528);
     return i;
   }
   
-  protected void i(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  protected void j(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59521);
-    System.arraycopy(this.wA, paramInt1, paramArrayOfByte, paramInt2, paramInt3);
+    System.arraycopy(this.xy, paramInt1, paramArrayOfByte, paramInt2, paramInt3);
     AppMethodBeat.o(59521);
   }
   
   public int size()
   {
-    return this.wA.length;
+    return this.xy.length;
   }
   
   public final String toString(String paramString)
   {
     AppMethodBeat.i(59523);
-    paramString = new String(this.wA, fHl(), size(), paramString);
+    paramString = new String(this.xy, fZO(), size(), paramString);
     AppMethodBeat.o(59523);
     return paramString;
   }
@@ -338,7 +338,7 @@ class p
       AppMethodBeat.i(59518);
       try
       {
-        byte[] arrayOfByte = p.this.wA;
+        byte[] arrayOfByte = p.this.xy;
         int i = this.position;
         this.position = (i + 1);
         byte b = arrayOfByte[i];
@@ -364,7 +364,7 @@ class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     d.l.b.a.b.h.p
  * JD-Core Version:    0.7.0.1
  */

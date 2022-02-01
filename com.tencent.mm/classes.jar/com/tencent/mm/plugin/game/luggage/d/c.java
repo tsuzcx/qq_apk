@@ -14,8 +14,8 @@ public final class c
   {
     super(paramActivity);
     AppMethodBeat.i(83126);
-    this.cad = e.class;
-    this.cag.J(a.bQW());
+    this.bXa = e.class;
+    this.bXd.A(a.bYl());
     AppMethodBeat.o(83126);
   }
 }

@@ -15,56 +15,56 @@ import java.util.Map;
 public class b
   implements c, d.l.b.a.b.d.a.b.i
 {
-  final d.l.b.a.b.f.b JrG;
-  private final an Jrj;
-  private final d.l.b.a.b.l.f JyM;
-  final d.l.b.a.b.d.a.e.b JyN;
-  private final boolean JyO;
+  private final an LeC;
+  final d.l.b.a.b.f.b LeZ;
+  private final d.l.b.a.b.l.f Lmf;
+  final d.l.b.a.b.d.a.e.b Lmg;
+  private final boolean Lmh;
   
   static
   {
     AppMethodBeat.i(57654);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(b.class), "type", "getType()Lorg/jetbrains/kotlin/types/SimpleType;")) };
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(b.class), "type", "getType()Lorg/jetbrains/kotlin/types/SimpleType;")) };
     AppMethodBeat.o(57654);
   }
   
   public b(final h paramh, d.l.b.a.b.d.a.e.a parama, d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57657);
-    this.JrG = paramb;
+    this.LeZ = paramb;
     if (parama != null)
     {
-      paramb = (an)paramh.JAs.JzV.a((d.l.b.a.b.d.a.e.l)parama);
-      this.Jrj = paramb;
-      this.JyM = paramh.JAs.JlL.H((d.g.a.a)new a(this, paramh));
+      paramb = (an)paramh.LnL.Lno.a((d.l.b.a.b.d.a.e.l)parama);
+      this.LeC = paramb;
+      this.Lmf = paramh.LnL.KZf.O((d.g.a.a)new a(this, paramh));
       if (parama == null) {
         break label132;
       }
     }
     label132:
-    for (paramh = (d.l.b.a.b.d.a.e.b)j.d((Iterable)parama.fAw());; paramh = null)
+    for (paramh = (d.l.b.a.b.d.a.e.b)j.d((Iterable)parama.fTa());; paramh = null)
     {
-      this.JyN = paramh;
-      this.JyO = false;
+      this.Lmg = paramh;
+      this.Lmh = false;
       AppMethodBeat.o(57657);
       return;
-      paramb = an.JqJ;
+      paramb = an.Lec;
       d.g.b.k.g(paramb, "SourceElement.NO_SOURCE");
       break;
     }
   }
   
-  public final boolean fBy()
+  public final an fQk()
   {
-    return this.JyO;
+    return this.LeC;
   }
   
-  public final an fxG()
+  public final d.l.b.a.b.f.b fRH()
   {
-    return this.Jrj;
+    return this.LeZ;
   }
   
-  public Map<d.l.b.a.b.f.f, g<?>> fzH()
+  public Map<d.l.b.a.b.f.f, g<?>> fSl()
   {
     AppMethodBeat.i(57656);
     Map localMap = ae.emptyMap();
@@ -72,9 +72,9 @@ public class b
     return localMap;
   }
   
-  public final d.l.b.a.b.f.b fzd()
+  public final boolean fUc()
   {
-    return this.JrG;
+    return this.Lmh;
   }
   
   static final class a
@@ -89,7 +89,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.a.b
  * JD-Core Version:    0.7.0.1
  */

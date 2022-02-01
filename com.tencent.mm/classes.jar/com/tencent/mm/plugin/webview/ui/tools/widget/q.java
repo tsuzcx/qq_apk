@@ -7,10 +7,10 @@ import com.tencent.mm.ui.MMActivity;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"toActivity", "Lcom/tencent/mm/ui/MMActivity;", "Landroid/content/Context;", "plugin-webview_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"toActivity", "Lcom/tencent/mm/ui/MMActivity;", "Landroid/content/Context;", "plugin-webview_release"})
 public final class q
 {
-  static final MMActivity gL(Context paramContext)
+  static final MMActivity gW(Context paramContext)
   {
     AppMethodBeat.i(82757);
     if (!(paramContext instanceof MMActivity))

@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.btw;
-import com.tencent.mm.protocal.protobuf.btx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.protocal.protobuf.byo;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public final class i
   extends n
   implements k
 {
-  public com.tencent.mm.al.g callback;
-  private final int gIu;
+  public com.tencent.mm.ak.g callback;
+  private final int hiV;
   private b rr;
   
   public i()
   {
     AppMethodBeat.i(95561);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new btw();
-    ((b.a)localObject).gUV = new btx();
+    ((b.a)localObject).hvt = new byn();
+    ((b.a)localObject).hvu = new byo();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/oauth_checkgrant";
     ((b.a)localObject).funcId = 2842;
-    this.gIu = -1216949095;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (btw)this.rr.gUS.gUX;
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afz();
-    ((btw)localObject).DRr = a.getUin();
-    ((btw)localObject).DRd = -1216949095;
-    ad.i("MicroMsg.NetSceneOauthCheckGrant", "init useruin:%d, bizuin:%d", new Object[] { Integer.valueOf(((btw)localObject).DRr), Integer.valueOf(((btw)localObject).DRd) });
+    this.hiV = -1216949095;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (byn)this.rr.hvr.hvw;
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agP();
+    ((byn)localObject).FnJ = a.getUin();
+    ((byn)localObject).Fnv = -1216949095;
+    ac.i("MicroMsg.NetSceneOauthCheckGrant", "init useruin:%d, bizuin:%d", new Object[] { Integer.valueOf(((byn)localObject).FnJ), Integer.valueOf(((byn)localObject).Fnv) });
     AppMethodBeat.o(95561);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(95562);
     this.callback = paramg;
@@ -59,17 +59,17 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(95563);
-    ad.i("MicroMsg.NetSceneOauthCheckGrant", "onGYNetEnd netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    ae.a locala;
+    ac.i("MicroMsg.NetSceneOauthCheckGrant", "onGYNetEnd netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ah.a locala;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (btx)((b)paramq).gUT.gUX;
-      ad.i("MicroMsg.NetSceneOauthCheckGrant", "onGYNetEnd bizUin:%d, status:%d", new Object[] { Integer.valueOf(this.gIu), Integer.valueOf(paramq.status) });
-      if (this.gIu == -1216949095)
+      paramq = (byo)((b)paramq).hvs.hvw;
+      ac.i("MicroMsg.NetSceneOauthCheckGrant", "onGYNetEnd bizUin:%d, status:%d", new Object[] { Integer.valueOf(this.hiV), Integer.valueOf(paramq.status) });
+      if (this.hiV == -1216949095)
       {
-        com.tencent.mm.kernel.g.afC();
-        paramArrayOfByte = com.tencent.mm.kernel.g.afB().afk();
-        locala = ae.a.Fit;
+        com.tencent.mm.kernel.g.agS();
+        paramArrayOfByte = com.tencent.mm.kernel.g.agR().agA();
+        locala = ah.a.GGi;
         if (paramq.status != 1) {
           break label180;
         }

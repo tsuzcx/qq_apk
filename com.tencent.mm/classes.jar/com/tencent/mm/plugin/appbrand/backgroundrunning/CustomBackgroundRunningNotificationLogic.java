@@ -10,15 +10,15 @@ public abstract class CustomBackgroundRunningNotificationLogic
   @Keep
   public CustomBackgroundRunningNotificationLogic(String paramString) {}
   
-  public abstract Notification aSx();
+  public abstract Notification aZu();
   
-  public abstract int aSy();
+  public abstract int aZv();
   
-  public abstract void aSz();
+  public abstract void aZw();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.CustomBackgroundRunningNotificationLogic
  * JD-Core Version:    0.7.0.1
  */

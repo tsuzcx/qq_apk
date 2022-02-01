@@ -13,8 +13,8 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.d;
-import com.tencent.mm.g.a.hi;
+import com.tencent.mm.cq.d;
+import com.tencent.mm.g.a.ho;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.setting.b;
@@ -23,8 +23,8 @@ import com.tencent.mm.plugin.setting.ui.widget.FontSelectorView.a;
 import com.tencent.mm.plugin.webview.j.e;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.widget.MMNeat7extView;
@@ -35,22 +35,22 @@ import com.tencent.mm.ui.widget.a.f.c;
 public class SettingsFontUI
   extends MMActivity
 {
-  private int wgO;
-  private int wgP;
-  private int wgQ;
-  private float wgR;
+  private int xse;
+  private int xsf;
+  private int xsg;
+  private float xsh;
   
   public SettingsFontUI()
   {
     AppMethodBeat.i(74154);
-    this.wgO = 0;
-    this.wgP = 2;
-    this.wgQ = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 2131166038);
-    this.wgR = 1.0F;
+    this.xse = 0;
+    this.xsf = 2;
+    this.xsg = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 2131166038);
+    this.xsh = 1.0F;
     AppMethodBeat.o(74154);
   }
   
-  private static int Lz(int paramInt)
+  private static int Nz(int paramInt)
   {
     switch (paramInt)
     {
@@ -66,16 +66,16 @@ public class SettingsFontUI
     return 340;
   }
   
-  private void bn(final float paramFloat)
+  private void bv(final float paramFloat)
   {
     AppMethodBeat.i(74159);
-    final float f = fP(getContext());
-    ad.i("MicroMsg.SettingsFontUI", "fontSizeAfter=".concat(String.valueOf(f)));
-    final int i = fO(getContext());
+    final float f = gb(getContext());
+    ac.i("MicroMsg.SettingsFontUI", "fontSizeAfter=".concat(String.valueOf(f)));
+    final int i = ga(getContext());
     if (f != paramFloat)
     {
       f.a locala = new f.a(getContext());
-      locala.aMo(getContext().getResources().getString(2131763120)).wZ(true);
+      locala.aRQ(getContext().getResources().getString(2131763120)).yi(true);
       locala.c(new f.c()
       {
         public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
@@ -84,27 +84,27 @@ public class SettingsFontUI
           if (paramAnonymousBoolean)
           {
             SettingsFontUI.this.finish();
-            int i = com.tencent.mm.ce.a.eDd();
-            int j = SettingsFontUI.LA(i);
+            int i = com.tencent.mm.cd.a.eSx();
+            int j = SettingsFontUI.NA(i);
             if (j != i)
             {
-              com.tencent.mm.ce.a.VR(j);
+              com.tencent.mm.cd.a.Ya(j);
               paramAnonymousString = new Intent();
               paramAnonymousString.putExtra("Intro_Need_Clear_Top ", true);
-              b.hYt.p(paramAnonymousString, SettingsFontUI.this.getContext());
-              com.tencent.mm.bw.a.hr(aj.getContext());
+              b.iyx.p(paramAnonymousString, SettingsFontUI.this.getContext());
+              com.tencent.mm.bv.a.hC(ai.getContext());
               System.exit(0);
               AppMethodBeat.o(74153);
               return;
             }
             paramAnonymousString = new Intent();
             paramAnonymousString.putExtra("Intro_Need_Clear_Top ", true);
-            b.hYt.p(paramAnonymousString, SettingsFontUI.this.getContext());
-            paramAnonymousString = new hi();
-            paramAnonymousString.dkW.dkX = paramFloat;
-            paramAnonymousString.dkW.dkY = f;
-            com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousString);
-            d.aNr("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
+            b.iyx.p(paramAnonymousString, SettingsFontUI.this.getContext());
+            paramAnonymousString = new ho();
+            paramAnonymousString.diF.diG = paramFloat;
+            paramAnonymousString.diF.diH = f;
+            com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousString);
+            d.aSU("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
           }
           AppMethodBeat.o(74153);
         }
@@ -116,43 +116,43 @@ public class SettingsFontUI
     AppMethodBeat.o(74159);
   }
   
-  private void bo(float paramFloat)
+  private void bw(float paramFloat)
   {
     AppMethodBeat.i(74163);
-    SharedPreferences.Editor localEditor = getContext().getSharedPreferences(aj.eFD(), 0).edit();
+    SharedPreferences.Editor localEditor = getContext().getSharedPreferences(ai.eUX(), 0).edit();
     localEditor.putFloat("current_text_size_scale_key", paramFloat);
     localEditor.commit();
     AppMethodBeat.o(74163);
   }
   
-  private static float fN(Context paramContext)
+  private static float fZ(Context paramContext)
   {
     AppMethodBeat.i(74160);
-    float f2 = com.tencent.mm.cd.a.hM(paramContext);
+    float f2 = com.tencent.mm.cc.a.hX(paramContext);
     float f1 = f2;
-    if (f2 != com.tencent.mm.cd.a.hF(paramContext))
+    if (f2 != com.tencent.mm.cc.a.hQ(paramContext))
     {
       f1 = f2;
-      if (f2 != com.tencent.mm.cd.a.hE(paramContext))
+      if (f2 != com.tencent.mm.cc.a.hP(paramContext))
       {
         f1 = f2;
-        if (f2 != com.tencent.mm.cd.a.hG(paramContext))
+        if (f2 != com.tencent.mm.cc.a.hR(paramContext))
         {
           f1 = f2;
-          if (f2 != com.tencent.mm.cd.a.hH(paramContext))
+          if (f2 != com.tencent.mm.cc.a.hS(paramContext))
           {
             f1 = f2;
-            if (f2 != com.tencent.mm.cd.a.hI(paramContext))
+            if (f2 != com.tencent.mm.cc.a.hT(paramContext))
             {
               f1 = f2;
-              if (f2 != com.tencent.mm.cd.a.hJ(paramContext))
+              if (f2 != com.tencent.mm.cc.a.hU(paramContext))
               {
                 f1 = f2;
-                if (f2 != com.tencent.mm.cd.a.hK(paramContext))
+                if (f2 != com.tencent.mm.cc.a.hV(paramContext))
                 {
                   f1 = f2;
-                  if (f2 != com.tencent.mm.cd.a.hL(paramContext)) {
-                    f1 = com.tencent.mm.cd.a.hF(paramContext);
+                  if (f2 != com.tencent.mm.cc.a.hW(paramContext)) {
+                    f1 = com.tencent.mm.cc.a.hQ(paramContext);
                   }
                 }
               }
@@ -165,23 +165,23 @@ public class SettingsFontUI
     return f1;
   }
   
-  private static int fO(Context paramContext)
+  private static int ga(Context paramContext)
   {
     int i = 1;
     AppMethodBeat.i(74161);
     if (paramContext != null) {
-      i = paramContext.getSharedPreferences(aj.eFD(), 0).getInt("current_text_size_index_key", 1);
+      i = paramContext.getSharedPreferences(ai.eUX(), 0).getInt("current_text_size_index_key", 1);
     }
     AppMethodBeat.o(74161);
     return i;
   }
   
-  private float fP(Context paramContext)
+  private float gb(Context paramContext)
   {
     float f = 1.0F;
     AppMethodBeat.i(74162);
     if (paramContext != null) {
-      f = getContext().getSharedPreferences(aj.eFD(), 0).getFloat("current_text_size_scale_key", 1.0F);
+      f = getContext().getSharedPreferences(ai.eUX(), 0).getFloat("current_text_size_scale_key", 1.0F);
     }
     AppMethodBeat.o(74162);
     return f;
@@ -192,7 +192,7 @@ public class SettingsFontUI
     AppMethodBeat.i(74157);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1))
     {
-      bn(this.wgR);
+      bv(this.xsh);
       AppMethodBeat.o(74157);
       return true;
     }
@@ -210,35 +210,35 @@ public class SettingsFontUI
   {
     AppMethodBeat.i(74156);
     setMMTitle(2131763456);
-    this.wgR = fN(getContext());
-    ad.i("MicroMsg.SettingsFontUI", "fontSizeBefore=" + this.wgR);
+    this.xsh = fZ(getContext());
+    ac.i("MicroMsg.SettingsFontUI", "fontSizeBefore=" + this.xsh);
     final ImageView localImageView1 = (ImageView)findViewById(2131298058);
     final ImageView localImageView2 = (ImageView)findViewById(2131297009);
     final ImageView localImageView3 = (ImageView)findViewById(2131297010);
     final MMNeat7extView localMMNeat7extView1 = (MMNeat7extView)findViewById(2131304648);
     final MMNeat7extView localMMNeat7extView2 = (MMNeat7extView)findViewById(2131304646);
     final MMNeat7extView localMMNeat7extView3 = (MMNeat7extView)findViewById(2131304647);
-    a.b.c(localImageView1, u.aqG());
-    this.wgQ = ((int)(com.tencent.mm.cd.a.ap(getContext(), 2131166038) / com.tencent.mm.ce.a.eCR()));
-    localMMNeat7extView2.setMaxWidth(this.wgQ);
-    localMMNeat7extView3.setMaxWidth(this.wgQ);
+    a.b.c(localImageView1, u.axw());
+    this.xsg = ((int)(com.tencent.mm.cc.a.av(getContext(), 2131166038) / com.tencent.mm.cd.a.eSl()));
+    localMMNeat7extView2.setMaxWidth(this.xsg);
+    localMMNeat7extView3.setMaxWidth(this.xsg);
     FontSelectorView localFontSelectorView = (FontSelectorView)findViewById(2131300195);
-    float f2 = fN(getContext());
-    if (f2 != fP(getContext())) {
-      bo(f2);
+    float f2 = fZ(getContext());
+    if (f2 != gb(getContext())) {
+      bw(f2);
     }
     float f1;
-    if (f2 >= com.tencent.mm.cd.a.hE(getContext()))
+    if (f2 >= com.tencent.mm.cc.a.hP(getContext()))
     {
       f1 = f2;
-      if (f2 <= com.tencent.mm.cd.a.hL(getContext())) {}
+      if (f2 <= com.tencent.mm.cc.a.hW(getContext())) {}
     }
     else
     {
-      f1 = com.tencent.mm.cd.a.hE(getContext());
+      f1 = com.tencent.mm.cc.a.hP(getContext());
     }
     int i;
-    if (f1 == com.tencent.mm.cd.a.hE(getContext())) {
+    if (f1 == com.tencent.mm.cc.a.hP(getContext())) {
       i = 0;
     }
     for (;;)
@@ -246,7 +246,7 @@ public class SettingsFontUI
       localFontSelectorView.setSliderIndex(i);
       localFontSelectorView.setOnChangeListener(new FontSelectorView.a()
       {
-        public final void LB(int paramAnonymousInt)
+        public final void NB(int paramAnonymousInt)
         {
           AppMethodBeat.i(74151);
           float f2;
@@ -254,9 +254,9 @@ public class SettingsFontUI
           switch (paramAnonymousInt)
           {
           default: 
-            f2 = com.tencent.mm.cd.a.hF(SettingsFontUI.this.getContext());
-            f1 = com.tencent.mm.ce.a.eDd() / 400.0F;
-            if (!com.tencent.mm.cd.a.hN(SettingsFontUI.this.getContext())) {
+            f2 = com.tencent.mm.cc.a.hQ(SettingsFontUI.this.getContext());
+            f1 = com.tencent.mm.cd.a.eSx() / 400.0F;
+            if (!com.tencent.mm.cc.a.hY(SettingsFontUI.this.getContext())) {
               f1 = f2;
             }
             if (f2 != SettingsFontUI.a(SettingsFontUI.this)) {
@@ -266,21 +266,21 @@ public class SettingsFontUI
           }
           for (;;)
           {
-            com.tencent.mm.cd.a.h(SettingsFontUI.this.getContext(), f2);
+            com.tencent.mm.cc.a.h(SettingsFontUI.this.getContext(), f2);
             SettingsFontUI.a(SettingsFontUI.this, f2);
-            Object localObject = SettingsFontUI.this.getContext().getSharedPreferences(aj.eFD(), 0).edit();
+            Object localObject = SettingsFontUI.this.getContext().getSharedPreferences(ai.eUX(), 0).edit();
             ((SharedPreferences.Editor)localObject).putInt("current_text_size_index_key", paramAnonymousInt);
             ((SharedPreferences.Editor)localObject).commit();
-            e.tH(true);
-            SettingsFontUI.b(SettingsFontUI.this, com.tencent.mm.cd.a.hO(SettingsFontUI.this.getContext()));
+            e.uJ(true);
+            SettingsFontUI.b(SettingsFontUI.this, com.tencent.mm.cc.a.hZ(SettingsFontUI.this.getContext()));
             localObject = SettingsFontUI.this.getContext();
-            localMMNeat7extView1.setTextSize(0, ao.ap(SettingsFontUI.this.getContext(), 2131165517) * f1);
-            localMMNeat7extView2.setTextSize(0, ao.ap(SettingsFontUI.this.getContext(), 2131165517) * f1);
-            localMMNeat7extView3.setTextSize(0, f1 * ao.ap(SettingsFontUI.this.getContext(), 2131165517));
+            localMMNeat7extView1.setTextSize(0, ao.av(SettingsFontUI.this.getContext(), 2131165517) * f1);
+            localMMNeat7extView2.setTextSize(0, ao.av(SettingsFontUI.this.getContext(), 2131165517) * f1);
+            localMMNeat7extView3.setTextSize(0, f1 * ao.av(SettingsFontUI.this.getContext(), 2131165517));
             SettingsFontUI localSettingsFontUI = SettingsFontUI.this;
-            f1 = com.tencent.mm.cd.a.ap((Context)localObject, 2131165184);
-            localSettingsFontUI.setMMTitleSize(com.tencent.mm.cd.a.hQ((Context)localObject) * f1);
-            if (com.tencent.mm.cd.a.hN(SettingsFontUI.this.getContext()))
+            f1 = com.tencent.mm.cc.a.av((Context)localObject, 2131165184);
+            localSettingsFontUI.setMMTitleSize(com.tencent.mm.cc.a.ib((Context)localObject) * f1);
+            if (com.tencent.mm.cc.a.hY(SettingsFontUI.this.getContext()))
             {
               SettingsFontUI.a(SettingsFontUI.this, localImageView1, paramAnonymousInt);
               SettingsFontUI.a(SettingsFontUI.this, localImageView2, paramAnonymousInt);
@@ -288,29 +288,29 @@ public class SettingsFontUI
             }
             AppMethodBeat.o(74151);
             return;
-            f2 = com.tencent.mm.cd.a.hE(SettingsFontUI.this.getContext());
-            f1 = com.tencent.mm.ce.a.eDd() / 440.0F;
+            f2 = com.tencent.mm.cc.a.hP(SettingsFontUI.this.getContext());
+            f1 = com.tencent.mm.cd.a.eSx() / 440.0F;
             break;
-            f2 = com.tencent.mm.cd.a.hF(SettingsFontUI.this.getContext());
-            f1 = com.tencent.mm.ce.a.eDd() / 400.0F;
+            f2 = com.tencent.mm.cc.a.hQ(SettingsFontUI.this.getContext());
+            f1 = com.tencent.mm.cd.a.eSx() / 400.0F;
             break;
-            f2 = com.tencent.mm.cd.a.hG(SettingsFontUI.this.getContext());
-            f1 = com.tencent.mm.ce.a.eDd() / 360.0F;
+            f2 = com.tencent.mm.cc.a.hR(SettingsFontUI.this.getContext());
+            f1 = com.tencent.mm.cd.a.eSx() / 360.0F;
             break;
-            f2 = com.tencent.mm.cd.a.hH(SettingsFontUI.this.getContext());
-            f1 = com.tencent.mm.ce.a.eDd() / 360.0F * 1.12F;
+            f2 = com.tencent.mm.cc.a.hS(SettingsFontUI.this.getContext());
+            f1 = com.tencent.mm.cd.a.eSx() / 360.0F * 1.12F;
             break;
-            f2 = com.tencent.mm.cd.a.hI(SettingsFontUI.this.getContext());
-            f1 = com.tencent.mm.ce.a.eDd() / 340.0F * 1.125F;
+            f2 = com.tencent.mm.cc.a.hT(SettingsFontUI.this.getContext());
+            f1 = com.tencent.mm.cd.a.eSx() / 340.0F * 1.125F;
             break;
-            f2 = com.tencent.mm.cd.a.hJ(SettingsFontUI.this.getContext());
-            f1 = com.tencent.mm.ce.a.eDd() / 340.0F * 1.4F;
+            f2 = com.tencent.mm.cc.a.hU(SettingsFontUI.this.getContext());
+            f1 = com.tencent.mm.cd.a.eSx() / 340.0F * 1.4F;
             break;
-            f2 = com.tencent.mm.cd.a.hK(SettingsFontUI.this.getContext());
-            f1 = com.tencent.mm.ce.a.eDd() / 340.0F * 1.55F;
+            f2 = com.tencent.mm.cc.a.hV(SettingsFontUI.this.getContext());
+            f1 = com.tencent.mm.cd.a.eSx() / 340.0F * 1.55F;
             break;
-            f2 = com.tencent.mm.cd.a.hL(SettingsFontUI.this.getContext());
-            f1 = com.tencent.mm.ce.a.eDd() / 340.0F * 1.65F;
+            f2 = com.tencent.mm.cc.a.hW(SettingsFontUI.this.getContext());
+            f1 = com.tencent.mm.cd.a.eSx() / 340.0F * 1.65F;
             break;
             SettingsFontUI.a(SettingsFontUI.this, 0);
           }
@@ -321,8 +321,8 @@ public class SettingsFontUI
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(74152);
-          h.vKh.f(11609, new Object[] { Integer.valueOf(SettingsFontUI.b(SettingsFontUI.this)), Integer.valueOf(SettingsFontUI.c(SettingsFontUI.this)), Integer.valueOf(0) });
-          ad.i("MicroMsg.SettingsFontUI", "choose font size kvReport logID:%d , changeFontSize: %d, curFontSize:%d", new Object[] { Integer.valueOf(11609), Integer.valueOf(SettingsFontUI.b(SettingsFontUI.this)), Integer.valueOf(SettingsFontUI.c(SettingsFontUI.this)) });
+          h.wUl.f(11609, new Object[] { Integer.valueOf(SettingsFontUI.b(SettingsFontUI.this)), Integer.valueOf(SettingsFontUI.c(SettingsFontUI.this)), Integer.valueOf(0) });
+          ac.i("MicroMsg.SettingsFontUI", "choose font size kvReport logID:%d , changeFontSize: %d, curFontSize:%d", new Object[] { Integer.valueOf(11609), Integer.valueOf(SettingsFontUI.b(SettingsFontUI.this)), Integer.valueOf(SettingsFontUI.c(SettingsFontUI.this)) });
           SettingsFontUI.b(SettingsFontUI.this, SettingsFontUI.a(SettingsFontUI.this));
           AppMethodBeat.o(74152);
           return true;
@@ -330,17 +330,17 @@ public class SettingsFontUI
       });
       AppMethodBeat.o(74156);
       return;
-      if (f1 == com.tencent.mm.cd.a.hG(getContext())) {
+      if (f1 == com.tencent.mm.cc.a.hR(getContext())) {
         i = 2;
-      } else if (f1 == com.tencent.mm.cd.a.hH(getContext())) {
+      } else if (f1 == com.tencent.mm.cc.a.hS(getContext())) {
         i = 3;
-      } else if (f1 == com.tencent.mm.cd.a.hI(getContext())) {
+      } else if (f1 == com.tencent.mm.cc.a.hT(getContext())) {
         i = 4;
-      } else if (f1 == com.tencent.mm.cd.a.hJ(getContext())) {
+      } else if (f1 == com.tencent.mm.cc.a.hU(getContext())) {
         i = 5;
-      } else if (f1 == com.tencent.mm.cd.a.hK(getContext())) {
+      } else if (f1 == com.tencent.mm.cc.a.hV(getContext())) {
         i = 6;
-      } else if (f1 == com.tencent.mm.cd.a.hL(getContext())) {
+      } else if (f1 == com.tencent.mm.cc.a.hW(getContext())) {
         i = 7;
       } else {
         i = 1;
@@ -361,9 +361,9 @@ public class SettingsFontUI
     AppMethodBeat.i(74158);
     if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
     {
-      h.vKh.f(11609, new Object[] { Integer.valueOf(this.wgO), Integer.valueOf(this.wgP), Integer.valueOf(0) });
-      ad.i("MicroMsg.SettingsFontUI", "choose font size kvReport logID:%d , changeFontSize: %d, curFontSize:%d", new Object[] { Integer.valueOf(11609), Integer.valueOf(this.wgO), Integer.valueOf(this.wgP) });
-      bn(this.wgR);
+      h.wUl.f(11609, new Object[] { Integer.valueOf(this.xse), Integer.valueOf(this.xsf), Integer.valueOf(0) });
+      ac.i("MicroMsg.SettingsFontUI", "choose font size kvReport logID:%d , changeFontSize: %d, curFontSize:%d", new Object[] { Integer.valueOf(11609), Integer.valueOf(this.xse), Integer.valueOf(this.xsf) });
+      bv(this.xsh);
       AppMethodBeat.o(74158);
       return true;
     }
@@ -380,7 +380,7 @@ public class SettingsFontUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsFontUI
  * JD-Core Version:    0.7.0.1
  */

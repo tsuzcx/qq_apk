@@ -2,32 +2,32 @@ package com.tencent.mm.pluginsdk.h.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class j
 {
-  private static final int BSH = i.b.BSD.dtM;
-  private static final int BSI = i.b.BSF.dtM;
-  private static final int BSJ = i.b.BSE.dtM;
+  private static final int DkX = i.b.DkT.drx;
+  private static final int DkY = i.b.DkV.drx;
+  private static final int DkZ = i.b.DkU.drx;
   
-  public static void D(long paramLong1, long paramLong2)
+  public static void A(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(151981);
     if ((paramLong1 > 0L) && (197L != paramLong1)) {
-      h.vKh.idkeyStat(paramLong1, paramLong2, 1L, false);
+      h.wUl.idkeyStat(paramLong1, paramLong2, 1L, false);
     }
-    h.vKh.idkeyStat(197L, paramLong2, 1L, false);
+    h.wUl.idkeyStat(197L, paramLong2, 1L, false);
     AppMethodBeat.o(151981);
   }
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(151984);
-    int j = BSI;
+    int j = DkY;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
-      a(paramInt1, paramInt2, "", paramInt3, j, i, a.BSL.ordinal(), 1, 1, 1, paramString);
+      a(paramInt1, paramInt2, "", paramInt3, j, i, a.Dlb.ordinal(), 1, 1, 1, paramString);
       AppMethodBeat.o(151984);
       return;
     }
@@ -36,7 +36,7 @@ public final class j
   public static void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
     AppMethodBeat.i(151985);
-    int n = BSJ;
+    int n = DkZ;
     int i;
     int i1;
     int j;
@@ -45,7 +45,7 @@ public final class j
     if (paramBoolean1)
     {
       i = 0;
-      i1 = a.BSL.ordinal();
+      i1 = a.Dlb.ordinal();
       if (!paramBoolean3) {
         break label83;
       }
@@ -79,9 +79,9 @@ public final class j
   private static void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString2)
   {
     AppMethodBeat.i(151986);
-    h.vKh.f(11906, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt9) });
-    if ((!bt.isNullOrNil(paramString2)) && (!paramString2.equals("0"))) {
-      h.vKh.f(11907, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt9), paramString2 });
+    h.wUl.f(11906, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt9) });
+    if ((!bs.isNullOrNil(paramString2)) && (!paramString2.equals("0"))) {
+      h.wUl.f(11907, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt9), paramString2 });
     }
     AppMethodBeat.o(151986);
   }
@@ -89,7 +89,7 @@ public final class j
   public static void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, a parama, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString2)
   {
     AppMethodBeat.i(151983);
-    int m = BSH;
+    int m = DkX;
     int i;
     int n;
     int j;
@@ -120,10 +120,10 @@ public final class j
     }
   }
   
-  public static void vm(long paramLong)
+  public static void zP(long paramLong)
   {
     AppMethodBeat.i(151982);
-    D(paramLong, 2L);
+    A(paramLong, 2L);
     AppMethodBeat.o(151982);
   }
   
@@ -132,13 +132,13 @@ public final class j
     static
     {
       AppMethodBeat.i(151980);
-      BSK = new a("SUCC", 0);
-      BSL = new a("FAIL", 1);
-      BSM = new a("RETRY_SUCC", 2);
-      BSN = new a("FILE_LATEST", 3);
-      BSO = new a("FILE_EXPIRED", 4);
-      BSP = new a("DEVICE_NOT_MATCH", 5);
-      BSQ = new a[] { BSK, BSL, BSM, BSN, BSO, BSP };
+      Dla = new a("SUCC", 0);
+      Dlb = new a("FAIL", 1);
+      Dlc = new a("RETRY_SUCC", 2);
+      Dld = new a("FILE_LATEST", 3);
+      Dle = new a("FILE_EXPIRED", 4);
+      Dlf = new a("DEVICE_NOT_MATCH", 5);
+      Dlg = new a[] { Dla, Dlb, Dlc, Dld, Dle, Dlf };
       AppMethodBeat.o(151980);
     }
     
@@ -147,7 +147,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.h.a.a.j
  * JD-Core Version:    0.7.0.1
  */

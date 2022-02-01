@@ -4,28 +4,28 @@ import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.h;
 
 public final class a
 {
   public String Title;
-  public int dcz;
+  public int cZX;
   public String desc;
-  private c fmg;
+  public c fpB;
   public String url;
   
-  public static a oG(String paramString)
+  public static a rM(String paramString)
   {
     AppMethodBeat.i(149961);
-    paramString = c.oI(paramString);
+    paramString = c.rO(paramString);
     if (paramString != null)
     {
       a locala = new a();
-      locala.fmg = paramString;
+      locala.fpB = paramString;
       locala.url = paramString.url;
       locala.desc = paramString.desc;
-      locala.dcz = paramString.dcz;
+      locala.cZX = paramString.cZX;
       locala.Title = paramString.Title;
       AppMethodBeat.o(149961);
       return locala;
@@ -38,37 +38,37 @@ public final class a
   {
     int i = 2131755835;
     AppMethodBeat.i(149962);
-    if ((this.dcz == 3) || (this.dcz == 4))
+    if ((this.cZX == 3) || (this.cZX == 4))
     {
-      String str3 = this.fmg.fms;
-      String str4 = this.fmg.fmt;
+      String str3 = this.fpB.fpN;
+      String str4 = this.fpB.fpO;
       String str1 = str3;
       String str2 = str4;
-      if (bt.isNullOrNil(str3))
+      if (bs.isNullOrNil(str3))
       {
         str1 = str3;
         str2 = str4;
-        if (bt.isNullOrNil(str4))
+        if (bs.isNullOrNil(str4))
         {
-          if (this.dcz == 3) {
+          if (this.cZX == 3) {
             i = 2131755939;
           }
           str1 = paramContext.getString(i);
-          if (this.dcz != 3) {
+          if (this.cZX != 3) {
             break label178;
           }
           i = 2131755831;
           str2 = paramContext.getString(i);
         }
       }
-      if ((bt.isNullOrNil(str1)) || (bt.isNullOrNil(str2)))
+      if ((bs.isNullOrNil(str1)) || (bs.isNullOrNil(str2)))
       {
         str3 = this.desc;
         str4 = this.Title;
-        if (bt.isNullOrNil(str1))
+        if (bs.isNullOrNil(str1))
         {
           label151:
-          if (!bt.isNullOrNil(str1)) {
+          if (!bs.isNullOrNil(str1)) {
             break label192;
           }
           label159:
@@ -90,13 +90,13 @@ public final class a
         h.d(paramContext, this.desc, this.Title, str1, str2, paramOnClickListener1, paramOnClickListener2);
       }
     }
-    if (this.dcz == 1)
+    if (this.cZX == 1)
     {
       h.a(paramContext, this.desc, this.Title, paramContext.getString(2131755835), true, paramOnClickListener1);
       AppMethodBeat.o(149962);
       return true;
     }
-    if (this.dcz == 5)
+    if (this.cZX == 5)
     {
       h.c(paramContext, this.desc, this.Title, true);
       AppMethodBeat.o(149962);
@@ -116,7 +116,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.h.a
  * JD-Core Version:    0.7.0.1
  */

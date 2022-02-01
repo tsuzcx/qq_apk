@@ -11,43 +11,43 @@ final class ReadMailProxy$1
   public final void a(long paramLong, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(122808);
-    this.uNc.CLIENT_CALL("onTaskFailed", new Object[] { Long.valueOf(paramLong) });
+    this.vVS.CLIENT_CALL("onTaskFailed", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(122808);
   }
   
   public final void b(long paramLong, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(122807);
-    this.uNc.CLIENT_CALL("onTaskFinished", new Object[] { Long.valueOf(paramLong) });
+    this.vVS.CLIENT_CALL("onTaskFinished", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(122807);
   }
   
   public final void j(long paramLong, String paramString) {}
   
-  public final void mZ(long paramLong) {}
-  
-  public final void na(long paramLong) {}
-  
   public final void onTaskPaused(long paramLong)
   {
     AppMethodBeat.i(122809);
-    this.uNc.CLIENT_CALL("onTaskPaused", new Object[] { Long.valueOf(paramLong) });
+    this.vVS.CLIENT_CALL("onTaskPaused", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(122809);
   }
   
   public final void onTaskRemoved(long paramLong)
   {
     AppMethodBeat.i(122806);
-    this.uNc.CLIENT_CALL("onTaskRemoved", new Object[] { Long.valueOf(paramLong) });
+    this.vVS.CLIENT_CALL("onTaskRemoved", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(122806);
   }
   
   public final void onTaskStarted(long paramLong, String paramString)
   {
     AppMethodBeat.i(122805);
-    this.uNc.CLIENT_CALL("onTaskStarted", new Object[] { Long.valueOf(paramLong), paramString });
+    this.vVS.CLIENT_CALL("onTaskStarted", new Object[] { Long.valueOf(paramLong), paramString });
     AppMethodBeat.o(122805);
   }
+  
+  public final void qN(long paramLong) {}
+  
+  public final void qO(long paramLong) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.b;
 
 import android.util.Base64;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
@@ -9,8 +9,8 @@ import javax.crypto.spec.IvParameterSpec;
 
 public final class d
 {
-  private Cipher cHr;
-  private Cipher cHs;
+  private Cipher cEA;
+  private Cipher cEz;
   
   public d(String paramString)
   {
@@ -19,24 +19,24 @@ public final class d
       paramString = new DESKeySpec(paramString.getBytes("UTF8"));
       paramString = SecretKeyFactory.getInstance("DES").generateSecret(paramString);
       IvParameterSpec localIvParameterSpec = new IvParameterSpec("manifest".getBytes("UTF8"));
-      this.cHr = Cipher.getInstance("DES/CBC/PKCS5Padding");
-      this.cHr.init(1, paramString, localIvParameterSpec);
-      this.cHs = Cipher.getInstance("DES/CBC/PKCS5Padding");
-      this.cHs.init(2, paramString, localIvParameterSpec);
+      this.cEz = Cipher.getInstance("DES/CBC/PKCS5Padding");
+      this.cEz.init(1, paramString, localIvParameterSpec);
+      this.cEA = Cipher.getInstance("DES/CBC/PKCS5Padding");
+      this.cEA.init(2, paramString, localIvParameterSpec);
       return;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.DESUtil", paramString, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.DESUtil", paramString, "", new Object[0]);
     }
   }
   
-  public final String dD(String paramString)
+  public final String ds(String paramString)
   {
     try
     {
       Object localObject = Base64.decode(paramString, 0);
-      localObject = new String(this.cHs.doFinal((byte[])localObject), "UTF8");
+      localObject = new String(this.cEA.doFinal((byte[])localObject), "UTF8");
       return localObject;
     }
     catch (Exception localException)

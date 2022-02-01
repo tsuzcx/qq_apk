@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.ui.collection;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"LAYOUT_ID", "", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"LAYOUT_ID", "", "plugin-appbrand-integration_release"})
 public final class e
 {
-  private static final int lGy = 2131492980;
+  private static final int mit = 2131492980;
 }
 
 

@@ -1,74 +1,74 @@
 package com.tencent.mm.plugin.ext.voicecontrol;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.fr;
-import com.tencent.mm.protocal.protobuf.fs;
 import com.tencent.mm.protocal.protobuf.ft;
-import com.tencent.mm.protocal.protobuf.fx;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.fu;
+import com.tencent.mm.protocal.protobuf.fv;
+import com.tencent.mm.protocal.protobuf.fz;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends n
   implements k
 {
-  public int Kd;
+  public int KY;
   public String appId;
-  public int cWU;
+  public int cUq;
   private g callback;
-  public int diR;
-  public int gTY;
-  int pMA;
-  long pMB;
-  public int pMv;
-  public com.tencent.mm.bx.b pMw;
-  public String pMx;
-  public fx pMy;
-  public fr pMz;
-  com.tencent.mm.al.b rr;
+  public int dgm;
+  public int hux;
+  public int qvd;
+  public com.tencent.mm.bw.b qve;
+  public String qvf;
+  public fz qvg;
+  public ft qvh;
+  int qvi;
+  long qvj;
+  com.tencent.mm.ak.b rr;
   
-  public a(int paramInt1, String paramString1, int paramInt2, String paramString2, fx paramfx)
+  public a(int paramInt1, String paramString1, int paramInt2, String paramString2, fz paramfz)
   {
     AppMethodBeat.i(24534);
-    this.pMA = 5000;
-    this.pMB = 0L;
-    this.diR = 1;
+    this.qvi = 5000;
+    this.qvj = 0L;
+    this.dgm = 1;
     this.appId = paramString1;
-    this.pMv = paramInt1;
-    this.Kd = 1;
-    this.gTY = paramInt2;
-    this.pMy = paramfx;
-    this.pMz = null;
-    this.pMx = paramString2;
-    if (paramfx != null) {}
+    this.qvd = paramInt1;
+    this.KY = 1;
+    this.hux = paramInt2;
+    this.qvg = paramfz;
+    this.qvh = null;
+    this.qvf = paramString2;
+    if (paramfz != null) {}
     for (;;)
     {
-      ad.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] new NetSceneAppVoiceControl, opCode=%s, appId=%s, voiceId=%s, totalLen=%s, controlType=%s, %s, %s", new Object[] { Integer.valueOf(1), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(1), Boolean.valueOf(bool), Boolean.FALSE });
+      ac.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] new NetSceneAppVoiceControl, opCode=%s, appId=%s, voiceId=%s, totalLen=%s, controlType=%s, %s, %s", new Object[] { Integer.valueOf(1), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(1), Boolean.valueOf(bool), Boolean.FALSE });
       AppMethodBeat.o(24534);
       return;
       bool = false;
     }
   }
   
-  public a(int paramInt, String paramString, fr paramfr, long paramLong)
+  public a(int paramInt, String paramString, ft paramft, long paramLong)
   {
     AppMethodBeat.i(24535);
-    this.pMA = 5000;
-    this.pMB = 0L;
-    this.diR = 2;
+    this.qvi = 5000;
+    this.qvj = 0L;
+    this.dgm = 2;
     this.appId = paramString;
-    this.pMv = paramInt;
-    this.Kd = 1;
-    this.pMy = null;
-    this.pMz = paramfr;
-    this.pMB = paramLong;
-    ad.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] new NetSceneAppVoiceControl, opCode=%s, appId=%s, voiceId=%s, controlType=%s, %s, %s", new Object[] { Integer.valueOf(2), paramString, Integer.valueOf(paramInt), Integer.valueOf(1), Boolean.FALSE, Boolean.TRUE });
+    this.qvd = paramInt;
+    this.KY = 1;
+    this.qvg = null;
+    this.qvh = paramft;
+    this.qvj = paramLong;
+    ac.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] new NetSceneAppVoiceControl, opCode=%s, appId=%s, voiceId=%s, controlType=%s, %s, %s", new Object[] { Integer.valueOf(2), paramString, Integer.valueOf(paramInt), Integer.valueOf(1), Boolean.FALSE, Boolean.TRUE });
     AppMethodBeat.o(24535);
   }
   
@@ -79,18 +79,18 @@ public final class a
     paramg = new b.a();
     paramg.funcId = 985;
     paramg.uri = "/cgi-bin/micromsg-bin/appvoicecontrol";
-    paramg.gUU = new fs();
-    paramg.gUV = new ft();
+    paramg.hvt = new fu();
+    paramg.hvu = new fv();
     paramg.reqCmdId = 0;
     paramg.respCmdId = 0;
-    this.rr = paramg.atI();
-    paramg = (fs)this.rr.gUS.gUX;
-    paramg.OpCode = this.diR;
-    paramg.hnC = this.appId;
-    paramg.CAt = this.pMv;
-    paramg.CAu = this.Kd;
-    paramg.CAv = this.pMy;
-    paramg.CAw = this.pMz;
+    this.rr = paramg.aAz();
+    paramg = (fu)this.rr.hvr.hvw;
+    paramg.OpCode = this.dgm;
+    paramg.hOf = this.appId;
+    paramg.DSP = this.qvd;
+    paramg.DSQ = this.KY;
+    paramg.DSR = this.qvg;
+    paramg.DSS = this.qvh;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(24537);
     return i;
@@ -105,22 +105,22 @@ public final class a
   {
     AppMethodBeat.i(24536);
     if ((paramInt2 == 0) && (paramInt3 == 0) && (paramq != null)) {
-      ad.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] onGYNetEnd netId %d , errType %d, errCode %d, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+      ac.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] onGYNetEnd netId %d , errType %d, errCode %d, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     }
     while (this.callback != null)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(24536);
       return;
-      ad.e("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] onGYNetEnd netId %d , errType %d, errCode %d, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+      ac.e("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] onGYNetEnd netId %d , errType %d, errCode %d, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     }
-    ad.e("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] callback null");
+    ac.e("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] callback null");
     AppMethodBeat.o(24536);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.voicecontrol.a
  * JD-Core Version:    0.7.0.1
  */

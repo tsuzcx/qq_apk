@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.story.f.f;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
 final class a$j$1
   extends d.g.b.l
   implements a<y>
@@ -15,7 +16,7 @@ final class a$j$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.f.a.j.1
  * JD-Core Version:    0.7.0.1
  */

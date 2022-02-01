@@ -8,29 +8,22 @@ public abstract class ff
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGD = "retryCount".hashCode();
-  private static final int eOe;
-  private static final int eRT;
-  private static final int eWD;
-  private static final int esK = "card_id".hashCode();
+  private static final int eYP = "originMD5".hashCode();
+  private static final int eYQ = "resultFile".hashCode();
+  private static final int eYR = "fromLang".hashCode();
+  private static final int eYS = "toLang".hashCode();
+  private static final int eYT = "brand".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGl = true;
-  private boolean eNW = true;
-  private boolean eRP = true;
-  private boolean eWC = true;
-  private boolean esr = true;
-  public String field_card_id;
-  public int field_retryCount;
-  public long field_seq;
-  public int field_state_flag;
-  public long field_update_time;
-  
-  static
-  {
-    eWD = "state_flag".hashCode();
-    eOe = "update_time".hashCode();
-    eRT = "seq".hashCode();
-  }
+  private boolean eYK = true;
+  private boolean eYL = true;
+  private boolean eYM = true;
+  private boolean eYN = true;
+  private boolean eYO = true;
+  public String field_brand;
+  public String field_fromLang;
+  public String field_originMD5;
+  public String field_resultFile;
+  public String field_toLang;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -45,11 +38,11 @@ public abstract class ff
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (esK != k) {
+      if (eYP != k) {
         break label65;
       }
-      this.field_card_id = paramCursor.getString(i);
-      this.esr = true;
+      this.field_originMD5 = paramCursor.getString(i);
+      this.eYK = true;
     }
     for (;;)
     {
@@ -57,14 +50,14 @@ public abstract class ff
       break label20;
       break;
       label65:
-      if (eWD == k) {
-        this.field_state_flag = paramCursor.getInt(i);
-      } else if (eOe == k) {
-        this.field_update_time = paramCursor.getLong(i);
-      } else if (eRT == k) {
-        this.field_seq = paramCursor.getLong(i);
-      } else if (eGD == k) {
-        this.field_retryCount = paramCursor.getInt(i);
+      if (eYQ == k) {
+        this.field_resultFile = paramCursor.getString(i);
+      } else if (eYR == k) {
+        this.field_fromLang = paramCursor.getString(i);
+      } else if (eYS == k) {
+        this.field_toLang = paramCursor.getString(i);
+      } else if (eYT == k) {
+        this.field_brand = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -74,20 +67,20 @@ public abstract class ff
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.esr) {
-      localContentValues.put("card_id", this.field_card_id);
+    if (this.eYK) {
+      localContentValues.put("originMD5", this.field_originMD5);
     }
-    if (this.eWC) {
-      localContentValues.put("state_flag", Integer.valueOf(this.field_state_flag));
+    if (this.eYL) {
+      localContentValues.put("resultFile", this.field_resultFile);
     }
-    if (this.eNW) {
-      localContentValues.put("update_time", Long.valueOf(this.field_update_time));
+    if (this.eYM) {
+      localContentValues.put("fromLang", this.field_fromLang);
     }
-    if (this.eRP) {
-      localContentValues.put("seq", Long.valueOf(this.field_seq));
+    if (this.eYN) {
+      localContentValues.put("toLang", this.field_toLang);
     }
-    if (this.eGl) {
-      localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
+    if (this.eYO) {
+      localContentValues.put("brand", this.field_brand);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -97,7 +90,7 @@ public abstract class ff
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.ff
  * JD-Core Version:    0.7.0.1
  */

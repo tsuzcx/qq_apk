@@ -3,74 +3,35 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class ek
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eDj = "fileName".hashCode();
-  private static final int eQj = "musicId".hashCode();
-  private static final int eSB = "musicUrl".hashCode();
-  private static final int eSC = "indexBitData".hashCode();
-  private static final int eSD = "fileCacheComplete".hashCode();
-  private static final int eSE = "pieceFileMIMEType".hashCode();
-  private static final int eSF = "removeDirtyBit".hashCode();
+  private static final int eVA = "msgTypeFlag".hashCode();
+  private static final int eVB = "msgState".hashCode();
+  private static final int eVz;
+  private static final int elV;
+  private static final int enO = "appId".hashCode();
+  private static final int epR = "packageName".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCG = true;
-  private boolean ePA = true;
-  private boolean eSA = true;
-  private boolean eSw = true;
-  private boolean eSx = true;
-  private boolean eSy = true;
-  private boolean eSz = true;
-  public int field_fileCacheComplete;
-  public String field_fileName;
-  public byte[] field_indexBitData;
-  public String field_musicId;
-  public String field_musicUrl;
-  public String field_pieceFileMIMEType;
-  public int field_removeDirtyBit;
+  private boolean eVw = true;
+  private boolean eVx = true;
+  private boolean eVy = true;
+  private boolean elS = true;
+  private boolean enx = true;
+  private boolean epv = true;
+  public String field_appId;
+  public int field_msgState;
+  public int field_msgTypeFlag;
+  public String field_packageName;
+  public int field_sceneFlag;
+  public int field_status;
   
-  public static c.a So()
+  static
   {
-    c.a locala = new c.a();
-    locala.EYt = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "musicId";
-    locala.EYv.put("musicId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" musicId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.EYu = "musicId";
-    locala.columns[1] = "musicUrl";
-    locala.EYv.put("musicUrl", "TEXT");
-    localStringBuilder.append(" musicUrl TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "fileName";
-    locala.EYv.put("fileName", "TEXT");
-    localStringBuilder.append(" fileName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "indexBitData";
-    locala.EYv.put("indexBitData", "BLOB");
-    localStringBuilder.append(" indexBitData BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "fileCacheComplete";
-    locala.EYv.put("fileCacheComplete", "INTEGER");
-    localStringBuilder.append(" fileCacheComplete INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "pieceFileMIMEType";
-    locala.EYv.put("pieceFileMIMEType", "TEXT");
-    localStringBuilder.append(" pieceFileMIMEType TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "removeDirtyBit";
-    locala.EYv.put("removeDirtyBit", "INTEGER");
-    localStringBuilder.append(" removeDirtyBit INTEGER");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    elV = "status".hashCode();
+    eVz = "sceneFlag".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -86,11 +47,11 @@ public abstract class ek
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eQj != k) {
+      if (enO != k) {
         break label65;
       }
-      this.field_musicId = paramCursor.getString(i);
-      this.ePA = true;
+      this.field_appId = paramCursor.getString(i);
+      this.enx = true;
     }
     for (;;)
     {
@@ -98,18 +59,16 @@ public abstract class ek
       break label20;
       break;
       label65:
-      if (eSB == k) {
-        this.field_musicUrl = paramCursor.getString(i);
-      } else if (eDj == k) {
-        this.field_fileName = paramCursor.getString(i);
-      } else if (eSC == k) {
-        this.field_indexBitData = paramCursor.getBlob(i);
-      } else if (eSD == k) {
-        this.field_fileCacheComplete = paramCursor.getInt(i);
-      } else if (eSE == k) {
-        this.field_pieceFileMIMEType = paramCursor.getString(i);
-      } else if (eSF == k) {
-        this.field_removeDirtyBit = paramCursor.getInt(i);
+      if (epR == k) {
+        this.field_packageName = paramCursor.getString(i);
+      } else if (elV == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (eVz == k) {
+        this.field_sceneFlag = paramCursor.getInt(i);
+      } else if (eVA == k) {
+        this.field_msgTypeFlag = paramCursor.getInt(i);
+      } else if (eVB == k) {
+        this.field_msgState = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -119,26 +78,23 @@ public abstract class ek
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ePA) {
-      localContentValues.put("musicId", this.field_musicId);
+    if (this.enx) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.eSw) {
-      localContentValues.put("musicUrl", this.field_musicUrl);
+    if (this.epv) {
+      localContentValues.put("packageName", this.field_packageName);
     }
-    if (this.eCG) {
-      localContentValues.put("fileName", this.field_fileName);
+    if (this.elS) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eSx) {
-      localContentValues.put("indexBitData", this.field_indexBitData);
+    if (this.eVw) {
+      localContentValues.put("sceneFlag", Integer.valueOf(this.field_sceneFlag));
     }
-    if (this.eSy) {
-      localContentValues.put("fileCacheComplete", Integer.valueOf(this.field_fileCacheComplete));
+    if (this.eVx) {
+      localContentValues.put("msgTypeFlag", Integer.valueOf(this.field_msgTypeFlag));
     }
-    if (this.eSz) {
-      localContentValues.put("pieceFileMIMEType", this.field_pieceFileMIMEType);
-    }
-    if (this.eSA) {
-      localContentValues.put("removeDirtyBit", Integer.valueOf(this.field_removeDirtyBit));
+    if (this.eVy) {
+      localContentValues.put("msgState", Integer.valueOf(this.field_msgState));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

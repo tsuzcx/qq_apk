@@ -4,7 +4,7 @@ import rx.d.c;
 
 public abstract class b<T>
 {
-  public final d.c<T, T> jjV = new d.c() {};
+  public final d.c<T, T> jKi = new d.c() {};
 }
 
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tbs.reader.ITbsReaderCallback;
 import com.tencent.tbs.reader.TbsFileInterfaceImpl;
 import java.util.Map;
 
@@ -84,10 +85,35 @@ public class TbsOneFileOpenManager
     AppMethodBeat.o(54341);
   }
   
-  public int openFile(Context paramContext, Bundle paramBundle, ValueCallback<String> paramValueCallback)
+  public int openFile(Context paramContext, Bundle paramBundle, final ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(54338);
-    paramValueCallback = new TbsOneFileOpenManager.1(this, paramValueCallback);
+    paramValueCallback = new ITbsReaderCallback()
+    {
+      public void onCallBackAction(Integer paramAnonymousInteger, Object paramAnonymousObject1, Object paramAnonymousObject2)
+      {
+        AppMethodBeat.i(54321);
+        if (paramValueCallback == null)
+        {
+          AppMethodBeat.o(54321);
+          return;
+        }
+        if (10 == paramAnonymousInteger.intValue()) {
+          paramValueCallback.onReceiveValue("plugin success");
+        }
+        for (;;)
+        {
+          if (13 == paramAnonymousInteger.intValue()) {
+            paramValueCallback.onReceiveValue((String)paramAnonymousObject1);
+          }
+          AppMethodBeat.o(54321);
+          return;
+          if (11 == paramAnonymousInteger.intValue()) {
+            paramValueCallback.onReceiveValue("plugin failed");
+          }
+        }
+      }
+    };
     int i = TbsFileInterfaceImpl.getInstance().openFileReader(paramContext, paramBundle, paramValueCallback, null);
     AppMethodBeat.o(54338);
     return i;

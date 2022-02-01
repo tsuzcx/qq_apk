@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.f.c;
 import com.tencent.e.i.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -14,17 +14,17 @@ public final class a
 {
   private long cacheSize;
   private boolean isStop;
-  private LinkedList<String> npF;
-  private a npG;
+  private LinkedList<String> nSF;
+  private a nSG;
   
   public a(LinkedList<String> paramLinkedList, long paramLong, a parama)
   {
-    AppMethodBeat.i(191156);
-    this.npF = paramLinkedList;
+    AppMethodBeat.i(195962);
+    this.nSF = paramLinkedList;
     this.cacheSize = paramLong;
-    this.npG = parama;
-    ad.d("MicroMsg.CleanCacheTask", "%d clean cache [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.npF.size()) });
-    AppMethodBeat.o(191156);
+    this.nSG = parama;
+    ac.d("MicroMsg.CleanCacheTask", "%d clean cache [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.nSF.size()) });
+    AppMethodBeat.o(195962);
   }
   
   public final String getKey()
@@ -34,31 +34,31 @@ public final class a
   
   public final void run()
   {
-    AppMethodBeat.i(191157);
+    AppMethodBeat.i(195963);
     if (this.isStop)
     {
-      AppMethodBeat.o(191157);
+      AppMethodBeat.o(195963);
       return;
     }
-    long l = bt.GC();
-    Object localObject = this.npF.iterator();
+    long l = bs.Gn();
+    Object localObject = this.nSF.iterator();
     while (((Iterator)localObject).hasNext()) {
-      i.cO((String)((Iterator)localObject).next(), true);
+      i.cU((String)((Iterator)localObject).next(), true);
     }
-    l = bt.aS(l);
-    ad.d("MicroMsg.CleanCacheTask", "%d clean cache costTime[%d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(l) });
+    l = bs.aO(l);
+    ac.d("MicroMsg.CleanCacheTask", "%d clean cache costTime[%d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(l) });
     localObject = new StringBuffer();
     ((StringBuffer)localObject).append("0,0,0,0,0,0,0,0,0,0,0,0,").append(this.cacheSize);
-    h.vKh.kvStat(14762, ((StringBuffer)localObject).toString());
-    if (this.npG != null) {
-      this.npG.bHn();
+    h.wUl.kvStat(14762, ((StringBuffer)localObject).toString());
+    if (this.nSG != null) {
+      this.nSG.bOA();
     }
-    AppMethodBeat.o(191157);
+    AppMethodBeat.o(195963);
   }
   
   public static abstract interface a
   {
-    public abstract void bHn();
+    public abstract void bOA();
   }
 }
 

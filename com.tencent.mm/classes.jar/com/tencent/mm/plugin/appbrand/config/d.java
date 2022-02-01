@@ -4,38 +4,38 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class d
   extends j<c>
 {
-  public static final String[] gLs;
-  public final e iMV;
+  public static final String[] hlS;
+  public final e jnc;
   
   static
   {
     AppMethodBeat.i(146960);
-    gLs = new String[] { j.getCreateSQLs(c.gLr, "AppBrandCommonKVData") };
+    hlS = new String[] { j.getCreateSQLs(c.hlR, "AppBrandCommonKVData") };
     AppMethodBeat.o(146960);
   }
   
   public d(e parame)
   {
-    super(parame, c.gLr, "AppBrandCommonKVData", null);
-    this.iMV = parame;
+    super(parame, c.hlR, "AppBrandCommonKVData", null);
+    this.jnc = parame;
   }
   
-  public final void FM(String paramString)
+  public final void JQ(String paramString)
   {
     AppMethodBeat.i(146959);
     super.execSQL("AppBrandCommonKVData", String.format("delete from %s where %s like '%s%%'", new Object[] { "AppBrandCommonKVData", "key", paramString }));
     AppMethodBeat.o(146959);
   }
   
-  public final boolean cl(String paramString1, String paramString2)
+  public final boolean cv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146956);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(146956);
       return false;
@@ -43,7 +43,7 @@ public final class d
     c localc = new c();
     localc.field_key = paramString1;
     localc.field_value = paramString2;
-    if (bt.isNullOrNil(localc.field_value))
+    if (bs.isNullOrNil(localc.field_value))
     {
       if (!super.delete(localc, new String[0]))
       {
@@ -61,7 +61,7 @@ public final class d
   public final String get(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146957);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(146957);
       return paramString2;
@@ -78,10 +78,10 @@ public final class d
     return paramString2;
   }
   
-  public final boolean vv(String paramString)
+  public final boolean zB(String paramString)
   {
     AppMethodBeat.i(146958);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(146958);
       return false;

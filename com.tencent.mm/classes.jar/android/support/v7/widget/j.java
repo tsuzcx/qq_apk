@@ -19,13 +19,13 @@ import android.widget.ProgressBar;
 
 class j
 {
-  private static final int[] acT = { 16843067, 16843068 };
-  private final ProgressBar ahN;
-  Bitmap ahO;
+  private static final int[] adN = { 16843067, 16843068 };
+  private final ProgressBar aiH;
+  Bitmap aiI;
   
   j(ProgressBar paramProgressBar)
   {
-    this.ahN = paramProgressBar;
+    this.aiH = paramProgressBar;
   }
   
   private Drawable b(Drawable paramDrawable, boolean paramBoolean)
@@ -33,7 +33,7 @@ class j
     int j = 0;
     if ((paramDrawable instanceof f))
     {
-      localObject1 = ((f)paramDrawable).dZ();
+      localObject1 = ((f)paramDrawable).ek();
       if (localObject1 != null)
       {
         localObject1 = b((Drawable)localObject1, paramBoolean);
@@ -73,8 +73,8 @@ class j
     } while (!(paramDrawable instanceof BitmapDrawable));
     paramDrawable = (BitmapDrawable)paramDrawable;
     Object localObject2 = paramDrawable.getBitmap();
-    if (this.ahO == null) {
-      this.ahO = ((Bitmap)localObject2);
+    if (this.aiI == null) {
+      this.aiI = ((Bitmap)localObject2);
     }
     Object localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F }, null, null));
     localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
@@ -88,11 +88,11 @@ class j
   
   void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    az localaz = az.a(this.ahN.getContext(), paramAttributeSet, acT, paramInt, 0);
-    Object localObject = localaz.db(0);
+    az localaz = az.a(this.aiH.getContext(), paramAttributeSet, adN, paramInt, 0);
+    Object localObject = localaz.da(0);
     if (localObject != null)
     {
-      ProgressBar localProgressBar = this.ahN;
+      ProgressBar localProgressBar = this.aiH;
       paramAttributeSet = (AttributeSet)localObject;
       if ((localObject instanceof AnimationDrawable))
       {
@@ -112,11 +112,11 @@ class j
       }
       localProgressBar.setIndeterminateDrawable(paramAttributeSet);
     }
-    paramAttributeSet = localaz.db(1);
+    paramAttributeSet = localaz.da(1);
     if (paramAttributeSet != null) {
-      this.ahN.setProgressDrawable(b(paramAttributeSet, false));
+      this.aiH.setProgressDrawable(b(paramAttributeSet, false));
     }
-    localaz.avP.recycle();
+    localaz.awJ.recycle();
   }
 }
 

@@ -17,8 +17,8 @@ import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.network.b;
 import com.tencent.mm.network.v;
 import com.tencent.mm.network.y;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import javax.net.ssl.HttpsURLConnection;
 
@@ -47,7 +47,7 @@ public class MMKImage
       if (!paramString.startsWith("file://")) {
         break label72;
       }
-      this.imageBitmap = f.aFi(paramString.replaceFirst("file://", ""));
+      this.imageBitmap = f.aKz(paramString.replaceFirst("file://", ""));
     }
     for (;;)
     {
@@ -75,19 +75,19 @@ public class MMKImage
       }
       else
       {
-        this.localResId = ResourcesUtils.getDrawableId(aj.getContext(), paramString);
+        this.localResId = ResourcesUtils.getDrawableId(ai.getContext(), paramString);
         if ((this.localResId == 0) || (this.isSvgUrl))
         {
-          int i = ResourcesUtils.getResId(aj.getContext(), paramString, "raw");
+          int i = ResourcesUtils.getResId(ai.getContext(), paramString, "raw");
           if (i != 0) {
             this.localResId = i;
           }
         }
-        this.imageBitmap = BitmapFactory.decodeResource(aj.getContext().getResources(), this.localResId);
+        this.imageBitmap = BitmapFactory.decodeResource(ai.getContext().getResources(), this.localResId);
         if (this.imageBitmap == null) {
           try
           {
-            this.drawable = aj.getContext().getResources().getDrawable(this.localResId);
+            this.drawable = ai.getContext().getResources().getDrawable(this.localResId);
           }
           catch (Resources.NotFoundException paramString) {}
         }
@@ -98,7 +98,7 @@ public class MMKImage
   private Bitmap getImageFromNet(String paramString)
   {
     AppMethodBeat.i(19049);
-    if (!bt.isNullOrNil(paramString)) {
+    if (!bs.isNullOrNil(paramString)) {
       if (paramString.startsWith("http://"))
       {
         paramString = b.a(paramString, null);
@@ -120,11 +120,11 @@ public class MMKImage
         return paramString;
         if (paramString.startsWith("https://"))
         {
-          paramString = b.AZ(paramString);
+          paramString = b.Fe(paramString);
           paramString.setConnectTimeout(10000);
           paramString.setReadTimeout(20000);
-          paramString.hMh.setRequestMethod("GET");
-          paramString = paramString.hMh.getInputStream();
+          paramString.imE.setRequestMethod("GET");
+          paramString = paramString.imE.getInputStream();
         }
       }
       else
@@ -151,7 +151,7 @@ public class MMKImage
   public Bitmap getBitmap()
   {
     AppMethodBeat.i(19047);
-    if ((!bt.isNullOrNil(this.url)) && (this.imageBitmap == null) && (!this.isNetworkImage)) {
+    if ((!bs.isNullOrNil(this.url)) && (this.imageBitmap == null) && (!this.isNetworkImage)) {
       createBitmapOrDrawableFromUrl(this.url);
     }
     Bitmap localBitmap = this.imageBitmap;
@@ -162,13 +162,13 @@ public class MMKImage
   public Drawable getDrawable()
   {
     AppMethodBeat.i(19048);
-    if ((!bt.isNullOrNil(this.url)) && ((this.imageBitmap == null) || (this.drawable == null)) && (!this.isNetworkImage)) {
+    if ((!bs.isNullOrNil(this.url)) && ((this.imageBitmap == null) || (this.drawable == null)) && (!this.isNetworkImage)) {
       createBitmapOrDrawableFromUrl(this.url);
     }
     Object localObject;
     if (this.imageBitmap != null)
     {
-      localObject = new BitmapDrawable(aj.getContext().getResources(), this.imageBitmap);
+      localObject = new BitmapDrawable(ai.getContext().getResources(), this.imageBitmap);
       AppMethodBeat.o(19048);
       return localObject;
     }
@@ -261,7 +261,7 @@ public class MMKImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKImage
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,15 @@ import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 
 public final class t
-  implements u
 {
-  IOException bnF;
-  final ExecutorService bxr;
-  b<? extends c> bxs;
+  IOException bni;
+  final ExecutorService bva;
+  b<? extends c> bvb;
   
   public t(String paramString)
   {
     AppMethodBeat.i(93096);
-    this.bxr = x.aS(paramString);
+    this.bva = x.aL(paramString);
     AppMethodBeat.o(93096);
   }
   
@@ -45,25 +44,25 @@ public final class t
     AppMethodBeat.i(93099);
     boolean bool2 = false;
     boolean bool1;
-    if (this.bxs != null)
+    if (this.bvb != null)
     {
-      this.bxs.cancel(true);
+      this.bvb.cancel(true);
       bool1 = bool2;
       if (paramd != null)
       {
-        this.bxr.execute(new e(paramd));
+        this.bva.execute(new e(paramd));
         bool1 = bool2;
       }
     }
     for (;;)
     {
-      this.bxr.shutdown();
+      this.bva.shutdown();
       AppMethodBeat.o(93099);
       return bool1;
       bool1 = bool2;
       if (paramd != null)
       {
-        paramd.tI();
+        paramd.tQ();
         bool1 = true;
       }
     }
@@ -72,13 +71,13 @@ public final class t
   public final void cancelLoading()
   {
     AppMethodBeat.i(93098);
-    this.bxs.cancel(false);
+    this.bvb.cancel(false);
     AppMethodBeat.o(93098);
   }
   
   public final boolean isLoading()
   {
-    return this.bxs != null;
+    return this.bvb != null;
   }
   
   public static abstract interface a<T extends t.c>
@@ -95,43 +94,43 @@ public final class t
     extends Handler
     implements Runnable
   {
-    private final T bxt;
-    private final t.a<T> bxu;
-    public final int bxv;
-    private final long bxw;
-    private IOException bxx;
-    private int bxy;
-    private volatile Thread bxz;
+    private final T bvc;
+    private final t.a<T> bvd;
+    public final int bve;
+    private final long bvf;
+    private IOException bvg;
+    private int bvh;
+    private volatile Thread bvi;
     private volatile boolean released;
     
     public b(T paramT, t.a<T> parama, int paramInt, long paramLong)
     {
       super();
-      this.bxt = parama;
-      this.bxu = paramInt;
-      this.bxv = paramLong;
+      this.bvc = parama;
+      this.bvd = paramInt;
+      this.bve = paramLong;
       Object localObject;
-      this.bxw = localObject;
+      this.bvf = localObject;
     }
     
     private void execute()
     {
       AppMethodBeat.i(93092);
-      this.bxx = null;
-      t.this.bxr.execute(t.this.bxs);
+      this.bvg = null;
+      t.this.bva.execute(t.this.bvb);
       AppMethodBeat.o(93092);
     }
     
     private void finish()
     {
-      t.this.bxs = null;
+      t.this.bvb = null;
     }
     
     public final void cancel(boolean paramBoolean)
     {
       AppMethodBeat.i(93089);
       this.released = paramBoolean;
-      this.bxx = null;
+      this.bvg = null;
       if (hasMessages(0))
       {
         removeMessages(0);
@@ -145,13 +144,13 @@ public final class t
         {
           finish();
           long l = SystemClock.elapsedRealtime();
-          this.bxu.a(this.bxt, l, l - this.bxw, true);
+          this.bvd.a(this.bvc, l, l - this.bvf, true);
         }
         AppMethodBeat.o(93089);
         return;
-        this.bxt.tN();
-        if (this.bxz != null) {
-          this.bxz.interrupt();
+        this.bvc.tV();
+        if (this.bvi != null) {
+          this.bvi.interrupt();
         }
       }
     }
@@ -178,10 +177,10 @@ public final class t
       }
       finish();
       long l1 = SystemClock.elapsedRealtime();
-      long l2 = l1 - this.bxw;
-      if (this.bxt.tO())
+      long l2 = l1 - this.bvf;
+      if (this.bvc.tW())
       {
-        this.bxu.a(this.bxt, l1, l2, false);
+        this.bvd.a(this.bvc, l1, l2, false);
         AppMethodBeat.o(93091);
         return;
       }
@@ -192,26 +191,26 @@ public final class t
       {
         AppMethodBeat.o(93091);
         return;
-        this.bxu.a(this.bxt, l1, l2, false);
+        this.bvd.a(this.bvc, l1, l2, false);
         AppMethodBeat.o(93091);
         return;
-        this.bxu.a(this.bxt, l1, l2);
+        this.bvd.a(this.bvc, l1, l2);
         AppMethodBeat.o(93091);
         return;
-        this.bxx = ((IOException)paramMessage.obj);
-        i = this.bxu.a(this.bxt, l1, l2, this.bxx);
+        this.bvg = ((IOException)paramMessage.obj);
+        i = this.bvd.a(this.bvc, l1, l2, this.bvg);
         if (i == 3)
         {
-          t.this.bnF = this.bxx;
+          t.this.bni = this.bvg;
           AppMethodBeat.o(93091);
           return;
         }
       } while (i == 2);
       if (i == 1) {}
-      for (int i = 1;; i = this.bxy + 1)
+      for (int i = 1;; i = this.bvh + 1)
       {
-        this.bxy = i;
-        start(Math.min((this.bxy - 1) * 1000, 5000));
+        this.bvh = i;
+        start(Math.min((this.bvh - 1) * 1000, 5000));
         break;
       }
     }
@@ -224,9 +223,9 @@ public final class t
       //   2: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
       //   6: invokestatic 174	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-      //   9: putfield 114	com/google/android/exoplayer2/h/t$b:bxz	Ljava/lang/Thread;
+      //   9: putfield 114	com/google/android/exoplayer2/h/t$b:bvi	Ljava/lang/Thread;
       //   12: aload_0
-      //   13: getfield 41	com/google/android/exoplayer2/h/t$b:bxt	Lcom/google/android/exoplayer2/h/t$c;
+      //   13: getfield 41	com/google/android/exoplayer2/h/t$b:bvc	Lcom/google/android/exoplayer2/h/t$c;
       //   16: invokeinterface 139 1 0
       //   21: ifne +43 -> 64
       //   24: new 176	java/lang/StringBuilder
@@ -234,14 +233,14 @@ public final class t
       //   28: ldc 178
       //   30: invokespecial 181	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   33: aload_0
-      //   34: getfield 41	com/google/android/exoplayer2/h/t$b:bxt	Lcom/google/android/exoplayer2/h/t$c;
+      //   34: getfield 41	com/google/android/exoplayer2/h/t$b:bvc	Lcom/google/android/exoplayer2/h/t$c;
       //   37: invokevirtual 187	java/lang/Object:getClass	()Ljava/lang/Class;
       //   40: invokevirtual 193	java/lang/Class:getSimpleName	()Ljava/lang/String;
       //   43: invokevirtual 197	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   46: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   49: invokestatic 205	com/google/android/exoplayer2/i/v:beginSection	(Ljava/lang/String;)V
       //   52: aload_0
-      //   53: getfield 41	com/google/android/exoplayer2/h/t$b:bxt	Lcom/google/android/exoplayer2/h/t$c;
+      //   53: getfield 41	com/google/android/exoplayer2/h/t$b:bvc	Lcom/google/android/exoplayer2/h/t$c;
       //   56: invokeinterface 208 1 0
       //   61: invokestatic 211	com/google/android/exoplayer2/i/v:endSection	()V
       //   64: aload_0
@@ -274,7 +273,7 @@ public final class t
       //   116: return
       //   117: astore_1
       //   118: aload_0
-      //   119: getfield 41	com/google/android/exoplayer2/h/t$b:bxt	Lcom/google/android/exoplayer2/h/t$c;
+      //   119: getfield 41	com/google/android/exoplayer2/h/t$b:bvc	Lcom/google/android/exoplayer2/h/t$c;
       //   122: invokeinterface 139 1 0
       //   127: invokestatic 223	com/google/android/exoplayer2/i/a:checkState	(Z)V
       //   130: aload_0
@@ -367,11 +366,11 @@ public final class t
     public final void start(long paramLong)
     {
       AppMethodBeat.i(93088);
-      if (t.this.bxs == null) {}
+      if (t.this.bvb == null) {}
       for (boolean bool = true;; bool = false)
       {
         a.checkState(bool);
-        t.this.bxs = this;
+        t.this.bvb = this;
         if (paramLong <= 0L) {
           break;
         }
@@ -386,33 +385,33 @@ public final class t
   
   public static abstract interface c
   {
-    public abstract void tN();
+    public abstract void tV();
     
-    public abstract boolean tO();
+    public abstract boolean tW();
     
-    public abstract void tP();
+    public abstract void tX();
   }
   
   public static abstract interface d
   {
-    public abstract void tI();
+    public abstract void tQ();
   }
   
   static final class e
     extends Handler
     implements Runnable
   {
-    private final t.d bxB;
+    private final t.d bvk;
     
     public e(t.d paramd)
     {
-      this.bxB = paramd;
+      this.bvk = paramd;
     }
     
     public final void handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(93094);
-      this.bxB.tI();
+      this.bvk.tQ();
       AppMethodBeat.o(93094);
     }
     

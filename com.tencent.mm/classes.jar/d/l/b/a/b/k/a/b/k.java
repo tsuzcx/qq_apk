@@ -26,12 +26,12 @@ public final class k
   extends ae
   implements c
 {
-  private final i JUG;
-  private final f JUH;
-  private g.a JVD;
-  private final a.h JWn;
-  private final d.l.b.a.b.e.b.c Jiu;
-  private final h Jiv;
+  private final d.l.b.a.b.e.b.c KVO;
+  private final h KVP;
+  private final i LHZ;
+  private g.a LIW;
+  private final f LIa;
+  private final a.h LJG;
   
   private k(l paraml, am paramam, g paramg, d.l.b.a.b.f.f paramf, b.a parama, a.h paramh, d.l.b.a.b.e.b.c paramc, h paramh1, i parami, f paramf1, an paraman) {}
   
@@ -44,7 +44,7 @@ public final class k
     d.g.b.k.h(paramMap, "userDataMap");
     d.g.b.k.h(parama, "isExperimentalCoroutineInReleaseEnvironment");
     paramak1 = super.a(paramak1, paramak2, paramList, paramList1, paramab, paramw, paramba, paramMap);
-    this.JVD = parama;
+    this.LIW = parama;
     d.g.b.k.g(paramak1, "super.initialize(\n      …easeEnvironment\n        }");
     AppMethodBeat.o(60478);
     return paramak1;
@@ -60,13 +60,13 @@ public final class k
     am localam = (am)paramt;
     if (paramf == null)
     {
-      paramt = fyB();
+      paramt = fRf();
       d.g.b.k.g(paramt, "name");
     }
     for (;;)
     {
-      paraml = new k(paraml, localam, paramg, paramt, parama, this.JWn, this.Jiu, this.Jiv, this.JUG, this.JUH, paraman);
-      paraml.JVD = this.JVD;
+      paraml = new k(paraml, localam, paramg, paramt, parama, this.LJG, this.KVO, this.KVP, this.LHZ, this.LIa, paraman);
+      paraml.LIW = this.LIW;
       paraml = (p)paraml;
       AppMethodBeat.o(60479);
       return paraml;
@@ -74,19 +74,19 @@ public final class k
     }
   }
   
-  public final d.l.b.a.b.e.b.c fJC()
+  public final d.l.b.a.b.e.b.c gcf()
   {
-    return this.Jiu;
+    return this.KVO;
   }
   
-  public final h fJD()
+  public final h gcg()
   {
-    return this.Jiv;
+    return this.KVP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.b.k
  * JD-Core Version:    0.7.0.1
  */

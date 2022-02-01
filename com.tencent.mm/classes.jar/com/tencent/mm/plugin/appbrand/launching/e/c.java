@@ -10,39 +10,39 @@ import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.quality.f;
 import com.tencent.mm.plugin.appbrand.report.quality.n;
-import com.tencent.mm.plugin.appbrand.report.t;
+import com.tencent.mm.plugin.appbrand.report.s;
 import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
 import com.tencent.mm.plugin.appbrand.ui.r;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class c
   extends a
   implements g
 {
-  int jun;
-  private LaunchParcel kOA;
+  int jUI;
+  private LaunchParcel lpZ;
   private Intent mIntent;
   
   public c(AppBrandLaunchProxyUI paramAppBrandLaunchProxyUI)
   {
     AppMethodBeat.i(47439);
-    this.jun = 0;
+    this.jUI = 0;
     setBaseContext(paramAppBrandLaunchProxyUI);
-    this.kOp = false;
+    this.lpO = false;
     AppMethodBeat.o(47439);
   }
   
-  private void bho()
+  private void boi()
   {
     AppMethodBeat.i(47445);
-    if ((isFinishing()) || (bhm()))
+    if ((isFinishing()) || (bog()))
     {
       AppMethodBeat.o(47445);
       return;
     }
-    super.bhk();
+    super.boe();
     AppMethodBeat.o(47445);
   }
   
@@ -63,22 +63,22 @@ public final class c
       AppMethodBeat.o(47440);
       return;
     }
-    this.kOA = localLaunchParcel;
+    this.lpZ = localLaunchParcel;
     Object localObject1 = localLaunchParcel.appId;
     paramIntent = (Intent)localObject1;
-    if (bt.isNullOrNil((String)localObject1)) {
+    if (bs.isNullOrNil((String)localObject1)) {
       paramIntent = h.a(localLaunchParcel);
     }
     localObject1 = com.tencent.mm.plugin.appbrand.utils.a.c(localLaunchParcel, paramIntent);
     f.a(localLaunchParcel, (String)localObject1, paramIntent);
-    Object localObject2 = t.lqn;
-    t.b(localLaunchParcel, (String)localObject1);
-    if (n.bmY())
+    Object localObject2 = s.lSi;
+    s.b(localLaunchParcel, (String)localObject1);
+    if (n.btU())
     {
-      localObject2 = n.lut;
-      n.dQ(paramIntent, (String)localObject1);
+      localObject2 = n.lWn;
+      n.ec(paramIntent, (String)localObject1);
       com.tencent.mm.plugin.appbrand.keylogger.c.a(KSProcessWeAppLaunch.class, paramIntent);
-      com.tencent.mm.plugin.appbrand.keylogger.c.a(KSProcessWeAppLaunch.class, paramIntent, String.format("Network:%s", new Object[] { ay.getNetTypeString(this) }));
+      com.tencent.mm.plugin.appbrand.keylogger.c.a(KSProcessWeAppLaunch.class, paramIntent, String.format("Network:%s", new Object[] { ax.getNetTypeString(this) }));
     }
     a(localLaunchParcel, (String)localObject1);
     AppMethodBeat.o(47440);
@@ -87,17 +87,17 @@ public final class c
   protected final void b(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(47444);
-    if ((this.kOA != null) && (this.kOA.kOl != null))
+    if ((this.lpZ != null) && (this.lpZ.lpK != null))
     {
       Bundle localBundle = new Bundle();
       localBundle.putParcelable("KEY_PRECONDITION_RESULT", paramAppBrandInitConfigWC);
-      this.kOA.kOl.b(localBundle);
+      this.lpZ.lpK.b(localBundle);
     }
     super.b(paramAppBrandInitConfigWC, paramAppBrandStatObject);
     AppMethodBeat.o(47444);
   }
   
-  public final boolean bhn()
+  public final boolean boh()
   {
     return true;
   }
@@ -107,7 +107,7 @@ public final class c
     AppMethodBeat.i(47438);
     try
     {
-      Class localClass = Class.forName(bt.nullAsNil(this.mIntent.getStringExtra("extra_launch_source_context")));
+      Class localClass = Class.forName(bs.nullAsNil(this.mIntent.getStringExtra("extra_launch_source_context")));
       if ((localClass != null) && (AppBrandUI.class.isAssignableFrom(localClass)))
       {
         AppMethodBeat.o(47438);
@@ -129,31 +129,31 @@ public final class c
   public final void onDestroy()
   {
     AppMethodBeat.i(47443);
-    super.bhi();
+    super.boc();
     AppMethodBeat.o(47443);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(47442);
-    bho();
+    boi();
     AppMethodBeat.o(47442);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(47441);
-    int i = this.jun + 1;
-    this.jun = i;
+    int i = this.jUI + 1;
+    this.jUI = i;
     if (i > 1) {
-      bho();
+      boi();
     }
     AppMethodBeat.o(47441);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.e.c
  * JD-Core Version:    0.7.0.1
  */

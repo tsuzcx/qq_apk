@@ -5,30 +5,30 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class StorySettingsUI$s
   implements View.OnClickListener
 {
-  public static final s yqq;
+  public static final s zDO;
   
   static
   {
     AppMethodBeat.i(119689);
-    yqq = new s();
+    zDO = new s();
     AppMethodBeat.o(119689);
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(119688);
-    paramView = g.afB();
+    paramView = g.agR();
     k.g(paramView, "MMKernel.storage()");
-    paramView.afk().set(ae.a.FuP, Integer.valueOf(0));
+    paramView.agA().set(ah.a.GSJ, Integer.valueOf(0));
     AppMethodBeat.o(119688);
   }
 }

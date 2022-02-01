@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class gd
   extends b
 {
-  public a djg;
+  public a dgz;
   
   public gd()
   {
@@ -16,19 +15,16 @@ public final class gd
   
   private gd(byte paramByte)
   {
-    AppMethodBeat.i(63288);
-    this.djg = new a();
-    this.ESR = false;
+    AppMethodBeat.i(63287);
+    this.dgz = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(63288);
+    AppMethodBeat.o(63287);
   }
   
   public static final class a
   {
-    public String djh;
-    public int dji = 0;
-    public Activity djj;
-    public int mRequestCode;
+    public boolean dgA;
   }
 }
 

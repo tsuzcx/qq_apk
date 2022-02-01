@@ -10,7 +10,7 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 import com.tencent.scanlib.ui.ScanCodeView;
 import com.tencent.scanlib.ui.ScanCodeView.a;
 
@@ -18,7 +18,7 @@ import com.tencent.scanlib.ui.ScanCodeView.a;
 public class ScanSampleActivity
   extends MMActivity
 {
-  private ScanCodeView vTU;
+  private ScanCodeView xeF;
   
   public int getLayoutId()
   {
@@ -28,10 +28,10 @@ public class ScanSampleActivity
   public void initView()
   {
     AppMethodBeat.i(91053);
-    this.vTU = ((ScanCodeView)findViewById(2131304344));
-    this.vTU.setScanCallBack(new ScanCodeView.a()
+    this.xeF = ((ScanCodeView)findViewById(2131304344));
+    this.xeF.setScanCallBack(new ScanCodeView.a()
     {
-      public final void ad(Bundle paramAnonymousBundle)
+      public final void ai(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(91051);
         paramAnonymousBundle = paramAnonymousBundle.getString("result_content", "");
@@ -41,7 +41,7 @@ public class ScanSampleActivity
         AppMethodBeat.o(91051);
       }
     });
-    this.vTU.onCreate();
+    this.xeF.onCreate();
     overridePendingTransition(2130771986, 2130771986);
     AppMethodBeat.o(91053);
   }
@@ -68,7 +68,7 @@ public class ScanSampleActivity
   {
     AppMethodBeat.i(91057);
     super.onDestroy();
-    this.vTU.onDestroy();
+    this.xeF.onDestroy();
     AppMethodBeat.o(91057);
   }
   
@@ -76,7 +76,7 @@ public class ScanSampleActivity
   {
     AppMethodBeat.i(91055);
     super.onPause();
-    this.vTU.onPause();
+    this.xeF.onPause();
     AppMethodBeat.o(91055);
   }
   
@@ -84,7 +84,7 @@ public class ScanSampleActivity
   {
     AppMethodBeat.i(91054);
     super.onResume();
-    this.vTU.onResume();
+    this.xeF.onResume();
     AppMethodBeat.o(91054);
   }
   
@@ -92,7 +92,7 @@ public class ScanSampleActivity
   {
     AppMethodBeat.i(91056);
     super.onStop();
-    this.vTU.onStop();
+    this.xeF.onStop();
     AppMethodBeat.o(91056);
   }
   
@@ -104,7 +104,7 @@ public class ScanSampleActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ScanSampleActivity
  * JD-Core Version:    0.7.0.1
  */

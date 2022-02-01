@@ -10,7 +10,7 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.f.b;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.widget.a.d.a;
 
@@ -18,14 +18,14 @@ import com.tencent.mm.ui.widget.a.d.a;
 public class FileDownloadConfirmUI
   extends MMBaseActivity
 {
-  private com.tencent.mm.ui.widget.a.d hRe = null;
+  private com.tencent.mm.ui.widget.a.d iri = null;
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(89126);
     super.onCreate(paramBundle);
     setContentView(2131493834);
-    if (com.tencent.mm.compatible.util.d.lf(21)) {
+    if (com.tencent.mm.compatible.util.d.kZ(21)) {
       getWindow().setStatusBarColor(0);
     }
     final long l = getIntent().getLongExtra("extra_download_id", -1L);
@@ -34,8 +34,8 @@ public class FileDownloadConfirmUI
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(89124);
-        f.bQt().og(l);
-        ad.i("MicroMsg.FileDownloadConfirmUI", "Remove task: %d", new Object[] { Long.valueOf(l) });
+        f.bXJ().rS(l);
+        ac.i("MicroMsg.FileDownloadConfirmUI", "Remove task: %d", new Object[] { Long.valueOf(l) });
         AppMethodBeat.o(89124);
       }
     };
@@ -53,28 +53,28 @@ public class FileDownloadConfirmUI
       }
     };
     d.a locala = new d.a(this);
-    locala.aMf("");
-    locala.aay(2131759048);
-    locala.aaB(2131755939).b(paramBundle);
-    locala.aaC(2131755831).c((DialogInterface.OnClickListener)localObject);
+    locala.aRH("");
+    locala.acJ(2131759048);
+    locala.acM(2131755939).b(paramBundle);
+    locala.acN(2131755831).c((DialogInterface.OnClickListener)localObject);
     locala.a(local3);
-    this.hRe = locala.fft();
-    this.hRe.show();
-    paramBundle = com.tencent.mm.plugin.downloader.model.d.oq(l);
+    this.iri = locala.fvp();
+    this.iri.show();
+    paramBundle = com.tencent.mm.plugin.downloader.model.d.sc(l);
     if (paramBundle != null)
     {
       localObject = new b();
       ((b)localObject).k(paramBundle);
       com.tencent.mm.plugin.downloader.f.a.a(19, (b)localObject);
     }
-    ad.i("MicroMsg.FileDownloadConfirmUI", "Confirm Dialog");
+    ac.i("MicroMsg.FileDownloadConfirmUI", "Confirm Dialog");
     AppMethodBeat.o(89126);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(89127);
-    ad.i("MicroMsg.FileDownloadConfirmUI", "onNewIntent");
+    ac.i("MicroMsg.FileDownloadConfirmUI", "onNewIntent");
     AppMethodBeat.o(89127);
   }
   
@@ -82,7 +82,7 @@ public class FileDownloadConfirmUI
   {
     AppMethodBeat.i(89128);
     super.onStop();
-    this.hRe.dismiss();
+    this.iri.dismiss();
     AppMethodBeat.o(89128);
   }
   

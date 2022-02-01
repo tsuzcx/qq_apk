@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.MMGridPaper;
 import com.tencent.mm.ui.base.i;
 import java.util.ArrayList;
@@ -15,111 +15,111 @@ import java.util.Iterator;
 public final class b
 {
   private Context mContext;
-  private i sQn;
-  private MMGridPaper sQo;
-  private a sQp;
-  private ViewGroup sQq;
-  private RelativeLayout sQr;
-  private ArrayList<String> sQs;
-  private int sQt;
+  private i tYA;
+  private MMGridPaper tYB;
+  private a tYC;
+  private ViewGroup tYD;
+  private RelativeLayout tYE;
+  private ArrayList<String> tYF;
+  private int tYG;
   
   private b(Context paramContext)
   {
     AppMethodBeat.i(55799);
-    this.sQn = null;
-    this.sQo = null;
-    this.sQp = null;
-    this.sQq = null;
-    this.sQr = null;
+    this.tYA = null;
+    this.tYB = null;
+    this.tYC = null;
+    this.tYD = null;
+    this.tYE = null;
     this.mContext = null;
-    this.sQs = null;
-    this.sQt = 0;
+    this.tYF = null;
+    this.tYG = 0;
     this.mContext = paramContext;
-    this.sQn = new i(this.mContext, 2131821760);
-    this.sQq = ((ViewGroup)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131493127, null));
-    this.sQo = ((MMGridPaper)this.sQq.findViewById(2131299121));
-    this.sQo.eSH();
-    this.sQo.setDialogMode(true);
-    this.sQo.eSG();
-    this.sQo.setMaxRow(3);
-    this.sQo.setMaxCol(3);
-    this.sQo.setHeaderView(null);
-    this.sQo.eSH();
-    this.sQo.setItemWidthInDp(70);
-    this.sQo.setItemHeightInDp(70);
-    this.sQn.setCanceledOnTouchOutside(true);
-    this.sQn.setContentView(this.sQq);
-    this.sQp = new a();
-    this.sQo.setGridPaperAdapter(this.sQp);
+    this.tYA = new i(this.mContext, 2131821760);
+    this.tYD = ((ViewGroup)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131493127, null));
+    this.tYB = ((MMGridPaper)this.tYD.findViewById(2131299121));
+    this.tYB.fir();
+    this.tYB.setDialogMode(true);
+    this.tYB.fiq();
+    this.tYB.setMaxRow(3);
+    this.tYB.setMaxCol(3);
+    this.tYB.setHeaderView(null);
+    this.tYB.fir();
+    this.tYB.setItemWidthInDp(70);
+    this.tYB.setItemHeightInDp(70);
+    this.tYA.setCanceledOnTouchOutside(true);
+    this.tYA.setContentView(this.tYD);
+    this.tYC = new a();
+    this.tYB.setGridPaperAdapter(this.tYC);
     AppMethodBeat.o(55799);
   }
   
   public static void d(Context paramContext, ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(55800);
-    ad.d("MicroMsg.AvatarsDialog", "showDialog, username.size = %d", new Object[] { Integer.valueOf(paramArrayList.size()) });
+    ac.d("MicroMsg.AvatarsDialog", "showDialog, username.size = %d", new Object[] { Integer.valueOf(paramArrayList.size()) });
     paramContext = new b(paramContext);
-    paramContext.sQs = new ArrayList();
+    paramContext.tYF = new ArrayList();
     paramArrayList = paramArrayList.iterator();
     String str;
     while (paramArrayList.hasNext())
     {
       str = (String)paramArrayList.next();
-      paramContext.sQs.add(str);
+      paramContext.tYF.add(str);
     }
     int i;
-    if (paramContext.sQs.size() < 3)
+    if (paramContext.tYF.size() < 3)
     {
-      paramContext.sQo.setMaxCol(paramContext.sQs.size());
-      paramArrayList = paramContext.sQo.getLayoutParams();
-      paramContext.sQt = com.tencent.mm.cd.a.fromDPToPix(paramContext.mContext, 70);
-      i = com.tencent.mm.cd.a.fromDPToPix(paramContext.mContext, 8);
-      if (paramContext.sQs.size() <= 0) {
+      paramContext.tYB.setMaxCol(paramContext.tYF.size());
+      paramArrayList = paramContext.tYB.getLayoutParams();
+      paramContext.tYG = com.tencent.mm.cc.a.fromDPToPix(paramContext.mContext, 70);
+      i = com.tencent.mm.cc.a.fromDPToPix(paramContext.mContext, 8);
+      if (paramContext.tYF.size() <= 0) {
         break label443;
       }
-      if (paramContext.sQs.size() >= 3) {
+      if (paramContext.tYF.size() >= 3) {
         break label376;
       }
-      int j = paramContext.sQt;
-      int k = paramContext.sQs.size();
-      i = i * (paramContext.sQs.size() - 1) + j * k;
+      int j = paramContext.tYG;
+      int k = paramContext.tYF.size();
+      i = i * (paramContext.tYF.size() - 1) + j * k;
     }
     for (;;)
     {
       label192:
-      str = BackwardSupportUtil.b.ic(paramContext.mContext);
-      ad.d("MicroMsg.AvatarsDialog", "calculateGridWidth, result = %d, mUsername.size = %d, avatarSize = %d, densityType = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramContext.sQs.size()), Integer.valueOf(paramContext.sQt), str });
+      str = BackwardSupportUtil.b.in(paramContext.mContext);
+      ac.d("MicroMsg.AvatarsDialog", "calculateGridWidth, result = %d, mUsername.size = %d, avatarSize = %d, densityType = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramContext.tYF.size()), Integer.valueOf(paramContext.tYG), str });
       paramArrayList.width = i;
-      paramContext.sQt = com.tencent.mm.cd.a.fromDPToPix(paramContext.mContext, 70);
-      i = com.tencent.mm.cd.a.fromDPToPix(paramContext.mContext, 15);
-      if (paramContext.sQs.size() > 0) {
-        if (paramContext.sQs.size() <= 3)
+      paramContext.tYG = com.tencent.mm.cc.a.fromDPToPix(paramContext.mContext, 70);
+      i = com.tencent.mm.cc.a.fromDPToPix(paramContext.mContext, 15);
+      if (paramContext.tYF.size() > 0) {
+        if (paramContext.tYF.size() <= 3)
         {
-          i += paramContext.sQt;
+          i += paramContext.tYG;
           label303:
-          ad.d("MicroMsg.AvatarsDialog", "calculateGridHeight, result = %d", new Object[] { Integer.valueOf(i) });
+          ac.d("MicroMsg.AvatarsDialog", "calculateGridHeight, result = %d", new Object[] { Integer.valueOf(i) });
         }
       }
       for (;;)
       {
         paramArrayList.height = i;
-        paramContext.sQo.setLayoutParams(paramArrayList);
-        paramContext.sQo.requestLayout();
-        paramContext.sQp.setData(paramContext.sQs);
-        paramContext.sQn.show();
+        paramContext.tYB.setLayoutParams(paramArrayList);
+        paramContext.tYB.requestLayout();
+        paramContext.tYC.setData(paramContext.tYF);
+        paramContext.tYA.show();
         AppMethodBeat.o(55800);
         return;
-        paramContext.sQo.setMaxCol(3);
+        paramContext.tYB.setMaxCol(3);
         break;
         label376:
-        i = i * 2 + paramContext.sQt * 3;
+        i = i * 2 + paramContext.tYG * 3;
         break label192;
-        if (paramContext.sQs.size() <= 6)
+        if (paramContext.tYF.size() <= 6)
         {
-          i += paramContext.sQt * 2;
+          i += paramContext.tYG * 2;
           break label303;
         }
-        i = i * 2 + paramContext.sQt * 3 + com.tencent.mm.cd.a.fromDPToPix(paramContext.mContext, 10);
+        i = i * 2 + paramContext.tYG * 3 + com.tencent.mm.cc.a.fromDPToPix(paramContext.mContext, 10);
         break label303;
         i = 0;
       }

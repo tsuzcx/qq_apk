@@ -9,33 +9,33 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public String AyH;
-  public String AyI;
-  public String AyJ;
-  public String AyK;
-  public int AyL;
-  public boolean AyM;
-  public String AyN;
-  public String AyO;
-  public boolean AyP;
-  public String AyQ;
-  public String dcE;
-  public double dcH;
-  public String dem;
-  public String nSY;
+  public String BRd;
+  public String BRe;
+  public String BRf;
+  public String BRg;
+  public int BRh;
+  public boolean BRi;
+  public String BRj;
+  public String BRk;
+  public boolean BRl;
+  public String BRm;
+  public String dac;
+  public double daf;
+  public String dbI;
+  public String owt;
   public String pin;
   
   public b(String paramString1, String paramString2, String paramString3, double paramDouble, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     AppMethodBeat.i(71963);
     this.pin = paramString1;
-    this.AyH = paramString2;
-    this.dcE = paramString3;
-    this.dcH = paramDouble;
-    this.dem = paramString4;
-    this.AyI = paramString5;
-    this.AyJ = paramString6;
-    this.AyK = paramString7;
+    this.BRd = paramString2;
+    this.dac = paramString3;
+    this.daf = paramDouble;
+    this.dbI = paramString4;
+    this.BRe = paramString5;
+    this.BRf = paramString6;
+    this.BRg = paramString7;
     HashMap localHashMap = new HashMap();
     localHashMap.put("pin", paramString1);
     localHashMap.put("bind_serial", paramString5);
@@ -49,7 +49,7 @@ public final class b
     AppMethodBeat.o(71963);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 10;
   }
@@ -57,13 +57,13 @@ public final class b
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(71964);
-    this.nSY = paramJSONObject.optString("trans_id");
-    this.AyL = paramJSONObject.optInt("response_result");
-    this.AyM = paramJSONObject.optBoolean("redirect");
-    this.AyN = paramJSONObject.optString("gateway_reference");
-    this.AyO = paramJSONObject.optString("gateway_code");
-    this.AyP = paramJSONObject.optBoolean("is_force_adjust");
-    this.AyQ = paramJSONObject.optString("force_adjust_code");
+    this.owt = paramJSONObject.optString("trans_id");
+    this.BRh = paramJSONObject.optInt("response_result");
+    this.BRi = paramJSONObject.optBoolean("redirect");
+    this.BRj = paramJSONObject.optString("gateway_reference");
+    this.BRk = paramJSONObject.optString("gateway_code");
+    this.BRl = paramJSONObject.optBoolean("is_force_adjust");
+    this.BRm = paramJSONObject.optString("force_adjust_code");
     AppMethodBeat.o(71964);
   }
 }

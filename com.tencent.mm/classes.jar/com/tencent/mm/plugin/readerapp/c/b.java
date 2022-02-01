@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.cs;
 import com.tencent.mm.model.bo;
 import com.tencent.mm.model.u;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.ago;
-import com.tencent.mm.protocal.protobuf.agu;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.protocal.protobuf.aht;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class b
@@ -17,36 +17,36 @@ public final class b
     AppMethodBeat.i(102661);
     if ((paramcs == null) || (parambo == null))
     {
-      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or readerAppInfo is null");
+      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or readerAppInfo is null");
       if (paramcs != null) {
-        paramcs.deQ.deV = 2131758885;
+        paramcs.dck.dcp = 2131758885;
       }
       AppMethodBeat.o(102661);
       return false;
     }
-    ago localago = new ago();
-    agu localagu = new agu();
-    afy localafy = new afy();
-    localagu.aEl("newsapp");
-    localagu.aEm(u.aqG());
-    localagu.aEm(u.aqG());
-    localagu.VM(1);
-    localagu.vv(parambo.gOP);
-    localagu.aEp(parambo.gOU);
-    localagu.aEs(parambo.getUrl());
-    localagu.aEt("newsapp");
-    localafy.aDr(parambo.getUrl());
-    localafy.aDl(parambo.getTitle());
-    localafy.aDm(parambo.getDigest());
-    localafy.aDu(parambo.asu());
-    localafy.uw(true);
-    localafy.ux(true);
-    localafy.VD(5);
-    localago.a(localagu);
-    localago.mVb.add(localafy);
-    paramcs.deQ.desc = parambo.getTitle();
-    paramcs.deQ.deS = localago;
-    paramcs.deQ.type = 5;
+    ahn localahn = new ahn();
+    aht localaht = new aht();
+    agx localagx = new agx();
+    localaht.aJC("newsapp");
+    localaht.aJD(u.axw());
+    localaht.aJD(u.axw());
+    localaht.XV(1);
+    localaht.zY(parambo.hpp);
+    localaht.aJG(parambo.hpu);
+    localaht.aJJ(parambo.getUrl());
+    localaht.aJK("newsapp");
+    localagx.aII(parambo.getUrl());
+    localagx.aIC(parambo.getTitle());
+    localagx.aID(parambo.getDigest());
+    localagx.aIL(parambo.azl());
+    localagx.vy(true);
+    localagx.vz(true);
+    localagx.XM(5);
+    localahn.a(localaht);
+    localahn.nxC.add(localagx);
+    paramcs.dck.desc = parambo.getTitle();
+    paramcs.dck.dcm = localahn;
+    paramcs.dck.type = 5;
     AppMethodBeat.o(102661);
     return true;
   }

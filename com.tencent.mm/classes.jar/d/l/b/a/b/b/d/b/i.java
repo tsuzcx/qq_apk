@@ -10,14 +10,14 @@ public final class i
   extends w
   implements f
 {
-  private final w Jwb;
-  private final Type Jwc;
+  private final w Lju;
+  private final Type Ljv;
   
   public i(Type paramType)
   {
     AppMethodBeat.i(57424);
-    this.Jwc = paramType;
-    paramType = this.Jwc;
+    this.Ljv = paramType;
+    paramType = this.Ljv;
     if ((paramType instanceof GenericArrayType))
     {
       paramType = ((GenericArrayType)paramType).getGenericComponentType();
@@ -25,7 +25,7 @@ public final class i
     }
     for (paramType = w.a.j(paramType);; paramType = w.a.j((Type)paramType))
     {
-      this.Jwb = paramType;
+      this.Lju = paramType;
       AppMethodBeat.o(57424);
       return;
       if ((!(paramType instanceof Class)) || (!((Class)paramType).isArray())) {
@@ -34,19 +34,19 @@ public final class i
       paramType = ((Class)paramType).getComponentType();
       k.g(paramType, "getComponentType()");
     }
-    paramType = (Throwable)new IllegalArgumentException("Not an array type (" + this.Jwc.getClass() + "): " + this.Jwc);
+    paramType = (Throwable)new IllegalArgumentException("Not an array type (" + this.Ljv.getClass() + "): " + this.Ljv);
     AppMethodBeat.o(57424);
     throw paramType;
   }
   
-  protected final Type fAC()
+  protected final Type fTg()
   {
-    return this.Jwc;
+    return this.Ljv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.i
  * JD-Core Version:    0.7.0.1
  */

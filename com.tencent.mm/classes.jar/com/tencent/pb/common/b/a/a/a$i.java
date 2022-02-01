@@ -6,30 +6,30 @@ import com.google.b.a.e;
 public final class a$i
   extends e
 {
-  public a.ao[] IkQ = a.ao.flu();
+  public a.ao[] JMB = a.ao.fBL();
   public String groupId = "";
   public int roomId = 0;
-  public long sAY = 0L;
+  public long tIG = 0L;
   public long timestamp = 0L;
   
   public a$i()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.by(1, this.roomId);
-    paramb.o(2, this.sAY);
+    paramb.bv(1, this.roomId);
+    paramb.n(2, this.tIG);
     if (!this.groupId.equals("")) {
       paramb.d(3, this.groupId);
     }
-    if ((this.IkQ != null) && (this.IkQ.length > 0))
+    if ((this.JMB != null) && (this.JMB.length > 0))
     {
       int i = 0;
-      while (i < this.IkQ.length)
+      while (i < this.JMB.length)
       {
-        a.ao localao = this.IkQ[i];
+        a.ao localao = this.JMB[i];
         if (localao != null) {
           paramb.a(4, localao);
         }
@@ -37,28 +37,28 @@ public final class a$i
       }
     }
     if (this.timestamp != 0L) {
-      paramb.n(5, this.timestamp);
+      paramb.m(5, this.timestamp);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg() + b.bA(1, this.roomId) + b.q(2, this.sAY);
+    int j = super.xT() + b.bx(1, this.roomId) + b.p(2, this.tIG);
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(3, this.groupId);
     }
     j = i;
-    if (this.IkQ != null)
+    if (this.JMB != null)
     {
       j = i;
-      if (this.IkQ.length > 0)
+      if (this.JMB.length > 0)
       {
         j = 0;
-        while (j < this.IkQ.length)
+        while (j < this.JMB.length)
         {
-          a.ao localao = this.IkQ[j];
+          a.ao localao = this.JMB[j];
           int k = i;
           if (localao != null) {
             k = i + b.b(4, localao);
@@ -71,7 +71,7 @@ public final class a$i
     }
     i = j;
     if (this.timestamp != 0L) {
-      i = j + b.p(5, this.timestamp);
+      i = j + b.o(5, this.timestamp);
     }
     return i;
   }

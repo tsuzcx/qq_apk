@@ -11,50 +11,50 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.ar;
 import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.plugin.game.model.y;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 
 public class GameCategoryUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private View fwo;
-  private Dialog lIc;
+  private View fzV;
   private int mType;
-  private int rXI;
-  private int rXN;
-  private k sfi;
-  private ListView sfp;
-  private l sfq;
-  private boolean sfr;
-  private boolean sfs;
-  private int sft;
-  private String sfu;
-  private m.a sfv;
-  private AbsListView.OnScrollListener sfw;
+  private Dialog mjY;
+  private int tfA;
+  private int tfF;
+  private k tnb;
+  private ListView tni;
+  private l tnj;
+  private boolean tnk;
+  private boolean tnl;
+  private int tnm;
+  private String tnn;
+  private m.a tno;
+  private AbsListView.OnScrollListener tnp;
   
   public GameCategoryUI()
   {
     AppMethodBeat.i(41918);
-    this.sfr = false;
-    this.rXN = 0;
-    this.sfs = false;
-    this.rXI = 0;
-    this.sfi = new k();
-    this.sfv = new m.a()
+    this.tnk = false;
+    this.tfF = 0;
+    this.tnl = false;
+    this.tfA = 0;
+    this.tnb = new k();
+    this.tno = new m.a()
     {
-      public final void EE(int paramAnonymousInt)
+      public final void GA(int paramAnonymousInt)
       {
         AppMethodBeat.i(41914);
         int i = GameCategoryUI.b(GameCategoryUI.this).getFirstVisiblePosition();
@@ -62,12 +62,12 @@ public class GameCategoryUI
         if ((paramAnonymousInt >= i) && (paramAnonymousInt <= j))
         {
           View localView = GameCategoryUI.b(GameCategoryUI.this).getChildAt(paramAnonymousInt - i);
-          GameCategoryUI.c(GameCategoryUI.this).af(localView, paramAnonymousInt);
+          GameCategoryUI.c(GameCategoryUI.this).ag(localView, paramAnonymousInt);
         }
         AppMethodBeat.o(41914);
       }
     };
-    this.sfw = new AbsListView.OnScrollListener()
+    this.tnp = new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
@@ -90,12 +90,12 @@ public class GameCategoryUI
     AppMethodBeat.o(41918);
   }
   
-  private void cEc()
+  private void cRm()
   {
     AppMethodBeat.i(41921);
-    ar localar = new ar(this.rXN, this.mType, this.sft);
-    com.tencent.mm.kernel.g.aeS().a(localar, 0);
-    this.sfr = true;
+    ar localar = new ar(this.tfF, this.mType, this.tnm);
+    com.tencent.mm.kernel.g.agi().a(localar, 0);
+    this.tnk = true;
     AppMethodBeat.o(41921);
   }
   
@@ -108,10 +108,10 @@ public class GameCategoryUI
   {
     AppMethodBeat.i(41923);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.i("MicroMsg.GameCategoryUI", "requestCode = %d, resultCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.GameCategoryUI", "requestCode = %d, resultCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 != 1)
     {
-      ad.e("MicroMsg.GameCategoryUI", "error request code");
+      ac.e("MicroMsg.GameCategoryUI", "error request code");
       AppMethodBeat.o(41923);
       return;
     }
@@ -126,21 +126,21 @@ public class GameCategoryUI
     {
       AppMethodBeat.o(41923);
       return;
-      if (bt.isNullOrNil(str))
+      if (bs.isNullOrNil(str))
       {
         AppMethodBeat.o(41923);
         return;
       }
-      this.sfq.acQ(str);
+      this.tnj.ahI(str);
       AppMethodBeat.o(41923);
       return;
-      if (bt.isNullOrNil(str))
+      if (bs.isNullOrNil(str))
       {
         AppMethodBeat.o(41923);
         return;
       }
-      this.sfq.acP(str);
-      this.sfq.acR(str);
+      this.tnj.ahH(str);
+      this.tnj.ahJ(str);
     }
   }
   
@@ -149,29 +149,29 @@ public class GameCategoryUI
     AppMethodBeat.i(41919);
     super.onCreate(paramBundle);
     this.mType = getIntent().getIntExtra("extra_type", 0);
-    this.sft = getIntent().getIntExtra("extra_category_id", 0);
-    this.sfu = getIntent().getStringExtra("extra_category_name");
-    this.rXI = getIntent().getIntExtra("game_report_from_scene", 0);
-    com.tencent.mm.kernel.g.aeS().a(1220, this);
-    setMMTitle(this.sfu);
+    this.tnm = getIntent().getIntExtra("extra_category_id", 0);
+    this.tnn = getIntent().getStringExtra("extra_category_name");
+    this.tfA = getIntent().getIntExtra("game_report_from_scene", 0);
+    com.tencent.mm.kernel.g.agi().a(1220, this);
+    setMMTitle(this.tnn);
     setBackBtn(new GameCategoryUI.1(this));
-    if (!bt.isNullOrNil(e.cCZ())) {
+    if (!bs.isNullOrNil(e.cQj())) {
       addIconOptionMenu(0, 2131764452, 2131689494, new GameCategoryUI.2(this));
     }
-    this.sfp = ((ListView)findViewById(2131300355));
-    this.sfp.setOnItemClickListener(this.sfi);
-    this.sfi.setSourceScene(this.rXI);
-    this.sfp.setOnScrollListener(this.sfw);
-    this.sfq = new l(this);
-    this.sfq.setSourceScene(this.rXI);
-    this.sfq.a(this.sfv);
-    this.fwo = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494337, this.sfp, false);
-    this.fwo.setVisibility(8);
-    this.sfp.addFooterView(this.fwo);
-    this.sfp.setAdapter(this.sfq);
-    this.lIc = c.fi(this);
-    this.lIc.show();
-    cEc();
+    this.tni = ((ListView)findViewById(2131300355));
+    this.tni.setOnItemClickListener(this.tnb);
+    this.tnb.setSourceScene(this.tfA);
+    this.tni.setOnScrollListener(this.tnp);
+    this.tnj = new l(this);
+    this.tnj.setSourceScene(this.tfA);
+    this.tnj.a(this.tno);
+    this.fzV = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494337, this.tni, false);
+    this.fzV.setVisibility(8);
+    this.tni.addFooterView(this.fzV);
+    this.tni.setAdapter(this.tnj);
+    this.mjY = c.fv(this);
+    this.mjY.show();
+    cRm();
     AppMethodBeat.o(41919);
   }
   
@@ -179,8 +179,8 @@ public class GameCategoryUI
   {
     AppMethodBeat.i(41920);
     super.onDestroy();
-    com.tencent.mm.kernel.g.aeS().b(1220, this);
-    this.sfq.clear();
+    com.tencent.mm.kernel.g.agi().b(1220, this);
+    this.tnj.clear();
     AppMethodBeat.o(41920);
   }
   
@@ -189,23 +189,23 @@ public class GameCategoryUI
     AppMethodBeat.i(41922);
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ad.e("MicroMsg.GameCategoryUI", "errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ac.e("MicroMsg.GameCategoryUI", "errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       AppMethodBeat.o(41922);
       return;
     }
-    paramString = ((ar)paramn).fUF.gUT.gUX;
-    com.tencent.mm.kernel.g.afE().ax(new Runnable()
+    paramString = ((ar)paramn).fYA.hvs.hvw;
+    com.tencent.mm.kernel.g.agU().az(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(41917);
-        aq.f(new Runnable()
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(41916);
             GameCategoryUI localGameCategoryUI = GameCategoryUI.this;
-            y localy = this.sfz;
+            y localy = this.tns;
             if (GameCategoryUI.h(GameCategoryUI.this) != 0) {}
             for (boolean bool = true;; bool = false)
             {
@@ -235,7 +235,7 @@ public class GameCategoryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameCategoryUI
  * JD-Core Version:    0.7.0.1
  */

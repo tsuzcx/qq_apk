@@ -1,294 +1,316 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.compatible.util.d;
+import java.nio.ByteBuffer;
 
-public class z
+public final class z
 {
-  private static int ETS = -1;
-  public static int ETT = -1;
-  private static boolean ETU = false;
-  private static int ETV = -1;
-  private static int ETW = -1;
+  private boolean Grj;
+  private ByteBuffer byteBuffer;
   
-  public static int aQ(Activity paramActivity)
+  private int Yq(int paramInt)
   {
-    AppMethodBeat.i(125238);
-    Rect localRect = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    int i = localRect.top;
-    AppMethodBeat.o(125238);
-    return i;
+    AppMethodBeat.i(157583);
+    if (this.byteBuffer.limit() - this.byteBuffer.position() > paramInt)
+    {
+      AppMethodBeat.o(157583);
+      return 0;
+    }
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(this.byteBuffer.limit() + 4096);
+    localByteBuffer.put(this.byteBuffer.array(), 0, this.byteBuffer.position());
+    this.byteBuffer = localByteBuffer;
+    AppMethodBeat.o(157583);
+    return 0;
   }
   
-  public static final boolean aw(Context paramContext, int paramInt)
+  private static int cq(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(164122);
-    if (ETS == paramInt)
+    int i = 0;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      i = -1;
+    }
+    do
     {
-      AppMethodBeat.o(164122);
+      return i;
+      if (paramArrayOfByte[0] != 123) {
+        return -2;
+      }
+    } while (paramArrayOfByte[(paramArrayOfByte.length - 1)] == 125);
+    return -3;
+  }
+  
+  public final int Af(long paramLong)
+  {
+    AppMethodBeat.i(157585);
+    if (!this.Grj)
+    {
+      Exception localException = new Exception("Buffer For Parse");
+      AppMethodBeat.o(157585);
+      throw localException;
+    }
+    Yq(8);
+    this.byteBuffer.putLong(paramLong);
+    AppMethodBeat.o(157585);
+    return 0;
+  }
+  
+  public final void Yp(int paramInt)
+  {
+    AppMethodBeat.i(157579);
+    ByteBuffer localByteBuffer = this.byteBuffer;
+    localByteBuffer.position(localByteBuffer.position() + paramInt);
+    AppMethodBeat.o(157579);
+  }
+  
+  public final int Yr(int paramInt)
+  {
+    AppMethodBeat.i(157584);
+    if (!this.Grj)
+    {
+      Exception localException = new Exception("Buffer For Parse");
+      AppMethodBeat.o(157584);
+      throw localException;
+    }
+    Yq(4);
+    this.byteBuffer.putInt(paramInt);
+    AppMethodBeat.o(157584);
+    return 0;
+  }
+  
+  public final int aKJ(String paramString)
+  {
+    AppMethodBeat.i(157587);
+    if (!this.Grj)
+    {
+      paramString = new Exception("Buffer For Parse");
+      AppMethodBeat.o(157587);
+      throw paramString;
+    }
+    byte[] arrayOfByte = null;
+    if (paramString != null) {
+      arrayOfByte = paramString.getBytes();
+    }
+    paramString = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramString = new byte[0];
+    }
+    if (paramString.length > 3072)
+    {
+      paramString = new Exception("Buffer String Length Error");
+      AppMethodBeat.o(157587);
+      throw paramString;
+    }
+    Yq(paramString.length + 2);
+    this.byteBuffer.putShort((short)paramString.length);
+    if (paramString.length > 0) {
+      this.byteBuffer.put(paramString);
+    }
+    AppMethodBeat.o(157587);
+    return 0;
+  }
+  
+  public final int cr(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(157574);
+    if (cq(paramArrayOfByte) != 0)
+    {
+      this.byteBuffer = null;
+      AppMethodBeat.o(157574);
+      return -1;
+    }
+    this.byteBuffer = ByteBuffer.wrap(paramArrayOfByte);
+    this.byteBuffer.position(1);
+    this.Grj = false;
+    AppMethodBeat.o(157574);
+    return 0;
+  }
+  
+  public final int cs(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(157586);
+    if (!this.Grj)
+    {
+      paramArrayOfByte = new Exception("Buffer For Parse");
+      AppMethodBeat.o(157586);
+      throw paramArrayOfByte;
+    }
+    byte[] arrayOfByte = null;
+    if (paramArrayOfByte != null) {
+      arrayOfByte = paramArrayOfByte;
+    }
+    paramArrayOfByte = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramArrayOfByte = new byte[0];
+    }
+    if (paramArrayOfByte.length > 3072)
+    {
+      paramArrayOfByte = new Exception("Buffer String Length Error");
+      AppMethodBeat.o(157586);
+      throw paramArrayOfByte;
+    }
+    Yq(paramArrayOfByte.length + 2);
+    this.byteBuffer.putShort((short)paramArrayOfByte.length);
+    if (paramArrayOfByte.length > 0) {
+      this.byteBuffer.put(paramArrayOfByte);
+    }
+    AppMethodBeat.o(157586);
+    return 0;
+  }
+  
+  public final void eUD()
+  {
+    AppMethodBeat.i(157580);
+    Exception localException;
+    if (this.Grj)
+    {
+      localException = new Exception("Buffer For Build");
+      AppMethodBeat.o(157580);
+      throw localException;
+    }
+    int i = this.byteBuffer.getShort();
+    if (i > 3072)
+    {
+      this.byteBuffer = null;
+      localException = new Exception("Buffer String Length Error");
+      AppMethodBeat.o(157580);
+      throw localException;
+    }
+    if (i == 0)
+    {
+      AppMethodBeat.o(157580);
+      return;
+    }
+    this.byteBuffer.position(i + this.byteBuffer.position());
+    AppMethodBeat.o(157580);
+  }
+  
+  public final boolean eUE()
+  {
+    AppMethodBeat.i(157581);
+    if (this.byteBuffer.limit() - this.byteBuffer.position() <= 1)
+    {
+      AppMethodBeat.o(157581);
       return true;
     }
-    if (!io(paramContext))
-    {
-      AppMethodBeat.o(164122);
-      return false;
-    }
-    if (paramInt < 0)
-    {
-      AppMethodBeat.o(164122);
-      return false;
-    }
-    ETS = paramInt;
-    ad.d("MicroMsg.KeyBordUtil", "save keybord: %d", new Object[] { Integer.valueOf(paramInt) });
-    boolean bool = aj.eFE().edit().putInt("com.tencent.mm.compatible.util.keybord.height", paramInt).commit();
-    AppMethodBeat.o(164122);
-    return bool;
-  }
-  
-  public static final int ax(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(125230);
-    if (paramInt > 0)
-    {
-      paramInt += 230;
-      if (!io(paramContext))
-      {
-        AppMethodBeat.o(125230);
-        return paramInt * 3;
-      }
-      paramInt = a.fromDPToPix(paramContext, paramInt);
-      ETW = paramInt;
-      AppMethodBeat.o(125230);
-      return paramInt;
-    }
-    if (ETW > 0)
-    {
-      paramInt = ETW;
-      AppMethodBeat.o(125230);
-      return paramInt;
-    }
-    if (!io(paramContext))
-    {
-      AppMethodBeat.o(125230);
-      return 690;
-    }
-    paramInt = a.fromDPToPix(paramContext, 230);
-    ETW = paramInt;
-    AppMethodBeat.o(125230);
-    return paramInt;
-  }
-  
-  public static final int ay(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(125231);
-    paramInt = h(paramContext, paramInt, 0);
-    AppMethodBeat.o(125231);
-    return paramInt;
-  }
-  
-  public static void eFi()
-  {
-    ETU = false;
-  }
-  
-  public static int[] et(Context paramContext)
-  {
-    AppMethodBeat.i(125237);
-    if (paramContext == null) {
-      paramContext = aj.getContext();
-    }
-    for (;;)
-    {
-      int[] arrayOfInt = new int[2];
-      if ((paramContext instanceof Activity))
-      {
-        DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-        ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-        arrayOfInt[0] = localDisplayMetrics.widthPixels;
-        arrayOfInt[1] = localDisplayMetrics.heightPixels;
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(125237);
-        return arrayOfInt;
-        paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-        arrayOfInt[0] = paramContext.getWidth();
-        arrayOfInt[1] = paramContext.getHeight();
-      }
-    }
-  }
-  
-  public static final int h(Context paramContext, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(125232);
-    int i = ax(paramContext, paramInt2);
-    ad.e("MicroMsg.KeyBordUtil", "getValidPanelHeight(): minPanelHeight= %d, isOpenIm=%b", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
-    if ((d.lf(24)) && ((paramContext instanceof Activity))) {}
-    for (boolean bool = ((Activity)paramContext).isInMultiWindowMode();; bool = false)
-    {
-      if ((!ip(paramContext)) || (bool))
-      {
-        paramInt2 = (int)(i / 1.5D);
-        i = et(paramContext)[0];
-        paramInt1 = paramInt2;
-        if (paramInt2 > i / 2) {
-          paramInt1 = i / 2;
-        }
-        AppMethodBeat.o(125232);
-        return paramInt1;
-      }
-      paramInt2 = paramInt1;
-      if (paramInt1 <= 0) {
-        paramInt2 = il(paramContext);
-      }
-      paramInt1 = im(paramContext);
-      if (paramInt2 > paramInt1)
-      {
-        AppMethodBeat.o(125232);
-        return paramInt1;
-      }
-      if (paramInt2 < i)
-      {
-        AppMethodBeat.o(125232);
-        return i;
-      }
-      AppMethodBeat.o(125232);
-      return paramInt2;
-    }
-  }
-  
-  public static final int ik(Context paramContext)
-  {
-    AppMethodBeat.i(125227);
-    if (!ETU)
-    {
-      if (!io(paramContext))
-      {
-        i = aj.eFE().getInt("com.tencent.mm.compatible.util.keybord.height", 690);
-        AppMethodBeat.o(125227);
-        return i;
-      }
-      i = aj.eFE().getInt("com.tencent.mm.compatible.util.keybord.height", a.fromDPToPix(paramContext, 230));
-      ETS = i;
-      AppMethodBeat.o(125227);
-      return i;
-    }
-    int i = ax(paramContext, 0);
-    AppMethodBeat.o(125227);
-    return i;
-  }
-  
-  public static final int il(Context paramContext)
-  {
-    AppMethodBeat.i(125228);
-    if (!ETU)
-    {
-      if (ETS > 0)
-      {
-        i = ETS;
-        AppMethodBeat.o(125228);
-        return i;
-      }
-      i = ik(paramContext);
-      AppMethodBeat.o(125228);
-      return i;
-    }
-    int i = ax(paramContext, 0);
-    AppMethodBeat.o(125228);
-    return i;
-  }
-  
-  public static final int im(Context paramContext)
-  {
-    AppMethodBeat.i(125229);
-    if (!ETU)
-    {
-      if (ETV > 0)
-      {
-        i = ETV;
-        AppMethodBeat.o(125229);
-        return i;
-      }
-      if (!io(paramContext))
-      {
-        AppMethodBeat.o(125229);
-        return 1140;
-      }
-      i = a.fromDPToPix(paramContext, 380);
-      ETV = i;
-      AppMethodBeat.o(125229);
-      return i;
-    }
-    int i = ax(paramContext, 0);
-    AppMethodBeat.o(125229);
-    return i;
-  }
-  
-  public static final int in(Context paramContext)
-  {
-    AppMethodBeat.i(125233);
-    int i = h(paramContext, -1, 0);
-    AppMethodBeat.o(125233);
-    return i;
-  }
-  
-  private static final boolean io(Context paramContext)
-  {
-    AppMethodBeat.i(125234);
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = aj.getContext();
-    }
-    if (localContext != null)
-    {
-      AppMethodBeat.o(125234);
-      return true;
-    }
-    AppMethodBeat.o(125234);
+    AppMethodBeat.o(157581);
     return false;
   }
   
-  public static boolean ip(Context paramContext)
+  public final int eUF()
   {
-    AppMethodBeat.i(125235);
-    if (iq(paramContext) == 1)
-    {
-      AppMethodBeat.o(125235);
-      return true;
-    }
-    AppMethodBeat.o(125235);
-    return false;
+    AppMethodBeat.i(157582);
+    this.byteBuffer = ByteBuffer.allocate(4096);
+    this.byteBuffer.put((byte)123);
+    this.Grj = true;
+    AppMethodBeat.o(157582);
+    return 0;
   }
   
-  public static int iq(Context paramContext)
+  public final byte[] eUG()
   {
-    int i = 1;
-    AppMethodBeat.i(125236);
-    paramContext = et(paramContext);
-    if (paramContext[0] < paramContext[1]) {}
-    for (;;)
+    AppMethodBeat.i(157588);
+    if (!this.Grj)
     {
-      AppMethodBeat.o(125236);
-      return i;
-      i = 2;
+      localObject = new Exception("Buffer For Parse");
+      AppMethodBeat.o(157588);
+      throw ((Throwable)localObject);
     }
+    Yq(1);
+    this.byteBuffer.put((byte)125);
+    Object localObject = new byte[this.byteBuffer.position()];
+    System.arraycopy(this.byteBuffer.array(), 0, localObject, 0, localObject.length);
+    AppMethodBeat.o(157588);
+    return localObject;
+  }
+  
+  public final byte[] getBuffer()
+  {
+    AppMethodBeat.i(157577);
+    if (this.Grj)
+    {
+      localObject = new Exception("Buffer For Build");
+      AppMethodBeat.o(157577);
+      throw ((Throwable)localObject);
+    }
+    int i = this.byteBuffer.getShort();
+    if (i > 3072)
+    {
+      this.byteBuffer = null;
+      localObject = new Exception("Buffer String Length Error");
+      AppMethodBeat.o(157577);
+      throw ((Throwable)localObject);
+    }
+    if (i == 0)
+    {
+      AppMethodBeat.o(157577);
+      return new byte[0];
+    }
+    Object localObject = new byte[i];
+    this.byteBuffer.get((byte[])localObject, 0, i);
+    AppMethodBeat.o(157577);
+    return localObject;
+  }
+  
+  public final int getInt()
+  {
+    AppMethodBeat.i(157575);
+    if (this.Grj)
+    {
+      Exception localException = new Exception("Buffer For Build");
+      AppMethodBeat.o(157575);
+      throw localException;
+    }
+    int i = this.byteBuffer.getInt();
+    AppMethodBeat.o(157575);
+    return i;
+  }
+  
+  public final long getLong()
+  {
+    AppMethodBeat.i(157576);
+    if (this.Grj)
+    {
+      Exception localException = new Exception("Buffer For Build");
+      AppMethodBeat.o(157576);
+      throw localException;
+    }
+    long l = this.byteBuffer.getLong();
+    AppMethodBeat.o(157576);
+    return l;
+  }
+  
+  public final String getString()
+  {
+    AppMethodBeat.i(157578);
+    if (this.Grj)
+    {
+      localObject = new Exception("Buffer For Build");
+      AppMethodBeat.o(157578);
+      throw ((Throwable)localObject);
+    }
+    int i = this.byteBuffer.getShort();
+    if (i > 3072)
+    {
+      this.byteBuffer = null;
+      localObject = new Exception("Buffer String Length Error");
+      AppMethodBeat.o(157578);
+      throw ((Throwable)localObject);
+    }
+    if (i == 0)
+    {
+      AppMethodBeat.o(157578);
+      return "";
+    }
+    Object localObject = new byte[i];
+    this.byteBuffer.get((byte[])localObject, 0, i);
+    localObject = new String((byte[])localObject, "UTF-8");
+    AppMethodBeat.o(157578);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.z
  * JD-Core Version:    0.7.0.1
  */

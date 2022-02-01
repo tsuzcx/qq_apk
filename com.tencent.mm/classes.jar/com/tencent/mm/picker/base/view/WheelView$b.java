@@ -7,9 +7,9 @@ public enum WheelView$b
   static
   {
     AppMethodBeat.i(175305);
-    hRX = new b("FILL", 0);
-    hRY = new b("WRAP", 1);
-    hRZ = new b[] { hRX, hRY };
+    isc = new b("FILL", 0);
+    isd = new b("WRAP", 1);
+    ise = new b[] { isc, isd };
     AppMethodBeat.o(175305);
   }
   

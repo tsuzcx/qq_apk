@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.eggspring.ui;
 
+import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
@@ -13,6 +14,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,17 +31,17 @@ import com.tencent.mars.cdn.CdnLogic.C2CDownloadRequest;
 import com.tencent.mars.cdn.CdnLogic.C2CDownloadResult;
 import com.tencent.mars.cdn.CdnLogic.DownloadCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.ao.e;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.an.e;
 import com.tencent.mm.app.AppForegroundDelegate;
 import com.tencent.mm.emoji.debug.EmojiDebugUI;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.plugin.eggspring.PluginEggSpring;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 import com.tencent.mm.pluginsdk.ui.h.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.am;
 import com.tencent.mm.ui.ao;
@@ -50,96 +52,96 @@ import com.tencent.mm.vfs.i;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/eggspring/ui/SpringCardActivity;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mars/cdn/CdnLogic$DownloadCallback;", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMDownloadFinish;", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo$IVideoCdnCallback;", "()V", "appForegroundLis", "Lcom/tencent/mm/app/IAppForegroundListener;", "appId", "", "blessingBtmImgReady", "", "blessingTopImgReady", "bottomBrandBgImg", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "bottomBrandClickableImg", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "bottomBrandClickableTxt", "Landroid/widget/TextView;", "bottomBrandClickableTxtLayout", "Landroid/view/View;", "bottomBrandIntroTxt", "brandCardAcceptBtn", "Landroid/widget/Button;", "brandCardBlessingStyleBottomImg", "brandCardBlessingStyleImgMedia", "brandCardBlessingStyleLayout", "Landroid/view/ViewGroup;", "brandCardBlessingStyleVideoMedia", "Lcom/tencent/mm/plugin/eggspring/ui/SpringEggVideoView;", "brandCardContent", "Lcom/tencent/mm/plugin/eggspring/model/BrandCardContent;", "brandCardImgMedia", "brandCardLayout", "brandCardMainWording", "brandCardMediaLayout", "brandCardSubWording", "brandCardTitleLayout", "brandCardTitleLogo", "brandCardTitleName", "cardIsShowing", "count", "", "curPoi", "duration", "engineCallback", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy$IEngineCallback;", "fireWorksColor", "", "isVideo", "keyWord", "lastShowCardRunnable", "Ljava/lang/Runnable;", "loadingAnimTimerStartMS", "", "luckyBagLoadingImg", "rootLayout", "rptCount", "sum", "traceId", "uiHandler", "Landroid/os/Handler;", "videoMediaId", "addFireWorks", "", "parent", "offset", "adjustCloseBtnColor", "color", "againConfigView", "boundView", "changeCardStyle", "createVideoPlayCDNTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "mediaId", "url", "path", "dealWithMedia", "downLoadImg", "getCachePath", "getFireworksColor", "getLayoutId", "getRandomByRange", "low", "high", "getSavePath", "getTempPath", "imgExist", "initBar", "initConfigView", "initVideoView", "isVideoDataAvailable", "length", "onBlessingMediaReady", "type", "onC2CDownloadCompleted", "filekey", "result", "Lcom/tencent/mars/cdn/CdnLogic$C2CDownloadResult;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDataAvailable", "onDestroy", "onDownloadFinish", "isPlayNow", "onDownloadProgressChanged", "finished", "total", "tryshow", "onError", "sessionId", "errorMsg", "what", "extra", "onFinish", "ret", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onGetVideoSize", "width", "height", "onMediaReady", "onMoovReady", "svrflag", "onPause", "onPrepared", "onProgress", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onVideoEnded", "onVideoFirstFrameDraw", "onVideoPause", "onVideoPlay", "onVideoWaiting", "onVideoWaitingEnd", "playCardAnim", "requestBrandCardContent", "requestVideoData", "setIEngineCallback", "callback", "startHttpStream", "stop", "Companion", "plugin-eggspring_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/eggspring/ui/SpringCardActivity;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mars/cdn/CdnLogic$DownloadCallback;", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMDownloadFinish;", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo$IVideoCdnCallback;", "()V", "appForegroundLis", "Lcom/tencent/mm/app/IAppForegroundListener;", "appId", "", "blessingBtmImgReady", "", "blessingTopImgReady", "bottomBrandBgImg", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "bottomBrandClickableImg", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "bottomBrandClickableTxt", "Landroid/widget/TextView;", "bottomBrandClickableTxtLayout", "Landroid/view/View;", "bottomBrandIntroTxt", "brandCardAcceptBtn", "Landroid/widget/Button;", "brandCardBlessingStyleBottomImg", "brandCardBlessingStyleImgMedia", "brandCardBlessingStyleLayout", "Landroid/view/ViewGroup;", "brandCardBlessingStyleVideoMedia", "Lcom/tencent/mm/plugin/eggspring/ui/SpringEggVideoView;", "brandCardContent", "Lcom/tencent/mm/plugin/eggspring/model/BrandCardContent;", "brandCardImgMedia", "brandCardLayout", "brandCardMainWording", "brandCardMediaLayout", "brandCardSubWording", "brandCardTitleLayout", "brandCardTitleLogo", "brandCardTitleName", "cardIsShowing", "count", "", "curPoi", "duration", "engineCallback", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy$IEngineCallback;", "fireWorksColor", "", "isVideo", "keyWord", "lastShowCardRunnable", "Ljava/lang/Runnable;", "loadingAnimTimerStartMS", "", "luckyBagLoadingImg", "rootLayout", "rptCount", "sum", "traceId", "uiHandler", "Landroid/os/Handler;", "videoMediaId", "addFireWorks", "", "parent", "offset", "adjustCloseBtnColor", "color", "againConfigView", "boundView", "changeCardStyle", "createVideoPlayCDNTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "mediaId", "url", "path", "dealWithMedia", "downLoadImg", "getCachePath", "getFireworksColor", "getLayoutId", "getRandomByRange", "low", "high", "getSavePath", "getTempPath", "imgExist", "initBar", "initConfigView", "initVideoView", "isVideoDataAvailable", "length", "onBlessingMediaReady", "type", "onC2CDownloadCompleted", "filekey", "result", "Lcom/tencent/mars/cdn/CdnLogic$C2CDownloadResult;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDataAvailable", "onDestroy", "onDownloadFinish", "isPlayNow", "onDownloadProgressChanged", "finished", "total", "tryshow", "onError", "sessionId", "errorMsg", "what", "extra", "onFinish", "ret", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onGetVideoSize", "width", "height", "onMediaReady", "onMoovReady", "svrflag", "onPause", "onPrepared", "onProgress", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onVideoEnded", "onVideoFirstFrameDraw", "onVideoPause", "onVideoPlay", "onVideoWaiting", "onVideoWaitingEnd", "playCardAnim", "requestBrandCardContent", "requestVideoData", "setIEngineCallback", "callback", "startHttpStream", "stop", "Companion", "plugin-eggspring_release"})
 public final class SpringCardActivity
   extends MMActivity
-  implements CdnLogic.DownloadCallback, com.tencent.mm.al.g, com.tencent.mm.i.h.a, com.tencent.mm.modelvideo.b, com.tencent.mm.pluginsdk.ui.h.a, h.b
+  implements CdnLogic.DownloadCallback, com.tencent.mm.ak.g, com.tencent.mm.i.h.a, com.tencent.mm.modelvideo.b, com.tencent.mm.pluginsdk.ui.h.a, h.b
 {
-  public static final SpringCardActivity.a osP;
+  public static final SpringCardActivity.a oWp;
   private String appId;
   private int count;
-  private Handler csO;
+  private Handler cpW;
   private int duration;
-  private String hpg;
-  private String iYE;
-  private SpringEggVideoView osA;
-  private MMAnimateView osB;
-  private String osC;
-  private com.tencent.mm.modelvideo.b.a osD;
-  private long osE;
-  private com.tencent.mm.app.n osF;
-  private boolean osG;
-  private boolean osH;
-  private final Runnable osI;
-  private int osJ;
-  private int osK;
-  private int osL;
-  private boolean osM;
-  private boolean osN;
-  private final int[] osO;
-  private com.tencent.mm.plugin.eggspring.b.a osd;
-  private ViewGroup osi;
-  private MMAnimateView osj;
-  private View osk;
-  private TextView osl;
-  private WeImageView osm;
-  private TextView osn;
-  private MMAnimateView oso;
-  private ViewGroup osp;
-  private View osq;
-  private MMAnimateView osr;
-  private TextView oss;
-  private TextView ost;
-  private TextView osu;
-  private Button osv;
-  private ViewGroup osw;
-  private MMAnimateView osx;
-  private ViewGroup osy;
-  private MMAnimateView osz;
+  private String hPI;
+  private String jyU;
+  private com.tencent.mm.plugin.eggspring.b.a oVD;
+  private ViewGroup oVI;
+  private MMAnimateView oVJ;
+  private View oVK;
+  private TextView oVL;
+  private WeImageView oVM;
+  private TextView oVN;
+  private MMAnimateView oVO;
+  private ViewGroup oVP;
+  private View oVQ;
+  private MMAnimateView oVR;
+  private TextView oVS;
+  private TextView oVT;
+  private TextView oVU;
+  private Button oVV;
+  private ViewGroup oVW;
+  private MMAnimateView oVX;
+  private ViewGroup oVY;
+  private MMAnimateView oVZ;
+  private SpringEggVideoView oWa;
+  private MMAnimateView oWb;
+  private String oWc;
+  private com.tencent.mm.modelvideo.b.a oWd;
+  private long oWe;
+  private com.tencent.mm.app.n oWf;
+  private boolean oWg;
+  private boolean oWh;
+  private final Runnable oWi;
+  private int oWj;
+  private int oWk;
+  private int oWl;
+  private boolean oWm;
+  private boolean oWn;
+  private final int[] oWo;
   
   static
   {
     AppMethodBeat.i(108208);
-    osP = new SpringCardActivity.a((byte)0);
+    oWp = new SpringCardActivity.a((byte)0);
     AppMethodBeat.o(108208);
   }
   
   public SpringCardActivity()
   {
     AppMethodBeat.i(108207);
-    this.osI = ((Runnable)new e(this));
+    this.oWi = ((Runnable)new e(this));
     this.duration = -1;
     this.count = -1;
-    this.osJ = -1;
-    this.osK = -1;
-    this.osO = new int[] { 2131100372, 2131100373, 2131100374 };
+    this.oWj = -1;
+    this.oWk = -1;
+    this.oWo = new int[] { 2131100372, 2131100373, 2131100374 };
     AppMethodBeat.o(108207);
   }
   
-  private final void Ak(int paramInt)
+  private final void Bc(int paramInt)
   {
     AppMethodBeat.i(162214);
-    if (am.XC(paramInt))
+    if (am.ZN(paramInt))
     {
-      updateBackBtn(am.i((Context)this, 2131690535, -1));
+      updateBackBtn(am.k((Context)this, 2131690535, -1));
       AppMethodBeat.o(162214);
       return;
     }
-    updateBackBtn(am.i((Context)this, 2131690535, -16777216));
+    updateBackBtn(am.k((Context)this, 2131690535, -16777216));
     AppMethodBeat.o(162214);
   }
   
-  private final void Al(int paramInt)
+  private final void Bd(int paramInt)
   {
     AppMethodBeat.i(160274);
     if (paramInt == 0)
     {
-      this.osG = true;
-      if (!this.osH) {}
+      this.oWg = true;
+      if (!this.oWh) {}
     }
     for (;;)
     {
-      bTP();
+      cbd();
       do
       {
         do
@@ -147,75 +149,83 @@ public final class SpringCardActivity
           AppMethodBeat.o(160274);
           return;
         } while (1 != paramInt);
-        this.osH = true;
-        if (this.osG) {
+        this.oWh = true;
+        if (this.oWg) {
           break;
         }
-      } while (!this.osM);
+      } while (!this.oWm);
     }
   }
   
-  private final void Tg(String paramString)
+  private static String Cw(String paramString)
+  {
+    AppMethodBeat.i(108186);
+    paramString = PluginEggSpring.oUY + '/' + paramString.hashCode();
+    AppMethodBeat.o(108186);
+    return paramString;
+  }
+  
+  private final void Xs(String paramString)
   {
     AppMethodBeat.i(108185);
-    Object localObject = EmojiDebugUI.fKw;
-    if (EmojiDebugUI.aaN())
+    Object localObject = EmojiDebugUI.fOc;
+    if (EmojiDebugUI.abM())
     {
-      ad.d("MicroMsg.SpringCardActivity", "stop cdn!!!");
+      ac.d("MicroMsg.SpringCardActivity", "stop cdn!!!");
       AppMethodBeat.o(108185);
       return;
     }
     localObject = new CdnLogic.C2CDownloadRequest();
     ((CdnLogic.C2CDownloadRequest)localObject).fileKey = paramString;
     ((CdnLogic.C2CDownloadRequest)localObject).url = paramString;
-    ((CdnLogic.C2CDownloadRequest)localObject).setSavePath(yr(paramString));
+    ((CdnLogic.C2CDownloadRequest)localObject).setSavePath(Cw(paramString));
     CdnLogic.startHttpsDownload((CdnLogic.C2CDownloadRequest)localObject, (CdnLogic.DownloadCallback)this);
     AppMethodBeat.o(108185);
   }
   
-  private static String Th(String paramString)
+  private static String Xt(String paramString)
   {
     AppMethodBeat.i(108187);
-    paramString = PluginEggSpring.ory + "MMVideo_" + paramString.hashCode() + ".mp4.temp";
+    paramString = PluginEggSpring.oUY + "MMVideo_" + paramString.hashCode() + ".mp4.temp";
     AppMethodBeat.o(108187);
     return paramString;
   }
   
-  private final void bTP()
+  private final void cbd()
   {
     AppMethodBeat.i(160275);
-    Handler localHandler = this.csO;
+    Handler localHandler = this.cpW;
     if (localHandler == null) {
-      k.aPZ("uiHandler");
+      k.aVY("uiHandler");
     }
-    localHandler.removeCallbacks(this.osI);
-    if (this.osN)
+    localHandler.removeCallbacks(this.oWi);
+    if (this.oWn)
     {
       AppMethodBeat.o(160275);
       return;
     }
-    long l = System.currentTimeMillis() - this.osE;
+    long l = System.currentTimeMillis() - this.oWe;
     if (l > 1000L)
     {
-      bTQ();
+      cbe();
       AppMethodBeat.o(160275);
       return;
     }
-    localHandler = this.csO;
+    localHandler = this.cpW;
     if (localHandler == null) {
-      k.aPZ("uiHandler");
+      k.aVY("uiHandler");
     }
-    localHandler.postDelayed((Runnable)new SpringCardActivity.m(this), 1000L - l);
+    localHandler.postDelayed((Runnable)new m(this), 1000L - l);
     AppMethodBeat.o(160275);
   }
   
-  private final void bTQ()
+  private final void cbe()
   {
     AppMethodBeat.i(160276);
-    this.osN = true;
-    Object localObject1 = this.osp;
+    this.oWn = true;
+    Object localObject1 = this.oVP;
     if (localObject1 == null) {
-      k.aPZ("brandCardLayout");
+      k.aVY("brandCardLayout");
     }
     ((ViewGroup)localObject1).setVisibility(0);
     localObject1 = Keyframe.ofFloat(0.0F, 90.0F);
@@ -232,22 +242,22 @@ public final class SpringCardActivity
     Object localObject6 = Keyframe.ofFloat(0.5F, -610.0F);
     Keyframe localKeyframe = Keyframe.ofFloat(1.0F, 0.0F);
     localObject5 = PropertyValuesHolder.ofKeyframe(View.Y, new Keyframe[] { localObject5, localObject6, localKeyframe });
-    localObject6 = this.osp;
+    localObject6 = this.oVP;
     if (localObject6 == null) {
-      k.aPZ("brandCardLayout");
+      k.aVY("brandCardLayout");
     }
     localObject1 = ObjectAnimator.ofPropertyValuesHolder(localObject6, new PropertyValuesHolder[] { localObject1, localObject2, localObject3, localObject4, localObject5 });
     k.g(localObject1, "animator");
     ((ObjectAnimator)localObject1).setInterpolator((TimeInterpolator)new LinearInterpolator());
     ((ObjectAnimator)localObject1).setDuration(500L).start();
-    ((ObjectAnimator)localObject1).addListener((Animator.AnimatorListener)new SpringCardActivity.p(this));
+    ((ObjectAnimator)localObject1).addListener((Animator.AnimatorListener)new p(this));
     AppMethodBeat.o(160276);
   }
   
-  private final int bTR()
+  private final int cbf()
   {
     AppMethodBeat.i(108204);
-    int i = this.osO[new java.util.Random().nextInt(this.osO.length)];
+    int i = this.oWo[new java.util.Random().nextInt(this.oWo.length)];
     AppMethodBeat.o(108204);
     return i;
   }
@@ -259,10 +269,10 @@ public final class SpringCardActivity
     k.g(localObject1, "context");
     int k = ((AppCompatActivity)localObject1).getResources().getDimensionPixelSize(2131165944) / 4;
     int m = ao.fromDPToPix((Context)getContext(), 216) / 4;
-    localObject1 = d.k.h.a((d.k.b)d.k.h.kJ(0, 4), 3);
-    int i = ((d.k.b)localObject1).JhH;
-    int n = ((d.k.b)localObject1).JhI;
-    int i1 = ((d.k.b)localObject1).jzV;
+    localObject1 = d.k.h.a((d.k.b)d.k.h.kZ(0, 4), 3);
+    int i = ((d.k.b)localObject1).KVb;
+    int n = ((d.k.b)localObject1).KVc;
+    int i1 = ((d.k.b)localObject1).kar;
     if (i1 >= 0)
     {
       if (i > n) {}
@@ -279,16 +289,16 @@ public final class SpringCardActivity
             ((WeImageView)localObject1).setImageResource(2131690201);
             Object localObject2 = getContext();
             k.g(localObject2, "context");
-            ((WeImageView)localObject1).setIconColor(((AppCompatActivity)localObject2).getResources().getColor(bTR()));
+            ((WeImageView)localObject1).setIconColor(((AppCompatActivity)localObject2).getResources().getColor(cbf()));
             localObject2 = getContext();
             k.g(localObject2, "context");
             int i2 = ((AppCompatActivity)localObject2).getResources().getDimensionPixelSize(2131166302);
             localObject2 = getContext();
             k.g(localObject2, "context");
             localObject2 = new RelativeLayout.LayoutParams(i2, ((AppCompatActivity)localObject2).getResources().getDimensionPixelSize(2131166301));
-            i2 = fc(i * k, (i + 1) * k);
-            int i3 = fc(j * m, (j + 1) * m) + paramInt;
-            ad.d("MicroMsg.SpringCardActivity", "x %s y %s", new Object[] { Integer.valueOf(i2), Integer.valueOf(i3) });
+            i2 = ff(i * k, (i + 1) * k);
+            int i3 = ff(j * m, (j + 1) * m) + paramInt;
+            ac.d("MicroMsg.SpringCardActivity", "x %s y %s", new Object[] { Integer.valueOf(i2), Integer.valueOf(i3) });
             ((RelativeLayout.LayoutParams)localObject2).topMargin = i3;
             ((RelativeLayout.LayoutParams)localObject2).leftMargin = i2;
             paramViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
@@ -310,7 +320,7 @@ public final class SpringCardActivity
     AppMethodBeat.o(108203);
   }
   
-  private static int fc(int paramInt1, int paramInt2)
+  private static int ff(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(108205);
     paramInt1 = (int)(paramInt1 + Math.random() * (paramInt2 - paramInt1));
@@ -318,49 +328,41 @@ public final class SpringCardActivity
     return paramInt1;
   }
   
-  private static String yr(String paramString)
-  {
-    AppMethodBeat.i(108186);
-    paramString = PluginEggSpring.ory + '/' + paramString.hashCode();
-    AppMethodBeat.o(108186);
-    return paramString;
-  }
-  
   public final void a(com.tencent.mm.modelvideo.b.a parama)
   {
-    this.osD = parama;
+    this.oWd = parama;
   }
   
   public final void a(final String paramString, final int paramInt, com.tencent.mm.i.d paramd)
   {
     AppMethodBeat.i(108202);
     k.h(paramString, "mediaId");
-    ad.d("MicroMsg.SpringCardActivity", "onFinish!!! mediaId[%s].", new Object[] { paramString });
-    if ((this.osD != null) && (this.osC != null) && (k.g(this.osC, paramString))) {
-      aq.f((Runnable)new l(this, paramString, paramInt));
+    ac.d("MicroMsg.SpringCardActivity", "onFinish!!! mediaId[%s].", new Object[] { paramString });
+    if ((this.oWd != null) && (this.oWc != null) && (k.g(this.oWc, paramString))) {
+      ap.f((Runnable)new l(this, paramString, paramInt));
     }
     AppMethodBeat.o(108202);
   }
   
   public final void a(final String paramString1, final long paramLong1, long paramLong2, final String paramString2)
   {
-    AppMethodBeat.i(204988);
+    AppMethodBeat.i(206853);
     k.h(paramString1, "mediaId");
-    ad.d("MicroMsg.SpringCardActivity", "onMoovReady!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString1, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if ((this.osD != null) && (this.osC != null) && (k.g(this.osC, paramString1))) {
-      aq.f((Runnable)new n(this, paramString1, paramLong1, paramLong2, paramString2));
+    ac.d("MicroMsg.SpringCardActivity", "onMoovReady!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString1, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    if ((this.oWd != null) && (this.oWc != null) && (k.g(this.oWc, paramString1))) {
+      ap.f((Runnable)new n(this, paramString1, paramLong1, paramLong2, paramString2));
     }
-    AppMethodBeat.o(204988);
+    AppMethodBeat.o(206853);
   }
   
-  public final void aH(String paramString, boolean paramBoolean)
+  public final void aI(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(108194);
     if (paramString != null)
     {
       String str = d.n.n.h(paramString, ".temp", "", false);
-      if ((!i.eK(str)) && (d.n.n.mB(paramString, ".temp"))) {
-        i.lC(paramString, str);
+      if ((!i.eA(str)) && (d.n.n.nc(paramString, ".temp"))) {
+        i.lZ(paramString, str);
       }
       AppMethodBeat.o(108194);
       return;
@@ -371,16 +373,16 @@ public final class SpringCardActivity
   public final void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(108190);
-    ad.i("MicroMsg.SpringCardActivity", "onError!!! mediaId[%s] errorMsg[%s].", new Object[] { paramString2, paramString3 });
-    com.tencent.mm.plugin.report.service.h.vKh.dB(1263, 10);
-    paramString1 = this.osz;
+    ac.i("MicroMsg.SpringCardActivity", "onError!!! mediaId[%s] errorMsg[%s].", new Object[] { paramString2, paramString3 });
+    com.tencent.mm.plugin.report.service.h.wUl.dB(1263, 10);
+    paramString1 = this.oVZ;
     if (paramString1 == null) {
-      k.aPZ("brandCardBlessingStyleImgMedia");
+      k.aVY("brandCardBlessingStyleImgMedia");
     }
     paramString1.setVisibility(0);
-    paramString1 = this.osA;
+    paramString1 = this.oWa;
     if (paramString1 == null) {
-      k.aPZ("brandCardBlessingStyleVideoMedia");
+      k.aVY("brandCardBlessingStyleVideoMedia");
     }
     paramString1.setVisibility(8);
     AppMethodBeat.o(108190);
@@ -389,76 +391,83 @@ public final class SpringCardActivity
   public final void d(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(160278);
-    ad.d("MicroMsg.SpringCardActivity", "onGetVideoSize!!! mediaId[%s].", new Object[] { paramString2 });
+    ac.d("MicroMsg.SpringCardActivity", "onGetVideoSize!!! mediaId[%s].", new Object[] { paramString2 });
     AppMethodBeat.o(160278);
   }
   
-  public final void db(String paramString1, String paramString2)
+  public final void jdMethod_do(String paramString1, String paramString2)
   {
     AppMethodBeat.i(160277);
-    ad.d("MicroMsg.SpringCardActivity", "onPrepared!!! mediaId[%s].", new Object[] { paramString2 });
+    ac.d("MicroMsg.SpringCardActivity", "onPrepared!!! mediaId[%s].", new Object[] { paramString2 });
     AppMethodBeat.o(160277);
   }
   
-  public final void dc(String paramString1, String paramString2)
+  public final void dp(String paramString1, String paramString2)
   {
     AppMethodBeat.i(108191);
-    ad.d("MicroMsg.SpringCardActivity", "onVideoEnded!!! mediaId[%s].", new Object[] { paramString2 });
+    ac.d("MicroMsg.SpringCardActivity", "onVideoEnded!!! mediaId[%s].", new Object[] { paramString2 });
     AppMethodBeat.o(108191);
   }
   
-  public final void dd(String paramString1, String paramString2)
+  public final void dq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(160279);
-    ad.d("MicroMsg.SpringCardActivity", "onVideoPause!!! mediaId[%s].", new Object[] { paramString2 });
+    ac.d("MicroMsg.SpringCardActivity", "onVideoPause!!! mediaId[%s].", new Object[] { paramString2 });
     AppMethodBeat.o(160279);
   }
   
-  public final void de(String paramString1, String paramString2)
+  public final void dr(String paramString1, String paramString2)
   {
     AppMethodBeat.i(160280);
-    paramString1 = this.osA;
+    paramString1 = this.oWa;
     if (paramString1 == null) {
-      k.aPZ("brandCardBlessingStyleVideoMedia");
+      k.aVY("brandCardBlessingStyleVideoMedia");
     }
-    ad.d("MicroMsg.SpringCardActivity", "onVideoPlay!!! mediaId[%s], duration[%s].", new Object[] { paramString2, Integer.valueOf(paramString1.getVideoDurationSec()) });
+    ac.d("MicroMsg.SpringCardActivity", "onVideoPlay!!! mediaId[%s], duration[%s].", new Object[] { paramString2, Integer.valueOf(paramString1.getVideoDurationSec()) });
     if (this.duration <= 0)
     {
-      paramString1 = this.osA;
+      paramString1 = this.oWa;
       if (paramString1 == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
       this.duration = (paramString1.getVideoDurationSec() * 1000);
     }
     this.count += 1;
-    this.osL += 1;
-    ad.d("MicroMsg.SpringCardActivity", "videoInfo count: [%s] rptCount: [%s].", new Object[] { Integer.valueOf(this.count), Integer.valueOf(this.osL) });
+    this.oWl += 1;
+    ac.d("MicroMsg.SpringCardActivity", "videoInfo count: [%s] rptCount: [%s].", new Object[] { Integer.valueOf(this.count), Integer.valueOf(this.oWl) });
     AppMethodBeat.o(160280);
   }
   
-  public final void dg(String paramString1, String paramString2)
+  public final void ds(String paramString1, String paramString2)
   {
     AppMethodBeat.i(108192);
-    ad.d("MicroMsg.SpringCardActivity", "onVideoWaiting!!! mediaId[%s].", new Object[] { paramString2 });
+    ac.d("MicroMsg.SpringCardActivity", "onVideoWaiting!!! mediaId[%s].", new Object[] { paramString2 });
     AppMethodBeat.o(108192);
   }
   
-  public final void dh(String paramString1, String paramString2)
+  public final void dt(String paramString1, String paramString2)
   {
     AppMethodBeat.i(108193);
-    ad.d("MicroMsg.SpringCardActivity", "onVideoWaitingEnd!!! mediaId[%s].", new Object[] { paramString2 });
+    ac.d("MicroMsg.SpringCardActivity", "onVideoWaitingEnd!!! mediaId[%s].", new Object[] { paramString2 });
     AppMethodBeat.o(108193);
   }
   
-  public final void fy(String paramString)
+  public final void eJ(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(206852);
+    ac.d("MicroMsg.SpringCardActivity", "onVideoFirstFrameDraw!!! mediaId[%s].", new Object[] { paramString2 });
+    AppMethodBeat.o(206852);
+  }
+  
+  public final void fo(String paramString)
   {
     AppMethodBeat.i(108196);
     k.h(paramString, "mediaId");
-    String str = this.osC;
+    String str = this.oWc;
     if (str != null)
     {
       if (k.g(str, paramString)) {
-        o.aCJ().k(paramString, null);
+        o.aJz().k(paramString, null);
       }
       AppMethodBeat.o(108196);
       return;
@@ -471,40 +480,33 @@ public final class SpringCardActivity
     return 2131495639;
   }
   
+  public final void i(final String paramString, final long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(108201);
+    k.h(paramString, "mediaId");
+    ac.d("MicroMsg.SpringCardActivity", "onProgress!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    if ((this.oWd != null) && (this.oWc != null) && (k.g(this.oWc, paramString))) {
+      ap.f((Runnable)new o(this, paramString, paramLong1, paramLong2));
+    }
+    AppMethodBeat.o(108201);
+  }
+  
   public final boolean isVideoDataAvailable(String paramString, int paramInt1, int paramInt2)
   {
     boolean bool2 = false;
     AppMethodBeat.i(108198);
-    ad.d("MicroMsg.SpringCardActivity", "isVideoDataAvailable!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    String str = this.osC;
+    ac.d("MicroMsg.SpringCardActivity", "isVideoDataAvailable!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    String str = this.oWc;
     boolean bool1 = bool2;
     if (str != null)
     {
       bool1 = bool2;
       if (k.g(str, paramString)) {
-        bool1 = o.aCJ().isVideoDataAvailable(paramString, paramInt1, paramInt2);
+        bool1 = o.aJz().isVideoDataAvailable(paramString, paramInt1, paramInt2);
       }
     }
     AppMethodBeat.o(108198);
     return bool1;
-  }
-  
-  public final void jw(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(204987);
-    ad.d("MicroMsg.SpringCardActivity", "onVideoFirstFrameDraw!!! mediaId[%s].", new Object[] { paramString2 });
-    AppMethodBeat.o(204987);
-  }
-  
-  public final void k(final String paramString, final long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(108201);
-    k.h(paramString, "mediaId");
-    ad.d("MicroMsg.SpringCardActivity", "onProgress!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if ((this.osD != null) && (this.osC != null) && (k.g(this.osC, paramString))) {
-      aq.f((Runnable)new o(this, paramString, paramLong1, paramLong2));
-    }
-    AppMethodBeat.o(108201);
   }
   
   public final void onC2CDownloadCompleted(final String paramString, CdnLogic.C2CDownloadResult paramC2CDownloadResult)
@@ -514,7 +516,7 @@ public final class SpringCardActivity
     k.h(paramC2CDownloadResult, "result");
     if (paramC2CDownloadResult.errorCode != 0)
     {
-      com.tencent.mm.plugin.report.service.h.vKh.dB(1263, 9);
+      com.tencent.mm.plugin.report.service.h.wUl.dB(1263, 9);
       AppMethodBeat.o(108189);
       return;
     }
@@ -527,14 +529,14 @@ public final class SpringCardActivity
     AppMethodBeat.i(108179);
     super.onCreate(paramBundle);
     getWindow().addFlags(2097280);
-    this.csO = new Handler(getMainLooper());
+    this.cpW = new Handler(getMainLooper());
     setMMTitle("");
-    setBackBtn((MenuItem.OnMenuItemClickListener)new SpringCardActivity.d(this), 2131690535);
+    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this), 2131690535);
     paramBundle = getContext();
     k.g(paramBundle, "context");
     int i = paramBundle.getResources().getColor(2131100950);
     setActionbarColor(i);
-    Ak(i);
+    Bc(i);
     hideActionbarLine();
     paramBundle = getWindow();
     k.g(paramBundle, "window");
@@ -543,180 +545,180 @@ public final class SpringCardActivity
     paramBundle.setSystemUiVisibility(2050);
     paramBundle = findViewById(2131304246);
     k.g(paramBundle, "findViewById(R.id.root_layout)");
-    this.osi = ((ViewGroup)paramBundle);
+    this.oVI = ((ViewGroup)paramBundle);
     paramBundle = findViewById(2131297434);
     k.g(paramBundle, "findViewById(R.id.bottom_brand_bg_img)");
-    this.osj = ((MMAnimateView)paramBundle);
+    this.oVJ = ((MMAnimateView)paramBundle);
     paramBundle = findViewById(2131297437);
     k.g(paramBundle, "findViewById(R.id.bottom…and_clickable_txt_layout)");
-    this.osk = paramBundle;
-    paramBundle = this.osk;
+    this.oVK = paramBundle;
+    paramBundle = this.oVK;
     if (paramBundle == null) {
-      k.aPZ("bottomBrandClickableTxtLayout");
+      k.aVY("bottomBrandClickableTxtLayout");
     }
     paramBundle.setOnClickListener((View.OnClickListener)new b(this));
     paramBundle = findViewById(2131297436);
     k.g(paramBundle, "findViewById(R.id.bottom_brand_click_txt)");
-    this.osl = ((TextView)paramBundle);
+    this.oVL = ((TextView)paramBundle);
     paramBundle = findViewById(2131297435);
     k.g(paramBundle, "findViewById(R.id.bottom_brand_click_img)");
-    this.osm = ((WeImageView)paramBundle);
+    this.oVM = ((WeImageView)paramBundle);
     paramBundle = findViewById(2131297438);
     k.g(paramBundle, "findViewById(R.id.bottom_brand_intro_txt)");
-    this.osn = ((TextView)paramBundle);
+    this.oVN = ((TextView)paramBundle);
     paramBundle = findViewById(2131301713);
     k.g(paramBundle, "findViewById(R.id.lucky_bag_loading_img)");
-    this.oso = ((MMAnimateView)paramBundle);
+    this.oVO = ((MMAnimateView)paramBundle);
     Object localObject1;
     Object localObject2;
-    if (i.eK(PluginEggSpring.orz))
+    if (i.eA(PluginEggSpring.oUZ))
     {
-      paramBundle = this.oso;
+      paramBundle = this.oVO;
       if (paramBundle == null) {
-        k.aPZ("luckyBagLoadingImg");
+        k.aVY("luckyBagLoadingImg");
       }
-      paramBundle.setImageFilePath(PluginEggSpring.orz);
+      paramBundle.setImageFilePath(PluginEggSpring.oUZ);
       paramBundle = findViewById(2131297500);
       k.g(paramBundle, "findViewById(R.id.brand_card_layout)");
-      this.osp = ((ViewGroup)paramBundle);
+      this.oVP = ((ViewGroup)paramBundle);
       paramBundle = findViewById(2131297504);
       k.g(paramBundle, "findViewById(R.id.brand_card_title_layout)");
-      this.osq = paramBundle;
+      this.oVQ = paramBundle;
       paramBundle = findViewById(2131297505);
       k.g(paramBundle, "findViewById(R.id.brand_card_title_logo)");
-      this.osr = ((MMAnimateView)paramBundle);
+      this.oVR = ((MMAnimateView)paramBundle);
       paramBundle = findViewById(2131297506);
       k.g(paramBundle, "findViewById(R.id.brand_card_title_name)");
-      this.oss = ((TextView)paramBundle);
+      this.oVS = ((TextView)paramBundle);
       paramBundle = findViewById(2131297501);
       k.g(paramBundle, "findViewById(R.id.brand_card_main_wording)");
-      this.ost = ((TextView)paramBundle);
+      this.oVT = ((TextView)paramBundle);
       paramBundle = findViewById(2131297503);
       k.g(paramBundle, "findViewById(R.id.brand_card_sub_wording)");
-      this.osu = ((TextView)paramBundle);
+      this.oVU = ((TextView)paramBundle);
       paramBundle = findViewById(2131297494);
       k.g(paramBundle, "findViewById(R.id.brand_card_accept_btn)");
-      this.osv = ((Button)paramBundle);
-      paramBundle = this.osv;
+      this.oVV = ((Button)paramBundle);
+      paramBundle = this.oVV;
       if (paramBundle == null) {
-        k.aPZ("brandCardAcceptBtn");
+        k.aVY("brandCardAcceptBtn");
       }
       paramBundle.setOnClickListener((View.OnClickListener)new c(this));
       paramBundle = findViewById(2131297502);
       k.g(paramBundle, "findViewById(R.id.brand_card_media_layout)");
-      this.osw = ((ViewGroup)paramBundle);
+      this.oVW = ((ViewGroup)paramBundle);
       paramBundle = findViewById(2131297499);
       k.g(paramBundle, "findViewById(R.id.brand_card_img_media)");
-      this.osx = ((MMAnimateView)paramBundle);
+      this.oVX = ((MMAnimateView)paramBundle);
       paramBundle = findViewById(2131297497);
       k.g(paramBundle, "findViewById(R.id.brand_…rd_blessing_style_layout)");
-      this.osy = ((ViewGroup)paramBundle);
+      this.oVY = ((ViewGroup)paramBundle);
       paramBundle = findViewById(2131297496);
       k.g(paramBundle, "findViewById(R.id.brand_…blessing_style_img_media)");
-      this.osz = ((MMAnimateView)paramBundle);
-      paramBundle = this.osz;
+      this.oVZ = ((MMAnimateView)paramBundle);
+      paramBundle = this.oVZ;
       if (paramBundle == null) {
-        k.aPZ("brandCardBlessingStyleImgMedia");
+        k.aVY("brandCardBlessingStyleImgMedia");
       }
       paramBundle.setDefaultImageResource(2131231321);
       paramBundle = findViewById(2131297498);
       k.g(paramBundle, "findViewById(R.id.brand_…essing_style_video_media)");
-      this.osA = ((SpringEggVideoView)paramBundle);
+      this.oWa = ((SpringEggVideoView)paramBundle);
       paramBundle = findViewById(2131297495);
       k.g(paramBundle, "findViewById(R.id.brand_…lessing_style_bottom_img)");
-      this.osB = ((MMAnimateView)paramBundle);
-      paramBundle = this.osB;
+      this.oWb = ((MMAnimateView)paramBundle);
+      paramBundle = this.oWb;
       if (paramBundle == null) {
-        k.aPZ("brandCardBlessingStyleBottomImg");
+        k.aVY("brandCardBlessingStyleBottomImg");
       }
       paramBundle.setDefaultImageResource(2131231319);
-      ad.d("MicroMsg.SpringCardActivity", "init config view.");
+      ac.d("MicroMsg.SpringCardActivity", "init config view.");
       paramBundle = getIntent().getStringExtra("SpringCard.BrandBtmImg");
-      if (!bt.isNullOrNil(paramBundle))
+      if (!bs.isNullOrNil(paramBundle))
       {
-        localObject1 = this.osj;
+        localObject1 = this.oVJ;
         if (localObject1 == null) {
-          k.aPZ("bottomBrandBgImg");
+          k.aVY("bottomBrandBgImg");
         }
         localObject2 = new StringBuilder();
-        com.tencent.mm.plugin.eggspring.b.b.a locala = com.tencent.mm.plugin.eggspring.b.b.orX;
-        ((MMAnimateView)localObject1).setImageFilePath(com.tencent.mm.plugin.eggspring.b.b.a.bTO() + paramBundle);
+        com.tencent.mm.plugin.eggspring.b.b.a locala = com.tencent.mm.plugin.eggspring.b.b.oVx;
+        ((MMAnimateView)localObject1).setImageFilePath(com.tencent.mm.plugin.eggspring.b.b.a.cbc() + paramBundle);
       }
       paramBundle = getIntent().getStringExtra("SpringCard.BrandBgColor");
-      if (!bt.isNullOrNil(paramBundle))
+      if (!bs.isNullOrNil(paramBundle))
       {
         i = Color.parseColor(paramBundle);
-        paramBundle = this.osi;
+        paramBundle = this.oVI;
         if (paramBundle == null) {
-          k.aPZ("rootLayout");
+          k.aVY("rootLayout");
         }
         paramBundle.setBackgroundColor(i);
         setActionbarColor(i);
-        Ak(i);
+        Bc(i);
       }
       paramBundle = getIntent().getStringExtra("SpringCard.BtmMainTile");
-      if (!bt.isNullOrNil(paramBundle))
+      if (!bs.isNullOrNil(paramBundle))
       {
-        localObject1 = this.osl;
+        localObject1 = this.oVL;
         if (localObject1 == null) {
-          k.aPZ("bottomBrandClickableTxt");
+          k.aVY("bottomBrandClickableTxt");
         }
         ((TextView)localObject1).setText((CharSequence)paramBundle);
       }
       paramBundle = getIntent().getStringExtra("SpringCard.BtmMainTileColor");
-      if (!bt.isNullOrNil(paramBundle))
+      if (!bs.isNullOrNil(paramBundle))
       {
-        localObject1 = this.osl;
+        localObject1 = this.oVL;
         if (localObject1 == null) {
-          k.aPZ("bottomBrandClickableTxt");
+          k.aVY("bottomBrandClickableTxt");
         }
         ((TextView)localObject1).setTextColor(Color.parseColor(paramBundle));
-        localObject1 = this.osm;
+        localObject1 = this.oVM;
         if (localObject1 == null) {
-          k.aPZ("bottomBrandClickableImg");
+          k.aVY("bottomBrandClickableImg");
         }
         ((WeImageView)localObject1).setIconColor(Color.parseColor(paramBundle));
       }
       paramBundle = getIntent().getStringExtra("SpringCard.BtmSubTitle");
-      if (!bt.isNullOrNil(paramBundle))
+      if (!bs.isNullOrNil(paramBundle))
       {
-        localObject1 = this.osn;
+        localObject1 = this.oVN;
         if (localObject1 == null) {
-          k.aPZ("bottomBrandIntroTxt");
+          k.aVY("bottomBrandIntroTxt");
         }
         ((TextView)localObject1).setText((CharSequence)paramBundle);
       }
       paramBundle = getIntent().getStringExtra("SpringCard.BtmSubTitleColor");
-      if (!bt.isNullOrNil(paramBundle))
+      if (!bs.isNullOrNil(paramBundle))
       {
-        localObject1 = this.osn;
+        localObject1 = this.oVN;
         if (localObject1 == null) {
-          k.aPZ("bottomBrandIntroTxt");
+          k.aVY("bottomBrandIntroTxt");
         }
         ((TextView)localObject1).setTextColor(Color.parseColor(paramBundle));
       }
-      paramBundle = this.osz;
+      paramBundle = this.oVZ;
       if (paramBundle == null) {
-        k.aPZ("brandCardBlessingStyleImgMedia");
+        k.aVY("brandCardBlessingStyleImgMedia");
       }
       paramBundle.setImageResource(2131231321);
-      paramBundle = this.osB;
+      paramBundle = this.oWb;
       if (paramBundle == null) {
-        k.aPZ("brandCardBlessingStyleBottomImg");
+        k.aVY("brandCardBlessingStyleBottomImg");
       }
       paramBundle.setImageResource(2131231319);
-      paramBundle = this.csO;
+      paramBundle = this.cpW;
       if (paramBundle == null) {
-        k.aPZ("uiHandler");
+        k.aVY("uiHandler");
       }
-      paramBundle.postDelayed(this.osI, 3000L);
-      this.osE = System.currentTimeMillis();
+      paramBundle.postDelayed(this.oWi, 3000L);
+      this.oWe = System.currentTimeMillis();
       if (com.tencent.mm.sdk.platformtools.h.DEBUG)
       {
         paramBundle = findViewById(2131305173);
         k.g(paramBundle, "findViewById<Button>(R.id.start)");
         ((Button)paramBundle).setVisibility(0);
-        ((Button)findViewById(2131305173)).setOnClickListener((View.OnClickListener)new SpringCardActivity.g(this));
+        ((Button)findViewById(2131305173)).setOnClickListener((View.OnClickListener)new g(this));
         paramBundle = findViewById(2131306309);
         k.g(paramBundle, "findViewById<Button>(R.id.video)");
         ((Button)paramBundle).setVisibility(0);
@@ -726,54 +728,54 @@ public final class SpringCardActivity
         ((Button)paramBundle).setVisibility(0);
         ((Button)findViewById(2131304110)).setOnClickListener((View.OnClickListener)new i(this));
       }
-      com.tencent.mm.kernel.g.aeS().a(2809, (com.tencent.mm.al.g)this);
-      com.tencent.mm.kernel.g.aeS().a(2812, (com.tencent.mm.al.g)this);
-      this.hpg = getIntent().getStringExtra("SpringCard.KeyWord");
+      com.tencent.mm.kernel.g.agi().a(2809, (com.tencent.mm.ak.g)this);
+      com.tencent.mm.kernel.g.agi().a(2812, (com.tencent.mm.ak.g)this);
+      this.hPI = getIntent().getStringExtra("SpringCard.KeyWord");
       this.appId = getIntent().getStringExtra("SpringCard.AppId");
-      this.iYE = getIntent().getStringExtra("SpringCard.TraceId");
-      if ((!bt.isNullOrNil(this.hpg)) && (!bt.isNullOrNil(this.appId)) && (!bt.isNullOrNil(this.iYE))) {
+      this.jyU = getIntent().getStringExtra("SpringCard.TraceId");
+      if ((!bs.isNullOrNil(this.hPI)) && (!bs.isNullOrNil(this.appId)) && (!bs.isNullOrNil(this.jyU))) {
         break label1427;
       }
     }
     for (;;)
     {
-      this.osF = ((com.tencent.mm.app.n)new j(this));
-      paramBundle = AppForegroundDelegate.cKE;
-      localObject1 = this.osF;
+      this.oWf = ((com.tencent.mm.app.n)new j(this));
+      paramBundle = AppForegroundDelegate.cHM;
+      localObject1 = this.oWf;
       if (localObject1 == null) {
-        k.aPZ("appForegroundLis");
+        k.aVY("appForegroundLis");
       }
       paramBundle.a((com.tencent.mm.app.n)localObject1);
       AppMethodBeat.o(108179);
       return;
-      paramBundle = this.oso;
+      paramBundle = this.oVO;
       if (paramBundle == null) {
-        k.aPZ("luckyBagLoadingImg");
+        k.aVY("luckyBagLoadingImg");
       }
       paramBundle.setImageResource(2131232880);
       break;
       label1427:
-      paramBundle = EmojiDebugUI.fKw;
-      if (EmojiDebugUI.aaM())
+      paramBundle = EmojiDebugUI.fOc;
+      if (EmojiDebugUI.abL())
       {
-        ad.d("MicroMsg.SpringCardActivity", "stop cgi!!!");
+        ac.d("MicroMsg.SpringCardActivity", "stop cgi!!!");
       }
       else
       {
-        paramBundle = this.hpg;
+        paramBundle = this.hPI;
         if (paramBundle == null) {
-          k.fvU();
+          k.fOy();
         }
         localObject1 = this.appId;
         if (localObject1 == null) {
-          k.fvU();
+          k.fOy();
         }
-        localObject2 = this.iYE;
+        localObject2 = this.jyU;
         if (localObject2 == null) {
-          k.fvU();
+          k.fOy();
         }
         paramBundle = new com.tencent.mm.plugin.eggspring.c.b(paramBundle, (String)localObject1, (String)localObject2);
-        com.tencent.mm.kernel.g.aeS().b((com.tencent.mm.al.n)paramBundle);
+        com.tencent.mm.kernel.g.agi().b((com.tencent.mm.ak.n)paramBundle);
       }
     }
   }
@@ -782,9 +784,9 @@ public final class SpringCardActivity
   {
     AppMethodBeat.i(108200);
     k.h(paramString, "mediaId");
-    ad.d("MicroMsg.SpringCardActivity", "onDataAvailable!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if ((this.osD != null) && (this.osC != null) && (k.g(this.osC, paramString))) {
-      aq.f((Runnable)new k(this, paramString, paramLong1, paramLong2));
+    ac.d("MicroMsg.SpringCardActivity", "onDataAvailable!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    if ((this.oWd != null) && (this.oWc != null) && (k.g(this.oWc, paramString))) {
+      ap.f((Runnable)new k(this, paramString, paramLong1, paramLong2));
     }
     AppMethodBeat.o(108200);
   }
@@ -793,43 +795,43 @@ public final class SpringCardActivity
   {
     AppMethodBeat.i(108183);
     super.onDestroy();
-    Object localObject = this.osC;
+    Object localObject = this.oWc;
     if (localObject != null) {
-      o.aCJ().k((String)localObject, null);
+      o.aJz().k((String)localObject, null);
     }
-    if (this.osM)
+    if (this.oWm)
     {
-      localObject = this.osA;
+      localObject = this.oWa;
       if (localObject == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
       ((SpringEggVideoView)localObject).onUIDestroy();
     }
-    com.tencent.mm.kernel.g.aeS().b(2809, (com.tencent.mm.al.g)this);
-    com.tencent.mm.kernel.g.aeS().b(2812, (com.tencent.mm.al.g)this);
-    ad.i("MicroMsg.SpringCardActivity", "videoInfo, count:[%s], rptCount:[%s], duration:[%s], curPoi:[%s].", new Object[] { Integer.valueOf(this.count), Integer.valueOf(this.osL), Integer.valueOf(this.duration), Integer.valueOf(this.osK) });
+    com.tencent.mm.kernel.g.agi().b(2809, (com.tencent.mm.ak.g)this);
+    com.tencent.mm.kernel.g.agi().b(2812, (com.tencent.mm.ak.g)this);
+    ac.i("MicroMsg.SpringCardActivity", "videoInfo, count:[%s], rptCount:[%s], duration:[%s], curPoi:[%s].", new Object[] { Integer.valueOf(this.count), Integer.valueOf(this.oWl), Integer.valueOf(this.duration), Integer.valueOf(this.oWk) });
     if (this.count >= 0)
     {
-      this.osJ = (this.count * this.duration + this.osK);
-      localObject = com.tencent.mm.plugin.eggspring.a.orI;
-      localObject = com.tencent.mm.plugin.eggspring.a.bTM();
+      this.oWj = (this.count * this.duration + this.oWk);
+      localObject = com.tencent.mm.plugin.eggspring.a.oVi;
+      localObject = com.tencent.mm.plugin.eggspring.a.cba();
       int i = this.duration;
-      int j = this.osL;
-      int k = this.osJ;
-      com.tencent.mm.plugin.report.service.h.vKh.f(18916, new Object[] { ((com.tencent.mm.plugin.eggspring.a)localObject).orE, ((com.tencent.mm.plugin.eggspring.a)localObject).orG, Integer.valueOf(16), "", Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+      int j = this.oWl;
+      int k = this.oWj;
+      com.tencent.mm.plugin.report.service.h.wUl.f(18916, new Object[] { ((com.tencent.mm.plugin.eggspring.a)localObject).oVe, ((com.tencent.mm.plugin.eggspring.a)localObject).oVg, Integer.valueOf(16), "", Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
     }
     for (;;)
     {
-      localObject = AppForegroundDelegate.cKE;
-      com.tencent.mm.app.n localn = this.osF;
+      localObject = AppForegroundDelegate.cHM;
+      com.tencent.mm.app.n localn = this.oWf;
       if (localn == null) {
-        k.aPZ("appForegroundLis");
+        k.aVY("appForegroundLis");
       }
       ((AppForegroundDelegate)localObject).b(localn);
       AppMethodBeat.o(108183);
       return;
-      localObject = com.tencent.mm.plugin.eggspring.a.orI;
-      com.tencent.mm.plugin.eggspring.a.bTM().Aj(16);
+      localObject = com.tencent.mm.plugin.eggspring.a.oVi;
+      com.tencent.mm.plugin.eggspring.a.cba().Bb(16);
     }
   }
   
@@ -837,7 +839,7 @@ public final class SpringCardActivity
   {
     AppMethodBeat.i(108188);
     k.h(paramString, "filekey");
-    ad.d("MicroMsg.SpringCardActivity", "onDownloadProgressChanged, fileKey [%s], finished [%s], total [%s].", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    ac.d("MicroMsg.SpringCardActivity", "onDownloadProgressChanged, fileKey [%s], finished [%s], total [%s].", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
     AppMethodBeat.o(108188);
   }
   
@@ -845,17 +847,17 @@ public final class SpringCardActivity
   {
     AppMethodBeat.i(108182);
     super.onPause();
-    if (this.osM)
+    if (this.oWm)
     {
-      SpringEggVideoView localSpringEggVideoView = this.osA;
+      SpringEggVideoView localSpringEggVideoView = this.oWa;
       if (localSpringEggVideoView == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
-      this.osK = localSpringEggVideoView.getCurrPosMs();
-      ad.d("MicroMsg.SpringCardActivity", "videoInfo, curPoi: [%s].", new Object[] { Integer.valueOf(this.osK) });
-      localSpringEggVideoView = this.osA;
+      this.oWk = localSpringEggVideoView.getCurrPosMs();
+      ac.d("MicroMsg.SpringCardActivity", "videoInfo, curPoi: [%s].", new Object[] { Integer.valueOf(this.oWk) });
+      localSpringEggVideoView = this.oWa;
       if (localSpringEggVideoView == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
       localSpringEggVideoView.onUIPause();
     }
@@ -866,168 +868,168 @@ public final class SpringCardActivity
   {
     AppMethodBeat.i(108181);
     super.onResume();
-    Object localObject = com.tencent.mm.plugin.eggspring.a.orI;
-    com.tencent.mm.plugin.eggspring.a.bTM().Aj(1);
-    if (this.osM)
+    Object localObject = com.tencent.mm.plugin.eggspring.a.oVi;
+    com.tencent.mm.plugin.eggspring.a.cba().Bb(1);
+    if (this.oWm)
     {
-      localObject = this.osA;
+      localObject = this.oWa;
       if (localObject == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
       ((SpringEggVideoView)localObject).onUIResume();
     }
     AppMethodBeat.o(108181);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(108184);
     k.h(paramn, "scene");
-    ad.i("MicroMsg.SpringCardActivity", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.SpringCardActivity", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     Object localObject1;
     if (2809 == paramn.getType())
     {
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        com.tencent.mm.plugin.report.service.h.vKh.dB(1263, 5);
+        com.tencent.mm.plugin.report.service.h.wUl.dB(1263, 5);
         AppMethodBeat.o(108184);
         return;
       }
-      if (this.osN)
+      if (this.oWn)
       {
-        ad.i("MicroMsg.SpringCardActivity", "card is showing, return.");
+        ac.i("MicroMsg.SpringCardActivity", "card is showing, return.");
         AppMethodBeat.o(108184);
         return;
       }
-      this.osd = ((com.tencent.mm.plugin.eggspring.c.b)paramn).osd;
-      if (this.osd == null) {
+      this.oVD = ((com.tencent.mm.plugin.eggspring.c.b)paramn).oVD;
+      if (this.oVD == null) {
         break label3226;
       }
-      ad.i("MicroMsg.SpringCardActivity", "brandCardContent: %s.", new Object[] { String.valueOf(this.osd) });
-      paramString = com.tencent.mm.plugin.eggspring.a.orI;
-      paramn = com.tencent.mm.plugin.eggspring.a.bTM();
-      paramString = this.osd;
+      ac.i("MicroMsg.SpringCardActivity", "brandCardContent: %s.", new Object[] { String.valueOf(this.oVD) });
+      paramString = com.tencent.mm.plugin.eggspring.a.oVi;
+      paramn = com.tencent.mm.plugin.eggspring.a.cba();
+      paramString = this.oVD;
       if (paramString != null)
       {
-        paramString = Integer.valueOf(paramString.orW);
-        paramn.orG = paramString;
-        if (this.osd != null)
+        paramString = Integer.valueOf(paramString.oVw);
+        paramn.oVg = paramString;
+        if (this.oVD != null)
         {
-          localObject1 = this.osd;
+          localObject1 = this.oVD;
           if (localObject1 != null)
           {
-            if ((bt.isNullOrNil(((com.tencent.mm.plugin.eggspring.b.a)localObject1).orM)) || (((com.tencent.mm.plugin.eggspring.b.a)localObject1).orO == null)) {
+            if ((bs.isNullOrNil(((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVm)) || (((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVo == null)) {
               break label498;
             }
-            paramString = com.tencent.mm.plugin.eggspring.a.orI;
-            com.tencent.mm.plugin.eggspring.a.bTM().Aj(2);
-            paramString = this.osl;
+            paramString = com.tencent.mm.plugin.eggspring.a.oVi;
+            com.tencent.mm.plugin.eggspring.a.cba().Bb(2);
+            paramString = this.oVL;
             if (paramString == null) {
-              k.aPZ("bottomBrandClickableTxt");
+              k.aVY("bottomBrandClickableTxt");
             }
-            paramString.setText((CharSequence)((com.tencent.mm.plugin.eggspring.b.a)localObject1).orM);
-            paramString = this.osm;
+            paramString.setText((CharSequence)((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVm);
+            paramString = this.oVM;
             if (paramString == null) {
-              k.aPZ("bottomBrandClickableImg");
+              k.aVY("bottomBrandClickableImg");
             }
             paramString.setVisibility(0);
-            if ((1 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orL) || (!bt.isNullOrNil(((com.tencent.mm.plugin.eggspring.b.a)localObject1).orR))) {
+            if ((1 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVl) || (!bs.isNullOrNil(((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVr))) {
               break label550;
             }
-            ad.e("MicroMsg.SpringCardActivity", "red pocket type, accept url is invalid!!!");
+            ac.e("MicroMsg.SpringCardActivity", "red pocket type, accept url is invalid!!!");
           }
         }
       }
       for (;;)
       {
-        paramString = this.osd;
+        paramString = this.oVD;
         if (paramString == null) {
           break label2594;
         }
-        if (4 != paramString.orL) {
+        if (4 != paramString.oVl) {
           break label2470;
         }
-        if (1 != paramString.orU) {
+        if (1 != paramString.oVu) {
           break label2167;
         }
-        if (!bt.isNullOrNil(paramString.orN))
+        if (!bs.isNullOrNil(paramString.oVn))
         {
-          paramn = paramString.orN;
+          paramn = paramString.oVn;
           if (paramn == null) {
-            k.fvU();
+            k.fOy();
           }
-          if (!i.eK(yr(paramn))) {
+          if (!i.eA(Cw(paramn))) {
             break label2144;
           }
-          paramn = this.osz;
+          paramn = this.oVZ;
           if (paramn == null) {
-            k.aPZ("brandCardBlessingStyleImgMedia");
+            k.aVY("brandCardBlessingStyleImgMedia");
           }
-          localObject1 = paramString.orN;
+          localObject1 = paramString.oVn;
           if (localObject1 == null) {
-            k.fvU();
+            k.fOy();
           }
-          paramn.setImageFilePath(yr((String)localObject1));
-          Al(0);
+          paramn.setImageFilePath(Cw((String)localObject1));
+          Bd(0);
         }
         label408:
-        if (bt.isNullOrNil(paramString.orT)) {
+        if (bs.isNullOrNil(paramString.oVt)) {
           break label2587;
         }
-        paramn = paramString.orT;
+        paramn = paramString.oVt;
         if (paramn == null) {
-          k.fvU();
+          k.fOy();
         }
-        if (!i.eK(yr(paramn))) {
+        if (!i.eA(Cw(paramn))) {
           break label2446;
         }
-        paramn = this.osB;
+        paramn = this.oWb;
         if (paramn == null) {
-          k.aPZ("brandCardBlessingStyleBottomImg");
+          k.aVY("brandCardBlessingStyleBottomImg");
         }
-        paramString = paramString.orT;
+        paramString = paramString.oVt;
         if (paramString == null) {
-          k.fvU();
+          k.fOy();
         }
-        paramn.setImageFilePath(yr(paramString));
-        Al(1);
+        paramn.setImageFilePath(Cw(paramString));
+        Bd(1);
         AppMethodBeat.o(108184);
         return;
         paramString = null;
         break;
         label498:
-        if (((com.tencent.mm.plugin.eggspring.b.a)localObject1).orO == null) {}
+        if (((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVo == null) {}
         for (boolean bool = true;; bool = false)
         {
-          ad.e("MicroMsg.SpringCardActivity", "not support jump!!! jumpInfo==null? [%s].", new Object[] { Boolean.valueOf(bool) });
-          com.tencent.mm.plugin.report.service.h.vKh.dB(1263, 8);
+          ac.e("MicroMsg.SpringCardActivity", "not support jump!!! jumpInfo==null? [%s].", new Object[] { Boolean.valueOf(bool) });
+          com.tencent.mm.plugin.report.service.h.wUl.dB(1263, 8);
           break;
         }
         label550:
-        if ((2 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orL) || (((com.tencent.mm.plugin.eggspring.b.a)localObject1).orS != null)) {
+        if ((2 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVl) || (((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVs != null)) {
           break label579;
         }
-        ad.e("MicroMsg.SpringCardActivity", "coupon type, couponInfo is null!!!");
+        ac.e("MicroMsg.SpringCardActivity", "coupon type, couponInfo is null!!!");
       }
       label579:
-      if (4 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orL)
+      if (4 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVl)
       {
-        paramString = this.osy;
+        paramString = this.oVY;
         if (paramString == null) {
-          k.aPZ("brandCardBlessingStyleLayout");
+          k.aVY("brandCardBlessingStyleLayout");
         }
         f(paramString, ao.fromDPToPix((Context)getContext(), 144));
-        paramString = this.osz;
+        paramString = this.oVZ;
         if (paramString == null) {
-          k.aPZ("brandCardBlessingStyleImgMedia");
+          k.aVY("brandCardBlessingStyleImgMedia");
         }
         paramString = (View)paramString;
-        if (2 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orU) {
+        if (2 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVu) {
           break label3233;
         }
-        paramString = this.osA;
+        paramString = this.oWa;
         if (paramString == null) {
-          k.aPZ("brandCardBlessingStyleVideoMedia");
+          k.aVY("brandCardBlessingStyleVideoMedia");
         }
         paramString = (View)paramString;
       }
@@ -1039,12 +1041,12 @@ public final class SpringCardActivity
     {
       Object localObject2;
       Object localObject3;
-      if (1 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orV)
+      if (1 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVv)
       {
-        if (2 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orU)
+        if (2 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVu)
         {
-          paramn = com.tencent.mm.plugin.eggspring.a.orI;
-          com.tencent.mm.plugin.eggspring.a.bTM().Aj(6);
+          paramn = com.tencent.mm.plugin.eggspring.a.oVi;
+          com.tencent.mm.plugin.eggspring.a.cba().Bb(6);
         }
         for (;;)
         {
@@ -1058,148 +1060,148 @@ public final class SpringCardActivity
           localObject2 = getContext();
           k.g(localObject2, "context");
           localObject2 = new RelativeLayout.LayoutParams(paramInt1, ((AppCompatActivity)localObject2).getResources().getDimensionPixelSize(2131165914));
-          localObject3 = this.osB;
+          localObject3 = this.oWb;
           if (localObject3 == null) {
-            k.aPZ("brandCardBlessingStyleBottomImg");
+            k.aVY("brandCardBlessingStyleBottomImg");
           }
           ((RelativeLayout.LayoutParams)localObject2).addRule(2, ((MMAnimateView)localObject3).getId());
           ((RelativeLayout.LayoutParams)localObject2).addRule(14);
-          localObject3 = this.osy;
+          localObject3 = this.oVY;
           if (localObject3 == null) {
-            k.aPZ("brandCardBlessingStyleLayout");
+            k.aVY("brandCardBlessingStyleLayout");
           }
           ((ViewGroup)localObject3).removeView(paramString);
           localObject3 = new FrameLayout.LayoutParams(-1, -1);
           paramString.setLayoutParams((ViewGroup.LayoutParams)localObject3);
           paramn.addView(paramString, (ViewGroup.LayoutParams)localObject3);
-          paramString = this.osy;
+          paramString = this.oVY;
           if (paramString == null) {
-            k.aPZ("brandCardBlessingStyleLayout");
+            k.aVY("brandCardBlessingStyleLayout");
           }
           paramString.addView((View)paramn, (ViewGroup.LayoutParams)localObject2);
-          if (1 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orU) {
+          if (1 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVu) {
             break;
           }
-          paramString = this.osz;
+          paramString = this.oVZ;
           if (paramString == null) {
-            k.aPZ("brandCardBlessingStyleImgMedia");
+            k.aVY("brandCardBlessingStyleImgMedia");
           }
           paramString.setDefaultImageResource(2131231320);
-          paramString = this.osz;
+          paramString = this.oVZ;
           if (paramString == null) {
-            k.aPZ("brandCardBlessingStyleImgMedia");
+            k.aVY("brandCardBlessingStyleImgMedia");
           }
           paramString.setImageResource(2131231320);
           break;
-          paramn = com.tencent.mm.plugin.eggspring.a.orI;
-          com.tencent.mm.plugin.eggspring.a.bTM().Aj(8);
+          paramn = com.tencent.mm.plugin.eggspring.a.oVi;
+          com.tencent.mm.plugin.eggspring.a.cba().Bb(8);
         }
       }
-      if (2 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orV) {
+      if (2 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVv) {
         break;
       }
-      if (2 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orU)
+      if (2 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVu)
       {
-        paramn = com.tencent.mm.plugin.eggspring.a.orI;
-        com.tencent.mm.plugin.eggspring.a.bTM().Aj(5);
+        paramn = com.tencent.mm.plugin.eggspring.a.oVi;
+        com.tencent.mm.plugin.eggspring.a.cba().Bb(5);
       }
       for (;;)
       {
-        paramn = this.osy;
+        paramn = this.oVY;
         if (paramn == null) {
-          k.aPZ("brandCardBlessingStyleLayout");
+          k.aVY("brandCardBlessingStyleLayout");
         }
         paramn.removeView(paramString);
         paramn = new RelativeLayout.LayoutParams(-2, -2);
-        localObject1 = this.osB;
+        localObject1 = this.oWb;
         if (localObject1 == null) {
-          k.aPZ("brandCardBlessingStyleBottomImg");
+          k.aVY("brandCardBlessingStyleBottomImg");
         }
         paramn.addRule(2, ((MMAnimateView)localObject1).getId());
         paramn.addRule(14);
-        localObject1 = this.osy;
+        localObject1 = this.oVY;
         if (localObject1 == null) {
-          k.aPZ("brandCardBlessingStyleLayout");
+          k.aVY("brandCardBlessingStyleLayout");
         }
         ((ViewGroup)localObject1).addView(paramString, (ViewGroup.LayoutParams)paramn);
         break;
-        paramn = com.tencent.mm.plugin.eggspring.a.orI;
-        com.tencent.mm.plugin.eggspring.a.bTM().Aj(7);
+        paramn = com.tencent.mm.plugin.eggspring.a.oVi;
+        com.tencent.mm.plugin.eggspring.a.cba().Bb(7);
       }
-      if ((1 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orL) && (2 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orL)) {
+      if ((1 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVl) && (2 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVl)) {
         break;
       }
       paramString = getIntent().getStringExtra("SpringCard.BrandIcon");
-      if (!bt.isNullOrNil(paramString))
+      if (!bs.isNullOrNil(paramString))
       {
-        paramn = this.osr;
+        paramn = this.oVR;
         if (paramn == null) {
-          k.aPZ("brandCardTitleLogo");
+          k.aVY("brandCardTitleLogo");
         }
         localObject2 = new StringBuilder();
-        localObject3 = com.tencent.mm.plugin.eggspring.b.b.orX;
-        paramn.setImageFilePath(com.tencent.mm.plugin.eggspring.b.b.a.bTO() + paramString);
+        localObject3 = com.tencent.mm.plugin.eggspring.b.b.oVx;
+        paramn.setImageFilePath(com.tencent.mm.plugin.eggspring.b.b.a.cbc() + paramString);
       }
       paramString = getIntent().getStringExtra("SpringCard.BrandName");
-      if (!bt.isNullOrNil(paramString))
+      if (!bs.isNullOrNil(paramString))
       {
-        paramn = this.oss;
+        paramn = this.oVS;
         if (paramn == null) {
-          k.aPZ("brandCardTitleName");
+          k.aVY("brandCardTitleName");
         }
         paramn.setText((CharSequence)paramString);
       }
       paramString = "";
       paramn = "";
-      if (1 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orL)
+      if (1 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVl)
       {
         paramString = getIntent().getStringExtra("SpringCard.BrandRedPocketCoverMainTitle");
         paramn = getIntent().getStringExtra("SpringCard.BrandRedPocketCoverSubTitle");
         label1318:
-        if (!bt.isNullOrNil(paramString))
+        if (!bs.isNullOrNil(paramString))
         {
-          localObject2 = this.ost;
+          localObject2 = this.oVT;
           if (localObject2 == null) {
-            k.aPZ("brandCardMainWording");
+            k.aVY("brandCardMainWording");
           }
           ((TextView)localObject2).setText((CharSequence)paramString);
         }
-        if (!bt.isNullOrNil(paramn))
+        if (!bs.isNullOrNil(paramn))
         {
-          paramString = this.osu;
+          paramString = this.oVU;
           if (paramString == null) {
-            k.aPZ("brandCardSubWording");
+            k.aVY("brandCardSubWording");
           }
           paramString.setText((CharSequence)paramn);
         }
-        if (!bt.isNullOrNil(((com.tencent.mm.plugin.eggspring.b.a)localObject1).orP))
+        if (!bs.isNullOrNil(((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVp))
         {
-          paramString = this.ost;
+          paramString = this.oVT;
           if (paramString == null) {
-            k.aPZ("brandCardMainWording");
+            k.aVY("brandCardMainWording");
           }
-          paramString.setText((CharSequence)((com.tencent.mm.plugin.eggspring.b.a)localObject1).orP);
+          paramString.setText((CharSequence)((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVp);
         }
-        if (!bt.isNullOrNil(((com.tencent.mm.plugin.eggspring.b.a)localObject1).orQ))
+        if (!bs.isNullOrNil(((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVq))
         {
-          paramString = this.osu;
+          paramString = this.oVU;
           if (paramString == null) {
-            k.aPZ("brandCardSubWording");
+            k.aVY("brandCardSubWording");
           }
-          paramString.setText((CharSequence)((com.tencent.mm.plugin.eggspring.b.a)localObject1).orQ);
+          paramString.setText((CharSequence)((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVq);
         }
-        paramString = this.osw;
+        paramString = this.oVW;
         if (paramString == null) {
-          k.aPZ("brandCardMediaLayout");
+          k.aVY("brandCardMediaLayout");
         }
         f(paramString, 0);
-        paramString = this.osw;
+        paramString = this.oVW;
         if (paramString == null) {
-          k.aPZ("brandCardMediaLayout");
+          k.aVY("brandCardMediaLayout");
         }
-        paramn = this.osx;
+        paramn = this.oVX;
         if (paramn == null) {
-          k.aPZ("brandCardImgMedia");
+          k.aVY("brandCardImgMedia");
         }
         paramString.removeView((View)paramn);
         paramString = new RoundedCornerFrameLayout((Context)getContext());
@@ -1214,13 +1216,13 @@ public final class SpringCardActivity
         localObject2 = getContext();
         k.g(localObject2, "context");
         paramn.topMargin = ((AppCompatActivity)localObject2).getResources().getDimensionPixelSize(2131166159);
-        localObject2 = this.osw;
+        localObject2 = this.oVW;
         if (localObject2 == null) {
-          k.aPZ("brandCardMediaLayout");
+          k.aVY("brandCardMediaLayout");
         }
         ((ViewGroup)localObject2).addView((View)paramString, (ViewGroup.LayoutParams)paramn);
         paramn = new FrameLayout.LayoutParams(-2, -2);
-        if (1 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orL) {
+        if (1 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVl) {
           break label2010;
         }
         localObject1 = getContext();
@@ -1229,65 +1231,65 @@ public final class SpringCardActivity
         localObject1 = getContext();
         k.g(localObject1, "context");
         paramn.height = ((AppCompatActivity)localObject1).getResources().getDimensionPixelSize(2131166751);
-        localObject1 = this.osx;
+        localObject1 = this.oVX;
         if (localObject1 == null) {
-          k.aPZ("brandCardImgMedia");
+          k.aVY("brandCardImgMedia");
         }
         ((MMAnimateView)localObject1).setImageResource(2131233816);
-        localObject1 = this.osv;
+        localObject1 = this.oVV;
         if (localObject1 == null) {
-          k.aPZ("brandCardAcceptBtn");
+          k.aVY("brandCardAcceptBtn");
         }
         ((Button)localObject1).setText(2131755116);
-        localObject1 = com.tencent.mm.plugin.eggspring.a.orI;
-        com.tencent.mm.plugin.eggspring.a.bTM().Aj(3);
+        localObject1 = com.tencent.mm.plugin.eggspring.a.oVi;
+        com.tencent.mm.plugin.eggspring.a.cba().Bb(3);
       }
       for (;;)
       {
-        localObject1 = this.osx;
+        localObject1 = this.oVX;
         if (localObject1 == null) {
-          k.aPZ("brandCardImgMedia");
+          k.aVY("brandCardImgMedia");
         }
         paramString.addView((View)localObject1, (ViewGroup.LayoutParams)paramn);
-        paramString = this.osq;
+        paramString = this.oVQ;
         if (paramString == null) {
-          k.aPZ("brandCardTitleLayout");
+          k.aVY("brandCardTitleLayout");
         }
         paramString.setVisibility(0);
-        paramString = this.ost;
+        paramString = this.oVT;
         if (paramString == null) {
-          k.aPZ("brandCardMainWording");
+          k.aVY("brandCardMainWording");
         }
         paramString.setVisibility(0);
-        paramString = this.osu;
+        paramString = this.oVU;
         if (paramString == null) {
-          k.aPZ("brandCardSubWording");
+          k.aVY("brandCardSubWording");
         }
         paramString.setVisibility(0);
-        paramString = this.osv;
+        paramString = this.oVV;
         if (paramString == null) {
-          k.aPZ("brandCardAcceptBtn");
+          k.aVY("brandCardAcceptBtn");
         }
         paramString.setVisibility(0);
-        paramString = this.osw;
+        paramString = this.oVW;
         if (paramString == null) {
-          k.aPZ("brandCardMediaLayout");
+          k.aVY("brandCardMediaLayout");
         }
         paramString.setVisibility(0);
-        paramString = this.osy;
+        paramString = this.oVY;
         if (paramString == null) {
-          k.aPZ("brandCardBlessingStyleLayout");
+          k.aVY("brandCardBlessingStyleLayout");
         }
         paramString.setVisibility(8);
         break;
-        if (2 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orL) {
+        if (2 != ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVl) {
           break label1318;
         }
         paramString = getIntent().getStringExtra("SpringCard.BrandCouponMainTitle");
         paramn = getIntent().getStringExtra("SpringCard.BrandCouponSubTitle");
         break label1318;
         label2010:
-        if (2 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).orL)
+        if (2 == ((com.tencent.mm.plugin.eggspring.b.a)localObject1).oVl)
         {
           localObject1 = getContext();
           k.g(localObject1, "context");
@@ -1295,120 +1297,120 @@ public final class SpringCardActivity
           localObject1 = getContext();
           k.g(localObject1, "context");
           paramn.height = ((AppCompatActivity)localObject1).getResources().getDimensionPixelSize(2131166076);
-          localObject1 = this.osx;
+          localObject1 = this.oVX;
           if (localObject1 == null) {
-            k.aPZ("brandCardImgMedia");
+            k.aVY("brandCardImgMedia");
           }
           ((MMAnimateView)localObject1).setImageResource(2131231861);
-          localObject1 = this.osv;
+          localObject1 = this.oVV;
           if (localObject1 == null) {
-            k.aPZ("brandCardAcceptBtn");
+            k.aVY("brandCardAcceptBtn");
           }
           ((Button)localObject1).setText(2131755113);
-          localObject1 = com.tencent.mm.plugin.eggspring.a.orI;
-          com.tencent.mm.plugin.eggspring.a.bTM().Aj(4);
+          localObject1 = com.tencent.mm.plugin.eggspring.a.oVi;
+          com.tencent.mm.plugin.eggspring.a.cba().Bb(4);
         }
       }
       label2144:
-      paramn = paramString.orN;
+      paramn = paramString.oVn;
       if (paramn == null) {
-        k.fvU();
+        k.fOy();
       }
-      Tg(paramn);
+      Xs(paramn);
       break label408;
       label2167:
-      if (2 != paramString.orU) {
+      if (2 != paramString.oVu) {
         break label408;
       }
-      paramn = this.osz;
+      paramn = this.oVZ;
       if (paramn == null) {
-        k.aPZ("brandCardBlessingStyleImgMedia");
+        k.aVY("brandCardBlessingStyleImgMedia");
       }
       paramn.setVisibility(8);
-      paramn = this.osA;
+      paramn = this.oWa;
       if (paramn == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
       paramn.setVisibility(0);
-      this.osM = true;
-      paramn = this.osd;
-      if ((paramn == null) || (bt.isNullOrNil(paramn.orN))) {
+      this.oWm = true;
+      paramn = this.oVD;
+      if ((paramn == null) || (bs.isNullOrNil(paramn.oVn))) {
         break label408;
       }
-      localObject1 = this.osA;
+      localObject1 = this.oWa;
       if (localObject1 == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
       ((SpringEggVideoView)localObject1).setLoop(true);
-      localObject1 = this.osA;
+      localObject1 = this.oWa;
       if (localObject1 == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
       ((SpringEggVideoView)localObject1).setIMMVideoViewCallback((h.b)this);
-      localObject1 = this.osA;
+      localObject1 = this.oWa;
       if (localObject1 == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
       ((SpringEggVideoView)localObject1).setIMMDownloadFinish((com.tencent.mm.pluginsdk.ui.h.a)this);
-      localObject1 = this.osA;
+      localObject1 = this.oWa;
       if (localObject1 == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
       ((SpringEggVideoView)localObject1).setIOnlineVideoProxy((com.tencent.mm.modelvideo.b)this);
-      localObject1 = this.osA;
+      localObject1 = this.oWa;
       if (localObject1 == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
-      ((SpringEggVideoView)localObject1).c(false, paramn.orN, 0);
-      localObject1 = this.osA;
+      ((SpringEggVideoView)localObject1).c(false, paramn.oVn, 0);
+      localObject1 = this.oWa;
       if (localObject1 == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
-      paramn = paramn.orN;
+      paramn = paramn.oVn;
       if (paramn == null) {
-        k.fvU();
+        k.fOy();
       }
-      ((SpringEggVideoView)localObject1).setFilepath(Th(paramn));
-      paramn = this.osA;
+      ((SpringEggVideoView)localObject1).setFilepath(Xt(paramn));
+      paramn = this.oWa;
       if (paramn == null) {
-        k.aPZ("brandCardBlessingStyleVideoMedia");
+        k.aVY("brandCardBlessingStyleVideoMedia");
       }
       paramn.start();
       break label408;
-      paramString = paramString.orT;
+      paramString = paramString.oVt;
       if (paramString == null) {
-        k.fvU();
+        k.fOy();
       }
-      Tg(paramString);
+      Xs(paramString);
       AppMethodBeat.o(108184);
       return;
       label2470:
-      if (((1 == paramString.orL) || (2 == paramString.orL)) && (!bt.isNullOrNil(paramString.orN)))
+      if (((1 == paramString.oVl) || (2 == paramString.oVl)) && (!bs.isNullOrNil(paramString.oVn)))
       {
-        paramn = paramString.orN;
+        paramn = paramString.oVn;
         if (paramn == null) {
-          k.fvU();
+          k.fOy();
         }
-        if (i.eK(yr(paramn)))
+        if (i.eA(Cw(paramn)))
         {
-          paramn = this.osx;
+          paramn = this.oVX;
           if (paramn == null) {
-            k.aPZ("brandCardImgMedia");
+            k.aVY("brandCardImgMedia");
           }
-          paramString = paramString.orN;
+          paramString = paramString.oVn;
           if (paramString == null) {
-            k.fvU();
+            k.fOy();
           }
-          paramn.setImageFilePath(yr(paramString));
-          bTP();
+          paramn.setImageFilePath(Cw(paramString));
+          cbd();
           AppMethodBeat.o(108184);
           return;
         }
-        paramString = paramString.orN;
+        paramString = paramString.oVn;
         if (paramString == null) {
-          k.fvU();
+          k.fOy();
         }
-        Tg(paramString);
+        Xs(paramString);
       }
       AppMethodBeat.o(108184);
       return;
@@ -1419,9 +1421,9 @@ public final class SpringCardActivity
       {
         if ((paramInt1 != 0) || (paramInt2 != 0))
         {
-          paramString = com.tencent.mm.plugin.eggspring.a.orI;
-          com.tencent.mm.plugin.eggspring.a.bTM().Aj(14);
-          com.tencent.mm.plugin.report.service.h.vKh.dB(1263, 6);
+          paramString = com.tencent.mm.plugin.eggspring.a.oVi;
+          com.tencent.mm.plugin.eggspring.a.cba().Bb(14);
+          com.tencent.mm.plugin.report.service.h.wUl.dB(1263, 6);
           paramString = (Context)getContext();
           paramn = getContext();
           k.g(paramn, "context");
@@ -1430,27 +1432,27 @@ public final class SpringCardActivity
           return;
         }
         paramString = (com.tencent.mm.plugin.eggspring.c.a)paramn;
-        paramn = paramString.osa;
-        ad.i("MicroMsg.SpringCardActivity", "coupon, retCode: %s, retMsg: %s.", new Object[] { paramn, paramString.osb });
+        paramn = paramString.oVA;
+        ac.i("MicroMsg.SpringCardActivity", "coupon, retCode: %s, retMsg: %s.", new Object[] { paramn, paramString.oVB });
         if (paramn != null)
         {
           long l = ((Number)paramn).longValue();
           if (0L == l)
           {
-            paramString = com.tencent.mm.plugin.eggspring.a.orI;
-            com.tencent.mm.plugin.eggspring.a.bTM().Aj(13);
+            paramString = com.tencent.mm.plugin.eggspring.a.oVi;
+            com.tencent.mm.plugin.eggspring.a.cba().Bb(13);
             paramString = (Context)getContext();
             paramn = getContext();
             k.g(paramn, "context");
-            t.cg(paramString, paramn.getResources().getString(2131755117));
-            paramString = this.osv;
+            t.ch(paramString, paramn.getResources().getString(2131755117));
+            paramString = this.oVV;
             if (paramString == null) {
-              k.aPZ("brandCardAcceptBtn");
+              k.aVY("brandCardAcceptBtn");
             }
             paramString.setText(2131755115);
-            paramString = this.osv;
+            paramString = this.oVV;
             if (paramString == null) {
-              k.aPZ("brandCardAcceptBtn");
+              k.aVY("brandCardAcceptBtn");
             }
             paramString.setEnabled(false);
           }
@@ -1458,9 +1460,9 @@ public final class SpringCardActivity
           {
             if (l != 0L)
             {
-              paramString = com.tencent.mm.plugin.eggspring.a.orI;
-              com.tencent.mm.plugin.eggspring.a.bTM().Aj(14);
-              com.tencent.mm.plugin.report.service.h.vKh.dB(1263, 6);
+              paramString = com.tencent.mm.plugin.eggspring.a.oVi;
+              com.tencent.mm.plugin.eggspring.a.cba().Bb(14);
+              com.tencent.mm.plugin.report.service.h.wUl.dB(1263, 6);
             }
             AppMethodBeat.o(108184);
             return;
@@ -1470,14 +1472,14 @@ public final class SpringCardActivity
               paramn = getContext();
               k.g(paramn, "context");
               t.ci(paramString, paramn.getResources().getString(2131757954));
-              paramString = this.osv;
+              paramString = this.oVV;
               if (paramString == null) {
-                k.aPZ("brandCardAcceptBtn");
+                k.aVY("brandCardAcceptBtn");
               }
               paramString.setText(2131755114);
-              paramString = this.osv;
+              paramString = this.oVV;
               if (paramString == null) {
-                k.aPZ("brandCardAcceptBtn");
+                k.aVY("brandCardAcceptBtn");
               }
               paramString.setEnabled(false);
             }
@@ -1487,14 +1489,14 @@ public final class SpringCardActivity
               paramn = getContext();
               k.g(paramn, "context");
               t.ci(paramString, paramn.getResources().getString(2131756775));
-              paramString = this.osv;
+              paramString = this.oVV;
               if (paramString == null) {
-                k.aPZ("brandCardAcceptBtn");
+                k.aVY("brandCardAcceptBtn");
               }
               paramString.setText(2131755114);
-              paramString = this.osv;
+              paramString = this.oVV;
               if (paramString == null) {
-                k.aPZ("brandCardAcceptBtn");
+                k.aVY("brandCardAcceptBtn");
               }
               paramString.setEnabled(false);
             }
@@ -1507,7 +1509,7 @@ public final class SpringCardActivity
             }
             else
             {
-              ad.i("MicroMsg.SpringCardActivity", "other err![%s]", new Object[] { paramn });
+              ac.i("MicroMsg.SpringCardActivity", "other err![%s]", new Object[] { paramn });
               paramString = (Context)getContext();
               paramn = getContext();
               k.g(paramn, "context");
@@ -1533,22 +1535,22 @@ public final class SpringCardActivity
     k.h(paramString1, "mediaId");
     k.h(paramString2, "path");
     k.h(paramString3, "url");
-    this.osC = paramString1;
-    if (i.eK(PluginEggSpring.ory + "MMVideo_" + paramString3.hashCode() + ".mp4"))
+    this.oWc = paramString1;
+    if (i.eA(PluginEggSpring.oUY + "MMVideo_" + paramString3.hashCode() + ".mp4"))
     {
       a(paramString1, 0, null);
       AppMethodBeat.o(108195);
       return;
     }
-    e locale = o.aCJ();
+    e locale = o.aJz();
     com.tencent.mm.i.h localh = new com.tencent.mm.i.h();
     localh.field_mediaId = paramString1;
     localh.url = paramString3;
-    localh.foc = 1;
-    localh.fnX = 5;
+    localh.frw = 1;
+    localh.frr = 5;
     localh.concurrentCount = 3;
     localh.field_fullpath = paramString2;
-    localh.foj = ((com.tencent.mm.i.h.a)this);
+    localh.frE = ((com.tencent.mm.i.h.a)this);
     locale.a(localh, false);
     AppMethodBeat.o(108195);
   }
@@ -1556,13 +1558,13 @@ public final class SpringCardActivity
   public final void requestVideoData(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(108197);
-    String str = this.osC;
+    String str = this.oWc;
     if (str != null)
     {
       if (k.g(str, paramString))
       {
-        o.aCJ();
-        e.q(paramString, paramInt1, paramInt2);
+        o.aJz();
+        e.p(paramString, paramInt1, paramInt2);
       }
       AppMethodBeat.o(108197);
       return;
@@ -1570,7 +1572,7 @@ public final class SpringCardActivity
     AppMethodBeat.o(108197);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -1579,22 +1581,22 @@ public final class SpringCardActivity
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(108165);
-      if (SpringCardActivity.q(this.osQ).getVisibility() == 0)
+      if (SpringCardActivity.q(this.oWq).getVisibility() == 0)
       {
-        paramView = com.tencent.mm.plugin.eggspring.a.orI;
-        com.tencent.mm.plugin.eggspring.a.bTM().Aj(10);
-        paramView = (Context)this.osQ;
-        com.tencent.mm.plugin.eggspring.b.a locala = SpringCardActivity.r(this.osQ);
+        paramView = com.tencent.mm.plugin.eggspring.a.oVi;
+        com.tencent.mm.plugin.eggspring.a.cba().Bb(10);
+        paramView = (Context)this.oWq;
+        com.tencent.mm.plugin.eggspring.b.a locala = SpringCardActivity.r(this.oWq);
         if (locala == null) {
-          k.fvU();
+          k.fOy();
         }
-        com.tencent.mm.plugin.eggspring.d.a.a(paramView, locala.orO);
+        com.tencent.mm.plugin.eggspring.d.a.a(paramView, locala.oVo);
       }
       AppMethodBeat.o(108165);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -1603,36 +1605,36 @@ public final class SpringCardActivity
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(108166);
-      paramView = SpringCardActivity.r(this.osQ);
+      paramView = SpringCardActivity.r(this.oWq);
       if (paramView != null)
       {
-        switch (paramView.orL)
+        switch (paramView.oVl)
         {
         }
         do
         {
           AppMethodBeat.o(108166);
           return;
-          if (!bt.isNullOrNil(paramView.orR))
+          if (!bs.isNullOrNil(paramView.oVr))
           {
-            localObject = com.tencent.mm.plugin.eggspring.a.orI;
-            com.tencent.mm.plugin.eggspring.a.bTM().Aj(11);
-            ad.d("MicroMsg.SpringCardActivity", "acceptRedPocketCoverUrl: %s.", new Object[] { paramView.orR });
+            localObject = com.tencent.mm.plugin.eggspring.a.oVi;
+            com.tencent.mm.plugin.eggspring.a.cba().Bb(11);
+            ac.d("MicroMsg.SpringCardActivity", "acceptRedPocketCoverUrl: %s.", new Object[] { paramView.oVr });
             localObject = new Intent();
-            ((Intent)localObject).putExtra("rawUrl", paramView.orR);
-            com.tencent.mm.bs.d.b((Context)this.osQ.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+            ((Intent)localObject).putExtra("rawUrl", paramView.oVr);
+            com.tencent.mm.br.d.b((Context)this.oWq.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
             AppMethodBeat.o(108166);
             return;
           }
-          ad.e("MicroMsg.SpringCardActivity", "red pocket cover accept url is invalid, impossible!!!");
+          ac.e("MicroMsg.SpringCardActivity", "red pocket cover accept url is invalid, impossible!!!");
           AppMethodBeat.o(108166);
           return;
-          paramView = paramView.orS;
+          paramView = paramView.oVs;
         } while (paramView == null);
-        Object localObject = com.tencent.mm.plugin.eggspring.a.orI;
-        com.tencent.mm.plugin.eggspring.a.bTM().Aj(12);
+        Object localObject = com.tencent.mm.plugin.eggspring.a.oVi;
+        com.tencent.mm.plugin.eggspring.a.cba().Bb(12);
         paramView = new com.tencent.mm.plugin.eggspring.c.a(paramView);
-        com.tencent.mm.kernel.g.aeS().b((com.tencent.mm.al.n)paramView);
+        com.tencent.mm.kernel.g.agi().b((com.tencent.mm.ak.n)paramView);
         AppMethodBeat.o(108166);
         return;
       }
@@ -1640,7 +1642,22 @@ public final class SpringCardActivity
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  static final class d
+    implements MenuItem.OnMenuItemClickListener
+  {
+    d(SpringCardActivity paramSpringCardActivity) {}
+    
+    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    {
+      AppMethodBeat.i(162211);
+      this.oWq.finish();
+      AppMethodBeat.o(162211);
+      return true;
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -1649,33 +1666,33 @@ public final class SpringCardActivity
     public final void run()
     {
       AppMethodBeat.i(160272);
-      if (SpringCardActivity.r(this.osQ) != null)
+      if (SpringCardActivity.r(this.oWq) != null)
       {
-        localObject = SpringCardActivity.r(this.osQ);
+        localObject = SpringCardActivity.r(this.oWq);
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        if ((((com.tencent.mm.plugin.eggspring.b.a)localObject).orL == 4) || (SpringCardActivity.g(this.osQ).getVisibility() != 0))
+        if ((((com.tencent.mm.plugin.eggspring.b.a)localObject).oVl == 4) || (SpringCardActivity.g(this.oWq).getVisibility() != 0))
         {
-          localObject = SpringCardActivity.r(this.osQ);
+          localObject = SpringCardActivity.r(this.oWq);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
-          if ((((com.tencent.mm.plugin.eggspring.b.a)localObject).orL != 4) || (SpringCardActivity.x(this.osQ)) || (SpringCardActivity.y(this.osQ))) {
+          if ((((com.tencent.mm.plugin.eggspring.b.a)localObject).oVl != 4) || (SpringCardActivity.x(this.oWq)) || (SpringCardActivity.y(this.oWq))) {
             break label117;
           }
         }
       }
-      Object localObject = com.tencent.mm.plugin.eggspring.a.orI;
-      com.tencent.mm.plugin.eggspring.a.bTM().Aj(9);
-      com.tencent.mm.plugin.report.service.h.vKh.dB(1263, 7);
+      Object localObject = com.tencent.mm.plugin.eggspring.a.oVi;
+      com.tencent.mm.plugin.eggspring.a.cba().Bb(9);
+      com.tencent.mm.plugin.report.service.h.wUl.dB(1263, 7);
       label117:
-      SpringCardActivity.a(this.osQ);
+      SpringCardActivity.a(this.oWq);
       AppMethodBeat.o(160272);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class f
     implements Runnable
   {
@@ -1684,36 +1701,36 @@ public final class SpringCardActivity
     public final void run()
     {
       AppMethodBeat.i(108169);
-      if (SpringCardActivity.j(this.osQ))
+      if (SpringCardActivity.j(this.oWq))
       {
         AppMethodBeat.o(108169);
         return;
       }
-      com.tencent.mm.plugin.eggspring.b.a locala = SpringCardActivity.r(this.osQ);
+      com.tencent.mm.plugin.eggspring.b.a locala = SpringCardActivity.r(this.oWq);
       if (locala != null)
       {
-        if ((k.g(paramString, locala.orN)) && ((1 == locala.orL) || (2 == locala.orL) || ((4 == locala.orL) && (2 != locala.orU))))
+        if ((k.g(paramString, locala.oVn)) && ((1 == locala.oVl) || (2 == locala.oVl) || ((4 == locala.oVl) && (2 != locala.oVu))))
         {
-          ad.d("MicroMsg.SpringCardActivity", "onC2CDownloadCompleted, filekey: [%s], cardType: [%s].", new Object[] { paramString, Integer.valueOf(locala.orL) });
-          if (4 == locala.orL)
+          ac.d("MicroMsg.SpringCardActivity", "onC2CDownloadCompleted, filekey: [%s], cardType: [%s].", new Object[] { paramString, Integer.valueOf(locala.oVl) });
+          if (4 == locala.oVl)
           {
-            SpringCardActivity.i(this.osQ).setImageFilePath(SpringCardActivity.Tj(paramString));
-            SpringCardActivity.c(this.osQ, 0);
+            SpringCardActivity.i(this.oWq).setImageFilePath(SpringCardActivity.Xv(paramString));
+            SpringCardActivity.c(this.oWq, 0);
             AppMethodBeat.o(108169);
             return;
           }
-          if ((1 == locala.orL) || (2 == locala.orL))
+          if ((1 == locala.oVl) || (2 == locala.oVl))
           {
-            SpringCardActivity.t(this.osQ).setImageFilePath(SpringCardActivity.Tj(paramString));
-            SpringCardActivity.u(this.osQ);
+            SpringCardActivity.t(this.oWq).setImageFilePath(SpringCardActivity.Xv(paramString));
+            SpringCardActivity.u(this.oWq);
           }
           AppMethodBeat.o(108169);
           return;
         }
-        if ((k.g(paramString, locala.orT)) && (4 == locala.orL))
+        if ((k.g(paramString, locala.oVt)) && (4 == locala.oVl))
         {
-          SpringCardActivity.v(this.osQ).setImageFilePath(SpringCardActivity.Tj(paramString));
-          SpringCardActivity.c(this.osQ, 1);
+          SpringCardActivity.v(this.oWq).setImageFilePath(SpringCardActivity.Xv(paramString));
+          SpringCardActivity.c(this.oWq, 1);
         }
         AppMethodBeat.o(108169);
         return;
@@ -1722,7 +1739,21 @@ public final class SpringCardActivity
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class g
+    implements View.OnClickListener
+  {
+    g(SpringCardActivity paramSpringCardActivity) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(108170);
+      SpringCardActivity.a(this.oWq);
+      AppMethodBeat.o(108170);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class h
     implements View.OnClickListener
   {
@@ -1731,26 +1762,26 @@ public final class SpringCardActivity
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(108171);
-      SpringCardActivity.b(this.osQ).setVisibility(8);
-      SpringCardActivity.c(this.osQ).setVisibility(8);
-      SpringCardActivity.d(this.osQ).setVisibility(8);
-      SpringCardActivity.e(this.osQ).setVisibility(8);
-      SpringCardActivity.f(this.osQ).setVisibility(8);
-      SpringCardActivity.g(this.osQ).setVisibility(0);
-      SpringCardActivity.h(this.osQ).setLoop(true);
-      SpringCardActivity.h(this.osQ).setIMMVideoViewCallback((h.b)this.osQ);
-      SpringCardActivity.h(this.osQ).setIMMDownloadFinish((com.tencent.mm.pluginsdk.ui.h.a)this.osQ);
-      SpringCardActivity.h(this.osQ).setIOnlineVideoProxy((com.tencent.mm.modelvideo.b)this.osQ);
-      SpringCardActivity.h(this.osQ).c(false, "http://wxsnsdy.wxs.qq.com/105/20210/snsdyvideodownload?m=2db9548b50447c83a47c69b7054b536c&filekey=30340201010420301e0201690402534804102db9548b50447c83a47c69b7054b536c0203146fae040d00000004627466730000000131&hy=SH&storeid=32303138303731323036353235363030306236313235313336666664393330343561333230613030303030303639&bizid=1023", 0);
-      SpringCardActivity.h(this.osQ).setFilepath(SpringCardActivity.Ti("http://wxsnsdy.wxs.qq.com/105/20210/snsdyvideodownload?m=2db9548b50447c83a47c69b7054b536c&filekey=30340201010420301e0201690402534804102db9548b50447c83a47c69b7054b536c0203146fae040d00000004627466730000000131&hy=SH&storeid=32303138303731323036353235363030306236313235313336666664393330343561333230613030303030303639&bizid=1023"));
-      SpringCardActivity.h(this.osQ).start();
-      SpringCardActivity.i(this.osQ).setVisibility(8);
-      SpringCardActivity.h(this.osQ).setVisibility(0);
+      SpringCardActivity.b(this.oWq).setVisibility(8);
+      SpringCardActivity.c(this.oWq).setVisibility(8);
+      SpringCardActivity.d(this.oWq).setVisibility(8);
+      SpringCardActivity.e(this.oWq).setVisibility(8);
+      SpringCardActivity.f(this.oWq).setVisibility(8);
+      SpringCardActivity.g(this.oWq).setVisibility(0);
+      SpringCardActivity.h(this.oWq).setLoop(true);
+      SpringCardActivity.h(this.oWq).setIMMVideoViewCallback((h.b)this.oWq);
+      SpringCardActivity.h(this.oWq).setIMMDownloadFinish((com.tencent.mm.pluginsdk.ui.h.a)this.oWq);
+      SpringCardActivity.h(this.oWq).setIOnlineVideoProxy((com.tencent.mm.modelvideo.b)this.oWq);
+      SpringCardActivity.h(this.oWq).c(false, "http://wxsnsdy.wxs.qq.com/105/20210/snsdyvideodownload?m=2db9548b50447c83a47c69b7054b536c&filekey=30340201010420301e0201690402534804102db9548b50447c83a47c69b7054b536c0203146fae040d00000004627466730000000131&hy=SH&storeid=32303138303731323036353235363030306236313235313336666664393330343561333230613030303030303639&bizid=1023", 0);
+      SpringCardActivity.h(this.oWq).setFilepath(SpringCardActivity.Xu("http://wxsnsdy.wxs.qq.com/105/20210/snsdyvideodownload?m=2db9548b50447c83a47c69b7054b536c&filekey=30340201010420301e0201690402534804102db9548b50447c83a47c69b7054b536c0203146fae040d00000004627466730000000131&hy=SH&storeid=32303138303731323036353235363030306236313235313336666664393330343561333230613030303030303639&bizid=1023"));
+      SpringCardActivity.h(this.oWq).start();
+      SpringCardActivity.i(this.oWq).setVisibility(8);
+      SpringCardActivity.h(this.oWq).setVisibility(0);
       AppMethodBeat.o(108171);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class i
     implements View.OnClickListener
   {
@@ -1759,25 +1790,25 @@ public final class SpringCardActivity
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(108172);
-      SpringCardActivity.k(this.osQ);
-      SpringCardActivity.l(this.osQ).setVisibility(0);
-      SpringCardActivity.m(this.osQ).setVisibility(4);
+      SpringCardActivity.k(this.oWq);
+      SpringCardActivity.l(this.oWq).setVisibility(0);
+      SpringCardActivity.m(this.oWq).setVisibility(4);
       AppMethodBeat.o(108172);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/eggspring/ui/SpringCardActivity$onCreate$4", "Lcom/tencent/mm/app/IAppForegroundListener;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-eggspring_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/eggspring/ui/SpringCardActivity$onCreate$4", "Lcom/tencent/mm/app/IAppForegroundListener;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-eggspring_release"})
   public static final class j
     implements com.tencent.mm.app.n
   {
     public final void onAppBackground(String paramString)
     {
       AppMethodBeat.i(162213);
-      ad.d("MicroMsg.SpringCardActivity", "onAppBackground");
-      if (SpringCardActivity.n(this.osQ))
+      ac.d("MicroMsg.SpringCardActivity", "onAppBackground");
+      if (SpringCardActivity.n(this.oWq))
       {
-        SpringCardActivity.a(this.osQ, SpringCardActivity.o(this.osQ) - 1);
-        SpringCardActivity.b(this.osQ, SpringCardActivity.p(this.osQ) - 1);
+        SpringCardActivity.a(this.oWq, SpringCardActivity.o(this.oWq) - 1);
+        SpringCardActivity.b(this.oWq, SpringCardActivity.p(this.oWq) - 1);
       }
       AppMethodBeat.o(162213);
     }
@@ -1785,12 +1816,12 @@ public final class SpringCardActivity
     public final void onAppForeground(String paramString)
     {
       AppMethodBeat.i(162212);
-      ad.d("MicroMsg.SpringCardActivity", "onAppForeground");
+      ac.d("MicroMsg.SpringCardActivity", "onAppForeground");
       AppMethodBeat.o(162212);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class k
     implements Runnable
   {
@@ -1799,16 +1830,16 @@ public final class SpringCardActivity
     public final void run()
     {
       AppMethodBeat.i(108173);
-      com.tencent.mm.modelvideo.b.a locala = SpringCardActivity.w(this.osQ);
+      com.tencent.mm.modelvideo.b.a locala = SpringCardActivity.w(this.oWq);
       if (locala == null) {
-        k.fvU();
+        k.fOy();
       }
-      locala.onDataAvailable(paramString, paramLong1, this.osU);
+      locala.onDataAvailable(paramString, paramLong1, this.oWu);
       AppMethodBeat.o(108173);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class l
     implements Runnable
   {
@@ -1817,16 +1848,30 @@ public final class SpringCardActivity
     public final void run()
     {
       AppMethodBeat.i(108174);
-      com.tencent.mm.modelvideo.b.a locala = SpringCardActivity.w(this.osQ);
+      com.tencent.mm.modelvideo.b.a locala = SpringCardActivity.w(this.oWq);
       if (locala == null) {
-        k.fvU();
+        k.fOy();
       }
-      locala.am(paramString, paramInt);
+      locala.aq(paramString, paramInt);
       AppMethodBeat.o(108174);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  static final class m
+    implements Runnable
+  {
+    m(SpringCardActivity paramSpringCardActivity) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(160273);
+      SpringCardActivity.a(this.oWq);
+      AppMethodBeat.o(160273);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class n
     implements Runnable
   {
@@ -1835,16 +1880,16 @@ public final class SpringCardActivity
     public final void run()
     {
       AppMethodBeat.i(108175);
-      com.tencent.mm.modelvideo.b.a locala = SpringCardActivity.w(this.osQ);
+      com.tencent.mm.modelvideo.b.a locala = SpringCardActivity.w(this.oWq);
       if (locala == null) {
-        k.fvU();
+        k.fOy();
       }
-      locala.Bl(paramLong1);
+      locala.qq(paramLong1);
       AppMethodBeat.o(108175);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class o
     implements Runnable
   {
@@ -1853,18 +1898,47 @@ public final class SpringCardActivity
     public final void run()
     {
       AppMethodBeat.i(108176);
-      com.tencent.mm.modelvideo.b.a locala = SpringCardActivity.w(this.osQ);
+      com.tencent.mm.modelvideo.b.a locala = SpringCardActivity.w(this.oWq);
       if (locala == null) {
-        k.fvU();
+        k.fOy();
       }
-      locala.k(paramString, paramLong1, this.osW);
+      locala.i(paramString, paramLong1, this.oWx);
       AppMethodBeat.o(108176);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/eggspring/ui/SpringCardActivity$playCardAnim$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-eggspring_release"})
+  public static final class p
+    implements Animator.AnimatorListener
+  {
+    public final void onAnimationCancel(Animator paramAnimator) {}
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(108177);
+      ac.d("MicroMsg.SpringCardActivity", "onAnimationEnd");
+      SpringCardActivity.l(this.oWq).setVisibility(8);
+      paramAnimator = com.tencent.mm.plugin.eggspring.a.oVi;
+      paramAnimator = com.tencent.mm.plugin.eggspring.a.cba();
+      long l1 = System.currentTimeMillis();
+      long l2 = SpringCardActivity.s(this.oWq);
+      com.tencent.mm.plugin.report.service.h.wUl.f(18916, new Object[] { paramAnimator.oVe, paramAnimator.oVg, Integer.valueOf(15), Long.valueOf(l1 - l2) });
+      AppMethodBeat.o(108177);
+    }
+    
+    public final void onAnimationRepeat(Animator paramAnimator) {}
+    
+    public final void onAnimationStart(Animator paramAnimator)
+    {
+      AppMethodBeat.i(108178);
+      ac.d("MicroMsg.SpringCardActivity", "onAnimationStart");
+      AppMethodBeat.o(108178);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.ui.SpringCardActivity
  * JD-Core Version:    0.7.0.1
  */

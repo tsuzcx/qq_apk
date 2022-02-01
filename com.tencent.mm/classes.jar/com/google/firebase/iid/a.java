@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public final class a
 {
-  public static KeyPair wU()
+  public static KeyPair wH()
   {
     AppMethodBeat.i(4149);
     try

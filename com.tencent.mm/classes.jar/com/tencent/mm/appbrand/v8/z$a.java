@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(185105);
-    cRg = new a("NONE", 0);
-    cRh = new a("RESUME", 1);
-    cRi = new a("ENQUEUE", 2);
-    cRj = new a[] { cRg, cRh, cRi };
+    cOB = new a("NONE", 0);
+    cOC = new a("RESUME", 1);
+    cOD = new a("ENQUEUE", 2);
+    cOE = new a[] { cOB, cOC, cOD };
     AppMethodBeat.o(185105);
   }
   
@@ -18,7 +18,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.z.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.n.b;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,7 +26,7 @@ public class aj
     {
       paramString = new JSONObject(paramString);
       paramString = paramString.optString("username");
-      if (bt.isNullOrNil(paramString))
+      if (bs.isNullOrNil(paramString))
       {
         parama.f("param_err", null);
         AppMethodBeat.o(78586);
@@ -35,19 +35,19 @@ public class aj
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
+      ac.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
       parama.f("fail", null);
       AppMethodBeat.o(78586);
       return;
     }
-    Object localObject = ((k)g.ab(k.class)).apM().aHY(paramString);
-    if ((localObject == null) || (!((af)localObject).eKB()))
+    Object localObject = ((k)g.ab(k.class)).awB().aNt(paramString);
+    if ((localObject == null) || (!((ai)localObject).fad()))
     {
       parama.f("not biz username", null);
       AppMethodBeat.o(78586);
       return;
     }
-    if (!b.ls(((au)localObject).field_type))
+    if (!b.ln(((av)localObject).field_type))
     {
       parama.f("open_biz_chat", null);
       AppMethodBeat.o(78586);
@@ -63,7 +63,7 @@ public class aj
   
   public final void b(a.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 1;
   }

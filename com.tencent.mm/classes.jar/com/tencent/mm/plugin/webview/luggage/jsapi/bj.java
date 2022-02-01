@@ -7,7 +7,7 @@ import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.luggage.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,16 +19,16 @@ public class bj
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78636);
-    ad.i("MicroMsg.JsApiShowMenuItems", "invokeInOwn");
-    JSONArray localJSONArray = parama.bZV.bZb.optJSONArray("menuList");
+    ac.i("MicroMsg.JsApiShowMenuItems", "invokeInOwn");
+    JSONArray localJSONArray = parama.bWS.bVY.optJSONArray("menuList");
     if (localJSONArray == null)
     {
-      ad.i("MicroMsg.JsApiShowMenuItems", "data is null");
+      ac.i("MicroMsg.JsApiShowMenuItems", "data is null");
       parama.a("invalid_data", null);
       AppMethodBeat.o(78636);
       return;
     }
-    l locall = ((f)parama.bZU).ekS();
+    l locall = ((f)parama.bWR).eAo();
     if (locall != null) {
       locall.N(localJSONArray);
     }
@@ -36,7 +36,7 @@ public class bj
     AppMethodBeat.o(78636);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

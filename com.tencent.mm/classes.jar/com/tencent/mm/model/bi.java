@@ -3,29 +3,27 @@ package com.tencent.mm.model;
 import android.content.Context;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.c;
-import com.tencent.mm.al.f.d;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.c;
+import com.tencent.mm.ak.f.d;
 import com.tencent.mm.g.a.co;
-import com.tencent.mm.g.a.lh;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.a.lq;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.protocal.protobuf.cu;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.io.Closeable;
@@ -41,41 +39,37 @@ import java.util.Set;
 
 public final class bi
 {
-  private static volatile boolean gNL = false;
+  private static volatile boolean hol = false;
   
-  public static int Y(String paramString, int paramInt)
+  public static int A(String paramString, long paramLong)
   {
-    AppMethodBeat.i(174544);
-    Cursor localCursor = ((k)g.ab(k.class)).cOI().dK(paramString, paramInt);
-    if (localCursor.moveToFirst()) {
-      while (!localCursor.isAfterLast())
-      {
-        bl localbl = new bl();
-        localbl.convertFrom(localCursor);
-        v(localbl);
-        localCursor.moveToNext();
-      }
+    AppMethodBeat.i(42965);
+    bo localbo = ((k)g.ab(k.class)).dcr().aF(paramString, paramLong);
+    if (localbo.field_msgSvrId != paramLong)
+    {
+      AppMethodBeat.o(42965);
+      return 0;
     }
-    localCursor.close();
-    paramInt = ((k)g.ab(k.class)).cOI().dJ(paramString, paramInt);
-    AppMethodBeat.o(174544);
-    return paramInt;
+    v(localbo);
+    int i = ((k)g.ab(k.class)).dcr().aR(paramString, paramLong);
+    AppMethodBeat.o(42965);
+    return i;
   }
   
   public static int a(String paramString, a parama)
   {
     AppMethodBeat.i(42967);
-    ad.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker[%s] stack[%s]", new Object[] { paramString, bt.eGN() });
-    if (bt.isNullOrNil(paramString))
+    ac.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker[%s] stack[%s]", new Object[] { paramString, bs.eWi() });
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker[%s] is null", new Object[] { paramString });
-      aq.f(new Runnable()
+      ac.e("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker[%s] is null", new Object[] { paramString });
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(42942);
-          if (this.gMc != null) {
-            this.gMc.Vu();
+          if (this.hmC != null) {
+            this.hmC.Ws();
           }
           AppMethodBeat.o(42942);
         }
@@ -85,10 +79,10 @@ public final class bi
     }
     com.tencent.mm.sdk.g.b.c(new Runnable()
     {
-      final int gNM = 200;
-      final int gNN = 30;
-      final int gNO = 5;
-      int gNP = 100;
+      final int hom = 200;
+      final int hon = 30;
+      final int hoo = 5;
+      int hop = 100;
       
       public final void run()
       {
@@ -98,7 +92,7 @@ public final class bi
         {
           try
           {
-            Object localObject = ((k)g.ab(k.class)).cOI().agq(this.fHA);
+            Object localObject = ((k)g.ab(k.class)).dcr().alk(this.fLg);
             long l2;
             long l5;
             long l6;
@@ -106,57 +100,57 @@ public final class bi
             if (localObject == null)
             {
               l2 = 9223372036854775807L;
-              ((k)g.ab(k.class)).aqo().aB(this.fHA, l2);
-              ad.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker run currentThread[%s, %d] lastMsg[%s] lastMsgCreateTime[%s]", new Object[] { Thread.currentThread().getName(), Long.valueOf(Thread.currentThread().getId()), localObject, Long.valueOf(l2) });
-              l5 = bt.eGO();
+              ((k)g.ab(k.class)).axd().aD(this.fLg, l2);
+              ac.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker run currentThread[%s, %d] lastMsg[%s] lastMsgCreateTime[%s]", new Object[] { Thread.currentThread().getName(), Long.valueOf(Thread.currentThread().getId()), localObject, Long.valueOf(l2) });
+              l5 = bs.eWj();
               l1 = 0L;
               i = 0;
-              if ((this.gNP < 200) && (this.gNP > 30))
+              if ((this.hop < 200) && (this.hop > 30))
               {
                 if (l1 > 500L)
                 {
-                  j = this.gNP - 5;
-                  this.gNP = j;
+                  j = this.hop - 5;
+                  this.hop = j;
                 }
               }
               else
               {
-                l6 = bt.eGO();
-                localObject = ((k)g.ab(k.class)).cOI().m(this.fHA, this.gNP, l2);
+                l6 = bs.eWj();
+                localObject = ((k)g.ab(k.class)).dcr().m(this.fLg, this.hop, l2);
                 l1 = 0L;
                 l3 = 0L;
                 if (!((Cursor)localObject).moveToNext()) {
                   continue;
                 }
-                bl localbl = new bl();
-                localbl.convertFrom((Cursor)localObject);
-                if (l1 >= localbl.field_createTime) {
+                bo localbo = new bo();
+                localbo.convertFrom((Cursor)localObject);
+                if (l1 >= localbo.field_createTime) {
                   break label497;
                 }
-                l1 = localbl.field_createTime;
+                l1 = localbo.field_createTime;
                 l3 += 1L;
-                bi.v(localbl);
+                bi.v(localbo);
                 continue;
               }
             }
             else
             {
-              l2 = ((du)localObject).field_createTime;
+              l2 = ((dy)localObject).field_createTime;
               continue;
             }
-            int j = this.gNP + 5;
+            int j = this.hop + 5;
             continue;
             ((Cursor)localObject).close();
-            long l7 = bt.eGO();
+            long l7 = bs.eWj();
             if ((l1 > 0L) && (l3 > 0L))
             {
-              ((k)g.ab(k.class)).cOI().aQ(this.fHA, l1);
-              ((an)g.ab(an.class)).w(this.fHA, l1);
+              ((k)g.ab(k.class)).dcr().aS(this.fLg, l1);
+              ((an)g.ab(an.class)).x(this.fLg, l1);
             }
             int i = (int)(i + l3);
-            long l8 = bt.eGO();
+            long l8 = bs.eWj();
             long l4 = l8 - l6;
-            ad.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker:%s delCnt:%d curCnt:%d msgTimeDiff:%d(%d) run:[%d,%d,%d](%d)", new Object[] { bt.aGs(this.fHA), Integer.valueOf(i), Long.valueOf(l3), Long.valueOf(l2 - l1), Long.valueOf(l2), Long.valueOf(l8 - l7), Long.valueOf(l8 - l6), Long.valueOf(l8 - l5), Integer.valueOf(this.gNP) });
+            ac.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker:%s delCnt:%d curCnt:%d msgTimeDiff:%d(%d) run:[%d,%d,%d](%d)", new Object[] { bs.aLJ(this.fLg), Integer.valueOf(i), Long.valueOf(l3), Long.valueOf(l2 - l1), Long.valueOf(l2), Long.valueOf(l8 - l7), Long.valueOf(l8 - l6), Long.valueOf(l8 - l5), Integer.valueOf(this.hop) });
             long l1 = l4;
             if (l3 <= 0L)
             {
@@ -166,20 +160,20 @@ public final class bi
           }
           catch (b localb)
           {
-            ad.printErrStackTrace("MicroMsg.MsgInfoStorageLogic", localb, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.MsgInfoStorageLogic", localb, "", new Object[0]);
             AppMethodBeat.o(42943);
             return;
           }
         }
       }
     }, "deleteMsgByTalker");
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(42944);
-        if (this.gMc != null) {
-          this.gMc.Vu();
+        if (this.hmC != null) {
+          this.hmC.Ws();
         }
         AppMethodBeat.o(42944);
       }
@@ -196,51 +190,51 @@ public final class bi
       public final void run()
       {
         AppMethodBeat.i(42946);
-        com.tencent.mm.plugin.report.e.vIY.idkeyStat(1333L, 0L, 1L, true);
+        com.tencent.mm.plugin.report.e.wTc.idkeyStat(1333L, 0L, 1L, true);
         long l1 = System.currentTimeMillis();
-        ((an)g.ab(an.class)).arE();
-        ((k)g.ab(k.class)).aqo().aB("", this.gNR);
-        ((k)g.ab(k.class)).apR().eLg();
-        if (this.gMc != null) {
-          aq.f(new Runnable()
+        ((an)g.ab(an.class)).ayv();
+        ((k)g.ab(k.class)).axd().aD("", this.hor);
+        ((k)g.ab(k.class)).awG().faI();
+        if (this.hmC != null) {
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(42945);
-              bi.5.this.gMc.Vu();
+              bi.5.this.hmC.Ws();
               AppMethodBeat.o(42945);
             }
           });
         }
         long l2 = System.currentTimeMillis() - l1;
-        ad.i("MicroMsg.MsgInfoStorageLogic", "Delete all messages, synchronized part, time: %d ms", new Object[] { Long.valueOf(l2) });
-        com.tencent.mm.plugin.report.e.vIY.idkeyStat(1333L, 6L, l2 / 1000L, true);
-        if ((this.gMc != null) && (this.gMc.Vt()))
+        ac.i("MicroMsg.MsgInfoStorageLogic", "Delete all messages, synchronized part, time: %d ms", new Object[] { Long.valueOf(l2) });
+        com.tencent.mm.plugin.report.e.wTc.idkeyStat(1333L, 6L, l2 / 1000L, true);
+        if ((this.hmC != null) && (this.hmC.Wr()))
         {
           AppMethodBeat.o(42946);
           return;
         }
-        bi.asj();
-        if ((this.gMc != null) && (this.gMc.Vt()))
+        bi.aza();
+        if ((this.hmC != null) && (this.hmC.Wr()))
         {
           AppMethodBeat.o(42946);
           return;
         }
-        bi.ask();
-        if ((this.gMc != null) && (this.gMc.Vt()))
+        bi.azb();
+        if ((this.hmC != null) && (this.hmC.Wr()))
         {
           AppMethodBeat.o(42946);
           return;
         }
-        bi.asi();
-        if ((this.gMc != null) && (this.gMc.Vt()))
+        bi.ayZ();
+        if ((this.hmC != null) && (this.hmC.Wr()))
         {
           AppMethodBeat.o(42946);
           return;
         }
-        bi.d(this.gNR, 1);
-        ((k)g.ab(k.class)).aqo().aB("", 0L);
-        ad.i("MicroMsg.MsgInfoStorageLogic", "Delete all messages, asynchronous part, time: %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1 - l2) });
+        bi.d(this.hor, 1);
+        ((k)g.ab(k.class)).axd().aD("", 0L);
+        ac.i("MicroMsg.MsgInfoStorageLogic", "Delete all messages, asynchronous part, time: %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1 - l2) });
         AppMethodBeat.o(42946);
       }
       
@@ -255,48 +249,48 @@ public final class bi
     AppMethodBeat.o(42968);
   }
   
-  public static void a(bl parambl, f.a parama)
+  public static void a(bo parambo, f.a parama)
   {
     AppMethodBeat.i(42973);
-    if ((parambl == null) || (parama == null) || (parama.fTo == null))
+    if ((parambo == null) || (parama == null) || (parama.fXi == null))
     {
-      ad.e("MicroMsg.MsgInfoStorageLogic", "summerbadcr fixRecvMsgWithAddMsgInfo error input is null, stack[%s]", new Object[] { bt.eGN() });
+      ac.e("MicroMsg.MsgInfoStorageLogic", "summerbadcr fixRecvMsgWithAddMsgInfo error input is null, stack[%s]", new Object[] { bs.eWi() });
       AppMethodBeat.o(42973);
       return;
     }
-    if (parambl.field_msgSvrId != parama.fTo.uKZ)
-    {
-      AppMethodBeat.o(42973);
-      return;
-    }
-    cs localcs = parama.fTo;
-    if ((parambl.field_isSend != 0) && (localcs.CxE == 0))
+    if (parambo.field_msgSvrId != parama.fXi.vTQ)
     {
       AppMethodBeat.o(42973);
       return;
     }
-    if ((parambl.field_msgSeq == 0L) && (localcs.CxE != 0)) {
-      parambl.la(localcs.CxE);
+    cu localcu = parama.fXi;
+    if ((parambo.field_isSend != 0) && (localcu.DQa == 0))
+    {
+      AppMethodBeat.o(42973);
+      return;
     }
-    int i = parambl.field_flag;
-    if (parama.gVg)
+    if ((parambo.field_msgSeq == 0L) && (localcu.DQa != 0)) {
+      parambo.oC(localcu.DQa);
+    }
+    int i = parambo.field_flag;
+    if (parama.hvF)
     {
       i |= 0x2;
-      if (!parama.gVh) {
+      if (!parama.hvG) {
         break label195;
       }
       i |= 0x1;
       label141:
-      if (!parama.gVi) {
+      if (!parama.hvH) {
         break label203;
       }
       i |= 0x4;
     }
     for (;;)
     {
-      parambl.setFlag(i);
-      if ((parambl.field_msgId == 0L) && (parama.gVg)) {
-        parambl.kY(parama.gVj);
+      parambo.setFlag(i);
+      if ((parambo.field_msgId == 0L) && (parama.hvF)) {
+        parambo.oA(parama.hvI);
       }
       AppMethodBeat.o(42973);
       return;
@@ -310,15 +304,15 @@ public final class bi
     }
   }
   
-  public static String aE(String paramString1, String paramString2)
+  public static String aM(String paramString1, String paramString2)
   {
     AppMethodBeat.i(42951);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(42951);
       return null;
     }
-    if (bt.isNullOrNil(paramString2))
+    if (bs.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(42951);
       return paramString1;
@@ -328,7 +322,26 @@ public final class bi
     return paramString1;
   }
   
-  public static void ak(List<Long> paramList)
+  public static int ac(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(174544);
+    Cursor localCursor = ((k)g.ab(k.class)).dcr().dR(paramString, paramInt);
+    if (localCursor.moveToFirst()) {
+      while (!localCursor.isAfterLast())
+      {
+        bo localbo = new bo();
+        localbo.convertFrom(localCursor);
+        v(localbo);
+        localCursor.moveToNext();
+      }
+    }
+    localCursor.close();
+    paramInt = ((k)g.ab(k.class)).dcr().dQ(paramString, paramInt);
+    AppMethodBeat.o(174544);
+    return paramInt;
+  }
+  
+  public static void ah(List<Long> paramList)
   {
     AppMethodBeat.i(42963);
     if (paramList.size() == 0)
@@ -338,47 +351,47 @@ public final class bi
     }
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      lW(((Long)paramList.next()).longValue());
+      pK(((Long)paramList.next()).longValue());
     }
     AppMethodBeat.o(42963);
   }
   
-  public static void al(List<String> paramList)
+  public static void ai(List<String> paramList)
   {
     AppMethodBeat.i(174547);
     if ((paramList == null) || (paramList.size() <= 0))
     {
-      ad.d("MicroMsg.MsgInfoStorageLogic", "deleteMsgByTalkers, empty talkers");
+      ac.d("MicroMsg.MsgInfoStorageLogic", "deleteMsgByTalkers, empty talkers");
       AppMethodBeat.o(174547);
       return;
     }
-    ad.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalkers stack[%s]", new Object[] { bt.eGN() });
+    ac.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalkers stack[%s]", new Object[] { bs.eWi() });
     com.tencent.mm.sdk.g.b.c(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(42948);
-        ad.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker run currentThread[%s, %d] talkers size:%s", new Object[] { Thread.currentThread().getName(), Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.gNT.size()) });
-        Iterator localIterator = this.gNT.iterator();
+        ac.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker run currentThread[%s, %d] talkers size:%s", new Object[] { Thread.currentThread().getName(), Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.hot.size()) });
+        Iterator localIterator = this.hot.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          Object localObject = ((k)g.ab(k.class)).cOI().agq(str);
+          Object localObject = ((k)g.ab(k.class)).dcr().alk(str);
           if (localObject == null) {}
-          for (long l1 = 9223372036854775807L;; l1 = ((du)localObject).field_createTime)
+          for (long l1 = 9223372036854775807L;; l1 = ((dy)localObject).field_createTime)
           {
-            long l3 = ce.asQ();
+            long l3 = ce.azH();
             long l2 = l1;
             if (l1 > l3)
             {
-              ad.w("MicroMsg.MsgInfoStorageLogic", "last message time[%s] is over serverTime[%s]!", new Object[] { Long.valueOf(l1), Long.valueOf(l3) });
+              ac.w("MicroMsg.MsgInfoStorageLogic", "last message time[%s] is over serverTime[%s]!", new Object[] { Long.valueOf(l1), Long.valueOf(l3) });
               l2 = l3;
             }
-            if ((localObject != null) && (((du)localObject).field_createTime > 0L)) {
-              ((k)g.ab(k.class)).aqo().aB(str, l2);
+            if ((localObject != null) && (((dy)localObject).field_createTime > 0L)) {
+              ((k)g.ab(k.class)).axd().aD(str, l2);
             }
-            ad.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker talker[%s] lastMsg[%s] lastMsgCreateTime[%s]", new Object[] { str, localObject, Long.valueOf(l2) });
-            localObject = ((k)g.ab(k.class)).cOI().agy(str);
+            ac.i("MicroMsg.MsgInfoStorageLogic", "summerdel deleteMsgByTalker talker[%s] lastMsg[%s] lastMsgCreateTime[%s]", new Object[] { str, localObject, Long.valueOf(l2) });
+            localObject = ((k)g.ab(k.class)).dcr().als(str);
             if (localObject == null) {
               break;
             }
@@ -387,16 +400,16 @@ public final class bi
             }
             while (!((Cursor)localObject).isAfterLast())
             {
-              bl localbl = new bl();
-              localbl.convertFrom((Cursor)localObject);
-              bi.v(localbl);
+              bo localbo = new bo();
+              localbo.convertFrom((Cursor)localObject);
+              bi.v(localbo);
               ((Cursor)localObject).moveToNext();
             }
           }
           label312:
           ((Cursor)localObject).close();
-          ad.i("MicroMsg.MsgInfoStorageLogic", "delete msgs %s, %d", new Object[] { str, Integer.valueOf(((k)g.ab(k.class)).cOI().agw(str)) });
-          ((k)g.ab(k.class)).aqo().aB(str, 0L);
+          ac.i("MicroMsg.MsgInfoStorageLogic", "delete msgs %s, %d", new Object[] { str, Integer.valueOf(((k)g.ab(k.class)).dcr().alq(str)) });
+          ((k)g.ab(k.class)).axd().aD(str, 0L);
         }
         AppMethodBeat.o(42948);
       }
@@ -404,60 +417,60 @@ public final class bi
     AppMethodBeat.o(174547);
   }
   
-  public static void asf()
+  public static void ayW()
   {
     AppMethodBeat.i(42955);
-    ((k)g.ab(k.class)).cOI().asf();
+    ((k)g.ab(k.class)).dcr().ayW();
     AppMethodBeat.o(42955);
   }
   
-  public static long asg()
+  public static long ayX()
   {
     AppMethodBeat.i(42959);
     long l1 = System.currentTimeMillis();
-    long l2 = ce.asR();
+    long l2 = ce.azI();
     if (Math.abs(l1 - l2) > 300000L) {
-      ad.w("MicroMsg.MsgInfoStorageLogic", "[getFixTime] nowServer:" + l2 + " now:" + l1);
+      ac.w("MicroMsg.MsgInfoStorageLogic", "[getFixTime] nowServer:" + l2 + " now:" + l1);
     }
     AppMethodBeat.o(42959);
     return l2;
   }
   
-  public static int ash()
+  public static int ayY()
   {
     AppMethodBeat.i(174543);
-    if (gNL)
+    if (hol)
     {
-      ad.i("MicroMsg.MsgInfoStorageLogic", "checkUnfinishedDeleteMsgTask already started.");
+      ac.i("MicroMsg.MsgInfoStorageLogic", "checkUnfinishedDeleteMsgTask already started.");
       AppMethodBeat.o(174543);
       return -1;
     }
-    Map localMap = ((k)g.ab(k.class)).aqo().cOM();
+    Map localMap = ((k)g.ab(k.class)).axd().dcv();
     if (localMap.isEmpty())
     {
-      ad.i("MicroMsg.MsgInfoStorageLogic", "summerdel checkUnfinishedDeleteMsgTask all finished!");
+      ac.i("MicroMsg.MsgInfoStorageLogic", "summerdel checkUnfinishedDeleteMsgTask all finished!");
       AppMethodBeat.o(174543);
       return 0;
     }
     com.tencent.mm.sdk.g.b.c(new Runnable()
     {
-      final int gNM = 200;
-      final int gNN = 30;
-      final int gNO = 5;
-      int gNP = 100;
+      final int hom = 200;
+      final int hon = 30;
+      final int hoo = 5;
+      int hop = 100;
       
       public final void run()
       {
         AppMethodBeat.i(42941);
-        bi.cz(true);
-        ad.i("MicroMsg.MsgInfoStorageLogic", "summerdel checkUnfinishedDeleteMsgTask run currentThread[%s, %d] talkers size:%s", new Object[] { Thread.currentThread().getName(), Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.gNQ.size()) });
-        if (this.gNQ.containsKey(""))
+        bi.access$002(true);
+        ac.i("MicroMsg.MsgInfoStorageLogic", "summerdel checkUnfinishedDeleteMsgTask run currentThread[%s, %d] talkers size:%s", new Object[] { Thread.currentThread().getName(), Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.hoq.size()) });
+        if (this.hoq.containsKey(""))
         {
-          bi.d(((Long)this.gNQ.get("")).longValue(), 2);
-          this.gNQ.remove("");
-          ((k)g.ab(k.class)).aqo().aB("", 0L);
+          bi.d(((Long)this.hoq.get("")).longValue(), 2);
+          this.hoq.remove("");
+          ((k)g.ab(k.class)).axd().aD("", 0L);
         }
-        Iterator localIterator = this.gNQ.entrySet().iterator();
+        Iterator localIterator = this.hoq.entrySet().iterator();
         Object localObject;
         String str;
         long l4;
@@ -471,14 +484,14 @@ public final class bi
           l4 = ((Long)((Map.Entry)localObject).getValue()).longValue();
           if (l4 > 0L)
           {
-            l5 = bt.eGO();
+            l5 = bs.eWj();
             l1 = 0L;
             i = 0;
           }
         }
         for (;;)
         {
-          if ((this.gNP < 200) && (this.gNP > 30)) {
+          if ((this.hop < 200) && (this.hop > 30)) {
             if (l1 <= 500L) {
               break label348;
             }
@@ -486,43 +499,43 @@ public final class bi
           long l6;
           long l2;
           label348:
-          for (int j = this.gNP - 5;; j = this.gNP + 5)
+          for (int j = this.hop - 5;; j = this.hop + 5)
           {
-            this.gNP = j;
-            l6 = bt.eGO();
-            localObject = ((k)g.ab(k.class)).cOI().m(str, this.gNP, l4);
+            this.hop = j;
+            l6 = bs.eWj();
+            localObject = ((k)g.ab(k.class)).dcr().m(str, this.hop, l4);
             l2 = 0L;
             l1 = 0L;
             while (((Cursor)localObject).moveToNext())
             {
-              bl localbl = new bl();
-              localbl.convertFrom((Cursor)localObject);
+              bo localbo = new bo();
+              localbo.convertFrom((Cursor)localObject);
               l3 = l2;
-              if (l2 < localbl.field_createTime) {
-                l3 = localbl.field_createTime;
+              if (l2 < localbo.field_createTime) {
+                l3 = localbo.field_createTime;
               }
-              bi.v(localbl);
+              bi.v(localbo);
               l1 = 1L + l1;
               l2 = l3;
             }
           }
           ((Cursor)localObject).close();
-          long l7 = bt.eGO();
+          long l7 = bs.eWj();
           if ((l2 > 0L) && (l1 > 0L))
           {
-            ((k)g.ab(k.class)).cOI().aQ(str, l2);
-            ((an)g.ab(an.class)).w(str, l2);
+            ((k)g.ab(k.class)).dcr().aS(str, l2);
+            ((an)g.ab(an.class)).x(str, l2);
           }
           i = (int)(i + l1);
-          long l8 = bt.eGO();
+          long l8 = bs.eWj();
           long l3 = l8 - l6;
-          ad.i("MicroMsg.MsgInfoStorageLogic", "summerdel checkUnfinishedDeleteMsgTask:%s delCnt:%d curCnt:%d msgTimeDiff:%d(%d) run:[%d,%d,%d](%d)", new Object[] { bt.aGs(str), Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l4 - l2), Long.valueOf(l4), Long.valueOf(l8 - l7), Long.valueOf(l8 - l6), Long.valueOf(l8 - l5), Integer.valueOf(this.gNP) });
+          ac.i("MicroMsg.MsgInfoStorageLogic", "summerdel checkUnfinishedDeleteMsgTask:%s delCnt:%d curCnt:%d msgTimeDiff:%d(%d) run:[%d,%d,%d](%d)", new Object[] { bs.aLJ(str), Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l4 - l2), Long.valueOf(l4), Long.valueOf(l8 - l7), Long.valueOf(l8 - l6), Long.valueOf(l8 - l5), Integer.valueOf(this.hop) });
           if (l1 <= 0L)
           {
-            ((k)g.ab(k.class)).aqo().aB(str, 0L);
+            ((k)g.ab(k.class)).axd().aD(str, 0L);
             break;
-            ad.i("MicroMsg.MsgInfoStorageLogic", "Done checkUnfinishedDeleteMsgTask");
-            bi.cz(false);
+            ac.i("MicroMsg.MsgInfoStorageLogic", "Done checkUnfinishedDeleteMsgTask");
+            bi.access$002(false);
             AppMethodBeat.o(42941);
             return;
           }
@@ -535,54 +548,54 @@ public final class bi
     return i;
   }
   
-  public static void asi()
+  public static void ayZ()
   {
     AppMethodBeat.i(174545);
-    List localList = ((k)g.ab(k.class)).cOI().agt("bottlemessage");
+    List localList = ((k)g.ab(k.class)).dcr().aln("bottlemessage");
     if (localList != null)
     {
       int i = 0;
       while (i < localList.size())
       {
-        v((bl)localList.get(i));
+        v((bo)localList.get(i));
         i += 1;
       }
     }
-    ((k)g.ab(k.class)).cOI().agv("bottlemessage");
+    ((k)g.ab(k.class)).dcr().alp("bottlemessage");
     AppMethodBeat.o(174545);
   }
   
-  public static void asj()
+  public static void aza()
   {
     AppMethodBeat.i(42969);
-    List localList = ((k)g.ab(k.class)).cOI().agt("qmessage");
+    List localList = ((k)g.ab(k.class)).dcr().aln("qmessage");
     if (localList != null)
     {
       int i = 0;
       while (i < localList.size())
       {
-        v((bl)localList.get(i));
+        v((bo)localList.get(i));
         i += 1;
       }
     }
-    ((k)g.ab(k.class)).cOI().agv("qmessage");
+    ((k)g.ab(k.class)).dcr().alp("qmessage");
     AppMethodBeat.o(42969);
   }
   
-  public static void ask()
+  public static void azb()
   {
     AppMethodBeat.i(42970);
-    List localList = ((k)g.ab(k.class)).cOI().agt("tmessage");
+    List localList = ((k)g.ab(k.class)).dcr().aln("tmessage");
     if (localList != null)
     {
       int i = 0;
       while (i < localList.size())
       {
-        v((bl)localList.get(i));
+        v((bo)localList.get(i));
         i += 1;
       }
     }
-    ((k)g.ab(k.class)).cOI().agv("tmessage");
+    ((k)g.ab(k.class)).dcr().alp("tmessage");
     AppMethodBeat.o(42970);
   }
   
@@ -597,7 +610,7 @@ public final class bi
       {
         str = paramString;
         if (paramInt == 0) {
-          str = ug(paramString);
+          str = ym(paramString);
         }
       }
     }
@@ -608,46 +621,46 @@ public final class bi
   public static boolean c(f.a parama)
   {
     AppMethodBeat.i(42974);
-    if ((parama == null) || (parama.fTo == null))
+    if ((parama == null) || (parama.fXi == null))
     {
       AppMethodBeat.o(42974);
       return false;
     }
-    cs localcs = parama.fTo;
-    Object localObject = z.a(localcs.Cxx);
-    localObject = ((k)g.ab(k.class)).cOI().aD((String)localObject, localcs.uKZ);
-    if (((du)localObject).field_msgId == 0L)
+    cu localcu = parama.fXi;
+    Object localObject = z.a(localcu.DPT);
+    localObject = ((k)g.ab(k.class)).dcr().aF((String)localObject, localcu.vTQ);
+    if (((dy)localObject).field_msgId == 0L)
     {
       AppMethodBeat.o(42974);
       return false;
     }
-    if ((((du)localObject).field_isSend != 0) && (localcs.CxE == 0))
+    if ((((dy)localObject).field_isSend != 0) && (localcu.DQa == 0))
     {
       AppMethodBeat.o(42974);
       return false;
     }
-    int i = ((du)localObject).field_flag;
-    if (parama.gVg)
+    int i = ((dy)localObject).field_flag;
+    if (parama.hvF)
     {
       i |= 0x2;
-      if (!parama.gVh) {
+      if (!parama.hvG) {
         break label230;
       }
       i |= 0x1;
       label128:
-      if (!parama.gVi) {
+      if (!parama.hvH) {
         break label238;
       }
       i |= 0x4;
     }
     for (;;)
     {
-      if (i == ((du)localObject).field_flag) {
+      if (i == ((dy)localObject).field_flag) {
         break label246;
       }
-      ad.i("MicroMsg.MsgInfoStorageLogic", "summerbadcr updateMsgFlagByAddMsgInfo msgType[%d], flag new[%d], old[%d]", new Object[] { Integer.valueOf(localcs.saz), Integer.valueOf(i), Integer.valueOf(((du)localObject).field_flag) });
-      ((bl)localObject).setFlag(i);
-      ((k)g.ab(k.class)).cOI().b(((du)localObject).field_msgSvrId, (bl)localObject);
+      ac.i("MicroMsg.MsgInfoStorageLogic", "summerbadcr updateMsgFlagByAddMsgInfo msgType[%d], flag new[%d], old[%d]", new Object[] { Integer.valueOf(localcu.tit), Integer.valueOf(i), Integer.valueOf(((dy)localObject).field_flag) });
+      ((bo)localObject).setFlag(i);
+      ((k)g.ab(k.class)).dcr().b(((dy)localObject).field_msgSvrId, (bo)localObject);
       AppMethodBeat.o(42974);
       return true;
       i &= 0xFFFFFFFD;
@@ -666,15 +679,15 @@ public final class bi
   public static int d(f.a parama)
   {
     int j = 0;
-    if (parama.gVg) {
+    if (parama.hvF) {
       j = 2;
     }
     int i = j;
-    if (parama.gVh) {
+    if (parama.hvG) {
       i = j | 0x1;
     }
     j = i;
-    if (parama.gVi) {
+    if (parama.hvH) {
       j = i | 0x4;
     }
     return j;
@@ -684,9 +697,9 @@ public final class bi
   public static void d(long paramLong, int paramInt)
   {
     // Byte code:
-    //   0: ldc_w 402
+    //   0: ldc_w 408
     //   3: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 287	java/lang/System:currentTimeMillis	()J
+    //   6: invokestatic 299	java/lang/System:currentTimeMillis	()J
     //   9: pop2
     //   10: iconst_0
     //   11: istore_3
@@ -699,44 +712,44 @@ public final class bi
     //   21: iload_2
     //   22: iconst_1
     //   23: if_icmpne +6 -> 29
-    //   26: invokestatic 405	com/tencent/mm/model/bi$c:reset	()V
+    //   26: invokestatic 411	com/tencent/mm/model/bi$c:reset	()V
     //   29: new 26	com/tencent/mm/model/bi$c
     //   32: dup
-    //   33: invokespecial 406	com/tencent/mm/model/bi$c:<init>	()V
+    //   33: invokespecial 412	com/tencent/mm/model/bi$c:<init>	()V
     //   36: astore 13
     //   38: ldc 45
     //   40: invokestatic 51	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
     //   43: checkcast 45	com/tencent/mm/plugin/messenger/foundation/a/k
     //   46: invokeinterface 55 1 0
-    //   51: ldc_w 408
+    //   51: ldc_w 414
     //   54: lload_0
-    //   55: invokeinterface 412 4 0
+    //   55: invokeinterface 418 4 0
     //   60: astore 14
     //   62: aconst_null
     //   63: astore 12
     //   65: aload 13
-    //   67: invokestatic 287	java/lang/System:currentTimeMillis	()J
-    //   70: putfield 415	com/tencent/mm/model/bi$c:gOs	J
+    //   67: invokestatic 299	java/lang/System:currentTimeMillis	()J
+    //   70: putfield 421	com/tencent/mm/model/bi$c:hoS	J
     //   73: iconst_0
     //   74: istore 7
     //   76: iconst_0
     //   77: istore 8
     //   79: aload 14
-    //   81: invokeinterface 86 1 0
+    //   81: invokeinterface 232 1 0
     //   86: ifeq +283 -> 369
-    //   89: new 72	com/tencent/mm/storage/bl
+    //   89: new 163	com/tencent/mm/storage/bo
     //   92: dup
-    //   93: invokespecial 75	com/tencent/mm/storage/bl:<init>	()V
+    //   93: invokespecial 225	com/tencent/mm/storage/bo:<init>	()V
     //   96: astore 11
     //   98: aload 11
     //   100: aload 14
-    //   102: invokevirtual 79	com/tencent/mm/storage/bl:convertFrom	(Landroid/database/Cursor;)V
+    //   102: invokevirtual 229	com/tencent/mm/storage/bo:convertFrom	(Landroid/database/Cursor;)V
     //   105: aload 11
-    //   107: invokevirtual 418	com/tencent/mm/storage/bl:getType	()I
-    //   110: invokestatic 422	com/tencent/mm/model/bi:nk	(I)I
+    //   107: invokevirtual 424	com/tencent/mm/storage/bo:getType	()I
+    //   110: invokestatic 428	com/tencent/mm/model/bi:nY	(I)I
     //   113: lookupswitch	default:+853->966, 3:+171->284, 23:+171->284, 34:+225->338, 43:+198->311, 44:+198->311, 49:+144->257, 62:+198->311, 486539313:+198->311
     //   189: fconst_0
-    //   190: invokestatic 83	com/tencent/mm/model/bi:v	(Lcom/tencent/mm/storage/bl;)V
+    //   190: invokestatic 74	com/tencent/mm/model/bi:v	(Lcom/tencent/mm/storage/bo;)V
     //   193: iload 7
     //   195: iconst_1
     //   196: iadd
@@ -747,10 +760,10 @@ public final class bi
     //   205: bipush 100
     //   207: if_icmplt +19 -> 226
     //   210: aload 13
-    //   212: invokevirtual 425	com/tencent/mm/model/bi$c:end	()V
+    //   212: invokevirtual 431	com/tencent/mm/model/bi$c:end	()V
     //   215: aload 13
-    //   217: invokestatic 287	java/lang/System:currentTimeMillis	()J
-    //   220: putfield 415	com/tencent/mm/model/bi$c:gOs	J
+    //   217: invokestatic 299	java/lang/System:currentTimeMillis	()J
+    //   220: putfield 421	com/tencent/mm/model/bi$c:hoS	J
     //   223: iconst_0
     //   224: istore 7
     //   226: iload 5
@@ -835,170 +848,170 @@ public final class bi
     //   369: aload 14
     //   371: ifnull +10 -> 381
     //   374: aload 14
-    //   376: invokeinterface 89 1 0
+    //   376: invokeinterface 235 1 0
     //   381: aload 13
-    //   383: invokevirtual 425	com/tencent/mm/model/bi$c:end	()V
+    //   383: invokevirtual 431	com/tencent/mm/model/bi$c:end	()V
     //   386: aload 13
-    //   388: invokestatic 287	java/lang/System:currentTimeMillis	()J
-    //   391: putfield 415	com/tencent/mm/model/bi$c:gOs	J
+    //   388: invokestatic 299	java/lang/System:currentTimeMillis	()J
+    //   391: putfield 421	com/tencent/mm/model/bi$c:hoS	J
     //   394: ldc 45
     //   396: invokestatic 51	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
     //   399: checkcast 45	com/tencent/mm/plugin/messenger/foundation/a/k
     //   402: invokeinterface 55 1 0
-    //   407: ldc_w 408
+    //   407: ldc_w 414
     //   410: lload_0
-    //   411: invokeinterface 429 4 0
+    //   411: invokeinterface 434 4 0
     //   416: istore 9
     //   418: aload 13
-    //   420: invokevirtual 425	com/tencent/mm/model/bi$c:end	()V
-    //   423: getstatic 435	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+    //   420: invokevirtual 431	com/tencent/mm/model/bi$c:end	()V
+    //   423: getstatic 440	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
     //   426: sipush 1333
     //   429: bipush 10
     //   431: iconst_3
     //   432: iload 9
     //   434: iconst_1
-    //   435: invokevirtual 438	com/tencent/mm/plugin/report/e:c	(IIIIZ)V
+    //   435: invokevirtual 443	com/tencent/mm/plugin/report/e:c	(IIIIZ)V
     //   438: aload 13
-    //   440: getfield 441	com/tencent/mm/model/bi$c:gOr	J
+    //   440: getfield 446	com/tencent/mm/model/bi$c:hoR	J
     //   443: lstore_0
-    //   444: getstatic 435	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
-    //   447: ldc2_w 442
-    //   450: ldc2_w 444
+    //   444: getstatic 440	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
+    //   447: ldc2_w 447
+    //   450: ldc2_w 449
     //   453: lload_0
-    //   454: ldc2_w 446
+    //   454: ldc2_w 451
     //   457: ldiv
     //   458: iconst_1
-    //   459: invokevirtual 451	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
+    //   459: invokevirtual 456	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
     //   462: iload_2
     //   463: iconst_1
     //   464: if_icmpne +527 -> 991
-    //   467: getstatic 435	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
-    //   470: ldc2_w 442
+    //   467: getstatic 440	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
+    //   470: ldc2_w 447
     //   473: lconst_1
     //   474: lconst_1
     //   475: iconst_1
-    //   476: invokevirtual 451	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
+    //   476: invokevirtual 456	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
     //   479: goto +512 -> 991
-    //   482: getstatic 435	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
-    //   485: ldc2_w 442
+    //   482: getstatic 440	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
+    //   485: ldc2_w 447
     //   488: iload 7
     //   490: i2l
     //   491: lconst_1
     //   492: iconst_1
-    //   493: invokevirtual 451	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
+    //   493: invokevirtual 456	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
     //   496: lload_0
-    //   497: ldc2_w 452
+    //   497: ldc2_w 457
     //   500: lcmp
     //   501: iflt +373 -> 874
     //   504: bipush 36
     //   506: istore 7
-    //   508: getstatic 435	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
-    //   511: ldc2_w 442
+    //   508: getstatic 440	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
+    //   511: ldc2_w 447
     //   514: iload 7
     //   516: i2l
     //   517: lconst_1
     //   518: iconst_1
-    //   519: invokevirtual 451	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
+    //   519: invokevirtual 456	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
     //   522: iload 9
     //   524: ifle +21 -> 545
-    //   527: getstatic 435	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
-    //   530: ldc2_w 442
-    //   533: ldc2_w 454
+    //   527: getstatic 440	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
+    //   530: ldc2_w 447
+    //   533: ldc2_w 459
     //   536: lload_0
     //   537: iload 9
     //   539: i2l
     //   540: ldiv
     //   541: iconst_1
-    //   542: invokevirtual 451	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
-    //   545: getstatic 435	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+    //   542: invokevirtual 456	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
+    //   545: getstatic 440	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
     //   548: sipush 18923
     //   551: bipush 8
     //   553: anewarray 4	java/lang/Object
     //   556: dup
     //   557: iconst_0
     //   558: lload_0
-    //   559: invokestatic 458	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   559: invokestatic 463	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   562: aastore
     //   563: dup
     //   564: iconst_1
     //   565: iload_2
-    //   566: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   566: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   569: aastore
     //   570: dup
     //   571: iconst_2
     //   572: iconst_0
-    //   573: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   573: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   576: aastore
     //   577: dup
     //   578: iconst_3
     //   579: iload 8
-    //   581: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   581: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   584: aastore
     //   585: dup
     //   586: iconst_4
     //   587: iload_3
-    //   588: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   588: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   591: aastore
     //   592: dup
     //   593: iconst_5
     //   594: iload 4
-    //   596: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   596: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   599: aastore
     //   600: dup
     //   601: bipush 6
     //   603: iload 5
-    //   605: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   605: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   608: aastore
     //   609: dup
     //   610: bipush 7
     //   612: iload 6
-    //   614: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   614: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   617: aastore
-    //   618: invokevirtual 461	com/tencent/mm/plugin/report/e:f	(I[Ljava/lang/Object;)V
-    //   621: ldc 99
-    //   623: ldc_w 463
+    //   618: invokevirtual 466	com/tencent/mm/plugin/report/e:f	(I[Ljava/lang/Object;)V
+    //   621: ldc 81
+    //   623: ldc_w 468
     //   626: bipush 6
     //   628: anewarray 4	java/lang/Object
     //   631: dup
     //   632: iconst_0
     //   633: lload_0
-    //   634: invokestatic 458	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   634: invokestatic 463	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   637: aastore
     //   638: dup
     //   639: iconst_1
     //   640: iload 8
-    //   642: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   642: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   645: aastore
     //   646: dup
     //   647: iconst_2
     //   648: iload_3
-    //   649: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   649: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   652: aastore
     //   653: dup
     //   654: iconst_3
     //   655: iload 4
-    //   657: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   657: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   660: aastore
     //   661: dup
     //   662: iconst_4
     //   663: iload 5
-    //   665: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   665: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   668: aastore
     //   669: dup
     //   670: iconst_5
     //   671: iload 6
-    //   673: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   673: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   676: aastore
-    //   677: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   677: invokestatic 94	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   680: aload 13
-    //   682: invokevirtual 464	com/tencent/mm/model/bi$c:close	()V
-    //   685: invokestatic 405	com/tencent/mm/model/bi$c:reset	()V
-    //   688: ldc_w 402
-    //   691: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   682: invokevirtual 469	com/tencent/mm/model/bi$c:close	()V
+    //   685: invokestatic 411	com/tencent/mm/model/bi$c:reset	()V
+    //   688: ldc_w 408
+    //   691: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   694: return
     //   695: astore 12
-    //   697: ldc_w 402
-    //   700: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   697: ldc_w 408
+    //   700: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   703: aload 12
     //   705: athrow
     //   706: astore 11
@@ -1007,49 +1020,49 @@ public final class bi
     //   713: aload 12
     //   715: ifnull +82 -> 797
     //   718: aload 14
-    //   720: invokeinterface 89 1 0
-    //   725: ldc_w 402
-    //   728: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   720: invokeinterface 235 1 0
+    //   725: ldc_w 408
+    //   728: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   731: aload 11
     //   733: athrow
     //   734: astore 12
-    //   736: ldc_w 402
-    //   739: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   736: ldc_w 408
+    //   739: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   742: aload 12
     //   744: athrow
     //   745: astore 11
     //   747: aload 12
     //   749: ifnull +204 -> 953
     //   752: aload 13
-    //   754: invokevirtual 464	com/tencent/mm/model/bi$c:close	()V
-    //   757: ldc_w 402
-    //   760: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   754: invokevirtual 469	com/tencent/mm/model/bi$c:close	()V
+    //   757: ldc_w 408
+    //   760: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   763: aload 11
     //   765: athrow
     //   766: astore 11
-    //   768: ldc 99
+    //   768: ldc 81
     //   770: aload 11
-    //   772: ldc_w 466
+    //   772: ldc_w 471
     //   775: iconst_0
     //   776: anewarray 4	java/lang/Object
-    //   779: invokestatic 470	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   779: invokestatic 475	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   782: goto -97 -> 685
     //   785: astore 14
     //   787: aload 12
     //   789: aload 14
-    //   791: invokevirtual 474	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   791: invokevirtual 479	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   794: goto -69 -> 725
     //   797: aload 14
-    //   799: invokeinterface 89 1 0
+    //   799: invokeinterface 235 1 0
     //   804: goto -79 -> 725
     //   807: iload 9
-    //   809: ldc_w 475
+    //   809: ldc_w 480
     //   812: if_icmplt +10 -> 822
     //   815: bipush 25
     //   817: istore 7
     //   819: goto -337 -> 482
     //   822: iload 9
-    //   824: ldc_w 476
+    //   824: ldc_w 481
     //   827: if_icmplt +10 -> 837
     //   830: bipush 24
     //   832: istore 7
@@ -1070,28 +1083,28 @@ public final class bi
     //   869: istore 7
     //   871: goto -389 -> 482
     //   874: lload_0
-    //   875: ldc2_w 477
+    //   875: ldc2_w 482
     //   878: lcmp
     //   879: iflt +10 -> 889
     //   882: bipush 35
     //   884: istore 7
     //   886: goto -378 -> 508
     //   889: lload_0
-    //   890: ldc2_w 479
+    //   890: ldc2_w 484
     //   893: lcmp
     //   894: iflt +10 -> 904
     //   897: bipush 34
     //   899: istore 7
     //   901: goto -393 -> 508
     //   904: lload_0
-    //   905: ldc2_w 481
+    //   905: ldc2_w 486
     //   908: lcmp
     //   909: iflt +10 -> 919
     //   912: bipush 33
     //   914: istore 7
     //   916: goto -408 -> 508
     //   919: lload_0
-    //   920: ldc2_w 483
+    //   920: ldc2_w 488
     //   923: lcmp
     //   924: iflt +10 -> 934
     //   927: bipush 32
@@ -1103,10 +1116,10 @@ public final class bi
     //   941: astore 13
     //   943: aload 12
     //   945: aload 13
-    //   947: invokevirtual 474	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   947: invokevirtual 479	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   950: goto -193 -> 757
     //   953: aload 13
-    //   955: invokevirtual 464	com/tencent/mm/model/bi$c:close	()V
+    //   955: invokevirtual 469	com/tencent/mm/model/bi$c:close	()V
     //   958: goto -201 -> 757
     //   961: astore 11
     //   963: goto -255 -> 708
@@ -1124,7 +1137,7 @@ public final class bi
     //   986: istore 6
     //   988: goto -800 -> 188
     //   991: iload 9
-    //   993: ldc_w 485
+    //   993: ldc_w 490
     //   996: if_icmplt -189 -> 807
     //   999: bipush 26
     //   1001: istore 7
@@ -1145,7 +1158,7 @@ public final class bi
     //   77	564	8	i1	int
     //   197	800	9	i2	int
     //   232	753	10	i3	int
-    //   96	93	11	localbl	bl
+    //   96	93	11	localbo	bo
     //   706	26	11	localObject1	Object
     //   745	19	11	localObject2	Object
     //   766	5	11	localIOException	IOException
@@ -1204,36 +1217,21 @@ public final class bi
     //   797	804	1006	finally
   }
   
-  public static int lW(long paramLong)
-  {
-    AppMethodBeat.i(42964);
-    bl localbl = ((k)g.ab(k.class)).cOI().rm(paramLong);
-    if (localbl.field_msgId != paramLong)
-    {
-      AppMethodBeat.o(42964);
-      return 0;
-    }
-    v(localbl);
-    int i = ((k)g.ab(k.class)).cOI().rn(paramLong);
-    AppMethodBeat.o(42964);
-    return i;
-  }
-  
-  public static long n(String paramString, long paramLong1, long paramLong2)
+  public static long l(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(42976);
     long l3 = paramLong1 * 1000L;
     paramLong1 = 0L;
     long l2 = -1L;
     long l1 = paramLong1;
-    bl localbl;
+    bo localbo;
     if (paramString != null)
     {
-      localbl = ((k)g.ab(k.class)).cOI().agq(paramString);
-      if (localbl != null) {
-        paramLong1 = localbl.field_createTime;
+      localbo = ((k)g.ab(k.class)).dcr().alk(paramString);
+      if (localbo != null) {
+        paramLong1 = localbo.field_createTime;
       }
-      l2 = ((k)g.ab(k.class)).cOI().agH(paramString);
+      l2 = ((k)g.ab(k.class)).dcr().alB(paramString);
       l1 = paramLong1;
     }
     if (l2 == l1)
@@ -1263,13 +1261,13 @@ public final class bi
         AppMethodBeat.o(42976);
         return l3;
       }
-      localbl = ((k)g.ab(k.class)).cOI().aF(paramString, l3);
-      if ((localbl.field_msgSeq != 0L) && (localbl.field_msgSeq != paramLong2))
+      localbo = ((k)g.ab(k.class)).dcr().aH(paramString, l3);
+      if ((localbo.field_msgSeq != 0L) && (localbo.field_msgSeq != paramLong2))
       {
-        ad.i("MicroMsg.MsgInfoStorageLogic", "summerbadcr fixRecvGetMsgCreateTime seq[%d, %d] need fix serverMillTime[%d, %d]", new Object[] { Long.valueOf(localbl.field_msgSeq), Long.valueOf(paramLong2), Long.valueOf(localbl.field_createTime), Long.valueOf(l3) });
-        if (paramLong2 < localbl.field_msgSeq)
+        ac.i("MicroMsg.MsgInfoStorageLogic", "summerbadcr fixRecvGetMsgCreateTime seq[%d, %d] need fix serverMillTime[%d, %d]", new Object[] { Long.valueOf(localbo.field_msgSeq), Long.valueOf(paramLong2), Long.valueOf(localbo.field_createTime), Long.valueOf(l3) });
+        if (paramLong2 < localbo.field_msgSeq)
         {
-          paramString = ((k)g.ab(k.class)).cOI().aJ(paramString, l3 - 1000L);
+          paramString = ((k)g.ab(k.class)).dcr().aL(paramString, l3 - 1000L);
           if ((paramString.field_msgSeq == 0L) || (paramString.field_msgSeq == paramLong2)) {
             break label466;
           }
@@ -1278,29 +1276,29 @@ public final class bi
           }
           paramLong1 = paramString.field_createTime + 1L;
           label350:
-          ad.i("MicroMsg.MsgInfoStorageLogic", "summerbadcr fixRecvGetMsgCreateTime seq[%d, %d, %d] need fix serverMillTime[%d, %d, %d] done", new Object[] { Long.valueOf(localbl.field_msgSeq), Long.valueOf(paramString.field_msgSeq), Long.valueOf(paramLong2), Long.valueOf(localbl.field_createTime), Long.valueOf(paramString.field_createTime), Long.valueOf(paramLong1) });
+          ac.i("MicroMsg.MsgInfoStorageLogic", "summerbadcr fixRecvGetMsgCreateTime seq[%d, %d, %d] need fix serverMillTime[%d, %d, %d] done", new Object[] { Long.valueOf(localbo.field_msgSeq), Long.valueOf(paramString.field_msgSeq), Long.valueOf(paramLong2), Long.valueOf(localbo.field_createTime), Long.valueOf(paramString.field_createTime), Long.valueOf(paramLong1) });
         }
       }
       for (;;)
       {
         AppMethodBeat.o(42976);
         return paramLong1;
-        paramString = ((k)g.ab(k.class)).cOI().aI(paramString, 1000L + l3);
+        paramString = ((k)g.ab(k.class)).dcr().aK(paramString, 1000L + l3);
         break;
         label456:
         paramLong1 = paramString.field_createTime - 1L;
         break label350;
         label466:
-        ad.i("MicroMsg.MsgInfoStorageLogic", "summerbadcr fixRecvGetMsgCreateTime seq[%d, %d] no need fix serverMillTime[%d, %d]", new Object[] { Long.valueOf(localbl.field_msgSeq), Long.valueOf(paramLong2), Long.valueOf(localbl.field_createTime), Long.valueOf(l3) });
+        ac.i("MicroMsg.MsgInfoStorageLogic", "summerbadcr fixRecvGetMsgCreateTime seq[%d, %d] no need fix serverMillTime[%d, %d]", new Object[] { Long.valueOf(localbo.field_msgSeq), Long.valueOf(paramLong2), Long.valueOf(localbo.field_createTime), Long.valueOf(l3) });
         paramLong1 = l3;
       }
     }
-    ad.w("MicroMsg.MsgInfoStorageLogic", "summerbadcr fixRecvMsgCreateTime first > last [%d > %d], ret serverMillTime:%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l3) });
+    ac.w("MicroMsg.MsgInfoStorageLogic", "summerbadcr fixRecvMsgCreateTime first > last [%d > %d], ret serverMillTime:%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l3) });
     AppMethodBeat.o(42976);
     return l3;
   }
   
-  public static boolean nj(int paramInt)
+  public static boolean nX(int paramInt)
   {
     switch (paramInt)
     {
@@ -1311,7 +1309,7 @@ public final class bi
     return true;
   }
   
-  private static int nk(int paramInt)
+  private static int nY(int paramInt)
   {
     switch (paramInt)
     {
@@ -1321,37 +1319,72 @@ public final class bi
     return 49;
   }
   
-  public static long u(bl parambl)
+  public static int pK(long paramLong)
+  {
+    AppMethodBeat.i(42964);
+    bo localbo = ((k)g.ab(k.class)).dcr().vP(paramLong);
+    if (localbo.field_msgId != paramLong)
+    {
+      AppMethodBeat.o(42964);
+      return 0;
+    }
+    v(localbo);
+    int i = ((k)g.ab(k.class)).dcr().vQ(paramLong);
+    AppMethodBeat.o(42964);
+    return i;
+  }
+  
+  public static long u(bo parambo)
   {
     AppMethodBeat.i(42956);
-    af localaf = ((k)g.ab(k.class)).apM().aHY(parambl.field_talker);
-    if ((localaf == null) || ((int)localaf.fId == 0))
+    com.tencent.mm.storage.ai localai = ((k)g.ab(k.class)).awB().aNt(parambo.field_talker);
+    if ((localai == null) || ((int)localai.fLJ == 0))
     {
-      localaf = new af(parambl.field_talker);
-      localaf.setType(2);
-      lh locallh = new lh();
-      locallh.dpP.dpQ = localaf;
-      a.ESL.l(locallh);
-      ((k)g.ab(k.class)).apM().af(localaf);
+      localai = new com.tencent.mm.storage.ai(parambo.field_talker);
+      localai.setType(2);
+      lq locallq = new lq();
+      locallq.dnA.dnB = localai;
+      a.GpY.l(locallq);
+      ((k)g.ab(k.class)).awB().ag(localai);
     }
-    long l = ((k)g.ab(k.class)).cOI().an(parambl);
+    long l = ((k)g.ab(k.class)).dcr().ap(parambo);
     AppMethodBeat.o(42956);
     return l;
   }
   
+  public static void v(bo parambo)
+  {
+    AppMethodBeat.i(42962);
+    if (parambo == null)
+    {
+      AppMethodBeat.o(42962);
+      return;
+    }
+    Object localObject = f.d.bY(Integer.valueOf(nY(parambo.getType())));
+    if (localObject != null) {
+      ((f)localObject).b(new f.c(parambo));
+    }
+    localObject = new co();
+    ((co)localObject).dch.msgId = parambo.field_msgId;
+    ((co)localObject).dch.talker = parambo.field_talker;
+    ((co)localObject).dch.msgType = parambo.getType();
+    a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+    AppMethodBeat.o(42962);
+  }
+  
   @Deprecated
-  public static int uc(String paramString)
+  public static int yi(String paramString)
   {
     AppMethodBeat.i(163509);
-    int i = ue(paramString);
+    int i = yk(paramString);
     AppMethodBeat.o(163509);
     return i;
   }
   
-  public static String ud(String paramString)
+  public static String yj(String paramString)
   {
     AppMethodBeat.i(42950);
-    int i = ue(paramString);
+    int i = yk(paramString);
     if (i != -1)
     {
       paramString = paramString.substring(i + 1).trim();
@@ -1362,31 +1395,31 @@ public final class bi
     return paramString;
   }
   
-  private static int ue(String paramString)
+  private static int yk(String paramString)
   {
     AppMethodBeat.i(42952);
     if (paramString == null)
     {
-      ad.e("MicroMsg.MsgInfoStorageLogic", "dz[getGroupChatMsgTalkerPos text is null]");
+      ac.e("MicroMsg.MsgInfoStorageLogic", "dz[getGroupChatMsgTalkerPos text is null]");
       AppMethodBeat.o(42952);
       return -1;
     }
     if (paramString.length() <= 0)
     {
-      ad.e("MicroMsg.MsgInfoStorageLogic", "dz[getGroupChatMsgTalkerPos length < 0]");
+      ac.e("MicroMsg.MsgInfoStorageLogic", "dz[getGroupChatMsgTalkerPos length < 0]");
       AppMethodBeat.o(42952);
       return -1;
     }
     if (paramString.startsWith("~SEMI_XML~"))
     {
-      ad.e("MicroMsg.MsgInfoStorageLogic", "dz[getGroupChatMsgTalkerPos startsWith(SemiXml.MAGIC_HEAD)]");
+      ac.e("MicroMsg.MsgInfoStorageLogic", "dz[getGroupChatMsgTalkerPos startsWith(SemiXml.MAGIC_HEAD)]");
       AppMethodBeat.o(42952);
       return -1;
     }
     int i = paramString.indexOf(':');
     if ((i != -1) && (paramString.substring(0, i).contains("<")))
     {
-      ad.e("MicroMsg.MsgInfoStorageLogic", "dz[reject illegal character]");
+      ac.e("MicroMsg.MsgInfoStorageLogic", "dz[reject illegal character]");
       AppMethodBeat.o(42952);
       return -1;
     }
@@ -1394,10 +1427,10 @@ public final class bi
     return i;
   }
   
-  public static String uf(String paramString)
+  public static String yl(String paramString)
   {
     AppMethodBeat.i(42953);
-    int i = ue(paramString);
+    int i = yk(paramString);
     if (i == -1)
     {
       AppMethodBeat.o(42953);
@@ -1408,10 +1441,10 @@ public final class bi
     return paramString;
   }
   
-  public static String ug(String paramString)
+  public static String ym(String paramString)
   {
     AppMethodBeat.i(42954);
-    int i = ue(paramString);
+    int i = yk(paramString);
     if (i == -1)
     {
       AppMethodBeat.o(42954);
@@ -1427,33 +1460,33 @@ public final class bi
     return paramString;
   }
   
-  public static int uh(String paramString)
+  public static int yn(String paramString)
   {
     AppMethodBeat.i(42957);
-    int i = ((k)g.ab(k.class)).cOI().uh(paramString);
+    int i = ((k)g.ab(k.class)).dcr().yn(paramString);
     AppMethodBeat.o(42957);
     return i;
   }
   
-  public static boolean ui(String paramString)
+  public static boolean yo(String paramString)
   {
     AppMethodBeat.i(42958);
-    boolean bool = ((k)g.ab(k.class)).cOI().ui(paramString);
+    boolean bool = ((k)g.ab(k.class)).dcr().yo(paramString);
     AppMethodBeat.o(42958);
     return bool;
   }
   
-  public static long uj(String paramString)
+  public static long yp(String paramString)
   {
     AppMethodBeat.i(42960);
-    long l = asg();
-    ad.i("MicroMsg.MsgInfoStorageLogic", "[oneliang] fix send msg create time, after fix, now is :%s", new Object[] { Long.valueOf(l) });
+    long l = ayX();
+    ac.i("MicroMsg.MsgInfoStorageLogic", "[oneliang] fix send msg create time, after fix, now is :%s", new Object[] { Long.valueOf(l) });
     if (paramString != null)
     {
-      paramString = ((k)g.ab(k.class)).cOI().agq(paramString);
+      paramString = ((k)g.ab(k.class)).dcr().alk(paramString);
       if (paramString != null)
       {
-        ad.i("MicroMsg.MsgInfoStorageLogic", "[oneliang] fix send msg create time, before return, msg id:%s, now is :%s", new Object[] { Long.valueOf(paramString.field_msgId), Long.valueOf(l) });
+        ac.i("MicroMsg.MsgInfoStorageLogic", "[oneliang] fix send msg create time, before return, msg id:%s, now is :%s", new Object[] { Long.valueOf(paramString.field_msgId), Long.valueOf(l) });
         if (paramString.field_createTime + 1L > l)
         {
           l = paramString.field_createTime;
@@ -1466,25 +1499,25 @@ public final class bi
     return l;
   }
   
-  public static int uk(String paramString)
+  public static int yq(String paramString)
   {
     AppMethodBeat.i(42966);
-    int i = ((k)g.ab(k.class)).cOI().agw(paramString);
+    int i = ((k)g.ab(k.class)).dcr().alq(paramString);
     AppMethodBeat.o(42966);
     return i;
   }
   
-  public static b ul(String paramString)
+  public static b yr(String paramString)
   {
     AppMethodBeat.i(42971);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(42971);
       return null;
     }
     try
     {
-      paramString = bw.K(paramString, "msgsource");
+      paramString = bv.L(paramString, "msgsource");
       if (paramString != null)
       {
         boolean bool = paramString.isEmpty();
@@ -1496,85 +1529,65 @@ public final class bi
         return null;
       }
       b localb = new b();
-      localb.gNU = ((String)paramString.get(".msgsource.bizmsg.msgcluster"));
-      localb.gNY = ((String)paramString.get(".msgsource.kf.kf_worker"));
-      localb.gNZ = bt.getInt((String)paramString.get(".msgsource.kf.kf_type_new"), 0);
-      localb.gNX = bt.nullAsNil((String)paramString.get(".msgsource.bizmsg.bizclientmsgid"));
-      if (bt.isNullOrNil(localb.gNX)) {
-        localb.gNX = bt.nullAsNil((String)paramString.get(".msgsource.enterprise_info.climsgid"));
+      localb.hou = ((String)paramString.get(".msgsource.bizmsg.msgcluster"));
+      localb.hoy = ((String)paramString.get(".msgsource.kf.kf_worker"));
+      localb.hoz = bs.getInt((String)paramString.get(".msgsource.kf.kf_type_new"), 0);
+      localb.hox = bs.nullAsNil((String)paramString.get(".msgsource.bizmsg.bizclientmsgid"));
+      if (bs.isNullOrNil(localb.hox)) {
+        localb.hox = bs.nullAsNil((String)paramString.get(".msgsource.enterprise_info.climsgid"));
       }
-      localb.gOd = bt.nullAsNil((String)paramString.get(".msgsource.enterprise_info.qy_msg_type"));
-      localb.gOe = bt.nullAsNil((String)paramString.get(".msgsource.enterprise_info.chat_type"));
-      localb.gOf = bt.nullAsNil((String)paramString.get(".msgsource.enterprise_info.bizchat_id"));
-      localb.gOg = bt.nullAsNil((String)paramString.get(".msgsource.enterprise_info.bizchat_ver"));
-      localb.userId = bt.nullAsNil((String)paramString.get(".msgsource.enterprise_info.user_id"));
-      localb.gOh = bt.nullAsNil((String)paramString.get(".msgsource.enterprise_info.user_nickname"));
-      localb.gOi = bt.nullAsNil((String)paramString.get(".msgsource.enterprise_info.sync_from_qy_im"));
-      localb.gOc = ((String)paramString.get(".msgsource.strangerantispamticket.$ticket"));
-      localb.scene = bt.getInt((String)paramString.get(".msgsource.strangerantispamticket.$scene"), 0);
-      localb.gOj = ((String)paramString.get(".msgsource.NotAutoDownloadRange"));
-      localb.gOk = bt.getInt((String)paramString.get(".msgsource.DownloadLimitKbps"), 0);
-      localb.gOl = bt.getInt((String)paramString.get(".msgsource.videopreloadlen"), 0);
-      localb.gOm = bt.getInt((String)paramString.get(".msgsource.PreDownload"), 0);
-      localb.gOn = bt.getInt((String)paramString.get(".msgsource.PreDownloadNetType"), 0);
-      localb.gOo = ((String)paramString.get(".msgsource.NoPreDownloadRange"));
-      localb.gNV = bt.getInt((String)paramString.get(".msgsource.msg_cluster_type"), -1);
-      localb.cIB = bt.getInt((String)paramString.get(".msgsource.service_type"), -1);
-      localb.gNW = bt.getInt((String)paramString.get(".msgsource.scene"), -1);
-      localb.gOa = bt.getInt((String)paramString.get(".msgsource.bizmsg.msg_predict"), 0);
-      localb.gOb = bt.getLong((String)paramString.get(".msgsource.bizflag"), 0L);
+      localb.hoD = bs.nullAsNil((String)paramString.get(".msgsource.enterprise_info.qy_msg_type"));
+      localb.hoE = bs.nullAsNil((String)paramString.get(".msgsource.enterprise_info.chat_type"));
+      localb.hoF = bs.nullAsNil((String)paramString.get(".msgsource.enterprise_info.bizchat_id"));
+      localb.hoG = bs.nullAsNil((String)paramString.get(".msgsource.enterprise_info.bizchat_ver"));
+      localb.userId = bs.nullAsNil((String)paramString.get(".msgsource.enterprise_info.user_id"));
+      localb.hoH = bs.nullAsNil((String)paramString.get(".msgsource.enterprise_info.user_nickname"));
+      localb.hoI = bs.nullAsNil((String)paramString.get(".msgsource.enterprise_info.sync_from_qy_im"));
+      localb.hoC = ((String)paramString.get(".msgsource.strangerantispamticket.$ticket"));
+      localb.scene = bs.getInt((String)paramString.get(".msgsource.strangerantispamticket.$scene"), 0);
+      localb.hoJ = ((String)paramString.get(".msgsource.NotAutoDownloadRange"));
+      localb.hoK = bs.getInt((String)paramString.get(".msgsource.DownloadLimitKbps"), 0);
+      localb.hoL = bs.getInt((String)paramString.get(".msgsource.videopreloadlen"), 0);
+      localb.hoM = bs.getInt((String)paramString.get(".msgsource.PreDownload"), 0);
+      localb.hoN = bs.getInt((String)paramString.get(".msgsource.PreDownloadNetType"), 0);
+      localb.hoO = ((String)paramString.get(".msgsource.NoPreDownloadRange"));
+      localb.hov = bs.getInt((String)paramString.get(".msgsource.msg_cluster_type"), -1);
+      localb.cFI = bs.getInt((String)paramString.get(".msgsource.service_type"), -1);
+      localb.how = bs.getInt((String)paramString.get(".msgsource.scene"), -1);
+      localb.hoA = bs.getInt((String)paramString.get(".msgsource.bizmsg.msg_predict"), 0);
+      localb.hoB = bs.getLong((String)paramString.get(".msgsource.bizflag"), 0L);
       AppMethodBeat.o(42971);
       return localb;
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.MsgInfoStorageLogic", "exception:%s", new Object[] { bt.m(paramString) });
-      ad.e("MicroMsg.MsgInfoStorageLogic", "Exception in getMsgSourceValue, %s", new Object[] { paramString.getMessage() });
+      ac.e("MicroMsg.MsgInfoStorageLogic", "exception:%s", new Object[] { bs.m(paramString) });
+      ac.e("MicroMsg.MsgInfoStorageLogic", "Exception in getMsgSourceValue, %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(42971);
     }
     return null;
   }
   
-  public static String um(String paramString)
+  public static String ys(String paramString)
   {
     AppMethodBeat.i(42972);
-    paramString = ul(paramString);
+    paramString = yr(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(42972);
       return null;
     }
-    paramString = paramString.gNY;
+    paramString = paramString.hoy;
     AppMethodBeat.o(42972);
     return paramString;
   }
   
-  public static void v(bl parambl)
-  {
-    AppMethodBeat.i(42962);
-    if (parambl == null)
-    {
-      AppMethodBeat.o(42962);
-      return;
-    }
-    Object localObject = f.d.ca(Integer.valueOf(nk(parambl.getType())));
-    if (localObject != null) {
-      ((f)localObject).b(new f.c(parambl));
-    }
-    localObject = new co();
-    ((co)localObject).deM.msgId = parambl.field_msgId;
-    ((co)localObject).deM.talker = parambl.field_talker;
-    ((co)localObject).deM.msgType = parambl.getType();
-    a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
-    AppMethodBeat.o(42962);
-  }
-  
-  public static long y(String paramString, long paramLong)
+  public static long z(String paramString, long paramLong)
   {
     AppMethodBeat.i(42961);
     if (paramString != null)
     {
-      paramString = ((k)g.ab(k.class)).cOI().agq(paramString);
+      paramString = ((k)g.ab(k.class)).dcr().alk(paramString);
       if (paramString == null) {}
     }
     for (long l = paramString.field_createTime + 1L;; l = 0L)
@@ -1589,53 +1602,38 @@ public final class bi
     }
   }
   
-  public static int z(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(42965);
-    bl localbl = ((k)g.ab(k.class)).cOI().aD(paramString, paramLong);
-    if (localbl.field_msgSvrId != paramLong)
-    {
-      AppMethodBeat.o(42965);
-      return 0;
-    }
-    v(localbl);
-    int i = ((k)g.ab(k.class)).cOI().aP(paramString, paramLong);
-    AppMethodBeat.o(42965);
-    return i;
-  }
-  
   public static abstract interface a
   {
-    public abstract boolean Vt();
+    public abstract boolean Wr();
     
-    public abstract void Vu();
+    public abstract void Ws();
   }
   
   public static final class b
   {
-    public int cIB;
-    public String gNU;
-    public int gNV;
-    public int gNW;
-    public String gNX;
-    public String gNY;
-    public int gNZ;
-    public int gOa;
-    public long gOb;
-    public String gOc;
+    public int cFI;
+    public int hoA;
+    public long hoB;
+    public String hoC;
     @Deprecated
-    public String gOd;
-    public String gOe;
-    public String gOf;
-    public String gOg;
-    public String gOh;
-    public String gOi;
-    public String gOj;
-    public int gOk;
-    public int gOl;
-    public int gOm;
-    public int gOn;
-    public String gOo;
+    public String hoD;
+    public String hoE;
+    public String hoF;
+    public String hoG;
+    public String hoH;
+    public String hoI;
+    public String hoJ;
+    public int hoK;
+    public int hoL;
+    public int hoM;
+    public int hoN;
+    public String hoO;
+    public String hou;
+    public int hov;
+    public int how;
+    public String hox;
+    public String hoy;
+    public int hoz;
     public int scene = 0;
     public String userId;
   }
@@ -1643,32 +1641,32 @@ public final class bi
   static final class c
     implements Closeable
   {
-    FileChannel gOp;
-    ByteBuffer gOq;
-    long gOr;
-    long gOs;
+    FileChannel hoP;
+    ByteBuffer hoQ;
+    long hoR;
+    long hoS;
     
     c()
     {
       AppMethodBeat.i(178869);
-      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(aj.getContext().getCacheDir(), "asyncClearMsgStat");
+      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(com.tencent.mm.sdk.platformtools.ai.getContext().getCacheDir(), "asyncClearMsgStat");
       try
       {
-        this.gOp = i.a(locale.mUri, true).getChannel();
-        this.gOq = ByteBuffer.allocate(8);
-        this.gOp.read(this.gOq, 0L);
-        if (this.gOq.remaining() == 8) {
-          this.gOr = this.gOq.getLong(0);
+        this.hoP = i.a(locale.mUri, true).getChannel();
+        this.hoQ = ByteBuffer.allocate(8);
+        this.hoP.read(this.hoQ, 0L);
+        if (this.hoQ.remaining() == 8) {
+          this.hoR = this.hoQ.getLong(0);
         }
-        this.gOq.clear();
+        this.hoQ.clear();
         AppMethodBeat.o(178869);
         return;
       }
       catch (IOException localIOException)
       {
-        ad.printErrStackTrace("MicroMsg.MsgInfoStorageLogic", localIOException, "Cannot init time statistics", new Object[0]);
-        q.closeQuietly(this.gOp);
-        this.gOp = null;
+        ac.printErrStackTrace("MicroMsg.MsgInfoStorageLogic", localIOException, "Cannot init time statistics", new Object[0]);
+        q.closeQuietly(this.hoP);
+        this.hoP = null;
         AppMethodBeat.o(178869);
       }
     }
@@ -1676,34 +1674,34 @@ public final class bi
     static void reset()
     {
       AppMethodBeat.i(178872);
-      new com.tencent.mm.vfs.e(aj.getContext().getCacheDir(), "asyncClearMsgStat").delete();
+      new com.tencent.mm.vfs.e(com.tencent.mm.sdk.platformtools.ai.getContext().getCacheDir(), "asyncClearMsgStat").delete();
       AppMethodBeat.o(178872);
     }
     
     public final void close()
     {
       AppMethodBeat.i(178871);
-      this.gOp.close();
+      this.hoP.close();
       AppMethodBeat.o(178871);
     }
     
     final void end()
     {
       AppMethodBeat.i(178870);
-      if (this.gOs == 0L)
+      if (this.hoS == 0L)
       {
         AppMethodBeat.o(178870);
         return;
       }
-      this.gOr = (System.currentTimeMillis() - this.gOs + this.gOr);
-      if (this.gOp != null) {
-        this.gOq.putLong(0, this.gOr);
+      this.hoR = (System.currentTimeMillis() - this.hoS + this.hoR);
+      if (this.hoP != null) {
+        this.hoQ.putLong(0, this.hoR);
       }
       try
       {
-        this.gOp.write(this.gOq, 0L);
-        this.gOq.clear();
-        this.gOs = 0L;
+        this.hoP.write(this.hoQ, 0L);
+        this.hoQ.clear();
+        this.hoS = 0L;
         AppMethodBeat.o(178870);
         return;
       }
@@ -1711,7 +1709,7 @@ public final class bi
       {
         for (;;)
         {
-          ad.e("MicroMsg.MsgInfoStorageLogic", "Cannot update time statistics: " + localIOException.getMessage());
+          ac.e("MicroMsg.MsgInfoStorageLogic", "Cannot update time statistics: " + localIOException.getMessage());
         }
       }
     }

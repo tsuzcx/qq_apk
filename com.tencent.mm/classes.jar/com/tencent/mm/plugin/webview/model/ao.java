@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gq;
+import com.tencent.mm.g.c.gu;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ao
-  extends gq
+  extends gu
 {
   protected static c.a info;
   
@@ -15,28 +15,28 @@ public final class ao
   {
     AppMethodBeat.i(79029);
     c.a locala = new c.a();
-    locala.EYt = new Field[5];
+    locala.GvF = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "recordId";
-    locala.EYv.put("recordId", "INTEGER PRIMARY KEY ");
+    locala.GvH.put("recordId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" recordId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "recordId";
+    locala.GvG = "recordId";
     locala.columns[1] = "appId";
-    locala.EYv.put("appId", "TEXT");
+    locala.GvH.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "domin";
-    locala.EYv.put("domin", "TEXT");
+    locala.GvH.put("domin", "TEXT");
     localStringBuilder.append(" domin TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "key";
-    locala.EYv.put("key", "TEXT");
+    locala.GvH.put("key", "TEXT");
     localStringBuilder.append(" key TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "value";
-    locala.EYv.put("value", "TEXT");
+    locala.GvH.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();

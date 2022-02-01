@@ -12,7 +12,7 @@ public class TabItem
   extends View
 {
   public final Drawable icon;
-  public final int rf;
+  public final int sg;
   public final CharSequence text;
   
   public TabItem(Context paramContext, AttributeSet paramAttributeSet)
@@ -21,13 +21,13 @@ public class TabItem
     paramContext = az.a(paramContext, paramAttributeSet, a.a.TabItem);
     this.text = paramContext.getText(2);
     this.icon = paramContext.getDrawable(0);
-    this.rf = paramContext.getResourceId(1, 0);
-    paramContext.avP.recycle();
+    this.sg = paramContext.getResourceId(1, 0);
+    paramContext.awJ.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.widget.TabItem
  * JD-Core Version:    0.7.0.1
  */

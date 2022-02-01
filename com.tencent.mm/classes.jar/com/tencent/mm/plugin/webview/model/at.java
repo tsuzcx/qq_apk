@@ -7,85 +7,85 @@ import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/model/WebViewSnsAdReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "errCode", "", "loadReportInfo", "Ljava/util/ArrayList;", "", "snsAdClick", "Lcom/tencent/mm/modelsns/SnsAdClick;", "report", "", "setErrorCode", "setLoadReportInfo", "loadReports", "", "([Ljava/lang/String;)V", "setSnsAdClick", "adClick", "plugin-webview_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/model/WebViewSnsAdReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "errCode", "", "loadReportInfo", "Ljava/util/ArrayList;", "", "snsAdClick", "Lcom/tencent/mm/modelsns/SnsAdClick;", "report", "", "setErrorCode", "setLoadReportInfo", "loadReports", "", "([Ljava/lang/String;)V", "setSnsAdClick", "adClick", "plugin-webview_release"})
 public final class at
 {
-  private final ArrayList<String> AYF;
+  private final ArrayList<String> CqS;
   public int errCode;
-  public SnsAdClick uBA;
+  public SnsAdClick vKt;
   
   public at()
   {
-    AppMethodBeat.i(188888);
-    this.AYF = new ArrayList();
-    AppMethodBeat.o(188888);
+    AppMethodBeat.i(189457);
+    this.CqS = new ArrayList();
+    AppMethodBeat.o(189457);
   }
   
   public final void P(String... paramVarArgs)
   {
-    AppMethodBeat.i(188886);
+    AppMethodBeat.i(189455);
     k.h(paramVarArgs, "loadReports");
     int i = 0;
     while (i < 4)
     {
       String str = paramVarArgs[i];
-      this.AYF.add(str);
+      this.CqS.add(str);
       i += 1;
     }
-    AppMethodBeat.o(188886);
+    AppMethodBeat.o(189455);
   }
   
   public final void report()
   {
-    AppMethodBeat.i(188887);
+    AppMethodBeat.i(189456);
     for (;;)
     {
       try
       {
-        if (((Collection)this.AYF).isEmpty()) {
+        if (((Collection)this.CqS).isEmpty()) {
           continue;
         }
         i = 1;
         if (i != 0)
         {
           Bundle localBundle = new Bundle();
-          localBundle.putStringArrayList("reportAdH5Load", new ArrayList((Collection)this.AYF));
+          localBundle.putStringArrayList("reportAdH5Load", new ArrayList((Collection)this.CqS));
           localBundle.putInt("errCode", this.errCode);
-          localBundle.putParcelable("snsAdClick", (Parcelable)this.uBA);
-          h.a("com.tencent.mm", (Parcelable)localBundle, a.AYG.getClass(), null);
+          localBundle.putParcelable("snsAdClick", (Parcelable)this.vKt);
+          h.a("com.tencent.mm", (Parcelable)localBundle, a.CqT.getClass(), null);
         }
       }
       catch (Exception localException)
       {
         int i;
-        ad.printErrStackTrace("MicroMsg.WebviewReporter", (Throwable)localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WebviewReporter", (Throwable)localException, "", new Object[0]);
         continue;
       }
-      this.uBA = null;
-      this.AYF.clear();
-      AppMethodBeat.o(188887);
+      this.vKt = null;
+      this.CqS.clear();
+      AppMethodBeat.o(189456);
       return;
       i = 0;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
   static final class a<InputType, ResultType>
     implements b<Bundle, IPCVoid>
   {
-    public static final a AYG;
+    public static final a CqT;
     
     static
     {
-      AppMethodBeat.i(188885);
-      AYG = new a();
-      AppMethodBeat.o(188885);
+      AppMethodBeat.i(189454);
+      CqT = new a();
+      AppMethodBeat.o(189454);
     }
   }
 }

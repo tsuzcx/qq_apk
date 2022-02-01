@@ -74,19 +74,19 @@ public class JNIExceptionHandlerImpl
       if ((paramInt + 1) * 512 < ((String)localObject1).length()) {}
       for (paramString = ((String)localObject1).substring(paramInt * 512, (paramInt + 1) * 512);; paramString = ((String)localObject1).substring(paramInt * 512))
       {
-        com.tencent.mm.plugin.report.service.h.vKh.a(17910, true, true, new Object[] { a.glW, com.tencent.mm.sdk.platformtools.h.glW, this.reportExecutionTag, Integer.valueOf(0), paramString, Integer.valueOf(1), Integer.valueOf(paramInt + 1), Integer.valueOf(i), Long.valueOf(l) });
+        com.tencent.mm.plugin.report.service.h.wUl.a(17910, true, true, new Object[] { a.gMJ, com.tencent.mm.sdk.platformtools.h.gMJ, this.reportExecutionTag, Integer.valueOf(0), paramString, Integer.valueOf(1), Integer.valueOf(paramInt + 1), Integer.valueOf(i), Long.valueOf(l) });
         paramInt += 1;
         break;
       }
     }
     if ((this.context instanceof RubbishBinService))
     {
-      ((RubbishBinService)this.context).vKX.interrupt();
+      ((RubbishBinService)this.context).gaE.interrupt();
       ((RubbishBinService)this.context).stopSelf();
     }
     try
     {
-      paramInt = ((RubbishBinService)this.context).sDU;
+      paramInt = ((RubbishBinService)this.context).gaC;
       if (paramInt > 0) {
         Thread.sleep(paramInt);
       }

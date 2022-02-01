@@ -7,54 +7,29 @@ import com.tencent.mm.sdk.e.c;
 public abstract class fj
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS SnsComment_snsID_index ON SnsComment(snsID)", "CREATE INDEX IF NOT EXISTS SnsComment_parentID_index ON SnsComment(parentID)", "CREATE INDEX IF NOT EXISTS SnsComment_isRead_index ON SnsComment(isRead)", "CREATE INDEX IF NOT EXISTS SnsComment_isSend_index ON SnsComment(isSend)" };
-  private static final int eXk = "snsID".hashCode();
-  private static final int eXl = "parentID".hashCode();
-  private static final int eXm = "curActionBuf".hashCode();
-  private static final int eXn = "refActionBuf".hashCode();
-  private static final int eXo = "commentSvrID".hashCode();
-  private static final int eXp = "clientId".hashCode();
-  private static final int eXq = "commentflag".hashCode();
-  private static final int eXr = "isSilence".hashCode();
-  private static final int ekU;
-  private static final int epC;
-  private static final int erT;
-  private static final int esc = "isRead".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eJv = "retryCount".hashCode();
+  private static final int eRi;
+  private static final int eVd;
+  private static final int eZR;
+  private static final int euO = "card_id".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean eXc = true;
-  private boolean eXd = true;
-  private boolean eXe = true;
-  private boolean eXf = true;
-  private boolean eXg = true;
-  private boolean eXh = true;
-  private boolean eXi = true;
-  private boolean eXj = true;
-  private boolean ekx = true;
-  private boolean epn = true;
-  private boolean erF = true;
-  private boolean erO = true;
-  public String field_clientId;
-  public long field_commentSvrID;
-  public int field_commentflag;
-  public int field_createTime;
-  public byte[] field_curActionBuf;
-  public short field_isRead;
-  public boolean field_isSend;
-  public int field_isSilence;
-  public long field_parentID;
-  public byte[] field_refActionBuf;
-  public long field_snsID;
-  public String field_talker;
-  public int field_type;
+  private boolean eJd = true;
+  private boolean eRa = true;
+  private boolean eUZ = true;
+  private boolean eZQ = true;
+  private boolean euv = true;
+  public String field_card_id;
+  public int field_retryCount;
+  public long field_seq;
+  public int field_state_flag;
+  public long field_update_time;
   
   static
   {
-    ekU = "createTime".hashCode();
-    erT = "talker".hashCode();
-    type_HASHCODE = "type".hashCode();
-    epC = "isSend".hashCode();
+    eZR = "state_flag".hashCode();
+    eRi = "update_time".hashCode();
+    eVd = "seq".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -63,70 +38,35 @@ public abstract class fj
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eXk != k) {
-        break label60;
+      if (euO != k) {
+        break label65;
       }
-      this.field_snsID = paramCursor.getLong(i);
+      this.field_card_id = paramCursor.getString(i);
+      this.euv = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eXl == k)
-      {
-        this.field_parentID = paramCursor.getLong(i);
-      }
-      else if (esc == k)
-      {
-        this.field_isRead = paramCursor.getShort(i);
-      }
-      else if (ekU == k)
-      {
-        this.field_createTime = paramCursor.getInt(i);
-      }
-      else if (erT == k)
-      {
-        this.field_talker = paramCursor.getString(i);
-      }
-      else if (type_HASHCODE == k)
-      {
-        this.field_type = paramCursor.getInt(i);
-      }
-      else
-      {
-        if (epC == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_isSend = bool;
-            break;
-          }
-        }
-        if (eXm == k) {
-          this.field_curActionBuf = paramCursor.getBlob(i);
-        } else if (eXn == k) {
-          this.field_refActionBuf = paramCursor.getBlob(i);
-        } else if (eXo == k) {
-          this.field_commentSvrID = paramCursor.getLong(i);
-        } else if (eXp == k) {
-          this.field_clientId = paramCursor.getString(i);
-        } else if (eXq == k) {
-          this.field_commentflag = paramCursor.getInt(i);
-        } else if (eXr == k) {
-          this.field_isSilence = paramCursor.getInt(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      label65:
+      if (eZR == k) {
+        this.field_state_flag = paramCursor.getInt(i);
+      } else if (eRi == k) {
+        this.field_update_time = paramCursor.getLong(i);
+      } else if (eVd == k) {
+        this.field_seq = paramCursor.getLong(i);
+      } else if (eJv == k) {
+        this.field_retryCount = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -134,44 +74,20 @@ public abstract class fj
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eXc) {
-      localContentValues.put("snsID", Long.valueOf(this.field_snsID));
+    if (this.euv) {
+      localContentValues.put("card_id", this.field_card_id);
     }
-    if (this.eXd) {
-      localContentValues.put("parentID", Long.valueOf(this.field_parentID));
+    if (this.eZQ) {
+      localContentValues.put("state_flag", Integer.valueOf(this.field_state_flag));
     }
-    if (this.erO) {
-      localContentValues.put("isRead", Short.valueOf(this.field_isRead));
+    if (this.eRa) {
+      localContentValues.put("update_time", Long.valueOf(this.field_update_time));
     }
-    if (this.ekx) {
-      localContentValues.put("createTime", Integer.valueOf(this.field_createTime));
+    if (this.eUZ) {
+      localContentValues.put("seq", Long.valueOf(this.field_seq));
     }
-    if (this.erF) {
-      localContentValues.put("talker", this.field_talker);
-    }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
-    }
-    if (this.epn) {
-      localContentValues.put("isSend", Boolean.valueOf(this.field_isSend));
-    }
-    if (this.eXe) {
-      localContentValues.put("curActionBuf", this.field_curActionBuf);
-    }
-    if (this.eXf) {
-      localContentValues.put("refActionBuf", this.field_refActionBuf);
-    }
-    if (this.eXg) {
-      localContentValues.put("commentSvrID", Long.valueOf(this.field_commentSvrID));
-    }
-    if (this.eXh) {
-      localContentValues.put("clientId", this.field_clientId);
-    }
-    if (this.eXi) {
-      localContentValues.put("commentflag", Integer.valueOf(this.field_commentflag));
-    }
-    if (this.eXj) {
-      localContentValues.put("isSilence", Integer.valueOf(this.field_isSilence));
+    if (this.eJd) {
+      localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

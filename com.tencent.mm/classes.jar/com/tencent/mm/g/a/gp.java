@@ -6,30 +6,35 @@ import com.tencent.mm.sdk.b.b;
 public final class gp
   extends b
 {
-  public a djV;
+  public a dhl;
   
   public gp()
   {
     this((byte)0);
   }
   
-  public gp(byte paramByte)
+  private gp(byte paramByte)
   {
-    AppMethodBeat.i(183843);
-    this.djV = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19809);
+    this.dhl = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(183843);
+    AppMethodBeat.o(19809);
   }
   
   public static final class a
   {
-    public int djW = 0;
+    public Object cZw;
+    public long dcg;
+    public String dhm;
+    public int dhn;
+    public Object dho;
+    public String dhp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.gp
  * JD-Core Version:    0.7.0.1
  */

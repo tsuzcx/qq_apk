@@ -13,21 +13,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class TaskManagerHeaderView
   extends LinearLayout
 {
-  private TextView ojz;
+  private TextView oMZ;
   
   public TaskManagerHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(9085);
     setOrientation(1);
-    this.ojz = ((TextView)LayoutInflater.from(getContext()).inflate(2131494433, this, true).findViewById(2131304200));
-    this.ojz.setOnClickListener(new View.OnClickListener()
+    this.oMZ = ((TextView)LayoutInflater.from(getContext()).inflate(2131494433, this, true).findViewById(2131304200));
+    this.oMZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(9084);
         if ((TaskManagerHeaderView.this.getContext() instanceof DownloadMainUI)) {
-          ((DownloadMainUI)TaskManagerHeaderView.this.getContext()).ojb.bRt();
+          ((DownloadMainUI)TaskManagerHeaderView.this.getContext()).oMB.bYI();
         }
         AppMethodBeat.o(9084);
       }

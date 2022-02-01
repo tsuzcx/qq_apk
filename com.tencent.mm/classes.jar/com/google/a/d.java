@@ -9,7 +9,7 @@ public enum d
 {
   private d() {}
   
-  static String bm(String paramString)
+  static String bd(String paramString)
   {
     int i = 0;
     StringBuilder localStringBuilder = new StringBuilder();
@@ -38,7 +38,7 @@ public enum d
     }
   }
   
-  static String r(String paramString1, String paramString2)
+  static String s(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
@@ -57,7 +57,7 @@ public enum d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.d
  * JD-Core Version:    0.7.0.1
  */

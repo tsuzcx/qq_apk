@@ -15,19 +15,19 @@ public final class n
   {
     AppMethodBeat.i(32833);
     c.a locala = new c.a();
-    locala.EYt = new Field[3];
+    locala.GvF = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "sessionName";
-    locala.EYv.put("sessionName", "TEXT default '' ");
+    locala.GvH.put("sessionName", "TEXT default '' ");
     localStringBuilder.append(" sessionName TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[1] = "startTime";
-    locala.EYv.put("startTime", "LONG default '0' ");
+    locala.GvH.put("startTime", "LONG default '0' ");
     localStringBuilder.append(" startTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "endTime";
-    locala.EYv.put("endTime", "LONG default '0' ");
+    locala.GvH.put("endTime", "LONG default '0' ");
     localStringBuilder.append(" endTime LONG default '0' ");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

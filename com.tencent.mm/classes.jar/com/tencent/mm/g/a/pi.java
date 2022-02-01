@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bpi;
 import com.tencent.mm.sdk.b.b;
 
 public final class pi
   extends b
 {
-  public a duR;
-  public b duS;
+  public a dsj;
   
   public pi()
   {
@@ -17,25 +15,16 @@ public final class pi
   
   private pi(byte paramByte)
   {
-    AppMethodBeat.i(125624);
-    this.duR = new a();
-    this.duS = new b();
-    this.ESR = false;
+    AppMethodBeat.i(104420);
+    this.dsj = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125624);
+    AppMethodBeat.o(104420);
   }
   
   public static final class a
   {
-    public String username;
-  }
-  
-  public static final class b
-  {
-    public bpi duT;
-    public bpi duU;
-    public bpi duV;
-    public bpi duW;
+    public String dcO;
   }
 }
 

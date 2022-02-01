@@ -2,9 +2,9 @@ package android.support.v4.e;
 
 public final class d
 {
-  static final int[] LP = new int[0];
-  static final long[] LQ = new long[0];
-  static final Object[] LR = new Object[0];
+  static final int[] MM = new int[0];
+  static final long[] MN = new long[0];
+  static final Object[] MO = new Object[0];
   
   public static int a(long[] paramArrayOfLong, int paramInt, long paramLong)
   {

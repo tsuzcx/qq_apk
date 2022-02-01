@@ -7,10 +7,10 @@ import java.util.UUID;
 public final class b
 {
   public static final int CHANNEL_OUT_7POINT1_SURROUND;
-  public static final UUID aQw;
-  public static final UUID aQx;
-  public static final UUID aQy;
-  public static final UUID aQz;
+  public static final UUID aRr;
+  public static final UUID aRs;
+  public static final UUID aRt;
+  public static final UUID aRu;
   
   static
   {
@@ -19,16 +19,16 @@ public final class b
     for (int i = 1020;; i = 6396)
     {
       CHANNEL_OUT_7POINT1_SURROUND = i;
-      aQw = new UUID(0L, 0L);
-      aQx = new UUID(1186680826959645954L, -5988876978535335093L);
-      aQy = new UUID(-1301668207276963122L, -6645017420763422227L);
-      aQz = new UUID(-7348484286925749626L, -6083546864340672619L);
+      aRr = new UUID(0L, 0L);
+      aRs = new UUID(1186680826959645954L, -5988876978535335093L);
+      aRt = new UUID(-1301668207276963122L, -6645017420763422227L);
+      aRu = new UUID(-7348484286925749626L, -6083546864340672619L);
       AppMethodBeat.o(91846);
       return;
     }
   }
   
-  public static long t(long paramLong)
+  public static long v(long paramLong)
   {
     if ((paramLong == -9223372036854775807L) || (paramLong == -9223372036854775808L)) {
       return paramLong;
@@ -36,7 +36,7 @@ public final class b
     return paramLong / 1000L;
   }
   
-  public static long u(long paramLong)
+  public static long w(long paramLong)
   {
     if ((paramLong == -9223372036854775807L) || (paramLong == -9223372036854775808L)) {
       return paramLong;

@@ -13,15 +13,15 @@ import java.util.List;
 final class g
   extends h
 {
-  private static final int beu;
-  private static final byte[] bev;
-  private boolean bew;
+  private static final int bfg;
+  private static final byte[] bfh;
+  private boolean bfi;
   
   static
   {
     AppMethodBeat.i(92165);
-    beu = x.aY("Opus");
-    bev = new byte[] { 79, 112, 117, 115, 72, 101, 97, 100 };
+    bfg = x.aQ("Opus");
+    bfh = new byte[] { 79, 112, 117, 115, 72, 101, 97, 100 };
     AppMethodBeat.o(92165);
   }
   
@@ -36,14 +36,14 @@ final class g
   public static boolean r(m paramm)
   {
     AppMethodBeat.i(92160);
-    if (paramm.vJ() < bev.length)
+    if (paramm.vy() < bfh.length)
     {
       AppMethodBeat.o(92160);
       return false;
     }
-    byte[] arrayOfByte = new byte[bev.length];
-    paramm.readBytes(arrayOfByte, 0, bev.length);
-    boolean bool = Arrays.equals(arrayOfByte, bev);
+    byte[] arrayOfByte = new byte[bfh.length];
+    paramm.readBytes(arrayOfByte, 0, bfh.length);
+    boolean bool = Arrays.equals(arrayOfByte, bfh);
     AppMethodBeat.o(92160);
     return bool;
   }
@@ -51,7 +51,7 @@ final class g
   protected final boolean a(m paramm, long paramLong, h.a parama)
   {
     AppMethodBeat.i(92163);
-    if (!this.bew)
+    if (!this.bfi)
     {
       paramm = Arrays.copyOf(paramm.data, paramm.limit);
       int i = paramm[9];
@@ -61,12 +61,12 @@ final class g
       localArrayList.add(paramm);
       b(localArrayList, (j & 0xFF) << 8 | k & 0xFF);
       b(localArrayList, 3840);
-      parama.aSv = Format.a(null, "audio/opus", -1, -1, i & 0xFF, 48000, localArrayList, null, null);
-      this.bew = true;
+      parama.aTo = Format.a(null, "audio/opus", -1, -1, i & 0xFF, 48000, localArrayList, null, null);
+      this.bfi = true;
       AppMethodBeat.o(92163);
       return true;
     }
-    if (paramm.readInt() == beu) {}
+    if (paramm.readInt() == bfg) {}
     for (boolean bool = true;; bool = false)
     {
       paramm.setPosition(0);
@@ -80,7 +80,7 @@ final class g
     AppMethodBeat.i(92161);
     super.reset(paramBoolean);
     if (paramBoolean) {
-      this.bew = false;
+      this.bfi = false;
     }
     AppMethodBeat.o(92161);
   }
@@ -105,7 +105,7 @@ final class g
     }
     for (;;)
     {
-      long l = S(i * j);
+      long l = T(i * j);
       AppMethodBeat.o(92162);
       return l;
       j = 1;

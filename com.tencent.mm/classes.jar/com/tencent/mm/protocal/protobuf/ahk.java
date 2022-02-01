@@ -1,86 +1,80 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ahk
-  extends com.tencent.mm.bx.a
+  extends cqk
 {
-  public boolean Dkb;
-  public String doh;
-  public String id;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152991);
+    AppMethodBeat.i(125725);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.id != null) {
-        paramVarArgs.d(1, this.id);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.doh != null) {
-        paramVarArgs.d(2, this.doh);
-      }
-      paramVarArgs.bg(3, this.Dkb);
-      AppMethodBeat.o(152991);
+      AppMethodBeat.o(125725);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.id == null) {
-        break label318;
+      if (this.BaseResponse == null) {
+        break label310;
       }
     }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.id) + 0;; paramInt = 0)
+    label310:
+    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.doh != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.doh);
-      }
-      paramInt = f.a.a.b.b.a.fY(3);
-      AppMethodBeat.o(152991);
-      return i + (paramInt + 1);
+      AppMethodBeat.o(125725);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(152991);
+        AppMethodBeat.o(125725);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         ahk localahk = (ahk)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152991);
+          AppMethodBeat.o(125725);
           return -1;
-        case 1: 
-          localahk.id = locala.KhF.readString();
-          AppMethodBeat.o(152991);
-          return 0;
-        case 2: 
-          localahk.doh = locala.KhF.readString();
-          AppMethodBeat.o(152991);
-          return 0;
         }
-        localahk.Dkb = locala.KhF.fHu();
-        AppMethodBeat.o(152991);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new BaseResponse();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localahk.BaseResponse = ((BaseResponse)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(125725);
         return 0;
       }
-      AppMethodBeat.o(152991);
+      AppMethodBeat.o(125725);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ahk
  * JD-Core Version:    0.7.0.1
  */

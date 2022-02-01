@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k;
+import com.tencent.mm.ah.k;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 
@@ -22,7 +22,7 @@ public final class l
     super(parame, k.info, "AppMessage", null);
   }
   
-  public final k vk(long paramLong)
+  public final k zN(long paramLong)
   {
     AppMethodBeat.i(151752);
     k localk = new k();
@@ -38,7 +38,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.l
  * JD-Core Version:    0.7.0.1
  */

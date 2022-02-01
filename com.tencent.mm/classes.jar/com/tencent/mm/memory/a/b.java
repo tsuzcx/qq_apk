@@ -6,9 +6,9 @@ import com.tencent.mm.b.f;
 import com.tencent.mm.b.f.b;
 import com.tencent.mm.b.f.c;
 import com.tencent.mm.memory.a.a.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -16,18 +16,18 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class b<V>
   extends a<String, V, V, com.tencent.mm.memory.a.a.a>
 {
-  private static ConcurrentHashMap<Class<?>, b.a> gEm;
-  String gEk;
-  f<String, Object> gEl;
-  private f.b<String, com.tencent.mm.memory.a.a.a> gEn;
-  private f.c<String, com.tencent.mm.memory.a.a.a> gEo;
+  private static ConcurrentHashMap<Class<?>, a> heN;
+  String heL;
+  f<String, Object> heM;
+  private f.b<String, com.tencent.mm.memory.a.a.a> heO;
+  private f.c<String, com.tencent.mm.memory.a.a.a> heP;
   
   static
   {
     AppMethodBeat.i(156488);
-    gEm = new ConcurrentHashMap();
-    a(Bitmap.class, new b.1());
-    a(WeakReference.class, new b.2());
+    heN = new ConcurrentHashMap();
+    a(Bitmap.class, new a() {});
+    a(WeakReference.class, new a() {});
     AppMethodBeat.o(156488);
   }
   
@@ -35,17 +35,17 @@ public final class b<V>
   {
     super(paramInt, paramb, parama);
     AppMethodBeat.i(156471);
-    this.gEk = "";
-    this.gEl = null;
-    this.gEn = new f.b() {};
-    this.gEo = new f.c() {};
+    this.heL = "";
+    this.heM = null;
+    this.heO = new f.b() {};
+    this.heP = new f.c() {};
     an(paramClass);
     AppMethodBeat.o(156471);
   }
   
   public b(int paramInt, f.b<String, V> paramb, Class<?> paramClass)
   {
-    this(paramInt, paramb, com.tencent.mm.memory.a.a.a.a.apq(), paramClass);
+    this(paramInt, paramb, com.tencent.mm.memory.a.a.a.a.awh(), paramClass);
     AppMethodBeat.i(156470);
     an(paramClass);
     AppMethodBeat.o(156470);
@@ -59,43 +59,43 @@ public final class b<V>
     AppMethodBeat.o(156469);
   }
   
-  public static void a(Class<?> paramClass, b.a parama)
+  public static void a(Class<?> paramClass, a parama)
   {
     AppMethodBeat.i(156468);
-    gEm.put(paramClass, parama);
+    heN.put(paramClass, parama);
     AppMethodBeat.o(156468);
   }
   
   private void an(Class<?> paramClass)
   {
     AppMethodBeat.i(156472);
-    this.gEk = paramClass.getSimpleName();
-    this.gEl = com.tencent.mm.memory.a.a.b.d(this.gEM);
+    this.heL = paramClass.getSimpleName();
+    this.heM = com.tencent.mm.memory.a.a.b.d(this.hfn);
     AppMethodBeat.o(156472);
   }
   
-  private int bO(V paramV)
+  private int bM(V paramV)
   {
     AppMethodBeat.i(156474);
     if (paramV != null)
     {
-      b.a locala = (b.a)gEm.get(paramV.getClass());
+      a locala = (a)heN.get(paramV.getClass());
       if (locala != null)
       {
-        i = locala.bO(paramV);
+        i = locala.bM(paramV);
         AppMethodBeat.o(156474);
         return i;
       }
     }
-    int i = this.gER.sizeOf("", paramV);
+    int i = this.hfs.sizeOf("", paramV);
     AppMethodBeat.o(156474);
     return i;
   }
   
-  private boolean bQ(V paramV)
+  private boolean bO(V paramV)
   {
     AppMethodBeat.i(156477);
-    if (bO(paramV) * 2 >= com.tencent.mm.memory.a.a.b.e(this.gEM))
+    if (bM(paramV) * 2 >= com.tencent.mm.memory.a.a.b.e(this.hfn))
     {
       AppMethodBeat.o(156477);
       return true;
@@ -112,7 +112,7 @@ public final class b<V>
     return parama;
   }
   
-  public final V bP(V paramV)
+  public final V bN(V paramV)
   {
     return paramV;
   }
@@ -120,18 +120,18 @@ public final class b<V>
   public final V get(String paramString)
   {
     AppMethodBeat.i(156479);
-    Object localObject = this.gER.get(paramString);
-    if ((localObject == null) && (this.gEl != null)) {
-      localObject = this.gEl.get(paramString);
+    Object localObject = this.hfs.get(paramString);
+    if ((localObject == null) && (this.heM != null)) {
+      localObject = this.heM.get(paramString);
     }
     for (;;)
     {
       com.tencent.mm.memory.a.a.a locala = null;
-      if (this.gES != null) {
-        locala = (com.tencent.mm.memory.a.a.a)this.gES.w(this.gEk, paramString);
+      if (this.hft != null) {
+        locala = (com.tencent.mm.memory.a.a.a)this.hft.w(this.heL, paramString);
       }
-      if (com.tencent.mm.memory.a.a.a.a.gEF) {
-        ad.v("MicroMsg.BitmapResource", "bitmap get key %s value %s bbvalue %s stack [%s]", new Object[] { paramString, localObject, locala, bt.eGN().toString() });
+      if (com.tencent.mm.memory.a.a.a.a.hfg) {
+        ac.v("MicroMsg.BitmapResource", "bitmap get key %s value %s bbvalue %s stack [%s]", new Object[] { paramString, localObject, locala, bs.eWi().toString() });
       }
       AppMethodBeat.o(156479);
       return localObject;
@@ -148,9 +148,9 @@ public final class b<V>
   public final V put(String paramString, V paramV)
   {
     AppMethodBeat.i(156480);
-    if ((bQ(paramV)) && (this.gEl != null))
+    if ((bO(paramV)) && (this.heM != null))
     {
-      this.gEl.put(paramString, paramV);
+      this.heM.put(paramString, paramV);
       AppMethodBeat.o(156480);
       return null;
     }
@@ -162,8 +162,8 @@ public final class b<V>
   public final V remove(String paramString)
   {
     AppMethodBeat.i(156478);
-    if (this.gEl != null) {
-      this.gEl.remove(paramString);
+    if (this.heM != null) {
+      this.heM.remove(paramString);
     }
     paramString = super.remove(paramString);
     AppMethodBeat.o(156478);
@@ -173,14 +173,19 @@ public final class b<V>
   public final Map<String, V> snapshot()
   {
     AppMethodBeat.i(156476);
-    Map localMap = this.gER.snapshot();
+    Map localMap = this.hfs.snapshot();
     AppMethodBeat.o(156476);
     return localMap;
+  }
+  
+  public static abstract interface a<T>
+  {
+    public abstract int bM(T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.a.b
  * JD-Core Version:    0.7.0.1
  */

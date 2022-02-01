@@ -11,23 +11,23 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.ViewGroup;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ab;
-import com.tencent.xweb.w;
-import com.tencent.xweb.y;
+import com.tencent.xweb.ac;
+import com.tencent.xweb.x;
+import com.tencent.xweb.z;
 
 @Deprecated
 @JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.JSEXECUTECHECK})
 public class RoomAnnouncementUI
   extends MMActivity
 {
-  private WebView ftD;
-  private boolean ftE;
+  private WebView fxk;
+  private boolean fxl;
   private String roomId;
   
   public int getLayoutId()
@@ -40,17 +40,17 @@ public class RoomAnnouncementUI
   {
     AppMethodBeat.i(12690);
     setMMTitle(2131762725);
-    this.ftD = MMWebView.a.s(this, 2131306909);
-    this.ftD.getSettings().setJavaScriptEnabled(true);
-    this.ftD.getSettings().frg();
-    this.ftD.getSettings().setBuiltInZoomControls(true);
-    this.ftD.getSettings().setUseWideViewPort(true);
-    this.ftD.getSettings().setLoadWithOverviewMode(true);
-    this.ftD.getSettings().fqZ();
-    this.ftD.getSettings().fqY();
-    this.ftD.getSettings().setGeolocationEnabled(false);
-    this.ftD.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
-    this.ftD.setWebChromeClient(new w()
+    this.fxk = MMWebView.a.s(this, 2131306909);
+    this.fxk.getSettings().setJavaScriptEnabled(true);
+    this.fxk.getSettings().fJH();
+    this.fxk.getSettings().setBuiltInZoomControls(true);
+    this.fxk.getSettings().setUseWideViewPort(true);
+    this.fxk.getSettings().setLoadWithOverviewMode(true);
+    this.fxk.getSettings().fJA();
+    this.fxk.getSettings().fJz();
+    this.fxk.getSettings().setGeolocationEnabled(false);
+    this.fxk.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
+    this.fxk.setWebChromeClient(new x()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, JsResult paramAnonymousJsResult)
       {
@@ -69,7 +69,7 @@ public class RoomAnnouncementUI
         return true;
       }
     });
-    this.ftD.setWebViewClient(new ab()
+    this.fxk.setWebViewClient(new ac()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
@@ -95,8 +95,8 @@ public class RoomAnnouncementUI
         return true;
       }
     });
-    String str = getString(2131757103, new Object[] { ac.eFu() });
-    this.ftD.loadUrl(str);
+    String str = getString(2131757103, new Object[] { ab.eUO() });
+    this.fxk.loadUrl(str);
     AppMethodBeat.o(12690);
   }
   
@@ -104,7 +104,7 @@ public class RoomAnnouncementUI
   {
     AppMethodBeat.i(12686);
     super.onCreate(paramBundle);
-    this.ftE = getIntent().getBooleanExtra("need_bind_mobile", false);
+    this.fxl = getIntent().getBooleanExtra("need_bind_mobile", false);
     this.roomId = getIntent().getStringExtra("RoomInfo_Id");
     initView();
     AppMethodBeat.o(12686);
@@ -113,13 +113,13 @@ public class RoomAnnouncementUI
   public void onDestroy()
   {
     AppMethodBeat.i(12689);
-    if (this.ftD != null)
+    if (this.fxk != null)
     {
-      this.ftD.setVisibility(8);
-      ((ViewGroup)this.ftD.getParent()).removeView(this.ftD);
-      this.ftD.removeAllViews();
-      this.ftD.destroy();
-      this.ftD = null;
+      this.fxk.setVisibility(8);
+      ((ViewGroup)this.fxk.getParent()).removeView(this.fxk);
+      this.fxk.removeAllViews();
+      this.fxk.destroy();
+      this.fxk = null;
       System.gc();
     }
     super.onDestroy();
@@ -148,7 +148,7 @@ public class RoomAnnouncementUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.RoomAnnouncementUI
  * JD-Core Version:    0.7.0.1
  */

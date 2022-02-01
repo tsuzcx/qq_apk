@@ -4,10 +4,10 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.g.b;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -16,32 +16,32 @@ import java.util.List;
 
 public final class a
 {
-  private static final HashMap<Long, Integer> oeI;
-  private static HashSet<Long> oeJ;
+  private static final HashMap<Long, Integer> oIk;
+  private static HashSet<Long> oIl;
   
   static
   {
     AppMethodBeat.i(88906);
-    oeI = new HashMap();
-    oeJ = new HashSet();
+    oIk = new HashMap();
+    oIl = new HashSet();
     AppMethodBeat.o(88906);
   }
   
-  public static void bQm()
+  public static void bXC()
   {
     AppMethodBeat.i(88905);
-    oeJ.clear();
-    Object localObject1 = d.apS();
+    oIl.clear();
+    Object localObject1 = d.awH();
     if (localObject1 == null) {
       localObject1 = null;
     }
     Object localObject3;
     Object localObject2;
-    while (bt.gL((List)localObject1))
+    while (bs.gY((List)localObject1))
     {
       AppMethodBeat.o(88905);
       return;
-      ad.i("MicroMsg.FileDownloadInfoStorage", "getDownloadInWifiPauseTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo where status=4")));
+      ac.i("MicroMsg.FileDownloadInfoStorage", "getDownloadInWifiPauseTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo where status=4")));
       localObject3 = ((b)localObject1).rawQuery("select * from FileDownloadInfo where status=4", new String[0]);
       localObject2 = new LinkedList();
       localObject1 = localObject2;
@@ -62,30 +62,30 @@ public final class a
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (com.tencent.mm.plugin.downloader.g.a)((Iterator)localObject1).next();
-      if (d.So(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl))
+      if (d.WA(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl))
       {
-        ad.i("MicroMsg.DownloadRetry", "hasDuplicatedTask");
-        d.Sl(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl);
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(710L, 26L, 1L, false);
+        ac.i("MicroMsg.DownloadRetry", "hasDuplicatedTask");
+        d.Wx(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl);
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(710L, 26L, 1L, false);
       }
-      else if ((((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloaderType == 3) && (com.tencent.mm.vfs.i.eK(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_filePath)))
+      else if ((((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloaderType == 3) && (com.tencent.mm.vfs.i.eA(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_filePath)))
       {
         int i = ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_errCode;
-        if ((i == com.tencent.mm.plugin.downloader.a.a.ocf) || (i == com.tencent.mm.plugin.downloader.a.a.ocj) || (i == com.tencent.mm.plugin.downloader.a.a.oci)) {}
+        if ((i == com.tencent.mm.plugin.downloader.a.a.oFE) || (i == com.tencent.mm.plugin.downloader.a.a.oFI) || (i == com.tencent.mm.plugin.downloader.a.a.oFH)) {}
         for (i = 1;; i = 0)
         {
           if (i != 0) {
             break label318;
           }
-          localObject3 = com.tencent.mm.pluginsdk.model.app.h.cn(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_appId, false);
-          if ((localObject3 == null) || (!((g)localObject3).CZ()) || (!oe(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId))) {
+          localObject3 = com.tencent.mm.pluginsdk.model.app.h.ct(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_appId, false);
+          if ((localObject3 == null) || (!((g)localObject3).CC()) || (!rQ(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId))) {
             break;
           }
           ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadType = 3;
           d.e((com.tencent.mm.plugin.downloader.g.a)localObject2);
-          f.bQt().h((com.tencent.mm.plugin.downloader.g.a)localObject2);
-          oeJ.add(Long.valueOf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId));
-          oeI.put(Long.valueOf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId), Integer.valueOf(1));
+          f.bXJ().h((com.tencent.mm.plugin.downloader.g.a)localObject2);
+          oIl.add(Long.valueOf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId));
+          oIk.put(Long.valueOf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId), Integer.valueOf(1));
           break;
         }
       }
@@ -93,7 +93,7 @@ public final class a
     AppMethodBeat.o(88905);
   }
   
-  public static boolean oe(long paramLong)
+  public static boolean rQ(long paramLong)
   {
     AppMethodBeat.i(88903);
     if (System.currentTimeMillis() - paramLong <= 259200000L)
@@ -105,25 +105,25 @@ public final class a
     return false;
   }
   
-  public static boolean of(long paramLong)
+  public static boolean rR(long paramLong)
   {
     AppMethodBeat.i(88904);
-    if ((ay.isWifi(aj.getContext())) && (oe(paramLong)) && (oeJ.contains(Long.valueOf(paramLong))))
+    if ((ax.isWifi(ai.getContext())) && (rQ(paramLong)) && (oIl.contains(Long.valueOf(paramLong))))
     {
-      if ((oeI.containsKey(Long.valueOf(paramLong))) && (((Integer)oeI.get(Long.valueOf(paramLong))).intValue() >= 2)) {}
+      if ((oIk.containsKey(Long.valueOf(paramLong))) && (((Integer)oIk.get(Long.valueOf(paramLong))).intValue() >= 2)) {}
       for (int i = 0; i != 0; i = 1)
       {
-        com.tencent.e.h.Iye.q(new Runnable()
+        com.tencent.e.h.JZN.q(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(88902);
-            com.tencent.mm.plugin.downloader.g.a locala = d.oq(this.oeK);
-            if ((locala != null) && (a.pv(locala.field_status))) {
-              f.bQt().h(locala);
+            com.tencent.mm.plugin.downloader.g.a locala = d.sc(this.oIm);
+            if ((locala != null) && (a.qj(locala.field_status))) {
+              f.bXJ().h(locala);
             }
-            int i = bt.a((Integer)a.biV().get(Long.valueOf(this.oeK)), 0);
-            a.biV().put(Long.valueOf(this.oeK), Integer.valueOf(i + 1));
+            int i = bs.a((Integer)a.oIk.get(Long.valueOf(this.oIm)), 0);
+            a.oIk.put(Long.valueOf(this.oIm), Integer.valueOf(i + 1));
             AppMethodBeat.o(88902);
           }
         }, 300000L);

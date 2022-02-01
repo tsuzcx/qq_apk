@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.abj;
-import com.tencent.mm.protocal.protobuf.abk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aci;
+import com.tencent.mm.protocal.protobuf.acj;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends n
@@ -24,15 +24,15 @@ public final class a
   {
     AppMethodBeat.i(20765);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new abj();
-    ((b.a)localObject).gUV = new abk();
+    ((b.a)localObject).hvt = new aci();
+    ((b.a)localObject).hvu = new acj();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/deleteinfo";
     ((b.a)localObject).funcId = 1194;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (abj)this.rr.gUS.gUX;
-    ((abj)localObject).DbM = "invoice_info";
-    ((abj)localObject).DbN = paramInt;
-    ((abj)localObject).dep = 2;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (aci)this.rr.hvr.hvw;
+    ((aci)localObject).EuS = "invoice_info";
+    ((aci)localObject).EuT = paramInt;
+    ((aci)localObject).dbL = 2;
     AppMethodBeat.o(20765);
   }
   
@@ -53,9 +53,9 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20766);
-    ad.d("MicroMsg.NetSceneDeleteUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    ac.d("MicroMsg.NetSceneDeleteUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      ad.i("MicroMsg.NetSceneDeleteUserAutoFillInfo", "");
+      ac.i("MicroMsg.NetSceneDeleteUserAutoFillInfo", "");
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(20766);
@@ -63,7 +63,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.a
  * JD-Core Version:    0.7.0.1
  */

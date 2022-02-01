@@ -5,31 +5,31 @@ import android.app.Activity;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.hellhound.a.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.expt.hellhound.a.a.e;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 
 public final class c
 {
   @SuppressLint({"StaticFieldLeak"})
-  public static volatile c pHY;
+  public static volatile c qqF;
   public WeakReference<Activity> mActivityRef;
   private int mScrollState;
-  public final d pGj;
-  public com.tencent.mm.plugin.expt.hellhound.a.a.a pGv;
-  public b pHX;
-  public final a pHZ;
-  private Field pIa;
-  private int pIb;
-  private int pIc;
+  public com.tencent.mm.plugin.expt.hellhound.a.a.a qlE;
+  public final e qlm;
+  public b qqE;
+  public final a qqG;
+  private Field qqH;
+  private int qqI;
+  private int qqJ;
   
   @SuppressLint({"NewApi"})
   private c()
   {
     AppMethodBeat.i(169377);
     this.mScrollState = 0;
-    this.pGj = new d()
+    this.qlm = new e()
     {
       public final void a(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
@@ -42,7 +42,7 @@ public final class c
         Activity localActivity = (Activity)c.a(c.this).get();
         if ((localActivity == null) || (localActivity.isFinishing()) || (localActivity.isDestroyed()))
         {
-          ad.m("HABBYGE-MALI.SnsMonitor", "SnsMonitor onScroll is NULL or finishing", new Object[0]);
+          ac.m("HABBYGE-MALI.SnsMonitor", "SnsMonitor onScroll is NULL or finishing", new Object[0]);
           AppMethodBeat.o(169375);
           return;
         }
@@ -53,37 +53,37 @@ public final class c
       public final void k(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
       {
         AppMethodBeat.i(169374);
-        c.a(c.this, paramAnonymousViewGroup, c.BK(paramAnonymousInt));
+        c.a(c.this, paramAnonymousViewGroup, c.CF(paramAnonymousInt));
         AppMethodBeat.o(169374);
       }
     };
-    this.pHZ = new a()
+    this.qqG = new a()
     {
-      public final void BJ(int paramAnonymousInt)
+      public final void CE(int paramAnonymousInt)
       {
         AppMethodBeat.i(184396);
-        ad.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, smoothScrollToPositionFromTop: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ac.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, smoothScrollToPositionFromTop: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if (c.b(c.this) != null) {
-          c.b(c.this).pFs = paramAnonymousInt;
+          c.b(c.this).qkg = paramAnonymousInt;
         }
         AppMethodBeat.o(184396);
       }
       
-      public final void cdM()
+      public final void clt()
       {
         AppMethodBeat.i(184397);
-        ad.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, scrollToTop...");
+        ac.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, scrollToTop...");
         if (c.b(c.this) != null) {
-          c.b(c.this).pFs = 0;
+          c.b(c.this).qkg = 0;
         }
         AppMethodBeat.o(184397);
       }
       
-      public final void cdN()
+      public final void clu()
       {
         AppMethodBeat.i(184398);
         if (c.b(c.this) != null) {
-          c.b(c.this).kc(false);
+          c.b(c.this).kG(false);
         }
         AppMethodBeat.o(184398);
       }
@@ -91,41 +91,41 @@ public final class c
       public final void smoothScrollToPosition(int paramAnonymousInt)
       {
         AppMethodBeat.i(184395);
-        ad.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, smoothScrollToPosition: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ac.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, smoothScrollToPosition: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if (c.b(c.this) != null) {
-          c.b(c.this).pFs = paramAnonymousInt;
+          c.b(c.this).qkg = paramAnonymousInt;
         }
         AppMethodBeat.o(184395);
       }
     };
-    this.pIb = 0;
-    this.pIc = 0;
-    this.pGv = new com.tencent.mm.plugin.expt.hellhound.a.a.a(0, "16242", "1000");
-    this.pHX = new b();
+    this.qqI = 0;
+    this.qqJ = 0;
+    this.qlE = new com.tencent.mm.plugin.expt.hellhound.a.a.a(0, "16242", "1000");
+    this.qqE = new b();
     try
     {
-      this.pIa = AbsListView.class.getDeclaredField("mMotionY");
-      this.pIa.setAccessible(true);
+      this.qqH = AbsListView.class.getDeclaredField("mMotionY");
+      this.qqH.setAccessible(true);
       AppMethodBeat.o(169377);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.SnsMonitor", localException, "SnsMonitor, crash: %s", new Object[] { localException.getMessage() });
+      ac.printErrStackTrace("HABBYGE-MALI.SnsMonitor", localException, "SnsMonitor, crash: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(169377);
     }
   }
   
-  public static c cdO()
+  public static c clv()
   {
     AppMethodBeat.i(169376);
-    if (pHY == null) {}
+    if (qqF == null) {}
     try
     {
-      if (pHY == null) {
-        pHY = new c();
+      if (qqF == null) {
+        qqF = new c();
       }
-      c localc = pHY;
+      c localc = qqF;
       AppMethodBeat.o(169376);
       return localc;
     }
@@ -135,10 +135,10 @@ public final class c
     }
   }
   
-  private static boolean cdP()
+  private static boolean clw()
   {
     AppMethodBeat.i(169380);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.cbn()) || (!com.tencent.mm.plugin.expt.hellhound.a.cbr()))
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.ciw()) || (!com.tencent.mm.plugin.expt.hellhound.a.ciA()))
     {
       AppMethodBeat.o(169380);
       return true;
@@ -152,13 +152,13 @@ public final class c
     AppMethodBeat.i(169379);
     try
     {
-      this.pIc = (((Integer)this.pIa.get(paramViewGroup)).intValue() - this.pIb);
+      this.qqJ = (((Integer)this.qqH.get(paramViewGroup)).intValue() - this.qqI);
       AppMethodBeat.o(169379);
       return;
     }
     catch (Exception paramViewGroup)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.SnsMonitor", paramViewGroup, "SnsMonitor, beginFlingState, crash: %s", new Object[] { paramViewGroup.getMessage() });
+      ac.printErrStackTrace("HABBYGE-MALI.SnsMonitor", paramViewGroup, "SnsMonitor, beginFlingState, crash: %s", new Object[] { paramViewGroup.getMessage() });
       AppMethodBeat.o(169379);
     }
   }
@@ -171,13 +171,13 @@ public final class c
       AppMethodBeat.o(169378);
       return;
     }
-    if (cdP())
+    if (clw())
     {
-      ad.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, monitor, dontNeedMonitorTimeline true !!");
+      ac.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, monitor, dontNeedMonitorTimeline true !!");
       AppMethodBeat.o(169378);
       return;
     }
-    ad.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ac.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
     switch (paramInt)
     {
     }
@@ -186,22 +186,22 @@ public final class c
       AppMethodBeat.o(169378);
       return;
       this.mActivityRef = new WeakReference(paramActivity);
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cbD().Bo(700);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().Cg(700);
       AppMethodBeat.o(169378);
       return;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cbD().Bo(701);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().Cg(701);
       AppMethodBeat.o(169378);
       return;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cbD().Bo(702);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().Cg(702);
       AppMethodBeat.o(169378);
       return;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cbD().Bo(703);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().Cg(703);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.g.c
  * JD-Core Version:    0.7.0.1
  */

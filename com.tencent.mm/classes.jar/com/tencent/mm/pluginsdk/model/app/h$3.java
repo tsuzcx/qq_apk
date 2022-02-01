@@ -16,15 +16,15 @@ final class h$3
   {
     AppMethodBeat.i(184258);
     Bundle localBundle = new Bundle();
-    this.BPJ.toBundle(localBundle);
-    q.aS(localBundle);
-    q.aT(localBundle);
+    this.DhX.toBundle(localBundle);
+    q.aW(localBundle);
+    q.aX(localBundle);
     MMessageActV2.Args localArgs = new MMessageActV2.Args();
-    localArgs.targetPkgName = this.IX;
+    localArgs.targetPkgName = this.JS;
     localArgs.bundle = localBundle;
     boolean bool = MMessageActV2.send(this.val$context, localArgs);
-    if (this.ogC != null) {
-      this.ogC.u(bool, false);
+    if (this.oKc != null) {
+      this.oKc.v(bool, false);
     }
     AppMethodBeat.o(184258);
   }

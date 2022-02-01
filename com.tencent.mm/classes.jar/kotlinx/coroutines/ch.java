@@ -1,24 +1,24 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
-import kotlinx.coroutines.a.m;
+import java.util.concurrent.CancellationException;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"RESUMED", "", "RESUME_TOKEN", "Lkotlinx/coroutines/internal/Symbol;", "RESUME_TOKEN$annotations", "()V", "SUSPENDED", "UNDECIDED", "kotlinx-coroutines-core"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/TimeoutCancellationException;", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "Lkotlinx/coroutines/CopyableThrowable;", "message", "", "(Ljava/lang/String;)V", "coroutine", "Lkotlinx/coroutines/Job;", "(Ljava/lang/String;Lkotlinx/coroutines/Job;)V", "createCopy", "kotlinx-coroutines-core"})
 public final class ch
+  extends CancellationException
+  implements z<ch>
 {
-  public static final m LEB;
+  public final bo LSn;
   
-  static
+  private ch(String paramString, bo parambo)
   {
-    AppMethodBeat.i(202333);
-    LEB = new m("RESUME_TOKEN");
-    AppMethodBeat.o(202333);
+    super(paramString);
+    this.LSn = parambo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.ch
  * JD-Core Version:    0.7.0.1
  */

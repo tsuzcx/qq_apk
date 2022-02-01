@@ -1,141 +1,178 @@
 package com.tencent.mm.emoji.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import d.g.b.k;
-import d.g.b.v.a;
-import d.l;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.y;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/search/EmojiSuggest;", "Lcom/tencent/mm/emoji/model/search/AbsEmojiSuggest;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;)V", "local", "Lcom/tencent/mm/emoji/model/search/EmojiSuggestLocal;", "remote", "Lcom/tencent/mm/emoji/model/search/EmojiSuggestMatchWord;", "remoteAfterLocal", "", "resultList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "distinctResult", "", "", "newList", "", "searchSuggest", "content", "", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "setRequestInfo", "chatId", "sessionId", "Companion", "plugin-emojisdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/search/EmojiSuggest;", "Lcom/tencent/mm/emoji/model/search/AbsEmojiSuggest;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;)V", "local", "Lcom/tencent/mm/emoji/model/search/EmojiSuggestLocal;", "remote", "Lcom/tencent/mm/emoji/model/search/EmojiSuggestRemote;", "resultList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "checkMatch", "", "desc", "", "distinctResult", "", "", "newList", "", "searchSuggest", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "setRequestInfo", "chatId", "sessionId", "Companion", "plugin-emojisdk_release"})
 public final class b
   extends a
 {
-  public static final a fOM;
-  public final d fOJ;
-  public final e fOK;
-  private final LinkedList<h> fOL;
+  public static final b.a fSx;
+  private final e fSu;
+  public final f fSv;
+  private final LinkedList<l> fSw;
   
   static
   {
-    AppMethodBeat.i(193399);
-    fOM = new a((byte)0);
-    AppMethodBeat.o(193399);
+    AppMethodBeat.i(209834);
+    fSx = new b.a((byte)0);
+    AppMethodBeat.o(209834);
   }
   
   public b(com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> paramb)
   {
     super(paramb);
-    AppMethodBeat.i(193398);
-    this.fOJ = new d();
-    this.fOK = new e(paramb);
-    this.fOL = new LinkedList();
-    AppMethodBeat.o(193398);
+    AppMethodBeat.i(209833);
+    this.fSu = new e();
+    this.fSv = new f(paramb);
+    this.fSw = new LinkedList();
+    AppMethodBeat.o(209833);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/search/EmojiSuggest$Companion;", "", "()V", "MaxResultSize", "", "RemoteValidTime", "", "plugin-emojisdk_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   public static final class b
-    implements Runnable
+    extends d.g.b.l
+    implements d.g.a.a<y>
   {
-    public b(b paramb, Object paramObject, v.a parama, f.b paramb1) {}
-    
-    public final void run()
+    public b(b paramb, String paramString, j.b paramb1)
     {
-      AppMethodBeat.i(193395);
-      ad.i(g.abb(), "searchSuggest: callback delay");
-      if (!this.fON.cBX)
+      super();
+    }
+    
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/emoji/model/search/EmojiSuggest$searchSuggest$1$localCallback$1", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "onResult", "", "emojiList", "", "Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "wordInfo", "Lcom/tencent/mm/emoji/model/search/SuggestWordInfo;", "plugin-emojisdk_release"})
+    public static final class a
+      implements j.b
+    {
+      a(LinkedList paramLinkedList, b.b.b paramb) {}
+      
+      public final void a(List<l> paramList, m paramm)
       {
-        AppMethodBeat.o(193395);
-        return;
-      }
-      synchronized (this.fOO)
-      {
-        if (!this.fOP.Jhs)
+        AppMethodBeat.i(209830);
+        d.g.b.k.h(paramList, "emojiList");
+        d.g.b.k.h(paramm, "wordInfo");
+        ac.i(k.abZ(), "onResult: local " + paramList.size());
+        if (!this.fSB.fSy.czg)
         {
-          this.fOP.Jhs = true;
-          localObject2 = this.fOQ;
-          if (localObject2 != null) {
-            ((f.b)localObject2).ac((List)b.a(this.fON));
-          }
+          AppMethodBeat.o(209830);
+          return;
         }
-        Object localObject2 = y.JfV;
-        AppMethodBeat.o(193395);
-        return;
+        this.fSC.addAll((Collection)paramList);
+        b.b(this.fSB.fSy).a(this.fSB.fSz, (j.b)this.fSD);
+        AppMethodBeat.o(209830);
       }
     }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/emoji/model/search/EmojiSuggest$searchSuggest$localCallback$1", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "onResult", "", "emojiList", "", "Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "plugin-emojisdk_release"})
-  public static final class c
-    implements f.b
-  {
-    public c(Object paramObject, v.a parama1, v.a parama2, v.a parama3, f.b paramb) {}
     
-    public final void ac(List<h> paramList)
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/emoji/model/search/EmojiSuggest$searchSuggest$1$remoteCallback$1", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "onResult", "", "emojiList", "", "Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "wordInfo", "Lcom/tencent/mm/emoji/model/search/SuggestWordInfo;", "plugin-emojisdk_release"})
+    public static final class b
+      implements j.b
     {
-      AppMethodBeat.i(193396);
-      k.h(paramList, "emojiList");
-      ad.i(g.abb(), "onResult: local " + paramList.size());
-      if (!this.fON.cBX)
+      b(boolean paramBoolean, LinkedList paramLinkedList) {}
+      
+      public final void a(List<l> paramList, m paramm)
       {
-        AppMethodBeat.o(193396);
-        return;
-      }
-      synchronized (this.fOO)
-      {
-        this.fOR.Jhs = true;
-        b.d((List)b.a(this.fON), paramList);
-        if ((this.fOS.Jhs) && (!this.fOP.Jhs))
+        AppMethodBeat.i(209831);
+        d.g.b.k.h(paramList, "emojiList");
+        d.g.b.k.h(paramm, "wordInfo");
+        ac.i(k.abZ(), "onResult: remote " + paramList.size());
+        if (!this.fSB.fSy.czg)
         {
-          this.fOP.Jhs = true;
-          paramList = this.fOQ;
-          if (paramList != null) {
-            paramList.ac((List)b.a(this.fON));
-          }
+          AppMethodBeat.o(209831);
+          return;
         }
-        paramList = y.JfV;
-        AppMethodBeat.o(193396);
-        return;
-      }
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/emoji/model/search/EmojiSuggest$searchSuggest$remoteCallback$1", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "onResult", "", "emojiList", "", "Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "plugin-emojisdk_release"})
-  public static final class d
-    implements f.b
-  {
-    public d(Object paramObject, v.a parama1, v.a parama2, v.a parama3, f.b paramb) {}
-    
-    public final void ac(List<h> paramList)
-    {
-      AppMethodBeat.i(193397);
-      k.h(paramList, "emojiList");
-      ad.i(g.abb(), "onResult: remote " + paramList.size());
-      if (!this.fON.cBX)
-      {
-        AppMethodBeat.o(193397);
-        return;
-      }
-      synchronized (this.fOO)
-      {
-        this.fOS.Jhs = true;
-        b.d((List)b.a(this.fON), paramList);
-        if ((!this.fOP.Jhs) && (this.fOR.Jhs))
+        Object localObject1;
+        Iterator localIterator;
+        long l1;
+        label287:
+        Object localObject2;
+        long l2;
+        if (this.fSE)
         {
-          this.fOP.Jhs = true;
-          paramList = this.fOQ;
-          if (paramList != null) {
-            paramList.ac((List)b.a(this.fON));
+          localObject1 = new LinkedList((Collection)paramList);
+          ((LinkedList)localObject1).addAll((Collection)this.fSC);
+          localIterator = ((Iterable)localObject1).iterator();
+          if (!localIterator.hasNext()) {
+            localObject1 = null;
           }
+          do
+          {
+            localObject1 = (l)localObject1;
+            if (localObject1 != null)
+            {
+              ((l)localObject1).fSV = 1;
+              b.c(this.fSB.fSy).add(localObject1);
+            }
+            b.d((List)b.c(this.fSB.fSy), paramList);
+            b.d((List)b.c(this.fSB.fSy), (List)this.fSC);
+            paramList = this.fSB.fSA;
+            if (paramList != null) {
+              paramList.a((List)b.c(this.fSB.fSy), paramm);
+            }
+            paramList = d.fSH;
+            d.T((List)b.c(this.fSB.fSy));
+            AppMethodBeat.o(209831);
+            return;
+            localObject1 = localIterator.next();
+          } while (!localIterator.hasNext());
+          l1 = ((l)localObject1).fPB.field_lastUseTime;
+          localObject2 = localIterator.next();
+          l2 = ((l)localObject2).fPB.field_lastUseTime;
+          if (l1 >= l2) {
+            break label532;
+          }
+          l1 = l2;
+          localObject1 = localObject2;
         }
-        paramList = y.JfV;
-        AppMethodBeat.o(193397);
-        return;
+        label527:
+        label532:
+        for (;;)
+        {
+          if (!localIterator.hasNext())
+          {
+            break;
+            localIterator = ((Iterable)this.fSC).iterator();
+            if (!localIterator.hasNext()) {
+              localObject1 = null;
+            }
+            for (;;)
+            {
+              localObject1 = (l)localObject1;
+              if (localObject1 != null)
+              {
+                ((l)localObject1).fSV = 1;
+                b.c(this.fSB.fSy).add(localObject1);
+              }
+              b.d((List)b.c(this.fSB.fSy), (List)this.fSC);
+              b.d((List)b.c(this.fSB.fSy), paramList);
+              break;
+              localObject1 = localIterator.next();
+              if (localIterator.hasNext())
+              {
+                l1 = ((l)localObject1).fPB.field_lastUseTime;
+                localObject2 = localIterator.next();
+                l2 = ((l)localObject2).fPB.field_lastUseTime;
+                if (l1 < l2)
+                {
+                  l1 = l2;
+                  localObject1 = localObject2;
+                }
+                for (;;)
+                {
+                  if (!localIterator.hasNext()) {
+                    break label527;
+                  }
+                  break;
+                }
+              }
+            }
+          }
+          break label287;
+        }
       }
     }
   }

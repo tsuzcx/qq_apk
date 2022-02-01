@@ -6,103 +6,54 @@ import com.tencent.mm.plugin.report.a;
 public final class cu
   extends a
 {
-  private String dGR;
-  private String dSJ;
-  private String dSO;
-  private String dSQ;
-  public long dSR = 0L;
-  public long dSS = 0L;
-  public long dST = 0L;
-  public long dSU = 0L;
-  public long dSV = 0L;
+  private String dJi = "";
+  public long dNZ = 0L;
+  public long dRj = 0L;
+  public long dRk = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(110282);
+    AppMethodBeat.i(149916);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dGR);
+    ((StringBuffer)localObject).append(this.dJi);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSJ);
+    ((StringBuffer)localObject).append(this.dNZ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSQ);
+    ((StringBuffer)localObject).append(this.dRj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dST);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSV);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSO);
+    ((StringBuffer)localObject).append(this.dRk);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(110282);
+    arz((String)localObject);
+    AppMethodBeat.o(149916);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(110283);
+    AppMethodBeat.i(149917);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ChatName:").append(this.dGR);
+    ((StringBuffer)localObject).append("sessionID:").append(this.dJi);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LaunchUserName:").append(this.dSJ);
+    ((StringBuffer)localObject).append("actionCode:").append(this.dNZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MsgUserName:").append(this.dSQ);
+    ((StringBuffer)localObject).append("actionCodeResult:").append(this.dRj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionSvrId:").append(this.dSR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasHeader:").append(this.dSS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasTail:").append(this.dST);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasExample:").append(this.dSU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ActiveScene:").append(this.dSV);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Identifier:").append(this.dSO);
+    ((StringBuffer)localObject).append("clickAddContact:").append(this.dRk);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(110283);
+    AppMethodBeat.o(149917);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18244;
+    return 15850;
   }
   
-  public final cu jm(String paramString)
+  public final cu kQ(String paramString)
   {
-    AppMethodBeat.i(110278);
-    this.dGR = t("ChatName", paramString, true);
-    AppMethodBeat.o(110278);
-    return this;
-  }
-  
-  public final cu jn(String paramString)
-  {
-    AppMethodBeat.i(110279);
-    this.dSJ = t("LaunchUserName", paramString, true);
-    AppMethodBeat.o(110279);
-    return this;
-  }
-  
-  public final cu jo(String paramString)
-  {
-    AppMethodBeat.i(110280);
-    this.dSQ = t("MsgUserName", paramString, true);
-    AppMethodBeat.o(110280);
-    return this;
-  }
-  
-  public final cu jp(String paramString)
-  {
-    AppMethodBeat.i(110281);
-    this.dSO = t("Identifier", paramString, true);
-    AppMethodBeat.o(110281);
+    AppMethodBeat.i(149915);
+    this.dJi = t("sessionID", paramString, true);
+    AppMethodBeat.o(149915);
     return this;
   }
 }

@@ -7,9 +7,9 @@ public abstract interface a<T extends c>
 {
   public abstract int getState();
   
-  public abstract a sD();
+  public abstract a sM();
   
-  public abstract T sE();
+  public abstract T sN();
   
   public static final class a
     extends Exception

@@ -24,7 +24,7 @@ public final class k
   public final boolean b(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137541);
-    parame.aOg().ro(paramInt);
+    parame.fC(paramJSONObject.optBoolean("independent", false)).sb(paramInt);
     boolean bool = super.b(parame, paramInt, paramView, paramJSONObject);
     AppMethodBeat.o(137541);
     return bool;
@@ -32,7 +32,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.k
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.s;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -22,12 +22,12 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WalletWXCreditOpenResultUI
   extends WalletBaseUI
 {
-  private CheckBox BLu;
+  private CheckBox DdC;
   
-  private void aKg()
+  private void aQX()
   {
     AppMethodBeat.i(72390);
-    getNetController().q(new Object[] { Boolean.valueOf(this.BLu.isChecked()) });
+    getNetController().s(new Object[] { Boolean.valueOf(this.DdC.isChecked()) });
     AppMethodBeat.o(72390);
   }
   
@@ -41,11 +41,11 @@ public class WalletWXCreditOpenResultUI
     AppMethodBeat.i(72389);
     setMMTitle(2131766015);
     TextView localTextView = (TextView)findViewById(2131306855);
-    this.BLu = ((CheckBox)findViewById(2131296965));
+    this.DdC = ((CheckBox)findViewById(2131296965));
     Bankcard localBankcard = (Bankcard)getInput().getParcelable("key_bankcard");
     if (localBankcard != null)
     {
-      this.BLu.setText(getString(2131766017, new Object[] { localBankcard.field_bankName }));
+      this.DdC.setText(getString(2131766017, new Object[] { localBankcard.field_bankName }));
       localTextView.setText(2131766018);
     }
     ((Button)findViewById(2131302852)).setOnClickListener(new View.OnClickListener()
@@ -64,9 +64,9 @@ public class WalletWXCreditOpenResultUI
   {
     AppMethodBeat.i(72388);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afB().afk().set(196658, Boolean.TRUE);
-    s.ecc().Aip = bt.aGK();
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agR().agA().set(196658, Boolean.TRUE);
+    s.ery().BAK = bs.aNx();
     initView();
     AppMethodBeat.o(72388);
   }
@@ -76,7 +76,7 @@ public class WalletWXCreditOpenResultUI
     AppMethodBeat.i(72391);
     if (paramInt == 4)
     {
-      aKg();
+      aQX();
       AppMethodBeat.o(72391);
       return true;
     }

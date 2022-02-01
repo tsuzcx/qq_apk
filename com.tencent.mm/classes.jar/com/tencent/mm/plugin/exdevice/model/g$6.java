@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -35,11 +35,11 @@ final class g$6
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", localException, "", new Object[0]);
-        ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "JSON decode failed in device ConnState notify callback");
+        ac.printErrStackTrace("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", localException, "", new Object[0]);
+        ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "JSON decode failed in device ConnState notify callback");
       }
-      this.oVB.oVq.put(paramVarArgs, Boolean.FALSE);
-      ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "device not connect stateCode = ".concat(String.valueOf(paramInt)));
+      this.pyM.pyB.put(paramVarArgs, Boolean.FALSE);
+      ac.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "device not connect stateCode = ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(23324);
       return;
     }
@@ -50,14 +50,14 @@ final class g$6
     {
       AppMethodBeat.o(23324);
       return;
-      this.oVB.oVq.put(paramVarArgs, Boolean.TRUE);
-      ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "device connect");
+      this.pyM.pyB.put(paramVarArgs, Boolean.TRUE);
+      ac.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "device connect");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.g.6
  * JD-Core Version:    0.7.0.1
  */

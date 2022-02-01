@@ -12,14 +12,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backColor", "", "getBackColor", "()I", "setBackColor", "(I)V", "foreColor", "getForeColor", "setForeColor", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "setPaint", "(Landroid/graphics/Paint;)V", "progress", "getProgress", "setProgress", "draw", "", "canvas", "Landroid/graphics/Canvas;", "init", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backColor", "", "getBackColor", "()I", "setBackColor", "(I)V", "foreColor", "getForeColor", "setForeColor", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "setPaint", "(Landroid/graphics/Paint;)V", "progress", "getProgress", "setProgress", "draw", "", "canvas", "Landroid/graphics/Canvas;", "init", "plugin-finder_release"})
 public final class FinderPostProgressView
   extends View
 {
   public Paint paint;
   private int progress;
-  private int qXH;
-  private int qXI;
+  private int rYr;
+  private int rYs;
   
   public FinderPostProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,21 +28,21 @@ public final class FinderPostProgressView
     this.paint = new Paint();
     paramContext = this.paint;
     if (paramContext == null) {
-      k.aPZ("paint");
+      k.aVY("paint");
     }
     paramContext.setStyle(Paint.Style.STROKE);
     paramContext = this.paint;
     if (paramContext == null) {
-      k.aPZ("paint");
+      k.aVY("paint");
     }
     paramContext.setStrokeWidth(getResources().getDimension(2131166296));
     paramContext = this.paint;
     if (paramContext == null) {
-      k.aPZ("paint");
+      k.aVY("paint");
     }
     paramContext.setAntiAlias(true);
-    this.qXH = getResources().getColor(2131099656);
-    this.qXI = getResources().getColor(2131099778);
+    this.rYr = getResources().getColor(2131099656);
+    this.rYs = getResources().getColor(2131099778);
     AppMethodBeat.o(168400);
   }
   
@@ -53,23 +53,23 @@ public final class FinderPostProgressView
     int i = getWidth() / 2;
     Object localObject = this.paint;
     if (localObject == null) {
-      k.aPZ("paint");
+      k.aVY("paint");
     }
     float f1 = ((Paint)localObject).getStrokeWidth();
     int j = (int)(i - f1 / 2.0F);
     localObject = this.paint;
     if (localObject == null) {
-      k.aPZ("paint");
+      k.aVY("paint");
     }
-    ((Paint)localObject).setColor(this.qXH);
+    ((Paint)localObject).setColor(this.rYr);
     localObject = this.paint;
     if (localObject == null) {
-      k.aPZ("paint");
+      k.aVY("paint");
     }
     ((Paint)localObject).setAntiAlias(true);
     localObject = this.paint;
     if (localObject == null) {
-      k.aPZ("paint");
+      k.aVY("paint");
     }
     ((Paint)localObject).setStyle(Paint.Style.STROKE);
     if (paramCanvas != null)
@@ -79,22 +79,22 @@ public final class FinderPostProgressView
       float f3 = j;
       localObject = this.paint;
       if (localObject == null) {
-        k.aPZ("paint");
+        k.aVY("paint");
       }
       paramCanvas.drawCircle(f1, f2, f3, (Paint)localObject);
     }
     localObject = this.paint;
     if (localObject == null) {
-      k.aPZ("paint");
+      k.aVY("paint");
     }
-    ((Paint)localObject).setColor(this.qXI);
+    ((Paint)localObject).setColor(this.rYs);
     localObject = new RectF(i - j, i - j, i + j, i + j);
     f1 = this.progress * 360 / 100.0F;
     if (paramCanvas != null)
     {
       Paint localPaint = this.paint;
       if (localPaint == null) {
-        k.aPZ("paint");
+        k.aVY("paint");
       }
       paramCanvas.drawArc((RectF)localObject, -90.0F, f1, false, localPaint);
       AppMethodBeat.o(168399);
@@ -105,12 +105,12 @@ public final class FinderPostProgressView
   
   public final int getBackColor()
   {
-    return this.qXH;
+    return this.rYr;
   }
   
   public final int getForeColor()
   {
-    return this.qXI;
+    return this.rYs;
   }
   
   public final Paint getPaint()
@@ -118,7 +118,7 @@ public final class FinderPostProgressView
     AppMethodBeat.i(168397);
     Paint localPaint = this.paint;
     if (localPaint == null) {
-      k.aPZ("paint");
+      k.aVY("paint");
     }
     AppMethodBeat.o(168397);
     return localPaint;
@@ -131,12 +131,12 @@ public final class FinderPostProgressView
   
   public final void setBackColor(int paramInt)
   {
-    this.qXH = paramInt;
+    this.rYr = paramInt;
   }
   
   public final void setForeColor(int paramInt)
   {
-    this.qXI = paramInt;
+    this.rYs = paramInt;
   }
   
   public final void setPaint(Paint paramPaint)
@@ -154,7 +154,7 @@ public final class FinderPostProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderPostProgressView
  * JD-Core Version:    0.7.0.1
  */

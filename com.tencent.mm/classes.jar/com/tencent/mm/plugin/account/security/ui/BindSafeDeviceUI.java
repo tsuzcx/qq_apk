@@ -46,7 +46,7 @@ public class BindSafeDeviceUI
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("bind_scene", 1);
         paramAnonymousView.setClass(BindSafeDeviceUI.this, BindMContactUI.class);
-        MMWizardActivity.V(BindSafeDeviceUI.this, paramAnonymousView);
+        MMWizardActivity.aj(BindSafeDeviceUI.this, paramAnonymousView);
         AppMethodBeat.o(125541);
       }
     });
@@ -69,7 +69,7 @@ public class BindSafeDeviceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.BindSafeDeviceUI
  * JD-Core Version:    0.7.0.1
  */

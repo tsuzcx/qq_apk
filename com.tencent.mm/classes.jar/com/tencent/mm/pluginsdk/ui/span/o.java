@@ -7,8 +7,8 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.base.b.a;
 import java.lang.ref.WeakReference;
 
@@ -101,6 +101,11 @@ public class o
     return this.mBgColor;
   }
   
+  public u getHrefInfo()
+  {
+    return this.mHrefInfo;
+  }
+  
   public boolean getPress()
   {
     return this.isPressed;
@@ -150,7 +155,7 @@ public class o
   protected void setColorConfig(int paramInt)
   {
     AppMethodBeat.i(152342);
-    Context localContext = aj.getContext();
+    Context localContext = ai.getContext();
     switch (paramInt)
     {
     }
@@ -205,8 +210,8 @@ public class o
   public void updateDrawState(TextPaint paramTextPaint)
   {
     AppMethodBeat.i(152344);
-    if (ad.getLogLevel() <= 1) {
-      ad.d("MicroMsg.PressableClickSpan", "updateDrawState, isPressed:%b", new Object[] { Boolean.valueOf(this.isPressed) });
+    if (ac.getLogLevel() <= 1) {
+      ac.d("MicroMsg.PressableClickSpan", "updateDrawState, isPressed:%b", new Object[] { Boolean.valueOf(this.isPressed) });
     }
     super.updateDrawState(paramTextPaint);
     paramTextPaint.setColor(this.mLinkColor);
@@ -224,7 +229,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.o
  * JD-Core Version:    0.7.0.1
  */

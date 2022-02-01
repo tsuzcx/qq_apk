@@ -6,43 +6,43 @@ import com.google.b.a.e;
 public final class a$bb
   extends e
 {
-  public int InM = 0;
-  public int zkT = 0;
-  public long zkU = 0L;
+  public int ADE = 0;
+  public long ADF = 0L;
+  public int JPw = 0;
   
   public a$bb()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.zkT != 0) {
-      paramb.by(1, this.zkT);
+    if (this.ADE != 0) {
+      paramb.bv(1, this.ADE);
     }
-    if (this.zkU != 0L) {
-      paramb.o(2, this.zkU);
+    if (this.ADF != 0L) {
+      paramb.n(2, this.ADF);
     }
-    if (this.InM != 0) {
-      paramb.bz(3, this.InM);
+    if (this.JPw != 0) {
+      paramb.bw(3, this.JPw);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.zkT != 0) {
-      i = j + b.bA(1, this.zkT);
+    if (this.ADE != 0) {
+      i = j + b.bx(1, this.ADE);
     }
     j = i;
-    if (this.zkU != 0L) {
-      j = i + b.q(2, this.zkU);
+    if (this.ADF != 0L) {
+      j = i + b.p(2, this.ADF);
     }
     i = j;
-    if (this.InM != 0) {
-      i = j + b.bB(3, this.InM);
+    if (this.JPw != 0) {
+      i = j + b.by(3, this.JPw);
     }
     return i;
   }

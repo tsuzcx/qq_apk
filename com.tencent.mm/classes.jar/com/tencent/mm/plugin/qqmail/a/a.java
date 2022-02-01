@@ -7,22 +7,22 @@ import com.tencent.mm.pluginsdk.m;
 public final class a
   implements m
 {
-  public static l hYt = null;
-  public static k hYu = null;
+  public static l iyx = null;
+  public static k iyy = null;
   
   public final void a(k paramk)
   {
-    hYu = paramk;
+    iyy = paramk;
   }
   
   public final void a(l paraml)
   {
-    hYt = paraml;
+    iyx = paraml;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.a.a
  * JD-Core Version:    0.7.0.1
  */

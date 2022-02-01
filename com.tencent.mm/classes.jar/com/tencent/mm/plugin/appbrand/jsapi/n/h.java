@@ -1,25 +1,30 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
 
-public final class h
-  extends a
+public abstract interface h<PipVideoContainer extends View>
 {
-  private static final int CTRL_INDEX = 96;
-  private static final String NAME = "showPickerView";
+  public abstract d El();
   
-  public final void b(e parame, JSONObject paramJSONObject, int paramInt)
+  public abstract PipVideoContainer aI(Context paramContext);
+  
+  public abstract void c(PipVideoContainer paramPipVideoContainer, Runnable paramRunnable);
+  
+  public abstract void cq(PipVideoContainer paramPipVideoContainer);
+  
+  public abstract void cr(PipVideoContainer paramPipVideoContainer);
+  
+  public abstract void d(PipVideoContainer paramPipVideoContainer, Runnable paramRunnable);
+  
+  public static abstract interface a<OriginVideoContainer extends g, PipVideoContainer extends View>
   {
-    AppMethodBeat.i(137593);
-    new j().a(this, parame, paramJSONObject, paramInt, this.kgn);
-    AppMethodBeat.o(137593);
+    public abstract h<PipVideoContainer> a(OriginVideoContainer paramOriginVideoContainer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.n.h
  * JD-Core Version:    0.7.0.1
  */

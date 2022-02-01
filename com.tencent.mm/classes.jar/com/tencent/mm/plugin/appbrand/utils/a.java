@@ -11,36 +11,36 @@ import com.tencent.mm.b.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.task.f;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.a.j;
 import d.g.b.k;
 import d.l;
 import java.lang.Class<+Landroid.app.Activity;>;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/utils/AppBrandComponentUtil;", "", "()V", "genAppBrandInstanceId", "", "parcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "appId", "generateInstanceId", "uin", "", "hasPreLoading", "", "triggerServiceName", "isActivityHasSpecificTaskAffinity", "clazz", "Ljava/lang/Class;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/utils/AppBrandComponentUtil;", "", "()V", "genAppBrandInstanceId", "", "parcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "appId", "generateInstanceId", "uin", "", "hasPreLoading", "", "triggerServiceName", "isActivityHasSpecificTaskAffinity", "clazz", "Ljava/lang/Class;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a lLW;
+  public static final a mnT;
   
   static
   {
     AppMethodBeat.i(51400);
-    lLW = new a();
+    mnT = new a();
     AppMethodBeat.o(51400);
   }
   
-  public static final boolean Nj(String paramString)
+  public static final boolean Rs(String paramString)
   {
-    AppMethodBeat.i(196489);
+    AppMethodBeat.i(187450);
     paramString = (CharSequence)paramString;
     if ((paramString == null) || (paramString.length() == 0)) {}
     for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(196489);
+      AppMethodBeat.o(187450);
       return true;
     }
-    AppMethodBeat.o(196489);
+    AppMethodBeat.o(187450);
     return false;
   }
   
@@ -50,7 +50,7 @@ public final class a
     k.h(paramClass, "clazz");
     try
     {
-      Context localContext = aj.getContext();
+      Context localContext = ai.getContext();
       if (localContext != null)
       {
         Object localObject = localContext.getPackageManager();
@@ -85,33 +85,33 @@ public final class a
   {
     AppMethodBeat.i(51398);
     k.h(paramLaunchParcel, "parcel");
-    paramString = f.bT(paramString, paramLaunchParcel.gXn);
+    paramString = f.bY(paramString, paramLaunchParcel.hxM);
     paramLaunchParcel = paramString;
     if (paramString == null)
     {
-      k.g(g.afz(), "MMKernel.account()");
-      paramLaunchParcel = un(com.tencent.mm.kernel.a.getUin());
+      k.g(g.agP(), "MMKernel.account()");
+      paramLaunchParcel = vf(com.tencent.mm.kernel.a.getUin());
     }
     if (paramLaunchParcel == null) {
-      k.fvU();
+      k.fOy();
     }
     AppMethodBeat.o(51398);
     return paramLaunchParcel;
   }
   
-  public static final String un(int paramInt)
+  public static final String vf(int paramInt)
   {
     AppMethodBeat.i(51399);
     String str = p.getString(paramInt);
     k.g(str, "UIN.getString(uin)");
-    str = j.a((Iterable)j.listOf(new String[] { str, String.valueOf(bt.eGO()) }), (CharSequence)"_", null, null, 0, null, null, 62);
+    str = j.a((Iterable)j.listOf(new String[] { str, String.valueOf(bs.eWj()) }), (CharSequence)"_", null, null, 0, null, null, 62);
     AppMethodBeat.o(51399);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.a
  * JD-Core Version:    0.7.0.1
  */

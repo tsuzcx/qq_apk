@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.downloader.f.b;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.o;
 import com.tencent.mm.plugin.downloader.model.o.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ax;
 import com.tencent.mm.ui.base.h;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,19 +21,19 @@ public class aw
   private void a(long paramLong, bn.a parama)
   {
     AppMethodBeat.i(78616);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.oq(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.sc(paramLong);
     if ((locala != null) && (locala.field_fromDownloadApp))
     {
       locala.field_fromDownloadApp = false;
       locala.field_showNotification = true;
       com.tencent.mm.plugin.downloader.model.d.e(locala);
     }
-    if (f.bQt().oj(paramLong)) {
+    if (f.bXJ().rV(paramLong)) {
       parama.f(null, null);
     }
     for (;;)
     {
-      com.tencent.mm.modelstat.d.c(10, "LuggageGameWebViewUI_resumeDownloadTask", hashCode());
+      com.tencent.mm.modelstat.d.d(10, "LuggageGameWebViewUI_resumeDownloadTask", hashCode());
       AppMethodBeat.o(78616);
       return;
       parama.f("fail", null);
@@ -43,7 +43,7 @@ public class aw
   public final void a(Context paramContext, final String paramString, final bn.a parama)
   {
     AppMethodBeat.i(78615);
-    ad.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
+    ac.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
     final long l;
     try
     {
@@ -51,7 +51,7 @@ public class aw
       l = paramString.optLong("download_id");
       if (l <= 0L)
       {
-        ad.e("MicroMsg.JsApiResumeDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
+        ac.e("MicroMsg.JsApiResumeDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
         parama.f("invalid_downloadid", null);
         AppMethodBeat.o(78615);
         return;
@@ -59,7 +59,7 @@ public class aw
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiResumeDownloadTask", "paras data error: " + paramContext.getMessage());
+      ac.e("MicroMsg.JsApiResumeDownloadTask", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(78615);
       return;
@@ -69,7 +69,7 @@ public class aw
     int k = paramString.optInt("notice_id");
     int m = paramString.optInt("ssid");
     int n = paramString.optInt("download_type", 1);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.oq(l);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.sc(l);
     locala.field_scene = i;
     locala.field_uiarea = j;
     locala.field_noticeId = k;
@@ -80,7 +80,7 @@ public class aw
     {
       b localb = new b();
       localb.k(locala);
-      localb.lrf = 0L;
+      localb.lTa = 0L;
       com.tencent.mm.plugin.downloader.f.a.a(10, localb);
     }
     boolean bool1 = paramString.optBoolean("use_downloader_widget", false);
@@ -96,11 +96,11 @@ public class aw
           AppMethodBeat.o(78614);
         }
       });
-      com.tencent.mm.modelstat.d.c(10, "LuggageGameWebViewUI_resumeDownloadTask", hashCode());
+      com.tencent.mm.modelstat.d.d(10, "LuggageGameWebViewUI_resumeDownloadTask", hashCode());
       AppMethodBeat.o(78615);
       return;
     }
-    if (ay.isWifi(paramContext))
+    if (ax.isWifi(paramContext))
     {
       a(l, parama);
       AppMethodBeat.o(78615);
@@ -111,7 +111,7 @@ public class aw
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(78612);
-        aw.a(aw.this, l, this.ohl);
+        aw.a(aw.this, l, this.oKL);
         paramAnonymousDialogInterface.dismiss();
         AppMethodBeat.o(78612);
       }
@@ -130,7 +130,7 @@ public class aw
   
   public final void b(com.tencent.luggage.d.a<n>.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 2;
   }

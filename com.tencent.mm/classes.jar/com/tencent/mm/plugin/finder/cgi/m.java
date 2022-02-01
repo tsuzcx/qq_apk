@@ -1,89 +1,237 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.gw;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aid;
-import com.tencent.mm.protocal.protobuf.aie;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.finder.storage.t;
+import com.tencent.mm.plugin.finder.utils.n;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
+import com.tencent.mm.protocal.protobuf.air;
+import com.tencent.mm.protocal.protobuf.akh;
+import com.tencent.mm.protocal.protobuf.aki;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.h;
+import d.g.b.k;
 import d.l;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneDeleteFinderObject;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "username", "", "objectId", "", "objectNonceId", "(Ljava/lang/String;JLjava/lang/String;)V", "TAG", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getDelId", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderFeedComment;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "feedId", "", "objectNonceId", "", "enterScene", "", "scene", "feedUsername", "needObject", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "rootComment", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "refCommentId", "username", "down", "justUpdateObjectStatus", "encryptedObjectId", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;IILjava/lang/String;ZLcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;JLjava/lang/String;ZZLjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getDown", "()Z", "getEnterScene", "()I", "getFeedUsername", "()Ljava/lang/String;", "getJustUpdateObjectStatus", "rootCommentId", "getScene", "filterDuplicate", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "svrComment", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class m
-  extends n
-  implements com.tencent.mm.network.k
+  extends r<aki>
 {
-  private String TAG;
-  private g callback;
-  public long objectId;
-  private com.tencent.mm.al.b rr;
+  public static final m.a qXB;
+  private final long dig;
+  private final int enterScene;
+  private final String objectNonceId;
+  private final boolean qXA;
+  private long qXu;
+  private final String qXv;
+  private boolean qXw;
+  private t qXx;
+  private final long qXy;
+  private final boolean qXz;
+  private final int scene;
+  private String username;
   
-  public m(String paramString1, long paramLong, String paramString2)
+  static
   {
-    AppMethodBeat.i(165207);
-    this.TAG = "Finder.NetSceneDeleteFinderObject";
-    com.tencent.mm.al.b.a locala = new com.tencent.mm.al.b.a();
-    locala.wg("/cgi-bin/micromsg-bin/finderdelfeed");
-    locala.nB(getType());
-    aid localaid = new aid();
-    localaid.id = paramLong;
-    localaid.objectNonceId = paramString2;
-    localaid.DkK = paramString1;
-    paramString1 = am.KJy;
-    localaid.Dkw = am.fRS();
-    locala.c((com.tencent.mm.bx.a)localaid);
-    locala.d((com.tencent.mm.bx.a)new aie());
-    paramString1 = locala.atI();
-    d.g.b.k.g(paramString1, "builder.buildInstance()");
-    this.rr = paramString1;
-    this.objectId = paramLong;
-    AppMethodBeat.o(165207);
+    AppMethodBeat.i(165180);
+    qXB = new m.a((byte)0);
+    AppMethodBeat.o(165180);
   }
   
-  public final int doScene(e parame, g paramg)
+  private m(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, com.tencent.mm.bw.b paramb, t paramt, long paramLong2, String paramString3, boolean paramBoolean2, boolean paramBoolean3, String paramString4, anm paramanm)
   {
-    AppMethodBeat.i(165205);
-    this.callback = paramg;
-    int i = dispatch(parame, (q)this.rr, (com.tencent.mm.network.k)this);
-    AppMethodBeat.o(165205);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 3627;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(165206);
-    ad.i(this.TAG, "errType " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    super(paramanm);
+    AppMethodBeat.i(201140);
+    this.dig = paramLong1;
+    this.objectNonceId = paramString1;
+    this.enterScene = paramInt1;
+    this.scene = paramInt2;
+    this.qXv = paramString2;
+    this.qXw = paramBoolean1;
+    this.qXx = paramt;
+    this.qXy = paramLong2;
+    this.username = paramString3;
+    this.qXz = paramBoolean2;
+    this.qXA = paramBoolean3;
+    paramString1 = this.qXx;
+    if (paramString1 != null)
     {
-      paramq = com.tencent.mm.plugin.finder.storage.logic.b.qKG;
-      if (com.tencent.mm.plugin.finder.storage.logic.b.a.qH(this.objectId))
-      {
-        paramq = new gw();
-        paramq.dkx.id = this.objectId;
-        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)paramq);
+      paramLong1 = paramString1.field_actionInfo.EDq.commentId;
+      this.qXu = paramLong1;
+      paramString2 = new b.a();
+      paramString1 = new akh();
+      paramString1.qXP = this.dig;
+      paramString1.objectNonceId = this.objectNonceId;
+      if (!h.DEBUG) {
+        break label267;
+      }
+      paramt = (CharSequence)this.objectNonceId;
+      if ((paramt != null) && (paramt.length() != 0)) {
+        break label261;
       }
     }
-    paramq = this.callback;
-    if (paramq != null)
+    label261:
+    for (paramInt1 = 1;; paramInt1 = 0)
     {
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(165206);
-      return;
+      if ((paramInt1 == 0) && (!k.g(String.valueOf(this.dig), this.objectNonceId))) {
+        break label267;
+      }
+      paramString1 = (Throwable)new RuntimeException(this.dig + ' ' + this.objectNonceId);
+      AppMethodBeat.o(201140);
+      throw paramString1;
+      paramLong1 = 0L;
+      break;
     }
-    AppMethodBeat.o(165206);
+    label267:
+    if (k.g(Boolean.valueOf(this.qXw), Boolean.TRUE))
+    {
+      paramInt1 = 1;
+      paramString1.EEz = paramInt1;
+      paramString1.lastBuffer = paramb;
+      paramString1.EEy = 0L;
+      paramString1.EEA = paramString4;
+      if (bs.isNullOrNil(this.username)) {
+        break label709;
+      }
+      paramString1.rfC = this.username;
+      label327:
+      if (this.qXy != 0L) {
+        paramString1.qXy = this.qXy;
+      }
+      paramString1.qXu = this.qXu;
+      if (!this.qXz) {
+        break label719;
+      }
+      paramInt1 = 2;
+      label362:
+      paramString1.direction = paramInt1;
+      paramString1.scene = this.enterScene;
+      paramt = q.qXH;
+      paramString1.EDL = q.a(paramanm);
+      paramInt1 = this.scene;
+      paramInt2 = this.enterScene;
+      paramt = this.qXv;
+      k.h(paramt, "feedUsername");
+      ac.i("Finder.CgiGetFinderFeedComment", "getIdScene scene:" + paramInt1 + ", commentScene:" + paramInt2);
+      paramString3 = com.tencent.mm.plugin.finder.storage.b.rCU;
+      if (com.tencent.mm.plugin.finder.storage.b.czB()) {
+        break label731;
+      }
+      paramString3 = com.tencent.mm.plugin.finder.storage.b.rCU;
+      if (com.tencent.mm.plugin.finder.storage.b.czC() != 1) {
+        break label731;
+      }
+      paramString3 = n.rPN;
+      if (!n.aeD(paramt)) {
+        break label725;
+      }
+      paramInt1 = 1;
+      label487:
+      paramString1.EEB = paramInt1;
+      paramString2.c((a)paramString1);
+      paramt = new aki();
+      paramt.setBaseResponse(new BaseResponse());
+      paramt.getBaseResponse().ErrMsg = new crm();
+      paramString2.d((a)paramt);
+      paramString2.Am("/cgi-bin/micromsg-bin/findergetcommentdetail");
+      paramString2.op(3763);
+      c(paramString2.aAz());
+      paramString2 = new StringBuilder("CgiGetFinderFeedComment init identityScene:").append(paramString1.EEB).append(", feedId=").append(this.dig).append(" lastBuffer=");
+      if (paramb == null) {
+        break label757;
+      }
+      paramBoolean1 = true;
+      label620:
+      paramString2 = paramString2.append(paramBoolean1).append(" isSecondCommentFetch=");
+      if (this.qXx == null) {
+        break label763;
+      }
+    }
+    label709:
+    label719:
+    label725:
+    label731:
+    label757:
+    label763:
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      ac.i("Finder.CgiGetFinderFeedComment", paramBoolean1 + " scene " + paramString1.scene + ", justUpdateObjectStatus:" + this.qXA + ", encryptedObjectid:" + paramString4);
+      AppMethodBeat.o(201140);
+      return;
+      paramInt1 = 0;
+      break;
+      paramString1.rfC = u.axE();
+      break label327;
+      paramInt1 = 1;
+      break label362;
+      paramInt1 = 3;
+      break label487;
+      if ((paramInt2 == 7) || (paramInt2 == 8))
+      {
+        paramInt1 = 1;
+        break label487;
+      }
+      paramInt1 = 2;
+      break label487;
+      paramBoolean1 = false;
+      break label620;
+    }
+  }
+  
+  private static LinkedList<FinderCommentInfo> ac(LinkedList<FinderCommentInfo> paramLinkedList)
+  {
+    AppMethodBeat.i(165177);
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator1 = ((Iterable)paramLinkedList).iterator();
+    while (localIterator1.hasNext())
+    {
+      FinderCommentInfo localFinderCommentInfo = (FinderCommentInfo)localIterator1.next();
+      Iterator localIterator2 = ((Iterable)localLinkedList).iterator();
+      label55:
+      int i;
+      if (localIterator2.hasNext())
+      {
+        paramLinkedList = localIterator2.next();
+        if (((FinderCommentInfo)paramLinkedList).commentId == localFinderCommentInfo.commentId)
+        {
+          i = 1;
+          label91:
+          if (i == 0) {
+            break label112;
+          }
+        }
+      }
+      for (;;)
+      {
+        if (paramLinkedList != null) {
+          break label119;
+        }
+        localLinkedList.add(localFinderCommentInfo);
+        break;
+        i = 0;
+        break label91;
+        label112:
+        break label55;
+        paramLinkedList = null;
+      }
+      label119:
+      ac.w("Finder.CgiGetFinderFeedComment", "filterDuplicate " + localFinderCommentInfo.commentId + " content " + localFinderCommentInfo.content + " username " + localFinderCommentInfo.username);
+    }
+    AppMethodBeat.o(165177);
+    return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.b.b;
 
 public final class ai
-  extends com.tencent.mm.sdk.b.b
+  extends b
 {
-  public a dcd;
+  public a cZB;
   
   public ai()
   {
@@ -14,23 +16,21 @@ public final class ai
   
   private ai(byte paramByte)
   {
-    AppMethodBeat.i(149852);
-    this.dcd = new a();
-    this.ESR = false;
+    AppMethodBeat.i(149851);
+    this.cZB = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(149852);
+    AppMethodBeat.o(149851);
   }
   
   public static final class a
   {
-    public com.tencent.mm.pluginsdk.ui.b.b dce;
-    public boolean independent = true;
-    public int level = 1;
+    public Activity activity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ai
  * JD-Core Version:    0.7.0.1
  */

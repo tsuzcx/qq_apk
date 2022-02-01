@@ -7,69 +7,69 @@ import java.util.concurrent.Callable;
 public final class c
   implements a
 {
-  private a cqp;
+  private a cnw;
   
   public c(a parama)
   {
-    this.cqp = parama;
+    this.cnw = parama;
   }
   
-  public final boolean Bq()
+  public final boolean AU()
   {
     AppMethodBeat.i(139999);
-    boolean bool = this.cqp.Bq();
+    boolean bool = this.cnw.AU();
     AppMethodBeat.o(139999);
     return bool;
   }
   
-  public final String Br()
+  public final String AV()
   {
     AppMethodBeat.i(185066);
-    String str = this.cqp.Br();
+    String str = this.cnw.AV();
     AppMethodBeat.o(185066);
     return str;
   }
   
   public final void a(Runnable paramRunnable, boolean paramBoolean)
   {
-    AppMethodBeat.i(193561);
-    this.cqp.a(paramRunnable, paramBoolean);
-    AppMethodBeat.o(193561);
+    AppMethodBeat.i(190913);
+    this.cnw.a(paramRunnable, paramBoolean);
+    AppMethodBeat.o(190913);
   }
   
   public final <T> T b(Callable<T> paramCallable)
   {
     AppMethodBeat.i(140000);
     paramCallable = new e(paramCallable);
-    o(paramCallable);
+    p(paramCallable);
     paramCallable = paramCallable.get();
     AppMethodBeat.o(140000);
     return paramCallable;
   }
   
-  public final void o(Runnable paramRunnable)
+  public final void p(Runnable paramRunnable)
   {
     AppMethodBeat.i(140001);
-    if (this.cqp.Bq())
+    if (this.cnw.AU())
     {
       paramRunnable.run();
       AppMethodBeat.o(140001);
       return;
     }
-    this.cqp.a(paramRunnable, false);
+    this.cnw.a(paramRunnable, false);
     AppMethodBeat.o(140001);
   }
   
   public final void post(Runnable paramRunnable)
   {
-    AppMethodBeat.i(203595);
+    AppMethodBeat.i(210240);
     a(paramRunnable, false);
-    AppMethodBeat.o(203595);
+    AppMethodBeat.o(210240);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.handler.c
  * JD-Core Version:    0.7.0.1
  */

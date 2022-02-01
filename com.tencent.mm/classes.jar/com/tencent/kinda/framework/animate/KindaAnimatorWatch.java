@@ -1,7 +1,7 @@
 package com.tencent.kinda.framework.animate;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +23,7 @@ public class KindaAnimatorWatch
   {
     AppMethodBeat.i(18324);
     pendingObj = paramInt;
-    aq.n(new Runnable()
+    ap.n(new Runnable()
     {
       public final void run()
       {
@@ -45,7 +45,7 @@ public class KindaAnimatorWatch
     {
       Runnable localRunnable = (Runnable)pendingActions.get(Integer.valueOf(paramInt));
       pendingActions.remove(Integer.valueOf(paramInt));
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -68,7 +68,7 @@ public class KindaAnimatorWatch
       AppMethodBeat.o(18323);
       return;
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {

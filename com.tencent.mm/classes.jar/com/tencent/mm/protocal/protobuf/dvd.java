@@ -1,83 +1,109 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class dvd
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int CHC;
-  public int DGx;
-  public int DKW;
-  public int DKX;
-  public int Scene;
+  public dve GcH;
+  public dvf GcI;
+  public int yAv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50118);
+    AppMethodBeat.i(209577);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.DGx);
-      paramVarArgs.aR(2, this.CHC);
-      paramVarArgs.aR(3, this.Scene);
-      paramVarArgs.aR(5, this.DKX);
-      paramVarArgs.aR(6, this.DKW);
-      AppMethodBeat.o(50118);
+      paramVarArgs.aR(1, this.yAv);
+      if (this.GcH != null)
+      {
+        paramVarArgs.ln(2, this.GcH.computeSize());
+        this.GcH.writeFields(paramVarArgs);
+      }
+      if (this.GcI != null)
+      {
+        paramVarArgs.ln(3, this.GcI.computeSize());
+        this.GcI.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(209577);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bA(1, this.DGx);
-      int i = f.a.a.b.b.a.bA(2, this.CHC);
-      int j = f.a.a.b.b.a.bA(3, this.Scene);
-      int k = f.a.a.b.b.a.bA(5, this.DKX);
-      int m = f.a.a.b.b.a.bA(6, this.DKW);
-      AppMethodBeat.o(50118);
-      return paramInt + 0 + i + j + k + m;
+      i = f.a.a.b.b.a.bx(1, this.yAv) + 0;
+      paramInt = i;
+      if (this.GcH != null) {
+        paramInt = i + f.a.a.a.lm(2, this.GcH.computeSize());
+      }
+      i = paramInt;
+      if (this.GcI != null) {
+        i = paramInt + f.a.a.a.lm(3, this.GcI.computeSize());
+      }
+      AppMethodBeat.o(209577);
+      return i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(50118);
+      AppMethodBeat.o(209577);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       dvd localdvd = (dvd)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      boolean bool;
+      switch (paramInt)
       {
-      case 4: 
       default: 
-        AppMethodBeat.o(50118);
+        AppMethodBeat.o(209577);
         return -1;
       case 1: 
-        localdvd.DGx = locala.KhF.xS();
-        AppMethodBeat.o(50118);
+        localdvd.yAv = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(209577);
         return 0;
       case 2: 
-        localdvd.CHC = locala.KhF.xS();
-        AppMethodBeat.o(50118);
-        return 0;
-      case 3: 
-        localdvd.Scene = locala.KhF.xS();
-        AppMethodBeat.o(50118);
-        return 0;
-      case 5: 
-        localdvd.DKX = locala.KhF.xS();
-        AppMethodBeat.o(50118);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new dve();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((dve)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localdvd.GcH = ((dve)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(209577);
         return 0;
       }
-      localdvd.DKW = locala.KhF.xS();
-      AppMethodBeat.o(50118);
+      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new dvf();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (bool = true; bool; bool = ((dvf)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localdvd.GcI = ((dvf)localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(209577);
       return 0;
     }
-    AppMethodBeat.o(50118);
+    AppMethodBeat.o(209577);
     return -1;
   }
 }

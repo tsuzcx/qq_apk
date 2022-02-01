@@ -16,17 +16,17 @@ public final class f$1
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(48654);
-    paramDialogInterface = a.iV(this.val$context);
+    paramDialogInterface = a.jg(this.val$context);
     if (paramDialogInterface != null) {
       paramDialogInterface.finish();
     }
-    this.lzV.setOnCancelListener(null);
+    this.mbR.setOnCancelListener(null);
     AppMethodBeat.o(48654);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.f.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.emoji.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kz;
-import com.tencent.mm.g.a.kz.a;
+import com.tencent.mm.g.a.li;
+import com.tencent.mm.g.a.li.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 final class b$4
-  extends c<kz>
+  extends c<li>
 {
   b$4(b paramb)
   {
     AppMethodBeat.i(161072);
-    this.__eventId = kz.class.getName().hashCode();
+    this.__eventId = li.class.getName().hashCode();
     AppMethodBeat.o(161072);
   }
   
-  private static boolean a(kz paramkz)
+  private static boolean a(li paramli)
   {
     AppMethodBeat.i(108399);
-    if ((paramkz != null) && ((paramkz instanceof kz)))
+    if ((paramli != null) && ((paramli instanceof li)))
     {
-      ad.i("MicroMsg.emoji.EmojiEventMgr", "manualAuthEventListener callback");
-      if (paramkz.dpr.result)
+      ac.i("MicroMsg.emoji.EmojiEventMgr", "manualAuthEventListener callback");
+      if (paramli.dnc.result)
       {
-        g.afB().afk().set(ae.a.Fgo, Boolean.TRUE);
-        g.afB().afk().set(ae.a.Fgp, Boolean.TRUE);
+        g.agR().agA().set(ah.a.GEc, Boolean.TRUE);
+        g.agR().agA().set(ah.a.GEd, Boolean.TRUE);
       }
     }
     AppMethodBeat.o(108399);
@@ -38,7 +38,7 @@ final class b$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.b.4
  * JD-Core Version:    0.7.0.1
  */

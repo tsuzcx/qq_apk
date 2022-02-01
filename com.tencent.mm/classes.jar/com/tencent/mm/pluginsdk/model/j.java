@@ -23,12 +23,12 @@ public final class j
   
   public static abstract interface a
   {
-    public abstract void M(ArrayList<p> paramArrayList);
+    public abstract void R(ArrayList<p> paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.j
  * JD-Core Version:    0.7.0.1
  */

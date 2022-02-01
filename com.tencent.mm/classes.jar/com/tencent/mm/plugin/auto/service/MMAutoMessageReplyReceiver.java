@@ -13,8 +13,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.messenger.a.e;
 import com.tencent.mm.plugin.messenger.a.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.x;
 
 public class MMAutoMessageReplyReceiver
   extends BroadcastReceiver
@@ -22,7 +22,7 @@ public class MMAutoMessageReplyReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(21162);
-    String str = y.getStringExtra(paramIntent, "key_username");
+    String str = x.getStringExtra(paramIntent, "key_username");
     if (str == null)
     {
       AppMethodBeat.o(21162);
@@ -42,7 +42,7 @@ public class MMAutoMessageReplyReceiver
       if (paramContext != null) {
         break label171;
       }
-      ad.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
+      ac.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
       AppMethodBeat.o(21162);
       return;
       if (Build.VERSION.SDK_INT >= 16)
@@ -72,14 +72,14 @@ public class MMAutoMessageReplyReceiver
       break;
     }
     label171:
-    ad.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
-    j.cOB().W(str, paramContext.toString(), w.tq(str));
+    ac.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
+    j.dck().X(str, paramContext.toString(), w.xt(str));
     AppMethodBeat.o(21162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.auto.service.MMAutoMessageReplyReceiver
  * JD-Core Version:    0.7.0.1
  */

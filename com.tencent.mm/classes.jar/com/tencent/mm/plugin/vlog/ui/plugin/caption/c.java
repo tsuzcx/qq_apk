@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,124 +16,124 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import d.v;
 import d.y;
 import java.util.ArrayList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView;", "Landroid/widget/LinearLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "captionCheckBox", "Landroid/widget/CheckBox;", "captionView", "Landroid/support/v7/widget/RecyclerView;", "currentPos", "", "onTouchingView", "", "videoPauseListener", "Lkotlin/Function0;", "", "getVideoPauseListener", "()Lkotlin/jvm/functions/Function0;", "setVideoPauseListener", "(Lkotlin/jvm/functions/Function0;)V", "videoSeekListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "timestampMs", "getVideoSeekListener", "()Lkotlin/jvm/functions/Function1;", "setVideoSeekListener", "(Lkotlin/jvm/functions/Function1;)V", "buildTestData", "ifCenter", "view", "Landroid/view/View;", "onClick", "v", "scrollToTimeMs", "timeStampMs", "time2Pos", "CaptionItemData", "Companion", "EditorCaptionAdapter", "plugin-vlog_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView;", "Landroid/widget/LinearLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "captionCheckBox", "Landroid/widget/CheckBox;", "captionView", "Landroid/support/v7/widget/RecyclerView;", "currentPos", "", "onTouchingView", "", "videoPauseListener", "Lkotlin/Function0;", "", "getVideoPauseListener", "()Lkotlin/jvm/functions/Function0;", "setVideoPauseListener", "(Lkotlin/jvm/functions/Function0;)V", "videoSeekListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "timestampMs", "getVideoSeekListener", "()Lkotlin/jvm/functions/Function1;", "setVideoSeekListener", "(Lkotlin/jvm/functions/Function1;)V", "buildTestData", "ifCenter", "view", "Landroid/view/View;", "onClick", "v", "scrollToTimeMs", "timeStampMs", "time2Pos", "CaptionItemData", "Companion", "EditorCaptionAdapter", "plugin-vlog_release"})
 public final class c
   extends LinearLayout
   implements View.OnClickListener
 {
   @Deprecated
-  public static final b LuR;
-  private RecyclerView LuM;
-  private CheckBox LuN;
-  private d.g.a.a<y> LuO;
-  private d.g.a.b<? super Long, y> LuP;
-  private boolean LuQ;
-  private int aay;
+  public static final b Auk;
+  private RecyclerView Auf;
+  private CheckBox Aug;
+  private d.g.a.a<y> Auh;
+  private d.g.a.b<? super Long, y> Aui;
+  private boolean Auj;
+  private int abu;
   
   static
   {
-    AppMethodBeat.i(201204);
-    LuR = new b((byte)0);
-    AppMethodBeat.o(201204);
+    AppMethodBeat.i(207889);
+    Auk = new b((byte)0);
+    AppMethodBeat.o(207889);
   }
   
   public c(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(201203);
-    if (LayoutInflater.from(paramContext).inflate(2131496168, (ViewGroup)this, true) == null)
+    AppMethodBeat.i(207888);
+    if (LayoutInflater.from(paramContext).inflate(2131496169, (ViewGroup)this, true) == null)
     {
       paramContext = new v("null cannot be cast to non-null type android.widget.LinearLayout");
-      AppMethodBeat.o(201203);
+      AppMethodBeat.o(207888);
       throw paramContext;
     }
-    findViewById(2131307269).setOnClickListener((View.OnClickListener)this);
-    findViewById(2131307274).setOnClickListener((View.OnClickListener)this);
-    View localView = findViewById(2131307272);
+    findViewById(2131307288).setOnClickListener((View.OnClickListener)this);
+    findViewById(2131307293).setOnClickListener((View.OnClickListener)this);
+    View localView = findViewById(2131307291);
     k.g(localView, "findViewById(R.id.caption_list)");
-    this.LuM = ((RecyclerView)localView);
-    localView = findViewById(2131307273);
+    this.Auf = ((RecyclerView)localView);
+    localView = findViewById(2131307292);
     k.g(localView, "findViewById(R.id.caption_select)");
-    this.LuN = ((CheckBox)localView);
-    this.LuM.setLayoutManager((RecyclerView.i)new EditorCaptionLayoutManager(paramContext));
-    this.LuM.setAdapter((RecyclerView.a)new c(paramContext));
-    this.LuM.a((RecyclerView.m)new RecyclerView.m()
+    this.Aug = ((CheckBox)localView);
+    this.Auf.setLayoutManager((RecyclerView.i)new EditorCaptionLayoutManager(paramContext));
+    this.Auf.setAdapter((RecyclerView.a)new c(paramContext));
+    this.Auf.a((RecyclerView.m)new RecyclerView.m()
     {
-      private int LuS = -1;
+      private int Aul = -1;
       
       public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(201192);
+        AppMethodBeat.i(207877);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).be(paramAnonymousRecyclerView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).lT(paramAnonymousInt1);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).lT(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ado());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bb(paramAnonymousRecyclerView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).lS(paramAnonymousInt1);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).lS(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aeE());
         k.h(paramAnonymousRecyclerView, "recyclerView");
         super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-        if (!c.a(this.LuT))
+        if (!c.a(this.Aum))
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-          AppMethodBeat.o(201192);
+          AppMethodBeat.o(207877);
           return;
         }
-        paramAnonymousInt2 = c.c(this.LuT);
-        paramAnonymousRecyclerView = c.b(this.LuT).getLayoutManager();
+        paramAnonymousInt2 = c.c(this.Aum);
+        paramAnonymousRecyclerView = c.b(this.Aum).getLayoutManager();
         if (paramAnonymousRecyclerView == null)
         {
           paramAnonymousRecyclerView = new v("null cannot be cast to non-null type android.support.v7.widget.LinearLayoutManager");
-          AppMethodBeat.o(201192);
+          AppMethodBeat.o(207877);
           throw paramAnonymousRecyclerView;
         }
         paramAnonymousRecyclerView = (LinearLayoutManager)paramAnonymousRecyclerView;
-        int i = (paramAnonymousRecyclerView.jO() + paramAnonymousRecyclerView.jQ()) / 2;
-        if (i == this.LuS)
+        int i = (paramAnonymousRecyclerView.jW() + paramAnonymousRecyclerView.jY()) / 2;
+        if (i == this.Aul)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-          AppMethodBeat.o(201192);
+          AppMethodBeat.o(207877);
           return;
         }
-        this.LuS = i;
+        this.Aul = i;
         paramAnonymousInt1 = i - 1;
         i += 1;
         if (paramAnonymousInt1 <= i) {}
         for (;;)
         {
-          if (c.a(this.LuT, paramAnonymousRecyclerView.bY(paramAnonymousInt1)))
+          if (c.a(this.Aum, paramAnonymousRecyclerView.bY(paramAnonymousInt1)))
           {
-            c.a(this.LuT, paramAnonymousInt1);
-            localObject = c.b(this.LuT).getAdapter();
+            c.a(this.Aum, paramAnonymousInt1);
+            localObject = c.b(this.Aum).getAdapter();
             if (localObject == null)
             {
               paramAnonymousRecyclerView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-              AppMethodBeat.o(201192);
+              AppMethodBeat.o(207877);
               throw paramAnonymousRecyclerView;
             }
-            ((c.c)localObject).aay = c.c(this.LuT);
+            ((c.c)localObject).abu = c.c(this.Aum);
             localObject = paramAnonymousRecyclerView.bY(paramAnonymousInt2);
             if (localObject != null)
             {
-              c.fZq();
+              c.egr();
               ((View)localObject).setAlpha(0.5F);
             }
-            paramAnonymousRecyclerView = paramAnonymousRecyclerView.bY(c.c(this.LuT));
+            paramAnonymousRecyclerView = paramAnonymousRecyclerView.bY(c.c(this.Aum));
             if (paramAnonymousRecyclerView != null) {
               paramAnonymousRecyclerView.setAlpha(1.0F);
             }
-            c.fZq();
-            ad.d("MicroMsg.EditorTextCaptionView", "onScrolled currentPos  " + c.c(this.LuT) + ' ' + paramAnonymousInt2);
+            c.egr();
+            ac.d("MicroMsg.EditorTextCaptionView", "onScrolled currentPos  " + c.c(this.Aum) + ' ' + paramAnonymousInt2);
           }
           while (paramAnonymousInt1 == i)
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-            AppMethodBeat.o(201192);
+            AppMethodBeat.o(207877);
             return;
           }
           paramAnonymousInt1 += 1;
@@ -142,11 +142,11 @@ public final class c
       
       public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(201191);
+        AppMethodBeat.i(207876);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.be(paramAnonymousRecyclerView);
-        localb.lT(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ado());
+        localb.bb(paramAnonymousRecyclerView);
+        localb.lS(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
         k.h(paramAnonymousRecyclerView, "recyclerView");
         super.b(paramAnonymousRecyclerView, paramAnonymousInt);
         switch (paramAnonymousInt)
@@ -155,131 +155,131 @@ public final class c
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-          AppMethodBeat.o(201191);
+          AppMethodBeat.o(207876);
           return;
-          c.fZq();
-          ad.d("MicroMsg.EditorTextCaptionView", "SCROLL_STATE_DRAGGING");
-          c.a(this.LuT, true);
-          paramAnonymousRecyclerView = this.LuT.getVideoPauseListener();
+          c.egr();
+          ac.d("MicroMsg.EditorTextCaptionView", "SCROLL_STATE_DRAGGING");
+          c.a(this.Aum, true);
+          paramAnonymousRecyclerView = this.Aum.getVideoPauseListener();
           if (paramAnonymousRecyclerView != null)
           {
             paramAnonymousRecyclerView.invoke();
             continue;
-            c.fZq();
-            ad.d("MicroMsg.EditorTextCaptionView", "SCROLL_STATE_IDLE");
-            if (c.a(this.LuT))
+            c.egr();
+            ac.d("MicroMsg.EditorTextCaptionView", "SCROLL_STATE_IDLE");
+            if (c.a(this.Aum))
             {
-              paramAnonymousRecyclerView = c.b(this.LuT).getAdapter();
+              paramAnonymousRecyclerView = c.b(this.Aum).getAdapter();
               if (paramAnonymousRecyclerView == null)
               {
                 paramAnonymousRecyclerView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-                AppMethodBeat.o(201191);
+                AppMethodBeat.o(207876);
                 throw paramAnonymousRecyclerView;
               }
-              long l = ((c.a)((c.c)paramAnonymousRecyclerView).LuU.get(c.c(this.LuT))).bxw;
-              paramAnonymousRecyclerView = this.LuT.getVideoSeekListener();
+              long l = ((c.a)((c.c)paramAnonymousRecyclerView).Aun.get(c.c(this.Aum))).bvf;
+              paramAnonymousRecyclerView = this.Aum.getVideoSeekListener();
               if (paramAnonymousRecyclerView != null) {
-                paramAnonymousRecyclerView.aA(Long.valueOf(l));
+                paramAnonymousRecyclerView.ay(Long.valueOf(l));
               }
             }
-            c.a(this.LuT, false);
+            c.a(this.Aum, false);
           }
         }
       }
     });
-    paramContext = this.LuM.getAdapter();
+    paramContext = this.Auf.getAdapter();
     if (paramContext == null)
     {
       paramContext = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-      AppMethodBeat.o(201203);
+      AppMethodBeat.o(207888);
       throw paramContext;
     }
-    ((c)paramContext).LuU.add(new a(-2L, -1L, ""));
-    paramContext = this.LuM.getAdapter();
+    ((c)paramContext).Aun.add(new a(-2L, -1L, ""));
+    paramContext = this.Auf.getAdapter();
     if (paramContext == null)
     {
       paramContext = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-      AppMethodBeat.o(201203);
+      AppMethodBeat.o(207888);
       throw paramContext;
     }
-    ((c)paramContext).LuU.add(new a(-1L, 0L, ""));
-    paramContext = this.LuM.getAdapter();
+    ((c)paramContext).Aun.add(new a(-1L, 0L, ""));
+    paramContext = this.Auf.getAdapter();
     if (paramContext == null)
     {
       paramContext = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-      AppMethodBeat.o(201203);
+      AppMethodBeat.o(207888);
       throw paramContext;
     }
-    ((c)paramContext).LuU.add(new a(1000L, 3000L, "j测试as的逻辑发来的"));
-    paramContext = this.LuM.getAdapter();
+    ((c)paramContext).Aun.add(new a(1000L, 3000L, "j测试as的逻辑发来的"));
+    paramContext = this.Auf.getAdapter();
     if (paramContext == null)
     {
       paramContext = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-      AppMethodBeat.o(201203);
+      AppMethodBeat.o(207888);
       throw paramContext;
     }
-    ((c)paramContext).LuU.add(new a(5000L, 7000L, "j测试as的逻辑发来的"));
-    paramContext = this.LuM.getAdapter();
+    ((c)paramContext).Aun.add(new a(5000L, 7000L, "j测试as的逻辑发来的"));
+    paramContext = this.Auf.getAdapter();
     if (paramContext == null)
     {
       paramContext = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-      AppMethodBeat.o(201203);
+      AppMethodBeat.o(207888);
       throw paramContext;
     }
-    ((c)paramContext).LuU.add(new a(8000L, 10000L, "j测试asj测试as的逻辑发来的j测试as的逻辑发来的j测试as的逻辑发来的j测试as的逻辑发来的的逻辑发来的"));
-    paramContext = this.LuM.getAdapter();
+    ((c)paramContext).Aun.add(new a(8000L, 10000L, "j测试asj测试as的逻辑发来的j测试as的逻辑发来的j测试as的逻辑发来的j测试as的逻辑发来的的逻辑发来的"));
+    paramContext = this.Auf.getAdapter();
     if (paramContext == null)
     {
       paramContext = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-      AppMethodBeat.o(201203);
+      AppMethodBeat.o(207888);
       throw paramContext;
     }
-    ((c)paramContext).LuU.add(new a(10000L, 12000L, "j测试as的逻辑发来的"));
-    paramContext = this.LuM.getAdapter();
+    ((c)paramContext).Aun.add(new a(10000L, 12000L, "j测试as的逻辑发来的"));
+    paramContext = this.Auf.getAdapter();
     if (paramContext == null)
     {
       paramContext = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-      AppMethodBeat.o(201203);
+      AppMethodBeat.o(207888);
       throw paramContext;
     }
-    ((c)paramContext).LuU.add(new a(13000L, 15000L, "j测试asj测试as的逻辑发来的j测试as的逻辑发来的j测试as的逻辑发来的j测试as的逻辑发来的的逻辑发来的"));
-    paramContext = this.LuM.getAdapter();
+    ((c)paramContext).Aun.add(new a(13000L, 15000L, "j测试asj测试as的逻辑发来的j测试as的逻辑发来的j测试as的逻辑发来的j测试as的逻辑发来的的逻辑发来的"));
+    paramContext = this.Auf.getAdapter();
     if (paramContext == null)
     {
       paramContext = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-      AppMethodBeat.o(201203);
+      AppMethodBeat.o(207888);
       throw paramContext;
     }
-    ((c)paramContext).LuU.add(new a(999999L, 9999999L, ""));
-    paramContext = this.LuM.getAdapter();
+    ((c)paramContext).Aun.add(new a(999999L, 9999999L, ""));
+    paramContext = this.Auf.getAdapter();
     if (paramContext == null)
     {
       paramContext = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.EditorTextCaptionView.EditorCaptionAdapter");
-      AppMethodBeat.o(201203);
+      AppMethodBeat.o(207888);
       throw paramContext;
     }
-    ((c)paramContext).LuU.add(new a(9999999L, 99999990L, ""));
-    paramContext = this.LuM.getAdapter();
+    ((c)paramContext).Aun.add(new a(9999999L, 99999990L, ""));
+    paramContext = this.Auf.getAdapter();
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.notifyDataSetChanged();
-    AppMethodBeat.o(201203);
+    AppMethodBeat.o(207888);
   }
   
   public final d.g.a.a<y> getVideoPauseListener()
   {
-    return this.LuO;
+    return this.Auh;
   }
   
   public final d.g.a.b<Long, y> getVideoSeekListener()
   {
-    return this.LuP;
+    return this.Aui;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(201202);
+    AppMethodBeat.i(207887);
     if (paramView != null)
     {
       paramView = Integer.valueOf(paramView.getId());
@@ -288,19 +288,19 @@ public final class c
       }
     }
     label38:
-    while (paramView.intValue() != 2131307269)
+    while (paramView.intValue() != 2131307288)
     {
       if (paramView != null) {
         break label54;
       }
-      AppMethodBeat.o(201202);
+      AppMethodBeat.o(207887);
       return;
       paramView = null;
       break;
     }
     for (;;)
     {
-      AppMethodBeat.o(201202);
+      AppMethodBeat.o(207887);
       return;
       label54:
       paramView.intValue();
@@ -309,165 +309,165 @@ public final class c
   
   public final void setVideoPauseListener(d.g.a.a<y> parama)
   {
-    this.LuO = parama;
+    this.Auh = parama;
   }
   
   public final void setVideoSeekListener(d.g.a.b<? super Long, y> paramb)
   {
-    this.LuP = paramb;
+    this.Aui = paramb;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionItemData;", "", "startTimeMs", "", "endTimeMs", "caption", "", "(JJLjava/lang/String;)V", "getCaption", "()Ljava/lang/String;", "setCaption", "(Ljava/lang/String;)V", "getEndTimeMs", "()J", "setEndTimeMs", "(J)V", "getStartTimeMs", "setStartTimeMs", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-vlog_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionItemData;", "", "startTimeMs", "", "endTimeMs", "caption", "", "(JJLjava/lang/String;)V", "getCaption", "()Ljava/lang/String;", "setCaption", "(Ljava/lang/String;)V", "getEndTimeMs", "()J", "setEndTimeMs", "(J)V", "getStartTimeMs", "setStartTimeMs", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-vlog_release"})
   public static final class a
   {
-    long bxw;
+    long bvf;
     String caption;
-    private long gnO;
+    private long gOz;
     
     public a(long paramLong1, long paramLong2, String paramString)
     {
-      AppMethodBeat.i(201193);
-      this.bxw = paramLong1;
-      this.gnO = paramLong2;
+      AppMethodBeat.i(207878);
+      this.bvf = paramLong1;
+      this.gOz = paramLong2;
       this.caption = paramString;
-      AppMethodBeat.o(201193);
+      AppMethodBeat.o(207878);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(201196);
+      AppMethodBeat.i(207881);
       if (this != paramObject)
       {
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.bxw != paramObject.bxw) || (this.gnO != paramObject.gnO) || (!k.g(this.caption, paramObject.caption))) {}
+          if ((this.bvf != paramObject.bvf) || (this.gOz != paramObject.gOz) || (!k.g(this.caption, paramObject.caption))) {}
         }
       }
       else
       {
-        AppMethodBeat.o(201196);
+        AppMethodBeat.o(207881);
         return true;
       }
-      AppMethodBeat.o(201196);
+      AppMethodBeat.o(207881);
       return false;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(201195);
-      long l = this.bxw;
+      AppMethodBeat.i(207880);
+      long l = this.bvf;
       int j = (int)(l ^ l >>> 32);
-      l = this.gnO;
+      l = this.gOz;
       int k = (int)(l ^ l >>> 32);
       String str = this.caption;
       if (str != null) {}
       for (int i = str.hashCode();; i = 0)
       {
-        AppMethodBeat.o(201195);
+        AppMethodBeat.o(207880);
         return i + (j * 31 + k) * 31;
       }
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(201194);
-      String str = "CaptionItemData(startTimeMs=" + this.bxw + ", endTimeMs=" + this.gnO + ", caption=" + this.caption + ")";
-      AppMethodBeat.o(201194);
+      AppMethodBeat.i(207879);
+      String str = "CaptionItemData(startTimeMs=" + this.bvf + ", endTimeMs=" + this.gOz + ", caption=" + this.caption + ")";
+      AppMethodBeat.o(207879);
       return str;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$Companion;", "", "()V", "LIST_ROW", "", "TAG", "", "UNSELELCT_ALPHA", "", "plugin-vlog_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$Companion;", "", "()V", "LIST_ROW", "", "TAG", "", "UNSELELCT_ALPHA", "", "plugin-vlog_release"})
   static final class b {}
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "captionItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionItemData;", "Lkotlin/collections/ArrayList;", "getCaptionItems", "()Ljava/util/ArrayList;", "setCaptionItems", "(Ljava/util/ArrayList;)V", "getContext", "()Landroid/content/Context;", "setContext", "currentPos", "", "getCurrentPos", "()I", "setCurrentPos", "(I)V", "getItemCount", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-vlog_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "captionItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionItemData;", "Lkotlin/collections/ArrayList;", "getCaptionItems", "()Ljava/util/ArrayList;", "setCaptionItems", "(Ljava/util/ArrayList;)V", "getContext", "()Landroid/content/Context;", "setContext", "currentPos", "", "getCurrentPos", "()I", "setCurrentPos", "(I)V", "getItemCount", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-vlog_release"})
   public static final class c
-    extends RecyclerView.a<RecyclerView.v>
+    extends RecyclerView.a<RecyclerView.w>
   {
-    ArrayList<c.a> LuU;
-    int aay;
+    ArrayList<c.a> Aun;
+    int abu;
     private Context context;
     
     public c(Context paramContext)
     {
-      AppMethodBeat.i(201201);
+      AppMethodBeat.i(207886);
       this.context = paramContext;
-      this.LuU = new ArrayList();
-      AppMethodBeat.o(201201);
+      this.Aun = new ArrayList();
+      AppMethodBeat.o(207886);
     }
     
-    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
     {
-      AppMethodBeat.i(201198);
+      AppMethodBeat.i(207883);
       k.h(paramViewGroup, "parent");
-      paramViewGroup = LayoutInflater.from(this.context).inflate(2131496167, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(this.context).inflate(2131496168, paramViewGroup, false);
       if (paramViewGroup == null)
       {
         paramViewGroup = new v("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(201198);
+        AppMethodBeat.o(207883);
         throw paramViewGroup;
       }
       paramViewGroup = (ViewGroup)paramViewGroup;
-      paramViewGroup = (RecyclerView.v)new b(paramViewGroup, (View)paramViewGroup);
-      AppMethodBeat.o(201198);
+      paramViewGroup = (RecyclerView.w)new b(paramViewGroup, (View)paramViewGroup);
+      AppMethodBeat.o(207883);
       return paramViewGroup;
     }
     
-    public final void a(RecyclerView.v paramv, int paramInt)
+    public final void a(RecyclerView.w paramw, int paramInt)
     {
-      AppMethodBeat.i(201200);
-      k.h(paramv, "viewHolder");
-      Object localObject = paramv.arI;
+      AppMethodBeat.i(207885);
+      k.h(paramw, "viewHolder");
+      Object localObject = paramw.asD;
       k.g(localObject, "viewHolder.itemView");
-      if (TextUtils.isEmpty((CharSequence)((c.a)this.LuU.get(paramInt)).caption))
+      if (TextUtils.isEmpty((CharSequence)((c.a)this.Aun.get(paramInt)).caption))
       {
         ((View)localObject).setVisibility(4);
-        AppMethodBeat.o(201200);
+        AppMethodBeat.o(207885);
         return;
       }
       ((View)localObject).setVisibility(0);
-      if (this.aay == paramInt) {}
+      if (this.abu == paramInt) {}
       for (float f = 1.0F;; f = 0.5F)
       {
         ((View)localObject).setAlpha(f);
-        localObject = (TextView)((View)localObject).findViewById(2131307270);
+        localObject = (TextView)((View)localObject).findViewById(2131307289);
         k.g(localObject, "contentView");
-        ((TextView)localObject).setText((CharSequence)((c.a)this.LuU.get(paramInt)).caption);
-        paramv.arI.findViewById(2131307271).setOnClickListener((View.OnClickListener)a.LuV);
-        AppMethodBeat.o(201200);
+        ((TextView)localObject).setText((CharSequence)((c.a)this.Aun.get(paramInt)).caption);
+        paramw.asD.findViewById(2131307290).setOnClickListener((View.OnClickListener)a.Auo);
+        AppMethodBeat.o(207885);
         return;
-        c.fZq();
+        c.egr();
       }
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(201199);
-      int i = this.LuU.size();
-      AppMethodBeat.o(201199);
+      AppMethodBeat.i(207884);
+      int i = this.Aun.size();
+      AppMethodBeat.o(207884);
       return i;
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
-      public static final a LuV;
+      public static final a Auo;
       
       static
       {
-        AppMethodBeat.i(201197);
-        LuV = new a();
-        AppMethodBeat.o(201197);
+        AppMethodBeat.i(207882);
+        Auo = new a();
+        AppMethodBeat.o(207882);
       }
       
       public final void onClick(View paramView) {}
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter$onCreateViewHolder$1", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-vlog_release"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter$onCreateViewHolder$1", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-vlog_release"})
     public static final class b
-      extends RecyclerView.v
+      extends RecyclerView.w
     {
       b(ViewGroup paramViewGroup, View paramView)
       {
@@ -478,7 +478,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.caption.c
  * JD-Core Version:    0.7.0.1
  */

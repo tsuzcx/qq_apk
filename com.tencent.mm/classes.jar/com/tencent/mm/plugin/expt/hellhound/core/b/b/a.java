@@ -3,67 +3,67 @@ package com.tencent.mm.plugin.expt.hellhound.core.b.b;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mb;
+import com.tencent.mm.g.a.mk;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.e;
-import com.tencent.mm.protocal.protobuf.bh;
-import com.tencent.mm.protocal.protobuf.dcm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bj;
+import com.tencent.mm.protocal.protobuf.dhz;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
 {
-  boolean pEG;
-  private com.tencent.mm.plugin.expt.hellhound.core.d pEP;
-  final com.tencent.mm.sdk.b.c pEQ;
+  private com.tencent.mm.plugin.expt.hellhound.core.d qjC;
+  final com.tencent.mm.sdk.b.c qjD;
+  boolean qjt;
   
   public a(com.tencent.mm.plugin.expt.hellhound.core.d paramd)
   {
     AppMethodBeat.i(121989);
-    this.pEQ = new com.tencent.mm.sdk.b.c() {};
-    this.pEP = paramd;
-    this.pEG = com.tencent.mm.plugin.expt.hellhound.a.cbs();
+    this.qjD = new com.tencent.mm.sdk.b.c() {};
+    this.qjC = paramd;
+    this.qjt = com.tencent.mm.plugin.expt.hellhound.a.ciB();
     AppMethodBeat.o(121989);
   }
   
-  private static com.tencent.mm.vending.j.c<FragmentActivity, Fragment> cbU()
+  private static com.tencent.mm.vending.j.c<FragmentActivity, Fragment> cjf()
   {
     AppMethodBeat.i(121991);
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cbG();
-    Object localObject = e.cbL();
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciR();
+    Object localObject = e.ciW();
     if (localObject != null)
     {
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.Vy(((bh)localObject).CvH.activityName);
-      ad.i("HABBYGE-MALI.ChatUIFragmentProxy", "onChatUIFragmentEnter, topActivityName: %s", new Object[] { localObject });
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.ZK(((bj)localObject).DOc.activityName);
+      ac.i("HABBYGE-MALI.ChatUIFragmentProxy", "onChatUIFragmentEnter, topActivityName: %s", new Object[] { localObject });
       if ("ChattingUI".equals(localObject))
       {
-        ad.e("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentEnter, ChattingUI");
+        ac.e("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentEnter, ChattingUI");
         AppMethodBeat.o(121991);
         return null;
       }
     }
-    FragmentActivity localFragmentActivity = com.tencent.mm.plugin.expt.hellhound.core.b.cby();
+    FragmentActivity localFragmentActivity = com.tencent.mm.plugin.expt.hellhound.core.b.ciH();
     if (localFragmentActivity == null)
     {
       AppMethodBeat.o(121991);
       return null;
     }
-    Fragment localFragment1 = g.aa(localFragmentActivity);
+    Fragment localFragment1 = g.ab(localFragmentActivity);
     if (localFragment1 == null)
     {
-      ad.e("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentEnter, curFragment NULL");
+      ac.e("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentEnter, curFragment NULL");
       AppMethodBeat.o(121991);
       return null;
     }
     String str = localFragment1.getClass().getCanonicalName();
-    Fragment localFragment2 = g.c(localFragmentActivity, com.tencent.mm.plugin.expt.hellhound.core.b.pDY);
+    Fragment localFragment2 = g.c(localFragmentActivity, com.tencent.mm.plugin.expt.hellhound.core.b.qiL);
     if (localFragment2 != null) {}
     for (localObject = localFragment2.getClass().getCanonicalName();; localObject = null)
     {
-      ad.i("HABBYGE-MALI.ChatUIFragmentProxy", "onChatUIFragmentEnter, fragment: %s, %s", new Object[] { str, localObject });
-      boolean bool1 = com.tencent.mm.plugin.expt.hellhound.core.b.pDY.equals(str);
-      boolean bool2 = com.tencent.mm.plugin.expt.hellhound.core.b.pDY.equals(localObject);
+      ac.i("HABBYGE-MALI.ChatUIFragmentProxy", "onChatUIFragmentEnter, fragment: %s, %s", new Object[] { str, localObject });
+      boolean bool1 = com.tencent.mm.plugin.expt.hellhound.core.b.qiL.equals(str);
+      boolean bool2 = com.tencent.mm.plugin.expt.hellhound.core.b.qiL.equals(localObject);
       if ((!bool1) && (!bool2))
       {
-        ad.e("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentEnter, NOT ChattingUIFragment");
+        ac.e("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentEnter, NOT ChattingUIFragment");
         AppMethodBeat.o(121991);
         return null;
       }
@@ -77,7 +77,7 @@ public final class a
     }
   }
   
-  public final void S(int paramInt, long paramLong)
+  public final void R(int paramInt, long paramLong)
   {
     AppMethodBeat.i(184316);
     switch (paramInt)
@@ -88,39 +88,39 @@ public final class a
       AppMethodBeat.o(184316);
       return;
       Object localObject1;
-      if (this.pEP != null)
+      if (this.qjC != null)
       {
-        ad.i("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentEnter");
-        Object localObject2 = cbU();
+        ac.i("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentEnter");
+        Object localObject2 = cjf();
         if (localObject2 != null)
         {
           localObject1 = (FragmentActivity)((com.tencent.mm.vending.j.b)localObject2).get(0);
-          this.pEP.a((FragmentActivity)localObject1, com.tencent.mm.plugin.expt.hellhound.core.b.pDU, paramLong, false);
+          this.qjC.a((FragmentActivity)localObject1, com.tencent.mm.plugin.expt.hellhound.core.b.qiH, paramLong, false);
           localObject2 = (Fragment)((com.tencent.mm.vending.j.c)localObject2).get(1);
-          this.pEP.a((FragmentActivity)localObject1, (Fragment)localObject2, com.tencent.mm.plugin.expt.hellhound.core.b.pDY, paramLong, false);
-          ad.i("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentEnter, SUCCESS");
+          this.qjC.a((FragmentActivity)localObject1, (Fragment)localObject2, com.tencent.mm.plugin.expt.hellhound.core.b.qiL, paramLong, false);
+          ac.i("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentEnter, SUCCESS");
         }
       }
       AppMethodBeat.o(184316);
       return;
-      ad.i("HABBYGE-MALI.ChatUIFragmentProxy", "onChatUIFragmentResume");
-      this.pEP.a(null, null, null, paramLong, false);
+      ac.i("HABBYGE-MALI.ChatUIFragmentProxy", "onChatUIFragmentResume");
+      this.qjC.a(null, null, null, paramLong, false);
       AppMethodBeat.o(184316);
       return;
-      ad.i("HABBYGE-MALI.ChatUIFragmentProxy", "onChatUIFragmentPause");
-      this.pEP.a(null, null, paramLong, false);
+      ac.i("HABBYGE-MALI.ChatUIFragmentProxy", "onChatUIFragmentPause");
+      this.qjC.a(null, null, paramLong, false);
       AppMethodBeat.o(184316);
       return;
-      if (this.pEP != null)
+      if (this.qjC != null)
       {
-        ad.i("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentExit");
-        localObject1 = cbU();
+        ac.i("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentExit");
+        localObject1 = cjf();
         if (localObject1 != null)
         {
           localObject1 = (FragmentActivity)((com.tencent.mm.vending.j.b)localObject1).get(0);
-          this.pEP.ph(paramLong);
-          this.pEP.a((FragmentActivity)localObject1, null, com.tencent.mm.plugin.expt.hellhound.core.b.pDU, paramLong, false);
-          ad.i("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentExit, SUCCESS");
+          this.qjC.sT(paramLong);
+          this.qjC.a((FragmentActivity)localObject1, null, com.tencent.mm.plugin.expt.hellhound.core.b.qiH, paramLong, false);
+          ac.i("HABBYGE-MALI.ChatUIFragmentProxy", "ChatUIFragmentProxy, onChatUIFragmentExit, SUCCESS");
         }
       }
     }
@@ -128,7 +128,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.b.a
  * JD-Core Version:    0.7.0.1
  */

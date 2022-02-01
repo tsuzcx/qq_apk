@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.story.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cyd;
-import com.tencent.mm.protocal.protobuf.cyl;
-import com.tencent.mm.protocal.protobuf.cym;
-import com.tencent.mm.protocal.protobuf.czd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.protocal.protobuf.ddp;
+import com.tencent.mm.protocal.protobuf.ddx;
+import com.tencent.mm.protocal.protobuf.ddy;
+import com.tencent.mm.protocal.protobuf.dep;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import d.l;
 import d.n.n;
 import java.util.HashMap;
@@ -16,198 +16,198 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/StoryTimelineConvert;", "", "()V", "Companion", "pullXml", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/StoryTimelineConvert;", "", "()V", "Companion", "pullXml", "plugin-story_release"})
 public final class p
 {
   private static final String TAG = "MicroMsg.StoryTimelineConvert";
-  private static String muL;
-  public static final a yfx;
+  private static String mWM;
+  public static final a zsx;
   
   static
   {
     AppMethodBeat.i(118768);
-    yfx = new a((byte)0);
+    zsx = new a((byte)0);
     TAG = "MicroMsg.StoryTimelineConvert";
-    muL = "]]>";
+    mWM = "]]>";
     AppMethodBeat.o(118768);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/StoryTimelineConvert$Companion;", "", "()V", "INVALID_TAG", "", "getINVALID_TAG", "()Ljava/lang/String;", "setINVALID_TAG", "(Ljava/lang/String;)V", "TAG", "filterId", "s", "filterNull", "isNumeric", "", "str", "pullTimeLineXml", "timeLine", "Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "editor", "Lcom/tencent/mm/protocal/protobuf/StoryMediaEditorInfo;", "plugin-story_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/StoryTimelineConvert$Companion;", "", "()V", "INVALID_TAG", "", "getINVALID_TAG", "()Ljava/lang/String;", "setINVALID_TAG", "(Ljava/lang/String;)V", "TAG", "filterId", "s", "filterNull", "isNumeric", "", "str", "pullTimeLineXml", "timeLine", "Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "editor", "Lcom/tencent/mm/protocal/protobuf/StoryMediaEditorInfo;", "plugin-story_release"})
   public static final class a
   {
-    public static String a(czd paramczd, cyl paramcyl)
+    public static String a(dep paramdep, ddx paramddx)
     {
       AppMethodBeat.i(118758);
-      d.g.b.k.h(paramczd, "timeLine");
+      d.g.b.k.h(paramdep, "timeLine");
       p.b localb = new p.b();
       HashMap localHashMap = new HashMap();
-      localb.Oq("StoryObject");
-      localb.Oq("id");
-      if ((paramczd.Id == null) || (paramczd.Id.equals(""))) {
+      localb.SA("StoryObject");
+      localb.SA("id");
+      if ((paramdep.Id == null) || (paramdep.Id.equals(""))) {
         localb.setText("0");
       }
       String str;
       for (;;)
       {
-        localb.Or("id");
-        if (paramczd.mAQ != null)
+        localb.SB("id");
+        if (paramdep.ncR != null)
         {
-          localb.Oq("username");
-          localb.arz(paramczd.mAQ);
-          localb.Or("username");
+          localb.SA("username");
+          localb.awI(paramdep.ncR);
+          localb.SB("username");
         }
-        localb.Oq("createTime");
-        localb.arz(String.valueOf(paramczd.CreateTime));
-        localb.Or("createTime");
-        localb.Oq("scope");
-        localb.setText(paramczd.Erc);
-        localb.Or("scope");
-        localb.Oq("featured");
-        localb.setText(paramczd.Erd);
-        localb.Or("featured");
-        localb.Oq("report");
-        localb.Oq("publish_obj_id");
-        str = paramczd.Erb;
+        localb.SA("createTime");
+        localb.awI(String.valueOf(paramdep.CreateTime));
+        localb.SB("createTime");
+        localb.SA("scope");
+        localb.setText(paramdep.FOe);
+        localb.SB("scope");
+        localb.SA("featured");
+        localb.setText(paramdep.FOf);
+        localb.SB("featured");
+        localb.SA("report");
+        localb.SA("publish_obj_id");
+        str = paramdep.FOd;
         localObject = str;
         if (str == null) {
           localObject = "";
         }
-        localb.arz((String)localObject);
-        localb.Or("publish_obj_id");
-        ad.i(p.access$getTAG$cp(), "report ".concat(String.valueOf(paramcyl)));
-        if (paramcyl == null) {
+        localb.awI((String)localObject);
+        localb.SB("publish_obj_id");
+        ac.i(p.access$getTAG$cp(), "report ".concat(String.valueOf(paramddx)));
+        if (paramddx == null) {
           break label578;
         }
-        localb.Oq("music");
-        if (paramcyl.EqA)
+        localb.SA("music");
+        if (paramddx.FNC)
         {
-          localb.Oq("req_id");
-          localb.arz(String.valueOf(paramcyl.Eqz));
-          localb.Or("req_id");
-          localb.Oq("id");
-          localb.setText(paramcyl.viz);
-          localb.Or("id");
-          localb.Oq("index");
-          localb.setText(paramcyl.Ddh);
-          localb.Or("index");
+          localb.SA("req_id");
+          localb.awI(String.valueOf(paramddx.FNB));
+          localb.SB("req_id");
+          localb.SA("id");
+          localb.setText(paramddx.wri);
+          localb.SB("id");
+          localb.SA("index");
+          localb.setText(paramddx.Ewn);
+          localb.SB("index");
         }
-        localb.Or("music");
-        localb.Oq("emojiList");
-        localObject = paramcyl.EqB;
+        localb.SB("music");
+        localb.SA("emojiList");
+        localObject = paramddx.FND;
         d.g.b.k.g(localObject, "editor.emojiMd5");
         localObject = ((Iterable)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           str = (String)((Iterator)localObject).next();
-          localb.Oq("emoji");
+          localb.SA("emoji");
           d.g.b.k.g(str, "it");
-          localb.arz(str);
-          localb.Or("emoji");
+          localb.awI(str);
+          localb.SB("emoji");
         }
-        localb.setText(paramczd.Id);
+        localb.setText(paramdep.Id);
       }
-      localb.Or("emojiList");
-      localb.Oq("wordList");
-      Object localObject = paramcyl.EqC;
+      localb.SB("emojiList");
+      localb.SA("wordList");
+      Object localObject = paramddx.FNE;
       d.g.b.k.g(localObject, "editor.wordText");
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         str = (String)((Iterator)localObject).next();
-        localb.Oq("word");
+        localb.SA("word");
         d.g.b.k.g(str, "it");
-        localb.arz(str);
-        localb.Or("word");
+        localb.awI(str);
+        localb.SB("word");
       }
-      localb.Or("wordList");
-      localb.Oq("tip");
-      localObject = paramcyl.zVL;
-      paramcyl = (cyl)localObject;
+      localb.SB("wordList");
+      localb.SA("tip");
+      localObject = paramddx.Bof;
+      paramddx = (ddx)localObject;
       if (localObject == null) {
-        paramcyl = "";
+        paramddx = "";
       }
-      localb.arz(paramcyl);
-      localb.Or("tip");
+      localb.awI(paramddx);
+      localb.SB("tip");
       label578:
-      localb.Or("report");
-      localb.Oq("ContentObject");
-      localb.Oq("title");
-      localb.arz(apk(paramczd.Era.Title));
-      localb.Or("title");
-      if (paramczd.Era.DaC.size() > 0)
+      localb.SB("report");
+      localb.SA("ContentObject");
+      localb.SA("title");
+      localb.awI(auw(paramdep.FOc.Title));
+      localb.SB("title");
+      if (paramdep.FOc.Etz.size() > 0)
       {
-        localb.Oq("mediaList");
-        paramczd = paramczd.Era.DaC.iterator();
-        if (paramczd.hasNext())
+        localb.SA("mediaList");
+        paramdep = paramdep.FOc.Etz.iterator();
+        if (paramdep.hasNext())
         {
-          paramcyl = (cym)paramczd.next();
-          localb.Oq("media");
-          localb.Oq("id");
-          localObject = paramcyl.Id;
+          paramddx = (ddy)paramdep.next();
+          localb.SA("media");
+          localb.SA("id");
+          localObject = paramddx.Id;
           d.g.b.k.g(localObject, "media.Id");
-          if (d.g.b.k.g(apl((String)localObject), "")) {
-            localb.arz("0");
+          if (d.g.b.k.g(aux((String)localObject), "")) {
+            localb.awI("0");
           }
           for (;;)
           {
-            localb.Or("id");
-            localb.Oq("type");
-            localb.arz(String.valueOf(paramcyl.mBH));
-            localb.Or("type");
-            localb.Oq("duration");
-            float f = paramcyl.EqD;
-            localb.muN.append(f);
-            localb.Or("duration");
+            localb.SB("id");
+            localb.SA("type");
+            localb.awI(String.valueOf(paramddx.ndI));
+            localb.SB("type");
+            localb.SA("duration");
+            float f = paramddx.FNF;
+            localb.mWO.append(f);
+            localb.SB("duration");
             localHashMap.clear();
-            ((Map)localHashMap).put("type", String.valueOf(paramcyl.Dzl));
-            if (!bt.isNullOrNil(paramcyl.md5)) {
-              ((Map)localHashMap).put("md5", paramcyl.md5);
+            ((Map)localHashMap).put("type", String.valueOf(paramddx.EUH));
+            if (!bs.isNullOrNil(paramddx.md5)) {
+              ((Map)localHashMap).put("md5", paramddx.md5);
             }
-            if (!bt.isNullOrNil(paramcyl.DNl)) {
-              ((Map)localHashMap).put("videomd5", paramcyl.DNl);
+            if (!bs.isNullOrNil(paramddx.FjC)) {
+              ((Map)localHashMap).put("videomd5", paramddx.FjC);
             }
             localb.p("url", (Map)localHashMap);
-            localb.arz(apk(paramcyl.Url));
-            localb.Or("url");
-            if ((paramcyl.DMQ != null) && (!paramcyl.DMQ.equals("")))
+            localb.awI(auw(paramddx.Url));
+            localb.SB("url");
+            if ((paramddx.Fjh != null) && (!paramddx.Fjh.equals("")))
             {
               localHashMap.clear();
-              ((Map)localHashMap).put("type", String.valueOf(paramcyl.DMR));
+              ((Map)localHashMap).put("type", String.valueOf(paramddx.Fji));
               localb.p("thumb", (Map)localHashMap);
-              localb.arz(apk(paramcyl.DMQ));
-              localb.Or("thumb");
+              localb.awI(auw(paramddx.Fjh));
+              localb.SB("thumb");
             }
-            if (paramcyl.subType > 0)
+            if (paramddx.subType > 0)
             {
-              localb.Oq("subType");
-              localb.arz(String.valueOf(paramcyl.subType));
-              localb.Or("subType");
+              localb.SA("subType");
+              localb.awI(String.valueOf(paramddx.subType));
+              localb.SB("subType");
             }
-            localb.Or("media");
+            localb.SB("media");
             break;
-            localObject = paramcyl.Id;
+            localObject = paramddx.Id;
             d.g.b.k.g(localObject, "media.Id");
-            localb.arz(apl((String)localObject));
+            localb.awI(aux((String)localObject));
           }
         }
-        localb.Or("mediaList");
+        localb.SB("mediaList");
       }
-      localb.Or("ContentObject");
-      localb.Or("StoryObject");
-      paramczd = localb.muN.toString();
-      d.g.b.k.g(paramczd, "sb.toString()");
-      ad.d(p.access$getTAG$cp(), "xmlContent: ".concat(String.valueOf(paramczd)));
-      if (bw.K(paramczd, "StoryObject") == null)
+      localb.SB("ContentObject");
+      localb.SB("StoryObject");
+      paramdep = localb.mWO.toString();
+      d.g.b.k.g(paramdep, "sb.toString()");
+      ac.d(p.access$getTAG$cp(), "xmlContent: ".concat(String.valueOf(paramdep)));
+      if (bv.L(paramdep, "StoryObject") == null)
       {
-        ad.e(p.access$getTAG$cp(), "xml is error");
+        ac.e(p.access$getTAG$cp(), "xml is error");
         AppMethodBeat.o(118758);
         return "";
       }
       AppMethodBeat.o(118758);
-      return paramczd;
+      return paramdep;
     }
     
-    private static String apk(String paramString)
+    private static String auw(String paramString)
     {
       String str = paramString;
       if (paramString == null) {
@@ -216,11 +216,11 @@ public final class p
       return str;
     }
     
-    private static String apl(String paramString)
+    private static String aux(String paramString)
     {
       AppMethodBeat.i(118759);
       d.g.b.k.h(paramString, "s");
-      if (bt.isNullOrNil(paramString))
+      if (bs.isNullOrNil(paramString))
       {
         AppMethodBeat.o(118759);
         return "";
@@ -239,41 +239,41 @@ public final class p
       AppMethodBeat.i(118760);
       d.g.b.k.h(paramString, "str");
       paramString = (CharSequence)paramString;
-      boolean bool = new d.n.k("\\d*").aA(paramString);
+      boolean bool = new d.n.k("\\d*").aB(paramString);
       AppMethodBeat.o(118760);
       return bool;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/StoryTimelineConvert$pullXml;", "", "()V", "sb", "Ljava/lang/StringBuffer;", "getSb", "()Ljava/lang/StringBuffer;", "setSb", "(Ljava/lang/StringBuffer;)V", "xml", "", "getXml", "()Ljava/lang/String;", "addTag", "", "tag", "value", "", "emptyTag", "endTag", "setText", "", "startTag", "values", "", "text", "plugin-story_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/StoryTimelineConvert$pullXml;", "", "()V", "sb", "Ljava/lang/StringBuffer;", "getSb", "()Ljava/lang/StringBuffer;", "setSb", "(Ljava/lang/StringBuffer;)V", "xml", "", "getXml", "()Ljava/lang/String;", "addTag", "", "tag", "value", "", "emptyTag", "endTag", "setText", "", "startTag", "values", "", "text", "plugin-story_release"})
   public static final class b
   {
-    StringBuffer muN;
+    StringBuffer mWO;
     
     public b()
     {
       AppMethodBeat.i(118767);
-      this.muN = new StringBuffer();
+      this.mWO = new StringBuffer();
       AppMethodBeat.o(118767);
     }
     
-    public final void Oq(String paramString)
+    public final void SA(String paramString)
     {
       AppMethodBeat.i(118761);
       d.g.b.k.h(paramString, "tag");
-      this.muN.append("<" + paramString + '>');
+      this.mWO.append("<" + paramString + '>');
       AppMethodBeat.o(118761);
     }
     
-    public final void Or(String paramString)
+    public final void SB(String paramString)
     {
       AppMethodBeat.i(118762);
       d.g.b.k.h(paramString, "tag");
-      this.muN.append("</" + paramString + '>');
+      this.mWO.append("</" + paramString + '>');
       AppMethodBeat.o(118762);
     }
     
-    public final void arz(String paramString)
+    public final void awI(String paramString)
     {
       AppMethodBeat.i(118763);
       d.g.b.k.h(paramString, "value");
@@ -286,15 +286,15 @@ public final class p
       AppMethodBeat.i(118766);
       d.g.b.k.h(paramString, "tag");
       d.g.b.k.h(paramMap, "values");
-      this.muN.append("<".concat(String.valueOf(paramString)));
+      this.mWO.append("<".concat(String.valueOf(paramString)));
       paramString = paramMap.keySet().iterator();
       while (paramString.hasNext())
       {
         String str1 = (String)paramString.next();
         String str2 = (String)paramMap.get(str1);
-        this.muN.append(" " + str1 + "=\"" + str2 + "\" ");
+        this.mWO.append(" " + str1 + "=\"" + str2 + "\" ");
       }
-      this.muN.append(">");
+      this.mWO.append(">");
       paramMap.clear();
       AppMethodBeat.o(118766);
     }
@@ -302,7 +302,7 @@ public final class p
     public final void setText(int paramInt)
     {
       AppMethodBeat.i(118765);
-      this.muN.append(paramInt);
+      this.mWO.append(paramInt);
       AppMethodBeat.o(118765);
     }
     
@@ -310,27 +310,27 @@ public final class p
     {
       AppMethodBeat.i(118764);
       d.g.b.k.h(paramString, "value");
-      if (bt.isNullOrNil(paramString))
+      if (bs.isNullOrNil(paramString))
       {
         AppMethodBeat.o(118764);
         return;
       }
       CharSequence localCharSequence = (CharSequence)paramString;
-      p.a locala = p.yfx;
-      if (n.a(localCharSequence, (CharSequence)p.dHw(), false))
+      p.a locala = p.zsx;
+      if (n.a(localCharSequence, (CharSequence)p.dVX(), false))
       {
-        this.muN.append("<![CDATA[" + bt.aGf(paramString) + "]]>");
+        this.mWO.append("<![CDATA[" + bs.aLw(paramString) + "]]>");
         AppMethodBeat.o(118764);
         return;
       }
-      this.muN.append("<![CDATA[" + paramString + "]]>");
+      this.mWO.append("<![CDATA[" + paramString + "]]>");
       AppMethodBeat.o(118764);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.p
  * JD-Core Version:    0.7.0.1
  */

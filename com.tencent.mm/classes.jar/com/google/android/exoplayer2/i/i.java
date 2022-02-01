@@ -6,9 +6,9 @@ public abstract interface i
 {
   public abstract p c(p paramp);
   
-  public abstract long si();
+  public abstract long sr();
   
-  public abstract p sm();
+  public abstract p sv();
 }
 
 

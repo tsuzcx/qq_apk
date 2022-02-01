@@ -43,16 +43,16 @@ public class MMKV
     AppMethodBeat.i(13527);
     EnumMap localEnumMap = new EnumMap(c.class);
     recoverIndex = localEnumMap;
-    localEnumMap.put(c.IgQ, Integer.valueOf(0));
-    recoverIndex.put(c.IgR, Integer.valueOf(1));
+    localEnumMap.put(c.JIy, Integer.valueOf(0));
+    recoverIndex.put(c.JIz, Integer.valueOf(1));
     localEnumMap = new EnumMap(b.class);
     logLevel2Index = localEnumMap;
-    localEnumMap.put(b.IgK, Integer.valueOf(0));
-    logLevel2Index.put(b.IgL, Integer.valueOf(1));
-    logLevel2Index.put(b.IgM, Integer.valueOf(2));
-    logLevel2Index.put(b.IgN, Integer.valueOf(3));
-    logLevel2Index.put(b.IgO, Integer.valueOf(4));
-    index2LogLevel = new b[] { b.IgK, b.IgL, b.IgM, b.IgN, b.IgO };
+    localEnumMap.put(b.JIs, Integer.valueOf(0));
+    logLevel2Index.put(b.JIt, Integer.valueOf(1));
+    logLevel2Index.put(b.JIu, Integer.valueOf(2));
+    logLevel2Index.put(b.JIv, Integer.valueOf(3));
+    logLevel2Index.put(b.JIw, Integer.valueOf(4));
+    index2LogLevel = new b[] { b.JIs, b.JIt, b.JIu, b.JIv, b.JIw };
     rootDir = null;
     mCreators = new HashMap();
     gWantLogReDirecting = false;
@@ -133,7 +133,7 @@ public class MMKV
   public static void destroyNativeBuffer(d paramd)
   {
     AppMethodBeat.i(13519);
-    destroyNB(paramd.EVI, paramd.size);
+    destroyNB(paramd.GsU, paramd.size);
     AppMethodBeat.o(13519);
   }
   
@@ -210,11 +210,11 @@ public class MMKV
     AppMethodBeat.i(13525);
     if ((gCallbackHandler != null) && (gWantLogReDirecting))
     {
-      gCallbackHandler.h(paramString1, paramInt2, paramString2, paramString3);
+      gCallbackHandler.l(paramString1, paramInt2, paramString2, paramString3);
       AppMethodBeat.o(13525);
       return;
     }
-    paramString1 = 1.IgI;
+    paramString1 = 1.JIq;
     index2LogLevel[paramInt1].ordinal();
     AppMethodBeat.o(13525);
   }
@@ -236,23 +236,23 @@ public class MMKV
       AppMethodBeat.o(13459);
       throw paramContext;
     }
-    Object localObject = MMKVContentProvider.aJ(paramContext, Process.myPid());
+    Object localObject = MMKVContentProvider.aP(paramContext, Process.myPid());
     if ((localObject == null) || (((String)localObject).length() == 0))
     {
-      simpleLog(b.IgN, "process name detect fail, try again later");
+      simpleLog(b.JIv, "process name detect fail, try again later");
       AppMethodBeat.o(13459);
       return null;
     }
     if (((String)localObject).contains(":"))
     {
-      localObject = MMKVContentProvider.kt(paramContext);
+      localObject = MMKVContentProvider.kF(paramContext);
       if (localObject == null)
       {
-        simpleLog(b.IgN, "MMKVContentProvider has invalid authority");
+        simpleLog(b.JIv, "MMKVContentProvider has invalid authority");
         AppMethodBeat.o(13459);
         return null;
       }
-      simpleLog(b.IgL, "getting parcelable mmkv in process, Uri = ".concat(String.valueOf(localObject)));
+      simpleLog(b.JIt, "getting parcelable mmkv in process, Uri = ".concat(String.valueOf(localObject)));
       Bundle localBundle = new Bundle();
       localBundle.putInt("KEY_SIZE", paramInt1);
       localBundle.putInt("KEY_MODE", paramInt2);
@@ -266,11 +266,11 @@ public class MMKV
         paramContext = (ParcelableMMKV)paramContext.getParcelable("KEY");
         if (paramContext != null)
         {
-          if ((paramContext.IgU >= 0) && (paramContext.IgV >= 0)) {}
-          for (paramContext = mmkvWithAshmemFD(paramContext.IgT, paramContext.IgU, paramContext.IgV, paramContext.IgW);; paramContext = null)
+          if ((paramContext.JIC >= 0) && (paramContext.JID >= 0)) {}
+          for (paramContext = mmkvWithAshmemFD(paramContext.JIB, paramContext.JIC, paramContext.JID, paramContext.JIE);; paramContext = null)
           {
             if (paramContext != null) {
-              simpleLog(b.IgL, paramContext.mmapID() + " fd = " + paramContext.ashmemFD() + ", meta fd = " + paramContext.ashmemMetaFD());
+              simpleLog(b.JIt, paramContext.mmapID() + " fd = " + paramContext.ashmemFD() + ", meta fd = " + paramContext.ashmemMetaFD());
             }
             AppMethodBeat.o(13459);
             return paramContext;
@@ -280,7 +280,7 @@ public class MMKV
     }
     else
     {
-      simpleLog(b.IgL, "getting mmkv in main process");
+      simpleLog(b.JIt, "getting mmkv in main process");
       paramContext = new MMKV(getMMKVWithIDAndSize(paramString1, paramInt1, paramInt2 | 0x8, paramString2));
       AppMethodBeat.o(13459);
       return paramContext;
@@ -376,11 +376,11 @@ public class MMKV
   private static int onMMKVCRCCheckFail(String paramString)
   {
     AppMethodBeat.i(13523);
-    c localc = c.IgQ;
+    c localc = c.JIy;
     if (gCallbackHandler != null) {
-      localc = gCallbackHandler.aFG(paramString);
+      localc = gCallbackHandler.aKX(paramString);
     }
-    simpleLog(b.IgL, "Recover strategic for " + paramString + " is " + localc);
+    simpleLog(b.JIt, "Recover strategic for " + paramString + " is " + localc);
     int i = ((Integer)recoverIndex.get(localc)).intValue();
     AppMethodBeat.o(13523);
     return i;
@@ -389,11 +389,11 @@ public class MMKV
   private static int onMMKVFileLengthError(String paramString)
   {
     AppMethodBeat.i(13524);
-    c localc = c.IgQ;
+    c localc = c.JIy;
     if (gCallbackHandler != null) {
-      localc = gCallbackHandler.aFH(paramString);
+      localc = gCallbackHandler.aKY(paramString);
     }
-    simpleLog(b.IgL, "Recover strategic for " + paramString + " is " + localc);
+    simpleLog(b.JIt, "Recover strategic for " + paramString + " is " + localc);
     int i = ((Integer)recoverIndex.get(localc)).intValue();
     AppMethodBeat.o(13524);
     return i;
@@ -419,7 +419,7 @@ public class MMKV
     int j = 1;
     AppMethodBeat.i(13453);
     int i = j;
-    switch (1.IgI[paramb.ordinal()])
+    switch (1.JIq[paramb.ordinal()])
     {
     default: 
       i = j;
@@ -725,7 +725,7 @@ public class MMKV
     //   170: aload_1
     //   171: athrow
     //   172: astore_1
-    //   173: getstatic 92	com/tencent/mmkv/b:IgN	Lcom/tencent/mmkv/b;
+    //   173: getstatic 92	com/tencent/mmkv/b:JIv	Lcom/tencent/mmkv/b;
     //   176: aload_1
     //   177: invokevirtual 563	java/lang/Exception:toString	()Ljava/lang/String;
     //   180: invokestatic 292	com/tencent/mmkv/MMKV:simpleLog	(Lcom/tencent/mmkv/b;Ljava/lang/String;)V
@@ -1003,7 +1003,7 @@ public class MMKV
         } else if ((localObject instanceof Set)) {
           encode(str, (Set)localObject);
         } else {
-          simpleLog(b.IgN, "unknown type: " + localObject.getClass());
+          simpleLog(b.JIv, "unknown type: " + localObject.getClass());
         }
       }
     }
@@ -1123,7 +1123,7 @@ public class MMKV
   public int writeValueToNativeBuffer(String paramString, d paramd)
   {
     AppMethodBeat.i(13520);
-    int i = writeValueToNB(this.nativeHandle, paramString, paramd.EVI, paramd.size);
+    int i = writeValueToNB(this.nativeHandle, paramString, paramd.GsU, paramd.size);
     AppMethodBeat.o(13520);
     return i;
   }

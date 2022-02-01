@@ -6,30 +6,30 @@ import java.util.Set;
 
 final class o
 {
-  final a<?> bCI;
-  final Set<o> bCJ;
-  final Set<o> bCK;
+  final a<?> bAq;
+  final Set<o> bAr;
+  final Set<o> bAs;
   
   o(a<?> parama)
   {
     AppMethodBeat.i(4090);
-    this.bCJ = new HashSet();
-    this.bCK = new HashSet();
-    this.bCI = parama;
+    this.bAr = new HashSet();
+    this.bAs = new HashSet();
+    this.bAq = parama;
     AppMethodBeat.o(4090);
   }
   
-  final boolean wJ()
+  final boolean ww()
   {
     AppMethodBeat.i(4091);
-    boolean bool = this.bCK.isEmpty();
+    boolean bool = this.bAs.isEmpty();
     AppMethodBeat.o(4091);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.components.o
  * JD-Core Version:    0.7.0.1
  */

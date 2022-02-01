@@ -8,24 +8,16 @@ public abstract class el
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elq = "scene".hashCode();
-  private static final int emV;
-  private static final int emf = "updateTime".hashCode();
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int eVD = "msgContentXml".hashCode();
+  private static final int elP = "msgId".hashCode();
+  private static final int eug = "isRead".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean elo = true;
-  private boolean emQ = true;
-  private boolean emc = true;
-  public String field_key;
-  public int field_scene;
-  public long field_updateTime;
-  public int field_version;
-  
-  static
-  {
-    emV = "version".hashCode();
-  }
+  private boolean eVC = true;
+  private boolean elL = true;
+  private boolean etS = true;
+  public String field_isRead;
+  public String field_msgContentXml;
+  public String field_msgId;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -40,23 +32,22 @@ public abstract class el
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
-        break label60;
+      if (elP != k) {
+        break label65;
       }
-      this.field_key = paramCursor.getString(i);
+      this.field_msgId = paramCursor.getString(i);
+      this.elL = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (emV == k) {
-        this.field_version = paramCursor.getInt(i);
-      } else if (elq == k) {
-        this.field_scene = paramCursor.getInt(i);
-      } else if (emf == k) {
-        this.field_updateTime = paramCursor.getLong(i);
+      label65:
+      if (eVD == k) {
+        this.field_msgContentXml = paramCursor.getString(i);
+      } else if (eug == k) {
+        this.field_isRead = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -66,17 +57,14 @@ public abstract class el
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.elL) {
+      localContentValues.put("msgId", this.field_msgId);
     }
-    if (this.emQ) {
-      localContentValues.put("version", Integer.valueOf(this.field_version));
+    if (this.eVC) {
+      localContentValues.put("msgContentXml", this.field_msgContentXml);
     }
-    if (this.elo) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
-    }
-    if (this.emc) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.etS) {
+      localContentValues.put("isRead", this.field_isRead);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

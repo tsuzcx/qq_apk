@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.appcache.a.b.a.a;
 import com.tencent.mm.plugin.appbrand.appcache.a.b.b;
 import com.tencent.mm.pluginsdk.h.a.c.l;
 import com.tencent.mm.pluginsdk.h.a.c.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class s
 {
@@ -22,7 +22,7 @@ public final class s
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "mergeDiffPkg e = %s, old[%s], new[%s], diff[%s]", new Object[] { localException, paramString1, paramString2, paramString3 });
+      ac.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "mergeDiffPkg e = %s, old[%s], new[%s], diff[%s]", new Object[] { localException, paramString1, paramString2, paramString3 });
       AppMethodBeat.o(90554);
     }
     return 1;
@@ -31,28 +31,28 @@ public final class s
   static void a(au paramau, m paramm, ac.a parama)
   {
     AppMethodBeat.i(90553);
-    ad.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, request(%s %d->%d)", new Object[] { paramau.appId, Integer.valueOf(paramau.iNo), Integer.valueOf(paramau.iNp) });
+    ac.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, request(%s %d->%d)", new Object[] { paramau.appId, Integer.valueOf(paramau.jnw), Integer.valueOf(paramau.jnx) });
     parama.a(paramm);
-    paramm = ((e)g.ab(e.class)).aOk();
+    paramm = ((e)g.ab(e.class)).aVa();
     if (paramm == null)
     {
-      ad.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, before fallback full_pkg, nil storage");
-      bh.a(paramau.BRL, paramau.appId, b.a.a.iPA, null);
+      ac.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, before fallback full_pkg, nil storage");
+      bh.a(paramau.Dkb, paramau.appId, b.a.a.jpJ, null);
       AppMethodBeat.o(90553);
       return;
     }
-    bh.En(paramau.BRL);
-    paramm = paramm.a(paramau.appId, paramau.iNp, 0, new String[] { "downloadURL" });
+    bh.Iq(paramau.Dkb);
+    paramm = paramm.a(paramau.appId, paramau.jnx, 0, new String[] { "downloadURL" });
     if (paramm == null)
     {
-      ad.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, before fallback full_pkg, nil record(%s %d)", new Object[] { paramau.appId, Integer.valueOf(paramau.iNp) });
+      ac.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, before fallback full_pkg, nil record(%s %d)", new Object[] { paramau.appId, Integer.valueOf(paramau.jnx) });
       AppMethodBeat.o(90553);
       return;
     }
-    if ((paramau.iNq instanceof b.b)) {
-      ((b.b)paramau.iNq).aQB();
+    if ((paramau.jny instanceof b.b)) {
+      ((b.b)paramau.jny).aXt();
     }
-    bh.b(paramau.appId, 0, paramau.iNp, paramm.field_downloadURL, paramau.iNq);
+    bh.b(paramau.appId, 0, paramau.jnx, paramm.field_downloadURL, paramau.jny);
     AppMethodBeat.o(90553);
   }
   
@@ -66,7 +66,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.s
  * JD-Core Version:    0.7.0.1
  */

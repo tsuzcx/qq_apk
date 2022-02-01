@@ -3,7 +3,7 @@ package com.tencent.mm.modelcontrol;
 import android.content.Context;
 import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.model.bi;
@@ -11,13 +11,13 @@ import com.tencent.mm.model.bi.b;
 import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.zero.b.a;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.storagebase.h.b;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,36 +26,36 @@ import java.util.HashMap;
 public class c
   implements aw
 {
-  public static boolean H(bl parambl)
+  public static boolean H(bo parambo)
   {
     AppMethodBeat.i(150454);
-    if (parambl == null)
+    if (parambo == null)
     {
-      ad.w("MicroMsg.SubCoreAutoDownload", "this message is null.");
+      ac.w("MicroMsg.SubCoreAutoDownload", "this message is null.");
       AppMethodBeat.o(150454);
       return false;
     }
-    parambl = bi.ul(parambl.esh);
-    if (parambl == null)
+    parambo = bi.yr(parambo.eul);
+    if (parambo == null)
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "this message had no msg source.");
+      ac.i("MicroMsg.SubCoreAutoDownload", "this message had no msg source.");
       AppMethodBeat.o(150454);
       return true;
     }
-    parambl = parambl.gOj;
-    if (bt.isNullOrNil(parambl))
+    parambo = parambo.hoJ;
+    if (bs.isNullOrNil(parambo))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "this message had no not auto download time range config.");
+      ac.i("MicroMsg.SubCoreAutoDownload", "this message had no not auto download time range config.");
       AppMethodBeat.o(150454);
       return true;
     }
-    if (b.xO(parambl))
+    if (b.BU(parambo))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "this message need control, can not auto download. timeRange : ".concat(String.valueOf(parambl)));
+      ac.i("MicroMsg.SubCoreAutoDownload", "this message need control, can not auto download. timeRange : ".concat(String.valueOf(parambo)));
       AppMethodBeat.o(150454);
       return false;
     }
-    ad.i("MicroMsg.SubCoreAutoDownload", "this message need control, but it is not the time. timeRange: ".concat(String.valueOf(parambl)));
+    ac.i("MicroMsg.SubCoreAutoDownload", "this message need control, but it is not the time. timeRange: ".concat(String.valueOf(parambo)));
     AppMethodBeat.o(150454);
     return true;
   }
@@ -64,32 +64,32 @@ public class c
   {
     AppMethodBeat.i(150453);
     paramPInt1.value = 0;
-    int i = bt.getInt(((a)g.ab(a.class)).Zd().getValue("SIGHTAutoLoadNetwork"), 1);
+    int i = bs.getInt(((a)g.ab(a.class)).ZY().getValue("SIGHTAutoLoadNetwork"), 1);
     paramPInt2.value = i;
     if (i == 3)
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "user settings can not auto download SNS short video[AD]");
+      ac.i("MicroMsg.SubCoreAutoDownload", "user settings can not auto download SNS short video[AD]");
       AppMethodBeat.o(150453);
       return false;
     }
-    boolean bool = ay.isWifi(aj.getContext());
+    boolean bool = ax.isWifi(ai.getContext());
     if ((i == 2) && (!bool))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "it is not wifi now, and status_only_wifi, not auto download SNS short video[AD].");
+      ac.i("MicroMsg.SubCoreAutoDownload", "it is not wifi now, and status_only_wifi, not auto download SNS short video[AD].");
       AppMethodBeat.o(150453);
       return false;
     }
-    if (ay.is2G(aj.getContext()))
+    if (ax.is2G(ai.getContext()))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "it is 2G now, can not auto download SNS short video[AD].");
+      ac.i("MicroMsg.SubCoreAutoDownload", "it is 2G now, can not auto download SNS short video[AD].");
       AppMethodBeat.o(150453);
       return false;
     }
-    paramPInt2 = ((a)g.ab(a.class)).Zd().getValue("SnsAdSightNotAutoDownloadTimeRange");
-    ad.i("MicroMsg.BusyTimeControlLogic", "isSnsAdSightNotAutoDownload value: ".concat(String.valueOf(paramPInt2)));
-    if (b.xO(paramPInt2))
+    paramPInt2 = ((a)g.ab(a.class)).ZY().getValue("SnsAdSightNotAutoDownloadTimeRange");
+    ac.i("MicroMsg.BusyTimeControlLogic", "isSnsAdSightNotAutoDownload value: ".concat(String.valueOf(paramPInt2)));
+    if (b.BU(paramPInt2))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "it is busy time now, can not auto(but need check again) download SNS short video[AD]");
+      ac.i("MicroMsg.SubCoreAutoDownload", "it is busy time now, can not auto(but need check again) download SNS short video[AD]");
       if (i == 2) {}
       for (i = 2;; i = 1)
       {
@@ -98,7 +98,7 @@ public class c
         return false;
       }
     }
-    ad.i("MicroMsg.SubCoreAutoDownload", "skip all not auto download case, then auto download[AD].");
+    ac.i("MicroMsg.SubCoreAutoDownload", "skip all not auto download case, then auto download[AD].");
     AppMethodBeat.o(150453);
     return true;
   }
@@ -107,38 +107,38 @@ public class c
   {
     AppMethodBeat.i(150452);
     paramPInt1.value = 0;
-    int i = bt.getInt(((a)g.ab(a.class)).Zd().getValue("SIGHTAutoLoadNetwork"), 1);
+    int i = bs.getInt(((a)g.ab(a.class)).ZY().getValue("SIGHTAutoLoadNetwork"), 1);
     paramPInt2.value = i;
     if (i == 3)
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "user settings can not auto download SNS short video");
+      ac.i("MicroMsg.SubCoreAutoDownload", "user settings can not auto download SNS short video");
       AppMethodBeat.o(150452);
       return false;
     }
-    boolean bool = ay.isWifi(aj.getContext());
+    boolean bool = ax.isWifi(ai.getContext());
     if ((i == 2) && (!bool))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "it is not wifi now, and status_only_wifi, not auto download SNS short video.");
+      ac.i("MicroMsg.SubCoreAutoDownload", "it is not wifi now, and status_only_wifi, not auto download SNS short video.");
       AppMethodBeat.o(150452);
       return false;
     }
-    if (ay.is2G(aj.getContext()))
+    if (ax.is2G(ai.getContext()))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "it is 2G now, can not auto download SNS short video.");
+      ac.i("MicroMsg.SubCoreAutoDownload", "it is 2G now, can not auto download SNS short video.");
       AppMethodBeat.o(150452);
       return false;
     }
-    paramPInt2 = ((a)g.ab(a.class)).Zd().getValue("SnsSightNoAutoDownload");
-    if (!bt.isNullOrNil(paramPInt2)) {
+    paramPInt2 = ((a)g.ab(a.class)).ZY().getValue("SnsSightNoAutoDownload");
+    if (!bs.isNullOrNil(paramPInt2)) {
       try
       {
-        ad.i("MicroMsg.SubCoreAutoDownload", "dynamicConfigValSeq ".concat(String.valueOf(paramPInt2)));
-        long l1 = bt.getLong(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()), 0L) - ((int)b.awP() - 8) * 60L / 1000L;
+        ac.i("MicroMsg.SubCoreAutoDownload", "dynamicConfigValSeq ".concat(String.valueOf(paramPInt2)));
+        long l1 = bs.getLong(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()), 0L) - ((int)b.aDH() - 8) * 60L / 1000L;
         String[] arrayOfString = paramPInt2.split(",");
-        long l2 = bt.getLong(arrayOfString[0], 0L);
-        if ((l1 <= bt.getLong(arrayOfString[1], 0L)) && (l1 >= l2))
+        long l2 = bs.getLong(arrayOfString[0], 0L);
+        if ((l1 <= bs.getLong(arrayOfString[1], 0L)) && (l1 >= l2))
         {
-          ad.i("MicroMsg.SubCoreAutoDownload", "config settings can not auto download SNS short video");
+          ac.i("MicroMsg.SubCoreAutoDownload", "config settings can not auto download SNS short video");
           paramPInt3.value = 1;
           AppMethodBeat.o(150452);
           return false;
@@ -146,14 +146,14 @@ public class c
       }
       catch (Exception paramPInt3)
       {
-        ad.e("MicroMsg.SubCoreAutoDownload", "paser error %s msg: %s", new Object[] { paramPInt2, paramPInt3.getMessage() });
+        ac.e("MicroMsg.SubCoreAutoDownload", "paser error %s msg: %s", new Object[] { paramPInt2, paramPInt3.getMessage() });
       }
     }
-    paramPInt2 = ((a)g.ab(a.class)).Zd().getValue("SnsSightNotAutoDownloadTimeRange");
-    ad.i("MicroMsg.BusyTimeControlLogic", "SnsSightNotAutoDownloadTimeRange value: ".concat(String.valueOf(paramPInt2)));
-    if (b.xO(paramPInt2))
+    paramPInt2 = ((a)g.ab(a.class)).ZY().getValue("SnsSightNotAutoDownloadTimeRange");
+    ac.i("MicroMsg.BusyTimeControlLogic", "SnsSightNotAutoDownloadTimeRange value: ".concat(String.valueOf(paramPInt2)));
+    if (b.BU(paramPInt2))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "it is busy time now, can not auto download(but need check again) SNS short video");
+      ac.i("MicroMsg.SubCoreAutoDownload", "it is busy time now, can not auto download(but need check again) SNS short video");
       if (i == 2) {}
       for (i = 2;; i = 1)
       {
@@ -162,12 +162,12 @@ public class c
         return false;
       }
     }
-    ad.i("MicroMsg.SubCoreAutoDownload", "skip all not auto download case, then auto download.");
+    ac.i("MicroMsg.SubCoreAutoDownload", "skip all not auto download case, then auto download.");
     AppMethodBeat.o(150452);
     return true;
   }
   
-  public static c awQ()
+  public static c aDI()
   {
     try
     {
@@ -183,79 +183,79 @@ public class c
     }
   }
   
-  public static boolean awR()
+  public static boolean aDJ()
   {
     AppMethodBeat.i(150450);
-    if (b.awN())
+    if (b.aDF())
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "it is busy time now , do not auto download C2C image.");
+      ac.i("MicroMsg.SubCoreAutoDownload", "it is busy time now , do not auto download C2C image.");
       AppMethodBeat.o(150450);
       return false;
     }
-    int i = bt.getInt(((a)g.ab(a.class)).Zd().getValue("ChatImgAutoDownload"), 1);
+    int i = bs.getInt(((a)g.ab(a.class)).ZY().getValue("ChatImgAutoDownload"), 1);
     if (i == 3)
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "settings is not auto download C2C image. ChatImgAutoDownload : ".concat(String.valueOf(i)));
+      ac.i("MicroMsg.SubCoreAutoDownload", "settings is not auto download C2C image. ChatImgAutoDownload : ".concat(String.valueOf(i)));
       AppMethodBeat.o(150450);
       return false;
     }
-    Context localContext = aj.getContext();
-    if ((i == 2) && (ay.isWifi(localContext)))
+    Context localContext = ai.getContext();
+    if ((i == 2) && (ax.isWifi(localContext)))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "it is wifi now, auto download C2C image.");
+      ac.i("MicroMsg.SubCoreAutoDownload", "it is wifi now, auto download C2C image.");
       AppMethodBeat.o(150450);
       return true;
     }
-    if ((i == 1) && (ay.isWifi(localContext)))
+    if ((i == 1) && (ax.isWifi(localContext)))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "it is wifi now, auto download C2C image.");
+      ac.i("MicroMsg.SubCoreAutoDownload", "it is wifi now, auto download C2C image.");
       AppMethodBeat.o(150450);
       return true;
     }
-    long l2 = bt.getInt(((a)g.ab(a.class)).Zd().getValue("ChatImgAutoDownloadMax"), 0);
-    long l1 = bt.a((Long)g.afB().afk().get(ae.a.Fhd, null), 0L);
-    long l3 = bt.aGi((String)DateFormat.format("M", System.currentTimeMillis()));
-    long l4 = bt.a((Long)g.afB().afk().get(ae.a.Fhe, null), 0L);
-    ad.d("MicroMsg.SubCoreAutoDownload", "currentmonth " + l3 + " month " + l4 + " maxcount " + l2 + " current " + l1 + " downloadMode: " + i);
+    long l2 = bs.getInt(((a)g.ab(a.class)).ZY().getValue("ChatImgAutoDownloadMax"), 0);
+    long l1 = bs.a((Long)g.agR().agA().get(ah.a.GER, null), 0L);
+    long l3 = bs.aLz((String)DateFormat.format("M", System.currentTimeMillis()));
+    long l4 = bs.a((Long)g.agR().agA().get(ah.a.GES, null), 0L);
+    ac.d("MicroMsg.SubCoreAutoDownload", "currentmonth " + l3 + " month " + l4 + " maxcount " + l2 + " current " + l1 + " downloadMode: " + i);
     if (l3 != l4)
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "update month %d ", new Object[] { Long.valueOf(l3) });
-      g.afB().afk().set(ae.a.Fhd, Long.valueOf(0L));
-      g.afB().afk().set(ae.a.Fhe, Long.valueOf(l3));
+      ac.i("MicroMsg.SubCoreAutoDownload", "update month %d ", new Object[] { Long.valueOf(l3) });
+      g.agR().agA().set(ah.a.GER, Long.valueOf(0L));
+      g.agR().agA().set(ah.a.GES, Long.valueOf(l3));
       l1 = 0L;
     }
     for (;;)
     {
       if ((l1 > l2) && (l2 > 0L))
       {
-        ad.i("MicroMsg.SubCoreAutoDownload", "this month had auto download " + l1 + " C2C image, can not auto download.");
+        ac.i("MicroMsg.SubCoreAutoDownload", "this month had auto download " + l1 + " C2C image, can not auto download.");
         AppMethodBeat.o(150450);
         return false;
       }
-      if ((i == 1) && ((ay.isWifi(localContext)) || (ay.is3G(localContext)) || (ay.is4G(localContext))))
+      if ((i == 1) && ((ax.isWifi(localContext)) || (ax.is3G(localContext)) || (ax.is4G(localContext))))
       {
-        ad.i("MicroMsg.SubCoreAutoDownload", "it is wifi or 3,4G now, auto download C2C image.");
+        ac.i("MicroMsg.SubCoreAutoDownload", "it is wifi or 3,4G now, auto download C2C image.");
         AppMethodBeat.o(150450);
         return true;
       }
-      ad.i("MicroMsg.SubCoreAutoDownload", "default can not auto download C2C image.");
+      ac.i("MicroMsg.SubCoreAutoDownload", "default can not auto download C2C image.");
       AppMethodBeat.o(150450);
       return false;
     }
   }
   
-  public static boolean awS()
+  public static boolean aDK()
   {
     AppMethodBeat.i(150451);
-    String str = ((a)g.ab(a.class)).Zd().getValue("SnsImgPreLoadingAroundTimeLimit");
-    ad.i("MicroMsg.BusyTimeControlLogic", "SnsImgPreLoadingAroundTimeLimit value: ".concat(String.valueOf(str)));
-    if (b.xO(str))
+    String str = ((a)g.ab(a.class)).ZY().getValue("SnsImgPreLoadingAroundTimeLimit");
+    ac.i("MicroMsg.BusyTimeControlLogic", "SnsImgPreLoadingAroundTimeLimit value: ".concat(String.valueOf(str)));
+    if (b.BU(str))
     {
-      ad.i("MicroMsg.SubCoreAutoDownload", "it is busy time now, can not auto download SNS image.");
+      ac.i("MicroMsg.SubCoreAutoDownload", "it is busy time now, can not auto download SNS image.");
       AppMethodBeat.o(150451);
       return false;
     }
-    ad.i("MicroMsg.SubCoreAutoDownload", "it is not busy time, can auto download SNS image.");
+    ac.i("MicroMsg.SubCoreAutoDownload", "it is not busy time, can auto download SNS image.");
     AppMethodBeat.o(150451);
     return true;
   }
@@ -275,7 +275,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.c
  * JD-Core Version:    0.7.0.1
  */

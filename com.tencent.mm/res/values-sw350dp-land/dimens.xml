@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="dimen" name="amf">@dimen/c_</item>
-    <item type="dimen" name="amg">@dimen/c8</item>
-    <item type="dimen" name="amh">@dimen/c_</item>
-    <item type="dimen" name="ami">@dimen/ci</item>
-    <item type="dimen" name="amj">@dimen/c8</item>
-    <item type="dimen" name="amk">@dimen/c5</item>
-    <item type="dimen" name="aml">@dimen/ci</item>
-    <item type="dimen" name="amm">@dimen/c8</item>
+    <item type="dimen" name="amg">@dimen/c_</item>
+    <item type="dimen" name="amh">@dimen/c8</item>
+    <item type="dimen" name="ami">@dimen/c_</item>
+    <item type="dimen" name="amj">@dimen/ci</item>
+    <item type="dimen" name="amk">@dimen/c8</item>
+    <item type="dimen" name="aml">@dimen/c5</item>
+    <item type="dimen" name="amm">@dimen/ci</item>
+    <item type="dimen" name="amn">@dimen/c8</item>
 </resources>

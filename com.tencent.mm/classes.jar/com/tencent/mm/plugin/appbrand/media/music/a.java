@@ -2,79 +2,79 @@ package com.tencent.mm.plugin.appbrand.media.music;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.f;
+import com.tencent.mm.ay.f;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 
 public final class a
 {
-  private HashMap<String, c> byu;
-  public String dfM;
-  public String dkB;
-  public int dkC;
-  public String kQn;
-  public String kQo;
-  public f kQp;
+  private HashMap<String, c> bwc;
+  public String ddh;
+  public String dia;
+  public int dib;
+  public String lrM;
+  public String lrN;
+  public f lrO;
   
   private a()
   {
     AppMethodBeat.i(145817);
-    this.byu = new HashMap();
+    this.bwc = new HashMap();
     AppMethodBeat.o(145817);
   }
   
-  public final void KG(String paramString)
+  public final void ON(String paramString)
   {
     AppMethodBeat.i(145820);
-    if (this.byu.get(paramString) == null)
+    if (this.bwc.get(paramString) == null)
     {
-      ad.i("MicroMsg.AppBrandMusicPlayerManager", "listeners already remove appid: %s", new Object[] { paramString });
+      ac.i("MicroMsg.AppBrandMusicPlayerManager", "listeners already remove appid: %s", new Object[] { paramString });
       AppMethodBeat.o(145820);
       return;
     }
-    com.tencent.mm.sdk.b.a.ESL.d((c)this.byu.remove(paramString));
-    this.byu.remove(paramString);
+    com.tencent.mm.sdk.b.a.GpY.d((c)this.bwc.remove(paramString));
+    this.bwc.remove(paramString);
     AppMethodBeat.o(145820);
   }
   
-  public final boolean KH(String paramString)
+  public final boolean OO(String paramString)
   {
     AppMethodBeat.i(145821);
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.AppBrandMusicPlayerManager", "appId is empty");
+      ac.e("MicroMsg.AppBrandMusicPlayerManager", "appId is empty");
       AppMethodBeat.o(145821);
       return false;
     }
-    if (!paramString.equalsIgnoreCase(this.kQn))
+    if (!paramString.equalsIgnoreCase(this.lrM))
     {
-      ad.e("MicroMsg.AppBrandMusicPlayerManager", "appId is not equals pre play id");
+      ac.e("MicroMsg.AppBrandMusicPlayerManager", "appId is not equals pre play id");
       AppMethodBeat.o(145821);
       return false;
     }
-    if (TextUtils.isEmpty(this.kQo))
+    if (TextUtils.isEmpty(this.lrN))
     {
-      ad.e("MicroMsg.AppBrandMusicPlayerManager", "now app not play music");
+      ac.e("MicroMsg.AppBrandMusicPlayerManager", "now app not play music");
       AppMethodBeat.o(145821);
       return false;
     }
-    paramString = com.tencent.mm.az.a.azI();
+    paramString = com.tencent.mm.ay.a.aGy();
     if (paramString == null)
     {
-      ad.e("MicroMsg.AppBrandMusicPlayerManager", "wrapper is null");
+      ac.e("MicroMsg.AppBrandMusicPlayerManager", "wrapper is null");
       AppMethodBeat.o(145821);
       return false;
     }
-    if (!this.kQo.equalsIgnoreCase(paramString.hnp))
+    if (!this.lrN.equalsIgnoreCase(paramString.hNS))
     {
-      ad.e("MicroMsg.AppBrandMusicPlayerManager", "musicId is diff");
+      ac.e("MicroMsg.AppBrandMusicPlayerManager", "musicId is diff");
       AppMethodBeat.o(145821);
       return false;
     }
-    if (!com.tencent.mm.az.a.azF())
+    if (!com.tencent.mm.ay.a.aGv())
     {
-      ad.i("MicroMsg.AppBrandMusicPlayerManager", "MusicHelper.isPlayingMusic FALSE");
+      ac.i("MicroMsg.AppBrandMusicPlayerManager", "MusicHelper.isPlayingMusic FALSE");
       AppMethodBeat.o(145821);
       return false;
     }
@@ -85,30 +85,30 @@ public final class a
   public final void a(c paramc, String paramString)
   {
     AppMethodBeat.i(145819);
-    if (this.byu.get(paramString) != null)
+    if (this.bwc.get(paramString) != null)
     {
-      ad.i("MicroMsg.AppBrandMusicPlayerManager", "listeners already add appid: %s", new Object[] { paramString });
+      ac.i("MicroMsg.AppBrandMusicPlayerManager", "listeners already add appid: %s", new Object[] { paramString });
       AppMethodBeat.o(145819);
       return;
     }
-    com.tencent.mm.sdk.b.a.ESL.c(paramc);
-    this.byu.put(paramString, paramc);
+    com.tencent.mm.sdk.b.a.GpY.c(paramc);
+    this.bwc.put(paramString, paramc);
     AppMethodBeat.o(145819);
   }
   
-  public final boolean dE(String paramString1, String paramString2)
+  public final boolean dQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(145818);
     if (paramString2.equalsIgnoreCase("play"))
     {
-      ad.i("MicroMsg.AppBrandMusicPlayerManager", "play option appid %s, pre appid %s", new Object[] { paramString1, this.kQn });
+      ac.i("MicroMsg.AppBrandMusicPlayerManager", "play option appid %s, pre appid %s", new Object[] { paramString1, this.lrM });
       AppMethodBeat.o(145818);
       return true;
     }
-    if (paramString1.equalsIgnoreCase(this.kQn))
+    if (paramString1.equalsIgnoreCase(this.lrM))
     {
-      paramString1 = com.tencent.mm.az.a.azI();
-      if ((paramString1 != null) && (paramString1.hnp.equals(this.kQo)))
+      paramString1 = com.tencent.mm.ay.a.aGy();
+      if ((paramString1 != null) && (paramString1.hNS.equals(this.lrN)))
       {
         AppMethodBeat.o(145818);
         return true;
@@ -120,12 +120,12 @@ public final class a
   
   public static final class a
   {
-    private static a kQq;
+    private static a lrP;
     
     static
     {
       AppMethodBeat.i(145816);
-      kQq = new a((byte)0);
+      lrP = new a((byte)0);
       AppMethodBeat.o(145816);
     }
   }

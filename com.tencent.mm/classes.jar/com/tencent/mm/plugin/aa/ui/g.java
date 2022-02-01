@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.aj;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.e;
@@ -19,8 +20,8 @@ public final class g
   extends s
 {
   private String chatroomName;
-  private Cursor icq;
-  private String[] icr;
+  private String[] iCA;
+  private Cursor iCz;
   private String query;
   
   public g(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
@@ -28,9 +29,9 @@ public final class g
     super(paramMMBaseSelectContactUI, null, true, 0);
     AppMethodBeat.i(63562);
     this.chatroomName = paramString;
-    paramMMBaseSelectContactUI = ((c)com.tencent.mm.kernel.g.ab(c.class)).apV().tL(this.chatroomName);
+    paramMMBaseSelectContactUI = ((c)com.tencent.mm.kernel.g.ab(c.class)).awK().xR(this.chatroomName);
     if (paramMMBaseSelectContactUI != null) {
-      this.icr = bt.gK(paramMMBaseSelectContactUI);
+      this.iCA = bs.gX(paramMMBaseSelectContactUI);
     }
     AppMethodBeat.o(63562);
   }
@@ -38,21 +39,21 @@ public final class g
   public final void b(String paramString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(63563);
-    ad.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
+    ac.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
     clearCache();
     this.query = paramString;
-    if (this.icq != null)
+    if (this.iCz != null)
     {
-      this.icq.close();
-      this.icq = null;
+      this.iCz.close();
+      this.iCz = null;
     }
-    if ((!bt.isNullOrNil(this.query)) && (this.icr != null))
+    if ((!bs.isNullOrNil(this.query)) && (this.iCA != null))
     {
-      com.tencent.mm.kernel.g.afC();
-      this.icq = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().a(this.icr, "@all.chatroom", this.query, new LinkedList(), null);
+      com.tencent.mm.kernel.g.agS();
+      this.iCz = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().a(this.iCA, "@all.chatroom", this.query, new LinkedList(), null);
     }
     notifyDataSetChanged();
-    cI(paramString, true);
+    cO(paramString, true);
     AppMethodBeat.o(63563);
   }
   
@@ -60,10 +61,10 @@ public final class g
   {
     AppMethodBeat.i(63565);
     super.finish();
-    if (this.icq != null)
+    if (this.iCz != null)
     {
-      this.icq.close();
-      this.icq = null;
+      this.iCz.close();
+      this.iCz = null;
     }
     AppMethodBeat.o(63565);
   }
@@ -71,35 +72,42 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(63566);
-    if (this.icq == null)
+    if (this.iCz == null)
     {
       AppMethodBeat.o(63566);
       return 0;
     }
-    int i = this.icq.getCount();
+    int i = this.iCz.getCount();
     AppMethodBeat.o(63566);
     return i;
   }
   
-  public final a pU(int paramInt)
+  public final a qH(int paramInt)
   {
     AppMethodBeat.i(63564);
-    e locale = null;
-    if (this.icq.moveToPosition(paramInt))
+    Object localObject = null;
+    if (this.iCz.moveToPosition(paramInt))
     {
-      af localaf = new af();
-      localaf.convertFrom(this.icq);
-      locale = new e(paramInt);
-      locale.contact = localaf;
-      locale.GVT = true;
+      ai localai = new ai();
+      localai.convertFrom(this.iCz);
+      e locale = new e(paramInt);
+      locale.contact = localai;
+      locale.Iwh = true;
+      locale.IzC = true;
+      localObject = locale;
+      if (ai.aNc(localai.field_username))
+      {
+        locale.IzB = true;
+        localObject = locale;
+      }
     }
     AppMethodBeat.o(63564);
-    return locale;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.g
  * JD-Core Version:    0.7.0.1
  */

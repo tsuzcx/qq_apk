@@ -1,126 +1,126 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.ae;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.awy;
-import com.tencent.mm.protocal.protobuf.awz;
-import com.tencent.mm.protocal.protobuf.bur;
-import com.tencent.mm.protocal.protobuf.ip;
+import com.tencent.mm.protocal.protobuf.baq;
+import com.tencent.mm.protocal.protobuf.bar;
+import com.tencent.mm.protocal.protobuf.bzi;
+import com.tencent.mm.protocal.protobuf.iv;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class n
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
-  public static String hrI;
-  public static String hrJ;
-  public static String hrK;
-  public static String hrL;
-  public static String hrM;
-  public static String hrN;
-  public static String hrO;
-  public static String hrP;
-  public static String hrQ;
-  public static String hrR;
-  public static String hrS;
-  private static int hrT;
-  private static int hrU = -1;
-  private static int hrV = 22;
-  private static int hrW = 0;
-  private static boolean hrX = false;
-  private static int hrY = 0;
+  private static int hSA = 0;
+  public static String hSk;
+  public static String hSl;
+  public static String hSm;
+  public static String hSn;
+  public static String hSo;
+  public static String hSp;
+  public static String hSq;
+  public static String hSr;
+  public static String hSs;
+  public static String hSt;
+  public static String hSu;
+  private static int hSv;
+  private static int hSw = -1;
+  private static int hSx = 22;
+  private static int hSy = 0;
+  private static boolean hSz = false;
   private g callback;
   
   public n(int paramInt)
   {
-    hrT = paramInt;
+    hSv = paramInt;
   }
   
-  public static int aAC()
+  public static int aHs()
   {
-    return hrU;
+    return hSw;
   }
   
-  public static boolean aAD()
+  public static boolean aHt()
   {
-    return (hrW & 0x2) != 0;
+    return (hSy & 0x2) != 0;
   }
   
-  public static boolean aAE()
+  public static boolean aHu()
   {
-    return (hrV & 0x4) != 0;
+    return (hSx & 0x4) != 0;
   }
   
-  public static int aAF()
+  public static int aHv()
   {
-    return hrT;
+    return hSv;
   }
   
-  public static boolean aAG()
+  public static boolean aHw()
   {
-    return (hrW & 0x200) != 0;
+    return (hSy & 0x200) != 0;
   }
   
-  public static boolean aAH()
+  public static boolean aHx()
   {
-    return (hrW & 0x400) != 0;
+    return (hSy & 0x400) != 0;
   }
   
-  public static void ev(boolean paramBoolean)
+  public static void eP(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      hrV |= 0x4;
+      hSx |= 0x4;
       return;
     }
-    hrV &= 0xFFFFFFFB;
+    hSx &= 0xFFFFFFFB;
   }
   
   public static int getDeviceType()
   {
-    return hrY;
+    return hSA;
   }
   
-  public static boolean oB(int paramInt)
+  public static boolean pp(int paramInt)
   {
-    return hrT != paramInt;
+    return hSv != paramInt;
   }
   
   public final int doScene(e parame, g paramg)
   {
     AppMethodBeat.i(20633);
     b.a locala = new b.a();
-    awy localawy = new awy();
-    localawy.oXs = ac.eFu();
-    ad.d("MicroMsg.NetSceneGetOnlineInfo", "language %s", new Object[] { localawy.oXs });
-    locala.gUU = localawy;
-    locala.gUV = new awz();
+    baq localbaq = new baq();
+    localbaq.pAD = ab.eUO();
+    ac.d("MicroMsg.NetSceneGetOnlineInfo", "language %s", new Object[] { localbaq.pAD });
+    locala.hvt = localbaq;
+    locala.hvu = new bar();
     locala.uri = "/cgi-bin/micromsg-bin/getonlineinfo";
     locala.funcId = 526;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
     this.callback = paramg;
-    int i = dispatch(parame, locala.atI(), this);
+    int i = dispatch(parame, locala.aAz(), this);
     AppMethodBeat.o(20633);
     return i;
   }
@@ -133,90 +133,90 @@ public final class n
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20634);
-    ad.i("MicroMsg.NetSceneGetOnlineInfo", "ongynetend %d, %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ac.i("MicroMsg.NetSceneGetOnlineInfo", "ongynetend %d, %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramArrayOfByte = (awz)((com.tencent.mm.al.b)paramq).gUT.gUX;
-      hrU = paramArrayOfByte.Dwh;
-      ad.d("MicroMsg.NetSceneGetOnlineInfo", "iconType:%d onlineInfoFlag:%d", new Object[] { Integer.valueOf(hrU), Integer.valueOf(paramArrayOfByte.Cxm) });
-      Object localObject = bw.K(paramArrayOfByte.Dwg, "summary");
-      paramInt1 = hrV;
+      paramArrayOfByte = (bar)((com.tencent.mm.ak.b)paramq).hvs.hvw;
+      hSw = paramArrayOfByte.ERC;
+      ac.d("MicroMsg.NetSceneGetOnlineInfo", "iconType:%d onlineInfoFlag:%d", new Object[] { Integer.valueOf(hSw), Integer.valueOf(paramArrayOfByte.DPI) });
+      Object localObject = bv.L(paramArrayOfByte.ERB, "summary");
+      paramInt1 = hSx;
       if (localObject != null)
       {
-        hrI = (String)((Map)localObject).get(".summary.banner");
-        hrJ = bt.nullAsNil((String)((Map)localObject).get(".summary.device_name"));
-        ad.d("MicroMsg.NetSceneGetOnlineInfo", "onlineinfo, count:%d, summary:%s", new Object[] { Integer.valueOf(paramArrayOfByte.Dwe), paramArrayOfByte.Dwg });
-        localObject = (awy)((com.tencent.mm.al.b)paramq).gUS.gUX;
-        Iterator localIterator = paramArrayOfByte.Dwf.iterator();
+        hSk = (String)((Map)localObject).get(".summary.banner");
+        hSl = bs.nullAsNil((String)((Map)localObject).get(".summary.device_name"));
+        ac.d("MicroMsg.NetSceneGetOnlineInfo", "onlineinfo, count:%d, summary:%s", new Object[] { Integer.valueOf(paramArrayOfByte.ERz), paramArrayOfByte.ERB });
+        localObject = (baq)((com.tencent.mm.ak.b)paramq).hvr.hvw;
+        Iterator localIterator = paramArrayOfByte.ERA.iterator();
         while (localIterator.hasNext())
         {
-          paramq = (bur)localIterator.next();
-          if (paramq.CEi.eBA().hashCode() != ((awy)localObject).BaseRequest.CEi.eBA().hashCode())
+          paramq = (bzi)localIterator.next();
+          if (paramq.DWI.eQU().hashCode() != ((baq)localObject).BaseRequest.DWI.eQU().hashCode())
           {
-            hrY = paramq.DRP;
-            ad.i("MicroMsg.NetSceneGetOnlineInfo", "device type %d", new Object[] { Integer.valueOf(hrY) });
-            localObject = bw.K(paramq.DRQ, "wording");
-            ad.d("MicroMsg.NetSceneGetOnlineInfo", paramq.DRQ);
+            hSA = paramq.Fok;
+            ac.i("MicroMsg.NetSceneGetOnlineInfo", "device type %d", new Object[] { Integer.valueOf(hSA) });
+            localObject = bv.L(paramq.Fol, "wording");
+            ac.d("MicroMsg.NetSceneGetOnlineInfo", paramq.Fol);
             if (localObject != null)
             {
-              hrK = (String)((Map)localObject).get(".wording.title");
-              hrL = (String)((Map)localObject).get(".wording.notify");
-              hrM = (String)((Map)localObject).get(".wording.mute_title");
-              hrN = (String)((Map)localObject).get(".wording.mute_tips");
-              hrR = (String)((Map)localObject).get(".wording.exit_confirm");
-              hrO = (String)((Map)localObject).get(".wording.lock_title");
-              hrP = (String)((Map)localObject).get(".wording.mute_lock_title");
-              hrQ = (String)((Map)localObject).get(".wording.exit");
-              hrS = (String)((Map)localObject).get(".wording.usage_link");
+              hSm = (String)((Map)localObject).get(".wording.title");
+              hSn = (String)((Map)localObject).get(".wording.notify");
+              hSo = (String)((Map)localObject).get(".wording.mute_title");
+              hSp = (String)((Map)localObject).get(".wording.mute_tips");
+              hSt = (String)((Map)localObject).get(".wording.exit_confirm");
+              hSq = (String)((Map)localObject).get(".wording.lock_title");
+              hSr = (String)((Map)localObject).get(".wording.mute_lock_title");
+              hSs = (String)((Map)localObject).get(".wording.exit");
+              hSu = (String)((Map)localObject).get(".wording.usage_link");
             }
-            paramInt1 = paramq.DRS;
+            paramInt1 = paramq.Fon;
           }
         }
       }
     }
     for (;;)
     {
-      int i = paramArrayOfByte.Cxm;
-      hrW = i;
+      int i = paramArrayOfByte.DPI;
+      hSy = i;
       if ((i & 0x2) == 0)
       {
-        hrX = true;
-        if (paramInt1 != hrV)
+        hSz = true;
+        if (paramInt1 != hSx)
         {
-          hrV = paramInt1;
-          az.arV();
-          c.aeE();
+          hSx = paramInt1;
+          az.ayM();
+          c.afU();
         }
-        if ((paramArrayOfByte.Cxm & 0x40) != 0)
+        if ((paramArrayOfByte.DPI & 0x40) != 0)
         {
-          az.arV();
-          paramArrayOfByte = c.apM().aHY("filehelper");
+          az.ayM();
+          paramArrayOfByte = c.awB().aNt("filehelper");
           if (paramArrayOfByte != null)
           {
             paramq = paramArrayOfByte;
-            if (!bt.isNullOrNil(paramArrayOfByte.field_username)) {}
+            if (!bs.isNullOrNil(paramArrayOfByte.field_username)) {}
           }
           else
           {
-            ae.D(paramArrayOfByte);
-            az.arV();
-            paramq = c.apM().aHY("filehelper");
+            ae.E(paramArrayOfByte);
+            az.ayM();
+            paramq = c.awB().aNt("filehelper");
           }
-          if ((paramq != null) && (!com.tencent.mm.n.b.ls(paramq.field_type)))
+          if ((paramq != null) && (!com.tencent.mm.n.b.ln(paramq.field_type)))
           {
-            paramq.Zk();
-            az.arV();
-            c.apM().c(paramq.field_username, paramq);
+            paramq.aaf();
+            az.ayM();
+            c.awB().c(paramq.field_username, paramq);
           }
-          az.arV();
-          paramq = c.apR().aIn("filehelper");
+          az.ayM();
+          paramq = c.awG().aNI("filehelper");
           if (paramq != null) {
             break label697;
           }
-          paramq = new am("filehelper");
-          paramq.kS(bt.eGO());
-          az.arV();
-          c.apR().e(paramq);
+          paramq = new ap("filehelper");
+          paramq.ou(bs.eWj());
+          az.ayM();
+          c.awG().e(paramq);
         }
       }
       for (;;)
@@ -224,19 +224,19 @@ public final class n
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         AppMethodBeat.o(20634);
         return;
-        hrX = false;
+        hSz = false;
         break;
         label697:
-        paramq.kS(bt.eGO());
-        az.arV();
-        c.apR().a(paramq, "filehelper");
+        paramq.ou(bs.eWj());
+        az.ayM();
+        c.awG().a(paramq, "filehelper");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelsimple.n
  * JD-Core Version:    0.7.0.1
  */

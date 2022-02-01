@@ -3258,7 +3258,7 @@
         <item name="android:textColor">@color/y4</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:background">@null</item>
-        <item name="android:layout_width">@dimen/eb</item>
+        <item name="android:layout_width">@dimen/bt</item>
         <item name="android:layout_height">fill_parent</item>
     </style>
     <style name="m9" parent="@style/n1">
@@ -6726,5 +6726,24 @@
         <item name="android:textSize">16.0sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#ffeeeeee</item>
+    </style>
+    <style name="a6o" parent="@android:style/Theme.Black.NoTitleBar" />
+    <style name="a6p">
+        <item name="android:windowEnterAnimation">@anim/ev</item>
+        <item name="android:windowExitAnimation">@anim/ew</item>
+    </style>
+    <style name="a6q">
+        <item name="android:windowEnterAnimation">@anim/ex</item>
+        <item name="android:windowExitAnimation">@anim/ey</item>
+    </style>
+    <style name="a6r" parent="@style/a6s">
+        <item name="android:paddingStart">12.0dip</item>
+        <item name="android:paddingEnd">12.0dip</item>
+    </style>
+    <style name="a6s">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">@color/aat</item>
+        <item name="android:paddingTop">8.0dip</item>
+        <item name="android:paddingBottom">8.0dip</item>
     </style>
 </resources>

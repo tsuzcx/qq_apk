@@ -8,34 +8,34 @@ import java.util.Arrays;
 public final class a$w
   extends e
 {
-  public a.v IlR = null;
-  public byte[] body = g.bIZ;
+  public a.v JNC = null;
+  public byte[] body = g.bGH;
   
   public a$w()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.IlR != null) {
-      paramb.a(1, this.IlR);
+    if (this.JNC != null) {
+      paramb.a(1, this.JNC);
     }
-    if (!Arrays.equals(this.body, g.bIZ)) {
+    if (!Arrays.equals(this.body, g.bGH)) {
       paramb.b(2, this.body);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.IlR != null) {
-      i = j + b.b(1, this.IlR);
+    if (this.JNC != null) {
+      i = j + b.b(1, this.JNC);
     }
     j = i;
-    if (!Arrays.equals(this.body, g.bIZ)) {
+    if (!Arrays.equals(this.body, g.bGH)) {
       j = i + b.c(2, this.body);
     }
     return j;

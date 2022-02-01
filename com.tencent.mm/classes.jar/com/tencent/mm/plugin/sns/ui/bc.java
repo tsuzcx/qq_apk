@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.yk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,39 +20,39 @@ import java.util.Map;
 public final class bc
   extends d<p>
 {
-  private boolean diE;
+  private boolean dfZ;
   List<p> list;
-  private String pLA;
+  private String qui;
   private String userName;
-  private Comparator<p> wDj;
-  private boolean xEc;
-  private a xEd;
-  private c xEe;
-  private int xjP;
-  private int xjQ;
+  private Comparator<p> xPE;
+  private boolean yQQ;
+  private a yQR;
+  private c yQS;
+  private int ywI;
+  private int ywJ;
   
   public bc(a parama, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(99057);
     this.userName = "";
     this.list = new ArrayList();
-    this.diE = false;
-    this.xjP = 0;
-    this.xjQ = 0;
-    this.pLA = "";
-    this.xEc = false;
-    this.wDj = new Comparator() {};
-    this.xEd = parama;
+    this.dfZ = false;
+    this.ywI = 0;
+    this.ywJ = 0;
+    this.qui = "";
+    this.yQQ = false;
+    this.xPE = new Comparator() {};
+    this.yQR = parama;
     this.userName = paramString;
-    this.diE = paramBoolean;
+    this.dfZ = paramBoolean;
     AppMethodBeat.o(99057);
   }
   
   private int b(int paramInt1, int paramInt2, List<p> paramList)
   {
     AppMethodBeat.i(99065);
-    this.xEe.drT();
-    if ((this.diE) && (paramInt1 == 0))
+    this.yQS.dGs();
+    if ((this.dfZ) && (paramInt1 == 0))
     {
       AppMethodBeat.o(99065);
       return 1;
@@ -62,13 +62,13 @@ public final class bc
     if (paramInt1 + 1 < paramInt2)
     {
       localObject = (p)paramList.get(paramInt1 + 1);
-      this.xEe.wAh = ((p)localObject).field_head;
-      localTimeLineObject = ((p)localObject).dxy();
-      this.xEe.wAl = localTimeLineObject.Etj;
-      this.xEe.wAi = aj.ap(((p)localObject).field_localPrivate, this.diE);
-      this.xEe.wAj = ((p)localObject).field_type;
-      if (localTimeLineObject.Etm != null) {
-        this.xEe.wAk = localTimeLineObject.Etm.DaC.size();
+      this.yQS.xMB = ((p)localObject).field_head;
+      localTimeLineObject = ((p)localObject).dLV();
+      this.yQS.xME = localTimeLineObject.FQl;
+      this.yQS.xMC = aj.as(((p)localObject).field_localPrivate, this.dfZ);
+      this.yQS.xMD = ((p)localObject).field_type;
+      if (localTimeLineObject.FQo != null) {
+        this.yQS.rvG = localTimeLineObject.FQo.Etz.size();
       }
     }
     else
@@ -76,43 +76,43 @@ public final class bc
       if (paramInt1 + 2 < paramInt2)
       {
         localObject = (p)paramList.get(paramInt1 + 2);
-        this.xEe.wAr = ((p)localObject).field_head;
-        localTimeLineObject = ((p)localObject).dxy();
-        this.xEe.wAm = localTimeLineObject.Etj;
-        this.xEe.wAs = aj.ap(((p)localObject).field_localPrivate, this.diE);
-        this.xEe.wAt = ((p)localObject).field_type;
-        if (localTimeLineObject.Etm == null) {
+        this.yQS.xMK = ((p)localObject).field_head;
+        localTimeLineObject = ((p)localObject).dLV();
+        this.yQS.xMF = localTimeLineObject.FQl;
+        this.yQS.xML = aj.as(((p)localObject).field_localPrivate, this.dfZ);
+        this.yQS.xMM = ((p)localObject).field_type;
+        if (localTimeLineObject.FQo == null) {
           break label371;
         }
-        this.xEe.wAu = localTimeLineObject.Etm.DaC.size();
+        this.yQS.xMN = localTimeLineObject.FQo.Etz.size();
       }
       label248:
       paramList = (p)paramList.get(paramInt1);
-      this.xEe.wAg = paramList.field_head;
-      localObject = paramList.dxy();
-      this.xEe.wAn = ((TimeLineObject)localObject).Etj;
-      this.xEe.wAo = paramList.field_type;
-      this.xEe.wAq = aj.ap(paramList.field_localPrivate, this.diE);
-      if (((TimeLineObject)localObject).Etm == null) {
+      this.yQS.xMA = paramList.field_head;
+      localObject = paramList.dLV();
+      this.yQS.xMG = ((TimeLineObject)localObject).FQl;
+      this.yQS.xMH = paramList.field_type;
+      this.yQS.xMJ = aj.as(paramList.field_localPrivate, this.dfZ);
+      if (((TimeLineObject)localObject).FQo == null) {
         break label382;
       }
     }
     label371:
     label382:
-    for (this.xEe.wAp = ((TimeLineObject)localObject).Etm.DaC.size();; this.xEe.wAp = 0)
+    for (this.yQS.xMI = ((TimeLineObject)localObject).FQo.Etz.size();; this.yQS.xMI = 0)
     {
-      if (!this.xEe.drU()) {
+      if (!this.yQS.dGt()) {
         break label393;
       }
       AppMethodBeat.o(99065);
       return 1;
-      this.xEe.wAk = 0;
+      this.yQS.rvG = 0;
       break;
-      this.xEe.wAu = 0;
+      this.yQS.xMN = 0;
       break label248;
     }
     label393:
-    if (this.xEe.drV())
+    if (this.yQS.dGu())
     {
       AppMethodBeat.o(99065);
       return 2;
@@ -129,11 +129,11 @@ public final class bc
       AppMethodBeat.o(99066);
       return;
     }
-    if (this.diE)
+    if (this.dfZ)
     {
       p localp = new p((byte)0);
       localp.field_snsId = 0L;
-      localp.xiB = -1;
+      localp.yvp = -1;
       localp.setCreateTime((int)(System.currentTimeMillis() / 1000L));
       paramList.add(0, localp);
     }
@@ -143,7 +143,7 @@ public final class bc
   private void f(boolean paramBoolean, List<p> paramList)
   {
     AppMethodBeat.i(99067);
-    this.xEe = new c();
+    this.yQS = new c();
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     HashMap localHashMap3 = new HashMap();
@@ -153,7 +153,7 @@ public final class bc
     int i = 0;
     e(paramBoolean, paramList);
     int n = paramList.size();
-    ad.d("MicroMsg.SnsSelfHelper", "initFixType ".concat(String.valueOf(n)));
+    ac.d("MicroMsg.SnsSelfHelper", "initFixType ".concat(String.valueOf(n)));
     int j = 0;
     while (j < n)
     {
@@ -162,24 +162,24 @@ public final class bc
       localHashMap2.put(Integer.valueOf(i), Integer.valueOf(i1));
       m += i1;
       localHashMap3.put(Integer.valueOf(i), Integer.valueOf(k));
-      k += hs(j, i1);
+      k += hB(j, i1);
       j += i1;
       i += 1;
     }
-    this.xjP = i;
-    this.xjQ = paramList.size();
-    ad.d("MicroMsg.SnsSelfHelper", "icount " + this.xjP);
+    this.ywI = i;
+    this.ywJ = paramList.size();
+    ac.d("MicroMsg.SnsSelfHelper", "icount " + this.ywI);
     this.list = paramList;
-    com.tencent.mm.plugin.sns.data.q.be("SnsphotoAdapter initFixType ", l);
-    this.xEd.b(this.list, localHashMap1, localHashMap2, localHashMap3, this.xjQ, this.xjP);
+    com.tencent.mm.plugin.sns.data.q.bg("SnsphotoAdapter initFixType ", l);
+    this.yQR.b(this.list, localHashMap1, localHashMap2, localHashMap3, this.ywJ, this.ywI);
     AppMethodBeat.o(99067);
   }
   
-  private int hs(int paramInt1, int paramInt2)
+  private int hB(int paramInt1, int paramInt2)
   {
     int i = 0;
     int j = 0;
-    if ((this.diE) && (paramInt1 == 0)) {
+    if ((this.dfZ) && (paramInt1 == 0)) {
       paramInt1 = j;
     }
     do
@@ -191,7 +191,7 @@ public final class bc
         if (paramInt2 > 0)
         {
           paramInt1 = i;
-          if (this.xEe.wAo == 1) {
+          if (this.yQS.xMH == 1) {
             paramInt1 = 1;
           }
         }
@@ -199,54 +199,54 @@ public final class bc
         if (paramInt2 >= 2)
         {
           i = paramInt1;
-          if (this.xEe.wAj == 1) {
+          if (this.yQS.xMD == 1) {
             i = paramInt1 + 1;
           }
         }
         paramInt1 = i;
       } while (paramInt2 < 3);
       paramInt1 = i;
-    } while (this.xEe.wAt != 1);
+    } while (this.yQS.xMM != 1);
     return i + 1;
   }
   
-  public final List<p> VZ()
+  public final List<p> WX()
   {
     AppMethodBeat.i(99059);
-    List localList = aj.a(this.userName, this.diE, this.pLA, this.xEc);
-    ad.i("MicroMsg.SnsSelfHelper", "loadData thread: %d count: %d", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(localList.size()) });
+    List localList = aj.a(this.userName, this.dfZ, this.qui, this.yQQ);
+    ac.i("MicroMsg.SnsSelfHelper", "loadData thread: %d count: %d", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(localList.size()) });
     AppMethodBeat.o(99059);
     return localList;
   }
   
-  public final void dBN()
+  public final void dQk()
   {
     AppMethodBeat.i(99062);
-    Collections.sort(this.list, this.wDj);
+    Collections.sort(this.list, this.xPE);
     AppMethodBeat.o(99062);
   }
   
-  final void dBO()
+  final void dQl()
   {
     AppMethodBeat.i(99063);
     f(false, this.list);
     AppMethodBeat.o(99063);
   }
   
-  public final void fB(List<p> paramList)
+  public final void fJ(List<p> paramList)
   {
     AppMethodBeat.i(99058);
-    if (this.xEd != null)
+    if (this.yQR != null)
     {
       if (paramList != null) {
         f(true, paramList);
       }
-      this.xEd.dBL();
+      this.yQR.dQi();
     }
     AppMethodBeat.o(99058);
   }
   
-  final boolean fF(List<Integer> paramList)
+  final boolean fN(List<Integer> paramList)
   {
     AppMethodBeat.i(99060);
     if ((paramList == null) || (paramList.size() == 0))
@@ -254,7 +254,7 @@ public final class bc
       AppMethodBeat.o(99060);
       return false;
     }
-    ad.d("MicroMsg.SnsSelfHelper", "remove Items");
+    ac.d("MicroMsg.SnsSelfHelper", "remove Items");
     paramList = paramList.iterator();
     boolean bool = false;
     label137:
@@ -269,7 +269,7 @@ public final class bc
           break label137;
         }
         p localp = (p)this.list.get(i);
-        if ((localp != null) && (localp.xiB == j))
+        if ((localp != null) && (localp.yvp == j))
         {
           this.list.remove(i);
           bool = true;
@@ -282,7 +282,7 @@ public final class bc
     return bool;
   }
   
-  final boolean fG(List<Integer> paramList)
+  final boolean fO(List<Integer> paramList)
   {
     AppMethodBeat.i(99061);
     if ((paramList == null) || (paramList.size() == 0))
@@ -290,7 +290,7 @@ public final class bc
       AppMethodBeat.o(99061);
       return false;
     }
-    ad.d("MicroMsg.SnsSelfHelper", "change Items");
+    ac.d("MicroMsg.SnsSelfHelper", "change Items");
     Object localObject = new LinkedList();
     int i = 1;
     boolean bool = false;
@@ -304,11 +304,11 @@ public final class bc
       while (localIterator.hasNext())
       {
         int j = ((Integer)localIterator.next()).intValue();
-        if (localp.xiB == j)
+        if (localp.yvp == j)
         {
-          ad.d("MicroMsg.SnsSelfHelper", "update list localId ".concat(String.valueOf(j)));
+          ac.d("MicroMsg.SnsSelfHelper", "update list localId ".concat(String.valueOf(j)));
           this.list.remove(i);
-          ((LinkedList)localObject).add(af.dtu().Ne(j));
+          ((LinkedList)localObject).add(af.dHR().Ph(j));
           i -= 1;
           bool = true;
         }
@@ -330,13 +330,13 @@ public final class bc
     }
   }
   
-  public final void g(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public final void h(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(99064);
-    ad.d("MicroMsg.SnsSelfHelper", "limitSeq ".concat(String.valueOf(paramString)));
-    this.pLA = paramString;
-    this.xEc = paramBoolean1;
-    lQ(paramBoolean2);
+    ac.d("MicroMsg.SnsSelfHelper", "limitSeq ".concat(String.valueOf(paramString)));
+    this.qui = paramString;
+    this.yQQ = paramBoolean1;
+    mJ(paramBoolean2);
     AppMethodBeat.o(99064);
   }
   
@@ -344,7 +344,7 @@ public final class bc
   {
     public abstract void b(List<p> paramList, Map<Integer, Integer> paramMap1, Map<Integer, Integer> paramMap2, Map<Integer, Integer> paramMap3, int paramInt1, int paramInt2);
     
-    public abstract void dBL();
+    public abstract void dQi();
   }
 }
 

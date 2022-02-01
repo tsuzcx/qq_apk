@@ -12,25 +12,25 @@ import android.graphics.RectF;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class t
 {
-  public static Intent a(Context paramContext, t.a parama, int paramInt, Bitmap paramBitmap, boolean paramBoolean)
+  public static Intent a(Context paramContext, a parama, int paramInt, Bitmap paramBitmap, boolean paramBoolean)
   {
     AppMethodBeat.i(43962);
     if ((parama == null) || (paramContext == null) || (parama.userName == null))
     {
-      ad.e("MicroMsg.AppBrandShortcutManager", "buildIntent, wrong parameters");
+      ac.e("MicroMsg.AppBrandShortcutManager", "buildIntent, wrong parameters");
       AppMethodBeat.o(43962);
       return null;
     }
     if ((paramBitmap == null) && (paramBoolean))
     {
-      ad.e("MicroMsg.AppBrandShortcutManager", "no bmp");
+      ac.e("MicroMsg.AppBrandShortcutManager", "no bmp");
       AppMethodBeat.o(43962);
       return null;
     }
@@ -38,7 +38,7 @@ public final class t
     if (TextUtils.isEmpty(parama.nickname))
     {
       str = parama.userName;
-      parama = s.aNE().a(paramContext.getPackageName(), paramInt, parama.userName, parama.nickname, parama.cfS, parama.appId, parama.uin, 1);
+      parama = s.aUu().a(paramContext.getPackageName(), paramInt, parama.userName, parama.nickname, parama.ccP, parama.appId, parama.uin, 1);
       if (!paramBoolean) {
         break label180;
       }
@@ -74,18 +74,18 @@ public final class t
     if (localBitmap != null)
     {
       paramBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, true);
-      ad.i("MicroMsg.AppBrandShortcutManager", "bitmap recycle %s", new Object[] { localBitmap });
+      ac.i("MicroMsg.AppBrandShortcutManager", "bitmap recycle %s", new Object[] { localBitmap });
       localBitmap.recycle();
     }
     if (paramInt == 2) {
-      a(paramContext, paramBitmap, a.aq(paramContext, 2131755659));
+      a(paramContext, paramBitmap, a.aw(paramContext, 2131755659));
     }
     for (;;)
     {
       AppMethodBeat.o(43964);
       return paramBitmap;
       if (paramInt == 1) {
-        a(paramContext, paramBitmap, a.aq(paramContext, 2131755660));
+        a(paramContext, paramBitmap, a.aw(paramContext, 2131755660));
       }
     }
   }
@@ -98,7 +98,7 @@ public final class t
       AppMethodBeat.o(43965);
       return;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(43965);
       return;
@@ -128,48 +128,48 @@ public final class t
     }
   }
   
-  public static boolean a(Context paramContext, t.a parama, int paramInt, boolean paramBoolean)
+  public static boolean a(Context paramContext, a parama, int paramInt, boolean paramBoolean)
   {
     String str1 = null;
     AppMethodBeat.i(43961);
     if ((paramContext == null) || (parama == null))
     {
-      ad.e("MicroMsg.AppBrandShortcutManager", "add fail, invalid argument");
+      ac.e("MicroMsg.AppBrandShortcutManager", "add fail, invalid argument");
       AppMethodBeat.o(43961);
       return false;
     }
-    if (parama.cfS == null)
+    if (parama.ccP == null)
     {
-      ad.e("MicroMsg.AppBrandShortcutManager", "no such user");
+      ac.e("MicroMsg.AppBrandShortcutManager", "no such user");
       AppMethodBeat.o(43961);
       return false;
     }
-    Object localObject = m(parama.cfS);
+    Object localObject = k(parama.ccP);
     if (localObject == null)
     {
-      ad.i("MicroMsg.AppBrandShortcutManager", "bitmap do not exist, delay get.");
+      ac.i("MicroMsg.AppBrandShortcutManager", "bitmap do not exist, delay get.");
       AppMethodBeat.o(43961);
       return true;
     }
     Intent localIntent = a(paramContext, parama, paramInt, a(paramContext, (Bitmap)localObject, paramInt), true);
     if (localIntent == null)
     {
-      ad.e("MicroMsg.AppBrandShortcutManager", "add fail, intent is null");
+      ac.e("MicroMsg.AppBrandShortcutManager", "add fail, intent is null");
       AppMethodBeat.o(43961);
       return false;
     }
     if ((Intent)localIntent.getParcelableExtra("android.intent.extra.shortcut.INTENT") != null)
     {
       String str2 = parama.appId;
-      String str3 = com.tencent.mm.plugin.base.model.b.eh(str2 + String.valueOf(paramInt), q.cG(true));
+      String str3 = com.tencent.mm.plugin.base.model.b.et(str2 + String.valueOf(paramInt), q.cF(true));
       if (str3 != null)
       {
-        localObject = com.tencent.mm.plugin.base.model.b.aa(str3.getBytes());
-        String str4 = com.tencent.mm.plugin.base.model.b.eh(str2 + String.valueOf(paramInt), q.getAndroidId());
+        localObject = com.tencent.mm.plugin.base.model.b.Z(str3.getBytes());
+        String str4 = com.tencent.mm.plugin.base.model.b.et(str2 + String.valueOf(paramInt), q.getAndroidId());
         if (str3 != null) {
-          str1 = com.tencent.mm.plugin.base.model.b.aa(str4.getBytes());
+          str1 = com.tencent.mm.plugin.base.model.b.Z(str4.getBytes());
         }
-        ad.i("MicroMsg.AppBrandShortcutManager", "alvinluo appId: %s, shortcutId: %s", new Object[] { str2, localObject });
+        ac.i("MicroMsg.AppBrandShortcutManager", "alvinluo appId: %s, shortcutId: %s", new Object[] { str2, localObject });
       }
     }
     for (;;)
@@ -177,13 +177,13 @@ public final class t
       try
       {
         com.tencent.mm.plugin.base.model.b.a(paramContext, localIntent, str1, (String)localObject, paramBoolean);
-        ad.i("MicroMsg.AppBrandShortcutManager", "add shortcut %s", new Object[] { parama.userName });
+        ac.i("MicroMsg.AppBrandShortcutManager", "add shortcut %s", new Object[] { parama.userName });
         AppMethodBeat.o(43961);
         return true;
       }
       catch (IllegalStateException paramContext)
       {
-        ad.w("MicroMsg.AppBrandShortcutManager", paramContext.toString());
+        ac.w("MicroMsg.AppBrandShortcutManager", paramContext.toString());
         AppMethodBeat.o(43961);
         return false;
       }
@@ -194,7 +194,7 @@ public final class t
     }
   }
   
-  public static Bitmap m(String[] paramArrayOfString)
+  public static Bitmap k(String[] paramArrayOfString)
   {
     AppMethodBeat.i(43963);
     int j = paramArrayOfString.length;
@@ -202,9 +202,9 @@ public final class t
     while (i < j)
     {
       localObject = paramArrayOfString[i];
-      if (!bt.isNullOrNil((String)localObject))
+      if (!bs.isNullOrNil((String)localObject))
       {
-        Bitmap localBitmap = com.tencent.mm.modelappbrand.a.b.aub().a((String)localObject, null);
+        Bitmap localBitmap = com.tencent.mm.modelappbrand.a.b.aAS().a((String)localObject, null);
         if (localBitmap != null)
         {
           localObject = localBitmap;
@@ -220,10 +220,28 @@ public final class t
     AppMethodBeat.o(43963);
     return localObject;
   }
+  
+  public static final class a
+  {
+    public String appId;
+    public String[] ccP;
+    public String nickname;
+    public int uin;
+    public String userName;
+    
+    public a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
+    {
+      this.uin = paramInt;
+      this.ccP = paramArrayOfString;
+      this.nickname = paramString1;
+      this.appId = paramString2;
+      this.userName = paramString3;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.t
  * JD-Core Version:    0.7.0.1
  */

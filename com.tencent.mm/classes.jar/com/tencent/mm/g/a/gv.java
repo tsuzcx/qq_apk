@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.api.f;
 import com.tencent.mm.sdk.b.b;
 
 public final class gv
   extends b
 {
-  public a dkw;
-  
   public gv()
   {
     this((byte)0);
@@ -16,17 +12,8 @@ public final class gv
   
   private gv(byte paramByte)
   {
-    AppMethodBeat.i(168628);
-    this.dkw = new a();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(168628);
-  }
-  
-  public static final class a
-  {
-    public f contact;
-    public String username;
   }
 }
 

@@ -1,132 +1,128 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import f.a.a.b;
 
 public final class dwv
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String EKK;
-  public String EKL;
-  public LinkedList<bxd> EKM;
-  public String EKN;
-  public int EKO;
+  public long DUK;
+  public String FDc;
   public String Title;
-  
-  public dwv()
-  {
-    AppMethodBeat.i(50125);
-    this.EKM = new LinkedList();
-    AppMethodBeat.o(50125);
-  }
+  public String hkR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50126);
+    AppMethodBeat.i(32533);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.EKK != null) {
-        paramVarArgs.d(1, this.EKK);
+      if (this.FDc == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Talker");
+        AppMethodBeat.o(32533);
+        throw paramVarArgs;
       }
-      if (this.EKL != null) {
-        paramVarArgs.d(2, this.EKL);
+      if (this.Title == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Title");
+        AppMethodBeat.o(32533);
+        throw paramVarArgs;
       }
-      paramVarArgs.e(3, 8, this.EKM);
-      if (this.EKN != null) {
-        paramVarArgs.d(4, this.EKN);
+      if (this.hkR == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Content");
+        AppMethodBeat.o(32533);
+        throw paramVarArgs;
       }
-      paramVarArgs.aR(5, this.EKO);
+      if (this.FDc != null) {
+        paramVarArgs.d(1, this.FDc);
+      }
       if (this.Title != null) {
-        paramVarArgs.d(6, this.Title);
+        paramVarArgs.d(2, this.Title);
       }
-      AppMethodBeat.o(50126);
+      if (this.hkR != null) {
+        paramVarArgs.d(3, this.hkR);
+      }
+      paramVarArgs.aO(4, this.DUK);
+      AppMethodBeat.o(32533);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.EKK == null) {
-        break label582;
+      if (this.FDc == null) {
+        break label540;
       }
     }
-    label582:
-    for (paramInt = f.a.a.b.b.a.e(1, this.EKK) + 0;; paramInt = 0)
+    label540:
+    for (int i = f.a.a.b.b.a.e(1, this.FDc) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.EKL != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.EKL);
-      }
-      i += f.a.a.a.c(3, 8, this.EKM);
-      paramInt = i;
-      if (this.EKN != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.EKN);
-      }
-      i = paramInt + f.a.a.b.b.a.bA(5, this.EKO);
       paramInt = i;
       if (this.Title != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.Title);
+        paramInt = i + f.a.a.b.b.a.e(2, this.Title);
       }
-      AppMethodBeat.o(50126);
-      return paramInt;
+      i = paramInt;
+      if (this.hkR != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.hkR);
+      }
+      paramInt = f.a.a.b.b.a.p(4, this.DUK);
+      AppMethodBeat.o(32533);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.EKM.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(50126);
+        if (this.FDc == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Talker");
+          AppMethodBeat.o(32533);
+          throw paramVarArgs;
+        }
+        if (this.Title == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Title");
+          AppMethodBeat.o(32533);
+          throw paramVarArgs;
+        }
+        if (this.hkR == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Content");
+          AppMethodBeat.o(32533);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32533);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         dwv localdwv = (dwv)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(50126);
+          AppMethodBeat.o(32533);
           return -1;
         case 1: 
-          localdwv.EKK = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(50126);
+          localdwv.FDc = locala.LVo.readString();
+          AppMethodBeat.o(32533);
           return 0;
         case 2: 
-          localdwv.EKL = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(50126);
+          localdwv.Title = locala.LVo.readString();
+          AppMethodBeat.o(32533);
           return 0;
         case 3: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new bxd();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((bxd)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdwv.EKM.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(50126);
-          return 0;
-        case 4: 
-          localdwv.EKN = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(50126);
-          return 0;
-        case 5: 
-          localdwv.EKO = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(50126);
+          localdwv.hkR = locala.LVo.readString();
+          AppMethodBeat.o(32533);
           return 0;
         }
-        localdwv.Title = ((f.a.a.a.a)localObject1).KhF.readString();
-        AppMethodBeat.o(50126);
+        localdwv.DUK = locala.LVo.xG();
+        AppMethodBeat.o(32533);
         return 0;
       }
-      AppMethodBeat.o(50126);
+      AppMethodBeat.o(32533);
       return -1;
     }
   }

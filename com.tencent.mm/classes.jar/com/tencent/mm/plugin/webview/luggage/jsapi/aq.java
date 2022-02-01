@@ -8,12 +8,12 @@ import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
 import com.tencent.luggage.d.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.webview.luggage.c.b;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.vfs.i;
@@ -27,17 +27,17 @@ public class aq
   public final void b(final a<f>.a parama)
   {
     AppMethodBeat.i(78598);
-    ad.i("MicroMsg.GameJsApiPreviewVideo", "invoke");
-    if (bt.isNullOrNil(parama.bZV.bZb.optString("localId")))
+    ac.i("MicroMsg.GameJsApiPreviewVideo", "invoke");
+    if (bs.isNullOrNil(parama.bWS.bVY.optString("localId")))
     {
-      ad.i("MicroMsg.GameJsApiPreviewVideo", "data is invalid");
+      ac.i("MicroMsg.GameJsApiPreviewVideo", "data is invalid");
       parama.a("invalid_data", null);
       AppMethodBeat.o(78598);
       return;
     }
-    String str = parama.bZV.bZb.optString("localId");
-    ad.i("MicroMsg.GameJsApiPreviewVideo", "localId:%s", new Object[] { str });
-    final MMActivity localMMActivity = (MMActivity)((f)parama.bZU).mContext;
+    String str = parama.bWS.bVY.optString("localId");
+    ac.i("MicroMsg.GameJsApiPreviewVideo", "localId:%s", new Object[] { str });
+    final MMActivity localMMActivity = (MMActivity)((f)parama.bWR).mContext;
     localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
     {
       public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -62,27 +62,27 @@ public class aq
       }
     });
     Intent localIntent = new Intent();
-    if (bt.nullAsNil(str).trim().startsWith("weixin://bgmixid/"))
+    if (bs.nullAsNil(str).trim().startsWith("weixin://bgmixid/"))
     {
-      localIntent.putExtra("game_bg_mix_fake_local_id", bt.nullAsNil(str).trim());
+      localIntent.putExtra("game_bg_mix_fake_local_id", bs.nullAsNil(str).trim());
       d.b(localMMActivity, "game", ".media.background.GameFakeVideoUI", localIntent, hashCode() & 0xFFFF);
       AppMethodBeat.o(78598);
       return;
     }
-    WebViewJSSDKFileItem localWebViewJSSDKFileItem = b.awq(str);
-    if ((localWebViewJSSDKFileItem == null) || (TextUtils.isEmpty(localWebViewJSSDKFileItem.jau)) || (!i.eK(localWebViewJSSDKFileItem.jau)))
+    WebViewJSSDKFileItem localWebViewJSSDKFileItem = b.aBI(str);
+    if ((localWebViewJSSDKFileItem == null) || (TextUtils.isEmpty(localWebViewJSSDKFileItem.jAH)) || (!i.eA(localWebViewJSSDKFileItem.jAH)))
     {
-      ad.e("MicroMsg.GameJsApiPreviewVideo", "the item is null or the File item not exist for localId: %s", new Object[] { str });
+      ac.e("MicroMsg.GameJsApiPreviewVideo", "the item is null or the File item not exist for localId: %s", new Object[] { str });
       parama.a("fail", null);
       AppMethodBeat.o(78598);
       return;
     }
-    localIntent.putExtra("key_video_path", localWebViewJSSDKFileItem.jau);
+    localIntent.putExtra("key_video_path", localWebViewJSSDKFileItem.jAH);
     d.b(localMMActivity, "card", ".ui.CardGiftVideoUI", localIntent, hashCode() & 0xFFFF);
     AppMethodBeat.o(78598);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

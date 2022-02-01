@@ -7,14 +7,14 @@ import java.util.Arrays;
 public final class k
   extends l
 {
-  private final char[] aPb;
+  private final char[] aPR;
   
   private k(char[] paramArrayOfChar)
   {
-    this.aPb = paramArrayOfChar;
+    this.aPR = paramArrayOfChar;
   }
   
-  public static k dF(int paramInt)
+  public static k dE(int paramInt)
   {
     AppMethodBeat.i(74792);
     if (paramInt < 0)
@@ -33,7 +33,7 @@ public final class k
   protected final i a(Writer paramWriter)
   {
     AppMethodBeat.i(74793);
-    paramWriter = new a(paramWriter, this.aPb, (byte)0);
+    paramWriter = new a(paramWriter, this.aPR, (byte)0);
     AppMethodBeat.o(74793);
     return paramWriter;
   }
@@ -41,94 +41,94 @@ public final class k
   static final class a
     extends i
   {
-    private final char[] aPb;
-    private int aPc;
+    private final char[] aPR;
+    private int aPS;
     
     private a(Writer paramWriter, char[] paramArrayOfChar)
     {
       super();
-      this.aPb = paramArrayOfChar;
+      this.aPR = paramArrayOfChar;
     }
     
-    private boolean rd()
+    private boolean rn()
     {
       int i = 0;
       AppMethodBeat.i(74791);
-      if (this.aPb == null)
+      if (this.aPR == null)
       {
         AppMethodBeat.o(74791);
         return false;
       }
-      this.aPa.write(10);
-      while (i < this.aPc)
+      this.aPQ.write(10);
+      while (i < this.aPS)
       {
-        this.aPa.write(this.aPb);
+        this.aPQ.write(this.aPR);
         i += 1;
       }
       AppMethodBeat.o(74791);
       return true;
     }
     
-    protected final void qW()
+    protected final void rg()
     {
       AppMethodBeat.i(74784);
-      this.aPc += 1;
-      this.aPa.write(91);
-      rd();
+      this.aPS += 1;
+      this.aPQ.write(91);
+      rn();
       AppMethodBeat.o(74784);
     }
     
-    protected final void qX()
+    protected final void rh()
     {
       AppMethodBeat.i(74785);
-      this.aPc -= 1;
-      rd();
-      this.aPa.write(93);
+      this.aPS -= 1;
+      rn();
+      this.aPQ.write(93);
       AppMethodBeat.o(74785);
     }
     
-    protected final void qY()
+    protected final void ri()
     {
       AppMethodBeat.i(74786);
-      this.aPa.write(44);
-      if (!rd()) {
-        this.aPa.write(32);
+      this.aPQ.write(44);
+      if (!rn()) {
+        this.aPQ.write(32);
       }
       AppMethodBeat.o(74786);
     }
     
-    protected final void qZ()
+    protected final void rj()
     {
       AppMethodBeat.i(74787);
-      this.aPc += 1;
-      this.aPa.write(123);
-      rd();
+      this.aPS += 1;
+      this.aPQ.write(123);
+      rn();
       AppMethodBeat.o(74787);
     }
     
-    protected final void ra()
+    protected final void rk()
     {
       AppMethodBeat.i(74788);
-      this.aPc -= 1;
-      rd();
-      this.aPa.write(125);
+      this.aPS -= 1;
+      rn();
+      this.aPQ.write(125);
       AppMethodBeat.o(74788);
     }
     
-    protected final void rb()
+    protected final void rl()
     {
       AppMethodBeat.i(74789);
-      this.aPa.write(58);
-      this.aPa.write(32);
+      this.aPQ.write(58);
+      this.aPQ.write(32);
       AppMethodBeat.o(74789);
     }
     
-    protected final void rc()
+    protected final void rm()
     {
       AppMethodBeat.i(74790);
-      this.aPa.write(44);
-      if (!rd()) {
-        this.aPa.write(32);
+      this.aPQ.write(44);
+      if (!rn()) {
+        this.aPQ.write(32);
       }
       AppMethodBeat.o(74790);
     }

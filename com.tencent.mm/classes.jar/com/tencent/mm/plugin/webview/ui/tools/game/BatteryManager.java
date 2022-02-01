@@ -7,8 +7,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class BatteryManager
 {
-  static boolean Bmq;
-  public static BatteryChangedReceiver Bmr;
+  static boolean CEx;
+  public static BatteryChangedReceiver CEy;
   
   public static final class BatteryChangedReceiver
     extends BroadcastReceiver
@@ -23,12 +23,12 @@ public final class BatteryManager
       }
       if ("android.intent.action.BATTERY_OKAY".equals(paramIntent.getAction()))
       {
-        BatteryManager.Bmq = false;
+        BatteryManager.CEx = false;
         AppMethodBeat.o(80804);
         return;
       }
       if ("android.intent.action.BATTERY_LOW".equals(paramIntent.getAction())) {
-        BatteryManager.Bmq = true;
+        BatteryManager.CEx = true;
       }
       AppMethodBeat.o(80804);
     }

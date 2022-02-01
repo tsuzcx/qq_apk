@@ -5,39 +5,34 @@ import android.content.ContextWrapper;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint.Align;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.text.TextPaint;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.e;
+import com.tencent.mm.cf.e;
 import com.tencent.mm.plugin.appbrand.app.g;
 import com.tencent.mm.plugin.appbrand.widget.input.panel.c;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class ak
   extends c
 {
-  private static final int mem;
-  private e mel = null;
+  private static final int mGl;
+  private e mGk = null;
   
   static
   {
     AppMethodBeat.i(49920);
-    mem = aj.getContext().getResources().getDimensionPixelSize(2131165517);
+    mGl = ai.getContext().getResources().getDimensionPixelSize(2131165517);
     AppMethodBeat.o(49920);
   }
   
-  public final e btP()
+  public final e bAO()
   {
     AppMethodBeat.i(49919);
-    if (this.mel == null) {
-      this.mel = new a();
+    if (this.mGk == null) {
+      this.mGk = new a();
     }
-    e locale = this.mel;
+    e locale = this.mGk;
     AppMethodBeat.o(49919);
     return locale;
   }
@@ -45,12 +40,12 @@ final class ak
   static final class a
     extends e
   {
-    private String[] men;
+    private String[] mGm;
     
     static
     {
       AppMethodBeat.i(49910);
-      g.DE("com.tencent.mm.plugin.emoji.PluginEmoji");
+      g.HI("com.tencent.mm.plugin.emoji.PluginEmoji");
       AppMethodBeat.o(49910);
     }
     
@@ -58,42 +53,42 @@ final class ak
     {
       super();
       AppMethodBeat.i(49905);
-      this.men = null;
-      this.men = aj.getContext().getResources().getStringArray(2130903070);
+      this.mGm = null;
+      this.mGm = ai.getContext().getResources().getStringArray(2130903070);
       AppMethodBeat.o(49905);
     }
     
-    public final int btQ()
+    public final int bAP()
     {
       return 0;
     }
     
-    public final int btR()
+    public final int bAQ()
     {
-      if (this.men != null) {
-        return this.men.length;
+      if (this.mGm != null) {
+        return this.mGm.length;
       }
       return 0;
     }
     
-    public final Drawable vc(int paramInt)
+    public final Drawable vT(int paramInt)
     {
       AppMethodBeat.i(49906);
-      f.bsU();
-      ak.b localb = new ak.b(vd(paramInt), ak.mem, (byte)0);
+      f.bzU();
+      ak.b localb = new ak.b(vU(paramInt), ak.mGl, (byte)0);
       AppMethodBeat.o(49906);
       return localb;
     }
     
-    public final String vd(int paramInt)
+    public final String vU(int paramInt)
     {
       AppMethodBeat.i(49907);
-      if ((this.men == null) || (paramInt < 0) || (paramInt > this.men.length - 1))
+      if ((this.mGm == null) || (paramInt < 0) || (paramInt > this.mGm.length - 1))
       {
         AppMethodBeat.o(49907);
         return "";
       }
-      Object localObject2 = this.men[paramInt].split(" ");
+      Object localObject2 = this.mGm[paramInt].split(" ");
       Object localObject1 = Character.toChars(Integer.decode(localObject2[0]).intValue());
       localObject2 = Character.toChars(Integer.decode(localObject2[1]).intValue());
       localObject1 = (char[])localObject1 + (char[])localObject2;
@@ -101,77 +96,12 @@ final class ak
       return localObject1;
     }
     
-    public final String ve(int paramInt)
+    public final String vV(int paramInt)
     {
       AppMethodBeat.i(49909);
-      String str = vd(paramInt);
+      String str = vU(paramInt);
       AppMethodBeat.o(49909);
       return str;
-    }
-  }
-  
-  static final class b
-    extends Drawable
-  {
-    private final TextPaint Lm;
-    private final int mSize;
-    private final String mText;
-    private Rect meo;
-    
-    private b(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(49911);
-      this.mText = paramString;
-      this.mSize = paramInt;
-      this.Lm = new TextPaint();
-      this.Lm.setAntiAlias(true);
-      this.Lm.setTextAlign(Paint.Align.CENTER);
-      this.Lm.setTextSize(this.mSize);
-      this.meo = new Rect();
-      this.Lm.getTextBounds(this.mText, 0, this.mText.length(), this.meo);
-      AppMethodBeat.o(49911);
-    }
-    
-    public final void draw(Canvas paramCanvas)
-    {
-      AppMethodBeat.i(49914);
-      paramCanvas.drawText(this.mText, getBounds().width() / 2, getBounds().height() / 2 - (this.Lm.descent() + this.Lm.ascent()) / 2.0F, this.Lm);
-      AppMethodBeat.o(49914);
-    }
-    
-    public final int getIntrinsicHeight()
-    {
-      AppMethodBeat.i(49913);
-      int i = this.meo.height();
-      AppMethodBeat.o(49913);
-      return i;
-    }
-    
-    public final int getIntrinsicWidth()
-    {
-      AppMethodBeat.i(49912);
-      int i = this.meo.width();
-      AppMethodBeat.o(49912);
-      return i;
-    }
-    
-    public final int getOpacity()
-    {
-      return -3;
-    }
-    
-    public final void setAlpha(int paramInt)
-    {
-      AppMethodBeat.i(49915);
-      this.Lm.setAlpha(paramInt);
-      AppMethodBeat.o(49915);
-    }
-    
-    public final void setColorFilter(ColorFilter paramColorFilter)
-    {
-      AppMethodBeat.i(49916);
-      this.Lm.setColorFilter(paramColorFilter);
-      AppMethodBeat.o(49916);
     }
   }
   
@@ -231,7 +161,7 @@ final class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.ak
  * JD-Core Version:    0.7.0.1
  */

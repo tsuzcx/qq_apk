@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bct;
-import com.tencent.mm.protocal.protobuf.bcu;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bgl;
+import com.tencent.mm.protocal.protobuf.bgm;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class d
   extends n
@@ -20,25 +20,25 @@ public final class d
 {
   private g callback;
   private b rr;
-  private bct sCL;
-  public bcu sCM;
+  private bgl tKt;
+  public bgm tKu;
   
   public d()
   {
     AppMethodBeat.i(25460);
     this.rr = null;
-    this.sCL = null;
-    this.sCM = null;
+    this.tKt = null;
+    this.tKu = null;
     b.a locala = new b.a();
-    locala.gUU = new bct();
-    locala.gUV = new bcu();
+    locala.hvt = new bgl();
+    locala.hvu = new bgm();
     locala.funcId = 288;
     locala.uri = "/cgi-bin/micromsg-bin/getwcogiftcardlist";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    this.sCL = ((bct)this.rr.gUS.gUX);
-    ad.i("MicroMsg.NetSceneIPCallGetGiftCardList", "NetSceneIPCallGetGiftCardList");
+    this.rr = locala.aAz();
+    this.tKt = ((bgl)this.rr.hvr.hvw);
+    ac.i("MicroMsg.NetSceneIPCallGetGiftCardList", "NetSceneIPCallGetGiftCardList");
     AppMethodBeat.o(25460);
   }
   
@@ -59,8 +59,8 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25462);
-    ad.i("MicroMsg.NetSceneIPCallGetGiftCardList", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.sCM = ((bcu)((b)paramq).gUT.gUX);
+    ac.i("MicroMsg.NetSceneIPCallGetGiftCardList", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.tKu = ((bgm)((b)paramq).hvs.hvw);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

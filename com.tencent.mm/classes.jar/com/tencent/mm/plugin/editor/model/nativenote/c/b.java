@@ -4,59 +4,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public float cEZ = -1.0F;
-  public float cFa = -1.0F;
-  public int nBH = 0;
-  public float ooX = -1.0F;
-  public float ooY = -1.0F;
-  public int ooZ = -1;
-  public float opa = -1.0F;
-  public float opb = -1.0F;
-  public float opc = -1.0F;
-  public float opd = -1.0F;
-  public int ope = -1;
+  public float cCh = -1.0F;
+  public float cCi = -1.0F;
+  public float oSA = -1.0F;
+  public float oSB = -1.0F;
+  public float oSC = -1.0F;
+  public float oSD = -1.0F;
+  public int oSE = -1;
+  public float oSx = -1.0F;
+  public float oSy = -1.0F;
+  public int oSz = -1;
+  public int oeH = 0;
   
-  private boolean bST()
+  private boolean cai()
   {
-    return (this.ooX >= 0.0F) && (this.ooY >= 0.0F) && (this.cEZ >= 0.0F) && (this.cFa >= 0.0F) && (this.ooZ >= 0);
+    return (this.oSx >= 0.0F) && (this.oSy >= 0.0F) && (this.cCh >= 0.0F) && (this.cCi >= 0.0F) && (this.oSz >= 0);
   }
   
-  private boolean bSU()
+  private boolean caj()
   {
-    return (this.opa >= 0.0F) && (this.opb >= 0.0F) && (this.opc >= 0.0F) && (this.opd >= 0.0F) && (this.ope >= 0);
+    return (this.oSA >= 0.0F) && (this.oSB >= 0.0F) && (this.oSC >= 0.0F) && (this.oSD >= 0.0F) && (this.oSE >= 0);
   }
   
   public final void a(int paramInt1, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt2)
   {
-    this.nBH = paramInt1;
-    this.ooX = paramFloat1;
-    this.ooY = paramFloat2;
-    this.cEZ = paramFloat3;
-    this.cFa = paramFloat4;
-    if (this.nBH == 1)
+    this.oeH = paramInt1;
+    this.oSx = paramFloat1;
+    this.oSy = paramFloat2;
+    this.cCh = paramFloat3;
+    this.cCi = paramFloat4;
+    if (this.oeH == 1)
     {
-      this.ooZ = paramInt2;
+      this.oSz = paramInt2;
       return;
     }
-    this.ooZ = 0;
+    this.oSz = 0;
   }
   
   public final int getType()
   {
     AppMethodBeat.i(181848);
-    if (!bST())
+    if (!cai())
     {
       AppMethodBeat.o(181848);
       return 0;
     }
-    if (!bSU())
+    if (!caj())
     {
       AppMethodBeat.o(181848);
       return 1;
     }
-    int i = Math.abs((int)(this.cEZ - this.opc));
-    int j = Math.abs((int)(this.cFa - this.opd));
-    if ((i > 30) || (j > 30) || (this.ooZ != this.ope))
+    int i = Math.abs((int)(this.cCh - this.oSC));
+    int j = Math.abs((int)(this.cCi - this.oSD));
+    if ((i > 30) || (j > 30) || (this.oSz != this.oSE))
     {
       AppMethodBeat.o(181848);
       return 3;
@@ -67,22 +67,22 @@ public final class b
   
   public final void reset()
   {
-    this.nBH = 0;
-    this.ooX = -1.0F;
-    this.ooY = -1.0F;
-    this.cEZ = -1.0F;
-    this.cFa = -1.0F;
-    this.ooZ = -1;
-    this.opa = -1.0F;
-    this.opb = -1.0F;
-    this.opc = -1.0F;
-    this.opd = -1.0F;
-    this.ope = -1;
+    this.oeH = 0;
+    this.oSx = -1.0F;
+    this.oSy = -1.0F;
+    this.cCh = -1.0F;
+    this.cCi = -1.0F;
+    this.oSz = -1;
+    this.oSA = -1.0F;
+    this.oSB = -1.0F;
+    this.oSC = -1.0F;
+    this.oSD = -1.0F;
+    this.oSE = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.c.b
  * JD-Core Version:    0.7.0.1
  */

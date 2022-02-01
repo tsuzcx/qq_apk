@@ -6,8 +6,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.ago;
-import com.tencent.mm.protocal.protobuf.agq;
+import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.protocal.protobuf.ahp;
 
 public final class o
   extends b
@@ -26,7 +26,7 @@ public final class o
     {
       paramView = new a();
       localView = a(View.inflate(paramViewGroup, 2131493965, null), paramView, paramg);
-      paramView.fwR = ((TextView)localView.findViewById(2131299846));
+      paramView.fAy = ((TextView)localView.findViewById(2131299846));
       paramViewGroup = paramView;
     }
     for (;;)
@@ -35,35 +35,35 @@ public final class o
       if ((paramg.field_favProto.desc != null) && (paramg.field_favProto.desc.length() > 0)) {
         break;
       }
-      paramViewGroup.fwR.setText("");
+      paramViewGroup.fAy.setText("");
       AppMethodBeat.o(107489);
       return localView;
       paramViewGroup = (a)paramView.getTag();
       localView = paramView;
     }
-    paramViewGroup.fwR.setText(k.b(paramViewGroup.fwR.getContext(), paramg.field_favProto.desc, paramViewGroup.fwR.getTextSize()));
+    paramViewGroup.fAy.setText(k.b(paramViewGroup.fAy.getContext(), paramg.field_favProto.desc, paramViewGroup.fAy.getTextSize()));
     AppMethodBeat.o(107489);
     return localView;
   }
   
-  public final void a(View paramView, agq paramagq)
+  public final void a(View paramView, ahp paramahp)
   {
     AppMethodBeat.i(107490);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.qaS, paramagq);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.qJy, paramahp);
     AppMethodBeat.o(107490);
   }
   
   public static final class a
     extends b.b
   {
-    TextView fwR;
+    TextView fAy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.e.o
  * JD-Core Version:    0.7.0.1
  */

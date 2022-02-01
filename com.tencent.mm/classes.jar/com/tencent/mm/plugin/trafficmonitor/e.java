@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.trafficmonitor;
 
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public abstract class e
 {
+  f AiY;
+  a AiZ;
   private final String TAG = "MicroMsg.TrafficInspector";
   int currentIndex;
   int id;
   long interval;
   int type;
-  f yVj;
-  a yVk;
   
-  static boolean uf(long paramLong)
+  static boolean yI(long paramLong)
   {
-    if (TrafficClickFlowReceiver.uc(paramLong))
+    if (TrafficClickFlowReceiver.yF(paramLong))
     {
-      boolean bool = TrafficClickFlowReceiver.ud(paramLong);
-      ad.i("MicroMsg.TrafficInspector", "hasDownload");
+      boolean bool = TrafficClickFlowReceiver.yG(paramLong);
+      ac.i("MicroMsg.TrafficInspector", "hasDownload");
       return bool;
     }
     return false;
   }
   
-  abstract void dQr();
+  abstract void eeQ();
   
-  final void dQt()
+  final void eeS()
   {
-    g.dQu();
-    int i = g.dQx();
+    g.eeT();
+    int i = g.eeW();
     if (this.id == i)
     {
-      TrafficClickFlowReceiver.dQs();
-      g.dQu();
-      g.dQw();
+      TrafficClickFlowReceiver.eeR();
+      g.eeT();
+      g.eeV();
     }
   }
   
@@ -41,7 +41,7 @@ public abstract class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.e
  * JD-Core Version:    0.7.0.1
  */

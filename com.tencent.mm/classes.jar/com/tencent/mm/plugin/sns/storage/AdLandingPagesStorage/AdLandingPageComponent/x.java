@@ -12,26 +12,26 @@ public abstract class x
   public float paddingTop;
   public int subType;
   public int type;
-  public String wWE;
-  public int wWF;
-  public float wWG = -2.0F;
-  public float wWH = -2.0F;
-  public boolean wWI;
-  public String wWJ = "";
-  public int wWK;
-  public int wWL;
-  public boolean wWM;
-  public boolean wWN;
   public float width;
+  public boolean yjA;
+  public boolean yjB;
+  public String yjs;
+  public int yjt;
+  public float yju = -2.0F;
+  public float yjv = -2.0F;
+  public boolean yjw;
+  public String yjx = "";
+  public int yjy;
+  public int yjz;
   
-  protected List<x> dvE()
+  protected List<x> dKd()
   {
     return Collections.emptyList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x
  * JD-Core Version:    0.7.0.1
  */

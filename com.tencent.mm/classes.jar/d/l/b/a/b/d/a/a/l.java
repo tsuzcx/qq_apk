@@ -7,9 +7,9 @@ public enum l
   static
   {
     AppMethodBeat.i(57695);
-    Jzr = new l("SUPERTYPE", 0);
-    Jzs = new l("COMMON", 1);
-    Jzt = new l[] { Jzr, Jzs };
+    LmK = new l("SUPERTYPE", 0);
+    LmL = new l("COMMON", 1);
+    LmM = new l[] { LmK, LmL };
     AppMethodBeat.o(57695);
   }
   
@@ -17,7 +17,7 @@ public enum l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.a.l
  * JD-Core Version:    0.7.0.1
  */

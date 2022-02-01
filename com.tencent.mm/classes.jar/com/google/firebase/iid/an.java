@@ -3,8 +3,8 @@ package com.google.firebase.iid;
 final class an
   implements Runnable
 {
-  private final aj bEB;
-  private final c bEC;
+  private final aj bCj;
+  private final c bCk;
   
   an(aj arg1, c arg2) {}
   

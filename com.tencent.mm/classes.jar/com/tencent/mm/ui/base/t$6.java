@@ -12,7 +12,7 @@ final class t$6
   public final void run()
   {
     AppMethodBeat.i(142237);
-    this.GaG.showAtLocation(this.hUJ.getWindow().getDecorView(), 48, 0, this.GaI);
+    this.HAu.showAtLocation(this.iuN.getWindow().getDecorView(), 48, 0, this.HAw);
     AppMethodBeat.o(142237);
   }
 }

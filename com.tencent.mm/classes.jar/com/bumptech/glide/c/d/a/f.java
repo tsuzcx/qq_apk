@@ -12,14 +12,14 @@ import java.nio.charset.Charset;
 public final class f
   implements com.bumptech.glide.c.f
 {
-  static final byte[] aIo;
-  private static final int[] aIp;
+  static final byte[] aJe;
+  private static final int[] aJf;
   
   static
   {
     AppMethodBeat.i(77383);
-    aIo = "".getBytes(Charset.forName("UTF-8"));
-    aIp = new int[] { 0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8 };
+    aJe = "".getBytes(Charset.forName("UTF-8"));
+    aJf = new int[] { 0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8 };
     AppMethodBeat.o(77383);
   }
   
@@ -31,23 +31,23 @@ public final class f
     int n;
     int m;
     int i1;
-    switch (paramb.ds(6))
+    switch (paramb.dr(6))
     {
     default: 
       Log.isLoggable("DfltImageHeaderParser", 3);
       localByteOrder = ByteOrder.BIG_ENDIAN;
-      paramb.aIq.order(localByteOrder);
-      int j = paramb.dr(10) + 6;
-      int k = paramb.ds(j);
+      paramb.aJg.order(localByteOrder);
+      int j = paramb.dq(10) + 6;
+      int k = paramb.dr(j);
       i = 0;
       if (i >= k) {
         break label377;
       }
       n = j + 2 + i * 12;
-      m = paramb.ds(n);
+      m = paramb.dr(n);
       if (m == 274)
       {
-        i1 = paramb.ds(n + 2);
+        i1 = paramb.dr(n + 2);
         if ((i1 > 0) && (i1 <= 12)) {
           break label161;
         }
@@ -66,7 +66,7 @@ public final class f
       localByteOrder = ByteOrder.LITTLE_ENDIAN;
       break;
       label161:
-      int i2 = paramb.dr(n + 4);
+      int i2 = paramb.dq(n + 4);
       if (i2 < 0)
       {
         if (!Log.isLoggable("DfltImageHeaderParser", 3)) {}
@@ -76,7 +76,7 @@ public final class f
         if (Log.isLoggable("DfltImageHeaderParser", 3)) {
           new StringBuilder("Got tagIndex=").append(i).append(" tagType=").append(m).append(" formatCode=").append(i1).append(" componentCount=").append(i2);
         }
-        i1 = aIp[i1] + i2;
+        i1 = aJf[i1] + i2;
         if (i1 > 4)
         {
           if (!Log.isLoggable("DfltImageHeaderParser", 3)) {}
@@ -84,7 +84,7 @@ public final class f
         else
         {
           n += 8;
-          if ((n < 0) || (n > paramb.aIq.remaining()))
+          if ((n < 0) || (n > paramb.aJg.remaining()))
           {
             if (Log.isLoggable("DfltImageHeaderParser", 3)) {
               new StringBuilder("Illegal tagValueOffset=").append(n).append(" tagType=").append(m);
@@ -92,7 +92,7 @@ public final class f
           }
           else
           {
-            if ((i1 >= 0) && (n + i1 <= paramb.aIq.remaining())) {
+            if ((i1 >= 0) && (n + i1 <= paramb.aJg.remaining())) {
               break label363;
             }
             if (!Log.isLoggable("DfltImageHeaderParser", 3)) {}
@@ -101,7 +101,7 @@ public final class f
       }
     }
     label363:
-    int i = paramb.ds(n);
+    int i = paramb.dr(n);
     AppMethodBeat.o(77382);
     return i;
     label377:
@@ -116,7 +116,7 @@ public final class f
     //   0: iconst_m1
     //   1: istore 4
     //   3: ldc 123
-    //   5: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: invokeinterface 126 1 0
     //   14: istore_2
@@ -140,7 +140,7 @@ public final class f
     //   47: invokestatic 72	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
     //   50: pop
     //   51: ldc 123
-    //   53: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   53: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   56: iconst_m1
     //   57: ireturn
     //   58: iconst_0
@@ -164,7 +164,7 @@ public final class f
     //   92: invokestatic 72	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
     //   95: pop
     //   96: ldc 123
-    //   98: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   101: iconst_m1
     //   102: ireturn
     //   103: aload_0
@@ -264,14 +264,14 @@ public final class f
     //   296: aload 8
     //   298: invokeinterface 162 2 0
     //   303: ldc 123
-    //   305: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   305: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   308: iload_3
     //   309: ireturn
     //   310: aload 8
     //   312: iload_2
     //   313: invokestatic 165	com/bumptech/glide/c/d/a/f:c	([BI)Z
     //   316: ifeq +20 -> 336
-    //   319: new 11	com/bumptech/glide/c/d/a/f$b
+    //   319: new 10	com/bumptech/glide/c/d/a/f$b
     //   322: dup
     //   323: aload 8
     //   325: iload_2
@@ -291,7 +291,7 @@ public final class f
     //   351: aload 8
     //   353: invokeinterface 162 2 0
     //   358: ldc 123
-    //   360: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   360: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   363: aload_0
     //   364: athrow
     // Local variable table:
@@ -315,80 +315,80 @@ public final class f
   private static com.bumptech.glide.c.f.a a(c paramc)
   {
     AppMethodBeat.i(77380);
-    int i = paramc.oR();
+    int i = paramc.pb();
     if (i == 65496)
     {
-      paramc = com.bumptech.glide.c.f.a.aCn;
+      paramc = com.bumptech.glide.c.f.a.aDf;
       AppMethodBeat.o(77380);
       return paramc;
     }
-    i = i << 16 & 0xFFFF0000 | paramc.oR() & 0xFFFF;
+    i = i << 16 & 0xFFFF0000 | paramc.pb() & 0xFFFF;
     if (i == -1991225785)
     {
       paramc.skip(21L);
-      if (paramc.oT() >= 3)
+      if (paramc.pd() >= 3)
       {
-        paramc = com.bumptech.glide.c.f.a.aCp;
+        paramc = com.bumptech.glide.c.f.a.aDh;
         AppMethodBeat.o(77380);
         return paramc;
       }
-      paramc = com.bumptech.glide.c.f.a.aCq;
+      paramc = com.bumptech.glide.c.f.a.aDi;
       AppMethodBeat.o(77380);
       return paramc;
     }
     if (i >> 8 == 4671814)
     {
-      paramc = com.bumptech.glide.c.f.a.aCm;
+      paramc = com.bumptech.glide.c.f.a.aDe;
       AppMethodBeat.o(77380);
       return paramc;
     }
     if (i != 1380533830)
     {
-      paramc = com.bumptech.glide.c.f.a.aCt;
+      paramc = com.bumptech.glide.c.f.a.aDl;
       AppMethodBeat.o(77380);
       return paramc;
     }
     paramc.skip(4L);
-    if ((paramc.oR() << 16 & 0xFFFF0000 | paramc.oR() & 0xFFFF) != 1464156752)
+    if ((paramc.pb() << 16 & 0xFFFF0000 | paramc.pb() & 0xFFFF) != 1464156752)
     {
-      paramc = com.bumptech.glide.c.f.a.aCt;
+      paramc = com.bumptech.glide.c.f.a.aDl;
       AppMethodBeat.o(77380);
       return paramc;
     }
-    i = paramc.oR() << 16 & 0xFFFF0000 | paramc.oR() & 0xFFFF;
+    i = paramc.pb() << 16 & 0xFFFF0000 | paramc.pb() & 0xFFFF;
     if ((i & 0xFFFFFF00) != 1448097792)
     {
-      paramc = com.bumptech.glide.c.f.a.aCt;
+      paramc = com.bumptech.glide.c.f.a.aDl;
       AppMethodBeat.o(77380);
       return paramc;
     }
     if ((i & 0xFF) == 88)
     {
       paramc.skip(4L);
-      if ((paramc.oT() & 0x10) != 0)
+      if ((paramc.pd() & 0x10) != 0)
       {
-        paramc = com.bumptech.glide.c.f.a.aCr;
+        paramc = com.bumptech.glide.c.f.a.aDj;
         AppMethodBeat.o(77380);
         return paramc;
       }
-      paramc = com.bumptech.glide.c.f.a.aCs;
+      paramc = com.bumptech.glide.c.f.a.aDk;
       AppMethodBeat.o(77380);
       return paramc;
     }
     if ((i & 0xFF) == 76)
     {
       paramc.skip(4L);
-      if ((paramc.oT() & 0x8) != 0)
+      if ((paramc.pd() & 0x8) != 0)
       {
-        paramc = com.bumptech.glide.c.f.a.aCr;
+        paramc = com.bumptech.glide.c.f.a.aDj;
         AppMethodBeat.o(77380);
         return paramc;
       }
-      paramc = com.bumptech.glide.c.f.a.aCs;
+      paramc = com.bumptech.glide.c.f.a.aDk;
       AppMethodBeat.o(77380);
       return paramc;
     }
-    paramc = com.bumptech.glide.c.f.a.aCs;
+    paramc = com.bumptech.glide.c.f.a.aDk;
     AppMethodBeat.o(77380);
     return paramc;
   }
@@ -396,7 +396,7 @@ public final class f
   private static boolean c(byte[] paramArrayOfByte, int paramInt)
   {
     boolean bool;
-    if ((paramArrayOfByte != null) && (paramInt > aIo.length))
+    if ((paramArrayOfByte != null) && (paramInt > aJe.length))
     {
       bool = true;
       if (bool) {
@@ -407,10 +407,10 @@ public final class f
     {
       for (;;)
       {
-        if (paramInt >= aIo.length) {
+        if (paramInt >= aJe.length) {
           return bool;
         }
-        if (paramArrayOfByte[paramInt] != aIo[paramInt])
+        if (paramArrayOfByte[paramInt] != aJe[paramInt])
         {
           return false;
           bool = false;
@@ -433,7 +433,7 @@ public final class f
   public final com.bumptech.glide.c.f.a a(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(77378);
-    paramByteBuffer = a(new a((ByteBuffer)i.checkNotNull(paramByteBuffer, "Argument must not be null")));
+    paramByteBuffer = a(new f.a((ByteBuffer)i.checkNotNull(paramByteBuffer, "Argument must not be null")));
     AppMethodBeat.o(77378);
     return paramByteBuffer;
   }
@@ -446,89 +446,21 @@ public final class f
     return paramInputStream;
   }
   
-  static final class a
-    implements f.c
-  {
-    private final ByteBuffer byteBuffer;
-    
-    a(ByteBuffer paramByteBuffer)
-    {
-      AppMethodBeat.i(77362);
-      this.byteBuffer = paramByteBuffer;
-      paramByteBuffer.order(ByteOrder.BIG_ENDIAN);
-      AppMethodBeat.o(77362);
-    }
-    
-    public final int oR()
-    {
-      AppMethodBeat.i(77363);
-      int i = oT();
-      int j = oT();
-      AppMethodBeat.o(77363);
-      return i << 8 & 0xFF00 | j & 0xFF;
-    }
-    
-    public final short oS()
-    {
-      AppMethodBeat.i(77364);
-      short s = (short)(oT() & 0xFF);
-      AppMethodBeat.o(77364);
-      return s;
-    }
-    
-    public final int oT()
-    {
-      AppMethodBeat.i(77367);
-      if (this.byteBuffer.remaining() <= 0)
-      {
-        AppMethodBeat.o(77367);
-        return -1;
-      }
-      int i = this.byteBuffer.get();
-      AppMethodBeat.o(77367);
-      return i;
-    }
-    
-    public final int read(byte[] paramArrayOfByte, int paramInt)
-    {
-      AppMethodBeat.i(77366);
-      paramInt = Math.min(paramInt, this.byteBuffer.remaining());
-      if (paramInt == 0)
-      {
-        AppMethodBeat.o(77366);
-        return -1;
-      }
-      this.byteBuffer.get(paramArrayOfByte, 0, paramInt);
-      AppMethodBeat.o(77366);
-      return paramInt;
-    }
-    
-    public final long skip(long paramLong)
-    {
-      AppMethodBeat.i(77365);
-      int i = (int)Math.min(this.byteBuffer.remaining(), paramLong);
-      this.byteBuffer.position(this.byteBuffer.position() + i);
-      paramLong = i;
-      AppMethodBeat.o(77365);
-      return paramLong;
-    }
-  }
-  
   static final class b
   {
-    final ByteBuffer aIq;
+    final ByteBuffer aJg;
     
     b(byte[] paramArrayOfByte, int paramInt)
     {
       AppMethodBeat.i(77368);
-      this.aIq = ((ByteBuffer)ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.BIG_ENDIAN).limit(paramInt));
+      this.aJg = ((ByteBuffer)ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.BIG_ENDIAN).limit(paramInt));
       AppMethodBeat.o(77368);
     }
     
     private boolean aU(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(77371);
-      if (this.aIq.remaining() - paramInt1 >= paramInt2)
+      if (this.aJg.remaining() - paramInt1 >= paramInt2)
       {
         AppMethodBeat.o(77371);
         return true;
@@ -537,12 +469,12 @@ public final class f
       return false;
     }
     
-    final int dr(int paramInt)
+    final int dq(int paramInt)
     {
       AppMethodBeat.i(77369);
       if (aU(paramInt, 4))
       {
-        paramInt = this.aIq.getInt(paramInt);
+        paramInt = this.aJg.getInt(paramInt);
         AppMethodBeat.o(77369);
         return paramInt;
       }
@@ -550,12 +482,12 @@ public final class f
       return -1;
     }
     
-    final short ds(int paramInt)
+    final short dr(int paramInt)
     {
       AppMethodBeat.i(77370);
       if (aU(paramInt, 2))
       {
-        short s = this.aIq.getShort(paramInt);
+        short s = this.aJg.getShort(paramInt);
         AppMethodBeat.o(77370);
         return s;
       }
@@ -566,11 +498,11 @@ public final class f
   
   static abstract interface c
   {
-    public abstract int oR();
+    public abstract int pb();
     
-    public abstract short oS();
+    public abstract short pc();
     
-    public abstract int oT();
+    public abstract int pd();
     
     public abstract int read(byte[] paramArrayOfByte, int paramInt);
     
@@ -580,34 +512,34 @@ public final class f
   static final class d
     implements f.c
   {
-    private final InputStream aIr;
+    private final InputStream aJh;
     
     d(InputStream paramInputStream)
     {
-      this.aIr = paramInputStream;
+      this.aJh = paramInputStream;
     }
     
-    public final int oR()
+    public final int pb()
     {
       AppMethodBeat.i(77372);
-      int i = this.aIr.read();
-      int j = this.aIr.read();
+      int i = this.aJh.read();
+      int j = this.aJh.read();
       AppMethodBeat.o(77372);
       return i << 8 & 0xFF00 | j & 0xFF;
     }
     
-    public final short oS()
+    public final short pc()
     {
       AppMethodBeat.i(77373);
-      short s = (short)(this.aIr.read() & 0xFF);
+      short s = (short)(this.aJh.read() & 0xFF);
       AppMethodBeat.o(77373);
       return s;
     }
     
-    public final int oT()
+    public final int pd()
     {
       AppMethodBeat.i(77376);
-      int i = this.aIr.read();
+      int i = this.aJh.read();
       AppMethodBeat.o(77376);
       return i;
     }
@@ -618,7 +550,7 @@ public final class f
       int i = paramInt;
       while (i > 0)
       {
-        int j = this.aIr.read(paramArrayOfByte, paramInt - i, i);
+        int j = this.aJh.read(paramArrayOfByte, paramInt - i, i);
         if (j == -1) {
           break;
         }
@@ -639,14 +571,14 @@ public final class f
       long l1 = paramLong;
       while (l1 > 0L)
       {
-        long l2 = this.aIr.skip(l1);
+        long l2 = this.aJh.skip(l1);
         if (l2 > 0L)
         {
           l1 -= l2;
         }
         else
         {
-          if (this.aIr.read() == -1) {
+          if (this.aJh.read() == -1) {
             break;
           }
           l1 -= 1L;
@@ -659,7 +591,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.f
  * JD-Core Version:    0.7.0.1
  */

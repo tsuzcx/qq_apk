@@ -7,25 +7,25 @@ import com.tencent.mm.ui.base.l;
 
 public abstract class a<T extends aa>
 {
-  public final int kSO;
+  public final int luo;
   
   public a(int paramInt)
   {
-    this.kSO = paramInt;
+    this.luo = paramInt;
   }
   
   public void a(Context paramContext, T paramT, l paraml, String paramString) {}
   
   public abstract void a(Context paramContext, T paramT, String paramString, p paramp);
   
-  public final int bie()
+  public final int boY()
   {
-    return this.kSO;
+    return this.luo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a.a
  * JD-Core Version:    0.7.0.1
  */

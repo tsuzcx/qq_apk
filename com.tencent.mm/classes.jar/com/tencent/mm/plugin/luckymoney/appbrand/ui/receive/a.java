@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.luckymoney.appbrand.ui.receive;
 public abstract interface a
   extends com.tencent.mm.plugin.luckymoney.appbrand.ui.a<b>
 {
-  public abstract void cLa();
+  public abstract void cYG();
   
-  public abstract void cLb();
+  public abstract void cYH();
 }
 
 

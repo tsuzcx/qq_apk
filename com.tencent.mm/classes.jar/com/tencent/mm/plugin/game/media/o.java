@@ -5,12 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.game.api.f;
 import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -23,7 +23,7 @@ public final class o
   private static void a(Context paramContext, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, String paramString6, int paramInt2, Bundle paramBundle)
   {
     AppMethodBeat.i(41148);
-    ad.i("MicroMsg.Haowan.GameVideoEditorLauncher", "goToEditor, from[%d], businessType[%s], appid[%s], videoPath[%s], videoUrl[%s], needEdit[%b], gameInfo[%s]", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, paramString3, paramString4, Boolean.valueOf(paramBoolean), paramString6 });
+    ac.i("MicroMsg.Haowan.GameVideoEditorLauncher", "goToEditor, from[%d], businessType[%s], appid[%s], videoPath[%s], videoUrl[%s], needEdit[%b], gameInfo[%s]", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, paramString3, paramString4, Boolean.valueOf(paramBoolean), paramString6 });
     Intent localIntent = new Intent();
     localIntent.putExtra("from", paramInt1);
     localIntent.putExtra("business_type", paramString1);
@@ -36,9 +36,9 @@ public final class o
     localIntent.putExtra("ext_data", paramBundle);
     paramString5 = paramContext;
     if (paramContext == null) {
-      paramString5 = aj.getContext();
+      paramString5 = ai.getContext();
     }
-    if ((!bt.isNullOrNil(paramString3)) && (i.eK(paramString3))) {
+    if ((!bs.isNullOrNil(paramString3)) && (i.eA(paramString3))) {
       paramInt1 = 0;
     }
     while (paramInt1 != 0) {
@@ -47,7 +47,7 @@ public final class o
         d.b(paramString5, "game", ".media.GameVideoDownloadUI", localIntent, paramInt2);
         AppMethodBeat.o(41148);
         return;
-        if (!bt.isNullOrNil(paramString4))
+        if (!bs.isNullOrNil(paramString4))
         {
           if (paramBoolean) {
             paramInt1 = 1;
@@ -57,16 +57,16 @@ public final class o
         }
         else
         {
-          ad.e("MicroMsg.Haowan.GameVideoEditorLauncher", "videoPath and videoUrl is invalid");
+          ac.e("MicroMsg.Haowan.GameVideoEditorLauncher", "videoPath and videoUrl is invalid");
           if (paramInt1 == 3) {
-            l.c(paramString1, "videoPath and videoUrl is invalid", paramString2, -3, "videoPath and videoUrl is invalid");
+            l.d(paramString1, "videoPath and videoUrl is invalid", paramString2, -3, "videoPath and videoUrl is invalid");
           }
           AppMethodBeat.o(41148);
         }
       }
       else
       {
-        d.b(aj.getContext(), "game", ".media.GameVideoDownloadUI", localIntent);
+        d.b(ai.getContext(), "game", ".media.GameVideoDownloadUI", localIntent);
         AppMethodBeat.o(41148);
         return;
       }
@@ -77,7 +77,7 @@ public final class o
       AppMethodBeat.o(41148);
       return;
     }
-    d.b(aj.getContext(), "game", ".media.GameVideoEditorProxyUI", localIntent);
+    d.b(ai.getContext(), "game", ".media.GameVideoEditorProxyUI", localIntent);
     AppMethodBeat.o(41148);
   }
   
@@ -110,15 +110,15 @@ public final class o
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Haowan.GameVideoEditorLauncher", paramString2, "hy: put appname failed!", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.Haowan.GameVideoEditorLauncher", paramString2, "hy: put appname failed!", new Object[0]);
       }
     }
   }
   
-  public final void ac(String paramString1, String paramString2, String paramString3)
+  public final void ad(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(41143);
-    ad.i("MicroMsg.Haowan.GameVideoEditorLauncher", "businessType:%s; appid:%s; extInfo:%s", new Object[] { paramString1, paramString2, paramString3 });
+    ac.i("MicroMsg.Haowan.GameVideoEditorLauncher", "businessType:%s; appid:%s; extInfo:%s", new Object[] { paramString1, paramString2, paramString3 });
     for (;;)
     {
       try
@@ -139,7 +139,7 @@ public final class o
         String str1;
         String str2;
         String str3;
-        l.c(paramString1, "json is invalid", paramString2, -3, "json is invalid");
+        l.d(paramString1, "json is invalid", paramString2, -3, "json is invalid");
         AppMethodBeat.o(41143);
         return;
       }
@@ -150,7 +150,7 @@ public final class o
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        ad.i("MicroMsg.Haowan.GameVideoEditorLauncher", "err:%s", new Object[] { localUnsupportedEncodingException.getMessage() });
+        ac.i("MicroMsg.Haowan.GameVideoEditorLauncher", "err:%s", new Object[] { localUnsupportedEncodingException.getMessage() });
         continue;
       }
       a(null, 3, paramString1, paramString2, str1, str2, str3, bool, paramString3, 0, null);

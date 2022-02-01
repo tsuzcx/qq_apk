@@ -8,36 +8,36 @@ import java.util.Arrays;
 
 final class d
 {
-  final e bdP;
-  final m beh;
-  int bei;
-  private int bej;
-  boolean bek;
+  final e beB;
+  final m beT;
+  int beU;
+  private int beV;
+  boolean beW;
   
   d()
   {
     AppMethodBeat.i(92155);
-    this.bdP = new e();
-    this.beh = new m(new byte[65025], 0);
-    this.bei = -1;
+    this.beB = new e();
+    this.beT = new m(new byte[65025], 0);
+    this.beU = -1;
     AppMethodBeat.o(92155);
   }
   
   private int en(int paramInt)
   {
     int i = 0;
-    this.bej = 0;
+    this.beV = 0;
     int j;
     int k;
     do
     {
       j = i;
-      if (this.bej + paramInt >= this.bdP.ber) {
+      if (this.beV + paramInt >= this.beB.bfd) {
         break;
       }
-      int[] arrayOfInt = this.bdP.bet;
-      j = this.bej;
-      this.bej = (j + 1);
+      int[] arrayOfInt = this.beB.bff;
+      j = this.beV;
+      this.beV = (j + 1);
       k = arrayOfInt[(j + paramInt)];
       j = i + k;
       i = j;
@@ -52,51 +52,51 @@ final class d
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      if (this.bek)
+      if (this.beW)
       {
-        this.bek = false;
-        this.beh.reset();
+        this.beW = false;
+        this.beT.reset();
       }
-      if (this.bek) {
+      if (this.beW) {
         break label294;
       }
-      if (this.bei >= 0) {
+      if (this.beU >= 0) {
         break label133;
       }
-      if (this.bdP.c(paramf, true)) {
+      if (this.beB.c(paramf, true)) {
         break;
       }
       AppMethodBeat.o(92156);
       return false;
     }
-    int i = this.bdP.aZG;
-    if (((this.bdP.type & 0x1) == 1) && (this.beh.limit == 0)) {
+    int i = this.beB.bas;
+    if (((this.beB.type & 0x1) == 1) && (this.beT.limit == 0)) {
       i += en(0);
     }
-    for (int j = this.bej + 0;; j = 0)
+    for (int j = this.beV + 0;; j = 0)
     {
-      paramf.dR(i);
-      this.bei = j;
+      paramf.dQ(i);
+      this.beU = j;
       label133:
-      j = en(this.bei);
-      i = this.bei + this.bej;
+      j = en(this.beU);
+      i = this.beU + this.beV;
       if (j > 0)
       {
-        if (this.beh.capacity() < this.beh.limit + j) {
-          this.beh.data = Arrays.copyOf(this.beh.data, this.beh.limit + j);
+        if (this.beT.capacity() < this.beT.limit + j) {
+          this.beT.data = Arrays.copyOf(this.beT.data, this.beT.limit + j);
         }
-        paramf.readFully(this.beh.data, this.beh.limit, j);
-        this.beh.fk(j + this.beh.limit);
-        if (this.bdP.bet[(i - 1)] != 255)
+        paramf.readFully(this.beT.data, this.beT.limit, j);
+        this.beT.eW(j + this.beT.limit);
+        if (this.beB.bff[(i - 1)] != 255)
         {
           bool = true;
           label258:
-          this.bek = bool;
+          this.beW = bool;
         }
       }
       else
       {
-        if (i != this.bdP.ber) {
+        if (i != this.beB.bfd) {
           break label291;
         }
         i = -1;
@@ -104,7 +104,7 @@ final class d
       label291:
       for (;;)
       {
-        this.bei = i;
+        this.beU = i;
         break;
         bool = false;
         break label258;

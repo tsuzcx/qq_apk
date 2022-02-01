@@ -8,19 +8,24 @@ import rx.internal.util.unsafe.Pow2;
 abstract class a<E>
   extends AbstractQueue<E>
 {
-  protected final AtomicReferenceArray<E> Kgy;
+  protected final AtomicReferenceArray<E> LUi;
   protected final int mask;
   
   public a(int paramInt)
   {
     paramInt = Pow2.roundToPowerOfTwo(paramInt);
     this.mask = (paramInt - 1);
-    this.Kgy = new AtomicReferenceArray(paramInt);
+    this.LUi = new AtomicReferenceArray(paramInt);
   }
   
-  protected final E agt(int paramInt)
+  protected final int CJ(long paramLong)
   {
-    return this.Kgy.get(paramInt);
+    return (int)paramLong & this.mask;
+  }
+  
+  protected final E ajp(int paramInt)
+  {
+    return this.LUi.get(paramInt);
   }
   
   public void clear()
@@ -32,15 +37,10 @@ abstract class a<E>
   {
     throw new UnsupportedOperationException();
   }
-  
-  protected final int xV(long paramLong)
-  {
-    return (int)paramLong & this.mask;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     rx.internal.util.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -17,17 +17,17 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.brandservice.a.b;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.l.a;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.ai;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.tools.o;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.util.HashMap;
@@ -35,62 +35,62 @@ import java.util.Map;
 
 public final class n
 {
-  static Map<String, Bundle> Bfd;
-  boolean BiN;
-  WebViewUI BiO;
-  View BiP;
-  private View BiQ;
-  private TextView BiR;
-  private long BiS;
-  private ap handler;
-  String lst;
-  MMWebView uQx;
-  private final long xFP;
+  static Map<String, Bundle> Cxp;
+  boolean CBa;
+  WebViewUI CBb;
+  View CBc;
+  private View CBd;
+  private TextView CBe;
+  private long CBf;
+  MMWebView gGd;
+  private ao handler;
+  String lUn;
+  private final long ySC;
   
   static
   {
     AppMethodBeat.i(175837);
-    Bfd = new HashMap();
+    Cxp = new HashMap();
     AppMethodBeat.o(175837);
   }
   
   public n(WebViewUI paramWebViewUI)
   {
     AppMethodBeat.i(175830);
-    this.BiN = false;
-    this.handler = new ap(Looper.getMainLooper());
-    this.BiP = null;
-    this.BiQ = null;
-    this.BiR = null;
-    this.BiS = SystemClock.elapsedRealtime();
-    this.xFP = 175L;
-    this.BiO = paramWebViewUI;
+    this.CBa = false;
+    this.handler = new ao(Looper.getMainLooper());
+    this.CBc = null;
+    this.CBd = null;
+    this.CBe = null;
+    this.CBf = SystemClock.elapsedRealtime();
+    this.ySC = 175L;
+    this.CBb = paramWebViewUI;
     AppMethodBeat.o(175830);
   }
   
-  static String Pa(String paramString)
+  static String Tk(String paramString)
   {
     AppMethodBeat.i(175834);
-    if ((paramString == null) || (g.ab(b.class) == null) || (!((b)g.ab(b.class)).isMpUrl(paramString)))
+    if ((paramString == null) || (g.ab(b.class) == null) || (!((b)g.ab(b.class)).Tg(paramString)))
     {
       AppMethodBeat.o(175834);
       return paramString;
     }
-    paramString = ((b)g.ab(b.class)).Pa(paramString);
+    paramString = ((b)g.ab(b.class)).Tk(paramString);
     AppMethodBeat.o(175834);
     return paramString;
   }
   
-  public static a ayb(String paramString)
+  public static a aDs(String paramString)
   {
     AppMethodBeat.i(175835);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(175835);
       return null;
     }
-    paramString = Pa(paramString);
-    Object localObject = (Bundle)Bfd.get(paramString);
+    paramString = Tk(paramString);
+    Object localObject = (Bundle)Cxp.get(paramString);
     if (localObject == null)
     {
       AppMethodBeat.o(175835);
@@ -101,66 +101,66 @@ public final class n
     String str2 = ((Bundle)localObject).getString("key_bag_icon");
     boolean bool = ((Bundle)localObject).getBoolean("key_show_menu_onfo", false);
     localObject = new a();
-    ((a)localObject).BiW = str2;
-    ((a)localObject).BiV = paramString;
-    ((a)localObject).gXY = str1;
-    ((a)localObject).BaH = bool;
+    ((a)localObject).CBj = str2;
+    ((a)localObject).CBi = paramString;
+    ((a)localObject).hyx = str1;
+    ((a)localObject).CsU = bool;
     AppMethodBeat.o(175835);
     return localObject;
   }
   
   @SuppressLint({"ResourceType"})
-  private void epg()
+  private void eEB()
   {
     AppMethodBeat.i(80403);
-    View localView = this.BiO.findViewById(2131306922);
+    View localView = this.CBb.findViewById(2131306922);
     if (localView != null) {
-      localView.setBackgroundColor(epk());
+      localView.setBackgroundColor(eEF());
     }
-    int i = this.BiO.getResources().getColor(2131101168);
-    localView = this.BiO.findViewById(2131307119);
+    int i = this.CBb.getResources().getColor(2131101168);
+    localView = this.CBb.findViewById(2131307119);
     if ((localView != null) && ((localView instanceof TextView))) {
       ((TextView)localView).setTextColor(i);
     }
-    localView = this.BiO.findViewById(2131301014);
+    localView = this.CBb.findViewById(2131301014);
     if ((localView != null) && ((localView instanceof TextView))) {
       ((TextView)localView).setTextColor(i);
     }
-    localView = this.BiO.findViewById(2131307118);
+    localView = this.CBb.findViewById(2131307118);
     if ((localView != null) && ((localView instanceof ImageView))) {
       ((ImageView)localView).setImageResource(2131691440);
     }
     AppMethodBeat.o(80403);
   }
   
-  private void eph()
+  private void eEC()
   {
     AppMethodBeat.i(80404);
-    int i = epk();
-    this.BiO.setActionbarColor(i);
-    this.BiO.showActionbarLine();
+    int i = eEF();
+    this.CBb.setActionbarColor(i);
+    this.CBb.showActionbarLine();
     AppMethodBeat.o(80404);
   }
   
-  private boolean epj()
+  private boolean eEE()
   {
     AppMethodBeat.i(80406);
-    if (this.BiO == null)
+    if (this.CBb == null)
     {
       AppMethodBeat.o(80406);
       return false;
     }
-    String str2 = this.lst;
+    String str2 = this.lUn;
     String str1 = str2;
-    if (bt.isNullOrNil(str2)) {
-      str1 = this.BiO.bEx();
+    if (bs.isNullOrNil(str2)) {
+      str1 = this.CBb.bLL();
     }
-    boolean bool = com.tencent.mm.plugin.webview.j.i.ayM(str1);
+    boolean bool = com.tencent.mm.plugin.webview.j.i.aEd(str1);
     AppMethodBeat.o(80406);
     return bool;
   }
   
-  public final void aG(final Bundle paramBundle)
+  public final void aL(final Bundle paramBundle)
   {
     AppMethodBeat.i(175831);
     paramBundle = new Runnable()
@@ -174,171 +174,124 @@ public final class n
           return;
         }
         boolean bool = paramBundle.getBoolean("key_current_info_show");
-        Bundle localBundle = (Bundle)n.Xw().get(n.ayc(n.b(n.this)));
+        Bundle localBundle = (Bundle)n.Yt().get(n.aDt(n.b(n.this)));
         if (localBundle != null) {
           localBundle.putBoolean("key_current_info_show", bool);
         }
         if (bool)
         {
-          n.this.epl();
+          n.this.eEG();
           AppMethodBeat.o(175825);
           return;
         }
-        n.this.epm();
+        n.this.eEH();
         AppMethodBeat.o(175825);
       }
     };
-    h.Iye.aN(paramBundle);
+    h.JZN.aQ(paramBundle);
     AppMethodBeat.o(175831);
   }
   
-  final boolean epe()
-  {
-    AppMethodBeat.i(80401);
-    if (this.BiO.bon())
-    {
-      AppMethodBeat.o(80401);
-      return true;
-    }
-    Intent localIntent = this.BiO.getIntent();
-    if (localIntent != null)
-    {
-      if (localIntent.getBooleanExtra("disable_light_actionbar_style", false))
-      {
-        ad.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, KDisableLightActionbarStyle is true");
-        AppMethodBeat.o(80401);
-        return true;
-      }
-      String str = localIntent.getStringExtra("status_bar_style");
-      if ((!bt.isNullOrNil(str)) && (str.equals("black")))
-      {
-        ad.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KStatusBarStyle");
-        AppMethodBeat.o(80401);
-        return true;
-      }
-      if (localIntent.getIntExtra("customize_status_bar_color", 0) != 0)
-      {
-        ad.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KCustomizeStatusBarColor");
-        AppMethodBeat.o(80401);
-        return true;
-      }
-      if (localIntent.getBooleanExtra("open_custom_style_url", false))
-      {
-        ad.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KOpenCustomStyleUrl");
-        AppMethodBeat.o(80401);
-        return true;
-      }
-      if (localIntent.getBooleanExtra("show_full_screen", false))
-      {
-        ad.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, webview is fullscreen");
-        AppMethodBeat.o(80401);
-        return true;
-      }
-    }
-    AppMethodBeat.o(80401);
-    return false;
-  }
-  
-  final void epf()
+  final void eEA()
   {
     AppMethodBeat.i(80402);
-    eph();
-    epg();
-    epi();
+    eEC();
+    eEB();
+    eED();
     AppMethodBeat.o(80402);
   }
   
-  final void epi()
+  final void eED()
   {
     AppMethodBeat.i(80405);
-    if (!epj())
+    if (!eEE())
     {
-      this.BiO.showActionbarLine();
+      this.CBb.showActionbarLine();
       AppMethodBeat.o(80405);
       return;
     }
-    if ((this.uQx != null) && (this.uQx.getWebScrollY() > 0))
+    if ((this.gGd != null) && (this.gGd.getWebScrollY() > 0))
     {
-      this.BiO.showActionbarLine();
+      this.CBb.showActionbarLine();
       AppMethodBeat.o(80405);
       return;
     }
-    this.BiO.hideActionbarLine();
+    this.CBb.hideActionbarLine();
     AppMethodBeat.o(80405);
   }
   
-  public final int epk()
+  public final int eEF()
   {
     AppMethodBeat.i(80407);
-    if (epj())
+    if (eEE())
     {
-      i = this.BiO.getResources().getColor(2131101167);
+      i = this.CBb.getResources().getColor(2131101167);
       AppMethodBeat.o(80407);
       return i;
     }
-    int i = this.BiO.getResources().getColor(2131101161);
+    int i = this.CBb.getResources().getColor(2131101161);
     AppMethodBeat.o(80407);
     return i;
   }
   
-  public final void epl()
+  public final void eEG()
   {
     AppMethodBeat.i(175832);
-    Object localObject1 = (Bundle)Bfd.get(Pa(this.lst));
-    if ((localObject1 == null) || (this.BiO == null))
+    Object localObject1 = (Bundle)Cxp.get(Tk(this.lUn));
+    if ((localObject1 == null) || (this.CBb == null))
     {
-      ad.w("MicroMsg.WebViewUIStyleHelper", "showTopBar not ready %s", new Object[] { this.lst });
+      ac.w("MicroMsg.WebViewUIStyleHelper", "showTopBar not ready %s", new Object[] { this.lUn });
       AppMethodBeat.o(175832);
       return;
     }
-    if (this.BiO.BgD)
+    if (this.CBb.CyP)
     {
-      ad.i("MicroMsg.WebViewUIStyleHelper", "fixedTitle not show topbar");
+      ac.i("MicroMsg.WebViewUIStyleHelper", "fixedTitle not show topbar");
       AppMethodBeat.o(175832);
       return;
     }
-    this.BiO.getController().setMMTitleVisibility(8);
-    if (this.BiP == null)
+    this.CBb.getController().setMMTitleVisibility(8);
+    if (this.CBc == null)
     {
-      this.BiP = this.BiO.getLayoutInflater().inflate(2131496092, null);
-      this.BiQ = this.BiP.findViewById(2131306927);
-      this.BiR = ((TextView)this.BiP.findViewById(2131302867));
-      this.BiR.setTextSize(1, 17.0F);
-      ((LinearLayout)this.BiO.getController().mActionBar.getCustomView()).addView(this.BiP);
-      localObject2 = (LinearLayout.LayoutParams)this.BiP.getLayoutParams();
+      this.CBc = this.CBb.getLayoutInflater().inflate(2131496092, null);
+      this.CBd = this.CBc.findViewById(2131306927);
+      this.CBe = ((TextView)this.CBc.findViewById(2131302867));
+      this.CBe.setTextSize(1, 17.0F);
+      ((LinearLayout)this.CBb.getController().mActionBar.getCustomView()).addView(this.CBc);
+      localObject2 = (LinearLayout.LayoutParams)this.CBc.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject2).width = -1;
       ((LinearLayout.LayoutParams)localObject2).height = -1;
       ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-      this.BiP.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      this.CBc.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
     Object localObject2 = ((Bundle)localObject1).getString("key_brand_name");
     localObject1 = ((Bundle)localObject1).getString("key_brand_user_name");
-    ad.i("MicroMsg.WebViewUIStyleHelper", "showTopBar userName:%s, nickName:%s", new Object[] { localObject1, localObject2 });
-    if ((bt.isNullOrNil((String)localObject2)) || (bt.isNullOrNil((String)localObject1)))
+    ac.i("MicroMsg.WebViewUIStyleHelper", "showTopBar userName:%s, nickName:%s", new Object[] { localObject1, localObject2 });
+    if ((bs.isNullOrNil((String)localObject2)) || (bs.isNullOrNil((String)localObject1)))
     {
-      ad.w("MicroMsg.WebViewUIStyleHelper", "showTopBar invalid param, userName %s, nickName %s", new Object[] { localObject1, localObject2 });
+      ac.w("MicroMsg.WebViewUIStyleHelper", "showTopBar invalid param, userName %s, nickName %s", new Object[] { localObject1, localObject2 });
       AppMethodBeat.o(175832);
       return;
     }
-    this.BiO.setMMTitle("");
-    if (this.BiP.getVisibility() == 8) {
-      this.BiP.setVisibility(4);
+    this.CBb.setMMTitle("");
+    if (this.CBc.getVisibility() == 8) {
+      this.CBc.setVisibility(4);
     }
-    this.BiR.setText(k.b(this.BiO, (CharSequence)localObject2, this.BiR.getTextSize()));
-    ai.a(this.BiR.getPaint(), 0.8F);
-    this.BiP.post(new Runnable()
+    this.CBe.setText(k.b(this.CBb, (CharSequence)localObject2, this.CBe.getTextSize()));
+    aj.a(this.CBe.getPaint(), 0.8F);
+    this.CBc.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(175826);
         float f1 = n.c(n.this).getX();
         int i = (int)(n.c(n.this).getWidth() / 2 + f1);
-        int j = a.hV(n.a(n.this)) / 2;
+        int j = a.ig(n.a(n.this)) / 2;
         if (i != j)
         {
           float f2 = j - i + f1;
           n.c(n.this).setX(f2);
-          ad.d("MicroMsg.WebViewUIStyleHelper", "showTopBar x = %f, new x=%f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
+          ac.d("MicroMsg.WebViewUIStyleHelper", "showTopBar x = %f, new x=%f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
         }
         if (n.c(n.this).getVisibility() != 0) {
           n.c(n.this).setVisibility(0);
@@ -346,12 +299,12 @@ public final class n
         AppMethodBeat.o(175826);
       }
     });
-    this.BiQ.setOnClickListener(new View.OnClickListener()
+    this.CBd.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(175828);
-        if ((n.a(n.this) == null) || (n.a(n.this).BhW == null))
+        if ((n.a(n.this) == null) || (n.a(n.this).CAj == null))
         {
           AppMethodBeat.o(175828);
           return;
@@ -359,7 +312,7 @@ public final class n
         if (SystemClock.elapsedRealtime() - n.d(n.this) < 175L)
         {
           n.e(n.this).removeCallbacksAndMessages(null);
-          n.a(n.this).eoH();
+          n.a(n.this).eEc();
           AppMethodBeat.o(175828);
           return;
         }
@@ -369,15 +322,15 @@ public final class n
           public final void run()
           {
             AppMethodBeat.i(175827);
-            n.a(n.this).BhW.fk("Contact_Scene", 154);
-            n.a(n.this).axZ(n.3.this.gXD);
-            if (n.a(n.this).AQP != null)
+            n.a(n.this).CAj.fs("Contact_Scene", 154);
+            n.a(n.this).aDq(n.3.this.hyc);
+            if (n.a(n.this).Cjc != null)
             {
-              f localf = n.a(n.this).AQP;
-              if (localf.yZR)
+              f localf = n.a(n.this).Cjc;
+              if (localf.Apr)
               {
-                String str = l.a.b("topbar:click", null, localf.ARm, localf.ARn);
-                localf.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", null);
+                String str = l.a.b("topbar:click", null, localf.Cjz, localf.CjA);
+                localf.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", null);
               }
             }
             n.e(n.this).removeCallbacksAndMessages(null);
@@ -387,31 +340,78 @@ public final class n
         AppMethodBeat.o(175828);
       }
     });
-    o.gp(this.BiQ);
+    o.gD(this.CBd);
     AppMethodBeat.o(175832);
   }
   
-  public final void epm()
+  public final void eEH()
   {
     AppMethodBeat.i(175833);
-    this.BiO.getController().setMMTitleVisibility(0);
-    if (this.BiP != null) {
-      this.BiP.setVisibility(8);
+    this.CBb.getController().setMMTitleVisibility(0);
+    if (this.CBc != null) {
+      this.CBc.setVisibility(8);
     }
     AppMethodBeat.o(175833);
   }
   
+  final boolean eEz()
+  {
+    AppMethodBeat.i(80401);
+    if (this.CBb.bvj())
+    {
+      AppMethodBeat.o(80401);
+      return true;
+    }
+    Intent localIntent = this.CBb.getIntent();
+    if (localIntent != null)
+    {
+      if (localIntent.getBooleanExtra("disable_light_actionbar_style", false))
+      {
+        ac.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, KDisableLightActionbarStyle is true");
+        AppMethodBeat.o(80401);
+        return true;
+      }
+      String str = localIntent.getStringExtra("status_bar_style");
+      if ((!bs.isNullOrNil(str)) && (str.equals("black")))
+      {
+        ac.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KStatusBarStyle");
+        AppMethodBeat.o(80401);
+        return true;
+      }
+      if (localIntent.getIntExtra("customize_status_bar_color", 0) != 0)
+      {
+        ac.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KCustomizeStatusBarColor");
+        AppMethodBeat.o(80401);
+        return true;
+      }
+      if (localIntent.getBooleanExtra("open_custom_style_url", false))
+      {
+        ac.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KOpenCustomStyleUrl");
+        AppMethodBeat.o(80401);
+        return true;
+      }
+      if (localIntent.getBooleanExtra("show_full_screen", false))
+      {
+        ac.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, webview is fullscreen");
+        AppMethodBeat.o(80401);
+        return true;
+      }
+    }
+    AppMethodBeat.o(80401);
+    return false;
+  }
+  
   public static final class a
   {
-    public boolean BaH;
-    public String BiV;
-    public String BiW;
-    public String gXY;
+    public String CBi;
+    public String CBj;
+    public boolean CsU;
+    public String hyx;
     
     public final boolean isDataValid()
     {
       AppMethodBeat.i(175829);
-      if ((!bt.isNullOrNil(this.BiW)) && (!bt.isNullOrNil(this.BiV)) && (!bt.isNullOrNil(this.gXY)) && (this.BaH))
+      if ((!bs.isNullOrNil(this.CBj)) && (!bs.isNullOrNil(this.CBi)) && (!bs.isNullOrNil(this.hyx)) && (this.CsU))
       {
         AppMethodBeat.o(175829);
         return true;

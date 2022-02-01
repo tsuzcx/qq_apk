@@ -5,11 +5,11 @@ import d.l.b.a.b.m.at;
 
 public abstract interface g
 {
-  public static final g JYN = n.a.fKf();
+  public static final g LMg = n.a.gcI();
   
   static
   {
-    n.a locala = n.JZb;
+    n.a locala = n.LMu;
   }
   
   public abstract boolean c(ab paramab1, ab paramab2);
@@ -23,7 +23,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.g
  * JD-Core Version:    0.7.0.1
  */

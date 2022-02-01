@@ -13,20 +13,20 @@ import junit.framework.Assert;
 final class ProfileMobilePhoneView$a
   extends BaseAdapter
 {
-  private List<String> cbP;
+  private List<String> bYM;
   private Context mContext;
   
   public ProfileMobilePhoneView$a(Context paramContext, List<String> paramList)
   {
     AppMethodBeat.i(31236);
-    this.cbP = null;
+    this.bYM = null;
     this.mContext = null;
     if (paramContext != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
       this.mContext = paramContext;
-      this.cbP = paramList;
+      this.bYM = paramList;
       AppMethodBeat.o(31236);
       return;
     }
@@ -35,12 +35,12 @@ final class ProfileMobilePhoneView$a
   public final int getCount()
   {
     AppMethodBeat.i(31237);
-    if (this.cbP == null)
+    if (this.bYM == null)
     {
       AppMethodBeat.o(31237);
       return 0;
     }
-    int i = this.cbP.size();
+    int i = this.bYM.size();
     AppMethodBeat.o(31237);
     return i;
   }
@@ -48,7 +48,7 @@ final class ProfileMobilePhoneView$a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(31238);
-    Object localObject = this.cbP.get(paramInt);
+    Object localObject = this.bYM.get(paramInt);
     AppMethodBeat.o(31238);
     return localObject;
   }
@@ -67,13 +67,13 @@ final class ProfileMobilePhoneView$a
     {
       localView = ((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131493472, paramViewGroup, false);
       paramView = new a((byte)0);
-      ((a)paramView).fQp = ((TextView)localView.findViewById(2131305902));
+      ((a)paramView).fUk = ((TextView)localView.findViewById(2131305902));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      ((a)paramViewGroup).fQp.setText(str);
+      ((a)paramViewGroup).fUk.setText(str);
       AppMethodBeat.o(31239);
       return localView;
       paramViewGroup = paramView.getTag();
@@ -88,14 +88,14 @@ final class ProfileMobilePhoneView$a
   
   final class a
   {
-    TextView fQp;
+    TextView fUk;
     
     private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.ProfileMobilePhoneView.a
  * JD-Core Version:    0.7.0.1
  */

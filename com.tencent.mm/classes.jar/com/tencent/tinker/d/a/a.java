@@ -15,17 +15,17 @@ public final class a
   extends DeflaterOutputStream
 {
   private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-  private static final byte[] IFq = { 0 };
-  private byte[] IFr = EMPTY_BYTE_ARRAY;
-  private final HashSet<String> IFs = new HashSet();
-  private int IFt = 8;
-  private ByteArrayOutputStream IFu = new ByteArrayOutputStream();
-  private ZipEntry IFv;
-  private long IFw = 0L;
-  private int IFx;
-  private byte[] IFy;
-  private final int IFz = 4;
-  private boolean bOX = false;
+  private static final byte[] KrB = { 0 };
+  private byte[] KrC = EMPTY_BYTE_ARRAY;
+  private final HashSet<String> KrD = new HashSet();
+  private int KrE = 8;
+  private ByteArrayOutputStream KrF = new ByteArrayOutputStream();
+  private ZipEntry KrG;
+  private long KrH = 0L;
+  private int KrI;
+  private byte[] KrJ;
+  private final int KrK = 4;
+  private boolean bMF = false;
   private boolean closed = false;
   private int compressionLevel = -1;
   private final CRC32 crc = new CRC32();
@@ -76,7 +76,7 @@ public final class a
     return paramInt;
   }
   
-  private void fpe()
+  private void fHm()
   {
     if (this.closed) {
       throw new IOException("Stream is closed");
@@ -97,135 +97,135 @@ public final class a
   
   public final void closeEntry()
   {
-    fpe();
-    if (this.IFv == null) {
+    fHm();
+    if (this.KrG == null) {
       return;
     }
-    if (this.IFv.getMethod() == 8) {
+    if (this.KrG.getMethod() == 8) {
       super.finish();
     }
-    if (this.IFv.getMethod() == 0)
+    if (this.KrG.getMethod() == 0)
     {
-      if (this.crc.getValue() != this.IFv.getCrc()) {
+      if (this.crc.getValue() != this.KrG.getCrc()) {
         throw new ZipException("CRC mismatch");
       }
-      if (this.IFv.getSize() != this.IFw) {
+      if (this.KrG.getSize() != this.KrH) {
         throw new ZipException("Size mismatch");
       }
     }
     int i = 30;
-    if (this.IFv.getMethod() != 0)
+    if (this.KrG.getMethod() != 0)
     {
       i = 46;
       c(this.out, 134695760L);
-      this.IFv.setCrc(this.crc.getValue());
-      c(this.out, this.IFv.getCrc());
-      this.IFv.setCompressedSize(this.def.getTotalOut());
-      c(this.out, this.IFv.getCompressedSize());
-      this.IFv.setSize(this.def.getTotalIn());
-      c(this.out, this.IFv.getSize());
+      this.KrG.setCrc(this.crc.getValue());
+      c(this.out, this.KrG.getCrc());
+      this.KrG.setCompressedSize(this.def.getTotalOut());
+      c(this.out, this.KrG.getCompressedSize());
+      this.KrG.setSize(this.def.getTotalIn());
+      c(this.out, this.KrG.getSize());
     }
     int j;
-    if (this.IFv.getMethod() == 0)
+    if (this.KrG.getMethod() == 0)
     {
       j = 0;
-      c(this.IFu, 33639248L);
-      d(this.IFu, 20);
-      d(this.IFu, 20);
-      d(this.IFu, j | 0x800);
-      d(this.IFu, this.IFv.getMethod());
-      d(this.IFu, 0);
-      d(this.IFu, 33);
-      c(this.IFu, this.crc.getValue());
-      if (this.IFv.getMethod() != 8) {
+      c(this.KrF, 33639248L);
+      d(this.KrF, 20);
+      d(this.KrF, 20);
+      d(this.KrF, j | 0x800);
+      d(this.KrF, this.KrG.getMethod());
+      d(this.KrF, 0);
+      d(this.KrF, 33);
+      c(this.KrF, this.crc.getValue());
+      if (this.KrG.getMethod() != 8) {
         break label587;
       }
-      i = (int)(i + c(this.IFu, this.def.getTotalOut()));
-      c(this.IFu, this.def.getTotalIn());
+      i = (int)(i + c(this.KrF, this.def.getTotalOut()));
+      c(this.KrF, this.def.getTotalIn());
       label360:
-      i += d(this.IFu, this.IFx);
-      if (this.IFv.getExtra() == null) {
+      i += d(this.KrF, this.KrI);
+      if (this.KrG.getExtra() == null) {
         break label618;
       }
-      i += d(this.IFu, this.IFv.getExtra().length);
+      i += d(this.KrF, this.KrG.getExtra().length);
     }
     for (;;)
     {
-      String str = this.IFv.getComment();
+      String str = this.KrG.getComment();
       byte[] arrayOfByte = EMPTY_BYTE_ARRAY;
       if (str != null) {
         arrayOfByte = str.getBytes(Charset.forName("UTF-8"));
       }
-      d(this.IFu, arrayOfByte.length);
-      d(this.IFu, 0);
-      d(this.IFu, 0);
-      c(this.IFu, 0L);
-      c(this.IFu, this.offset);
-      this.IFu.write(this.IFy);
-      this.IFy = null;
-      if (this.IFv.getExtra() != null) {
-        this.IFu.write(this.IFv.getExtra());
+      d(this.KrF, arrayOfByte.length);
+      d(this.KrF, 0);
+      d(this.KrF, 0);
+      c(this.KrF, 0L);
+      c(this.KrF, this.offset);
+      this.KrF.write(this.KrJ);
+      this.KrJ = null;
+      if (this.KrG.getExtra() != null) {
+        this.KrF.write(this.KrG.getExtra());
       }
       j = this.offset;
       this.offset = (i + this.padding + j);
       this.padding = 0;
       if (arrayOfByte.length > 0) {
-        this.IFu.write(arrayOfByte);
+        this.KrF.write(arrayOfByte);
       }
-      this.IFv = null;
+      this.KrG = null;
       this.crc.reset();
-      this.IFw = 0L;
+      this.KrH = 0L;
       this.def.reset();
       return;
       j = 8;
       break;
       label587:
-      i = (int)(i + c(this.IFu, this.IFw));
-      c(this.IFu, this.IFw);
+      i = (int)(i + c(this.KrF, this.KrH));
+      c(this.KrF, this.KrH);
       break label360;
       label618:
-      d(this.IFu, 0);
+      d(this.KrF, 0);
     }
   }
   
   public final void finish()
   {
-    fpe();
-    if (this.bOX) {
+    fHm();
+    if (this.bMF) {
       return;
     }
-    if (this.IFs.isEmpty()) {
+    if (this.KrD.isEmpty()) {
       throw new ZipException("No entries");
     }
-    if (this.IFv != null) {
+    if (this.KrG != null) {
       closeEntry();
     }
-    int i = this.IFu.size();
-    c(this.IFu, 101010256L);
-    d(this.IFu, 0);
-    d(this.IFu, 0);
-    d(this.IFu, this.IFs.size());
-    d(this.IFu, this.IFs.size());
-    c(this.IFu, i);
-    c(this.IFu, this.offset + this.padding);
-    d(this.IFu, this.IFr.length);
-    if (this.IFr.length > 0) {
-      this.IFu.write(this.IFr);
+    int i = this.KrF.size();
+    c(this.KrF, 101010256L);
+    d(this.KrF, 0);
+    d(this.KrF, 0);
+    d(this.KrF, this.KrD.size());
+    d(this.KrF, this.KrD.size());
+    c(this.KrF, i);
+    c(this.KrF, this.offset + this.padding);
+    d(this.KrF, this.KrC.length);
+    if (this.KrC.length > 0) {
+      this.KrF.write(this.KrC);
     }
-    this.IFu.writeTo(this.out);
-    this.IFu = null;
-    this.bOX = true;
+    this.KrF.writeTo(this.out);
+    this.KrF = null;
+    this.bMF = true;
   }
   
   public final void putNextEntry(ZipEntry paramZipEntry)
   {
     int k = 0;
-    if (this.IFv != null) {
+    if (this.KrG != null) {
       closeEntry();
     }
     int i = paramZipEntry.getMethod();
     if (i == -1) {
-      i = this.IFt;
+      i = this.KrE;
     }
     for (;;)
     {
@@ -248,22 +248,22 @@ public final class a
           throw new ZipException("STORED entry size/compressed size mismatch");
         }
       }
-      fpe();
-      if (this.IFs.contains(paramZipEntry.getName())) {
+      fHm();
+      if (this.KrD.contains(paramZipEntry.getName())) {
         throw new ZipException("Entry already exists: " + paramZipEntry.getName());
       }
-      if (this.IFs.size() == 65535) {
+      if (this.KrD.size() == 65535) {
         throw new ZipException("Too many entries for the zip file format's 16-bit entry count");
       }
-      this.IFy = paramZipEntry.getName().getBytes(Charset.forName("UTF-8"));
-      this.IFx = this.IFy.length;
-      if (this.IFx > 65535) {
-        throw new IllegalArgumentException("Name too long: " + this.IFx + " UTF-8 bytes");
+      this.KrJ = paramZipEntry.getName().getBytes(Charset.forName("UTF-8"));
+      this.KrI = this.KrJ.length;
+      if (this.KrI > 65535) {
+        throw new IllegalArgumentException("Name too long: " + this.KrI + " UTF-8 bytes");
       }
       this.def.setLevel(this.compressionLevel);
       paramZipEntry.setMethod(i);
-      this.IFv = paramZipEntry;
-      this.IFs.add(this.IFv.getName());
+      this.KrG = paramZipEntry;
+      this.KrD.add(this.KrG.getName());
       int j;
       label454:
       int m;
@@ -275,45 +275,45 @@ public final class a
         d(this.out, 20);
         d(this.out, j | 0x800);
         d(this.out, i);
-        if (this.IFv.getTime() == -1L) {
-          this.IFv.setTime(System.currentTimeMillis());
+        if (this.KrG.getTime() == -1L) {
+          this.KrG.setTime(System.currentTimeMillis());
         }
         d(this.out, 0);
         d(this.out, 33);
         if (i != 0) {
           break label609;
         }
-        c(this.out, this.IFv.getCrc());
-        c(this.out, this.IFv.getSize());
-        c(this.out, this.IFv.getSize());
-        d(this.out, this.IFx);
+        c(this.out, this.KrG.getCrc());
+        c(this.out, this.KrG.getSize());
+        c(this.out, this.KrG.getSize());
+        d(this.out, this.KrI);
         m = this.offset;
-        n = this.IFx;
-        if (this.IFv.getExtra() == null) {
+        n = this.KrI;
+        if (this.KrG.getExtra() == null) {
           break label639;
         }
-        i = this.IFv.getExtra().length;
+        i = this.KrG.getExtra().length;
         label497:
         j = k;
-        if (this.IFv.getMethod() == 0)
+        if (this.KrG.getMethod() == 0)
         {
-          if (this.IFz != 0) {
+          if (this.KrK != 0) {
             break label644;
           }
           j = k;
         }
         label520:
         this.padding = j;
-        if (this.IFv.getExtra() == null) {
+        if (this.KrG.getExtra() == null) {
           break label672;
         }
-        d(this.out, this.IFv.getExtra().length + this.padding);
+        d(this.out, this.KrG.getExtra().length + this.padding);
       }
       for (;;)
       {
-        this.out.write(this.IFy);
-        if (this.IFv.getExtra() != null) {
-          this.out.write(this.IFv.getExtra());
+        this.out.write(this.KrJ);
+        if (this.KrG.getExtra() != null) {
+          this.out.write(this.KrG.getExtra());
         }
         c(this.out, this.padding);
         return;
@@ -328,8 +328,8 @@ public final class a
         i = 0;
         break label497;
         label644:
-        j = this.IFz;
-        j = (j - (i + (n + (m + 30))) % j) % this.IFz;
+        j = this.KrK;
+        j = (j - (i + (n + (m + 30))) % j) % this.KrK;
         break label520;
         label672:
         d(this.out, this.padding);
@@ -339,7 +339,7 @@ public final class a
   
   public final void write(int paramInt)
   {
-    byte[] arrayOfByte = IFq;
+    byte[] arrayOfByte = KrB;
     arrayOfByte[0] = ((byte)(paramInt & 0xFF));
     write(arrayOfByte, 0, 1);
   }
@@ -350,16 +350,16 @@ public final class a
     if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2)) {
       throw new ArrayIndexOutOfBoundsException("length=" + i + "; regionStart=" + paramInt1 + "; regionLength=" + paramInt2);
     }
-    if (this.IFv == null) {
+    if (this.KrG == null) {
       throw new ZipException("No active entry");
     }
-    if (this.IFv.getMethod() == 0) {
+    if (this.KrG.getMethod() == 0) {
       this.out.write(paramArrayOfByte, paramInt1, paramInt2);
     }
     for (;;)
     {
       this.crc.update(paramArrayOfByte, paramInt1, paramInt2);
-      this.IFw += paramInt2;
+      this.KrH += paramInt2;
       return;
       super.write(paramArrayOfByte, paramInt1, paramInt2);
     }
@@ -367,7 +367,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.d.a.a
  * JD-Core Version:    0.7.0.1
  */

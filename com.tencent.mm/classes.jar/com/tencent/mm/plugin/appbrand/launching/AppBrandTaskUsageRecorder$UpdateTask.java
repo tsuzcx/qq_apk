@@ -11,15 +11,15 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.launching.a.b;
 import com.tencent.mm.plugin.appbrand.launching.a.d;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.protocal.protobuf.dty;
-import com.tencent.mm.protocal.protobuf.dvo;
-import com.tencent.mm.protocal.protobuf.dws;
+import com.tencent.mm.protocal.protobuf.dzp;
+import com.tencent.mm.protocal.protobuf.ebf;
+import com.tencent.mm.protocal.protobuf.ecj;
 
 public final class AppBrandTaskUsageRecorder$UpdateTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<UpdateTask> CREATOR;
-  AppBrandTaskUsageRecorder.LaunchCheckParams kHc;
+  AppBrandTaskUsageRecorder.LaunchCheckParams liw;
   
   static
   {
@@ -37,29 +37,29 @@ public final class AppBrandTaskUsageRecorder$UpdateTask
   
   public AppBrandTaskUsageRecorder$UpdateTask(AppBrandTaskUsageRecorder.LaunchCheckParams paramLaunchCheckParams)
   {
-    this.kHc = paramLaunchCheckParams;
+    this.liw = paramLaunchCheckParams;
   }
   
-  public final void aEz()
+  public final void aLq()
   {
     AppMethodBeat.i(47113);
-    if ((!g.afz().gcn) || (a.aeC()))
+    if ((!g.agP().ggT) || (a.afS()))
     {
       AppMethodBeat.o(47113);
       return;
     }
-    this.kHc.getClass();
-    Object localObject = this.kHc.kHa.cfi;
-    dws localdws = d.b((AppBrandLaunchReferrer)localObject);
+    this.liw.getClass();
+    Object localObject = this.liw.liu.cce;
+    ecj localecj = d.b((AppBrandLaunchReferrer)localObject);
     localObject = d.c((AppBrandLaunchReferrer)localObject);
-    dty localdty = new dty();
-    localdty.DGx = this.kHc.kHa.iOP;
-    localdty.CHC = this.kHc.pkgVersion;
-    localdty.Scene = this.kHc.kHb.scene;
-    localdty.DKY = this.kHc.kHa.iJb;
-    localdty.DKX = 1;
-    localdty.DKW = this.kHc.kHb.dzS;
-    new b(this.kHc.kHa.appId, false, localdty, localdws, (dvo)localObject, this.kHc.cfb, this.kHc.jHb, this.kHc.jdu, "", this.kHc.kHa.iJn).bhc();
+    dzp localdzp = new dzp();
+    localdzp.FbR = this.liw.liu.joY;
+    localdzp.Eae = this.liw.pkgVersion;
+    localdzp.Scene = this.liw.liv.scene;
+    localdzp.Fhn = this.liw.liu.jjf;
+    localdzp.Fhm = 1;
+    localdzp.Fhl = this.liw.liv.dxE;
+    new b(this.liw.liu.appId, false, localdzp, localecj, (ebf)localObject, this.liw.cbY, this.liw.khA, this.liw.jDH, "", this.liw.liu.jjr).bnW();
     AppMethodBeat.o(47113);
   }
   
@@ -71,20 +71,20 @@ public final class AppBrandTaskUsageRecorder$UpdateTask
   public final void e(Parcel paramParcel)
   {
     AppMethodBeat.i(47115);
-    this.kHc = ((AppBrandTaskUsageRecorder.LaunchCheckParams)paramParcel.readParcelable(AppBrandTaskUsageRecorder.LaunchCheckParams.class.getClassLoader()));
+    this.liw = ((AppBrandTaskUsageRecorder.LaunchCheckParams)paramParcel.readParcelable(AppBrandTaskUsageRecorder.LaunchCheckParams.class.getClassLoader()));
     AppMethodBeat.o(47115);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(47116);
-    paramParcel.writeParcelable(this.kHc, paramInt);
+    paramParcel.writeParcelable(this.liw, paramInt);
     AppMethodBeat.o(47116);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandTaskUsageRecorder.UpdateTask
  * JD-Core Version:    0.7.0.1
  */

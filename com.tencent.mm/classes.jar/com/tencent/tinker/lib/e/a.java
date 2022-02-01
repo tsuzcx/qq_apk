@@ -5,96 +5,97 @@ import com.tencent.tinker.lib.d.c;
 import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.SharePatchInfo;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.io.File;
 
 public class a
 {
-  private static a IEI;
+  private static a KqR;
   public static boolean sInstalled = false;
-  public final File IEJ;
-  final com.tencent.tinker.lib.b.b IEK;
-  public final c IEL;
-  public final com.tencent.tinker.lib.d.d IEM;
-  public final File IEN;
-  public final File IEO;
-  public final boolean IEP;
-  public d IEQ;
-  public boolean IER = false;
+  public final File KqS;
+  final com.tencent.tinker.lib.b.b KqT;
+  public final c KqU;
+  public final com.tencent.tinker.lib.d.d KqV;
+  public final File KqW;
+  public final File KqX;
+  public final boolean KqY;
+  public d KqZ;
+  public boolean Kra = false;
   public final Context context;
   public int tinkerFlags;
   final boolean tinkerLoadVerifyFlag;
-  public final boolean xZI;
+  public final boolean zmI;
   
   private a(Context paramContext, int paramInt, c paramc, com.tencent.tinker.lib.d.d paramd, com.tencent.tinker.lib.b.b paramb, File paramFile1, File paramFile2, File paramFile3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     this.context = paramContext;
-    this.IEK = paramb;
-    this.IEL = paramc;
-    this.IEM = paramd;
+    this.KqT = paramb;
+    this.KqU = paramc;
+    this.KqV = paramd;
     this.tinkerFlags = paramInt;
-    this.IEJ = paramFile1;
-    this.IEN = paramFile2;
-    this.IEO = paramFile3;
-    this.xZI = paramBoolean1;
+    this.KqS = paramFile1;
+    this.KqW = paramFile2;
+    this.KqX = paramFile3;
+    this.zmI = paramBoolean1;
     this.tinkerLoadVerifyFlag = paramBoolean3;
-    this.IEP = paramBoolean2;
+    this.KqY = paramBoolean2;
   }
   
   public static void a(a parama)
   {
-    if (IEI != null) {
+    if (KqR != null) {
       throw new TinkerRuntimeException("Tinker instance is already set.");
     }
-    IEI = parama;
+    KqR = parama;
   }
   
-  private void aOh(String paramString)
+  private void aTS(String paramString)
   {
-    if ((this.IEJ == null) || (paramString == null)) {
+    if ((this.KqS == null) || (paramString == null)) {
       return;
     }
-    SharePatchFileUtil.deleteDir(this.IEJ.getAbsolutePath() + "/" + paramString);
+    SharePatchFileUtil.deleteDir(this.KqS.getAbsolutePath() + "/" + paramString);
   }
   
-  public static a kI(Context paramContext)
+  public static a kX(Context paramContext)
   {
     if (!sInstalled) {
       throw new TinkerRuntimeException("you must install tinker before get tinker sInstance");
     }
     try
     {
-      if (IEI == null) {
-        IEI = new a(paramContext).fpc();
+      if (KqR == null) {
+        KqR = new a(paramContext).fHk();
       }
-      return IEI;
+      return KqR;
     }
     finally {}
   }
   
-  public final void X(File paramFile)
+  public final void ab(File paramFile)
   {
-    if ((this.IEJ == null) || (paramFile == null) || (!paramFile.exists())) {
+    if ((this.KqS == null) || (paramFile == null) || (!paramFile.exists())) {
       return;
     }
-    aOh(SharePatchFileUtil.getPatchVersionDirectory(SharePatchFileUtil.getMD5(paramFile)));
+    aTS(SharePatchFileUtil.getPatchVersionDirectory(SharePatchFileUtil.getMD5(paramFile)));
   }
   
-  public final void cGh()
+  public final void cTr()
   {
-    if (this.IEJ == null) {}
+    if (this.KqS == null) {}
     File localFile1;
     File localFile2;
     SharePatchInfo localSharePatchInfo;
     do
     {
       return;
-      localFile1 = SharePatchFileUtil.getPatchInfoFile(this.IEJ.getAbsolutePath());
+      localFile1 = SharePatchFileUtil.getPatchInfoFile(this.KqS.getAbsolutePath());
       if (!localFile1.exists())
       {
-        com.tencent.tinker.lib.f.a.w("Tinker.Tinker", "try to clean patch while patch info file does not exist.", new Object[0]);
+        ShareTinkerLog.w("Tinker.Tinker", "try to clean patch while patch info file does not exist.", new Object[0]);
         return;
       }
-      localFile2 = SharePatchFileUtil.getPatchInfoLockFile(this.IEJ.getAbsolutePath());
+      localFile2 = SharePatchFileUtil.getPatchInfoLockFile(this.KqS.getAbsolutePath());
       localSharePatchInfo = SharePatchInfo.readAndCheckPropertyWithLock(localFile1, localFile2);
     } while (localSharePatchInfo == null);
     localSharePatchInfo.isRemoveNewVersion = true;
@@ -103,15 +104,15 @@ public class a
   
   public static final class a
   {
-    private File IEJ;
-    public com.tencent.tinker.lib.b.b IEK;
-    public c IEL;
-    public com.tencent.tinker.lib.d.d IEM;
-    private File IEN;
-    private File IEO;
-    private final boolean IES;
-    private final boolean IET;
-    public Boolean IEU;
+    private File KqS;
+    public com.tencent.tinker.lib.b.b KqT;
+    public c KqU;
+    public com.tencent.tinker.lib.d.d KqV;
+    private File KqW;
+    private File KqX;
+    private final boolean Krb;
+    private final boolean Krc;
+    public Boolean Krd;
     private final Context context;
     public int status = -1;
     
@@ -121,43 +122,43 @@ public class a
         throw new TinkerRuntimeException("Context must not be null.");
       }
       this.context = paramContext;
-      this.IES = com.tencent.tinker.lib.f.b.isInMainProcess(paramContext);
-      this.IET = com.tencent.tinker.lib.f.b.kM(paramContext);
-      this.IEJ = SharePatchFileUtil.getPatchDirectory(paramContext);
-      if (this.IEJ == null)
+      this.Krb = com.tencent.tinker.lib.util.b.isInMainProcess(paramContext);
+      this.Krc = com.tencent.tinker.lib.util.b.lb(paramContext);
+      this.KqS = SharePatchFileUtil.getPatchDirectory(paramContext);
+      if (this.KqS == null)
       {
-        com.tencent.tinker.lib.f.a.e("Tinker.Tinker", "patchDirectory is null!", new Object[0]);
+        ShareTinkerLog.e("Tinker.Tinker", "patchDirectory is null!", new Object[0]);
         return;
       }
-      this.IEN = SharePatchFileUtil.getPatchInfoFile(this.IEJ.getAbsolutePath());
-      this.IEO = SharePatchFileUtil.getPatchInfoLockFile(this.IEJ.getAbsolutePath());
-      com.tencent.tinker.lib.f.a.w("Tinker.Tinker", "tinker patch directory: %s", new Object[] { this.IEJ });
+      this.KqW = SharePatchFileUtil.getPatchInfoFile(this.KqS.getAbsolutePath());
+      this.KqX = SharePatchFileUtil.getPatchInfoLockFile(this.KqS.getAbsolutePath());
+      ShareTinkerLog.w("Tinker.Tinker", "tinker patch directory: %s", new Object[] { this.KqS });
     }
     
-    public final a fpc()
+    public final a fHk()
     {
       if (this.status == -1) {
         this.status = 15;
       }
-      if (this.IEL == null) {
-        this.IEL = new com.tencent.tinker.lib.d.a(this.context);
+      if (this.KqU == null) {
+        this.KqU = new com.tencent.tinker.lib.d.a(this.context);
       }
-      if (this.IEM == null) {
-        this.IEM = new com.tencent.tinker.lib.d.b(this.context);
+      if (this.KqV == null) {
+        this.KqV = new com.tencent.tinker.lib.d.b(this.context);
       }
-      if (this.IEK == null) {
-        this.IEK = new com.tencent.tinker.lib.b.a(this.context);
+      if (this.KqT == null) {
+        this.KqT = new com.tencent.tinker.lib.b.a(this.context);
       }
-      if (this.IEU == null) {
-        this.IEU = Boolean.FALSE;
+      if (this.Krd == null) {
+        this.Krd = Boolean.FALSE;
       }
-      return new a(this.context, this.status, this.IEL, this.IEM, this.IEK, this.IEJ, this.IEN, this.IEO, this.IES, this.IET, this.IEU.booleanValue(), (byte)0);
+      return new a(this.context, this.status, this.KqU, this.KqV, this.KqT, this.KqS, this.KqW, this.KqX, this.Krb, this.Krc, this.Krd.booleanValue(), (byte)0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.e.a
  * JD-Core Version:    0.7.0.1
  */

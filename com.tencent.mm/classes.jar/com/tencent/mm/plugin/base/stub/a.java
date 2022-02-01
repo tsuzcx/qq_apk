@@ -17,7 +17,7 @@ public final class a
     super(paramContext, paramString1, paramString2, parama);
   }
   
-  protected final void bAS()
+  protected final void bHO()
   {
     AppMethodBeat.i(22165);
     h.a(this.context, 2131759960, 2131755906, false, new DialogInterface.OnClickListener()
@@ -25,11 +25,11 @@ public final class a
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(22164);
-        paramAnonymousDialogInterface = b.a.cBi();
+        paramAnonymousDialogInterface = b.a.cOr();
         if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.k(a.this.openId, u.aqJ(), a.this.appId);
+          paramAnonymousDialogInterface.k(a.this.openId, u.axz(), a.this.appId);
         }
-        a.this.mKh.it(false);
+        a.this.nmq.iT(false);
         AppMethodBeat.o(22164);
       }
     });
@@ -38,7 +38,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.a
  * JD-Core Version:    0.7.0.1
  */

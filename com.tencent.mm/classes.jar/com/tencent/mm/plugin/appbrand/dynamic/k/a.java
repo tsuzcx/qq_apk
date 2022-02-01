@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.k;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.concurrent.CountDownLatch;
 
 public final class a
@@ -22,42 +22,42 @@ public final class a
       AppMethodBeat.o(121518);
       return null;
     }
-    if (!com.tencent.mm.kernel.g.afC().gdw.gdQ)
+    if (!com.tencent.mm.kernel.g.agS().gic.giw)
     {
       CountDownLatch localCountDownLatch = new CountDownLatch(1);
       localObject = new com.tencent.mm.kernel.api.g()
       {
-        public final void Lk()
+        public final void Lh()
         {
           AppMethodBeat.i(121516);
           this.val$latch.countDown();
           AppMethodBeat.o(121516);
         }
         
-        public final void ce(boolean paramAnonymousBoolean)
+        public final void cf(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(121517);
           this.val$latch.countDown();
           AppMethodBeat.o(121517);
         }
       };
-      com.tencent.mm.kernel.g.afC().a((com.tencent.mm.kernel.api.g)localObject);
+      com.tencent.mm.kernel.g.agS().a((com.tencent.mm.kernel.api.g)localObject);
       try
       {
         localCountDownLatch.await();
-        com.tencent.mm.kernel.g.afC().b((com.tencent.mm.kernel.api.g)localObject);
+        com.tencent.mm.kernel.g.agS().b((com.tencent.mm.kernel.api.g)localObject);
       }
       catch (InterruptedException localInterruptedException)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.SyncGetter", localInterruptedException, "", new Object[0]);
-          com.tencent.mm.kernel.g.afC().b((com.tencent.mm.kernel.api.g)localObject);
+          ac.printErrStackTrace("MicroMsg.SyncGetter", localInterruptedException, "", new Object[0]);
+          com.tencent.mm.kernel.g.agS().b((com.tencent.mm.kernel.api.g)localObject);
         }
       }
       finally
       {
-        com.tencent.mm.kernel.g.afC().b((com.tencent.mm.kernel.api.g)localObject);
+        com.tencent.mm.kernel.g.agS().b((com.tencent.mm.kernel.api.g)localObject);
         AppMethodBeat.o(121518);
       }
       paramClass = com.tencent.mm.kernel.g.ab(paramClass);

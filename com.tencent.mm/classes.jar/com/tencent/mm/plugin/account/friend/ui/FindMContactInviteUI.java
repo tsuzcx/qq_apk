@@ -11,21 +11,23 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.account.friend.a.i;
 import com.tencent.mm.plugin.account.friend.a.i.a;
 import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aq.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.h;
 import java.util.List;
@@ -34,39 +36,39 @@ public class FindMContactInviteUI
   extends MMWizardActivity
 {
   private TextView emptyTipTv;
-  private ProgressDialog fpP;
-  private int ihC;
-  private String ihI;
-  private ListView iiS;
-  private i imb;
-  private View imc;
-  private TextView imd;
-  private TextView ime;
-  private TextView imf;
-  private TextView img;
-  private Button imh;
-  private int imi;
-  private List<String[]> imj;
-  private boolean imk;
-  private i.a iml;
-  private String imn;
-  private com.tencent.mm.al.g onSceneEndCallback;
+  private ProgressDialog fts;
+  private int iHK;
+  private String iHQ;
+  private ListView iIZ;
+  private i iMh;
+  private View iMi;
+  private TextView iMj;
+  private TextView iMk;
+  private TextView iMl;
+  private TextView iMm;
+  private Button iMn;
+  private int iMo;
+  private List<String[]> iMp;
+  private boolean iMq;
+  private i.a iMr;
+  private String iMt;
+  private com.tencent.mm.ak.g onSceneEndCallback;
   
   public FindMContactInviteUI()
   {
     AppMethodBeat.i(131212);
-    this.fpP = null;
+    this.fts = null;
     this.emptyTipTv = null;
-    this.imd = null;
-    this.ime = null;
-    this.imf = null;
-    this.img = null;
-    this.imh = null;
-    this.imn = null;
+    this.iMj = null;
+    this.iMk = null;
+    this.iMl = null;
+    this.iMm = null;
+    this.iMn = null;
+    this.iMt = null;
     this.onSceneEndCallback = null;
-    this.ihC = 2;
-    this.imk = true;
-    this.iml = new i.a()
+    this.iHK = 2;
+    this.iMq = true;
+    this.iMr = new i.a()
     {
       public final void notifyDataSetChanged()
       {
@@ -74,7 +76,7 @@ public class FindMContactInviteUI
         if ((FindMContactInviteUI.d(FindMContactInviteUI.this) != 2) && (FindMContactInviteUI.d(FindMContactInviteUI.this) == 1))
         {
           FindMContactInviteUI.e(FindMContactInviteUI.this).setText(FindMContactInviteUI.this.getString(2131759120));
-          if (!FindMContactInviteUI.b(FindMContactInviteUI.this).aIH()) {
+          if (!FindMContactInviteUI.b(FindMContactInviteUI.this).aPy()) {
             break label240;
           }
           if ((FindMContactInviteUI.d(FindMContactInviteUI.this) != 1) && (FindMContactInviteUI.e(FindMContactInviteUI.this).getVisibility() == 0) && (FindMContactInviteUI.f(FindMContactInviteUI.this) != null))
@@ -108,33 +110,33 @@ public class FindMContactInviteUI
     AppMethodBeat.o(131212);
   }
   
-  private void aHX()
+  private void aOO()
   {
     AppMethodBeat.i(131215);
-    com.tencent.mm.plugin.b.a.aUz(this.ihI);
+    com.tencent.mm.plugin.b.a.IL(this.iHQ);
     hideVKB();
-    Xo(1);
+    ZA(1);
     AppMethodBeat.o(131215);
   }
   
-  private void aJt()
+  private void aQk()
   {
     AppMethodBeat.i(131217);
     AppCompatActivity localAppCompatActivity = getContext();
     getString(2131755906);
-    this.fpP = h.b(localAppCompatActivity, getString(2131761251), true, new DialogInterface.OnCancelListener()
+    this.fts = h.b(localAppCompatActivity, getString(2131761251), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    com.tencent.mm.kernel.g.afE().a(new aq.a()
+    com.tencent.mm.kernel.g.agU().a(new ap.a()
     {
-      public final boolean aus()
+      public final boolean aBj()
       {
         AppMethodBeat.i(131202);
         try
         {
-          FindMContactInviteUI.a(FindMContactInviteUI.this, com.tencent.mm.pluginsdk.a.dk(FindMContactInviteUI.this));
-          FindMContactInviteUI.b(FindMContactInviteUI.this).ihG = FindMContactInviteUI.c(FindMContactInviteUI.this);
+          FindMContactInviteUI.a(FindMContactInviteUI.this, com.tencent.mm.pluginsdk.a.dt(FindMContactInviteUI.this));
+          FindMContactInviteUI.b(FindMContactInviteUI.this).iHO = FindMContactInviteUI.c(FindMContactInviteUI.this);
           FindMContactInviteUI.b(FindMContactInviteUI.this).s(((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getFriendData());
           AppMethodBeat.o(131202);
           return true;
@@ -143,12 +145,12 @@ public class FindMContactInviteUI
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.FindMContactInviteUI", localException, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.FindMContactInviteUI", localException, "", new Object[0]);
           }
         }
       }
       
-      public final boolean aut()
+      public final boolean aBk()
       {
         AppMethodBeat.i(131201);
         if (FindMContactInviteUI.a(FindMContactInviteUI.this) != null)
@@ -182,34 +184,34 @@ public class FindMContactInviteUI
     AppMethodBeat.i(131220);
     this.emptyTipTv = ((TextView)findViewById(2131302350));
     this.emptyTipTv.setText(2131761249);
-    this.iiS = ((ListView)findViewById(2131302352));
-    if ((this.ihC != 2) && (this.ihC == 1))
+    this.iIZ = ((ListView)findViewById(2131302352));
+    if ((this.iHK != 2) && (this.iHK == 1))
     {
-      this.imc = LayoutInflater.from(this).inflate(2131494010, null);
-      this.imd = ((TextView)this.imc.findViewById(2131300082));
-      this.ime = ((TextView)this.imc.findViewById(2131300085));
-      this.imf = ((TextView)this.imc.findViewById(2131299970));
-      this.imh = ((Button)this.imc.findViewById(2131299969));
-      this.ime.setText(getString(2131759121));
-      this.imf.setText(getString(2131759121));
-      this.imh.setText(getString(2131759120));
+      this.iMi = LayoutInflater.from(this).inflate(2131494010, null);
+      this.iMj = ((TextView)this.iMi.findViewById(2131300082));
+      this.iMk = ((TextView)this.iMi.findViewById(2131300085));
+      this.iMl = ((TextView)this.iMi.findViewById(2131299970));
+      this.iMn = ((Button)this.iMi.findViewById(2131299969));
+      this.iMk.setText(getString(2131759121));
+      this.iMl.setText(getString(2131759121));
+      this.iMn.setText(getString(2131759120));
     }
     for (;;)
     {
-      this.imb = new i(this, this.iml, 2);
-      this.imh.setOnClickListener(new View.OnClickListener()
+      this.iMh = new i(this, this.iMr, 2);
+      this.iMn.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(131205);
           paramAnonymousView = new StringBuilder();
-          com.tencent.mm.kernel.g.afz();
-          paramAnonymousView = paramAnonymousView.append(com.tencent.mm.kernel.a.aeM()).append(",").append(FindMContactInviteUI.this.getClass().getName()).append(",R300_400_AddAllButton,");
-          com.tencent.mm.kernel.g.afz();
-          com.tencent.mm.plugin.b.a.pj(com.tencent.mm.kernel.a.qN("R300_300_AddAllButton") + ",3");
+          com.tencent.mm.kernel.g.agP();
+          paramAnonymousView = paramAnonymousView.append(com.tencent.mm.kernel.a.agc()).append(",").append(FindMContactInviteUI.this.getClass().getName()).append(",R300_400_AddAllButton,");
+          com.tencent.mm.kernel.g.agP();
+          com.tencent.mm.plugin.b.a.sv(com.tencent.mm.kernel.a.uc("R300_300_AddAllButton") + ",3");
           if (FindMContactInviteUI.d(FindMContactInviteUI.this) == 2)
           {
-            FindMContactInviteUI.b(FindMContactInviteUI.this).eS(true);
+            FindMContactInviteUI.b(FindMContactInviteUI.this).fm(true);
             FindMContactInviteUI.b(FindMContactInviteUI.this).notifyDataSetChanged();
             FindMContactInviteUI.e(FindMContactInviteUI.this).setVisibility(8);
             if (FindMContactInviteUI.f(FindMContactInviteUI.this) != null)
@@ -222,13 +224,13 @@ public class FindMContactInviteUI
           {
             if (FindMContactInviteUI.d(FindMContactInviteUI.this) == 1)
             {
-              FindMContactInviteUI.b(FindMContactInviteUI.this).eS(true);
+              FindMContactInviteUI.b(FindMContactInviteUI.this).fm(true);
               FindMContactInviteUI.b(FindMContactInviteUI.this).notifyDataSetChanged();
               FindMContactInviteUI.h(FindMContactInviteUI.this);
               AppMethodBeat.o(131205);
               return;
             }
-            FindMContactInviteUI.b(FindMContactInviteUI.this).eS(true);
+            FindMContactInviteUI.b(FindMContactInviteUI.this).fm(true);
             FindMContactInviteUI.b(FindMContactInviteUI.this).notifyDataSetChanged();
             FindMContactInviteUI.e(FindMContactInviteUI.this).setVisibility(8);
             if (FindMContactInviteUI.f(FindMContactInviteUI.this) != null) {
@@ -238,39 +240,54 @@ public class FindMContactInviteUI
           AppMethodBeat.o(131205);
         }
       });
-      if (this.img != null)
+      if (this.iMm != null)
       {
-        this.img.setOnClickListener(new View.OnClickListener()
+        this.iMm.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(131206);
             FindMContactInviteUI.e(FindMContactInviteUI.this).setVisibility(0);
             FindMContactInviteUI.f(FindMContactInviteUI.this).setVisibility(8);
-            FindMContactInviteUI.b(FindMContactInviteUI.this).eS(false);
+            FindMContactInviteUI.b(FindMContactInviteUI.this).fm(false);
             FindMContactInviteUI.b(FindMContactInviteUI.this).notifyDataSetChanged();
             AppMethodBeat.o(131206);
           }
         });
-        this.img.setVisibility(8);
+        this.iMm.setVisibility(8);
       }
-      this.iiS.addHeaderView(this.imc);
-      this.iiS.setAdapter(this.imb);
-      this.iiS.setOnScrollListener(new com.tencent.mm.ui.applet.a());
-      this.iiS.setOnTouchListener(new FindMContactInviteUI.9(this));
+      this.iIZ.addHeaderView(this.iMi);
+      this.iIZ.setAdapter(this.iMh);
+      this.iIZ.setOnScrollListener(new com.tencent.mm.ui.applet.a());
+      this.iIZ.setOnTouchListener(new View.OnTouchListener()
+      {
+        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        {
+          AppMethodBeat.i(131207);
+          if (FindMContactInviteUI.b(FindMContactInviteUI.this) != null)
+          {
+            paramAnonymousView = FindMContactInviteUI.b(FindMContactInviteUI.this);
+            if (paramAnonymousView.iKs != null) {
+              paramAnonymousView.iKs.onTouchEvent(paramAnonymousMotionEvent);
+            }
+          }
+          AppMethodBeat.o(131207);
+          return false;
+        }
+      });
       addTextOptionMenu(0, getString(2131755779), new FindMContactInviteUI.10(this));
       setToTop(new FindMContactInviteUI.11(this));
       AppMethodBeat.o(131220);
       return;
-      this.imc = LayoutInflater.from(this).inflate(2131494009, null);
-      this.imd = ((TextView)this.imc.findViewById(2131300082));
-      this.ime = ((TextView)this.imc.findViewById(2131300085));
-      this.imf = ((TextView)this.imc.findViewById(2131299970));
-      this.imh = ((Button)this.imc.findViewById(2131299969));
-      this.ime.setText(getString(2131759124));
-      this.imf.setText(getString(2131759121));
-      this.imh.setText(getString(2131759119, new Object[] { Integer.valueOf(0) }));
-      this.img = ((TextView)this.imc.findViewById(2131302345));
+      this.iMi = LayoutInflater.from(this).inflate(2131494009, null);
+      this.iMj = ((TextView)this.iMi.findViewById(2131300082));
+      this.iMk = ((TextView)this.iMi.findViewById(2131300085));
+      this.iMl = ((TextView)this.iMi.findViewById(2131299970));
+      this.iMn = ((Button)this.iMi.findViewById(2131299969));
+      this.iMk.setText(getString(2131759124));
+      this.iMl.setText(getString(2131759121));
+      this.iMn.setText(getString(2131759119, new Object[] { Integer.valueOf(0) }));
+      this.iMm = ((TextView)this.iMi.findViewById(2131302345));
     }
   }
   
@@ -279,11 +296,11 @@ public class FindMContactInviteUI
     AppMethodBeat.i(131213);
     super.onCreate(paramBundle);
     setMMTitle(2131759123);
-    com.tencent.mm.plugin.account.a.a.hYu.Lo();
-    this.imn = getIntent().getStringExtra("regsetinfo_ticket");
-    this.imi = getIntent().getIntExtra("login_type", 0);
-    this.ihC = getIntent().getIntExtra("regsetinfo_NextStyle", 2);
-    this.ihI = com.tencent.mm.plugin.b.a.fQQ();
+    com.tencent.mm.plugin.account.a.a.iyy.Lm();
+    this.iMt = getIntent().getStringExtra("regsetinfo_ticket");
+    this.iMo = getIntent().getIntExtra("login_type", 0);
+    this.iHK = getIntent().getIntExtra("regsetinfo_NextStyle", 2);
+    this.iHQ = com.tencent.mm.plugin.b.a.EL();
     initView();
     AppMethodBeat.o(131213);
   }
@@ -293,16 +310,16 @@ public class FindMContactInviteUI
     AppMethodBeat.i(131219);
     if (this.onSceneEndCallback != null)
     {
-      com.tencent.mm.kernel.g.aeS().b(432, this.onSceneEndCallback);
+      com.tencent.mm.kernel.g.agi().b(432, this.onSceneEndCallback);
       this.onSceneEndCallback = null;
     }
-    if (this.imb != null)
+    if (this.iMh != null)
     {
-      i locali = this.imb;
-      if (locali.ikl != null)
+      i locali = this.iMh;
+      if (locali.iKs != null)
       {
-        locali.ikl.detach();
-        locali.ikl = null;
+        locali.iKs.detach();
+        locali.iKs = null;
       }
     }
     ((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).clearFriendData();
@@ -315,7 +332,7 @@ public class FindMContactInviteUI
     AppMethodBeat.i(131214);
     if (paramInt == 4)
     {
-      aHX();
+      aOO();
       AppMethodBeat.o(131214);
       return true;
     }
@@ -328,21 +345,21 @@ public class FindMContactInviteUI
   {
     AppMethodBeat.i(131218);
     super.onPause();
-    if (this.imi == 1)
+    if (this.iMo == 1)
     {
       localStringBuilder = new StringBuilder();
-      com.tencent.mm.kernel.g.afz();
-      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.aeM()).append(",").append(getClass().getName()).append(",R300_400_QQ,");
-      com.tencent.mm.kernel.g.afz();
-      com.tencent.mm.plugin.b.a.K(false, com.tencent.mm.kernel.a.qN("R300_400_QQ") + ",2");
+      com.tencent.mm.kernel.g.agP();
+      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.agc()).append(",").append(getClass().getName()).append(",R300_400_QQ,");
+      com.tencent.mm.kernel.g.agP();
+      com.tencent.mm.plugin.b.a.h(false, com.tencent.mm.kernel.a.uc("R300_400_QQ") + ",2");
       AppMethodBeat.o(131218);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    com.tencent.mm.kernel.g.afz();
-    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.aeM()).append(",").append(getClass().getName()).append(",R300_400_phone,");
-    com.tencent.mm.kernel.g.afz();
-    com.tencent.mm.plugin.b.a.K(false, com.tencent.mm.kernel.a.qN("R300_400_phone") + ",2");
+    com.tencent.mm.kernel.g.agP();
+    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.agc()).append(",").append(getClass().getName()).append(",R300_400_phone,");
+    com.tencent.mm.kernel.g.agP();
+    com.tencent.mm.plugin.b.a.h(false, com.tencent.mm.kernel.a.uc("R300_400_phone") + ",2");
     AppMethodBeat.o(131218);
   }
   
@@ -351,11 +368,11 @@ public class FindMContactInviteUI
     AppMethodBeat.i(131221);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ad.i("MicroMsg.FindMContactInviteUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ac.i("MicroMsg.FindMContactInviteUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(131221);
       return;
     }
-    ad.i("MicroMsg.FindMContactInviteUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ac.i("MicroMsg.FindMContactInviteUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -365,36 +382,12 @@ public class FindMContactInviteUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        aJt();
+        aQk();
         AppMethodBeat.o(131221);
         return;
       }
-      this.imk = false;
-      h.a(this, getString(2131761862), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(131199);
-          paramAnonymousDialogInterface = FindMContactInviteUI.this;
-          Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/account/friend/ui/FindMContactInviteUI$11", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/account/friend/ui/FindMContactInviteUI$11", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          FindMContactInviteUI.n(FindMContactInviteUI.this);
-          FindMContactInviteUI.this.finish();
-          AppMethodBeat.o(131199);
-        }
-      }, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(131200);
-          FindMContactInviteUI.n(FindMContactInviteUI.this);
-          FindMContactInviteUI.this.finish();
-          AppMethodBeat.o(131200);
-        }
-      });
+      this.iMq = false;
+      h.a(this, getString(2131761862), getString(2131761885), getString(2131760598), getString(2131755691), false, new FindMContactInviteUI.3(this), new FindMContactInviteUI.4(this));
     }
   }
   
@@ -402,33 +395,33 @@ public class FindMContactInviteUI
   {
     AppMethodBeat.i(131216);
     super.onResume();
-    this.imb.notifyDataSetChanged();
+    this.iMh.notifyDataSetChanged();
     StringBuilder localStringBuilder;
-    if (this.imi == 1)
+    if (this.iMo == 1)
     {
       localStringBuilder = new StringBuilder();
-      com.tencent.mm.kernel.g.afz();
-      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.aeM()).append(",").append(getClass().getName()).append(",R300_400_QQ,");
-      com.tencent.mm.kernel.g.afz();
-      com.tencent.mm.plugin.b.a.K(true, com.tencent.mm.kernel.a.qN("R300_400_QQ") + ",1");
+      com.tencent.mm.kernel.g.agP();
+      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.agc()).append(",").append(getClass().getName()).append(",R300_400_QQ,");
+      com.tencent.mm.kernel.g.agP();
+      com.tencent.mm.plugin.b.a.h(true, com.tencent.mm.kernel.a.uc("R300_400_QQ") + ",1");
     }
-    while (this.imk)
+    while (this.iMq)
     {
       boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.READ_CONTACTS", 48, null, null);
-      ad.i("MicroMsg.FindMContactInviteUI", "summerper checkPermission checkContacts[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bt.eGN() });
+      ac.i("MicroMsg.FindMContactInviteUI", "summerper checkPermission checkContacts[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bs.eWi() });
       if (!bool)
       {
         AppMethodBeat.o(131216);
         return;
         localStringBuilder = new StringBuilder();
-        com.tencent.mm.kernel.g.afz();
-        localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.aeM()).append(",").append(getClass().getName()).append(",R300_400_phone,");
-        com.tencent.mm.kernel.g.afz();
-        com.tencent.mm.plugin.b.a.K(true, com.tencent.mm.kernel.a.qN("R300_400_phone") + ",1");
+        com.tencent.mm.kernel.g.agP();
+        localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.agc()).append(",").append(getClass().getName()).append(",R300_400_phone,");
+        com.tencent.mm.kernel.g.agP();
+        com.tencent.mm.plugin.b.a.h(true, com.tencent.mm.kernel.a.uc("R300_400_phone") + ",1");
       }
       else
       {
-        aJt();
+        aQk();
       }
     }
     AppMethodBeat.o(131216);

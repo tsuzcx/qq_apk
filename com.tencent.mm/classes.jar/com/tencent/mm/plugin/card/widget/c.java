@@ -6,59 +6,59 @@ import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.ro;
-import com.tencent.mm.protocal.protobuf.xo;
+import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.protocal.protobuf.yg;
 import java.util.LinkedList;
 
 public final class c
   extends a
 {
-  protected TextView nJK;
-  protected TextView nJL;
+  protected TextView omK;
+  protected TextView omL;
   
   public c(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void G(boolean paramBoolean1, boolean paramBoolean2) {}
+  public final void H(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected final void bMS()
+  protected final void bUd()
   {
     AppMethodBeat.i(113902);
-    this.nJL = ((TextView)bMR().findViewById(2131297733));
-    this.nJK = ((TextView)bMR().findViewById(2131297902));
+    this.omL = ((TextView)bUc().findViewById(2131297733));
+    this.omK = ((TextView)bUc().findViewById(2131297902));
     AppMethodBeat.o(113902);
   }
   
-  protected final void bMT()
+  protected final void bUe()
   {
     AppMethodBeat.i(113903);
-    if ((this.nqp.bHV().CRF != null) && (this.nqp.bHV().CRF.size() > 0))
+    if ((this.nTp.bPi().Ekq != null) && (this.nTp.bPi().Ekq.size() > 0))
     {
-      xo localxo = (xo)this.nqp.bHV().CRF.get(0);
-      if (this.lKe != null) {
-        this.lKe.setText(localxo.title);
+      yg localyg = (yg)this.nTp.bPi().Ekq.get(0);
+      if (this.mmb != null) {
+        this.mmb.setText(localyg.title);
       }
-      if (this.nJK != null)
+      if (this.omK != null)
       {
-        if (TextUtils.isEmpty(localxo.nrs)) {
+        if (TextUtils.isEmpty(localyg.nUs)) {
           break label138;
         }
-        this.nJK.setText(localxo.nrs);
+        this.omK.setText(localyg.nUs);
       }
-      while (this.nJL != null) {
-        if (!TextUtils.isEmpty(localxo.nrt))
+      while (this.omL != null) {
+        if (!TextUtils.isEmpty(localyg.nUt))
         {
-          this.nJL.setText(localxo.nrt);
+          this.omL.setText(localyg.nUt);
           AppMethodBeat.o(113903);
           return;
           label138:
-          this.nJK.setVisibility(8);
+          this.omK.setVisibility(8);
         }
         else
         {
-          this.nJL.setVisibility(8);
+          this.omL.setVisibility(8);
         }
       }
     }

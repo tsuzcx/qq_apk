@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.wear.model.f;
 
 import android.content.Context;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.drj;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.dxa;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.bo;
 
 public abstract class b
   extends c
 {
-  protected static String c(String paramString, bl parambl)
+  protected static String c(String paramString, bo parambo)
   {
-    if (w.pF(paramString))
+    if (w.sQ(paramString))
     {
-      paramString = d(paramString, parambl);
-      return String.format(aj.getContext().getString(2131761701), new Object[] { h.auR(paramString), Character.valueOf('​'), h.az(parambl).gKr });
+      paramString = d(paramString, parambo);
+      return String.format(ai.getContext().getString(2131761701), new Object[] { h.aAi(paramString), Character.valueOf('​'), h.aB(parambo).hkR });
     }
-    return String.format(aj.getContext().getString(2131761702), new Object[] { h.az(parambl).gKr });
+    return String.format(ai.getContext().getString(2131761702), new Object[] { h.aB(parambo).hkR });
   }
   
-  protected static String d(String paramString, bl parambl)
+  protected static String d(String paramString, bo parambo)
   {
     Object localObject = paramString;
-    if (w.pF(paramString))
+    if (w.sQ(paramString))
     {
-      int i = bi.uc(parambl.field_content);
+      int i = bi.yi(parambo.field_content);
       localObject = paramString;
       if (i != -1)
       {
-        parambl = parambl.field_content.substring(0, i).trim();
+        parambo = parambo.field_content.substring(0, i).trim();
         localObject = paramString;
-        if (parambl != null)
+        if (parambo != null)
         {
           localObject = paramString;
-          if (parambl.length() > 0) {
-            localObject = parambl;
+          if (parambo.length() > 0) {
+            localObject = parambo;
           }
         }
       }
@@ -47,7 +47,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,51 +9,51 @@ import com.tencent.mm.api.y;
 import com.tencent.mm.api.y.a;
 import com.tencent.mm.api.y.b;
 import com.tencent.mm.api.y.c;
-import com.tencent.mm.bu.b;
+import com.tencent.mm.bt.b;
 import com.tencent.mm.cache.ArtistCacheManager;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.view.a;
 import com.tencent.mm.view.g;
 
 public final class c
   extends y
 {
-  private a cGO;
-  private u cGP;
+  private a cDW;
+  private u cDX;
   
-  public final boolean IL()
+  public final boolean Iu()
   {
     AppMethodBeat.i(9100);
-    boolean bool = this.cGO.getPresenter().IL();
+    boolean bool = this.cDW.getPresenter().Iu();
     AppMethodBeat.o(9100);
     return bool;
   }
   
-  public final u IM()
+  public final u Iv()
   {
     AppMethodBeat.i(9103);
-    if (this.cGP == null) {
-      this.cGP = new com.tencent.mm.cb.c(this.cGO.getPresenter());
+    if (this.cDX == null) {
+      this.cDX = new com.tencent.mm.ca.c(this.cDW.getPresenter());
     }
-    u localu = this.cGP;
+    u localu = this.cDX;
     AppMethodBeat.o(9103);
     return localu;
   }
   
-  public final void IN()
+  public final void Iw()
   {
     AppMethodBeat.i(9104);
-    ArtistCacheManager.Ur().Us();
+    ArtistCacheManager.Vm().Vn();
     AppMethodBeat.o(9104);
   }
   
   public final void a(s params)
   {
     AppMethodBeat.i(9099);
-    b localb = this.cGO.getPresenter();
-    if (!IM().Ka()) {}
+    b localb = this.cDW.getPresenter();
+    if (!Iv().JK()) {}
     for (boolean bool = true;; bool = false)
     {
       localb.a(params, bool);
@@ -66,34 +66,34 @@ public final class c
   {
     AppMethodBeat.i(9101);
     super.a(parama);
-    ArtistCacheManager.Ur().aTR(bt.by(this.cJA.path, "MicroMsg.MMPhotoEditorImpl"));
-    com.tencent.mm.cache.c.Uw().aTT(bt.by(this.cJA.path, "MicroMsg.MMPhotoEditorImpl"));
+    ArtistCacheManager.Vm().rP(bs.bG(this.cGH.path, "MicroMsg.MMPhotoEditorImpl"));
+    com.tencent.mm.cache.c.Vr().rR(bs.bG(this.cGH.path, "MicroMsg.MMPhotoEditorImpl"));
     AppMethodBeat.o(9101);
   }
   
-  public final com.tencent.mm.api.e bf(Context paramContext)
+  public final com.tencent.mm.api.e bg(Context paramContext)
   {
     AppMethodBeat.i(9098);
-    if (this.cGO == null)
+    if (this.cDW == null)
     {
-      ad.d("MicroMsg.MMPhotoEditorImpl", "mDrawingView == null, create a new one");
-      if (this.cJA.cJC == y.c.cJI) {
-        this.cGO = new g(paramContext);
+      ac.d("MicroMsg.MMPhotoEditorImpl", "mDrawingView == null, create a new one");
+      if (this.cGH.cGJ == y.c.cGP) {
+        this.cDW = new g(paramContext);
       }
     }
     for (;;)
     {
-      this.cGO.setup(this.cJA);
-      paramContext = this.cGO;
+      this.cDW.setup(this.cGH);
+      paramContext = this.cDW;
       AppMethodBeat.o(9098);
       return paramContext;
-      if (this.cJA.cJC == y.c.cJJ)
+      if (this.cGH.cGJ == y.c.cGQ)
       {
-        this.cGO = new com.tencent.mm.view.e(paramContext);
+        this.cDW = new com.tencent.mm.view.e(paramContext);
         continue;
-        ad.d("MicroMsg.MMPhotoEditorImpl", "recycled");
-        if (this.cGO.getParent() != null) {
-          ((ViewGroup)this.cGO.getParent()).removeView(this.cGO);
+        ac.d("MicroMsg.MMPhotoEditorImpl", "recycled");
+        if (this.cDW.getParent() != null) {
+          ((ViewGroup)this.cDW.getParent()).removeView(this.cDW);
         }
       }
     }
@@ -102,21 +102,21 @@ public final class c
   public final void onDestroy()
   {
     AppMethodBeat.i(9102);
-    if ((this.cJA != null) && (!this.cJA.cJD)) {
-      ArtistCacheManager.Ur().aTS(bt.by(this.cJA.path, "MicroMsg.MMPhotoEditorImpl"));
+    if ((this.cGH != null) && (!this.cGH.cGK)) {
+      ArtistCacheManager.Vm().rQ(bs.bG(this.cGH.path, "MicroMsg.MMPhotoEditorImpl"));
     }
-    if (this.cGO != null) {
-      this.cGO.getPresenter().onDestroy();
+    if (this.cDW != null) {
+      this.cDW.getPresenter().onDestroy();
     }
     try
     {
-      this.cGO.getChatFooterPanel().destroy();
+      this.cDW.getChatFooterPanel().destroy();
       AppMethodBeat.o(9102);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.MMPhotoEditorImpl", "[onDestroy] may be has destory!");
+      ac.e("MicroMsg.MMPhotoEditorImpl", "[onDestroy] may be has destory!");
       AppMethodBeat.o(9102);
     }
   }
@@ -124,7 +124,7 @@ public final class c
   public static final class a
     implements y.b
   {
-    public final y IO()
+    public final y Ix()
     {
       AppMethodBeat.i(9097);
       c localc = new c();
@@ -135,7 +135,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.c
  * JD-Core Version:    0.7.0.1
  */

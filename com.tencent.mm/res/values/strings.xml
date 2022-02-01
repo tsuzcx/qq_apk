@@ -976,7 +976,8 @@ All Rights Reserved."</string>
     <string name="ym">完成</string>
     <string name="yn">小游戏录屏</string>
     <string name="yo">发送给好友</string>
-    <string name="yp">"抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。
+    <string name="yp">"该小游戏已接入健康系统，家长也可通过成长守护功能进行游戏监督。
+抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。
 适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。"</string>
     <string name="yq">用户已拒绝授权</string>
     <string name="yr">打开失败</string>
@@ -1404,7 +1405,7 @@ All Rights Reserved."</string>
     <string name="a9u">转账到银行卡</string>
     <string name="a9v">支付总金额</string>
     <string name="a9w">仅自己可见，最多%s个字</string>
-    <string name="a9x">添加对方为微信好友？</string>
+    <string name="a9x">对方还不是你的朋友</string>
     <string name="a9y">了解通讯录好友的变化</string>
     <string name="a9z">更多隐私设置，请打开[设置]>[隐私]</string>
     <string name="a_0">通过Google帐号添加好友</string>
@@ -1640,6 +1641,7 @@ All Rights Reserved."</string>
     <string name="af3">订阅号消息</string>
     <string name="af4">将删除公众号本次群发的所有消息</string>
     <string name="af5">已取消置顶</string>
+    <string name="hh8">允许</string>
     <string name="af6">全部视频</string>
     <string name="af7">视频</string>
     <string name="af8">置顶</string>
@@ -2072,8 +2074,9 @@ All Rights Reserved."</string>
     <string name="aqo">使用听筒模式</string>
     <string name="aqp">使用扬声器模式</string>
     <string name="aqq">当前为蓝牙播放模式</string>
-    <string name="aqr">当前为听筒播放模式</string>
+    <string name="aqr">听筒播放，请贴近手机聆听</string>
     <string name="aqs">手指上滑，取消发送</string>
+    <string name="hh9">拒绝</string>
     <string name="aqt">松开手指，取消发送</string>
     <string name="aqu">写邮件</string>
     <string name="aqv">获取中...</string>
@@ -2185,7 +2188,7 @@ All Rights Reserved."</string>
     <string name="atp">图片</string>
     <string name="atq">已收钱</string>
     <string name="atr">已被领取</string>
-    <string name="ats">已收钱</string>
+    <string name="ats">已收款</string>
     <string name="att">已取消</string>
     <string name="atu">转账将存入你的微信零钱（我-支付-钱包-零钱），可用于消费或提现</string>
     <string name="atv">Accepted money is saved in your WeChat Balance where it can be spent (Me>Wallet>Balance).</string>
@@ -2385,7 +2388,7 @@ All Rights Reserved."</string>
     <string name="az3">已成功清理%s的临时文件</string>
     <string name="az4">文件删除后将不可恢复，确定删除所选文件？</string>
     <string name="az5">取消</string>
-    <string name="az6">"使用手机管家进行手机瘦身，可以更好的整理手机以及微信中的垃圾文件，保证手机快速运行。
+    <string name="az6">"使用腾讯手机管家清理系统空间，手机运行更顺畅。
 点击下载手机管家（%s）"</string>
     <string name="az7">预览</string>
     <string name="az8">轻触此处清除当前位置并返回</string>
@@ -2916,6 +2919,7 @@ All Rights Reserved."</string>
     <string name="bbu">登录微信电脑版，向我发消息，可以在手机与电脑间传输文字、图片、音频、视频 等文件。</string>
     <string name="bbv">微信号/手机号</string>
     <string name="bbw">搜索关键字为空</string>
+    <string name="hh_">快速填写授权</string>
     <string name="bbx">正在搜索...</string>
     <string name="bby">关注微信公众号，获取更多服务和资讯</string>
     <string name="bbz">查找公众号</string>
@@ -3418,7 +3422,7 @@ All Rights Reserved."</string>
     <string name="bpa">进入位置共享</string>
     <string name="bpb">你正在进行实时对讲，暂不能开启位置共享</string>
     <string name="bpc">该会话已开始实时对讲，暂不能开启位置共享</string>
-    <string name="bpd">加入位置共享，聊天中其他人也能看到你的位置，确定加入？</string>
+    <string name="bpd">加入位置共享，与朋友共享你的实时位置</string>
     <string name="bpe">企业收藏的消息</string>
     <string name="bpf">接收应用消息</string>
     <string name="bpg">我的企业及企业联系人</string>
@@ -3641,8 +3645,7 @@ All Rights Reserved."</string>
     <string name="bvb">你的投诉已提交审核</string>
     <string name="bvc">补充说明</string>
     <string name="bvd">选择原因</string>
-    <string name="bvf">文件过期开关</string>
-    <string name="bvg">实验设置</string>
+    <string name="bvg">搜索维修厂</string>
     <string name="bvh">总实验开关</string>
     <string name="bvi">确定要发送涂鸦图片吗?</string>
     <string name="bvj">给你发了一条消息，请从微信查看。</string>
@@ -4440,7 +4443,7 @@ channels@tencent.com申诉"</string>
     <string name="cfm">确定修复后，微信会立即退出。再次打开微信即可正常使用。</string>
     <string name="cfn">修复搜一搜故障</string>
     <string name="cfo">以下功能请在微信团队引导下使用</string>
-    <string name="cfp">浮窗已满，清理后可继续新增</string>
+    <string name="cfp">浮窗已满，清理后可继续新增。</string>
     <string name="cfq">确定</string>
     <string name="cfr">浮窗已满</string>
     <string name="cfs">暂不</string>
@@ -4750,6 +4753,8 @@ channels@tencent.com申诉"</string>
     <string name="cnn">该视频无法播放</string>
     <string name="cno">直播</string>
     <string name="cnp">音量</string>
+    <string name="hha">[转账]已取消</string>
+    <string name="hhb">[转账]已确认，待入账</string>
     <string name="cnq">fullTransluentTheme</string>
     <string name="cnr">检查新版本</string>
     <string name="cns">微信内测邀请</string>
@@ -4786,6 +4791,7 @@ channels@tencent.com申诉"</string>
     <string name="com">朋友圈只能分享%d秒内的视频，需进行编辑</string>
     <string name="coo">编辑视频</string>
     <string name="cop">原图</string>
+    <string name="hhc">[转账]已过期</string>
     <string name="coq">预览</string>
     <string name="cor">完成</string>
     <string name="cos">生成视频</string>
@@ -4958,7 +4964,7 @@ channels@tencent.com申诉"</string>
     <string name="ct9">等%s人</string>
     <string name="ct_">我的礼包</string>
     <string name="cta">我的消息</string>
-    <string name="ctb">我的游戏视频</string>
+    <string name="ctb">游戏内保存</string>
     <string name="ctc">新游</string>
     <string name="ctd">99+</string>
     <string name="cte">以下为更早的消息</string>
@@ -5257,7 +5263,7 @@ channels@tencent.com申诉"</string>
     <string name="d11">暂无支出记录</string>
     <string name="d12">确认</string>
     <string name="d13">完成</string>
-    <string name="hfs">播放 %s</string>
+    <string name="hfs">观看 %s</string>
     <string name="d14">赠送亲属卡</string>
     <string name="d15">修改每月消费上限</string>
     <string name="d16">请输入支付密码，以验证身份</string>
@@ -5298,12 +5304,14 @@ channels@tencent.com申诉"</string>
     <string name="d1z">领取</string>
     <string name="hfy">已保存至相册</string>
     <string name="d20">每月消费额度</string>
+    <string name="hhd">视频</string>
     <string name="d21">收到时间</string>
     <string name="d22">解除时间</string>
     <string name="d23">退还时间</string>
     <string name="d24">将亲属卡赠予</string>
     <string name="d25">选择朋友</string>
     <string name="d26">设置每月消费上限</string>
+    <string name="hhe">正在当前群直播中，退出群聊前需要先结束直播</string>
     <string name="d27">本月已用：%s</string>
     <string name="d28">等待对方领取</string>
     <string name="d29">知道了</string>
@@ -5630,7 +5638,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="d_m">普通话</string>
     <string name="d_n">四川话</string>
     <string name="d_o">允许</string>
-    <string name="hh8">设置微信号</string>
+    <string name="hhf">由于群功能更新，你需要在另一个</string>
     <string name="d_p">即将离开微信，打开其它应用</string>
     <string name="d_q">即将离开微信，打开“%s”</string>
     <string name="d_r">相关聊天</string>
@@ -5736,6 +5744,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="dcc">查看地理位置</string>
     <string name="dcd">[位置]</string>
     <string name="dce">发送</string>
+    <string name="hhg">接收新消息。</string>
     <string name="dcf">发送位置</string>
     <string name="dcg">共享实时位置</string>
     <string name="dch">是否结束位置共享？</string>
@@ -5775,6 +5784,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="dde">验证失败</string>
     <string name="ddf">https://support.weixin.qq.com/security/readtemplate?t=find_password/w_index&amp;lang=</string>
     <string name="ddg">紧急冻结</string>
+    <string name="hhh">同名群聊</string>
     <string name="ddh">填写密码</string>
     <string name="ddi">语言</string>
     <string name="ddj">登录</string>
@@ -6044,6 +6054,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="dkn">通讯录</string>
     <string name="dko">[%d条]</string>
     <string name="dkp">[%1$d条通知] %2$s</string>
+    <string name="hhi">已过期</string>
     <string name="dkq">[群主已通过]</string>
     <string name="dkr">[@所有人]</string>
     <string name="dks">[有人@我]</string>
@@ -7153,7 +7164,6 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="ece">添加赞赏引导语</string>
     <string name="ecf">赞赏设置</string>
     <string name="ecg">更新后，你的所有赞赏码将展示为新内容</string>
-    <string name="hh9">打开TPPlayer</string>
     <string name="ech">“%s”</string>
     <string name="eci">元</string>
     <string name="ecj">已检测到本地应用，是否打开？</string>
@@ -7393,6 +7403,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="eir">确认密码</string>
     <string name="eis">填写新密码</string>
     <string name="eit">填写原密码</string>
+    <string name="hhj">设置微信号</string>
     <string name="eiu">再次填写确认</string>
     <string name="eiv">你的微信号当前已经绑定手机号，可以通过短信验证码重置微信密码，是否发送验证码到 %s ？</string>
     <string name="eiw">新密码</string>
@@ -7529,7 +7540,6 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="emd">艺术家已收到你的赞赏</string>
     <string name="eme">选择优惠</string>
     <string name="emf">%s</string>
-    <string name="hh_">发表动态需先创建帐号</string>
     <string name="emg">此交易对应聊天记录已删除或未同步到当前设备，无法定位。</string>
     <string name="emh">你已删除该好友，无法查看聊天记录。</string>
     <string name="emi">你正在向其他用户转账，资金将直接到达对方账户，为保证安全，建议确认对方身份后支付</string>
@@ -7580,7 +7590,6 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="enq">转账</string>
     <string name="enr">转账单号</string>
     <string name="ens">当前转账需补全收款方姓名首字，以核验对方身份信息。</string>
-    <string name="hha">帐号停止使用</string>
     <string name="ent">放弃转账</string>
     <string name="enu">继续转账</string>
     <string name="env">收款方身份确认</string>
@@ -7945,7 +7954,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="exc">请勿将付款码截图发送给他人，以避免资金风险</string>
     <string name="exd">搜</string>
     <string name="exe">外部存储空间读写异常，导致微信的图片、语音、视频不能正常使用，请手动重启手机以解决问题。</string>
-    <string name="exf">你的手机存储剩余空间不足，可能会影响到微信正常收发语音，图片及视频等。请及时删除手机上不常用的应用或文件，也可立即清理微信的存储空间。</string>
+    <string name="exf">你的手机剩余空间不足，可能会影响微信正常使用，请及时进行空间清理。</string>
     <string name="exg">存储空间不足</string>
     <string name="exh">确认登录</string>
     <string name="exi">返回APP</string>
@@ -7972,7 +7981,6 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="ey3">\"相关结果</string>
     <string name="ey4">没有找到\"</string>
     <string name="ey5">用户不存在</string>
-    <string name="hhb">你可以创建视频号身份，用于发布视频号内容</string>
     <string name="ey6">搜索结果</string>
     <string name="ey7">"城市: "</string>
     <string name="ey8">"备注: "</string>
@@ -8057,7 +8065,6 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="f0c">选择朋友</string>
     <string name="f0d">选择</string>
     <string name="f0e">选择聊天</string>
-    <string name="hhc">已为你开通视频号发表功能</string>
     <string name="f0f">“%s”</string>
     <string name="f0g">选择联系人</string>
     <string name="f0h">的联系人</string>
@@ -8163,9 +8170,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="f37">普通模式</string>
     <string name="f38">系统中的微信消息通知设置已关闭，前往打开？</string>
     <string name="hg2">使用</string>
-    <string name="hhd">请勾选同意下方协议</string>
     <string name="hg3">···展开···</string>
-    <string name="hhe">提到我的动态</string>
     <string name="f39">已开启</string>
     <string name="f3_">查看头像</string>
     <string name="f3a">重新发送验证邮件</string>
@@ -8256,7 +8261,6 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="f5l">正在发送验证邮件...</string>
     <string name="f5m">内测反馈</string>
     <string name="f5n">深色模式</string>
-    <string name="hhf">黑名单</string>
     <string name="f5o">地区</string>
     <string name="f5p">导出个人数据</string>
     <string name="f5q">邮件地址</string>
@@ -8440,7 +8444,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="f_h">可赠送名额</string>
     <string name="f_i">群二维码名片</string>
     <string name="f_j">邮件未发送，确定取消？</string>
-    <string name="hhg">单次需要处理的朋友数超过上限</string>
+    <string name="bve">是否允许应用本地模板</string>
     <string name="f_k">群聊人数上限</string>
     <string name="f_l">群聊权限</string>
     <string name="f_m">安全设置</string>
@@ -8504,7 +8508,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fb3">清除登录痕迹</string>
     <string name="fb4">为了保护帐号安全，本次登录需要验证密码</string>
     <string name="fb5">轻触头像以切换帐号</string>
-    <string name="hhh">网络异常，请稍后再试</string>
+    <string name="hhk">打开TPPlayer</string>
     <string name="fb6">系统通知</string>
     <string name="fb7" formatted="false">https://weixin.qq.com/cgi-bin/readtemplate?check=false&amp;t=weixin_notices&amp;func=notices&amp;action=list&amp;platform=android&amp;uin=%d&amp;new=%d&amp;lang=zh_CN</string>
     <string name="fb8">不保存照片和视频</string>
@@ -8517,9 +8521,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fbe" formatted="false">上传:%s 下载:%s</string>
     <string name="fbf">%s</string>
     <string name="fbg">自%s起:</string>
-    <string name="fbh">"使用微信会一直连接手机网络，但只消耗很少的流量，请不必担心。如果你不希望微信一直联网，你可以从设置页面的系统菜单中选择退出微信，但为了你能收信及时，建议不要轻易退出。
-
-微信在同类软件中最省流量，30M流量可以发送几千条语音消息。"</string>
+    <string name="fbh">使用微信会一直连接手机网络，但只消耗很少的流量，请不必担心。如果你不希望微信一直联网，你可以从设置页面的系统菜单中选择退出微信，但为了你能收信及时，建议不要轻易退出。</string>
     <string name="fbi">流量统计</string>
     <string name="fbj">清空</string>
     <string name="fbk">所有流量统计数据将被清空，且无法找回。确定要清空吗？</string>
@@ -8869,7 +8871,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fko">私密链接不能评论</string>
     <string name="fkp">私密照片不能评论</string>
     <string name="fkq">私密文字不能评论</string>
-    <string name="hhi">该参与人已存在</string>
+    <string name="hsm">是否关闭搜索预加载</string>
     <string name="fkr">私密视频不能评论</string>
     <string name="fks">下载原图失败</string>
     <string name="fkt">下载小视频失败</string>
@@ -9007,12 +9009,12 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fod">我的相册</string>
     <string name="foe">与这张照片同时发布的一组照片都会被删除。</string>
     <string name="fof">再次发送</string>
-    <string name="fog">照片发送失败</string>
+    <string name="fog">照片未发送</string>
     <string name="foh">抱歉，无法发送。</string>
     <string name="foi">发送失败，请10分钟后再次发送。</string>
     <string name="foj">发送失败，请减少一半文字。</string>
     <string name="fok">发送失败，轻触以再次发送</string>
-    <string name="fol">视频发送失败</string>
+    <string name="fol">视频未发送</string>
     <string name="fom">发送给朋友</string>
     <string name="fon">朋友仅展示最近半年的朋友圈</string>
     <string name="foo">朋友仅展示最近一个月的朋友圈</string>
@@ -9271,7 +9273,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fvh">暂无视频动态可以设为精选</string>
     <string name="fvi">精选动态</string>
     <string name="fvj">的精选动态</string>
-    <string name="hhj">确定放弃修改？</string>
+    <string name="hsn">是否启动重置模板</string>
     <string name="fvk">所有精选</string>
     <string name="fvl">清空</string>
     <string name="fvm">是否清空全部朋友的视频动态？</string>
@@ -9340,7 +9342,6 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fxb">留言</string>
     <string name="fxc">yyyy年:M月:d日</string>
     <string name="fxd">精选</string>
-    <string name="hhk">同步未完成，是否中断？</string>
     <string name="fxe">拍一个视频动态</string>
     <string name="fxf">拍一个视频动态</string>
     <string name="fxg">(对好友24小时可见)</string>
@@ -9385,7 +9386,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fyi">前往设置</string>
     <string name="fyj">操作失败，请稍后重试</string>
     <string name="fyk">订阅失败，请稍后重试(错误码：%s)</string>
-    <string name="hhl">正在加载</string>
+    <string name="hhl">发表动态需先创建帐号</string>
     <string name="fyl">[小程序提醒]</string>
     <string name="fym">已添加到备注</string>
     <string name="fyn">微信占用不到10%的储存空间，建议清理手机中其他程序和数据。</string>
@@ -9508,7 +9509,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="timeline_wordingkey_for_mmopen_jumpurl">查看详情</string>
     <string name="timeline_wordingkey_for_mmopen_showranklist">查看排行榜</string>
     <string name="g1q">提示</string>
-    <string name="hhm">放弃</string>
+    <string name="hhm">帐号停止使用</string>
     <string name="g1r">关注</string>
     <string name="g1s">展开%s条回复</string>
     <string name="g1t">展开更多回复</string>
@@ -9730,7 +9731,7 @@ https://weixin.qq.com
     <string name="g7i">请验证已有指纹</string>
     <string name="g7j">输入不能为空，请重新输入</string>
     <string name="g7k">密码必须是8-16位的数字、字符组合（不能是纯数字）</string>
-    <string name="hhn">你将不会看到以上朋友点赞的动态。</string>
+    <string name="hhn">你可以创建视频号身份，用于发布视频号内容</string>
     <string name="g7m">密码不能为空，请输入密码</string>
     <string name="g7n">已验证</string>
     <string name="g7o">密码必须是8-16位的数字、字符组合（不能是纯数字）</string>
@@ -9883,7 +9884,7 @@ https://weixin.qq.com
     <string name="gai">未接通</string>
     <string name="gaj">聊天时长 %s</string>
     <string name="gak">聊天中断 %s</string>
-    <string name="hho">已取消</string>
+    <string name="hho">已为你开通视频号发表功能</string>
     <string name="gal">已忽略</string>
     <string name="gam">已拒绝</string>
     <string name="gan">对方忙线中</string>
@@ -9937,9 +9938,9 @@ https://weixin.qq.com
     <string name="gby">对方没有开启语音通话功能。</string>
     <string name="gbz">聊天结束</string>
     <string name="gc0">你的手机没有授权微信获得浮窗权限，视频通话最小化不能正常使用</string>
-    <string name="hhp">创建视频号</string>
-    <string name="hhq">声明原创</string>
-    <string name="hhr">是否声明原创</string>
+    <string name="hhp">请勾选同意下方协议</string>
+    <string name="hhq">提到我的动态</string>
+    <string name="hhr">黑名单</string>
     <string name="gc1">https://kf.qq.com/touch/wxappfaq/1211147RVfAV141202vMZR7v.html?scene_id=kf332</string>
     <string name="gc2">拷贝并保存</string>
     <string name="gc3">key已经拷贝到剪贴板并保存到/sdcard/Tencent/key.log</string>
@@ -10048,7 +10049,7 @@ https://weixin.qq.com
     <string name="geu">很遗憾，只允许绑定海外国际银行卡。</string>
     <string name="gev">小程序</string>
     <string name="gew">系统繁忙，请稍后重试</string>
-    <string name="hhs">被作者提到</string>
+    <string name="hhs">单次需要处理的朋友数超过上限</string>
     <string name="gex">额外扣除%1$s手续费(费率%2$s)</string>
     <string name="gey">额外扣除%s手续费</string>
     <string name="gez">零钱</string>
@@ -10492,7 +10493,7 @@ https://weixin.qq.com
     <string name="gqe">零钱转入的金额仅可转出到零钱,不可转出到银行卡</string>
     <string name="gqf">请选择到账账户</string>
     <string name="gqg">转出金额</string>
-    <string name="gqh">零钱通内余额不足</string>
+    <string name="gqh">零钱通余额不足</string>
     <string name="gqi">可转出至银行卡的余额不足，请重新输入</string>
     <string name="gqj">单笔限额¥%.2f，可分多笔转出</string>
     <string name="gqk">备注</string>
@@ -10524,17 +10525,17 @@ https://weixin.qq.com
     <string name="gr_">启用计划</string>
     <string name="gra">停止计划</string>
     <string name="grb">每月%s日</string>
-    <string name="hht">朋友评论</string>
-    <string name="hhu">其他评论</string>
-    <string name="hhv">我关注的视频号</string>
-    <string name="hhw">更多视频号</string>
-    <string name="hhx">微信视频号运营规范</string>
-    <string name="hhy">隐私声明</string>
-    <string name="hhz">我已阅读并同意《微信视频号运营规范》和《隐私声明》</string>
-    <string name="hi0">我的数据</string>
-    <string name="hi1">是否删除上一段视频？</string>
-    <string name="hi2">双击标题，回顶部刷新</string>
-    <string name="hi3">、</string>
+    <string name="hht">网络异常，请稍后再试</string>
+    <string name="hhu">该参与人已存在</string>
+    <string name="hhv">确定放弃修改？</string>
+    <string name="hhw">同步未完成，是否中断？</string>
+    <string name="hhx">正在加载</string>
+    <string name="hhy">放弃</string>
+    <string name="hhz">你将不会看到以上朋友点赞的动态。</string>
+    <string name="hi0">已取消</string>
+    <string name="hi1">创建视频号</string>
+    <string name="hi2">声明原创</string>
+    <string name="hi3">是否声明原创</string>
     <string name="hg4">小程序启动诊断</string>
     <string name="hg5">详情</string>
     <string name="hg6">列表</string>
@@ -10544,12 +10545,12 @@ https://weixin.qq.com
     <string name="hg_">I非致命步骤执行错误</string>
     <string name="hga">I执行成功</string>
     <string name="hgb">I可选步骤未执行</string>
-    <string name="hi4">继续拍摄</string>
-    <string name="hi5">退出拍摄，所有视频都不会保留</string>
+    <string name="hi4">被作者提到</string>
+    <string name="hi5">朋友评论</string>
     <string name="hgc">保存到手机失败，无法访问存储卡</string>
-    <string name="hi6">退出</string>
-    <string name="hi7">轻触文字也可展开</string>
-    <string name="hi8">浏览设置</string>
+    <string name="hi6">其他评论</string>
+    <string name="hi7">我关注的视频号</string>
+    <string name="hi8">更多视频号</string>
     <string name="hgd">试用封面</string>
     <string name="hge">试用</string>
     <string name="grc">每月%1$s日从%2$s(%3$s)转入</string>
@@ -10997,7 +10998,7 @@ https://weixin.qq.com
     <string name="h33">选择钱包所属地区</string>
     <string name="h34">切换钱包地区</string>
     <string name="h35">在支付时，请确认密码框上的本人头像和商品信息。</string>
-    <string name="hi9">没有收藏的动态</string>
+    <string name="hi9">微信视频号运营规范</string>
     <string name="h36">你的款项将直接进入对方账户，请输入支付密码以完成支付流程</string>
     <string name="h37">未开启统一扣款顺序时，将根据你的历史使用习惯自动推荐默认支付方</string>
     <string name="h38">统一扣款顺序</string>
@@ -11352,12 +11353,12 @@ https://weixin.qq.com
     <string name="hb6">笔记大小达到上限，无法再添加新内容。</string>
     <string name="hb7">正在录音中，请稍后再试</string>
     <string name="hb8">支持300人音视频会议，可共享文档和屏幕</string>
-    <string name="hi_">收藏的动态</string>
-    <string name="hia">收藏的动态(%d)</string>
+    <string name="hi_">隐私声明</string>
+    <string name="hia">我已阅读并同意《微信视频号运营规范》和《隐私声明》</string>
     <string name="hgg">确定发送，按钮</string>
-    <string name="hib">收藏的动态</string>
-    <string name="hic">%d个动态</string>
-    <string name="hid">收藏的动态</string>
+    <string name="hib">我的数据</string>
+    <string name="hic">是否删除上一段视频？</string>
+    <string name="hid">双击标题，回顶部刷新</string>
     <string name="hgh">当前微信帐号与企业微信帐号身份不符，无法使用此功能</string>
     <string name="hgi">已经过了24小时，你无法再进行选择</string>
     <string name="hb9">找不到歌词</string>
@@ -11392,7 +11393,7 @@ https://weixin.qq.com
     <string name="hbz">地理位置授权</string>
     <string name="hc0">已关注</string>
     <string name="hc1">图片</string>
-    <string name="hie">网络状态不好，轻触重新加载</string>
+    <string name="hie">、</string>
     <string name="hc3">正在浏览 %s</string>
     <string name="hc4">当前快捷方式已失效，请删除后重新添加</string>
     <string name="hc5">正在加载...</string>
@@ -11503,36 +11504,36 @@ https://weixin.qq.com
     <string name="het">音量</string>
     <string name="hgk">长期</string>
     <string name="hgl">资料设置</string>
-    <string name="hif">已添加至收藏夹</string>
-    <string name="hig">%s最近赞过的动态</string>
+    <string name="hif">继续拍摄</string>
+    <string name="hig">退出拍摄，所有视频都不会保留</string>
     <string name="hgm">[小程序]%s</string>
-    <string name="hih">已推荐给朋友</string>
-    <string name="hii">轻触点赞推荐给朋友</string>
-    <string name="hij">更多相似动态</string>
-    <string name="hik">暂无更多,以下是更多的推荐</string>
-    <string name="hil">暂无更多动态，为你推荐更多内容</string>
-    <string name="him">你还没有关注视频号</string>
-    <string name="hin">暂无新的朋友推荐</string>
-    <string name="hio">暂无新的动态</string>
+    <string name="hih">退出</string>
+    <string name="hii">轻触文字也可展开</string>
+    <string name="hij">浏览设置</string>
+    <string name="hik">没有收藏的动态</string>
+    <string name="hil">收藏的动态</string>
+    <string name="him">收藏的动态(%d)</string>
+    <string name="hin">收藏的动态</string>
+    <string name="hio">%d个动态</string>
     <string name="hgn">由于网络问题，对方可能不知道你拍了拍他。</string>
     <string name="hgo">你拍了拍自己</string>
     <string name="hgp">你拍了拍</string>
     <string name="hgq">你拍了拍 %s</string>
     <string name="hgr">https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=setalias/faq&amp;wechat_real_lang=%s</string>
     <string name="hgs">https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=setalias/agreement&amp;wechat_real_lang=%s</string>
-    <string name="hip">点赞推荐给朋友</string>
-    <string name="hiq">已推荐给朋友</string>
-    <string name="hir">查看更多</string>
-    <string name="his">%s赞过的动态</string>
-    <string name="hit">%1$s 的其他%2$s条动态</string>
-    <string name="hiu">%1$s 赞过的其他%2$s条动态</string>
-    <string name="hiv">%s最近推荐的动态</string>
-    <string name="hiw">没有更多动态，前往热门</string>
+    <string name="hip">收藏的动态</string>
+    <string name="hiq">网络状态不好，轻触重新加载</string>
+    <string name="hir">已添加至收藏夹</string>
+    <string name="his">%s最近赞过的动态</string>
+    <string name="hit">已推荐给朋友</string>
+    <string name="hiu">轻触点赞推荐给朋友</string>
+    <string name="hiv">更多相似动态</string>
+    <string name="hiw">暂无更多,以下是更多的推荐</string>
     <string name="hgt">筛选已有朋友圈日期</string>
-    <string name="hix">他</string>
-    <string name="hiy">%s不能为空</string>
-    <string name="hiz">%s字数过多</string>
-    <string name="hj0">更多精彩</string>
+    <string name="hix">暂无更多动态，为你推荐更多内容</string>
+    <string name="hiy">你还没有关注视频号</string>
+    <string name="hiz">暂无新的朋友推荐</string>
+    <string name="hj0">暂无新的动态</string>
     <string name="hgu">暂无可使用群聊</string>
     <string name="hgv">每次最多选择5个群聊</string>
     <string name="hgw">无法使用</string>
@@ -11542,304 +11543,371 @@ https://weixin.qq.com
     <string name="hh0">选择群聊</string>
     <string name="hh1">已使用</string>
     <string name="hh2">展开全部</string>
-    <string name="hj1">%d个赞</string>
-    <string name="hj2">不向朋友推荐我的动态</string>
-    <string name="hj3">暂时没有人赞过</string>
-    <string name="hj4">赞</string>
-    <string name="hj5">%s人赞过</string>
-    <string name="hj6">取消</string>
-    <string name="hj7">不再看他赞过的内容</string>
-    <string name="hj8">不看朋友点赞的动态(%d)</string>
-    <string name="hj9">暂时为空</string>
-    <string name="hj_">看他赞过的内容</string>
-    <string name="hja">未能移除</string>
-    <string name="hjb">%d个朋友赞过</string>
-    <string name="hjc">更多相似动态</string>
-    <string name="hjd">赞了你的赞</string>
-    <string name="hje">也赞了该动态</string>
-    <string name="hjf">系统通知</string>
-    <string name="hjg">消息通知</string>
-    <string name="hjh">等%s人</string>
-    <string name="hji">消息通知</string>
-    <string name="hjj">没有更多动态</string>
-    <string name="hjk">非原创</string>
-    <string name="hjl">"视频号逐步开放中，请耐心等待，不要相信任何
-可以购买或者加速开通视频号的方式。"</string>
-    <string name="hjm">原创视频号</string>
-    <string name="hjn">已阅读并同意%s</string>
-    <string name="hjo">《微信视频号原创声明功能使用条款》</string>
-    <string name="hjp">声明</string>
-    <string name="hjq">前往声明</string>
-    <string name="hjr">你可以声明为原创视频号，将获得平台推荐。若发现滥用声明，平台有权采取相应措施。</string>
-    <string name="hjs">发表动态次数过多，为让用户更了解你，请声明原创视频号。</string>
-    <string name="hjt">原创视频号申请</string>
-    <string name="hju">声明原创视频号</string>
-    <string name="hjv">取消原创视频号声明</string>
-    <string name="hjw">取消原创声明后需要重新发起声明，今年还剩余%s次声明机会</string>
-    <string name="hjx">暂不取消</string>
+    <string name="hj1">点赞推荐给朋友</string>
+    <string name="hj2">已推荐给朋友</string>
+    <string name="hj3">查看更多</string>
+    <string name="hj4">%s赞过的动态</string>
+    <string name="hj5">%1$s 的其他%2$s条动态</string>
+    <string name="hj6">%1$s 赞过的其他%2$s条动态</string>
+    <string name="hj7">%s最近推荐的动态</string>
+    <string name="hj8">没有更多动态，前往热门</string>
+    <string name="hj9">前往热门</string>
+    <string name="hj_">他</string>
+    <string name="hja">%s不能为空</string>
+    <string name="hjb">%s字数过多</string>
+    <string name="hjc">更多精彩</string>
+    <string name="hjd">%d个赞</string>
+    <string name="hje">不向朋友推荐我的动态</string>
+    <string name="hjf">暂时没有人赞过</string>
+    <string name="hjg">赞</string>
+    <string name="hjh">%s人赞过</string>
+    <string name="hji">取消</string>
+    <string name="hjj">不再看他赞过的内容</string>
+    <string name="hjk">不看朋友点赞的动态(%d)</string>
+    <string name="hjl">暂时为空</string>
+    <string name="hjm">看他赞过的内容</string>
+    <string name="hjn">未能移除</string>
+    <string name="hjo">%d个朋友赞过</string>
+    <string name="hjp">更多相似动态</string>
+    <string name="hjq">赞了你的赞</string>
+    <string name="hjr">也赞了该动态</string>
+    <string name="hjs">系统通知</string>
+    <string name="hjt">消息通知</string>
+    <string name="hju">等%s人</string>
+    <string name="hjv">消息通知</string>
+    <string name="hjw">收藏到一个神秘的地方</string>
+    <string name="hjx">没有更多动态</string>
     <string name="hh3">长期</string>
     <string name="hh4">长期</string>
-    <string name="hjy">取消声明</string>
+    <string name="hjy">非原创</string>
     <string name="hh5">允许%s访问你当前的地理位置信息？</string>
     <string name="hh6">地理位置授权</string>
     <string name="hh7">选择操作</string>
-    <string name="hjz">若该内容是你自主创作且享有版权，你可以声明为原创，获得更好的保护和传播。若该内容并非是你原创，请在发布之前，务必获得版权方的合法授权。声明原创，是你对该内容的创作情况的公开说明，并不代表平台对声明的情况进行了认可或担保，请依据真实情况进行选择。</string>
-    <string name="hk0">原创</string>
-    <string name="hk1">原创视频号将获得平台推荐。若发现滥用声明，平台有权采取相应的措施。</string>
-    <string name="hk2">已声明原创视频号</string>
-    <string name="hk3">暂不声明</string>
-    <string name="hk4">原创视频号将获得平台推荐。若发现滥用声明，平台有权采取相应的措施。更多权益与责任，请查阅%s。</string>
-    <string name="hk5">根据%1$s，你的原创视频号已被取消。在%2$s天后，你才可再次声明。</string>
-    <string name="hk6">根据%s，因声明次数过多，你今年内不能再次声明。</string>
-    <string name="hk7">无法声明原创视频号</string>
-    <string name="hk8">原创视频号由活跃创作者申请获得，将有平台推荐及更多权益。若该用户发表了搬运、侵权的内容，可以发起%s。</string>
-    <string name="hk9">转载内容(本月剩余%s次转载机会)</string>
-    <string name="hk_">自主创作且享有版权</string>
-    <string name="hka">关注的视频号</string>
-    <string name="hkb">最近@过的视频号</string>
-    <string name="hkc">选择要提醒的视频号</string>
-    <string name="hkd">动态未删除</string>
-    <string name="hke">删除动态失败，请稍后重试</string>
-    <string name="hkf">发表中</string>
-    <string name="hkg">没有赞过的动态</string>
-    <string name="hkh">没有更多动态</string>
-    <string name="hki">使用多图模式</string>
-    <string name="hkj">等%s个朋友赞过</string>
-    <string name="hkk">赞过</string>
-    <string name="hkl">%s个朋友赞过</string>
-    <string name="hkm">轻触推荐给朋友</string>
-    <string name="hkn">消息</string>
-    <string name="hko">非个人帐号不可设置</string>
-    <string name="hkp">性别默认使用微信性别</string>
-    <string name="hkq">她</string>
-    <string name="hkr">关注</string>
-    <string name="hks">朋友</string>
-    <string name="hkt">附近</string>
-    <string name="hku">热门</string>
-    <string name="hkv">全部</string>
-    <string name="hkw">网络不可用，请稍后再试</string>
-    <string name="hkx">没有更多动态</string>
-    <string name="hky">知道了</string>
-    <string name="hkz">开启后，他（她）所有点赞推荐的动态你将不再看到</string>
-    <string name="hl0">不看朋友推荐</string>
-    <string name="hl1">已暂停</string>
-    <string name="hl2">轻触编辑单段视频</string>
-    <string name="hl3">评论</string>
-    <string name="hl4">总时长:%s</string>
-    <string name="hl5">获赞</string>
-    <string name="hl6">直播已结束</string>
-    <string name="hl7">直播回放</string>
-    <string name="hl8">回放已被关闭</string>
-    <string name="hl9">回放已失效</string>
-    <string name="hl_">回放仅保留7天</string>
-    <string name="hla">回放生成中</string>
-    <string name="hlb">查看回放</string>
-    <string name="hlc">直播结束1天内可开启回放，回放将保留30天</string>
-    <string name="hld">观看人数</string>
-    <string name="hle">群成员数</string>
-    <string name="hlf">观看人数</string>
-    <string name="hlg">观众 ></string>
-    <string name="hlh">主播网络不可用，直播已暂停</string>
-    <string name="hli">评论已关闭</string>
-    <string name="hlj">评论已开启</string>
-    <string name="hlk">暂无法恢复评论</string>
-    <string name="hll">暂无法关闭评论</string>
-    <string name="hlm">%s的直播</string>
-    <string name="hln">开始直播</string>
-    <string name="hlo">直播主题</string>
-    <string name="hlp">关闭后直播观众将无法进行评论</string>
-    <string name="hlq">%s：</string>
-    <string name="hlr">创建直播</string>
-    <string name="hls">反色</string>
-    <string name="hlt">复制</string>
-    <string name="hlu">创建直播</string>
-    <string name="hlv">Live Entrance</string>
-    <string name="hlw">隐藏</string>
-    <string name="hlx">显示</string>
-    <string name="hly">腾讯云demo</string>
-    <string name="hlz">结束</string>
-    <string name="hm0">进房</string>
-    <string name="hm1">接到相关投诉,\"%s\"涉嫌违反《互联网直播条例》</string>
-    <string name="hm2">已禁止观看</string>
-    <string name="hm3">举报></string>
-    <string name="hm4">按照《互联网直播服务管理规定》的要求，你同意腾讯使用并传输相关数据用于身份核验。</string>
-    <string name="hm5">需要进行实名验证</string>
-    <string name="hm6">你需要实名验证后才能开始直播</string>
-    <string name="hm7">验证</string>
-    <string name="hm8">浮窗</string>
-    <string name="hm9">连麦</string>
-    <string name="hm_">投屏</string>
-    <string name="hma">分享</string>
-    <string name="hmb">翻转</string>
-    <string name="hmc">无法评论</string>
-    <string name="hmd">发表评论...</string>
-    <string name="hme">评论</string>
-    <string name="hmf">加入直播</string>
-    <string name="hmg">你已被主播移出直播间</string>
-    <string name="hmh">%.1f万</string>
-    <string name="hmi">%d万</string>
-    <string name="hmj">赞</string>
-    <string name="hmk">连麦</string>
-    <string name="hml">连麦已关闭</string>
-    <string name="hmm">当前网络不可用，直播已暂停</string>
-    <string name="hmn">%d人</string>
-    <string name="hmo">投诉</string>
-    <string name="hmp">移出直播间</string>
-    <string name="hmq">移出失败</string>
-    <string name="hmr">已移出</string>
-    <string name="hms">移出中</string>
-    <string name="hmt">暂无观众</string>
-    <string name="hmu" formatted="false">(%d/%d)</string>
-    <string name="hmv">加载失败，轻触重试</string>
-    <string name="hmw" formatted="false">%s (%d)</string>
-    <string name="hmx" formatted="false">在线观众 (%d/%d)</string>
-    <string name="hmy">只显示本群在线成员</string>
-    <string name="hmz">观看中</string>
-    <string name="hn0">在线观众 (%d人)</string>
-    <string name="hn1">%s人观看</string>
-    <string name="hn2">打开评论</string>
-    <string name="hn3">关闭评论</string>
-    <string name="hn4">结束直播</string>
-    <string name="hn5">最小化</string>
-    <string name="hn6">前往微信 > 设置 > 账号信息 > 手机号中进行绑定，绑定后可继续观看直播。</string>
-    <string name="hn7">未绑定手机号</string>
-    <string name="hn8">网络不畅</string>
-    <string name="hn9">网络良好</string>
-    <string name="hn_">网络一般</string>
-    <string name="hna">%d条新消息</string>
-    <string name="hnb">视频直播</string>
-    <string name="hnc">直播中</string>
-    <string name="hnd">打开新的直播，当前直播将结束</string>
-    <string name="hne">正在直播中，确定回到当前直播</string>
-    <string name="hnf">正在直播中，请稍后再试</string>
-    <string name="hng">正在通话中，无法参与直播</string>
-    <string name="hnh">将退出当前直播，进入%s</string>
-    <string name="hni">当前网络不可用，无法群直播，检查网络设置后再试</string>
-    <string name="hnj">正在共享地理位置，请稍后再试</string>
-    <string name="hnk">打开新的直播，当前直播将结束观看</string>
-    <string name="hnl">取消</string>
-    <string name="hnm">关闭后成员将不能查看回放</string>
-    <string name="hnn">回放生成后，将在群内提醒</string>
-    <string name="hno">直播结束后将自动生成回放，生成后的回放仅保存7天。</string>
-    <string name="hnp">主播已经将直播回放功能关闭</string>
-    <string name="hnq">直播回放生成后已超过7天</string>
-    <string name="hnr">请选择可见范围</string>
-    <string name="hns">直播回放</string>
-    <string name="hnt">直播回放已关闭</string>
-    <string name="hnu">无法生成直播回放</string>
-    <string name="hnv">直播回放已失效</string>
-    <string name="hnw">回放查看范围</string>
-    <string name="hnx">仅自己可见</string>
-    <string name="hny">群内所有成员</string>
-    <string name="hnz">回放生成后将在群内提醒</string>
-    <string name="ho0">取消连麦</string>
-    <string name="ho1">已取消</string>
-    <string name="ho2">房间号</string>
-    <string name="ho3">已关闭连麦</string>
-    <string name="ho4">暂无法接通，请稍后再试</string>
-    <string name="ho5">连麦中</string>
-    <string name="ho6">取消</string>
-    <string name="ho7">连麦已关闭</string>
-    <string name="ho8">关闭连麦</string>
-    <string name="ho9">关闭后，观众将无法申请连麦</string>
-    <string name="ho_">知道了</string>
-    <string name="hoa">主播接通后，将和你进行语音通话。</string>
-    <string name="hob">暂无法发起群直播，请稍后再试</string>
-    <string name="hoc">暂无法进入群直播，请稍后再试</string>
-    <string name="hod">结束</string>
-    <string name="hoe">接通</string>
-    <string name="hof">暂无观众连麦</string>
-    <string name="hog">连麦已打开</string>
-    <string name="hoh">允许观众连麦</string>
-    <string name="hoi">主播接通后将和你进行语音通话</string>
-    <string name="hoj">确认</string>
-    <string name="hok">切换为语音连麦</string>
-    <string name="hol">切换为视频连麦</string>
-    <string name="hom">与\"%s\"连麦中</string>
-    <string name="hon">主播与\"%s\"连麦中</string>
-    <string name="hoo">与主播连麦中</string>
-    <string name="hop">正在和主播连麦中</string>
-    <string name="hoq">已结束连麦</string>
-    <string name="hor">选择待接通的观众</string>
-    <string name="hos">等待主播接通中</string>
-    <string name="hot">直播中</string>
-    <string name="hou">连麦中</string>
-    <string name="hov">你的手机没有授权微信获得浮窗权限，直播最小化不能正常使用</string>
-    <string name="how">等待接通</string>
-    <string name="hox">申请连麦</string>
-    <string name="hoy">发起连麦</string>
-    <string name="hoz">结束连麦</string>
-    <string name="hp0">视频连麦中</string>
-    <string name="hp1">语音连麦中</string>
-    <string name="hp2">等待接通</string>
-    <string name="hp3">%s人等待接通</string>
-    <string name="hp4">发送</string>
-    <string name="hp5">(%d人)</string>
-    <string name="hp6">选择可见直播的群聊</string>
-    <string name="hp7">开播</string>
-    <string name="hp8">断麦</string>
-    <string name="hp9">切换为视频连麦</string>
-    <string name="hp_">主播已和\"%s\"结束连麦</string>
-    <string name="hpa">主播已和\"%s\"连麦</string>
-    <string name="hpb">系统通知</string>
-    <string name="hpc">主播已关闭评论</string>
-    <string name="hpd">\"%s\"正在直播</string>
-    <string name="hpe">群内其他%d场直播</string>
-    <string name="hpf">群内共%d场直播</string>
-    <string name="hpg">结束</string>
-    <string name="hph">https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=live_forensic/index&amp;type=error&amp;lang=%s</string>
-    <string name="hpi">《微信直播功能行为规范》</string>
-    <string name="hpj">微信群直播及相关功能使用条款</string>
-    <string name="hpk">我同意并遵守</string>
-    <string name="hpl">我知道了</string>
-    <string name="hpm">群直播</string>
-    <string name="hpn">你可以通过直播向群内其他成员实时视频，如向群内学生授课等。</string>
-    <string name="hpo">"你可以通过直播向群内其他成员实时视
+    <string name="hjz">"视频号逐步开放中，请耐心等待，不要相信任何
+可以购买或者加速开通视频号的方式。"</string>
+    <string name="hk0">原创视频号</string>
+    <string name="hk1">已阅读并同意%s</string>
+    <string name="hk2">《微信视频号原创声明功能使用条款》</string>
+    <string name="hk3">声明</string>
+    <string name="hk4">前往声明</string>
+    <string name="hk5">你可以声明为原创视频号，将获得平台推荐。若发现滥用声明，平台有权采取相应措施。</string>
+    <string name="hk6">发表动态次数过多，为让用户更了解你，请声明原创视频号。</string>
+    <string name="hk7">原创视频号申请</string>
+    <string name="hk8">声明原创视频号</string>
+    <string name="hk9">取消原创视频号声明</string>
+    <string name="hk_">取消原创声明后需要重新发起声明，今年还剩余%s次声明机会</string>
+    <string name="hka">暂不取消</string>
+    <string name="hkb">取消声明</string>
+    <string name="hkc">若该内容是你自主创作且享有版权，你可以声明为原创，获得更好的保护和传播。若该内容并非是你原创，请在发布之前，务必获得版权方的合法授权。声明原创，是你对该内容的创作情况的公开说明，并不代表平台对声明的情况进行了认可或担保，请依据真实情况进行选择。</string>
+    <string name="hkd">原创</string>
+    <string name="hke">原创视频号将获得平台推荐。若发现滥用声明，平台有权采取相应的措施。</string>
+    <string name="hkf">已声明原创视频号</string>
+    <string name="hkg">暂不声明</string>
+    <string name="hkh">原创视频号将获得平台推荐。若发现滥用声明，平台有权采取相应的措施。更多权益与责任，请查阅%s。</string>
+    <string name="hki">根据%1$s，你的原创视频号已被取消。在%2$s天后，你才可再次声明。</string>
+    <string name="hkj">根据%s，因声明次数过多，你今年内不能再次声明。</string>
+    <string name="hkk">无法声明原创视频号</string>
+    <string name="hkl">原创视频号由活跃创作者申请获得，将有平台推荐及更多权益。若该用户发表了搬运、侵权的内容，可以发起%s。</string>
+    <string name="hkm">转载内容(本月剩余%s次转载机会)</string>
+    <string name="hkn">自主创作且享有版权</string>
+    <string name="hko">关注的视频号</string>
+    <string name="hkp">最近@过的视频号</string>
+    <string name="hkq">选择要提醒的视频号</string>
+    <string name="hkr">动态未删除</string>
+    <string name="hks">删除动态失败，请稍后重试</string>
+    <string name="hkt">发表中</string>
+    <string name="hku">没有赞过的动态</string>
+    <string name="hkv">没有更多动态</string>
+    <string name="hkw">使用多图模式</string>
+    <string name="hkx">等%s个朋友赞过</string>
+    <string name="hky">赞过</string>
+    <string name="hkz">%s个朋友赞过</string>
+    <string name="hl0">轻触推荐给朋友</string>
+    <string name="hl1">消息</string>
+    <string name="hl2">非个人帐号不可设置</string>
+    <string name="hl3">性别默认使用微信性别</string>
+    <string name="hl4">她</string>
+    <string name="hl5">关注</string>
+    <string name="hl6">朋友</string>
+    <string name="hl7">附近</string>
+    <string name="hl8">热门</string>
+    <string name="hl9">全部</string>
+    <string name="hl_">网络不可用，请稍后再试</string>
+    <string name="hla">没有更多动态</string>
+    <string name="hlb">知道了</string>
+    <string name="hlc">开启后，他（她）所有点赞推荐的动态你将不再看到</string>
+    <string name="hld">不看朋友推荐</string>
+    <string name="hle">已暂停</string>
+    <string name="hlf">轻触编辑单段视频</string>
+    <string name="hso">图片动态不能双击点赞</string>
+    <string name="hsp">打开后，你的朋友在热门和附近里不会看到你发的动态</string>
+    <string name="hlg">点赞</string>
+    <string name="hlh">跳过</string>
+    <string name="hli">暂不支持向企业微信用户收款</string>
+    <string name="hlj">本群含有企业微信用户，暂不支持向企业微信用户发起群收款。</string>
+    <string name="hlk">仅可向微信用户收款</string>
+    <string name="hll">评论</string>
+    <string name="hlm">总时长 %s</string>
+    <string name="hln">获赞</string>
+    <string name="hlo">直播已结束</string>
+    <string name="hlp">直播回放</string>
+    <string name="hlq">回放已被关闭</string>
+    <string name="hlr">回放已失效</string>
+    <string name="hls">回放仅保留7天</string>
+    <string name="hlt">回放生成中</string>
+    <string name="hlu">查看回放</string>
+    <string name="hlv">直播结束1天内可开启回放，回放将保留30天。</string>
+    <string name="hlw">观看成员</string>
+    <string name="hlx">群成员数</string>
+    <string name="hly">观看成员</string>
+    <string name="hlz">观众 ></string>
+    <string name="hm0">观众</string>
+    <string name="hm1">主播网络不可用，直播已暂停。</string>
+    <string name="hm2">评论已关闭</string>
+    <string name="hm3">评论已开启</string>
+    <string name="hm4">暂无法恢复评论</string>
+    <string name="hm5">暂无法关闭评论</string>
+    <string name="hm6">主题</string>
+    <string name="hm7">%s的直播</string>
+    <string name="hm8">开始直播</string>
+    <string name="hm9">直播主题</string>
+    <string name="hm_">关闭后直播观众将无法进行评论</string>
+    <string name="hma">%s：</string>
+    <string name="hmb">当前地区暂不支持发表评论</string>
+    <string name="hmc">暂无法发起直播，请稍后再试</string>
+    <string name="hmd">创建直播</string>
+    <string name="hme">当前地区暂不支持发起直播</string>
+    <string name="hmf">反色</string>
+    <string name="hmg">复制</string>
+    <string name="hmh">创建直播</string>
+    <string name="hmi">Live Entrance</string>
+    <string name="hmj">隐藏</string>
+    <string name="hmk">显示</string>
+    <string name="hml">腾讯云demo</string>
+    <string name="hmm">结束</string>
+    <string name="hmn">进房</string>
+    <string name="hmo">接到相关投诉，当前帐号涉嫌违反《微信群直播功能使用条款》。</string>
+    <string name="hmp">已禁止直播</string>
+    <string name="hmq">举报></string>
+    <string name="hmr">按照《互联网直播服务管理规定》的要求，你同意腾讯使用并传输相关数据用于身份核验。</string>
+    <string name="hms">未通过实名认证，无法开始直播。</string>
+    <string name="hmt">未满十八周岁，无法发起连麦。</string>
+    <string name="hmu">需要绑定银行卡</string>
+    <string name="hmv">前往\"我 > 支付 > 钱包\"中绑定银行卡，绑定后可继续使用。</string>
+    <string name="hmw">需要进行实名认证</string>
+    <string name="hmx">你需要实名认证后才能继续连麦</string>
+    <string name="hmy">你需要实名认证后才能开始直播</string>
+    <string name="hmz">认证</string>
+    <string name="hn0">未满十八周岁，无法发起直播。</string>
+    <string name="hn1">浮窗</string>
+    <string name="hn2">连麦</string>
+    <string name="hn3">投屏</string>
+    <string name="hn4">分享</string>
+    <string name="hn5">翻转</string>
+    <string name="hn6">无法评论</string>
+    <string name="hn7">发表评论...</string>
+    <string name="hn8">评论</string>
+    <string name="hn9">暂无法进入直播，请稍后再试</string>
+    <string name="hn_">加入直播</string>
+    <string name="hna">你已被主播移出直播间</string>
+    <string name="hnb">%.1fw</string>
+    <string name="hnc">%dw</string>
+    <string name="hnd">赞</string>
+    <string name="hne">连麦</string>
+    <string name="hnf">连麦已关闭</string>
+    <string name="hng">当前地区暂不支持发起连麦</string>
+    <string name="hnh">当前网络不可用，直播已暂停。</string>
+    <string name="hni">%d人</string>
+    <string name="hnj">投诉</string>
+    <string name="hnk">移出直播间</string>
+    <string name="hnl">移出直播间后，该观众将无法继续观看</string>
+    <string name="hnm">移出失败</string>
+    <string name="hnn">已移出</string>
+    <string name="hno">移出中</string>
+    <string name="hnp">暂无观众</string>
+    <string name="hnq">(%1$d/%2$d)</string>
+    <string name="hnr">加载失败，轻触重试。</string>
+    <string name="hns">%1$s (%2$d)</string>
+    <string name="hnt">在线观众 (%1$d/%2$d)</string>
+    <string name="hnu">只显示本群在线成员</string>
+    <string name="hnv">观看中</string>
+    <string name="hnw">在线观众 (%d人)</string>
+    <string name="hnx">%s人观看</string>
+    <string name="hny">打开评论</string>
+    <string name="hnz">关闭评论</string>
+    <string name="ho0">结束直播</string>
+    <string name="ho1">最小化</string>
+    <string name="ho2">前往\"微信 > 设置 > 帐号与安全 > 手机号\"中进行绑定，绑定后可继续观看直播。</string>
+    <string name="ho3">未绑定手机号</string>
+    <string name="ho4">网络不畅</string>
+    <string name="ho5">网络良好</string>
+    <string name="ho6">网络一般</string>
+    <string name="ho7">%d条新消息</string>
+    <string name="ho8">直播暂不可用</string>
+    <string name="ho9">视频直播</string>
+    <string name="ho_">直播中</string>
+    <string name="hoa">打开新的直播，当前直播将结束。</string>
+    <string name="hob">正在直播中，确定回到当前直播。</string>
+    <string name="hoc">当前直播进行中，确定回到直播。</string>
+    <string name="hod">正在直播中，请稍后再试</string>
+    <string name="hoe">正在通话中，无法参与直播。</string>
+    <string name="hof">将退出当前直播，进入\"%s\"。</string>
+    <string name="hog">当前网络不可用，无法群直播，检查网络设置后再试。</string>
+    <string name="hoh">正在共享地理位置，请稍后再试。</string>
+    <string name="hoi">打开新的直播，当前直播将结束观看。</string>
+    <string name="hoj">取消</string>
+    <string name="hok">关闭后成员将不能查看回放</string>
+    <string name="hol">回放生成后，将在群内提醒。</string>
+    <string name="hom">直播结束后将自动生成回放，生成后的回放仅保存7天。</string>
+    <string name="hon">主播已经将直播回放功能关闭</string>
+    <string name="hoo">直播回放生成后已超过7天</string>
+    <string name="hop">请选择可见范围</string>
+    <string name="hoq">直播回放</string>
+    <string name="hor">直播回放已关闭</string>
+    <string name="hos">无法生成直播回放</string>
+    <string name="hot">直播回放已失效</string>
+    <string name="hou">回放查看范围</string>
+    <string name="hov">仅自己可见</string>
+    <string name="how">群内所有成员</string>
+    <string name="hox">回放生成后将在群内提醒</string>
+    <string name="hoy">取消连麦</string>
+    <string name="hoz">已取消</string>
+    <string name="hp0">房间号</string>
+    <string name="hp1">连麦已关闭</string>
+    <string name="hp2">暂无法接通，请稍后再试。</string>
+    <string name="hp3">连麦中</string>
+    <string name="hp4">取消</string>
+    <string name="hp5">连麦已关闭</string>
+    <string name="hp6">关闭连麦</string>
+    <string name="hp7">关闭后，观众将无法申请连麦。</string>
+    <string name="hp8">知道了</string>
+    <string name="hp9">主播接通后，将和你进行语音通话。</string>
+    <string name="hp_">暂无法发起群直播，请稍后再试。</string>
+    <string name="hpa">暂无法进入群直播，请稍后再试。</string>
+    <string name="hpb">结束</string>
+    <string name="hpc">接通</string>
+    <string name="hpd">暂无观众连麦</string>
+    <string name="hpe">连麦已打开</string>
+    <string name="hpf">允许观众连麦</string>
+    <string name="hpg">主播接通后将和你进行语音通话</string>
+    <string name="hph">确认</string>
+    <string name="hpi">切换为语音连麦</string>
+    <string name="hpj">切换为视频连麦</string>
+    <string name="hpk">与\"%s\"连麦中</string>
+    <string name="hpl">主播与\"%s\"连麦中</string>
+    <string name="hpm">与主播连麦中</string>
+    <string name="hpn">正在和主播连麦中</string>
+    <string name="hpo">已结束连麦</string>
+    <string name="hpp">选择待接通的观众</string>
+    <string name="hpq">等待主播接通中</string>
+    <string name="hpr">直播中</string>
+    <string name="hps">连麦中</string>
+    <string name="hpt">你的手机没有授权微信获得浮窗权限，直播最小化不能正常使用。</string>
+    <string name="hpu">等待接通</string>
+    <string name="hpv">申请连麦</string>
+    <string name="hpw">发起连麦</string>
+    <string name="hpx">结束连麦</string>
+    <string name="hpy">视频连麦中</string>
+    <string name="hpz">语音连麦中</string>
+    <string name="hq0">等待接通</string>
+    <string name="hq1">%s人等待接通</string>
+    <string name="hq2">发送</string>
+    <string name="hq3">(%d人)</string>
+    <string name="hq4">选择可见直播的群聊</string>
+    <string name="hq5">开播</string>
+    <string name="hq6">断麦</string>
+    <string name="hq7">切换为视频连麦</string>
+    <string name="hq8">主播已和\"%s\"结束连麦</string>
+    <string name="hq9">主播已和\"%s\"连麦</string>
+    <string name="hq_">系统通知</string>
+    <string name="hqa">主播已关闭评论</string>
+    <string name="hqb">正在直播\"%s\"</string>
+    <string name="hqc">群里还有%d场直播</string>
+    <string name="hqd">群里有%d场直播</string>
+    <string name="hqe">结束</string>
+    <string name="hqf">https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=live_forensic/index&amp;type=error&amp;lang=%s</string>
+    <string name="hqg">《微信直播功能行为规范》</string>
+    <string name="hqh">微信群直播及相关功能使用条款</string>
+    <string name="hqi">我同意并遵守</string>
+    <string name="hqj">我知道了</string>
+    <string name="hqk">群直播</string>
+    <string name="hql">你可以通过直播向群内其他成员实时视频，如向群内学生授课等。</string>
+    <string name="hqm">"你可以通过直播向群内其他成员实时视
 频，如向群内学生授课等。"</string>
-    <string name="hpp">视频连麦</string>
-    <string name="hpq">直播拉流</string>
-    <string name="hpr">我同意并遵守《微信群直播功能使用条款》</string>
-    <string name="hps">微信群直播功能使用条款</string>
-    <string name="hpt">所在位置</string>
-    <string name="hpu">位置识别中…</string>
-    <string name="hpv">标记位置，更容易被同城的人看到</string>
-    <string name="hpw">MLVBLiveRoom</string>
-    <string name="hpx">美颜</string>
-    <string name="hpy">无</string>
-    <string name="hpz">自然</string>
-    <string name="hq0">鲜明</string>
-    <string name="hq1">褪色</string>
-    <string name="hq2">暖色</string>
-    <string name="hq3">冷色</string>
-    <string name="hq4">尘土</string>
-    <string name="hq5">复古</string>
-    <string name="hq6">黑白</string>
-    <string name="hq7">滤镜</string>
-    <string name="hq8">按住摄像时，音乐开始播放</string>
-    <string name="hq9">当前音乐最长拍摄%ss</string>
-    <string name="hq_">音乐</string>
-    <string name="hqa">挂件</string>
-    <string name="hqb">未识别到人脸</string>
-    <string name="hqc">最近使用</string>
-    <string name="hqd">热门推荐</string>
-    <string name="hqe">完成</string>
-    <string name="hqf">分段拍摄</string>
-    <string name="hqg">普通</string>
-    <string name="hqh">轻触摄像，松手后再次轻触可分段拍摄</string>
-    <string name="hqi">切换为图片</string>
-    <string name="hqj">切换为普通视频</string>
-    <string name="hqk">切换为卡点视频</string>
-    <string name="hql">已结束</string>
-    <string name="hqm">直播中</string>
-    <string name="hqn">群直播</string>
-    <string name="hqo">关闭后，视频号有新内容更新时，微信发现页不再出现红点提示。</string>
-    <string name="hqp">视频号</string>
-    <string name="hqq">更新提醒</string>
-    <string name="hqr">摄像头推流</string>
-    <string name="hqs">直播拉流</string>
-    <string name="hqt">视频合成失败，请重试</string>
-    <string name="hqu">添加字幕</string>
-    <string name="hqv">拖拽选择播放片段</string>
+    <string name="hqn">视频连麦</string>
+    <string name="hqo">直播拉流</string>
+    <string name="hqp">我同意并遵守《微信群直播功能使用条款》</string>
+    <string name="hqq">微信群直播功能使用条款</string>
+    <string name="hqr">所在位置</string>
+    <string name="hqs">位置识别中…</string>
+    <string name="hqt">标记位置，更容易被同城的人看到</string>
+    <string name="hqu">MLVBLiveRoom</string>
+    <string name="hqv">收付款</string>
+    <string name="hqw">手机剩余可用</string>
+    <string name="hqx">空间</string>
+    <string name="hqy">美颜</string>
+    <string name="hqz">无</string>
+    <string name="hr0">自然</string>
+    <string name="hr1">鲜明</string>
+    <string name="hr2">褪色</string>
+    <string name="hr3">暖色</string>
+    <string name="hr4">冷色</string>
+    <string name="hr5">尘土</string>
+    <string name="hr6">复古</string>
+    <string name="hr7">黑白</string>
+    <string name="hr8">滤镜</string>
+    <string name="hr9">按住摄像时，音乐开始播放</string>
+    <string name="hr_">当前音乐最长拍摄%ss</string>
+    <string name="hra">音乐</string>
+    <string name="hrb">挂件</string>
+    <string name="hrc">未识别到人脸</string>
+    <string name="hrd">最近使用</string>
+    <string name="hre">热门推荐</string>
+    <string name="hrf">完成</string>
+    <string name="hrg">分段拍摄</string>
+    <string name="hrh">普通</string>
+    <string name="hri">轻触摄像，松手后再次轻触可分段拍摄</string>
+    <string name="hrj">切换为图片</string>
+    <string name="hrk">切换为普通视频</string>
+    <string name="hrl">切换为卡点视频</string>
+    <string name="hsq">[群直播] %s</string>
+    <string name="hrm">已结束</string>
+    <string name="hrn">直播中</string>
+    <string name="hro">群直播</string>
+    <string name="hrp">识别图中的条形码</string>
+    <string name="hrq">关闭后，视频号有新内容更新时，微信发现页不再出现红点提示。</string>
+    <string name="hrr">视频号</string>
+    <string name="hrs">照片、视频、文件和通话</string>
+    <string name="hrt">更新提醒</string>
+    <string name="hru">使用移动网络改善语音通话</string>
+    <string name="hrv">关闭后，下次语音通话将不使用移动网络改善</string>
+    <string name="hrw">Wi-Fi下语音通话质量不佳，将使用移动网络改善</string>
+    <string name="hrx">你觉得这条广告怎么样</string>
+    <string name="hry">投诉广告</string>
+    <string name="hrz">@string/wv</string>
+    <string name="hs0">还不错</string>
+    <string name="hs1">未来%1$d天不再收到该类推荐</string>
+    <string name="hs2">不感兴趣</string>
+    <string name="hs3">选择原因</string>
+    <string name="hs4">选择后将减少该类推荐</string>
+    <string name="hs5">已反馈</string>
+    <string name="hs6">链接未发送</string>
+    <string name="hs7">笔记未发送</string>
+    <string name="hs8">文字未发送</string>
+    <string name="hs9">你删除了一条朋友圈</string>
+    <string name="hs_">重新编辑</string>
+    <string name="hsa">摄像头推流</string>
+    <string name="hsb">直播拉流</string>
+    <string name="hsc">视频合成失败，请重试</string>
+    <string name="hsd">添加字幕</string>
+    <string name="hse">裁剪</string>
+    <string name="hsf">拖拽选择播放片段</string>
+    <string name="hsg">正在使用移动网络改善通话质量</string>
+    <string name="hsh">取消</string>
+    <string name="hsi">到账银行卡</string>
+    <string name="hsj">下单异常,请检查商品参数</string>
+    <string name="hsk">插件下载失败，请稍后再试</string>
+    <string name="hsl">正在下载插件：</string>
     <item type="string" name="APKTOOL_DUMMY_14d" />
     <item type="string" name="APKTOOL_DUMMY_3b0" />
     <item type="string" name="APKTOOL_DUMMY_3b1" />
@@ -11859,9 +11927,6 @@ https://weixin.qq.com
     <item type="string" name="APKTOOL_DUMMY_485" />
     <item type="string" name="APKTOOL_DUMMY_649" />
     <item type="string" name="APKTOOL_DUMMY_64a" />
-    <item type="string" name="APKTOOL_DUMMY_665" />
-    <item type="string" name="APKTOOL_DUMMY_815" />
-    <item type="string" name="APKTOOL_DUMMY_b5f" />
     <item type="string" name="APKTOOL_DUMMY_ba3" />
     <item type="string" name="APKTOOL_DUMMY_bad" />
     <item type="string" name="APKTOOL_DUMMY_bae" />
@@ -11872,6 +11937,7 @@ https://weixin.qq.com
     <item type="string" name="APKTOOL_DUMMY_c9a" />
     <item type="string" name="APKTOOL_DUMMY_ca8" />
     <item type="string" name="APKTOOL_DUMMY_e3a" />
+    <item type="string" name="APKTOOL_DUMMY_e3b" />
     <item type="string" name="APKTOOL_DUMMY_e46" />
     <item type="string" name="APKTOOL_DUMMY_ed1" />
     <item type="string" name="APKTOOL_DUMMY_ed2" />
@@ -11880,9 +11946,6 @@ https://weixin.qq.com
     <item type="string" name="APKTOOL_DUMMY_1163" />
     <item type="string" name="APKTOOL_DUMMY_127f" />
     <item type="string" name="APKTOOL_DUMMY_1280" />
-    <item type="string" name="APKTOOL_DUMMY_1281" />
-    <item type="string" name="APKTOOL_DUMMY_1282" />
-    <item type="string" name="APKTOOL_DUMMY_12a7" />
     <item type="string" name="APKTOOL_DUMMY_13f4" />
     <item type="string" name="APKTOOL_DUMMY_13f6" />
     <item type="string" name="APKTOOL_DUMMY_13f9" />
@@ -11892,48 +11955,33 @@ https://weixin.qq.com
     <item type="string" name="APKTOOL_DUMMY_14a7" />
     <item type="string" name="APKTOOL_DUMMY_14aa" />
     <item type="string" name="APKTOOL_DUMMY_14ac" />
-    <item type="string" name="APKTOOL_DUMMY_14ae" />
     <item type="string" name="APKTOOL_DUMMY_14b5" />
     <item type="string" name="APKTOOL_DUMMY_14b6" />
     <item type="string" name="APKTOOL_DUMMY_14b7" />
-    <item type="string" name="APKTOOL_DUMMY_14b8" />
-    <item type="string" name="APKTOOL_DUMMY_15f5" />
-    <item type="string" name="APKTOOL_DUMMY_165b" />
-    <item type="string" name="APKTOOL_DUMMY_1683" />
+    <item type="string" name="APKTOOL_DUMMY_15f4" />
     <item type="string" name="APKTOOL_DUMMY_16b9" />
-    <item type="string" name="APKTOOL_DUMMY_1791" />
     <item type="string" name="APKTOOL_DUMMY_18b2" />
     <item type="string" name="APKTOOL_DUMMY_1a4c" />
     <item type="string" name="APKTOOL_DUMMY_1a60" />
     <item type="string" name="APKTOOL_DUMMY_1ba8" />
+    <item type="string" name="APKTOOL_DUMMY_1bc1" />
     <item type="string" name="APKTOOL_DUMMY_1c4a" />
-    <item type="string" name="APKTOOL_DUMMY_1cae" />
     <item type="string" name="APKTOOL_DUMMY_1cc2" />
-    <item type="string" name="APKTOOL_DUMMY_2cd5" />
-    <item type="string" name="APKTOOL_DUMMY_2ce2" />
+    <item type="string" name="APKTOOL_DUMMY_1d37" />
+    <item type="string" name="APKTOOL_DUMMY_1d6a" />
+    <item type="string" name="APKTOOL_DUMMY_1eea" />
+    <item type="string" name="APKTOOL_DUMMY_1f3f" />
+    <item type="string" name="APKTOOL_DUMMY_1fa9" />
+    <item type="string" name="APKTOOL_DUMMY_1fab" />
+    <item type="string" name="APKTOOL_DUMMY_2006" />
+    <item type="string" name="APKTOOL_DUMMY_2432" />
     <item type="string" name="APKTOOL_DUMMY_2ce3" />
-    <item type="string" name="APKTOOL_DUMMY_2ce4" />
-    <item type="string" name="APKTOOL_DUMMY_2ce5" />
-    <item type="string" name="APKTOOL_DUMMY_2ce6" />
-    <item type="string" name="APKTOOL_DUMMY_2ce7" />
-    <item type="string" name="APKTOOL_DUMMY_2ce8" />
-    <item type="string" name="APKTOOL_DUMMY_2ce9" />
-    <item type="string" name="APKTOOL_DUMMY_2cea" />
-    <item type="string" name="APKTOOL_DUMMY_2ceb" />
-    <item type="string" name="APKTOOL_DUMMY_2cec" />
-    <item type="string" name="APKTOOL_DUMMY_2ced" />
-    <item type="string" name="APKTOOL_DUMMY_2cee" />
-    <item type="string" name="APKTOOL_DUMMY_2cef" />
     <item type="string" name="APKTOOL_DUMMY_2cf0" />
-    <item type="string" name="APKTOOL_DUMMY_2cf1" />
-    <item type="string" name="APKTOOL_DUMMY_2cf2" />
     <item type="string" name="APKTOOL_DUMMY_2cf3" />
     <item type="string" name="APKTOOL_DUMMY_2cf4" />
     <item type="string" name="APKTOOL_DUMMY_2cf5" />
     <item type="string" name="APKTOOL_DUMMY_2cf6" />
-    <item type="string" name="APKTOOL_DUMMY_2cf7" />
     <item type="string" name="APKTOOL_DUMMY_2cf8" />
-    <item type="string" name="APKTOOL_DUMMY_2cf9" />
     <item type="string" name="APKTOOL_DUMMY_2cfa" />
     <item type="string" name="APKTOOL_DUMMY_2cfb" />
     <item type="string" name="APKTOOL_DUMMY_2cfc" />
@@ -11945,36 +11993,96 @@ https://weixin.qq.com
     <item type="string" name="APKTOOL_DUMMY_2d02" />
     <item type="string" name="APKTOOL_DUMMY_2d03" />
     <item type="string" name="APKTOOL_DUMMY_2d04" />
-    <item type="string" name="APKTOOL_DUMMY_2db7" />
-    <item type="string" name="APKTOOL_DUMMY_2db8" />
-    <item type="string" name="APKTOOL_DUMMY_2db9" />
-    <item type="string" name="APKTOOL_DUMMY_2dba" />
-    <item type="string" name="APKTOOL_DUMMY_2dbc" />
-    <item type="string" name="APKTOOL_DUMMY_2dbd" />
-    <item type="string" name="APKTOOL_DUMMY_2dbe" />
-    <item type="string" name="APKTOOL_DUMMY_2dbf" />
-    <item type="string" name="APKTOOL_DUMMY_2dc0" />
-    <item type="string" name="APKTOOL_DUMMY_2dc1" />
-    <item type="string" name="APKTOOL_DUMMY_2dc2" />
-    <item type="string" name="APKTOOL_DUMMY_2dd6" />
+    <item type="string" name="APKTOOL_DUMMY_2d05" />
+    <item type="string" name="APKTOOL_DUMMY_2d06" />
+    <item type="string" name="APKTOOL_DUMMY_2d07" />
+    <item type="string" name="APKTOOL_DUMMY_2d08" />
+    <item type="string" name="APKTOOL_DUMMY_2d09" />
+    <item type="string" name="APKTOOL_DUMMY_2d0a" />
+    <item type="string" name="APKTOOL_DUMMY_2d0b" />
+    <item type="string" name="APKTOOL_DUMMY_2d0c" />
+    <item type="string" name="APKTOOL_DUMMY_2d0d" />
+    <item type="string" name="APKTOOL_DUMMY_2d0e" />
+    <item type="string" name="APKTOOL_DUMMY_2d0f" />
+    <item type="string" name="APKTOOL_DUMMY_2d10" />
+    <item type="string" name="APKTOOL_DUMMY_2d11" />
+    <item type="string" name="APKTOOL_DUMMY_2d12" />
+    <item type="string" name="APKTOOL_DUMMY_2d13" />
+    <item type="string" name="APKTOOL_DUMMY_2d14" />
+    <item type="string" name="APKTOOL_DUMMY_2dda" />
+    <item type="string" name="APKTOOL_DUMMY_2ddb" />
+    <item type="string" name="APKTOOL_DUMMY_2ddc" />
     <item type="string" name="APKTOOL_DUMMY_2ddd" />
-    <item type="string" name="APKTOOL_DUMMY_2dde" />
     <item type="string" name="APKTOOL_DUMMY_2ddf" />
     <item type="string" name="APKTOOL_DUMMY_2de0" />
     <item type="string" name="APKTOOL_DUMMY_2de1" />
-    <item type="string" name="APKTOOL_DUMMY_2de5" />
-    <item type="string" name="APKTOOL_DUMMY_2de6" />
+    <item type="string" name="APKTOOL_DUMMY_2de2" />
+    <item type="string" name="APKTOOL_DUMMY_2de3" />
     <item type="string" name="APKTOOL_DUMMY_2de7" />
     <item type="string" name="APKTOOL_DUMMY_2de8" />
-    <item type="string" name="APKTOOL_DUMMY_2de9" />
-    <item type="string" name="APKTOOL_DUMMY_2dea" />
-    <item type="string" name="APKTOOL_DUMMY_2deb" />
-    <item type="string" name="APKTOOL_DUMMY_2dee" />
-    <item type="string" name="APKTOOL_DUMMY_2def" />
-    <item type="string" name="APKTOOL_DUMMY_2df1" />
-    <item type="string" name="APKTOOL_DUMMY_2df4" />
-    <item type="string" name="APKTOOL_DUMMY_2df5" />
-    <item type="string" name="APKTOOL_DUMMY_2df6" />
-    <item type="string" name="APKTOOL_DUMMY_2df7" />
-    <item type="string" name="APKTOOL_DUMMY_2df8" />
+    <item type="string" name="APKTOOL_DUMMY_2dfc" />
+    <item type="string" name="APKTOOL_DUMMY_2e03" />
+    <item type="string" name="APKTOOL_DUMMY_2e04" />
+    <item type="string" name="APKTOOL_DUMMY_2e05" />
+    <item type="string" name="APKTOOL_DUMMY_2e07" />
+    <item type="string" name="APKTOOL_DUMMY_2e0c" />
+    <item type="string" name="APKTOOL_DUMMY_2e0d" />
+    <item type="string" name="APKTOOL_DUMMY_2e0e" />
+    <item type="string" name="APKTOOL_DUMMY_2e0f" />
+    <item type="string" name="APKTOOL_DUMMY_2e10" />
+    <item type="string" name="APKTOOL_DUMMY_2e11" />
+    <item type="string" name="APKTOOL_DUMMY_2e12" />
+    <item type="string" name="APKTOOL_DUMMY_2e16" />
+    <item type="string" name="APKTOOL_DUMMY_2e17" />
+    <item type="string" name="APKTOOL_DUMMY_2e25" />
+    <item type="string" name="APKTOOL_DUMMY_2e2d" />
+    <item type="string" name="APKTOOL_DUMMY_2e2e" />
+    <item type="string" name="APKTOOL_DUMMY_2e2f" />
+    <item type="string" name="APKTOOL_DUMMY_2e30" />
+    <item type="string" name="APKTOOL_DUMMY_2e31" />
+    <item type="string" name="APKTOOL_DUMMY_2e37" />
+    <item type="string" name="APKTOOL_DUMMY_2e38" />
+    <item type="string" name="APKTOOL_DUMMY_2e39" />
+    <item type="string" name="APKTOOL_DUMMY_2e3a" />
+    <item type="string" name="APKTOOL_DUMMY_2e3b" />
+    <item type="string" name="APKTOOL_DUMMY_2e3e" />
+    <item type="string" name="APKTOOL_DUMMY_2e3f" />
+    <item type="string" name="APKTOOL_DUMMY_2e40" />
+    <item type="string" name="APKTOOL_DUMMY_2e41" />
+    <item type="string" name="APKTOOL_DUMMY_2e42" />
+    <item type="string" name="APKTOOL_DUMMY_2e43" />
+    <item type="string" name="APKTOOL_DUMMY_2e44" />
+    <item type="string" name="APKTOOL_DUMMY_2e45" />
+    <item type="string" name="APKTOOL_DUMMY_2e46" />
+    <item type="string" name="APKTOOL_DUMMY_2e47" />
+    <item type="string" name="APKTOOL_DUMMY_2e48" />
+    <item type="string" name="APKTOOL_DUMMY_2e49" />
+    <item type="string" name="APKTOOL_DUMMY_2e4a" />
+    <item type="string" name="APKTOOL_DUMMY_2e4b" />
+    <item type="string" name="APKTOOL_DUMMY_2e4c" />
+    <item type="string" name="APKTOOL_DUMMY_2e4d" />
+    <item type="string" name="APKTOOL_DUMMY_2e4e" />
+    <item type="string" name="APKTOOL_DUMMY_2e4f" />
+    <item type="string" name="APKTOOL_DUMMY_2e50" />
+    <item type="string" name="APKTOOL_DUMMY_2e51" />
+    <item type="string" name="APKTOOL_DUMMY_2e52" />
+    <item type="string" name="APKTOOL_DUMMY_2e53" />
+    <item type="string" name="APKTOOL_DUMMY_2e54" />
+    <item type="string" name="APKTOOL_DUMMY_2e55" />
+    <item type="string" name="APKTOOL_DUMMY_2e56" />
+    <item type="string" name="APKTOOL_DUMMY_2e57" />
+    <item type="string" name="APKTOOL_DUMMY_2e58" />
+    <item type="string" name="APKTOOL_DUMMY_2e59" />
+    <item type="string" name="APKTOOL_DUMMY_2e5a" />
+    <item type="string" name="APKTOOL_DUMMY_2e5b" />
+    <item type="string" name="APKTOOL_DUMMY_2e5c" />
+    <item type="string" name="APKTOOL_DUMMY_2e5d" />
+    <item type="string" name="APKTOOL_DUMMY_2e5e" />
+    <item type="string" name="APKTOOL_DUMMY_2e5f" />
+    <item type="string" name="APKTOOL_DUMMY_2e60" />
+    <item type="string" name="APKTOOL_DUMMY_2e61" />
+    <item type="string" name="APKTOOL_DUMMY_2e62" />
+    <item type="string" name="APKTOOL_DUMMY_2e63" />
+    <item type="string" name="APKTOOL_DUMMY_2e64" />
+    <item type="string" name="APKTOOL_DUMMY_2e65" />
 </resources>

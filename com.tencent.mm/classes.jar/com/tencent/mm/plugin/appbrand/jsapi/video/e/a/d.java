@@ -12,9 +12,9 @@ import com.google.android.exoplayer2.h.p;
 import com.google.android.exoplayer2.h.s.b;
 import com.google.android.exoplayer2.i.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -23,27 +23,27 @@ import java.util.Set;
 public final class d
 {
   private static String appName;
-  private static final l ksW;
+  private static final l gHE;
   
   static
   {
-    AppMethodBeat.i(194185);
-    ksW = new l();
-    AppMethodBeat.o(194185);
+    AppMethodBeat.i(194530);
+    gHE = new l();
+    AppMethodBeat.o(194530);
   }
   
   public static g.a a(Context paramContext, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(194180);
-    l locall = ksW;
-    paramContext = new n(paramContext, locall, a(locall, dr(paramContext), paramMap));
-    AppMethodBeat.o(194180);
+    AppMethodBeat.i(194525);
+    l locall = gHE;
+    paramContext = new n(paramContext, locall, a(locall, dA(paramContext), paramMap));
+    AppMethodBeat.o(194525);
     return paramContext;
   }
   
   private static s.b a(l paraml, String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(194181);
+    AppMethodBeat.i(194526);
     paraml = new p(paramString, paraml, true);
     if (paramMap != null)
     {
@@ -51,41 +51,41 @@ public final class d
       while (paramString.hasNext())
       {
         paramMap = (Map.Entry)paramString.next();
-        ad.i("MicroMsg.SameLayer.ExoMediaPlayerUtils", "buildDefaultHttpDataSourceFactory, header: %s: %s", new Object[] { paramMap.getKey(), paramMap.getValue() });
+        ac.i("MicroMsg.SameLayer.ExoMediaPlayerUtils", "buildDefaultHttpDataSourceFactory, header: %s: %s", new Object[] { paramMap.getKey(), paramMap.getValue() });
         paraml.setDefaultRequestProperty((String)paramMap.getKey(), (String)paramMap.getValue());
       }
     }
-    AppMethodBeat.o(194181);
+    AppMethodBeat.o(194526);
     return paraml;
   }
   
-  public static String bdP()
+  public static String bkJ()
   {
-    AppMethodBeat.i(194183);
-    String str = sl(10);
-    AppMethodBeat.o(194183);
+    AppMethodBeat.i(194528);
+    String str = tb(10);
+    AppMethodBeat.o(194528);
     return str;
   }
   
-  public static l bdQ()
+  public static l bkK()
   {
-    return ksW;
+    return gHE;
   }
   
-  private static String dr(Context paramContext)
+  private static String dA(Context paramContext)
   {
-    AppMethodBeat.i(194178);
-    if (!bt.isNullOrNil(appName))
+    AppMethodBeat.i(194523);
+    if (!bs.isNullOrNil(appName))
     {
       paramContext = appName;
-      AppMethodBeat.o(194178);
+      AppMethodBeat.o(194523);
       return paramContext;
     }
     appName = paramContext.getPackageName();
     try
     {
       PackageInfo localPackageInfo = paramContext.getPackageManager().getPackageInfo(appName, 0);
-      if ((localPackageInfo != null) && (localPackageInfo.applicationInfo != null) && (!bt.isNullOrNil(localPackageInfo.applicationInfo.name))) {
+      if ((localPackageInfo != null) && (localPackageInfo.applicationInfo != null) && (!bs.isNullOrNil(localPackageInfo.applicationInfo.name))) {
         appName = localPackageInfo.applicationInfo.name;
       }
     }
@@ -93,33 +93,33 @@ public final class d
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.SameLayer.ExoMediaPlayerUtils", localNameNotFoundException, "getUserAgent exception", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.SameLayer.ExoMediaPlayerUtils", localNameNotFoundException, "getUserAgent exception", new Object[0]);
       }
     }
     paramContext = x.i(paramContext, appName);
-    AppMethodBeat.o(194178);
+    AppMethodBeat.o(194523);
     return paramContext;
   }
   
-  public static g.a ds(Context paramContext)
+  public static g.a dB(Context paramContext)
   {
-    AppMethodBeat.i(194179);
-    l locall = ksW;
-    paramContext = new n(paramContext, locall, new p(dr(paramContext), locall, true));
-    AppMethodBeat.o(194179);
+    AppMethodBeat.i(194524);
+    l locall = gHE;
+    paramContext = new n(paramContext, locall, new p(dA(paramContext), locall, true));
+    AppMethodBeat.o(194524);
     return paramContext;
   }
   
   public static boolean isNetworkAvailable(Context paramContext)
   {
-    AppMethodBeat.i(194182);
-    boolean bool = ay.isNetworkConnected(paramContext);
-    AppMethodBeat.o(194182);
+    AppMethodBeat.i(194527);
+    boolean bool = ax.isNetworkConnected(paramContext);
+    AppMethodBeat.o(194527);
     return bool;
   }
   
   /* Error */
-  public static String sl(int paramInt)
+  public static String tb(int paramInt)
   {
     // Byte code:
     //   0: ldc 174
@@ -299,7 +299,7 @@ public final class d
     //   371: ldc_w 304
     //   374: iconst_0
     //   375: anewarray 4	java/lang/Object
-    //   378: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   378: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   381: goto -40 -> 341
     //   384: astore 11
     //   386: ldc 77
@@ -307,7 +307,7 @@ public final class d
     //   390: ldc_w 306
     //   393: iconst_0
     //   394: anewarray 4	java/lang/Object
-    //   397: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   397: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   400: goto -51 -> 349
     //   403: astore 9
     //   405: ldc 77
@@ -315,7 +315,7 @@ public final class d
     //   409: ldc_w 308
     //   412: iconst_0
     //   413: anewarray 4	java/lang/Object
-    //   416: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   416: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   419: goto -62 -> 357
     //   422: astore 11
     //   424: ldc 77
@@ -323,7 +323,7 @@ public final class d
     //   428: ldc_w 304
     //   431: iconst_0
     //   432: anewarray 4	java/lang/Object
-    //   435: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   435: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   438: goto -150 -> 288
     //   441: astore 11
     //   443: ldc 77
@@ -331,7 +331,7 @@ public final class d
     //   447: ldc_w 306
     //   450: iconst_0
     //   451: anewarray 4	java/lang/Object
-    //   454: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   454: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   457: goto -161 -> 296
     //   460: astore 9
     //   462: ldc 77
@@ -339,7 +339,7 @@ public final class d
     //   466: ldc_w 308
     //   469: iconst_0
     //   470: anewarray 4	java/lang/Object
-    //   473: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   473: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   476: goto -172 -> 304
     //   479: astore 10
     //   481: aconst_null
@@ -365,7 +365,7 @@ public final class d
     //   527: ldc_w 304
     //   530: iconst_0
     //   531: anewarray 4	java/lang/Object
-    //   534: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   534: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   537: goto -40 -> 497
     //   540: astore 11
     //   542: ldc 77
@@ -373,7 +373,7 @@ public final class d
     //   546: ldc_w 306
     //   549: iconst_0
     //   550: anewarray 4	java/lang/Object
-    //   553: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   553: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   556: goto -51 -> 505
     //   559: astore 9
     //   561: ldc 77
@@ -381,7 +381,7 @@ public final class d
     //   565: ldc_w 308
     //   568: iconst_0
     //   569: anewarray 4	java/lang/Object
-    //   572: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   572: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   575: goto -62 -> 513
     //   578: astore 10
     //   580: goto -96 -> 484

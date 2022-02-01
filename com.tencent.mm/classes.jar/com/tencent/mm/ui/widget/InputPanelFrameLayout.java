@@ -9,8 +9,8 @@ public class InputPanelFrameLayout
   extends FrameLayout
   implements b.a
 {
-  private b HyE;
-  private b.a HyF;
+  private b IZb;
+  private b.a IZc;
   
   public InputPanelFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,35 +21,35 @@ public class InputPanelFrameLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143322);
-    this.HyE = new b(this, this);
+    this.IZb = new b(this, this);
     AppMethodBeat.o(143322);
   }
   
   public void g(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(143323);
-    if (this.HyF != null) {
-      this.HyF.g(paramBoolean, paramInt);
+    if (this.IZc != null) {
+      this.IZc.g(paramBoolean, paramInt);
     }
     AppMethodBeat.o(143323);
   }
   
   public b getInputPanelHelper()
   {
-    return this.HyE;
+    return this.IZb;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143324);
-    this.HyE.aao(paramInt2);
+    this.IZb.acB(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(143324);
   }
   
   public void setExternalListener(b.a parama)
   {
-    this.HyF = parama;
+    this.IZc = parama;
   }
 }
 

@@ -2,27 +2,28 @@ package com.tencent.mm.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 
 public final class af
 {
-  public static void arB()
+  public static void ays()
   {
     AppMethodBeat.i(20321);
-    Cursor localCursor = c.apM().eKR();
+    Cursor localCursor = c.awB().fat();
     if (localCursor == null) {}
     for (int i = 0;; i = localCursor.getCount())
     {
-      ad.i("MicroMsg.HardCodeUpdateTask", "[unstarAllBizContactFor50] size:%s", new Object[] { Integer.valueOf(i) });
+      ac.i("MicroMsg.HardCodeUpdateTask", "[unstarAllBizContactFor50] size:%s", new Object[] { Integer.valueOf(i) });
       if (localCursor.moveToFirst()) {
         do
         {
-          com.tencent.mm.storage.af localaf = new com.tencent.mm.storage.af();
-          localaf.convertFrom(localCursor);
-          localaf.Zw();
-          c.apM().c(localaf.field_username, localaf);
+          ai localai = new ai();
+          localai.convertFrom(localCursor);
+          localai.aar();
+          c.awB().c(localai.field_username, localai);
         } while (localCursor.moveToNext());
       }
       localCursor.close();
@@ -33,7 +34,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.af
  * JD-Core Version:    0.7.0.1
  */

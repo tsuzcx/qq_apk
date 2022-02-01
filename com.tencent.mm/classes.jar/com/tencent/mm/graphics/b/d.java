@@ -2,7 +2,7 @@ package com.tencent.mm.graphics.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,42 +10,42 @@ import java.util.Iterator;
 
 public enum d
 {
-  public WeakReference<Context> fWB;
-  public HashMap<Integer, a> fWC;
-  public com.tencent.e.i.b fWD;
-  public final Object fWE;
+  public WeakReference<Context> gbi;
+  public HashMap<Integer, a> gbj;
+  public com.tencent.e.i.b gbk;
+  public final Object gbl;
   public boolean isRunning;
   
   static
   {
     AppMethodBeat.i(136211);
-    fWA = new d("INSTANCE");
-    fWF = new d[] { fWA };
+    gbh = new d("INSTANCE");
+    gbm = new d[] { gbh };
     AppMethodBeat.o(136211);
   }
   
   private d()
   {
     AppMethodBeat.i(136208);
-    this.fWB = null;
-    this.fWC = new HashMap();
+    this.gbi = null;
+    this.gbj = new HashMap();
     this.isRunning = false;
-    this.fWD = null;
-    this.fWE = new Object();
+    this.gbk = null;
+    this.gbl = new Object();
     AppMethodBeat.o(136208);
   }
   
-  public final b adc()
+  public final b aet()
   {
     AppMethodBeat.i(136209);
-    synchronized (this.fWE)
+    synchronized (this.gbl)
     {
-      if (this.fWC != null)
+      if (this.gbj != null)
       {
-        Object localObject2 = (a)this.fWC.get(Integer.valueOf(2));
+        Object localObject2 = (a)this.gbj.get(Integer.valueOf(2));
         if ((localObject2 != null) && ((localObject2 instanceof b)))
         {
-          ((a)localObject2).acZ();
+          ((a)localObject2).aeq();
           localObject2 = (b)localObject2;
           AppMethodBeat.o(136209);
           return localObject2;
@@ -56,22 +56,22 @@ public enum d
     }
   }
   
-  public final void ade()
+  public final void aeu()
   {
     AppMethodBeat.i(136210);
-    synchronized (this.fWE)
+    synchronized (this.gbl)
     {
       if (!this.isRunning)
       {
         AppMethodBeat.o(136210);
         return;
       }
-      if (this.fWD != null) {
-        this.fWD.cancel();
+      if (this.gbk != null) {
+        this.gbk.cancel();
       }
       this.isRunning = false;
-      if (this.fWC != null) {
-        this.fWC.clear();
+      if (this.gbj != null) {
+        this.gbj.clear();
       }
       AppMethodBeat.o(136210);
       return;

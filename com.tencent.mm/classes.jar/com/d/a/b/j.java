@@ -3,8 +3,8 @@ package com.d.a.b;
 public final class j
   extends i
 {
-  public k bWJ = k.bWO;
-  int bWK;
+  public k bUr = k.bUw;
+  int bUs;
   int mIndex;
   
   public j(k paramk)
@@ -20,21 +20,21 @@ public final class j
   public j(k paramk, long paramLong, int paramInt, n paramn)
   {
     super(paramLong, paramn);
-    this.bWJ = paramk;
-    this.bWK = paramInt;
-  }
-  
-  public final i Aj()
-  {
-    if (this.bWJ == k.bWP) {
-      return this.bWC.bWt.aJ(this.JV);
-    }
-    return this.bWC.bWt.aI(this.JV);
+    this.bUr = paramk;
+    this.bUs = paramInt;
   }
   
   public final String toString()
   {
-    return String.format("%s@0x%08x", new Object[] { this.bWJ.mName, Long.valueOf(this.JV) });
+    return String.format("%s@0x%08x", new Object[] { this.bUr.mName, Long.valueOf(this.KQ) });
+  }
+  
+  public final i zW()
+  {
+    if (this.bUr == k.bUx) {
+      return this.bUk.bUb.aF(this.KQ);
+    }
+    return this.bUk.bUb.aE(this.KQ);
   }
 }
 

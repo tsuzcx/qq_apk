@@ -14,35 +14,35 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 
 public class VoiceSearchEditText
   extends EditText
 {
-  final Drawable GdB;
-  final Drawable GdC;
-  final Drawable GdD;
-  private a GdE;
-  private boolean GdF;
-  private boolean GdG;
-  private boolean GdH;
+  final Drawable HDq;
+  final Drawable HDr;
+  final Drawable HDs;
+  private a HDt;
+  private boolean HDu;
+  private boolean HDv;
+  private boolean HDw;
   private Context context;
-  public String mgy;
-  private View.OnClickListener tOp;
+  public String mIy;
+  private View.OnClickListener uWS;
   
   public VoiceSearchEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142460);
-    this.mgy = "";
-    this.GdB = getResources().getDrawable(2131234523);
-    this.GdC = null;
-    this.GdD = getResources().getDrawable(2131233918);
-    this.GdF = true;
-    this.GdG = false;
-    this.GdH = false;
+    this.mIy = "";
+    this.HDq = getResources().getDrawable(2131234523);
+    this.HDr = null;
+    this.HDs = getResources().getDrawable(2131233918);
+    this.HDu = true;
+    this.HDv = false;
+    this.HDw = false;
     init(paramContext);
     AppMethodBeat.o(142460);
   }
@@ -51,34 +51,34 @@ public class VoiceSearchEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142461);
-    this.mgy = "";
-    this.GdB = getResources().getDrawable(2131234523);
-    this.GdC = null;
-    this.GdD = getResources().getDrawable(2131233918);
-    this.GdF = true;
-    this.GdG = false;
-    this.GdH = false;
+    this.mIy = "";
+    this.HDq = getResources().getDrawable(2131234523);
+    this.HDr = null;
+    this.HDs = getResources().getDrawable(2131233918);
+    this.HDu = true;
+    this.HDv = false;
+    this.HDw = false;
     init(paramContext);
     AppMethodBeat.o(142461);
   }
   
-  private void eTv()
+  private void fjh()
   {
     AppMethodBeat.i(142464);
-    this.GdF = true;
-    if (this.GdG)
+    this.HDu = true;
+    if (this.HDv)
     {
-      setCompoundDrawables(this.GdC, getCompoundDrawables()[1], this.GdB, getCompoundDrawables()[3]);
+      setCompoundDrawables(this.HDr, getCompoundDrawables()[1], this.HDq, getCompoundDrawables()[3]);
       AppMethodBeat.o(142464);
       return;
     }
     if (getText().toString().length() > 0)
     {
-      setCompoundDrawables(this.GdC, getCompoundDrawables()[1], this.GdD, getCompoundDrawables()[3]);
+      setCompoundDrawables(this.HDr, getCompoundDrawables()[1], this.HDs, getCompoundDrawables()[3]);
       AppMethodBeat.o(142464);
       return;
     }
-    setCompoundDrawables(this.GdC, getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
+    setCompoundDrawables(this.HDr, getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
     AppMethodBeat.o(142464);
   }
   
@@ -86,10 +86,10 @@ public class VoiceSearchEditText
   {
     AppMethodBeat.i(142463);
     this.context = paramContext;
-    this.GdG = false;
-    this.GdB.setBounds(0, 0, this.GdB.getIntrinsicWidth(), this.GdB.getIntrinsicHeight());
-    this.GdD.setBounds(0, 0, this.GdD.getIntrinsicWidth(), this.GdD.getIntrinsicHeight());
-    eTv();
+    this.HDv = false;
+    this.HDq.setBounds(0, 0, this.HDq.getIntrinsicWidth(), this.HDq.getIntrinsicHeight());
+    this.HDs.setBounds(0, 0, this.HDs.getIntrinsicWidth(), this.HDs.getIntrinsicHeight());
+    fjh();
     setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -108,11 +108,11 @@ public class VoiceSearchEditText
         }
         VoiceSearchEditText.a(VoiceSearchEditText.this, true);
         if ((VoiceSearchEditText.a(VoiceSearchEditText.this)) && (VoiceSearchEditText.b(VoiceSearchEditText.this)) && (paramAnonymousView.getText().toString().equals(""))) {
-          if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - VoiceSearchEditText.this.GdB.getIntrinsicWidth() - a.fromDPToPix(VoiceSearchEditText.c(paramAnonymousView), 25))
+          if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - VoiceSearchEditText.this.HDq.getIntrinsicWidth() - a.fromDPToPix(VoiceSearchEditText.c(paramAnonymousView), 25))
           {
             if (VoiceSearchEditText.d(VoiceSearchEditText.this) != null)
             {
-              ad.i("MicroMsg.VoiceSearchEditText", "user clicked voice button");
+              ac.i("MicroMsg.VoiceSearchEditText", "user clicked voice button");
               if ((VoiceSearchEditText.this.getContext() instanceof MMActivity)) {
                 ((MMActivity)VoiceSearchEditText.this.getContext()).hideVKB(paramAnonymousView);
               }
@@ -138,7 +138,7 @@ public class VoiceSearchEditText
           return false;
           if (paramAnonymousView.getText().toString().length() > 0)
           {
-            if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - VoiceSearchEditText.this.GdD.getIntrinsicWidth() - a.fromDPToPix(VoiceSearchEditText.c(paramAnonymousView), 25))
+            if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - VoiceSearchEditText.this.HDs.getIntrinsicWidth() - a.fromDPToPix(VoiceSearchEditText.c(paramAnonymousView), 25))
             {
               paramAnonymousView.setText("");
               if (VoiceSearchEditText.e(VoiceSearchEditText.this) != null) {
@@ -179,7 +179,7 @@ public class VoiceSearchEditText
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(142459);
-        ad.d("MicroMsg.VoiceSearchEditText", "onFocusChange hasFocus = [%s], currentFocusState = [%s]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(VoiceSearchEditText.g(VoiceSearchEditText.this)) });
+        ac.d("MicroMsg.VoiceSearchEditText", "onFocusChange hasFocus = [%s], currentFocusState = [%s]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(VoiceSearchEditText.g(VoiceSearchEditText.this)) });
         if ((!paramAnonymousBoolean) && (VoiceSearchEditText.g(VoiceSearchEditText.this)))
         {
           VoiceSearchEditText.f(VoiceSearchEditText.this);
@@ -196,7 +196,7 @@ public class VoiceSearchEditText
       }
     }
     label141:
-    for (this.GdH = true;; this.GdH = false)
+    for (this.HDw = true;; this.HDw = false)
     {
       requestFocus();
       AppMethodBeat.o(142463);
@@ -208,15 +208,15 @@ public class VoiceSearchEditText
   
   public void setOnContentClearListener(a parama)
   {
-    this.GdE = parama;
+    this.HDt = parama;
   }
   
   public void setOnSearchClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(142462);
-    this.tOp = paramOnClickListener;
-    this.GdG = true;
-    eTv();
+    this.uWS = paramOnClickListener;
+    this.HDv = true;
+    fjh();
     AppMethodBeat.o(142462);
   }
   
@@ -224,7 +224,7 @@ public class VoiceSearchEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.VoiceSearchEditText
  * JD-Core Version:    0.7.0.1
  */

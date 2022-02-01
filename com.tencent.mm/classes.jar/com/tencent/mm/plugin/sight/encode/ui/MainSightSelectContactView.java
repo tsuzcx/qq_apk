@@ -18,11 +18,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.ui.contact.n;
 import java.util.ArrayList;
@@ -36,21 +36,21 @@ public class MainSightSelectContactView
   extends FrameLayout
   implements AbsListView.OnScrollListener, d.a, n
 {
-  public MMFragmentActivity lTx;
   public ListView mListView;
-  public int wuU;
-  public d wuV;
-  Animation wuW;
-  public c wuX;
-  private View wuY;
-  public a wuZ;
-  boolean wus = false;
-  public LinearLayout wva;
-  private View wvb;
-  private int wvc = -1;
-  private int wvd = -1;
-  public HashSet<String> wve;
-  public HashSet<String> wvf;
+  public MMFragmentActivity mvz;
+  boolean xFI = false;
+  public int xGk;
+  public d xGl;
+  Animation xGm;
+  public c xGn;
+  private View xGo;
+  public a xGp;
+  public LinearLayout xGq;
+  private View xGr;
+  private int xGs = -1;
+  private int xGt = -1;
+  public HashSet<String> xGu;
+  public HashSet<String> xGv;
   
   public MainSightSelectContactView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -62,7 +62,7 @@ public class MainSightSelectContactView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static boolean LU(int paramInt)
+  public static boolean NU(int paramInt)
   {
     return paramInt == -1;
   }
@@ -70,7 +70,7 @@ public class MainSightSelectContactView
   private void c(List<String> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(28759);
-    if (this.wus)
+    if (this.xFI)
     {
       AppMethodBeat.o(28759);
       return;
@@ -82,22 +82,22 @@ public class MainSightSelectContactView
     }
     if (paramBoolean1)
     {
-      this.wvf.clear();
-      this.wve.clear();
-      c.wuG = true;
-      c.wuH = false;
+      this.xGv.clear();
+      this.xGu.clear();
+      c.xFW = true;
+      c.xFX = false;
     }
-    if (this.wuX != null) {
-      this.wuX.cc(paramList);
+    if (this.xGn != null) {
+      this.xGn.cd(paramList);
     }
     if (paramBoolean2)
     {
-      drg();
+      dFp();
       AppMethodBeat.o(28759);
       return;
     }
-    if (this.wvb != null) {
-      this.mListView.removeFooterView(this.wvb);
+    if (this.xGr != null) {
+      this.mListView.removeFooterView(this.xGr);
     }
     AppMethodBeat.o(28759);
   }
@@ -105,9 +105,9 @@ public class MainSightSelectContactView
   public final boolean a(com.tencent.mm.ui.contact.a.a parama)
   {
     AppMethodBeat.i(28763);
-    if ((parama.GVT) && (parama.contact != null))
+    if ((parama.Iwh) && (parama.contact != null))
     {
-      boolean bool = this.wvf.contains(parama.contact.field_username);
+      boolean bool = this.xGv.contains(parama.contact.field_username);
       AppMethodBeat.o(28763);
       return bool;
     }
@@ -115,7 +115,7 @@ public class MainSightSelectContactView
     return false;
   }
   
-  public final void aa(boolean paramBoolean1, boolean paramBoolean2)
+  public final void ad(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(28760);
     ArrayList localArrayList = new ArrayList();
@@ -124,7 +124,7 @@ public class MainSightSelectContactView
     Object localObject = getInitData();
     if (paramBoolean1)
     {
-      localArrayList.addAll(this.wvf);
+      localArrayList.addAll(this.xGv);
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -142,9 +142,9 @@ public class MainSightSelectContactView
   public final boolean b(com.tencent.mm.ui.contact.a.a parama)
   {
     AppMethodBeat.i(28762);
-    if ((parama.GVT) && (parama.contact != null))
+    if ((parama.Iwh) && (parama.contact != null))
     {
-      boolean bool = this.wve.contains(parama.contact.field_username);
+      boolean bool = this.xGu.contains(parama.contact.field_username);
       AppMethodBeat.o(28762);
       return bool;
     }
@@ -152,45 +152,45 @@ public class MainSightSelectContactView
     return false;
   }
   
-  public final void dre()
+  public final void dFn()
   {
     AppMethodBeat.i(28757);
-    if (this.wva == null)
+    if (this.xGq == null)
     {
       AppMethodBeat.o(28757);
       return;
     }
-    this.wva.getChildAt(0).setVisibility(8);
-    this.wuY.setVisibility(0);
-    List localList = this.wuX.wuE;
+    this.xGq.getChildAt(0).setVisibility(8);
+    this.xGo.setVisibility(0);
+    List localList = this.xGn.xFU;
     localList.remove("@search.tencent");
     localList.remove("@sns.tencent");
     localList.remove("@draft.tencent");
     c(localList, false, true);
-    this.wuZ.dqU();
-    if (!this.wuZ.Ny()) {
-      this.wuZ.dqV();
+    this.xGp.dFd();
+    if (!this.xGp.Nw()) {
+      this.xGp.dFe();
     }
-    this.wuZ.dqW();
+    this.xGp.dFf();
     AppMethodBeat.o(28757);
   }
   
-  public final void drf()
+  public final void dFo()
   {
     AppMethodBeat.i(28756);
-    if (this.wva == null)
+    if (this.xGq == null)
     {
       AppMethodBeat.o(28756);
       return;
     }
-    this.wva.getChildAt(0).setVisibility(0);
-    this.wuY.setVisibility(8);
-    aa(true, false);
-    this.wuZ.dqT();
+    this.xGq.getChildAt(0).setVisibility(0);
+    this.xGo.setVisibility(8);
+    ad(true, false);
+    this.xGp.dFc();
     AppMethodBeat.o(28756);
   }
   
-  public final void drg()
+  public final void dFp()
   {
     AppMethodBeat.i(28758);
     this.mListView.post(new Runnable()
@@ -242,20 +242,20 @@ public class MainSightSelectContactView
     AppMethodBeat.o(28758);
   }
   
-  public final boolean drh()
+  public final boolean dFq()
   {
     AppMethodBeat.i(28765);
-    if (this.wvf == null)
+    if (this.xGv == null)
     {
       AppMethodBeat.o(28765);
       return true;
     }
-    boolean bool = this.wvf.isEmpty();
+    boolean bool = this.xGv.isEmpty();
     AppMethodBeat.o(28765);
     return bool;
   }
   
-  public final void fj(List<String> paramList)
+  public final void fr(List<String> paramList)
   {
     AppMethodBeat.i(28767);
     c(paramList, false, false);
@@ -264,7 +264,7 @@ public class MainSightSelectContactView
   
   public Activity getActivity()
   {
-    return this.lTx;
+    return this.mvz;
   }
   
   public ListView getContentLV()
@@ -276,9 +276,9 @@ public class MainSightSelectContactView
   {
     AppMethodBeat.i(28761);
     ArrayList localArrayList = new ArrayList();
-    az.arV();
-    List localList = com.tencent.mm.model.c.apR().eLj();
-    localList.remove(u.aqG());
+    az.ayM();
+    List localList = com.tencent.mm.model.c.awG().faL();
+    localList.remove(u.axw());
     localArrayList.addAll(localList);
     AppMethodBeat.o(28761);
     return localArrayList;
@@ -293,7 +293,7 @@ public class MainSightSelectContactView
   {
     AppMethodBeat.i(28764);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(this.wvf);
+    localLinkedList.addAll(this.xGv);
     AppMethodBeat.o(28764);
     return localLinkedList;
   }
@@ -301,24 +301,24 @@ public class MainSightSelectContactView
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(28769);
-    if ((this.wva == null) || (paramAbsListView == null) || (this.wva.getHeight() <= 0) || (this.lTx == null))
+    if ((this.xGq == null) || (paramAbsListView == null) || (this.xGq.getHeight() <= 0) || (this.mvz == null))
     {
       AppMethodBeat.o(28769);
       return;
     }
-    paramInt1 = this.wva.getHeight() - this.lTx.getSupportActionBar().getHeight();
-    paramInt2 = -this.wva.getTop();
+    paramInt1 = this.xGq.getHeight() - this.mvz.getSupportActionBar().getHeight();
+    paramInt2 = -this.xGq.getTop();
     if (paramInt2 < 0)
     {
       AppMethodBeat.o(28769);
       return;
     }
     float f = paramInt2 / paramInt1;
-    this.wuZ.setCameraShadowAlpha(f);
-    if ((this.wva.getTop() < 0) && (this.wva.getTop() <= -paramInt1)) {}
+    this.xGp.setCameraShadowAlpha(f);
+    if ((this.xGq.getTop() < 0) && (this.xGq.getTop() <= -paramInt1)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.wuZ.pD(bool);
+      this.xGp.qC(bool);
       AppMethodBeat.o(28769);
       return;
     }
@@ -328,15 +328,15 @@ public class MainSightSelectContactView
   {
     AppMethodBeat.i(28768);
     if (paramInt == 1) {
-      bt.hideVKB(paramAbsListView);
+      bs.hideVKB(paramAbsListView);
     }
     AppMethodBeat.o(28768);
   }
   
-  final String qa(int paramInt)
+  final String qN(int paramInt)
   {
     AppMethodBeat.i(28766);
-    Object localObject = this.wuX.ZC(paramInt);
+    Object localObject = this.xGn.abQ(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(28766);
@@ -348,43 +348,43 @@ public class MainSightSelectContactView
       AppMethodBeat.o(28766);
       return null;
     }
-    localObject = ((au)localObject).field_username;
+    localObject = ((av)localObject).field_username;
     AppMethodBeat.o(28766);
     return localObject;
   }
   
   public void setEmptyBgView(View paramView)
   {
-    this.wuY = paramView;
+    this.xGo = paramView;
   }
   
   public void setIsMultiSelect(boolean paramBoolean)
   {
-    this.wuX.wuF = paramBoolean;
+    this.xGn.xFV = paramBoolean;
   }
   
   public void setMainSightContentView(a parama)
   {
-    this.wuZ = parama;
+    this.xGp = parama;
   }
   
   public void setSearchView(View paramView)
   {
     AppMethodBeat.i(28755);
-    d locald = this.wuV;
-    locald.wuM = paramView;
-    locald.rLn = ((EditText)paramView.findViewById(2131299306));
-    locald.wuL = ((TextView)paramView.findViewById(2131304397));
-    locald.rLn.setOnFocusChangeListener(locald);
-    locald.rLn.addTextChangedListener(locald);
-    locald.wuL.setOnClickListener(locald);
-    locald.wuO = ((InputMethodManager)paramView.getContext().getSystemService("input_method"));
+    d locald = this.xGl;
+    locald.xGc = paramView;
+    locald.sTc = ((EditText)paramView.findViewById(2131299306));
+    locald.xGb = ((TextView)paramView.findViewById(2131304397));
+    locald.sTc.setOnFocusChangeListener(locald);
+    locald.sTc.addTextChangedListener(locald);
+    locald.xGb.setOnClickListener(locald);
+    locald.xGe = ((InputMethodManager)paramView.getContext().getSystemService("input_method"));
     AppMethodBeat.o(28755);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.MainSightSelectContactView
  * JD-Core Version:    0.7.0.1
  */

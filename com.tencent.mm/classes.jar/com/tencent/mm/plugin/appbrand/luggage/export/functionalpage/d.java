@@ -9,9 +9,9 @@ public class d
   extends com.tencent.mm.plugin.appbrand.service.c
   implements m
 {
-  public final void Ca() {}
+  public final void BE() {}
   
-  public final i DI()
+  public final i Dl()
   {
     AppMethodBeat.i(47501);
     com.tencent.mm.plugin.appbrand.jsruntime.c localc = new com.tencent.mm.plugin.appbrand.jsruntime.c();
@@ -24,13 +24,13 @@ public class d
   public final void h(int paramInt, String paramString)
   {
     AppMethodBeat.i(47502);
-    ((j)super.getRuntime()).kPA.a(this, paramInt, paramString);
+    ((j)super.getRuntime()).lqZ.a(this, paramInt, paramString);
     AppMethodBeat.o(47502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.d
  * JD-Core Version:    0.7.0.1
  */

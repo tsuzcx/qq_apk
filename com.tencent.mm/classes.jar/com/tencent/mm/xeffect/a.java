@@ -5,33 +5,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public boolean LEs;
-  public final Rect LEt;
-  public int dwp;
+  public boolean ARq;
+  public boolean JHZ;
+  public final Rect JIa;
+  public int duc;
   public int height;
   public int textureId;
   public int width;
-  public boolean zyz;
   
   public a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    AppMethodBeat.i(201290);
-    this.zyz = false;
-    this.dwp = 0;
-    this.LEs = false;
-    this.LEt = new Rect();
+    AppMethodBeat.i(197158);
+    this.ARq = false;
+    this.duc = 0;
+    this.JHZ = false;
+    this.JIa = new Rect();
     this.textureId = paramInt1;
     this.width = paramInt2;
     this.height = paramInt3;
-    this.zyz = paramBoolean;
-    this.LEt.right = paramInt2;
-    this.LEt.bottom = paramInt3;
-    AppMethodBeat.o(201290);
+    this.ARq = paramBoolean;
+    this.JIa.right = paramInt2;
+    this.JIa.bottom = paramInt3;
+    AppMethodBeat.o(197158);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.xeffect.a
  * JD-Core Version:    0.7.0.1
  */

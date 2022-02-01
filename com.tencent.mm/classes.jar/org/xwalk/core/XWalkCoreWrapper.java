@@ -8,9 +8,8 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.a;
-import com.tencent.xweb.util.g;
 import com.tencent.xweb.util.h;
-import com.tencent.xweb.xwalk.updater.Scheduler;
+import com.tencent.xweb.xwalk.updater.c;
 import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -132,7 +131,7 @@ public class XWalkCoreWrapper
           bool = ((Boolean)localReflectMethod.invoke(new Object[] { this.mBridgeContext, str1 })).booleanValue();
           if (!bool)
           {
-            g.xs(191L);
+            com.tencent.xweb.util.g.Cf(191L);
             Log.e("XWalkLib", "Mismatch of CPU architecture current device abi is " + XWalkEnvironment.getRuntimeAbi() + ", runtime abi is " + XWalkEnvironment.getRuntimeAbi() + ", core detail is " + XWalkEnvironment.getAvailableVersionDetail());
             this.mCoreStatus = 6;
             AppMethodBeat.o(154673);
@@ -155,7 +154,7 @@ public class XWalkCoreWrapper
       {
         Log.e("XWalkLib", localRuntimeException.getLocalizedMessage());
         Log.e("XWalkLib", "current device abi is " + XWalkEnvironment.getRuntimeAbi() + ", runtime abi is " + XWalkEnvironment.getRuntimeAbi() + ", core detail is " + XWalkEnvironment.getAvailableVersionDetail());
-        g.xs(192L);
+        com.tencent.xweb.util.g.Cf(192L);
         if ((localRuntimeException.getCause() instanceof UnsatisfiedLinkError))
         {
           this.mCoreStatus = 6;
@@ -164,16 +163,16 @@ public class XWalkCoreWrapper
           if (!TextUtils.isEmpty(str2))
           {
             if (str2.contains("is 64-bit instead of 32-bit")) {
-              g.xs(193L);
+              com.tencent.xweb.util.g.Cf(193L);
             }
           }
           else {
             try
             {
-              if (!"true".equalsIgnoreCase(a.aOM("dis_abandon_when_32runtime_use_64so")))
+              if (!"true".equalsIgnoreCase(a.aUy("dis_abandon_when_32runtime_use_64so")))
               {
                 XWalkEnvironment.setAvailableVersion(-1, "", XWalkEnvironment.getRuntimeAbi());
-                Scheduler.fts().fty();
+                c.fLZ().fMh();
               }
               AppMethodBeat.o(154673);
               return false;
@@ -186,14 +185,14 @@ public class XWalkCoreWrapper
           }
           if (localThrowable1.contains("is 32-bit instead of 64-bit"))
           {
-            g.xs(194L);
+            com.tencent.xweb.util.g.Cf(194L);
             try
             {
-              if ("true".equalsIgnoreCase(a.aOM("dis_abandon_when_64runtime_use_32so"))) {
+              if ("true".equalsIgnoreCase(a.aUy("dis_abandon_when_64runtime_use_32so"))) {
                 continue;
               }
               XWalkEnvironment.setAvailableVersion(-1, "", XWalkEnvironment.getRuntimeAbi());
-              Scheduler.fts().fty();
+              c.fLZ().fMh();
             }
             catch (Throwable localThrowable2)
             {
@@ -201,7 +200,7 @@ public class XWalkCoreWrapper
             }
             continue;
           }
-          g.xs(195L);
+          com.tencent.xweb.util.g.Cf(195L);
           continue;
         }
         this.mCoreStatus = 5;
@@ -318,7 +317,7 @@ public class XWalkCoreWrapper
         AppMethodBeat.o(154671);
         return null;
       }
-      mStandAloneClassLoader = h.ba(str, XWalkEnvironment.getOptimizedDexDir(i), (String)localObject);
+      mStandAloneClassLoader = h.bf(str, XWalkEnvironment.getOptimizedDexDir(i), (String)localObject);
       localObject = mStandAloneClassLoader;
       AppMethodBeat.o(154671);
       return localObject;
@@ -521,7 +520,7 @@ public class XWalkCoreWrapper
     catch (RuntimeException paramClassLoader)
     {
       Log.e("XWalkLib", "invokeNativeChannel error:" + paramClassLoader.getLocalizedMessage());
-      g.fsL();
+      com.tencent.xweb.util.g.fLo();
       AppMethodBeat.o(154667);
       return false;
     }
@@ -530,7 +529,7 @@ public class XWalkCoreWrapper
       for (;;)
       {
         Log.e("XWalkLib", "invokeRuntimeChannel error:" + paramClassLoader.getLocalizedMessage());
-        g.fsM();
+        com.tencent.xweb.util.g.fLp();
       }
     }
     catch (Exception paramClassLoader)
@@ -538,7 +537,7 @@ public class XWalkCoreWrapper
       for (;;)
       {
         Log.e("XWalkLib", "invokeRuntimeChannel error:" + paramClassLoader.getLocalizedMessage());
-        g.fsN();
+        com.tencent.xweb.util.g.fLq();
       }
     }
   }
@@ -596,7 +595,7 @@ public class XWalkCoreWrapper
     catch (RuntimeException paramClassLoader)
     {
       Log.e("XWalkLib", "invokeRuntimeChannel error:" + paramClassLoader.getLocalizedMessage());
-      g.fsL();
+      com.tencent.xweb.util.g.fLo();
       AppMethodBeat.o(154666);
       return null;
     }
@@ -605,7 +604,7 @@ public class XWalkCoreWrapper
       for (;;)
       {
         Log.e("XWalkLib", "invokeRuntimeChannel error:" + paramClassLoader.getLocalizedMessage());
-        g.fsM();
+        com.tencent.xweb.util.g.fLp();
       }
     }
     catch (Exception paramClassLoader)
@@ -613,7 +612,7 @@ public class XWalkCoreWrapper
       for (;;)
       {
         Log.e("XWalkLib", "invokeRuntimeChannel error:" + paramClassLoader.getLocalizedMessage());
-        g.fsN();
+        com.tencent.xweb.util.g.fLq();
       }
     }
   }
@@ -824,7 +823,7 @@ public class XWalkCoreWrapper
       AppMethodBeat.o(183749);
       return null;
     }
-    this.sBridgeLoader = h.ba(str, XWalkEnvironment.getOptimizedDexDir(this.mApkVersion), (String)localObject);
+    this.sBridgeLoader = h.bf(str, XWalkEnvironment.getOptimizedDexDir(this.mApkVersion), (String)localObject);
     localObject = this.sBridgeLoader;
     AppMethodBeat.o(183749);
     return localObject;
@@ -923,11 +922,11 @@ public class XWalkCoreWrapper
             AppMethodBeat.o(154644);
             return;
           }
-          g.r(Long.parseLong((String)paramAnonymousArrayOfObject[0]), Long.parseLong((String)paramAnonymousArrayOfObject[1]), Integer.parseInt((String)paramAnonymousArrayOfObject[2]));
+          com.tencent.xweb.util.g.r(Long.parseLong((String)paramAnonymousArrayOfObject[0]), Long.parseLong((String)paramAnonymousArrayOfObject[1]), Integer.parseInt((String)paramAnonymousArrayOfObject[2]));
           AppMethodBeat.o(154644);
           return;
         }
-        g.cR(Integer.parseInt((String)paramAnonymousArrayOfObject[0]), (String)paramAnonymousArrayOfObject[1]);
+        com.tencent.xweb.util.g.cU(Integer.parseInt((String)paramAnonymousArrayOfObject[0]), (String)paramAnonymousArrayOfObject[1]);
         AppMethodBeat.o(154644);
       }
     };

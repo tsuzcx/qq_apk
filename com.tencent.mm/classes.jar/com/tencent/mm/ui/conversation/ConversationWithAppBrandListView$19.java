@@ -2,7 +2,7 @@ package com.tencent.mm.ui.conversation;
 
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.ap;
 
 final class ConversationWithAppBrandListView$19
@@ -13,8 +13,8 @@ final class ConversationWithAppBrandListView$19
   public final void run()
   {
     AppMethodBeat.i(38415);
-    this.Hdo.topMargin = ap.dL(this.Hdk.getContext());
-    ad.i("MicroMsg.ConversationWithAppBrandListView", "[initLayoutParams]2 ActionBar height:%s", new Object[] { Integer.valueOf(this.Hdo.topMargin) });
+    this.IDB.topMargin = ap.dT(this.IDx.getContext());
+    ac.i("MicroMsg.ConversationWithAppBrandListView", "[initLayoutParams]2 ActionBar height:%s", new Object[] { Integer.valueOf(this.IDB.topMargin) });
     AppMethodBeat.o(38415);
   }
 }

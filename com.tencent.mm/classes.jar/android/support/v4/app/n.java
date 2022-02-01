@@ -72,7 +72,7 @@ public abstract class n
     }
   }
   
-  static ArrayList<String> b(ArrayList<View> paramArrayList)
+  static ArrayList<String> c(ArrayList<View> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayList.size();
@@ -87,7 +87,7 @@ public abstract class n
     return localArrayList;
   }
   
-  public static boolean h(List paramList)
+  public static boolean g(List paramList)
   {
     return (paramList == null) || (paramList.isEmpty());
   }
@@ -231,11 +231,11 @@ public abstract class n
   
   public abstract void c(Object paramObject, View paramView);
   
-  public abstract boolean f(Object paramObject);
+  public abstract boolean h(Object paramObject);
   
-  public abstract Object g(Object paramObject);
+  public abstract Object i(Object paramObject);
   
-  public abstract Object h(Object paramObject);
+  public abstract Object j(Object paramObject);
 }
 
 

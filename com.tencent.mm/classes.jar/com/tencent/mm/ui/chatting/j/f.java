@@ -7,35 +7,38 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.aw.o;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.av.o;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.aj;
 import com.tencent.mm.model.ar.a;
 import com.tencent.mm.model.ar.b;
 import com.tencent.mm.model.az;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.fav.ui.m;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.chatting.a.c.a;
 import com.tencent.mm.ui.chatting.a.c.b;
@@ -50,9 +53,9 @@ import java.util.LinkedList;
 public final class f
   extends b
 {
-  int GFG = 0;
-  int fyi = -1;
-  private int qkv = 0;
+  int IfC = 0;
+  int fBP = -1;
+  private int qSX = 0;
   
   public f(Context paramContext)
   {
@@ -69,7 +72,7 @@ public final class f
     {
       AppMethodBeat.o(36565);
       return null;
-      paramString = com.tencent.mm.pluginsdk.model.app.h.j(paramString, true, false);
+      paramString = com.tencent.mm.pluginsdk.model.app.h.k(paramString, true, false);
       if (paramString == null) {
         paramString = null;
       } else {
@@ -84,7 +87,7 @@ public final class f
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.MusicHistoryListPresenter", paramContext, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MusicHistoryListPresenter", paramContext, "", new Object[0]);
       AppMethodBeat.o(36565);
     }
     return null;
@@ -94,9 +97,9 @@ public final class f
   {
     AppMethodBeat.i(36563);
     b localb = (b)parama;
-    a locala = (a)YJ(paramInt);
-    localb.fwS.setText(m.h(this.mContext, locala.timestamp));
-    Bitmap localBitmap = o.ayF().a(locala.imagePath, com.tencent.mm.cd.a.getDensity(this.mContext), false);
+    a locala = (a)aaU(paramInt);
+    localb.fAz.setText(m.h(this.mContext, locala.timestamp));
+    Bitmap localBitmap = o.aFx().a(locala.imagePath, com.tencent.mm.cc.a.getDensity(this.mContext), false);
     if (localBitmap != null)
     {
       parama = localBitmap;
@@ -104,7 +107,7 @@ public final class f
     }
     else
     {
-      localBitmap = com.tencent.mm.pluginsdk.model.app.h.c(locala.appId, 1, com.tencent.mm.cd.a.getDensity(this.mContext));
+      localBitmap = com.tencent.mm.pluginsdk.model.app.h.c(locala.appId, 1, com.tencent.mm.cc.a.getDensity(this.mContext));
       if (localBitmap != null)
       {
         parama = localBitmap;
@@ -112,30 +115,30 @@ public final class f
       }
       else
       {
-        localb.kXS.setImageResource(2131689584);
+        localb.lzC.setImageResource(2131689584);
       }
     }
     for (;;)
     {
-      localb.qkL.setText(bt.by(locala.source, ""));
-      b.d(localb.qkL, this.GFz.Gsj);
+      localb.qTn.setText(bs.bG(locala.source, ""));
+      b.d(localb.qTn, this.Ifv.HSb);
       AppMethodBeat.o(36563);
       return;
-      localb.kXS.setImageBitmap(parama);
+      localb.lzC.setImageBitmap(parama);
     }
   }
   
-  protected final void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, long paramLong1, long paramLong2, bl parambl)
+  protected final void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, long paramLong1, long paramLong2, bo parambo)
   {
     AppMethodBeat.i(36564);
     if (((paramString1 == null) || (paramString1.length() == 0)) && ((paramString2 == null) || (paramString2.length() == 0)))
     {
-      ad.e("MicroMsg.MusicHistoryListPresenter", "url, lowUrl both are empty");
+      ac.e("MicroMsg.MusicHistoryListPresenter", "url, lowUrl both are empty");
       AppMethodBeat.o(36564);
       return;
     }
     String str;
-    if (ay.isMobile(this.mContext))
+    if (ax.isMobile(this.mContext))
     {
       str = paramString1;
       if (paramString2 != null)
@@ -154,17 +157,17 @@ public final class f
       paramString1.putExtra("version_name", paramString3);
       paramString1.putExtra("version_code", paramInt);
       paramString1.putExtra("usePlugin", true);
-      paramString1.putExtra("geta8key_username", this.fwd);
+      paramString1.putExtra("geta8key_username", this.fzK);
       paramString1.putExtra("KPublisherId", "msg_" + Long.toString(paramLong2));
       paramString1.putExtra("KAppId", paramString4);
-      paramString2 = b(parambl, com.tencent.mm.model.w.pF(this.fwd));
+      paramString2 = b(parambo, w.sQ(this.fzK));
       paramString1.putExtra("pre_username", paramString2);
       paramString1.putExtra("prePublishId", "msg_" + Long.toString(paramLong2));
-      if (parambl != null) {
+      if (parambo != null) {
         paramString1.putExtra("preUsername", paramString2);
       }
-      paramString1.putExtra("preChatName", this.fwd);
-      paramString1.putExtra("preChatTYPE", x.aw(paramString2, this.fwd));
+      paramString1.putExtra("preChatName", this.fzK);
+      paramString1.putExtra("preChatTYPE", com.tencent.mm.model.x.aE(paramString2, this.fzK));
       paramString1.putExtra("preMsgIndex", 0);
       d.b(this.mContext, "webview", ".ui.tools.WebViewUI", paramString1);
       AppMethodBeat.o(36564);
@@ -182,7 +185,7 @@ public final class f
     }
   }
   
-  public final String aHv()
+  public final String aOk()
   {
     AppMethodBeat.i(36559);
     String str = this.mContext.getString(2131755256);
@@ -190,31 +193,31 @@ public final class f
     return str;
   }
   
-  public final void eZk()
+  public final void foZ()
   {
     AppMethodBeat.i(36558);
-    this.GFy.eZo();
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afE().ax(new Runnable()
+    this.Ifu.fpd();
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agU().az(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(36551);
         LinkedList localLinkedList = new LinkedList();
-        az.arV();
-        Cursor localCursor = com.tencent.mm.model.c.apO().dG(f.this.fwd, f.this.fyi);
+        az.ayM();
+        Cursor localCursor = com.tencent.mm.model.c.awD().dN(f.this.fzK, f.this.fBP);
         if (localCursor == null)
         {
-          ad.e("MicroMsg.MusicHistoryListPresenter", "[loadData] cursor is null!");
+          ac.e("MicroMsg.MusicHistoryListPresenter", "[loadData] cursor is null!");
           AppMethodBeat.o(36551);
           return;
         }
-        com.tencent.mm.storage.w localw;
+        com.tencent.mm.storage.x localx;
         long l1;
-        if (com.tencent.mm.model.w.pF(f.this.fwd))
+        if (w.sQ(f.this.fzK))
         {
-          az.arV();
-          localw = com.tencent.mm.model.c.apV().tH(f.this.fwd);
+          az.ayM();
+          localx = com.tencent.mm.model.c.awK().xN(f.this.fzK);
           l1 = 0L;
         }
         for (;;)
@@ -223,13 +226,13 @@ public final class f
           {
             if (localCursor.moveToNext())
             {
-              bl localbl = new bl();
-              localbl.convertFrom(localCursor);
-              Object localObject1 = localbl.field_content;
+              bo localbo = new bo();
+              localbo.convertFrom(localCursor);
+              Object localObject1 = localbo.field_content;
               if (localObject1 == null) {
                 continue;
               }
-              k.b localb = k.b.rx((String)localObject1);
+              k.b localb = k.b.vA((String)localObject1);
               if (localb == null) {
                 continue;
               }
@@ -240,34 +243,34 @@ public final class f
               if (i == 0) {
                 continue;
               }
-              localObject1 = new Date(localbl.field_createTime);
-              long l2 = com.tencent.mm.ui.gridviewheaders.a.fcX().b((Date)localObject1);
+              localObject1 = new Date(localbo.field_createTime);
+              long l2 = com.tencent.mm.ui.gridviewheaders.a.fsS().b((Date)localObject1);
               if (l1 != l2)
               {
-                localLinkedList.add(new c.c(localbl.field_createTime));
+                localLinkedList.add(new c.c(localbo.field_createTime));
                 localObject1 = f.this;
-                ((f)localObject1).GFG += 1;
+                ((f)localObject1).IfC += 1;
               }
-              localObject1 = f.b(localbl, com.tencent.mm.model.w.pF(f.this.fwd));
-              af localaf1 = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY((String)localObject1);
+              localObject1 = f.b(localbo, w.sQ(f.this.fzK));
+              ai localai1 = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt((String)localObject1);
               Object localObject3 = "";
-              if (localw != null) {
-                localObject3 = localw.sh((String)localObject1);
+              if (localx != null) {
+                localObject3 = localx.wk((String)localObject1);
               }
-              i = e.Yv(localb.gHf);
-              localObject1 = com.tencent.mm.plugin.fav.a.b.getAppName(f.this.mContext, localb.dxz);
-              az.arV();
-              af localaf2 = com.tencent.mm.model.c.apM().aHY(localb.dxz);
-              if ((localaf2 == null) || (!localaf2.field_username.equals(localb.dxz)))
+              i = e.acR(localb.hhG);
+              localObject1 = com.tencent.mm.plugin.fav.a.b.getAppName(f.this.mContext, localb.dvl);
+              az.ayM();
+              ai localai2 = com.tencent.mm.model.c.awB().aNt(localb.dvl);
+              if ((localai2 == null) || (!localai2.field_username.equals(localb.dvl)))
               {
-                ar.a.gMW.a(localb.dxz, "", null);
-                localObject3 = new f.a(f.this, localbl.field_createTime, localb.type, localb.title, localbl.field_msgId, localaf1.field_username, localaf1.ZW(), localaf1.field_conRemark, (String)localObject3);
-                if (bt.isNullOrNil((String)localObject1))
+                ar.a.hnw.a(localb.dvl, "", null);
+                localObject3 = new f.a(f.this, localbo.field_createTime, localb.type, localb.title, localbo.field_msgId, localai1.field_username, localai1.aaR(), localai1.field_conRemark, (String)localObject3);
+                if (bs.isNullOrNil((String)localObject1))
                 {
                   localObject1 = localb.description;
                   ((f.a)localObject3).source = ((String)localObject1);
                   ((f.a)localObject3).appId = localb.appId;
-                  ((f.a)localObject3).imagePath = localbl.field_imgPath;
+                  ((f.a)localObject3).imagePath = localbo.field_imgPath;
                   ((f.a)localObject3).iconRes = i;
                   localLinkedList.add(localObject3);
                   l1 = l2;
@@ -275,22 +278,22 @@ public final class f
               }
               else
               {
-                localObject1 = localaf2.ZX();
+                localObject1 = localai2.aaS();
                 continue;
               }
               continue;
             }
             localCursor.close();
-            f.this.hIH.addAll(localLinkedList);
-            f.this.GFA = f.this.hIH;
+            f.this.ijj.addAll(localLinkedList);
+            f.this.Ifw = f.this.ijj;
             localLinkedList.clear();
-            aq.f(new Runnable()
+            ap.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(36550);
-                if (f.this.GFy != null) {
-                  f.this.GFy.A(f.1.this.nMD, f.this.hIH.size());
+                if (f.this.Ifu != null) {
+                  f.this.Ifu.B(f.1.this.opD, f.this.ijj.size());
                 }
                 AppMethodBeat.o(36550);
               }
@@ -303,7 +306,7 @@ public final class f
             localCursor.close();
             AppMethodBeat.o(36551);
           }
-          localw = null;
+          localx = null;
           break;
           label571:
           int i = 0;
@@ -313,7 +316,7 @@ public final class f
     AppMethodBeat.o(36558);
   }
   
-  public final c.e eZl()
+  public final c.e fpa()
   {
     AppMethodBeat.i(36561);
     c.e local2 = new c.e()
@@ -321,11 +324,11 @@ public final class f
       public final void a(View paramAnonymousView, int paramAnonymousInt, c.b paramAnonymousb)
       {
         AppMethodBeat.i(36554);
-        az.arV();
-        paramAnonymousb = com.tencent.mm.model.c.apO().rm(paramAnonymousb.msgId);
-        k.b localb = k.b.rx(paramAnonymousb.field_content);
-        String str1 = q.O(localb.url, "message");
-        String str2 = q.O(localb.gHd, "message");
+        az.ayM();
+        paramAnonymousb = com.tencent.mm.model.c.awD().vP(paramAnonymousb.msgId);
+        k.b localb = k.b.vA(paramAnonymousb.field_content);
+        String str1 = q.P(localb.url, "message");
+        String str2 = q.P(localb.hhE, "message");
         PackageInfo localPackageInfo = f.getPackageInfo(f.this.mContext, localb.appId);
         f localf = f.this;
         if (localPackageInfo == null)
@@ -349,15 +352,25 @@ public final class f
       public final void b(View paramAnonymousView, int paramAnonymousInt, final c.b paramAnonymousb)
       {
         AppMethodBeat.i(36555);
-        ad.i("MicroMsg.MusicHistoryListPresenter", "[onItemLongClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        new l(paramAnonymousView.getContext()).b(paramAnonymousView, new f.2.1(this), new n.d()
+        ac.i("MicroMsg.MusicHistoryListPresenter", "[onItemLongClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        new l(paramAnonymousView.getContext()).b(paramAnonymousView, new View.OnCreateContextMenuListener()new n.d
+        {
+          public final void onCreateContextMenu(ContextMenu paramAnonymous2ContextMenu, View paramAnonymous2View, ContextMenu.ContextMenuInfo paramAnonymous2ContextMenuInfo)
+          {
+            AppMethodBeat.i(36552);
+            paramAnonymous2ContextMenu.add(0, 0, 0, paramAnonymous2View.getContext().getString(2131762566));
+            paramAnonymous2ContextMenu.add(0, 1, 0, paramAnonymous2View.getContext().getString(2131757157));
+            paramAnonymous2ContextMenu.add(0, 2, 0, paramAnonymous2View.getContext().getString(2131757221));
+            AppMethodBeat.o(36552);
+          }
+        }, new n.d()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
             AppMethodBeat.i(36553);
-            az.arV();
-            bl localbl = com.tencent.mm.model.c.apO().rm(paramAnonymousb.msgId);
-            f.this.d(paramAnonymous2MenuItem.getItemId(), localbl);
+            az.ayM();
+            bo localbo = com.tencent.mm.model.c.awD().vP(paramAnonymousb.msgId);
+            f.this.d(paramAnonymous2MenuItem.getItemId(), localbo);
             AppMethodBeat.o(36553);
           }
         });
@@ -368,7 +381,7 @@ public final class f
     return local2;
   }
   
-  public final String eZn()
+  public final String fpc()
   {
     AppMethodBeat.i(36560);
     String str = this.mContext.getString(2131755256);
@@ -381,7 +394,7 @@ public final class f
     return 3;
   }
   
-  public final RecyclerView.v y(ViewGroup paramViewGroup)
+  public final RecyclerView.w z(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(36562);
     paramViewGroup = new b(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495821, paramViewGroup, false));
@@ -402,26 +415,26 @@ public final class f
       super(paramInt, paramString1, paramLong2, paramString2, paramString3, paramString4, paramString5);
     }
     
-    public final boolean aKD(String paramString)
+    public final boolean aQg(String paramString)
     {
       AppMethodBeat.i(36556);
       if (paramString != null)
       {
         paramString = paramString.toLowerCase();
-        if (!aKE(paramString))
+        if (!aQh(paramString))
         {
-          if ((!bt.isNullOrNil(this.source)) && (lq(paramString, this.source.toLowerCase())))
+          if ((!bs.isNullOrNil(this.source)) && (lN(paramString, this.source.toLowerCase())))
           {
             AppMethodBeat.o(36556);
             return true;
           }
         }
-        else if ((!bt.isNullOrNil(this.source)) && (this.source.toLowerCase().contains(paramString)))
+        else if ((!bs.isNullOrNil(this.source)) && (this.source.toLowerCase().contains(paramString)))
         {
           AppMethodBeat.o(36556);
           return true;
         }
-        boolean bool = super.aKD(paramString);
+        boolean bool = super.aQg(paramString);
         AppMethodBeat.o(36556);
         return bool;
       }
@@ -438,29 +451,29 @@ public final class f
   final class b
     extends c.a
   {
-    TextView hJe;
-    ImageView kXS;
-    TextView qkL;
-    ImageView qkS;
+    TextView ijE;
+    ImageView lzC;
+    TextView qTn;
+    ImageView qTu;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(36557);
-      this.kXS = ((ImageView)paramView.findViewById(2131299794));
-      this.hJe = ((TextView)paramView.findViewById(2131299778));
-      this.hJe.setVisibility(8);
-      this.qkL = ((TextView)paramView.findViewById(2131299825));
-      this.qkS = ((ImageView)paramView.findViewById(2131299798));
-      this.qkS.setImageResource(2131233395);
-      this.qkS.setVisibility(0);
+      this.lzC = ((ImageView)paramView.findViewById(2131299794));
+      this.ijE = ((TextView)paramView.findViewById(2131299778));
+      this.ijE.setVisibility(8);
+      this.qTn = ((TextView)paramView.findViewById(2131299825));
+      this.qTu = ((ImageView)paramView.findViewById(2131299798));
+      this.qTu.setImageResource(2131233395);
+      this.qTu.setVisibility(0);
       AppMethodBeat.o(36557);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.j.f
  * JD-Core Version:    0.7.0.1
  */

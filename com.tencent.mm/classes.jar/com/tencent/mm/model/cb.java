@@ -1,46 +1,38 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import junit.framework.Assert;
 
 public final class cb
 {
-  private a gPs;
-  private long gPt;
-  private long gPu;
-  private String gPv;
-  private int gPw;
+  private a hpS;
+  private long hpT;
+  private long hpU;
+  private String hpV;
+  private int hpW;
   
   public cb(a parama)
   {
     AppMethodBeat.i(132274);
-    this.gPs = null;
-    this.gPt = 0L;
-    this.gPu = 0L;
-    this.gPv = "";
-    this.gPw = 1;
+    this.hpS = null;
+    this.hpT = 0L;
+    this.hpU = 0L;
+    this.hpV = "";
+    this.hpW = 1;
     Assert.assertTrue(true);
-    this.gPs = parama;
-    asI();
+    this.hpS = parama;
+    azz();
     AppMethodBeat.o(132274);
   }
   
-  private void asI()
-  {
-    this.gPw = 1;
-    this.gPt = 0L;
-    this.gPu = 0L;
-    this.gPv = "";
-  }
-  
-  private void asM()
+  private void azD()
   {
     try
     {
       AppMethodBeat.i(132278);
-      if ((this.gPw != 1) && (this.gPt + this.gPu < bt.eGO())) {
-        asK();
+      if ((this.hpW != 1) && (this.hpT + this.hpU < bs.eWj())) {
+        azB();
       }
       AppMethodBeat.o(132278);
       return;
@@ -48,8 +40,16 @@ public final class cb
     finally {}
   }
   
+  private void azz()
+  {
+    this.hpW = 1;
+    this.hpT = 0L;
+    this.hpU = 0L;
+    this.hpV = "";
+  }
+  
   /* Error */
-  public final boolean asJ()
+  public final boolean azA()
   {
     // Byte code:
     //   0: iconst_1
@@ -58,22 +58,22 @@ public final class cb
     //   3: monitorenter
     //   4: ldc 67
     //   6: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: invokestatic 61	com/tencent/mm/sdk/platformtools/bt:eGO	()J
+    //   9: invokestatic 61	com/tencent/mm/sdk/platformtools/bs:eWj	()J
     //   12: lstore 4
     //   14: aload_0
-    //   15: invokestatic 71	com/tencent/mm/sdk/platformtools/bt:eGN	()Lcom/tencent/mm/sdk/platformtools/at;
-    //   18: invokevirtual 77	com/tencent/mm/sdk/platformtools/at:toString	()Ljava/lang/String;
-    //   21: putfield 38	com/tencent/mm/model/cb:gPv	Ljava/lang/String;
+    //   15: invokestatic 71	com/tencent/mm/sdk/platformtools/bs:eWi	()Lcom/tencent/mm/sdk/platformtools/as;
+    //   18: invokevirtual 77	com/tencent/mm/sdk/platformtools/as:toString	()Ljava/lang/String;
+    //   21: putfield 38	com/tencent/mm/model/cb:hpV	Ljava/lang/String;
     //   24: aload_0
-    //   25: getfield 40	com/tencent/mm/model/cb:gPw	I
+    //   25: getfield 40	com/tencent/mm/model/cb:hpW	I
     //   28: iconst_1
     //   29: if_icmpne +73 -> 102
     //   32: aload_0
     //   33: lload 4
-    //   35: putfield 34	com/tencent/mm/model/cb:gPu	J
+    //   35: putfield 34	com/tencent/mm/model/cb:hpU	J
     //   38: aload_0
     //   39: ldc2_w 78
-    //   42: putfield 32	com/tencent/mm/model/cb:gPt	J
+    //   42: putfield 32	com/tencent/mm/model/cb:hpT	J
     //   45: ldc 81
     //   47: ldc 83
     //   49: iconst_2
@@ -86,18 +86,18 @@ public final class cb
     //   62: dup
     //   63: iconst_1
     //   64: aload_0
-    //   65: getfield 38	com/tencent/mm/model/cb:gPv	Ljava/lang/String;
+    //   65: getfield 38	com/tencent/mm/model/cb:hpV	Ljava/lang/String;
     //   68: aastore
-    //   69: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   69: invokestatic 94	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   72: aload_0
     //   73: iconst_2
-    //   74: putfield 40	com/tencent/mm/model/cb:gPw	I
+    //   74: putfield 40	com/tencent/mm/model/cb:hpW	I
     //   77: aload_0
-    //   78: getfield 30	com/tencent/mm/model/cb:gPs	Lcom/tencent/mm/model/cb$a;
+    //   78: getfield 30	com/tencent/mm/model/cb:hpS	Lcom/tencent/mm/model/cb$a;
     //   81: invokeinterface 97 1 0
     //   86: ifeq +7 -> 93
     //   89: aload_0
-    //   90: invokevirtual 100	com/tencent/mm/model/cb:asL	()V
+    //   90: invokevirtual 100	com/tencent/mm/model/cb:azC	()V
     //   93: ldc 67
     //   95: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   98: aload_0
@@ -105,9 +105,9 @@ public final class cb
     //   100: iload_1
     //   101: ireturn
     //   102: aload_0
-    //   103: getfield 34	com/tencent/mm/model/cb:gPu	J
+    //   103: getfield 34	com/tencent/mm/model/cb:hpU	J
     //   106: aload_0
-    //   107: getfield 32	com/tencent/mm/model/cb:gPt	J
+    //   107: getfield 32	com/tencent/mm/model/cb:hpT	J
     //   110: ladd
     //   111: lstore_2
     //   112: lload 4
@@ -120,12 +120,12 @@ public final class cb
     //   124: ifle +16 -> 140
     //   127: aload_0
     //   128: aload_0
-    //   129: getfield 32	com/tencent/mm/model/cb:gPt	J
+    //   129: getfield 32	com/tencent/mm/model/cb:hpT	J
     //   132: lload 4
     //   134: lload_2
     //   135: lsub
     //   136: ladd
-    //   137: putfield 32	com/tencent/mm/model/cb:gPt	J
+    //   137: putfield 32	com/tencent/mm/model/cb:hpT	J
     //   140: ldc 81
     //   142: ldc 102
     //   144: iconst_5
@@ -133,7 +133,7 @@ public final class cb
     //   148: dup
     //   149: iconst_0
     //   150: aload_0
-    //   151: getfield 40	com/tencent/mm/model/cb:gPw	I
+    //   151: getfield 40	com/tencent/mm/model/cb:hpW	I
     //   154: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   157: aastore
     //   158: dup
@@ -151,15 +151,15 @@ public final class cb
     //   177: dup
     //   178: iconst_3
     //   179: aload_0
-    //   180: getfield 32	com/tencent/mm/model/cb:gPt	J
+    //   180: getfield 32	com/tencent/mm/model/cb:hpT	J
     //   183: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   186: aastore
     //   187: dup
     //   188: iconst_4
     //   189: aload_0
-    //   190: getfield 38	com/tencent/mm/model/cb:gPv	Ljava/lang/String;
+    //   190: getfield 38	com/tencent/mm/model/cb:hpV	Ljava/lang/String;
     //   193: aastore
-    //   194: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   194: invokestatic 94	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   197: ldc 67
     //   199: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   202: iconst_0
@@ -187,7 +187,7 @@ public final class cb
   }
   
   /* Error */
-  public final void asK()
+  public final void azB()
   {
     // Byte code:
     //   0: aload_0
@@ -201,16 +201,16 @@ public final class cb
     //   15: dup
     //   16: iconst_0
     //   17: aload_0
-    //   18: getfield 40	com/tencent/mm/model/cb:gPw	I
+    //   18: getfield 40	com/tencent/mm/model/cb:hpW	I
     //   21: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   24: aastore
     //   25: dup
     //   26: iconst_1
-    //   27: invokestatic 71	com/tencent/mm/sdk/platformtools/bt:eGN	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   27: invokestatic 71	com/tencent/mm/sdk/platformtools/bs:eWi	()Lcom/tencent/mm/sdk/platformtools/as;
     //   30: aastore
-    //   31: invokestatic 113	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   31: invokestatic 113	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   34: aload_0
-    //   35: getfield 40	com/tencent/mm/model/cb:gPw	I
+    //   35: getfield 40	com/tencent/mm/model/cb:hpW	I
     //   38: iconst_1
     //   39: if_icmpne +28 -> 67
     //   42: ldc 81
@@ -219,25 +219,25 @@ public final class cb
     //   47: anewarray 4	java/lang/Object
     //   50: dup
     //   51: iconst_0
-    //   52: invokestatic 71	com/tencent/mm/sdk/platformtools/bt:eGN	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   52: invokestatic 71	com/tencent/mm/sdk/platformtools/bs:eWi	()Lcom/tencent/mm/sdk/platformtools/as;
     //   55: aastore
-    //   56: invokestatic 113	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   56: invokestatic 113	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   59: ldc 108
     //   61: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: aload_0
     //   65: monitorexit
     //   66: return
     //   67: aload_0
-    //   68: invokespecial 49	com/tencent/mm/model/cb:asI	()V
-    //   71: new 117	com/tencent/mm/g/a/ve
+    //   68: invokespecial 49	com/tencent/mm/model/cb:azz	()V
+    //   71: new 117	com/tencent/mm/g/a/vo
     //   74: dup
-    //   75: invokespecial 118	com/tencent/mm/g/a/ve:<init>	()V
+    //   75: invokespecial 118	com/tencent/mm/g/a/vo:<init>	()V
     //   78: astore_1
     //   79: aload_1
-    //   80: getfield 122	com/tencent/mm/g/a/ve:dAF	Lcom/tencent/mm/g/a/ve$a;
+    //   80: getfield 122	com/tencent/mm/g/a/vo:dyr	Lcom/tencent/mm/g/a/vo$a;
     //   83: iconst_1
-    //   84: putfield 127	com/tencent/mm/g/a/ve$a:status	I
-    //   87: getstatic 133	com/tencent/mm/sdk/b/a:ESL	Lcom/tencent/mm/sdk/b/a;
+    //   84: putfield 127	com/tencent/mm/g/a/vo$a:status	I
+    //   87: getstatic 133	com/tencent/mm/sdk/b/a:GpY	Lcom/tencent/mm/sdk/b/a;
     //   90: aload_1
     //   91: invokevirtual 137	com/tencent/mm/sdk/b/a:l	(Lcom/tencent/mm/sdk/b/b;)Z
     //   94: pop
@@ -252,7 +252,7 @@ public final class cb
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	108	0	this	cb
-    //   78	13	1	localve	com.tencent.mm.g.a.ve
+    //   78	13	1	localvo	com.tencent.mm.g.a.vo
     //   103	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -261,7 +261,7 @@ public final class cb
   }
   
   /* Error */
-  public final void asL()
+  public final void azC()
   {
     // Byte code:
     //   0: aload_0
@@ -269,7 +269,7 @@ public final class cb
     //   2: ldc 138
     //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 40	com/tencent/mm/model/cb:gPw	I
+    //   8: getfield 40	com/tencent/mm/model/cb:hpW	I
     //   11: iconst_2
     //   12: if_icmpeq +38 -> 50
     //   15: ldc 81
@@ -279,14 +279,14 @@ public final class cb
     //   23: dup
     //   24: iconst_0
     //   25: aload_0
-    //   26: getfield 40	com/tencent/mm/model/cb:gPw	I
+    //   26: getfield 40	com/tencent/mm/model/cb:hpW	I
     //   29: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   32: aastore
     //   33: dup
     //   34: iconst_1
-    //   35: invokestatic 71	com/tencent/mm/sdk/platformtools/bt:eGN	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   35: invokestatic 71	com/tencent/mm/sdk/platformtools/bs:eWi	()Lcom/tencent/mm/sdk/platformtools/as;
     //   38: aastore
-    //   39: invokestatic 143	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   39: invokestatic 143	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   42: ldc 138
     //   44: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   47: aload_0
@@ -299,27 +299,27 @@ public final class cb
     //   58: dup
     //   59: iconst_0
     //   60: aload_0
-    //   61: getfield 34	com/tencent/mm/model/cb:gPu	J
-    //   64: invokestatic 149	com/tencent/mm/sdk/platformtools/bt:vM	(J)J
+    //   61: getfield 34	com/tencent/mm/model/cb:hpU	J
+    //   64: invokestatic 149	com/tencent/mm/sdk/platformtools/bs:Ap	(J)J
     //   67: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   70: aastore
     //   71: dup
     //   72: iconst_1
-    //   73: invokestatic 71	com/tencent/mm/sdk/platformtools/bt:eGN	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   73: invokestatic 71	com/tencent/mm/sdk/platformtools/bs:eWi	()Lcom/tencent/mm/sdk/platformtools/as;
     //   76: aastore
-    //   77: invokestatic 113	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   77: invokestatic 113	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   80: aload_0
     //   81: iconst_3
-    //   82: putfield 40	com/tencent/mm/model/cb:gPw	I
-    //   85: new 117	com/tencent/mm/g/a/ve
+    //   82: putfield 40	com/tencent/mm/model/cb:hpW	I
+    //   85: new 117	com/tencent/mm/g/a/vo
     //   88: dup
-    //   89: invokespecial 118	com/tencent/mm/g/a/ve:<init>	()V
+    //   89: invokespecial 118	com/tencent/mm/g/a/vo:<init>	()V
     //   92: astore_1
     //   93: aload_1
-    //   94: getfield 122	com/tencent/mm/g/a/ve:dAF	Lcom/tencent/mm/g/a/ve$a;
+    //   94: getfield 122	com/tencent/mm/g/a/vo:dyr	Lcom/tencent/mm/g/a/vo$a;
     //   97: iconst_3
-    //   98: putfield 127	com/tencent/mm/g/a/ve$a:status	I
-    //   101: getstatic 133	com/tencent/mm/sdk/b/a:ESL	Lcom/tencent/mm/sdk/b/a;
+    //   98: putfield 127	com/tencent/mm/g/a/vo$a:status	I
+    //   101: getstatic 133	com/tencent/mm/sdk/b/a:GpY	Lcom/tencent/mm/sdk/b/a;
     //   104: aload_1
     //   105: invokevirtual 137	com/tencent/mm/sdk/b/a:l	(Lcom/tencent/mm/sdk/b/b;)Z
     //   108: pop
@@ -334,7 +334,7 @@ public final class cb
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	122	0	this	cb
-    //   92	13	1	localve	com.tencent.mm.g.a.ve
+    //   92	13	1	localvo	com.tencent.mm.g.a.vo
     //   117	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -343,7 +343,7 @@ public final class cb
   }
   
   /* Error */
-  public final boolean asN()
+  public final boolean azE()
   {
     // Byte code:
     //   0: aload_0
@@ -351,9 +351,9 @@ public final class cb
     //   2: ldc 151
     //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokespecial 153	com/tencent/mm/model/cb:asM	()V
+    //   8: invokespecial 153	com/tencent/mm/model/cb:azD	()V
     //   11: aload_0
-    //   12: getfield 40	com/tencent/mm/model/cb:gPw	I
+    //   12: getfield 40	com/tencent/mm/model/cb:hpW	I
     //   15: iconst_2
     //   16: if_icmpne +14 -> 30
     //   19: iconst_1
@@ -387,7 +387,7 @@ public final class cb
   }
   
   /* Error */
-  public final boolean asO()
+  public final boolean azF()
   {
     // Byte code:
     //   0: aload_0
@@ -395,9 +395,9 @@ public final class cb
     //   2: ldc 155
     //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokespecial 153	com/tencent/mm/model/cb:asM	()V
+    //   8: invokespecial 153	com/tencent/mm/model/cb:azD	()V
     //   11: aload_0
-    //   12: getfield 40	com/tencent/mm/model/cb:gPw	I
+    //   12: getfield 40	com/tencent/mm/model/cb:hpW	I
     //   15: iconst_3
     //   16: if_icmpne +14 -> 30
     //   19: iconst_1
@@ -432,12 +432,12 @@ public final class cb
   
   public static abstract interface a
   {
-    public abstract boolean asP();
+    public abstract boolean azG();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.cb
  * JD-Core Version:    0.7.0.1
  */

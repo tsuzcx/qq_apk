@@ -19,25 +19,25 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class p
 {
-  private static final Paint aIW;
-  private static final Paint aIX;
-  private static final Paint aIY;
-  private static final Set<String> aIZ;
-  private static final Lock aJa;
+  private static final Paint aJM;
+  private static final Paint aJN;
+  private static final Paint aJO;
+  private static final Set<String> aJP;
+  private static final Lock aJQ;
   
   static
   {
     AppMethodBeat.i(77436);
-    aIW = new Paint(6);
-    aIX = new Paint(7);
+    aJM = new Paint(6);
+    aJN = new Paint(7);
     Object localObject = new HashSet(Arrays.asList(new String[] { "XT1085", "XT1092", "XT1093", "XT1094", "XT1095", "XT1096", "XT1097", "XT1098", "XT1031", "XT1028", "XT937C", "XT1032", "XT1008", "XT1033", "XT1035", "XT1034", "XT939G", "XT1039", "XT1040", "XT1042", "XT1045", "XT1063", "XT1064", "XT1068", "XT1069", "XT1072", "XT1077", "XT1078", "XT1079" }));
-    aIZ = (Set)localObject;
+    aJP = (Set)localObject;
     if (((Set)localObject).contains(Build.MODEL)) {}
     for (localObject = new ReentrantLock();; localObject = new p.a())
     {
-      aJa = (Lock)localObject;
+      aJQ = (Lock)localObject;
       localObject = new Paint(7);
-      aIY = (Paint)localObject;
+      aJO = (Paint)localObject;
       ((Paint)localObject).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
       AppMethodBeat.o(77436);
       return;
@@ -47,7 +47,7 @@ public final class p
   public static Bitmap a(e parame, Bitmap paramBitmap, int paramInt)
   {
     AppMethodBeat.i(77435);
-    if (!du(paramInt))
+    if (!dt(paramInt))
     {
       AppMethodBeat.o(77435);
       return paramBitmap;
@@ -70,17 +70,17 @@ public final class p
     {
       parame = parame.b(paramInt, i, (Bitmap.Config)localObject);
       localMatrix.postTranslate(-localRectF.left, -localRectF.top);
-      aJa.lock();
+      aJQ.lock();
       try
       {
         localObject = new Canvas(parame);
-        ((Canvas)localObject).drawBitmap(paramBitmap, localMatrix, aIW);
+        ((Canvas)localObject).drawBitmap(paramBitmap, localMatrix, aJM);
         ((Canvas)localObject).setBitmap(null);
         return parame;
       }
       finally
       {
-        aJa.unlock();
+        aJQ.unlock();
         AppMethodBeat.o(77435);
       }
       localMatrix.setScale(-1.0F, 1.0F);
@@ -103,7 +103,7 @@ public final class p
     }
   }
   
-  public static int dt(int paramInt)
+  public static int ds(int paramInt)
   {
     switch (paramInt)
     {
@@ -119,7 +119,7 @@ public final class p
     return 270;
   }
   
-  public static boolean du(int paramInt)
+  public static boolean dt(int paramInt)
   {
     switch (paramInt)
     {
@@ -129,14 +129,14 @@ public final class p
     return true;
   }
   
-  public static Lock pb()
+  public static Lock pl()
   {
-    return aJa;
+    return aJQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.p
  * JD-Core Version:    0.7.0.1
  */

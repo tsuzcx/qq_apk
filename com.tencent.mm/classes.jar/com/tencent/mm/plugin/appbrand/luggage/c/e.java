@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.appbrand.luggage.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bu;
 import io.flutter.embedding.engine.a;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.dart.DartExecutor.a;
@@ -17,59 +17,30 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class e
 {
-  private static final Queue<d> kPO;
-  private static final Queue<g> kPP;
-  private static volatile String kPQ;
-  private static volatile String kPR;
-  private static e.a kPS;
-  private static final ap mHandler;
+  private static final Queue<d> lrn;
+  private static final Queue<g> lro;
+  private static volatile String lrp;
+  private static volatile String lrq;
+  private static e.a lrr;
+  private static final ao mHandler;
   
   static
   {
     AppMethodBeat.i(47567);
-    kPO = new ConcurrentLinkedQueue();
-    kPP = new ConcurrentLinkedQueue();
-    kPQ = null;
-    kPR = null;
-    kPS = e.a.kPT;
-    mHandler = new ap("NativeAppBrandPreloader");
+    lrn = new ConcurrentLinkedQueue();
+    lro = new ConcurrentLinkedQueue();
+    lrp = null;
+    lrq = null;
+    lrr = e.a.lrs;
+    mHandler = new ao("NativeAppBrandPreloader");
     AppMethodBeat.o(47567);
   }
   
-  public static d KA(String paramString)
-  {
-    AppMethodBeat.i(47563);
-    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(kPQ)))
-    {
-      AppMethodBeat.o(47563);
-      return null;
-    }
-    gw(false);
-    kPQ = paramString;
-    paramString = (d)kPO.poll();
-    AppMethodBeat.o(47563);
-    return paramString;
-  }
-  
-  public static g KB(String paramString)
-  {
-    AppMethodBeat.i(47564);
-    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(kPR)))
-    {
-      AppMethodBeat.o(47564);
-      return null;
-    }
-    kPR = paramString;
-    paramString = (g)kPP.poll();
-    AppMethodBeat.o(47564);
-    return paramString;
-  }
-  
-  public static void Kz(String paramString)
+  public static void OG(String paramString)
   {
     try
     {
-      kPQ = paramString;
+      lrp = paramString;
       return;
     }
     finally
@@ -79,47 +50,76 @@ public class e
     }
   }
   
-  public static void bhI()
+  public static d OH(String paramString)
+  {
+    AppMethodBeat.i(47563);
+    if ((!bs.isNullOrNil(paramString)) && (paramString.equals(lrp)))
+    {
+      AppMethodBeat.o(47563);
+      return null;
+    }
+    gT(false);
+    lrp = paramString;
+    paramString = (d)lrn.poll();
+    AppMethodBeat.o(47563);
+    return paramString;
+  }
+  
+  public static g OI(String paramString)
+  {
+    AppMethodBeat.i(47564);
+    if ((!bs.isNullOrNil(paramString)) && (paramString.equals(lrq)))
+    {
+      AppMethodBeat.o(47564);
+      return null;
+    }
+    lrq = paramString;
+    paramString = (g)lro.poll();
+    AppMethodBeat.o(47564);
+    return paramString;
+  }
+  
+  public static void boC()
   {
     AppMethodBeat.i(47561);
-    ad.d("NativeAppBrandPreloader", "preload %b", new Object[] { Boolean.TRUE });
+    ac.d("NativeAppBrandPreloader", "preload %b", new Object[] { Boolean.TRUE });
     try
     {
       reset();
-      if (kPS == e.a.kPT)
+      if (lrr == e.a.lrs)
       {
         Object localObject1;
-        if (bu.eGR())
+        if (bt.eWm())
         {
-          localObject1 = com.tencent.mm.plugin.m.a.c.c.tsc;
-          if (!com.tencent.mm.plugin.m.a.c.c.cNe()) {}
+          localObject1 = com.tencent.mm.plugin.m.a.c.c.uAv;
+          if (!com.tencent.mm.plugin.m.a.c.c.daL()) {}
         }
         else
         {
           long l = System.currentTimeMillis();
-          FlutterMain.startInitialization(aj.getContext());
-          FlutterMain.ensureInitializationComplete(aj.getContext(), new String[0]);
-          localObject1 = com.tencent.mm.plugin.m.a.a.c.trh.fs(aj.getContext());
-          ((a)localObject1).IYk.setInitialRoute("preload");
-          if (!((a)localObject1).IYe.IYQ)
+          FlutterMain.startInitialization(ai.getContext());
+          FlutterMain.ensureInitializationComplete(ai.getContext(), new String[0]);
+          localObject1 = com.tencent.mm.plugin.m.a.a.c.uzz.fE(ai.getContext());
+          ((a)localObject1).KLp.setInitialRoute("preload");
+          if (!((a)localObject1).KLk.KLV)
           {
             System.loadLibrary("wechatlv");
-            localObject1 = ((a)localObject1).IYe;
-            aj.getContext().getAssets();
-            ((DartExecutor)localObject1).a(new DartExecutor.a(FlutterMain.findAppBundlePath(aj.getContext()), "main", (byte)0));
+            localObject1 = ((a)localObject1).KLk;
+            ai.getContext().getAssets();
+            ((DartExecutor)localObject1).a(new DartExecutor.a(FlutterMain.findAppBundlePath(ai.getContext()), "main", (byte)0));
           }
-          ad.i("MicroMsg.NativeAppBrandPreloader", "[preloadFlutter] cost:" + (System.currentTimeMillis() - l));
+          ac.i("MicroMsg.NativeAppBrandPreloader", "[preloadFlutter] cost:" + (System.currentTimeMillis() - l));
         }
-        if (bu.eGR())
+        if (bt.eWm())
         {
-          localObject1 = com.tencent.mm.plugin.m.a.c.c.tsc;
-          if (!com.tencent.mm.plugin.m.a.c.c.cNd()) {}
+          localObject1 = com.tencent.mm.plugin.m.a.c.c.uAv;
+          if (!com.tencent.mm.plugin.m.a.c.c.daK()) {}
         }
         else
         {
-          gw(true);
+          gT(true);
         }
-        kPS = e.a.kPV;
+        lrr = e.a.lru;
       }
       return;
     }
@@ -129,13 +129,13 @@ public class e
     }
   }
   
-  private static void gw(boolean paramBoolean)
+  private static void gT(boolean paramBoolean)
   {
     AppMethodBeat.i(47562);
-    ad.d("MicroMsg.NativeAppBrandPreloader", "preloadNextRuntimeOnUiThreadForNativePageView");
+    ac.d("MicroMsg.NativeAppBrandPreloader", "preloadNextRuntimeOnUiThreadForNativePageView");
     synchronized (mHandler)
     {
-      if (kPO.size() <= 0)
+      if (lrn.size() <= 0)
       {
         Runnable local1 = new Runnable()
         {
@@ -151,13 +151,13 @@ public class e
             }
             catch (Exception localException)
             {
-              ad.printErrStackTrace("MicroMsg.NativeAppBrandPreloader", localException, "preloadNextRuntimeOnUiThreadForNativePageView exception.", new Object[0]);
+              ac.printErrStackTrace("MicroMsg.NativeAppBrandPreloader", localException, "preloadNextRuntimeOnUiThreadForNativePageView exception.", new Object[0]);
               AppMethodBeat.o(47556);
               return;
             }
             catch (Error localError)
             {
-              ad.printErrStackTrace("MicroMsg.NativeAppBrandPreloader", localError, "preloadNextRuntimeOnUiThreadForNativePageView error.", new Object[0]);
+              ac.printErrStackTrace("MicroMsg.NativeAppBrandPreloader", localError, "preloadNextRuntimeOnUiThreadForNativePageView error.", new Object[0]);
               AppMethodBeat.o(47556);
             }
           }
@@ -165,7 +165,7 @@ public class e
         if (paramBoolean)
         {
           l = 0L;
-          aq.n(local1, l);
+          ap.n(local1, l);
         }
       }
       else
@@ -182,9 +182,9 @@ public class e
     try
     {
       AppMethodBeat.i(47560);
-      kPS = e.a.kPT;
-      kPQ = null;
-      kPO.clear();
+      lrr = e.a.lrs;
+      lrp = null;
+      lrn.clear();
       AppMethodBeat.o(47560);
       return;
     }
@@ -197,7 +197,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.e
  * JD-Core Version:    0.7.0.1
  */

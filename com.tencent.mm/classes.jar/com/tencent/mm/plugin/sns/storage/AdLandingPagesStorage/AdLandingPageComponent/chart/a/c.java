@@ -5,31 +5,31 @@ import android.graphics.Bitmap;
 public final class c
 {
   public int backgroundColor = 0;
-  public int wXL = 1;
-  public boolean wXM = true;
-  public boolean wXN = true;
-  private boolean wXO = true;
-  public boolean wXP = true;
-  public int wXQ = -1;
-  public int wXR = -16777216;
-  public int wXS = -16777216;
-  public float wXT = 2.0F;
-  public float wXU = -1.0F;
-  public int wXV = -16777216;
-  public float wXW = 12.0F;
-  public float wXX = 16.0F;
-  public int wXY = -1;
-  public float wXZ = 17.0F;
-  public float wYa = 4.0F;
-  public Bitmap wYb;
-  public float wYc;
-  public int wYd = -1;
-  public int wYe = 1;
-  public Bitmap wYf;
+  public boolean ykA = true;
+  public boolean ykB = true;
+  private boolean ykC = true;
+  public boolean ykD = true;
+  public int ykE = -1;
+  public int ykF = -16777216;
+  public int ykG = -16777216;
+  public float ykH = 2.0F;
+  public float ykI = -1.0F;
+  public int ykJ = -16777216;
+  public float ykK = 12.0F;
+  public float ykL = 16.0F;
+  public int ykM = -1;
+  public float ykN = 17.0F;
+  public float ykO = 4.0F;
+  public Bitmap ykP;
+  public float ykQ;
+  public int ykR = -1;
+  public int ykS = 1;
+  public Bitmap ykT;
+  public int ykz = 1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.c
  * JD-Core Version:    0.7.0.1
  */

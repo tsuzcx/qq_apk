@@ -6,34 +6,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.e.c;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.l;
 
 public final class i
   extends a
 {
-  private com.tencent.mm.plugin.webview.modeltools.a AUE;
+  private com.tencent.mm.plugin.webview.modeltools.a CmR;
   
   public i()
   {
     super(7);
     AppMethodBeat.i(78698);
-    this.AUE = new com.tencent.mm.plugin.webview.modeltools.a();
+    this.CmR = new com.tencent.mm.plugin.webview.modeltools.a();
     AppMethodBeat.o(78698);
   }
   
   public final void a(Context paramContext, f paramf)
   {
     AppMethodBeat.i(78700);
-    String str2 = paramf.ekW().awT(paramf.getUrl());
+    String str2 = paramf.eAs().aCl(paramf.getUrl());
     String str1 = str2;
-    if (bt.isNullOrNil(str2)) {
+    if (bs.isNullOrNil(str2)) {
       str1 = paramf.getUrl();
     }
     if ((paramContext instanceof Activity)) {
       com.tencent.mm.plugin.webview.modeltools.a.h((Activity)paramContext, str1);
     }
-    h.vKh.dB(982, 6);
+    h.wUl.dB(982, 6);
     AppMethodBeat.o(78700);
   }
   

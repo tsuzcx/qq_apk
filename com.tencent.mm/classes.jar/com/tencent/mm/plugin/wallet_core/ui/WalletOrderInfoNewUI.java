@@ -28,19 +28,20 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.c.a;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.au;
-import com.tencent.mm.g.a.hl;
-import com.tencent.mm.g.a.jx;
-import com.tencent.mm.g.a.jx.a;
-import com.tencent.mm.g.a.uj;
-import com.tencent.mm.g.a.xh;
-import com.tencent.mm.g.a.xk;
-import com.tencent.mm.g.a.xk.a;
-import com.tencent.mm.g.b.a.ek;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.av;
+import com.tencent.mm.g.a.hs;
+import com.tencent.mm.g.a.kf;
+import com.tencent.mm.g.a.kf.a;
+import com.tencent.mm.g.a.ut;
+import com.tencent.mm.g.a.xs;
+import com.tencent.mm.g.a.xv;
+import com.tencent.mm.g.a.xv.a;
+import com.tencent.mm.g.b.a.ga;
 import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.wallet_core.c.ad;
 import com.tencent.mm.plugin.wallet_core.c.m;
 import com.tencent.mm.plugin.wallet_core.c.p;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
@@ -56,12 +57,13 @@ import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.ui.view.WalletSuccPageAwardWidget;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.protocal.protobuf.apm;
-import com.tencent.mm.protocal.protobuf.bf;
-import com.tencent.mm.protocal.protobuf.ceu;
-import com.tencent.mm.protocal.protobuf.dfi;
-import com.tencent.mm.protocal.protobuf.uy;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.asq;
+import com.tencent.mm.protocal.protobuf.bh;
+import com.tencent.mm.protocal.protobuf.cjx;
+import com.tencent.mm.protocal.protobuf.dkx;
+import com.tencent.mm.protocal.protobuf.vi;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.c.ab;
 import com.tencent.mm.wallet_core.c.t;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
@@ -78,137 +80,425 @@ import org.json.JSONObject;
 public class WalletOrderInfoNewUI
   extends WalletOrderInfoUI
 {
-  private int Afe;
-  private boolean Aka;
-  private String Akb;
-  private String Akc;
-  private b Ake;
-  private HashMap<String, a> Akf;
-  private String Akg;
-  private String Aki;
-  private Button Akj;
-  private ImageView Akk;
-  private ViewGroup Akl;
-  private CdnImageView Akm;
-  private TextView Akn;
-  private TextView Ako;
-  private View Akp;
-  private Button Akq;
-  private ViewGroup Akr;
-  private boolean Aks;
-  private boolean Akt;
-  private boolean Aku;
-  private com.tencent.mm.wallet_core.d Akv;
-  protected Set<String> AnM;
-  private List<Orders.Commodity> AnN;
-  private Orders.RecommendTinyAppInfo AnO;
-  private String AnP;
-  private Orders.Promotions AnQ;
-  private TextView AnR;
-  private TextView AnS;
-  private WalletTextView AnT;
-  private ViewGroup AnU;
-  private ViewGroup AnV;
-  private ViewGroup AnW;
-  private ViewGroup AnX;
-  private ViewGroup AnY;
-  private ViewGroup AnZ;
-  private TextView Aoa;
-  private CheckBox Aob;
-  private ViewGroup Aoc;
-  private CdnImageView Aod;
-  private TextView Aoe;
-  private ProgressBar Aof;
-  private ViewGroup Aog;
-  private CdnImageView Aoh;
-  private TextView Aoi;
-  private TextView Aoj;
-  private Button Aok;
-  private int Aol;
-  private boolean Aom;
-  private boolean Aon;
-  private com.tencent.mm.sdk.b.c Aoo;
-  private com.tencent.mm.plugin.wallet_core.c.a Aop;
-  private com.tencent.mm.plugin.wallet_core.c.c Aoq;
-  private boolean Aor;
-  private int Aos;
-  private String kGt;
+  private b BCA;
+  private HashMap<String, a> BCB;
+  private String BCC;
+  private String BCE;
+  private Button BCF;
+  private ImageView BCG;
+  private ViewGroup BCH;
+  private CdnImageView BCI;
+  private TextView BCJ;
+  private TextView BCK;
+  private View BCL;
+  private Button BCM;
+  private ViewGroup BCN;
+  private boolean BCO;
+  private boolean BCP;
+  private boolean BCQ;
+  private com.tencent.mm.wallet_core.d BCR;
+  private boolean BCw;
+  private String BCx;
+  private String BCy;
+  private ViewGroup BGA;
+  private CdnImageView BGB;
+  private TextView BGC;
+  private TextView BGD;
+  private Button BGE;
+  private int BGF;
+  private boolean BGG;
+  private boolean BGH;
+  private com.tencent.mm.sdk.b.c BGI;
+  private com.tencent.mm.plugin.wallet_core.c.a BGJ;
+  private com.tencent.mm.plugin.wallet_core.c.c BGK;
+  private boolean BGL;
+  private int BGM;
+  protected Set<String> BGg;
+  private List<Orders.Commodity> BGh;
+  private Orders.RecommendTinyAppInfo BGi;
+  private String BGj;
+  private Orders.Promotions BGk;
+  private TextView BGl;
+  private TextView BGm;
+  private WalletTextView BGn;
+  private ViewGroup BGo;
+  private ViewGroup BGp;
+  private ViewGroup BGq;
+  private ViewGroup BGr;
+  private ViewGroup BGs;
+  private ViewGroup BGt;
+  private TextView BGu;
+  private CheckBox BGv;
+  private ViewGroup BGw;
+  private CdnImageView BGx;
+  private TextView BGy;
+  private ProgressBar BGz;
+  private Orders BhZ;
+  private int Bxy;
+  private String lhM;
   private String mAppId;
   private PayInfo mPayInfo;
-  private ViewGroup osi;
-  private String ujI;
-  private com.tencent.mm.sdk.b.c umw;
-  private String upF;
-  private e.a.a.c vEk;
-  private WalletSuccPageAwardWidget vEl;
-  private ViewGroup vEm;
-  private ViewGroup vEn;
-  private ViewGroup vEo;
-  private TextView vEp;
-  private boolean vEq;
-  private com.tencent.mm.sdk.b.c<xk> vEr;
-  private String vGZ;
-  private TextView vIs;
-  private Orders zPF;
+  private ViewGroup oVI;
+  private String vsE;
+  private com.tencent.mm.sdk.b.c vvs;
+  private String vyB;
+  private e.a.a.c wOp;
+  private WalletSuccPageAwardWidget wOq;
+  private ViewGroup wOr;
+  private ViewGroup wOs;
+  private ViewGroup wOt;
+  private TextView wOu;
+  private boolean wOv;
+  private com.tencent.mm.sdk.b.c<xv> wOw;
+  private String wRe;
+  private TextView wSw;
   
   public WalletOrderInfoNewUI()
   {
     AppMethodBeat.i(71014);
-    this.kGt = null;
-    this.upF = null;
-    this.Aka = false;
-    this.AnM = null;
+    this.lhM = null;
+    this.vyB = null;
+    this.BCw = false;
+    this.BGg = null;
     this.mAppId = "";
-    this.AnN = null;
-    this.Akf = new HashMap();
-    this.AnQ = null;
-    this.Aki = "-1";
-    this.Aks = false;
-    this.Akt = false;
-    this.Aol = 0;
-    this.Aom = false;
-    this.Aon = false;
-    this.Aku = false;
-    this.umw = new com.tencent.mm.sdk.b.c() {};
-    this.Aoo = new WalletOrderInfoNewUI.9(this);
-    this.vEq = false;
-    this.vEr = new com.tencent.mm.sdk.b.c() {};
-    this.Aor = false;
-    this.Aos = 2;
+    this.BGh = null;
+    this.BCB = new HashMap();
+    this.BGk = null;
+    this.BCE = "-1";
+    this.BCO = false;
+    this.BCP = false;
+    this.BGF = 0;
+    this.BGG = false;
+    this.BGH = false;
+    this.BCQ = false;
+    this.vvs = new com.tencent.mm.sdk.b.c() {};
+    this.BGI = new WalletOrderInfoNewUI.9(this);
+    this.wOv = false;
+    this.wOw = new com.tencent.mm.sdk.b.c() {};
+    this.BGL = false;
+    this.BGM = 2;
     AppMethodBeat.o(71014);
   }
   
   private void c(Orders paramOrders)
   {
     AppMethodBeat.i(71030);
-    this.AnM.clear();
-    if ((paramOrders == null) || (paramOrders.Afx == null))
+    this.BGg.clear();
+    if ((paramOrders == null) || (paramOrders.BxR == null))
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WalletOrderInfoNewUI", "hy: orders is null");
+      ac.w("MicroMsg.WalletOrderInfoNewUI", "hy: orders is null");
       AppMethodBeat.o(71030);
       return;
     }
-    paramOrders = paramOrders.Afx.iterator();
+    paramOrders = paramOrders.BxR.iterator();
     while (paramOrders.hasNext())
     {
       Orders.Commodity localCommodity = (Orders.Commodity)paramOrders.next();
-      if ((localCommodity.Afn == 2) && (!bt.isNullOrNil(localCommodity.AfZ)))
+      if ((localCommodity.BxH == 2) && (!bs.isNullOrNil(localCommodity.Byt)))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "hy: has username and is force recommend");
-        this.AnM.add(localCommodity.AfZ);
+        ac.i("MicroMsg.WalletOrderInfoNewUI", "hy: has username and is force recommend");
+        this.BGg.add(localCommodity.Byt);
       }
     }
     AppMethodBeat.o(71030);
   }
   
-  private void edN()
+  private void etA()
+  {
+    AppMethodBeat.i(71019);
+    this.BGz.setVisibility(0);
+    this.BGx.setVisibility(8);
+    AppMethodBeat.o(71019);
+  }
+  
+  private void etB()
+  {
+    AppMethodBeat.i(71020);
+    if (this.BGw.getVisibility() != 0)
+    {
+      AppMethodBeat.o(71020);
+      return;
+    }
+    if (!this.BGG)
+    {
+      if (!bs.isNullOrNil(this.wOp.LUM.LUP)) {
+        this.BGx.setUrl(this.wOp.LUM.LUP);
+      }
+      if (!bs.isNullOrNil(this.wOp.LUM.LUO))
+      {
+        this.BGy.setText(this.wOp.LUM.LUO);
+        if (!bs.isNullOrNil(this.wOp.LUM.LUQ)) {
+          this.BGy.setTextColor(com.tencent.mm.plugin.wallet_core.utils.g.cd(this.wOp.LUM.LUQ, true));
+        }
+        if (this.wOp.LUM.LUR > 0L)
+        {
+          this.BGy.setTextSize(1, (float)this.wOp.LUM.LUR);
+          AppMethodBeat.o(71020);
+        }
+      }
+    }
+    else
+    {
+      if (!bs.isNullOrNil(this.wOp.LUM.LUU)) {
+        this.BGx.setUrl(this.wOp.LUM.LUU);
+      }
+      if (!bs.isNullOrNil(this.wOp.LUM.LUW))
+      {
+        this.BGy.setText(this.wOp.LUM.LUW);
+        if (!bs.isNullOrNil(this.wOp.LUM.LUV)) {
+          this.BGy.setTextColor(com.tencent.mm.plugin.wallet_core.utils.g.cd(this.wOp.LUM.LUV, true));
+        }
+        if (this.wOp.LUM.LUR > 0L) {
+          this.BGy.setTextSize(1, (float)this.wOp.LUM.LUR);
+        }
+      }
+    }
+    AppMethodBeat.o(71020);
+  }
+  
+  private void etC()
+  {
+    AppMethodBeat.i(71023);
+    this.BGo.setVisibility(8);
+    this.wOs.setVisibility(8);
+    this.wOr.setVisibility(8);
+    this.wOt.setVisibility(8);
+    if ((this.BhZ != null) && (this.BGh != null) && (this.BGh.size() > 0))
+    {
+      Orders.Commodity localCommodity = (Orders.Commodity)this.BGh.get(0);
+      List localList = localCommodity.Byv;
+      int i;
+      label144:
+      Orders.DiscountInfo localDiscountInfo;
+      TextView localTextView;
+      if (localList != null)
+      {
+        i = localList.size();
+        ac.i("MicroMsg.WalletOrderInfoNewUI", "discountInfoList: %s, size: %s", new Object[] { localList, Integer.valueOf(i) });
+        if ((localList == null) || (localList.size() <= 0)) {
+          break label332;
+        }
+        this.wOs.removeAllViews();
+        i = 0;
+        if (i >= localList.size()) {
+          break label308;
+        }
+        localDiscountInfo = (Orders.DiscountInfo)localList.get(i);
+        localTextView = new TextView(getContext());
+        localTextView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+        localTextView.setTextSize(1, 14.0F);
+        localTextView.setTextColor(getResources().getColor(2131099777));
+        if (localDiscountInfo.ByN <= 0.0D) {
+          break label295;
+        }
+        localTextView.setText(localDiscountInfo.wJS + e.d(localDiscountInfo.ByN / 100.0D, this.BhZ.vxl));
+      }
+      for (;;)
+      {
+        this.wOs.addView(localTextView);
+        i += 1;
+        break label144;
+        i = 0;
+        break;
+        label295:
+        localTextView.setText(localDiscountInfo.wJS);
+      }
+      label308:
+      this.wOs.setVisibility(0);
+      this.BGo.setVisibility(0);
+      this.wOr.setVisibility(0);
+      label332:
+      if ((localCommodity.Bys >= 0.0D) && (localCommodity.oxA < localCommodity.Bys))
+      {
+        this.wOu.setText(e.d(localCommodity.Bys, localCommodity.vxl));
+        this.wOu.getPaint().setFlags(16);
+        this.wOt.setVisibility(0);
+        this.BGo.setVisibility(0);
+      }
+    }
+    AppMethodBeat.o(71023);
+  }
+  
+  private void etD()
+  {
+    AppMethodBeat.i(71024);
+    this.BGt.setVisibility(8);
+    Orders.Commodity localCommodity;
+    Orders.Promotions localPromotions;
+    if (this.BhZ != null)
+    {
+      c(this.BhZ);
+      if ((this.BGh != null) && (this.BGh.size() > 0))
+      {
+        localCommodity = (Orders.Commodity)this.BGh.get(0);
+        ac.i("MicroMsg.WalletOrderInfoNewUI", "setSubscribeBizInfo, hasSubscribeBiz: %s", new Object[] { Boolean.valueOf(localCommodity.ByC) });
+        if ((localCommodity.ByC) && (localCommodity.ByB != null) && (localCommodity.ByB.size() > 0))
+        {
+          Iterator localIterator = localCommodity.ByB.iterator();
+          do
+          {
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localPromotions = (Orders.Promotions)localIterator.next();
+          } while (localPromotions.type != Orders.Byq);
+        }
+      }
+    }
+    for (;;)
+    {
+      ac.i("MicroMsg.WalletOrderInfoNewUI", "subscribePromotions: %s", new Object[] { localPromotions });
+      if ((localPromotions != null) && (!bs.isNullOrNil(localPromotions.vxm)))
+      {
+        this.wRe = localCommodity.dad;
+        com.tencent.mm.plugin.report.service.h.wUl.f(13033, new Object[] { Integer.valueOf(1), localPromotions.vxm, localPromotions.url, localPromotions.name, this.wRe });
+        this.BGu.setText(getString(2131765577, new Object[] { localPromotions.name }));
+        this.BGj = localPromotions.vxm;
+        this.BGv.setVisibility(0);
+        if (!this.BGg.contains(localPromotions.vxm)) {
+          break label333;
+        }
+        this.BGv.setChecked(true);
+      }
+      for (;;)
+      {
+        this.BGt.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(70989);
+            if (!bs.isNullOrNil(WalletOrderInfoNewUI.o(WalletOrderInfoNewUI.this)))
+            {
+              if (WalletOrderInfoNewUI.this.BGg.contains(WalletOrderInfoNewUI.o(WalletOrderInfoNewUI.this)))
+              {
+                WalletOrderInfoNewUI.this.BGg.remove(WalletOrderInfoNewUI.o(WalletOrderInfoNewUI.this));
+                WalletOrderInfoNewUI.p(WalletOrderInfoNewUI.this).setChecked(false);
+                AppMethodBeat.o(70989);
+                return;
+              }
+              WalletOrderInfoNewUI.this.BGg.add(WalletOrderInfoNewUI.o(WalletOrderInfoNewUI.this));
+              WalletOrderInfoNewUI.p(WalletOrderInfoNewUI.this).setChecked(true);
+            }
+            AppMethodBeat.o(70989);
+          }
+        });
+        this.BGt.setVisibility(0);
+        AppMethodBeat.o(71024);
+        return;
+        label333:
+        this.BGv.setChecked(false);
+      }
+      localPromotions = null;
+    }
+  }
+  
+  private void etE()
+  {
+    AppMethodBeat.i(71025);
+    this.BGs.setVisibility(8);
+    this.BGs.removeAllViews();
+    Iterator localIterator;
+    if ((this.BhZ != null) && (this.BhZ.Byd == 1) && (this.BhZ.Byf != null) && (this.BhZ.Byf.size() > 0))
+    {
+      ac.i("MicroMsg.WalletOrderInfoNewUI", "orders.showInfoList: %s %s", new Object[] { this.BhZ.Byf, Integer.valueOf(this.BhZ.Byf.size()) });
+      localIterator = this.BhZ.Byf.iterator();
+    }
+    for (;;)
+    {
+      final Orders.ShowInfo localShowInfo;
+      LinearLayout localLinearLayout;
+      TextView localTextView2;
+      TextView localTextView1;
+      if (localIterator.hasNext())
+      {
+        localShowInfo = (Orders.ShowInfo)localIterator.next();
+        ac.i("MicroMsg.WalletOrderInfoNewUI", "showInfo: %s", new Object[] { localShowInfo });
+        localLinearLayout = (LinearLayout)getLayoutInflater().inflate(2131496001, this.BGs, false);
+        localTextView2 = (TextView)localLinearLayout.findViewById(2131301393);
+        localTextView1 = (TextView)localLinearLayout.findViewById(2131304201);
+        if (!bs.isNullOrNil(localShowInfo.name)) {
+          localTextView2.setText(localShowInfo.name);
+        }
+        if (bs.isNullOrNil(localShowInfo.tda)) {}
+      }
+      try
+      {
+        localTextView2.setTextColor(com.tencent.mm.plugin.wallet_core.utils.g.cd(localShowInfo.tda, true));
+        label234:
+        if (!bs.isNullOrNil(localShowInfo.value)) {
+          localTextView1.setText(localShowInfo.value);
+        }
+        if (localShowInfo.Bzl == 1) {
+          localTextView1.getPaint().setFlags(16);
+        }
+        if (!bs.isNullOrNil(localShowInfo.Bzg)) {}
+        try
+        {
+          localTextView1.setTextColor(com.tencent.mm.plugin.wallet_core.utils.g.cd(localShowInfo.Bzg, true));
+          label294:
+          if (localShowInfo.Bzh == 1) {
+            if (!bs.isNullOrNil(localShowInfo.Bzk)) {
+              localLinearLayout.setOnClickListener(new View.OnClickListener()
+              {
+                public final void onClick(View paramAnonymousView)
+                {
+                  AppMethodBeat.i(70990);
+                  ac.i("MicroMsg.WalletOrderInfoNewUI", "onClick showInfo, jump url: %s", new Object[] { localShowInfo.Bzk });
+                  WalletOrderInfoNewUI.this.Tw(localShowInfo.Bzk);
+                  AppMethodBeat.o(70990);
+                }
+              });
+            }
+          }
+          for (;;)
+          {
+            this.BGs.addView(localLinearLayout);
+            break;
+            if ((localShowInfo.Bzh == 2) && (!bs.isNullOrNil(localShowInfo.Bzi))) {
+              localLinearLayout.setOnClickListener(new View.OnClickListener()
+              {
+                public final void onClick(View paramAnonymousView)
+                {
+                  AppMethodBeat.i(70991);
+                  ac.i("MicroMsg.WalletOrderInfoNewUI", "onClick jump tinyApp, linkWeApp:%s, linkAddr:%s", new Object[] { localShowInfo.Bzi, localShowInfo.Bzj });
+                  paramAnonymousView = new ut();
+                  paramAnonymousView.dxt.userName = localShowInfo.Bzi;
+                  paramAnonymousView.dxt.dxv = bs.bG(localShowInfo.Bzj, "");
+                  paramAnonymousView.dxt.scene = 1060;
+                  paramAnonymousView.dxt.cYP = WalletOrderInfoNewUI.q(WalletOrderInfoNewUI.this);
+                  paramAnonymousView.dxt.dxw = 0;
+                  paramAnonymousView.dxt.context = WalletOrderInfoNewUI.this;
+                  com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousView);
+                  AppMethodBeat.o(70991);
+                }
+              });
+            }
+          }
+          this.BGo.setVisibility(0);
+          this.BGs.setVisibility(0);
+          AppMethodBeat.o(71025);
+          return;
+        }
+        catch (Exception localException1)
+        {
+          break label294;
+        }
+      }
+      catch (Exception localException2)
+      {
+        break label234;
+      }
+    }
+  }
+  
+  private void eti()
   {
     AppMethodBeat.i(71021);
-    this.Akl.getVisibility();
-    this.AnU.getVisibility();
-    this.AnZ.getVisibility();
-    this.Aog.getVisibility();
-    this.Akr.post(new Runnable()
+    this.BCH.getVisibility();
+    this.BGo.getVisibility();
+    this.BGt.getVisibility();
+    this.BGA.getVisibility();
+    this.BCN.post(new Runnable()
     {
       public final void run()
       {
@@ -259,9 +549,9 @@ public class WalletOrderInfoNewUI
                 }
               }
               if ((WalletOrderInfoNewUI.n(WalletOrderInfoNewUI.this).getVisibility() != 0) && (WalletOrderInfoNewUI.c(WalletOrderInfoNewUI.this).getVisibility() != 0)) {}
-              for (i = com.tencent.mm.cd.a.fromDPToPix(WalletOrderInfoNewUI.this, 70) + n;; i = n)
+              for (i = com.tencent.mm.cc.a.fromDPToPix(WalletOrderInfoNewUI.this, 70) + n;; i = n)
               {
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "autoAdjustLayout inner, height: %s, topViewPos: %s, contentHeight: %s, topMargin: %s, 50dp: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(j - k - i), Integer.valueOf(com.tencent.mm.cd.a.fromDPToPix(WalletOrderInfoNewUI.this, 50)) });
+                ac.i("MicroMsg.WalletOrderInfoNewUI", "autoAdjustLayout inner, height: %s, topViewPos: %s, contentHeight: %s, topMargin: %s, 50dp: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(j - k - i), Integer.valueOf(com.tencent.mm.cc.a.fromDPToPix(WalletOrderInfoNewUI.this, 50)) });
                 AppMethodBeat.o(71008);
                 return;
                 k = 0;
@@ -279,429 +569,141 @@ public class WalletOrderInfoNewUI
     AppMethodBeat.o(71021);
   }
   
-  private void edO()
+  private void etj()
   {
     AppMethodBeat.i(71022);
-    if ((this.zPF != null) && (this.AnN != null) && (this.AnN.size() > 0))
+    if ((this.BhZ != null) && (this.BGh != null) && (this.BGh.size() > 0))
     {
-      Iterator localIterator = this.AnN.iterator();
+      Iterator localIterator = this.BGh.iterator();
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-      } while (!"1".equals(((Orders.Commodity)localIterator.next()).uoi));
+      } while (!"1".equals(((Orders.Commodity)localIterator.next()).vxe));
     }
     for (int i = 0;; i = 1)
     {
-      this.vIs.setVisibility(0);
+      this.wSw.setVisibility(0);
       if (i != 0)
       {
-        if ((!bt.isNullOrNil(this.zPF.Afp)) && (!bt.isNullOrNil(this.zPF.Afp.trim())))
+        if ((!bs.isNullOrNil(this.BhZ.BxJ)) && (!bs.isNullOrNil(this.BhZ.BxJ.trim())))
         {
-          this.vIs.setText(this.zPF.Afp);
+          this.wSw.setText(this.BhZ.BxJ);
           AppMethodBeat.o(71022);
           return;
         }
-        if (this.zPF.zWA != 1)
+        if (this.BhZ.BoU != 1)
         {
-          this.vIs.setText(2131765570);
+          this.wSw.setText(2131765570);
           AppMethodBeat.o(71022);
           return;
         }
-        this.vIs.setText(2131765569);
+        this.wSw.setText(2131765569);
         AppMethodBeat.o(71022);
         return;
       }
-      this.vIs.setText(2131765571);
+      this.wSw.setText(2131765571);
       AppMethodBeat.o(71022);
       return;
     }
   }
   
-  private void eef()
-  {
-    AppMethodBeat.i(71019);
-    this.Aof.setVisibility(0);
-    this.Aod.setVisibility(8);
-    AppMethodBeat.o(71019);
-  }
-  
-  private void eeg()
-  {
-    AppMethodBeat.i(71020);
-    if (this.Aoc.getVisibility() != 0)
-    {
-      AppMethodBeat.o(71020);
-      return;
-    }
-    if (!this.Aom)
-    {
-      if (!bt.isNullOrNil(this.vEk.Khc.Khf)) {
-        this.Aod.setUrl(this.vEk.Khc.Khf);
-      }
-      if (!bt.isNullOrNil(this.vEk.Khc.Khe))
-      {
-        this.Aoe.setText(this.vEk.Khc.Khe);
-        if (!bt.isNullOrNil(this.vEk.Khc.Khg)) {
-          this.Aoe.setTextColor(com.tencent.mm.plugin.wallet_core.utils.g.bW(this.vEk.Khc.Khg, true));
-        }
-        if (this.vEk.Khc.Khh > 0L)
-        {
-          this.Aoe.setTextSize(1, (float)this.vEk.Khc.Khh);
-          AppMethodBeat.o(71020);
-        }
-      }
-    }
-    else
-    {
-      if (!bt.isNullOrNil(this.vEk.Khc.Khk)) {
-        this.Aod.setUrl(this.vEk.Khc.Khk);
-      }
-      if (!bt.isNullOrNil(this.vEk.Khc.Khm))
-      {
-        this.Aoe.setText(this.vEk.Khc.Khm);
-        if (!bt.isNullOrNil(this.vEk.Khc.Khl)) {
-          this.Aoe.setTextColor(com.tencent.mm.plugin.wallet_core.utils.g.bW(this.vEk.Khc.Khl, true));
-        }
-        if (this.vEk.Khc.Khh > 0L) {
-          this.Aoe.setTextSize(1, (float)this.vEk.Khc.Khh);
-        }
-      }
-    }
-    AppMethodBeat.o(71020);
-  }
-  
-  private void eeh()
-  {
-    AppMethodBeat.i(71023);
-    this.AnU.setVisibility(8);
-    this.vEn.setVisibility(8);
-    this.vEm.setVisibility(8);
-    this.vEo.setVisibility(8);
-    if ((this.zPF != null) && (this.AnN != null) && (this.AnN.size() > 0))
-    {
-      Orders.Commodity localCommodity = (Orders.Commodity)this.AnN.get(0);
-      List localList = localCommodity.Agb;
-      int i;
-      label144:
-      Orders.DiscountInfo localDiscountInfo;
-      TextView localTextView;
-      if (localList != null)
-      {
-        i = localList.size();
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "discountInfoList: %s, size: %s", new Object[] { localList, Integer.valueOf(i) });
-        if ((localList == null) || (localList.size() <= 0)) {
-          break label332;
-        }
-        this.vEn.removeAllViews();
-        i = 0;
-        if (i >= localList.size()) {
-          break label308;
-        }
-        localDiscountInfo = (Orders.DiscountInfo)localList.get(i);
-        localTextView = new TextView(getContext());
-        localTextView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-        localTextView.setTextSize(1, 14.0F);
-        localTextView.setTextColor(getResources().getColor(2131099777));
-        if (localDiscountInfo.Agt <= 0.0D) {
-          break label295;
-        }
-        localTextView.setText(localDiscountInfo.vzN + e.d(localDiscountInfo.Agt / 100.0D, this.zPF.uop));
-      }
-      for (;;)
-      {
-        this.vEn.addView(localTextView);
-        i += 1;
-        break label144;
-        i = 0;
-        break;
-        label295:
-        localTextView.setText(localDiscountInfo.vzN);
-      }
-      label308:
-      this.vEn.setVisibility(0);
-      this.AnU.setVisibility(0);
-      this.vEm.setVisibility(0);
-      label332:
-      if ((localCommodity.AfY >= 0.0D) && (localCommodity.nUf < localCommodity.AfY))
-      {
-        this.vEp.setText(e.d(localCommodity.AfY, localCommodity.uop));
-        this.vEp.getPaint().setFlags(16);
-        this.vEo.setVisibility(0);
-        this.AnU.setVisibility(0);
-      }
-    }
-    AppMethodBeat.o(71023);
-  }
-  
-  private void eei()
-  {
-    AppMethodBeat.i(71024);
-    this.AnZ.setVisibility(8);
-    Orders.Commodity localCommodity;
-    Orders.Promotions localPromotions;
-    if (this.zPF != null)
-    {
-      c(this.zPF);
-      if ((this.AnN != null) && (this.AnN.size() > 0))
-      {
-        localCommodity = (Orders.Commodity)this.AnN.get(0);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "setSubscribeBizInfo, hasSubscribeBiz: %s", new Object[] { Boolean.valueOf(localCommodity.Agi) });
-        if ((localCommodity.Agi) && (localCommodity.Agh != null) && (localCommodity.Agh.size() > 0))
-        {
-          Iterator localIterator = localCommodity.Agh.iterator();
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localPromotions = (Orders.Promotions)localIterator.next();
-          } while (localPromotions.type != Orders.AfW);
-        }
-      }
-    }
-    for (;;)
-    {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "subscribePromotions: %s", new Object[] { localPromotions });
-      if ((localPromotions != null) && (!bt.isNullOrNil(localPromotions.uoq)))
-      {
-        this.vGZ = localCommodity.dcF;
-        com.tencent.mm.plugin.report.service.h.vKh.f(13033, new Object[] { Integer.valueOf(1), localPromotions.uoq, localPromotions.url, localPromotions.name, this.vGZ });
-        this.Aoa.setText(getString(2131765577, new Object[] { localPromotions.name }));
-        this.AnP = localPromotions.uoq;
-        this.Aob.setVisibility(0);
-        if (!this.AnM.contains(localPromotions.uoq)) {
-          break label333;
-        }
-        this.Aob.setChecked(true);
-      }
-      for (;;)
-      {
-        this.AnZ.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(70989);
-            if (!bt.isNullOrNil(WalletOrderInfoNewUI.o(WalletOrderInfoNewUI.this)))
-            {
-              if (WalletOrderInfoNewUI.this.AnM.contains(WalletOrderInfoNewUI.o(WalletOrderInfoNewUI.this)))
-              {
-                WalletOrderInfoNewUI.this.AnM.remove(WalletOrderInfoNewUI.o(WalletOrderInfoNewUI.this));
-                WalletOrderInfoNewUI.p(WalletOrderInfoNewUI.this).setChecked(false);
-                AppMethodBeat.o(70989);
-                return;
-              }
-              WalletOrderInfoNewUI.this.AnM.add(WalletOrderInfoNewUI.o(WalletOrderInfoNewUI.this));
-              WalletOrderInfoNewUI.p(WalletOrderInfoNewUI.this).setChecked(true);
-            }
-            AppMethodBeat.o(70989);
-          }
-        });
-        this.AnZ.setVisibility(0);
-        AppMethodBeat.o(71024);
-        return;
-        label333:
-        this.Aob.setChecked(false);
-      }
-      localPromotions = null;
-    }
-  }
-  
-  private void eej()
-  {
-    AppMethodBeat.i(71025);
-    this.AnY.setVisibility(8);
-    this.AnY.removeAllViews();
-    Iterator localIterator;
-    if ((this.zPF != null) && (this.zPF.AfJ == 1) && (this.zPF.AfL != null) && (this.zPF.AfL.size() > 0))
-    {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "orders.showInfoList: %s %s", new Object[] { this.zPF.AfL, Integer.valueOf(this.zPF.AfL.size()) });
-      localIterator = this.zPF.AfL.iterator();
-    }
-    for (;;)
-    {
-      final Orders.ShowInfo localShowInfo;
-      LinearLayout localLinearLayout;
-      TextView localTextView2;
-      TextView localTextView1;
-      if (localIterator.hasNext())
-      {
-        localShowInfo = (Orders.ShowInfo)localIterator.next();
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "showInfo: %s", new Object[] { localShowInfo });
-        localLinearLayout = (LinearLayout)getLayoutInflater().inflate(2131496001, this.AnY, false);
-        localTextView2 = (TextView)localLinearLayout.findViewById(2131301393);
-        localTextView1 = (TextView)localLinearLayout.findViewById(2131304201);
-        if (!bt.isNullOrNil(localShowInfo.name)) {
-          localTextView2.setText(localShowInfo.name);
-        }
-        if (bt.isNullOrNil(localShowInfo.rVi)) {}
-      }
-      try
-      {
-        localTextView2.setTextColor(com.tencent.mm.plugin.wallet_core.utils.g.bW(localShowInfo.rVi, true));
-        label234:
-        if (!bt.isNullOrNil(localShowInfo.value)) {
-          localTextView1.setText(localShowInfo.value);
-        }
-        if (localShowInfo.AgR == 1) {
-          localTextView1.getPaint().setFlags(16);
-        }
-        if (!bt.isNullOrNil(localShowInfo.AgM)) {}
-        try
-        {
-          localTextView1.setTextColor(com.tencent.mm.plugin.wallet_core.utils.g.bW(localShowInfo.AgM, true));
-          label294:
-          if (localShowInfo.AgN == 1) {
-            if (!bt.isNullOrNil(localShowInfo.AgQ)) {
-              localLinearLayout.setOnClickListener(new View.OnClickListener()
-              {
-                public final void onClick(View paramAnonymousView)
-                {
-                  AppMethodBeat.i(70990);
-                  com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "onClick showInfo, jump url: %s", new Object[] { localShowInfo.AgQ });
-                  WalletOrderInfoNewUI.this.aur(localShowInfo.AgQ);
-                  AppMethodBeat.o(70990);
-                }
-              });
-            }
-          }
-          for (;;)
-          {
-            this.AnY.addView(localLinearLayout);
-            break;
-            if ((localShowInfo.AgN == 2) && (!bt.isNullOrNil(localShowInfo.AgO))) {
-              localLinearLayout.setOnClickListener(new View.OnClickListener()
-              {
-                public final void onClick(View paramAnonymousView)
-                {
-                  AppMethodBeat.i(70991);
-                  com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "onClick jump tinyApp, linkWeApp:%s, linkAddr:%s", new Object[] { localShowInfo.AgO, localShowInfo.AgP });
-                  paramAnonymousView = new uj();
-                  paramAnonymousView.dzH.userName = localShowInfo.AgO;
-                  paramAnonymousView.dzH.dzJ = bt.by(localShowInfo.AgP, "");
-                  paramAnonymousView.dzH.scene = 1060;
-                  paramAnonymousView.dzH.dbt = WalletOrderInfoNewUI.q(WalletOrderInfoNewUI.this);
-                  paramAnonymousView.dzH.dzK = 0;
-                  paramAnonymousView.dzH.context = WalletOrderInfoNewUI.this;
-                  com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousView);
-                  AppMethodBeat.o(70991);
-                }
-              });
-            }
-          }
-          this.AnU.setVisibility(0);
-          this.AnY.setVisibility(0);
-          AppMethodBeat.o(71025);
-          return;
-        }
-        catch (Exception localException1)
-        {
-          break label294;
-        }
-      }
-      catch (Exception localException2)
-      {
-        break label234;
-      }
-    }
-  }
-  
-  private void sH(boolean paramBoolean)
+  private void tI(boolean paramBoolean)
   {
     AppMethodBeat.i(71026);
-    this.Akl.setVisibility(8);
-    this.Akt = false;
-    this.Aks = false;
+    this.BCH.setVisibility(8);
+    this.BCP = false;
+    this.BCO = false;
     Object localObject2;
     Object localObject3;
     Object localObject1;
-    if (this.zPF != null) {
-      if ((this.AnN != null) && (this.AnN.size() > 0))
+    if (this.BhZ != null) {
+      if ((this.BGh != null) && (this.BGh.size() > 0))
       {
-        localObject2 = (Orders.Commodity)this.AnN.get(0);
+        localObject2 = (Orders.Commodity)this.BGh.get(0);
         if (localObject2 != null)
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "setTinyAppActivityInfo, hasSubscribeBiz: %s", new Object[] { Boolean.valueOf(((Orders.Commodity)localObject2).Agi) });
-          if ((((Orders.Commodity)localObject2).Agh == null) || (((Orders.Commodity)localObject2).Agh.size() <= 0)) {
+          ac.i("MicroMsg.WalletOrderInfoNewUI", "setTinyAppActivityInfo, hasSubscribeBiz: %s", new Object[] { Boolean.valueOf(((Orders.Commodity)localObject2).ByC) });
+          if ((((Orders.Commodity)localObject2).ByB == null) || (((Orders.Commodity)localObject2).ByB.size() <= 0)) {
             break label1589;
           }
-          localObject3 = ((Orders.Commodity)localObject2).Agh.iterator();
+          localObject3 = ((Orders.Commodity)localObject2).ByB.iterator();
           do
           {
             if (!((Iterator)localObject3).hasNext()) {
               break;
             }
             localObject1 = (Orders.Promotions)((Iterator)localObject3).next();
-          } while (((Orders.Promotions)localObject1).type != Orders.AfX);
+          } while (((Orders.Promotions)localObject1).type != Orders.Byr);
         }
       }
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "activityPromotions: %s", new Object[] { localObject1 });
-      if ((localObject1 != null) && (((Orders.Promotions)localObject1).zWi > 0L) && (!bt.isNullOrNil(((Orders.Promotions)localObject1).AeZ)))
+      ac.i("MicroMsg.WalletOrderInfoNewUI", "activityPromotions: %s", new Object[] { localObject1 });
+      if ((localObject1 != null) && (((Orders.Promotions)localObject1).BoC > 0L) && (!bs.isNullOrNil(((Orders.Promotions)localObject1).Bxt)))
       {
-        this.AnQ = ((Orders.Promotions)localObject1);
-        this.Akp.setVisibility(8);
-        this.Akm.setRoundCorner(true);
-        this.Akq.setEnabled(true);
-        this.Akq.setBackgroundResource(2131231365);
-        this.Ako.setCompoundDrawables(null, null, null, null);
-        localObject3 = (a)this.Akf.get(((Orders.Promotions)localObject1).zWi);
+        this.BGk = ((Orders.Promotions)localObject1);
+        this.BCL.setVisibility(8);
+        this.BCI.setRoundCorner(true);
+        this.BCM.setEnabled(true);
+        this.BCM.setBackgroundResource(2131231365);
+        this.BCK.setCompoundDrawables(null, null, null, null);
+        localObject3 = (a)this.BCB.get(((Orders.Promotions)localObject1).BoC);
         if (localObject3 != null)
         {
-          if (!bt.isNullOrNil(((a)localObject3).dub)) {
-            this.Akm.setUrl(((a)localObject3).dub);
+          if (!bs.isNullOrNil(((a)localObject3).drM)) {
+            this.BCI.setUrl(((a)localObject3).drM);
           }
-          if (!bt.isNullOrNil(((a)localObject3).doh)) {
-            this.Akn.setText(((a)localObject3).doh);
+          if (!bs.isNullOrNil(((a)localObject3).dlQ)) {
+            this.BCJ.setText(((a)localObject3).dlQ);
           }
-          if (!bt.isNullOrNil(((a)localObject3).Aox))
+          if (!bs.isNullOrNil(((a)localObject3).BGR))
           {
-            this.Akq.setText(((a)localObject3).Aox);
-            this.Akq.setBackgroundResource(2131234694);
+            this.BCM.setText(((a)localObject3).BGR);
+            this.BCM.setBackgroundResource(2131234694);
           }
-          if (!bt.isNullOrNil(((a)localObject3).zHs)) {
-            this.AnQ.LvW = ((a)localObject3).zHs;
+          if (!bs.isNullOrNil(((a)localObject3).AZE)) {
+            this.BGk.DeH = ((a)localObject3).AZE;
           }
-          if (!bt.isNullOrNil(((a)localObject3).zHt)) {
-            this.AnQ.LvX = ((a)localObject3).zHt;
+          if (!bs.isNullOrNil(((a)localObject3).AZF)) {
+            this.BGk.DeI = ((a)localObject3).AZF;
           }
-          if (((a)localObject3).Aoy > 0) {
-            this.AnQ.LvY = ((a)localObject3).Aoy;
+          if (((a)localObject3).BGS > 0) {
+            this.BGk.DeJ = ((a)localObject3).BGS;
           }
-          localObject4 = (RelativeLayout.LayoutParams)this.Ako.getLayoutParams();
-          if ((localObject3 == null) || (bt.isNullOrNil(((a)localObject3).title))) {
+          localObject4 = (RelativeLayout.LayoutParams)this.BCK.getLayoutParams();
+          if ((localObject3 == null) || (bs.isNullOrNil(((a)localObject3).title))) {
             break label876;
           }
-          this.Ako.setText(((a)localObject3).title);
+          this.BCK.setText(((a)localObject3).title);
           ((RelativeLayout.LayoutParams)localObject4).addRule(15, 0);
-          this.Ako.setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.Akq.setVisibility(0);
-          this.Akq.setOnClickListener(new View.OnClickListener()
+          this.BCK.setLayoutParams((ViewGroup.LayoutParams)localObject4);
+          this.BCM.setVisibility(0);
+          this.BCM.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(70992);
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "click activity button");
+              ac.i("MicroMsg.WalletOrderInfoNewUI", "click activity button");
               WalletOrderInfoNewUI.u(WalletOrderInfoNewUI.this);
               AppMethodBeat.o(70992);
             }
           });
-          if (((Orders.Promotions)localObject1).LvT != 1) {
-            this.Akl.setOnClickListener(new View.OnClickListener()
+          if (((Orders.Promotions)localObject1).DeE != 1) {
+            this.BCH.setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(70993);
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "click activity layout");
+                ac.i("MicroMsg.WalletOrderInfoNewUI", "click activity layout");
                 WalletOrderInfoNewUI.u(WalletOrderInfoNewUI.this);
                 AppMethodBeat.o(70993);
               }
             });
           }
-          localObject3 = this.Aki;
+          localObject3 = this.BCE;
           i = -1;
           switch (((String)localObject3).hashCode())
           {
@@ -709,23 +711,23 @@ public class WalletOrderInfoNewUI
             switch (i)
             {
             default: 
-              localObject3 = (ViewGroup.MarginLayoutParams)this.Akl.getLayoutParams();
-              localObject4 = ((Orders.Commodity)localObject2).Agb;
-              if (((((Orders.Commodity)localObject2).AfY >= 0.0D) && (((Orders.Commodity)localObject2).nUf < ((Orders.Commodity)localObject2).AfY)) || ((localObject4 != null) && (((List)localObject4).size() > 0)))
+              localObject3 = (ViewGroup.MarginLayoutParams)this.BCH.getLayoutParams();
+              localObject4 = ((Orders.Commodity)localObject2).Byv;
+              if (((((Orders.Commodity)localObject2).Bys >= 0.0D) && (((Orders.Commodity)localObject2).oxA < ((Orders.Commodity)localObject2).Bys)) || ((localObject4 != null) && (((List)localObject4).size() > 0)))
               {
                 ((ViewGroup.MarginLayoutParams)localObject3).topMargin = 0;
-                this.Akl.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-                this.Akl.setVisibility(0);
+                this.BCH.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+                this.BCH.setVisibility(0);
                 if (paramBoolean)
                 {
-                  localObject3 = com.tencent.mm.plugin.report.service.h.vKh;
-                  localObject4 = this.vGZ;
-                  i = ((Orders.Promotions)localObject1).LvT;
-                  if (!this.Aki.equals("-1")) {
+                  localObject3 = com.tencent.mm.plugin.report.service.h.wUl;
+                  localObject4 = this.wRe;
+                  i = ((Orders.Promotions)localObject1).DeE;
+                  if (!this.BCE.equals("-1")) {
                     break label1048;
                   }
                   localObject2 = Integer.valueOf(5);
-                  ((com.tencent.mm.plugin.report.service.h)localObject3).f(13471, new Object[] { localObject4, Integer.valueOf(1), Integer.valueOf(i), localObject2, Long.valueOf(((Orders.Promotions)localObject1).zWi), Long.valueOf(((Orders.Promotions)localObject1).AeY) });
+                  ((com.tencent.mm.plugin.report.service.h)localObject3).f(13471, new Object[] { localObject4, Integer.valueOf(1), Integer.valueOf(i), localObject2, Long.valueOf(((Orders.Promotions)localObject1).BoC), Long.valueOf(((Orders.Promotions)localObject1).Bxs) });
                 }
               }
               break;
@@ -735,25 +737,25 @@ public class WalletOrderInfoNewUI
         }
       }
       label876:
-      while ((((Orders.Commodity)localObject2).Agf == null) || (bt.isNullOrNil(((Orders.Commodity)localObject2).Agf.zHs))) {
+      while ((((Orders.Commodity)localObject2).Byz == null) || (bs.isNullOrNil(((Orders.Commodity)localObject2).Byz.AZE))) {
         for (;;)
         {
           Object localObject4;
           int i;
-          if (this.Akn.getVisibility() == 0)
+          if (this.BCJ.getVisibility() == 0)
           {
-            this.Akn.setSingleLine();
-            this.Akn.post(new Runnable()
+            this.BCJ.setSingleLine();
+            this.BCJ.post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(70995);
                 try
                 {
-                  if ((WalletOrderInfoNewUI.w(WalletOrderInfoNewUI.this).getVisibility() == 0) && (WalletOrderInfoNewUI.x(WalletOrderInfoNewUI.this).getRight() > 0) && (WalletOrderInfoNewUI.w(WalletOrderInfoNewUI.this).getLeft() > 0) && (WalletOrderInfoNewUI.x(WalletOrderInfoNewUI.this).getRight() >= WalletOrderInfoNewUI.w(WalletOrderInfoNewUI.this).getLeft()) && (!bt.ai(WalletOrderInfoNewUI.x(WalletOrderInfoNewUI.this).getText())))
+                  if ((WalletOrderInfoNewUI.w(WalletOrderInfoNewUI.this).getVisibility() == 0) && (WalletOrderInfoNewUI.x(WalletOrderInfoNewUI.this).getRight() > 0) && (WalletOrderInfoNewUI.w(WalletOrderInfoNewUI.this).getLeft() > 0) && (WalletOrderInfoNewUI.x(WalletOrderInfoNewUI.this).getRight() >= WalletOrderInfoNewUI.w(WalletOrderInfoNewUI.this).getLeft()) && (!bs.aj(WalletOrderInfoNewUI.x(WalletOrderInfoNewUI.this).getText())))
                   {
                     float f = WalletOrderInfoNewUI.x(WalletOrderInfoNewUI.this).getTextSize();
-                    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "tinyAppDescTv size exceed, tinyAppDescTv.getRight(): %s, tinyAppButton.getLeft(): %s", new Object[] { Integer.valueOf(WalletOrderInfoNewUI.x(WalletOrderInfoNewUI.this).getRight()), Integer.valueOf(WalletOrderInfoNewUI.w(WalletOrderInfoNewUI.this).getLeft()) });
+                    ac.i("MicroMsg.WalletOrderInfoNewUI", "tinyAppDescTv size exceed, tinyAppDescTv.getRight(): %s, tinyAppButton.getLeft(): %s", new Object[] { Integer.valueOf(WalletOrderInfoNewUI.x(WalletOrderInfoNewUI.this).getRight()), Integer.valueOf(WalletOrderInfoNewUI.w(WalletOrderInfoNewUI.this).getLeft()) });
                     Object localObject = new Paint();
                     ((Paint)localObject).setTextSize(f);
                     String str2 = WalletOrderInfoNewUI.x(WalletOrderInfoNewUI.this).getText().toString();
@@ -762,7 +764,7 @@ public class WalletOrderInfoNewUI
                     while ((((Paint)localObject).measureText(str2.substring(0, str2.length() - i - 1)) > f) && (i <= str2.length() - 1)) {
                       i += 1;
                     }
-                    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "tinyAppDescTv, exceed len, final search count: %s, text.length: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(str2.length()) });
+                    ac.i("MicroMsg.WalletOrderInfoNewUI", "tinyAppDescTv, exceed len, final search count: %s, text.length: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(str2.length()) });
                     String str1 = str2.substring(0, str2.length() - i - 1);
                     localObject = str1;
                     if (str2.length() > 9)
@@ -780,7 +782,7 @@ public class WalletOrderInfoNewUI
                 }
                 catch (Exception localException)
                 {
-                  com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.WalletOrderInfoNewUI", localException, "calc tinyapp name error: %s", new Object[] { localException.getMessage() });
+                  ac.printErrStackTrace("MicroMsg.WalletOrderInfoNewUI", localException, "calc tinyapp name error: %s", new Object[] { localException.getMessage() });
                   AppMethodBeat.o(70995);
                 }
               }
@@ -788,18 +790,18 @@ public class WalletOrderInfoNewUI
           }
           AppMethodBeat.o(71026);
           return;
-          this.Akm.setUrl(((Orders.Promotions)localObject1).uwS);
-          this.Akn.setText(((Orders.Promotions)localObject1).name);
-          this.Akq.setText(((Orders.Promotions)localObject1).AeZ);
+          this.BCI.setUrl(((Orders.Promotions)localObject1).vFL);
+          this.BCJ.setText(((Orders.Promotions)localObject1).name);
+          this.BCM.setText(((Orders.Promotions)localObject1).Bxt);
           continue;
-          if (!bt.isNullOrNil(((Orders.Promotions)localObject1).title))
+          if (!bs.isNullOrNil(((Orders.Promotions)localObject1).title))
           {
-            this.Ako.setText(((Orders.Promotions)localObject1).title);
+            this.BCK.setText(((Orders.Promotions)localObject1).title);
             ((RelativeLayout.LayoutParams)localObject4).addRule(15, 0);
           }
           else
           {
-            this.Ako.setVisibility(8);
+            this.BCK.setVisibility(8);
             ((RelativeLayout.LayoutParams)localObject4).addRule(15, -1);
             continue;
             if (((String)localObject3).equals("0"))
@@ -826,11 +828,11 @@ public class WalletOrderInfoNewUI
                       {
                         i = 5;
                         continue;
-                        this.Akq.setEnabled(false);
+                        this.BCM.setEnabled(false);
                         continue;
-                        ((ViewGroup.MarginLayoutParams)localObject3).topMargin = com.tencent.mm.cd.a.fromDPToPix(this, 50);
+                        ((ViewGroup.MarginLayoutParams)localObject3).topMargin = com.tencent.mm.cc.a.fromDPToPix(this, 50);
                         continue;
-                        localObject2 = this.Aki;
+                        localObject2 = this.BCE;
                       }
                     }
                   }
@@ -841,50 +843,50 @@ public class WalletOrderInfoNewUI
         }
       }
       label1048:
-      this.Akb = ((Orders.Commodity)localObject2).Agf.zHs;
-      this.Akc = ((Orders.Commodity)localObject2).Agf.zHt;
-      this.Afe = ((Orders.Commodity)localObject2).Agf.Afe;
-      this.AnO = ((Orders.Commodity)localObject2).Agf;
-      this.Akm.setUrl(((Orders.Commodity)localObject2).Agf.Afb);
-      this.Akn.setText(((Orders.Commodity)localObject2).Agf.Afc);
-      this.Ako.setText(getString(2131764967));
-      this.Ako.setVisibility(0);
-      this.Akm.setRoundCorner(true);
-      this.Akq.setEnabled(true);
-      this.Akq.setBackgroundResource(2131231365);
-      localObject1 = (RelativeLayout.LayoutParams)this.Ako.getLayoutParams();
+      this.BCx = ((Orders.Commodity)localObject2).Byz.AZE;
+      this.BCy = ((Orders.Commodity)localObject2).Byz.AZF;
+      this.Bxy = ((Orders.Commodity)localObject2).Byz.Bxy;
+      this.BGi = ((Orders.Commodity)localObject2).Byz;
+      this.BCI.setUrl(((Orders.Commodity)localObject2).Byz.Bxv);
+      this.BCJ.setText(((Orders.Commodity)localObject2).Byz.Bxw);
+      this.BCK.setText(getString(2131764967));
+      this.BCK.setVisibility(0);
+      this.BCI.setRoundCorner(true);
+      this.BCM.setEnabled(true);
+      this.BCM.setBackgroundResource(2131231365);
+      localObject1 = (RelativeLayout.LayoutParams)this.BCK.getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject1).addRule(15, 0);
-      this.Ako.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      if (((Orders.Commodity)localObject2).Agf.AgE > 0L)
+      this.BCK.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      if (((Orders.Commodity)localObject2).Byz.ByY > 0L)
       {
-        if (!bt.isNullOrNil(((Orders.Commodity)localObject2).Agf.Afd))
+        if (!bs.isNullOrNil(((Orders.Commodity)localObject2).Byz.Bxx))
         {
-          this.Akq.setVisibility(0);
-          this.Akq.setText(((Orders.Commodity)localObject2).Agf.Afd);
-          this.Akp.setVisibility(8);
+          this.BCM.setVisibility(0);
+          this.BCM.setText(((Orders.Commodity)localObject2).Byz.Bxx);
+          this.BCL.setVisibility(8);
         }
-        localObject1 = (a)this.Akf.get(((Orders.Commodity)localObject2).Agf.AgE);
+        localObject1 = (a)this.BCB.get(((Orders.Commodity)localObject2).Byz.ByY);
         if (localObject1 != null)
         {
-          if (!bt.isNullOrNil(((a)localObject1).Afb)) {
-            this.Akm.setUrl(((a)localObject1).Afb);
+          if (!bs.isNullOrNil(((a)localObject1).Bxv)) {
+            this.BCI.setUrl(((a)localObject1).Bxv);
           }
-          if (!bt.isNullOrNil(((a)localObject1).Afc)) {
-            this.Akn.setText(((a)localObject1).Afc);
+          if (!bs.isNullOrNil(((a)localObject1).Bxw)) {
+            this.BCJ.setText(((a)localObject1).Bxw);
           }
-          if (!bt.isNullOrNil(((a)localObject1).Afd))
+          if (!bs.isNullOrNil(((a)localObject1).Bxx))
           {
-            this.Akq.setText(((a)localObject1).Afd);
-            this.Akq.setBackgroundResource(2131234694);
+            this.BCM.setText(((a)localObject1).Bxx);
+            this.BCM.setBackgroundResource(2131234694);
           }
-          if (!bt.isNullOrNil(((a)localObject1).zHs)) {
-            this.Akb = ((a)localObject1).zHs;
+          if (!bs.isNullOrNil(((a)localObject1).AZE)) {
+            this.BCx = ((a)localObject1).AZE;
           }
-          if (!bt.isNullOrNil(((a)localObject1).zHt)) {
-            this.Akc = ((a)localObject1).zHt;
+          if (!bs.isNullOrNil(((a)localObject1).AZF)) {
+            this.BCy = ((a)localObject1).AZF;
           }
-          if (((a)localObject1).Aoy > 0) {
-            this.Afe = ((a)localObject1).Aoy;
+          if (((a)localObject1).BGS > 0) {
+            this.Bxy = ((a)localObject1).BGS;
           }
         }
         label1447:
@@ -893,49 +895,49 @@ public class WalletOrderInfoNewUI
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(70994);
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "click tiny app, userName: %s, path: %s, version: %s", new Object[] { WalletOrderInfoNewUI.r(WalletOrderInfoNewUI.this), WalletOrderInfoNewUI.s(WalletOrderInfoNewUI.this), Integer.valueOf(WalletOrderInfoNewUI.v(WalletOrderInfoNewUI.this)) });
-            paramAnonymousView = new uj();
-            paramAnonymousView.dzH.userName = WalletOrderInfoNewUI.r(WalletOrderInfoNewUI.this);
-            paramAnonymousView.dzH.dzJ = bt.by(WalletOrderInfoNewUI.s(WalletOrderInfoNewUI.this), "");
-            paramAnonymousView.dzH.scene = 1034;
-            paramAnonymousView.dzH.dzK = 0;
+            ac.i("MicroMsg.WalletOrderInfoNewUI", "click tiny app, userName: %s, path: %s, version: %s", new Object[] { WalletOrderInfoNewUI.r(WalletOrderInfoNewUI.this), WalletOrderInfoNewUI.s(WalletOrderInfoNewUI.this), Integer.valueOf(WalletOrderInfoNewUI.v(WalletOrderInfoNewUI.this)) });
+            paramAnonymousView = new ut();
+            paramAnonymousView.dxt.userName = WalletOrderInfoNewUI.r(WalletOrderInfoNewUI.this);
+            paramAnonymousView.dxt.dxv = bs.bG(WalletOrderInfoNewUI.s(WalletOrderInfoNewUI.this), "");
+            paramAnonymousView.dxt.scene = 1034;
+            paramAnonymousView.dxt.dxw = 0;
             if (WalletOrderInfoNewUI.v(WalletOrderInfoNewUI.this) > 0) {
-              paramAnonymousView.dzH.aAS = WalletOrderInfoNewUI.v(WalletOrderInfoNewUI.this);
+              paramAnonymousView.dxt.aBM = WalletOrderInfoNewUI.v(WalletOrderInfoNewUI.this);
             }
-            paramAnonymousView.dzH.context = WalletOrderInfoNewUI.this;
-            com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousView);
+            paramAnonymousView.dxt.context = WalletOrderInfoNewUI.this;
+            com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousView);
             paramAnonymousView = WalletOrderInfoNewUI.this;
-            if ((!bt.isNullOrNil(this.Aov.Agf.Afd)) && (this.Aov.Agf.AgE > 0L)) {}
+            if ((!bs.isNullOrNil(this.BGP.Byz.Bxx)) && (this.BGP.Byz.ByY > 0L)) {}
             for (boolean bool = true;; bool = false)
             {
               WalletOrderInfoNewUI.a(paramAnonymousView, bool);
               if (!WalletOrderInfoNewUI.t(WalletOrderInfoNewUI.this)) {
                 break;
               }
-              com.tencent.mm.plugin.report.service.h.vKh.f(14118, new Object[] { WalletOrderInfoNewUI.q(WalletOrderInfoNewUI.this), WalletOrderInfoNewUI.this.getPayReqKey(), Integer.valueOf(3) });
+              com.tencent.mm.plugin.report.service.h.wUl.f(14118, new Object[] { WalletOrderInfoNewUI.q(WalletOrderInfoNewUI.this), WalletOrderInfoNewUI.this.getPayReqKey(), Integer.valueOf(3) });
               AppMethodBeat.o(70994);
               return;
             }
-            com.tencent.mm.plugin.report.service.h.vKh.f(14118, new Object[] { WalletOrderInfoNewUI.q(WalletOrderInfoNewUI.this), WalletOrderInfoNewUI.this.getPayReqKey(), Integer.valueOf(1) });
+            com.tencent.mm.plugin.report.service.h.wUl.f(14118, new Object[] { WalletOrderInfoNewUI.q(WalletOrderInfoNewUI.this), WalletOrderInfoNewUI.this.getPayReqKey(), Integer.valueOf(1) });
             AppMethodBeat.o(70994);
           }
         };
-        this.Akl.setOnClickListener((View.OnClickListener)localObject1);
-        this.Akq.setOnClickListener((View.OnClickListener)localObject1);
-        localObject1 = (ViewGroup.MarginLayoutParams)this.Akl.getLayoutParams();
-        localObject3 = ((Orders.Commodity)localObject2).Agb;
-        if (((((Orders.Commodity)localObject2).AfY < 0.0D) || (((Orders.Commodity)localObject2).nUf >= ((Orders.Commodity)localObject2).AfY)) && ((localObject3 == null) || (((List)localObject3).size() <= 0))) {
+        this.BCH.setOnClickListener((View.OnClickListener)localObject1);
+        this.BCM.setOnClickListener((View.OnClickListener)localObject1);
+        localObject1 = (ViewGroup.MarginLayoutParams)this.BCH.getLayoutParams();
+        localObject3 = ((Orders.Commodity)localObject2).Byv;
+        if (((((Orders.Commodity)localObject2).Bys < 0.0D) || (((Orders.Commodity)localObject2).oxA >= ((Orders.Commodity)localObject2).Bys)) && ((localObject3 == null) || (((List)localObject3).size() <= 0))) {
           break label1576;
         }
       }
       label1576:
-      for (((ViewGroup.MarginLayoutParams)localObject1).topMargin = 0;; ((ViewGroup.MarginLayoutParams)localObject1).topMargin = com.tencent.mm.cd.a.fromDPToPix(this, 50))
+      for (((ViewGroup.MarginLayoutParams)localObject1).topMargin = 0;; ((ViewGroup.MarginLayoutParams)localObject1).topMargin = com.tencent.mm.cc.a.fromDPToPix(this, 50))
       {
-        this.Akl.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.Akl.setVisibility(0);
+        this.BCH.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.BCH.setVisibility(0);
         break;
-        this.Akq.setVisibility(8);
-        this.Akp.setVisibility(8);
+        this.BCM.setVisibility(8);
+        this.BCL.setVisibility(8);
         break label1447;
       }
       label1589:
@@ -943,18 +945,13 @@ public class WalletOrderInfoNewUI
     }
   }
   
-  protected final void aur(String paramString)
+  protected final void Tw(String paramString)
   {
     AppMethodBeat.i(71027);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "jumpToH5: %s", new Object[] { paramString });
-    edQ();
-    e.p(this, paramString, true);
+    ac.i("MicroMsg.WalletOrderInfoNewUI", "jumpToH5: %s", new Object[] { paramString });
+    etl();
+    e.o(this, paramString, true);
     AppMethodBeat.o(71027);
-  }
-  
-  protected final boolean dkB()
-  {
-    return false;
   }
   
   public void done()
@@ -973,7 +970,7 @@ public class WalletOrderInfoNewUI
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(71001);
-            WalletOrderInfoNewUI.this.eek();
+            WalletOrderInfoNewUI.this.etF();
             AppMethodBeat.o(71001);
           }
         });
@@ -982,201 +979,177 @@ public class WalletOrderInfoNewUI
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(71002);
-            WalletOrderInfoNewUI.this.eek();
+            WalletOrderInfoNewUI.this.etF();
             AppMethodBeat.o(71002);
           }
         });
         getInput().remove("key_realname_guide_helper");
         if ((!bool1) && (!bool2)) {
-          eek();
+          etF();
         }
       }
       AppMethodBeat.o(71031);
       return;
     }
-    eek();
+    etF();
     AppMethodBeat.o(71031);
   }
   
-  protected void edQ()
+  protected final boolean dyD()
   {
-    int i = 0;
-    AppMethodBeat.i(71035);
-    if (!this.Aka)
-    {
-      jx localjx = new jx();
-      localjx.dob.requestCode = 4;
-      jx.a locala = localjx.dob;
-      if (getInput().getBoolean("intent_pay_end", false)) {
-        i = -1;
-      }
-      locala.bRZ = i;
-      localjx.dob.doc = new Intent();
-      if (this.zPF != null) {
-        localjx.dob.doc.putExtra("key_jsapi_close_page_after_pay", this.zPF.AfK);
-      }
-      if ((this.zPF != null) && (this.zPF.AfK == 0) && (!bt.isNullOrNil(this.zPF.AfN)) && (!bt.isNullOrNil(this.zPF.AfM))) {
-        localjx.dob.doc.putExtra("key_jsapi_close_page_after_pay", 1);
-      }
-      if (this.Akv != null) {
-        localjx.dob.doc.putExtra("key_is_clear_failure", this.Akv.dow.getInt("key_is_clear_failure", -1));
-      }
-      com.tencent.mm.sdk.b.a.ESL.l(localjx);
-      this.Aka = true;
-    }
-    AppMethodBeat.o(71035);
+    return false;
   }
   
-  public final void eek()
+  public final void etF()
   {
     int j = 1;
     AppMethodBeat.i(71032);
-    edQ();
-    Object localObject1 = new au();
-    ((au)localObject1).dcT.dcU = true;
-    com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
-    localObject1 = new hl();
-    ((hl)localObject1).dlc.dld = "ok";
-    com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+    etl();
+    Object localObject1 = new av();
+    ((av)localObject1).dar.das = true;
+    com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
+    localObject1 = new hs();
+    ((hs)localObject1).diL.diM = "ok";
+    com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
     Object localObject2 = new Bundle();
     ((Bundle)localObject2).putInt("intent_pay_end_errcode", getInput().getInt("intent_pay_end_errcode"));
     ((Bundle)localObject2).putString("intent_pay_app_url", getInput().getString("intent_pay_app_url"));
     ((Bundle)localObject2).putBoolean("intent_pay_end", getInput().getBoolean("intent_pay_end"));
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "pay done...feedbackData errCode:" + getInput().getInt("intent_pay_end_errcode"));
-    Object localObject3 = this.AnM.iterator();
+    ac.i("MicroMsg.WalletOrderInfoNewUI", "pay done...feedbackData errCode:" + getInput().getInt("intent_pay_end_errcode"));
+    Object localObject3 = this.BGg.iterator();
     if (((Iterator)localObject3).hasNext())
     {
       String str1 = (String)((Iterator)localObject3).next();
-      if (!bt.isNullOrNil(str1))
+      if (!bs.isNullOrNil(str1))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str1 });
-        if ((this.zPF == null) || (this.mPayInfo == null)) {
+        ac.i("MicroMsg.WalletOrderInfoNewUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str1 });
+        if ((this.BhZ == null) || (this.mPayInfo == null)) {
           break label371;
         }
-        q localq = com.tencent.mm.kernel.g.afA().gcy;
-        String str2 = this.zPF.dcE;
-        if (this.zPF.Afx.size() <= 0) {
+        q localq = com.tencent.mm.kernel.g.agQ().ghe;
+        String str2 = this.BhZ.dac;
+        if (this.BhZ.BxR.size() <= 0) {
           break label365;
         }
-        localObject1 = ((Orders.Commodity)this.zPF.Afx.get(0)).dcF;
+        localObject1 = ((Orders.Commodity)this.BhZ.BxR.get(0)).dad;
         label282:
-        localq.a(new t(str1, str2, (String)localObject1, this.mPayInfo.dtb, this.mPayInfo.channel, this.zPF.Afn), 0);
+        localq.a(new t(str1, str2, (String)localObject1, this.mPayInfo.dqL, this.mPayInfo.channel, this.BhZ.BxH), 0);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.h.vKh.f(13033, new Object[] { Integer.valueOf(2), str1, "", "", "" });
+        com.tencent.mm.plugin.report.service.h.wUl.f(13033, new Object[] { Integer.valueOf(2), str1, "", "", "" });
         break;
         label365:
         localObject1 = "";
         break label282;
         label371:
-        com.tencent.mm.kernel.g.afA().gcy.a(new t(str1), 0);
+        com.tencent.mm.kernel.g.agQ().ghe.a(new t(str1), 0);
       }
     }
-    if (this.Akv != null)
+    if (this.BCR != null)
     {
-      this.Akv.a(this, 0, (Bundle)localObject2);
-      this.Akv = null;
-      if ((this.mPayInfo == null) || ((this.mPayInfo.dtb != 46) && (this.mPayInfo.dtb != 3))) {
+      this.BCR.a(this, 0, (Bundle)localObject2);
+      this.BCR = null;
+      if ((this.mPayInfo == null) || ((this.mPayInfo.dqL != 46) && (this.mPayInfo.dqL != 3))) {
         break label963;
       }
-      localObject1 = new ek();
-      if (this.mPayInfo.dtb != 46) {
+      localObject1 = new ga();
+      if (this.mPayInfo.dqL != 46) {
         break label863;
       }
-      ((ek)localObject1).dZn = 2L;
+      ((ga)localObject1).ebf = 2L;
       label474:
-      if ((this.zPF == null) || (this.zPF.AfK != 0)) {
+      if ((this.BhZ == null) || (this.BhZ.Bye != 0)) {
         break label882;
       }
-      ((ek)localObject1).dZo = 1L;
+      ((ga)localObject1).ebg = 1L;
     }
     for (;;)
     {
-      if ((this.mPayInfo != null) && (this.mPayInfo.Cos != null))
+      if ((this.mPayInfo != null) && (this.mPayInfo.hbR != null))
       {
-        localObject2 = this.mPayInfo.Cos.getString("extinfo_key_20", "");
-        if (!bt.isNullOrNil((String)localObject2)) {
-          ((ek)localObject1).dZp = ((ek)localObject1).t("SourceH5Url", (String)localObject2, false);
+        localObject2 = this.mPayInfo.hbR.getString("extinfo_key_20", "");
+        if (!bs.isNullOrNil((String)localObject2)) {
+          ((ga)localObject1).ebh = ((ga)localObject1).t("SourceH5Url", (String)localObject2, false);
         }
-        localObject2 = this.mPayInfo.Cos.getString("extinfo_key_21", "");
-        if (!bt.isNullOrNil((String)localObject2)) {
-          ((ek)localObject1).dZr = ((ek)localObject1).t("SourceAppPath", (String)localObject2, true);
+        localObject2 = this.mPayInfo.hbR.getString("extinfo_key_21", "");
+        if (!bs.isNullOrNil((String)localObject2)) {
+          ((ga)localObject1).ebj = ((ga)localObject1).t("SourceAppPath", (String)localObject2, true);
         }
-        localObject2 = this.mPayInfo.Cos.getString("extinfo_key_22", "");
-        if (!bt.isNullOrNil((String)localObject2)) {
-          ((ek)localObject1).dZq = ((ek)localObject1).t("SourceAppUsername", (String)localObject2, true);
+        localObject2 = this.mPayInfo.hbR.getString("extinfo_key_22", "");
+        if (!bs.isNullOrNil((String)localObject2)) {
+          ((ga)localObject1).ebi = ((ga)localObject1).t("SourceAppUsername", (String)localObject2, true);
         }
       }
-      if ((this.zPF != null) && (this.zPF.AfK == 0) && (!bt.isNullOrNil(this.zPF.AfN)) && (!bt.isNullOrNil(this.zPF.AfM)))
+      if ((this.BhZ != null) && (this.BhZ.Bye == 0) && (!bs.isNullOrNil(this.BhZ.Byh)) && (!bs.isNullOrNil(this.BhZ.Byg)))
       {
-        ((ek)localObject1).dZt = ((ek)localObject1).t("TargetAppPath", this.zPF.AfN, true);
-        ((ek)localObject1).dZs = ((ek)localObject1).t("TargetAppUsername", this.zPF.AfM, true);
+        ((ga)localObject1).ebl = ((ga)localObject1).t("TargetAppPath", this.BhZ.Byh, true);
+        ((ga)localObject1).ebk = ((ga)localObject1).t("TargetAppUsername", this.BhZ.Byg, true);
       }
-      ((ek)localObject1).aBj();
-      if ((this.zPF == null) || (this.zPF.AfK != 0) || (bt.isNullOrNil(this.zPF.AfN)) || (bt.isNullOrNil(this.zPF.AfM))) {
+      ((ga)localObject1).aHZ();
+      if ((this.BhZ == null) || (this.BhZ.Bye != 0) || (bs.isNullOrNil(this.BhZ.Byh)) || (bs.isNullOrNil(this.BhZ.Byg))) {
         break label963;
       }
-      localObject1 = new uj();
-      ((uj)localObject1).dzH.userName = this.zPF.AfM;
-      ((uj)localObject1).dzH.dzJ = this.zPF.AfN;
-      ((uj)localObject1).dzH.scene = 1060;
-      ((uj)localObject1).dzH.dbt = this.ujI;
-      ((uj)localObject1).dzH.dzK = 0;
-      ((uj)localObject1).dzH.context = this;
-      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+      localObject1 = new ut();
+      ((ut)localObject1).dxt.userName = this.BhZ.Byg;
+      ((ut)localObject1).dxt.dxv = this.BhZ.Byh;
+      ((ut)localObject1).dxt.scene = 1060;
+      ((ut)localObject1).dxt.cYP = this.vsE;
+      ((ut)localObject1).dxt.dxw = 0;
+      ((ut)localObject1).dxt.context = this;
+      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
       AppMethodBeat.o(71032);
       return;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "process is null! finish directly");
+      ac.i("MicroMsg.WalletOrderInfoNewUI", "process is null! finish directly");
       finish();
       break;
       label863:
-      if (this.mPayInfo.dtb != 3) {
+      if (this.mPayInfo.dqL != 3) {
         break label474;
       }
-      ((ek)localObject1).dZn = 1L;
+      ((ga)localObject1).ebf = 1L;
       break label474;
       label882:
-      if ((this.zPF != null) && (this.zPF.AfK == 1)) {
-        ((ek)localObject1).dZo = 2L;
-      } else if ((this.zPF != null) && (this.zPF.AfK == 0) && (!bt.isNullOrNil(this.zPF.AfN)) && (!bt.isNullOrNil(this.zPF.AfM))) {
-        ((ek)localObject1).dZo = 3L;
+      if ((this.BhZ != null) && (this.BhZ.Bye == 1)) {
+        ((ga)localObject1).ebg = 2L;
+      } else if ((this.BhZ != null) && (this.BhZ.Bye == 0) && (!bs.isNullOrNil(this.BhZ.Byh)) && (!bs.isNullOrNil(this.BhZ.Byg))) {
+        ((ga)localObject1).ebg = 3L;
       }
     }
     label963:
     int i;
-    if ((this.zPF != null) && (!bt.isNullOrNil(this.zPF.oYa)))
+    if ((this.BhZ != null) && (!bs.isNullOrNil(this.BhZ.pBl)))
     {
-      if (this.zPF.Afx.size() > 0)
+      if (this.BhZ.BxR.size() > 0)
       {
-        localObject1 = ((Orders.Commodity)this.zPF.Afx.get(0)).dcF;
-        localObject1 = e(this.zPF.oYa, this.zPF.dcE, (String)localObject1, this.mPayInfo.nrG, this.mPayInfo.iaz);
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WalletOrderInfoNewUI", "url = ".concat(String.valueOf(localObject1)));
+        localObject1 = ((Orders.Commodity)this.BhZ.BxR.get(0)).dad;
+        localObject1 = e(this.BhZ.pBl, this.BhZ.dac, (String)localObject1, this.mPayInfo.nUG, this.mPayInfo.iAC);
+        ac.d("MicroMsg.WalletOrderInfoNewUI", "url = ".concat(String.valueOf(localObject1)));
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("rawUrl", (String)localObject1);
         ((Intent)localObject2).putExtra("showShare", false);
-        ((Intent)localObject2).putExtra("geta8key_username", u.aqG());
+        ((Intent)localObject2).putExtra("geta8key_username", u.axw());
         ((Intent)localObject2).putExtra("stastic_scene", 8);
-        e.X(getContext(), (Intent)localObject2);
+        e.al(getContext(), (Intent)localObject2);
       }
     }
-    else if ((this.Aoc.getVisibility() == 0) && (this.vEk.Khc != null))
+    else if ((this.BGw.getVisibility() == 0) && (this.wOp.LUM != null))
     {
-      localObject1 = com.tencent.mm.plugin.report.service.h.vKh;
-      localObject2 = this.vGZ;
-      localObject3 = this.Aoe.getText();
-      if (this.vEk.Khc.Khd != 0) {
+      localObject1 = com.tencent.mm.plugin.report.service.h.wUl;
+      localObject2 = this.wRe;
+      localObject3 = this.BGy.getText();
+      if (this.wOp.LUM.LUN != 0) {
         break label1257;
       }
       i = 1;
       label1182:
-      if (!this.Aom) {
+      if (!this.BGG) {
         break label1262;
       }
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.report.service.h)localObject1).f(17271, new Object[] { localObject2, localObject3, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.Aos), Long.valueOf(System.currentTimeMillis()) });
+      ((com.tencent.mm.plugin.report.service.h)localObject1).f(17271, new Object[] { localObject2, localObject3, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.BGM), Long.valueOf(System.currentTimeMillis()) });
       AppMethodBeat.o(71032);
       return;
       localObject1 = "";
@@ -1189,17 +1162,46 @@ public class WalletOrderInfoNewUI
     }
   }
   
+  protected void etl()
+  {
+    int i = 0;
+    AppMethodBeat.i(71035);
+    if (!this.BCw)
+    {
+      kf localkf = new kf();
+      localkf.dlK.requestCode = 4;
+      kf.a locala = localkf.dlK;
+      if (getInput().getBoolean("intent_pay_end", false)) {
+        i = -1;
+      }
+      locala.bPH = i;
+      localkf.dlK.dlL = new Intent();
+      if (this.BhZ != null) {
+        localkf.dlK.dlL.putExtra("key_jsapi_close_page_after_pay", this.BhZ.Bye);
+      }
+      if ((this.BhZ != null) && (this.BhZ.Bye == 0) && (!bs.isNullOrNil(this.BhZ.Byh)) && (!bs.isNullOrNil(this.BhZ.Byg))) {
+        localkf.dlK.dlL.putExtra("key_jsapi_close_page_after_pay", 1);
+      }
+      if (this.BCR != null) {
+        localkf.dlK.dlL.putExtra("key_is_clear_failure", this.BCR.dmf.getInt("key_is_clear_failure", -1));
+      }
+      com.tencent.mm.sdk.b.a.GpY.l(localkf);
+      this.BCw = true;
+    }
+    AppMethodBeat.o(71035);
+  }
+  
   public void finish()
   {
     AppMethodBeat.i(71015);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "finish this %s %s", new Object[] { this, bt.eGN() });
-    if (this.vEq)
+    ac.i("MicroMsg.WalletOrderInfoNewUI", "finish this %s %s", new Object[] { this, bs.eWi() });
+    if (this.wOv)
     {
       AppMethodBeat.o(71015);
       return;
     }
     super.finish();
-    this.vEq = true;
+    this.wOv = true;
     AppMethodBeat.o(71015);
   }
   
@@ -1214,14 +1216,14 @@ public class WalletOrderInfoNewUI
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
     }
-    this.Akk = ((ImageView)findViewById(2131307115));
-    this.vIs = ((TextView)findViewById(2131303156));
-    this.AnR = ((TextView)findViewById(2131297511));
-    this.AnS = ((TextView)findViewById(2131299875));
-    this.AnT = ((WalletTextView)findViewById(2131306043));
-    this.vEp = ((TextView)findViewById(2131303088));
-    this.Akj = ((Button)findViewById(2131303152));
-    this.osi = ((ViewGroup)findViewById(2131304246));
+    this.BCG = ((ImageView)findViewById(2131307115));
+    this.wSw = ((TextView)findViewById(2131303156));
+    this.BGl = ((TextView)findViewById(2131297511));
+    this.BGm = ((TextView)findViewById(2131299875));
+    this.BGn = ((WalletTextView)findViewById(2131306043));
+    this.wOu = ((TextView)findViewById(2131303088));
+    this.BCF = ((Button)findViewById(2131303152));
+    this.oVI = ((ViewGroup)findViewById(2131304246));
     showHomeBtn(false);
     enableBackMenu(false);
     Object localObject2 = getString(2131755779);
@@ -1229,12 +1231,12 @@ public class WalletOrderInfoNewUI
     int i;
     label729:
     Object localObject3;
-    if ((this.mPayInfo != null) && (this.mPayInfo.dtb == 2)) {
-      if ((this.zPF != null) && (!bt.isNullOrNil(this.zPF.AfI)))
+    if ((this.mPayInfo != null) && (this.mPayInfo.dqL == 2)) {
+      if ((this.BhZ != null) && (!bs.isNullOrNil(this.BhZ.Byc)))
       {
-        localObject1 = this.zPF.AfI;
-        this.Akj.setText((CharSequence)localObject1);
-        this.Akj.setOnClickListener(new View.OnClickListener()
+        localObject1 = this.BhZ.Byc;
+        this.BCF.setText((CharSequence)localObject1);
+        this.BCF.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -1243,136 +1245,136 @@ public class WalletOrderInfoNewUI
             AppMethodBeat.o(71005);
           }
         });
-        this.AnU = ((ViewGroup)findViewById(2131299142));
-        this.vEn = ((ViewGroup)findViewById(2131299141));
-        this.Akr = ((ViewGroup)findViewById(2131306773));
-        this.vEm = ((ViewGroup)findViewById(2131299143));
-        this.vEo = ((ViewGroup)findViewById(2131303089));
-        this.AnV = ((ViewGroup)findViewById(2131301517));
-        this.AnW = ((ViewGroup)findViewById(2131299144));
-        this.AnY = ((ViewGroup)findViewById(2131304780));
-        this.AnX = ((ViewGroup)findViewById(2131303981));
-        this.Akl = ((ViewGroup)findViewById(2131305855));
-        this.Akm = ((CdnImageView)findViewById(2131305857));
-        this.Akm.setUseSdcardCache(true);
-        this.Akn = ((TextView)findViewById(2131305854));
-        this.Ako = ((TextView)findViewById(2131305859));
-        this.Akq = ((Button)findViewById(2131305852));
-        this.Akp = findViewById(2131305856);
-        this.AnZ = ((ViewGroup)findViewById(2131305518));
-        this.Aoa = ((TextView)findViewById(2131297290));
-        this.Aob = ((CheckBox)findViewById(2131305517));
-        this.Aog = ((ViewGroup)findViewById(2131296425));
-        this.Aoh = ((CdnImageView)findViewById(2131296426));
-        this.Aoh.setUseSdcardCache(true);
-        this.Aoj = ((TextView)findViewById(2131296427));
-        this.Aoi = ((TextView)findViewById(2131296422));
-        this.Aok = ((Button)findViewById(2131296420));
-        this.Aoc = ((ViewGroup)findViewById(2131306766));
-        this.Aoe = ((TextView)findViewById(2131306768));
-        this.Aod = ((CdnImageView)findViewById(2131306765));
-        this.Aof = ((ProgressBar)findViewById(2131306767));
-        this.vEl = ((WalletSuccPageAwardWidget)findViewById(2131297022));
-        edO();
-        if ((this.zPF != null) && (this.AnN != null) && (this.AnN.size() > 0))
+        this.BGo = ((ViewGroup)findViewById(2131299142));
+        this.wOs = ((ViewGroup)findViewById(2131299141));
+        this.BCN = ((ViewGroup)findViewById(2131306773));
+        this.wOr = ((ViewGroup)findViewById(2131299143));
+        this.wOt = ((ViewGroup)findViewById(2131303089));
+        this.BGp = ((ViewGroup)findViewById(2131301517));
+        this.BGq = ((ViewGroup)findViewById(2131299144));
+        this.BGs = ((ViewGroup)findViewById(2131304780));
+        this.BGr = ((ViewGroup)findViewById(2131303981));
+        this.BCH = ((ViewGroup)findViewById(2131305855));
+        this.BCI = ((CdnImageView)findViewById(2131305857));
+        this.BCI.setUseSdcardCache(true);
+        this.BCJ = ((TextView)findViewById(2131305854));
+        this.BCK = ((TextView)findViewById(2131305859));
+        this.BCM = ((Button)findViewById(2131305852));
+        this.BCL = findViewById(2131305856);
+        this.BGt = ((ViewGroup)findViewById(2131305518));
+        this.BGu = ((TextView)findViewById(2131297290));
+        this.BGv = ((CheckBox)findViewById(2131305517));
+        this.BGA = ((ViewGroup)findViewById(2131296425));
+        this.BGB = ((CdnImageView)findViewById(2131296426));
+        this.BGB.setUseSdcardCache(true);
+        this.BGD = ((TextView)findViewById(2131296427));
+        this.BGC = ((TextView)findViewById(2131296422));
+        this.BGE = ((Button)findViewById(2131296420));
+        this.BGw = ((ViewGroup)findViewById(2131306766));
+        this.BGy = ((TextView)findViewById(2131306768));
+        this.BGx = ((CdnImageView)findViewById(2131306765));
+        this.BGz = ((ProgressBar)findViewById(2131306767));
+        this.wOq = ((WalletSuccPageAwardWidget)findViewById(2131297022));
+        etj();
+        if ((this.BhZ != null) && (this.BGh != null) && (this.BGh.size() > 0))
         {
-          localObject1 = (Orders.Commodity)this.AnN.get(0);
-          this.AnR.setText(((Orders.Commodity)localObject1).uoe);
-          this.AnS.setText(e.aNc(((Orders.Commodity)localObject1).uop));
-          this.AnT.setText(String.format("%.2f", new Object[] { Double.valueOf(((Orders.Commodity)localObject1).nUf) }));
+          localObject1 = (Orders.Commodity)this.BGh.get(0);
+          this.BGl.setText(((Orders.Commodity)localObject1).vxa);
+          this.BGm.setText(e.aSF(((Orders.Commodity)localObject1).vxl));
+          this.BGn.setText(String.format("%.2f", new Object[] { Double.valueOf(((Orders.Commodity)localObject1).oxA) }));
         }
-        if (this.zPF != null) {
+        if (this.BhZ != null) {
           break label1449;
         }
         i = 0;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "is_use_show_info: %s", new Object[] { Integer.valueOf(i) });
-        if ((this.zPF == null) || (this.zPF.AfJ != 1)) {
+        ac.i("MicroMsg.WalletOrderInfoNewUI", "is_use_show_info: %s", new Object[] { Integer.valueOf(i) });
+        if ((this.BhZ == null) || (this.BhZ.Byd != 1)) {
           break label1460;
         }
-        this.AnV.setVisibility(8);
-        this.AnW.setVisibility(8);
-        this.vEo.setVisibility(8);
-        this.vEm.setVisibility(8);
-        this.AnX.setVisibility(8);
-        eej();
+        this.BGp.setVisibility(8);
+        this.BGq.setVisibility(8);
+        this.wOt.setVisibility(8);
+        this.wOr.setVisibility(8);
+        this.BGr.setVisibility(8);
+        etE();
         label816:
-        eei();
-        if ((this.AnN == null) || (this.AnN.size() <= 0)) {
+        etD();
+        if ((this.BGh == null) || (this.BGh.size() <= 0)) {
           break label1895;
         }
-        localObject1 = (Orders.Commodity)this.AnN.get(0);
-        if ((localObject1 == null) || (((Orders.Commodity)localObject1).Agh == null) || (((Orders.Commodity)localObject1).Agh.size() <= 0)) {
+        localObject1 = (Orders.Commodity)this.BGh.get(0);
+        if ((localObject1 == null) || (((Orders.Commodity)localObject1).ByB == null) || (((Orders.Commodity)localObject1).ByB.size() <= 0)) {
           break label1892;
         }
-        localObject2 = ((Orders.Commodity)localObject1).Agh.iterator();
+        localObject2 = ((Orders.Commodity)localObject1).ByB.iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (Orders.Promotions)((Iterator)localObject2).next();
-          if (((((Orders.Promotions)localObject3).AgD != null) && (((Orders.Promotions)localObject3).LvT == 5)) || ((((Orders.Promotions)localObject3).AgD != null) && (((Orders.Promotions)localObject3).AgD.Khc != null)))
+          if (((((Orders.Promotions)localObject3).ByX != null) && (((Orders.Promotions)localObject3).DeE == 5)) || ((((Orders.Promotions)localObject3).ByX != null) && (((Orders.Promotions)localObject3).ByX.LUM != null)))
           {
-            this.vEk = ((Orders.Promotions)localObject3).AgD;
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "get exposureInfo: %s, from promotion: %s", new Object[] { this.vEk, Integer.valueOf(((Orders.Promotions)localObject3).LvT) });
+            this.wOp = ((Orders.Promotions)localObject3).ByX;
+            ac.i("MicroMsg.WalletOrderInfoNewUI", "get exposureInfo: %s, from promotion: %s", new Object[] { this.wOp, Integer.valueOf(((Orders.Promotions)localObject3).DeE) });
           }
         }
       }
     }
     for (;;)
     {
-      if (WalletSuccPageAwardWidget.a(this.vEk)) {
+      if (WalletSuccPageAwardWidget.a(this.wOp)) {
         if (localObject1 != null)
         {
-          localObject2 = (ViewGroup.MarginLayoutParams)this.vEl.getLayoutParams();
-          localObject3 = ((Orders.Commodity)localObject1).Agb;
-          if (((((Orders.Commodity)localObject1).AfY >= 0.0D) && (((Orders.Commodity)localObject1).nUf < ((Orders.Commodity)localObject1).AfY)) || ((localObject3 != null) && (((List)localObject3).size() > 0)))
+          localObject2 = (ViewGroup.MarginLayoutParams)this.wOq.getLayoutParams();
+          localObject3 = ((Orders.Commodity)localObject1).Byv;
+          if (((((Orders.Commodity)localObject1).Bys >= 0.0D) && (((Orders.Commodity)localObject1).oxA < ((Orders.Commodity)localObject1).Bys)) || ((localObject3 != null) && (((List)localObject3).size() > 0)))
           {
             ((ViewGroup.MarginLayoutParams)localObject2).topMargin = 0;
             label1054:
-            this.vEl.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+            this.wOq.setLayoutParams((ViewGroup.LayoutParams)localObject2);
           }
         }
         else
         {
-          this.vEl.a(this, this.vEk, this.ujI, false, (ImageView)findViewById(2131297029));
-          this.vEl.init();
-          this.vEl.setVisibility(0);
+          this.wOq.a(this, this.wOp, this.vsE, false, (ImageView)findViewById(2131297029));
+          this.wOq.init();
+          this.wOq.setVisibility(0);
           localObject1 = (ImageView)findViewById(2131297029);
           ((ImageView)localObject1).post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(71006);
-              ViewGroup.LayoutParams localLayoutParams = this.vEv.getLayoutParams();
+              ViewGroup.LayoutParams localLayoutParams = this.wOA.getLayoutParams();
               localLayoutParams.width = WalletOrderInfoNewUI.f(WalletOrderInfoNewUI.this).getWidth();
               localLayoutParams.height = WalletOrderInfoNewUI.f(WalletOrderInfoNewUI.this).getHeight();
-              this.vEv.setLayoutParams(localLayoutParams);
+              this.wOA.setLayoutParams(localLayoutParams);
               AppMethodBeat.o(71006);
             }
           });
           label1129:
-          if ((this.vEk == null) || (this.vEk.Khc == null)) {
+          if ((this.wOp == null) || (this.wOp.LUM == null)) {
             break label1839;
           }
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "show card info: %s", new Object[] { Integer.valueOf(this.vEk.Khc.Khd) });
-          this.Aoc.setVisibility(0);
-          if (this.vEk.Khc.Khd != 0) {
+          ac.i("MicroMsg.WalletOrderInfoNewUI", "show card info: %s", new Object[] { Integer.valueOf(this.wOp.LUM.LUN) });
+          this.BGw.setVisibility(0);
+          if (this.wOp.LUM.LUN != 0) {
             break label1756;
           }
-          this.Aom = false;
-          com.tencent.mm.plugin.report.service.h.vKh.f(17267, new Object[] { this.vGZ, this.vEk.Khc.Khe, Integer.valueOf(1), Long.valueOf(System.currentTimeMillis()) });
+          this.BGG = false;
+          com.tencent.mm.plugin.report.service.h.wUl.f(17267, new Object[] { this.wRe, this.wOp.LUM.LUO, Integer.valueOf(1), Long.valueOf(System.currentTimeMillis()) });
         }
       }
       label1449:
       label1839:
       for (;;)
       {
-        eeg();
-        bt.n(this.Aoc, 12, 12, 12, 12);
-        this.Aoc.setOnClickListener(new View.OnClickListener()
+        etB();
+        bs.n(this.BGw, 12, 12, 12, 12);
+        this.BGw.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(71007);
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "click card mch subscribe");
+            ac.i("MicroMsg.WalletOrderInfoNewUI", "click card mch subscribe");
             if (WalletOrderInfoNewUI.g(WalletOrderInfoNewUI.this))
             {
               WalletOrderInfoNewUI.h(WalletOrderInfoNewUI.this);
@@ -1383,87 +1385,87 @@ public class WalletOrderInfoNewUI
             AppMethodBeat.o(71007);
           }
         });
-        edN();
+        eti();
         AppMethodBeat.o(71018);
         return;
-        if (!bt.isNullOrNil(this.mPayInfo.Axg))
+        if (!bs.isNullOrNil(this.mPayInfo.BPA))
         {
-          localObject1 = getString(2131755281) + this.mPayInfo.Axg;
+          localObject1 = getString(2131755281) + this.mPayInfo.BPA;
           break;
         }
         localObject1 = localObject2;
-        if (bt.isNullOrNil(this.mPayInfo.appId)) {
+        if (bs.isNullOrNil(this.mPayInfo.appId)) {
           break;
         }
         localObject1 = localObject2;
-        if (bt.isNullOrNil(com.tencent.mm.pluginsdk.model.app.h.s(this, this.mPayInfo.appId))) {
+        if (bs.isNullOrNil(com.tencent.mm.pluginsdk.model.app.h.s(this, this.mPayInfo.appId))) {
           break;
         }
         localObject1 = getString(2131755281) + com.tencent.mm.pluginsdk.model.app.h.s(this, this.mPayInfo.appId);
         break;
         localObject1 = localObject2;
-        if (this.zPF == null) {
+        if (this.BhZ == null) {
           break;
         }
         localObject1 = localObject2;
-        if (bt.isNullOrNil(this.zPF.AfI)) {
+        if (bs.isNullOrNil(this.BhZ.Byc)) {
           break;
         }
-        localObject1 = this.zPF.AfI;
+        localObject1 = this.BhZ.Byc;
         break;
-        i = this.zPF.AfJ;
+        i = this.BhZ.Byd;
         break label729;
         label1460:
-        eeh();
-        if ((this.zPF != null) && (this.AnN != null) && (this.AnN.size() > 0))
+        etC();
+        if ((this.BhZ != null) && (this.BGh != null) && (this.BGh.size() > 0))
         {
-          localObject1 = (Orders.Commodity)this.AnN.get(0);
-          if (((Orders.Commodity)localObject1).Agg != null)
+          localObject1 = (Orders.Commodity)this.BGh.get(0);
+          if (((Orders.Commodity)localObject1).ByA != null)
           {
-            localObject2 = (TextView)this.AnX.findViewById(2131303980);
-            localObject3 = (TextView)this.AnX.findViewById(2131303979);
-            ((TextView)localObject2).setText(((Orders.Commodity)localObject1).Agg.AgK);
-            ((TextView)localObject3).setText(((Orders.Commodity)localObject1).Agg.AgL);
-            this.AnX.setVisibility(0);
-            this.AnU.setVisibility(0);
+            localObject2 = (TextView)this.BGr.findViewById(2131303980);
+            localObject3 = (TextView)this.BGr.findViewById(2131303979);
+            ((TextView)localObject2).setText(((Orders.Commodity)localObject1).ByA.Bze);
+            ((TextView)localObject3).setText(((Orders.Commodity)localObject1).ByA.Bzf);
+            this.BGr.setVisibility(0);
+            this.BGo.setVisibility(0);
           }
         }
-        this.AnW.setVisibility(8);
-        this.AnV.setVisibility(8);
-        if ((this.zPF == null) || (this.AnN == null) || (this.AnN.size() <= 0)) {
+        this.BGq.setVisibility(8);
+        this.BGp.setVisibility(8);
+        if ((this.BhZ == null) || (this.BGh == null) || (this.BGh.size() <= 0)) {
           break label816;
         }
-        localObject1 = (Orders.Commodity)this.AnN.get(0);
-        if (!bt.isNullOrNil(((Orders.Commodity)localObject1).Age))
+        localObject1 = (Orders.Commodity)this.BGh.get(0);
+        if (!bs.isNullOrNil(((Orders.Commodity)localObject1).Byy))
         {
-          ((TextView)findViewById(2131301518)).setText(((Orders.Commodity)localObject1).Age);
-          this.AnV.setVisibility(0);
-          this.AnU.setVisibility(0);
+          ((TextView)findViewById(2131301518)).setText(((Orders.Commodity)localObject1).Byy);
+          this.BGp.setVisibility(0);
+          this.BGo.setVisibility(0);
         }
-        if (bt.isNullOrNil(((Orders.Commodity)localObject1).Agc)) {
+        if (bs.isNullOrNil(((Orders.Commodity)localObject1).Byw)) {
           break label816;
         }
-        ((TextView)findViewById(2131299145)).setText(((Orders.Commodity)localObject1).Agc);
-        this.AnW.setVisibility(0);
-        this.AnU.setVisibility(0);
+        ((TextView)findViewById(2131299145)).setText(((Orders.Commodity)localObject1).Byw);
+        this.BGq.setVisibility(0);
+        this.BGo.setVisibility(0);
         break label816;
-        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = com.tencent.mm.cd.a.fromDPToPix(this, 50);
+        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = com.tencent.mm.cc.a.fromDPToPix(this, 50);
         break label1054;
-        sH(true);
-        this.vEl.setVisibility(8);
+        tI(true);
+        this.wOq.setVisibility(8);
         break label1129;
         label1756:
-        if (this.vEk.Khc.Khd == 1)
+        if (this.wOp.LUM.LUN == 1)
         {
-          this.Aom = true;
-          com.tencent.mm.plugin.report.service.h.vKh.f(17267, new Object[] { this.vGZ, this.vEk.Khc.Khm, Integer.valueOf(1), Long.valueOf(System.currentTimeMillis()) });
+          this.BGG = true;
+          com.tencent.mm.plugin.report.service.h.wUl.f(17267, new Object[] { this.wRe, this.wOp.LUM.LUW, Integer.valueOf(1), Long.valueOf(System.currentTimeMillis()) });
         }
         else
         {
-          this.Aoc.setVisibility(8);
+          this.BGw.setVisibility(8);
           continue;
-          this.Aoc.setVisibility(8);
-          com.tencent.mm.plugin.report.service.h.vKh.f(17267, new Object[] { this.vGZ, "", Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
+          this.BGw.setVisibility(8);
+          com.tencent.mm.plugin.report.service.h.wUl.f(17267, new Object[] { this.wRe, "", Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
         }
       }
       label1892:
@@ -1477,23 +1479,23 @@ public class WalletOrderInfoNewUI
   {
     AppMethodBeat.i(71028);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "onActivityResult %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.WalletOrderInfoNewUI", "onActivityResult %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 1)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "do query pay arawrd, query_award_status_params==null: %s, isCallQueryPayAward: %s", new Object[] { Boolean.valueOf(bt.isNullOrNil(this.Ake.AoD)), Boolean.valueOf(this.Aon) });
-      if (this.Aon)
+      ac.i("MicroMsg.WalletOrderInfoNewUI", "do query pay arawrd, query_award_status_params==null: %s, isCallQueryPayAward: %s", new Object[] { Boolean.valueOf(bs.isNullOrNil(this.BCA.BGX)), Boolean.valueOf(this.BGH) });
+      if (this.BGH)
       {
         AppMethodBeat.o(71028);
         return;
       }
-      this.Aon = true;
-      if (bt.isNullOrNil(this.Ake.AoD))
+      this.BGH = true;
+      if (bs.isNullOrNil(this.BCA.BGX))
       {
-        doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.af(this.Ake.zWH, this.Ake.Aoz, this.Ake.AoA, this.Ake.AoB, this.Ake.dlJ, this.Ake.vBv, this.Ake.AgJ));
+        doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.af(this.BCA.Bpb, this.BCA.BGT, this.BCA.BGU, this.BCA.BGV, this.BCA.djr, this.BCA.wLA, this.BCA.Bzd));
         AppMethodBeat.o(71028);
         return;
       }
-      doSceneProgress(new p(this.Ake.AoD, this.Ake.zWH));
+      doSceneProgress(new p(this.BCA.BGX, this.BCA.Bpb));
     }
     AppMethodBeat.o(71028);
   }
@@ -1509,10 +1511,10 @@ public class WalletOrderInfoNewUI
     label266:
     label529:
     label545:
-    xk.a locala;
-    if (com.tencent.mm.compatible.util.d.lf(21))
+    xv.a locala;
+    if (com.tencent.mm.compatible.util.d.kZ(21))
     {
-      if (com.tencent.mm.compatible.util.d.lf(23))
+      if (com.tencent.mm.compatible.util.d.kZ(23))
       {
         getWindow().setStatusBarColor(getResources().getColor(2131101179));
         getWindow().getDecorView().setSystemUiVisibility(8192);
@@ -1521,31 +1523,31 @@ public class WalletOrderInfoNewUI
     else
     {
       setContentViewVisibility(4);
-      this.AnM = new HashSet();
-      paramBundle = com.tencent.mm.wallet_core.a.bo(this);
+      this.BGg = new HashSet();
+      paramBundle = com.tencent.mm.wallet_core.a.br(this);
       this.mPayInfo = ((PayInfo)getInput().getParcelable("key_pay_info"));
-      this.ujI = getInput().getString("key_trans_id");
+      this.vsE = getInput().getString("key_trans_id");
       getInput().getInt("key_pay_type", -1);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "mTransId %s", new Object[] { this.ujI });
-      this.zPF = eee();
-      if (this.zPF == null) {
+      ac.i("MicroMsg.WalletOrderInfoNewUI", "mTransId %s", new Object[] { this.vsE });
+      this.BhZ = etz();
+      if (this.BhZ == null) {
         break label854;
       }
       setContentViewVisibility(0);
-      c(this.zPF);
+      c(this.BhZ);
       Object localObject;
-      if ((paramBundle != null) && (this.zPF != null) && (this.mPayInfo != null))
+      if ((paramBundle != null) && (this.BhZ != null) && (this.mPayInfo != null))
       {
         this.mAppId = this.mPayInfo.appId;
-        boolean bool2 = paramBundle.fjs();
+        boolean bool2 = paramBundle.fzH();
         com.tencent.mm.plugin.wallet_core.utils.f.a(this, getInput(), 7);
         if (getInput().getInt("key_support_bankcard", 1) != 2) {
           break label802;
         }
         i = 2;
-        localObject = com.tencent.mm.plugin.report.service.h.vKh;
-        int k = this.mPayInfo.dtb;
-        if (this.mPayInfo.dtb != 3) {
+        localObject = com.tencent.mm.plugin.report.service.h.wUl;
+        int k = this.mPayInfo.dqL;
+        if (this.mPayInfo.dqL != 3) {
           break label807;
         }
         bool1 = true;
@@ -1553,41 +1555,41 @@ public class WalletOrderInfoNewUI
           break label813;
         }
         j = 1;
-        ((com.tencent.mm.plugin.report.service.h)localObject).f(10691, new Object[] { Integer.valueOf(k), Boolean.valueOf(bool1), Integer.valueOf(j), Integer.valueOf(ab.fkb()), Integer.valueOf((int)(this.zPF.dcH * 100.0D)), this.zPF.uop, Integer.valueOf(i) });
+        ((com.tencent.mm.plugin.report.service.h)localObject).f(10691, new Object[] { Integer.valueOf(k), Boolean.valueOf(bool1), Integer.valueOf(j), Integer.valueOf(ab.fAr()), Integer.valueOf((int)(this.BhZ.daf * 100.0D)), this.BhZ.vxl, Integer.valueOf(i) });
       }
-      if (((!com.tencent.mm.plugin.wallet_core.model.s.ecc().ecF()) && (paramBundle != null) && (paramBundle.fjs())) || (!u.aqQ())) {
-        u.aqR();
+      if (((!com.tencent.mm.plugin.wallet_core.model.s.ery().esa()) && (paramBundle != null) && (paramBundle.fzH())) || (!u.axG())) {
+        u.axH();
       }
-      if ((this.zPF == null) || (this.zPF.Afx == null) || (this.zPF.Afx.size() <= 0)) {
+      if ((this.BhZ == null) || (this.BhZ.BxR == null) || (this.BhZ.BxR.size() <= 0)) {
         break label818;
       }
-      this.AnN = this.zPF.Afx;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "init data commoditys size: %s", new Object[] { Integer.valueOf(this.AnN.size()) });
-      this.ujI = ((Orders.Commodity)this.AnN.get(0)).dcF;
-      this.vGZ = ((Orders.Commodity)this.AnN.get(0)).dcF;
-      if ((this.mPayInfo != null) && (paramBundle != null) && ((paramBundle.fjr()) || (paramBundle.fjs()))) {
-        doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.ad(getPayReqKey(), 21));
+      this.BGh = this.BhZ.BxR;
+      ac.i("MicroMsg.WalletOrderInfoNewUI", "init data commoditys size: %s", new Object[] { Integer.valueOf(this.BGh.size()) });
+      this.vsE = ((Orders.Commodity)this.BGh.get(0)).dad;
+      this.wRe = ((Orders.Commodity)this.BGh.get(0)).dad;
+      if ((this.mPayInfo != null) && (paramBundle != null) && ((paramBundle.fzG()) || (paramBundle.fzH()))) {
+        doSceneProgress(new ad(getPayReqKey(), 21));
       }
       ((com.tencent.mm.plugin.fingerprint.b.h)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.b.h.class)).h(this);
       initView();
-      this.Akv = getProcess();
-      edO();
-      if ((this.mPayInfo != null) && (this.mPayInfo.dtb == 46))
+      this.BCR = getProcess();
+      etj();
+      if ((this.mPayInfo != null) && (this.mPayInfo.dqL == 46))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "early send result");
-        paramBundle = new xk();
+        ac.i("MicroMsg.WalletOrderInfoNewUI", "early send result");
+        paramBundle = new xv();
         localObject = new Intent();
         ((Intent)localObject).putExtras(getInput());
-        if (this.zPF != null) {
-          ((Intent)localObject).putExtra("key_total_fee", this.zPF.dcH);
+        if (this.BhZ != null) {
+          ((Intent)localObject).putExtra("key_total_fee", this.BhZ.daf);
         }
-        if (this.Akv != null) {
-          ((Intent)localObject).putExtra("key_is_clear_failure", this.Akv.dow.getInt("key_is_clear_failure", -1));
+        if (this.BCR != null) {
+          ((Intent)localObject).putExtra("key_is_clear_failure", this.BCR.dmf.getInt("key_is_clear_failure", -1));
         }
-        paramBundle.dDy.intent = ((Intent)localObject);
-        paramBundle.dDy.dDB = 1;
-        paramBundle.dDy.dcE = getPayReqKey();
-        locala = paramBundle.dDy;
+        paramBundle.dBk.intent = ((Intent)localObject);
+        paramBundle.dBk.dBn = 1;
+        paramBundle.dBk.dac = getPayReqKey();
+        locala = paramBundle.dBk;
         if (!((Intent)localObject).getBooleanExtra("intent_pay_end", false)) {
           break label890;
         }
@@ -1602,12 +1604,12 @@ public class WalletOrderInfoNewUI
     for (int i = -1;; i = 0)
     {
       locala.result = i;
-      com.tencent.mm.sdk.b.a.ESL.l(paramBundle);
-      if ((this.zPF == null) || (this.zPF.AfV == null) || (this.zPF.AfV.AgS != 1)) {
+      com.tencent.mm.sdk.b.a.GpY.l(paramBundle);
+      if ((this.BhZ == null) || (this.BhZ.Byp == null) || (this.BhZ.Byp.Bzm != 1)) {
         break label895;
       }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "simple cashier");
-      eek();
+      ac.i("MicroMsg.WalletOrderInfoNewUI", "simple cashier");
+      etF();
       AppMethodBeat.o(71016);
       return;
       getWindow().setStatusBarColor(getResources().getColor(2131099678));
@@ -1618,7 +1620,7 @@ public class WalletOrderInfoNewUI
       break label259;
       j = 2;
       break label266;
-      com.tencent.mm.sdk.platformtools.ad.m("MicroMsg.WalletOrderInfoNewUI", "mOrders info is Illegal!", new Object[0]);
+      ac.m("MicroMsg.WalletOrderInfoNewUI", "mOrders info is Illegal!", new Object[0]);
       com.tencent.mm.ui.base.h.a(getContext(), 2131765550, 0, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -1629,7 +1631,7 @@ public class WalletOrderInfoNewUI
         }
       });
       break label529;
-      com.tencent.mm.sdk.platformtools.ad.m("MicroMsg.WalletOrderInfoNewUI", "mOrders info is Illegal!", new Object[0]);
+      ac.m("MicroMsg.WalletOrderInfoNewUI", "mOrders info is Illegal!", new Object[0]);
       com.tencent.mm.ui.base.h.a(getContext(), 2131765550, 0, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -1645,10 +1647,10 @@ public class WalletOrderInfoNewUI
     addSceneEndListener(1979);
     addSceneEndListener(2948);
     addSceneEndListener(2710);
-    com.tencent.mm.sdk.b.a.ESL.c(this.Aoo);
-    com.tencent.mm.sdk.b.a.ESL.c(this.umw);
-    this.vEr.alive();
-    this.Aku = true;
+    com.tencent.mm.sdk.b.a.GpY.c(this.BGI);
+    com.tencent.mm.sdk.b.a.GpY.c(this.vvs);
+    this.wOw.alive();
+    this.BCQ = true;
     if (this.mPayInfo == null)
     {
       i = 0;
@@ -1657,12 +1659,12 @@ public class WalletOrderInfoNewUI
       }
     }
     label997:
-    for (paramBundle = "";; paramBundle = this.mPayInfo.dcE)
+    for (paramBundle = "";; paramBundle = this.mPayInfo.dac)
     {
       com.tencent.mm.wallet_core.c.af.f(i, paramBundle, 16, "");
       AppMethodBeat.o(71016);
       return;
-      i = this.mPayInfo.dtb;
+      i = this.mPayInfo.dqL;
       break;
     }
   }
@@ -1680,24 +1682,24 @@ public class WalletOrderInfoNewUI
   {
     AppMethodBeat.i(71034);
     super.onDestroy();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "do follow card bd mch");
-    if ((this.vEk != null) && (this.vEk.Khc != null)) {
-      new com.tencent.mm.plugin.wallet_core.c.b(this.vEk.Khc.CWQ, this.vEk.Khc.Khd, this.Aol).auK().h(new WalletOrderInfoNewUI.13(this));
+    ac.i("MicroMsg.WalletOrderInfoNewUI", "do follow card bd mch");
+    if ((this.wOp != null) && (this.wOp.LUM != null)) {
+      new com.tencent.mm.plugin.wallet_core.c.b(this.wOp.LUM.Epz, this.wOp.LUM.LUN, this.BGF).aBB().h(new WalletOrderInfoNewUI.13(this));
     }
-    com.tencent.mm.sdk.b.a.ESL.d(this.Aoo);
-    com.tencent.mm.sdk.b.a.ESL.d(this.umw);
+    com.tencent.mm.sdk.b.a.GpY.d(this.BGI);
+    com.tencent.mm.sdk.b.a.GpY.d(this.vvs);
     removeSceneEndListener(1979);
     removeSceneEndListener(2948);
     removeSceneEndListener(2710);
-    this.vEr.dead();
-    if (WalletSuccPageAwardWidget.a(this.vEk)) {
-      this.vEl.onDestroy();
+    this.wOw.dead();
+    if (WalletSuccPageAwardWidget.a(this.wOp)) {
+      this.wOq.onDestroy();
     }
-    if (this.Aop != null) {
-      this.Aop.cancel();
+    if (this.BGJ != null) {
+      this.BGJ.cancel();
     }
-    if (this.Aoq != null) {
-      this.Aoq.cancel();
+    if (this.BGK != null) {
+      this.BGK.cancel();
     }
     AppMethodBeat.o(71034);
   }
@@ -1720,40 +1722,40 @@ public class WalletOrderInfoNewUI
   {
     AppMethodBeat.i(71017);
     super.onResume();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "onResume, isFirstInit: %s activityPromotions: %s, isClickTinyappActivity: %s, isClickActivity: %s, recommendTinyAppInfo: %s, exposureInfo: %s", new Object[] { Boolean.valueOf(this.Aku), this.AnQ, Boolean.valueOf(this.Aks), Boolean.valueOf(this.Akt), this.AnO, this.vEk });
-    if (WalletSuccPageAwardWidget.a(this.vEk))
+    ac.i("MicroMsg.WalletOrderInfoNewUI", "onResume, isFirstInit: %s activityPromotions: %s, isClickTinyappActivity: %s, isClickActivity: %s, recommendTinyAppInfo: %s, exposureInfo: %s", new Object[] { Boolean.valueOf(this.BCQ), this.BGk, Boolean.valueOf(this.BCO), Boolean.valueOf(this.BCP), this.BGi, this.wOp });
+    if (WalletSuccPageAwardWidget.a(this.wOp))
     {
-      this.vEl.onResume();
+      this.wOq.onResume();
       AppMethodBeat.o(71017);
       return;
     }
-    if (this.Aku)
+    if (this.BCQ)
     {
-      this.Aku = false;
+      this.BCQ = false;
       AppMethodBeat.o(71017);
       return;
     }
-    if ((this.AnQ != null) && (this.Akt))
+    if ((this.BGk != null) && (this.BCP))
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "do query payAward, queryAwardStatusParams==null: %s %s, isCallQueryPayAward: %s", new Object[] { Boolean.valueOf(bt.isNullOrNil(this.AnQ.Lwa)), this.AnQ.Lwa, Boolean.valueOf(this.Aon) });
-      if (this.Aon)
+      ac.i("MicroMsg.WalletOrderInfoNewUI", "do query payAward, queryAwardStatusParams==null: %s %s, isCallQueryPayAward: %s", new Object[] { Boolean.valueOf(bs.isNullOrNil(this.BGk.GZR)), this.BGk.GZR, Boolean.valueOf(this.BGH) });
+      if (this.BGH)
       {
         AppMethodBeat.o(71017);
         return;
       }
-      this.Aon = true;
-      if (bt.isNullOrNil(this.AnQ.Lwa))
+      this.BGH = true;
+      if (bs.isNullOrNil(this.BGk.GZR))
       {
-        doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.af(this.AnQ.zWi, this.AnQ.LvU, this.AnQ.AeW, this.AnQ.AeX, getPayReqKey(), this.vGZ, this.AnQ.AeY));
+        doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.af(this.BGk.BoC, this.BGk.DeF, this.BGk.Bxq, this.BGk.Bxr, getPayReqKey(), this.wRe, this.BGk.Bxs));
         AppMethodBeat.o(71017);
         return;
       }
-      doSceneProgress(new p(this.AnQ.Lwa, this.AnQ.zWi));
+      doSceneProgress(new p(this.BGk.GZR, this.BGk.BoC));
       AppMethodBeat.o(71017);
       return;
     }
-    if ((this.Aks) && (this.AnO != null)) {
-      doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.af(this.AnO.AgE, this.AnO.AgG, this.AnO.AgH, this.AnO.AgI, getPayReqKey(), this.vGZ, this.AnO.AgJ));
+    if ((this.BCO) && (this.BGi != null)) {
+      doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.af(this.BGi.ByY, this.BGi.Bza, this.BGi.Bzb, this.BGi.Bzc, getPayReqKey(), this.wRe, this.BGi.Bzd));
     }
     AppMethodBeat.o(71017);
   }
@@ -1761,8 +1763,8 @@ public class WalletOrderInfoNewUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(71036);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "onSceneEnd, errType: %s, errCode: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramn });
-    if ((WalletSuccPageAwardWidget.a(this.vEk)) && (this.vEl.onSceneEnd(paramInt1, paramInt2, paramString, paramn)))
+    ac.i("MicroMsg.WalletOrderInfoNewUI", "onSceneEnd, errType: %s, errCode: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramn });
+    if ((WalletSuccPageAwardWidget.a(this.wOp)) && (this.wOq.onSceneEnd(paramInt1, paramInt2, paramString, paramn)))
     {
       AppMethodBeat.o(71036);
       return true;
@@ -1771,17 +1773,17 @@ public class WalletOrderInfoNewUI
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         paramString = (com.tencent.mm.plugin.wallet_core.c.af)paramn;
-        paramn = new a(paramString.jwa);
-        if (this.Ake != null)
+        paramn = new a(paramString.jWw);
+        if (this.BCA != null)
         {
-          this.Akf.put(paramString.zWH, paramn);
-          sH(false);
-          edN();
+          this.BCB.put(paramString.Bpb, paramn);
+          tI(false);
+          eti();
         }
       }
       else
       {
-        this.Aon = false;
+        this.BGH = false;
       }
     }
     label280:
@@ -1789,39 +1791,39 @@ public class WalletOrderInfoNewUI
     {
       AppMethodBeat.o(71036);
       return false;
-      if (!this.Aks) {
+      if (!this.BCO) {
         break;
       }
-      this.Akf.put(paramString.zWH, paramn);
-      sH(false);
-      edN();
+      this.BCB.put(paramString.Bpb, paramn);
+      tI(false);
+      eti();
       break;
       if ((paramn instanceof p))
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
           paramString = (p)paramn;
-          paramn = paramString.zWo;
-          if (paramn.ntx == 0)
+          paramn = paramString.BoI;
+          if (paramn.nWx == 0)
           {
             paramn = new a(paramn);
-            if (this.Ake == null) {
+            if (this.BCA == null) {
               break label280;
             }
-            this.Akf.put(paramString.yCo, paramn);
-            sH(false);
-            edN();
+            this.BCB.put(paramString.zPC, paramn);
+            tI(false);
+            eti();
           }
         }
         for (;;)
         {
-          this.Aon = false;
+          this.BGH = false;
           break;
-          if (this.Aks)
+          if (this.BCO)
           {
-            this.Akf.put(paramString.yCo, paramn);
-            sH(false);
-            edN();
+            this.BCB.put(paramString.zPC, paramn);
+            tI(false);
+            eti();
           }
         }
       }
@@ -1830,35 +1832,35 @@ public class WalletOrderInfoNewUI
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
           paramString = (com.tencent.mm.plugin.wallet_core.c.s)paramn;
-          paramn = paramString.zWp;
-          if ((this.AnQ != null) && (this.AnQ.zWi == paramString.zWs.zWi))
+          paramn = paramString.BoJ;
+          if ((this.BGk != null) && (this.BGk.BoC == paramString.BoM.BoC))
           {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "activityAwardState: %s", new Object[] { this.AnQ });
-            this.Aki = paramn;
-            com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WalletOrderInfoNewUI", "btnName: %s", new Object[] { paramString.zWs.AeZ });
-            sH(false);
-            edN();
-            if ((!bt.isNullOrNil(paramString.foR)) && (!"3".equals(paramn))) {
-              this.Akq.setText(paramString.foR);
+            ac.i("MicroMsg.WalletOrderInfoNewUI", "activityAwardState: %s", new Object[] { this.BGk });
+            this.BCE = paramn;
+            ac.d("MicroMsg.WalletOrderInfoNewUI", "btnName: %s", new Object[] { paramString.BoM.Bxt });
+            tI(false);
+            eti();
+            if ((!bs.isNullOrNil(paramString.fsq)) && (!"3".equals(paramn))) {
+              this.BCM.setText(paramString.fsq);
             }
           }
-          if ((!"-1".equals(paramn)) && (!"0".equals(paramn)) && (!bt.isNullOrNil(paramString.zWq))) {
-            com.tencent.mm.ui.base.h.c(this, paramString.zWq, "", true);
+          if ((!"-1".equals(paramn)) && (!"0".equals(paramn)) && (!bs.isNullOrNil(paramString.BoK))) {
+            com.tencent.mm.ui.base.h.c(this, paramString.BoK, "", true);
           }
           while (!"0".equals(paramn))
           {
             AppMethodBeat.o(71036);
             return true;
           }
-          if (!bt.isNullOrNil(paramString.zWq)) {}
-          for (paramString = paramString.zWq;; paramString = getString(2131765658))
+          if (!bs.isNullOrNil(paramString.BoK)) {}
+          for (paramString = paramString.BoK;; paramString = getString(2131765658))
           {
             Toast.makeText(this, paramString, 0).show();
             break;
           }
         }
         paramn = paramString;
-        if (bt.isNullOrNil(paramString)) {
+        if (bs.isNullOrNil(paramString)) {
           paramn = getString(2131765901);
         }
         com.tencent.mm.ui.base.h.a(this, paramn, null, false, new DialogInterface.OnClickListener()
@@ -1872,26 +1874,26 @@ public class WalletOrderInfoNewUI
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = (m)paramn;
-      paramn = paramString.zWh;
+      paramn = paramString.BoB;
       String str;
-      if (paramn.ntx == 0)
+      if (paramn.nWx == 0)
       {
-        str = paramn.DqW;
-        if ((this.AnQ != null) && (this.AnQ.zWi == paramString.zWi))
+        str = paramn.ELY;
+        if ((this.BGk != null) && (this.BGk.BoC == paramString.BoC))
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOrderInfoNewUI", "activityAwardState: %s", new Object[] { this.AnQ });
-          this.Aki = str;
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WalletOrderInfoNewUI", "btnName: %s", new Object[] { paramn.DqY });
-          sH(false);
-          edN();
-          if ((!bt.isNullOrNil(paramn.DqY)) && (!"3".equals(str))) {
-            this.Akq.setText(paramn.DqY);
+          ac.i("MicroMsg.WalletOrderInfoNewUI", "activityAwardState: %s", new Object[] { this.BGk });
+          this.BCE = str;
+          ac.d("MicroMsg.WalletOrderInfoNewUI", "btnName: %s", new Object[] { paramn.EMa });
+          tI(false);
+          eti();
+          if ((!bs.isNullOrNil(paramn.EMa)) && (!"3".equals(str))) {
+            this.BCM.setText(paramn.EMa);
           }
         }
-        if (("-1".equals(str)) || ("0".equals(str)) || (bt.isNullOrNil(paramn.DqX))) {
+        if (("-1".equals(str)) || ("0".equals(str)) || (bs.isNullOrNil(paramn.ELZ))) {
           break label834;
         }
-        com.tencent.mm.ui.base.h.c(this, paramn.DqX, "", true);
+        com.tencent.mm.ui.base.h.c(this, paramn.ELZ, "", true);
       }
       label834:
       while (!"0".equals(str))
@@ -1899,15 +1901,15 @@ public class WalletOrderInfoNewUI
         AppMethodBeat.o(71036);
         return true;
       }
-      if (!bt.isNullOrNil(paramn.DqX)) {}
-      for (paramString = paramn.DqX;; paramString = getString(2131765658))
+      if (!bs.isNullOrNil(paramn.ELZ)) {}
+      for (paramString = paramn.ELZ;; paramString = getString(2131765658))
       {
         Toast.makeText(this, paramString, 0).show();
         break;
       }
     }
     paramn = paramString;
-    if (bt.isNullOrNil(paramString)) {
+    if (bs.isNullOrNil(paramString)) {
       paramn = getString(2131765901);
     }
     com.tencent.mm.ui.base.h.a(this, paramn, null, false, new DialogInterface.OnClickListener()
@@ -1933,37 +1935,37 @@ public class WalletOrderInfoNewUI
   
   static final class a
   {
-    public String Afb;
-    public String Afc;
-    public String Afd;
-    public String Aox;
-    public int Aoy;
-    public String doh;
-    public String dub;
+    public String AZE;
+    public String AZF;
+    public String BGR;
+    public int BGS;
+    public String BnG;
+    public String Bxv;
+    public String Bxw;
+    public String Bxx;
+    public String dlQ;
+    public String drM;
     public String title;
     public String url;
-    public String zHs;
-    public String zHt;
-    public String zVm;
     
-    public a(ceu paramceu)
+    public a(cjx paramcjx)
     {
       AppMethodBeat.i(71012);
-      if ((paramceu != null) && (paramceu.Ebk != null))
+      if ((paramcjx != null) && (paramcjx.Fyf != null))
       {
-        paramceu = paramceu.Ebk;
-        this.url = paramceu.url;
-        this.doh = paramceu.doh;
-        this.dub = paramceu.dub;
-        this.Aox = paramceu.Aox;
-        this.title = paramceu.title;
-        this.zHs = paramceu.zHs;
-        this.zHt = paramceu.zHt;
-        this.Aoy = paramceu.Aoy;
-        this.zVm = this.title;
-        this.Afb = this.dub;
-        this.Afc = this.doh;
-        this.Afd = this.Aox;
+        paramcjx = paramcjx.Fyf;
+        this.url = paramcjx.url;
+        this.dlQ = paramcjx.dlQ;
+        this.drM = paramcjx.drM;
+        this.BGR = paramcjx.BGR;
+        this.title = paramcjx.title;
+        this.AZE = paramcjx.AZE;
+        this.AZF = paramcjx.AZF;
+        this.BGS = paramcjx.BGS;
+        this.BnG = this.title;
+        this.Bxv = this.drM;
+        this.Bxw = this.dlQ;
+        this.Bxx = this.BGR;
       }
       AppMethodBeat.o(71012);
     }
@@ -1980,16 +1982,16 @@ public class WalletOrderInfoNewUI
       if (paramJSONObject != null)
       {
         this.url = paramJSONObject.optString("url");
-        this.doh = paramJSONObject.optString("wording");
-        this.dub = paramJSONObject.optString("icon");
-        this.Aox = paramJSONObject.optString("btn_text");
+        this.dlQ = paramJSONObject.optString("wording");
+        this.drM = paramJSONObject.optString("icon");
+        this.BGR = paramJSONObject.optString("btn_text");
         this.title = paramJSONObject.optString("title");
-        this.zVm = paramJSONObject.optString("tinyapp_name");
-        this.Afb = paramJSONObject.optString("tinyapp_logo");
-        this.Afc = paramJSONObject.optString("tinyapp_desc");
-        this.zHs = paramJSONObject.optString("tinyapp_username");
-        this.zHt = paramJSONObject.optString("tinyapp_path");
-        this.Afd = paramJSONObject.optString("activity_tinyapp_btn_text");
+        this.BnG = paramJSONObject.optString("tinyapp_name");
+        this.Bxv = paramJSONObject.optString("tinyapp_logo");
+        this.Bxw = paramJSONObject.optString("tinyapp_desc");
+        this.AZE = paramJSONObject.optString("tinyapp_username");
+        this.AZF = paramJSONObject.optString("tinyapp_path");
+        this.Bxx = paramJSONObject.optString("activity_tinyapp_btn_text");
       }
       AppMethodBeat.o(71011);
     }
@@ -1997,7 +1999,7 @@ public class WalletOrderInfoNewUI
     public final String toString()
     {
       AppMethodBeat.i(71013);
-      String str = this.url + " , " + this.doh + " , " + this.dub + " , " + this.Aox + " , " + this.title;
+      String str = this.url + " , " + this.dlQ + " , " + this.drM + " , " + this.BGR + " , " + this.title;
       AppMethodBeat.o(71013);
       return str;
     }
@@ -2005,39 +2007,39 @@ public class WalletOrderInfoNewUI
   
   static final class b
   {
-    public long AgJ;
-    public String AoA;
-    public String AoB;
-    public long AoC;
-    public String AoD;
-    public String Aoz;
-    public String dlJ;
-    public String vBv;
-    public String zWH;
+    public String BGT;
+    public String BGU;
+    public String BGV;
+    public long BGW;
+    public String BGX;
+    public String Bpb;
+    public long Bzd;
+    public String djr;
+    public String wLA;
     
     public b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong1, long paramLong2)
     {
-      this.zWH = paramString1;
-      this.Aoz = paramString2;
-      this.AoA = paramString3;
-      this.AoB = paramString4;
-      this.dlJ = paramString5;
-      this.vBv = paramString6;
-      this.AgJ = paramLong1;
-      this.AoC = paramLong2;
-      this.AoD = null;
+      this.Bpb = paramString1;
+      this.BGT = paramString2;
+      this.BGU = paramString3;
+      this.BGV = paramString4;
+      this.djr = paramString5;
+      this.wLA = paramString6;
+      this.Bzd = paramLong1;
+      this.BGW = paramLong2;
+      this.BGX = null;
     }
     
     public b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, String paramString7)
     {
-      this.zWH = paramString1;
-      this.Aoz = paramString2;
-      this.AoA = paramString3;
-      this.AoB = paramString4;
-      this.dlJ = paramString5;
-      this.vBv = paramString6;
-      this.AgJ = paramLong;
-      this.AoD = paramString7;
+      this.Bpb = paramString1;
+      this.BGT = paramString2;
+      this.BGU = paramString3;
+      this.BGV = paramString4;
+      this.djr = paramString5;
+      this.wLA = paramString6;
+      this.Bzd = paramLong;
+      this.BGX = paramString7;
     }
   }
 }

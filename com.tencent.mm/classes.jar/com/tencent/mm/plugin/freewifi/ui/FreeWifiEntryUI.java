@@ -16,17 +16,17 @@ import com.tencent.mm.plugin.freewifi.i.a;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.j;
 import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.h;
 
 @com.tencent.mm.ui.base.a(3)
 public class FreeWifiEntryUI
   extends HellActivity
 {
-  private boolean pcG = true;
+  private boolean pFR = true;
   
   public void onCreate(Bundle paramBundle)
   {
@@ -40,11 +40,11 @@ public class FreeWifiEntryUI
     AppMethodBeat.i(25015);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ad.i("MicroMsg.FreeWifi.FreeWifiEntryUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ac.i("MicroMsg.FreeWifi.FreeWifiEntryUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(25015);
       return;
     }
-    ad.i("MicroMsg.FreeWifi.FreeWifiEntryUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ac.i("MicroMsg.FreeWifi.FreeWifiEntryUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -54,7 +54,7 @@ public class FreeWifiEntryUI
       return;
       if ((paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == -1))
       {
-        this.pcG = false;
+        this.pFR = false;
         h.a(this, getString(2131761869), getString(2131761885), getString(2131760598), getString(2131756766), false, new FreeWifiEntryUI.2(this), new FreeWifiEntryUI.3(this));
       }
     }
@@ -64,7 +64,7 @@ public class FreeWifiEntryUI
   {
     AppMethodBeat.i(25014);
     super.onResume();
-    if (!az.afw()) {
+    if (!az.agM()) {
       finish();
     }
     for (;;)
@@ -72,97 +72,97 @@ public class FreeWifiEntryUI
       finish();
       AppMethodBeat.o(25014);
       return;
-      if (this.pcG)
+      if (this.pFR)
       {
         boolean bool = b.a(this, "android.permission.ACCESS_COARSE_LOCATION", 77, null, null);
-        ad.i("MicroMsg.FreeWifi.FreeWifiEntryUI", "summerper checkPermission checkLocation [%b]", new Object[] { Boolean.valueOf(bool) });
+        ac.i("MicroMsg.FreeWifi.FreeWifiEntryUI", "summerper checkPermission checkLocation [%b]", new Object[] { Boolean.valueOf(bool) });
         if (!bool) {}
       }
-      else if ((b.o(this, "android.permission.ACCESS_COARSE_LOCATION")) && (!com.tencent.mm.modelgeo.d.axU()))
+      else if ((b.o(this, "android.permission.ACCESS_COARSE_LOCATION")) && (!com.tencent.mm.modelgeo.d.aEM()))
       {
         h.a(this, getString(2131760082), getString(2131755906), getString(2131760598), getString(2131755691), false, new FreeWifiEntryUI.1(this), null);
       }
       Intent localIntent = getIntent();
       int i = getIntent().getIntExtra("free_wifi_source", 1);
-      ad.i("MicroMsg.FreeWifi.FreeWifiEntryUI", "has notified, now scene is : %d", new Object[] { Integer.valueOf(i) });
+      ac.i("MicroMsg.FreeWifi.FreeWifiEntryUI", "has notified, now scene is : %d", new Object[] { Integer.valueOf(i) });
       Object localObject;
       switch (i)
       {
       default: 
         break;
       case 1: 
-        if (1 != i.a.cvp().getInt("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 0)) {
-          i.a.cvp().df("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 1);
+        if (1 != i.a.cIB().getInt("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 0)) {
+          i.a.cIB().dl("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 1);
         }
         m.e(localIntent, localIntent.getStringExtra("free_wifi_mid"));
         localIntent.setClass(this, FreeWifiNetCheckUI.class);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         super.overridePendingTransition(2130772144, 2130772141);
         break;
       case 3: 
         localIntent.putExtra("free_wifi_auth_type", 2);
         localIntent.setClass(this, FreeWifiMIGNoAuthStateUI.class);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         break;
       case 2: 
-        localObject = j.cvY().aaI(com.tencent.mm.plugin.freewifi.model.d.cvQ());
+        localObject = j.cJk().afA(com.tencent.mm.plugin.freewifi.model.d.cJc());
         if (localObject == null)
         {
-          ad.e("MicroMsg.FreeWifi.FreeWifiEntryUI", "what the fuck, how could it be???");
+          ac.e("MicroMsg.FreeWifi.FreeWifiEntryUI", "what the fuck, how could it be???");
         }
         else
         {
-          ad.i("MicroMsg.FreeWifi.FreeWifiEntryUI", "banner click, freeWifiInfo.field_action:%d, field_showUrl:%s", new Object[] { Integer.valueOf(((c)localObject).field_action), ((c)localObject).field_showUrl });
-          if ((((c)localObject).field_action == 2) && (!bt.isNullOrNil(((c)localObject).field_showUrl)))
+          ac.i("MicroMsg.FreeWifi.FreeWifiEntryUI", "banner click, freeWifiInfo.field_action:%d, field_showUrl:%s", new Object[] { Integer.valueOf(((c)localObject).field_action), ((c)localObject).field_showUrl });
+          if ((((c)localObject).field_action == 2) && (!bs.isNullOrNil(((c)localObject).field_showUrl)))
           {
             ((o)g.ab(o.class)).b(this, ((c)localObject).field_showUrl, 1064, null);
           }
-          else if ((((c)localObject).field_action == 1) && (!bt.isNullOrNil(((c)localObject).field_showUrl)))
+          else if ((((c)localObject).field_action == 1) && (!bs.isNullOrNil(((c)localObject).field_showUrl)))
           {
             localIntent = new Intent();
-            String str = ac.f(getSharedPreferences(aj.eFD(), 0));
+            String str = ab.f(getSharedPreferences(ai.eUX(), 0));
             localIntent.putExtra("rawUrl", Uri.parse(((c)localObject).field_showUrl).buildUpon().appendQueryParameter("lang", str).build().toString());
             localIntent.putExtra("show_bottom", false);
-            com.tencent.mm.bs.d.b(this, "webview", ".ui.tools.WebViewUI", localIntent);
+            com.tencent.mm.br.d.b(this, "webview", ".ui.tools.WebViewUI", localIntent);
           }
           else
           {
             localIntent.setClass(this, FreeWifiAuthStateUI.class);
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
         }
         break;
       case 5: 
-        if (1 != i.a.cvp().getInt("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 0)) {
-          i.a.cvp().df("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 1);
+        if (1 != i.a.cIB().getInt("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 0)) {
+          i.a.cIB().dl("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 1);
         }
         localObject = localIntent.getStringExtra("free_wifi_ap_key");
-        if (!m.dq((String)localObject))
+        if (!m.cX((String)localObject))
         {
           getIntent().putExtra("free_wifi_channel_id", 1);
           if ("_p33beta".equalsIgnoreCase((String)localObject))
           {
-            m.ah(localIntent);
+            m.ai(localIntent);
             localIntent.putExtra("free_wifi_auth_type", 33);
             localIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 33);
-            localIntent.putExtra("free_wifi_ssid", m.aau("MicroMsg.FreeWifi.FreeWifiEntryUI"));
+            localIntent.putExtra("free_wifi_ssid", m.afm("MicroMsg.FreeWifi.FreeWifiEntryUI"));
             localIntent.putExtra("free_wifi_url", (String)localObject);
             localIntent.putExtra("free_wifi_ap_key", (String)localObject);
             localIntent.putExtra("free_wifi_source", 5);
             localIntent.putExtra("free_wifi_channel_id", 1);
             localIntent.setClass(this, FreeWifiFrontPageUI.class);
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             super.overridePendingTransition(2130772144, 2130772141);
           }
@@ -172,9 +172,9 @@ public class FreeWifiEntryUI
             localIntent = new Intent();
             localIntent.putExtra("free_wifi_error_ui_error_msg", (String)localObject);
             localIntent.setClass(this, FreeWifiErrorUI.class);
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             super.overridePendingTransition(2130772144, 2130772141);
           }
@@ -191,12 +191,12 @@ public class FreeWifiEntryUI
               localIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 31);
               m.e(localIntent, localIntent.getStringExtra("free_wifi_schema_ticket"));
               if (j == 4) {
-                localIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_REPORT_WIFI_SERVER_ID", m.ai(localIntent) + "_" + m.ak(localIntent) + "_" + m.al(localIntent) + "_" + System.currentTimeMillis());
+                localIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_REPORT_WIFI_SERVER_ID", m.aj(localIntent) + "_" + m.al(localIntent) + "_" + m.am(localIntent) + "_" + System.currentTimeMillis());
               }
               localIntent.setClass(this, FreeWifiNetCheckUI.class);
-              localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-              com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+              localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+              com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               super.overridePendingTransition(2130772144, 2130772141);
               break;
@@ -210,24 +210,24 @@ public class FreeWifiEntryUI
         }
         break;
       case 4: 
-        if (1 != i.a.cvp().getInt("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 0)) {
-          i.a.cvp().df("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 1);
+        if (1 != i.a.cIB().getInt("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 0)) {
+          i.a.cIB().dl("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 1);
         }
         localIntent.setClass(this, FreeWifiNetCheckUI.class);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         super.overridePendingTransition(2130772144, 2130772141);
         break;
       case 6: 
-        if (1 != i.a.cvp().getInt("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 0)) {
-          i.a.cvp().df("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 1);
+        if (1 != i.a.cIB().getInt("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 0)) {
+          i.a.cIB().dl("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_USE_WECHAT_FREEWIFI", 1);
         }
         localIntent.setClass(this, FreeWifiNetCheckUI.class);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiEntryUI", "doDirect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         super.overridePendingTransition(2130772144, 2130772141);
       }
@@ -242,7 +242,7 @@ public class FreeWifiEntryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiEntryUI
  * JD-Core Version:    0.7.0.1
  */

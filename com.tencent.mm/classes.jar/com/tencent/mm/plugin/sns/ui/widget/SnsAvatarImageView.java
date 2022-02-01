@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.story.api.e;
 import com.tencent.mm.plugin.story.api.i;
 import com.tencent.mm.plugin.story.api.m;
 import com.tencent.mm.plugin.story.api.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.tools.MaskImageButton;
 
 public class SnsAvatarImageView
@@ -21,34 +21,34 @@ public class SnsAvatarImageView
   implements m
 {
   private int pageType;
-  private i xLj;
-  private String xXR;
+  private i yXY;
+  private String zkN;
   
   public SnsAvatarImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(100480);
     this.pageType = -1;
-    this.xLj = null;
-    this.xXR = "";
+    this.yXY = null;
+    this.zkN = "";
     paramContext = getContext();
-    this.xLj = ((e)g.ad(e.class)).getStoryUIFactory().ge(paramContext);
-    this.xLj.aZ(this);
+    this.yXY = ((e)g.ad(e.class)).getStoryUIFactory().gq(paramContext);
+    this.yXY.aZ(this);
     setLayerType(1, null);
     AppMethodBeat.o(100480);
   }
   
-  public final void bH(String paramString, boolean paramBoolean)
+  public final void bO(String paramString, boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(100488);
-    ad.m("MicroMsg.SnsAvatarImageView", "onNotifyStoryStatusChanged username: %s , isRead:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    ac.m("MicroMsg.SnsAvatarImageView", "onNotifyStoryStatusChanged username: %s , isRead:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
     if ((TextUtils.isEmpty(paramString)) || (getContext() == null))
     {
       AppMethodBeat.o(100488);
       return;
     }
-    if (paramString.equals(this.xXR)) {
+    if (paramString.equals(this.zkN)) {
       if (paramBoolean) {
         break label77;
       }
@@ -62,13 +62,13 @@ public class SnsAvatarImageView
     }
   }
   
-  public final void eE(String paramString, int paramInt)
+  public final void eM(String paramString, int paramInt)
   {
     AppMethodBeat.i(100487);
-    this.xLj.eE(paramString, paramInt);
-    if (!this.xXR.equals(paramString))
+    this.yXY.eM(paramString, paramInt);
+    if (!this.zkN.equals(paramString))
     {
-      this.xXR = paramString;
+      this.zkN = paramString;
       this.pageType = paramInt;
     }
     AppMethodBeat.o(100487);
@@ -79,7 +79,7 @@ public class SnsAvatarImageView
     AppMethodBeat.i(100489);
     super.onDetachedFromWindow();
     if (this.pageType != -1) {
-      a.b(this.pageType, this.xXR, this);
+      a.b(this.pageType, this.zkN, this);
     }
     AppMethodBeat.o(100489);
   }
@@ -88,7 +88,7 @@ public class SnsAvatarImageView
   {
     AppMethodBeat.i(100482);
     super.onDraw(paramCanvas);
-    this.xLj.a(paramCanvas, true, 0);
+    this.yXY.a(paramCanvas, true, 0);
     AppMethodBeat.o(100482);
   }
   
@@ -102,22 +102,22 @@ public class SnsAvatarImageView
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(100484);
-    super.setOnClickListener(this.xLj.dGg());
-    this.xLj.setOnClickListener(paramOnClickListener);
+    super.setOnClickListener(this.yXY.dUH());
+    this.yXY.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(100484);
   }
   
   public void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(100485);
-    this.xLj.setShowStoryHint(paramBoolean);
+    this.yXY.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(100485);
   }
   
   public void setUserName(String paramString)
   {
     AppMethodBeat.i(100486);
-    eE(paramString, -1);
+    eM(paramString, -1);
     AppMethodBeat.o(100486);
   }
   
@@ -125,9 +125,9 @@ public class SnsAvatarImageView
   {
     AppMethodBeat.i(100481);
     if (!(paramContext instanceof Activity)) {
-      ad.w("MicroMsg.SnsAvatarImageView", "weakContext is not activity");
+      ac.w("MicroMsg.SnsAvatarImageView", "weakContext is not activity");
     }
-    this.xLj.setWeakContext(paramContext);
+    this.yXY.setWeakContext(paramContext);
     AppMethodBeat.o(100481);
   }
 }

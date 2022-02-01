@@ -15,7 +15,7 @@ import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public class GameDropdownView
@@ -23,23 +23,23 @@ public class GameDropdownView
   implements View.OnClickListener, PopupWindow.OnDismissListener
 {
   private Context mContext;
-  private View.OnClickListener olC;
-  private b sii;
-  private LinkedList<String> sij;
-  private int sik;
-  private int sil;
-  private a sin;
-  private View sio;
+  private View.OnClickListener oPc;
+  private b tqc;
+  private LinkedList<String> tqd;
+  private int tqe;
+  private int tqf;
+  private a tqg;
+  private View tqh;
   
   public GameDropdownView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(42087);
-    this.sik = 0;
-    this.sil = 0;
-    this.sin = null;
-    this.sio = null;
-    this.olC = new View.OnClickListener()
+    this.tqe = 0;
+    this.tqf = 0;
+    this.tqg = null;
+    this.tqh = null;
+    this.oPc = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -57,7 +57,7 @@ public class GameDropdownView
       }
     };
     this.mContext = paramContext;
-    this.sii = new b(paramContext);
+    this.tqc = new b(paramContext);
     setOnClickListener(this);
     AppMethodBeat.o(42087);
   }
@@ -65,24 +65,24 @@ public class GameDropdownView
   private void setCurrentSelection(int paramInt)
   {
     AppMethodBeat.i(42091);
-    if ((this.sii.getContentView() == null) || (!(this.sii.getContentView() instanceof ViewGroup)))
+    if ((this.tqc.getContentView() == null) || (!(this.tqc.getContentView() instanceof ViewGroup)))
     {
       AppMethodBeat.o(42091);
       return;
     }
-    ViewGroup localViewGroup = (ViewGroup)this.sii.getContentView();
-    if ((paramInt > this.sil) || (this.sik > this.sil) || (!(localViewGroup.getChildAt(paramInt) instanceof TextView)) || (!(localViewGroup.getChildAt(this.sik) instanceof TextView)))
+    ViewGroup localViewGroup = (ViewGroup)this.tqc.getContentView();
+    if ((paramInt > this.tqf) || (this.tqe > this.tqf) || (!(localViewGroup.getChildAt(paramInt) instanceof TextView)) || (!(localViewGroup.getChildAt(this.tqe) instanceof TextView)))
     {
       AppMethodBeat.o(42091);
       return;
     }
-    ((TextView)localViewGroup.getChildAt(this.sik)).setTextColor(this.mContext.getResources().getColor(2131100490));
+    ((TextView)localViewGroup.getChildAt(this.tqe)).setTextColor(this.mContext.getResources().getColor(2131100490));
     ((TextView)localViewGroup.getChildAt(paramInt)).setTextColor(this.mContext.getResources().getColor(2131100711));
-    setText((CharSequence)this.sij.get(paramInt));
-    if ((this.sin != null) && (this.sik != paramInt)) {
-      this.sin.EH(paramInt);
+    setText((CharSequence)this.tqd.get(paramInt));
+    if ((this.tqg != null) && (this.tqe != paramInt)) {
+      this.tqg.GD(paramInt);
     }
-    this.sik = paramInt;
+    this.tqe = paramInt;
     AppMethodBeat.o(42091);
   }
   
@@ -91,15 +91,15 @@ public class GameDropdownView
     AppMethodBeat.i(42090);
     if (paramLinkedList.size() == 0)
     {
-      ad.i("MicroMsg.GameDropdownView", "No menu item");
+      ac.i("MicroMsg.GameDropdownView", "No menu item");
       AppMethodBeat.o(42090);
       return;
     }
-    this.sij = paramLinkedList;
-    this.sil = (paramLinkedList.size() - 1);
-    if ((paramInt < 0) || (paramInt > this.sil)) {}
+    this.tqd = paramLinkedList;
+    this.tqf = (paramLinkedList.size() - 1);
+    if ((paramInt < 0) || (paramInt > this.tqf)) {}
     LinearLayout localLinearLayout;
-    for (this.sik = 0;; this.sik = paramInt)
+    for (this.tqe = 0;; this.tqe = paramInt)
     {
       LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
       localLinearLayout = (LinearLayout)localLayoutInflater.inflate(2131494331, null);
@@ -109,8 +109,8 @@ public class GameDropdownView
         String str = (String)paramLinkedList.get(paramInt);
         TextView localTextView = (TextView)localLayoutInflater.inflate(2131494332, localLinearLayout, false);
         localTextView.setText(str);
-        localTextView.setOnClickListener(this.olC);
-        if (paramInt == this.sik)
+        localTextView.setOnClickListener(this.oPc);
+        if (paramInt == this.tqe)
         {
           localTextView.setTextColor(this.mContext.getResources().getColor(2131100711));
           setText(str);
@@ -119,7 +119,7 @@ public class GameDropdownView
         paramInt += 1;
       }
     }
-    this.sii.setContentView(localLinearLayout);
+    this.tqc.setContentView(localLinearLayout);
     setVisibility(0);
     AppMethodBeat.o(42090);
   }
@@ -127,19 +127,19 @@ public class GameDropdownView
   public void onClick(View paramView)
   {
     AppMethodBeat.i(42089);
-    if (this.sii.isShowing())
+    if (this.tqc.isShowing())
     {
-      this.sii.dismiss();
+      this.tqc.dismiss();
       AppMethodBeat.o(42089);
       return;
     }
-    if (this.sio == null)
+    if (this.tqh == null)
     {
-      this.sii.showAsDropDown(this);
+      this.tqc.showAsDropDown(this);
       AppMethodBeat.o(42089);
       return;
     }
-    this.sii.showAsDropDown(this.sio);
+    this.tqc.showAsDropDown(this.tqh);
     AppMethodBeat.o(42089);
   }
   
@@ -155,17 +155,17 @@ public class GameDropdownView
   
   public void setAnchorView(View paramView)
   {
-    this.sio = paramView;
+    this.tqh = paramView;
   }
   
   public void setOnSelectionChangedListener(a parama)
   {
-    this.sin = parama;
+    this.tqg = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void EH(int paramInt);
+    public abstract void GD(int paramInt);
   }
   
   static final class b
@@ -201,7 +201,7 @@ public class GameDropdownView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDropdownView
  * JD-Core Version:    0.7.0.1
  */

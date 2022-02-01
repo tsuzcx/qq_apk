@@ -10,10 +10,10 @@ public abstract class g<S extends g, T extends a>
   extends f<S, T>
   implements Comparable<g>
 {
-  CharSequence Eo;
-  public boolean IGN;
-  private int[] IGO;
-  public int bBv;
+  CharSequence Fm;
+  public boolean KsY;
+  private int[] KsZ;
+  public int bzd;
   
   public boolean equals(Object paramObject)
   {
@@ -25,25 +25,25 @@ public abstract class g<S extends g, T extends a>
         return false;
       } while (!(paramObject instanceof g));
       paramObject = (g)paramObject;
-    } while ((paramObject.IGJ == null) || (!paramObject.IGJ.equals(this.IGJ)) || (paramObject.Eo == null) || (!paramObject.Eo.equals(this.Eo)) || (paramObject.IGN != this.IGN) || (paramObject.isVisible != this.isVisible) || (paramObject.IGK != this.IGK));
+    } while ((paramObject.KsU == null) || (!paramObject.KsU.equals(this.KsU)) || (paramObject.Fm == null) || (!paramObject.Fm.equals(this.Fm)) || (paramObject.KsY != this.KsY) || (paramObject.isVisible != this.isVisible) || (paramObject.KsV != this.KsV));
     return true;
   }
   
-  public g.b fpi()
+  public g.b fHq()
   {
-    return g.b.IGU;
+    return g.b.Ktf;
   }
   
-  public final int[] gH(View paramView)
+  public final int[] gZ(View paramView)
   {
     paramView = paramView.findViewById(16908310);
-    int[] arrayOfInt = this.IGO;
+    int[] arrayOfInt = this.KsZ;
     if (paramView == null) {}
-    for (int i = (int)this.IGH.getResources().getDimension(2131165273);; i = paramView.getLeft())
+    for (int i = (int)this.KsS.getResources().getDimension(2131165273);; i = paramView.getLeft())
     {
       arrayOfInt[0] = i;
-      this.IGO[1] = ((int)this.IGH.getResources().getDimension(2131165273));
-      return this.IGO;
+      this.KsZ[1] = ((int)this.KsS.getResources().getDimension(2131165273));
+      return this.KsZ;
     }
   }
   
@@ -52,11 +52,11 @@ public abstract class g<S extends g, T extends a>
     static
     {
       AppMethodBeat.i(159957);
-      IGP = new a("RED_NEW", 0);
-      IGQ = new a("RED_DOT", 1);
-      IGR = new a("RED_NUM", 2);
-      IGS = new a("NONE", 3);
-      IGT = new a[] { IGP, IGQ, IGR, IGS };
+      Kta = new a("RED_NEW", 0);
+      Ktb = new a("RED_DOT", 1);
+      Ktc = new a("RED_NUM", 2);
+      Ktd = new a("NONE", 3);
+      Kte = new a[] { Kta, Ktb, Ktc, Ktd };
       AppMethodBeat.o(159957);
     }
     

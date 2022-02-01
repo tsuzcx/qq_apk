@@ -7,7 +7,6 @@ import android.animation.TimeInterpolator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
-import android.graphics.Path;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.support.v4.e.a;
@@ -30,65 +29,56 @@ import java.util.StringTokenizer;
 public abstract class Transition
   implements Cloneable
 {
-  private static ThreadLocal<a<Animator, a>> zA = new ThreadLocal();
-  private static final int[] zd = { 2, 1, 3, 4 };
-  private static final PathMotion ze = new PathMotion()
-  {
-    public final Path getPath(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3, float paramAnonymousFloat4)
-    {
-      Path localPath = new Path();
-      localPath.moveTo(paramAnonymousFloat1, paramAnonymousFloat2);
-      localPath.lineTo(paramAnonymousFloat3, paramAnonymousFloat4);
-      return localPath;
-    }
-  };
+  private static final int[] Ad = { 2, 1, 3, 4 };
+  private static final PathMotion Ae = new Transition.1();
+  private static ThreadLocal<a<Animator, a>> Ay = new ThreadLocal();
+  ArrayList<Animator> AA = new ArrayList();
+  private int AB = 0;
+  private boolean AC = false;
+  private boolean AD = false;
+  s AE;
+  b AF;
+  private a<String, String> AG;
+  PathMotion AH = Ae;
+  long Af = -1L;
+  TimeInterpolator Ag = null;
+  ArrayList<Integer> Ah = new ArrayList();
+  ArrayList<View> Ai = new ArrayList();
+  ArrayList<String> Aj = null;
+  ArrayList<Class> Ak = null;
+  private ArrayList<Integer> Al = null;
+  private ArrayList<View> Am = null;
+  private ArrayList<Class> An = null;
+  private ArrayList<String> Ao = null;
+  private ArrayList<Integer> Ap = null;
+  private ArrayList<View> Aq = null;
+  private ArrayList<Class> Ar = null;
+  private v As = new v();
+  private v At = new v();
+  TransitionSet Au = null;
+  private int[] Av = Ad;
+  private ArrayList<u> Aw;
+  private ArrayList<u> Ax;
+  boolean Az = false;
   long mDuration = -1L;
   private ArrayList<c> mListeners = null;
   private String mName = getClass().getName();
-  private ArrayList<Animator> ud = new ArrayList();
-  private ViewGroup yH = null;
-  boolean zB = false;
-  ArrayList<Animator> zC = new ArrayList();
-  private int zD = 0;
-  private boolean zE = false;
-  private boolean zF = false;
-  s zG;
-  b zH;
-  private a<String, String> zI;
-  PathMotion zJ = ze;
-  long zf = -1L;
-  TimeInterpolator zg = null;
-  ArrayList<Integer> zi = new ArrayList();
-  ArrayList<View> zj = new ArrayList();
-  ArrayList<String> zk = null;
-  ArrayList<Class> zl = null;
-  private ArrayList<Integer> zm = null;
-  private ArrayList<View> zn = null;
-  private ArrayList<Class> zo = null;
-  private ArrayList<String> zp = null;
-  private ArrayList<Integer> zq = null;
-  private ArrayList<View> zr = null;
-  private ArrayList<Class> zt = null;
-  private v zu = new v();
-  private v zv = new v();
-  TransitionSet zw = null;
-  private int[] zx = zd;
-  private ArrayList<u> zy;
-  private ArrayList<u> zz;
+  private ArrayList<Animator> vd = new ArrayList();
+  private ViewGroup zH = null;
   
   public Transition() {}
   
   public Transition(Context paramContext, AttributeSet paramAttributeSet)
   {
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, p.yU);
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, p.zU);
     paramAttributeSet = (XmlResourceParser)paramAttributeSet;
     long l = android.support.v4.content.a.g.a(localTypedArray, paramAttributeSet, "duration", 1, -1);
     if (l >= 0L) {
-      d(l);
+      f(l);
     }
     l = android.support.v4.content.a.g.a(localTypedArray, paramAttributeSet, "startDelay", 2, -1);
     if (l > 0L) {
-      e(l);
+      g(l);
     }
     int i = android.support.v4.content.a.g.b(localTypedArray, paramAttributeSet, "interpolator", 0);
     if (i > 0) {
@@ -96,19 +86,19 @@ public abstract class Transition
     }
     paramContext = android.support.v4.content.a.g.c(localTypedArray, paramAttributeSet, "matchOrder", 3);
     if (paramContext != null) {
-      setMatchOrder(p(paramContext));
+      setMatchOrder(q(paramContext));
     }
     localTypedArray.recycle();
   }
   
   private void a(v paramv1, v paramv2)
   {
-    a locala2 = new a(paramv1.Ah);
-    a locala1 = new a(paramv2.Ah);
+    a locala2 = new a(paramv1.Bf);
+    a locala1 = new a(paramv2.Bf);
     int i = 0;
-    if (i < this.zx.length)
+    if (i < this.Av.length)
     {
-      switch (this.zx[i])
+      switch (this.Av[i])
       {
       }
       for (;;)
@@ -125,14 +115,14 @@ public abstract class Transition
             if ((localObject1 != null) && (((u)localObject1).view != null) && (G(((u)localObject1).view)))
             {
               localObject2 = (u)locala2.removeAt(j);
-              this.zy.add(localObject2);
-              this.zz.add(localObject1);
+              this.Aw.add(localObject2);
+              this.Ax.add(localObject1);
             }
           }
           j -= 1;
         }
-        Object localObject1 = paramv1.Ak;
-        Object localObject2 = paramv2.Ak;
+        Object localObject1 = paramv1.Bi;
+        Object localObject2 = paramv2.Bi;
         int k = ((a)localObject1).size();
         j = 0;
         View localView1;
@@ -151,8 +141,8 @@ public abstract class Transition
               localu2 = (u)locala1.get(localView2);
               if ((localu1 != null) && (localu2 != null))
               {
-                this.zy.add(localu1);
-                this.zz.add(localu2);
+                this.Aw.add(localu1);
+                this.Ax.add(localu2);
                 locala2.remove(localView1);
                 locala1.remove(localView2);
               }
@@ -160,8 +150,8 @@ public abstract class Transition
           }
           j += 1;
         }
-        localObject1 = paramv1.Ai;
-        localObject2 = paramv2.Ai;
+        localObject1 = paramv1.Bg;
+        localObject2 = paramv2.Bg;
         k = ((SparseArray)localObject1).size();
         j = 0;
         while (j < k)
@@ -176,8 +166,8 @@ public abstract class Transition
               localu2 = (u)locala1.get(localView2);
               if ((localu1 != null) && (localu2 != null))
               {
-                this.zy.add(localu1);
-                this.zz.add(localu2);
+                this.Aw.add(localu1);
+                this.Ax.add(localu2);
                 locala2.remove(localView1);
                 locala1.remove(localView2);
               }
@@ -185,8 +175,8 @@ public abstract class Transition
           }
           j += 1;
         }
-        localObject1 = paramv1.Aj;
-        localObject2 = paramv2.Aj;
+        localObject1 = paramv1.Bh;
+        localObject2 = paramv2.Bh;
         k = ((android.support.v4.e.g)localObject1).size();
         j = 0;
         while (j < k)
@@ -201,8 +191,8 @@ public abstract class Transition
               localu2 = (u)locala1.get(localView2);
               if ((localu1 != null) && (localu2 != null))
               {
-                this.zy.add(localu1);
-                this.zz.add(localu2);
+                this.Aw.add(localu1);
+                this.Ax.add(localu2);
                 locala2.remove(localView1);
                 locala1.remove(localView2);
               }
@@ -218,8 +208,8 @@ public abstract class Transition
       paramv1 = (u)locala2.valueAt(i);
       if (G(paramv1.view))
       {
-        this.zy.add(paramv1);
-        this.zz.add(null);
+        this.Aw.add(paramv1);
+        this.Ax.add(null);
       }
       i += 1;
     }
@@ -229,8 +219,8 @@ public abstract class Transition
       paramv1 = (u)locala1.valueAt(i);
       if (G(paramv1.view))
       {
-        this.zz.add(paramv1);
-        this.zy.add(null);
+        this.Ax.add(paramv1);
+        this.Aw.add(null);
       }
       i += 1;
     }
@@ -238,12 +228,12 @@ public abstract class Transition
   
   private static void a(v paramv, View paramView, u paramu)
   {
-    paramv.Ah.put(paramView, paramu);
+    paramv.Bf.put(paramView, paramu);
     int i = paramView.getId();
     if (i >= 0)
     {
-      if (paramv.Ai.indexOfKey(i) >= 0) {
-        paramv.Ai.put(i, null);
+      if (paramv.Bg.indexOfKey(i) >= 0) {
+        paramv.Bg.put(i, null);
       }
     }
     else
@@ -251,10 +241,10 @@ public abstract class Transition
       paramu = t.an(paramView);
       if (paramu != null)
       {
-        if (!paramv.Ak.containsKey(paramu)) {
+        if (!paramv.Bi.containsKey(paramu)) {
           break label168;
         }
-        paramv.Ak.put(paramu, null);
+        paramv.Bi.put(paramu, null);
       }
     }
     long l;
@@ -266,26 +256,26 @@ public abstract class Transition
         if (paramu.getAdapter().hasStableIds())
         {
           l = paramu.getItemIdAtPosition(paramu.getPositionForView(paramView));
-          if (paramv.Aj.indexOfKey(l) < 0) {
+          if (paramv.Bh.indexOfKey(l) < 0) {
             break label181;
           }
-          paramView = (View)paramv.Aj.get(l, null);
+          paramView = (View)paramv.Bh.get(l, null);
           if (paramView != null)
           {
             t.d(paramView, false);
-            paramv.Aj.put(l, null);
+            paramv.Bh.put(l, null);
           }
         }
       }
       return;
-      paramv.Ai.put(i, paramView);
+      paramv.Bg.put(i, paramView);
       break;
       label168:
-      paramv.Ak.put(paramu, paramView);
+      paramv.Bi.put(paramu, paramView);
     }
     label181:
     t.d(paramView, true);
-    paramv.Aj.put(l, paramView);
+    paramv.Bh.put(l, paramView);
   }
   
   private void a(View paramView, boolean paramBoolean)
@@ -295,18 +285,18 @@ public abstract class Transition
     {
       return;
       int j = paramView.getId();
-      if (((this.zm == null) || (!this.zm.contains(Integer.valueOf(j)))) && ((this.zn == null) || (!this.zn.contains(paramView))))
+      if (((this.Al == null) || (!this.Al.contains(Integer.valueOf(j)))) && ((this.Am == null) || (!this.Am.contains(paramView))))
       {
-        if (this.zo != null)
+        if (this.An != null)
         {
-          int k = this.zo.size();
+          int k = this.An.size();
           i = 0;
           for (;;)
           {
             if (i >= k) {
               break label100;
             }
-            if (((Class)this.zo.get(i)).isInstance(paramView)) {
+            if (((Class)this.An.get(i)).isInstance(paramView)) {
               break;
             }
             i += 1;
@@ -323,29 +313,29 @@ public abstract class Transition
           }
           a(localu);
           label135:
-          localu.Ag.add(this);
+          localu.Be.add(this);
           d(localu);
           if (!paramBoolean) {
             break label270;
           }
-          a(this.zu, paramView, localu);
+          a(this.As, paramView, localu);
         }
         for (;;)
         {
-          if ((!(paramView instanceof ViewGroup)) || ((this.zq != null) && (this.zq.contains(Integer.valueOf(j)))) || ((this.zr != null) && (this.zr.contains(paramView)))) {
+          if ((!(paramView instanceof ViewGroup)) || ((this.Ap != null) && (this.Ap.contains(Integer.valueOf(j)))) || ((this.Aq != null) && (this.Aq.contains(paramView)))) {
             break label281;
           }
-          if (this.zt == null) {
+          if (this.Ar == null) {
             break label283;
           }
-          j = this.zt.size();
+          j = this.Ar.size();
           i = 0;
           for (;;)
           {
             if (i >= j) {
               break label283;
             }
-            if (((Class)this.zt.get(i)).isInstance(paramView)) {
+            if (((Class)this.Ar.get(i)).isInstance(paramView)) {
               break;
             }
             i += 1;
@@ -354,7 +344,7 @@ public abstract class Transition
           b(localu);
           break label135;
           label270:
-          a(this.zv, paramView, localu);
+          a(this.At, paramView, localu);
         }
         label281:
         continue;
@@ -405,19 +395,19 @@ public abstract class Transition
     }
   }
   
-  private static a<Animator, a> jdMethod_do()
+  private static a<Animator, a> dv()
   {
-    a locala2 = (a)zA.get();
+    a locala2 = (a)Ay.get();
     a locala1 = locala2;
     if (locala2 == null)
     {
       locala1 = new a();
-      zA.set(locala1);
+      Ay.set(locala1);
     }
     return locala1;
   }
   
-  private static int[] p(String paramString)
+  private static int[] q(String paramString)
   {
     StringTokenizer localStringTokenizer = new StringTokenizer(paramString, ",");
     paramString = new int[localStringTokenizer.countTokens()];
@@ -465,7 +455,7 @@ public abstract class Transition
   {
     if ((paramVarArgs == null) || (paramVarArgs.length == 0))
     {
-      this.zx = zd;
+      this.Av = Ad;
       return;
     }
     int i = 0;
@@ -481,66 +471,66 @@ public abstract class Transition
       }
       i += 1;
     }
-    this.zx = ((int[])paramVarArgs.clone());
+    this.Av = ((int[])paramVarArgs.clone());
   }
   
   final void B(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.zu.Ah.clear();
-      this.zu.Ai.clear();
-      this.zu.Aj.clear();
+      this.As.Bf.clear();
+      this.As.Bg.clear();
+      this.As.Bh.clear();
       return;
     }
-    this.zv.Ah.clear();
-    this.zv.Ai.clear();
-    this.zv.Aj.clear();
+    this.At.Bf.clear();
+    this.At.Bg.clear();
+    this.At.Bh.clear();
   }
   
   final boolean G(View paramView)
   {
     int j = paramView.getId();
-    if ((this.zm != null) && (this.zm.contains(Integer.valueOf(j)))) {}
+    if ((this.Al != null) && (this.Al.contains(Integer.valueOf(j)))) {}
     for (;;)
     {
       return false;
-      if ((this.zn == null) || (!this.zn.contains(paramView)))
+      if ((this.Am == null) || (!this.Am.contains(paramView)))
       {
         int i;
-        if (this.zo != null)
+        if (this.An != null)
         {
-          int k = this.zo.size();
+          int k = this.An.size();
           i = 0;
           for (;;)
           {
             if (i >= k) {
               break label95;
             }
-            if (((Class)this.zo.get(i)).isInstance(paramView)) {
+            if (((Class)this.An.get(i)).isInstance(paramView)) {
               break;
             }
             i += 1;
           }
         }
         label95:
-        if ((this.zp == null) || (t.an(paramView) == null) || (!this.zp.contains(t.an(paramView))))
+        if ((this.Ao == null) || (t.an(paramView) == null) || (!this.Ao.contains(t.an(paramView))))
         {
-          if ((this.zi.size() == 0) && (this.zj.size() == 0) && ((this.zl == null) || (this.zl.isEmpty())) && ((this.zk == null) || (this.zk.isEmpty()))) {
+          if ((this.Ah.size() == 0) && (this.Ai.size() == 0) && ((this.Ak == null) || (this.Ak.isEmpty())) && ((this.Aj == null) || (this.Aj.isEmpty()))) {
             return true;
           }
-          if ((this.zi.contains(Integer.valueOf(j))) || (this.zj.contains(paramView))) {
+          if ((this.Ah.contains(Integer.valueOf(j))) || (this.Ai.contains(paramView))) {
             return true;
           }
-          if ((this.zk != null) && (this.zk.contains(t.an(paramView)))) {
+          if ((this.Aj != null) && (this.Aj.contains(t.an(paramView)))) {
             return true;
           }
-          if (this.zl != null)
+          if (this.Ak != null)
           {
             i = 0;
-            while (i < this.zl.size())
+            while (i < this.Ak.size())
             {
-              if (((Class)this.zl.get(i)).isInstance(paramView)) {
+              if (((Class)this.Ak.get(i)).isInstance(paramView)) {
                 return true;
               }
               i += 1;
@@ -553,22 +543,22 @@ public abstract class Transition
   
   public Transition H(View paramView)
   {
-    this.zj.add(paramView);
+    this.Ai.add(paramView);
     return this;
   }
   
   public Transition I(View paramView)
   {
-    this.zj.remove(paramView);
+    this.Ai.remove(paramView);
     return this;
   }
   
   public void J(View paramView)
   {
     int k = 0;
-    if (!this.zF)
+    if (!this.AD)
     {
-      a locala = jdMethod_do();
+      a locala = dv();
       int i = locala.size();
       paramView = ag.N(paramView);
       i -= 1;
@@ -577,7 +567,7 @@ public abstract class Transition
       if (i >= 0)
       {
         Object localObject = (a)locala.valueAt(i);
-        if ((((a)localObject).mView != null) && (paramView.equals(((a)localObject).zN)))
+        if ((((a)localObject).mView != null) && (paramView.equals(((a)localObject).AL)))
         {
           localObject = (Animator)locala.keyAt(i);
           if (Build.VERSION.SDK_INT < 19) {
@@ -612,21 +602,21 @@ public abstract class Transition
         i = k;
         while (i < j)
         {
-          ((c)paramView.get(i)).dg();
+          ((c)paramView.get(i)).dn();
           i += 1;
         }
       }
-      this.zE = true;
+      this.AC = true;
     }
   }
   
   public void K(View paramView)
   {
-    if (this.zE)
+    if (this.AC)
     {
-      if (!this.zF)
+      if (!this.AD)
       {
-        a locala = jdMethod_do();
+        a locala = dv();
         int i = locala.size();
         paramView = ag.N(paramView);
         i -= 1;
@@ -635,7 +625,7 @@ public abstract class Transition
         if (i >= 0)
         {
           Object localObject = (a)locala.valueAt(i);
-          if ((((a)localObject).mView != null) && (paramView.equals(((a)localObject).zN)))
+          if ((((a)localObject).mView != null) && (paramView.equals(((a)localObject).AL)))
           {
             localObject = (Animator)locala.keyAt(i);
             if (Build.VERSION.SDK_INT < 19) {
@@ -670,12 +660,12 @@ public abstract class Transition
           i = 0;
           while (i < j)
           {
-            ((c)paramView.get(i)).dh();
+            ((c)paramView.get(i)).jdMethod_do();
             i += 1;
           }
         }
       }
-      this.zE = false;
+      this.AC = false;
     }
   }
   
@@ -697,30 +687,30 @@ public abstract class Transition
   {
     if (paramPathMotion == null)
     {
-      this.zJ = ze;
+      this.AH = Ae;
       return;
     }
-    this.zJ = paramPathMotion;
+    this.AH = paramPathMotion;
   }
   
   public void a(b paramb)
   {
-    this.zH = paramb;
+    this.AF = paramb;
   }
   
   public void a(s params)
   {
-    this.zG = params;
+    this.AE = params;
   }
   
   public abstract void a(u paramu);
   
   final void a(ViewGroup paramViewGroup)
   {
-    this.zy = new ArrayList();
-    this.zz = new ArrayList();
-    a(this.zu, this.zv);
-    a locala = jdMethod_do();
+    this.Aw = new ArrayList();
+    this.Ax = new ArrayList();
+    a(this.As, this.At);
+    a locala = dv();
     int i = locala.size();
     ao localao = ag.N(paramViewGroup);
     i -= 1;
@@ -731,13 +721,13 @@ public abstract class Transition
       if (localAnimator != null)
       {
         a locala1 = (a)locala.get(localAnimator);
-        if ((locala1 != null) && (locala1.mView != null) && (localao.equals(locala1.zN)))
+        if ((locala1 != null) && (locala1.mView != null) && (localao.equals(locala1.AL)))
         {
-          u localu1 = locala1.zM;
+          u localu1 = locala1.AK;
           Object localObject = locala1.mView;
           u localu2 = b((View)localObject, true);
           localObject = c((View)localObject, true);
-          if (((localu2 == null) && (localObject == null)) || (!locala1.zO.a(localu1, (u)localObject))) {
+          if (((localu2 == null) && (localObject == null)) || (!locala1.AM.a(localu1, (u)localObject))) {
             break label204;
           }
           j = 1;
@@ -762,13 +752,13 @@ public abstract class Transition
         locala.remove(localAnimator);
       }
     }
-    a(paramViewGroup, this.zu, this.zv, this.zy, this.zz);
-    dp();
+    a(paramViewGroup, this.As, this.At, this.Aw, this.Ax);
+    dw();
   }
   
   protected void a(ViewGroup paramViewGroup, v paramv1, v paramv2, ArrayList<u> paramArrayList1, ArrayList<u> paramArrayList2)
   {
-    a locala = jdMethod_do();
+    a locala = dv();
     long l1 = 9223372036854775807L;
     SparseIntArray localSparseIntArray = new SparseIntArray();
     int k = paramArrayList1.size();
@@ -779,7 +769,7 @@ public abstract class Transition
     {
       localu1 = (u)paramArrayList1.get(i);
       localu2 = (u)paramArrayList2.get(i);
-      if ((localu1 == null) || (localu1.Ag.contains(this))) {
+      if ((localu1 == null) || (localu1.Be.contains(this))) {
         break label615;
       }
       localu1 = null;
@@ -788,7 +778,7 @@ public abstract class Transition
     label615:
     for (;;)
     {
-      if ((localu2 != null) && (!localu2.Ag.contains(this))) {
+      if ((localu2 != null) && (!localu2.Be.contains(this))) {
         localu2 = null;
       }
       for (;;)
@@ -837,7 +827,7 @@ public abstract class Transition
             }
             paramv1 = new u();
             paramv1.view = ((View)localObject1);
-            localObject2 = (u)paramv2.Ah.get(localObject1);
+            localObject2 = (u)paramv2.Bf.get(localObject1);
             if (localObject2 == null) {
               break;
             }
@@ -854,7 +844,7 @@ public abstract class Transition
             break label515;
           }
           localObject2 = (a)locala.get((Animator)locala.keyAt(j));
-          if ((((a)localObject2).zM == null) || (((a)localObject2).mView != localObject1) || (!((a)localObject2).mName.equals(this.mName)) || (!((a)localObject2).zM.equals(paramv1))) {
+          if ((((a)localObject2).AK == null) || (((a)localObject2).mView != localObject1) || (!((a)localObject2).mName.equals(this.mName)) || (!((a)localObject2).AK.equals(paramv1))) {
             break label506;
           }
           localAnimator = null;
@@ -868,14 +858,14 @@ public abstract class Transition
           if (localAnimator != null)
           {
             l2 = l1;
-            if (this.zG != null)
+            if (this.AE != null)
             {
-              l2 = this.zG.a(paramViewGroup, this, localu1, localu2);
-              localSparseIntArray.put(this.ud.size(), (int)l2);
+              l2 = this.AE.a(paramViewGroup, this, localu1, localu2);
+              localSparseIntArray.put(this.vd.size(), (int)l2);
               l2 = Math.min(l2, l1);
             }
             locala.put(localAnimator, new a(paramv1, this.mName, this, ag.N(paramViewGroup), (u)localObject1));
-            this.ud.add(localAnimator);
+            this.vd.add(localAnimator);
           }
           label493:
           i += 1;
@@ -897,7 +887,7 @@ public abstract class Transition
           while (i < localSparseIntArray.size())
           {
             j = localSparseIntArray.keyAt(i);
-            paramViewGroup = (Animator)this.ud.get(j);
+            paramViewGroup = (Animator)this.vd.get(j);
             paramViewGroup.setStartDelay(localSparseIntArray.valueAt(i) - l1 + paramViewGroup.getStartDelay());
             i += 1;
           }
@@ -937,7 +927,7 @@ public abstract class Transition
   
   public Transition b(TimeInterpolator paramTimeInterpolator)
   {
-    this.zg = paramTimeInterpolator;
+    this.Ag = paramTimeInterpolator;
     return this;
   }
   
@@ -955,10 +945,10 @@ public abstract class Transition
   
   public final u b(View paramView, boolean paramBoolean)
   {
-    for (Object localObject = this; ((Transition)localObject).zw != null; localObject = ((Transition)localObject).zw) {}
+    for (Object localObject = this; ((Transition)localObject).Au != null; localObject = ((Transition)localObject).Au) {}
     if (paramBoolean) {}
-    for (localObject = ((Transition)localObject).zu;; localObject = ((Transition)localObject).zv) {
-      return (u)((v)localObject).Ah.get(paramView);
+    for (localObject = ((Transition)localObject).As;; localObject = ((Transition)localObject).At) {
+      return (u)((v)localObject).Bf.get(paramView);
     }
   }
   
@@ -971,12 +961,12 @@ public abstract class Transition
     int i;
     Object localObject1;
     Object localObject2;
-    if (((this.zi.size() > 0) || (this.zj.size() > 0)) && ((this.zk == null) || (this.zk.isEmpty())) && ((this.zl == null) || (this.zl.isEmpty())))
+    if (((this.Ah.size() > 0) || (this.Ai.size() > 0)) && ((this.Aj == null) || (this.Aj.isEmpty())) && ((this.Ak == null) || (this.Ak.isEmpty())))
     {
       i = 0;
-      if (i < this.zi.size())
+      if (i < this.Ah.size())
       {
-        localObject1 = paramViewGroup.findViewById(((Integer)this.zi.get(i)).intValue());
+        localObject1 = paramViewGroup.findViewById(((Integer)this.Ah.get(i)).intValue());
         if (localObject1 != null)
         {
           localObject2 = new u();
@@ -986,12 +976,12 @@ public abstract class Transition
           }
           a((u)localObject2);
           label126:
-          ((u)localObject2).Ag.add(this);
+          ((u)localObject2).Be.add(this);
           d((u)localObject2);
           if (!paramBoolean) {
             break label173;
           }
-          a(this.zu, (View)localObject1, (u)localObject2);
+          a(this.As, (View)localObject1, (u)localObject2);
         }
         for (;;)
         {
@@ -1001,25 +991,25 @@ public abstract class Transition
           b((u)localObject2);
           break label126;
           label173:
-          a(this.zv, (View)localObject1, (u)localObject2);
+          a(this.At, (View)localObject1, (u)localObject2);
         }
       }
       i = 0;
-      if (i < this.zj.size())
+      if (i < this.Ai.size())
       {
-        paramViewGroup = (View)this.zj.get(i);
+        paramViewGroup = (View)this.Ai.get(i);
         localObject1 = new u();
         ((u)localObject1).view = paramViewGroup;
         if (paramBoolean)
         {
           a((u)localObject1);
           label237:
-          ((u)localObject1).Ag.add(this);
+          ((u)localObject1).Be.add(this);
           d((u)localObject1);
           if (!paramBoolean) {
             break label283;
           }
-          a(this.zu, paramViewGroup, (u)localObject1);
+          a(this.As, paramViewGroup, (u)localObject1);
         }
         for (;;)
         {
@@ -1028,7 +1018,7 @@ public abstract class Transition
           b((u)localObject1);
           break label237;
           label283:
-          a(this.zv, paramViewGroup, (u)localObject1);
+          a(this.At, paramViewGroup, (u)localObject1);
         }
       }
     }
@@ -1036,9 +1026,9 @@ public abstract class Transition
     {
       a(paramViewGroup, paramBoolean);
     }
-    if ((!paramBoolean) && (this.zI != null))
+    if ((!paramBoolean) && (this.AG != null))
     {
-      int m = this.zI.size();
+      int m = this.AG.size();
       paramViewGroup = new ArrayList(m);
       i = 0;
       int j;
@@ -1048,8 +1038,8 @@ public abstract class Transition
         if (i >= m) {
           break;
         }
-        localObject1 = (String)this.zI.keyAt(i);
-        paramViewGroup.add(this.zu.Ak.remove(localObject1));
+        localObject1 = (String)this.AG.keyAt(i);
+        paramViewGroup.add(this.As.Bi.remove(localObject1));
         i += 1;
       }
       while (j < m)
@@ -1057,8 +1047,8 @@ public abstract class Transition
         localObject1 = (View)paramViewGroup.get(j);
         if (localObject1 != null)
         {
-          localObject2 = (String)this.zI.valueAt(j);
-          this.zu.Ak.put(localObject2, localObject1);
+          localObject2 = (String)this.AG.valueAt(j);
+          this.As.Bi.put(localObject2, localObject1);
         }
         j += 1;
       }
@@ -1067,11 +1057,11 @@ public abstract class Transition
   
   final u c(View paramView, boolean paramBoolean)
   {
-    for (Object localObject = this; ((Transition)localObject).zw != null; localObject = ((Transition)localObject).zw) {}
+    for (Object localObject = this; ((Transition)localObject).Au != null; localObject = ((Transition)localObject).Au) {}
     ArrayList localArrayList;
     if (paramBoolean)
     {
-      localArrayList = ((Transition)localObject).zy;
+      localArrayList = ((Transition)localObject).Aw;
       if (localArrayList != null) {
         break label49;
       }
@@ -1082,7 +1072,7 @@ public abstract class Transition
     do
     {
       return null;
-      localArrayList = ((Transition)localObject).zz;
+      localArrayList = ((Transition)localObject).Ax;
       break;
       int j = localArrayList.size();
       i = 0;
@@ -1096,7 +1086,7 @@ public abstract class Transition
     {
       if (i >= 0) {
         if (paramBoolean) {
-          paramView = ((Transition)localObject).zz;
+          paramView = ((Transition)localObject).Ax;
         }
       }
       label103:
@@ -1105,7 +1095,7 @@ public abstract class Transition
         return paramView;
         i += 1;
         break;
-        paramView = ((Transition)localObject).zy;
+        paramView = ((Transition)localObject).Aw;
         break label103;
       }
       label135:
@@ -1113,19 +1103,13 @@ public abstract class Transition
     }
   }
   
-  public Transition d(long paramLong)
-  {
-    this.mDuration = paramLong;
-    return this;
-  }
-  
   void d(u paramu)
   {
     int j = 0;
     String[] arrayOfString;
-    if ((this.zG != null) && (!paramu.values.isEmpty()))
+    if ((this.AE != null) && (!paramu.values.isEmpty()))
     {
-      arrayOfString = this.zG.getPropagationProperties();
+      arrayOfString = this.AE.getPropagationProperties();
       if (arrayOfString != null) {
         break label36;
       }
@@ -1144,7 +1128,7 @@ public abstract class Transition
         if (i != 0) {
           break label86;
         }
-        this.zG.c(paramu);
+        this.AE.c(paramu);
         return;
         i += 1;
         break;
@@ -1152,11 +1136,11 @@ public abstract class Transition
     }
   }
   
-  protected void dp()
+  protected void dw()
   {
     start();
-    final a locala = jdMethod_do();
-    Iterator localIterator = this.ud.iterator();
+    final a locala = dv();
+    Iterator localIterator = this.vd.iterator();
     while (localIterator.hasNext())
     {
       Animator localAnimator = (Animator)localIterator.next();
@@ -1170,12 +1154,12 @@ public abstract class Transition
             public final void onAnimationEnd(Animator paramAnonymousAnimator)
             {
               locala.remove(paramAnonymousAnimator);
-              Transition.this.zC.remove(paramAnonymousAnimator);
+              Transition.this.AA.remove(paramAnonymousAnimator);
             }
             
             public final void onAnimationStart(Animator paramAnonymousAnimator)
             {
-              Transition.this.zC.add(paramAnonymousAnimator);
+              Transition.this.AA.add(paramAnonymousAnimator);
             }
           });
           if (localAnimator == null)
@@ -1187,11 +1171,11 @@ public abstract class Transition
             if (this.mDuration >= 0L) {
               localAnimator.setDuration(this.mDuration);
             }
-            if (this.zf >= 0L) {
-              localAnimator.setStartDelay(this.zf);
+            if (this.Af >= 0L) {
+              localAnimator.setStartDelay(this.Af);
             }
-            if (this.zg != null) {
-              localAnimator.setInterpolator(this.zg);
+            if (this.Ag != null) {
+              localAnimator.setInterpolator(this.Ag);
             }
             localAnimator.addListener(new AnimatorListenerAdapter()
             {
@@ -1206,36 +1190,30 @@ public abstract class Transition
         }
       }
     }
-    this.ud.clear();
+    this.vd.clear();
     end();
   }
   
-  public Transition dq()
+  public Transition dx()
   {
     try
     {
       Transition localTransition = (Transition)super.clone();
-      localTransition.ud = new ArrayList();
-      localTransition.zu = new v();
-      localTransition.zv = new v();
-      localTransition.zy = null;
-      localTransition.zz = null;
+      localTransition.vd = new ArrayList();
+      localTransition.As = new v();
+      localTransition.At = new v();
+      localTransition.Aw = null;
+      localTransition.Ax = null;
       return localTransition;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException) {}
     return null;
   }
   
-  public Transition e(long paramLong)
-  {
-    this.zf = paramLong;
-    return this;
-  }
-  
   protected final void end()
   {
-    this.zD -= 1;
-    if (this.zD == 0)
+    this.AB -= 1;
+    if (this.AB == 0)
     {
       Object localObject;
       if ((this.mListeners != null) && (this.mListeners.size() > 0))
@@ -1250,33 +1228,45 @@ public abstract class Transition
         }
       }
       int i = 0;
-      while (i < this.zu.Aj.size())
+      while (i < this.As.Bh.size())
       {
-        localObject = (View)this.zu.Aj.valueAt(i);
+        localObject = (View)this.As.Bh.valueAt(i);
         if (localObject != null) {
           t.d((View)localObject, false);
         }
         i += 1;
       }
       i = 0;
-      while (i < this.zv.Aj.size())
+      while (i < this.At.Bh.size())
       {
-        localObject = (View)this.zv.Aj.valueAt(i);
+        localObject = (View)this.At.Bh.valueAt(i);
         if (localObject != null) {
           t.d((View)localObject, false);
         }
         i += 1;
       }
-      this.zF = true;
+      this.AD = true;
     }
+  }
+  
+  public Transition f(long paramLong)
+  {
+    this.mDuration = paramLong;
+    return this;
+  }
+  
+  public Transition g(long paramLong)
+  {
+    this.Af = paramLong;
+    return this;
   }
   
   public final Rect getEpicenter()
   {
-    if (this.zH == null) {
+    if (this.AF == null) {
       return null;
     }
-    return this.zH.dk();
+    return this.AF.dr();
   }
   
   public String[] getTransitionProperties()
@@ -1286,7 +1276,7 @@ public abstract class Transition
   
   protected final void start()
   {
-    if (this.zD == 0)
+    if (this.AB == 0)
     {
       if ((this.mListeners != null) && (this.mListeners.size() > 0))
       {
@@ -1295,13 +1285,13 @@ public abstract class Transition
         int i = 0;
         while (i < j)
         {
-          ((c)localArrayList.get(i)).dl();
+          ((c)localArrayList.get(i)).ds();
           i += 1;
         }
       }
-      this.zF = false;
+      this.AD = false;
     }
-    this.zD += 1;
+    this.AB += 1;
   }
   
   public String toString()
@@ -1318,55 +1308,55 @@ public abstract class Transition
       paramString = str + "dur(" + this.mDuration + ") ";
     }
     str = paramString;
-    if (this.zf != -1L) {
-      str = paramString + "dly(" + this.zf + ") ";
+    if (this.Af != -1L) {
+      str = paramString + "dly(" + this.Af + ") ";
     }
     paramString = str;
-    if (this.zg != null) {
-      paramString = str + "interp(" + this.zg + ") ";
+    if (this.Ag != null) {
+      paramString = str + "interp(" + this.Ag + ") ";
     }
-    if (this.zi.size() <= 0)
+    if (this.Ah.size() <= 0)
     {
       str = paramString;
-      if (this.zj.size() <= 0) {}
+      if (this.Ai.size() <= 0) {}
     }
     else
     {
       str = paramString + "tgts(";
       paramString = str;
       int i;
-      if (this.zi.size() > 0)
+      if (this.Ah.size() > 0)
       {
         i = 0;
         for (;;)
         {
           paramString = str;
-          if (i >= this.zi.size()) {
+          if (i >= this.Ah.size()) {
             break;
           }
           paramString = str;
           if (i > 0) {
             paramString = str + ", ";
           }
-          str = paramString + this.zi.get(i);
+          str = paramString + this.Ah.get(i);
           i += 1;
         }
       }
       str = paramString;
-      if (this.zj.size() > 0)
+      if (this.Ai.size() > 0)
       {
         i = j;
         for (;;)
         {
           str = paramString;
-          if (i >= this.zj.size()) {
+          if (i >= this.Ai.size()) {
             break;
           }
           str = paramString;
           if (i > 0) {
             str = paramString + ", ";
           }
-          paramString = str + this.zj.get(i);
+          paramString = str + this.Ai.get(i);
           i += 1;
         }
       }
@@ -1377,41 +1367,41 @@ public abstract class Transition
   
   static final class a
   {
+    u AK;
+    ao AL;
+    Transition AM;
     String mName;
     View mView;
-    u zM;
-    ao zN;
-    Transition zO;
     
     a(View paramView, String paramString, Transition paramTransition, ao paramao, u paramu)
     {
       this.mView = paramView;
       this.mName = paramString;
-      this.zM = paramu;
-      this.zN = paramao;
-      this.zO = paramTransition;
+      this.AK = paramu;
+      this.AL = paramao;
+      this.AM = paramTransition;
     }
   }
   
   public static abstract class b
   {
-    public abstract Rect dk();
+    public abstract Rect dr();
   }
   
   public static abstract interface c
   {
     public abstract void a(Transition paramTransition);
     
-    public abstract void dg();
+    public abstract void dn();
     
-    public abstract void dh();
+    public abstract void jdMethod_do();
     
-    public abstract void dl();
+    public abstract void ds();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.Transition
  * JD-Core Version:    0.7.0.1
  */

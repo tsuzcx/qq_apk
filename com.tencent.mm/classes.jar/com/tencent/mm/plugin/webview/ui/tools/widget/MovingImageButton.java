@@ -8,27 +8,27 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class MovingImageButton
   extends ImageView
 {
-  private int BvY;
-  private int BvZ;
-  private int Bwa = 0;
-  private int Bwb = 0;
-  private ViewGroup.MarginLayoutParams Bwc;
-  private final int Bwd = 100;
-  private int Bwe;
-  private boolean Bwf = false;
-  private boolean Bwg = true;
-  private int kvn;
-  private int kvo;
-  private int ldD;
-  private int ldE;
+  private int COg;
+  private int COh;
+  private int COi = 0;
+  private int COj = 0;
+  private ViewGroup.MarginLayoutParams COk;
+  private final int COl = 100;
+  private int COm;
+  private boolean COn = false;
+  private boolean COo = true;
+  private int kWB;
+  private int kWC;
+  private int lDu;
+  private int lDv;
   private Context mContext;
-  private int pd;
+  private int qc;
   private int x;
   private int y;
   
@@ -48,29 +48,29 @@ public class MovingImageButton
   {
     AppMethodBeat.i(82287);
     super.onFinishInflate();
-    this.Bwe = a.fromDPToPix(this.mContext, 100);
-    this.kvn = a.hV(this.mContext);
-    this.kvo = a.hW(this.mContext);
-    this.pd = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
+    this.COm = a.fromDPToPix(this.mContext, 100);
+    this.kWB = a.ig(this.mContext);
+    this.kWC = a.ih(this.mContext);
+    this.qc = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
     AppMethodBeat.o(82287);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(82288);
-    if (!this.Bwg)
+    if (!this.COo)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(82288);
       return bool;
     }
-    if ((this.Bwa == 0) || (this.Bwb == 0))
+    if ((this.COi == 0) || (this.COj == 0))
     {
       Rect localRect = new Rect();
       getWindowVisibleDisplayFrame(localRect);
-      this.Bwa = (localRect.right - localRect.left);
-      this.Bwb = (localRect.bottom - localRect.top);
-      ad.d("MicroMsg.MovingImageButton", "right = %d, top = %d, left = %d, bottom = %d, screenX = %d, screenY = %d", new Object[] { Integer.valueOf(localRect.right), Integer.valueOf(localRect.top), Integer.valueOf(localRect.left), Integer.valueOf(localRect.bottom), Integer.valueOf(this.Bwa), Integer.valueOf(this.Bwb) });
+      this.COi = (localRect.right - localRect.left);
+      this.COj = (localRect.bottom - localRect.top);
+      ac.d("MicroMsg.MovingImageButton", "right = %d, top = %d, left = %d, bottom = %d, screenX = %d, screenY = %d", new Object[] { Integer.valueOf(localRect.right), Integer.valueOf(localRect.top), Integer.valueOf(localRect.left), Integer.valueOf(localRect.bottom), Integer.valueOf(this.COi), Integer.valueOf(this.COj) });
     }
     this.x = ((int)paramMotionEvent.getRawX());
     this.y = ((int)paramMotionEvent.getRawY());
@@ -79,61 +79,61 @@ public class MovingImageButton
     }
     for (;;)
     {
-      this.ldD = this.x;
-      this.ldE = this.y;
+      this.lDu = this.x;
+      this.lDv = this.y;
       AppMethodBeat.o(82288);
       return true;
-      this.BvY = this.x;
-      this.BvZ = this.y;
+      this.COg = this.x;
+      this.COh = this.y;
       continue;
-      int i = this.x - this.ldD;
-      int j = this.y - this.ldE;
+      int i = this.x - this.lDu;
+      int j = this.y - this.lDv;
       if ((i != 0) || (j != 0))
       {
-        this.Bwc = ((ViewGroup.MarginLayoutParams)getLayoutParams());
-        paramMotionEvent = this.Bwc;
+        this.COk = ((ViewGroup.MarginLayoutParams)getLayoutParams());
+        paramMotionEvent = this.COk;
         int k = paramMotionEvent.rightMargin;
         paramMotionEvent.rightMargin = (-i + k);
-        paramMotionEvent = this.Bwc;
+        paramMotionEvent = this.COk;
         paramMotionEvent.topMargin += j;
-        if (this.Bwc.rightMargin < 0)
+        if (this.COk.rightMargin < 0)
         {
-          this.Bwc.rightMargin = 0;
+          this.COk.rightMargin = 0;
           label346:
-          if (this.Bwc.topMargin >= 0) {
+          if (this.COk.topMargin >= 0) {
             break label409;
           }
-          this.Bwc.topMargin = 0;
+          this.COk.topMargin = 0;
         }
         for (;;)
         {
           requestLayout();
           break;
-          if (this.Bwc.rightMargin <= this.Bwa - getWidth()) {
+          if (this.COk.rightMargin <= this.COi - getWidth()) {
             break label346;
           }
-          this.Bwc.rightMargin = (this.Bwa - getWidth());
+          this.COk.rightMargin = (this.COi - getWidth());
           break label346;
           label409:
-          if (this.Bwc.topMargin > this.Bwb - getHeight()) {
-            this.Bwc.topMargin = (this.Bwb - getHeight());
+          if (this.COk.topMargin > this.COj - getHeight()) {
+            this.COk.topMargin = (this.COj - getHeight());
           }
         }
-        if (Math.abs(this.BvY - this.x) + Math.abs(this.BvZ - this.y) > this.pd)
+        if (Math.abs(this.COg - this.x) + Math.abs(this.COh - this.y) > this.qc)
         {
-          if (this.y < this.Bwe) {
-            this.Bwc.topMargin = 0;
+          if (this.y < this.COm) {
+            this.COk.topMargin = 0;
           }
           for (;;)
           {
             requestLayout();
             break;
-            if (this.y > this.Bwb - this.Bwe) {
-              this.Bwc.topMargin = (this.Bwb - getHeight());
-            } else if (this.x > this.Bwa / 2) {
-              this.Bwc.rightMargin = 0;
+            if (this.y > this.COj - this.COm) {
+              this.COk.topMargin = (this.COj - getHeight());
+            } else if (this.x > this.COi / 2) {
+              this.COk.rightMargin = 0;
             } else {
-              this.Bwc.rightMargin = (this.Bwa - getWidth());
+              this.COk.rightMargin = (this.COi - getWidth());
             }
           }
         }
@@ -144,7 +144,7 @@ public class MovingImageButton
   
   public void setCanMove(boolean paramBoolean)
   {
-    this.Bwg = paramBoolean;
+    this.COo = paramBoolean;
   }
 }
 

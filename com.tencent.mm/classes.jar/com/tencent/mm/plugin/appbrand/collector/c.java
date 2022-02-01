@@ -6,19 +6,59 @@ import java.util.Set;
 
 public final class c
 {
-  private static b jaK;
-  private static boolean jaL;
-  private static final Set<String> jaM;
+  private static b jAX;
+  private static boolean jAY;
+  private static final Set<String> jAZ;
   
   static
   {
     AppMethodBeat.i(146105);
-    jaK = new h();
-    jaM = new HashSet();
+    jAX = new h();
+    jAZ = new HashSet();
     AppMethodBeat.o(146105);
   }
   
-  public static void FA(String paramString)
+  public static CollectSession JB(String paramString)
+  {
+    AppMethodBeat.i(146100);
+    if (!JI(paramString))
+    {
+      AppMethodBeat.o(146100);
+      return null;
+    }
+    paramString = jAX.JB(paramString);
+    AppMethodBeat.o(146100);
+    return paramString;
+  }
+  
+  public static CollectSession JC(String paramString)
+  {
+    AppMethodBeat.i(146101);
+    if (!jAY)
+    {
+      AppMethodBeat.o(146101);
+      return null;
+    }
+    paramString = jAX.JC(paramString);
+    AppMethodBeat.o(146101);
+    return paramString;
+  }
+  
+  public static StringBuilder JD(String paramString)
+  {
+    AppMethodBeat.i(146104);
+    if (!JH(paramString))
+    {
+      paramString = new StringBuilder();
+      AppMethodBeat.o(146104);
+      return paramString;
+    }
+    paramString = jAX.JD(paramString);
+    AppMethodBeat.o(146104);
+    return paramString;
+  }
+  
+  public static void JE(String paramString)
   {
     AppMethodBeat.i(146089);
     if (paramString.length() == 0)
@@ -26,11 +66,11 @@ public final class c
       AppMethodBeat.o(146089);
       return;
     }
-    jaM.add(paramString);
+    jAZ.add(paramString);
     AppMethodBeat.o(146089);
   }
   
-  public static void FB(String paramString)
+  public static void JF(String paramString)
   {
     AppMethodBeat.i(146090);
     if (paramString.length() == 0)
@@ -38,11 +78,11 @@ public final class c
       AppMethodBeat.o(146090);
       return;
     }
-    jaM.remove(paramString);
+    jAZ.remove(paramString);
     AppMethodBeat.o(146090);
   }
   
-  public static boolean FC(String paramString)
+  public static boolean JG(String paramString)
   {
     AppMethodBeat.i(146091);
     if (paramString.length() == 0)
@@ -50,15 +90,15 @@ public final class c
       AppMethodBeat.o(146091);
       return false;
     }
-    boolean bool = jaM.contains(paramString);
+    boolean bool = jAZ.contains(paramString);
     AppMethodBeat.o(146091);
     return bool;
   }
   
-  private static boolean FD(String paramString)
+  private static boolean JH(String paramString)
   {
     AppMethodBeat.i(146092);
-    if ((jaL) && (jaM.contains(paramString)))
+    if ((jAY) && (jAZ.contains(paramString)))
     {
       AppMethodBeat.o(146092);
       return true;
@@ -67,67 +107,27 @@ public final class c
     return false;
   }
   
-  private static boolean FE(String paramString)
+  private static boolean JI(String paramString)
   {
     AppMethodBeat.i(146093);
-    if (!jaL)
+    if (!jAY)
     {
       AppMethodBeat.o(146093);
       return false;
     }
-    paramString = jaK.Fx(paramString);
+    paramString = jAX.JB(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(146093);
       return false;
     }
-    if (!jaM.contains(paramString.groupId))
+    if (!jAZ.contains(paramString.groupId))
     {
       AppMethodBeat.o(146093);
       return false;
     }
     AppMethodBeat.o(146093);
     return true;
-  }
-  
-  public static CollectSession Fx(String paramString)
-  {
-    AppMethodBeat.i(146100);
-    if (!FE(paramString))
-    {
-      AppMethodBeat.o(146100);
-      return null;
-    }
-    paramString = jaK.Fx(paramString);
-    AppMethodBeat.o(146100);
-    return paramString;
-  }
-  
-  public static CollectSession Fy(String paramString)
-  {
-    AppMethodBeat.i(146101);
-    if (!jaL)
-    {
-      AppMethodBeat.o(146101);
-      return null;
-    }
-    paramString = jaK.Fy(paramString);
-    AppMethodBeat.o(146101);
-    return paramString;
-  }
-  
-  public static StringBuilder Fz(String paramString)
-  {
-    AppMethodBeat.i(146104);
-    if (!FD(paramString))
-    {
-      paramString = new StringBuilder();
-      AppMethodBeat.o(146104);
-      return paramString;
-    }
-    paramString = jaK.Fz(paramString);
-    AppMethodBeat.o(146104);
-    return paramString;
   }
   
   public static void a(CollectSession paramCollectSession)
@@ -138,108 +138,108 @@ public final class c
       AppMethodBeat.o(146097);
       return;
     }
-    if (!FD(paramCollectSession.groupId))
+    if (!JH(paramCollectSession.groupId))
     {
       AppMethodBeat.o(146097);
       return;
     }
-    jaK.a(paramCollectSession);
+    jAX.a(paramCollectSession);
     AppMethodBeat.o(146097);
   }
   
-  public static boolean aTe()
+  public static boolean bad()
   {
-    return jaL;
+    return jAY;
   }
   
   public static void c(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(146095);
-    if (!FD(paramString1))
+    if (!JH(paramString1))
     {
       AppMethodBeat.o(146095);
       return;
     }
-    jaK.c(paramString1, paramString2, paramString3, paramBoolean);
+    jAX.c(paramString1, paramString2, paramString3, paramBoolean);
     AppMethodBeat.o(146095);
   }
   
   public static void clear()
   {
     AppMethodBeat.i(146094);
-    if (!jaL)
+    if (!jAY)
     {
       AppMethodBeat.o(146094);
       return;
     }
-    jaK.clear();
+    jAX.clear();
     AppMethodBeat.o(146094);
   }
   
-  public static CollectSession cn(String paramString1, String paramString2)
+  public static CollectSession cx(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146098);
-    if (!FE(paramString1))
+    if (!JI(paramString1))
     {
       AppMethodBeat.o(146098);
       return null;
     }
-    paramString1 = jaK.cn(paramString1, paramString2);
+    paramString1 = jAX.cx(paramString1, paramString2);
     AppMethodBeat.o(146098);
     return paramString1;
   }
   
-  public static void co(String paramString1, String paramString2)
+  public static void cy(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146096);
-    if (!FE(paramString1))
+    if (!JI(paramString1))
     {
       AppMethodBeat.o(146096);
       return;
     }
-    jaK.co(paramString1, paramString2);
+    jAX.cy(paramString1, paramString2);
     AppMethodBeat.o(146096);
   }
   
-  public static int cp(String paramString1, String paramString2)
+  public static int cz(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146103);
-    if (!FD(paramString1))
+    if (!JH(paramString1))
     {
       AppMethodBeat.o(146103);
       return 0;
     }
-    int i = jaK.cp(paramString1, paramString2);
+    int i = jAX.cz(paramString1, paramString2);
     AppMethodBeat.o(146103);
     return i;
   }
   
-  public static void fx(boolean paramBoolean)
+  public static void fT(boolean paramBoolean)
   {
-    jaL = paramBoolean;
+    jAY = paramBoolean;
   }
   
   public static void k(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(146099);
-    if (!FE(paramString1))
+    if (!JI(paramString1))
     {
       AppMethodBeat.o(146099);
       return;
     }
-    jaK.k(paramString1, paramString2, paramBoolean);
+    jAX.k(paramString1, paramString2, paramBoolean);
     AppMethodBeat.o(146099);
   }
   
   public static void print(String paramString)
   {
     AppMethodBeat.i(146102);
-    if (!FE(paramString))
+    if (!JI(paramString))
     {
       AppMethodBeat.o(146102);
       return;
     }
-    jaK.print(paramString);
+    jAX.print(paramString);
     AppMethodBeat.o(146102);
   }
 }

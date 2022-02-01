@@ -2,8 +2,8 @@ package com.tencent.mm.modelmulti;
 
 import com.tencent.mars.comm.WakerLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.l;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.zero.b.b;
@@ -11,56 +11,56 @@ import com.tencent.mm.protocal.aa.a;
 import com.tencent.mm.protocal.aa.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 
 public final class j
   extends n
   implements k
 {
-  private com.tencent.mm.al.g callback;
-  private WakerLock fix;
-  private final q gVZ;
+  private com.tencent.mm.ak.g callback;
+  private WakerLock flR;
+  private final q hwy;
   
   public j()
   {
     AppMethodBeat.i(132566);
-    this.fix = new WakerLock(aj.getContext(), "MicroMsg.NetSceneSynCheck");
-    this.fix.lock(3000L, "NetSceneSynCheck");
-    this.gVZ = new a();
-    com.tencent.mm.kernel.g.afC();
-    if (com.tencent.mm.kernel.g.afB() != null)
+    this.flR = new WakerLock(ai.getContext(), "MicroMsg.NetSceneSynCheck");
+    this.flR.lock(3000L, "NetSceneSynCheck");
+    this.hwy = new a();
+    com.tencent.mm.kernel.g.agS();
+    if (com.tencent.mm.kernel.g.agR() != null)
     {
-      com.tencent.mm.kernel.g.afC();
-      if (com.tencent.mm.kernel.g.afB().afk() != null)
+      com.tencent.mm.kernel.g.agS();
+      if (com.tencent.mm.kernel.g.agR().agA() != null)
       {
-        com.tencent.mm.kernel.g.afC();
-        Object localObject = (String)com.tencent.mm.kernel.g.afB().afk().get(8195, null);
-        ((aa.a)this.gVZ.getReqObj()).hlA = bt.aGd((String)localObject);
-        localObject = (aa.a)this.gVZ.getReqObj();
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afz();
+        com.tencent.mm.kernel.g.agS();
+        Object localObject = (String)com.tencent.mm.kernel.g.agR().agA().get(8195, null);
+        ((aa.a)this.hwy.getReqObj()).hMd = bs.aLu((String)localObject);
+        localObject = (aa.a)this.hwy.getReqObj();
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agP();
         ((aa.a)localObject).setUin(com.tencent.mm.kernel.a.getUin());
-        ((aa.a)this.gVZ.getReqObj()).netType = com.tencent.mm.protocal.a.getNetType(aj.getContext());
-        ((aa.a)this.gVZ.getReqObj()).Cqy = com.tencent.mm.protocal.a.eBB();
-        ad.d("MicroMsg.MMSyncCheck", "NetSceneSynCheck");
+        ((aa.a)this.hwy.getReqObj()).netType = com.tencent.mm.protocal.a.getNetType(ai.getContext());
+        ((aa.a)this.hwy.getReqObj()).DIQ = com.tencent.mm.protocal.a.eQV();
+        ac.d("MicroMsg.MMSyncCheck", "NetSceneSynCheck");
         AppMethodBeat.o(132566);
         return;
       }
     }
-    ad.e("MicroMsg.NetSceneSynCheck", "[arthurdan.NetSceneSynCheckCrash] Notice!!! MMCore.getAccStg() is null");
+    ac.e("MicroMsg.NetSceneSynCheck", "[arthurdan.NetSceneSynCheckCrash] Notice!!! MMCore.getAccStg() is null");
     AppMethodBeat.o(132566);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(132567);
     this.callback = paramg;
-    int i = dispatch(parame, this.gVZ, this);
-    if ((i == -1) && (this.fix.isLocking())) {
-      this.fix.unLock();
+    int i = dispatch(parame, this.hwy, this);
+    if ((i == -1) && (this.flR.isLocking())) {
+      this.flR.unLock();
     }
     AppMethodBeat.o(132567);
     return i;
@@ -80,18 +80,18 @@ public final class j
   {
     AppMethodBeat.i(132568);
     paramArrayOfByte = (aa.b)paramq.getRespObj();
-    ad.i("MicroMsg.NetSceneSynCheck", "new syncCheck complete, selector=" + paramArrayOfByte.Crj);
-    if ((com.tencent.mm.kernel.g.afw()) && (!com.tencent.mm.kernel.a.aeC()))
+    ac.i("MicroMsg.NetSceneSynCheck", "new syncCheck complete, selector=" + paramArrayOfByte.DJB);
+    if ((com.tencent.mm.kernel.g.agM()) && (!com.tencent.mm.kernel.a.afS()))
     {
-      paramq = ((aa.a)paramq.getReqObj()).gcD;
-      if (bt.cw(paramq)) {
-        ad.e("MicroMsg.NetSceneSynCheck", "onGYNetEnd md5 is null");
+      paramq = ((aa.a)paramq.getReqObj()).ghj;
+      if (bs.cv(paramq)) {
+        ac.e("MicroMsg.NetSceneSynCheck", "onGYNetEnd md5 is null");
       }
-      paramArrayOfByte.gcD = paramq;
-      ((b)com.tencent.mm.kernel.g.ab(b.class)).azv().a(paramArrayOfByte.Crj, 2, paramArrayOfByte.eBX());
+      paramArrayOfByte.ghj = paramq;
+      ((b)com.tencent.mm.kernel.g.ab(b.class)).aGm().a(paramArrayOfByte.DJB, 2, paramArrayOfByte.eRs());
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    this.fix.unLock();
+    this.flR.unLock();
     AppMethodBeat.o(132568);
   }
   
@@ -103,14 +103,14 @@ public final class j
   public static final class a
     extends l
   {
-    private final aa.a hlN;
-    private final aa.b hlO;
+    private final aa.a hMq;
+    private final aa.b hMr;
     
     public a()
     {
       AppMethodBeat.i(132565);
-      this.hlN = new aa.a();
-      this.hlO = new aa.b();
+      this.hMq = new aa.a();
+      this.hMr = new aa.b();
       AppMethodBeat.o(132565);
     }
     
@@ -121,12 +121,12 @@ public final class j
     
     public final l.d getReqObjImp()
     {
-      return this.hlN;
+      return this.hMq;
     }
     
     public final l.e getRespObj()
     {
-      return this.hlO;
+      return this.hMr;
     }
     
     public final int getType()
@@ -142,7 +142,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelmulti.j
  * JD-Core Version:    0.7.0.1
  */

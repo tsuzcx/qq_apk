@@ -14,10 +14,10 @@ import com.tencent.mm.ui.an;
 public class i
   extends ProgressDialog
 {
-  private TextView ERW;
-  private ProgressBar lQU;
+  private TextView Gpj;
   private View mContentView;
   private Context mContext;
+  private ProgressBar msX;
   
   public i(Context paramContext)
   {
@@ -25,8 +25,8 @@ public class i
     AppMethodBeat.i(159392);
     this.mContext = paramContext;
     this.mContentView = View.inflate(this.mContext, 2131495148, null);
-    this.ERW = ((TextView)this.mContentView.findViewById(2131303524));
-    this.lQU = ((ProgressBar)this.mContentView.findViewById(2131303523));
+    this.Gpj = ((TextView)this.mContentView.findViewById(2131303524));
+    this.msX = ((ProgressBar)this.mContentView.findViewById(2131303523));
     setCanceledOnTouchOutside(true);
     AppMethodBeat.o(159392);
   }
@@ -91,7 +91,7 @@ public class i
   public void setMessage(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(159397);
-    this.ERW.setText(paramCharSequence);
+    this.Gpj.setText(paramCharSequence);
     AppMethodBeat.o(159397);
   }
   
@@ -113,7 +113,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a.i
  * JD-Core Version:    0.7.0.1
  */

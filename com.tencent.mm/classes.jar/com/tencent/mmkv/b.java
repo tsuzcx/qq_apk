@@ -7,12 +7,12 @@ public enum b
   static
   {
     AppMethodBeat.i(13539);
-    IgK = new b("LevelDebug", 0);
-    IgL = new b("LevelInfo", 1);
-    IgM = new b("LevelWarning", 2);
-    IgN = new b("LevelError", 3);
-    IgO = new b("LevelNone", 4);
-    IgP = new b[] { IgK, IgL, IgM, IgN, IgO };
+    JIs = new b("LevelDebug", 0);
+    JIt = new b("LevelInfo", 1);
+    JIu = new b("LevelWarning", 2);
+    JIv = new b("LevelError", 3);
+    JIw = new b("LevelNone", 4);
+    JIx = new b[] { JIs, JIt, JIu, JIv, JIw };
     AppMethodBeat.o(13539);
   }
   

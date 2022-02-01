@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.b;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 import com.tenpay.android.wechat.TenpayUtil;
@@ -239,8 +239,8 @@ public final class TenpaySegmentEditText
     if (mTimeStamp != null) {
       ((Encrypt)localObject2).setTimeStamp(mTimeStamp);
     }
-    b.fjk();
-    if (b.fjl())
+    b.fzz();
+    if (b.fzA())
     {
       localObject1 = ((Encrypt)localObject2).encryptPasswdWithRSA2048((String)localObject1);
       AppMethodBeat.o(73281);
@@ -342,7 +342,7 @@ public final class TenpaySegmentEditText
     AppMethodBeat.i(73276);
     Encrypt localEncrypt = new Encrypt();
     String str = paramString2;
-    if (bt.isNullOrNil(paramString2)) {
+    if (bs.isNullOrNil(paramString2)) {
       str = localEncrypt.getRandomKey();
     }
     paramString1 = localEncrypt.desedeDecode(paramString1, str).split("-");

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
@@ -14,15 +14,15 @@ public final class f
     super(paramMMActivity);
   }
   
-  public final boolean bLM()
+  public final boolean bSZ()
   {
-    return this.nDT;
+    return this.ogU;
   }
   
-  public final boolean bLN()
+  public final boolean bTa()
   {
     AppMethodBeat.i(113648);
-    if ((this.nqp.bHR()) && (super.bLN()) && ((this.nqp.bHP()) || (!bt.isNullOrNil(this.nqp.bHW().code))))
+    if ((this.nTp.bPe()) && (super.bTa()) && ((this.nTp.bPc()) || (!bs.isNullOrNil(this.nTp.bPj().code))))
     {
       AppMethodBeat.o(113648);
       return true;
@@ -31,15 +31,15 @@ public final class f
     return false;
   }
   
-  public final boolean bLO()
+  public final boolean bTb()
   {
     return true;
   }
   
-  public final boolean bLR()
+  public final boolean bTe()
   {
     AppMethodBeat.i(113649);
-    if ((this.nqp.bHR()) && (super.bLR()))
+    if ((this.nTp.bPe()) && (super.bTe()))
     {
       AppMethodBeat.o(113649);
       return true;

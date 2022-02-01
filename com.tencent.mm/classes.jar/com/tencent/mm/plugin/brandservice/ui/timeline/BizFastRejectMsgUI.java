@@ -20,11 +20,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.f;
+import com.tencent.mm.al.f;
 import com.tencent.mm.api.c;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bv;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
@@ -37,26 +37,26 @@ import java.util.Set;
 public class BizFastRejectMsgUI
   extends MMActivity
 {
-  private long fll;
-  private int fsv;
-  private int mWf;
-  private long mWg;
-  private MutableLiveData<Set<com.tencent.mm.plugin.brandservice.ui.timeline.b.a>> mWo;
-  private Button mWp;
-  private a mWq;
-  private List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> mWr;
-  private MRecyclerView mWs;
-  private TextView mWt;
-  private int mWu;
+  private long foF;
+  private int fwc;
+  private int nyE;
+  private long nyF;
+  private MutableLiveData<Set<com.tencent.mm.plugin.brandservice.ui.timeline.b.a>> nyN;
+  private Button nyO;
+  private a nyP;
+  private List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> nyQ;
+  private MRecyclerView nyR;
+  private TextView nyS;
+  private int nyT;
   
   public BizFastRejectMsgUI()
   {
     AppMethodBeat.i(5849);
-    this.mWo = new MutableLiveData();
+    this.nyN = new MutableLiveData();
     AppMethodBeat.o(5849);
   }
   
-  private static List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> cg(List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> paramList)
+  private static List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> ci(List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> paramList)
   {
     AppMethodBeat.i(5852);
     ArrayList localArrayList = new ArrayList();
@@ -64,8 +64,8 @@ public class BizFastRejectMsgUI
     while (paramList.hasNext())
     {
       com.tencent.mm.plugin.brandservice.ui.timeline.b.a locala = (com.tencent.mm.plugin.brandservice.ui.timeline.b.a)paramList.next();
-      c localc = f.ei(locala.userName);
-      if ((localc != null) && (localc.IW())) {
+      c localc = f.dX(locala.userName);
+      if ((localc != null) && (localc.IF())) {
         localArrayList.add(locala);
       }
     }
@@ -95,16 +95,16 @@ public class BizFastRejectMsgUI
       }
     }, 2131230844);
     setBackBtnColorFilter(getResources().getColor(2131099732));
-    this.mWf = getIntent().getIntExtra("biz_time_line_line_session_id", 0);
-    this.mWu = getIntent().getIntExtra("key_time_line_msg_rank", 0);
-    this.fsv = getIntent().getIntExtra("biz_time_line_line_enter_scene", 0);
-    this.fll = getIntent().getLongExtra("key_time_line_msg_id", 0L);
-    this.mWg = (System.currentTimeMillis() / 1000L);
-    paramBundle = b.mWx;
-    b.a(this.mWg, this.mWu, this.mWf, this.fsv, this.fll);
-    this.mWp = ((Button)$(2131297593));
-    this.mWp.setEnabled(false);
-    this.mWp.setOnClickListener(new View.OnClickListener()
+    this.nyE = getIntent().getIntExtra("biz_time_line_line_session_id", 0);
+    this.nyT = getIntent().getIntExtra("key_time_line_msg_rank", 0);
+    this.fwc = getIntent().getIntExtra("biz_time_line_line_enter_scene", 0);
+    this.foF = getIntent().getLongExtra("key_time_line_msg_id", 0L);
+    this.nyF = (System.currentTimeMillis() / 1000L);
+    paramBundle = b.nyW;
+    b.a(this.nyF, this.nyT, this.nyE, this.fwc, this.foF);
+    this.nyO = ((Button)$(2131297593));
+    this.nyO.setEnabled(false);
+    this.nyO.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -122,7 +122,7 @@ public class BizFastRejectMsgUI
           {
             AppMethodBeat.i(5846);
             BizFastRejectMsgUI.e(BizFastRejectMsgUI.this);
-            t.cg(BizFastRejectMsgUI.this.getApplicationContext(), BizFastRejectMsgUI.this.getString(2131756579));
+            t.ch(BizFastRejectMsgUI.this.getApplicationContext(), BizFastRejectMsgUI.this.getString(2131756579));
             BizFastRejectMsgUI.this.onBackPressed();
             AppMethodBeat.o(5846);
           }
@@ -132,14 +132,14 @@ public class BizFastRejectMsgUI
         while (paramAnonymousView.hasNext())
         {
           com.tencent.mm.plugin.brandservice.ui.timeline.b.a locala = (com.tencent.mm.plugin.brandservice.ui.timeline.b.a)paramAnonymousView.next();
-          b localb = b.mWx;
+          b localb = b.nyW;
           b.a(locala.userName, l, 1, BizFastRejectMsgUI.f(BizFastRejectMsgUI.this), 1);
         }
         AppMethodBeat.o(5847);
       }
     });
-    this.mWt = ((TextView)$(2131306150));
-    this.mWt.setOnClickListener(new View.OnClickListener()
+    this.nyS = ((TextView)$(2131306150));
+    this.nyS.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -153,45 +153,45 @@ public class BizFastRejectMsgUI
         if (paramAnonymousView.size() == BizFastRejectMsgUI.b(BizFastRejectMsgUI.this).size())
         {
           paramAnonymousView = BizFastRejectMsgUI.g(BizFastRejectMsgUI.this);
-          paramAnonymousView.mWd.clear();
-          paramAnonymousView.mWe.setValue(paramAnonymousView.mWd);
-          paramAnonymousView.aql.notifyChanged();
+          paramAnonymousView.nyC.clear();
+          paramAnonymousView.nyD.setValue(paramAnonymousView.nyC);
+          paramAnonymousView.arg.notifyChanged();
           AppMethodBeat.o(5848);
           return;
         }
         paramAnonymousView = BizFastRejectMsgUI.g(BizFastRejectMsgUI.this);
-        paramAnonymousView.mWd.addAll(paramAnonymousView.mWc);
-        paramAnonymousView.mWe.setValue(paramAnonymousView.mWd);
-        paramAnonymousView.aql.notifyChanged();
+        paramAnonymousView.nyC.addAll(paramAnonymousView.nyB);
+        paramAnonymousView.nyD.setValue(paramAnonymousView.nyC);
+        paramAnonymousView.arg.notifyChanged();
         AppMethodBeat.o(5848);
       }
     });
-    this.mWs = ((MRecyclerView)$(2131304273));
+    this.nyR = ((MRecyclerView)$(2131304273));
     String str = getIntent().getStringExtra("key_reject_biz_info_xml");
-    paramBundle = b.mWx;
+    paramBundle = b.nyW;
     paramBundle = (List)new ArrayList();
     if (str == null) {}
     for (;;)
     {
-      this.mWr = cg(paramBundle);
-      if (this.mWr.isEmpty())
+      this.nyQ = ci(paramBundle);
+      if (this.nyQ.isEmpty())
       {
-        this.mWs.setVisibility(8);
+        this.nyR.setVisibility(8);
         ((View)$(2131304520)).setVisibility(8);
         ((View)$(2131306123)).setVisibility(0);
       }
-      this.mWq = new a(this.mWr, this.mWo, this.mWg, this.fll, this.mWf);
-      this.mWs.setLayoutManager(new LinearLayoutManager());
-      this.mWs.setAdapter(this.mWq);
-      this.mWs.addHeaderView(getLayoutInflater().inflate(2131493197, null));
-      this.mWo.observe(this, new Observer() {});
+      this.nyP = new a(this.nyQ, this.nyN, this.nyF, this.foF, this.nyE);
+      this.nyR.setLayoutManager(new LinearLayoutManager());
+      this.nyR.setAdapter(this.nyP);
+      this.nyR.addHeaderView(getLayoutInflater().inflate(2131493197, null));
+      this.nyN.observe(this, new Observer() {});
       AppMethodBeat.o(5850);
       return;
-      Map localMap = bw.K(str, "sysmsg");
+      Map localMap = bv.L(str, "sysmsg");
       if (localMap == null) {
-        ad.i("MicroMsg.BizFastRejectTool", "parse xml failed , xml = %s", new Object[] { str });
+        ac.i("MicroMsg.BizFastRejectTool", "parse xml failed , xml = %s", new Object[] { str });
       } else if ((String)localMap.get(".sysmsg.BizMsgRejectRecommend.BizAccount.UserName") == null) {
-        ad.i("MicroMsg.BizFastRejectTool", "no msg in map , xml = %s", new Object[] { str });
+        ac.i("MicroMsg.BizFastRejectTool", "no msg in map , xml = %s", new Object[] { str });
       } else {
         paramBundle = b.d(localMap, 2147483647);
       }
@@ -207,25 +207,25 @@ public class BizFastRejectMsgUI
       AppMethodBeat.o(5851);
       return;
     }
-    int i = this.mWr.size();
-    Iterator localIterator = this.mWr.iterator();
+    int i = this.nyQ.size();
+    Iterator localIterator = this.nyQ.iterator();
     while (localIterator.hasNext())
     {
-      c localc = f.ei(((com.tencent.mm.plugin.brandservice.ui.timeline.b.a)localIterator.next()).userName);
-      if ((localc == null) || (!localc.IW())) {
+      c localc = f.dX(((com.tencent.mm.plugin.brandservice.ui.timeline.b.a)localIterator.next()).userName);
+      if ((localc == null) || (!localc.IF())) {
         localIterator.remove();
       }
     }
-    if (this.mWr.isEmpty())
+    if (this.nyQ.isEmpty())
     {
-      this.mWs.setVisibility(8);
+      this.nyR.setVisibility(8);
       ((View)$(2131304520)).setVisibility(8);
       ((View)$(2131306123)).setVisibility(0);
       AppMethodBeat.o(5851);
       return;
     }
-    if ((this.mWq != null) && (i != this.mWr.size())) {
-      this.mWq.aql.notifyChanged();
+    if ((this.nyP != null) && (i != this.nyQ.size())) {
+      this.nyP.arg.notifyChanged();
     }
     AppMethodBeat.o(5851);
   }
@@ -238,7 +238,7 @@ public class BizFastRejectMsgUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.BizFastRejectMsgUI
  * JD-Core Version:    0.7.0.1
  */

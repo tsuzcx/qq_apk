@@ -8,37 +8,37 @@ import com.tencent.mm.compatible.loader.a;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.service.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
 
 public final class g
   implements o
 {
-  private static final int[] kNR = { 1025, 1031, 1032 };
-  private static final int[] kNS = { 1011, 1012, 1013, 1047, 1049, 1048, 1050, 1124, 1125, 1126 };
-  private final d kNT;
-  private final f kNU;
-  private final c kNV;
+  private static final int[] lpq = { 1025, 1031, 1032 };
+  private static final int[] lpr = { 1011, 1012, 1013, 1047, 1049, 1048, 1050, 1124, 1125, 1126 };
+  private final d lps;
+  private final f lpt;
+  private final c lpu;
   
   public g()
   {
     AppMethodBeat.i(47416);
-    this.kNT = new d();
-    this.kNU = new f();
-    this.kNV = new c();
+    this.lps = new d();
+    this.lpt = new f();
+    this.lpu = new c();
     AppMethodBeat.o(47416);
   }
   
-  public final boolean Kr(String paramString)
+  public final boolean Oy(String paramString)
   {
     AppMethodBeat.i(47417);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(47417);
       return false;
     }
-    ad.i("MicroMsg.WeAppLinkOpener", "handle appLink = %s", new Object[] { paramString });
+    ac.i("MicroMsg.WeAppLinkOpener", "handle appLink = %s", new Object[] { paramString });
     Object localObject2 = b.values();
     int k = localObject2.length;
     int i = 0;
@@ -47,7 +47,7 @@ public final class g
     if (i < k)
     {
       localObject1 = localObject2[i];
-      if ((!bt.isNullOrNil(paramString)) && (paramString.startsWith(localObject1.htS)))
+      if ((!bs.isNullOrNil(paramString)) && (paramString.startsWith(localObject1.hUu)))
       {
         j = 1;
         label79:
@@ -70,21 +70,21 @@ public final class g
           for (;;)
           {
             label113:
-            ad.e("MicroMsg.WeAppLinkOpener", "handle nativeLink = %s, exp = %s", new Object[] { paramString, localException });
+            ac.e("MicroMsg.WeAppLinkOpener", "handle nativeLink = %s, exp = %s", new Object[] { paramString, localException });
             paramString = null;
           }
           String str = paramString.getQueryParameter("username");
           paramString = paramString.getQueryParameter("path");
-          if ((!bt.isNullOrNil(str)) && (af.rz(str))) {
+          if ((!bs.isNullOrNil(str)) && (ai.vC(str))) {
             break label185;
           }
           AppMethodBeat.o(47417);
           return false;
           AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
           localAppBrandStatObject.scene = localObject1.scene;
-          localAppBrandStatObject.dbt = b.bhg();
-          localAppBrandStatObject.dzS = 0;
-          localAppBrandStatObject.dzT = b.bhh();
+          localAppBrandStatObject.cYP = b.boa();
+          localAppBrandStatObject.dxE = 0;
+          localAppBrandStatObject.dxF = b.bob();
           AppBrandLaunchProxyUI.a(null, str, paramString, 0, -1, localAppBrandStatObject, null, null);
           AppMethodBeat.o(47417);
           return true;
@@ -109,9 +109,9 @@ public final class g
   public final boolean b(Context paramContext, String paramString, int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(47418);
-    if (a.contains(kNR, paramInt))
+    if (a.contains(lpq, paramInt))
     {
-      if (a.a.kNI == this.kNT.a(paramContext, paramString, paramInt, paramBundle))
+      if (a.a.lph == this.lps.a(paramContext, paramString, paramInt, paramBundle))
       {
         AppMethodBeat.o(47418);
         return true;
@@ -119,9 +119,9 @@ public final class g
       AppMethodBeat.o(47418);
       return false;
     }
-    if (a.contains(kNS, paramInt))
+    if (a.contains(lpr, paramInt))
     {
-      if (a.a.kNI == this.kNU.a(paramContext, paramString, paramInt, paramBundle))
+      if (a.a.lph == this.lpt.a(paramContext, paramString, paramInt, paramBundle))
       {
         AppMethodBeat.o(47418);
         return true;
@@ -131,7 +131,7 @@ public final class g
     }
     if ((1064 == paramInt) || (1078 == paramInt))
     {
-      if (a.a.kNI == this.kNV.a(paramContext, paramString, paramInt, paramBundle))
+      if (a.a.lph == this.lpu.a(paramContext, paramString, paramInt, paramBundle))
       {
         AppMethodBeat.o(47418);
         return true;
@@ -139,14 +139,14 @@ public final class g
       AppMethodBeat.o(47418);
       return false;
     }
-    ad.e("MicroMsg.WeAppLinkOpener", "handleScanCodeLink, unhandled case link[ %s ], scene[ %d ]", new Object[] { paramString, Integer.valueOf(paramInt) });
+    ac.e("MicroMsg.WeAppLinkOpener", "handleScanCodeLink, unhandled case link[ %s ], scene[ %d ]", new Object[] { paramString, Integer.valueOf(paramInt) });
     AppMethodBeat.o(47418);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c.g
  * JD-Core Version:    0.7.0.1
  */

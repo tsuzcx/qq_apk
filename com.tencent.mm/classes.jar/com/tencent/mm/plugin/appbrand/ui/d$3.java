@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.game.preload.a;
 import com.tencent.mm.plugin.appbrand.game.preload.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.sdk.platformtools.l;
 import com.tencent.mm.vfs.e;
@@ -24,18 +24,18 @@ final class d$3
   public final void run()
   {
     AppMethodBeat.i(48590);
-    a.aWT();
-    Object localObject1 = d.e(this.lzj).mAppId;
-    String str1 = this.lzo;
-    a.a locala = this.lzp;
+    a.bdR();
+    Object localObject1 = d.e(this.mbg).mAppId;
+    String str1 = this.mbl;
+    a.a locala = this.mbm;
     String str2;
     Object localObject3;
-    if ((!bt.isNullOrNil((String)localObject1)) && (!bt.isNullOrNil(str1)))
+    if ((!bs.isNullOrNil((String)localObject1)) && (!bs.isNullOrNil(str1)))
     {
-      localObject1 = a.gRX + "/" + (String)localObject1 + "/";
-      l.aAk((String)localObject1);
-      str2 = (String)localObject1 + ai.du(str1);
-      ad.i("MicroMsg.WAGameLoadingImgManager", "loadingImgPath:%s", new Object[] { str2 });
+      localObject1 = a.hsx + "/" + (String)localObject1 + "/";
+      l.aFC((String)localObject1);
+      str2 = (String)localObject1 + ah.dg(str1);
+      ac.i("MicroMsg.WAGameLoadingImgManager", "loadingImgPath:%s", new Object[] { str2 });
       localObject3 = null;
       localObject1 = null;
       if (!new e(str2).exists()) {}
@@ -51,7 +51,7 @@ final class d$3
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.WAGameLoadingImgManager", localFileNotFoundException2, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.WAGameLoadingImgManager", localFileNotFoundException2, "", new Object[0]);
         }
       }
       localObject3 = localObject1;
@@ -68,15 +68,15 @@ final class d$3
       }
       catch (IOException localIOException1)
       {
-        ad.printErrStackTrace("MicroMsg.WAGameLoadingImgManager", localIOException1, "read contentLength", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WAGameLoadingImgManager", localIOException1, "read contentLength", new Object[0]);
         localObject4 = localObject1;
         continue;
       }
-      bt.d((Closeable)localObject3);
+      bs.d((Closeable)localObject3);
       AppMethodBeat.o(48590);
       return;
       Object localObject4;
-      a.cG(str2, str1);
+      a.cQ(str2, str1);
       try
       {
         localObject1 = i.openRead(str2);
@@ -92,7 +92,7 @@ final class d$3
         }
         catch (IOException localIOException2)
         {
-          ad.printErrStackTrace("MicroMsg.WAGameLoadingImgManager", localIOException2, "read contentLength", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.WAGameLoadingImgManager", localIOException2, "read contentLength", new Object[0]);
           localObject5 = localObject1;
         }
       }
@@ -101,7 +101,7 @@ final class d$3
         for (;;)
         {
           Object localObject5;
-          ad.printErrStackTrace("MicroMsg.WAGameLoadingImgManager", localFileNotFoundException1, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.WAGameLoadingImgManager", localFileNotFoundException1, "", new Object[0]);
           Object localObject2 = localObject5;
         }
       }

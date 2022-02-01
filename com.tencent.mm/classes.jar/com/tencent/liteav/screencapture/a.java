@@ -12,10 +12,10 @@ import android.os.Message;
 import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
-import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.d.i;
 import com.tencent.liteav.basic.d.j;
 import com.tencent.liteav.basic.d.k;
+import com.tencent.liteav.basic.d.l;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -521,7 +521,7 @@ public class a
     protected long i;
     protected long j;
     protected com.tencent.liteav.basic.d.b k;
-    protected h l;
+    protected i l;
     float[] m;
     
     public a(Looper paramLooper, a parama)
@@ -571,7 +571,7 @@ public class a
         AppMethodBeat.o(16534);
         return false;
       }
-      this.l = new h();
+      this.l = new i();
       if (!this.l.a())
       {
         AppMethodBeat.o(16534);
@@ -579,7 +579,7 @@ public class a
       }
       this.l.a(true);
       this.l.a(this.e, this.f);
-      this.l.a(k.e, k.a(j.a, false, false));
+      this.l.a(l.e, l.a(k.a, false, false));
       d();
       AppMethodBeat.o(16534);
       return true;
@@ -700,7 +700,7 @@ public class a
     {
       AppMethodBeat.i(16537);
       this.b = new int[1];
-      this.b[0] = i.b();
+      this.b[0] = j.b();
       if (this.b[0] <= 0)
       {
         this.b = null;

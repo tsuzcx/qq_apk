@@ -450,9 +450,6 @@ public class a
     AppMethodBeat.i(16441);
     TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "stopDevicePlay()!");
     this.mDeviceIsPlaying = false;
-    if (!TXCJitter.nativeIsTracksEmpty()) {
-      TXCJitter.nativeStopAllTracks();
-    }
     synchronized (this.mLockObj)
     {
       if (this.mJitterMap != null) {

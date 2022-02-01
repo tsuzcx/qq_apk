@@ -6,9 +6,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  long HOv;
-  long IrA;
-  int Irz;
+  int JTj;
+  long JTk;
+  long JoQ;
   int action;
   Context context;
   int requestType;
@@ -16,18 +16,18 @@ public final class d
   private d(a parama)
   {
     this.requestType = parama.requestType;
-    this.Irz = parama.Irz;
+    this.JTj = parama.JTj;
     this.action = parama.action;
-    this.IrA = parama.IrA;
-    this.HOv = parama.HOv;
+    this.JTk = parama.JTk;
+    this.JoQ = parama.JoQ;
     this.context = parama.context;
   }
   
   public static final class a
   {
-    long HOv;
-    public long IrA;
-    int Irz;
+    int JTj;
+    public long JTk;
+    long JoQ;
     int action;
     Context context;
     int requestType;
@@ -36,10 +36,10 @@ public final class d
     {
       AppMethodBeat.i(138375);
       this.requestType = 0;
-      this.Irz = 0;
+      this.JTj = 0;
       this.action = 0;
-      this.IrA = (f.IrS * 12L);
-      this.HOv = 0L;
+      this.JTk = (f.JTC * 12L);
+      this.JoQ = 0L;
       if (paramInt1 < 0)
       {
         paramContext = new IllegalArgumentException("scenes invalid: ".concat(String.valueOf(paramInt1)));
@@ -47,7 +47,7 @@ public final class d
         throw paramContext;
       }
       this.context = paramContext.getApplicationContext();
-      this.Irz = paramInt1;
+      this.JTj = paramInt1;
       this.action = paramInt2;
       AppMethodBeat.o(138375);
     }
@@ -55,7 +55,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.e.a.d
  * JD-Core Version:    0.7.0.1
  */

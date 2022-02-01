@@ -3,54 +3,54 @@ package com.tencent.mm.plugin.messenger.foundation.a.a;
 import com.tencent.mm.j.a.a.c;
 import com.tencent.mm.j.a.a.d;
 import com.tencent.mm.sdk.e.h;
-import com.tencent.mm.storage.y;
+import com.tencent.mm.storage.z;
 
 public abstract interface b
   extends h
 {
-  public abstract int A(String paramString, long paramLong1, long paramLong2);
+  public abstract long a(z paramz);
   
-  public abstract long a(y paramy);
-  
-  public abstract long a(y paramy, boolean paramBoolean);
+  public abstract long a(z paramz, boolean paramBoolean);
   
   public abstract boolean a(String paramString, d paramd);
   
-  public abstract long afT(String paramString);
+  public abstract boolean aA(String paramString, long paramLong);
   
-  public abstract long afU(String paramString);
+  public abstract c aB(String paramString, long paramLong);
   
-  public abstract long afV(String paramString);
+  public abstract long akN(String paramString);
   
-  public abstract long afW(String paramString);
+  public abstract long akO(String paramString);
   
-  public abstract long afX(String paramString);
+  public abstract long akP(String paramString);
   
-  public abstract d afY(String paramString);
+  public abstract long akQ(String paramString);
   
-  public abstract boolean afZ(String paramString);
+  public abstract long akR(String paramString);
   
-  public abstract c aga(String paramString);
+  public abstract d akS(String paramString);
   
-  public abstract y agb(String paramString);
+  public abstract boolean akT(String paramString);
   
-  public abstract StringBuilder agc(String paramString);
+  public abstract c akU(String paramString);
   
-  public abstract boolean av(String paramString, long paramLong);
+  public abstract z akV(String paramString);
   
-  public abstract boolean aw(String paramString, long paramLong);
+  public abstract StringBuilder akW(String paramString);
   
   public abstract boolean ax(String paramString, long paramLong);
   
   public abstract boolean ay(String paramString, long paramLong);
   
-  public abstract c az(String paramString, long paramLong);
+  public abstract boolean az(String paramString, long paramLong);
   
-  public abstract long b(y paramy);
+  public abstract long b(z paramz);
   
-  public abstract boolean cOL();
+  public abstract boolean dcu();
   
   public abstract c f(String paramString, long paramLong, boolean paramBoolean);
+  
+  public abstract int y(String paramString, long paramLong1, long paramLong2);
 }
 
 

@@ -3,66 +3,87 @@ package com.tencent.mm.plugin.exdevice.ui;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
+import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.util.Base64;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.o;
 import com.tencent.mm.model.az;
-import com.tencent.mm.plugin.d.a.e.a;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
 import com.tencent.mm.plugin.exdevice.k.b;
+import com.tencent.mm.plugin.exdevice.model.ad;
 import com.tencent.mm.plugin.exdevice.model.e;
 import com.tencent.mm.plugin.exdevice.model.e.b;
+import com.tencent.mm.plugin.exdevice.model.f;
 import com.tencent.mm.plugin.exdevice.model.h;
 import com.tencent.mm.plugin.exdevice.model.j;
 import com.tencent.mm.plugin.exdevice.model.j.a;
 import com.tencent.mm.plugin.exdevice.model.t;
 import com.tencent.mm.plugin.exdevice.model.v;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bjb;
+import com.tencent.mm.protocal.protobuf.bjc;
+import com.tencent.mm.protocal.protobuf.bva;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
+import java.util.ArrayList;
 import java.util.List;
 import junit.framework.Assert;
+import org.json.JSONObject;
 
 @SuppressLint({"Assert"})
 public class ExdeviceBindDeviceUI
   extends MMActivity
   implements g, e.b
 {
-  private ProgressDialog fpP;
-  private ScrollView jPx;
+  private ProgressDialog fts;
+  private ScrollView kqh;
   private String mDeviceType;
   private ListView mListView;
-  private TextView nBm;
-  private String oUW;
-  private j.a oVJ;
-  private TextView paG;
-  private TextView paH;
-  private String pbA;
-  private boolean pbB = false;
-  private j.a pbC;
-  private boolean pbD = false;
-  private boolean pbE = false;
-  private ExdeviceBindDeviceUI.a pbt;
-  private View pbu;
-  private TextView pbv;
-  private ImageView pbw;
-  private View pbx;
-  private ExdeviceBindDeviceUI.e pby;
-  private String pbz;
+  private TextView oem;
+  private TextView pDR;
+  private TextView pDS;
+  private a pEE;
+  private View pEF;
+  private TextView pEG;
+  private ImageView pEH;
+  private View pEI;
+  private ExdeviceBindDeviceUI.e pEJ;
+  private String pEK;
+  private String pEL;
+  private boolean pEM = false;
+  private j.a pEN;
+  private boolean pEO = false;
+  private boolean pEP = false;
+  private j.a pyU;
+  private String pyh;
   
   static
   {
@@ -76,7 +97,7 @@ public class ExdeviceBindDeviceUI
     }
   }
   
-  private void Bc(int paramInt)
+  private void BU(int paramInt)
   {
     AppMethodBeat.i(23934);
     switch (paramInt)
@@ -100,90 +121,138 @@ public class ExdeviceBindDeviceUI
       String str = getString(2131758481);
       Object localObject = new SpannableString(str);
       ((SpannableString)localObject).setSpan(new ForegroundColorSpan(2131100547), 0, str.length(), 33);
-      ((SpannableString)localObject).setSpan(new ExdeviceBindDeviceUI.9(this), 0, str.length(), 33);
-      this.pbv.setMovementMethod(LinkMovementMethod.getInstance());
-      this.pbv.setText((CharSequence)localObject);
+      ((SpannableString)localObject).setSpan(new ClickableSpan()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(23901);
+          f.ao(ExdeviceBindDeviceUI.this.getContext(), "http://o2o.gtimg.com/mydevice/page/deviceHelp.html");
+          AppMethodBeat.o(23901);
+        }
+        
+        public final void updateDrawState(TextPaint paramAnonymousTextPaint)
+        {
+          AppMethodBeat.i(23902);
+          paramAnonymousTextPaint.setColor(paramAnonymousTextPaint.linkColor);
+          paramAnonymousTextPaint.setUnderlineText(false);
+          AppMethodBeat.o(23902);
+        }
+      }, 0, str.length(), 33);
+      this.pEG.setMovementMethod(LinkMovementMethod.getInstance());
+      this.pEG.setText((CharSequence)localObject);
       break;
       str = getString(2131758485);
       localObject = getString(2131758482);
       SpannableString localSpannableString = new SpannableString(str + (String)localObject);
       localSpannableString.setSpan(new ForegroundColorSpan(2131100547), str.length(), str.length() + ((String)localObject).length(), 33);
-      localSpannableString.setSpan(new ExdeviceBindDeviceUI.10(this), str.length(), str.length() + ((String)localObject).length(), 33);
-      this.pbv.setMovementMethod(LinkMovementMethod.getInstance());
-      this.pbv.setText(localSpannableString);
+      localSpannableString.setSpan(new ClickableSpan()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(23903);
+          ExdeviceBindDeviceUI.this.finish();
+          AppMethodBeat.o(23903);
+        }
+        
+        public final void updateDrawState(TextPaint paramAnonymousTextPaint)
+        {
+          AppMethodBeat.i(23904);
+          paramAnonymousTextPaint.setColor(paramAnonymousTextPaint.linkColor);
+          paramAnonymousTextPaint.setUnderlineText(false);
+          AppMethodBeat.o(23904);
+        }
+      }, str.length(), str.length() + ((String)localObject).length(), 33);
+      this.pEG.setMovementMethod(LinkMovementMethod.getInstance());
+      this.pEG.setText(localSpannableString);
       break;
       str = getString(2131758486);
       localObject = getString(2131758515);
       localSpannableString = new SpannableString(str + (String)localObject);
       localSpannableString.setSpan(new ForegroundColorSpan(2131100547), str.length(), str.length() + ((String)localObject).length(), 33);
-      localSpannableString.setSpan(new ExdeviceBindDeviceUI.2(this), str.length(), str.length() + ((String)localObject).length(), 33);
-      this.pbv.setMovementMethod(LinkMovementMethod.getInstance());
-      this.pbv.setText(localSpannableString);
+      localSpannableString.setSpan(new ClickableSpan()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(23893);
+          ExdeviceBindDeviceUI.this.finish();
+          AppMethodBeat.o(23893);
+        }
+        
+        public final void updateDrawState(TextPaint paramAnonymousTextPaint)
+        {
+          AppMethodBeat.i(23894);
+          paramAnonymousTextPaint.setColor(paramAnonymousTextPaint.linkColor);
+          paramAnonymousTextPaint.setUnderlineText(false);
+          AppMethodBeat.o(23894);
+        }
+      }, str.length(), str.length() + ((String)localObject).length(), 33);
+      this.pEG.setMovementMethod(LinkMovementMethod.getInstance());
+      this.pEG.setText(localSpannableString);
       break;
-      this.pbw.setImageResource(2131689789);
-      this.paG.setText(2131758494);
-      this.paH.setText(2131758478);
+      this.pEH.setImageResource(2131689789);
+      this.pDR.setText(2131758494);
+      this.pDS.setText(2131758478);
       break label72;
-      this.pbw.setImageResource(2131689789);
-      this.paG.setText(2131758492);
-      this.paH.setText("");
+      this.pEH.setImageResource(2131689789);
+      this.pDR.setText(2131758492);
+      this.pDS.setText("");
       break label72;
-      this.pbw.setImageResource(2131691457);
-      this.paG.setText(2131758494);
-      this.paH.setText(2131758489);
+      this.pEH.setImageResource(2131691457);
+      this.pDR.setText(2131758494);
+      this.pDS.setText(2131758489);
       break label72;
-      this.pbu.setVisibility(0);
+      this.pEF.setVisibility(0);
       this.mListView.setVisibility(0);
-      this.pbv.setVisibility(0);
-      this.pbw.setVisibility(8);
-      this.paG.setVisibility(8);
-      this.paH.setVisibility(8);
+      this.pEG.setVisibility(0);
+      this.pEH.setVisibility(8);
+      this.pDR.setVisibility(8);
+      this.pDS.setVisibility(8);
       AppMethodBeat.o(23934);
       return;
-      this.jPx.setVisibility(8);
-      this.pbu.setVisibility(8);
+      this.kqh.setVisibility(8);
+      this.pEF.setVisibility(8);
       this.mListView.setVisibility(8);
-      this.pbv.setVisibility(8);
-      this.pbw.setVisibility(0);
-      this.paG.setVisibility(0);
+      this.pEG.setVisibility(8);
+      this.pEH.setVisibility(0);
+      this.pDR.setVisibility(0);
       if (paramInt == 4)
       {
-        this.paH.setVisibility(8);
+        this.pDS.setVisibility(8);
         AppMethodBeat.o(23934);
         return;
       }
-      this.paH.setVisibility(0);
+      this.pDS.setVisibility(0);
     }
   }
   
-  final void a(ExdeviceBindDeviceUI.f paramf)
+  final void a(f paramf)
   {
     AppMethodBeat.i(23932);
     Object localObject = paramf.getKey();
-    if (this.pbt.UX((String)localObject))
+    if (this.pEE.Zj((String)localObject))
     {
       AppMethodBeat.o(23932);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdeviceBindDeviceUI", "Add device: " + paramf.cap());
-    localObject = this.pbt;
-    if ((paramf != null) && (!((ExdeviceBindDeviceUI.a)localObject).UX(paramf.getKey())))
+    ac.d("MicroMsg.ExdeviceBindDeviceUI", "Add device: " + paramf.chy());
+    localObject = this.pEE;
+    if ((paramf != null) && (!((a)localObject).Zj(paramf.getKey())))
     {
-      paramf.pbY = ((ExdeviceBindDeviceUI.a)localObject).c(paramf);
-      ((ExdeviceBindDeviceUI.a)localObject).pbM.add(paramf);
+      paramf.pFj = ((a)localObject).c(paramf);
+      ((a)localObject).pEX.add(paramf);
     }
-    this.pbt.notifyDataSetChanged();
-    if (paramf.pbZ == ExdeviceBindDeviceUI.b.pbR)
+    this.pEE.notifyDataSetChanged();
+    if (paramf.pFk == ExdeviceBindDeviceUI.b.pFc)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "NetSceneSearchBLEHardDevice doScene, mac(%s), brandName(%s),categoryId(%s)", new Object[] { paramf.pca.cGn, this.oUW, this.pbz });
-      az.aeS().a(new t(paramf.pca.cGn, this.oUW, this.pbz), 0);
+      ac.i("MicroMsg.ExdeviceBindDeviceUI", "NetSceneSearchBLEHardDevice doScene, mac(%s), brandName(%s),categoryId(%s)", new Object[] { paramf.pFl.cDv, this.pyh, this.pEK });
+      az.agi().a(new t(paramf.pFl.cDv, this.pyh, this.pEK), 0);
       AppMethodBeat.o(23932);
       return;
     }
-    if (paramf.pbZ == ExdeviceBindDeviceUI.b.pbQ)
+    if (paramf.pFk == ExdeviceBindDeviceUI.b.pFb)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "NetSceneSearchWiFiHardDevice doScene, deviceType(%s), deviceId(%s)", new Object[] { paramf.pcb.mDeviceType, paramf.pcb.oUX });
-      az.aeS().a(new v(paramf.pcb.mDeviceType, paramf.pcb.oUX, paramf.pcg), 0);
+      ac.i("MicroMsg.ExdeviceBindDeviceUI", "NetSceneSearchWiFiHardDevice doScene, deviceType(%s), deviceId(%s)", new Object[] { paramf.pFm.mDeviceType, paramf.pFm.pyi });
+      az.agi().a(new v(paramf.pFm.mDeviceType, paramf.pFm.pyi, paramf.pFr), 0);
       AppMethodBeat.o(23932);
       return;
     }
@@ -205,73 +274,89 @@ public class ExdeviceBindDeviceUI
     AppMethodBeat.i(23927);
     this.mListView = ((ListView)findViewById(2131301457));
     Object localObject = View.inflate(this, 2131493860, null);
-    this.pbx = View.inflate(this, 2131493893, null);
-    this.pbu = this.pbx.findViewById(2131304456);
-    this.nBm = ((TextView)this.pbx.findViewById(2131305885));
-    this.pbv = ((TextView)findViewById(2131304300));
-    this.pbw = ((ImageView)findViewById(2131301586));
-    this.paG = ((TextView)findViewById(2131299511));
-    this.paH = ((TextView)findViewById(2131299512));
-    this.jPx = ((ScrollView)findViewById(2131299066));
+    this.pEI = View.inflate(this, 2131493893, null);
+    this.pEF = this.pEI.findViewById(2131304456);
+    this.oem = ((TextView)this.pEI.findViewById(2131305885));
+    this.pEG = ((TextView)findViewById(2131304300));
+    this.pEH = ((ImageView)findViewById(2131301586));
+    this.pDR = ((TextView)findViewById(2131299511));
+    this.pDS = ((TextView)findViewById(2131299512));
+    this.kqh = ((ScrollView)findViewById(2131299066));
     this.mListView.addHeaderView((View)localObject, null, false);
-    this.mListView.addFooterView(this.pbx, null, false);
-    this.pbt = new ExdeviceBindDeviceUI.a(this.oUW, this.pby, this.pbz);
-    this.mListView.setAdapter(this.pbt);
-    this.mListView.setOnItemClickListener(new ExdeviceBindDeviceUI.5(this));
-    if ((this.pbE) && (!this.pbD))
+    this.mListView.addFooterView(this.pEI, null, false);
+    this.pEE = new a(this.pyh, this.pEJ, this.pEK);
+    this.mListView.setAdapter(this.pEE);
+    this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
-      if (!a.eh(getContext()))
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "now sdk version not support ble device : %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-        Bc(4);
+        AppMethodBeat.i(23897);
+        int i = ((ListView)paramAnonymousAdapterView).getHeaderViewsCount();
+        paramAnonymousAdapterView = ExdeviceBindDeviceUI.a(ExdeviceBindDeviceUI.this).BW(paramAnonymousInt - i);
+        if (paramAnonymousAdapterView.pFo.eNj != 0)
+        {
+          ExdeviceBindDeviceUI.a(ExdeviceBindDeviceUI.this, paramAnonymousAdapterView);
+          AppMethodBeat.o(23897);
+          return;
+        }
+        ExdeviceBindDeviceUI.b(ExdeviceBindDeviceUI.this, paramAnonymousAdapterView);
+        AppMethodBeat.o(23897);
+      }
+    });
+    if ((this.pEP) && (!this.pEO))
+    {
+      if (!com.tencent.mm.plugin.d.a.e.a.ep(getContext()))
+      {
+        ac.i("MicroMsg.ExdeviceBindDeviceUI", "now sdk version not support ble device : %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+        BU(4);
         AppMethodBeat.o(23927);
         return;
       }
-      if (!a.bBG())
+      if (!com.tencent.mm.plugin.d.a.e.a.bIE())
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "Bluetooth is not open, Just leave");
-        Bc(3);
+        ac.i("MicroMsg.ExdeviceBindDeviceUI", "Bluetooth is not open, Just leave");
+        BU(3);
         AppMethodBeat.o(23927);
         return;
       }
     }
-    if ((!this.pbE) && (this.pbD) && (!ay.isWifi(getContext())))
+    if ((!this.pEP) && (this.pEO) && (!ax.isWifi(getContext())))
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "wifi is not open, Just leave");
-      Bc(5);
+      ac.i("MicroMsg.ExdeviceBindDeviceUI", "wifi is not open, Just leave");
+      BU(5);
       AppMethodBeat.o(23927);
       return;
     }
-    if (this.pby == ExdeviceBindDeviceUI.e.pbV)
+    if (this.pEJ == ExdeviceBindDeviceUI.e.pFg)
     {
-      Bc(0);
+      BU(0);
       AppMethodBeat.o(23927);
       return;
     }
-    if (this.pby == ExdeviceBindDeviceUI.e.pbW)
+    if (this.pEJ == ExdeviceBindDeviceUI.e.pFh)
     {
-      if ((this.pbE) && (this.pbD))
+      if ((this.pEP) && (this.pEO))
       {
         Assert.assertTrue(false);
-        Bc(1);
+        BU(1);
         AppMethodBeat.o(23927);
         return;
       }
-      if (this.pbE)
+      if (this.pEP)
       {
-        Bc(2);
+        BU(2);
         AppMethodBeat.o(23927);
         return;
       }
-      if (this.pbD)
+      if (this.pEO)
       {
-        Bc(1);
+        BU(1);
         AppMethodBeat.o(23927);
       }
     }
     else
     {
-      localObject = ExdeviceBindDeviceUI.e.pbU;
+      localObject = ExdeviceBindDeviceUI.e.pFf;
       Assert.assertTrue(false);
     }
     AppMethodBeat.o(23927);
@@ -280,27 +365,35 @@ public class ExdeviceBindDeviceUI
   public final void o(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(23930);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdeviceBindDeviceUI", "onScanResult, broadcastName(%s), mac(%s), isCompleted(%b).", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
-    if (bt.isNullOrNil(paramString2))
+    ac.d("MicroMsg.ExdeviceBindDeviceUI", "onScanResult, broadcastName(%s), mac(%s), isCompleted(%b).", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+    if (bs.isNullOrNil(paramString2))
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ExdeviceBindDeviceUI", "onScanResult failed, broadcastName(%s), mac(%s), isCompleted(%b).", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+      ac.e("MicroMsg.ExdeviceBindDeviceUI", "onScanResult failed, broadcastName(%s), mac(%s), isCompleted(%b).", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(23930);
       return;
     }
-    ExdeviceBindDeviceUI.f localf = new ExdeviceBindDeviceUI.f(this, (byte)0);
-    localf.pbZ = ExdeviceBindDeviceUI.b.pbR;
-    localf.pca = new ExdeviceBindDeviceUI.c(this, (byte)0);
-    localf.pca.pbT = paramString1;
-    localf.pca.cGn = b.pf(b.Vg(paramString2));
-    aq.f(new ExdeviceBindDeviceUI.7(this, localf));
+    final f localf = new f((byte)0);
+    localf.pFk = ExdeviceBindDeviceUI.b.pFc;
+    localf.pFl = new c((byte)0);
+    localf.pFl.pFe = paramString1;
+    localf.pFl.cDv = b.sR(b.Zs(paramString2));
+    ap.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(23899);
+        ExdeviceBindDeviceUI.this.a(localf);
+        AppMethodBeat.o(23899);
+      }
+    });
     AppMethodBeat.o(23930);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(23933);
-    this.pbt.cao();
-    this.pbt.notifyDataSetChanged();
+    this.pEE.chx();
+    this.pEE.notifyDataSetChanged();
     AppMethodBeat.o(23933);
   }
   
@@ -308,68 +401,174 @@ public class ExdeviceBindDeviceUI
   {
     AppMethodBeat.i(23925);
     super.onCreate(paramBundle);
-    setBackBtn(new ExdeviceBindDeviceUI.1(this));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(23892);
+        ExdeviceBindDeviceUI.this.finish();
+        AppMethodBeat.o(23892);
+        return true;
+      }
+    });
     Object localObject = getIntent();
-    this.pbz = ((Intent)localObject).getStringExtra("device_category_id");
-    this.oUW = ((Intent)localObject).getStringExtra("device_brand_name");
+    this.pEK = ((Intent)localObject).getStringExtra("device_category_id");
+    this.pyh = ((Intent)localObject).getStringExtra("device_brand_name");
     this.mDeviceType = ((Intent)localObject).getStringExtra("device_type");
     if ((this.mDeviceType == null) || (this.mDeviceType.length() == 0)) {
-      this.mDeviceType = this.oUW;
+      this.mDeviceType = this.pyh;
     }
     String str2 = ((Intent)localObject).getStringExtra("device_scan_conn_proto");
     String str3 = ((Intent)localObject).getStringExtra("device_scan_mode");
     paramBundle = "";
     String str1 = ((Intent)localObject).getStringExtra("device_title");
     localObject = str1;
-    if (bt.isNullOrNil(str1)) {
+    if (bs.isNullOrNil(str1)) {
       localObject = getContext().getString(2131758530);
     }
     if (str3.contains("SCAN_MY_DEVICE"))
     {
-      this.pby = ExdeviceBindDeviceUI.e.pbV;
+      this.pEJ = ExdeviceBindDeviceUI.e.pFg;
       paramBundle = getContext().getString(2131758468);
       setMMTitle(paramBundle);
-      if (this.pby != ExdeviceBindDeviceUI.e.pbW) {
+      if (this.pEJ != ExdeviceBindDeviceUI.e.pFh) {
         break label425;
       }
-      this.pbD = str2.contains("wifi");
-      this.pbE = str2.contains("blue");
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "mIsScanWifi(%b), mIsScanBlue(%b)", new Object[] { Boolean.valueOf(this.pbD), Boolean.valueOf(this.pbE) });
+      this.pEO = str2.contains("wifi");
+      this.pEP = str2.contains("blue");
+      ac.i("MicroMsg.ExdeviceBindDeviceUI", "mIsScanWifi(%b), mIsScanBlue(%b)", new Object[] { Boolean.valueOf(this.pEO), Boolean.valueOf(this.pEP) });
     }
     for (;;)
     {
-      this.oVJ = new ExdeviceBindDeviceUI.3(this);
-      this.pbC = new ExdeviceBindDeviceUI.4(this);
-      initView();
-      this.nBm.setText(getContext().getString(2131758598, new Object[] { localObject }));
-      az.aeS().a(1264, this);
-      az.aeS().a(1706, this);
-      az.aeS().a(1270, this);
-      az.aeS().a(1719, this);
-      if (this.pbE) {
-        com.tencent.mm.plugin.exdevice.model.ad.bZR().a(this);
-      }
-      if (this.pbD)
+      this.pyU = new j.a()
       {
-        j.bZx().a(10, this.oVJ);
-        j.bZx().a(11, this.pbC);
+        public final void g(int paramAnonymousInt, Object... paramAnonymousVarArgs)
+        {
+          AppMethodBeat.i(23896);
+          if ((paramAnonymousInt != 10) || (paramAnonymousVarArgs == null))
+          {
+            AppMethodBeat.o(23896);
+            return;
+          }
+          paramAnonymousVarArgs = (byte[])paramAnonymousVarArgs[0];
+          for (;;)
+          {
+            try
+            {
+              JSONObject localJSONObject = new JSONObject(new String(paramAnonymousVarArgs));
+              localObject1 = localJSONObject.getJSONObject("deviceInfo");
+              paramAnonymousVarArgs = ((JSONObject)localObject1).getString("deviceType");
+              Object[] arrayOfObject1;
+              ac.printErrStackTrace("MicroMsg.ExdeviceBindDeviceUI", localException1, "", new Object[0]);
+            }
+            catch (Exception localException1)
+            {
+              try
+              {
+                localObject1 = ((JSONObject)localObject1).getString("deviceId");
+                localObject2 = localObject1;
+                arrayOfObject1 = paramAnonymousVarArgs;
+              }
+              catch (Exception localException2)
+              {
+                for (;;)
+                {
+                  Object localObject2;
+                  Object[] arrayOfObject2;
+                  Object localObject1 = null;
+                }
+              }
+              try
+              {
+                if (localJSONObject.isNull("manufacturerData")) {
+                  break label151;
+                }
+                localObject2 = localJSONObject.getString("manufacturerData");
+                arrayOfObject1 = paramAnonymousVarArgs;
+                paramAnonymousVarArgs = (Object[])localObject2;
+                if ((arrayOfObject1 != null) && (localObject1 != null)) {
+                  break;
+                }
+                AppMethodBeat.o(23896);
+                return;
+              }
+              catch (Exception localException3)
+              {
+                break label125;
+              }
+              localException1 = localException1;
+              localObject1 = null;
+              paramAnonymousVarArgs = null;
+            }
+            label125:
+            ac.e("MicroMsg.ExdeviceBindDeviceUI", "json decode failed: deviceInfo decode");
+            arrayOfObject2 = paramAnonymousVarArgs;
+            localObject2 = localObject1;
+            label151:
+            paramAnonymousVarArgs = null;
+            localObject1 = localObject2;
+          }
+          localObject2 = new ExdeviceBindDeviceUI.f(ExdeviceBindDeviceUI.this, (byte)0);
+          ((ExdeviceBindDeviceUI.f)localObject2).pFk = ExdeviceBindDeviceUI.b.pFb;
+          ((ExdeviceBindDeviceUI.f)localObject2).pFm = new ExdeviceBindDeviceUI.d(ExdeviceBindDeviceUI.this, (byte)0);
+          ((ExdeviceBindDeviceUI.f)localObject2).pFm.mDeviceType = arrayOfObject2;
+          ((ExdeviceBindDeviceUI.f)localObject2).pFm.pyi = ((String)localObject1);
+          if (!bs.isNullOrNil(paramAnonymousVarArgs))
+          {
+            ((ExdeviceBindDeviceUI.f)localObject2).pFr = Base64.encodeToString(paramAnonymousVarArgs.getBytes(), 2);
+            ac.i("MicroMsg.ExdeviceBindDeviceUI", "device.mManufacturerData: %s", new Object[] { ((ExdeviceBindDeviceUI.f)localObject2).pFr });
+          }
+          for (;;)
+          {
+            ap.f(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(23895);
+                ExdeviceBindDeviceUI.this.a(this.pER);
+                AppMethodBeat.o(23895);
+              }
+            });
+            AppMethodBeat.o(23896);
+            return;
+            ((ExdeviceBindDeviceUI.f)localObject2).pFr = null;
+          }
+        }
+      };
+      this.pEN = new j.a()
+      {
+        public final void g(int paramAnonymousInt, Object... paramAnonymousVarArgs) {}
+      };
+      initView();
+      this.oem.setText(getContext().getString(2131758598, new Object[] { localObject }));
+      az.agi().a(1264, this);
+      az.agi().a(1706, this);
+      az.agi().a(1270, this);
+      az.agi().a(1719, this);
+      if (this.pEP) {
+        ad.cha().a(this);
+      }
+      if (this.pEO)
+      {
+        j.cgG().a(10, this.pyU);
+        j.cgG().a(11, this.pEN);
         Java2CExDevice.initWCLanDeviceLib();
       }
       AppMethodBeat.o(23925);
       return;
       if (str3.compareTo("SCAN_CATALOG") == 0)
       {
-        this.pby = ExdeviceBindDeviceUI.e.pbW;
+        this.pEJ = ExdeviceBindDeviceUI.e.pFh;
         paramBundle = getContext().getString(2131758466);
         break;
       }
       Assert.assertTrue(false);
       break;
       label425:
-      if (this.pby == ExdeviceBindDeviceUI.e.pbV)
+      if (this.pEJ == ExdeviceBindDeviceUI.e.pFg)
       {
-        this.pbE = true;
-        this.pbD = true;
+        this.pEP = true;
+        this.pEO = true;
       }
     }
   }
@@ -378,21 +577,30 @@ public class ExdeviceBindDeviceUI
   {
     AppMethodBeat.i(23929);
     super.onDestroy();
-    if (this.pbD)
+    if (this.pEO)
     {
-      az.afE().ax(new ExdeviceBindDeviceUI.6(this));
-      j.bZx().b(10, this.oVJ);
-      j.bZx().b(11, this.pbC);
+      az.agU().az(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(23898);
+          Java2CExDevice.stopScanWCLanDevice();
+          Java2CExDevice.releaseWCLanDeviceLib();
+          AppMethodBeat.o(23898);
+        }
+      });
+      j.cgG().b(10, this.pyU);
+      j.cgG().b(11, this.pEN);
     }
-    if (this.pbE)
+    if (this.pEP)
     {
-      com.tencent.mm.plugin.exdevice.model.ad.bZR().b(this);
-      com.tencent.mm.plugin.exdevice.model.ad.bZS().stopScan();
+      ad.cha().b(this);
+      ad.chb().stopScan();
     }
-    az.aeS().b(1264, this);
-    az.aeS().b(1706, this);
-    az.aeS().b(1270, this);
-    az.aeS().b(1719, this);
+    az.agi().b(1264, this);
+    az.agi().b(1706, this);
+    az.agi().b(1270, this);
+    az.agi().b(1719, this);
     AppMethodBeat.o(23929);
   }
   
@@ -400,12 +608,12 @@ public class ExdeviceBindDeviceUI
   {
     AppMethodBeat.i(23928);
     super.onPause();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "onPause stop scan.");
-    if (this.pbD) {
+    ac.i("MicroMsg.ExdeviceBindDeviceUI", "onPause stop scan.");
+    if (this.pEO) {
       Java2CExDevice.stopScanWCLanDevice();
     }
-    if (this.pbE) {
-      com.tencent.mm.plugin.exdevice.model.ad.bZS().stopScan();
+    if (this.pEP) {
+      ad.chb().stopScan();
     }
     AppMethodBeat.o(23928);
   }
@@ -414,31 +622,39 @@ public class ExdeviceBindDeviceUI
   {
     AppMethodBeat.i(23926);
     super.onResume();
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "onResume start scan.");
-    if (this.pbE)
+    ac.i("MicroMsg.ExdeviceBindDeviceUI", "onResume start scan.");
+    if (this.pEP)
     {
-      com.tencent.mm.plugin.exdevice.model.ad.bZR();
-      e.bZt();
+      ad.cha();
+      e.cgC();
     }
-    if (this.pbD) {
+    if (this.pEO) {
       Java2CExDevice.startScanWCLanDevice(new byte[0], 1000);
     }
-    this.pbt.cao();
-    this.pbt.notifyDataSetChanged();
+    this.pEE.chx();
+    this.pEE.notifyDataSetChanged();
     AppMethodBeat.o(23926);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(final int paramInt1, final int paramInt2, final String paramString, final n paramn)
   {
     AppMethodBeat.i(23931);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceBindDeviceUI", "onSceneEnd, errType(%d) errCode(%d) errMsg(%s).", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.ExdeviceBindDeviceUI", "onSceneEnd, errType(%d) errCode(%d) errMsg(%s).", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (paramn == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ExdeviceBindDeviceUI", "onSceneEnd, scene is null.");
+      ac.e("MicroMsg.ExdeviceBindDeviceUI", "onSceneEnd, scene is null.");
       AppMethodBeat.o(23931);
       return;
     }
-    aq.f(new ExdeviceBindDeviceUI.8(this, paramInt1, paramInt2, paramString, paramn));
+    ap.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(23900);
+        ExdeviceBindDeviceUI.a(ExdeviceBindDeviceUI.this, paramInt1, paramInt2, paramString, paramn);
+        AppMethodBeat.o(23900);
+      }
+    });
     AppMethodBeat.o(23931);
   }
   
@@ -446,6 +662,398 @@ public class ExdeviceBindDeviceUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  static final class a
+    extends BaseAdapter
+  {
+    List<ExdeviceBindDeviceUI.f> pEX;
+    private String pEY;
+    private ExdeviceBindDeviceUI.e pEZ;
+    private c pEd;
+    private String pFa;
+    
+    public a(String paramString1, ExdeviceBindDeviceUI.e parame, String paramString2)
+    {
+      AppMethodBeat.i(23905);
+      this.pEY = paramString1;
+      this.pEZ = parame;
+      this.pFa = paramString2;
+      this.pEX = new ArrayList();
+      paramString1 = new c.a();
+      paramString1.hKL = 2131100860;
+      this.pEd = paramString1.aFT();
+      AppMethodBeat.o(23905);
+    }
+    
+    private int Zl(String paramString)
+    {
+      AppMethodBeat.i(23913);
+      int i = 0;
+      while (i < this.pEX.size())
+      {
+        if (((ExdeviceBindDeviceUI.f)this.pEX.get(i)).getKey().compareTo(paramString) == 0)
+        {
+          AppMethodBeat.o(23913);
+          return i;
+        }
+        i += 1;
+      }
+      AppMethodBeat.o(23913);
+      return -1;
+    }
+    
+    private static boolean Zm(String paramString)
+    {
+      AppMethodBeat.i(23916);
+      if ((paramString == null) || (paramString.length() == 0))
+      {
+        AppMethodBeat.o(23916);
+        return true;
+      }
+      AppMethodBeat.o(23916);
+      return false;
+    }
+    
+    public final ExdeviceBindDeviceUI.f BW(int paramInt)
+    {
+      AppMethodBeat.i(23911);
+      int j = -1;
+      int i = 0;
+      while (i < this.pEX.size())
+      {
+        int k = j;
+        if (((ExdeviceBindDeviceUI.f)this.pEX.get(i)).pFj) {
+          k = j + 1;
+        }
+        if (k == paramInt)
+        {
+          ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.pEX.get(i);
+          AppMethodBeat.o(23911);
+          return localf;
+        }
+        i += 1;
+        j = k;
+      }
+      AppMethodBeat.o(23911);
+      return null;
+    }
+    
+    public final boolean Zj(String paramString)
+    {
+      AppMethodBeat.i(23908);
+      if (Zl(paramString) >= 0)
+      {
+        AppMethodBeat.o(23908);
+        return true;
+      }
+      AppMethodBeat.o(23908);
+      return false;
+    }
+    
+    public final ExdeviceBindDeviceUI.f Zk(String paramString)
+    {
+      AppMethodBeat.i(23909);
+      if ((paramString == null) || (paramString.length() == 0))
+      {
+        AppMethodBeat.o(23909);
+        return null;
+      }
+      int i = 0;
+      while (i < this.pEX.size())
+      {
+        ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.pEX.get(i);
+        if ((!Zm(localf.chy())) && (paramString.equalsIgnoreCase(localf.chy())))
+        {
+          AppMethodBeat.o(23909);
+          return localf;
+        }
+        i += 1;
+      }
+      AppMethodBeat.o(23909);
+      return null;
+    }
+    
+    public final boolean b(ExdeviceBindDeviceUI.f paramf)
+    {
+      AppMethodBeat.i(23907);
+      if (Zl(paramf.getKey()) < 0)
+      {
+        AppMethodBeat.o(23907);
+        return false;
+      }
+      paramf.pFj = c(paramf);
+      AppMethodBeat.o(23907);
+      return true;
+    }
+    
+    final boolean c(ExdeviceBindDeviceUI.f paramf)
+    {
+      AppMethodBeat.i(23915);
+      if (paramf.pFo == null)
+      {
+        AppMethodBeat.o(23915);
+        return false;
+      }
+      if (this.pEZ == ExdeviceBindDeviceUI.e.pFh)
+      {
+        if ((paramf.pFo.EXZ == null) || (paramf.pFo.EXZ.compareTo(this.pEY) != 0))
+        {
+          AppMethodBeat.o(23915);
+          return false;
+        }
+        if ((paramf.pFo.EYi == null) || (paramf.pFo.EYi.compareTo(this.pFa) != 0))
+        {
+          AppMethodBeat.o(23915);
+          return false;
+        }
+      }
+      else if (this.pEZ == ExdeviceBindDeviceUI.e.pFg)
+      {
+        if (paramf.pFo.eNj == 0)
+        {
+          AppMethodBeat.o(23915);
+          return false;
+        }
+      }
+      else
+      {
+        Assert.assertTrue(false);
+        AppMethodBeat.o(23915);
+        return false;
+      }
+      AppMethodBeat.o(23915);
+      return true;
+    }
+    
+    final void chx()
+    {
+      AppMethodBeat.i(23906);
+      int i = 0;
+      while (i < this.pEX.size())
+      {
+        ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.pEX.get(i);
+        localf.pFj = c(localf);
+        i += 1;
+      }
+      AppMethodBeat.o(23906);
+    }
+    
+    final int fx(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(23914);
+      int i = 0;
+      while (i < this.pEX.size())
+      {
+        Object localObject = (ExdeviceBindDeviceUI.f)this.pEX.get(i);
+        String str;
+        if (((ExdeviceBindDeviceUI.f)localObject).pFn != null)
+        {
+          str = ((ExdeviceBindDeviceUI.f)localObject).pFn.DUp;
+          if (((ExdeviceBindDeviceUI.f)localObject).pFn == null) {
+            break label144;
+          }
+          localObject = ((ExdeviceBindDeviceUI.f)localObject).pFn.ncU;
+        }
+        for (;;)
+        {
+          if ((Zm(str)) || (Zm((String)localObject)) || (paramString1.compareTo(str) != 0) || (paramString2.compareTo((String)localObject) != 0)) {
+            break label174;
+          }
+          AppMethodBeat.o(23914);
+          return i;
+          if (((ExdeviceBindDeviceUI.f)localObject).pFk == ExdeviceBindDeviceUI.b.pFb)
+          {
+            str = ((ExdeviceBindDeviceUI.f)localObject).pFm.mDeviceType;
+            break;
+          }
+          str = null;
+          break;
+          label144:
+          if (((ExdeviceBindDeviceUI.f)localObject).pFk == ExdeviceBindDeviceUI.b.pFb) {
+            localObject = ((ExdeviceBindDeviceUI.f)localObject).pFm.pyi;
+          } else {
+            localObject = null;
+          }
+        }
+        label174:
+        i += 1;
+      }
+      AppMethodBeat.o(23914);
+      return -1;
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(23910);
+      int i = 0;
+      int k;
+      for (int j = 0; i < this.pEX.size(); j = k)
+      {
+        k = j;
+        if (((ExdeviceBindDeviceUI.f)this.pEX.get(i)).pFj) {
+          k = j + 1;
+        }
+        i += 1;
+      }
+      AppMethodBeat.o(23910);
+      return j;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(23912);
+      ExdeviceBindDeviceUI.f localf = BW(paramInt);
+      a locala;
+      View localView;
+      if (paramView == null)
+      {
+        locala = new a((byte)0);
+        localView = View.inflate(paramViewGroup.getContext(), 2131493857, null);
+        locala.iMz = ((TextView)localView.findViewById(2131302656));
+        locala.lzC = ((ImageView)localView.findViewById(2131300880));
+        localView.setTag(locala);
+      }
+      while ((localf == null) || (localf.pFo == null))
+      {
+        Assert.assertTrue(false);
+        AppMethodBeat.o(23912);
+        return localView;
+        locala = (a)paramView.getTag();
+        localView = paramView;
+      }
+      Object localObject;
+      if (localf.pFk == ExdeviceBindDeviceUI.b.pFc)
+      {
+        ac.d("MicroMsg.ExdeviceBindDeviceUI", "position(%s), broadcastname(%s), mac(%s), deviceTitle(%s).", new Object[] { Integer.valueOf(paramInt), localf.pFl.pFe, localf.pFl.cDv, localf.pFo.EYg });
+        localObject = "";
+        paramView = localf.pFo.eNn;
+        if ((paramView != null) && (paramView.length() >= 4))
+        {
+          paramView = paramView.substring(paramView.length() - 4, paramView.length());
+          paramView = localf.pFo.EYg + " " + paramView;
+          localObject = new SpannableString(paramView);
+          ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramViewGroup.getContext().getResources().getColor(2131100490)), localf.pFo.EYg.length() + 1, paramView.length(), 17);
+          locala.iMz.setText((CharSequence)localObject);
+        }
+      }
+      for (;;)
+      {
+        paramView = localf.pFo.IconUrl;
+        if (!Zm(paramView)) {
+          o.aFB().a(paramView, locala.lzC, this.pEd);
+        }
+        AppMethodBeat.o(23912);
+        return localView;
+        paramView = (View)localObject;
+        if (localf.pFl.cDv == null) {
+          break;
+        }
+        paramView = (View)localObject;
+        if (localf.pFl.cDv.length() < 4) {
+          break;
+        }
+        paramView = localf.pFl.cDv;
+        paramView = paramView.substring(paramView.length() - 4, paramView.length());
+        break;
+        if (localf.pFk == ExdeviceBindDeviceUI.b.pFb)
+        {
+          localObject = "";
+          paramView = localf.pFo.eNn;
+          if ((paramView != null) && (paramView.length() >= 4)) {
+            paramView = paramView.substring(paramView.length() - 4, paramView.length());
+          }
+          for (;;)
+          {
+            paramView = localf.pFo.EYg + " " + paramView;
+            localObject = new SpannableString(paramView);
+            ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramViewGroup.getContext().getResources().getColor(2131100490)), localf.pFo.EYg.length() + 1, paramView.length(), 17);
+            locala.iMz.setText((CharSequence)localObject);
+            break;
+            paramView = (View)localObject;
+            if (localf.pFo.DXq != null)
+            {
+              paramView = (View)localObject;
+              if (localf.pFo.DXq.length() >= 4)
+              {
+                paramView = localf.pFo.DXq;
+                paramView = paramView.substring(paramView.length() - 4, paramView.length());
+              }
+            }
+          }
+        }
+        Assert.assertTrue(false);
+      }
+    }
+    
+    static final class a
+    {
+      TextView iMz;
+      ImageView lzC;
+    }
+  }
+  
+  final class c
+  {
+    public String cDv;
+    public String pFe;
+    
+    private c() {}
+  }
+  
+  final class d
+  {
+    public String mDeviceType;
+    public String pyi;
+    
+    private d() {}
+  }
+  
+  final class f
+  {
+    public String pEs;
+    public boolean pFj = false;
+    public ExdeviceBindDeviceUI.b pFk = ExdeviceBindDeviceUI.b.pFb;
+    public ExdeviceBindDeviceUI.c pFl;
+    public ExdeviceBindDeviceUI.d pFm;
+    public bjb pFn;
+    public bjc pFo;
+    public int pFp;
+    public bva pFq;
+    public String pFr;
+    
+    private f() {}
+    
+    public final String chy()
+    {
+      if (this.pFk == ExdeviceBindDeviceUI.b.pFb)
+      {
+        if (this.pFo == null) {
+          return null;
+        }
+        return this.pFo.DXq;
+      }
+      return this.pFl.cDv;
+    }
+    
+    public final String getKey()
+    {
+      AppMethodBeat.i(23924);
+      if (this.pFk == ExdeviceBindDeviceUI.b.pFb)
+      {
+        str = this.pFm.mDeviceType + this.pFm.pyi;
+        AppMethodBeat.o(23924);
+        return str;
+      }
+      String str = this.pFl.cDv;
+      AppMethodBeat.o(23924);
+      return str;
+    }
   }
 }
 

@@ -19,16 +19,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 abstract class e<Params, Progress, Result>
 {
-  private static final ThreadFactory Gi = new e.1();
-  private static final BlockingQueue<Runnable> Gj = new LinkedBlockingQueue(10);
-  private static b Gk;
-  private static volatile Executor Gl;
+  private static final ThreadFactory Hg = new e.1();
+  private static final BlockingQueue<Runnable> Hh = new LinkedBlockingQueue(10);
+  private static b Hi;
+  private static volatile Executor Hj;
   public static final Executor THREAD_POOL_EXECUTOR;
-  final d<Params, Result> Gm = new d()
+  final d<Params, Result> Hk = new d()
   {
     public final Result call()
     {
-      e.this.Gq.set(true);
+      e.this.Ho.set(true);
       Object localObject5 = null;
       Object localObject4 = null;
       Object localObject2 = localObject4;
@@ -38,7 +38,7 @@ abstract class e<Params, Progress, Result>
         Process.setThreadPriority(10);
         localObject2 = localObject4;
         localObject1 = localObject5;
-        localObject4 = e.this.dQ();
+        localObject4 = e.this.dX();
         localObject2 = localObject4;
         localObject1 = localObject4;
         Binder.flushPendingCommands();
@@ -47,24 +47,24 @@ abstract class e<Params, Progress, Result>
       catch (Throwable localThrowable)
       {
         localObject1 = localObject2;
-        e.this.Gp.set(true);
+        e.this.Hn.set(true);
         localObject1 = localObject2;
         throw localThrowable;
       }
       finally
       {
-        e.this.l(localObject1);
+        e.this.n(localObject1);
       }
     }
   };
-  final FutureTask<Result> Gn = new FutureTask(this.Gm)
+  final FutureTask<Result> Hl = new FutureTask(this.Hk)
   {
     protected final void done()
     {
       try
       {
         Object localObject = get();
-        e.this.k(localObject);
+        e.this.m(localObject);
         return;
       }
       catch (ExecutionException localExecutionException)
@@ -73,7 +73,7 @@ abstract class e<Params, Progress, Result>
       }
       catch (CancellationException localCancellationException)
       {
-        e.this.k(null);
+        e.this.m(null);
         return;
       }
       catch (Throwable localThrowable)
@@ -83,53 +83,53 @@ abstract class e<Params, Progress, Result>
       catch (InterruptedException localInterruptedException) {}
     }
   };
-  volatile c Go = c.Gw;
-  final AtomicBoolean Gp = new AtomicBoolean();
-  final AtomicBoolean Gq = new AtomicBoolean();
+  volatile c Hm = c.Hu;
+  final AtomicBoolean Hn = new AtomicBoolean();
+  final AtomicBoolean Ho = new AtomicBoolean();
   
   static
   {
-    ThreadPoolExecutor localThreadPoolExecutor = new ThreadPoolExecutor(5, 128, 1L, TimeUnit.SECONDS, Gj, Gi);
+    ThreadPoolExecutor localThreadPoolExecutor = new ThreadPoolExecutor(5, 128, 1L, TimeUnit.SECONDS, Hh, Hg);
     THREAD_POOL_EXECUTOR = localThreadPoolExecutor;
-    Gl = localThreadPoolExecutor;
+    Hj = localThreadPoolExecutor;
   }
   
   private static Handler getHandler()
   {
     try
     {
-      if (Gk == null) {
-        Gk = new b();
+      if (Hi == null) {
+        Hi = new b();
       }
-      b localb = Gk;
+      b localb = Hi;
       return localb;
     }
     finally {}
   }
   
-  protected abstract Result dQ();
+  protected abstract Result dX();
   
-  final void k(Result paramResult)
+  final void m(Result paramResult)
   {
-    if (!this.Gq.get()) {
-      l(paramResult);
+    if (!this.Ho.get()) {
+      n(paramResult);
     }
   }
   
-  final Result l(Result paramResult)
+  final Result n(Result paramResult)
   {
     getHandler().obtainMessage(1, new a(this, new Object[] { paramResult })).sendToTarget();
     return paramResult;
   }
   
-  final void m(Result paramResult)
+  final void o(Result paramResult)
   {
-    if (this.Gp.get()) {
+    if (this.Hn.get()) {
       onCancelled(paramResult);
     }
     for (;;)
     {
-      this.Go = c.Gy;
+      this.Hm = c.Hw;
       return;
       onPostExecute(paramResult);
     }
@@ -141,13 +141,13 @@ abstract class e<Params, Progress, Result>
   
   static final class a<Data>
   {
-    final e Gu;
-    final Data[] Gv;
+    final e Hs;
+    final Data[] Ht;
     
     a(e parame, Data... paramVarArgs)
     {
-      this.Gu = parame;
-      this.Gv = paramVarArgs;
+      this.Hs = parame;
+      this.Ht = paramVarArgs;
     }
   }
   
@@ -167,7 +167,7 @@ abstract class e<Params, Progress, Result>
       default: 
         return;
       }
-      locala.Gu.m(locala.Gv[0]);
+      locala.Hs.o(locala.Ht[0]);
     }
   }
   
@@ -179,12 +179,12 @@ abstract class e<Params, Progress, Result>
   static abstract class d<Params, Result>
     implements Callable<Result>
   {
-    Params[] GA;
+    Params[] Hy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.content.e
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(35267);
-    Guh = new a("hide", 0);
-    Gui = new a("show", 1);
-    Guj = new a[] { Guh, Gui };
+    HUa = new a("hide", 0);
+    HUb = new a("show", 1);
+    HUc = new a[] { HUa, HUb };
     AppMethodBeat.o(35267);
   }
   

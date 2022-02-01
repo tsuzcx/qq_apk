@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.wallet_core.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.c.aa;
 import org.json.JSONObject;
 
 public final class ag
   extends ad
 {
-  public al zHB;
+  public al AZN;
   
   public ag()
   {
@@ -39,8 +39,8 @@ public final class ag
     paramString = paramJSONObject.optJSONObject("save_to_lqt_entry");
     if (paramString != null)
     {
-      ((a)g.ad(a.class)).getWalletCacheStg().set(ae.a.Fsv, paramString.toString());
-      this.zHB = al.aO(paramString);
+      ((a)g.ad(a.class)).getWalletCacheStg().set(ah.a.GQm, paramString.toString());
+      this.AZN = al.aP(paramString);
     }
     AppMethodBeat.o(69959);
   }

@@ -14,13 +14,13 @@ import java.util.Set;
 public final class n
   implements b
 {
-  private final List<a<?>> bCG;
-  private final Map<Class<?>, p<?>> bCH;
+  private final List<a<?>> bAo;
+  private final Map<Class<?>, p<?>> bAp;
   
   public n(Iterable<e> paramIterable, a<?>... paramVarArgs)
   {
     AppMethodBeat.i(4086);
-    this.bCH = new HashMap();
+    this.bAp = new HashMap();
     Object localObject1 = new ArrayList();
     paramIterable = paramIterable.iterator();
     while (paramIterable.hasNext()) {
@@ -40,7 +40,7 @@ public final class n
         }
         localObject3 = (a)paramVarArgs.next();
         localObject2 = new o((a)localObject3);
-        localObject3 = ((a)localObject3).bCx.iterator();
+        localObject3 = ((a)localObject3).bAf.iterator();
       }
       localObject4 = (Class)((Iterator)localObject3).next();
     } while (paramIterable.put(localObject4, localObject2) == null);
@@ -51,17 +51,17 @@ public final class n
     while (paramVarArgs.hasNext())
     {
       localObject2 = (o)paramVarArgs.next();
-      localObject3 = ((o)localObject2).bCI.bCy.iterator();
+      localObject3 = ((o)localObject2).bAq.bAg.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (f)((Iterator)localObject3).next();
-        if (((f)localObject4).wI())
+        if (((f)localObject4).wv())
         {
-          localObject4 = (o)paramIterable.get(((f)localObject4).bCA);
+          localObject4 = (o)paramIterable.get(((f)localObject4).bAi);
           if (localObject4 != null)
           {
-            ((o)localObject2).bCJ.add(localObject4);
-            ((o)localObject4).bCK.add(localObject2);
+            ((o)localObject2).bAr.add(localObject4);
+            ((o)localObject4).bAs.add(localObject2);
           }
         }
       }
@@ -72,7 +72,7 @@ public final class n
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (o)((Iterator)localObject2).next();
-      if (((o)localObject3).wJ()) {
+      if (((o)localObject3).ww()) {
         paramVarArgs.add(localObject3);
       }
     }
@@ -81,13 +81,13 @@ public final class n
     {
       localObject3 = (o)paramVarArgs.iterator().next();
       paramVarArgs.remove(localObject3);
-      ((List)localObject2).add(((o)localObject3).bCI);
-      localObject4 = ((o)localObject3).bCJ.iterator();
+      ((List)localObject2).add(((o)localObject3).bAq);
+      localObject4 = ((o)localObject3).bAr.iterator();
       while (((Iterator)localObject4).hasNext())
       {
         o localo = (o)((Iterator)localObject4).next();
-        localo.bCK.remove(localObject3);
-        if (localo.wJ()) {
+        localo.bAs.remove(localObject3);
+        if (localo.ww()) {
           paramVarArgs.add(localo);
         }
       }
@@ -95,17 +95,17 @@ public final class n
     if (((List)localObject2).size() == ((List)localObject1).size())
     {
       Collections.reverse((List)localObject2);
-      this.bCG = Collections.unmodifiableList((List)localObject2);
-      paramIterable = this.bCG.iterator();
+      this.bAo = Collections.unmodifiableList((List)localObject2);
+      paramIterable = this.bAo.iterator();
       while (paramIterable.hasNext())
       {
         localObject1 = (a)paramIterable.next();
-        paramVarArgs = new p(((a)localObject1).bCz, new s(((a)localObject1).bCy, this));
-        localObject1 = ((a)localObject1).bCx.iterator();
+        paramVarArgs = new p(((a)localObject1).bAh, new s(((a)localObject1).bAg, this));
+        localObject1 = ((a)localObject1).bAf.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (Class)((Iterator)localObject1).next();
-          this.bCH.put(localObject2, paramVarArgs);
+          this.bAp.put(localObject2, paramVarArgs);
         }
       }
     }
@@ -114,25 +114,25 @@ public final class n
     while (paramIterable.hasNext())
     {
       localObject1 = (o)paramIterable.next();
-      if ((!((o)localObject1).wJ()) && (!((o)localObject1).bCJ.isEmpty())) {
-        paramVarArgs.add(((o)localObject1).bCI);
+      if ((!((o)localObject1).ww()) && (!((o)localObject1).bAr.isEmpty())) {
+        paramVarArgs.add(((o)localObject1).bAq);
       }
     }
     paramIterable = new g(paramVarArgs);
     AppMethodBeat.o(4086);
     throw paramIterable;
-    paramIterable = this.bCG.iterator();
+    paramIterable = this.bAo.iterator();
     if (paramIterable.hasNext())
     {
       paramVarArgs = (a)paramIterable.next();
-      localObject1 = paramVarArgs.bCy.iterator();
+      localObject1 = paramVarArgs.bAg.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (f)((Iterator)localObject1).next();
-        if (((f)localObject2).bCB == 1) {}
-        for (int i = 1; (i != 0) && (!this.bCH.containsKey(((f)localObject2).bCA)); i = 0)
+        if (((f)localObject2).bAj == 1) {}
+        for (int i = 1; (i != 0) && (!this.bAp.containsKey(((f)localObject2).bAi)); i = 0)
         {
-          paramIterable = new i(String.format("Unsatisfied dependency for component %s: %s", new Object[] { paramVarArgs, ((f)localObject2).bCA }));
+          paramIterable = new i(String.format("Unsatisfied dependency for component %s: %s", new Object[] { paramVarArgs, ((f)localObject2).bAi }));
           AppMethodBeat.o(4086);
           throw paramIterable;
         }
@@ -141,15 +141,15 @@ public final class n
     AppMethodBeat.o(4086);
   }
   
-  public final void be(boolean paramBoolean)
+  public final void bd(boolean paramBoolean)
   {
     AppMethodBeat.i(4088);
-    Iterator localIterator = this.bCG.iterator();
+    Iterator localIterator = this.bAo.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if ((locala.wF()) || ((locala.wG()) && (paramBoolean))) {
-        c.a(this, (Class)locala.bCx.iterator().next());
+      if ((locala.ws()) || ((locala.wt()) && (paramBoolean))) {
+        c.a(this, (Class)locala.bAf.iterator().next());
       }
     }
     AppMethodBeat.o(4088);
@@ -167,14 +167,14 @@ public final class n
   {
     AppMethodBeat.i(4087);
     r.zza(paramClass, "Null interface requested.");
-    paramClass = (com.google.firebase.a.a)this.bCH.get(paramClass);
+    paramClass = (com.google.firebase.a.a)this.bAp.get(paramClass);
     AppMethodBeat.o(4087);
     return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.components.n
  * JD-Core Version:    0.7.0.1
  */

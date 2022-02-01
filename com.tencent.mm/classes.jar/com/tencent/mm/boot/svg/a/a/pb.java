@@ -55,14 +55,6 @@ public final class pb
       localObject1 = c.a((Paint)localObject2, paramVarArgs);
       ((Paint)localObject1).setColor(-16777216);
       localObject2 = c.n(paramVarArgs);
-      ((Path)localObject2).moveTo(42.834522F, 12.0F);
-      ((Path)localObject2).cubicTo(48.806351F, 18.142136F, 52.5F, 26.627417F, 52.5F, 36.0F);
-      ((Path)localObject2).cubicTo(52.5F, 45.372581F, 48.806351F, 53.857864F, 42.834522F, 60.0F);
-      ((Path)localObject2).lineTo(39.334347F, 56.400002F);
-      ((Path)localObject2).cubicTo(44.410397F, 51.179184F, 47.549999F, 43.966694F, 47.549999F, 36.0F);
-      ((Path)localObject2).cubicTo(47.549999F, 28.033304F, 44.410397F, 20.820816F, 39.334347F, 15.6F);
-      ((Path)localObject2).lineTo(42.834522F, 12.0F);
-      ((Path)localObject2).close();
       ((Path)localObject2).moveTo(34.667442F, 20.4F);
       ((Path)localObject2).cubicTo(38.549126F, 24.392387F, 40.950001F, 29.907822F, 40.950001F, 36.0F);
       ((Path)localObject2).cubicTo(40.950001F, 42.092178F, 38.549126F, 47.607613F, 34.667442F, 51.599998F);

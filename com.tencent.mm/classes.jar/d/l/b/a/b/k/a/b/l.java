@@ -24,30 +24,30 @@ public final class l
   extends d
   implements g
 {
-  private final d.l.b.a.b.e.b.i JUG;
-  private final f JUH;
-  private g.a JVD;
-  private Collection<? extends ag> JWo;
-  private aj JWp;
-  private aj JWq;
-  private aj JWr;
-  private final a.q JWs;
-  private final c Jiu;
-  private final d.l.b.a.b.e.b.h Jiv;
-  private final d.l.b.a.b.l.i JlL;
-  private List<? extends as> JuB;
+  private final c KVO;
+  private final d.l.b.a.b.e.b.h KVP;
+  private final d.l.b.a.b.l.i KZf;
+  private final d.l.b.a.b.e.b.i LHZ;
+  private g.a LIW;
+  private final f LIa;
+  private Collection<? extends ag> LJH;
+  private aj LJI;
+  private aj LJJ;
+  private aj LJK;
+  private final a.q LJL;
+  private List<? extends as> LhU;
   
   public l(d.l.b.a.b.l.i parami, d.l.b.a.b.b.l paraml, d.l.b.a.b.b.a.g paramg, d.l.b.a.b.f.f paramf, ba paramba, a.q paramq, c paramc, d.l.b.a.b.e.b.h paramh, d.l.b.a.b.e.b.i parami1, f paramf1)
   {
     super(paraml, paramg, paramf, localan, paramba);
     AppMethodBeat.i(60488);
-    this.JlL = parami;
-    this.JWs = paramq;
-    this.Jiu = paramc;
-    this.Jiv = paramh;
-    this.JUG = parami1;
-    this.JUH = paramf1;
-    this.JVD = g.a.JVY;
+    this.KZf = parami;
+    this.LJL = paramq;
+    this.KVO = paramc;
+    this.KVP = paramh;
+    this.LHZ = parami1;
+    this.LIa = paramf1;
+    this.LIW = g.a.LJr;
     AppMethodBeat.o(60488);
   }
   
@@ -59,101 +59,64 @@ public final class l
     k.h(paramaj2, "expandedType");
     k.h(parama, "isExperimentalCoroutineInReleaseEnvironment");
     k.h(paramList, "declaredTypeParameters");
-    this.JsX = paramList;
-    this.JWp = paramaj1;
-    this.JWq = paramaj2;
-    this.JuB = d.l.b.a.b.b.at.a(this);
+    this.Lgq = paramList;
+    this.LJI = paramaj1;
+    this.LJJ = paramaj2;
+    this.LhU = d.l.b.a.b.b.at.a(this);
     paramaj1 = (d.l.b.a.b.b.h)this;
-    paramList = fzq();
+    paramList = fRU();
     if (paramList != null)
     {
-      paramList = paramList.fyF();
+      paramList = paramList.fRj();
       if (paramList != null) {}
     }
     else
     {
-      paramList = (d.l.b.a.b.j.f.h)h.b.JTG;
+      paramList = (d.l.b.a.b.j.f.h)h.b.LGZ;
     }
     for (;;)
     {
       paramList = bc.a(paramaj1, paramList, (b)new d.a(this));
       k.g(paramList, "TypeUtils.makeUnsubstitu…s)?.defaultType\n        }");
-      this.JWr = paramList;
-      this.JWo = fzL();
-      this.JVD = parama;
+      this.LJK = paramList;
+      this.LJH = fSp();
+      this.LIW = parama;
       AppMethodBeat.o(60483);
       return;
     }
   }
   
-  public final c fJC()
-  {
-    return this.Jiu;
-  }
-  
-  public final d.l.b.a.b.e.b.h fJD()
-  {
-    return this.Jiv;
-  }
-  
-  public final aj fyA()
-  {
-    AppMethodBeat.i(60485);
-    aj localaj = this.JWr;
-    if (localaj == null) {
-      k.aPZ("defaultTypeImpl");
-    }
-    AppMethodBeat.o(60485);
-    return localaj;
-  }
-  
-  public final d.l.b.a.b.l.i fzK()
-  {
-    return this.JlL;
-  }
-  
-  public final List<as> fzO()
-  {
-    AppMethodBeat.i(60487);
-    List localList = this.JuB;
-    if (localList == null) {
-      k.aPZ("typeConstructorParameters");
-    }
-    AppMethodBeat.o(60487);
-    return localList;
-  }
-  
-  public final aj fzo()
+  public final aj fRS()
   {
     AppMethodBeat.i(60481);
-    aj localaj = this.JWp;
+    aj localaj = this.LJI;
     if (localaj == null) {
-      k.aPZ("underlyingType");
+      k.aVY("underlyingType");
     }
     AppMethodBeat.o(60481);
     return localaj;
   }
   
-  public final aj fzp()
+  public final aj fRT()
   {
     AppMethodBeat.i(60482);
-    aj localaj = this.JWq;
+    aj localaj = this.LJJ;
     if (localaj == null) {
-      k.aPZ("expandedType");
+      k.aVY("expandedType");
     }
     AppMethodBeat.o(60482);
     return localaj;
   }
   
-  public final e fzq()
+  public final e fRU()
   {
     AppMethodBeat.i(60484);
-    if (ad.aq((ab)fzp()))
+    if (ad.aq((ab)fRT()))
     {
       AppMethodBeat.o(60484);
       return null;
     }
-    d.l.b.a.b.b.h localh = fzp().fIW().fxM();
+    d.l.b.a.b.b.h localh = fRT().gbz().fQq();
     Object localObject = localh;
     if (!(localh instanceof e)) {
       localObject = null;
@@ -162,10 +125,47 @@ public final class l
     AppMethodBeat.o(60484);
     return localObject;
   }
+  
+  public final aj fRe()
+  {
+    AppMethodBeat.i(60485);
+    aj localaj = this.LJK;
+    if (localaj == null) {
+      k.aVY("defaultTypeImpl");
+    }
+    AppMethodBeat.o(60485);
+    return localaj;
+  }
+  
+  public final d.l.b.a.b.l.i fSo()
+  {
+    return this.KZf;
+  }
+  
+  public final List<as> fSs()
+  {
+    AppMethodBeat.i(60487);
+    List localList = this.LhU;
+    if (localList == null) {
+      k.aVY("typeConstructorParameters");
+    }
+    AppMethodBeat.o(60487);
+    return localList;
+  }
+  
+  public final c gcf()
+  {
+    return this.KVO;
+  }
+  
+  public final d.l.b.a.b.e.b.h gcg()
+  {
+    return this.KVP;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.b.l
  * JD-Core Version:    0.7.0.1
  */

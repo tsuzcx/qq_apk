@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ml
   extends b
 {
-  public a drD;
+  public a doW;
   
   public ml()
   {
@@ -15,21 +15,24 @@ public final class ml
   
   private ml(byte paramByte)
   {
-    AppMethodBeat.i(181500);
-    this.drD = new a();
-    this.ESR = false;
+    AppMethodBeat.i(116034);
+    this.doW = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(181500);
+    AppMethodBeat.o(116034);
   }
   
   public static final class a
   {
-    public String dlX;
+    public int cYG;
+    public boolean doX;
+    public boolean doY;
+    public String talker;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ml
  * JD-Core Version:    0.7.0.1
  */

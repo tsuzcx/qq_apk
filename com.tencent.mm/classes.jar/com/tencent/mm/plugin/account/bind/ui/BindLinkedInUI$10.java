@@ -12,7 +12,7 @@ final class BindLinkedInUI$10
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(109825);
-    BindLinkedInUI.a(this.igh);
+    BindLinkedInUI.a(this.iGq);
     AppMethodBeat.o(109825);
     return true;
   }

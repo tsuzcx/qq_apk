@@ -10,7 +10,7 @@ public final class n
 {
   n()
   {
-    super(q.kSc.ordinal());
+    super(q.ltC.ordinal());
     AppMethodBeat.i(47660);
     AppMethodBeat.o(47660);
   }
@@ -24,7 +24,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.n
  * JD-Core Version:    0.7.0.1
  */

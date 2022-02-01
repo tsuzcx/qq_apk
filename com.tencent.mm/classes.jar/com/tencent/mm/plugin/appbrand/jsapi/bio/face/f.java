@@ -6,12 +6,12 @@ public final class f
   public static final int CTRL_INDEX = 213;
   public static final String NAME = "startFacialRecognitionVerifyAndUploadVideo";
   
-  protected final boolean aYB()
+  protected final boolean bfy()
   {
     return true;
   }
   
-  protected final String aYC()
+  protected final String bfz()
   {
     return "startFacialRecognitionVerifyAndUploadVideo";
   }

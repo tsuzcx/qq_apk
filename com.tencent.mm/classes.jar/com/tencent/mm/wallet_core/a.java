@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.SparseArray;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.util.ArrayList;
@@ -16,14 +16,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private static Map<String, Class<?>> IbI;
-  private static SparseArray<d> IbJ;
+  private static Map<String, Class<?>> JDk;
+  private static SparseArray<d> JDl;
   
   static
   {
     AppMethodBeat.i(72640);
-    IbI = new ConcurrentHashMap();
-    IbJ = new SparseArray();
+    JDk = new ConcurrentHashMap();
+    JDl = new SparseArray();
     AppMethodBeat.o(72640);
   }
   
@@ -37,7 +37,7 @@ public final class a
   public static void a(Activity paramActivity, Class<?> paramClass, Bundle paramBundle, d.a parama)
   {
     AppMethodBeat.i(72628);
-    ad.i("MicroMsg.ProcessManager", "startProcess to1 context:%s proc name: %s bundle %s", new Object[] { paramActivity, paramClass.getSimpleName(), bc(paramBundle) });
+    ac.i("MicroMsg.ProcessManager", "startProcess to1 context:%s proc name: %s bundle %s", new Object[] { paramActivity, paramClass.getSimpleName(), bg(paramBundle) });
     try
     {
       if (((paramActivity instanceof WalletBaseUI)) && (parama != null)) {
@@ -51,16 +51,16 @@ public final class a
         localBundle.putLong("key_SessionId", System.currentTimeMillis());
       }
       paramBundle = (d)paramClass.newInstance();
-      paramBundle.bd(localBundle);
+      paramBundle.bh(localBundle);
       paramBundle.a(parama, paramActivity);
       paramBundle.a(paramActivity, localBundle);
-      IbJ.put(paramClass.hashCode(), paramBundle);
+      JDl.put(paramClass.hashCode(), paramBundle);
       AppMethodBeat.o(72628);
       return;
     }
     catch (Exception paramActivity)
     {
-      ad.printErrStackTrace("MicroMsg.ProcessManager", paramActivity, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.ProcessManager", paramActivity, "", new Object[0]);
       AppMethodBeat.o(72628);
     }
   }
@@ -70,12 +70,12 @@ public final class a
     AppMethodBeat.i(72630);
     try
     {
-      ad.i("MicroMsg.ProcessManager", "startProcess to2 context:%s proc name: %s bundle %s", new Object[] { paramActivity, paramString, bc(paramBundle) });
-      Class localClass = (Class)IbI.get(paramString);
+      ac.i("MicroMsg.ProcessManager", "startProcess to2 context:%s proc name: %s bundle %s", new Object[] { paramActivity, paramString, bg(paramBundle) });
+      Class localClass = (Class)JDk.get(paramString);
       if (localClass == null)
       {
         paramString = String.format("start process=%s fail, process not register or plugin no import", new Object[] { paramString });
-        ad.e("MicroMsg.ProcessManager", paramString);
+        ac.e("MicroMsg.ProcessManager", paramString);
         t.makeText(paramActivity, paramString, 1).show();
         AppMethodBeat.o(72630);
         return;
@@ -86,22 +86,22 @@ public final class a
     }
     catch (Exception paramActivity)
     {
-      ad.e("MicroMsg.ProcessManager", "plugin load failed : " + paramActivity.toString());
-      ad.printErrStackTrace("MicroMsg.ProcessManager", paramActivity, "", new Object[0]);
+      ac.e("MicroMsg.ProcessManager", "plugin load failed : " + paramActivity.toString());
+      ac.printErrStackTrace("MicroMsg.ProcessManager", paramActivity, "", new Object[0]);
       AppMethodBeat.o(72630);
     }
   }
   
-  public static List<d> aMX(String paramString)
+  public static List<d> aSA(String paramString)
   {
     AppMethodBeat.i(72639);
     ArrayList localArrayList = new ArrayList();
-    int j = IbJ.size();
+    int j = JDl.size();
     int i = 0;
     while (i < j)
     {
-      d locald = (d)IbJ.valueAt(i);
-      if (paramString.equals(locald.cuB())) {
+      d locald = (d)JDl.valueAt(i);
+      if (paramString.equals(locald.cHN())) {
         localArrayList.add(locald);
       }
       i += 1;
@@ -113,16 +113,16 @@ public final class a
   public static void b(Activity paramActivity, Bundle paramBundle, int paramInt)
   {
     AppMethodBeat.i(72634);
-    ad.i("MicroMsg.ProcessManager", "endProcess with errCode : ".concat(String.valueOf(paramInt)));
+    ac.i("MicroMsg.ProcessManager", "endProcess with errCode : ".concat(String.valueOf(paramInt)));
     if (paramActivity == null) {
-      ad.w("MicroMsg.ProcessManager", "hy: end context is null");
+      ac.w("MicroMsg.ProcessManager", "hy: end context is null");
     }
-    d locald = bo(paramActivity);
-    String str2 = bc(paramBundle);
+    d locald = br(paramActivity);
+    String str2 = bg(paramBundle);
     if (locald == null) {}
-    for (String str1 = "";; str1 = locald.cuB())
+    for (String str1 = "";; str1 = locald.cHN())
     {
-      ad.i("MicroMsg.ProcessManager", "endProcess to1 context: %s bundle: %s procName %s", new Object[] { paramActivity, str2, str1 });
+      ac.i("MicroMsg.ProcessManager", "endProcess to1 context: %s bundle: %s procName %s", new Object[] { paramActivity, str2, str1 });
       if (locald == null) {
         break;
       }
@@ -143,7 +143,7 @@ public final class a
     AppMethodBeat.o(72629);
   }
   
-  private static String bc(Bundle paramBundle)
+  private static String bg(Bundle paramBundle)
   {
     AppMethodBeat.i(72625);
     if (paramBundle == null)
@@ -156,14 +156,14 @@ public final class a
     return paramBundle;
   }
   
-  public static void bl(Activity paramActivity)
+  public static void bo(Activity paramActivity)
   {
     AppMethodBeat.i(72632);
-    d locald = bo(paramActivity);
+    d locald = br(paramActivity);
     if (locald == null) {}
-    for (String str = "";; str = locald.cuB())
+    for (String str = "";; str = locald.cHN())
     {
-      ad.i("MicroMsg.ProcessManager", "backProcess to1 context: %s procname %s", new Object[] { paramActivity, str });
+      ac.i("MicroMsg.ProcessManager", "backProcess to1 context: %s procname %s", new Object[] { paramActivity, str });
       if (locald != null) {
         locald.g(paramActivity, 0);
       }
@@ -172,10 +172,10 @@ public final class a
     }
   }
   
-  public static boolean bm(Activity paramActivity)
+  public static boolean bp(Activity paramActivity)
   {
     AppMethodBeat.i(72635);
-    if (bo(paramActivity) != null)
+    if (br(paramActivity) != null)
     {
       AppMethodBeat.o(72635);
       return true;
@@ -184,13 +184,13 @@ public final class a
     return false;
   }
   
-  public static Bundle bn(Activity paramActivity)
+  public static Bundle bq(Activity paramActivity)
   {
     AppMethodBeat.i(72636);
-    paramActivity = bo(paramActivity);
+    paramActivity = br(paramActivity);
     if (paramActivity != null)
     {
-      paramActivity = paramActivity.dow;
+      paramActivity = paramActivity.dmf;
       AppMethodBeat.o(72636);
       return paramActivity;
     }
@@ -199,22 +199,22 @@ public final class a
     return paramActivity;
   }
   
-  public static d bo(Activity paramActivity)
+  public static d br(Activity paramActivity)
   {
     AppMethodBeat.i(72638);
     if (paramActivity == null)
     {
-      ad.w("MicroMsg.ProcessManager", "hy: ac is null");
+      ac.w("MicroMsg.ProcessManager", "hy: ac is null");
       AppMethodBeat.o(72638);
       return null;
     }
     if (paramActivity.getIntent() == null)
     {
-      ad.w("MicroMsg.ProcessManager", "hy: get intent is null");
+      ac.w("MicroMsg.ProcessManager", "hy: get intent is null");
       AppMethodBeat.o(72638);
       return null;
     }
-    paramActivity = (d)IbJ.get(paramActivity.getIntent().getIntExtra("process_id", 0));
+    paramActivity = (d)JDl.get(paramActivity.getIntent().getIntExtra("process_id", 0));
     AppMethodBeat.o(72638);
     return paramActivity;
   }
@@ -222,25 +222,25 @@ public final class a
   public static void i(String paramString, Class<?> paramClass)
   {
     AppMethodBeat.i(72624);
-    if (IbI.containsKey(paramString))
+    if (JDk.containsKey(paramString))
     {
       paramString = new IllegalArgumentException("register process fail, exist process=".concat(String.valueOf(paramString)));
       AppMethodBeat.o(72624);
       throw paramString;
     }
-    IbI.put(paramString, paramClass);
+    JDk.put(paramString, paramClass);
     AppMethodBeat.o(72624);
   }
   
   public static void k(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72631);
-    d locald = bo(paramActivity);
-    String str2 = bc(paramBundle);
+    d locald = br(paramActivity);
+    String str2 = bg(paramBundle);
     if (locald == null) {}
-    for (String str1 = "";; str1 = locald.cuB())
+    for (String str1 = "";; str1 = locald.cHN())
     {
-      ad.i("MicroMsg.ProcessManager", "forwardProcess to1 context: %s bundle: %s procName %s", new Object[] { paramActivity, str2, str1 });
+      ac.i("MicroMsg.ProcessManager", "forwardProcess to1 context: %s bundle: %s procName %s", new Object[] { paramActivity, str2, str1 });
       if (locald != null) {
         locald.a(paramActivity, 0, paramBundle);
       }
@@ -252,10 +252,10 @@ public final class a
   public static boolean l(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72637);
-    paramActivity = bo(paramActivity);
+    paramActivity = br(paramActivity);
     if (paramActivity != null)
     {
-      paramActivity.bd(paramBundle);
+      paramActivity.bh(paramBundle);
       AppMethodBeat.o(72637);
       return true;
     }
@@ -266,7 +266,7 @@ public final class a
   public static void remove(int paramInt)
   {
     AppMethodBeat.i(72626);
-    IbJ.remove(paramInt);
+    JDl.remove(paramInt);
     AppMethodBeat.o(72626);
   }
   
@@ -274,13 +274,13 @@ public final class a
   {
     AppMethodBeat.i(72633);
     if (paramActivity == null) {
-      ad.w("MicroMsg.ProcessManager", "hy: back context is null");
+      ac.w("MicroMsg.ProcessManager", "hy: back context is null");
     }
-    d locald = bo(paramActivity);
+    d locald = br(paramActivity);
     if (locald == null) {}
-    for (String str = "";; str = locald.cuB())
+    for (String str = "";; str = locald.cHN())
     {
-      ad.i("MicroMsg.ProcessManager", "backProcess to1 context: %s errCode %s procname %s ", new Object[] { paramActivity, Integer.valueOf(paramInt), str });
+      ac.i("MicroMsg.ProcessManager", "backProcess to1 context: %s errCode %s procname %s ", new Object[] { paramActivity, Integer.valueOf(paramInt), str });
       if (locald == null) {
         break;
       }

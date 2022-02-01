@@ -8,13 +8,13 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BakConnErrorUI
   extends MMWizardActivity
 {
-  private int mzJ;
+  private int nbK;
   
   public int getLayoutId()
   {
@@ -47,10 +47,10 @@ public class BakConnErrorUI
       AppMethodBeat.o(21972);
       return;
     }
-    this.mzJ = getIntent().getIntExtra("cmd", -1);
-    ad.i("MicroMsg.BakFinishUI", "BakConnErrorUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.mzJ) });
+    this.nbK = getIntent().getIntExtra("cmd", -1);
+    ac.i("MicroMsg.BakFinishUI", "BakConnErrorUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.nbK) });
     initView();
-    a.byd().bye().mzc = -1;
+    a.bEZ().bFa().nbd = -1;
     AppMethodBeat.o(21972);
   }
   
@@ -58,8 +58,8 @@ public class BakConnErrorUI
   {
     AppMethodBeat.i(21974);
     super.onDestroy();
-    a.byd().bye().myU = null;
-    ad.i("MicroMsg.BakFinishUI", "BakConnErrorUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.mzJ) });
+    a.bEZ().bFa().naV = null;
+    ac.i("MicroMsg.BakFinishUI", "BakConnErrorUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.nbK) });
     AppMethodBeat.o(21974);
   }
   
@@ -68,7 +68,7 @@ public class BakConnErrorUI
     AppMethodBeat.i(21975);
     if (paramInt == 4)
     {
-      Xo(1);
+      ZA(1);
       AppMethodBeat.o(21975);
       return true;
     }
@@ -85,7 +85,7 @@ public class BakConnErrorUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakConnErrorUI
  * JD-Core Version:    0.7.0.1
  */

@@ -14,34 +14,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   implements c
 {
-  final c.a aJP;
-  boolean aJQ;
-  private boolean aJR;
-  private final BroadcastReceiver aJS;
+  final c.a aKF;
+  boolean aKG;
+  private boolean aKH;
+  private final BroadcastReceiver aKI;
   private final Context context;
   
   e(Context paramContext, c.a parama)
   {
     AppMethodBeat.i(77548);
-    this.aJS = new BroadcastReceiver()
+    this.aKI = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(77547);
-        boolean bool = e.this.aJQ;
-        e.this.aJQ = e.isConnected(paramAnonymousContext);
-        if (bool != e.this.aJQ)
+        boolean bool = e.this.aKG;
+        e.this.aKG = e.isConnected(paramAnonymousContext);
+        if (bool != e.this.aKG)
         {
           if (Log.isLoggable("ConnectivityMonitor", 3)) {
-            new StringBuilder("connectivity changed, isConnected: ").append(e.this.aJQ);
+            new StringBuilder("connectivity changed, isConnected: ").append(e.this.aKG);
           }
-          e.this.aJP.aG(e.this.aJQ);
+          e.this.aKF.aG(e.this.aKG);
         }
         AppMethodBeat.o(77547);
       }
     };
     this.context = paramContext.getApplicationContext();
-    this.aJP = parama;
+    this.aKF = parama;
     AppMethodBeat.o(77548);
   }
   
@@ -74,13 +74,13 @@ final class e
   public final void onStart()
   {
     AppMethodBeat.i(77550);
-    if (!this.aJR)
+    if (!this.aKH)
     {
-      this.aJQ = isConnected(this.context);
+      this.aKG = isConnected(this.context);
       try
       {
-        this.context.registerReceiver(this.aJS, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
-        this.aJR = true;
+        this.context.registerReceiver(this.aKI, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+        this.aKH = true;
         AppMethodBeat.o(77550);
         return;
       }
@@ -95,17 +95,17 @@ final class e
   public final void onStop()
   {
     AppMethodBeat.i(77551);
-    if (this.aJR)
+    if (this.aKH)
     {
-      this.context.unregisterReceiver(this.aJS);
-      this.aJR = false;
+      this.context.unregisterReceiver(this.aKI);
+      this.aKH = false;
     }
     AppMethodBeat.o(77551);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.manager.e
  * JD-Core Version:    0.7.0.1
  */

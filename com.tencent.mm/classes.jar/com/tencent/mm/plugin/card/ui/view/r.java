@@ -16,12 +16,12 @@ public final class r
   
   public final void b(ViewGroup paramViewGroup, b paramb) {}
   
-  public final boolean bMC()
+  public final boolean bTN()
   {
     return false;
   }
   
-  public final boolean bMD()
+  public final boolean bTO()
   {
     return true;
   }

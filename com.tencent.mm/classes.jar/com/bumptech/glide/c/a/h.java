@@ -11,14 +11,14 @@ public final class h
     super(paramAssetManager, paramString);
   }
   
-  public final Class<ParcelFileDescriptor> nK()
+  public final Class<ParcelFileDescriptor> nU()
   {
     return ParcelFileDescriptor.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.a.h
  * JD-Core Version:    0.7.0.1
  */

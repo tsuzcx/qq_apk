@@ -11,27 +11,27 @@ import com.tencent.wecall.talkroom.model.c;
 public final class n
   extends d
 {
-  public int sHe;
-  public String seB;
-  public long ztl;
+  public long AMc;
+  public int tOL;
+  public String tmu;
   
   public n(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62547);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "hello", paramString, Integer.valueOf(paramInt1), Long.valueOf(paramLong) });
     a.m localm = new a.m();
-    localm.IkT = paramInt3;
-    localm.zkT = paramInt1;
-    this.sHe = paramInt1;
-    localm.zkU = paramLong;
-    this.ztl = paramLong;
+    localm.JME = paramInt3;
+    localm.ADE = paramInt1;
+    this.tOL = paramInt1;
+    localm.ADF = paramLong;
+    this.AMc = paramLong;
     localm.groupId = paramString;
-    this.seB = paramString;
-    localm.nPB = paramInt2;
+    this.tmu = paramString;
+    localm.osF = paramInt2;
     this.mNetType = 3;
     try
     {
-      this.IjW = c.fpJ().aOs(paramString);
+      this.JLH = c.fIe().aUe(paramString);
       c(147, localm);
       AppMethodBeat.o(62547);
       return;
@@ -45,7 +45,7 @@ public final class n
     }
   }
   
-  public final Object cC(byte[] paramArrayOfByte)
+  public final Object cB(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62548);
     if (paramArrayOfByte != null) {}
@@ -67,7 +67,7 @@ public final class n
     }
   }
   
-  public final String flk()
+  public final String fBB()
   {
     return "CsCmd.Cmd_V_CSVoiceRoomHelloReq";
   }

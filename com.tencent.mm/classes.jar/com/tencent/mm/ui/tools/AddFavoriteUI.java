@@ -14,11 +14,11 @@ import android.os.Parcelable;
 import android.widget.Toast;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.booter.NotifyReceiver;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.g.a.cs;
 import com.tencent.mm.model.az;
 import com.tencent.mm.modelsimple.f;
@@ -31,13 +31,13 @@ import com.tencent.mm.opensdk.modelmsg.WXTextObject;
 import com.tencent.mm.opensdk.modelmsg.WXVideoFileObject;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
 import com.tencent.mm.plugin.fav.a.af;
-import com.tencent.mm.protocal.protobuf.vm;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.vw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.m;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.s;
+import com.tencent.mm.sdk.platformtools.x;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.h;
@@ -51,37 +51,37 @@ import java.util.List;
 @JgClassChecked(author=12, fComment="checked", lastDate="20141010", reviewer=20, vComment={com.jg.EType.ACTIVITYCHECK})
 public class AddFavoriteUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private cs Hmd;
-  ArrayList<String> Hme;
-  private ap Hmf;
-  private ap Hmg;
+  private ao IMA;
+  private ao IMB;
+  private cs IMy;
+  ArrayList<String> IMz;
   String filePath;
-  private ProgressDialog fpP;
-  private ap handler;
+  private ProgressDialog fts;
+  private ao handler;
   private Intent intent;
   Uri uri;
   
   public AddFavoriteUI()
   {
     AppMethodBeat.i(38953);
-    this.fpP = null;
+    this.fts = null;
     this.intent = null;
     this.filePath = null;
     this.uri = null;
-    this.Hme = null;
-    this.Hmf = new ap()
+    this.IMz = null;
+    this.IMA = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(38946);
         AddFavoriteUI.d(AddFavoriteUI.this);
-        ad.i("MicroMsg.AddFavoriteUI", "dealWithText: %b", new Object[] { Boolean.valueOf(AddFavoriteUI.e(AddFavoriteUI.this)) });
+        ac.i("MicroMsg.AddFavoriteUI", "dealWithText: %b", new Object[] { Boolean.valueOf(AddFavoriteUI.e(AddFavoriteUI.this)) });
         AppMethodBeat.o(38946);
       }
     };
-    this.Hmg = new ap()
+    this.IMB = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -91,15 +91,15 @@ public class AddFavoriteUI
         AppMethodBeat.o(38947);
       }
     };
-    this.handler = new ap()
+    this.handler = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(38948);
         AddFavoriteUI.d(AddFavoriteUI.this);
-        if ((bt.isNullOrNil(AddFavoriteUI.this.filePath)) || ((bt.aGu(AddFavoriteUI.this.filePath)) && (!AddFavoriteUI.aLH(AddFavoriteUI.this.filePath))))
+        if ((bs.isNullOrNil(AddFavoriteUI.this.filePath)) || ((bs.aLL(AddFavoriteUI.this.filePath)) && (!AddFavoriteUI.aRj(AddFavoriteUI.this.filePath))))
         {
-          ad.e("MicroMsg.AddFavoriteUI", "launch : fail, filePath is null or file is not a valid img.");
+          ac.e("MicroMsg.AddFavoriteUI", "launch : fail, filePath is null or file is not a valid img.");
           AddFavoriteUI.g(AddFavoriteUI.this);
           AddFavoriteUI.this.finish();
           AppMethodBeat.o(38948);
@@ -147,7 +147,7 @@ public class AddFavoriteUI
     //   60: aload 4
     //   62: invokestatic 151	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   65: invokevirtual 155	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   68: invokestatic 160	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   68: invokestatic 160	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   71: aload 4
     //   73: astore 8
     //   75: aload_2
@@ -170,7 +170,7 @@ public class AddFavoriteUI
     //   107: aload 9
     //   109: invokevirtual 191	java/io/FileInputStream:read	([B)I
     //   112: ifle +314 -> 426
-    //   115: invokestatic 197	com/tencent/mm/model/az:arV	()Lcom/tencent/mm/model/c;
+    //   115: invokestatic 197	com/tencent/mm/model/az:ayM	()Lcom/tencent/mm/model/c;
     //   118: pop
     //   119: invokestatic 203	com/tencent/mm/model/c:isSDCardAvailable	()Z
     //   122: ifne +144 -> 266
@@ -180,7 +180,7 @@ public class AddFavoriteUI
     //   131: pop
     //   132: aload 8
     //   134: iconst_0
-    //   135: invokestatic 213	com/tencent/mm/vfs/i:cM	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   135: invokestatic 213	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   138: astore 7
     //   140: aload 7
     //   142: astore 6
@@ -241,12 +241,12 @@ public class AddFavoriteUI
     //   253: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   256: iconst_0
     //   257: anewarray 252	java/lang/Object
-    //   260: invokestatic 256	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   260: invokestatic 256	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   263: goto -23 -> 240
     //   266: new 224	java/lang/StringBuilder
     //   269: dup
     //   270: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   273: invokestatic 261	com/tencent/mm/loader/j/b:aih	()Ljava/lang/String;
+    //   273: invokestatic 261	com/tencent/mm/loader/j/b:aph	()Ljava/lang/String;
     //   276: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   279: ldc_w 263
     //   282: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -255,7 +255,7 @@ public class AddFavoriteUI
     //   290: new 224	java/lang/StringBuilder
     //   293: dup
     //   294: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   297: invokestatic 261	com/tencent/mm/loader/j/b:aih	()Ljava/lang/String;
+    //   297: invokestatic 261	com/tencent/mm/loader/j/b:aph	()Ljava/lang/String;
     //   300: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   303: ldc_w 265
     //   306: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -312,7 +312,7 @@ public class AddFavoriteUI
     //   413: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   416: iconst_0
     //   417: anewarray 252	java/lang/Object
-    //   420: invokestatic 256	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   420: invokestatic 256	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   423: goto -23 -> 400
     //   426: aload_2
     //   427: ifnull +7 -> 434
@@ -333,7 +333,7 @@ public class AddFavoriteUI
     //   454: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   457: iconst_0
     //   458: anewarray 252	java/lang/Object
-    //   461: invokestatic 256	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   461: invokestatic 256	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   464: goto -22 -> 442
     //   467: astore 8
     //   469: aconst_null
@@ -357,7 +357,7 @@ public class AddFavoriteUI
     //   500: invokevirtual 287	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
     //   503: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   506: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   509: invokestatic 290	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   509: invokestatic 290	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   512: aload_2
     //   513: ifnull +7 -> 520
     //   516: aload_2
@@ -378,7 +378,7 @@ public class AddFavoriteUI
     //   546: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   549: iconst_0
     //   550: anewarray 252	java/lang/Object
-    //   553: invokestatic 256	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   553: invokestatic 256	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   556: goto -114 -> 442
     //   559: astore 8
     //   561: aconst_null
@@ -402,7 +402,7 @@ public class AddFavoriteUI
     //   592: invokevirtual 293	java/io/IOException:getMessage	()Ljava/lang/String;
     //   595: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   598: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   601: invokestatic 290	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   601: invokestatic 290	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   604: aload_2
     //   605: ifnull +7 -> 612
     //   608: aload_2
@@ -423,7 +423,7 @@ public class AddFavoriteUI
     //   638: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   641: iconst_0
     //   642: anewarray 252	java/lang/Object
-    //   645: invokestatic 256	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   645: invokestatic 256	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   648: goto -206 -> 442
     //   651: astore 8
     //   653: aconst_null
@@ -447,7 +447,7 @@ public class AddFavoriteUI
     //   684: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   687: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   690: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   693: invokestatic 290	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   693: invokestatic 290	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   696: aload_2
     //   697: ifnull +7 -> 704
     //   700: aload_2
@@ -468,7 +468,7 @@ public class AddFavoriteUI
     //   730: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   733: iconst_0
     //   734: anewarray 252	java/lang/Object
-    //   737: invokestatic 256	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   737: invokestatic 256	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   740: goto -298 -> 442
     //   743: astore 7
     //   745: aconst_null
@@ -500,7 +500,7 @@ public class AddFavoriteUI
     //   791: invokevirtual 250	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   794: iconst_0
     //   795: anewarray 252	java/lang/Object
-    //   798: invokestatic 256	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   798: invokestatic 256	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   801: goto -23 -> 778
     //   804: astore 7
     //   806: aconst_null
@@ -645,12 +645,12 @@ public class AddFavoriteUI
     //   182	214	897	java/io/FileNotFoundException
   }
   
-  private static int aLG(String paramString)
+  private static int aRi(String paramString)
   {
     AppMethodBeat.i(38964);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ad.e("MicroMsg.AddFavoriteUI", "map : mimeType is null");
+      ac.e("MicroMsg.AddFavoriteUI", "map : mimeType is null");
       AppMethodBeat.o(38964);
       return -1;
     }
@@ -665,12 +665,12 @@ public class AddFavoriteUI
       AppMethodBeat.o(38964);
       return 4;
     }
-    ad.d("MicroMsg.AddFavoriteUI", "map : unknown mimetype, send as file");
+    ac.d("MicroMsg.AddFavoriteUI", "map : unknown mimetype, send as file");
     AppMethodBeat.o(38964);
     return 8;
   }
   
-  private void aag(int paramInt)
+  private void act(int paramInt)
   {
     AppMethodBeat.i(38966);
     switch (paramInt)
@@ -687,18 +687,18 @@ public class AddFavoriteUI
   private void dismissDialog()
   {
     AppMethodBeat.i(38968);
-    if ((this.fpP != null) && (this.fpP.isShowing())) {
-      this.fpP.dismiss();
+    if ((this.fts != null) && (this.fts.isShowing())) {
+      this.fts.dismiss();
     }
     AppMethodBeat.o(38968);
   }
   
-  private void fdB()
+  private void ftw()
   {
     AppMethodBeat.i(38960);
     Intent localIntent = new Intent(this, AddFavoriteUI.class);
     localIntent.setAction("android.intent.action.SEND");
-    if (bt.isNullOrNil(this.filePath)) {}
+    if (bs.isNullOrNil(this.filePath)) {}
     for (Object localObject = null;; localObject = m.a(getContext(), new com.tencent.mm.vfs.e(this.filePath)))
     {
       localIntent.putExtra("android.intent.extra.STREAM", (Parcelable)localObject);
@@ -710,20 +710,20 @@ public class AddFavoriteUI
     }
   }
   
-  private boolean fdC()
+  private boolean ftx()
   {
     AppMethodBeat.i(38961);
     this.intent = getIntent();
     if (this.intent == null)
     {
-      ad.e("MicroMsg.AddFavoriteUI", "intent is null");
+      ac.e("MicroMsg.AddFavoriteUI", "intent is null");
       AppMethodBeat.o(38961);
       return false;
     }
-    Object localObject1 = y.getStringExtra(this.intent, "android.intent.extra.TEXT");
+    Object localObject1 = x.getStringExtra(this.intent, "android.intent.extra.TEXT");
     if ((localObject1 == null) || (((String)localObject1).length() == 0))
     {
-      ad.i("MicroMsg.AddFavoriteUI", "text is null");
+      ac.i("MicroMsg.AddFavoriteUI", "text is null");
       AppMethodBeat.o(38961);
       return false;
     }
@@ -738,15 +738,15 @@ public class AddFavoriteUI
     ((Bundle)localObject3).putInt("_mmessage_sdkVersion", 637927424);
     ((Bundle)localObject3).putString("_mmessage_appPackage", "com.tencent.mm.openapi");
     ((Bundle)localObject3).putString("SendAppMessageWrapper_AppId", "wx4310bbd51be7d979");
-    if ((az.arW()) && (!az.aeC()))
+    if ((az.ayN()) && (!az.afS()))
     {
       localObject2 = new cs();
-      localObject3 = i.aMS(this.filePath) + "." + i.RK(this.filePath);
+      localObject3 = i.aSu(this.filePath) + "." + i.VW(this.filePath);
       if (i == 1)
       {
         com.tencent.mm.pluginsdk.model.g.b((cs)localObject2, (String)localObject1, 13);
-        ((cs)localObject2).deQ.activity = this;
-        ((cs)localObject2).deQ.deX = new DialogInterface.OnClickListener()
+        ((cs)localObject2).dck.activity = this;
+        ((cs)localObject2).dck.dcr = new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -755,9 +755,9 @@ public class AddFavoriteUI
             AppMethodBeat.o(38940);
           }
         };
-        ((cs)localObject2).deQ.deY = new a.c()
+        ((cs)localObject2).dck.dcs = new a.c()
         {
-          public final void aXN() {}
+          public final void beK() {}
           
           public final void onHide()
           {
@@ -768,12 +768,12 @@ public class AddFavoriteUI
           
           public final void onShow() {}
         };
-        this.Hmd = ((cs)localObject2);
+        this.IMy = ((cs)localObject2);
         localObject2 = new ArrayList();
         ((ArrayList)localObject2).add(localObject1);
         localObject1 = new f(5, (List)localObject2, getCallerPackage());
-        az.aeS().a(837, this);
-        com.tencent.mm.kernel.g.aeS().a((n)localObject1, 0);
+        az.agi().a(837, this);
+        com.tencent.mm.kernel.g.agi().a((n)localObject1, 0);
         showDialog();
       }
     }
@@ -783,16 +783,16 @@ public class AddFavoriteUI
       return true;
       com.tencent.mm.pluginsdk.model.g.a((cs)localObject2, this.filePath, (String)localObject3, "", false);
       break;
-      ad.w("MicroMsg.AddFavoriteUI", "not logged in, jump to simple login");
+      ac.w("MicroMsg.AddFavoriteUI", "not logged in, jump to simple login");
       MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent().addFlags(67108864));
       finish();
     }
   }
   
-  private void fdD()
+  private void fty()
   {
     AppMethodBeat.i(38965);
-    aag(0);
+    act(0);
     Toast.makeText(this, 2131763659, 1).show();
     AppMethodBeat.o(38965);
   }
@@ -802,15 +802,15 @@ public class AddFavoriteUI
     AppMethodBeat.i(38962);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ad.e("MicroMsg.AddFavoriteUI", "dealWithFile fail, filePath is empty");
+      ac.e("MicroMsg.AddFavoriteUI", "dealWithFile fail, filePath is empty");
       AppMethodBeat.o(38962);
       return;
     }
-    long l = i.aMN(paramString);
-    ad.i("MicroMsg.AddFavoriteUI", "filelength: [%d]", new Object[] { Long.valueOf(l) });
+    long l = i.aSp(paramString);
+    ac.i("MicroMsg.AddFavoriteUI", "filelength: [%d]", new Object[] { Long.valueOf(l) });
     if (l == 0L)
     {
-      ad.e("MicroMsg.AddFavoriteUI", "dealWithFile fail, fileLength is 0");
+      ac.e("MicroMsg.AddFavoriteUI", "dealWithFile fail, fileLength is 0");
       Toast.makeText(this, 2131758905, 1).show();
       finish();
       AppMethodBeat.o(38962);
@@ -820,18 +820,18 @@ public class AddFavoriteUI
     int j = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavSizeLimitInMB(paramBoolean, paramInt);
     if (l > i)
     {
-      ad.e("MicroMsg.AddFavoriteUI", "dealWithFile fail, fileLength is too large");
+      ac.e("MicroMsg.AddFavoriteUI", "dealWithFile fail, fileLength is too large");
       Toast.makeText(this, getString(2131759025, new Object[] { Integer.valueOf(j) }), 1).show();
       finish();
       AppMethodBeat.o(38962);
       return;
     }
-    if ((az.arW()) && (!az.aeC()))
+    if ((az.ayN()) && (!az.afS()))
     {
       Object localObject1 = new ArrayList();
       ((ArrayList)localObject1).add(paramString);
       cs localcs = new cs();
-      String str = i.aMS(paramString) + "." + i.RK(paramString);
+      String str = i.aSu(paramString) + "." + i.VW(paramString);
       Object localObject2;
       switch (paramInt)
       {
@@ -842,14 +842,14 @@ public class AddFavoriteUI
         com.tencent.mm.pluginsdk.model.g.a(localcs, paramString, str, "", paramBoolean);
         localObject2 = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject2);
         ((WXMediaMessage)localObject2).title = new com.tencent.mm.vfs.e(paramString).getName();
-        if (bt.isNullOrNil(null))
+        if (bs.isNullOrNil(null))
         {
-          ((WXMediaMessage)localObject2).description = bt.mK(l);
+          ((WXMediaMessage)localObject2).description = bs.qz(l);
           label367:
           if (l >= 30720L) {
             break label632;
           }
-          ((WXMediaMessage)localObject2).thumbData = i.aR(paramString, 0, -1);
+          ((WXMediaMessage)localObject2).thumbData = i.aU(paramString, 0, -1);
         }
         break;
       }
@@ -863,8 +863,8 @@ public class AddFavoriteUI
         ((Bundle)localObject2).putInt("_mmessage_sdkVersion", 637927424);
         ((Bundle)localObject2).putString("_mmessage_appPackage", "com.tencent.mm.openapi");
         ((Bundle)localObject2).putString("SendAppMessageWrapper_AppId", "wx4310bbd51be7d979");
-        localcs.deQ.activity = this;
-        localcs.deQ.deX = new DialogInterface.OnClickListener()
+        localcs.dck.activity = this;
+        localcs.dck.dcr = new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -873,9 +873,9 @@ public class AddFavoriteUI
             AppMethodBeat.o(38942);
           }
         };
-        localcs.deQ.deY = new a.c()
+        localcs.dck.dcs = new a.c()
         {
-          public final void aXN() {}
+          public final void beK() {}
           
           public final void onHide()
           {
@@ -886,9 +886,9 @@ public class AddFavoriteUI
           
           public final void onShow() {}
         };
-        this.Hmd = localcs;
-        com.tencent.mm.kernel.g.aeS().a(837, this);
-        com.tencent.mm.kernel.g.aeS().a((n)localObject1, 0);
+        this.IMy = localcs;
+        com.tencent.mm.kernel.g.agi().a(837, this);
+        com.tencent.mm.kernel.g.agi().a((n)localObject1, 0);
         showDialog();
         AppMethodBeat.o(38962);
         return;
@@ -904,12 +904,12 @@ public class AddFavoriteUI
         ((WXMediaMessage)localObject2).description = null;
         break label367;
         label632:
-        ad.i("MicroMsg.AddFavoriteUI", "thumb data is exceed 30k, ignore");
+        ac.i("MicroMsg.AddFavoriteUI", "thumb data is exceed 30k, ignore");
       }
     }
-    ad.w("MicroMsg.AddFavoriteUI", "not logged in, jump to simple login");
+    ac.w("MicroMsg.AddFavoriteUI", "not logged in, jump to simple login");
     finish();
-    fdB();
+    ftw();
     AppMethodBeat.o(38962);
   }
   
@@ -917,7 +917,7 @@ public class AddFavoriteUI
   {
     AppMethodBeat.i(38967);
     getString(2131755906);
-    this.fpP = h.b(this, getString(2131755936), true, new DialogInterface.OnCancelListener()
+    this.fts = h.b(this, getString(2131755936), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
@@ -935,18 +935,18 @@ public class AddFavoriteUI
     this.intent = getIntent();
     if (this.intent == null)
     {
-      ad.e("MicroMsg.AddFavoriteUI", "launch : fail, intent is null");
-      fdD();
+      ac.e("MicroMsg.AddFavoriteUI", "launch : fail, intent is null");
+      fty();
       finish();
       AppMethodBeat.o(38959);
       return;
     }
     Object localObject1 = this.intent.getAction();
-    Object localObject2 = y.be(this.intent);
-    if (bt.isNullOrNil((String)localObject1))
+    Object localObject2 = x.bf(this.intent);
+    if (bs.isNullOrNil((String)localObject1))
     {
-      ad.e("MicroMsg.AddFavoriteUI", "launch : fail, action is null");
-      fdD();
+      ac.e("MicroMsg.AddFavoriteUI", "launch : fail, action is null");
+      fty();
       finish();
       AppMethodBeat.o(38959);
       return;
@@ -958,18 +958,18 @@ public class AddFavoriteUI
       if ((localObject3 instanceof Uri))
       {
         this.uri = ((Uri)localObject3);
-        if (!bt.z(this.uri))
+        if (!bs.z(this.uri))
         {
-          ad.e("MicroMsg.AddFavoriteUI", "launch : fail, not accept, %s", new Object[] { this.uri });
-          fdD();
+          ac.e("MicroMsg.AddFavoriteUI", "launch : fail, not accept, %s", new Object[] { this.uri });
+          fty();
           finish();
           AppMethodBeat.o(38959);
         }
       }
       else if (localObject3 != null)
       {
-        ad.e("MicroMsg.AddFavoriteUI", "launch : fail, uri check fail, %s", new Object[] { localObject3 });
-        fdD();
+        ac.e("MicroMsg.AddFavoriteUI", "launch : fail, uri check fail, %s", new Object[] { localObject3 });
+        fty();
         finish();
         AppMethodBeat.o(38959);
         return;
@@ -977,7 +977,7 @@ public class AddFavoriteUI
     }
     if (((String)localObject1).equals("android.intent.action.SEND"))
     {
-      ad.i("MicroMsg.AddFavoriteUI", "send signal: ".concat(String.valueOf(localObject1)));
+      ac.i("MicroMsg.AddFavoriteUI", "send signal: ".concat(String.valueOf(localObject1)));
       if (this.uri == null)
       {
         showDialog();
@@ -996,7 +996,7 @@ public class AddFavoriteUI
       showDialog();
       com.tencent.mm.sdk.g.b.c(new a(this.uri, new b()
       {
-        public final void fdE()
+        public final void ftz()
         {
           AppMethodBeat.i(38944);
           AddFavoriteUI.b(AddFavoriteUI.this).sendEmptyMessage(0);
@@ -1009,11 +1009,11 @@ public class AddFavoriteUI
     if ((((String)localObject1).equals("android.intent.action.SEND_MULTIPLE")) && (localObject2 != null) && (((Bundle)localObject2).containsKey("android.intent.extra.STREAM")))
     {
       localObject3 = getIntent().resolveType(this);
-      ad.i("MicroMsg.AddFavoriteUI", "send multi: %s, mimeType %s", new Object[] { localObject1, localObject3 });
-      if (!bt.by((String)localObject3, "").contains("image"))
+      ac.i("MicroMsg.AddFavoriteUI", "send multi: %s, mimeType %s", new Object[] { localObject1, localObject3 });
+      if (!bs.bG((String)localObject3, "").contains("image"))
       {
-        ad.e("MicroMsg.AddFavoriteUI", "launch : fail, mimeType not contains image");
-        aag(1);
+        ac.e("MicroMsg.AddFavoriteUI", "launch : fail, mimeType not contains image");
+        act(1);
         finish();
         AppMethodBeat.o(38959);
         return;
@@ -1030,7 +1030,7 @@ public class AddFavoriteUI
           localObject3 = (Parcelable)((Iterator)localObject2).next();
           if ((localObject3 == null) || (!(localObject3 instanceof Uri)))
           {
-            ad.e("MicroMsg.AddFavoriteUI", "getMultiSendFilePath failed, error parcelable, %s", new Object[] { localObject3 });
+            ac.e("MicroMsg.AddFavoriteUI", "getMultiSendFilePath failed, error parcelable, %s", new Object[] { localObject3 });
             i = 0;
             label475:
             if (i != 0) {
@@ -1042,41 +1042,41 @@ public class AddFavoriteUI
       }
       for (;;)
       {
-        this.Hme = ((ArrayList)localObject1);
-        if ((this.Hme != null) && (this.Hme.size() != 0)) {
+        this.IMz = ((ArrayList)localObject1);
+        if ((this.IMz != null) && (this.IMz.size() != 0)) {
           break label676;
         }
-        ad.e("MicroMsg.AddFavoriteUI", "launch : fail, filePathList is null");
-        aag(1);
+        ac.e("MicroMsg.AddFavoriteUI", "launch : fail, filePathList is null");
+        act(1);
         finish();
         AppMethodBeat.o(38959);
         return;
         localObject3 = (Uri)localObject3;
-        if ((bt.z((Uri)localObject3)) && (((Uri)localObject3).getScheme() != null))
+        if ((bs.z((Uri)localObject3)) && (((Uri)localObject3).getScheme() != null))
         {
-          localObject3 = bt.j(this, (Uri)localObject3);
-          if (bt.isNullOrNil((String)localObject3)) {
+          localObject3 = bs.j(this, (Uri)localObject3);
+          if (bs.isNullOrNil((String)localObject3)) {
             break label473;
           }
-          if ((bt.aGu((String)localObject3)) && (t.aFl((String)localObject3)))
+          if ((bs.aLL((String)localObject3)) && (s.aKC((String)localObject3)))
           {
-            ad.i("MicroMsg.AddFavoriteUI", "multisend file path: ".concat(String.valueOf(localObject3)));
+            ac.i("MicroMsg.AddFavoriteUI", "multisend file path: ".concat(String.valueOf(localObject3)));
             ((ArrayList)localObject1).add(localObject3);
             i = 1;
             break label475;
             label608:
             break;
           }
-          ad.w("MicroMsg.AddFavoriteUI", "multisend tries to send illegal img: ".concat(String.valueOf(localObject3)));
+          ac.w("MicroMsg.AddFavoriteUI", "multisend tries to send illegal img: ".concat(String.valueOf(localObject3)));
           break label473;
         }
-        ad.e("MicroMsg.AddFavoriteUI", "unaccepted uri: ".concat(String.valueOf(localObject3)));
+        ac.e("MicroMsg.AddFavoriteUI", "unaccepted uri: ".concat(String.valueOf(localObject3)));
         break label473;
         if (((ArrayList)localObject1).size() <= 0)
         {
           localObject1 = null;
           continue;
-          ad.e("MicroMsg.AddFavoriteUI", "getParcelableArrayList failed");
+          ac.e("MicroMsg.AddFavoriteUI", "getParcelableArrayList failed");
           localObject1 = null;
         }
       }
@@ -1094,8 +1094,8 @@ public class AddFavoriteUI
       AppMethodBeat.o(38959);
       return;
     }
-    ad.e("MicroMsg.AddFavoriteUI", "launch : fail, uri is null");
-    fdD();
+    ac.e("MicroMsg.AddFavoriteUI", "launch : fail, uri is null");
+    fty();
     finish();
     AppMethodBeat.o(38959);
   }
@@ -1103,14 +1103,14 @@ public class AddFavoriteUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(38954);
-    ad.i("MicroMsg.AddFavoriteUI", "on create");
+    ac.i("MicroMsg.AddFavoriteUI", "on create");
     super.onCreate(paramBundle);
     setTitleVisibility(8);
-    int i = y.getIntExtra(getIntent(), "wizard_activity_result_code", 0);
+    int i = x.getIntExtra(getIntent(), "wizard_activity_result_code", 0);
     switch (i)
     {
     default: 
-      ad.e("MicroMsg.AddFavoriteUI", "onCreate, should not reach here, resultCode = ".concat(String.valueOf(i)));
+      ac.e("MicroMsg.AddFavoriteUI", "onCreate, should not reach here, resultCode = ".concat(String.valueOf(i)));
       finish();
       AppMethodBeat.o(38954);
       return;
@@ -1119,7 +1119,7 @@ public class AddFavoriteUI
       AppMethodBeat.o(38954);
       return;
     }
-    NotifyReceiver.Ty();
+    NotifyReceiver.Us();
     initView();
     AppMethodBeat.o(38954);
   }
@@ -1127,8 +1127,8 @@ public class AddFavoriteUI
   public void onDestroy()
   {
     AppMethodBeat.i(38958);
-    ad.i("MicroMsg.AddFavoriteUI", "on Destroy");
-    az.aeS().b(837, this);
+    ac.i("MicroMsg.AddFavoriteUI", "on Destroy");
+    az.agi().b(837, this);
     super.onDestroy();
     AppMethodBeat.o(38958);
   }
@@ -1136,7 +1136,7 @@ public class AddFavoriteUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(38956);
-    ad.i("MicroMsg.AddFavoriteUI", "on NewIntent");
+    ac.i("MicroMsg.AddFavoriteUI", "on NewIntent");
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(38956);
   }
@@ -1144,7 +1144,7 @@ public class AddFavoriteUI
   protected void onRestoreInstanceState(Bundle paramBundle)
   {
     AppMethodBeat.i(38957);
-    ad.i("MicroMsg.AddFavoriteUI", "on RestoreInstanceState");
+    ac.i("MicroMsg.AddFavoriteUI", "on RestoreInstanceState");
     super.onRestoreInstanceState(paramBundle);
     AppMethodBeat.o(38957);
   }
@@ -1152,7 +1152,7 @@ public class AddFavoriteUI
   public void onSaveInstanceState(Bundle paramBundle)
   {
     AppMethodBeat.i(38955);
-    ad.i("MicroMsg.AddFavoriteUI", "on SaveInstanceState");
+    ac.i("MicroMsg.AddFavoriteUI", "on SaveInstanceState");
     super.onSaveInstanceState(paramBundle);
     AppMethodBeat.o(38955);
   }
@@ -1160,25 +1160,25 @@ public class AddFavoriteUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(38969);
-    ad.i("MicroMsg.AddFavoriteUI", "onSceneEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.AddFavoriteUI", "onSceneEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     dismissDialog();
     if ((paramn instanceof f)) {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (this.Hmd != null)
+        if (this.IMy != null)
         {
-          com.tencent.mm.sdk.b.a.ESL.l(this.Hmd);
-          this.Hmd = null;
+          com.tencent.mm.sdk.b.a.GpY.l(this.IMy);
+          this.IMy = null;
           AppMethodBeat.o(38969);
         }
       }
       else if (paramn.getReqResp() != null)
       {
-        paramString = (vm)((com.tencent.mm.al.b)paramn.getReqResp()).gUT.gUX;
-        if ((paramString != null) && (!bt.isNullOrNil(paramString.CXE)))
+        paramString = (vw)((com.tencent.mm.ak.b)paramn.getReqResp()).hvs.hvw;
+        if ((paramString != null) && (!bs.isNullOrNil(paramString.Eqn)))
         {
           paramn = new Intent();
-          paramn.putExtra("rawUrl", paramString.CXE);
+          paramn.putExtra("rawUrl", paramString.Eqn);
           paramn.putExtra("showShare", false);
           paramn.putExtra("show_bottom", false);
           paramn.putExtra("needRedirect", false);
@@ -1187,10 +1187,10 @@ public class AddFavoriteUI
           AppMethodBeat.o(38969);
           return;
         }
-        if (this.Hmd != null)
+        if (this.IMy != null)
         {
-          com.tencent.mm.sdk.b.a.ESL.l(this.Hmd);
-          this.Hmd = null;
+          com.tencent.mm.sdk.b.a.GpY.l(this.IMy);
+          this.IMy = null;
         }
       }
     }
@@ -1206,29 +1206,29 @@ public class AddFavoriteUI
   final class a
     implements Runnable
   {
-    private AddFavoriteUI.b Hmi;
+    private AddFavoriteUI.b IMD;
     private Uri mUri;
     
     public a(Uri paramUri, AddFavoriteUI.b paramb)
     {
       this.mUri = paramUri;
-      this.Hmi = paramb;
+      this.IMD = paramb;
     }
     
     public final void run()
     {
       AppMethodBeat.i(38952);
       AddFavoriteUI.this.filePath = AddFavoriteUI.a(AddFavoriteUI.this, this.mUri);
-      if ((bt.isNullOrNil(AddFavoriteUI.this.filePath)) || (!new com.tencent.mm.vfs.e(AddFavoriteUI.this.filePath).exists())) {
-        if (AddFavoriteUI.aLI(AddFavoriteUI.this.getContentResolver().getType(this.mUri)) != 2) {
+      if ((bs.isNullOrNil(AddFavoriteUI.this.filePath)) || (!new com.tencent.mm.vfs.e(AddFavoriteUI.this.filePath).exists())) {
+        if (AddFavoriteUI.aRk(AddFavoriteUI.this.getContentResolver().getType(this.mUri)) != 2) {
           break label121;
         }
       }
       label121:
       for (AddFavoriteUI.this.filePath = com.tencent.mm.pluginsdk.j.e.a(AddFavoriteUI.this.getContentResolver(), this.mUri, 1);; AddFavoriteUI.this.filePath = com.tencent.mm.pluginsdk.j.e.b(AddFavoriteUI.this.getContentResolver(), this.mUri))
       {
-        if (this.Hmi != null) {
-          this.Hmi.fdE();
+        if (this.IMD != null) {
+          this.IMD.ftz();
         }
         AppMethodBeat.o(38952);
         return;
@@ -1238,12 +1238,12 @@ public class AddFavoriteUI
   
   public static abstract interface b
   {
-    public abstract void fdE();
+    public abstract void ftz();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.tools.AddFavoriteUI
  * JD-Core Version:    0.7.0.1
  */

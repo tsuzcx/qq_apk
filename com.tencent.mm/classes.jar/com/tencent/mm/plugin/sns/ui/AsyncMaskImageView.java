@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import junit.framework.Assert;
 
 public class AsyncMaskImageView
@@ -20,8 +20,8 @@ public class AsyncMaskImageView
   private boolean enable;
   private int g;
   private int r;
-  ap xkC;
-  Runnable xkD;
+  ao yxu;
+  Runnable yxv;
   
   public AsyncMaskImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,8 +32,8 @@ public class AsyncMaskImageView
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.xkC = new ap();
-    this.xkD = new Runnable()
+    this.yxu = new ao();
+    this.yxv = new Runnable()
     {
       public final void run()
       {
@@ -63,9 +63,9 @@ public class AsyncMaskImageView
           return true;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          localAsyncMaskImageView.xkC.removeCallbacks(localAsyncMaskImageView.xkD);
+          localAsyncMaskImageView.yxu.removeCallbacks(localAsyncMaskImageView.yxv);
           continue;
-          localAsyncMaskImageView.xkC.post(localAsyncMaskImageView.xkD);
+          localAsyncMaskImageView.yxu.post(localAsyncMaskImageView.yxv);
         }
         AppMethodBeat.o(97754);
         return false;
@@ -78,7 +78,7 @@ public class AsyncMaskImageView
   {
     AppMethodBeat.i(97758);
     super.onAttachedToWindow();
-    ad.d("MicroMsg.MaskImageView", "onAttachedToWindow");
+    ac.d("MicroMsg.MaskImageView", "onAttachedToWindow");
     AppMethodBeat.o(97758);
   }
   
@@ -86,7 +86,7 @@ public class AsyncMaskImageView
   {
     AppMethodBeat.i(97759);
     super.onDetachedFromWindow();
-    ad.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
+    ac.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
     AppMethodBeat.o(97759);
   }
   

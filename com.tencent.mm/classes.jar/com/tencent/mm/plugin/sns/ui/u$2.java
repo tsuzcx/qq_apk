@@ -14,14 +14,14 @@ final class u$2
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(97896);
-    g.afC();
-    g.afA().gcy.a(this.xlW);
+    g.agS();
+    g.agQ().ghe.a(this.yyO);
     AppMethodBeat.o(97896);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.u.2
  * JD-Core Version:    0.7.0.1
  */

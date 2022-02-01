@@ -6,9 +6,9 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.c;
 import com.tencent.mm.plugin.downloader.model.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.q;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,80 +22,80 @@ import java.util.Set;
 public class TrafficClickFlowReceiver
   extends BroadcastReceiver
 {
-  private static boolean jnr;
-  private static c yUZ;
-  private static String yVa;
-  private static Map<Long, b> yVb;
-  private static List<c> yVc;
-  private static List<b> yVd;
-  private static List<TrafficClickFlowReceiver.a> yVe;
-  private static int yVg;
-  private static c yVh;
-  private int yVf = 0;
+  private static c AiO;
+  private static String AiP;
+  private static Map<Long, b> AiQ;
+  private static List<c> AiR;
+  private static List<b> AiS;
+  private static List<a> AiT;
+  private static int AiV;
+  private static c AiW;
+  private static boolean jND;
+  private int AiU = 0;
   
   static
   {
     AppMethodBeat.i(123919);
-    yUZ = new c();
-    yVb = Collections.synchronizedMap(new HashMap());
-    yVc = Collections.synchronizedList(new ArrayList());
-    yVd = Collections.synchronizedList(new ArrayList());
-    yVe = Collections.synchronizedList(new ArrayList());
-    yVg = 0;
-    jnr = false;
-    yVh = new c();
+    AiO = new c();
+    AiQ = Collections.synchronizedMap(new HashMap());
+    AiR = Collections.synchronizedList(new ArrayList());
+    AiS = Collections.synchronizedList(new ArrayList());
+    AiT = Collections.synchronizedList(new ArrayList());
+    AiV = 0;
+    jND = false;
+    AiW = new c();
     c.a(new m()
     {
       public final void a(long paramAnonymousLong, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(123904);
-        TrafficClickFlowReceiver.M(13, paramAnonymousLong);
+        TrafficClickFlowReceiver.L(13, paramAnonymousLong);
         AppMethodBeat.o(123904);
       }
       
       public final void b(long paramAnonymousLong, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(123903);
-        TrafficClickFlowReceiver.M(13, paramAnonymousLong);
+        TrafficClickFlowReceiver.L(13, paramAnonymousLong);
         AppMethodBeat.o(123903);
       }
       
       public final void j(long paramAnonymousLong, String paramAnonymousString)
       {
         AppMethodBeat.i(123908);
-        TrafficClickFlowReceiver.M(11, paramAnonymousLong);
+        TrafficClickFlowReceiver.L(11, paramAnonymousLong);
         AppMethodBeat.o(123908);
       }
-      
-      public final void mZ(long paramAnonymousLong)
-      {
-        AppMethodBeat.i(123907);
-        TrafficClickFlowReceiver.M(12, paramAnonymousLong);
-        AppMethodBeat.o(123907);
-      }
-      
-      public final void na(long paramAnonymousLong) {}
       
       public final void onTaskPaused(long paramAnonymousLong)
       {
         AppMethodBeat.i(123906);
-        TrafficClickFlowReceiver.M(13, paramAnonymousLong);
+        TrafficClickFlowReceiver.L(13, paramAnonymousLong);
         AppMethodBeat.o(123906);
       }
       
       public final void onTaskRemoved(long paramAnonymousLong)
       {
         AppMethodBeat.i(123905);
-        TrafficClickFlowReceiver.M(13, paramAnonymousLong);
+        TrafficClickFlowReceiver.L(13, paramAnonymousLong);
         AppMethodBeat.o(123905);
       }
       
       public final void onTaskStarted(long paramAnonymousLong, String paramAnonymousString)
       {
         AppMethodBeat.i(123902);
-        TrafficClickFlowReceiver.M(11, paramAnonymousLong);
+        TrafficClickFlowReceiver.L(11, paramAnonymousLong);
         AppMethodBeat.o(123902);
       }
+      
+      public final void qN(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(123907);
+        TrafficClickFlowReceiver.L(12, paramAnonymousLong);
+        AppMethodBeat.o(123907);
+      }
+      
+      public final void qO(long paramAnonymousLong) {}
     });
     AppMethodBeat.o(123919);
   }
@@ -111,13 +111,13 @@ public class TrafficClickFlowReceiver
       try
       {
         c localc1;
-        if (i < yVc.size())
+        if (i < AiR.size())
         {
-          localc1 = (c)yVc.get(i);
+          localc1 = (c)AiR.get(i);
           if ((paramInt != 0) && (localc1.endTime > paramLong))
           {
             c localc2 = new c();
-            localc2.yVi = localc1.yVi;
+            localc2.AiX = localc1.AiX;
             localc2.startTime = paramLong;
             localc2.endTime = localc1.endTime;
             paramList.add(localc2);
@@ -133,17 +133,17 @@ public class TrafficClickFlowReceiver
           if (paramList.size() == 0)
           {
             localc1 = new c();
-            localc1.yVi = yVa;
+            localc1.AiX = AiP;
             localc1.startTime = paramLong;
             localc1.endTime = System.currentTimeMillis();
             paramList.add(localc1);
-            paramInt = yVc.size();
+            paramInt = AiR.size();
             AppMethodBeat.o(123916);
             return paramInt;
           }
           localc1 = new c();
-          localc1.yVi = yVa;
-          localc1.startTime = yUZ.startTime;
+          localc1.AiX = AiP;
+          localc1.startTime = AiO.startTime;
           localc1.endTime = System.currentTimeMillis();
           paramList.add(localc1);
           continue;
@@ -158,34 +158,34 @@ public class TrafficClickFlowReceiver
     }
   }
   
-  protected static void dQs()
+  protected static void eeR()
   {
     AppMethodBeat.i(123917);
-    if (yVc == null)
+    if (AiR == null)
     {
       AppMethodBeat.o(123917);
       return;
     }
-    yVc.clear();
+    AiR.clear();
     AppMethodBeat.o(123917);
   }
   
-  protected static boolean uc(long paramLong)
+  protected static boolean yF(long paramLong)
   {
     AppMethodBeat.i(123913);
-    ad.i("MicroMsg.TrafficClickFlow", "hasDownloadObjects downLoadObjects : %s", new Object[] { yVd.toString() });
+    ac.i("MicroMsg.TrafficClickFlow", "hasDownloadObjects downLoadObjects : %s", new Object[] { AiS.toString() });
     int i = 0;
-    while (i < yVd.size())
+    while (i < AiS.size())
     {
-      if (((b)yVd.get(i)).endTime > paramLong)
+      if (((b)AiS.get(i)).endTime > paramLong)
       {
         AppMethodBeat.o(123913);
         return true;
       }
       i += 1;
     }
-    ad.i("MicroMsg.TrafficClickFlow", "hasDownloadObjects currentDownloadMap : %s", new Object[] { yVb.toString() });
-    if (yVb.size() > 0)
+    ac.i("MicroMsg.TrafficClickFlow", "hasDownloadObjects currentDownloadMap : %s", new Object[] { AiQ.toString() });
+    if (AiQ.size() > 0)
     {
       AppMethodBeat.o(123913);
       return true;
@@ -194,38 +194,38 @@ public class TrafficClickFlowReceiver
     return false;
   }
   
-  protected static boolean ud(long paramLong)
+  protected static boolean yG(long paramLong)
   {
     AppMethodBeat.i(123914);
-    if (yVd == null)
+    if (AiS == null)
     {
       AppMethodBeat.o(123914);
       return true;
     }
-    ad.i("MicroMsg.TrafficClickFlow", "isDownloadFileNormal downLoadObjects : %s", new Object[] { yVd.toString() });
+    ac.i("MicroMsg.TrafficClickFlow", "isDownloadFileNormal downLoadObjects : %s", new Object[] { AiS.toString() });
     int i = 0;
     Object localObject;
-    while (i < yVd.size())
+    while (i < AiS.size())
     {
-      localObject = (b)yVd.get(i);
-      if ((((b)localObject).endTime > paramLong) && (!ue(((b)localObject).startTime)))
+      localObject = (b)AiS.get(i);
+      if ((((b)localObject).endTime > paramLong) && (!yH(((b)localObject).startTime)))
       {
         AppMethodBeat.o(123914);
         return false;
       }
       i += 1;
     }
-    if (yVb == null)
+    if (AiQ == null)
     {
       AppMethodBeat.o(123914);
       return true;
     }
-    ad.i("MicroMsg.TrafficClickFlow", "isDownloadFileNormal currentDownloadMap : %s", new Object[] { yVb.toString() });
-    if (yVb.size() > 0)
+    ac.i("MicroMsg.TrafficClickFlow", "isDownloadFileNormal currentDownloadMap : %s", new Object[] { AiQ.toString() });
+    if (AiQ.size() > 0)
     {
-      localObject = yVb.entrySet().iterator();
+      localObject = AiQ.entrySet().iterator();
       while (((Iterator)localObject).hasNext()) {
-        if (!ue(((b)((Map.Entry)((Iterator)localObject).next()).getValue()).startTime))
+        if (!yH(((b)((Map.Entry)((Iterator)localObject).next()).getValue()).startTime))
         {
           AppMethodBeat.o(123914);
           return false;
@@ -236,19 +236,19 @@ public class TrafficClickFlowReceiver
     return true;
   }
   
-  private static boolean ue(long paramLong)
+  private static boolean yH(long paramLong)
   {
     AppMethodBeat.i(123915);
-    if (yVe == null)
+    if (AiT == null)
     {
       AppMethodBeat.o(123915);
       return false;
     }
-    ad.i("MicroMsg.TrafficClickFlow", "clickObjects : %s", new Object[] { yVe.toString() });
+    ac.i("MicroMsg.TrafficClickFlow", "clickObjects : %s", new Object[] { AiT.toString() });
     int i = 0;
-    while (i < yVe.size())
+    while (i < AiT.size())
     {
-      if (Math.abs(paramLong - ((TrafficClickFlowReceiver.a)yVe.get(i)).time) < 10000L)
+      if (Math.abs(paramLong - ((a)AiT.get(i)).time) < 10000L)
       {
         AppMethodBeat.o(123915);
         return true;
@@ -279,61 +279,75 @@ public class TrafficClickFlowReceiver
     int i = paramIntent.getIntExtra("opCode", 0);
     if (i == 10)
     {
-      paramContext = new TrafficClickFlowReceiver.a();
-      paramContext.yVi = ((String)localObject);
+      paramContext = new a();
+      paramContext.AiX = ((String)localObject);
       paramContext.time = System.currentTimeMillis();
-      yVe.add(paramContext);
-      ad.i("MicroMsg.TrafficClickFlow", "onReceive Click : %s", new Object[] { localObject });
+      AiT.add(paramContext);
+      ac.i("MicroMsg.TrafficClickFlow", "onReceive Click : %s", new Object[] { localObject });
       AppMethodBeat.o(123912);
       return;
     }
     if (i == 1) {
-      yVa = (String)localObject;
+      AiP = (String)localObject;
     }
     for (;;)
     {
-      this.yVf = i;
+      this.AiU = i;
       AppMethodBeat.o(123912);
       return;
       if (i == 3)
       {
-        if (jnr)
+        if (jND)
         {
           paramContext = new c();
-          paramContext.yVi = "Background";
-          paramContext.startTime = yUZ.startTime;
+          paramContext.AiX = "Background";
+          paramContext.startTime = AiO.startTime;
           paramContext.endTime = System.currentTimeMillis();
-          yVc.add(paramContext);
-          jnr = false;
+          AiR.add(paramContext);
+          jND = false;
         }
-        yVa = (String)localObject;
-        if (localObject != yUZ.yVi)
+        AiP = (String)localObject;
+        if (localObject != AiO.AiX)
         {
-          yUZ.yVi = ((String)localObject);
-          yUZ.startTime = System.currentTimeMillis();
+          AiO.AiX = ((String)localObject);
+          AiO.startTime = System.currentTimeMillis();
         }
       }
       else if (i == 4)
       {
-        yUZ.endTime = System.currentTimeMillis();
-        if (yUZ.yVi != null) {
-          yVc.add(yUZ);
+        AiO.endTime = System.currentTimeMillis();
+        if (AiO.AiX != null) {
+          AiR.add(AiO);
         }
-        yUZ = new c();
-        boolean bool1 = bt.iN(aj.getContext());
-        boolean bool2 = q.ig(aj.getContext());
+        AiO = new c();
+        boolean bool1 = bs.iY(ai.getContext());
+        boolean bool2 = q.ir(ai.getContext());
         if ((!bool1) || (!bool2))
         {
-          yUZ.startTime = System.currentTimeMillis();
-          yVa = "Background";
-          jnr = true;
-          ad.i("MicroMsg.TrafficClickFlow", "come to background isTopApp : %b, isScreenOn : %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+          AiO.startTime = System.currentTimeMillis();
+          AiP = "Background";
+          jND = true;
+          ac.i("MicroMsg.TrafficClickFlow", "come to background isTopApp : %b, isScreenOn : %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
         }
       }
-      else if ((i == 5) && (yVc.contains(localObject)))
+      else if ((i == 5) && (AiR.contains(localObject)))
       {
-        yVa = "Background";
+        AiP = "Background";
       }
+    }
+  }
+  
+  static final class a
+  {
+    public String AiX;
+    public long time;
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(123909);
+      String str = "ClickObject{ui='" + this.AiX + '\'' + ", time=" + this.time + '}';
+      AppMethodBeat.o(123909);
+      return str;
     }
   }
   
@@ -353,14 +367,14 @@ public class TrafficClickFlowReceiver
   
   static final class c
   {
+    public String AiX;
     public long endTime;
     public long startTime;
-    public String yVi;
     
     public final String toString()
     {
       AppMethodBeat.i(123911);
-      String str = "UIObject{ui='" + this.yVi + '\'' + ", startTime=" + this.startTime + ", endTime=" + this.endTime + '}';
+      String str = "UIObject{ui='" + this.AiX + '\'' + ", startTime=" + this.startTime + ", endTime=" + this.endTime + '}';
       AppMethodBeat.o(123911);
       return str;
     }
@@ -368,7 +382,7 @@ public class TrafficClickFlowReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.TrafficClickFlowReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.ball.a;
 
 public abstract interface f$b
 {
-  public abstract void ib(boolean paramBoolean);
+  public abstract void iB(boolean paramBoolean);
 }
 
 

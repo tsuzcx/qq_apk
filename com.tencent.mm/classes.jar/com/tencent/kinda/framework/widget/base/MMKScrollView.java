@@ -12,8 +12,8 @@ import com.tencent.kinda.gen.KScrollView;
 import com.tencent.kinda.gen.KScrollViewOnScrollCallback;
 import com.tencent.kinda.gen.KView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.ui.MMScrollView;
 import com.tencent.mm.wallet_core.ui.MMScrollView.a;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class MMKScrollView
   {
     AppMethodBeat.i(19117);
     if ((paramKView instanceof MMKViewLayout)) {
-      ad.l("MMKViewLayout", "%s addView: %s, childCount: %s %s", new Object[] { this, paramKView, Integer.valueOf(((MMKViewLayout)paramKView).childList.size()), Integer.valueOf(this.childList.size()) });
+      ac.l("MMKViewLayout", "%s addView: %s, childCount: %s %s", new Object[] { this, paramKView, Integer.valueOf(((MMKViewLayout)paramKView).childList.size()), Integer.valueOf(this.childList.size()) });
     }
     for (;;)
     {
@@ -47,7 +47,7 @@ public class MMKScrollView
       }
       AppMethodBeat.o(19117);
       return;
-      ad.l("MMKViewLayout", "%s addView: %s, childCount: %s", new Object[] { this, paramKView, Integer.valueOf(this.childList.size()) });
+      ac.l("MMKViewLayout", "%s addView: %s, childCount: %s", new Object[] { this, paramKView, Integer.valueOf(this.childList.size()) });
     }
   }
   
@@ -62,29 +62,29 @@ public class MMKScrollView
   
   public KPoint getContentOffset()
   {
-    AppMethodBeat.i(186445);
-    int i = a.ar(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollX());
-    int j = a.ar(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollY());
+    AppMethodBeat.i(207409);
+    int i = a.ax(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollX());
+    int j = a.ax(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollY());
     KPoint localKPoint = new KPoint(i, j);
-    ad.l("MMKViewLayout", "getContentOffset  X: %s, Y: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    AppMethodBeat.o(186445);
+    ac.l("MMKViewLayout", "getContentOffset  X: %s, Y: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    AppMethodBeat.o(207409);
     return localKPoint;
   }
   
   public float getHeight()
   {
-    AppMethodBeat.i(186448);
+    AppMethodBeat.i(207412);
     if (KindaContext.get() != null)
     {
       DisplayMetrics localDisplayMetrics = KindaContext.get().getResources().getDisplayMetrics();
-      int i = a.ar(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getHeight());
-      int j = a.ar(((MMScrollView)getView()).getContext(), localDisplayMetrics.heightPixels);
-      ad.l("MMKViewLayout", "getView() - %s scroolviewheight: %s,screenheight: %s", new Object[] { this, Integer.valueOf(i), Integer.valueOf(j) });
+      int i = a.ax(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getHeight());
+      int j = a.ax(((MMScrollView)getView()).getContext(), localDisplayMetrics.heightPixels);
+      ac.l("MMKViewLayout", "getView() - %s scroolviewheight: %s,screenheight: %s", new Object[] { this, Integer.valueOf(i), Integer.valueOf(j) });
       float f = Math.min(i, j);
-      AppMethodBeat.o(186448);
+      AppMethodBeat.o(207412);
       return f;
     }
-    AppMethodBeat.o(186448);
+    AppMethodBeat.o(207412);
     return 0.0F;
   }
   
@@ -122,19 +122,27 @@ public class MMKScrollView
   
   public void setContentOffset(KPoint paramKPoint)
   {
-    AppMethodBeat.i(186446);
-    int i = a.fromDPToPix(((MMScrollView)getView()).getContext(), (int)paramKPoint.getX());
-    int j = a.fromDPToPix(((MMScrollView)getView()).getContext(), (int)paramKPoint.getY());
-    ((MMScrollView)getView()).scrollBy(i, j);
-    ad.l("MMKViewLayout", "setContentOffset  X: %s, Y: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    AppMethodBeat.o(186446);
+    AppMethodBeat.i(207410);
+    final int i = a.fromDPToPix(((MMScrollView)getView()).getContext(), (int)paramKPoint.getX());
+    final int j = a.fromDPToPix(((MMScrollView)getView()).getContext(), (int)paramKPoint.getY());
+    ((MMScrollView)getView()).postDelayed(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(207408);
+        ((MMScrollView)MMKScrollView.this.getView()).scrollBy(i, j);
+        AppMethodBeat.o(207408);
+      }
+    }, 150L);
+    ac.l("MMKViewLayout", "setContentOffset  X: %s, Y: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    AppMethodBeat.o(207410);
   }
   
   public void setContentOffset(KPoint paramKPoint, boolean paramBoolean)
   {
-    AppMethodBeat.i(186447);
+    AppMethodBeat.i(207411);
     setContentOffset(paramKPoint);
-    AppMethodBeat.o(186447);
+    AppMethodBeat.o(207411);
   }
   
   public void setOnScrollCallback(final KScrollViewOnScrollCallback paramKScrollViewOnScrollCallback)

@@ -6,32 +6,32 @@ import java.util.List;
 
 public final class a
 {
-  final int KA;
-  final String KB;
-  final String Kw;
-  final String Kx;
-  final String Ky;
-  final List<List<byte[]>> Kz;
+  final String Lr;
+  final String Ls;
+  final String Lt;
+  final List<List<byte[]>> Lu;
+  final int Lv;
+  final String Lw;
   
   public a(String paramString1, String paramString2, String paramString3, List<List<byte[]>> paramList)
   {
-    this.Kw = ((String)m.checkNotNull(paramString1));
-    this.Kx = ((String)m.checkNotNull(paramString2));
-    this.Ky = ((String)m.checkNotNull(paramString3));
-    this.Kz = ((List)m.checkNotNull(paramList));
-    this.KA = 0;
-    this.KB = (this.Kw + "-" + this.Kx + "-" + this.Ky);
+    this.Lr = ((String)m.checkNotNull(paramString1));
+    this.Ls = ((String)m.checkNotNull(paramString2));
+    this.Lt = ((String)m.checkNotNull(paramString3));
+    this.Lu = ((List)m.checkNotNull(paramList));
+    this.Lv = 0;
+    this.Lw = (this.Lr + "-" + this.Ls + "-" + this.Lt);
   }
   
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FontRequest {mProviderAuthority: " + this.Kw + ", mProviderPackage: " + this.Kx + ", mQuery: " + this.Ky + ", mCertificates:");
+    localStringBuilder.append("FontRequest {mProviderAuthority: " + this.Lr + ", mProviderPackage: " + this.Ls + ", mQuery: " + this.Lt + ", mCertificates:");
     int i = 0;
-    while (i < this.Kz.size())
+    while (i < this.Lu.size())
     {
       localStringBuilder.append(" [");
-      List localList = (List)this.Kz.get(i);
+      List localList = (List)this.Lu.get(i);
       int j = 0;
       while (j < localList.size())
       {
@@ -44,7 +44,7 @@ public final class a
       i += 1;
     }
     localStringBuilder.append("}");
-    localStringBuilder.append("mCertificatesArray: " + this.KA);
+    localStringBuilder.append("mCertificatesArray: " + this.Lv);
     return localStringBuilder.toString();
   }
 }

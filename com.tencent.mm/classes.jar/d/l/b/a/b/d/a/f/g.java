@@ -8,12 +8,12 @@ public enum g
   {
     AppMethodBeat.i(58037);
     g localg1 = new g("NULLABLE", 0);
-    JCR = localg1;
+    Lqk = localg1;
     g localg2 = new g("NOT_NULL", 1);
-    JCS = localg2;
+    Lql = localg2;
     g localg3 = new g("FORCE_FLEXIBILITY", 2);
-    JCT = localg3;
-    JCU = new g[] { localg1, localg2, localg3 };
+    Lqm = localg3;
+    Lqn = new g[] { localg1, localg2, localg3 };
     AppMethodBeat.o(58037);
   }
   
@@ -21,7 +21,7 @@ public enum g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.g
  * JD-Core Version:    0.7.0.1
  */

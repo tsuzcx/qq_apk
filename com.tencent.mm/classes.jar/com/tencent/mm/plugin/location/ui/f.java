@@ -12,15 +12,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.location.model.n;
 import com.tencent.mm.plugin.location.model.r;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.MMHorList;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,95 +30,95 @@ import java.util.List;
 public final class f
 {
   Context context;
-  private String fvg;
-  private ap mHandler;
+  private String fyN;
+  private ao mHandler;
   private boolean mIsInit;
-  MMHorList sRL;
-  a sRM;
-  private int sRN;
-  c sRO;
+  MMHorList tZY;
+  a tZZ;
+  private int uaa;
+  c uab;
   
   public f(Context paramContext, View paramView, String paramString)
   {
     AppMethodBeat.i(55905);
     this.mIsInit = false;
-    this.fvg = "";
-    this.mHandler = new ap(Looper.getMainLooper());
-    this.sRO = null;
+    this.fyN = "";
+    this.mHandler = new ao(Looper.getMainLooper());
+    this.uab = null;
     this.context = paramContext;
-    this.sRL = ((MMHorList)paramView);
-    this.fvg = paramString;
-    cJK();
+    this.tZY = ((MMHorList)paramView);
+    this.fyN = paramString;
+    cXp();
     AppMethodBeat.o(55905);
   }
   
-  private void X(ArrayList<b> paramArrayList)
+  private void ai(ArrayList<b> paramArrayList)
   {
     AppMethodBeat.i(55907);
     Iterator localIterator = paramArrayList.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.sRS) {
-        localb.cJN();
+      if (localb.uaf) {
+        localb.cXs();
       }
     }
-    this.sRN = a.fromDPToPix(this.context, 60);
-    this.sRL.setOverScrollEnabled(true);
-    this.sRL.setItemWidth(this.sRN);
-    this.sRL.setCenterInParent(true);
-    this.sRL.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.uaa = a.fromDPToPix(this.context, 60);
+    this.tZY.setOverScrollEnabled(true);
+    this.tZY.setItemWidth(this.uaa);
+    this.tZY.setCenterInParent(true);
+    this.tZY.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(55893);
         paramAnonymousAdapterView = (String)paramAnonymousView.getTag();
-        if (!bt.isNullOrNil(paramAnonymousAdapterView))
+        if (!bs.isNullOrNil(paramAnonymousAdapterView))
         {
-          h.vKh.f(10997, new Object[] { "15", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-          if (f.this.sRO != null) {
-            f.this.sRO.afb(paramAnonymousAdapterView);
+          h.wUl.f(10997, new Object[] { "15", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+          if (f.this.uab != null) {
+            f.this.uab.ajV(paramAnonymousAdapterView);
           }
         }
         AppMethodBeat.o(55893);
       }
     });
-    this.sRM = new a(paramArrayList);
-    this.sRL.setAdapter(this.sRM);
+    this.tZZ = new a(paramArrayList);
+    this.tZY.setAdapter(this.tZZ);
     AppMethodBeat.o(55907);
   }
   
-  private void aeW(String paramString)
+  private void ajQ(String paramString)
   {
     AppMethodBeat.i(55908);
-    ad.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberEnter, usernmae=%s", new Object[] { paramString });
-    if (this.sRM.afa(paramString))
+    ac.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberEnter, usernmae=%s", new Object[] { paramString });
+    if (this.tZZ.ajU(paramString))
     {
       AppMethodBeat.o(55908);
       return;
     }
     paramString = new b(paramString);
-    a locala = this.sRM;
-    locala.sRR.add(paramString);
+    a locala = this.tZZ;
+    locala.uae.add(paramString);
     locala.notifyDataSetChanged();
-    this.sRL.invalidate();
+    this.tZY.invalidate();
     AppMethodBeat.o(55908);
   }
   
-  private void aeX(String paramString)
+  private void ajR(String paramString)
   {
     AppMethodBeat.i(55909);
-    ad.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberExit, username=%s", new Object[] { paramString });
+    ac.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberExit, username=%s", new Object[] { paramString });
     a locala;
     int i;
-    if (this.sRM.afa(paramString))
+    if (this.tZZ.ajU(paramString))
     {
-      locala = this.sRM;
+      locala = this.tZZ;
       i = 0;
-      if (i >= locala.sRR.size()) {
+      if (i >= locala.uae.size()) {
         break label108;
       }
-      if (!((b)locala.sRR.get(i)).username.equals(paramString)) {
+      if (!((b)locala.uae.get(i)).username.equals(paramString)) {
         break label101;
       }
     }
@@ -126,10 +126,10 @@ public final class f
     {
       if (i != -1)
       {
-        locala.sRR.remove(i);
+        locala.uae.remove(i);
         locala.notifyDataSetChanged();
       }
-      this.sRL.invalidate();
+      this.tZY.invalidate();
       AppMethodBeat.o(55909);
       return;
       label101:
@@ -140,37 +140,37 @@ public final class f
     }
   }
   
-  private void cJK()
+  private void cXp()
   {
     AppMethodBeat.i(55906);
-    Object localObject = n.cJr().zz(this.fvg);
-    ad.d("MicroMsg.ShareHeaderAvatarViewMgr", "initAvatarList, memebers.size=%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+    Object localObject = n.cWW().DE(this.fyN);
+    ac.d("MicroMsg.ShareHeaderAvatarViewMgr", "initAvatarList, memebers.size=%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      if (!bt.isNullOrNil(str))
+      if (!bs.isNullOrNil(str))
       {
         localArrayList1.add(new b(str));
         localArrayList2.add(str);
       }
     }
-    X(localArrayList1);
-    Y(localArrayList2);
-    this.sRL.invalidate();
-    this.sRM.notifyDataSetChanged();
+    ai(localArrayList1);
+    aj(localArrayList2);
+    this.tZY.invalidate();
+    this.tZZ.notifyDataSetChanged();
     AppMethodBeat.o(55906);
   }
   
-  public final void Y(ArrayList<String> paramArrayList)
+  public final void aj(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(55912);
-    ad.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, members.size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
+    ac.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, members.size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList1 = new ArrayList();
-    Object localObject1 = this.sRM.cJM();
+    Object localObject1 = this.tZZ.cXr();
     Object localObject2 = paramArrayList.iterator();
     while (((Iterator)localObject2).hasNext())
     {
@@ -187,46 +187,46 @@ public final class f
         localArrayList1.add(localObject2);
       }
     }
-    ad.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, newMember.size=%d, removeMember.size=%d", new Object[] { Integer.valueOf(localArrayList2.size()), Integer.valueOf(localArrayList1.size()) });
+    ac.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, newMember.size=%d, removeMember.size=%d", new Object[] { Integer.valueOf(localArrayList2.size()), Integer.valueOf(localArrayList1.size()) });
     if (localArrayList2.size() > 0)
     {
       paramArrayList = localArrayList2.iterator();
       while (paramArrayList.hasNext()) {
-        aeW((String)paramArrayList.next());
+        ajQ((String)paramArrayList.next());
       }
     }
     if (localArrayList1.size() > 0)
     {
       paramArrayList = localArrayList1.iterator();
       while (paramArrayList.hasNext()) {
-        aeX((String)paramArrayList.next());
+        ajR((String)paramArrayList.next());
       }
     }
     AppMethodBeat.o(55912);
   }
   
-  public final void aeY(String paramString)
+  public final void ajS(String paramString)
   {
     int k = 0;
     AppMethodBeat.i(55910);
-    ad.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberTalk, username=%s", new Object[] { paramString });
+    ac.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberTalk, username=%s", new Object[] { paramString });
     final int i;
-    if (this.sRM.afa(paramString))
+    if (this.tZZ.ajU(paramString))
     {
-      this.sRM.aeZ(paramString).cJN();
-      this.sRM.notifyDataSetChanged();
-      this.sRL.invalidate();
-      if ((this.sRL.getIsTouching()) || (bt.isNullOrNil(paramString)))
+      this.tZZ.ajT(paramString).cXs();
+      this.tZZ.notifyDataSetChanged();
+      this.tZY.invalidate();
+      if ((this.tZY.getIsTouching()) || (bs.isNullOrNil(paramString)))
       {
         AppMethodBeat.o(55910);
         return;
       }
-      a locala = this.sRM;
+      a locala = this.tZZ;
       i = 0;
-      if (i >= locala.sRR.size()) {
+      if (i >= locala.uae.size()) {
         break label244;
       }
-      if (!((b)locala.sRR.get(i)).username.equals(paramString)) {
+      if (!((b)locala.uae.get(i)).username.equals(paramString)) {
         break label203;
       }
     }
@@ -237,12 +237,12 @@ public final class f
     label244:
     for (int j = i;; j = -1)
     {
-      ad.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker, index=%d", new Object[] { Integer.valueOf(j) });
+      ac.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker, index=%d", new Object[] { Integer.valueOf(j) });
       int m;
       if (j != -1)
       {
-        m = j * this.sRN;
-        i = this.sRL.getCurrentPosition();
+        m = j * this.uaa;
+        i = this.tZY.getCurrentPosition();
         if (m >= i) {
           break label210;
         }
@@ -259,8 +259,8 @@ public final class f
             public final void run()
             {
               AppMethodBeat.i(55894);
-              ad.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker pos=%d", new Object[] { Integer.valueOf(i) });
-              f.this.sRL.XO(i);
+              ac.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker pos=%d", new Object[] { Integer.valueOf(i) });
+              f.this.tZY.ZZ(i);
               AppMethodBeat.o(55894);
             }
           });
@@ -268,10 +268,10 @@ public final class f
           return;
           i += 1;
           break;
-          if (m <= i + this.sRN * 3) {
+          if (m <= i + this.uaa * 3) {
             break label239;
           }
-          i = m - this.sRN * 3;
+          i = m - this.uaa * 3;
           break label173;
         }
         i = 0;
@@ -279,42 +279,42 @@ public final class f
     }
   }
   
-  public final void cJL()
+  public final void cXq()
   {
     AppMethodBeat.i(55911);
-    a locala = this.sRM;
-    Iterator localIterator = locala.sRR.iterator();
+    a locala = this.tZZ;
+    Iterator localIterator = locala.uae.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).cJO();
+      ((b)localIterator.next()).cXt();
     }
     locala.notifyDataSetChanged();
-    this.sRL.invalidate();
+    this.tZY.invalidate();
     AppMethodBeat.o(55911);
   }
   
   final class a
     extends BaseAdapter
   {
-    ArrayList<f.b> sRR;
+    ArrayList<f.b> uae;
     
     public a()
     {
       AppMethodBeat.i(55895);
-      this.sRR = new ArrayList();
+      this.uae = new ArrayList();
       Collection localCollection;
-      this.sRR.addAll(localCollection);
+      this.uae.addAll(localCollection);
       AppMethodBeat.o(55895);
     }
     
-    public final f.b aeZ(String paramString)
+    public final f.b ajT(String paramString)
     {
       AppMethodBeat.i(55899);
       int i = 0;
-      while (i < this.sRR.size())
+      while (i < this.uae.size())
       {
-        if (((f.b)this.sRR.get(i)).username.equals(paramString))
+        if (((f.b)this.uae.get(i)).username.equals(paramString))
         {
-          paramString = (f.b)this.sRR.get(i);
+          paramString = (f.b)this.uae.get(i);
           AppMethodBeat.o(55899);
           return paramString;
         }
@@ -324,13 +324,13 @@ public final class f
       return null;
     }
     
-    public final boolean afa(String paramString)
+    public final boolean ajU(String paramString)
     {
       AppMethodBeat.i(55900);
       int i = 0;
-      while (i < this.sRR.size())
+      while (i < this.uae.size())
       {
-        if (((f.b)this.sRR.get(i)).username.equals(paramString))
+        if (((f.b)this.uae.get(i)).username.equals(paramString))
         {
           AppMethodBeat.o(55900);
           return true;
@@ -341,11 +341,11 @@ public final class f
       return false;
     }
     
-    public final ArrayList<String> cJM()
+    public final ArrayList<String> cXr()
     {
       AppMethodBeat.i(55901);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.sRR.iterator();
+      Iterator localIterator = this.uae.iterator();
       while (localIterator.hasNext()) {
         localArrayList.add(((f.b)localIterator.next()).username);
       }
@@ -356,7 +356,7 @@ public final class f
     public final int getCount()
     {
       AppMethodBeat.i(55896);
-      int i = this.sRR.size();
+      int i = this.uae.size();
       AppMethodBeat.o(55896);
       return i;
     }
@@ -364,7 +364,7 @@ public final class f
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(55897);
-      Object localObject = this.sRR.get(paramInt);
+      Object localObject = this.uae.get(paramInt);
       AppMethodBeat.o(55897);
       return localObject;
     }
@@ -377,7 +377,7 @@ public final class f
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(55898);
-      paramView = ((f.b)this.sRR.get(paramInt)).sRT.sRU;
+      paramView = ((f.b)this.uae.get(paramInt)).uag.uah;
       AppMethodBeat.o(55898);
       return paramView;
     }
@@ -385,59 +385,59 @@ public final class f
   
   final class b
   {
-    boolean sRS;
-    a sRT;
-    private LinearLayout.LayoutParams sfh;
+    private LinearLayout.LayoutParams tna;
+    boolean uaf;
+    a uag;
     String username;
     
     public b(String paramString)
     {
       AppMethodBeat.i(55902);
-      this.sRS = false;
+      this.uaf = false;
       this.username = paramString;
-      if (bt.isNullOrNil(paramString))
+      if (bs.isNullOrNil(paramString))
       {
-        ad.e("MicroMsg.ShareHeaderAvatarViewMgr", "init HeaderAvatar, username can't not be null");
+        ac.e("MicroMsg.ShareHeaderAvatarViewMgr", "init HeaderAvatar, username can't not be null");
         AppMethodBeat.o(55902);
         return;
       }
-      this.sRT = new a();
+      this.uag = new a();
       this$1 = (LayoutInflater)f.this.context.getSystemService("layout_inflater");
-      this.sRT.sRU = ((RelativeLayout)f.this.inflate(2131494599, null));
-      this.sRT.ida = ((ImageView)this.sRT.sRU.findViewById(2131296996));
-      a.b.d(this.sRT.ida, this.username);
-      this.sRT.sRU.setTag(this.username);
-      this.sfh = new LinearLayout.LayoutParams(-2, -2);
-      this.sfh.leftMargin = BackwardSupportUtil.b.g(f.this.context, 5.0F);
-      this.sfh.rightMargin = BackwardSupportUtil.b.g(f.this.context, 5.0F);
-      this.sfh.gravity = 17;
+      this.uag.uah = ((RelativeLayout)f.this.inflate(2131494599, null));
+      this.uag.iDk = ((ImageView)this.uag.uah.findViewById(2131296996));
+      a.b.d(this.uag.iDk, this.username);
+      this.uag.uah.setTag(this.username);
+      this.tna = new LinearLayout.LayoutParams(-2, -2);
+      this.tna.leftMargin = BackwardSupportUtil.b.g(f.this.context, 5.0F);
+      this.tna.rightMargin = BackwardSupportUtil.b.g(f.this.context, 5.0F);
+      this.tna.gravity = 17;
       AppMethodBeat.o(55902);
     }
     
-    public final void cJN()
+    public final void cXs()
     {
       AppMethodBeat.i(55903);
-      ad.i("MicroMsg.ShareHeaderAvatarViewMgr", "setTalking, username=%s", new Object[] { this.username });
-      this.sRT.sRU.setBackgroundResource(2131232903);
-      this.sRT.sRU.invalidate();
-      this.sRS = true;
+      ac.i("MicroMsg.ShareHeaderAvatarViewMgr", "setTalking, username=%s", new Object[] { this.username });
+      this.uag.uah.setBackgroundResource(2131232903);
+      this.uag.uah.invalidate();
+      this.uaf = true;
       AppMethodBeat.o(55903);
     }
     
-    public final void cJO()
+    public final void cXt()
     {
       AppMethodBeat.i(55904);
-      ad.i("MicroMsg.ShareHeaderAvatarViewMgr", "exitTalking, username=%s", new Object[] { this.username });
-      this.sRT.sRU.setBackgroundResource(2131232902);
-      this.sRT.sRU.invalidate();
-      this.sRS = false;
+      ac.i("MicroMsg.ShareHeaderAvatarViewMgr", "exitTalking, username=%s", new Object[] { this.username });
+      this.uag.uah.setBackgroundResource(2131232902);
+      this.uag.uah.invalidate();
+      this.uaf = false;
       AppMethodBeat.o(55904);
     }
     
     final class a
     {
-      ImageView ida;
-      RelativeLayout sRU;
+      ImageView iDk;
+      RelativeLayout uah;
       
       a() {}
     }
@@ -445,7 +445,7 @@ public final class f
   
   public static abstract interface c
   {
-    public abstract void afb(String paramString);
+    public abstract void ajV(String paramString);
   }
 }
 

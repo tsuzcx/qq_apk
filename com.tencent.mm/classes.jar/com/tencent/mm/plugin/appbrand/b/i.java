@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.b;
 
 import android.os.Looper;
 import com.tencent.mm.sdk.d.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public abstract class i
   extends d
@@ -12,19 +12,19 @@ public abstract class i
     super(paramString, paramLooper);
   }
   
-  public final void Ez(String paramString)
+  public final void IC(String paramString)
   {
-    ad.e(this.mName, paramString);
+    ac.e(this.mName, paramString);
   }
   
   public void log(String paramString)
   {
-    ad.d(this.mName, paramString);
+    ac.d(this.mName, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.b.i
  * JD-Core Version:    0.7.0.1
  */

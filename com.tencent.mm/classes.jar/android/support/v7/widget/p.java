@@ -10,16 +10,16 @@ import android.graphics.RectF;
 class p
   implements r
 {
-  final RectF aiX = new RectF();
+  final RectF ajR = new RectF();
   
   private static ao k(q paramq)
   {
-    return (ao)paramq.iR();
+    return (ao)paramq.iZ();
   }
   
   public final float a(q paramq)
   {
-    return k(paramq).aso;
+    return k(paramq).atj;
   }
   
   public final void a(q paramq, float paramFloat)
@@ -29,10 +29,10 @@ class p
       throw new IllegalArgumentException("Invalid radius " + paramFloat + ". Must be >= 0");
     }
     paramFloat = (int)(0.5F + paramFloat);
-    if (localao.Hx != paramFloat)
+    if (localao.Iv != paramFloat)
     {
-      localao.Hx = paramFloat;
-      localao.asr = true;
+      localao.Iv = paramFloat;
+      localao.atm = true;
       localao.invalidateSelf();
     }
     f(paramq);
@@ -61,7 +61,7 @@ class p
   public final void b(q paramq, float paramFloat)
   {
     ao localao = k(paramq);
-    localao.f(localao.asq, paramFloat);
+    localao.f(localao.atl, paramFloat);
     f(paramq);
   }
   
@@ -73,17 +73,17 @@ class p
   public final void c(q paramq, float paramFloat)
   {
     paramq = k(paramq);
-    paramq.f(paramFloat, paramq.aso);
+    paramq.f(paramFloat, paramq.atj);
   }
   
   public final float d(q paramq)
   {
-    return k(paramq).Hx;
+    return k(paramq).Iv;
   }
   
   public final float e(q paramq)
   {
-    return k(paramq).asq;
+    return k(paramq).atl;
   }
   
   public final void f(q paramq)
@@ -104,12 +104,12 @@ class p
   
   public final ColorStateList i(q paramq)
   {
-    return k(paramq).ash;
+    return k(paramq).atc;
   }
   
   public void initStatic()
   {
-    ao.asj = new ao.a()
+    ao.ate = new ao.a()
     {
       public final void a(Canvas paramAnonymousCanvas, RectF paramAnonymousRectF, float paramAnonymousFloat, Paint paramAnonymousPaint)
       {
@@ -119,19 +119,19 @@ class p
         if (paramAnonymousFloat >= 1.0F)
         {
           float f4 = paramAnonymousFloat + 0.5F;
-          p.this.aiX.set(-f4, -f4, f4, f4);
+          p.this.ajR.set(-f4, -f4, f4, f4);
           int i = paramAnonymousCanvas.save();
           paramAnonymousCanvas.translate(paramAnonymousRectF.left + f4, paramAnonymousRectF.top + f4);
-          paramAnonymousCanvas.drawArc(p.this.aiX, 180.0F, 90.0F, true, paramAnonymousPaint);
+          paramAnonymousCanvas.drawArc(p.this.ajR, 180.0F, 90.0F, true, paramAnonymousPaint);
           paramAnonymousCanvas.translate(f2, 0.0F);
           paramAnonymousCanvas.rotate(90.0F);
-          paramAnonymousCanvas.drawArc(p.this.aiX, 180.0F, 90.0F, true, paramAnonymousPaint);
+          paramAnonymousCanvas.drawArc(p.this.ajR, 180.0F, 90.0F, true, paramAnonymousPaint);
           paramAnonymousCanvas.translate(f3 - f1 - 1.0F, 0.0F);
           paramAnonymousCanvas.rotate(90.0F);
-          paramAnonymousCanvas.drawArc(p.this.aiX, 180.0F, 90.0F, true, paramAnonymousPaint);
+          paramAnonymousCanvas.drawArc(p.this.ajR, 180.0F, 90.0F, true, paramAnonymousPaint);
           paramAnonymousCanvas.translate(f2, 0.0F);
           paramAnonymousCanvas.rotate(90.0F);
-          paramAnonymousCanvas.drawArc(p.this.aiX, 180.0F, 90.0F, true, paramAnonymousPaint);
+          paramAnonymousCanvas.drawArc(p.this.ajR, 180.0F, 90.0F, true, paramAnonymousPaint);
           paramAnonymousCanvas.restoreToCount(i);
           paramAnonymousCanvas.drawRect(paramAnonymousRectF.left + f4 - 1.0F, paramAnonymousRectF.top, 1.0F + (paramAnonymousRectF.right - f4), paramAnonymousRectF.top + f4, paramAnonymousPaint);
           paramAnonymousCanvas.drawRect(paramAnonymousRectF.left + f4 - 1.0F, paramAnonymousRectF.bottom - f4, 1.0F + (paramAnonymousRectF.right - f4), paramAnonymousRectF.bottom, paramAnonymousPaint);

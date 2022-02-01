@@ -12,16 +12,16 @@ final class ImageGalleryUI$5
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    AppMethodBeat.i(36107);
-    ImageGalleryUI.w(this.GCT).setAlpha(0.0F);
-    AppMethodBeat.o(36107);
+    AppMethodBeat.i(196556);
+    ImageGalleryUI.r(this.IcP).setAlpha(0.0F);
+    AppMethodBeat.o(196556);
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    AppMethodBeat.i(36106);
-    ImageGalleryUI.w(this.GCT).setAlpha(0.0F);
-    AppMethodBeat.o(36106);
+    AppMethodBeat.i(196555);
+    ImageGalleryUI.r(this.IcP).setAlpha(0.0F);
+    AppMethodBeat.o(196555);
   }
 }
 

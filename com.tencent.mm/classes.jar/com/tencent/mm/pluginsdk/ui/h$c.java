@@ -2,9 +2,9 @@ package com.tencent.mm.pluginsdk.ui;
 
 public abstract interface h$c
 {
-  public abstract void ln(long paramLong);
+  public abstract void oQ(long paramLong);
   
-  public abstract void pj(String paramString);
+  public abstract void sv(String paramString);
 }
 
 

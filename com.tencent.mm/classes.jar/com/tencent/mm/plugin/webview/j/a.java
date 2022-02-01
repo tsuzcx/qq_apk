@@ -4,14 +4,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.io.File;
 
 public final class a
 {
-  private static void T(e parame)
+  private static void S(e parame)
   {
     AppMethodBeat.i(175882);
     if (parame == null)
@@ -21,33 +21,33 @@ public final class a
     }
     if (parame.isDirectory())
     {
-      e[] arrayOfe = parame.fhW();
+      e[] arrayOfe = parame.fxX();
       int j = arrayOfe.length;
       int i = 0;
       while (i < j)
       {
-        T(arrayOfe[i]);
+        S(arrayOfe[i]);
         i += 1;
       }
     }
-    ad.i("MicroMsg.ABI64WebViewCompat", "delete isSuccessDelete: %s fileName: %s", new Object[] { Boolean.valueOf(parame.delete()), q.B(parame.fhU()) });
+    ac.i("MicroMsg.ABI64WebViewCompat", "delete isSuccessDelete: %s fileName: %s", new Object[] { Boolean.valueOf(parame.delete()), q.B(parame.fxV()) });
     AppMethodBeat.o(175882);
   }
   
-  public static boolean gM(Context paramContext)
+  public static boolean gX(Context paramContext)
   {
     AppMethodBeat.i(82364);
     try
     {
-      T(new e(paramContext.getFilesDir().getParent() + "/app_webview/GPUCache"));
-      T(new e(paramContext.getFilesDir().getParent() + "/app_x5webview/GPUCache"));
+      S(new e(paramContext.getFilesDir().getParent() + "/app_webview/GPUCache"));
+      S(new e(paramContext.getFilesDir().getParent() + "/app_x5webview/GPUCache"));
       paramContext.getSharedPreferences("WebViewChromiumPrefs", 0).edit().clear().apply();
       AppMethodBeat.o(82364);
       return true;
     }
     catch (Throwable paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.ABI64WebViewCompat", paramContext, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.ABI64WebViewCompat", paramContext, "", new Object[0]);
       AppMethodBeat.o(82364);
     }
     return false;

@@ -8,9 +8,9 @@ public final class r
 {
   public static String a(e parame, boolean paramBoolean, String paramString)
   {
-    i.lG(q.B(parame.mUri), paramString);
+    i.mc(q.B(parame.mUri), paramString);
     if (paramBoolean) {
-      i.cO(q.B(parame.mUri), true);
+      i.cU(q.B(parame.mUri), true);
     }
     return paramString;
   }

@@ -1,9 +1,9 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.l;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.l;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.b.o;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
@@ -12,7 +12,7 @@ import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.p.a;
 import com.tencent.mm.protocal.p.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.List;
 import junit.framework.Assert;
 
@@ -22,15 +22,15 @@ public final class i
 {
   private g callback;
   public byte[] content;
-  private q gVZ;
-  public String hrn;
+  public String hRP;
+  private q hwy;
   
   public i(l.e parame)
   {
     AppMethodBeat.i(20614);
-    this.hrn = "";
+    this.hRP = "";
     parame = (p.b)parame;
-    this.hrn = parame.hrn;
+    this.hRP = parame.hRP;
     this.content = parame.content;
     AppMethodBeat.o(20614);
   }
@@ -38,7 +38,7 @@ public final class i
   public i(List<String> paramList, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20613);
-    this.hrn = "";
+    this.hRP = "";
     if ((paramList.size() > 0) && (paramArrayOfByte != null)) {}
     int j;
     String str;
@@ -54,16 +54,16 @@ public final class i
         i += 1;
       }
     }
-    this.gVZ = new a();
-    paramList = (p.a)this.gVZ.getReqObj();
-    paramList.djq = 111;
-    paramList.dtM = 0;
-    paramList.htk = j;
+    this.hwy = new a();
+    paramList = (p.a)this.hwy.getReqObj();
+    paramList.dgL = 111;
+    paramList.drx = 0;
+    paramList.hTM = j;
     if (str != null)
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      paramList.CqG = str;
+      paramList.DIY = str;
       if (paramArrayOfByte == null) {
         break label269;
       }
@@ -72,9 +72,9 @@ public final class i
     for (bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      paramList.CqH = paramArrayOfByte;
-      ad.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: cmdId=111 seq=".concat(String.valueOf(j)));
-      ad.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: lstReceiver=" + str + " status = " + o.v(paramArrayOfByte, 0));
+      paramList.DIZ = paramArrayOfByte;
+      ac.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: cmdId=111 seq=".concat(String.valueOf(j)));
+      ac.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: lstReceiver=" + str + " status = " + o.t(paramArrayOfByte, 0));
       AppMethodBeat.o(20613);
       return;
       bool1 = false;
@@ -86,7 +86,7 @@ public final class i
   {
     AppMethodBeat.i(20615);
     this.callback = paramg;
-    int i = dispatch(parame, this.gVZ, this);
+    int i = dispatch(parame, this.hwy, this);
     AppMethodBeat.o(20615);
     return i;
   }
@@ -111,25 +111,25 @@ public final class i
   public static final class a
     extends l
   {
-    private final p.a hro;
-    private final p.b hrp;
+    private final p.a hRQ;
+    private final p.b hRR;
     
     public a()
     {
       AppMethodBeat.i(20612);
-      this.hro = new p.a();
-      this.hrp = new p.b();
+      this.hRQ = new p.a();
+      this.hRR = new p.b();
       AppMethodBeat.o(20612);
     }
     
     public final l.d getReqObjImp()
     {
-      return this.hro;
+      return this.hRQ;
     }
     
     public final l.e getRespObj()
     {
-      return this.hrp;
+      return this.hRR;
     }
     
     public final int getType()
@@ -145,7 +145,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelsimple.i
  * JD-Core Version:    0.7.0.1
  */

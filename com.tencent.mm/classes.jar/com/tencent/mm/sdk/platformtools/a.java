@@ -8,22 +8,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
 {
-  private static a ESZ;
-  private static int ETa = 0;
-  private static boolean ETb = false;
-  private static int[] ETc;
-  private static int ETd;
-  private static int ETe;
-  private static int ETf;
+  private static a Gqm;
+  private static int Gqn = 0;
+  private static boolean Gqo = false;
+  private static int[] Gqp;
+  private static int Gqq;
+  private static int Gqr;
+  private static int Gqs;
   
   public static void a(ApplicationInfo paramApplicationInfo)
   {
     AppMethodBeat.i(156057);
     if ((Build.VERSION.SDK_INT == 26) && (paramApplicationInfo.targetSdkVersion > 26))
     {
-      ETa = paramApplicationInfo.targetSdkVersion;
+      Gqn = paramApplicationInfo.targetSdkVersion;
       paramApplicationInfo.targetSdkVersion = 26;
-      ad.i("MicroMsg.AndroidOSafety", "replaceTargetVersion %s %s", new Object[] { Integer.valueOf(paramApplicationInfo.targetSdkVersion), Integer.valueOf(ETa) });
+      ac.i("MicroMsg.AndroidOSafety", "replaceTargetVersion %s %s", new Object[] { Integer.valueOf(paramApplicationInfo.targetSdkVersion), Integer.valueOf(Gqn) });
       AppMethodBeat.o(156057);
       return;
     }
@@ -32,16 +32,16 @@ public class a
   
   public static void a(a parama)
   {
-    ESZ = parama;
+    Gqm = parama;
   }
   
   /* Error */
-  private static boolean cuQ()
+  private static boolean cIc()
   {
     // Byte code:
     //   0: ldc 78
     //   2: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 24	com/tencent/mm/sdk/platformtools/a:ETb	Z
+    //   5: getstatic 24	com/tencent/mm/sdk/platformtools/a:Gqo	Z
     //   8: ifeq +10 -> 18
     //   11: ldc 78
     //   13: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -49,7 +49,7 @@ public class a
     //   17: ireturn
     //   18: ldc 2
     //   20: monitorenter
-    //   21: getstatic 24	com/tencent/mm/sdk/platformtools/a:ETb	Z
+    //   21: getstatic 24	com/tencent/mm/sdk/platformtools/a:Gqo	Z
     //   24: ifeq +13 -> 37
     //   27: ldc 2
     //   29: monitorexit
@@ -72,7 +72,7 @@ public class a
     //   57: invokevirtual 102	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   60: checkcast 103	[I
     //   63: checkcast 103	[I
-    //   66: putstatic 105	com/tencent/mm/sdk/platformtools/a:ETc	[I
+    //   66: putstatic 105	com/tencent/mm/sdk/platformtools/a:Gqp	[I
     //   69: aload_0
     //   70: ldc 107
     //   72: invokevirtual 92	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
@@ -85,7 +85,7 @@ public class a
     //   83: invokevirtual 102	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   86: checkcast 52	java/lang/Integer
     //   89: invokevirtual 111	java/lang/Integer:intValue	()I
-    //   92: putstatic 113	com/tencent/mm/sdk/platformtools/a:ETd	I
+    //   92: putstatic 113	com/tencent/mm/sdk/platformtools/a:Gqq	I
     //   95: aload_0
     //   96: ldc 115
     //   98: invokevirtual 92	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
@@ -98,7 +98,7 @@ public class a
     //   109: invokevirtual 102	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   112: checkcast 52	java/lang/Integer
     //   115: invokevirtual 111	java/lang/Integer:intValue	()I
-    //   118: putstatic 117	com/tencent/mm/sdk/platformtools/a:ETe	I
+    //   118: putstatic 117	com/tencent/mm/sdk/platformtools/a:Gqr	I
     //   121: aload_0
     //   122: ldc 119
     //   124: invokevirtual 92	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
@@ -111,9 +111,9 @@ public class a
     //   135: invokevirtual 102	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   138: checkcast 52	java/lang/Integer
     //   141: invokevirtual 111	java/lang/Integer:intValue	()I
-    //   144: putstatic 121	com/tencent/mm/sdk/platformtools/a:ETf	I
+    //   144: putstatic 121	com/tencent/mm/sdk/platformtools/a:Gqs	I
     //   147: iconst_1
-    //   148: putstatic 24	com/tencent/mm/sdk/platformtools/a:ETb	Z
+    //   148: putstatic 24	com/tencent/mm/sdk/platformtools/a:Gqo	Z
     //   151: ldc 2
     //   153: monitorexit
     //   154: ldc 78
@@ -126,7 +126,7 @@ public class a
     //   165: ldc 123
     //   167: iconst_0
     //   168: anewarray 4	java/lang/Object
-    //   171: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   171: invokestatic 127	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   174: ldc 2
     //   176: monitorexit
     //   177: ldc 78
@@ -139,7 +139,7 @@ public class a
     //   188: ldc 123
     //   190: iconst_0
     //   191: anewarray 4	java/lang/Object
-    //   194: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   194: invokestatic 127	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   197: ldc 2
     //   199: monitorexit
     //   200: ldc 78
@@ -152,7 +152,7 @@ public class a
     //   211: ldc 123
     //   213: iconst_0
     //   214: anewarray 4	java/lang/Object
-    //   217: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   217: invokestatic 127	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   220: ldc 2
     //   222: monitorexit
     //   223: ldc 78
@@ -165,7 +165,7 @@ public class a
     //   234: ldc 123
     //   236: iconst_0
     //   237: anewarray 4	java/lang/Object
-    //   240: invokestatic 127	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   240: invokestatic 127	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   243: ldc 2
     //   245: monitorexit
     //   246: ldc 78
@@ -210,7 +210,7 @@ public class a
     Object localObject = paramActivity.getApplicationInfo();
     int i;
     if (Build.VERSION.SDK_INT == 26) {
-      if (ETa > 26)
+      if (Gqn > 26)
       {
         i = 1;
         if (i == 0) {
@@ -252,12 +252,12 @@ public class a
     boolean bool2;
     boolean bool1;
     boolean bool3;
-    if (cuQ())
+    if (cIc())
     {
-      localObject = ETc;
-      paramInt = ETd;
-      i = ETe;
-      int j = ETf;
+      localObject = Gqp;
+      paramInt = Gqq;
+      i = Gqr;
+      int j = Gqs;
       localObject = paramActivity.obtainStyledAttributes((int[])localObject);
       bool2 = ((TypedArray)localObject).getBoolean(paramInt, false);
       if ((!((TypedArray)localObject).hasValue(i)) && (((TypedArray)localObject).getBoolean(i, false)))
@@ -265,7 +265,7 @@ public class a
         bool1 = true;
         bool3 = ((TypedArray)localObject).getBoolean(j, false);
         ((TypedArray)localObject).recycle();
-        ad.i("MicroMsg.AndroidOSafety", "activity %s, isTranslucent %s, isFloating %s, isSwipeToDismiss %s", new Object[] { paramActivity, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
+        ac.i("MicroMsg.AndroidOSafety", "activity %s, isTranslucent %s, isFloating %s, isSwipeToDismiss %s", new Object[] { paramActivity, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
         if (!bool2) {
           break label376;
         }
@@ -274,24 +274,24 @@ public class a
         if (paramInt != 1) {
           break label436;
         }
-        ad.i("MicroMsg.AndroidOSafety", "invokeToOpaque %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
-        if (ESZ == null) {
+        ac.i("MicroMsg.AndroidOSafety", "invokeToOpaque %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
+        if (Gqm == null) {
           break label559;
         }
-        if (ESZ.M(paramActivity)) {
+        if (Gqm.M(paramActivity)) {
           break label421;
         }
-        ad.i("MicroMsg.AndroidOSafety", "not support swipe %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
+        ac.i("MicroMsg.AndroidOSafety", "not support swipe %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
         bool1 = false;
         label325:
         bool2 = bool1;
-        if (ESZ != null)
+        if (Gqm != null)
         {
-          ESZ.xr(paramInt);
+          Gqm.yj(paramInt);
           if (paramInt != 2) {
             break label513;
           }
-          ESZ.xr(0);
+          Gqm.yj(0);
           bool2 = bool1;
         }
       }
@@ -315,29 +315,29 @@ public class a
       }
       paramInt = 0;
       break label249;
-      ad.e("MicroMsg.AndroidOSafety", "prepare Failed %s", new Object[] { paramActivity });
+      ac.e("MicroMsg.AndroidOSafety", "prepare Failed %s", new Object[] { paramActivity });
       paramInt = 4;
       break label249;
       label421:
-      ESZ.L(paramActivity);
+      Gqm.L(paramActivity);
       bool1 = true;
       break label325;
       label436:
       if ((paramInt == 2) || (paramInt == 3))
       {
-        ad.e("MicroMsg.AndroidOSafety", "ignore by IS_FLOATING or IS_SWIPE_TO_DISMISS  %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
+        ac.e("MicroMsg.AndroidOSafety", "ignore by IS_FLOATING or IS_SWIPE_TO_DISMISS  %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
         bool1 = false;
         break label325;
       }
       if (paramInt == 4)
       {
-        ad.e("MicroMsg.AndroidOSafety", "prepare Failed  %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
+        ac.e("MicroMsg.AndroidOSafety", "prepare Failed  %s %s", new Object[] { paramActivity, Integer.valueOf(paramActivity.hashCode()) });
         bool1 = false;
         break label325;
         label513:
         if (paramInt == 3)
         {
-          ESZ.xr(1);
+          Gqm.yj(1);
           bool2 = bool1;
           continue;
         }
@@ -345,7 +345,7 @@ public class a
         if (paramInt != 4) {
           continue;
         }
-        ESZ.xr(2);
+        Gqm.yj(2);
         bool2 = bool1;
         continue;
       }
@@ -363,7 +363,7 @@ public class a
     
     public abstract boolean M(Activity paramActivity);
     
-    public abstract void xr(int paramInt);
+    public abstract void yj(int paramInt);
   }
 }
 

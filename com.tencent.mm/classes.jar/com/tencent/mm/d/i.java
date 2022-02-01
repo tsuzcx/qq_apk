@@ -9,16 +9,16 @@ import java.util.Set;
 
 public final class i
 {
-  public String bob;
-  private Map<String, a> cKg;
+  public String cHn;
+  private Map<String, a> cHo;
   public int versionCode;
   
   public i(String paramString, int paramInt)
   {
     AppMethodBeat.i(953);
-    this.cKg = new HashMap();
+    this.cHo = new HashMap();
     if (paramString == null) {}
-    for (this.bob = "http://dldir1.qq.com/weixin/android/";; this.bob = paramString)
+    for (this.cHn = "http://dldir1.qq.com/weixin/android/";; this.cHn = paramString)
     {
       this.versionCode = paramInt;
       AppMethodBeat.o(953);
@@ -26,17 +26,17 @@ public final class i
     }
   }
   
-  public static i eo(String paramString)
+  public static i ed(String paramString)
   {
     AppMethodBeat.i(957);
-    Map localMap = f.K(paramString, "patchupdate");
+    Map localMap = f.L(paramString, "patchupdate");
     if (localMap == null)
     {
       AppMethodBeat.o(957);
       return null;
     }
-    i locali = new i((String)localMap.get(".patchupdate.$base"), j.ep((String)localMap.get(".patchupdate.$versioncode")));
-    int k = j.ep((String)localMap.get(".patchupdate.$count"));
+    i locali = new i((String)localMap.get(".patchupdate.$base"), j.ee((String)localMap.get(".patchupdate.$versioncode")));
+    int k = j.ee((String)localMap.get(".patchupdate.$count"));
     int i = 0;
     if (i >= k)
     {
@@ -49,8 +49,8 @@ public final class i
       paramString = Integer.valueOf(i);
       label115:
       paramString = paramString;
-      paramString = new a((String)localMap.get(paramString + ".$old"), (String)localMap.get(paramString + ".$new"), (String)localMap.get(paramString + ".$patch"), (String)localMap.get(paramString + ".$url"), j.ep((String)localMap.get(paramString + ".$size")));
-      if ((paramString.cKh == null) || (paramString.cKi == null) || (paramString.patchMd5 == null) || (paramString.url == null)) {
+      paramString = new a((String)localMap.get(paramString + ".$old"), (String)localMap.get(paramString + ".$new"), (String)localMap.get(paramString + ".$patch"), (String)localMap.get(paramString + ".$url"), j.ee((String)localMap.get(paramString + ".$size")));
+      if ((paramString.cHp == null) || (paramString.cHq == null) || (paramString.patchMd5 == null) || (paramString.url == null)) {
         break label344;
       }
     }
@@ -58,7 +58,7 @@ public final class i
     for (int j = 1;; j = 0)
     {
       if (j != 0) {
-        locali.cKg.put(paramString.cKh, paramString);
+        locali.cHo.put(paramString.cHp, paramString);
       }
       i += 1;
       break;
@@ -67,12 +67,12 @@ public final class i
     }
   }
   
-  public final String Kk()
+  public final String JU()
   {
     AppMethodBeat.i(956);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(String.format("<patchupdate base=\"%s\" count=\"%d\" versioncode=\"%d\">", new Object[] { this.bob, Integer.valueOf(this.cKg.size()), Integer.valueOf(this.versionCode) }));
-    Iterator localIterator = this.cKg.entrySet().iterator();
+    ((StringBuilder)localObject).append(String.format("<patchupdate base=\"%s\" count=\"%d\" versioncode=\"%d\">", new Object[] { this.cHn, Integer.valueOf(this.cHo.size()), Integer.valueOf(this.versionCode) }));
+    Iterator localIterator = this.cHo.entrySet().iterator();
     for (;;)
     {
       if (!localIterator.hasNext())
@@ -83,37 +83,37 @@ public final class i
         return localObject;
       }
       a locala = (a)((Map.Entry)localIterator.next()).getValue();
-      ((StringBuilder)localObject).append(String.format("<item old=\"%s\" new=\"%s\" patch=\"%s\" url=\"%s\" size=\"%s\"></item>", new Object[] { locala.cKh, locala.cKi, locala.patchMd5, locala.url, Integer.valueOf(locala.size) }));
+      ((StringBuilder)localObject).append(String.format("<item old=\"%s\" new=\"%s\" patch=\"%s\" url=\"%s\" size=\"%s\"></item>", new Object[] { locala.cHp, locala.cHq, locala.patchMd5, locala.url, Integer.valueOf(locala.size) }));
     }
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(954);
-    this.cKg.put(parama.cKh, parama);
+    this.cHo.put(parama.cHp, parama);
     AppMethodBeat.o(954);
   }
   
-  public final a en(String paramString)
+  public final a ec(String paramString)
   {
     AppMethodBeat.i(955);
-    paramString = (a)this.cKg.get(paramString);
+    paramString = (a)this.cHo.get(paramString);
     AppMethodBeat.o(955);
     return paramString;
   }
   
   public static final class a
   {
-    String cKh;
-    public String cKi;
+    String cHp;
+    public String cHq;
     public String patchMd5;
     public int size;
     public String url;
     
     public a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
     {
-      this.cKh = paramString1;
-      this.cKi = paramString2;
+      this.cHp = paramString1;
+      this.cHq = paramString2;
       this.patchMd5 = paramString3;
       this.size = paramInt;
       this.url = paramString4;
@@ -122,7 +122,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.d.i
  * JD-Core Version:    0.7.0.1
  */

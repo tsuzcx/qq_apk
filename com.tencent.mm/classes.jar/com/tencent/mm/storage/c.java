@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.d;
 import com.tencent.mm.model.c.a;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -14,50 +14,50 @@ public final class c
   implements Serializable
 {
   protected static c.a info;
-  private Map<String, String> Fed = null;
+  private Map<String, String> GBM = null;
   
   static
   {
     AppMethodBeat.i(153160);
     c.a locala = new c.a();
-    locala.EYt = new Field[9];
+    locala.GvF = new Field[9];
     locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "layerId";
-    locala.EYv.put("layerId", "TEXT PRIMARY KEY ");
+    locala.GvH.put("layerId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" layerId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "layerId";
+    locala.GvG = "layerId";
     locala.columns[1] = "business";
-    locala.EYv.put("business", "TEXT");
+    locala.GvH.put("business", "TEXT");
     localStringBuilder.append(" business TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "expId";
-    locala.EYv.put("expId", "TEXT");
+    locala.GvH.put("expId", "TEXT");
     localStringBuilder.append(" expId TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "sequence";
-    locala.EYv.put("sequence", "LONG");
+    locala.GvH.put("sequence", "LONG");
     localStringBuilder.append(" sequence LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "prioritylevel";
-    locala.EYv.put("prioritylevel", "INTEGER default '0' ");
+    locala.GvH.put("prioritylevel", "INTEGER default '0' ");
     localStringBuilder.append(" prioritylevel INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "startTime";
-    locala.EYv.put("startTime", "LONG");
+    locala.GvH.put("startTime", "LONG");
     localStringBuilder.append(" startTime LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "endTime";
-    locala.EYv.put("endTime", "LONG");
+    locala.GvH.put("endTime", "LONG");
     localStringBuilder.append(" endTime LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "needReport";
-    locala.EYv.put("needReport", "INTEGER");
+    locala.GvH.put("needReport", "INTEGER");
     localStringBuilder.append(" needReport INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "rawXML";
-    locala.EYv.put("rawXML", "TEXT default '' ");
+    locala.GvH.put("rawXML", "TEXT default '' ");
     localStringBuilder.append(" rawXML TEXT default '' ");
     locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -65,13 +65,13 @@ public final class c
     AppMethodBeat.o(153160);
   }
   
-  public final Map<String, String> eJy()
+  public final Map<String, String> eYV()
   {
     AppMethodBeat.i(153159);
-    if (this.Fed == null) {
-      this.Fed = a.uM(this.field_rawXML);
+    if (this.GBM == null) {
+      this.GBM = a.yS(this.field_rawXML);
     }
-    Map localMap = this.Fed;
+    Map localMap = this.GBM;
     AppMethodBeat.o(153159);
     return localMap;
   }
@@ -84,7 +84,7 @@ public final class c
   public final boolean isValid()
   {
     AppMethodBeat.i(153158);
-    long l = bt.aGK();
+    long l = bs.aNx();
     if ((l >= this.field_startTime) && (l <= this.field_endTime))
     {
       AppMethodBeat.o(153158);

@@ -11,120 +11,119 @@ import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComp
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.ref.WeakReference;
 
 public final class ac
   extends o
 {
-  private g wZQ;
-  private z xcH;
-  String xcI = "";
+  private g ymD;
+  private z ypv;
+  String ypw = "";
   
   public ac(Context paramContext, z paramz, ViewGroup paramViewGroup)
   {
     super(paramContext, paramz, paramViewGroup);
-    this.xcH = paramz;
+    this.ypv = paramz;
   }
   
-  private void dwv()
+  private void dKU()
   {
-    AppMethodBeat.i(187419);
+    AppMethodBeat.i(200219);
     Bundle localBundle;
-    if (this.wZQ == null)
+    if (this.ymD == null)
     {
       localBundle = new Bundle();
-      localObject = this.xcH;
+      localObject = this.ypv;
       if (localObject == null) {
         break label68;
       }
     }
     label68:
-    for (Object localObject = ((z)localObject).wWr;; localObject = "")
+    for (Object localObject = ((z)localObject).yjf;; localObject = "")
     {
       localBundle.putString("qrExtInfo", (String)localObject);
-      this.wZQ = new g(this.context, dwi(), 3, localBundle);
-      AppMethodBeat.o(187419);
+      this.ymD = new g(this.context, dKH(), 3, localBundle);
+      AppMethodBeat.o(200219);
       return;
     }
   }
   
-  protected final void dvN()
+  public final void dJW()
   {
-    AppMethodBeat.i(187417);
-    super.dvN();
-    if (this.xcH != null)
-    {
-      String str = this.xcH.wWQ;
-      ad.d("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "the qr code img url: ".concat(String.valueOf(str)));
-      h.a(str, dwo().wWF, new a(this));
-    }
-    AppMethodBeat.o(187417);
+    AppMethodBeat.i(200216);
+    super.dJW();
+    dKU();
+    AppMethodBeat.o(200216);
   }
   
-  protected final void dvW()
+  protected final void dKm()
   {
-    AppMethodBeat.i(187418);
-    dwv();
-    if (!TextUtils.isEmpty(this.xcI)) {
+    AppMethodBeat.i(200217);
+    super.dKm();
+    if (this.ypv != null)
+    {
+      String str = this.ypv.yjE;
+      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "the qr code img url: ".concat(String.valueOf(str)));
+      h.a(str, dKN().yjt, new a(this));
+    }
+    AppMethodBeat.o(200217);
+  }
+  
+  protected final void dKv()
+  {
+    AppMethodBeat.i(200218);
+    dKU();
+    if (!TextUtils.isEmpty(this.ypw)) {
       try
       {
-        this.xas.iQ("qrUrl", this.xcH.wWQ);
-        this.wZQ.iw(this.xcI, this.xcH.wWQ);
-        AppMethodBeat.o(187418);
+        this.ynh.jo("qrUrl", this.ypv.yjE);
+        this.ymD.iT(this.ypw, this.ypv.yjE);
+        AppMethodBeat.o(200218);
         return;
       }
       catch (Throwable localThrowable)
       {
-        ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "the ad qr helper has something wrong. exception: ".concat(String.valueOf(localThrowable)));
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "the ad qr helper has something wrong. exception: ".concat(String.valueOf(localThrowable)));
       }
     }
-    AppMethodBeat.o(187418);
-  }
-  
-  public final void dvx()
-  {
-    AppMethodBeat.i(187416);
-    super.dvx();
-    dwv();
-    AppMethodBeat.o(187416);
+    AppMethodBeat.o(200218);
   }
   
   public static final class a
     implements f.a
   {
-    WeakReference<ac> xcJ;
+    WeakReference<ac> ypx;
     
     a(ac paramac)
     {
-      AppMethodBeat.i(187413);
-      this.xcJ = new WeakReference(paramac);
-      AppMethodBeat.o(187413);
+      AppMethodBeat.i(200213);
+      this.ypx = new WeakReference(paramac);
+      AppMethodBeat.o(200213);
     }
     
-    public final void apm(String paramString)
+    public final void asD(String paramString)
     {
-      AppMethodBeat.i(187415);
-      ad.d("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "download qr image completed");
-      ac localac = (ac)this.xcJ.get();
+      AppMethodBeat.i(200215);
+      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "download qr image completed");
+      ac localac = (ac)this.ypx.get();
       if (localac != null)
       {
-        localac.xcI = paramString;
-        AppMethodBeat.o(187415);
+        localac.ypw = paramString;
+        AppMethodBeat.o(200215);
         return;
       }
-      ad.w("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "qrCodeBtnComp is null in weak ref");
-      AppMethodBeat.o(187415);
+      com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "qrCodeBtnComp is null in weak ref");
+      AppMethodBeat.o(200215);
     }
     
-    public final void dsA()
+    public final void dFC() {}
+    
+    public final void dFD()
     {
-      AppMethodBeat.i(187414);
-      ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "there is something error happening when downloading qr image.");
-      AppMethodBeat.o(187414);
+      AppMethodBeat.i(200214);
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "there is something error happening when downloading qr image.");
+      AppMethodBeat.o(200214);
     }
-    
-    public final void duP() {}
   }
 }
 

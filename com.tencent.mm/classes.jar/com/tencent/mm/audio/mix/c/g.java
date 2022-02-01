@@ -6,11 +6,11 @@ public abstract interface g
 {
   public abstract void F(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract byte[] L(byte[] paramArrayOfByte);
+  public abstract byte[] J(byte[] paramArrayOfByte);
   
-  public abstract void MT();
+  public abstract void MR();
   
-  public abstract e MU();
+  public abstract e MS();
   
   public abstract void flushCache();
   

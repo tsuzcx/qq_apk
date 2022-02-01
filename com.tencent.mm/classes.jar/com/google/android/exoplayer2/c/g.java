@@ -4,9 +4,9 @@ public abstract interface g
 {
   public abstract void a(l paraml);
   
-  public abstract m bh(int paramInt1, int paramInt2);
+  public abstract m dW(int paramInt);
   
-  public abstract void sL();
+  public abstract void sU();
 }
 
 

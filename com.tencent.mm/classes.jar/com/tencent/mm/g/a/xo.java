@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class xo
   extends b
 {
-  public a dDH;
-  public b dDI;
+  public a dAo;
+  public b dAp;
   
   public xo()
   {
@@ -16,27 +16,29 @@ public final class xo
   
   private xo(byte paramByte)
   {
-    AppMethodBeat.i(91231);
-    this.dDH = new a();
-    this.dDI = new b();
-    this.ESR = false;
+    AppMethodBeat.i(91223);
+    this.dAo = new a();
+    this.dAp = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91231);
+    AppMethodBeat.o(91223);
   }
   
   public static final class a
   {
-    public String dDJ;
+    public String scene;
   }
   
   public static final class b
   {
-    public int status = -1;
+    public String content;
+    public String dAq;
+    public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.xo
  * JD-Core Version:    0.7.0.1
  */

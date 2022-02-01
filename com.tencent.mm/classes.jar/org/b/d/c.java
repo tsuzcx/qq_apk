@@ -7,20 +7,20 @@ import java.util.Map;
 public final class c
   extends f
 {
-  public Map<String, String> Knx;
+  public Map<String, String> Mbg;
   
   public c(j paramj, String paramString)
   {
     super(paramj, paramString);
     AppMethodBeat.i(40548);
-    this.Knx = new HashMap();
+    this.Mbg = new HashMap();
     AppMethodBeat.o(40548);
   }
   
-  public final void mN(String paramString1, String paramString2)
+  public final void nn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40549);
-    Map localMap = this.Knx;
+    Map localMap = this.Mbg;
     if ((paramString1.startsWith("oauth_")) || (paramString1.equals("scope")))
     {
       localMap.put(paramString1, paramString2);
@@ -35,14 +35,14 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(40550);
-    String str = String.format("@OAuthRequest(%s, %s)", new Object[] { super.fNc(), super.getUrl() });
+    String str = String.format("@OAuthRequest(%s, %s)", new Object[] { super.gfS(), super.getUrl() });
     AppMethodBeat.o(40550);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.d.c
  * JD-Core Version:    0.7.0.1
  */

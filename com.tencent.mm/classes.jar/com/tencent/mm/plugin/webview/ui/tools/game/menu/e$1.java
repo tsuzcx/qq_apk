@@ -12,8 +12,8 @@ final class e$1
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(80989);
-    if (this.BoL.isShowing()) {
-      this.BoL.cancel();
+    if (this.CGS.isShowing()) {
+      this.CGS.cancel();
     }
     AppMethodBeat.o(80989);
   }

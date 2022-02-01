@@ -6,10 +6,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -18,21 +18,63 @@ import org.json.JSONObject;
 
 public final class g
 {
-  public static h aqU(String paramString)
+  private static boolean aD(ArrayList<h> paramArrayList)
+  {
+    AppMethodBeat.i(100588);
+    try
+    {
+      boolean bool = paramArrayList.isEmpty();
+      if (bool)
+      {
+        AppMethodBeat.o(100588);
+        return false;
+      }
+      localObject1 = new JSONArray();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        localObject2 = ((h)paramArrayList.next()).toJson();
+        if (localObject2 != null) {
+          ((JSONArray)localObject1).put(localObject2);
+        }
+      }
+      while (((JSONArray)localObject1).length() <= 0) {}
+    }
+    catch (Exception paramArrayList)
+    {
+      ac.e("ad.waid.WaidHelper", "batchInsertWaid exp=" + paramArrayList.toString());
+      AppMethodBeat.o(100588);
+      return false;
+    }
+    paramArrayList = ai.getContext().getContentResolver();
+    Object localObject2 = new ContentValues();
+    Object localObject1 = ((JSONArray)localObject1).toString();
+    ac.i("ad.waid.WaidHelper", "batchInsertWaid, data=".concat(String.valueOf(localObject1)));
+    ((ContentValues)localObject2).put("waid_array", (String)localObject1);
+    if (paramArrayList.insert(WaidProvider.zmx, (ContentValues)localObject2) != null)
+    {
+      AppMethodBeat.o(100588);
+      return true;
+    }
+    AppMethodBeat.o(100588);
+    return false;
+  }
+  
+  public static h awd(String paramString)
   {
     AppMethodBeat.i(100589);
     try
     {
-      ad.i("ad.waid.WaidHelper", "getWaid pkg=".concat(String.valueOf(paramString)));
-      paramString = aj.getContext().getContentResolver().query(WaidProvider.xZx, null, null, new String[] { paramString }, null);
+      ac.i("ad.waid.WaidHelper", "getWaid pkg=".concat(String.valueOf(paramString)));
+      paramString = ai.getContext().getContentResolver().query(WaidProvider.zmx, null, null, new String[] { paramString }, null);
       if ((paramString != null) && (paramString.getCount() > 0))
       {
         paramString.moveToFirst();
         h localh = new h();
-        localh.dvP = paramString.getString(paramString.getColumnIndex("pkg"));
-        localh.xZu = paramString.getString(paramString.getColumnIndex("waid"));
-        localh.xZw = paramString.getInt(paramString.getColumnIndex("expire"));
-        localh.xZv = paramString.getInt(paramString.getColumnIndex("timeStamp"));
+        localh.dtC = paramString.getString(paramString.getColumnIndex("pkg"));
+        localh.zmu = paramString.getString(paramString.getColumnIndex("waid"));
+        localh.zmw = paramString.getInt(paramString.getColumnIndex("expire"));
+        localh.zmv = paramString.getInt(paramString.getColumnIndex("timeStamp"));
         localh.type = paramString.getInt(paramString.getColumnIndex("type"));
         paramString.close();
         AppMethodBeat.o(100589);
@@ -41,13 +83,13 @@ public final class g
     }
     catch (Exception paramString)
     {
-      ad.e("ad.waid.WaidHelper", "getWaid exp=" + paramString.toString());
+      ac.e("ad.waid.WaidHelper", "getWaid exp=" + paramString.toString());
       AppMethodBeat.o(100589);
     }
     return null;
   }
   
-  public static void aqW(String paramString)
+  public static void awf(String paramString)
   {
     AppMethodBeat.i(100590);
     for (;;)
@@ -56,42 +98,42 @@ public final class g
       int j;
       try
       {
-        ad.i("ad.waid.WaidHelper", "parseWaidFromAdInfoXML, xml=".concat(String.valueOf(paramString)));
+        ac.i("ad.waid.WaidHelper", "parseWaidFromAdInfoXML, xml=".concat(String.valueOf(paramString)));
         l = System.currentTimeMillis();
-        localMap = bw.K(paramString, "ADInfo");
+        localMap = bv.L(paramString, "ADInfo");
         localContentValues = new ContentValues();
         localArrayList = new ArrayList();
         localObject2 = ".ADInfo.waid" + ".appWaid";
         paramString = (String)localMap.get((String)localObject2 + ".pkg");
         localObject1 = (String)localMap.get((String)localObject2 + ".id");
-        i = bt.aGh((String)localMap.get((String)localObject2 + ".expire"));
+        i = bs.aLy((String)localMap.get((String)localObject2 + ".expire"));
         localObject2 = (String)localObject2 + ".maxCount";
         if (localMap.containsKey(localObject2))
         {
-          j = bt.aGh((String)localMap.get(localObject2));
+          j = bs.aLy((String)localMap.get(localObject2));
           if (j > 0) {
             localContentValues.put("maxAppWaidCount", Integer.valueOf(j));
           }
         }
         if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (i <= 0)) {
-          break label715;
+          break label724;
         }
         localObject2 = new h();
-        ((h)localObject2).dvP = paramString;
-        ((h)localObject2).xZu = ((String)localObject1);
-        ((h)localObject2).xZw = i;
+        ((h)localObject2).dtC = paramString;
+        ((h)localObject2).zmu = ((String)localObject1);
+        ((h)localObject2).zmw = i;
         ((h)localObject2).type = 1;
         localArrayList.add(localObject2);
         i = 1;
         localObject2 = ".ADInfo.waid" + ".pubWaid";
-        k = bt.aGh((String)localMap.get((String)localObject2 + ".expire"));
+        k = bs.aLy((String)localMap.get((String)localObject2 + ".expire"));
         paramString = (String)localObject2 + ".maxCount";
         if (!localMap.containsKey(paramString)) {
-          break label720;
+          break label729;
         }
-        j = bt.aGh((String)localMap.get(paramString));
+        j = bs.aLy((String)localMap.get(paramString));
         if (j <= 0) {
-          break label720;
+          break label729;
         }
         localContentValues.put("maxPubWaidCount", Integer.valueOf(j));
       }
@@ -104,7 +146,7 @@ public final class g
         Object localObject2;
         Object localObject1;
         int k;
-        ad.e("ad.waid.WaidHelper", "parseWaidFromAdInfoXML exp=" + paramString.toString());
+        ac.e("ad.waid.WaidHelper", "parseWaidFromAdInfoXML exp=" + paramString.toString());
         AppMethodBeat.o(100590);
         return;
       }
@@ -117,9 +159,9 @@ public final class g
       if ((!TextUtils.isEmpty(paramString)) && (k > 0))
       {
         localObject1 = new h();
-        ((h)localObject1).dvP = "";
-        ((h)localObject1).xZu = paramString;
-        ((h)localObject1).xZw = k;
+        ((h)localObject1).dtC = "";
+        ((h)localObject1).zmu = paramString;
+        ((h)localObject1).zmw = k;
         ((h)localObject1).type = 2;
         localArrayList.add(localObject1);
         i += 1;
@@ -129,36 +171,36 @@ public final class g
       {
         paramString = (String)localObject2 + ".pubWaidSwitch";
         if (localMap.containsKey(paramString)) {
-          localContentValues.put("pubWaidSwitch", Integer.valueOf(bt.aGh((String)localMap.get(paramString))));
+          localContentValues.put("pubWaidSwitch", Integer.valueOf(bs.aLy((String)localMap.get(paramString))));
         }
         if (localContentValues.size() > 0)
         {
-          ad.i("ad.waid.WaidHelper", "parseWaidFromAdInfoXML, insert cfg");
-          aj.getContext().getContentResolver().insert(WaidProvider.xZy, localContentValues);
+          ac.i("ad.waid.WaidHelper", "parseWaidFromAdInfoXML, insert cfg");
+          ai.getContext().getContentResolver().insert(WaidProvider.zmy, localContentValues);
         }
         if (!localArrayList.isEmpty()) {
-          ar(localArrayList);
+          aD(localArrayList);
         }
-        ad.i("ad.waid.WaidHelper", "parseWaidFromAdInfoXML, timeCost=" + (System.currentTimeMillis() - l) + ", count=" + i);
+        ac.i("ad.waid.WaidHelper", "parseWaidFromAdInfoXML, timeCost=" + (System.currentTimeMillis() - l) + ", count=" + i);
         AppMethodBeat.o(100590);
         return;
-        label715:
+        label724:
         i = 0;
         continue;
-        label720:
+        label729:
         j = 0;
       }
     }
   }
   
-  public static int aqX(String paramString)
+  public static int awg(String paramString)
   {
     k = 1;
     n = 0;
     AppMethodBeat.i(100591);
     try
     {
-      ad.i("ad.waid.WaidHelper", "parseWaidFromJsApi, data=".concat(String.valueOf(paramString)));
+      ac.i("ad.waid.WaidHelper", "parseWaidFromJsApi, data=".concat(String.valueOf(paramString)));
       l = System.currentTimeMillis();
       localArrayList = new ArrayList();
       localContentValues = new ContentValues();
@@ -166,18 +208,18 @@ public final class g
       localObject1 = paramString.optJSONObject("appWaid");
       paramString = paramString.optJSONObject("pubWaid");
       if (localObject1 == null) {
-        break label567;
+        break label572;
       }
       str = ((JSONObject)localObject1).optString("pkg");
       localObject2 = ((JSONObject)localObject1).optString("id");
       i = ((JSONObject)localObject1).optInt("expire");
       if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject2)) || (i <= 0)) {
-        break label562;
+        break label567;
       }
       h localh = new h();
-      localh.dvP = str;
-      localh.xZu = ((String)localObject2);
-      localh.xZw = i;
+      localh.dtC = str;
+      localh.zmu = ((String)localObject2);
+      localh.zmw = i;
       localh.type = 1;
       localArrayList.add(localh);
     }
@@ -230,22 +272,22 @@ public final class g
                   i = j;
                   k = j;
                   if (TextUtils.isEmpty(str)) {
-                    break label572;
+                    break label577;
                   }
                   i = j;
                   localObject2 = new h();
                   i = j;
-                  ((h)localObject2).dvP = "";
+                  ((h)localObject2).dtC = "";
                   i = j;
-                  ((h)localObject2).xZu = str;
+                  ((h)localObject2).zmu = str;
                   i = j;
-                  ((h)localObject2).xZw = i1;
+                  ((h)localObject2).zmw = i1;
                   i = j;
                   ((h)localObject2).type = 2;
                   i = j;
                   localArrayList.add(localObject2);
                   k = j + 1;
-                  break label572;
+                  break label577;
                 }
               }
             }
@@ -268,18 +310,18 @@ public final class g
           if (!localArrayList.isEmpty())
           {
             i = m;
-            ar(localArrayList);
+            aD(localArrayList);
           }
           i = m;
           if (localContentValues.size() > 0)
           {
             i = m;
-            ad.i("ad.waid.WaidHelper", "parseWaidFromJsApi, insert cfg");
+            ac.i("ad.waid.WaidHelper", "parseWaidFromJsApi, insert cfg");
             i = m;
-            aj.getContext().getContentResolver().insert(WaidProvider.xZy, localContentValues);
+            ai.getContext().getContentResolver().insert(WaidProvider.zmy, localContentValues);
           }
           i = m;
-          ad.i("ad.waid.WaidHelper", "parseWaidFromJsApi, timeCost=" + (System.currentTimeMillis() - l) + ", count=" + m);
+          ac.i("ad.waid.WaidHelper", "parseWaidFromJsApi, timeCost=" + (System.currentTimeMillis() - l) + ", count=" + m);
           i = m;
           AppMethodBeat.o(100591);
           return i;
@@ -291,7 +333,7 @@ public final class g
         }
         paramString = paramString;
         i = 0;
-        ad.e("ad.waid.WaidHelper", "parseWaidFromJsApi, exp=" + paramString.toString());
+        ac.e("ad.waid.WaidHelper", "parseWaidFromJsApi, exp=" + paramString.toString());
         continue;
         k = 0;
         continue;
@@ -303,48 +345,6 @@ public final class g
     }
     j = k;
     i = k;
-  }
-  
-  private static boolean ar(ArrayList<h> paramArrayList)
-  {
-    AppMethodBeat.i(100588);
-    try
-    {
-      boolean bool = paramArrayList.isEmpty();
-      if (bool)
-      {
-        AppMethodBeat.o(100588);
-        return false;
-      }
-      localObject1 = new JSONArray();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        localObject2 = ((h)paramArrayList.next()).toJson();
-        if (localObject2 != null) {
-          ((JSONArray)localObject1).put(localObject2);
-        }
-      }
-      while (((JSONArray)localObject1).length() <= 0) {}
-    }
-    catch (Exception paramArrayList)
-    {
-      ad.e("ad.waid.WaidHelper", "batchInsertWaid exp=" + paramArrayList.toString());
-      AppMethodBeat.o(100588);
-      return false;
-    }
-    paramArrayList = aj.getContext().getContentResolver();
-    Object localObject2 = new ContentValues();
-    Object localObject1 = ((JSONArray)localObject1).toString();
-    ad.i("ad.waid.WaidHelper", "batchInsertWaid, data=".concat(String.valueOf(localObject1)));
-    ((ContentValues)localObject2).put("waid_array", (String)localObject1);
-    if (paramArrayList.insert(WaidProvider.xZx, (ContentValues)localObject2) != null)
-    {
-      AppMethodBeat.o(100588);
-      return true;
-    }
-    AppMethodBeat.o(100588);
-    return false;
   }
 }
 

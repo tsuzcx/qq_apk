@@ -8,8 +8,8 @@ import com.tencent.mm.game.report.e;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.o;
 import com.tencent.mm.plugin.game.model.o.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public final class v
@@ -18,8 +18,8 @@ public final class v
   private Context mContext;
   private int mPosition;
   private int mScene;
-  private int rXI;
-  private int sni;
+  private int tfA;
+  private int tvb;
   
   public v(Context paramContext)
   {
@@ -27,10 +27,10 @@ public final class v
     this.mScene = 13;
   }
   
-  public final void fP(int paramInt1, int paramInt2)
+  public final void fW(int paramInt1, int paramInt2)
   {
-    this.rXI = paramInt1;
-    this.sni = 1301;
+    this.tfA = paramInt1;
+    this.tvb = 1301;
     this.mPosition = paramInt2;
   }
   
@@ -46,18 +46,18 @@ public final class v
     if ((paramView.getTag() instanceof o))
     {
       paramView = (o)paramView.getTag();
-      if (!bt.gL(paramView.rWc))
+      if (!bs.gY(paramView.tdU))
       {
-        String str = ((o.i)paramView.rWc.get(0)).rXm;
-        if (!bt.isNullOrNil(str))
+        String str = ((o.i)paramView.tdU.get(0)).tfe;
+        if (!bs.isNullOrNil(str))
         {
-          i = c.ax(this.mContext, str);
-          str = e.a(null, null, paramView.rWS, null);
-          e.a(this.mContext, this.mScene, this.sni, this.mPosition, i, 0, paramView.field_appId, this.rXI, paramView.field_msgType, paramView.field_gameMsgId, paramView.rWR, str);
+          i = c.ay(this.mContext, str);
+          str = e.a(null, null, paramView.teK, null);
+          e.a(this.mContext, this.mScene, this.tvb, this.mPosition, i, 0, paramView.field_appId, this.tfA, paramView.field_msgType, paramView.field_gameMsgId, paramView.teJ, str);
           AppMethodBeat.o(42415);
           return;
         }
-        ad.e("MicroMsg.GameURLClickListener", "message's jumpurl is null");
+        ac.e("MicroMsg.GameURLClickListener", "message's jumpurl is null");
       }
       AppMethodBeat.o(42415);
       return;
@@ -65,13 +65,13 @@ public final class v
     if ((paramView.getTag() instanceof String))
     {
       paramView = (String)paramView.getTag();
-      if (bt.isNullOrNil(paramView))
+      if (bs.isNullOrNil(paramView))
       {
         AppMethodBeat.o(42415);
         return;
       }
-      i = c.ax(this.mContext, paramView);
-      e.a(this.mContext, this.mScene, this.sni, this.mPosition, i, this.rXI, null);
+      i = c.ay(this.mContext, paramView);
+      e.a(this.mContext, this.mScene, this.tvb, this.mPosition, i, this.tfA, null);
     }
     AppMethodBeat.o(42415);
   }

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class bo
   extends b
 {
-  public a ddP;
+  public a dbl;
   
   public bo()
   {
@@ -16,8 +16,8 @@ public final class bo
   private bo(byte paramByte)
   {
     AppMethodBeat.i(117355);
-    this.ddP = new a();
-    this.ESR = false;
+    this.dbl = new a();
+    this.Gqe = false;
     this.callback = null;
     AppMethodBeat.o(117355);
   }
@@ -26,7 +26,7 @@ public final class bo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.bo
  * JD-Core Version:    0.7.0.1
  */

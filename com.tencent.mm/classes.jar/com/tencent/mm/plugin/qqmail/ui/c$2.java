@@ -1,0 +1,34 @@
+package com.tencent.mm.plugin.qqmail.ui;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bn.a;
+import com.tencent.mm.network.e;
+import com.tencent.mm.plugin.qqmail.a.a;
+import com.tencent.mm.pluginsdk.k;
+
+final class c$2
+  implements bn.a
+{
+  c$2(c paramc) {}
+  
+  public final void a(e parame)
+  {
+    AppMethodBeat.i(123140);
+    if (parame == null)
+    {
+      AppMethodBeat.o(123140);
+      return;
+    }
+    com.tencent.mm.network.c localc = parame.aBZ();
+    int i = parame.aBZ().getUin();
+    localc.a(new byte[0], new byte[0], new byte[0], i);
+    a.iyy.Lj();
+    AppMethodBeat.o(123140);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.c.2
+ * JD-Core Version:    0.7.0.1
+ */

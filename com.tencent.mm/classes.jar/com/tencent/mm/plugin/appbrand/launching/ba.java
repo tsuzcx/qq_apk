@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.appbrand.task.f;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity.a;
 
 public class ba
@@ -21,12 +21,12 @@ public class ba
     AppMethodBeat.o(47308);
   }
   
-  public void bgO() {}
+  public void bnI() {}
   
-  public final void bgP()
+  public final void bnJ()
   {
     AppMethodBeat.i(47309);
-    if (d.lf(17)) {
+    if (d.kZ(17)) {
       onReady();
     }
     AppMethodBeat.o(47309);
@@ -42,22 +42,22 @@ public class ba
     }
     if (paramInt2 == -1)
     {
-      ad.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download ok");
-      f.tX(0);
+      ac.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download ok");
+      f.uP(0);
       onReady();
       AppMethodBeat.o(47310);
       return;
     }
     if (paramInt2 == 2)
     {
-      ad.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs cancel loading, download in background");
-      bgO();
+      ac.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs cancel loading, download in background");
+      bnI();
       AppMethodBeat.o(47310);
       return;
     }
-    ad.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download unknown error, resultCode = %d, apiLevel = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(Build.VERSION.SDK_INT) });
-    h.vKh.idkeyStat(366L, 8L, 1L, false);
-    bgP();
+    ac.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download unknown error, resultCode = %d, apiLevel = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(Build.VERSION.SDK_INT) });
+    h.wUl.idkeyStat(366L, 8L, 1L, false);
+    bnJ();
     AppMethodBeat.o(47310);
   }
   
@@ -65,7 +65,7 @@ public class ba
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ba
  * JD-Core Version:    0.7.0.1
  */

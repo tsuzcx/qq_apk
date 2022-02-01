@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.msgquote.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dv;
+import com.tencent.mm.g.c.dz;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends dv
+  extends dz
 {
   protected static c.a info;
   
@@ -16,27 +16,27 @@ public final class b
   {
     AppMethodBeat.i(88813);
     c.a locala = new c.a();
-    locala.EYt = new Field[5];
+    locala.GvF = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "msgId";
-    locala.EYv.put("msgId", "LONG");
+    locala.GvH.put("msgId", "LONG");
     localStringBuilder.append(" msgId LONG");
     localStringBuilder.append(", ");
     locala.columns[1] = "msgSvrId";
-    locala.EYv.put("msgSvrId", "LONG");
+    locala.GvH.put("msgSvrId", "LONG");
     localStringBuilder.append(" msgSvrId LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "quotedMsgId";
-    locala.EYv.put("quotedMsgId", "LONG");
+    locala.GvH.put("quotedMsgId", "LONG");
     localStringBuilder.append(" quotedMsgId LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "quotedMsgSvrId";
-    locala.EYv.put("quotedMsgSvrId", "LONG");
+    locala.GvH.put("quotedMsgSvrId", "LONG");
     localStringBuilder.append(" quotedMsgSvrId LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "status";
-    locala.EYv.put("status", "INTEGER");
+    locala.GvH.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -44,7 +44,7 @@ public final class b
     AppMethodBeat.o(88813);
   }
   
-  private b cRs()
+  private b dfc()
   {
     AppMethodBeat.i(88811);
     b localb = new b();
@@ -63,7 +63,7 @@ public final class b
     {
       for (;;)
       {
-        ad.i("MicroMsg.msgquote.MsgQute", "clone() Exception:%s %s", new Object[] { localException.getClass(), localException.getMessage() });
+        ac.i("MicroMsg.msgquote.MsgQute", "clone() Exception:%s %s", new Object[] { localException.getClass(), localException.getMessage() });
       }
     }
   }

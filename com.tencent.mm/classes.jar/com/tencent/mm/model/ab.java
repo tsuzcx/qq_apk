@@ -2,10 +2,10 @@ package com.tencent.mm.model;
 
 public class ab
 {
-  private final String dtU;
+  private final String drF;
   public final boolean enable;
-  private final String fvQ;
-  private boolean gMR;
+  private final String fzx;
+  private boolean hnr;
   private final String name;
   private final String type;
   
@@ -13,8 +13,8 @@ public class ab
   {
     this.type = "";
     this.name = "";
-    this.dtU = "";
-    this.fvQ = "";
+    this.drF = "";
+    this.fzx = "";
     this.enable = true;
   }
   
@@ -22,26 +22,26 @@ public class ab
   {
     this.type = paramString1;
     this.name = paramString2;
-    this.dtU = paramString3;
-    this.fvQ = paramString4;
+    this.drF = paramString3;
+    this.fzx = paramString4;
     this.enable = paramBoolean1;
-    this.gMR = paramBoolean2;
+    this.hnr = paramBoolean2;
   }
   
-  public final String ZW()
+  public final String aaR()
   {
-    if (this.dtU == null) {
+    if (this.drF == null) {
       return "";
     }
-    return this.dtU;
+    return this.drF;
   }
   
-  public final String arA()
+  public final String ayr()
   {
-    if (this.fvQ == null) {
+    if (this.fzx == null) {
       return "";
     }
-    return this.fvQ;
+    return this.fzx;
   }
   
   public final String getType()
@@ -54,7 +54,7 @@ public class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.ab
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public abstract class i
     if (this.mCurTransaction == null) {
       this.mCurTransaction = this.mFragmentManager.beginTransaction();
     }
-    this.mCurTransaction.d((Fragment)paramObject);
+    this.mCurTransaction.c((Fragment)paramObject);
   }
   
   public void finishUpdate(ViewGroup paramViewGroup)
@@ -50,7 +50,7 @@ public abstract class i
     Object localObject = b(paramViewGroup.getId(), l);
     localObject = this.mFragmentManager.findFragmentByTag((String)localObject);
     if (localObject != null) {
-      this.mCurTransaction.e((Fragment)localObject);
+      this.mCurTransaction.d((Fragment)localObject);
     }
     for (paramViewGroup = (ViewGroup)localObject;; paramViewGroup = (ViewGroup)localObject)
     {
@@ -102,7 +102,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.app.i
  * JD-Core Version:    0.7.0.1
  */

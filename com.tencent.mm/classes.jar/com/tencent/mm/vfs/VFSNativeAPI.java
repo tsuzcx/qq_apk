@@ -40,7 +40,7 @@ final class VFSNativeAPI
       localObject1 = null;
       try
       {
-        localObject3 = i.lB(paramString, (String)localObject3);
+        localObject3 = i.lY(paramString, (String)localObject3);
         if (localObject3 != null)
         {
           localObject1 = localObject3;
@@ -77,7 +77,7 @@ final class VFSNativeAPI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.vfs.VFSNativeAPI
  * JD-Core Version:    0.7.0.1
  */

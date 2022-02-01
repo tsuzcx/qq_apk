@@ -1,45 +1,95 @@
 package com.tencent.xweb;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.internal.IWebStorage;
-import com.tencent.xweb.internal.j;
-import com.tencent.xweb.internal.j.a;
-import org.xwalk.core.Log;
+import android.webkit.WebSettings.LayoutAlgorithm;
+import android.webkit.WebSettings.RenderPriority;
 
-public final class z
+public abstract class z
 {
-  static z INn = null;
-  public IWebStorage INm;
+  public abstract void enableCustomizedLongPressTimeout(int paramInt);
   
-  private z()
-  {
-    AppMethodBeat.i(156798);
-    this.INm = null;
-    IWebStorage localIWebStorage = j.g(WebView.getCurWebType()).createWebviewStorage();
-    if (localIWebStorage == null)
-    {
-      Log.e("WebStorage", "create WebStorage failed webStg is null, cur core kind is " + WebView.getCurWebType());
-      AppMethodBeat.o(156798);
-      return;
-    }
-    this.INm = localIWebStorage;
-    AppMethodBeat.o(156798);
-  }
+  @Deprecated
+  public abstract void fJA();
   
-  public static z frj()
-  {
-    try
-    {
-      AppMethodBeat.i(156797);
-      if (INn == null) {
-        INn = new z();
-      }
-      z localz = INn;
-      AppMethodBeat.o(156797);
-      return localz;
-    }
-    finally {}
-  }
+  public abstract void fJB();
+  
+  public abstract void fJC();
+  
+  public abstract void fJD();
+  
+  public abstract void fJE();
+  
+  @Deprecated
+  public abstract void fJF();
+  
+  public abstract void fJG();
+  
+  public abstract void fJH();
+  
+  public abstract void fJI();
+  
+  public abstract void fJJ();
+  
+  public abstract void fJx();
+  
+  public abstract void fJy();
+  
+  public abstract void fJz();
+  
+  public abstract boolean getBlockNetworkImage();
+  
+  public abstract int getForceDarkBehavior();
+  
+  public abstract int getForceDarkMode();
+  
+  public abstract String getUserAgentString();
+  
+  public abstract void setAppCachePath(String paramString);
+  
+  public abstract void setAudioPlaybackRequiresUserGesture(boolean paramBoolean);
+  
+  public abstract void setBlockNetworkImage(boolean paramBoolean);
+  
+  public abstract void setBuiltInZoomControls(boolean paramBoolean);
+  
+  @Deprecated
+  public abstract void setDatabasePath(String paramString);
+  
+  public abstract void setDefaultTextEncodingName(String paramString);
+  
+  public abstract void setForceDarkBehavior(int paramInt);
+  
+  public abstract void setForceDarkMode(int paramInt);
+  
+  public abstract void setGeolocationEnabled(boolean paramBoolean);
+  
+  public abstract void setJavaScriptCanOpenWindowsAutomatically(boolean paramBoolean);
+  
+  public abstract void setJavaScriptEnabled(boolean paramBoolean);
+  
+  public abstract void setLayoutAlgorithm(WebSettings.LayoutAlgorithm paramLayoutAlgorithm);
+  
+  public abstract void setLoadWithOverviewMode(boolean paramBoolean);
+  
+  public abstract void setLoadsImagesAutomatically(boolean paramBoolean);
+  
+  public abstract void setMediaPlaybackRequiresUserGesture(boolean paramBoolean);
+  
+  public abstract void setPluginsEnabled(boolean paramBoolean);
+  
+  @Deprecated
+  public abstract void setRenderPriority(WebSettings.RenderPriority paramRenderPriority);
+  
+  public abstract void setSupportZoom(boolean paramBoolean);
+  
+  public abstract void setTextZoom(int paramInt);
+  
+  public abstract void setUseWideViewPort(boolean paramBoolean);
+  
+  public abstract void setUserAgentString(String paramString);
+  
+  public abstract void setUsingForAppBrand(int paramInt);
+  
+  public abstract void setVideoPlaybackRequiresUserGesture(boolean paramBoolean);
 }
 
 

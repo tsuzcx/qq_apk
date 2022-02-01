@@ -24,7 +24,7 @@ import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletVerifyCodeUI;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.c.z;
@@ -50,29 +50,29 @@ public class b
     {
       paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
         {
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(68372);
-          b.this.a(this.activity, 0, b.this.dow);
+          b.this.a(this.activity, 0, b.this.dmf);
           AppMethodBeat.o(68372);
           return true;
         }
         
-        public final boolean x(Object... paramAnonymousVarArgs)
+        public final boolean z(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(68371);
           paramAnonymousVarArgs = b.a(b.this);
-          com.tencent.mm.plugin.wallet.a.s.dZT();
-          paramAnonymousVarArgs.putParcelable("key_history_bankcard", com.tencent.mm.plugin.wallet.a.s.dZU().Aii);
-          paramAnonymousVarArgs = (PayInfo)b.this.dow.get("key_pay_info");
-          i locali = this.Ieo;
+          com.tencent.mm.plugin.wallet.a.s.epp();
+          paramAnonymousVarArgs.putParcelable("key_history_bankcard", com.tencent.mm.plugin.wallet.a.s.epq().BAD);
+          paramAnonymousVarArgs = (PayInfo)b.this.dmf.get("key_pay_info");
+          i locali = this.JFQ;
           if (paramAnonymousVarArgs == null) {}
-          for (paramAnonymousVarArgs = null;; paramAnonymousVarArgs = paramAnonymousVarArgs.dcE)
+          for (paramAnonymousVarArgs = null;; paramAnonymousVarArgs = paramAnonymousVarArgs.dac)
           {
             locali.b(new aa(paramAnonymousVarArgs), true);
             AppMethodBeat.o(68371);
@@ -87,7 +87,7 @@ public class b
     {
       paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
         {
           boolean bool = false;
           AppMethodBeat.i(68373);
@@ -95,18 +95,18 @@ public class b
           {
             paramAnonymousString = (com.tencent.mm.plugin.wallet.pay.a.a.b)paramAnonymousn;
             b.b(b.this).putString("kreq_token", paramAnonymousString.getToken());
-            b.c(b.this).putParcelable("key_authen", paramAnonymousString.zPG);
+            b.c(b.this).putParcelable("key_authen", paramAnonymousString.Bia);
             paramAnonymousn = b.d(b.this);
-            if (!paramAnonymousString.zPE) {
+            if (!paramAnonymousString.BhY) {
               bool = true;
             }
             paramAnonymousn.putBoolean("key_need_verify_sms", bool);
-            paramAnonymousn = paramAnonymousString.ujM;
+            paramAnonymousn = paramAnonymousString.vsI;
             if (paramAnonymousn != null) {
               b.e(b.this).putParcelable("key_realname_guide_helper", paramAnonymousn);
             }
-            if (paramAnonymousString.zPN != null) {
-              b.f(b.this).putString("key_fetch_result_show_info", paramAnonymousString.zPN.toString());
+            if (paramAnonymousString.Bih != null) {
+              b.f(b.this).putString("key_fetch_result_show_info", paramAnonymousString.Bih.toString());
             }
             a.k(this.activity, b.g(b.this));
             this.activity.finish();
@@ -117,7 +117,7 @@ public class b
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(68374);
           Bankcard localBankcard = (Bankcard)b.h(b.this).getParcelable("key_bankcard");
@@ -125,13 +125,13 @@ public class b
           b.i(b.this).putString("key_pwd1", (String)localObject);
           b.j(b.this).putString("key_mobile", localBankcard.field_mobile);
           localObject = new Authen();
-          ((Authen)localObject).dtM = 3;
-          ((Authen)localObject).Abg = ((String)paramAnonymousVarArgs[0]);
-          ((Authen)localObject).uns = localBankcard.field_bindSerial;
-          ((Authen)localObject).dca = localBankcard.field_bankcardType;
-          ((Authen)localObject).uXi = ((PayInfo)b.k(b.this).getParcelable("key_pay_info"));
-          ((Authen)localObject).Abm = localBankcard.field_arrive_type;
-          this.Ieo.a(new com.tencent.mm.plugin.wallet.pay.a.a.b((Authen)localObject, (Orders)b.l(b.this).getParcelable("key_orders")), true, 1);
+          ((Authen)localObject).drx = 3;
+          ((Authen)localObject).BtA = ((String)paramAnonymousVarArgs[0]);
+          ((Authen)localObject).vwo = localBankcard.field_bindSerial;
+          ((Authen)localObject).cZz = localBankcard.field_bankcardType;
+          ((Authen)localObject).wfX = ((PayInfo)b.k(b.this).getParcelable("key_pay_info"));
+          ((Authen)localObject).BtG = localBankcard.field_arrive_type;
+          this.JFQ.a(new com.tencent.mm.plugin.wallet.pay.a.a.b((Authen)localObject, (Orders)b.l(b.this).getParcelable("key_orders")), true, 1);
           AppMethodBeat.o(68374);
           return true;
         }
@@ -143,7 +143,7 @@ public class b
     {
       paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
         {
           AppMethodBeat.i(68375);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
@@ -153,12 +153,12 @@ public class b
               paramAnonymousString = (com.tencent.mm.plugin.wallet.pay.a.a.b)paramAnonymousn;
               b.m(b.this).putString("kreq_token", paramAnonymousString.getToken());
               if (paramAnonymousString.isPaySuccess) {
-                b.n(b.this).putParcelable("key_orders", paramAnonymousString.zPF);
+                b.n(b.this).putParcelable("key_orders", paramAnonymousString.BhZ);
               }
             }
             if (b.this.c(this.activity, null))
             {
-              this.Ieo.a(new ad(b.o(b.this), 13), true, 1);
+              this.JFQ.a(new ad(b.o(b.this), 13), true, 1);
               AppMethodBeat.o(68375);
               return true;
             }
@@ -170,7 +170,7 @@ public class b
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(68376);
           Authen localAuthen = (Authen)paramAnonymousVarArgs[0];
@@ -181,31 +181,31 @@ public class b
             AppMethodBeat.o(68376);
             return false;
           case 1: 
-            if (!b.this.eez()) {
-              localAuthen.dtM = 1;
+            if (!b.this.etU()) {
+              localAuthen.drx = 1;
             }
             break;
           }
           for (;;)
           {
             b.r(b.this).putParcelable("key_authen", localAuthen);
-            this.Ieo.a(new com.tencent.mm.plugin.wallet.pay.a.a.b(localAuthen, paramAnonymousVarArgs), true, 1);
+            this.JFQ.a(new com.tencent.mm.plugin.wallet.pay.a.a.b(localAuthen, paramAnonymousVarArgs), true, 1);
             AppMethodBeat.o(68376);
             return true;
-            localAuthen.dtM = 4;
+            localAuthen.drx = 4;
             continue;
-            if (!b.this.eez())
+            if (!b.this.etU())
             {
-              localAuthen.dtM = 2;
+              localAuthen.drx = 2;
             }
             else
             {
-              localAuthen.dtM = 5;
+              localAuthen.drx = 5;
               continue;
-              if (!b.this.eez()) {
-                localAuthen.dtM = 3;
+              if (!b.this.etU()) {
+                localAuthen.drx = 3;
               } else {
-                localAuthen.dtM = 6;
+                localAuthen.drx = 6;
               }
             }
           }
@@ -218,7 +218,17 @@ public class b
     {
       paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+        public final boolean A(Object... paramAnonymousVarArgs)
+        {
+          AppMethodBeat.i(68379);
+          paramAnonymousVarArgs = (Orders)b.x(b.this).getParcelable("key_orders");
+          Authen localAuthen = (Authen)b.y(b.this).getParcelable("key_authen");
+          this.JFQ.a(new com.tencent.mm.plugin.wallet.pay.a.a.b(localAuthen, paramAnonymousVarArgs), true, 1);
+          AppMethodBeat.o(68379);
+          return true;
+        }
+        
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
         {
           AppMethodBeat.i(68377);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
@@ -227,7 +237,7 @@ public class b
             {
               paramAnonymousString = (com.tencent.mm.plugin.wallet.pay.a.d.g)paramAnonymousn;
               if (paramAnonymousString.isPaySuccess) {
-                b.s(b.this).putParcelable("key_orders", paramAnonymousString.zPF);
+                b.s(b.this).putParcelable("key_orders", paramAnonymousString.BhZ);
               }
               a.k(this.activity, b.t(b.this));
               AppMethodBeat.o(68377);
@@ -236,7 +246,7 @@ public class b
             if ((paramAnonymousn instanceof com.tencent.mm.plugin.wallet.pay.a.a.b))
             {
               paramAnonymousString = (com.tencent.mm.plugin.wallet.pay.a.a.b)paramAnonymousn;
-              paramAnonymousn = paramAnonymousString.ujM;
+              paramAnonymousn = paramAnonymousString.vsI;
               if (paramAnonymousn != null) {
                 b.u(b.this).putParcelable("key_realname_guide_helper", paramAnonymousn);
               }
@@ -249,15 +259,15 @@ public class b
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(68378);
           paramAnonymousVarArgs = (u)paramAnonymousVarArgs[1];
-          if ((paramAnonymousVarArgs != null) && (paramAnonymousVarArgs.uXi != null)) {
-            paramAnonymousVarArgs.uXi.dtb = 21;
+          if ((paramAnonymousVarArgs != null) && (paramAnonymousVarArgs.wfX != null)) {
+            paramAnonymousVarArgs.wfX.dqL = 21;
           }
           Orders localOrders = (Orders)b.w(b.this).getParcelable("key_orders");
-          switch (b.this.dow.getInt("key_pay_flag", 0))
+          switch (b.this.dmf.getInt("key_pay_flag", 0))
           {
           default: 
             AppMethodBeat.o(68378);
@@ -267,10 +277,10 @@ public class b
           }
           for (;;)
           {
-            this.Ieo.a(new com.tencent.mm.plugin.wallet.pay.a.d.g(paramAnonymousVarArgs, localOrders), true, 1);
+            this.JFQ.a(new com.tencent.mm.plugin.wallet.pay.a.d.g(paramAnonymousVarArgs, localOrders), true, 1);
             AppMethodBeat.o(68378);
             return true;
-            if (!b.this.eez())
+            if (!b.this.etU())
             {
               paramAnonymousVarArgs.flag = "2";
             }
@@ -278,23 +288,13 @@ public class b
             {
               paramAnonymousVarArgs.flag = "5";
               continue;
-              if (!b.this.eez()) {
+              if (!b.this.etU()) {
                 paramAnonymousVarArgs.flag = "3";
               } else {
                 paramAnonymousVarArgs.flag = "6";
               }
             }
           }
-        }
-        
-        public final boolean y(Object... paramAnonymousVarArgs)
-        {
-          AppMethodBeat.i(68379);
-          paramAnonymousVarArgs = (Orders)b.x(b.this).getParcelable("key_orders");
-          Authen localAuthen = (Authen)b.y(b.this).getParcelable("key_authen");
-          this.Ieo.a(new com.tencent.mm.plugin.wallet.pay.a.a.b(localAuthen, paramAnonymousVarArgs), true, 1);
-          AppMethodBeat.o(68379);
-          return true;
         }
       };
       AppMethodBeat.o(68389);
@@ -319,9 +319,9 @@ public class b
             AppMethodBeat.o(68381);
             return localObject;
             localObject = (Orders)b.B(b.this).getParcelable("key_orders");
-            if ((localObject != null) && (!bt.isNullOrNil(((Orders)localObject).Afr)))
+            if ((localObject != null) && (!bs.isNullOrNil(((Orders)localObject).BxL)))
             {
-              localObject = ((Orders)localObject).Afr;
+              localObject = ((Orders)localObject).BxL;
               AppMethodBeat.o(68381);
               return localObject;
             }
@@ -329,30 +329,30 @@ public class b
             AppMethodBeat.o(68381);
             return localObject;
             localObject = (Orders)b.C(b.this).getParcelable("key_orders");
-          } while ((localObject == null) || (((Orders)localObject).Afq <= 0L));
-          Object localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(((Orders)localObject).Afq));
+          } while ((localObject == null) || (((Orders)localObject).BxK <= 0L));
+          Object localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(((Orders)localObject).BxK));
           AppMethodBeat.o(68381);
           return localObject;
         }
         
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
         {
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           return false;
         }
         
-        public final boolean x(Object... paramAnonymousVarArgs)
+        public final boolean z(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(68380);
           Orders localOrders = (Orders)b.z(b.this).getParcelable("key_orders");
-          Bankcard localBankcard = com.tencent.mm.plugin.wallet_core.model.s.ecc().zHd;
-          localBankcard.AbU -= localOrders.dcH;
+          Bankcard localBankcard = com.tencent.mm.plugin.wallet_core.model.s.ery().AZp;
+          localBankcard.Buo -= localOrders.daf;
           b.A(b.this).putInt("key_balance_result_logo", 2131691098);
-          boolean bool = super.x(paramAnonymousVarArgs);
+          boolean bool = super.z(paramAnonymousVarArgs);
           AppMethodBeat.o(68380);
           return bool;
         }
@@ -364,14 +364,14 @@ public class b
     {
       paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
         {
           AppMethodBeat.i(68382);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && ((paramAnonymousn instanceof j)))
           {
             paramAnonymousString = (j)paramAnonymousn;
             if (paramAnonymousString.isPaySuccess) {
-              b.D(b.this).putParcelable("key_orders", paramAnonymousString.zPF);
+              b.D(b.this).putParcelable("key_orders", paramAnonymousString.BhZ);
             }
             b.this.a(this.activity, 0, b.E(b.this));
             AppMethodBeat.o(68382);
@@ -381,12 +381,12 @@ public class b
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(68383);
           paramAnonymousVarArgs = (u)paramAnonymousVarArgs[0];
           Orders localOrders = (Orders)b.F(b.this).getParcelable("key_orders");
-          this.Ieo.a(new j(paramAnonymousVarArgs, localOrders), true, 1);
+          this.JFQ.a(new j(paramAnonymousVarArgs, localOrders), true, 1);
           AppMethodBeat.o(68383);
           return true;
         }
@@ -402,18 +402,18 @@ public class b
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(68385);
-    z.abt(14);
+    z.adM(14);
     if ((paramActivity instanceof WalletBalanceFetchUI))
     {
-      com.tencent.mm.plugin.wallet.a.s.dZT();
-      if (com.tencent.mm.plugin.wallet.a.s.dZU().ecF()) {
-        if ((Bankcard)this.dow.getParcelable("key_bankcard") != null)
+      com.tencent.mm.plugin.wallet.a.s.epp();
+      if (com.tencent.mm.plugin.wallet.a.s.epq().esa()) {
+        if ((Bankcard)this.dmf.getParcelable("key_bankcard") != null)
         {
-          this.dow.putInt("key_pay_flag", 3);
-          this.dow.putString("key_pwd_cash_title", paramActivity.getString(2131764994));
-          Orders localOrders = (Orders)this.dow.getParcelable("key_orders");
+          this.dmf.putInt("key_pay_flag", 3);
+          this.dmf.putString("key_pwd_cash_title", paramActivity.getString(2131764994));
+          Orders localOrders = (Orders)this.dmf.getParcelable("key_orders");
           if (localOrders != null) {
-            this.dow.putString("key_pwd_cash_money", e.E(localOrders.dcH));
+            this.dmf.putString("key_pwd_cash_money", e.D(localOrders.daf));
           }
           b(paramActivity, WalletBalanceFetchPwdInputUI.class, paramBundle);
         }
@@ -423,10 +423,10 @@ public class b
     {
       AppMethodBeat.o(68385);
       return this;
-      this.dow.putInt("key_pay_flag", 2);
+      this.dmf.putInt("key_pay_flag", 2);
       b(paramActivity, WalletCheckPwdUI.class, paramBundle);
       continue;
-      this.dow.putInt("key_pay_flag", 1);
+      this.dmf.putInt("key_pay_flag", 1);
       b(paramActivity, WalletBankcardIdUI.class, paramBundle);
       continue;
       b(paramActivity, WalletBalanceFetchUI.class, paramBundle);
@@ -438,27 +438,27 @@ public class b
     AppMethodBeat.i(68386);
     if ((paramActivity instanceof WalletBalanceFetchUI))
     {
-      com.tencent.mm.plugin.wallet.a.s.dZT();
-      if (com.tencent.mm.plugin.wallet.a.s.dZU().ecF())
+      com.tencent.mm.plugin.wallet.a.s.epp();
+      if (com.tencent.mm.plugin.wallet.a.s.epq().esa())
       {
-        if ((Bankcard)this.dow.getParcelable("key_bankcard") != null)
+        if ((Bankcard)this.dmf.getParcelable("key_bankcard") != null)
         {
-          this.dow.putInt("key_pay_flag", 3);
-          this.dow.putString("key_pwd_cash_title", paramActivity.getString(2131764994));
-          Orders localOrders = (Orders)this.dow.getParcelable("key_orders");
+          this.dmf.putInt("key_pay_flag", 3);
+          this.dmf.putString("key_pwd_cash_title", paramActivity.getString(2131764994));
+          Orders localOrders = (Orders)this.dmf.getParcelable("key_orders");
           if (localOrders != null) {
-            this.dow.putString("key_pwd_cash_money", e.E(localOrders.dcH));
+            this.dmf.putString("key_pwd_cash_money", e.D(localOrders.daf));
           }
           b(paramActivity, WalletBalanceFetchPwdInputUI.class, paramBundle);
           AppMethodBeat.o(68386);
           return;
         }
-        this.dow.putInt("key_pay_flag", 2);
+        this.dmf.putInt("key_pay_flag", 2);
         b(paramActivity, WalletCheckPwdUI.class, paramBundle);
         AppMethodBeat.o(68386);
         return;
       }
-      this.dow.putInt("key_pay_flag", 1);
+      this.dmf.putInt("key_pay_flag", 1);
       b(paramActivity, WalletBankcardIdUI.class, paramBundle);
       AppMethodBeat.o(68386);
       return;
@@ -495,8 +495,8 @@ public class b
     }
     if ((paramActivity instanceof WalletVerifyCodeUI))
     {
-      com.tencent.mm.plugin.wallet.a.s.dZT();
-      if (com.tencent.mm.plugin.wallet.a.s.dZU().ecF())
+      com.tencent.mm.plugin.wallet.a.s.epp();
+      if (com.tencent.mm.plugin.wallet.a.s.epq().esa())
       {
         b(paramActivity, WalletBalanceFetchResultUI.class, paramBundle);
         AppMethodBeat.o(68386);
@@ -527,7 +527,7 @@ public class b
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(68388);
-    if (this.dow.getInt("key_balance_fetch_scene", 0) == 0)
+    if (this.dmf.getInt("key_balance_fetch_scene", 0) == 0)
     {
       a(paramActivity, WalletBalanceManagerUI.class, -1, true);
       AppMethodBeat.o(68388);
@@ -542,7 +542,7 @@ public class b
     return false;
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "BalanceFetchProcess";
   }
@@ -558,13 +558,13 @@ public class b
     }
     if ((paramActivity instanceof WalletBalanceResultUI))
     {
-      z.fjZ();
-      b(paramActivity, this.dow);
+      z.fAp();
+      b(paramActivity, this.dmf);
       AppMethodBeat.o(68387);
       return;
     }
-    z.fjZ();
-    P(paramActivity);
+    z.fAp();
+    Q(paramActivity);
     AppMethodBeat.o(68387);
   }
 }

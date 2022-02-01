@@ -56,7 +56,7 @@ public final class KSProcessWeAppLaunch
   
   static
   {
-    AppMethodBeat.i(194533);
+    AppMethodBeat.i(193523);
     ArrayList localArrayList = new ArrayList();
     sStepNodes = localArrayList;
     localArrayList.add(new i("WeAppLaunch"));
@@ -141,12 +141,12 @@ public final class KSProcessWeAppLaunch
     stepColdLaunchFailed = new e("WeAppLaunch", "ColdLaunchFailed", true, true, "", 1, 1, -2147483648);
     sStepNodes.add((d)stepColdLaunchFailed);
     sStepNodes.add(new f("WeAppLaunch"));
-    AppMethodBeat.o(194533);
+    AppMethodBeat.o(193523);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch
  * JD-Core Version:    0.7.0.1
  */

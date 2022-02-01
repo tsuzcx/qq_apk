@@ -4,17 +4,17 @@ import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.luckymoney.a.a;
-import com.tencent.mm.protocal.protobuf.cia;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.cne;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.io.IOException;
 
 public final class k
 {
-  j sYI;
-  private e tdg;
+  j ugW;
+  private e ulv;
   
   public k()
   {
@@ -26,62 +26,62 @@ public final class k
   private void init()
   {
     AppMethodBeat.i(65180);
-    this.sYI = new j();
-    g.afC();
-    String str = (String)g.afB().afk().get(356355, null);
-    if (bt.isNullOrNil(str))
+    this.ugW = new j();
+    g.agS();
+    String str = (String)g.agR().agA().get(356355, null);
+    if (bs.isNullOrNil(str))
     {
-      this.sYI.sYh = 2000.0D;
-      this.sYI.sYe = 100;
-      this.sYI.sYi = 200.0D;
-      this.sYI.sYg = 0.01D;
-      this.sYI.sYf = 200.0D;
+      this.ugW.ugv = 2000.0D;
+      this.ugW.ugs = 100;
+      this.ugW.ugw = 200.0D;
+      this.ugW.ugu = 0.01D;
+      this.ugW.ugt = 200.0D;
     }
     for (;;)
     {
-      ad.i("MicroMsg.LuckyMoneyConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.sYI.sYh + " maxTotalNum:" + this.sYI.sYe + " perGroupMaxValue:" + this.sYI.sYi + " perMinValue:" + this.sYI.sYg + " perPersonMaxValue:" + this.sYI.sYf);
+      ac.i("MicroMsg.LuckyMoneyConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.ugW.ugv + " maxTotalNum:" + this.ugW.ugs + " perGroupMaxValue:" + this.ugW.ugw + " perMinValue:" + this.ugW.ugu + " perPersonMaxValue:" + this.ugW.ugt);
       AppMethodBeat.o(65180);
       return;
       try
       {
-        this.sYI.parseFrom(str.getBytes("ISO-8859-1"));
-        cLs();
+        this.ugW.parseFrom(str.getBytes("ISO-8859-1"));
+        cYY();
       }
       catch (Exception localException)
       {
-        ad.w("MicroMsg.LuckyMoneyConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
-        this.sYI.sYh = 2000.0D;
-        this.sYI.sYe = 100;
-        this.sYI.sYi = 200.0D;
-        this.sYI.sYg = 0.01D;
-        this.sYI.sYf = 200.0D;
+        ac.w("MicroMsg.LuckyMoneyConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
+        this.ugW.ugv = 2000.0D;
+        this.ugW.ugs = 100;
+        this.ugW.ugw = 200.0D;
+        this.ugW.ugu = 0.01D;
+        this.ugW.ugt = 200.0D;
       }
     }
   }
   
-  final void cLs()
+  final void cYY()
   {
     AppMethodBeat.i(65181);
-    if (this.sYI != null)
+    if (this.ugW != null)
     {
-      this.tdg = e.afl(this.sYI.tde);
-      if ((this.tdg != null) && (this.tdg.tcN != null))
+      this.ulv = e.akf(this.ugW.ult);
+      if ((this.ulv != null) && (this.ulv.ulc != null))
       {
-        ((a)g.ab(a.class)).a(this.tdg.tcN);
-        g.afB().afk().set(ae.a.Fsj, Integer.valueOf(1));
-        if (!bt.isNullOrNil(this.sYI.tdf))
+        ((a)g.ab(a.class)).a(this.ulv.ulc);
+        g.agR().agA().set(ah.a.GQa, Integer.valueOf(1));
+        if (!bs.isNullOrNil(this.ugW.ulu))
         {
-          ad.d("MicroMsg.LuckyMoneyConfigManager", "parse cover info");
+          ac.d("MicroMsg.LuckyMoneyConfigManager", "parse cover info");
           try
           {
-            cia localcia = (cia)new cia().parseFrom(Base64.decode(this.sYI.tdf, 0));
-            this.tdg.tcN.gGU = localcia.gGU;
+            cne localcne = (cne)new cne().parseFrom(Base64.decode(this.ugW.ulu, 0));
+            this.ulv.ulc.hhv = localcne.hhv;
             AppMethodBeat.o(65181);
             return;
           }
           catch (IOException localIOException)
           {
-            ad.printErrStackTrace("MicroMsg.LuckyMoneyConfigManager", localIOException, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.LuckyMoneyConfigManager", localIOException, "", new Object[0]);
           }
         }
       }
@@ -89,24 +89,24 @@ public final class k
     AppMethodBeat.o(65181);
   }
   
-  public final j cLt()
+  public final j cYZ()
   {
     AppMethodBeat.i(65182);
-    if (this.sYI == null) {
+    if (this.ugW == null) {
       init();
     }
-    j localj = this.sYI;
+    j localj = this.ugW;
     AppMethodBeat.o(65182);
     return localj;
   }
   
-  public final e cLu()
+  public final e cZa()
   {
     AppMethodBeat.i(65183);
-    if (this.tdg == null) {
+    if (this.ulv == null) {
       init();
     }
-    e locale = this.tdg;
+    e locale = this.ulv;
     AppMethodBeat.o(65183);
     return locale;
   }

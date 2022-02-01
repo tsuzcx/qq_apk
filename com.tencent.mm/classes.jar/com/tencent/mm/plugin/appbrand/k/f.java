@@ -10,8 +10,8 @@ import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.HashSet;
 import java.util.List;
 
@@ -23,40 +23,40 @@ public final class f
     super(paramContext, paramb, paramInt);
   }
   
-  public final com.tencent.mm.plugin.fts.a.a.a a(ap paramap, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.a a(ao paramao, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(45030);
     j localj = new j();
     localj.query = this.query;
-    localj.rpN = com.tencent.mm.plugin.fts.a.c.d.rqp;
-    localj.rpO = this;
-    localj.handler = paramap;
-    localj.rpM = paramHashSet;
-    paramap = ((n)g.ad(n.class)).search(7, localj);
+    localj.syH = com.tencent.mm.plugin.fts.a.c.d.szj;
+    localj.syI = this;
+    localj.handler = paramao;
+    localj.syG = paramHashSet;
+    paramao = ((n)g.ad(n.class)).search(7, localj);
     AppMethodBeat.o(45030);
-    return paramap;
+    return paramao;
   }
   
   public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
     AppMethodBeat.i(45032);
-    int i = paramInt - parama.rqs - 1;
+    int i = paramInt - parama.szm - 1;
     m localm = null;
     Object localObject = localm;
-    if (i < parama.kLN.size())
+    if (i < parama.lnk.size())
     {
       localObject = localm;
       if (i >= 0)
       {
-        localm = (m)parama.kLN.get(i);
+        localm = (m)parama.lnk.get(i);
         localObject = new d(paramInt);
-        ((d)localObject).jpy = localm;
-        ((d)localObject).roS = parama.roS;
-        ((d)localObject).fI(localm.type, localm.roM);
+        ((d)localObject).jPN = localm;
+        ((d)localObject).sxM = parama.sxM;
+        ((d)localObject).fP(localm.type, localm.sxF);
       }
     }
     if (localObject != null) {
-      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).rqB = (i + 1);
+      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).szv = (i + 1);
     }
     AppMethodBeat.o(45032);
     return localObject;
@@ -65,7 +65,7 @@ public final class f
   public final void a(k paramk, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(45031);
-    List localList = paramk.rpQ;
+    List localList = paramk.syK;
     if ((localList != null) && (!localList.isEmpty()))
     {
       com.tencent.mm.modelsns.f localf = new com.tencent.mm.modelsns.f();
@@ -74,22 +74,22 @@ public final class f
       if (str != null) {
         paramHashSet = str.replaceAll(",", " ");
       }
-      localf.o("20KeyWordId", paramHashSet + ",");
-      localf.o("21ViewType", "2,");
-      localf.o("22OpType", "1,");
-      localf.o("23ResultCount", localList.size() + ",");
-      localf.o("24ClickPos", ",");
-      localf.o("25ClickAppUserName", ",");
-      ad.i("MicroMsg.FTSWeAppDetailUIUnit", "report oreh LocalSearchWeApp(13963), %s", new Object[] { localf.PW() });
-      h.vKh.f(13963, new Object[] { localf });
+      localf.n("20KeyWordId", paramHashSet + ",");
+      localf.n("21ViewType", "2,");
+      localf.n("22OpType", "1,");
+      localf.n("23ResultCount", localList.size() + ",");
+      localf.n("24ClickPos", ",");
+      localf.n("25ClickAppUserName", ",");
+      ac.i("MicroMsg.FTSWeAppDetailUIUnit", "report oreh LocalSearchWeApp(13963), %s", new Object[] { localf.PS() });
+      h.wUl.f(13963, new Object[] { localf });
     }
-    if (dF(paramk.rpQ))
+    if (dJ(paramk.syK))
     {
       paramHashSet = new e.a();
       paramHashSet.businessType = -13;
-      paramHashSet.roS = paramk.roS;
-      paramHashSet.kLN = paramk.rpQ;
-      this.rsD.add(paramHashSet);
+      paramHashSet.sxM = paramk.sxM;
+      paramHashSet.lnk = paramk.syK;
+      this.sBx.add(paramHashSet);
     }
     AppMethodBeat.o(45031);
   }
@@ -101,7 +101,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.k.f
  * JD-Core Version:    0.7.0.1
  */

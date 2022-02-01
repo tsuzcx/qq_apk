@@ -2,638 +2,662 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.mm.protocal.protobuf.bra;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.z;
+import java.io.IOException;
 
 public abstract class dy
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eQA;
-  private static final int eQB;
-  private static final int eQC;
-  private static final int eQD;
-  private static final int eQE;
-  private static final int eQF;
-  private static final int eQG;
-  private static final int eQH;
-  private static final int eQI;
-  private static final int eQJ;
-  private static final int eQK;
-  private static final int eQL;
-  private static final int eQM = "mimetype".hashCode();
-  private static final int eQN = "protocol".hashCode();
-  private static final int eQO = "barBackToWebView".hashCode();
-  private static final int eQP = "musicbar_url".hashCode();
-  private static final int eQQ = "srcUsername".hashCode();
-  private static final int eQR = "playbackRate".hashCode();
-  private static final int eQj = "musicId".hashCode();
-  private static final int eQk = "originMusicId".hashCode();
-  private static final int eQl = "musicType".hashCode();
-  private static final int eQm = "downloadedLength".hashCode();
-  private static final int eQn = "wifiDownloadedLength".hashCode();
-  private static final int eQo = "endFlag".hashCode();
-  private static final int eQp = "wifiEndFlag".hashCode();
-  private static final int eQq;
-  private static final int eQr;
-  private static final int eQs;
-  private static final int eQt;
-  private static final int eQu;
-  private static final int eQv;
-  private static final int eQw;
-  private static final int eQx;
-  private static final int eQy;
-  private static final int eQz;
-  private static final int ekd;
-  private static final int elJ;
-  private static final int emf = "updateTime".hashCode();
+  private static final int eLs;
+  private static final int eRV;
+  private static final int eRW;
+  private static final int eRX;
+  private static final int eRY;
+  private static final int eRZ;
+  private static final int eSa = "solitaireFoldInfo".hashCode();
+  private static final int elP = "msgId".hashCode();
+  private static final int elV;
+  private static final int emY;
+  private static final int eng;
+  private static final int eqO;
+  private static final int erG;
+  private static final int erv;
+  private static final int etW = "msgSvrId".hashCode();
+  private static final int etX;
+  private static final int etY;
+  private static final int etZ;
+  private static final int eua;
+  private static final int eui;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ePA = true;
-  private boolean ePB = true;
-  private boolean ePC = true;
-  private boolean ePD = true;
-  private boolean ePE = true;
-  private boolean ePF = true;
-  private boolean ePG = true;
-  private boolean ePH = true;
-  private boolean ePI = true;
-  private boolean ePJ = true;
-  private boolean ePK = true;
-  private boolean ePL = true;
-  private boolean ePM = true;
-  private boolean ePN = true;
-  private boolean ePO = true;
-  private boolean ePP = true;
-  private boolean ePQ = true;
-  private boolean ePR = true;
-  private boolean ePS = true;
-  private boolean ePT = true;
-  private boolean ePU = true;
-  private boolean ePV = true;
-  private boolean ePW = true;
-  private boolean ePX = true;
-  private boolean ePY = true;
-  private boolean ePZ = true;
-  private boolean eQa = true;
-  private boolean eQb = true;
-  private boolean eQc = true;
-  private boolean eQd = true;
-  private boolean eQe = true;
-  private boolean eQf = true;
-  private boolean eQg = true;
-  private boolean eQh = true;
-  private boolean eQi = true;
-  private boolean ejW = true;
-  private boolean els = true;
-  private boolean emc = true;
-  public String field_appId;
-  public boolean field_barBackToWebView;
-  public long field_downloadedLength;
-  public int field_endFlag;
-  public boolean field_hideBanner;
-  public int field_isBlock;
-  public String field_jsWebUrlDomain;
-  public String field_mimetype;
-  public String field_musicId;
-  public int field_musicType;
-  public String field_musicbar_url;
-  public String field_originMusicId;
-  public double field_playbackRate;
-  public String field_protocol;
-  public String field_songAlbum;
-  public String field_songAlbumLocalPath;
-  public int field_songAlbumType;
-  public String field_songAlbumUrl;
-  public int field_songBgColor;
-  public long field_songFileLength;
-  public String field_songHAlbumUrl;
-  public int field_songId;
-  public String field_songLyric;
-  public int field_songLyricColor;
-  public String field_songMediaId;
-  public String field_songName;
-  public String field_songSinger;
-  public String field_songSnsAlbumUser;
-  public String field_songSnsShareUser;
-  public String field_songWapLinkUrl;
-  public String field_songWebUrl;
-  public long field_songWifiFileLength;
-  public String field_songWifiUrl;
-  public String field_srcUsername;
-  public int field_startTime;
-  public long field_updateTime;
-  public long field_wifiDownloadedLength;
-  public int field_wifiEndFlag;
+  private static final int type_HASHCODE = "type".hashCode();
+  private boolean __hadSettype = false;
+  public String dvs;
+  private boolean eLm = false;
+  public boolean eRP = false;
+  private boolean eRQ = false;
+  private boolean eRR = false;
+  public boolean eRS = false;
+  public boolean eRT = false;
+  public boolean eRU = false;
+  public String eSb;
+  public int eSc;
+  public int eSd;
+  protected int eSe;
+  public int eSf;
+  public int eSg;
+  public int eSh;
+  public String eSi;
+  public String eSj;
+  public String eSk;
+  public int eSl;
+  public byte[] eSm;
+  public String eSn;
+  public String eSo;
+  public int eSp;
+  private boolean elL = false;
+  private boolean elS = false;
+  private boolean emB = false;
+  private boolean emI = false;
+  private boolean eqM = false;
+  private boolean erg = false;
+  private boolean err = false;
+  private boolean etI = false;
+  private boolean etJ = false;
+  private boolean etK = false;
+  public boolean etL = false;
+  private boolean etM = false;
+  private boolean etU = false;
+  public int euk;
+  public String eul;
+  public long field_bizChatId;
+  public String field_bizChatUserId;
+  public String field_bizClientMsgId;
+  public String field_content;
+  public long field_createTime;
+  public int field_flag;
+  public String field_imgPath;
+  public int field_isSend;
+  public int field_isShowTimer;
+  public byte[] field_lvbuffer;
+  public long field_msgId;
+  public long field_msgSeq;
+  public long field_msgSvrId;
+  public String field_reserved;
+  public bra field_solitaireFoldInfo;
+  public int field_status;
+  public String field_talker;
+  public int field_talkerId;
+  public String field_transBrandWording;
+  public String field_transContent;
+  private int field_type;
   
   static
   {
-    eQq = "songId".hashCode();
-    eQr = "songName".hashCode();
-    eQs = "songSinger".hashCode();
-    eQt = "songAlbum".hashCode();
-    eQu = "songAlbumType".hashCode();
-    eQv = "songAlbumUrl".hashCode();
-    eQw = "songHAlbumUrl".hashCode();
-    eQx = "songAlbumLocalPath".hashCode();
-    eQy = "songWifiUrl".hashCode();
-    eQz = "songWapLinkUrl".hashCode();
-    eQA = "songWebUrl".hashCode();
-    elJ = "appId".hashCode();
-    eQB = "songMediaId".hashCode();
-    eQC = "songSnsAlbumUser".hashCode();
-    eQD = "songSnsShareUser".hashCode();
-    eQE = "songLyric".hashCode();
-    eQF = "songBgColor".hashCode();
-    eQG = "songLyricColor".hashCode();
-    eQH = "songFileLength".hashCode();
-    eQI = "songWifiFileLength".hashCode();
-    eQJ = "hideBanner".hashCode();
-    eQK = "jsWebUrlDomain".hashCode();
-    eQL = "isBlock".hashCode();
-    ekd = "startTime".hashCode();
+    elV = "status".hashCode();
+    erG = "isSend".hashCode();
+    eRV = "isShowTimer".hashCode();
+    emY = "createTime".hashCode();
+    etX = "talker".hashCode();
+    eng = "content".hashCode();
+    etY = "imgPath".hashCode();
+    eRW = "reserved".hashCode();
+    etZ = "lvbuffer".hashCode();
+    eua = "talkerId".hashCode();
+    eRX = "transContent".hashCode();
+    eRY = "transBrandWording".hashCode();
+    eui = "bizClientMsgId".hashCode();
+    erv = "bizChatId".hashCode();
+    eRZ = "bizChatUserId".hashCode();
+    eLs = "msgSeq".hashCode();
+    eqO = "flag".hashCode();
   }
   
-  public static c.a So()
+  public final void N(byte[] paramArrayOfByte)
   {
-    c.a locala = new c.a();
-    locala.EYt = new Field[38];
-    locala.columns = new String[39];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "musicId";
-    locala.EYv.put("musicId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" musicId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.EYu = "musicId";
-    locala.columns[1] = "originMusicId";
-    locala.EYv.put("originMusicId", "TEXT");
-    localStringBuilder.append(" originMusicId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "musicType";
-    locala.EYv.put("musicType", "INTEGER");
-    localStringBuilder.append(" musicType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "downloadedLength";
-    locala.EYv.put("downloadedLength", "LONG");
-    localStringBuilder.append(" downloadedLength LONG");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "wifiDownloadedLength";
-    locala.EYv.put("wifiDownloadedLength", "LONG");
-    localStringBuilder.append(" wifiDownloadedLength LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "endFlag";
-    locala.EYv.put("endFlag", "INTEGER");
-    localStringBuilder.append(" endFlag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "wifiEndFlag";
-    locala.EYv.put("wifiEndFlag", "INTEGER");
-    localStringBuilder.append(" wifiEndFlag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "updateTime";
-    locala.EYv.put("updateTime", "LONG");
-    localStringBuilder.append(" updateTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "songId";
-    locala.EYv.put("songId", "INTEGER");
-    localStringBuilder.append(" songId INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "songName";
-    locala.EYv.put("songName", "TEXT");
-    localStringBuilder.append(" songName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "songSinger";
-    locala.EYv.put("songSinger", "TEXT");
-    localStringBuilder.append(" songSinger TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[11] = "songAlbum";
-    locala.EYv.put("songAlbum", "TEXT");
-    localStringBuilder.append(" songAlbum TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[12] = "songAlbumType";
-    locala.EYv.put("songAlbumType", "INTEGER");
-    localStringBuilder.append(" songAlbumType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[13] = "songAlbumUrl";
-    locala.EYv.put("songAlbumUrl", "TEXT");
-    localStringBuilder.append(" songAlbumUrl TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[14] = "songHAlbumUrl";
-    locala.EYv.put("songHAlbumUrl", "TEXT");
-    localStringBuilder.append(" songHAlbumUrl TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[15] = "songAlbumLocalPath";
-    locala.EYv.put("songAlbumLocalPath", "TEXT");
-    localStringBuilder.append(" songAlbumLocalPath TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[16] = "songWifiUrl";
-    locala.EYv.put("songWifiUrl", "TEXT");
-    localStringBuilder.append(" songWifiUrl TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[17] = "songWapLinkUrl";
-    locala.EYv.put("songWapLinkUrl", "TEXT");
-    localStringBuilder.append(" songWapLinkUrl TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[18] = "songWebUrl";
-    locala.EYv.put("songWebUrl", "TEXT");
-    localStringBuilder.append(" songWebUrl TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[19] = "appId";
-    locala.EYv.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[20] = "songMediaId";
-    locala.EYv.put("songMediaId", "TEXT");
-    localStringBuilder.append(" songMediaId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[21] = "songSnsAlbumUser";
-    locala.EYv.put("songSnsAlbumUser", "TEXT");
-    localStringBuilder.append(" songSnsAlbumUser TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[22] = "songSnsShareUser";
-    locala.EYv.put("songSnsShareUser", "TEXT");
-    localStringBuilder.append(" songSnsShareUser TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[23] = "songLyric";
-    locala.EYv.put("songLyric", "TEXT");
-    localStringBuilder.append(" songLyric TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[24] = "songBgColor";
-    locala.EYv.put("songBgColor", "INTEGER");
-    localStringBuilder.append(" songBgColor INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[25] = "songLyricColor";
-    locala.EYv.put("songLyricColor", "INTEGER");
-    localStringBuilder.append(" songLyricColor INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[26] = "songFileLength";
-    locala.EYv.put("songFileLength", "LONG");
-    localStringBuilder.append(" songFileLength LONG");
-    localStringBuilder.append(", ");
-    locala.columns[27] = "songWifiFileLength";
-    locala.EYv.put("songWifiFileLength", "LONG");
-    localStringBuilder.append(" songWifiFileLength LONG");
-    localStringBuilder.append(", ");
-    locala.columns[28] = "hideBanner";
-    locala.EYv.put("hideBanner", "INTEGER");
-    localStringBuilder.append(" hideBanner INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[29] = "jsWebUrlDomain";
-    locala.EYv.put("jsWebUrlDomain", "TEXT");
-    localStringBuilder.append(" jsWebUrlDomain TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[30] = "isBlock";
-    locala.EYv.put("isBlock", "INTEGER");
-    localStringBuilder.append(" isBlock INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[31] = "startTime";
-    locala.EYv.put("startTime", "INTEGER");
-    localStringBuilder.append(" startTime INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[32] = "mimetype";
-    locala.EYv.put("mimetype", "TEXT");
-    localStringBuilder.append(" mimetype TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[33] = "protocol";
-    locala.EYv.put("protocol", "TEXT");
-    localStringBuilder.append(" protocol TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[34] = "barBackToWebView";
-    locala.EYv.put("barBackToWebView", "INTEGER");
-    localStringBuilder.append(" barBackToWebView INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[35] = "musicbar_url";
-    locala.EYv.put("musicbar_url", "TEXT");
-    localStringBuilder.append(" musicbar_url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[36] = "srcUsername";
-    locala.EYv.put("srcUsername", "TEXT");
-    localStringBuilder.append(" srcUsername TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[37] = "playbackRate";
-    locala.EYv.put("playbackRate", "DOUBLE");
-    localStringBuilder.append(" playbackRate DOUBLE");
-    locala.columns[38] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    this.field_lvbuffer = paramArrayOfByte;
+    this.etL = true;
+  }
+  
+  public final long TA()
+  {
+    return this.field_msgSvrId;
+  }
+  
+  public final int TB()
+  {
+    return this.field_isSend;
+  }
+  
+  public final String TC()
+  {
+    return this.field_talker;
+  }
+  
+  public final String TD()
+  {
+    return this.field_imgPath;
+  }
+  
+  public final String TE()
+  {
+    return this.field_reserved;
+  }
+  
+  public final String TF()
+  {
+    return this.field_bizClientMsgId;
+  }
+  
+  public final String TG()
+  {
+    return this.eul;
+  }
+  
+  public final void TH()
+  {
+    this.eSf = 1;
+    this.etL = true;
+  }
+  
+  public final String TI()
+  {
+    return this.eSo;
+  }
+  
+  public final long Tz()
+  {
+    return this.field_msgId;
   }
   
   public void convertFrom(Cursor paramCursor)
   {
     String[] arrayOfString = paramCursor.getColumnNames();
-    if (arrayOfString == null) {
-      return;
-    }
-    int j = arrayOfString.length;
-    int i = 0;
-    label20:
-    int k;
-    if (i < j)
+    if (arrayOfString == null) {}
+    do
     {
-      k = arrayOfString[i].hashCode();
-      if (eQj != k) {
-        break label65;
-      }
-      this.field_musicId = paramCursor.getString(i);
-      this.ePA = true;
-    }
-    for (;;)
-    {
-      i += 1;
-      break label20;
-      break;
-      label65:
-      if (eQk == k)
+      for (;;)
       {
-        this.field_originMusicId = paramCursor.getString(i);
-      }
-      else if (eQl == k)
-      {
-        this.field_musicType = paramCursor.getInt(i);
-      }
-      else if (eQm == k)
-      {
-        this.field_downloadedLength = paramCursor.getLong(i);
-      }
-      else if (eQn == k)
-      {
-        this.field_wifiDownloadedLength = paramCursor.getLong(i);
-      }
-      else if (eQo == k)
-      {
-        this.field_endFlag = paramCursor.getInt(i);
-      }
-      else if (eQp == k)
-      {
-        this.field_wifiEndFlag = paramCursor.getInt(i);
-      }
-      else if (emf == k)
-      {
-        this.field_updateTime = paramCursor.getLong(i);
-      }
-      else if (eQq == k)
-      {
-        this.field_songId = paramCursor.getInt(i);
-      }
-      else if (eQr == k)
-      {
-        this.field_songName = paramCursor.getString(i);
-      }
-      else if (eQs == k)
-      {
-        this.field_songSinger = paramCursor.getString(i);
-      }
-      else if (eQt == k)
-      {
-        this.field_songAlbum = paramCursor.getString(i);
-      }
-      else if (eQu == k)
-      {
-        this.field_songAlbumType = paramCursor.getInt(i);
-      }
-      else if (eQv == k)
-      {
-        this.field_songAlbumUrl = paramCursor.getString(i);
-      }
-      else if (eQw == k)
-      {
-        this.field_songHAlbumUrl = paramCursor.getString(i);
-      }
-      else if (eQx == k)
-      {
-        this.field_songAlbumLocalPath = paramCursor.getString(i);
-      }
-      else if (eQy == k)
-      {
-        this.field_songWifiUrl = paramCursor.getString(i);
-      }
-      else if (eQz == k)
-      {
-        this.field_songWapLinkUrl = paramCursor.getString(i);
-      }
-      else if (eQA == k)
-      {
-        this.field_songWebUrl = paramCursor.getString(i);
-      }
-      else if (elJ == k)
-      {
-        this.field_appId = paramCursor.getString(i);
-      }
-      else if (eQB == k)
-      {
-        this.field_songMediaId = paramCursor.getString(i);
-      }
-      else if (eQC == k)
-      {
-        this.field_songSnsAlbumUser = paramCursor.getString(i);
-      }
-      else if (eQD == k)
-      {
-        this.field_songSnsShareUser = paramCursor.getString(i);
-      }
-      else if (eQE == k)
-      {
-        this.field_songLyric = paramCursor.getString(i);
-      }
-      else if (eQF == k)
-      {
-        this.field_songBgColor = paramCursor.getInt(i);
-      }
-      else if (eQG == k)
-      {
-        this.field_songLyricColor = paramCursor.getInt(i);
-      }
-      else if (eQH == k)
-      {
-        this.field_songFileLength = paramCursor.getLong(i);
-      }
-      else if (eQI == k)
-      {
-        this.field_songWifiFileLength = paramCursor.getLong(i);
-      }
-      else
-      {
-        boolean bool;
-        if (eQJ == k)
+        return;
+        int j = arrayOfString.length;
+        int i = 0;
+        if (i < j)
         {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
+          int k = arrayOfString[i].hashCode();
+          if (elP == k)
           {
-            this.field_hideBanner = bool;
-            break;
+            this.field_msgId = paramCursor.getLong(i);
+            this.elL = true;
           }
-        }
-        if (eQK == k)
-        {
-          this.field_jsWebUrlDomain = paramCursor.getString(i);
-        }
-        else if (eQL == k)
-        {
-          this.field_isBlock = paramCursor.getInt(i);
-        }
-        else if (ekd == k)
-        {
-          this.field_startTime = paramCursor.getInt(i);
-        }
-        else if (eQM == k)
-        {
-          this.field_mimetype = paramCursor.getString(i);
-        }
-        else if (eQN == k)
-        {
-          this.field_protocol = paramCursor.getString(i);
-        }
-        else
-        {
-          if (eQO == k)
+          for (;;)
           {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_barBackToWebView = bool;
-              break;
+            i += 1;
+            break;
+            if (etW == k) {
+              this.field_msgSvrId = paramCursor.getLong(i);
+            } else if (type_HASHCODE == k) {
+              this.field_type = paramCursor.getInt(i);
+            } else if (elV == k) {
+              this.field_status = paramCursor.getInt(i);
+            } else if (erG == k) {
+              this.field_isSend = paramCursor.getInt(i);
+            } else if (eRV == k) {
+              this.field_isShowTimer = paramCursor.getInt(i);
+            } else if (emY == k) {
+              this.field_createTime = paramCursor.getLong(i);
+            } else if (etX == k) {
+              this.field_talker = paramCursor.getString(i);
+            } else if (eng == k) {
+              this.field_content = paramCursor.getString(i);
+            } else if (etY == k) {
+              this.field_imgPath = paramCursor.getString(i);
+            } else if (eRW == k) {
+              this.field_reserved = paramCursor.getString(i);
+            } else if (etZ == k) {
+              this.field_lvbuffer = paramCursor.getBlob(i);
+            } else if (eua == k) {
+              this.field_talkerId = paramCursor.getInt(i);
+            } else if (eRX == k) {
+              this.field_transContent = paramCursor.getString(i);
+            } else if (eRY == k) {
+              this.field_transBrandWording = paramCursor.getString(i);
+            } else if (eui == k) {
+              this.field_bizClientMsgId = paramCursor.getString(i);
+            } else if (erv == k) {
+              this.field_bizChatId = paramCursor.getLong(i);
+            } else if (eRZ == k) {
+              this.field_bizChatUserId = paramCursor.getString(i);
+            } else if (eLs == k) {
+              this.field_msgSeq = paramCursor.getLong(i);
+            } else if (eqO == k) {
+              this.field_flag = paramCursor.getInt(i);
+            } else if (eSa == k) {
+              try
+              {
+                byte[] arrayOfByte = paramCursor.getBlob(i);
+                if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+                  continue;
+                }
+                this.field_solitaireFoldInfo = ((bra)new bra().parseFrom(arrayOfByte));
+              }
+              catch (IOException localIOException)
+              {
+                ac.e("MicroMsg.SDK.BaseMsgInfo", localIOException.getMessage());
+              }
+            } else if (rowid_HASHCODE == k) {
+              this.systemRowid = paramCursor.getLong(i);
             }
           }
-          if (eQP == k) {
-            this.field_musicbar_url = paramCursor.getString(i);
-          } else if (eQQ == k) {
-            this.field_srcUsername = paramCursor.getString(i);
-          } else if (eQR == k) {
-            this.field_playbackRate = paramCursor.getDouble(i);
-          } else if (rowid_HASHCODE == k) {
-            this.systemRowid = paramCursor.getLong(i);
+        }
+        try
+        {
+          if ((this.field_lvbuffer != null) && (this.field_lvbuffer.length != 0))
+          {
+            paramCursor = new z();
+            i = paramCursor.cr(this.field_lvbuffer);
+            if (i != 0)
+            {
+              ac.e("MicroMsg.SDK.BaseMsgInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
+              return;
+            }
           }
+        }
+        catch (Exception paramCursor)
+        {
+          ac.e("MicroMsg.SDK.BaseMsgInfo", "get value failed");
+          return;
+        }
+      }
+      if (!paramCursor.eUE()) {
+        this.eSb = paramCursor.getString();
+      }
+      if (!paramCursor.eUE()) {
+        this.euk = paramCursor.getInt();
+      }
+      if (!paramCursor.eUE()) {
+        this.eul = paramCursor.getString();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSc = paramCursor.getInt();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSd = paramCursor.getInt();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSe = paramCursor.getInt();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSf = paramCursor.getInt();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSg = paramCursor.getInt();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSh = paramCursor.getInt();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSi = paramCursor.getString();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSj = paramCursor.getString();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSk = paramCursor.getString();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSl = paramCursor.getInt();
+      }
+      if (!paramCursor.eUE()) {
+        this.dvs = paramCursor.getString();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSm = paramCursor.getBuffer();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSn = paramCursor.getString();
+      }
+      if (!paramCursor.eUE()) {
+        this.eSo = paramCursor.getString();
+      }
+    } while (paramCursor.eUE());
+    this.eSp = paramCursor.getInt();
+  }
+  
+  public ContentValues convertTo()
+  {
+    try
+    {
+      if (this.etL)
+      {
+        localObject = new z();
+        ((z)localObject).eUF();
+        ((z)localObject).aKJ(this.eSb);
+        ((z)localObject).Yr(this.euk);
+        ((z)localObject).aKJ(this.eul);
+        ((z)localObject).Yr(this.eSc);
+        ((z)localObject).Yr(this.eSd);
+        ((z)localObject).Yr(this.eSe);
+        ((z)localObject).Yr(this.eSf);
+        ((z)localObject).Yr(this.eSg);
+        ((z)localObject).Yr(this.eSh);
+        ((z)localObject).aKJ(this.eSi);
+        ((z)localObject).aKJ(this.eSj);
+        ((z)localObject).aKJ(this.eSk);
+        ((z)localObject).Yr(this.eSl);
+        ((z)localObject).aKJ(this.dvs);
+        ((z)localObject).cs(this.eSm);
+        ((z)localObject).aKJ(this.eSn);
+        ((z)localObject).aKJ(this.eSo);
+        ((z)localObject).Yr(this.eSp);
+        this.field_lvbuffer = ((z)localObject).eUG();
+      }
+      localObject = new ContentValues();
+      if (this.elL) {
+        ((ContentValues)localObject).put("msgId", Long.valueOf(this.field_msgId));
+      }
+      if (this.etI) {
+        ((ContentValues)localObject).put("msgSvrId", Long.valueOf(this.field_msgSvrId));
+      }
+      if (this.__hadSettype) {
+        ((ContentValues)localObject).put("type", Integer.valueOf(this.field_type));
+      }
+      if (this.elS) {
+        ((ContentValues)localObject).put("status", Integer.valueOf(this.field_status));
+      }
+      if (this.err) {
+        ((ContentValues)localObject).put("isSend", Integer.valueOf(this.field_isSend));
+      }
+      if (this.eRP) {
+        ((ContentValues)localObject).put("isShowTimer", Integer.valueOf(this.field_isShowTimer));
+      }
+      if (this.emB) {
+        ((ContentValues)localObject).put("createTime", Long.valueOf(this.field_createTime));
+      }
+      if (this.etJ) {
+        ((ContentValues)localObject).put("talker", this.field_talker);
+      }
+      if (this.field_content == null) {
+        this.field_content = "";
+      }
+      if (this.emI) {
+        ((ContentValues)localObject).put("content", this.field_content);
+      }
+      if (this.etK) {
+        ((ContentValues)localObject).put("imgPath", this.field_imgPath);
+      }
+      if (this.eRQ) {
+        ((ContentValues)localObject).put("reserved", this.field_reserved);
+      }
+      if (this.etL) {
+        ((ContentValues)localObject).put("lvbuffer", this.field_lvbuffer);
+      }
+      if (this.etM) {
+        ((ContentValues)localObject).put("talkerId", Integer.valueOf(this.field_talkerId));
+      }
+      if (this.field_transContent == null) {
+        this.field_transContent = "";
+      }
+      if (this.eRR) {
+        ((ContentValues)localObject).put("transContent", this.field_transContent);
+      }
+      if (this.field_transBrandWording == null) {
+        this.field_transBrandWording = "";
+      }
+      if (this.eRS) {
+        ((ContentValues)localObject).put("transBrandWording", this.field_transBrandWording);
+      }
+      if (this.field_bizClientMsgId == null) {
+        this.field_bizClientMsgId = "";
+      }
+      if (this.etU) {
+        ((ContentValues)localObject).put("bizClientMsgId", this.field_bizClientMsgId);
+      }
+      if (this.erg) {
+        ((ContentValues)localObject).put("bizChatId", Long.valueOf(this.field_bizChatId));
+      }
+      if (this.field_bizChatUserId == null) {
+        this.field_bizChatUserId = "";
+      }
+      if (this.eRT) {
+        ((ContentValues)localObject).put("bizChatUserId", this.field_bizChatUserId);
+      }
+      if (this.eLm) {
+        ((ContentValues)localObject).put("msgSeq", Long.valueOf(this.field_msgSeq));
+      }
+      if (this.eqM) {
+        ((ContentValues)localObject).put("flag", Integer.valueOf(this.field_flag));
+      }
+      if ((!this.eRU) || (this.field_solitaireFoldInfo == null)) {}
+    }
+    catch (Exception localException)
+    {
+      try
+      {
+        Object localObject;
+        ((ContentValues)localObject).put("solitaireFoldInfo", this.field_solitaireFoldInfo.toByteArray());
+        if (this.systemRowid > 0L) {
+          ((ContentValues)localObject).put("rowid", Long.valueOf(this.systemRowid));
+        }
+        return localObject;
+        localException = localException;
+        ac.e("MicroMsg.SDK.BaseMsgInfo", "get value failed, %s", new Object[] { localException.getMessage() });
+      }
+      catch (IOException localIOException)
+      {
+        for (;;)
+        {
+          ac.e("MicroMsg.SDK.BaseMsgInfo", localIOException.getMessage());
         }
       }
     }
   }
   
-  public ContentValues convertTo()
+  public final String getContent()
   {
-    ContentValues localContentValues = new ContentValues();
-    if (this.ePA) {
-      localContentValues.put("musicId", this.field_musicId);
-    }
-    if (this.ePB) {
-      localContentValues.put("originMusicId", this.field_originMusicId);
-    }
-    if (this.ePC) {
-      localContentValues.put("musicType", Integer.valueOf(this.field_musicType));
-    }
-    if (this.ePD) {
-      localContentValues.put("downloadedLength", Long.valueOf(this.field_downloadedLength));
-    }
-    if (this.ePE) {
-      localContentValues.put("wifiDownloadedLength", Long.valueOf(this.field_wifiDownloadedLength));
-    }
-    if (this.ePF) {
-      localContentValues.put("endFlag", Integer.valueOf(this.field_endFlag));
-    }
-    if (this.ePG) {
-      localContentValues.put("wifiEndFlag", Integer.valueOf(this.field_wifiEndFlag));
-    }
-    if (this.emc) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
-    }
-    if (this.ePH) {
-      localContentValues.put("songId", Integer.valueOf(this.field_songId));
-    }
-    if (this.ePI) {
-      localContentValues.put("songName", this.field_songName);
-    }
-    if (this.ePJ) {
-      localContentValues.put("songSinger", this.field_songSinger);
-    }
-    if (this.ePK) {
-      localContentValues.put("songAlbum", this.field_songAlbum);
-    }
-    if (this.ePL) {
-      localContentValues.put("songAlbumType", Integer.valueOf(this.field_songAlbumType));
-    }
-    if (this.ePM) {
-      localContentValues.put("songAlbumUrl", this.field_songAlbumUrl);
-    }
-    if (this.ePN) {
-      localContentValues.put("songHAlbumUrl", this.field_songHAlbumUrl);
-    }
-    if (this.ePO) {
-      localContentValues.put("songAlbumLocalPath", this.field_songAlbumLocalPath);
-    }
-    if (this.ePP) {
-      localContentValues.put("songWifiUrl", this.field_songWifiUrl);
-    }
-    if (this.ePQ) {
-      localContentValues.put("songWapLinkUrl", this.field_songWapLinkUrl);
-    }
-    if (this.ePR) {
-      localContentValues.put("songWebUrl", this.field_songWebUrl);
-    }
-    if (this.els) {
-      localContentValues.put("appId", this.field_appId);
-    }
-    if (this.ePS) {
-      localContentValues.put("songMediaId", this.field_songMediaId);
-    }
-    if (this.ePT) {
-      localContentValues.put("songSnsAlbumUser", this.field_songSnsAlbumUser);
-    }
-    if (this.ePU) {
-      localContentValues.put("songSnsShareUser", this.field_songSnsShareUser);
-    }
-    if (this.ePV) {
-      localContentValues.put("songLyric", this.field_songLyric);
-    }
-    if (this.ePW) {
-      localContentValues.put("songBgColor", Integer.valueOf(this.field_songBgColor));
-    }
-    if (this.ePX) {
-      localContentValues.put("songLyricColor", Integer.valueOf(this.field_songLyricColor));
-    }
-    if (this.ePY) {
-      localContentValues.put("songFileLength", Long.valueOf(this.field_songFileLength));
-    }
-    if (this.ePZ) {
-      localContentValues.put("songWifiFileLength", Long.valueOf(this.field_songWifiFileLength));
-    }
-    if (this.eQa) {
-      localContentValues.put("hideBanner", Boolean.valueOf(this.field_hideBanner));
-    }
-    if (this.eQb) {
-      localContentValues.put("jsWebUrlDomain", this.field_jsWebUrlDomain);
-    }
-    if (this.eQc) {
-      localContentValues.put("isBlock", Integer.valueOf(this.field_isBlock));
-    }
-    if (this.ejW) {
-      localContentValues.put("startTime", Integer.valueOf(this.field_startTime));
-    }
-    if (this.eQd) {
-      localContentValues.put("mimetype", this.field_mimetype);
-    }
-    if (this.eQe) {
-      localContentValues.put("protocol", this.field_protocol);
-    }
-    if (this.eQf) {
-      localContentValues.put("barBackToWebView", Boolean.valueOf(this.field_barBackToWebView));
-    }
-    if (this.eQg) {
-      localContentValues.put("musicbar_url", this.field_musicbar_url);
-    }
-    if (this.eQh) {
-      localContentValues.put("srcUsername", this.field_srcUsername);
-    }
-    if (this.eQi) {
-      localContentValues.put("playbackRate", Double.valueOf(this.field_playbackRate));
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
+    return this.field_content;
+  }
+  
+  public final long getCreateTime()
+  {
+    return this.field_createTime;
+  }
+  
+  public final int getStatus()
+  {
+    return this.field_status;
+  }
+  
+  public int getType()
+  {
+    return this.field_type;
+  }
+  
+  public final void jA(int paramInt)
+  {
+    this.euk = paramInt;
+    this.etL = true;
+  }
+  
+  public final void jT(int paramInt)
+  {
+    this.field_isSend = paramInt;
+    this.err = true;
+  }
+  
+  public final void kd(int paramInt)
+  {
+    this.field_talkerId = paramInt;
+    this.etM = true;
+  }
+  
+  public final void ke(int paramInt)
+  {
+    this.eSc = paramInt;
+    this.etL = true;
+  }
+  
+  public final void kf(int paramInt)
+  {
+    this.eSd = paramInt;
+    this.etL = true;
+  }
+  
+  public final void kg(int paramInt)
+  {
+    this.eSe = paramInt;
+    this.etL = true;
+  }
+  
+  public final void kh(int paramInt)
+  {
+    this.eSg = paramInt;
+    this.etL = true;
+  }
+  
+  public final void ki(int paramInt)
+  {
+    this.eSh = paramInt;
+    this.etL = true;
+  }
+  
+  public final void kj(int paramInt)
+  {
+    this.eSl = paramInt;
+    this.etL = true;
+  }
+  
+  public final void kk(int paramInt)
+  {
+    this.eSp = paramInt;
+    this.etL = true;
+  }
+  
+  public final void oA(long paramLong)
+  {
+    this.field_createTime = paramLong;
+    this.emB = true;
+  }
+  
+  public final void oB(long paramLong)
+  {
+    this.field_bizChatId = paramLong;
+    this.erg = true;
+  }
+  
+  public final void oC(long paramLong)
+  {
+    this.field_msgSeq = paramLong;
+    this.eLm = true;
+  }
+  
+  public final void oz(long paramLong)
+  {
+    this.field_msgSvrId = paramLong;
+    this.etI = true;
+  }
+  
+  public final void qf(String paramString)
+  {
+    this.eul = paramString;
+    this.etL = true;
+  }
+  
+  public final void re(String paramString)
+  {
+    this.field_talker = paramString;
+    this.etJ = true;
+  }
+  
+  public final void rf(String paramString)
+  {
+    this.field_imgPath = paramString;
+    this.etK = true;
+  }
+  
+  public final void rg(String paramString)
+  {
+    this.field_reserved = paramString;
+    this.eRQ = true;
+  }
+  
+  public final void rh(String paramString)
+  {
+    this.field_transContent = paramString;
+    this.eRR = true;
+  }
+  
+  public final void ri(String paramString)
+  {
+    this.field_bizClientMsgId = paramString;
+    this.etU = true;
+  }
+  
+  public final void rj(String paramString)
+  {
+    this.eSb = paramString;
+    this.etL = true;
+  }
+  
+  public final void rk(String paramString)
+  {
+    this.eSj = paramString;
+    this.etL = true;
+  }
+  
+  public final void rl(String paramString)
+  {
+    this.eSk = paramString;
+    this.etL = true;
+  }
+  
+  public final void rm(String paramString)
+  {
+    this.eSn = paramString;
+    this.etL = true;
+  }
+  
+  public final void rn(String paramString)
+  {
+    this.eSo = paramString;
+    this.etL = true;
+  }
+  
+  public final void setContent(String paramString)
+  {
+    this.field_content = paramString;
+    this.emI = true;
+  }
+  
+  public final void setFlag(int paramInt)
+  {
+    this.field_flag = paramInt;
+    this.eqM = true;
+  }
+  
+  public final void setMsgId(long paramLong)
+  {
+    this.field_msgId = paramLong;
+    this.elL = true;
+  }
+  
+  public void setStatus(int paramInt)
+  {
+    this.field_status = paramInt;
+    this.elS = true;
+  }
+  
+  public final void setType(int paramInt)
+  {
+    this.field_type = paramInt;
+    this.__hadSettype = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.dy
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.ui.am;
 import com.tencent.mm.ui.tools.u;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,21 +29,21 @@ public class AtContactWidget
   extends LinearLayout
 {
   private View contentView;
-  private Activity jgS;
-  private TextView nkw;
-  private ImageView xkO;
-  private TextView xkP;
-  private PreviewContactView xkQ;
-  SnsUploadConfigView xkR;
-  private List<String> xkS;
-  private boolean xkT;
+  private Activity jHh;
+  private TextView nNp;
+  private ImageView yxG;
+  private TextView yxH;
+  private PreviewContactView yxI;
+  SnsUploadConfigView yxJ;
+  private List<String> yxK;
+  private boolean yxL;
   
   public AtContactWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97782);
-    this.xkS = new LinkedList();
-    this.xkT = false;
+    this.yxK = new LinkedList();
+    this.yxL = false;
     init(paramContext);
     AppMethodBeat.o(97782);
   }
@@ -53,34 +53,34 @@ public class AtContactWidget
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(97781);
-    this.xkS = new LinkedList();
-    this.xkT = false;
+    this.yxK = new LinkedList();
+    this.yxL = false;
     init(paramContext);
     AppMethodBeat.o(97781);
   }
   
-  private void dyJ()
+  private void dNg()
   {
     AppMethodBeat.i(97787);
-    if (this.xkS.size() > 0)
+    if (this.yxK.size() > 0)
     {
-      this.xkO.setImageDrawable(am.i(this.jgS, getWithDrawableId(), getContext().getResources().getColor(2131101171)));
+      this.yxG.setImageDrawable(am.k(this.jHh, getWithDrawableId(), getContext().getResources().getColor(2131101171)));
       AppMethodBeat.o(97787);
       return;
     }
-    this.xkO.setImageDrawable(am.i(this.jgS, getWithEmptyDrawableId(), getContext().getResources().getColor(2131100499)));
+    this.yxG.setImageDrawable(am.k(this.jHh, getWithEmptyDrawableId(), getContext().getResources().getColor(2131100499)));
     AppMethodBeat.o(97787);
   }
   
   private void init(Context paramContext)
   {
     AppMethodBeat.i(97785);
-    this.jgS = ((Activity)paramContext);
-    this.contentView = y.js(paramContext).inflate(getLayoutResource(), this);
-    this.xkQ = ((PreviewContactView)this.contentView.findViewById(2131296951));
-    this.xkO = ((ImageView)this.contentView.findViewById(2131296952));
-    this.xkP = ((TextView)this.contentView.findViewById(2131296954));
-    this.nkw = ((TextView)this.contentView.findViewById(2131296955));
+    this.jHh = ((Activity)paramContext);
+    this.contentView = z.jD(paramContext).inflate(getLayoutResource(), this);
+    this.yxI = ((PreviewContactView)this.contentView.findViewById(2131296951));
+    this.yxG = ((ImageView)this.contentView.findViewById(2131296952));
+    this.yxH = ((TextView)this.contentView.findViewById(2131296954));
+    this.nNp = ((TextView)this.contentView.findViewById(2131296955));
     this.contentView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -95,10 +95,10 @@ public class AtContactWidget
       public final void run()
       {
         AppMethodBeat.i(97780);
-        int i = (int)(f.aGH().density * 36.0F);
+        int i = (int)(f.aNu().density * 36.0F);
         if (i != 0)
         {
-          i = (AtContactWidget.b(AtContactWidget.this).getWidth() - AtContactWidget.c(AtContactWidget.this).getWidth() - AtContactWidget.d(AtContactWidget.this).getWidth() - (int)(f.aGH().density * 32.0F)) / i;
+          i = (AtContactWidget.b(AtContactWidget.this).getWidth() - AtContactWidget.c(AtContactWidget.this).getWidth() - AtContactWidget.d(AtContactWidget.this).getWidth() - (int)(f.aNu().density * 32.0F)) / i;
           if ((i > 0) && (i < 5))
           {
             AtContactWidget.e(AtContactWidget.this).setLineNum(i);
@@ -113,7 +113,7 @@ public class AtContactWidget
     AppMethodBeat.o(97785);
   }
   
-  public final boolean aG(Intent paramIntent)
+  public final boolean aI(Intent paramIntent)
   {
     AppMethodBeat.i(97786);
     paramIntent = paramIntent.getStringExtra("Select_Contact");
@@ -121,28 +121,28 @@ public class AtContactWidget
     if ((paramIntent == null) || (paramIntent.equals(""))) {}
     Object localObject1;
     Object localObject2;
-    for (paramIntent = new LinkedList();; paramIntent = bt.S(paramIntent.split(",")))
+    for (paramIntent = new LinkedList();; paramIntent = bs.S(paramIntent.split(",")))
     {
-      if (this.xkS == null) {
-        this.xkS = new LinkedList();
+      if (this.yxK == null) {
+        this.yxK = new LinkedList();
       }
-      this.xkS.clear();
+      this.yxK.clear();
       localObject1 = paramIntent.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        if (!this.xkS.contains(localObject2)) {
-          this.xkS.add(localObject2);
+        if (!this.yxK.contains(localObject2)) {
+          this.yxK.add(localObject2);
         }
       }
     }
-    if (this.xkQ != null) {
-      this.xkQ.setList(this.xkS);
+    if (this.yxI != null) {
+      this.yxI.setList(this.yxK);
     }
     int i;
-    if (this.nkw != null)
+    if (this.nNp != null)
     {
-      localObject1 = this.nkw;
+      localObject1 = this.nNp;
       localObject2 = getResources();
       if (paramIntent.isEmpty())
       {
@@ -150,51 +150,51 @@ public class AtContactWidget
         ((TextView)localObject1).setTextColor(((Resources)localObject2).getColor(i));
       }
     }
-    else if (this.xkT)
+    else if (this.yxL)
     {
-      ad.d("MicroMsg.AtContactWiget", "withList count " + this.xkS.size());
-      if ((!this.xkT) || (this.xkP == null) || (this.xkS.size() <= 0)) {
+      ac.d("MicroMsg.AtContactWiget", "withList count " + this.yxK.size());
+      if ((!this.yxL) || (this.yxH == null) || (this.yxK.size() <= 0)) {
         break label374;
       }
-      this.xkP.setVisibility(0);
-      if (this.xkS.size() >= 100) {
+      this.yxH.setVisibility(0);
+      if (this.yxK.size() >= 100) {
         break label352;
       }
-      this.xkP.setText(this.xkS.size());
-      this.xkP.setBackgroundResource(u.aG(getContext(), this.xkS.size()));
+      this.yxH.setText(this.yxK.size());
+      this.yxH.setBackgroundResource(u.aM(getContext(), this.yxK.size()));
     }
     for (;;)
     {
-      dyJ();
+      dNg();
       AppMethodBeat.o(97786);
       return true;
       i = 2131100464;
       break;
       label352:
-      this.xkP.setText("");
-      this.xkP.setBackgroundResource(2131689744);
+      this.yxH.setText("");
+      this.yxH.setBackgroundResource(2131689744);
       continue;
       label374:
-      this.xkP.setVisibility(8);
+      this.yxH.setVisibility(8);
     }
   }
   
-  public final void dyI()
+  public final void dNf()
   {
     AppMethodBeat.i(97784);
-    if (this.xkS == null) {
-      this.xkS = new LinkedList();
+    if (this.yxK == null) {
+      this.yxK = new LinkedList();
     }
-    this.xkS.clear();
-    if (this.xkQ != null) {
-      this.xkQ.setList(this.xkS);
+    this.yxK.clear();
+    if (this.yxI != null) {
+      this.yxI.setList(this.yxK);
     }
-    dyJ();
-    if (this.xkP != null) {
-      this.xkP.setVisibility(8);
+    dNg();
+    if (this.yxH != null) {
+      this.yxH.setVisibility(8);
     }
-    if (this.nkw != null) {
-      this.nkw.setTextColor(getResources().getColor(2131100711));
+    if (this.nNp != null) {
+      this.nNp.setTextColor(getResources().getColor(2131100711));
     }
     AppMethodBeat.o(97784);
   }
@@ -202,10 +202,10 @@ public class AtContactWidget
   public List<String> getAtList()
   {
     AppMethodBeat.i(97783);
-    if (this.xkS == null) {
-      this.xkS = new LinkedList();
+    if (this.yxK == null) {
+      this.yxK = new LinkedList();
     }
-    List localList = this.xkS;
+    List localList = this.yxK;
     AppMethodBeat.o(97783);
     return localList;
   }
@@ -229,9 +229,9 @@ public class AtContactWidget
   {
     AppMethodBeat.i(97788);
     PreviewContactView localPreviewContactView;
-    if (this.xkQ != null)
+    if (this.yxI != null)
     {
-      localPreviewContactView = this.xkQ;
+      localPreviewContactView = this.yxI;
       if (!paramBoolean) {
         break label36;
       }
@@ -247,16 +247,16 @@ public class AtContactWidget
   
   public void setShowAtNum(boolean paramBoolean)
   {
-    this.xkT = paramBoolean;
+    this.yxL = paramBoolean;
   }
   
   public void setShowAtTips(boolean paramBoolean)
   {
     AppMethodBeat.i(97789);
     TextView localTextView;
-    if ((this.contentView != null) && (this.nkw != null))
+    if ((this.contentView != null) && (this.nNp != null))
     {
-      localTextView = this.nkw;
+      localTextView = this.nNp;
       if (!paramBoolean) {
         break label43;
       }

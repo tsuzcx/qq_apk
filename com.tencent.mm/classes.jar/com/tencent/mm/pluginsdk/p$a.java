@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk;
 
 public final class p$a
 {
-  public static p BNw;
+  public static p DfG;
 }
 
 

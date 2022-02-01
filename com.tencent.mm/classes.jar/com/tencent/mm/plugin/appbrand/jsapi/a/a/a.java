@@ -1,315 +1,389 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a.a;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.i;
-import android.view.Display;
+import android.graphics.SurfaceTexture;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.magicbrush.MBRuntime;
+import com.tencent.magicbrush.ui.MagicBrushView;
+import com.tencent.magicbrush.ui.MagicBrushView.b;
+import com.tencent.magicbrush.ui.MagicBrushView.b.a;
+import com.tencent.magicbrush.ui.MagicBrushView.c;
+import com.tencent.magicbrush.ui.MagicBrushView.f;
+import com.tencent.magicbrush.ui.MagicBrushView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.phonenumber.PhoneItem;
-import com.tencent.mm.plugin.appbrand.phonenumber.q;
-import com.tencent.mm.plugin.appbrand.ui.MaxHeightRecyclerView;
-import com.tencent.mm.plugin.appbrand.widget.dialog.m;
-import com.tencent.mm.plugin.appbrand.widget.dialog.n;
-import d.y;
+import com.tencent.mm.plugin.appbrand.jsapi.f.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f.d;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.page.ae;
+import com.tencent.mm.sdk.platformtools.ac;
+import d.g.b.k;
+import d.l;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/realname_auth/AppBrandRealnameAuthDialog;", "Landroid/app/Dialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "value", "", "IDCardInfo", "getIDCardInfo", "()Ljava/lang/String;", "setIDCardInfo", "(Ljava/lang/String;)V", "appBrandName", "getAppBrandName", "setAppBrandName", "confirmWording", "getConfirmWording", "setConfirmWording", "Landroid/graphics/Bitmap;", "icon", "getIcon", "()Landroid/graphics/Bitmap;", "setIcon", "(Landroid/graphics/Bitmap;)V", "iconUrl", "getIconUrl", "setIconUrl", "", "isAuthCheck", "()Ljava/lang/Boolean;", "setAuthCheck", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "mAdapter", "Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter;", "mBtnAccept", "Landroid/widget/Button;", "mBtnReject", "mButtonGroup", "Landroid/view/View;", "mConfirmAssess", "Landroid/widget/CheckBox;", "mDialogContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "mExplainIv", "Landroid/widget/ImageView;", "mIDCardContainer", "Landroid/view/ViewGroup;", "mIDCardInfoTv", "Landroid/widget/TextView;", "mIconIv", "mNameTv", "mPhoneNumActionTv", "mPhoneNumContainer", "mPhoneWordingTv", "mProtocalContainer", "mProtocalTv", "mRealnameWordingTv", "mRecyclerView", "Lcom/tencent/mm/plugin/appbrand/ui/MaxHeightRecyclerView;", "mRequestTv", "mRootView", "onAccept", "Lkotlin/Function0;", "", "getOnAccept", "()Lkotlin/jvm/functions/Function0;", "setOnAccept", "(Lkotlin/jvm/functions/Function0;)V", "onAddPhoneNumber", "getOnAddPhoneNumber", "setOnAddPhoneNumber", "onCancel", "getOnCancel", "setOnCancel", "onExplain", "getOnExplain", "setOnExplain", "onManagePhoneNumber", "getOnManagePhoneNumber", "setOnManagePhoneNumber", "onPhoneItemSelect", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "getOnPhoneItemSelect", "()Lkotlin/jvm/functions/Function1;", "setOnPhoneItemSelect", "(Lkotlin/jvm/functions/Function1;)V", "onProtocalJump", "getOnProtocalJump", "setOnProtocalJump", "onReject", "getOnReject", "setOnReject", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "phoneItems", "getPhoneItems", "()Ljava/util/ArrayList;", "setPhoneItems", "(Ljava/util/ArrayList;)V", "phoneWording", "getPhoneWording", "setPhoneWording", "protocolJumpWording", "getProtocolJumpWording", "setProtocolJumpWording", "protocolPrefixWording", "getProtocolPrefixWording", "setProtocolPrefixWording", "realnameWording", "getRealnameWording", "setRealnameWording", "requstWording", "getRequstWording", "setRequstWording", "changeListHeightByRotation", "rotation", "", "dismiss", "getContentView", "getDialogHeight", "getPosition", "getSelectedPhoneItem", "isCancelable", "isCanceledOnTouchOutside", "onBackPressedEvent", "onDismiss", "onScreenOrientationChanged", "onShow", "dialogHelper", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/AppBrandWebGLPluginHandler;", "Lcom/tencent/luggage/xweb_ext/extendplugin/handler/BaseExtendPluginHandler;", "Lcom/tencent/magicbrush/ui/MagicBrushView$MBRendererView;", "()V", "componentView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "height", "", "inited", "", "pendingInvokeContexts", "", "Lcom/tencent/luggage/xweb_ext/extendplugin/IExtendPluginInvokeContext;", "surfaceListener", "Lcom/tencent/magicbrush/ui/MagicBrushView$MBSurfaceListener;", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "thisView", "Landroid/view/View;", "getThisView", "()Landroid/view/View;", "viewId", "viewType", "Lcom/tencent/magicbrush/ui/MagicBrushView$ViewType;", "getViewType", "()Lcom/tencent/magicbrush/ui/MagicBrushView$ViewType;", "virtualView", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "width", "clearPendingJsApi", "", "handleJsApi", "", "invokeContext", "handleJsApiInternal", "handlePluginDestroy", "handlePluginReady", "handlePluginTouch", "event", "Landroid/view/MotionEvent;", "insert", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "data", "Lorg/json/JSONObject;", "jsApi", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "callbackId", "isPluginReady", "remove", "runOnJsThread", "runnable", "Ljava/lang/Runnable;", "setSurfaceListener", "l", "switchToRecordableMode", "forceRecreate", "recordable", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "success", "Ljava/lang/Void;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "update", "updateSurfaceTexture", "Companion", "plugin-appbrand-integration_release"})
 public final class a
-  extends Dialog
-  implements com.tencent.mm.plugin.appbrand.widget.dialog.k
+  extends com.tencent.luggage.k.a.b.a
+  implements MagicBrushView.b
 {
-  public View hIZ;
-  public String iconUrl;
-  public ImageView jFL;
-  public TextView jFM;
-  public TextView jFN;
-  private ImageView jFO;
-  public ViewGroup jFP;
-  public TextView jFQ;
-  public TextView jFR;
-  private ViewGroup jFS;
-  public TextView jFT;
-  private MaxHeightRecyclerView jFU;
-  private TextView jFV;
-  public ViewGroup jFW;
-  public CheckBox jFX;
-  public TextView jFY;
-  private View jFZ;
-  public Button jGa;
-  private Button jGb;
-  private m jGc;
-  private q jGd;
-  public String jGe;
-  public String jGf;
-  public String jGg;
-  public String jGh;
-  public Boolean jGi;
-  public String jGj;
-  public String jGk;
-  public String jGl;
-  public String jGm;
-  public ArrayList<PhoneItem> jGn;
-  public d.g.a.a<y> jGo;
-  public d.g.a.a<y> jGp;
-  public d.g.a.a<y> jGq;
-  public d.g.a.a<y> jGr;
-  public d.g.a.a<y> jGs;
-  public d.g.a.a<y> jGt;
-  public d.g.a.a<y> jGu;
+  public static final a kok;
+  private MagicBrushView.c cpl;
+  private volatile boolean fJw;
+  private int height;
+  private ae koh;
+  private final List<com.tencent.luggage.k.a.a> koi;
+  private MagicBrushView koj;
+  private SurfaceTexture surfaceTexture;
+  private int viewId;
+  private int width;
   
-  public a(Context paramContext)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(50477);
-    paramContext = View.inflate(paramContext, 2131493034, null);
-    d.g.b.k.g(paramContext, "View.inflate(context, R.…uth_request_dialog, null)");
-    this.hIZ = paramContext;
-    this.jGn = new ArrayList();
-    paramContext = this.hIZ.findViewById(2131304100);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_icon)");
-    this.jFL = ((ImageView)paramContext);
-    paramContext = this.hIZ.findViewById(2131304102);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_name)");
-    this.jFM = ((TextView)paramContext);
-    paramContext = this.hIZ.findViewById(2131304095);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_apply_wording)");
-    this.jFN = ((TextView)paramContext);
-    paramContext = this.hIZ.findViewById(2131304106);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_right_icon)");
-    this.jFO = ((ImageView)paramContext);
-    this.jFO.setOnClickListener((View.OnClickListener)new a.1(this));
-    paramContext = this.hIZ.findViewById(2131300904);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R…d.id_card_info_container)");
-    this.jFP = ((ViewGroup)paramContext);
-    paramContext = this.hIZ.findViewById(2131300906);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R…d_card_info_request_desc)");
-    this.jFQ = ((TextView)paramContext);
-    paramContext = this.hIZ.findViewById(2131300905);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R…id_card_info_detail_desc)");
-    this.jFR = ((TextView)paramContext);
-    paramContext = this.hIZ.findViewById(2131303214);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R…phone_num_info_container)");
-    this.jFS = ((ViewGroup)paramContext);
-    paramContext = this.hIZ.findViewById(2131303215);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R…ne_num_info_request_desc)");
-    this.jFT = ((TextView)paramContext);
-    paramContext = this.hIZ.findViewById(2131304104);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_recyclerview)");
-    this.jFU = ((MaxHeightRecyclerView)paramContext);
-    this.jFU.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    this.jFU.setItemAnimator(null);
-    paramContext = this.hIZ.findViewById(2131304099);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_function)");
-    this.jFV = ((TextView)paramContext);
-    this.jFV.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(187178);
+    kok = new a((byte)0);
+    AppMethodBeat.o(187178);
+  }
+  
+  public a()
+  {
+    AppMethodBeat.i(187177);
+    this.koi = ((List)new ArrayList());
+    this.width = -1;
+    this.height = -1;
+    AppMethodBeat.o(187177);
+  }
+  
+  private static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(187175);
+    Handler localHandler = paramc.aUU();
+    k.g(localHandler, "component.asyncHandler");
+    if (k.g(localHandler.getLooper(), Looper.myLooper()))
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(50458);
-        switch (this.jGv.jGn.size())
-        {
-        default: 
-          this.jGv.jGu.invoke();
-          AppMethodBeat.o(50458);
-          return;
-        }
-        this.jGv.jGt.invoke();
-        AppMethodBeat.o(50458);
+      paramRunnable.run();
+      AppMethodBeat.o(187175);
+      return;
+    }
+    paramc.aUU().post(paramRunnable);
+    AppMethodBeat.o(187175);
+  }
+  
+  private final void bgv()
+  {
+    AppMethodBeat.i(187169);
+    ac.i("MicroMsg.AppBrand.SameLayer.AppBrandWebGLPluginHandler", "update surfaceTexture[" + this.surfaceTexture + "]: width:" + this.width + ", height:" + this.height + ' ');
+    MagicBrushView.c localc = this.cpl;
+    if (localc != null)
+    {
+      SurfaceTexture localSurfaceTexture = this.surfaceTexture;
+      if (localSurfaceTexture == null) {
+        k.fOy();
       }
-    });
-    paramContext = this.hIZ.findViewById(2131303538);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.protocal_container)");
-    this.jFW = ((ViewGroup)paramContext);
-    paramContext = this.hIZ.findViewById(2131300908);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.idcard_checkbox)");
-    this.jFX = ((CheckBox)paramContext);
-    paramContext = this.hIZ.findViewById(2131304790);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.show_protocal)");
-    this.jFY = ((TextView)paramContext);
-    paramContext = this.hIZ.findViewById(2131297653);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.button_group)");
-    this.jFZ = paramContext;
-    paramContext = this.hIZ.findViewById(2131304096);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_cancel)");
-    this.jGb = ((Button)paramContext);
-    paramContext = this.hIZ.findViewById(2131304103);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_ok)");
-    this.jGa = ((Button)paramContext);
-    this.jGa.setOnClickListener((View.OnClickListener)new a.3(this));
-    this.jFX.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new a.4(this));
-    this.jGb.setOnClickListener((View.OnClickListener)new a.5(this));
-    this.jGo = ((d.g.a.a)a.a.jGw);
-    this.jGp = ((d.g.a.a)a.g.jGC);
-    this.jGq = ((d.g.a.a)a.c.jGy);
-    this.jGr = ((d.g.a.a)a.f.jGB);
-    this.jGs = ((d.g.a.a)a.d.jGz);
-    this.jGt = ((d.g.a.a)a.b.jGx);
-    this.jGu = ((d.g.a.a)a.e.jGA);
-    AppMethodBeat.o(50477);
-  }
-  
-  private final void rx(int paramInt)
-  {
-    AppMethodBeat.i(50476);
-    if ((paramInt == 1) || (paramInt == 3)) {}
-    for (double d = 1.5D;; d = 2.5D)
-    {
-      MaxHeightRecyclerView localMaxHeightRecyclerView = this.jFU;
-      Context localContext = getContext();
-      d.g.b.k.g(localContext, "context");
-      localMaxHeightRecyclerView.setMaxHeight((int)(d * localContext.getResources().getDimensionPixelSize(2131165886)));
-      AppMethodBeat.o(50476);
+      localc.a(localSurfaceTexture, this.width, this.height, false);
+      AppMethodBeat.o(187169);
       return;
     }
+    AppMethodBeat.o(187169);
   }
   
-  public final void a(m paramm)
+  private final void bgw()
   {
-    AppMethodBeat.i(50475);
-    this.jGc = paramm;
-    Object localObject = getContext().getSystemService("window");
-    paramm = (m)localObject;
-    if (!(localObject instanceof WindowManager)) {
-      paramm = null;
-    }
-    paramm = (WindowManager)paramm;
-    if (paramm != null)
+    AppMethodBeat.i(187170);
+    List localList = this.koi;
+    if (localList.isEmpty())
     {
-      localObject = n.KDx;
-      localObject = getContext();
-      d.g.b.k.g(localObject, "context");
-      View localView1 = this.hIZ;
-      View localView2 = this.jFZ;
-      Display localDisplay = paramm.getDefaultDisplay();
-      d.g.b.k.g(localDisplay, "it.defaultDisplay");
-      n.a((Context)localObject, localView1, localView2, localDisplay.getRotation(), false);
-      paramm = paramm.getDefaultDisplay();
-      d.g.b.k.g(paramm, "it.defaultDisplay");
-      rx(paramm.getRotation());
-      AppMethodBeat.o(50475);
+      AppMethodBeat.o(187170);
       return;
     }
-    AppMethodBeat.o(50475);
+    Iterator localIterator = ((Iterable)localList).iterator();
+    while (localIterator.hasNext()) {
+      x((com.tencent.luggage.k.a.a)localIterator.next());
+    }
+    localList.clear();
+    AppMethodBeat.o(187170);
   }
   
-  public final boolean aEu()
+  private final void x(final com.tencent.luggage.k.a.a parama)
   {
-    return false;
+    AppMethodBeat.i(187173);
+    if (!(parama instanceof com.tencent.mm.plugin.appbrand.i.b))
+    {
+      AppMethodBeat.o(187173);
+      return;
+    }
+    com.tencent.mm.plugin.appbrand.jsapi.c localc = ((com.tencent.mm.plugin.appbrand.i.b)parama).CM();
+    k.g(localc, "invokeContext.component");
+    a(localc, (Runnable)new b(this, parama));
+    AppMethodBeat.o(187173);
   }
   
-  public final boolean aEv()
+  public final void EC()
   {
-    return false;
+    AppMethodBeat.i(187171);
+    ac.i("MicroMsg.AppBrand.SameLayer.AppBrandWebGLPluginHandler", "plugin destroyed viewId: " + this.viewId);
+    super.EC();
+    SurfaceTexture localSurfaceTexture = this.surfaceTexture;
+    if (localSurfaceTexture != null)
+    {
+      MagicBrushView.c localc = this.cpl;
+      if (localc != null) {
+        localc.b(localSurfaceTexture, false);
+      }
+    }
+    this.surfaceTexture = null;
+    AppMethodBeat.o(187171);
   }
   
-  public final void dismiss()
+  public final void a(boolean paramBoolean1, boolean paramBoolean2, d.g.a.b<? super Boolean, Void> paramb, MBRuntime paramMBRuntime)
   {
-    AppMethodBeat.i(50472);
-    super.dismiss();
-    onCancel();
-    AppMethodBeat.o(50472);
+    AppMethodBeat.i(187176);
+    k.h(paramb, "callback");
+    k.h(paramMBRuntime, "runtime");
+    AppMethodBeat.o(187176);
   }
   
-  public final View getContentView()
+  public final void e(SurfaceTexture paramSurfaceTexture)
   {
-    return this.hIZ;
+    AppMethodBeat.i(187168);
+    k.h(paramSurfaceTexture, "surfaceTexture");
+    super.e(paramSurfaceTexture);
+    ac.i("MicroMsg.AppBrand.SameLayer.AppBrandWebGLPluginHandler", "handlePluginReady mViewId:" + this.viewId + " inited:" + this.fJw + " id:" + this.id);
+    SurfaceTexture localSurfaceTexture = this.surfaceTexture;
+    if (localSurfaceTexture != null)
+    {
+      ac.i("MicroMsg.AppBrand.SameLayer.AppBrandWebGLPluginHandler", "destroy previous surface ".concat(String.valueOf(localSurfaceTexture)));
+      MagicBrushView.c localc = this.cpl;
+      if (localc != null) {
+        localc.b(localSurfaceTexture, false);
+      }
+    }
+    this.surfaceTexture = paramSurfaceTexture;
+    if (this.fJw)
+    {
+      bgv();
+      AppMethodBeat.o(187168);
+      return;
+    }
+    bgw();
+    this.fJw = true;
+    AppMethodBeat.o(187168);
   }
   
-  public final int getPosition()
-  {
-    return 2;
-  }
-  
-  public final boolean isCancelable()
+  public final boolean g(com.tencent.luggage.k.a.a parama)
   {
     return true;
   }
   
-  public final void onCancel()
+  public final Object getSurface()
   {
-    AppMethodBeat.i(50473);
-    this.jGq.invoke();
-    AppMethodBeat.o(50473);
+    AppMethodBeat.i(187179);
+    Object localObject = MagicBrushView.b.a.a(this);
+    AppMethodBeat.o(187179);
+    return localObject;
   }
   
-  public final void pi(int paramInt)
+  public final View getThisView()
   {
-    AppMethodBeat.i(50474);
-    Object localObject = n.KDx;
-    localObject = getContext();
-    d.g.b.k.g(localObject, "context");
-    n.a((Context)localObject, this.hIZ, this.jFZ, paramInt, false);
-    rx(paramInt);
-    AppMethodBeat.o(50474);
+    return null;
   }
   
-  public final void s(ArrayList<PhoneItem> paramArrayList)
+  public final MagicBrushView.h getViewType()
   {
-    AppMethodBeat.i(50471);
-    d.g.b.k.h(paramArrayList, "value");
-    this.jGn.clear();
-    this.jGn.addAll((Collection)paramArrayList);
-    com.tencent.mm.plugin.appbrand.aa.l.runOnUiThread((Runnable)new h(this));
-    AppMethodBeat.o(50471);
+    return MagicBrushView.h.cpA;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
-  static final class h
+  public final String h(com.tencent.luggage.k.a.a parama)
+  {
+    AppMethodBeat.i(187172);
+    k.h(parama, "invokeContext");
+    ac.v("MicroMsg.AppBrand.SameLayer.AppBrandWebGLPluginHandler", "handleJsApi " + parama.Ef());
+    if (this.fJw) {
+      x(parama);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(187172);
+      return null;
+      this.koi.add(parama);
+    }
+  }
+  
+  public final void l(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(187174);
+    if (paramMotionEvent != null)
+    {
+      MagicBrushView localMagicBrushView = this.koj;
+      if (localMagicBrushView != null)
+      {
+        localMagicBrushView.onTouchEvent(paramMotionEvent);
+        AppMethodBeat.o(187174);
+        return;
+      }
+      AppMethodBeat.o(187174);
+      return;
+    }
+    AppMethodBeat.o(187174);
+  }
+  
+  public final void setSurfaceListener(MagicBrushView.c paramc)
+  {
+    this.cpl = paramc;
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/AppBrandWebGLPluginHandler$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  public static final class a {}
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  static final class b
     implements Runnable
   {
-    h(a parama) {}
+    b(a parama, com.tencent.luggage.k.a.a parama1) {}
     
     public final void run()
     {
-      AppMethodBeat.i(50469);
-      Object localObject = this.jGv;
-      Context localContext = this.jGv.getContext();
-      d.g.b.k.g(localContext, "context");
-      a.a((a)localObject, new q("", localContext, this.jGv.jGn));
-      a.b(this.jGv).setAdapter((RecyclerView.a)a.a(this.jGv));
-      if (this.jGv.jGn.size() == 0)
+      AppMethodBeat.i(187163);
+      Object localObject1 = ((com.tencent.mm.plugin.appbrand.i.b)parama).bcS();
+      com.tencent.mm.plugin.appbrand.jsapi.c localc;
+      Object localObject2;
+      m localm;
+      if ((localObject1 instanceof com.tencent.mm.plugin.appbrand.jsapi.a.a.a.b))
       {
-        a.c(this.jGv).setVisibility(8);
-        AppMethodBeat.o(50469);
+        localObject1 = this.kol;
+        localc = ((com.tencent.mm.plugin.appbrand.i.b)parama).CM();
+        k.g(localc, "invokeContext.component");
+        localObject2 = ((com.tencent.mm.plugin.appbrand.i.b)parama).Ak();
+        k.g(localObject2, "invokeContext.data");
+        localm = ((com.tencent.mm.plugin.appbrand.i.b)parama).bcS();
+        k.g(localm, "invokeContext.jsApi");
+        a.a((a)localObject1, localc, (JSONObject)localObject2, localm, ((com.tencent.mm.plugin.appbrand.i.b)parama).bcR());
+        AppMethodBeat.o(187163);
         return;
       }
-      if (this.jGv.jGn.size() == 1)
+      if ((localObject1 instanceof com.tencent.mm.plugin.appbrand.jsapi.a.a.a.d))
       {
-        a.c(this.jGv).setVisibility(0);
-        localObject = a.b(this.jGv).getAdapter();
-        if (localObject != null) {
-          ((RecyclerView.a)localObject).notifyDataSetChanged();
+        localObject1 = this.kol;
+        localc = ((com.tencent.mm.plugin.appbrand.i.b)parama).CM();
+        k.g(localc, "invokeContext.component");
+        localObject2 = ((com.tencent.mm.plugin.appbrand.i.b)parama).Ak();
+        k.g(localObject2, "invokeContext.data");
+        localm = ((com.tencent.mm.plugin.appbrand.i.b)parama).bcS();
+        k.g(localm, "invokeContext.jsApi");
+        a.b((a)localObject1, localc, (JSONObject)localObject2, localm, ((com.tencent.mm.plugin.appbrand.i.b)parama).bcR());
+        AppMethodBeat.o(187163);
+        return;
+      }
+      if ((localObject1 instanceof com.tencent.mm.plugin.appbrand.jsapi.a.a.a.c))
+      {
+        localObject1 = this.kol;
+        localc = ((com.tencent.mm.plugin.appbrand.i.b)parama).CM();
+        k.g(localc, "invokeContext.component");
+        k.g(((com.tencent.mm.plugin.appbrand.i.b)parama).Ak(), "invokeContext.data");
+        localObject2 = ((com.tencent.mm.plugin.appbrand.i.b)parama).bcS();
+        k.g(localObject2, "invokeContext.jsApi");
+        a.a((a)localObject1, localc, (m)localObject2, ((com.tencent.mm.plugin.appbrand.i.b)parama).bcR());
+      }
+      AppMethodBeat.o(187163);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/AppBrandWebGLPluginHandler$insert$1$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnDestroyListener;", "onDestroy", "", "plugin-appbrand-integration_release"})
+  public static final class c
+    implements f.c
+  {
+    c(a parama) {}
+    
+    public final void onDestroy()
+    {
+      AppMethodBeat.i(187164);
+      SurfaceTexture localSurfaceTexture = a.a(this.kol);
+      if (localSurfaceTexture != null)
+      {
+        MagicBrushView.c localc = a.c(this.kol);
+        if (localc != null) {
+          localc.b(localSurfaceTexture, false);
         }
-        a.d(this.jGv).setText((CharSequence)this.jGv.getContext().getString(2131756029));
-        AppMethodBeat.o(50469);
+        a.b(this.kol);
+      }
+      a.d(this.kol).b((f.c)this);
+      AppMethodBeat.o(187164);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/AppBrandWebGLPluginHandler$insert$2$1", "Lcom/tencent/magicbrush/ui/MagicBrushView$OnPreparedListener;", "onPrepared", "", "plugin-appbrand-integration_release"})
+  public static final class d
+    implements MagicBrushView.f
+  {
+    d(a parama, com.tencent.magicbrush.d paramd, com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt, m paramm, boolean paramBoolean) {}
+    
+    public final void rB()
+    {
+      AppMethodBeat.i(187165);
+      this.koo.h(this.kop, this.koq.LM("ok"));
+      AppMethodBeat.o(187165);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onForeground", "com/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/AppBrandWebGLPluginHandler$insert$3$1"})
+  static final class e
+    implements f.d
+  {
+    e(a parama, com.tencent.mm.plugin.appbrand.jsapi.c paramc, com.tencent.magicbrush.d paramd) {}
+    
+    public final void onForeground()
+    {
+      AppMethodBeat.i(187166);
+      ac.i("MicroMsg.AppBrand.SameLayer.AppBrandWebGLPluginHandler", "foreground");
+      Object localObject = com.tencent.mm.plugin.appbrand.jsapi.a.a.knN;
+      localObject = ((ae)this.koo).getAppId();
+      k.g(localObject, "component.appId");
+      localObject = com.tencent.mm.plugin.appbrand.jsapi.a.a.a.Me((String)localObject);
+      ((com.tencent.mm.plugin.appbrand.jsapi.a.a)localObject).sy(a.e(this.kol));
+      if (((com.tencent.mm.plugin.appbrand.jsapi.a.a)localObject).bgt() == 1) {
+        this.kon.FJ();
+      }
+      AppMethodBeat.o(187166);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onBackground", "com/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/AppBrandWebGLPluginHandler$insert$3$3"})
+  static final class f
+    implements f.b
+  {
+    f(a parama, com.tencent.mm.plugin.appbrand.jsapi.c paramc, com.tencent.magicbrush.d paramd) {}
+    
+    public final void onBackground()
+    {
+      AppMethodBeat.i(187167);
+      ac.i("MicroMsg.AppBrand.SameLayer.AppBrandWebGLPluginHandler", "background");
+      Object localObject = ((ae)this.koo).getRuntime();
+      k.g(localObject, "component.runtime");
+      if (((o)localObject).isDestroyed())
+      {
+        AppMethodBeat.o(187167);
         return;
       }
-      a.c(this.jGv).setVisibility(0);
-      localObject = a.b(this.jGv).getAdapter();
-      if (localObject != null) {
-        ((RecyclerView.a)localObject).notifyDataSetChanged();
+      localObject = com.tencent.mm.plugin.appbrand.jsapi.a.a.knN;
+      localObject = ((ae)this.koo).getAppId();
+      k.g(localObject, "component.appId");
+      localObject = com.tencent.mm.plugin.appbrand.jsapi.a.a.a.Me((String)localObject);
+      ((com.tencent.mm.plugin.appbrand.jsapi.a.a)localObject).sz(a.e(this.kol));
+      if (((com.tencent.mm.plugin.appbrand.jsapi.a.a)localObject).bgt() == 0) {
+        this.kon.FK();
       }
-      a.d(this.jGv).setText((CharSequence)this.jGv.getContext().getString(2131756027));
-      AppMethodBeat.o(50469);
+      AppMethodBeat.o(187167);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.a.a.a
  * JD-Core Version:    0.7.0.1
  */

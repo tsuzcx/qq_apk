@@ -1,19 +1,18 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bsz;
-import com.tencent.mm.protocal.protobuf.bta;
-import com.tencent.mm.protocal.protobuf.btd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bxq;
+import com.tencent.mm.protocal.protobuf.bxr;
+import com.tencent.mm.protocal.protobuf.bxu;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
@@ -29,14 +28,14 @@ public final class ac
   {
     AppMethodBeat.i(131102);
     b.a locala = new b.a();
-    locala.gUU = new bsz();
-    locala.gUV = new bta();
+    locala.hvt = new bxq();
+    locala.hvu = new bxr();
     locala.uri = "/cgi-bin/micromsg-bin/newgetinvitefriend";
     locala.funcId = 135;
     locala.reqCmdId = 23;
     locala.respCmdId = 1000000023;
-    this.rr = locala.atI();
-    ((bsz)this.rr.gUS.gUX).DFK = paramInt;
+    this.rr = locala.aAz();
+    ((bxq)this.rr.hvr.hvw).Fbe = paramInt;
     AppMethodBeat.o(131102);
   }
   
@@ -57,29 +56,29 @@ public final class ac
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131104);
-    paramq = (bta)this.rr.gUT.gUX;
-    ad.d("MicroMsg.NetSceneGetInviteFriend", "friend:" + paramq.sdt.size() + " group:" + paramq.GroupList.size());
+    paramq = (bxr)this.rr.hvs.hvw;
+    com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.NetSceneGetInviteFriend", "friend:" + paramq.tln.size() + " group:" + paramq.GroupList.size());
     paramArrayOfByte = new HashSet();
     LinkedList localLinkedList = new LinkedList();
     paramInt1 = 0;
-    while (paramInt1 < paramq.DQa)
+    while (paramInt1 < paramq.Fmr)
     {
-      if (!paramArrayOfByte.contains(((btd)paramq.sdt.get(paramInt1)).mAQ))
+      if (!paramArrayOfByte.contains(((bxu)paramq.tln.get(paramInt1)).ncR))
       {
-        localLinkedList.add(paramq.sdt.get(paramInt1));
-        paramArrayOfByte.add(((btd)paramq.sdt.get(paramInt1)).mAQ);
+        localLinkedList.add(paramq.tln.get(paramInt1));
+        paramArrayOfByte.add(((bxu)paramq.tln.get(paramInt1)).ncR);
       }
       paramInt1 += 1;
     }
-    paramq.sdt = localLinkedList;
-    paramq.DQa = localLinkedList.size();
+    paramq.tln = localLinkedList;
+    paramq.Fmr = localLinkedList.size();
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(131104);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.ac
  * JD-Core Version:    0.7.0.1
  */

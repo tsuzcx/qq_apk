@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools.emojistore;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class EmojiStoreSearchWebViewUI
   extends BaseEmojiStoreSearchWebViewUI
@@ -14,11 +14,11 @@ public class EmojiStoreSearchWebViewUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void x(int paramInt, Bundle paramBundle)
+  public final void y(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(80478);
-    ad.i("MicroMsg.emoji.EmojiStoreSearchWebViewUI", "handleEmojiStoreAction action:%d", new Object[] { Integer.valueOf(paramInt) });
-    super.x(paramInt, paramBundle);
+    ac.i("MicroMsg.emoji.EmojiStoreSearchWebViewUI", "handleEmojiStoreAction action:%d", new Object[] { Integer.valueOf(paramInt) });
+    super.y(paramInt, paramBundle);
     AppMethodBeat.o(80478);
   }
 }

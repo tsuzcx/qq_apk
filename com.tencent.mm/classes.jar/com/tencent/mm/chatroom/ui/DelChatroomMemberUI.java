@@ -16,18 +16,18 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.aj;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.roomsdk.a.b.b;
 import com.tencent.mm.roomsdk.a.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.w;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.x;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -37,12 +37,12 @@ import java.util.List;
 
 public class DelChatroomMemberUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
   private String chatroomName;
-  private w fql;
-  private a frh;
-  private LinkedList<String> fri;
+  private x ftP;
+  private a fuO;
+  private LinkedList<String> fuP;
   private ListView mListView;
   private int scene;
   private p tipDialog;
@@ -50,7 +50,7 @@ public class DelChatroomMemberUI
   public DelChatroomMemberUI()
   {
     AppMethodBeat.i(12641);
-    this.fri = new LinkedList();
+    this.fuP = new LinkedList();
     AppMethodBeat.o(12641);
   }
   
@@ -64,24 +64,24 @@ public class DelChatroomMemberUI
     AppMethodBeat.i(12645);
     setMMTitle(2131762610);
     this.mListView = ((ListView)findViewById(2131302235));
-    this.frh = new a();
-    a locala = this.frh;
-    Object localObject = this.fri;
+    this.fuO = new a();
+    a locala = this.fuO;
+    Object localObject = this.fuP;
     if (localObject != null)
     {
-      ad.i("MicroMsg.DelChatroomMemberAdapter", "initData members.size %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
-      locala.frn.clear();
+      ac.i("MicroMsg.DelChatroomMemberAdapter", "initData members.size %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+      locala.fuU.clear();
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
-        af localaf = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(str);
-        if ((localaf != null) && (!bt.isNullOrNil(localaf.field_username)) && (localaf.field_username.equals(str))) {
-          locala.frn.add(localaf);
+        ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(str);
+        if ((localai != null) && (!bs.isNullOrNil(localai.field_username)) && (localai.field_username.equals(str))) {
+          locala.fuU.add(localai);
         }
       }
     }
-    this.mListView.setAdapter(this.frh);
+    this.mListView.setAdapter(this.fuO);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -107,10 +107,10 @@ public class DelChatroomMemberUI
     while (i < j)
     {
       Object localObject = paramBundle[i];
-      this.fri.add(localObject);
+      this.fuP.add(localObject);
       i += 1;
     }
-    this.fql = ((c)com.tencent.mm.kernel.g.ab(c.class)).apV().tH(this.chatroomName);
+    this.ftP = ((c)com.tencent.mm.kernel.g.ab(c.class)).awK().xN(this.chatroomName);
     initView();
     AppMethodBeat.o(12642);
   }
@@ -132,7 +132,7 @@ public class DelChatroomMemberUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(12646);
-    ad.i("MicroMsg.DelChatroomMemberUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ac.i("MicroMsg.DelChatroomMemberUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
@@ -148,28 +148,28 @@ public class DelChatroomMemberUI
   final class a
     extends BaseAdapter
   {
-    List<af> frn;
+    List<ai> fuU;
     
     a()
     {
       AppMethodBeat.i(12636);
-      this.frn = new LinkedList();
+      this.fuU = new LinkedList();
       AppMethodBeat.o(12636);
     }
     
-    public final String b(af paramaf)
+    public final String b(ai paramai)
     {
       AppMethodBeat.i(12640);
-      if (!bt.isNullOrNil(paramaf.field_conRemark)) {}
-      for (Object localObject2 = paramaf.field_conRemark;; localObject2 = DelChatroomMemberUI.b(DelChatroomMemberUI.this, paramaf.field_username))
+      if (!bs.isNullOrNil(paramai.field_conRemark)) {}
+      for (Object localObject2 = paramai.field_conRemark;; localObject2 = DelChatroomMemberUI.b(DelChatroomMemberUI.this, paramai.field_username))
       {
         Object localObject1 = localObject2;
-        if (bt.isNullOrNil((String)localObject2)) {
-          localObject1 = paramaf.field_conRemark;
+        if (bs.isNullOrNil((String)localObject2)) {
+          localObject1 = paramai.field_conRemark;
         }
         localObject2 = localObject1;
-        if (bt.isNullOrNil((String)localObject1)) {
-          localObject2 = paramaf.ZW();
+        if (bs.isNullOrNil((String)localObject1)) {
+          localObject2 = paramai.aaR();
         }
         AppMethodBeat.o(12640);
         return localObject2;
@@ -179,7 +179,7 @@ public class DelChatroomMemberUI
     public final int getCount()
     {
       AppMethodBeat.i(12637);
-      int i = this.frn.size();
+      int i = this.fuU.size();
       AppMethodBeat.o(12637);
       return i;
     }
@@ -187,7 +187,7 @@ public class DelChatroomMemberUI
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(12638);
-      Object localObject = this.frn.get(paramInt);
+      Object localObject = this.fuU.get(paramInt);
       AppMethodBeat.o(12638);
       return localObject;
     }
@@ -204,16 +204,16 @@ public class DelChatroomMemberUI
       {
         paramView = View.inflate(DelChatroomMemberUI.this, 2131493374, null);
         paramViewGroup = new DelChatroomMemberUI.b(DelChatroomMemberUI.this);
-        paramViewGroup.frr = ((ImageView)paramView.findViewById(2131297963));
-        paramViewGroup.frs = ((TextView)paramView.findViewById(2131297964));
-        paramViewGroup.frt = ((TextView)paramView.findViewById(2131297962));
-        paramViewGroup.frt.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.fuY = ((ImageView)paramView.findViewById(2131297963));
+        paramViewGroup.fuZ = ((TextView)paramView.findViewById(2131297964));
+        paramViewGroup.fva = ((TextView)paramView.findViewById(2131297962));
+        paramViewGroup.fva.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(final View paramAnonymousView)
           {
             AppMethodBeat.i(12635);
             int i = ((Integer)paramAnonymousView.getTag()).intValue();
-            paramAnonymousView = (af)DelChatroomMemberUI.a.this.getItem(i);
+            paramAnonymousView = (ai)DelChatroomMemberUI.a.this.getItem(i);
             String str = DelChatroomMemberUI.this.getString(2131762599, new Object[] { DelChatroomMemberUI.a.this.b(paramAnonymousView) });
             h.a(DelChatroomMemberUI.this, str, null, DelChatroomMemberUI.this.getString(2131762607), DelChatroomMemberUI.this.getString(2131755691), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
@@ -234,12 +234,12 @@ public class DelChatroomMemberUI
       }
       for (;;)
       {
-        paramViewGroup.frt.setTag(Integer.valueOf(paramInt));
-        af localaf = (af)getItem(paramInt);
-        String str = b(localaf);
-        paramViewGroup.frs.setText(str);
-        com.tencent.mm.pluginsdk.ui.span.k.b(DelChatroomMemberUI.this, str, paramViewGroup.frs.getTextSize());
-        a.b.c(paramViewGroup.frr, localaf.field_username);
+        paramViewGroup.fva.setTag(Integer.valueOf(paramInt));
+        ai localai = (ai)getItem(paramInt);
+        String str = b(localai);
+        paramViewGroup.fuZ.setText(str);
+        com.tencent.mm.pluginsdk.ui.span.k.b(DelChatroomMemberUI.this, str, paramViewGroup.fuZ.getTextSize());
+        a.b.c(paramViewGroup.fuY, localai.field_username);
         AppMethodBeat.o(12639);
         return paramView;
         paramViewGroup = (DelChatroomMemberUI.b)paramView.getTag();
@@ -249,16 +249,16 @@ public class DelChatroomMemberUI
   
   final class b
   {
-    public ImageView frr;
-    public TextView frs;
-    public TextView frt;
+    public ImageView fuY;
+    public TextView fuZ;
+    public TextView fva;
     
     b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.DelChatroomMemberUI
  * JD-Core Version:    0.7.0.1
  */

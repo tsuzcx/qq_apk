@@ -4,23 +4,23 @@ import android.graphics.Point;
 
 public abstract interface e
 {
-  public abstract void G(Runnable paramRunnable);
+  public abstract void I(Runnable paramRunnable);
   
   public abstract void a(a parama);
   
-  public abstract Point aDh();
+  public abstract Point aJY();
   
-  public abstract int aDi();
+  public abstract int aJZ();
   
-  public abstract void oV(int paramInt);
+  public abstract int n(String paramString, long paramLong1, long paramLong2);
   
-  public abstract int q(String paramString, long paramLong1, long paramLong2);
+  public abstract void pK(int paramInt);
   
   public abstract void stop();
   
   public static abstract interface a
   {
-    public abstract void br(byte[] paramArrayOfByte);
+    public abstract void bq(byte[] paramArrayOfByte);
   }
 }
 

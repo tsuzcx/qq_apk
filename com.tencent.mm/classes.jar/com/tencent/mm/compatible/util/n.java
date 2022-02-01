@@ -5,11 +5,11 @@ import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class n
 {
-  public static String pv(String paramString)
+  public static String sG(String paramString)
   {
     AppMethodBeat.i(155912);
     if (paramString == null)
@@ -17,17 +17,17 @@ public final class n
       AppMethodBeat.o(155912);
       return paramString;
     }
-    if (ae.fFH.fCc == 2)
+    if (ae.fJo.fFJ == 2)
     {
       AppMethodBeat.o(155912);
       return paramString;
     }
-    if (ae.fFH.fCn == 1)
+    if (ae.fJo.fFU == 1)
     {
       AppMethodBeat.o(155912);
       return paramString;
     }
-    if (ae.fFH.fCc == 1)
+    if (ae.fJo.fFJ == 1)
     {
       if (paramString.toString().contains("\n"))
       {
@@ -42,7 +42,7 @@ public final class n
     {
       if (paramString.toString().contains("\n"))
       {
-        if (bt.by(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
+        if (bs.bG(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
         {
           AppMethodBeat.o(155912);
           return paramString;
@@ -66,14 +66,14 @@ public final class n
       AppMethodBeat.o(155911);
       return false;
     }
-    if (ae.fFH.fCc == 1)
+    if (ae.fJo.fFJ == 1)
     {
       AppMethodBeat.o(155911);
       return true;
     }
     if (Build.VERSION.SDK_INT == 16)
     {
-      if (bt.by(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
+      if (bs.bG(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
       {
         AppMethodBeat.o(155911);
         return false;
@@ -87,7 +87,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.util.n
  * JD-Core Version:    0.7.0.1
  */

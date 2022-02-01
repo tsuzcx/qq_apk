@@ -6,8 +6,8 @@ import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.Collection;
@@ -18,19 +18,19 @@ import junit.framework.Assert;
 
 public final class r
 {
-  private static ConcurrentHashMap<Integer, a> hUi;
+  private static ConcurrentHashMap<Integer, a> ium;
   
   static
   {
     AppMethodBeat.i(132975);
-    hUi = new ConcurrentHashMap();
+    ium = new ConcurrentHashMap();
     AppMethodBeat.o(132975);
   }
   
   public static final a a(int paramInt, String paramString, HashMap<Integer, h.b> paramHashMap, boolean paramBoolean)
   {
     AppMethodBeat.i(132974);
-    if ((!bt.isNullOrNil(paramString)) && (paramHashMap != null)) {}
+    if ((!bs.isNullOrNil(paramString)) && (paramHashMap != null)) {}
     int i;
     a locala;
     long l;
@@ -38,7 +38,7 @@ public final class r
     {
       Assert.assertTrue(bool);
       i = paramString.hashCode();
-      locala = (a)hUi.get(Integer.valueOf(i));
+      locala = (a)ium.get(Integer.valueOf(i));
       if (locala != null) {
         break label198;
       }
@@ -46,9 +46,9 @@ public final class r
       if (!paramBoolean) {
         break;
       }
-      g.afz();
+      g.agP();
       l = a.getUin();
-      q.cG(true);
+      q.cF(true);
       if (locala.b("", paramString, "", l, paramHashMap, true)) {
         break label147;
       }
@@ -63,21 +63,21 @@ public final class r
       throw paramString;
     }
     label147:
-    hUi.put(Integer.valueOf(i), locala);
+    ium.put(Integer.valueOf(i), locala);
     for (paramString = locala;; paramString = locala)
     {
-      ad.d("MicroMsg.GeneralDBHelper", "addRef %d", new Object[] { Integer.valueOf(paramInt) });
-      paramString.hUj.put(paramInt, true);
+      ac.d("MicroMsg.GeneralDBHelper", "addRef %d", new Object[] { Integer.valueOf(paramInt) });
+      paramString.iun.put(paramInt, true);
       AppMethodBeat.o(132974);
       return paramString;
       label198:
-      if (paramBoolean == locala.bym) {
+      if (paramBoolean == locala.bvV) {
         paramBoolean = true;
       }
       for (;;)
       {
         Assert.assertTrue(paramBoolean);
-        l = locala.rb(-1L);
+        l = locala.vE(-1L);
         paramString = paramHashMap.values().iterator();
         for (;;)
         {
@@ -90,7 +90,7 @@ public final class r
             if (i < j)
             {
               Object localObject = paramHashMap[i];
-              ad.d("MicroMsg.GeneralDBHelper", "init sql:".concat(String.valueOf(localObject)));
+              ac.d("MicroMsg.GeneralDBHelper", "init sql:".concat(String.valueOf(localObject)));
               try
               {
                 locala.execSQL(null, localObject);
@@ -109,23 +109,23 @@ public final class r
           }
         }
       }
-      locala.mX(l);
+      locala.qL(l);
     }
   }
   
   public static final class a
     extends h
   {
-    public final boolean bym;
-    SparseBooleanArray hUj;
+    public final boolean bvV;
+    SparseBooleanArray iun;
     private final String path;
     
     public a(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(132970);
-      this.hUj = new SparseBooleanArray();
-      ad.d("MicroMsg.GeneralDBHelper", "create db %s", new Object[] { paramString });
-      this.bym = paramBoolean;
+      this.iun = new SparseBooleanArray();
+      ac.d("MicroMsg.GeneralDBHelper", "create db %s", new Object[] { paramString });
+      this.bvV = paramBoolean;
       this.path = paramString;
       AppMethodBeat.o(132970);
     }
@@ -134,36 +134,36 @@ public final class r
     public final void closeDB()
     {
       AppMethodBeat.i(132972);
-      ad.e("MicroMsg.GeneralDBHelper", "forbid to use this method %s", new Object[] { bt.eGN() });
-      if (this.hUj.size() <= 1) {
+      ac.e("MicroMsg.GeneralDBHelper", "forbid to use this method %s", new Object[] { bs.eWi() });
+      if (this.iun.size() <= 1) {
         super.closeDB();
       }
       AppMethodBeat.o(132972);
     }
     
-    @Deprecated
-    public final void oi(String paramString)
-    {
-      AppMethodBeat.i(132973);
-      ad.e("MicroMsg.GeneralDBHelper", "forbid to use this method");
-      if (this.hUj.size() <= 1) {
-        super.oi(paramString);
-      }
-      AppMethodBeat.o(132973);
-    }
-    
-    public final void pK(int paramInt)
+    public final void qx(int paramInt)
     {
       AppMethodBeat.i(132971);
-      ad.d("MicroMsg.GeneralDBHelper", "try close db %d", new Object[] { Integer.valueOf(paramInt) });
-      this.hUj.delete(paramInt);
-      if (this.hUj.size() <= 0)
+      ac.d("MicroMsg.GeneralDBHelper", "try close db %d", new Object[] { Integer.valueOf(paramInt) });
+      this.iun.delete(paramInt);
+      if (this.iun.size() <= 0)
       {
-        ad.d("MicroMsg.GeneralDBHelper", "close db %d succ", new Object[] { Integer.valueOf(paramInt) });
+        ac.d("MicroMsg.GeneralDBHelper", "close db %d succ", new Object[] { Integer.valueOf(paramInt) });
         super.closeDB();
-        r.aGw().remove(Integer.valueOf(this.path.hashCode()));
+        r.aNj().remove(Integer.valueOf(this.path.hashCode()));
       }
       AppMethodBeat.o(132971);
+    }
+    
+    @Deprecated
+    public final void ro(String paramString)
+    {
+      AppMethodBeat.i(132973);
+      ac.e("MicroMsg.GeneralDBHelper", "forbid to use this method");
+      if (this.iun.size() <= 1) {
+        super.ro(paramString);
+      }
+      AppMethodBeat.o(132973);
     }
   }
 }

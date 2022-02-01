@@ -29,7 +29,7 @@ public final class c
       public final void run()
       {
         AppMethodBeat.i(153463);
-        Looper.myQueue().addIdleHandler(this.EYJ);
+        Looper.myQueue().addIdleHandler(this.GvV);
         AppMethodBeat.o(153463);
       }
     });
@@ -38,7 +38,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sdk.f.c
  * JD-Core Version:    0.7.0.1
  */

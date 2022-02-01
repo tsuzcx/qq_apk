@@ -1,14 +1,11 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.TranslateAnimation;
@@ -17,10 +14,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
 import org.json.JSONObject;
 
@@ -31,45 +27,29 @@ public final class d
   protected View mContentView;
   protected Context mContext;
   protected Handler mHandler;
-  protected aa wZa;
-  protected ImageView wZb;
-  protected TextView wZc;
-  protected TextView wZd;
-  protected FrameLayout wZe;
-  protected RoundedCornerFrameLayout wZf;
-  protected ViewGroup wZg;
-  protected n wZh;
-  protected boolean wZi;
+  protected ab ylO;
+  protected ImageView ylP;
+  protected TextView ylQ;
+  protected TextView ylR;
+  protected FrameLayout ylS;
+  protected RoundedCornerFrameLayout ylT;
+  protected ViewGroup ylU;
+  protected n ylV;
+  protected boolean ylW;
   
-  public d(Context paramContext, aa paramaa, ViewGroup paramViewGroup)
+  public d(Context paramContext, ab paramab, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramaa, paramViewGroup);
+    super(paramContext, paramab, paramViewGroup);
     AppMethodBeat.i(96425);
-    this.wZi = false;
+    this.ylW = false;
     this.clickCount = 0;
-    this.mHandler = new Handler(Looper.getMainLooper())
-    {
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        AppMethodBeat.i(96424);
-        if (paramAnonymousMessage.what == 1)
-        {
-          d.this.W(((Boolean)paramAnonymousMessage.obj).booleanValue());
-          AppMethodBeat.o(96424);
-          return;
-        }
-        if (paramAnonymousMessage.what == 2) {
-          d.this.X(((Boolean)paramAnonymousMessage.obj).booleanValue());
-        }
-        AppMethodBeat.o(96424);
-      }
-    };
+    this.mHandler = new d.4(this, Looper.getMainLooper());
     this.mContext = paramContext;
-    this.wZg = paramViewGroup;
-    this.wZa = paramaa;
-    dvx();
-    dvN();
-    ad.i("AdLandingFloatBarCompWrapper", "refreshView, cid=" + paramaa.wWE + ", hash=" + hashCode());
+    this.ylU = paramViewGroup;
+    this.ylO = paramab;
+    dJW();
+    dKm();
+    ac.i("AdLandingFloatBarCompWrapper", "refreshView, cid=" + paramab.yjs + ", hash=" + hashCode());
     AppMethodBeat.o(96425);
   }
   
@@ -79,7 +59,7 @@ public final class d
     if (this.mContentView.getVisibility() != 0)
     {
       this.mContentView.setVisibility(0);
-      dvz();
+      dJY();
       this.mContentView.clearAnimation();
       if (paramBoolean)
       {
@@ -98,7 +78,7 @@ public final class d
     if (this.mContentView.getVisibility() == 0)
     {
       this.mContentView.setVisibility(8);
-      dvA();
+      dJZ();
       this.mContentView.clearAnimation();
       if (paramBoolean)
       {
@@ -110,23 +90,23 @@ public final class d
     AppMethodBeat.o(96431);
   }
   
-  public final boolean aG(JSONObject paramJSONObject)
+  public final boolean aH(JSONObject paramJSONObject)
   {
     boolean bool = true;
     AppMethodBeat.i(96436);
-    if (this.wZa == null)
+    if (this.ylO == null)
     {
       paramJSONObject = new StringBuilder("kvReport, mFloatBarInfo==null?");
-      if (this.wZa == null) {}
+      if (this.ylO == null) {}
       for (;;)
       {
-        ad.e("AdLandingFloatBarCompWrapper", bool);
+        ac.e("AdLandingFloatBarCompWrapper", bool);
         AppMethodBeat.o(96436);
         return false;
         bool = false;
       }
     }
-    if (!super.aG(paramJSONObject))
+    if (!super.aH(paramJSONObject))
     {
       AppMethodBeat.o(96436);
       return false;
@@ -134,323 +114,326 @@ public final class d
     try
     {
       paramJSONObject.put("clickCount", this.clickCount);
-      ad.i("AdLandingFloatBarCompWrapper", "kv=" + paramJSONObject.toString());
+      ac.i("AdLandingFloatBarCompWrapper", "kv=" + paramJSONObject.toString());
       AppMethodBeat.o(96436);
       return true;
     }
     catch (Exception paramJSONObject)
     {
-      ad.printErrStackTrace("AdLandingFloatBarCompWrapper", paramJSONObject, "", new Object[0]);
+      ac.printErrStackTrace("AdLandingFloatBarCompWrapper", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(96436);
     }
     return false;
   }
   
-  public final void dvA()
-  {
-    AppMethodBeat.i(96434);
-    super.dvA();
-    if (this.wZh != null) {
-      this.wZh.dvA();
-    }
-    ad.i("AdLandingFloatBarCompWrapper", "viewWillDisappear, exposureCount=" + this.xac + ", stayTime=" + this.dsf);
-    AppMethodBeat.o(96434);
-  }
-  
-  /* Error */
-  protected final void dvN()
-  {
-    // Byte code:
-    //   0: ldc 224
-    //   2: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   9: getfield 227	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:iconUrl	Ljava/lang/String;
-    //   12: invokestatic 233	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   15: ifne +285 -> 300
-    //   18: aload_0
-    //   19: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   22: getfield 227	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:iconUrl	Ljava/lang/String;
-    //   25: aload_0
-    //   26: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   29: getfield 236	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:wWF	I
-    //   32: new 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$1
-    //   35: dup
-    //   36: aload_0
-    //   37: invokespecial 239	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$1:<init>	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d;)V
-    //   40: invokestatic 245	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/h:a	(Ljava/lang/String;ILcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/f$a;)V
-    //   43: aload_0
-    //   44: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   47: getfield 248	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:title	Ljava/lang/String;
-    //   50: invokestatic 233	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   53: ifne +259 -> 312
-    //   56: aload_0
-    //   57: getfield 250	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZc	Landroid/widget/TextView;
-    //   60: aload_0
-    //   61: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   64: getfield 248	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:title	Ljava/lang/String;
-    //   67: invokevirtual 256	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   70: aload_0
-    //   71: getfield 250	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZc	Landroid/widget/TextView;
-    //   74: iconst_0
-    //   75: invokevirtual 257	android/widget/TextView:setVisibility	(I)V
-    //   78: aload_0
-    //   79: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   82: getfield 260	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:desc	Ljava/lang/String;
-    //   85: invokestatic 233	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   88: ifne +236 -> 324
-    //   91: aload_0
-    //   92: getfield 262	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZd	Landroid/widget/TextView;
-    //   95: aload_0
-    //   96: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   99: getfield 260	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:desc	Ljava/lang/String;
-    //   102: invokevirtual 256	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   105: aload_0
-    //   106: getfield 262	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZd	Landroid/widget/TextView;
-    //   109: iconst_0
-    //   110: invokevirtual 257	android/widget/TextView:setVisibility	(I)V
-    //   113: aload_0
-    //   114: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   117: getfield 265	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:jbK	Ljava/lang/String;
-    //   120: invokestatic 233	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   123: ifne +258 -> 381
-    //   126: aload_0
-    //   127: getfield 125	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:mContentView	Landroid/view/View;
-    //   130: aload_0
-    //   131: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   134: getfield 265	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:jbK	Ljava/lang/String;
-    //   137: invokestatic 271	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   140: invokevirtual 274	android/view/View:setBackgroundColor	(I)V
-    //   143: aload_0
-    //   144: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   147: getfield 277	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:gIA	Ljava/lang/String;
-    //   150: invokestatic 233	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   153: ifne +20 -> 173
-    //   156: aload_0
-    //   157: getfield 250	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZc	Landroid/widget/TextView;
-    //   160: aload_0
-    //   161: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   164: getfield 277	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:gIA	Ljava/lang/String;
-    //   167: invokestatic 271	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   170: invokevirtual 280	android/widget/TextView:setTextColor	(I)V
-    //   173: aload_0
-    //   174: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   177: getfield 283	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:wWS	Ljava/lang/String;
-    //   180: invokestatic 233	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   183: ifne +20 -> 203
-    //   186: aload_0
-    //   187: getfield 262	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZd	Landroid/widget/TextView;
-    //   190: aload_0
-    //   191: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   194: getfield 283	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:wWS	Ljava/lang/String;
-    //   197: invokestatic 271	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   200: invokevirtual 280	android/widget/TextView:setTextColor	(I)V
-    //   203: aload_0
-    //   204: getfield 285	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZe	Landroid/widget/FrameLayout;
-    //   207: invokevirtual 290	android/widget/FrameLayout:removeAllViews	()V
-    //   210: aload_0
-    //   211: getfield 66	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:mContext	Landroid/content/Context;
-    //   214: aload_0
-    //   215: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   218: getfield 294	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:wWX	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/x;
-    //   221: aload_0
-    //   222: getfield 285	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZe	Landroid/widget/FrameLayout;
-    //   225: iconst_0
-    //   226: invokestatic 299	com/tencent/mm/plugin/sns/ui/as:a	(Landroid/content/Context;Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/x;Landroid/view/ViewGroup;I)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/k;
-    //   229: astore_1
-    //   230: aload_1
-    //   231: instanceof 208
-    //   234: ifeq +278 -> 512
-    //   237: aload_0
-    //   238: aload_1
-    //   239: checkcast 208	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/n
-    //   242: putfield 206	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZh	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/n;
-    //   245: aload_0
-    //   246: getfield 206	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZh	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/n;
-    //   249: ifnull +19 -> 268
-    //   252: aload_0
-    //   253: getfield 206	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZh	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/n;
-    //   256: invokevirtual 303	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/n:getView	()Landroid/view/View;
-    //   259: astore_1
-    //   260: aload_0
-    //   261: getfield 285	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZe	Landroid/widget/FrameLayout;
-    //   264: aload_1
-    //   265: invokevirtual 307	android/widget/FrameLayout:addView	(Landroid/view/View;)V
-    //   268: aload_0
-    //   269: aload_0
-    //   270: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   273: getfield 310	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:wWT	Z
-    //   276: putfield 51	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZi	Z
-    //   279: aload_0
-    //   280: getfield 125	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:mContentView	Landroid/view/View;
-    //   283: new 10	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$3
-    //   286: dup
-    //   287: aload_0
-    //   288: invokespecial 311	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$3:<init>	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d;)V
-    //   291: invokevirtual 315	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   294: ldc 224
-    //   296: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   299: return
-    //   300: aload_0
-    //   301: getfield 317	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZf	Lcom/tencent/mm/ui/widget/RoundedCornerFrameLayout;
-    //   304: bipush 8
-    //   306: invokevirtual 320	com/tencent/mm/ui/widget/RoundedCornerFrameLayout:setVisibility	(I)V
-    //   309: goto -266 -> 43
-    //   312: aload_0
-    //   313: getfield 250	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZc	Landroid/widget/TextView;
-    //   316: bipush 8
-    //   318: invokevirtual 257	android/widget/TextView:setVisibility	(I)V
-    //   321: goto -243 -> 78
-    //   324: aload_0
-    //   325: getfield 262	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZd	Landroid/widget/TextView;
-    //   328: bipush 8
-    //   330: invokevirtual 257	android/widget/TextView:setVisibility	(I)V
-    //   333: goto -220 -> 113
-    //   336: astore_1
-    //   337: ldc 79
-    //   339: new 81	java/lang/StringBuilder
-    //   342: dup
-    //   343: ldc_w 322
-    //   346: invokespecial 86	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   349: aload_1
-    //   350: invokevirtual 323	java/lang/Exception:toString	()Ljava/lang/String;
-    //   353: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   356: ldc_w 325
-    //   359: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   362: aload_0
-    //   363: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   366: getfield 265	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:jbK	Ljava/lang/String;
-    //   369: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   372: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   375: invokestatic 184	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   378: goto -235 -> 143
-    //   381: aload_0
-    //   382: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   385: getfield 328	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:wWR	Ljava/lang/String;
-    //   388: invokestatic 233	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   391: ifne -248 -> 143
-    //   394: aload_0
-    //   395: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   398: getfield 328	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:wWR	Ljava/lang/String;
-    //   401: aload_0
-    //   402: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   405: getfield 236	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:wWF	I
-    //   408: new 8	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$2
-    //   411: dup
-    //   412: aload_0
-    //   413: invokespecial 329	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$2:<init>	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d;)V
-    //   416: invokestatic 245	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/h:a	(Ljava/lang/String;ILcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/f$a;)V
-    //   419: goto -276 -> 143
-    //   422: astore_1
-    //   423: ldc 79
-    //   425: new 81	java/lang/StringBuilder
-    //   428: dup
-    //   429: ldc_w 331
-    //   432: invokespecial 86	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   435: aload_1
-    //   436: invokevirtual 323	java/lang/Exception:toString	()Ljava/lang/String;
-    //   439: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   442: ldc_w 325
-    //   445: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   448: aload_0
-    //   449: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   452: getfield 277	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:gIA	Ljava/lang/String;
-    //   455: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   458: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   461: invokestatic 184	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   464: goto -291 -> 173
-    //   467: astore_1
-    //   468: ldc 79
-    //   470: new 81	java/lang/StringBuilder
-    //   473: dup
-    //   474: ldc_w 333
-    //   477: invokespecial 86	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   480: aload_1
-    //   481: invokevirtual 323	java/lang/Exception:toString	()Ljava/lang/String;
-    //   484: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   487: ldc_w 325
-    //   490: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   493: aload_0
-    //   494: getfield 70	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:wZa	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa;
-    //   497: getfield 283	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/aa:wWS	Ljava/lang/String;
-    //   500: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   503: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   506: invokestatic 184	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   509: goto -306 -> 203
-    //   512: ldc 79
-    //   514: ldc_w 335
-    //   517: aload_1
-    //   518: invokestatic 341	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   521: invokevirtual 345	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   524: invokestatic 184	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   527: goto -282 -> 245
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	530	0	this	d
-    //   229	36	1	localObject	Object
-    //   336	14	1	localException1	Exception
-    //   422	14	1	localException2	Exception
-    //   467	51	1	localException3	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   126	143	336	java/lang/Exception
-    //   156	173	422	java/lang/Exception
-    //   186	203	467	java/lang/Exception
-  }
-  
-  public final void dvO()
-  {
-    AppMethodBeat.i(96437);
-    if (this.wZh != null)
-    {
-      this.wZh.clickCount -= this.clickCount;
-      ad.i("AdLandingFloatBarCompWrapper", "btn kv, clickCount=" + this.wZh.clickCount + ", stayTime=" + this.wZh.dsf);
-    }
-    AppMethodBeat.o(96437);
-  }
-  
-  public final n dvP()
-  {
-    return this.wZh;
-  }
-  
-  public final void dvx()
+  public final void dJW()
   {
     AppMethodBeat.i(96426);
-    View localView = LayoutInflater.from(this.mContext).inflate(2131495501, this.wZg, false);
+    View localView = LayoutInflater.from(this.mContext).inflate(2131495501, this.ylU, false);
     this.mContentView = localView;
-    this.wZb = ((ImageView)localView.findViewById(2131300137));
-    this.wZc = ((TextView)localView.findViewById(2131300138));
-    this.wZd = ((TextView)localView.findViewById(2131300136));
-    this.wZe = ((FrameLayout)localView.findViewById(2131300135));
+    this.ylP = ((ImageView)localView.findViewById(2131300137));
+    this.ylQ = ((TextView)localView.findViewById(2131300138));
+    this.ylR = ((TextView)localView.findViewById(2131300136));
+    this.ylS = ((FrameLayout)localView.findViewById(2131300135));
     ((RoundedCornerFrameLayout)localView.findViewById(2131300132)).setRadius(a.fromDPToPix(this.mContext, 8));
-    this.wZf = ((RoundedCornerFrameLayout)localView.findViewById(2131300133));
-    this.wZf.setRadius(a.fromDPToPix(this.mContext, 4));
-    this.wZg.addView(this.mContentView);
+    this.ylT = ((RoundedCornerFrameLayout)localView.findViewById(2131300133));
+    this.ylT.setRadius(a.fromDPToPix(this.mContext, 4));
+    this.ylU.addView(this.mContentView);
     this.mContentView.setVisibility(8);
     AppMethodBeat.o(96426);
   }
   
-  public final void dvy()
+  public final void dJX()
   {
     AppMethodBeat.i(96435);
-    super.dvy();
+    super.dJX();
     this.mHandler.removeCallbacksAndMessages(null);
     AppMethodBeat.o(96435);
   }
   
-  public final void dvz()
+  public final void dJY()
   {
     AppMethodBeat.i(96433);
-    super.dvz();
-    if (this.wZh != null) {
-      this.wZh.dvz();
+    super.dJY();
+    if (this.ylV != null) {
+      this.ylV.dJY();
     }
-    ad.i("AdLandingFloatBarCompWrapper", "viewWillAppear");
-    if (((this.wZh instanceof s)) && (!((s)this.wZh).xau.isEnabled())) {
-      this.wZi = false;
+    ac.i("AdLandingFloatBarCompWrapper", "viewWillAppear");
+    if (((this.ylV instanceof s)) && (!((s)this.ylV).ynj.isEnabled())) {
+      this.ylW = false;
     }
     AppMethodBeat.o(96433);
+  }
+  
+  public final void dJZ()
+  {
+    AppMethodBeat.i(96434);
+    super.dJZ();
+    if (this.ylV != null) {
+      this.ylV.dJZ();
+    }
+    ac.i("AdLandingFloatBarCompWrapper", "viewWillDisappear, exposureCount=" + this.ymR + ", stayTime=" + this.dpQ);
+    AppMethodBeat.o(96434);
+  }
+  
+  /* Error */
+  protected final void dKm()
+  {
+    // Byte code:
+    //   0: ldc_w 302
+    //   3: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   10: getfield 305	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:iconUrl	Ljava/lang/String;
+    //   13: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   16: ifne +289 -> 305
+    //   19: aload_0
+    //   20: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   23: getfield 305	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:iconUrl	Ljava/lang/String;
+    //   26: astore_1
+    //   27: aload_1
+    //   28: aload_0
+    //   29: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   32: getfield 314	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:yjt	I
+    //   35: new 316	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$1
+    //   38: dup
+    //   39: aload_0
+    //   40: aload_1
+    //   41: invokespecial 319	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$1:<init>	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d;Ljava/lang/String;)V
+    //   44: invokestatic 325	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/h:a	(Ljava/lang/String;ILcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/f$a;)V
+    //   47: aload_0
+    //   48: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   51: getfield 328	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:title	Ljava/lang/String;
+    //   54: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   57: ifne +260 -> 317
+    //   60: aload_0
+    //   61: getfield 222	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylQ	Landroid/widget/TextView;
+    //   64: aload_0
+    //   65: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   68: getfield 328	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:title	Ljava/lang/String;
+    //   71: invokevirtual 332	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   74: aload_0
+    //   75: getfield 222	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylQ	Landroid/widget/TextView;
+    //   78: iconst_0
+    //   79: invokevirtual 333	android/widget/TextView:setVisibility	(I)V
+    //   82: aload_0
+    //   83: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   86: getfield 336	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:desc	Ljava/lang/String;
+    //   89: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   92: ifne +237 -> 329
+    //   95: aload_0
+    //   96: getfield 225	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylR	Landroid/widget/TextView;
+    //   99: aload_0
+    //   100: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   103: getfield 336	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:desc	Ljava/lang/String;
+    //   106: invokevirtual 332	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   109: aload_0
+    //   110: getfield 225	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylR	Landroid/widget/TextView;
+    //   113: iconst_0
+    //   114: invokevirtual 333	android/widget/TextView:setVisibility	(I)V
+    //   117: aload_0
+    //   118: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   121: getfield 339	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:jBX	Ljava/lang/String;
+    //   124: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   127: ifne +259 -> 386
+    //   130: aload_0
+    //   131: getfield 119	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:mContentView	Landroid/view/View;
+    //   134: aload_0
+    //   135: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   138: getfield 339	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:jBX	Ljava/lang/String;
+    //   141: invokestatic 345	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   144: invokevirtual 348	android/view/View:setBackgroundColor	(I)V
+    //   147: aload_0
+    //   148: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   151: getfield 351	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:titleColor	Ljava/lang/String;
+    //   154: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   157: ifne +20 -> 177
+    //   160: aload_0
+    //   161: getfield 222	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylQ	Landroid/widget/TextView;
+    //   164: aload_0
+    //   165: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   168: getfield 351	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:titleColor	Ljava/lang/String;
+    //   171: invokestatic 345	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   174: invokevirtual 354	android/widget/TextView:setTextColor	(I)V
+    //   177: aload_0
+    //   178: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   181: getfield 357	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:yjH	Ljava/lang/String;
+    //   184: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   187: ifne +20 -> 207
+    //   190: aload_0
+    //   191: getfield 225	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylR	Landroid/widget/TextView;
+    //   194: aload_0
+    //   195: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   198: getfield 357	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:yjH	Ljava/lang/String;
+    //   201: invokestatic 345	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   204: invokevirtual 354	android/widget/TextView:setTextColor	(I)V
+    //   207: aload_0
+    //   208: getfield 230	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylS	Landroid/widget/FrameLayout;
+    //   211: invokevirtual 360	android/widget/FrameLayout:removeAllViews	()V
+    //   214: aload_0
+    //   215: getfield 60	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:mContext	Landroid/content/Context;
+    //   218: aload_0
+    //   219: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   222: getfield 364	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:yjM	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/x;
+    //   225: aload_0
+    //   226: getfield 230	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylS	Landroid/widget/FrameLayout;
+    //   229: iconst_0
+    //   230: invokestatic 369	com/tencent/mm/plugin/sns/ui/as:a	(Landroid/content/Context;Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/x;Landroid/view/ViewGroup;I)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/k;
+    //   233: astore_1
+    //   234: aload_1
+    //   235: instanceof 267
+    //   238: ifeq +279 -> 517
+    //   241: aload_0
+    //   242: aload_1
+    //   243: checkcast 267	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/n
+    //   246: putfield 265	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylV	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/n;
+    //   249: aload_0
+    //   250: getfield 265	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylV	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/n;
+    //   253: ifnull +19 -> 272
+    //   256: aload_0
+    //   257: getfield 265	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylV	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/n;
+    //   260: invokevirtual 373	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/n:getView	()Landroid/view/View;
+    //   263: astore_1
+    //   264: aload_0
+    //   265: getfield 230	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylS	Landroid/widget/FrameLayout;
+    //   268: aload_1
+    //   269: invokevirtual 374	android/widget/FrameLayout:addView	(Landroid/view/View;)V
+    //   272: aload_0
+    //   273: aload_0
+    //   274: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   277: getfield 377	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:yjI	Z
+    //   280: putfield 43	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylW	Z
+    //   283: aload_0
+    //   284: getfield 119	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:mContentView	Landroid/view/View;
+    //   287: new 379	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$3
+    //   290: dup
+    //   291: aload_0
+    //   292: invokespecial 382	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$3:<init>	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d;)V
+    //   295: invokevirtual 386	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   298: ldc_w 302
+    //   301: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   304: return
+    //   305: aload_0
+    //   306: getfield 245	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylT	Lcom/tencent/mm/ui/widget/RoundedCornerFrameLayout;
+    //   309: bipush 8
+    //   311: invokevirtual 387	com/tencent/mm/ui/widget/RoundedCornerFrameLayout:setVisibility	(I)V
+    //   314: goto -267 -> 47
+    //   317: aload_0
+    //   318: getfield 222	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylQ	Landroid/widget/TextView;
+    //   321: bipush 8
+    //   323: invokevirtual 333	android/widget/TextView:setVisibility	(I)V
+    //   326: goto -244 -> 82
+    //   329: aload_0
+    //   330: getfield 225	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylR	Landroid/widget/TextView;
+    //   333: bipush 8
+    //   335: invokevirtual 333	android/widget/TextView:setVisibility	(I)V
+    //   338: goto -221 -> 117
+    //   341: astore_1
+    //   342: ldc 73
+    //   344: new 75	java/lang/StringBuilder
+    //   347: dup
+    //   348: ldc_w 389
+    //   351: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   354: aload_1
+    //   355: invokevirtual 390	java/lang/Exception:toString	()Ljava/lang/String;
+    //   358: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   361: ldc_w 392
+    //   364: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   367: aload_0
+    //   368: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   371: getfield 339	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:jBX	Ljava/lang/String;
+    //   374: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   377: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   380: invokestatic 178	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   383: goto -236 -> 147
+    //   386: aload_0
+    //   387: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   390: getfield 395	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:yjG	Ljava/lang/String;
+    //   393: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   396: ifne -249 -> 147
+    //   399: aload_0
+    //   400: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   403: getfield 395	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:yjG	Ljava/lang/String;
+    //   406: aload_0
+    //   407: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   410: getfield 314	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:yjt	I
+    //   413: new 397	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$2
+    //   416: dup
+    //   417: aload_0
+    //   418: invokespecial 398	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d$2:<init>	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d;)V
+    //   421: invokestatic 325	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/h:a	(Ljava/lang/String;ILcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/f$a;)V
+    //   424: goto -277 -> 147
+    //   427: astore_1
+    //   428: ldc 73
+    //   430: new 75	java/lang/StringBuilder
+    //   433: dup
+    //   434: ldc_w 400
+    //   437: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   440: aload_1
+    //   441: invokevirtual 390	java/lang/Exception:toString	()Ljava/lang/String;
+    //   444: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   447: ldc_w 392
+    //   450: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   453: aload_0
+    //   454: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   457: getfield 351	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:titleColor	Ljava/lang/String;
+    //   460: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   463: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   466: invokestatic 178	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   469: goto -292 -> 177
+    //   472: astore_1
+    //   473: ldc 73
+    //   475: new 75	java/lang/StringBuilder
+    //   478: dup
+    //   479: ldc_w 402
+    //   482: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   485: aload_1
+    //   486: invokevirtual 390	java/lang/Exception:toString	()Ljava/lang/String;
+    //   489: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   492: ldc_w 392
+    //   495: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   498: aload_0
+    //   499: getfield 64	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/d:ylO	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab;
+    //   502: getfield 357	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ab:yjH	Ljava/lang/String;
+    //   505: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   508: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   511: invokestatic 178	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   514: goto -307 -> 207
+    //   517: ldc 73
+    //   519: ldc_w 404
+    //   522: aload_1
+    //   523: invokestatic 410	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   526: invokevirtual 414	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   529: invokestatic 178	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   532: goto -283 -> 249
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	535	0	this	d
+    //   26	243	1	localObject	Object
+    //   341	14	1	localException1	Exception
+    //   427	14	1	localException2	Exception
+    //   472	51	1	localException3	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   130	147	341	java/lang/Exception
+    //   160	177	427	java/lang/Exception
+    //   190	207	472	java/lang/Exception
+  }
+  
+  public final void dKn()
+  {
+    AppMethodBeat.i(96437);
+    if (this.ylV != null)
+    {
+      this.ylV.clickCount -= this.clickCount;
+      ac.i("AdLandingFloatBarCompWrapper", "btn kv, clickCount=" + this.ylV.clickCount + ", stayTime=" + this.ylV.dpQ);
+    }
+    AppMethodBeat.o(96437);
+  }
+  
+  public final n dKo()
+  {
+    return this.ylV;
   }
   
   public final void i(boolean paramBoolean, long paramLong)
@@ -474,7 +457,7 @@ public final class d
     return false;
   }
   
-  public final void sU(long paramLong)
+  public final void xx(long paramLong)
   {
     AppMethodBeat.i(96428);
     this.mHandler.removeCallbacksAndMessages(null);
@@ -485,7 +468,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.d
  * JD-Core Version:    0.7.0.1
  */

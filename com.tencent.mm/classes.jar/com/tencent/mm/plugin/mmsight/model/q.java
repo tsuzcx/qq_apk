@@ -4,46 +4,46 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class q
 {
-  public static int tDe = 480;
-  public static int tDf = 640;
-  public int dwp;
+  public static int uLB = 480;
+  public static int uLC = 640;
+  public int duc;
   public int fps;
-  public int gOY;
-  public int pUc;
-  public int pUd;
-  public int tDg;
-  public int tDh;
-  public int tDi;
-  public int tDj;
-  public int tDk;
-  public String tDl;
-  public String tDm;
-  public String tDn;
-  public String tDo;
-  public String tDp;
-  public int tDq;
-  public int tDr;
+  public int hpy;
+  public int qCH;
+  public int qCI;
+  public int uLD;
+  public int uLE;
+  public int uLF;
+  public int uLG;
+  public int uLH;
+  public String uLI;
+  public String uLJ;
+  public String uLK;
+  public String uLL;
+  public String uLM;
+  public int uLN;
+  public int uLO;
   
-  public static q cQb()
+  public static q ddJ()
   {
     AppMethodBeat.i(89462);
     q localq = new q();
     localq.fps = 30;
-    localq.dwp = 0;
-    localq.tDh = tDf;
-    localq.tDi = tDe;
-    localq.pUd = tDf;
-    localq.pUc = tDe;
-    localq.tDg = 327680;
-    localq.tDj = 4;
-    localq.tDk = 1;
-    localq.tDl = "/sdcard/2.yuv";
-    localq.tDp = "/sdcard/2.mp4";
-    localq.tDm = "/sdcard/2.pcm";
-    localq.tDo = "/sdcard/2.x264";
-    localq.tDq = 0;
-    localq.gOY = 0;
-    localq.tDr = 0;
+    localq.duc = 0;
+    localq.uLE = uLC;
+    localq.uLF = uLB;
+    localq.qCI = uLC;
+    localq.qCH = uLB;
+    localq.uLD = 327680;
+    localq.uLG = 4;
+    localq.uLH = 1;
+    localq.uLI = "/sdcard/2.yuv";
+    localq.uLM = "/sdcard/2.mp4";
+    localq.uLJ = "/sdcard/2.pcm";
+    localq.uLL = "/sdcard/2.x264";
+    localq.uLN = 0;
+    localq.hpy = 0;
+    localq.uLO = 0;
     AppMethodBeat.o(89462);
     return localq;
   }
@@ -53,22 +53,22 @@ public final class q
     AppMethodBeat.i(89461);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("fps=").append(this.fps).append('\n');
-    ((StringBuilder)localObject).append("width=").append(this.pUc).append('\n');
-    ((StringBuilder)localObject).append("height=").append(this.pUd).append('\n');
-    ((StringBuilder)localObject).append("bitrate=").append(this.tDg).append('\n');
-    ((StringBuilder)localObject).append("rotate=").append(this.dwp).append('\n');
-    ((StringBuilder)localObject).append("yuvWidth=").append(this.tDi).append('\n');
-    ((StringBuilder)localObject).append("yuvHeight=").append(this.tDh).append('\n');
-    ((StringBuilder)localObject).append("x264Speed=").append(this.tDj).append('\n');
-    ((StringBuilder)localObject).append("x264Quality=").append(this.tDk).append('\n');
-    ((StringBuilder)localObject).append("yuvFile=").append(this.tDl).append('\n');
-    ((StringBuilder)localObject).append("pcmFile=").append(this.tDm).append('\n');
-    ((StringBuilder)localObject).append("thuFile=").append(this.tDn).append('\n');
-    ((StringBuilder)localObject).append("x264File=").append(this.tDo).append('\n');
-    ((StringBuilder)localObject).append("mp4File=").append(this.tDp).append('\n');
-    ((StringBuilder)localObject).append("videoFrameCnt=").append(this.tDq).append('\n');
-    ((StringBuilder)localObject).append("videoLength=").append(this.gOY).append('\n');
-    ((StringBuilder)localObject).append("cameraCount=").append(this.tDr).append('\n');
+    ((StringBuilder)localObject).append("width=").append(this.qCH).append('\n');
+    ((StringBuilder)localObject).append("height=").append(this.qCI).append('\n');
+    ((StringBuilder)localObject).append("bitrate=").append(this.uLD).append('\n');
+    ((StringBuilder)localObject).append("rotate=").append(this.duc).append('\n');
+    ((StringBuilder)localObject).append("yuvWidth=").append(this.uLF).append('\n');
+    ((StringBuilder)localObject).append("yuvHeight=").append(this.uLE).append('\n');
+    ((StringBuilder)localObject).append("x264Speed=").append(this.uLG).append('\n');
+    ((StringBuilder)localObject).append("x264Quality=").append(this.uLH).append('\n');
+    ((StringBuilder)localObject).append("yuvFile=").append(this.uLI).append('\n');
+    ((StringBuilder)localObject).append("pcmFile=").append(this.uLJ).append('\n');
+    ((StringBuilder)localObject).append("thuFile=").append(this.uLK).append('\n');
+    ((StringBuilder)localObject).append("x264File=").append(this.uLL).append('\n');
+    ((StringBuilder)localObject).append("mp4File=").append(this.uLM).append('\n');
+    ((StringBuilder)localObject).append("videoFrameCnt=").append(this.uLN).append('\n');
+    ((StringBuilder)localObject).append("videoLength=").append(this.hpy).append('\n');
+    ((StringBuilder)localObject).append("cameraCount=").append(this.uLO).append('\n');
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(89461);
     return localObject;
@@ -76,7 +76,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.q
  * JD-Core Version:    0.7.0.1
  */

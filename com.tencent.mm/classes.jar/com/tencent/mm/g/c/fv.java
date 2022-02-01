@@ -3,31 +3,66 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class fv
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eZv = "contactLabels".hashCode();
-  private static final int eZw = "conDescription".hashCode();
-  private static final int eZx = "conPhone".hashCode();
-  private static final int euX;
-  private static final int evh = "encryptUsername".hashCode();
+  private static final int eQG = "timeStamp".hashCode();
+  private static final int fbR = "baseItemData".hashCode();
+  private static final int fbS = "storyLocalId".hashCode();
+  private static final int fbT = "mixFlag".hashCode();
+  private static final int fbU = "mixRetryTime".hashCode();
+  private static final int fbV = "available".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eZs = true;
-  private boolean eZt = true;
-  private boolean eZu = true;
-  private boolean euF = true;
-  private boolean euP = true;
-  public String field_conDescription;
-  public String field_conPhone;
-  public String field_conRemark;
-  public String field_contactLabels;
-  public String field_encryptUsername;
+  private boolean eQA;
+  private boolean fbM;
+  private boolean fbN;
+  private boolean fbO;
+  private boolean fbP;
+  private boolean fbQ;
+  public int field_available;
+  public byte[] field_baseItemData;
+  public int field_mixFlag;
+  public int field_mixRetryTime;
+  public int field_storyLocalId;
+  public long field_timeStamp;
   
-  static
+  public static c.a Th()
   {
-    euX = "conRemark".hashCode();
+    c.a locala = new c.a();
+    locala.GvF = new Field[6];
+    locala.columns = new String[7];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "baseItemData";
+    locala.GvH.put("baseItemData", "BLOB");
+    localStringBuilder.append(" baseItemData BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "timeStamp";
+    locala.GvH.put("timeStamp", "LONG");
+    localStringBuilder.append(" timeStamp LONG");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "storyLocalId";
+    locala.GvH.put("storyLocalId", "INTEGER");
+    localStringBuilder.append(" storyLocalId INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "mixFlag";
+    locala.GvH.put("mixFlag", "INTEGER");
+    localStringBuilder.append(" mixFlag INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "mixRetryTime";
+    locala.GvH.put("mixRetryTime", "INTEGER");
+    localStringBuilder.append(" mixRetryTime INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "available";
+    locala.GvH.put("available", "INTEGER");
+    localStringBuilder.append(" available INTEGER");
+    locala.columns[6] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -43,26 +78,27 @@ public abstract class fv
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (evh != k) {
-        break label65;
+      if (fbR != k) {
+        break label60;
       }
-      this.field_encryptUsername = paramCursor.getString(i);
-      this.euP = true;
+      this.field_baseItemData = paramCursor.getBlob(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (euX == k) {
-        this.field_conRemark = paramCursor.getString(i);
-      } else if (eZv == k) {
-        this.field_contactLabels = paramCursor.getString(i);
-      } else if (eZw == k) {
-        this.field_conDescription = paramCursor.getString(i);
-      } else if (eZx == k) {
-        this.field_conPhone = paramCursor.getString(i);
+      label60:
+      if (eQG == k) {
+        this.field_timeStamp = paramCursor.getLong(i);
+      } else if (fbS == k) {
+        this.field_storyLocalId = paramCursor.getInt(i);
+      } else if (fbT == k) {
+        this.field_mixFlag = paramCursor.getInt(i);
+      } else if (fbU == k) {
+        this.field_mixRetryTime = paramCursor.getInt(i);
+      } else if (fbV == k) {
+        this.field_available = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -72,35 +108,23 @@ public abstract class fv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_encryptUsername == null) {
-      this.field_encryptUsername = "";
+    if (this.fbM) {
+      localContentValues.put("baseItemData", this.field_baseItemData);
     }
-    if (this.euP) {
-      localContentValues.put("encryptUsername", this.field_encryptUsername);
+    if (this.eQA) {
+      localContentValues.put("timeStamp", Long.valueOf(this.field_timeStamp));
     }
-    if (this.field_conRemark == null) {
-      this.field_conRemark = "";
+    if (this.fbN) {
+      localContentValues.put("storyLocalId", Integer.valueOf(this.field_storyLocalId));
     }
-    if (this.euF) {
-      localContentValues.put("conRemark", this.field_conRemark);
+    if (this.fbO) {
+      localContentValues.put("mixFlag", Integer.valueOf(this.field_mixFlag));
     }
-    if (this.field_contactLabels == null) {
-      this.field_contactLabels = "";
+    if (this.fbP) {
+      localContentValues.put("mixRetryTime", Integer.valueOf(this.field_mixRetryTime));
     }
-    if (this.eZs) {
-      localContentValues.put("contactLabels", this.field_contactLabels);
-    }
-    if (this.field_conDescription == null) {
-      this.field_conDescription = "";
-    }
-    if (this.eZt) {
-      localContentValues.put("conDescription", this.field_conDescription);
-    }
-    if (this.field_conPhone == null) {
-      this.field_conPhone = "";
-    }
-    if (this.eZu) {
-      localContentValues.put("conPhone", this.field_conPhone);
+    if (this.fbQ) {
+      localContentValues.put("available", Integer.valueOf(this.field_available));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -110,7 +134,7 @@ public abstract class fv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.fv
  * JD-Core Version:    0.7.0.1
  */

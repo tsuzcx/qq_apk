@@ -12,6 +12,7 @@ import com.tencent.tinker.loader.hotplug.IncrementComponentManager;
 import com.tencent.tinker.loader.hotplug.interceptor.HandlerMessageInterceptor.MessageHandler;
 import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
 import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -106,7 +107,10 @@ public class MHMessageHandler
       ShareReflectUtil.findMethod(localObject, "setRequestedOrientation", new Class[] { IBinder.class, Integer.TYPE }).invoke(localObject, new Object[] { paramObject, Integer.valueOf(i) });
       return;
     }
-    catch (Throwable paramObject) {}
+    catch (Throwable paramObject)
+    {
+      ShareTinkerLog.e("Tinker.MHMsgHndlr", "Failed to fix screen orientation.", new Object[] { paramObject });
+    }
   }
   
   private void fixStubActivityInfo(ActivityInfo paramActivityInfo1, ActivityInfo paramActivityInfo2)
@@ -116,43 +120,51 @@ public class MHMessageHandler
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == LAUNCH_ACTIVITY) {}
-    try
+    if (paramMessage.what == LAUNCH_ACTIVITY)
     {
-      Object localObject = paramMessage.obj;
-      if (localObject == null)
+      Object localObject;
+      try
       {
-        new StringBuilder("msg: [").append(paramMessage.what).append("] has no 'obj' value.");
-        return false;
-      }
-      paramMessage = (Intent)ShareReflectUtil.findField(localObject, "intent").get(localObject);
-      if (paramMessage != null)
-      {
-        ShareIntentUtil.fixIntentClassLoader(paramMessage, this.mContext.getClassLoader());
-        ComponentName localComponentName = (ComponentName)paramMessage.getParcelableExtra("tinker_iek_old_component");
-        if (localComponentName == null)
+        localObject = paramMessage.obj;
+        if (localObject == null)
         {
-          new StringBuilder("oldComponent was null, start ").append(paramMessage.getComponent()).append(" next.");
+          ShareTinkerLog.w("Tinker.MHMsgHndlr", "msg: [" + paramMessage.what + "] has no 'obj' value.", new Object[0]);
           return false;
         }
-        ActivityInfo localActivityInfo1 = (ActivityInfo)ShareReflectUtil.findField(localObject, "activityInfo").get(localObject);
-        if (localActivityInfo1 != null)
+        paramMessage = (Intent)ShareReflectUtil.findField(localObject, "intent").get(localObject);
+        if (paramMessage == null)
         {
-          ActivityInfo localActivityInfo2 = IncrementComponentManager.queryActivityInfo(localComponentName.getClassName());
-          if (localActivityInfo2 == null)
-          {
-            new StringBuilder("Failed to query target activity's info, perhaps the target is not hotpluged component. Target: ").append(localComponentName.getClassName());
-            return false;
-          }
-          fixActivityScreenOrientation(localObject, localActivityInfo2.screenOrientation);
-          fixStubActivityInfo(localActivityInfo1, localActivityInfo2);
-          paramMessage.setComponent(localComponentName);
-          paramMessage.removeExtra("tinker_iek_old_component");
+          ShareTinkerLog.w("Tinker.MHMsgHndlr", "cannot fetch intent from message received by mH.", new Object[0]);
+          return false;
         }
       }
-      return false;
+      catch (Throwable paramMessage)
+      {
+        ShareTinkerLog.e("Tinker.MHMsgHndlr", "exception in handleMessage.", new Object[] { paramMessage });
+        return false;
+      }
+      ShareIntentUtil.fixIntentClassLoader(paramMessage, this.mContext.getClassLoader());
+      ComponentName localComponentName = (ComponentName)paramMessage.getParcelableExtra("tinker_iek_old_component");
+      if (localComponentName == null)
+      {
+        ShareTinkerLog.w("Tinker.MHMsgHndlr", "oldComponent was null, start " + paramMessage.getComponent() + " next.", new Object[0]);
+        return false;
+      }
+      ActivityInfo localActivityInfo1 = (ActivityInfo)ShareReflectUtil.findField(localObject, "activityInfo").get(localObject);
+      if (localActivityInfo1 != null)
+      {
+        ActivityInfo localActivityInfo2 = IncrementComponentManager.queryActivityInfo(localComponentName.getClassName());
+        if (localActivityInfo2 == null)
+        {
+          ShareTinkerLog.e("Tinker.MHMsgHndlr", "Failed to query target activity's info, perhaps the target is not hotpluged component. Target: " + localComponentName.getClassName(), new Object[0]);
+          return false;
+        }
+        fixActivityScreenOrientation(localObject, localActivityInfo2.screenOrientation);
+        fixStubActivityInfo(localActivityInfo1, localActivityInfo2);
+        paramMessage.setComponent(localComponentName);
+        paramMessage.removeExtra("tinker_iek_old_component");
+      }
     }
-    catch (Throwable paramMessage) {}
     return false;
   }
 }

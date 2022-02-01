@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.webview.fts;
 
 public final class b$e
 {
-  public boolean dcq;
-  public boolean fnG = true;
-  public int oEL;
+  public boolean cZP;
+  public boolean fra = true;
+  public int pil;
   public String query;
   public int scene;
-  public boolean yLV;
+  public boolean zZO;
   
   public b$e(b paramb) {}
   
-  public final void s(int paramInt1, String paramString, int paramInt2)
+  public final void u(int paramInt1, String paramString, int paramInt2)
   {
     this.query = paramString;
     this.scene = paramInt1;
-    this.dcq = false;
-    this.oEL = paramInt2;
-    this.yLV = false;
-    this.fnG = false;
+    this.cZP = false;
+    this.pil = paramInt2;
+    this.zZO = false;
+    this.fra = false;
   }
 }
 

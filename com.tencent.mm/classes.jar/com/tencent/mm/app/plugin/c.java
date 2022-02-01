@@ -1,28 +1,28 @@
 package com.tencent.mm.app.plugin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.m.e;
 import com.tencent.mm.m.g;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class c
 {
-  public static boolean LA()
+  public static boolean Ly()
   {
     AppMethodBeat.i(19663);
-    if (!d.axB("translate"))
+    if (!d.aCT("translate"))
     {
       AppMethodBeat.o(19663);
       return false;
     }
-    String str = g.Zd().getValue("TranslateMsgOff");
-    if (bt.isNullOrNil(str))
+    String str = g.ZY().getValue("TranslateMsgOff");
+    if (bs.isNullOrNil(str))
     {
       AppMethodBeat.o(19663);
       return true;
     }
-    if (bt.aGh(str) != 0)
+    if (bs.aLy(str) != 0)
     {
       AppMethodBeat.o(19663);
       return false;

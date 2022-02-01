@@ -9,8 +9,7 @@ import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.c.b;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.ui.contact.a.c;
 import com.tencent.mm.ui.contact.a.e;
 import java.util.ArrayList;
@@ -21,52 +20,52 @@ import java.util.List;
 public class s
   extends o
 {
-  protected int GTr;
-  private int GTs;
-  private List<String> GWm;
-  private int GWn;
-  private int GWo;
-  private int GWp;
-  private boolean GWq;
-  private int GWr;
-  private boolean GWs;
-  private int GWt;
-  private List<m> GWu;
-  private List<m> GWv;
-  private List<Integer> GWw;
-  protected l GWx;
+  protected int ItC;
+  private int ItD;
+  private List<String> IwA;
+  private int IwB;
+  private int IwC;
+  private int IwD;
+  private boolean IwE;
+  private int IwF;
+  private boolean IwG;
+  private int IwH;
+  private List<m> IwI;
+  private List<m> IwJ;
+  private List<Integer> IwK;
+  protected l IwL;
   private int count;
-  private List<m> fsY;
-  private ap handler;
+  private List<m> fwF;
+  private ao handler;
   protected String query;
-  private com.tencent.mm.plugin.fts.a.a.h roS;
-  private com.tencent.mm.plugin.fts.a.a.a rpP;
-  protected List<m> rsl;
+  protected List<m> sBf;
+  private com.tencent.mm.plugin.fts.a.a.h sxM;
+  private com.tencent.mm.plugin.fts.a.a.a syJ;
   
   public s(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean, int paramInt)
   {
     super(paramMMBaseSelectContactUI, paramBoolean, paramInt);
     AppMethodBeat.i(102871);
-    this.GWn = 2147483647;
-    this.GWo = 2147483647;
-    this.GWp = 2147483647;
-    this.GWq = true;
-    this.GWr = 2147483647;
-    this.GTr = 2147483647;
-    this.GWs = true;
-    this.GWt = 2147483647;
-    this.GTs = 2147483647;
-    this.GWu = null;
-    this.fsY = null;
-    this.rsl = null;
-    this.GWv = null;
-    this.handler = new ap(Looper.getMainLooper());
-    this.GWx = new l()
+    this.IwB = 2147483647;
+    this.IwC = 2147483647;
+    this.IwD = 2147483647;
+    this.IwE = true;
+    this.IwF = 2147483647;
+    this.ItC = 2147483647;
+    this.IwG = true;
+    this.IwH = 2147483647;
+    this.ItD = 2147483647;
+    this.IwI = null;
+    this.fwF = null;
+    this.sBf = null;
+    this.IwJ = null;
+    this.handler = new ao(Looper.getMainLooper());
+    this.IwL = new l()
     {
       public final void b(k paramAnonymousk)
       {
         AppMethodBeat.i(102870);
-        switch (paramAnonymousk.bRZ)
+        switch (paramAnonymousk.bPH)
         {
         }
         for (;;)
@@ -75,34 +74,34 @@ public class s
           return;
           if ((s.a(s.this) != null) && (s.a(s.this).equals(s.a(s.this))))
           {
-            s.a(s.this, paramAnonymousk.roS);
-            s.this.hX(paramAnonymousk.rpQ);
-            if (paramAnonymousk.rpQ.size() > 0) {
-              switch (((m)paramAnonymousk.rpQ.get(0)).type)
+            s.a(s.this, paramAnonymousk.sxM);
+            s.this.ik(paramAnonymousk.syK);
+            if (paramAnonymousk.syK.size() > 0) {
+              switch (((m)paramAnonymousk.syK.get(0)).type)
               {
               default: 
-                ad.i("MicroMsg.MMSearchContactAdapter", "not support search");
+                com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMSearchContactAdapter", "not support search");
               }
             }
             for (;;)
             {
               boolean bool = s.c(s.this);
-              s.a(s.this, paramAnonymousk.rma.query, bool);
+              s.a(s.this, paramAnonymousk.suU.query, bool);
               AppMethodBeat.o(102870);
               return;
-              s.a(s.this, paramAnonymousk.rpQ);
+              s.a(s.this, paramAnonymousk.syK);
               continue;
-              s.this.rsl = paramAnonymousk.rpQ;
+              s.this.sBf = paramAnonymousk.syK;
               continue;
-              s.b(s.this, paramAnonymousk.rpQ);
+              s.b(s.this, paramAnonymousk.syK);
               continue;
               if (s.b(s.this) != null) {
-                s.b(s.this).addAll(paramAnonymousk.rpQ);
+                s.b(s.this).addAll(paramAnonymousk.syK);
               } else {
-                s.a(s.this, paramAnonymousk.rpQ);
+                s.a(s.this, paramAnonymousk.syK);
               }
             }
-            if (!paramAnonymousk.rma.query.equals(s.this.query))
+            if (!paramAnonymousk.suU.query.equals(s.this.query))
             {
               AppMethodBeat.o(102870);
               return;
@@ -113,29 +112,29 @@ public class s
       }
     };
     this.count = 0;
-    this.GWm = paramList;
-    this.GWw = new ArrayList();
-    ad.i("MicroMsg.MMSearchContactAdapter", "Create!");
-    VL();
+    this.IwA = paramList;
+    this.IwK = new ArrayList();
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMSearchContactAdapter", "Create!");
+    WJ();
     AppMethodBeat.o(102871);
   }
   
-  private static com.tencent.mm.ui.contact.a.a H(int paramInt1, int paramInt2, boolean paramBoolean)
+  private static com.tencent.mm.ui.contact.a.a G(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(102883);
     com.tencent.mm.ui.contact.a.j localj = new com.tencent.mm.ui.contact.a.j(paramInt2);
     localj.resId = paramInt1;
-    localj.qVx = paramBoolean;
+    localj.rVH = paramBoolean;
     AppMethodBeat.o(102883);
     return localj;
   }
   
-  private void VL()
+  private void WJ()
   {
     AppMethodBeat.i(102876);
-    ad.i("MicroMsg.MMSearchContactAdapter", "initData!");
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMSearchContactAdapter", "initData!");
     this.query = null;
-    fbJ();
+    frA();
     clearTask();
     clearCache();
     AppMethodBeat.o(102876);
@@ -144,71 +143,71 @@ public class s
   private void clearTask()
   {
     AppMethodBeat.i(102874);
-    if (this.rpP != null)
+    if (this.syJ != null)
     {
-      ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.rpP);
-      this.rpP = null;
+      ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.syJ);
+      this.syJ = null;
     }
     AppMethodBeat.o(102874);
   }
   
-  private void fbJ()
+  private void frA()
   {
     AppMethodBeat.i(102875);
-    this.GWo = 2147483647;
-    this.GWp = 2147483647;
-    this.GWq = true;
-    this.GWr = 2147483647;
-    this.GTr = 2147483647;
-    this.GWs = true;
-    this.GWt = 2147483647;
-    this.GTs = 2147483647;
-    this.GWu = null;
-    this.fsY = null;
-    this.rsl = null;
-    this.GWv = null;
-    this.roS = null;
+    this.IwC = 2147483647;
+    this.IwD = 2147483647;
+    this.IwE = true;
+    this.IwF = 2147483647;
+    this.ItC = 2147483647;
+    this.IwG = true;
+    this.IwH = 2147483647;
+    this.ItD = 2147483647;
+    this.IwI = null;
+    this.fwF = null;
+    this.sBf = null;
+    this.IwJ = null;
+    this.sxM = null;
     clearCache();
     notifyDataSetChanged();
     AppMethodBeat.o(102875);
   }
   
-  private boolean fbK()
+  private boolean frB()
   {
     AppMethodBeat.i(102878);
-    if (this.GWw.size() > 0)
+    if (this.IwK.size() > 0)
     {
       HashSet localHashSet = new HashSet();
-      if (this.GWu != null)
+      if (this.IwI != null)
       {
-        localObject = this.GWu.iterator();
+        localObject = this.IwI.iterator();
         while (((Iterator)localObject).hasNext()) {
-          localHashSet.add(((m)((Iterator)localObject).next()).roN);
+          localHashSet.add(((m)((Iterator)localObject).next()).sxG);
         }
       }
-      int i = ((Integer)this.GWw.remove(0)).intValue();
+      int i = ((Integer)this.IwK.remove(0)).intValue();
       Object localObject = new com.tencent.mm.plugin.fts.a.a.j();
       ((com.tencent.mm.plugin.fts.a.a.j)localObject).query = this.query;
-      ((com.tencent.mm.plugin.fts.a.a.j)localObject).rpJ = new int[] { i };
-      ((com.tencent.mm.plugin.fts.a.a.j)localObject).rpM = localHashSet;
-      ((com.tencent.mm.plugin.fts.a.a.j)localObject).rpO = this.GWx;
+      ((com.tencent.mm.plugin.fts.a.a.j)localObject).syD = new int[] { i };
+      ((com.tencent.mm.plugin.fts.a.a.j)localObject).syG = localHashSet;
+      ((com.tencent.mm.plugin.fts.a.a.j)localObject).syI = this.IwL;
       ((com.tencent.mm.plugin.fts.a.a.j)localObject).handler = this.handler;
       if (i == 131075) {
-        ((com.tencent.mm.plugin.fts.a.a.j)localObject).iWB = 32;
+        ((com.tencent.mm.plugin.fts.a.a.j)localObject).jwR = 32;
       }
-      for (((com.tencent.mm.plugin.fts.a.a.j)localObject).rpN = com.tencent.mm.plugin.fts.a.c.a.rqm;; ((com.tencent.mm.plugin.fts.a.a.j)localObject).rpN = b.rqn)
+      for (((com.tencent.mm.plugin.fts.a.a.j)localObject).syH = com.tencent.mm.plugin.fts.a.c.a.szg;; ((com.tencent.mm.plugin.fts.a.a.j)localObject).syH = b.szh)
       {
-        this.rpP = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).search(2, (com.tencent.mm.plugin.fts.a.a.j)localObject);
+        this.syJ = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).search(2, (com.tencent.mm.plugin.fts.a.a.j)localObject);
         AppMethodBeat.o(102878);
         return false;
-        ((com.tencent.mm.plugin.fts.a.a.j)localObject).iWB = 16;
+        ((com.tencent.mm.plugin.fts.a.a.j)localObject).jwR = 16;
       }
     }
     AppMethodBeat.o(102878);
     return true;
   }
   
-  private static int hY(List<? extends Object> paramList)
+  private static int il(List<? extends Object> paramList)
   {
     AppMethodBeat.i(102881);
     if (paramList == null)
@@ -221,177 +220,177 @@ public class s
     return i;
   }
   
-  private com.tencent.mm.ui.contact.a.a jv(int paramInt1, int paramInt2)
+  private com.tencent.mm.ui.contact.a.a jH(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(102884);
     com.tencent.mm.ui.contact.a.h localh = new com.tencent.mm.ui.contact.a.h(paramInt2);
-    localh.header = this.GVS.getActivity().getResources().getString(paramInt1);
+    localh.header = this.Iwg.getActivity().getResources().getString(paramInt1);
     AppMethodBeat.o(102884);
     return localh;
   }
   
-  private void k(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  private void l(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(102879);
-    int i = hY(this.GWu);
-    int m = hY(this.fsY);
-    int k = hY(this.rsl);
-    int j = hY(this.GWv);
+    int i = il(this.IwI);
+    int m = il(this.fwF);
+    int k = il(this.sBf);
+    int j = il(this.IwJ);
     if (i > 0)
     {
-      this.GWo = 0;
+      this.IwC = 0;
       i = i + 1 + 0;
       if (m <= 0) {
         break label322;
       }
-      this.GWp = i;
+      this.IwD = i;
       if ((m <= 3) || ((k <= 0) && (j <= 0))) {
         break label304;
       }
-      if (!this.GWq) {
+      if (!this.IwE) {
         break label280;
       }
       i += 4;
-      this.GWr = i;
+      this.IwF = i;
       i += 1;
       label112:
-      if ((this.roS == null) || (this.roS.rps.length <= 1) || (dqZ())) {
+      if ((this.sxM == null) || (this.sxM.sym.length <= 1) || (dFi())) {
         break label331;
       }
-      this.GWn = i;
+      this.IwB = i;
       i += 1;
       label150:
       if (k <= 0) {
         break label382;
       }
-      this.GTr = i;
+      this.ItC = i;
       if ((k <= 3) || (j <= 0)) {
         break label364;
       }
-      if (!this.GWs) {
+      if (!this.IwG) {
         break label340;
       }
       i += 4;
-      this.GWt = i;
+      this.IwH = i;
       i += 1;
       label197:
       if (j <= 0) {
         break label391;
       }
-      this.GTs = i;
+      this.ItD = i;
       i += j + 1;
     }
     for (;;)
     {
-      ad.i("MicroMsg.MMSearchContactAdapter", "setCount %d", new Object[] { Integer.valueOf(i) });
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMSearchContactAdapter", "setCount %d", new Object[] { Integer.valueOf(i) });
       this.count = i;
       if (paramBoolean2) {
-        cI(paramString, paramBoolean1);
+        cO(paramString, paramBoolean1);
       }
       clearCache();
       notifyDataSetChanged();
       AppMethodBeat.o(102879);
       return;
-      this.GWo = 2147483647;
+      this.IwC = 2147483647;
       i = 0;
       break;
       label280:
       i += m + 1;
-      this.GWr = i;
+      this.IwF = i;
       i += 1;
       break label112;
       label304:
-      this.GWr = 2147483647;
+      this.IwF = 2147483647;
       i += m + 1;
       break label112;
       label322:
-      this.GWp = 2147483647;
+      this.IwD = 2147483647;
       break label112;
       label331:
-      this.GWn = 2147483647;
+      this.IwB = 2147483647;
       break label150;
       label340:
       i += k + 1;
-      this.GWt = i;
+      this.IwH = i;
       i += 1;
       break label197;
       label364:
-      this.GWt = 2147483647;
+      this.IwH = 2147483647;
       i += k + 1;
       break label197;
       label382:
-      this.GTr = 2147483647;
+      this.ItC = 2147483647;
       break label197;
       label391:
-      this.GTs = 2147483647;
+      this.ItD = 2147483647;
     }
   }
   
-  protected com.tencent.mm.ui.contact.a.a NK(int paramInt)
+  protected com.tencent.mm.ui.contact.a.a PO(int paramInt)
   {
     AppMethodBeat.i(102885);
-    int i = paramInt - this.GTr - 1;
+    int i = paramInt - this.ItC - 1;
     c localc = new c(paramInt);
-    localc.jpy = ((m)this.rsl.get(i));
-    localc.GVT = dqZ();
-    localc.fWW = true;
-    localc.rqA = (i + 1);
-    localc.fI(localc.jpy.type, localc.jpy.roM);
+    localc.jPN = ((m)this.sBf.get(i));
+    localc.Iwh = dFi();
+    localc.gbD = true;
+    localc.szu = (i + 1);
+    localc.fP(localc.jPN.type, localc.jPN.sxF);
     AppMethodBeat.o(102885);
     return localc;
   }
   
-  public final boolean ZD(int paramInt)
+  public final boolean abR(int paramInt)
   {
     boolean bool = true;
     AppMethodBeat.i(102887);
-    paramInt -= this.GVS.getContentLV().getHeaderViewsCount();
-    if (paramInt == this.GWr) {
-      if (this.GWq)
+    paramInt -= this.Iwg.getContentLV().getHeaderViewsCount();
+    if (paramInt == this.IwF) {
+      if (this.IwE)
       {
-        paramInt = this.GVS.getContentLV().getSelectedItemPosition();
-        this.GWq = false;
-        k(this.query, true, false);
-        this.GVS.getContentLV().setSelection(paramInt);
+        paramInt = this.Iwg.getContentLV().getSelectedItemPosition();
+        this.IwE = false;
+        l(this.query, true, false);
+        this.Iwg.getContentLV().setSelection(paramInt);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(102887);
       return bool;
-      this.GWq = true;
-      k(this.query, true, false);
-      this.GVS.getContentLV().setSelection(this.GWr);
+      this.IwE = true;
+      l(this.query, true, false);
+      this.Iwg.getContentLV().setSelection(this.IwF);
       continue;
-      if (paramInt == this.GWt)
+      if (paramInt == this.IwH)
       {
-        if (this.GWs)
+        if (this.IwG)
         {
-          paramInt = this.GVS.getContentLV().getSelectedItemPosition();
-          this.GWs = false;
-          k(this.query, true, false);
-          this.GVS.getContentLV().setSelection(paramInt);
+          paramInt = this.Iwg.getContentLV().getSelectedItemPosition();
+          this.IwG = false;
+          l(this.query, true, false);
+          this.Iwg.getContentLV().setSelection(paramInt);
         }
         else
         {
-          this.GWs = true;
-          k(this.query, true, false);
-          this.GVS.getContentLV().setSelection(this.GWt);
+          this.IwG = true;
+          l(this.query, true, false);
+          this.Iwg.getContentLV().setSelection(this.IwH);
         }
       }
       else
       {
-        com.tencent.mm.ui.contact.a.a locala = ZC(paramInt);
-        if ((locala != null) && (locala.fWW) && (this.GWn != 2147483647))
+        com.tencent.mm.ui.contact.a.a locala = abQ(paramInt);
+        if ((locala != null) && (locala.gbD) && (this.IwB != 2147483647))
         {
-          if (locala.position == this.GWn)
+          if (locala.position == this.IwB)
           {
-            ac.ZE(1);
+            ac.abS(1);
             bool = false;
           }
           else
           {
-            ac.ZE(0);
+            ac.abS(0);
           }
         }
         else {
@@ -406,27 +405,27 @@ public class s
     AppMethodBeat.i(102873);
     clearTask();
     this.query = paramString;
-    this.GWw.clear();
+    this.IwK.clear();
     int j = paramArrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = paramArrayOfInt[i];
-      this.GWw.add(Integer.valueOf(k));
+      this.IwK.add(Integer.valueOf(k));
       i += 1;
     }
-    ad.i("MicroMsg.MMSearchContactAdapter", "doSearch: query=%s", new Object[] { this.query });
-    fbK();
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMSearchContactAdapter", "doSearch: query=%s", new Object[] { this.query });
+    frB();
     AppMethodBeat.o(102873);
   }
   
   protected boolean c(com.tencent.mm.ui.contact.a.a parama)
   {
     int j = parama.position;
-    int k = this.GWo;
-    int m = this.GWp;
-    int n = this.GTr;
-    int i1 = this.GTs;
+    int k = this.IwC;
+    int m = this.IwD;
+    int n = this.ItC;
+    int i1 = this.ItD;
     int i = 0;
     while (i < 4)
     {
@@ -438,11 +437,11 @@ public class s
     return false;
   }
   
-  public void cI(String paramString, boolean paramBoolean)
+  public void cO(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(102872);
-    if (this.GVR != null) {
-      this.GVR.y(paramString, getCount(), paramBoolean);
+    if (this.Iwf != null) {
+      this.Iwf.y(paramString, getCount(), paramBoolean);
     }
     AppMethodBeat.o(102872);
   }
@@ -450,7 +449,7 @@ public class s
   public final void clearData()
   {
     AppMethodBeat.i(102877);
-    VL();
+    WJ();
     AppMethodBeat.o(102877);
   }
   
@@ -458,8 +457,8 @@ public class s
   {
     AppMethodBeat.i(102886);
     super.finish();
-    ad.i("MicroMsg.MMSearchContactAdapter", "finish!");
-    VL();
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMSearchContactAdapter", "finish!");
+    WJ();
     AppMethodBeat.o(102886);
   }
   
@@ -468,10 +467,10 @@ public class s
     return this.count;
   }
   
-  protected void hX(List<m> paramList)
+  protected void ik(List<m> paramList)
   {
     AppMethodBeat.i(102880);
-    if (this.GWm == null)
+    if (this.IwA == null)
     {
       AppMethodBeat.o(102880);
       return;
@@ -480,7 +479,7 @@ public class s
     if (i >= 0)
     {
       m localm = (m)paramList.get(i);
-      if (!this.GWm.contains(localm.roN))
+      if (!this.IwA.contains(localm.sxG))
       {
         j = localm.type;
         if ((j != 131072) && (j != 131075) && (j != 131076) && (j != 131081)) {
@@ -500,109 +499,109 @@ public class s
     AppMethodBeat.o(102880);
   }
   
-  protected com.tencent.mm.ui.contact.a.a pU(int paramInt)
+  protected com.tencent.mm.ui.contact.a.a qH(int paramInt)
   {
     AppMethodBeat.i(102882);
     Object localObject = null;
-    if (paramInt == this.GWn)
+    if (paramInt == this.IwB)
     {
       localObject = new com.tencent.mm.ui.contact.a.g(paramInt);
-      ((com.tencent.mm.ui.contact.a.g)localObject).fWW = true;
+      ((com.tencent.mm.ui.contact.a.g)localObject).gbD = true;
     }
     for (;;)
     {
       if (localObject != null)
       {
         ((com.tencent.mm.ui.contact.a.a)localObject).query = this.query;
-        ((com.tencent.mm.ui.contact.a.a)localObject).roS = this.roS;
+        ((com.tencent.mm.ui.contact.a.a)localObject).sxM = this.sxM;
         ((com.tencent.mm.ui.contact.a.a)localObject).scene = this.scene;
       }
       AppMethodBeat.o(102882);
       return localObject;
-      if (paramInt == this.GWo)
+      if (paramInt == this.IwC)
       {
-        localObject = jv(2131759698, paramInt);
+        localObject = jH(2131759698, paramInt);
       }
-      else if (paramInt == this.GWp)
+      else if (paramInt == this.IwD)
       {
-        localObject = jv(2131759682, paramInt);
+        localObject = jH(2131759682, paramInt);
       }
-      else if (paramInt == this.GTr)
+      else if (paramInt == this.ItC)
       {
-        localObject = jv(2131759681, paramInt);
+        localObject = jH(2131759681, paramInt);
       }
-      else if (paramInt == this.GTs)
+      else if (paramInt == this.ItD)
       {
-        localObject = jv(2131759679, paramInt);
+        localObject = jH(2131759679, paramInt);
       }
-      else if (paramInt == this.GWr)
+      else if (paramInt == this.IwF)
       {
-        localObject = H(2131759682, paramInt, this.GWq);
+        localObject = G(2131759682, paramInt, this.IwE);
       }
-      else if (paramInt == this.GWt)
+      else if (paramInt == this.IwH)
       {
-        localObject = H(2131759681, paramInt, this.GWs);
+        localObject = G(2131759681, paramInt, this.IwG);
       }
       else
       {
         int i;
-        if (paramInt > this.GTs)
+        if (paramInt > this.ItD)
         {
-          i = paramInt - this.GTs - 1;
+          i = paramInt - this.ItD - 1;
           localObject = new e(paramInt);
-          ((e)localObject).jpy = ((m)this.GWv.get(i));
-          ((com.tencent.mm.ui.contact.a.a)localObject).GVT = dqZ();
-          ((e)localObject).fWW = true;
-          ((e)localObject).rqA = (i + 1);
-          ((e)localObject).fI(((e)localObject).jpy.type, ((e)localObject).jpy.roM);
+          ((e)localObject).jPN = ((m)this.IwJ.get(i));
+          ((com.tencent.mm.ui.contact.a.a)localObject).Iwh = dFi();
+          ((e)localObject).gbD = true;
+          ((e)localObject).szu = (i + 1);
+          ((e)localObject).fP(((e)localObject).jPN.type, ((e)localObject).jPN.sxF);
         }
-        else if (paramInt > this.GTr)
+        else if (paramInt > this.ItC)
         {
-          localObject = NK(paramInt);
+          localObject = PO(paramInt);
         }
-        else if (paramInt > this.GWp)
+        else if (paramInt > this.IwD)
         {
-          i = paramInt - this.GWp - 1;
+          i = paramInt - this.IwD - 1;
           localObject = new e(paramInt);
-          ((e)localObject).jpy = ((m)this.fsY.get(i));
-          ((com.tencent.mm.ui.contact.a.a)localObject).GVT = dqZ();
-          ((e)localObject).fWW = true;
-          ((e)localObject).rqA = (i + 1);
-          ((e)localObject).fI(((e)localObject).jpy.type, ((e)localObject).jpy.roM);
+          ((e)localObject).jPN = ((m)this.fwF.get(i));
+          ((com.tencent.mm.ui.contact.a.a)localObject).Iwh = dFi();
+          ((e)localObject).gbD = true;
+          ((e)localObject).szu = (i + 1);
+          ((e)localObject).fP(((e)localObject).jPN.type, ((e)localObject).jPN.sxF);
         }
-        else if (paramInt > this.GWo)
+        else if (paramInt > this.IwC)
         {
-          i = paramInt - this.GWo - 1;
-          m localm = (m)this.GWu.get(i);
+          i = paramInt - this.IwC - 1;
+          m localm = (m)this.IwI.get(i);
           if ((localm.type == 131072) || (localm.type == 131076) || (localm.type == 131081))
           {
             localObject = new e(paramInt);
-            ((e)localObject).jpy = localm;
-            ((com.tencent.mm.ui.contact.a.a)localObject).GVT = dqZ();
-            ((e)localObject).GZl = true;
-            ((e)localObject).fWW = true;
-            ((e)localObject).rqA = (i + 1);
-            ((e)localObject).fI(((e)localObject).jpy.type, ((e)localObject).jpy.roM);
+            ((e)localObject).jPN = localm;
+            ((com.tencent.mm.ui.contact.a.a)localObject).Iwh = dFi();
+            ((e)localObject).IzD = true;
+            ((e)localObject).gbD = true;
+            ((e)localObject).szu = (i + 1);
+            ((e)localObject).fP(((e)localObject).jPN.type, ((e)localObject).jPN.sxF);
           }
           else if (localm.type == 131075)
           {
             localObject = new c(paramInt);
-            ((c)localObject).jpy = localm;
-            ((com.tencent.mm.ui.contact.a.a)localObject).GVT = dqZ();
-            ((c)localObject).GZl = true;
-            ((c)localObject).fWW = true;
-            ((c)localObject).rqA = (i + 1);
-            ((c)localObject).fI(((c)localObject).jpy.type, ((c)localObject).jpy.roM);
+            ((c)localObject).jPN = localm;
+            ((com.tencent.mm.ui.contact.a.a)localObject).Iwh = dFi();
+            ((c)localObject).IzD = true;
+            ((c)localObject).gbD = true;
+            ((c)localObject).szu = (i + 1);
+            ((c)localObject).fP(((c)localObject).jPN.type, ((c)localObject).jPN.sxF);
           }
           else
           {
-            ad.e("MicroMsg.MMSearchContactAdapter", "createTopHitsDataItem return unkown type %d", new Object[] { Integer.valueOf(localm.type) });
+            com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMSearchContactAdapter", "createTopHitsDataItem return unkown type %d", new Object[] { Integer.valueOf(localm.type) });
             localObject = null;
           }
         }
         else
         {
-          ad.e("MicroMsg.MMSearchContactAdapter", "unkown position=%d", new Object[] { Integer.valueOf(paramInt) });
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMSearchContactAdapter", "unkown position=%d", new Object[] { Integer.valueOf(paramInt) });
         }
       }
     }
@@ -610,7 +609,7 @@ public class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.s
  * JD-Core Version:    0.7.0.1
  */

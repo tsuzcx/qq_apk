@@ -7,17 +7,17 @@ import java.util.Arrays;
 public final class f
   extends a
 {
-  public static final f JLE;
-  public static final f JLF;
-  public static final a JLG;
-  private final boolean JLD;
+  public static final f LyX;
+  public static final f LyY;
+  public static final a LyZ;
+  private final boolean LyW;
   
   static
   {
     AppMethodBeat.i(59244);
-    JLG = new a((byte)0);
-    JLE = new f(new int[] { 1, 1, 16 });
-    JLF = new f(new int[0]);
+    LyZ = new a((byte)0);
+    LyX = new f(new int[] { 1, 1, 16 });
+    LyY = new f(new int[0]);
     AppMethodBeat.o(59244);
   }
   
@@ -32,18 +32,18 @@ public final class f
   {
     super(Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length));
     AppMethodBeat.i(59242);
-    this.JLD = paramBoolean;
+    this.LyW = paramBoolean;
     AppMethodBeat.o(59242);
   }
   
-  public final boolean fGg()
+  public final boolean fYK()
   {
     AppMethodBeat.i(59241);
     if ((this.major != 1) || (this.minor != 0))
     {
       boolean bool;
-      if (this.JLD) {
-        bool = a((a)JLE);
+      if (this.LyW) {
+        bool = a((a)LyX);
       }
       while (bool)
       {
@@ -64,7 +64,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.c.a.f
  * JD-Core Version:    0.7.0.1
  */

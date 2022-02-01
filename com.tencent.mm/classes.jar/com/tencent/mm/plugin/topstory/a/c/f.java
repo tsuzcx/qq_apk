@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.topstory.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dcp;
-import com.tencent.mm.protocal.protobuf.dcq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dic;
+import com.tencent.mm.protocal.protobuf.did;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public final class f
@@ -21,101 +21,91 @@ public final class f
 {
   private g callback;
   public b rr;
-  private long yLW;
+  private long rxC;
   
   public f(f paramf)
   {
     AppMethodBeat.i(88485);
-    this.yLW = System.currentTimeMillis();
+    this.rxC = System.currentTimeMillis();
     Object localObject = new b.a();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmsearch-bin/topstorypluginpostcomment";
-    ((b.a)localObject).gUU = new dcp();
-    ((b.a)localObject).gUV = new dcq();
-    this.rr = ((b.a)localObject).atI();
-    localObject = (dcp)this.rr.gUS.gUX;
-    paramf = paramf.dOg();
-    ((dcp)localObject).DVb = paramf.DVb;
-    ((dcp)localObject).DUZ = paramf.DUZ;
-    ((dcp)localObject).gKr = paramf.gKr;
-    ((dcp)localObject).Eub = paramf.Eub;
-    ((dcp)localObject).Euc = paramf.Euc;
-    ((dcp)localObject).Dni = paramf.Dni;
-    ((dcp)localObject).Title = paramf.Title;
-    ((dcp)localObject).DLH = paramf.DLH;
-    ((dcp)localObject).Scene = paramf.Scene;
-    ((dcp)localObject).CzZ = paramf.CzZ;
-    ((dcp)localObject).nlK = paramf.nlK;
-    ((dcp)localObject).Efu = paramf.Efu;
-    ((dcp)localObject).rNz = paramf.rNz;
-    ad.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((dcp)localObject).DVb, ((dcp)localObject).DUZ, ((dcp)localObject).gKr, ((dcp)localObject).Eub, ((dcp)localObject).Euc, ((dcp)localObject).Dni, ((dcp)localObject).Title, ((dcp)localObject).DLH, Integer.valueOf(((dcp)localObject).Scene), Integer.valueOf(((dcp)localObject).CzZ) });
+    ((b.a)localObject).hvt = new dic();
+    ((b.a)localObject).hvu = new did();
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (dic)this.rr.hvr.hvw;
+    paramf = paramf.ecH();
+    ((dic)localObject).FrP = paramf.FrP;
+    ((dic)localObject).FrN = paramf.FrN;
+    ((dic)localObject).hkR = paramf.hkR;
+    ((dic)localObject).FRc = paramf.FRc;
+    ((dic)localObject).FRd = paramf.FRd;
+    ((dic)localObject).EIi = paramf.EIi;
+    ((dic)localObject).Title = paramf.Title;
+    ((dic)localObject).FhW = paramf.FhW;
+    ((dic)localObject).Scene = paramf.Scene;
+    ((dic)localObject).DSv = paramf.DSv;
+    ((dic)localObject).nOK = paramf.nOK;
+    ((dic)localObject).FCu = paramf.FCu;
+    ((dic)localObject).sVo = paramf.sVo;
+    ac.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((dic)localObject).FrP, ((dic)localObject).FrN, ((dic)localObject).hkR, ((dic)localObject).FRc, ((dic)localObject).FRd, ((dic)localObject).EIi, ((dic)localObject).Title, ((dic)localObject).FhW, Integer.valueOf(((dic)localObject).Scene), Integer.valueOf(((dic)localObject).DSv) });
     AppMethodBeat.o(88485);
   }
   
   public f(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt1, int paramInt2, String paramString9, String paramString10)
   {
     AppMethodBeat.i(88484);
-    this.yLW = System.currentTimeMillis();
+    this.rxC = System.currentTimeMillis();
     Object localObject = new b.a();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmsearch-bin/topstorypluginpostcomment";
-    ((b.a)localObject).gUU = new dcp();
-    ((b.a)localObject).gUV = new dcq();
-    this.rr = ((b.a)localObject).atI();
-    localObject = (dcp)this.rr.gUS.gUX;
-    ((dcp)localObject).DVb = paramString1;
-    ((dcp)localObject).DUZ = paramString2;
-    ((dcp)localObject).gKr = paramString3;
-    ((dcp)localObject).Eub = paramString4;
-    ((dcp)localObject).Euc = paramString5;
-    ((dcp)localObject).Dni = paramString6;
-    ((dcp)localObject).Title = paramString7;
-    ((dcp)localObject).DLH = paramString8;
-    ((dcp)localObject).Scene = paramInt1;
-    ((dcp)localObject).CzZ = paramInt2;
-    ((dcp)localObject).nlK = paramString9;
-    ((dcp)localObject).Efu = paramString10;
-    ((dcp)localObject).rNz = 1;
-    ad.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((dcp)localObject).DVb, ((dcp)localObject).DUZ, ((dcp)localObject).gKr, ((dcp)localObject).Eub, ((dcp)localObject).Euc, ((dcp)localObject).Dni, ((dcp)localObject).Title, ((dcp)localObject).DLH, Integer.valueOf(((dcp)localObject).Scene), Integer.valueOf(((dcp)localObject).CzZ) });
+    ((b.a)localObject).hvt = new dic();
+    ((b.a)localObject).hvu = new did();
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (dic)this.rr.hvr.hvw;
+    ((dic)localObject).FrP = paramString1;
+    ((dic)localObject).FrN = paramString2;
+    ((dic)localObject).hkR = paramString3;
+    ((dic)localObject).FRc = paramString4;
+    ((dic)localObject).FRd = paramString5;
+    ((dic)localObject).EIi = paramString6;
+    ((dic)localObject).Title = paramString7;
+    ((dic)localObject).FhW = paramString8;
+    ((dic)localObject).Scene = paramInt1;
+    ((dic)localObject).DSv = paramInt2;
+    ((dic)localObject).nOK = paramString9;
+    ((dic)localObject).FCu = paramString10;
+    ((dic)localObject).sVo = 1;
+    ac.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((dic)localObject).FrP, ((dic)localObject).FrN, ((dic)localObject).hkR, ((dic)localObject).FRc, ((dic)localObject).FRd, ((dic)localObject).EIi, ((dic)localObject).Title, ((dic)localObject).FhW, Integer.valueOf(((dic)localObject).Scene), Integer.valueOf(((dic)localObject).DSv) });
     AppMethodBeat.o(88484);
   }
   
   public f(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(88483);
-    this.yLW = System.currentTimeMillis();
+    this.rxC = System.currentTimeMillis();
     Object localObject = new b.a();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmsearch-bin/topstorypluginpostcomment";
-    ((b.a)localObject).gUU = new dcp();
-    ((b.a)localObject).gUV = new dcq();
-    this.rr = ((b.a)localObject).atI();
-    localObject = (dcp)this.rr.gUS.gUX;
-    ((dcp)localObject).DVb = paramJSONObject.optString("requestId", "");
-    ((dcp)localObject).DUZ = paramJSONObject.optString("docId", "");
-    ((dcp)localObject).gKr = paramJSONObject.optString("content", "");
-    ((dcp)localObject).Eub = paramJSONObject.optString("replyId", "");
-    ((dcp)localObject).Euc = paramJSONObject.optString("subReplyId", "");
-    ((dcp)localObject).Dni = paramJSONObject.optString("docUrl", "");
-    ((dcp)localObject).Title = paramJSONObject.optString("title", "");
-    ((dcp)localObject).DLH = paramJSONObject.optString("searchId", "");
-    ((dcp)localObject).Scene = paramJSONObject.optInt("scene", 0);
-    ((dcp)localObject).CzZ = paramJSONObject.optInt("subScene", 0);
-    ((dcp)localObject).nlK = paramJSONObject.optString("vid", "");
-    ((dcp)localObject).Efu = paramJSONObject.optString("byPass", "");
-    ((dcp)localObject).rNz = 0;
-    ad.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((dcp)localObject).DVb, ((dcp)localObject).DUZ, ((dcp)localObject).gKr, ((dcp)localObject).Eub, ((dcp)localObject).Euc, ((dcp)localObject).Dni, ((dcp)localObject).Title, ((dcp)localObject).DLH, Integer.valueOf(((dcp)localObject).Scene), Integer.valueOf(((dcp)localObject).CzZ) });
+    ((b.a)localObject).hvt = new dic();
+    ((b.a)localObject).hvu = new did();
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (dic)this.rr.hvr.hvw;
+    ((dic)localObject).FrP = paramJSONObject.optString("requestId", "");
+    ((dic)localObject).FrN = paramJSONObject.optString("docId", "");
+    ((dic)localObject).hkR = paramJSONObject.optString("content", "");
+    ((dic)localObject).FRc = paramJSONObject.optString("replyId", "");
+    ((dic)localObject).FRd = paramJSONObject.optString("subReplyId", "");
+    ((dic)localObject).EIi = paramJSONObject.optString("docUrl", "");
+    ((dic)localObject).Title = paramJSONObject.optString("title", "");
+    ((dic)localObject).FhW = paramJSONObject.optString("searchId", "");
+    ((dic)localObject).Scene = paramJSONObject.optInt("scene", 0);
+    ((dic)localObject).DSv = paramJSONObject.optInt("subScene", 0);
+    ((dic)localObject).nOK = paramJSONObject.optString("vid", "");
+    ((dic)localObject).FCu = paramJSONObject.optString("byPass", "");
+    ((dic)localObject).sVo = 0;
+    ac.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((dic)localObject).FrP, ((dic)localObject).FrN, ((dic)localObject).hkR, ((dic)localObject).FRc, ((dic)localObject).FRd, ((dic)localObject).EIi, ((dic)localObject).Title, ((dic)localObject).FhW, Integer.valueOf(((dic)localObject).Scene), Integer.valueOf(((dic)localObject).DSv) });
     AppMethodBeat.o(88483);
-  }
-  
-  public final dcq dOf()
-  {
-    return (dcq)this.rr.gUT.gUX;
-  }
-  
-  public final dcp dOg()
-  {
-    return (dcp)this.rr.gUS.gUX;
   }
   
   public final int doScene(e parame, g paramg)
@@ -127,6 +117,16 @@ public final class f
     return i;
   }
   
+  public final did ecG()
+  {
+    return (did)this.rr.hvs.hvw;
+  }
+  
+  public final dic ecH()
+  {
+    return (dic)this.rr.hvr.hvw;
+  }
+  
   public final int getType()
   {
     return 2906;
@@ -135,7 +135,7 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88487);
-    ad.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.yLW) });
+    ac.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.rxC) });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(88487);
   }

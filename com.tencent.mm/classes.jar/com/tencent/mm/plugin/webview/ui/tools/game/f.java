@@ -4,9 +4,9 @@ import java.util.Map;
 
 public abstract interface f
 {
-  public abstract Map<Integer, Object> cBK();
+  public abstract Map<Integer, Object> cOV();
   
-  public abstract Map<Integer, Object> cBL();
+  public abstract Map<Integer, Object> cOW();
 }
 
 

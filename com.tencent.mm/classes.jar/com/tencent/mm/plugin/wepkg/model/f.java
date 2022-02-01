@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.wepkg.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wepkg.d.b;
-import com.tencent.mm.protocal.protobuf.ahn;
-import com.tencent.mm.protocal.protobuf.ahp;
-import com.tencent.mm.protocal.protobuf.dqk;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aim;
+import com.tencent.mm.protocal.protobuf.aio;
+import com.tencent.mm.protocal.protobuf.dwb;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -23,62 +23,62 @@ import java.util.Map;
 
 public final class f
 {
-  private static int BIE = 4;
-  private static ByteOrder BIF = ByteOrder.BIG_ENDIAN;
-  private volatile int BIG;
-  private volatile int BIH;
-  volatile dqk BII;
-  private volatile LinkedList<ahp> BIJ;
-  private volatile String BIK;
-  private e fGL;
-  volatile boolean iLs;
+  private static int DaN = 4;
+  private static ByteOrder DaO = ByteOrder.BIG_ENDIAN;
+  private volatile int DaP;
+  private volatile int DaQ;
+  volatile dwb DaR;
+  private volatile LinkedList<aio> DaS;
+  private volatile String DaT;
+  private e fKs;
+  volatile boolean jlz;
   private volatile String mDesc;
   
   public f(e parame)
   {
     AppMethodBeat.i(177090);
-    this.iLs = false;
-    this.BIH = 0;
-    this.BII = null;
-    this.BIJ = null;
-    this.BIK = "";
+    this.jlz = false;
+    this.DaQ = 0;
+    this.DaR = null;
+    this.DaS = null;
+    this.DaT = "";
     this.mDesc = "";
-    this.fGL = parame;
-    if (aQh()) {
+    this.fKs = parame;
+    if (aWZ()) {
       bool = true;
     }
-    this.iLs = bool;
+    this.jlz = bool;
     AppMethodBeat.o(177090);
   }
   
-  private boolean aQh()
+  private boolean aWZ()
   {
     AppMethodBeat.i(110685);
     localObject1 = null;
     try
     {
-      FileChannel localFileChannel = i.cS(q.B(this.fGL.mUri), false).getChannel();
+      FileChannel localFileChannel = i.cY(q.B(this.fKs.mUri), false).getChannel();
       localObject1 = localFileChannel;
     }
     catch (Exception localException1)
     {
       for (;;)
       {
-        ad.e("MicroMsg.Wepkg.WePkgReader", "openfile failed, " + localException1.getMessage());
+        ac.e("MicroMsg.Wepkg.WePkgReader", "openfile failed, " + localException1.getMessage());
       }
       try
       {
         localObject1.position(0L);
-        ByteBuffer localByteBuffer = ByteBuffer.allocate(BIE);
-        localByteBuffer.order(BIF);
+        ByteBuffer localByteBuffer = ByteBuffer.allocate(DaN);
+        localByteBuffer.order(DaO);
         localObject1.read(localByteBuffer);
-        this.BIG = localByteBuffer.getInt(0);
+        this.DaP = localByteBuffer.getInt(0);
         boolean bool = b(localObject1);
         return bool;
       }
       catch (Exception localException2)
       {
-        ad.e("MicroMsg.Wepkg.WePkgReader", "parseHeader error, " + localException2.getMessage());
+        ac.e("MicroMsg.Wepkg.WePkgReader", "parseHeader error, " + localException2.getMessage());
         return false;
       }
       finally
@@ -97,16 +97,16 @@ public final class f
   private boolean b(FileChannel paramFileChannel)
   {
     AppMethodBeat.i(110686);
-    if (this.BIG <= 0)
+    if (this.DaP <= 0)
     {
       AppMethodBeat.o(110686);
       return false;
     }
     try
     {
-      paramFileChannel.position(BIE);
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(this.BIG);
-      localByteBuffer.order(BIF);
+      paramFileChannel.position(DaN);
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(this.DaP);
+      localByteBuffer.order(DaO);
       paramFileChannel.read(localByteBuffer);
       paramFileChannel = localByteBuffer.array();
       if (paramFileChannel != null)
@@ -119,18 +119,18 @@ public final class f
         AppMethodBeat.o(110686);
         return false;
       }
-      this.BII = new dqk();
-      this.BII.parseFrom(paramFileChannel);
-      this.BIJ = this.BII.EGe;
-      this.BIK = this.BII.EGf;
-      this.mDesc = this.BII.Desc;
-      this.BIH = (BIE + this.BIG);
+      this.DaR = new dwb();
+      this.DaR.parseFrom(paramFileChannel);
+      this.DaS = this.DaR.Gdq;
+      this.DaT = this.DaR.Gdr;
+      this.mDesc = this.DaR.Desc;
+      this.DaQ = (DaN + this.DaP);
       AppMethodBeat.o(110686);
       return true;
     }
     catch (Exception paramFileChannel)
     {
-      ad.e("MicroMsg.Wepkg.WePkgReader", "dealProtoData error, " + paramFileChannel.getMessage());
+      ac.e("MicroMsg.Wepkg.WePkgReader", "dealProtoData error, " + paramFileChannel.getMessage());
       AppMethodBeat.o(110686);
     }
     return false;
@@ -151,50 +151,50 @@ public final class f
     AppMethodBeat.o(110687);
   }
   
-  public final WebResourceResponse ku(String paramString1, String paramString2)
+  public final WebResourceResponse kQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110684);
-    if ((bt.gL(this.BIJ)) || (this.BIH < BIE) || (bt.isNullOrNil(paramString1)))
+    if ((bs.gY(this.DaS)) || (this.DaQ < DaN) || (bs.isNullOrNil(paramString1)))
     {
-      ad.e("MicroMsg.Wepkg.WePkgReader", "mFileIndexList is null");
+      ac.e("MicroMsg.Wepkg.WePkgReader", "mFileIndexList is null");
       AppMethodBeat.o(110684);
       return null;
     }
-    Iterator localIterator1 = this.BIJ.iterator();
+    Iterator localIterator1 = this.DaS.iterator();
     while (localIterator1.hasNext())
     {
-      ahp localahp = (ahp)localIterator1.next();
-      if (bt.nullAsNil(localahp.Dke).equals(paramString1))
+      aio localaio = (aio)localIterator1.next();
+      if (bs.nullAsNil(localaio.EDk).equals(paramString1))
       {
-        Object localObject = localahp.Dkg;
-        if ((!bt.isNullOrNil((String)localObject)) && ((((String)localObject).startsWith("video/")) || (((String)localObject).startsWith("audio/")))) {}
+        Object localObject = localaio.EDm;
+        if ((!bs.isNullOrNil((String)localObject)) && ((((String)localObject).startsWith("video/")) || (((String)localObject).startsWith("audio/")))) {}
         for (int i = 1; i != 0; i = 0)
         {
-          ad.i("MicroMsg.Wepkg.WePkgReader", "filename (%s) is media resource", new Object[] { paramString1 });
+          ac.i("MicroMsg.Wepkg.WePkgReader", "filename (%s) is media resource", new Object[] { paramString1 });
           AppMethodBeat.o(110684);
           return null;
         }
-        if (localahp.mBC <= 5242880L)
+        if (localaio.ndD <= 5242880L)
         {
           HashMap localHashMap;
           try
           {
-            ad.i("MicroMsg.Wepkg.WePkgReader", "rid hit big package. rid:%s", new Object[] { paramString1 });
-            localObject = new WebResourceResponse(localahp.Dkg, paramString2, new b(this.fGL, this.BIH + localahp.Dkf, localahp.mBC));
-            if (bt.gL(localahp.Dkh)) {
+            ac.i("MicroMsg.Wepkg.WePkgReader", "rid hit big package. rid:%s", new Object[] { paramString1 });
+            localObject = new WebResourceResponse(localaio.EDm, paramString2, new b(this.fKs, this.DaQ + localaio.EDl, localaio.ndD));
+            if (bs.gY(localaio.EDn)) {
               break label370;
             }
             localHashMap = new HashMap();
-            Iterator localIterator2 = localahp.Dkh.iterator();
+            Iterator localIterator2 = localaio.EDn.iterator();
             while (localIterator2.hasNext())
             {
-              ahn localahn = (ahn)localIterator2.next();
-              localHashMap.put(localahn.key, localahn.value);
+              aim localaim = (aim)localIterator2.next();
+              localHashMap.put(localaim.key, localaim.value);
             }
           }
           catch (IOException localIOException)
           {
-            ad.e("MicroMsg.Wepkg.WePkgReader", "filename = %s, offset = %d, size = %d, mimeType = %s, e = %s", new Object[] { paramString1, Long.valueOf(localahp.Dkf), Integer.valueOf(localahp.mBC), localahp.Dkg, localIOException.getMessage() });
+            ac.e("MicroMsg.Wepkg.WePkgReader", "filename = %s, offset = %d, size = %d, mimeType = %s, e = %s", new Object[] { paramString1, Long.valueOf(localaio.EDl), Integer.valueOf(localaio.ndD), localaio.EDm, localIOException.getMessage() });
           }
           localIOException.mResponseHeaders = localHashMap;
           label370:
@@ -203,7 +203,7 @@ public final class f
         }
         else
         {
-          ad.i("MicroMsg.Wepkg.WePkgReader", "fileSize(%d) > limitSize(%d), filename = %s, offset = %d, mimeType = %s", new Object[] { Integer.valueOf(localahp.mBC), Long.valueOf(5242880L), paramString1, Long.valueOf(localahp.Dkf), localahp.Dkg });
+          ac.i("MicroMsg.Wepkg.WePkgReader", "fileSize(%d) > limitSize(%d), filename = %s, offset = %d, mimeType = %s", new Object[] { Integer.valueOf(localaio.ndD), Long.valueOf(5242880L), paramString1, Long.valueOf(localaio.EDl), localaio.EDm });
         }
       }
     }

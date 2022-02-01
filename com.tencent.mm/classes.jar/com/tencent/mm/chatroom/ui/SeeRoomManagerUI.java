@@ -18,27 +18,29 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.a;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.chatroom.d.b;
 import com.tencent.mm.chatroom.d.d;
 import com.tencent.mm.chatroom.d.e;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.aj;
 import com.tencent.mm.model.u;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.aai;
-import com.tencent.mm.protocal.protobuf.cf;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.protocal.protobuf.zt;
+import com.tencent.mm.protocal.protobuf.aas;
+import com.tencent.mm.protocal.protobuf.abh;
+import com.tencent.mm.protocal.protobuf.ch;
+import com.tencent.mm.protocal.protobuf.cx;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.x;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -52,17 +54,17 @@ public class SeeRoomManagerUI
   extends MMActivity
   implements k.a
 {
-  private com.tencent.mm.storage.w fql;
-  private String ftH;
-  private b fvB;
-  private GridView fvo;
+  private x ftP;
+  private String fxo;
+  private GridView fyV;
+  private b fzi;
   private p tipDialog;
   
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(12842);
     if (paramm != null) {
-      ad.i("MicroMsg.SeeRoomManagerUI", "[onNotifyChange] event:%s [%s:%s]", new Object[] { paramString, paramm.dcx, Integer.valueOf(paramm.jqR) });
+      ac.i("MicroMsg.SeeRoomManagerUI", "[onNotifyChange] event:%s [%s:%s]", new Object[] { paramString, paramm.cZV, Integer.valueOf(paramm.jRj) });
     }
     AppMethodBeat.o(12842);
   }
@@ -71,8 +73,8 @@ public class SeeRoomManagerUI
   {
     AppMethodBeat.i(12843);
     c localc = new c();
-    localc.frr = ((ImageView)paramView.findViewById(2131304237));
-    localc.fvz = ((TextView)paramView.findViewById(2131304234));
+    localc.fuY = ((ImageView)paramView.findViewById(2131304237));
+    localc.fzg = ((TextView)paramView.findViewById(2131304234));
     AppMethodBeat.o(12843);
     return localc;
   }
@@ -87,17 +89,17 @@ public class SeeRoomManagerUI
     AppMethodBeat.i(12841);
     super.initView();
     setMMTitle(2131762637);
-    this.fvo = ((GridView)findViewById(2131302149));
-    this.fvB = new b(this);
-    this.fvo.setAdapter(this.fvB);
-    this.fvo.setOnTouchListener(new View.OnTouchListener()
+    this.fyV = ((GridView)findViewById(2131302149));
+    this.fzi = new b(this);
+    this.fyV.setAdapter(this.fzi);
+    this.fyV.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         return true;
       }
     });
-    this.fvo.post(new Runnable()
+    this.fyV.post(new Runnable()
     {
       public final void run()
       {
@@ -133,16 +135,16 @@ public class SeeRoomManagerUI
       if (paramIntent == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.w("MicroMsg.SeeRoomManagerUI", "[onActivityResult] data is null? %s resultCode:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt2) });
+        ac.w("MicroMsg.SeeRoomManagerUI", "[onActivityResult] data is null? %s resultCode:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt2) });
         AppMethodBeat.o(12844);
         return;
       }
     }
     paramIntent = paramIntent.getStringExtra("Select_Contact");
-    ad.i("MicroMsg.SeeRoomManagerUI", "[onActivityResult] roomName:%s requestCode:%s userListString:%s", new Object[] { this.ftH, Integer.valueOf(paramInt1), paramIntent });
-    if (bt.isNullOrNil(paramIntent))
+    ac.i("MicroMsg.SeeRoomManagerUI", "[onActivityResult] roomName:%s requestCode:%s userListString:%s", new Object[] { this.fxo, Integer.valueOf(paramInt1), paramIntent });
+    if (bs.isNullOrNil(paramIntent))
     {
-      ad.e("MicroMsg.SeeRoomManagerUI", "[onActivityResult] userListString is null!");
+      ac.e("MicroMsg.SeeRoomManagerUI", "[onActivityResult] userListString is null!");
       AppMethodBeat.o(12844);
       return;
     }
@@ -165,25 +167,25 @@ public class SeeRoomManagerUI
       localObject = getContext();
       getString(2131755906);
       this.tipDialog = h.b((Context)localObject, getString(2131762571), false, null);
-      if (com.tencent.mm.model.w.sm(this.ftH))
+      if (w.wp(this.fxo))
       {
-        new b(this.ftH, paramIntent).auK().a(this).b(new a() {});
+        new b(this.fxo, paramIntent).aBB().a(this).b(new a() {});
         AppMethodBeat.o(12844);
         return;
       }
-      new e(this.ftH, paramIntent).auK().a(this).b(new a() {});
+      new e(this.fxo, paramIntent).aBB().a(this).b(new a() {});
       AppMethodBeat.o(12844);
       return;
       localObject = getContext();
       getString(2131755906);
       this.tipDialog = h.b((Context)localObject, getString(2131762594), false, null);
-      if (com.tencent.mm.model.w.sm(this.ftH))
+      if (w.wp(this.fxo))
       {
-        new d(this.ftH, paramIntent).auK().a(this).b(new a() {});
+        new d(this.fxo, paramIntent).aBB().a(this).b(new a() {});
         AppMethodBeat.o(12844);
         return;
       }
-      new com.tencent.mm.chatroom.d.f(this.ftH, paramIntent).auK().a(this).b(new a() {});
+      new com.tencent.mm.chatroom.d.f(this.fxo, paramIntent).aBB().a(this).b(new a() {});
     }
   }
   
@@ -191,8 +193,8 @@ public class SeeRoomManagerUI
   {
     AppMethodBeat.i(12839);
     super.onCreate(paramBundle);
-    ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().add(this);
-    this.ftH = getIntent().getStringExtra("RoomInfo_Id");
+    ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().add(this);
+    this.fxo = getIntent().getStringExtra("RoomInfo_Id");
     initView();
     AppMethodBeat.o(12839);
   }
@@ -201,7 +203,7 @@ public class SeeRoomManagerUI
   {
     AppMethodBeat.i(12840);
     super.onDestroy();
-    ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().remove(this);
+    ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().remove(this);
     AppMethodBeat.o(12840);
   }
   
@@ -213,13 +215,13 @@ public class SeeRoomManagerUI
   
   public final class a
   {
-    public af contact;
+    public ai contact;
     public int type;
     
-    public a(int paramInt, af paramaf)
+    public a(int paramInt, ai paramai)
     {
       this.type = paramInt;
-      this.contact = paramaf;
+      this.contact = paramai;
     }
   }
   
@@ -227,7 +229,7 @@ public class SeeRoomManagerUI
     extends BaseAdapter
   {
     List<SeeRoomManagerUI.a> dataList;
-    private com.tencent.mm.aw.a.a.c fvx;
+    private com.tencent.mm.av.a.a.c fze;
     Context mContext;
     
     public b(Context paramContext)
@@ -235,38 +237,38 @@ public class SeeRoomManagerUI
       AppMethodBeat.i(12831);
       this.dataList = new ArrayList();
       this.mContext = paramContext;
-      VP();
+      WN();
       notifyDataSetChanged();
       this$1 = new c.a();
-      SeeRoomManagerUI.this.hjU = true;
-      SeeRoomManagerUI.this.gjA = true;
-      SeeRoomManagerUI.this.hkf = 2131690013;
-      this.fvx = SeeRoomManagerUI.this.azc();
+      SeeRoomManagerUI.this.hKx = true;
+      SeeRoomManagerUI.this.gKm = true;
+      SeeRoomManagerUI.this.hKI = 2131690013;
+      this.fze = SeeRoomManagerUI.this.aFT();
       AppMethodBeat.o(12831);
     }
     
-    private void VP()
+    private void WN()
     {
       AppMethodBeat.i(12833);
       this.dataList.clear();
-      SeeRoomManagerUI.a(SeeRoomManagerUI.this, ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(bt.nullAsNil(SeeRoomManagerUI.c(SeeRoomManagerUI.this))));
+      SeeRoomManagerUI.a(SeeRoomManagerUI.this, ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(bs.nullAsNil(SeeRoomManagerUI.c(SeeRoomManagerUI.this))));
       if (SeeRoomManagerUI.d(SeeRoomManagerUI.this) == null)
       {
         AppMethodBeat.o(12833);
         return;
       }
-      Iterator localIterator = SeeRoomManagerUI.d(SeeRoomManagerUI.this).awt().iterator();
+      Iterator localIterator = SeeRoomManagerUI.d(SeeRoomManagerUI.this).aDl().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (String)localIterator.next();
-        if (SeeRoomManagerUI.d(SeeRoomManagerUI.this).aHz((String)localObject))
+        if (SeeRoomManagerUI.d(SeeRoomManagerUI.this).aMU((String)localObject))
         {
-          ad.i("MicroMsg.SeeRoomManagerUI", "[resetData] Room Manager:%s", new Object[] { localObject });
-          localObject = ((k)g.ab(k.class)).apM().aHY((String)localObject);
-          this.dataList.add(new SeeRoomManagerUI.a(SeeRoomManagerUI.this, 1, (af)localObject));
+          ac.i("MicroMsg.SeeRoomManagerUI", "[resetData] Room Manager:%s", new Object[] { localObject });
+          localObject = ((k)g.ab(k.class)).awB().aNt((String)localObject);
+          this.dataList.add(new SeeRoomManagerUI.a(SeeRoomManagerUI.this, 1, (ai)localObject));
         }
       }
-      if (u.aqG().equals(SeeRoomManagerUI.d(SeeRoomManagerUI.this).field_roomowner))
+      if (u.axw().equals(SeeRoomManagerUI.d(SeeRoomManagerUI.this).field_roomowner))
       {
         this.dataList.add(new SeeRoomManagerUI.a(SeeRoomManagerUI.this, 2, null));
         if (this.dataList.size() > 1) {
@@ -276,7 +278,7 @@ public class SeeRoomManagerUI
       AppMethodBeat.o(12833);
     }
     
-    private SeeRoomManagerUI.a kO(int paramInt)
+    private SeeRoomManagerUI.a kI(int paramInt)
     {
       AppMethodBeat.i(12835);
       SeeRoomManagerUI.a locala = (SeeRoomManagerUI.a)this.dataList.get(paramInt);
@@ -308,11 +310,11 @@ public class SeeRoomManagerUI
       }
       for (;;)
       {
-        paramView = kO(paramInt);
+        paramView = kI(paramInt);
         if (paramView != null) {
           break;
         }
-        ad.e("MicroMsg.SeeRoomManagerUI", "null == item! position:%s, count:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(getCount()) });
+        ac.e("MicroMsg.SeeRoomManagerUI", "null == item! position:%s, count:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(getCount()) });
         AppMethodBeat.o(12836);
         return localView;
         SeeRoomManagerUI.c localc = (SeeRoomManagerUI.c)paramView.getTag();
@@ -326,10 +328,10 @@ public class SeeRoomManagerUI
       }
       if (paramView.type == 1)
       {
-        paramViewGroup.fvz.setVisibility(0);
+        paramViewGroup.fzg.setVisibility(0);
         paramView = paramView.contact;
-        paramViewGroup.fvz.setText(SeeRoomManagerUI.a(SeeRoomManagerUI.this, paramView.field_username, paramViewGroup.fvz));
-        a.b.c(paramViewGroup.frr, paramView.field_username);
+        paramViewGroup.fzg.setText(SeeRoomManagerUI.a(SeeRoomManagerUI.this, paramView.field_username, paramViewGroup.fzg));
+        a.b.c(paramViewGroup.fuY, paramView.field_username);
       }
       for (;;)
       {
@@ -368,13 +370,13 @@ public class SeeRoomManagerUI
         return localView;
         if (paramView.type == 2)
         {
-          paramViewGroup.fvz.setVisibility(4);
-          paramViewGroup.frr.setImageResource(2131231164);
+          paramViewGroup.fzg.setVisibility(4);
+          paramViewGroup.fuY.setImageResource(2131231164);
         }
         else if (paramView.type == 3)
         {
-          paramViewGroup.fvz.setVisibility(4);
-          paramViewGroup.frr.setImageResource(2131231165);
+          paramViewGroup.fzg.setVisibility(4);
+          paramViewGroup.fuY.setImageResource(2131231165);
         }
       }
     }
@@ -403,15 +405,15 @@ public class SeeRoomManagerUI
   
   final class c
   {
-    public ImageView frr;
-    public TextView fvz;
+    public ImageView fuY;
+    public TextView fzg;
     
     c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SeeRoomManagerUI
  * JD-Core Version:    0.7.0.1
  */

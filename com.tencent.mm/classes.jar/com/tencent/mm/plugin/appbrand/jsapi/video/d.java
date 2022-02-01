@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 
 public abstract interface d
 {
-  public abstract void bz(String paramString, int paramInt);
+  public abstract void bD(String paramString, int paramInt);
   
-  public abstract void di(String paramString1, String paramString2);
+  public abstract void du(String paramString1, String paramString2);
 }
 
 

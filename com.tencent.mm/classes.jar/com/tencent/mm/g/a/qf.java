@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class qf
   extends b
 {
+  public a dtk;
+  
   public qf()
   {
     this((byte)0);
@@ -12,8 +16,16 @@ public final class qf
   
   private qf(byte paramByte)
   {
-    this.ESR = false;
+    AppMethodBeat.i(177635);
+    this.dtk = new a();
+    this.Gqe = false;
     this.callback = null;
+    AppMethodBeat.o(177635);
+  }
+  
+  public static final class a
+  {
+    public Activity activity;
   }
 }
 

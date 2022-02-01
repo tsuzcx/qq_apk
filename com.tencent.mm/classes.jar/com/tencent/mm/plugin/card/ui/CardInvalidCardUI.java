@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.card.base.CardBaseUI;
 import com.tencent.mm.plugin.card.d.d.a;
 import com.tencent.mm.plugin.card.model.n.a;
@@ -17,7 +17,7 @@ import com.tencent.mm.ui.base.h;
 public class CardInvalidCardUI
   extends CardBaseUI
 {
-  public final void bHo()
+  public final void bOB()
   {
     AppMethodBeat.i(113467);
     setMMTitle(2131756896);
@@ -31,7 +31,7 @@ public class CardInvalidCardUI
         return true;
       }
     });
-    if (this.npL.getCount() > 0)
+    if (this.nSL.getCount() > 0)
     {
       enableOptionMenu(true);
       AppMethodBeat.o(113467);
@@ -41,9 +41,9 @@ public class CardInvalidCardUI
     AppMethodBeat.o(113467);
   }
   
-  public final n.a bHp()
+  public final n.a bOC()
   {
-    return n.a.ntp;
+    return n.a.nWp;
   }
   
   public int getLayoutId()
@@ -72,18 +72,18 @@ public class CardInvalidCardUI
     super.onSceneEnd(paramInt1, paramInt2, paramString, paramn);
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof r)))
     {
-      if (!this.npP) {
+      if (!this.nSP) {
         break label62;
       }
-      h.cf(this, getResources().getString(2131756810));
+      h.cg(this, getResources().getString(2131756810));
     }
     for (;;)
     {
-      this.npP = false;
+      this.nSP = false;
       AppMethodBeat.o(113468);
       return;
       label62:
-      h.cf(this, getResources().getString(2131756828));
+      h.cg(this, getResources().getString(2131756828));
     }
   }
   

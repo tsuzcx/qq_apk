@@ -1,18 +1,39 @@
 package com.tencent.xweb;
 
-public abstract class ad
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.internal.IWebViewDatabase;
+import com.tencent.xweb.internal.j;
+import com.tencent.xweb.internal.j.a;
+
+public final class ad
+  implements IWebViewDatabase
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7);
+  public static IWebViewDatabase fJM()
+  {
+    AppMethodBeat.i(205071);
+    IWebViewDatabase localIWebViewDatabase = j.g(WebView.getCurWebType()).getWebViewDatabase();
+    AppMethodBeat.o(205071);
+    return localIWebViewDatabase;
+  }
   
-  public abstract void aR(int paramInt1, int paramInt2, int paramInt3);
+  public final String[] getHttpAuthUsernamePassword(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(205073);
+    paramString1 = fJM().getHttpAuthUsernamePassword(paramString1, paramString2);
+    AppMethodBeat.o(205073);
+    return paramString1;
+  }
   
-  public abstract void kvStat(int paramInt, String paramString);
-  
-  public abstract void m(long paramLong1, long paramLong2, long paramLong3);
+  public final void setHttpAuthUsernamePassword(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(205072);
+    fJM().setHttpAuthUsernamePassword(paramString1, paramString2, paramString3, paramString4);
+    AppMethodBeat.o(205072);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.ad
  * JD-Core Version:    0.7.0.1
  */

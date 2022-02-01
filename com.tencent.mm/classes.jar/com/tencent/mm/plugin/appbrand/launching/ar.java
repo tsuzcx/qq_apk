@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.appbrand.launching;
 import android.util.Log;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.w.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.jsapi.v.b;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vending.e.a;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchPrepareCallbackWrapper;", "C", "Lcom/tencent/luggage/sdk/config/AppBrandSysConfigLU;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask$PrepareCallback;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "referenced", "(Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask$PrepareCallback;)V", "mDead", "", "mReferenced", "dead", "", "onDataTransferState", "state", "", "onDownloadProcess", "progress", "onDownloadStarted", "startTime", "", "onPrepareDone", "config", "errorAction", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchErrorAction;", "startupPerformanceReport", "Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;", "(Lcom/tencent/luggage/sdk/config/AppBrandSysConfigLU;Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchErrorAction;Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;)V", "onSyncJsApiInfoStart", "onSyncLaunchStart", "onVersionUpdateEvent", "Lcom/tencent/mm/plugin/appbrand/jsapi/version/UpdateState;", "tryOrThrows", "block", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchPrepareCallbackWrapper;", "C", "Lcom/tencent/luggage/sdk/config/AppBrandSysConfigLU;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask$PrepareCallback;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "referenced", "(Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask$PrepareCallback;)V", "mDead", "", "mReferenced", "dead", "", "onDataTransferState", "state", "", "onDownloadProcess", "progress", "onDownloadStarted", "startTime", "", "onPrepareDone", "config", "errorAction", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchErrorAction;", "startupPerformanceReport", "Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;", "(Lcom/tencent/luggage/sdk/config/AppBrandSysConfigLU;Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchErrorAction;Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;)V", "onSyncJsApiInfoStart", "onSyncLaunchStart", "onVersionUpdateEvent", "Lcom/tencent/mm/plugin/appbrand/jsapi/version/UpdateState;", "passThroughInfo", "", "tryOrThrows", "block", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
 public final class ar<C extends AppBrandSysConfigLU>
   implements AppBrandPrepareTask.b<C>, a
 {
-  private volatile boolean iEv;
-  private volatile AppBrandPrepareTask.b<C> kLq;
+  private volatile boolean jex;
+  private volatile AppBrandPrepareTask.b<C> lmM;
   
   public ar(AppBrandPrepareTask.b<C> paramb)
   {
     AppMethodBeat.i(50765);
-    ad.i("MicroMsg.LaunchPrepareCallbackWrapper", "<init> hash=" + hashCode());
-    this.kLq = paramb;
+    ac.i("MicroMsg.LaunchPrepareCallbackWrapper", "<init> hash=" + hashCode());
+    this.lmM = paramb;
     AppMethodBeat.o(50765);
   }
   
@@ -28,7 +28,7 @@ public final class ar<C extends AppBrandSysConfigLU>
     AppMethodBeat.i(50760);
     try
     {
-      AppBrandPrepareTask.b localb = this.kLq;
+      AppBrandPrepareTask.b localb = this.lmM;
       if (localb != null)
       {
         localb.a(paramC, paramAppBrandLaunchErrorAction, paramAppStartupPerformanceReportBundle);
@@ -40,9 +40,9 @@ public final class ar<C extends AppBrandSysConfigLU>
     }
     catch (Throwable paramC)
     {
-      if (this.iEv)
+      if (this.jex)
       {
-        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(paramC));
+        ac.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(paramC));
         AppMethodBeat.o(50760);
         return;
       }
@@ -51,43 +51,43 @@ public final class ar<C extends AppBrandSysConfigLU>
     }
   }
   
-  public final void a(b paramb)
+  public final void a(b paramb, String paramString)
   {
-    AppMethodBeat.i(50763);
+    AppMethodBeat.i(187331);
     try
     {
-      AppBrandPrepareTask.b localb = this.kLq;
+      AppBrandPrepareTask.b localb = this.lmM;
       if (localb != null)
       {
-        localb.a(paramb);
-        AppMethodBeat.o(50763);
+        localb.a(paramb, paramString);
+        AppMethodBeat.o(187331);
         return;
       }
-      AppMethodBeat.o(50763);
+      AppMethodBeat.o(187331);
       return;
     }
     catch (Throwable paramb)
     {
-      if (this.iEv)
+      if (this.jex)
       {
-        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(paramb));
-        AppMethodBeat.o(50763);
+        ac.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(paramb));
+        AppMethodBeat.o(187331);
         return;
       }
-      AppMethodBeat.o(50763);
+      AppMethodBeat.o(187331);
       throw paramb;
     }
   }
   
-  public final void aNq()
+  public final void aUg()
   {
     AppMethodBeat.i(50764);
     try
     {
-      AppBrandPrepareTask.b localb = this.kLq;
+      AppBrandPrepareTask.b localb = this.lmM;
       if (localb != null)
       {
-        localb.aNq();
+        localb.aUg();
         AppMethodBeat.o(50764);
         return;
       }
@@ -96,9 +96,9 @@ public final class ar<C extends AppBrandSysConfigLU>
     }
     catch (Throwable localThrowable)
     {
-      if (this.iEv)
+      if (this.jex)
       {
-        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        ac.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
         AppMethodBeat.o(50764);
         return;
       }
@@ -107,30 +107,30 @@ public final class ar<C extends AppBrandSysConfigLU>
     }
   }
   
-  public final void aNr()
+  public final void aUh()
   {
-    AppMethodBeat.i(196394);
+    AppMethodBeat.i(187332);
     try
     {
-      AppBrandPrepareTask.b localb = this.kLq;
+      AppBrandPrepareTask.b localb = this.lmM;
       if (localb != null)
       {
-        localb.aNr();
-        AppMethodBeat.o(196394);
+        localb.aUh();
+        AppMethodBeat.o(187332);
         return;
       }
-      AppMethodBeat.o(196394);
+      AppMethodBeat.o(187332);
       return;
     }
     catch (Throwable localThrowable)
     {
-      if (this.iEv)
+      if (this.jex)
       {
-        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
-        AppMethodBeat.o(196394);
+        ac.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        AppMethodBeat.o(187332);
         return;
       }
-      AppMethodBeat.o(196394);
+      AppMethodBeat.o(187332);
       throw localThrowable;
     }
   }
@@ -138,21 +138,21 @@ public final class ar<C extends AppBrandSysConfigLU>
   public final void dead()
   {
     AppMethodBeat.i(180618);
-    ad.i("MicroMsg.LaunchPrepareCallbackWrapper", "dead() hash=" + hashCode());
-    this.kLq = null;
-    this.iEv = true;
+    ac.i("MicroMsg.LaunchPrepareCallbackWrapper", "dead() hash=" + hashCode());
+    this.lmM = null;
+    this.jex = true;
     AppMethodBeat.o(180618);
   }
   
-  public final void mP(long paramLong)
+  public final void qE(long paramLong)
   {
     AppMethodBeat.i(50761);
     try
     {
-      AppBrandPrepareTask.b localb = this.kLq;
+      AppBrandPrepareTask.b localb = this.lmM;
       if (localb != null)
       {
-        localb.mP(paramLong);
+        localb.qE(paramLong);
         AppMethodBeat.o(50761);
         return;
       }
@@ -161,9 +161,9 @@ public final class ar<C extends AppBrandSysConfigLU>
     }
     catch (Throwable localThrowable)
     {
-      if (this.iEv)
+      if (this.jex)
       {
-        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        ac.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
         AppMethodBeat.o(50761);
         return;
       }
@@ -172,15 +172,15 @@ public final class ar<C extends AppBrandSysConfigLU>
     }
   }
   
-  public final void qp(int paramInt)
+  public final void rc(int paramInt)
   {
     AppMethodBeat.i(50759);
     try
     {
-      AppBrandPrepareTask.b localb = this.kLq;
+      AppBrandPrepareTask.b localb = this.lmM;
       if (localb != null)
       {
-        localb.qp(paramInt);
+        localb.rc(paramInt);
         AppMethodBeat.o(50759);
         return;
       }
@@ -189,9 +189,9 @@ public final class ar<C extends AppBrandSysConfigLU>
     }
     catch (Throwable localThrowable)
     {
-      if (this.iEv)
+      if (this.jex)
       {
-        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        ac.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
         AppMethodBeat.o(50759);
         return;
       }
@@ -200,15 +200,15 @@ public final class ar<C extends AppBrandSysConfigLU>
     }
   }
   
-  public final void qq(int paramInt)
+  public final void rd(int paramInt)
   {
     AppMethodBeat.i(50762);
     try
     {
-      AppBrandPrepareTask.b localb = this.kLq;
+      AppBrandPrepareTask.b localb = this.lmM;
       if (localb != null)
       {
-        localb.qq(paramInt);
+        localb.rd(paramInt);
         AppMethodBeat.o(50762);
         return;
       }
@@ -217,9 +217,9 @@ public final class ar<C extends AppBrandSysConfigLU>
     }
     catch (Throwable localThrowable)
     {
-      if (this.iEv)
+      if (this.jex)
       {
-        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        ac.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
         AppMethodBeat.o(50762);
         return;
       }
@@ -230,7 +230,7 @@ public final class ar<C extends AppBrandSysConfigLU>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ar
  * JD-Core Version:    0.7.0.1
  */

@@ -3,19 +3,19 @@ package com.tencent.mm.live.core.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/core/log/LiveErrorCodeTranslate;", "", "()V", "LIVE_ERR_CODE", "", "LIVE_FIRST_FRAME_HEIGHT", "LIVE_FIRST_FRAME_WIDTH", "LIVE_MEDIA_ENABLE", "LIVE_STREAM_TYPE", "LIVE_USER_EXIT_REASON", "LIVE_USER_ID", "translate", "code", "", "plugin-core_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/log/LiveErrorCodeTranslate;", "", "()V", "LIVE_ERR_CODE", "", "LIVE_FIRST_FRAME_HEIGHT", "LIVE_FIRST_FRAME_WIDTH", "LIVE_MEDIA_ENABLE", "LIVE_STREAM_TYPE", "LIVE_USER_EXIT_REASON", "LIVE_USER_ID", "translate", "code", "", "plugin-core_release"})
 public final class a
 {
-  public static final a qOM;
+  public static final a gqG;
   
   static
   {
-    AppMethodBeat.i(205709);
-    qOM = new a();
-    AppMethodBeat.o(205709);
+    AppMethodBeat.i(209245);
+    gqG = new a();
+    AppMethodBeat.o(209245);
   }
   
-  public static String CE(int paramInt)
+  public static String mD(int paramInt)
   {
     switch (paramInt)
     {
@@ -327,7 +327,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.live.core.a.a
  * JD-Core Version:    0.7.0.1
  */

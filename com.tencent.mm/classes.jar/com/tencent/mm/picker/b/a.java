@@ -7,39 +7,39 @@ import com.tencent.mm.picker.f.b;
 
 public final class a
 {
-  private com.tencent.mm.picker.c.a hSa;
+  private com.tencent.mm.picker.c.a isf;
   
   public a(Context paramContext, c paramc)
   {
     AppMethodBeat.i(175328);
-    this.hSa = new com.tencent.mm.picker.c.a(1);
-    this.hSa.context = paramContext;
-    this.hSa.hSb = paramc;
+    this.isf = new com.tencent.mm.picker.c.a(1);
+    this.isf.context = paramContext;
+    this.isf.isg = paramc;
     AppMethodBeat.o(175328);
   }
   
   public final void a(b paramb)
   {
     AppMethodBeat.i(175329);
-    paramb.a(this.hSa);
+    paramb.a(this.isf);
     AppMethodBeat.o(175329);
   }
   
-  public final a pE(int paramInt)
+  public final a qr(int paramInt)
   {
-    this.hSa.hRF = paramInt;
+    this.isf.irK = paramInt;
     return this;
   }
   
-  public final a pF(int paramInt)
+  public final a qs(int paramInt)
   {
-    this.hSa.option = paramInt;
+    this.isf.option = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.picker.b.a
  * JD-Core Version:    0.7.0.1
  */

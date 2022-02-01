@@ -7,33 +7,33 @@ abstract class c<V>
   extends i
   implements Iterator<V>
 {
-  private n bXM;
+  private n bVu;
   
   public c(n paramn)
   {
     super(paramn);
-    this.bXM = paramn;
+    this.bVu = paramn;
   }
   
-  protected abstract V gA(int paramInt);
+  protected abstract V gl(int paramInt);
   
   public V next()
   {
-    At();
-    return gA(this.bYa);
+    Ag();
+    return gl(this.bVI);
   }
   
   protected final int nextIndex()
   {
-    if (this.bXZ != this.bXM.size()) {
+    if (this.bVH != this.bVu.size()) {
       throw new ConcurrentModificationException();
     }
-    Object[] arrayOfObject = this.bXM.bYf;
+    Object[] arrayOfObject = this.bVu.bVN;
     int j;
-    for (int i = this.bYa;; i = j)
+    for (int i = this.bVI;; i = j)
     {
       j = i - 1;
-      if ((i <= 0) || ((arrayOfObject[j] != null) && (arrayOfObject[j] != n.bYh))) {
+      if ((i <= 0) || ((arrayOfObject[j] != null) && (arrayOfObject[j] != n.bVP))) {
         return j;
       }
     }

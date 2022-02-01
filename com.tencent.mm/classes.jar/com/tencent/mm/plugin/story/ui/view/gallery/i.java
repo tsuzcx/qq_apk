@@ -5,23 +5,23 @@ import android.support.v7.widget.aj;
 import android.support.v7.widget.ak;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "horizontalHelper", "Landroid/support/v7/widget/OrientationHelper;", "verticalHelper", "calculateDistanceToFinalSnap", "", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "distanceToCenter", "", "helper", "getHorizontalHelper", "getVerticalHelper", "Companion", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "horizontalHelper", "Landroid/support/v7/widget/OrientationHelper;", "verticalHelper", "calculateDistanceToFinalSnap", "", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "distanceToCenter", "", "helper", "getHorizontalHelper", "getVerticalHelper", "Companion", "plugin-story_release"})
 public final class i
   extends ak
 {
   private static final String TAG = "MicroMsg.PageScrollHelper";
-  public static final i.a yyU;
-  private aj yyS;
-  private aj yyT;
+  public static final i.a zMi;
+  private aj zMg;
+  private aj zMh;
   
   static
   {
     AppMethodBeat.i(120396);
-    yyU = new i.a((byte)0);
+    zMi = new i.a((byte)0);
     TAG = "MicroMsg.PageScrollHelper";
     AppMethodBeat.o(120396);
   }
@@ -31,7 +31,7 @@ public final class i
     AppMethodBeat.i(120395);
     int j;
     int k;
-    if (parami.jE())
+    if (parami.jM())
     {
       i = RecyclerView.i.bM(paramView) + RecyclerView.i.bN(paramView);
       j = paramaj.bn(paramView);
@@ -41,7 +41,7 @@ public final class i
       }
     }
     label85:
-    for (int i = paramaj.kd() + paramaj.kf() / 2;; i = paramaj.getEnd() / 2)
+    for (int i = paramaj.kl() + paramaj.kn() / 2;; i = paramaj.getEnd() / 2)
     {
       AppMethodBeat.o(120395);
       return j + k - i;
@@ -56,14 +56,14 @@ public final class i
     AppMethodBeat.i(120394);
     k.h(parami, "layoutManager");
     k.h(paramView, "targetView");
-    ad.i(TAG, "LogStory: calculateDistanceToFinalSnap " + RecyclerView.i.bB(paramView));
+    ac.i(TAG, "LogStory: calculateDistanceToFinalSnap " + RecyclerView.i.bB(paramView));
     int[] arrayOfInt = new int[2];
     Object localObject1;
-    if (parami.jE())
+    if (parami.jM())
     {
-      if (this.yyT != null)
+      if (this.zMh != null)
       {
-        localObject1 = this.yyT;
+        localObject1 = this.zMh;
         if (localObject1 == null) {
           break label190;
         }
@@ -72,20 +72,20 @@ public final class i
       }
       else
       {
-        this.yyT = aj.d(parami);
+        this.zMh = aj.d(parami);
       }
-      localObject1 = this.yyT;
+      localObject1 = this.zMh;
       if (localObject1 == null) {
-        k.fvU();
+        k.fOy();
       }
       arrayOfInt[0] = a(parami, paramView, (aj)localObject1);
       label113:
-      if (!parami.jF()) {
+      if (!parami.jN()) {
         break label203;
       }
-      if (this.yyS != null)
+      if (this.zMg != null)
       {
-        aj localaj = this.yyS;
+        aj localaj = this.zMg;
         localObject1 = localObject2;
         if (localaj != null) {
           localObject1 = localaj.getLayoutManager();
@@ -94,11 +94,11 @@ public final class i
       }
       else
       {
-        this.yyS = aj.e(parami);
+        this.zMg = aj.e(parami);
       }
-      localObject1 = this.yyS;
+      localObject1 = this.zMg;
       if (localObject1 == null) {
-        k.fvU();
+        k.fOy();
       }
       arrayOfInt[1] = a(parami, paramView, (aj)localObject1);
     }

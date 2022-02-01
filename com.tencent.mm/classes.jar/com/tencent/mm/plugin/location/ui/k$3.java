@@ -14,7 +14,7 @@ final class k$3
     AppMethodBeat.i(55965);
     int[] arrayOfInt = new int[2];
     paramView.getLocationInWindow(arrayOfInt);
-    k.a(this.sTu, arrayOfInt[0], arrayOfInt[1]);
+    k.a(this.ubG, arrayOfInt[0], arrayOfInt[1]);
     AppMethodBeat.o(55965);
   }
 }

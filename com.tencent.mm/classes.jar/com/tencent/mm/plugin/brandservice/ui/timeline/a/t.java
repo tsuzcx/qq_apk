@@ -9,36 +9,35 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.u;
-import com.tencent.mm.ai.v;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.ah.u;
+import com.tencent.mm.ah.v;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.pluginsdk.ui.applet.m.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.s;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 
 public final class t
   extends l
 {
-  public View naT;
-  public TextView naV;
-  View naW;
-  public ImageView naX;
-  public ImageView[] naY;
-  public View[] naZ;
+  public View nDr;
+  public TextView nDt;
+  View nDu;
+  public ImageView nDv;
+  public ImageView[] nDw;
+  public View[] nDx;
   
   public t()
   {
     AppMethodBeat.i(6050);
-    this.naY = new ImageView[4];
-    this.naZ = new View[4];
+    this.nDw = new ImageView[4];
+    this.nDx = new View[4];
     AppMethodBeat.o(6050);
   }
   
   private boolean d(v paramv)
   {
     AppMethodBeat.i(6053);
-    if ((this.mCount == 1) && (bt.isNullOrNil(paramv.gKF)))
+    if ((this.mCount == 1) && (bs.isNullOrNil(paramv.hlf)))
     {
       AppMethodBeat.o(6053);
       return true;
@@ -47,25 +46,25 @@ public final class t
     return false;
   }
   
-  public final void a(int paramInt1, v paramv, final s params, final int paramInt2, u paramu, int paramInt3)
+  public final void a(int paramInt1, v paramv, final com.tencent.mm.storage.t paramt, final int paramInt2, u paramu, int paramInt3)
   {
     AppMethodBeat.i(6052);
-    super.a(paramInt1, paramv, params, paramInt2, paramu, paramInt3);
+    super.a(paramInt1, paramv, paramt, paramInt2, paramu, paramInt3);
     this.mCount = paramInt1;
-    this.naf = false;
-    this.mZZ.setVisibility(8);
-    l.V(this.naT, com.tencent.mm.plugin.brandservice.ui.timeline.c.mWA);
+    this.nCD = false;
+    this.nCx.setVisibility(8);
+    l.W(this.nDr, com.tencent.mm.plugin.brandservice.ui.timeline.c.nyZ);
     paramInt1 = 0;
     Object localObject1;
-    if (paramInt1 < this.naZ.length)
+    if (paramInt1 < this.nDx.length)
     {
-      localObject1 = this.naZ[paramInt1];
+      localObject1 = this.nDx[paramInt1];
       if (localObject1 != null)
       {
         if (paramInt1 == 0) {
           break label101;
         }
-        if (paramInt1 == this.naZ.length - 1) {}
+        if (paramInt1 == this.nDx.length - 1) {}
         ((View)localObject1).setVisibility(8);
       }
       for (;;)
@@ -74,27 +73,27 @@ public final class t
         break;
         label101:
         ((View)localObject1).setVisibility(0);
-        this.naY[0] = ((ImageView)((View)localObject1).findViewById(2131297363));
-        this.naY[1] = ((ImageView)((View)localObject1).findViewById(2131297364));
-        this.naY[2] = ((ImageView)((View)localObject1).findViewById(2131297365));
-        this.naY[3] = ((ImageView)((View)localObject1).findViewById(2131297366));
+        this.nDw[0] = ((ImageView)((View)localObject1).findViewById(2131297363));
+        this.nDw[1] = ((ImageView)((View)localObject1).findViewById(2131297364));
+        this.nDw[2] = ((ImageView)((View)localObject1).findViewById(2131297365));
+        this.nDw[3] = ((ImageView)((View)localObject1).findViewById(2131297366));
       }
     }
-    this.naW.setBackgroundResource(2131233299);
+    this.nDu.setBackgroundResource(2131233299);
     Object localObject2;
-    if ((this.mCount == 1) && (!bt.isNullOrNil(paramv.gKF)))
+    if ((this.mCount == 1) && (!bs.isNullOrNil(paramv.hlf)))
     {
-      this.nab.setVisibility(0);
-      this.nad.aq(paramv.gKF);
+      this.nCz.setVisibility(0);
+      this.nCB.ar(paramv.hlf);
       bool = d(paramv);
-      if (this.naY.length > 0)
+      if (this.nDw.length > 0)
       {
-        localObject1 = this.naY[0];
-        localObject2 = paramv.gKD;
-        if ((localObject1 != null) && (!bt.isNullOrNil((String)localObject2)))
+        localObject1 = this.nDw[0];
+        localObject2 = paramv.hld;
+        if ((localObject1 != null) && (!bs.isNullOrNil((String)localObject2)))
         {
-          paramInt1 = com.tencent.mm.plugin.brandservice.ui.timeline.c.mWA;
-          a.hV(this.mContext);
+          paramInt1 = com.tencent.mm.plugin.brandservice.ui.timeline.c.nyZ;
+          a.ig(this.mContext);
           a.getDensity(this.mContext);
           Point localPoint = new Point((int)(paramInt1 * 1.777778F), paramInt1);
           ((ImageView)localObject1).getLayoutParams().width = localPoint.x;
@@ -102,23 +101,23 @@ public final class t
           paramInt1 = localPoint.x;
           paramInt3 = localPoint.y;
           ((ImageView)localObject1).setVisibility(0);
-          this.naX.setImageResource(2131689781);
-          this.nao.mWO.a(params.field_msgId, 0, paramv, (String)localObject2, (ImageView)localObject1, paramInt1, paramInt3, false, new m.a()
+          this.nDv.setImageResource(2131689781);
+          this.nCM.nzn.a(paramt.field_msgId, 0, paramv, (String)localObject2, (ImageView)localObject1, paramInt1, paramInt3, false, new m.a()
           {
             public final void onFinish()
             {
               AppMethodBeat.i(6049);
-              t.this.naf = true;
-              if (t.this.naX != null) {
-                t.this.naX.setImageResource(2131689782);
+              t.this.nCD = true;
+              if (t.this.nDv != null) {
+                t.this.nDv.setImageResource(2131689782);
               }
-              if (t.this.mZZ != null) {
-                t.this.mZZ.setVisibility(0);
+              if (t.this.nCx != null) {
+                t.this.nCx.setVisibility(0);
               }
               View localView;
-              if (t.this.naW != null)
+              if (t.this.nDu != null)
               {
-                localView = t.this.naW;
+                localView = t.this.nDu;
                 if (!bool) {
                   break label153;
                 }
@@ -127,10 +126,10 @@ public final class t
               for (int i = 2131231281;; i = 2131231282)
               {
                 localView.setBackgroundResource(i);
-                if (this.nbb == 0)
+                if (this.nDz == 0)
                 {
-                  t.this.mZS.setTextColor(t.this.mContext.getResources().getColor(2131101182));
-                  t.this.nao.mWO.o(params.field_msgId, paramInt2);
+                  t.this.nCq.setTextColor(t.this.mContext.getResources().getColor(2131101182));
+                  t.this.nCM.nzn.p(paramt.field_msgId, paramInt2);
                 }
                 AppMethodBeat.o(6049);
                 return;
@@ -138,14 +137,14 @@ public final class t
             }
             
             public final void onStart() {}
-          }, bool, this.nah);
+          }, bool, this.nCF);
         }
       }
-      if (paramv.gKT <= 1) {
+      if (paramv.hlt <= 1) {
         break label541;
       }
-      this.naV.setVisibility(0);
-      this.naV.setText(String.valueOf(paramv.gKT));
+      this.nDt.setVisibility(0);
+      this.nDt.setText(String.valueOf(paramv.hlt));
       label425:
       if (this.mCount != 1) {
         break label578;
@@ -153,17 +152,17 @@ public final class t
       if (!bool) {
         break label553;
       }
-      this.nap.setBackgroundResource(2131233299);
-      this.nap.setPadding(0, 0, 0, 0);
+      this.nCN.setBackgroundResource(2131233299);
+      this.nCN.setPadding(0, 0, 0, 0);
       label458:
       if (!d(paramv)) {
         break label601;
       }
-      this.mZZ.setBackgroundResource(2131231251);
+      this.nCx.setBackgroundResource(2131231251);
       label475:
-      a(this, params, paramv);
-      localObject1 = this.nao;
-      localObject2 = this.nap;
+      a(this, paramt, paramv);
+      localObject1 = this.nCM;
+      localObject2 = this.nCN;
       if (this.mCount <= 1) {
         break label613;
       }
@@ -175,20 +174,20 @@ public final class t
     label613:
     for (final boolean bool = true;; bool = false)
     {
-      ((com.tencent.mm.plugin.brandservice.ui.timeline.c)localObject1).a(paramv, params, paramInt2, paramu, (View)localObject2, bool, 0);
+      ((com.tencent.mm.plugin.brandservice.ui.timeline.c)localObject1).a(paramv, paramt, paramInt2, paramu, (View)localObject2, bool, 0);
       AppMethodBeat.o(6052);
       return;
-      this.nab.setVisibility(8);
+      this.nCz.setVisibility(8);
       break;
-      this.naV.setVisibility(8);
+      this.nDt.setVisibility(8);
       break label425;
-      this.nap.setBackgroundResource(2131231256);
-      this.nap.setPadding(0, 0, 0, com.tencent.mm.plugin.brandservice.ui.timeline.c.mWC);
+      this.nCN.setBackgroundResource(2131231256);
+      this.nCN.setPadding(0, 0, 0, com.tencent.mm.plugin.brandservice.ui.timeline.c.nzb);
       break label458;
-      this.nap.setBackgroundResource(2131231262);
-      this.nap.setPadding(0, 0, 0, 0);
+      this.nCN.setBackgroundResource(2131231262);
+      this.nCN.setPadding(0, 0, 0, 0);
       break label458;
-      this.mZZ.setBackgroundResource(2131231253);
+      this.nCx.setBackgroundResource(2131231253);
       break label475;
     }
   }
@@ -197,7 +196,7 @@ public final class t
   {
     AppMethodBeat.i(6051);
     super.a(paramView, paramc);
-    if (this.mYI != null)
+    if (this.nBh != null)
     {
       AppMethodBeat.o(6051);
       return;
@@ -209,41 +208,41 @@ public final class t
       return;
     }
     paramc.inflate();
-    this.mYI = paramView.findViewById(2131297344);
-    this.nap = paramView.findViewById(2131298108);
-    this.naZ[0] = this.mYI.findViewById(2131303260);
-    this.naZ[1] = this.mYI.findViewById(2131303262);
-    this.naZ[2] = this.mYI.findViewById(2131303261);
-    this.naZ[3] = this.mYI.findViewById(2131303259);
-    bDb();
-    this.naV = ((TextView)this.mYI.findViewById(2131303263));
-    this.naX = ((ImageView)this.mYI.findViewById(2131303256));
-    this.mZZ = ((ImageView)this.mYI.findViewById(2131303387));
-    this.naT = this.mYI.findViewById(2131298160);
-    this.naW = this.mYI.findViewById(2131297360);
-    this.nab = ((LinearLayout)this.mYI.findViewById(2131304830));
-    this.nad = ((MMNeat7extView)this.mYI.findViewById(2131304827));
+    this.nBh = paramView.findViewById(2131297344);
+    this.nCN = paramView.findViewById(2131298108);
+    this.nDx[0] = this.nBh.findViewById(2131303260);
+    this.nDx[1] = this.nBh.findViewById(2131303262);
+    this.nDx[2] = this.nBh.findViewById(2131303261);
+    this.nDx[3] = this.nBh.findViewById(2131303259);
+    bKk();
+    this.nDt = ((TextView)this.nBh.findViewById(2131303263));
+    this.nDv = ((ImageView)this.nBh.findViewById(2131303256));
+    this.nCx = ((ImageView)this.nBh.findViewById(2131303387));
+    this.nDr = this.nBh.findViewById(2131298160);
+    this.nDu = this.nBh.findViewById(2131297360);
+    this.nCz = ((LinearLayout)this.nBh.findViewById(2131304830));
+    this.nCB = ((MMNeat7extView)this.nBh.findViewById(2131304827));
     AppMethodBeat.o(6051);
   }
   
-  public final void a(s params, v paramv, View paramView, TextView paramTextView, int paramInt)
+  public final void a(com.tencent.mm.storage.t paramt, v paramv, View paramView, TextView paramTextView, int paramInt)
   {
     AppMethodBeat.i(6054);
-    super.a(params, paramv, paramView, paramTextView, paramInt);
+    super.a(paramt, paramv, paramView, paramTextView, paramInt);
     paramTextView.setTextColor(this.mContext.getResources().getColor(2131101182));
     AppMethodBeat.o(6054);
   }
   
-  public final void dA(View paramView)
+  public final void dC(View paramView)
   {
-    AppMethodBeat.i(205023);
-    l.V(paramView, com.tencent.mm.plugin.brandservice.ui.timeline.c.mWA);
-    AppMethodBeat.o(205023);
+    AppMethodBeat.i(210005);
+    l.W(paramView, com.tencent.mm.plugin.brandservice.ui.timeline.c.nyZ);
+    AppMethodBeat.o(210005);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.a.t
  * JD-Core Version:    0.7.0.1
  */

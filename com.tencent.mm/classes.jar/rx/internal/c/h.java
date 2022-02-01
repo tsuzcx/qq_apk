@@ -25,28 +25,28 @@ public class h
   extends g.a
   implements j
 {
-  private static final boolean KqL;
-  public static final int KqM;
-  private static final ConcurrentHashMap<ScheduledThreadPoolExecutor, ScheduledThreadPoolExecutor> KqN;
-  private static final AtomicReference<ScheduledExecutorService> KqO;
-  private static volatile Object KqP;
-  private static final Object KqQ;
-  final ScheduledExecutorService KqJ;
-  volatile boolean KqK;
+  private static final boolean Meu;
+  public static final int Mev;
+  private static final ConcurrentHashMap<ScheduledThreadPoolExecutor, ScheduledThreadPoolExecutor> Mew;
+  private static final AtomicReference<ScheduledExecutorService> Mex;
+  private static volatile Object Mey;
+  private static final Object Mez;
+  final ScheduledExecutorService Mes;
+  volatile boolean Met;
   
   static
   {
     AppMethodBeat.i(90336);
-    KqQ = new Object();
-    KqN = new ConcurrentHashMap();
-    KqO = new AtomicReference();
-    KqM = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
+    Mez = new Object();
+    Mew = new ConcurrentHashMap();
+    Mex = new AtomicReference();
+    Mev = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
     boolean bool = Boolean.getBoolean("rx.scheduler.jdk6.purge-force");
-    int i = e.fNN();
+    int i = e.ggD();
     if ((!bool) && ((i == 0) || (i >= 21))) {}
     for (bool = true;; bool = false)
     {
-      KqL = bool;
+      Meu = bool;
       AppMethodBeat.o(90336);
       return;
     }
@@ -59,14 +59,14 @@ public class h
     if ((!b(paramThreadFactory)) && ((paramThreadFactory instanceof ScheduledThreadPoolExecutor))) {
       a((ScheduledThreadPoolExecutor)paramThreadFactory);
     }
-    this.KqJ = paramThreadFactory;
+    this.Mes = paramThreadFactory;
     AppMethodBeat.o(90331);
   }
   
   public static void a(ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(90327);
-    KqN.remove(paramScheduledExecutorService);
+    Mew.remove(paramScheduledExecutorService);
     AppMethodBeat.o(90327);
   }
   
@@ -76,24 +76,24 @@ public class h
     for (;;)
     {
       ScheduledExecutorService localScheduledExecutorService;
-      if ((ScheduledExecutorService)KqO.get() == null)
+      if ((ScheduledExecutorService)Mex.get() == null)
       {
         localScheduledExecutorService = Executors.newScheduledThreadPool(1, new g("RxSchedulerPurge-"));
-        if (KqO.compareAndSet(null, localScheduledExecutorService)) {
+        if (Mex.compareAndSet(null, localScheduledExecutorService)) {
           localScheduledExecutorService.scheduleAtFixedRate(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(90325);
-              h.fNJ();
+              h.ggz();
               AppMethodBeat.o(90325);
             }
-          }, KqM, KqM, TimeUnit.MILLISECONDS);
+          }, Mev, Mev, TimeUnit.MILLISECONDS);
         }
       }
       else
       {
-        KqN.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
+        Mew.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
         AppMethodBeat.o(90326);
         return;
       }
@@ -104,14 +104,14 @@ public class h
   public static boolean b(ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(90329);
-    if (KqL)
+    if (Meu)
     {
       Object localObject1;
       Object localObject2;
       if ((paramScheduledExecutorService instanceof ScheduledThreadPoolExecutor))
       {
-        localObject1 = KqP;
-        if (localObject1 == KqQ)
+        localObject1 = Mey;
+        if (localObject1 == Mez)
         {
           AppMethodBeat.o(90329);
           return false;
@@ -122,7 +122,7 @@ public class h
           if (localObject1 != null)
           {
             localObject2 = localObject1;
-            KqP = localObject2;
+            Mey = localObject2;
           }
         }
       }
@@ -157,7 +157,7 @@ public class h
             c.onError(paramScheduledExecutorService);
           }
         }
-        localObject2 = KqQ;
+        localObject2 = Mez;
         break;
         localObject1 = (Method)localObject1;
         continue;
@@ -190,14 +190,14 @@ public class h
     return null;
   }
   
-  static void fNJ()
+  static void ggz()
   {
     AppMethodBeat.i(90328);
     for (;;)
     {
       try
       {
-        Iterator localIterator = KqN.keySet().iterator();
+        Iterator localIterator = Mew.keySet().iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -210,7 +210,7 @@ public class h
       }
       catch (Throwable localThrowable)
       {
-        b.I(localThrowable);
+        b.J(localThrowable);
         c.onError(localThrowable);
         AppMethodBeat.o(90328);
         return;
@@ -230,9 +230,9 @@ public class h
   public final j a(a parama, long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(90333);
-    if (this.KqK)
+    if (this.Met)
     {
-      parama = d.fOj();
+      parama = d.ggZ();
       AppMethodBeat.o(90333);
       return parama;
     }
@@ -246,7 +246,7 @@ public class h
     AppMethodBeat.i(90334);
     i locali = new i(c.b(parama));
     if (paramLong <= 0L) {}
-    for (parama = this.KqJ.submit(locali);; parama = this.KqJ.schedule(locali, paramLong, paramTimeUnit))
+    for (parama = this.Mes.submit(locali);; parama = this.Mes.schedule(locali, paramLong, paramTimeUnit))
     {
       locali.b(parama);
       AppMethodBeat.o(90334);
@@ -254,23 +254,23 @@ public class h
     }
   }
   
-  public final void fNw()
+  public final void ggm()
   {
     AppMethodBeat.i(90335);
-    this.KqK = true;
-    this.KqJ.shutdownNow();
-    a(this.KqJ);
+    this.Met = true;
+    this.Mes.shutdownNow();
+    a(this.Mes);
     AppMethodBeat.o(90335);
   }
   
-  public final boolean fNx()
+  public final boolean ggn()
   {
-    return this.KqK;
+    return this.Met;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.c.h
  * JD-Core Version:    0.7.0.1
  */

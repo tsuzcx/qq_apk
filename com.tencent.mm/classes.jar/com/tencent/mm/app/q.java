@@ -4,7 +4,7 @@ import java.util.Properties;
 
 final class q
 {
-  Properties cLB;
+  Properties cIJ;
   private String filePath;
   
   /* Error */
@@ -17,7 +17,7 @@ final class q
     //   6: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: aconst_null
-    //   11: putfield 26	com/tencent/mm/app/q:cLB	Ljava/util/Properties;
+    //   11: putfield 26	com/tencent/mm/app/q:cIJ	Ljava/util/Properties;
     //   14: aload_0
     //   15: aconst_null
     //   16: putfield 28	com/tencent/mm/app/q:filePath	Ljava/lang/String;
@@ -25,7 +25,7 @@ final class q
     //   20: new 30	java/util/Properties
     //   23: dup
     //   24: invokespecial 31	java/util/Properties:<init>	()V
-    //   27: putfield 26	com/tencent/mm/app/q:cLB	Ljava/util/Properties;
+    //   27: putfield 26	com/tencent/mm/app/q:cIJ	Ljava/util/Properties;
     //   30: aload_0
     //   31: aload_1
     //   32: putfield 28	com/tencent/mm/app/q:filePath	Ljava/lang/String;
@@ -37,7 +37,7 @@ final class q
     //   44: aload_3
     //   45: astore_2
     //   46: aload_0
-    //   47: getfield 26	com/tencent/mm/app/q:cLB	Ljava/util/Properties;
+    //   47: getfield 26	com/tencent/mm/app/q:cIJ	Ljava/util/Properties;
     //   50: aload_3
     //   51: invokevirtual 39	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   54: aload_3
@@ -59,7 +59,7 @@ final class q
     //   79: aload_2
     //   80: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
     //   83: aastore
-    //   84: invokestatic 59	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   84: invokestatic 59	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   87: ldc 18
     //   89: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   92: return
@@ -81,7 +81,7 @@ final class q
     //   113: aload 4
     //   115: invokevirtual 62	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
     //   118: aastore
-    //   119: invokestatic 59	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   119: invokestatic 59	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   122: aload_3
     //   123: ifnull +86 -> 209
     //   126: aload_3
@@ -103,7 +103,7 @@ final class q
     //   151: aload_2
     //   152: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
     //   155: aastore
-    //   156: invokestatic 59	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   156: invokestatic 59	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   159: ldc 18
     //   161: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   164: return
@@ -132,7 +132,7 @@ final class q
     //   198: aload_2
     //   199: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
     //   202: aastore
-    //   203: invokestatic 59	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   203: invokestatic 59	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   206: goto -30 -> 176
     //   209: ldc 18
     //   211: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -169,7 +169,7 @@ final class q
   }
   
   /* Error */
-  public final boolean L(String paramString1, String paramString2)
+  public final boolean M(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: iconst_1
@@ -185,7 +185,7 @@ final class q
     //   20: aload 5
     //   22: astore 4
     //   24: aload_0
-    //   25: getfield 26	com/tencent/mm/app/q:cLB	Ljava/util/Properties;
+    //   25: getfield 26	com/tencent/mm/app/q:cIJ	Ljava/util/Properties;
     //   28: aload_1
     //   29: aload_2
     //   30: invokevirtual 73	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
@@ -193,7 +193,7 @@ final class q
     //   34: aload 5
     //   36: astore 4
     //   38: aload_0
-    //   39: getfield 26	com/tencent/mm/app/q:cLB	Ljava/util/Properties;
+    //   39: getfield 26	com/tencent/mm/app/q:cIJ	Ljava/util/Properties;
     //   42: aload 5
     //   44: ldc 75
     //   46: invokevirtual 79	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
@@ -218,7 +218,7 @@ final class q
     //   79: aload_1
     //   80: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
     //   83: aastore
-    //   84: invokestatic 59	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   84: invokestatic 59	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   87: goto -33 -> 54
     //   90: astore_2
     //   91: aconst_null
@@ -239,7 +239,7 @@ final class q
     //   113: aload_2
     //   114: invokevirtual 62	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
     //   117: aastore
-    //   118: invokestatic 59	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   118: invokestatic 59	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   121: aload_1
     //   122: ifnull +104 -> 226
     //   125: aload_1
@@ -262,7 +262,7 @@ final class q
     //   152: aload_1
     //   153: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
     //   156: aastore
-    //   157: invokestatic 59	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   157: invokestatic 59	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   160: iconst_0
     //   161: istore_3
     //   162: goto -108 -> 54
@@ -292,7 +292,7 @@ final class q
     //   204: aload_2
     //   205: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
     //   208: aastore
-    //   209: invokestatic 59	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   209: invokestatic 59	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   212: goto -33 -> 179
     //   215: astore_1
     //   216: goto -47 -> 169

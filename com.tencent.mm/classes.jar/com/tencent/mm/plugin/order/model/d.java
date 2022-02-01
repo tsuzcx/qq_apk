@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.order.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int month;
-  public String uoS;
+  public String vxO;
   public int year;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -17,18 +17,18 @@ public final class d
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       paramVarArgs.aR(1, this.year);
       paramVarArgs.aR(2, this.month);
-      if (this.uoS != null) {
-        paramVarArgs.d(3, this.uoS);
+      if (this.vxO != null) {
+        paramVarArgs.d(3, this.vxO);
       }
       AppMethodBeat.o(91260);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.year) + 0 + f.a.a.b.b.a.bA(2, this.month);
+      int i = f.a.a.b.b.a.bx(1, this.year) + 0 + f.a.a.b.b.a.bx(2, this.month);
       paramInt = i;
-      if (this.uoS != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.uoS);
+      if (this.vxO != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.vxO);
       }
       AppMethodBeat.o(91260);
       return paramInt;
@@ -36,9 +36,9 @@ public final class d
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(91260);
@@ -54,15 +54,15 @@ public final class d
         AppMethodBeat.o(91260);
         return -1;
       case 1: 
-        locald.year = locala.KhF.xS();
+        locald.year = locala.LVo.xF();
         AppMethodBeat.o(91260);
         return 0;
       case 2: 
-        locald.month = locala.KhF.xS();
+        locald.month = locala.LVo.xF();
         AppMethodBeat.o(91260);
         return 0;
       }
-      locald.uoS = locala.KhF.readString();
+      locald.vxO = locala.LVo.readString();
       AppMethodBeat.o(91260);
       return 0;
     }
@@ -72,7 +72,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.d
  * JD-Core Version:    0.7.0.1
  */

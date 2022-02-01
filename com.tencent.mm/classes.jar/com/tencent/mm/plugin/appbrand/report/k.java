@@ -1,68 +1,98 @@
 package com.tencent.mm.plugin.appbrand.report;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.p;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import d.l;
+import com.tencent.mm.compatible.util.p;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandStarOperationReporter;", "", "()V", "TAG", "", "value", "pullDownOpenSceneId", "getPullDownOpenSceneId", "()Ljava/lang/String;", "setPullDownOpenSceneId", "(Ljava/lang/String;)V", "generateSceneId", "report", "", "info", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "eventId", "", "scene", "sceneId", "appId", "appVersion", "appState", "plugin-appbrand-integration_release"})
 public final class k
 {
-  private static String lpJ;
-  public static final k lpK;
-  
-  static
+  public static int l(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(51012);
-    lpK = new k();
-    AppMethodBeat.o(51012);
-  }
-  
-  public static final void Mv(String paramString)
-  {
-    lpJ = paramString;
-  }
-  
-  public static final void a(LocalUsageInfo paramLocalUsageInfo, int paramInt1, int paramInt2, String paramString)
-  {
-    AppMethodBeat.i(51010);
-    if (paramLocalUsageInfo != null)
+    AppMethodBeat.i(48066);
+    if ((paramBundle == null) || (!uE(paramInt)))
     {
-      String str = paramLocalUsageInfo.appId;
-      int i = paramLocalUsageInfo.aAS;
-      int j = paramLocalUsageInfo.gXn + 1;
-      if (str != null)
-      {
-        int k = h.Mt(str);
-        ad.d("MicroMsg.AppBrandStarOperationReporter", "report, appId: " + str + ", appVersion: " + i + ", appState: : " + j + ", eventId: " + paramInt1 + ',' + "scene: " + paramInt2 + ", sceneId: " + paramString + ", serviceType: " + k);
-        com.tencent.mm.plugin.report.service.h.vKh.f(13801, new Object[] { str, Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(bt.aGK()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(k) });
-      }
+      AppMethodBeat.o(48066);
+      return 0;
     }
-    AppMethodBeat.o(51010);
+    paramInt = paramBundle.getInt("stat_scene");
+    AppMethodBeat.o(48066);
+    return paramInt;
   }
   
-  public static final String bmk()
+  public static String m(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(51011);
-    Object localObject = new StringBuilder("SceneId@").append(lpK.hashCode()).append('#');
-    d.g.b.k.g(g.afz(), "MMKernel.account()");
-    localObject = p.getString(a.getUin()) + '#' + bt.eGO();
-    AppMethodBeat.o(51011);
-    return localObject;
+    AppMethodBeat.i(48067);
+    if ((paramBundle == null) || (!uE(paramInt)))
+    {
+      AppMethodBeat.o(48067);
+      return "";
+    }
+    switch (paramBundle.getInt("stat_scene"))
+    {
+    case 5: 
+    default: 
+      AppMethodBeat.o(48067);
+      return "";
+    case 1: 
+      paramBundle = paramBundle.getString("stat_send_msg_user");
+      AppMethodBeat.o(48067);
+      return paramBundle;
+    case 2: 
+      str = paramBundle.getString("stat_chat_talker_username");
+      paramBundle = paramBundle.getString("stat_send_msg_user");
+      paramBundle = str + ":" + paramBundle;
+      AppMethodBeat.o(48067);
+      return paramBundle;
+    case 3: 
+      str = paramBundle.getString("stat_msg_id");
+      paramBundle = paramBundle.getString("stat_send_msg_user");
+      paramBundle = str + ":" + paramBundle;
+      AppMethodBeat.o(48067);
+      return paramBundle;
+    case 4: 
+      paramBundle = p.encode(paramBundle.getString("stat_url"));
+      AppMethodBeat.o(48067);
+      return paramBundle;
+    case 6: 
+      Object localObject = paramBundle.getString("stat_app_id");
+      str = paramBundle.getString("stat_url");
+      localObject = new StringBuilder().append((String)localObject).append(":");
+      paramBundle = str;
+      if (str == null) {
+        paramBundle = "";
+      }
+      paramBundle = p.encode(paramBundle);
+      AppMethodBeat.o(48067);
+      return paramBundle;
+    case 7: 
+      paramBundle = paramBundle.getString("stat_chat_talker_username");
+      AppMethodBeat.o(48067);
+      return paramBundle;
+    case 8: 
+      paramBundle = "search:" + paramBundle.getString("stat_search_id");
+      AppMethodBeat.o(48067);
+      return paramBundle;
+    }
+    String str = paramBundle.getString("stat_chat_talker_username");
+    paramBundle = paramBundle.getString("stat_send_msg_user");
+    paramBundle = str + ":" + paramBundle;
+    AppMethodBeat.o(48067);
+    return paramBundle;
   }
   
-  public static final String bml()
+  private static boolean uE(int paramInt)
   {
-    return lpJ;
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.k
  * JD-Core Version:    0.7.0.1
  */

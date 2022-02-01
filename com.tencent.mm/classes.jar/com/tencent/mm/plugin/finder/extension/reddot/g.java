@@ -1,193 +1,169 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.model.ce;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.storage.b;
+import com.tencent.mm.protocal.protobuf.ani;
+import com.tencent.mm.protocal.protobuf.aon;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import d.g.b.k;
 import d.l;
+import d.v;
+import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/extension/reddot/RedDotDynamicConfig;", "", "()V", "currentFastEnterLevel", "", "getCurrentFastEnterLevel", "()I", "finderFastEnterTime", "", "getFinderFastEnterTime", "()J", "friendEntranceTimeMs", "getFriendEntranceTimeMs", "lastExitFinderTlTime", "getLastExitFinderTlTime", "moreTabFollowEntranceTimeMs", "getMoreTabFollowEntranceTimeMs", "moreTabFollowTabTimeMs", "getMoreTabFollowTabTimeMs", "moreTabFriendEntranceTimeMs", "getMoreTabFriendEntranceTimeMs", "newFeedTipsFastEnterFirstTimeInterval", "getNewFeedTipsFastEnterFirstTimeInterval", "newFeedTipsFastEnterSecondTimeInterval", "getNewFeedTipsFastEnterSecondTimeInterval", "newFeedTipsFastEnterThirdTimeInterval", "getNewFeedTipsFastEnterThirdTimeInterval", "newFollowTipsEnterInterval", "getNewFollowTipsEnterInterval", "newMsgEntranceInterval", "getNewMsgEntranceInterval", "newUnFollowTipsEnterInterval", "getNewUnFollowTipsEnterInterval", "refreshDiscoveryTimeMs", "getRefreshDiscoveryTimeMs", "refreshEntranceInterval", "getRefreshEntranceInterval", "addLevelTime", "setCurrentFastEnterLevel", "", "level", "testFactor", "updateLastExitTime", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform;", "", "manager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "addPostRedDot", "", "addWelcomeNewRedDot", "checkFirstFeedFav", "checkOldPostRedDot", "checkPostRedDot", "getLocalRedDotDefault", "", "isShowPostRedDot", "", "isShowRedDot", "local", "flag", "setLocalRedDot", "unset", "Companion", "plugin-finder_release"})
 public final class g
 {
-  public static final g qtS;
+  public static final a rfs;
+  final d rfr;
   
   static
   {
-    AppMethodBeat.i(178219);
-    qtS = new g();
-    AppMethodBeat.o(178219);
+    AppMethodBeat.i(178193);
+    rfs = new a((byte)0);
+    AppMethodBeat.o(178193);
   }
   
-  public static void CA(int paramInt)
+  public g(d paramd)
   {
-    AppMethodBeat.i(178214);
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.afB();
-    k.g(locale, "MMKernel.storage()");
-    locale.afk().set(ae.a.Fws, Integer.valueOf(paramInt));
-    AppMethodBeat.o(178214);
+    AppMethodBeat.i(178192);
+    this.rfr = paramd;
+    AppMethodBeat.o(178192);
   }
   
-  private static long clA()
+  static boolean DB(int paramInt)
   {
-    AppMethodBeat.i(178212);
-    com.tencent.mm.kernel.c.a locala = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class);
-    k.g(locala, "MMKernel.service(IConfigService::class.java)");
-    long l = ((com.tencent.mm.plugin.zero.b.a)locala).Zd().getInt("FinderNewFeedTipsFastEnterThirdTimeInterval", 604800) * 1000L / clF();
-    AppMethodBeat.o(178212);
-    return l;
+    return (paramInt & 0x2) > 0;
   }
   
-  public static int clB()
+  static int ctX()
   {
-    AppMethodBeat.i(178213);
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.afB();
-    k.g(locale, "MMKernel.storage()");
-    int i = locale.afk().getInt(ae.a.Fws, 0);
-    AppMethodBeat.o(178213);
-    return i;
-  }
-  
-  public static long clC()
-  {
-    AppMethodBeat.i(178215);
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.afB();
-    k.g(locale, "MMKernel.storage()");
-    long l = locale.afk().a(ae.a.Fwt, 0L);
-    AppMethodBeat.o(178215);
-    return l;
-  }
-  
-  public static void clD()
-  {
-    AppMethodBeat.i(178216);
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.afB();
-    k.g(locale, "MMKernel.storage()");
-    locale.afk().set(ae.a.Fwt, Long.valueOf(ce.asS()));
-    AppMethodBeat.o(178216);
-  }
-  
-  private static long clE()
-  {
-    AppMethodBeat.i(178217);
-    switch (clB())
+    int k = 1;
+    int m = 0;
+    AppMethodBeat.i(178191);
+    Object localObject = com.tencent.mm.kernel.g.agR();
+    k.g(localObject, "MMKernel.storage()");
+    int i = ((e)localObject).agA().getInt(ah.a.GVt, -1);
+    int j;
+    if (i == -1)
     {
-    default: 
-      AppMethodBeat.o(178217);
-      return 0L;
-    case 1: 
-      l = cly();
-      AppMethodBeat.o(178217);
-      return l;
-    case 2: 
-      l = clz();
-      AppMethodBeat.o(178217);
-      return l;
+      localObject = b.rCU;
+      if ((b.cyP()) && (((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).showPostEntry()))
+      {
+        j = 1;
+        if (bs.isNullOrNil(u.axE())) {
+          break label101;
+        }
+        label75:
+        i = m;
+        if (j != 0)
+        {
+          i = m;
+          if (k == 0) {
+            i = 2;
+          }
+        }
+      }
     }
-    long l = clA();
-    AppMethodBeat.o(178217);
-    return l;
+    for (;;)
+    {
+      AppMethodBeat.o(178191);
+      return i;
+      j = 0;
+      break;
+      label101:
+      k = 0;
+      break label75;
+    }
   }
   
-  public static int clF()
+  final void ctV()
   {
-    AppMethodBeat.i(178218);
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.afB();
-    k.g(locale, "MMKernel.storage()");
-    int i = locale.afk().getInt(ae.a.Fwu, 1);
-    AppMethodBeat.o(178218);
-    return i;
+    AppMethodBeat.i(201483);
+    ani localani = new ani();
+    localani.EGt = String.valueOf(ce.azJ());
+    localani.priority = 100000;
+    localani.type = -1;
+    aon localaon = new aon();
+    localaon.tfk = 1;
+    localaon.EHC = 1;
+    localaon.path = "FinderEntrance";
+    localani.EGs.add(localaon);
+    localaon = new aon();
+    localaon.tfk = 1;
+    localaon.EHC = 1;
+    localaon.path = "TLPersonalCenter";
+    localaon.vXx = "FinderEntrance";
+    localani.EGs.add(localaon);
+    localaon = new aon();
+    localaon.tfk = 1;
+    localaon.EHC = 1;
+    localaon.path = "TLCamera";
+    localaon.vXx = "TLPersonalCenter";
+    localani.EGs.add(localaon);
+    d.a(this.rfr, localani, "checkPostRedDot");
+    AppMethodBeat.o(201483);
   }
   
-  public static long clv()
+  public final void ctW()
   {
-    AppMethodBeat.i(178207);
-    long l1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.prZ, 43200) * 1000L / clF();
-    long l2 = clE();
-    AppMethodBeat.o(178207);
-    return l1 + l2;
+    AppMethodBeat.i(201484);
+    ac.i("Finder.RedDotTransform", "checkFirstFeedFav");
+    Object localObject = b.rCU;
+    if (!b.czT())
+    {
+      ac.i("Finder.RedDotTransform", "checkFirstFeedFav return");
+      AppMethodBeat.o(201484);
+      return;
+    }
+    localObject = com.tencent.mm.kernel.g.agR();
+    k.g(localObject, "MMKernel.storage()");
+    localObject = ((e)localObject).agA().get(ah.a.GWf, Boolean.FALSE);
+    if (localObject == null)
+    {
+      localObject = new v("null cannot be cast to non-null type kotlin.Boolean");
+      AppMethodBeat.o(201484);
+      throw ((Throwable)localObject);
+    }
+    if (!((Boolean)localObject).booleanValue())
+    {
+      localObject = new ani();
+      ((ani)localObject).EGt = String.valueOf(ce.azJ());
+      ((ani)localObject).priority = 100000;
+      ((ani)localObject).type = 1001;
+      aon localaon = new aon();
+      localaon.tfk = 1;
+      localaon.EHC = 1;
+      localaon.path = "TLPersonalCenter";
+      ((ani)localObject).EGs.add(localaon);
+      localaon = new aon();
+      localaon.tfk = 1;
+      localaon.EHC = 1;
+      localaon.path = "FinderFirstFav";
+      ((ani)localObject).EGs.add(localaon);
+      d.a(this.rfr, (ani)localObject, "checkTlFirstFav");
+      localObject = com.tencent.mm.kernel.g.agR();
+      k.g(localObject, "MMKernel.storage()");
+      ((e)localObject).agA().set(ah.a.GWg, Boolean.TRUE);
+      localObject = com.tencent.mm.kernel.g.agR();
+      k.g(localObject, "MMKernel.storage()");
+      ((e)localObject).agA().set(ah.a.GWf, Boolean.TRUE);
+    }
+    AppMethodBeat.o(201484);
   }
   
-  public static long clw()
-  {
-    AppMethodBeat.i(178208);
-    long l1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.psa, 259200) * 1000L / clF();
-    long l2 = clE();
-    AppMethodBeat.o(178208);
-    return l1 + l2;
-  }
-  
-  public static long clx()
-  {
-    AppMethodBeat.i(178209);
-    com.tencent.mm.kernel.c.a locala = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class);
-    k.g(locala, "MMKernel.service(IConfigService::class.java)");
-    long l = ((com.tencent.mm.plugin.zero.b.a)locala).Zd().getInt("FinderFastEnterTime", 5);
-    AppMethodBeat.o(178209);
-    return l * 1000L;
-  }
-  
-  private static long cly()
-  {
-    AppMethodBeat.i(178210);
-    com.tencent.mm.kernel.c.a locala = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class);
-    k.g(locala, "MMKernel.service(IConfigService::class.java)");
-    long l = ((com.tencent.mm.plugin.zero.b.a)locala).Zd().getInt("FinderNewFeedTipsFastEnterFirstTimeInterval", 86400) * 1000L / clF();
-    AppMethodBeat.o(178210);
-    return l;
-  }
-  
-  private static long clz()
-  {
-    AppMethodBeat.i(178211);
-    com.tencent.mm.kernel.c.a locala = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class);
-    k.g(locala, "MMKernel.service(IConfigService::class.java)");
-    long l = ((com.tencent.mm.plugin.zero.b.a)locala).Zd().getInt("FinderNewFeedTipsFastEnterSecondTimeInterval", 172800) * 1000L / clF();
-    AppMethodBeat.o(178211);
-    return l;
-  }
-  
-  public static long fSR()
-  {
-    AppMethodBeat.i(197591);
-    long l1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.KEt, 43200) * 1000L / clF();
-    long l2 = clE();
-    AppMethodBeat.o(197591);
-    return l1 + l2;
-  }
-  
-  public static long fSS()
-  {
-    AppMethodBeat.i(197592);
-    long l1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.KEu, 1800) * 1000L / clF();
-    long l2 = clE();
-    AppMethodBeat.o(197592);
-    return l1 + l2;
-  }
-  
-  public static long fST()
-  {
-    AppMethodBeat.i(197593);
-    long l1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.KEv, 86400) * 1000L / clF();
-    long l2 = clE();
-    AppMethodBeat.o(197593);
-    return l1 + l2;
-  }
-  
-  public static long fSU()
-  {
-    AppMethodBeat.i(197594);
-    long l1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.prY, 21600) * 1000L / clF();
-    long l2 = clE();
-    AppMethodBeat.o(197594);
-    return l1 + l2;
-  }
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.reddot.g
  * JD-Core Version:    0.7.0.1
  */

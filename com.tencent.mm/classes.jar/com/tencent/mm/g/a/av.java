@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class av
   extends b
 {
-  public a dcV;
-  public b dcW;
+  public a dar;
   
   public av()
   {
@@ -16,30 +15,21 @@ public final class av
   
   private av(byte paramByte)
   {
-    AppMethodBeat.i(91198);
-    this.dcV = new a();
-    this.dcW = new b();
-    this.ESR = false;
+    AppMethodBeat.i(91197);
+    this.dar = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91198);
+    AppMethodBeat.o(91197);
   }
   
   public static final class a
   {
-    public String dcX;
-    public boolean dcY;
-    public boolean dcZ;
-    public boolean dda;
-  }
-  
-  public static final class b
-  {
-    public boolean result;
+    public boolean das;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.av
  * JD-Core Version:    0.7.0.1
  */

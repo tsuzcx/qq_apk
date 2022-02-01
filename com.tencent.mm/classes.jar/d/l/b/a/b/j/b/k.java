@@ -6,16 +6,16 @@ import d.y;
 public abstract class k
   extends g<y>
 {
-  public static final a JSg = new a((byte)0);
+  public static final a LFz = new a((byte)0);
   
   public k()
   {
-    super(y.JfV);
+    super(y.KTp);
   }
   
   public static final class a
   {
-    public static k aQN(String paramString)
+    public static k aWM(String paramString)
     {
       AppMethodBeat.i(60066);
       d.g.b.k.h(paramString, "message");
@@ -45,7 +45,7 @@ public abstract class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.k
  * JD-Core Version:    0.7.0.1
  */

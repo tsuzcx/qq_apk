@@ -7,18 +7,18 @@ import d.l.b.a.b.d.a.a.l;
 
 public final class a
 {
-  final l JBZ;
-  final b JCa;
-  final boolean JCb;
-  final as JCc;
+  final l Lps;
+  final b Lpt;
+  final boolean Lpu;
+  final as Lpv;
   
   private a(l paraml, b paramb, boolean paramBoolean, as paramas)
   {
     AppMethodBeat.i(57949);
-    this.JBZ = paraml;
-    this.JCa = paramb;
-    this.JCb = paramBoolean;
-    this.JCc = paramas;
+    this.Lps = paraml;
+    this.Lpt = paramb;
+    this.Lpu = paramBoolean;
+    this.Lpv = paramas;
     AppMethodBeat.o(57949);
   }
   
@@ -26,9 +26,9 @@ public final class a
   {
     AppMethodBeat.i(57948);
     k.h(paramb, "flexibility");
-    l locall = this.JBZ;
-    boolean bool = this.JCb;
-    as localas = this.JCc;
+    l locall = this.Lps;
+    boolean bool = this.Lpu;
+    as localas = this.Lpv;
     k.h(locall, "howThisTypeIsUsed");
     k.h(paramb, "flexibility");
     paramb = new a(locall, paramb, bool, localas);
@@ -45,15 +45,15 @@ public final class a
         break label93;
       }
       paramObject = (a)paramObject;
-      if ((!k.g(this.JBZ, paramObject.JBZ)) || (!k.g(this.JCa, paramObject.JCa))) {
+      if ((!k.g(this.Lps, paramObject.Lps)) || (!k.g(this.Lpt, paramObject.Lpt))) {
         break label93;
       }
-      if (this.JCb != paramObject.JCb) {
+      if (this.Lpu != paramObject.Lpu) {
         break label88;
       }
     }
     label88:
-    for (int i = 1; (i != 0) && (k.g(this.JCc, paramObject.JCc)); i = 0)
+    for (int i = 1; (i != 0) && (k.g(this.Lpv, paramObject.Lpv)); i = 0)
     {
       AppMethodBeat.o(57953);
       return true;
@@ -71,14 +71,14 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(57951);
-    String str = "JavaTypeAttributes(howThisTypeIsUsed=" + this.JBZ + ", flexibility=" + this.JCa + ", isForAnnotationParameter=" + this.JCb + ", upperBoundOfTypeParameter=" + this.JCc + ")";
+    String str = "JavaTypeAttributes(howThisTypeIsUsed=" + this.Lps + ", flexibility=" + this.Lpt + ", isForAnnotationParameter=" + this.Lpu + ", upperBoundOfTypeParameter=" + this.Lpv + ")";
     AppMethodBeat.o(57951);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.b.a
  * JD-Core Version:    0.7.0.1
  */

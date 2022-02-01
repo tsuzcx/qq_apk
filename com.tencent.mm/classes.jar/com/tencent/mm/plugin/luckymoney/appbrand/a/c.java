@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cfq;
-import com.tencent.mm.protocal.protobuf.cfr;
+import com.tencent.mm.protocal.protobuf.ckt;
+import com.tencent.mm.protocal.protobuf.cku;
 
 public final class c
-  extends a<cfq, cfr>
+  extends a<ckt, cku>
 {
   public c(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(64875);
-    cfq localcfq = new cfq();
-    localcfq.dlB = paramString1;
-    localcfq.DSY = paramString2;
-    localcfq.offset = paramInt;
-    this.sYa = localcfq;
+    ckt localckt = new ckt();
+    localckt.djj = paramString1;
+    localckt.Fpu = paramString2;
+    localckt.offset = paramInt;
+    this.ugo = localckt;
     AppMethodBeat.o(64875);
   }
   

@@ -1,58 +1,28 @@
 package com.tencent.mm.plugin.appbrand.v;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.p.b.a;
-import java.util.HashMap;
+import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class a
 {
-  private static final Map<Integer, Object> fZD;
-  
-  static
+  public static boolean btX()
   {
-    AppMethodBeat.i(48006);
-    fZD = new HashMap();
-    AppMethodBeat.o(48006);
-  }
-  
-  public static void blX()
-  {
-    AppMethodBeat.i(48004);
-    fZD.clear();
-    AppMethodBeat.o(48004);
-  }
-  
-  public static void blY()
-  {
-    AppMethodBeat.i(48005);
-    com.tencent.mm.plugin.appbrand.jsapi.p.b.khr = new b.a()
+    AppMethodBeat.i(48237);
+    c localc = com.tencent.mm.model.c.d.aAp().tJ("100159");
+    if ((localc.isValid()) && ("1".equals(localc.eYV().get("isCloseWeappSearch")))) {}
+    for (int i = 1; i == 0; i = 0)
     {
-      public final void rT(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(48002);
-        a.tJ(paramAnonymousInt);
-        AppMethodBeat.o(48002);
-      }
-    };
-    AppMethodBeat.o(48005);
-  }
-  
-  public static void tJ(int paramInt)
-  {
-    AppMethodBeat.i(48003);
-    if (!fZD.containsKey(Integer.valueOf(paramInt)))
-    {
-      AppMethodBeat.o(48003);
-      return;
+      AppMethodBeat.o(48237);
+      return true;
     }
-    fZD.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(48003);
+    AppMethodBeat.o(48237);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.v.a
  * JD-Core Version:    0.7.0.1
  */

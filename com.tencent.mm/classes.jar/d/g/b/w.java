@@ -9,8 +9,8 @@ import d.l.m;
 
 public final class w
 {
-  private static final x Jhx;
-  private static final b[] Jhy;
+  private static final x KUR;
+  private static final b[] KUS;
   
   static
   {
@@ -20,8 +20,8 @@ public final class w
       x localx1 = (x)Class.forName("d.l.b.a.aa").newInstance();
       if (localx1 != null)
       {
-        Jhx = localx1;
-        Jhy = new b[0];
+        KUR = localx1;
+        KUS = new b[0];
         AppMethodBeat.o(128951);
         return;
       }
@@ -61,7 +61,7 @@ public final class w
   public static e a(j paramj)
   {
     AppMethodBeat.i(128947);
-    paramj = Jhx.a(paramj);
+    paramj = KUR.a(paramj);
     AppMethodBeat.o(128947);
     return paramj;
   }
@@ -69,7 +69,7 @@ public final class w
   public static h a(n paramn)
   {
     AppMethodBeat.i(128950);
-    paramn = Jhx.a(paramn);
+    paramn = KUR.a(paramn);
     AppMethodBeat.o(128950);
     return paramn;
   }
@@ -77,7 +77,7 @@ public final class w
   public static d.l.l a(r paramr)
   {
     AppMethodBeat.i(128948);
-    paramr = Jhx.a(paramr);
+    paramr = KUR.a(paramr);
     AppMethodBeat.o(128948);
     return paramr;
   }
@@ -85,7 +85,7 @@ public final class w
   public static m a(t paramt)
   {
     AppMethodBeat.i(128949);
-    paramt = Jhx.a(paramt);
+    paramt = KUR.a(paramt);
     AppMethodBeat.o(128949);
     return paramt;
   }
@@ -93,7 +93,7 @@ public final class w
   public static String a(i parami)
   {
     AppMethodBeat.i(128946);
-    parami = Jhx.a(parami);
+    parami = KUR.a(parami);
     AppMethodBeat.o(128946);
     return parami;
   }
@@ -101,15 +101,15 @@ public final class w
   public static String a(l paraml)
   {
     AppMethodBeat.i(128945);
-    paraml = Jhx.a(paraml);
+    paraml = KUR.a(paraml);
     AppMethodBeat.o(128945);
     return paraml;
   }
   
-  public static b bk(Class paramClass)
+  public static b bn(Class paramClass)
   {
     AppMethodBeat.i(128944);
-    paramClass = Jhx.bk(paramClass);
+    paramClass = KUR.bn(paramClass);
     AppMethodBeat.o(128944);
     return paramClass;
   }
@@ -117,7 +117,7 @@ public final class w
   public static d g(Class paramClass, String paramString)
   {
     AppMethodBeat.i(128943);
-    paramClass = Jhx.g(paramClass, paramString);
+    paramClass = KUR.g(paramClass, paramString);
     AppMethodBeat.o(128943);
     return paramClass;
   }

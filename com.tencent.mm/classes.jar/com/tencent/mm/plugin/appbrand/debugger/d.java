@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.debugger;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uj;
-import com.tencent.mm.g.a.uj.a;
+import com.tencent.mm.g.a.ut;
+import com.tencent.mm.g.a.ut.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.bc.c;
@@ -12,8 +12,8 @@ import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.service.n;
 import com.tencent.mm.plugin.appbrand.task.f;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Map;
 
 public final class d
@@ -32,14 +32,14 @@ public final class d
   
   public final void i(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(195706);
-    if (DebuggerShell.aTY())
+    AppMethodBeat.i(186427);
+    if (DebuggerShell.baW())
     {
-      ad.i("MicroMsg.AppBrand.ForceOpenAppNotify", "handleMessage %s", new Object[] { paramString });
+      ac.i("MicroMsg.AppBrand.ForceOpenAppNotify", "handleMessage %s", new Object[] { paramString });
       paramString = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.AppID");
       String str1 = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.UserName");
-      int i = bt.getInt((String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.VersionType"), -1);
-      int j = bt.getInt((String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.AppVersion"), -1);
+      int i = bs.getInt((String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.VersionType"), -1);
+      int j = bs.getInt((String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.AppVersion"), -1);
       String str2 = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.Path");
       String str3 = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.URL");
       String str4 = (String)paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.MD5");
@@ -48,38 +48,38 @@ public final class d
       paramMap.get(".sysmsg.ForceOpenAppNotify.OpenAppInfo.WithoutPluginCodeUrls");
       if (i < 0)
       {
-        AppMethodBeat.o(195706);
+        AppMethodBeat.o(186427);
         return;
       }
       if (i != 0)
       {
-        if (j.aOK() == null)
+        if (j.aVC() == null)
         {
-          AppMethodBeat.o(195706);
+          AppMethodBeat.o(186427);
           return;
         }
-        if ((bt.isNullOrNil(str3)) || (bt.isNullOrNil(str4)))
+        if ((bs.isNullOrNil(str3)) || (bs.isNullOrNil(str4)))
         {
-          AppMethodBeat.o(195706);
+          AppMethodBeat.o(186427);
           return;
         }
-        if (j.aOK().a(paramString, i, str3, str4, bt.aGK(), bt.aGK() + 432000L)) {
-          f.bQ(paramString, i);
+        if (j.aVC().a(paramString, i, str3, str4, bs.aNx(), bs.aNx() + 432000L)) {
+          f.bV(paramString, i);
         }
       }
-      ad.i("MicroMsg.AppBrand.ForceOpenAppNotify", "before start weapp username[%s], appId[%s], versionType[%d]", new Object[] { str1, paramString, Integer.valueOf(i) });
-      paramMap = new uj();
-      paramMap.dzH.appId = paramString;
-      paramMap.dzH.userName = str1;
-      paramMap.dzH.dzK = i;
-      paramMap.dzH.dzJ = str2;
-      paramMap.dzH.aAS = j;
-      paramMap.dzH.dzL = str3;
-      paramMap.dzH.dzM = str4;
-      paramMap.dzH.dzN = false;
-      paramMap.dzH.scene = 1030;
-      paramMap.dzH.dzP.gRC = str5;
-      paramMap.dzH.dzR = new Runnable()
+      ac.i("MicroMsg.AppBrand.ForceOpenAppNotify", "before start weapp username[%s], appId[%s], versionType[%d]", new Object[] { str1, paramString, Integer.valueOf(i) });
+      paramMap = new ut();
+      paramMap.dxt.appId = paramString;
+      paramMap.dxt.userName = str1;
+      paramMap.dxt.dxw = i;
+      paramMap.dxt.dxv = str2;
+      paramMap.dxt.aBM = j;
+      paramMap.dxt.dxx = str3;
+      paramMap.dxt.dxy = str4;
+      paramMap.dxt.dxz = false;
+      paramMap.dxt.scene = 1030;
+      paramMap.dxt.dxB.hsc = str5;
+      paramMap.dxt.dxD = new Runnable()
       {
         public final void run()
         {
@@ -87,9 +87,9 @@ public final class d
           AppMethodBeat.o(44947);
         }
       };
-      a.ESL.l(paramMap);
+      a.GpY.l(paramMap);
     }
-    AppMethodBeat.o(195706);
+    AppMethodBeat.o(186427);
   }
   
   public final String name()
@@ -99,7 +99,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.d
  * JD-Core Version:    0.7.0.1
  */

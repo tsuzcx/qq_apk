@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class dh
   extends b
 {
-  public a dfs;
+  public a dcK;
+  public b dcL;
   
   public dh()
   {
@@ -15,24 +16,27 @@ public final class dh
   
   private dh(byte paramByte)
   {
-    AppMethodBeat.i(104416);
-    this.dfs = new a();
-    this.ESR = false;
+    AppMethodBeat.i(104415);
+    this.dcK = new a();
+    this.dcL = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(104416);
+    AppMethodBeat.o(104415);
   }
   
   public static final class a
   {
-    public String dft;
-    public String dfu;
-    public int progress = 0;
-    public int status = 0;
+    public int type;
+  }
+  
+  public static final class b
+  {
+    public boolean dcM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.dh
  * JD-Core Version:    0.7.0.1
  */

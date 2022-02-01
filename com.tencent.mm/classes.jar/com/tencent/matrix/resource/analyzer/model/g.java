@@ -10,20 +10,20 @@ import java.io.File;
 
 public final class g
 {
-  public final l bWt;
-  private final e cyL;
+  public final l bUb;
+  private final e cvU;
   
   public g(e parame)
   {
-    this.cyL = ((e)com.tencent.matrix.resource.analyzer.a.b.checkNotNull(parame, "hprofFile"));
-    parame = new h(new com.d.a.b.a.b(new File(i.k(q.B(parame.mUri), true)), (byte)0)).Ad();
+    this.cvU = ((e)com.tencent.matrix.resource.analyzer.a.b.checkNotNull(parame, "hprofFile"));
+    parame = new h(new com.d.a.b.a.b(new File(i.k(q.B(parame.mUri), true)), (byte)0)).zQ();
     a.a(parame);
-    this.bWt = parame;
+    this.bUb = parame;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.g
  * JD-Core Version:    0.7.0.1
  */

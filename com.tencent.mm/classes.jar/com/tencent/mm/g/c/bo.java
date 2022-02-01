@@ -8,13 +8,34 @@ public abstract class bo
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eAm = "exptId".hashCode();
-  private static final int eAs = "exptKey".hashCode();
+  private static final int eCA = "setFlagTime".hashCode();
+  private static final int eCw = "prodcutID".hashCode();
+  private static final int eCx = "totalCount".hashCode();
+  private static final int eCy = "continuCount".hashCode();
+  private static final int eCz;
+  private static final int epS;
+  private static final int eqO = "flag".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAh = true;
-  private boolean eAr = true;
-  public int field_exptId;
-  public String field_exptKey;
+  private boolean eCr = true;
+  private boolean eCs = true;
+  private boolean eCt = true;
+  private boolean eCu = true;
+  private boolean eCv = true;
+  private boolean epw = true;
+  private boolean eqM = true;
+  public int field_continuCount;
+  public int field_flag;
+  public long field_modifyTime;
+  public String field_prodcutID;
+  public long field_setFlagTime;
+  public long field_showTipsTime;
+  public int field_totalCount;
+  
+  static
+  {
+    epS = "modifyTime".hashCode();
+    eCz = "showTipsTime".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +50,11 @@ public abstract class bo
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eAs != k) {
+      if (eCw != k) {
         break label65;
       }
-      this.field_exptKey = paramCursor.getString(i);
-      this.eAr = true;
+      this.field_prodcutID = paramCursor.getString(i);
+      this.eCr = true;
     }
     for (;;)
     {
@@ -41,8 +62,18 @@ public abstract class bo
       break label20;
       break;
       label65:
-      if (eAm == k) {
-        this.field_exptId = paramCursor.getInt(i);
+      if (eCx == k) {
+        this.field_totalCount = paramCursor.getInt(i);
+      } else if (eCy == k) {
+        this.field_continuCount = paramCursor.getInt(i);
+      } else if (eqO == k) {
+        this.field_flag = paramCursor.getInt(i);
+      } else if (epS == k) {
+        this.field_modifyTime = paramCursor.getLong(i);
+      } else if (eCz == k) {
+        this.field_showTipsTime = paramCursor.getLong(i);
+      } else if (eCA == k) {
+        this.field_setFlagTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +83,26 @@ public abstract class bo
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eAr) {
-      localContentValues.put("exptKey", this.field_exptKey);
+    if (this.eCr) {
+      localContentValues.put("prodcutID", this.field_prodcutID);
     }
-    if (this.eAh) {
-      localContentValues.put("exptId", Integer.valueOf(this.field_exptId));
+    if (this.eCs) {
+      localContentValues.put("totalCount", Integer.valueOf(this.field_totalCount));
+    }
+    if (this.eCt) {
+      localContentValues.put("continuCount", Integer.valueOf(this.field_continuCount));
+    }
+    if (this.eqM) {
+      localContentValues.put("flag", Integer.valueOf(this.field_flag));
+    }
+    if (this.epw) {
+      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
+    }
+    if (this.eCu) {
+      localContentValues.put("showTipsTime", Long.valueOf(this.field_showTipsTime));
+    }
+    if (this.eCv) {
+      localContentValues.put("setFlagTime", Long.valueOf(this.field_setFlagTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

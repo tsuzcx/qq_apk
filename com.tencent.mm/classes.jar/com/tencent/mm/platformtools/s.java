@@ -4,38 +4,38 @@ import android.graphics.Bitmap;
 
 public abstract interface s
 {
-  public abstract void Z(String paramString, boolean paramBoolean);
-  
   public abstract Bitmap a(Bitmap paramBitmap, s.a parama, String paramString);
   
   public abstract void a(s.a parama, String paramString);
   
-  public abstract String aGA();
+  public abstract b aNk();
   
-  public abstract boolean aGB();
+  public abstract String aNl();
   
-  public abstract boolean aGC();
+  public abstract String aNm();
   
-  public abstract Bitmap aGD();
+  public abstract String aNn();
   
-  public abstract void aGE();
+  public abstract boolean aNo();
   
-  public abstract b aGx();
+  public abstract boolean aNp();
   
-  public abstract String aGy();
+  public abstract Bitmap aNq();
   
-  public abstract String aGz();
+  public abstract void aNr();
+  
+  public abstract void aa(String paramString, boolean paramBoolean);
   
   public abstract String getCacheKey();
   
   public static abstract interface b
   {
-    public abstract Bitmap By(String paramString);
+    public abstract Bitmap FC(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.platformtools.s
  * JD-Core Version:    0.7.0.1
  */

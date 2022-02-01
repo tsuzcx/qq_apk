@@ -12,14 +12,14 @@ import java.util.regex.Pattern;
 public final class g
   implements b
 {
-  private final Pattern Gsl;
-  private final List<d.a> Iro;
+  private final Pattern HSd;
+  private final List<d.a> JSY;
   
   public g()
   {
     AppMethodBeat.i(138353);
-    this.Iro = new ArrayList();
-    this.Gsl = Pattern.compile("^/system/xbin/ku\\.sud$|^daemonsu:|^k_worker/[1-9]\\d*:[1-9]\\d*$|^kr_worker/[1-9]\\d*:[1-9]\\d*$|^km_worker/[1-9]\\d*:[1-9]\\d*$|^tworker/[1-9]\\d*:[1-9]\\d*$|^tu_worker/[1-9]\\d*:[1-9]\\d*$|^tq_worker/[1-9]\\d*:[1-9]\\d*$|^kworker/[1-9]\\d{2}$|^permmgrd$|^360sguard$|^/data/data/[\\w\\-\\.]+/");
+    this.JSY = new ArrayList();
+    this.HSd = Pattern.compile("^/system/xbin/ku\\.sud$|^daemonsu:|^k_worker/[1-9]\\d*:[1-9]\\d*$|^kr_worker/[1-9]\\d*:[1-9]\\d*$|^km_worker/[1-9]\\d*:[1-9]\\d*$|^tworker/[1-9]\\d*:[1-9]\\d*$|^tu_worker/[1-9]\\d*:[1-9]\\d*$|^tq_worker/[1-9]\\d*:[1-9]\\d*$|^kworker/[1-9]\\d{2}$|^permmgrd$|^360sguard$|^/data/data/[\\w\\-\\.]+/");
     AppMethodBeat.o(138353);
   }
   
@@ -31,28 +31,28 @@ public final class g
       AppMethodBeat.o(138354);
       return;
     }
-    if (parama.Irv != 1)
+    if (parama.JTf != 1)
     {
       AppMethodBeat.o(138354);
       return;
     }
-    this.Iro.add(parama);
+    this.JSY.add(parama);
     AppMethodBeat.o(138354);
   }
   
-  public final boolean fmd()
+  public final boolean fCu()
   {
     AppMethodBeat.i(138355);
-    Iterator localIterator = this.Iro.iterator();
+    Iterator localIterator = this.JSY.iterator();
     while (localIterator.hasNext())
     {
       d.a locala = (d.a)localIterator.next();
       new StringBuilder("SingleProcessAnalyzer : ").append(locala.toString());
-      h.eOC();
-      if ((locala.name != null) && (this.Gsl.matcher(locala.name).find()))
+      h.feg();
+      if ((locala.name != null) && (this.HSd.matcher(locala.name).find()))
       {
         new StringBuilder("SingleProcessAnalyzer match : ").append(locala.toString());
-        h.fmy();
+        h.fCO();
         AppMethodBeat.o(138355);
         return true;
       }
@@ -63,7 +63,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.a.g
  * JD-Core Version:    0.7.0.1
  */

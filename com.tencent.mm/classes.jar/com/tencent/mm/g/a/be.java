@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class be
   extends b
 {
-  public a ddu;
-  public b ddv;
+  public a daQ;
   
   public be()
   {
@@ -16,25 +15,21 @@ public final class be
   
   private be(byte paramByte)
   {
-    AppMethodBeat.i(117354);
-    this.ddu = new a();
-    this.ddv = new b();
-    this.ESR = false;
+    AppMethodBeat.i(114789);
+    this.daQ = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(117354);
+    AppMethodBeat.o(114789);
   }
   
-  public static final class a {}
-  
-  public static final class b
+  public static final class a
   {
-    public String bLg;
-    public boolean ddw;
+    public boolean daR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.be
  * JD-Core Version:    0.7.0.1
  */

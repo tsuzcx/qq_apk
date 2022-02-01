@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.j;
 import com.tencent.mm.modelvideo.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.vfs.i;
@@ -19,15 +19,15 @@ import java.util.LinkedList;
 public class SightDraftUI
   extends MMActivity
 {
-  private int wtO;
-  SightDraftContainerView wtP;
-  private LinkedList<String> wtQ;
+  private int xFe;
+  SightDraftContainerView xFf;
+  private LinkedList<String> xFg;
   
   public SightDraftUI()
   {
     AppMethodBeat.i(28699);
-    this.wtO = 1;
-    this.wtQ = new LinkedList();
+    this.xFe = 1;
+    this.xFg = new LinkedList();
     AppMethodBeat.o(28699);
   }
   
@@ -42,9 +42,9 @@ public class SightDraftUI
     super.onCreate(paramBundle);
     setMMTitle(2131763708);
     getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(2131100017));
-    this.wtP = new SightDraftContainerView(this);
-    setContentView(this.wtP);
-    this.wtP.dqO();
+    this.xFf = new SightDraftContainerView(this);
+    setContentView(this.xFf);
+    this.xFf.dEX();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -55,9 +55,9 @@ public class SightDraftUI
         return false;
       }
     });
-    this.wtP.setSightDraftCallback(new a()
+    this.xFf.setSightDraftCallback(new a()
     {
-      public final void dqL()
+      public final void dEU()
       {
         AppMethodBeat.i(28697);
         SightDraftUI.this.addTextOptionMenu(SightDraftUI.a(SightDraftUI.this), SightDraftUI.this.getString(2131763697), new MenuItem.OnMenuItemClickListener()
@@ -73,7 +73,7 @@ public class SightDraftUI
         AppMethodBeat.o(28697);
       }
       
-      public final void dqM()
+      public final void dEV()
       {
         AppMethodBeat.i(28698);
         SightDraftUI.this.removeOptionMenu(SightDraftUI.a(SightDraftUI.this));
@@ -91,7 +91,7 @@ public class SightDraftUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftUI
  * JD-Core Version:    0.7.0.1
  */

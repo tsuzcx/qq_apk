@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wallet_core.id_verify.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,19 +12,19 @@ import org.json.JSONObject;
 public final class l
   extends m
 {
-  public Profession[] Aan;
-  public int Aao;
-  public int zWB;
-  public int zWC;
-  public String[] zYU;
+  public int BoV;
+  public int BoW;
+  public String[] Bro;
+  public Profession[] BsH;
+  public int BsI;
   
   public l()
   {
     AppMethodBeat.i(70156);
-    this.Aan = null;
-    this.zYU = null;
+    this.BsH = null;
+    this.Bro = null;
     HashMap localHashMap = new HashMap();
-    if (!bt.isNullOrNil(null)) {
+    if (!bs.isNullOrNil(null)) {
       localHashMap.put("scene", null);
     }
     setRequestData(localHashMap);
@@ -50,14 +50,14 @@ public final class l
   {
     int i = 0;
     AppMethodBeat.i(70157);
-    ad.i("MicroMsg.NetSceneTenpayGetUserExInfo", "errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    ad.d("MicroMsg.NetSceneTenpayGetUserExInfo", "json: %s", new Object[] { paramJSONObject.toString() });
-    this.zWB = paramJSONObject.optInt("need_area");
-    this.zWC = paramJSONObject.optInt("need_profession");
+    ac.i("MicroMsg.NetSceneTenpayGetUserExInfo", "errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ac.d("MicroMsg.NetSceneTenpayGetUserExInfo", "json: %s", new Object[] { paramJSONObject.toString() });
+    this.BoV = paramJSONObject.optInt("need_area");
+    this.BoW = paramJSONObject.optInt("need_profession");
     paramString = paramJSONObject.optJSONArray("array");
     if (paramString != null)
     {
-      this.Aan = new Profession[paramString.length()];
+      this.BsH = new Profession[paramString.length()];
       paramInt = 0;
       if (paramInt < paramString.length())
       {
@@ -66,30 +66,30 @@ public final class l
         {
           String str = ((JSONObject)localObject).optString("profession_name");
           int j = ((JSONObject)localObject).optInt("profession_type");
-          if (bt.isNullOrNil(str)) {
+          if (bs.isNullOrNil(str)) {
             break label166;
           }
           localObject = new Profession(str, j);
-          this.Aan[paramInt] = localObject;
+          this.BsH[paramInt] = localObject;
         }
         for (;;)
         {
           paramInt += 1;
           break;
           label166:
-          ad.i("MicroMsg.NetSceneTenpayGetUserExInfo", "empty profession_name!");
+          ac.i("MicroMsg.NetSceneTenpayGetUserExInfo", "empty profession_name!");
         }
       }
     }
-    this.Aao = paramJSONObject.optInt("need_nationality");
+    this.BsI = paramJSONObject.optInt("need_nationality");
     paramString = paramJSONObject.optJSONArray("nationality_exclude_array");
     if (paramString != null)
     {
-      this.zYU = new String[paramString.length()];
+      this.Bro = new String[paramString.length()];
       paramInt = i;
       while (paramInt < paramString.length())
       {
-        this.zYU[paramInt] = paramString.optString(paramInt);
+        this.Bro[paramInt] = paramString.optString(paramInt);
         paramInt += 1;
       }
     }

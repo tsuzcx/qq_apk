@@ -1,13 +1,11 @@
 package com.tencent.mm.plugin.soter.e;
 
 import com.tencent.mm.vending.c.a;
-import com.tencent.mm.vending.g.b;
+import com.tencent.mm.vending.j.c;
 
 public final class d
-  implements a<Boolean, Boolean>
-{
-  private b hZi = null;
-}
+  implements a<c<Boolean, Boolean>, c<Boolean, Boolean>>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar

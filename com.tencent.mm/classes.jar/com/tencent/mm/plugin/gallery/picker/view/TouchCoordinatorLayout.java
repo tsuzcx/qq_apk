@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class TouchCoordinatorLayout
   extends CoordinatorLayout
 {
-  private View.OnTouchListener rFq;
+  private View.OnTouchListener sOi;
   
   public TouchCoordinatorLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,8 +25,8 @@ public class TouchCoordinatorLayout
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164789);
-    if (this.rFq != null) {
-      this.rFq.onTouch(this, paramMotionEvent);
+    if (this.sOi != null) {
+      this.sOi.onTouch(this, paramMotionEvent);
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     AppMethodBeat.o(164789);
@@ -35,7 +35,7 @@ public class TouchCoordinatorLayout
   
   public void setTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    this.rFq = paramOnTouchListener;
+    this.sOi = paramOnTouchListener;
   }
 }
 

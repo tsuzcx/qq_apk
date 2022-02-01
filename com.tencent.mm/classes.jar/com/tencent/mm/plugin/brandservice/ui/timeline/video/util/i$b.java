@@ -8,7 +8,7 @@ import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "valueAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "valueAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
 final class i$b
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -17,8 +17,8 @@ final class i$b
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(175531);
-    i locali = this.nly;
-    boolean bool = this.nlz;
+    i locali = this.nOy;
+    boolean bool = this.nOz;
     k.g(paramValueAnimator, "valueAnimator");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
     if (paramValueAnimator == null)
@@ -28,7 +28,7 @@ final class i$b
       throw paramValueAnimator;
     }
     i.a(locali, bool, ((Integer)paramValueAnimator).intValue());
-    this.nlA.invoke();
+    this.nOA.invoke();
     AppMethodBeat.o(175531);
   }
 }

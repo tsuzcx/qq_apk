@@ -585,7 +585,7 @@
     <dimen name="p1">225.0dip</dimen>
     <dimen name="p2">9.0dip</dimen>
     <dimen name="p3">8.0dip</dimen>
-    <dimen name="p4">10.0dip</dimen>
+    <dimen name="p4">12.0dip</dimen>
     <dimen name="p5">27.0dip</dimen>
     <dimen name="p6">12.0dip</dimen>
     <dimen name="p7">11.0dip</dimen>
@@ -1838,20 +1838,25 @@
     <item type="dimen" name="am5">@dimen/am4</item>
     <dimen name="am6">48.0dip</dimen>
     <dimen name="am7">176.0dip</dimen>
-    <dimen name="am8">75.0dip</dimen>
-    <dimen name="am9">64.0dip</dimen>
-    <item type="dimen" name="am_">@dimen/br</item>
-    <dimen name="ama">24.0dip</dimen>
-    <dimen name="amb">28.0dip</dimen>
-    <dimen name="amc">40.0dip</dimen>
-    <dimen name="amd">0.0dip</dimen>
-    <dimen name="ame">3.0dip</dimen>
-    <item type="dimen" name="amf">@dimen/cg</item>
-    <item type="dimen" name="amg">@dimen/cd</item>
-    <item type="dimen" name="amh">@dimen/cg</item>
-    <item type="dimen" name="ami">@dimen/c5</item>
-    <item type="dimen" name="amj">@dimen/cd</item>
-    <item type="dimen" name="amk">@dimen/c_</item>
-    <item type="dimen" name="aml">@dimen/c5</item>
-    <item type="dimen" name="amm">@dimen/c_</item>
+    <dimen name="am8">384.0dip</dimen>
+    <dimen name="am9">75.0dip</dimen>
+    <dimen name="am_">64.0dip</dimen>
+    <item type="dimen" name="ama">@dimen/br</item>
+    <dimen name="amb">24.0dip</dimen>
+    <dimen name="amc">28.0dip</dimen>
+    <dimen name="amd">40.0dip</dimen>
+    <dimen name="ame">0.0dip</dimen>
+    <dimen name="amf">3.0dip</dimen>
+    <item type="dimen" name="amg">@dimen/cg</item>
+    <item type="dimen" name="amh">@dimen/cd</item>
+    <item type="dimen" name="ami">@dimen/cg</item>
+    <item type="dimen" name="amj">@dimen/c5</item>
+    <item type="dimen" name="amk">@dimen/cd</item>
+    <item type="dimen" name="aml">@dimen/c_</item>
+    <item type="dimen" name="amm">@dimen/c5</item>
+    <item type="dimen" name="amn">@dimen/c_</item>
+    <dimen name="amo">120.0dip</dimen>
+    <dimen name="amp">56.0dip</dimen>
+    <dimen name="amq">68.0dip</dimen>
+    <dimen name="amr">320.0dip</dimen>
 </resources>

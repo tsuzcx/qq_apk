@@ -23,18 +23,18 @@ import java.util.Set;
 
 public class aa
 {
-  public static Iterable eJ(Object paramObject)
+  public static Iterable eM(Object paramObject)
   {
     AppMethodBeat.i(128964);
     if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.c))) {
       i(paramObject, "kotlin.collections.MutableIterable");
     }
-    paramObject = eK(paramObject);
+    paramObject = eN(paramObject);
     AppMethodBeat.o(128964);
     return paramObject;
   }
   
-  private static Iterable eK(Object paramObject)
+  private static Iterable eN(Object paramObject)
   {
     AppMethodBeat.i(128965);
     try
@@ -51,18 +51,18 @@ public class aa
     }
   }
   
-  public static Collection eL(Object paramObject)
+  public static Collection eO(Object paramObject)
   {
     AppMethodBeat.i(128966);
     if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.b))) {
       i(paramObject, "kotlin.collections.MutableCollection");
     }
-    paramObject = eM(paramObject);
+    paramObject = eP(paramObject);
     AppMethodBeat.o(128966);
     return paramObject;
   }
   
-  private static Collection eM(Object paramObject)
+  private static Collection eP(Object paramObject)
   {
     AppMethodBeat.i(128967);
     try
@@ -79,18 +79,18 @@ public class aa
     }
   }
   
-  public static Set eN(Object paramObject)
+  public static Set eQ(Object paramObject)
   {
     AppMethodBeat.i(128968);
     if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.g))) {
       i(paramObject, "kotlin.collections.MutableSet");
     }
-    paramObject = eO(paramObject);
+    paramObject = eR(paramObject);
     AppMethodBeat.o(128968);
     return paramObject;
   }
   
-  private static Set eO(Object paramObject)
+  private static Set eR(Object paramObject)
   {
     AppMethodBeat.i(128969);
     try
@@ -107,18 +107,18 @@ public class aa
     }
   }
   
-  public static Map eP(Object paramObject)
+  public static Map eS(Object paramObject)
   {
     AppMethodBeat.i(177350);
     if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.f))) {
       i(paramObject, "kotlin.collections.MutableMap");
     }
-    paramObject = eQ(paramObject);
+    paramObject = eT(paramObject);
     AppMethodBeat.o(177350);
     return paramObject;
   }
   
-  private static Map eQ(Object paramObject)
+  private static Map eT(Object paramObject)
   {
     AppMethodBeat.i(177351);
     try
@@ -135,7 +135,7 @@ public class aa
     }
   }
   
-  public static Object eR(Object paramObject)
+  public static Object eU(Object paramObject)
   {
     AppMethodBeat.i(128970);
     if (paramObject != null)

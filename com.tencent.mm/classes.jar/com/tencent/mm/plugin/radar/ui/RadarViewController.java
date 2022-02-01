@@ -17,7 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.radar.b.c;
 import com.tencent.mm.plugin.radar.b.c.a;
 import com.tencent.mm.plugin.radar.b.c.c;
@@ -30,15 +30,15 @@ import com.tencent.mm.plugin.radar.b.e.c;
 import com.tencent.mm.plugin.radar.b.e.d;
 import com.tencent.mm.plugin.radar.b.e.e;
 import com.tencent.mm.pluginsdk.model.o;
-import com.tencent.mm.protocal.protobuf.cgc;
-import com.tencent.mm.protocal.protobuf.cgd;
-import com.tencent.mm.protocal.protobuf.cgf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bl.d;
+import com.tencent.mm.protocal.protobuf.clf;
+import com.tencent.mm.protocal.protobuf.clg;
+import com.tencent.mm.protocal.protobuf.cli;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bo.d;
 import d.f;
 import d.g.b.u;
 import d.g.b.w;
@@ -52,37 +52,37 @@ import java.util.Map;
 import java.util.Set;
 import junit.framework.Assert;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarDelegate;", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContact;", "mContext", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TagAnimation", "", "TagBase", "TagIndex", "adapter", "Lcom/tencent/mm/plugin/radar/ui/RadarViewController$RadarSearchAdapter;", "addContact", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact;", "canCreateGroup", "", "grid", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "getGrid", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "grid$delegate", "Lkotlin/Lazy;", "hasShowGpsAlert", "mOnQuitActionButtonListener", "Landroid/view/View$OnClickListener;", "memberDetailView", "Lcom/tencent/mm/plugin/radar/ui/RadarMemberView;", "getMemberDetailView", "()Lcom/tencent/mm/plugin/radar/ui/RadarMemberView;", "memberDetailView$delegate", "newRadarTip", "Landroid/widget/TextView;", "getNewRadarTip", "()Landroid/widget/TextView;", "newRadarTip$delegate", "newRadarTipLoading", "Landroid/widget/ProgressBar;", "getNewRadarTipLoading", "()Landroid/widget/ProgressBar;", "newRadarTipLoading$delegate", "quitBtn", "Landroid/widget/Button;", "getQuitBtn", "()Landroid/widget/Button;", "quitBtn$delegate", "radarBgMask", "Landroid/view/View;", "getRadarBgMask", "()Landroid/view/View;", "radarBgMask$delegate", "radarManager", "Lcom/tencent/mm/plugin/radar/model/RadarManager;", "<set-?>", "Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarStatus;", "radarStatus", "getRadarStatus", "()Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarStatus;", "radarTips", "Lcom/tencent/mm/plugin/radar/ui/RadarTipsView;", "getRadarTips", "()Lcom/tencent/mm/plugin/radar/ui/RadarTipsView;", "radarTips$delegate", "waveView", "Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;", "getWaveView", "()Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;", "waveView$delegate", "buildMember", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "username", "", "encyptUsername", "distance", "nickname", "smallImgUrl", "initView", "", "mapRadarSearchMembersState", "radarSearchMembers", "Ljava/util/LinkedList;", "onAddContactReturn", "ok", "hasSentVerify", "errMsg", "timeStamp", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onLocationGot", "isOk", "location", "Lcom/tencent/mm/pluginsdk/model/lbs/Location;", "onPause", "onRadarMemberReturn", "errType", "errCode", "radarMembers", "count", "onRadarRelationChainReturn", "redarChatMember", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "onRecvFriendAdded", "contact", "Lcom/tencent/mm/storage/Contact;", "onRecvFriendVerify", "onResume", "onVerifyContactReturn", "prepareGrid", "processRadarSearchMembers", "radarBackgroundFadeIn", "startRadarSearch", "startWaves", "stopRadarSearch", "stopWaves", "switchRadarContactState", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "swithcRadarUI", "status", "updateActionButton", "AvatarAnimator", "Companion", "RadarSearchAdapter", "TagItem", "plugin-radar_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarDelegate;", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContact;", "mContext", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TagAnimation", "", "TagBase", "TagIndex", "adapter", "Lcom/tencent/mm/plugin/radar/ui/RadarViewController$RadarSearchAdapter;", "addContact", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact;", "canCreateGroup", "", "grid", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "getGrid", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "grid$delegate", "Lkotlin/Lazy;", "hasShowGpsAlert", "mOnQuitActionButtonListener", "Landroid/view/View$OnClickListener;", "memberDetailView", "Lcom/tencent/mm/plugin/radar/ui/RadarMemberView;", "getMemberDetailView", "()Lcom/tencent/mm/plugin/radar/ui/RadarMemberView;", "memberDetailView$delegate", "newRadarTip", "Landroid/widget/TextView;", "getNewRadarTip", "()Landroid/widget/TextView;", "newRadarTip$delegate", "newRadarTipLoading", "Landroid/widget/ProgressBar;", "getNewRadarTipLoading", "()Landroid/widget/ProgressBar;", "newRadarTipLoading$delegate", "quitBtn", "Landroid/widget/Button;", "getQuitBtn", "()Landroid/widget/Button;", "quitBtn$delegate", "radarBgMask", "Landroid/view/View;", "getRadarBgMask", "()Landroid/view/View;", "radarBgMask$delegate", "radarManager", "Lcom/tencent/mm/plugin/radar/model/RadarManager;", "<set-?>", "Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarStatus;", "radarStatus", "getRadarStatus", "()Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarStatus;", "radarTips", "Lcom/tencent/mm/plugin/radar/ui/RadarTipsView;", "getRadarTips", "()Lcom/tencent/mm/plugin/radar/ui/RadarTipsView;", "radarTips$delegate", "waveView", "Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;", "getWaveView", "()Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;", "waveView$delegate", "buildMember", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "username", "", "encyptUsername", "distance", "nickname", "smallImgUrl", "initView", "", "mapRadarSearchMembersState", "radarSearchMembers", "Ljava/util/LinkedList;", "onAddContactReturn", "ok", "hasSentVerify", "errMsg", "timeStamp", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onLocationGot", "isOk", "location", "Lcom/tencent/mm/pluginsdk/model/lbs/Location;", "onPause", "onRadarMemberReturn", "errType", "errCode", "radarMembers", "count", "onRadarRelationChainReturn", "redarChatMember", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "onRecvFriendAdded", "contact", "Lcom/tencent/mm/storage/Contact;", "onRecvFriendVerify", "onResume", "onVerifyContactReturn", "prepareGrid", "processRadarSearchMembers", "radarBackgroundFadeIn", "startRadarSearch", "startWaves", "stopRadarSearch", "stopWaves", "switchRadarContactState", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "swithcRadarUI", "status", "updateActionButton", "AvatarAnimator", "Companion", "RadarSearchAdapter", "TagItem", "plugin-radar_release"})
 public final class RadarViewController
   extends RelativeLayout
   implements c.c, e.d
 {
   private static final String TAG = "MicroMsg.Radar.RadarViewController";
-  public static final RadarViewController.b uUU;
-  private boolean sVh;
-  private final f uUD;
-  private final f uUE;
-  private final f uUF;
-  private final f uUG;
-  private final f uUH;
-  private final f uUI;
-  private final f uUJ;
-  private final f uUK;
-  e uUL;
-  c uUM;
-  c uUN;
-  private e.e uUO;
-  private final boolean uUP;
-  final View.OnClickListener uUQ;
-  private final int uUR;
-  private final int uUS;
-  private final int uUT;
+  public static final RadarViewController.b wdJ;
+  private boolean udt;
+  e wdA;
+  c wdB;
+  c wdC;
+  private e.e wdD;
+  private final boolean wdE;
+  final View.OnClickListener wdF;
+  private final int wdG;
+  private final int wdH;
+  private final int wdI;
+  private final f wds;
+  private final f wdt;
+  private final f wdu;
+  private final f wdv;
+  private final f wdw;
+  private final f wdx;
+  private final f wdy;
+  private final f wdz;
   
   static
   {
     AppMethodBeat.i(138753);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(RadarViewController.class), "waveView", "getWaveView()Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;")), (d.l.k)w.a(new u(w.bk(RadarViewController.class), "memberDetailView", "getMemberDetailView()Lcom/tencent/mm/plugin/radar/ui/RadarMemberView;")), (d.l.k)w.a(new u(w.bk(RadarViewController.class), "grid", "getGrid()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;")), (d.l.k)w.a(new u(w.bk(RadarViewController.class), "radarTips", "getRadarTips()Lcom/tencent/mm/plugin/radar/ui/RadarTipsView;")), (d.l.k)w.a(new u(w.bk(RadarViewController.class), "newRadarTip", "getNewRadarTip()Landroid/widget/TextView;")), (d.l.k)w.a(new u(w.bk(RadarViewController.class), "newRadarTipLoading", "getNewRadarTipLoading()Landroid/widget/ProgressBar;")), (d.l.k)w.a(new u(w.bk(RadarViewController.class), "quitBtn", "getQuitBtn()Landroid/widget/Button;")), (d.l.k)w.a(new u(w.bk(RadarViewController.class), "radarBgMask", "getRadarBgMask()Landroid/view/View;")) };
-    uUU = new RadarViewController.b((byte)0);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(RadarViewController.class), "waveView", "getWaveView()Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;")), (d.l.k)w.a(new u(w.bn(RadarViewController.class), "memberDetailView", "getMemberDetailView()Lcom/tencent/mm/plugin/radar/ui/RadarMemberView;")), (d.l.k)w.a(new u(w.bn(RadarViewController.class), "grid", "getGrid()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;")), (d.l.k)w.a(new u(w.bn(RadarViewController.class), "radarTips", "getRadarTips()Lcom/tencent/mm/plugin/radar/ui/RadarTipsView;")), (d.l.k)w.a(new u(w.bn(RadarViewController.class), "newRadarTip", "getNewRadarTip()Landroid/widget/TextView;")), (d.l.k)w.a(new u(w.bn(RadarViewController.class), "newRadarTipLoading", "getNewRadarTipLoading()Landroid/widget/ProgressBar;")), (d.l.k)w.a(new u(w.bn(RadarViewController.class), "quitBtn", "getQuitBtn()Landroid/widget/Button;")), (d.l.k)w.a(new u(w.bn(RadarViewController.class), "radarBgMask", "getRadarBgMask()Landroid/view/View;")) };
+    wdJ = new RadarViewController.b((byte)0);
     TAG = "MicroMsg.Radar.RadarViewController";
     AppMethodBeat.o(138753);
   }
@@ -91,32 +91,32 @@ public final class RadarViewController
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(138777);
-    this.uUD = d.g.E((d.g.a.a)new i(this));
-    this.uUE = i.am(this, 2131303683);
-    this.uUF = i.am(this, 2131303698);
-    this.uUG = i.am(this, 2131303700);
-    this.uUH = i.am(this, 2131303688);
-    this.uUI = i.am(this, 2131303689);
-    this.uUJ = i.am(this, 2131303692);
-    this.uUK = i.am(this, 2131303677);
-    this.uUO = e.e.uSH;
-    this.uUQ = ((View.OnClickListener)new f(this));
-    this.uUR = 33554432;
-    this.uUS = (this.uUR + 1);
-    this.uUT = (this.uUR + 2);
+    this.wds = d.g.K((d.g.a.a)new i(this));
+    this.wdt = i.an(this, 2131303683);
+    this.wdu = i.an(this, 2131303698);
+    this.wdv = i.an(this, 2131303700);
+    this.wdw = i.an(this, 2131303688);
+    this.wdx = i.an(this, 2131303689);
+    this.wdy = i.an(this, 2131303692);
+    this.wdz = i.an(this, 2131303677);
+    this.wdD = e.e.wbw;
+    this.wdF = ((View.OnClickListener)new f(this));
+    this.wdG = 33554432;
+    this.wdH = (this.wdG + 1);
+    this.wdI = (this.wdG + 2);
     paramAttributeSet = (e.d)this;
     Context localContext = paramContext.getApplicationContext();
     d.g.b.k.g(localContext, "mContext.getApplicationContext()");
-    this.uUL = new e(paramAttributeSet, localContext);
-    this.uUM = new c((c.c)this, paramContext);
+    this.wdA = new e(paramAttributeSet, localContext);
+    this.wdB = new c((c.c)this, paramContext);
     AppMethodBeat.o(138777);
   }
   
   private final void a(e.e parame)
   {
     AppMethodBeat.i(138775);
-    this.uUO = parame;
-    switch (h.uVn[parame.ordinal()])
+    this.wdD = parame;
+    switch (h.wec[parame.ordinal()])
     {
     }
     for (;;)
@@ -127,13 +127,13 @@ public final class RadarViewController
       getQuitBtn().setText(2131762149);
       getNewRadarTipLoading().setVisibility(8);
       getNewRadarTip().setText((CharSequence)"");
-      getWaveView().dfu();
+      getWaveView().dtb();
       getWaveView().setVisibility(0);
-      parame = this.uUL;
+      parame = this.wdA;
       if (parame == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
-      parame.dfa();
+      parame.dsH();
       AppMethodBeat.o(138775);
       return;
       getRadarBgMask().setVisibility(8);
@@ -141,59 +141,59 @@ public final class RadarViewController
       getNewRadarTip().setText((CharSequence)"");
       AppMethodBeat.o(138775);
       return;
-      dfr();
+      dsY();
       getQuitBtn().setText(2131755691);
-      parame = this.uUL;
+      parame = this.wdA;
       if (parame == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
-      parame.dfb();
+      parame.dsI();
       getNewRadarTipLoading().setVisibility(0);
       getNewRadarTip().setText(2131762151);
-      getWaveView().dfv();
+      getWaveView().dtc();
       getWaveView().setVisibility(4);
       getGrid().setVisibility(4);
-      parame = this.uUN;
+      parame = this.wdC;
       if (parame == null) {
-        d.g.b.k.aPZ("adapter");
+        d.g.b.k.aVY("adapter");
       }
       parame.clearAll();
       AppMethodBeat.o(138775);
       return;
       getRadarBgMask().setVisibility(0);
-      parame = this.uUL;
+      parame = this.wdA;
       if (parame == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
-      parame.dfb();
+      parame.dsI();
       getNewRadarTipLoading().setVisibility(8);
       getNewRadarTip().setText(2131762140);
       getGrid().setVisibility(0);
       AppMethodBeat.o(138775);
       return;
       getRadarBgMask().setVisibility(8);
-      parame = this.uUL;
+      parame = this.wdA;
       if (parame == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
-      parame.dfb();
+      parame.dsI();
       getNewRadarTipLoading().setVisibility(0);
       getNewRadarTip().setText(2131762141);
     }
   }
   
-  private final void aC(LinkedList<cgf> paramLinkedList)
+  private final void aJ(LinkedList<cli> paramLinkedList)
   {
     AppMethodBeat.i(138773);
     if (paramLinkedList == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
     c localc;
     if (paramLinkedList.size() == 0)
     {
-      localc = this.uUN;
+      localc = this.wdC;
       if (localc == null) {
-        d.g.b.k.aPZ("adapter");
+        d.g.b.k.aVY("adapter");
       }
       if (localc.getCount() == 0) {
         getRadarTips().setNoMember(true);
@@ -201,16 +201,16 @@ public final class RadarViewController
     }
     for (;;)
     {
-      ad.d(TAG, "members got, size : " + paramLinkedList.size());
-      boolean bool = aD(paramLinkedList);
-      ad.d(TAG, "has friend:%s", new Object[] { String.valueOf(bool) });
-      localc = this.uUN;
+      ac.d(TAG, "members got, size : " + paramLinkedList.size());
+      boolean bool = aK(paramLinkedList);
+      ac.d(TAG, "has friend:%s", new Object[] { String.valueOf(bool) });
+      localc = this.wdC;
       if (localc == null) {
-        d.g.b.k.aPZ("adapter");
+        d.g.b.k.aVY("adapter");
       }
-      localc.aE(paramLinkedList);
-      if ((this.uUP) && (bool)) {
-        a(e.e.uSI);
+      localc.aL(paramLinkedList);
+      if ((this.wdE) && (bool)) {
+        a(e.e.wbx);
       }
       AppMethodBeat.o(138773);
       return;
@@ -218,39 +218,39 @@ public final class RadarViewController
     }
   }
   
-  private final boolean aD(LinkedList<cgf> paramLinkedList)
+  private final boolean aK(LinkedList<cli> paramLinkedList)
   {
     AppMethodBeat.i(138774);
     boolean bool = false;
     if (paramLinkedList == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
     Iterator localIterator = paramLinkedList.iterator();
     if (localIterator.hasNext())
     {
-      Object localObject = (cgf)localIterator.next();
-      paramLinkedList = this.uUL;
+      Object localObject = (cli)localIterator.next();
+      paramLinkedList = this.wdA;
       if (paramLinkedList == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
       d.g.b.k.g(localObject, "member");
-      paramLinkedList = e.a(paramLinkedList, (cgf)localObject);
+      paramLinkedList = e.a(paramLinkedList, (cli)localObject);
       if (paramLinkedList != null) {
         break label143;
       }
-      paramLinkedList = g.uUC;
-      localObject = g.b((cgf)localObject);
-      paramLinkedList = this.uUM.ali((String)localObject);
-      e locale = this.uUL;
+      paramLinkedList = g.wdr;
+      localObject = g.b((cli)localObject);
+      paramLinkedList = this.wdB.aqh((String)localObject);
+      e locale = this.wdA;
       if (locale == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
       locale.b((String)localObject, paramLinkedList);
     }
     label143:
     for (;;)
     {
-      if (paramLinkedList == c.e.uRT) {
+      if (paramLinkedList == c.e.waI) {
         bool = true;
       }
       for (;;)
@@ -265,31 +265,31 @@ public final class RadarViewController
   private final void d(String paramString, c.e parame)
   {
     AppMethodBeat.i(138765);
-    Object localObject = this.uUL;
+    Object localObject = this.wdA;
     if (localObject == null) {
-      d.g.b.k.aPZ("radarManager");
+      d.g.b.k.aVY("radarManager");
     }
     if (paramString == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
-    localObject = ((e)localObject).alj(paramString);
+    localObject = ((e)localObject).aqi(paramString);
     if ((localObject != null) && (localObject != parame))
     {
-      localObject = this.uUL;
+      localObject = this.wdA;
       if (localObject == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
       ((e)localObject).b(paramString, parame);
-      paramString = this.uUN;
+      paramString = this.wdC;
       if (paramString == null) {
-        d.g.b.k.aPZ("adapter");
+        d.g.b.k.aVY("adapter");
       }
-      paramString.bsd();
+      paramString.bzd();
     }
     AppMethodBeat.o(138765);
   }
   
-  private final void dfr()
+  private final void dsY()
   {
     AppMethodBeat.i(138776);
     if (getRadarBgMask().getVisibility() != 0)
@@ -303,7 +303,7 @@ public final class RadarViewController
   private final TextView getNewRadarTip()
   {
     AppMethodBeat.i(138758);
-    TextView localTextView = (TextView)this.uUH.getValue();
+    TextView localTextView = (TextView)this.wdw.getValue();
     AppMethodBeat.o(138758);
     return localTextView;
   }
@@ -311,7 +311,7 @@ public final class RadarViewController
   private final ProgressBar getNewRadarTipLoading()
   {
     AppMethodBeat.i(138759);
-    ProgressBar localProgressBar = (ProgressBar)this.uUI.getValue();
+    ProgressBar localProgressBar = (ProgressBar)this.wdx.getValue();
     AppMethodBeat.o(138759);
     return localProgressBar;
   }
@@ -319,99 +319,99 @@ public final class RadarViewController
   private final View getRadarBgMask()
   {
     AppMethodBeat.i(138761);
-    View localView = (View)this.uUK.getValue();
+    View localView = (View)this.wdz.getValue();
     AppMethodBeat.o(138761);
     return localView;
   }
   
-  public final void W(af paramaf)
+  public final void X(ai paramai)
   {
     AppMethodBeat.i(138769);
-    d.g.b.k.h(paramaf, "contact");
+    d.g.b.k.h(paramai, "contact");
     if (getMemberDetailView().isShowing())
     {
       RadarMemberView localRadarMemberView = getMemberDetailView();
-      String str = paramaf.Sx();
+      String str = paramai.Tq();
       d.g.b.k.g(str, "contact.encryptUsername");
-      localRadarMemberView.c(str, c.e.uRT);
+      localRadarMemberView.c(str, c.e.waI);
     }
-    d(paramaf.getUsername(), c.e.uRT);
-    d(paramaf.Sx(), c.e.uRT);
+    d(paramai.getUsername(), c.e.waI);
+    d(paramai.Tq(), c.e.waI);
     AppMethodBeat.o(138769);
   }
   
-  public final void X(af paramaf)
+  public final void Y(ai paramai)
   {
     AppMethodBeat.i(138768);
-    d.g.b.k.h(paramaf, "contact");
-    Object localObject = this.uUL;
+    d.g.b.k.h(paramai, "contact");
+    Object localObject = this.wdA;
     if (localObject == null) {
-      d.g.b.k.aPZ("radarManager");
+      d.g.b.k.aVY("radarManager");
     }
-    String str1 = paramaf.getUsername();
+    String str1 = paramai.getUsername();
     d.g.b.k.g(str1, "contact.username");
-    if (((e)localObject).alj(str1) == null)
+    if (((e)localObject).aqi(str1) == null)
     {
-      localObject = this.uUL;
+      localObject = this.wdA;
       if (localObject == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
-      str1 = paramaf.Sx();
+      str1 = paramai.Tq();
       d.g.b.k.g(str1, "contact.encryptUsername");
-      if (((e)localObject).alj(str1) == null)
+      if (((e)localObject).aqi(str1) == null)
       {
         localObject = new LinkedList();
-        str1 = paramaf.getUsername();
+        str1 = paramai.getUsername();
         d.g.b.k.g(str1, "contact.username");
-        String str2 = paramaf.Sx();
+        String str2 = paramai.Tq();
         d.g.b.k.g(str2, "contact.encryptUsername");
-        String str3 = paramaf.Su();
+        String str3 = paramai.Tn();
         d.g.b.k.g(str3, "contact.nickname");
-        cgf localcgf = new cgf();
-        localcgf.EbR = 100;
-        localcgf.mAQ = str1;
-        localcgf.mBV = str3;
-        localcgf.SmallImgUrl = "";
-        localcgf.DfI = str2;
-        ((LinkedList)localObject).add(localcgf);
-        aC((LinkedList)localObject);
+        cli localcli = new cli();
+        localcli.FyM = 100;
+        localcli.ncR = str1;
+        localcli.ndW = str3;
+        localcli.SmallImgUrl = "";
+        localcli.EyO = str2;
+        ((LinkedList)localObject).add(localcli);
+        aJ((LinkedList)localObject);
       }
     }
     if (getMemberDetailView().isShowing())
     {
       localObject = getMemberDetailView();
-      str1 = paramaf.Sx();
+      str1 = paramai.Tq();
       d.g.b.k.g(str1, "contact.encryptUsername");
-      ((RadarMemberView)localObject).c(str1, c.e.uRU);
+      ((RadarMemberView)localObject).c(str1, c.e.waJ);
     }
-    d(paramaf.getUsername(), c.e.uRU);
-    d(paramaf.Sx(), c.e.uRU);
+    d(paramai.getUsername(), c.e.waJ);
+    d(paramai.Tq(), c.e.waJ);
     AppMethodBeat.o(138768);
   }
   
-  public final void a(int paramInt1, int paramInt2, LinkedList<cgf> paramLinkedList)
+  public final void a(int paramInt1, int paramInt2, LinkedList<cli> paramLinkedList)
   {
     AppMethodBeat.i(138771);
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ad.e(TAG, "radar member return error : %s, type : %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+      ac.e(TAG, "radar member return error : %s, type : %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
       if (2 == paramInt1)
       {
         paramLinkedList = getRadarTips();
         str = getContext().getString(2131761535);
         d.g.b.k.g(str, "context.getString(R.string.net_warn_no_network)");
-        paramLinkedList.alk(str);
+        paramLinkedList.aqj(str);
         AppMethodBeat.o(138771);
         return;
       }
       paramLinkedList = getRadarTips();
       String str = getContext().getString(2131762155);
       d.g.b.k.g(str, "context.getString(R.string.radar_tips_network_err)");
-      paramLinkedList.alk(str);
+      paramLinkedList.aqj(str);
       AppMethodBeat.o(138771);
       return;
     }
-    aC(paramLinkedList);
+    aJ(paramLinkedList);
     AppMethodBeat.o(138771);
   }
   
@@ -419,15 +419,15 @@ public final class RadarViewController
   {
     AppMethodBeat.i(138767);
     if (paramBoolean) {
-      d(paramString2, c.e.uRT);
+      d(paramString2, c.e.waI);
     }
     for (;;)
     {
-      paramString1 = this.uUL;
+      paramString1 = this.wdA;
       if (paramString1 == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
-      paramString1.uSt.remove(Long.valueOf(paramLong));
+      paramString1.wbi.remove(Long.valueOf(paramLong));
       AppMethodBeat.o(138767);
       return;
       RadarTipsView localRadarTipsView = getRadarTips();
@@ -435,16 +435,16 @@ public final class RadarViewController
       if (paramString1 == null) {
         paramString2 = "";
       }
-      localRadarTipsView.alk(paramString2);
-      paramString1 = this.uUL;
+      localRadarTipsView.aqj(paramString2);
+      paramString1 = this.wdA;
       if (paramString1 == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
-      paramString1 = (e.c)paramString1.uSt.get(Long.valueOf(paramLong));
+      paramString1 = (e.c)paramString1.wbi.get(Long.valueOf(paramLong));
       if (paramString1 != null)
       {
-        paramString2 = g.uUC;
-        d(g.b(paramString1.uSF), paramString1.uSG);
+        paramString2 = g.wdr;
+        d(g.b(paramString1.wbu), paramString1.wbv);
       }
     }
   }
@@ -453,20 +453,20 @@ public final class RadarViewController
   {
     AppMethodBeat.i(138766);
     if (paramBoolean1) {
-      d(paramString2, c.e.uRT);
+      d(paramString2, c.e.waI);
     }
     for (;;)
     {
-      paramString1 = this.uUL;
+      paramString1 = this.wdA;
       if (paramString1 == null) {
-        d.g.b.k.aPZ("radarManager");
+        d.g.b.k.aVY("radarManager");
       }
-      paramString1.uSt.remove(Long.valueOf(paramLong));
+      paramString1.wbi.remove(Long.valueOf(paramLong));
       AppMethodBeat.o(138766);
       return;
       if (paramBoolean2)
       {
-        d(paramString2, c.e.uRS);
+        d(paramString2, c.e.waH);
       }
       else
       {
@@ -475,38 +475,38 @@ public final class RadarViewController
         if (paramString1 == null) {
           paramString2 = "";
         }
-        localRadarTipsView.alk(paramString2);
-        paramString1 = this.uUL;
+        localRadarTipsView.aqj(paramString2);
+        paramString1 = this.wdA;
         if (paramString1 == null) {
-          d.g.b.k.aPZ("radarManager");
+          d.g.b.k.aVY("radarManager");
         }
-        paramString1 = (e.c)paramString1.uSt.get(Long.valueOf(paramLong));
+        paramString1 = (e.c)paramString1.wbi.get(Long.valueOf(paramLong));
         if (paramString1 != null)
         {
-          paramString2 = g.uUC;
-          d(g.b(paramString1.uSF), paramString1.uSG);
-          paramString2 = g.uUC;
-          d(g.c(paramString1.uSF), paramString1.uSG);
+          paramString2 = g.wdr;
+          d(g.b(paramString1.wbu), paramString1.wbv);
+          paramString2 = g.wdr;
+          d(g.c(paramString1.wbu), paramString1.wbv);
         }
       }
     }
   }
   
-  public final void b(int paramInt1, int paramInt2, LinkedList<cgc> paramLinkedList)
+  public final void b(int paramInt1, int paramInt2, LinkedList<clf> paramLinkedList)
   {
     int i = 0;
     AppMethodBeat.i(138772);
     if ((paramInt1 == 0) && (paramInt2 == 0) && (paramLinkedList != null))
     {
-      a(e.e.uSK);
-      c localc = this.uUN;
+      a(e.e.wbz);
+      c localc = this.wdC;
       if (localc == null) {
-        d.g.b.k.aPZ("adapter");
+        d.g.b.k.aVY("adapter");
       }
-      c(localc.uUY).uSu.clear();
-      c(localc.uUY).uSq.clear();
-      localc.uVb.clear();
-      localc.uVc.clear();
+      c(localc.wdN).wbj.clear();
+      c(localc.wdN).wbf.clear();
+      localc.wdQ.clear();
+      localc.wdR.clear();
       Object localObject2 = null;
       localObject1 = localObject2;
       if (paramLinkedList != null)
@@ -522,69 +522,69 @@ public final class RadarViewController
           {
             localObject2 = paramLinkedList.get(paramInt1);
             d.g.b.k.g(localObject2, "radarChatMember[i]");
-            localObject2 = (cgc)localObject2;
-            localObject3 = new cgd();
-            ((cgd)localObject3).EbQ = ((cgc)localObject2).mAQ;
+            localObject2 = (clf)localObject2;
+            localObject3 = new clg();
+            ((clg)localObject3).FyL = ((clf)localObject2).ncR;
             ((LinkedList)localObject1).add(localObject3);
-            localObject3 = c(localc.uUY).uSq;
-            Object localObject4 = ((cgc)localObject2).DfI;
+            localObject3 = c(localc.wdN).wbf;
+            Object localObject4 = ((clf)localObject2).EyO;
             d.g.b.k.g(localObject4, "radarchatroomMember.EncodeUserName");
-            String str = ((cgc)localObject2).mAQ;
+            String str = ((clf)localObject2).ncR;
             d.g.b.k.g(str, "radarchatroomMember.UserName");
             ((Map)localObject3).put(localObject4, str);
-            localObject3 = localc.uVc;
-            localObject4 = g.uUC;
-            ((HashMap)localObject3).put(g.a((cgc)localObject2), Integer.valueOf(0));
+            localObject3 = localc.wdR;
+            localObject4 = g.wdr;
+            ((HashMap)localObject3).put(g.a((clf)localObject2), Integer.valueOf(0));
             paramInt1 += 1;
           }
-          paramInt2 = localc.uVa.length;
+          paramInt2 = localc.wdP.length;
           paramInt1 = i;
           while (paramInt1 < paramInt2)
           {
-            paramLinkedList = localc.uVa[paramInt1];
-            localObject2 = c(localc.uUY).uSq;
-            localObject3 = g.uUC;
-            if (!bt.isNullOrNil((String)((Map)localObject2).get(g.c(paramLinkedList))))
+            paramLinkedList = localc.wdP[paramInt1];
+            localObject2 = c(localc.wdN).wbf;
+            localObject3 = g.wdr;
+            if (!bs.isNullOrNil((String)((Map)localObject2).get(g.c(paramLinkedList))))
             {
-              d(localc.uUY).d(paramLinkedList);
-              c(localc.uUY).a(paramLinkedList);
+              d(localc.wdN).d(paramLinkedList);
+              c(localc.wdN).a(paramLinkedList);
             }
             paramInt1 += 1;
           }
         }
       }
-      c(localc.uUY).uSp = ((LinkedList)localObject1);
-      paramLinkedList = this.uUN;
+      c(localc.wdN).wbe = ((LinkedList)localObject1);
+      paramLinkedList = this.wdC;
       if (paramLinkedList == null) {
-        d.g.b.k.aPZ("adapter");
+        d.g.b.k.aVY("adapter");
       }
-      paramLinkedList.bsd();
+      paramLinkedList.bzd();
       AppMethodBeat.o(138772);
       return;
     }
-    a(e.e.uSH);
+    a(e.e.wbw);
     paramLinkedList = getRadarTips();
     Object localObject1 = getContext().getString(2131762155);
     d.g.b.k.g(localObject1, "context.getString(R.string.radar_tips_network_err)");
-    paramLinkedList.alk((String)localObject1);
+    paramLinkedList.aqj((String)localObject1);
     AppMethodBeat.o(138772);
   }
   
-  public final void dfa()
+  public final void dsH()
   {
     AppMethodBeat.i(138763);
-    e locale = this.uUL;
+    e locale = this.wdA;
     if (locale == null) {
-      d.g.b.k.aPZ("radarManager");
+      d.g.b.k.aVY("radarManager");
     }
-    locale.dfa();
+    locale.dsH();
     AppMethodBeat.o(138763);
   }
   
   final RadarSpecialGridView getGrid()
   {
     AppMethodBeat.i(138756);
-    RadarSpecialGridView localRadarSpecialGridView = (RadarSpecialGridView)this.uUF.getValue();
+    RadarSpecialGridView localRadarSpecialGridView = (RadarSpecialGridView)this.wdu.getValue();
     AppMethodBeat.o(138756);
     return localRadarSpecialGridView;
   }
@@ -592,7 +592,7 @@ public final class RadarViewController
   final RadarMemberView getMemberDetailView()
   {
     AppMethodBeat.i(138755);
-    RadarMemberView localRadarMemberView = (RadarMemberView)this.uUE.getValue();
+    RadarMemberView localRadarMemberView = (RadarMemberView)this.wdt.getValue();
     AppMethodBeat.o(138755);
     return localRadarMemberView;
   }
@@ -600,20 +600,20 @@ public final class RadarViewController
   final Button getQuitBtn()
   {
     AppMethodBeat.i(138760);
-    Button localButton = (Button)this.uUJ.getValue();
+    Button localButton = (Button)this.wdy.getValue();
     AppMethodBeat.o(138760);
     return localButton;
   }
   
   public final e.e getRadarStatus()
   {
-    return this.uUO;
+    return this.wdD;
   }
   
   final RadarTipsView getRadarTips()
   {
     AppMethodBeat.i(138757);
-    RadarTipsView localRadarTipsView = (RadarTipsView)this.uUG.getValue();
+    RadarTipsView localRadarTipsView = (RadarTipsView)this.wdv.getValue();
     AppMethodBeat.o(138757);
     return localRadarTipsView;
   }
@@ -621,27 +621,9 @@ public final class RadarViewController
   final RadarWaveView getWaveView()
   {
     AppMethodBeat.i(138754);
-    RadarWaveView localRadarWaveView = (RadarWaveView)this.uUD.getValue();
+    RadarWaveView localRadarWaveView = (RadarWaveView)this.wds.getValue();
     AppMethodBeat.o(138754);
     return localRadarWaveView;
-  }
-  
-  public final void ol(boolean paramBoolean)
-  {
-    AppMethodBeat.i(138770);
-    if (!paramBoolean)
-    {
-      RadarTipsView localRadarTipsView = getRadarTips();
-      String str = getContext().getString(2131762154);
-      d.g.b.k.g(str, "context.getString(R.stri….radar_tips_location_err)");
-      localRadarTipsView.alk(str);
-      if ((!this.sVh) && (!com.tencent.mm.modelgeo.d.axU()))
-      {
-        this.sVh = true;
-        com.tencent.mm.ui.base.h.a(getContext(), getContext().getString(2131760082), getContext().getString(2131755906), getContext().getString(2131760598), getContext().getString(2131755691), false, (DialogInterface.OnClickListener)new g(this), null);
-      }
-    }
-    AppMethodBeat.o(138770);
   }
   
   public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -661,36 +643,54 @@ public final class RadarViewController
   public final void onResume()
   {
     AppMethodBeat.i(138762);
-    e locale = this.uUL;
+    e locale = this.wdA;
     if (locale == null) {
-      d.g.b.k.aPZ("radarManager");
+      d.g.b.k.aVY("radarManager");
     }
     locale.onResume();
     AppMethodBeat.o(138762);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController$AvatarAnimator;", "", "(Lcom/tencent/mm/plugin/radar/ui/RadarViewController;)V", "AvatarTagIndex", "", "delayShowHandler", "com/tencent/mm/plugin/radar/ui/RadarViewController$AvatarAnimator$delayShowHandler$1", "Lcom/tencent/mm/plugin/radar/ui/RadarViewController$AvatarAnimator$delayShowHandler$1;", "inAnimation", "Landroid/view/animation/Animation;", "getInAnimation", "()Landroid/view/animation/Animation;", "isNotXHDPI", "", "uniqueTag", "getUniqueTag", "()I", "calcDelay", "index", "cancel", "", "view", "Landroid/view/View;", "getAnimationTag", "init", "show", "plugin-radar_release"})
+  public final void pf(boolean paramBoolean)
+  {
+    AppMethodBeat.i(138770);
+    if (!paramBoolean)
+    {
+      RadarTipsView localRadarTipsView = getRadarTips();
+      String str = getContext().getString(2131762154);
+      d.g.b.k.g(str, "context.getString(R.stri….radar_tips_location_err)");
+      localRadarTipsView.aqj(str);
+      if ((!this.udt) && (!com.tencent.mm.modelgeo.d.aEM()))
+      {
+        this.udt = true;
+        com.tencent.mm.ui.base.h.a(getContext(), getContext().getString(2131760082), getContext().getString(2131755906), getContext().getString(2131760598), getContext().getString(2131755691), false, (DialogInterface.OnClickListener)new g(this), null);
+      }
+    }
+    AppMethodBeat.o(138770);
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController$AvatarAnimator;", "", "(Lcom/tencent/mm/plugin/radar/ui/RadarViewController;)V", "AvatarTagIndex", "", "delayShowHandler", "com/tencent/mm/plugin/radar/ui/RadarViewController$AvatarAnimator$delayShowHandler$1", "Lcom/tencent/mm/plugin/radar/ui/RadarViewController$AvatarAnimator$delayShowHandler$1;", "inAnimation", "Landroid/view/animation/Animation;", "getInAnimation", "()Landroid/view/animation/Animation;", "isNotXHDPI", "", "uniqueTag", "getUniqueTag", "()I", "calcDelay", "index", "cancel", "", "view", "Landroid/view/View;", "getAnimationTag", "init", "show", "plugin-radar_release"})
   final class a
   {
-    private int uUV;
-    final boolean uUW;
-    private final a uUX;
+    private int wdK;
+    final boolean wdL;
+    private final a wdM;
     
     public a()
     {
       AppMethodBeat.i(138736);
-      g localg = g.uUC;
+      g localg = g.wdr;
       this$1 = this$1.getContext();
       d.g.b.k.g(this$1, "context");
-      this.uUW = g.fH(this$1);
-      this.uUX = new a(this);
+      this.wdL = g.fS(this$1);
+      this.wdM = new a(this);
       AppMethodBeat.o(138736);
     }
     
-    private final int ef(View paramView)
+    private final int eo(View paramView)
     {
       AppMethodBeat.i(138735);
-      Object localObject = paramView.getTag(RadarViewController.a(this.uUY));
+      Object localObject = paramView.getTag(RadarViewController.a(this.wdN));
       paramView = localObject;
       if (!(localObject instanceof Integer)) {
         paramView = null;
@@ -710,24 +710,24 @@ public final class RadarViewController
     {
       AppMethodBeat.i(138734);
       d.g.b.k.h(paramView, "view");
-      int i = ef(paramView);
+      int i = eo(paramView);
       if (i > 0) {
-        this.uUX.removeMessages(i);
+        this.wdM.removeMessages(i);
       }
       paramView.clearAnimation();
       AppMethodBeat.o(138734);
     }
     
-    public final int dft()
+    public final int dta()
     {
-      this.uUV += 1;
-      return this.uUV;
+      this.wdK += 1;
+      return this.wdK;
     }
     
     public final Animation getInAnimation()
     {
       AppMethodBeat.i(138732);
-      Animation localAnimation = AnimationUtils.loadAnimation(this.uUY.getContext(), 2130772117);
+      Animation localAnimation = AnimationUtils.loadAnimation(this.wdN.getContext(), 2130772117);
       d.g.b.k.g(localAnimation, "AnimationUtils.loadAnima…anim.radar_user_turn_out)");
       AppMethodBeat.o(138732);
       return localAnimation;
@@ -737,17 +737,17 @@ public final class RadarViewController
     {
       AppMethodBeat.i(138733);
       d.g.b.k.h(paramView, "view");
-      Message localMessage = this.uUX.obtainMessage();
-      localMessage.what = ef(paramView);
+      Message localMessage = this.wdM.obtainMessage();
+      localMessage.what = eo(paramView);
       localMessage.obj = paramView;
       paramView.setVisibility(4);
-      this.uUX.sendMessageDelayed(localMessage, (paramInt + 1) * 500);
+      this.wdM.sendMessageDelayed(localMessage, (paramInt + 1) * 500);
       AppMethodBeat.o(138733);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/radar/ui/RadarViewController$AvatarAnimator$delayShowHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/ui/RadarViewController$AvatarAnimator$delayShowHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"})
     public static final class a
-      extends ap
+      extends ao
     {
       public final void handleMessage(Message paramMessage)
       {
@@ -765,9 +765,9 @@ public final class RadarViewController
           View localView = (View)paramMessage;
           localView.setVisibility(0);
           localView.clearAnimation();
-          if (!this.uUZ.uUW)
+          if (!this.wdO.wdL)
           {
-            Object localObject = localView.getTag(RadarViewController.b(this.uUZ.uUY));
+            Object localObject = localView.getTag(RadarViewController.b(this.wdO.wdN));
             paramMessage = (Message)localObject;
             if (!(localObject instanceof Animation)) {
               paramMessage = null;
@@ -775,7 +775,7 @@ public final class RadarViewController
             localObject = (Animation)paramMessage;
             paramMessage = (Message)localObject;
             if (localObject == null) {
-              paramMessage = this.uUZ.getInAnimation();
+              paramMessage = this.wdO.getInAnimation();
             }
             localView.startAnimation(paramMessage);
           }
@@ -785,33 +785,33 @@ public final class RadarViewController
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController$RadarSearchAdapter;", "Lcom/tencent/mm/plugin/radar/ui/GridDataAdapter;", "radarGridView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/ui/RadarViewController;Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;Landroid/content/Context;)V", "animSize", "", "animator", "Lcom/tencent/mm/plugin/radar/ui/RadarViewController$AvatarAnimator;", "Lcom/tencent/mm/plugin/radar/ui/RadarViewController;", "count", "getCount", "()I", "hideView", "", "memberReqMap", "Ljava/util/HashMap;", "", "getMemberReqMap", "()Ljava/util/HashMap;", "setMemberReqMap", "(Ljava/util/HashMap;)V", "needAnim", "getNeedAnim", "setNeedAnim", "radarSearchMember", "", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getRadarSearchMember", "()[Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "setRadarSearchMember", "([Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;)V", "[Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "newMembers", "Ljava/util/LinkedList;", "radarSearchMemberList", "getRadarSearchMemberList", "()Ljava/util/LinkedList;", "setRadarSearchMemberList", "(Ljava/util/LinkedList;)V", "viewTable", "Landroid/view/View;", "getViewTable", "setViewTable", "addMemberReq", "", "member", "clearAll", "clearData", "doInit", "getChanged", "position", "getItem", "", "getView", "convertView", "isMemReqContainsSearchMem", "sm", "makePlaceHolderView", "makeView", "radarStatus", "Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarStatus;", "removeMemberReq", "setRadarChatRoomMemberList", "radarChatMember", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "ViewHolder", "plugin-radar_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController$RadarSearchAdapter;", "Lcom/tencent/mm/plugin/radar/ui/GridDataAdapter;", "radarGridView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/ui/RadarViewController;Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;Landroid/content/Context;)V", "animSize", "", "animator", "Lcom/tencent/mm/plugin/radar/ui/RadarViewController$AvatarAnimator;", "Lcom/tencent/mm/plugin/radar/ui/RadarViewController;", "count", "getCount", "()I", "hideView", "", "memberReqMap", "Ljava/util/HashMap;", "", "getMemberReqMap", "()Ljava/util/HashMap;", "setMemberReqMap", "(Ljava/util/HashMap;)V", "needAnim", "getNeedAnim", "setNeedAnim", "radarSearchMember", "", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getRadarSearchMember", "()[Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "setRadarSearchMember", "([Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;)V", "[Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "newMembers", "Ljava/util/LinkedList;", "radarSearchMemberList", "getRadarSearchMemberList", "()Ljava/util/LinkedList;", "setRadarSearchMemberList", "(Ljava/util/LinkedList;)V", "viewTable", "Landroid/view/View;", "getViewTable", "setViewTable", "addMemberReq", "", "member", "clearAll", "clearData", "doInit", "getChanged", "position", "getItem", "", "getView", "convertView", "isMemReqContainsSearchMem", "sm", "makePlaceHolderView", "makeView", "radarStatus", "Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarStatus;", "removeMemberReq", "setRadarChatRoomMemberList", "radarChatMember", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "ViewHolder", "plugin-radar_release"})
   public final class c
     extends a
   {
     private final Context context;
-    cgf[] uVa;
-    HashMap<String, String> uVb;
-    HashMap<String, Integer> uVc;
-    private final RadarViewController.a uVd;
-    private int uVe;
-    HashMap<String, View> uVf;
-    private boolean uVg;
+    cli[] wdP;
+    HashMap<String, String> wdQ;
+    HashMap<String, Integer> wdR;
+    private final RadarViewController.a wdS;
+    private int wdT;
+    HashMap<String, View> wdU;
+    private boolean wdV;
     
     public c(Context paramContext)
     {
       super(localObject);
       AppMethodBeat.i(138743);
       this.context = localObject;
-      this.uVa = new cgf[12];
-      this.uVb = new HashMap();
-      this.uVc = new HashMap();
-      this.uVf = new HashMap();
-      this.uVd = new RadarViewController.a(RadarViewController.this);
+      this.wdP = new cli[12];
+      this.wdQ = new HashMap();
+      this.wdR = new HashMap();
+      this.wdU = new HashMap();
+      this.wdS = new RadarViewController.a(RadarViewController.this);
       AppMethodBeat.o(138743);
     }
     
-    private final View al(View paramView, int paramInt)
+    private final View am(View paramView, int paramInt)
     {
       AppMethodBeat.i(138741);
       View localView = paramView;
@@ -819,10 +819,10 @@ public final class RadarViewController
       {
         localView = View.inflate(this.context, 2131495170, null);
         if (localView == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
-        localView.setTag(RadarViewController.a(RadarViewController.this), Integer.valueOf(this.uVd.dft()));
-        localView.setTag(RadarViewController.b(RadarViewController.this), this.uVd.getInAnimation());
+        localView.setTag(RadarViewController.a(RadarViewController.this), Integer.valueOf(this.wdS.dta()));
+        localView.setTag(RadarViewController.b(RadarViewController.this), this.wdS.getInAnimation());
       }
       paramView = localView.findViewById(2131303693);
       d.g.b.k.g(paramView, "anotherConvertView.findV…ar_result_item_avatar_iv)");
@@ -861,7 +861,7 @@ public final class RadarViewController
       }
     }
     
-    public final void aE(LinkedList<cgf> paramLinkedList)
+    public final void aL(LinkedList<cli> paramLinkedList)
     {
       AppMethodBeat.i(138738);
       if (((paramLinkedList != null) && (paramLinkedList.size() == 0)) || (paramLinkedList == null))
@@ -870,7 +870,7 @@ public final class RadarViewController
         return;
       }
       Object localObject1 = (c)this;
-      int j = ((c)localObject1).uVa.length;
+      int j = ((c)localObject1).wdP.length;
       int i = 0;
       Object localObject2;
       Object localObject3;
@@ -880,11 +880,11 @@ public final class RadarViewController
         localObject2 = paramLinkedList.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (cgf)((Iterator)localObject2).next();
-          localObject4 = g.uUC;
-          localObject4 = g.c((cgf)localObject3);
-          g localg = g.uUC;
-          if (d.g.b.k.g(localObject4, g.c(localObject1.uVa[i]))) {
+          localObject3 = (cli)((Iterator)localObject2).next();
+          localObject4 = g.wdr;
+          localObject4 = g.c((cli)localObject3);
+          g localg = g.wdr;
+          if (d.g.b.k.g(localObject4, g.c(localObject1.wdP[i]))) {
             paramLinkedList.remove(localObject3);
           }
         }
@@ -894,9 +894,9 @@ public final class RadarViewController
       label280:
       if (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (cgf)((Iterator)localObject1).next();
+        localObject2 = (cli)((Iterator)localObject1).next();
         int k = Math.abs((int)System.currentTimeMillis() % 6);
-        int m = this.uVa.length;
+        int m = this.wdP.length;
         i = 0;
         label174:
         int n;
@@ -917,11 +917,11 @@ public final class RadarViewController
           i += 1;
           break label174;
           break;
-          localObject3 = this.uVa[n];
+          localObject3 = this.wdP[n];
           if (localObject3 != null)
           {
-            localObject4 = (CharSequence)((cgf)localObject3).mAQ;
-            if ((localObject4 != null) && (!d.n.n.aC((CharSequence)localObject4))) {
+            localObject4 = (CharSequence)((cli)localObject3).ncR;
+            if ((localObject4 != null) && (!d.n.n.aD((CharSequence)localObject4))) {
               break label339;
             }
             j = 1;
@@ -929,8 +929,8 @@ public final class RadarViewController
             if (j == 0) {
               break label351;
             }
-            localObject3 = (CharSequence)((cgf)localObject3).DfI;
-            if ((localObject3 != null) && (!d.n.n.aC((CharSequence)localObject3))) {
+            localObject3 = (CharSequence)((cli)localObject3).EyO;
+            if ((localObject3 != null) && (!d.n.n.aD((CharSequence)localObject3))) {
               break label345;
             }
             j = 1;
@@ -943,11 +943,11 @@ public final class RadarViewController
             if (j == 0) {
               break label355;
             }
-            this.uVa[n] = localObject2;
-            localObject3 = this.uVc;
-            localObject4 = g.uUC;
+            this.wdP[n] = localObject2;
+            localObject3 = this.wdR;
+            localObject4 = g.wdr;
             d.g.b.k.g(localObject2, "member");
-            ((HashMap)localObject3).put(g.b((cgf)localObject2), Integer.valueOf(0));
+            ((HashMap)localObject3).put(g.b((cli)localObject2), Integer.valueOf(0));
             break;
             j = 0;
             break label249;
@@ -958,47 +958,47 @@ public final class RadarViewController
       }
       if (paramLinkedList.size() > 0)
       {
-        bsd();
-        localObject1 = com.tencent.mm.plugin.radar.b.d.uSl;
+        bzd();
+        localObject1 = com.tencent.mm.plugin.radar.b.d.wba;
         i = paramLinkedList.size();
-        if ((com.tencent.mm.plugin.radar.b.d.dpx == 0) && (i > 0))
+        if ((com.tencent.mm.plugin.radar.b.d.dni == 0) && (i > 0))
         {
-          float f = (float)(com.tencent.mm.plugin.radar.b.d.deZ() - com.tencent.mm.plugin.radar.b.d.uSh) * 1.0F / 1000.0F;
-          ad.d(com.tencent.mm.plugin.radar.b.d.TAG, "FoundFirstFriendTimeSpent %s", new Object[] { Float.valueOf(f) });
-          paramLinkedList = com.tencent.mm.plugin.report.service.h.vKh;
-          localObject1 = z.Jhz;
+          float f = (float)(com.tencent.mm.plugin.radar.b.d.dsG() - com.tencent.mm.plugin.radar.b.d.waW) * 1.0F / 1000.0F;
+          ac.d(com.tencent.mm.plugin.radar.b.d.TAG, "FoundFirstFriendTimeSpent %s", new Object[] { Float.valueOf(f) });
+          paramLinkedList = com.tencent.mm.plugin.report.service.h.wUl;
+          localObject1 = z.KUT;
           localObject1 = String.format("%s", Arrays.copyOf(new Object[] { Float.valueOf(f) }, 1));
           d.g.b.k.g(localObject1, "java.lang.String.format(format, *args)");
           paramLinkedList.kvStat(10682, (String)localObject1);
         }
-        com.tencent.mm.plugin.radar.b.d.dpx += i;
-        com.tencent.mm.plugin.radar.b.d.uSi = i + com.tencent.mm.plugin.radar.b.d.uSi;
+        com.tencent.mm.plugin.radar.b.d.dni += i;
+        com.tencent.mm.plugin.radar.b.d.waX = i + com.tencent.mm.plugin.radar.b.d.waX;
       }
       AppMethodBeat.o(138738);
     }
     
-    public final View ak(View paramView, int paramInt)
+    public final View al(View paramView, int paramInt)
     {
       AppMethodBeat.i(138739);
-      ad.d(RadarViewController.access$getTAG$cp(), "getview RadarStatus%s", new Object[] { RadarViewController.this.getRadarStatus() });
-      cgf localcgf = (cgf)this.uVa[paramInt];
+      ac.d(RadarViewController.access$getTAG$cp(), "getview RadarStatus%s", new Object[] { RadarViewController.this.getRadarStatus() });
+      cli localcli = (cli)this.wdP[paramInt];
       Object localObject1;
       int i;
       label99:
       label105:
       String str;
       Object localObject2;
-      if (localcgf != null)
+      if (localcli != null)
       {
-        localObject1 = (CharSequence)localcgf.mAQ;
-        if ((localObject1 == null) || (d.n.n.aC((CharSequence)localObject1)))
+        localObject1 = (CharSequence)localcli.ncR;
+        if ((localObject1 == null) || (d.n.n.aD((CharSequence)localObject1)))
         {
           i = 1;
           if (i == 0) {
             break label238;
           }
-          localObject1 = (CharSequence)localcgf.DfI;
-          if ((localObject1 != null) && (!d.n.n.aC((CharSequence)localObject1))) {
+          localObject1 = (CharSequence)localcli.EyO;
+          if ((localObject1 != null) && (!d.n.n.aD((CharSequence)localObject1))) {
             break label233;
           }
           i = 1;
@@ -1009,18 +1009,18 @@ public final class RadarViewController
           if (i != 0) {
             break label1631;
           }
-          localObject1 = g.uUC;
-          str = g.b(localcgf);
+          localObject1 = g.wdr;
+          str = g.b(localcli);
           localObject2 = RadarViewController.this.getRadarStatus();
           if (paramView != null) {
             break label1641;
           }
           localObject1 = View.inflate(this.context, 2131495170, null);
           if (localObject1 == null) {
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
-          ((View)localObject1).setTag(RadarViewController.a(RadarViewController.this), Integer.valueOf(this.uVd.dft()));
-          ((View)localObject1).setTag(RadarViewController.b(RadarViewController.this), this.uVd.getInAnimation());
+          ((View)localObject1).setTag(RadarViewController.a(RadarViewController.this), Integer.valueOf(this.wdS.dta()));
+          ((View)localObject1).setTag(RadarViewController.b(RadarViewController.this), this.wdS.getInAnimation());
         }
       }
       for (;;)
@@ -1077,7 +1077,7 @@ public final class RadarViewController
         ((RadarStateView)localObject4).setVisibility(0);
         ((TextView)localObject5).setVisibility(0);
         ((ImageView)localObject6).setVisibility(0);
-        if ((localObject2 == e.e.uSH) || (localObject2 == e.e.uSI))
+        if ((localObject2 == e.e.wbw) || (localObject2 == e.e.wbx))
         {
           ((RadarStateView)localObject4).setVisibility(0);
           ((RadarStateChooseView)localObject7).setVisibility(8);
@@ -1095,7 +1095,7 @@ public final class RadarViewController
         for (;;)
         {
           if ((paramView == null) || (localObject1 != paramView)) {
-            this.uVf.put(str, localObject1);
+            this.wdU.put(str, localObject1);
           }
           localObject2 = ((View)localObject1).getTag();
           if (localObject2 != null) {
@@ -1117,73 +1117,73 @@ public final class RadarViewController
         }
         label661:
         localObject4 = (a)localObject2;
-        ((a)localObject4).uVh.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.b(RadarViewController.this.getContext(), (CharSequence)localcgf.mBV, ((a)localObject4).uVh.getTextSize()));
-        localObject2 = b.a.uSY;
-        b.a.c(((a)localObject4).uVi, str);
+        ((a)localObject4).wdW.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.b(RadarViewController.this.getContext(), (CharSequence)localcli.ndW, ((a)localObject4).wdW.getTextSize()));
+        localObject2 = b.a.wbN;
+        b.a.c(((a)localObject4).wdX, str);
         localObject2 = ((View)localObject1).findViewById(2131303675);
         d.g.b.k.g(localObject2, "view.findViewById(R.id.radar_avatar_container)");
-        ((View)localObject2).setTag(new RadarViewController.d(RadarViewController.this, localcgf));
+        ((View)localObject2).setTag(new RadarViewController.d(RadarViewController.this, localcli));
         boolean bool;
-        if ((RadarViewController.this.getRadarStatus() == e.e.uSH) || (RadarViewController.this.getRadarStatus() == e.e.uSI))
+        if ((RadarViewController.this.getRadarStatus() == e.e.wbw) || (RadarViewController.this.getRadarStatus() == e.e.wbx))
         {
-          ((a)localObject4).uVl.setBackgroundResource(2131233935);
-          paramView = ((a)localObject4).uVj;
-          paramView.uTT = true;
-          paramView.dfk();
-          paramView = ((a)localObject4).uVk;
-          paramView.uTO = false;
+          ((a)localObject4).wea.setBackgroundResource(2131233935);
+          paramView = ((a)localObject4).wdY;
+          paramView.wcI = true;
+          paramView.dsR();
+          paramView = ((a)localObject4).wdZ;
+          paramView.wcD = false;
           paramView.setVisibility(8);
-          localObject2 = e.a(RadarViewController.c(RadarViewController.this), localcgf);
+          localObject2 = e.a(RadarViewController.c(RadarViewController.this), localcli);
           paramView = (View)localObject2;
           if (localObject2 == null)
           {
-            paramView = RadarViewController.e(RadarViewController.this).ali(str);
+            paramView = RadarViewController.e(RadarViewController.this).aqh(str);
             localObject2 = RadarViewController.c(RadarViewController.this);
-            d.g.b.k.h(localcgf, "member");
+            d.g.b.k.h(localcli, "member");
             d.g.b.k.h(paramView, "state");
-            localObject3 = localcgf.mAQ;
+            localObject3 = localcli.ncR;
             d.g.b.k.g(localObject3, "member.UserName");
             ((e)localObject2).b((String)localObject3, paramView);
-            localObject3 = localcgf.DfI;
+            localObject3 = localcli.EyO;
             d.g.b.k.g(localObject3, "member.EncodeUserName");
             ((e)localObject2).b((String)localObject3, paramView);
           }
-          localObject3 = RadarViewController.c(RadarViewController.this).a(localcgf, true);
-          localObject5 = ((a)localObject4).uVj;
+          localObject3 = RadarViewController.c(RadarViewController.this).a(localcli, true);
+          localObject5 = ((a)localObject4).wdY;
           localObject2 = localObject3;
           if (localObject3 == null) {
-            localObject2 = c.e.uRR;
+            localObject2 = c.e.waG;
           }
           d.g.b.k.h(localObject2, "state");
           ((RadarStateView)localObject5).init();
-          ((RadarStateView)localObject5).uTU.removeMessages(0);
+          ((RadarStateView)localObject5).wcJ.removeMessages(0);
           ((RadarStateView)localObject5).clearAnimation();
-          ((RadarStateView)localObject5).uSG = ((c.e)localObject2);
-          ((RadarStateView)localObject5).cEL = false;
-          ((RadarStateView)localObject5).dfk();
-          localObject2 = ((a)localObject4).uVj;
+          ((RadarStateView)localObject5).wbv = ((c.e)localObject2);
+          ((RadarStateView)localObject5).cBT = false;
+          ((RadarStateView)localObject5).dsR();
+          localObject2 = ((a)localObject4).wdY;
           d.g.b.k.h(paramView, "state");
           ((RadarStateView)localObject2).init();
-          ad.d(RadarStateView.TAG, " turnToState : ".concat(String.valueOf(paramView)));
+          ac.d(RadarStateView.TAG, " turnToState : ".concat(String.valueOf(paramView)));
           bool = false;
-          if (((RadarStateView)localObject2).uSG == paramView)
+          if (((RadarStateView)localObject2).wbv == paramView)
           {
-            ((RadarStateView)localObject2).dfk();
+            ((RadarStateView)localObject2).dsR();
             paramView = RadarViewController.c(RadarViewController.this);
-            d.g.b.k.h(localcgf, "member");
-            localObject2 = localcgf.mAQ;
+            d.g.b.k.h(localcli, "member");
+            localObject2 = localcli.ncR;
             d.g.b.k.g(localObject2, "member.UserName");
             paramView.a((String)localObject2, null);
-            localObject2 = localcgf.DfI;
+            localObject2 = localcli.EyO;
             d.g.b.k.g(localObject2, "member.EncodeUserName");
             paramView.a((String)localObject2, null);
             if (paramInt == 0) {
-              this.uVe = this.uVc.size();
+              this.wdT = this.wdR.size();
             }
             paramView = (View)localObject1;
-            if (this.uVc.remove(str) != null)
+            if (this.wdR.remove(str) != null)
             {
-              this.uVd.i(this.uVe - this.uVc.size(), (View)localObject1);
+              this.wdS.i(this.wdT - this.wdR.size(), (View)localObject1);
               paramView = (View)localObject1;
             }
           }
@@ -1197,95 +1197,95 @@ public final class RadarViewController
           {
             if (i != 0)
             {
-              ((RadarStateView)localObject2).dfm();
+              ((RadarStateView)localObject2).dsT();
               bool = true;
             }
-            ad.d(RadarStateView.TAG, " delay : ".concat(String.valueOf(bool)));
-            ((RadarStateView)localObject2).uSG = paramView;
-            if (((RadarStateView)localObject2).uSG == c.e.uRR) {
+            ac.d(RadarStateView.TAG, " delay : ".concat(String.valueOf(bool)));
+            ((RadarStateView)localObject2).wbv = paramView;
+            if (((RadarStateView)localObject2).wbv == c.e.waG) {
               break;
             }
             if (bool) {
               break label1264;
             }
-            ((RadarStateView)localObject2).uTU.sendEmptyMessage(0);
+            ((RadarStateView)localObject2).wcJ.sendEmptyMessage(0);
             break;
           }
           label1264:
-          ((RadarStateView)localObject2).uTU.sendEmptyMessageDelayed(0, RadarStateView.uTW + 20);
+          ((RadarStateView)localObject2).wcJ.sendEmptyMessageDelayed(0, RadarStateView.wcL + 20);
           break;
-          localObject2 = RadarViewController.c(RadarViewController.this).uSq;
-          localObject3 = g.uUC;
-          if (!bt.isNullOrNil((String)((Map)localObject2).get(g.c(localcgf))))
+          localObject2 = RadarViewController.c(RadarViewController.this).wbf;
+          localObject3 = g.wdr;
+          if (!bs.isNullOrNil((String)((Map)localObject2).get(g.c(localcli))))
           {
-            paramView = ((a)localObject4).uVj;
-            paramView.uTT = false;
+            paramView = ((a)localObject4).wdY;
+            paramView.wcI = false;
             paramView.setVisibility(8);
-            paramView = ((a)localObject4).uVk;
-            paramView.uTO = true;
-            paramView.dfk();
+            paramView = ((a)localObject4).wdZ;
+            paramView.wcD = true;
+            paramView.dsR();
             paramView = RadarViewController.c(RadarViewController.this);
-            if (localcgf != null)
+            if (localcli != null)
             {
-              localObject2 = g.uUC;
-              localObject2 = g.b(localcgf);
-              localObject2 = (e.a)paramView.uSu.get(localObject2);
+              localObject2 = g.wdr;
+              localObject2 = g.b(localcli);
+              localObject2 = (e.a)paramView.wbj.get(localObject2);
               paramView = (View)localObject2;
               if (localObject2 == null) {
-                paramView = e.a.uSD;
+                paramView = e.a.wbs;
               }
               localObject2 = paramView;
               if (paramView != null) {}
             }
             else
             {
-              localObject2 = e.a.uSD;
+              localObject2 = e.a.wbs;
             }
-            if (localObject2 != e.a.uSD) {
-              ((a)localObject4).uVl.setBackgroundDrawable(null);
+            if (localObject2 != e.a.wbs) {
+              ((a)localObject4).wea.setBackgroundDrawable(null);
             }
-            paramView = ((a)localObject4).uVk;
+            paramView = ((a)localObject4).wdZ;
             d.g.b.k.h(localObject2, "status");
-            if (paramView.uTP != localObject2)
+            if (paramView.wcE != localObject2)
             {
-              paramView.uTP = ((e.a)localObject2);
-              localObject2 = paramView.uTP;
-              switch (e.fPQ[localObject2.ordinal()])
+              paramView.wcE = ((e.a)localObject2);
+              localObject2 = paramView.wcE;
+              switch (e.fTL[localObject2.ordinal()])
               {
               }
             }
             for (;;)
             {
               if (paramInt == 0) {
-                this.uVe = this.uVc.size();
+                this.wdT = this.wdR.size();
               }
-              localObject2 = this.uVc;
-              paramView = g.uUC;
+              localObject2 = this.wdR;
+              paramView = g.wdr;
               paramView = (View)localObject1;
-              if (((HashMap)localObject2).remove(g.c(localcgf)) == null) {
+              if (((HashMap)localObject2).remove(g.c(localcli)) == null) {
                 break;
               }
-              this.uVd.i(this.uVe - this.uVc.size(), (View)localObject1);
+              this.wdS.i(this.wdT - this.wdR.size(), (View)localObject1);
               paramView = (View)localObject1;
               break;
-              if (paramView.uTO)
+              if (paramView.wcD)
               {
-                paramView.dfk();
-                paramView.cEL = true;
+                paramView.dsR();
+                paramView.cBT = true;
                 paramView.startAnimation(paramView.getSlideOutAnim());
                 continue;
-                if (paramView.uTO)
+                if (paramView.wcD)
                 {
-                  paramView.dfk();
+                  paramView.dsR();
                   paramView.startAnimation(paramView.getSlideInAnim());
                 }
               }
             }
           }
-          paramView = al(paramView, paramInt);
+          paramView = am(paramView, paramInt);
           continue;
           label1631:
-          paramView = al(paramView, paramInt);
+          paramView = am(paramView, paramInt);
         }
         label1641:
         localObject1 = paramView;
@@ -1295,39 +1295,39 @@ public final class RadarViewController
     public final void clearAll()
     {
       AppMethodBeat.i(138740);
-      this.uVc.clear();
-      this.uVf.clear();
-      Iterator localIterator = this.uVf.keySet().iterator();
+      this.wdR.clear();
+      this.wdU.clear();
+      Iterator localIterator = this.wdU.keySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (String)localIterator.next();
-        localObject = (View)this.uVf.get(localObject);
+        localObject = (View)this.wdU.get(localObject);
         if (localObject != null)
         {
-          RadarViewController.a locala = this.uVd;
+          RadarViewController.a locala = this.wdS;
           d.g.b.k.g(localObject, "it");
           locala.cv((View)localObject);
         }
       }
-      bsd();
+      bzd();
       AppMethodBeat.o(138740);
     }
     
-    public final void d(cgf paramcgf)
+    public final void d(cli paramcli)
     {
       AppMethodBeat.i(138742);
-      if (paramcgf != null)
+      if (paramcli != null)
       {
-        localObject = (CharSequence)paramcgf.mAQ;
-        if ((localObject != null) && (!d.n.n.aC((CharSequence)localObject))) {
+        localObject = (CharSequence)paramcli.ncR;
+        if ((localObject != null) && (!d.n.n.aD((CharSequence)localObject))) {
           break label73;
         }
         i = 1;
         if (i == 0) {
           break label83;
         }
-        localObject = (CharSequence)paramcgf.DfI;
-        if ((localObject != null) && (!d.n.n.aC((CharSequence)localObject))) {
+        localObject = (CharSequence)paramcli.EyO;
+        if ((localObject != null) && (!d.n.n.aD((CharSequence)localObject))) {
           break label78;
         }
         i = 1;
@@ -1352,105 +1352,92 @@ public final class RadarViewController
         break label56;
       }
       label88:
-      Object localObject = g.uUC;
-      if (paramcgf == null) {
-        d.g.b.k.fvU();
+      Object localObject = g.wdr;
+      if (paramcli == null) {
+        d.g.b.k.fOy();
       }
-      localObject = g.b(paramcgf);
-      paramcgf = (cgf)localObject;
-      if (RadarViewController.c(RadarViewController.this).uSq.containsKey(localObject))
+      localObject = g.b(paramcli);
+      paramcli = (cli)localObject;
+      if (RadarViewController.c(RadarViewController.this).wbf.containsKey(localObject))
       {
-        paramcgf = RadarViewController.c(RadarViewController.this).uSq.get(localObject);
-        if (paramcgf == null)
+        paramcli = RadarViewController.c(RadarViewController.this).wbf.get(localObject);
+        if (paramcli == null)
         {
-          paramcgf = new v("null cannot be cast to non-null type kotlin.String");
+          paramcli = new v("null cannot be cast to non-null type kotlin.String");
           AppMethodBeat.o(138742);
-          throw paramcgf;
+          throw paramcli;
         }
-        paramcgf = (String)paramcgf;
+        paramcli = (String)paramcli;
       }
-      this.uVb.put(paramcgf, paramcgf);
+      this.wdQ.put(paramcli, paramcli);
       AppMethodBeat.o(138742);
     }
     
     public final int getCount()
     {
-      if (this.uVg) {
+      if (this.wdV) {
         return 0;
       }
-      return this.uVa.length;
+      return this.wdP.length;
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController$RadarSearchAdapter$ViewHolder;", "", "tvMemberName", "Landroid/widget/TextView;", "ivMemberAvatar", "Landroid/widget/ImageView;", "vMemberState", "Lcom/tencent/mm/plugin/radar/ui/RadarStateView;", "vMemberChooseState", "Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;", "ivMemberAvatarMask", "(Lcom/tencent/mm/plugin/radar/ui/RadarViewController$RadarSearchAdapter;Landroid/widget/TextView;Landroid/widget/ImageView;Lcom/tencent/mm/plugin/radar/ui/RadarStateView;Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;Landroid/widget/ImageView;)V", "getIvMemberAvatar$plugin_radar_release", "()Landroid/widget/ImageView;", "setIvMemberAvatar$plugin_radar_release", "(Landroid/widget/ImageView;)V", "getIvMemberAvatarMask$plugin_radar_release", "setIvMemberAvatarMask$plugin_radar_release", "getTvMemberName$plugin_radar_release", "()Landroid/widget/TextView;", "setTvMemberName$plugin_radar_release", "(Landroid/widget/TextView;)V", "getVMemberChooseState$plugin_radar_release", "()Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;", "setVMemberChooseState$plugin_radar_release", "(Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;)V", "getVMemberState$plugin_radar_release", "()Lcom/tencent/mm/plugin/radar/ui/RadarStateView;", "setVMemberState$plugin_radar_release", "(Lcom/tencent/mm/plugin/radar/ui/RadarStateView;)V", "plugin-radar_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController$RadarSearchAdapter$ViewHolder;", "", "tvMemberName", "Landroid/widget/TextView;", "ivMemberAvatar", "Landroid/widget/ImageView;", "vMemberState", "Lcom/tencent/mm/plugin/radar/ui/RadarStateView;", "vMemberChooseState", "Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;", "ivMemberAvatarMask", "(Lcom/tencent/mm/plugin/radar/ui/RadarViewController$RadarSearchAdapter;Landroid/widget/TextView;Landroid/widget/ImageView;Lcom/tencent/mm/plugin/radar/ui/RadarStateView;Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;Landroid/widget/ImageView;)V", "getIvMemberAvatar$plugin_radar_release", "()Landroid/widget/ImageView;", "setIvMemberAvatar$plugin_radar_release", "(Landroid/widget/ImageView;)V", "getIvMemberAvatarMask$plugin_radar_release", "setIvMemberAvatarMask$plugin_radar_release", "getTvMemberName$plugin_radar_release", "()Landroid/widget/TextView;", "setTvMemberName$plugin_radar_release", "(Landroid/widget/TextView;)V", "getVMemberChooseState$plugin_radar_release", "()Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;", "setVMemberChooseState$plugin_radar_release", "(Lcom/tencent/mm/plugin/radar/ui/RadarStateChooseView;)V", "getVMemberState$plugin_radar_release", "()Lcom/tencent/mm/plugin/radar/ui/RadarStateView;", "setVMemberState$plugin_radar_release", "(Lcom/tencent/mm/plugin/radar/ui/RadarStateView;)V", "plugin-radar_release"})
     public final class a
     {
-      TextView uVh;
-      ImageView uVi;
-      RadarStateView uVj;
-      RadarStateChooseView uVk;
-      ImageView uVl;
+      TextView wdW;
+      ImageView wdX;
+      RadarStateView wdY;
+      RadarStateChooseView wdZ;
+      ImageView wea;
       
       public a(ImageView paramImageView1, RadarStateView paramRadarStateView, RadarStateChooseView paramRadarStateChooseView, ImageView paramImageView2)
       {
         AppMethodBeat.i(138737);
-        this.uVh = paramImageView1;
-        this.uVi = paramRadarStateView;
-        this.uVj = paramRadarStateChooseView;
-        this.uVk = paramImageView2;
-        this.uVl = localObject;
+        this.wdW = paramImageView1;
+        this.wdX = paramRadarStateView;
+        this.wdY = paramRadarStateChooseView;
+        this.wdZ = paramImageView2;
+        this.wea = localObject;
         AppMethodBeat.o(138737);
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController$TagItem;", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "(Lcom/tencent/mm/plugin/radar/ui/RadarViewController;Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;)V", "getMember", "()Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "setMember", "(Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;)V", "plugin-radar_release"})
-  public final class d
-  {
-    private cgf uSF;
-    
-    public d()
-    {
-      AppMethodBeat.i(138744);
-      this.uSF = localObject;
-      AppMethodBeat.o(138744);
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/radar/ui/RadarViewController$initView$1", "Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$OnConfirmBtnClickListener;", "onClick", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "onDismissed", "plugin-radar_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/ui/RadarViewController$initView$1", "Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$OnConfirmBtnClickListener;", "onClick", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "onDismissed", "plugin-radar_release"})
   public static final class e
     implements RadarMemberView.b
   {
-    public final void a(cgf paramcgf, c.e parame)
+    public final void a(cli paramcli, c.e parame)
     {
       AppMethodBeat.i(138746);
-      d.g.b.k.h(paramcgf, "member");
-      Object localObject1 = g.uUC;
-      String str = g.b(paramcgf);
+      d.g.b.k.h(paramcli, "member");
+      Object localObject1 = g.wdr;
+      String str = g.b(paramcli);
       if (parame == null)
       {
         AppMethodBeat.o(138746);
         return;
       }
-      switch (h.ciE[parame.ordinal()])
+      switch (h.cfA[parame.ordinal()])
       {
       default: 
         AppMethodBeat.o(138746);
         return;
       case 1: 
-        l = RadarViewController.e(this.uUY).alh(str);
-        RadarViewController.c(this.uUY).uSt.put(Long.valueOf(l), new e.c(paramcgf, parame));
-        RadarViewController.a(this.uUY, str, c.e.uRS);
+        l = RadarViewController.e(this.wdN).aqg(str);
+        RadarViewController.c(this.wdN).wbi.put(Long.valueOf(l), new e.c(paramcli, parame));
+        RadarViewController.a(this.wdN, str, c.e.waH);
         AppMethodBeat.o(138746);
         return;
       }
-      Object localObject2 = RadarViewController.e(this.uUY);
+      Object localObject2 = RadarViewController.e(this.wdN);
       d.g.b.k.h(str, "username");
       localObject1 = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
       d.g.b.k.g(localObject1, "service(IMessengerStorage::class.java)");
-      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject1).apM().aHY(str);
+      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject1).awB().aNt(str);
       d.g.b.k.g(localObject1, "contact");
-      Object localObject3 = (CharSequence)((af)localObject1).getUsername();
-      if ((localObject3 == null) || (d.n.n.aC((CharSequence)localObject3)))
+      Object localObject3 = (CharSequence)((ai)localObject1).getUsername();
+      if ((localObject3 == null) || (d.n.n.aD((CharSequence)localObject3)))
       {
         i = 1;
         label213:
@@ -1459,9 +1446,9 @@ public final class RadarViewController
         }
         localObject1 = str;
         label221:
-        localObject3 = (String)((c)localObject2).uRI.get(localObject1);
+        localObject3 = (String)((c)localObject2).wax.get(localObject1);
         localObject4 = (CharSequence)localObject3;
-        if ((localObject4 != null) && (!d.n.n.aC((CharSequence)localObject4))) {
+        if ((localObject4 != null) && (!d.n.n.aD((CharSequence)localObject4))) {
           break label359;
         }
       }
@@ -1472,23 +1459,23 @@ public final class RadarViewController
         if (i == 0) {
           break label364;
         }
-        ad.e(c.TAG, "Verify Contact username(%s) error, verifyTicket is null", new Object[] { localObject1 });
-        ((c)localObject2).alh((String)localObject1);
+        ac.e(c.TAG, "Verify Contact username(%s) error, verifyTicket is null", new Object[] { localObject1 });
+        ((c)localObject2).aqg((String)localObject1);
         l = -1L;
-        RadarViewController.c(this.uUY).uSt.put(Long.valueOf(l), new e.c(paramcgf, parame));
-        RadarViewController.a(this.uUY, str, c.e.uRS);
+        RadarViewController.c(this.wdN).wbi.put(Long.valueOf(l), new e.c(paramcli, parame));
+        RadarViewController.a(this.wdN, str, c.e.waH);
         break;
         i = 0;
         break label213;
-        localObject1 = ((af)localObject1).getUsername();
+        localObject1 = ((ai)localObject1).getUsername();
         d.g.b.k.g(localObject1, "contact.username");
         break label221;
       }
       label364:
-      Object localObject4 = bl.d.aIR((String)localObject3);
+      Object localObject4 = bo.d.aOn((String)localObject3);
       long l = System.currentTimeMillis();
       localObject2 = new c.a((c)localObject2, (c.d)new c.m((c)localObject2, (String)localObject3, l));
-      localObject3 = ((bl.d)localObject4).eMJ();
+      localObject3 = ((bo.d)localObject4).fco();
       d.g.b.k.g(localObject3, "verify.verifyTicket");
       d.g.b.k.h(localObject3, "verifyTicket");
       if ((localObject1 != null) && (((String)localObject1).length() > 0)) {}
@@ -1496,42 +1483,42 @@ public final class RadarViewController
       {
         Assert.assertTrue("username is null", bool);
         ((c.a)localObject2).onStart();
-        com.tencent.mm.kernel.g.aeS().b((com.tencent.mm.al.n)new o((String)localObject1, (String)localObject3, 48));
+        com.tencent.mm.kernel.g.agi().b((com.tencent.mm.ak.n)new o((String)localObject1, (String)localObject3, 48));
         break;
       }
     }
     
-    public final void b(cgf paramcgf, c.e parame)
+    public final void b(cli paramcli, c.e parame)
     {
       AppMethodBeat.i(138747);
-      if (paramcgf != null) {
-        g localg = g.uUC;
+      if (paramcli != null) {
+        g localg = g.wdr;
       }
-      for (paramcgf = g.b(paramcgf);; paramcgf = null)
+      for (paramcli = g.b(paramcli);; paramcli = null)
       {
-        paramcgf = (View)((Map)RadarViewController.d(this.uUY).uVf).get(paramcgf);
-        if (paramcgf == null) {
+        paramcli = (View)((Map)RadarViewController.d(this.wdN).wdU).get(paramcli);
+        if (paramcli == null) {
           break label96;
         }
-        paramcgf = paramcgf.getTag();
-        if (paramcgf != null) {
+        paramcli = paramcli.getTag();
+        if (paramcli != null) {
           break;
         }
-        paramcgf = new v("null cannot be cast to non-null type com.tencent.mm.plugin.radar.ui.RadarViewController.RadarSearchAdapter.ViewHolder");
+        paramcli = new v("null cannot be cast to non-null type com.tencent.mm.plugin.radar.ui.RadarViewController.RadarSearchAdapter.ViewHolder");
         AppMethodBeat.o(138747);
-        throw paramcgf;
+        throw paramcli;
       }
-      paramcgf = (RadarViewController.c.a)paramcgf;
-      if (parame != c.e.uRR) {
-        paramcgf.uVj.dfl();
+      paramcli = (RadarViewController.c.a)paramcli;
+      if (parame != c.e.waG) {
+        paramcli.wdY.dsS();
       }
       label96:
-      RadarViewController.f(this.uUY).dfu();
+      RadarViewController.f(this.wdN).dtb();
       AppMethodBeat.o(138747);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class f
     implements View.OnClickListener
   {
@@ -1540,9 +1527,9 @@ public final class RadarViewController
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(138748);
-      if ((this.uUY.getRadarStatus() == e.e.uSH) || (this.uUY.getRadarStatus() == e.e.uSI))
+      if ((this.wdN.getRadarStatus() == e.e.wbw) || (this.wdN.getRadarStatus() == e.e.wbx))
       {
-        paramView = this.uUY.getContext();
+        paramView = this.wdN.getContext();
         if (paramView == null)
         {
           paramView = new v("null cannot be cast to non-null type android.app.Activity");
@@ -1553,37 +1540,37 @@ public final class RadarViewController
         AppMethodBeat.o(138748);
         return;
       }
-      paramView = this.uUY;
-      RadarViewController.c localc = RadarViewController.d(this.uUY);
+      paramView = this.wdN;
+      RadarViewController.c localc = RadarViewController.d(this.wdN);
       LinkedList localLinkedList = new LinkedList();
-      int j = localc.uVa.length;
+      int j = localc.wdP.length;
       int i = 0;
       while (i < j)
       {
-        cgf localcgf = localc.uVa[i];
-        if (localcgf != null) {
-          localLinkedList.add(localcgf);
+        cli localcli = localc.wdP[i];
+        if (localcli != null) {
+          localLinkedList.add(localcli);
         }
         i += 1;
       }
       if (RadarViewController.a(paramView, localLinkedList))
       {
-        RadarViewController.f(this.uUY).dfu();
-        RadarViewController.f(this.uUY).setVisibility(0);
-        RadarViewController.c(this.uUY).dfa();
-        RadarViewController.a(this.uUY, e.e.uSI);
+        RadarViewController.f(this.wdN).dtb();
+        RadarViewController.f(this.wdN).setVisibility(0);
+        RadarViewController.c(this.wdN).dsH();
+        RadarViewController.a(this.wdN, e.e.wbx);
       }
       for (;;)
       {
-        RadarViewController.d(this.uUY).bsd();
+        RadarViewController.d(this.wdN).bzd();
         AppMethodBeat.o(138748);
         return;
-        RadarViewController.a(this.uUY, e.e.uSH);
+        RadarViewController.a(this.wdN, e.e.wbw);
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
   static final class g
     implements DialogInterface.OnClickListener
   {
@@ -1592,12 +1579,12 @@ public final class RadarViewController
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
       AppMethodBeat.i(138749);
-      com.tencent.mm.modelgeo.d.cv(this.uUY.getContext());
+      com.tencent.mm.modelgeo.d.cE(this.wdN.getContext());
       AppMethodBeat.o(138749);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/radar/ui/RadarViewController$prepareGrid$1", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "onItemClick", "", "position", "", "view", "Landroid/view/View;", "plugin-radar_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/ui/RadarViewController$prepareGrid$1", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "onItemClick", "", "position", "", "view", "Landroid/view/View;", "plugin-radar_release"})
   public static final class h
     implements RadarSpecialGridView.a
   {
@@ -1606,28 +1593,28 @@ public final class RadarViewController
       int j = 0;
       AppMethodBeat.i(138751);
       d.g.b.k.h(paramView, "view");
-      final cgf localcgf = (cgf)RadarViewController.d(this.uUY).uVa[paramInt];
-      if (localcgf == null)
+      final cli localcli = (cli)RadarViewController.d(this.wdN).wdP[paramInt];
+      if (localcli == null)
       {
         AppMethodBeat.o(138751);
         return;
       }
-      Object localObject1 = this.uUY.getRadarStatus();
+      Object localObject1 = this.wdN.getRadarStatus();
       Object localObject2;
-      switch (h.fPQ[localObject1.ordinal()])
+      switch (h.fTL[localObject1.ordinal()])
       {
       default: 
-        ad.d(RadarViewController.access$getTAG$cp(), "unknow status for grid view %s", new Object[] { this.uUY.getRadarStatus() });
+        ac.d(RadarViewController.access$getTAG$cp(), "unknow status for grid view %s", new Object[] { this.wdN.getRadarStatus() });
         AppMethodBeat.o(138751);
         return;
       case 1: 
       case 2: 
-        localObject1 = g.uUC;
-        localObject1 = g.b(localcgf);
-        if (localcgf != null)
+        localObject1 = g.wdr;
+        localObject1 = g.b(localcli);
+        if (localcli != null)
         {
-          localObject2 = (CharSequence)localcgf.mAQ;
-          if ((localObject2 != null) && (!d.n.n.aC((CharSequence)localObject2))) {
+          localObject2 = (CharSequence)localcli.ncR;
+          if ((localObject2 != null) && (!d.n.n.aD((CharSequence)localObject2))) {
             break label279;
           }
           i = 1;
@@ -1636,8 +1623,8 @@ public final class RadarViewController
           if (i == 0) {
             break label199;
           }
-          localObject2 = (CharSequence)localcgf.DfI;
-          if ((localObject2 != null) && (!d.n.n.aC((CharSequence)localObject2))) {
+          localObject2 = (CharSequence)localcli.EyO;
+          if ((localObject2 != null) && (!d.n.n.aD((CharSequence)localObject2))) {
             break label284;
           }
         }
@@ -1653,9 +1640,9 @@ public final class RadarViewController
           if (paramInt != 0) {
             break;
           }
-          localObject2 = (View)RadarViewController.d(this.uUY).uVf.get(localObject1);
-          localObject1 = e.a(RadarViewController.c(this.uUY), localcgf);
-          if ((localObject2 == null) || (localObject1 == c.e.uRR)) {
+          localObject2 = (View)RadarViewController.d(this.wdN).wdU.get(localObject1);
+          localObject1 = e.a(RadarViewController.c(this.wdN), localcli);
+          if ((localObject2 == null) || (localObject1 == c.e.waG)) {
             break label348;
           }
           localObject2 = ((View)localObject2).getTag();
@@ -1669,30 +1656,30 @@ public final class RadarViewController
           break label158;
         }
         label289:
-        ((RadarViewController.c.a)localObject2).uVj.dfm();
-        localObject2 = new ap();
-        paramView = (Runnable)new a(this, paramView, localcgf, (c.e)localObject1);
-        localObject1 = RadarStateView.uTX;
-        ((ap)localObject2).postDelayed(paramView, RadarStateView.dfn());
+        ((RadarViewController.c.a)localObject2).wdY.dsT();
+        localObject2 = new ao();
+        paramView = (Runnable)new a(this, paramView, localcli, (c.e)localObject1);
+        localObject1 = RadarStateView.wcM;
+        ((ao)localObject2).postDelayed(paramView, RadarStateView.dsU());
         AppMethodBeat.o(138751);
         return;
         label348:
-        RadarViewController.g(this.uUY).a(paramView, localcgf, (c.e)localObject1);
-        RadarViewController.f(this.uUY).dfv();
+        RadarViewController.g(this.wdN).a(paramView, localcli, (c.e)localObject1);
+        RadarViewController.f(this.wdN).dtc();
         AppMethodBeat.o(138751);
         return;
       }
-      if (localcgf != null)
+      if (localcli != null)
       {
-        paramView = (CharSequence)localcgf.mAQ;
-        if ((paramView == null) || (d.n.n.aC(paramView)))
+        paramView = (CharSequence)localcli.ncR;
+        if ((paramView == null) || (d.n.n.aD(paramView)))
         {
           paramInt = 1;
           if (paramInt == 0) {
             break label541;
           }
-          paramView = (CharSequence)localcgf.DfI;
-          if ((paramView != null) && (!d.n.n.aC(paramView))) {
+          paramView = (CharSequence)localcli.EyO;
+          if ((paramView != null) && (!d.n.n.aD(paramView))) {
             break label536;
           }
           paramInt = 1;
@@ -1710,16 +1697,16 @@ public final class RadarViewController
       {
         if (paramInt == 0)
         {
-          localObject2 = RadarViewController.d(this.uUY);
-          if (localcgf == null) {
+          localObject2 = RadarViewController.d(this.wdN);
+          if (localcli == null) {
             break label612;
           }
-          paramView = g.uUC;
-          localObject1 = g.b(localcgf);
+          paramView = g.wdr;
+          localObject1 = g.b(localcli);
           paramView = (View)localObject1;
-          if (RadarViewController.c(((RadarViewController.c)localObject2).uUY).uSq.containsKey(localObject1))
+          if (RadarViewController.c(((RadarViewController.c)localObject2).wdN).wbf.containsKey(localObject1))
           {
-            paramView = RadarViewController.c(((RadarViewController.c)localObject2).uUY).uSq.get(localObject1);
+            paramView = RadarViewController.c(((RadarViewController.c)localObject2).wdN).wbf.get(localObject1);
             if (paramView == null)
             {
               paramView = new v("null cannot be cast to non-null type kotlin.String");
@@ -1736,40 +1723,40 @@ public final class RadarViewController
             }
             paramView = (String)paramView;
           }
-          if (!((RadarViewController.c)localObject2).uVb.containsKey(paramView)) {
+          if (!((RadarViewController.c)localObject2).wdQ.containsKey(paramView)) {
             break label612;
           }
           paramInt = 1;
           if (paramInt != 0) {
             break label617;
           }
-          RadarViewController.d(this.uUY).d(localcgf);
+          RadarViewController.d(this.wdN).d(localcli);
         }
       }
       for (;;)
       {
-        RadarViewController.c(this.uUY).a(localcgf);
-        RadarViewController.dfs();
-        RadarViewController.d(this.uUY).bsd();
+        RadarViewController.c(this.wdN).a(localcli);
+        RadarViewController.dsZ();
+        RadarViewController.d(this.wdN).bzd();
         AppMethodBeat.o(138751);
         return;
         label612:
         paramInt = 0;
         break;
         label617:
-        localObject2 = RadarViewController.d(this.uUY);
-        if (localcgf != null)
+        localObject2 = RadarViewController.d(this.wdN);
+        if (localcli != null)
         {
-          paramView = (CharSequence)localcgf.mAQ;
-          if ((paramView != null) && (!d.n.n.aC(paramView))) {
+          paramView = (CharSequence)localcli.ncR;
+          if ((paramView != null) && (!d.n.n.aD(paramView))) {
             break label772;
           }
           paramInt = 1;
           if (paramInt == 0) {
             break label782;
           }
-          paramView = (CharSequence)localcgf.DfI;
-          if ((paramView != null) && (!d.n.n.aC(paramView))) {
+          paramView = (CharSequence)localcli.EyO;
+          if ((paramView != null) && (!d.n.n.aD(paramView))) {
             break label777;
           }
           paramInt = 1;
@@ -1786,16 +1773,16 @@ public final class RadarViewController
           if (paramInt != 0) {
             break label785;
           }
-          paramView = g.uUC;
-          if (localcgf == null) {
-            d.g.b.k.fvU();
+          paramView = g.wdr;
+          if (localcli == null) {
+            d.g.b.k.fOy();
           }
-          localObject1 = g.b(localcgf);
+          localObject1 = g.b(localcli);
           paramView = (View)localObject1;
-          if (!RadarViewController.c(((RadarViewController.c)localObject2).uUY).uSq.containsKey(localObject1)) {
+          if (!RadarViewController.c(((RadarViewController.c)localObject2).wdN).wbf.containsKey(localObject1)) {
             break label792;
           }
-          paramView = RadarViewController.c(((RadarViewController.c)localObject2).uUY).uSq.get(localObject1);
+          paramView = RadarViewController.c(((RadarViewController.c)localObject2).wdN).wbf.get(localObject1);
           if (paramView != null) {
             break label787;
           }
@@ -1812,27 +1799,27 @@ public final class RadarViewController
         label787:
         paramView = (String)paramView;
         label792:
-        ((RadarViewController.c)localObject2).uVb.remove(paramView);
+        ((RadarViewController.c)localObject2).wdQ.remove(paramView);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
-      a(RadarViewController.h paramh, View paramView, cgf paramcgf, c.e parame) {}
+      a(RadarViewController.h paramh, View paramView, cli paramcli, c.e parame) {}
       
       public final void run()
       {
         AppMethodBeat.i(138750);
-        RadarViewController.g(this.uVo.uUY).a(paramView, localcgf, this.uVp);
-        RadarViewController.f(this.uVo.uUY).dfv();
+        RadarViewController.g(this.wed.wdN).a(paramView, localcli, this.wee);
+        RadarViewController.f(this.wed.wdN).dtc();
         AppMethodBeat.o(138750);
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class i
     extends d.g.b.l
     implements d.g.a.a<RadarWaveView>

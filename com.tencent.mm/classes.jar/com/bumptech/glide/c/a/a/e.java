@@ -14,38 +14,38 @@ import java.util.List;
 
 final class e
 {
-  private static final a aCW;
-  private final b aCQ;
-  private final ContentResolver aCR;
-  private final a aCX;
-  private final d aCY;
-  private final List<f> aCZ;
+  private static final a aDN;
+  private final b aDH;
+  private final ContentResolver aDI;
+  private final a aDO;
+  private final d aDP;
+  private final List<f> aDQ;
   
   static
   {
     AppMethodBeat.i(76913);
-    aCW = new a();
+    aDN = new a();
     AppMethodBeat.o(76913);
   }
   
   private e(List<f> paramList, a parama, d paramd, b paramb, ContentResolver paramContentResolver)
   {
-    this.aCX = parama;
-    this.aCY = paramd;
-    this.aCQ = paramb;
-    this.aCR = paramContentResolver;
-    this.aCZ = paramList;
+    this.aDO = parama;
+    this.aDP = paramd;
+    this.aDH = paramb;
+    this.aDI = paramContentResolver;
+    this.aDQ = paramList;
   }
   
   e(List<f> paramList, d paramd, b paramb, ContentResolver paramContentResolver)
   {
-    this(paramList, aCW, paramd, paramb, paramContentResolver);
+    this(paramList, aDN, paramd, paramb, paramContentResolver);
   }
   
   private String k(Uri paramUri)
   {
     AppMethodBeat.i(76912);
-    paramUri = this.aCY.h(paramUri);
+    paramUri = this.aDP.h(paramUri);
     if (paramUri != null) {}
     try
     {
@@ -74,7 +74,7 @@ final class e
     //   5: aconst_null
     //   6: astore_3
     //   7: aload_0
-    //   8: getfield 46	com/bumptech/glide/c/a/a/e:aCR	Landroid/content/ContentResolver;
+    //   8: getfield 46	com/bumptech/glide/c/a/a/e:aDI	Landroid/content/ContentResolver;
     //   11: aload_1
     //   12: invokevirtual 88	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
     //   15: astore 4
@@ -83,10 +83,10 @@ final class e
     //   20: aload_3
     //   21: astore 4
     //   23: aload_0
-    //   24: getfield 48	com/bumptech/glide/c/a/a/e:aCZ	Ljava/util/List;
+    //   24: getfield 48	com/bumptech/glide/c/a/a/e:aDQ	Ljava/util/List;
     //   27: aload_3
     //   28: aload_0
-    //   29: getfield 44	com/bumptech/glide/c/a/a/e:aCQ	Lcom/bumptech/glide/c/b/a/b;
+    //   29: getfield 44	com/bumptech/glide/c/a/a/e:aDH	Lcom/bumptech/glide/c/b/a/b;
     //   32: invokestatic 94	com/bumptech/glide/c/g:b	(Ljava/util/List;Ljava/io/InputStream;Lcom/bumptech/glide/c/b/a/b;)I
     //   35: istore_2
     //   36: aload_3
@@ -199,7 +199,7 @@ final class e
     localObject = Uri.fromFile((File)localObject);
     try
     {
-      InputStream localInputStream = this.aCR.openInputStream((Uri)localObject);
+      InputStream localInputStream = this.aDI.openInputStream((Uri)localObject);
       AppMethodBeat.o(76911);
       return localInputStream;
     }
@@ -213,7 +213,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.a.a.e
  * JD-Core Version:    0.7.0.1
  */

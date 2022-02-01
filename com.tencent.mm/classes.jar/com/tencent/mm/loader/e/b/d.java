@@ -2,22 +2,22 @@ package com.tencent.mm.loader.e.b;
 
 import android.os.Looper;
 import com.tencent.mm.loader.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.sdk.platformtools.h;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "R", "", "weakHolder", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "(Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;)V", "getWeakHolder", "()Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "setWeakHolder", "onResourceReady", "", "resource", "waitUI", "Lcom/tencent/mm/loader/impr/target/IWaitUI;", "(Ljava/lang/Object;Lcom/tencent/mm/loader/impr/target/IWaitUI;)V", "onResourceReadyUI", "", "viewWeakHolder", "(Ljava/lang/Object;Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;)Z", "uniqueCode", "", "updateBackgroundUI", "request", "Lcom/tencent/mm/loader/Reaper;", "updateDefaultDrawable", "Companion", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "R", "", "weakHolder", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "(Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;)V", "getWeakHolder", "()Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "setWeakHolder", "onResourceReady", "", "resource", "waitUI", "Lcom/tencent/mm/loader/impr/target/IWaitUI;", "(Ljava/lang/Object;Lcom/tencent/mm/loader/impr/target/IWaitUI;)V", "onResourceReadyUI", "", "viewWeakHolder", "(Ljava/lang/Object;Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;)Z", "uniqueCode", "", "updateBackgroundUI", "request", "Lcom/tencent/mm/loader/Reaper;", "updateDefaultDrawable", "Companion", "libimageloader_release"})
 public abstract class d<R>
 {
   private static final String TAG = "MicroMsg.Loader.ResourceShowTarget";
-  public static final a gkg = new a((byte)0);
-  public g<?> gkf;
+  public static final d.a gKT = new d.a((byte)0);
+  public g<?> gKS;
   
   public d(g<?> paramg)
   {
-    this.gkf = paramg;
+    this.gKS = paramg;
   }
   
   public abstract void a(g<?> paramg, f<?, ?> paramf);
@@ -26,27 +26,24 @@ public abstract class d<R>
   {
     k.h(paramb, "waitUI");
     if ((h.IS_FLAVOR_RED) || (h.IS_FLAVOR_PURPLE)) {
-      ad.i(TAG, "onResourceReady " + paramR + " and this " + this);
+      ac.i(TAG, "onResourceReady " + paramR + " and this " + this);
     }
     Thread localThread = Thread.currentThread();
     Looper localLooper = Looper.getMainLooper();
     k.g(localLooper, "Looper.getMainLooper()");
     if (localThread == localLooper.getThread())
     {
-      paramb.dB(a(paramR, this.gkf));
+      paramb.dW(a(paramR, this.gKS));
       return;
     }
-    aq.f((Runnable)new b(this, paramb, paramR));
+    ap.f((Runnable)new b(this, paramb, paramR));
   }
   
   protected abstract boolean a(R paramR, g<?> paramg);
   
-  public abstract int aht();
+  public abstract int aov();
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/impr/target/ResourceShowTarget$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "libimageloader_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "R", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "R", "run"})
   static final class b
     implements Runnable
   {
@@ -54,13 +51,13 @@ public abstract class d<R>
     
     public final void run()
     {
-      paramb.dB(this.gkh.a(paramR, this.gkh.gkf));
+      paramb.dW(this.gKU.a(paramR, this.gKU.gKS));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.e.b.d
  * JD-Core Version:    0.7.0.1
  */

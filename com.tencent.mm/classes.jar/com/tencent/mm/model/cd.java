@@ -1,15 +1,15 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.b;
-import com.tencent.mm.al.f.c;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.b;
+import com.tencent.mm.ak.f.c;
+import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ae;
 import java.util.Map;
 
 public final class cd
@@ -18,23 +18,23 @@ public final class cd
   public final f.b b(f.a parama)
   {
     AppMethodBeat.i(20397);
-    parama = parama.fTo;
+    parama = parama.fXi;
     if (parama == null)
     {
-      ad.e("MicroMsg.SysNoticeMsgExtension", "onPreAddMessage cmdAM is null");
+      ac.e("MicroMsg.SysNoticeMsgExtension", "onPreAddMessage cmdAM is null");
       AppMethodBeat.o(20397);
       return null;
     }
     try
     {
-      parama = bw.K("<root>" + parama.Cxz + "</root>", "root");
+      parama = bv.L("<root>" + parama.DPV + "</root>", "root");
       int i = Integer.valueOf((String)parama.get(".root.newcount")).intValue();
       int j = Integer.valueOf((String)parama.get(".root.version")).intValue();
-      az.arV();
-      parama = c.afk();
-      if (j == bt.l((Integer)parama.get(12305, null)))
+      az.ayM();
+      parama = c.agA();
+      if (j == bs.m((Integer)parama.get(12305, null)))
       {
-        ad.i("MicroMsg.SysNoticeMsgExtension", "ignore new sys notice count, same version");
+        ac.i("MicroMsg.SysNoticeMsgExtension", "ignore new sys notice count, same version");
         AppMethodBeat.o(20397);
         return null;
       }
@@ -45,7 +45,7 @@ public final class cd
     {
       for (;;)
       {
-        ad.e("MicroMsg.SysNoticeMsgExtension", "exception:%s", new Object[] { bt.m(parama) });
+        ac.e("MicroMsg.SysNoticeMsgExtension", "exception:%s", new Object[] { bs.m(parama) });
       }
     }
     AppMethodBeat.o(20397);

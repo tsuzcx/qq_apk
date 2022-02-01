@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.wallet_core.d;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.ai;
-import com.tencent.mm.protocal.protobuf.bzi;
+import com.tencent.mm.protocal.protobuf.cee;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class j
   extends com.tencent.mm.sdk.e.j<ai>
@@ -26,12 +26,12 @@ public final class j
     this.db = parame;
   }
   
-  public final ai RC(int paramInt)
+  public final ai TL(int paramInt)
   {
     AppMethodBeat.i(70625);
     Object localObject = "select * from WalletRegionGreyAreaList where wallet_region = ".concat(String.valueOf(paramInt));
     Cursor localCursor = this.db.a((String)localObject, null, 2);
-    ad.i("MicroMsg.WalletRegionGreyItemStg", "getWalletRegionGreyItem ".concat(String.valueOf(localObject)));
+    ac.i("MicroMsg.WalletRegionGreyItemStg", "getWalletRegionGreyItem ".concat(String.valueOf(localObject)));
     if (localCursor == null)
     {
       localObject = new ai();
@@ -44,36 +44,36 @@ public final class j
       localObject = new ai();
       ((ai)localObject).convertFrom(localCursor);
     }
-    ad.i("MicroMsg.WalletRegionGreyItemStg", "get grey item ");
+    ac.i("MicroMsg.WalletRegionGreyItemStg", "get grey item ");
     localCursor.close();
     AppMethodBeat.o(70625);
     return localObject;
   }
   
-  public final void a(int paramInt, bzi parambzi)
+  public final void a(int paramInt, cee paramcee)
   {
     AppMethodBeat.i(70624);
     ai localai = new ai();
     localai.field_wallet_region = paramInt;
     try
     {
-      localai.field_wallet_grey_item_buf = parambzi.toByteArray();
+      localai.field_wallet_grey_item_buf = paramcee.toByteArray();
       super.replace(localai);
       AppMethodBeat.o(70624);
       return;
     }
-    catch (Exception parambzi)
+    catch (Exception paramcee)
     {
       for (;;)
       {
-        ad.e("MicroMsg.WalletRegionGreyItemStg", "setWalletRegionGreyItem error " + parambzi.getMessage());
+        ac.e("MicroMsg.WalletRegionGreyItemStg", "setWalletRegionGreyItem error " + paramcee.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.j
  * JD-Core Version:    0.7.0.1
  */

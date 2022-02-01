@@ -5,11 +5,11 @@ import java.util.Arrays;
 
 public final class e
 {
-  public int cTj = 2;
-  public byte[] cTk;
-  public String cTr;
-  public long cTu = 0L;
-  public boolean cTv = false;
+  public int cQG = 2;
+  public byte[] cQH;
+  public String cQO;
+  public long cQR = 0L;
+  public boolean cQS = false;
   public int channels = 2;
   public int sampleRate = 44100;
   
@@ -18,11 +18,11 @@ public final class e
     AppMethodBeat.i(136726);
     this.sampleRate = 44100;
     this.channels = 44100;
-    this.cTj = 2;
-    this.cTr = "";
-    this.cTu = 0L;
-    if (this.cTk != null) {
-      Arrays.fill(this.cTk, 0, this.cTk.length, (byte)0);
+    this.cQG = 2;
+    this.cQO = "";
+    this.cQR = 0L;
+    if (this.cQH != null) {
+      Arrays.fill(this.cQH, 0, this.cQH.length, (byte)0);
     }
     AppMethodBeat.o(136726);
   }

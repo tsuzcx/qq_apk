@@ -10,43 +10,43 @@ import java.util.Queue;
 
 public final class b
 {
-  private HashSet<String> rqi;
-  public c rqj;
+  private HashSet<String> szc;
+  public c szd;
   
   public b()
   {
     AppMethodBeat.i(131720);
-    this.rqj = new c(' ');
-    this.rqi = new HashSet();
+    this.szd = new c(' ');
+    this.szc = new HashSet();
     AppMethodBeat.o(131720);
   }
   
-  public final void abh(String paramString)
+  public final void afZ(String paramString)
   {
     AppMethodBeat.i(131721);
-    if (!this.rqi.add(paramString))
+    if (!this.szc.add(paramString))
     {
       AppMethodBeat.o(131721);
       return;
     }
-    c localc = this.rqj;
+    c localc = this.szd;
     char[] arrayOfChar = paramString.toLowerCase().toCharArray();
     int i = 0;
     paramString = localc;
     while (i < arrayOfChar.length)
     {
       int j = arrayOfChar[i] - 'a';
-      if (paramString.rqk[j] == null) {
-        paramString.rqk[j] = new c(arrayOfChar[i]);
+      if (paramString.sze[j] == null) {
+        paramString.sze[j] = new c(arrayOfChar[i]);
       }
-      paramString = paramString.rqk[j];
+      paramString = paramString.sze[j];
       i += 1;
     }
-    paramString.rqh = true;
+    paramString.szb = true;
     AppMethodBeat.o(131721);
   }
   
-  public final List<List<String>> abi(String paramString)
+  public final List<List<String>> aga(String paramString)
   {
     AppMethodBeat.i(131722);
     ArrayDeque localArrayDeque = new ArrayDeque();
@@ -60,33 +60,33 @@ public final class b
         break;
       }
       int i = locala.end;
-      Object localObject1 = this.rqj;
+      Object localObject1 = this.szd;
       Object localObject2;
       while (i < arrayOfChar.length)
       {
         int j = arrayOfChar[i] - 'a';
-        if (localObject1.rqk[j] == null) {
+        if (localObject1.sze[j] == null) {
           break;
         }
-        localObject1 = localObject1.rqk[j];
-        if ((((c)localObject1).rqh) || (i == arrayOfChar.length - 1))
+        localObject1 = localObject1.sze[j];
+        if ((((c)localObject1).szb) || (i == arrayOfChar.length - 1))
         {
-          if (locala.buB == null) {
-            locala.buB = new ArrayList();
+          if (locala.bsA == null) {
+            locala.bsA = new ArrayList();
           }
           localObject2 = new a(locala.end, i + 1, locala);
-          locala.buB.add(localObject2);
+          locala.bsA.add(localObject2);
           if (((a)localObject2).end == arrayOfChar.length) {
-            ((a)localObject2).rqh = true;
+            ((a)localObject2).szb = true;
           }
           localArrayDeque.offer(localObject2);
         }
         i += 1;
       }
-      if (locala.rqh)
+      if (locala.szb)
       {
         localObject2 = new ArrayList();
-        for (localObject1 = locala; localObject1 != null; localObject1 = ((a)localObject1).rqg) {
+        for (localObject1 = locala; localObject1 != null; localObject1 = ((a)localObject1).sza) {
           if (((a)localObject1).end > ((a)localObject1).start) {
             ((List)localObject2).add(paramString.substring(((a)localObject1).start, ((a)localObject1).end));
           }
@@ -101,7 +101,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.b.b
  * JD-Core Version:    0.7.0.1
  */

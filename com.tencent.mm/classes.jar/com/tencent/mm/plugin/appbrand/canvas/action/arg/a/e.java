@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.a;
 
 import android.graphics.Paint.Style;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
+import com.tencent.mm.plugin.appbrand.z.g;
 
 public final class e
   extends b
 {
-  private static e iZI;
+  private static e jzV;
   
   static
   {
     AppMethodBeat.i(145323);
-    iZI = new e();
+    jzV = new e();
     AppMethodBeat.o(145323);
   }
   
-  public static e aSV()
+  public static e aZU()
   {
-    return iZI;
+    return jzV;
   }
   
   public final void a(a parama)
@@ -29,25 +29,25 @@ public final class e
     parama.release();
     parama.setStyle(Paint.Style.FILL);
     parama.setAntiAlias(true);
-    parama.setStrokeWidth(g.um(1));
+    parama.setStrokeWidth(g.ve(1));
     super.a(parama);
     AppMethodBeat.o(145321);
   }
   
-  public final a aSS()
+  public final a aZR()
   {
     AppMethodBeat.i(145322);
     a locala = new a();
     locala.setStyle(Paint.Style.FILL);
     locala.setAntiAlias(true);
-    locala.setStrokeWidth(g.um(1));
+    locala.setStrokeWidth(g.ve(1));
     AppMethodBeat.o(145322);
     return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -10,10 +10,10 @@ import org.apache.commons.b.c.a;
 
 public final class f
 {
-  private static final String Kll = "\"";
-  private static final char[] Klm = { 44, 34, 13, 10 };
+  private static final String LYU = "\"";
+  private static final char[] LYV = { 44, 34, 13, 10 };
   
-  private static String H(char paramChar)
+  private static String F(char paramChar)
   {
     AppMethodBeat.i(40740);
     String str = Integer.toHexString(paramChar).toUpperCase(Locale.ENGLISH);
@@ -35,23 +35,23 @@ public final class f
     {
       int i = paramString.charAt(j);
       if (i > 4095) {
-        paramWriter.write("\\u" + H(i));
+        paramWriter.write("\\u" + F(i));
       }
       for (;;)
       {
         j += 1;
         break;
         if (i > 255) {
-          paramWriter.write("\\u0" + H(i));
+          paramWriter.write("\\u0" + F(i));
         } else if (i > 127) {
-          paramWriter.write("\\u00" + H(i));
+          paramWriter.write("\\u00" + F(i));
         } else if (i < 32) {
           switch (i)
           {
           case 11: 
           default: 
             if (i > 15) {
-              paramWriter.write("\\u00" + H(i));
+              paramWriter.write("\\u00" + F(i));
             }
             break;
           case 8: 
@@ -74,7 +74,7 @@ public final class f
             paramWriter.write(92);
             paramWriter.write(114);
             continue;
-            paramWriter.write("\\u000" + H(i));
+            paramWriter.write("\\u000" + F(i));
             break;
           }
         } else {
@@ -105,15 +105,15 @@ public final class f
     AppMethodBeat.o(40739);
   }
   
-  public static String aRq(String paramString)
+  public static String aXq(String paramString)
   {
     AppMethodBeat.i(40737);
-    paramString = aRr(paramString);
+    paramString = aXr(paramString);
     AppMethodBeat.o(40737);
     return paramString;
   }
   
-  private static String aRr(String paramString)
+  private static String aXr(String paramString)
   {
     AppMethodBeat.i(40738);
     if (paramString == null)
@@ -137,7 +137,7 @@ public final class f
     }
   }
   
-  private static String aRs(String paramString)
+  private static String aXs(String paramString)
   {
     AppMethodBeat.i(40741);
     if (paramString == null)
@@ -161,15 +161,15 @@ public final class f
     }
   }
   
-  public static String aRt(String paramString)
+  public static String aXt(String paramString)
   {
     AppMethodBeat.i(40743);
-    paramString = aRs(paramString);
+    paramString = aXs(paramString);
     AppMethodBeat.o(40743);
     return paramString;
   }
   
-  public static String aRu(String paramString)
+  public static String aXu(String paramString)
   {
     AppMethodBeat.i(40744);
     if (paramString == null)
@@ -177,7 +177,7 @@ public final class f
       AppMethodBeat.o(40744);
       return null;
     }
-    paramString = c.Klb.unescape(paramString);
+    paramString = c.LYK.unescape(paramString);
     AppMethodBeat.o(40744);
     return paramString;
   }
@@ -200,7 +200,7 @@ public final class f
       char c = paramString.charAt(k);
       if (j != 0)
       {
-        locala.I(c);
+        locala.G(c);
         if (locala.length() != 4) {}
       }
       for (;;)
@@ -208,7 +208,7 @@ public final class f
         try
         {
           paramWriter.write((char)Integer.parseInt(locala.toString(), 16));
-          locala.fMV();
+          locala.gfL();
           j = 0;
           i = 0;
           k += 1;
@@ -278,7 +278,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.apache.commons.b.f
  * JD-Core Version:    0.7.0.1
  */

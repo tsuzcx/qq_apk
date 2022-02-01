@@ -3,7 +3,7 @@ package com.tencent.mm.ui.contact;
 public abstract class o
   extends p
 {
-  public a GVR;
+  public a Iwf;
   
   public o(n paramn, boolean paramBoolean, int paramInt)
   {
@@ -12,15 +12,15 @@ public abstract class o
   
   public void a(a parama)
   {
-    this.GVR = parama;
+    this.Iwf = parama;
   }
   
-  public int aLn(String paramString)
+  public int aQR(String paramString)
   {
     return -1;
   }
   
-  public int aLs(String paramString)
+  public int aQW(String paramString)
   {
     return -1;
   }
@@ -29,12 +29,12 @@ public abstract class o
   
   public abstract void clearData();
   
-  public boolean fbx()
+  public boolean fro()
   {
     return false;
   }
   
-  public String fby()
+  public String frp()
   {
     return null;
   }
@@ -46,7 +46,7 @@ public abstract class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.o
  * JD-Core Version:    0.7.0.1
  */

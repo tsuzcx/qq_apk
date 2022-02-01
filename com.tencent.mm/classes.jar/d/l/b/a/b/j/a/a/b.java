@@ -6,11 +6,11 @@ import d.l.b.a.b.m.av;
 public abstract interface b
   extends at
 {
-  public abstract av fIX();
+  public abstract av gbA();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.a.a.b
  * JD-Core Version:    0.7.0.1
  */

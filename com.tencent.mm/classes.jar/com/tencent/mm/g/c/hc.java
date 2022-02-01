@@ -7,26 +7,90 @@ import com.tencent.mm.sdk.e.c;
 public abstract class hc
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eSr = "msgState".hashCode();
-  private static final int elb = "content".hashCode();
-  private static final int fgU = "shareKeyHash".hashCode();
-  private static final int fgV = "btnState".hashCode();
-  private static final int fgW = "contentColor".hashCode();
-  private static final int fgX = "updatePeroid".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS WxaAttributesTableAppIdIndex ON WxaAttributesTable(appId)" };
+  private static final int eQt;
+  private static final int eRW = "reserved".hashCode();
+  private static final int enO;
+  private static final int eoc;
+  private static final int eoj = "usernameHash".hashCode();
+  private static final int eok = "username".hashCode();
+  private static final int etG;
+  private static final int ets;
+  private static final int fjQ;
+  private static final int fjR;
+  private static final int fjS;
+  private static final int fjT;
+  private static final int fjU;
+  private static final int fjV;
+  private static final int fjW;
+  private static final int fjX;
+  private static final int fjY;
+  private static final int fjZ;
+  private static final int fka = "syncTimeSecond".hashCode();
+  private static final int fkb = "syncVersion".hashCode();
+  private static final int fkc = "bizMenu".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eSo = true;
-  private boolean ekE = true;
-  private boolean fgQ = true;
-  private boolean fgR = true;
-  private boolean fgS = true;
-  private boolean fgT = true;
-  public int field_btnState;
-  public String field_content;
-  public String field_contentColor;
-  public int field_msgState;
-  public int field_shareKeyHash;
-  public int field_updatePeroid;
+  private boolean eQo = true;
+  private boolean eRQ = true;
+  private boolean enL = true;
+  private boolean enx = true;
+  private boolean eog = true;
+  private boolean eoh = true;
+  private boolean etC = true;
+  private boolean ete = true;
+  public String field_appId;
+  public String field_appInfo;
+  public int field_appOpt;
+  public String field_bigHeadURL;
+  public String field_bindWxaInfo;
+  public String field_bizMenu;
+  public String field_brandIconURL;
+  public String field_dynamicInfo;
+  public String field_nickname;
+  public String field_passThroughInfo;
+  public String field_registerSource;
+  public String field_reserved;
+  public String field_roundedSquareIconURL;
+  public String field_shortNickname;
+  public String field_signature;
+  public String field_smallHeadURL;
+  public long field_syncTimeSecond;
+  public String field_syncVersion;
+  public String field_username;
+  public int field_usernameHash;
+  public String field_versionInfo;
+  private boolean fjD = true;
+  private boolean fjE = true;
+  private boolean fjF = true;
+  private boolean fjG = true;
+  private boolean fjH = true;
+  private boolean fjI = true;
+  private boolean fjJ = true;
+  private boolean fjK = true;
+  private boolean fjL = true;
+  private boolean fjM = true;
+  private boolean fjN = true;
+  private boolean fjO = true;
+  private boolean fjP = true;
+  
+  static
+  {
+    enO = "appId".hashCode();
+    etG = "nickname".hashCode();
+    fjQ = "shortNickname".hashCode();
+    ets = "brandIconURL".hashCode();
+    fjR = "roundedSquareIconURL".hashCode();
+    fjS = "bigHeadURL".hashCode();
+    fjT = "smallHeadURL".hashCode();
+    eoc = "signature".hashCode();
+    fjU = "appOpt".hashCode();
+    fjV = "registerSource".hashCode();
+    fjW = "appInfo".hashCode();
+    eQt = "versionInfo".hashCode();
+    fjX = "passThroughInfo".hashCode();
+    fjY = "bindWxaInfo".hashCode();
+    fjZ = "dynamicInfo".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,11 +105,11 @@ public abstract class hc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fgU != k) {
+      if (eoj != k) {
         break label65;
       }
-      this.field_shareKeyHash = paramCursor.getInt(i);
-      this.fgQ = true;
+      this.field_usernameHash = paramCursor.getInt(i);
+      this.eog = true;
     }
     for (;;)
     {
@@ -53,16 +117,46 @@ public abstract class hc
       break label20;
       break;
       label65:
-      if (fgV == k) {
-        this.field_btnState = paramCursor.getInt(i);
-      } else if (eSr == k) {
-        this.field_msgState = paramCursor.getInt(i);
-      } else if (elb == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (fgW == k) {
-        this.field_contentColor = paramCursor.getString(i);
-      } else if (fgX == k) {
-        this.field_updatePeroid = paramCursor.getInt(i);
+      if (eok == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (enO == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (etG == k) {
+        this.field_nickname = paramCursor.getString(i);
+      } else if (fjQ == k) {
+        this.field_shortNickname = paramCursor.getString(i);
+      } else if (ets == k) {
+        this.field_brandIconURL = paramCursor.getString(i);
+      } else if (fjR == k) {
+        this.field_roundedSquareIconURL = paramCursor.getString(i);
+      } else if (fjS == k) {
+        this.field_bigHeadURL = paramCursor.getString(i);
+      } else if (fjT == k) {
+        this.field_smallHeadURL = paramCursor.getString(i);
+      } else if (eoc == k) {
+        this.field_signature = paramCursor.getString(i);
+      } else if (fjU == k) {
+        this.field_appOpt = paramCursor.getInt(i);
+      } else if (fjV == k) {
+        this.field_registerSource = paramCursor.getString(i);
+      } else if (fjW == k) {
+        this.field_appInfo = paramCursor.getString(i);
+      } else if (eQt == k) {
+        this.field_versionInfo = paramCursor.getString(i);
+      } else if (fjX == k) {
+        this.field_passThroughInfo = paramCursor.getString(i);
+      } else if (fjY == k) {
+        this.field_bindWxaInfo = paramCursor.getString(i);
+      } else if (fjZ == k) {
+        this.field_dynamicInfo = paramCursor.getString(i);
+      } else if (eRW == k) {
+        this.field_reserved = paramCursor.getString(i);
+      } else if (fka == k) {
+        this.field_syncTimeSecond = paramCursor.getLong(i);
+      } else if (fkb == k) {
+        this.field_syncVersion = paramCursor.getString(i);
+      } else if (fkc == k) {
+        this.field_bizMenu = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -72,23 +166,68 @@ public abstract class hc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fgQ) {
-      localContentValues.put("shareKeyHash", Integer.valueOf(this.field_shareKeyHash));
+    if (this.eog) {
+      localContentValues.put("usernameHash", Integer.valueOf(this.field_usernameHash));
     }
-    if (this.fgR) {
-      localContentValues.put("btnState", Integer.valueOf(this.field_btnState));
+    if (this.eoh) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.eSo) {
-      localContentValues.put("msgState", Integer.valueOf(this.field_msgState));
+    if (this.enx) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.ekE) {
-      localContentValues.put("content", this.field_content);
+    if (this.etC) {
+      localContentValues.put("nickname", this.field_nickname);
     }
-    if (this.fgS) {
-      localContentValues.put("contentColor", this.field_contentColor);
+    if (this.fjD) {
+      localContentValues.put("shortNickname", this.field_shortNickname);
     }
-    if (this.fgT) {
-      localContentValues.put("updatePeroid", Integer.valueOf(this.field_updatePeroid));
+    if (this.ete) {
+      localContentValues.put("brandIconURL", this.field_brandIconURL);
+    }
+    if (this.fjE) {
+      localContentValues.put("roundedSquareIconURL", this.field_roundedSquareIconURL);
+    }
+    if (this.fjF) {
+      localContentValues.put("bigHeadURL", this.field_bigHeadURL);
+    }
+    if (this.fjG) {
+      localContentValues.put("smallHeadURL", this.field_smallHeadURL);
+    }
+    if (this.enL) {
+      localContentValues.put("signature", this.field_signature);
+    }
+    if (this.fjH) {
+      localContentValues.put("appOpt", Integer.valueOf(this.field_appOpt));
+    }
+    if (this.fjI) {
+      localContentValues.put("registerSource", this.field_registerSource);
+    }
+    if (this.fjJ) {
+      localContentValues.put("appInfo", this.field_appInfo);
+    }
+    if (this.eQo) {
+      localContentValues.put("versionInfo", this.field_versionInfo);
+    }
+    if (this.fjK) {
+      localContentValues.put("passThroughInfo", this.field_passThroughInfo);
+    }
+    if (this.fjL) {
+      localContentValues.put("bindWxaInfo", this.field_bindWxaInfo);
+    }
+    if (this.fjM) {
+      localContentValues.put("dynamicInfo", this.field_dynamicInfo);
+    }
+    if (this.eRQ) {
+      localContentValues.put("reserved", this.field_reserved);
+    }
+    if (this.fjN) {
+      localContentValues.put("syncTimeSecond", Long.valueOf(this.field_syncTimeSecond));
+    }
+    if (this.fjO) {
+      localContentValues.put("syncVersion", this.field_syncVersion);
+    }
+    if (this.fjP) {
+      localContentValues.put("bizMenu", this.field_bizMenu);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -98,7 +237,7 @@ public abstract class hc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.hc
  * JD-Core Version:    0.7.0.1
  */

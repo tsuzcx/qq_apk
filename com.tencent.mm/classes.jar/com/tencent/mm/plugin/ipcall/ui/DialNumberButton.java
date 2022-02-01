@@ -9,54 +9,37 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class DialNumberButton
   extends RelativeLayout
 {
-  private TextView sEh;
-  private TextView sEi;
-  private boolean sEj;
+  private TextView tLO;
+  private TextView tLP;
+  private boolean tLQ;
   
   public DialNumberButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25568);
-    this.sEj = false;
+    this.tLQ = false;
     LayoutInflater.from(getContext()).inflate(2131493708, this);
-    this.sEh = ((TextView)findViewById(2131299096));
-    this.sEi = ((TextView)findViewById(2131299097));
-    if (d.lf(16))
+    this.tLO = ((TextView)findViewById(2131299096));
+    this.tLP = ((TextView)findViewById(2131299097));
+    if (d.kZ(16))
     {
-      this.sEh.setTypeface(Typeface.create("sans-serif-light", 0));
-      this.sEi.setTypeface(Typeface.create("sans-serif-normal", 0));
+      this.tLO.setTypeface(Typeface.create("sans-serif-light", 0));
+      this.tLP.setTypeface(Typeface.create("sans-serif-normal", 0));
     }
     setClipChildren(false);
     setClipToPadding(false);
     AppMethodBeat.o(25568);
   }
   
-  public final void gT(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(25572);
-    if ((!bt.isNullOrNil(paramString1)) && (paramString1.length() == 1)) {
-      this.sEh.setText(paramString1);
-    }
-    if ((bt.isNullOrNil(paramString2)) && (!"1".equals(paramString1)))
-    {
-      this.sEi.setVisibility(8);
-      AppMethodBeat.o(25572);
-      return;
-    }
-    this.sEi.setText(paramString2);
-    this.sEi.setVisibility(0);
-    AppMethodBeat.o(25572);
-  }
-  
   public String getNumberText()
   {
     AppMethodBeat.i(25570);
-    String str = this.sEh.getText().toString();
+    String str = this.tLO.getText().toString();
     AppMethodBeat.o(25570);
     return str;
   }
@@ -64,46 +47,63 @@ public class DialNumberButton
   public String getOtherText()
   {
     AppMethodBeat.i(25571);
-    String str = this.sEi.getText().toString();
+    String str = this.tLP.getText().toString();
     AppMethodBeat.o(25571);
     return str;
+  }
+  
+  public final void hk(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(25572);
+    if ((!bs.isNullOrNil(paramString1)) && (paramString1.length() == 1)) {
+      this.tLO.setText(paramString1);
+    }
+    if ((bs.isNullOrNil(paramString2)) && (!"1".equals(paramString1)))
+    {
+      this.tLP.setVisibility(8);
+      AppMethodBeat.o(25572);
+      return;
+    }
+    this.tLP.setText(paramString2);
+    this.tLP.setVisibility(0);
+    AppMethodBeat.o(25572);
   }
   
   public void setInTalkUIMode(boolean paramBoolean)
   {
     AppMethodBeat.i(25573);
-    this.sEj = paramBoolean;
-    if (this.sEj)
+    this.tLQ = paramBoolean;
+    if (this.tLQ)
     {
-      if (("#".equals(this.sEh.getText())) || ("*".equals(this.sEh.getText()))) {
-        this.sEh.setTextColor(getContext().getResources().getColor(2131100232));
+      if (("#".equals(this.tLO.getText())) || ("*".equals(this.tLO.getText()))) {
+        this.tLO.setTextColor(getContext().getResources().getColor(2131100232));
       }
       for (;;)
       {
-        this.sEi.setTextColor(getContext().getResources().getColor(2131100232));
+        this.tLP.setTextColor(getContext().getResources().getColor(2131100232));
         setBackgroundDrawable(getResources().getDrawable(2131231912));
         AppMethodBeat.o(25573);
         return;
-        this.sEh.setTextColor(getContext().getResources().getColor(2131100234));
+        this.tLO.setTextColor(getContext().getResources().getColor(2131100234));
       }
     }
-    if (("#".equals(this.sEh.getText())) || ("*".equals(this.sEh.getText()))) {
-      this.sEh.setTextColor(getContext().getResources().getColor(2131100232));
+    if (("#".equals(this.tLO.getText())) || ("*".equals(this.tLO.getText()))) {
+      this.tLO.setTextColor(getContext().getResources().getColor(2131100232));
     }
     for (;;)
     {
-      this.sEi.setTextColor(getContext().getResources().getColor(2131100232));
+      this.tLP.setTextColor(getContext().getResources().getColor(2131100232));
       setBackgroundDrawable(getResources().getDrawable(2131231913));
       AppMethodBeat.o(25573);
       return;
-      this.sEh.setTextColor(getContext().getResources().getColor(2131100233));
+      this.tLO.setTextColor(getContext().getResources().getColor(2131100233));
     }
   }
   
   public final void setNumberTextSize$255e752(float paramFloat)
   {
     AppMethodBeat.i(25569);
-    this.sEh.setTextSize(0, paramFloat);
+    this.tLO.setTextSize(0, paramFloat);
     AppMethodBeat.o(25569);
   }
 }

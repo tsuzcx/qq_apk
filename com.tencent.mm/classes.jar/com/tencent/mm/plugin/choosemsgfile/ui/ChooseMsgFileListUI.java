@@ -24,10 +24,9 @@ import com.tencent.mm.plugin.choosemsgfile.b.c.e.3;
 import com.tencent.mm.plugin.choosemsgfile.b.d.a;
 import com.tencent.mm.plugin.choosemsgfile.b.d.b;
 import com.tencent.mm.pluginsdk.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
@@ -36,22 +35,22 @@ public class ChooseMsgFileListUI
   extends MMActivity
   implements c
 {
-  private RecyclerView akA;
-  private String flk;
-  private TextView fwf;
+  private RecyclerView alu;
+  private String foE;
+  private TextView fzM;
   private int mCount;
-  private String nLX;
-  private String nMU;
-  private e nMV;
-  private a nMW;
-  private RelativeLayout nMX;
-  private Button nMY;
-  private ProgressDialog nMZ;
+  private String ooX;
+  private String opU;
+  private e opV;
+  private a opW;
+  private RelativeLayout opX;
+  private Button opY;
+  private ProgressDialog opZ;
   
   public ChooseMsgFileListUI()
   {
     AppMethodBeat.i(123388);
-    this.nMW = new a();
+    this.opW = new a();
     AppMethodBeat.o(123388);
   }
   
@@ -62,62 +61,57 @@ public class ChooseMsgFileListUI
     localIntent.putExtra("USERNAME", paramString1);
     localIntent.putExtra("COUNT", paramInt);
     localIntent.putExtra("EXTENSION", paramString2);
-    paramMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
-    {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-      {
-        AppMethodBeat.i(123387);
-        ad.i("MicroMsg.ChooseMsgFileListUI", "requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        ad.d("MicroMsg.ChooseMsgFileListUI", "data:%s", new Object[] { paramAnonymousIntent });
-        com.tencent.mm.plugin.choosemsgfile.b.d.c.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent, this.nLp);
-        AppMethodBeat.o(123387);
-      }
-    });
-    paramMMActivity.startActivityForResult(localIntent, b.nMS);
+    paramMMActivity.mmSetOnActivityResultCallback(new ChooseMsgFileListUI.5(parama));
+    paramMMActivity.startActivityForResult(localIntent, b.opS);
     AppMethodBeat.o(123400);
   }
   
-  private void iF(boolean paramBoolean)
+  private void ji(boolean paramBoolean)
   {
     AppMethodBeat.i(123398);
-    ad.i("MicroMsg.ChooseMsgFileListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.ChooseMsgFileListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.nMZ = p.a(this, getString(2131760709), true, 0, null);
+      this.opZ = p.a(this, getString(2131760709), true, 0, null);
       AppMethodBeat.o(123398);
       return;
     }
-    if ((this.nMZ != null) && (this.nMZ.isShowing()))
+    if ((this.opZ != null) && (this.opZ.isShowing()))
     {
-      this.nMZ.dismiss();
-      this.nMZ = null;
+      this.opZ.dismiss();
+      this.opZ = null;
     }
     AppMethodBeat.o(123398);
   }
   
-  public final void A(boolean paramBoolean, int paramInt)
+  public final void B(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(123396);
-    iF(false);
-    ad.i("MicroMsg.ChooseMsgFileListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    ji(false);
+    ac.i("MicroMsg.ChooseMsgFileListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (paramInt <= 0)
     {
-      this.fwf.setVisibility(0);
-      this.akA.setVisibility(8);
-      this.fwf.setText(getString(2131757352));
+      this.fzM.setVisibility(0);
+      this.alu.setVisibility(8);
+      this.fzM.setText(getString(2131757352));
       AppMethodBeat.o(123396);
       return;
     }
-    this.fwf.setVisibility(8);
-    this.akA.setVisibility(0);
-    this.akA.getAdapter().aql.notifyChanged();
+    this.fzM.setVisibility(8);
+    this.alu.setVisibility(0);
+    this.alu.getAdapter().arg.notifyChanged();
     AppMethodBeat.o(123396);
   }
   
-  public final void bNP()
+  public final a bUH()
+  {
+    return this.opW;
+  }
+  
+  public final void bVa()
   {
     AppMethodBeat.i(123399);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -135,11 +129,6 @@ public class ChooseMsgFileListUI
     AppMethodBeat.o(123399);
   }
   
-  public final a bNw()
-  {
-    return this.nMW;
-  }
-  
   public void finish()
   {
     AppMethodBeat.i(123394);
@@ -151,7 +140,7 @@ public class ChooseMsgFileListUI
   public final View getChildAt(int paramInt)
   {
     AppMethodBeat.i(123397);
-    View localView = this.akA.getChildAt(paramInt);
+    View localView = this.alu.getChildAt(paramInt);
     AppMethodBeat.o(123397);
     return localView;
   }
@@ -163,24 +152,24 @@ public class ChooseMsgFileListUI
   
   public final String getUserName()
   {
-    return this.flk;
-  }
-  
-  public final void iP(boolean paramBoolean)
-  {
-    AppMethodBeat.i(123395);
-    iF(true);
-    AppMethodBeat.o(123395);
+    return this.foE;
   }
   
   public void initView()
   {
     AppMethodBeat.i(123390);
-    this.fwf = ((TextView)findViewById(2131302951));
-    this.akA = ((RecyclerView)findViewById(2131299926));
-    this.nMX = ((RelativeLayout)findViewById(2131300197));
-    this.nMY = ((Button)findViewById(2131305557));
+    this.fzM = ((TextView)findViewById(2131302951));
+    this.alu = ((RecyclerView)findViewById(2131299926));
+    this.opX = ((RelativeLayout)findViewById(2131300197));
+    this.opY = ((Button)findViewById(2131305557));
     AppMethodBeat.o(123390);
+  }
+  
+  public final void js(boolean paramBoolean)
+  {
+    AppMethodBeat.i(123395);
+    ji(true);
+    AppMethodBeat.o(123395);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -189,25 +178,25 @@ public class ChooseMsgFileListUI
     g.o(this);
     super.onCreate(paramBundle);
     overridePendingTransition(2130772108, 2130772106);
-    this.flk = getIntent().getStringExtra("USERNAME");
-    this.nLX = com.tencent.mm.plugin.choosemsgfile.b.d.c.sg(this.flk);
+    this.foE = getIntent().getStringExtra("USERNAME");
+    this.ooX = com.tencent.mm.plugin.choosemsgfile.b.d.c.wj(this.foE);
     this.mCount = getIntent().getIntExtra("COUNT", 9);
-    this.nMU = getIntent().getStringExtra("EXTENSION");
-    ad.i("MicroMsg.ChooseMsgFileListUI", "onCreate mCount:%d mExtension:%s", new Object[] { Integer.valueOf(this.mCount), this.nMU });
-    this.nMV = new e(this);
+    this.opU = getIntent().getStringExtra("EXTENSION");
+    ac.i("MicroMsg.ChooseMsgFileListUI", "onCreate mCount:%d mExtension:%s", new Object[] { Integer.valueOf(this.mCount), this.opU });
+    this.opV = new e(this);
     initView();
     findViewById(2131298757).setBackgroundColor(getContext().getResources().getColor(2131100155));
-    this.akA.setBackgroundColor(getContext().getResources().getColor(2131100155));
-    paramBundle = this.akA;
-    e locale = this.nMV;
-    if (locale.mmj == null) {
-      locale.mmj = new LinearLayoutManager();
+    this.alu.setBackgroundColor(getContext().getResources().getColor(2131100155));
+    paramBundle = this.alu;
+    e locale = this.opV;
+    if (locale.mOk == null) {
+      locale.mOk = new LinearLayoutManager();
     }
-    paramBundle.setLayoutManager(locale.mmj);
-    this.akA.a(new e.3(this.nMV));
-    this.akA.setAdapter(this.nMV.bNK());
-    this.akA.setHasFixedSize(true);
-    setMMTitle(this.nLX);
+    paramBundle.setLayoutManager(locale.mOk);
+    this.alu.a(new e.3(this.opV));
+    this.alu.setAdapter(this.opV.bUV());
+    this.alu.setHasFixedSize(true);
+    setMMTitle(this.ooX);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -232,21 +221,21 @@ public class ChooseMsgFileListUI
         return true;
       }
     });
-    this.nMY.setOnClickListener(new View.OnClickListener()
+    this.opY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123385);
-        if (ChooseMsgFileListUI.a(ChooseMsgFileListUI.this).bNO())
+        if (ChooseMsgFileListUI.a(ChooseMsgFileListUI.this).bUZ())
         {
           paramAnonymousView = new f.a(ChooseMsgFileListUI.this);
-          paramAnonymousView.aMo(ChooseMsgFileListUI.this.getString(2131757348)).wZ(true);
+          paramAnonymousView.aRQ(ChooseMsgFileListUI.this.getString(2131757348)).yi(true);
           paramAnonymousView.c(new f.c()
           {
             public final void d(boolean paramAnonymous2Boolean, String paramAnonymous2String)
             {
               AppMethodBeat.i(123384);
-              ad.i("MicroMsg.ChooseMsgFileListUI", "bOk:%b", new Object[] { Boolean.valueOf(paramAnonymous2Boolean) });
+              ac.i("MicroMsg.ChooseMsgFileListUI", "bOk:%b", new Object[] { Boolean.valueOf(paramAnonymous2Boolean) });
               if (paramAnonymous2Boolean) {
                 ChooseMsgFileListUI.b(ChooseMsgFileListUI.this);
               }
@@ -260,9 +249,9 @@ public class ChooseMsgFileListUI
         AppMethodBeat.o(123385);
       }
     });
-    this.nMV.eK("file", this.nMU);
+    this.opV.eX("file", this.opU);
     g.p(this);
-    this.nMW.init(this.mCount);
+    this.opW.init(this.mCount);
     AppMethodBeat.o(123389);
   }
   
@@ -270,8 +259,8 @@ public class ChooseMsgFileListUI
   {
     AppMethodBeat.i(123393);
     super.onDestroy();
-    this.nMV.onDestroy();
-    this.nMW.uninit();
+    this.opV.onDestroy();
+    this.opW.uninit();
     AppMethodBeat.o(123393);
   }
   
@@ -279,7 +268,7 @@ public class ChooseMsgFileListUI
   {
     AppMethodBeat.i(123392);
     super.onPause();
-    this.nMV.onPause();
+    this.opV.onPause();
     AppMethodBeat.o(123392);
   }
   
@@ -287,7 +276,7 @@ public class ChooseMsgFileListUI
   {
     AppMethodBeat.i(123391);
     super.onResume();
-    this.nMV.onResume();
+    this.opV.onResume();
     AppMethodBeat.o(123391);
   }
   
@@ -299,7 +288,7 @@ public class ChooseMsgFileListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.ui.ChooseMsgFileListUI
  * JD-Core Version:    0.7.0.1
  */

@@ -11,28 +11,28 @@ import java.util.concurrent.TimeoutException;
 public class e
   implements Runnable
 {
-  public final FutureTask<?> cgx;
+  public final FutureTask<?> cdt;
   
   public e(Runnable paramRunnable)
   {
     AppMethodBeat.i(140070);
-    this.cgx = new FutureTask(paramRunnable, Integer.valueOf(0));
+    this.cdt = new FutureTask(paramRunnable, Integer.valueOf(0));
     AppMethodBeat.o(140070);
   }
   
   public <T> e(Callable<T> paramCallable)
   {
     AppMethodBeat.i(140071);
-    this.cgx = new FutureTask(paramCallable);
+    this.cdt = new FutureTask(paramCallable);
     AppMethodBeat.o(140071);
   }
   
-  public final boolean aR(long paramLong)
+  public final boolean aN(long paramLong)
   {
     AppMethodBeat.i(140072);
     try
     {
-      this.cgx.get(paramLong, TimeUnit.MILLISECONDS);
+      this.cdt.get(paramLong, TimeUnit.MILLISECONDS);
       AppMethodBeat.o(140072);
       return true;
     }
@@ -61,7 +61,7 @@ public class e
     AppMethodBeat.i(140073);
     try
     {
-      Object localObject = this.cgx.get();
+      Object localObject = this.cdt.get();
       AppMethodBeat.o(140073);
       return localObject;
     }
@@ -83,13 +83,13 @@ public class e
   public void run()
   {
     AppMethodBeat.i(140074);
-    this.cgx.run();
+    this.cdt.run();
     AppMethodBeat.o(140074);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.utils.e
  * JD-Core Version:    0.7.0.1
  */

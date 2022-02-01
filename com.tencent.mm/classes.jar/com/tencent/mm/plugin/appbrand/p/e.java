@@ -1,118 +1,74 @@
 package com.tencent.mm.plugin.appbrand.p;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bje;
-import com.tencent.mm.protocal.protobuf.bjf;
-import com.tencent.mm.protocal.protobuf.dvc;
-import com.tencent.mm.sdk.platformtools.ad;
+import java.net.HttpURLConnection;
+import java.util.ArrayList;
+import java.util.Map;
 
-public class e
-  extends n
-  implements k
+public final class e
 {
-  private g gbr;
-  private a<e> kUl;
-  public final com.tencent.mm.al.b rr;
+  String bWk;
+  public String imk;
+  Map<String, String> iml;
+  boolean imt;
+  boolean imu;
+  d.a lwN;
+  ArrayList<String> lwO;
+  int lwP;
+  String lwQ;
+  public HttpURLConnection lwR;
+  public String lwS;
+  String lwT;
+  boolean lwU;
+  boolean lwV;
+  boolean lwW;
+  byte[] mPostData;
+  Runnable mRunnable;
+  int mTimeout;
+  String mUrl;
+  private long startTime;
   
-  private e(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public e(String paramString1, byte[] paramArrayOfByte, int paramInt, d.a parama, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(47753);
-    ad.i("MicroMsg.webview.NetSceneJSOperateWxData", "<init> hash[%d] appId [%s], data [%s], grantScope [%s], versionType [%d], opt [%d], extScene [%d]", new Object[] { Integer.valueOf(hashCode()), paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    this.rr = bik().atI();
-    bje localbje = (bje)this.rr.gUS.gUX;
-    localbje.hnC = paramString1;
-    if (paramString2.getBytes() == null) {}
-    for (paramString1 = new byte[0];; paramString1 = paramString2.getBytes())
-    {
-      localbje.mAx = new com.tencent.mm.bx.b(paramString1);
-      localbje.DGK = paramString3;
-      localbje.DGx = paramInt1;
-      localbje.DGw = paramInt3;
-      localbje.Dbx = paramInt2;
-      if (paramInt4 > 0)
-      {
-        localbje.DGy = new dvc();
-        localbje.DGy.scene = paramInt4;
-      }
-      AppMethodBeat.o(47753);
-      return;
-    }
+    AppMethodBeat.i(144336);
+    this.lwP = 15;
+    this.mRunnable = null;
+    this.lwU = false;
+    this.imt = false;
+    this.imu = false;
+    this.lwV = false;
+    this.lwW = true;
+    this.mUrl = paramString1;
+    this.mPostData = paramArrayOfByte;
+    this.lwN = parama;
+    this.mTimeout = paramInt;
+    this.bWk = paramString2;
+    this.startTime = System.currentTimeMillis();
+    this.imt = paramBoolean1;
+    this.imu = paramBoolean2;
+    this.lwV = paramBoolean3;
+    AppMethodBeat.o(144336);
   }
   
-  public e(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, a<e> parama)
+  public final int bpi()
   {
-    this(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.kUl = parama;
-  }
-  
-  protected b.a bik()
-  {
-    AppMethodBeat.i(47754);
-    ad.d("MicroMsg.webview.NetSceneJSOperateWxData", "getReqRespBuidler");
-    b.a locala = new b.a();
-    locala.gUU = new bje();
-    locala.gUV = new bjf();
-    locala.uri = "/cgi-bin/mmbiz-bin/js-operatewxdata";
-    locala.funcId = 1133;
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    AppMethodBeat.o(47754);
-    return locala;
-  }
-  
-  public int doScene(com.tencent.mm.network.e parame, g paramg)
-  {
-    AppMethodBeat.i(47757);
-    ad.i("MicroMsg.webview.NetSceneJSOperateWxData", "doScene hash=%d, funcid=%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.rr.getType()) });
-    this.gbr = paramg;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(47757);
+    AppMethodBeat.i(144337);
+    int i = (int)(System.currentTimeMillis() - this.startTime);
+    AppMethodBeat.o(144337);
     return i;
   }
   
-  public int getType()
+  public final long getDataSize()
   {
-    return 1133;
-  }
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(47756);
-    ad.i("MicroMsg.webview.NetSceneJSOperateWxData", "onGYNetEnd, hash[%d] errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.gbr != null) {
-      this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    if (this.mPostData != null) {
+      return this.mPostData.length;
     }
-    if (this.kUl != null) {
-      this.kUl.a(paramInt2, paramInt3, paramString, this);
-    }
-    AppMethodBeat.o(47756);
-  }
-  
-  public final void tj(int paramInt)
-  {
-    AppMethodBeat.i(47755);
-    bje localbje = (bje)this.rr.gUS.gUX;
-    if (localbje.DGy == null) {
-      localbje.DGy = new dvc();
-    }
-    localbje.DGy.EJj = paramInt;
-    AppMethodBeat.o(47755);
-  }
-  
-  public static abstract interface a<T extends n>
-  {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, T paramT);
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.p.e
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KProgressDialog;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.g;
 
@@ -41,7 +41,7 @@ public class MMKProgressDialogImpl
     paramString = KindaContext.get();
     if (paramString == null)
     {
-      ad.e("MMKProgressDialogImpl", "MMKProgressDialogImpl showImpl() KindaContext.get() return null! case 1");
+      ac.e("MMKProgressDialogImpl", "MMKProgressDialogImpl showImpl() KindaContext.get() return null! case 1");
       AppMethodBeat.o(19098);
       return;
     }
@@ -64,7 +64,7 @@ public class MMKProgressDialogImpl
     Context localContext = KindaContext.get();
     if (localContext == null)
     {
-      ad.e("MMKProgressDialogImpl", "MMKProgressDialogImpl showImpl() KindaContext.get() return null! case 1");
+      ac.e("MMKProgressDialogImpl", "MMKProgressDialogImpl showImpl() KindaContext.get() return null! case 1");
       AppMethodBeat.o(170127);
       return;
     }
@@ -96,7 +96,7 @@ public class MMKProgressDialogImpl
     Context localContext = KindaContext.get();
     if (localContext == null)
     {
-      ad.e("MMKProgressDialogImpl", "MMKProgressDialogImpl showPayProcessImpl() KindaContext.get() return null! case 2");
+      ac.e("MMKProgressDialogImpl", "MMKProgressDialogImpl showPayProcessImpl() KindaContext.get() return null! case 2");
       AppMethodBeat.o(19099);
       return;
     }
@@ -119,11 +119,11 @@ public class MMKProgressDialogImpl
     Context localContext = KindaContext.get();
     if (localContext == null)
     {
-      ad.e("MMKProgressDialogImpl", "MMKProgressDialogImpl showToast() KindaContext.get() return null! case 3");
+      ac.e("MMKProgressDialogImpl", "MMKProgressDialogImpl showToast() KindaContext.get() return null! case 3");
       AppMethodBeat.o(19100);
       return;
     }
-    h.cf(localContext, paramString);
+    h.cg(localContext, paramString);
     AppMethodBeat.o(19100);
   }
   
@@ -133,7 +133,7 @@ public class MMKProgressDialogImpl
     paramString = KindaContext.get();
     if (paramString == null)
     {
-      ad.e("MMKProgressDialogImpl", "MMKProgressDialogImpl can't startLoading because the context is null!");
+      ac.e("MMKProgressDialogImpl", "MMKProgressDialogImpl can't startLoading because the context is null!");
       AppMethodBeat.o(19102);
       return;
     }
@@ -161,7 +161,7 @@ public class MMKProgressDialogImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKProgressDialogImpl
  * JD-Core Version:    0.7.0.1
  */

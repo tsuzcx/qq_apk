@@ -7,20 +7,20 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.az;
 import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.plugin.qmessage.a.b;
 import com.tencent.mm.plugin.qmessage.a.d;
 import com.tencent.mm.plugin.qmessage.a.e;
 import com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -30,11 +30,11 @@ import java.util.Set;
 import junit.framework.Assert;
 
 public final class a
-  implements com.tencent.mm.al.g, com.tencent.mm.pluginsdk.b.a
+  implements com.tencent.mm.ak.g, com.tencent.mm.pluginsdk.b.a
 {
-  private af contact;
+  private ai contact;
   Context context;
-  private ProgressDialog fpP;
+  private ProgressDialog fts;
   private f screen;
   
   public a(Context paramContext)
@@ -42,47 +42,47 @@ public final class a
     this.context = paramContext;
   }
   
-  private void bRv()
+  private void bYK()
   {
     AppMethodBeat.i(27740);
-    d locald = com.tencent.mm.plugin.qmessage.a.g.ddJ().akO(this.contact.field_username);
-    if ((locald == null) || (bt.nullAsNil(locald.getUsername()).length() <= 0))
+    d locald = com.tencent.mm.plugin.qmessage.a.g.drr().apN(this.contact.field_username);
+    if ((locald == null) || (bs.nullAsNil(locald.getUsername()).length() <= 0))
     {
-      ad.e("MicroMsg.ContactWidgetQContact", "updateProfile : Qcontact is null");
+      ac.e("MicroMsg.ContactWidgetQContact", "updateProfile : Qcontact is null");
       AppMethodBeat.o(27740);
       return;
     }
-    if (bt.nullAsNil(locald.ddH()).length() <= 0) {
-      ad.e("MicroMsg.ContactWidgetQContact", "updateProfile: QContact extInfo is null");
+    if (bs.nullAsNil(locald.drp()).length() <= 0) {
+      ac.e("MicroMsg.ContactWidgetQContact", "updateProfile: QContact extInfo is null");
     }
-    Preference localPreference1 = this.screen.aKk("contact_info_qcontact_sex");
-    Preference localPreference2 = this.screen.aKk("contact_info_qcontact_age");
-    Preference localPreference3 = this.screen.aKk("contact_info_qcontact_birthday");
-    Preference localPreference4 = this.screen.aKk("contact_info_qcontact_address");
+    Preference localPreference1 = this.screen.aPN("contact_info_qcontact_sex");
+    Preference localPreference2 = this.screen.aPN("contact_info_qcontact_age");
+    Preference localPreference3 = this.screen.aPN("contact_info_qcontact_birthday");
+    Preference localPreference4 = this.screen.aPN("contact_info_qcontact_address");
     a locala = new a((byte)0);
-    locala.parse(locald.ddH());
+    locala.parse(locald.drp());
     if (localPreference1 != null) {
-      localPreference1.setSummary(locala.ddM());
+      localPreference1.setSummary(locala.dru());
     }
     if (localPreference2 != null) {
-      localPreference2.setSummary(locala.ddN());
+      localPreference2.setSummary(locala.drv());
     }
     if (localPreference3 != null) {
-      localPreference3.setSummary(locala.ddP());
+      localPreference3.setSummary(locala.drx());
     }
     if (localPreference4 != null) {
-      localPreference4.setSummary(locala.ddO());
+      localPreference4.setSummary(locala.drw());
     }
     this.screen.notifyDataSetChanged();
     AppMethodBeat.o(27740);
   }
   
-  public final boolean SN(String paramString)
+  public final boolean WZ(String paramString)
   {
     return true;
   }
   
-  public final boolean a(final f paramf, af paramaf, boolean paramBoolean, int paramInt)
+  public final boolean a(final f paramf, ai paramai, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(27739);
@@ -90,42 +90,42 @@ public final class a
     {
       paramBoolean = true;
       Assert.assertTrue(paramBoolean);
-      if (paramaf == null) {
+      if (paramai == null) {
         break label328;
       }
       paramBoolean = true;
       label25:
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(af.aHG(paramaf.field_username));
-      az.aeS().a(140, this);
-      this.contact = paramaf;
+      Assert.assertTrue(ai.aNb(paramai.field_username));
+      az.agi().a(140, this);
+      this.contact = paramai;
       this.screen = paramf;
       paramf.addPreferencesFromResource(2131951649);
-      paramf = (NormalUserHeaderPreference)paramf.aKk("contact_info_header_normal");
+      paramf = (NormalUserHeaderPreference)paramf.aPN("contact_info_header_normal");
       if (paramf != null)
       {
-        paramf.Cjf = "ContactWidgetQContact";
-        paramf.a(paramaf, 0, null);
+        paramf.DBw = "ContactWidgetQContact";
+        paramf.a(paramai, 0, null);
       }
-      bRv();
-      paramaf = com.tencent.mm.plugin.qmessage.a.g.ddJ().akO(this.contact.field_username);
-      if (paramaf != null)
+      bYK();
+      paramai = com.tencent.mm.plugin.qmessage.a.g.drr().apN(this.contact.field_username);
+      if (paramai != null)
       {
-        paramf = paramaf;
-        if (bt.nullAsNil(paramaf.getUsername()).length() > 0) {}
+        paramf = paramai;
+        if (bs.nullAsNil(paramai.getUsername()).length() > 0) {}
       }
       else
       {
-        ad.e("MicroMsg.ContactWidgetQContact", "getProfileOrNot: QContact is null, should not in this way");
+        ac.e("MicroMsg.ContactWidgetQContact", "getProfileOrNot: QContact is null, should not in this way");
         paramf = new d();
         paramf.username = this.contact.field_username;
-        paramf.dtM = -1;
-        com.tencent.mm.plugin.qmessage.a.g.ddJ().a(paramf);
+        paramf.drx = -1;
+        com.tencent.mm.plugin.qmessage.a.g.drr().a(paramf);
       }
-      if (paramf.uKc == 1)
+      if (paramf.vST == 1)
       {
-        paramaf = this.contact.field_username;
-        if (bt.nullAsNil(paramf.ddH()).length() > 0) {
+        paramai = this.contact.field_username;
+        if (bs.nullAsNil(paramf.drp()).length() > 0) {
           break label333;
         }
       }
@@ -135,32 +135,32 @@ public final class a
     for (paramInt = 1;; paramInt = 0)
     {
       paramBoolean = bool;
-      if (bt.nullAsNil(paramaf).length() > 0) {
+      if (bs.nullAsNil(paramai).length() > 0) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
       paramf = new HashSet();
-      paramf.add(paramaf);
+      paramf.add(paramai);
       paramf = new b(paramf);
-      new ap().post(new Runnable()
+      new ao().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(27736);
-          az.aeS().a(paramf, 0);
+          az.agi().a(paramf, 0);
           AppMethodBeat.o(27736);
         }
       });
       if (paramInt != 0)
       {
-        paramaf = this.context;
+        paramai = this.context;
         this.context.getString(2131755906);
-        this.fpP = h.b(paramaf, this.context.getString(2131755805), true, new DialogInterface.OnCancelListener()
+        this.fts = h.b(paramai, this.context.getString(2131755805), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(27737);
-            az.aeS().a(paramf);
+            az.agi().a(paramf);
             AppMethodBeat.o(27737);
           }
         });
@@ -174,11 +174,11 @@ public final class a
     }
   }
   
-  public final boolean bRu()
+  public final boolean bYJ()
   {
     AppMethodBeat.i(27741);
-    az.aeS().b(140, this);
-    NormalUserHeaderPreference localNormalUserHeaderPreference = (NormalUserHeaderPreference)this.screen.aKk("contact_info_header_normal");
+    az.agi().b(140, this);
+    NormalUserHeaderPreference localNormalUserHeaderPreference = (NormalUserHeaderPreference)this.screen.aPN("contact_info_header_normal");
     if (localNormalUserHeaderPreference != null) {
       localNormalUserHeaderPreference.onDetach();
     }
@@ -197,10 +197,10 @@ public final class a
       AppMethodBeat.o(27742);
       return;
     }
-    if (this.fpP != null)
+    if (this.fts != null)
     {
-      this.fpP.dismiss();
-      this.fpP = null;
+      this.fts.dismiss();
+      this.fts = null;
       switch (paramInt1)
       {
       default: 
@@ -213,12 +213,12 @@ public final class a
         }
         AppMethodBeat.o(27742);
         return;
-        if (!ab.hUQ) {
+        if (!ab.iuU) {
           break;
         }
         Toast.makeText(this.context, this.context.getString(2131759510, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt2) }), 3000).show();
         continue;
-        if (!ab.hUQ) {
+        if (!ab.iuU) {
           break;
         }
         Toast.makeText(this.context, this.context.getString(2131759511, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt2) }), 3000).show();
@@ -227,22 +227,22 @@ public final class a
     label183:
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = com.tencent.mm.plugin.qmessage.a.g.ddJ().akO(this.contact.field_username);
-      if ((paramString != null) && (bt.nullAsNil(paramString.getUsername()).length() > 0)) {
+      paramString = com.tencent.mm.plugin.qmessage.a.g.drr().apN(this.contact.field_username);
+      if ((paramString != null) && (bs.nullAsNil(paramString.getUsername()).length() > 0)) {
         break label261;
       }
-      ad.e("MicroMsg.ContactWidgetQContact", "resetUpdateStatus: did not find this QContact, username = " + this.contact.field_username);
+      ac.e("MicroMsg.ContactWidgetQContact", "resetUpdateStatus: did not find this QContact, username = " + this.contact.field_username);
     }
     for (;;)
     {
-      bRv();
+      bYK();
       AppMethodBeat.o(27742);
       return;
       label261:
-      paramString.dtM = 8;
-      paramString.uKc = 0;
-      if (!com.tencent.mm.plugin.qmessage.a.g.ddJ().a(this.contact.field_username, paramString)) {
-        ad.e("MicroMsg.ContactWidgetQContact", "resetUpdateStatus: update Qcontact failed, username = " + this.contact.field_username);
+      paramString.drx = 8;
+      paramString.vST = 0;
+      if (!com.tencent.mm.plugin.qmessage.a.g.drr().a(this.contact.field_username, paramString)) {
+        ac.e("MicroMsg.ContactWidgetQContact", "resetUpdateStatus: update Qcontact failed, username = " + this.contact.field_username);
       }
     }
   }
@@ -250,77 +250,77 @@ public final class a
   public final class a
   {
     private String country = "";
-    private String evA = "";
-    private String evz = "";
-    private String hdQ = "";
-    private String uKp = "";
-    private String uKq = "";
-    private String uKr = "";
+    private String exV = "";
+    private String exW = "";
+    private String hEt = "";
+    private String vTg = "";
+    private String vTh = "";
+    private String vTi = "";
     
     private a() {}
     
-    public final String ddM()
+    public final String dru()
     {
-      if (this.uKp == null) {
+      if (this.vTg == null) {
         return "";
       }
-      return this.uKp;
+      return this.vTg;
     }
     
-    public final String ddN()
+    public final String drv()
     {
-      if (this.uKq == null) {
+      if (this.vTh == null) {
         return "";
       }
-      return this.uKq;
+      return this.vTh;
     }
     
-    public final String ddO()
+    public final String drw()
     {
-      if (this.hdQ == null) {
+      if (this.hEt == null) {
         return "";
       }
-      return this.hdQ;
+      return this.hEt;
     }
     
-    public final String ddP()
+    public final String drx()
     {
-      if (this.uKr == null) {
+      if (this.vTi == null) {
         return "";
       }
-      return this.uKr;
+      return this.vTi;
     }
     
     public final void parse(String paramString)
     {
       AppMethodBeat.i(27738);
-      if (bt.nullAsNil(paramString).length() <= 0)
+      if (bs.nullAsNil(paramString).length() <= 0)
       {
-        ad.e("MicroMsg.ContactWidgetQContact", "QExtInfoContent : parse xml, but xml is null");
+        ac.e("MicroMsg.ContactWidgetQContact", "QExtInfoContent : parse xml, but xml is null");
         AppMethodBeat.o(27738);
         return;
       }
-      paramString = bw.K(paramString, "extinfo");
+      paramString = bv.L(paramString, "extinfo");
       if (paramString != null)
       {
-        this.uKp = ((String)paramString.get(".extinfo.sex"));
-        this.uKq = ((String)paramString.get(".extinfo.age"));
-        this.uKr = ((String)paramString.get(".extinfo.bd"));
+        this.vTg = ((String)paramString.get(".extinfo.sex"));
+        this.vTh = ((String)paramString.get(".extinfo.age"));
+        this.vTi = ((String)paramString.get(".extinfo.bd"));
         this.country = ((String)paramString.get(".extinfo.country"));
-        this.evz = ((String)paramString.get(".extinfo.province"));
-        this.evA = ((String)paramString.get(".extinfo.city"));
+        this.exV = ((String)paramString.get(".extinfo.province"));
+        this.exW = ((String)paramString.get(".extinfo.city"));
       }
-      if ((this.uKp != null) && (this.uKp.equals("1"))) {}
-      for (this.uKp = a.this.context.getString(2131763533);; this.uKp = a.this.context.getString(2131763532))
+      if ((this.vTg != null) && (this.vTg.equals("1"))) {}
+      for (this.vTg = a.this.context.getString(2131763533);; this.vTg = a.this.context.getString(2131763532))
       {
         if (this.country != null) {
-          this.hdQ = (this.hdQ + this.country + " ");
+          this.hEt = (this.hEt + this.country + " ");
         }
-        if (this.evz != null) {
-          this.hdQ = (this.hdQ + this.evz + " ");
+        if (this.exV != null) {
+          this.hEt = (this.hEt + this.exV + " ");
         }
-        if (this.evA != null) {
-          this.hdQ += this.evA;
+        if (this.exW != null) {
+          this.hEt += this.exW;
         }
         AppMethodBeat.o(27738);
         return;
@@ -330,7 +330,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qmessage.ui.a
  * JD-Core Version:    0.7.0.1
  */

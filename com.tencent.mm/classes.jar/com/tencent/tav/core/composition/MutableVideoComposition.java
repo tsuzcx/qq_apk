@@ -29,16 +29,16 @@ public class MutableVideoComposition
   
   public MutableVideoComposition(Asset paramAsset)
   {
-    AppMethodBeat.i(201623);
+    AppMethodBeat.i(197684);
     this.asset = paramAsset;
     this.instructions = new ArrayList();
     fillSourceProperty();
-    AppMethodBeat.o(201623);
+    AppMethodBeat.o(197684);
   }
   
   private void fillSourceProperty()
   {
-    AppMethodBeat.i(201624);
+    AppMethodBeat.i(197685);
     Object localObject2 = this.asset.tracksWithMediaType(1);
     this.frameDuration = null;
     this.renderSize = null;
@@ -73,7 +73,7 @@ public class MutableVideoComposition
     for (;;)
     {
       this.renderScale = 1.0F;
-      AppMethodBeat.o(201624);
+      AppMethodBeat.o(197685);
       return;
       if (localObject2 != null)
       {
@@ -93,12 +93,12 @@ public class MutableVideoComposition
   
   public VideoCompositing getCustomVideoCompositor()
   {
-    AppMethodBeat.i(201625);
+    AppMethodBeat.i(197686);
     if (this.customVideoCompositorClass != null) {}
     try
     {
       VideoCompositing localVideoCompositing = (VideoCompositing)this.customVideoCompositorClass.newInstance();
-      AppMethodBeat.o(201625);
+      AppMethodBeat.o(197686);
       return localVideoCompositing;
     }
     catch (InstantiationException localInstantiationException)
@@ -108,7 +108,7 @@ public class MutableVideoComposition
         localVideoCompositor = new VideoCompositor();
       }
       VideoCompositor localVideoCompositor = new VideoCompositor();
-      AppMethodBeat.o(201625);
+      AppMethodBeat.o(197686);
       return localVideoCompositor;
     }
     catch (IllegalAccessException localIllegalAccessException)
@@ -190,15 +190,15 @@ public class MutableVideoComposition
   
   public String toString()
   {
-    AppMethodBeat.i(201626);
+    AppMethodBeat.i(197687);
     String str = "MutableVideoComposition{, frameDuration=" + this.frameDuration + ", renderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", instructions=" + this.instructions + '}';
-    AppMethodBeat.o(201626);
+    AppMethodBeat.o(197687);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.core.composition.MutableVideoComposition
  * JD-Core Version:    0.7.0.1
  */

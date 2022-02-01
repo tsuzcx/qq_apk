@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.al;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,12 +29,12 @@ public final class k
     super(parame, al.info, "WalletUserInfo", null);
     AppMethodBeat.i(70627);
     this.listeners = new LinkedList();
-    ad.i("MicroMsg.WalletUserInfoStorage", "already call constructor.");
+    ac.i("MicroMsg.WalletUserInfoStorage", "already call constructor.");
     this.db = parame;
     AppMethodBeat.o(70627);
   }
   
-  public final boolean aIG()
+  public final boolean aPx()
   {
     AppMethodBeat.i(70630);
     boolean bool = this.db.execSQL("WalletUserInfo", "delete from WalletUserInfo");
@@ -58,7 +58,7 @@ public final class k
     return false;
   }
   
-  public final al edF()
+  public final al eta()
   {
     AppMethodBeat.i(70628);
     al localal = new al();

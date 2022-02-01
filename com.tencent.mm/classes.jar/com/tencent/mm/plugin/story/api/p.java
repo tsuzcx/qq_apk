@@ -8,35 +8,35 @@ import java.util.Map;
 
 public abstract class p
 {
-  public static b ydo;
+  public static b zqo;
   public long key;
-  public int ydn;
+  public int zqn;
   
   public p(long paramLong, int paramInt)
   {
     this.key = paramLong;
-    this.ydn = paramInt;
+    this.zqn = paramInt;
   }
   
   public static final class a
   {
-    private static a ydp;
-    private Map<Long, p> ydq;
+    private static a zqp;
+    private Map<Long, p> zqq;
     
     public a()
     {
       AppMethodBeat.i(118428);
-      this.ydq = new HashMap();
+      this.zqq = new HashMap();
       AppMethodBeat.o(118428);
     }
     
-    public static a dGt()
+    public static a dUU()
     {
       AppMethodBeat.i(118429);
-      if (ydp == null) {
-        ydp = new a();
+      if (zqp == null) {
+        zqp = new a();
       }
-      a locala = ydp;
+      a locala = zqp;
       AppMethodBeat.o(118429);
       return locala;
     }
@@ -44,14 +44,14 @@ public abstract class p
     public final void a(long paramLong, p paramp)
     {
       AppMethodBeat.i(118430);
-      this.ydq.put(Long.valueOf(paramLong), paramp);
+      this.zqq.put(Long.valueOf(paramLong), paramp);
       AppMethodBeat.o(118430);
     }
     
-    public final p tC(long paramLong)
+    public final p yf(long paramLong)
     {
       AppMethodBeat.i(118431);
-      p localp = (p)this.ydq.remove(Long.valueOf(paramLong));
+      p localp = (p)this.zqq.remove(Long.valueOf(paramLong));
       AppMethodBeat.o(118431);
       return localp;
     }
@@ -70,7 +70,7 @@ public abstract class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.p
  * JD-Core Version:    0.7.0.1
  */

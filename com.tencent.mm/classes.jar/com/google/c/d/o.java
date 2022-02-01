@@ -66,28 +66,28 @@ public abstract class o
     if ((paramInt1 < 0) || (paramInt2 < 0)) {
       throw new IllegalArgumentException("Negative size is not allowed. Input: " + paramInt1 + 'x' + paramInt2);
     }
-    int j = yx();
+    int j = yk();
     int i = j;
     if (paramMap != null)
     {
       i = j;
-      if (paramMap.containsKey(c.bJx)) {
-        i = Integer.parseInt(paramMap.get(c.bJx).toString());
+      if (paramMap.containsKey(c.bHf)) {
+        i = Integer.parseInt(paramMap.get(c.bHf).toString());
       }
     }
-    return a(bw(paramString), paramInt1, paramInt2, i);
+    return a(bn(paramString), paramInt1, paramInt2, i);
   }
   
-  public abstract boolean[] bw(String paramString);
+  public abstract boolean[] bn(String paramString);
   
-  public int yx()
+  public int yk()
   {
     return 10;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.d.o
  * JD-Core Version:    0.7.0.1
  */

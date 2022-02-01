@@ -9,12 +9,12 @@ import org.json.JSONObject;
 public final class n
 {
   public String name;
-  public List<a> uws;
+  public List<a> vFl;
   
   public n()
   {
     AppMethodBeat.i(66913);
-    this.uws = new ArrayList();
+    this.vFl = new ArrayList();
     AppMethodBeat.o(66913);
   }
   
@@ -44,7 +44,7 @@ public final class n
           locala.data = localJSONObject.getString("native_url_args");
           locala.iconUrl = localJSONObject.getString("icon_url");
           locala.url = localJSONObject.getString("h5_url");
-          localn.uws.add(locala);
+          localn.vFl.add(locala);
           j += 1;
         }
         localArrayList.add(localn);
@@ -71,7 +71,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.n
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,14 @@ public final class a
 {
   public a()
   {
-    super(q.kSl.ordinal());
+    super(q.ltL.ordinal());
     AppMethodBeat.i(180320);
     AppMethodBeat.o(180320);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a
  * JD-Core Version:    0.7.0.1
  */

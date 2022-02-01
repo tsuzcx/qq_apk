@@ -18,9 +18,9 @@ import android.widget.FrameLayout;
 public class ScrimInsetsFrameLayout
   extends FrameLayout
 {
-  Drawable it;
-  Rect iu;
-  private Rect iw = new Rect();
+  Drawable jt;
+  Rect ju;
+  private Rect jv = new Rect();
   
   public ScrimInsetsFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,23 +31,23 @@ public class ScrimInsetsFrameLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = f.a(paramContext, paramAttributeSet, a.a.ScrimInsetsFrameLayout, paramInt, 2131821639, new int[0]);
-    this.it = paramContext.getDrawable(0);
+    this.jt = paramContext.getDrawable(0);
     paramContext.recycle();
     setWillNotDraw(true);
     t.a(this, new p()
     {
       public final ab a(View paramAnonymousView, ab paramAnonymousab)
       {
-        if (ScrimInsetsFrameLayout.this.iu == null) {
-          ScrimInsetsFrameLayout.this.iu = new Rect();
+        if (ScrimInsetsFrameLayout.this.ju == null) {
+          ScrimInsetsFrameLayout.this.ju = new Rect();
         }
-        ScrimInsetsFrameLayout.this.iu.set(paramAnonymousab.getSystemWindowInsetLeft(), paramAnonymousab.getSystemWindowInsetTop(), paramAnonymousab.getSystemWindowInsetRight(), paramAnonymousab.getSystemWindowInsetBottom());
+        ScrimInsetsFrameLayout.this.ju.set(paramAnonymousab.getSystemWindowInsetLeft(), paramAnonymousab.getSystemWindowInsetTop(), paramAnonymousab.getSystemWindowInsetRight(), paramAnonymousab.getSystemWindowInsetBottom());
         ScrimInsetsFrameLayout.this.a(paramAnonymousab);
         paramAnonymousView = ScrimInsetsFrameLayout.this;
         if (Build.VERSION.SDK_INT >= 20)
         {
-          bool = ((WindowInsets)paramAnonymousab.On).hasSystemWindowInsets();
-          if ((bool) && (ScrimInsetsFrameLayout.this.it != null)) {
+          bool = ((WindowInsets)paramAnonymousab.Pk).hasSystemWindowInsets();
+          if ((bool) && (ScrimInsetsFrameLayout.this.jt != null)) {
             break label120;
           }
         }
@@ -56,7 +56,7 @@ public class ScrimInsetsFrameLayout
         {
           paramAnonymousView.setWillNotDraw(bool);
           t.W(ScrimInsetsFrameLayout.this);
-          return paramAnonymousab.fc();
+          return paramAnonymousab.fk();
           bool = false;
           break;
         }
@@ -71,22 +71,22 @@ public class ScrimInsetsFrameLayout
     super.draw(paramCanvas);
     int i = getWidth();
     int j = getHeight();
-    if ((this.iu != null) && (this.it != null))
+    if ((this.ju != null) && (this.jt != null))
     {
       int k = paramCanvas.save();
       paramCanvas.translate(getScrollX(), getScrollY());
-      this.iw.set(0, 0, i, this.iu.top);
-      this.it.setBounds(this.iw);
-      this.it.draw(paramCanvas);
-      this.iw.set(0, j - this.iu.bottom, i, j);
-      this.it.setBounds(this.iw);
-      this.it.draw(paramCanvas);
-      this.iw.set(0, this.iu.top, this.iu.left, j - this.iu.bottom);
-      this.it.setBounds(this.iw);
-      this.it.draw(paramCanvas);
-      this.iw.set(i - this.iu.right, this.iu.top, i, j - this.iu.bottom);
-      this.it.setBounds(this.iw);
-      this.it.draw(paramCanvas);
+      this.jv.set(0, 0, i, this.ju.top);
+      this.jt.setBounds(this.jv);
+      this.jt.draw(paramCanvas);
+      this.jv.set(0, j - this.ju.bottom, i, j);
+      this.jt.setBounds(this.jv);
+      this.jt.draw(paramCanvas);
+      this.jv.set(0, this.ju.top, this.ju.left, j - this.ju.bottom);
+      this.jt.setBounds(this.jv);
+      this.jt.draw(paramCanvas);
+      this.jv.set(i - this.ju.right, this.ju.top, i, j - this.ju.bottom);
+      this.jt.setBounds(this.jv);
+      this.jt.draw(paramCanvas);
       paramCanvas.restoreToCount(k);
     }
   }
@@ -94,22 +94,22 @@ public class ScrimInsetsFrameLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.it != null) {
-      this.it.setCallback(this);
+    if (this.jt != null) {
+      this.jt.setCallback(this);
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.it != null) {
-      this.it.setCallback(null);
+    if (this.jt != null) {
+      this.jt.setCallback(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.internal.ScrimInsetsFrameLayout
  * JD-Core Version:    0.7.0.1
  */

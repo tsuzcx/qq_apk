@@ -7,12 +7,12 @@ import com.tencent.mm.model.c;
 import com.tencent.mm.model.w;
 import com.tencent.mm.pointers.PLong;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.cmg;
-import com.tencent.mm.protocal.protobuf.hu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.crn;
+import com.tencent.mm.protocal.protobuf.hy;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -22,31 +22,9 @@ import java.util.List;
 
 public final class a
 {
-  private static List<String> fvP = null;
+  private static List<String> fzw = null;
   
-  public static boolean Ol(String paramString)
-  {
-    AppMethodBeat.i(21800);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(21800);
-      return false;
-    }
-    int i = paramString.indexOf('<');
-    String str = paramString;
-    if (i > 0) {
-      str = paramString.substring(i);
-    }
-    if (bw.K(str, "msg") != null)
-    {
-      AppMethodBeat.o(21800);
-      return true;
-    }
-    AppMethodBeat.o(21800);
-    return false;
-  }
-  
-  public static String Ow(String paramString)
+  public static String SG(String paramString)
   {
     AppMethodBeat.i(21796);
     if (paramString == null)
@@ -68,16 +46,16 @@ public final class a
     return paramString;
   }
   
-  public static void Ox(String paramString)
+  public static void SH(String paramString)
   {
     AppMethodBeat.i(21798);
-    i.aMF(paramString);
-    i.aMF(paramString + "backupItem/");
-    i.aMF(paramString + "backupMeida/");
+    i.aSh(paramString);
+    i.aSh(paramString + "backupItem/");
+    i.aSh(paramString + "backupMeida/");
     AppMethodBeat.o(21798);
   }
   
-  public static String Oy(String paramString)
+  public static String SI(String paramString)
   {
     AppMethodBeat.i(21801);
     if ((paramString == null) || (paramString.equals("")))
@@ -85,43 +63,65 @@ public final class a
       AppMethodBeat.o(21801);
       return "";
     }
-    paramString = bya() + "backupMeida/" + Ow(paramString) + paramString;
+    paramString = bEW() + "backupMeida/" + SG(paramString) + paramString;
     AppMethodBeat.o(21801);
     return paramString;
   }
   
-  public static String a(hu paramhu, int paramInt)
+  public static boolean Sv(String paramString)
   {
-    AppMethodBeat.i(21804);
-    paramhu = a(paramhu, paramInt, null);
-    AppMethodBeat.o(21804);
-    return paramhu;
+    AppMethodBeat.i(21800);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(21800);
+      return false;
+    }
+    int i = paramString.indexOf('<');
+    String str = paramString;
+    if (i > 0) {
+      str = paramString.substring(i);
+    }
+    if (bv.L(str, "msg") != null)
+    {
+      AppMethodBeat.o(21800);
+      return true;
+    }
+    AppMethodBeat.o(21800);
+    return false;
   }
   
-  public static String a(hu paramhu, int paramInt, String paramString)
+  public static String a(hy paramhy, int paramInt)
+  {
+    AppMethodBeat.i(21804);
+    paramhy = a(paramhy, paramInt, null);
+    AppMethodBeat.o(21804);
+    return paramhy;
+  }
+  
+  public static String a(hy paramhy, int paramInt, String paramString)
   {
     AppMethodBeat.i(21803);
-    if ((paramhu.CCX == paramInt) && (paramhu.CCV != null))
+    if ((paramhy.DVu == paramInt) && (paramhy.DVs != null))
     {
-      paramhu = com.tencent.mm.b.g.getMessageDigest(paramhu.CCV.getBuffer().wA);
+      paramhy = com.tencent.mm.b.g.getMessageDigest(paramhy.DVs.getBuffer().xy);
       AppMethodBeat.o(21803);
-      return paramhu;
+      return paramhy;
     }
-    if ((paramhu.CCU != null) && (paramhu.CCT != null))
+    if ((paramhy.DVr != null) && (paramhy.DVq != null))
     {
-      Iterator localIterator = paramhu.CCU.iterator();
+      Iterator localIterator = paramhy.DVr.iterator();
       int i = 0;
       while (localIterator.hasNext()) {
-        if (((cmg)localIterator.next()).Ehp == paramInt)
+        if (((crn)localIterator.next()).FEo == paramInt)
         {
-          String str = ((cmf)paramhu.CCT.get(i)).Ehn;
-          if ((!bt.isNullOrNil(paramString)) && (!str.endsWith(paramString)))
+          String str = ((crm)paramhy.DVq.get(i)).FEm;
+          if ((!bs.isNullOrNil(paramString)) && (!str.endsWith(paramString)))
           {
             i = i + 1 + 1;
           }
           else
           {
-            if (i.eK(Oy(str)))
+            if (i.eA(SI(str)))
             {
               AppMethodBeat.o(21803);
               return str;
@@ -143,15 +143,15 @@ public final class a
   public static boolean a(long paramLong, PLong paramPLong1, PLong paramPLong2, String paramString)
   {
     AppMethodBeat.i(21799);
-    Object localObject = new StatFs(com.tencent.mm.loader.j.b.aih());
+    Object localObject = new StatFs(com.tencent.mm.loader.j.b.aph());
     long l1 = ((StatFs)localObject).getBlockSize();
     paramPLong1.value = (((StatFs)localObject).getAvailableBlocks() * l1);
-    localObject = e.R(com.tencent.mm.compatible.util.g.getDataDirectory());
+    localObject = e.U(com.tencent.mm.compatible.util.g.getDataDirectory());
     StatFs localStatFs = new StatFs(q.B(((e)localObject).mUri));
     l1 = localStatFs.getBlockCount();
     long l2 = localStatFs.getAvailableBlocks();
     paramPLong2.value = (localStatFs.getBlockSize() * localStatFs.getAvailableBlocks());
-    ad.i("MicroMsg.BakUtil", "checkDataFull, SDAvailSize:%d, DataAvailSize%d, dbSize:%d", new Object[] { Long.valueOf(paramPLong1.value), Long.valueOf(paramPLong2.value), Long.valueOf(paramLong) });
+    ac.i("MicroMsg.BakUtil", "checkDataFull, SDAvailSize:%d, DataAvailSize%d, dbSize:%d", new Object[] { Long.valueOf(paramPLong1.value), Long.valueOf(paramPLong2.value), Long.valueOf(paramLong) });
     if (l1 <= 0L)
     {
       AppMethodBeat.o(21799);
@@ -174,25 +174,25 @@ public final class a
     return true;
   }
   
-  public static boolean b(hu paramhu, int paramInt, String paramString)
+  public static boolean b(hy paramhy, int paramInt, String paramString)
   {
     AppMethodBeat.i(21806);
-    if ((paramhu.CCX == paramInt) && (paramhu.CCV != null))
+    if ((paramhy.DVu == paramInt) && (paramhy.DVs != null))
     {
-      paramhu = paramhu.CCV.getBuffer().wA;
-      if (paramhu.length <= 0)
+      paramhy = paramhy.DVs.getBuffer().xy;
+      if (paramhy.length <= 0)
       {
         AppMethodBeat.o(21806);
         return false;
       }
-      i.f(paramString, paramhu, paramhu.length);
+      i.f(paramString, paramhy, paramhy.length);
       AppMethodBeat.o(21806);
       return true;
     }
-    paramhu = a(paramhu, paramInt, null);
-    if (!bt.isNullOrNil(paramhu))
+    paramhy = a(paramhy, paramInt, null);
+    if (!bs.isNullOrNil(paramhy))
     {
-      i.lC(Oy(paramhu), paramString);
+      i.lZ(SI(paramhy), paramString);
       AppMethodBeat.o(21806);
       return true;
     }
@@ -200,34 +200,34 @@ public final class a
     return false;
   }
   
-  public static byte[] b(hu paramhu, int paramInt)
+  public static byte[] b(hy paramhy, int paramInt)
   {
     AppMethodBeat.i(21805);
-    if ((paramhu.CCX == paramInt) && (paramhu.CCV != null))
+    if ((paramhy.DVu == paramInt) && (paramhy.DVs != null))
     {
-      paramhu = paramhu.CCV.getBuffer().wA;
+      paramhy = paramhy.DVs.getBuffer().xy;
       AppMethodBeat.o(21805);
-      return paramhu;
+      return paramhy;
     }
-    if ((paramhu.CCU != null) && (paramhu.CCT != null))
+    if ((paramhy.DVr != null) && (paramhy.DVq != null))
     {
-      Iterator localIterator = paramhu.CCU.iterator();
+      Iterator localIterator = paramhy.DVr.iterator();
       int i = 0;
       while (localIterator.hasNext())
       {
-        if (((cmg)localIterator.next()).Ehp == paramInt)
+        if (((crn)localIterator.next()).FEo == paramInt)
         {
-          paramhu = Oy(((cmf)paramhu.CCT.get(i)).Ehn);
-          paramInt = (int)i.aMN(paramhu);
+          paramhy = SI(((crm)paramhy.DVq.get(i)).FEm);
+          paramInt = (int)i.aSp(paramhy);
           if ((paramInt == 0) || (paramInt > 1048576))
           {
-            ad.e("MicroMsg.BakUtil", "thumb not exist or  too big!");
+            ac.e("MicroMsg.BakUtil", "thumb not exist or  too big!");
             AppMethodBeat.o(21805);
             return null;
           }
-          paramhu = i.aR(paramhu, 0, -1);
+          paramhy = i.aU(paramhy, 0, -1);
           AppMethodBeat.o(21805);
-          return paramhu;
+          return paramhy;
         }
         i += 1;
       }
@@ -236,91 +236,91 @@ public final class a
     return null;
   }
   
-  public static List<String> bwk()
+  public static List<String> bDg()
   {
     AppMethodBeat.i(21795);
-    if (fvP != null)
+    if (fzw != null)
     {
-      localObject1 = fvP;
+      localObject1 = fzw;
       AppMethodBeat.o(21795);
       return localObject1;
     }
-    fvP = new LinkedList();
-    Object localObject1 = w.gMw;
+    fzw = new LinkedList();
+    Object localObject1 = w.hmW;
     int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
       Object localObject2 = localObject1[i];
-      fvP.add(localObject2);
+      fzw.add(localObject2);
       i += 1;
     }
-    fvP.add("weixin");
-    fvP.add("weibo");
-    fvP.add("qqmail");
-    fvP.add("fmessage");
-    fvP.add("tmessage");
-    fvP.add("qmessage");
-    fvP.add("qqsync");
-    fvP.add("floatbottle");
-    fvP.add("lbsapp");
-    fvP.add("shakeapp");
-    fvP.add("medianote");
-    fvP.add("qqfriend");
-    fvP.add("readerapp");
-    fvP.add("newsapp");
-    fvP.add("blogapp");
-    fvP.add("facebookapp");
-    fvP.add("masssendapp");
-    fvP.add("meishiapp");
-    fvP.add("feedsapp");
-    fvP.add("voipapp");
-    fvP.add("officialaccounts");
-    fvP.add("helper_entry");
-    fvP.add("pc_share");
-    fvP.add("cardpackage");
-    fvP.add("voicevoipapp");
-    fvP.add("voiceinputapp");
-    fvP.add("linkedinplugin");
-    fvP.add("appbrandcustomerservicemsg");
-    localObject1 = fvP;
+    fzw.add("weixin");
+    fzw.add("weibo");
+    fzw.add("qqmail");
+    fzw.add("fmessage");
+    fzw.add("tmessage");
+    fzw.add("qmessage");
+    fzw.add("qqsync");
+    fzw.add("floatbottle");
+    fzw.add("lbsapp");
+    fzw.add("shakeapp");
+    fzw.add("medianote");
+    fzw.add("qqfriend");
+    fzw.add("readerapp");
+    fzw.add("newsapp");
+    fzw.add("blogapp");
+    fzw.add("facebookapp");
+    fzw.add("masssendapp");
+    fzw.add("meishiapp");
+    fzw.add("feedsapp");
+    fzw.add("voipapp");
+    fzw.add("officialaccounts");
+    fzw.add("helper_entry");
+    fzw.add("pc_share");
+    fzw.add("cardpackage");
+    fzw.add("voicevoipapp");
+    fzw.add("voiceinputapp");
+    fzw.add("linkedinplugin");
+    fzw.add("appbrandcustomerservicemsg");
+    localObject1 = fzw;
     AppMethodBeat.o(21795);
     return localObject1;
   }
   
-  public static String bya()
+  public static String bEW()
   {
     AppMethodBeat.i(21797);
     Object localObject = new StringBuilder();
-    az.arV();
+    az.ayM();
     localObject = c.getAccPath() + "backup/";
     AppMethodBeat.o(21797);
     return localObject;
   }
   
-  public static int c(hu paramhu, int paramInt)
+  public static int c(hy paramhy, int paramInt)
   {
     AppMethodBeat.i(21802);
-    if (paramhu.CCX == paramInt)
+    if (paramhy.DVu == paramInt)
     {
-      if (paramhu.CCV == null)
+      if (paramhy.DVs == null)
       {
         AppMethodBeat.o(21802);
         return 0;
       }
-      paramInt = paramhu.CCV.getBuffer().wA.length;
+      paramInt = paramhy.DVs.getBuffer().xy.length;
       AppMethodBeat.o(21802);
       return paramInt;
     }
-    if ((paramhu.CCU != null) && (paramhu.CCT != null))
+    if ((paramhy.DVr != null) && (paramhy.DVq != null))
     {
-      Iterator localIterator = paramhu.CCU.iterator();
+      Iterator localIterator = paramhy.DVr.iterator();
       int i = 0;
       while (localIterator.hasNext())
       {
-        if (((cmg)localIterator.next()).Ehp == paramInt)
+        if (((crn)localIterator.next()).FEo == paramInt)
         {
-          paramInt = (int)i.aMN(Oy(((cmf)paramhu.CCT.get(i)).Ehn));
+          paramInt = (int)i.aSp(SI(((crm)paramhy.DVq.get(i)).FEm));
           AppMethodBeat.o(21802);
           return paramInt;
         }
@@ -331,25 +331,25 @@ public final class a
     return 0;
   }
   
-  public static int cb(String paramString, int paramInt)
+  public static int cg(String paramString, int paramInt)
   {
     AppMethodBeat.i(21807);
-    paramInt = bt.getInt(paramString, paramInt);
+    paramInt = bs.getInt(paramString, paramInt);
     AppMethodBeat.o(21807);
     return paramInt;
   }
   
-  public static boolean d(hu paramhu, int paramInt)
+  public static boolean d(hy paramhy, int paramInt)
   {
     AppMethodBeat.i(21808);
-    if ((paramhu.CCX == paramInt) && (paramhu.CCV != null))
+    if ((paramhy.DVu == paramInt) && (paramhy.DVs != null))
     {
       AppMethodBeat.o(21808);
       return true;
     }
-    paramhu = paramhu.CCU.iterator();
-    while (paramhu.hasNext()) {
-      if (((cmg)paramhu.next()).Ehp == paramInt)
+    paramhy = paramhy.DVr.iterator();
+    while (paramhy.hasNext()) {
+      if (((crn)paramhy.next()).FEo == paramInt)
       {
         AppMethodBeat.o(21808);
         return true;

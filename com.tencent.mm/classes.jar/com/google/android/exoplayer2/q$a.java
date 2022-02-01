@@ -12,11 +12,11 @@ public abstract interface q$a
   
   public abstract void e(boolean paramBoolean, int paramInt);
   
-  public abstract void rJ();
+  public abstract void rU();
   
-  public abstract void rK();
+  public abstract void rV();
   
-  public abstract void rL();
+  public abstract void rW();
 }
 
 

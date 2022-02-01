@@ -31,7 +31,7 @@ import java.util.Map;
 public final class a
   extends b
 {
-  private static b Bz;
+  private static b Cx;
   
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
@@ -70,7 +70,7 @@ public final class a
   
   public static void a(final Activity paramActivity, String[] paramArrayOfString, final int paramInt)
   {
-    if ((Bz != null) && (Bz.dw())) {}
+    if ((Cx != null) && (Cx.dD())) {}
     do
     {
       return;
@@ -79,9 +79,9 @@ public final class a
         if ((paramActivity instanceof c)) {
           ((c)paramActivity).validateRequestPermissionsRequestCode(paramInt);
         }
-        paramArrayOfString = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a()).bd(paramArrayOfString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramArrayOfString.adn(), "android/support/v4/app/ActivityCompat", "requestPermissions", "(Landroid/app/Activity;[Ljava/lang/String;I)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-        paramActivity.requestPermissions((String[])paramArrayOfString.lS(0), ((Integer)paramArrayOfString.lS(1)).intValue());
+        paramArrayOfString = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a()).ba(paramArrayOfString);
+        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramArrayOfString.aeD(), "android/support/v4/app/ActivityCompat", "requestPermissions", "(Landroid/app/Activity;[Ljava/lang/String;I)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
+        paramActivity.requestPermissions((String[])paramArrayOfString.lR(0), ((Integer)paramArrayOfString.lR(1)).intValue());
         com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "android/support/v4/app/ActivityCompat", "requestPermissions", "(Landroid/app/Activity;[Ljava/lang/String;I)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
         return;
       }
@@ -90,17 +90,17 @@ public final class a
     {
       public final void run()
       {
-        int[] arrayOfInt = new int[this.BA.length];
+        int[] arrayOfInt = new int[this.Cy.length];
         PackageManager localPackageManager = paramActivity.getPackageManager();
         String str = paramActivity.getPackageName();
-        int j = this.BA.length;
+        int j = this.Cy.length;
         int i = 0;
         while (i < j)
         {
-          arrayOfInt[i] = localPackageManager.checkPermission(this.BA[i], str);
+          arrayOfInt[i] = localPackageManager.checkPermission(this.Cy[i], str);
           i += 1;
         }
-        ((a.a)paramActivity).onRequestPermissionsResult(paramInt, this.BA, arrayOfInt);
+        ((a.a)paramActivity).onRequestPermissionsResult(paramInt, this.Cy, arrayOfInt);
       }
     });
   }
@@ -138,9 +138,9 @@ public final class a
     paramActivity.finish();
   }
   
-  public static b dv()
+  public static b dC()
   {
-    return Bz;
+    return Cx;
   }
   
   public static void e(Activity paramActivity)
@@ -174,9 +174,9 @@ public final class a
   
   public static abstract interface b
   {
-    public abstract boolean dw();
+    public abstract boolean dD();
     
-    public abstract boolean dx();
+    public abstract boolean dE();
   }
   
   public static abstract interface c
@@ -187,16 +187,16 @@ public final class a
   static final class d
     extends SharedElementCallback
   {
-    private final z BB;
+    private final z Cz;
     
     d(z paramz)
     {
-      this.BB = paramz;
+      this.Cz = paramz;
     }
     
     public final Parcelable onCaptureSharedElementSnapshot(View paramView, Matrix paramMatrix, RectF paramRectF)
     {
-      z localz = this.BB;
+      z localz = this.Cz;
       ImageView localImageView;
       Drawable localDrawable;
       Object localObject;
@@ -264,15 +264,15 @@ public final class a
       float f = Math.min(1.0F, 1048576.0F / (j * i));
       int j = (int)(j * f);
       int i = (int)(i * f);
-      if (localz.xE == null) {
-        localz.xE = new Matrix();
+      if (localz.yC == null) {
+        localz.yC = new Matrix();
       }
-      localz.xE.set(paramMatrix);
-      localz.xE.postTranslate(-paramRectF.left, -paramRectF.top);
-      localz.xE.postScale(f, f);
+      localz.yC.set(paramMatrix);
+      localz.yC.postTranslate(-paramRectF.left, -paramRectF.top);
+      localz.yC.postScale(f, f);
       paramMatrix = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
       paramRectF = new Canvas(paramMatrix);
-      paramRectF.concat(localz.xE);
+      paramRectF.concat(localz.yC);
       paramView.draw(paramRectF);
       return paramMatrix;
     }

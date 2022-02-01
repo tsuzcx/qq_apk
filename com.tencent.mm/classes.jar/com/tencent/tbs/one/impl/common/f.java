@@ -33,7 +33,7 @@ public final class f
   
   public static File a(Context paramContext1, Context paramContext2, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(186676);
+    AppMethodBeat.i(192444);
     if (paramContext1 == paramContext2)
     {
       paramContext1 = paramContext1.getExternalFilesDir("tbs");
@@ -48,7 +48,7 @@ public final class f
         break label141;
       }
       paramContext1 = new File(paramContext1, String.valueOf(paramInt));
-      AppMethodBeat.o(186676);
+      AppMethodBeat.o(192444);
       return paramContext1;
       if (paramContext1.getPackageManager().checkPermission("android.permission.READ_EXTERNAL_STORAGE", paramContext1.getPackageName()) == 0)
       {
@@ -63,7 +63,7 @@ public final class f
       break;
     }
     label141:
-    AppMethodBeat.o(186676);
+    AppMethodBeat.o(192444);
     return null;
   }
   

@@ -3,53 +3,53 @@ package com.tencent.mm.plugin.music.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.cache.c;
 import com.tencent.mm.plugin.music.cache.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
 {
-  private static long cBe = 0L;
-  private static boolean tTI = false;
+  private static long cyn = 0L;
+  private static boolean vcq = false;
   
-  public static boolean cTz()
+  public static boolean dhj()
   {
     AppMethodBeat.i(137011);
     long l = System.currentTimeMillis();
-    if (l - cBe < 120000L)
+    if (l - cyn < 120000L)
     {
-      bool = tTI;
+      bool = vcq;
       AppMethodBeat.o(137011);
       return bool;
     }
-    cBe = l;
-    if (e.cUJ())
+    cyn = l;
+    if (e.dip())
     {
-      bool = ((c)com.tencent.mm.plugin.music.f.c.b.aP(c.class)).cUF();
-      tTI = bool;
-      ad.i("MicroMsg.Audio.AudioMixSupport", "isSupportMixAudio:%b", new Object[] { Boolean.valueOf(tTI) });
-      if (!tTI) {
-        if (!e.cUJ()) {
+      bool = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).dil();
+      vcq = bool;
+      ac.i("MicroMsg.Audio.AudioMixSupport", "isSupportMixAudio:%b", new Object[] { Boolean.valueOf(vcq) });
+      if (!vcq) {
+        if (!e.dip()) {
           break label153;
         }
       }
     }
-    for (boolean bool = ((c)com.tencent.mm.plugin.music.f.c.b.aP(c.class)).cUG();; bool = false)
+    for (boolean bool = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).dim();; bool = false)
     {
-      tTI = bool;
-      ad.i("MicroMsg.Audio.AudioMixSupport", "isSupportMixAudioByCP:%b", new Object[] { Boolean.valueOf(tTI) });
-      bool = tTI;
+      vcq = bool;
+      ac.i("MicroMsg.Audio.AudioMixSupport", "isSupportMixAudioByCP:%b", new Object[] { Boolean.valueOf(vcq) });
+      bool = vcq;
       AppMethodBeat.o(137011);
       return bool;
-      ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+      ac.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
       bool = false;
       break;
       label153:
-      ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+      ac.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.b
  * JD-Core Version:    0.7.0.1
  */

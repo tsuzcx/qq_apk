@@ -3,11 +3,11 @@ package com.tencent.mm.protocal.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String desc;
-  public int dvf;
-  public String qfw;
+  public int dsR;
+  public String qNY;
   public String thumbPath;
   public String title;
   
@@ -26,9 +26,9 @@ public final class d
       if (this.thumbPath != null) {
         paramVarArgs.d(3, this.thumbPath);
       }
-      paramVarArgs.aR(4, this.dvf);
-      if (this.qfw != null) {
-        paramVarArgs.d(5, this.qfw);
+      paramVarArgs.aR(4, this.dsR);
+      if (this.qNY != null) {
+        paramVarArgs.d(5, this.qNY);
       }
       AppMethodBeat.o(94810);
       return 0;
@@ -49,19 +49,19 @@ public final class d
       if (this.thumbPath != null) {
         i = paramInt + f.a.a.b.b.a.e(3, this.thumbPath);
       }
-      i += f.a.a.b.b.a.bA(4, this.dvf);
+      i += f.a.a.b.b.a.bx(4, this.dsR);
       paramInt = i;
-      if (this.qfw != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.qfw);
+      if (this.qNY != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.qNY);
       }
       AppMethodBeat.o(94810);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(94810);
@@ -77,23 +77,23 @@ public final class d
           AppMethodBeat.o(94810);
           return -1;
         case 1: 
-          locald.title = locala.KhF.readString();
+          locald.title = locala.LVo.readString();
           AppMethodBeat.o(94810);
           return 0;
         case 2: 
-          locald.desc = locala.KhF.readString();
+          locald.desc = locala.LVo.readString();
           AppMethodBeat.o(94810);
           return 0;
         case 3: 
-          locald.thumbPath = locala.KhF.readString();
+          locald.thumbPath = locala.LVo.readString();
           AppMethodBeat.o(94810);
           return 0;
         case 4: 
-          locald.dvf = locala.KhF.xS();
+          locald.dsR = locala.LVo.xF();
           AppMethodBeat.o(94810);
           return 0;
         }
-        locald.qfw = locala.KhF.readString();
+        locald.qNY = locala.LVo.readString();
         AppMethodBeat.o(94810);
         return 0;
       }
@@ -104,7 +104,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.b.a.d
  * JD-Core Version:    0.7.0.1
  */

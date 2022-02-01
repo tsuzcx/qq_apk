@@ -7,67 +7,67 @@ public abstract interface g
 {
   public abstract void a(b paramb, e.a parama);
   
-  public abstract boolean bKR();
+  public abstract String bSF();
   
-  public abstract boolean bLA();
+  public abstract boolean bSG();
   
-  public abstract boolean bLB();
+  public abstract boolean bSH();
   
-  public abstract boolean bLC();
+  public abstract boolean bSM();
   
-  public abstract boolean bLD();
+  public abstract boolean bSN();
   
-  public abstract boolean bLE();
+  public abstract boolean bSO();
   
-  public abstract boolean bLF();
+  public abstract boolean bSP();
   
-  public abstract boolean bLG();
+  public abstract boolean bSQ();
   
-  public abstract boolean bLH();
+  public abstract boolean bSR();
   
-  public abstract boolean bLI();
+  public abstract boolean bSS();
   
-  public abstract boolean bLJ();
+  public abstract boolean bST();
   
-  public abstract boolean bLK();
+  public abstract boolean bSU();
   
-  public abstract boolean bLL();
+  public abstract boolean bSV();
   
-  public abstract boolean bLM();
+  public abstract boolean bSW();
   
-  public abstract boolean bLN();
+  public abstract boolean bSX();
   
-  public abstract boolean bLO();
+  public abstract boolean bSY();
   
-  public abstract boolean bLP();
+  public abstract boolean bSZ();
   
-  public abstract boolean bLQ();
+  public abstract boolean bSe();
   
-  public abstract boolean bLR();
+  public abstract boolean bTa();
   
-  public abstract boolean bLS();
+  public abstract boolean bTb();
   
-  public abstract boolean bLT();
+  public abstract boolean bTc();
   
-  public abstract boolean bLU();
+  public abstract boolean bTd();
   
-  public abstract boolean bLV();
+  public abstract boolean bTe();
   
-  public abstract boolean bLW();
+  public abstract boolean bTf();
   
-  public abstract boolean bLX();
+  public abstract boolean bTg();
   
-  public abstract boolean bLY();
+  public abstract boolean bTh();
   
-  public abstract void bLZ();
+  public abstract boolean bTi();
   
-  public abstract String bLs();
+  public abstract boolean bTj();
   
-  public abstract boolean bLt();
+  public abstract boolean bTk();
   
-  public abstract boolean bLu();
+  public abstract boolean bTl();
   
-  public abstract boolean bLz();
+  public abstract void bTm();
   
   public abstract void release();
 }

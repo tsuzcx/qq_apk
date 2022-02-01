@@ -3,17 +3,17 @@ package com.tencent.mm.view.recyclerview;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
 final class WxRecyclerView$b
   extends d.g.b.l
   implements a<Boolean>
 {
-  public static final b IbG;
+  public static final b JDi;
   
   static
   {
     AppMethodBeat.i(164737);
-    IbG = new b();
+    JDi = new b();
     AppMethodBeat.o(164737);
   }
   

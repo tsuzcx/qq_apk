@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class TipsInfoLog
   extends JceStruct
@@ -222,7 +222,7 @@ public final class TipsInfoLog
     }
     catch (Exception localException2)
     {
-      ad.printErrStackTrace("TipsInfoLog", localException2, "", new Object[0]);
+      ac.printErrStackTrace("TipsInfoLog", localException2, "", new Object[0]);
       AppMethodBeat.o(102397);
     }
     return 0;
@@ -341,7 +341,7 @@ public final class TipsInfoLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.TipsInfoLog
  * JD-Core Version:    0.7.0.1
  */

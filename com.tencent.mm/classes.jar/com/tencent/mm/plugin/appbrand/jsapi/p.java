@@ -5,15 +5,15 @@ import java.util.Map;
 public abstract class p
   extends ar
 {
-  public p B(Map<String, Object> paramMap)
+  public p A(Map<String, Object> paramMap)
   {
-    super.C(paramMap);
+    super.B(paramMap);
     return this;
   }
   
-  public final p HJ(String paramString)
+  public final p LN(String paramString)
   {
-    super.HK(paramString);
+    super.LO(paramString);
     return this;
   }
   
@@ -31,7 +31,7 @@ public abstract class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p
  * JD-Core Version:    0.7.0.1
  */

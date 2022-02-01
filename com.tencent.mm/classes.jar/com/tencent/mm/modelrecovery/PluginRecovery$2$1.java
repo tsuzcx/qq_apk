@@ -2,13 +2,13 @@ package com.tencent.mm.modelrecovery;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ca.f;
-import com.tencent.mm.ca.g.a;
+import com.tencent.mm.bz.f;
+import com.tencent.mm.bz.g.a;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class PluginRecovery$2$1
   implements Runnable
@@ -18,10 +18,10 @@ final class PluginRecovery$2$1
   public final void run()
   {
     boolean bool = true;
-    AppMethodBeat.i(191138);
-    if (com.tencent.mm.kernel.g.afC().gdw.gdQ)
+    AppMethodBeat.i(195940);
+    if (com.tencent.mm.kernel.g.agS().gic.giw)
     {
-      Object localObject = aj.getContext();
+      Object localObject = ai.getContext();
       try
       {
         b localb = (b)com.tencent.mm.kernel.g.ab(b.class);
@@ -29,8 +29,8 @@ final class PluginRecovery$2$1
         int i;
         if (localb != null)
         {
-          locala = g.a.hw((Context)localObject);
-          i = localb.a(b.a.pvq, 1);
+          locala = g.a.hH((Context)localObject);
+          i = localb.a(b.a.pZE, 1);
           if (i <= 0) {
             break label280;
           }
@@ -38,39 +38,39 @@ final class PluginRecovery$2$1
         for (;;)
         {
           locala.mEnabled = bool;
-          locala.ELz.cu("enable", locala.mEnabled).eCx();
-          ad.i("MicroMsg.recovery.reporter", "online config, enabled = ".concat(String.valueOf(i)));
-          localObject = com.tencent.mm.ca.g.hv((Context)localObject);
-          i = localb.a(b.a.pvr, ((com.tencent.mm.ca.g)localObject).ELu);
-          int j = localb.a(b.a.pvs, ((com.tencent.mm.ca.g)localObject).ELv);
-          long l = localb.a(b.a.pvt, ((com.tencent.mm.ca.g)localObject).ELy);
+          locala.GiL.cA("enable", locala.mEnabled).eRS();
+          ac.i("MicroMsg.recovery.reporter", "online config, enabled = ".concat(String.valueOf(i)));
+          localObject = com.tencent.mm.bz.g.hG((Context)localObject);
+          i = localb.a(b.a.pZF, ((com.tencent.mm.bz.g)localObject).GiG);
+          int j = localb.a(b.a.pZG, ((com.tencent.mm.bz.g)localObject).GiH);
+          long l = localb.a(b.a.pZH, ((com.tencent.mm.bz.g)localObject).GiK);
           if (i >= 2) {
-            ((com.tencent.mm.ca.g)localObject).ELu = i;
+            ((com.tencent.mm.bz.g)localObject).GiG = i;
           }
-          if (j >= ((com.tencent.mm.ca.g)localObject).ELu) {
-            ((com.tencent.mm.ca.g)localObject).ELv = j;
+          if (j >= ((com.tencent.mm.bz.g)localObject).GiG) {
+            ((com.tencent.mm.bz.g)localObject).GiH = j;
           }
           if (l >= 5000L) {
-            ((com.tencent.mm.ca.g)localObject).ELy = l;
+            ((com.tencent.mm.bz.g)localObject).GiK = l;
           }
-          ((com.tencent.mm.ca.g)localObject).ELz.fC("setting_threshold_1", ((com.tencent.mm.ca.g)localObject).ELu).fC("setting_threshold_2", ((com.tencent.mm.ca.g)localObject).ELv).bL("setting_crash_interval", ((com.tencent.mm.ca.g)localObject).ELw).bL("setting_crash_minimal_interval", ((com.tencent.mm.ca.g)localObject).ELx).bL("setting_reset_delay", ((com.tencent.mm.ca.g)localObject).ELy).eCx();
-          AppMethodBeat.o(191138);
+          ((com.tencent.mm.bz.g)localObject).GiL.fH("setting_threshold_1", ((com.tencent.mm.bz.g)localObject).GiG).fH("setting_threshold_2", ((com.tencent.mm.bz.g)localObject).GiH).bN("setting_crash_interval", ((com.tencent.mm.bz.g)localObject).GiI).bN("setting_crash_minimal_interval", ((com.tencent.mm.bz.g)localObject).GiJ).bN("setting_reset_delay", ((com.tencent.mm.bz.g)localObject).GiK).eRS();
+          AppMethodBeat.o(195940);
           return;
           label280:
           bool = false;
         }
-        AppMethodBeat.o(191138);
+        AppMethodBeat.o(195940);
       }
       catch (Throwable localThrowable)
       {
-        ad.printErrStackTrace("MicroMsg.recovery.reporter", localThrowable, "pull abtest config for recovery fail", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.recovery.reporter", localThrowable, "pull abtest config for recovery fail", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelrecovery.PluginRecovery.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,51 +4,51 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.widget.camerarecordview.preview.e;
 import com.tencent.mm.media.widget.camerarecordview.preview.f;
 import com.tencent.mm.plugin.mmsight.model.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/CPUPreviewController;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/AbsPreviewController;", "view", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "(Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;)V", "frameDataCallback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "drawFrame", "", "data", "", "getFrameDataCallback", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/CPUPreviewController;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/AbsPreviewController;", "view", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "(Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;)V", "frameDataCallback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "drawFrame", "", "data", "", "getFrameDataCallback", "plugin-mediaeditor_release"})
 public final class b
   extends a
 {
-  private final g gCb;
+  private final g hcz;
   
   public b(e parame)
   {
     super((f)parame);
     AppMethodBeat.i(94363);
-    this.gCb = ((g)new a(this));
+    this.hcz = ((g)new a(this));
     AppMethodBeat.o(94363);
   }
   
   public final g getFrameDataCallback()
   {
-    return this.gCb;
+    return this.hcz;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onFrameData"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onFrameData"})
   static final class a
     implements g
   {
     a(b paramb) {}
     
-    public final boolean W(byte[] paramArrayOfByte)
+    public final boolean V(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(94362);
-      b localb = this.gCc;
+      b localb = this.hcA;
       if (paramArrayOfByte != null)
       {
-        com.tencent.mm.media.i.a locala = localb.gsB;
+        com.tencent.mm.media.i.a locala = localb.gTi;
         if (locala != null) {
           com.tencent.mm.media.i.a.a(locala, paramArrayOfByte);
         }
-        localb.gBV.requestRender();
+        localb.hct.requestRender();
       }
       for (;;)
       {
         AppMethodBeat.o(94362);
         return false;
-        ad.v("MicroMsg.CameraPreviewGLSurfaceView", "passing draw");
+        ac.v("MicroMsg.CameraPreviewGLSurfaceView", "passing draw");
       }
     }
   }

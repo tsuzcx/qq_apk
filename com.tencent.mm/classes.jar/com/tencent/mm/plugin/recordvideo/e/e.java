@@ -1,124 +1,95 @@
 package com.tencent.mm.plugin.recordvideo.e;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.recordvideo.plugin.t;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
-import d.v;
-import java.security.MessageDigest;
+import java.util.HashMap;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/util/WeSeeUtil;", "", "()V", "TAG", "", "buildCameraEntranceSessionId", "timestamp", "", "bytesToHexString", "bArray", "", "checkWeishiInstalled", "", "context", "Landroid/content/Context;", "doCpatureWeSeeSight", "", "videoPath", "doDownloadWeSee", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/util/RecordTimeCalculatePlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "()V", "timeStartMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "calculate", "tag", "extra", "mark", "release", "", "Companion", "plugin-recordvideo_release"})
 public final class e
+  implements t
 {
-  public static final e vtS;
+  public static final a wDW;
+  public final HashMap<String, Long> wDV;
   
   static
   {
-    AppMethodBeat.i(76229);
-    vtS = new e();
-    AppMethodBeat.o(76229);
+    AppMethodBeat.i(199462);
+    wDW = new a((byte)0);
+    AppMethodBeat.o(199462);
   }
   
-  public static boolean fK(Context paramContext)
+  public e()
   {
-    bool1 = true;
-    AppMethodBeat.i(76226);
-    k.h(paramContext, "context");
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.weishi", 64);
-      if (paramContext == null) {
-        break label189;
-      }
-      paramContext = paramContext.signatures[0].toByteArray();
-      localObject = MessageDigest.getInstance("MD5");
-      if (localObject == null) {
-        k.fvU();
-      }
-      ((MessageDigest)localObject).update(paramContext);
-      paramContext = ((MessageDigest)localObject).digest();
-      if (paramContext != null) {
-        break label92;
-      }
-      paramContext = null;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        Object localObject;
-        boolean bool2;
-        int j;
-        int i;
-        ad.w("MicroMsg.WeSeeUtil", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
-        bool1 = false;
-        continue;
-        String str = str.toUpperCase();
-        k.g(str, "(this as java.lang.String).toUpperCase()");
-        ((StringBuffer)localObject).append(str);
-        i += 1;
-        continue;
-        paramContext = ((StringBuffer)localObject).toString();
-      }
-    }
-    bool2 = bt.kU(paramContext, "2A281593D71DF33374E6124E9106DF08");
-    if (bool2)
-    {
-      AppMethodBeat.o(76226);
-      return bool1;
-      label92:
-      localObject = new StringBuffer(paramContext.length);
-      j = paramContext.length;
-      i = 0;
-      if (i >= j) {
-        break label223;
-      }
-      str = Integer.toHexString(paramContext[i] & 0xFF);
-      k.g(str, "Integer.toHexString(0xFF and bArray[i].toInt())");
-      if (str.length() < 2) {
-        ((StringBuffer)localObject).append(0);
-      }
-      if (str != null) {
-        break label194;
-      }
-      paramContext = new v("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(76226);
-      throw paramContext;
-    }
+    AppMethodBeat.i(199461);
+    this.wDV = new HashMap();
+    AppMethodBeat.o(199461);
   }
   
-  public static void fL(Context paramContext)
+  public final boolean alO()
   {
-    AppMethodBeat.i(76227);
-    k.h(paramContext, "context");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", "https://isee.weishi.qq.com/static/release/group_10/528a4494-9ce7-4ac8-a763-247d84d07dae.html?_wwv=4096&chid=205000000&attach=cp_reserves3_2230000000");
-    d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
-    AppMethodBeat.o(76227);
+    return false;
   }
   
-  public static String rV(long paramLong)
+  public final void awk() {}
+  
+  public final long iD(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(76228);
-    Object localObject = new StringBuilder();
-    k.g(g.afz(), "MMKernel.account()");
-    localObject = a.aeo() + "_" + paramLong;
-    k.g(localObject, "sb.append(MMKernel.accou…end(timestamp).toString()");
-    AppMethodBeat.o(76228);
-    return localObject;
+    AppMethodBeat.i(199459);
+    k.h(paramString1, "tag");
+    if (this.wDV.get(paramString1) == null)
+    {
+      ac.e("MicroMsg.RecordTimeCalculatePlugin", paramString1 + " miss start mark!!!");
+      AppMethodBeat.o(199459);
+      return -1L;
+    }
+    paramString1 = (Long)this.wDV.get(paramString1);
+    if (paramString1 != null)
+    {
+      long l = System.currentTimeMillis();
+      k.g(paramString1, "this");
+      l -= paramString1.longValue();
+      ac.i("MicroMsg.RecordTimeCalculatePlugin", paramString2 + " cost time:" + l);
+      AppMethodBeat.o(199459);
+      return l;
+    }
+    AppMethodBeat.o(199459);
+    return -1L;
   }
+  
+  public final String name()
+  {
+    return null;
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public final void onDetach() {}
+  
+  public final void onPause() {}
+  
+  public final void onResume() {}
+  
+  public final void release()
+  {
+    AppMethodBeat.i(199460);
+    this.wDV.clear();
+    AppMethodBeat.o(199460);
+  }
+  
+  public final void reset() {}
+  
+  public final void setVisibility(int paramInt) {}
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/util/RecordTimeCalculatePlugin$Companion;", "", "()V", "TAG", "", "TIME_START", "plugin-recordvideo_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.e
  * JD-Core Version:    0.7.0.1
  */

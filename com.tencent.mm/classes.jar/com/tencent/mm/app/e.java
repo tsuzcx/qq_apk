@@ -3,30 +3,30 @@ package com.tencent.mm.app;
 import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.p;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.aj.e.a;
+import com.tencent.mm.aj.p;
 import com.tencent.mm.compatible.e.a;
 import com.tencent.mm.pluginsdk.ui.i;
 import com.tencent.mm.pluginsdk.ui.i.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class e
   implements i.a
 {
-  private volatile Bitmap cLa = null;
-  com.tencent.mm.ak.e cLb;
+  private volatile Bitmap cIi = null;
+  com.tencent.mm.aj.e cIj;
   
-  public final Bitmap Ky()
+  public final Bitmap Kj()
   {
     AppMethodBeat.i(19433);
-    if (this.cLa == null) {}
+    if (this.cIi == null) {}
     try
     {
-      if (this.cLa == null) {
-        this.cLa = a.decodeResource(aj.getContext().getResources(), 2131690013);
+      if (this.cIi == null) {
+        this.cIi = a.decodeResource(ai.getContext().getResources(), 2131690013);
       }
-      Bitmap localBitmap = this.cLa;
+      Bitmap localBitmap = this.cIi;
       AppMethodBeat.o(19433);
       return localBitmap;
     }
@@ -48,12 +48,12 @@ final class e
   {
     AppMethodBeat.i(19431);
     if ((parami instanceof e.a)) {
-      p.auq().a((e.a)parami);
+      p.aBh().a((e.a)parami);
     }
     AppMethodBeat.o(19431);
   }
   
-  public final Bitmap ew(String paramString)
+  public final Bitmap el(String paramString)
   {
     AppMethodBeat.i(19432);
     paramString = c.a(paramString, false, -1, null);
@@ -61,20 +61,20 @@ final class e
     return paramString;
   }
   
-  public final Bitmap ex(String paramString)
+  public final Bitmap em(String paramString)
   {
     AppMethodBeat.i(19434);
-    if (this.cLb == null) {
-      this.cLb = p.auq();
+    if (this.cIj == null) {
+      this.cIj = p.aBh();
     }
-    paramString = com.tencent.mm.ak.e.vT(paramString);
+    paramString = com.tencent.mm.aj.e.zZ(paramString);
     AppMethodBeat.o(19434);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.app.e
  * JD-Core Version:    0.7.0.1
  */

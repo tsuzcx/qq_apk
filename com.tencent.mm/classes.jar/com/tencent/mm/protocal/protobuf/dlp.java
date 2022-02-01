@@ -4,51 +4,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dlp
-  extends ckq
+  extends cpx
 {
-  public long DYU;
-  public long Dea;
-  public long Erf;
+  public String FTZ;
+  public int status;
+  public String uuid;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125496);
+    AppMethodBeat.i(153309);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.kX(1, this.BaseRequest.computeSize());
+        paramVarArgs.ln(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aG(2, this.Erf);
-      paramVarArgs.aG(3, this.Dea);
-      paramVarArgs.aG(4, this.DYU);
-      AppMethodBeat.o(125496);
+      if (this.uuid != null) {
+        paramVarArgs.d(2, this.uuid);
+      }
+      paramVarArgs.aR(3, this.status);
+      if (this.FTZ != null) {
+        paramVarArgs.d(4, this.FTZ);
+      }
+      AppMethodBeat.o(153309);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label446;
+        break label474;
       }
     }
-    label446:
-    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label474:
+    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.q(2, this.Erf);
-      int j = f.a.a.b.b.a.q(3, this.Dea);
-      int k = f.a.a.b.b.a.q(4, this.DYU);
-      AppMethodBeat.o(125496);
-      return paramInt + i + j + k;
+      int i = paramInt;
+      if (this.uuid != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.uuid);
+      }
+      i += f.a.a.b.b.a.bx(3, this.status);
+      paramInt = i;
+      if (this.FTZ != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.FTZ);
+      }
+      AppMethodBeat.o(153309);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(125496);
+        AppMethodBeat.o(153309);
         return 0;
       }
       if (paramInt == 3)
@@ -59,44 +69,44 @@ public final class dlp
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(125496);
+          AppMethodBeat.o(153309);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ip();
+            localObject1 = new iv();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdlp.BaseRequest = ((ip)localObject1);
+            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdlp.BaseRequest = ((iv)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(125496);
+          AppMethodBeat.o(153309);
           return 0;
         case 2: 
-          localdlp.Erf = ((f.a.a.a.a)localObject1).KhF.xT();
-          AppMethodBeat.o(125496);
+          localdlp.uuid = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(153309);
           return 0;
         case 3: 
-          localdlp.Dea = ((f.a.a.a.a)localObject1).KhF.xT();
-          AppMethodBeat.o(125496);
+          localdlp.status = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(153309);
           return 0;
         }
-        localdlp.DYU = ((f.a.a.a.a)localObject1).KhF.xT();
-        AppMethodBeat.o(125496);
+        localdlp.FTZ = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(153309);
         return 0;
       }
-      AppMethodBeat.o(125496);
+      AppMethodBeat.o(153309);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dlp
  * JD-Core Version:    0.7.0.1
  */

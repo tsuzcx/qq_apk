@@ -7,6 +7,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.os.Message;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Base64;
 import android.view.View;
@@ -18,16 +19,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.cb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao.a;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.ui.base.p;
 import com.tencent.mm.vfs.i;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import com.tencent.wcdb.database.SQLiteDebug;
 import com.tencent.wcdb.database.SQLiteDebug.IOTraceStats;
+import com.tencent.wcdb.database.SQLiteStatement;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,20 +38,20 @@ import java.util.Map;
 public final class c
   implements com.tencent.mm.pluginsdk.cmd.a
 {
-  private d nZQ;
-  private ap nZR = null;
+  private d oDl;
+  private com.tencent.mm.sdk.platformtools.ao oDm = null;
   
   c(d paramd)
   {
-    this.nZQ = paramd;
+    this.oDl = paramd;
   }
   
-  private boolean b(final Context paramContext, String[] paramArrayOfString)
+  private boolean b(final Context paramContext, final String[] paramArrayOfString)
   {
     int i = -1;
     int j = 0;
     AppMethodBeat.i(23048);
-    final String str1 = com.tencent.mm.kernel.g.afB().cachePath;
+    final String str1 = com.tencent.mm.kernel.g.agR().cachePath;
     Object localObject = str1 + "ctest/";
     str1 = str1 + "EnMicroMsg.db";
     final String str2 = (String)localObject + "EnMicroMsg.db";
@@ -72,42 +74,78 @@ public final class c
         default: 
           AppMethodBeat.o(23048);
           return false;
-          if (paramArrayOfString.equals("make-test"))
+          if (paramArrayOfString.equals("dump"))
           {
             i = 0;
             continue;
-            if (paramArrayOfString.equals("recover-test"))
+            if (paramArrayOfString.equals("make-test"))
             {
               i = 1;
               continue;
-              if (paramArrayOfString.equals("clear-test")) {
+              if (paramArrayOfString.equals("recover-test"))
+              {
                 i = 2;
+                continue;
+                if (paramArrayOfString.equals("clear-test")) {
+                  i = 3;
+                }
               }
             }
           }
           break;
         }
       }
-      if (i.eK((String)localObject))
+      paramArrayOfString = com.tencent.mm.kernel.g.agR().agu();
+      if (paramArrayOfString == null)
+      {
+        com.tencent.mm.ui.base.h.c(paramContext, "没有找到损坏信息", "", true);
+        AppMethodBeat.o(23048);
+        return true;
+      }
+      com.tencent.mm.sdk.g.b.c(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(195989);
+          i.aSh(com.tencent.mm.loader.j.b.apd() + "/MicroMsg");
+          i.mc(i.aSs(paramArrayOfString), com.tencent.mm.loader.j.b.apd() + "/MicroMsg/corrupted.zip");
+          ap.f(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(195988);
+              if (c.5.this.oDw != null) {
+                c.5.this.oDw.dismiss();
+              }
+              com.tencent.mm.ui.base.h.c(c.5.this.val$context, "损坏信息已保存", "", true);
+              AppMethodBeat.o(195988);
+            }
+          });
+          AppMethodBeat.o(195989);
+        }
+      }, "DBCommand");
+      AppMethodBeat.o(23048);
+      return true;
+      if (i.eA((String)localObject))
       {
         Toast.makeText(paramContext, "Corruption test database exists.\nClear or recover before creating a new one.", 1).show();
         AppMethodBeat.o(23048);
         return true;
       }
-      az.arV();
-      com.tencent.mm.model.c.afg().eOh().close();
-      i.aMF((String)localObject);
+      az.ayM();
+      com.tencent.mm.model.c.agw().fdL().close();
+      i.aSh((String)localObject);
       i = j;
       while (i < 5)
       {
         paramArrayOfString = arrayOfString[i];
-        i.lD(str1 + paramArrayOfString, str2 + paramArrayOfString);
+        i.ma(str1 + paramArrayOfString, str2 + paramArrayOfString);
         i += 1;
       }
-      d.eo(paramContext);
+      d.ew(paramContext);
       AppMethodBeat.o(23048);
       return true;
-      if (!i.eK((String)localObject))
+      if (!i.eA((String)localObject))
       {
         Toast.makeText(paramContext, "Corruption test database not exist.", 0).show();
         AppMethodBeat.o(23048);
@@ -117,9 +155,9 @@ public final class c
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(23044);
-          az.arV();
-          com.tencent.mm.model.c.afg().eOh().close();
+          AppMethodBeat.i(23045);
+          az.ayM();
+          com.tencent.mm.model.c.agw().fdL().close();
           paramAnonymousDialogInterface = arrayOfString;
           int i = paramAnonymousDialogInterface.length;
           paramAnonymousInt = 0;
@@ -127,17 +165,17 @@ public final class c
           {
             String str = paramAnonymousDialogInterface[paramAnonymousInt];
             i.deleteFile(str1 + str);
-            i.lD(str2 + str, str1 + str);
+            i.ma(str2 + str, str1 + str);
             paramAnonymousInt += 1;
           }
-          i.cO(this.oad, true);
-          d.eo(paramContext);
-          AppMethodBeat.o(23044);
+          i.cU(this.oDB, true);
+          d.ew(paramContext);
+          AppMethodBeat.o(23045);
         }
       }, null);
       AppMethodBeat.o(23048);
       return true;
-      if (!i.eK((String)localObject))
+      if (!i.eA((String)localObject))
       {
         Toast.makeText(paramContext, "Corruption test database not exist.", 0).show();
         AppMethodBeat.o(23048);
@@ -147,17 +185,17 @@ public final class c
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(23045);
-          i.cO(this.oad, true);
+          AppMethodBeat.i(195990);
+          i.cU(this.oDB, true);
           Toast.makeText(paramContext, "Corruption test database cleared.", 0).show();
-          AppMethodBeat.o(23045);
+          AppMethodBeat.o(195990);
         }
       }, null);
       AppMethodBeat.o(23048);
       return true;
     }
     localObject = new StringBuilder(512);
-    str1 = com.tencent.mm.kernel.g.afB().afe();
+    str1 = com.tencent.mm.kernel.g.agR().agu();
     ((StringBuilder)localObject).append("Corrupted DB: ");
     if (str1 == null)
     {
@@ -167,7 +205,7 @@ public final class c
       paramArrayOfString.setGravity(8388627);
       paramArrayOfString.setTextSize(1, 10.0F);
       paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-      paramArrayOfString.setTextColor(ao.aD(paramContext, 2130968584));
+      paramArrayOfString.setTextColor(com.tencent.mm.ui.ao.aJ(paramContext, 2130968584));
       paramArrayOfString.setTypeface(Typeface.MONOSPACE);
       paramArrayOfString.setMovementMethod(new ScrollingMovementMethod());
       i = paramContext.getResources().getDimensionPixelSize(2131165480);
@@ -180,9 +218,9 @@ public final class c
     for (paramArrayOfString = "test";; paramArrayOfString = "exists")
     {
       ((StringBuilder)localObject).append(paramArrayOfString);
-      ((StringBuilder)localObject).append("\nCorrupted DB size: ").append(i.aMN(str1));
-      ((StringBuilder)localObject).append("\nSaved master exists: ").append(i.eK(str1 + ".sm"));
-      ((StringBuilder)localObject).append("\nContent backup exists: ").append(i.eK(str1 + ".bak"));
+      ((StringBuilder)localObject).append("\nCorrupted DB size: ").append(i.aSp(str1));
+      ((StringBuilder)localObject).append("\nSaved master exists: ").append(i.eA(str1 + ".sm"));
+      ((StringBuilder)localObject).append("\nContent backup exists: ").append(i.eA(str1 + ".bak"));
       break;
     }
   }
@@ -190,7 +228,7 @@ public final class c
   private static boolean c(Context paramContext, String[] paramArrayOfString)
   {
     AppMethodBeat.i(23050);
-    ab localab = com.tencent.mm.kernel.g.afB().afk();
+    ae localae = com.tencent.mm.kernel.g.agR().agA();
     int i;
     if (paramArrayOfString.length > 1) {
       try
@@ -213,41 +251,41 @@ public final class c
       Toast.makeText(paramContext, paramArrayOfString, 0).show();
       AppMethodBeat.o(23050);
       return true;
-      localab.set(89, Integer.valueOf(i));
-      localab.eKy();
+      localae.set(89, Integer.valueOf(i));
+      localae.faa();
       paramArrayOfString = "Recovery status set to ".concat(String.valueOf(i));
       continue;
-      paramArrayOfString = "Recovery status is ".concat(String.valueOf(localab.getInt(89, 0)));
+      paramArrayOfString = "Recovery status is ".concat(String.valueOf(localae.getInt(89, 0)));
     }
   }
   
-  private boolean em(final Context paramContext)
+  private boolean eu(final Context paramContext)
   {
     AppMethodBeat.i(23047);
-    if (com.tencent.mm.kernel.g.afB().afe() == null)
+    if (com.tencent.mm.kernel.g.agR().agu() == null)
     {
-      com.tencent.mm.ui.base.h.j(paramContext, 2131762258, 2131755906);
+      com.tencent.mm.ui.base.h.l(paramContext, 2131762258, 2131755906);
       AppMethodBeat.o(23047);
       return true;
     }
     paramContext.getString(2131755906);
     Object localObject2 = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131762257), false, null);
-    Object localObject3 = ((com.tencent.mm.plugin.zero.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.b.class)).euv();
-    ((cb)localObject3).asJ();
-    Object localObject1 = this.nZQ;
+    Object localObject3 = ((com.tencent.mm.plugin.zero.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.b.class)).eJO();
+    ((cb)localObject3).azA();
+    Object localObject1 = this.oDl;
     localObject3 = new b()
     {
-      public final void zN(final int paramAnonymousInt)
+      public final void AF(final int paramAnonymousInt)
       {
         AppMethodBeat.i(23037);
-        this.nZS.asK();
-        aq.f(new Runnable()
+        this.oDn.azB();
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(23036);
-            if (c.1.this.nZT != null) {
-              c.1.this.nZT.dismiss();
+            if (c.1.this.oDo != null) {
+              c.1.this.oDo.dismiss();
             }
             int i;
             switch (paramAnonymousInt)
@@ -258,7 +296,7 @@ public final class c
             }
             for (;;)
             {
-              com.tencent.mm.ui.base.h.j(c.1.this.val$context, i, 2131755906);
+              com.tencent.mm.ui.base.h.l(c.1.this.val$context, i, 2131755906);
               AppMethodBeat.o(23036);
               return;
               i = 2131762260;
@@ -272,17 +310,17 @@ public final class c
         AppMethodBeat.o(23037);
       }
     };
-    paramContext = new com.tencent.mm.vfs.e(aj.getContext().getFilesDir(), "DBRecoverStarted");
-    localObject2 = new WakerLock(aj.getContext(), "MicroMsg.SubCoreDBBackup");
+    paramContext = new com.tencent.mm.vfs.e(ai.getContext().getFilesDir(), "DBRecoverStarted");
+    localObject2 = new WakerLock(ai.getContext(), "MicroMsg.SubCoreDBBackup");
     localObject1 = new d.5((d)localObject1, paramContext, (b)localObject3, (WakerLock)localObject2);
-    ad.i("MicroMsg.SubCoreDBBackup", "Database recover started.");
+    ac.i("MicroMsg.SubCoreDBBackup", "Database recover started.");
     ((WakerLock)localObject2).lock();
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(181L, 28L, 1L, true);
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(181L, 28L, 1L, true);
     try
     {
       paramContext.createNewFile();
       label173:
-      ((b)localObject1).zN(-1);
+      ((b)localObject1).AF(-1);
       AppMethodBeat.o(23047);
       return true;
     }
@@ -292,7 +330,7 @@ public final class c
     }
   }
   
-  private static boolean en(Context paramContext)
+  private static boolean ev(Context paramContext)
   {
     AppMethodBeat.i(23049);
     int i = SQLiteDebug.getLastErrorLine();
@@ -306,9 +344,9 @@ public final class c
     localObject1 = "";
     try
     {
-      az.arV();
+      az.ayM();
       int j = com.tencent.mm.model.c.getUin();
-      str1 = q.cG(true);
+      str1 = q.cF(true);
       str1 = com.tencent.mm.b.g.getMessageDigest((str1 + j).getBytes()).substring(0, 7);
       localObject1 = str1;
     }
@@ -333,13 +371,13 @@ public final class c
       localObject2 = new HashMap();
       ((HashMap)localObject2).put("lastReadPage", localObject1);
       ((HashMap)localObject2).put("lastJournalReadPage", str1);
-      com.tencent.mm.plugin.report.service.h.vKh.e("DBCorrupt", str3, (Map)localObject2);
+      com.tencent.mm.plugin.report.service.h.wUl.g("DBCorrupt", str3, (Map)localObject2);
       localObject1 = new TextView(paramContext);
       ((TextView)localObject1).setText(str3);
       ((TextView)localObject1).setGravity(8388627);
       ((TextView)localObject1).setTextSize(1, 10.0F);
       ((TextView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-      ((TextView)localObject1).setTextColor(ao.aD(paramContext, 2130968584));
+      ((TextView)localObject1).setTextColor(com.tencent.mm.ui.ao.aJ(paramContext, 2130968584));
       ((TextView)localObject1).setTypeface(Typeface.MONOSPACE);
       ((TextView)localObject1).setMovementMethod(new ScrollingMovementMethod());
       i = paramContext.getResources().getDimensionPixelSize(2131165480);
@@ -350,7 +388,7 @@ public final class c
     }
   }
   
-  public final boolean a(Context paramContext, final String[] paramArrayOfString, final String paramString)
+  public final boolean a(final Context paramContext, final String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(23051);
     paramString = paramArrayOfString[0];
@@ -401,8 +439,13 @@ public final class c
                         {
                           i = 8;
                           continue;
-                          if (paramString.equals("//dbbusy")) {
+                          if (paramString.equals("//dbbusy"))
+                          {
                             i = 9;
+                            continue;
+                            if (paramString.equals("//fixdb")) {
+                              i = 10;
+                            }
                           }
                         }
                       }
@@ -416,27 +459,27 @@ public final class c
         break;
       }
     }
-    final boolean bool = em(paramContext);
+    final boolean bool = eu(paramContext);
     AppMethodBeat.o(23051);
     return bool;
     paramArrayOfString = new Intent(paramContext, DBRecoveryUI.class);
     paramArrayOfString.putExtra("scene", 2);
     paramArrayOfString.setFlags(268435456);
-    paramArrayOfString = new com.tencent.mm.hellhoundlib.b.a().bd(paramArrayOfString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfString.adn(), "com/tencent/mm/plugin/dbbackup/DBCommand", "newRecover", "(Landroid/content/Context;[Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramArrayOfString.lS(0));
+    paramArrayOfString = new com.tencent.mm.hellhoundlib.b.a().ba(paramArrayOfString);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfString.aeD(), "com/tencent/mm/plugin/dbbackup/DBCommand", "newRecover", "(Landroid/content/Context;[Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramArrayOfString.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/dbbackup/DBCommand", "newRecover", "(Landroid/content/Context;[Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(23051);
     return true;
-    az.arV();
-    d.bPV();
+    az.ayM();
+    d.bXl();
     Toast.makeText(paramContext, "Post recovery cleanup done.", 0).show();
     AppMethodBeat.o(23051);
     return true;
     if ((paramArrayOfString.length > 1) && (paramArrayOfString[1].equals("cipher")))
     {
-      az.arV();
-      paramString = com.tencent.mm.model.c.afk();
+      az.ayM();
+      paramString = com.tencent.mm.model.c.agA();
       if (paramArrayOfString.length > 2)
       {
         paramArrayOfString = paramArrayOfString[2];
@@ -448,7 +491,7 @@ public final class c
         switch (i)
         {
         default: 
-          label628:
+          label656:
           if (paramString.getInt(237571, 0) != 0) {}
           break;
         }
@@ -490,11 +533,11 @@ public final class c
         i = 5;
         break;
         paramString.setInt(237571, 0);
-        paramString.eKy();
-        break label628;
+        paramString.faa();
+        break label656;
         paramString.setInt(237571, 1);
-        paramString.eKy();
-        break label628;
+        paramString.faa();
+        break label656;
       }
     }
     if ((paramArrayOfString.length > 1) && (paramArrayOfString[1].equals("incremental"))) {}
@@ -503,25 +546,25 @@ public final class c
     {
       l = System.nanoTime();
       paramArrayOfString = com.tencent.mm.ui.base.h.b(paramContext, "Backing database up. Please wait...", false, null);
-      if (this.nZQ.a(bool, new b()
+      if (this.oDl.a(bool, new b()
       {
-        public final void zN(final int paramAnonymousInt)
+        public final void AF(final int paramAnonymousInt)
         {
           AppMethodBeat.i(23039);
-          aq.f(new Runnable()
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(23038);
-              if (c.2.this.nZT != null) {
-                c.2.this.nZT.dismiss();
+              if (c.2.this.oDo != null) {
+                c.2.this.oDo.dismiss();
               }
               String str;
               if (paramAnonymousInt == 0) {
-                if (c.2.this.nZW)
+                if (c.2.this.oDr)
                 {
                   str = "incremental";
-                  str = String.format("Database (%s) backup succeeded, elapsed %.2f seconds.", new Object[] { str, Float.valueOf((float)(System.nanoTime() - c.2.this.hhs) / 1.0E+009F) });
+                  str = String.format("Database (%s) backup succeeded, elapsed %.2f seconds.", new Object[] { str, Float.valueOf((float)(System.nanoTime() - c.2.this.hHV) / 1.0E+009F) });
                 }
               }
               for (;;)
@@ -556,39 +599,7 @@ public final class c
       l = System.nanoTime();
       paramContext.getString(2131755906);
       paramString = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131762257), false, null);
-      this.nZQ.a(paramArrayOfString, new b()
-      {
-        public final void zN(final int paramAnonymousInt)
-        {
-          AppMethodBeat.i(23041);
-          aq.f(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(23040);
-              if (c.3.this.nZT != null) {
-                c.3.this.nZT.dismiss();
-              }
-              String str;
-              if (paramAnonymousInt == 0) {
-                str = String.format("Database recovery succeeded, elapsed %.2f seconds.", new Object[] { Float.valueOf((float)(System.nanoTime() - c.3.this.hhs) / 1.0E+009F) });
-              }
-              for (;;)
-              {
-                Toast.makeText(c.3.this.val$context, str, 0).show();
-                AppMethodBeat.o(23040);
-                return;
-                if (paramAnonymousInt == 1) {
-                  str = "Database recovery canceled.";
-                } else {
-                  str = "Database recovery failed.";
-                }
-              }
-            }
-          });
-          AppMethodBeat.o(23041);
-        }
-      });
+      this.oDl.a(paramArrayOfString, new c.3(this, paramString, l, paramContext));
       AppMethodBeat.o(23051);
       return true;
     }
@@ -598,39 +609,7 @@ public final class c
       l = System.nanoTime();
       paramContext.getString(2131755906);
       paramString = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131762257), false, null);
-      i = this.nZQ.b(paramArrayOfString, new b()
-      {
-        public final void zN(final int paramAnonymousInt)
-        {
-          AppMethodBeat.i(23043);
-          aq.f(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(23042);
-              if (c.4.this.nZT != null) {
-                c.4.this.nZT.dismiss();
-              }
-              String str;
-              if (paramAnonymousInt == 0) {
-                str = String.format("Database recovery succeeded, elapsed %.2f seconds.", new Object[] { Float.valueOf((float)(System.nanoTime() - c.4.this.hhs) / 1.0E+009F) });
-              }
-              for (;;)
-              {
-                Toast.makeText(c.4.this.val$context, str, 0).show();
-                AppMethodBeat.o(23042);
-                return;
-                if (paramAnonymousInt == 1) {
-                  str = "Database recovery canceled.";
-                } else {
-                  str = "Database recovery failed.";
-                }
-              }
-            }
-          });
-          AppMethodBeat.o(23043);
-        }
-      });
+      i = this.oDl.b(paramArrayOfString, new c.4(this, paramString, l, paramContext));
       if (i != 0)
       {
         if (paramString != null) {
@@ -657,32 +636,126 @@ public final class c
     bool = b(paramContext, paramArrayOfString);
     AppMethodBeat.o(23051);
     return bool;
-    bool = en(paramContext);
+    bool = ev(paramContext);
     AppMethodBeat.o(23051);
     return bool;
     bool = c(paramContext, paramArrayOfString);
     AppMethodBeat.o(23051);
     return bool;
-    if (this.nZR == null)
+    if (this.oDm == null)
     {
-      this.nZR = new ap("DBBusyTest", new c.7(this));
-      this.nZR.sendEmptyMessage(1);
+      this.oDm = new com.tencent.mm.sdk.platformtools.ao("DBBusyTest", new ao.a()
+      {
+        public final boolean handleMessage(Message paramAnonymousMessage)
+        {
+          AppMethodBeat.i(195991);
+          SQLiteDatabase localSQLiteDatabase = com.tencent.mm.kernel.g.agR().ghG.fdL();
+          switch (paramAnonymousMessage.what)
+          {
+          default: 
+            AppMethodBeat.o(195991);
+            return false;
+          case 1: 
+            localSQLiteDatabase.beginTransaction();
+            AppMethodBeat.o(195991);
+            return true;
+          }
+          localSQLiteDatabase.endTransaction();
+          AppMethodBeat.o(195991);
+          return true;
+        }
+      });
+      this.oDm.sendEmptyMessage(1);
       Toast.makeText(paramContext, "TEST: Begin transaction", 1).show();
     }
     for (;;)
     {
       AppMethodBeat.o(23051);
       return true;
-      this.nZR.sendEmptyMessage(2);
-      this.nZR.quitSafely();
-      this.nZR = null;
+      this.oDm.sendEmptyMessage(2);
+      this.oDm.quitSafely();
+      this.oDm = null;
       Toast.makeText(paramContext, "TEST: End transaction", 1).show();
     }
+    if (paramArrayOfString.length > 1)
+    {
+      paramArrayOfString = paramArrayOfString[1];
+      i = -1;
+      switch (paramArrayOfString.hashCode())
+      {
+      default: 
+        switch (i)
+        {
+        default: 
+          paramArrayOfString = null;
+        }
+        break;
+      }
+      for (;;)
+      {
+        if (paramArrayOfString == null) {
+          break label1424;
+        }
+        com.tencent.mm.sdk.g.b.c(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(195993);
+            try
+            {
+              int i = com.tencent.mm.kernel.g.agR().ghG.fdL().compileStatement(paramArrayOfString).executeUpdateDelete();
+              str = "成功更新 " + i + " 条记录";
+              ac.i("MicroMsg.DBCommand", "SQL executed, changes: %d, SQL: %s", new Object[] { Integer.valueOf(i), paramArrayOfString });
+              ap.f(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(195992);
+                  if (c.9.this.oDw != null) {
+                    c.9.this.oDw.dismiss();
+                  }
+                  com.tencent.mm.ui.base.h.c(c.9.this.val$context, str, "", true);
+                  AppMethodBeat.o(195992);
+                }
+              });
+              AppMethodBeat.o(195993);
+              return;
+            }
+            catch (RuntimeException localRuntimeException)
+            {
+              for (;;)
+              {
+                final String str = "Execution failed: " + localRuntimeException.getMessage();
+                ac.printErrStackTrace("MicroMsg.DBCommand", localRuntimeException, "Failed executing SQL: %s", new Object[] { paramArrayOfString });
+              }
+            }
+          }
+        }, "DBCommand");
+        AppMethodBeat.o(23051);
+        return true;
+        if (!paramArrayOfString.equals("rconv-dirty")) {
+          break;
+        }
+        i = 0;
+        break;
+        if (!paramArrayOfString.equals("duplicated-messages")) {
+          break;
+        }
+        i = 1;
+        break;
+        paramArrayOfString = "DELETE FROM rconversation WHERE typeof(flag) <> 'integer'";
+        continue;
+        paramArrayOfString = "DELETE FROM message WHERE rowid NOT IN (SELECT max(rowid) FROM message GROUP BY talker,msgSvrId,createTime)";
+      }
+    }
+    label1424:
+    AppMethodBeat.o(23051);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.dbbackup.c
  * JD-Core Version:    0.7.0.1
  */

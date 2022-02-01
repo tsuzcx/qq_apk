@@ -12,20 +12,20 @@ public final class k
   public final void B(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(104687);
-    this.cJL.a(paramEmojiInfo);
+    this.cGS.a(paramEmojiInfo);
     AppMethodBeat.o(104687);
   }
   
-  public final void cOw()
+  public final void dcf()
   {
     AppMethodBeat.i(104689);
-    this.cJL.onHide();
+    this.cGS.onHide();
     AppMethodBeat.o(104689);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.k
  * JD-Core Version:    0.7.0.1
  */

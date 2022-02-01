@@ -6,12 +6,12 @@ import java.util.HashMap;
 
 public class SpellMap
 {
-  public static HashMap<String, String> hUN;
+  public static HashMap<String, String> iuR;
   
   static
   {
     AppMethodBeat.i(132985);
-    hUN = new HashMap();
+    iuR = new HashMap();
     AppMethodBeat.o(132985);
   }
   

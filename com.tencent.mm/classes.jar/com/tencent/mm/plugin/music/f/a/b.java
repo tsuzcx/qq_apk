@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.music.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public abstract class b
 {
-  protected com.tencent.mm.az.f tVI;
-  protected f tYj;
-  public g tYk = new g();
+  protected com.tencent.mm.ay.f veq;
+  protected f vgW;
+  public g vgX = new g();
   
-  public final void HY(final int paramInt)
+  public final void JX(final int paramInt)
   {
-    if (this.tYj != null) {
-      aq.f(new Runnable()
+    if (this.vgW != null) {
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137403);
-          if (b.this.cVC()) {
-            b.this.tYj.L(b.this.tVI);
+          if (b.this.dji()) {
+            b.this.vgW.M(b.this.veq);
           }
           AppMethodBeat.o(137403);
         }
@@ -27,54 +27,54 @@ public abstract class b
     }
   }
   
-  public final void M(com.tencent.mm.az.f paramf)
+  public final void N(com.tencent.mm.ay.f paramf)
   {
-    this.tVI = paramf;
+    this.veq = paramf;
   }
   
   public final void a(f paramf)
   {
-    this.tYj = paramf;
+    this.vgW = paramf;
   }
   
-  public abstract void aiR(String paramString);
+  public abstract void anM(String paramString);
   
-  public abstract boolean cVC();
+  public abstract boolean dji();
   
-  public abstract int cVD();
+  public abstract int djj();
   
-  public abstract String cVE();
+  public abstract String djk();
   
   public abstract int getDuration();
   
   public abstract boolean isPlaying();
   
-  public void nK(final boolean paramBoolean)
+  public void oE(final boolean paramBoolean)
   {
-    if (this.tYj != null) {
-      aq.f(new Runnable()
+    if (this.vgW != null) {
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137401);
-          ad.i("MicroMsg.Music.BasePlayer", "onError, needRetry:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-          b.this.tYj.d(b.this.tVI, paramBoolean);
+          ac.i("MicroMsg.Music.BasePlayer", "onError, needRetry:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+          b.this.vgW.d(b.this.veq, paramBoolean);
           AppMethodBeat.o(137401);
         }
       });
     }
   }
   
-  public void nL(final boolean paramBoolean)
+  public void oF(final boolean paramBoolean)
   {
-    if (this.tYj != null) {
-      aq.f(new Runnable()
+    if (this.vgW != null) {
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137404);
-          ad.i("MicroMsg.Music.BasePlayer", "onStop, isComplete:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-          b.this.tYj.c(b.this.tVI, paramBoolean);
+          ac.i("MicroMsg.Music.BasePlayer", "onStop, isComplete:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+          b.this.vgW.c(b.this.veq, paramBoolean);
           AppMethodBeat.o(137404);
         }
       });
@@ -83,14 +83,14 @@ public abstract class b
   
   public final void onStart()
   {
-    if (this.tYj != null) {
-      aq.f(new Runnable()
+    if (this.vgW != null) {
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137402);
-          ad.i("MicroMsg.Music.BasePlayer", "onStart %b", new Object[] { Boolean.valueOf(b.this.isPlaying()) });
-          b.this.tYj.n(b.this.tVI);
+          ac.i("MicroMsg.Music.BasePlayer", "onStart %b", new Object[] { Boolean.valueOf(b.this.isPlaying()) });
+          b.this.vgW.n(b.this.veq);
           AppMethodBeat.o(137402);
         }
       });
@@ -107,7 +107,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ final class j$24
 {
   j$24(j paramj)
   {
-    AppMethodBeat.i(195608);
+    AppMethodBeat.i(186309);
     this.__eventId = cc.class.getName().hashCode();
-    AppMethodBeat.o(195608);
+    AppMethodBeat.o(186309);
   }
 }
 

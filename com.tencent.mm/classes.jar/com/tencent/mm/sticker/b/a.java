@@ -1,18 +1,18 @@
 package com.tencent.mm.sticker.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.avr;
-import com.tencent.mm.protocal.protobuf.avs;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ayx;
+import com.tencent.mm.protocal.protobuf.ayy;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/sticker/net/NetSceneGetLensInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/GetLensInfoResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-sticker_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/net/NetSceneGetLensInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/GetLensInfoResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-sticker_release"})
 public final class a
   extends n
   implements com.tencent.mm.network.k
@@ -25,14 +25,14 @@ public final class a
   {
     AppMethodBeat.i(105976);
     this.TAG = "MicroMsg.NetSceneGetLensInfo";
-    Object localObject = new avr();
-    ((avr)localObject).Dds = "com.tencent.xin.lens.lens_test1";
+    Object localObject = new ayx();
+    ((ayx)localObject).Ewy = "com.tencent.xin.lens.lens_test1";
     b.a locala = new b.a();
-    locala.c((com.tencent.mm.bx.a)localObject);
-    locala.d((com.tencent.mm.bx.a)new avs());
-    locala.wg("/cgi-bin/micromsg-bin/getlensinfo");
-    locala.nB(3903);
-    localObject = locala.atI();
+    locala.c((com.tencent.mm.bw.a)localObject);
+    locala.d((com.tencent.mm.bw.a)new ayy());
+    locala.Am("/cgi-bin/micromsg-bin/getlensinfo");
+    locala.op(3903);
+    localObject = locala.aAz();
     d.g.b.k.g(localObject, "builder.buildInstance()");
     this.rr = ((b)localObject);
     AppMethodBeat.o(105976);
@@ -55,7 +55,7 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(105975);
-    ad.i(this.TAG, "onGYNetEnd: " + paramInt2 + ", " + paramInt3);
+    ac.i(this.TAG, "onGYNetEnd: " + paramInt2 + ", " + paramInt3);
     paramq = this.callback;
     if (paramq != null)
     {

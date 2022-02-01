@@ -3,33 +3,33 @@ package com.tencent.mm.plugin.card.ui.view;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.c;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class j
   extends g
 {
-  public final ab bMH()
+  public final ab bTS()
   {
     AppMethodBeat.i(113676);
-    v localv = new v(this, this.nqt);
+    v localv = new v(this, this.nTt);
     AppMethodBeat.o(113676);
     return localv;
   }
   
-  public final ab bMI()
+  public final ab bTT()
   {
     AppMethodBeat.i(113677);
-    f localf = new f(this, this.nqt);
+    f localf = new f(this, this.nTt);
     AppMethodBeat.o(113677);
     return localf;
   }
   
-  public final ab bMJ()
+  public final ab bTU()
   {
     AppMethodBeat.i(113678);
-    t localt = new t(this, this.nqt);
+    t localt = new t(this, this.nTt);
     AppMethodBeat.o(113678);
     return localt;
   }
@@ -37,7 +37,7 @@ public final class j
   public final String e(c paramc)
   {
     AppMethodBeat.i(113675);
-    paramc = this.nqp.bHW().code;
+    paramc = this.nTp.bPj().code;
     AppMethodBeat.o(113675);
     return paramc;
   }
@@ -45,23 +45,23 @@ public final class j
   public final boolean f(b paramb)
   {
     AppMethodBeat.i(113674);
-    if (this.nqp == null)
+    if (this.nTp == null)
     {
-      ad.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain mCardInfo is null！");
+      ac.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain mCardInfo is null！");
       AppMethodBeat.o(113674);
       return true;
     }
     if (paramb == null)
     {
-      ad.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain false  newCardInfo null！");
+      ac.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain false  newCardInfo null！");
       AppMethodBeat.o(113674);
       return false;
     }
-    String str = this.nqp.bHW().code;
-    paramb = paramb.bHW().code;
-    if ((!bt.isNullOrNil(str)) && (!bt.isNullOrNil(paramb)) && (!str.equals(paramb)))
+    String str = this.nTp.bPj().code;
+    paramb = paramb.bPj().code;
+    if ((!bs.isNullOrNil(str)) && (!bs.isNullOrNil(paramb)) && (!str.equals(paramb)))
     {
-      ad.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain   code  is diffrent！");
+      ac.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain   code  is diffrent！");
       AppMethodBeat.o(113674);
       return true;
     }

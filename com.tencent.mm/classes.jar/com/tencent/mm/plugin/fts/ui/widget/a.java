@@ -8,7 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends Drawable
@@ -16,48 +16,48 @@ public final class a
   private Context context;
   int currentState;
   private Paint paint;
-  private Drawable rxA;
-  private int rxB;
-  private int rxC;
-  private int rxD;
-  private int rxE;
-  private int rxF;
-  private int rxG;
-  private int rxH;
-  boolean rxI;
-  private int rxJ;
-  int rxK;
-  private int rxL;
-  private Drawable rxz;
+  boolean sGA;
+  private int sGB;
+  int sGC;
+  private int sGD;
+  private Drawable sGr;
+  private Drawable sGs;
+  private int sGt;
+  private int sGu;
+  private int sGv;
+  private int sGw;
+  private int sGx;
+  private int sGy;
+  private int sGz;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(112284);
-    this.rxB = 0;
-    this.rxC = 0;
+    this.sGt = 0;
+    this.sGu = 0;
     this.paint = new Paint(1);
-    this.rxH = 0;
-    this.rxI = false;
+    this.sGz = 0;
+    this.sGA = false;
     this.currentState = 2;
-    this.rxK = 0;
-    this.rxL = 0;
+    this.sGC = 0;
+    this.sGD = 0;
     this.context = paramContext;
-    this.rxB = com.tencent.mm.cd.a.n(paramContext, 2131101171);
-    this.rxC = com.tencent.mm.cd.a.n(paramContext, 2131101179);
-    this.rxz = paramContext.getResources().getDrawable(2131232462);
-    this.rxA = paramContext.getResources().getDrawable(2131232463);
-    this.rxH = com.tencent.mm.cd.a.fromDPToPix(paramContext, 24);
-    this.rxD = com.tencent.mm.cd.a.n(paramContext, 2131101078);
-    this.rxG = com.tencent.mm.cd.a.n(paramContext, 2131101079);
-    this.rxJ = com.tencent.mm.cd.a.fromDPToPix(paramContext, 47);
-    this.rxE = com.tencent.mm.cd.a.fromDPToPix(paramContext, 47);
-    this.rxF = com.tencent.mm.cd.a.fromDPToPix(paramContext, 60);
-    this.rxL = 4;
-    ad.d("MicroMsg.FTSVoiceInputDrawable", "waveStep %s", new Object[] { Integer.valueOf(this.rxL) });
+    this.sGt = com.tencent.mm.cc.a.n(paramContext, 2131101171);
+    this.sGu = com.tencent.mm.cc.a.n(paramContext, 2131101179);
+    this.sGr = paramContext.getResources().getDrawable(2131232462);
+    this.sGs = paramContext.getResources().getDrawable(2131232463);
+    this.sGz = com.tencent.mm.cc.a.fromDPToPix(paramContext, 24);
+    this.sGv = com.tencent.mm.cc.a.n(paramContext, 2131101078);
+    this.sGy = com.tencent.mm.cc.a.n(paramContext, 2131101079);
+    this.sGB = com.tencent.mm.cc.a.fromDPToPix(paramContext, 47);
+    this.sGw = com.tencent.mm.cc.a.fromDPToPix(paramContext, 47);
+    this.sGx = com.tencent.mm.cc.a.fromDPToPix(paramContext, 60);
+    this.sGD = 4;
+    ac.d("MicroMsg.FTSVoiceInputDrawable", "waveStep %s", new Object[] { Integer.valueOf(this.sGD) });
     AppMethodBeat.o(112284);
   }
   
-  public static boolean DO(int paramInt)
+  public static boolean FK(int paramInt)
   {
     return paramInt < 10;
   }
@@ -65,16 +65,16 @@ public final class a
   private void d(Canvas paramCanvas, boolean paramBoolean)
   {
     AppMethodBeat.i(112287);
-    if ((this.rxz == null) || (l(paramCanvas)))
+    if ((this.sGr == null) || (l(paramCanvas)))
     {
       AppMethodBeat.o(112287);
       return;
     }
     Drawable localDrawable;
     if (paramBoolean) {
-      localDrawable = this.rxA;
+      localDrawable = this.sGs;
     }
-    for (int i = this.rxB;; i = this.rxC)
+    for (int i = this.sGt;; i = this.sGu)
     {
       int j = paramCanvas.getWidth() / 2;
       int k = paramCanvas.getHeight() / 2;
@@ -83,12 +83,12 @@ public final class a
       this.paint.setShader(null);
       this.paint.setStyle(Paint.Style.FILL);
       this.paint.setColor(i);
-      paramCanvas.drawCircle(j, k, this.rxH, this.paint);
+      paramCanvas.drawCircle(j, k, this.sGz, this.paint);
       localDrawable.setBounds(j - m, k - n, j + m, k + n);
       localDrawable.draw(paramCanvas);
       AppMethodBeat.o(112287);
       return;
-      localDrawable = this.rxz;
+      localDrawable = this.sGr;
     }
   }
   
@@ -104,12 +104,12 @@ public final class a
     return false;
   }
   
-  public final void cyr()
+  public final void cLD()
   {
     AppMethodBeat.i(112285);
-    ad.d("MicroMsg.FTSVoiceInputDrawable", "readyState %s", new Object[] { Integer.valueOf(this.currentState) });
+    ac.d("MicroMsg.FTSVoiceInputDrawable", "readyState %s", new Object[] { Integer.valueOf(this.currentState) });
     this.currentState = 2;
-    this.rxK = 0;
+    this.sGC = 0;
     invalidateSelf();
     AppMethodBeat.o(112285);
   }
@@ -125,15 +125,15 @@ public final class a
       j = paramCanvas.getHeight() >> 1;
       this.paint.setShader(null);
       this.paint.setStyle(Paint.Style.FILL);
-      this.paint.setColor(this.rxD);
+      this.paint.setColor(this.sGv);
       if (this.currentState != 7) {
         break label261;
       }
-      if (this.rxI)
+      if (this.sGA)
       {
-        this.rxJ -= this.rxL;
-        this.rxJ = Math.min(Math.max(this.rxE, this.rxJ), this.rxF);
-        paramCanvas.drawCircle(i, j, this.rxJ, this.paint);
+        this.sGB -= this.sGD;
+        this.sGB = Math.min(Math.max(this.sGw, this.sGB), this.sGx);
+        paramCanvas.drawCircle(i, j, this.sGB, this.paint);
       }
     }
     else
@@ -149,15 +149,15 @@ public final class a
       if (((this.currentState == 6) || (this.currentState == 7)) && (!l(paramCanvas)))
       {
         this.paint.setStyle(Paint.Style.FILL);
-        this.paint.setColor(this.rxG);
-        paramCanvas.drawCircle(paramCanvas.getWidth() >> 1, paramCanvas.getHeight() >> 1, this.rxH, this.paint);
+        this.paint.setColor(this.sGy);
+        paramCanvas.drawCircle(paramCanvas.getWidth() >> 1, paramCanvas.getHeight() >> 1, this.sGz, this.paint);
       }
       AppMethodBeat.o(112286);
       return;
-      this.rxJ += this.rxL;
+      this.sGB += this.sGD;
       break;
       label261:
-      paramCanvas.drawCircle(i, j, this.rxE, this.paint);
+      paramCanvas.drawCircle(i, j, this.sGw, this.paint);
       break label142;
       label281:
       d(paramCanvas, false);
@@ -166,7 +166,7 @@ public final class a
   
   public final int getIntrinsicHeight()
   {
-    return this.rxH * 2;
+    return this.sGz * 2;
   }
   
   public final int getIntrinsicWidth()
@@ -177,7 +177,7 @@ public final class a
       AppMethodBeat.o(112288);
       return 0;
     }
-    int i = com.tencent.mm.cd.a.hV(this.context);
+    int i = com.tencent.mm.cc.a.ig(this.context);
     AppMethodBeat.o(112288);
     return i;
   }
@@ -193,7 +193,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.a
  * JD-Core Version:    0.7.0.1
  */

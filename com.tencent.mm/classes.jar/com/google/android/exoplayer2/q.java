@@ -20,11 +20,11 @@ public abstract interface q
   
   public abstract boolean isLoading();
   
+  public abstract int rE();
+  
+  public abstract boolean rF();
+  
   public abstract void release();
-  
-  public abstract int rt();
-  
-  public abstract boolean ru();
   
   public abstract void seekTo(long paramLong);
   
@@ -34,7 +34,7 @@ public abstract interface q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.q
  * JD-Core Version:    0.7.0.1
  */
